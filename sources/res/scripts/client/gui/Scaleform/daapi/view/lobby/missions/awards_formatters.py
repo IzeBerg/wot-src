@@ -5,13 +5,14 @@ from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.server_events import finders
-from gui.server_events.awards_formatters import QuestsBonusComposer, AWARDS_SIZES, PreformattedBonus, getPersonalMissionAwardPacker, getOperationPacker, getBattlePassAwardsPacker, formatCountLabel, LABEL_ALIGN, getLinkedSetAwardPacker, PACK_RENT_VEHICLES_BONUS, PostProcessTags
+from gui.server_events.awards_formatters import QuestsBonusComposer, AWARDS_SIZES, PreformattedBonus, getPersonalMissionAwardPacker, getOperationPacker, getBattlePassAwardsPacker, formatCountLabel, LABEL_ALIGN, PACK_RENT_VEHICLES_BONUS, PostProcessTags
 from gui.server_events.bonuses import FreeTokensBonus
 from gui.shared.formatters import text_styles
 from helpers import i18n, dependency
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 _OPERATION_AWARDS_COUNT = 3
+DISPLAY_ALL_AWARDS = -1
 
 def formatShortData(bonus, size):
     return {'name': bonus.userName, 
@@ -28,10 +29,13 @@ class CurtailingAwardsComposer(QuestsBonusComposer):
     def getShortBonusesData(self, bonuses):
         return self._getShortBonusesData(self.getPreformattedBonuses(bonuses))
 
+    def _isMergeAllow(self):
+        return self._displayedRewardsCount != DISPLAY_ALL_AWARDS
+
     def _packBonuses(self, preformattedBonuses, size):
         bonusCount = len(preformattedBonuses)
         mergedBonuses = []
-        if bonusCount > self._displayedRewardsCount:
+        if self._isMergeAllow() and bonusCount > self._displayedRewardsCount:
             sliceIdx = self._displayedRewardsCount - 1
             displayBonuses = preformattedBonuses[:sliceIdx]
             mergedBonuses = preformattedBonuses[sliceIdx:]
@@ -180,27 +184,6 @@ class AwardsWindowComposer(CurtailingAwardsComposer):
         return bonuses
 
 
-class LinkedSetAwardsComposer(CurtailingAwardsComposer):
-
-    def __init__(self, displayedAwardsCount, awardsFormatter=None):
-        if awardsFormatter is None:
-            awardsFormatter = getLinkedSetAwardPacker()
-        super(LinkedSetAwardsComposer, self).__init__(displayedAwardsCount, awardsFormatter)
-        return
-
-    def _packBonus(self, bonus, size=AWARDS_SIZES.SMALL):
-        return {'label': bonus.label, 
-           'imgSource': bonus.getImage(size), 
-           'tooltip': bonus.tooltip, 
-           'isSpecial': bonus.isSpecial, 
-           'specialAlias': bonus.specialAlias, 
-           'specialArgs': bonus.specialArgs, 
-           'hasCompensation': bonus.isCompensation, 
-           'align': bonus.align, 
-           'highlightType': bonus.getHighlightType(size), 
-           'overlayType': bonus.getOverlayType(size)}
-
-
 class DetailedCardAwardComposer(CurtailingAwardsComposer):
 
     def getFormattedBonuses(self, bonuses, bigAwardsCount=6):
@@ -223,7 +206,7 @@ class PackRentVehiclesAwardComposer(CurtailingAwardsComposer):
         awardsCount = self._displayedRewardsCount
         if packRentVehicles:
             awardsCount -= 1
-        if bonusCount > awardsCount:
+        if self._isMergeAllow() and bonusCount > awardsCount:
             sliceIdx = awardsCount - 1
             displayBonuses = preformattedBonuses[:sliceIdx]
             mergedBonuses = preformattedBonuses[sliceIdx:]
@@ -256,7 +239,7 @@ class LootBoxBonusComposer(BonusNameQuestsBonusComposer):
         alwaysVisibleCount = len(alwaysPreformatedBonuses)
         if alwaysVisibleCount:
             totalCount = alwaysVisibleCount + len(preformattedBonuses)
-            if totalCount > self._displayedRewardsCount:
+            if self._isMergeAllow() and totalCount > self._displayedRewardsCount:
                 insertPos = self._displayedRewardsCount - alwaysVisibleCount - 1
                 if insertPos < 0:
                     insertPos = 0

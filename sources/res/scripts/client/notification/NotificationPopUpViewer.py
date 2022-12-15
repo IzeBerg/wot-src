@@ -31,7 +31,7 @@ class NotificationPopUpViewer(NotificationPopUpViewerMeta, BaseNotificationView)
         if self._model.getDisplayState() == NOTIFICATION_STATE.POPUPS:
             if not byTimeout and wasNotified:
                 notification = self._model.getNotification(typeID, self._getNotificationID(entityID))
-                if notification.decrementCounterOnHidden():
+                if notification and notification.decrementCounterOnHidden():
                     self._model.decrementNotifiedMessagesCount(*notification.getCounterInfo())
 
     def setListClear(self):
@@ -91,15 +91,17 @@ class NotificationPopUpViewer(NotificationPopUpViewerMeta, BaseNotificationView)
                 self.__sendMessageForDisplay(notification)
 
     def __onNotificationUpdated(self, notification, isStateChanged):
-        flashID = self._getFlashID(notification.getID())
+        flashID = self._getFlashID(notification.getCounterInfo())
         if self.as_hasPopUpIndexS(notification.getType(), flashID):
             self.as_updateMessageS(self.__getPopUpVO(notification))
         elif isStateChanged:
             self.__onNotificationReceived(notification)
 
-    def __onNotificationRemoved(self, typeID, entityID, groupID):
-        self._model.decrementNotifiedMessagesCount(groupID, typeID, entityID)
-        self.as_removeMessageS(typeID, self._getFlashID(entityID))
+    def __onNotificationRemoved(self, typeID, entityID, groupID, countOnce):
+        self._model.decrementNotifiedMessagesCount(groupID, typeID, entityID, countOnce)
+        notificationInfo = (
+         groupID, typeID, entityID, countOnce)
+        self.as_removeMessageS(typeID, self._getFlashID(notificationInfo))
 
     def __sendMessageForDisplay(self, notification):
         if notification.getPriorityLevel() != NotificationPriorityLevel.LOW:
@@ -134,7 +136,7 @@ class NotificationPopUpViewer(NotificationPopUpViewerMeta, BaseNotificationView)
             self.__pendingMessagesQueue = []
 
     def __getPopUpVO(self, notificaton):
-        flashId = self._getFlashID(notificaton.getID())
+        flashId = self._getFlashID(notificaton.getCounterInfo())
         return notificaton.getPopUpVO(flashId)
 
     def __isLocked(self, notification):

@@ -2,10 +2,13 @@ package net.wg.gui.notification
 {
    import flash.display.DisplayObject;
    import flash.display.MovieClip;
+   import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.events.TextEvent;
    import flash.text.TextField;
+   import flash.text.TextFieldAutoSize;
+   import flash.text.TextFormatAlign;
    import net.wg.data.constants.Linkages;
    import net.wg.gui.components.containers.Group;
    import net.wg.gui.components.containers.HorizontalGroupLayout;
@@ -60,7 +63,17 @@ package net.wg.gui.notification
       
       private var _classFactory:IClassFactory;
       
-      private var _buttonPadding:int = 10;
+      private var _bgDefHeight:uint = 0;
+      
+      protected var contentTopOffset:int = 0;
+      
+      protected var contentBottomOffset:int = 0;
+      
+      protected var messageBottomOffset:int = 18;
+      
+      protected var messageTopOffset:int = 17;
+      
+      protected var buttonsAlign:String = "left";
       
       public function ServiceMessageContent()
       {
@@ -73,7 +86,16 @@ package net.wg.gui.notification
          super.configUI();
          this.icon.addEventListener(Event.CHANGE,this.onImageChangeHandler);
          this.bgIcon.addEventListener(Event.CHANGE,this.onImageChangeHandler);
+         var _loc1_:Sprite = new Sprite();
+         this.bgIcon.addChild(_loc1_);
+         this.bgIcon.hitArea = _loc1_;
+         this.bgIcon.mouseEnabled = this.bgIcon.mouseChildren = false;
+         this._bgDefHeight = this.background.height;
          App.utils.styleSheetManager.setLinkStyle(this.textField);
+         this.textField.autoSize = TextFieldAutoSize.LEFT;
+         this.textField.multiline = true;
+         this.textField.wordWrap = true;
+         this.textField.selectable = true;
          this.textField.addEventListener(TextEvent.LINK,this.onTextFieldLinkHandler);
          this.textField.addEventListener(MouseEvent.CLICK,this.onTextFieldClickHandler);
       }
@@ -135,7 +157,11 @@ package net.wg.gui.notification
       
       override public function get height() : Number
       {
-         return this.background.height;
+         return this.background.height - this.contentOffset;
+      }
+      
+      protected function processCustomData(param1:Object) : void
+      {
       }
       
       protected function updateData() : void
@@ -150,6 +176,7 @@ package net.wg.gui.notification
          this.textField.htmlText = this.messageInfo.message;
          this.setTimeComponent();
          this.setButtonsGroup();
+         this.processCustomData(this.messageInfo.linkageData);
          if(this.messageInfo.type == MESSAGE_TYPE_ACTION)
          {
             this.bmpFill.visible = true;
@@ -167,43 +194,69 @@ package net.wg.gui.notification
       
       protected function updateLayout() : void
       {
-         var _loc7_:int = 0;
+         var _loc4_:int = 0;
          if(this._timeComponent)
          {
             this._timeComponent.y = MessageMetrics.TIME_PADDING_Y;
             this._timeComponent.x = this.width - (this._timeComponent.width + MessageMetrics.TIME_PADDING_X) ^ 0;
          }
          App.utils.commons.updateTextFieldSize(this.textField,false,true);
-         var _loc1_:int = this.textField.height;
-         var _loc2_:int = this._buttonsGroup != null ? int(this._buttonsGroup.height + BUTTONS_GROUP_OFFSET_Y) : int(0);
-         var _loc3_:int = MessageMetrics.SIDES_TOP_PADDING + _loc1_ + _loc2_ + MessageMetrics.SIDES_BOTTOM_PADDING;
-         var _loc4_:int = 0;
+         var _loc1_:int = 0;
          if(this.bgIcon.source && this._data.messageVO)
          {
-            _loc4_ = !!this._data.messageVO.bgIconSizeAuto ? int(this.bgIcon.height) : int(this._data.messageVO.bgIconHeight);
+            _loc1_ = !!this._data.messageVO.bgIconSizeAuto ? int(this.bgIcon.height) : int(this._data.messageVO.bgIconHeight);
          }
-         var _loc5_:int = Math.max(_loc3_,_loc4_);
-         if(_loc5_ != this.background.height)
+         var _loc2_:int = Math.max(this.contentHeight,_loc1_,this._bgDefHeight);
+         if(_loc2_ != this.background.height)
          {
-            this.background.height = _loc5_;
+            this.background.height = _loc2_;
             dispatchEvent(new Event(Event.RESIZE));
          }
          if(this._buttonsGroup != null)
          {
-            this._buttonsGroup.x = this.textField.x;
-            this._buttonsGroup.y = _loc1_ + this.textField.y + BUTTONS_GROUP_OFFSET_Y ^ 0;
+            if(this.buttonsAlign == TextFormatAlign.CENTER)
+            {
+               this._buttonsGroup.x = this.buttonsAnchorHorizontal.x + (this.buttonsAnchorHorizontal.width - this._buttonsGroup.width >> 1) | 0;
+            }
+            else
+            {
+               this._buttonsGroup.x = this.buttonsAnchorHorizontal.x;
+            }
+            this._buttonsGroup.y = this.buttonsAnchorVertical.height + this.buttonsAnchorVertical.y + this.buttonsGroupPaddingTop ^ 0;
          }
          if(this.bmpFill.visible)
          {
-            _loc7_ = this.bmpFill.y << 1;
-            this.bmpFill.setSize(this.background.width - _loc7_ ^ 0,_loc5_ - _loc7_);
+            _loc4_ = this.bmpFill.y << 1;
+            this.bmpFill.setSize(this.background.width - _loc4_ ^ 0,_loc2_ - _loc4_);
          }
-         var _loc6_:int = MessageMetrics.ICON_DEFAULT_PADDING_X;
-         this.icon.x = _loc6_ + (this.textField.x - _loc6_ - this.icon.width >> 1);
+         var _loc3_:int = MessageMetrics.ICON_DEFAULT_PADDING_X;
+         this.icon.x = _loc3_ + (this.textField.x - _loc3_ - this.icon.width >> 1);
          if(this.textField.textHeight < this.icon.height)
          {
             this.icon.y = this.textField.y + (this.textField.textHeight - this.icon.height >> 1) + MessageMetrics.ICON_DEFAULT_PADDING_Y ^ 0;
          }
+      }
+      
+      protected function get buttonsGroupPaddingTop() : int
+      {
+         return BUTTONS_GROUP_OFFSET_Y;
+      }
+      
+      protected function get contentHeight() : int
+      {
+         var _loc1_:int = this.textField.height;
+         var _loc2_:int = this._buttonsGroup != null ? int(this._buttonsGroup.height + this.buttonsGroupPaddingTop) : int(0);
+         return _loc1_ + _loc2_ + this.messageBottomOffset + this.messageTopOffset;
+      }
+      
+      protected function get buttonsAnchorHorizontal() : DisplayObject
+      {
+         return this.textField;
+      }
+      
+      protected function get buttonsAnchorVertical() : DisplayObject
+      {
+         return this.textField;
       }
       
       protected function get messageInfo() : MessageInfoVO
@@ -347,6 +400,11 @@ package net.wg.gui.notification
       private function onImageChangeHandler(param1:Event) : void
       {
          invalidateLayout();
+      }
+      
+      public function get contentOffset() : int
+      {
+         return this.contentTopOffset + this.contentBottomOffset;
       }
    }
 }

@@ -88,6 +88,11 @@ class UI_STORAGE_KEYS(CONST_CONTAINER):
     VEH_PREVIEW_POST_PROGRESSION_BULLET_SHOWN = 'veh_preview_post_progression_bullet_shown'
 
 
+class BATTLE_MATTERS_KEYS(CONST_CONTAINER):
+    QUESTS_SHOWN = 'shown'
+    QUEST_PROGRESS = 'questProgress'
+
+
 class ServerSettingsManager(object):
     settingsCache = dependency.descriptor(ISettingsCache)
     GAME = settings_constants.GAME
@@ -534,7 +539,8 @@ class ServerSettingsManager(object):
                                       UI_STORAGE_KEYS.DUAL_GUN_HIGHLIGHTS_COUNTER: Offset(19, 3670016), 
                                       UI_STORAGE_KEYS.TURBOSHAFT_HIGHLIGHTS_COUNTER: Offset(23, 58720256)}), 
        SETTINGS_SECTIONS.UI_STORAGE_2: Section(masks={UI_STORAGE_KEYS.ROCKET_ACCELERATION_MARK_IS_SHOWN: 0}, offsets={UI_STORAGE_KEYS.ROCKET_ACCELERATION_HIGHLIGHTS_COUNTER: Offset(1, 14)}), 
-       SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS: Section(masks={}, offsets={'shown': Offset(0, 255)}), 
+       SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS: Section(masks={}, offsets={BATTLE_MATTERS_KEYS.QUESTS_SHOWN: Offset(0, 255), 
+                                                 BATTLE_MATTERS_KEYS.QUEST_PROGRESS: Offset(8, 4294967040)}), 
        SETTINGS_SECTIONS.QUESTS_PROGRESS: Section(masks={}, offsets={QUESTS_PROGRESS.VIEW_TYPE: Offset(0, 3), 
                                            QUESTS_PROGRESS.DISPLAY_TYPE: Offset(2, 3 << 2)}), 
        SETTINGS_SECTIONS.SESSION_STATS: Section(masks={SESSION_STATS.IS_NOT_NEEDED_RESET_STATS_EVERY_DAY: 0, 
@@ -850,10 +856,16 @@ class ServerSettingsManager(object):
         return self.getUIStorage().get(UI_STORAGE_KEYS.DISABLE_ANIMATED_TOOLTIP) == 1
 
     def getBattleMattersQuestWasShowed(self):
-        return self.getSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, 'shown', 0)
+        return self.getSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, BATTLE_MATTERS_KEYS.QUESTS_SHOWN, 0)
 
     def setBattleMattersQuestWasShowed(self, count):
-        return self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, {'shown': count})
+        return self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, {BATTLE_MATTERS_KEYS.QUESTS_SHOWN: count})
+
+    def getBattleMattersQuestProgress(self):
+        return self.getSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, BATTLE_MATTERS_KEYS.QUEST_PROGRESS, 0)
+
+    def setBattleMattersQuestProgress(self, lastSeenProgress):
+        self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, {BATTLE_MATTERS_KEYS.QUEST_PROGRESS: lastSeenProgress})
 
     def setQuestProgressSettings(self, settings):
         self.setSectionSettings(SETTINGS_SECTIONS.QUESTS_PROGRESS, settings)

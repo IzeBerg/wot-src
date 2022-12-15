@@ -381,12 +381,12 @@ class _EpicMetaGameConfig(namedtuple('_EpicMetaGameConfig', ['maxCombatReserveLe
 _EpicMetaGameConfig.__new__.__defaults__ = (
  0, (0, False), (0, 0, 0), {}, {}, {}, {}, 0)
 
-class EpicGameConfig(namedtuple('EpicGameConfig', ('isEnabled', 'validVehicleLevels', 'seasons', 'cycleTimes', 'unlockableInBattleVehLevels',
- 'peripheryIDs', 'primeTimes', 'url'))):
+class EpicGameConfig(namedtuple('EpicGameConfig', ('isEnabled', 'validVehicleLevels', 'battlePassDataEnabled', 'seasons', 'cycleTimes',
+ 'unlockableInBattleVehLevels', 'peripheryIDs', 'primeTimes', 'rentVehicles'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, validVehicleLevels=[], unlockableInBattleVehLevels=[], seasons={}, cycleTimes=(), peripheryIDs={}, primeTimes={}, url='')
+        defaults = dict(isEnabled=False, validVehicleLevels=[], battlePassDataEnabled=True, unlockableInBattleVehLevels=[], seasons={}, cycleTimes=(), peripheryIDs={}, primeTimes={}, rentVehicles=[])
         defaults.update(kwargs)
         return super(EpicGameConfig, cls).__new__(cls, **defaults)
 
@@ -569,13 +569,31 @@ class _BlueprintsConfig(namedtuple('_BlueprintsConfig', ('allowBlueprintsConvers
         return 'isEnabled' in diff or 'useBlueprintsForUnlock' in diff
 
 
-class _SeniorityAwardsConfig(namedtuple('_SeniorityAwardsConfig', ('enabled', 'endTime'))):
+class SeniorityAwardsConfig(typing.NamedTuple('SeniorityAwardsConfig', (
+ (
+  'enabled', bool),
+ (
+  'endTime', int),
+ (
+  'reminders', list),
+ (
+  'clockOnNotification', int),
+ (
+  'showRewardNotification', bool),
+ (
+  'receivedRewardsToken', str),
+ (
+  'rewardEligibilityToken', str),
+ (
+  'claimRewardToken', str),
+ (
+  'rewardQuestsPrefix', str)))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(enabled=False, endTime=0)
+        defaults = dict(enabled=False, endTime=0, reminders=[], clockOnNotification=0, showRewardNotification=False, receivedRewardsToken='', rewardEligibilityToken='', claimRewardToken='', rewardQuestsPrefix='')
         defaults.update(kwargs)
-        return super(_SeniorityAwardsConfig, cls).__new__(cls, **defaults)
+        return super(SeniorityAwardsConfig, cls).__new__(cls, **defaults)
 
     def asDict(self):
         return self._asdict()
@@ -584,12 +602,6 @@ class _SeniorityAwardsConfig(namedtuple('_SeniorityAwardsConfig', ('enabled', 'e
         allowedFields = self._fields
         dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
         return self._replace(**dataToUpdate)
-
-    def isEnabled(self):
-        return self.enabled
-
-    def endTimestamp(self):
-        return self.endTime
 
 
 class _AdventCalendarConfig(namedtuple('_AdventCalendarConfig', ('calendarURL', 'popupIntervalInHours'))):
@@ -1006,7 +1018,7 @@ class PersonalReservesConfig(namedtuple('_PersonalReserves', ('isReservesInBattl
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isReservesInBattleActivationEnabled=False, displayConversionNotification=False, supportedQueueTypes=frozenset())
+        defaults = dict(isReservesInBattleActivationEnabled=False, displayConversionNotification=False, supportedQueueTypes={})
         defaults.update(**kwargs)
         return super(PersonalReservesConfig, cls).__new__(cls, **defaults)
 
@@ -1130,9 +1142,9 @@ class ServerSettings(object):
         else:
             self.__progressiveReward = _ProgressiveReward()
         if 'seniority_awards_config' in self.__serverSettings:
-            self.__seniorityAwardsConfig = makeTupleByDict(_SeniorityAwardsConfig, self.__serverSettings['seniority_awards_config'])
+            self.__seniorityAwardsConfig = makeTupleByDict(SeniorityAwardsConfig, self.__serverSettings['seniority_awards_config'])
         else:
-            self.__seniorityAwardsConfig = _SeniorityAwardsConfig()
+            self.__seniorityAwardsConfig = SeniorityAwardsConfig()
         if BATTLE_PASS_CONFIG_NAME in self.__serverSettings:
             self.__battlePassConfig = BattlePassConfig(self.__serverSettings.get(BATTLE_PASS_CONFIG_NAME, {}))
         else:

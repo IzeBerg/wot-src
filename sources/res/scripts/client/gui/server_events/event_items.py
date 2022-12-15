@@ -44,7 +44,6 @@ class DEFAULTS_GROUPS(object):
     REGULAR_GROUPED_QUESTS = 'regularGroupedQuests'
     MOTIVE_QUESTS = 'motiveQuests'
     MARATHON_QUESTS = 'marathonQuests'
-    LINKEDSET_QUESTS = 'AdvancedTrainingQuests'
     PREMIUM_QUESTS = 'premiumQuests'
 
 
@@ -56,8 +55,6 @@ def getGroupTypeByID(groupID):
         return DEFAULTS_GROUPS.MARATHON_QUESTS
     if events_helpers.isPremium(groupID):
         return DEFAULTS_GROUPS.PREMIUM_QUESTS
-    if events_helpers.isBattleMattersQuestID(groupID):
-        return DEFAULTS_GROUPS.LINKEDSET_QUESTS
     return DEFAULTS_GROUPS.REGULAR_GROUPED_QUESTS
 
 

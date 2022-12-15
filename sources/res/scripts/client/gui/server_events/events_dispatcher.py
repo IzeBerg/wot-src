@@ -60,6 +60,7 @@ _EVENTS_REWARD_WINDOW = {recruit_helper.RecruitSourceID.TWITCH_0: TwitchRewardWi
    recruit_helper.RecruitSourceID.TWITCH_33: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.TWITCH_34: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.TWITCH_35: TwitchRewardWindow, 
+   recruit_helper.RecruitSourceID.TWITCH_36: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.COMMANDER_MARINA: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.COMMANDER_PATRICK: TwitchRewardWindow, 
    anniversary_helper.ANNIVERSARY_EVENT_PREFIX: GiveAwayRewardWindow}
@@ -142,10 +143,6 @@ def showMissionsForCurrentVehicle(missionID=None, groupID=None, anchor=None):
 
 def showMissionsElen(eventQuestsID=None):
     showMissions(tab=QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS, missionID=eventQuestsID, groupID=eventQuestsID, showDetails=False)
-
-
-def showMissionsLinkedSet():
-    showMissions(tab=QUESTS_ALIASES.MISSIONS_CATEGORIES_VIEW_PY_ALIAS)
 
 
 def showDailyQuests(subTab):
@@ -246,6 +243,8 @@ def showMission(eventID, eventType=None):
             prefix = events_helpers.getMarathonPrefix(eventID)
             if prefix is not None:
                 return showMissionsMarathon(marathonPrefix=prefix)
+            if events_helpers.isBattleMattersQuestID(eventID):
+                showBattleMatters()
         if eventType is not None and eventType == constants.EVENT_TYPE.PERSONAL_MISSION:
             showPersonalMission(eventID)
         elif quest is not None and quest.showMissionAction() is not None:
@@ -260,8 +259,6 @@ def showMission(eventID, eventType=None):
                     showMissionsGrouped(missionID=quest.getID(), groupID=group.getID(), anchor=group.getID())
                 else:
                     showMissionsGrouped(anchor=group.getID())
-            elif events_helpers.isBattleMattersQuestID(quest.getID()):
-                showMissionsLinkedSet()
             elif events_helpers.isDailyQuest(quest.getID()):
                 showDailyQuests(subTab=DailyTabs.QUESTS)
             elif events_helpers.isPremium(quest.getID()):

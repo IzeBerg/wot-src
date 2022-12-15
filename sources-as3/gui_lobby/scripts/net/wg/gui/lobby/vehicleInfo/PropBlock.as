@@ -30,6 +30,8 @@ package net.wg.gui.lobby.vehicleInfo
       {
          this._counterManager = App.utils.counterManager;
          super();
+         this.propValue.selectable = false;
+         this.propName.selectable = false;
       }
       
       public final function dispose() : void

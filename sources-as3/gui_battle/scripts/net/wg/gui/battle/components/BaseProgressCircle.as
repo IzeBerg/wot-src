@@ -23,6 +23,8 @@ package net.wg.gui.battle.components
       
       protected var colorblindMode:Boolean = false;
       
+      private var _progress:Number;
+      
       public function BaseProgressCircle()
       {
          super();
@@ -40,9 +42,14 @@ package net.wg.gui.battle.components
       
       public function updateProgress(param1:Number) : void
       {
-         var _loc2_:int = param1 * SEMI_LAST_FRAME >> 0;
-         gotoAndStop(this.state);
-         this.progressCircle.gotoAndStop(_loc2_);
+         var _loc2_:int = 0;
+         if(param1 != this._progress)
+         {
+            this._progress = param1;
+            _loc2_ = this._progress * SEMI_LAST_FRAME >> 0;
+            gotoAndStop(this.state);
+            this.progressCircle.gotoAndStop(_loc2_);
+         }
       }
       
       protected function getCorrectState(param1:String) : String

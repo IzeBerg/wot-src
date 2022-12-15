@@ -20,8 +20,6 @@ from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 from gui.server_events.events_constants import BATTLE_MATTERS_QUEST_ID, MARATHON_GROUP_PREFIX, PREMIUM_GROUP_PREFIX, DAILY_QUEST_ID_PREFIX, RANKED_DAILY_GROUP_ID, RANKED_PLATFORM_GROUP_ID, BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID, MAPS_TRAINING_GROUPS_ID, MAPS_TRAINING_QUEST_PREFIX, FUN_RANDOM_GROUP_ID
 from helpers.i18n import makeString as _ms
-from gui.Scaleform.locale.LINKEDSET import LINKEDSET
-from gui.server_events.conditions import getProgressFromQuestWithSingleAccumulative
 if typing.TYPE_CHECKING:
     from gui.server_events.event_items import Quest
 FINISH_TIME_LEFT_TO_SHOW = time_utils.ONE_DAY
@@ -374,50 +372,6 @@ def parseC11nProgressToken(token):
     return C11nStyleProgressData(styleID=styleID, branch=branch, level=token.limit)
 
 
-def getLocalizedMissionNameForLinkedSet(missionID):
-    return _ms(LINKEDSET.getMissionName(missionID))
-
-
-def getLocalizedMissionNameForLinkedSetQuest(quest):
-    return getLocalizedMissionNameForLinkedSet(getIdxFromQuest(quest))
-
-
-def getLocalizedQuestNameForLinkedSetQuest(quest):
-    return _getlocalizeLinkedSetQuestString(LINKEDSET.getQuestName(getIdxFromQuest(quest), getLinkedSetQuestID(quest)), quest)
-
-
-def getLocalizedQuestDescForLinkedSetQuest(quest):
-    return _getlocalizeLinkedSetQuestString(LINKEDSET.getQuestDesc(getIdxFromQuest(quest), getLinkedSetQuestID(quest)), quest)
-
-
-def hasLocalizedQuestHintNameForLinkedSetQuest(quest):
-    return LINKEDSET.hasQuestHintName(getIdxFromQuest(quest), getLinkedSetQuestID(quest))
-
-
-def getLocalizedQuestHintNameForLinkedSetQuest(quest):
-    return _getlocalizeLinkedSetQuestString(LINKEDSET.getQuestHintName(getIdxFromQuest(quest), getLinkedSetQuestID(quest)), quest)
-
-
-def getLocalizedQuestHintDescForLinkedSetQuest(quest):
-    return _getlocalizeLinkedSetQuestString(LINKEDSET.getQuestHintDesc(getIdxFromQuest(quest), getLinkedSetQuestID(quest)), quest)
-
-
-def hasLocalizedQuestWinNameForLinkedSetQuest(quest):
-    return LINKEDSET.hasQuestWinName(getIdxFromQuest(quest), getLinkedSetQuestID(quest))
-
-
-def getLocalizedQuestWinNameForLinkedSetQuest(quest):
-    return _getlocalizeLinkedSetQuestString(LINKEDSET.getQuestWinName(getIdxFromQuest(quest), getLinkedSetQuestID(quest)), quest)
-
-
-def hasLocalizedQuestWinDescForLinkedSetQuest(quest):
-    return LINKEDSET.hasQuestWinDesc(getIdxFromQuest(quest), getLinkedSetQuestID(quest))
-
-
-def getLocalizedQuestWinDescForLinkedSetQuest(quest):
-    return _getlocalizeLinkedSetQuestString(LINKEDSET.getQuestWinDesc(getIdxFromQuest(quest), getLinkedSetQuestID(quest)), quest)
-
-
 def getIdxFromQuest(quest):
     return getIdxFromQuestID(quest.getID())
 
@@ -432,10 +386,6 @@ def getIdxFromQuestID(questID):
             result = -1
 
     return result
-
-
-def getLinkedSetQuestID(quest):
-    return int(quest.getID().split('_')[2])
 
 
 @dependency.replace_none_kwargs(itemsCache=IItemsCache)
@@ -495,15 +445,6 @@ def getTankmanRewardQuests():
                          q, operationName)
 
     return
-
-
-def _getlocalizeLinkedSetQuestString(localizedKey, quest):
-    curProgress, totalProgress = getProgressFromQuestWithSingleAccumulative(quest)
-    kwargs = {}
-    if curProgress is not None and totalProgress is not None:
-        kwargs.update({'cur_progress': backport.getIntegralFormat(curProgress), 
-           'total_progress': backport.getIntegralFormat(totalProgress)})
-    return _ms(localizedKey, **kwargs)
 
 
 @dependency.replace_none_kwargs(eventsCache=IEventsCache)

@@ -1619,7 +1619,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     def disableLobbyHeaderControls(self, disable):
         self._isLobbyHeaderControlsDisabled = disable
-        self.as_disableFightButtonS(disable)
+        self.as_disableFightButtonS(disable or self.__isFightBtnDisabled)
         for button in self.RANKED_WELCOME_VIEW_DISABLE_CONTROLS:
             self.as_doDisableHeaderButtonS(button, not disable)
 

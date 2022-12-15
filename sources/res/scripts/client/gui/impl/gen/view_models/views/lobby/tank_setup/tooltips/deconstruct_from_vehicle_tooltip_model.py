@@ -21,7 +21,7 @@ class DeconstructFromVehicleTooltipModel(ViewModel):
 
     @staticmethod
     def getVehicleNamesType():
-        return str
+        return unicode
 
     def _initialize(self):
         super(DeconstructFromVehicleTooltipModel, self)._initialize()

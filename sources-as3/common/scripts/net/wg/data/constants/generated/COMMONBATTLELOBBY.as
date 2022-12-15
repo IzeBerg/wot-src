@@ -9,17 +9,35 @@ package net.wg.data.constants.generated
       
       public static const BODY_MOBILITY:String = "body_mobility";
       
-      public static const DAMAGE_LOG_AIRSTRIKE_16X16:String = "damageLog_airstrike_16x16";
+      public static const DAMAGE_LOG_AIRSTRIKE_ENEMY_16X16:String = "damageLog_airstrike_enemy_16x16";
+      
+      public static const DAMAGE_LOG_AIRSTRIKE_ENEMY_16X16_BLIND:String = "damageLog_airstrike_enemy_16x16Blind";
+      
+      public static const DAMAGE_LOG_AIRSTRIKE_EQ_16X16:String = "damageLog_airstrike_eq_16x16";
+      
+      public static const DAMAGE_LOG_AIRSTRIKE_EQ_ENEMY_16X16:String = "damageLog_airstrike_eq_enemy_16x16";
+      
+      public static const DAMAGE_LOG_AIRSTRIKE_EQ_ENEMY_16X16_BLIND:String = "damageLog_airstrike_eq_enemy_16x16Blind";
       
       public static const DAMAGE_LOG_ART_16X16:String = "damageLog_art_16x16";
       
-      public static const DAMAGE_LOG_ARTILLERY_16X16:String = "damageLog_artillery_16x16";
+      public static const DAMAGE_LOG_ARTILLERY_ENEMY_16X16:String = "damageLog_artillery_enemy_16x16";
+      
+      public static const DAMAGE_LOG_ARTILLERY_ENEMY_16X16_BLIND:String = "damageLog_artillery_enemy_16x16Blind";
+      
+      public static const DAMAGE_LOG_ARTILLERY_EQ_16X16:String = "damageLog_artillery_eq_16x16";
+      
+      public static const DAMAGE_LOG_ARTILLERY_EQ_ENEMY_16X16:String = "damageLog_artillery_eq_enemy_16x16";
+      
+      public static const DAMAGE_LOG_ARTILLERY_EQ_ENEMY_16X16_BLIND:String = "damageLog_artillery_eq_enemy_16x16Blind";
       
       public static const DAMAGE_LOG_ASSIST_16X16:String = "damageLog_assist_16x16";
       
       public static const DAMAGE_LOG_BERSERKER_16X16:String = "damageLog_berserker_16x16";
       
       public static const DAMAGE_LOG_BY_MINE_FIELD_16X16:String = "damageLog_by_mine_field_16x16";
+      
+      public static const DAMAGE_LOG_BY_MINE_FIELD_16X16_BLIND:String = "damageLog_by_mine_field_16x16Blind";
       
       public static const DAMAGE_LOG_BY_SMOKE_16X16:String = "damageLog_by_smoke_16x16";
       

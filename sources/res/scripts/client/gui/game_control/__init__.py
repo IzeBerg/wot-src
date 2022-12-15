@@ -86,6 +86,7 @@ def getGameControllersConfig(manager):
         method = manager.replaceInstance if replace else manager.addInstance
         method(interface, controller, finalizer='fini')
 
+    _config(_interface.ISeniorityAwardsController, _SeniorityAwardsController())
     _config(_interface.IFestivityController, manager.getService(IFestivityFactory).getController())
     _config(_interface.IReloginController, _Relogin())
     _config(_interface.IAOGASController, _AOGAS())
@@ -147,7 +148,6 @@ def getGameControllersConfig(manager):
     _config(_interface.IWotPlusNotificationController, WotPlusNotificationController())
     _config(_interface.ITelecomRentalsNotificationController, TelecomRentalsNotificationController())
     _config(_interface.IGiftSystemController, GiftSystemController())
-    _config(_interface.ISeniorityAwardsController, _SeniorityAwardsController())
     _config(_interface.IRTSBattlesController, RTSBattlesController())
     _config(_interface.IResourceWellController, ResourceWellController())
     collectGameControllers(_config)

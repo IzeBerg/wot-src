@@ -72,11 +72,7 @@ package net.wg.gui.lobby.missions.components
                this.updateBodyComponent(this._missionPackVO.bodyLinkage);
                this.updateHeaderComponent(this._missionPackVO.headerLinkage);
                this._header.update(this._missionPackVO.headerData);
-               if(this._missionPackVO.isLinkedSet)
-               {
-                  this._body.update(this._missionPackVO.bodyDataLinkedSet);
-               }
-               else if(this._missionPackVO.isPremium)
+               if(this._missionPackVO.isPremium)
                {
                   this._body.update(this._missionPackVO.bodyDataPremium);
                }

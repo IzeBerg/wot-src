@@ -45,7 +45,7 @@ class ModeSelectorDataProvider(IGlobalListener):
         self.onListChanged = SafeEvent()
         self._items = OrderedDict()
         self._initializeModeSelectorItems()
-        self.updateItems()
+        self.__updateItems()
         self.startGlobalListening()
 
     @property
@@ -73,11 +73,6 @@ class ModeSelectorDataProvider(IGlobalListener):
         self.stopGlobalListening()
         self._clearItems()
 
-    def updateItems(self):
-        self._updateItemsPosition()
-        self._updateSelection()
-        self.onListChanged()
-
     def getItemByIndex(self, index):
         items = self.itemList
         if len(items) > index:
@@ -92,7 +87,7 @@ class ModeSelectorDataProvider(IGlobalListener):
             if nameItem not in items:
                 self._clearItem(self._items.pop(nameItem))
 
-        self.updateItems()
+        self.__updateItems()
 
     def _onCardChangeHandler(self, *args, **kwargs):
         self._updateItemsForce()
@@ -100,7 +95,7 @@ class ModeSelectorDataProvider(IGlobalListener):
     def _updateItemsForce(self):
         self._clearItems()
         self.__createItems(self.__getItems())
-        self.updateItems()
+        self.__updateItems()
 
     def _clearItems(self):
         for key in self._items:
@@ -160,11 +155,16 @@ class ModeSelectorDataProvider(IGlobalListener):
         for modeName in items:
             if modeName not in self._items:
                 item = self._getModeSelectorLegacyItem(modeName, items[modeName])
-                if item is not None:
+                if item is not None and item.isVisible:
                     self._items[modeName] = item
                     self.__initializeItem(item)
 
         return
+
+    def __updateItems(self):
+        self._updateItemsPosition()
+        self._updateSelection()
+        self.onListChanged()
 
     def __initializeItem(self, item):
         item.initialize()

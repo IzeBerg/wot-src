@@ -25,6 +25,24 @@ msgstr "Перейти к покупке"
 msgid "battleMattersTab"
 msgstr "Танковая академия"
 
+msgid "battleResults/descr"
+msgstr "Танковая академия: {questID}. {questName}"
+
+msgid "battleResults/linkBtn/tooltip"
+msgstr "К задачам танковой академии"
+
+msgid "battleResults/progress/tooltip"
+msgstr "Прогресс в этом бою"
+
+msgid "bonusDelayed/dialog/cancel"
+msgstr "Отменить"
+
+msgid "bonusDelayed/dialog/closeBtn"
+msgstr "ЗАКРЫТЬ"
+
+msgid "bonusDelayed/dialog/confirm"
+msgstr "Подтвердить"
+
 msgid "bonusDelayed/dialog/description"
 msgstr ""
 "Вы получите {whiteSpanish_Open}%(vehicleName)s{whiteSpanish_Close} со 100%-м"
@@ -164,6 +182,9 @@ msgstr "Также получено:"
 msgid "rewards/footer/confirm"
 msgstr "Так точно!"
 
+msgid "rewards/footer/more"
+msgstr "Ещё: %(count)s"
+
 msgid "rewards/footer/nextTask"
 msgstr "К следующей задаче"
 
@@ -221,14 +242,10 @@ msgstr "Жетон академии"
 
 msgid "vehicleSelection/additions/base"
 msgstr ""
-"Дополнительно к выбранной машине вы бесплатно получите %(crew)s и "
-"%(hangar)s."
-
-msgid "vehicleSelection/additions/crew"
-msgstr "%(crewIcon)s 100%-й экипаж"
-
-msgid "vehicleSelection/additions/hangar"
-msgstr "%(hangarIcon)s слот в Ангаре"
+"Дополнительно к выбранной машине вы бесплатно получите "
+"{cream_Open}%(crewIcon)s 100%-й{cream_Close} {cream_Open}экипаж{cream_Close}"
+" и {cream_Open}%(hangarIcon)s слот{cream_Close} {cream_Open}в "
+"Ангаре{cream_Close}."
 
 msgid "vehicleSelection/back"
 msgstr "НАЗАД"

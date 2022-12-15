@@ -22,6 +22,7 @@ from gui.impl.auxiliary.rewards_helper import getProgressiveRewardVO
 from gui.impl.gen import R
 from gui.server_events import formatters
 from gui.server_events.awards_formatters import QuestsBonusComposer
+from gui.server_events.events_constants import BATTLE_MATTERS_QUEST_ID
 from gui.server_events.events_helpers import isC11nQuest, getDataByC11nQuest
 from gui.shared.formatters import getItemPricesVO, getItemUnlockPricesVO, text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE, Tankman, getVehicleComponentsByType
@@ -398,6 +399,7 @@ class QuestsProgressBlock(base.StatsBlock):
         personalMissions = {}
         allCommonQuests = self.eventsCache.getQuests()
         allCommonQuests.update(self.eventsCache.getHiddenQuests(lambda q: q.isShowedPostBattle()))
+        battleMattersProgressData = []
         questsProgress = reusable.personal.getQuestsProgress()
         if questsProgress:
             for qID, qProgress in questsProgress.iteritems():
@@ -408,18 +410,25 @@ class QuestsProgressBlock(base.StatsBlock):
                     if quest is not None:
                         c11nQuests.append((
                          quest, {pGroupBy: pCur}, {pGroupBy: pPrev}, isCompleted))
+                elif qID.startswith(BATTLE_MATTERS_QUEST_ID):
+                    data = self.__packQuestProgressData(qID, allCommonQuests, qProgress, isCompleted)
+                    if data:
+                        battleMattersProgressData.append(data)
                 elif qID in allCommonQuests:
-                    quest = allCommonQuests[qID]
-                    isProgressReset = not isCompleted and quest.bonusCond.isInRow() and pCur.get('battlesCount', 0) == 0
-                    if pPrev or max(pCur.itervalues()) != 0:
-                        commonQuests.append((
-                         quest, {pGroupBy: pCur}, {pGroupBy: pPrev}, isProgressReset, isCompleted))
+                    data = self.__packQuestProgressData(qID, allCommonQuests, qProgress, isCompleted)
+                    if data:
+                        commonQuests.append(data)
                 elif personal_missions.g_cache.isPersonalMission(qID):
                     pqID = personal_missions.g_cache.getPersonalMissionIDByUniqueID(qID)
                     questsCache = self.eventsCache.getPersonalMissions()
                     quest = questsCache.getAllQuests()[pqID]
                     progress = personalMissions.setdefault(quest, {})
                     progress.update({qID: isCompleted})
+
+        for e, pCur, pPrev, reset, complete in battleMattersProgressData:
+            info = getEventPostBattleInfo(e, allCommonQuests, pCur, pPrev, reset, complete)
+            if info is not None:
+                self.addComponent(self.getNextComponentIndex(), base.DirectStatsItem('', info))
 
         pm2Progress = reusable.personal.getPM2Progress()
         if pm2Progress:
@@ -469,6 +478,18 @@ class QuestsProgressBlock(base.StatsBlock):
                 self.addComponent(self.getNextComponentIndex(), base.DirectStatsItem('', info))
 
         return
+
+    @staticmethod
+    def __packQuestProgressData(qID, allCommonQuests, qProgress, isCompleted):
+        pGroupBy, pPrev, pCur = qProgress
+        quest = allCommonQuests.get(qID)
+        data = None
+        if quest is not None:
+            isProgressReset = not isCompleted and quest.bonusCond.isInRow() and pCur.get('battlesCount', 0) == 0
+            if pPrev or max(pCur.itervalues()) != 0:
+                data = (
+                 quest, {pGroupBy: pCur}, {pGroupBy: pPrev}, isProgressReset, isCompleted)
+        return data
 
     @staticmethod
     def __sortPersonalMissions(a, b):

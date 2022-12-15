@@ -31,7 +31,7 @@ class FieldNameModel(BaseFieldModel):
 
     @staticmethod
     def getSuggestionsType():
-        return str
+        return unicode
 
     def _initialize(self):
         super(FieldNameModel, self)._initialize()

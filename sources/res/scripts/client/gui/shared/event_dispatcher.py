@@ -47,12 +47,12 @@ from gui.impl.pub.lobby_window import LobbyNotificationWindow, LobbyWindow
 from gui.impl.pub.notification_commands import WindowNotificationCommand
 from gui.prb_control.settings import CTRL_ENTITY_TYPE
 from gui.resource_well.resource import Resource
-from gui.resource_well.resource_well_helpers import isIntroShown, isResourceWellRewardVehicle
+from gui.resource_well.resource_well_helpers import isResourceWellRewardVehicle
 from gui.shared import events, g_eventBus
 from gui.shared.ClanCache import g_clanCache
 from gui.shared.event_bus import EVENT_BUS_SCOPE
 from gui.shared.formatters import text_styles
-from gui.shared.gui_items.Vehicle import getUserName
+from gui.shared.gui_items.Vehicle import getUserName, getNationLessName
 from gui.shared.gui_items.processors.goodies import BoosterActivator
 from gui.shared.money import Currency, MONEY_UNDEFINED, Money
 from gui.shared.utils import isPopupsWindowsOpenDisabled
@@ -65,7 +65,7 @@ from items import ITEM_TYPES, parseIntCompactDescr, vehicles as vehicles_core
 from nations import NAMES
 from shared_utils import first
 from skeletons.gui.app_loader import IAppLoader
-from skeletons.gui.game_control import IBrowserController, IClanNotificationController, IHeroTankController, IMarathonEventsController, IReferralProgramController, IResourceWellController, ISteamCompletionController, IBoostersController
+from skeletons.gui.game_control import IBrowserController, IClanNotificationController, IHeroTankController, IMarathonEventsController, IReferralProgramController, IResourceWellController, ISteamCompletionController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import IGuiLoader, INotificationWindowController
 from skeletons.gui.lobby_context import ILobbyContext
@@ -130,6 +130,26 @@ def showEpicBattlesPrimeTimeWindow():
 
 def showEpicBattlesAfterBattleWindow(levelUpInfo, parent=None):
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(EPICBATTLES_ALIASES.EPIC_BATTLES_AFTER_BATTLE_ALIAS, parent=parent), ctx={'levelUpInfo': levelUpInfo}), EVENT_BUS_SCOPE.LOBBY)
+
+
+def showFrontlineContainerWindow(activeTab=None):
+    from frontline.gui.impl.gen.view_models.views.lobby.views.frontline_container_tab_model import TabType
+    from frontline.gui.impl.lobby.views.frontline_container_view import FrontlineContainerView
+    g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.frontline.lobby.FrontlineContainerView(), FrontlineContainerView, ScopeTemplates.VIEW_SCOPE), activeTab=activeTab if activeTab else TabType.PROGRESS, flags=ViewFlags.LOBBY_TOP_SUB_VIEW), scope=EVENT_BUS_SCOPE.LOBBY)
+
+
+def closeFrontlineContainerWindow():
+    g_eventBus.handleEvent(events.DestroyGuiImplViewEvent(layoutID=R.views.frontline.lobby.FrontlineContainerView()))
+
+
+def showFrontlineWelcomeWindow(showFullScreen=False, showContainerOnClose=False):
+    from frontline.gui.impl.lobby.views.welcome_view import WelcomeViewWindow
+    WelcomeViewWindow(showFullScreen=showFullScreen, showContainerOnClose=showContainerOnClose).load()
+
+
+def showFrontlineInfoWindow():
+    from frontline.gui.impl.lobby.views.sub_views.info_view import InfoViewWindow
+    InfoViewWindow().load()
 
 
 def showBattleRoyaleLevelUpWindow(reusableInfo, parent=None):
@@ -840,23 +860,10 @@ def showProgressiveRewardAwardWindow(bonuses, specialRewardType, currentStep, no
 
 
 @dependency.replace_none_kwargs(notificationMgr=INotificationWindowController)
-def showSeniorityRewardAwardWindow(qID, data, notificationMgr=None):
+def showSeniorityRewardAwardWindow(completedQuests, data, notificationMgr=None):
     from gui.impl.lobby.seniority_awards.seniority_reward_award_view import SeniorityRewardAwardWindow
-    from account_helpers.AccountSettings import AccountSettings, SENIORITY_AWARDS_WINDOW_SHOWN
-    AccountSettings.setSessionSettings(SENIORITY_AWARDS_WINDOW_SHOWN, True)
-    window = SeniorityRewardAwardWindow(qID, data, R.views.lobby.seniority_awards.SeniorityAwardsView())
+    window = SeniorityRewardAwardWindow(completedQuests, data, R.views.lobby.seniority_awards.SeniorityAwardsView())
     notificationMgr.append(WindowNotificationCommand(window))
-
-
-def showSeniorityAwardsNotificationWindow():
-    from gui.impl.lobby.seniority_awards.seniority_awards_notification_view import SeniorityAwardsNotificationWindow
-    uiLoader = dependency.instance(IGuiLoader)
-    contentResId = R.views.lobby.seniority_awards.SeniorityAwardsNotificationView()
-    if uiLoader.windowsManager.getViewByLayoutID(contentResId) is None:
-        window = SeniorityAwardsNotificationWindow()
-        window.load()
-        window.center()
-    return
 
 
 def showBattlePassAwardsWindow(bonuses, data, useQueue=False, needNotifyClosing=True):
@@ -1161,13 +1168,12 @@ def showOfferGiftDialog(offerID, giftID, cdnTitle='', callback=None):
 @wg_async
 def showBonusDelayedConfirmationDialog(vehicle, callback=None):
     from gui.impl.dialogs import dialogs
-    from gui.impl.lobby.battle_matters.battle_matters_delayed_bonus_dialog import BattleMattersDelayedBonusDialog
-    result = yield wg_await(dialogs.showSingleDialogWithResultData(vehicle=vehicle, layoutID=BattleMattersDelayedBonusDialog.LAYOUT_ID, wrappedViewClass=BattleMattersDelayedBonusDialog))
-    if result.busy:
-        callback((False, {}))
-    else:
-        isOK, data = result.result
-        callback((isOK, data))
+    from gui.impl.lobby.dialogs.full_screen_dialog_view import FullScreenDialogWindowWrapper
+    from gui.impl.lobby.battle_matters.battle_matters_exchange_rewards import BattleMattersExchangeRewards
+    vehicleUserName = vehicle.userName
+    vehicleName = getNationLessName(vehicle.name)
+    result = yield wg_await(dialogs.showSimple(FullScreenDialogWindowWrapper(BattleMattersExchangeRewards(vehicleName, vehicleUserName))))
+    callback(result)
 
 
 def showOfferGiftVehiclePreview(offerID, giftID, confirmCallback=None, backBtnLabel=None, customCallbacks=None):
@@ -1311,15 +1317,16 @@ def showBattlePassRewardsSelectionWindow(chapterID=0, level=0, onRewardsReceived
     window.load()
 
 
-def showEpicRewardsSelectionWindow(onRewardsReceivedCallback=None, onCloseCallback=None, onLoadedCallback=None):
+def showEpicRewardsSelectionWindow(onRewardsReceivedCallback=None, onCloseCallback=None, onLoadedCallback=None, isAutoDestroyWindowsOnReceivedRewards=True):
     from gui.impl.lobby.frontline.rewards_selection_view import RewardsSelectionWindow
-    window = RewardsSelectionWindow(onRewardsReceivedCallback, onCloseCallback, onLoadedCallback)
+    window = RewardsSelectionWindow(onRewardsReceivedCallback, onCloseCallback, onLoadedCallback, isAutoDestroyWindowsOnReceivedRewards)
     window.load()
+    return window
 
 
-def showFrontlineAwards(bonuses):
+def showFrontlineAwards(bonuses, onCloseCallback=None, onAnimationEndedCallback=None, useQueue=False):
     from gui.impl.lobby.frontline.awards_view import AwardsWindow
-    AwardsWindow(bonuses).load()
+    findAndLoadWindow(useQueue, AwardsWindow, bonuses, onCloseCallback=onCloseCallback, onAnimationEndedCallback=onAnimationEndedCallback)
 
 
 def showNewLevelWindow(pLevel=1, cLevel=2, pXp=50, cXp=70, boosterFlXP=30, originalFlXP=10, rank=1):
@@ -1783,13 +1790,9 @@ def showSubscriptionsPage():
 
 @dependency.replace_none_kwargs(resourceWell=IResourceWellController)
 def showResourceWellProgressionWindow(resourceWell=None, backCallback=showHangar):
-    from gui.impl.lobby.resource_well.intro_view import IntroView
     from gui.impl.lobby.resource_well.completed_progression_view import CompletedProgressionView
     from gui.impl.lobby.resource_well.progression_view import ProgressionView
-    if not isIntroShown():
-        view = IntroView
-        viewRes = R.views.lobby.resource_well.IntroView()
-    elif resourceWell.isCompleted():
+    if resourceWell.isCompleted():
         view = CompletedProgressionView
         viewRes = R.views.lobby.resource_well.CompletedProgressionView()
     else:
@@ -1908,11 +1911,8 @@ def showPersonalReservesIntro(changeShownFlag=False, callbackOnClose=None, uiLog
 
 def showBoostersActivation():
     uiLoader = dependency.instance(IGuiLoader)
-    controller = dependency.instance(IBoostersController)
     contentResId = R.views.lobby.personal_reserves.ReservesActivationView()
     if uiLoader.windowsManager.getViewByLayoutID(contentResId) is None:
-        if not controller.isGameModeSupported():
-            controller.selectRandomBattle()
         from gui.impl.lobby.personal_reserves.reserves_activation_view import ReservesActivationView
         g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(contentResId, ReservesActivationView, ScopeTemplates.LOBBY_SUB_SCOPE)), scope=EVENT_BUS_SCOPE.LOBBY)
     else:

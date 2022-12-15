@@ -5,6 +5,7 @@ if typing.TYPE_CHECKING:
     from gui.shared.gui_items.Tankman import Tankman
     from gui.veh_post_progression.models.progression import PostProgressionItem
     from items.vehicles import VehicleType
+    from gui.shared.gui_items.dossier import AccountDossier
 
 class IItemsRequester(requesters.IRequester):
 

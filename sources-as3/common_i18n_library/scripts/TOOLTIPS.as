@@ -3989,6 +3989,10 @@ package
       
       public static const AWARDITEM_BRCOIN_BODY:String = "#tooltips:awardItem/brcoin/body";
       
+      public static const AWARDITEM_ABILITYTOKEN_HEADER:String = "#tooltips:awardItem/abilityToken/header";
+      
+      public static const AWARDITEM_ABILITYTOKEN_BODY:String = "#tooltips:awardItem/abilityToken/body";
+      
       public static const RANKEDBATTLEVIEW_SCOREPOINT_SHORT_HEADER:String = "#tooltips:rankedBattleView/scorePoint/short/header";
       
       public static const RANKEDBATTLEVIEW_SCOREPOINT_HEADER:String = "#tooltips:rankedBattleView/scorePoint/header";
@@ -4196,6 +4200,10 @@ package
       public static const TANK_PARAMS_DESC_GUNYAWLIMITS:String = "#tooltips:tank_params/desc/gunYawLimits";
       
       public static const TANK_PARAMS_DESC_CLIPFIRERATE:String = "#tooltips:tank_params/desc/clipFireRate";
+      
+      public static const TANK_PARAMS_DESC_BURSTFIRERATE:String = "#tooltips:tank_params/desc/burstFireRate";
+      
+      public static const TANK_PARAMS_DESC_TURBOSHAFTBURSTFIRERATE:String = "#tooltips:tank_params/desc/turboshaftBurstFireRate";
       
       public static const TANK_PARAMS_DESC_RELATIVEPOWER:String = "#tooltips:tank_params/desc/relativePower";
       
@@ -7028,6 +7036,34 @@ package
       public static const NOTRECRUITEDTANKMAN_NY22DEFAULTGIRL_DESC:String = "#tooltips:notrecruitedtankman/ny22defaultGirl/desc";
       
       public static const NOTRECRUITEDTANKMAN_NY22DEFAULTGIRL_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/ny22defaultGirl/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23_GIRL_M_LABEL:String = "#tooltips:notrecruitedtankman/ny23_girl_m/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23_GIRL_M_EVENT:String = "#tooltips:notrecruitedtankman/ny23_girl_m/event";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23_GIRL_M_DESC:String = "#tooltips:notrecruitedtankman/ny23_girl_m/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23DEFAULTGIRL_LABEL:String = "#tooltips:notrecruitedtankman/ny23defaultGirl/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23DEFAULTGIRL_DESC:String = "#tooltips:notrecruitedtankman/ny23defaultGirl/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23DEFAULTGIRL_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/ny23defaultGirl/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23_GIRL_1_LABEL:String = "#tooltips:notrecruitedtankman/ny23_girl_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23_GIRL_1_DESC:String = "#tooltips:notrecruitedtankman/ny23_girl_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23_GIRL_2_LABEL:String = "#tooltips:notrecruitedtankman/ny23_girl_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23_GIRL_2_DESC:String = "#tooltips:notrecruitedtankman/ny23_girl_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23_GIRL_3_LABEL:String = "#tooltips:notrecruitedtankman/ny23_girl_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23_GIRL_3_DESC:String = "#tooltips:notrecruitedtankman/ny23_girl_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23_GIRL_4_LABEL:String = "#tooltips:notrecruitedtankman/ny23_girl_4/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23_GIRL_4_DESC:String = "#tooltips:notrecruitedtankman/ny23_girl_4/desc";
       
       public static const ADDITIONALREWARDS_LEVELHEADER:String = "#tooltips:additionalRewards/levelHeader";
       

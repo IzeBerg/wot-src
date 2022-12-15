@@ -1478,6 +1478,36 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/seniorityRewardHeader)&lt;/font&gt;
 &lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/seniorityRewardBody):&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
 		</SeniorityAwardsQuest>
+		<seniorityAwardsTokens>
+			<priority>medium</priority>
+			<groupID>offer</groupID>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<linkage>SeniorityAwardsTokens</linkage>
+			<message>&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;18&quot; color=&quot;#E9E2BF&quot;&gt;_(#seniority_awards:notifications/tokens/title)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#seniority_awards:notifications/tokens/button)</label>
+					<action>seniorityAwardsTokens</action>
+				</button>
+			</buttonsLayout>
+			<buttonsAlign>center</buttonsAlign>
+		</seniorityAwardsTokens>
+		<seniorityAwardsQuest22>
+			<priority>medium</priority>
+			<groupID>offer</groupID>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<linkage>SeniorityAwardsQuest</linkage>
+			<message>&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;18&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#seniority_awards:notifications/quest/title)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#seniority_awards:notifications/quest/button)</label>
+					<action>seniorityAwardsQuest</action>
+				</button>
+			</buttonsLayout>
+			<buttonsAlign>center</buttonsAlign>
+		</seniorityAwardsQuest22>
 		<royaleVehiclesInvoiceReceived>
 			<type>yellow</type>
 			<icon>MessageIcon</icon>
@@ -1972,25 +2002,6 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 				</button>
 			</buttonsLayout>
 		</EmailConfirmationReminder>
-		<PsaCoinReminder>
-			<priority>low</priority>
-			<type>grey</type>
-			<icon>InformationIcon</icon>
-			<bgIcon>psa_notification_background</bgIcon>
-			<groupID>offer</groupID>
-			<message>&lt;font color=&quot;#E9E2BF&quot; face=&quot;$TitleFont&quot; size=&quot;15&quot;&gt;_(#messenger:serviceChannelMessages/payerSeniority/coins/header)&lt;/font&gt;&lt;br/&gt;
-&lt;TEXTFORMAT LEADING=&apos;0&apos;&gt;&lt;font color=&quot;#8C8C7E&quot; face=&quot;$FieldFont&quot; size=&quot;14&quot;&gt;_(#messenger:serviceChannelMessages/payerSeniority/coins/body)&lt;/font&gt;&lt;/TEXTFORMAT&gt;&lt;br/&gt;
-&lt;img src=&apos;img://gui/maps/icons/messenger/psaCoin.png&apos; width=&apos;36&apos; height=&apos;36&apos; vspace=&apos;-6&apos;/&gt;&lt;font color=&quot;#FEFEEC&quot; face=&quot;$TitleFont&quot; size=&quot;36&quot;&gt;%(count)s&lt;/font&gt;
-&lt;font color=&quot;#E9E2BF&quot; face=&quot;$TitleFont&quot; size=&quot;6&quot;&gt;&lt;br/&gt;&lt;/font&gt;</message>
-			<buttonsLayout>
-				<button>
-					<type>submit</type>
-					<label>_(#messenger:serviceChannelMessages/payerSeniority/coins/button)</label>
-					<action>openPsaShop</action>
-					<width>107</width>
-				</button>
-			</buttonsLayout>
-		</PsaCoinReminder>
 		<PersonalMissionFailedMessage>
 			<type>personalMissionFailed</type>
 			<icon>WarningIcon</icon>

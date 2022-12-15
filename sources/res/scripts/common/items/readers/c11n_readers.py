@@ -224,6 +224,7 @@ class AttachmentXmlReader(BaseCustomizationItemXmlReader):
     def _readClientOnlyFromXml(self, target, xmlCtx, section, cache=None):
         super(AttachmentXmlReader, self)._readClientOnlyFromXml(target, xmlCtx, section)
         target.modelName = ix.readStringOrNone(xmlCtx, section, 'modelName')
+        target.hangarModelName = ix.readStringOrNone(xmlCtx, section, 'hangarModelName')
         target.sequenceId = ix.readIntOrNone(xmlCtx, section, 'sequenceId')
         target.attachmentLogic = ix.readStringOrNone(xmlCtx, section, 'attachmentLogic')
         target.initialVisibility = ix.readBool(xmlCtx, section, 'initialVisibility', True)
@@ -756,7 +757,7 @@ def _addEmptyItem(itemCls, storage, itemSectionName):
     storage[EMPTY_ITEM_ID] = item
 
 
-def _readPriceGroups(cache, xmlCtx, section, sectionName):
+def _readPriceGroups(cache, xmlCtx, section, sectionName, prices=None):
     if IS_EDITOR and section is None:
         return
     else:
@@ -772,7 +773,7 @@ def _readPriceGroups(cache, xmlCtx, section, sectionName):
             if priceGroup.name in cache.priceGroupNames:
                 ix.raiseWrongXml(iCtx, 'id', 'duplicate price group name "%s"' % priceGroup.name)
             priceGroup.notInShop = iSection.readBool('notInShop', False)
-            iv._readPriceForItem(iCtx, iSection, priceGroup.compactDescr)
+            iv._readPriceForItem(iCtx, iSection, priceGroup.compactDescr, prices)
             if iSection.has_key('tags'):
                 tags = iSection.readString('tags').split()
                 priceGroup.tags = frozenset(map(intern, tags))

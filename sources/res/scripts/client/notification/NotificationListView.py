@@ -129,11 +129,11 @@ class NotificationListView(NotificationsListMeta, BaseNotificationView):
             self._model.incrementNotifiedMessagesCount(*notification.getCounterInfo())
         self.__updateCounters()
 
-    def __onNotificationRemoved(self, typeID, entityID, groupID):
+    def __onNotificationRemoved(self, typeID, entityID, groupID, countOnce):
         if groupID == self.__currentGroup:
             self.__setNotificationList()
         else:
-            self._model.decrementNotifiedMessagesCount(groupID, typeID, entityID)
+            self._model.decrementNotifiedMessagesCount(groupID, typeID, entityID, countOnce)
         self.__updateCounters()
 
     def __makeTabItemVO(self, tabId, label, tooltip):
@@ -142,5 +142,5 @@ class NotificationListView(NotificationsListMeta, BaseNotificationView):
            'tooltip': tooltip}
 
     def __getListVO(self, notificaton):
-        flashId = self._getFlashID(notificaton.getID())
+        flashId = self._getFlashID(notificaton.getCounterInfo())
         return notificaton.getListVO(flashId)

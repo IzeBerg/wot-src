@@ -30,7 +30,7 @@ BACKPORT_TOOLTIP_CONTENT_ID = R.views.common.tooltip_window.backport_tooltip_con
 if typing.TYPE_CHECKING:
     from typing import Dict, List, Callable
     from frameworks.wulf.view.array import Array
-    from gui.goodies.goodie_items import BoosterUICommon
+    from gui.goodies.goodie_items import BoosterUICommon, RecertificationForm
     from gui.server_events.bonuses import CustomizationsBonus, CrewSkinsBonus, TokensBonus, SimpleBonus, ItemsBonus, DossierBonus, VehicleBlueprintBonus, CrewBooksBonus, GoodiesBonus, TankmenBonus, VehiclesBonus, DogTagComponentBonus, BattlePassPointsBonus
     from gui.shared.gui_items.fitting_item import FittingItem
     from gui.shared.gui_items.Vehicle import Vehicle
@@ -154,6 +154,7 @@ class SimpleBonusUIPacker(BaseBonusUIPacker):
 class TokenBonusUIPacker(BaseBonusUIPacker):
     _eventsCache = dependency.descriptor(IEventsCache)
     _RANKED_TOKEN_SOURCE = 'rankedPoint'
+    _BATTLE_BONUS_X5_TOKEN_SOURCE = 'bonus_battle_task'
 
     @classmethod
     def _pack(cls, bonus):
@@ -249,8 +250,11 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
 
     @classmethod
     def __packBattleBonusX5Token(cls, model, bonus, *args):
+        name = cls._BATTLE_BONUS_X5_TOKEN_SOURCE
         model.setName(BATTLE_BONUS_X5_TOKEN)
         model.setValue(str(bonus.getCount()))
+        model.setIconSmall(backport.image(R.images.gui.maps.icons.quests.bonuses.dyn(AWARDS_SIZES.SMALL).dyn(name)()))
+        model.setIconBig(backport.image(R.images.gui.maps.icons.quests.bonuses.dyn(AWARDS_SIZES.BIG).dyn(name)()))
         return model
 
     @classmethod
@@ -325,6 +329,11 @@ class GoodiesBonusUIPacker(BaseBonusUIPacker):
                 continue
             result.append(cls._packSingleDemountKitBonus(bonus, demountkit, count))
 
+        for form, count in sorted(bonus.getRecertificationForms().iteritems()):
+            if form is None or not count:
+                continue
+            result.append(cls._packRecertificationFormsBonus(bonus, form, count))
+
         return result
 
     @classmethod
@@ -334,6 +343,10 @@ class GoodiesBonusUIPacker(BaseBonusUIPacker):
     @classmethod
     def _packSingleDemountKitBonus(cls, bonus, demountkit, count):
         return cls._packIconBonusModel(bonus, demountkit.demountKitGuiType, count, demountkit.userName)
+
+    @classmethod
+    def _packRecertificationFormsBonus(cls, bonus, form, count):
+        return cls._packIconBonusModel(bonus, form.itemTypeName, count, form.userName)
 
     @classmethod
     def _packIconBonusModel(cls, bonus, icon, count, label):
@@ -355,6 +368,10 @@ class GoodiesBonusUIPacker(BaseBonusUIPacker):
             tooltipData.append(TooltipData(tooltip=None, isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.AWARD_DEMOUNT_KIT, specialArgs=[
              demountkit.intCD]))
 
+        for form in sorted(bonus.getRecertificationForms().iterkeys()):
+            tooltipData.append(TooltipData(tooltip=None, isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.EPIC_BATTLE_RECERTIFICATION_FORM_TOOLTIP, specialArgs=[
+             form.intCD]))
+
         return tooltipData
 
     @classmethod
@@ -364,6 +381,9 @@ class GoodiesBonusUIPacker(BaseBonusUIPacker):
             tooltipData.append(BACKPORT_TOOLTIP_CONTENT_ID)
 
         for _ in sorted(bonus.getDemountKits().iterkeys()):
+            tooltipData.append(BACKPORT_TOOLTIP_CONTENT_ID)
+
+        for _ in sorted(bonus.getRecertificationForms().iterkeys()):
             tooltipData.append(BACKPORT_TOOLTIP_CONTENT_ID)
 
         return tooltipData

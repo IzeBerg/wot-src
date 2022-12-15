@@ -912,6 +912,13 @@ def _migrateTo99(_, data, __):
     data[SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_2] = AccountSettings.getFilterDefault(FUN_RANDOM_CAROUSEL_FILTER_2)
 
 
+def _migrateTo100(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
+    from account_helpers.settings_core.ServerSettingsManager import BATTLE_MATTERS_KEYS
+    data[SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS] = {BATTLE_MATTERS_KEYS.QUESTS_SHOWN: core.serverSettings.getBattleMattersQuestWasShowed(), 
+       BATTLE_MATTERS_KEYS.QUEST_PROGRESS: 0}
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -1108,7 +1115,9 @@ _versions = (
  (
   98, _migrateTo98, False, False),
  (
-  99, _migrateTo99, False, False))
+  99, _migrateTo99, False, False),
+ (
+  100, _migrateTo100, False, False))
 
 @adisp_async
 @adisp_process

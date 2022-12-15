@@ -275,22 +275,6 @@ class Stats(object):
         self.__account._doCmdIntStr(AccountCommands.CMD_SET_DOSSIER_FIELD, value, path, proxy)
         return
 
-    def unlockLinkedSetMission(self, token, tokenCount=1, callback=None):
-        if callback is not None:
-            proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID)
-        else:
-            proxy = None
-        self.__account._doCmdIntStr(AccountCommands.CMD_UNLOCK_LINKED_SET_MISSION, tokenCount, token, proxy)
-        return
-
-    def lockLinkedSetMission(self, token, callback=None):
-        if callback is not None:
-            proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID)
-        else:
-            proxy = None
-        self.__account._doCmdStr(AccountCommands.CMD_LOCK_LINKED_SET_MISSION, token, proxy)
-        return
-
     def unlockAll(self, callback=None):
         if self.__ignore:
             if callback is not None:

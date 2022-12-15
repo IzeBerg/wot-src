@@ -779,6 +779,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_EVENTCOIN:String = "#messenger:serviceChannelMessages/currencyUpdate/received/eventCoin";
       
+      public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_EQUIPCOIN:String = "#messenger:serviceChannelMessages/currencyUpdate/received/equipCoin";
+      
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_BPCOIN:String = "#messenger:serviceChannelMessages/currencyUpdate/received/bpcoin";
       
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_FREEXP:String = "#messenger:serviceChannelMessages/currencyUpdate/received/freeXP";
@@ -790,6 +792,8 @@ package
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_CRYSTAL:String = "#messenger:serviceChannelMessages/currencyUpdate/debited/crystal";
       
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_EVENTCOIN:String = "#messenger:serviceChannelMessages/currencyUpdate/debited/eventCoin";
+      
+      public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_EQUIPCOIN:String = "#messenger:serviceChannelMessages/currencyUpdate/debited/equipCoin";
       
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_BPCOIN:String = "#messenger:serviceChannelMessages/currencyUpdate/debited/bpcoin";
       
@@ -2124,12 +2128,6 @@ package
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_PREBATTLESWITCHTOGGLED_ENABLED:String = "#messenger:serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/enabled";
       
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_PREBATTLESWITCHTOGGLED_DISABLED:String = "#messenger:serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/disabled";
-      
-      public static const SERVICECHANNELMESSAGES_PAYERSENIORITY_COINS_HEADER:String = "#messenger:serviceChannelMessages/payerSeniority/coins/header";
-      
-      public static const SERVICECHANNELMESSAGES_PAYERSENIORITY_COINS_BODY:String = "#messenger:serviceChannelMessages/payerSeniority/coins/body";
-      
-      public static const SERVICECHANNELMESSAGES_PAYERSENIORITY_COINS_BUTTON:String = "#messenger:serviceChannelMessages/payerSeniority/coins/button";
       
       public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_STARTED:String = "#messenger:serviceChannelMessages/battleMatters/started";
       

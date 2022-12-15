@@ -98,6 +98,9 @@ class ItemsPrices(object):
     def __len__(self):
         return len(self._itemsPriceInfo)
 
+    def __eq__(self, obj):
+        return isinstance(obj, ItemsPrices) and obj._itemsPriceInfo == self._itemsPriceInfo
+
     def get(self, key, defaultValue=None):
         if key in self._itemsPriceInfo:
             return self.__getitem__(key)
@@ -109,6 +112,9 @@ class ItemsPrices(object):
     def update(self, other):
         for d, p in other.iteritems():
             self.__setitem__(d, p)
+
+    def copy(self):
+        return ItemsPrices(self._itemsPriceInfo)
 
     def getSpecialItemPrices(self, currencyCode):
         return {compDescr:prices for compDescr, prices in self._itemsPriceInfo.iteritems() if currencyCode in prices}
@@ -141,6 +147,20 @@ class ItemsPrices(object):
         for k, v in self._itemsPriceInfo.iteritems():
             if k in otherStorage and otherStorage[k] != v:
                 result[k] = v
+
+        return ItemsPrices(result)
+
+    def override(self, other, itemToPriceGroup=None):
+        myStorage = self._itemsPriceInfo
+        otherStorage = other._itemsPriceInfo if other else {}
+        result = {}
+        for compDescr, priceInfo in myStorage.iteritems():
+            if compDescr in otherStorage:
+                result[compDescr] = otherStorage[compDescr]
+            elif compDescr in itemToPriceGroup and itemToPriceGroup[compDescr] in otherStorage:
+                result[compDescr] = otherStorage[itemToPriceGroup[compDescr]]
+            else:
+                result[compDescr] = priceInfo
 
         return ItemsPrices(result)
 

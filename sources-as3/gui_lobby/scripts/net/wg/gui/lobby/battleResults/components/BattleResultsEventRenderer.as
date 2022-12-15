@@ -38,6 +38,8 @@ package net.wg.gui.lobby.battleResults.components
       private static const PROGRESS_LIST_BOTTOM_PADDING:int = -10;
       
       private static const PROGRESS_LIST_TOB_PADDING:int = 7;
+      
+      private static const BATTLE_MATTERS_QUEST_ID:String = "battle_matters";
        
       
       public var taskTF:TextField;
@@ -139,6 +141,7 @@ package net.wg.gui.lobby.battleResults.components
                visible = true;
                this.checkStatus();
                this.checkCounter();
+               this.configureTitle();
                _loc1_ = this.checkLabels() + BOTTOM_PADDING;
                _loc1_ += this.checkAlertMsg(_loc1_);
                _loc1_ += this.checkProgressList(_loc1_);
@@ -177,6 +180,18 @@ package net.wg.gui.lobby.battleResults.components
             this._questInfo = this._data.questInfo;
          }
          invalidateData();
+      }
+      
+      private function configureTitle() : void
+      {
+         if(this._questInfo.questID.indexOf(BATTLE_MATTERS_QUEST_ID) >= 0)
+         {
+            this.taskTF.textColor = QuestsStates.CLR_TASK_TF_NORMAL;
+         }
+         else
+         {
+            this.taskTF.textColor = !!StringUtils.isNotEmpty(this._status) ? uint(QuestsStates.CLR_TASK_TF_WITH_STATUS) : uint(QuestsStates.CLR_TASK_TF_NORMAL);
+         }
       }
       
       private function hideTooltip() : void
@@ -237,7 +252,6 @@ package net.wg.gui.lobby.battleResults.components
             _loc1_ = StringUtils.isNotEmpty(this.taskTF.text);
             this.linkBtn.x = (!!_loc1_ ? this.taskTF.x + this.taskTF.getLineMetrics(this.taskTF.numLines - 1).width + LINKBTN_PADDING : this.taskTF.x) | 0;
             this.linkBtn.y = (!!_loc1_ ? this.taskTF.textHeight + this.taskTF.y - this.linkBtn.height : this.taskTF.y) + LINK_BTN_Y_OFFSET | 0;
-            this.taskTF.mouseEnabled = false;
          }
          return this.linkBtn.y + this.linkBtn.height + LABELS_OFFSET;
       }
@@ -266,7 +280,6 @@ package net.wg.gui.lobby.battleResults.components
             this._status = this._questInfo.status;
             this.statusMC.setStatus(this._status);
             this.statusMC.statusTooltip = this._questInfo.statusTooltip;
-            this.taskTF.textColor = !!StringUtils.isNotEmpty(this._status) ? uint(QuestsStates.CLR_TASK_TF_WITH_STATUS) : uint(QuestsStates.CLR_TASK_TF_NORMAL);
          }
       }
       

@@ -97,6 +97,8 @@ package
       
       public static const BROWSER_W2C_CALL:String = "#waiting:browser/w2c_call";
       
+      public static const CLAIMSENIORITYAWARDS:String = "#waiting:claimSeniorityAwards";
+      
       public static const TECHMAINTENANCEEQUIPMENTS:String = "#waiting:techMaintenanceEquipments";
       
       public static const TECHMAINTENANCE:String = "#waiting:techMaintenance";

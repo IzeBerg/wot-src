@@ -3,6 +3,7 @@ import typing, BigWorld
 from CurrentVehicle import g_currentVehicle
 from adisp import adisp_process
 from uilogging.personal_reserves.loggers import PersonalReservesActivationScreenFlowLogger
+from uilogging.seniority_awards.loggers import SeniorityAwardsLogger
 from wg_async import wg_async, wg_await
 from debug_utils import LOG_DEBUG, LOG_ERROR
 from gui import DialogsInterface, SystemMessages, makeHtmlString
@@ -37,13 +38,15 @@ from notification.tutorial_helper import TUTORIAL_GLOBAL_VAR, TutorialGlobalStor
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IBattleRoyaleController, IBrowserController, IMapboxController, IRankedBattlesController, IBattlePassController
+from skeletons.gui.game_control import IBattleRoyaleController, IBrowserController, IMapboxController, IRankedBattlesController, IBattlePassController, ISeniorityAwardsController
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.web import IWebController
 from soft_exception import SoftException
 from web.web_client_api import webApiCollection
 from web.web_client_api.sound import HangarSoundWebApi
+from uilogging.epic_battle.constants import EpicBattleLogButtons, EpicBattleLogActions, EpicBattleLogKeys
+from uilogging.epic_battle.loggers import EpicBattleLogger
 if typing.TYPE_CHECKING:
     from typing import Tuple
     from notification.NotificationsModel import NotificationsModel
@@ -1001,20 +1004,6 @@ class _OpenDelayedReward(NavigationDisabledActionHandler):
         showDelayedReward()
 
 
-class _OpenPsaShop(NavigationDisabledActionHandler):
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.PSACOIN_REMINDER
-
-    @classmethod
-    def getActions(cls):
-        return ('openPsaShop', )
-
-    def doAction(self, model, entityID, action):
-        showShop(getPlayerSeniorityAwardsUrl())
-
-
 class _OpenBattlePassPointsShop(NavigationDisabledActionHandler):
 
     @classmethod
@@ -1037,6 +1026,11 @@ class _OpenChapterChoiceView(_OpenBattlePassProgressionView):
 
 
 class _OpenEpicBattlesAfterBattleWindow(NavigationDisabledActionHandler):
+    __slots__ = ('__uiEpicBattleLogger', )
+
+    def __init__(self):
+        super(_OpenEpicBattlesAfterBattleWindow, self).__init__()
+        self.__uiEpicBattleLogger = EpicBattleLogger()
 
     @classmethod
     def getNotType(cls):
@@ -1050,6 +1044,7 @@ class _OpenEpicBattlesAfterBattleWindow(NavigationDisabledActionHandler):
         notification = model.getNotification(self.getNotType(), entityID)
         levelUpInfo = notification.getSavedData()
         showEpicBattlesAfterBattleWindow(levelUpInfo)
+        self.__uiEpicBattleLogger.log(EpicBattleLogActions.CLICK.value, EpicBattleLogButtons.LEVELUP_NOTIFICATION.value, EpicBattleLogKeys.HANGAR.value)
 
 
 class _OpenResourceWellProgressionStartWindow(NavigationDisabledActionHandler):
@@ -1169,6 +1164,36 @@ class _OpenPersonalReservesHandler(NavigationDisabledActionHandler):
         shared_events.showPersonalReservesPage()
 
 
+class _SeniorityAwardsTokensHandler(NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.SENIORITY_AWARDS_TOKENS
+
+    @classmethod
+    def getActions(cls):
+        return ('seniorityAwardsTokens', )
+
+    def doAction(self, model, entityID, action):
+        SeniorityAwardsLogger().handleNotificationAction()
+        showShop(getPlayerSeniorityAwardsUrl())
+
+
+class _OpenSeniorityAwards(NavigationDisabledActionHandler):
+    __seniorityAwardCtrl = dependency.descriptor(ISeniorityAwardsController)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.SENIORITY_AWARDS_QUEST
+
+    @classmethod
+    def getActions(cls):
+        return ('seniorityAwardsQuest', )
+
+    def doAction(self, model, entityID, action):
+        self.__seniorityAwardCtrl.claimReward()
+
+
 _AVAILABLE_HANDLERS = (
  ShowBattleResultsHandler,
  ShowTutorialBattleHistoryHandler,
@@ -1214,7 +1239,6 @@ _AVAILABLE_HANDLERS = (
  _OpenMapboxProgression,
  _OpenMapboxSurvey,
  _OpenDelayedReward,
- _OpenPsaShop,
  _OpenBattlePassPointsShop,
  _OpenChapterChoiceView,
  _OpenEpicBattlesAfterBattleWindow,
@@ -1225,7 +1249,9 @@ _AVAILABLE_HANDLERS = (
  _OpenIntegratedAuctionStart,
  _OpenIntegratedAuctionFinish,
  _OpenPersonalReservesConversion,
- _OpenPersonalReservesHandler)
+ _OpenPersonalReservesHandler,
+ _SeniorityAwardsTokensHandler,
+ _OpenSeniorityAwards)
 registerNotificationsActionsHandlers(_AVAILABLE_HANDLERS)
 
 class NotificationsActionsHandlers(object):

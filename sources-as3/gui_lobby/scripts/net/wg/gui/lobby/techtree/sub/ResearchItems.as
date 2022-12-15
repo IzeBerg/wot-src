@@ -405,49 +405,49 @@ package net.wg.gui.lobby.techtree.sub
          }
       }
       
-      public function setNodesStates(param1:Number, param2:Array, param3:String = null) : void
+      public function setNodesStates(param1:Number, param2:Array, param3:String = null, param4:Boolean = false) : void
       {
-         var _loc5_:Array = null;
-         var _loc6_:Boolean = false;
-         var _loc7_:IRenderer = null;
-         var _loc8_:int = 0;
+         var _loc6_:Array = null;
+         var _loc7_:Boolean = false;
+         var _loc8_:IRenderer = null;
          var _loc9_:int = 0;
-         var _loc4_:uint = param2.length;
-         var _loc10_:uint = 0;
-         while(_loc10_ < _loc4_)
+         var _loc10_:int = 0;
+         var _loc5_:uint = param2.length;
+         var _loc11_:uint = 0;
+         while(_loc11_ < _loc5_)
          {
-            _loc5_ = param2[_loc10_];
-            _loc8_ = _loc5_[0];
-            _loc7_ = null;
-            _loc6_ = false;
-            _loc9_ = _dataProvider.getIndexByID(_loc8_);
-            if(_loc9_ > -1 && _dataProvider.length > _loc9_)
+            _loc6_ = param2[_loc11_];
+            _loc9_ = _loc6_[0];
+            _loc8_ = null;
+            _loc7_ = false;
+            _loc10_ = _dataProvider.getIndexByID(_loc9_);
+            if(_loc10_ > -1 && _dataProvider.length > _loc10_)
             {
                if(param3 != null)
                {
-                  _dataProvider.setItemField(param3,_loc9_,_loc5_[2]);
+                  _dataProvider.setItemField(param3,_loc10_,_loc6_[2]);
                }
-               _loc6_ = _dataProvider.setState(_loc9_,param1,_loc5_[1]);
-               _loc7_ = this.getNodeByID(_loc8_);
+               _loc7_ = _dataProvider.setState(_loc10_,param1,_loc6_[1]);
+               _loc8_ = this.getNodeByID(_loc9_);
             }
             else
             {
-               _loc9_ = _dataProvider.getTopLevelIndexByID(_loc8_);
-               if(_loc9_ > -1 && _dataProvider.topLength > _loc9_)
+               _loc10_ = _dataProvider.getTopLevelIndexByID(_loc9_);
+               if(_loc10_ > -1 && _dataProvider.topLength > _loc10_)
                {
                   if(param3 != null)
                   {
-                     _dataProvider.setTopLevelField(param3,_loc9_,_loc5_[2]);
+                     _dataProvider.setTopLevelField(param3,_loc10_,_loc6_[2]);
                   }
-                  _loc6_ = _dataProvider.setTopLevelState(_loc9_,param1,_loc5_[1]);
-                  _loc7_ = this.getNodeByID(_loc8_);
+                  _loc7_ = _dataProvider.setTopLevelState(_loc10_,param1,_loc6_[1]);
+                  _loc8_ = this.getNodeByID(_loc9_);
                }
             }
-            if(_loc6_ && _loc7_ != null)
+            if((_loc7_ || param4) && _loc8_ != null)
             {
-               _loc7_.invalidateNodeState();
+               _loc8_.invalidateNodeState();
             }
-            _loc10_++;
+            _loc11_++;
          }
       }
       

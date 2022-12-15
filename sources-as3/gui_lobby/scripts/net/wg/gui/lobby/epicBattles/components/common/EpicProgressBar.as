@@ -2,6 +2,7 @@ package net.wg.gui.lobby.epicBattles.components.common
 {
    import flash.display.MovieClip;
    import flash.display.Sprite;
+   import net.wg.data.constants.generated.PROGRESSCOLOR_CONSTANTS;
    import net.wg.gui.components.advanced.vo.ProgressBarAnimVO;
    import net.wg.gui.components.controls.BitmapFill;
    import net.wg.gui.components.controls.IProgressBar;
@@ -16,9 +17,7 @@ package net.wg.gui.lobby.epicBattles.components.common
       
       private static const FILL_GREEN_SRC:String = "EpicProgressGreenBmp";
       
-      private static const GREEN_MARKER_FRAME_LABEL:String = "green";
-      
-      private static const ORANGE_MARKER_FRAME_LABEL:String = "orange";
+      private static const FILL_GRAY_SRC:String = "EpicProgressGrayBmp";
        
       
       public var marker:MovieClip = null;
@@ -98,7 +97,7 @@ package net.wg.gui.lobby.epicBattles.components.common
          this.minimum = param1.minValue;
          this.maximum = param1.maxValue;
          value = param1.value;
-         this.isGreen = param1.isGreen;
+         this.progressColor = param1.progressColor;
       }
       
       override public function set minimum(param1:Number) : void
@@ -139,17 +138,19 @@ package net.wg.gui.lobby.epicBattles.components.common
          this.bg.heightFill = param1;
       }
       
-      public function set isGreen(param1:Boolean) : void
+      public function set progressColor(param1:String) : void
       {
-         if(param1)
+         this.marker.gotoAndStop(param1);
+         switch(param1)
          {
-            this.marker.gotoAndStop(GREEN_MARKER_FRAME_LABEL);
-            this.commonBar.source = FILL_GREEN_SRC;
-         }
-         else
-         {
-            this.marker.gotoAndStop(ORANGE_MARKER_FRAME_LABEL);
-            this.commonBar.source = FILL_SRC;
+            case PROGRESSCOLOR_CONSTANTS.GREEN:
+               this.commonBar.source = FILL_GREEN_SRC;
+               break;
+            case PROGRESSCOLOR_CONSTANTS.GRAY:
+               this.commonBar.source = FILL_GRAY_SRC;
+               break;
+            default:
+               this.commonBar.source = FILL_SRC;
          }
       }
    }

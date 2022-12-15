@@ -75,7 +75,9 @@ class EntryPoint(ViewImpl):
          (
           g_playerEvents.onClientUpdated, self.__onClientUpdated),
          (
-          self.__resourceWell.onSettingsChanged, self.__onSettingsChanged))
+          self.__resourceWell.onSettingsChanged, self.__onSettingsChanged),
+         (
+          self.__resourceWell.onEventStateChanged, self.__onEventStateChanged))
 
     def __updateModel(self, *_):
         with self.viewModel.transaction() as (model):
@@ -95,6 +97,8 @@ class EntryPoint(ViewImpl):
             return EventState.PAUSED
         if self.__resourceWell.isCompleted():
             return EventState.COMPLETED
+        if self.__resourceWell.isNotStarted():
+            return EventState.NOTSTARTED
         return EventState.ACTIVE
 
     def __getProgress(self):
@@ -115,5 +119,9 @@ class EntryPoint(ViewImpl):
         if getForbiddenAccountToken(resourceWell=self.__resourceWell) in tokens:
             self.__updateModel()
 
+    @nextTick
     def __onSettingsChanged(self):
+        self.__updateModel()
+
+    def __onEventStateChanged(self):
         self.__updateModel()

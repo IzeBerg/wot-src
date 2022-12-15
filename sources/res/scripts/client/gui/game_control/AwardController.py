@@ -45,7 +45,7 @@ from gui.prb_control.settings import BATTLES_TO_SELECT_RANDOM_MIN_LIMIT
 from gui.ranked_battles import ranked_helpers
 from gui.ranked_battles.constants import YEAR_AWARD_SELECTABLE_OPT_DEVICE_PREFIX
 from gui.server_events import awards, events_dispatcher as quests_events, recruit_helper
-from gui.server_events.bonuses import getServiceBonuses
+from gui.server_events.bonuses import getServiceBonuses, getMergedBonusesFromDicts
 from gui.server_events.events_dispatcher import showCurrencyReserveAwardWindow, showLootboxesAward, showMissionsBattlePass, showPiggyBankRewardWindow, showSubscriptionAwardWindow
 from gui.server_events.events_helpers import isACEmailConfirmationQuest, isDailyQuest
 from gui.server_events.finders import CHAMPION_BADGES_BY_BRANCH, CHAMPION_BADGE_AT_OPERATION_ID, PM_FINAL_TOKEN_QUEST_IDS_BY_OPERATION_ID, getBranchByOperationId
@@ -67,7 +67,7 @@ from messenger.proto.events import g_messengerEvents
 from nations import NAMES
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.app_loader import IAppLoader
-from skeletons.gui.game_control import IAwardController, IBattlePassController, IBootcampController, IMapboxController, IRankedBattlesController
+from skeletons.gui.game_control import IAwardController, IBattlePassController, IBootcampController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import IGuiLoader, INotificationWindowController
 from skeletons.gui.battle_matters import IBattleMattersController
@@ -89,7 +89,6 @@ class QUEST_AWARD_POSTFIX(object):
     CREW_BOOKS = 'awardcrewbook'
 
 
-SENIORITY_AWARDS_TOKEN_QUEST = 'SeniorityAwardsQuest'
 _POPUP_RECORDS = 'popUpRecords'
 
 class _NonOverlappingViewsLifecycleHandler(IViewLifecycleHandler):
@@ -389,6 +388,7 @@ class PersonalMissionWindowAfterBattleHandler(ServiceChannelHandler):
 
 
 class TokenQuestsWindowHandler(ServiceChannelHandler):
+    seniorityAwardCtrl = dependency.descriptor(ISeniorityAwardsController)
 
     def __init__(self, awardCtrl):
         super(TokenQuestsWindowHandler, self).__init__(SYS_MESSAGE_TYPE.tokenQuests.index(), awardCtrl)
@@ -397,6 +397,7 @@ class TokenQuestsWindowHandler(ServiceChannelHandler):
         data = ctx[1].data
         completedQuests = {}
         allQuests = self.eventsCache.getAllQuests(includePersonalMissions=True)
+        seniorityQuestPrefix = self.seniorityAwardCtrl.seniorityQuestPrefix
         for qID in data.get('completedQuestIDs', set()):
             if qID in allQuests:
                 if self.isShowCongrats(allQuests[qID]):
@@ -406,7 +407,7 @@ class TokenQuestsWindowHandler(ServiceChannelHandler):
                     currentQuest = allQuests[qID]
                     blueprintDict = data.get('detailedRewards', {}).get(qID, {}).get('blueprints', {})
                     currentQuest = _getBlueprintActualBonus(blueprintDict, currentQuest)
-                    if SENIORITY_AWARDS_TOKEN_QUEST not in qID:
+                    if not seniorityQuestPrefix or seniorityQuestPrefix not in qID:
                         completedQuests[qID] = (
                          currentQuest, windowCtx)
 
@@ -426,18 +427,20 @@ class TokenQuestsWindowHandler(ServiceChannelHandler):
 class SeniorityAwardsWindowHandler(ServiceChannelHandler):
     itemsCache = dependency.descriptor(IItemsCache)
     eventsCache = dependency.descriptor(IEventsCache)
+    seniorityAwardCtrl = dependency.descriptor(ISeniorityAwardsController)
 
     def __init__(self, awardCtrl):
         super(SeniorityAwardsWindowHandler, self).__init__(SYS_MESSAGE_TYPE.tokenQuests.index(), awardCtrl)
-        self._qID = None
-        self.__mergedRewards = {}
-        self.__questData = None
+        self.__completedQuests = None
+        self.__mergedRewards = None
+        self.__questsData = None
         self.__callback = None
         return
 
     def fini(self):
-        self._qID = None
+        self.__completedQuests = None
         self.eventsCache.onSyncCompleted -= self.__onEventCacheSyncCompleted
+        self.seniorityAwardCtrl.onUpdated -= self.__onSAConfigReady
         super(SeniorityAwardsWindowHandler, self).fini()
         return
 
@@ -449,36 +452,47 @@ class SeniorityAwardsWindowHandler(ServiceChannelHandler):
             if not super(SeniorityAwardsWindowHandler, self)._needToShowAward(ctx):
                 return False
             data = message.data
-            for qID in data.get('completedQuestIDs', set()):
-                if SENIORITY_AWARDS_TOKEN_QUEST in qID:
-                    self._qID = qID
-                    self.__questData = data
-                    return self.__update()
-
+            seniorityQuestPrefix = self.seniorityAwardCtrl.seniorityQuestPrefix
+            if not seniorityQuestPrefix:
+                self.seniorityAwardCtrl.onUpdated += self.__onSAConfigReady
+                return False
+            completedQuests = tuple(qID for qID in data.get('completedQuestIDs', set()) if qID.startswith(seniorityQuestPrefix))
+            if completedQuests:
+                self.__completedQuests = completedQuests
+                self.__questsData = data
+                return self.__update()
             return False
 
     def _showAward(self, ctx=None):
         if self.__mergedRewards:
-            showSeniorityRewardAwardWindow(self._qID, self.__mergedRewards)
-            self.__mergedRewards = {}
-            self.__questData = None
+            self.seniorityAwardCtrl.markRewardReceived()
+            showSeniorityRewardAwardWindow(self.__completedQuests, self.__mergedRewards)
+            self.__mergedRewards = None
+            self.__questsData = None
+            self.__completedQuests = None
         return
 
     def __update(self):
-        if self.__questData:
+        if self.__questsData:
             allQuests = self.eventsCache.getAllQuests()
-            if self._qID in allQuests and self.isShowCongrats(allQuests[self._qID]):
-                self.__mergedRewards.update(self.__questData.get('detailedRewards', {}).get(self._qID, {}))
-            else:
-                self.eventsCache.onSyncCompleted += self.__onEventCacheSyncCompleted
-                return False
-            return True
+            detailedRewards = self.__questsData.get('detailedRewards', {})
+            rewards = list(detailedRewards.get(qID, {}) for qID in self.__completedQuests if self.isShowCongrats(allQuests.get(qID)))
+            if rewards:
+                self.__mergedRewards = getMergedBonusesFromDicts(rewards)
+                return True
+            self.eventsCache.onSyncCompleted += self.__onEventCacheSyncCompleted
         return False
+
+    def __onSAConfigReady(self):
+        self.seniorityAwardCtrl.onUpdated -= self.__onSAConfigReady
+        if self.seniorityAwardCtrl.seniorityQuestPrefix:
+            self.handle(None)
+        return
 
     def __onEventCacheSyncCompleted(self, *_):
         self.eventsCache.onSyncCompleted -= self.__onEventCacheSyncCompleted
         allQuests = self.eventsCache.getAllQuests()
-        if self._qID in allQuests:
+        if self.__completedQuests and all(qID in allQuests for qID in self.__completedQuests):
             self.handle(None)
         return
 

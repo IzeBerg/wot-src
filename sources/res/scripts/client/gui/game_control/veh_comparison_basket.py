@@ -295,12 +295,12 @@ class _VehCompareData(object):
             return cType
         if self.__postProgressionState != self.__invPostProgressionState:
             return cType
-        if self.__strCD == self.__invVehStrCD:
-            if self.__equipment == self.__invEquipment and self.__crewLvl == self.__inventoryCrewLvl and self.__crewSkills == self.__inventoryCrewSkills:
-                cType = CONFIGURATION_TYPES.CURRENT
-        elif self.__strCD == self.__stockVehStrCD and self.getEquipment() == self.getStockEquipment() and self.__crewLvl == self.getStockCrewLvl():
+        if self.__strCD == self.__stockVehStrCD and self.getEquipment() == self.getStockEquipment() and self.__crewLvl == self.getStockCrewLvl():
             if self.__crewSkills == self.getStockCrewSkills():
                 cType = CONFIGURATION_TYPES.BASIC
+        if self.__strCD == self.__invVehStrCD and self.__equipment == self.__invEquipment and self.__crewLvl == self.__inventoryCrewLvl:
+            if self.__crewSkills == self.__inventoryCrewSkills:
+                cType = CONFIGURATION_TYPES.CURRENT
         return cType
 
     def getVehicleStrCD(self):

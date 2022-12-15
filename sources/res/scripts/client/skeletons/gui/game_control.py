@@ -11,7 +11,6 @@ if typing.TYPE_CHECKING:
     from fun_random.helpers.server_settings import FunRandomConfig, FunMetaProgressionConfig
     from fun_random.gui.shared.events import FunEventScope, FunEventType
     from gui.Scaleform.daapi.view.lobby.comp7.shared import Comp7AlertData
-    from gui.Scaleform.daapi.view.lobby.epicBattle.epic_helpers import EpicBattleScreens
     from gui.battle_pass.state_machine.delegator import BattlePassRewardLogic
     from gui.game_control.comp7_controller import _LeaderboardDataProvider
     from gui.game_control.epic_meta_game_ctrl import EpicMetaGameSkill
@@ -665,7 +664,7 @@ class IBoostersController(IGameController):
     onReserveTimerTick = None
     onGameModeStatusChange = None
 
-    def isGameModeSupported(self):
+    def isGameModeSupported(self, category):
         raise NotImplementedError
 
     def selectRandomBattle(self):
@@ -1204,6 +1203,9 @@ class IEpicBattleMetaGameController(IGameController, ISeasonProvider):
     def isCurrentCycleActive(self):
         raise NotImplementedError
 
+    def isBattlePassDataEnabled(self):
+        raise NotImplementedError
+
     def isUnlockVehiclesInBattleEnabled(self):
         raise NotImplementedError
 
@@ -1249,6 +1251,9 @@ class IEpicBattleMetaGameController(IGameController, ISeasonProvider):
     def getAllSkillsInformation(self):
         raise NotImplementedError
 
+    def getOrderedSkillTree(self):
+        raise NotImplementedError
+
     def getPlayerLevelInfo(self):
         raise NotImplementedError
 
@@ -1256,6 +1261,9 @@ class IEpicBattleMetaGameController(IGameController, ISeasonProvider):
         raise NotImplementedError
 
     def getSeasonData(self):
+        raise NotImplementedError
+
+    def getCurrentSeasonID(self):
         raise NotImplementedError
 
     def getSkillPoints(self):
@@ -1291,10 +1299,22 @@ class IEpicBattleMetaGameController(IGameController, ISeasonProvider):
     def getAllLevelRewards(self):
         raise NotImplementedError
 
+    def getLevelRewards(self, level):
+        raise NotImplementedError
+
+    def getMergedLevelRewards(self):
+        raise NotImplementedError
+
     def isNeedToTakeReward(self):
         raise NotImplementedError
 
     def getNotChosenRewardCount(self):
+        raise NotImplementedError
+
+    def showProgressionDuringSomeStates(self, showDefaultTab=False):
+        raise NotImplementedError
+
+    def selectEpicBattle(self):
         raise NotImplementedError
 
     def hasAnyOfferGiftToken(self):
@@ -1318,7 +1338,13 @@ class IEpicBattleMetaGameController(IGameController, ISeasonProvider):
     def getSeasonTimeRange(self):
         raise NotImplementedError
 
+    def getActiveSeason(self):
+        raise NotImplementedError
+
     def hasSuitableVehicles(self):
+        raise NotImplementedError
+
+    def hasVehiclesToRent(self):
         raise NotImplementedError
 
     def getStoredEpicDiscount(self):
@@ -1327,10 +1353,7 @@ class IEpicBattleMetaGameController(IGameController, ISeasonProvider):
     def getStats(self):
         raise NotImplementedError
 
-    def openURL(self):
-        raise NotImplementedError
-
-    def showCustomScreen(self, screen):
+    def showWelcomeScreenIfNeed(self, showFullScreen=False, showContainerOnClose=False):
         raise NotImplementedError
 
     def storeCycle(self):
@@ -2195,15 +2218,33 @@ class ISeniorityAwardsController(IGameController):
         raise NotImplementedError
 
     @property
-    def endTimestamp(self):
+    def timeLeft(self):
         raise NotImplementedError
 
     @property
-    def showNotificationLastCallTimestamp(self):
+    def clockOnNotification(self):
         raise NotImplementedError
 
     @property
-    def needShowNotification(self):
+    def isRewardReceived(self):
+        raise NotImplementedError
+
+    @property
+    def seniorityQuestPrefix(self):
+        raise NotImplementedError
+
+    @property
+    def isNeedToShowRewardNotification(self):
+        raise NotImplementedError
+
+    @property
+    def pendingReminderTimestamp(self):
+        raise NotImplementedError
+
+    def claimReward(self):
+        raise NotImplementedError
+
+    def markRewardReceived(self):
         raise NotImplementedError
 
     def getSACoin(self):
@@ -2214,6 +2255,7 @@ class IResourceWellController(IGameController):
     onEventUpdated = None
     onSettingsChanged = None
     onNumberRequesterUpdated = None
+    onEventStateChanged = None
 
     def isEnabled(self):
         raise NotImplementedError
@@ -2230,6 +2272,9 @@ class IResourceWellController(IGameController):
     def isPaused(self):
         raise NotImplementedError
 
+    def isNotStarted(self):
+        raise NotImplementedError
+
     def getSeason(self):
         raise NotImplementedError
 
@@ -2237,6 +2282,9 @@ class IResourceWellController(IGameController):
         raise NotImplementedError
 
     def getFinishTime(self):
+        raise NotImplementedError
+
+    def getStartTime(self):
         raise NotImplementedError
 
     def getCurrentPoints(self):

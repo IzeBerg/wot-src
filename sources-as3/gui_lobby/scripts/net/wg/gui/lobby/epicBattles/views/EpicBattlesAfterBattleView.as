@@ -400,12 +400,12 @@ package net.wg.gui.lobby.epicBattles.views
       
       private function onNextButtonClickHandler(param1:ButtonEvent) : void
       {
-         onCloseBtnClickS();
+         onNextBtnClickS();
       }
       
       private function onRewardsButtonClickHandler(param1:ButtonEvent) : void
       {
-         onRewardsBtnClick();
+         onRewardsBtnClickS();
       }
       
       private function onCloseButtonClickHandler(param1:ButtonEvent) : void

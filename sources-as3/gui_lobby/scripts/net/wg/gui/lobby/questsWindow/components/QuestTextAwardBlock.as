@@ -22,6 +22,10 @@ package net.wg.gui.lobby.questsWindow.components
       
       private var _isTooltipComplex:Boolean = false;
       
+      private var _linesLimit:int = -1;
+      
+      private var _showTooltip:Boolean = true;
+      
       public function QuestTextAwardBlock()
       {
          super();
@@ -29,6 +33,7 @@ package net.wg.gui.lobby.questsWindow.components
       
       override public function setData(param1:Object) : void
       {
+         var _loc10_:int = 0;
          var _loc2_:TextBlockVO = new TextBlockVO(param1);
          var _loc3_:Vector.<String> = _loc2_.items;
          var _loc4_:String = _loc2_.separator;
@@ -37,17 +42,21 @@ package net.wg.gui.lobby.questsWindow.components
          var _loc7_:int = _loc4_.length;
          var _loc8_:String = _loc2_.ellipsis;
          var _loc9_:int = _loc3_.length;
+         this._linesLimit = _loc2_.linesLimit;
          this.textTf.htmlText = _loc5_;
          if(!this.fixedMode || !this.lineLimit)
          {
             while(this.textTf.textHeight + TEXT_FIELD_PADDING > _loc6_)
             {
                this.textTf.htmlText = _loc5_.substr(0,this.getItemsStringLen(_loc3_,--_loc9_,_loc7_)) + _loc8_;
+               this._showTooltip = true;
             }
          }
          else
          {
+            _loc10_ = this.textTf.length;
             App.utils.commons.truncateHtmlTextMultiline(this.textTf,_loc5_,this.lineLimit,this.lineEnd);
+            this._showTooltip = _loc10_ != this.textTf.length;
          }
          if(_loc9_ == 0)
          {
@@ -57,7 +66,7 @@ package net.wg.gui.lobby.questsWindow.components
          {
             App.utils.commons.updateTextFieldSize(this.textTf,false,true);
             setSize(width,actualHeight);
-            if(this.textTf.htmlText != _loc5_)
+            if(this._showTooltip)
             {
                this.textTf.addEventListener(MouseEvent.ROLL_OVER,this.onTextTfRollOverHandler);
                this.textTf.addEventListener(MouseEvent.ROLL_OUT,this.onTextTfRollOutHandler);
@@ -102,7 +111,7 @@ package net.wg.gui.lobby.questsWindow.components
       
       protected function get lineLimit() : int
       {
-         return Values.DEFAULT_INT;
+         return this._linesLimit;
       }
       
       protected function get lineEnd() : String
@@ -112,13 +121,16 @@ package net.wg.gui.lobby.questsWindow.components
       
       private function onTextTfRollOverHandler(param1:MouseEvent) : void
       {
-         if(this._isTooltipComplex)
+         if(this._showTooltip)
          {
-            App.toolTipMgr.showComplex(this._tooltip);
-         }
-         else
-         {
-            App.toolTipMgr.show(this._tooltip,new TooltipProps(BaseTooltips.TYPE_INFO,0,0,0,-1,0,MAX_TOOLTIP_WIDTH));
+            if(this._isTooltipComplex)
+            {
+               App.toolTipMgr.showComplex(this._tooltip);
+            }
+            else
+            {
+               App.toolTipMgr.show(this._tooltip,new TooltipProps(BaseTooltips.TYPE_INFO,0,0,0,-1,0,MAX_TOOLTIP_WIDTH));
+            }
          }
       }
       

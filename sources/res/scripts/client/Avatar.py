@@ -1,4 +1,4 @@
-import cPickle, math, weakref, zlib
+import cPickle, logging, math, weakref, zlib
 from functools import partial
 import BigWorld, BWReplay, Keys, Math, ResMgr, WWISE, WoT, CGF, Account, AccountCommands, AreaDestructibles, AvatarInputHandler, AvatarPositionControl, BattleReplay, ClientArena, CommandMapping, Event, FlockManager, MusicControllerWWISE, ProjectileMover, SoundGroups, TriggersManager, Vehicle, VehicleGunRotator, VehicleObserverGunRotator, Weather, constants
 from AimSound import AimSound
@@ -27,7 +27,7 @@ from avatar_components.triggers_controller import TriggersController
 from avatar_components.vehicle_health_broadcast_listener_component import VehicleHealthBroadcastListenerComponent
 from avatar_components.vehicle_removal_controller import VehicleRemovalController
 from avatar_components.visual_script_controller import VisualScriptController
-from avatar_helpers import AvatarSyncData
+from avatar_helpers import AvatarSyncData, getBestShotResultSound
 from battle_results_shared import AVATAR_PRIVATE_STATS, listToDict
 from bootcamp.Bootcamp import g_bootcamp
 from constants import ARENA_PERIOD, AIMING_MODE, VEHICLE_SETTING, DEVELOPMENT_INFO, ARENA_GUI_TYPE
@@ -68,6 +68,7 @@ from vehicle_systems.stricted_loading import makeCallbackWeak
 from messenger import MessengerEntry
 from battle_modifiers_common import getModificationCache
 import VOIP
+_logger = logging.getLogger(__name__)
 
 class _CRUISE_CONTROL_MODE(object):
     NONE = 0
@@ -163,7 +164,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     followTeamID = property(lambda self: self.observableTeamID if self.observableTeamID else self.team)
 
     def __init__(self):
-        LOG_DEBUG('client Avatar.init')
+        _logger.info('client Avatar.init')
         ClientChat.__init__(self)
         for comp in AVATAR_COMPONENTS:
             comp.__init__(self)
@@ -234,6 +235,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         self.__isAimingEnded = False
         self.__vehiclesWaitedInfo = {}
         self.__isVehicleMoving = False
+        self.__deadOnLoading = False
         self.arena = None
         return
 
@@ -250,7 +252,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
 
     def onBecomePlayer(self):
         uniprof.enterToRegion('avatar.entering')
-        LOG_DEBUG('[INIT_STEPS] Avatar.onBecomePlayer')
+        _logger.info('[INIT_STEPS] Avatar.onBecomePlayer')
         self.__dynamicObjectsCache.load(self.arenaGuiType)
         BigWorld.cameraSpaceID(0)
         BigWorld.camera(BigWorld.CursorCamera())
@@ -365,7 +367,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     def onBecomeNonPlayer(self):
         uniprof.exitFromRegion('avatar.arena.battle')
         uniprof.enterToRegion('avatar.exiting')
-        LOG_DEBUG('[INIT_STEPS] Avatar.onBecomeNonPlayer')
+        _logger.info('[INIT_STEPS] Avatar.onBecomeNonPlayer')
         try:
             if self.gunRotator is not None:
                 self.gunRotator.destroy()
@@ -493,7 +495,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         return
 
     def onEnterWorld(self, prereqs):
-        LOG_DEBUG('[INIT_STEPS] Avatar.onEnterWorld')
+        _logger.info('[INIT_STEPS] Avatar.onEnterWorld')
         if self.__initProgress & _INIT_STEPS.ENTERED_WORLD > 0:
             return
         else:
@@ -517,12 +519,12 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             return
 
     def onLeaveWorld(self):
-        LOG_DEBUG('[INIT_STEPS] Avatar.onLeaveWorld')
+        _logger.info('[INIT_STEPS] Avatar.onLeaveWorld')
         self.__consistentMatrices.notifyLeaveWorld(self)
         self.__cancelWaitingForCharge()
 
     def onVehicleChanged(self):
-        LOG_DEBUG('Avatar vehicle has changed to %s' % self.vehicle)
+        _logger.info('Avatar vehicle has changed to %s', self.vehicle)
         AvatarObserver.onVehicleChanged(self)
         if self.vehicle is not None:
             self.__consistentMatrices.notifyVehicleChanged(self)
@@ -555,7 +557,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         return
 
     def onSpaceLoaded(self):
-        LOG_DEBUG('[INIT_STEPS] Avatar.onSpaceLoaded')
+        _logger.info('[INIT_STEPS] Avatar.onSpaceLoaded')
         self.__applyTimeAndWeatherSettings()
         self.__initProgress |= _INIT_STEPS.SPACE_LOADED
         self.__onInitStepCompleted()
@@ -821,12 +823,14 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                         self.moveVehicle(movementCommands, isDown, cmdMap.isActive(CommandMapping.CMD_BLOCK_TRACKS))
                         TriggersManager.g_manager.fireTrigger(TRIGGER_TYPE.PLAYER_MOVE, moveCommands=movementCommands)
                         return True
+                    isEpicBattle = self.arenaBonusType in [
+                     constants.ARENA_BONUS_TYPE.EPIC_BATTLE, constants.ARENA_BONUS_TYPE.EPIC_BATTLE_TRAINING]
                     isBR = ARENA_BONUS_TYPE_CAPS.checkAny(self.arenaBonusType, ARENA_BONUS_TYPE_CAPS.BATTLEROYALE)
-                    if cmdMap.isFired(CommandMapping.CMD_QUEST_PROGRESS_SHOW, key) and not isBR and (mods != 2 or not isDown) and self.lobbyContext.getServerSettings().isPersonalMissionsEnabled():
+                    if cmdMap.isFired(CommandMapping.CMD_QUEST_PROGRESS_SHOW, key) and not isBR and not isEpicBattle and (mods != 2 or not isDown) and self.lobbyContext.getServerSettings().isPersonalMissionsEnabled():
                         gui_event_dispatcher.toggleFullStatsQuestProgress(isDown)
                         return True
                     supportsBoosters = ARENA_BONUS_TYPE_CAPS.checkAny(self.arenaBonusType, ARENA_BONUS_TYPE_CAPS.BOOSTERS)
-                    if cmdMap.isFired(CommandMapping.CMD_SHOW_PERSONAL_RESERVES, key) and not BigWorld.isKeyDown(Keys.KEY_CAPSLOCK) and supportsBoosters and self.lobbyContext.getServerSettings().personalReservesConfig.isReservesInBattleActivationEnabled:
+                    if cmdMap.isFired(CommandMapping.CMD_SHOW_PERSONAL_RESERVES, key) and not isEpicBattle and not BigWorld.isKeyDown(Keys.KEY_CAPSLOCK) and supportsBoosters and self.lobbyContext.getServerSettings().personalReservesConfig.isReservesInBattleActivationEnabled:
                         gui_event_dispatcher.toggleFullStatsPersonalReserves(isDown)
                         return True
                     if not isGuiEnabled and isDown and mods == 0:
@@ -1425,9 +1429,12 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.getOwnVehicleShotDispersionAngle(self.gunRotator.turretRotationSpeed)
 
     def redrawVehicleOnRespawn(self, vehicleID, newVehCompactDescr, newVehOutfitCompactDescr):
-        if vehicleID == self.playerVehicleID and self.__firstHealthUpdate:
+        ownVehicle = vehicleID == self.playerVehicleID
+        if ownVehicle and self.__firstHealthUpdate:
             self.__deadOnLoading = True
         Vehicle.Vehicle.respawnVehicle(vehicleID, newVehCompactDescr, newVehOutfitCompactDescr)
+        if ownVehicle:
+            self.__consistentMatrices.notifyVehicleChanged(self, updateStopped=True)
 
     def updateGunMarker(self, vehicleID, shotPos, shotVec, dispersionAngle):
         if self.gunRotator:
@@ -1572,7 +1579,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                     if len(enemies) == 1:
                         TriggersManager.g_manager.fireTrigger(TRIGGER_TYPE.PLAYER_SHOT_NOT_PIERCED, targetId=enemyVehID)
                 if sound is not None:
-                    bestSound = _getBestShotResultSound(bestSound, sound, enemyVehID)
+                    bestSound = getBestShotResultSound(bestSound, sound, enemyVehID)
 
             if bestSound is not None:
 
@@ -2099,7 +2106,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 self.inputHandler.selectPlayer(vehicleID)
 
     def leaveArena(self):
-        LOG_DEBUG('Avatar.leaveArena')
+        _logger.info('Avatar.leaveArena')
         from helpers import statistics
         self.statsCollector.noteLastArenaData(self.arenaTypeID, self.arenaUniqueID, self.team)
         self.statsCollector.needCollectSessionData(True)
@@ -2127,7 +2134,13 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     def __reportClientStats(self):
         sessionData = self.statsCollector.getSessionData()
         if sessionData and self.lobbyContext.collectUiStats:
-            self.base.reportClientStats({key:sessionData[key] for key in ['lag', 'ping']})
+            report = {key:sessionData[key] for key in sessionData if key in ('ping_lt_50',
+                                                                             'ping_51_100',
+                                                                             'ping_101_150',
+                                                                             'ping_151_400',
+                                                                             'ping_gt_400',
+                                                                             'lag')}
+            self.cell.reportClientStats(report)
 
     def addBotToArena(self, vehicleTypeName, team, pos=DEFAULT_VECTOR_3, group=0):
         compactDescr = vehicles.VehicleDescr(typeName=vehicleTypeName).makeCompactDescr()
@@ -3043,31 +3056,6 @@ def preload(alist):
 def _boundingBoxAsVector4(bb):
     return Math.Vector4(bb[0][0], bb[0][1], bb[1][0], bb[1][1])
 
-
-def _getBestShotResultSound(currBest, newSoundName, otherData):
-    newSoundPriority = _shotResultSoundPriorities[newSoundName]
-    if currBest is None:
-        return (newSoundName, otherData, newSoundPriority)
-    else:
-        if newSoundPriority > currBest[2]:
-            return (newSoundName, otherData, newSoundPriority)
-        return currBest
-
-
-_shotResultSoundPriorities = {'enemy_hp_damaged_by_projectile_and_gun_damaged_by_player': 12, 
-   'enemy_hp_damaged_by_projectile_and_chassis_damaged_by_player': 11, 
-   'enemy_hp_damaged_by_projectile_by_player': 10, 
-   'enemy_hp_damaged_by_explosion_at_direct_hit_by_player': 9, 
-   'enemy_hp_damaged_by_near_explosion_by_player': 8, 
-   'enemy_no_hp_damage_at_attempt_and_gun_damaged_by_player': 7, 
-   'enemy_no_hp_damage_at_no_attempt_and_gun_damaged_by_player': 6, 
-   'enemy_no_hp_damage_at_attempt_and_chassis_damaged_by_player': 5, 
-   'enemy_no_hp_damage_at_no_attempt_and_chassis_damaged_by_player': 4, 
-   'enemy_no_piercing_by_player': 3, 
-   'enemy_no_hp_damage_at_attempt_by_player': 3, 
-   'enemy_no_hp_damage_at_no_attempt_by_player': 2, 
-   'enemy_no_hp_damage_by_near_explosion_by_player': 1, 
-   'enemy_ricochet_by_player': 0}
 
 class FilterLagEmulator(object):
 

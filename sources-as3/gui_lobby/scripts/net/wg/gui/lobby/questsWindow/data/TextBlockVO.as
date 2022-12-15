@@ -23,6 +23,8 @@ package net.wg.gui.lobby.questsWindow.data
       
       public var complexTooltip:String = "";
       
+      public var linesLimit:int = -1;
+      
       public function TextBlockVO(param1:Object)
       {
          super(param1);
