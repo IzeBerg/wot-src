@@ -56,7 +56,7 @@
 			</invisibilityBonus>
 		</trophyUpgradedAdditionalInvisibilityDevice>
 	</optDevsOverrides>
-	<repairCost>7.142858</repairCost>
+	<repairCost>7.692308</repairCost>
 	<crewXpFactor>
 		1.0
 		<!--BW_String-->
@@ -350,7 +350,7 @@
 		</armor>
 		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 		<weight>16300</weight>
-		<maxHealth>900</maxHealth>
+		<maxHealth>800</maxHealth>
 		<ammoBayHealth>
 			<maxHealth>103</maxHealth>
 			<maxRegenHealth>65</maxRegenHealth>
@@ -5210,17 +5210,25 @@
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
-						8.3
+						8.4
 						<!--BW_String-->
 					</reloadTime>
-					<aimingTime>
-						2.8
-						<!--BW_String-->
-					</aimingTime>
+					<aimingTime>3</aimingTime>
 					<invisibilityFactorAtShot>
 						0.18
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
+					<shotDispersionFactors>
+						<turretRotation>
+							0.14
+							<!--BW_String-->
+						</turretRotation>
+						<afterShot>4</afterShot>
+						<whileGunDamaged>
+							2.0
+							<!--BW_String-->
+						</whileGunDamaged>
+					</shotDispersionFactors>
 					<models>
 						<undamaged>vehicles/russian/R46_KV-13_SH/normal/lod0/Gun_03.model</undamaged>
 						<destroyed>vehicles/russian/R46_KV-13_SH/crash/lod0/Gun_03.model</destroyed>
@@ -5811,21 +5819,29 @@
 						<gun>40</gun>
 					</armor>
 					<reloadTime>
-						8.3
+						8.4
 						<!--BW_String-->
 					</reloadTime>
 					<shotDispersionRadius>
 						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<aimingTime>
-						2.8
-						<!--BW_String-->
-					</aimingTime>
+					<aimingTime>3</aimingTime>
 					<invisibilityFactorAtShot>
 						0.18
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
+					<shotDispersionFactors>
+						<turretRotation>
+							0.14
+							<!--BW_String-->
+						</turretRotation>
+						<afterShot>4</afterShot>
+						<whileGunDamaged>
+							2.0
+							<!--BW_String-->
+						</whileGunDamaged>
+					</shotDispersionFactors>
 					<models>
 						<undamaged>vehicles/russian/R46_KV-13_SH/normal/lod0/Gun_05.model</undamaged>
 						<destroyed>vehicles/russian/R46_KV-13_SH/crash/lod0/Gun_05.model</destroyed>
@@ -6229,7 +6245,7 @@
 						</maxPitch>
 					</pitchLimits>
 					<shotDispersionRadius>
-						0.4
+						0.42
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<aimingTime>
@@ -6710,21 +6726,29 @@
 						<gun>40</gun>
 					</armor>
 					<reloadTime>
-						8.3
+						8.4
 						<!--BW_String-->
 					</reloadTime>
 					<shotDispersionRadius>
 						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<aimingTime>
-						2.8
-						<!--BW_String-->
-					</aimingTime>
+					<aimingTime>3</aimingTime>
 					<invisibilityFactorAtShot>
 						0.18
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
+					<shotDispersionFactors>
+						<turretRotation>
+							0.14
+							<!--BW_String-->
+						</turretRotation>
+						<afterShot>4</afterShot>
+						<whileGunDamaged>
+							2.0
+							<!--BW_String-->
+						</whileGunDamaged>
+					</shotDispersionFactors>
 					<models>
 						<undamaged>vehicles/russian/R46_KV-13_SH/normal/lod0/Gun_09.model</undamaged>
 						<destroyed>vehicles/russian/R46_KV-13_SH/crash/lod0/Gun_09.model</destroyed>
@@ -6852,7 +6876,7 @@
 						</maxPitch>
 					</pitchLimits>
 					<shotDispersionRadius>
-						0.4
+						0.42
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<aimingTime>
@@ -7253,7 +7277,7 @@
 					<smplFwMaxSpeed>45</smplFwMaxSpeed>
 				</V-2-54M_SH>
 				<M-40-2V_SH>
-					<smplEnginePower>1290</smplEnginePower>
+					<smplEnginePower>1230</smplEnginePower>
 					<smplFwMaxSpeed>55</smplFwMaxSpeed>
 				</M-40-2V_SH>
 			</engines>

@@ -117,6 +117,7 @@ class CommonTankAppearance(ScriptGameObject):
     lodCalculator = ComponentDescriptor()
     shadowManager = ComponentDescriptor()
     siegeEffects = ComponentDescriptor()
+    siegeState = ComponentDescriptor()
     suspension = ComponentDescriptor()
     suspensionSound = ComponentDescriptor()
     swingingAnimator = ComponentDescriptor()
@@ -782,6 +783,8 @@ class CommonTankAppearance(ScriptGameObject):
             return
 
     def onSiegeStateChanged(self, newState, timeToNextMode):
+        if self.siegeState is not None:
+            self.siegeState.onSiegeStateChanged(newState)
         if self.engineAudition is not None:
             self.engineAudition.onSiegeStateChanged(newState)
         if self.hullAimingController is not None:

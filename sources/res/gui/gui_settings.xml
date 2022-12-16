@@ -13,22 +13,27 @@
 		<type>url</type>
 	</setting>
 	<setting>
+		https://lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://lesta.ru/shop/wot/gold/?utm_source=garage&amp;utm_medium=button&amp;utm_content=get-gold&amp;utm_campaign=wot-client)
 		<name>paymentURL</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://lesta.ru/personal/?utm_source=notify&amp;utm_medium=link&amp;utm_campaign=wot-client)
 		<name>securitySettingsURL</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://lesta.ru/support/?utm_source=garage&amp;utm_medium=link&amp;utm_campaign=wot-client
 		<name>supportURL</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://tanki.su/clanwars/strongholds/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=strongholds
 		<name>fortDescription</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://lesta.ru/clans/recruitstation/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=strongholds)
 		<name>clanSearch</name>
 		<type>url</type>
 	</setting>
@@ -42,6 +47,7 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
+				https://legal.lesta.ru/clan-rules/
 				<name>RU</name>
 				<type>url</type>
 			</item>
@@ -172,52 +178,64 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://legal.lesta.ru/clan-rules/
 				<name>default</name>
 				<type>url</type>
 			</item>
 		</value>
 	</setting>
 	<setting>
+		https://apex.lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://apex.lesta.ru/league/team/edit/?language=$LANGUAGE_CODE&amp;game=wot
 		<name>clubSettings</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://webbrg-ct.tanki.su/$LANGUAGE_CODE/cybersport/
 		<name>clubHelp</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		http://ct.wgleague.net/media/team/%(emblemID)d/%(size)d.png
 		<name>clubEmblems</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://lesta.ru/rp/invitation/
 		<name>invitesManagementURL</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://webbrg-ct.tanki.su/$LANGUAGE_CODE/hangar_training/medicinekit/
 		<name>medkitHelp</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://webbrg-ct.tanki.su/$LANGUAGE_CODE/hangar_training/repair/
 		<name>repairkitHelp</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://webbrg-ct.tanki.su/$LANGUAGE_CODE/hangar_training/firefighting/
 		<name>fireExtinguisherHelp</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://lesta.ru/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-summary
 		<name>globalMapSummary</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=http://tanki.su/clanwars/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-summary
 		<name>globalMapPromoSummary</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://lesta.ru/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-cap
 		<name>globalMapCap</name>
 		<type>url</type>
 	</setting>
 	<setting>
+		https://lesta.ru/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=http://tanki.su/clanwars/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-cap
 		<name>globalMapPromo</name>
 		<type>url</type>
 	</setting>
@@ -360,6 +378,7 @@
 		<type>url</type>
 	</setting>
 	<setting>
+		https://wgcg-ct.tanki.su/web_cache/v1/get_static_lists/
 		<name>webManifestURL</name>
 		<type>url</type>
 	</setting>
@@ -391,6 +410,7 @@
 				</value>
 			</item>
 			<item>
+				https://legal.lesta.ru/eula/
 				<name>url</name>
 				<type>url</type>
 			</item>
@@ -429,7 +449,7 @@
 	<setting>
 		<name>isPollEnabled</name>
 		<type>bool</type>
-		<value>False</value>
+		<value>True</value>
 	</setting>
 	<setting>
 		<name>csisRequestRate</name>
@@ -517,7 +537,7 @@
 				<value>False</value>
 			</item>
 			<item>
-				https://ru.wargaming.net
+				https://apex.lesta.ru
 				<name>url</name>
 				<type>url</type>
 			</item>
@@ -535,7 +555,7 @@
 			<item>
 				<name>encryptToken</name>
 				<type>bool</type>
-				<value>False</value>
+				<value>True</value>
 			</item>
 			<item>
 				<name>facebook</name>
@@ -568,10 +588,12 @@
 				<value>False</value>
 			</item>
 			<item>
+				https://apex.lesta.ru/id/signin/game/success/
 				<name>redirectURL</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://apex.lesta.ru/id/signin/game/
 				<name>initialLoginURL</name>
 				<type>url</type>
 			</item>
@@ -582,6 +604,7 @@
 		<type>dict</type>
 		<value>
 			<item>
+				https://webbrg-ct.tanki.su
 				<name>webBridgeRootURL</name>
 				<type>url</type>
 			</item>
@@ -794,6 +817,7 @@
 		<value>1209600</value>
 	</setting>
 	<setting>
+		https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promoscreens/
 		<name>promoscreens</name>
 		<type>url</type>
 	</setting>
@@ -1096,8 +1120,8 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/psa2021/psa2021)
-				<name>psaProducts</name>
+				$PARAMS(/wdr2022/wdr2022_optional_devices)
+				<name>seniorityAwardsProducts</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1228,10 +1252,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/dogtag/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/dogtag/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1263,10 +1289,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/dogtagVideo1/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/dogtagVideo1/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1298,10 +1326,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/dogtagVideo2/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/dogtagVideo2/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1349,7 +1379,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://worldoftanks.ru/$LANGUAGE_CODE/tournaments/
+				https://tanki.su/$LANGUAGE_CODE/tournaments/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1381,7 +1411,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://ru.wargaming.net/globalmap/
+				https://lesta.ru/globalmap/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1413,10 +1443,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/RandomBattles/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/RandomBattles/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1448,10 +1480,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/Bootcamp/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Bootcamp/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1483,10 +1517,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/Strongholds/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Strongholds/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1518,10 +1554,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/SpecialBattles/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/SpecialBattles/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1553,10 +1591,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/TrainingRooms/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/TrainingRooms/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1588,10 +1628,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/RankedBattles/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/RankedBattles/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1623,7 +1665,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://steelhunter-ct.worldoftanks.ru/$LANGUAGE_CODE/?fullscreenMode=true
+				https://steelhunter-rpt.tanki.su/$LANGUAGE_CODE/?fullscreenMode=true
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1679,10 +1721,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/mapbox/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/mapbox/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1694,7 +1738,6 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/WotPlus/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1726,45 +1769,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/cartography/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>infoPageEpicQueue</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://frontline.worldoftanks.com/$LANGUAGE_CODE/information/?modeselector=true
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://frontline.worldoftanks.eu/$LANGUAGE_CODE/information/?modeselector=true
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://frontline.worldoftanks.asia/$LANGUAGE_CODE/information/?modeselector=true
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://frontline.wotgame.cn/$LANGUAGE_CODE/information/?modeselector=true
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				<name>CT</name>
-				<type>url</type>
-			</item>
-			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/cartography/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1796,10 +1806,12 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/Onslaught/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Onslaught/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1815,7 +1827,7 @@
 				<type>dict</type>
 				<value>
 					<item>
-						https://legal.ru.wargaming.net/ru/t34-t72-info/
+						https://legal.lesta.ru/ru/t34-t72-info/
 						<name>t34_disclaimer</name>
 						<type>url</type>
 					</item>
@@ -1835,7 +1847,7 @@
 			<item>
 				<name>default</name>
 				<type>dict</type>
-				<value/>
+				<value>https://legal.lesta.ru/ru/t34-t72-info/</value>
 			</item>
 		</value>
 	</setting>
@@ -1845,7 +1857,6 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://shop.wot.360.cn/detail.html?goods_id=subscription&amp;type=wotsubscriptions
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1877,7 +1888,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://ru.wargaming.net/support/$LANGUAGE_CODE/help/login/
+				https://lesta.ru/support/$LANGUAGE_CODE/help/login/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1889,7 +1900,6 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://worldoftanks.eu/en/content/guide/age-protection-update/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1914,7 +1924,6 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://worldoftanks.ru/ru/content/guide/general/
 				<name>default</name>
 				<type>url</type>
 			</item>

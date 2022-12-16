@@ -8,3 +8,7 @@ class IngameHelpWindowMeta(AbstractWindowView):
     def as_setKeysS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setKeys(data)
+
+    def as_setColorBlindS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setColorBlind(value)

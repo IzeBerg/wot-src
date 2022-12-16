@@ -1,4 +1,4 @@
-import cPickle, copy, weakref, zlib
+import cPickle, copy, logging, weakref, zlib
 from collections import namedtuple
 import AccountCommands, BigWorld, ClientPrebattle, Event, BattleReplay
 from ChatManager import chatManager
@@ -49,6 +49,7 @@ from shared_utils.account_helpers.diff_utils import synchronizeDicts
 StreamData = namedtuple('StreamData', ['data', 'isCorrupted', 'origPacketLen', 'packetLen', 'origCrc32', 'crc32'])
 StreamData.__new__.__defaults__ = (
  None,) * len(StreamData._fields)
+_logger = logging.getLogger(__name__)
 
 def _isInt(a):
     return isinstance(a, (int, long))
@@ -127,7 +128,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def __init__(self):
         global g_accountRepository
-        LOG_DEBUG('client Account.init')
+        _logger.info('client Account.init')
         propertyName, propertyValue = _CLIENT_SERVER_VERSION
         self.connectionMgr.checkClientServerVersions(propertyValue, getattr(self, propertyName, None))
         ClientChat.__init__(self)
@@ -232,7 +233,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def onBecomePlayer(self):
         uniprof.enterToRegion('player.account.entering')
-        LOG_DEBUG('Account.onBecomePlayer()')
+        _logger.info('Account.onBecomePlayer()')
         self.databaseID = None
         self.inputHandler = AccountInputHandler()
         BigWorld.clearAllSpaces()
@@ -279,7 +280,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def onBecomeNonPlayer(self):
         uniprof.enterToRegion('player.account.exiting')
-        LOG_DEBUG('Account.onBecomeNonPlayer()')
+        _logger.info('Account.onBecomeNonPlayer()')
         chatManager.switchPlayerProxy(None)
         self.syncData.onAccountBecomeNonPlayer()
         self.inventory.onAccountBecomeNonPlayer()
@@ -564,7 +565,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def showGUI(self, ctx):
         ctx = cPickle.loads(ctx)
-        LOG_DEBUG('showGUI', ctx)
+        _logger.info('showGUI %r', ctx)
         self.databaseID = ctx['databaseID']
         if 'prebattleID' in ctx:
             self.prebattle = ClientPrebattle.ClientPrebattle(ctx['prebattleID'])

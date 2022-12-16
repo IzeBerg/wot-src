@@ -75,15 +75,11 @@ package net.wg.data.constants.generated
       
       public static const MISSIONS_EVENT_BOARDS_CARD_RENDERER_LINKAGE:String = "MissionsEventBoardsCardRendererUI";
       
-      public static const MISSIONS_LINKED_SET_CARD_RENDERER_LINKAGE:String = "MissionsLinkedSetCardRendererUI";
-      
       public static const MISSIONS_EVENT_BOARDS_HEADER_LINKAGE:String = "MissionsEventBoardsHeaderUI";
       
       public static const MISSIONS_EVENT_BOARDS_BODY_LINKAGE:String = "MissionsEventBoardsBodyUI";
       
-      public static const MISSIONS_LINKED_SET_HEADER_LINKAGE:String = "MissionsLinkedSetHeaderUI";
-      
-      public static const MISSIONS_LINKED_SET_BODY_LINKAGE:String = "MissionsLinkedSetBodyUI";
+      public static const MISSIONS_GOLD_HEADER_LINKAGE:String = "MissionsGoldHeaderUI";
       
       public static const MISSIONS_PREMIUM_HEADER_LINKAGE:String = "MissionsPremiumHeaderUI";
       

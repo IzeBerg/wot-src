@@ -31,6 +31,7 @@ package net.wg.gui.battle.components
          {
             return;
          }
+         this._prevState = state;
          gotoAndStop(state);
          curFrame = SEMI_LAST_FRAME;
          progressCircle.gotoAndStop(SEMI_LAST_FRAME);

@@ -61,6 +61,16 @@ package net.wg.data.constants.generated
       
       public static const ASSIST_BY_ABILITY:String = "assistByAbility";
       
+      public static const DAMAGE_BY_AIRSTRIKE:String = "damageByAirStrike";
+      
+      public static const RECEIVED_BY_AIRSTRIKE:String = "receivedByAirStrike";
+      
+      public static const DAMAGE_BY_ARTILLERY:String = "damageByArtillery";
+      
+      public static const RECEIVED_BY_ARTILLERY:String = "receivedByArtillery";
+      
+      public static const RECEIVED_BY_DEATH_ZONE:String = "receivedByDeathZone";
+      
       public static const DEATH_ZONE:String = "deathZone";
       
       public static const BERSERKER:String = "berserker";

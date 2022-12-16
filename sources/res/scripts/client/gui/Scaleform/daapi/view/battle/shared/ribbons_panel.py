@@ -33,7 +33,9 @@ _BATTLE_EVENTS_SETTINGS_TO_BATTLE_EFFICIENCY_TYPES = {BATTLE_EVENTS.ENEMY_HP_DAM
                                  _BET.DAMAGE_BY_MINEFIELD,
                                  _BET.DEALT_DMG_BY_CORRODING_SHOT,
                                  _BET.DEALT_DMG_BY_FIRE_CIRCLE,
-                                 _BET.DEALT_DMG_BY_CLING_BRANDER), 
+                                 _BET.DEALT_DMG_BY_CLING_BRANDER,
+                                 _BET.DAMAGE_BY_AIRSTRIKE,
+                                 _BET.DAMAGE_BY_ARTILLERY), 
    BATTLE_EVENTS.BLOCKED_DAMAGE: (
                                 _BET.ARMOR,), 
    BATTLE_EVENTS.ENEMY_RAM_ATTACK: (
@@ -67,7 +69,10 @@ _BATTLE_EVENTS_SETTINGS_TO_BATTLE_EFFICIENCY_TYPES = {BATTLE_EVENTS.ENEMY_HP_DAM
                                  _BET.RECEIVED_BY_SMOKE,
                                  _BET.RECEIVED_BY_CORRODING_SHOT,
                                  _BET.RECEIVED_BY_FIRE_CIRCLE,
-                                 _BET.RECEIVED_BY_CLING_BRANDER), 
+                                 _BET.RECEIVED_BY_CLING_BRANDER,
+                                 _BET.RECEIVED_BY_AIRSTRIKE,
+                                 _BET.RECEIVED_BY_ARTILLERY,
+                                 _BET.RECEIVED_BY_DEATH_ZONE), 
    BATTLE_EVENTS.RECEIVED_CRITS: (
                                 _BET.RECEIVED_CRITS,), 
    BATTLE_EVENTS.ENEMIES_STUN: (
@@ -192,6 +197,11 @@ _RIBBONS_FMTS = {_BET.CAPTURE: _baseRibbonFormatter,
    _BET.RECEIVED_DMG_BY_SPAWNED_BOT: _singleVehRibbonFormatter, 
    _BET.DAMAGE_BY_MINEFIELD: _singleVehRibbonFormatter, 
    _BET.RECEIVED_BY_MINEFIELD: _singleVehRibbonFormatter, 
+   _BET.DAMAGE_BY_ARTILLERY: _singleVehRibbonFormatter, 
+   _BET.RECEIVED_BY_ARTILLERY: _singleVehRibbonFormatter, 
+   _BET.DAMAGE_BY_AIRSTRIKE: _singleVehRibbonFormatter, 
+   _BET.RECEIVED_BY_AIRSTRIKE: _singleVehRibbonFormatter, 
+   _BET.RECEIVED_BY_DEATH_ZONE: _singleVehRibbonFormatter, 
    _BET.RECEIVED_BY_SMOKE: _singleVehRibbonFormatter, 
    _BET.DEALT_DMG_BY_CORRODING_SHOT: _singleVehRibbonFormatter, 
    _BET.RECEIVED_BY_CORRODING_SHOT: _singleVehRibbonFormatter, 
@@ -471,6 +481,21 @@ class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
          [
           _BET.RECEIVED_BY_MINEFIELD,
           backport.text(R.strings.ingame_gui.efficiencyRibbons.receivedByMinefield())],
+         [
+          _BET.DAMAGE_BY_ARTILLERY,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.ArtilleryDmg())],
+         [
+          _BET.RECEIVED_BY_ARTILLERY,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.ArtilleryDmg())],
+         [
+          _BET.DAMAGE_BY_AIRSTRIKE,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.AirstrikeDmg())],
+         [
+          _BET.RECEIVED_BY_AIRSTRIKE,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.AirstrikeDmg())],
+         [
+          _BET.RECEIVED_BY_DEATH_ZONE,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.CannonDmg())],
          [
           _BET.RECEIVED_BY_SMOKE,
           backport.text(R.strings.ingame_gui.efficiencyRibbons.receivedBySmoke())],

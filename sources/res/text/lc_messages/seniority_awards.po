@@ -28,21 +28,6 @@ msgstr "ПРОПУСТИТЬ АНИМАЦИЮ"
 msgid "multiOpenView/title"
 msgstr "Поздравляем!"
 
-msgid "notificationView/gotoRewardsBtn"
-msgstr "К выбору наград"
-
-msgid "notificationView/subtitle/second"
-msgstr "Используйте жетоны за выслугу лет для получения награды!"
-
-msgid "notificationView/subtitle/timeout"
-msgstr "У вас остались неиспользованные жетоны за выслугу лет."
-
-msgid "notificationView/timeout"
-msgstr "До обнуления жетонов: %(timeout)s"
-
-msgid "notificationView/title"
-msgstr "Поздравляем!"
-
 msgid "notifications/description"
 msgstr ""
 "Ящики с заслуженной наградой — в подарок за выслугу лет! Открывайте и "
@@ -50,6 +35,37 @@ msgstr ""
 
 msgid "notifications/header"
 msgstr "Заслуженная награда"
+
+msgid "notifications/quest/button"
+msgstr "Забрать награды"
+
+msgid "notifications/quest/title"
+msgstr ""
+"Награды за выслугу лет\n"
+"ждут вас!"
+
+msgid "notifications/tokens/button"
+msgstr "В Магазин"
+
+msgid "notifications/tokens/timeLeft/days"
+msgstr "%(day)s д %(hour)s ч"
+
+msgid "notifications/tokens/timeLeft/hours"
+msgstr "%(hour)s ч %(min)s мин"
+
+msgid "notifications/tokens/timeLeft/lessMin"
+msgstr "меньше минуты"
+
+msgid "notifications/tokens/timeLeft/min"
+msgstr "%(min)s мин"
+
+msgid "notifications/tokens/timer"
+msgstr "До списания жетонов: %(timeLeft)s"
+
+msgid "notifications/tokens/title"
+msgstr ""
+"Меняйте жетоны за выслугу\n"
+"лет на желаемую награду!"
 
 msgid "openBoxView/autoOpenTooltip/body"
 msgstr ""
@@ -71,17 +87,17 @@ msgstr "Заслуженная награда"
 msgid "openBoxView/openBoxesLabel"
 msgstr "Открыть {count} шт."
 
-msgid "rewardsScreen/moreRewards"
-msgstr "... и ещё"
-
 msgid "rewardsScreen/showGiftButtonLabel"
 msgstr "К награде"
 
 msgid "rewardsView/applyBtn"
 msgstr "Так точно!"
 
+msgid "rewardsView/exchangeCoins"
+msgstr "Обменяйте жетоны на награды в Магазине."
+
 msgid "rewardsView/gotoRewardsBtn"
-msgstr "К наградам"
+msgstr "В Магазин"
 
 msgid "rewardsView/lootBox/descr"
 msgstr "Откройте и заберите содержимое!"
@@ -95,71 +111,142 @@ msgstr ""
 "с заслуженной\n"
 "наградой"
 
+msgid "rewardsView/moreRewardsBtn"
+msgstr "Больше наград!"
+
 msgid "rewardsView/nextBtn"
 msgstr "К следующей награде (%(count)s)"
 
 msgid "rewardsView/openBtn"
 msgstr "Открыть"
 
-msgid "rewardsView/sacoin/body"
-msgstr ""
-"Вы получили жетоны за выслугу лет. Можете обменять их на ценные награды."
-
-msgid "rewardsView/sacoin/title"
-msgstr "Получены жетоны"
+msgid "rewardsView/sacoin/counter"
+msgstr "×%(count)s"
 
 msgid "rewardsView/subTitle/AT"
-msgstr "Награда за активное участие в Альфа-тесте"
+msgstr "НАГРАДА ЗА УЧАСТИЕ В %(gradientStart)sАЛЬФА-ТЕСТЕ%(gradientEnd)s"
 
 msgid "rewardsView/subTitle/BT"
-msgstr "Награда за активное участие в Бета-тесте"
+msgstr "НАГРАДА ЗА УЧАСТИЕ В %(gradientStart)sБЕТА-ТЕСТЕ%(gradientEnd)s"
 
 msgid "rewardsView/subTitle/Y0"
-msgstr "Награда за боевые заслуги"
+msgstr "НАГРАДА ЗА БОЕВЫЕ ЗАСЛУГИ"
 
 msgid "rewardsView/subTitle/Y1"
-msgstr "Награда за 1 год в строю"
+msgstr "НАГРАДА ЗА %(gradientStart)s1 ГОД%(gradientEnd)s В СТРОЮ"
 
 msgid "rewardsView/subTitle/Y10"
-msgstr "Награда за 10 лет в строю"
+msgstr "НАГРАДА ЗА %(gradientStart)s10 ЛЕТ%(gradientEnd)s В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y10_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"10 ЛЕТ В СТРОЮ"
 
 msgid "rewardsView/subTitle/Y11"
-msgstr "Награда за 11 лет в строю"
+msgstr "НАГРАДА ЗА %(gradientStart)s11 ЛЕТ%(gradientEnd)s В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y11_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"11 ЛЕТ В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y12"
+msgstr "НАГРАДА ЗА %(gradientStart)s12 ЛЕТ%(gradientEnd)s В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y12_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"12 ЛЕТ В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y1_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"1 ГОД В СТРОЮ"
 
 msgid "rewardsView/subTitle/Y2"
-msgstr "Награда за 2 года в строю"
+msgstr "НАГРАДА ЗА %(gradientStart)s2 ГОДА%(gradientEnd)s В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y2_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"2 ГОДА В СТРОЮ"
 
 msgid "rewardsView/subTitle/Y3"
-msgstr "Награда за 3 года в строю"
+msgstr "НАГРАДА ЗА %(gradientStart)s3 ГОДА%(gradientEnd)s В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y3_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"3 ГОДА В СТРОЮ"
 
 msgid "rewardsView/subTitle/Y4"
-msgstr "Награда за 4 года в строю"
+msgstr "НАГРАДА ЗА %(gradientStart)s4 ГОДА%(gradientEnd)s В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y4_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"4 ГОДА В СТРОЮ"
 
 msgid "rewardsView/subTitle/Y5"
-msgstr "Награда за 5 лет в строю"
+msgstr "НАГРАДА ЗА %(gradientStart)s5 ЛЕТ%(gradientEnd)s В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y5_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"5 ЛЕТ В СТРОЮ"
 
 msgid "rewardsView/subTitle/Y6"
-msgstr "Награда за 6 лет в строю"
+msgstr "НАГРАДА ЗА %(gradientStart)s6 ЛЕТ%(gradientEnd)s В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y6_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"6 ЛЕТ В СТРОЮ"
 
 msgid "rewardsView/subTitle/Y7"
-msgstr "Награда за 7 лет в строю"
+msgstr "НАГРАДА ЗА %(gradientStart)s7 ЛЕТ%(gradientEnd)s В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y7_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"7 ЛЕТ В СТРОЮ"
 
 msgid "rewardsView/subTitle/Y8"
-msgstr "Награда за 8 лет в строю"
+msgstr "НАГРАДА ЗА %(gradientStart)s8 ЛЕТ%(gradientEnd)s В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y8_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"8 ЛЕТ В СТРОЮ"
 
 msgid "rewardsView/subTitle/Y9"
-msgstr "Награда за 9 лет в строю"
+msgstr "НАГРАДА ЗА %(gradientStart)s9 ЛЕТ%(gradientEnd)s В СТРОЮ"
+
+msgid "rewardsView/subTitle/Y9_BT"
+msgstr ""
+"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
+"9 ЛЕТ В СТРОЮ"
 
 msgid "rewardsView/subTitle/otherRewards"
-msgstr "Также начислено:"
+msgstr "Также получено:"
+
+msgid "rewardsView/textButton/back"
+msgstr "НАЗАД"
+
+msgid "rewardsView/textButton/close"
+msgstr "ЗАКРЫТЬ"
+
+msgid "rewardsView/textButton/goto"
+msgstr "К ТЕХНИКЕ"
 
 msgid "rewardsView/title"
-msgstr "Поздравляем!"
+msgstr "ПОЗДРАВЛЯЕМ!"
 
 msgid "specialItem/body"
 msgstr ""
-"Выдаются за боевые заслуги. После закрытия Магазина оставшиеся жетоны будут "
-"обнулены."
+"Выдаются за боевые заслуги. После завершения события оставшиеся жетоны будут"
+" списаны."
 
 msgid "specialItem/header"
 msgstr "%(count)s шт. жетонов за выслугу лет"

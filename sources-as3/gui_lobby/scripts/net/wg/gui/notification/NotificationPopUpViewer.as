@@ -448,7 +448,7 @@ package net.wg.gui.notification
          var _loc2_:String = null;
          var _loc3_:Boolean = false;
          _loc2_ = LAYER_NAMES.LAYER_ORDER[param1.layer];
-         _loc3_ = _loc2_ == LAYER_NAMES.FULLSCREEN_WINDOWS || LAYER_NAMES.DIALOGS;
+         _loc3_ = _loc2_ == LAYER_NAMES.FULLSCREEN_WINDOWS || _loc2_ == LAYER_NAMES.DIALOGS;
          var _loc4_:Boolean = _loc2_ == LAYER_NAMES.SUBVIEW || _loc3_;
          if(_loc4_)
          {

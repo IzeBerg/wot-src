@@ -315,7 +315,6 @@ class MissionsEvent(HasCtxEvent):
     ON_DEACTIVATE = 'onDeactivate'
     ON_TAB_CHANGED = 'onTabChanged'
     PAGE_INVALIDATE = 'pageInvalidate'
-    ON_LINKEDSET_STATE_UPDATED = 'onLinkedSetStateUpdated'
 
 
 class PersonalMissionsEvent(HasCtxEvent):
@@ -628,10 +627,6 @@ class HangarVehicleEvent(HasCtxEvent):
     SELECT_VEHICLE_IN_HANGAR = 'hangarVehicle/selectVehicleInHangar'
 
 
-class LinkedSetEvent(HasCtxEvent):
-    VEHICLE_SELECTED = 'LinkedSetEvent/vehicleSelected'
-
-
 class ManualEvent(HasCtxEvent):
     CHAPTER_OPENED = 'manual/chapterOpened'
     CHAPTER_CLOSED = 'manual/chapterClosed'
@@ -791,6 +786,7 @@ class ModeSelectorLoadedEvent(SharedEvent):
 
 class ModeSubSelectorEvent(HasCtxEvent):
     CHANGE_VISIBILITY = 'subSelectorViewEvent/changeVisibility'
+    CLICK_PROCESSING = 'subSelectorViewEvent/clickProcessing'
 
 
 class GunMarkerEvent(HasCtxEvent):

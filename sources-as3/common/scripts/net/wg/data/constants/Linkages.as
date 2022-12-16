@@ -815,8 +815,6 @@ package net.wg.data.constants
       
       public static const MISSION_PAGINATOR_SEPARATOR_UI:String = "MissionPaginatorSeparatorUI";
       
-      public static const LINKED_SET_AWARD_UI:String = "LinkedSetAwardUI";
-      
       public static const LOBBY_HINT_UI:String = "BCLobbyHintUI";
       
       public static const LOBBY_RECTANGLE_HINT_UI:String = "BCLobbyRectangleHintUI";

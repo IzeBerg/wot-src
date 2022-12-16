@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>siegeSwitchOn</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>siegeSwitchOff</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>hull_idle</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>Siege_Mode_On</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>siegeSwitchOn</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-40.000000 -146.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Siege_Mode_On</name>
+		<type>animation</type>
+		<resource>vehicles/sweden/S11_Strv_103B/_skins/S11_Strv_103B_MD22_III_3DSt/normal/lod0/Hull_animated_01.fbx</resource>
+		<clipName/>
+		<isLoop>false</isLoop>
+		<transition>
+			<to>Siege_Mode_Seq</to>
+			<blendDuration>0.970000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>88.000000 -272.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Siege_Mode_Off</name>
+		<type>animation</type>
+		<resource>vehicles/sweden/S11_Strv_103B/_skins/S11_Strv_103B_MD22_III_3DSt/normal/lod0/Hull_animated_01_r.fbx</resource>
+		<clipName/>
+		<isLoop>false</isLoop>
+		<transition>
+			<to>hull_idle</to>
+			<blendDuration>0.960000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions/>
+		</transition>
+		<uiPosition>-188.000000 -255.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Siege_Mode_Seq</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/S11_Strv_103B_MD22_III_3DSt/S11_Strv_103B_MD22_III_3DSt_radar.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>Siege_Mode_Off</to>
+			<blendDuration>1.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>siegeSwitchOff</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-59.000000 -367.000000 0.000000</uiPosition>
+	</node>
+</root>

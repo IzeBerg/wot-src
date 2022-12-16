@@ -2,6 +2,7 @@ package net.wg.gui.components.battleDamagePanel.components
 {
    import flash.display.Shape;
    import flash.display.Sprite;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.data.constants.generated.DAMAGE_LOG_SHELL_BG_TYPES;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
@@ -88,6 +89,11 @@ package net.wg.gui.components.battleDamagePanel.components
       {
          var _loc3_:String = null;
          var _loc4_:String = null;
+         if(param1 == Values.EMPTY_STR)
+         {
+            this._emptyShellBG.visible = this._compositeBGContainer.visible = false;
+            return;
+         }
          var _loc2_:Boolean = param1 == DAMAGE_LOG_SHELL_BG_TYPES.EMPTY;
          if(_loc2_ != this._isEmpty)
          {

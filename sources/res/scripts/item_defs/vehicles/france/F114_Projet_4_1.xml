@@ -126,6 +126,13 @@
 			<undamaged>vehicles/french/F114_Projet_4_1/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/french/F114_Projet_4_1/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/french/F114_Projet_4_1/crash/lod0/Hull.model</exploded>
+			<sets>
+				<F114_Projet_4_1_MD22_III_3DSt>
+					<undamaged>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/crash/lod0/Hull.model</exploded>
+				</F114_Projet_4_1_MD22_III_3DSt>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -156,7 +163,6 @@
 			<collisionModelServer>vehicles/french/F114_Projet_4_1/collision/Hull.model</collisionModelServer>
 			<collisionModelClient>vehicles/french/F114_Projet_4_1/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
-		<hangarShadowTexture>vehicles/french/F114_Projet_4_1/Projet_4_1_HangarShadowMap.dds</hangarShadowTexture>
 		<customizationSlots>
 			<slot>
 				<slotType>clan</slotType>
@@ -1885,7 +1891,33 @@
 				<clipAngle>0.619525</clipAngle>
 				<anchorShift>0.794241</anchorShift>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15077</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>F114_Projet_4_1_MD22_III_3DSt</compatibleModels>
+				<position>
+					-1.19224 1.11361 1.26595
+					<!--BW_String-->
+				</position>
+				<rotation>
+					-0.0315023 0.000055 3.13984
+					<!--BW_String-->
+				</rotation>
+				<scale>
+					0.56182 0.202453 0.561821
+					<!--BW_String-->
+				</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.000000</clipAngle>
+				<anchorShift>
+					0.11264
+					<!--BW_String-->
+				</anchorShift>
+			</slot>
 		</customizationSlots>
+		<hangarShadowTexture>vehicles/french/F114_Projet_4_1/Projet_4_1_HangarShadowMap.dds</hangarShadowTexture>
 		<customization>
 			<customizableVehicleAreas>
 				<paint>HULL</paint>
@@ -1948,6 +1980,13 @@
 				<undamaged>vehicles/french/F114_Projet_4_1/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/french/F114_Projet_4_1/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/french/F114_Projet_4_1/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<F114_Projet_4_1_MD22_III_3DSt>
+						<undamaged>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/crash/lod0/Chassis.model</exploded>
+					</F114_Projet_4_1_MD22_III_3DSt>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>MEDIUM</lodDist>
@@ -2058,6 +2097,33 @@
 									<row3>-1.172857 1.232830 2.773957</row3>
 								</boxCollider>
 							</hullCollider>
+							<hullCollider>
+								<modelsSet>F114_Projet_4_1_MD22_III_3DSt</modelsSet>
+								<boxCollider>
+									<row0>1.840704 0.000000 0.000000</row0>
+									<row1>-0.000000 1.070000 0.000000</row1>
+									<row2>-0.000000 -0.000000 6.487000</row2>
+									<row3>-0.000001 0.903186 -0.235000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.007000 0.000000 0.000000</row0>
+									<row1>0.000000 0.300000 0.000000</row1>
+									<row2>-0.000000 0.000000 5.847000</row2>
+									<row3>0.000103 1.292223 -0.667000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>2.956000 -0.000001 0.000000</row0>
+									<row1>0.000000 0.299684 -0.671356</row1>
+									<row2>0.000000 0.738330 0.329580</row2>
+									<row3>0.000000 1.145198 -2.992428</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>1.926000 0.000001 -0.000000</row0>
+									<row1>0.000000 0.133082 0.268867</row1>
+									<row2>0.000000 -0.402801 0.199377</row2>
+									<row3>-0.003000 1.020909 2.889523</row3>
+								</boxCollider>
+							</hullCollider>
 						</physicalParams>
 					</trackDebris>
 					<trackDebris>
@@ -2151,6 +2217,39 @@
 									<row1>0.000000 0.272822 0.124773</row1>
 									<row2>0.000000 -0.210340 0.459918</row2>
 									<row3>-1.172860 1.232830 2.773960</row3>
+								</boxCollider>
+							</hullCollider>
+							<hullCollider>
+								<modelsSet>F114_Projet_4_1_MD22_III_3DSt</modelsSet>
+								<boxCollider>
+									<row0>1.840700 0.000000 0.000000</row0>
+									<row1>-0.000000 1.070000 0.000000</row1>
+									<row2>-0.000000 -0.000000 6.487000</row2>
+									<row3>-0.000001 0.903186 -0.235000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.007000 0.000000 0.000000</row0>
+									<row1>0.000000 0.300000 0.000000</row1>
+									<row2>-0.000000 0.000000 5.847000</row2>
+									<row3>0.000103 1.292220 -0.667000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>2.956000 -0.000001 0.000000</row0>
+									<row1>0.000000 0.299684 -0.671356</row1>
+									<row2>0.000000 0.738330 0.329580</row2>
+									<row3>0.000000 1.145200 -2.992430</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>1.926000 0.000001 -0.000000</row0>
+									<row1>0.000000 0.133083 0.268867</row1>
+									<row2>0.000000 -0.402801 0.199377</row2>
+									<row3>0.003000 1.020910 2.889520</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>0.331479 0.101322 -0.000029</row0>
+									<row1>-0.102470 0.335239 0.017769</row1>
+									<row2>0.025514 -0.082986 1.712801</row2>
+									<row3>1.678000 1.261000 -1.346000</row3>
 								</boxCollider>
 							</hullCollider>
 						</physicalParams>
@@ -2304,31 +2403,6 @@
 					</maxOffset>
 				</group>
 			</groundNodes>
-			<splineDesc>
-				<segmentModelLeft>vehicles/french/F114_Projet_4_1/track/segment_1.model</segmentModelLeft>
-				<segmentModelRight>vehicles/french/F114_Projet_4_1/track/segment_1.model</segmentModelRight>
-				<segment2ModelLeft>vehicles/french/F114_Projet_4_1/track/segment_2.model</segment2ModelLeft>
-				<segment2ModelRight>vehicles/french/F114_Projet_4_1/track/segment_2.model</segment2ModelRight>
-				<left>vehicles/french/F114_Projet_4_1/track/left.track</left>
-				<right>vehicles/french/F114_Projet_4_1/track/right.track</right>
-				<segmentLength>
-					0.144
-					<!--BW_String-->
-				</segmentLength>
-				<segmentOffset>
-					0.072
-					<!--BW_String-->
-				</segmentOffset>
-				<segment2Offset>
-					0.072
-					<!--BW_String-->
-				</segment2Offset>
-				<lodDist>SPLINE_TRACK</lodDist>
-				<atlas>
-					<UTiles>1</UTiles>
-					<VTiles>1</VTiles>
-				</atlas>
-			</splineDesc>
 			<trackThickness>
 				-0.0241636
 				<!--BW_String-->
@@ -2353,13 +2427,11 @@
 				<node>
 					<isLeft>true</isLeft>
 					<name>Track_VD_L0</name>
-					<forwardElastK>1</forwardElastK>
 					<backwardElastK>2</backwardElastK>
 				</node>
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VD_R0</name>
-					<forwardElastK>1</forwardElastK>
 					<backwardElastK>2</backwardElastK>
 				</node>
 				<node>
@@ -2503,12 +2575,6 @@
 					</offset>
 				</node>
 			</trackNodes>
-			<customization>
-				<customizableVehicleAreas>
-					<paint>CHASSIS</paint>
-					<camouflage/>
-				</customizableVehicleAreas>
-			</customization>
 			<customizationSlots>
 				<slot>
 					<slotType>paint</slotType>
@@ -2535,62 +2601,63 @@
 					</anchorDirection>
 				</slot>
 			</customizationSlots>
+			<splineDesc>
+				<segmentModelLeft>vehicles/french/F114_Projet_4_1/track/segment_1.model</segmentModelLeft>
+				<segmentModelRight>vehicles/french/F114_Projet_4_1/track/segment_1.model</segmentModelRight>
+				<segment2ModelLeft>vehicles/french/F114_Projet_4_1/track/segment_2.model</segment2ModelLeft>
+				<segment2ModelRight>vehicles/french/F114_Projet_4_1/track/segment_2.model</segment2ModelRight>
+				<left>vehicles/french/F114_Projet_4_1/track/left.track</left>
+				<right>vehicles/french/F114_Projet_4_1/track/right.track</right>
+				<segmentLength>
+					0.144
+					<!--BW_String-->
+				</segmentLength>
+				<segmentOffset>
+					0.072
+					<!--BW_String-->
+				</segmentOffset>
+				<segment2Offset>
+					0.072
+					<!--BW_String-->
+				</segment2Offset>
+				<atlas>
+					<UTiles>1</UTiles>
+					<VTiles>1</VTiles>
+				</atlas>
+				<lodDist>SPLINE_TRACK</lodDist>
+			</splineDesc>
+			<customization>
+				<customizableVehicleAreas>
+					<paint>CHASSIS</paint>
+					<camouflage/>
+				</customizableVehicleAreas>
+			</customization>
 			<physicalTracks>
 				<left>
 					<segmentsCount>164</segmentsCount>
-					<segmentsOuterThickness>
-						0.0557632
-						<!--BW_String-->
-					</segmentsOuterThickness>
-					<segmentsInnerThickness>
-						-0.00166178
-						<!--BW_String-->
-					</segmentsInnerThickness>
+					<segmentsOuterThickness>0.055763</segmentsOuterThickness>
+					<segmentsInnerThickness>-0.001662</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						-1.219
 						<!--BW_String-->
 					</segmentsPlaneOffset>
 					<springsLength>
 						<backwardMovement>
-							<back>
-								0.0711779
-								<!--BW_String-->
-							</back>
-							<top>
-								0.0705388
-								<!--BW_String-->
-							</top>
-							<front>
-								0.0672717
-								<!--BW_String-->
-							</front>
-							<bottom>
-								0.0542663
-								<!--BW_String-->
-							</bottom>
+							<back>0.071178</back>
+							<top>0.070539</top>
+							<front>0.067272</front>
+							<bottom>0.054266</bottom>
 						</backwardMovement>
 						<forwardMovement>
-							<back>
-								0.0657092
-								<!--BW_String-->
-							</back>
+							<back>0.065709</back>
 							<top>0.066495</top>
-							<front>
-								0.0710255
-								<!--BW_String-->
-							</front>
-							<bottom>
-								0.0545472
-								<!--BW_String-->
-							</bottom>
+							<front>0.071025</front>
+							<bottom>0.054547</bottom>
 						</forwardMovement>
 					</springsLength>
 					<mainSegment>
 						<model>vehicles/french/F114_Projet_4_1/track/segment_1.model</model>
-						<length>
-							0.0717656
-							<!--BW_String-->
-						</length>
+						<length>0.071766</length>
 					</mainSegment>
 					<secSegment>
 						<model>vehicles/french/F114_Projet_4_1/track/segment_2.model</model>
@@ -2607,10 +2674,7 @@
 									-2.68189
 									<!--BW_String-->
 								</xStart>
-								<xStep>
-									0.0358828
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.035883</xStep>
 								<ySamples>
 									0.957607 0.998561 1.05722 1.10839 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10402 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.104 1.10395 1.10395 1.10395 1.10395 1.10395 1.10395 1.10395 1.10395 1.10395 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10372 1.10368 1.10368 1.10368 1.10368 1.10368 1.10368 1.10368 1.10368 1.10368 1.10368 1.10368 1.10368 1.10368 1.10368 1.10339 1.10339 1.10339 1.10339 1.10339 1.10339 1.10339 1.10339 1.10339 1.10339 1.10339 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10369 1.10389 1.08301 1.05979 1.04642 1.03391 1.02173 1.01056 0.992982 0.937681
 									<!--BW_String-->
@@ -2636,7 +2700,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								0.29248 0.0557315
+								0.29248 0.055732
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>18</jointIdx>
@@ -2648,7 +2712,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								-0.242063 0.0985702
+								-0.242063 0.09857
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>96</jointIdx>
@@ -2659,10 +2723,7 @@
 								-1.7051 0.345172
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								-0.0143093 -0.309556
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>-0.014309 -0.309556</shiftVec>
 							<jointIdx>114</jointIdx>
 						</bottomBack>
 						<bottomFront>
@@ -2671,10 +2732,7 @@
 								1.80489 0.34517
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.00273561 -0.309874
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.002736 -0.309874</shiftVec>
 							<jointIdx>0</jointIdx>
 						</bottomFront>
 					</snapWheels>
@@ -2690,7 +2748,7 @@
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_L4</name>
 							<startAngle>
@@ -2997,27 +3055,27 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.10534 1.18998 -0.0982788
+									-1.10534 1.18998 -0.098279
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.10534 1.18998 -0.0623958
+									-1.10534 1.18998 -0.062396
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.10534 1.18998 -0.0265129
+									-1.10534 1.18998 -0.026513
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.10534 1.18998 0.0093696
+									-1.10534 1.18998 0.00937
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.10534 1.18998 0.0452526
+									-1.10534 1.18998 0.045253
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.10534 1.18998 0.0811355
+									-1.10534 1.18998 0.081135
 									<!--BW_String-->
 								</point>
 								<point>
@@ -3331,64 +3389,34 @@
 				</left>
 				<right>
 					<segmentsCount>164</segmentsCount>
-					<segmentsOuterThickness>
-						0.0562735
-						<!--BW_String-->
-					</segmentsOuterThickness>
-					<segmentsInnerThickness>
-						-0.00217214
-						<!--BW_String-->
-					</segmentsInnerThickness>
+					<segmentsOuterThickness>0.056274</segmentsOuterThickness>
+					<segmentsInnerThickness>-0.002172</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						1.219
 						<!--BW_String-->
 					</segmentsPlaneOffset>
 					<springsLength>
 						<backwardMovement>
-							<back>
-								0.0711779
-								<!--BW_String-->
-							</back>
-							<top>
-								0.0705388
-								<!--BW_String-->
-							</top>
-							<front>
-								0.0672717
-								<!--BW_String-->
-							</front>
-							<bottom>
-								0.0542663
-								<!--BW_String-->
-							</bottom>
+							<back>0.071178</back>
+							<top>0.070539</top>
+							<front>0.067272</front>
+							<bottom>0.054266</bottom>
 						</backwardMovement>
 						<forwardMovement>
-							<back>
-								0.0657092
-								<!--BW_String-->
-							</back>
+							<back>0.065709</back>
 							<top>0.066495</top>
-							<front>
-								0.0710255
-								<!--BW_String-->
-							</front>
-							<bottom>
-								0.0545472
-								<!--BW_String-->
-							</bottom>
+							<front>0.071025</front>
+							<bottom>0.054547</bottom>
 						</forwardMovement>
 					</springsLength>
 					<mainSegment>
 						<model>vehicles/french/F114_Projet_4_1/track/segment_1.model</model>
-						<length>
-							0.0717874
-							<!--BW_String-->
-						</length>
+						<length>0.071787</length>
 					</mainSegment>
 					<secSegment>
 						<model>vehicles/french/F114_Projet_4_1/track/segment_2.model</model>
 						<length>
-							0.0746805
+							0.07468
 							<!--BW_String-->
 						</length>
 					</secSegment>
@@ -3400,10 +3428,7 @@
 									-2.68097
 									<!--BW_String-->
 								</xStart>
-								<xStep>
-									0.0358937
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.035894</xStep>
 								<ySamples>
 									0.964692 1.00766 1.06341 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10403 1.10346 1.10187 1.10028 1.09869 1.0971 1.09551 1.09509 1.09566 1.09623 1.0968 1.09736 1.09793 1.0985 1.09907 1.09963 1.1002 1.10077 1.10134 1.10138 1.10138 1.10138 1.10138 1.10138 1.10149 1.10159 1.1017 1.1018 1.10192 1.10204 1.10216 1.10227 1.10238 1.10248 1.10258 1.1027 1.10282 1.10301 1.10324 1.10346 1.10369 1.10391 1.10401 1.10402 1.10402 1.10403 1.10403 1.10403 1.08459 1.06297 1.04104 1.01957 0.999148 0.983235 0.966271 0.925554
 									<!--BW_String-->
@@ -3428,10 +3453,7 @@
 								2.44389 0.7535
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.291822 0.0547484
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.291822 0.054748</shiftVec>
 							<jointIdx>19</jointIdx>
 						</topFront>
 						<topBack>
@@ -3440,10 +3462,7 @@
 								-2.35922 0.720239
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								-0.241252 0.0978922
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>-0.241252 0.097892</shiftVec>
 							<jointIdx>97</jointIdx>
 						</topBack>
 						<bottomBack>
@@ -3453,7 +3472,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								-0.00316453 -0.30936
+								-0.003165 -0.30936
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>114</jointIdx>
@@ -3464,10 +3483,7 @@
 								1.7049 0.345114
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.0135038 -0.309081
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.013504 -0.309081</shiftVec>
 							<jointIdx>0</jointIdx>
 						</bottomFront>
 					</snapWheels>
@@ -3483,7 +3499,7 @@
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_R4</name>
 							<startAngle>
@@ -3790,27 +3806,27 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									1.10534 1.18998 -0.0982788
+									1.10534 1.18998 -0.098279
 									<!--BW_String-->
 								</point>
 								<point>
-									1.10534 1.18998 -0.0623958
+									1.10534 1.18998 -0.062396
 									<!--BW_String-->
 								</point>
 								<point>
-									1.10534 1.18998 -0.0265129
+									1.10534 1.18998 -0.026513
 									<!--BW_String-->
 								</point>
 								<point>
-									1.10534 1.18998 0.0093696
+									1.10534 1.18998 0.00937
 									<!--BW_String-->
 								</point>
 								<point>
-									1.10534 1.18998 0.0452526
+									1.10534 1.18998 0.045253
 									<!--BW_String-->
 								</point>
 								<point>
-									1.10534 1.18998 0.0811355
+									1.10534 1.18998 0.081135
 									<!--BW_String-->
 								</point>
 								<point>
@@ -4231,6 +4247,13 @@
 						<undamaged>vehicles/french/F114_Projet_4_1/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/french/F114_Projet_4_1/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/french/F114_Projet_4_1/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<F114_Projet_4_1_MD22_III_3DSt>
+								<undamaged>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/crash/lod0/Gun_01.model</exploded>
+							</F114_Projet_4_1_MD22_III_3DSt>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/french/F114_Projet_4_1/collision/Gun_01.model</collisionModelServer>
@@ -4833,6 +4856,94 @@
 							<anchorShift>0.093803</anchorShift>
 						</slot>
 						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45025</slotId>
+							<rayStart>
+								0.000000 -0.041 3.92804
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								0.101166 -0.0710001 3.92737
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>0.098982 0.000000 0.000000</rayUp>
+							<applyToFabric>true</applyToFabric>
+							<size>
+								0.6
+								<!--BW_String-->
+							</size>
+							<hideIfDamaged>false</hideIfDamaged>
+							<isUVProportional>true</isUVProportional>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F114_Projet_4_1_MD22_III_3DSt</compatibleModels>
+							<position>
+								0.827894 1.99986 -1.80291
+								<!--BW_String-->
+							</position>
+							<rotation>
+								1.56551 0.82986 2.40038
+								<!--BW_String-->
+							</rotation>
+							<scale>
+								0.272837 0.0487578 0.272838
+								<!--BW_String-->
+							</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.619275</clipAngle>
+							<anchorShift>0.023805</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45026</slotId>
+							<tags>formfactor_square</tags>
+							<position>
+								0.000012 2.18578 -1.54271
+								<!--BW_String-->
+							</position>
+							<rotation>
+								-3.01615 -0.00139236 -0.00201559
+								<!--BW_String-->
+							</rotation>
+							<scale>
+								0.530333 0.0947739 0.530333
+								<!--BW_String-->
+							</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.619275</clipAngle>
+							<anchorShift>
+								0.04381
+								<!--BW_String-->
+							</anchorShift>
+							<compatibleModels>F114_Projet_4_1_MD22_III_3DSt</compatibleModels>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45027</slotId>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F114_Projet_4_1_MD22_III_3DSt</compatibleModels>
+							<position>
+								-0.00296227 2.47712 -0.0387092
+								<!--BW_String-->
+							</position>
+							<rotation>
+								-0.0281416 -0.00378046 3.13856
+								<!--BW_String-->
+							</rotation>
+							<scale>
+								0.401683 0.0717833 0.401683
+								<!--BW_String-->
+							</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.619275</clipAngle>
+							<anchorShift>
+								0.04381
+								<!--BW_String-->
+							</anchorShift>
+						</slot>
+						<slot>
 							<slotType>insigniaOnGun</slotType>
 							<slotId>49000</slotId>
 							<rayStart>
@@ -4843,7 +4954,7 @@
 								0.101166 -0.0710001 3.92737
 								<!--BW_String-->
 							</rayEnd>
-							<rayUp>0.098982 0.000000 0.000000</rayUp>
+							<rayUp>0.126967 0.000000 0.000000</rayUp>
 							<applyToFabric>true</applyToFabric>
 							<size>
 								0.6
@@ -4878,6 +4989,13 @@
 				<undamaged>vehicles/french/F114_Projet_4_1/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/french/F114_Projet_4_1/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/french/F114_Projet_4_1/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<F114_Projet_4_1_MD22_III_3DSt>
+						<undamaged>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/french/F114_Projet_4_1/_skins/F114_Projet_4_1_MD22_III_3DSt/crash/lod0/Turret_01.model</exploded>
+					</F114_Projet_4_1_MD22_III_3DSt>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/french/F114_Projet_4_1/collision/Turret_01.model</collisionModelServer>
@@ -5558,6 +5676,31 @@
 						<!--BW_String-->
 					</clipAngle>
 					<anchorShift>-0.031286</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35024</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>F114_Projet_4_1_MD22_III_3DSt</compatibleModels>
+					<position>
+						-0.837688 1.63197 -0.968096
+						<!--BW_String-->
+					</position>
+					<rotation>
+						1.93403 0.786286 -0.0196583
+						<!--BW_String-->
+					</rotation>
+					<scale>
+						0.332898 0.133078 0.3329
+						<!--BW_String-->
+					</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>
+						0.54509
+						<!--BW_String-->
+					</clipAngle>
+					<anchorShift>-0.031288</anchorShift>
 				</slot>
 			</customizationSlots>
 			<customization>

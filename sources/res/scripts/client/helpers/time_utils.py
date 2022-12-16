@@ -312,6 +312,12 @@ def timestampToISO(timestamp):
     return getDateTimeInUTC(timestamp).replace(microsecond=0).isoformat()
 
 
+def getDaysLeftDueDate(timestamp):
+    rentDate = getDateTimeInLocal(timestamp).date()
+    currentDate = datetime.date.today()
+    return int((rentDate - currentDate).days)
+
+
 class ActivityIntervalsIterator(object):
 
     def __init__(self, currentTime, currentDay, weekDays=None, timeIntervals=None):

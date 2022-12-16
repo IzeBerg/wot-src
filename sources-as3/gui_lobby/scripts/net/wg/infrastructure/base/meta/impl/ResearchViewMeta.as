@@ -109,14 +109,14 @@ package net.wg.infrastructure.base.meta.impl
          this.goToVehicleCollection(param1);
       }
       
-      public final function as_setNodesStates(param1:Number, param2:Array) : void
+      public final function as_setNodesStates(param1:Number, param2:Array, param3:Boolean) : void
       {
-         var _loc3_:Array = this._array;
+         var _loc4_:Array = this._array;
          this._array = param2;
-         this.setNodesStates(param1,this._array);
-         if(_loc3_)
+         this.setNodesStates(param1,this._array,param3);
+         if(_loc4_)
          {
-            _loc3_.splice(0,_loc3_.length);
+            _loc4_.splice(0,_loc4_.length);
          }
       }
       
@@ -164,11 +164,11 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      protected function setNodesStates(param1:Number, param2:Array) : void
+      protected function setNodesStates(param1:Number, param2:Array, param3:Boolean) : void
       {
-         var _loc3_:String = "as_setNodesStates" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc3_);
-         throw new AbstractException(_loc3_);
+         var _loc4_:String = "as_setNodesStates" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc4_);
+         throw new AbstractException(_loc4_);
       }
       
       protected function setNext2Unlock(param1:Array) : void

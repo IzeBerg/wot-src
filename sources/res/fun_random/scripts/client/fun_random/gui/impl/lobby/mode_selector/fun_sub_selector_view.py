@@ -184,11 +184,15 @@ class FunModeSubSelectorView(ViewImpl, FunSubModesWatcher, FunProgressionWatcher
 
     @adisp_process
     def __onSelectSubMode(self, args):
+        self.__toggleSelectorClickProcessing(True)
         navigationPossible = yield self.__lobbyContext.isHeaderNavigationPossible()
-        if navigationPossible:
-            result = yield self.selectFunRandomBattle(int(args.get('subModeId', UNKNOWN_EVENT_ID)))
-            if result and self.viewStatus == ViewStatus.LOADED:
-                self.closeSelection()
+        if not navigationPossible:
+            self.__toggleSelectorClickProcessing(False)
+            return
+        result = yield self.selectFunRandomBattle(int(args.get('subModeId', UNKNOWN_EVENT_ID)))
+        self.__toggleSelectorClickProcessing(False)
+        if result and self.viewStatus == ViewStatus.LOADED:
+            self.closeSelection()
 
     def __onShowSubInfoPage(self, args):
         self.showSubModeInfoPage(int(args.get('subModeId', UNKNOWN_EVENT_ID)))
@@ -251,6 +255,10 @@ class FunModeSubSelectorView(ViewImpl, FunSubModesWatcher, FunProgressionWatcher
         packProgressionState(progression, model.state)
         packProgressionCondition(progression, model.condition)
         packProgressionActiveStage(progression, model.currentStage, self.__tooltips)
+
+    def __toggleSelectorClickProcessing(self, isClickProcessing):
+        ctx = {'isClickProcessing': isClickProcessing}
+        g_eventBus.handleEvent(ModeSubSelectorEvent(ModeSubSelectorEvent.CLICK_PROCESSING, ctx=ctx))
 
 
 class FunModeSubSelectorWindow(LobbyWindow):

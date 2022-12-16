@@ -189,19 +189,6 @@ def getEventBoardsFormattersMap():
     return mapping
 
 
-def getLinkedSetFormattersMap():
-    tokenBonusFormatter = LinkedSetTokenBonusFormatter()
-    mapping = getDefaultFormattersMap()
-    mapping.update({'battleToken': tokenBonusFormatter, 
-       'tokens': tokenBonusFormatter, 
-       'items': LinkedSetItemsBonusFormatter(), 
-       PREMIUM_ENTITLEMENTS.BASIC: LinkedSetPremiumDaysBonusFormatter(), 
-       PREMIUM_ENTITLEMENTS.PLUS: LinkedSetPremiumDaysBonusFormatter(), 
-       'vehicles': LinkedSetVehiclesBonusFormatter(), 
-       'customizations': LinkedSetCustomizationsBonusFormatter()})
-    return mapping
-
-
 def getEpicBattleFormattersMap():
     mapping = getDefaultFormattersMap()
     mapping.update({'abilityPts': EpicAbilityPtsFormatter(), 
@@ -231,14 +218,6 @@ def getPackRentVehiclesFormattersMap():
 def getLootboxesFormatterMap():
     mapping = getDefaultFormattersMap()
     mapping.update({'vehicles': RentVehiclesBonusFormatter()})
-    return mapping
-
-
-def getSeniorityFormatterMap():
-    mapping = getLootboxesFormatterMap()
-    mapping.update({PREMIUM_ENTITLEMENTS.BASIC: SeniorityPremiumDaysBonusFormatter(), 
-       PREMIUM_ENTITLEMENTS.PLUS: SeniorityPremiumDaysBonusFormatter(), 
-       'customizations': SeniorityCustomizationsBonusFormatter()})
     return mapping
 
 
@@ -306,10 +285,6 @@ def getEpicViewAwardPacker():
     return AwardsPacker(getEpicSetFormattersMap())
 
 
-def getLinkedSetAwardPacker():
-    return AwardsPacker(getLinkedSetFormattersMap())
-
-
 def getEventBoardsAwardPacker():
     return AwardsPacker(getEventBoardsFormattersMap())
 
@@ -320,10 +295,6 @@ def getPackRentVehiclesAwardPacker():
 
 def getLootboxesAwardsPacker():
     return AwardsPacker(getLootboxesFormatterMap())
-
-
-def getSeniorityAwardsPacker():
-    return AwardsPacker(getSeniorityFormatterMap())
 
 
 def getPostBattleAwardsPacker():
@@ -704,19 +675,12 @@ class BattlePassPremiumDaysBonusFormatter(SimpleBonusFormatter):
         return result
 
 
-class LinkedSetPremiumDaysBonusFormatter(PremiumDaysBonusFormatter):
+class SeniorityPremiumDaysBonusFormatter(PremiumDaysBonusFormatter):
+    __PREMIUM_DAYS_ICONS = (1, 2, 3, 7, 14, 30, 90, 180, 360)
 
     def _format(self, bonus):
         return [
          PreformattedBonus(label=self._getLabel(bonus), bonusName=bonus.getName(), userName=self._getUserName(bonus), images=self._getImages(bonus), tooltip=bonus.getTooltip(), isCompensation=self._isCompensation(bonus))]
-
-    @classmethod
-    def _getLabel(cls, bonus):
-        return formatTimeLabel(bonus.getValue() * time_utils.HOURS_IN_DAY)
-
-
-class SeniorityPremiumDaysBonusFormatter(LinkedSetPremiumDaysBonusFormatter):
-    __PREMIUM_DAYS_ICONS = (1, 2, 3, 7, 14, 30, 90, 180, 360)
 
     @classmethod
     def _getLabel(cls, bonus):
@@ -932,12 +896,6 @@ class TmanTemplateBonusFormatter(SimpleBonusFormatter):
              tokenID], isSpecial=True)
 
 
-class LinkedSetTokenBonusFormatter(TokenBonusFormatter):
-
-    def _formatBonusLabel(self, count):
-        return ('x{}').format(count)
-
-
 class CustomizationUnlockFormatter(TokenBonusFormatter):
     c11n = dependency.descriptor(ICustomizationService)
     __TOKEN_POSTFIX = ':camouflage'
@@ -1129,13 +1087,6 @@ class RentVehiclesBonusFormatter(VehiclesBonusFormatter):
         return rentArgs
 
 
-class LinkedSetVehiclesBonusFormatter(VehiclesBonusFormatter):
-
-    @classmethod
-    def _getVehicleLabel(cls, bonus, vehicle, vehInfo):
-        return formatTimeLabel(bonus.getRentDays(vehInfo) * time_utils.HOURS_IN_DAY)
-
-
 class DossierBonusFormatter(SimpleBonusFormatter):
 
     def _format(self, bonus):
@@ -1323,19 +1274,6 @@ class RankedCustomizationsBonusFormatter(CustomizationsBonusFormatter):
                 result[size] = backport.image(resource())
 
         return result
-
-
-class SeniorityCustomizationsBonusFormatter(CustomizationsBonusFormatter):
-
-    @classmethod
-    def _getUserName(cls, c11nItem):
-        return i18n.makeString(c11nItem.userName)
-
-
-class LinkedSetCustomizationsBonusFormatter(CustomizationsBonusFormatter):
-
-    def _formatBonusLabel(self, count):
-        return ('x{}').format(count)
 
 
 class OperationCustomizationsBonusFormatter(CustomizationsBonusFormatter):
@@ -1576,12 +1514,6 @@ class ItemsEpicBonusFormatter(ItemsBonusFormatter):
     def _getImages(cls, item):
         size = EPIC_AWARD_SIZE
         return {size: RES_ICONS.getBonusIcon(size, item.getGUIEmblemID())}
-
-
-class LinkedSetItemsBonusFormatter(ItemsBonusFormatter):
-
-    def _formatBonusLabel(self, count):
-        return ('x{}').format(count)
 
 
 class EpicItemsBonusFormatter(ItemsBonusFormatter):

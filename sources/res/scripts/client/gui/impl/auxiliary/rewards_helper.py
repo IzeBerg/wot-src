@@ -1,4 +1,4 @@
-import logging, types, itertools
+import logging, types, typing, itertools
 from collections import namedtuple
 from blueprints.BlueprintTypes import BlueprintTypes
 from frameworks.wulf import ViewFlags
@@ -29,7 +29,8 @@ from gui.impl.gen.view_models.views.loot_box_view.loot_vehicle_compensation_rend
 from gui.impl.gen.view_models.views.loot_box_view.loot_conversion_renderer_model import LootConversionRendererModel
 from gui.impl.gen.view_models.views.loot_box_view.loot_renderer_types import LootRendererTypes
 from gui.impl.gen.view_models.views.loot_box_view.loot_vehicle_renderer_model import LootVehicleRendererModel
-from gui.server_events.awards_formatters import getPackRentVehiclesAwardPacker, getLootboxesAwardsPacker, getRoyaleAwardsPacker, getSeniorityAwardsPacker, AWARDS_SIZES
+from gui.impl.lobby.awards.packers import getAdditionalAwardsBonusPacker
+from gui.server_events.awards_formatters import getPackRentVehiclesAwardPacker, getLootboxesAwardsPacker, getRoyaleAwardsPacker
 from gui.server_events.bonuses import getNonQuestBonuses, BlueprintsBonusSubtypes
 from gui.server_events.recruit_helper import getRecruitInfo
 from gui.shared.formatters import text_styles
@@ -84,7 +85,6 @@ _COMPENSATION_TOOLTIP_CONTENT_CLASSES = {LootBoxCompensationTooltipTypes.CREW_SK
 _MIN_PROBABILITY = 7
 _MAX_PROBABILITY = 15
 _MIN_VEHICLE_LVL_BLUEPRINT_AWARD = 8
-VehicleAward = namedtuple('VehicleAward', 'vehicleCD level name userName')
 SeniorityAwards = namedtuple('SeniorityAwards', 'bonuses vehicles currencies')
 
 class LootRewardDefModelPresenter(object):
@@ -603,16 +603,14 @@ def getRewardTooltipContent(event, storedTooltipData=None, itemsCache=None):
         return _COMPENSATION_TOOLTIP_CONTENT_CLASSES[tooltipType](**tooltipData)
 
 
-@dependency.replace_none_kwargs(itemsCache=IItemsCache)
-def getSeniorityAwardsRewardsAndBonuses(rewards, size=AWARDS_SIZES.BIG, maxAwardCount=_DEFAULT_DISPLAYED_AWARDS_COUNT, excluded=(), sortKey=None, itemsCache=None):
+def getSeniorityAwardsRewardsAndBonuses(rewards, excluded=(), sortKey=None):
     preparationRewardsCurrency(rewards)
-    formatter = LootBoxBonusComposer(maxAwardCount, getSeniorityAwardsPacker())
-    alwaysVisibleBonuses = []
+    packer = getAdditionalAwardsBonusPacker()
     bonuses = []
     vehicles = []
     currencies = {}
     if rewards:
-        for rewardType, rewardValue in rewards.iteritems():
+        for rewardType, rewardValue in rewards.items():
             if rewardType in excluded:
                 continue
             if rewardType == 'vehicles':
@@ -620,15 +618,13 @@ def getSeniorityAwardsRewardsAndBonuses(rewards, size=AWARDS_SIZES.BIG, maxAward
             elif rewardType == 'currencies':
                 currencies = {name:value['count'] for name, value in rewardValue.items()}
             else:
-                bonuses.extend(getNonQuestBonuses(rewardType, rewardValue))
+                nonQuestBonuses = getNonQuestBonuses(rewardType, rewardValue)
+                for bonus in nonQuestBonuses:
+                    bonuses.extend(zip(packer.pack(bonus), packer.getToolTip(bonus)))
 
-    formattedBonuses = formatter.getVisibleFormattedBonuses(bonuses, alwaysVisibleBonuses, size, sortKey=sortKey)
-    orderedVehicles = []
-    for vehicleCD in vehicles:
-        vehicle = itemsCache.items.getItemByCD(vehicleCD)
-        orderedVehicles.append(VehicleAward(vehicleCD, vehicle.level, vehicle.name, vehicle.userName))
-
-    return SeniorityAwards(formattedBonuses, orderedVehicles, currencies)
+    if sortKey:
+        bonuses = sorted(bonuses, key=sortKey)
+    return SeniorityAwards(bonuses, vehicles, currencies)
 
 
 def getProgressiveRewardBonuses(rewards, size='big', maxAwardCount=_DEFAULT_DISPLAYED_AWARDS_COUNT, packBlueprints=False, ctx=None):

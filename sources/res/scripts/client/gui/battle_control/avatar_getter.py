@@ -321,6 +321,18 @@ def getOwnVehiclePosition(avatar=None):
     return position
 
 
+def getAvatarPosition(avatar=None):
+    if avatar is None:
+        avatar = BigWorld.player()
+    try:
+        position = avatar.position
+    except AttributeError:
+        position = None
+        _logger.warning('Attribute "position" of Avatar is not found')
+
+    return position
+
+
 def getDistanceToTarget(target, avatar=None):
     ownPosition = getOwnVehiclePosition(avatar=avatar)
     if ownPosition is not None:

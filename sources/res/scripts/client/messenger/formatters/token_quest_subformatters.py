@@ -14,6 +14,7 @@ from gui.ranked_battles import ranked_helpers
 from gui.ranked_battles.constants import RankedDossierKeys, YEAR_POINTS_TOKEN
 from gui.ranked_battles.ranked_helpers.web_season_provider import UNDEFINED_LEAGUE_ID, TOP_LEAGUE_ID
 from gui.Scaleform.genConsts.RANKEDBATTLES_CONSTS import RANKEDBATTLES_CONSTS
+from gui.server_events.bonuses import getMergedBonusesFromDicts
 from gui.server_events.events_helpers import getIdxFromQuestID
 from gui.server_events.recruit_helper import getSourceIdFromQuest
 from gui.shared.formatters import text_styles
@@ -26,7 +27,7 @@ from messenger.proto.bw.wrappers import ServiceChannelMessage
 from shared_utils import findFirst, first
 from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.server_events import IEventsCache
-from skeletons.gui.game_control import IRankedBattlesController
+from skeletons.gui.game_control import IRankedBattlesController, ISeniorityAwardsController
 from helpers import dependency
 from helpers import time_utils
 _logger = logging.getLogger(__name__)
@@ -492,7 +493,7 @@ class PersonalMissionsFormatter(PersonalMissionsTokenQuestsFormatter):
 
 class SeniorityAwardsFormatter(AsyncTokenQuestsSubFormatter):
     __MESSAGE_TEMPLATE = 'SeniorityAwardsQuest'
-    __SENIORITY_AWARDS_TOKEN_QUEST_PATTERN = 'SeniorityAwardsQuest'
+    __seniorityAwardCtrl = dependency.descriptor(ISeniorityAwardsController)
 
     @adisp_async
     @adisp_process
@@ -502,24 +503,27 @@ class SeniorityAwardsFormatter(AsyncTokenQuestsSubFormatter):
         if isSynced:
             data = message.data or {}
             completedQuestIDs = self.getQuestOfThisGroup(data.get('completedQuestIDs', set()))
-            for qID in completedQuestIDs:
-                messageData = self.__buildMessage(qID, message)
-                if messageData is not None:
-                    messageDataList.append(messageData)
-
+            detailedRewards = data.get('detailedRewards', {})
+            mergedRewards = getMergedBonusesFromDicts(detailedRewards.get(qID, {}) for qID in completedQuestIDs)
+            messageData = self.__buildMessage(mergedRewards, message)
+            if messageData is not None:
+                messageDataList.append(messageData)
         if messageDataList:
             callback(messageDataList)
-        callback([MessageData(None, None)])
+        else:
+            callback([MessageData(None, None)])
         return
 
     @classmethod
     def _isQuestOfThisGroup(cls, questID):
-        return cls.__SENIORITY_AWARDS_TOKEN_QUEST_PATTERN in questID
+        questPrefix = cls.__seniorityAwardCtrl.seniorityQuestPrefix
+        if questPrefix:
+            return questID.startswith(questPrefix)
+        return False
 
-    def __buildMessage(self, questID, message):
+    def __buildMessage(self, rewards, message):
         data = message.data or {}
         questData = {}
-        rewards = data.get('detailedRewards', {}).get(questID, {})
         popUps = set()
         for dossierRecord in chain.from_iterable(rewards.get('dossier', {}).values()):
             if dossierRecord[0] in ACHIEVEMENT_BLOCK.ALL:

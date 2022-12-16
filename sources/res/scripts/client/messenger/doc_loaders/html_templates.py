@@ -24,6 +24,8 @@ class _MessageTemplate(templates.Template):
                 vo['buttonsStates'] = {}
             if 'bgIconHeight' in data:
                 vo['bgIconHeight'] = data['bgIconHeight']
+            if 'linkageData' in data:
+                vo['linkageData'] = data['linkageData']
         vo['message'] = super(_MessageTemplate, self).format(ctx=ctx, sourceKey='message')
         return vo
 

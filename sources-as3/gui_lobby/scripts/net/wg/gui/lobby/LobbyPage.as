@@ -26,7 +26,6 @@ package net.wg.gui.lobby
    import net.wg.gui.lobby.post.TeaserEvent;
    import net.wg.gui.lobby.settings.config.ControlsFactory;
    import net.wg.gui.notification.NotificationPopUpViewer;
-   import net.wg.gui.notification.ServiceMessagePopUp;
    import net.wg.infrastructure.base.meta.impl.LobbyPageMeta;
    import net.wg.infrastructure.interfaces.IManagedContainer;
    import scaleform.clik.constants.ConstrainMode;
@@ -45,10 +44,6 @@ package net.wg.gui.lobby
       
       private static const TOP_SUB_VIEW_POSITION:Number = 53;
       
-      private static const SUB_VIEW_CONTAINER_ZINDEX:int = 3;
-      
-      private static const SUB_TOP_CONTAINER_ZINDEX:int = 4;
-      
       private static const WARNING_EMPTY_HIT_AREA:String = "vehicleHitArea is null!";
        
       
@@ -59,8 +54,6 @@ package net.wg.gui.lobby
       public var subViewContainer:IManagedContainer = null;
       
       public var header:LobbyHeader;
-      
-      public var messagePopupTemplate:ServiceMessagePopUp;
       
       public var notificationPopupViewer:NotificationPopUpViewer;
       
@@ -129,9 +122,6 @@ package net.wg.gui.lobby
          addEventListener(TeaserEvent.HIDE,this.onTeaserHideHandler,true);
          constraints = new Constraints(this,ConstrainMode.COUNTER_SCALE);
          this.updateStage(App.appWidth,App.appHeight);
-         this.messagePopupTemplate.dispose();
-         this.messagePopupTemplate.parent.removeChild(this.messagePopupTemplate);
-         this.messagePopupTemplate = null;
          this.vehicleHitArea.addEventListener(MouseEvent.ROLL_OVER,this.onVehicleHitAreaRollOverHandler);
          this.vehicleHitArea.addEventListener(MouseEvent.ROLL_OUT,this.onVehicleHitAreaRollOutHandler);
       }
@@ -170,8 +160,9 @@ package net.wg.gui.lobby
             registerFlashComponentS(this.notificationPopupViewer,Aliases.SYSTEM_MESSAGES);
          }
          registerFlashComponentS(this.messengerBar,Aliases.MESSENGER_BAR);
-         this.subViewContainer = this.addSubContainer(LAYER_NAMES.SUBVIEW,SUB_VIEW_CONTAINER_ZINDEX);
-         this.subTopContainer = this.addSubContainer(LAYER_NAMES.TOP_SUB_VIEW,SUB_TOP_CONTAINER_ZINDEX);
+         var _loc1_:uint = this.getChildIndex(this.waiting) + 1;
+         this.subViewContainer = this.addSubContainer(LAYER_NAMES.SUBVIEW,_loc1_);
+         this.subTopContainer = this.addSubContainer(LAYER_NAMES.TOP_SUB_VIEW,_loc1_ + 1);
          this.subViewContainer.manageSize = false;
          this.subTopContainer.manageSize = false;
       }
@@ -202,11 +193,6 @@ package net.wg.gui.lobby
             this._teaserOverlay.removeChild(this._teaser);
             this._teaser.bitmapData.dispose();
             this._teaser = null;
-         }
-         if(this.messagePopupTemplate)
-         {
-            this.messagePopupTemplate.dispose();
-            this.messagePopupTemplate = null;
          }
          this.header = null;
          this.notificationPopupViewer = null;
@@ -353,9 +339,10 @@ package net.wg.gui.lobby
       
       private function onTeaserHideHandler(param1:TeaserEvent) : void
       {
+         var _loc2_:Point = null;
          addChildAt(this._teaserOverlay = new Sprite(),getChildIndex(this.header) + 1);
          this._teaser = param1.teaser.drawToBitmap();
-         var _loc2_:Point = new Point(this._teaser.x,this._teaser.y);
+         _loc2_ = new Point(this._teaser.x,this._teaser.y);
          _loc2_ = this._teaserOverlay.globalToLocal(_loc2_);
          this._teaser.x = _loc2_.x;
          this._teaser.y = _loc2_.y;

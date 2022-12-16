@@ -30,7 +30,7 @@ from messenger.proto import proto_getter
 from messenger.proto.xmpp.xmpp_constants import XMPP_ITEM_TYPE
 from notification.settings import NOTIFICATION_TYPE, NOTIFICATION_BUTTON_STATE
 from notification.settings import makePathToIcon
-from skeletons.gui.game_control import IBattlePassController, IMapboxController, IResourceWellController
+from skeletons.gui.game_control import IBattlePassController, IMapboxController, IResourceWellController, ISeniorityAwardsController
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.web import IWebController
@@ -123,11 +123,11 @@ class _NotificationDecorator(object):
     def isOrderChanged(self):
         return self._isOrderChanged
 
+    def isShouldCountOnlyOnce(self):
+        return False
+
     def update(self, entity):
         self._entity = entity
-
-    def getVisibilityTime(self):
-        return
 
     def getListVO(self, newId=None):
         vo = self._vo.copy()
@@ -163,7 +163,7 @@ class _NotificationDecorator(object):
 
     def getCounterInfo(self):
         return (
-         self.getGroup(), self.getType(), self.getID())
+         self.getGroup(), self.getType(), self.getID(), self.isShouldCountOnlyOnce())
 
     def decrementCounterOnHidden(self):
         return True
@@ -231,6 +231,9 @@ class RecruitReminderMessageDecorator(MessageDecorator):
         settings = NotificationGuiSettings(isNotify=True, priorityLevel=msgPrLevel)
         super(RecruitReminderMessageDecorator, self).__init__(entityID, entity, settings)
 
+    def isShouldCountOnlyOnce(self):
+        return True
+
     def getType(self):
         return NOTIFICATION_TYPE.RECRUIT_REMINDER
 
@@ -248,28 +251,14 @@ class EmailConfirmationReminderMessageDecorator(MessageDecorator):
         settings = NotificationGuiSettings(isNotify=True)
         super(EmailConfirmationReminderMessageDecorator, self).__init__(entityID, entity, settings)
 
+    def isShouldCountOnlyOnce(self):
+        return True
+
     def getType(self):
         return NOTIFICATION_TYPE.EMAIL_CONFIRMATION_REMINDER
 
     def getGroup(self):
         return NotificationGroup.OFFER
-
-
-class PsaCoinReminderMessageDecorator(MessageDecorator):
-
-    def __init__(self, entityID, coinCount, msgPrLevel=NotificationPriorityLevel.LOW):
-        entity = g_settings.msgTemplates.format('PsaCoinReminder', ctx={'count': str(coinCount)}, data={'savedData': coinCount})
-        settings = NotificationGuiSettings(isNotify=True, priorityLevel=msgPrLevel)
-        super(PsaCoinReminderMessageDecorator, self).__init__(entityID, entity, settings)
-
-    def getType(self):
-        return NOTIFICATION_TYPE.PSACOIN_REMINDER
-
-    def getGroup(self):
-        return NotificationGroup.OFFER
-
-    def getSavedData(self):
-        return self._vo['message'].get('savedData', 0)
 
 
 class LockButtonMessageDecorator(MessageDecorator):
@@ -908,6 +897,9 @@ class BattlePassSwitchChapterReminderDecorator(MessageDecorator):
     def __init__(self, entityID, message):
         super(BattlePassSwitchChapterReminderDecorator, self).__init__(entityID, self.__makeEntity(message), self.__makeSettings())
 
+    def isShouldCountOnlyOnce(self):
+        return True
+
     def getGroup(self):
         return NotificationGroup.OFFER
 
@@ -1047,7 +1039,7 @@ class ResourceWellStartDecorator(ResourceWellLockButtonDecorator):
         return g_settings.msgTemplates.format('ResourceWellStartSysMessage', ctx=message)
 
     def __makeSettings(self):
-        return NotificationGuiSettings(isNotify=True, priorityLevel=NotificationPriorityLevel.LOW)
+        return NotificationGuiSettings(isNotify=True, priorityLevel=NotificationPriorityLevel.HIGH)
 
 
 class IntegratedAuctionDecorator(MessageDecorator):
@@ -1104,5 +1096,60 @@ class PersonalReservesConversionMessageDecorator(MessageDecorator):
         settings = NotificationGuiSettings(isNotify=True, priorityLevel=NotificationPriorityLevel.LOW)
         super(PersonalReservesConversionMessageDecorator, self).__init__(self.ENTITY_ID, entity, settings)
 
+    def isShouldCountOnlyOnce(self):
+        return True
+
     def getGroup(self):
         return NotificationGroup.OFFER
+
+
+class SeniorityAwardsDecorator(MessageDecorator):
+    __seniorityAwardCtrl = dependency.descriptor(ISeniorityAwardsController)
+
+    def __init__(self, entityID, notificationType, savedData, model, template, priority, useCounterOnce=True):
+        self.__notificationType = notificationType
+        self.__useCounterOnce = useCounterOnce
+        entity = g_settings.msgTemplates.format(template, data={'linkageData': savedData})
+        settings = NotificationGuiSettings(isNotify=True, priorityLevel=priority, groupID=self.getGroup())
+        super(SeniorityAwardsDecorator, self).__init__(entityID, entity=entity, settings=settings, model=model)
+
+    def getType(self):
+        return self.__notificationType
+
+    def getGroup(self):
+        return NotificationGroup.OFFER
+
+    def getSavedData(self):
+        return self._entity.get('linkageData')
+
+    def isShouldCountOnlyOnce(self):
+        return self.__useCounterOnce
+
+    @staticmethod
+    def isPinned():
+        return True
+
+    def decrementCounterOnHidden(self):
+        return False
+
+    def _make(self, entity=None, settings=None):
+        self.__updateEntityButtons()
+        super(SeniorityAwardsDecorator, self)._make(entity, settings)
+
+    def __updateEntityButtons(self):
+        if self._entity is None:
+            return
+        else:
+            buttonsLayout = self._entity.get('buttonsLayout')
+            if not buttonsLayout:
+                return
+            buttonsStates = self._entity.get('buttonsStates')
+            state = self._getButtonState()
+            buttonsStates['submit'] = state
+            return
+
+    def _getButtonState(self):
+        state = NOTIFICATION_BUTTON_STATE.VISIBLE
+        if self.__seniorityAwardCtrl.timeLeft > 0:
+            state |= NOTIFICATION_BUTTON_STATE.ENABLED
+        return state

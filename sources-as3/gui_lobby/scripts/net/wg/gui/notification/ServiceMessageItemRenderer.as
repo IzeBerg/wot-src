@@ -1,5 +1,6 @@
 package net.wg.gui.notification
 {
+   import flash.display.MovieClip;
    import net.wg.gui.components.interfaces.IReusableListItemRenderer;
    import net.wg.gui.notification.events.NotificationListEvent;
    import net.wg.gui.notification.vo.NotificationInfoVO;
@@ -47,9 +48,9 @@ package net.wg.gui.notification
          super.draw();
          if(isInvalid(InvalidationType.STATE))
          {
-            if(this._backgroundLabel && content.background)
+            if(this._backgroundLabel && MovieClip(content).background)
             {
-               content.background.gotoAndStop(this._backgroundLabel);
+               MovieClip(content).background.gotoAndStop(this._backgroundLabel);
             }
          }
       }

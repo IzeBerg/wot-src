@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>14.233335</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Glow_Electro</name>
+		<type>model</type>
+		<resource>particles/Tank/customization/GB91_Super_Conqueror_MD22_III_3DSt/GB91_Effects_Models/normal/lod0/electro_glow.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -1.881637 -0.483246</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>LighningsR</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.947634 0.687228 0.264599</value>
+				<inTangent>0.000000 -0.051057 0.000000</inTangent>
+				<outTangent>0.000000 -0.061930 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.600000</startTime>
+				<value>0.947634 0.464279 0.264599</value>
+				<inTangent>-0.000000 -0.061930 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.700000</startTime>
+				<value>0.947634 0.464279 0.264599</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.042833 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>12.200001</startTime>
+				<value>0.947634 0.699862 0.264599</value>
+				<inTangent>-0.000000 0.042833 -0.000000</inTangent>
+				<outTangent>-0.000000 0.042833 -0.000000</outTangent>
+				<tangentMode>1</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000020 70.033615 51.627548</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>1.000000</duration>
+				<value>particles/Tank/customization/GB91_Super_Conqueror_MD22_III_3DSt/electro_lightning.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+			<frame>
+				<startTime>3.533334</startTime>
+				<duration>1.000000</duration>
+				<value>particles/Tank/customization/GB91_Super_Conqueror_MD22_III_3DSt/electro_lightning.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+			<frame>
+				<startTime>12.266667</startTime>
+				<duration>1.000000</duration>
+				<value>particles/Tank/customization/GB91_Super_Conqueror_MD22_III_3DSt/electro_lightning.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>LighningsL</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.888884 0.676430 0.258106</value>
+				<inTangent>0.000000 -0.051057 0.000000</inTangent>
+				<outTangent>0.000000 -0.026604 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.466667</startTime>
+				<value>-0.888884 0.451180 0.258106</value>
+				<inTangent>-0.000000 -0.026604 -0.000000</inTangent>
+				<outTangent>0.000000 0.034539 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>13.100000</startTime>
+				<value>-0.888884 0.611212 0.258106</value>
+				<inTangent>-0.000000 0.034539 -0.000000</inTangent>
+				<outTangent>-0.000000 0.034539 -0.000000</outTangent>
+				<tangentMode>1</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-24.901760 111.112656 42.393234</value>
+				<inTangent>-28.732821 47.398888 -10.654977</inTangent>
+				<outTangent>-28.732821 47.398888 -10.654977</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>1.933333</startTime>
+				<duration>1.000000</duration>
+				<value>particles/Tank/customization/GB91_Super_Conqueror_MD22_III_3DSt/electro_lightning.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+			<frame>
+				<startTime>8.466667</startTime>
+				<duration>1.000000</duration>
+				<value>particles/Tank/customization/GB91_Super_Conqueror_MD22_III_3DSt/electro_lightning.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+			<frame>
+				<startTime>13.233334</startTime>
+				<duration>1.000001</duration>
+				<value>particles/Tank/customization/GB91_Super_Conqueror_MD22_III_3DSt/electro_lightning.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>isolator_sound</name>
+		<type>sound</type>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>1.333334</duration>
+				<sequenceSound>style_cust_super_conqueror_isolator</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+			<frame>
+				<startTime>1.933333</startTime>
+				<duration>1.000000</duration>
+				<sequenceSound>style_cust_super_conqueror_isolator</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+			<frame>
+				<startTime>3.533334</startTime>
+				<duration>1.000000</duration>
+				<sequenceSound>style_cust_super_conqueror_isolator</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+			<frame>
+				<startTime>8.500000</startTime>
+				<duration>1.000001</duration>
+				<sequenceSound>style_cust_super_conqueror_isolator</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+			<frame>
+				<startTime>12.266667</startTime>
+				<duration>0.900000</duration>
+				<sequenceSound>style_cust_super_conqueror_isolator</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+			<frame>
+				<startTime>13.266667</startTime>
+				<duration>0.966667</duration>
+				<sequenceSound>style_cust_super_conqueror_isolator</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

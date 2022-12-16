@@ -11,10 +11,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public var clickActionBtn:Function;
       
-      public var openTokenPopover:Function;
-      
-      public var useTokenClick:Function;
-      
       public var onClickButtonDetails:Function;
       
       public function MissionsGroupedViewMeta()
@@ -32,18 +28,6 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.clickActionBtn,"clickActionBtn" + Errors.CANT_NULL);
          this.clickActionBtn(param1);
-      }
-      
-      public function openTokenPopoverS(param1:int) : void
-      {
-         App.utils.asserter.assertNotNull(this.openTokenPopover,"openTokenPopover" + Errors.CANT_NULL);
-         this.openTokenPopover(param1);
-      }
-      
-      public function useTokenClickS(param1:String) : void
-      {
-         App.utils.asserter.assertNotNull(this.useTokenClick,"useTokenClick" + Errors.CANT_NULL);
-         this.useTokenClick(param1);
       }
       
       public function onClickButtonDetailsS() : void

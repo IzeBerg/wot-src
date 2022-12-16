@@ -77,6 +77,17 @@ package net.wg.gui.lobby.vehicleInfo
          this._counterManager = App.utils.counterManager;
       }
       
+      private static function initButton(param1:ISoundButtonEx, param2:VehicleInfoButtonDataVO) : void
+      {
+         param1.visible = param2.visible;
+         if(param2.visible)
+         {
+            param1.enabled = param2.enabled;
+            param1.label = param2.label;
+            param1.tooltip = param2.tooltip;
+         }
+      }
+      
       override protected function setCompareButtonData(param1:VehicleInfoButtonDataVO) : void
       {
          this._compareData = param1;
@@ -145,7 +156,7 @@ package net.wg.gui.lobby.vehicleInfo
          }
          if(this._changeNationData && isInvalid(INV_CHANGE_NATION_DATA))
          {
-            this.initButton(this.changeNationBtn,this._changeNationData);
+            initButton(this.changeNationBtn,this._changeNationData);
             if(this._changeNationData.visible)
             {
                if(this._changeNationData.isNew)
@@ -162,7 +173,7 @@ package net.wg.gui.lobby.vehicleInfo
          }
          if(this._compareData && isInvalid(INV_COMPARE_DATA))
          {
-            this.initButton(this.compareBtn,this._compareData);
+            initButton(this.compareBtn,this._compareData);
          }
       }
       
@@ -215,17 +226,6 @@ package net.wg.gui.lobby.vehicleInfo
       {
          this._data = param1;
          invalidateData();
-      }
-      
-      private function initButton(param1:ISoundButtonEx, param2:VehicleInfoButtonDataVO) : void
-      {
-         param1.visible = param2.visible;
-         if(param2.visible)
-         {
-            param1.enabled = param2.enabled;
-            param1.label = param2.label;
-            param1.tooltip = param2.tooltip;
-         }
       }
       
       private function onCompareBtnClickHandler(param1:ButtonEvent) : void

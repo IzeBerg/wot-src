@@ -8,11 +8,5 @@ class MissionsGroupedViewMeta(MissionView):
     def clickActionBtn(self, actionID):
         self._printOverrideError('clickActionBtn')
 
-    def openTokenPopover(self, id):
-        self._printOverrideError('openTokenPopover')
-
-    def useTokenClick(self, eventID):
-        self._printOverrideError('useTokenClick')
-
     def onClickButtonDetails(self):
         self._printOverrideError('onClickButtonDetails')

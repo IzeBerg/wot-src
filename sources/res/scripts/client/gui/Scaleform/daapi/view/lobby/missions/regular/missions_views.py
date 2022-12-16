@@ -16,16 +16,13 @@ from gui.Scaleform.daapi.view.meta.MissionsGroupedViewMeta import MissionsGroupe
 from gui.Scaleform.daapi.view.meta.MissionsMarathonViewMeta import MissionsMarathonViewMeta
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.Scaleform.genConsts.EVENTBOARDS_ALIASES import EVENTBOARDS_ALIASES
-from gui.Scaleform.genConsts.LINKEDSET_ALIASES import LINKEDSET_ALIASES
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
 from gui.Scaleform.locale.EVENT_BOARDS import EVENT_BOARDS
-from gui.Scaleform.locale.LINKEDSET import LINKEDSET
 from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.genConsts.QUESTS_ALIASES import QUESTS_ALIASES
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.event_boards.settings import expandGroup, isGroupMinimized
 from gui.server_events import settings, caches
-from gui.server_events.event_items import DEFAULTS_GROUPS
 from gui.server_events.events_dispatcher import hideMissionDetails
 from gui.server_events.events_dispatcher import showMissionsCategories
 from gui.server_events.events_helpers import isMarathon, isDailyQuest, isPremium
@@ -339,7 +336,6 @@ class MissionsEventBoardsView(MissionsEventBoardsViewMeta):
 
 
 class MissionsCategoriesView(_GroupedMissionsView):
-    QUESTS_COUNT_LINKEDSET_BLOCK = 1
     _lobbyContext = dependency.descriptor(ILobbyContext)
     __showDQInMissionsTab = False
 
@@ -356,53 +352,16 @@ class MissionsCategoriesView(_GroupedMissionsView):
         viewQuestFilter = MissionsCategoriesView.getViewQuestFilter()
         return lambda q: viewQuestFilter(q) or isPremium(q.getGroupID()) or isDailyQuest(q.getID())
 
-    def openMissionDetailsView(self, eventID, blockID):
-        if blockID == DEFAULTS_GROUPS.LINKEDSET_QUESTS:
-            g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(LINKEDSET_ALIASES.LINKED_SET_DETAILS_CONTAINER_VIEW), ctx={'eventID': eventID}), scope=EVENT_BUS_SCOPE.LOBBY)
-        else:
-            super(MissionsCategoriesView, self).openMissionDetailsView(eventID, blockID)
-
-    def onLinkedSetUpdated(self, _):
-        self._filterMissions()
-
-    def useTokenClick(self, eventID):
-        level = 6
-        g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(LINKEDSET_ALIASES.LINKED_SET_VEHICLE_LIST_POPUP_PY), ctx={'infoText': _ms(LINKEDSET.VEHICLE_LIST_POPUP_INFO_TEXT, level=level), 
-           'levelsRange': [
-                         level], 
-           'section': 'linkedset_view_vehicle'}), scope=EVENT_BUS_SCOPE.LOBBY)
-
     def onClickButtonDetails(self):
         showTankPremiumAboutPage()
 
     def _populate(self):
         super(MissionsCategoriesView, self)._populate()
-        g_eventBus.addListener(events.MissionsEvent.ON_LINKEDSET_STATE_UPDATED, self.onLinkedSetUpdated, EVENT_BUS_SCOPE.LOBBY)
         self._lobbyContext.getServerSettings().onServerSettingsChange += self.__onServerSettingsChange
 
     def _dispose(self):
-        g_eventBus.removeListener(events.MissionsEvent.ON_LINKEDSET_STATE_UPDATED, self.onLinkedSetUpdated, EVENT_BUS_SCOPE.LOBBY)
         self._lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingsChange
         super(MissionsCategoriesView, self)._dispose()
-
-    def _appendBlockDataToResult(self, result, data):
-        if data.blockData.get('blockId', None) == DEFAULTS_GROUPS.LINKEDSET_QUESTS and self._getQuestFilteredCountFromBlockData(data) == 0:
-            return self.QUESTS_COUNT_LINKEDSET_BLOCK
-        else:
-            result.append(data.blockData)
-            return
-
-    def _getQuestTotalCountFromBlockData(self, data):
-        if data.blockData.get('blockId', None) == DEFAULTS_GROUPS.LINKEDSET_QUESTS:
-            return self.QUESTS_COUNT_LINKEDSET_BLOCK
-        else:
-            return super(MissionsCategoriesView, self)._getQuestTotalCountFromBlockData(data)
-
-    def _getQuestFilteredCountFromBlockData(self, data):
-        if data.blockData.get('blockId', None) == DEFAULTS_GROUPS.LINKEDSET_QUESTS:
-            return self.QUESTS_COUNT_LINKEDSET_BLOCK
-        else:
-            return super(MissionsCategoriesView, self)._getQuestFilteredCountFromBlockData(data)
 
     @staticmethod
     def _getBackground():

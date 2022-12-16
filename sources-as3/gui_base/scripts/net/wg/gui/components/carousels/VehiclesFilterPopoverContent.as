@@ -109,7 +109,10 @@ package net.wg.gui.components.carousels
          this.listVehicleLevels.addEventListener(Event.RESIZE,this.onListsResizeHandler);
          this.listSpecials.addEventListener(Event.RESIZE,this.onListsResizeHandler);
          this.listHidden.addEventListener(Event.RESIZE,this.onListsResizeHandler);
-         this.lblAdditionalInfo.visible = false;
+         if(this.lblAdditionalInfo)
+         {
+            this.lblAdditionalInfo.visible = false;
+         }
       }
       
       override protected function draw() : void
@@ -192,6 +195,7 @@ package net.wg.gui.components.carousels
       
       protected function getNewHeight(param1:int) : int
       {
+         var _loc2_:Boolean = false;
          this.lblNationType.y = param1;
          this.listNationType.y = this.lblNationType.y + this.lblNationType.height + LABEL_OFFSET | 0;
          param1 = this.listNationType.y + this.listNationType.height + LIST_OFFSET;
@@ -219,12 +223,15 @@ package net.wg.gui.components.carousels
             this.listProgressions.y = this.lblProgressions.y + this.lblProgressions.height + LABEL_OFFSET | 0;
             param1 = this.listProgressions.y + this.listProgressions.height + LIST_OFFSET;
          }
-         var _loc2_:Boolean = StringUtils.isNotEmpty(this.initData.additionalInfo);
-         this.lblAdditionalInfo.visible = _loc2_;
-         if(_loc2_)
+         if(this.lblAdditionalInfo)
          {
-            this.lblAdditionalInfo.y = param1;
-            param1 = this.lblAdditionalInfo.y + this.lblAdditionalInfo.height + LIST_OFFSET | 0;
+            _loc2_ = StringUtils.isNotEmpty(this.initData.additionalInfo);
+            this.lblAdditionalInfo.visible = _loc2_;
+            if(_loc2_)
+            {
+               this.lblAdditionalInfo.y = param1;
+               param1 = this.lblAdditionalInfo.y + this.lblAdditionalInfo.height + LIST_OFFSET | 0;
+            }
          }
          return param1;
       }
@@ -241,6 +248,7 @@ package net.wg.gui.components.carousels
       
       protected function updateData() : void
       {
+         var _loc1_:String = null;
          this.lblHidden.visible = this.listHidden.visible = this.initData.hiddenSectionVisible;
          if(this.initData.hiddenSectionVisible)
          {
@@ -269,11 +277,14 @@ package net.wg.gui.components.carousels
          this.listNationType.dataProvider = this.initData.nations;
          this.lblVehicleType.htmlText = this.initData.vehicleTypesLabel;
          this.listVehicleType.dataProvider = this.initData.vehicleTypes;
-         var _loc1_:String = this.initData.additionalInfo;
-         if(StringUtils.isNotEmpty(_loc1_))
+         if(this.lblAdditionalInfo)
          {
-            this.lblAdditionalInfo.htmlText = _loc1_;
-            App.utils.commons.updateTextFieldSize(this.lblAdditionalInfo,false,true);
+            _loc1_ = this.initData.additionalInfo;
+            if(StringUtils.isNotEmpty(_loc1_))
+            {
+               this.lblAdditionalInfo.htmlText = _loc1_;
+               App.utils.commons.updateTextFieldSize(this.lblAdditionalInfo,false,true);
+            }
          }
       }
       

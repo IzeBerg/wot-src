@@ -13,6 +13,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onRibbonStartsPlaying:Function;
       
+      public var onNextBtnClick:Function;
+      
       public var onCloseBtnClick:Function;
       
       public var onRewardsBtnClick:Function;
@@ -50,6 +52,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onRibbonStartsPlaying,"onRibbonStartsPlaying" + Errors.CANT_NULL);
          this.onRibbonStartsPlaying();
+      }
+      
+      public function onNextBtnClickS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onNextBtnClick,"onNextBtnClick" + Errors.CANT_NULL);
+         this.onNextBtnClick();
       }
       
       public function onCloseBtnClickS() : void

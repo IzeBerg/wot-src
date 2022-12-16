@@ -137,7 +137,7 @@ class LobbyEntry(AppEntry):
 
     def _getRequiredLibraries(self):
         return ('windows.swf', 'animations.swf', 'common_i18n.swf', 'guiControlsLogin.swf',
-                'guiControlsLoginBattleDynamic.swf', 'ub_components.swf')
+                'guiControlsLoginBattleDynamic.swf', 'ub_components.swf', 'serviceMessageComponents.swf')
 
     def __getWaitingFromContainer(self):
         if self._containerMgr is not None:

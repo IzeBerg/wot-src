@@ -274,6 +274,17 @@ def packSimpleBonusesBlock(bonusesList, endlineSymbol='', complexTooltip=''):
     return UiElement(data)
 
 
+def packLongBonusesBlock(bonusesList, endlineSymbol='', complexTooltip='', linesLimit=-1):
+    data = {'linkage': 'LongQuestTextAwardBlockUI', 
+       'items': bonusesList, 
+       'separator': ',\n', 
+       'ellipsis': '..', 
+       'endline': endlineSymbol, 
+       'linesLimit': linesLimit, 
+       'complexTooltip': complexTooltip}
+    return UiElement(data)
+
+
 def packNewStyleBonusesBlock(bonusesList, endlineSymbol=''):
     data = {'linkage': QUEST_AWARD_BLOCK_ALIASES.QUEST_BIG_ICON_AWARD_BLOCK, 
        'items': bonusesList, 

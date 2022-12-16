@@ -2110,6 +2110,10 @@ RECORDS = (
  (
   'singleAchievements', 'betaTester', 'p', 'B', 1),
  (
+  'singleAchievements', '12YearsOfService', 'p', 'B', 1),
+ (
+  'singleAchievements', '11YearsOfService', 'p', 'B', 1),
+ (
   'singleAchievements', '10YearsOfService', 'p', 'B', 1),
  (
   'singleAchievements', '09YearsOfService', 'p', 'B', 1),
@@ -2342,7 +2346,7 @@ RECORDS = (
  (
   'singleAchievements', 'november22', 'p', 'B', 1),
  (
-  'singleAchievements', 'prime_gaming_reserved_4', 'p', 'B', 1),
+  'singleAchievements', 'december22', 'p', 'B', 1),
  (
   'singleAchievements', 'prime_gaming_reserved_5', 'p', 'B', 1),
  (
@@ -2866,8 +2870,6 @@ RECORDS = (
  (
   'achievements', 'whiteTiger2012', 'p', 'B', 201),
  (
-  'singleAchievements', '11YearsOfService', 'p', 'B', 1),
- (
   'singleAchievements', 'NY22_AtmsphrLevel', 'p', 'B', 1),
  (
   'singleAchievements', 'NY22_CelebChallenge', 'p', 'B', 1),
@@ -2908,7 +2910,11 @@ RECORDS = (
  (
   'singleAchievements', 'hw2022Medal01', 'p', 'B', 1),
  (
-  'singleAchievements', 'hw2022Medal02', 'p', 'B', 1))
+  'singleAchievements', 'hw2022Medal02', 'p', 'B', 1),
+ (
+  'singleAchievements', 'NY23_AtmsphrLevel', 'p', 'B', 1),
+ (
+  'singleAchievements', 'NY23_CelebChallenge', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4302,7 +4308,7 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'september22'): 1664, 
    ('singleAchievements', 'october22'): 1665, 
    ('singleAchievements', 'november22'): 1666, 
-   ('singleAchievements', 'prime_gaming_reserved_4'): 1667, 
+   ('singleAchievements', 'december22'): 1667, 
    ('singleAchievements', 'prime_gaming_reserved_5'): 1668, 
    ('singleAchievements', 'prime_gaming_reserved_6'): 1669, 
    ('singleAchievements', 'prime_gaming_reserved_7'): 1670, 
@@ -4364,7 +4370,10 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('maxComp7Season1', 'maxSquadWinSeries'): 1726, 
    ('singleAchievements', 'comp7Season1'): 1728, 
    ('singleAchievements', 'hw2022Medal01'): 1729, 
-   ('singleAchievements', 'hw2022Medal02'): 1730}
+   ('singleAchievements', 'hw2022Medal02'): 1730, 
+   ('singleAchievements', '12YearsOfService'): 1731, 
+   ('singleAchievements', 'NY23_AtmsphrLevel'): 1732, 
+   ('singleAchievements', 'NY23_CelebChallenge'): 1733}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

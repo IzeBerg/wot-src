@@ -25,7 +25,7 @@ IS_DYNUPDATER = False
 IS_LOAD_GLOSSARY = False
 IS_CGF_DUMP = BigWorld.component == 'client_cgf_dump'
 DEFAULT_LANGUAGE = 'ru'
-AUTH_REALM = 'RU'
+AUTH_REALM = 'CT'
 IS_DEVELOPMENT = CURRENT_REALM == 'DEV'
 IS_CHINA = CURRENT_REALM == 'CN'
 IS_KOREA = CURRENT_REALM == 'KR'
@@ -1596,6 +1596,7 @@ class REQUEST_COOLDOWN:
     VEHICLE_IN_BATTLE_SWITCH = 2.0
     SET_VIVOX_PRESENCE = 1.0
     UNIT_UPDATE_EXTRAS = 2.0
+    SURVEY_RESULT = 1.0
 
 
 IS_SHOW_INGAME_HELP_FIRST_TIME = False
@@ -1911,7 +1912,10 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    108: 'Fun Random carousel filter 2', 
    USER_SERVER_SETTINGS.UI_STORAGE_2: 'ui storage 2, used for preserving first entry flags etc', 
    110: 'Competitive7x7 carousel filter 1', 
-   111: 'Competitive7x7 carousel filter 2'}
+   111: 'Competitive7x7 carousel filter 2', 
+   112: 'Enemy marker setting', 
+   113: 'Dead marker setting', 
+   114: 'Ally marker setting'}
 
 class WG_GAMES:
     TANKS = 'wot'
@@ -3084,3 +3088,11 @@ VEHICLE_SELECTION_BLOCK_DELAY = 2
 class BootcampVersion(object):
     DEFAULT = 1
     SHORT = 2
+
+
+CURFEW_PLAY_LIMIT = 'curfew'
+WEEKLY_PLAY_LIMIT = 'weeklyPlayLimit'
+DAILY_PLAY_LIMIT = 'dailyPlayLimit'
+SESSION_PLAY_LIMIT = 'sessionLimit'
+PLAY_LIMITS = (
+ CURFEW_PLAY_LIMIT, WEEKLY_PLAY_LIMIT, DAILY_PLAY_LIMIT, SESSION_PLAY_LIMIT)

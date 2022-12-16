@@ -1,6 +1,5 @@
 import copy, logging
 from collections import namedtuple
-from datetime import datetime, date
 from functools import partial
 from operator import itemgetter
 import typing, BigWorld
@@ -28,6 +27,7 @@ from gui.Scaleform.settings import BADGES_ICONS, ICONS_SIZES, getBadgeIconPath
 from gui.app_loader.decorators import sf_lobby
 from gui.game_control.links import URLMacros
 from gui.impl import backport
+from gui.impl.backport import TooltipData
 from gui.impl.gen import R
 from gui.selectable_reward.constants import FEATURE_TO_PREFIX, SELECTABLE_BONUS_NAME
 from gui.server_events.awards_formatters import AWARDS_SIZES, BATTLE_BONUS_X5_TOKEN
@@ -63,6 +63,8 @@ from skeletons.gui.shared import IItemsCache
 from epic_constants import EPIC_OFFER_TOKEN_PREFIX, EPIC_SELECT_BONUS_NAME
 from web.web_client_api.common import ItemPackEntry, ItemPackTypeGroup, getItemPackByGroupAndName, ItemPackType
 if typing.TYPE_CHECKING:
+    from account_helpers.offers.events_data import OfferEventData
+    from account_helpers.offers.offer_bonuses import ItemsOfferBonus
     from gui.shared.gui_items.customization import C11nStyleProgressData
 DEFAULT_CREW_LVL = 50
 _CUSTOMIZATIONS_SCALE = 44.0 / 128
@@ -117,6 +119,9 @@ class SimpleBonus(object):
 
     def isCompensation(self):
         return self._isCompensation
+
+    def isEqual(self, bonus):
+        return bonus.getName() == self._name and self._value == bonus.getValue()
 
     def getCompensationReason(self):
         return self._compensationReason
@@ -633,6 +638,31 @@ class EpicSelectTokensBonus(TokensBonus):
     def isShowInGUI(self):
         return True
 
+    def updateContext(self, ctx):
+        self._ctx.update(ctx)
+
+    def firstOfferCount(self):
+        offer = self.__getBonusOffer()
+        if not offer:
+            return 0
+        gift = offer.getFirstGift()
+        firstBonus = first(gift.bonuses)
+        return firstBonus.getGiftCount()
+
+    def isEqual(self, bonus):
+        if not isinstance(bonus, EpicSelectTokensBonus):
+            return False
+        return bonus.firstOfferCount() == self.firstOfferCount()
+
+    def isReceived(self):
+        offer = self.__getBonusOffer()
+        if not offer:
+            return True
+        return bool(self.__offersProvider.getReceivedGifts(offer.id))
+
+    def canClaim(self):
+        return self._ctx.get('canClaim', False)
+
     def getWrappedEpicBonusList(self):
         bonusList = []
         offer = self.__getBonusOffer()
@@ -651,9 +681,16 @@ class EpicSelectTokensBonus(TokensBonus):
 
         return bonusList
 
-    def __getBonusOffer(self):
+    def getTooltip(self):
+        return TooltipData(tooltip=None, isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.EPIC_BATTLE_INSTRUCTION_TOOLTIP, specialArgs=[
+         self.__getGiftTokenName()])
+
+    def __getGiftTokenName(self):
         giftTokenName = first(self.getTokens().keys())
-        tokenName = giftTokenName.replace('_gift', '')
+        return giftTokenName
+
+    def __getBonusOffer(self):
+        tokenName = self.__getGiftTokenName().replace('_gift', '')
         return self.__offersProvider.getOfferByToken(tokenName)
 
 
@@ -757,6 +794,12 @@ class X5BattleTokensBonus(TokensBonus):
     def __init__(self, value, isCompensation=False, ctx=None):
         super(TokensBonus, self).__init__('tokens', value, isCompensation, ctx)
 
+    def _format(self, styleSubset):
+        return makeHtmlString(('html_templates:lobby/quests/bonuses').format(styleSubset), BATTLE_BONUS_X5_TOKEN, {'value': self.formatValue()})
+
+    def formatValue(self):
+        return self.getValue()[BATTLE_BONUS_X5_TOKEN]['count']
+
     def isShowInGUI(self):
         return True
 
@@ -764,7 +807,7 @@ class X5BattleTokensBonus(TokensBonus):
         return backport.text(R.strings.quests.bonusName.battle_bonus_x5())
 
     def getIconBySize(self, size):
-        bonusBattleTaskRes = R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn('battle_bonus_x5')
+        bonusBattleTaskRes = R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn(BATTLE_BONUS_X5_TOKEN)
         if bonusBattleTaskRes:
             return backport.image(bonusBattleTaskRes())
         else:
@@ -1382,10 +1425,8 @@ class VehiclesBonus(SimpleBonus):
                     return
                 if time <= time_utils.DAYS_IN_YEAR:
                     return int(time)
-                rentDate = datetime.fromtimestamp(time).date()
-                currentDate = date.today()
-                rentDaysLeft = (rentDate - currentDate).days
-                if 0 < rentDaysLeft <= time_utils.DAYS_IN_YEAR:
+                rentDaysLeft = time_utils.getDaysLeftDueDate(time)
+                if rentDaysLeft >= 0:
                     return int(rentDaysLeft)
                 return
             return
@@ -1635,6 +1676,21 @@ class TankmenBonus(SimpleBonus):
     @classmethod
     def _makeTmanInfoByDescr(cls, td):
         return cls._TankmanInfoRecord(td.nationID, td.role, td.vehicleTypeID, td.firstNameID, -1, td.lastNameID, -1, td.iconID, -1, td.isPremium, td.roleLevel, td.freeXP, td.skills, td.isFemale, [])
+
+    @classmethod
+    def getTankmenDataForCrew(cls, vehCD, roleLevel):
+        vehicle = cls.itemsCache.items.getItemByCD(vehCD)
+        nation, vehicleTypeID = vehicle.typeDescr.id
+        result = {'nationID': nation, 
+           'vehicleTypeID': vehicleTypeID, 
+           'roleLevel': roleLevel, 
+           'freeXP': 0, 
+           'skills': []}
+        for field in cls._TankmanInfoRecord._fields:
+            if field not in result:
+                result[field] = None
+
+        return result
 
 
 class TankwomanBonus(TankmenBonus):

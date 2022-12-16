@@ -611,6 +611,15 @@ msgstr ", чтобы включить голосовую связь"
 msgid "dynamicSquad/invite"
 msgstr "Приглашение во взвод"
 
+msgid "efficiencyRibbons/AirstrikeDmg"
+msgstr "Урон авиаударом"
+
+msgid "efficiencyRibbons/ArtilleryDmg"
+msgstr "Урон артобстрелом"
+
+msgid "efficiencyRibbons/CannonDmg"
+msgstr "Урон орудием"
+
 msgid "efficiencyRibbons/armor"
 msgstr "Удар сдержан"
 
@@ -961,7 +970,7 @@ msgid "player_messages/COMBAT_EQUIPMENT_USED_ARTILLERY"
 msgstr "Артбатарея %(player)s произвела залп."
 
 msgid "player_messages/COMBAT_EQUIPMENT_USED_BOMBER"
-msgstr "Авиация %(player)s приступила к бомбометанию."
+msgstr "Авиация %(player)s приступила к бомбардировке."
 
 msgid "player_messages/COMBAT_EQUIPMENT_USED_HEALPOINT"
 msgstr "%(player)s создаёт зону восстановления."
@@ -1156,6 +1165,15 @@ msgid ""
 "player_messages/DEATH_FROM_INACTIVE_CREW_AT_WORLD_COLLISION_SELF_SUICIDE"
 msgstr "Экипаж уничтожен."
 
+msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_ALLY_ENEMY_ARCADE"
+msgstr "%(attacker)s уничтожил минами %(target)s"
+
+msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_ENEMY_ALLY_ARCADE"
+msgstr "%(attacker)s уничтожил минами %(target)s"
+
+msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_SELF_ENEMY_ARCADE"
+msgstr "%(target)s уничтожен минами."
+
 msgid "player_messages/DEATH_FROM_OVERTURN_ALLY_ALLY"
 msgstr "Союзник %(attacker)s перевернул союзника %(target)s"
 
@@ -1259,10 +1277,10 @@ msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY"
 msgstr "%(attacker)s уничтожил %(target)s."
 
 msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_ARTILLERY"
-msgstr "%(attacker)s уничтожил %(target)s залпом артбатареи."
+msgstr "%(attacker)s уничтожил артобстрелом %(target)s"
 
 msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_BOMBER"
-msgstr "%(attacker)s уничтожил %(target)s бомбометанием."
+msgstr "%(attacker)s уничтожил авиаударом %(target)s"
 
 msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_COMP7"
 msgstr "%(attacker)s уничтожил %(target)s (Огневая поддержка)."
@@ -1283,10 +1301,10 @@ msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY"
 msgstr "%(attacker)s уничтожил %(target)s."
 
 msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_ARTILLERY"
-msgstr "%(attacker)s уничтожил %(target)s залпом артбатареи."
+msgstr "%(attacker)s уничтожил артобстрелом %(target)s"
 
 msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_BOMBER"
-msgstr "%(attacker)s уничтожил %(target)s бомбометанием."
+msgstr "%(attacker)s уничтожил авиаударом %(target)s"
 
 msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_COMP7"
 msgstr "%(attacker)s уничтожил %(target)s (Огневая поддержка)."
@@ -1329,7 +1347,7 @@ msgid "player_messages/DEATH_FROM_SHOT_SELF_ENEMY_ARTILLERY"
 msgstr "%(target)s уничтожен залпом артбатареи."
 
 msgid "player_messages/DEATH_FROM_SHOT_SELF_ENEMY_BOMBER"
-msgstr "%(target)s уничтожен бомбометанием."
+msgstr "%(target)s уничтожен авиаударом."
 
 msgid "player_messages/DEATH_FROM_SHOT_SELF_ENEMY_COMP7"
 msgstr "%(target)s уничтожен"
@@ -1577,8 +1595,17 @@ msgstr "Режим Наблюдателя"
 msgid "postmortem/tips/observerMode/text"
 msgstr "Переключайтесь между машинами союзников."
 
+msgid "postmortem_messages/DEATH_FROM_ARTILLERY_PROTECTION"
+msgstr "Машина уничтожена залпом орудий"
+
 msgid "postmortem_messages/DEATH_FROM_ARTILLERY_PROTECTION_UNKNOWN"
 msgstr "Машина уничтожена огнём артбатареи."
+
+msgid "postmortem_messages/DEATH_FROM_ARTILLERY_SECTOR"
+msgstr "Машина уничтожена залпом орудий"
+
+msgid "postmortem_messages/DEATH_FROM_BOMBER"
+msgstr "Машина уничтожена авиаударом"
 
 msgid "postmortem_messages/DEATH_FROM_CLING_BRANDER"
 msgstr "Машина уничтожена Боевым роботом."
@@ -1635,7 +1662,7 @@ msgid "postmortem_messages/DEATH_FROM_KAMIKAZE"
 msgstr "Машина уничтожена Брандером."
 
 msgid "postmortem_messages/DEATH_FROM_MINE_EXPLOSION"
-msgstr "Машина уничтожена Минным полем."
+msgstr "Машина уничтожена минами"
 
 msgid "postmortem_messages/DEATH_FROM_OVERTURN_ALLY_SELF"
 msgstr "Машина перевёрнута союзником"
@@ -1655,6 +1682,9 @@ msgstr "Машина уничтожена тараном"
 msgid "postmortem_messages/DEATH_FROM_RAMMING_SELF_SUICIDE"
 msgstr "Машина уничтожена тараном"
 
+msgid "postmortem_messages/DEATH_FROM_RECOVERY"
+msgstr "Ваша машина уничтожена"
+
 msgid "postmortem_messages/DEATH_FROM_SECTOR_BOMBERS_UNKNOWN"
 msgstr "Машина уничтожена во время бомбардировки."
 
@@ -1671,7 +1701,7 @@ msgid "postmortem_messages/DEATH_FROM_SHOT_ARTILLERY"
 msgstr "Машина уничтожена залпом артбатареи"
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_BOMBER"
-msgstr "Машина уничтожена бомбометанием"
+msgstr "Машина уничтожена авиаударом"
 
 msgid "postmortem_messages/DEATH_FROM_THUNDER_STRIKE"
 msgstr "Машина уничтожена Электрическим разрядом."
@@ -2447,6 +2477,24 @@ msgid "rewardWindow/twitch35/mainReward_3"
 msgstr "?empty?"
 
 msgid "rewardWindow/twitch35/mainReward_4"
+msgstr "?empty?"
+
+msgid "rewardWindow/twitch36/descText"
+msgstr "?empty?"
+
+msgid "rewardWindow/twitch36/headerText"
+msgstr "?empty?"
+
+msgid "rewardWindow/twitch36/mainReward_1"
+msgstr "?empty?"
+
+msgid "rewardWindow/twitch36/mainReward_2"
+msgstr "?empty?"
+
+msgid "rewardWindow/twitch36/mainReward_3"
+msgstr "?empty?"
+
+msgid "rewardWindow/twitch36/mainReward_4"
 msgstr "?empty?"
 
 msgid "rewardWindow/twitch4/btnLabel"

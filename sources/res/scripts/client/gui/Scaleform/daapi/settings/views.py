@@ -47,7 +47,6 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     PROFILE_FORMATIONS_PAGE = 'profileFormationsPage'
     PROFILE_HOF = 'profileHof'
     GAMMA_WIZARD = 'gammaWizard'
-    LINKEDSET_HINTS = 'LinkedsetHints'
     COLOR_SETTING = 'colorSettings'
     WIKI_VIEW = 'wikiView'
     MANUAL_CHAPTER_VIEW = 'manualChapterView'
