@@ -1,7 +1,7 @@
 import collections, sys, typing
 from constants import BonusTypes
 from gui.shared.items_parameters import params_cache
-from gui.shared.utils import WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_OFF_TIME, DUAL_GUN_CHARGE_TIME, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, CHASSIS_REPAIR_TIME
+from gui.shared.utils import WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_OFF_TIME, DUAL_GUN_CHARGE_TIME, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, CHASSIS_REPAIR_TIME, TURBOSHAFT_SWITCH_TIME
 from shared_utils import first
 if typing.TYPE_CHECKING:
     from gui.shared.items_parameters.params import _PenaltyInfo
@@ -10,17 +10,21 @@ BACKWARD_QUALITY_PARAMS = frozenset([
  'autoReloadTime', 'shellReloadingTime', 'clipFireRate', 'reloadMagazineTime', 'weight', 'switchOnTime',
  'switchOffTime', WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_OFF_TIME, DUAL_GUN_CHARGE_TIME, 'vehicleOwnSpottingTime',
  'vehicleGunShotDispersion', 'crewStunDuration', 'vehicleReloadTimeAfterShellChange', 'crewRepeatedStunDuration',
- 'vehicleChassisFallDamage', 'vehPenaltyForDamageEngineAndCombat', 'demaskFoliageFactor',
+ 'vehicleChassisFallDamage', 'vehPenaltyForDamageEngineAndCombat', 'demaskFoliageFactor', TURBOSHAFT_SWITCH_TIME,
  'demaskMovingFactor', 'vehicleRamOrExplosionDamageResistance', 'vehicleFireChance', CHASSIS_REPAIR_TIME,
  'vehicleGunShotFullDispersion', 'vehicleGunShotDispersionAfterShot', 'vehicleGunShotDispersionChassisMovement',
- 'vehicleGunShotDispersionChassisRotation', 'vehicleGunShotDispersionTurretRotation',
- 'vehicleGunShotDispersionWhileGunDamaged', 'vehicleRamDamageResistance', 'vehicleGunReloadTime'])
+ 'vehicleGunShotDispersionChassisRotation', 'vehicleGunShotDispersionTurretRotation', 'turboshaftBurstFireRate',
+ 'vehicleGunShotDispersionWhileGunDamaged', 'vehicleRamDamageResistance', 'vehicleGunReloadTime', 'burstFireRate'])
 NEGATIVE_PARAMS = [
  'switchOnTime', 'switchOffTime']
 _CUSTOM_QUALITY_PARAMS = {'vehicleWeight': (
                    True, False), 
    'clipFireRate': (
                   True, True, False), 
+   'burstFireRate': (
+                   True, False), 
+   'turboshaftBurstFireRate': (
+                             True, False), 
    'pitchLimits': (
                  True, False)}
 
