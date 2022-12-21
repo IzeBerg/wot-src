@@ -14,8 +14,9 @@ from shared_utils import findFirst, first
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 RELATIVE_POWER_PARAMS = (
  'avgDamage', 'avgPiercingPower', 'stunMinDuration', 'stunMaxDuration', 'reloadTime', AUTO_RELOAD_PROP_NAME,
- 'reloadTimeSecs', 'clipFireRate', DUAL_GUN_CHARGE_TIME, 'turretRotationSpeed', 'turretYawLimits',
- 'pitchLimits', 'gunYawLimits', 'aimingTime', 'shotDispersionAngle', 'avgDamagePerMinute')
+ 'reloadTimeSecs', 'clipFireRate', 'burstFireRate', 'turboshaftBurstFireRate', DUAL_GUN_CHARGE_TIME,
+ 'turretRotationSpeed', 'turretYawLimits', 'pitchLimits', 'gunYawLimits', 'aimingTime', 'shotDispersionAngle',
+ 'avgDamagePerMinute')
 RELATIVE_ARMOR_PARAMS = (
  'maxHealth', 'hullArmor', 'turretArmor', CHASSIS_REPAIR_TIME)
 RELATIVE_MOBILITY_PARAMS = (

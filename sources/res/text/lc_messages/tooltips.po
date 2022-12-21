@@ -9483,6 +9483,9 @@ msgstr "如果所有射击都能击穿装甲，于1分钟内可能对敌方坦�
 msgid "tank_params/desc/avgPiercingPower"
 msgstr "标准炮弹的平均穿透力，随着炮弹的变化而变化。"
 
+msgid "tank_params/desc/burstFireRate"
+msgstr "短弹夹炮弹的装填间隔时间。/一次点射射击的炮弹数量。"
+
 msgid "tank_params/desc/chargeTime"
 msgstr "同时发射双管炮所需的准备时间。/齐射的装填停滞时间。"
 
@@ -9496,10 +9499,12 @@ msgid "tank_params/desc/chassisRotationSpeed"
 msgstr "车体旋转速度，和改变运动方向的速度(机动性)。"
 
 msgid "tank_params/desc/circularVisionRadius"
-msgstr "您的坦克当前的观察范围。任何超过445米距离的敌方坦克是无法侦察到的。进一步提升参数会有助于更快发现敌方坦克(在半径445米之内)。"
+msgstr ""
+"您坦克当前的观察范围。任何超过445米距离的敌方坦克是无法侦察到的。进一步提升观察范围会有助于在445米之内更轻松地发现敌方坦克(普通/特殊模式)。"
 
 msgid "tank_params/desc/clipFireRate"
-msgstr "射出弹夹中最后一发炮弹和重新装填之间的时间。/弹夹中两发炮弹的间隔时间。/弹夹中的弹药数量。"
+msgstr ""
+"射出弹夹(或两门火炮)中最后一发炮弹和重新装填完整弹夹的间隔时间。/弹夹中两枚炮弹、火炮、短弹夹之间的射击间隔时间。/弹夹(或火炮)中的炮弹或短弹夹数量。"
 
 msgid "tank_params/desc/damage"
 msgstr "标准炮弹击穿敌方装甲造成的损伤。"
@@ -9597,6 +9602,9 @@ msgstr ""
 "该参数为地面阻力系数，表示一辆坦克在完全平面上从静止状态开始行驶100米所需的时间。\n"
 "显示硬/普通/软地面的数值。"
 
+msgid "tank_params/desc/turboshaftBurstFireRate"
+msgstr "短弹夹炮弹的装填间隔时间。/处于特殊模式时一次点射射击的炮弹数量。"
+
 msgid "tank_params/desc/turboshaftEnginePower"
 msgstr "该参数影响坦克在启用涡轮时的加速能力、最高速度以及车体转动速度。"
 
@@ -9610,13 +9618,13 @@ msgid "tank_params/desc/turboshaftSpeedModeSpeed"
 msgstr "启用涡轮后的面板坦克速度"
 
 msgid "tank_params/desc/turboshaftSwitchTime"
-msgstr "涡轮提升至最大转速及回到正常运转模式所需时间。"
+msgstr "涡轮提升至最大转速所需时间。/回到普通运转模式所需时间。"
 
 msgid "tank_params/desc/turretArmor"
 msgstr "炮塔装甲:分别为前/侧/后。"
 
 msgid "tank_params/desc/turretRotationSpeed"
-msgstr "开炮位置(炮塔或驾驶舱内)火炮每秒旋转速度。"
+msgstr "炮塔或固定战斗室的射界中，火炮每秒的旋转度数(普通/特殊模式)。"
 
 msgid "tank_params/desc/turretYawLimits"
 msgstr "坦克静止时炮塔最大的旋转角度。"

@@ -41,6 +41,7 @@ package net.wg.gui.components.tooltips
       override protected function redraw() : void
       {
          var _loc1_:ToolTipSkillVO = null;
+         var _loc2_:Separator = null;
          var _loc4_:TextFormat = null;
          _loc1_ = new ToolTipSkillVO(_data);
          contentMargin.bottom = 2;
@@ -54,7 +55,7 @@ package net.wg.gui.components.tooltips
          this.headerTF.y = topPosition;
          topPosition += this.headerTF.textHeight + Utils.instance.MARGIN_AFTER_BLOCK;
          this.maxWidth = Math.max(this.maxWidth,this.headerTF.width + bgShadowMargin.horizontal + contentMargin.horizontal);
-         var _loc2_:Separator = Utils.instance.createSeparate(content);
+         _loc2_ = Utils.instance.createSeparate(content);
          _loc2_.y = topPosition | 0;
          separators.push(_loc2_);
          topPosition += Utils.instance.MARGIN_AFTER_SEPARATE;
