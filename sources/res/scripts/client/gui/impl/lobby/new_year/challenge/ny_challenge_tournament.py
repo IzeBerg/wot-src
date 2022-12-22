@@ -30,6 +30,7 @@ from helpers import dependency, time_utils, uniprof
 from items.components.ny_constants import CelebrityQuestTokenParts
 from new_year.celebrity.celebrity_quests_helpers import getCelebrityMarathonQuests, getCelebrityQuestBonusesByFullQuestID, getCelebrityQuestByFullID, getRerollsCount, iterCelebrityActiveQuestsIDs, marathonTokenCountExtractor, getCelebrityAdditionalQuestsConfig, getRerollTokens
 from new_year.ny_constants import AdditionalCameraObject
+from new_year.ny_level_helper import getNYGeneralConfig
 from new_year.ny_preview import getVehiclePreviewID
 from new_year.ny_processor import isCelebrityQuestsRerollLockedByVehicle
 from shared_utils import findFirst, first
@@ -142,6 +143,7 @@ class NewYearChallengeTournament(NyHistoryPresenter):
         model.setCompletedQuestsQuantity(self.__celebritySceneController.completedQuestsCount)
         model.setCompletedAdditionalQuestsQuantity(self.__celebritySceneController.completedAddQuestsCount)
         model.setTimeTill(time_utils.getDayTimeLeft())
+        model.setIsRerollChargingAvailable(getNYGeneralConfig().getEventEndTime() - time_utils.getServerUTCTime() > time_utils.getDayTimeLeft())
         self.__setQuestsInfo()
         self.__fillProgression(model)
 
