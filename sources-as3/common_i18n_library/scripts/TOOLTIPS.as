@@ -4201,6 +4201,10 @@ package
       
       public static const TANK_PARAMS_DESC_CLIPFIRERATE:String = "#tooltips:tank_params/desc/clipFireRate";
       
+      public static const TANK_PARAMS_DESC_BURSTFIRERATE:String = "#tooltips:tank_params/desc/burstFireRate";
+      
+      public static const TANK_PARAMS_DESC_TURBOSHAFTBURSTFIRERATE:String = "#tooltips:tank_params/desc/turboshaftBurstFireRate";
+      
       public static const TANK_PARAMS_DESC_RELATIVEPOWER:String = "#tooltips:tank_params/desc/relativePower";
       
       public static const TANK_PARAMS_DESC_RELATIVEARMOR:String = "#tooltips:tank_params/desc/relativeArmor";

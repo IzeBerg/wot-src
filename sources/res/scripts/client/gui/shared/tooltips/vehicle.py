@@ -914,16 +914,13 @@ class FrontlineRentBlockConstructor(VehicleTooltipBlockConstructor):
 
 class CommonStatsBlockConstructor(VehicleTooltipBlockConstructor):
     PARAMS = {VEHICLE_CLASS_NAME.LIGHT_TANK: (
-                                     'enginePowerPerTon', 'speedLimits', WHEELED_SPEED_MODE_SPEED,
-                                     'chassisRotationSpeed',
-                                     MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_TIME,
-                                     'circularVisionRadius'), 
+                                     'enginePowerPerTon', 'speedLimits', TURBOSHAFT_SPEED_MODE_SPEED, WHEELED_SPEED_MODE_SPEED,
+                                     'chassisRotationSpeed', MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_TIME, 'circularVisionRadius'), 
        VEHICLE_CLASS_NAME.MEDIUM_TANK: (
                                       'avgDamagePerMinute', 'enginePowerPerTon', 'speedLimits',
                                       TURBOSHAFT_SPEED_MODE_SPEED, 'chassisRotationSpeed'), 
        VEHICLE_CLASS_NAME.HEAVY_TANK: (
-                                     'avgDamage', 'avgPiercingPower', 'hullArmor', 'turretArmor',
-                                     DUAL_GUN_CHARGE_TIME), 
+                                     'avgDamage', 'avgPiercingPower', 'hullArmor', 'turretArmor', DUAL_GUN_CHARGE_TIME), 
        VEHICLE_CLASS_NAME.SPG: ('avgDamage', 'stunMinDuration', 'stunMaxDuration', 'reloadTimeSecs', 'aimingTime',
  'explosionRadius'), 
        VEHICLE_CLASS_NAME.AT_SPG: ('avgPiercingPower', 'shotDispersionAngle', 'avgDamagePerMinute', 'speedLimits', 'chassisRotationSpeed',
