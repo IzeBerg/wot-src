@@ -11189,6 +11189,10 @@ package
       
       public static const SPECIAL_STYLE_TWITCH_DECEMBER_2022_DESC_LONG:String = "#vehicle_customization:special_style/twitch_december_2022_desc/long";
       
+      public static const MAIN_STYLE_GB112_CALIBAN_WAC_3DST:String = "#vehicle_customization:main_style/GB112_Caliban_WAC_3DSt";
+      
+      public static const MAIN_STYLE_GB112_CALIBAN_WAC_3DST_DESC_LONG:String = "#vehicle_customization:main_style/GB112_Caliban_WAC_3DSt_desc/long";
+      
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_DESERT:String = "#vehicle_customization:customization/popover/style/desert";
@@ -13498,6 +13502,8 @@ package
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_483:String = "#vehicle_customization:projection_decals/special/projection_decal_483";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_484:String = "#vehicle_customization:projection_decals/special/projection_decal_484";
+      
+      public static const PROJECTION_DECALS_COOL_PROJECTION_DECAL_69:String = "#vehicle_customization:projection_decals/cool/projection_decal_69";
       
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       

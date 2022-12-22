@@ -1,4 +1,5 @@
-import weakref, Math, material_kinds
+import weakref, BigWorld, Math, material_kinds
+from constants import IS_EDITOR
 from helpers.PixieNode import PixieCache
 from CustomEffect import EffectSettings
 from cgf_obsolete_script.py_component import Component
@@ -141,7 +142,7 @@ class CustomEffectManager(Component):
         vehicleSpeed = speedInfo[2]
         appearance = self.__appearance
         self.__variableArgs['speed'] = vehicleSpeed
-        self.__variableArgs['isPC'] = isPC = self.__vehicle.isPlayerVehicle
+        self.__variableArgs['isPC'] = isPC = isVehicleAttached(self.__vehicle)
         if vehicleSpeed > _VEHICLE_DIRECTION_THRESHOLD:
             direction = 1
         else:
@@ -247,3 +248,11 @@ def getCorrectedMatKinds(vehicleAppearance):
         correctedMatKinds = [
          material_kinds.getWaterMatKind()] * len(correctedMatKinds)
     return correctedMatKinds
+
+
+def isVehicleAttached(vehicle):
+    if IS_EDITOR:
+        return True
+    else:
+        attachedVehicle = BigWorld.player().getVehicleAttached()
+        return attachedVehicle is not None and attachedVehicle.id == vehicle.id
