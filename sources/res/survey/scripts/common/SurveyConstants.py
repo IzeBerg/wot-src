@@ -1,5 +1,5 @@
 from enum import IntEnum
-CMD_SURVEY_RES = 22001
+CMD_SURVEY_RES = 31001
 
 class SURVEY_ANSWERS(IntEnum):
     CANCELED = -3

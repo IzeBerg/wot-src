@@ -78,6 +78,7 @@ if TYPE_CHECKING:
 VEHICLE_CLASS_TAGS = frozenset(('lightTank', 'mediumTank', 'heavyTank', 'SPG', 'AT-SPG'))
 VEHICLE_LEVEL_EARN_CRYSTAL = 10
 MODES_WITHOUT_CRYSTAL_EARNINGS = set(('bob', 'fallout', 'event_battles', 'battle_royale', 'clanWarsBattles'))
+EXTENDED_VEHICLE_TYPE_ID_FLAG = 2
 
 class VEHICLE_PHYSICS_TYPE():
     TANK = 0
@@ -330,7 +331,7 @@ class VehicleDescriptor(object):
                     vehicleItem = g_list.getList(nationID)[vehicleTypeID]
                 except Exception as e:
                     nationID = nations.INDICES[nation]
-                    vehicleTypeID = 255
+                    vehicleTypeID = 65535
 
             if xmlPath is None:
                 type = g_cache.vehicle(nationID, vehicleTypeID)
@@ -346,7 +347,11 @@ class VehicleDescriptor(object):
                 ReflectedObject(type).edVisible = True if vehMode is VEHICLE_MODE.DEFAULT else False
             turretDescr = type.turrets[0][0]
             header = items.ITEM_TYPES.vehicle + (nationID << 4)
-            compactDescr = struct.pack('<2B6HB', header, vehicleTypeID, type.chassis[0].id[1], type.engines[0].id[1], type.fuelTanks[0].id[1], type.radios[0].id[1], turretDescr.id[1], turretDescr.guns[0].id[1], 0)
+            ext = vehicleTypeID >> 8
+            header += EXTENDED_VEHICLE_TYPE_ID_FLAG if ext else 0
+            compactDescr = struct.pack('<2B', header, vehicleTypeID & 255)
+            compactDescr += chr(ext) if ext else ''
+            compactDescr += struct.pack('<6HB', type.chassis[0].id[1], type.engines[0].id[1], type.fuelTanks[0].id[1], type.radios[0].id[1], turretDescr.id[1], turretDescr.guns[0].id[1], 0)
         self.__initFromCompactDescr(compactDescr, vehMode, vehType)
         self.__applyExternalData(extData)
         self.__updateAttributes()
@@ -2733,7 +2738,7 @@ class VehicleList(object):
              None, xmlPath + '/' + vname)
             if vname in ids:
                 _xml.raiseWrongXml(ctx, '', 'vehicle type name is not unique')
-            innationID = _xml.readInt(ctx, vsection, 'id', 0, 255)
+            innationID = _xml.readInt(ctx, vsection, 'id', 0, 512)
             if innationID in res:
                 _xml.raiseWrongXml(ctx, 'id', 'is not unique')
             compactDescr = makeIntCompactDescrByID('vehicle', nationID, innationID)
@@ -2769,7 +2774,9 @@ class VehicleList(object):
 
 
 def parseVehicleCompactDescr(compactDescr):
-    header, vehicleTypeID = struct.unpack('2B', compactDescr[0:2])
+    header, vehicleTypeID = struct.unpack('2B', compactDescr[:2])
+    if header & EXTENDED_VEHICLE_TYPE_ID_FLAG:
+        vehicleTypeID += ord(compactDescr[2]) << 8
     return (header >> 4 & 15, vehicleTypeID)
 
 
@@ -2841,8 +2848,7 @@ def getVehicleType(compactDescr):
         nationID = compactDescr >> 4 & 15
         vehicleTypeID = compactDescr >> 8 & 65535
     else:
-        header, vehicleTypeID = struct.unpack('2B', compactDescr[0:2])
-        nationID = header >> 4 & 15
+        nationID, vehicleTypeID = parseVehicleCompactDescr(compactDescr)
     return g_cache.vehicle(nationID, vehicleTypeID)
 
 
@@ -6768,14 +6774,18 @@ def _summPriceDiff(price, priceAdd, priceSub):
 
 def _splitVehicleCompactDescr(compactDescr, vehMode=VEHICLE_MODE.DEFAULT, vehType=None):
     header = ord(compactDescr[0])
+    vehTypeOffset = 0
     vehicleTypeID = ord(compactDescr[1])
+    if header & EXTENDED_VEHICLE_TYPE_ID_FLAG:
+        vehicleTypeID += ord(compactDescr[2]) << 8
+        vehTypeOffset += 1
     nationID = header >> 4 & 15
     if vehType is None:
         type = g_cache.vehicle(nationID, vehicleTypeID, vehMode)
     else:
         type = vehType
-    idx = 10 + len(type.turrets) * 4
-    components = compactDescr[2:idx]
+    idx = 10 + vehTypeOffset + len(type.turrets) * 4
+    components = compactDescr[2 + vehTypeOffset:idx]
     flags = ord(compactDescr[idx])
     idx += 1
     count = 0
@@ -6834,7 +6844,11 @@ def _combineVehicleCompactDescr(type, components, optionalDeviceSlots, optionalD
         flags |= 32
     if camouflages:
         flags |= 128
-    cd = chr(header) + chr(vehicleTypeID) + components + chr(flags) + optionalDevices
+    vehTypeCD = chr(vehicleTypeID & 255)
+    if vehicleTypeID > 255:
+        vehTypeCD += chr(vehicleTypeID >> 8)
+        header += EXTENDED_VEHICLE_TYPE_ID_FLAG
+    cd = chr(header) + vehTypeCD + components + chr(flags) + optionalDevices
     if enhancements:
         cd += enhancements
     if emblems or inscriptions:

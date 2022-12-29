@@ -23765,6 +23765,8 @@ package
       
       public static const MAPS_ICONS_TANKMEN_SKILLS_DIALOGS_LOADER_PEDANT:String = "../maps/icons/tankmen/skills/dialogs/loader_pedant.png";
       
+      public static const MAPS_ICONS_TANKMEN_SKILLS_DIALOGS_OFFSPRING_BROTHERHOOD:String = "../maps/icons/tankmen/skills/dialogs/offspring_brotherhood.png";
+      
       public static const MAPS_ICONS_TANKMEN_SKILLS_DIALOGS_RADIOMAN_FINDER:String = "../maps/icons/tankmen/skills/dialogs/radioman_finder.png";
       
       public static const MAPS_ICONS_TANKMEN_SKILLS_DIALOGS_RADIOMAN_INVENTOR:String = "../maps/icons/tankmen/skills/dialogs/radioman_inventor.png";
@@ -23774,6 +23776,12 @@ package
       public static const MAPS_ICONS_TANKMEN_SKILLS_DIALOGS_RADIOMAN_RETRANSMITTER:String = "../maps/icons/tankmen/skills/dialogs/radioman_retransmitter.png";
       
       public static const MAPS_ICONS_TANKMEN_SKILLS_DIALOGS_REPAIR:String = "../maps/icons/tankmen/skills/dialogs/repair.png";
+      
+      public static const MAPS_ICONS_TANKMEN_SKILLS_DIALOGS_SABATON_BROTHERHOOD:String = "../maps/icons/tankmen/skills/dialogs/sabaton_brotherhood.png";
+      
+      public static const MAPS_ICONS_TANKMEN_SKILLS_DIALOGS_WITCHES_BROTHERHOOD:String = "../maps/icons/tankmen/skills/dialogs/witches_brotherhood.png";
+      
+      public static const MAPS_ICONS_TANKMEN_SKILLS_DIALOGS_YHA_BROTHERHOOD:String = "../maps/icons/tankmen/skills/dialogs/yha_brotherhood.png";
       
       public static const MAPS_ICONS_TANKMEN_SKILLS_MEDIUM_BROTHERHOOD:String = "../maps/icons/tankmen/skills/medium/brotherhood.png";
       

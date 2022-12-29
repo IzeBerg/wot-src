@@ -1,3 +1,5 @@
+import weakref, itertools
+from constants import IS_CLIENT
 from items.components import component_constants
 from items.components import legacy_stuff
 from items.components import shared_components
@@ -181,7 +183,7 @@ class RoleRanks(legacy_stuff.LegacyStuff):
 
 class NationGroup(legacy_stuff.LegacyStuff):
     __slots__ = ('__name', '__isFemales', '__notInShop', '__firstNamesIDs', '__lastNamesIDs',
-                 '__iconsIDs', '__weight', '__tags', '__roles', '__groupID')
+                 '__iconsIDs', '__weight', '__tags', '__roles', '__groupID', '__weakref__')
 
     def __init__(self, groupID, name, isFemales, notInShop, firstNamesIDs, lastNamesIDs, iconsIDs, weight, tags, roles):
         super(NationGroup, self).__init__()
@@ -266,18 +268,23 @@ class NationGroup(legacy_stuff.LegacyStuff):
 
 class NationConfig(legacy_stuff.LegacyStuff):
     __slots__ = ('__name', '__normalGroups', '__premiumGroups', '__roleRanks', '__firstNames',
-                 '__lastNames', '__icons', '__ranks')
+                 '__lastNames', '__icons', '__ranks', '__lastNameIndex')
 
     def __init__(self, name, normalGroups=None, premiumGroups=None, roleRanks=None, firstNames=None, lastNames=None, icons=None, ranks=None):
         super(NationConfig, self).__init__()
         self.__name = name
-        self.__normalGroups = normalGroups or component_constants.EMPTY_TUPLE
-        self.__premiumGroups = premiumGroups or component_constants.EMPTY_TUPLE
+        self.__normalGroups = normalGroups or component_constants.EMPTY_DICT
+        self.__premiumGroups = premiumGroups or component_constants.EMPTY_DICT
         self.__roleRanks = roleRanks
         self.__firstNames = firstNames or {}
         self.__lastNames = lastNames or {}
         self.__icons = icons or {}
         self.__ranks = ranks
+        self.__lastNameIndex = {}
+        if not IS_CLIENT:
+            for gid, g in itertools.chain(normalGroups.iteritems(), premiumGroups.iteritems()):
+                for lnid in g.lastNames:
+                    self.__lastNameIndex[lnid] = weakref.proxy(g)
 
     def __repr__(self):
         return ('NationConfig({})').format(self.__name)
@@ -362,3 +369,6 @@ class NationConfig(legacy_stuff.LegacyStuff):
         else:
             return
             return
+
+    def getGroupByLastName(self, nameID):
+        return self.__lastNameIndex.get(nameID)

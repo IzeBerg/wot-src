@@ -13,19 +13,18 @@ package net.wg.gui.battle.components
       public function EpicProgressCircle()
       {
          super();
-         curFrame = this.defaultEmptyFrame;
+         currentProgressFrame = this.defaultEmptyFrame;
       }
       
       override public function updateProgress(param1:Number) : void
       {
-         var _loc3_:int = 0;
          var _loc2_:int = curFrame;
-         _loc3_ = param1 * SEMI_LAST_FRAME >> 0;
+         var _loc3_:int = param1 * SEMI_LAST_FRAME >> 0;
          if(_loc2_ != _loc3_ && _loc2_ == this.defaultEmptyFrame && _loc3_ > 0)
          {
             this._capturingActive = true;
             state = this.getCapturingActiveState();
-            curFrame = _loc3_;
+            currentProgressFrame = _loc3_;
             gotoAndStop(state);
             progressCircle.gotoAndStop(_loc3_);
          }
@@ -33,13 +32,13 @@ package net.wg.gui.battle.components
          {
             this._capturingActive = false;
             state = !!this._isPlayerTeam ? ALLY_STATE : getCorrectState(ENEMY_STATE);
-            curFrame = this.defaultEmptyFrame;
+            currentProgressFrame = this.defaultEmptyFrame;
             gotoAndStop(state);
             progressCircle.gotoAndStop(SEMI_LAST_FRAME);
          }
          else if(this._capturingActive)
          {
-            curFrame = _loc3_;
+            currentProgressFrame = _loc3_;
             progressCircle.gotoAndStop(_loc3_);
          }
       }
@@ -62,7 +61,7 @@ package net.wg.gui.battle.components
          this._capturingActive = false;
          state = !!param1 ? ALLY_STATE : getCorrectState(ENEMY_STATE);
          gotoAndStop(state);
-         curFrame = this.defaultEmptyFrame;
+         currentProgressFrame = this.defaultEmptyFrame;
          progressCircle.gotoAndStop(SEMI_LAST_FRAME);
       }
       

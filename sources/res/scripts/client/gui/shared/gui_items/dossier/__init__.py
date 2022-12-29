@@ -205,7 +205,7 @@ class TankmanDossier(_Dossier, stats.TankmanDossierStats):
             return ('new_skill', 'new_skill.png')
         if self.tmanDescr.roleLevel != tankmen.MAX_SKILL_LEVEL or not self.tmanDescr.skills:
             return ('role', '%s.png' % self.tmanDescr.role)
-        return ('skill', tankmen.getSkillsConfig().getSkill(self.tmanDescr.skills[(-1)]).icon)
+        return ('skill', tankman.skills[(-1)].icon)
 
     def __getNextSkillBattlesLeft(self, tankman):
         if not self.getBattlesCount():

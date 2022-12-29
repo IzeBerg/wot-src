@@ -63,7 +63,7 @@ class EpicModeSelectorItem(ModeSelectorLegacyItem):
     @property
     def isSelectable(self):
         from frontline.gui.frontline_helpers import isHangarAvailable
-        return isHangarAvailable()
+        return isHangarAvailable() and not self.__epicController.isEpicPrbActive()
 
     def handleInfoPageClick(self):
         showFrontlineInfoWindow()
