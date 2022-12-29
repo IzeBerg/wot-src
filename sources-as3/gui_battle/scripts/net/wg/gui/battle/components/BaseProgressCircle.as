@@ -31,7 +31,7 @@ package net.wg.gui.battle.components
          Extensions.setEdgeAAMode(this.progressCircle,Extensions.EDGEAA_ON);
          this.state = this.getCorrectState(ENEMY_STATE);
          gotoAndStop(this.state);
-         this.progressCircle.gotoAndStop(SEMI_LAST_FRAME);
+         this.progressCircle.gotoAndStop(this.curFrame);
       }
       
       override protected function onDispose() : void
@@ -42,13 +42,12 @@ package net.wg.gui.battle.components
       
       public function updateProgress(param1:Number) : void
       {
-         var _loc2_:int = 0;
          if(param1 != this._progress)
          {
             this._progress = param1;
-            _loc2_ = this._progress * SEMI_LAST_FRAME >> 0;
+            this.currentProgressFrame = this._progress * SEMI_LAST_FRAME >> 0;
             gotoAndStop(this.state);
-            this.progressCircle.gotoAndStop(_loc2_);
+            this.progressCircle.gotoAndStop(this.curFrame);
          }
       }
       

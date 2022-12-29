@@ -1,7 +1,5 @@
-from helpers import dependency
-from skeletons.gui.lobby_context import ILobbyContext
 import gui.awards.special_achievement_awards as specialAwards
-from gui.shared.event_dispatcher import showAwardWindow, showModalAwardWindow
+from gui.shared.event_dispatcher import showAwardWindow
 from gui.impl.lobby.reward_window import DynamicRewardWindow
 
 def showResearchAward(vehiclesCount, messageNumber):
@@ -39,12 +37,6 @@ def showRecruiterAward():
 def showDynamicAward(eventName, bonuses):
     window = DynamicRewardWindow({'eventName': eventName, 'bonuses': bonuses})
     window.load()
-
-
-@dependency.replace_none_kwargs(lobbyContext=ILobbyContext)
-def showCrewSkinAward(lobbyContext=None):
-    if lobbyContext.getServerSettings().isCrewSkinsEnabled():
-        showModalAwardWindow(specialAwards.CrewSkinAward())
 
 
 def showVehicleCollectorAward(nationID):

@@ -23,11 +23,6 @@
 			<flags>8</flags>
 		</GameObject>
 		<GameObject>
-			<name>right_3x3_idle.prefab</name>
-			<UUID>eb0012c2-2d29-4167-bde9-69601b34a315</UUID>
-			<flags>0</flags>
-		</GameObject>
-		<GameObject>
 			<name>left_3x3_start.prefab</name>
 			<UUID>b4572171-435a-4a61-8f80-cd75fb4bc52d</UUID>
 			<flags>0</flags>
@@ -58,23 +53,38 @@
 			<flags>0</flags>
 		</GameObject>
 		<GameObject>
-			<name>left_smoke.prefab</name>
-			<UUID>c8602440-5203-47ee-9119-d0bc3bc9c7d7</UUID>
-			<flags>0</flags>
-		</GameObject>
-		<GameObject>
-			<name>right_smoke.prefab</name>
-			<UUID>264de05e-306b-4ba2-97ed-ae0f2c5432aa</UUID>
-			<flags>0</flags>
-		</GameObject>
-		<GameObject>
 			<name>left_3x3_end.prefab</name>
 			<UUID>a56af266-8c79-408c-84fe-a2add2265b32</UUID>
 			<flags>0</flags>
 		</GameObject>
 		<GameObject>
-			<name>left_3x3_idle.prefab</name>
-			<UUID>0606e9fc-18d9-4e16-b949-fd02f791100a</UUID>
+			<name>left</name>
+			<UUID>283e7594-f444-48ce-8417-f8f468fb35b2</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>right</name>
+			<UUID>d263ea22-8132-4acc-9621-91428ce380fc</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>3x3_idle.prefab</name>
+			<UUID>e99a5103-7bb4-435d-8c45-22a9a562924c</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>3x3_idle.prefab</name>
+			<UUID>493b4674-e77f-49c0-9af7-2f50dc2b7974</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>smoke.prefab</name>
+			<UUID>a6966e57-e27d-413c-88d1-e22dd4d69300</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>smoke.prefab</name>
+			<UUID>d1ac1fc4-c5bc-44ae-bc61-d72ee154a3ed</UUID>
 			<flags>0</flags>
 		</GameObject>
 	</GameObjects>
@@ -118,7 +128,7 @@
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>0708661f-24b7-49cc-b913-515b99129f54</link>
+						<link>6e4a896e-29e0-4a40-8848-6b20a20a22d7</link>
 					</property>
 				</config>
 			</component>
@@ -138,7 +148,7 @@
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>6e4a896e-29e0-4a40-8848-6b20a20a22d7</link>
+						<link>119fe716-c87d-4d29-ae7d-84ce89cfa9a3</link>
 					</property>
 				</config>
 			</component>
@@ -148,7 +158,7 @@
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>119fe716-c87d-4d29-ae7d-84ce89cfa9a3</link>
+						<link>4e207a91-2a9b-4440-bccc-9a776d346913</link>
 					</property>
 				</config>
 			</component>
@@ -158,7 +168,7 @@
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>4e207a91-2a9b-4440-bccc-9a776d346913</link>
+						<link>1c6b16ab-23ed-3df2-8cfc-82c1765c5779</link>
 					</property>
 				</config>
 			</component>
@@ -178,7 +188,7 @@
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>1c6b16ab-23ed-3df2-8cfc-82c1765c5779</link>
+						<link>119fe716-c87d-4d29-ae7d-84ce89cfa9a3</link>
 					</property>
 				</config>
 			</component>
@@ -208,7 +218,7 @@
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>119fe716-c87d-4d29-ae7d-84ce89cfa9a3</link>
+						<link>283e7594-f444-48ce-8417-f8f468fb35b2</link>
 					</property>
 				</config>
 			</component>
@@ -218,7 +228,27 @@
 				<config>
 					<property>
 						<name>Parent</name>
-						<link>0708661f-24b7-49cc-b913-515b99129f54</link>
+						<link>d263ea22-8132-4acc-9621-91428ce380fc</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>15</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>283e7594-f444-48ce-8417-f8f468fb35b2</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>16</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>d263ea22-8132-4acc-9621-91428ce380fc</link>
 					</property>
 				</config>
 			</component>
@@ -308,7 +338,7 @@
 					<property>
 						<name>Position</name>
 						<value>
-							1.454 1.298 -3.966
+							-1.454 1.298 -3.966
 							<!--BW_String-->
 						</value>
 					</property>
@@ -329,7 +359,7 @@
 					<property>
 						<name>Position</name>
 						<value>
-							-1.454 1.298 -3.966
+							1.454 1.298 -3.966
 							<!--BW_String-->
 						</value>
 					</property>
@@ -370,27 +400,6 @@
 				<config>
 					<property>
 						<name>Position</name>
-						<value>
-							1.454 1.298 -3.966
-							<!--BW_String-->
-						</value>
-					</property>
-					<property>
-						<name>Scale</name>
-						<value>1 1 1</value>
-					</property>
-					<property>
-						<name>Rotation</name>
-						<value>-0 0 0</value>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>8</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>Position</name>
 						<value>0 0 0</value>
 					</property>
 					<property>
@@ -404,7 +413,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>9</objectIndex>
+				<objectIndex>8</objectIndex>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -425,7 +434,7 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>10</objectIndex>
+				<objectIndex>9</objectIndex>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -446,13 +455,13 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>11</objectIndex>
+				<objectIndex>10</objectIndex>
 				<flags>3</flags>
 				<config>
 					<property>
 						<name>Position</name>
 						<value>
-							-1.464 1.306 -5.72437
+							-1.454 1.298 -3.966
 							<!--BW_String-->
 						</value>
 					</property>
@@ -462,10 +471,28 @@
 					</property>
 					<property>
 						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>11</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
 						<value>
-							-0 3.14 0
+							-1.45396 1.298 -3.966
 							<!--BW_String-->
 						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
 					</property>
 				</config>
 			</component>
@@ -476,7 +503,7 @@
 					<property>
 						<name>Position</name>
 						<value>
-							1.464 1.306 -5.99307
+							1.45692 1.25828 -3.1442
 							<!--BW_String-->
 						</value>
 					</property>
@@ -486,10 +513,7 @@
 					</property>
 					<property>
 						<name>Rotation</name>
-						<value>
-							-0 3.14 0
-							<!--BW_String-->
-						</value>
+						<value>-0 0 0</value>
 					</property>
 				</config>
 			</component>
@@ -499,10 +523,7 @@
 				<config>
 					<property>
 						<name>Position</name>
-						<value>
-							-1.454 1.298 -3.966
-							<!--BW_String-->
-						</value>
+						<value>0 0 0</value>
 					</property>
 					<property>
 						<name>Scale</name>
@@ -521,7 +542,7 @@
 					<property>
 						<name>Position</name>
 						<value>
-							-1.454 1.298 -3.966
+							-0.00287819 0.0397201 -0.8218
 							<!--BW_String-->
 						</value>
 					</property>
@@ -532,6 +553,54 @@
 					<property>
 						<name>Rotation</name>
 						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>15</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							-0.0458069 -0.889458 -1.23384
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>
+							-0 3.14159 0
+							<!--BW_String-->
+						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>16</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							0.277399 -0.915997 -2.0556
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>
+							-0 3.14159 0
+							<!--BW_String-->
+						</value>
 					</property>
 				</config>
 			</component>
@@ -546,7 +615,7 @@
 					<property>
 						<name>resource</name>
 						<isAsset>true</isAsset>
-						<value>particles/Tank/rocket_accelerator/3x3_idle.prefab</value>
+						<value>particles/Tank/rocket_accelerator/3x3_start.prefab</value>
 					</property>
 					<property>
 						<name>overridesData</name>
@@ -576,21 +645,6 @@
 					<property>
 						<name>resource</name>
 						<isAsset>true</isAsset>
-						<value>particles/Tank/rocket_accelerator/3x3_start.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>7</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
 						<value>particles/Tank/rocket_accelerator/3x3_end.prefab</value>
 					</property>
 					<property>
@@ -600,28 +654,13 @@
 				</config>
 			</component>
 			<component>
-				<objectIndex>11</objectIndex>
+				<objectIndex>10</objectIndex>
 				<flags>3</flags>
 				<config>
 					<property>
 						<name>resource</name>
 						<isAsset>true</isAsset>
-						<value>particles/Tank/rocket_accelerator/smoke.prefab</value>
-					</property>
-					<property>
-						<name>overridesData</name>
-						<value/>
-					</property>
-				</config>
-			</component>
-			<component>
-				<objectIndex>12</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>resource</name>
-						<isAsset>true</isAsset>
-						<value>particles/Tank/rocket_accelerator/smoke.prefab</value>
+						<value>particles/Tank/rocket_accelerator/3x3_end.prefab</value>
 					</property>
 					<property>
 						<name>overridesData</name>
@@ -636,7 +675,7 @@
 					<property>
 						<name>resource</name>
 						<isAsset>true</isAsset>
-						<value>particles/Tank/rocket_accelerator/3x3_end.prefab</value>
+						<value>particles/Tank/rocket_accelerator/3x3_idle.prefab</value>
 					</property>
 					<property>
 						<name>overridesData</name>
@@ -652,6 +691,36 @@
 						<name>resource</name>
 						<isAsset>true</isAsset>
 						<value>particles/Tank/rocket_accelerator/3x3_idle.prefab</value>
+					</property>
+					<property>
+						<name>overridesData</name>
+						<value/>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>15</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>resource</name>
+						<isAsset>true</isAsset>
+						<value>particles/Tank/rocket_accelerator/smoke.prefab</value>
+					</property>
+					<property>
+						<name>overridesData</name>
+						<value/>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>16</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>resource</name>
+						<isAsset>true</isAsset>
+						<value>particles/Tank/rocket_accelerator/smoke.prefab</value>
 					</property>
 					<property>
 						<name>overridesData</name>
