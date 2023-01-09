@@ -44,14 +44,13 @@ package net.wg.gui.notification
       
       override protected function updateLayout() : void
       {
-         var _loc1_:uint = 0;
          icon.visible = false;
          if(timeComponent != null)
          {
             timeComponent.visible = false;
          }
          App.utils.commons.updateTextFieldSize(textField,false,true);
-         _loc1_ = textField.y + textField.height + MESSAGE_PADDING_BOTTOM;
+         var _loc1_:uint = textField.y + textField.height + MESSAGE_PADDING_BOTTOM;
          if(buttonsGroup != null)
          {
             buttonsGroup.x = MESSAGE_WIDTH - buttonsGroup.width >> 1;

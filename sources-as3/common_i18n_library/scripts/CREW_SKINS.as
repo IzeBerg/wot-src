@@ -5,14 +5,6 @@ package
       
       public static const FEATURE_HEADER:String = "#crew_skins:feature/Header";
       
-      public static const FEATURE_POSTER_POSTERHEADER:String = "#crew_skins:feature/poster/posterHeader";
-      
-      public static const FEATURE_POSTER_GIFTNAME:String = "#crew_skins:feature/poster/giftName";
-      
-      public static const FEATURE_POSTER_FEATUREDESCR:String = "#crew_skins:feature/poster/featureDescr";
-      
-      public static const FEATURE_POSTER_CONFIRM:String = "#crew_skins:feature/poster/confirm";
-      
       public static const FEATURE_INUSE:String = "#crew_skins:feature/inUse";
       
       public static const FEATURE_INSTORAGE:String = "#crew_skins:feature/inStorage";

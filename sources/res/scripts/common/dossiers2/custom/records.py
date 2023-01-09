@@ -2914,7 +2914,9 @@ RECORDS = (
  (
   'singleAchievements', 'NY23_AtmsphrLevel', 'p', 'B', 1),
  (
-  'singleAchievements', 'NY23_CelebChallenge', 'p', 'B', 1))
+  'singleAchievements', 'NY23_CelebChallenge', 'p', 'B', 1),
+ (
+  'singleAchievements', 'BattlePassCommonPr_NY23', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4373,7 +4375,8 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'hw2022Medal02'): 1730, 
    ('singleAchievements', '12YearsOfService'): 1731, 
    ('singleAchievements', 'NY23_AtmsphrLevel'): 1732, 
-   ('singleAchievements', 'NY23_CelebChallenge'): 1733}
+   ('singleAchievements', 'NY23_CelebChallenge'): 1733, 
+   ('singleAchievements', 'BattlePassCommonPr_NY23'): 1734}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

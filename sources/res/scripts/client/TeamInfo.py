@@ -16,3 +16,6 @@ class TeamInfo(BigWorld.Entity):
     def onLeaveWorld(self):
         LOG_DEBUG_DEV(('[TeamInfo] onLeaveWorld: team = {}').format(self.teamID))
         BigWorld.player().arena.unregisterTeamInfo(self)
+
+    def onDynamicComponentCreated(self, component):
+        LOG_DEBUG_DEV('Component created', component)

@@ -249,6 +249,7 @@
 		<goodiesSnapshot>
 			<Type>BATTLE_GOODIES_LIST</Type>
 			<Flags>BASE_AND_CLIENT</Flags>
+			<ExposedForReplay>true</ExposedForReplay>
 		</goodiesSnapshot>
 	</Properties>
 	<TempProperties>
@@ -651,6 +652,7 @@
 			<Arg>BOOL</Arg>
 		</setDualGunCharger>
 		<reportClientStats>
+			<Exposed>OWN_CLIENT</Exposed>
 			<Arg>CLIENT_STATUS_STATISTICS</Arg>
 		</reportClientStats>
 		<onRankUpdated>
@@ -824,10 +826,6 @@
 		<stopByFailure>
 			<Arg>UINT8</Arg>
 		</stopByFailure>
-		<reportClientStats>
-			<Exposed/>
-			<Arg>CLIENT_STATUS_STATISTICS</Arg>
-		</reportClientStats>
 		<setAvatarClient/>
 		<leaveArenaByAccount>
 			<Arg>BOOL</Arg>

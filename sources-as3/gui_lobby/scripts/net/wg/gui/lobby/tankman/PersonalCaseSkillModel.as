@@ -10,6 +10,8 @@ package net.wg.gui.lobby.tankman
       
       public var title:String = "";
       
+      public var iconName:String = "";
+      
       public var desc:String = "";
       
       public var enabled:Boolean = false;

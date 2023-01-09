@@ -10,6 +10,8 @@ package net.wg.infrastructure.base.meta
       
       function onRibbonStartsPlayingS() : void;
       
+      function onNextBtnClickS() : void;
+      
       function onCloseBtnClickS() : void;
       
       function onRewardsBtnClickS() : void;

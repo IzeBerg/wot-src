@@ -81,7 +81,7 @@ package net.wg.gui.battle.views.epicSpectatorView
          deadReasonTF.x = this._stageWidth - deadReasonTF.width >> 1;
          if(_userName != null)
          {
-            _userName.y = deadReasonTF.y + deadReasonTF.textHeight;
+            _userName.y = deadReasonTF.y + deadReasonTF.textHeight + GAP_USER_NAME_DEAD_REASON;
             _userName.x = this._stageWidth - _userName.textWidth >> 1;
             _userName.verticalAlign = VerticalAlign.MIDDLE;
             _userName.textColor = WHITE_TEXT_COLOR;

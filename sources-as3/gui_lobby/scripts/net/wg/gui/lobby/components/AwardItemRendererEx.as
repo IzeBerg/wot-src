@@ -289,10 +289,6 @@ package net.wg.gui.lobby.components
          {
             this._toolTipMgr.showSpecial.apply(this._toolTipMgr,[this._data.specialAlias,null].concat(this._data.specialArgs));
          }
-         else if(this._data.isWulfTooltip)
-         {
-            this._toolTipMgr.showWulfTooltip.apply(this._toolTipMgr,[this._data.tooltip].concat(this._data.specialArgs));
-         }
          else if(StringUtils.isNotEmpty(this._data.tooltip))
          {
             this._toolTipMgr.showComplex(this._data.tooltip);

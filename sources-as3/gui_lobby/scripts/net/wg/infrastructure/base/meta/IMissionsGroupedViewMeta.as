@@ -10,14 +10,6 @@ package net.wg.infrastructure.base.meta
       
       function clickActionBtnS(param1:String) : void;
       
-      function openTokenPopoverS(param1:int) : void;
-      
-      function useTokenClickS(param1:String) : void;
-      
       function onClickButtonDetailsS() : void;
-      
-      function onDailyClickS() : void;
-      
-      function onNYChallengeClickS() : void;
    }
 }

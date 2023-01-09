@@ -2,7 +2,7 @@ import weakref
 from collections import namedtuple
 from account_helpers.settings_core import settings_constants
 from account_helpers.settings_core.migrations import migrateToVersion
-from account_helpers.settings_core.settings_constants import TUTORIAL, VERSION, GuiSettingsBehavior, OnceOnlyHints, SPGAim, CONTOUR, NYLootBoxesStorageKeys, NewYearStorageKeys
+from account_helpers.settings_core.settings_constants import TUTORIAL, VERSION, GuiSettingsBehavior, OnceOnlyHints, SPGAim, CONTOUR
 from adisp import adisp_process, adisp_async
 from debug_utils import LOG_ERROR, LOG_DEBUG
 from gui.battle_pass.battle_pass_helpers import updateBattlePassSettings
@@ -61,12 +61,6 @@ class SETTINGS_SECTIONS(CONST_CONTAINER):
     BATTLE_PASS_STORAGE = 'BATTLE_PASS_STORAGE'
     BATTLE_COMM = 'BATTLE_COMM'
     DOG_TAGS = 'DOG_TAGS'
-    LOOT_BOX_VIEWED = 'LOOT_BOX_VIEWED'
-    LOOT_BOX_ORIENTAL = 'LOOT_BOX_ORIENTAL'
-    LOOT_BOX_NEW_YEAR = 'LOOT_BOX_NEW_YEAR'
-    LOOT_BOX_FAIRYTALE = 'LOOT_BOX_FAIRYTALE'
-    LOOT_BOX_CHRISTMAS = 'LOOT_BOX_CHRISTMAS'
-    NEW_YEAR = 'NEW_YEAR'
     UNIT_FILTER = 'UNIT_FILTER'
     BATTLE_HUD = 'BATTLE_HUD'
     SPG_AIM = 'SPG_AIM'
@@ -92,6 +86,11 @@ class UI_STORAGE_KEYS(CONST_CONTAINER):
     EPIC_BATTLE_ABILITIES_INTRO_SHOWN = 'epic_battle_abilities_intro_shown'
     POST_PROGRESSION_INTRO_SHOWN = 'post_progression_intro_shown'
     VEH_PREVIEW_POST_PROGRESSION_BULLET_SHOWN = 'veh_preview_post_progression_bullet_shown'
+
+
+class BATTLE_MATTERS_KEYS(CONST_CONTAINER):
+    QUESTS_SHOWN = 'shown'
+    QUEST_PROGRESS = 'questProgress'
 
 
 class ServerSettingsManager(object):
@@ -231,7 +230,6 @@ class ServerSettingsManager(object):
                                              'bonus': 6, 
                                              'event': 7, 
                                              'crystals': 8, 
-                                             'newYear': 10, 
                                              'role_HT_assault': 11, 
                                              'role_HT_break': 12, 
                                              'role_HT_support': 13, 
@@ -333,7 +331,6 @@ class ServerSettingsManager(object):
                                                         'bonus': 6, 
                                                         'event': 7, 
                                                         'crystals': 8, 
-                                                        'newYear': 10, 
                                                         'role_HT_assault': 11, 
                                                         'role_HT_break': 12, 
                                                         'role_HT_support': 13, 
@@ -542,7 +539,8 @@ class ServerSettingsManager(object):
                                       UI_STORAGE_KEYS.DUAL_GUN_HIGHLIGHTS_COUNTER: Offset(19, 3670016), 
                                       UI_STORAGE_KEYS.TURBOSHAFT_HIGHLIGHTS_COUNTER: Offset(23, 58720256)}), 
        SETTINGS_SECTIONS.UI_STORAGE_2: Section(masks={UI_STORAGE_KEYS.ROCKET_ACCELERATION_MARK_IS_SHOWN: 0}, offsets={UI_STORAGE_KEYS.ROCKET_ACCELERATION_HIGHLIGHTS_COUNTER: Offset(1, 14)}), 
-       SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS: Section(masks={}, offsets={'shown': Offset(0, 255)}), 
+       SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS: Section(masks={}, offsets={BATTLE_MATTERS_KEYS.QUESTS_SHOWN: Offset(0, 255), 
+                                                 BATTLE_MATTERS_KEYS.QUEST_PROGRESS: Offset(8, 4294967040)}), 
        SETTINGS_SECTIONS.QUESTS_PROGRESS: Section(masks={}, offsets={QUESTS_PROGRESS.VIEW_TYPE: Offset(0, 3), 
                                            QUESTS_PROGRESS.DISPLAY_TYPE: Offset(2, 3 << 2)}), 
        SETTINGS_SECTIONS.SESSION_STATS: Section(masks={SESSION_STATS.IS_NOT_NEEDED_RESET_STATS_EVERY_DAY: 0, 
@@ -653,7 +651,6 @@ class ServerSettingsManager(object):
                                                     'bonus': 6, 
                                                     'event': 7, 
                                                     'crystals': 8, 
-                                                    'newYear': 10, 
                                                     'role_HT_assault': 11, 
                                                     'role_HT_break': 12, 
                                                     'role_HT_support': 13, 
@@ -720,25 +717,7 @@ class ServerSettingsManager(object):
                                                         'role_ATSPG_support': 22, 
                                                         'role_LT_universal': 23, 
                                                         'role_LT_wheeled': 24, 
-                                                        'role_SPG': 25}, offsets={}), 
-       SETTINGS_SECTIONS.LOOT_BOX_VIEWED: Section(masks={}, offsets={'count': Offset(0, 4294967295)}), 
-       SETTINGS_SECTIONS.LOOT_BOX_ORIENTAL: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
-                                             NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
-       SETTINGS_SECTIONS.LOOT_BOX_NEW_YEAR: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
-                                             NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
-       SETTINGS_SECTIONS.LOOT_BOX_FAIRYTALE: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
-                                              NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
-       SETTINGS_SECTIONS.LOOT_BOX_CHRISTMAS: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
-                                              NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
-       SETTINGS_SECTIONS.NEW_YEAR: Section(masks={NewYearStorageKeys.NY_VEHICLES_PROGRESS_ENTRY: 1, 
-                                    NewYearStorageKeys.NY_STATISTICS_HINT_SHOWN: 7, 
-                                    NewYearStorageKeys.CELEBRITY_SCREEN_VISITED: 10, 
-                                    NewYearStorageKeys.CELEBRITY_WELCOME_VIEWED: 11, 
-                                    NewYearStorageKeys.DECORATIONS_POPOVER_VIEWED: 12, 
-                                    NewYearStorageKeys.DECORATIONS_POPOVER_BROKEN: 13, 
-                                    NewYearStorageKeys.LOOT_BOX_VIDEO_OFF: 14, 
-                                    NewYearStorageKeys.INTRO_SCENE_VIEWED: 15}, offsets={NewYearStorageKeys.TUTORIAL_STATE: Offset(19, 3670016), 
-                                    NewYearStorageKeys.NY_VEHICLES_LEVEL_UP_ENTRY: Offset(3, 15 << 3)})}
+                                                        'role_SPG': 25}, offsets={})}
     AIM_MAPPING = {'net': 1, 
        'netType': 1, 
        'centralTag': 1, 
@@ -849,14 +828,6 @@ class ServerSettingsManager(object):
         if self.settingsCache.isSynced():
             self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_PASS_STORAGE, settings)
 
-    def getNewYearStorage(self, defaults=None):
-        if self.settingsCache.isSynced():
-            return self.getSection(SETTINGS_SECTIONS.NEW_YEAR, defaults)
-        return {}
-
-    def saveInNewYearStorage(self, settings):
-        return self.setSectionSettings(SETTINGS_SECTIONS.NEW_YEAR, settings)
-
     def checkAutoReloadHighlights(self, increase=False):
         return self.__checkUIHighlights(UI_STORAGE_KEYS.AUTO_RELOAD_HIGHLIGHTS_COUNTER, self._MAX_AUTO_RELOAD_HIGHLIGHTS_COUNT, increase)
 
@@ -885,10 +856,16 @@ class ServerSettingsManager(object):
         return self.getUIStorage().get(UI_STORAGE_KEYS.DISABLE_ANIMATED_TOOLTIP) == 1
 
     def getBattleMattersQuestWasShowed(self):
-        return self.getSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, 'shown', 0)
+        return self.getSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, BATTLE_MATTERS_KEYS.QUESTS_SHOWN, 0)
 
     def setBattleMattersQuestWasShowed(self, count):
-        return self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, {'shown': count})
+        return self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, {BATTLE_MATTERS_KEYS.QUESTS_SHOWN: count})
+
+    def getBattleMattersQuestProgress(self):
+        return self.getSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, BATTLE_MATTERS_KEYS.QUEST_PROGRESS, 0)
+
+    def setBattleMattersQuestProgress(self, lastSeenProgress):
+        self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, {BATTLE_MATTERS_KEYS.QUEST_PROGRESS: lastSeenProgress})
 
     def setQuestProgressSettings(self, settings):
         self.setSectionSettings(SETTINGS_SECTIONS.QUESTS_PROGRESS, settings)
@@ -1072,7 +1049,7 @@ class ServerSettingsManager(object):
     @adisp_process
     def _updateToVersion(self, callback=None):
         currentVersion = self.settingsCache.getVersion()
-        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, 'nyStorage': {}, 'clear': {}, 'delete': []}
+        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, 'clear': {}, 'delete': []}
         yield migrateToVersion(currentVersion, self._core, data)
         self._setSettingsSections(data)
         callback(self)
@@ -1213,7 +1190,6 @@ class ServerSettingsManager(object):
         clearRoyaleFilterCarousel2 = clear.get(SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2, 0)
         if royaleFilterCarousel2 or clearRoyaleFilterCarousel2:
             settings[SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2] = self._buildSectionSettings(SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2, royaleFilterCarousel2) ^ clearRoyaleFilterCarousel2
-        settings[SETTINGS_SECTIONS.NEW_YEAR] = self._buildSectionSettings(SETTINGS_SECTIONS.NEW_YEAR, data.get('nyStorage', {}))
         battleMatters = data.get(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, {})
         clearBattleMatters = clear.get(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, 0)
         if battleMatters or clearBattleMatters:

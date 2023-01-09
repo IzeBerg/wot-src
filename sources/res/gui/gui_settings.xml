@@ -1146,7 +1146,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/9BPContentPage/
+				/$LANGUAGE_CODE/promocontent/H22BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1156,7 +1156,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/9BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/H22BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1193,7 +1193,49 @@
 				<value>
 					<item>
 						<type>string</type>
-						<value>tanks</value>
+						<value>collaboration</value>
+					</item>
+					<item>
+						<type>string</type>
+						<value>newRewards</value>
+					</item>
+					<item>
+						<type>string</type>
+						<value>oneChapter</value>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>specialVoiceTankmen</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>progression</name>
+						<type>list</type>
+						<value>
+							<item>
+								<type>string</type>
+								<value>tman_template:::tankmen_bph_2:630180:::brotherhood::tankmen_bph_2:commander</value>
+							</item>
+							<item>
+								<type>string</type>
+								<value>tman_template:::tankmen_bph_1:630180:::brotherhood::tankmen_bph_1:commander</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>shop</name>
+						<type>list</type>
+						<value>
+							<item>
+								<type>string</type>
+								<value>tman_template:::tankmen_bph_3:630180:::brotherhood::tankmen_bph_3:commander</value>
+							</item>
+							<item>
+								<type>string</type>
+								<value>tman_template:::tankmen_bph_4:630180:::brotherhood::tankmen_bph_4:commander</value>
+							</item>
+						</value>
 					</item>
 				</value>
 			</item>
@@ -1323,22 +1365,6 @@
 				Utilizes Vivox, © 2018 Vivox, Inc. All rights reserved. See www.vivox.com for details.\n
 				<name>default</name>
 				<type>string</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>newYearInfo</name>
-		<type>dict</type>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HO2023Video/
-				<name>baseURL</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.asia/news/specials/holiday-ops-2023-boxes/
-				<name>aboutEventURL</name>
-				<type>url</type>
 			</item>
 		</value>
 	</setting>
@@ -1765,43 +1791,6 @@
 			</item>
 			<item>
 				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/cartography/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>infoPageEpicQueue</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://frontline.worldoftanks.com/$LANGUAGE_CODE/information/?modeselector=true
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://frontline.worldoftanks.eu/$LANGUAGE_CODE/information/?modeselector=true
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://frontline.worldoftanks.asia/$LANGUAGE_CODE/information/?modeselector=true
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://frontline.wotgame.cn/$LANGUAGE_CODE/information/?modeselector=true
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://frontline-ct.worldoftanks.ru/$LANGUAGE_CODE/information/?modeselector=true
-				<name>CT</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://frontline.worldoftanks.ru/$LANGUAGE_CODE/information/?modeselector=true
 				<name>default</name>
 				<type>url</type>
 			</item>

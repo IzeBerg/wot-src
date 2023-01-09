@@ -28,8 +28,6 @@ package net.wg.gui.cyberSport.popups
       
       private static const DEFAULT_WIDTH:int = 346;
       
-      private static const TEXT_PADDING:int = 5;
-      
       private static const BTN_PADDING:int = 5;
       
       private static const WND_PADDING:int = 16;
@@ -199,7 +197,6 @@ package net.wg.gui.cyberSport.popups
       {
          window.title = param1;
          this.infoTF.htmlText = param2;
-         this.infoTF.height = this.infoTF.textHeight + TEXT_PADDING;
          this.selectButton.label = param3;
          this.cancelButton.label = param4;
          invalidate(INVALID_LAYOUT);

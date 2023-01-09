@@ -8,7 +8,7 @@ package net.wg.infrastructure.base.interfaces
       
       function setMessage(param1:String) : void;
       
-      function show(param1:Boolean = false) : void;
+      function show() : void;
       
       function hide() : void;
       

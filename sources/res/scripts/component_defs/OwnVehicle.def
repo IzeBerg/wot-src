@@ -106,6 +106,15 @@
 		<showOwnVehicleHitDirection>
 			<Arg>VEHICLE_HIT_DIRECTION</Arg>
 		</showOwnVehicleHitDirection>
+		<redrawVehicleOnRespawn>
+			<Arg>OBJECT_ID</Arg>
+			<Arg>STRING</Arg>
+			<Arg>STRING</Arg>
+		</redrawVehicleOnRespawn>
+		<beforeRespawn>
+			<Arg>OBJECT_ID</Arg>
+			<Arg>INT16</Arg>
+		</beforeRespawn>
 		<beforeSetupUpdate/>
 	</ClientMethods>
 	<DefaultKeyName>ownVehicle</DefaultKeyName>

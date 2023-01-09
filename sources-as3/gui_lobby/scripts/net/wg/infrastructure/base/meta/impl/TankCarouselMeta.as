@@ -19,10 +19,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public var getCarouselAlias:Function;
       
-      public var newYearVehicles:Function;
-      
-      public var setIsSmall:Function;
-      
       public var setFilter:Function;
       
       public function TankCarouselMeta()
@@ -64,18 +60,6 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.getCarouselAlias,"getCarouselAlias" + Errors.CANT_NULL);
          return this.getCarouselAlias();
-      }
-      
-      public function newYearVehiclesS() : void
-      {
-         App.utils.asserter.assertNotNull(this.newYearVehicles,"newYearVehicles" + Errors.CANT_NULL);
-         this.newYearVehicles();
-      }
-      
-      public function setIsSmallS(param1:Boolean) : void
-      {
-         App.utils.asserter.assertNotNull(this.setIsSmall,"setIsSmall" + Errors.CANT_NULL);
-         this.setIsSmall(param1);
       }
       
       public function setFilterS(param1:int) : void

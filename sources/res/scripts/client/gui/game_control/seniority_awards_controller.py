@@ -1,4 +1,5 @@
 import typing, BigWorld, Event
+from gui import SystemMessages
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.Waiting import Waiting
 from helpers import dependency, time_utils
@@ -8,6 +9,7 @@ from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
 from helpers.server_settings import SeniorityAwardsConfig
 SACOIN = 'sacoin'
+CLAIM_REWARD_TIMEOUT = 10
 
 class SeniorityAwardsController(ISeniorityAwardsController):
     __lobbyContext = dependency.descriptor(ILobbyContext)
@@ -17,6 +19,8 @@ class SeniorityAwardsController(ISeniorityAwardsController):
     def __init__(self):
         super(SeniorityAwardsController, self).__init__()
         self.onUpdated = Event.Event()
+        self.__claimTimeoutId = None
+        return
 
     @property
     def isEnabled(self):
@@ -42,7 +46,7 @@ class SeniorityAwardsController(ISeniorityAwardsController):
 
     @property
     def isNeedToShowRewardNotification(self):
-        return self.isEnabled and self.__hangarSpace.spaceInited and self._config.showRewardNotification and self.isEligibleToReward
+        return self.isEnabled and self.__hangarSpace.spaceInited and self._config.showRewardNotification and self.isEligibleToReward and not self.isRewardReceived
 
     @property
     def clockOnNotification(self):
@@ -64,11 +68,13 @@ class SeniorityAwardsController(ISeniorityAwardsController):
             return
 
     def claimReward(self):
-        Waiting.show('claimSeniorityAwards')
+        self.__showWaiting()
+        self.__scheduleClaimTimeout()
         BigWorld.player().requestSingleToken(self._config.claimRewardToken)
 
     def markRewardReceived(self):
-        Waiting.hide('claimSeniorityAwards')
+        self.__hideWaiting()
+        self.__cancelClaimTimeout()
 
     def onLobbyInited(self, event):
         super(SeniorityAwardsController, self).onLobbyInited(event)
@@ -107,6 +113,8 @@ class SeniorityAwardsController(ISeniorityAwardsController):
 
     def __clear(self):
         self.__removeListeners()
+        self.__cancelClaimTimeout()
+        self.__hideWaiting()
         self.__endTimestamp = None
         self.__clockOnNotification = None
         return
@@ -124,6 +132,29 @@ class SeniorityAwardsController(ISeniorityAwardsController):
     def __onSettingsChanged(self, diff):
         if 'seniority_awards_config' in diff:
             self.__update()
+
+    def __scheduleClaimTimeout(self):
+        self.__cancelClaimTimeout()
+        self.__claimTimeoutId = BigWorld.callback(CLAIM_REWARD_TIMEOUT, self.__onClaimRewardFailed)
+
+    def __cancelClaimTimeout(self):
+        if self.__claimTimeoutId:
+            BigWorld.cancelCallback(self.__claimTimeoutId)
+            self.__claimTimeoutId = None
+        return
+
+    def __onClaimRewardFailed(self):
+        self.__cancelClaimTimeout()
+        self.__hideWaiting()
+        SystemMessages.pushI18nMessage('#system_messages:seniority_awards/claim_reward_failed', type=SystemMessages.SM_TYPE.Error, priority='high')
+
+    @staticmethod
+    def __showWaiting():
+        Waiting.show('claimSeniorityAwards')
+
+    @staticmethod
+    def __hideWaiting():
+        Waiting.hide('claimSeniorityAwards')
 
     def __update(self):
         self.onUpdated()

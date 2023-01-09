@@ -25,7 +25,7 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
    public class AmmunitionPanel extends AmmunitionPanelMeta implements IAmmunitionPanel
    {
       
-      public static const SLOTS_HEIGHT_AND_OFFSET:int = -11;
+      public static const SLOTS_HEIGHT_AND_OFFSET:int = 30;
       
       private static const INV_BUTTONS_ENABLED:String = "InvButtonsEnabled";
       

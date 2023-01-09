@@ -24,22 +24,22 @@ class VehicleBonusModel(RewardItemModel):
     def setVehicleType(self, value):
         self._setString(15, value)
 
-    def getNation(self):
-        return self._getString(16)
-
-    def setNation(self, value):
-        self._setString(16, value)
-
     def getVehicleLvl(self):
-        return self._getNumber(17)
+        return self._getNumber(16)
 
     def setVehicleLvl(self, value):
-        self._setNumber(17, value)
+        self._setNumber(16, value)
+
+    def getVehicleNation(self):
+        return self._getString(17)
+
+    def setVehicleNation(self, value):
+        self._setString(17, value)
 
     def _initialize(self):
         super(VehicleBonusModel, self)._initialize()
         self._addBoolProperty('isElite', True)
         self._addStringProperty('vehicleName', '')
         self._addStringProperty('vehicleType', '')
-        self._addStringProperty('nation', '')
         self._addNumberProperty('vehicleLvl', 0)
+        self._addStringProperty('vehicleNation', '')

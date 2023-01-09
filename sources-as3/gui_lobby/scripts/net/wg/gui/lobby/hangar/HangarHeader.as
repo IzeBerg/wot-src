@@ -49,14 +49,6 @@ package net.wg.gui.lobby.hangar
       private static const SECONDARY_ENTRY_POINT_X_COMPACT:int = 24;
       
       private static const FUN_RANDOM_FLAGS_OFFSET_Y:uint = 39;
-      
-      private static const QUESTS_FLAGS_NY_X_OFFSET_SMALL:int = -170;
-      
-      private static const QUESTS_FLAGS_NY_X_OFFSET_SMALL_MEDIUM:int = -200;
-      
-      private static const QUESTS_FLAGS_NY_X_OFFSET_MEDIUM:int = -215;
-      
-      private static const QUESTS_FLAGS_NY_X_OFFSET_BIG:int = -290;
        
       
       public var mcBackground:Sprite;
@@ -80,8 +72,6 @@ package net.wg.gui.lobby.hangar
       private var _funRandomWidget:FunRandomHangarWidget = null;
       
       private var _comp7Widget:Comp7Widget = null;
-      
-      private var _isNYWidgetVisible:Boolean = false;
       
       private var _scheduler:IScheduler = null;
       
@@ -146,11 +136,7 @@ package net.wg.gui.lobby.hangar
       override protected function draw() : void
       {
          var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         var _loc3_:int = 0;
-         var _loc4_:int = 0;
-         var _loc5_:IHeaderFlagsEntryPoint = null;
-         var _loc6_:int = 0;
+         var _loc2_:IHeaderFlagsEntryPoint = null;
          super.draw();
          if(this._data && isInvalid(InvalidationType.DATA))
          {
@@ -159,61 +145,32 @@ package net.wg.gui.lobby.hangar
             {
                this.questsFlags.setData(this._data.questsGroups);
             }
-            this.mcBackground.visible = !this._data.isNYWidgetVisible;
          }
          if(isInvalid(InvalidationType.LAYOUT))
          {
             _loc1_ = 0;
-            _loc2_ = 0;
-            _loc3_ = 0;
-            _loc4_ = Boolean(this._funRandomWidget) ? int(FUN_RANDOM_FLAGS_OFFSET_Y) : int(HeaderQuestsFlags.DEFAULT_FLAGS_OFFSET_Y);
             if(this.secondaryEntryPoint.visible)
             {
-               _loc5_ = this._battlePassEntryPoint || this._rankedBattlesWidget || this._battleRoyaleHangarWidget || this._epicBattlesWidget || this._funRandomWidget || this._comp7Widget;
-               if(_loc5_)
+               _loc2_ = this._battlePassEntryPoint || this._rankedBattlesWidget || this._battleRoyaleHangarWidget || this._epicBattlesWidget || this._funRandomWidget || this._comp7Widget;
+               if(_loc2_)
                {
-                  _loc6_ = (_loc5_.width >> 1) + _loc5_.marginRight + this._secondaryPointX;
-                  this.secondaryEntryPoint.x = _loc6_;
-                  this.secondaryEntryPoint.y = _loc5_.marginTop;
-                  _loc1_ = _loc6_ + this.secondaryEntryPoint.width + SECONDARY_ENTRY_POINT_OFFSET >> 0;
+                  _loc1_ = (_loc2_.width >> 1) + _loc2_.marginRight + this._secondaryPointX;
+                  this.secondaryEntryPoint.x = _loc1_;
+                  this.secondaryEntryPoint.y = _loc2_.marginTop;
+                  this.questsFlags.offsetRightSideX = _loc1_ + this.secondaryEntryPoint.width + SECONDARY_ENTRY_POINT_OFFSET >> 0;
                }
                else
                {
                   this.secondaryEntryPoint.x = 0;
-                  _loc1_ = this.secondaryEntryPoint.width - SECONDARY_ENTRY_POINT_OFFSET;
+                  this.questsFlags.offsetRightSideX = this.secondaryEntryPoint.width - SECONDARY_ENTRY_POINT_OFFSET;
                }
             }
             else
             {
                this.secondaryEntryPoint.x = 0;
+               this.questsFlags.offsetRightSideX = 0;
             }
-            if(this._data && this._data.isNYWidgetVisible)
-            {
-               if(App.appWidth <= StageSizeBoundaries.WIDTH_1280)
-               {
-                  _loc3_ = QUESTS_FLAGS_NY_X_OFFSET_SMALL;
-               }
-               else if(App.appWidth <= StageSizeBoundaries.WIDTH_1366)
-               {
-                  _loc3_ = QUESTS_FLAGS_NY_X_OFFSET_SMALL_MEDIUM;
-               }
-               else if(App.appWidth <= StageSizeBoundaries.WIDTH_1600)
-               {
-                  _loc3_ = QUESTS_FLAGS_NY_X_OFFSET_MEDIUM;
-               }
-               else
-               {
-                  _loc3_ = QUESTS_FLAGS_NY_X_OFFSET_BIG;
-               }
-            }
-            else
-            {
-               _loc3_ = Values.ZERO;
-            }
-            this.questsFlags.x = _loc3_;
-            this.questsFlags.offsetLeftSideX = _loc2_;
-            this.questsFlags.offsetRightSideX = _loc1_;
-            this.questsFlags.flagsOffsetY = _loc4_;
+            this.questsFlags.flagsOffsetY = Boolean(this._funRandomWidget) ? Number(FUN_RANDOM_FLAGS_OFFSET_Y) : Number(HeaderQuestsFlags.DEFAULT_FLAGS_OFFSET_Y);
          }
       }
       
@@ -226,7 +183,6 @@ package net.wg.gui.lobby.hangar
          this._data = param1;
          invalidateState();
          invalidateData();
-         invalidateLayout();
       }
       
       public function as_createBattlePass() : void
@@ -420,25 +376,6 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      public function as_setBattleMattersEntryPoint(param1:Boolean) : void
-      {
-         var _loc2_:IHeaderSecondaryEntryPoint = null;
-         if(param1 && !this.questsFlags.getSecondaryEntryPoint(false))
-         {
-            _loc2_ = App.instance.utils.classFactory.getComponent(Linkages.BATTLE_MATTERS_ENTRY_POINT,IHeaderSecondaryEntryPoint);
-            this.questsFlags.addSecondaryEntryPoint(_loc2_,false);
-            registerFlashComponentS(_loc2_,HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT);
-         }
-         if(!param1)
-         {
-            this.questsFlags.removeSecondaryEntryPoint(false);
-            if(isFlashComponentRegisteredS(HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT))
-            {
-               unregisterFlashComponentS(HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT);
-            }
-         }
-      }
-      
       public function as_setResourceWellEntryPoint(param1:Boolean) : void
       {
          var _loc2_:IHeaderSecondaryEntryPoint = null;
@@ -454,6 +391,25 @@ package net.wg.gui.lobby.hangar
             if(isFlashComponentRegisteredS(HANGAR_ALIASES.RESOURCE_WELL_ENTRY_POINT))
             {
                unregisterFlashComponentS(HANGAR_ALIASES.RESOURCE_WELL_ENTRY_POINT);
+            }
+         }
+      }
+      
+      public function as_setBattleMattersEntryPoint(param1:Boolean) : void
+      {
+         var _loc2_:IHeaderSecondaryEntryPoint = null;
+         if(param1 && !this.questsFlags.getSecondaryEntryPoint(false))
+         {
+            _loc2_ = App.instance.utils.classFactory.getComponent(Linkages.BATTLE_MATTERS_ENTRY_POINT,IHeaderSecondaryEntryPoint);
+            this.questsFlags.addSecondaryEntryPoint(_loc2_,false);
+            registerFlashComponentS(_loc2_,HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT);
+         }
+         if(!param1)
+         {
+            this.questsFlags.removeSecondaryEntryPoint(false);
+            if(isFlashComponentRegisteredS(HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT))
+            {
+               unregisterFlashComponentS(HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT);
             }
          }
       }

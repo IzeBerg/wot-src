@@ -19,7 +19,6 @@ _LOBBY_RELEASE_PACKAGES = ('gui.Scaleform.daapi.view.lobby', 'gui.Scaleform.daap
                            'gui.Scaleform.daapi.view.lobby.vehicle_compare', 'gui.Scaleform.daapi.view.lobby.wgnc',
                            'gui.Scaleform.daapi.view.login', 'messenger.gui.Scaleform.view.lobby',
                            'gui.Scaleform.daapi.view.lobby.missions.regular', 'gui.Scaleform.daapi.view.lobby.missions.personal',
-                           'gui.Scaleform.daapi.view.lobby.missions.linked_set',
                            'gui.Scaleform.daapi.view.bootcamp.lobby', 'gui.Scaleform.daapi.view.lobby.event_boards',
                            'gui.Scaleform.daapi.view.lobby.shop', 'gui.Scaleform.daapi.view.lobby.session_stats',
                            'gui.Scaleform.daapi.view.lobby.epicBattleTraining', 'gui.Scaleform.daapi.view.lobby.tank_setup',

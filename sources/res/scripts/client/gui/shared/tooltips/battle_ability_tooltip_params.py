@@ -409,6 +409,13 @@ class BattleAbilityTooltipManager(object):
 
         return
 
+    def getTooltipInfo(self, tooltipIdentifier):
+        tooltipInfo = self.__tooltipsSettings.get(tooltipIdentifier, None)
+        if tooltipInfo:
+            return (tooltipInfo.name, tooltipInfo.renderer)
+        else:
+            return (None, None)
+
 
 g_battleAbilityTooltipMgr = BattleAbilityTooltipManager()
 g_battleAbilityTooltipMgr.init(TOOLTIPS_PATH)

@@ -29,7 +29,7 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       private static const MAX_TEXT_WIDTH_MAX_SCREEN:int = 500;
       
-      private static const WIDTH_FOR_TEXT:int = 15;
+      private static const WIDTH_FOR_TEXT:int = 24;
       
       private static const COUNTER_PROPS:ICounterProps = new CounterProps(10,-3,TextFormatAlign.LEFT,true,Linkages.COUNTER_UI,CounterProps.DEFAULT_TF_PADDING,false,Counter.EMPTY_STATE);
       

@@ -186,9 +186,10 @@ package net.wg.gui.lobby.tankman
       
       private function initVisibleElements() : void
       {
-         var _loc1_:String = null;
-         this._isHeader = data.isHeader;
-         if(data.isHeader || !data.enabled)
+         var _loc2_:String = null;
+         var _loc1_:PersonalCaseSkillModel = this.data as PersonalCaseSkillModel;
+         this._isHeader = _loc1_.isHeader;
+         if(_loc1_.isHeader || !_loc1_.enabled)
          {
             enabled = false;
          }
@@ -198,8 +199,8 @@ package net.wg.gui.lobby.tankman
             {
                this.icon.visible = true;
             }
-            _loc1_ = "../maps/icons/tankmen/skills/big/" + data.title + ".png";
-            this.icon.source = _loc1_;
+            _loc2_ = "../maps/icons/tankmen/skills/big/" + _loc1_.iconName + ".png";
+            this.icon.source = _loc2_;
          }
          else
          {
