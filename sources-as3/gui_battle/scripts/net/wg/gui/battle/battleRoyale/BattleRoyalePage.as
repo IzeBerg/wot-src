@@ -547,6 +547,10 @@ package net.wg.gui.battle.battleRoyale
          }
       }
       
+      override protected function anchorVictimDogTag() : void
+      {
+      }
+      
       private function onUbComponentsLoaderIoErrorHandler(param1:IOErrorEvent) : void
       {
          App.utils.asserter.assert(false,this._ubComponentsLoader.contentLoaderInfo.url + Errors.WASNT_FOUND);

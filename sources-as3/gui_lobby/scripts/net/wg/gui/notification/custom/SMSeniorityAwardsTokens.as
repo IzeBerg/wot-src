@@ -2,6 +2,7 @@ package net.wg.gui.notification.custom
 {
    import flash.display.DisplayObject;
    import flash.text.TextField;
+   import flash.text.TextFormatAlign;
    import net.wg.data.constants.IconTextPosition;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.generated.ICON_TEXT_FRAMES;
@@ -45,6 +46,7 @@ package net.wg.gui.notification.custom
          contentBottomOffset = CONTENT_BOTTOM_OFFSET;
          messageTopOffset = 0;
          messageBottomOffset = MESSAGE_BOTTOM_OFFSET;
+         buttonsAlign = TextFormatAlign.CENTER;
          this._defTextYPos = textField.y;
       }
       

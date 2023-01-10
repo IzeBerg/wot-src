@@ -2,6 +2,7 @@ import logging, typing
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.server_events.recruit_helper import getRecruitInfo
+from gui.shared.formatters import text_styles
 from helpers import i18n
 from gui import makeHtmlString
 from gui.server_events.bonuses import IntelligenceBlueprintBonus, NationalBlueprintBonus, DossierBonus
@@ -296,7 +297,7 @@ class _SelectTokenTextGetter(_BaseTextGetter):
     def getText(cls, item):
         nameRes = R.strings.battle_pass.chosenBonuses.bonus.dyn(item.getType())
         if nameRes.exists():
-            return backport.text(nameRes())
+            return text_styles.main(backport.text(nameRes()))
         return ''
 
 
@@ -320,7 +321,7 @@ class _TankmanTokenTextGetter(_BaseTextGetter):
             if tokenID.startswith(RECRUIT_TMAN_TOKEN_PREFIX):
                 recruitInfo = getRecruitInfo(tokenID)
                 if recruitInfo is not None:
-                    return backport.text(R.strings.battle_pass.universalTankmanBonus(), name=recruitInfo.getFullUserName())
+                    return text_styles.main(backport.text(R.strings.battle_pass.universalTankmanBonus(), name=recruitInfo.getFullUserName()))
 
         return ''
 

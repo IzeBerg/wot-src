@@ -61,7 +61,7 @@ package net.wg.gui.components.controls.price
       
       private var _numVisibleItems:int = 0;
       
-      private var _actionMode:String;
+      private var _actionMode:String = "enabled";
       
       private var _actionState:String;
       
@@ -73,7 +73,7 @@ package net.wg.gui.components.controls.price
       
       private var _customActionTooltip:String = "";
       
-      private var _priceIconAlign:String;
+      private var _priceIconAlign:String = "right";
       
       private var _priceIconOffset:Point;
       
@@ -83,19 +83,16 @@ package net.wg.gui.components.controls.price
       
       private var _itemsAnchor:String = "bottomLeft";
       
-      private var _oldPriceAlign:String;
+      private var _oldPriceAlign:String = "oldPriceAlignBottom";
       
       private var _oldPriceVisible:Boolean = false;
       
       public function CompoundPrice()
       {
          this._classFactory = App.utils.classFactory;
-         this._actionMode = ACTION_MODE_ENABLED;
          this._actionState = ACTION_STATE_SIMPLE;
-         this._priceIconAlign = PRICE_ICON_ALIGN_RIGHT;
          this._priceIconOffset = new Point(0,0);
          this._priceActionOffset = new Point(0,0);
-         this._oldPriceAlign = OLD_PRICE_ALIGN_BOTTOM;
          super();
          this._items = new Vector.<Price>(0);
       }

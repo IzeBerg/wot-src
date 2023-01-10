@@ -1522,7 +1522,7 @@ class VehicleDamageCumulative(VehicleDamage, _Cumulativable):
         return self._bonus
 
     def getKey(self):
-        return 'vehicleDamage'
+        return self._name
 
 
 class VehicleStun(_CountOrTotalEventsCondition):
@@ -1570,7 +1570,7 @@ class VehicleStunCumulative(VehicleStun, _Cumulativable):
         return super(VehicleStunCumulative, self).getLabelKey() + '/cumulative'
 
     def getKey(self):
-        return 'vehicleStun'
+        return self._name
 
 
 class MultiStunEvent(_Condition, _Negatable):

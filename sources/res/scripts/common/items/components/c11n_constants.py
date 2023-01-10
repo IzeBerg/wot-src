@@ -308,6 +308,7 @@ CamouflageTilingTypeNames = {getattr(CamouflageTilingType, k):k for k in dir(Cam
                                                                                                                                                                                          'NONE')}
 CamouflageTilingTypeNameToType = {v:k for k, v in CamouflageTilingTypeNames.iteritems()}
 EASING_TRANSITION_DURATION = 0.8
+IMMEDIATE_TRANSITION_DURATION = 0.0
 
 class SLOT_TYPE_NAMES(object):
     PAINT = 'paint'

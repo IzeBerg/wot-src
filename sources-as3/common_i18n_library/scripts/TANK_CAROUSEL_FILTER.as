@@ -131,10 +131,6 @@ package
       
       public static const TOOLTIP_INVENTORY_BODY:String = "#tank_carousel_filter:tooltip/inventory/body";
       
-      public static const TOOLTIP_NEWYEAR_HEADER:String = "#tank_carousel_filter:tooltip/newYear/header";
-      
-      public static const TOOLTIP_NEWYEAR_BODY:String = "#tank_carousel_filter:tooltip/newYear/body";
-      
       public static const TOOLTIP_FUNRANDOM_HEADER:String = "#tank_carousel_filter:tooltip/funRandom/header";
       
       public static const TOOLTIP_FUNRANDOM_BODY:String = "#tank_carousel_filter:tooltip/funRandom/body";

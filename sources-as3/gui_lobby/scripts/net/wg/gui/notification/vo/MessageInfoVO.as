@@ -21,8 +21,6 @@ package net.wg.gui.notification.vo
       
       public var defaultIcon:String = "";
       
-      public var buttonsAlign:String = "left";
-      
       public var savedID:Number = -1;
       
       public var timestamp:Number = -1;
@@ -108,15 +106,14 @@ package net.wg.gui.notification.vo
       
       public function get areButtonsVisible() : Boolean
       {
-         var _loc1_:int = this._buttonsLayout.length;
-         var _loc2_:int = 0;
-         while(_loc2_ < _loc1_)
+         var _loc1_:int = 0;
+         while(_loc1_ < this._buttonsLayout.length)
          {
-            if(this.isButtonVisible(this._buttonsLayout[_loc2_].type))
+            if(this.isButtonVisible(this._buttonsLayout[_loc1_].type))
             {
                return true;
             }
-            _loc2_++;
+            _loc1_++;
          }
          return false;
       }

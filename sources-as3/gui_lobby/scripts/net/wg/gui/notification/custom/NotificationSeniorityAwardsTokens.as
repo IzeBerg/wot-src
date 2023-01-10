@@ -1,6 +1,7 @@
 package net.wg.gui.notification.custom
 {
    import flash.text.TextField;
+   import flash.text.TextFormatAlign;
    import net.wg.gui.notification.ServiceMessageContent;
    import net.wg.gui.notification.custom.vo.SMCustomSeniorityAwardsTokensVO;
    
@@ -17,6 +18,7 @@ package net.wg.gui.notification.custom
          super();
          messageTopOffset = 0;
          messageBottomOffset = MESSAGE_BOTTOM_OFFSET;
+         buttonsAlign = TextFormatAlign.CENTER;
       }
       
       override protected function onDispose() : void

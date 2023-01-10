@@ -61,7 +61,7 @@ class DialogTemplateViewModel(ViewModel):
 
     @staticmethod
     def getDisplayFlagsType():
-        return str
+        return unicode
 
     def _initialize(self):
         super(DialogTemplateViewModel, self)._initialize()

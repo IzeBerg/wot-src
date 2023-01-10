@@ -362,7 +362,7 @@ msgstr ""
 
 msgid "actionPrice/body/frontline"
 msgstr ""
-"价格包含前线折扣优惠。优惠券折扣:%(discount)s\n"
+"价格包含前线模式折扣优惠。优惠券折扣:%(discount)s\n"
 "\n"
 "原价:%(oldPrice)s\n"
 "现价:%(newPrice)s"
@@ -910,6 +910,12 @@ msgstr "您的真实昵称和军团标签在战斗中不会对其他玩家显示
 
 msgid "anonymizer/teamStats/header"
 msgstr "该玩家的昵称已经修改为：%(name)s"
+
+msgid "awardItem/abilityToken/body"
+msgstr "累积所需的积分并激活前线模式战斗储备。"
+
+msgid "awardItem/abilityToken/header"
+msgstr "战斗储备积分"
 
 msgid "awardItem/battleToken/description"
 msgstr "解锁多个任务。"
@@ -6881,15 +6887,6 @@ msgstr "达到特定的节日气氛等级。"
 msgid "notrecruitedtankman/ny23defaultGirl/label"
 msgstr "假日行动2023"
 
-msgid "notrecruitedtankman/ny23ruby_girl_1/desc"
-msgstr "?empty?"
-
-msgid "notrecruitedtankman/ny23ruby_girl_1/event"
-msgstr "?empty?"
-
-msgid "notrecruitedtankman/ny23ruby_girl_1/label"
-msgstr "?empty?"
-
 msgid "notrecruitedtankman/offspring_commander/desc"
 msgstr ""
 "主唱、吉他手和作曲人是现代文艺复兴时期的人！他有分子生物学博士学位，做过Gringo "
@@ -7272,6 +7269,46 @@ msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankmen_bp9_3/label"
 msgstr "战斗通行证赛季IX"
+
+msgid "notrecruitedtankman/tankmen_bph_1/desc"
+msgstr ""
+"赛博达因系统(代号:CSM-101)打造的自主拟人内骨骼机制模型之一，用于执行战斗任务。该机器的处理器在扩展模式下工作，能够自主学习，这为其在任务参数发生变化时提供了相当大的优势。T-800被认为是整个机器人系列中最高效（且最具标志性）的代表。"
+
+msgid "notrecruitedtankman/tankmen_bph_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bph_1/label"
+msgstr "战斗通行证:审判日"
+
+msgid "notrecruitedtankman/tankmen_bph_2/desc"
+msgstr ""
+"一名10岁男孩、未来机器人与人类战争中全球反抗运动的领袖、天网的主要敌人。为了除掉他，该网络派出了最先进的机器人:T-1000。然而，在了解了天网的计划后，身在未来的约翰·康纳，决定向过去派遣一名经过重新编程的T-800机器人来保护自己。T-800成功完成了任务，并消除了对未来反抗运动的威胁(当时不存在，但仍然至关重要)。"
+
+msgid "notrecruitedtankman/tankmen_bph_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bph_2/label"
+msgstr "战斗通行证:审判日"
+
+msgid "notrecruitedtankman/tankmen_bph_3/desc"
+msgstr ""
+"约翰·康纳的母亲。她知道儿子的命运，并将他作为未来反抗军领袖的角色来培养。她试图告诉全世界关于未来的情况，但这迫使她陷入孤立无援的境地，同时也让整个人类陷入巨大的威胁之中。然而，即使在被囚禁的情况下，她依然坚强不屈。在与儿子及其特殊的保护者团聚后，她继续与天网进行抗争。她是电影中最令人难忘的女性角色之一。"
+
+msgid "notrecruitedtankman/tankmen_bph_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bph_3/label"
+msgstr "战斗通行证:审判日"
+
+msgid "notrecruitedtankman/tankmen_bph_4/desc"
+msgstr ""
+"最新且最先进的(当时)机器人型号，是天网为消灭约翰·康纳而制造的。与老式的内骨骼不同，它由液态金属合金打造而成，能够变形和模仿以融入周围环境。它可以轻松抵御机械破坏，基本上是刀枪不入。尽管其在未来被大量生产，但极少投入使用。事实上，天网认为这种尖端的自主学习芯片对网络构成了潜在威胁。"
+
+msgid "notrecruitedtankman/tankmen_bph_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bph_4/label"
+msgstr "战斗通行证:审判日"
 
 msgid "notrecruitedtankman/tankwoman/desc"
 msgstr "在特定活动中被授予。女性乘员兄弟已训练至100%，以及另一个您选择的技能或特长训练至100%。"
@@ -8238,7 +8275,7 @@ msgid "quests/linkBtn/battlePass"
 msgstr "前往战斗通行证进度"
 
 msgid "quests/linkBtn/battlePass/select"
-msgstr "前往战斗通行证章节选择"
+msgstr "前往战斗通行证"
 
 msgid "quests/linkBtn/customizationProgression/disabled"
 msgstr "详细信息当前不可用。"
@@ -9411,12 +9448,6 @@ msgstr "使用%(unlockedBy)s组坦克进行%(battlesToUnlock)s场战斗。"
 
 msgid "tankCarusel/lock/rotation/header"
 msgstr "队伍%(groupNum)s的坦克无法使用"
-
-msgid "tankCarusel/newYearSlot/body"
-msgstr "点击前往假日行动坦克界面"
-
-msgid "tankCarusel/newYearSlot/header"
-msgstr "假日行动坦克"
 
 msgid "tankCaruselTooltip/vehicleType/elite/AT-SPG"
 msgstr "精英自行反坦克炮"

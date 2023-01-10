@@ -603,6 +603,15 @@ msgstr "开启语音聊天"
 msgid "dynamicSquad/invite"
 msgstr "邀请加入小队"
 
+msgid "efficiencyRibbons/AirstrikeDmg"
+msgstr "空袭损伤"
+
+msgid "efficiencyRibbons/ArtilleryDmg"
+msgstr "火炮支援损伤"
+
+msgid "efficiencyRibbons/CannonDmg"
+msgstr "炮台损伤"
+
 msgid "efficiencyRibbons/armor"
 msgstr "抵挡损伤"
 
@@ -952,7 +961,7 @@ msgid "player_messages/COMBAT_EQUIPMENT_USED_ARTILLERY"
 msgstr "炮兵攻击%(player)s中。"
 
 msgid "player_messages/COMBAT_EQUIPMENT_USED_BOMBER"
-msgstr "轰炸机在轰炸%(player)s的路上。"
+msgstr "%(player)s的轰炸机正在飞往目标。"
 
 msgid "player_messages/COMBAT_EQUIPMENT_USED_HEALPOINT"
 msgstr "%(player)s 创造了一片恢复区域。"
@@ -1147,6 +1156,15 @@ msgid ""
 "player_messages/DEATH_FROM_INACTIVE_CREW_AT_WORLD_COLLISION_SELF_SUICIDE"
 msgstr "车组乘员已经阵亡。"
 
+msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_ALLY_ENEMY_ARCADE"
+msgstr "%(attacker)s用地雷击毁了%(target)s。"
+
+msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_ENEMY_ALLY_ARCADE"
+msgstr "%(attacker)s用地雷击毁了%(target)s。"
+
+msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_SELF_ENEMY_ARCADE"
+msgstr "%(target)s被地雷击毁。"
+
 msgid "player_messages/DEATH_FROM_OVERTURN_ALLY_ALLY"
 msgstr "盟友%(attacker)s推翻盟友%(target)s"
 
@@ -1250,10 +1268,10 @@ msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY"
 msgstr "%(attacker)s击毁%(target)s。"
 
 msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_ARTILLERY"
-msgstr "%(attacker)s用火炮支援击毁%(target)s。"
+msgstr "%(attacker)s用火炮支援击毁了%(target)s。"
 
 msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_BOMBER"
-msgstr "%(attacker)s用空袭击毁%(target)s。"
+msgstr "%(attacker)s用空袭击毁了%(target)s。"
 
 msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_COMP7"
 msgstr "%(attacker)s击毁了%(target)s(火力掩护)。"
@@ -1274,10 +1292,10 @@ msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY"
 msgstr "%(attacker)s 击毁 %(target)s。"
 
 msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_ARTILLERY"
-msgstr "%(attacker)s用火炮支援击毁%(target)s。"
+msgstr "%(attacker)s用火炮支援击毁了%(target)s。"
 
 msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_BOMBER"
-msgstr "%(attacker)s用空袭击毁%(target)s。"
+msgstr "%(attacker)s用空袭击毁了%(target)s。"
 
 msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_COMP7"
 msgstr "%(attacker)s击毁了%(target)s(火力掩护)。"
@@ -1563,8 +1581,17 @@ msgstr "观察视角"
 msgid "postmortem/tips/observerMode/text"
 msgstr "使用鼠标左右键可切换车辆。"
 
+msgid "postmortem_messages/DEATH_FROM_ARTILLERY_PROTECTION"
+msgstr "坦克被炮台击毁"
+
 msgid "postmortem_messages/DEATH_FROM_ARTILLERY_PROTECTION_UNKNOWN"
 msgstr "坦克被火炮支援击毁。"
+
+msgid "postmortem_messages/DEATH_FROM_ARTILLERY_SECTOR"
+msgstr "坦克被炮台击毁"
+
+msgid "postmortem_messages/DEATH_FROM_BOMBER"
+msgstr "坦克被空袭击毁"
 
 msgid "postmortem_messages/DEATH_FROM_CLING_BRANDER"
 msgstr "坦克被智械猎手击毁。"
@@ -1621,7 +1648,7 @@ msgid "postmortem_messages/DEATH_FROM_KAMIKAZE"
 msgstr "坦克被飞火流星击毁。"
 
 msgid "postmortem_messages/DEATH_FROM_MINE_EXPLOSION"
-msgstr "坦克被地雷击毁。"
+msgstr "坦克被地雷击毁"
 
 msgid "postmortem_messages/DEATH_FROM_OVERTURN_ALLY_SELF"
 msgstr "坦克被盟友推翻"
@@ -1641,6 +1668,9 @@ msgstr "坦克因其撞击而损毁:"
 msgid "postmortem_messages/DEATH_FROM_RAMMING_SELF_SUICIDE"
 msgstr "坦克因其撞击而损毁:"
 
+msgid "postmortem_messages/DEATH_FROM_RECOVERY"
+msgstr "您的坦克被击毁"
+
 msgid "postmortem_messages/DEATH_FROM_SECTOR_BOMBERS_UNKNOWN"
 msgstr "坦克在区域轰炸期间被击毁。"
 
@@ -1651,13 +1681,13 @@ msgid "postmortem_messages/DEATH_FROM_SHOT"
 msgstr "坦克被该玩家击毁"
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE"
-msgstr "坦克被火炮支援击毁。"
+msgstr "坦克被空袭击毁。"
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_ARTILLERY"
 msgstr "坦克被火炮支援击毁"
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_BOMBER"
-msgstr "坦克因爆炸损毁"
+msgstr "坦克被空袭击毁"
 
 msgid "postmortem_messages/DEATH_FROM_THUNDER_STRIKE"
 msgstr "坦克被脉冲电场击毁。"
@@ -1959,13 +1989,16 @@ msgid "rewardWindow/countLabel"
 msgstr "x{count}"
 
 msgid "rewardWindow/lootbox/btnLabel"
-msgstr "查看补给箱"
+msgstr "前往补给箱"
 
 msgid "rewardWindow/lootbox/descText"
 msgstr "您收到了有价值的大盒子奖励。"
 
 msgid "rewardWindow/lootbox/headerText"
 msgstr "您收到了盒子！"
+
+msgid "rewardWindow/lootbox/isFreeDescText"
+msgstr "完成任务后，您获得了含有丰厚奖励的小型补给箱。"
 
 msgid "rewardWindow/lootbox/winHeaderText"
 msgstr "快去看看补给箱里有什么奖励！"
@@ -2391,16 +2424,16 @@ msgid "rewardWindow/twitch37/headerText"
 msgstr "PG"
 
 msgid "rewardWindow/twitch37/mainReward_1"
-msgstr "?empty?"
+msgstr "勇敢新世界"
 
 msgid "rewardWindow/twitch37/mainReward_2"
-msgstr "?empty?"
+msgstr "明察秋毫"
 
 msgid "rewardWindow/twitch37/mainReward_3"
-msgstr "?empty?"
+msgstr "赛博格的玄机"
 
 msgid "rewardWindow/twitch37/mainReward_4"
-msgstr "?empty?"
+msgstr "火眼金睛"
 
 msgid "rewardWindow/twitch4/btnLabel"
 msgstr "招募"

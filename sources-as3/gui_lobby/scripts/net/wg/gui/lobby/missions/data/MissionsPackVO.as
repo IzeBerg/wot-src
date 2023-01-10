@@ -1,15 +1,12 @@
 package net.wg.gui.lobby.missions.data
 {
    import net.wg.data.daapi.base.DAAPIDataClass;
-   import net.wg.gui.lobby.battleMatters.data.MissionLinkedSetBodyVO;
    import net.wg.gui.lobby.premiumMissions.data.MissionPremiumBodyVO;
    
    public class MissionsPackVO extends DAAPIDataClass
    {
       
       private static const BODY_DATA_FIELD:String = "bodyData";
-      
-      private static const BODY_DATA_LINKED_SET_FIELD:String = "bodyDataLinkedSet";
       
       private static const BODY_DATA_PREMIUM_FIELD:String = "bodyDataPremium";
       
@@ -26,13 +23,9 @@ package net.wg.gui.lobby.missions.data
       
       public var bodyData:Object;
       
-      public var bodyDataLinkedSet:MissionLinkedSetBodyVO = null;
-      
       public var bodyDataPremium:MissionPremiumBodyVO = null;
       
       public var isCollapsed:Boolean = false;
-      
-      public var isLinkedSet:Boolean = false;
       
       public var isPremium:Boolean = false;
       
@@ -51,11 +44,6 @@ package net.wg.gui.lobby.missions.data
             this.bodyData = new this.dataClass(param2,this.blockId);
             return false;
          }
-         if(param1 == BODY_DATA_LINKED_SET_FIELD)
-         {
-            this.bodyDataLinkedSet = new MissionLinkedSetBodyVO(param2,this.blockId);
-            return false;
-         }
          if(param1 == BODY_DATA_PREMIUM_FIELD)
          {
             this.bodyDataPremium = new MissionPremiumBodyVO(param2,this.blockId);
@@ -72,11 +60,6 @@ package net.wg.gui.lobby.missions.data
          {
             this.bodyData.dispose();
             this.bodyData = null;
-         }
-         if(this.bodyDataLinkedSet != null)
-         {
-            this.bodyDataLinkedSet.dispose();
-            this.bodyDataLinkedSet = null;
          }
          if(this.bodyDataPremium != null)
          {

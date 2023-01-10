@@ -750,17 +750,17 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 				<crewBook>&lt;img src=&apos;img://gui/maps/icons/crewBooks/books/small/%(type)s_%(nation)s.png&apos;/&gt; &lt;font color=&apos;#CED9D9&apos;&gt;x%(value)s&lt;/font&gt;</crewBook>
 				<anyBlueprints>_(#quests:bonusName/blueprints/any) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</anyBlueprints>
 				<anyNationalBlueprints>_(#quests:bonusName/blueprints/nation/any) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</anyNationalBlueprints>
-				<crewSkinText>_(#quests:bonuses/crewSkin/text)</crewSkinText>
-				<crewBookText>_(#quests:bonuses/crewBook/text)</crewBookText>
-				<dossierAchive>_(#quests:bonuses/dossier/achive)</dossierAchive>
-				<dossierBadge>_(#quests:bonuses/dossier/badge)</dossierBadge>
+				<crewSkinText>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/crewSkin/text) &lt;/font&gt;</crewSkinText>
+				<crewBookText>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/crewBook/text) &lt;/font&gt;</crewBookText>
+				<dossierAchive>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/dossier/achive) &lt;/font&gt;</dossierAchive>
+				<dossierBadge>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/dossier/badge) &lt;/font&gt;</dossierBadge>
 				<vehicleBlueprints>_(#quests:bonusName/blueprints/vehicle) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</vehicleBlueprints>
 				<nationBlueprints>_(#quests:bonusName/blueprints/nation) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</nationBlueprints>
 				<universalBlueprints>_(#quests:bonusName/blueprints/universal) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</universalBlueprints>
 				<rankedDailyBattles>&lt;font color=&apos;#95907F&apos;&gt;%(value)s&lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/rankedDailyBattles.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-4&apos; /&gt;</rankedDailyBattles>
 				<rankedBonusBattles>&lt;font color=&apos;#95907F&apos;&gt;%(value)s&lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/rankedBonusBattles.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-4&apos; /&gt;</rankedBonusBattles>
 				<battlePassPoints>_(#quests:bonusName/battlePassPoints/preview) &lt;font color=&apos;#95907F&apos;&gt;%(value)s &lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/battlePassPoints.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos; /&gt;</battlePassPoints>
-				<ny23RandomResources>&lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt; _(#quests:bonuses/item/ny23RandomResources)</ny23RandomResources>
+				<battle_bonus_x5>&lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/bonus_x5.png&apos; width=&apos;46&apos; height=&apos;18&apos; vspace=&apos;-4&apos; /&gt;&lt;font color=&apos;#95907F&apos;&gt;(x%(value)s) &lt;/font&gt;</battle_bonus_x5>
 			</bonuses>
 			<carouselBonuses>
 				<credits>&lt;font face=&apos;$FieldFont&apos; size=&apos;22&apos; color=&apos;#CED9D9&apos;&gt;&lt;b&gt;%(value)s &lt;/b&gt;&lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/CreditsIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; /&gt;</credits>
@@ -803,11 +803,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 				<questDetails>%(mainCondHeader)s&lt;br/&gt;&lt;font face=&quot;$TextFont&quot; size=&quot;1&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;br/&gt;%(mainCond)s&lt;br/&gt;&lt;br/&gt;%(addCondHeader)s&lt;br/&gt;&lt;font face=&quot;$TextFont&quot; size=&quot;1&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;br/&gt;%(addCond)s&lt;br/&gt;&lt;br/&gt;%(requirementsHeader)s&lt;br/&gt;&lt;font face=&quot;$TextFont&quot; size=&quot;1&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;br/&gt;%(requirements)s&lt;br/&gt;&lt;br/&gt;%(adviseHeader)s&lt;br/&gt;&lt;font face=&quot;$TextFont&quot; size=&quot;1&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;br/&gt;%(descr)s&lt;br/&gt;&lt;font face=&quot;$TextFont&quot; size=&quot;3&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;br/&gt;%(advise)s</questDetails>
 				<unlockBtnLabel>&lt;IMG SRC=&quot;img://gui/maps/icons/personalMissions/award_sheets/branch_%(branch)s/free_sheet_x16.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-3&quot;/&gt;&lt;font color=&apos;#C9C9B6&apos;&gt;x%(value)s&lt;/font&gt;</unlockBtnLabel>
 			</personalMission>
-			<linkedSet>
-				<awardWindowDescTemplate>&lt;font color=&apos;#F7B44F&apos;&gt;%(msg)s&lt;/font&gt;</awardWindowDescTemplate>
-				<awardWindowHintDescTemplate>&lt;font color=&apos;#5DA5E4&apos;&gt;%(msg)s&lt;/font&gt;</awardWindowHintDescTemplate>
-				<questProgressTemplate>&lt;font color=&apos;#E8E1BE&apos;&gt;%(curValue)s&lt;/font&gt; &lt;font color=&apos;#595950&apos;&gt;/ %(maxValue)s&lt;/font&gt;</questProgressTemplate>
-			</linkedSet>
 		</quests>
 		<rally>
 			<vehiclesLabel>_(#cyberSport:window/unit/teamVehicles) &lt;font color=&apos;#8C8C7E&apos;&gt;%(minValue)s - %(maxValue)s&lt;/font&gt;</vehiclesLabel>
@@ -1122,10 +1117,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<expTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#C9C9B6&apos;&gt;%(message)s&lt;/font&gt;</expTitle>
 			<statsText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#E9E2BF&apos;&gt;%(message)s&lt;/font&gt;</statsText>
 			<h15ParSecondary>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#595950&apos;&gt;%(message)s&lt;/font&gt;</h15ParSecondary>
-			<nyIron>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#E2E2CC&apos;&gt;%(message)s&lt;/font&gt;</nyIron>
-			<nyEmerald>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#8ADA80&apos;&gt;%(message)s&lt;/font&gt;</nyEmerald>
-			<nyCrystal>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#CCDAF3&apos;&gt;%(message)s&lt;/font&gt;</nyCrystal>
-			<nyAmber>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#EEAF6E&apos;&gt;%(message)s&lt;/font&gt;</nyAmber>
 			<playerOnline>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#C9C9B6&apos;&gt;%(message)s&lt;/font&gt;</playerOnline>
 			<playerOffline>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#505050&apos;&gt;%(message)s&lt;/font&gt;</playerOffline>
 			<counterText>&lt;font face=&apos;$FieldFont&apos; size=&apos;12&apos; color=&apos;#8C8C7C&apos;&gt;%(message)s&lt;/font&gt;</counterText>
@@ -1133,7 +1124,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<counterLabelText>&lt;font face=&apos;$FieldFont&apos; size=&apos;11&apos; color=&apos;#FFF5E2&apos;&gt;%(message)s&lt;/font&gt;</counterLabelText>
 			<titleFont>&lt;font face=&apos;$TitleFont&apos;&gt;%(message)s&lt;/font&gt;</titleFont>
 			<tutorialText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#ffdd99&apos;&gt;%(message)s&lt;/font&gt;</tutorialText>
-			<tutorialTextBig>&lt;font face=&apos;$FieldFont&apos; size=&apos;16&apos; color=&apos;#ffdd99&apos;&gt;%(message)s&lt;/font&gt;</tutorialTextBig>
 			<alignText>&lt;p align=&apos;%(align)s&apos;&gt;%(message)s&lt;/p&gt;</alignText>
 			<leadingText>&lt;textformat leading=&apos;%(leading)s&apos;&gt;%(message)s&lt;/textformat&gt;</leadingText>
 			<bonusLocalText>&lt;font face=&apos;$FieldFont&apos; size=&apos;20&apos; color=&apos;#FEFEEC&apos;&gt;%(message)s&lt;/font&gt;</bonusLocalText>
@@ -1355,23 +1345,4 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			</roleSkill>
 		</tooltips>
 	</comp7>
-	<newYear>
-		<dialogs>
-			<confirmVehDiscount>
-				<context>
-					<discount_tag_open>&lt;font color=&quot;#FFF0B6&quot;&gt;</discount_tag_open>
-					<vehicle_tag_open>&lt;font color=&quot;#CED9D9&quot;&gt;</vehicle_tag_open>
-					<tag_close>&lt;/font&gt;</tag_close>
-					<veh_type_tag_open>&lt;img src=&apos;img://gui/maps/icons/vehicleTypes/</veh_type_tag_open>
-					<veh_type_tag_close>.png&apos; width=&apos;18&apos; height=&apos;18&apos; vspace=&apos;-4&apos; /&gt;</veh_type_tag_close>
-				</context>
-				<text>_(#dialogs:confirmApplyVehicleDiscount/message)</text>
-			</confirmVehDiscount>
-		</dialogs>
-		<system_messages>
-			<guestQuestRewards>
-				<rewards>&lt;br/&gt;&lt;font color=&quot;#595950&quot;&gt;%(message)s&lt;/font&gt;</rewards>
-			</guestQuestRewards>
-		</system_messages>
-	</newYear>
 </root>

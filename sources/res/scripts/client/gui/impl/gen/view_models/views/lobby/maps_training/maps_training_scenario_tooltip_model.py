@@ -40,7 +40,7 @@ class MapsTrainingScenarioTooltipModel(ViewModel):
 
     @staticmethod
     def getTargetsType():
-        return str
+        return unicode
 
     def getVehicleName(self):
         return self._getString(5)

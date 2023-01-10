@@ -1200,18 +1200,6 @@ msgstr "已移除合金元件"
 msgid "platformCurrencyMsg/debited/freeXP"
 msgstr "扣除全局经验"
 
-msgid "platformCurrencyMsg/debited/ny_amber"
-msgstr "已移除春暖琥珀"
-
-msgid "platformCurrencyMsg/debited/ny_crystal"
-msgstr "已移除新生岩晶"
-
-msgid "platformCurrencyMsg/debited/ny_emerald"
-msgstr "已移除圣洁翡翠"
-
-msgid "platformCurrencyMsg/debited/ny_iron"
-msgstr "已移除天外陨铁"
-
 msgid "platformCurrencyMsg/debited/sacoin"
 msgstr "已移除服役资历令牌"
 
@@ -1226,18 +1214,6 @@ msgstr "已添加合金元件"
 
 msgid "platformCurrencyMsg/received/freeXP"
 msgstr "收到全局经验"
-
-msgid "platformCurrencyMsg/received/ny_amber"
-msgstr "已添加春暖琥珀"
-
-msgid "platformCurrencyMsg/received/ny_crystal"
-msgstr "已添加新生岩晶"
-
-msgid "platformCurrencyMsg/received/ny_emerald"
-msgstr "已添加圣洁翡翠"
-
-msgid "platformCurrencyMsg/received/ny_iron"
-msgstr "已添加天外陨铁"
 
 msgid "platformCurrencyMsg/received/sacoin"
 msgstr "已添加服役资历令牌"
@@ -1692,6 +1668,7 @@ msgstr "您使用未分配的点数完成了阶段，已获得奖励："
 msgid "serviceChannelMessages/battlePassReward/battle/chapterFinal/text"
 msgstr ""
 "您完成了\"%(chapter)s\"章节！\n"
+"\n"
 "已获得奖励:"
 
 msgid "serviceChannelMessages/battlePassReward/battle/final/additionalText"
@@ -1705,6 +1682,7 @@ msgstr ""
 msgid "serviceChannelMessages/battlePassReward/battle/newLevel/text"
 msgstr ""
 "您完成了\"%(chapter)s\"章节的进度阶段%(newLevel)s。\n"
+"\n"
 "已获得奖励:"
 
 msgid "serviceChannelMessages/battlePassReward/button"
@@ -1732,9 +1710,7 @@ msgid "serviceChannelMessages/battlePassReward/buyWithRewards/text"
 msgstr "您获得了战斗通行证已完成阶段的奖励："
 
 msgid "serviceChannelMessages/battlePassReward/buyWithoutRewards/text"
-msgstr ""
-"您现在能够在\"%(chapter)s\"章节中获得基础与高级奖励轨道的奖励。\n"
-"这个高级通行证仅适用于\"%(chapter)s\"章节。"
+msgstr "现在您将同时获得基础和高级奖励。"
 
 msgid "serviceChannelMessages/battlePassReward/header/buyBP"
 msgstr "已购买高级通行证"
@@ -1939,9 +1915,6 @@ msgstr "每日%(count)s场"
 msgid ""
 "serviceChannelMessages/battleResults/quests/rankedBonusBattles/persistent"
 msgstr "%(count)s场标准"
-
-msgid "serviceChannelMessages/battleResults/quests/variadicDiscount"
-msgstr "获得了%(level)s级坦克的%(discount)s%%折扣"
 
 msgid "serviceChannelMessages/battleResults/quests/vehicleSlots"
 msgstr "收到车位"
@@ -2672,12 +2645,6 @@ msgstr "收到%(nationName)s坦克蓝图碎片"
 msgid "serviceChannelMessages/invoiceReceived/nationalBlueprintsDebited"
 msgstr "移除%(nationName)s坦克蓝图碎片"
 
-msgid "serviceChannelMessages/invoiceReceived/nyToysAccruedInvoiceReceived"
-msgstr "增加了装饰物: "
-
-msgid "serviceChannelMessages/invoiceReceived/nyToysDebitedInvoiceReceived"
-msgstr "移除了装饰物: "
-
 msgid "serviceChannelMessages/invoiceReceived/pieces"
 msgstr "个"
 
@@ -2735,9 +2702,6 @@ msgstr "已移除乘员未分配的经验"
 msgid "serviceChannelMessages/invoiceReceived/tankmenToRemove"
 msgstr "已解雇"
 
-msgid "serviceChannelMessages/invoiceReceived/toyTypeWrapper"
-msgstr "%(name)s (x%(count)s)"
-
 msgid "serviceChannelMessages/invoiceReceived/vehicleBlueprintsAccrued"
 msgstr "收到%(vehicleName)s蓝图碎片"
 
@@ -2757,7 +2721,7 @@ msgid "serviceChannelMessages/itemReceivedAsGift"
 msgstr "您已经获得:%(typeName)s \"%(itemName)s\" - %(amount)d 个。"
 
 msgid "serviceChannelMessages/lootBoxes/button"
-msgstr "领取"
+msgstr "前往补给箱"
 
 msgid "serviceChannelMessages/lootBoxes/footer"
 msgstr "点击按钮查看内容。"
@@ -2768,23 +2732,11 @@ msgstr "您收到了一个包裹："
 msgid "serviceChannelMessages/lootBoxes/item/name"
 msgstr "%(name)s %(colorTagOpen)sx%(count)s%(colorTagClose)s"
 
-msgid "serviceChannelMessages/lootBoxesAutoOpen/boxes"
-msgstr "我们开启了您全部的补给箱，并把假日行动2023的奖励添加至您的账号中。"
-
-msgid "serviceChannelMessages/lootBoxesAutoOpen/boxesAndCoins"
-msgstr "我们开启了您全部的补给箱，使用了您的终端令牌，并把假日行动2023的奖励添加至您的账号中。"
-
-msgid "serviceChannelMessages/lootBoxesAutoOpen/boxesCounter"
-msgstr "已开启补给箱: x%(count)s"
-
 msgid "serviceChannelMessages/lootBoxesAutoOpen/button"
 msgstr "查看"
 
-msgid "serviceChannelMessages/lootBoxesAutoOpen/coins"
-msgstr "我们使用了您全部的终端令牌，并把假日行动2023的奖励添加至您的账号中。"
-
-msgid "serviceChannelMessages/lootBoxesAutoOpen/coinsCounter"
-msgstr "已使用令牌: x%(count)s"
+msgid "serviceChannelMessages/lootBoxesAutoOpen/counter"
+msgstr "x%(count)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/boxes"
 msgstr "已激活次元之门:%(boxes)s"
@@ -2805,6 +2757,9 @@ msgstr "我们激活了您的所有次元之门，并将所有物品发送到了
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/header"
 msgstr "收到奖励"
+
+msgid "serviceChannelMessages/lootBoxesAutoOpen/text"
+msgstr "我们开启了您全部的补给箱，并把假日行动的奖励添加至您的账号"
 
 msgid "serviceChannelMessages/lunarBoxesAutoOpen/body"
 msgstr "我们为您开启了春节寄福活动中的所有红包。"
@@ -2862,21 +2817,6 @@ msgstr "您在侦察任务中可以参与关于%(mapName)s地图的调查。"
 
 msgid "serviceChannelMessages/multiplier"
 msgstr " (x%(count)s)"
-
-msgid "serviceChannelMessages/newYear/buyToy/header"
-msgstr "购买:"
-
-msgid "serviceChannelMessages/newYear/collectingResources/button"
-msgstr "前往资源"
-
-msgid "serviceChannelMessages/newYear/dogReminder/button"
-msgstr "前往霞飞狗"
-
-msgid "serviceChannelMessages/newYear/dogReminder/header"
-msgstr "呵护您的爱宠！"
-
-msgid "serviceChannelMessages/newYear/dogReminder/message"
-msgstr "租用特殊物品，让霞飞狗过得开心舒适。"
 
 msgid "serviceChannelMessages/notrecruitedTankman/button"
 msgstr "前往兵营"
@@ -3293,7 +3233,7 @@ msgid "serviceChannelMessages/sysMsg/converter/projectionDecalsDemounted"
 msgstr "更新后，所有贴花均已从车辆上移除，并发送至外部车库。"
 
 msgid "serviceChannelMessages/sysMsg/converter/slotsReceived"
-msgstr "添加车位: %(slots)s"
+msgstr "收到车位:%(slots)s"
 
 msgid "serviceChannelMessages/sysMsg/converter/slotsWithdrawn"
 msgstr "扣除车位:%(slots)s"

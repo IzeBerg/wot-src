@@ -19,6 +19,9 @@ msgstr "奖励暂时不可用。我们对给您造成的不便深表歉意。"
 msgid "awardsWidget/description/coin"
 msgstr "点击查看战斗通行证令牌可兑换的高价值物品。"
 
+msgid "awardsWidget/description/commander"
+msgstr "点击查看和试听您在活动期间可获得或购买的全部指挥官的专属语音。"
+
 msgid "awardsWidget/description/point"
 msgstr "点击查看战斗通行证点数可兑换的之前赛季物品。"
 
@@ -46,6 +49,11 @@ msgid "awardsWidget/title/coin"
 msgstr ""
 "令牌\n"
 "可兑换的物品"
+
+msgid "awardsWidget/title/commander"
+msgstr ""
+"拥有专属语音的\n"
+"指挥官"
 
 msgid "awardsWidget/title/point"
 msgstr ""
@@ -134,7 +142,9 @@ msgid "battlePassAwardsView/mainReward/bpBuyAwardsCaption"
 msgstr "您已经解锁了\"%(chapter)s\"章节中的全部高级通行证奖励"
 
 msgid "battlePassAwardsView/mainReward/commander"
-msgstr "乘员: %(name)s"
+msgstr ""
+"拥有专属语音的指挥官\n"
+"%(name)s"
 
 msgid "battlePassAwardsView/mainReward/newDeviceGiftToken/buttonText"
 msgstr "前往选择"
@@ -337,6 +347,9 @@ msgstr "自由代价"
 msgid "chapter/fullName/93"
 msgstr "最佳角色"
 
+msgid "chapter/fullName/95"
+msgstr "审判日"
+
 msgid "chapter/fullNameUppercased/74"
 msgstr "全新章节"
 
@@ -348,6 +361,9 @@ msgstr "自由代价"
 
 msgid "chapter/fullNameUppercased/93"
 msgstr "最佳角色"
+
+msgid "chapter/fullNameUppercased/95"
+msgstr "审判日"
 
 msgid "chapter/title"
 msgstr "章节%(chapter)s"
@@ -564,7 +580,7 @@ msgid "howToEarnPoints/card/specialVehicle/title"
 msgstr "赛季核心坦克"
 
 msgid "howToEarnPoints/description"
-msgstr "战斗通行证点数可以让您依序获得奖励。获得点数的方式包括:标准模式、前线模式、天梯战、完成任务和日常任务以及达到坦克的点数上限。"
+msgstr "战斗通行证点数可以让您依序获得奖励。获得点数的方式包括:标准模式、完成任务和日常任务，以及达到坦克的点数上限。"
 
 msgid "howToEarnPoints/lose/1"
 msgstr "失败/平局"
@@ -641,6 +657,27 @@ msgstr "关于战斗通行证"
 msgid "intro/button"
 msgstr "收到！"
 
+msgid "intro/collaboration/text"
+msgstr "此章节的灵感来自著名电影及其角色。完成该章节后，您将能够获得酷炫且独特的奖励。"
+
+msgid "intro/collaboration/title"
+msgstr "改变未来"
+
+msgid "intro/holidayTitle"
+msgstr "审判日"
+
+msgid "intro/newRewards/text"
+msgstr "您将首次能够在战斗通行证中获得拥有专属语音的主题指挥官。您肯定认识他们所有人！"
+
+msgid "intro/newRewards/title"
+msgstr "全新奖励"
+
+msgid "intro/oneChapter/text"
+msgstr "此战斗通行证仅有1个章节。这是一次短暂但令人难忘的冒险，切勿错过我们为您带来的精彩内容！"
+
+msgid "intro/oneChapter/title"
+msgstr "迷你赛季"
+
 msgid "intro/tanks/text"
 msgstr ""
 "战斗通行证赛季IX期间，我们将为以下核心坦克开放3款风格：%(tankName1)s、%(tankName2)s和%(tankName3)s。在每个章节开始时，您将能够获得3款风格的其中一款。"
@@ -702,6 +739,45 @@ msgstr "%(vehicle):所获经验排名%(top)时%(bonus)。"
 msgid "points/topCount"
 msgstr "前%(top)s"
 
+msgid "postProgression/buyState/buyBtn"
+msgstr "购买高级通行证"
+
+msgid "postProgression/buyState/description"
+msgstr "购买高级通行证后，您将立即解锁获取1辆拥有独特3D风格的金币坦克和全部高级奖励的机会。"
+
+msgid "postProgression/buyState/moreRewards"
+msgstr "更多奖励: %(count)s"
+
+msgid "postProgression/buyState/title"
+msgstr "获得高级奖励"
+
+msgid "postProgression/chapter"
+msgstr "\"%(chapterName)s\"章节"
+
+msgid "postProgression/completed"
+msgstr "已完成"
+
+msgid "postProgression/finalState/button"
+msgstr "在车库中查看坦克"
+
+msgid "postProgression/finalState/label"
+msgstr "已获得所有活动奖励"
+
+msgid "postProgression/selectableRewardsState/button"
+msgstr "领取奖励"
+
+msgid "postProgression/selectableRewardsState/label"
+msgstr "您仍有可供选择的奖励"
+
+msgid "postProgression/tankmenState/description"
+msgstr "在当前活动期间，您可以在军械库中购买拥有他们自己专属语音的独特指挥官。"
+
+msgid "postProgression/tankmenState/tankmenBtn"
+msgstr "试听所有指挥官"
+
+msgid "postProgression/tankmenState/title"
+msgstr "获得全部4名指挥官！"
+
 msgid "prestige/top"
 msgstr "%(vehicle)：%(bonus)因所获声望点数排名%(top)而奖励的点数。"
 
@@ -736,7 +812,7 @@ msgid "progression/battlePassBuyBtn"
 msgstr "购买高级通行证"
 
 msgid "progression/battlePassBuyDescr"
-msgstr "高级通行证可以解锁当前章节高级奖励轨道。"
+msgstr "购买高级通行证即可解锁高级奖励轨道。"
 
 msgid "progression/battlePassNextChapterBuyDescr"
 msgstr "完成前一章节以购买此章节的高级通行证。"
@@ -793,7 +869,7 @@ msgid "progression/episodeBuyBtn"
 msgstr "购买阶段"
 
 msgid "progression/episodeBuyDescr"
-msgstr "您将从您购买的每个阶段中获得奖励。"
+msgstr "通过购买阶段，您将立即获得它们的基础和高级奖励。"
 
 msgid "progression/episodeBuyDisableDescr"
 msgstr "您可以在%(day)内购买任意数量的阶段"
@@ -860,10 +936,10 @@ msgid "progression/season/end/extra"
 msgstr "活动将于%(endMonth)s%(endDay)s日%(endTime)s结束"
 
 msgid "progression/season/end/normal"
-msgstr "第%(seasonNum)s赛季将持续到%(endMonth)s%(endDay)s日"
+msgstr "持续至%(endMonth)s%(endDay)s日"
 
 msgid "progression/seasonEndingDescr"
-msgstr "距离赛季结束剩余: "
+msgstr "距活动结束还有"
 
 msgid "progression/seasonEndingTooltip"
 msgstr "离结束还有{day}"
@@ -875,7 +951,7 @@ msgid "progression/trophySelectAwaiting"
 msgstr "等待选择中"
 
 msgid "progression/universalCommander"
-msgstr "通用乘员"
+msgstr "拥有专属语音的指挥官"
 
 msgid "progression/widget3dStyle/currentStyle"
 msgstr "{name}3D风格"
@@ -900,6 +976,24 @@ msgstr ""
 
 msgid "progression/widget3dStyle/viewStyles"
 msgstr "查看全部风格"
+
+msgid "progression/widgetRewards/commander"
+msgstr "拥有专属语音的指挥官"
+
+msgid "progression/widgetRewards/commanderVoices"
+msgstr "试听所有指挥官"
+
+msgid "progression/widgetRewards/labelWithBP"
+msgstr "拥有高级通行证"
+
+msgid "progression/widgetRewards/tank"
+msgstr "应用了3D风格的金币坦克"
+
+msgid "progression/widgetRewards/tankName"
+msgstr "%(vehicleName)s"
+
+msgid "progression/widgetRewards/tooltip"
+msgstr "点击试听指挥官的专属语音。"
 
 msgid "reward/postBattle/comp7/progress"
 msgstr "因所获声望点数排名靠前而奖励的点数:"
@@ -958,6 +1052,41 @@ msgstr "%(styleName)s风格的新等级"
 msgid "styleProgression/newStyle"
 msgstr "%(styleName)s风格的第一个等级"
 
+msgid "tankmenVoiceover/availableInProgression"
+msgstr "在第%(progressNumber)s个进度阶段"
+
+msgid "tankmenVoiceover/availableInShop"
+msgstr "在特殊礼包中"
+
+msgid "tankmenVoiceover/button"
+msgstr "收到！"
+
+msgid "tankmenVoiceover/close"
+msgstr "关闭"
+
+msgid "tankmenVoiceover/description"
+msgstr ""
+"所有指挥官都拥有\"零历练\"的兄弟连特长，还有足够的经验\n"
+"可以让您再训练2个技能或特长。"
+
+msgid "tankmenVoiceover/received"
+msgstr "已获得"
+
+msgid "tankmenVoiceover/shopButton"
+msgstr "在军械库中查看"
+
+msgid "tankmenVoiceover/soundOn"
+msgstr "播放"
+
+msgid "tankmenVoiceover/subtitle"
+msgstr "\"审判日\"章节"
+
+msgid "tankmenVoiceover/title"
+msgstr "拥有专属语音的独特指挥官"
+
+msgid "tankmenVoiceover/unavailable"
+msgstr "不可用"
+
 msgid "tooltips/battlePassCoins/secondaryText"
 msgstr "令牌将在一年中的三个战斗通行证赛季中发放。请不要挥霍它们。"
 
@@ -1013,13 +1142,19 @@ msgid "tooltips/completed/got"
 msgstr "已获得奖励"
 
 msgid "tooltips/completed/message"
-msgstr "现在您可以在军械库的点数物品版块中，使用您积累的战斗通行证点数"
+msgstr "已获得基础奖励"
+
+msgid "tooltips/completed/messageBP"
+msgstr "已获得所有奖励"
 
 msgid "tooltips/completed/rewardsObtained"
 msgstr "已获得基础奖励"
 
 msgid "tooltips/completed/subTitle"
-msgstr "已完成所有章节"
+msgstr "章节完成"
+
+msgid "tooltips/completed/tankmenNotRecieved"
+msgstr "您可在军械库中购买包含拥有专属语音的独特指挥官的礼包。"
 
 msgid "tooltips/completed/title"
 msgstr "战斗通行证"
@@ -1045,22 +1180,19 @@ msgid "tooltips/footerBuyBtn/activateChapter/descr"
 msgstr "完成已激活章节即可获得战斗通行证点数与其他奖励。"
 
 msgid "tooltips/footerBuyBtn/battlePass/descr"
-msgstr ""
-"您可以随时购买高级通行证。它将立即为您发放当前章节中已完成阶段的全部高级奖励。您在完成每个后续阶段时，也将同时获得基础奖励和高级奖励，直到章节结束。"
+msgstr "您可以随时购买高级通行证。它将立即为您发放已完成阶段的全部高级奖励。您在完成每个后续阶段时，也将同时获得基础和高级奖励。"
 
 msgid "tooltips/footerBuyBtn/battlePass/nextChapter"
 msgstr "完成前一章节以购买该章节中的阶段。"
 
 msgid "tooltips/footerBuyBtn/episode/descr"
-msgstr "通过购买阶段，您将立即获得它们的基础和高级奖励。每个章节的阶段需要单独购买。"
+msgstr "通过购买阶段，您将立即获得它们的基础和高级奖励。"
 
 msgid "tooltips/iconLock/descr1"
-msgstr ""
-"您可以通过购买高级通行证来使阶段奖励更丰厚。每章单独购买，并且在相应章节内生效。有了高级通行证，达到每个后续阶段时，您将同时获得基础和高级奖励。"
+msgstr "您可以通过购买高级通行证来使阶段奖励更丰厚。有了高级通行证，达到每个后续阶段时，您将同时获得基础和高级奖励。"
 
 msgid "tooltips/iconLock/descr2"
-msgstr ""
-"您可以随时购买高级通行证。它将立即给予您购买了高级通行证的章节中已完成阶段的全部高级奖励。您可在战斗通行证主界面点击\"购买高级通行证\"按钮，让您的奖励更丰厚。"
+msgstr "您可以随时购买高级通行证。它将立即为您发放已完成阶段的全部高级奖励。您可在战斗通行证主界面点击\"购买高级通行证\"按钮，让您的奖励更丰厚。"
 
 msgid "tooltips/iconLock/title"
 msgstr "战斗通行证的高级奖励"
@@ -1301,4 +1433,4 @@ msgid "trophyDeviceUpgradeConfim/title/template"
 msgstr "{deviceName}"
 
 msgid "universalTankmanBonus"
-msgstr "通用乘员:%(name)s"
+msgstr "拥有专属语音的指挥官:%(name)s"

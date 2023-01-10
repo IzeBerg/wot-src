@@ -12,11 +12,11 @@ package net.wg.gui.notification.vo
       
       public var action:String = "";
       
-      public var tooltip:String = "";
-      
       public var width:Number = 122;
       
       public var dynamicSizeByText:Boolean = false;
+      
+      public var tooltip:String = "";
       
       public function ButtonVO(param1:Object)
       {

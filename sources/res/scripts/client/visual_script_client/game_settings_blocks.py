@@ -24,7 +24,7 @@ class GameSettingsMeta(Meta):
 
     @classmethod
     def blockAspects(cls):
-        return [ASPECT.CLIENT, ASPECT.HANGAR]
+        return [ASPECT.CLIENT]
 
 
 class GetGameSetting(Block, GameSettingsMeta):

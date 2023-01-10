@@ -401,6 +401,8 @@ package
       
       public static const SELECTORTOOLTIP_EPICBATTLE_BODY:String = "#epic_battle:selectorTooltip/epicBattle/body";
       
+      public static const SELECTORTOOLTIP_EPICBATTLE_ENDED_BODY:String = "#epic_battle:selectorTooltip/epicBattle/ended/body";
+      
       public static const SELECTORTOOLTIP_EPICBATTLE_BODYVEHICLELEVEL:String = "#epic_battle:selectorTooltip/epicBattle/bodyVehicleLevel";
       
       public static const SELECTORTOOLTIP_EPICBATTLE_FROZEN:String = "#epic_battle:selectorTooltip/epicBattle/frozen";
@@ -578,6 +580,8 @@ package
       public static const TOOLTIPS_TIMETOSTART:String = "#epic_battle:tooltips/timeToStart";
       
       public static const TOOLTIPS_TIMETOEND:String = "#epic_battle:tooltips/timeToEnd";
+      
+      public static const TOOLTIPS_END:String = "#epic_battle:tooltips/end";
       
       public static const TOOLTIPS_COMMON_DISABLED:String = "#epic_battle:tooltips/common/disabled";
       

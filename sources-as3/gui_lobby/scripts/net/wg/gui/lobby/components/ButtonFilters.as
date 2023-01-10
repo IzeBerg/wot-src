@@ -32,8 +32,7 @@ package net.wg.gui.lobby.components
       
       override protected function applyDataToButton(param1:Button, param2:ButtonFiltersItemVO) : void
       {
-         var _loc3_:BlackButton = null;
-         _loc3_ = BlackButton(param1);
+         var _loc3_:BlackButton = BlackButton(param1);
          _loc3_.toggleEnable = true;
          _loc3_.iconSource = param2.icon;
          _loc3_.tooltip = param2.tooltip;

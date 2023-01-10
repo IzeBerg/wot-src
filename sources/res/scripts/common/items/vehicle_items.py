@@ -1,5 +1,5 @@
 import functools, Math, nations
-from constants import SHELL_TYPES
+from constants import SHELL_TYPES, ATTACK_REASON, IS_EDITOR
 from items import ITEM_TYPES, ITEM_TYPE_NAMES, makeIntCompactDescrByID
 from items.basic_item import BasicItem
 from items.components import chassis_components
@@ -10,7 +10,6 @@ from items.components import shell_components
 from items.components import sound_components
 from soft_exception import SoftException
 from wrapped_reflection_framework import ReflectionMetaclass
-from constants import ATTACK_REASON
 
 class VEHICLE_ITEM_STATUS(object):
     UNDEFINED = 0
@@ -89,7 +88,7 @@ class InstallableItem(VehicleItem):
         self.hitTesterManager = None
         self.modelsSets = None
         self.models = None
-        self.camouflage = shared_components.DEFAULT_CAMOUFLAGE
+        self.camouflage = shared_components.Camouflage(None, None, None, None) if IS_EDITOR else shared_components.DEFAULT_CAMOUFLAGE
         self.sounds = None
         self.emblemSlots = component_constants.EMPTY_TUPLE
         self.slotsAnchors = component_constants.EMPTY_TUPLE
@@ -368,8 +367,8 @@ class Hull(BasicItem):
         self.swinging = None
         self.customEffects = component_constants.EMPTY_TUPLE
         self.AODecals = component_constants.EMPTY_TUPLE
-        self.camouflage = shared_components.DEFAULT_CAMOUFLAGE
-        self.hangarShadowTexture = None
+        self.camouflage = shared_components.Camouflage(None, None, None, None) if IS_EDITOR else shared_components.DEFAULT_CAMOUFLAGE
+        self.hangarShadowTexture = component_constants.EMPTY_STRING
         self.customizableVehicleAreas = None
         self.burnoutAnimation = None
         self.prefabs = component_constants.EMPTY_TUPLE

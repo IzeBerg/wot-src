@@ -419,7 +419,7 @@ msgid "battlePass/seasonEnd/rewards/trophy"
 msgstr "已获得赏金配件：%(name)s"
 
 msgid "battlePass/seasonEnd/text"
-msgstr "战斗通行证赛季已结束。您在赛季期间未选择的所有奖励已按默认选择发放："
+msgstr "战斗通行证已结束。您未选择的所有奖励已按默认配置发放:"
 
 msgid "battlePass/switchChapter/error"
 msgstr "选择章节时发生错误。请再试一次。"
@@ -434,7 +434,7 @@ msgid "battlePass/switch_disable/battle_royale/body"
 msgstr "由于系统维护，战斗通行证功能暂时无法在钢铁猎手中使用。我们对给您造成的不便深表歉意。"
 
 msgid "battlePass/switch_disable/body"
-msgstr "赛季已结束。下赛季见！"
+msgstr "审判日已结束。我们希望它永远只存在于游戏和电影里。"
 
 msgid "battlePass/switch_disable/comp7/body"
 msgstr "由于系统维护，您在天梯战模式中暂时无法获得战斗通行证点数。"
@@ -449,12 +449,10 @@ msgid "battlePass/switch_disable/ranked/body"
 msgstr "由于系统维护，战斗通行证功能暂时无法在排位赛中使用。"
 
 msgid "battlePass/switch_disable/title"
-msgstr "战斗通行证第%(seasonNum)d赛季"
+msgstr "战斗通行证:审判日"
 
 msgid "battlePass/switch_enabled/body"
-msgstr ""
-"战斗通行证现已重新开放。我们对造成的不便深表歉意。\n"
-"赛季延长至%(expiryTime)s。"
+msgstr "战斗通行证现已重新开放。我们对造成的不便深表歉意。"
 
 msgid "battlePass/switch_enabled/comp7/body"
 msgstr "您在天梯战模式中可以重新获得战斗通行证点数了。我们对造成的不便深感歉意。"
@@ -1818,6 +1816,15 @@ msgstr "显卡不兼容。以下设置失败:%s。"
 msgid "graficsPresetFail"
 msgstr "显卡不兼容。没有适合的图像选项。"
 
+msgid "hbp/seasonStart/body"
+msgstr ""
+"各位指挥官，这是一个特殊的战斗通行证，您很快就可以亲身体验它。\n"
+"\n"
+"完成进度后，您将获得拥有独特专属语音的著名电影角色、拥有特殊3D风格的金币坦克、个性化元素及其他更多奖励！"
+
+msgid "hbp/seasonStart/title"
+msgstr "战斗通行证:审判日"
+
 msgid "igr/customization/begin"
 msgstr "涂装、签名和徽章在%(igrIcon)s中可用。"
 
@@ -1957,10 +1964,10 @@ msgid "login_to_other_game_wows"
 msgstr "该账号被用来登录《战舰世界》。"
 
 msgid "lootboxes/open/server_error"
-msgstr "开启补给箱时发生错误: 服务器出错。"
+msgstr "领取礼物时发生错误: 服务器错误。"
 
 msgid "lootboxes/open/server_error/COOLDOWN"
-msgstr "开启补给箱时发生错误: 请等待上个操作完成。"
+msgstr "领取礼物时发生错误。请等待上个操作完成。"
 
 msgid "lootboxes/open/server_error/DISABLED"
 msgstr "操作暂时无法使用。请稍后再试。"
@@ -2167,297 +2174,6 @@ msgstr "切换配置时发生错误"
 
 msgid "nation_change/success"
 msgstr "%(veh_name)s：系别配置已切换"
-
-msgid "newYear/allObjectsCollected/body"
-msgstr "您已经找到所有隐藏的村镇景观。"
-
-msgid "newYear/allObjectsCollected/header"
-msgstr "恭喜！"
-
-msgid "newYear/applyVehicleDiscount/server_error"
-msgstr "激活折扣时发生错误: 服务器出错。"
-
-msgid "newYear/applyVehicleDiscount/server_error/alreadyActive"
-msgstr "激活折扣时发生错误: 此坦克已经有一个折扣了。"
-
-msgid "newYear/applyVehicleDiscount/server_error/alreadyBought"
-msgstr "激活折扣时发生错误: 您已购买了此坦克。"
-
-msgid "newYear/applyVehicleDiscount/server_error/noDiscountForVehicle"
-msgstr "激活折扣时发生错误: 无法找到此坦克的折扣。"
-
-msgid "newYear/applyVehicleDiscount/server_error/noDiscounts"
-msgstr "激活折扣时发生错误: 无法找到折扣。"
-
-msgid "newYear/applyVehicleDiscount/success"
-msgstr "您为%(vehName)s激活了一个%(discount)s%%折扣。"
-
-msgid "newYear/breakToys/server_error"
-msgstr "分解装饰物时发生错误: 服务器出错。"
-
-msgid "newYear/buyCollection/server_error"
-msgstr "购买收藏时发生错误: 服务器出错。"
-
-msgid "newYear/buyToy/credits"
-msgstr "已花费银币: %(value)s"
-
-msgid "newYear/buyToy/gold"
-msgstr "已花费金币: %(value)s"
-
-msgid "newYear/buyToy/server_error"
-msgstr "购买物品时发生错误。暂时无法购买。"
-
-msgid "newYear/buyToy/text"
-msgstr "已购买%(toy_name)s。"
-
-msgid "newYear/buying/errors/not_enough_resource"
-msgstr "购买时发生错误。资源不足。"
-
-msgid "newYear/buying/errors/server_error"
-msgstr "购买时发生错误。暂时无法购买。"
-
-msgid "newYear/buying/errors/server_error_centerDown"
-msgstr "购买时发生错误。该服务暂时无法提供。"
-
-msgid "newYear/celebrityChallenge/progressReward/title"
-msgstr "已完成米拉任务: %(value)s！"
-
-msgid "newYear/celebrityChallenge/questReward/guest_A/title"
-msgstr "已完成施瓦辛格任务！"
-
-msgid "newYear/celebrityChallenge/questReward/guest_M/title"
-msgstr "已完成米拉任务！"
-
-msgid "newYear/celebrityChallenge/questReward/ny23Coin"
-msgstr "已获得礼物终端令牌"
-
-msgid "newYear/celebrityChallenge/questReward/ny23Coins"
-msgstr "已获得礼物终端令牌: x%(count)s"
-
-msgid "newYear/coin23/apply/server_error"
-msgstr "激活终端时发生错误。服务器出错。"
-
-msgid "newYear/coin23/apply/server_error/COOLDOWN"
-msgstr "激活终端时发生错误。请等待上个操作完成。"
-
-msgid "newYear/coin23/apply/server_error/DISABLED"
-msgstr "激活终端时发生错误。服务器出错。"
-
-msgid "newYear/coin23/apply/server_error/EXCEPTION"
-msgstr "激活终端时发生错误。服务器出错。"
-
-msgid "newYear/coin23/buying/errors/invalid_coins_count"
-msgstr "购买令牌时发生错误。购买的令牌数量不正确。"
-
-msgid "newYear/coin23/buying/errors/invalid_resource_type"
-msgstr "购买令牌时发生错误。支付的资源类型出错。"
-
-msgid "newYear/coin23/buying/errors/not_enough_resource"
-msgstr "购买令牌时发生错误。资源不足。"
-
-msgid "newYear/coin23/buying/errors/server_error"
-msgstr "购买令牌时发生错误。暂时无法购买。"
-
-msgid "newYear/coin23/buying/errors/server_error_centerDown"
-msgstr "购买令牌时发生错误。暂时无法购买。"
-
-msgid "newYear/collectingResources/auto/canceled"
-msgstr "银币不足，无法继续进行资源自动收集。"
-
-msgid "newYear/collectingResources/auto/collected"
-msgstr "共获得资源:"
-
-msgid "newYear/collectingResources/auto/count"
-msgstr "已进行自动收集: %(count)s"
-
-msgid "newYear/collectingResources/auto/deactivated"
-msgstr "资源自动收集器已关闭"
-
-msgid "newYear/collectingResources/auto/finished"
-msgstr "资源已使用资源自动收集器收集。"
-
-msgid "newYear/collectingResources/auto/spentMoney"
-msgstr "已花费银币: %(money)s"
-
-msgid "newYear/collectingResources/button"
-msgstr "前往资源"
-
-msgid "newYear/collectingResources/header"
-msgstr "资源已收集！"
-
-msgid "newYear/collectingResources/server_error/common"
-msgstr "完成操作时发生错误。"
-
-msgid "newYear/collectingResourcesAvailable/button"
-msgstr "前往资源！"
-
-msgid "newYear/collectingResourcesAvailable/countValue"
-msgstr "%(count)s"
-
-msgid "newYear/collectingResourcesAvailable/friend/button"
-msgstr "前往好友！"
-
-msgid "newYear/collectingResourcesAvailable/friend/header"
-msgstr "可以从您的好友那里收集资源了"
-
-msgid "newYear/collectingResourcesAvailable/friend/oneFriendMessage"
-msgstr "从您的好友%(friendName)s那里收集%(countValue)s个每种类型的资源"
-
-msgid "newYear/collectingResourcesAvailable/friend/twoFriendsMessage"
-msgstr "从您的好友%(friendName1)s和%(friendName2)s那里收集%(countValue)s个每种类型的资源"
-
-msgid "newYear/collectingResourcesAvailable/header"
-msgstr "可以收集资源了"
-
-msgid "newYear/collectingResourcesAvailable/message"
-msgstr "每种类型的资源各收集%(countValue)s个或者设置自动收集器。"
-
-msgid "newYear/convertingResources/decrease/message"
-msgstr ""
-"资源已转换。\n"
-"已花费: %(value)s"
-
-msgid "newYear/convertingResources/decrease/title"
-msgstr "交易"
-
-msgid "newYear/convertingResources/error"
-msgstr "转换资源时发生错误。暂时无法转换。"
-
-msgid "newYear/convertingResources/increase/message"
-msgstr ""
-"资源已转换。\n"
-"已添加: %(value)s"
-
-msgid "newYear/convertingResources/increase/title"
-msgstr "已添加:"
-
-msgid "newYear/craftToy/server_error"
-msgstr "合成装饰物时发生错误: 服务器出错。"
-
-msgid "newYear/errorTypes/levelUpRewardsError"
-msgstr "获得提升您的节日气氛等级的奖励时发生错误。"
-
-msgid "newYear/financialOperation/spent"
-msgstr "已花费: %(count)s"
-
-msgid "newYear/giftMachine/tokenBought"
-msgstr "已购买礼物终端令牌: %(count)s"
-
-msgid "newYear/hangToy/server_error"
-msgstr "放置装饰物时发生错误: 服务器出错。"
-
-msgid "newYear/marketplace/collectionBought"
-msgstr "已购买奖励礼包。"
-
-msgid "newYear/marketplace/errors/collection_already_bought"
-msgstr "购买礼包时发生错误。您已拥有该礼包。"
-
-msgid "newYear/marketplace/errors/server_error"
-msgstr "购买礼包时发生错误。暂时无法购买。"
-
-msgid "newYear/marketplace/rewards/header"
-msgstr "恭喜！"
-
-msgid "newYear/objectLevelUp/Fair"
-msgstr ""
-"集市等级已提升。\n"
-"当前等级: %(level)s。\n"
-"您获得了%(items)s个新的集市装饰物作为奖励。"
-
-msgid "newYear/objectLevelUp/Fir"
-msgstr ""
-"圣诞树等级已提升。\n"
-"当前等级: %(level)s。\n"
-"您获得了%(items)s个新的圣诞树装饰物作为奖励。"
-
-msgid "newYear/objectLevelUp/Installation"
-msgstr ""
-"设施等级已提升。\n"
-"当前等级: %(level)s。\n"
-"您获得了%(items)s个新的设施装饰物作为奖励。"
-
-msgid "newYear/objectLevelUp/error"
-msgstr "提升等级时发生错误。"
-
-msgid "newYear/objectLevelUp/header"
-msgstr "恭喜！"
-
-msgid "newYear/objectMaxLevel/Fair"
-msgstr "您的集市已达到最高等级。"
-
-msgid "newYear/objectMaxLevel/Fir"
-msgstr "您的圣诞树已达到最高等级。"
-
-msgid "newYear/objectMaxLevel/Installation"
-msgstr "您的设施已达到最高等级。"
-
-msgid "newYear/piggyBank/reward/title"
-msgstr "已获得奖励"
-
-msgid "newYear/piggyBank/rewards/text"
-msgstr "在假日行动活动期间，从您的好友那里收集资源的奖励。"
-
-msgid "newYear/piggyBank/rewards/title"
-msgstr "获得奖励"
-
-msgid "newYear/piggyBank/server_error"
-msgstr ""
-"获得奖励时发生错误。\n"
-"操作暂时无法执行。"
-
-msgid "newYear/rerollCelebrityQuest/guest_A/type_1"
-msgstr "条件为在一场战斗中完成的施瓦辛格任务，已替换为在任意场次战斗中完成的任务。"
-
-msgid "newYear/rerollCelebrityQuest/guest_A/type_2"
-msgstr "条件为在任意场次战斗中完成的施瓦辛格任务，已替换为在一场战斗中完成的任务。"
-
-msgid "newYear/rerollCelebrityQuest/guest_M/type_1"
-msgstr "条件为在一场战斗中完成的米拉任务，已替换为在任意场次战斗中完成的任务。"
-
-msgid "newYear/rerollCelebrityQuest/guest_M/type_2"
-msgstr "条件为在任意场次战斗中完成的米拉任务，已替换为在一场战斗中完成的任务。"
-
-msgid "newYear/rerollCelebrityQuest/server_error"
-msgstr "替换任务的条件时发生错误。服务器出错。"
-
-msgid "newYear/rerollCelebrityQuest/server_error/noRerolls"
-msgstr "替换任务的条件时发生错误。无剩余的替换次数。"
-
-msgid "newYear/resetLootboxStatistics/server_error"
-msgstr "无法重置数据—我们正在努力解决这个问题。请稍后再试。"
-
-msgid "newYear/resetLootboxStatistics/server_error/header"
-msgstr "出错了..."
-
-msgid "newYear/resources/ny_amber"
-msgstr "春暖琥珀: %(count)s"
-
-msgid "newYear/resources/ny_crystal"
-msgstr "新生岩晶: %(count)s"
-
-msgid "newYear/resources/ny_emerald"
-msgstr "圣洁翡翠: %(count)s"
-
-msgid "newYear/resources/ny_iron"
-msgstr "天外陨铁: %(count)s"
-
-msgid "newYear/setAutoCollecting/activated/header"
-msgstr "已启用资源自动收集器！"
-
-msgid "newYear/setAutoCollecting/activated/message"
-msgstr "距下次资源收集还有%(timerIcon)s%(timer)s"
-
-msgid "newYear/setAutoCollecting/activated/simpleSuccess"
-msgstr "已启用资源自动收集器。"
-
-msgid "newYear/setAutoCollecting/deactivated/success"
-msgstr "已关闭资源自动收集器。"
-
-msgid "newYear/strokeDog/header"
-msgstr "已获得资源！"
-
-msgid "newYear/strokeDog/server_error"
-msgstr "获得资源时发生错误。操作暂时无法执行。"
 
 msgid "notrecruit_window/success"
 msgstr ""
@@ -3308,6 +3024,9 @@ msgstr "坦克损坏，无法出售‘%s’。修复坦克后再试。"
 
 msgid "sell_vehicle_locked"
 msgstr "坦克正处在锁定状态，无法出售 ‘%s’。"
+
+msgid "seniority_awards/claim_reward_failed"
+msgstr "获得奖励时发生错误。操作暂时无法执行。"
 
 msgid "serverInstallError"
 msgstr "安装%s ‘%s’时出现服务器错误，请稍后再试。"
