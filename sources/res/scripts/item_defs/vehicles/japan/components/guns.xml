@@ -40,6 +40,7 @@
 		<_88mm_Nameless_Gun>38</_88mm_Nameless_Gun>
 		<_88mm_Edelweiss_Gun>39</_88mm_Edelweiss_Gun>
 		<_127mm_Gun_Type_89>40</_127mm_Gun_Type_89>
+		<_105mm_Experimental_Tank_Gun_Kai_BP>31001</_105mm_Experimental_Tank_Gun_Kai_BP>
 		<_90mm_Gun_Type61_IGR>60001</_90mm_Gun_Type61_IGR>
 		<_75mm_Gun_Type5_M1_auto_IGR>60002</_75mm_Gun_Type5_M1_auto_IGR>
 		<_105mm_Rifled_Gun_IGR>60003</_105mm_Rifled_Gun_IGR>
@@ -3857,6 +3858,118 @@
 				</_105mm_HE_Type91>
 			</shots>
 		</_105mm_Experimental_Tank_Gun_Kai>
+		<_105mm_Experimental_Tank_Gun_Kai_BP>
+			<userString>#japan_vehicles:_105mm_Experimental_Tank_Gun_Kai_BP</userString>
+			<tags/>
+			<level>8</level>
+			<price>124000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.38
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.24
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>main</recoilEffect>
+			</recoil>
+			<effects>shot_large_mb</effects>
+			<reloadEffect>reload85_107</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -17.0 1.0 -17.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 8.0 1.0 8.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				21.875
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				10.8
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>36</maxAmmo>
+			<aimingTime>
+				2.2
+				<!--BW_String-->
+			</aimingTime>
+			<weight>2500</weight>
+			<maxHealth>190</maxHealth>
+			<maxRegenHealth>95</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.34
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.08
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					3.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_105mm_AP_Experimental_Type2_TKK>
+					<defaultPortion>
+						0.9
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>916</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>215 188</piercingPower>
+				</_105mm_AP_Experimental_Type2_TKK>
+				<_105mm_AP_Experimental_Type2_TS>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>916</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>253 221</piercingPower>
+				</_105mm_AP_Experimental_Type2_TS>
+				<_105mm_HE_Type91>
+					<defaultPortion>
+						0.1
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>900</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>53 53</piercingPower>
+				</_105mm_HE_Type91>
+			</shots>
+		</_105mm_Experimental_Tank_Gun_Kai_BP>
 		<_120mm_Short_Barrel_Gun>
 			<userString>#japan_vehicles:_120mm_Short_Barrel_Gun</userString>
 			<tags/>

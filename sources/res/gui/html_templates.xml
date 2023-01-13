@@ -749,10 +749,10 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 				<crewBook>&lt;img src=&apos;img://gui/maps/icons/crewBooks/books/small/%(type)s_%(nation)s.png&apos;/&gt; &lt;font color=&apos;#CED9D9&apos;&gt;x%(value)s&lt;/font&gt;</crewBook>
 				<anyBlueprints>_(#quests:bonusName/blueprints/any) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</anyBlueprints>
 				<anyNationalBlueprints>_(#quests:bonusName/blueprints/nation/any) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</anyNationalBlueprints>
-				<crewSkinText>_(#quests:bonuses/crewSkin/text)</crewSkinText>
-				<crewBookText>_(#quests:bonuses/crewBook/text)</crewBookText>
-				<dossierAchive>_(#quests:bonuses/dossier/achive)</dossierAchive>
-				<dossierBadge>_(#quests:bonuses/dossier/badge)</dossierBadge>
+				<crewSkinText>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/crewSkin/text) &lt;/font&gt;</crewSkinText>
+				<crewBookText>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/crewBook/text) &lt;/font&gt;</crewBookText>
+				<dossierAchive>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/dossier/achive) &lt;/font&gt;</dossierAchive>
+				<dossierBadge>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/dossier/badge) &lt;/font&gt;</dossierBadge>
 				<vehicleBlueprints>_(#quests:bonusName/blueprints/vehicle) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</vehicleBlueprints>
 				<nationBlueprints>_(#quests:bonusName/blueprints/nation) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</nationBlueprints>
 				<universalBlueprints>_(#quests:bonusName/blueprints/universal) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</universalBlueprints>

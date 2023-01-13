@@ -11,13 +11,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "awardsWidget/description/award"
-msgstr "Нажмите, чтобы выбрать подходящие награды и забрать их."
+msgstr "Нажмите, чтобы выбрать подходящие награды и забрать их."
 
 msgid "awardsWidget/description/awardDisabled"
 msgstr "Награды временно недоступны, приносим извинения за неудобства."
 
 msgid "awardsWidget/description/coin"
 msgstr "Нажмите, чтобы посмотреть ценные товары за жетоны Боевого пропуска."
+
+msgid "awardsWidget/description/commander"
+msgstr ""
+"Нажмите, чтобы увидеть и прослушать голоса всех командиров, которых можно "
+"заработать или купить в рамках события."
 
 msgid "awardsWidget/description/point"
 msgstr ""
@@ -47,6 +52,11 @@ msgid "awardsWidget/title/coin"
 msgstr ""
 "ТОВАРЫ\n"
 "ЗА ЖЕТОНЫ"
+
+msgid "awardsWidget/title/commander"
+msgstr ""
+"КОМАНДИРЫ\n"
+"С ОЗВУЧКОЙ"
 
 msgid "awardsWidget/title/point"
 msgstr ""
@@ -145,7 +155,9 @@ msgid "battlePassAwardsView/mainReward/bpBuyAwardsCaption"
 msgstr "Вы разблокировали награды из улучшенной линейки в главе «%(chapter)s»"
 
 msgid "battlePassAwardsView/mainReward/commander"
-msgstr "Член экипажа %(name)s"
+msgstr ""
+"Командир с озвучкой\n"
+"%(name)s"
 
 msgid "battlePassAwardsView/mainReward/newDeviceGiftToken/buttonText"
 msgstr "Перейти к выбору"
@@ -303,13 +315,13 @@ msgid "battlePassBuyView/reward/chapter"
 msgstr "ГЛАВА «%(chapterName)s»"
 
 msgid "battlePassBuyView/reward/titleBattlePass"
-msgstr "Награды Улучшенного боевого пропуска"
+msgstr "НАГРАДЫ УЛУЧШЕННОГО БОЕВОГО ПРОПУСКА"
 
 msgid "battlePassBuyView/reward/titleFutureRewards"
 msgstr "Эти награды будут начислены по завершении следующих этапов."
 
 msgid "battlePassBuyView/reward/titleLevels"
-msgstr "Награды за %(levels)s ед. этапов"
+msgstr "НАГРАДЫ ЗА %(levels)s ЕД. ЭТАПОВ"
 
 msgid "battlePassBuyView/reward/titleNowRewards"
 msgstr "Сейчас будут начислены следующие награды за этапы %(steps)"
@@ -367,6 +379,9 @@ msgstr "Цена свободы"
 msgid "chapter/fullName/93"
 msgstr "Лучшая роль"
 
+msgid "chapter/fullName/95"
+msgstr "Тридевятое царство"
+
 msgid "chapter/fullNameUppercased/74"
 msgstr "НОВАЯ ГЛАВА"
 
@@ -378,6 +393,9 @@ msgstr "ЦЕНА СВОБОДЫ"
 
 msgid "chapter/fullNameUppercased/93"
 msgstr "ЛУЧШАЯ РОЛЬ"
+
+msgid "chapter/fullNameUppercased/95"
+msgstr "ТРИДЕВЯТОЕ ЦАРСТВО"
 
 msgid "chapter/title"
 msgstr "ГЛАВА %(chapter)s"
@@ -453,6 +471,9 @@ msgstr "%(vehicleName)s"
 
 msgid "chapterChoice/stylePreview/forLabel"
 msgstr "Для %(vehicleName)s"
+
+msgid "chapterChoice/stylePreview/forLabelMT"
+msgstr "Для: %(vehicleName)s"
 
 msgid "chapterChoice/stylePreview/label"
 msgstr "Предпросмотр"
@@ -620,9 +641,9 @@ msgstr "Ключевая техника сезона"
 msgid "howToEarnPoints/description"
 msgstr ""
 "Очки Боевого пропуска нужны для вашего последовательного продвижения к "
-"наградам. Их можно заработать в режимах «Случайный бой», «Линия фронта» и "
-"«Натиск», за выполнение боевых и ежедневных задач, а также единоразово за "
-"достижение лимита очков на конкретной машине."
+"наградам. Их можно заработать в режиме «Случайный бой», за выполнение боевых"
+" и ежедневных задач, а также единоразово за достижение лимита очков "
+"на конкретной машине."
 
 msgid "howToEarnPoints/lose/1"
 msgstr "Поражение/ничья"
@@ -699,6 +720,36 @@ msgstr "О БОЕВОМ ПРОПУСКЕ"
 msgid "intro/button"
 msgstr "Так точно!"
 
+msgid "intro/collaboration/text"
+msgstr ""
+"Главная награда — танк O-HO с 3D-стилем, вдохновленным русскими народными "
+"сказками, а также множество других элементов внешнего вида — стилей, "
+"декалей, надписей и т.д. Это по-настоящему уникальное имущество будет "
+"доступно только в рамках Боевого пропуска."
+
+msgid "intro/collaboration/title"
+msgstr "ТРИДЕВЯТОЕ ЦАРСТВО"
+
+msgid "intro/holidayTitle"
+msgstr "НОВОГОДНИЙ БОЕВОЙ ПРОПУСК"
+
+msgid "intro/newRewards/text"
+msgstr ""
+"Впервые в Боевом пропуске в качестве награды вы сможете получить "
+"тематических командиров с собственной озвучкой. И да, вы их всех прекрасно "
+"знаете."
+
+msgid "intro/newRewards/title"
+msgstr "НОВЫЕ НАГРАДЫ"
+
+msgid "intro/oneChapter/text"
+msgstr ""
+"Этот Боевой пропуск состоит только из одной главы. Вас ждёт короткое, но "
+"яркое приключение — получите всё, что мы для вас приготовили!"
+
+msgid "intro/oneChapter/title"
+msgstr "МИНИ-СЕЗОН"
+
 msgid "intro/tanks/text"
 msgstr ""
 "В девятом сезоне Боевого пропуска представлены три стиля для ключевой "
@@ -709,7 +760,7 @@ msgid "intro/tanks/title"
 msgstr "НОВЫЕ ПРОГРЕССИОННЫЕ СТИЛИ"
 
 msgid "intro/title"
-msgstr "БОЕВОЙ ПРОПУСК 2022"
+msgstr "НОВОГОДНИЙ БОЕВОЙ ПРОПУСК"
 
 msgid "offSeason/alertTooltip"
 msgstr "Результаты голосования временно недоступны. Попробуйте зайти позже."
@@ -762,6 +813,49 @@ msgstr "%(vehicle): %(bonus) за %(top) по опыту."
 msgid "points/topCount"
 msgstr "топ-%(top)s"
 
+msgid "postProgression/buyState/buyBtn"
+msgstr "Купить Улучшенный пропуск"
+
+msgid "postProgression/buyState/description"
+msgstr ""
+"Купив Улучшенный пропуск, вы мгновенно получите уникальный 3D-стиль "
+"«%(styleName)s» и все награды из улучшенной линейки."
+
+msgid "postProgression/buyState/moreRewards"
+msgstr "Ещё наград: %(count)s"
+
+msgid "postProgression/buyState/title"
+msgstr "Получите награды Улучшенного пропуска"
+
+msgid "postProgression/chapter"
+msgstr "ГЛАВА «%(chapterName)s»"
+
+msgid "postProgression/completed"
+msgstr "ПРОЙДЕНА"
+
+msgid "postProgression/finalState/button"
+msgstr "Посмотреть танк в Ангаре"
+
+msgid "postProgression/finalState/label"
+msgstr "Все награды события получены"
+
+msgid "postProgression/selectableRewardsState/button"
+msgstr "Забрать награды"
+
+msgid "postProgression/selectableRewardsState/label"
+msgstr "У вас ещё есть награды на выбор"
+
+msgid "postProgression/tankmenState/description"
+msgstr ""
+"В рамках текущего события в Магазине доступны пакеты, содержащие уникальных "
+"командиров с озвучкой."
+
+msgid "postProgression/tankmenState/tankmenBtn"
+msgstr "Прослушать всех командиров"
+
+msgid "postProgression/tankmenState/title"
+msgstr "Соберите всех четырех командиров!"
+
 msgid "prestige/top"
 msgstr "%(vehicle): %(bonus) за попадание в %(top) по очкам престижа."
 
@@ -802,8 +896,7 @@ msgid "progression/battlePassBuyBtn"
 msgstr "Купить Улучшенный пропуск"
 
 msgid "progression/battlePassBuyDescr"
-msgstr ""
-"Улучшенный пропуск разблокирует линейку улучшенных наград для текущей главы."
+msgstr "Улучшенный пропуск разблокирует линейку улучшенных наград."
 
 msgid "progression/battlePassNextChapterBuyDescr"
 msgstr ""
@@ -865,7 +958,8 @@ msgid "progression/episodeBuyBtn"
 msgstr "Докупить этапы"
 
 msgid "progression/episodeBuyDescr"
-msgstr "Вы получите награды за каждый купленный этап."
+msgstr ""
+"Докупив этапы, вы мгновенно получите за них базовые и улучшенные награды."
 
 msgid "progression/episodeBuyDisableDescr"
 msgstr "Докупить любое количество этапов можно через %(day)"
@@ -932,10 +1026,10 @@ msgid "progression/season/end/extra"
 msgstr "Событие завершится %(endDay)s %(endMonth)s в %(endTime)s"
 
 msgid "progression/season/end/normal"
-msgstr "Сезон %(seasonNum)s продлится до %(endDay)s %(endMonth)s"
+msgstr "Продлится до %(endDay)s %(endMonth)s"
 
 msgid "progression/seasonEndingDescr"
-msgstr "До окончания сезона осталось: "
+msgstr "До окончания события осталось: "
 
 msgid "progression/seasonEndingTooltip"
 msgstr "До окончания: {day}"
@@ -947,7 +1041,7 @@ msgid "progression/trophySelectAwaiting"
 msgstr "ОЖИДАЕТ ВЫБОРА"
 
 msgid "progression/universalCommander"
-msgstr "Универсальный член экипажа"
+msgstr "Командир с озвучкой"
 
 msgid "progression/widget3dStyle/currentStyle"
 msgstr "3D-стиль «{name}»"
@@ -972,6 +1066,30 @@ msgstr ""
 
 msgid "progression/widget3dStyle/viewStyles"
 msgstr "Посмотреть все стили"
+
+msgid "progression/widgetRewards/commander"
+msgstr "Командир с озвучкой"
+
+msgid "progression/widgetRewards/commanderVoices"
+msgstr "Прослушать всех командиров"
+
+msgid "progression/widgetRewards/labelWithBP"
+msgstr "С Улучшенным пропуском"
+
+msgid "progression/widgetRewards/premtank"
+msgstr "Премиум танк"
+
+msgid "progression/widgetRewards/premtankWarning"
+msgstr "Характеристики машины могут быть изменены без компенсации."
+
+msgid "progression/widgetRewards/tank"
+msgstr "Премиум танк в 3D-стиле"
+
+msgid "progression/widgetRewards/tankName"
+msgstr "%(vehicleName)s"
+
+msgid "progression/widgetRewards/tooltip"
+msgstr "Нажмите, чтобы прослушать голос командира."
 
 msgid "reward/postBattle/comp7/progress"
 msgstr "Получено очков за попадание в топ по очкам престижа:"
@@ -1029,6 +1147,41 @@ msgstr "Новый уровень стиля «%(styleName)s»"
 
 msgid "styleProgression/newStyle"
 msgstr "Первый уровень стиля «%(styleName)s»"
+
+msgid "tankmenVoiceover/availableInProgression"
+msgstr "В прогрессии на этапе %(progressNumber)s"
+
+msgid "tankmenVoiceover/availableInShop"
+msgstr "В составе набора"
+
+msgid "tankmenVoiceover/button"
+msgstr "Так точно!"
+
+msgid "tankmenVoiceover/close"
+msgstr "ЗАКРЫТЬ"
+
+msgid "tankmenVoiceover/description"
+msgstr ""
+"Все командиры имеют «нулевой» навык «Боевое братство», а также достаточно опыта\n"
+"для изучения ещё одного умения или навыка на выбор."
+
+msgid "tankmenVoiceover/received"
+msgstr "Получено"
+
+msgid "tankmenVoiceover/shopButton"
+msgstr "Смотреть в Магазине"
+
+msgid "tankmenVoiceover/soundOn"
+msgstr "Прослушать"
+
+msgid "tankmenVoiceover/subtitle"
+msgstr "ГЛАВА «ТРИДЕВЯТОЕ ЦАРСТВО»"
+
+msgid "tankmenVoiceover/title"
+msgstr "УНИКАЛЬНЫЕ КОМАНДИРЫ С ОЗВУЧКОЙ"
+
+msgid "tankmenVoiceover/unavailable"
+msgstr "Недоступно"
 
 msgid "tooltips/battlePassCoins/secondaryText"
 msgstr ""
@@ -1094,15 +1247,20 @@ msgid "tooltips/completed/got"
 msgstr "Награда получена"
 
 msgid "tooltips/completed/message"
-msgstr ""
-"Теперь вы можете использовать накопленные очки Боевого пропуска в разделе "
-"«Товары за очки» Магазина"
+msgstr "Основные награды получены"
+
+msgid "tooltips/completed/messageBP"
+msgstr "Все награды получены"
 
 msgid "tooltips/completed/rewardsObtained"
 msgstr "Основные награды получены"
 
 msgid "tooltips/completed/subTitle"
-msgstr "ВСЕ ГЛАВЫ ПРОЙДЕНЫ"
+msgstr "ГЛАВА ПРОЙДЕНА"
+
+msgid "tooltips/completed/tankmenNotRecieved"
+msgstr ""
+"В Магазине доступны наборы, содержащие уникальных командиров с озвучкой."
 
 msgid "tooltips/completed/title"
 msgstr "Боевой пропуск"
@@ -1133,31 +1291,28 @@ msgstr ""
 msgid "tooltips/footerBuyBtn/battlePass/descr"
 msgstr ""
 "Купить Улучшенный пропуск можно в любое время. В этом случае вы мгновенно "
-"получите все улучшенные награды текущей главы за пройденные этапы и будете "
-"получать базовые и улучшенные награды за каждый последующий этап до "
-"окончания главы."
+"получите все улучшенные награды за пройденные этапы и будете получать "
+"базовые и улучшенные награды за каждый последующий этап."
 
 msgid "tooltips/footerBuyBtn/battlePass/nextChapter"
 msgstr "Завершите предыдущую главу, чтобы докупить этапы в этой главе."
 
 msgid "tooltips/footerBuyBtn/episode/descr"
 msgstr ""
-"Докупив этапы, вы мгновенно получите за них базовые и улучшенные награды "
-"этой главы. Этапы покупаются отдельно для каждой главы."
+"Докупив этапы, вы мгновенно получите за них базовые и улучшенные награды."
 
 msgid "tooltips/iconLock/descr1"
 msgstr ""
-"Вы можете увеличить список наград главы, купив Улучшенный пропуск. Он "
-"приобретается для каждой главы отдельно и действует только в рамках "
-"соответствующей главы. С Улучшенным пропуском вы будете получать награды из "
-"обеих линеек за прохождение каждого последующего этапа."
+"Вы можете расширить список добычи в главе, купив Улучшенный пропуск. С "
+"Улучшенным пропуском вы будете получать награды из обеих линеек за "
+"достижение каждого последующего этапа."
 
 msgid "tooltips/iconLock/descr2"
 msgstr ""
 "Купить Улучшенный пропуск можно в любое время. В этом случае вы мгновенно "
-"получите все улучшенные награды за пройденные этапы главы, в которой куплен "
-"Улучшенный пропуск. Улучшить награду можно на основном экране Боевого "
-"пропуска, нажав на кнопку «Купить Улучшенный пропуск»."
+"получите все улучшенные награды за все пройденные этапы. Улучшить награду "
+"можно на основном экране Боевого пропуска, нажав на кнопку «Купить "
+"Улучшенный пропуск»."
 
 msgid "tooltips/iconLock/title"
 msgstr "Улучшенная награда Боевого пропуска"
@@ -1448,4 +1603,4 @@ msgid "trophyDeviceUpgradeConfim/title/template"
 msgstr "«{deviceName}»"
 
 msgid "universalTankmanBonus"
-msgstr "Универсальный член экипажа: %(name)s"
+msgstr "Командир с озвучкой: %(name)s"

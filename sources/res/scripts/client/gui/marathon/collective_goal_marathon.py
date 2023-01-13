@@ -40,8 +40,8 @@ class CollectiveGoalEvent(MarathonEvent):
         return True
 
     def createMarathonWebHandlers(self):
-        from gui.marathon.web_handlers import createDefaultMarathonWebHandlers
-        return createDefaultMarathonWebHandlers()
+        from gui.marathon.web_handlers import createCollectiveGoalMarathonWebHandlers
+        return createCollectiveGoalMarathonWebHandlers()
 
     def getMarathonProgress(self):
         return (0, 0)

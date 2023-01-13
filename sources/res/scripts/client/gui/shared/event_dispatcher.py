@@ -555,7 +555,8 @@ def showVehiclePreviewWithoutBottomPanel(vehCD, backCallback=None, **kwargs):
                       OptionalBlocks.CLOSE_BUTTON, OptionalBlocks.BUYING_PANEL), 
        'previewAlias': VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW, 
        'itemsPack': kwargs.get('itemsPack'), 
-       'backBtnLabel': kwargs.get('backBtnLabel')}), EVENT_BUS_SCOPE.LOBBY)
+       'backBtnLabel': kwargs.get('backBtnLabel'), 
+       'isHeroInteractive': kwargs.get('isHeroInteractive')}), EVENT_BUS_SCOPE.LOBBY)
 
 
 def showDelayedReward():
@@ -1967,3 +1968,9 @@ def showComp7WinsRewardsScreen(quest, notificationMgr=None):
     from gui.impl.lobby.comp7.views.rewards_screen import WinsRewardsScreenWindow
     window = WinsRewardsScreenWindow(quest=quest)
     notificationMgr.append(WindowNotificationCommand(window))
+
+
+def showBattlePassTankmenVoiceover():
+    from gui.impl.lobby.battle_pass.tankmen_voiceover_view import TankmenVoiceoverWindow
+    window = TankmenVoiceoverWindow()
+    window.load()

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>Shot</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>gun_idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_empty.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>gun_shot</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Shot</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-305.000000 -149.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>gun_shot</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_gun_shot.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>gun_idle</to>
+			<blendDuration>5.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions/>
+		</transition>
+		<uiPosition>-282.000000 -276.000000 0.000000</uiPosition>
+	</node>
+</root>

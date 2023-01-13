@@ -1711,6 +1711,7 @@ class TankwomanBonus(TankmenBonus):
 
 
 class CustomizationsBonus(SimpleBonus):
+    CUSTOMIZATIONS_BONUS = 'customizations'
     c11n = dependency.descriptor(ICustomizationService)
 
     def getList(self):

@@ -891,6 +891,7 @@ class _OpenProgressiveRewardView(NavigationDisabledActionHandler):
 
 
 class _OpenBattlePassProgressionView(NavigationDisabledActionHandler):
+    __battlePass = dependency.descriptor(IBattlePassController)
 
     @classmethod
     def getNotType(cls):
@@ -905,7 +906,10 @@ class _OpenBattlePassProgressionView(NavigationDisabledActionHandler):
         savedData = notification.getSavedData()
         hideWebBrowserOverlay()
         if savedData is not None:
-            showMissionsBattlePass(R.views.lobby.battle_pass.BattlePassProgressionsView(), savedData.get('chapterID'))
+            if self.__battlePass.isCompleted():
+                showMissionsBattlePass(R.views.lobby.battle_pass.PostProgressionView())
+            else:
+                showMissionsBattlePass(R.views.lobby.battle_pass.BattlePassProgressionsView(), savedData.get('chapterID'))
         else:
             showMissionsBattlePass()
         return
@@ -922,7 +926,7 @@ class _OpenBattlePassChapterChoiceView(NavigationDisabledActionHandler):
         return ('openBattlePassChapterChoiceView', )
 
     def doAction(self, model, entityID, action):
-        showMissionsBattlePass(R.views.lobby.battle_pass.ChapterChoiceView())
+        showMissionsBattlePass()
 
 
 class _OpenBPExtraWillEndSoon(NavigationDisabledActionHandler):
