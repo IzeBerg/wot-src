@@ -61,8 +61,6 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.lobby.manual.manual_main_view import ManualMainView
     from gui.Scaleform.daapi.view.lobby.manual.manual_chapter_view import ManualChapterView
     from gui.Scaleform.daapi.view.lobby.hangar.daily_quest_widget import DailyQuestWidget
-    from gui.impl.lobby.new_year.widgets.ny_main_widget import NyMainWidgetInject
-    from gui.impl.lobby.loot_box.reward_kit_entry_point import RewardKitEntrancePointInjectWidget
     from gui.Scaleform.daapi.view.lobby.hangar.progressive_reward_widget import ProgressiveRewardWidget
     from gui.Scaleform.daapi.view.lobby.hangar.ammunition_panel_inject import AmmunitionPanelInject
     from gui.impl.lobby.battle_pass.battle_pass_entry_point_view import BattlePassEntryPointComponent
@@ -73,6 +71,7 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.lobby.hangar.entry_points.marathon_entry_point import MarathonEntryPoint
     from gui.Scaleform.daapi.view.lobby.hangar.battle_matters_entry_point import BattleMattersEntryPoint
     from gui.impl.lobby.resource_well.entry_point import ResourceWellEntryPointComponent
+    from gui.impl.lobby.collective_goal.entry_point import CollectiveGoalEntryPointComponent
     from gui.impl.lobby.personal_reserves.personal_reserves_widget_inject import PersonalReservesWidgetInject
     from gui.impl.lobby.comp7.views.main_widget import Comp7MainWidgetComponent
     return (
@@ -118,10 +117,9 @@ def getViewSettings():
      ComponentSettings(HANGAR_ALIASES.MAPBOX_ENTRY_POINT, MapBoxEntryPoint, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(HANGAR_ALIASES.MARATHON_ENTRY_POINT, MarathonEntryPoint, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(HANGAR_ALIASES.RESOURCE_WELL_ENTRY_POINT, ResourceWellEntryPointComponent, ScopeTemplates.DEFAULT_SCOPE),
+     ComponentSettings(HANGAR_ALIASES.COLLECTIVE_GOAL_ENTRY_POINT, CollectiveGoalEntryPointComponent, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT, BattleMattersEntryPoint, ScopeTemplates.DEFAULT_SCOPE),
-     ComponentSettings(HANGAR_ALIASES.PERSONAL_RESERVES_WIDGET_INJECT, PersonalReservesWidgetInject, ScopeTemplates.DEFAULT_SCOPE),
-     ComponentSettings(HANGAR_ALIASES.NY_MAIN_WIDGET_UI, NyMainWidgetInject, None),
-     ComponentSettings(HANGAR_ALIASES.REWARD_KITS_ENTRANCE_POINT, RewardKitEntrancePointInjectWidget, None))
+     ComponentSettings(HANGAR_ALIASES.PERSONAL_RESERVES_WIDGET_INJECT, PersonalReservesWidgetInject, ScopeTemplates.DEFAULT_SCOPE))
 
 
 def getBusinessHandlers():

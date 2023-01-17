@@ -1,4 +1,4 @@
-import logging, operator, time
+import operator, time
 from abc import ABCMeta
 from collections import namedtuple
 import typing, constants, nations
@@ -11,9 +11,9 @@ from gui.impl import backport
 from gui.impl.gen import R
 from gui.ranked_battles.ranked_helpers import getQualificationBattlesCountFromID, isQualificationQuestID
 from gui.server_events import events_helpers, finders
-from gui.server_events.bonuses import SimpleBonus, compareBonuses, getBonuses
-from gui.server_events.events_constants import BATTLE_MATTERS_INTERMEDIATE_QUEST_ID, BATTLE_MATTERS_QUEST_ID
-from gui.server_events.events_helpers import getIdxFromQuestID, isCelebrityQuest, isDailyQuest, isPremium
+from gui.server_events.events_constants import BATTLE_MATTERS_QUEST_ID, BATTLE_MATTERS_INTERMEDIATE_QUEST_ID
+from gui.server_events.bonuses import compareBonuses, getBonuses
+from gui.server_events.events_helpers import isDailyQuest, isPremium, getIdxFromQuestID
 from gui.server_events.formatters import getLinkedActionID
 from gui.server_events.modifiers import compareModifiers, getModifierObj
 from gui.server_events.parsers import AccountRequirements, BonusConditions, PostBattleConditions, PreBattleConditions, TokenQuestAccountRequirements, VehicleRequirements
@@ -31,11 +31,11 @@ from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
+from gui.server_events.bonuses import SimpleBonus
 if typing.TYPE_CHECKING:
     from typing import Dict, List, Union
     from gui.Scaleform.daapi.view.lobby.server_events.events_helpers import EventPostBattleInfo
     import potapov_quests
-_logger = logging.getLogger()
 
 class DEFAULTS_GROUPS(object):
     FOR_CURRENT_VEHICLE = 'currentlyAvailable'
@@ -44,7 +44,6 @@ class DEFAULTS_GROUPS(object):
     REGULAR_GROUPED_QUESTS = 'regularGroupedQuests'
     MOTIVE_QUESTS = 'motiveQuests'
     MARATHON_QUESTS = 'marathonQuests'
-    LINKEDSET_QUESTS = 'AdvancedTrainingQuests'
     PREMIUM_QUESTS = 'premiumQuests'
 
 
@@ -56,8 +55,6 @@ def getGroupTypeByID(groupID):
         return DEFAULTS_GROUPS.MARATHON_QUESTS
     if events_helpers.isPremium(groupID):
         return DEFAULTS_GROUPS.PREMIUM_QUESTS
-    if events_helpers.isBattleMattersQuestID(groupID):
-        return DEFAULTS_GROUPS.LINKEDSET_QUESTS
     return DEFAULTS_GROUPS.REGULAR_GROUPED_QUESTS
 
 
@@ -251,7 +248,6 @@ class ServerEventAbstract(object):
 
 
 class Group(ServerEventAbstract):
-    __slots__ = ServerEventAbstract.__slots__
 
     def getGroupEvents(self):
         return self._data.get('groupContent', [])
@@ -270,9 +266,6 @@ class Group(ServerEventAbstract):
 
     def isPremium(self):
         return events_helpers.isPremium(self.getID())
-
-    def isCelebrityQuest(self):
-        return events_helpers.isCelebrityQuest(self.getID())
 
     def isRegularQuest(self):
         return events_helpers.isRegularQuest(self.getID())
@@ -662,14 +655,6 @@ class RankedQuest(Quest):
         return result
 
 
-class CelebrityQuest(Quest):
-    pass
-
-
-class CelebrityTokenQuest(TokenQuest):
-    pass
-
-
 ActionData = namedtuple('ActionData', 'discountObj priority uiDecoration')
 
 class Action(ServerEventAbstract):
@@ -725,7 +710,7 @@ class Action(ServerEventAbstract):
 
             return result
 
-    def getModifiersDict(self):
+    def getModifiers(self):
         result = {}
         for stepData in self._data.get('steps'):
             mName = stepData.get('name')
@@ -737,10 +722,7 @@ class Action(ServerEventAbstract):
             else:
                 result[mName] = m
 
-        return result
-
-    def getModifiers(self):
-        return sorted(self.getModifiersDict().itervalues(), key=operator.methodcaller('getName'), cmp=compareModifiers)
+        return sorted(result.itervalues(), key=operator.methodcaller('getName'), cmp=compareModifiers)
 
 
 class PMCampaign(object):
@@ -1465,17 +1447,6 @@ class DailyTokenQuestBuilder(IQuestBuilder):
         return DailyEpicTokenQuest(qID, data, progress)
 
 
-class CelebrityTokenQuestBuilder(IQuestBuilder):
-
-    @classmethod
-    def isSuitableQuest(cls, questType, qID):
-        return questType == constants.EVENT_TYPE.TOKEN_QUEST and isCelebrityQuest(qID)
-
-    @classmethod
-    def buildQuest(cls, questType, qID, data, progress=None, expiryTime=None):
-        return CelebrityTokenQuest(qID, data, progress)
-
-
 class TokenQuestBuilder(IQuestBuilder):
 
     @classmethod
@@ -1520,21 +1491,9 @@ class DailyQuestBuilder(IQuestBuilder):
         return DailyQuest(qID, data, progress)
 
 
-class CelebrityQuestBuilder(IQuestBuilder):
-
-    @classmethod
-    def isSuitableQuest(cls, questType, qID):
-        return isCelebrityQuest(qID)
-
-    @classmethod
-    def buildQuest(cls, questType, qID, data, progress=None, expiryTime=None):
-        return CelebrityQuest(qID, data, progress)
-
-
 registerQuestBuilders((
  PersonalQuestBuilder, GroupQuestBuilder, MotiveQuestBuilder, RankedQuestBuilder, BattleMattersTokenQuestBuilder,
- DailyTokenQuestBuilder, TokenQuestBuilder, BattleMattersQuestBuilder, PremiumQuestBuilder, DailyQuestBuilder,
- CelebrityTokenQuestBuilder, CelebrityQuestBuilder))
+ DailyTokenQuestBuilder, TokenQuestBuilder, BattleMattersQuestBuilder, PremiumQuestBuilder, DailyQuestBuilder))
 
 def createQuest(builders, questType, qID, data, progress=None, expiryTime=None):
     for builder in builders:

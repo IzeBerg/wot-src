@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert1</identifier>
+					<fx>shaders/custom/vector_animation.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 10.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Udes_smoke_rays.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.080000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>-0.060000 0.100000 0.020000 0.100000</Vector4>
+					</property>
+					<property>
+						distortionFrames
+						<Vector4>0.100000 0.100000 0.100000 0.200000</Vector4>
+					</property>
+					<property>
+						distortionFrequency
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_distortion_lighting_02.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						gradientMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Gradient_transparentEdge_02.dds</Texture>
+					</property>
+					<property>
+						gradientMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/null.dds</Texture>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>-0.050000 0.120000 0.100000 0.100000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/wt_animation_04.dds</Texture>
+					</property>
+					<property>
+						softFactor
+						<Float>0.200000</Float>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.000000 1.000000 0.541176 0.498039</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.157614 0.947732 2.384143</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>lambert4</identifier>
+					<fx>shaders/custom/vector_animation.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Udes_smoke_rays.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 -0.080000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>-0.060000 0.100000 0.020000 0.100000</Vector4>
+					</property>
+					<property>
+						distortionFrames
+						<Vector4>0.100000 0.100000 0.100000 0.200000</Vector4>
+					</property>
+					<property>
+						distortionFrequency
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_distortion_lighting_02.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.698039 1.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						gradientMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Gradient_transparentEdge_02.dds</Texture>
+					</property>
+					<property>
+						gradientMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/null.dds</Texture>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>-0.050000 0.120000 0.100000 0.100000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/wt_animation_04.dds</Texture>
+					</property>
+					<property>
+						softFactor
+						<Float>0.010000</Float>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.000000 0.490196 0.211765 0.298039</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>2.000000 0.001000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						fadeMaxDistance
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						fadeMinDistance
+						<Float>0.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.154654 0.949073 2.303339</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.022251 0.766320 2.266443</min>
+		<max>0.337479 1.129144 2.492221</max>
+	</boundingBox>
+	<geometrySize>16460</geometrySize>
+	<minUVDensity>1.063749</minUVDensity>
+</root>

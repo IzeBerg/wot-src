@@ -914,10 +914,14 @@ def _migrateTo99(_, data, __):
 
 def _migrateTo100(core, data, initialized):
     from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
-    storedValue = _getSettingsCache().getSectionSettings(SETTINGS_SECTIONS.NEW_YEAR, 0)
-    clear = data['clear']
-    if storedValue:
-        clear[SETTINGS_SECTIONS.NEW_YEAR] = clear.get(SETTINGS_SECTIONS.NEW_YEAR, 0) | storedValue
+    from account_helpers.settings_core.ServerSettingsManager import BATTLE_MATTERS_KEYS
+    data[SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS] = {BATTLE_MATTERS_KEYS.QUESTS_SHOWN: core.serverSettings.getBattleMattersQuestWasShowed(), 
+       BATTLE_MATTERS_KEYS.QUEST_PROGRESS: 0}
+
+
+def _migrateTo101(core, data, initialized):
+    data['markersData'].setdefault('ally', {})['markerAltVehicleDist'] = True
+    data['markersData'].setdefault('enemy', {})['markerAltVehicleDist'] = True
 
 
 _versions = (
@@ -1118,7 +1122,9 @@ _versions = (
  (
   99, _migrateTo99, False, False),
  (
-  100, _migrateTo100, False, False))
+  100, _migrateTo100, False, False),
+ (
+  101, _migrateTo101, False, False))
 
 @adisp_async
 @adisp_process

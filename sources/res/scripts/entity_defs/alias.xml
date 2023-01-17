@@ -5,6 +5,7 @@
 	<SHOT_ID>INT32</SHOT_ID>
 	<DB_ID>INT64</DB_ID>
 	<EXTRA_ID>UINT8</EXTRA_ID>
+	<VEH_TYPE_CD>UINT32</VEH_TYPE_CD>
 	<SERVER_STATISTICS>
 		FIXED_DICT
 		<Properties>
@@ -351,7 +352,7 @@
 				<Type>UINT8</Type>
 			</vehicleProgressTankmen>
 			<vehTypeCompDescr>
-				<Type>UINT16</Type>
+				<Type>VEH_TYPE_CD</Type>
 			</vehTypeCompDescr>
 			<premiumType>
 				<Type>UINT8</Type>
@@ -442,7 +443,7 @@
 			<crewGroups>
 				<Type>
 					ARRAY
-					<of>UINT16</of>
+					<of>UINT32</of>
 				</Type>
 			</crewGroups>
 			<commanderSkinID>
@@ -466,7 +467,7 @@
 				<Type>UINT8</Type>
 			</targetTeam>
 			<targetTypeCompDescr>
-				<Type>UINT16</Type>
+				<Type>VEH_TYPE_CD</Type>
 			</targetTypeCompDescr>
 			<targetIsTeamKiller>
 				<Type>BOOL</Type>
@@ -1042,9 +1043,6 @@
 			<componentsData>
 				<Type>PYTHON</Type>
 			</componentsData>
-			<accountsAdditionalInfo>
-				<Type>PYTHON</Type>
-			</accountsAdditionalInfo>
 		</Properties>
 	</ARENA_ADDPLAYER_INFO>
 	<AVATAR_VEHICLE_ROSTER>
@@ -1095,7 +1093,7 @@
 				<Type>BOOL</Type>
 			</attackerWasInvisible>
 			<attackerTypeCompactDescr>
-				<Type>UINT16</Type>
+				<Type>VEH_TYPE_CD</Type>
 			</attackerTypeCompactDescr>
 			<attackerVehicleIndex>
 				<Type>UINT8</Type>
@@ -1137,13 +1135,25 @@
 	</DESTRUCTIBLE_ATTACK_INFO>
 	<CLIENT_STATUS_STATISTICS>
 		FIXED_DICT
-		<AllowNone>true</AllowNone>
+		<AlowNone>true</AlowNone>
 		<Properties>
-			<ping>
-				<Type>INT16</Type>
-			</ping>
+			<ping_lt_50>
+				<Type>FLOAT</Type>
+			</ping_lt_50>
+			<ping_51_100>
+				<Type>FLOAT</Type>
+			</ping_51_100>
+			<ping_101_150>
+				<Type>FLOAT</Type>
+			</ping_101_150>
+			<ping_151_400>
+				<Type>FLOAT</Type>
+			</ping_151_400>
+			<ping_gt_400>
+				<Type>FLOAT</Type>
+			</ping_gt_400>
 			<lag>
-				<Type>UINT8</Type>
+				<Type>FLOAT</Type>
 			</lag>
 		</Properties>
 	</CLIENT_STATUS_STATISTICS>
@@ -1575,7 +1585,7 @@
 		<AllowNone>true</AllowNone>
 		<Properties>
 			<vehTypeCompDescr>
-				<Type>UINT16</Type>
+				<Type>VEH_TYPE_CD</Type>
 			</vehTypeCompDescr>
 			<endOfCooldownPiT>
 				<Type>FLOAT32</Type>
@@ -1638,7 +1648,7 @@
 			<vehTypeCompDescrs>
 				<Type>
 					ARRAY
-					<of>UINT16</of>
+					<of>VEH_TYPE_CD</of>
 				</Type>
 			</vehTypeCompDescrs>
 		</Properties>
@@ -2145,20 +2155,6 @@
 			</isRespawnActive>
 		</Properties>
 	</VEHICLE_HEALTH_INFO>
-	<CAMERA_FLIGHT_POINT>
-		FIXED_DICT
-		<Properties>
-			<point>
-				<Type>VECTOR3</Type>
-			</point>
-			<anchorName>
-				<Type>STRING</Type>
-			</anchorName>
-			<flightSpeed>
-				<Type>FLOAT</Type>
-			</flightSpeed>
-		</Properties>
-	</CAMERA_FLIGHT_POINT>
 	<GUN_MARKER>
 		FIXED_DICT
 		<AllowNone>true</AllowNone>
@@ -2698,4 +2694,29 @@
 			</number>
 		</Properties>
 	</SPAWN_POINT_INFO>
+	<SPAWN_KEY_POINT>
+		FIXED_DICT
+		<Properties>
+			<guid>
+				<Type>STRING</Type>
+			</guid>
+			<position>
+				<Type>VECTOR2</Type>
+			</position>
+		</Properties>
+	</SPAWN_KEY_POINT>
+	<TEAM_SPAWN_KEY_POINT>
+		FIXED_DICT
+		<Properties>
+			<vehID>
+				<Type>OBJECT_ID</Type>
+			</vehID>
+			<guid>
+				<Type>STRING</Type>
+			</guid>
+			<placed>
+				<Type>BOOL</Type>
+			</placed>
+		</Properties>
+	</TEAM_SPAWN_KEY_POINT>
 </root>

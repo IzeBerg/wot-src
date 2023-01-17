@@ -153,27 +153,7 @@ package
       
       public static const BONUSES_ITEM_TANKMEN_WITH_SKILLS:String = "#quests:bonuses/item/tankmen/with_skills";
       
-      public static const BONUSES_ITEM_NY23RANDOMRESOURCES:String = "#quests:bonuses/item/ny23RandomResources";
-      
       public static const BONUSES_NOTAVAILABLE:String = "#quests:bonuses/notAvailable";
-      
-      public static const BONUSNAME_NY22FILLERS:String = "#quests:bonusName/ny22Fillers";
-      
-      public static const BONUSNAME_NEWYEARSLOT:String = "#quests:bonusName/newYearSlot";
-      
-      public static const BONUSNAME_NYRANDOMRESOURCE:String = "#quests:bonusName/nyRandomResource";
-      
-      public static const BONUSNAME_NY_CRYSTAL:String = "#quests:bonusName/ny_crystal";
-      
-      public static const BONUSNAME_NY_EMERALD:String = "#quests:bonusName/ny_emerald";
-      
-      public static const BONUSNAME_NY_AMBER:String = "#quests:bonusName/ny_amber";
-      
-      public static const BONUSNAME_NY_IRON:String = "#quests:bonusName/ny_iron";
-      
-      public static const BONUSES_VARIADICDISCOUNT_DISCOUNTAMOUNT:String = "#quests:bonuses/variadicDiscount/discountAmount";
-      
-      public static const BONUSES_VARIADICDISCOUNT_BUTTONLABEL:String = "#quests:bonuses/variadicDiscount/buttonLabel";
       
       public static const QUESTS_TITLE:String = "#quests:quests/title";
       
@@ -3306,8 +3286,6 @@ package
       public static const GENERAL_INFO_BACK_GOTO:String = "#quests:general/info/back/goto";
       
       public static const DAILYQUESTS_INFO_DAILYMISSIONS:String = "#quests:dailyQuests/info/dailyMissions";
-      
-      public static const DAILYQUESTS_INFO_NYDAILYMISSIONS:String = "#quests:dailyQuests/info/NYDailyMissions";
       
       public static const DAILYQUESTS_INFO_DAILYMISSIONTITLE:String = "#quests:dailyQuests/info/dailyMissionTitle";
       

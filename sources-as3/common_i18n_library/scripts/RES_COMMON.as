@@ -47,16 +47,6 @@ package
       
       public static const MAPS_ICONS_MARATHON_REWARDWINDOW_BG:String = "../maps/icons/marathon/rewardWindow/bg.png";
       
-      public static const MAPS_ICONS_NEWYEAR_POPOVERS_BG:String = "../maps/icons/newYear/popovers/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_RESOURCEPROGRESSION_BG:String = "../maps/icons/newYear/resourceProgression/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_SHOPOVERLAY_BG:String = "../maps/icons/newYear/shopOverlay/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_STYLE_REWARD_BG:String = "../maps/icons/newYear/style_reward/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_TOOLTIPS_DISCOUNT_REWARD_TOOLTIP_BG:String = "../maps/icons/newYear/tooltips/discount_reward_tooltip/bg.png";
-      
       public static const MAPS_ICONS_RANKEDBATTLES_AWARDS_BG:String = "../maps/icons/rankedBattles/awards/bg.png";
       
       public static const MAPS_ICONS_RESOURCEWELL_INTRO_BG:String = "../maps/icons/resourceWell/intro/bg.png";

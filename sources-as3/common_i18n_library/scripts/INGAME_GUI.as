@@ -775,6 +775,8 @@ package
       
       public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_SELF_ENEMY_BOMBER:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_SELF_ENEMY_BOMBER";
       
+      public static const PLAYER_MESSAGES_DEATH_FROM_MINE_EXPLOSION_SELF_ENEMY_ARCADE:String = "#ingame_gui:player_messages/DEATH_FROM_MINE_EXPLOSION_SELF_ENEMY_ARCADE";
+      
       public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ALLY_ALLY:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ALLY_ALLY";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ALLY_ALLY_ARTILLERY:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ALLY_ALLY_ARTILLERY";
@@ -786,6 +788,8 @@ package
       public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ALLY_ENEMY_ARTILLERY:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_ARTILLERY";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ALLY_ENEMY_BOMBER:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_BOMBER";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_MINE_EXPLOSION_ALLY_ENEMY_ARCADE:String = "#ingame_gui:player_messages/DEATH_FROM_MINE_EXPLOSION_ALLY_ENEMY_ARCADE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ALLY_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ALLY_SUICIDE";
       
@@ -804,6 +808,8 @@ package
       public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ALLY_ARTILLERY:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_ARTILLERY";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ALLY_BOMBER:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_BOMBER";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_MINE_EXPLOSION_ENEMY_ALLY_ARCADE:String = "#ingame_gui:player_messages/DEATH_FROM_MINE_EXPLOSION_ENEMY_ALLY_ARCADE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ENEMY:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ENEMY";
       
@@ -843,6 +849,8 @@ package
       
       public static const PLAYER_MESSAGES_DEATH_FROM_RECOVERY_ALLY_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_RECOVERY_ALLY_SUICIDE";
       
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_RECOVERY:String = "#ingame_gui:postmortem_messages/DEATH_FROM_RECOVERY";
+      
       public static const PLAYER_MESSAGES_DEATH_FROM_ARTILLERY_PROTECTION_UNKNOWN:String = "#ingame_gui:player_messages/DEATH_FROM_ARTILLERY_PROTECTION_UNKNOWN";
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_ARTILLERY_PROTECTION_UNKNOWN:String = "#ingame_gui:postmortem_messages/DEATH_FROM_ARTILLERY_PROTECTION_UNKNOWN";
@@ -866,6 +874,12 @@ package
       public static const PLAYER_MESSAGES_DEATH_FROM_SECTOR_BOMBERS_UNKNOWN_ENEMY:String = "#ingame_gui:player_messages/DEATH_FROM_SECTOR_BOMBERS_UNKNOWN_ENEMY";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_SECTOR_BOMBERS_UNKNOWN_ALLY:String = "#ingame_gui:player_messages/DEATH_FROM_SECTOR_BOMBERS_UNKNOWN_ALLY";
+      
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_ARTILLERY_SECTOR:String = "#ingame_gui:postmortem_messages/DEATH_FROM_ARTILLERY_SECTOR";
+      
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_ARTILLERY_PROTECTION:String = "#ingame_gui:postmortem_messages/DEATH_FROM_ARTILLERY_PROTECTION";
+      
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_BOMBER:String = "#ingame_gui:postmortem_messages/DEATH_FROM_BOMBER";
       
       public static const VEHICLE_MESSAGES_DEATH_FROM_FIRE:String = "#ingame_gui:vehicle_messages/DEATH_FROM_FIRE";
       
@@ -1230,6 +1244,12 @@ package
       public static const EFFICIENCYRIBBONS_ASSISTSTUN:String = "#ingame_gui:efficiencyRibbons/assistStun";
       
       public static const EFFICIENCYRIBBONS_DEATHZONE:String = "#ingame_gui:efficiencyRibbons/deathZone";
+      
+      public static const EFFICIENCYRIBBONS_CANNONDMG:String = "#ingame_gui:efficiencyRibbons/CannonDmg";
+      
+      public static const EFFICIENCYRIBBONS_AIRSTRIKEDMG:String = "#ingame_gui:efficiencyRibbons/AirstrikeDmg";
+      
+      public static const EFFICIENCYRIBBONS_ARTILLERYDMG:String = "#ingame_gui:efficiencyRibbons/ArtilleryDmg";
       
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING";
       
@@ -1782,6 +1802,8 @@ package
       public static const REWARDWINDOW_LOOTBOX_HEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/headerText";
       
       public static const REWARDWINDOW_LOOTBOX_DESCTEXT:String = "#ingame_gui:rewardWindow/lootbox/descText";
+      
+      public static const REWARDWINDOW_LOOTBOX_ISFREEDESCTEXT:String = "#ingame_gui:rewardWindow/lootbox/isFreeDescText";
       
       public static const REWARDWINDOW_LOOTBOX_BTNLABEL:String = "#ingame_gui:rewardWindow/lootbox/btnLabel";
       

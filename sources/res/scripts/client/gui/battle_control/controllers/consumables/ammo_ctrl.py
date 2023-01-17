@@ -1,8 +1,9 @@
 import logging, typing, weakref
 from collections import namedtuple
-from math import fabs
+from math import fabs, ceil
 import BigWorld, CommandMapping, Event
 from constants import VEHICLE_SETTING, ReloadRestriction
+from gui.battle_control.avatar_getter import getPlayerVehicle
 from shared_utils import CONST_CONTAINER
 from debug_utils import LOG_CODEPOINT_WARNING, LOG_ERROR
 from gui.battle_control import avatar_getter
@@ -35,12 +36,15 @@ class _GunSettings(namedtuple('_GunSettings', 'clip burst shots reloadEffect aut
         return cls.__new__(cls, _ClipBurstSettings(1, 0.0), _ClipBurstSettings(1, 0.0), {}, None, None, False)
 
     @classmethod
-    def make(cls, gun):
+    def make(cls, gun, modelsSet=None):
         clip = _ClipBurstSettings(*gun.clip)
         burst = _ClipBurstSettings(*gun.burst)
         shots = {}
         reloadEffect = None
-        reloadEffectDesc = gun.reloadEffect
+        if modelsSet and gun.reloadEffectSets and modelsSet in gun.reloadEffectSets:
+            reloadEffectDesc = gun.reloadEffectSets[modelsSet]
+        else:
+            reloadEffectDesc = gun.reloadEffect
         if reloadEffectDesc is not None:
             reloadEffect = ReloadEffectStrategy(reloadEffectDesc)
         for shotIdx, shotDescr in enumerate(gun.shots):
@@ -55,6 +59,9 @@ class _GunSettings(namedtuple('_GunSettings', 'clip burst shots reloadEffect aut
 
     def isCassetteClip(self):
         return self.clip.size > 1 or self.burst.size > 1
+
+    def isBurstAndClip(self):
+        return self.clip.size > 1 and self.burst.size > 1
 
     def hasAutoReload(self):
         return self.autoReload is not None
@@ -503,8 +510,13 @@ class AmmoController(MethodsRules, ViewComponentsController):
 
     @MethodsRules.delayable()
     def setGunSettings(self, gun):
-        self.__gunSettings = _GunSettings.make(gun)
+        modelsSet = None
+        vehicle = getPlayerVehicle()
+        if vehicle and vehicle.appearance is not None:
+            modelsSet = vehicle.appearance.outfit.modelsSet
+        self.__gunSettings = _GunSettings.make(gun, modelsSet)
         self.onGunSettingsSet(self.__gunSettings)
+        return
 
     def getNextShellCD(self):
         return self.__nextShellCD
@@ -546,7 +558,12 @@ class AmmoController(MethodsRules, ViewComponentsController):
         self.triggerReloadEffect(timeLeft, baseTime)
         if interval > 0 and self.__currShellCD in self.__ammo and baseTime > 0.0:
             shellsInClip = self.__ammo[self.__currShellCD][1]
-            if not (shellsInClip == 1 and timeLeft == 0 and not self.__gunSettings.hasAutoReload() or shellsInClip == 0 and timeLeft != 0):
+            if self.__gunSettings.isBurstAndClip():
+                quantityClip = ceil(shellsInClip / float(self.__gunSettings.burst.size))
+                if not (quantityClip == 1 and timeLeft == 0 and not self.__gunSettings.hasAutoReload() or quantityClip <= 1 and timeLeft != 0):
+                    if interval <= baseTime:
+                        baseTime = interval
+            elif not (shellsInClip == 1 and timeLeft == 0 and not self.__gunSettings.hasAutoReload() or shellsInClip == 0 and timeLeft != 0):
                 if interval <= baseTime:
                     baseTime = interval
         elif baseTime == 0.0:

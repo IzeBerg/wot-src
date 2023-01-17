@@ -40,7 +40,7 @@ def prepareCollisionAssembler(vehicleDesc, isTurretDetached, worldID):
     bspModels = []
     for partName, hitTester in hitTestersByPart.iteritems():
         partId = TankPartNames.getIdx(partName)
-        bspModel = (partId, hitTester.bspModelName)
+        bspModel = (partId, hitTester.bspModelName, (0.0, 0.0, 0.0))
         bspModels.append(bspModel)
 
     trackPairs = vehicleDesc.chassis.trackPairs[1:]
@@ -491,8 +491,14 @@ def assembleVehicleAudition(isPlayer, appearance):
     PLAYER_UPDATE_PERIOD = 0.1
     NPC_UPDATE_PERIOD = 0.25
     typeDescriptor = appearance.typeDescriptor
+    modelsSet = appearance.outfit.modelsSet
+    chassis = typeDescriptor.chassis
+    if chassis.soundsSets and modelsSet in chassis.soundsSets:
+        soundConfig = chassis.soundsSets[modelsSet]
+    else:
+        soundConfig = chassis.sounds
     engineEventName = typeDescriptor.engine.sounds.getEvents()
-    chassisEventName = typeDescriptor.chassis.sounds.getEvents()
+    chassisEventName = soundConfig.getEvents()
     wheeledVehicle = False
     if typeDescriptor.chassis.generalWheelsAnimatorConfig is not None:
         wheeledVehicle = typeDescriptor.chassis.generalWheelsAnimatorConfig.isWheeledVehicle()

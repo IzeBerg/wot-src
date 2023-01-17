@@ -3,8 +3,9 @@ from collections import namedtuple
 import typing, BigWorld, Windowing
 from CurrentVehicle import g_currentVehicle
 from account_helpers import AccountSettings
-from account_helpers.AccountSettings import MISSIONS_PAGE, NY_DAILY_QUESTS_VISITED
+from account_helpers.AccountSettings import MISSIONS_PAGE
 from adisp import adisp_async as adispasync, adisp_process
+from gui.marathon.collective_goal_marathon import COLLECTIVE_GOAL_MARATHON_PREFIX
 from wg_async import wg_async, wg_await
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.daapi import LobbySubView
@@ -27,7 +28,7 @@ from gui.impl import backport
 from gui.impl.gen import R
 from gui.marathon.marathon_event_controller import getMarathons
 from gui.server_events import caches, settings
-from gui.server_events.events_dispatcher import hideMissionDetails, showMissionDetails
+from gui.server_events.events_dispatcher import hideMissionDetails, showMissionDetails, showMissionsMarathon
 from gui.server_events.events_helpers import isBattleMattersQuestID
 from gui.shared import event_bus_handlers, events, g_eventBus
 from gui.shared.event_bus import EVENT_BUS_SCOPE
@@ -40,7 +41,7 @@ from helpers import dependency
 from helpers.i18n import makeString as _ms
 from items import getTypeOfCompactDescr
 from skeletons.gui.event_boards_controllers import IEventBoardController
-from skeletons.gui.game_control import IBattlePassController, IHangarSpaceSwitchController, IGameSessionController, IMapboxController, IMarathonEventsController, IRankedBattlesController, IFunRandomController, IUISpamController
+from skeletons.gui.game_control import IBattlePassController, IHangarSpaceSwitchController, IGameSessionController, IMapboxController, IMarathonEventsController, IRankedBattlesController, IFunRandomController, IUISpamController, ICollectiveGoalMarathonsController
 from skeletons.gui.app_loader import IAppLoader, GuiGlobalSpaceID
 from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.lobby_context import ILobbyContext
@@ -91,6 +92,7 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
     uiSpamController = dependency.descriptor(IUISpamController)
     __mapboxCtrl = dependency.descriptor(IMapboxController)
     __battleMattersController = dependency.descriptor(IBattleMattersController)
+    __collectiveGoalMarathonsController = dependency.descriptor(ICollectiveGoalMarathonsController)
 
     def __init__(self, ctx):
         super(MissionsPage, self).__init__(ctx)
@@ -195,6 +197,7 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         g_currentVehicle.onChanged += self.__updateHeader
         self.battlePass.onSeasonStateChanged += self.__updateHeader
         self.battlePass.onBattlePassSettingsChange += self.__updateBattlePassTab
+        self.__collectiveGoalMarathonsController.onMarathonUpdated += self.__onCollectiveGoalMarathonUpdated
         self.marathonsCtrl.onVehicleReceived += self.__onMarathonVehicleReceived
         Windowing.addWindowAccessibilitynHandler(self.__onWindowAccessibilityChanged)
         if self.marathonsCtrl.isAnyActive():
@@ -229,6 +232,7 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         g_currentVehicle.onChanged -= self.__updateHeader
         self.battlePass.onSeasonStateChanged -= self.__updateHeader
         self.battlePass.onBattlePassSettingsChange -= self.__updateBattlePassTab
+        self.__collectiveGoalMarathonsController.onMarathonUpdated -= self.__onCollectiveGoalMarathonUpdated
         self.removeListener(MissionsEvent.ON_GROUPS_DATA_CHANGED, self.__onPageUpdate, EVENT_BUS_SCOPE.LOBBY)
         self.removeListener(MissionsEvent.ON_FILTER_CHANGED, self.__onFilterChanged, EVENT_BUS_SCOPE.LOBBY)
         self.removeListener(MissionsEvent.ON_FILTER_CLOSED, self.__onFilterClosed, EVENT_BUS_SCOPE.LOBBY)
@@ -282,6 +286,13 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         caches.getNavInfo().setMissionsTab(self.__currentTabAlias)
         caches.getNavInfo().setMarathonPrefix(self.__marathonPrefix)
         self.__fireTabChangedEvent()
+        return
+
+    def __onCollectiveGoalMarathonUpdated(self):
+        self.__eventStatusUpdated(self.__currentTabAlias == QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS and self.__marathonPrefix == COLLECTIVE_GOAL_MARATHON_PREFIX)
+        collectiveGoalMarathon = self.marathonsCtrl.getMarathon(COLLECTIVE_GOAL_MARATHON_PREFIX)
+        if self.__currentTabAlias == QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS and collectiveGoalMarathon is not None and collectiveGoalMarathon.isEnabled():
+            showMissionsMarathon(COLLECTIVE_GOAL_MARATHON_PREFIX)
         return
 
     def __onPrimeTimeStatusUpdated(self, *_):
@@ -435,8 +446,6 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
                         newEventsCount += 1
             elif alias == QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS:
                 newEventsCount = self.__mapboxCtrl.getUnseenItemsCount()
-                if not AccountSettings.getUIFlag(NY_DAILY_QUESTS_VISITED):
-                    newEventsCount += 1
             elif self.currentTab is not None and self.__currentTabAlias == alias:
                 suitableEvents = self.__getSuitableEvents(self.currentTab)
                 newEventsCount = len(settings.getNewCommonEvents(suitableEvents))
@@ -630,14 +639,13 @@ class MissionView(MissionViewBase):
         result = []
         self._totalQuestsCount = 0
         self._filteredQuestsCount = 0
-        nyBannerAdded = self._appendNYBanner(result)
         for data in self._builder.getBlocksData(self.__viewQuests, self.__filter):
             self._appendBlockDataToResult(result, data)
             self._totalQuestsCount += self._getQuestTotalCountFromBlockData(data)
             self._filteredQuestsCount += self._getQuestFilteredCountFromBlockData(data)
 
         self._questsDP.buildList(result)
-        if not self._totalQuestsCount and not nyBannerAdded:
+        if not self._totalQuestsCount:
             self.as_showDummyS(self._getDummy())
         else:
             self.as_hideDummyS()
@@ -696,9 +704,6 @@ class MissionView(MissionViewBase):
 
     def __onPremiumTypeChanged(self, newAcctType):
         self.markVisited()
-
-    def _appendNYBanner(self, _):
-        return False
 
 
 class ElenMissionView(MissionViewBase):

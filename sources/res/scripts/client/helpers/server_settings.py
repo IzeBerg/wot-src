@@ -1,10 +1,6 @@
 import copy, functools, logging, types
 from collections import namedtuple
-import typing
-from ny_common.NYDogConfig import NYDogConfig
-from ny_common.NYPiggyBankConfig import NYPiggyBankConfig
-from ny_common.NYToyPricesConfig import NYToyPricesConfig
-import constants, post_progression_common
+import typing, constants, post_progression_common
 from BonusCaps import BonusCapsConst
 from Event import Event
 from UnitBase import PREBATTLE_TYPE_TO_UNIT_ASSEMBLER, UNIT_ASSEMBLER_IMPL_TO_CONFIG
@@ -20,15 +16,6 @@ from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
 from gui.SystemMessages import SM_TYPE
 from gui.shared.utils.decorators import ReprInjector
 from helpers import time_utils
-from ny_common.GeneralConfig import GeneralConfig
-from ny_common.BattleBonusesConfig import BattleBonusesConfig
-from ny_common.GiftMachineConfig import GiftMachineConfig
-from ny_common.MarketplaceConfig import MarketplaceConfig
-from ny_common.CelebrityConfig import CelebrityConfig
-from ny_common.GuestsQuestsConfig import GuestsQuestsConfig
-from ny_common.ObjectsConfig import ObjectsConfig
-from ny_common.ResourceCollectingConfig import ResourceCollectingConfig
-from ny_common.settings import BattleBonusesConsts, NYLootBoxConsts, NYGeneralConsts, NY_CONFIG_NAME, CelebrityConsts, MarketplaceConsts, GuestsQuestsConsts, ObjectsConsts, GiftMachineConsts, ResourceCollectingConsts, NYToyPricesConsts, NYDogConsts, NYPiggyBankConsts
 from personal_missions import PM_BRANCH
 from post_progression_common import FEATURE_BY_GROUP_ID, ROLESLOT_FEATURE
 from ranked_common import SwitchState
@@ -394,12 +381,12 @@ class _EpicMetaGameConfig(namedtuple('_EpicMetaGameConfig', ['maxCombatReserveLe
 _EpicMetaGameConfig.__new__.__defaults__ = (
  0, (0, False), (0, 0, 0), {}, {}, {}, {}, 0)
 
-class EpicGameConfig(namedtuple('EpicGameConfig', ('isEnabled', 'validVehicleLevels', 'seasons', 'cycleTimes', 'unlockableInBattleVehLevels',
- 'peripheryIDs', 'primeTimes', 'url'))):
+class EpicGameConfig(namedtuple('EpicGameConfig', ('isEnabled', 'validVehicleLevels', 'battlePassDataEnabled', 'seasons', 'cycleTimes',
+ 'unlockableInBattleVehLevels', 'peripheryIDs', 'primeTimes', 'rentVehicles'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, validVehicleLevels=[], unlockableInBattleVehLevels=[], seasons={}, cycleTimes=(), peripheryIDs={}, primeTimes={}, url='')
+        defaults = dict(isEnabled=False, validVehicleLevels=[], battlePassDataEnabled=True, unlockableInBattleVehLevels=[], seasons={}, cycleTimes=(), peripheryIDs={}, primeTimes={}, rentVehicles=[])
         defaults.update(kwargs)
         return super(EpicGameConfig, cls).__new__(cls, **defaults)
 
@@ -818,7 +805,7 @@ class GiftEventConfig(namedtuple('_GiftEventConfig', (
         return self.giftEventState == GiftEventState.DISABLED
 
 
-class GiftSystemConfig(namedtuple('_GiftSystemConfig', ('events', 'itemToEventID'))):
+class GiftSystemConfig(namedtuple('_GiftSystemConfig', ('events',))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
@@ -839,16 +826,7 @@ class GiftSystemConfig(namedtuple('_GiftSystemConfig', ('events', 'itemToEventID
 
     @classmethod
     def __packEventConfigs(cls, data):
-        events = {eID:makeTupleByDict(GiftEventConfig, eData) for eID, eData in data['events'].iteritems()}
-        data['events'], data['itemToEventID'] = events, cls.__getItemToEventMap(events)
-
-    @classmethod
-    def __getItemToEventMap(cls, events):
-        result = {}
-        for eventID, eventConfig in events.iteritems():
-            result.update({itemID:eventID for itemID in eventConfig.giftItemIDs})
-
-        return result
+        data['events'] = {eID:makeTupleByDict(GiftEventConfig, eData) for eID, eData in data['events'].iteritems()}
 
 
 class _WellRewardConfig(namedtuple('_WellRewardConfig', ('bonus', 'limit', 'isSerial', 'sequence', 'rewardId'))):
@@ -926,6 +904,55 @@ class _BattleMattersConfig(namedtuple('_BattleMattersConfig', (
 
     def asDict(self):
         return self._asdict()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+
+class _CollectiveGoalEntryPointConfig(namedtuple('_CollectiveGoalConfig', (
+ 'isEnabled',
+ 'startTime',
+ 'finishTime',
+ 'marathonPrefix',
+ 'hermodChannelName',
+ 'marathonName',
+ 'goalType',
+ 'goalDescription',
+ 'rulesCaption'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(isEnabled=False, startTime=None, finishTime=None, marathonPrefix=None, hermodChannelName=None, marathonName=None, goalType=None, goalDescription=None, rulesCaption=None)
+        defaults.update(kwargs)
+        return super(_CollectiveGoalEntryPointConfig, cls).__new__(cls, **defaults)
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+
+class _CollectiveGoalMarathonsConfig(namedtuple('_CollectiveGoalMarathonsConfig', (
+ 'isEnabled',
+ 'startTime',
+ 'finishTime',
+ 'url'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(isEnabled=False, startTime=None, finishTime=None, url=None)
+        defaults.update(kwargs)
+        return super(_CollectiveGoalMarathonsConfig, cls).__new__(cls, **defaults)
 
     def replace(self, data):
         allowedFields = self._fields
@@ -1040,7 +1067,7 @@ class PersonalReservesConfig(namedtuple('_PersonalReserves', ('isReservesInBattl
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isReservesInBattleActivationEnabled=False, displayConversionNotification=False, supportedQueueTypes=frozenset())
+        defaults = dict(isReservesInBattleActivationEnabled=False, displayConversionNotification=False, supportedQueueTypes={})
         defaults.update(**kwargs)
         return super(PersonalReservesConfig, cls).__new__(cls, **defaults)
 
@@ -1091,6 +1118,8 @@ class ServerSettings(object):
         self.__giftSystemConfig = GiftSystemConfig()
         self.__resourceWellConfig = ResourceWellConfig()
         self.__battleMattersConfig = _BattleMattersConfig()
+        self.__collectiveGoalEntryPointConfig = _CollectiveGoalEntryPointConfig()
+        self.__collectiveGoalMarathonsConfig = _CollectiveGoalMarathonsConfig()
         self.__peripheryRoutingConfig = PeripheryRoutingConfig()
         self.__comp7Config = Comp7Config()
         self.__comp7RanksConfig = Comp7PrestigeRanksConfig()
@@ -1201,6 +1230,10 @@ class ServerSettings(object):
             self.__resourceWellConfig = makeTupleByDict(ResourceWellConfig, self.__serverSettings[Configs.RESOURCE_WELL.value])
         if Configs.BATTLE_MATTERS_CONFIG.value in self.__serverSettings:
             self.__battleMattersConfig = makeTupleByDict(_BattleMattersConfig, self.__serverSettings[Configs.BATTLE_MATTERS_CONFIG.value])
+        if Configs.COLLECTIVE_GOAL_ENTRY_POINT_CONFIG.value in self.__serverSettings:
+            self.__collectiveGoalEntryPointConfig = makeTupleByDict(_CollectiveGoalEntryPointConfig, self.__serverSettings[Configs.COLLECTIVE_GOAL_ENTRY_POINT_CONFIG.value])
+        if Configs.COLLECTIVE_GOAL_MARATHONS_CONFIG.value in self.__serverSettings:
+            self.__collectiveGoalMarathonsConfig = makeTupleByDict(_CollectiveGoalMarathonsConfig, self.__serverSettings[Configs.COLLECTIVE_GOAL_MARATHONS_CONFIG.value])
         if Configs.PERIPHERY_ROUTING_CONFIG.value in self.__serverSettings:
             self.__peripheryRoutingConfig = makeTupleByDict(PeripheryRoutingConfig, self.__serverSettings[Configs.PERIPHERY_ROUTING_CONFIG.value])
         if Configs.COMP7_CONFIG.value in self.__serverSettings:
@@ -1299,8 +1332,6 @@ class ServerSettings(object):
             self.__updateBattleMatters(serverSettingsDiff)
         if TRADE_IN_CONFIG_NAME in serverSettingsDiff:
             self.__serverSettings[TRADE_IN_CONFIG_NAME] = serverSettingsDiff[TRADE_IN_CONFIG_NAME]
-        if NY_CONFIG_NAME in serverSettingsDiff:
-            self.__serverSettings[NY_CONFIG_NAME] = serverSettingsDiff[NY_CONFIG_NAME]
         if Configs.RESOURCE_WELL.value in serverSettingsDiff:
             self.__updateResourceWellConfig(serverSettingsDiff)
         if Configs.PERIPHERY_ROUTING_CONFIG.value in serverSettingsDiff:
@@ -1311,6 +1342,10 @@ class ServerSettings(object):
             key = Configs.CUSTOMIZATION_QUESTS.value
             self.__serverSettings[key] = serverSettingsDiff[key]
         self.__updatePersonalReserves(serverSettingsDiff)
+        if Configs.COLLECTIVE_GOAL_ENTRY_POINT_CONFIG.value in serverSettingsDiff:
+            self.__updateCollectiveGoalEntryPointConfig(serverSettingsDiff)
+        if Configs.COLLECTIVE_GOAL_MARATHONS_CONFIG.value in serverSettingsDiff:
+            self.__updateCollectiveGoalMarathonsConfig(serverSettingsDiff)
         self.onServerSettingsChange(serverSettingsDiff)
 
     def clear(self):
@@ -1444,6 +1479,14 @@ class ServerSettings(object):
         return self.__battleMattersConfig
 
     @property
+    def collectiveGoalEntryPointConfig(self):
+        return self.__collectiveGoalEntryPointConfig
+
+    @property
+    def collectiveGoalMarathonsConfig(self):
+        return self.__collectiveGoalMarathonsConfig
+
+    @property
     def peripheryRoutingConfig(self):
         return self.__peripheryRoutingConfig
 
@@ -1493,9 +1536,6 @@ class ServerSettings(object):
 
     def isLootBoxesEnabled(self):
         return self.__getGlobalSetting('isLootBoxesEnabled')
-
-    def isLootBoxEnabled(self, boxId):
-        return self.__getGlobalSetting('lootBoxes_config', {}).get(boxId, {}).get('enabled', False)
 
     def isAnonymizerEnabled(self):
         return self.__getGlobalSetting('isAnonymizerEnabled', False)
@@ -1779,45 +1819,6 @@ class ServerSettings(object):
     def getTradeInConfig(self):
         return self.__getGlobalSetting(TRADE_IN_CONFIG_NAME, {})
 
-    def getNewYearBattleBonusConfig(self):
-        return BattleBonusesConfig(self.__getNYConfig(BattleBonusesConsts.CONFIG_NAME))
-
-    def getLootBoxShop(self):
-        return self.__getNYConfig(NYLootBoxConsts.CONFIG_NAME)
-
-    def getNewYearCelebrityConfig(self):
-        return CelebrityConfig(self.__getNYConfig(CelebrityConsts.CONFIG_NAME))
-
-    def getNewYearMarketplaceConfig(self):
-        return MarketplaceConfig(self.__getNYConfig(MarketplaceConsts.CONFIG_NAME))
-
-    def getNewYearGuestsQuestsConfig(self):
-        return GuestsQuestsConfig(self.__getNYConfig(GuestsQuestsConsts.CONFIG_NAME))
-
-    def getNewYearObjectsConfig(self):
-        return ObjectsConfig(self.__getNYConfig(ObjectsConsts.CONFIG_NAME))
-
-    def getNewYearGeneralConfig(self):
-        return GeneralConfig(self.__getNYConfig(NYGeneralConsts.CONFIG_NAME))
-
-    def getNewYearGiftMachineConfig(self):
-        return GiftMachineConfig(self.__getNYConfig(GiftMachineConsts.CONFIG_NAME))
-
-    def getNewYearResourceCollectingConfig(self):
-        return ResourceCollectingConfig(self.__getNYConfig(ResourceCollectingConsts.CONFIG_NAME))
-
-    def getNewYearToyPricesConfig(self):
-        return NYToyPricesConfig(self.__getNYConfig(NYToyPricesConsts.CONFIG_NAME))
-
-    def getNewYearDogConfig(self):
-        return NYDogConfig(self.__getNYConfig(NYDogConsts.CONFIG_NAME))
-
-    def getNewYearPiggyBank(self):
-        return NYPiggyBankConfig(self.__getNYConfig(NYPiggyBankConsts.CONFIG_NAME))
-
-    def __getNYConfig(self, configName):
-        return self.__getGlobalSetting(NY_CONFIG_NAME, {}).get(configName, {})
-
     def __getGlobalSetting(self, settingsName, default=None):
         return self.__serverSettings.get(settingsName, default)
 
@@ -1918,6 +1919,12 @@ class ServerSettings(object):
 
     def __updateBattleMatters(self, targetSettings):
         self.__battleMattersConfig = self.__battleMattersConfig.replace(targetSettings[Configs.BATTLE_MATTERS_CONFIG.value])
+
+    def __updateCollectiveGoalEntryPointConfig(self, diff):
+        self.__collectiveGoalEntryPointConfig = self.__collectiveGoalEntryPointConfig.replace(diff[Configs.COLLECTIVE_GOAL_ENTRY_POINT_CONFIG.value])
+
+    def __updateCollectiveGoalMarathonsConfig(self, diff):
+        self.__collectiveGoalMarathonsConfig = self.__collectiveGoalMarathonsConfig.replace(diff[Configs.COLLECTIVE_GOAL_MARATHONS_CONFIG.value])
 
     def __updatePeripheryRoutingConfig(self, diff):
         self.__peripheryRoutingConfig = self.__peripheryRoutingConfig.replace(diff[Configs.PERIPHERY_ROUTING_CONFIG.value])

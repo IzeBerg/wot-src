@@ -14,8 +14,6 @@ package net.wg.gui.components.paginator.vo
       
       public var isSpecial:Boolean = false;
       
-      public var isWulfTooltip:Boolean = false;
-      
       public function ToolTipVO(param1:Object)
       {
          super(param1);

@@ -1,4 +1,4 @@
-import logging, Windowing
+import logging, Windowing, BigWorld, SoundGroups
 from frameworks.wulf import ViewSettings, WindowFlags, WindowLayer
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.video.video_view_model import VideoViewModel
@@ -7,8 +7,9 @@ from gui.impl.pub import ViewImpl
 from gui.impl.pub.lobby_window import LobbyWindow
 from gui.Scaleform.Waiting import Waiting
 from gui.sounds.filters import switchVideoOverlaySoundFilter
-from helpers import getClientLanguage
+from helpers import getClientLanguage, dependency
 from shared_utils import CONST_CONTAINER
+from skeletons.gui.app_loader import IAppLoader
 _logger = logging.getLogger(__name__)
 
 class _SubtitlesLanguages(CONST_CONTAINER):
@@ -60,10 +61,14 @@ _SUBTITLE_TO_LOCALES_MAP = {_SubtitlesLanguages.CS: {
    _SubtitlesLanguages.ZHSG: {
                             'zh_sg', 'zh_cn'}}
 _LOCALE_TO_SUBTITLE_MAP = {loc:subID for subID, locales in _SUBTITLE_TO_LOCALES_MAP.iteritems() for loc in locales}
+_LAYERS = [
+ WindowLayer.OVERLAY, WindowLayer.CURSOR, WindowLayer.WAITING, WindowLayer.SERVICE_LAYOUT]
 
 class VideoView(ViewImpl):
-    __slots__ = ('__isAutoClose', '__soundControl', '__onVideoStartedHandle', '__onVideoStoppedHandle',
-                 '__onVideoClosedHandle')
+    __slots__ = ('__onVideoStartedHandle', '__onVideoStoppedHandle', '__onVideoClosedHandle',
+                 '__isAutoClose', '__soundControl', '__previouslyVisibleLayers',
+                 '__app')
+    __appFactory = dependency.descriptor(IAppLoader)
 
     def __init__(self, *args, **kwargs):
         settings = ViewSettings(R.views.lobby.video.video_view.VideoView())
@@ -76,17 +81,20 @@ class VideoView(ViewImpl):
         self.__onVideoClosedHandle = kwargs.get('onVideoClosed')
         self.__isAutoClose = kwargs.get('isAutoClose')
         self.__soundControl = kwargs.get('soundControl') or DummySoundManager()
+        self.__previouslyVisibleLayers = []
+        self.__app = self.__appFactory.getApp()
 
     @property
     def viewModel(self):
         return super(VideoView, self).getViewModel()
 
     def _onLoading(self, videoSource, *args, **kwargs):
-        super(VideoView, self)._initialize(*args, **kwargs)
+        super(VideoView, self)._onLoading(*args, **kwargs)
         if videoSource is None:
             _logger.error('__videoSource is not specified!')
         else:
             self.viewModel.setVideoSource(videoSource)
+            self.viewModel.setVideoSoundVolume(SoundGroups.g_instance.getMasterVolume())
             language = getClientLanguage()
             self.viewModel.setSubtitleTrack(_LOCALE_TO_SUBTITLE_MAP.get(language, 0))
             self.viewModel.setIsWindowAccessible(Windowing.isWindowAccessible())
@@ -100,8 +108,13 @@ class VideoView(ViewImpl):
     def _onLoaded(self, *args, **kwargs):
         Waiting.suspend(id(self))
 
+    def _initialize(self, *args, **kwargs):
+        super(VideoView, self)._initialize(*args, **kwargs)
+        self.__hideBack()
+
     def _finalize(self):
         Waiting.resume(id(self))
+        self.__showBack()
         self.viewModel.onCloseBtnClick -= self.__onCloseWindow
         self.viewModel.onVideoStarted -= self.__onVideoStarted
         self.viewModel.onVideoStopped -= self.__onVideoStopped
@@ -111,6 +124,8 @@ class VideoView(ViewImpl):
             self.__onVideoClosedHandle = None
         self.__soundControl.stop()
         self.__soundControl = DummySoundManager()
+        self.__app = None
+        self.__previouslyVisibleLayers = None
         switchVideoOverlaySoundFilter(on=False)
         return
 
@@ -141,6 +156,20 @@ class VideoView(ViewImpl):
         else:
             self.__soundControl.pause()
         self.viewModel.setIsWindowAccessible(isWindowAccessible)
+
+    def __hideBack(self):
+        BigWorld.worldDrawEnabled(False)
+        if self.__app is not None:
+            containerManager = self.__app.containerManager
+            self.__previouslyVisibleLayers = containerManager.getVisibleLayers()
+            containerManager.setVisibleLayers(_LAYERS)
+        return
+
+    def __showBack(self):
+        BigWorld.worldDrawEnabled(True)
+        if self.__app is not None:
+            self.__app.containerManager.setVisibleLayers(self.__previouslyVisibleLayers)
+        return
 
 
 class VideoViewWindow(LobbyWindow):

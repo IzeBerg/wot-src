@@ -56,7 +56,7 @@ class INotificationWindowController(IGameController):
     def postponeActive(self):
         raise NotImplementedError
 
-    def releasePostponed(self, fireReleased=True):
+    def releasePostponed(self):
         raise NotImplementedError
 
     def lock(self, key):
@@ -75,10 +75,6 @@ class INotificationWindowController(IGameController):
     def postponedCount(self):
         raise NotImplementedError
 
-    @staticmethod
-    def isQueuePausingWindow(window):
-        raise NotImplementedError
-
 
 class IFullscreenManager(object):
     __slots__ = ()
@@ -95,22 +91,3 @@ class IFullscreenManager(object):
 
 class IWindowLoaderController(IGameController):
     __slots__ = ()
-
-
-class IOverlaysManager(object):
-    __slots__ = ()
-
-    def isSuspended(self, window):
-        raise NotImplementedError
-
-    def suspend(self, condition=None):
-        raise NotImplementedError
-
-    def release(self):
-        raise NotImplementedError
-
-    def init(self):
-        raise NotImplementedError
-
-    def fini(self):
-        raise NotImplementedError

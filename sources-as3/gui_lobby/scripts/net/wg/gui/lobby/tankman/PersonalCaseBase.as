@@ -142,6 +142,7 @@ package net.wg.gui.lobby.tankman
                   _loc5_ = new PersonalCaseSkillModel();
                   _loc9_ = _loc6_.skills[_loc8_];
                   _loc5_.title = _loc9_.id;
+                  _loc5_.iconName = _loc9_.iconName;
                   _loc5_.isHeader = false;
                   _loc5_.desc = _loc9_.desc;
                   _loc5_.enabled = _loc9_.enabled;

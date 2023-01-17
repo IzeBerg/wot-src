@@ -222,7 +222,7 @@ package net.wg.gui.lobby.techtree
          this.nationTree.setItemsField(param1,NodeData.VEH_COMPARE_TREE_NODE_DATA);
       }
       
-      override protected function setNodesStates(param1:Number, param2:Array) : void
+      override protected function setNodesStates(param1:Number, param2:Array, param3:Boolean) : void
       {
          this.nationTree.setNodesStates(param1,param2);
       }

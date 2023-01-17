@@ -201,9 +201,9 @@ package net.wg.gui.lobby.techtree
          this.researchItems.setItemsField(param1,NodeData.VEH_COMPARE_TREE_NODE_DATA);
       }
       
-      override protected function setNodesStates(param1:Number, param2:Array) : void
+      override protected function setNodesStates(param1:Number, param2:Array, param3:Boolean) : void
       {
-         this.researchItems.setNodesStates(param1,param2);
+         this.researchItems.setNodesStates(param1,param2,null,param3);
       }
       
       override protected function setVehicleTypeXP(param1:Array) : void

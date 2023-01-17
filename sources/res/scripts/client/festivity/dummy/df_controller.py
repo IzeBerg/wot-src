@@ -15,5 +15,5 @@ class DummyController(IFestivityController):
     def isEnabled(self):
         return False
 
-    def getHangarEdgeColor(self):
-        return
+    def getHangarQuestsFlagData(self):
+        return _DEFAULT_QUESTS_FLAG

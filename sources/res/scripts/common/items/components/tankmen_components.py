@@ -1,3 +1,5 @@
+import weakref, itertools
+from constants import IS_CLIENT
 from items.components import component_constants
 from items.components import legacy_stuff
 from items.components import shared_components
@@ -37,8 +39,12 @@ class SPECIAL_VOICE_TAG(object):
     WHITE_TIGER_EVENT_2022 = ('villanelle_SpecialVoice', 'ermelinda_SpecialVoice')
     SABATON_2021 = 'sabaton21_specialVoice'
     G_I_JOE_2022 = ('baroness22SpecialVoice', 'coverGirl22SpecialVoice')
+    BPH_2022 = ('commander_bph_2022_1', 'commander_bph_2022_2', 'commander_bph_2022_3',
+                'commander_bph_2022_4')
+    BPH_MT_2022 = ('IvanCarevichSpecialVoice', 'VasilisaSpecialVoice', 'KashcheiSpecialVoice',
+                   'BabaYagaSpecialVoice')
     ALL = (
-     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, CELEBRITY_2022, DAY_OF_COSMONAUTICS_21, SABATON_2021, QUICKY_BABY, WITCHES_CREW, CELEBRITY_2023) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021 + G_I_JOE_2022 + WHITE_TIGER_EVENT_2022
+     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, CELEBRITY_2022, DAY_OF_COSMONAUTICS_21, SABATON_2021, QUICKY_BABY, WITCHES_CREW, CELEBRITY_2023) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021 + G_I_JOE_2022 + WHITE_TIGER_EVENT_2022 + BPH_2022 + BPH_MT_2022
 
 
 class SPECIAL_CREW_TAG(object):
@@ -181,7 +187,7 @@ class RoleRanks(legacy_stuff.LegacyStuff):
 
 class NationGroup(legacy_stuff.LegacyStuff):
     __slots__ = ('__name', '__isFemales', '__notInShop', '__firstNamesIDs', '__lastNamesIDs',
-                 '__iconsIDs', '__weight', '__tags', '__roles', '__groupID')
+                 '__iconsIDs', '__weight', '__tags', '__roles', '__groupID', '__weakref__')
 
     def __init__(self, groupID, name, isFemales, notInShop, firstNamesIDs, lastNamesIDs, iconsIDs, weight, tags, roles):
         super(NationGroup, self).__init__()
@@ -266,18 +272,23 @@ class NationGroup(legacy_stuff.LegacyStuff):
 
 class NationConfig(legacy_stuff.LegacyStuff):
     __slots__ = ('__name', '__normalGroups', '__premiumGroups', '__roleRanks', '__firstNames',
-                 '__lastNames', '__icons', '__ranks')
+                 '__lastNames', '__icons', '__ranks', '__lastNameIndex')
 
     def __init__(self, name, normalGroups=None, premiumGroups=None, roleRanks=None, firstNames=None, lastNames=None, icons=None, ranks=None):
         super(NationConfig, self).__init__()
         self.__name = name
-        self.__normalGroups = normalGroups or component_constants.EMPTY_TUPLE
-        self.__premiumGroups = premiumGroups or component_constants.EMPTY_TUPLE
+        self.__normalGroups = normalGroups or component_constants.EMPTY_DICT
+        self.__premiumGroups = premiumGroups or component_constants.EMPTY_DICT
         self.__roleRanks = roleRanks
         self.__firstNames = firstNames or {}
         self.__lastNames = lastNames or {}
         self.__icons = icons or {}
         self.__ranks = ranks
+        self.__lastNameIndex = {}
+        if not IS_CLIENT:
+            for gid, g in itertools.chain(normalGroups.iteritems(), premiumGroups.iteritems()):
+                for lnid in g.lastNames:
+                    self.__lastNameIndex[lnid] = weakref.proxy(g)
 
     def __repr__(self):
         return ('NationConfig({})').format(self.__name)
@@ -362,3 +373,6 @@ class NationConfig(legacy_stuff.LegacyStuff):
         else:
             return
             return
+
+    def getGroupByLastName(self, nameID):
+        return self.__lastNameIndex.get(nameID)

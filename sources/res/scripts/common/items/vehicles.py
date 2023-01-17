@@ -78,6 +78,7 @@ if TYPE_CHECKING:
 VEHICLE_CLASS_TAGS = frozenset(('lightTank', 'mediumTank', 'heavyTank', 'SPG', 'AT-SPG'))
 VEHICLE_LEVEL_EARN_CRYSTAL = 10
 MODES_WITHOUT_CRYSTAL_EARNINGS = set(('bob', 'fallout', 'event_battles', 'battle_royale', 'clanWarsBattles'))
+EXTENDED_VEHICLE_TYPE_ID_FLAG = 2
 
 class VEHICLE_PHYSICS_TYPE():
     TANK = 0
@@ -330,7 +331,7 @@ class VehicleDescriptor(object):
                     vehicleItem = g_list.getList(nationID)[vehicleTypeID]
                 except Exception as e:
                     nationID = nations.INDICES[nation]
-                    vehicleTypeID = 255
+                    vehicleTypeID = 65535
 
             if xmlPath is None:
                 type = g_cache.vehicle(nationID, vehicleTypeID)
@@ -346,7 +347,11 @@ class VehicleDescriptor(object):
                 ReflectedObject(type).edVisible = True if vehMode is VEHICLE_MODE.DEFAULT else False
             turretDescr = type.turrets[0][0]
             header = items.ITEM_TYPES.vehicle + (nationID << 4)
-            compactDescr = struct.pack('<2B6HB', header, vehicleTypeID, type.chassis[0].id[1], type.engines[0].id[1], type.fuelTanks[0].id[1], type.radios[0].id[1], turretDescr.id[1], turretDescr.guns[0].id[1], 0)
+            ext = vehicleTypeID >> 8
+            header += EXTENDED_VEHICLE_TYPE_ID_FLAG if ext else 0
+            compactDescr = struct.pack('<2B', header, vehicleTypeID & 255)
+            compactDescr += chr(ext) if ext else ''
+            compactDescr += struct.pack('<6HB', type.chassis[0].id[1], type.engines[0].id[1], type.fuelTanks[0].id[1], type.radios[0].id[1], turretDescr.id[1], turretDescr.guns[0].id[1], 0)
         self.__initFromCompactDescr(compactDescr, vehMode, vehType)
         self.__applyExternalData(extData)
         self.__updateAttributes()
@@ -2024,6 +2029,10 @@ class VehicleType(object):
         return 'lockOutfit' in self.tags
 
     @property
+    def isRestoredWithStyle(self):
+        return 'restoreWithStyle' in self.tags
+
+    @property
     def progressionDecalsOnly(self):
         return 'lockExceptProgression' in self.tags
 
@@ -2729,7 +2738,7 @@ class VehicleList(object):
              None, xmlPath + '/' + vname)
             if vname in ids:
                 _xml.raiseWrongXml(ctx, '', 'vehicle type name is not unique')
-            innationID = _xml.readInt(ctx, vsection, 'id', 0, 255)
+            innationID = _xml.readInt(ctx, vsection, 'id', 0, 512)
             if innationID in res:
                 _xml.raiseWrongXml(ctx, 'id', 'is not unique')
             compactDescr = makeIntCompactDescrByID('vehicle', nationID, innationID)
@@ -2765,7 +2774,9 @@ class VehicleList(object):
 
 
 def parseVehicleCompactDescr(compactDescr):
-    header, vehicleTypeID = struct.unpack('2B', compactDescr[0:2])
+    header, vehicleTypeID = struct.unpack('2B', compactDescr[:2])
+    if header & EXTENDED_VEHICLE_TYPE_ID_FLAG:
+        vehicleTypeID += ord(compactDescr[2]) << 8
     return (header >> 4 & 15, vehicleTypeID)
 
 
@@ -2837,8 +2848,7 @@ def getVehicleType(compactDescr):
         nationID = compactDescr >> 4 & 15
         vehicleTypeID = compactDescr >> 8 & 65535
     else:
-        header, vehicleTypeID = struct.unpack('2B', compactDescr[0:2])
-        nationID = header >> 4 & 15
+        nationID, vehicleTypeID = parseVehicleCompactDescr(compactDescr)
     return g_cache.vehicle(nationID, vehicleTypeID)
 
 
@@ -3269,7 +3279,7 @@ def _readHull(xmlCtx, section):
         if section.has_key('hangarShadowTexture'):
             item.hangarShadowTexture = _xml.readString(xmlCtx, section, 'hangarShadowTexture')
         else:
-            item.hangarShadowTexture = None
+            item.hangarShadowTexture = ''
         item.burnoutAnimation = __readBurnoutAnimation(xmlCtx, section)
         item.prefabs = section.readStrings('prefab')
     if IS_CLIENT or IS_UE_EDITOR or IS_WEB or IS_CELLAPP:
@@ -3289,11 +3299,11 @@ def _writeHulls(hulls, section, materialData):
     shared_writers.writeModelsSets(item.modelsSets, section['models'])
     shared_writers.writeSwingingSettings(item.swinging, section['swinging'])
     __writeExhaustEffect(item.customEffects[0], section)
-    _xml.rewriteString(section, 'hangarShadowTexture', item.hangarShadowTexture)
+    _xml.rewriteString(section, 'hangarShadowTexture', item.hangarShadowTexture, defaultValue='')
     slots = item.emblemSlots + item.slotsAnchors
     shared_writers.writeCustomizationSlots(slots, section, 'customizationSlots')
     _writeCustomizableAreas(item.customizableVehicleAreas, section)
-    _writeHullVariants(hulls, section)
+    _writeHullVariants(hulls, section, materialData)
     return
 
 
@@ -3497,7 +3507,7 @@ def _readHullVariants(xmlCtx, section, defHull, chassis, turrets):
     return tuple(res)
 
 
-def _writeHullVariants(hulls, section):
+def _writeHullVariants(hulls, section, materialData):
     if len(hulls) < 2:
         return
     else:
@@ -3519,6 +3529,7 @@ def _writeHullVariants(hulls, section):
             defSlots = defHull.emblemSlots + defHull.slotsAnchors
             shared_writers.writeCustomizationSlots(slots if slots != defSlots else None, subsection, 'customizationSlots')
             _xml.rewriteFloat(subsection, 'weight', hull.weight, defHull.weight)
+            _writeArmor(hull.materials, None, subsection, 'armor', materialData=materialData.get(subsectionName, None))
 
         return
 
@@ -3638,6 +3649,15 @@ def _readChassis(xmlCtx, section, item, unlocksDescrs=None, _=None, isWheeledVeh
         if sounds.isEmpty():
             raise SoftException('chassis sound tags are wrong for vehicle ' + item.name)
         item.sounds = sounds
+        if section.has_key('soundsSets'):
+            soundsSets = {}
+            for k, v in section['soundsSets'].items():
+                sound = sound_readers.readWWTripleSoundConfig(v)
+                if sound.isEmpty():
+                    raise SoftException('chassis sound tags are wrong for vehicle ' + item.name)
+                soundsSets[k] = sound
+
+            item.soundsSets = soundsSets
         item.physicalTracks = physicalTracksDict = {}
         physicalTracksSection = section['physicalTracks']
         if physicalTracksSection is not None:
@@ -3656,6 +3676,7 @@ def _writeChassis(item, section, sharedSections, materialData, *args, **kwargs):
     _writeHitTester(item.hitTesterManager, None, section, 'hitTester')
     _xml.rewriteFloat(section, 'weight', item.weight)
     _xml.rewriteFloat(section, 'rotationSpeed', degrees(item.rotationSpeed))
+    _writeCamouflageSettings(section, 'camouflage', item.camouflage)
     _writeArmor(item.materials, None, section, 'armor', optional=True, materialData=materialData.get(item.name, None))
     slots = item.emblemSlots + item.slotsAnchors
     shared_writers.writeCustomizationSlots(slots, section, 'customizationSlots')
@@ -3671,6 +3692,7 @@ def _writeChassis(item, section, sharedSections, materialData, *args, **kwargs):
     shared_writers.writeLodDist(item.effects['lodDist'], section, 'effects/lodDist', g_cache)
     chassis_writers.writeMudEffect(item.customEffects[0], g_cache, section, 'effects/mud')
     sound_writers.writeWWTripleSoundConfig(item.sounds, section)
+    sound_writers.writeSoundsSets(item.soundsSets, section)
     _writeAODecals(item.AODecals, section, 'AODecals')
     if IS_UE_EDITOR:
         editorData = item.editorData
@@ -4318,6 +4340,15 @@ def _readGun(xmlCtx, section, item, unlocksDescrs=None, _=None):
             if reloadEff is None:
                 _xml.raiseWrongXml(xmlCtx, 'effects', "unknown reload effect '%s'" % effName)
             item.reloadEffect = reloadEff
+        if section.has_key('reloadEffectSets'):
+            reloadEffectSets = {}
+            for k, v in section['reloadEffectSets'].items():
+                effect = g_cache._gunReloadEffects.get(v.asString, None)
+                if effect is None:
+                    _xml.raiseWrongXml(xmlCtx, 'effects', "unknown reload effect '%s'" % effName)
+                reloadEffectSets[k] = effect
+
+            item.reloadEffectSets = reloadEffectSets
         item.impulse = _xml.readNonNegativeFloat(xmlCtx, section, 'impulse')
         item.recoil = gun_readers.readRecoilEffect(xmlCtx, section, g_cache)
         if section.has_key('camouflage'):
@@ -4558,6 +4589,16 @@ def _readGunLocals(xmlCtx, section, sharedItem, unlocksDescrs, turretCompactDesc
                 reloadEffect = g_cache._gunReloadEffects.get(effName, None)
                 if reloadEffect is None:
                     _xml.raiseWrongXml(xmlCtx, 'effects', "unknown reload effect '%s'" % effName)
+        reloadEffectSets = sharedItem.reloadEffectSets
+        if section.has_key('reloadEffectSets'):
+            hasOverride = True
+            reloadEffectSets = reloadEffectSets or {}
+            for k, v in section['reloadEffectSets'].items():
+                effect = g_cache._gunReloadEffects.get(v.asString, None)
+                if effect is None:
+                    _xml.raiseWrongXml(xmlCtx, 'effects', "unknown reload effect '%s'" % v.asString)
+                reloadEffectSets[k] = effect
+
         sharedCam = sharedItem.camouflage
         cam = shared_readers.readCamouflage(xmlCtx, section, 'camouflage', default=sharedCam)
         if cam != sharedCam:
@@ -4670,6 +4711,7 @@ def _readGunLocals(xmlCtx, section, sharedItem, unlocksDescrs, turretCompactDesc
             item.edgeByVisualModel = edgeByVisualModel
             item.emblemSlots = emblemSlots
             item.reloadEffect = reloadEffect
+            item.reloadEffectSets = reloadEffectSets
             item.drivenJoints = drivenJoints
         if IS_CLIENT or IS_UE_EDITOR or IS_BOT or IS_BASEAPP:
             item.slotsAnchors = slotsAnchors
@@ -5262,8 +5304,8 @@ def _readCrew(xmlCtx, section, subsectionName):
     return tuple(res)
 
 
-def _readPriceForItem(xmlCtx, section, compactDescr):
-    pricesDest = _g_prices
+def _readPriceForItem(xmlCtx, section, compactDescr, prices=None):
+    pricesDest = prices if prices is not None else _g_prices
     if pricesDest is not None:
         pricesDest['itemPrices'][compactDescr] = _xml.readPrice(xmlCtx, section, 'price')
         if section.readBool('notInShop', False):
@@ -6762,14 +6804,18 @@ def _summPriceDiff(price, priceAdd, priceSub):
 
 def _splitVehicleCompactDescr(compactDescr, vehMode=VEHICLE_MODE.DEFAULT, vehType=None):
     header = ord(compactDescr[0])
+    vehTypeOffset = 0
     vehicleTypeID = ord(compactDescr[1])
+    if header & EXTENDED_VEHICLE_TYPE_ID_FLAG:
+        vehicleTypeID += ord(compactDescr[2]) << 8
+        vehTypeOffset += 1
     nationID = header >> 4 & 15
     if vehType is None:
         type = g_cache.vehicle(nationID, vehicleTypeID, vehMode)
     else:
         type = vehType
-    idx = 10 + len(type.turrets) * 4
-    components = compactDescr[2:idx]
+    idx = 10 + vehTypeOffset + len(type.turrets) * 4
+    components = compactDescr[2 + vehTypeOffset:idx]
     flags = ord(compactDescr[idx])
     idx += 1
     count = 0
@@ -6828,7 +6874,11 @@ def _combineVehicleCompactDescr(type, components, optionalDeviceSlots, optionalD
         flags |= 32
     if camouflages:
         flags |= 128
-    cd = chr(header) + chr(vehicleTypeID) + components + chr(flags) + optionalDevices
+    vehTypeCD = chr(vehicleTypeID & 255)
+    if vehicleTypeID > 255:
+        vehTypeCD += chr(vehicleTypeID >> 8)
+        header += EXTENDED_VEHICLE_TYPE_ID_FLAG
+    cd = chr(header) + vehTypeCD + components + chr(flags) + optionalDevices
     if enhancements:
         cd += enhancements
     if emblems or inscriptions:

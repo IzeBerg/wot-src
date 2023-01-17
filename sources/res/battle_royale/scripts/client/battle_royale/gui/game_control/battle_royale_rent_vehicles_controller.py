@@ -1,5 +1,4 @@
 import logging, math, typing, time
-from copy import copy
 from functools import wraps, partial
 from wg_async import wg_await, wg_async
 import BigWorld, AccountCommands
@@ -64,7 +63,7 @@ class BattleRoyaleRentVehiclesController(IBattleRoyaleRentVehiclesController):
     def __init__(self):
         super(BattleRoyaleRentVehiclesController, self).__init__()
         self.__balance = DynamicMoney()
-        self.__economics = {}
+        self.__economics = None
         self.__rentWatcher = None
         self.__rentWatchCallbackId = None
         self.__rentWatcherCurrentVehicleCallback = None
@@ -80,6 +79,7 @@ class BattleRoyaleRentVehiclesController(IBattleRoyaleRentVehiclesController):
         self.__clear()
 
     def onLobbyInited(self, event):
+        self.__economics = {}
         self.__rentWatcher = {}
         self.__readEconomics()
         self.__initBalanceCurrencies()
@@ -277,7 +277,7 @@ class BattleRoyaleRentVehiclesController(IBattleRoyaleRentVehiclesController):
 
     def __readEconomics(self):
         config = self.__lobbyContext.getServerSettings().battleRoyale
-        self.__economics = copy(config.economics)
+        self.__economics = config.economics
 
     def __testDriveExpiredTime(self, intCD):
         return self.__itemsCache.items.battleRoyale.testDriveExpired.get(intCD, float('inf'))
@@ -428,6 +428,6 @@ class BattleRoyaleRentVehiclesController(IBattleRoyaleRentVehiclesController):
             self.__rentWatcher.clear()
             self.__rentWatcher = None
         self.__rentWatcherCurrentVehicleCallback = None
-        self.__economics.clear()
+        self.__economics = None
         self.__balance = None
         return

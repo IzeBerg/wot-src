@@ -11,15 +11,7 @@ package net.wg.infrastructure.base.meta.impl
       
       public var clickActionBtn:Function;
       
-      public var openTokenPopover:Function;
-      
-      public var useTokenClick:Function;
-      
       public var onClickButtonDetails:Function;
-      
-      public var onDailyClick:Function;
-      
-      public var onNYChallengeClick:Function;
       
       public function MissionsGroupedViewMeta()
       {
@@ -38,34 +30,10 @@ package net.wg.infrastructure.base.meta.impl
          this.clickActionBtn(param1);
       }
       
-      public function openTokenPopoverS(param1:int) : void
-      {
-         App.utils.asserter.assertNotNull(this.openTokenPopover,"openTokenPopover" + Errors.CANT_NULL);
-         this.openTokenPopover(param1);
-      }
-      
-      public function useTokenClickS(param1:String) : void
-      {
-         App.utils.asserter.assertNotNull(this.useTokenClick,"useTokenClick" + Errors.CANT_NULL);
-         this.useTokenClick(param1);
-      }
-      
       public function onClickButtonDetailsS() : void
       {
          App.utils.asserter.assertNotNull(this.onClickButtonDetails,"onClickButtonDetails" + Errors.CANT_NULL);
          this.onClickButtonDetails();
-      }
-      
-      public function onDailyClickS() : void
-      {
-         App.utils.asserter.assertNotNull(this.onDailyClick,"onDailyClick" + Errors.CANT_NULL);
-         this.onDailyClick();
-      }
-      
-      public function onNYChallengeClickS() : void
-      {
-         App.utils.asserter.assertNotNull(this.onNYChallengeClick,"onNYChallengeClick" + Errors.CANT_NULL);
-         this.onNYChallengeClick();
       }
    }
 }

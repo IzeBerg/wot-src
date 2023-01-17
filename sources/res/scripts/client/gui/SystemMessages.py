@@ -42,7 +42,6 @@ SM_TYPE = Enumeration('System message type', [
  'RecruitGift',
  'LootBoxes',
  'LootBoxRewards',
- 'LootBoxCompensation',
  'SkinCompensation',
  'FeatureSwitcherOn',
  'FeatureSwitcherOff',
@@ -80,11 +79,7 @@ SM_TYPE = Enumeration('System message type', [
  'DismantlingForEquipCoin',
  'Deconstructing',
  'UpgradeForEquipCoins',
- 'NewYearEventStarted',
- 'NewYearLootboxResetStatsError',
- 'NewYearGiftMachineAvailable',
- 'NyBuyToyCredits',
- 'NyBuyToyGold'])
+ 'BattlePassSeasonChange'])
 CURRENCY_TO_SM_TYPE = {Currency.CREDITS: SM_TYPE.PurchaseForCredits, 
    Currency.GOLD: SM_TYPE.PurchaseForGold, 
    Currency.CRYSTAL: SM_TYPE.PurchaseForCrystal, 

@@ -1927,10 +1927,6 @@ package
       
       public static const TANKCARUSEL_LOCK_ROTATION:String = "#tooltips:tankCarusel/lock/rotation";
       
-      public static const TANKCARUSEL_NEWYEARSLOT_HEADER:String = "#tooltips:tankCarusel/newYearSlot/header";
-      
-      public static const TANKCARUSEL_NEWYEARSLOT_BODY:String = "#tooltips:tankCarusel/newYearSlot/body";
-      
       public static const TANKCARUSEL_LOCK_ROAMING:String = "#tooltips:tankCarusel/lock/ROAMING";
       
       public static const MULTISELECTION_ALERT_HEADER:String = "#tooltips:multiselection/alert/header";
@@ -3992,6 +3988,10 @@ package
       public static const AWARDITEM_BRCOIN_HEADER:String = "#tooltips:awardItem/brcoin/header";
       
       public static const AWARDITEM_BRCOIN_BODY:String = "#tooltips:awardItem/brcoin/body";
+      
+      public static const AWARDITEM_ABILITYTOKEN_HEADER:String = "#tooltips:awardItem/abilityToken/header";
+      
+      public static const AWARDITEM_ABILITYTOKEN_BODY:String = "#tooltips:awardItem/abilityToken/body";
       
       public static const RANKEDBATTLEVIEW_SCOREPOINT_SHORT_HEADER:String = "#tooltips:rankedBattleView/scorePoint/short/header";
       
@@ -7036,12 +7036,6 @@ package
       public static const NOTRECRUITEDTANKMAN_NY22DEFAULTGIRL_DESC:String = "#tooltips:notrecruitedtankman/ny22defaultGirl/desc";
       
       public static const NOTRECRUITEDTANKMAN_NY22DEFAULTGIRL_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/ny22defaultGirl/howToGetInfo";
-      
-      public static const NOTRECRUITEDTANKMAN_NY23RUBY_GIRL_1_LABEL:String = "#tooltips:notrecruitedtankman/ny23ruby_girl_1/label";
-      
-      public static const NOTRECRUITEDTANKMAN_NY23RUBY_GIRL_1_EVENT:String = "#tooltips:notrecruitedtankman/ny23ruby_girl_1/event";
-      
-      public static const NOTRECRUITEDTANKMAN_NY23RUBY_GIRL_1_DESC:String = "#tooltips:notrecruitedtankman/ny23ruby_girl_1/desc";
       
       public static const NOTRECRUITEDTANKMAN_NY23_GIRL_M_LABEL:String = "#tooltips:notrecruitedtankman/ny23_girl_m/label";
       

@@ -151,11 +151,21 @@ package net.wg.data.constants.generated
       
       public static const CHINA_CH47_BZ_176:String = "china-Ch47_BZ_176";
       
+      public static const CHINA_CH48_BZ_75:String = "china-Ch48_BZ_75";
+      
+      public static const CHINA_CH49_BZ_68:String = "china-Ch49_BZ_68";
+      
+      public static const CHINA_CH50_BZ_166:String = "china-Ch50_BZ_166";
+      
+      public static const CHINA_CH51_BZ_58:String = "china-Ch51_BZ_58";
+      
       public static const CHINA_CH52_WZ_122_6_F3:String = "china-Ch52_WZ_122_6_F3";
       
       public static const CHINA_CH53_T_26_CHINA:String = "china-Ch53_T_26_China";
       
       public static const CHINA_CH58_111_VZ51:String = "china-Ch58_111_Vz51";
+      
+      public static const CHINA_CH59_BZ58_2:String = "china-Ch59_BZ58_2";
       
       public static const CZECH_CZ01_SKODA_T40:String = "czech-Cz01_Skoda_T40";
       
@@ -549,6 +559,8 @@ package net.wg.data.constants.generated
       
       public static const GERMANY_G158_VK2801_105_SPXXI:String = "germany-G158_VK2801_105_SPXXI";
       
+      public static const GERMANY_G159_KPZ_3_PROJECT_07_HK:String = "germany-G159_KPZ_3_Project_07_HK";
+      
       public static const GERMANY_G16_PZ_VIB_TIGER_II:String = "germany-G16_PzVIB_Tiger_II";
       
       public static const GERMANY_G16_PZ_VIB_TIGER_II_F:String = "germany-G16_PzVIB_Tiger_II_F";
@@ -940,6 +952,8 @@ package net.wg.data.constants.generated
       public static const JAPAN_J29_NAMELESS:String = "japan-J29_Nameless";
       
       public static const JAPAN_J30_EDELWEISS:String = "japan-J30_Edelweiss";
+      
+      public static const JAPAN_J31_HO_TO:String = "japan-J31_Ho_To";
       
       public static const NO_IMAGE:String = "noImage";
       
@@ -1740,8 +1754,6 @@ package net.wg.data.constants.generated
       public static const USA_A15_T57:String = "usa-A15_T57";
       
       public static const USA_A152_M_PROJECT:String = "usa-A152_M_Project";
-      
-      public static const USA_A152_M_PROJECT_RU:String = "usa-A152_M_Project.RU";
       
       public static const USA_A152_M_PROJECT_2:String = "usa-A152_M_Project_2";
       

@@ -41,8 +41,7 @@ class BadgesController(IBadgesController, Notifiable):
     def onLobbyStarted(self, ctx):
         self.__initCurrentBadges()
         self.__badgesProcessing()
-        g_clientUpdateManager.addCallbacks({'badges': self.__updateBadges, 
-           'stats.dossier': self.__updateBadges})
+        g_clientUpdateManager.addCallbacks({'badges': self.__updateBadges})
         self.itemsCache.onSyncCompleted += self.__onSyncCompleted
 
     def select(self, badges):
@@ -73,7 +72,7 @@ class BadgesController(IBadgesController, Notifiable):
             return
 
     def __onSyncCompleted(self, updateReason, _):
-        if updateReason == CACHE_SYNC_REASON.DOSSIER_RESYNC:
+        if updateReason in (CACHE_SYNC_REASON.DOSSIER_RESYNC, CACHE_SYNC_REASON.CLIENT_UPDATE):
             self.__updateBadges()
 
     def __initCurrentBadges(self):

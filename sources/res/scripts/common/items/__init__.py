@@ -2,6 +2,7 @@ import typing, nations
 from items import _xml
 from constants import IS_CLIENT, ITEM_DEFS_PATH
 from soft_exception import SoftException
+from intervals import Interval
 if IS_CLIENT:
     import ResMgr
     from helpers import i18n
@@ -9,6 +10,12 @@ else:
     from realm_utils import ResMgr
 _g_itemTypes = None
 UNDEFINED_ITEM_CD = 0
+
+class ITEM_ID_RANGES:
+    WOT = Interval(0, 31000)
+    MT = Interval(31001, 65535)
+
+
 ITEM_TYPE_NAMES = ('_reserved', 'vehicle', 'vehicleChassis', 'vehicleTurret', 'vehicleGun',
                    'vehicleEngine', 'vehicleFuelTank', 'vehicleRadio', 'tankman',
                    'optionalDevice', 'shell', 'equipment', 'customizationItem', 'crewSkin',
@@ -98,6 +105,9 @@ class ItemsPrices(object):
     def __len__(self):
         return len(self._itemsPriceInfo)
 
+    def __eq__(self, obj):
+        return isinstance(obj, ItemsPrices) and obj._itemsPriceInfo == self._itemsPriceInfo
+
     def get(self, key, defaultValue=None):
         if key in self._itemsPriceInfo:
             return self.__getitem__(key)
@@ -109,6 +119,9 @@ class ItemsPrices(object):
     def update(self, other):
         for d, p in other.iteritems():
             self.__setitem__(d, p)
+
+    def copy(self):
+        return ItemsPrices(self._itemsPriceInfo)
 
     def getSpecialItemPrices(self, currencyCode):
         return {compDescr:prices for compDescr, prices in self._itemsPriceInfo.iteritems() if currencyCode in prices}
@@ -144,6 +157,20 @@ class ItemsPrices(object):
 
         return ItemsPrices(result)
 
+    def override(self, other, itemToPriceGroup=None):
+        myStorage = self._itemsPriceInfo
+        otherStorage = other._itemsPriceInfo if other else {}
+        result = {}
+        for compDescr, priceInfo in myStorage.iteritems():
+            if compDescr in otherStorage:
+                result[compDescr] = otherStorage[compDescr]
+            elif compDescr in itemToPriceGroup and itemToPriceGroup[compDescr] in otherStorage:
+                result[compDescr] = otherStorage[itemToPriceGroup[compDescr]]
+            else:
+                result[compDescr] = priceInfo
+
+        return ItemsPrices(result)
+
 
 def init(preloadEverything, pricesToCollect=None):
     global _g_itemTypes
@@ -175,9 +202,6 @@ def init(preloadEverything, pricesToCollect=None):
     tankmen.init(preloadEverything, pricesToCollect)
     from items import perks
     perks.init(preloadEverything)
-    from items import new_year, collectibles
-    collectibles.init()
-    new_year.init()
     return
 
 

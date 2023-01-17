@@ -37,3 +37,4 @@ _tankmanAchievementsBlockBuilder = StaticSizeBlockBuilder('achievements', TMAN_A
 tmanDossierLayout = (
  _tmanTotalBlockBuilder,
  _tankmanAchievementsBlockBuilder)
+TANKMAN_DOSSIER_BLOCKS = {b.name:b for b in tmanDossierLayout}
