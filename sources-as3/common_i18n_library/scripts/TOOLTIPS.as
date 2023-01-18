@@ -7061,6 +7061,12 @@ package
       
       public static const NOTRECRUITEDTANKMAN_NY22DEFAULTGIRL_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/ny22defaultGirl/howToGetInfo";
       
+      public static const NOTRECRUITEDTANKMAN_NY23RUBY_GIRL_1_LABEL:String = "#tooltips:notrecruitedtankman/ny23ruby_girl_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23RUBY_GIRL_1_EVENT:String = "#tooltips:notrecruitedtankman/ny23ruby_girl_1/event";
+      
+      public static const NOTRECRUITEDTANKMAN_NY23RUBY_GIRL_1_DESC:String = "#tooltips:notrecruitedtankman/ny23ruby_girl_1/desc";
+      
       public static const NOTRECRUITEDTANKMAN_NY23_GIRL_M_LABEL:String = "#tooltips:notrecruitedtankman/ny23_girl_m/label";
       
       public static const NOTRECRUITEDTANKMAN_NY23_GIRL_M_EVENT:String = "#tooltips:notrecruitedtankman/ny23_girl_m/event";
