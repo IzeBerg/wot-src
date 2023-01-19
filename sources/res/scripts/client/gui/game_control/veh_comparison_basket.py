@@ -168,7 +168,6 @@ class _VehCmpCache(FileLocalCache):
 
 
 class _VehCompareData(object):
-    itemsCache = dependency.descriptor(IItemsCache)
 
     def __init__(self, vehicleIntCD, vehicleStrCD, vehStockStrCD, isFromCache=False, rentalIsOver=False):
         super(_VehCompareData, self).__init__()
@@ -296,12 +295,12 @@ class _VehCompareData(object):
             return cType
         if self.__postProgressionState != self.__invPostProgressionState:
             return cType
-        if self.__strCD == self.__invVehStrCD:
-            if self.__equipment == self.__invEquipment and self.__crewLvl == self.__inventoryCrewLvl and self.__crewSkills == self.__inventoryCrewSkills:
-                cType = CONFIGURATION_TYPES.CURRENT
-        elif self.__strCD == self.__stockVehStrCD and self.getEquipment() == self.getStockEquipment() and self.__crewLvl == self.getStockCrewLvl():
+        if self.__strCD == self.__stockVehStrCD and self.getEquipment() == self.getStockEquipment() and self.__crewLvl == self.getStockCrewLvl():
             if self.__crewSkills == self.getStockCrewSkills():
                 cType = CONFIGURATION_TYPES.BASIC
+        if self.__strCD == self.__invVehStrCD and self.__equipment == self.__invEquipment and self.__crewLvl == self.__inventoryCrewLvl:
+            if self.__crewSkills == self.__inventoryCrewSkills:
+                cType = CONFIGURATION_TYPES.CURRENT
         return cType
 
     def getVehicleStrCD(self):
@@ -377,7 +376,7 @@ class _VehCompareData(object):
         return [None] * eqCapacity
 
     def __addBuiltInEquipment(self, equipmentIDs):
-        if not self.__isInInventory and self.itemsCache.isSynced():
+        if not self.__isInInventory:
             vehicleType = self.__getVehicleType()
             builtInEquipmentIDs = vehicles.getBuiltinEqsForVehicle(vehicleType)
             for slotId, eqID in enumerate(builtInEquipmentIDs):

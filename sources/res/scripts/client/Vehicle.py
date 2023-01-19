@@ -6,7 +6,7 @@ from TriggersManager import TRIGGER_TYPE
 from VehicleEffects import DamageFromShotDecoder
 from aih_constants import ShakeReason
 from cgf_script.entity_dyn_components import BWEntitiyComponentTracker
-from constants import VEHICLE_HIT_EFFECT, VEHICLE_SIEGE_STATE, ATTACK_REASON_INDICES, ATTACK_REASON, ARENA_PERIOD, ARENA_GUI_TYPE, SPT_MATKIND
+from constants import VEHICLE_HIT_EFFECT, VEHICLE_SIEGE_STATE, ATTACK_REASON_INDICES, ATTACK_REASON, SPT_MATKIND
 from debug_utils import LOG_DEBUG_DEV
 from Event import Event
 from gui.battle_control import vehicle_getter, avatar_getter
@@ -283,6 +283,8 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.__prevHealth = self.maxHealth
         self.resetProperties()
         self.onAppearanceReady()
+        if hasattr(self, 'rocketAccelerationController'):
+            self.rocketAccelerationController.init()
 
     def __onVehicleInfoAdded(self, vehID):
         if self.id != vehID:
@@ -959,13 +961,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         if TriggersManager.g_manager:
             TriggersManager.g_manager.fireTriggerInstantly(TriggersManager.TRIGGER_TYPE.VEHICLE_VISUAL_VISIBILITY_CHANGED, vehicleId=self.id, isVisible=False)
         self.appearance.removeComponentByType(GenericComponents.HierarchyComponent)
-        restoreFilter = True
-        avatar = BigWorld.player()
-        arena = avatar_getter.getArena(avatar)
-        if arena is not None:
-            if avatar.arenaGuiType == ARENA_GUI_TYPE.COMP7 and arena.period == ARENA_PERIOD.PREBATTLE:
-                restoreFilter = False
-        self.appearance.deactivate(restoreFilter=restoreFilter)
+        self.appearance.deactivate()
         self.guiSessionProvider.stopVehicleVisual(self.id, self.isPlayerVehicle)
         self.appearance = None
         self.isStarted = False
@@ -1137,6 +1133,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         super(Vehicle, self).addModel(model)
         highlighter = self.appearance.highlighter
         if highlighter.isOn:
+            highlighter.highlight(False)
             highlighter.highlight(True)
 
     def delModel(self, model):

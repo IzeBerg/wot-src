@@ -10,26 +10,32 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "autoOpenView/bottomLabel"
+msgstr "We opened all your Holiday Ops boxes."
+
 msgid "autoOpenView/congratsLabel"
 msgstr "Congratulations!"
 
-msgid "autoOpenView/descriptionLabel"
-msgstr "We opened the boxes for you"
-
 msgid "autoOpenView/okBtnLabel"
-msgstr "That's Great!"
+msgstr "Affirmative!"
+
+msgid "buttonLabel/back"
+msgstr "Back to Garage"
 
 msgid "buttonLabel/buy"
 msgstr "Purchase"
 
+msgid "buttonLabel/buyMore"
+msgstr "Purchase Boxes"
+
 msgid "buttonLabel/close"
 msgstr "Close"
 
+msgid "buttonLabel/open"
+msgstr "Open"
+
 msgid "buttonLabel/openBox"
 msgstr "Open the Box"
-
-msgid "buttonLabel/openBoxes"
-msgstr "Open Boxes"
 
 msgid "buttonLabel/quest"
 msgstr "To Missions"
@@ -40,58 +46,84 @@ msgstr "SHOW ANIMATION"
 msgid "buttonLabel/videoOn"
 msgstr "DO NOT SHOW ANIMATION"
 
-msgid "buttonLabel/videoSwitch/lowerCase"
-msgstr "Show animation"
-
-msgid "closeButtonLabel"
-msgstr "CLOSE"
-
 msgid "compensationTooltip/after/header"
 msgstr "Compensation:"
 
-msgid "compensationTooltip/before/header/multiple"
-msgstr "Vehicle (x{count}):"
-
-msgid "compensationTooltip/before/header/single"
-msgstr "Vehicle:"
+msgid "compensationTooltip/before/header"
+msgstr "Duplicate (x{count}):"
 
 msgid "compensationTooltip/crewSkin/header"
 msgstr "Compensation for a crew skin that you already have"
 
 msgid "compensationTooltip/vehicle/bottomText"
-msgstr "Gold as compensation for a vehicle."
+msgstr "The reward that presents compensation for a vehicle you already have."
 
 msgid "compensationTooltip/vehicle/header"
 msgstr "Compensation for a vehicle that is already in your Garage."
 
-msgid "entryDesc/boxEmpty"
-msgstr "No boxes available"
+msgid "entryDesc/boxesCount"
+msgstr "x{count}"
 
 msgid "entryDesc/buySlot"
 msgstr "You can purchase Large Boxes in the Premium Shop"
 
-msgid "entryDesc/newYear_premium/descr"
-msgstr ""
-"Purchased in the Store. They contain gold and decorations as well as "
-"possibly 3D styles and Premium vehicles."
-
-msgid "entryDesc/newYear_premium/title"
+msgid "entryDesc/newYear_premium"
 msgstr "Large Boxes"
 
-msgid "entryDesc/notAvailableNowShort"
-msgstr "Purchasing and opening are temporarily unavailable."
+msgid "entryDesc/newYear_usual"
+msgstr "Small Boxes"
+
+msgid "entryDesc/questSlot"
+msgstr "You receive Small Boxes for completing missions."
+
+msgid "entryDesc/restrictedMode"
+msgstr ""
+"This functionality is temporarily unavailable. Please try again later."
 
 msgid "entryPoint/header"
 msgstr "Boxes"
 
-msgid "entryPoint/toBoxes"
-msgstr "TO BOXES"
+msgid "entryTooltip/body/h1"
+msgstr "Purchase Large Boxes:"
+
+msgid "entryTooltip/body/h2"
+msgstr "Earn Small Boxes:"
+
+msgid "entryTooltip/body/p1"
+msgstr ""
+"Purchase boxes with New Year decorations for yourself and your friends in "
+"the Premium Shop."
+
+msgid "entryTooltip/body/p2"
+msgstr "Awarded for the completion of Holiday Ops missions."
+
+msgid "entryTooltip/header"
+msgstr "Boxes"
+
+msgid "entryView/boxesCount"
+msgstr "{count} more boxes"
 
 msgid "entryView/buyLabel"
-msgstr "PURCHASE"
+msgstr "PURCHASE BOXES"
+
+msgid "entryView/ended/newYear_premium"
+msgstr ""
+"You have no Large Boxes in the Depot.\n"
+"Purchase more in the Premium Shop."
+
+msgid "entryView/ended/newYear_usual"
+msgstr ""
+"You have no Small Boxes.\n"
+"Earn more in battles."
 
 msgid "entryView/lootboxesCount"
 msgstr "x{count}"
+
+msgid "entryView/title"
+msgstr "Holiday Ops {year}"
+
+msgid "entryView/year"
+msgstr "2019"
 
 msgid "multiOpenView/applyLabel"
 msgstr "Acknowledged!"
@@ -108,97 +140,17 @@ msgstr "Open another {count} boxes"
 msgid "multiOpenView/openedCount"
 msgstr "x{count}"
 
-msgid "multiOpenView/pauseLabel"
-msgstr "Pause ({count})"
-
 msgid "multiOpenView/title"
-msgstr "What's in the Box?"
-
-msgid "multiOpenView/unpauseLabel"
-msgstr "Auto Open ({count})"
+msgstr "Congratulations!"
 
 msgid "notification/header"
 msgstr "Congratulations!"
 
-msgid "notification/header/big"
-msgstr "WHAT'S IN THE BOX:"
-
-msgid "notification/header/guest_c"
-msgstr "GUEST WITH A NEW ASSIGNMENT"
-
-msgid "notification/modernizedEquipment/modernizedAimDrivesAimingStabilizer"
-msgstr "FIRE-CONTROL SYSTEM T1"
-
-msgid ""
-"notification/modernizedEquipment/modernizedExtraHealthReserveAntifragmentationLining"
-msgstr "SURVIVAL IMPROVEMENT SUITE T1"
-
-msgid ""
-"notification/modernizedEquipment/modernizedTurbochargerRotationMechanism"
-msgstr "MOBILITY IMPROVEMENT SYSTEM T1"
-
-msgid "notification/modernizedEquipment/subtitle"
-msgstr "Experimental Equipment"
-
 msgid "notification/ny19man"
 msgstr "A unique crew member: %(count)s"
 
-msgid "notification/ny22man"
-msgstr "Commander %(name)s added"
-
 msgid "notification/rewards"
 msgstr "You received the following rewards:"
-
-msgid "notification/style/subtitle"
-msgstr "3D STYLE"
-
-msgid "notification/tankmen/subtitle"
-msgstr "A Unique Crew Member"
-
-msgid "notification/vehicle/subtitle"
-msgstr "WHAT A TWIST!"
-
-msgid "premiumMultiOpenView/applyLabel"
-msgstr "Affirmative!"
-
-msgid "premiumMultiOpenView/backToBoxesLabel"
-msgstr "To Boxes"
-
-msgid "premiumMultiOpenView/boxIndx"
-msgstr "Box {indx}"
-
-msgid "premiumMultiOpenView/boxesInStorage"
-msgstr "Boxes left: {count}"
-
-msgid "premiumMultiOpenView/boxesNotAvailable"
-msgstr "No boxes available"
-
-msgid "premiumMultiOpenView/openNextBoxesLabel"
-msgstr "Open another {count} boxes"
-
-msgid "premiumMultiOpenView/pauseLabel"
-msgstr "Stop Auto Opening ({count})"
-
-msgid "premiumMultiOpenView/subTitle/category/Christmas"
-msgstr "Christmas Boxes"
-
-msgid "premiumMultiOpenView/subTitle/category/Fairytale"
-msgstr "Magic Boxes"
-
-msgid "premiumMultiOpenView/subTitle/category/NewYear"
-msgstr "New Year Boxes"
-
-msgid "premiumMultiOpenView/subTitle/category/Oriental"
-msgstr "Lunar Boxes"
-
-msgid "premiumMultiOpenView/subTitle/opened"
-msgstr "Here's what dropped from {category} ({count} items opened)"
-
-msgid "premiumMultiOpenView/title"
-msgstr "CONGRATULATIONS!"
-
-msgid "premiumMultiOpenView/unpauseLabel"
-msgstr "Continue Opening ({count})"
 
 msgid "restrictedMessage/body"
 msgstr ""
@@ -208,50 +160,32 @@ msgstr ""
 msgid "restrictedMessage/header"
 msgstr "Attention:"
 
-msgid "rewardGroups/blueprints"
-msgstr "Blueprints"
-
-msgid "rewardGroups/consumables"
-msgstr "Consumables"
-
-msgid "rewardGroups/crewBooks"
-msgstr "Crew Books"
-
-msgid "rewardGroups/crewBooksAndBattleBoosters"
-msgstr "Directive and Crew Books"
-
-msgid "rewardGroups/optionalDevices"
-msgstr "Equipment"
-
-msgid "rewardGroups/other"
-msgstr "And some more:"
-
-msgid "rewardGroups/styles"
-msgstr "Styles"
-
-msgid "rewardGroups/toys"
-msgstr "Decorations"
-
-msgid "rewardGroups/vehicles"
-msgstr "Premium Vehicles"
-
 msgid "rewardView/boxesCount"
-msgstr "Available boxes: %(count)"
+msgstr "Available boxes: {count}"
 
 msgid "rewardView/closeBtnLabel"
 msgstr "Close"
 
-msgid "rewardView/congratsBtnLabel/GuestCRewardKitCongrats"
-msgstr "To Redshire Cat's Assignments"
-
-msgid "rewardView/congratsBtnLabel/StyleLootBoxCongrats"
+msgid "rewardView/congratsBtnLabel/style"
 msgstr "View Style"
 
-msgid "rewardView/congratsBtnLabel/TankmanLootBoxCongrats"
+msgid "rewardView/congratsBtnLabel/tankman"
 msgstr "Recruit"
 
-msgid "rewardView/congratsBtnLabel/VehicleLootBoxCongrats"
+msgid "rewardView/congratsBtnLabel/vehicle"
 msgstr "View in Garage"
+
+msgid "rewardView/congratsLabel/style"
+msgstr "A Unique Style for"
+
+msgid "rewardView/congratsLabel/tankman"
+msgstr "A Unique Crew Member"
+
+msgid "rewardView/congratsLabel/usual"
+msgstr "Congratulations!"
+
+msgid "rewardView/congratsLabel/vehicle"
+msgstr "WHAT A TWIST!"
 
 msgid "rewardView/nextOpenBtnLabel"
 msgstr "Open Next"
@@ -262,29 +196,23 @@ msgstr "Acknowledged!"
 msgid "rewardView/openBtnLabel"
 msgstr "Acknowledged!"
 
-msgid "rewardView/toBoxes"
-msgstr "To Boxes"
+msgid "rewardView/rerollBtnLabel"
+msgstr "Reopen"
 
 msgid "rewardView/zeroBoxes"
 msgstr "No boxes available"
 
-msgid "specialReward/StyleLootBoxCongrats/title"
-msgstr "A 3D Style for"
-
 msgid "specialReward/continueBtn"
 msgstr "Continue"
 
-msgid "specialReward/goToBtn/StyleLootBoxCongrats"
+msgid "specialReward/style/goToBtn"
 msgstr "View Style"
 
-msgid "specialReward/goToBtn/VehicleLootBoxCongrats"
+msgid "specialReward/style/title"
+msgstr "A Unique Style for"
+
+msgid "specialReward/vehicle/goToBtn"
 msgstr "View in Garage"
-
-msgid "specialReward/guaranteedReward"
-msgstr "Urgent delivery!"
-
-msgid "specialReward/guaranteedRewardReceived"
-msgstr "Guaranteed Vehicle arrived"
 
 msgid "tooltip/category/header/Christmas"
 msgstr "Christmas Boxes"
@@ -299,39 +227,38 @@ msgid "tooltip/category/header/Oriental"
 msgstr "Lunar Boxes"
 
 msgid "tooltip/category/rewards/Christmas"
-msgstr "Pure Emerald"
+msgstr "Christmas Collection"
 
 msgid "tooltip/category/rewards/Fairytale"
-msgstr "Meteoric Iron"
+msgstr "Magic Collection"
 
 msgid "tooltip/category/rewards/NewYear"
-msgstr "Rock Crystal"
+msgstr "New Year Collection"
 
 msgid "tooltip/category/rewards/Oriental"
-msgstr "Warm Amber"
+msgstr "Lunar Collection"
 
 msgid "tooltip/category/rewards/description"
 msgstr ""
-"Each box contains 150 items of a random resource and 50 items of {category} "
-"as a gift, as well as other valuable in-game assets."
+"Boxes contain decorations from the {category} and other valuable rewards."
 
 msgid "tooltip/category/rewards/header"
 msgstr "Awards:"
 
-msgid "tooltip/countButton/notEnabled"
-msgstr "Not enough boxes for this option"
-
 msgid "tooltip/entryView/buyBoxes"
-msgstr "Click to purchase Large Boxes."
+msgstr "Purchase additional boxes in the Premium Shop."
+
+msgid "tooltip/entryView/openBoxes"
+msgstr "Open several boxes at the same time."
 
 msgid "tooltip/restrictedMode"
 msgstr "Action is temporarily unavailable. Try again later."
 
 msgid "type/newYear_premium"
-msgstr "Large Box"
+msgstr "LARGE BOXES"
 
-msgid "type/ny23Coin"
-msgstr "Gift Terminal Token"
+msgid "type/newYear_usual"
+msgstr "SMALL BOXES"
 
 msgid "type/wt_boss"
 msgstr "Engineer's Starter"

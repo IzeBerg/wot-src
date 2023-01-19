@@ -11,7 +11,6 @@ package net.wg.gui.lobby
    import net.wg.data.constants.Cursors;
    import net.wg.data.constants.DragType;
    import net.wg.data.constants.Linkages;
-   import net.wg.data.constants.generated.HANGAR_ALIASES;
    import net.wg.data.constants.generated.LAYER_NAMES;
    import net.wg.gui.components.common.waiting.Waiting;
    import net.wg.gui.components.containers.MainViewContainer;
@@ -19,8 +18,6 @@ package net.wg.gui.lobby
    import net.wg.gui.components.vehicleHitArea.VehicleHitAreaComponent;
    import net.wg.gui.events.LobbyEvent;
    import net.wg.gui.lobby.header.LobbyHeader;
-   import net.wg.gui.lobby.header.NYWidgetUI;
-   import net.wg.gui.lobby.header.events.HeaderEvents;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_Settings;
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButton;
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButtonsHelper;
@@ -35,7 +32,6 @@ package net.wg.gui.lobby
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.motion.Tween;
    import scaleform.clik.utils.Constraints;
-   import scaleform.gfx.Extensions;
    
    public class LobbyPage extends LobbyPageMeta implements ILobbyPage
    {
@@ -49,12 +45,6 @@ package net.wg.gui.lobby
       private static const TOP_SUB_VIEW_POSITION:Number = 53;
       
       private static const WARNING_EMPTY_HIT_AREA:String = "vehicleHitArea is null!";
-      
-      private static const INV_NY_WIDGET_ITEMS:String = "invMenuItems";
-      
-      private static const NY_WIDGET_X_OFFSET:int = -300;
-      
-      private static const NY_WIDGET_Y_OFFSET:int = 3;
        
       
       public var vehicleHitArea:VehicleHitAreaComponent = null;
@@ -83,10 +73,6 @@ package net.wg.gui.lobby
       
       private var _teaser:Bitmap;
       
-      private var _nyWidget:NYWidgetUI = null;
-      
-      private var _nyWidgetVisible:Boolean = false;
-      
       public function LobbyPage()
       {
          super();
@@ -108,7 +94,10 @@ package net.wg.gui.lobby
          this.messengerBar.updateStage(param1,param2);
          var _loc3_:Array = this.getSubContainers();
          var _loc4_:Number = param2 - TOP_SUB_VIEW_POSITION;
-         _loc4_ -= MessengerBar.BAR_VISIBLE_HEIGHT;
+         if(this.messengerBar.visible)
+         {
+            _loc4_ -= MessengerBar.BAR_VISIBLE_HEIGHT;
+         }
          for each(_loc5_ in _loc3_)
          {
             if(_loc5_)
@@ -135,7 +124,6 @@ package net.wg.gui.lobby
          this.updateStage(App.appWidth,App.appHeight);
          this.vehicleHitArea.addEventListener(MouseEvent.ROLL_OVER,this.onVehicleHitAreaRollOverHandler);
          this.vehicleHitArea.addEventListener(MouseEvent.ROLL_OUT,this.onVehicleHitAreaRollOutHandler);
-         this.header.addEventListener(HeaderEvents.VISIBILITY_CHANGED,this.onHeaderVisibilityChanged);
       }
       
       override protected function allowHandleInput() : Boolean
@@ -155,29 +143,9 @@ package net.wg.gui.lobby
       override protected function draw() : void
       {
          super.draw();
-         if(isInvalid(INV_NY_WIDGET_ITEMS))
-         {
-            if(this._nyWidgetVisible && isDAAPIInited)
-            {
-               if(this._nyWidget == null)
-               {
-                  this.addNYWidget();
-               }
-            }
-            else if(this._nyWidget != null)
-            {
-               this.removeNYWidget();
-            }
-            invalidateSize();
-         }
          if(isInvalid(InvalidationType.SIZE))
          {
             constraints.update(width,height);
-            if(this._nyWidgetVisible && this._nyWidget)
-            {
-               this._nyWidget.x = (width >> 1) + NY_WIDGET_X_OFFSET;
-               this._nyWidget.y = this.subViewContainer.y + NY_WIDGET_Y_OFFSET;
-            }
          }
       }
       
@@ -208,7 +176,6 @@ package net.wg.gui.lobby
          this.vehicleHitArea.hit.removeEventListener(MouseEvent.MOUSE_WHEEL,this.onHitAreaMouseWheelHandler);
          this.vehicleHitArea.removeEventListener(MouseEvent.ROLL_OVER,this.onVehicleHitAreaRollOverHandler);
          this.vehicleHitArea.removeEventListener(MouseEvent.ROLL_OUT,this.onVehicleHitAreaRollOutHandler);
-         this.header.removeEventListener(HeaderEvents.VISIBILITY_CHANGED,this.onHeaderVisibilityChanged);
          this.vehicleHitArea.dispose();
          this.vehicleHitArea = null;
          this.subViewContainer = null;
@@ -244,14 +211,20 @@ package net.wg.gui.lobby
          }
       }
       
-      public function as_hideMessengerBar(param1:Boolean) : void
-      {
-         this.messengerBar.visible = param1;
-      }
-      
       public function as_hideWaiting() : void
       {
          this.waiting.hide();
+      }
+      
+      public function as_showHelpLayout() : void
+      {
+      }
+      
+      public function as_showWaiting(param1:String) : void
+      {
+         this.waiting.setMessage(param1);
+         this.waiting.setSize(_width,_height);
+         this.waiting.show();
       }
       
       public function as_setSubContainerItemsVisibility(param1:Boolean) : void
@@ -276,31 +249,6 @@ package net.wg.gui.lobby
          if(param1 && _loc2_)
          {
             setFocus(_loc2_);
-         }
-      }
-      
-      public function as_showHelpLayout() : void
-      {
-      }
-      
-      public function as_showWaiting(param1:String, param2:Boolean, param3:Boolean) : void
-      {
-         this.waiting.backgroundVisibility = param3;
-         this.waiting.setMessage(param1);
-         this.waiting.setSize(_width,_height);
-         this.waiting.show(param2);
-      }
-      
-      public function as_switchLobbyDragging(param1:Boolean) : void
-      {
-         if(param1)
-         {
-            this.unregisterDragging();
-            this.registerDraging();
-         }
-         else
-         {
-            this.unregisterDragging();
          }
       }
       
@@ -342,12 +290,6 @@ package net.wg.gui.lobby
          notifyCursorDraggingS(true);
          this._dragOffsetX = stage.mouseX;
          this._dragOffsetY = stage.mouseY;
-      }
-      
-      public function as_updateNYVisibility(param1:Boolean) : void
-      {
-         this._nyWidgetVisible = param1;
-         invalidate(INV_NY_WIDGET_ITEMS);
       }
       
       private function createHintTween(param1:Point, param2:DisplayObject) : Tween
@@ -395,22 +337,12 @@ package net.wg.gui.lobby
          App.cursor.unRegisterDragging(this);
       }
       
-      private function updateCursorState() : void
-      {
-         var _loc1_:DisplayObject = Extensions.getMouseTopMostEntity(false);
-         var _loc2_:Boolean = this.vehicleHitArea.hit == _loc1_;
-         if(!_loc2_)
-         {
-            this._resetDragParams = true;
-         }
-         notifyCursorOver3dSceneS(_loc2_);
-      }
-      
       private function onTeaserHideHandler(param1:TeaserEvent) : void
       {
+         var _loc2_:Point = null;
          addChildAt(this._teaserOverlay = new Sprite(),getChildIndex(this.header) + 1);
          this._teaser = param1.teaser.drawToBitmap();
-         var _loc2_:Point = new Point(this._teaser.x,this._teaser.y);
+         _loc2_ = new Point(this._teaser.x,this._teaser.y);
          _loc2_ = this._teaserOverlay.globalToLocal(_loc2_);
          this._teaser.x = _loc2_.x;
          this._teaser.y = _loc2_.y;
@@ -437,11 +369,6 @@ package net.wg.gui.lobby
          notifyCursorOver3dSceneS(false);
       }
       
-      private function onHeaderVisibilityChanged(param1:HeaderEvents) : void
-      {
-         this.updateCursorState();
-      }
-      
       private function onHitAreaMouseWheelHandler(param1:MouseEvent) : void
       {
          moveSpaceS(0,0,param1.delta * 200);
@@ -455,21 +382,6 @@ package net.wg.gui.lobby
       private function onUnregisterDraggingHandler(param1:LobbyEvent) : void
       {
          this.unregisterDragging();
-      }
-      
-      private function addNYWidget() : void
-      {
-         this._nyWidget = App.instance.utils.classFactory.getComponent(HANGAR_ALIASES.NY_MAIN_WIDGET_UI,NYWidgetUI);
-         this._nyWidget.name = HANGAR_ALIASES.NY_MAIN_WIDGET_UI;
-         addChildAt(this._nyWidget,getChildIndex(this.subViewContainer as DisplayObject));
-         registerFlashComponentS(this._nyWidget,HANGAR_ALIASES.NY_MAIN_WIDGET_UI);
-      }
-      
-      private function removeNYWidget() : void
-      {
-         removeChild(this._nyWidget);
-         unregisterFlashComponentS(HANGAR_ALIASES.NY_MAIN_WIDGET_UI);
-         this._nyWidget = null;
       }
    }
 }

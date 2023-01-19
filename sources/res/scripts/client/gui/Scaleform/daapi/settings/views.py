@@ -47,7 +47,6 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     PROFILE_FORMATIONS_PAGE = 'profileFormationsPage'
     PROFILE_HOF = 'profileHof'
     GAMMA_WIZARD = 'gammaWizard'
-    LINKEDSET_HINTS = 'LinkedsetHints'
     COLOR_SETTING = 'colorSettings'
     WIKI_VIEW = 'wikiView'
     MANUAL_CHAPTER_VIEW = 'manualChapterView'
@@ -131,9 +130,6 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     BATTLE_TYPE_SELECT_POPOVER = 'battleTypeSelectPopover'
     SQUAD_TYPE_SELECT_POPOVER = 'squadTypeSelectPopover'
     TRADEIN_POPOVER = 'TradeInPopover'
-    NY_SELECT_VEHICLE_POPOVER = 'NYSelectVehiclePopover'
-    NY_SELECT_VEHICLE_FOR_DISCOUNT_POPOVER = 'NYSelectVehicleForDiscountPopover'
-    NY_BROWSER_VIEW = 'NyBrowserView'
     ACOUSTIC_POPOVER = 'acousticPopover'
     DISMISS_TANKMAN_DIALOG = 'dismissTankmanDialog'
     RESTORE_TANKMAN_DIALOG = 'restoreTankmanDialog'
@@ -243,7 +239,6 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     FEEDBACK_DAMAGE_INDICATOR = 'feedbackDamageIndicator'
     FEEDBACK_BATTLE_BORDER_MAP = 'feedbackBattleBorderMap'
     FEEDBACK_QUESTS_PROGRESS = 'feedbackQuestsProgress'
-    LOOT_BOX_SHOP_OVERLAY = 'overlayBrowserLootBoxShop'
     LOADINGS = (
      BATTLE_LOADING, TUTORIAL_LOADING)
     BATTLE_PAGES = (

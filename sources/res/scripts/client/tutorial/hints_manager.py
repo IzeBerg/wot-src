@@ -195,13 +195,21 @@ class HintsManager(object):
         for itemID, hints in self._data.getHints().iteritems():
             for hint in hints:
                 conditions = hint['conditions']
-                if conditions is not None and any(condition.getID() == flag for condition in conditions):
-                    changedFlagHints.add(itemID)
+                if conditions is not None:
+                    for condition in conditions:
+                        if condition.getID() == flag:
+                            changedFlagHints.add((itemID, condition.isPositiveState()))
+                            break
 
-        for changedFlagHint in changedFlagHints:
+        for changedFlagHint, isPositiveState in changedFlagHints:
             if value:
-                self.__onItemFound(changedFlagHint, silent=True)
-            else:
+                if isPositiveState:
+                    self.__onItemFound(changedFlagHint, silent=True)
+                else:
+                    self.__onItemLost(changedFlagHint)
+            elif isPositiveState:
                 self.__onItemLost(changedFlagHint)
+            else:
+                self.__onItemFound(changedFlagHint, silent=True)
 
         return

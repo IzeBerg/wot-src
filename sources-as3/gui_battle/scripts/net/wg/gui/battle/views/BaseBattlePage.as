@@ -516,6 +516,7 @@ package net.wg.gui.battle.views
          this.postmortemTips.x = width >> 1;
          this.postmortemTips.y = height;
          this.postmortemTips.updateElementsPosition();
+         this.anchorVictimDogTag();
       }
       
       protected function updateAmmunitionPanelY() : void
@@ -523,6 +524,14 @@ package net.wg.gui.battle.views
          if(this.prebattleAmmunitionPanel)
          {
             this.prebattleAmmunitionPanel.setYPos(!!this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
+         }
+      }
+      
+      protected function anchorVictimDogTag() : void
+      {
+         if(this.postmortemTips)
+         {
+            PostmortemPanel(this.postmortemTips).anchorVictimDogTag(this.minimap.currentTopLeftPoint.y);
          }
       }
       
@@ -548,10 +557,7 @@ package net.wg.gui.battle.views
       
       protected function onMinimapSizeChangedHandler(param1:MinimapEvent) : void
       {
-         if(this.postmortemTips)
-         {
-            PostmortemPanel(this.postmortemTips).anchorVictimDogTag(this.minimap.currentTopLeftPoint.y);
-         }
+         this.anchorVictimDogTag();
          this.playerMessageListPositionUpdate();
       }
       

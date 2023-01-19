@@ -1,4 +1,4 @@
-import weakref
+import logging, weakref
 from functools import partial
 import BigWorld, Event
 from account_helpers.offers.cache import CachePrefetchResult
@@ -12,12 +12,15 @@ from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.app_loader import GuiGlobalSpaceID, IAppLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersBannerController, IOffersDataProvider
+from gui.ui_spam.ui_spam_controller import IUISpamController
+_logger = logging.getLogger(__name__)
 
 class OffersBannerController(IOffersBannerController):
     _appLoader = dependency.descriptor(IAppLoader)
     _offersProvider = dependency.descriptor(IOffersDataProvider)
     _lobbyContext = dependency.descriptor(ILobbyContext)
     _connMgr = dependency.descriptor(IConnectionManager)
+    _uiSpamController = dependency.descriptor(IUISpamController)
 
     def __init__(self):
         self.__sync = False
@@ -57,7 +60,12 @@ class OffersBannerController(IOffersBannerController):
 
     @adisp_process
     def _loadBanners(self, *args, **kwargs):
-        if self.__sync or not self.isEnabled() or not self.__hasNotSeenOffers():
+        isShouldBeHidden = self._uiSpamController.shouldBeHidden('OfferBannerWindow')
+        if isShouldBeHidden:
+            for offer in self.__iNotSeenOffers():
+                _logger.debug('OfferBannerWindow for offerID=%s was hidden by uiSpamController ', offer.id)
+
+        if self.__sync or not self.isEnabled() or not self.__hasNotSeenOffers() or isShouldBeHidden:
             return
         self.__sync = True
         result = yield self._offersProvider.isCdnResourcesReady()

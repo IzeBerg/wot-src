@@ -65,7 +65,7 @@ class MessageTemplates(templates.XMLCollection):
            'bgIconSizeAuto': source.readBool('bgIconSizeAuto'), 
            'icon': source.readString('icon'), 
            'defaultIcon': source.readString('defaultIcon'), 
-           'filters': [], 'buttonsStates': {}, 'buttonsLayout': [], 'buttonsAlign': source.readString('buttonsAlign', default='left')}
+           'filters': [], 'buttonsLayout': []}
         priority = source.readString('priority', NotificationPriorityLevel.MEDIUM)
         if priority not in NotificationPriorityLevel.RANGE:
             LOG_WARNING('Priority is invalid', sourceID, priority)

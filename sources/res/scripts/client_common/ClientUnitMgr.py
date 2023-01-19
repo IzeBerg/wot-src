@@ -70,7 +70,15 @@ class ClientUnitMgr(UnitClientAPI):
          unitMgrID, errorCode, errorString))
         if errorCode == UNIT_ERROR.UNIT_RESTORED:
             self._restore()
+        if errorCode == UNIT_ERROR.NO_UNIT_MGR and self.id:
+            prevMgrID = self.id
+            self.id = 0
+            isFinishedAssembling = self.__unit.isFinishAssembling() if self.__unit is not None else False
+            self.battleID = None
+            self._clearUnit()
+            self.onUnitLeft(prevMgrID, isFinishedAssembling)
         self.onUnitErrorReceived(requestID, unitMgrID, errorCode, errorString)
+        return
 
     def onUnitNotify(self, unitMgrID, notifyCode, notifyString='', argsList=None):
         argsList = argsList or []

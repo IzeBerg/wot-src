@@ -17,7 +17,6 @@ from soft_exception import SoftException
 if typing.TYPE_CHECKING:
     from gui.server_events.event_items import ServerEventAbstract
     from gui.server_events.bonuses import SimpleBonus
-    from gui.shared.missions.packers.bonus import BonusUIPacker
 _logger = logging.getLogger(__name__)
 DEFAULT_AWARDS_COUNT = 10
 DAILY_QUEST_AWARDS_COUNT = 1000
@@ -56,7 +55,7 @@ class BattleQuestUIDataPacker(_EventUIDataPacker):
 
     def __init__(self, event, bonusFormatter=CurtailingAwardsComposer(DEFAULT_AWARDS_COUNT)):
         super(BattleQuestUIDataPacker, self).__init__(event)
-        self._tooltipData = {}
+        self.__tooltipData = {}
         self._bonusFormatter = bonusFormatter
 
     def pack(self, model=None):
@@ -69,7 +68,7 @@ class BattleQuestUIDataPacker(_EventUIDataPacker):
             return model
 
     def getTooltipData(self):
-        return self._tooltipData
+        return self.__tooltipData
 
     def _packModel(self, model):
         super(BattleQuestUIDataPacker, self)._packModel(model)
@@ -79,9 +78,9 @@ class BattleQuestUIDataPacker(_EventUIDataPacker):
         self._packDefaultConds(model)
 
     def _packBonuses(self, model):
-        self._tooltipData = {}
         packer = getDefaultBonusPacker()
-        packQuestBonusModelAndTooltipData(packer, model.getBonuses(), self._event, tooltipData=self._tooltipData)
+        self.__tooltipData = {}
+        packQuestBonusModelAndTooltipData(packer, model.getBonuses(), self._event, tooltipData=self.__tooltipData)
 
     def _packPostBattleConds(self, model):
         postBattleContitionPacker = PostBattleConditionPacker()
@@ -116,7 +115,6 @@ class PrivateMissionUIDataPacker(_EventUIDataPacker):
 
 class DailyQuestUIDataPacker(BattleQuestUIDataPacker):
     eventsCache = dependency.descriptor(IEventsCache)
-    _NY_BONUSES_ORDER = ('battleToken', 'entitlements')
 
     def pack(self, model=None):
         if model is not None and not isinstance(model, DailyQuestModel):
@@ -127,17 +125,6 @@ class DailyQuestUIDataPacker(BattleQuestUIDataPacker):
             self._packModel(model)
             self.__resolveQuestIcon(model)
             return model
-
-    def _packBonuses(self, model):
-        self._tooltipData = {}
-        packer = getDefaultBonusPacker()
-        bonuses = sorted(self._event.getBonuses(), key=self.__keySortOrder)
-        packQuestBonusModelAndTooltipData(packer, model.getBonuses(), self._event, self._tooltipData, bonuses)
-
-    def __keySortOrder(self, bonus):
-        if bonus.getName() in self._NY_BONUSES_ORDER:
-            return self._NY_BONUSES_ORDER.index(bonus.getName())
-        return len(self._NY_BONUSES_ORDER)
 
     def __resolveQuestIcon(self, model):
         iconId = self._event.getIconID()

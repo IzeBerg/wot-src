@@ -31,8 +31,6 @@ package net.wg.gui.lobby.missions
       private static const INFO_ICON_GAP:int = 6;
       
       private static const BOTTOM_STATUS_GAP:int = 8;
-      
-      private static const AWARDS_GROUP_PADDING_Y:int = 3;
        
       
       public var dateTf:TextField;
@@ -175,7 +173,7 @@ package net.wg.gui.lobby.missions
       override protected function updateAwardsLayout() : void
       {
          super.updateAwardsLayout();
-         awardsGroup.y = awardsBg.y + (awardsBg.height - awardsGroup.height >> 1) - AWARDS_GROUP_PADDING_Y;
+         awardsGroup.y = awardsBg.y + (awardsBg.height - awardsGroup.height >> 1);
       }
       
       override protected function updateInfoIconParams() : void

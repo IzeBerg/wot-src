@@ -484,8 +484,8 @@ msgstr "Bounty Equipment received: %(name)s"
 
 msgid "battlePass/seasonEnd/text"
 msgstr ""
-"Battle Pass Season has finished. All rewards that you did not choose during "
-"the Season have been awarded to you by default:"
+"Battle Pass has ended. All rewards that you did not choose have been awarded"
+" to you by default:"
 
 msgid "battlePass/switchChapter/error"
 msgstr "Error selecting the Chapter. Please try again."
@@ -503,7 +503,8 @@ msgstr ""
 "We apologize for the inconvenience."
 
 msgid "battlePass/switch_disable/body"
-msgstr "Season finished. See you next Season!"
+msgstr ""
+"Judgment Day has ended. We hope it never goes beyond games and movies."
 
 msgid "battlePass/switch_disable/comp7/body"
 msgstr ""
@@ -522,12 +523,10 @@ msgstr ""
 "Battle Pass is temporarily unavailable in Ranked Battles due to maintenance."
 
 msgid "battlePass/switch_disable/title"
-msgstr "Battle Pass Season %(seasonNum)d"
+msgstr "Battle Pass: Judgment Day"
 
 msgid "battlePass/switch_enabled/body"
-msgstr ""
-"Battle Pass is available again. We apologize for the inconvenience.\n"
-"Season extended until %(expiryTime)s."
+msgstr "Battle Pass is available again. We apologize for the inconvenience."
 
 msgid "battlePass/switch_enabled/comp7/body"
 msgstr ""
@@ -2005,6 +2004,15 @@ msgid "graficsPresetFail"
 msgstr ""
 "Video card incompatible. Failed to apply the selected graphics quality."
 
+msgid "hbp/seasonStart/body"
+msgstr ""
+"Commanders! This is a special Battle Pass, and you are about to see it for yourself.\n"
+"\n"
+"For completing the Progression, you will receive famous movie characters with unique voiceovers, a Premium vehicle with a special 3D style, customization elements, and many more rewards!"
+
+msgid "hbp/seasonStart/title"
+msgstr "Battle Pass: Judgment Day"
+
 msgid "igr/customization/begin"
 msgstr ""
 "Free camouflage, inscriptions, and emblems are available in %(igrIcon)s."
@@ -2187,11 +2195,12 @@ msgstr ""
 " log into World&nbsp;of&nbsp;Warships"
 
 msgid "lootboxes/open/server_error"
-msgstr "Error opening the box: server error."
+msgstr "Error receiving the gift: server error."
 
 msgid "lootboxes/open/server_error/COOLDOWN"
 msgstr ""
-"Error opening the box: Please wait until the previous operation is complete."
+"Error receiving the gift. Please wait until the previous operation is "
+"complete."
 
 msgid "lootboxes/open/server_error/DISABLED"
 msgstr "Action is temporarily unavailable. Try again later."
@@ -2427,320 +2436,6 @@ msgstr "Error switching configuration"
 
 msgid "nation_change/success"
 msgstr "%(veh_name)s: national configuration switched"
-
-msgid "newYear/allObjectsCollected/body"
-msgstr "You have found all hidden Village scenery pieces."
-
-msgid "newYear/allObjectsCollected/header"
-msgstr "Congratulations!"
-
-msgid "newYear/applyVehicleDiscount/server_error"
-msgstr "Error activating the discount: server error."
-
-msgid "newYear/applyVehicleDiscount/server_error/alreadyActive"
-msgstr ""
-"Error activating the discount: the discount on this vehicle is already "
-"active."
-
-msgid "newYear/applyVehicleDiscount/server_error/alreadyBought"
-msgstr "Error activating the discount: the vehicle was already purchased."
-
-msgid "newYear/applyVehicleDiscount/server_error/noDiscountForVehicle"
-msgstr ""
-"Error activating the discount: the discount on this vehicle was not found."
-
-msgid "newYear/applyVehicleDiscount/server_error/noDiscounts"
-msgstr "Error activating the discount: discount not found."
-
-msgid "newYear/applyVehicleDiscount/success"
-msgstr "You activated a %(discount)s%% discount on the %(vehName)s"
-
-msgid "newYear/breakToys/server_error"
-msgstr "Error breaking the decoration: server error."
-
-msgid "newYear/buyCollection/server_error"
-msgstr "Error purchasing the Collection: server error."
-
-msgid "newYear/buyToy/credits"
-msgstr "Credits spent: %(value)s"
-
-msgid "newYear/buyToy/gold"
-msgstr "Gold spent: %(value)s"
-
-msgid "newYear/buyToy/server_error"
-msgstr "Error purchasing the item. Purchasing is temporarily unavailable."
-
-msgid "newYear/buyToy/text"
-msgstr "The %(toy_name)s item has been purchased."
-
-msgid "newYear/buying/errors/not_enough_resource"
-msgstr "Error purchasing. Insufficient resources."
-
-msgid "newYear/buying/errors/server_error"
-msgstr "Error purchasing. Purchasing is temporarily unavailable."
-
-msgid "newYear/buying/errors/server_error_centerDown"
-msgstr "Error purchasing. The service is temporarily unavailable."
-
-msgid "newYear/celebrityChallenge/progressReward/title"
-msgstr "Missions From Milla completed: %(value)s!"
-
-msgid "newYear/celebrityChallenge/questReward/guest_A/title"
-msgstr "Mission From Arnie completed!"
-
-msgid "newYear/celebrityChallenge/questReward/guest_M/title"
-msgstr "Mission From Milla completed!"
-
-msgid "newYear/celebrityChallenge/questReward/ny23Coin"
-msgstr "Gift Terminal Token received"
-
-msgid "newYear/celebrityChallenge/questReward/ny23Coins"
-msgstr "Gift Terminal Token received: x%(count)s"
-
-msgid "newYear/coin23/apply/server_error"
-msgstr "Error activating the Terminal. Server error."
-
-msgid "newYear/coin23/apply/server_error/COOLDOWN"
-msgstr ""
-"Error activating the Terminal. Please wait until the previous operation is "
-"complete."
-
-msgid "newYear/coin23/apply/server_error/DISABLED"
-msgstr "Error activating the Terminal. Server error."
-
-msgid "newYear/coin23/apply/server_error/EXCEPTION"
-msgstr "Error activating the Terminal. Server error."
-
-msgid "newYear/coin23/buying/errors/invalid_coins_count"
-msgstr "Error purchasing Tokens. Wrong number of Tokens to purchase."
-
-msgid "newYear/coin23/buying/errors/invalid_resource_type"
-msgstr "Error purchasing Tokens. Wrong type of resources for payment."
-
-msgid "newYear/coin23/buying/errors/not_enough_resource"
-msgstr "Error purchasing Tokens. Insufficient resources."
-
-msgid "newYear/coin23/buying/errors/server_error"
-msgstr "Error purchasing Tokens. Purchasing is temporarily unavailable."
-
-msgid "newYear/coin23/buying/errors/server_error_centerDown"
-msgstr "Error purchasing Tokens. Purchasing is temporarily unavailable."
-
-msgid "newYear/collectingResources/auto/canceled"
-msgstr "Not enough credits for further autocollection of resources."
-
-msgid "newYear/collectingResources/auto/collected"
-msgstr "Total resources received:"
-
-msgid "newYear/collectingResources/auto/count"
-msgstr "Autocollections performed: %(count)s"
-
-msgid "newYear/collectingResources/auto/deactivated"
-msgstr "Resource Autocollector disabled"
-
-msgid "newYear/collectingResources/auto/finished"
-msgstr "Resources were collected using the Resource Autocollector."
-
-msgid "newYear/collectingResources/auto/spentMoney"
-msgstr "Credits spent: %(money)s"
-
-msgid "newYear/collectingResources/button"
-msgstr "To Resources"
-
-msgid "newYear/collectingResources/header"
-msgstr "Resources Collected!"
-
-msgid "newYear/collectingResources/server_error/common"
-msgstr "Error completing the operation."
-
-msgid "newYear/collectingResourcesAvailable/button"
-msgstr "To Resources!"
-
-msgid "newYear/collectingResourcesAvailable/countValue"
-msgstr "%(count)s"
-
-msgid "newYear/collectingResourcesAvailable/friend/button"
-msgstr "To Friends!"
-
-msgid "newYear/collectingResourcesAvailable/friend/header"
-msgstr "Collecting Resources From Your Friends Available"
-
-msgid "newYear/collectingResourcesAvailable/friend/oneFriendMessage"
-msgstr ""
-"Collect %(countValue)s resources of each type from your friend "
-"%(friendName)s"
-
-msgid "newYear/collectingResourcesAvailable/friend/twoFriendsMessage"
-msgstr ""
-"Collect %(countValue)s resources of each type from your friends "
-"%(friendName1)s and %(friendName2)s"
-
-msgid "newYear/collectingResourcesAvailable/header"
-msgstr "Collecting Resources Available"
-
-msgid "newYear/collectingResourcesAvailable/message"
-msgstr ""
-"Collect %(countValue)s resources of each type or set up the Autocollector."
-
-msgid "newYear/convertingResources/decrease/message"
-msgstr ""
-"Resources were exchanged.\n"
-"Spent: %(value)s"
-
-msgid "newYear/convertingResources/decrease/title"
-msgstr "Financial Transaction"
-
-msgid "newYear/convertingResources/error"
-msgstr ""
-"Error converting resources. The conversion is temporarily unavailable."
-
-msgid "newYear/convertingResources/increase/message"
-msgstr ""
-"Resources were exchanged.\n"
-"Added: %(value)s"
-
-msgid "newYear/convertingResources/increase/title"
-msgstr "Added:"
-
-msgid "newYear/craftToy/server_error"
-msgstr "Error crafting the decoration: server error."
-
-msgid "newYear/errorTypes/levelUpRewardsError"
-msgstr "Error receiving rewards for increasing your Festive Atmosphere Level."
-
-msgid "newYear/financialOperation/spent"
-msgstr "Spent: %(count)s"
-
-msgid "newYear/giftMachine/tokenBought"
-msgstr "Gift Terminal Token purchased: %(count)s"
-
-msgid "newYear/hangToy/server_error"
-msgstr "Error placing the decoration: server error."
-
-msgid "newYear/marketplace/collectionBought"
-msgstr "Bundle with rewards purchased."
-
-msgid "newYear/marketplace/errors/collection_already_bought"
-msgstr "Error purchasing the bundle. You already have this bundle."
-
-msgid "newYear/marketplace/errors/server_error"
-msgstr "Error purchasing the bundle. Purchasing is temporarily unavailable."
-
-msgid "newYear/marketplace/rewards/header"
-msgstr "Congratulations!"
-
-msgid "newYear/objectLevelUp/Fair"
-msgstr ""
-"Fair Level increased.\n"
-"Current Level: %(level)s.\n"
-"You are rewarded with %(items)s item(s) of new Fair decorations."
-
-msgid "newYear/objectLevelUp/Fir"
-msgstr ""
-"Christmas Tree Level increased.\n"
-"Current Level: %(level)s.\n"
-"You are rewarded with %(items)s item(s) of new Christmas Tree decorations."
-
-msgid "newYear/objectLevelUp/Installation"
-msgstr ""
-"Installation Level increased.\n"
-"Current Level: %(level)s.\n"
-"You are rewarded with %(items)s item(s) of new Installation decorations."
-
-msgid "newYear/objectLevelUp/error"
-msgstr "Error increasing the Level."
-
-msgid "newYear/objectLevelUp/header"
-msgstr "Congratulations!"
-
-msgid "newYear/objectMaxLevel/Fair"
-msgstr "Your Fair has reached the maximum Level."
-
-msgid "newYear/objectMaxLevel/Fir"
-msgstr "Your Christmas Tree has reached the maximum Level."
-
-msgid "newYear/objectMaxLevel/Installation"
-msgstr "Your Installation has reached the maximum Level."
-
-msgid "newYear/piggyBank/reward/title"
-msgstr "Reward Received"
-
-msgid "newYear/piggyBank/rewards/text"
-msgstr ""
-"Rewards for collecting resources from your friends during Holiday Ops."
-
-msgid "newYear/piggyBank/rewards/title"
-msgstr "Rewards Received"
-
-msgid "newYear/piggyBank/server_error"
-msgstr ""
-"Error receiving rewards.\n"
-"The operation is temporarily unavailable."
-
-msgid "newYear/rerollCelebrityQuest/guest_A/type_1"
-msgstr ""
-"The Mission From Arnie with a condition to be completed within one battle "
-"has been replaced with a mission for any number of battles."
-
-msgid "newYear/rerollCelebrityQuest/guest_A/type_2"
-msgstr ""
-"The Mission From Arnie with a condition to be completed over any number of "
-"battles has been replaced with a mission for one battle."
-
-msgid "newYear/rerollCelebrityQuest/guest_M/type_1"
-msgstr ""
-"The Mission From Milla with a condition to be completed within one battle "
-"has been replaced with a mission for any number of battles."
-
-msgid "newYear/rerollCelebrityQuest/guest_M/type_2"
-msgstr ""
-"The Mission From Milla with a condition to be completed over any number of "
-"battles has been replaced with a mission for one battle."
-
-msgid "newYear/rerollCelebrityQuest/server_error"
-msgstr "Error replacing the mission conditions. Server error."
-
-msgid "newYear/rerollCelebrityQuest/server_error/noRerolls"
-msgstr "Error replacing the mission conditions. No attempts available."
-
-msgid "newYear/resetLootboxStatistics/server_error"
-msgstr ""
-"Unable to reset statistics—we are working on fixing the issue. Please try "
-"again later."
-
-msgid "newYear/resetLootboxStatistics/server_error/header"
-msgstr "Failed..."
-
-msgid "newYear/resources/ny_amber"
-msgstr "Warm Amber: %(count)s"
-
-msgid "newYear/resources/ny_crystal"
-msgstr "Rock Crystal: %(count)s"
-
-msgid "newYear/resources/ny_emerald"
-msgstr "Pure Emerald: %(count)s"
-
-msgid "newYear/resources/ny_iron"
-msgstr "Meteoric Iron: %(count)s"
-
-msgid "newYear/setAutoCollecting/activated/header"
-msgstr "Resource Autocollector enabled!"
-
-msgid "newYear/setAutoCollecting/activated/message"
-msgstr ""
-"The next resource collection will be performed in %(timerIcon)s %(timer)s"
-
-msgid "newYear/setAutoCollecting/activated/simpleSuccess"
-msgstr "Resource Autocollector enabled."
-
-msgid "newYear/setAutoCollecting/deactivated/success"
-msgstr "Resource Autocollector disabled."
-
-msgid "newYear/strokeDog/header"
-msgstr "Resource received!"
-
-msgid "newYear/strokeDog/server_error"
-msgstr "Error receiving resources. The operation is temporarily unavailable."
 
 msgid "notrecruit_window/success"
 msgstr ""
@@ -3690,6 +3385,9 @@ msgstr ""
 
 msgid "sell_vehicle_locked"
 msgstr "Unable to sell the %s: vehicle is locked."
+
+msgid "seniority_awards/claim_reward_failed"
+msgstr "Error receiving rewards. The operation is temporarily unavailable."
 
 msgid "serverInstallError"
 msgstr "Server error mounting module %s \"%s\". Try again later."

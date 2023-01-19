@@ -51,6 +51,8 @@ package
       
       public static const REWARDS_FOOTER_SHOWVEHICLE:String = "#battle_matters:rewards/footer/showVehicle";
       
+      public static const REWARDS_FOOTER_MORE:String = "#battle_matters:rewards/footer/more";
+      
       public static const TOKENTOOLTIP_TITLE:String = "#battle_matters:tokenTooltip/title";
       
       public static const TOKENTOOLTIP_DESCRIPTION:String = "#battle_matters:tokenTooltip/description";
@@ -163,10 +165,6 @@ package
       
       public static const VEHICLESELECTION_ADDITIONS_BASE:String = "#battle_matters:vehicleSelection/additions/base";
       
-      public static const VEHICLESELECTION_ADDITIONS_CREW:String = "#battle_matters:vehicleSelection/additions/crew";
-      
-      public static const VEHICLESELECTION_ADDITIONS_HANGAR:String = "#battle_matters:vehicleSelection/additions/hangar";
-      
       public static const VEHICLESELECTION_VEHICLETYPE_LIGHTTANK:String = "#battle_matters:vehicleSelection/vehicleType/lightTank";
       
       public static const VEHICLESELECTION_VEHICLETYPE_MEDIUMTANK:String = "#battle_matters:vehicleSelection/vehicleType/mediumTank";
@@ -190,6 +188,18 @@ package
       public static const BONUSDELAYED_DIALOG_TITLE:String = "#battle_matters:bonusDelayed/dialog/title";
       
       public static const BONUSDELAYED_DIALOG_DESCRIPTION:String = "#battle_matters:bonusDelayed/dialog/description";
+      
+      public static const BONUSDELAYED_DIALOG_CONFIRM:String = "#battle_matters:bonusDelayed/dialog/confirm";
+      
+      public static const BONUSDELAYED_DIALOG_CANCEL:String = "#battle_matters:bonusDelayed/dialog/cancel";
+      
+      public static const BONUSDELAYED_DIALOG_CLOSEBTN:String = "#battle_matters:bonusDelayed/dialog/closeBtn";
+      
+      public static const BATTLERESULTS_DESCR:String = "#battle_matters:battleResults/descr";
+      
+      public static const BATTLERESULTS_LINKBTN_TOOLTIP:String = "#battle_matters:battleResults/linkBtn/tooltip";
+      
+      public static const BATTLERESULTS_PROGRESS_TOOLTIP:String = "#battle_matters:battleResults/progress/tooltip";
        
       
       public function BATTLE_MATTERS()

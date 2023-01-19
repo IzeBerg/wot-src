@@ -292,7 +292,7 @@ class Goodies(object):
             return
         else:
             if goodie.isActive():
-                LOG_WARNING("Couldn't activate goodie(id={}) because it is already activated!", goodieID)
+                LOG_WARNING(("Couldn't activate goodie(id={}) because it is already activated!").format(goodieID))
                 return
             defined = self.definedGoodies[goodieID]
             if not defined.isTimeLimited():

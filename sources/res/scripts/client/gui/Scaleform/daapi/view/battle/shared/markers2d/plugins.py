@@ -347,6 +347,7 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
         self.__arenaDP = self.sessionProvider.getArenaDP()
         if ctrl is not None:
             ctrl.onVehicleMarkerRemoved += self.onVehicleMarkerRemoved
+            ctrl.onVehicleMarkerAdded += self.onVehicleMarkerAdded
             ctrl.onVehicleFeedbackReceived += self.onVehicleFeedbackReceived
         add = g_eventBus.addListener
         add(GameEvent.ON_TARGET_VEHICLE_CHANGED, self._handleAutoAimMarker, scope=settings.SCOPE)
@@ -367,6 +368,7 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
         ctrl = self.sessionProvider.shared.feedback
         if ctrl is not None:
             ctrl.onVehicleMarkerRemoved -= self.onVehicleMarkerRemoved
+            ctrl.onVehicleMarkerAdded -= self.onVehicleMarkerAdded
             ctrl.onVehicleFeedbackReceived -= self.onVehicleFeedbackReceived
         remove = g_eventBus.removeListener
         remove(GameEvent.ON_TARGET_VEHICLE_CHANGED, self._handleAutoAimMarker, scope=settings.SCOPE)
@@ -385,7 +387,11 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
             self._destroyVehicleMarker(vehicleID)
 
     def onVehicleMarkerRemoved(self, vehicleID):
-        self._hideVehicleMarker(vehicleID)
+        self._hideVehicleMarker(vehicleID, clearVehicleID=False)
+
+    def onVehicleMarkerAdded(self, _, vInfo, __):
+        if self._vehicleID and self._vehicleID == vInfo.vehicleID:
+            self._addMarker(self._vehicleID)
 
     def _destroyVehicleMarker(self, vehicleID):
         if vehicleID in self._markers:
@@ -472,14 +478,17 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
             self._hideAllMarkers()
 
     def __onSettingsChanged(self, diff):
-        if MARKERS.ENEMY in diff:
-            isMarkerEnabled = diff[MARKERS.ENEMY].get(self.__markerBaseAimMarker2D)
-            if isMarkerEnabled:
+        if MARKERS.ENEMY not in diff:
+            return
+        if self.__markerBaseAimMarker2D in diff[MARKERS.ENEMY]:
+            isBaseMarkerEnabled = diff[MARKERS.ENEMY][self.__markerBaseAimMarker2D]
+            if isBaseMarkerEnabled and self._vehicleID in self._markers:
                 self._addMarker(self._vehicleID)
-            elif isMarkerEnabled is False:
+            else:
                 self._hideAllMarkers(clearVehicleID=False)
-            self.__baseMarker = diff[MARKERS.ENEMY].get(self.__markerBaseAimMarker2D)
-            self.__altMarker = diff[MARKERS.ENEMY].get(self.__markerAltAimMarker2D)
+            self.__baseMarker = isBaseMarkerEnabled
+        if self.__markerAltAimMarker2D in diff[MARKERS.ENEMY]:
+            self.__altMarker = diff[MARKERS.ENEMY][self.__markerAltAimMarker2D]
 
     def __showExtendedInfo(self, event):
         isDown = event.ctx['isDown']
@@ -552,7 +561,7 @@ class EquipmentsMarkerPlugin(MarkerPlugin):
             marker = item.getEnemyMarker()
             markerColor = item.getEnemyMarkerColor()
         self._invokeMarker(markerID, 'init', marker, _EQUIPMENT_DELAY_FORMAT.format(round(delay)), self.__defaultPostfix, markerColor)
-        self.__setCallback(markerID, round(BigWorld.serverTime() + delay))
+        self.__setCallback(markerID, BigWorld.serverTime() + delay)
         return
 
     def __setCallback(self, markerID, finishTime, interval=_EQUIPMENT_DEFAULT_INTERVAL):
@@ -566,12 +575,12 @@ class EquipmentsMarkerPlugin(MarkerPlugin):
 
     def __handleCallback(self, markerID, finishTime):
         self.__callbackIDs[markerID] = None
-        delay = round(finishTime - BigWorld.serverTime())
+        delay = finishTime - BigWorld.serverTime()
         if delay <= 0:
             self._destroyMarker(markerID)
         else:
-            self._invokeMarker(markerID, 'updateTimer', _EQUIPMENT_DELAY_FORMAT.format(abs(delay)))
-            self.__setCallback(markerID, finishTime)
+            self._invokeMarker(markerID, 'updateTimer', _EQUIPMENT_DELAY_FORMAT.format(abs(round(delay))))
+            self.__setCallback(markerID, finishTime, min(delay, _EQUIPMENT_DEFAULT_INTERVAL))
         return
 
 

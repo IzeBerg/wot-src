@@ -60,11 +60,7 @@ __all__ = (
  'yellowText',
  'greenText',
  'poiCapturedBoldText',
- 'poiCapturedRegularText',
- 'nyAmber',
- 'nyCrystal',
- 'nyEmerald',
- 'nyIron')
+ 'poiCapturedRegularText')
 
 def _getStyle(style, ctx=None):
     if ctx is None:
@@ -294,22 +290,6 @@ def brcoin(text):
     return _formatText('creditsText', text)
 
 
-def nyAmber(text):
-    return _formatText('nyAmber', text)
-
-
-def nyIron(text):
-    return _formatText('nyIron', text)
-
-
-def nyCrystal(text):
-    return _formatText('nyCrystal', text)
-
-
-def nyEmerald(text):
-    return _formatText('nyEmerald', text)
-
-
 def defRes(text):
     return _formatText('defresText', text)
 
@@ -332,10 +312,6 @@ def titleFont(text):
 
 def tutorial(text):
     return _formatText('tutorialText', text)
-
-
-def tutorialBig(text):
-    return _formatText('tutorialTextBig', text)
 
 
 def playerOnline(text):

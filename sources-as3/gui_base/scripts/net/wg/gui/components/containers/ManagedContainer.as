@@ -189,7 +189,6 @@ package net.wg.gui.components.containers
       
       public function setFocusedView(param1:IManagedContent) : void
       {
-         var _loc2_:ViewSettingsVO = null;
          if(contains(DisplayObject(param1)) && param1.sourceView != App.containerMgr.lastFocusedView)
          {
             if(App.containerMgr.lastFocusedView != null)
@@ -201,11 +200,7 @@ package net.wg.gui.components.containers
             {
                this.updateOrCreateModalBg(param1.modalAlpha);
             }
-            _loc2_ = param1.containerContent.sourceView.as_config.configVO;
-            if(!_loc2_.isNonRearrange)
-            {
-               setChildIndex(DisplayObject(param1.containerContent),numChildren - 1);
-            }
+            setChildIndex(DisplayObject(param1.containerContent),numChildren - 1);
             param1.sourceView.setModalFocus();
             App.containerMgr.lastFocusedView = param1.sourceView;
          }

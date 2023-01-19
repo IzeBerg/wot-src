@@ -81,6 +81,10 @@
 			<id>ModernizedSetupTabHint</id>
 			<rule>player100Battles</rule>
 		</alias>
+		<alias>
+			<id>OfferBannerWindow</id>
+			<rule>player103Battles</rule>
+		</alias>
 	</aliases>
 	<rules>
 		<rule>
@@ -99,6 +103,12 @@
 			<id>player100Battles</id>
 			<condition>
 				<battlesCount>100</battlesCount>
+			</condition>
+		</rule>
+		<rule>
+			<id>player103Battles</id>
+			<condition>
+				<battlesCount>103</battlesCount>
 			</condition>
 		</rule>
 		<rule>

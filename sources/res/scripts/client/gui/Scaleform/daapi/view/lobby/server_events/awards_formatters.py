@@ -1,22 +1,13 @@
-import typing
+from gui.Scaleform.daapi.view.lobby.missions.awards_formatters import NewStyleBonusComposer
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.auxiliary.rewards_helper import NEW_STYLE_FORMATTED_BONUSES
 from gui.server_events import formatters
-from gui.server_events.awards_formatters import AWARDS_SIZES, AwardsPacker, QuestsBonusComposer, getPostBattleAwardsPacker, TEXT_FORMATTERS
-from gui.server_events.bonuses import BlueprintsBonusSubtypes, LootBoxTokensBonus, NYCoinTokenBonus, NYRandomResourceBonus
+from gui.server_events.awards_formatters import AWARDS_SIZES, AwardsPacker, QuestsBonusComposer, getPostBattleAwardsPacker
+from gui.server_events.bonuses import BlueprintsBonusSubtypes
 from gui.battle_pass.battle_pass_bonuses_helper import BonusesHelper
-from gui.Scaleform.daapi.view.lobby.missions.awards_formatters import NewStyleBonusComposer
-from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
-from gui.shared.formatters import text_styles
-from gui.shared.formatters.icons import makeImageTag
 from gui.shared.gui_items.crew_skin import localizedFullName as localizeSkinName
-from gui.shared.utils.functions import makeTooltip
-from helpers import dependency
-from items.components.ny_constants import NyCurrency
-from skeletons.gui.shared import IItemsCache
-if typing.TYPE_CHECKING:
-    from gui.server_events.bonuses import TokensBonus, CurrenciesBonus
+from nations import NAMES
 SIMPLE_BONUSES_MAX_ITEMS = 5
 _DISPLAYED_AWARDS_COUNT = 2
 _END_LINE_SEPARATOR = ','
@@ -128,16 +119,41 @@ class CrewSkinFormatter(OldStyleBonusFormatter):
 
 
 class BlueprintsFormatter(OldStyleBonusFormatter):
+    _ORDER = [
+     BlueprintsBonusSubtypes.FINAL_FRAGMENT,
+     BlueprintsBonusSubtypes.UNIVERSAL_FRAGMENT,
+     BlueprintsBonusSubtypes.NATION_FRAGMENT,
+     BlueprintsBonusSubtypes.VEHICLE_FRAGMENT,
+     BlueprintsBonusSubtypes.RANDOM_FRAGMENT,
+     BlueprintsBonusSubtypes.RANDOM_NATIONAL_FRAGMENT]
+
+    def __init__(self):
+        super(BlueprintsFormatter, self).__init__()
+        self._groupedFragments = {}
 
     @classmethod
     def getOrder(cls):
         return 5
 
     def accumulateBonuses(self, bonus):
-        result = [
-         self._formatBlueprint(bonus, bonus.getCount())]
-        if result:
-            self._result.append(formatters.packSimpleBonusesBlock(result))
+        blueprintType = bonus.getBlueprintName()
+        fragments = self._groupedFragments.get(blueprintType, [])
+        fragments.append(bonus)
+        self._groupedFragments[blueprintType] = fragments
+
+    def extractFormattedBonuses(self, addLineSeparator=False):
+        result = []
+        for fragmentType in self._ORDER:
+            fragments = self._groupedFragments.get(fragmentType)
+            if fragments:
+                fragmentLabels = []
+                for fragment in fragments:
+                    fragmentLabels.append(self._formatBlueprint(fragment, fragment.getCount()))
+
+                result.append(formatters.packLongBonusesBlock(fragmentLabels, linesLimit=len(NAMES)))
+
+        self._groupedFragments = {}
+        return result
 
     @classmethod
     def _formatBlueprint(cls, bonus, count):
@@ -147,7 +163,8 @@ class BlueprintsFormatter(OldStyleBonusFormatter):
         elif blueprintType == BlueprintsBonusSubtypes.UNIVERSAL_FRAGMENT:
             blueprintString = backport.text(R.strings.quests.bonusName.blueprints.universal())
         elif blueprintType == BlueprintsBonusSubtypes.NATION_FRAGMENT:
-            blueprintString = backport.text(R.strings.quests.bonusName.blueprints.nation.any())
+            nation = backport.text(R.strings.nations.dyn(bonus.getImageCategory(), '')())
+            blueprintString = backport.text(R.strings.quests.bonusName.blueprints.nation(), nationName=nation)
         elif blueprintType == BlueprintsBonusSubtypes.VEHICLE_FRAGMENT:
             blueprintString = backport.text(R.strings.quests.bonusName.blueprints.vehicle.any())
         elif blueprintType == BlueprintsBonusSubtypes.RANDOM_FRAGMENT:
@@ -178,72 +195,6 @@ class SimpleBonusFormatter(OldStyleBonusFormatter):
         if simpleBonusesList:
             result.append(formatters.packSimpleBonusesBlock(simpleBonusesList, endlineSymbol=_END_LINE_SEPARATOR if addLineSeparator else _EMPTY_STRING))
         return result
-
-
-class LootBoxTokenFormatter(SimpleBonusFormatter):
-    __itemsCache = dependency.descriptor(IItemsCache)
-
-    def accumulateBonuses(self, bonus, event=None):
-        for token in bonus.getTokens().itervalues():
-            lootBox = self.__itemsCache.items.tokens.getLootBoxByTokenID(token.id)
-            if lootBox is None:
-                return
-            boxType = lootBox.getType()
-            iconName = ('lootBox_{0}').format(boxType)
-            icon = makeImageTag(source=backport.image(R.images.gui.maps.icons.quests.bonuses.small.dyn(iconName)()), width=32, height=32, vSpace=-14)
-            boxName = backport.text(R.strings.lootboxes.type.dyn(boxType)())
-            boxCount = text_styles.stats(backport.text(R.strings.ny.postbattle.lootBox.boxCount(), count=token.count))
-            label = text_styles.main(backport.text(R.strings.ny.postbattle.lootBox.boxesLabel(), boxName=boxName, icon=icon, boxCount=boxCount))
-            tooltip = makeTooltip(header=lootBox.getUserName(), body=TOOLTIPS.QUESTS_BONUSES_LOOTBOXTOKEN_BODY)
-            self._result.append(formatters.packSingleLineBonusesBlock([label], complexTooltip=tooltip))
-
-        return
-
-    def extractFormattedBonuses(self, addLineSeparator=False):
-        result = []
-        if self._result:
-            result.extend(self._result)
-        return result
-
-
-class NYRandomResourcesFormatter(OldStyleBonusFormatter):
-
-    def accumulateBonuses(self, bonus, event=None):
-        formattedList = BonusesHelper.getTextStrings(bonus)
-        if formattedList:
-            self._result.append(formatters.packSimpleBonusesBlock(formattedList))
-
-    @classmethod
-    def getOrder(cls):
-        return -1
-
-
-class NYResourcesFormatter(OldStyleBonusFormatter):
-
-    def accumulateBonuses(self, bonus, event=None):
-        currencyCode = bonus.getCode()
-        iconRes = R.images.gui.maps.icons.newYear.resources.size_16.dyn(currencyCode)
-        icon = makeImageTag(source=backport.image(iconRes()), width=16, height=16, vSpace=-3)
-        countLabel = TEXT_FORMATTERS.get(bonus.getCode(), text_styles.stats)(bonus.formatValue())
-        label = backport.text(R.strings.ny.postbattle.nyResources.dyn(currencyCode)(), icon=icon, count=countLabel)
-        tooltipData = bonus.getTooltipData()
-        block = formatters.packSingleLineBonusesBlock([
-         text_styles.main(label)], specialTooltip=tooltipData.tooltip, isWulfTooltip=tooltipData.isWulfTooltip, tooltipArgs=tooltipData.specialArgs)
-        self._result.append(block)
-
-
-class NYCoinFormatter(OldStyleBonusFormatter):
-
-    def accumulateBonuses(self, bonus, event=None):
-        iconRes = R.images.gui.maps.icons.quests.bonuses.small.ny23Coin
-        icon = makeImageTag(source=backport.image(iconRes()), width=16, height=16, vSpace=-3)
-        countLabel = text_styles.stats(bonus.getCount())
-        label = backport.text(R.strings.ny.postbattle.ny23Coin(), icon=icon, count=countLabel)
-        tooltipData = bonus.getTooltipData()
-        block = formatters.packSingleLineBonusesBlock([
-         text_styles.main(label)], specialTooltip=tooltipData.tooltip if tooltipData else None, isWulfTooltip=tooltipData.isWulfTooltip if tooltipData else None, tooltipArgs=tooltipData.specialArgs if tooltipData else None)
-        self._result.append(block)
-        return
 
 
 class TextBonusFormatter(OldStyleBonusFormatter):
@@ -304,35 +255,20 @@ class OldStyleAwardsPacker(AwardsPacker):
         super(OldStyleAwardsPacker, self).__init__(getFormattersMap(event))
         self.__defaultFormatter = SimpleBonusFormatter()
         self.__newStyleFormatter = NewStyleBonusFormatter()
-        self.__lootBoxFormatter = LootBoxTokenFormatter()
-        self.__nyResourcesFormatter = NYResourcesFormatter()
-        self.__ny23CoinFormatter = NYCoinFormatter()
-        self.__ny23RandomResourcesFormatter = NYRandomResourcesFormatter()
 
     def format(self, bonuses, event=None):
         formattedBonuses = []
         isCustomizationBonusExist = False
         for b in bonuses:
             if b.isShowInGUI():
-                if b.getName() == 'battleToken' and isinstance(b, LootBoxTokensBonus):
-                    formatter = self.__lootBoxFormatter
-                elif b.getName() == 'battleToken' and isinstance(b, NYCoinTokenBonus):
-                    formatter = self.__ny23CoinFormatter
-                elif b.getName() == 'currencies' and b.getCode() in NyCurrency.ALL:
-                    formatter = self.__nyResourcesFormatter
-                elif b.getName() == 'nyRandomResource' and isinstance(b, NYRandomResourceBonus):
-                    formatter = self.__ny23RandomResourcesFormatter
-                else:
-                    formatter = self._getBonusFormatter(b.getName())
+                formatter = self._getBonusFormatter(b.getName())
                 if formatter:
                     formatter.accumulateBonuses(b)
                 if b.getName() == 'customizations':
                     isCustomizationBonusExist = True
 
         fmts = [
-         self.__ny23RandomResourcesFormatter, self.__lootBoxFormatter, self.__defaultFormatter,
-         self.__newStyleFormatter, self.__nyResourcesFormatter,
-         self.__ny23CoinFormatter]
+         self.__defaultFormatter, self.__newStyleFormatter]
         fmts.extend(sorted(self.getFormatters().itervalues(), key=lambda f: f.getOrder()))
         for formatter in fmts:
             formattedBonuses.extend(formatter.extractFormattedBonuses(isCustomizationBonusExist))

@@ -53,8 +53,6 @@ package net.wg.data.constants.generated
       
       public static const WHITE_ICON_SPG_16X16:String = "whiteIconSPG16x16";
       
-      public static const DAMAGELOG_AIRSTRIKE_16X16:String = "damageLog_airstrike_16x16";
-      
       public static const DAMAGELOG_ARTILLERY_16X16:String = "damageLog_artillery_16x16";
       
       public static const DAMAGELOG_BERSERKER_16X16:String = "damageLog_berserker_16x16";
@@ -86,6 +84,18 @@ package net.wg.data.constants.generated
       public static const DAMAGELOG_THUNDER_STRIKE_16X16:String = "damageLog_thunder_strike_16x16";
       
       public static const DAMAGELOG_FORT_ARTILLERY_16X16:String = "damageLog_fort_artillery_16x16";
+      
+      public static const DAMAGELOG_AIRSTRIKE_ENEMY_16X16:String = "damageLog_airstrike_enemy_16x16";
+      
+      public static const DAMAGELOG_AIRSTRIKE_EQ_16X16:String = "damageLog_airstrike_eq_16x16";
+      
+      public static const DAMAGELOG_AIRSTRIKE_EQ_ENEMY_16X16:String = "damageLog_airstrike_eq_enemy_16x16";
+      
+      public static const DAMAGELOG_ARTILLERY_ENEMY_16X16:String = "damageLog_artillery_enemy_16x16";
+      
+      public static const DAMAGELOG_ARTILLERY_EQ_16X16:String = "damageLog_artillery_eq_16x16";
+      
+      public static const DAMAGELOG_ARTILLERY_EQ_ENEMY_16X16:String = "damageLog_artillery_eq_enemy_16x16";
        
       
       public function BATTLEDAMAGELOG_IMAGES()

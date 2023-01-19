@@ -14,7 +14,7 @@ package net.wg.gui.battle.views.battleTankCarousel
       
       override protected function showPopup() : void
       {
-         popoverMgr.show(this,BATTLE_VIEW_ALIASES.BATTLE_TANK_CAROUSEL_FILTER_POPOVER);
+         popoverMgr.show(this,BATTLE_VIEW_ALIASES.EPIC_CAROUSEL_FILTER_POPOVER);
       }
    }
 }

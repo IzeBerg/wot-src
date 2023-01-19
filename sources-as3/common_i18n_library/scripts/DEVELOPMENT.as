@@ -249,8 +249,6 @@ package
       
       public static const GFVIEWER_CONTENT_CREATEBLOCKTITLE:String = "#development:gfViewer/content/createBlockTitle";
       
-      public static const GFVIEWER_CONTENT_GENERATEBLOCKTITLE:String = "#development:gfViewer/content/generateBlockTitle";
-      
       public static const GFVIEWER_CONTENT_LISTBLOCKTITLE:String = "#development:gfViewer/content/listBlockTitle";
       
       public static const GFVIEWER_CONTENT_TRANSACTIONTITLE:String = "#development:gfViewer/content/transactionTitle";
@@ -267,33 +265,17 @@ package
       
       public static const GFVIEWER_CONTENT_MODELLABEL:String = "#development:gfViewer/content/modelLabel";
       
-      public static const GFVIEWER_CONTENT_BACKGROUNDLABEL:String = "#development:gfViewer/content/backgroundLabel";
-      
-      public static const GFVIEWER_CONTENT_CHECKBOX_INTERACTIVE:String = "#development:gfViewer/content/checkbox/interactive";
-      
       public static const GFVIEWER_CONTENT_PRESETDESCRIPTION:String = "#development:gfViewer/content/presetDescription";
       
       public static const GFVIEWER_CONTENT_TRANSACTIONDESCRIPTION:String = "#development:gfViewer/content/transactionDescription";
       
       public static const GFVIEWER_CONTENT_CHAINDESCRIPTION:String = "#development:gfViewer/content/chainDescription";
       
-      public static const GFVIEWER_CONTENT_COMMANDTAB:String = "#development:gfViewer/content/commandTab";
-      
-      public static const GFVIEWER_CONTENT_HISTORYTAB:String = "#development:gfViewer/content/historyTab";
-      
-      public static const GFVIEWER_CONTENT_COMMANDLISTSUBTITLE:String = "#development:gfViewer/content/commandListSubtitle";
-      
-      public static const GFVIEWER_CONTENT_COMMANDSUBTITLE:String = "#development:gfViewer/content/commandSubtitle";
-      
-      public static const GFVIEWER_CONTENT_HISTORYSUBTITLE:String = "#development:gfViewer/content/historySubtitle";
-      
       public static const GFVIEWER_CONTROLS_ADD:String = "#development:gfViewer/controls/add";
       
       public static const GFVIEWER_CONTROLS_ADDEMPTY:String = "#development:gfViewer/controls/addEmpty";
       
       public static const GFVIEWER_CONTROLS_ADDBASE:String = "#development:gfViewer/controls/addBase";
-      
-      public static const GFVIEWER_CONTROLS_ADDFROMVIEW:String = "#development:gfViewer/controls/addFromView";
       
       public static const GFVIEWER_CONTROLS_ADDTRANSACTION:String = "#development:gfViewer/controls/addTransaction";
       
@@ -314,12 +296,6 @@ package
       public static const GFVIEWER_CONTROLS_SAVE:String = "#development:gfViewer/controls/save";
       
       public static const GFVIEWER_CONTROLS_SAVEASNEW:String = "#development:gfViewer/controls/saveAsNew";
-      
-      public static const GFVIEWER_CONTROLS_GENERATE:String = "#development:gfViewer/controls/generate";
-      
-      public static const GFVIEWER_PLACEHOLDER_COMMAND:String = "#development:gfViewer/placeholder/command";
-      
-      public static const GFVIEWER_PLACEHOLDER_TRANSACTION:String = "#development:gfViewer/placeholder/transaction";
        
       
       public function DEVELOPMENT()

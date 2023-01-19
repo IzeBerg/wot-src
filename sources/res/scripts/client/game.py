@@ -20,8 +20,6 @@ try:
 except locale.Error:
     LOG_CURRENT_EXCEPTION()
 
-sys.setrecursionlimit(sys.getrecursionlimit() + 100)
-
 class ServiceLocator(object):
     connectionMgr = dependency.descriptor(IConnectionManager)
     gameplay = dependency.descriptor(IGameplayLogic)
@@ -356,7 +354,7 @@ def handleKeyEvent(event):
         if inputHandler is not None:
             if inputHandler.handleKeyEvent(event):
                 return True
-        for handler in g_keyEventHandlers.copy():
+        for handler in g_keyEventHandlers:
             try:
                 if handler(event):
                     return True

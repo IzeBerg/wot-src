@@ -1,3 +1,4 @@
+from enum import Enum
 MAX_ACTIVE_PERSONAL_BOOSTERS = 3
 MAX_ACTIVE_EVENT_BOOSTERS = 1
 MAX_ACTIVE_BOOSTERS = MAX_ACTIVE_PERSONAL_BOOSTERS + MAX_ACTIVE_EVENT_BOOSTERS
@@ -73,3 +74,9 @@ class PR2BoosterIDs(object):
      XP_DEF, CRED_DEF, XP_CREW_FREE_DEF)
     ADVANCED_ITEMS = (XP, CRED, XP_CREW_FREE)
     ALL_ITEMS = ITEMS + ADVANCED_ITEMS
+
+
+class BoosterCategory(Enum):
+    PERSONAL = 'personal'
+    CLAN = 'clan'
+    EVENT = 'event'

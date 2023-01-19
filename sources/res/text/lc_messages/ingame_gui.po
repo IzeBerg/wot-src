@@ -608,6 +608,15 @@ msgstr "to enable voice chat"
 msgid "dynamicSquad/invite"
 msgstr "Invitation to join the Platoon"
 
+msgid "efficiencyRibbons/AirstrikeDmg"
+msgstr "Damage by Airstrike"
+
+msgid "efficiencyRibbons/ArtilleryDmg"
+msgstr "Damage by Artillery Strike"
+
+msgid "efficiencyRibbons/CannonDmg"
+msgstr "Damage by Main Objective"
+
 msgid "efficiencyRibbons/armor"
 msgstr "Damage Blocked"
 
@@ -1156,6 +1165,15 @@ msgid ""
 "player_messages/DEATH_FROM_INACTIVE_CREW_AT_WORLD_COLLISION_SELF_SUICIDE"
 msgstr "Crew destroyed."
 
+msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_ALLY_ENEMY_ARCADE"
+msgstr "%(attacker)s destroyed %(target)s by mines."
+
+msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_ENEMY_ALLY_ARCADE"
+msgstr "%(attacker)s destroyed %(target)s by mines."
+
+msgid "player_messages/DEATH_FROM_MINE_EXPLOSION_SELF_ENEMY_ARCADE"
+msgstr "%(target)s destroyed by mines."
+
 msgid "player_messages/DEATH_FROM_OVERTURN_ALLY_ALLY"
 msgstr "Ally %(attacker)s overturned ally %(target)s"
 
@@ -1259,10 +1277,10 @@ msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY"
 msgstr "%(attacker)s destroyed %(target)s."
 
 msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_ARTILLERY"
-msgstr "%(attacker)s destroyed %(target)s by artillery strike."
+msgstr "%(attacker)s destroyed %(target)s by Artillery Strike."
 
 msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_BOMBER"
-msgstr "%(attacker)s destroyed %(target)s by bombing."
+msgstr "%(attacker)s destroyed %(target)s by Airstrike."
 
 msgid "player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_COMP7"
 msgstr "%(attacker)s destroyed %(target)s (Fire Cover)."
@@ -1283,10 +1301,10 @@ msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY"
 msgstr "%(attacker)s destroyed %(target)s."
 
 msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_ARTILLERY"
-msgstr "%(attacker)s destroyed %(target)s by artillery strike."
+msgstr "%(attacker)s destroyed %(target)s by Artillery Strike."
 
 msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_BOMBER"
-msgstr "%(attacker)s destroyed %(target)s by bombing."
+msgstr "%(attacker)s destroyed %(target)s by Airstrike."
 
 msgid "player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_COMP7"
 msgstr "%(attacker)s destroyed %(target)s (Fire Cover)."
@@ -1328,7 +1346,7 @@ msgid "player_messages/DEATH_FROM_SHOT_SELF_ENEMY_ARTILLERY"
 msgstr "%(target)s destroyed by artillery strike."
 
 msgid "player_messages/DEATH_FROM_SHOT_SELF_ENEMY_BOMBER"
-msgstr "%(target)s destroyed by bombing."
+msgstr "%(target)s destroyed by Airstrike."
 
 msgid "player_messages/DEATH_FROM_SHOT_SELF_ENEMY_COMP7"
 msgstr "%(target)s destroyed"
@@ -1575,8 +1593,17 @@ msgstr "Spectator Mode"
 msgid "postmortem/tips/observerMode/text"
 msgstr "Switch between allied vehicles."
 
+msgid "postmortem_messages/DEATH_FROM_ARTILLERY_PROTECTION"
+msgstr "Vehicle destroyed by the main objective"
+
 msgid "postmortem_messages/DEATH_FROM_ARTILLERY_PROTECTION_UNKNOWN"
 msgstr "Vehicle destroyed by artillery strike."
+
+msgid "postmortem_messages/DEATH_FROM_ARTILLERY_SECTOR"
+msgstr "Vehicle destroyed by the main objective"
+
+msgid "postmortem_messages/DEATH_FROM_BOMBER"
+msgstr "Vehicle destroyed by Airstrike"
 
 msgid "postmortem_messages/DEATH_FROM_CLING_BRANDER"
 msgstr "Vehicle destroyed by Battlefield Robot."
@@ -1633,7 +1660,7 @@ msgid "postmortem_messages/DEATH_FROM_KAMIKAZE"
 msgstr "Vehicle destroyed by Fireball."
 
 msgid "postmortem_messages/DEATH_FROM_MINE_EXPLOSION"
-msgstr "Vehicle destroyed by Minefield."
+msgstr "Vehicle destroyed by mines"
 
 msgid "postmortem_messages/DEATH_FROM_OVERTURN_ALLY_SELF"
 msgstr "Vehicle overturned by ally"
@@ -1653,6 +1680,9 @@ msgstr "Vehicle destroyed by ramming"
 msgid "postmortem_messages/DEATH_FROM_RAMMING_SELF_SUICIDE"
 msgstr "Vehicle destroyed by ramming"
 
+msgid "postmortem_messages/DEATH_FROM_RECOVERY"
+msgstr "Your vehicle was destroyed"
+
 msgid "postmortem_messages/DEATH_FROM_SECTOR_BOMBERS_UNKNOWN"
 msgstr "Vehicle destroyed during zone bombardment."
 
@@ -1663,13 +1693,13 @@ msgid "postmortem_messages/DEATH_FROM_SHOT"
 msgstr "Vehicle destroyed by player shot"
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE"
-msgstr "Vehicle destroyed by Artillery Strike."
+msgstr "Vehicle destroyed by Airstrike."
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_ARTILLERY"
-msgstr "Vehicle destroyed by artillery strike"
+msgstr "Vehicle destroyed by Artillery Strike"
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_BOMBER"
-msgstr "Vehicle destroyed by bombing"
+msgstr "Vehicle destroyed by Airstrike"
 
 msgid "postmortem_messages/DEATH_FROM_THUNDER_STRIKE"
 msgstr "Vehicle destroyed by Electric Discharge."
@@ -1990,6 +2020,10 @@ msgstr "You received Large Boxes with valuable rewards."
 
 msgid "rewardWindow/lootbox/headerText"
 msgstr "You received boxes!"
+
+msgid "rewardWindow/lootbox/isFreeDescText"
+msgstr ""
+"You received Small Boxes with valuable rewards for completing missions."
 
 msgid "rewardWindow/lootbox/winHeaderText"
 msgstr "It's time to find out what's in the box!"
