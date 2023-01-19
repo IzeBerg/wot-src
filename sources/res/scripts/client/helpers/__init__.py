@@ -219,7 +219,3 @@ def unicodeToStr(data):
 
         return res
     return data
-
-
-def isMemoryRiskySystem():
-    return BigWorld.totalVirtualMemory() < 3145728

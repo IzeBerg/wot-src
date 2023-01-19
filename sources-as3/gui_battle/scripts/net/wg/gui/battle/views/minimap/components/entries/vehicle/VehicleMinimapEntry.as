@@ -127,6 +127,8 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       
       private var _hpTypeMap:Object;
       
+      private var _minimapEntryController:MinimapEntryController;
+      
       public function VehicleMinimapEntry()
       {
          this._vehicleAnimations = {};
@@ -149,7 +151,8 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          this._prevTextPosY = this._currentTextField.y;
          TextFieldEx.setNoTranslate(this.vehicleNameTextFieldAlt,true);
          TextFieldEx.setNoTranslate(this.vehicleNameTextFieldClassic,true);
-         MinimapEntryController.instance.registerScalableEntry(this);
+         this._minimapEntryController = MinimapEntryController.instance;
+         this._minimapEntryController.registerScalableEntry(this);
          this._isColorBlind = App.colorSchemeMgr.getIsColorBlindS();
       }
       
@@ -159,6 +162,7 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          var _loc2_:String = null;
          var _loc3_:IColorScheme = null;
          var _loc4_:String = null;
+         var _loc5_:Boolean = false;
          if(isInvalid(INVALID_VEHICLE_LABEL))
          {
             if(this._isVehicleLabelVisible)
@@ -257,11 +261,12 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          }
          if(isInvalid(INVALID_HP))
          {
-            this.hpCircle.visible = this._showVehicleHp && this._deadState != VehicleMinimapEntryConst.DEAD;
+            _loc5_ = this._showVehicleHp && this._deadState != VehicleMinimapEntryConst.DEAD;
+            this.hpCircle.visible = _loc5_;
             this.hpCircle.setColorBlindMode(this._isColorBlind);
             this.hpCircle.setIsAoI(this._isInAoI);
             this.hpCircle.setType(this._hpTypeMap[this._guiLabel]);
-            if(this.hpCircle.visible)
+            if(_loc5_)
             {
                this._currentTextField.x = this._prevTextPosX + HP_OFFSET_X;
                this._currentTextField.y = this._prevTextPosY + HP_OFFSET_Y;
@@ -280,9 +285,10 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       
       override protected function onDispose() : void
       {
-         MinimapEntryController.instance.unregisterScalableEntry(this);
-         MinimapEntryController.instance.unregisterVehicleLabelEntry(this);
-         MinimapEntryController.instance.unregisterVehicleEntry(this);
+         this._minimapEntryController.unregisterScalableEntry(this);
+         this._minimapEntryController.unregisterVehicleLabelEntry(this);
+         this._minimapEntryController.unregisterVehicleEntry(this);
+         this._minimapEntryController = null;
          this.mcTopAnimation.dispose();
          this.mcTopAnimation = null;
          App.utils.data.cleanupDynamicObject(this._vehicleAnimations);
@@ -387,11 +393,11 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          if(param1)
          {
             this._currentTextField = this.vehicleNameTextFieldClassic;
-            MinimapEntryController.instance.registerVehicleEntry(this);
+            this._minimapEntryController.registerVehicleEntry(this);
          }
          else
          {
-            MinimapEntryController.instance.unregisterVehicleEntry(this);
+            this._minimapEntryController.unregisterVehicleEntry(this);
             this._actionAnimationType = Values.EMPTY_STR;
             this._currentTextField = this.vehicleNameTextFieldAlt;
          }
@@ -434,7 +440,7 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
             App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
             this._isSetVehicleInfo = true;
          }
-         MinimapEntryController.instance.registerVehicleLabelEntry(this);
+         this._minimapEntryController.registerVehicleLabelEntry(this);
          if(_loc6_ != 0)
          {
             invalidate(_loc6_);

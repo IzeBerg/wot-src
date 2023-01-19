@@ -43,7 +43,7 @@ package net.wg.gui.battle.components.poi.components
          {
             this.progress = param1;
             _loc2_ = this.progress * SEMI_LAST_FRAME >> 0;
-            curFrame = _loc2_;
+            currentProgressFrame = _loc2_;
             this.afterProgressUpdate();
          }
       }
@@ -57,7 +57,7 @@ package net.wg.gui.battle.components.poi.components
       {
          super.initialize();
          state = PROGRESS_STATE;
-         curFrame = EMPTY_LAST_FRAME;
+         currentProgressFrame = EMPTY_LAST_FRAME;
          invalidate(INV_FRAME);
       }
       
@@ -85,7 +85,7 @@ package net.wg.gui.battle.components.poi.components
                _loc2_ = PROGRESS_STATE;
                if(this.statusID == POI_CONSTS.POI_STATUS_ACTIVE)
                {
-                  curFrame = EMPTY_LAST_FRAME;
+                  currentProgressFrame = EMPTY_LAST_FRAME;
                }
                else
                {

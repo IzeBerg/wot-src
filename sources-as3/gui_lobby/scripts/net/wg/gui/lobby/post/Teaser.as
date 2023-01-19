@@ -3,7 +3,6 @@ package net.wg.gui.lobby.post
    import flash.display.Bitmap;
    import flash.display.BitmapData;
    import flash.display.Sprite;
-   import flash.display.Stage;
    import flash.events.MouseEvent;
    import flash.geom.Matrix;
    import flash.geom.Point;
@@ -149,7 +148,7 @@ package net.wg.gui.lobby.post
       {
          var _loc1_:int = 0;
          super.draw();
-         if(this.stage == null)
+         if(stage == null)
          {
             return;
          }
@@ -190,24 +189,19 @@ package net.wg.gui.lobby.post
             this.timerGlow.visible = this._timeLabel != Values.EMPTY_STR;
             App.utils.commons.truncateTextFieldMultiline(this.title,this._data.descr,MAX_LINES,DOTS);
             this._commons.updateTextFieldSize(this.title,false,true);
-            _loc1_ = this.stage.stageWidth <= STAGE_WIDTH_BOUNDARY && this.timerGlow.visible ? int(TITLE_PADDING_BOTTOM_SMALL) : int(TITLE_PADDING_BOTTOM);
+            _loc1_ = stage.stageWidth <= STAGE_WIDTH_BOUNDARY && this.timerGlow.visible ? int(TITLE_PADDING_BOTTOM_SMALL) : int(TITLE_PADDING_BOTTOM);
             this.title.y = height - this.title.height - _loc1_;
             this.middleTitle.text = this._data.title;
          }
       }
       
-      override protected function onBeforeDispose() : void
+      override protected function onDispose() : void
       {
          this.removeEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
          this.removeEventListener(MouseEvent.ROLL_OUT,this.onRollOutHandler);
          this.hitMc.removeEventListener(MouseEvent.CLICK,this.onHitMcClickHandler);
          this.closeBtn.removeEventListener(MouseEvent.CLICK,this.onCloseBtnClickHandler);
          this.image.removeEventListener(UILoaderEvent.COMPLETE,this.onImageCompleteHandler);
-         super.onBeforeDispose();
-      }
-      
-      override protected function onDispose() : void
-      {
          this._counterManager.removeCounter(this.postTitle);
          this._counterManager = null;
          this._commons = null;
@@ -281,11 +275,6 @@ package net.wg.gui.lobby.post
          this.timer.htmlText = param1;
       }
       
-      override public function get stage() : Stage
-      {
-         return App.stage;
-      }
-      
       private function clean() : void
       {
          this.title.text = Values.EMPTY_STR;
@@ -298,7 +287,7 @@ package net.wg.gui.lobby.post
       private function setState(param1:String) : void
       {
          var _loc2_:String = null;
-         if(this.stage.stageWidth <= STAGE_WIDTH_BOUNDARY)
+         if(stage.stageWidth <= STAGE_WIDTH_BOUNDARY)
          {
             _loc2_ = param1 + SMALL_TEASER_POSTFIX;
             this.teaserMask.width = MASK_WIDTH_SMALL;

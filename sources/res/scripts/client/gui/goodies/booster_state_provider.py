@@ -51,11 +51,14 @@ class BoosterStateProvider(IBoostersStateProvider):
 
     def getBoosters(self, criteria=None):
         results = {}
-        for goodieID, booster in self.__boosters.iteritems():
-            if criteria(booster):
-                results[goodieID] = booster
+        if self.__boosters is None:
+            return results
+        else:
+            for goodieID, booster in self.__boosters.iteritems():
+                if criteria(booster):
+                    results[goodieID] = booster
 
-        return results
+            return results
 
     def getBooster(self, boosterId):
         if self.__boosters is not None and boosterId in self.__boosters:

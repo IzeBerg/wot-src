@@ -80,7 +80,7 @@ _MULTI_KPI_PARAMS = frozenset([
  'clipFireRate', 'enginePower', 'enginePowerPerTon', 'invisibilityMovingFactor', 'invisibilityStillFactor',
  'maxHealth', 'radioDistance', 'reloadTime', 'reloadTimeSecs', 'shotDispersionAngle', 'turboshaftEnginePower',
  'turboshaftInvisibilityMovingFactor', 'turboshaftInvisibilityStillFactor', 'turretRotationSpeed',
- 'rocketAccelerationEnginePower'])
+ 'rocketAccelerationEnginePower', 'vehicleEnemySpottingTime'])
 _BONUS_TYPES_ORDER = {constants.BonusTypes.SKILL: 1, 
    constants.BonusTypes.ROLE: 1, 
    constants.BonusTypes.PERK: 1, 

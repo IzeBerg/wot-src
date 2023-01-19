@@ -78,7 +78,6 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
     tutorialMatKindsController = ComponentDescriptor()
     compoundHolder = ComponentDescriptor()
     partsGameObjects = ComponentDescriptor()
-    prefabLoaded = False
 
     def __init__(self):
         CallbackDelayer.__init__(self)
@@ -170,7 +169,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         self.__activated = True
         return
 
-    def deactivate(self, stopEffects=True, restoreFilter=True):
+    def deactivate(self, stopEffects=True):
         if not self.__activated:
             return
         else:
@@ -184,8 +183,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
                 BigWorld.removeCameraCollider(self.collisions.getColliderID())
             self.turretMatrix.target = None
             self.gunMatrix.target = None
-            if restoreFilter:
-                self._vehicle.filter = self.__originalFilter
+            self._vehicle.filter = self.__originalFilter
             self.filter.reset()
             self.__originalFilter = None
             self.__showCircleDelayed = None

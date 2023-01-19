@@ -89,10 +89,9 @@ package net.wg.gui.components.common
       
       private function updateLayout() : void
       {
-         var _loc1_:int = 0;
          this.description.height = this.description.textHeight + TEXT_ANTIALIAS_PADDING;
          this.checkBox.y = this.getTextActualHeight() + TEXT_HEIGHT_PADDING;
-         _loc1_ = this.checkBox.y + this.checkBox.height + CHECK_BOX_HEIGHT_PADDING;
+         var _loc1_:int = this.checkBox.y + this.checkBox.height + CHECK_BOX_HEIGHT_PADDING;
          this.submitBtn.y = _loc1_;
          this.cancelBtn.y = _loc1_;
       }

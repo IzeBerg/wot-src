@@ -4,7 +4,6 @@ package net.wg.gui.components.controls
    import flash.events.MouseEvent;
    import net.wg.data.constants.Errors;
    import net.wg.gui.events.ListEventEx;
-   import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.controls.CoreList;
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.interfaces.IListItemRenderer;
@@ -122,7 +121,7 @@ package net.wg.gui.components.controls
          var _loc3_:String = null;
          var _loc2_:IListItemRenderer = param1.currentTarget as IListItemRenderer;
          App.utils.asserter.assertNotNull(_loc2_,"renderer" + Errors.CANT_NULL);
-         if(_loc2_.getData() == null || isInvalid(InvalidationType.DATA))
+         if(_loc2_.getData() == null)
          {
             return false;
          }

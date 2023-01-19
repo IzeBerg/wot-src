@@ -264,7 +264,7 @@ def getGroupBonuses(groupName, comparator):
 
 def hasGroupPenalties(groupName, comparator):
     for paramName in PARAMS_GROUPS[groupName]:
-        if comparator.getPenalties(paramName):
+        if comparator.getExtendedData(paramName).penalties:
             return True
 
     return False

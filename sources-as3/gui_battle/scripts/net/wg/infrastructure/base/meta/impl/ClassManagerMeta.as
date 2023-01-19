@@ -272,6 +272,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.epicBattle.battleloading.events.EpicBattleLoadingEvent;
    import net.wg.gui.battle.epicBattle.battleloading.renderers.EpicBattleLoadingPlayerItemRenderer;
    import net.wg.gui.battle.epicBattle.views.EpicBattlePage;
+   import net.wg.gui.battle.epicBattle.views.EpicCarouselFilterPopoverView;
    import net.wg.gui.battle.epicBattle.views.components.EpicBattleConsumableButton;
    import net.wg.gui.battle.epicBattle.views.data.EpicStatsDataProviderBaseCtrl;
    import net.wg.gui.battle.epicBattle.views.data.EpicVehicleDataProvider;
@@ -1616,6 +1617,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_BATTLELOADING_RENDERERS_EPICBATTLELOADINGPLAYERITEMRENDERER:Class = EpicBattleLoadingPlayerItemRenderer;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_EPICBATTLEPAGE:Class = EpicBattlePage;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_EPICCAROUSELFILTERPOPOVERVIEW:Class = EpicCarouselFilterPopoverView;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_COMPONENTS_EPICBATTLECONSUMABLEBUTTON:Class = EpicBattleConsumableButton;
       

@@ -40,6 +40,7 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       {
          super.configUI();
          toggle = true;
+         this.icon.source = RES_ICONS.MAPS_ICONS_LIBRARY_QUALIFIERS_42X42_CAMOUFLAGE;
       }
       
       override protected function onDispose() : void
@@ -47,11 +48,6 @@ package net.wg.gui.lobby.vehicleCompare.configurator
          this.icon.dispose();
          this.icon = null;
          super.onDispose();
-      }
-      
-      public function setIcon(param1:String) : void
-      {
-         this.icon.source = param1;
       }
       
       override protected function handleMouseRelease(param1:MouseEvent) : void

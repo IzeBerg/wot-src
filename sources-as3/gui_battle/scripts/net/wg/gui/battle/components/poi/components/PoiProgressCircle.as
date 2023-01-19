@@ -22,13 +22,7 @@ package net.wg.gui.battle.components.poi.components
       public function PoiProgressCircle()
       {
          super();
-         curFrame = this.defaultEmptyFrame;
-      }
-      
-      override public function updateProgress(param1:Number) : void
-      {
-         super.updateProgress(param1);
-         curFrame = progressCircle.currentFrame;
+         currentProgressFrame = this.defaultEmptyFrame;
       }
       
       override protected function onDispose() : void

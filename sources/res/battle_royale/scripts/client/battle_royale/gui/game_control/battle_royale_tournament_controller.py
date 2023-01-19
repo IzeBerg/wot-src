@@ -35,6 +35,7 @@ class BattleRoyaleTournamentController(IBattleRoyaleTournamentController):
         self.__isReJoin = False
         self.__isChangingInternalState = False
         self.__previousInviteIDs = set()
+        self.__isReady = False
         self.onUpdatedParticipants = Event.Event()
         self.onSelectBattleRoyaleTournament = Event.Event()
         return
@@ -97,6 +98,9 @@ class BattleRoyaleTournamentController(IBattleRoyaleTournamentController):
         self.__tournamentComponent.tournamentNotReady(str(self.__currentToken.tournamentID), self.__notReadyResult)
 
     def leaveCurrentAndJoinToAnotherTournament(self, internalTournamentID):
+        if self.__isReady:
+            self.__pushErrorSystemMessage('JOINING forbidden during READY')
+            return
         self.__isReJoin = True
         self.__isChangingInternalState = True
         self.__currentToken = self.__tokens.get(internalTournamentID)
@@ -206,6 +210,8 @@ class BattleRoyaleTournamentController(IBattleRoyaleTournamentController):
         if resultID == AccountCommands.RES_FAILURE:
             _logger.error('joining to battle royale tournament failed with error = %r', errorStr)
             self.__pushErrorSystemMessage(errorStr)
+            self.__clearInternalData()
+            self.__selectRandom()
 
     def __leaveResult(self, requestID, resultID, errorStr):
         if resultID == AccountCommands.RES_FAILURE:
@@ -221,11 +227,15 @@ class BattleRoyaleTournamentController(IBattleRoyaleTournamentController):
         if resultID == AccountCommands.RES_FAILURE:
             _logger.error('tournament ready request with failed, str = %r', errorStr)
             self.__pushErrorSystemMessage(errorStr)
+        else:
+            self.__isReady = True
 
     def __notReadyResult(self, requestID, resultID, errorStr):
         if resultID == AccountCommands.RES_FAILURE:
             _logger.error('tournament not ready request fini with failed, str = %r', errorStr)
             self.__pushErrorSystemMessage(errorStr)
+        else:
+            self.__isReady = False
 
     def __pushErrorSystemMessage(self, stringCode):
         _r = R.strings.battle_royale.tournament.notification

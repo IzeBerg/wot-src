@@ -46,7 +46,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.BATTLE_EFFICIENCY_TYPES;
    import net.wg.data.constants.generated.BLOCKS_TOOLTIP_TYPES;
    import net.wg.data.constants.generated.COLOR_SETTINGS;
-   import net.wg.data.constants.generated.CONTACTS_ACTION_CONSTS;
    import net.wg.data.constants.generated.CROSSHAIR_CONSTANTS;
    import net.wg.data.constants.generated.CURRENCIES_CONSTANTS;
    import net.wg.data.constants.generated.CUSTOMIZATION_DIALOGS;
@@ -313,7 +312,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.controls.ListItemRedererImageText;
    import net.wg.gui.components.controls.ListItemRendererWithFocusOnDis;
    import net.wg.gui.components.controls.Money;
-   import net.wg.gui.components.controls.NYContextMenuItem;
    import net.wg.gui.components.controls.NationDropDownMenu;
    import net.wg.gui.components.controls.NormalSortingBtnVO;
    import net.wg.gui.components.controls.NormalSortingButton;
@@ -906,24 +904,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.managers.pool.ComponentsPool;
    import net.wg.infrastructure.managers.pool.Pool;
    import net.wg.infrastructure.managers.pool.PoolManager;
-   import net.wg.infrastructure.uilogger.LogLevels;
-   import net.wg.infrastructure.uilogger.MetricsUILogger;
-   import net.wg.infrastructure.uilogger.UILogger;
-   import net.wg.infrastructure.uilogger.bootcamp.BOOTCAMP_LOGGER_CONSTANTS;
-   import net.wg.infrastructure.uilogger.bootcamp.LoadingPageLogger;
-   import net.wg.infrastructure.uilogger.bootcamp.TooltipLogger;
-   import net.wg.infrastructure.uilogger.bootcamp.events.TooltipLogEvent;
-   import net.wg.infrastructure.uilogger.epic_battle.EPIC_BATTLE_LOGGER_CONSTANTS;
-   import net.wg.infrastructure.uilogger.epic_battle.SkillDropPageLogger;
-   import net.wg.infrastructure.uilogger.manual.MANUAL_LOGGER_CONSTANTS;
-   import net.wg.infrastructure.uilogger.manual.ManualPageLogger;
-   import net.wg.infrastructure.uilogger.new_year.Constants;
-   import net.wg.infrastructure.uilogger.new_year.LogTankBonus;
-   import net.wg.infrastructure.uilogger.new_year.LogTankSlot;
-   import net.wg.infrastructure.uilogger.veh_post_progression.Constants;
-   import net.wg.infrastructure.uilogger.veh_post_progression.LogDemountAllBtn;
-   import net.wg.infrastructure.uilogger.veh_post_progression.LogModificationTree;
-   import net.wg.infrastructure.uilogger.veh_post_progression.LogVehParams;
    import net.wg.infrastructure.uilogging.base.BaseLogger;
    import net.wg.infrastructure.uilogging.base.FlowLogger;
    import net.wg.infrastructure.uilogging.base.MetricsLogger;
@@ -997,8 +977,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_BLOCKS_TOOLTIP_TYPES:Class = BLOCKS_TOOLTIP_TYPES;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_COLOR_SETTINGS:Class = COLOR_SETTINGS;
-      
-      public static const NET_WG_DATA_CONSTANTS_GENERATED_CONTACTS_ACTION_CONSTS:Class = CONTACTS_ACTION_CONSTS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_CROSSHAIR_CONSTANTS:Class = CROSSHAIR_CONSTANTS;
       
@@ -1573,8 +1551,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_NORMALSORTINGBUTTON:Class = NormalSortingButton;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_NUMERICSTEPPER:Class = NumericStepper;
-      
-      public static const NET_WG_GUI_COMPONENTS_CONTROLS_NYCONTEXTMENUITEM:Class = NYContextMenuItem;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_PROGRESSBAR:Class = ProgressBar;
       
@@ -2809,42 +2785,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_MANAGERS_POOL_POOL:Class = Pool;
       
       public static const NET_WG_INFRASTRUCTURE_MANAGERS_POOL_POOLMANAGER:Class = PoolManager;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_LOGLEVELS:Class = LogLevels;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_METRICSUILOGGER:Class = MetricsUILogger;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_UILOGGER:Class = UILogger;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_BOOTCAMP_LOGGER_CONSTANTS:Class = BOOTCAMP_LOGGER_CONSTANTS;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_LOADINGPAGELOGGER:Class = LoadingPageLogger;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_TOOLTIPLOGGER:Class = TooltipLogger;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_EVENTS_TOOLTIPLOGEVENT:Class = TooltipLogEvent;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_EPIC_BATTLE_EPIC_BATTLE_LOGGER_CONSTANTS:Class = EPIC_BATTLE_LOGGER_CONSTANTS;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_EPIC_BATTLE_SKILLDROPPAGELOGGER:Class = SkillDropPageLogger;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_MANUAL_MANUALPAGELOGGER:Class = ManualPageLogger;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_MANUAL_MANUAL_LOGGER_CONSTANTS:Class = MANUAL_LOGGER_CONSTANTS;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_NEW_YEAR_CONSTANTS:Class = Constants;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_NEW_YEAR_LOGTANKBONUS:Class = LogTankBonus;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_NEW_YEAR_LOGTANKSLOT:Class = LogTankSlot;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_CONSTANTS:Class = Constants;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_LOGDEMOUNTALLBTN:Class = LogDemountAllBtn;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_LOGMODIFICATIONTREE:Class = LogModificationTree;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_LOGVEHPARAMS:Class = LogVehParams;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGING_BASE_BASELOGGER:Class = BaseLogger;
       

@@ -4,8 +4,6 @@ package net.wg.gui.lobby.eventBoards.events
    
    public class TypeEvent extends Event
    {
-      
-      public static const LINKED_SET_USE_TOKEN:String = "LinkedSetUseToken";
        
       
       private var _id:String = "";

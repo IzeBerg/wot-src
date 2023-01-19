@@ -914,10 +914,9 @@ def _migrateTo99(_, data, __):
 
 def _migrateTo100(core, data, initialized):
     from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
-    storedValue = _getSettingsCache().getSectionSettings(SETTINGS_SECTIONS.NEW_YEAR, 0)
-    clear = data['clear']
-    if storedValue:
-        clear[SETTINGS_SECTIONS.NEW_YEAR] = clear.get(SETTINGS_SECTIONS.NEW_YEAR, 0) | storedValue
+    from account_helpers.settings_core.ServerSettingsManager import BATTLE_MATTERS_KEYS
+    data[SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS] = {BATTLE_MATTERS_KEYS.QUESTS_SHOWN: core.serverSettings.getBattleMattersQuestWasShowed(), 
+       BATTLE_MATTERS_KEYS.QUEST_PROGRESS: 0}
 
 
 _versions = (

@@ -12,9 +12,9 @@ package net.wg.gui.components.advanced.vo
       
       public var minValue:Number = 0;
       
-      public var isGreen:Boolean = false;
-      
       public var useAnim:Boolean = true;
+      
+      public var progressColor:String = "orange";
       
       public function ProgressBarAnimVO(param1:Object)
       {

@@ -11,6 +11,8 @@ package net.wg.data.constants.generated
       
       public static const EPIC_BATTLES_PROGRESS_INFO_ALIAS:String = "EpicBattlesProgressInfoView";
       
+      public static const EPIC_BATTLES_ENTRY_POINT:String = "EpicBattlesEntryPoint";
+      
       public static const EPIC_BATTLES_AFTER_BATTLE_UI:String = "epicBattlesAfterBattleView.swf";
        
       

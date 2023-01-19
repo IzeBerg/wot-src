@@ -1,4 +1,3 @@
-from frameworks.wulf import Array
 from gui.impl.gen.view_models.common.missions.conditions.condition_group_model import ConditionGroupModel
 from gui.impl.gen.view_models.common.missions.event_model import EventModel
 
@@ -43,4 +42,4 @@ class QuestModel(EventModel):
         self._addViewModelProperty('preBattleCondition', ConditionGroupModel())
         self._addViewModelProperty('bonusCondition', ConditionGroupModel())
         self._addViewModelProperty('postBattleCondition', ConditionGroupModel())
-        self._addArrayProperty('bonuses', Array())
+        self._addArrayProperty('bonuses')

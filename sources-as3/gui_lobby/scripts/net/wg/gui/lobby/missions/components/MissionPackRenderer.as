@@ -5,8 +5,6 @@ package net.wg.gui.lobby.missions.components
    import flash.events.Event;
    import flash.filters.BitmapFilterQuality;
    import flash.filters.DropShadowFilter;
-   import net.wg.data.constants.Values;
-   import net.wg.data.constants.generated.QUESTS_ALIASES;
    import net.wg.gui.components.controls.SoundListItemRenderer;
    import net.wg.gui.components.interfaces.IReusableListItemRenderer;
    import net.wg.gui.lobby.missions.data.MissionsPackVO;
@@ -45,8 +43,6 @@ package net.wg.gui.lobby.missions.components
       
       private var _lastHeight:int;
       
-      private var _nyBanner:NYMissionsBanner;
-      
       public function MissionPackRenderer()
       {
          super();
@@ -64,7 +60,6 @@ package net.wg.gui.lobby.missions.components
          super.configUI();
          mouseEnabled = false;
          mouseChildren = true;
-         stage.addEventListener(Event.RESIZE,this.onStageResizeHandler);
       }
       
       override protected function draw() : void
@@ -74,79 +69,31 @@ package net.wg.gui.lobby.missions.components
          {
             if(isInvalid(InvalidationType.DATA))
             {
-               if(this._missionPackVO.blockId == QUESTS_ALIASES.MISSIONS_NY_BANNER_VIEW_ALIAS)
+               this.updateBodyComponent(this._missionPackVO.bodyLinkage);
+               this.updateHeaderComponent(this._missionPackVO.headerLinkage);
+               this._header.update(this._missionPackVO.headerData);
+               if(this._missionPackVO.isPremium)
                {
-                  if(this._body)
-                  {
-                     this.removeCmp(this._body);
-                     this._body = null;
-                     this._currentBodyLinkage = Values.EMPTY_STR;
-                  }
-                  if(this._header)
-                  {
-                     this.removeCmp(this._header);
-                     this._header.removeEventListener(MissionHeaderEvent.COLLAPSE,this.onHeaderCollapseHandler);
-                     this._header = null;
-                     this._currentHeaderLinkage = Values.EMPTY_STR;
-                  }
-                  if(this._bg)
-                  {
-                     removeChild(this._bg);
-                     this._bg = null;
-                  }
-                  if(this._nyBanner && this._nyBanner.name != this._missionPackVO.blockId)
-                  {
-                     removeChild(this._nyBanner);
-                     this._nyBanner = null;
-                  }
-                  if(!this._nyBanner)
-                  {
-                     this._nyBanner = App.utils.classFactory.getComponent(this._missionPackVO.blockId,NYMissionsBanner);
-                     this._nyBanner.name = this._missionPackVO.blockId;
-                     addChild(this._nyBanner);
-                     this._nyBanner.validateNow();
-                  }
-                  else
-                  {
-                     this._nyBanner.visible = true;
-                  }
+                  this._body.update(this._missionPackVO.bodyDataPremium);
                }
                else
                {
-                  if(this._nyBanner)
-                  {
-                     this._nyBanner.visible = false;
-                  }
-                  this.updateBodyComponent(this._missionPackVO.bodyLinkage);
-                  this.updateHeaderComponent(this._missionPackVO.headerLinkage);
-                  this._header.update(this._missionPackVO.headerData);
-                  if(this._missionPackVO.isLinkedSet)
-                  {
-                     this._body.update(this._missionPackVO.bodyDataLinkedSet);
-                  }
-                  else if(this._missionPackVO.isPremium)
-                  {
-                     this._body.update(this._missionPackVO.bodyDataPremium);
-                  }
-                  else
-                  {
-                     this._body.update(this._missionPackVO.bodyData);
-                  }
-                  this._body.setCollapsed(this._missionPackVO.isCollapsed,false);
-                  this._header.setCollapsed(this._missionPackVO.isCollapsed,false);
-                  this._body.validateNow();
-                  this._header.validateNow();
-                  if(this._bg == null)
-                  {
-                     this._bg = Sprite(App.utils.classFactory.getObject(!!this._missionPackVO.isPremium ? PACK_BG_PREMIUM_LINKAGE : PACK_BG_LINKAGE));
-                     this._bg.filters = [DROP_DHADOW];
-                     this._bg.mouseEnabled = true;
-                     this._bg.mouseChildren = false;
-                     this._bg.name = BG_NAME;
-                     addChildAt(this._bg,0);
-                  }
-                  this._bg.alpha = this._missionPackVO.bgAlpha;
+                  this._body.update(this._missionPackVO.bodyData);
                }
+               this._body.setCollapsed(this._missionPackVO.isCollapsed,false);
+               this._header.setCollapsed(this._missionPackVO.isCollapsed,false);
+               this._body.validateNow();
+               this._header.validateNow();
+               if(this._bg == null)
+               {
+                  this._bg = Sprite(App.utils.classFactory.getObject(!!this._missionPackVO.isPremium ? PACK_BG_PREMIUM_LINKAGE : PACK_BG_LINKAGE));
+                  this._bg.filters = [DROP_DHADOW];
+                  this._bg.mouseEnabled = true;
+                  this._bg.mouseChildren = false;
+                  this._bg.name = BG_NAME;
+                  addChildAt(this._bg,0);
+               }
+               this._bg.alpha = this._missionPackVO.bgAlpha;
                invalidateSize();
             }
             if(isInvalid(InvalidationType.SIZE))
@@ -158,15 +105,6 @@ package net.wg.gui.lobby.missions.components
       
       override protected function onDispose() : void
       {
-         if(stage)
-         {
-            stage.removeEventListener(Event.RESIZE,this.onStageResizeHandler);
-         }
-         if(this._nyBanner)
-         {
-            this._nyBanner.dispose();
-            this._nyBanner = null;
-         }
          this._bg = null;
          if(this._header)
          {
@@ -190,37 +128,24 @@ package net.wg.gui.lobby.missions.components
          var _loc1_:int = _width;
          setActualScale(1,1);
          _width = _loc1_;
-         if(this._header)
+         this._header.width = _width;
+         this._body.width = _width;
+         this._body.validateNow();
+         this._header.validateNow();
+         if(this._body.visible)
          {
-            this._header.width = _width;
-            this._header.validateNow();
+            height = this._header.height + this._body.height | 0;
+            this._body.y = this._header.height | 0;
          }
-         if(this._body)
+         else
          {
-            this._body.width = _width;
-            this._body.validateNow();
-         }
-         if(this._header && this._body)
-         {
-            if(this._body.visible)
-            {
-               height = this._header.height + this._body.height | 0;
-               this._body.y = this._header.height | 0;
-            }
-            else
-            {
-               height = this._header.height;
-               this._body.y = 0;
-            }
+            height = this._header.height;
+            this._body.y = 0;
          }
          if(this._bg != null)
          {
             this._bg.width = _width;
             this._bg.height = _height;
-         }
-         if(this._nyBanner && this._missionPackVO.blockId == QUESTS_ALIASES.MISSIONS_NY_BANNER_VIEW_ALIAS)
-         {
-            height = this._nyBanner.getMaxHeight(_width,_height);
          }
          if(this._lastHeight != _height)
          {
@@ -301,12 +226,6 @@ package net.wg.gui.lobby.missions.components
          this._missionPackVO.isCollapsed = param1.isCollapsed;
          this._body.setCollapsed(this._missionPackVO.isCollapsed,true);
          this._header.setCollapsed(this._missionPackVO.isCollapsed,true);
-      }
-      
-      private function onStageResizeHandler(param1:Event) : void
-      {
-         param1.stopImmediatePropagation();
-         this.updateSize();
       }
    }
 }

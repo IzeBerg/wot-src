@@ -21,6 +21,8 @@ package
       
       public static const MAPS_ICONS_BATTLEPASS_OFF_SEASON_BG:String = "../maps/icons/battlePass/off_season/bg.png";
       
+      public static const MAPS_ICONS_BATTLEPASS_POST_PROGRESSION_BG:String = "../maps/icons/battlePass/post_progression/bg.png";
+      
       public static const MAPS_ICONS_BATTLEPASS_PROGRESSION_BG:String = "../maps/icons/battlePass/progression/bg.png";
       
       public static const MAPS_ICONS_BATTLEROYALE_BATTLERESULT_BG:String = "../maps/icons/battleRoyale/battleResult/bg.png";
@@ -46,16 +48,6 @@ package
       public static const MAPS_ICONS_MAPSTRAINING_MINIMAP_BG:String = "../maps/icons/mapsTraining/minimap/bg.png";
       
       public static const MAPS_ICONS_MARATHON_REWARDWINDOW_BG:String = "../maps/icons/marathon/rewardWindow/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_POPOVERS_BG:String = "../maps/icons/newYear/popovers/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_RESOURCEPROGRESSION_BG:String = "../maps/icons/newYear/resourceProgression/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_SHOPOVERLAY_BG:String = "../maps/icons/newYear/shopOverlay/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_STYLE_REWARD_BG:String = "../maps/icons/newYear/style_reward/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_TOOLTIPS_DISCOUNT_REWARD_TOOLTIP_BG:String = "../maps/icons/newYear/tooltips/discount_reward_tooltip/bg.png";
       
       public static const MAPS_ICONS_RANKEDBATTLES_AWARDS_BG:String = "../maps/icons/rankedBattles/awards/bg.png";
       

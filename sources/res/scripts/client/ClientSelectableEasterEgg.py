@@ -17,7 +17,7 @@ class ClientSelectableEasterEgg(ClientSelectableObject):
         super(ClientSelectableEasterEgg, self).__init__()
         self.__animator = None
         if self.bootcampController.isInBootcamp() or not GUI_SETTINGS.easterEgg.enabled:
-            self.__enabled = False
+            self.setEnable(False)
         return
 
     def prerequisites(self):
@@ -56,7 +56,7 @@ class ClientSelectableEasterEgg(ClientSelectableObject):
 
     def onMouseClick(self):
         super(ClientSelectableEasterEgg, self).onMouseClick()
-        g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.IMAGE_VIEW), ctx={'img': self.__getImageName(), 'soundConfig': {}}), EVENT_BUS_SCOPE.LOBBY)
+        g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.IMAGE_VIEW), ctx={'img': self.__getImageName()}), EVENT_BUS_SCOPE.LOBBY)
 
     def __getImageName(self):
         nameParts = [

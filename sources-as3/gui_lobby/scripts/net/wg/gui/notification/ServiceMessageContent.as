@@ -24,7 +24,6 @@ package net.wg.gui.notification
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.IBaseLayout;
    import net.wg.utils.IClassFactory;
-   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.events.ButtonEvent;
    
@@ -42,8 +41,6 @@ package net.wg.gui.notification
       private static const BMP_FILL_HEIGHT:uint = 50;
       
       private static const WIDTH:int = 288;
-      
-      private static const NAME_BUTTON_GROUP:String = "buttonsGroup";
        
       
       public var icon:Image;
@@ -56,8 +53,6 @@ package net.wg.gui.notification
       
       public var background:MovieClip;
       
-      protected var classFactory:IClassFactory;
-      
       private var _buttonsGroup:Group = null;
       
       private var _data:NotificationInfoVO = null;
@@ -65,6 +60,8 @@ package net.wg.gui.notification
       private var _isTFClickedByMBR:Boolean = false;
       
       private var _timeComponent:NotificationTimeComponent = null;
+      
+      private var _classFactory:IClassFactory;
       
       private var _bgDefHeight:uint = 0;
       
@@ -76,9 +73,11 @@ package net.wg.gui.notification
       
       protected var messageTopOffset:int = 17;
       
+      protected var buttonsAlign:String = "left";
+      
       public function ServiceMessageContent()
       {
-         this.classFactory = App.utils.classFactory;
+         this._classFactory = App.utils.classFactory;
          super();
       }
       
@@ -93,17 +92,12 @@ package net.wg.gui.notification
          this.bgIcon.mouseEnabled = this.bgIcon.mouseChildren = false;
          this._bgDefHeight = this.background.height;
          App.utils.styleSheetManager.setLinkStyle(this.textField);
-         this.setTextFieldAutoSize();
+         this.textField.autoSize = TextFieldAutoSize.LEFT;
          this.textField.multiline = true;
          this.textField.wordWrap = true;
          this.textField.selectable = true;
          this.textField.addEventListener(TextEvent.LINK,this.onTextFieldLinkHandler);
          this.textField.addEventListener(MouseEvent.CLICK,this.onTextFieldClickHandler);
-      }
-      
-      protected function setTextFieldAutoSize() : void
-      {
-         this.textField.autoSize = TextFieldAutoSize.LEFT;
       }
       
       override protected function draw() : void
@@ -140,7 +134,7 @@ package net.wg.gui.notification
          this.bgIcon = null;
          this.icon.dispose();
          this.icon = null;
-         this.classFactory = null;
+         this._classFactory = null;
          this._data = null;
          super.onDispose();
       }
@@ -170,24 +164,19 @@ package net.wg.gui.notification
       {
       }
       
-      protected function setIconSource() : void
-      {
-         this.icon.source = this.messageInfo.icon;
-      }
-      
       protected function updateData() : void
       {
          if(!this._data)
          {
             return;
          }
+         this.icon.source = this.messageInfo.icon;
          this.icon.sourceAlt = this.messageInfo.defaultIcon;
          this.bgIcon.source = this.messageInfo.bgIcon;
          this.textField.htmlText = this.messageInfo.message;
-         this.processCustomData(this.messageInfo.linkageData);
          this.setTimeComponent();
          this.setButtonsGroup();
-         this.setIconSource();
+         this.processCustomData(this.messageInfo.linkageData);
          if(this.messageInfo.type == MESSAGE_TYPE_ACTION)
          {
             this.bmpFill.visible = true;
@@ -205,15 +194,27 @@ package net.wg.gui.notification
       
       protected function updateLayout() : void
       {
+         var _loc4_:int = 0;
          if(this._timeComponent)
          {
             this._timeComponent.y = MessageMetrics.TIME_PADDING_Y;
             this._timeComponent.x = this.width - (this._timeComponent.width + MessageMetrics.TIME_PADDING_X) ^ 0;
          }
          App.utils.commons.updateTextFieldSize(this.textField,false,true);
+         var _loc1_:int = 0;
+         if(this.bgIcon.source && this._data.messageVO)
+         {
+            _loc1_ = !!this._data.messageVO.bgIconSizeAuto ? int(this.bgIcon.height) : int(this._data.messageVO.bgIconHeight);
+         }
+         var _loc2_:int = Math.max(this.contentHeight,_loc1_,this._bgDefHeight);
+         if(_loc2_ != this.background.height)
+         {
+            this.background.height = _loc2_;
+            dispatchEvent(new Event(Event.RESIZE));
+         }
          if(this._buttonsGroup != null)
          {
-            if(this.messageInfo.buttonsAlign == TextFormatAlign.CENTER)
+            if(this.buttonsAlign == TextFormatAlign.CENTER)
             {
                this._buttonsGroup.x = this.buttonsAnchorHorizontal.x + (this.buttonsAnchorHorizontal.width - this._buttonsGroup.width >> 1) | 0;
             }
@@ -223,35 +224,13 @@ package net.wg.gui.notification
             }
             this._buttonsGroup.y = this.buttonsAnchorVertical.height + this.buttonsAnchorVertical.y + this.buttonsGroupPaddingTop ^ 0;
          }
-         this.updateBgHeight();
-         this.applyIconPos();
-      }
-      
-      protected function updateBgHeight() : void
-      {
-         var _loc3_:int = 0;
-         var _loc1_:int = 0;
-         if(StringUtils.isNotEmpty(this.bgIcon.source) && this.messageInfo)
-         {
-            _loc1_ = !!this.messageInfo.bgIconSizeAuto ? int(this.bgIcon.height) : int(this.messageInfo.bgIconHeight | 0);
-         }
-         var _loc2_:int = Math.max(this.contentHeight,_loc1_,this._bgDefHeight);
-         if(_loc2_ != this.background.height)
-         {
-            this.background.height = _loc2_;
-            dispatchEvent(new Event(Event.RESIZE));
-         }
          if(this.bmpFill.visible)
          {
-            _loc3_ = this.bmpFill.y << 1;
-            this.bmpFill.setSize(this.background.width - _loc3_ ^ 0,_loc2_ - _loc3_);
+            _loc4_ = this.bmpFill.y << 1;
+            this.bmpFill.setSize(this.background.width - _loc4_ ^ 0,_loc2_ - _loc4_);
          }
-      }
-      
-      protected function applyIconPos() : void
-      {
-         var _loc1_:int = MessageMetrics.ICON_DEFAULT_PADDING_X;
-         this.icon.x = _loc1_ + (this.textField.x - _loc1_ - this.icon.width >> 1);
+         var _loc3_:int = MessageMetrics.ICON_DEFAULT_PADDING_X;
+         this.icon.x = _loc3_ + (this.textField.x - _loc3_ - this.icon.width >> 1);
          if(this.textField.textHeight < this.icon.height)
          {
             this.icon.y = this.textField.y + (this.textField.textHeight - this.icon.height >> 1) + MessageMetrics.ICON_DEFAULT_PADDING_Y ^ 0;
@@ -316,7 +295,6 @@ package net.wg.gui.notification
             return;
          }
          this._buttonsGroup = new Group();
-         this._buttonsGroup.name = NAME_BUTTON_GROUP;
          this._buttonsGroup.layout = this.buttonsGroupLayout;
          addChild(this._buttonsGroup);
          for each(_loc2_ in _loc1_)
@@ -353,7 +331,7 @@ package net.wg.gui.notification
          {
             return;
          }
-         var _loc3_:SoundButtonEx = this.classFactory.getComponent(_loc2_,SoundButtonEx);
+         var _loc3_:SoundButtonEx = this._classFactory.getComponent(_loc2_,SoundButtonEx);
          this._buttonsGroup.addChild(_loc3_);
          _loc3_.name = param1.type;
          _loc3_.data = param1.action;
@@ -376,7 +354,7 @@ package net.wg.gui.notification
          {
             return;
          }
-         this._timeComponent = this.classFactory.getComponent(Linkages.NOTIFICATION_TIME_COMPONENT,NotificationTimeComponent);
+         this._timeComponent = this._classFactory.getComponent(Linkages.NOTIFICATION_TIME_COMPONENT,NotificationTimeComponent);
          this._timeComponent.textField.text = this.messageInfo.timestampStr;
          this.addChildAt(this._timeComponent,this.getChildIndex(this.textField) + 1);
       }

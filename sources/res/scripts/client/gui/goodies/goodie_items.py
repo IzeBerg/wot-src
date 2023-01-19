@@ -1,7 +1,6 @@
 import time, weakref, typing, BigWorld, nations
 from constants import FORT_ORDER_TYPE
-from goodies.goodie_constants import GOODIE_RESOURCE_TYPE, GOODIE_STATE, GOODIE_VARIETY, GOODIE_TARGET_TYPE
-from gui.goodies.goodies_constants import BoosterCategory
+from goodies.goodie_constants import GOODIE_RESOURCE_TYPE, GOODIE_STATE, GOODIE_VARIETY, GOODIE_TARGET_TYPE, BoosterCategory
 from goodies.goodie_helpers import GOODIE_TEXT_TO_RESOURCE
 from gui import GUI_SETTINGS
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS

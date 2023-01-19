@@ -1,6 +1,6 @@
 package net.wg.gui.lobby.premiumMissions.data
 {
-   import net.wg.gui.lobby.battleMatters.data.MissionLinkedSetCardVO;
+   import net.wg.gui.lobby.battleMatters.data.MissionPremiumCardVO;
    import net.wg.gui.lobby.missions.data.MissionPackMarathonBodyVO;
    
    public class MissionPremiumBodyVO extends MissionPackMarathonBodyVO
@@ -28,7 +28,7 @@ package net.wg.gui.lobby.premiumMissions.data
       
       override protected function get missionCardClass() : Class
       {
-         return MissionLinkedSetCardVO;
+         return MissionPremiumCardVO;
       }
    }
 }
