@@ -1939,6 +1939,8 @@ package net.wg.data.constants.generated
       
       public static const JAPAN_J27_O_I_120:String = "japan-J27_O_I_120";
       
+      public static const JAPAN_J27_O_I_120_BP:String = "japan-J27_O_I_120_BP";
+      
       public static const JAPAN_J28_O_I_100:String = "japan-J28_O_I_100";
       
       public static const JAPAN_J29_NAMELESS:String = "japan-J29_Nameless";
@@ -3104,6 +3106,8 @@ package net.wg.data.constants.generated
       public static const USA_A152_M_PROJECT_2:String = "usa-A152_M_Project_2";
       
       public static const USA_A156_T54_2022:String = "usa-A156_T54_2022";
+      
+      public static const USA_A158_T832:String = "usa-A158_T832";
       
       public static const USA_A16_M7_PRIEST:String = "usa-A16_M7_Priest";
       
