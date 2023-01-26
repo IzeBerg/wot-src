@@ -2515,6 +2515,10 @@ package
       
       public static const BATTLEPASS_ACTIVATECHAPTER_SUCCESS:String = "#system_messages:battlePass/activateChapter/success";
       
+      public static const HBP_SEASONSTART_TITLE:String = "#system_messages:hbp/seasonStart/title";
+      
+      public static const HBP_SEASONSTART_BODY:String = "#system_messages:hbp/seasonStart/body";
+      
       public static const COLLECTORVEHICLE_SWITCH_OFF_TITLE:String = "#system_messages:collectorVehicle/switch_off/title";
       
       public static const COLLECTORVEHICLE_SWITCH_OFF_BODY:String = "#system_messages:collectorVehicle/switch_off/body";
