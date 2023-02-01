@@ -144,8 +144,7 @@ package net.wg.gui.lobby.vehiclePreview.additionalInfo
       
       private function updateScrollBar() : void
       {
-         var _loc1_:int = 0;
-         _loc1_ = this._container.y + this._container.height - height | 0;
+         var _loc1_:int = this._container.y + this._container.height - height | 0;
          if(_loc1_ > 0)
          {
             this.scrollBar.visible = true;

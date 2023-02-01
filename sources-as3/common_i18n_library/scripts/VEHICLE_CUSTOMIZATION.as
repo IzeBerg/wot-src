@@ -3087,6 +3087,18 @@ package
       
       public static const CAMOUFLAGE_REBRANDING_EVENT_DESCRIPTION:String = "#vehicle_customization:camouflage/rebranding_event/description";
       
+      public static const CAMOUFLAGE_IT21_LION_KL_3DST_SUMMER_LABEL:String = "#vehicle_customization:camouflage/It21_Lion_KL_3DSt_summer/label";
+      
+      public static const CAMOUFLAGE_IT21_LION_KL_3DST_SUMMER_DESCRIPTION:String = "#vehicle_customization:camouflage/It21_Lion_KL_3DSt_summer/description";
+      
+      public static const CAMOUFLAGE_IT21_LION_KL_3DST_WINTER_LABEL:String = "#vehicle_customization:camouflage/It21_Lion_KL_3DSt_winter/label";
+      
+      public static const CAMOUFLAGE_IT21_LION_KL_3DST_WINTER_DESCRIPTION:String = "#vehicle_customization:camouflage/It21_Lion_KL_3DSt_winter/description";
+      
+      public static const CAMOUFLAGE_IT21_LION_KL_3DST_DESERT_LABEL:String = "#vehicle_customization:camouflage/It21_Lion_KL_3DSt_desert/label";
+      
+      public static const CAMOUFLAGE_IT21_LION_KL_3DST_DESERT_DESCRIPTION:String = "#vehicle_customization:camouflage/It21_Lion_KL_3DSt_desert/description";
+      
       public static const CAMOUFLAGE_CN_LANTERN_FESTIVAL_LABEL:String = "#vehicle_customization:camouflage/cn_lantern_festival/label";
       
       public static const CAMOUFLAGE_CN_LANTERN_FESTIVAL_DESCRIPTION:String = "#vehicle_customization:camouflage/cn_lantern_festival/description";
@@ -11167,6 +11179,10 @@ package
       
       public static const MAIN_STYLE_F38_BAT_CHATILLON155_58_MD22_III_3DST_DESC_LONG:String = "#vehicle_customization:main_style/F38_Bat_Chatillon155_58_MD22_III_3DSt_desc/long";
       
+      public static const SPECIAL_STYLE_IT21_LION_KL_3DST:String = "#vehicle_customization:special_style/It21_Lion_KL_3DSt";
+      
+      public static const SPECIAL_STYLE_IT21_LION_KL_3DST_DESC_LONG:String = "#vehicle_customization:special_style/It21_Lion_KL_3DSt_desc/long";
+      
       public static const SPECIAL_STYLE_IT23_CC_3_MD22_III_3DST:String = "#vehicle_customization:special_style/It23_CC_3_MD22_III_3DSt";
       
       public static const SPECIAL_STYLE_IT23_CC_3_MD22_III_3DST_DESC_LONG:String = "#vehicle_customization:special_style/It23_CC_3_MD22_III_3DSt_desc/long";
@@ -13562,6 +13578,12 @@ package
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_498:String = "#vehicle_customization:projection_decals/special/projection_decal_498";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_498_DESCRIPTION:String = "#vehicle_customization:projection_decals/special/projection_decal_498/description";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_516:String = "#vehicle_customization:projection_decals/special/projection_decal_516";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_516_DESCRIPTION:String = "#vehicle_customization:projection_decals/special/projection_decal_516/description";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_517:String = "#vehicle_customization:projection_decals/special/projection_decal_517";
       
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       

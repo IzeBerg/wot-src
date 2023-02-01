@@ -142,11 +142,13 @@ package net.wg.gui.bootcamp.queueWindow
       
       private function updatePosition() : void
       {
+         var _loc1_:int = 0;
+         var _loc2_:int = 0;
          var _loc4_:Number = NaN;
          var _loc5_:Number = NaN;
          var _loc6_:Number = NaN;
-         var _loc1_:int = App.appWidth;
-         var _loc2_:int = App.appHeight;
+         _loc1_ = App.appWidth;
+         _loc2_ = App.appHeight;
          this.cancelBtn.x = _loc1_ - this.cancelBtn.width >> 1;
          var _loc3_:Boolean = _loc1_ >= SMALL_SCREEN_WIDTH && _loc2_ >= SMALL_SCREEN_HEIGHT;
          if(this._introData && this._introData.showTutorialPages)
