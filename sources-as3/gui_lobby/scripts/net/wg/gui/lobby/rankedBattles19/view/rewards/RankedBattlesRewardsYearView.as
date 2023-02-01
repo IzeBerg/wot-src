@@ -120,6 +120,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards
       override protected function draw() : void
       {
          var _loc3_:uint = 0;
+         var _loc4_:uint = 0;
          var _loc5_:Number = NaN;
          var _loc6_:Number = NaN;
          var _loc7_:Number = NaN;
@@ -129,7 +130,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards
          var _loc1_:Boolean = isInvalid(InvalidationType.SIZE) || isInvalid(INV_VIEW_PADDING);
          var _loc2_:Boolean = isInvalid(InvalidationType.DATA);
          _loc3_ = _width - viewPadding.left >> 1;
-         var _loc4_:uint = _height - viewPadding.top >> 1;
+         _loc4_ = _height - viewPadding.top >> 1;
          if(this._data)
          {
             if(_loc2_)
