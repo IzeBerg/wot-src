@@ -2,44 +2,44 @@ from gui.impl.gen_utils import DynAccessor
 
 class Videos(DynAccessor):
     __slots__ = ()
-    _bootcampLesson1 = DynAccessor(70816)
-    _bootcampLesson2 = DynAccessor(70817)
-    _bootcampLesson3_1 = DynAccessor(70818)
-    _bootcampLesson3_2 = DynAccessor(70819)
-    _bootcampLesson4 = DynAccessor(70820)
-    _bootcampOutro = DynAccessor(70821)
-    _login = DynAccessor(70822)
-    _tutorialInitial = DynAccessor(70823)
-    _tutorialInitialLoop = DynAccessor(70824)
+    _bootcampLesson1 = DynAccessor(70865)
+    _bootcampLesson2 = DynAccessor(70866)
+    _bootcampLesson3_1 = DynAccessor(70867)
+    _bootcampLesson3_2 = DynAccessor(70868)
+    _bootcampLesson4 = DynAccessor(70869)
+    _bootcampOutro = DynAccessor(70870)
+    _login = DynAccessor(70871)
+    _tutorialInitial = DynAccessor(70872)
+    _tutorialInitialLoop = DynAccessor(70873)
 
     class _battle_pass(DynAccessor):
         __slots__ = ()
-        final_video = DynAccessor(70825)
+        final_video = DynAccessor(70874)
 
     battle_pass = _battle_pass()
 
     class _development(DynAccessor):
         __slots__ = ()
-        example = DynAccessor(70826)
-        example_2 = DynAccessor(70827)
+        example = DynAccessor(70875)
+        example_2 = DynAccessor(70876)
 
     development = _development()
 
     class _platoon(DynAccessor):
         __slots__ = ()
-        VoiceChat = DynAccessor(70828)
+        VoiceChat = DynAccessor(70877)
 
     platoon = _platoon()
 
     class _startup(DynAccessor):
         __slots__ = ()
-        ESRB = DynAccessor(70829)
-        Logo_All = DynAccessor(70830)
+        ESRB = DynAccessor(70878)
+        Logo_All = DynAccessor(70879)
 
     startup = _startup()
 
     class _vehicle(DynAccessor):
         __slots__ = ()
-        A122_TS_5 = DynAccessor(70831)
+        A122_TS_5 = DynAccessor(70880)
 
     vehicle = _vehicle()

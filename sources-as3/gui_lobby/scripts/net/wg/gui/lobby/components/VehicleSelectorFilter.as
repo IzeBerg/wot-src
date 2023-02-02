@@ -147,9 +147,10 @@ package net.wg.gui.lobby.components
       
       private function updateVisibility() : void
       {
+         var _loc3_:DisplayObject = null;
          var _loc1_:int = 0;
          var _loc2_:Boolean = true;
-         var _loc3_:DisplayObject = null;
+         _loc3_ = null;
          var _loc4_:int = this._model.visibility;
          var _loc5_:int = this._controlsOrder.length;
          var _loc6_:int = 0;
