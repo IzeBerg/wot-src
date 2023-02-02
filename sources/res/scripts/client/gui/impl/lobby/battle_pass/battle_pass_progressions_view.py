@@ -93,6 +93,23 @@ class BattlePassProgressionsView(ViewImpl):
                 return tooltipData
             return self.__specialTooltipItems.get(tooltipId)
 
+    def startListeners(self):
+        self._subscribe()
+
+    def stopListeners(self):
+        self._unsubscribe()
+
+    def updateData(self):
+        self.__updateProgressData()
+        self.__updateBuyButtonState()
+
+    def setChapter(self, chapterID):
+        self.__chapterID = chapterID or self.__getDefaultChapterID()
+        with self.viewModel.transaction() as (model):
+            self.__updateProgressData(model=model)
+        self.__updateBuyButtonState()
+        self.__setShowBuyAnimations()
+
     def _getEvents(self):
         return (
          (
@@ -212,12 +229,12 @@ class BattlePassProgressionsView(ViewImpl):
     def __setBattlePassIntroShown(self):
         self.__settingsCore.serverSettings.saveInBPStorage({BattlePassStorageKeys.INTRO_SHOWN: True})
 
-    def __updateProgressData(self):
-        with self.viewModel.transaction() as (model):
-            self.__setAwards(model)
-            self.__updateData(model=model)
-            self.__updateBalance(model=model)
-            self.__updateWalletAvailability(model=model)
+    @replaceNoneKwargsModel
+    def __updateProgressData(self, model=None):
+        self.__setAwards(model)
+        self.__updateData(model=model)
+        self.__updateBalance(model=model)
+        self.__updateWalletAvailability(model=model)
 
     def __setAwards(self, model):
         bpController = self.__battlePass

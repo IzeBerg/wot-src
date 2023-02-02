@@ -8,13 +8,15 @@ _logger = logging.getLogger(__name__)
 _logger.addHandler(logging.NullHandler())
 
 class BattlePassStateMachine(StateMachine):
-    __slots__ = ('__rewards', '__data', '__rewardsToChoose', '__chapterStyle', '__manualFlow')
+    __slots__ = ('__rewards', '__data', '__rewardsToChoose', '__packageRewards', '__chapterStyle',
+                 '__manualFlow')
 
     def __init__(self):
         super(BattlePassStateMachine, self).__init__()
         self.__rewards = None
         self.__data = None
         self.__rewardsToChoose = []
+        self.__packageRewards = None
         self.__chapterStyle = None
         self.__manualFlow = False
         return
@@ -69,9 +71,10 @@ class BattlePassStateMachine(StateMachine):
     def hasActiveFlow(self):
         return not self.isStateEntered(states.BattlePassRewardStateID.LOBBY)
 
-    def saveRewards(self, rewardsToChoose, defaultRewards, chapterStyle, data):
+    def saveRewards(self, rewardsToChoose, defaultRewards, chapterStyle, data, packageRewards):
         self.__rewardsToChoose = rewardsToChoose
         self.__rewards = defaultRewards
+        self.__packageRewards = packageRewards
         self.__chapterStyle = chapterStyle
         self.__data = data
 
@@ -80,7 +83,7 @@ class BattlePassStateMachine(StateMachine):
 
     def getRewardsData(self):
         return (
-         self.__rewards, self.__data)
+         self.__rewards, self.__data, self.__packageRewards)
 
     def extendRewards(self, rewards):
         if not self.__rewards:
@@ -123,6 +126,7 @@ class BattlePassStateMachine(StateMachine):
 
     def clearSelf(self):
         self.__rewards = None
+        self.__packageRewards = None
         self.__data = None
         self.__rewardsToChoose = []
         self.__chapterStyle = None
@@ -136,4 +140,4 @@ class BattlePassStateMachine(StateMachine):
         return bool(self.__rewardsToChoose)
 
     def __hasAnyReward(self, *_):
-        return bool(self.__rewards)
+        return bool(self.__rewards) or bool(self.__packageRewards)

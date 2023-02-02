@@ -1783,6 +1783,34 @@ package
       
       public static const REWARDWINDOW_TWITCH36_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch36/mainReward_4";
       
+      public static const REWARDWINDOW_TWITCH37_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch37/headerText";
+      
+      public static const REWARDWINDOW_TWITCH37_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch37/descText";
+      
+      public static const REWARDWINDOW_TWITCH37_MAINREWARD_1:String = "#ingame_gui:rewardWindow/twitch37/mainReward_1";
+      
+      public static const REWARDWINDOW_TWITCH37_MAINREWARD_2:String = "#ingame_gui:rewardWindow/twitch37/mainReward_2";
+      
+      public static const REWARDWINDOW_TWITCH37_MAINREWARD_3:String = "#ingame_gui:rewardWindow/twitch37/mainReward_3";
+      
+      public static const REWARDWINDOW_TWITCH37_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch37/mainReward_4";
+      
+      public static const REWARDWINDOW_TWITCH37_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch37/btnLabel";
+      
+      public static const REWARDWINDOW_TWITCH38_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch38/headerText";
+      
+      public static const REWARDWINDOW_TWITCH38_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch38/descText";
+      
+      public static const REWARDWINDOW_TWITCH38_MAINREWARD_1:String = "#ingame_gui:rewardWindow/twitch38/mainReward_1";
+      
+      public static const REWARDWINDOW_TWITCH38_MAINREWARD_2:String = "#ingame_gui:rewardWindow/twitch38/mainReward_2";
+      
+      public static const REWARDWINDOW_TWITCH38_MAINREWARD_3:String = "#ingame_gui:rewardWindow/twitch38/mainReward_3";
+      
+      public static const REWARDWINDOW_TWITCH38_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch38/mainReward_4";
+      
+      public static const REWARDWINDOW_TWITCH38_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch38/btnLabel";
+      
       public static const REWARDWINDOW_LOOTBOX_WINHEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/winHeaderText";
       
       public static const REWARDWINDOW_LOOTBOX_HEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/headerText";

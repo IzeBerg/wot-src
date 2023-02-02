@@ -24,7 +24,7 @@ package net.wg.gui.bootcamp.battleResult.containers.base
       
       private static const REWARDS_HEIGHT:int = 127;
       
-      private static const REWARDS_OFFSET:int = 4;
+      private static const REWARDS_OFFSET:int = 12;
        
       
       public var stats:StatsContainer = null;

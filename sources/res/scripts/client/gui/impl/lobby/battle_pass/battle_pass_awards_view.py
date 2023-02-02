@@ -67,7 +67,7 @@ class BattlePassAwardsView(ViewImpl):
          (
           self.viewModel.onBuyClick, self.__onBuyClick),)
 
-    def _onLoading(self, bonuses, data, needNotifyClosing, *args, **kwargs):
+    def _onLoading(self, bonuses, packageBonuses, data, needNotifyClosing, *args, **kwargs):
         super(BattlePassAwardsView, self)._onLoading(*args, **kwargs)
         chapterID = data.get('chapter', 0)
         newLevel = data.get('newLevel', 0) or 0
@@ -94,9 +94,12 @@ class BattlePassAwardsView(ViewImpl):
             tx.setSeasonStopped(self.__battlePass.isPaused())
             tx.setIsBaseStyleLevel(styleLevel == 1)
             tx.setIsExtra(self.__battlePass.isExtraChapter(chapterID))
-        self.__setAwards(bonuses, isFinalReward)
+        if packageBonuses is not None and packageBonuses:
+            self.__setPackageRewards(packageBonuses)
+        else:
+            self.__setAwards(bonuses, isFinalReward)
         isRewardSelected = reason == BattlePassRewardReason.SELECT_REWARD
-        self.viewModel.setIsNeedToShowOffer(not (isBattlePassPurchased or self.viewModel.additionalRewards.getItemsLength() or isRewardSelected))
+        self.viewModel.setIsNeedToShowOffer(not (isBattlePassPurchased or isRewardSelected))
         switchHangarOverlaySoundFilter(on=True)
         SoundGroups.g_instance.playSound2D(BattlePassSounds.REWARD_SCREEN)
         self.__needNotifyClosing = needNotifyClosing
@@ -149,6 +152,11 @@ class BattlePassAwardsView(ViewImpl):
     def __getRewardWeight(bonus):
         return REWARD_SIZES.get(BattlePassAwardsManager.getBigIcon(bonus), 0)
 
+    def __setPackageRewards(self, bonuses):
+        composedBonuses = BattlePassAwardsManager.composeBonuses([bonuses])
+        sortedBonuses = BattlePassAwardsManager.sortBonuses(BattlePassAwardsManager.uniteTokenBonuses(composedBonuses))
+        packBonusModelAndTooltipData(sortedBonuses, self.viewModel.packageRewards, self.__tooltipItems)
+
     def __onBuyClick(self):
         if callable(self.__showBuyCallback):
             self.__showBuyCallback()
@@ -160,8 +168,8 @@ class BattlePassAwardsView(ViewImpl):
 class BattlePassAwardWindow(LobbyNotificationWindow):
     __slots__ = ('__params', )
 
-    def __init__(self, bonuses, data, needNotifyClosing=True):
-        self.__params = dict(bonuses=bonuses, data=data, needNotifyClosing=needNotifyClosing)
+    def __init__(self, bonuses, data, packageRewards=None, needNotifyClosing=True):
+        self.__params = dict(bonuses=bonuses, packageBonuses=packageRewards, data=data, needNotifyClosing=needNotifyClosing)
         super(BattlePassAwardWindow, self).__init__(wndFlags=WindowFlags.SERVICE_WINDOW | WindowFlags.WINDOW_FULLSCREEN, content=BattlePassAwardsView(**self.__params))
 
     def isParamsEqual(self, *args, **kwargs):

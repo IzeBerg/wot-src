@@ -15,7 +15,7 @@ from skeletons.gui.game_control import IBattlePassController
 from tutorial.control.game_vars import getVehicleByIntCD
 _IMAGES = R.images.gui.maps.icons.battlePass.intro
 _TEXTS = R.strings.battle_pass.intro
-_BG = R.images.gui.maps.icons.battlePass.progression.background
+_BG = R.images.gui.maps.icons.battlePass.backgrounds
 
 class IntroView(ViewImpl):
     __battlePass = dependency.descriptor(IBattlePassController)
@@ -30,6 +30,16 @@ class IntroView(ViewImpl):
     @property
     def viewModel(self):
         return super(IntroView, self).getViewModel()
+
+    def startListeners(self):
+        self._subscribe()
+
+    def stopListeners(self):
+        self._unsubscribe()
+
+    def updateData(self):
+        self.__updateBattlePassState()
+        self.__updateViewModel()
 
     def _onLoading(self, *args, **kwargs):
         super(IntroView, self)._onLoading(*args, **kwargs)
@@ -57,7 +67,7 @@ class IntroView(ViewImpl):
             tx.setTitle(_TEXTS.title())
             tx.setAbout(_TEXTS.aboutButton())
             tx.setButtonLabel(_TEXTS.button())
-            tx.setBackground(_BG.chapter_common())
+            tx.setBackground(_BG.common())
 
     @staticmethod
     def __createSlideModel(slideName, **kwargs):

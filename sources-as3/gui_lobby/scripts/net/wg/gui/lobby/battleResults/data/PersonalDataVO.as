@@ -102,8 +102,6 @@ package net.wg.gui.lobby.battleResults.data
       
       public var dynamicPremiumState:int = -1;
       
-      public var replayURL:String = "";
-      
       public var prestigePoints:PrestigePointsVO = null;
       
       public var deserterStr:String = "";

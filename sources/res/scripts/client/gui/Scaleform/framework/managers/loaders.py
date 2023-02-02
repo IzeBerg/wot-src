@@ -1,11 +1,11 @@
-import logging, typing, Event, constants
+import logging, typing, Event, constants, BigWorld
 from gui.Scaleform.framework import g_entitiesFactories, ViewSettings, ScopeTemplates
 from gui.Scaleform.framework.entities.View import View, ViewKey
 from gui.Scaleform.framework.entities.abstract.LoaderManagerMeta import LoaderManagerMeta
 from gui.Scaleform.framework.entities.sf_window import SFWindow
 from gui.Scaleform.framework.entities.view_impl_adaptor import ViewImplAdaptor
 from gui.Scaleform.framework.settings import UIFrameworkImpl
-from helpers import dependency
+from helpers import dependency, uniprof
 from shared_utils import CONST_CONTAINER
 from skeletons.gui.impl import IGuiLoader
 from skeletons.tutorial import ITutorialLoader
@@ -13,15 +13,17 @@ from soft_exception import SoftException
 if typing.TYPE_CHECKING:
     from frameworks.wulf import Window
     from gui.Scaleform.framework.ScopeTemplates import SimpleScope
+_VIEW_REGION_COLOR = 3368601
+_LOADING_VIEW_REGION_COLOR = 6710937
 NO_IMPL_ALIAS = 'noImpl'
 NO_IMPL_URL = 'development/noImpl.swf'
 _logger = logging.getLogger(__name__)
 
 class _LoadingItem(object):
     __slots__ = ('loadParams', 'pyEntity', 'factoryIdx', 'args', 'kwargs', 'isCancelled',
-                 'isModal')
+                 'isModal', 'uid')
 
-    def __init__(self, loadParams, pyEntity, factoryIdx, isModal, args, kwargs):
+    def __init__(self, loadParams, uid, pyEntity, factoryIdx, isModal, args, kwargs):
         super(_LoadingItem, self).__init__()
         self.loadParams = loadParams
         self.pyEntity = pyEntity
@@ -30,6 +32,7 @@ class _LoadingItem(object):
         self.kwargs = kwargs
         self.isCancelled = False
         self.isModal = isModal
+        self.uid = uid
 
     def __repr__(self):
         return ('{}[{}]=[loadParams={}, pyEntity={}]').format(self.__class__.__name__, hex(id(self)), self.loadParams, self.pyEntity)
@@ -155,6 +158,9 @@ class LoaderManager(LoaderManagerMeta):
                 self.onViewLoadCanceled(key, item)
                 if not item.pyEntity.isDisposed():
                     item.pyEntity.destroy()
+                if item.uid != -1:
+                    uniprof.exitFromRegion(('Loading {} {}').format(key.name, item.uid))
+                    BigWorld.notify(BigWorld.EventType.VIEW_LOADED, key.alias, item.uid, key.name)
             return
 
     def getViewLoadingItem(self, key):
@@ -181,6 +187,8 @@ class LoaderManager(LoaderManagerMeta):
                     if not item.pyEntity.isDisposed():
                         item.pyEntity.destroy()
                     self.onViewLoadError(viewKey, msg, item)
+            uniprof.exitFromRegion(('Loading {} {}').format(viewKey.name, item.uid))
+            BigWorld.notify(BigWorld.EventType.VIEW_LOADED, viewKey.alias, item.uid, viewKey.name)
         else:
             _logger.error('View loading for key has no associated data: %r', viewKey)
         return
@@ -207,6 +215,8 @@ class LoaderManager(LoaderManagerMeta):
                         g_entitiesFactories.addSettings(ViewSettings(NO_IMPL_ALIAS, View, NO_IMPL_URL, settings.layer, None, ScopeTemplates.DEFAULT_SCOPE, False))
                         _logger.warning('Try to load noImpl swf...')
                         self.__doLoadSFView(SFViewLoadParams(NO_IMPL_ALIAS, item.name))
+            uniprof.exitFromRegion(('Loading {} {}').format(viewKey.name, item.uid))
+            BigWorld.notify(BigWorld.EventType.VIEW_LOADED, viewKey.alias, item.uid, viewKey.name)
         else:
             _logger.warning('View loading for name has no associated data: %s', name)
         return
@@ -220,6 +230,8 @@ class LoaderManager(LoaderManagerMeta):
             item = self.__loadingItems.pop(viewKey)
             pyEntity = item.pyEntity
             pyEntity.destroy()
+            uniprof.exitFromRegion(('Loading {} {}').format(viewKey.name, item.uid))
+            BigWorld.notify(BigWorld.EventType.VIEW_LOADED, viewKey.alias, item.uid, viewKey.name)
         self.onViewLoadError(viewKey, msg, item)
         return
 
@@ -261,6 +273,12 @@ class LoaderManager(LoaderManagerMeta):
         if window is None:
             window = SFWindow(loadParams, fireEvent=False)
             window.load()
+        uid = window.uniqueID
+        name = ('{} {}').format(key.name, uid)
+        uniprof.enterToRegion('Scaleform ' + name, _VIEW_REGION_COLOR)
+        BigWorld.notify(BigWorld.EventType.VIEW_CREATED, key.alias, uid, key.name)
+        uniprof.enterToRegion('Loading ' + name, _LOADING_VIEW_REGION_COLOR)
+        BigWorld.notify(BigWorld.EventType.LOADING_VIEW, key.alias, uid, key.name)
         pyEntity = None
         if key in self.__loadingItems:
             item = self.__loadingItems[key]
@@ -285,7 +303,7 @@ class LoaderManager(LoaderManagerMeta):
                 pyEntity.setParentWindow(window)
                 window.setContent(pyEntity)
                 config = pyEntity.settings.getDAAPIObject()
-                self.__loadingItems[key] = _LoadingItem(loadParams, pyEntity, factoryIdx, args, kwargs, config.get('isModal', False))
+                self.__loadingItems[key] = _LoadingItem(loadParams, uid, pyEntity, factoryIdx, args, kwargs, config.get('isModal', False))
                 self.onViewLoadInit(pyEntity)
                 viewDict = {'config': config, 
                    'alias': key.alias, 
@@ -313,7 +331,7 @@ class LoaderManager(LoaderManagerMeta):
             raise SoftException(('Synchronous loading does not supported: {}').format(loadParams))
         adaptor.onDispose += self.__handleViewDispose
         adaptor.onCreated += self.__handleViewLoaded
-        self.__loadingItems[adaptor.key] = _LoadingItem(loadParams, adaptor, -1, False, args, kwargs)
+        self.__loadingItems[adaptor.key] = _LoadingItem(loadParams, -1, adaptor, -1, False, args, kwargs)
         self.onViewLoadInit(adaptor)
         adaptor.loadView()
         return adaptor

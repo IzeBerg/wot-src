@@ -61,9 +61,6 @@ msgstr "В Командном бою"
 msgid "Contact/status/inBattle/training"
 msgstr "В Тренировочном бою"
 
-msgid "Contact/status/inBattle/tutorial"
-msgstr "В Боевом обучении"
-
 msgid "Contact/status/inBattle/unknown"
 msgstr "В бою"
 
@@ -598,10 +595,6 @@ msgid "advanced/autoExtinguishers"
 msgstr ""
 "Автоматически тушит пожар сразу после его возникновения. Пассивно уменьшает "
 "шанс возгорания."
-
-msgid "advanced/battleTeaching"
-msgstr ""
-"Бой против ботов для закрепления полученных на Учебном полигоне навыков."
 
 msgid "advanced/brotherhood"
 msgstr ""
@@ -1723,7 +1716,7 @@ msgstr "...и другое оборудование."
 msgid "battlePassOffer/footer/blueprint_gift"
 msgstr ""
 "По завершении этого этапа вы сможете забрать себе набор фрагментов чертежей "
-"выбранной нации, нажав над этапом кнопку «Забрать награду»."
+"выбранной нации, нажав на кнопку «Забрать награду» над этапом."
 
 msgid "battlePassOffer/footer/brochure_gift"
 msgstr ""
@@ -1766,7 +1759,7 @@ msgid "battlePassOffer/title/guide_gift"
 msgstr "Учебное руководство на выбор"
 
 msgid "battlePassOffer/title/new_device_fv_gift"
-msgstr "Оборудование на выбор"
+msgstr "Штатное оборудование на выбор"
 
 msgid "battlePassOffer/title/new_device_mi_gift"
 msgstr "Оборудование на выбор"
@@ -1927,21 +1920,6 @@ msgstr "До начала события осталось"
 
 msgid "battleTypes/battleRoyale/tillStartCycle"
 msgstr "До начала:"
-
-msgid "battleTypes/battleTeaching/body"
-msgstr ""
-"Бой против ботов на карте %(map1)s для закрепления полученных в Боевом обучении навыков.\n"
-"• Особенности: если у вас более %(battles)d любых боёв на аккаунте, кредиты и опыт в Учебном бою не начисляются.\n"
-"• Допустимые уровни техники: I и II."
-
-msgid "battleTypes/battleTeaching/header"
-msgstr "Учебный бой"
-
-msgid "battleTypes/battleTutorial/body"
-msgstr "Здесь вы научитесь управлять танком и уничтожать технику противника."
-
-msgid "battleTypes/battleTutorial/header"
-msgstr "Боевое обучение"
 
 msgid "battleTypes/epic_training/body"
 msgstr ""
@@ -6193,6 +6171,12 @@ msgstr "Действуют скидки на технику наций:"
 msgid "header/buttons/techtree/header"
 msgstr "Исследования"
 
+msgid "header/buttons/tournaments/body"
+msgstr "Просмотреть турниры и состязания"
+
+msgid "header/buttons/tournaments/header"
+msgstr "Турниры"
+
 msgid "header/eliteIcon/body"
 msgstr ""
 "Все модули исследованы.\n"
@@ -6760,7 +6744,7 @@ msgstr ""
 
 msgid "mode_selector/popover/epicStandard/body"
 msgstr ""
-"У каждой из двух команд своя база. Бой на большой карте идёт до уничтожения всей техники противника или до захвата базы. Подрежим доступен после исследования любой машины X уровня.\n"
+"У каждой из двух команд своя база. Бой на большой карте идёт до уничтожения всей техники противника или до захвата базы. Подрежим доступен после исследования любой машины Х уровня.\n"
 "\n"
 "Состав: две команды по 30 игроков в каждой."
 
@@ -7412,6 +7396,15 @@ msgstr ""
 msgid "notrecruitedtankman/commander_gagarin21/label"
 msgstr "Уникальный член экипажа"
 
+msgid "notrecruitedtankman/commander_hob/desc"
+msgstr ""
+"Knabe — это сила, с которой нужно считаться. Однажды он вытащил пять танков "
+"из грязи голыми руками и даже не вспотел! Как командир танка, он уверенно "
+"ведёт свою команду к победе, даже если команда активно сопротивляется."
+
+msgid "notrecruitedtankman/commander_hob/label"
+msgstr "Уникальный командир"
+
 msgid "notrecruitedtankman/commander_maeve/desc"
 msgstr ""
 "Воплощение абсолютной силы. У неё несокрушимое тело и дух, а девочки по "
@@ -7428,6 +7421,15 @@ msgstr ""
 
 msgid "notrecruitedtankman/commander_marina/label"
 msgstr "Уникальный член экипажа"
+
+msgid "notrecruitedtankman/commander_nansen/desc"
+msgstr ""
+"Жизнь для меня — величайшая из игр. Опасность подстерегает тех, кто считает её игрой тривиальной. Игрой, к которой можно относиться легкомысленно и в которой правила не имеют большого значения. Правила имеют огромное значение. Игра должна быть честной, иначе это уже не игра. Не справились? Продолжайте! Преуспели? Продолжайте! Подготовка к следующей экспедиции начинается ровно в тот момент, когда вы вернулись из предыдущей.\n"
+"\n"
+"*На основе цитат из произведений Эрнеста Шеклтона, Фритьофа Нансена и Роберта Пири."
+
+msgid "notrecruitedtankman/commander_nansen/label"
+msgstr "Уникальный командир"
 
 msgid "notrecruitedtankman/commander_omelia/desc"
 msgstr ""
@@ -7839,6 +7841,20 @@ msgstr "Достичь указанного уровня атмосферы пр
 msgid "notrecruitedtankman/ny23defaultGirl/label"
 msgstr "Новогоднее наступление 2023"
 
+msgid "notrecruitedtankman/ny23ruby_girl_1/desc"
+msgstr ""
+"Ослепительная красота, доказанный талант и этот ни с чем не сравнимый, "
+"заразительный смех — верные спутники, сопровождающие Миллу в её победном "
+"марше по красным ковровым дорожкам. И где бы вам не встретился её очередной "
+"яркий образ, наверняка вспомните слова учёного из всеми любимого фильма с "
+"Миллой: «Я же вам говорил. Само совершенство!»."
+
+msgid "notrecruitedtankman/ny23ruby_girl_1/event"
+msgstr "Новогоднее наступление 2023"
+
+msgid "notrecruitedtankman/ny23ruby_girl_1/label"
+msgstr "Новогоднее наступление 2023"
+
 msgid "notrecruitedtankman/offspring_commander/desc"
 msgstr ""
 "Неутомимый и харизматичный вокалист, талантливый гитарист и просто отличный "
@@ -7978,6 +7994,15 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankman/label"
 msgstr "Уникальный член экипажа"
 
+msgid "notrecruitedtankman/tankmen/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen/label"
+msgstr "Уникальный член экипажа"
+
 msgid "notrecruitedtankman/tankmen_auc_1/desc"
 msgstr ""
 "Технодесантник-примарис. Даже будучи возведённым в ранг Астартес, не потерял"
@@ -8007,6 +8032,53 @@ msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankmen_auc_2/label"
 msgstr "Warhammer 40 000: специальное предложение"
+
+msgid "notrecruitedtankman/tankmen_bp10_1/desc"
+msgstr ""
+"Восемнадцать лет службы в сухопутных войсках абсолютно не повлияли на "
+"характер этого бойца. Это по-прежнему весёлый и простодушный верзила, "
+"который обожает заключать пари, верит в свою удачу и во всём полагается на "
+"волю случая. Даже в пустыню его привела подброшенная монета, которая упала "
+"не той стороной. Из-за своего легкомыслия не раз попадал в смертельно "
+"опасные передряги, но всегда выходил из них целым и невредимым. Любимая "
+"фраза — «Спорим, что я вернусь живым?»"
+
+msgid "notrecruitedtankman/tankmen_bp10_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_1/label"
+msgstr "Боевой пропуск, десятый сезон"
+
+msgid "notrecruitedtankman/tankmen_bp10_2/desc"
+msgstr ""
+"Военный переводчик, способный в короткие сроки освоить специфические "
+"особенности любого рода войск. Полиглот, знает восемь языков, в т.ч. "
+"суахили. После гибели боевого товарища Лео Соммера замкнулся в себе, из-за "
+"чего предпочитает действовать в одиночку и не заводить приятельских "
+"отношений. Разбирая архивные записи, нашёл упоминание древнего свитка, "
+"который считался утраченным, и уже через неделю был в пустыне в составе "
+"специальной экспедиции."
+
+msgid "notrecruitedtankman/tankmen_bp10_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_2/label"
+msgstr "Боевой пропуск, десятый сезон"
+
+msgid "notrecruitedtankman/tankmen_bp10_3/desc"
+msgstr ""
+"Доступ к личному делу этой шпионки есть лишь у троих человек. По некоторым "
+"данным она родилась в семье разведчика и актрисы. Была завербована ещё в "
+"юности, считается лучшей по части проведения тайных операций. Помимо "
+"незаурядного ума, отличается привлекательной внешностью, чем активно "
+"пользуется. По приказу командования отправилась на задание в пустыню, хоть и"
+" не имела ни малейшего желания выполнять его."
+
+msgid "notrecruitedtankman/tankmen_bp10_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_3/label"
+msgstr "Боевой пропуск, десятый сезон"
 
 msgid "notrecruitedtankman/tankmen_bp2_1/desc"
 msgstr ""
@@ -8373,6 +8445,67 @@ msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankmen_bp9_3/label"
 msgstr "Боевой пропуск, девятый сезон"
+
+msgid "notrecruitedtankman/tankmen_bph_1/desc"
+msgstr ""
+"Одна из моделей автономного антропоморфного механизма-эндоскелета, "
+"созданного Cyberdyne Systems (кодификация CSM-101) для выполнения "
+"преимущественно боевых задач. Мыслительный процессор машины, работающий в "
+"расширенном режиме, способен обучаться, что даёт серьёзное преимущество в "
+"случае изменения условий задания. Т-800 считается наиболее удачным (или "
+"скорее знаковым) образцом из всей линейки терминаторов."
+
+msgid "notrecruitedtankman/tankmen_bph_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bph_1/label"
+msgstr "Боевой пропуск: Судный день"
+
+msgid "notrecruitedtankman/tankmen_bph_2/desc"
+msgstr ""
+"10-летний мальчик, в будущем — лидер всемирного сопротивления в войне машин "
+"и людей. Главный враг Скайнет, для ликвидации которого сеть отправила свою "
+"передовую на тот момент разработку — Т-1000. Зная планы Скайнет, Джон Коннор"
+" из будущего отправил на собственную защиту перепрограммированную машину "
+"Т-800, которая справилась с заданием и ликвидировала угрозу для ещё "
+"несуществующего, но ключевого в будущем сопротивления."
+
+msgid "notrecruitedtankman/tankmen_bph_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bph_2/label"
+msgstr "Боевой пропуск: Судный день"
+
+msgid "notrecruitedtankman/tankmen_bph_3/desc"
+msgstr ""
+"Мать Джона Коннора, которая знает о его предназначении и всячески готовит "
+"его к роли лидера сопротивления. Её попытки донести миру правду о будущем "
+"стали причиной её изоляции, что формально поставило под угрозу существование"
+" человечества. Взаперти не потеряла силы духа и продолжила борьбу со Скайнет"
+" после воссоединения с сыном и его неожиданным защитником. Одна из ярчайших "
+"женских персонажей в кинематографе."
+
+msgid "notrecruitedtankman/tankmen_bph_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bph_3/label"
+msgstr "Боевой пропуск: Судный день"
+
+msgid "notrecruitedtankman/tankmen_bph_4/desc"
+msgstr ""
+"Самая новая и совершенная (на момент событий фильма) модель терминатора, "
+"созданного Скайнет для ликвидации Джона Коннора. В отличие от привычных "
+"эндоскелетов, состоит из жидкометаллического сплава, способного менять форму"
+" и мимикрировать под окружение. Не подвержен механическому разрушению, "
+"фактически неуязвим для стрелкового оружия. Несмотря на большое количество "
+"произведённых экземпляров в будущем, использовался очень редко: передовой "
+"самообучающийся чип Скайнет расценивал как потенциальную угрозу для сети."
+
+msgid "notrecruitedtankman/tankmen_bph_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bph_4/label"
+msgstr "Боевой пропуск: Судный день"
 
 msgid "notrecruitedtankman/tankwoman/desc"
 msgstr ""
@@ -9480,7 +9613,7 @@ msgid "quests/igr"
 msgstr "Боевая задача доступна только в премиум IGR"
 
 msgid "quests/linkBtn/battlePass"
-msgstr "К прогрессии Боевого пропуска"
+msgstr "Посмотреть прогресс Боевого пропуска"
 
 msgid "quests/linkBtn/battlePass/select"
 msgstr "К выбору глав Боевого пропуска"

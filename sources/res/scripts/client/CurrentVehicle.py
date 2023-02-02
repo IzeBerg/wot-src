@@ -186,6 +186,9 @@ class _CurrentVehicle(_CachedVehicle):
             return
         else:
             if self.isPresent() and self.isInHangar() and self.item.modelState:
+                if self.isInBootcamp():
+                    bootcampOutfit = self.bootcampController.getBootcampOutfit(self.item.descriptor)
+                    outfit = bootcampOutfit if bootcampOutfit else outfit
                 self.hangarSpace.startToUpdateVehicle(self.item, outfit)
             else:
                 self.hangarSpace.removeVehicle()

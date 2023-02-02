@@ -1,12 +1,15 @@
 import logging, typing
 from battle_pass_common import BattlePassState, BATTLE_PASS_OFFER_TOKEN_PREFIX, BATTLE_PASS_TOKEN_3D_STYLE, BattlePassRewardReason, BattlePassConsts
 from gui.battle_pass.battle_pass_helpers import getStyleInfoForChapter, getOfferTokenByGift
+from gui.impl.gen import R
 from gui.impl.pub.notification_commands import NotificationEvent, EventNotificationCommand
+from gui.server_events.events_dispatcher import showMissionsBattlePass
 from helpers import dependency
 from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.offers import IOffersDataProvider
 if typing.TYPE_CHECKING:
     from account_helpers.offers.events_data import OfferEventData
+    from typing import Any, Callable, Dict, List, Optional
 _logger = logging.getLogger(__name__)
 _logger.addHandler(logging.NullHandler())
 
@@ -68,7 +71,7 @@ def separateRewards(rewards, battlePass=None, offers=None):
 
 
 @dependency.replace_none_kwargs(battlePass=IBattlePassController)
-def packStartEvent(rewards, data, battlePass=None):
+def packStartEvent(rewards, data, packageRewards, eventMethod, battlePass=None):
     if rewards is None or data is None:
         return
     reason = data['reason']
@@ -92,7 +95,23 @@ def packStartEvent(rewards, data, battlePass=None):
         rewards.pop('entitlements', None)
         if not isPremiumPurchase and not isRareLevel and not isFinalLevel or not rewards:
             return
-        return EventNotificationCommand(NotificationEvent(method=battlePass.getRewardLogic().startRewardFlow, rewards=[rewards], data=data))
+        return EventNotificationCommand(NotificationEvent(method=eventMethod, rewards=[rewards], data=data, packageRewards=packageRewards))
+
+
+@dependency.replace_none_kwargs(battlePass=IBattlePassController)
+def multipleBattlePassPurchasedEventMethod(rewards, data, packageRewards, battlePass=None):
+    if battlePass.isDisabled():
+        return
+    else:
+        chapterID = battlePass.getCurrentChapterID()
+        showMissionsBattlePass(R.views.lobby.battle_pass.BattlePassProgressionsView() if chapterID else None, chapterID)
+        battlePass.getRewardLogic().startRewardFlow(rewards, data, packageRewards)
+        return
+
+
+@dependency.replace_none_kwargs(battlePass=IBattlePassController)
+def defaultEventMethod(rewards, data, packageRewards, battlePass=None):
+    battlePass.getRewardLogic().startRewardFlow(rewards, data, packageRewards)
 
 
 def packToken(tokenID):

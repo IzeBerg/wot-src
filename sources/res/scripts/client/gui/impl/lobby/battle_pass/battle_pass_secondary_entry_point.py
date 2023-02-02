@@ -79,7 +79,7 @@ class BattlePassSecondaryEntryPointWidget(SecondaryEntryPointMeta, BaseBattlePas
         if self.chapterID > 0:
             iconTemplate = 'icon_{}_chapter_{}'
             progressionType = 'gold' if self.isBought else 'silver'
-            icon = _R_IMAGES.dyn(iconTemplate.format(progressionType, self.chapterID), default=_R_IMAGES.icon_chapter_empty)()
+            icon = _R_IMAGES.dyn(iconTemplate.format(progressionType, self.chapterID), default=_R_IMAGES.icon_default)()
         elif self.isCompleted:
             icon = _R_IMAGES.icon_completed_gold() if self.isBought else _R_IMAGES.icon_completed_silver()
         else:

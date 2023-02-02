@@ -21,11 +21,11 @@ def loadDescriptorData(setting, exParsers=None, clearCache=False):
     return
 
 
-def loadChapterData(chapter, chapterParser, afterBattle=False, initial=False):
+def loadChapterData(chapter, chapterParser, initial=False):
     if chapter is not None and not chapter.isValid():
         try:
             parser = settings.createTutorialElement(chapterParser)
-            parser.parse(chapter, afterBattle=afterBattle, initial=initial)
+            parser.parse(chapter, initial=initial)
         except Exception:
             LOG_CURRENT_EXCEPTION()
             return
@@ -34,18 +34,6 @@ def loadChapterData(chapter, chapterParser, afterBattle=False, initial=False):
 
 
 def clearChapterData(chapter):
-    ResMgr.purge(settings.GLOBAL_REFS_FILE_PATH)
-    defPath = chapter.getFilePath(afterBattle=False)
-    abPath = chapter.getFilePath(afterBattle=True)
-    ResMgr.purge(defPath)
-    if defPath != abPath:
-        ResMgr.purge(abPath)
+    filePath = chapter.getFilePath()
+    ResMgr.purge(filePath)
     chapter.clear()
-
-
-def getQuestsDescriptor():
-    setting = settings.TUTORIAL_SETTINGS.QUESTS
-    if setting.enabled:
-        return loadDescriptorData(setting)
-    else:
-        return

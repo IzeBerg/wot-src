@@ -206,7 +206,6 @@ class BattlePassBuyView(ViewImpl):
             chapterID = self.__selectedPackage.getChapterID()
             self.viewModel.confirm.setPrice(self.__selectedPackage.getPrice())
             self.viewModel.confirm.setChapterID(chapterID)
-            self.viewModel.confirm.setIsExtra(self.__battlePass.isExtraChapter(chapterID))
             isChapterActive = self.__selectedPackage.getChapterState() in (ChapterState.ACTIVE, ChapterState.COMPLETED)
             self.viewModel.confirm.setIsActive(isChapterActive)
             self.__updateDetailRewards()
@@ -219,12 +218,14 @@ class BattlePassBuyView(ViewImpl):
         with self.viewModel.rewards.transaction() as (tx):
             tx.nowRewards.clearItems()
             tx.futureRewards.clearItems()
+            tx.topPriorityRewards.clearItems()
             tx.setFromLevel(fromLevel)
             tx.setToLevel(toLevel)
             tx.setChapterID(chapterID)
             tx.setPackageState(PackageType.BATTLEPASS)
         packBonusModelAndTooltipData(self.__selectedPackage.getNowAwards(), self.viewModel.rewards.nowRewards, self.__tooltipItems)
         packBonusModelAndTooltipData(self.__selectedPackage.getFutureAwards(), self.viewModel.rewards.futureRewards, self.__tooltipItems)
+        packBonusModelAndTooltipData(self.__selectedPackage.getTopPriorityAwards(), self.viewModel.rewards.topPriorityRewards, self.__tooltipItems)
 
     def __onBuyBattlePassClick(self):
         if self.__selectedPackage is not None:

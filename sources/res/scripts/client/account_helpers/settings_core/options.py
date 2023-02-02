@@ -469,12 +469,6 @@ class SettingTrueByDefault(StorageDumpSetting):
         return True
 
 
-class TutorialSetting(StorageDumpSetting):
-
-    def getDefaultValue(self):
-        return False
-
-
 class UserPrefsSetting(SettingAbstract):
 
     def __init__(self, sectionName=None, isPreview=False):

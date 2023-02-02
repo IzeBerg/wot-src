@@ -682,6 +682,11 @@
 		<type>dict</type>
 		<value>
 			<item>
+				https://eu.wargaming.net/shop/wot
+				<name>webSiteRootURL</name>
+				<type>url</type>
+			</item>
+			<item>
 				https://webbrg-ct.worldoftanks.eu
 				<name>webBridgeRootURL</name>
 				<type>url</type>
@@ -968,16 +973,6 @@
 		</value>
 	</setting>
 	<setting>
-		<name>tournament</name>
-		<type>dict</type>
-		<value>
-			<item>
-				<name>testUrl</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
 		<name>hallOfFame</name>
 		<type>dict</type>
 		<value>
@@ -1207,6 +1202,11 @@
 				<name>integratedAuction</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/event_lootboxes)
+				<name>eventLootboxes</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1251,7 +1251,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/9BPContentPage/
+				/$LANGUAGE_CODE/promocontent/10BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1261,7 +1261,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/9BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/10BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1296,6 +1296,10 @@
 				<name>introSlides</name>
 				<type>list</type>
 				<value>
+					<item>
+						<type>string</type>
+						<value>styles</value>
+					</item>
 					<item>
 						<type>string</type>
 						<value>tanks</value>
@@ -1761,6 +1765,17 @@
 			<item>
 				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2022IntroVideo/
 				<name>introVideo</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>lootBoxes</name>
+		<type>dict</type>
+		<value>
+			<item>
+				{webShopRootURL}/supplyboxes/?force_login=1
+				<name>categoryURL</name>
 				<type>url</type>
 			</item>
 		</value>

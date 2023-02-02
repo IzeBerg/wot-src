@@ -45,22 +45,3 @@ class BattlePassWebApi(W2CSchema):
     @w2c(W2CSchema, name='get_info')
     def handleGetInfo(self, _):
         return formatBattlePassInfo()
-
-    @w2c(W2CSchema, name='show_progressions_view')
-    def handleShowProgressionsView(self, _):
-        _logger.error('W2C "show_progressions_view" is deprecated, use "show_view" instead!')
-        showMissionsBattlePass()
-
-    @w2c(W2CSchema, name='get_shop_banners_params')
-    def handleGetShopBannerParams(self, _):
-        _logger.error('W2C "get_shop_banners_params" is deprecated, use "get_info" instead!')
-        isActive = not self.__battlePass.isPaused() and self.__battlePass.isVisible()
-        chaptersBuyInfo = {chapterID:self.__battlePass.isBought(chapterID=chapterID) for chapterID in self.__battlePass.getChapterIDs()}
-        canBuyBP = not all(chaptersBuyInfo.values())
-        hasBP = any(chaptersBuyInfo.values())
-        canBuyLevels = any(isBought and self.__battlePass.getChapterState(chapterID) == ChapterState.ACTIVE for chapterID, isBought in chaptersBuyInfo.iteritems())
-        return {'isActive': isActive, 
-           'canBuyBP': canBuyBP, 
-           'canBuyLevels': canBuyLevels, 
-           'hasBP': hasBP, 
-           'isSeasonLeftSoon': isSeasonEndingSoon()}

@@ -82,24 +82,11 @@ package net.wg.data.constants.generated
       public static const SIZE_80X80_DIGIT_8:String = "size_80x80_digit_8";
       
       public static const SIZE_80X80_DIGIT_9:String = "size_80x80_digit_9";
-      
-      public static const SIZE_ALL_DIGIT_ENUM:Array = [SIZE_220X220_DIGIT_0,SIZE_220X220_DIGIT_1,SIZE_220X220_DIGIT_2,SIZE_220X220_DIGIT_3,SIZE_220X220_DIGIT_4,SIZE_220X220_DIGIT_5,SIZE_220X220_DIGIT_6,SIZE_220X220_DIGIT_7,SIZE_220X220_DIGIT_8,SIZE_220X220_DIGIT_9,SIZE_24X24_DIGIT_0,SIZE_24X24_DIGIT_1,SIZE_24X24_DIGIT_2,SIZE_24X24_DIGIT_3,SIZE_24X24_DIGIT_4,SIZE_24X24_DIGIT_5,SIZE_24X24_DIGIT_6,SIZE_24X24_DIGIT_7,SIZE_24X24_DIGIT_8,SIZE_24X24_DIGIT_9,SIZE_48X48_DIGIT_0,SIZE_48X48_DIGIT_1,SIZE_48X48_DIGIT_2,SIZE_48X48_DIGIT_3,SIZE_48X48_DIGIT_4,SIZE_48X48_DIGIT_5,SIZE_48X48_DIGIT_6,SIZE_48X48_DIGIT_7,SIZE_48X48_DIGIT_8,SIZE_48X48_DIGIT_9,SIZE_80X80_DIGIT_0,SIZE_80X80_DIGIT_1,SIZE_80X80_DIGIT_2,SIZE_80X80_DIGIT_3,SIZE_80X80_DIGIT_4,SIZE_80X80_DIGIT_5,SIZE_80X80_DIGIT_6,SIZE_80X80_DIGIT_7,SIZE_80X80_DIGIT_8,SIZE_80X80_DIGIT_9];
        
       
       public function DIGITS()
       {
          super();
-      }
-      
-      public static function getDigitIcon(param1:String, param2:String) : String
-      {
-         var _loc3_:String = "size_" + param1 + "_digit_" + param2;
-         if(SIZE_ALL_DIGIT_ENUM.indexOf(_loc3_) == -1)
-         {
-            DebugUtils.LOG_WARNING("[getDigitIcon]:atlas key \"" + _loc3_ + "\" was not found");
-            return null;
-         }
-         return _loc3_;
       }
    }
 }

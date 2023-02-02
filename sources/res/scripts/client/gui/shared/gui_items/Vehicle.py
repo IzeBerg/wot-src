@@ -15,7 +15,6 @@ from gui import makeHtmlString
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
 from gui.Scaleform.locale.ITEM_TYPES import ITEM_TYPES
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
-from gui.Scaleform.locale.RES_SHOP_EXT import RES_SHOP_EXT
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.gen_utils import INVALID_RES_ID
@@ -32,7 +31,8 @@ from gui.shared.gui_items.gui_item_economics import ItemPrice, ItemPrices, ITEM_
 from gui.shared.gui_items.vehicle_equipment import VehicleEquipment, SUPPORT_EXT_DATA_FEATURES
 from gui.shared.money import MONEY_UNDEFINED, Currency, Money
 from gui.shared.utils import makeSearchableString
-from helpers import i18n, time_utils, dependency, func_utils
+from gui.shared.utils.functions import replaceHyphenToUnderscore
+from helpers import i18n, time_utils, dependency
 from items import vehicles, tankmen, customizations, getTypeInfoByName, getTypeOfCompactDescr, filterIntCDsByItemType
 from items.components.c11n_constants import SeasonType, CustomizationType, HIDDEN_CAMOUFLAGE_ID, ApplyArea, CUSTOM_STYLE_POOL_ID, ItemTags, EMPTY_ITEM_ID
 from items.customizations import createNationalEmblemComponents
@@ -631,7 +631,7 @@ class Vehicle(FittingItem):
 
     def getShopIcon(self, size=STORE_CONSTANTS.ICON_SIZE_MEDIUM):
         name = getNationLessName(self.name)
-        return RES_SHOP_EXT.getVehicleIcon(size, name)
+        return getShopVehicleIconPath(size, name)
 
     @property
     def invID(self):
@@ -2004,8 +2004,7 @@ def getIconPath(vehicleName):
     resID = R.images.gui.maps.icons.vehicle.dyn(unicName)()
     if resID != -1:
         return backport.image(resID)
-    else:
-        return
+    return ''
 
 
 def getNationLessName(vehicleName):
@@ -2014,11 +2013,9 @@ def getNationLessName(vehicleName):
 
 def getIconShopPath(vehicleName, size=STORE_CONSTANTS.ICON_SIZE_MEDIUM):
     name = getNationLessName(vehicleName)
-    path = RES_SHOP_EXT.getVehicleIcon(size, name)
-    if path is not None:
-        return func_utils.makeFlashPath(path)
-    else:
-        return '../maps/shop/vehicles/%s/empty_tank.png' % size
+    unicName = getIconResourceName(name)
+    path = getShopVehicleIconPath(size, unicName)
+    return path or backport.image(R.images.gui.maps.shop.vehicles.num(size).empty_tank())
 
 
 def getIconResource(vehicleName):
@@ -2070,8 +2067,15 @@ def getTypeVPanelIconPath(vehicleType):
     return RES_ICONS.getVehicleTypeVPanelIconPath(vehicleType)
 
 
+def getShopVehicleIconPath(size, name):
+    resID = R.images.gui.maps.shop.vehicles.num(size).dyn(replaceHyphenToUnderscore(name))()
+    if resID != -1:
+        return backport.image(resID)
+    return ''
+
+
 def getTypeBigIconResource(vehicleType, isElite=False):
-    return R.images.gui.maps.icons.vehicleTypes.big.dyn((vehicleType + '_elite' if isElite else vehicleType).replace('-', '_'))
+    return R.images.gui.maps.icons.vehicleTypes.big.dyn(replaceHyphenToUnderscore(vehicleType + '_elite' if isElite else vehicleType))
 
 
 def getUserName(vehicleType, textPrefix=False):

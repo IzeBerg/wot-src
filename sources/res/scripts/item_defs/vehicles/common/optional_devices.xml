@@ -402,7 +402,6 @@
 			<crystal/>
 		</price>
 		<tags>healthReserve deluxe</tags>
-		<notInShop>true</notInShop>
 		<incompatibleTags>
 			<installed>healthReserve</installed>
 		</incompatibleTags>
@@ -1757,6 +1756,208 @@
 			</add>
 		</kpi>
 	</trophyUpgradedTurbocharger>
+	<trophyBasicExtraHealthReserve>
+		<id>118</id>
+		<userString>#artefacts:trophyBasicExtraHealthReserve/name</userString>
+		<shortDescriptionSpecial>#artefacts:trophyBasicExtraHealthReserve/short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#artefacts:trophyBasicExtraHealthReserve/long_special</longDescriptionSpecial>
+		<icon>extraHealthReserve</icon>
+		<price>100000</price>
+		<notInShop>true</notInShop>
+		<removable>false</removable>
+		<tags>healthReserve trophyBasic</tags>
+		<incompatibleTags>
+			<installed>healthReserve</installed>
+		</incompatibleTags>
+		<vehicleFilter>
+			<include>
+				<vehicle>
+					<tags>extraHealthReserve_class1_user extraHealthReserve_class2_user extraHealthReserve_class3_user</tags>
+				</vehicle>
+			</include>
+		</vehicleFilter>
+		<script>
+			UpgradableExtraHealthReserve
+			<chassisMaxLoadFactor>
+				1.1
+				<!--BW_String-->
+			</chassisMaxLoadFactor>
+			<factors>
+				<factor>
+					<attribute>miscAttrs/healthFactor</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						1.08
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
+					<attribute>miscAttrs/chassisHealthFactor</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						1.5
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
+					<attribute>miscAttrs/vehicleByChassisDamageFactor</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						0.5
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
+					<attribute>miscAttrs/chassisRepairSpeedFactor</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						1.15
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+			</factors>
+			<upgradeInfo>
+				<upgradedCompDescr>30713</upgradedCompDescr>
+				<price>3000000</price>
+			</upgradeInfo>
+		</script>
+		<kpi>
+			<mul>
+				<name>vehicleStrength</name>
+				<value>
+					1.08
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleChassisStrength</name>
+				<value>
+					1.5
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleChassisRepairSpeed</name>
+				<value>
+					1.15
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleChassisLoad</name>
+				<value>
+					1.1
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleChassisFallDamage</name>
+				<value>
+					0.5
+					<!--BW_String-->
+				</value>
+			</mul>
+		</kpi>
+	</trophyBasicExtraHealthReserve>
+	<trophyUpgradedExtraHealthReserve>
+		<id>119</id>
+		<userString>#artefacts:trophyUpgradedExtraHealthReserve/name</userString>
+		<shortDescriptionSpecial>#artefacts:trophyBasicExtraHealthReserve/short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#artefacts:trophyBasicExtraHealthReserve/long_special</longDescriptionSpecial>
+		<icon>extraHealthReserve</icon>
+		<price>100000</price>
+		<notInShop>true</notInShop>
+		<removable>false</removable>
+		<tags>healthReserve trophyUpgraded</tags>
+		<incompatibleTags>
+			<installed>healthReserve</installed>
+		</incompatibleTags>
+		<vehicleFilter>
+			<include>
+				<vehicle>
+					<tags>extraHealthReserve_class1_user extraHealthReserve_class2_user extraHealthReserve_class3_user</tags>
+				</vehicle>
+			</include>
+		</vehicleFilter>
+		<script>
+			UpgradedExtraHealthReserve
+			<chassisMaxLoadFactor>
+				1.1
+				<!--BW_String-->
+			</chassisMaxLoadFactor>
+			<factors>
+				<factor>
+					<attribute>miscAttrs/healthFactor</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						1.11
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
+					<attribute>miscAttrs/chassisHealthFactor</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						1.7
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
+					<attribute>miscAttrs/vehicleByChassisDamageFactor</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						0.3
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
+					<attribute>miscAttrs/chassisRepairSpeedFactor</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						1.25
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+			</factors>
+		</script>
+		<kpi>
+			<mul>
+				<name>vehicleStrength</name>
+				<value>
+					1.11
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleChassisStrength</name>
+				<value>
+					1.7
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleChassisRepairSpeed</name>
+				<value>
+					1.25
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleChassisLoad</name>
+				<value>
+					1.1
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleChassisFallDamage</name>
+				<value>
+					0.3
+					<!--BW_String-->
+				</value>
+			</mul>
+		</kpi>
+	</trophyUpgradedExtraHealthReserve>
 	<improvedConfiguration_tier2>
 		<id>61</id>
 		<userString>#artefacts:improvedConfiguration_tier2/name</userString>
@@ -4852,7 +5053,7 @@
 					<attribute>miscAttrs/gunAimingTimeFactor</attribute>
 					<type>mul</type>
 					<valueByLevel>
-						0.926
+						0.935
 						<!--BW_String-->
 					</valueByLevel>
 				</factor>
@@ -4877,7 +5078,7 @@
 			<mul>
 				<name>vehicleGunAimSpeed</name>
 				<value>
-					1.08
+					1.07
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -4930,7 +5131,7 @@
 					<attribute>miscAttrs/additiveShotDispersionFactor</attribute>
 					<type>mul</type>
 					<valueByLevel>
-						0.885
+						0.89
 						<!--BW_String-->
 					</valueByLevel>
 				</factor>
@@ -4947,7 +5148,7 @@
 			<mul>
 				<name>vehicleGunShotDispersion</name>
 				<value>
-					0.885
+					0.89
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -4965,6 +5166,141 @@
 			<equipCoin/>
 		</price>
 		<tags>turbocharger modernized_1</tags>
+		<notInShop>true</notInShop>
+		<incompatibleTags>
+			<installed>turbocharger</installed>
+		</incompatibleTags>
+		<vehicleFilter>
+			<include>
+				<vehicle>
+					<minLevel>5</minLevel>
+					<maxLevel>10</maxLevel>
+				</vehicle>
+			</include>
+			<exclude>
+				<vehicle>
+					<tags>wheeledVehicle</tags>
+				</vehicle>
+			</exclude>
+		</vehicleFilter>
+		<script>
+			UpgradableRotationMechanisms
+			<weight>100</weight>
+			<trackRotateSpeedFactor>
+				1.04
+				<!--BW_String-->
+			</trackRotateSpeedFactor>
+			<wheelRotateSpeedFactor>
+				1.04
+				<!--BW_String-->
+			</wheelRotateSpeedFactor>
+			<wheelCenterRotationFwdSpeed>
+				1.04
+				<!--BW_String-->
+			</wheelCenterRotationFwdSpeed>
+			<trackMoveSpeedFactor>
+				1.04
+				<!--BW_String-->
+			</trackMoveSpeedFactor>
+			<wheelMoveSpeedFactor>
+				1.04
+				<!--BW_String-->
+			</wheelMoveSpeedFactor>
+			<factors>
+				<factor>
+					<attribute>miscAttrs/turretRotationSpeed</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						1.04
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
+					<attribute>miscAttrs/additiveShotDispersionFactor</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						0.96
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
+					<attribute>miscAttrs/enginePowerFactor</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						1.05
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
+					<attribute>miscAttrs/forwardMaxSpeedKMHTerm</attribute>
+					<type>add</type>
+					<valueByLevel>4</valueByLevel>
+				</factor>
+				<factor>
+					<attribute>miscAttrs/backwardMaxSpeedKMHTerm</attribute>
+					<type>add</type>
+					<valueByLevel>2</valueByLevel>
+				</factor>
+			</factors>
+			<upgradeInfo>
+				<upgradedDevice>modernizedTurbochargerRotationMechanism2</upgradedDevice>
+				<price>
+					400
+					<equipCoin/>
+				</price>
+			</upgradeInfo>
+		</script>
+		<kpi>
+			<mul>
+				<name>vehicleEnginePower</name>
+				<value>
+					1.05
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleTurretOrCuttingRotationSpeed</name>
+				<value>
+					1.04
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleAllGroundRotationSpeed</name>
+				<value>
+					1.04
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleGunShotDispersion</name>
+				<value>
+					0.96
+					<!--BW_String-->
+				</value>
+			</mul>
+			<add>
+				<name>vehicleForwardMaxSpeed</name>
+				<value>4</value>
+			</add>
+			<add>
+				<name>vehicleBackwardMaxSpeed</name>
+				<value>2</value>
+			</add>
+		</kpi>
+	</modernizedTurbochargerRotationMechanism1>
+	<modernizedTurbochargerRotationMechanism2>
+		<id>154</id>
+		<userString>#artefacts:modernizedTurbochargerRotationMechanism2/name</userString>
+		<shortDescriptionSpecial>#artefacts:modernizedTurbochargerRotationMechanism2/short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#artefacts:modernizedTurbochargerRotationMechanism2/long_special</longDescriptionSpecial>
+		<icon>modernizedTurbochargerRotationMechanism</icon>
+		<groupName>enhancedTurbocharger</groupName>
+		<price>
+			400
+			<equipCoin/>
+		</price>
+		<tags>turbocharger modernized_2</tags>
 		<notInShop>true</notInShop>
 		<incompatibleTags>
 			<installed>turbocharger</installed>
@@ -5038,13 +5374,13 @@
 				<factor>
 					<attribute>miscAttrs/backwardMaxSpeedKMHTerm</attribute>
 					<type>add</type>
-					<valueByLevel>2</valueByLevel>
+					<valueByLevel>3</valueByLevel>
 				</factor>
 			</factors>
 			<upgradeInfo>
-				<upgradedDevice>modernizedTurbochargerRotationMechanism2</upgradedDevice>
+				<upgradedDevice>modernizedTurbochargerRotationMechanism3</upgradedDevice>
 				<price>
-					400
+					2000
 					<equipCoin/>
 				</price>
 			</upgradeInfo>
@@ -5075,141 +5411,6 @@
 				<name>vehicleGunShotDispersion</name>
 				<value>
 					0.95
-					<!--BW_String-->
-				</value>
-			</mul>
-			<add>
-				<name>vehicleForwardMaxSpeed</name>
-				<value>4</value>
-			</add>
-			<add>
-				<name>vehicleBackwardMaxSpeed</name>
-				<value>2</value>
-			</add>
-		</kpi>
-	</modernizedTurbochargerRotationMechanism1>
-	<modernizedTurbochargerRotationMechanism2>
-		<id>154</id>
-		<userString>#artefacts:modernizedTurbochargerRotationMechanism2/name</userString>
-		<shortDescriptionSpecial>#artefacts:modernizedTurbochargerRotationMechanism2/short_special</shortDescriptionSpecial>
-		<longDescriptionSpecial>#artefacts:modernizedTurbochargerRotationMechanism2/long_special</longDescriptionSpecial>
-		<icon>modernizedTurbochargerRotationMechanism</icon>
-		<groupName>enhancedTurbocharger</groupName>
-		<price>
-			400
-			<equipCoin/>
-		</price>
-		<tags>turbocharger modernized_2</tags>
-		<notInShop>true</notInShop>
-		<incompatibleTags>
-			<installed>turbocharger</installed>
-		</incompatibleTags>
-		<vehicleFilter>
-			<include>
-				<vehicle>
-					<minLevel>5</minLevel>
-					<maxLevel>10</maxLevel>
-				</vehicle>
-			</include>
-			<exclude>
-				<vehicle>
-					<tags>wheeledVehicle</tags>
-				</vehicle>
-			</exclude>
-		</vehicleFilter>
-		<script>
-			UpgradableRotationMechanisms
-			<weight>100</weight>
-			<trackRotateSpeedFactor>
-				1.06
-				<!--BW_String-->
-			</trackRotateSpeedFactor>
-			<wheelRotateSpeedFactor>
-				1.06
-				<!--BW_String-->
-			</wheelRotateSpeedFactor>
-			<wheelCenterRotationFwdSpeed>
-				1.06
-				<!--BW_String-->
-			</wheelCenterRotationFwdSpeed>
-			<trackMoveSpeedFactor>
-				1.06
-				<!--BW_String-->
-			</trackMoveSpeedFactor>
-			<wheelMoveSpeedFactor>
-				1.06
-				<!--BW_String-->
-			</wheelMoveSpeedFactor>
-			<factors>
-				<factor>
-					<attribute>miscAttrs/turretRotationSpeed</attribute>
-					<type>mul</type>
-					<valueByLevel>
-						1.06
-						<!--BW_String-->
-					</valueByLevel>
-				</factor>
-				<factor>
-					<attribute>miscAttrs/additiveShotDispersionFactor</attribute>
-					<type>mul</type>
-					<valueByLevel>
-						0.94
-						<!--BW_String-->
-					</valueByLevel>
-				</factor>
-				<factor>
-					<attribute>miscAttrs/enginePowerFactor</attribute>
-					<type>mul</type>
-					<valueByLevel>
-						1.075
-						<!--BW_String-->
-					</valueByLevel>
-				</factor>
-				<factor>
-					<attribute>miscAttrs/forwardMaxSpeedKMHTerm</attribute>
-					<type>add</type>
-					<valueByLevel>4</valueByLevel>
-				</factor>
-				<factor>
-					<attribute>miscAttrs/backwardMaxSpeedKMHTerm</attribute>
-					<type>add</type>
-					<valueByLevel>3</valueByLevel>
-				</factor>
-			</factors>
-			<upgradeInfo>
-				<upgradedDevice>modernizedTurbochargerRotationMechanism3</upgradedDevice>
-				<price>
-					2000
-					<equipCoin/>
-				</price>
-			</upgradeInfo>
-		</script>
-		<kpi>
-			<mul>
-				<name>vehicleEnginePower</name>
-				<value>
-					1.075
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleTurretOrCuttingRotationSpeed</name>
-				<value>
-					1.06
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleAllGroundRotationSpeed</name>
-				<value>
-					1.06
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleGunShotDispersion</name>
-				<value>
-					0.94
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -5256,23 +5457,23 @@
 			UpgradedRotationMechanisms
 			<weight>100</weight>
 			<trackRotateSpeedFactor>
-				1.07
+				1.06
 				<!--BW_String-->
 			</trackRotateSpeedFactor>
 			<wheelRotateSpeedFactor>
-				1.07
+				1.06
 				<!--BW_String-->
 			</wheelRotateSpeedFactor>
 			<wheelCenterRotationFwdSpeed>
-				1.07
+				1.06
 				<!--BW_String-->
 			</wheelCenterRotationFwdSpeed>
 			<trackMoveSpeedFactor>
-				1.07
+				1.06
 				<!--BW_String-->
 			</trackMoveSpeedFactor>
 			<wheelMoveSpeedFactor>
-				1.07
+				1.06
 				<!--BW_String-->
 			</wheelMoveSpeedFactor>
 			<factors>
@@ -5280,7 +5481,7 @@
 					<attribute>miscAttrs/turretRotationSpeed</attribute>
 					<type>mul</type>
 					<valueByLevel>
-						1.07
+						1.06
 						<!--BW_String-->
 					</valueByLevel>
 				</factor>
@@ -5288,7 +5489,7 @@
 					<attribute>miscAttrs/additiveShotDispersionFactor</attribute>
 					<type>mul</type>
 					<valueByLevel>
-						0.93
+						0.94
 						<!--BW_String-->
 					</valueByLevel>
 				</factor>
@@ -5296,7 +5497,7 @@
 					<attribute>miscAttrs/enginePowerFactor</attribute>
 					<type>mul</type>
 					<valueByLevel>
-						1.09
+						1.08
 						<!--BW_String-->
 					</valueByLevel>
 				</factor>
@@ -5316,28 +5517,28 @@
 			<mul>
 				<name>vehicleEnginePower</name>
 				<value>
-					1.09
+					1.08
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>vehicleTurretOrCuttingRotationSpeed</name>
 				<value>
-					1.07
+					1.06
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>vehicleAllGroundRotationSpeed</name>
 				<value>
-					1.07
+					1.06
 					<!--BW_String-->
 				</value>
 			</mul>
 			<mul>
 				<name>vehicleGunShotDispersion</name>
 				<value>
-					0.93
+					0.94
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -5387,7 +5588,7 @@
 					<attribute>miscAttrs/healthFactor</attribute>
 					<type>mul</type>
 					<valueByLevel>
-						1.08
+						1.06
 						<!--BW_String-->
 					</valueByLevel>
 				</factor>
@@ -5460,7 +5661,7 @@
 			<mul>
 				<name>vehicleStrength</name>
 				<value>
-					1.08
+					1.06
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -5530,7 +5731,7 @@
 					<attribute>miscAttrs/healthFactor</attribute>
 					<type>mul</type>
 					<valueByLevel>
-						1.09
+						1.07
 						<!--BW_String-->
 					</valueByLevel>
 				</factor>
@@ -5603,7 +5804,7 @@
 			<mul>
 				<name>vehicleStrength</name>
 				<value>
-					1.09
+					1.07
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -5673,7 +5874,7 @@
 					<attribute>miscAttrs/healthFactor</attribute>
 					<type>mul</type>
 					<valueByLevel>
-						1.11
+						1.09
 						<!--BW_String-->
 					</valueByLevel>
 				</factor>
@@ -5689,7 +5890,7 @@
 					<attribute>miscAttrs/chassisRepairSpeedFactor</attribute>
 					<type>mul</type>
 					<valueByLevel>
-						1.25
+						1.2
 						<!--BW_String-->
 					</valueByLevel>
 				</factor>
@@ -5739,7 +5940,7 @@
 			<mul>
 				<name>vehicleStrength</name>
 				<value>
-					1.11
+					1.09
 					<!--BW_String-->
 				</value>
 			</mul>
@@ -5760,7 +5961,7 @@
 			<mul>
 				<name>vehicleChassisRepairSpeed</name>
 				<value>
-					1.25
+					1.2
 					<!--BW_String-->
 				</value>
 			</mul>

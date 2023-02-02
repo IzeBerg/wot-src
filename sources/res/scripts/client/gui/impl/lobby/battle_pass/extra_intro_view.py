@@ -28,14 +28,18 @@ class ExtraIntroView(ViewImpl):
     def viewModel(self):
         return super(ExtraIntroView, self).getViewModel()
 
+    def startListeners(self):
+        self._subscribe()
+
+    def stopListeners(self):
+        self._unsubscribe()
+
+    def updateData(self):
+        self.__fillModel()
+
     def _onLoading(self, *args, **kwargs):
         super(ExtraIntroView, self)._onLoading(*args, **kwargs)
-        style = getStyleForChapter(self.__chapterID)
-        vehicleCD = getVehicleCDForStyle(style)
-        vehicle = getVehicleByIntCD(vehicleCD)
-        with self.viewModel.transaction() as (tx):
-            tx.setStyleName(style.userName)
-            fillVehicleInfo(tx.vehicleInfo, vehicle)
+        self.__fillModel()
 
     def _getEvents(self):
         return (
@@ -66,3 +70,11 @@ class ExtraIntroView(ViewImpl):
             showHangar()
         elif not self.__battlePassController.isChapterExists(self.__chapterID):
             showMissionsBattlePass(R.views.lobby.battle_pass.ChapterChoiceView())
+
+    def __fillModel(self):
+        style = getStyleForChapter(self.__chapterID)
+        vehicleCD = getVehicleCDForStyle(style)
+        vehicle = getVehicleByIntCD(vehicleCD)
+        with self.viewModel.transaction() as (tx):
+            tx.setStyleName(style.userName)
+            fillVehicleInfo(tx.vehicleInfo, vehicle)

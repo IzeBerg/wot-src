@@ -976,14 +976,18 @@ def __readBonus_oneof(config, bonusReaders, bonus, section, eventType):
 def __readBonus_dogTag(bonus, _name, section, eventType, checkLimit):
     componentId = section['id'].asInt
     data = {'id': componentId}
-    if section.has_key('value'):
-        data['value'] = section['value'].asFloat
-    if section.has_key('grade'):
-        data['grade'] = section['grade'].asInt
-    if section.has_key('unlock'):
-        data['unlock'] = section['unlock'].asBool
-    if section.has_key('needRecalculate'):
-        data['needRecalculate'] = section['needRecalculate'].asBool
+    value = section.readFloat('value', 0.0)
+    grade = section.readInt('grade', 0)
+    unlock = section.readBool('unlock', False)
+    needRecalculate = section.readBool('needRecalculate', False)
+    if value is not 0.0:
+        data['value'] = value
+    if grade is not 0:
+        data['grade'] = grade
+    if unlock is not False:
+        data['unlock'] = unlock
+    if needRecalculate is not False:
+        data['needRecalculate'] = needRecalculate
     bonus.setdefault('dogTagComponents', []).append(data)
 
 
@@ -1119,6 +1123,10 @@ def __readBonusConfig(section):
         elif name == 'useBonusProbability':
             config.setdefault('useBonusProbability', False)
             config['useBonusProbability'] = data.asBool
+        elif name == 'showBonusInfo':
+            config['showBonusInfo'] = data.asBool
+        elif name == 'showProbabilitiesInfo':
+            config['showProbabilitiesInfo'] = data.asBool
         else:
             raise SoftException(('Unknown config section: {}').format(name))
 

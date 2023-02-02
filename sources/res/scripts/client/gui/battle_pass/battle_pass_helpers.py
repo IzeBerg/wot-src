@@ -3,7 +3,6 @@ from collections import namedtuple
 import typing
 from account_helpers.AccountSettings import AccountSettings, IS_BATTLE_PASS_EXTRA_STARTED, LAST_BATTLE_PASS_POINTS_SEEN
 from account_helpers.settings_core.settings_constants import BattlePassStorageKeys
-from battle_pass_common import BattlePassState
 from constants import ARENA_BONUS_TYPE, QUEUE_TYPE
 from gui import GUI_SETTINGS
 from gui.Scaleform.genConsts.SKILLS_CONSTANTS import SKILLS_CONSTANTS as SKILLS
@@ -28,7 +27,6 @@ if typing.TYPE_CHECKING:
 _logger = logging.getLogger(__name__)
 _CUSTOMIZATION_BONUS_NAME = 'customizations'
 _TANKMAN_BONUS_NAME = 'tmanToken'
-BattlePassSeasonHistory = namedtuple('BattlePassSeasonHistory', 'maxPostLevel rewardVehicles seasonNum')
 TokenPositions = namedtuple('TokenPositions', ['free', 'paid'])
 
 def chaptersIDsComparator(firstID, secondID):
@@ -55,28 +53,6 @@ def isSeasonEndingSoon():
 
 def getFormattedTimeLeft(seconds):
     return time_formatters.getTillTimeByResource(seconds, R.strings.battle_pass.status.timeLeft, removeLeadingZeros=True)
-
-
-def getSeasonHistory(seasonID):
-    battlePassController = dependency.instance(IBattlePassController)
-    seasonsHistory = battlePassController.getSeasonsHistory()
-    prevSeasonHistory = seasonsHistory.get(seasonID)
-    if prevSeasonHistory is None:
-        return
-    else:
-        return BattlePassSeasonHistory(prevSeasonHistory.get('maxPostLevel'), prevSeasonHistory.get('rewardVehicles'), prevSeasonHistory.get('seasonNum'))
-
-
-def getLevelFromStats(seasonStats, seasonHistory):
-    if seasonStats.maxBase == seasonHistory.getMaxChapterLevel(0):
-        level = seasonStats.maxPost
-        state = BattlePassState.POST
-    else:
-        level = seasonStats.maxBase
-        state = BattlePassState.BASE
-    if seasonStats.maxPost >= seasonHistory.maxPostLevel:
-        state = BattlePassState.COMPLETED
-    return (state, level)
 
 
 def getBattlePassUrl(urlPathName):

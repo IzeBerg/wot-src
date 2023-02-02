@@ -646,6 +646,7 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<tankmenFreeXpDebitedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/tankmenFreeXpDebited): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(tankmenFreeXp)s&lt;/b&gt;&lt;/font&gt;%(spec)s&lt;/font&gt;</tankmenFreeXpDebitedInvoiceReceived>
 		<awardListAccruedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/freeAwardListsAccrued): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(count)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</awardListAccruedInvoiceReceived>
 		<awardListDebitedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/freeAwardListsDebited): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(count)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</awardListDebitedInvoiceReceived>
+		<eventLootBoxesInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#lootboxes:notification/lootBoxesReceived/invoice): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(boxes)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</eventLootBoxesInvoiceReceived>
 		<intelligenceBlueprintsAccruedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/intelligenceBlueprintsAccrued): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(amount)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</intelligenceBlueprintsAccruedInvoiceReceived>
 		<intelligenceBlueprintsDebitedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/intelligenceBlueprintsDebited): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(amount)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</intelligenceBlueprintsDebitedInvoiceReceived>
 		<vehicleBlueprintsAccruedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/vehicleBlueprintsAccrued): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(amount)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</vehicleBlueprintsAccruedInvoiceReceived>
@@ -806,37 +807,6 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<priority>medium</priority>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/specialReward/title)&lt;/font&gt;&lt;br/&gt;%(specialRewardItems)s</message>
 		</specialReward>
-		<battleTutorialResBonuses>
-			<type>battleResult</type>
-			<icon>BattleResultIcon</icon>
-			<buttonsLayout>
-				<button>
-					<type>submit</type>
-					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
-					<action>showTutorialBattleHistory</action>
-				</button>
-			</buttonsLayout>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(result)s %(reason)s&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/training_battle): %(arenaName)s&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/tanks): %(vehicleName)s&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/freeXP): &lt;font color=&apos;#C8C8B5&apos;&gt;%(freeXP)s&lt;/font&gt;&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/credits): &lt;font color=&apos;#C5CFCF&apos;&gt;%(credits)s&lt;/font&gt;&lt;/font&gt;</message>
-		</battleTutorialResBonuses>
-		<battleTutorialResWoBonuses>
-			<type>battleResult</type>
-			<icon>BattleResultIcon</icon>
-			<buttonsLayout>
-				<button>
-					<type>submit</type>
-					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
-					<action>showTutorialBattleHistory</action>
-				</button>
-			</buttonsLayout>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(result)s %(reason)s&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/training_battle): %(arenaName)s&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/tanks): %(vehicleName)s&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#battle_tutorial:labels/bonuses-already-received)&lt;/font&gt;</message>
-		</battleTutorialResWoBonuses>
 		<bootcampResults>
 			<type>battleResult</type>
 			<icon>BattleResultIcon</icon>
@@ -2140,13 +2110,15 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>BattlePassIcon</icon>
 			<priority>medium</priority>
 			<bgIcon>bg_battle_pass</bgIcon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;%(text)s&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;%(text)s&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
 		</BattlePassRewardSysMessage>
 		<BattlePassRewardWithProgressionButtonMessage>
 			<type>grey</type>
 			<icon>BattlePassIcon</icon>
 			<bgIcon>bg_battle_pass</bgIcon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;%(text)s&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;%(text)s&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
 			<buttonsLayout>
 				<button>
 					<type>submit</type>
@@ -2159,7 +2131,8 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<type>grey</type>
 			<icon>BattlePassIcon</icon>
 			<bgIcon>bg_battle_pass</bgIcon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;%(text)s&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;%(text)s&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
 			<buttonsLayout>
 				<button>
 					<type>submit</type>
@@ -2173,7 +2146,8 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>BattlePassIcon</icon>
 			<priority>low</priority>
 			<bgIcon>bg_battle_pass</bgIcon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;%(text)s&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;%(text)s&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
 		</BattlePassBuySysMessage>
 		<BattlePassBuyMultipleMessage>
 			<type>grey</type>
@@ -2186,7 +2160,8 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>BattlePassIcon</icon>
 			<priority>medium</priority>
 			<bgIcon>bg_battle_pass</bgIcon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;%(text)s</message>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;%(text)s</message>
 		</BattlePassDefaultRewardMessage>
 		<UpgradeForCreditsSysMessage>
 			<type>yellow</type>
@@ -2201,42 +2176,43 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<BattlePassInfoSysMessage>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;&lt;br/&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;&lt;br/&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
 		</BattlePassInfoSysMessage>
 		<BattlePassReachedCapMessage>
 			<type>grey</type>
 			<priority>low</priority>
 			<icon>InformationIcon</icon>
-			<bgIcon>bg_battle_pass_small</bgIcon>
+			<bgIcon>bg_battle_pass</bgIcon>
 			<bgIconSizeAuto>true</bgIconSizeAuto>
-			<message>&lt;font  face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/battlePass/reachedCap/header)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<message>&lt;font  face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/battlePass/reachedCap/header)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</BattlePassReachedCapMessage>
 		<BattlePassStyleReceivedMessage>
 			<type>grey</type>
 			<icon>BattlePassIcon</icon>
 			<priority>low</priority>
-			<bgIcon>bg_battle_pass_small</bgIcon>
+			<bgIcon>bg_battle_pass</bgIcon>
 			<bgIconSizeAuto>true</bgIconSizeAuto>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</BattlePassStyleReceivedMessage>
 		<BattlePassGameModeEnabledSysMessage>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
 			<priority>medium</priority>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</BattlePassGameModeEnabledSysMessage>
 		<BattlePassSeasonEndMessage>
 			<type>grey</type>
 			<icon>BattlePassIcon</icon>
 			<priority>medium</priority>
 			<bgIcon>bg_battle_pass</bgIcon>
-			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</BattlePassSeasonEndMessage>
 		<BattlePassFreePointsUsedMessage>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
 			<priority>low</priority>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</BattlePassFreePointsUsedMessage>
 		<BattlePassSwitchChapterSysMessage>
 			<type>grey</type>
@@ -2254,7 +2230,7 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
 			<priority>high</priority>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 			<buttonsLayout>
 				<button>
 					<type>submit</type>
@@ -2267,13 +2243,13 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
 			<priority>high</priority>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</BattlePassExtraFinishSysMessage>
 		<BattlePassExtraWillEndSoonSysMessage>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
 			<priority>high</priority>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 			<buttonsLayout>
 				<button>
 					<type>submit</type>
@@ -2285,7 +2261,7 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<BattlePassSwitchChapterReminder>
 			<type>grey</type>
 			<icon>BattlePassIcon</icon>
-			<bgIcon>bg_battle_pass_small</bgIcon>
+			<bgIcon>bg_battle_pass</bgIcon>
 			<bgIconSizeAuto>true</bgIconSizeAuto>
 			<groupID>offer</groupID>
 			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
@@ -2315,12 +2291,6 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>InformationIcon</icon>
 			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s: %(vehicleNames)s&lt;/font&gt;</message>
 		</EnhancementsWipedOnVehiclesMessage>
-		<BattlePassBadgesMessage>
-			<type>grey</type>
-			<icon>BattlePassIcon</icon>
-			<priority>medium</priority>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
-		</BattlePassBadgesMessage>
 		<UnlockedCollectibleVehiclesMessage>
 			<type>grey</type>
 			<priority>medium</priority>
@@ -2883,19 +2853,6 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 				</button>
 			</buttonsLayout>
 		</PersonalReservesHaveBeenConverted>
-		<PersonalReservesHaveBeenConvertedOffer>
-			<type>grey</type>
-			<icon>InformationIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/personalReservesTitle)&lt;/font&gt;&lt;br/&gt;&lt;font color=&quot;#8C8C7E&quot;&gt;_(#messenger:serviceChannelMessages/personalReservesConverted)&lt;/font&gt;</message>
-			<buttonsLayout>
-				<button>
-					<type>submit</type>
-					<label>_(#event_boards:notification/buttons/details)</label>
-					<action>openPersonalReservesConversion</action>
-					<width>107</width>
-				</button>
-			</buttonsLayout>
-		</PersonalReservesHaveBeenConvertedOffer>
 		<comp7BattleVictoryResult>
 			<type>battleResult</type>
 			<icon>BattleResultIcon</icon>
@@ -2965,5 +2922,44 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>InformationIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&quot;#8C8C7E&quot;&gt;%(body)s&lt;/font&gt;</message>
 		</comp7RegularRewardMessage>
+		<EventLootBoxStartSysMessage>
+			<type>grey</type>
+			<priority>medium</priority>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#lootboxes:notification/eventStart/button)</label>
+					<action>openEventLootBoxesShop</action>
+				</button>
+			</buttonsLayout>
+		</EventLootBoxStartSysMessage>
+		<EventLootBoxFinishSysMessage>
+			<type>grey</type>
+			<priority>medium</priority>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</EventLootBoxFinishSysMessage>
+		<EventLootBoxEnabledSysMessage>
+			<type>grey</type>
+			<priority>high</priority>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</EventLootBoxEnabledSysMessage>
+		<EventLootBoxDisabledSysMessage>
+			<type>grey</type>
+			<priority>high</priority>
+			<icon>WarningIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</EventLootBoxDisabledSysMessage>
+		<EventLootBoxesAutoOpenMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>WarningIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#lootboxes:notification/lootBoxesAutoOpen/title)&lt;/font&gt;&lt;br/&gt;
+&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#lootboxes:notification/lootBoxesAutoOpen/text)&lt;/font&gt;&lt;br/&gt;
+_(#lootboxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</message>
+		</EventLootBoxesAutoOpenMessage>
 	</htmlTemplates>
 </root>

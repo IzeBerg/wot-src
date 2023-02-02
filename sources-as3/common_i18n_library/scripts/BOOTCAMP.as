@@ -9,15 +9,11 @@ package
       
       public static const WELLCOME_BOOTCAMP_REWARDS:String = "#bootcamp:wellcome/bootcamp/rewards";
       
-      public static const WELLCOME_BOOTCAMP_REWARDS_TANKS:String = "#bootcamp:wellcome/bootcamp/rewards/tanks";
-      
-      public static const WELLCOME_BOOTCAMP_REWARDS_SHORT_TANK:String = "#bootcamp:wellcome/bootcamp/rewards_short/tank";
-      
-      public static const WELLCOME_BOOTCAMP_REWARDS_TOOLTIP_TANK:String = "#bootcamp:wellcome/bootcamp/rewards/tooltip/tank";
-      
       public static const WELLCOME_BOOTCAMP_REWARDS_PREMIUM:String = "#bootcamp:wellcome/bootcamp/rewards/premium";
       
       public static const WELLCOME_BOOTCAMP_REWARDS_GOLD:String = "#bootcamp:wellcome/bootcamp/rewards/gold";
+      
+      public static const WELLCOME_BOOTCAMP_REWARDS_MEDAL:String = "#bootcamp:wellcome/bootcamp/rewards/medal";
       
       public static const WELLCOME_BOOTCAMP_WAIT:String = "#bootcamp:wellcome/bootcamp/wait";
       
@@ -55,11 +51,15 @@ package
       
       public static const ARENA_NAME:String = "#bootcamp:arena/name";
       
-      public static const AWARD_OPTIONS:String = "#bootcamp:award/options";
-      
       public static const AWARD_OPTIONS_TITLE:String = "#bootcamp:award/options/title";
       
       public static const AWARD_OPTIONS_LOCKED:String = "#bootcamp:award/options/locked";
+      
+      public static const AWARD_OPTIONS_TANKTITLE:String = "#bootcamp:award/options/tankTitle";
+      
+      public static const AWARD_OPTIONS_TANKSUBTITLE:String = "#bootcamp:award/options/tankSubTitle";
+      
+      public static const AWARD_OPTIONS_TEXTTITLE:String = "#bootcamp:award/options/textTitle";
       
       public static const AWARD_OPTIONS_NATION_USA:String = "#bootcamp:award/options/nation/usa";
       
@@ -105,71 +105,137 @@ package
       
       public static const AWARD_OPTIONS_NATION_UK_CN:String = "#bootcamp:award/options/nation/uk_CN";
       
-      public static const AWARD_OPTIONS_NAME_USA:String = "#bootcamp:award/options/name/usa";
-      
       public static const AWARD_OPTIONS_DESCRIPTION_USA:String = "#bootcamp:award/options/description/usa";
       
       public static const AWARD_OPTIONS_DESCRIPTION_USA_CN:String = "#bootcamp:award/options/description/usa_CN";
-      
-      public static const AWARD_OPTIONS_NAME_GERMANY:String = "#bootcamp:award/options/name/germany";
       
       public static const AWARD_OPTIONS_DESCRIPTION_GERMANY:String = "#bootcamp:award/options/description/germany";
       
       public static const AWARD_OPTIONS_DESCRIPTION_GERMANY_CN:String = "#bootcamp:award/options/description/germany_CN";
       
-      public static const AWARD_OPTIONS_NAME_USSR:String = "#bootcamp:award/options/name/ussr";
-      
       public static const AWARD_OPTIONS_DESCRIPTION_USSR:String = "#bootcamp:award/options/description/ussr";
       
       public static const AWARD_OPTIONS_DESCRIPTION_USSR_CN:String = "#bootcamp:award/options/description/ussr_CN";
-      
-      public static const AWARD_OPTIONS_NAME_CHINA:String = "#bootcamp:award/options/name/china";
       
       public static const AWARD_OPTIONS_DESCRIPTION_CHINA:String = "#bootcamp:award/options/description/china";
       
       public static const AWARD_OPTIONS_DESCRIPTION_CHINA_CN:String = "#bootcamp:award/options/description/china_CN";
       
-      public static const AWARD_OPTIONS_NAME_CZECH:String = "#bootcamp:award/options/name/czech";
-      
       public static const AWARD_OPTIONS_DESCRIPTION_CZECH:String = "#bootcamp:award/options/description/czech";
       
       public static const AWARD_OPTIONS_DESCRIPTION_CZECH_CN:String = "#bootcamp:award/options/description/czech_CN";
-      
-      public static const AWARD_OPTIONS_NAME_FRANCE:String = "#bootcamp:award/options/name/france";
       
       public static const AWARD_OPTIONS_DESCRIPTION_FRANCE:String = "#bootcamp:award/options/description/france";
       
       public static const AWARD_OPTIONS_DESCRIPTION_FRANCE_CN:String = "#bootcamp:award/options/description/france_CN";
       
-      public static const AWARD_OPTIONS_NAME_ITALY:String = "#bootcamp:award/options/name/italy";
-      
       public static const AWARD_OPTIONS_DESCRIPTION_ITALY:String = "#bootcamp:award/options/description/italy";
       
       public static const AWARD_OPTIONS_DESCRIPTION_ITALY_CN:String = "#bootcamp:award/options/description/italy_CN";
-      
-      public static const AWARD_OPTIONS_NAME_JAPAN:String = "#bootcamp:award/options/name/japan";
       
       public static const AWARD_OPTIONS_DESCRIPTION_JAPAN:String = "#bootcamp:award/options/description/japan";
       
       public static const AWARD_OPTIONS_DESCRIPTION_JAPAN_CN:String = "#bootcamp:award/options/description/japan_CN";
       
-      public static const AWARD_OPTIONS_NAME_POLAND:String = "#bootcamp:award/options/name/poland";
-      
       public static const AWARD_OPTIONS_DESCRIPTION_POLAND:String = "#bootcamp:award/options/description/poland";
       
       public static const AWARD_OPTIONS_DESCRIPTION_POLAND_CN:String = "#bootcamp:award/options/description/poland_CN";
-      
-      public static const AWARD_OPTIONS_NAME_SWEDEN:String = "#bootcamp:award/options/name/sweden";
       
       public static const AWARD_OPTIONS_DESCRIPTION_SWEDEN:String = "#bootcamp:award/options/description/sweden";
       
       public static const AWARD_OPTIONS_DESCRIPTION_SWEDEN_CN:String = "#bootcamp:award/options/description/sweden_CN";
       
-      public static const AWARD_OPTIONS_NAME_UK:String = "#bootcamp:award/options/name/uk";
-      
       public static const AWARD_OPTIONS_DESCRIPTION_UK:String = "#bootcamp:award/options/description/uk";
       
       public static const AWARD_OPTIONS_DESCRIPTION_UK_CN:String = "#bootcamp:award/options/description/uk_CN";
+      
+      public static const PREVIEW_USA_TITLE:String = "#bootcamp:preview/usa/title";
+      
+      public static const PREVIEW_GERMANY_TITLE:String = "#bootcamp:preview/germany/title";
+      
+      public static const PREVIEW_USSR_TITLE:String = "#bootcamp:preview/ussr/title";
+      
+      public static const PREVIEW_CHINA_TITLE:String = "#bootcamp:preview/china/title";
+      
+      public static const PREVIEW_CZECH_TITLE:String = "#bootcamp:preview/czech/title";
+      
+      public static const PREVIEW_FRANCE_TITLE:String = "#bootcamp:preview/france/title";
+      
+      public static const PREVIEW_ITALY_TITLE:String = "#bootcamp:preview/italy/title";
+      
+      public static const PREVIEW_JAPAN_TITLE:String = "#bootcamp:preview/japan/title";
+      
+      public static const PREVIEW_POLAND_TITLE:String = "#bootcamp:preview/poland/title";
+      
+      public static const PREVIEW_SWEDEN_TITLE:String = "#bootcamp:preview/sweden/title";
+      
+      public static const PREVIEW_UK_TITLE:String = "#bootcamp:preview/uk/title";
+      
+      public static const PREVIEW_USA_PREVIEW_VEHICLE_1:String = "#bootcamp:preview/usa/preview_vehicle_1";
+      
+      public static const PREVIEW_USA_PREVIEW_VEHICLE_2:String = "#bootcamp:preview/usa/preview_vehicle_2";
+      
+      public static const PREVIEW_USA_PREVIEW_VEHICLE_3:String = "#bootcamp:preview/usa/preview_vehicle_3";
+      
+      public static const PREVIEW_GERMANY_PREVIEW_VEHICLE_1:String = "#bootcamp:preview/germany/preview_vehicle_1";
+      
+      public static const PREVIEW_GERMANY_PREVIEW_VEHICLE_2:String = "#bootcamp:preview/germany/preview_vehicle_2";
+      
+      public static const PREVIEW_GERMANY_PREVIEW_VEHICLE_3:String = "#bootcamp:preview/germany/preview_vehicle_3";
+      
+      public static const PREVIEW_USSR_PREVIEW_VEHICLE_1:String = "#bootcamp:preview/ussr/preview_vehicle_1";
+      
+      public static const PREVIEW_USSR_PREVIEW_VEHICLE_2:String = "#bootcamp:preview/ussr/preview_vehicle_2";
+      
+      public static const PREVIEW_USSR_PREVIEW_VEHICLE_3:String = "#bootcamp:preview/ussr/preview_vehicle_3";
+      
+      public static const PREVIEW_CHINA_PREVIEW_VEHICLE_1:String = "#bootcamp:preview/china/preview_vehicle_1";
+      
+      public static const PREVIEW_CHINA_PREVIEW_VEHICLE_2:String = "#bootcamp:preview/china/preview_vehicle_2";
+      
+      public static const PREVIEW_CHINA_PREVIEW_VEHICLE_3:String = "#bootcamp:preview/china/preview_vehicle_3";
+      
+      public static const PREVIEW_CZECH_PREVIEW_VEHICLE_1:String = "#bootcamp:preview/czech/preview_vehicle_1";
+      
+      public static const PREVIEW_CZECH_PREVIEW_VEHICLE_2:String = "#bootcamp:preview/czech/preview_vehicle_2";
+      
+      public static const PREVIEW_CZECH_PREVIEW_VEHICLE_3:String = "#bootcamp:preview/czech/preview_vehicle_3";
+      
+      public static const PREVIEW_FRANCE_PREVIEW_VEHICLE_1:String = "#bootcamp:preview/france/preview_vehicle_1";
+      
+      public static const PREVIEW_FRANCE_PREVIEW_VEHICLE_2:String = "#bootcamp:preview/france/preview_vehicle_2";
+      
+      public static const PREVIEW_FRANCE_PREVIEW_VEHICLE_3:String = "#bootcamp:preview/france/preview_vehicle_3";
+      
+      public static const PREVIEW_ITALY_PREVIEW_VEHICLE_1:String = "#bootcamp:preview/italy/preview_vehicle_1";
+      
+      public static const PREVIEW_ITALY_PREVIEW_VEHICLE_2:String = "#bootcamp:preview/italy/preview_vehicle_2";
+      
+      public static const PREVIEW_ITALY_PREVIEW_VEHICLE_3:String = "#bootcamp:preview/italy/preview_vehicle_3";
+      
+      public static const PREVIEW_JAPAN_PREVIEW_VEHICLE_1:String = "#bootcamp:preview/japan/preview_vehicle_1";
+      
+      public static const PREVIEW_JAPAN_PREVIEW_VEHICLE_2:String = "#bootcamp:preview/japan/preview_vehicle_2";
+      
+      public static const PREVIEW_JAPAN_PREVIEW_VEHICLE_3:String = "#bootcamp:preview/japan/preview_vehicle_3";
+      
+      public static const PREVIEW_POLAND_PREVIEW_VEHICLE_1:String = "#bootcamp:preview/poland/preview_vehicle_1";
+      
+      public static const PREVIEW_POLAND_PREVIEW_VEHICLE_2:String = "#bootcamp:preview/poland/preview_vehicle_2";
+      
+      public static const PREVIEW_POLAND_PREVIEW_VEHICLE_3:String = "#bootcamp:preview/poland/preview_vehicle_3";
+      
+      public static const PREVIEW_SWEDEN_PREVIEW_VEHICLE_1:String = "#bootcamp:preview/sweden/preview_vehicle_1";
+      
+      public static const PREVIEW_SWEDEN_PREVIEW_VEHICLE_2:String = "#bootcamp:preview/sweden/preview_vehicle_2";
+      
+      public static const PREVIEW_SWEDEN_PREVIEW_VEHICLE_3:String = "#bootcamp:preview/sweden/preview_vehicle_3";
+      
+      public static const PREVIEW_UK_PREVIEW_VEHICLE_1:String = "#bootcamp:preview/uk/preview_vehicle_1";
+      
+      public static const PREVIEW_UK_PREVIEW_VEHICLE_2:String = "#bootcamp:preview/uk/preview_vehicle_2";
+      
+      public static const PREVIEW_UK_PREVIEW_VEHICLE_3:String = "#bootcamp:preview/uk/preview_vehicle_3";
       
       public static const HINT_CAMERA_CONTROLS:String = "#bootcamp:hint/camera/controls";
       
@@ -246,8 +312,6 @@ package
       public static const QUEST_NAME:String = "#bootcamp:quest/name";
       
       public static const QUEST_CONDITION:String = "#bootcamp:quest/condition";
-      
-      public static const QUEST_GAMEMODE:String = "#bootcamp:quest/gamemode";
       
       public static const LOADING_TIP_WASD_HEADER_1:String = "#bootcamp:loading/tip/wasd/header/1";
       
@@ -461,11 +525,7 @@ package
       
       public static const MESSAGE_START_MESSAGE:String = "#bootcamp:message/start/message";
       
-      public static const MESSAGE_START_MESSAGE_PREMIUM:String = "#bootcamp:message/start/message/premium";
-      
-      public static const MESSAGE_START_MESSAGE_GOLD:String = "#bootcamp:message/start/message/gold";
-      
-      public static const MESSAGE_START_MESSAGE_CREW:String = "#bootcamp:message/start/message/crew";
+      public static const MESSAGE_START_MESSAGE_REWARD:String = "#bootcamp:message/start/message/reward";
       
       public static const MESSAGE_START_TITLE:String = "#bootcamp:message/start/title";
       
@@ -503,23 +563,17 @@ package
       
       public static const PROGRESSION_LABEL:String = "#bootcamp:progression/label";
       
-      public static const TOOLTIP_PROGRESSION_LABEL_VEHICLE_SECOND_LEVEL:String = "#bootcamp:tooltip/progression/label/vehicle_second_level";
-      
-      public static const TOOLTIP_PROGRESSION_LABEL_VEHICLE_THIRD_LEVEL:String = "#bootcamp:tooltip/progression/label/vehicle_third_level";
+      public static const TOOLTIP_PROGRESSION_LABEL_PREMIUM:String = "#bootcamp:tooltip/progression/label/premium";
       
       public static const TOOLTIP_PROGRESSION_LABEL_GOLD:String = "#bootcamp:tooltip/progression/label/gold";
       
-      public static const TOOLTIP_PROGRESSION_LABEL_PREMIUM:String = "#bootcamp:tooltip/progression/label/premium";
-      
-      public static const TOOLTIP_PROGRESSION_LABEL_AWARD:String = "#bootcamp:tooltip/progression/label/award";
-      
-      public static const TOOLTIP_PROGRESSION_DESCRIPTION_VEHICLE:String = "#bootcamp:tooltip/progression/description/vehicle";
-      
-      public static const TOOLTIP_PROGRESSION_DESCRIPTION_GOLD:String = "#bootcamp:tooltip/progression/description/gold";
+      public static const TOOLTIP_PROGRESSION_LABEL_MEDAL:String = "#bootcamp:tooltip/progression/label/medal";
       
       public static const TOOLTIP_PROGRESSION_DESCRIPTION_PREMIUM:String = "#bootcamp:tooltip/progression/description/premium";
       
-      public static const TOOLTIP_PROGRESSION_DESCRIPTION_AWARD:String = "#bootcamp:tooltip/progression/description/award";
+      public static const TOOLTIP_PROGRESSION_DESCRIPTION_GOLD:String = "#bootcamp:tooltip/progression/description/gold";
+      
+      public static const TOOLTIP_PROGRESSION_DESCRIPTION_MEDAL:String = "#bootcamp:tooltip/progression/description/medal";
       
       public static const TOOLTIP_PROGRESSION_STATUS_GOT:String = "#bootcamp:tooltip/progression/status/got";
       
@@ -546,6 +600,18 @@ package
       public static const TOOLTIP_PROGRESSION_DESCRIPTION_LESSON_4:String = "#bootcamp:tooltip/progression/description/lesson_4";
       
       public static const TOOLTIP_PROGRESSION_LABEL_LESSON_5:String = "#bootcamp:tooltip/progression/label/lesson_5";
+      
+      public static const TOOLTIP_PROGRESSION_LABEL_HEADER:String = "#bootcamp:tooltip/progression/label/header";
+      
+      public static const TOOLTIP_PROGRESSION_LABEL_DESCRIPTION1:String = "#bootcamp:tooltip/progression/label/description1";
+      
+      public static const TOOLTIP_PROGRESSION_LABEL_SUBHEADER2:String = "#bootcamp:tooltip/progression/label/subheader2";
+      
+      public static const TOOLTIP_PROGRESSION_LABEL_DESCRIPTION2:String = "#bootcamp:tooltip/progression/label/description2";
+      
+      public static const TOOLTIP_PROGRESSION_LABEL_SUBHEADER3:String = "#bootcamp:tooltip/progression/label/subheader3";
+      
+      public static const TOOLTIP_PROGRESSION_LABEL_DESCRIPTION3:String = "#bootcamp:tooltip/progression/label/description3";
       
       public static const TOOLTIP_PROGRESSION_DESCRIPTION_LESSON_5:String = "#bootcamp:tooltip/progression/description/lesson_5";
       
@@ -894,6 +960,16 @@ package
       public static const EXITWINDOW_STAY:String = "#bootcamp:exitWindow/stay";
       
       public static const EXITWINDOW_LEAVE:String = "#bootcamp:exitWindow/leave";
+      
+      public static const FINALREWARD_TITLE:String = "#bootcamp:finalReward/title";
+      
+      public static const FINALREWARD_DESCRIPTION:String = "#bootcamp:finalReward/description";
+      
+      public static const FINALREWARD_RECEIVED_TITLE:String = "#bootcamp:finalReward/received/title";
+      
+      public static const FINALREWARD_RECEIVED_DESCRIPTION:String = "#bootcamp:finalReward/received/description";
+      
+      public static const FINALREWARD_PROCEED:String = "#bootcamp:finalReward/proceed";
        
       
       public function BOOTCAMP()

@@ -42,6 +42,8 @@ package net.wg.gui.lobby.battleResults.data
       
       public var finishReasonStr:String = "";
       
+      public var finishReasonClarificationStr:String = "";
+      
       public var iconType:String = "";
       
       public var playerFakeNameStr:String = "";

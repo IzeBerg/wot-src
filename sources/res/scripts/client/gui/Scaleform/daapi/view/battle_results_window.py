@@ -1,4 +1,4 @@
-import logging, BigWorld, BattleReplay, constants
+import logging, BigWorld, constants
 from adisp import adisp_process
 from constants import PremiumConfigs
 from gui import SystemMessages
@@ -93,9 +93,6 @@ class BattleResultsWindow(BattleResultsMeta):
 
     def onResultsSharingBtnPress(self):
         raise NotImplementedError('This feature is not longer supported')
-
-    def onReplay(self, url):
-        BattleReplay.g_replayCtrl.downloadAndPlayServerSideReplay(url)
 
     def showUnlockWindow(self, itemID, unlockType):
         if not self.__canNavigate():

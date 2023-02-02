@@ -111,6 +111,10 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
          return 0;
       }
       
+      public function updateSizeIndex(param1:int) : void
+      {
+      }
+      
       private function get colorSchemeName() : String
       {
          return "vm_" + this._entryName;
