@@ -95,11 +95,12 @@ package net.wg.gui.components.tooltips
       
       private function onIcoLoadedCompleteHandler(param1:UILoaderEvent) : void
       {
+         var _loc2_:Number = NaN;
          if(this.seasonsIco.hasEventListener(UILoaderEvent.COMPLETE))
          {
             this.seasonsIco.removeEventListener(UILoaderEvent.COMPLETE,this.onIcoLoadedCompleteHandler);
          }
-         var _loc2_:Number = contentMargin.left;
+         _loc2_ = contentMargin.left;
          this.seasonsIco.x = contentMargin.left + bgShadowMargin.left;
          this.seasonsIco.y = contentMargin.top + bgShadowMargin.top;
          this.headerTF.x = this.seasonsIco.x + this.seasonsIco.width + _loc2_;
