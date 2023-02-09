@@ -173,6 +173,8 @@ class LoaderManager(LoaderManagerMeta):
         viewKey = ViewKey(alias, name)
         if viewKey in self.__loadingItems:
             item = self.__loadingItems.pop(viewKey)
+            uniprof.exitFromRegion(('Loading {} {}').format(viewKey.name, item.uid))
+            BigWorld.notify(BigWorld.EventType.VIEW_LOADED, viewKey.alias, item.uid, viewKey.name)
             if item.isCancelled or item.pyEntity.isDisposed():
                 self.onViewLoadCanceled(viewKey, item)
             else:
@@ -187,8 +189,6 @@ class LoaderManager(LoaderManagerMeta):
                     if not item.pyEntity.isDisposed():
                         item.pyEntity.destroy()
                     self.onViewLoadError(viewKey, msg, item)
-            uniprof.exitFromRegion(('Loading {} {}').format(viewKey.name, item.uid))
-            BigWorld.notify(BigWorld.EventType.VIEW_LOADED, viewKey.alias, item.uid, viewKey.name)
         else:
             _logger.error('View loading for key has no associated data: %r', viewKey)
         return

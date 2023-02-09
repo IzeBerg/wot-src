@@ -656,7 +656,9 @@ class PersonalCaseDataProvider(object):
             soundValidation = False
         restrictionsMessage = backport.text(R.strings.tooltips.crewSkins.restrictions())
         if not validation:
-            restrictions = [ loc for key, loc in LOC_MAP.iteritems() if key & validationMask ]
+            restrictionsLoc = list(LOC_MAP.iteritems())
+            restrictionsLoc.sort(key=lambda position: position[0])
+            restrictions = [ loc for key, loc in restrictionsLoc if key & validationMask ]
             restrictionsMessage += ' ' + (', ').join(restrictions)
         soundSetID = crewSkin.getSoundSetID()
         soundSetRes = R.strings.crew_skins.feature.sound.dyn(soundSetID)() if soundSetID != NO_CREW_SKIN_SOUND_SET else R.strings.crew_skins.feature.sound.noSound()

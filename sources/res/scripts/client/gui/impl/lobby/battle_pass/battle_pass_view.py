@@ -37,16 +37,19 @@ class _IntroVideoManager(object):
     def __init__(self):
         self.__isIntroVideoShown = False
 
-    def init(self):
-        g_eventBus.addListener(events.BattlePassEvent.VIDEO_SHOWN, self.showIntroVideoIfNeeded, EVENT_BUS_SCOPE.LOBBY)
+    @property
+    def isIntroVideoShown(self):
+        return _hasTrueInBPStorage(_INTRO_VIDEO_SHOWN)
 
     @property
     def isExtraVideoShown(self):
         return _hasTrueInBPStorage(_EXTRA_VIDEO_SHOWN)
 
-    @property
-    def isIntroVideoShown(self):
-        return _hasTrueInBPStorage(_INTRO_VIDEO_SHOWN)
+    def init(self):
+        g_eventBus.addListener(events.BattlePassEvent.VIDEO_SHOWN, self.showIntroVideoIfNeeded, EVENT_BUS_SCOPE.LOBBY)
+
+    def fini(self):
+        g_eventBus.removeListener(events.BattlePassEvent.VIDEO_SHOWN, self.showIntroVideoIfNeeded, EVENT_BUS_SCOPE.LOBBY)
 
     def showIntroVideoIfNeeded(self, *_):
         if not self.isIntroVideoShown:
@@ -60,9 +63,6 @@ class _IntroVideoManager(object):
 
             if not self.__guiLoader.windowsManager.findWindows(isVideoView):
                 self.__showExtraVideoIfNeeded()
-
-    def fini(self):
-        g_eventBus.removeListener(events.BattlePassEvent.VIDEO_SHOWN, self.showIntroVideoIfNeeded, EVENT_BUS_SCOPE.LOBBY)
 
     @nextTick
     def __showExtraVideoIfNeeded(self):

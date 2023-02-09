@@ -7,6 +7,7 @@ from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.ui_logging import IUILoggingCore
 from PlayerEvents import g_playerEvents as playerEvents
 from bootcamp.BootCampEvents import g_bootcampEvents as bootcampPlayerEvents
+from wotdecorators import noexcept
 from uilogging.constants import DEFAULT_LOGGER_NAME, LogLevels
 from uilogging.core.common import convertEnum
 from uilogging.core.core_constants import ENSURE_SESSION_TICK
@@ -53,6 +54,7 @@ class UILoggingCore(IUILoggingCore):
             return False
         return self._handler.isFeatureEnabled(convertEnum(feature))
 
+    @noexcept
     def log(self, feature, group, action, loglevel=LogLevels.INFO, **params):
         if not self._isEnabled:
             return
@@ -116,6 +118,8 @@ class UILoggingCore(IUILoggingCore):
             if lifetime is not None:
                 lifetime = max(lifetime, ENSURE_SESSION_TICK)
         self._logger.debug('Session keeper next tick = %s.', lifetime)
+        if lifetime is None:
+            self._stopSessionKeeper()
         return lifetime
 
     def _startSessionKeeper(self, *args, **kwargs):

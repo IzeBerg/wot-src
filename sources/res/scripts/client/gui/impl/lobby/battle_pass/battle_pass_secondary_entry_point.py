@@ -69,7 +69,9 @@ class BattlePassSecondaryEntryPointWidget(SecondaryEntryPointMeta, BaseBattlePas
         if self.isBought or self.isCompleted:
             shieldTemplate = 'shield_blue{}{}'
             color = '_gold' if self.isBought else '_silver'
-            postfix = '_closed' if self.isCompleted and self.freePoints == 0 else ''
+            postfix = ''
+            if self.isCompleted and self.freePoints == 0 or not self.__battlePass.hasActiveChapter():
+                postfix = '_closed'
             icon = _R_IMAGES.dyn(shieldTemplate.format(color, postfix))()
         else:
             icon = _R_IMAGES.shield_silver() if self.chapterID != 0 else _R_IMAGES.shield_silver_empty()

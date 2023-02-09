@@ -10,7 +10,7 @@ from gui.battle_pass.sounds import BattlePassSounds
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.battle_pass.battle_pass_buy_level_view_model import BattlePassBuyLevelViewModel
-from gui.impl.gen.view_models.views.lobby.battle_pass.battle_pass_buy_rewards_view_model import PackageType
+from gui.impl.gen.view_models.views.lobby.battle_pass.package_item import PackageType
 from gui.impl.pub import ViewImpl
 from gui.impl.pub.lobby_window import LobbyWindow
 from gui.server_events.events_dispatcher import showMissionsBattlePass
