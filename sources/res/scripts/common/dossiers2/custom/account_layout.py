@@ -318,11 +318,12 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'oowCBTParticipant', 'june22', 'BattlePassCommonPr_8', 'BattlePassCommonPr_8ru',
  'BattlePassCommonPr_8quest', 'july22', 'august22', 'BattlePassCommonPr_9',
  'september22', 'october22', 'november22',
- 'december22', 'january23', 'prime_gaming_reserved_6',
+ 'december22', 'january23', 'february23',
  'prime_gaming_reserved_7', 'prime_gaming_reserved_8', 'prime_gaming_reserved_9',
  'prime_gaming_reserved_10', 'prime_gaming_reserved_11', 'prime_gaming_reserved_12',
  'comp7Season1', 'hw2022Medal01', 'hw2022Medal02', '12YearsOfService',
- 'NY23_AtmsphrLevel', 'NY23_CelebChallenge', 'BattlePassCommonPr_NY23']
+ 'NY23_AtmsphrLevel', 'NY23_CelebChallenge', 'BattlePassCommonPr_NY23',
+ 'BattlePassCommonPr_10']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -366,11 +367,11 @@ _singleAchievementsPopUps = [
  'BattlePassCommonPr_8', 'BattlePassCommonPr_8ru', 'BattlePassCommonPr_8quest', 'july22',
  'august22', 'BattlePassCommonPr_9', 'september22', 'october22',
  'november22', 'december22', 'january23',
- 'prime_gaming_reserved_6', 'prime_gaming_reserved_7', 'prime_gaming_reserved_8',
+ 'february23', 'prime_gaming_reserved_7', 'prime_gaming_reserved_8',
  'prime_gaming_reserved_9', 'prime_gaming_reserved_10', 'prime_gaming_reserved_11',
  'prime_gaming_reserved_12', 'comp7Season1', 'hw2022Medal01', 'hw2022Medal02',
  '12YearsOfService', 'NY23_AtmsphrLevel', 'NY23_CelebChallenge',
- 'BattlePassCommonPr_NY23']
+ 'BattlePassCommonPr_NY23', 'BattlePassCommonPr_10']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']

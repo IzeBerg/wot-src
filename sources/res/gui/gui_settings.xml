@@ -190,12 +190,12 @@
 		<type>url</type>
 	</setting>
 	<setting>
-		https://webbrg-ct.tanki.su/$LANGUAGE_CODE/cybersport/
+		https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/cybersport/
 		<name>clubHelp</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		http://ct.wgleague.net/media/team/%(emblemID)d/%(size)d.png
+		http://apex.lesta.ru/media/team/%(emblemID)d/%(size)d.png
 		<name>clubEmblems</name>
 		<type>url</type>
 	</setting>
@@ -205,17 +205,17 @@
 		<type>url</type>
 	</setting>
 	<setting>
-		https://webbrg-ct.tanki.su/$LANGUAGE_CODE/hangar_training/medicinekit/
+		https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/hangar_training/medicinekit/
 		<name>medkitHelp</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://webbrg-ct.tanki.su/$LANGUAGE_CODE/hangar_training/repair/
+		https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/hangar_training/repair/
 		<name>repairkitHelp</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://webbrg-ct.tanki.su/$LANGUAGE_CODE/hangar_training/firefighting/
+		https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/hangar_training/firefighting/
 		<name>fireExtinguisherHelp</name>
 		<type>url</type>
 	</setting>
@@ -378,7 +378,7 @@
 		<type>url</type>
 	</setting>
 	<setting>
-		https://wgcg-ct.tanki.su/web_cache/v1/get_static_lists/
+		https://wgcg-rpt.tanki.su/web_cache/v1/get_static_lists/
 		<name>webManifestURL</name>
 		<type>url</type>
 	</setting>
@@ -604,7 +604,12 @@
 		<type>dict</type>
 		<value>
 			<item>
-				https://webbrg-ct.tanki.su
+				https://lesta.ru/shop/wot
+				<name>webShopRootURL</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-rpt.tanki.su
 				<name>webBridgeRootURL</name>
 				<type>url</type>
 			</item>
@@ -817,7 +822,7 @@
 		<value>1209600</value>
 	</setting>
 	<setting>
-		https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promoscreens/
+		https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promoscreens/
 		<name>promoscreens</name>
 		<type>url</type>
 	</setting>
@@ -886,16 +891,6 @@
 				<name>isClansTabReplaceStrongholds</name>
 				<type>bool</type>
 				<value>True</value>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>tournament</name>
-		<type>dict</type>
-		<value>
-			<item>
-				<name>testUrl</name>
-				<type>url</type>
 			</item>
 		</value>
 	</setting>
@@ -1129,6 +1124,11 @@
 				<name>integratedAuction</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/event_lootboxes)
+				<name>eventLootboxes</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1173,7 +1173,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/H22BPContentPage/
+				/$LANGUAGE_CODE/promocontent/10BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1183,7 +1183,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/H22BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/10BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1220,49 +1220,11 @@
 				<value>
 					<item>
 						<type>string</type>
-						<value>collaboration</value>
+						<value>styles</value>
 					</item>
 					<item>
 						<type>string</type>
-						<value>newRewards</value>
-					</item>
-					<item>
-						<type>string</type>
-						<value>oneChapter</value>
-					</item>
-				</value>
-			</item>
-			<item>
-				<name>specialVoiceTankmen</name>
-				<type>dict</type>
-				<value>
-					<item>
-						<name>progression</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_2:630180:::brotherhood::tankmen_bph_2:commander</value>
-							</item>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_1:630180:::brotherhood::tankmen_bph_1:commander</value>
-							</item>
-						</value>
-					</item>
-					<item>
-						<name>shop</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_3:630180:::brotherhood::tankmen_bph_3:commander</value>
-							</item>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_4:630180:::brotherhood::tankmen_bph_4:commander</value>
-							</item>
-						</value>
+						<value>tanks</value>
 					</item>
 				</value>
 			</item>
@@ -1294,7 +1256,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/dogtag/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/dogtag/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1331,7 +1293,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/dogtagVideo1/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/dogtagVideo1/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1368,7 +1330,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/dogtagVideo2/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/dogtagVideo2/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1485,7 +1447,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/RandomBattles/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/RandomBattles/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1522,7 +1484,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/Bootcamp/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/Bootcamp/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1559,7 +1521,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/Strongholds/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/Strongholds/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1596,7 +1558,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/SpecialBattles/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/SpecialBattles/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1633,7 +1595,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/TrainingRooms/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/TrainingRooms/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1670,7 +1632,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/RankedBattles/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/RankedBattles/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1730,6 +1692,17 @@
 		</value>
 	</setting>
 	<setting>
+		<name>lootBoxes</name>
+		<type>dict</type>
+		<value>
+			<item>
+				{webShopRootURL}/supplyboxes/?force_login=1
+				<name>categoryURL</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
 		<name>spgHitDirectionDelta</name>
 		<type>float</type>
 		<value>
@@ -1763,7 +1736,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/mapbox/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/mapbox/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1811,7 +1784,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/cartography/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/cartography/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1848,7 +1821,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.tanki.su/$LANGUAGE_CODE/promocontent/Onslaught/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/Onslaught/
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1981,7 +1954,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ResourceWellContentPage/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/assembly-shop-2023/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>

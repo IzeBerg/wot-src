@@ -14,7 +14,8 @@ class PromoDataParser(object):
        'type': 'promoType', 
        'slug': 'slug'}
     _DATA_FIELD_NAME = 'data'
-    _INT_FIELDS = ('id', 'unread', 'sent_at', 'expiration_time')
+    _INT_FIELDS = ('id', 'unread', 'sent_at')
+    _INT64_FIELDS = ('expiration_time', )
 
     @classmethod
     def parse(cls, data):
@@ -44,6 +45,8 @@ class PromoDataParser(object):
     def __extractFromXML(cls, data, key):
         if key in cls._INT_FIELDS:
             return data.readInt(key)
+        if key in cls._INT64_FIELDS:
+            return data.readInt64(key)
         return data.readString(key)
 
     @staticmethod

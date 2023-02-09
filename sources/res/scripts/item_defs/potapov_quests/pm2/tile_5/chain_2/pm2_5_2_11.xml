@@ -77,8 +77,8 @@ filters = globals().get(&apos;filters&apos;)
 
 
 DAMAGE_PROGRESS_ID = &apos;damage&apos;
-STUN_NUMBER_IN_BATTLE = &apos;stunNumberInBattle&apos;
-STUN_NUMBER_IN_BATTLE_SERIES = &apos;stunNumberInBattleSeries&apos;
+PROGRESS_ID_ADD = &quot;stunTimeInBattle&quot;
+PROGRESS_SERIES = &apos;stunTimeSeries&apos; 
 
 
 def onFinishBattle(eventType, eventData, quest, processor):
@@ -88,15 +88,16 @@ def onFinishBattle(eventType, eventData, quest, processor):
     damageLog = avatarResults[&apos;damageEventList&apos;]
     stunLog = avatarResults[&apos;stunEventList&apos;]
 
-    stunTankSet = set(vehKey for vehKey, eventList in stunLog)
-    if questProgress.increaseUntilComplete(STUN_NUMBER_IN_BATTLE, len(stunTankSet)):
-        questProgress.increaseUntilComplete(STUN_NUMBER_IN_BATTLE_SERIES, 1)
+    addCondition = eventData[&apos;avatarResults&apos;][&apos;stunDuration&apos;]
+    questProgress.increaseUntilComplete(PROGRESS_ID_ADD, addCondition)
+    if questProgress.isCompleted(PROGRESS_ID_ADD):
+        questProgress.increaseUntilComplete(PROGRESS_SERIES, 1)
 
     damageDealt = sum(filters.sumDamage(damageInfoList) for _, damageInfoList in damageLog.iteritems())
 
     questProgress.increaseUntilComplete(DAMAGE_PROGRESS_ID, damageDealt)
 
-    eventData[&apos;results&apos;].update(processor.checkComplete(questProgress, quest.progressID, additionalProgressID=STUN_NUMBER_IN_BATTLE_SERIES))
+    eventData[&apos;results&apos;].update(processor.checkComplete(questProgress, quest.progressID, additionalProgressID=PROGRESS_SERIES))
 
     processor.setQuestProgress(quest.progressID, questProgress.save())
 

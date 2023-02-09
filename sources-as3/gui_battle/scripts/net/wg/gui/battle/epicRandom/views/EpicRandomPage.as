@@ -101,6 +101,7 @@ package net.wg.gui.battle.epicRandom.views
       
       override protected function initialize() : void
       {
+         super.initialize();
          this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
          this.teamBasesPanelUI.addEventListener(Event.CHANGE,this.onTeamBasesPanelUIChangeHandler);
          this.epicRandomPlayersPanel.addEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);

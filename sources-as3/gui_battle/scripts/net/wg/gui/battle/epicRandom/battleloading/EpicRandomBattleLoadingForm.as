@@ -7,17 +7,17 @@ package net.wg.gui.battle.epicRandom.battleloading
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.data.constants.generated.BATTLE_TYPES;
+   import net.wg.gui.battle.battleloading.BaseLoadingForm;
    import net.wg.gui.battle.battleloading.vo.VisualTipInfoVO;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.epicRandom.battleloading.components.EpicRandomStatsTable;
    import net.wg.gui.battle.epicRandom.battleloading.components.EpicRandomStatsTableCtrl;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.components.minimap.MinimapPresentation;
-   import net.wg.gui.tutorial.controls.BaseTipLoadingForm;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    
-   public class EpicRandomBattleLoadingForm extends BaseTipLoadingForm
+   public class EpicRandomBattleLoadingForm extends BaseLoadingForm
    {
       
       private static const MAP_SIZE:int = 360;

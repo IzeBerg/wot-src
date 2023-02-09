@@ -346,19 +346,19 @@ msgstr "Обнаружение"
 msgid "common/tooltip/stun/description"
 msgstr ""
 "Засчитывается урон:\n"
-"• Нанесённый союзниками по цели, оглушённой вашим снарядом."
+"• Нанесённый союзниками по цели, дезориентированной вашим снарядом."
 
 msgid "common/tooltip/stun/header"
-msgstr "Оглушение"
+msgstr "Дезориентация"
 
 msgid "common/tooltip/stun/part1"
 msgstr "Суммарный урон %(vals)s"
 
 msgid "common/tooltip/stun/part2"
-msgstr "Количество оглушений"
+msgstr "Количество дезориентаций"
 
 msgid "common/tooltip/stun/part3"
-msgstr "Общее время нанесённого оглушения %(vals)s"
+msgstr "Общее время дезориентации %(vals)s"
 
 msgid "common/tooltip/teamKill-1/description"
 msgstr "Машина союзника уничтожена"
@@ -532,7 +532,7 @@ msgid "details/calculations/friendlyFirePenalty"
 msgstr "Штраф за урон союзникам"
 
 msgid "details/calculations/friendlyFireRankedXpPenalty"
-msgstr "Штраф за оглушение и урон союзникам"
+msgstr "Штраф за дезориентирование и урон союзникам"
 
 msgid "details/calculations/heavyTrucks"
 msgstr "Большегрузный транспорт"
@@ -711,6 +711,9 @@ msgstr "Строение %(buildingName)s не захвачено"
 msgid "finish/clanBattle_reason_def/1win"
 msgstr "Защищено строение: %(buildingName)s"
 
+msgid "finish/clarification/finishAllPlayersLeft"
+msgstr "Результат рассчитан на основе оставшейся информации о командах"
+
 msgid "finish/overtime/lose"
 msgstr "Противник не был уничтожен"
 
@@ -803,9 +806,6 @@ msgid "progressiveReward/descr"
 msgstr ""
 "Играйте и получайте довольствие. Чем выше эффективность игры, тем ближе "
 "выдача довольствия."
-
-msgid "replayBtnLabel"
-msgstr "Скачать реплей"
 
 msgid "selectVehicle"
 msgstr "Выберите машину"
@@ -940,7 +940,7 @@ msgstr "Противник"
 msgid "team/stats/infotip_xpForAssist/body"
 msgstr ""
 "Учитывается:\n"
-"• помощь передачей разведданных, сбитием гусениц с обездвиживанием, а также оглушением;\n"
+"• помощь передачей разведданных, сбитием гусениц с обездвиживанием, а также дезориентированием;\n"
 "• захват базы;\n"
 "• первое обнаружение машины противника."
 
@@ -954,7 +954,7 @@ msgstr ""
 "• лично уничтоженные машины;\n"
 "• урон по модулям;\n"
 "• надбавка за общий урон команды игрока;\n"
-"• штраф за оглушение и урон союзникам."
+"• штраф за дезориентирование союзников и урон по ним."
 
 msgid "team/stats/infotip_xpForAttack/header"
 msgstr "За урон и уничтожение"
@@ -985,10 +985,10 @@ msgid "team/stats/labels_damageAssistedSelf"
 msgstr "Урон, нанесённый с вашей помощью"
 
 msgid "team/stats/labels_damageAssistedStun"
-msgstr "Урон по целям, оглушённым данным игроком"
+msgstr "Урон по целям, дезориентированным данным игроком"
 
 msgid "team/stats/labels_damageAssistedStunSelf"
-msgstr "Урон по оглушённым вами целям"
+msgstr "Урон по дезориентированным вами целям"
 
 msgid "team/stats/labels_damageBlockedByArmor"
 msgstr "Урон, заблокированный бронёй"
@@ -1072,10 +1072,10 @@ msgid "team/stats/labels_spotted"
 msgstr "Обнаружено машин противника"
 
 msgid "team/stats/labels_stunDuration"
-msgstr "Общее время нанесённого оглушения, секунд"
+msgstr "Общее время дезориентирования противника, секунд"
 
 msgid "team/stats/labels_stunNum"
-msgstr "Нанесено оглушений"
+msgstr "Дезориентаций вызвано"
 
 msgid "team/stats/labels_teamHitsDamage"
 msgstr "Урон союзникам (уничтожено/повреждений)"

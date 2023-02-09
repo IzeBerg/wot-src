@@ -86,10 +86,10 @@ items = globals().get(&apos;items&apos;)
 filter = globals().get(&apos;BattleResults&apos;)
 &quot;&quot;&quot;:type: battle_result_filters&quot;&quot;&quot;
 
-PROGRESS_ID_MAIN = &apos;stun&apos;
-PROGRESS_ID_MAIN_SERIES = &apos;battlesSeries&apos;
-PROGRESS_ID_ADD = &apos;stunAdv&apos;
-PROGRESS_ID_ADD_SERIES = &apos;battlesSeriesAdv&apos;
+STUN_TIME_MAIN = &apos;stunTime&apos;
+STUN_TIME_MAIN_SERIES = &apos;battlesSeries&apos;
+STUN_TIME_ADV = &apos;stunTimeAdv&apos;
+STUN_TIME_ADV_SERIES = &apos;battlesSeriesAdv&apos;
 
 def onInit(eventType, eventData, quest, processor):
     for event in events.iterkeys():
@@ -100,11 +100,11 @@ def onFinishBattle(eventType, eventData, quest, processor):
     questProgress = quest_progress.BaseQuestProgress(quest.config, processor.getQuestProgress(quest.progressID))
 
     brfilter = filter.BattleResultsFilter(eventData)
-    stuns = sum([len(shots) for shots in (brfilter.filterStun().itervalues())])
-    questProgress.increaseSumProgress(PROGRESS_ID_MAIN, PROGRESS_ID_MAIN_SERIES, stuns)
-    questProgress.increaseSumProgress(PROGRESS_ID_ADD, PROGRESS_ID_ADD_SERIES, stuns, PROGRESS_ID_MAIN)
+    result = eventData[&apos;avatarResults&apos;][&apos;stunDuration&apos;]
+    questProgress.increaseSumProgress(STUN_TIME_MAIN, STUN_TIME_MAIN, result)
+    questProgress.increaseSumProgress(STUN_TIME_ADV, STUN_TIME_ADV_SERIES, result, STUN_TIME_MAIN)
 
-    eventData[&apos;results&apos;].update(processor.checkComplete(questProgress, quest.progressID, additionalProgressID=PROGRESS_ID_ADD))
+    eventData[&apos;results&apos;].update(processor.checkComplete(questProgress, quest.progressID, additionalProgressID=STUN_TIME_ADV))
 
     processor.setQuestProgress(quest.progressID, questProgress.save())
 

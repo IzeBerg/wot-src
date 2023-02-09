@@ -3,7 +3,7 @@ from tutorial.data.has_id import HasID
 __all__ = ('CONDITION_TYPE', 'CONDITION_STATE', 'FlagCondition', 'GlobalFlagCondition',
            'WindowOnSceneCondition', 'VarDefinedCondition', 'VarCompareCondition',
            'EffectTriggeredCondition', 'GameItemSimpleStateCondition', 'GameItemRelateStateCondition',
-           'BonusReceivedCondition', 'Conditions')
+           'Conditions')
 
 class CONDITION_TYPE(object):
     FLAG = 0
@@ -14,7 +14,6 @@ class CONDITION_TYPE(object):
     VAR_DEFINED = 6
     VAR_COMPARE = 7
     EFFECT_TRIGGERED = 8
-    BONUS_RECEIVED = 9
     SERVICE = 10
     COMPONENT_ON_SCENE = 11
     CURRENT_SCENE = 12
@@ -27,7 +26,7 @@ class CONDITION_TYPE(object):
     BASE_RANGE = (
      FLAG, GLOBAL_FLAG, WINDOW_ON_SCENE, GAME_ITEM_SIMPLE_STATE,
      GAME_ITEM_RELATE_STATE, VAR_DEFINED, VAR_COMPARE, EFFECT_TRIGGERED,
-     BONUS_RECEIVED, SERVICE, COMPONENT_ON_SCENE, CURRENT_SCENE, VIEW_PRESENT,
+     SERVICE, COMPONENT_ON_SCENE, CURRENT_SCENE, VIEW_PRESENT,
      CONNECTED_ITEM, CONDITION_AND, CONDITION_OR, CLASS_CONDITION)
 
 
@@ -204,12 +203,6 @@ class GameItemRelateStateCondition(Condition):
 
     def getOtherIDs(self):
         return self.__otherIDs
-
-
-class BonusReceivedCondition(ActiveCondition):
-
-    def __init__(self, entityID, state=CONDITION_STATE.ACTIVE):
-        super(BonusReceivedCondition, self).__init__(entityID, CONDITION_TYPE.BONUS_RECEIVED, state)
 
 
 class ServiceCondition(ActiveCondition):

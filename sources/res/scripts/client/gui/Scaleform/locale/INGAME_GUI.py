@@ -703,6 +703,7 @@ class INGAME_GUI(object):
     TRAJECTORYVIEW_HINT_ALTERNATEMODELEFT = '#ingame_gui:trajectoryView/hint/alternateModeLeft'
     TRAJECTORYVIEW_HINT_ALTERNATEMODERIGHT = '#ingame_gui:trajectoryView/hint/alternateModeRight'
     STUN_INDICATOR = '#ingame_gui:stun/indicator'
+    STUNFLAME_INDICATOR = '#ingame_gui:stunFlame/indicator'
     STUN_SECONDS = '#ingame_gui:stun/seconds'
     BATTLEPROGRESS_HINT_PRESS = '#ingame_gui:battleProgress/hint/press'
     BATTLEPROGRESS_HINT_DESCRIPTION = '#ingame_gui:battleProgress/hint/description'
@@ -888,6 +889,13 @@ class INGAME_GUI(object):
     REWARDWINDOW_TWITCH37_MAINREWARD_3 = '#ingame_gui:rewardWindow/twitch37/mainReward_3'
     REWARDWINDOW_TWITCH37_MAINREWARD_4 = '#ingame_gui:rewardWindow/twitch37/mainReward_4'
     REWARDWINDOW_TWITCH37_BTNLABEL = '#ingame_gui:rewardWindow/twitch37/btnLabel'
+    REWARDWINDOW_TWITCH38_HEADERTEXT = '#ingame_gui:rewardWindow/twitch38/headerText'
+    REWARDWINDOW_TWITCH38_DESCTEXT = '#ingame_gui:rewardWindow/twitch38/descText'
+    REWARDWINDOW_TWITCH38_MAINREWARD_1 = '#ingame_gui:rewardWindow/twitch38/mainReward_1'
+    REWARDWINDOW_TWITCH38_MAINREWARD_2 = '#ingame_gui:rewardWindow/twitch38/mainReward_2'
+    REWARDWINDOW_TWITCH38_MAINREWARD_3 = '#ingame_gui:rewardWindow/twitch38/mainReward_3'
+    REWARDWINDOW_TWITCH38_MAINREWARD_4 = '#ingame_gui:rewardWindow/twitch38/mainReward_4'
+    REWARDWINDOW_TWITCH38_BTNLABEL = '#ingame_gui:rewardWindow/twitch38/btnLabel'
     REWARDWINDOW_LOOTBOX_WINHEADERTEXT = '#ingame_gui:rewardWindow/lootbox/winHeaderText'
     REWARDWINDOW_LOOTBOX_HEADERTEXT = '#ingame_gui:rewardWindow/lootbox/headerText'
     REWARDWINDOW_LOOTBOX_DESCTEXT = '#ingame_gui:rewardWindow/lootbox/descText'
@@ -988,6 +996,7 @@ class INGAME_GUI(object):
     PERSONAL_RESERVES_HINT_PRESS = '#ingame_gui:personal_reserves/hint/press'
     PERSONAL_RESERVES_HINT_DESCRIPTION = '#ingame_gui:personal_reserves/hint/description'
     HINT_NOBINDINGKEY = '#ingame_gui:hint/noBindingKey'
+    DESTROYTIMER_LIFTOVER = '#ingame_gui:destroyTimer/liftOver'
     CHAT_SHORTCUTS_ENUM = (
      CHAT_SHORTCUTS_ATTENTION_TO_POSITION_GRIDINFO,
      CHAT_SHORTCUTS_ATTENTION_TO_POSITION,
@@ -1162,6 +1171,7 @@ class INGAME_GUI(object):
      REWARDWINDOW_TWITCH35_HEADERTEXT,
      REWARDWINDOW_TWITCH36_HEADERTEXT,
      REWARDWINDOW_TWITCH37_HEADERTEXT,
+     REWARDWINDOW_TWITCH38_HEADERTEXT,
      REWARDWINDOW_LOOTBOX_HEADERTEXT,
      REWARDWINDOW_ANNIVERSARY_GA_HEADERTEXT,
      REWARDWINDOW_PIGGYBANK_HEADERTEXT,
@@ -1246,6 +1256,7 @@ class INGAME_GUI(object):
      REWARDWINDOW_TWITCH31_BTNLABEL,
      REWARDWINDOW_TWITCH32_BTNLABEL,
      REWARDWINDOW_TWITCH37_BTNLABEL,
+     REWARDWINDOW_TWITCH38_BTNLABEL,
      REWARDWINDOW_LOOTBOX_BTNLABEL,
      REWARDWINDOW_ANNIVERSARY_GA_BTNLABEL,
      REWARDWINDOW_PIGGYBANK_BTNLABEL,
@@ -1293,6 +1304,7 @@ class INGAME_GUI(object):
      REWARDWINDOW_TWITCH35_DESCTEXT,
      REWARDWINDOW_TWITCH36_DESCTEXT,
      REWARDWINDOW_TWITCH37_DESCTEXT,
+     REWARDWINDOW_TWITCH38_DESCTEXT,
      REWARDWINDOW_LOOTBOX_DESCTEXT,
      REWARDWINDOW_ANNIVERSARY_GA_DESCTEXT,
      REWARDWINDOW_PIGGYBANK_DESCTEXT,

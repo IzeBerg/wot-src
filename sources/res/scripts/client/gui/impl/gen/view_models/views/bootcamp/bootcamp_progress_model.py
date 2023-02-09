@@ -5,7 +5,7 @@ from gui.impl.gen.view_models.views.bootcamp.bootcamp_lesson_model import Bootca
 class BootcampProgressModel(ViewModel):
     __slots__ = ()
 
-    def __init__(self, properties=3, commands=0):
+    def __init__(self, properties=4, commands=0):
         super(BootcampProgressModel, self).__init__(properties=properties, commands=commands)
 
     def getCurrentLesson(self):
@@ -20,11 +20,17 @@ class BootcampProgressModel(ViewModel):
     def setTotalLessons(self, value):
         self._setNumber(1, value)
 
+    def getIsNeedAwarding(self):
+        return self._getBool(2)
+
+    def setIsNeedAwarding(self, value):
+        self._setBool(2, value)
+
     def getLevels(self):
-        return self._getArray(2)
+        return self._getArray(3)
 
     def setLevels(self, value):
-        self._setArray(2, value)
+        self._setArray(3, value)
 
     @staticmethod
     def getLevelsType():
@@ -34,4 +40,5 @@ class BootcampProgressModel(ViewModel):
         super(BootcampProgressModel, self)._initialize()
         self._addNumberProperty('currentLesson', 0)
         self._addNumberProperty('totalLessons', 0)
+        self._addBoolProperty('isNeedAwarding', False)
         self._addArrayProperty('levels', Array())

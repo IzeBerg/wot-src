@@ -236,13 +236,12 @@ package net.wg.gui.components.advanced
       
       private function layoutLeft(param1:int, param2:int) : void
       {
-         var _loc4_:int = 0;
          var _loc3_:int = 0;
          if(this._button)
          {
             _loc3_ = this._button.height + BUTTON_GAP;
          }
-         _loc4_ = param2 - this.text.height - _loc3_ >> 1;
+         var _loc4_:int = param2 - this.text.height - _loc3_ >> 1;
          this.text.x = (param1 - this.text.textWidth >> 1) + this._padding.left * _width >> 0;
          this.text.y = _loc4_ + this._padding.top * _height >> 0;
          if(this._icon)

@@ -69,9 +69,9 @@ _CREW_TOOLTIP_PARAMS = {Tankman.ROLES.COMMANDER: {'paramName': TOOLTIPS.VEHICLEP
    Tankman.ROLES.GUNNER: {'paramName': TOOLTIPS.VEHICLEPREVIEW_CREW_INFLUENCE_FIREPOWER}, Tankman.ROLES.DRIVER: {'paramName': TOOLTIPS.VEHICLEPREVIEW_CREW_INFLUENCE_MOBILITY}, Tankman.ROLES.RADIOMAN: {'paramName': TOOLTIPS.VEHICLEPREVIEW_CREW_INFLUENCE_RECONNAISSANCE}, Tankman.ROLES.LOADER: {'paramName': TOOLTIPS.VEHICLEPREVIEW_CREW_INFLUENCE_FIREPOWER}}
 _MULTI_KPI_PARAMS = frozenset([
  'vehicleRepairSpeed', 'vehicleRamOrExplosionDamageResistance', 'vehicleGunShotDispersion',
- 'crewHitChance', 'crewRepeatedStunDuration', 'vehicleChassisStrength', 'vehicleChassisFallDamage',
+ 'crewHitChance', 'vehicleChassisStrength', 'vehicleChassisFallDamage',
  'vehicleChassisRepairSpeed', 'vehicleAmmoBayEngineFuelStrength', 'vehicleFireChance',
- 'demaskFoliageFactor', 'demaskMovingFactor', 'crewStunDuration', 'damageEnemiesByRamming',
+ 'demaskFoliageFactor', 'demaskMovingFactor', 'crewStunDuration', 'crewStunResistance', 'damageEnemiesByRamming',
  'vehPenaltyForDamageEngineAndCombat', 'vehicleGunShotDispersionAfterShot',
  'vehicleGunShotDispersionChassisMovement', 'vehicleGunShotDispersionChassisRotation',
  'vehicleGunShotDispersionTurretRotation', 'vehicleGunShotDispersionWhileGunDamaged',
@@ -724,6 +724,7 @@ class VehicleTooltipBlockConstructor(object):
 
 
 class HeaderBlockConstructor(VehicleTooltipBlockConstructor):
+    __bootcamp = dependency.descriptor(IBootcampController)
 
     def construct(self):
         block = []
@@ -734,7 +735,12 @@ class HeaderBlockConstructor(VehicleTooltipBlockConstructor):
         else:
             vehicleType = TOOLTIPS.tankcaruseltooltip_vehicletype_normal(self.vehicle.type)
             bgLinkage = BLOCKS_TOOLTIP_TYPES.TOOLTIP_BUILDUP_BLOCK_NORMAL_VEHICLE_BG_LINKAGE
-        nameStr = text_styles.highTitle(self.vehicle.userName)
+        userName = self.vehicle.userName
+        if self.__bootcamp.isInBootcamp():
+            awardVehicles = self.__bootcamp.getAwardVehicles()
+            if self.vehicle.intCD in awardVehicles:
+                userName = backport.text(R.strings.bootcamp.award.options.tankTitle()).format(title=userName)
+        nameStr = text_styles.highTitle(userName)
         typeStr = text_styles.main(vehicleType)
         levelStr = text_styles.concatStylesWithSpace(text_styles.stats(int2roman(self.vehicle.level)), text_styles.standard(_ms(TOOLTIPS.VEHICLE_LEVEL)))
         icon = getTypeBigIconPath(self.vehicle.type, self.vehicle.isElite)
@@ -921,8 +927,7 @@ class CommonStatsBlockConstructor(VehicleTooltipBlockConstructor):
                                       TURBOSHAFT_SPEED_MODE_SPEED, 'chassisRotationSpeed'), 
        VEHICLE_CLASS_NAME.HEAVY_TANK: (
                                      'avgDamage', 'avgPiercingPower', 'hullArmor', 'turretArmor', DUAL_GUN_CHARGE_TIME), 
-       VEHICLE_CLASS_NAME.SPG: ('avgDamage', 'stunMinDuration', 'stunMaxDuration', 'reloadTimeSecs', 'aimingTime',
- 'explosionRadius'), 
+       VEHICLE_CLASS_NAME.SPG: ('avgDamage', 'stunMaxDuration', 'reloadTimeSecs', 'aimingTime', 'explosionRadius'), 
        VEHICLE_CLASS_NAME.AT_SPG: ('avgPiercingPower', 'shotDispersionAngle', 'avgDamagePerMinute', 'speedLimits', 'chassisRotationSpeed',
  'switchTime'), 
        'default': ('speedLimits', 'enginePower', 'chassisRotationSpeed')}

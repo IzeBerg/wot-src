@@ -17,7 +17,6 @@ package net.wg.gui.lobby.battleResults
    import net.wg.gui.components.controls.ScrollBar;
    import net.wg.gui.components.controls.ScrollingListEx;
    import net.wg.gui.events.FinalStatisticEvent;
-   import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.battleResults.components.AlertMessage;
    import net.wg.gui.lobby.battleResults.components.BattleResultsMedalsList;
    import net.wg.gui.lobby.battleResults.components.DetailsBlock;
@@ -47,7 +46,6 @@ package net.wg.gui.lobby.battleResults
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.data.DataProvider;
-   import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.ListEvent;
    import scaleform.gfx.TextFieldEx;
    
@@ -145,6 +143,8 @@ package net.wg.gui.lobby.battleResults
       
       public var mainFinishReasonTitle:TextField;
       
+      public var secondaryFinishReason:TextField;
+      
       public var overtimeFinishReason:TextField;
       
       public var mainFinishReason:TextField;
@@ -152,8 +152,6 @@ package net.wg.gui.lobby.battleResults
       public var overtimeBg:DisplayObject;
       
       public var efficiencyHeader:EfficiencyHeader;
-      
-      public var replayBtn:ISoundButtonEx = null;
       
       public var prestigePoints:PrestigePoints = null;
       
@@ -239,6 +237,7 @@ package net.wg.gui.lobby.battleResults
          this.noProgressTF = null;
          this.overtimeFinishReasonTitle = null;
          this.mainFinishReasonTitle = null;
+         this.secondaryFinishReason = null;
          this.overtimeFinishReason = null;
          this.mainFinishReason = null;
          this.overtimeBg = null;
@@ -248,9 +247,6 @@ package net.wg.gui.lobby.battleResults
          this.progressiveRewardDelimiter = null;
          this._linkageSelector.dispose();
          this._linkageSelector = null;
-         this.replayBtn.removeEventListener(ButtonEvent.CLICK,this.onReplayBtnClickHandler);
-         this.replayBtn.dispose();
-         this.replayBtn = null;
          this.prestigePoints.dispose();
          this.prestigePoints = null;
          this.deserter.dispose();
@@ -275,8 +271,6 @@ package net.wg.gui.lobby.battleResults
          this._startProgressBGPosition = this.progressInfoBG.y;
          this.arenaNameLbl.alpha = 0.8;
          this.arenaNameLbl.blendMode = BlendMode.ADD;
-         this.replayBtn.visible = false;
-         this.replayBtn.addEventListener(ButtonEvent.CLICK,this.onReplayBtnClickHandler);
       }
       
       override protected function draw() : void
@@ -326,11 +320,9 @@ package net.wg.gui.lobby.battleResults
       
       public function update(param1:Object) : void
       {
-         var _loc2_:PersonalDataVO = null;
-         var _loc8_:String = null;
-         var _loc13_:String = null;
+         var _loc11_:String = null;
          this._data = BattleResultsVO(param1);
-         _loc2_ = this._data.personal;
+         var _loc2_:PersonalDataVO = this._data.personal;
          var _loc3_:CommonStatsVO = this._data.common;
          var _loc4_:Array = AwardExtractor.extract(this._data.quests);
          var _loc5_:Array = AwardExtractor.extract(this._data.battlePass);
@@ -366,13 +358,6 @@ package net.wg.gui.lobby.battleResults
          this.tankSlot.addEventListener(ListEvent.INDEX_CHANGE,this.onDropDownIndexChangeHandler);
          this.crystalCounter.visible = false;
          this.crystalIcon.visible = false;
-         _loc8_ = _loc2_.replayURL;
-         var _loc9_:Boolean = StringUtils.isNotEmpty(_loc8_);
-         this.replayBtn.visible = _loc9_;
-         if(_loc9_)
-         {
-            this.replayBtn.label = this._data.textData.replayButtonLabel;
-         }
          if(_loc3_.eligibleForCrystalRewards || StringUtils.isNotEmpty(_loc2_.crystalStr) && _loc2_.crystalStr != ZERO_STR)
          {
             this.initCrystalCounter(_loc2_.crystalStr);
@@ -386,19 +371,19 @@ package net.wg.gui.lobby.battleResults
          this.medalsListLeft.x = !!this._hasPrestigePoints ? Number(0) : Number(MEDALS_LIST_LEFT_X);
          this.initEfficiencyList(_loc2_);
          this.initEfficiencyHeader(_loc2_);
-         var _loc10_:ProgressiveRewardVO = this._data.progressiveReward;
-         var _loc11_:Boolean = Boolean(_loc10_.isEnabled);
-         if(_loc11_)
+         var _loc8_:ProgressiveRewardVO = this._data.progressiveReward;
+         var _loc9_:Boolean = Boolean(_loc8_.isEnabled);
+         if(_loc9_)
          {
-            this.progressiveReward.setData(_loc10_);
+            this.progressiveReward.setData(_loc8_);
             this.progressiveReward.addEventListener(ProgressiveRewardEvent.LINK_BTN_CLICK,this.onProgressiveRewardLinkBtnClickHandler);
          }
-         this.progressiveReward.visible = _loc11_;
-         this.progressiveRewardDelimiter.visible = _loc11_;
-         this.layoutProgressReport(_loc11_);
-         var _loc12_:Boolean = _loc2_.showNoIncomeAlert;
-         this.setNoIncomeVisible(_loc12_);
-         if(!_loc12_)
+         this.progressiveReward.visible = _loc9_;
+         this.progressiveRewardDelimiter.visible = _loc9_;
+         this.layoutProgressReport(_loc9_);
+         var _loc10_:Boolean = _loc2_.showNoIncomeAlert;
+         this.setNoIncomeVisible(_loc10_);
+         if(!_loc10_)
          {
             this.detailsMc.data = _loc2_;
             this.initProgressReport(0,_loc7_.length);
@@ -413,12 +398,12 @@ package net.wg.gui.lobby.battleResults
          {
             this.tankSlot.setVehicleIdxInGarageDropdown(this._data.selectedIdxInGarageDropdown);
          }
-         _loc13_ = _loc2_.deserterStr;
-         var _loc14_:Boolean = StringUtils.isNotEmpty(_loc13_);
-         this.deserter.visible = _loc14_;
-         if(_loc14_)
+         _loc11_ = _loc2_.deserterStr;
+         var _loc12_:Boolean = StringUtils.isNotEmpty(_loc11_);
+         this.deserter.visible = _loc12_;
+         if(_loc12_)
          {
-            this.deserter.text = _loc13_;
+            this.deserter.text = _loc11_;
          }
          invalidateSize();
       }
@@ -453,6 +438,10 @@ package net.wg.gui.lobby.battleResults
          else
          {
             this.finishReasonLbl.text = param1.finishReasonStr;
+         }
+         if(this.secondaryFinishReason)
+         {
+            this.secondaryFinishReason.text = param1.finishReasonClarificationStr;
          }
       }
       
@@ -680,11 +669,6 @@ package net.wg.gui.lobby.battleResults
       private function onEfficiencyListScrollHandler(param1:Event) : void
       {
          invalidate(HEADER_INVALID);
-      }
-      
-      private function onReplayBtnClickHandler(param1:ButtonEvent) : void
-      {
-         dispatchEvent(new BattleResultsViewEvent(BattleResultsViewEvent.SHOW_REPLAY));
       }
    }
 }

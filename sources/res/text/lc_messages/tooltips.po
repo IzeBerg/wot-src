@@ -61,9 +61,6 @@ msgstr "В Командном бою"
 msgid "Contact/status/inBattle/training"
 msgstr "В Тренировочном бою"
 
-msgid "Contact/status/inBattle/tutorial"
-msgstr "В Боевом обучении"
-
 msgid "Contact/status/inBattle/unknown"
 msgstr "В бою"
 
@@ -591,17 +588,13 @@ msgstr ""
 
 msgid "advanced/antifragmentationLining"
 msgstr ""
-"Снижает урон от тарана и ОФ-снарядов при непробитии. Уменьшает время "
-"оглушения экипажа, а также снижает вероятность ранений членов экипажа."
+"Снижает урон от тарана и ОФ снарядов при непробитии. Уменьшает время "
+"дезориентации экипажа, а также снижает вероятность ранений членов экипажа."
 
 msgid "advanced/autoExtinguishers"
 msgstr ""
 "Автоматически тушит пожар сразу после его возникновения. Пассивно уменьшает "
 "шанс возгорания."
-
-msgid "advanced/battleTeaching"
-msgstr ""
-"Бой против ботов для закрепления полученных на Учебном полигоне навыков."
 
 msgid "advanced/brotherhood"
 msgstr ""
@@ -840,7 +833,8 @@ msgstr ""
 msgid "advanced/largeMedkit"
 msgstr ""
 "При использовании мгновенно лечит всех раненых членов экипажа и снимает "
-"оглушение. Пассивно улучшает защиту экипажа и снижает время оглушения."
+"дезориентацию. Пассивно улучшает защиту экипажа и снижает время "
+"дезориентации."
 
 msgid "advanced/largeRepairkit"
 msgstr ""
@@ -957,7 +951,7 @@ msgstr ""
 msgid "advanced/smallMedkit"
 msgstr ""
 "При использовании мгновенно лечит одного выбранного члена экипажа и снимает "
-"оглушение."
+"дезориентацию."
 
 msgid "advanced/smallRepairkit"
 msgstr "При использовании мгновенно чинит один выбранный повреждённый модуль."
@@ -1830,7 +1824,7 @@ msgid "battleResults/efficiencyHeader/summSpotted"
 msgstr "Обнаружение"
 
 msgid "battleResults/efficiencyHeader/summStun"
-msgstr "Урон по оглушённым вами целям"
+msgstr "Урон по дезориентированным вами целям"
 
 msgid "battleResults/efficiencyHeader/value"
 msgstr "%(value)d"
@@ -1927,21 +1921,6 @@ msgstr "До начала события осталось"
 
 msgid "battleTypes/battleRoyale/tillStartCycle"
 msgstr "До начала:"
-
-msgid "battleTypes/battleTeaching/body"
-msgstr ""
-"Бой против ботов на карте %(map1)s для закрепления полученных в Боевом обучении навыков.\n"
-"• Особенности: если у вас более %(battles)d любых боёв на аккаунте, кредиты и опыт в Учебном бою не начисляются.\n"
-"• Допустимые уровни техники: I и II."
-
-msgid "battleTypes/battleTeaching/header"
-msgstr "Учебный бой"
-
-msgid "battleTypes/battleTutorial/body"
-msgstr "Здесь вы научитесь управлять танком и уничтожать технику противника."
-
-msgid "battleTypes/battleTutorial/header"
-msgstr "Боевое обучение"
 
 msgid "battleTypes/epic_training/body"
 msgstr ""
@@ -6193,6 +6172,12 @@ msgstr "Действуют скидки на технику наций:"
 msgid "header/buttons/techtree/header"
 msgstr "Исследования"
 
+msgid "header/buttons/tournaments/body"
+msgstr "Просмотреть турниры и состязания"
+
+msgid "header/buttons/tournaments/header"
+msgstr "Турниры"
+
 msgid "header/eliteIcon/body"
 msgstr ""
 "Все модули исследованы.\n"
@@ -6669,9 +6654,6 @@ msgstr "• %(achievement)s"
 
 msgid "missions/condition/progress"
 msgstr "Прогресс выполнения данного условия."
-
-msgid "missions/token/header"
-msgstr "Марка %(name)s"
 
 msgid "missions/token/progress"
 msgstr "Получено марок: %(current)s из %(total)s"
@@ -7432,6 +7414,15 @@ msgstr ""
 msgid "notrecruitedtankman/commander_gagarin21/label"
 msgstr "Уникальный член экипажа"
 
+msgid "notrecruitedtankman/commander_hob/desc"
+msgstr ""
+"Knabe is a force to be reckoned with. He once pulled five tanks out of the "
+"mud with his bare hands and hardly broke a sweat! As a tank commander, he "
+"leads his team to victory—even if the team actively resists."
+
+msgid "notrecruitedtankman/commander_hob/label"
+msgstr "Уникальный командир"
+
 msgid "notrecruitedtankman/commander_maeve/desc"
 msgstr ""
 "Воплощение абсолютной силы. У неё несокрушимое тело и дух, а девочки по "
@@ -7448,6 +7439,15 @@ msgstr ""
 
 msgid "notrecruitedtankman/commander_marina/label"
 msgstr "Уникальный член экипажа"
+
+msgid "notrecruitedtankman/commander_nansen/desc"
+msgstr ""
+"Жизнь для меня — величайшая из игр. Опасность подстерегает тех, кто считает её игрой тривиальной. Игрой, к которой можно относиться легкомысленно, и в которой правила не имеют большого значения. Ха! Правила имеют огромное значение. Игра должна быть честной, иначе это уже не игра. Не справились? Продолжайте! Преуспели? Продолжайте! Подготовка к следующей экспедиции начинается ровно в тот момент, когда вы вернулись из предыдущей.\n"
+"\n"
+"*На основе цитат из произведений Эрнеста Шеклтона, Фритьофа Нансена и Роберта Пири."
+
+msgid "notrecruitedtankman/commander_nansen/label"
+msgstr "Уникальный командир"
 
 msgid "notrecruitedtankman/commander_omelia/desc"
 msgstr ""
@@ -8003,6 +8003,15 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankman/label"
 msgstr "Уникальный член экипажа"
 
+msgid "notrecruitedtankman/tankmen/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen/label"
+msgstr "Уникальный член экипажа"
+
 msgid "notrecruitedtankman/tankmen_auc_1/desc"
 msgstr ""
 "Технодесантник-примарис. Даже будучи возведённым в ранг Астартес, не потерял"
@@ -8032,6 +8041,50 @@ msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankmen_auc_2/label"
 msgstr "Warhammer 40 000: специальное предложение"
+
+msgid "notrecruitedtankman/tankmen_bp10_1/desc"
+msgstr ""
+"Бывший железнодорожный инженер, из-за ощутимого кадрового голода "
+"переведённый в проектный отдел завода Krupp, где занимался модернизацией "
+"танков и другой военной техники. Идеи, реализованные Беккером, мягко говоря,"
+" воспринимались неоднозначно, в связи с чем он был снят с должности и "
+"отправлен на фронт в качестве офицера технического сопровождения техники с "
+"собственными наработками."
+
+msgid "notrecruitedtankman/tankmen_bp10_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_1/label"
+msgstr "Боевой пропуск, десятый сезон"
+
+msgid "notrecruitedtankman/tankmen_bp10_2/desc"
+msgstr ""
+"Вся биография этого танкиста пестрит нестыковками и недомолвками. "
+"Складывается впечатление, что либо кто-то неумело врёт, либо (что более "
+"вероятно) старается запутать следы и скрыть истину от посторонних глаз. "
+"Возможно, изучение личного дела могло бы пролить свет, но этого документа "
+"уже давно никто не видел."
+
+msgid "notrecruitedtankman/tankmen_bp10_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_2/label"
+msgstr "Боевой пропуск, десятый сезон"
+
+msgid "notrecruitedtankman/tankmen_bp10_3/desc"
+msgstr ""
+"Участница экспериментальной программы шведского министерства обороны, в "
+"рамках которой проверяются возможности женского состава ВС выполнять полный "
+"спектр обязанностей при несении службы. Заметные успехи и адаптивность "
+"девушки к постоянно сменяющимся условиям формально уже подтвердили успех "
+"эксперимента, но служба ещё не окончена, и кто знает, чем всё может "
+"обернуться в итоге."
+
+msgid "notrecruitedtankman/tankmen_bp10_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_3/label"
+msgstr "Боевой пропуск, десятый сезон"
 
 msgid "notrecruitedtankman/tankmen_bp2_1/desc"
 msgstr ""
@@ -8648,6 +8701,12 @@ msgstr ""
 msgid "periodicReward/header"
 msgstr "Ежедневная награда"
 
+msgid "personalMission/status/lockedByVehicleType/body/pm2"
+msgstr "Нет подходящей техники %(vehType)s %(minLevel)s-%(maxLevel)s уровней"
+
+msgid "personalMission/status/lockedByVehicleType/body/regular"
+msgstr "Нет подходящих %(vehType)s %(minLevel)s-%(maxLevel)s уровней"
+
 msgid "personalMissions/awards/camouflage/alliance/body"
 msgstr ""
 "Набор из 3 камуфляжных схем (летняя, зимняя и пустынная).\n"
@@ -8961,16 +9020,6 @@ msgstr "Предшествующая операция не выполнена"
 
 msgid "personalMissions/status/lockedByVehicle/header"
 msgstr "Нет подходящей техники"
-
-msgid "personalMissions/status/lockedByVehicleAlliance/body"
-msgstr ""
-"Для доступа к задаче необходима техника %(vehType)s с %(minLevel)s по "
-"%(maxLevel)s уровень."
-
-msgid "personalMissions/status/lockedByVehicleType/body"
-msgstr ""
-"Для доступа к задаче необходима техника типа %(vehType)s с %(minLevel)s по "
-"%(maxLevel)s уровень."
 
 msgid "personalMissions/status/mainDone/body"
 msgstr ""
@@ -9451,9 +9500,6 @@ msgid "quests/bonuses/token/body"
 msgstr ""
 "Данная марка — наградной элемент, необходимый для выполнения определённой "
 "боевой задачи."
-
-msgid "quests/bonuses/token/header"
-msgstr "Марка %(userName)s"
 
 msgid "quests/bonuses/token/resource/clan_promoresource/body"
 msgstr ""
@@ -11097,15 +11143,8 @@ msgstr "Паспортная скорость машины."
 
 msgid "tank_params/desc/stunMaxDuration"
 msgstr ""
-"Показывает максимальное время оглушения, причиняемого экипажу противника, "
-"если ваш ОФ-снаряд пробил броню, нанёс максимальный урон, а противник при "
-"этом не имел оборудования и снаряжения, снижающего время оглушения."
-
-msgid "tank_params/desc/stunMinDuration"
-msgstr ""
-"Показывает минимальное время оглушения, причиняемого экипажу противника, "
-"если его машина попала в зону поражения вашего снаряда и противник при этом "
-"не имел оборудования и снаряжения, снижающего время оглушения."
+"Показывает время дезориентации экипажа противника, если он не имел "
+"оборудования и снаряжения, изменяющего время дезориентации."
 
 msgid "tank_params/desc/switchOffTime"
 msgstr ""

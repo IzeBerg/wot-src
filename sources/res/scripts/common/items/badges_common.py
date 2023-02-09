@@ -13,9 +13,7 @@ class BadgesCommon(object):
 
     @staticmethod
     def getExtraInfo(account):
-        battlePassLevel = 0
-        extraInfo = [
-         battlePassLevel]
+        extraInfo = []
         return extraInfo
 
     @staticmethod

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>line</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/lava_02.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						gradientMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Kpz_50t_gradien_stone_03.dds</Texture>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>15.000000 0.500000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						fogAdjustBlend
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						alphaFadeAmountSoft
+						<Vector4>1.000000 1.000000 0.010000 1.000000</Vector4>
+					</property>
+					<property>
+						opacity_UV_Speed_Scale
+						<Vector4>0.050000 -0.050000 0.500000 0.500000</Vector4>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/wt_mask_04.dds</Texture>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/wt_mask_07.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 10.000000 0.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1.000000 0.360784 0.035294 0.220000</Vector4>
+					</property>
+					<property>
+						gradientMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						opacityMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+				</material>
+				<groupOrigin>0.596832 -0.000004 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-90.169998 -106.239487 -77.324570</min>
+		<max>91.363663 106.239479 77.324570</max>
+	</boundingBox>
+	<geometrySize>2460</geometrySize>
+	<minUVDensity>0.000037</minUVDensity>
+</root>

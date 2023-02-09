@@ -13,7 +13,7 @@ from gui.shared.items_parameters import functions, getShellDescriptors, getOptio
 from gui.shared.items_parameters.comparator import rateParameterState, PARAM_STATE
 from gui.shared.items_parameters.functions import getBasicShell, getRocketAccelerationKpiFactors
 from gui.shared.items_parameters.params_cache import g_paramsCache
-from gui.shared.utils import DAMAGE_PROP_NAME, PIERCING_POWER_PROP_NAME, AIMING_TIME_PROP_NAME, STUN_DURATION_PROP_NAME, GUARANTEED_STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, GUN_AUTO_RELOAD, GUN_CAN_BE_AUTO_RELOAD, MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, GUN_DUAL_GUN, GUN_CAN_BE_DUAL_GUN, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME, TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME, ROCKET_ACCELERATION_ENGINE_POWER, ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION
+from gui.shared.utils import DAMAGE_PROP_NAME, PIERCING_POWER_PROP_NAME, AIMING_TIME_PROP_NAME, STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, GUN_AUTO_RELOAD, GUN_CAN_BE_AUTO_RELOAD, MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, GUN_DUAL_GUN, GUN_CAN_BE_DUAL_GUN, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME, TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME, ROCKET_ACCELERATION_ENGINE_POWER, ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION
 from gui.shared.utils import DISPERSION_RADIUS_PROP_NAME, SHELLS_PROP_NAME, GUN_NORMAL, SHELLS_COUNT_PROP_NAME
 from gui.shared.utils import GUN_CAN_BE_CLIP, RELOAD_TIME_PROP_NAME
 from gui.shared.utils import RELOAD_MAGAZINE_TIME_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME, GUN_CLIP
@@ -746,14 +746,6 @@ class VehicleParams(_ParameterBase):
             return
 
     @property
-    def stunMinDuration(self):
-        item = self._itemDescr.shot.shell
-        if item.hasStun:
-            return item.stun.guaranteedStunDuration * item.stun.stunDuration
-        else:
-            return
-
-    @property
     def vehicleEnemySpottingTime(self):
         kpiFactor = self.__kpi.getFactor('vehicleEnemySpottingTime')
         skillName = 'gunner_rancorous'
@@ -797,7 +789,7 @@ class VehicleParams(_ParameterBase):
          TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME, ROCKET_ACCELERATION_ENGINE_POWER,
          ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION, 'chassisRotationSpeed',
          'turboshaftBurstFireRate')
-        stunConditionParams = ('stunMaxDuration', 'stunMinDuration')
+        stunConditionParams = ('stunMaxDuration', )
         result = _ParamsDictProxy(self, preload, conditions=(
          (
           conditionalParams, lambda v: v is not None),
@@ -1121,20 +1113,12 @@ class GunParams(WeightedParam):
             return
 
     @property
-    def stunMinDurationList(self):
-        res = self._getRawParams().get(GUARANTEED_STUN_DURATION_PROP_NAME)
-        if res:
-            return res
-        else:
-            return
-
-    @property
     def autoReloadTime(self):
         return tuple(reversed(self._getRawParams().get(AUTO_RELOAD_PROP_NAME)))
 
     def getParamsDict(self):
         stunConditionParams = (
-         STUN_DURATION_PROP_NAME, GUARANTEED_STUN_DURATION_PROP_NAME)
+         STUN_DURATION_PROP_NAME,)
         stunItem = self._itemDescr.shots[0].shell
         result = _ParamsDictProxy(self, conditions=((['maxShotDistance'], lambda v: v == _AUTOCANNON_SHOT_DISTANCE),
          (
@@ -1255,20 +1239,6 @@ class ShellParams(CompatibleParams):
             return
 
     @property
-    def stunMinDuration(self):
-        if self._itemDescr.hasStun:
-            return self._itemDescr.stun.guaranteedStunDuration * self._itemDescr.stun.stunDuration
-        else:
-            return
-
-    @property
-    def stunDurationList(self):
-        if self._itemDescr.hasStun:
-            return (self.stunMinDuration, self.stunMaxDuration)
-        else:
-            return
-
-    @property
     def shotSpeed(self):
         if self._itemDescr.kind in _SHELL_KINDS and self._vehicleDescr is not None:
             result = self.__getShellDescriptor()
@@ -1278,7 +1248,7 @@ class ShellParams(CompatibleParams):
         return
 
     def getParamsDict(self):
-        stunConditionParams = ('stunMaxDuration', 'stunMinDuration')
+        stunConditionParams = ('stunMaxDuration', )
         result = _ParamsDictProxy(self, conditions=((['maxShotDistance'], lambda v: v == _AUTOCANNON_SHOT_DISTANCE),
          (
           stunConditionParams, lambda s: _isStunParamVisible(self._itemDescr))))

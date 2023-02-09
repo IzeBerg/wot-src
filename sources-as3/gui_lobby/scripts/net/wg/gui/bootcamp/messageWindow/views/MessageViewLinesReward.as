@@ -274,8 +274,7 @@ package net.wg.gui.bootcamp.messageWindow.views
       
       private function onRewardIconLoadedHandler(param1:MessageViewEvent) : void
       {
-         var _loc2_:Point = null;
-         _loc2_ = param1.target.localToGlobal(new Point(param1.target.width >> 1,param1.target.height >> 1));
+         var _loc2_:Point = param1.target.localToGlobal(new Point(param1.target.width >> 1,param1.target.height >> 1));
          _loc2_ = parent.globalToLocal(_loc2_);
          this._flyingReward.x = _loc2_.x;
          this._flyingReward.y = _loc2_.y;

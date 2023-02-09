@@ -577,7 +577,8 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
     def onControlModeChanged(self, eMode, **args):
         if self.steadyVehicleMatrixCalculator is not None:
             self.steadyVehicleMatrixCalculator.relinkSources()
-        if not self.__isArenaStarted and eMode != _CTRL_MODE.POSTMORTEM and not BattleReplay.isServerSideReplay:
+        _logger.debug('onControlModeChanged %s', eMode)
+        if not self.__isArenaStarted and not self.__isModeSwitchInPrebattlePossible(eMode):
             return
         else:
             player = BigWorld.player()
@@ -615,12 +616,16 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                         self.__observerVehicle = player.observedVehicleID
                         player.positionControl.bindToVehicle(True)
                 elif not prevCtrl.isManualBind() and self.__curCtrl.isManualBind():
-                    if isObserverMode:
+                    if replayCtrl.isServerSideReplay:
+                        pass
+                    elif isObserverMode:
                         player.positionControl.bindToVehicle(False, -1)
                     else:
                         player.positionControl.bindToVehicle(False)
                 elif prevCtrl.isManualBind() and not self.__curCtrl.isManualBind():
-                    if isObserverMode:
+                    if replayCtrl.isServerSideReplay:
+                        pass
+                    elif isObserverMode:
                         player.positionControl.followCamera(False)
                         player.positionControl.bindToVehicle(True, self.__observerVehicle)
                     else:
@@ -944,6 +949,13 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
             initialControlMode = _CTRLS_FIRST
         self.__curCtrl = self.__ctrls[initialControlMode]
         self.__ctrlModeName = initialControlMode
+
+    def __isModeSwitchInPrebattlePossible(self, eMode):
+        if eMode == _CTRL_MODE.POSTMORTEM:
+            return True
+        if self.__ctrlModeName == _CTRL_MODE.VEHICLES_SELECTION and eMode == _CTRL_MODE.ARCADE:
+            return True
+        return False
 
 
 class _Targeting(object):

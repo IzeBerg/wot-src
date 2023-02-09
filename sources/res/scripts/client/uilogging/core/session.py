@@ -35,12 +35,20 @@ class SessionData(object):
         return self.__auth.get('expiration')
 
     @property
-    def isExpired(self):
+    def lifetime(self):
         expiration = self.expiration
         if expiration is None:
+            return
+        else:
+            return expiration - time_utils.getServerUTCTime()
+
+    @property
+    def isExpired(self):
+        lifetime = self.lifetime
+        if lifetime is None:
             return False
         else:
-            return expiration <= time_utils.getServerUTCTime()
+            return lifetime <= 0
 
     @property
     def maxLogsCount(self):

@@ -293,6 +293,14 @@
 					</valueByLevel>
 				</factor>
 				<factor>
+					<attribute>miscAttrs/stunResistanceEffect</attribute>
+					<type>add</type>
+					<valueByLevel>
+						0.1 0.15
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
 					<attribute>miscAttrs/repeatedStunDurationFactor</attribute>
 					<type>mul</type>
 					<valueByLevel>
@@ -337,13 +345,13 @@
 				</specValue>
 			</mul>
 			<mul>
-				<name>crewRepeatedStunDuration</name>
+				<name>crewStunResistance</name>
 				<value>
-					0.8
+					0.9
 					<!--BW_String-->
 				</value>
 				<specValue>
-					0.75
+					0.85
 					<!--BW_String-->
 				</specValue>
 			</mul>
@@ -398,6 +406,14 @@
 					</valueByLevel>
 				</factor>
 				<factor>
+					<attribute>miscAttrs/stunResistanceEffect</attribute>
+					<type>add</type>
+					<valueByLevel>
+						0.1 0.15
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
 					<attribute>miscAttrs/repeatedStunDurationFactor</attribute>
 					<type>mul</type>
 					<valueByLevel>
@@ -442,13 +458,13 @@
 				</specValue>
 			</mul>
 			<mul>
-				<name>crewRepeatedStunDuration</name>
+				<name>crewStunResistance</name>
 				<value>
-					0.8
+					0.9
 					<!--BW_String-->
 				</value>
 				<specValue>
-					0.75
+					0.85
 					<!--BW_String-->
 				</specValue>
 			</mul>
@@ -503,6 +519,14 @@
 					</valueByLevel>
 				</factor>
 				<factor>
+					<attribute>miscAttrs/stunResistanceEffect</attribute>
+					<type>add</type>
+					<valueByLevel>
+						0.1 0.15
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
 					<attribute>miscAttrs/repeatedStunDurationFactor</attribute>
 					<type>mul</type>
 					<valueByLevel>
@@ -547,13 +571,13 @@
 				</specValue>
 			</mul>
 			<mul>
-				<name>crewRepeatedStunDuration</name>
+				<name>crewStunResistance</name>
 				<value>
-					0.8
+					0.9
 					<!--BW_String-->
 				</value>
 				<specValue>
-					0.75
+					0.85
 					<!--BW_String-->
 				</specValue>
 			</mul>
@@ -615,6 +639,14 @@
 						<!--BW_String-->
 					</valueByLevel>
 				</factor>
+				<factor>
+					<attribute>miscAttrs/stunResistanceEffect</attribute>
+					<type>add</type>
+					<valueByLevel>
+						0.1 0.15
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
 			</factors>
 		</script>
 		<kpi>
@@ -652,13 +684,13 @@
 				</specValue>
 			</mul>
 			<mul>
-				<name>crewRepeatedStunDuration</name>
+				<name>crewStunResistance</name>
 				<value>
-					0.8
+					0.9
 					<!--BW_String-->
 				</value>
 				<specValue>
-					0.75
+					0.85
 					<!--BW_String-->
 				</specValue>
 			</mul>

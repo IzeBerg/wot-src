@@ -51,8 +51,6 @@ package net.wg.gui.lobby.hangar.crew
       
       private static const ITEM_RENDERER:String = "RecruitItemRendererUI";
       
-      private static const TANKMEN_ICONS_SMALL:String = "../maps/icons/tankmen/icons/small/";
-      
       private static const TANKMEN_RANKS_SMALL:String = "../maps/icons/tankmen/ranks/small/";
       
       private static const TANKMEN_ROLES_SMALL:String = "../maps/icons/tankmen/roles/small/";
@@ -398,7 +396,7 @@ package net.wg.gui.lobby.hangar.crew
          var _loc5_:TankmanVO = _loc2_.tankman;
          if(_loc5_.iconFile != this.icon.source && _loc5_.iconFile)
          {
-            this.icon.source = TANKMEN_ICONS_SMALL + _loc5_.iconFile;
+            this.icon.source = _loc5_.iconFile;
             this.iconExtra.source = this.icon.source;
          }
          if(_loc5_.rankIconFile != this.iconRank.imageLoader.source && _loc5_.rankIconFile)

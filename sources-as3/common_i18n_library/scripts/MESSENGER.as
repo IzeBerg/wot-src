@@ -569,8 +569,6 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_BATTLE:String = "#messenger:serviceChannelMessages/battleResults/battle";
       
-      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_TRAINING_BATTLE:String = "#messenger:serviceChannelMessages/battleResults/training_battle";
-      
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_TANKS:String = "#messenger:serviceChannelMessages/battleResults/tanks";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_EXPERIENCE:String = "#messenger:serviceChannelMessages/battleResults/experience";
@@ -738,18 +736,6 @@ package
       public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BATTLEPASS:String = "#messenger:serviceChannelMessages/BRbattleResults/battlePass";
       
       public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BATTLEROYALEBRCOIN:String = "#messenger:serviceChannelMessages/BRbattleResults/battleRoyaleBrCoin";
-      
-      public static const SERVICECHANNELMESSAGES_BATTLETUTORIAL_RESULTS_FINISHED:String = "#messenger:serviceChannelMessages/battleTutorial/results/finished";
-      
-      public static const SERVICECHANNELMESSAGES_BATTLETUTORIAL_RESULTS_FAILED:String = "#messenger:serviceChannelMessages/battleTutorial/results/failed";
-      
-      public static const SERVICECHANNELMESSAGES_BATTLETUTORIAL_REASONS_FINISHED:String = "#messenger:serviceChannelMessages/battleTutorial/reasons/finished";
-      
-      public static const SERVICECHANNELMESSAGES_BATTLETUTORIAL_REASONS_FAILED:String = "#messenger:serviceChannelMessages/battleTutorial/reasons/failed";
-      
-      public static const SERVICECHANNELMESSAGES_BATTLETUTORIAL_REASONS_TIMEOUT:String = "#messenger:serviceChannelMessages/battleTutorial/reasons/timeout";
-      
-      public static const SERVICECHANNELMESSAGES_BATTLETUTORIAL_REASONS_EXTERMINATION:String = "#messenger:serviceChannelMessages/battleTutorial/reasons/extermination";
       
       public static const SERVICECHANNELMESSAGES_BOOTCAMP_FINISHED:String = "#messenger:serviceChannelMessages/bootcamp/finished";
       
@@ -1968,10 +1954,6 @@ package
       public static const SERVICECHANNELMESSAGES_BATTLEPASS_REACHEDCAP_HEADER:String = "#messenger:serviceChannelMessages/battlePass/reachedCap/header";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASS_REACHEDCAP_TEXT:String = "#messenger:serviceChannelMessages/battlePass/reachedCap/text";
-      
-      public static const SERVICECHANNELMESSAGES_BATTLEPASS_BADGES_HEADER_REMOVE:String = "#messenger:serviceChannelMessages/battlePass/badges/header/remove";
-      
-      public static const SERVICECHANNELMESSAGES_BATTLEPASS_BADGES_TEXT_REMOVE:String = "#messenger:serviceChannelMessages/battlePass/badges/text/remove";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASS_TROPHYSELECTTOKEN:String = "#messenger:serviceChannelMessages/battlePass/trophySelectToken";
       

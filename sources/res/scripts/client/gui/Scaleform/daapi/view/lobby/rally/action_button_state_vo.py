@@ -128,7 +128,9 @@ class ActionButtonStateVO(dict):
            UNIT_RESTRICTION.RATING_RESTRICTION: (
                                                backport.text(R.strings.comp7.unit.message.ratingRestriction(), rating=self.__comp7Ctrl.getPlatoonRatingRestriction()), {}), 
            UNIT_RESTRICTION.MODE_OFFLINE: (
-                                         backport.text(R.strings.comp7.unit.message.modeOffline()), {})}
+                                         backport.text(R.strings.comp7.unit.message.modeOffline()), {}), 
+           UNIT_RESTRICTION.PLAY_LIMITS_IS_ACTIVE: (
+                                                  backport.text(R.strings.cyberSport.window.unit.message.play_limits_is_active()), {})}
         self.__WARNING_UNIT_MESSAGES = {UNIT_RESTRICTION.XP_PENALTY_VEHICLE_LEVELS: (
                                                       PLATOON.MEMBERS_FOOTER_VEHICLES_DIFFERENTLEVELS, {})}
         self.__NEUTRAL_UNIT_MESSAGES = {UNIT_RESTRICTION.UNIT_WILL_SEARCH_PLAYERS: (
