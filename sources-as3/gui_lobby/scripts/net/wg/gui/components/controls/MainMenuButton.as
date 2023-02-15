@@ -67,7 +67,7 @@ package net.wg.gui.components.controls
       
       private var _iconType:String;
       
-      private var _hadPrevIcon:Boolean = false;
+      private var _iconOffset:int = 0;
       
       private var _iconY:int;
       
@@ -274,7 +274,8 @@ package net.wg.gui.components.controls
             }
             if(this._iconType)
             {
-               this.fxTextField1.x = this.icon.x + this.icon.width + ICON_PADDING;
+               this._iconOffset = this.icon.x + this.icon.width + ICON_PADDING | 0;
+               this.fxTextField1.x = this._iconOffset;
                dispatchEvent(new Event(Event.RESIZE));
             }
             else
@@ -453,9 +454,13 @@ package net.wg.gui.components.controls
          }
          this._iconType = param1;
          invalidate(INVALIDATE_ICON);
-         if(this._hadPrevIcon)
+         if(this.fxTextField1 && StringUtils.isNotEmpty(this._iconType))
          {
-            invalidateState();
+            this.fxTextField1.x = this._iconOffset;
+         }
+         else
+         {
+            this.fxTextField1.x = 0;
          }
       }
       
@@ -485,15 +490,7 @@ package net.wg.gui.components.controls
       
       private function onIconChangeHandler(param1:Event) : void
       {
-         if(this._hadPrevIcon)
-         {
-            this.fxTextField1.x = this.icon.x + this.icon.width + ICON_PADDING;
-         }
-         else
-         {
-            invalidateState();
-         }
-         this._hadPrevIcon = true;
+         invalidateState();
       }
       
       private function onActionIconChangeHandler(param1:Event) : void
