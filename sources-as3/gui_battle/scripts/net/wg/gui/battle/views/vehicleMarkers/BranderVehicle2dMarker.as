@@ -28,6 +28,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const DAMAGE_PANEL:String = "Damage";
       
+      private static const VEHICLE_DIST:String = "VehicleDist";
+      
       private static const MARKER:String = "marker";
       
       private static const ALT:String = "Alt";
@@ -66,12 +68,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const INVALIDATE_MANAGER_READY:uint = 1 << 17;
       
-      private static const HEALTH_BAR_Y:int = -9;
-      
-      private static const HP_FIELD_VERTICAL_OFFSET:int = -2;
-      
-      private static const PARTS_START_Y:int = -15;
-      
       private static const WHITE_COLOR:String = "white";
       
       private static const OBSERVER_SCHEME_NAME:String = "team";
@@ -98,6 +94,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       public var bgShadow:MovieClip = null;
       
       public var squadIcon:MovieClip = null;
+      
+      public var vehicleDist:VehicleDistance = null;
       
       private var _model:VehicleMarkerVO = null;
       
@@ -132,6 +130,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       private var _hitIconOffset:int = -1;
       
       private var _markerParts:Vector.<VehicleMarkerPart> = null;
+      
+      private var _isVehicleDistVisible:Boolean = true;
       
       public function BranderVehicle2dMarker()
       {
@@ -206,6 +206,11 @@ package net.wg.gui.battle.views.vehicleMarkers
             this.healthBar.dispose();
          }
          this.healthBar = null;
+         if(this.vehicleDist != null)
+         {
+            this.vehicleDist.dispose();
+         }
+         this.vehicleDist = null;
          this.bgShadow = null;
          this.squadIcon = null;
          if(this.criticalHitLabel != null)
@@ -255,6 +260,21 @@ package net.wg.gui.battle.views.vehicleMarkers
          {
             invalidate(INVALIDATE_MANAGER_READY);
          }
+      }
+      
+      public function setDistance(param1:String) : void
+      {
+         this.vehicleDist.label = param1;
+      }
+      
+      public function setDistanceVisibility(param1:Boolean) : void
+      {
+         if(this._isVehicleDistVisible == param1)
+         {
+            return;
+         }
+         this._isVehicleDistVisible = param1;
+         this.updateMarkerSettings();
       }
       
       public function setEntityName(param1:String) : void
@@ -470,10 +490,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private function updateMarkerSettings() : void
       {
-         var _loc3_:Boolean = false;
          var _loc1_:Boolean = this.getIsPartVisible(HEALTH_BAR);
          var _loc2_:Boolean = this.getIsPartVisible(HEALTH_LBL);
-         _loc3_ = this.getIsPartVisible(DAMAGE_PANEL);
+         var _loc3_:Boolean = this.getIsPartVisible(DAMAGE_PANEL);
+         var _loc4_:Boolean = this._isVehicleDistVisible && this.getIsPartVisible(VEHICLE_DIST);
+         this.vehicleDist.visible = _loc4_;
          if(_loc1_)
          {
             this.healthBar.currHealth = this._model.currHealth;
@@ -496,7 +517,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          {
             this.bgShadow.visible = false;
          }
-         this.layoutParts(new <Boolean>[_loc1_ || _loc2_,this._model.squadIndex != 0,this.statusContainer.isVisible(),this.actionMarker.isVisible()]);
+         this.layoutParts(new <Boolean>[_loc1_ || _loc2_,_loc4_,this._model.squadIndex != 0,this.statusContainer.isVisible(),this.actionMarker.isVisible()]);
       }
       
       private function updateMarkerColor() : void
@@ -521,7 +542,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       {
          var _loc4_:VehicleMarkerPart = null;
          var _loc6_:int = 0;
-         var _loc2_:int = PARTS_START_Y;
+         var _loc2_:int = 0;
          var _loc3_:int = this._markerParts.length;
          var _loc5_:VehicleMarkerPart = null;
          var _loc7_:Boolean = this._canUseCachedVisibility;
@@ -550,18 +571,17 @@ package net.wg.gui.battle.views.vehicleMarkers
             _loc4_.cachedVisibility = _loc8_;
             _loc9_++;
          }
-         this.healthBar.y = HEALTH_BAR_Y;
-         this.hpField.y = this.healthBar.y + HP_FIELD_VERTICAL_OFFSET;
          this._canUseCachedVisibility = true;
       }
       
       private function prepareLayout() : void
       {
+         var _loc1_:Array = null;
          var _loc4_:VehicleMarkerPart = null;
          this._markerParts = new Vector.<VehicleMarkerPart>();
-         var _loc1_:Array = [this.hpField,this.squadIcon,this.statusContainer,this.actionMarker];
-         var _loc2_:Array = [-2,1,0,0];
-         var _loc3_:Array = [null,null,null,new CrossOffset(this.statusContainer,-25)];
+         _loc1_ = [this.hpField,this.vehicleDist,this.squadIcon,this.statusContainer,this.actionMarker];
+         var _loc2_:Array = [-5,0,1,0,0];
+         var _loc3_:Array = [null,new CrossOffset(this.hpField,-20),null,null,new CrossOffset(this.statusContainer,-25)];
          var _loc5_:int = _loc1_.length;
          var _loc6_:int = 0;
          while(_loc6_ < _loc5_)

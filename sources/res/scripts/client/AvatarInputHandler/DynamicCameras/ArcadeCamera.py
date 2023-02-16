@@ -161,7 +161,6 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
         self.__isCamInTransition = False
         self.__aimingSystemVectorHelper = Vector3(math_utils.VectorConstant.Vector3Zero)
         self.__rotationMatrixVectorHelper = Vector3(math_utils.VectorConstant.Vector3Zero)
-        self.__ofserVectorHelper = Vector2(math_utils.VectorConstant.Vector2Zero)
         self.__collideAnimatorEasing = CollideAnimatorEasing()
         if defaultOffset is not None:
             self.__defaultAimOffset = defaultOffset
@@ -757,8 +756,7 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
         xImpulseDeviationTan = math.tan(-(yawFromImpulse + self.__noiseOscillator.deviation.x) * oscillationsZoomMultiplier)
         pitchFromImpulse = self.__impulseOscillator.deviation.z * self.__dynamicCfg['frontImpulseToPitchRatio']
         yImpulseDeviationTan = math.tan((pitchFromImpulse + self.__noiseOscillator.deviation.y) * oscillationsZoomMultiplier)
-        self.__ofserVectorHelper.set((defaultX * xTan + xImpulseDeviationTan) / (xTan * (1 - defaultX * xTan * xImpulseDeviationTan)), (defaultY * yTan + yImpulseDeviationTan) / (yTan * (1 - defaultY * yTan * yImpulseDeviationTan)))
-        return self.__ofserVectorHelper
+        return Vector2((defaultX * xTan + xImpulseDeviationTan) / (xTan * (1 - defaultX * xTan * xImpulseDeviationTan)), (defaultY * yTan + yImpulseDeviationTan) / (yTan * (1 - defaultY * yTan * yImpulseDeviationTan)))
 
     def __calcRelativeDist(self):
         if self.__aimingSystem is not None:

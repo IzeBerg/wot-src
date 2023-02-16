@@ -181,6 +181,10 @@ package net.wg.gui.lobby.browser
          {
             removeChild(this._bgImg);
          }
+         else
+         {
+            invalidateSize();
+         }
          this._bgImg = Bitmap(this._bgLoader.content);
          this._bgImg.width = width;
          this._bgImg.height = height;

@@ -25,6 +25,8 @@ package net.wg.data.constants.generated
       
       public static const STUN:String = "stun";
       
+      public static const STUN_FLAME:String = "stunFlame";
+      
       public static const CAPTURE_BLOCK:String = "captureLock";
       
       public static const SMOKE:String = "smoke";

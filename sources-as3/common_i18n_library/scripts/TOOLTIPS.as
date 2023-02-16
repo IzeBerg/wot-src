@@ -4249,8 +4249,6 @@ package
       
       public static const TANK_PARAMS_DESC_ROCKETACCELERATIONREUSEANDDURATION:String = "#tooltips:tank_params/desc/rocketAccelerationReuseAndDuration";
       
-      public static const TANK_PARAMS_DESC_STUNMINDURATION:String = "#tooltips:tank_params/desc/stunMinDuration";
-      
       public static const TANK_PARAMS_DESC_STUNMAXDURATION:String = "#tooltips:tank_params/desc/stunMaxDuration";
       
       public static const TANK_PARAMS_DESC_CHARGETIME:String = "#tooltips:tank_params/desc/chargeTime";
@@ -4631,8 +4629,6 @@ package
       
       public static const MISSIONS_TOKENPOPOVER_QUEST_BODY:String = "#tooltips:missions/tokenPopover/quest/body";
       
-      public static const MISSIONS_TOKEN_HEADER:String = "#tooltips:missions/token/header";
-      
       public static const MISSIONS_TOKEN_QUESTS_SINGLE:String = "#tooltips:missions/token/quests/single";
       
       public static const MISSIONS_TOKEN_QUESTS_MULTIPLE:String = "#tooltips:missions/token/quests/multiple";
@@ -4794,8 +4790,6 @@ package
       public static const MISSIONS_CONDITION_ACHIEVEMENT_PATTERN:String = "#tooltips:missions/condition/achievement/pattern";
       
       public static const QUESTS_CONDITION_ACHIEVEMENTS_OTHERS:String = "#tooltips:quests/condition/achievements/others";
-      
-      public static const QUESTS_BONUSES_TOKEN_HEADER:String = "#tooltips:quests/bonuses/token/header";
       
       public static const QUESTS_BONUSES_TOKEN_BODY:String = "#tooltips:quests/bonuses/token/body";
       
@@ -5207,9 +5201,9 @@ package
       
       public static const PERSONALMISSIONS_STATUS_LOCKEDBYVEHICLE_HEADER:String = "#tooltips:personalMissions/status/lockedByVehicle/header";
       
-      public static const PERSONALMISSIONS_STATUS_LOCKEDBYVEHICLETYPE_BODY:String = "#tooltips:personalMissions/status/lockedByVehicleType/body";
+      public static const PERSONALMISSION_STATUS_LOCKEDBYVEHICLETYPE_BODY_REGULAR:String = "#tooltips:personalMission/status/lockedByVehicleType/body/regular";
       
-      public static const PERSONALMISSIONS_STATUS_LOCKEDBYVEHICLEALLIANCE_BODY:String = "#tooltips:personalMissions/status/lockedByVehicleAlliance/body";
+      public static const PERSONALMISSION_STATUS_LOCKEDBYVEHICLETYPE_BODY_PM2:String = "#tooltips:personalMission/status/lockedByVehicleType/body/pm2";
       
       public static const PERSONALMISSIONS_STATUS_LOCKEDBYPREVMISSIONS_HEADER:String = "#tooltips:personalMissions/status/lockedByPrevMissions/header";
       
@@ -7202,6 +7196,22 @@ package
       public static const NOTRECRUITEDTANKMAN_WT22_HUNTER_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/wt22_hunter_commander/desc";
       
       public static const NOTRECRUITEDTANKMAN_WT22_HUNTER_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/wt22_hunter_commander/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_IVANCAREVICH_DESC:String = "#tooltips:notrecruitedtankman/commander_bp_IvanCarevich/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_IVANCAREVICH_LABEL:String = "#tooltips:notrecruitedtankman/commander_bp_IvanCarevich/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_VASILISA_DESC:String = "#tooltips:notrecruitedtankman/commander_bp_Vasilisa/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_VASILISA_LABEL:String = "#tooltips:notrecruitedtankman/commander_bp_Vasilisa/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_KASHCHEI_DESC:String = "#tooltips:notrecruitedtankman/commander_bp_Kashchei/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_KASHCHEI_LABEL:String = "#tooltips:notrecruitedtankman/commander_bp_Kashchei/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_BABAYAGA_DESC:String = "#tooltips:notrecruitedtankman/commander_bp_BabaYaga/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_BABAYAGA_LABEL:String = "#tooltips:notrecruitedtankman/commander_bp_BabaYaga/label";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

@@ -95,6 +95,8 @@ package net.wg.data.constants.generated
       
       public static const CHINA_CH25_121_MOD_1971_B:String = "china-Ch25_121_mod_1971B";
       
+      public static const CHINA_CH25_121_MOD_1971_B_MK:String = "china-Ch25_121_mod_1971B_MK";
+      
       public static const CHINA_CH26_59_PATTON:String = "china-Ch26_59_Patton";
       
       public static const CHINA_CH28_WZ_132_A:String = "china-Ch28_WZ_132A";
@@ -128,6 +130,8 @@ package net.wg.data.constants.generated
       public static const CHINA_CH41_WZ_111_5_A:String = "china-Ch41_WZ_111_5A";
       
       public static const CHINA_CH41_WZ_111_5_A_7X7:String = "china-Ch41_WZ_111_5A_7x7";
+      
+      public static const CHINA_CH41_WZ_111_MT:String = "china-Ch41_WZ_111_MT";
       
       public static const CHINA_CH41_WZ_111_QL:String = "china-Ch41_WZ_111_QL";
       
@@ -820,6 +824,8 @@ package net.wg.data.constants.generated
       public static const ITALY_IT12_PROTOTIPO_STANDARD_B:String = "italy-It12_Prototipo_Standard_B";
       
       public static const ITALY_IT13_PROGETTO_M35_MOD_46:String = "italy-It13_Progetto_M35_mod_46";
+      
+      public static const ITALY_IT13_PROGETTO_M35_MOD_46_LE:String = "italy-It13_Progetto_M35_mod_46_LE";
       
       public static const ITALY_IT14_P44_PANTERA:String = "italy-It14_P44_Pantera";
       

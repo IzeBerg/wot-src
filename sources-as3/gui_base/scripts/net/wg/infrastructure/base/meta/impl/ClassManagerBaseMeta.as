@@ -749,6 +749,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.SettingsBaseView;
    import net.wg.gui.lobby.settings.SettingsChangesMap;
    import net.wg.gui.lobby.settings.SettingsContourForm;
+   import net.wg.gui.lobby.settings.SettingsMarkerContentForm;
    import net.wg.gui.lobby.settings.SettingsMarkersForm;
    import net.wg.gui.lobby.settings.SettingsNewCountersForm;
    import net.wg.gui.lobby.settings.SettingsSniperForm;
@@ -762,6 +763,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.components.KeysItemRenderer;
    import net.wg.gui.lobby.settings.components.KeysScrollingList;
    import net.wg.gui.lobby.settings.components.RadioButtonBar;
+   import net.wg.gui.lobby.settings.components.SettingsMarkerScrollPane;
    import net.wg.gui.lobby.settings.components.SettingsStepSlider;
    import net.wg.gui.lobby.settings.components.SoundDeviceButtonBar;
    import net.wg.gui.lobby.settings.components.SoundDeviceTabButton;
@@ -2417,6 +2419,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSCONTOURFORM:Class = SettingsContourForm;
       
+      public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSMARKERCONTENTFORM:Class = SettingsMarkerContentForm;
+      
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSMARKERSFORM:Class = SettingsMarkersForm;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSNEWCOUNTERSFORM:Class = SettingsNewCountersForm;
@@ -2442,6 +2446,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_KEYSSCROLLINGLIST:Class = KeysScrollingList;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_RADIOBUTTONBAR:Class = RadioButtonBar;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_SETTINGSMARKERSCROLLPANE:Class = SettingsMarkerScrollPane;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_SETTINGSSTEPSLIDER:Class = SettingsStepSlider;
       

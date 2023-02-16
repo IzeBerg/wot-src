@@ -1,5 +1,6 @@
 package net.wg.gui.lobby.settings
 {
+   import net.wg.data.VO.CountersVo;
    import net.wg.data.constants.MarkerState;
    import net.wg.data.constants.Values;
    import net.wg.gui.components.common.markers.VehicleMarker;
@@ -10,6 +11,8 @@ package net.wg.gui.lobby.settings
    import net.wg.gui.lobby.settings.vo.SettingsControlProp;
    import net.wg.gui.lobby.settings.vo.SettingsTabNewCounterVo;
    import net.wg.gui.lobby.settings.vo.base.SettingsDataVo;
+   import net.wg.infrastructure.managers.counter.CounterManager;
+   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.events.IndexEvent;
    import scaleform.clik.interfaces.IDataProvider;
    
@@ -90,7 +93,8 @@ package net.wg.gui.lobby.settings
             "entityName":ALLY_STR,
             "speaking":false,
             "hunt":false,
-            "entityType":ALLY_STR
+            "entityType":ALLY_STR,
+            "vDist":SETTINGS.MARKER_DISTANCELABEL
          });
          this._markerEnemyData = new VehicleMarkerVO({
             "vClass":HEAVY_TANK_STR,
@@ -103,7 +107,8 @@ package net.wg.gui.lobby.settings
             "entityName":ENEMY_STR,
             "speaking":false,
             "hunt":false,
-            "entityType":ENEMY_STR
+            "entityType":ENEMY_STR,
+            "vDist":SETTINGS.MARKER_DISTANCELABEL
          });
          this._markerDeadData = new VehicleMarkerVO({
             "vClass":HEAVY_TANK_STR,
@@ -124,51 +129,68 @@ package net.wg.gui.lobby.settings
          deadForm.addEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
       }
       
+      override protected function getLineCountersIds(param1:String, param2:Vector.<CountersVo>) : Array
+      {
+         var _loc4_:CountersVo = null;
+         var _loc3_:Array = [];
+         if(StringUtils.isEmpty(param1))
+         {
+            return _loc3_;
+         }
+         for each(_loc4_ in param2)
+         {
+            if(_loc4_.count == CounterManager.DEF_COUNTER_NO_VIEWED_VALUE)
+            {
+               _loc3_.push(_loc4_.componentId);
+            }
+         }
+         return _loc3_;
+      }
+      
       override protected function setData(param1:SettingsDataVo) : void
       {
-         var _loc14_:int = 0;
+         var _loc13_:int = 0;
          super.setData(param1);
-         var _loc2_:String = FORM_STR;
          App.utils.data.cleanupDynamicObject(this._dynamicMarkersData);
          this._dynamicMarkersData = {};
          this._setDataInProgress = true;
-         var _loc3_:SettingsMarkersForm = null;
-         var _loc4_:Vector.<String> = param1.keys;
-         var _loc5_:Vector.<Object> = param1.values;
-         var _loc6_:int = _loc4_.length;
-         var _loc7_:int = 0;
+         var _loc2_:SettingsMarkersForm = null;
+         var _loc3_:Vector.<String> = param1.keys;
+         var _loc4_:Vector.<Object> = param1.values;
+         var _loc5_:int = _loc3_.length;
+         var _loc6_:int = 0;
+         var _loc7_:String = Values.EMPTY_STR;
          var _loc8_:String = Values.EMPTY_STR;
-         var _loc9_:String = Values.EMPTY_STR;
-         var _loc10_:SettingsDataVo = null;
-         var _loc11_:Vector.<String> = null;
-         var _loc12_:Vector.<Object> = null;
-         var _loc13_:int = 0;
-         while(_loc13_ < _loc6_)
+         var _loc9_:SettingsDataVo = null;
+         var _loc10_:Vector.<String> = null;
+         var _loc11_:Vector.<Object> = null;
+         var _loc12_:int = 0;
+         while(_loc12_ < _loc5_)
          {
-            _loc8_ = _loc4_[_loc13_];
-            _loc10_ = _loc5_[_loc13_] as SettingsDataVo;
-            App.utils.asserter.assertNotNull(_loc10_,"values[i] must be SettingsDataVo");
-            if(this[_loc8_ + _loc2_])
+            _loc7_ = _loc3_[_loc12_];
+            _loc9_ = _loc4_[_loc12_] as SettingsDataVo;
+            App.utils.asserter.assertNotNull(_loc9_,"values[i] must be SettingsDataVo");
+            if(this[_loc7_ + FORM_STR])
             {
-               _loc3_ = SettingsMarkersForm(this[_loc8_ + _loc2_]);
-               _loc3_.setData(_loc8_,_loc10_);
-               _loc3_.addEventListener(SettingsSubVewEvent.ON_CONTROL_CHANGE,this.onFormOnControlChangeHandler);
+               _loc2_ = SettingsMarkersForm(this[_loc7_ + FORM_STR]);
+               _loc2_.setData(_loc7_,_loc9_);
+               _loc2_.addEventListener(SettingsSubVewEvent.ON_CONTROL_CHANGE,this.onFormOnControlChangeHandler);
             }
-            _loc11_ = _loc10_.keys;
-            _loc12_ = _loc10_.values;
-            _loc7_ = _loc11_.length;
-            _loc14_ = 0;
-            while(_loc14_ < _loc7_)
+            _loc10_ = _loc9_.keys;
+            _loc11_ = _loc9_.values;
+            _loc6_ = _loc10_.length;
+            _loc13_ = 0;
+            while(_loc13_ < _loc6_)
             {
-               _loc9_ = _loc11_[_loc14_];
-               if(!this._dynamicMarkersData.hasOwnProperty(_loc8_))
+               _loc8_ = _loc10_[_loc13_];
+               if(!this._dynamicMarkersData.hasOwnProperty(_loc7_))
                {
-                  this._dynamicMarkersData[_loc8_] = {};
+                  this._dynamicMarkersData[_loc7_] = {};
                }
-               this._dynamicMarkersData[_loc8_][_loc9_] = SettingsControlProp(_loc12_[_loc14_]).current;
-               _loc14_++;
+               this._dynamicMarkersData[_loc7_][_loc8_] = SettingsControlProp(_loc11_[_loc13_]).current;
+               _loc13_++;
             }
-            _loc13_++;
+            _loc12_++;
          }
          this._setDataInProgress = false;
          tabs.dataProvider = this._markerTabsDataProvider;

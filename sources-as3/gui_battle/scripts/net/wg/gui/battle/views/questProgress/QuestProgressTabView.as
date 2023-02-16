@@ -91,9 +91,8 @@ package net.wg.gui.battle.views.questProgress
       
       override protected function initData(param1:IQuestProgressData) : void
       {
-         var _loc2_:int = 0;
          super.initData(param1);
-         _loc2_ = !!param1.isHeaderHasProgress ? int(Values.ZERO) : int(ADDITIONAL_CONTENT_HEIGHT);
+         var _loc2_:int = !!param1.isHeaderHasProgress ? int(Values.ZERO) : int(ADDITIONAL_CONTENT_HEIGHT);
          this._startContainerY = CONDITIONS_CONTAINER_START_Y - _loc2_;
          this.conditionsContainer.y = this._startContainerY;
          var _loc3_:int = this._startContainerY + SCROLL_AND_MASK_Y_SHIFT;

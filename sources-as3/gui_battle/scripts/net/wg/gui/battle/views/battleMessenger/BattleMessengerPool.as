@@ -28,13 +28,12 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _disposed:Boolean = false;
       
-      private var _messagesAvailableWidth:int;
+      private var _messagesAvailableWidth:int = 360;
       
       public function BattleMessengerPool(param1:int, param2:int, param3:int, param4:Number, param5:Number, param6:int, param7:String, param8:BattleSmileyMap, param9:Function = null)
       {
          var _loc10_:BattleMessage = null;
          var _loc11_:int = 0;
-         this._messagesAvailableWidth = BattleMessage.DEFAULT_TEXT_WIDTH;
          super();
          this._lifeTime = param2;
          this._alphaSpeed = param3;

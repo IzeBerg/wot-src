@@ -49,6 +49,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerSettings;
    import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerVO;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleActionMarker;
+   import net.wg.gui.battle.views.vehicleMarkers.VehicleDistance;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleIconAnimation;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleMarker;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleMarkersConstants;
@@ -156,6 +157,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_TARGETMARKER:Class = TargetMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VEHICLEACTIONMARKER:Class = VehicleActionMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VEHICLEDISTANCE:Class = VehicleDistance;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VEHICLEICONANIMATION:Class = VehicleIconAnimation;
       

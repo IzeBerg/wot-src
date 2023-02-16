@@ -6,6 +6,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
    import flash.text.TextFormat;
    import net.wg.data.constants.SoundTypes;
    import net.wg.data.constants.generated.CUSTOMIZATION_ALIASES;
+   import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.lobby.vehicleCustomization.CustomizationMainView;
    import net.wg.gui.lobby.vehicleCustomization.events.CustomizationEvent;
    import net.wg.gui.lobby.vehicleCustomization.events.CustomizationSoundEvent;
@@ -51,6 +52,8 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       
       public var textField:TextField = null;
       
+      public var icon:UILoaderAlt = null;
+      
       private var _textFormat:TextFormat;
       
       public function ProgressionEntryPoint()
@@ -70,6 +73,8 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this._textFormat = new TextFormat();
          this._textFormat.size = FONT_SIZE_BIG;
          this.textField.setTextFormat(this._textFormat);
+         this.icon.autoSize = false;
+         this.icon.source = RES_ICONS.MAPS_ICONS_CUSTOMIZATION_PROGRESSION_ENTRY_POINT_ICON;
          addEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
          addEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
          addEventListener(MouseEvent.CLICK,this.onClickHandler);
@@ -85,6 +90,8 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this.border = null;
          this.borderHover = null;
          this.hitMc = null;
+         this.icon.dispose();
+         this.icon = null;
          super.onDispose();
       }
       

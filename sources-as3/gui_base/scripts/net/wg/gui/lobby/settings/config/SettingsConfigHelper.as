@@ -339,21 +339,21 @@ package net.wg.gui.lobby.settings.config
          this._settingsDataWithChanges = new Dictionary();
          this._markerTabsDataProvider = new DataProvider([new MarkerTabsDataVo({
             "label":SETTINGS.MARKER_ENEMYTITLE,
-            "linkage":null,
+            "linkage":ENEMY_STR,
             "id":ENEMY_STR,
             "formID":ENEMY_FORM_STR,
             "markerID":MARKER_ENEMY_STR,
             "markerFlag":1
          }),new MarkerTabsDataVo({
             "label":SETTINGS.MARKER_ALLYTITLE,
-            "linkage":null,
+            "linkage":ALLY_STR,
             "id":ALLY_STR,
             "formID":ALLY_FORM_STR,
             "markerID":MARKER_ALLY_STR,
             "markerFlag":2
          }),new MarkerTabsDataVo({
             "label":SETTINGS.MARKER_DEADTITLE,
-            "linkage":null,
+            "linkage":DEAD_STR,
             "id":DEAD_STR,
             "formID":DEAD_FORM_STR,
             "markerID":MARKER_DEAD_STR,
