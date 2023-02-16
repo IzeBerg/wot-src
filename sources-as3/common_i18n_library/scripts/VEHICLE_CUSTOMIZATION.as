@@ -11179,6 +11179,10 @@ package
       
       public static const MAIN_STYLE_F38_BAT_CHATILLON155_58_MD22_III_3DST_DESC_LONG:String = "#vehicle_customization:main_style/F38_Bat_Chatillon155_58_MD22_III_3DSt_desc/long";
       
+      public static const MAIN_STYLE_IT13_PROGETTO_M35_MOD_46_OCN_3DST:String = "#vehicle_customization:main_style/It13_Progetto_M35_mod_46_OCN_3DSt";
+      
+      public static const MAIN_STYLE_IT13_PROGETTO_M35_MOD_46_OCN_3DST_DESC_LONG:String = "#vehicle_customization:main_style/It13_Progetto_M35_mod_46_OCN_3DSt_desc/long";
+      
       public static const SPECIAL_STYLE_IT21_LION_KL_3DST:String = "#vehicle_customization:special_style/It21_Lion_KL_3DSt";
       
       public static const SPECIAL_STYLE_IT21_LION_KL_3DST_DESC_LONG:String = "#vehicle_customization:special_style/It21_Lion_KL_3DSt_desc/long";
@@ -11240,6 +11244,10 @@ package
       public static const SPECIAL_STYLE_TWITCH_JANUARY_2023:String = "#vehicle_customization:special_style/twitch_january_2023";
       
       public static const SPECIAL_STYLE_TWITCH_JANUARY_2023_DESC:String = "#vehicle_customization:special_style/twitch_january_2023_desc";
+      
+      public static const SPECIAL_STYLE_CH25_121_MOD_1971B_MC_3DST:String = "#vehicle_customization:special_style/Ch25_121_mod_1971B_MC_3DSt";
+      
+      public static const SPECIAL_STYLE_CH25_121_MOD_1971B_MC_3DST_DESC_LONG:String = "#vehicle_customization:special_style/Ch25_121_mod_1971B_MC_3DSt_desc/long";
       
       public static const SPECIAL_STYLE_A158_T832_BX_T_3DST:String = "#vehicle_customization:special_style/A158_T832_BX_T_3DSt";
       
