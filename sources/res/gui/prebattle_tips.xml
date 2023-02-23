@@ -139,6 +139,10 @@
 			<isRankedShopEnabled>True</isRankedShopEnabled>
 		</filter>
 		<filter>
+			<id>rankedLeagueReward_on</id>
+			<isRankedLeagueRewardEnabled>True</isRankedLeagueRewardEnabled>
+		</filter>
+		<filter>
 			<id>nonCnRealms</id>
 			<realms>RU EU NA ASIA KR CT ST QA DEV SB</realms>
 		</filter>
@@ -1192,10 +1196,6 @@
 			<status>rankedStatus4</status>
 		</tip>
 		<tip>
-			<id>ranked5</id>
-			<status>rankedStatus5</status>
-		</tip>
-		<tip>
 			<id>ranked6</id>
 			<status>rankedStatus6</status>
 		</tip>
@@ -1207,6 +1207,7 @@
 		<tip>
 			<id>ranked8</id>
 			<status>rankedStatus8</status>
+			<filter>rankedLeagueReward_on</filter>
 		</tip>
 		<tip>
 			<id>ranked9</id>

@@ -69,6 +69,8 @@ package net.wg.gui.components.controls
       
       private var _iconOffset:int = 0;
       
+      private var _externalSize:uint = 1;
+      
       private var _iconY:int;
       
       private var _caps:Boolean = true;
@@ -326,6 +328,7 @@ package net.wg.gui.components.controls
       
       public function setExternalSize(param1:uint) : void
       {
+         this._externalSize = param1;
          this._textFormat.size = MainMenuButtonSize.TEXT_SIZE[param1];
          this._iconY = MainMenuButtonSize.ICON_Y[param1];
          this.highlight.setSize(param1);
@@ -373,6 +376,15 @@ package net.wg.gui.components.controls
             }
             App.utils.scheduler.scheduleTask(this.changeEffectState,CHANGE_EFFECT_TIME);
          }
+      }
+      
+      override public function get height() : Number
+      {
+         if(this.fxTextField1)
+         {
+            return this.fxTextField1.height + MainMenuButtonSize.HEIGHT_PADDING[this._externalSize];
+         }
+         return super.height;
       }
       
       override public function get width() : Number

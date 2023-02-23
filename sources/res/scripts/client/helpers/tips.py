@@ -390,7 +390,8 @@ class _BattlePassValidator(object):
 
 
 class _RankedBattlesValidator(object):
-    __slots__ = ('_isYearRewardEnabled', '_isLeaderboardEnabled', '_isShopEnabled')
+    __slots__ = ('_isYearRewardEnabled', '_isLeaderboardEnabled', '_isShopEnabled',
+                 '_isLeagueRewardEnabled')
     _rankedController = dependency.descriptor(IRankedBattlesController)
 
     def __init__(self):
@@ -398,6 +399,7 @@ class _RankedBattlesValidator(object):
         self._isYearRewardEnabled = self._rankedController.isYearRewardEnabled()
         self._isLeaderboardEnabled = self._rankedController.isYearLBEnabled()
         self._isShopEnabled = self._rankedController.isRankedShopEnabled()
+        self._isLeagueRewardEnabled = self._rankedController.isLeagueRewardEnabled()
 
     def validate(self, tipFilter, _):
         if 'isRankedYearRewardEnabled' in tipFilter:
@@ -408,6 +410,9 @@ class _RankedBattlesValidator(object):
                 return False
         if 'isRankedShopEnabled' in tipFilter:
             if tipFilter['isRankedShopEnabled'] != self._isShopEnabled:
+                return False
+        if 'isRankedLeagueRewardEnabled' in tipFilter:
+            if tipFilter['isRankedLeagueRewardEnabled'] != self._isLeagueRewardEnabled:
                 return False
         return True
 

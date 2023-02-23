@@ -877,6 +877,9 @@ class IRankedBattlesController(IGameController, ISeasonProvider):
     def isYearRewardEnabled(self):
         raise NotImplementedError
 
+    def isLeagueRewardEnabled(self):
+        raise NotImplementedError
+
     def hasSpecialSeason(self):
         raise NotImplementedError
 
