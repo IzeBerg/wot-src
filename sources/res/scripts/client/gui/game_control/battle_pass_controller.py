@@ -4,7 +4,7 @@ from itertools import groupby
 from Event import Event, EventManager
 from PlayerEvents import g_playerEvents
 from adisp import adisp_process
-from battle_pass_common import BATTLE_PASS_CHOICE_REWARD_OFFER_GIFT_TOKENS, BATTLE_PASS_CONFIG_NAME, BATTLE_PASS_OFFER_TOKEN_PREFIX, BATTLE_PASS_PDATA_KEY, BATTLE_PASS_SELECT_BONUS_NAME, BATTLE_PASS_STYLE_PROGRESS_BONUS_NAME, BattlePassConfig, BattlePassConsts, BattlePassState, BattlePassStatsCommon, getBattlePassPassTokenName, getMaxAvalable3DStyleProgressInChapter
+from battle_pass_common import BATTLE_PASS_CHOICE_REWARD_OFFER_GIFT_TOKENS, BATTLE_PASS_CONFIG_NAME, BATTLE_PASS_OFFER_TOKEN_PREFIX, BATTLE_PASS_PDATA_KEY, BATTLE_PASS_SELECT_BONUS_NAME, BATTLE_PASS_STYLE_PROGRESS_BONUS_NAME, BattlePassConfig, BattlePassConsts, BattlePassState, getBattlePassPassTokenName, getMaxAvalable3DStyleProgressInChapter
 from constants import ARENA_BONUS_TYPE, OFFERS_ENABLED_KEY, QUEUE_TYPE
 from gui.battle_pass.battle_pass_award import BattlePassAwardsManager, awardsFactory
 from gui.battle_pass.battle_pass_constants import ChapterState
@@ -316,21 +316,6 @@ class BattlePassController(IBattlePassController, EventsHandler):
     def getState(self):
         return self.__itemsCache.items.battlePass.getState()
 
-    def getPrevSeasonsStats(self):
-        packedStats = self.__itemsCache.items.battlePass.getPackedStats()
-        if not packedStats:
-            return None
-        else:
-            unpackStats, _ = BattlePassStatsCommon.unpackAllSeasonStats(packedStats)
-            return unpackStats
-
-    def getLastFinishedSeasonStats(self):
-        allSeasonStats = self.getPrevSeasonsStats()
-        if not allSeasonStats:
-            seasons = sorted(self.getSeasonsHistory().keys(), reverse=True)
-            return BattlePassStatsCommon.makeSeasonStats(first(seasons), {}, BattlePassStatsCommon.initialSeasonStatsData())
-        return allSeasonStats[(-1)]
-
     def getSeasonsHistory(self):
         return {}
 
@@ -496,6 +481,8 @@ class BattlePassController(IBattlePassController, EventsHandler):
         return {chapterID:chapterInfo.get('styleId') for chapterID, chapterInfo in self.__getConfig().chapters.iteritems()}
 
     def getNotChosenRewardCount(self):
+        if not self.isOfferEnabled():
+            return sum(token.startswith(BATTLE_PASS_CHOICE_REWARD_OFFER_GIFT_TOKENS) for token in self.__itemsCache.items.tokens.getTokens().iterkeys())
         return sum(token.startswith(BATTLE_PASS_CHOICE_REWARD_OFFER_GIFT_TOKENS) for token in self.__itemsCache.items.tokens.getTokens().iterkeys() if self.__offersProvider.getOfferByToken(getOfferTokenByGift(token)) is not None)
 
     def hasAnyOfferGiftToken(self):

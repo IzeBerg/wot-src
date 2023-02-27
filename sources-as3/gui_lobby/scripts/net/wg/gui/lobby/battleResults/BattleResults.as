@@ -4,7 +4,6 @@ package net.wg.gui.lobby.battleResults
    import flash.events.FocusEvent;
    import flash.text.TextField;
    import flash.utils.Dictionary;
-   import net.wg.data.constants.Errors;
    import net.wg.gui.components.advanced.ButtonBarEx;
    import net.wg.gui.components.advanced.ViewStack;
    import net.wg.gui.components.controls.SoundButtonEx;
@@ -22,7 +21,6 @@ package net.wg.gui.lobby.battleResults
    import net.wg.infrastructure.base.meta.impl.BattleResultsMeta;
    import net.wg.infrastructure.events.FocusRequestEvent;
    import net.wg.infrastructure.interfaces.IRegisteredComponent;
-   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.IndexEvent;
@@ -69,7 +67,6 @@ package net.wg.gui.lobby.battleResults
          addEventListener(DogTagLinkEvent.BATTLE_RESULTS_DOG_TAG_LINK_BTN_EVENT,this.onDogTagLinkBtnHandler);
          addEventListener(TeamTableSortEvent.TYPE,this.onTeamTableSortEventHandler);
          addEventListener(BattleResultsViewEvent.SHOW_PROGRESSIVE_REWARD_VIEW,this.onShowProgressiveRewardViewHandler,false,0,true);
-         addEventListener(BattleResultsViewEvent.SHOW_REPLAY,this.onShowReplayHandler,false,0,true);
          addEventListener(QuestEvent.SELECT_QUEST,this.onShowEventsWindowHandler,false,0,true);
          addEventListener(BattleResultsViewEvent.APPLIED_PREMIUM_BONUS,this.onAppliedPremiumBonusHandler,false,0,true);
          addEventListener(BattleResultsViewEvent.SHOW_DETAILS_PREMIUM,this.onShowDetailsPremiumHandler,false,0,true);
@@ -99,7 +96,6 @@ package net.wg.gui.lobby.battleResults
          this.resultsShareBtn = null;
          this.wndBgForm = null;
          removeEventListener(BattleResultsViewEvent.SHOW_PROGRESSIVE_REWARD_VIEW,this.onShowProgressiveRewardViewHandler);
-         removeEventListener(BattleResultsViewEvent.SHOW_REPLAY,this.onShowReplayHandler);
          removeEventListener(QuestEvent.SELECT_QUEST,this.onShowEventsWindowHandler);
          removeEventListener(BattleResultsViewEvent.APPLIED_PREMIUM_BONUS,this.onAppliedPremiumBonusHandler);
          removeEventListener(BattleResultsViewEvent.SHOW_DETAILS_PREMIUM,this.onShowDetailsPremiumHandler);
@@ -195,13 +191,6 @@ package net.wg.gui.lobby.battleResults
       private function onShowProgressiveRewardViewHandler(param1:BattleResultsViewEvent) : void
       {
          showProgressiveRewardViewS();
-      }
-      
-      private function onShowReplayHandler(param1:BattleResultsViewEvent) : void
-      {
-         App.utils.asserter.assertNotNull(this._data,"Main data" + Errors.CANT_NULL);
-         App.utils.asserter.assert(!StringUtils.isEmpty(this._data.personal.replayURL),"replayURL" + Errors.CANT_EMPTY);
-         onReplayS(this._data.personal.replayURL);
       }
       
       private function onTeamTableSortEventHandler(param1:TeamTableSortEvent) : void

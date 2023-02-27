@@ -89,7 +89,6 @@
 			<effects>
 				<set-var>FirstVehicleSetter</set-var>
 				<set-var>ModuleSetter</set-var>
-				<set-var>EquipmentItemSetter</set-var>
 				<invoke-gui-cmd>
 					OverrideHangarMenuButtons
 					<args>
@@ -313,6 +312,7 @@
 				<show-dialog>OutroVideo</show-dialog>
 				<show-dialog>GoldReceivedDialog</show-dialog>
 				<show-dialog>PremiumAccountReceivedDialog</show-dialog>
+				<show-dialog>FinalRewardDialog</show-dialog>
 			</effects>
 		</checkpoint>
 		<checkpoint>
@@ -631,6 +631,13 @@
 					</data>
 				</message>
 			</sequence>
+			<buttons/>
+			<actions/>
+		</dialog>
+		<dialog>
+			FinalRewardDialog
+			<type>bootcampFinalReward</type>
+			<sequence/>
 			<buttons/>
 			<actions/>
 		</dialog>

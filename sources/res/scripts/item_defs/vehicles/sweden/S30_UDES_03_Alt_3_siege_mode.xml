@@ -11,7 +11,7 @@
 	<postProgressionTree>role_MT_sniper</postProgressionTree>
 	<customRoleSlotOptions>3 5</customRoleSlotOptions>
 	<speedLimits>
-		<forward>50</forward>
+		<forward>65</forward>
 		<backward>20</backward>
 	</speedLimits>
 	<invisibility>
@@ -2028,7 +2028,7 @@
 			</terrainResistance>
 			<brakeForce>30000</brakeForce>
 			<rotationIsAroundCenter>true</rotationIsAroundCenter>
-			<rotationSpeed>44</rotationSpeed>
+			<rotationSpeed>50</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
 					0.16
@@ -3428,7 +3428,7 @@
 					<!--BW_String-->
 				</repairCost>
 			</turretRotatorHealth>
-			<circularVisionRadius>380</circularVisionRadius>
+			<circularVisionRadius>390</circularVisionRadius>
 			<surveyingDeviceHealth>
 				<maxHealth>110</maxHealth>
 				<maxRegenHealth>55</maxRegenHealth>
@@ -3488,16 +3488,14 @@
 						0.198
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
-					<reloadTime>
-						9.3
-						<!--BW_String-->
-					</reloadTime>
-					<aimingTime>
-						1.9
-						<!--BW_String-->
-					</aimingTime>
+					<reloadTime>23</reloadTime>
+					<clip>
+						<count>3</count>
+						<rate>20</rate>
+					</clip>
+					<aimingTime>2</aimingTime>
 					<shotDispersionRadius>
-						0.35
+						0.33
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<shotDispersionFactors>
@@ -3506,7 +3504,7 @@
 							<!--BW_String-->
 						</turretRotation>
 						<afterShot>
-							4.0
+							3.0
 							<!--BW_String-->
 						</afterShot>
 						<whileGunDamaged>
@@ -3524,7 +3522,7 @@
 						<collisionModelClient>vehicles/sweden/S30_UDES_03_Alt_3/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
 					<effects>shot_large_mb</effects>
-					<reloadEffect>reload85_107</reloadEffect>
+					<reloadEffect>reload_automat_reloading_85_107</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>
@@ -3611,6 +3609,7 @@
 						</slot>
 					</customizationSlots>
 					<animateEmblemSlots>true</animateEmblemSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<density>
 							138.54 140.911
@@ -4659,8 +4658,8 @@
 		<detailed>
 			<engines>
 				<Saab_Scania_DS14_Alt_3>
-					<smplEnginePower>600</smplEnginePower>
-					<smplFwMaxSpeed>50</smplFwMaxSpeed>
+					<smplEnginePower>650</smplEnginePower>
+					<smplFwMaxSpeed>65</smplFwMaxSpeed>
 				</Saab_Scania_DS14_Alt_3>
 			</engines>
 			<chassis>

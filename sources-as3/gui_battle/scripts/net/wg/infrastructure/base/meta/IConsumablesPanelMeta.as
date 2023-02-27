@@ -56,6 +56,8 @@ package net.wg.infrastructure.base.meta
       
       function as_handleAsReplay() : void;
       
+      function as_handleAsObserver() : void;
+      
       function as_isVisible() : Boolean;
       
       function as_reset(param1:Array) : void;

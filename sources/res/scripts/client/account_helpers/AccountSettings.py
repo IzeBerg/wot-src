@@ -1,6 +1,5 @@
 import logging, base64, cPickle as pickle, copy
 from copy import deepcopy
-from constants import IS_EDITOR
 import BigWorld, CommandMapping, Event, Settings, WWISE, constants, nations
 from account_helpers import gameplay_ctx
 from account_helpers.settings_core.settings_constants import GAME, BattleCommStorageKeys, ScorePanelStorageKeys, SPGAim, SOUND, AIM, CONTOUR, GuiSettingsBehavior
@@ -16,8 +15,6 @@ from helpers import dependency, getClientVersion
 from items.components.crew_books_constants import CREW_BOOK_RARITY
 from skeletons.account_helpers.settings_core import ISettingsCore
 from soft_exception import SoftException
-if not IS_EDITOR:
-    import BattleReplay
 _logger = logging.getLogger(__name__)
 KEY_FILTERS = 'filters'
 KEY_SESSION_SETTINGS = 'session_settings'
@@ -110,7 +107,6 @@ BLUEPRINTS_CONVERT_SALE_STARTED_SEEN = 'bcsStartedSeen'
 IS_SHOP_VISITED = 'isShopVisited'
 LAST_SHOP_ACTION_COUNTER_MODIFICATION = 'lastShopActionCounterModification'
 OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES = 'overridenHeaderCounterActionAliases'
-DEFAULT_QUEUE = 'defaultQueue'
 STORE_TAB = 'store_tab'
 STATS_REGULAR_SORTING = 'statsSorting'
 STATS_SORTIE_SORTING = 'statsSortingSortie'
@@ -184,6 +180,7 @@ SUBTITLES = 'subtitles'
 MODULES_ANIMATION_SHOWN = 'collectibleVehiclesAnimWasShown'
 NEW_SHOP_TABS = 'newShopTabs'
 IS_COLLECTIBLE_VEHICLES_VISITED = 'isCollectibleVehiclesVisited'
+LAST_SHOP_TAB_COUNTER = 'lastShopTabCounter'
 QUESTS = 'quests'
 QUEST_DELTAS = 'questDeltas'
 QUEST_DELTAS_COMPLETION = 'questCompletion'
@@ -215,6 +212,13 @@ FUN_RANDOM_NOTIFICATIONS = 'funRandomNotifications'
 FUN_RANDOM_NOTIFICATIONS_FROZEN = 'funRandomNotificationsFrozen'
 FUN_RANDOM_NOTIFICATIONS_PROGRESSIONS = 'funRandomNotificationsProgressions'
 FUN_RANDOM_NOTIFICATIONS_SUB_MODES = 'funRandomNotificationsSubModes'
+LOOT_BOXES = 'lootBoxes'
+EVENT_LOOT_BOXES = 'eventLootBoxes'
+LOOT_BOXES_WAS_STARTED = 'lootBoxesWasStarted'
+LOOT_BOXES_WAS_FINISHED = 'lootBoxesWasFinished'
+LOOT_BOXES_OPEN_ANIMATION_ENABLED = 'lootBoxesOpenAnimationEnabled'
+LOOT_BOXES_VIEWED_COUNT = 'lootBoxesViewedCount'
+LOOT_BOXES_EVENT_UNIQUE_ID = 'lootBoxesEventUniqueID'
 
 class BattleMatters(object):
     BATTLE_MATTERS_SETTINGS = 'battleMattersSettings'
@@ -668,8 +672,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                  'epic_rent_view_vehicle': {'nation': -1, 'vehicleType': 'none', 'isMain': False, 'level': -1, 'compatibleOnly': True}, 
                  PROMO: {}, AWARDS: {'vehicleResearchAward': -1, 
                           'victoryAward': -1, 
-                          'battlesCountAward': -1, 
-                          'pveBattlesCountAward': -1}, 
+                          'battlesCountAward': -1}, 
                  PROFILE_TECHNIQUE: {'selectedColumn': 4, 'selectedColumnSorting': 'descending', 'isInHangarSelected': False}, PROFILE_TECHNIQUE_MEMBER: {'selectedColumn': 4, 'selectedColumnSorting': 'descending'}, SPEAKERS_DEVICE: 0, 
                  UNIT_FILTER: {GAME.UNIT_FILTER: 2047}}, 
    KEY_FAVORITES: {BOOTCAMP_VEHICLE: 0, 
@@ -821,7 +824,6 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   'relativeVisibility': False, 
                   'relativeCamouflage': False, 
                   'interfaceScale': 0, 
-                  DEFAULT_QUEUE: constants.QUEUE_TYPE.SANDBOX, 
                   'medKitInstalled': False, 
                   'repairKitInstalled': False, 
                   'fireExtinguisherInstalled': False, 
@@ -957,7 +959,12 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   CUSTOMIZATION_STYLE_ITEMS_VISITED: set(), 
                   SHOWN_PERSONAL_RESERVES_INTRO: False, 
                   OPT_DEVICE_TAB_VISITED: {}, BattleMatters.BATTLE_MATTERS_SETTINGS: {BattleMatters.BATTLES_COUNT_WITHOUT_PROGRESS: 0, 
-                                                          BattleMatters.QUEST_IDX_FOR_LAST_UPDATED_PORGRESS: 0}}, 
+                                                          BattleMatters.QUEST_IDX_FOR_LAST_UPDATED_PORGRESS: 0}, 
+                  LOOT_BOXES: {EVENT_LOOT_BOXES: {LOOT_BOXES_WAS_STARTED: False, 
+                                                  LOOT_BOXES_WAS_FINISHED: False, 
+                                                  LOOT_BOXES_OPEN_ANIMATION_ENABLED: True, 
+                                                  LOOT_BOXES_VIEWED_COUNT: 0, 
+                                                  LOOT_BOXES_EVENT_UNIQUE_ID: 0}}}, 
    KEY_COUNTERS: {NEW_HOF_COUNTER: {PROFILE_CONSTANTS.HOF_ACHIEVEMENTS_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VEHICLES_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VIEW_RATING_BUTTON: True}, 
@@ -1953,9 +1960,9 @@ class AccountSettings(object):
         return (
          hasKey, hasCommand, binded)
 
-    @staticmethod
-    def __getPlayerName():
+    @classmethod
+    def __getPlayerName(cls):
         playerName = getattr(BigWorld.player(), 'name', '')
-        if BattleReplay.isServerSideReplay():
+        if not playerName:
             return Settings.g_instance.userPrefs[Settings.KEY_LOGIN_INFO].readString('user', playerName)
         return playerName

@@ -113,6 +113,8 @@ package net.wg.gui.login.impl
       private static const HEALTH_NOTICE_TEXT_ALPHA:Number = 0.6;
       
       private static const HEALTH_NOTICE_OFFSET:int = 25;
+      
+      private static const VIGNETTE_OFFSET:int = 1;
        
       
       public var bgImage:UILoaderAlt = null;
@@ -649,7 +651,7 @@ package net.wg.gui.login.impl
          this.soundButton.x = App.appWidth - (!!this._showSwitcher ? SOUND_BUTTON_OFFSET_X : MODE_BUTTON_OFFSET_X);
          this.soundButton.y = MODE_BUTTON_OFFSET_Y;
          this.vignette.width = App.appWidth;
-         this.vignette.height = App.appHeight;
+         this.vignette.height = App.appHeight + VIGNETTE_OFFSET;
          this.blackScreen.width = App.appWidth;
          this.blackScreen.height = App.appHeight;
          this.bottomShadow.x = App.appWidth >> 1;

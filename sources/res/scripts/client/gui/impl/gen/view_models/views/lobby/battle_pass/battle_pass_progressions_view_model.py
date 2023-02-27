@@ -24,9 +24,9 @@ class BattlePassProgressionsViewModel(CommonViewModel):
     __slots__ = ('onClose', 'onActionClick', 'onTakeClick', 'onTakeAllClick', 'onOpenShopClick',
                  'onAboutClick', 'onPointsInfoClick', 'onBpbitClick', 'onBpcoinClick',
                  'onTakeRewardsClick', 'onFinishedAnimation', 'onLevelsAnimationFinished',
-                 'showTankmen', 'onChapterChoice', 'onViewLoaded')
+                 'onChapterChoice', 'onViewLoaded')
 
-    def __init__(self, properties=42, commands=16):
+    def __init__(self, properties=42, commands=15):
         super(BattlePassProgressionsViewModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -317,6 +317,5 @@ class BattlePassProgressionsViewModel(CommonViewModel):
         self.onTakeRewardsClick = self._addCommand('onTakeRewardsClick')
         self.onFinishedAnimation = self._addCommand('onFinishedAnimation')
         self.onLevelsAnimationFinished = self._addCommand('onLevelsAnimationFinished')
-        self.showTankmen = self._addCommand('showTankmen')
         self.onChapterChoice = self._addCommand('onChapterChoice')
         self.onViewLoaded = self._addCommand('onViewLoaded')

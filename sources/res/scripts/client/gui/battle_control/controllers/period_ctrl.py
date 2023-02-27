@@ -303,15 +303,11 @@ class ArenaPeriodRecorder(ArenaPeriodController):
         return
 
     def startControl(self, battleCtx, arenaVisitor):
-        if not arenaVisitor.gui.isTutorialBattle():
-            ctrl = BattleReplay.g_replayCtrl
-            self.connectionMgr.onDisconnected += self.__onDisconnected
-            ctrl.onStopped += self.__onReplayStopped
-            self.__recorder = ctrl.setArenaPeriod
-        else:
-            self.__recorder = None
+        ctrl = BattleReplay.g_replayCtrl
+        self.connectionMgr.onDisconnected += self.__onDisconnected
+        ctrl.onStopped += self.__onReplayStopped
+        self.__recorder = ctrl.setArenaPeriod
         super(ArenaPeriodRecorder, self).startControl(battleCtx, arenaVisitor)
-        return
 
     def stopControl(self):
         self.connectionMgr.onDisconnected -= self.__onDisconnected
@@ -369,7 +365,7 @@ class ArenaPeriodPlayer(ArenaPeriodController):
             self._period = self.__replay.getArenaPeriod()
             if self._period == _PERIOD.IDLE:
                 return
-            if BattleReplay.g_replayCtrl.isServerSideReplay:
+            if self.__replay.isServerSideReplay:
                 return super(ArenaPeriodPlayer, self)._calculate()
             return self.__replay.getArenaLength()
 

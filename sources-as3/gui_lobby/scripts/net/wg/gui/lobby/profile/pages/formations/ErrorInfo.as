@@ -46,8 +46,9 @@ package net.wg.gui.lobby.profile.pages.formations
       
       public function setTextPosY(param1:int) : void
       {
+         var _loc3_:int = 0;
          var _loc2_:int = this.description.y - this.title.y;
-         var _loc3_:int = this.link.y - this.description.y;
+         _loc3_ = this.link.y - this.description.y;
          this.title.y = param1;
          this.description.y = this.title.y + _loc2_;
          this.link.y = this.description.y + _loc3_;

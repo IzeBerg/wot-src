@@ -4,6 +4,7 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.Values;
    import net.wg.gui.components.controls.MainMenuButton;
+   import net.wg.gui.components.controls.MainMenuButtonSize;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.header.vo.HangarMenuTabItemVO;
    import scaleform.clik.constants.InvalidationType;
@@ -14,29 +15,33 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
    public class MainMenuButtonBar extends ButtonBar
    {
       
-      private static const MAX_WIDTH:Number = 1024;
+      private static const MAX_WIDTH:int = 1024;
       
       private static const PREBATTLE:String = "prebattle";
       
       private static const INVALIDATE_RENDERER_SIZE:String = "invalidateRendererSize";
       
+      private static const INVALIDATE_RENDERER_TEXT_SIZE:String = "invalidateRendererTextSize";
+      
       private static const IMG:String = "img://";
        
       
       [Inspectable(defaultValue="0",verbose="1")]
-      public var paddingTop:Number = 0;
+      public var paddingTop:int = 0;
       
       [Inspectable(defaultValue="0",verbose="1")]
-      public var paddingLeft:Number = 0;
+      public var paddingLeft:int = 0;
       
       [Inspectable(defaultValue="0",verbose="1")]
-      public var paddingRight:Number = 0;
+      public var paddingRight:int = 0;
       
       private var _disableNav:Boolean = false;
       
-      private var _subItemSelectedIndex:Number = -1;
+      private var _subItemSelectedIndex:int = -1;
       
       private var _componentVisible:Boolean = true;
+      
+      private var _rendererSize:uint = 1;
       
       public function MainMenuButtonBar()
       {
@@ -98,22 +103,23 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
             _loc4_.validateNow();
             if(_loc5_)
             {
-               container.addChild(_loc4_);
+               container.addChildAt(_loc4_,0);
                _renderers.push(_loc4_);
+               MainMenuButton(_loc4_).setExternalSize(this._rendererSize);
+               invalidate(INVALIDATE_RENDERER_SIZE);
             }
             _loc2_++;
          }
-         this.selectedIndex = Math.min(_dataProvider.length - 1,_selectedIndex);
+         this.selectedIndex = Math.min(_loc1_ - 1,_selectedIndex);
          App.tutorialMgr.dispatchEventForCustomComponent(this);
       }
       
       override protected function populateRendererData(param1:Button, param2:uint) : void
       {
-         var _loc3_:HangarMenuTabItemVO = null;
          param1.label = itemToLabel(_dataProvider.requestItemAt(param2));
          param1.data = _dataProvider.requestItemAt(param2);
          param1.selected = param2 == selectedIndex;
-         _loc3_ = HangarMenuTabItemVO(_dataProvider[param2]);
+         var _loc3_:HangarMenuTabItemVO = HangarMenuTabItemVO(_dataProvider[param2]);
          param1.enabled = _loc3_.enabled && enabled;
          var _loc4_:MainMenuButton = MainMenuButton(param1);
          if(_loc3_.icon)
@@ -142,11 +148,19 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
       
       override protected function draw() : void
       {
+         var _loc1_:Button = null;
          if(isInvalid(InvalidationType.RENDERERS) || isInvalid(InvalidationType.DATA) || isInvalid(InvalidationType.SETTINGS) || isInvalid(InvalidationType.SIZE))
          {
             removeChild(container);
             addChild(container);
             this.updateRenderers();
+         }
+         if(isInvalid(INVALIDATE_RENDERER_TEXT_SIZE))
+         {
+            for each(_loc1_ in _renderers)
+            {
+               MainMenuButton(_loc1_).setExternalSize(this._rendererSize);
+            }
          }
          if(isInvalid(INVALIDATE_RENDERER_SIZE,InvalidationType.DATA))
          {
@@ -175,13 +189,13 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
          }
       }
       
-      public function getButtonByValue(param1:String) : Button
+      public function getButtonByValue(param1:String) : MainMenuButton
       {
          var _loc2_:FindData = this.findButtonIndex(param1);
          var _loc3_:int = _loc2_.index >= 0 ? int(_loc2_.index) : (_loc2_.subIndex >= 0 ? int(_loc2_.subIndex) : int(-1));
          if(_loc3_ >= 0)
          {
-            return getButtonAt(_loc3_);
+            return getButtonAt(_loc3_) as MainMenuButton;
          }
          return null;
       }
@@ -281,6 +295,16 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
          }
       }
       
+      private function updateRenderersSize(param1:uint) : void
+      {
+         if(this._rendererSize == param1)
+         {
+            return;
+         }
+         this._rendererSize = param1;
+         invalidate(INVALIDATE_RENDERER_TEXT_SIZE);
+      }
+      
       private function findButtonIndex(param1:String) : FindData
       {
          var _loc3_:HangarMenuTabItemVO = null;
@@ -331,6 +355,12 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
       {
          super.selectedIndex = param1;
          this.updateSubItem(this.subItemSelectedIndex,Values.EMPTY_STR);
+      }
+      
+      public function set isSmallWidth(param1:Boolean) : void
+      {
+         var _loc2_:uint = !!param1 ? uint(MainMenuButtonSize.SMALL) : uint(MainMenuButtonSize.REGULAR);
+         this.updateRenderersSize(_loc2_);
       }
       
       public function get subItemSelectedIndex() : int

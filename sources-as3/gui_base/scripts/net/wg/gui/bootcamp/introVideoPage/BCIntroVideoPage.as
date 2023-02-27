@@ -211,6 +211,7 @@ package net.wg.gui.bootcamp.introVideoPage
          this.blackOverlay.alpha = 0;
          this.backgroundVignette.mouseChildren = this.backgroundVignette.mouseEnabled = false;
          this.blackOverlay.mouseChildren = this.blackOverlay.mouseEnabled = false;
+         this.loadingProgress.mouseChildren = this.loadingProgress.mouseEnabled = false;
          this.waitingTF.text = BOOTCAMP.WELLCOME_BOOTCAMP_WAIT;
          this.selectGlow.visible = this.btnSelect.visible = this.btnStart.visible = this.btnSkip.visible = this.btnSkipVideo.visible = false;
          if(getQualifiedSuperclassName(this) == getQualifiedClassName(BCIntroVideoPage))

@@ -5,6 +5,7 @@ package net.wg.gui.components.controls
    import flash.events.MouseEvent;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
+   import flash.text.TextFormat;
    import net.wg.data.Aliases;
    import net.wg.data.constants.ComponentState;
    import net.wg.data.constants.SoundTypes;
@@ -14,6 +15,7 @@ package net.wg.gui.components.controls
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.utils.ConstrainedElement;
+   import scaleform.gfx.TextFieldEx;
    
    public class MainMenuButton extends SoundButtonEx
    {
@@ -27,6 +29,8 @@ package net.wg.gui.components.controls
       private static const INVALIDATE_PADDING:String = "invalidatePadding";
       
       private static const INVALIDATE_TEXT_COLOR:String = "invalidateTextColor";
+      
+      private static const INVALIDATE_TEXT_SIZE:String = "invalidateTextSize";
       
       private static const INVALIDATE_ACTION_ICON:String = "invalidateActionIcon";
       
@@ -57,7 +61,17 @@ package net.wg.gui.components.controls
       
       public var actionIcon:Image;
       
+      public var highlight:MainMenuButtonHighlight;
+      
+      private var _textFormat:TextFormat;
+      
       private var _iconType:String;
+      
+      private var _iconOffset:int = 0;
+      
+      private var _externalSize:uint = 1;
+      
+      private var _iconY:int;
       
       private var _caps:Boolean = true;
       
@@ -71,21 +85,33 @@ package net.wg.gui.components.controls
       
       private var _actionIconStr:String = "";
       
-      private var _commonsUtils:ICommons = null;
+      private var _commonsUtils:ICommons;
       
       private var _isTooltipSpecial:Boolean = false;
       
-      private var _tooltipMgr:ITooltipMgr = null;
+      private var _tooltipMgr:ITooltipMgr;
       
       public function MainMenuButton()
       {
+         this._textFormat = new TextFormat();
+         this._iconY = MainMenuButtonSize.ICON_Y[MainMenuButtonSize.REGULAR];
+         this._commonsUtils = App.utils.commons;
+         this._tooltipMgr = App.toolTipMgr;
          super();
          constraintsDisabled = true;
          soundType = SoundTypes.MAIN_MENU;
          this.fxTextField2 = this.fx.fxTextField2;
-         this._commonsUtils = App.utils.commons;
-         this._tooltipMgr = App.toolTipMgr;
          preventAutosizing = true;
+      }
+      
+      private static function updateTextFormat(param1:TextField, param2:TextFormat) : void
+      {
+         if(param1)
+         {
+            param1.defaultTextFormat = param2;
+            param1.setTextFormat(param2);
+            TextFieldEx.setVerticalAlign(param1,TextFieldEx.VALIGN_CENTER);
+         }
       }
       
       override protected function onDispose() : void
@@ -102,6 +128,8 @@ package net.wg.gui.components.controls
          this.icon = null;
          this.actionIcon.dispose();
          this.actionIcon = null;
+         this.highlight = null;
+         this._textFormat = null;
          this._commonsUtils = null;
          this._tooltipMgr = null;
          super.onDispose();
@@ -111,6 +139,8 @@ package net.wg.gui.components.controls
       {
          super.configUI();
          this.paddingHorizontal = 0;
+         this.highlight.mouseChildren = this.highlight.mouseEnabled = false;
+         this.highlight.visible = false;
          this.icon.addEventListener(Event.CHANGE,this.onIconChangeHandler);
          this.actionIcon.addEventListener(Event.CHANGE,this.onActionIconChangeHandler);
          addEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
@@ -121,6 +151,7 @@ package net.wg.gui.components.controls
       override protected function updateText() : void
       {
          var _loc1_:String = null;
+         var _loc2_:int = 0;
          if(hitMc)
          {
             hitMc.width = 1;
@@ -181,9 +212,14 @@ package net.wg.gui.components.controls
          }
          if(hitMc)
          {
-            hitMc.width = this.actualWidth;
+            _loc2_ = this.fx.width + this.icon.width;
+            hitMc.width = _loc2_;
+            this.width = _loc2_;
          }
-         this.width = this.actualWidth;
+         else
+         {
+            this.width = this.actualWidth;
+         }
       }
       
       override protected function alignForAutoSize() : void
@@ -191,7 +227,7 @@ package net.wg.gui.components.controls
          var _loc1_:int = 0;
          var _loc3_:int = 0;
          var _loc4_:int = 0;
-         if(!initialized || _autoSize == TextFieldAutoSize.NONE || !textField)
+         if(!initialized || !textField || _autoSize == TextFieldAutoSize.NONE)
          {
             return;
          }
@@ -228,7 +264,7 @@ package net.wg.gui.components.controls
          var _loc1_:int = 0;
          var _loc2_:int = 0;
          super.draw();
-         if(this.fxTextField1 && isInvalid(InvalidationType.STATE,INVALIDATE_CAPS,INVALIDATE_PADDING,INVALIDATE_TEXT_COLOR))
+         if(this.fxTextField1 && isInvalid(InvalidationType.STATE,INVALIDATE_CAPS,INVALIDATE_PADDING,INVALIDATE_TEXT_COLOR,INVALIDATE_TEXT_SIZE))
          {
             if(this._textColorOver && !selected && state == ComponentState.OVER)
             {
@@ -240,13 +276,19 @@ package net.wg.gui.components.controls
             }
             if(this._iconType)
             {
-               this.fxTextField1.x = this.icon.x + this.icon.width + ICON_PADDING;
+               this._iconOffset = this.icon.x + this.icon.width + ICON_PADDING | 0;
+               this.fxTextField1.x = this._iconOffset;
                dispatchEvent(new Event(Event.RESIZE));
             }
             else
             {
                this.fxTextField1.x = 0;
             }
+            updateTextFormat(this.fxTextField1,this._textFormat);
+            updateTextFormat(this.fxTextField2,this._textFormat);
+            this.updateText();
+            this.highlight.x = this.fxTextField1.textWidth >> 1;
+            this.icon.y = this._iconY;
          }
          if(isInvalid(INVALIDATE_ICON))
          {
@@ -274,7 +316,7 @@ package net.wg.gui.components.controls
       
       override protected function showTooltip() : void
       {
-         if(this._isTooltipSpecial && _tooltip && this._tooltipMgr)
+         if(this._isTooltipSpecial && _tooltip)
          {
             this._tooltipMgr.showSpecial(_tooltip,null);
          }
@@ -284,9 +326,14 @@ package net.wg.gui.components.controls
          }
       }
       
-      public function set isTooltipSpecial(param1:Boolean) : void
+      public function setExternalSize(param1:uint) : void
       {
-         this._isTooltipSpecial = param1;
+         this._externalSize = param1;
+         this._textFormat.size = MainMenuButtonSize.TEXT_SIZE[param1];
+         this._iconY = MainMenuButtonSize.ICON_Y[param1];
+         this.highlight.setSize(param1);
+         invalidate(INVALIDATE_TEXT_SIZE);
+         invalidate(INVALIDATE_ACTION_ICON_POS);
       }
       
       public function setExternalState(param1:String) : void
@@ -331,6 +378,15 @@ package net.wg.gui.components.controls
          }
       }
       
+      override public function get height() : Number
+      {
+         if(this.fxTextField1)
+         {
+            return this.fxTextField1.height + MainMenuButtonSize.HEIGHT_PADDING[this._externalSize];
+         }
+         return super.height;
+      }
+      
       override public function get width() : Number
       {
          return Boolean(this.fxTextField1) ? Number(this.fxTextField1.x + this.fxTextField1.textWidth + TEXTFIELD_PADDING + (_paddingHorizontal << 1)) : Number(0);
@@ -354,6 +410,16 @@ package net.wg.gui.components.controls
          {
             this.checkBrowserEffect();
          }
+      }
+      
+      public function set isHighlighted(param1:Boolean) : void
+      {
+         this.highlight.visible = param1;
+      }
+      
+      public function set isTooltipSpecial(param1:Boolean) : void
+      {
+         this._isTooltipSpecial = param1;
       }
       
       [Inspectable(defaultValue="true",name="caps",type="Boolean")]
@@ -400,6 +466,14 @@ package net.wg.gui.components.controls
          }
          this._iconType = param1;
          invalidate(INVALIDATE_ICON);
+         if(this.fxTextField1 && StringUtils.isNotEmpty(this._iconType))
+         {
+            this.fxTextField1.x = this._iconOffset;
+         }
+         else
+         {
+            this.fxTextField1.x = 0;
+         }
       }
       
       public function set actionIconStr(param1:String) : void

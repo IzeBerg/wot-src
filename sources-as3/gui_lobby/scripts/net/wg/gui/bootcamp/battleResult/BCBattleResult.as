@@ -62,7 +62,7 @@ package net.wg.gui.bootcamp.battleResult
       
       private static const RESULT_MARGIN_SMALL_Y:int = -10;
       
-      private static const BUTTON_MARGIN_SMALL_Y:int = -45;
+      private static const BUTTON_MARGIN_SMALL_Y:int = -25;
       
       private static const CONTENT_MIN_MARGIN_Y:int = 330;
       
@@ -76,9 +76,9 @@ package net.wg.gui.bootcamp.battleResult
       
       private static const COMPONENT_WIDTH:int = 571;
       
-      private static const COMPONENT_Y:int = 18;
+      private static const COMPONENT_Y:int = 7;
       
-      private static const COMPONENT_Y_SMALL:int = 16;
+      private static const COMPONENT_Y_SMALL:int = 5;
       
       private static const COMPONENT_CENTER:int = COMPONENT_WIDTH >> 1;
        
@@ -285,7 +285,6 @@ package net.wg.gui.bootcamp.battleResult
       
       private function validateLayout() : void
       {
-         var _loc3_:int = 0;
          var _loc1_:String = this.getLabel();
          this.finishReason.gotoAndStop(_loc1_);
          if(_baseDisposed)
@@ -306,7 +305,7 @@ package net.wg.gui.bootcamp.battleResult
          this.updateBg();
          this.updateText();
          var _loc2_:int = this._stageDimensions.x;
-         _loc3_ = this._stageDimensions.y;
+         var _loc3_:int = this._stageDimensions.y;
          this.bg.x = _loc2_ - this.bg.width >> 1;
          this.finishReason.x = _loc2_ - this.finishReason.width >> 1;
          this.result.x = _loc2_ - this.result.width >> 1;

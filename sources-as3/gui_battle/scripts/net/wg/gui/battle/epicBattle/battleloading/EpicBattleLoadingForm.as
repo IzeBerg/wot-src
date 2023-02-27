@@ -3,16 +3,16 @@ package net.wg.gui.battle.epicBattle.battleloading
    import flash.text.TextField;
    import net.wg.data.VO.daapi.DAAPIVehicleInfoVO;
    import net.wg.data.VO.daapi.DAAPIVehicleUserTagsVO;
+   import net.wg.gui.battle.battleloading.BaseLoadingForm;
    import net.wg.gui.battle.battleloading.vo.VisualTipInfoVO;
    import net.wg.gui.battle.epicBattle.VO.daapi.EpicVehiclesStatsVO;
    import net.wg.gui.battle.epicBattle.battleloading.components.EpicBattleLoadingTankBalance;
    import net.wg.gui.battle.epicBattle.battleloading.components.EpicBattleStatsTable;
    import net.wg.gui.battle.epicBattle.battleloading.components.EpicBattleStatsTableCtrl;
-   import net.wg.gui.tutorial.controls.BaseTipLoadingForm;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    
-   public class EpicBattleLoadingForm extends BaseTipLoadingForm
+   public class EpicBattleLoadingForm extends BaseLoadingForm
    {
       
       private static const LOADING_BAR_MIN:int = 0;

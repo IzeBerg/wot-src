@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Properties>
+		<account>
+			<Type>MAILBOX</Type>
+			<Flags>BASE</Flags>
+		</account>
+		<filename>
+			<Type>STRING</Type>
+			<Flags>BASE_AND_CLIENT</Flags>
+		</filename>
+	</Properties>
+	<ClientMethods>
+		<onKickedFromServer>
+			<Arg>STRING</Arg>
+			<Arg>UINT8</Arg>
+			<Arg>UINT32</Arg>
+		</onKickedFromServer>
+	</ClientMethods>
+	<BaseMethods>
+		<stopReplay>
+			<Exposed/>
+		</stopReplay>
+		<kickSelf>
+			<Arg>STRING</Arg>
+			<Arg>UINT8</Arg>
+			<Arg>FLOAT32</Arg>
+		</kickSelf>
+	</BaseMethods>
+</root>

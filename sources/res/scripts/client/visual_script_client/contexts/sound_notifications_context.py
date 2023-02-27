@@ -15,6 +15,7 @@ class SoundNotificationsContext(VScriptContext):
                 self.__soundNotifications.onAddEvent += self.onAddQueueEvent
 
     def destroy(self):
+        super(SoundNotificationsContext, self).destroy()
         if self.__soundNotifications:
             self.__soundNotifications.onPlayEvent -= self.onPlayQueueEvent
             self.__soundNotifications.onAddEvent -= self.onAddQueueEvent

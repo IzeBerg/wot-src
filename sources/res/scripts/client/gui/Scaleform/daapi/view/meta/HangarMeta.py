@@ -107,3 +107,7 @@ class HangarMeta(View):
     def as_setDQWidgetLayoutS(self, lyout):
         if self._isDAAPIInited():
             return self.flashObject.as_setDQWidgetLayout(lyout)
+
+    def as_updateCarouselEventEntryStateS(self, isVisible):
+        if self._isDAAPIInited():
+            return self.flashObject.as_updateCarouselEventEntryState(isVisible)

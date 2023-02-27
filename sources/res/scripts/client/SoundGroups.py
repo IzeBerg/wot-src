@@ -1,4 +1,4 @@
-import BigWorld, WWISE, Event, Settings, ResMgr, constants, PlayerEvents, MusicControllerWWISE, Windowing
+import BigWorld, WWISE, Event, Settings, ResMgr, PlayerEvents, MusicControllerWWISE, Windowing
 from ReplayEvents import g_replayEvents
 from debug_utils import LOG_ERROR, LOG_WARNING, LOG_DEBUG
 from helpers import i18n, dependency
@@ -199,20 +199,14 @@ class SoundModes(object):
     def setCurrentNation(self, nation, genderSwitch=CREW_GENDER_SWITCHES.DEFAULT):
         if g_instance is not None:
             g_instance.setSwitch(CREW_GENDER_SWITCHES.GROUP, genderSwitch)
-        arena = getattr(BigWorld.player(), 'arena', None)
-        inTutorial = arena is not None and arena.guiType is constants.ARENA_GUI_TYPE.TUTORIAL
-        if inTutorial:
-            self.setMode(SoundModes.DEFAULT_MODE_NAME)
-            return
-        else:
-            nationToQueue = nation
-            if nation not in self.__nationToSoundModeMapping:
-                nationToQueue = SoundModes.DEFAULT_NATION
-            soundMode = self.__nationToSoundModeMapping.get(nationToQueue)
-            success = soundMode is not None and self.setMode(soundMode)
-            if not success:
-                self.setNationalMappingByMode(SoundModes.DEFAULT_MODE_NAME)
-            return success
+        nationToQueue = nation
+        if nation not in self.__nationToSoundModeMapping:
+            nationToQueue = SoundModes.DEFAULT_NATION
+        soundMode = self.__nationToSoundModeMapping.get(nationToQueue)
+        success = soundMode is not None and self.setMode(soundMode)
+        if not success:
+            self.setNationalMappingByMode(SoundModes.DEFAULT_MODE_NAME)
+        return success
 
     def setNationalMapping(self, nationToSoundModeMapping):
         for soundModeName in nationToSoundModeMapping.itervalues():

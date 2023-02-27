@@ -8,7 +8,7 @@ from backports.functools_lru_cache import lru_cache
 from collections import namedtuple
 from constants import ACTION_LABEL_TO_TYPE, ROLE_LABEL_TO_TYPE, ROLE_TYPE, DamageAbsorptionLabelToType, ROLE_LEVELS, ROLE_TYPE_TO_LABEL, VEHICLE_HEALTH_DECIMALS, VEHICLE_CLASSES
 from constants import IGR_TYPE, IS_RENTALS_ENABLED, IS_CELLAPP, IS_BASEAPP, IS_CLIENT, IS_UE_EDITOR
-from constants import IS_BOT, IS_WEB, ITEM_DEFS_PATH, SHELL_TYPES, VEHICLE_SIEGE_STATE, VEHICLE_MODE
+from constants import IS_BOT, IS_WEB, IS_PROCESS_REPLAY, ITEM_DEFS_PATH, SHELL_TYPES, VEHICLE_SIEGE_STATE, VEHICLE_MODE
 from debug_utils import LOG_WARNING, LOG_ERROR, LOG_CURRENT_EXCEPTION
 from functools import partial
 from items import ItemsPrices
@@ -57,7 +57,7 @@ if IS_UE_EDITOR:
     import Math, tankArmor
 if IS_CELLAPP or IS_CLIENT or IS_BOT or IS_UE_EDITOR:
     from ModelHitTester import HitTesterManager, BoundingBoxManager, createBBoxManagerForModels
-if IS_CELLAPP or IS_CLIENT or IS_UE_EDITOR or IS_WEB:
+if IS_CELLAPP or IS_CLIENT or IS_UE_EDITOR or IS_WEB or IS_PROCESS_REPLAY:
     import material_kinds
     from material_kinds import EFFECT_MATERIALS
 if IS_CLIENT or IS_UE_EDITOR:
@@ -3233,7 +3233,7 @@ def _readHull(xmlCtx, section):
     item.maxHealth = _xml.readInt(xmlCtx, section, 'maxHealth', 1)
     item.ammoBayHealth = shared_readers.readDeviceHealthParams(xmlCtx, section, 'ammoBayHealth', False)
     item.customizableVehicleAreas = _readCustomizableAreas(xmlCtx, section, 'customization')
-    if not IS_CLIENT and not IS_BOT:
+    if not IS_CLIENT and not IS_BOT and not IS_PROCESS_REPLAY:
         item.armorHomogenization = _xml.readPositiveFloat(xmlCtx, section, 'armorHomogenization')
     v = []
     for s in _xml.getSubsection(xmlCtx, section, 'turretPositions').values():
@@ -3276,7 +3276,7 @@ def _readHull(xmlCtx, section):
             item.hangarShadowTexture = ''
         item.burnoutAnimation = __readBurnoutAnimation(xmlCtx, section)
         item.prefabs = section.readStrings('prefab')
-    if IS_CLIENT or IS_UE_EDITOR or IS_WEB or IS_CELLAPP:
+    if IS_CLIENT or IS_UE_EDITOR or IS_WEB or IS_CELLAPP or IS_PROCESS_REPLAY:
         item.primaryArmor = _readPrimaryArmor(xmlCtx, section, 'primaryArmor', item.materials)
     return item
 
@@ -3418,7 +3418,7 @@ def _readHullVariants(xmlCtx, section, defHull, chassis, turrets):
                 variant.materials = _readArmor(ctx, section, 'armor')
                 continue
             if name == 'primaryArmor':
-                if IS_CLIENT:
+                if IS_CLIENT or IS_PROCESS_REPLAY:
                     variant.primaryArmor = _readPrimaryArmor(ctx, section, 'primaryArmor', variant.materials)
                 continue
             if name == 'armorHomogenization':
@@ -3559,13 +3559,13 @@ def _readChassis(xmlCtx, section, item, unlocksDescrs=None, _=None, isWheeledVeh
         item.hitTesterManager = mainTrackPair.hitTesterManager
         item.materials = mainTrackPair.materials
         item.healthParams = mainTrackPair.healthParams
-        if not (IS_BASEAPP or IS_WEB):
+        if not (IS_BASEAPP or IS_WEB or IS_PROCESS_REPLAY):
             item.bboxManager = createBBoxManagerForModels([ trackPair.hitTesterManager for trackPair in item.trackPairs ])
     else:
         item.hitTesterManager = _readHitTester(xmlCtx, section, 'hitTester')
         item.materials = _readArmor(xmlCtx, section, 'armor', optional=True)
         item.healthParams = shared_readers.readDeviceHealthParams(xmlCtx, section)
-        if not (IS_BASEAPP or IS_WEB):
+        if not (IS_BASEAPP or IS_WEB or IS_PROCESS_REPLAY):
             htManager = item.hitTesterManager
             item.bboxManager = BoundingBoxManager(htManager.modelHitTester.bbox, htManager.crashedModelHitTester.bbox if htManager.crashedModelHitTester else None)
     if IS_CLIENT or IS_UE_EDITOR or IS_BOT or IS_BASEAPP:
@@ -4135,7 +4135,7 @@ def _readTurret(xmlCtx, section, item, unlocksDescrs=None, _=None):
     item.rotationSpeed = cachedFloat(radians(_xml.readNonNegativeFloat(xmlCtx, section, 'rotationSpeed')))
     item.turretRotatorHealth = shared_readers.readDeviceHealthParams(xmlCtx, section, 'turretRotatorHealth')
     item.surveyingDeviceHealth = shared_readers.readDeviceHealthParams(xmlCtx, section, 'surveyingDeviceHealth')
-    if not IS_CLIENT and not IS_BOT:
+    if not IS_CLIENT and not IS_BOT and not IS_PROCESS_REPLAY:
         item.armorHomogenization = _xml.readPositiveFloat(xmlCtx, section, 'armorHomogenization')
     if section.has_key('invisibilityFactor'):
         item.invisibilityFactor = _xml.readNonNegativeFloat(xmlCtx, section, 'invisibilityFactor')
@@ -4145,7 +4145,7 @@ def _readTurret(xmlCtx, section, item, unlocksDescrs=None, _=None):
     item.showEmblemsOnGun = section.readBool('showEmblemsOnGun', False)
     if IS_CLIENT or IS_WEB:
         item.i18n = shared_readers.readUserText(section)
-    if IS_CLIENT or IS_UE_EDITOR or IS_WEB or IS_CELLAPP:
+    if IS_CLIENT or IS_UE_EDITOR or IS_WEB or IS_CELLAPP or IS_PROCESS_REPLAY:
         item.primaryArmor = _readPrimaryArmor(xmlCtx, section, 'primaryArmor', item.materials)
     if IS_CLIENT or IS_UE_EDITOR or IS_BOT or IS_BASEAPP:
         if section.has_key('emblemSlots'):
@@ -5211,7 +5211,7 @@ def _writeDualGun(item, section):
 
 
 def _readHitTester(xmlCtx, section, subsectionName, optional=False):
-    if IS_BASEAPP or IS_WEB:
+    if IS_BASEAPP or IS_WEB or IS_PROCESS_REPLAY:
         return
     subsection = _xml.getSubsection(xmlCtx, section, subsectionName, throwIfMissing=False) if subsectionName else section
     if subsection is None:
@@ -5871,7 +5871,7 @@ def _readCommonConfig(xmlCtx, section):
            'track': _xml.readVector2(xmlCtx, section, effectVelPath + 'track'), 
            'waterContact': _xml.readVector2(xmlCtx, section, effectVelPath + 'waterContact'), 
            'ramming': _xml.readPositiveFloat(xmlCtx, section, effectVelPath + 'ramming')}
-    elif IS_WEB:
+    elif IS_WEB or IS_PROCESS_REPLAY:
         res['materials'], res['_autoDamageKindMaterials'] = _readMaterials(xmlCtx, section, 'materials', None)
     if IS_BOT:
         res['extras'], res['extrasDict'] = common_extras.readExtras(xmlCtx, section, 'extras', 'vehicle_extras')

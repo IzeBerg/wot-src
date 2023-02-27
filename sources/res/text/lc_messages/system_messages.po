@@ -418,9 +418,6 @@ msgstr ""
 msgid "battlePass/activateChapter/success"
 msgstr "\"%(chapter)s\" Chapter activated"
 
-msgid "battlePass/badgeRemoved/text"
-msgstr "The %(badgeName)s badge removed due to the end of Battle Pass Season."
-
 msgid "battlePass/extraFinish/body"
 msgstr "The %(name)s event has finished. Thank you for your participation!"
 
@@ -484,8 +481,8 @@ msgstr "Bounty Equipment received: %(name)s"
 
 msgid "battlePass/seasonEnd/text"
 msgstr ""
-"Battle Pass has ended. All rewards that you did not choose have been awarded"
-" to you by default:"
+"The Battle Pass Season has finished. All rewards that you did not choose "
+"during the Season have been awarded to you by default:"
 
 msgid "battlePass/switchChapter/error"
 msgstr "Error selecting the Chapter. Please try again."
@@ -503,8 +500,7 @@ msgstr ""
 "We apologize for the inconvenience."
 
 msgid "battlePass/switch_disable/body"
-msgstr ""
-"Judgment Day has ended. We hope it never goes beyond games and movies."
+msgstr "Season finished. See you next Season!"
 
 msgid "battlePass/switch_disable/comp7/body"
 msgstr ""
@@ -523,10 +519,12 @@ msgstr ""
 "Battle Pass is temporarily unavailable in Ranked Battles due to maintenance."
 
 msgid "battlePass/switch_disable/title"
-msgstr "Battle Pass: Judgment Day"
+msgstr "Battle Pass Season %(seasonNum)d"
 
 msgid "battlePass/switch_enabled/body"
-msgstr "Battle Pass is available again. We apologize for the inconvenience."
+msgstr ""
+"Battle Pass is available again. We apologize for the inconvenience.\n"
+"Season extended until %(expiryTime)s."
 
 msgid "battlePass/switch_enabled/comp7/body"
 msgstr ""
@@ -2003,15 +2001,6 @@ msgstr ""
 msgid "graficsPresetFail"
 msgstr ""
 "Video card incompatible. Failed to apply the selected graphics quality."
-
-msgid "hbp/seasonStart/body"
-msgstr ""
-"Commanders! This is a special Battle Pass, and you are about to see it for yourself.\n"
-"\n"
-"For completing the Progression, you will receive famous movie characters with unique voiceovers, a Premium vehicle with a special 3D style, customization elements, and many more rewards!"
-
-msgid "hbp/seasonStart/title"
-msgstr "Battle Pass: Judgment Day"
 
 msgid "igr/customization/begin"
 msgstr ""
@@ -3979,6 +3968,16 @@ msgstr "You were excluded from the detachment: detachment dismissed."
 
 msgid "unit/warnings/CLAN_CHANGED"
 msgstr "You have been excluded from the detachment. Clan changed."
+
+msgid "unit/warnings/EXPIRED_PLAY_LIMITS"
+msgstr ""
+"Your play time has ended. You cannot enter a new battle. You will be "
+"disconnected from the server at %(expiredTime)s."
+
+msgid "unit/warnings/EXPIRED_PLAY_LIMITS_TO_COMMANDER"
+msgstr ""
+"One of the players has insufficient game session time left to finish the "
+"battle. The Platoon is now in preparation state."
 
 msgid "unit/warnings/EXTERNAL_LEGIONARIES_MATCHING_CANCELED"
 msgstr "Assembling legionnaires suspended."

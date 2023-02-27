@@ -223,7 +223,7 @@ class OfferItemsBonusMixin(OfferBonusMixin):
 class CrewBooksOfferBonus(OfferItemsBonusMixin, CrewBooksBonus):
 
     def getOfferIcon(self):
-        return self.displayedItem.getOldStyleIcon()
+        return self.displayedItem.getShopIcon()
 
     def getOfferNationalFlag(self):
         nation = self.displayedItem.getNation()

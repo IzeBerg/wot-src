@@ -82,18 +82,9 @@
 	</camouflage>
 	<hull>
 		<armor>
-			<armor_1>
-				101.6
-				<!--BW_String-->
-			</armor_1>
-			<armor_2>
-				139.1
-				<!--BW_String-->
-			</armor_2>
-			<armor_3>
-				76.2
-				<!--BW_String-->
-			</armor_3>
+			<armor_1>120</armor_1>
+			<armor_2>90</armor_2>
+			<armor_3>120</armor_3>
 			<armor_4>
 				38.1
 				<!--BW_String-->
@@ -142,7 +133,7 @@
 		</armor>
 		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 		<weight>17800</weight>
-		<maxHealth>680</maxHealth>
+		<maxHealth>550</maxHealth>
 		<ammoBayHealth>
 			<maxHealth>180</maxHealth>
 			<maxRegenHealth>120</maxRegenHealth>
@@ -211,6 +202,24 @@
 				</size>
 				<hideIfDamaged>false</hideIfDamaged>
 				<isUVProportional>true</isUVProportional>
+			</slot>
+			<slot>
+				<slotType>paint</slotType>
+				<slotId>11000</slotId>
+				<anchorPosition>
+					0.00223218 0.711806 -2.53817
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>0.000009 0.717154 -0.696915</anchorDirection>
+			</slot>
+			<slot>
+				<slotType>camouflage</slotType>
+				<slotId>12000</slotId>
+				<anchorPosition>
+					0.000256188 0.71154 -2.5384
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>-0.000000 0.717144 -0.696925</anchorDirection>
 			</slot>
 			<slot>
 				<slotType>inscription</slotType>
@@ -3091,6 +3100,32 @@
 					<camouflage/>
 				</customizableVehicleAreas>
 			</customization>
+			<customizationSlots>
+				<slot>
+					<slotType>paint</slotType>
+					<slotId>21000</slotId>
+					<anchorPosition>
+						-1.36546 0.556879 -0.0559051
+						<!--BW_String-->
+					</anchorPosition>
+					<anchorDirection>
+						-0.92529 0.377363 -0.0378835
+						<!--BW_String-->
+					</anchorDirection>
+				</slot>
+				<slot>
+					<slotType>style</slotType>
+					<slotId>29000</slotId>
+					<anchorPosition>
+						0.000156663 2.74161 -0.159429
+						<!--BW_String-->
+					</anchorPosition>
+					<anchorDirection>
+						-0.000000 1 0.000000
+						<!--BW_String-->
+					</anchorDirection>
+				</slot>
+			</customizationSlots>
 			<repairTime>
 				6.85714293
 				<!--BW_String-->
@@ -3110,14 +3145,8 @@
 					<!--BW_String-->
 				</armor_1>
 				<armor_2>0</armor_2>
-				<armor_3>
-					152.4
-					<!--BW_String-->
-				</armor_3>
-				<armor_4>
-					152.4
-					<!--BW_String-->
-				</armor_4>
+				<armor_3>80</armor_3>
+				<armor_4>80</armor_4>
 				<armor_5>
 					152.4
 					<!--BW_String-->
@@ -3236,6 +3265,39 @@
 					</customization>
 					<customizationSlots>
 						<slot>
+							<slotType>paint</slotType>
+							<slotId>41000</slotId>
+							<anchorPosition>
+								0.000066 -0.00567675 1.15568
+								<!--BW_String-->
+							</anchorPosition>
+							<anchorDirection>
+								0.000000 0.000000 1
+								<!--BW_String-->
+							</anchorDirection>
+							<applyTo>4096</applyTo>
+						</slot>
+						<slot>
+							<slotType>paint</slotType>
+							<slotId>41001</slotId>
+							<anchorPosition>0.000000 0.238177 0.238177</anchorPosition>
+							<anchorDirection>0.000000 0.707107 0.707107</anchorDirection>
+							<applyTo>16384</applyTo>
+						</slot>
+						<slot>
+							<slotType>camouflage</slotType>
+							<slotId>42000</slotId>
+							<anchorPosition>
+								0.000066 -0.00567675 1.15568
+								<!--BW_String-->
+							</anchorPosition>
+							<anchorDirection>
+								0.000000 0.000000 1
+								<!--BW_String-->
+							</anchorDirection>
+							<applyTo>4096</applyTo>
+						</slot>
+						<slot>
 							<slotType>insigniaOnGun</slotType>
 							<slotId>49000</slotId>
 							<rayStart>
@@ -3297,6 +3359,24 @@
 				</customizableVehicleAreas>
 			</customization>
 			<customizationSlots>
+				<slot>
+					<slotType>paint</slotType>
+					<slotId>31000</slotId>
+					<anchorPosition>0.000000 0.903206 0.000000</anchorPosition>
+					<anchorDirection>
+						0.000000 1 0.000000
+						<!--BW_String-->
+					</anchorDirection>
+				</slot>
+				<slot>
+					<slotType>camouflage</slotType>
+					<slotId>32000</slotId>
+					<anchorPosition>0.000000 0.903206 0.000000</anchorPosition>
+					<anchorDirection>
+						0.000000 1 0.000000
+						<!--BW_String-->
+					</anchorDirection>
+				</slot>
 				<slot>
 					<slotType>player</slotType>
 					<slotId>33000</slotId>
