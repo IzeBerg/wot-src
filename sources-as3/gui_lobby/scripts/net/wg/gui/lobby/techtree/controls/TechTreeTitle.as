@@ -53,8 +53,7 @@ package net.wg.gui.lobby.techtree.controls
       
       public function updateSize(param1:Number, param2:Number) : void
       {
-         var _loc3_:Boolean = false;
-         _loc3_ = param2 >= _HEIGHT_BREAKPOINT;
+         var _loc3_:Boolean = param2 >= _HEIGHT_BREAKPOINT;
          y = !!_loc3_ ? Number(_Y_BIG) : Number(_Y_SMALL);
          gotoAndStop(!!_loc3_ ? _BIG_TITLE_STATE : _SMALL_TITLE_STATE);
          if(this._baseDisposed)

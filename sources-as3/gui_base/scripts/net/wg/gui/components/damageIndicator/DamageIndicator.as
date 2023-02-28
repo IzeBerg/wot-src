@@ -115,6 +115,11 @@ package net.wg.gui.components.damageIndicator
       
       public final function dispose() : void
       {
+         this.onDispose();
+      }
+      
+      protected function onDispose() : void
+      {
          this._disposed = true;
          this._items.splice(0,this._items.length);
          this._items = null;

@@ -11,7 +11,6 @@ package net.wg.gui.battle.battleloading
    import net.wg.gui.battle.eventInfoPanel.data.EventInfoPanelVO;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.events.UILoaderEvent;
-   import net.wg.gui.tutorial.controls.BaseTipLoadingForm;
    import net.wg.infrastructure.interfaces.IDAAPIDataClass;
    import org.idmedia.as3commons.util.StringUtils;
    
@@ -23,7 +22,7 @@ package net.wg.gui.battle.battleloading
       private static const FORM_Y_SHIFT:int = -20;
        
       
-      public var form:BaseTipLoadingForm;
+      public var form:BaseLoadingForm;
       
       private var _stageHeight:int = 0;
       

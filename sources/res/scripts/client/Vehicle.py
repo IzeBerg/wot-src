@@ -531,10 +531,6 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         if syncGunAngles:
             yaw, pitch = decodeGunAngles(self.gunAnglesPacked, self.typeDescriptor.gun.pitchLimits['absolute'])
             syncGunAngles(yaw, pitch)
-            replayCtrl = BattleReplay.g_replayCtrl
-            if replayCtrl.isServerSideReplay:
-                replayCtrl.setTurretYaw(yaw)
-                replayCtrl.setGunPitch(pitch)
         return
 
     def set_health(self, _=None):
@@ -1216,8 +1212,13 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.set_stunInfo()
         self.set_wheelsScroll()
         self.set_wheelsState()
+        if hasattr(self, 'remoteCamera'):
+            self.set_remoteCamera()
         if hasattr(self, 'ownVehicle'):
             self.ownVehicle.initialUpdate(True)
+
+    def set_remoteCamera(self, _=None):
+        self.ownVehicle.update_remoteCamera(self.remoteCamera)
 
 
 @dependency.replace_none_kwargs(lobbyContext=ILobbyContext)

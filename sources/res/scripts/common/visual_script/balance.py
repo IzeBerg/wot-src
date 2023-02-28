@@ -2,7 +2,7 @@ import BigWorld, sys
 from block import Meta, Block, InitParam, buildStrKeysValue, EDITOR_TYPE
 from slot_types import SLOT_TYPE, arrayOf
 from type import VScriptStruct, VScriptStructField
-from visual_script.misc import errorVScript
+from visual_script.misc import errorVScript, ASPECT
 import ResMgr, constants, nations
 _IS_VSE_EDITOR = sys.executable.endswith('vscript_editor.exe') or sys.executable.endswith('vscript_validator.exe')
 constants.IS_EDITOR = constants.IS_EDITOR and not _IS_VSE_EDITOR
@@ -75,6 +75,10 @@ class EquipmentMeta(Meta):
     @classmethod
     def blockIcon(cls):
         return ':vse/blocks/arena'
+
+    @classmethod
+    def blockAspects(cls):
+        return [ASPECT.SERVER, ASPECT.CLIENT, ASPECT.HANGAR]
 
 
 class ConfigParamStruct(VScriptStruct):

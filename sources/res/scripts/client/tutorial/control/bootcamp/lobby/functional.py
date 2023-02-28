@@ -13,7 +13,6 @@ from tutorial.logger import LOG_DEBUG, LOG_ERROR, LOG_WARNING
 from helpers import dependency
 from skeletons.gui.game_control import IBootcampController, IDemoAccCompletionController
 from PlayerEvents import g_playerEvents
-from tutorial.control.context import SOUND_EVENT
 
 class FunctionalCheckpointReachedCondition(FunctionalCondition):
 
@@ -258,12 +257,12 @@ class FunctionalBootcampLobbyChapterContext(FunctionalChapterContext):
 
     def __delayedPlayHintSound(self):
         if self.__requestedExclusiveHintSoundID:
-            self.__exclusiveHintSoundCallback = BigWorld.callback(self._HINT_SOUND_DELAY, partial(self.__playHintSound, SOUND_EVENT.HINT_SHOWN, self.__requestedExclusiveHintSoundID))
+            self.__exclusiveHintSoundCallback = BigWorld.callback(self._HINT_SOUND_DELAY, partial(self.__playHintSound, self.__requestedExclusiveHintSoundID))
 
-    def __playHintSound(self, soundEvent, soundId):
+    def __playHintSound(self, soundId):
         self.__cancelHintSoundCallback()
         if self._tutorial is not None:
-            self._sound.play(soundEvent, soundId)
+            self._sound.play(None, soundId)
         return
 
     def __cancelHintSoundCallback(self):

@@ -1714,12 +1714,6 @@ msgstr "Tank Academy missions are available again."
 msgid "serviceChannelMessages/battleMatters/token"
 msgstr "Academy Token"
 
-msgid "serviceChannelMessages/battlePass/badges/header/remove"
-msgstr "Badge Removed"
-
-msgid "serviceChannelMessages/battlePass/badges/text/remove"
-msgstr "The %(badgeName)s badge removed due to the end of Battle Pass Season."
-
 msgid "serviceChannelMessages/battlePass/freePointsUsed/header"
 msgstr "Unspent Points used"
 
@@ -1760,8 +1754,7 @@ msgstr "You received rewards for the completed Stages using unspent Points:"
 
 msgid "serviceChannelMessages/battlePassReward/battle/chapterFinal/text"
 msgstr ""
-"You completed the \"%(chapter)s\" Chapter!\n"
-"\n"
+"You completed the %(chapter)s Chapter!\n"
 "Reward received:"
 
 msgid "serviceChannelMessages/battlePassReward/battle/final/additionalText"
@@ -1775,7 +1768,6 @@ msgstr ""
 msgid "serviceChannelMessages/battlePassReward/battle/newLevel/text"
 msgstr ""
 "You completed Progression Stage %(newLevel)s of the \"%(chapter)s\" Chapter.\n"
-"\n"
 "Reward received:"
 
 msgid "serviceChannelMessages/battlePassReward/button"
@@ -1805,7 +1797,9 @@ msgid "serviceChannelMessages/battlePassReward/buyWithRewards/text"
 msgstr "You received rewards for the previously completed Battle Pass Stages:"
 
 msgid "serviceChannelMessages/battlePassReward/buyWithoutRewards/text"
-msgstr "Now you will receive both Base and Improved Rewards."
+msgstr ""
+"You will now receive rewards from both the Base and Improved Reward Tracks in the \"%(chapter)s\" Chapter.\n"
+"This Improved Pass works only for the \"%(chapter)s\" Chapter."
 
 msgid "serviceChannelMessages/battlePassReward/header/buyBP"
 msgstr "Improved Pass Purchased"
@@ -2135,29 +2129,8 @@ msgstr "Technical defeat"
 msgid "serviceChannelMessages/battleResults/techVictory"
 msgstr "Technical victory"
 
-msgid "serviceChannelMessages/battleResults/training_battle"
-msgstr "Training Battle"
-
 msgid "serviceChannelMessages/battleResults/victory"
 msgstr "Victory"
-
-msgid "serviceChannelMessages/battleTutorial/reasons/extermination"
-msgstr "Vehicle destroyed"
-
-msgid "serviceChannelMessages/battleTutorial/reasons/failed"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/battleTutorial/reasons/finished"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/battleTutorial/reasons/timeout"
-msgstr "Your time is up"
-
-msgid "serviceChannelMessages/battleTutorial/results/failed"
-msgstr "Failed."
-
-msgid "serviceChannelMessages/battleTutorial/results/finished"
-msgstr "Completed!"
 
 msgid "serviceChannelMessages/blackMapDisabled"
 msgstr ""
@@ -3151,8 +3124,7 @@ msgstr "You received a crew for %(event)s."
 
 msgid "serviceChannelMessages/recruitReminder/text"
 msgstr ""
-"You have non-recruited crew members: %(count)s. They will be removed on "
-"%(date)s!"
+"You have non-recruited crew members: %(count)s. Next removal on %(date)s!"
 
 msgid "serviceChannelMessages/recruitReminderTermless/text"
 msgstr "You have non-recruited crew members: %(count)s"

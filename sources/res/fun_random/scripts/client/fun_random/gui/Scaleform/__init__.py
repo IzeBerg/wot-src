@@ -1,8 +1,7 @@
-from constants import ARENA_GUI_TYPE, QUEUE_TYPE
-from fun_random.gui.Scaleform.daapi.view.lobby.battle_queue import FunRandomQueueProvider
+from constants import ARENA_GUI_TYPE
 from gui.Scaleform.daapi.settings import config as sf_config
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS as _TOOLTIPS
-from gui.shared.system_factory import registerScaleformLobbyPackages, registerLobbyTooltipsBuilders, registerScaleformBattlePackages, registerBattleQueueProvider
+from gui.shared.system_factory import registerScaleformLobbyPackages, registerLobbyTooltipsBuilders, registerScaleformBattlePackages
 
 def registerFunRandomScaleform():
     registerScaleformLobbyPackages(('fun_random.gui.Scaleform.daapi.view.lobby', ))
@@ -10,4 +9,3 @@ def registerFunRandomScaleform():
     registerLobbyTooltipsBuilders([
      (
       'fun_random.gui.Scaleform.daapi.view.tooltips.lobby_builders', _TOOLTIPS.FUN_RANDOM_LOBBY_SET)])
-    registerBattleQueueProvider(QUEUE_TYPE.FUN_RANDOM, FunRandomQueueProvider)

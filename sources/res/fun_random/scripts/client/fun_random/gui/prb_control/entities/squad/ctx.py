@@ -1,5 +1,5 @@
 from constants import PREBATTLE_TYPE
-from fun_random.gui.fun_gui_constants import RequestType
+from fun_random.gui.fun_gui_constants import REQUEST_TYPE
 from gui.prb_control.entities.base.squad.ctx import SquadSettingsCtx
 from gui.prb_control.entities.base.unit.ctx import UnitRequestCtx
 from gui.prb_control.settings import FUNCTIONAL_FLAG
@@ -33,4 +33,4 @@ class FunSquadChangeSubModeCtx(UnitRequestCtx):
         return self.__desiredSubModeID
 
     def getRequestType(self):
-        return RequestType.CHANGE_FUN_SUB_MODE
+        return REQUEST_TYPE.CHANGE_FUN_SUB_MODE

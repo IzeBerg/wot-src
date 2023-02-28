@@ -3,10 +3,10 @@ from collections import namedtuple
 import typing
 from account_helpers.AccountSettings import AccountSettings, IS_BATTLE_PASS_EXTRA_STARTED, LAST_BATTLE_PASS_POINTS_SEEN
 from account_helpers.settings_core.settings_constants import BattlePassStorageKeys
-from battle_pass_common import BattlePassState, BattlePassConsts
 from constants import ARENA_BONUS_TYPE, QUEUE_TYPE
 from gui import GUI_SETTINGS
 from gui.Scaleform.genConsts.SKILLS_CONSTANTS import SKILLS_CONSTANTS as SKILLS
+from gui.battle_pass.sounds import AwardVideoSoundControl
 from gui.impl.gen import R
 from gui.prb_control.dispatcher import g_prbLoader
 from gui.server_events.recruit_helper import getRecruitInfo
@@ -20,7 +20,6 @@ from shared_utils import first
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.customization import ICustomizationService
 from skeletons.gui.game_control import IBattlePassController
-from gui.server_events.bonuses import VehiclesBonus
 if typing.TYPE_CHECKING:
     from typing import Dict, List
     from gui.server_events.bonuses import TmanTemplateTokensBonus
@@ -28,7 +27,6 @@ if typing.TYPE_CHECKING:
 _logger = logging.getLogger(__name__)
 _CUSTOMIZATION_BONUS_NAME = 'customizations'
 _TANKMAN_BONUS_NAME = 'tmanToken'
-BattlePassSeasonHistory = namedtuple('BattlePassSeasonHistory', 'maxPostLevel rewardVehicles seasonNum')
 TokenPositions = namedtuple('TokenPositions', ['free', 'paid'])
 
 def chaptersIDsComparator(firstID, secondID):
@@ -55,28 +53,6 @@ def isSeasonEndingSoon():
 
 def getFormattedTimeLeft(seconds):
     return time_formatters.getTillTimeByResource(seconds, R.strings.battle_pass.status.timeLeft, removeLeadingZeros=True)
-
-
-def getSeasonHistory(seasonID):
-    battlePassController = dependency.instance(IBattlePassController)
-    seasonsHistory = battlePassController.getSeasonsHistory()
-    prevSeasonHistory = seasonsHistory.get(seasonID)
-    if prevSeasonHistory is None:
-        return
-    else:
-        return BattlePassSeasonHistory(prevSeasonHistory.get('maxPostLevel'), prevSeasonHistory.get('rewardVehicles'), prevSeasonHistory.get('seasonNum'))
-
-
-def getLevelFromStats(seasonStats, seasonHistory):
-    if seasonStats.maxBase == seasonHistory.getMaxChapterLevel(0):
-        level = seasonStats.maxPost
-        state = BattlePassState.POST
-    else:
-        level = seasonStats.maxBase
-        state = BattlePassState.BASE
-    if seasonStats.maxPost >= seasonHistory.maxPostLevel:
-        state = BattlePassState.COMPLETED
-    return (state, level)
 
 
 def getBattlePassUrl(urlPathName):
@@ -151,7 +127,7 @@ def showVideo(videoSource, onVideoClosed=None, isAutoClose=False):
             onVideoClosed()
         return
     from gui.impl.lobby.video.video_view import VideoViewWindow
-    window = VideoViewWindow(videoSource(), onVideoClosed=onVideoClosed, isAutoClose=isAutoClose)
+    window = VideoViewWindow(videoSource(), onVideoClosed=onVideoClosed, isAutoClose=isAutoClose, soundControl=AwardVideoSoundControl(videoSource()))
     window.load()
 
 
@@ -163,21 +139,6 @@ def getStyleForChapter(chapter, battlePass=None, c11nService=None):
         return None
     else:
         return c11nService.getItemByID(GUI_ITEM_TYPE.STYLE, stylesConfig[chapter])
-
-
-@replace_none_kwargs(battlePass=IBattlePassController, c11nService=ICustomizationService)
-def getVehicleInfoForChapter(chapter, battlePass=None, c11nService=None):
-    rewards = battlePass.getSingleAward(chapter, battlePass.getMaxLevelInChapter(chapter), awardType=BattlePassConsts.REWARD_PAID)
-    for bonus in rewards:
-        if bonus.getName() == VehiclesBonus.VEHICLES_BONUS:
-            vehicle, vehInfo = bonus.getVehicles()[0]
-            styleId = vehInfo.get('customization', {}).get('styleId')
-            style = c11nService.getItemByID(GUI_ITEM_TYPE.STYLE, styleId)
-            return (
-             vehicle, style)
-
-    _logger.error("In chapterID: %s in final level doesn't have vehicle", chapter)
-    return (None, None)
 
 
 @replace_none_kwargs(battlePass=IBattlePassController)
@@ -245,14 +206,6 @@ def getDataByTankman(tankman):
     if newSkillCount > 0:
         skills += [SKILLS.TYPE_NEW_SKILL] * (newSkillCount - skills.count(SKILLS.TYPE_NEW_SKILL))
     return (iconName, tankmanName, skills)
-
-
-def getSpecialVoiceTankmen():
-    return GUI_SETTINGS.battlePass.get('specialVoiceTankmen')
-
-
-def getSpecialVoiceTankmenInShop():
-    return GUI_SETTINGS.battlePass.get('specialVoiceTankmen').get('shop', [])
 
 
 def getOfferTokenByGift(tokenID):

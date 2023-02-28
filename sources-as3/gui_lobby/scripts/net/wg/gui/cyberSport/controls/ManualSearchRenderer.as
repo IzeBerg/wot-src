@@ -152,6 +152,7 @@ package net.wg.gui.cyberSport.controls
       protected function populateUI(param1:CSCommandVO) : void
       {
          var _loc2_:String = null;
+         var _loc6_:Boolean = false;
          var _loc7_:IUserProps = null;
          var _loc3_:RallyCandidateVO = param1.creator;
          if(_loc3_)
@@ -187,7 +188,7 @@ package net.wg.gui.cyberSport.controls
          }
          var _loc4_:Boolean = false;
          var _loc5_:int = this.freezeIcon.x;
-         var _loc6_:Boolean = param1.isFreezed;
+         _loc6_ = param1.isFreezed;
          this.freezeIcon.visible = _loc6_;
          if(_loc6_)
          {

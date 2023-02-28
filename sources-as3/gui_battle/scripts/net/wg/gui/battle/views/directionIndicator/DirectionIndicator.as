@@ -38,16 +38,21 @@ package net.wg.gui.battle.views.directionIndicator
       
       public final function dispose() : void
       {
-         this._disposed = true;
-         this.indicator.dispose();
-         this.distance.dispose();
-         this.indicator = null;
-         this.distance = null;
+         this.onDispose();
       }
       
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      protected function onDispose() : void
+      {
+         this._disposed = true;
+         this.indicator.dispose();
+         this.distance.dispose();
+         this.indicator = null;
+         this.distance = null;
       }
    }
 }

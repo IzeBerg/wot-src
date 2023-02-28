@@ -1,4 +1,4 @@
-import weakref
+import typing, weakref
 from CurrentVehicle import g_currentVehicle
 from constants import PREBATTLE_TYPE
 from debug_utils import LOG_DEBUG
@@ -8,6 +8,8 @@ from gui.prb_control.entities.base import checkVehicleAmmoFull
 from gui.prb_control.events_dispatcher import g_eventDispatcher
 from gui.prb_control.entities.base.unit.ctx import BattleQueueUnitCtx, AutoSearchUnitCtx
 from gui.prb_control.settings import FUNCTIONAL_FLAG
+if typing.TYPE_CHECKING:
+    from gui.prb_control.entities.base.unit.entity import BaseUnitEntity
 
 class AbstractActionsHandler(object):
 

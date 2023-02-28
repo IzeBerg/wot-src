@@ -31,8 +31,6 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_MESSENGER:String = "battleMessenger";
       
-      public static const BATTLE_TUTORIAL:String = "battleTutorial";
-      
       public static const CONSUMABLES_PANEL:String = "consumablesPanel";
       
       public static const DAMAGE_INDICATOR:String = "damageIndicator";

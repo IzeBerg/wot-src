@@ -1,7 +1,9 @@
 import importlib
 from DictPackers import Meta, MergeDictPacker
-from battle_results_common import BATTLE_RESULTS
-from battle_results_constants import BATTLE_RESULT_ENTRY_TYPE as ENTRY_TYPE, PATH_TO_CONFIG, POSSIBLE_TYPES
+from battle_pass_integration import getAllIntergatedGameModes
+from battle_results_common import BATTLE_RESULTS, BATTLE_PASS_RESULTS
+from battle_results_constants import BATTLE_RESULT_ENTRY_TYPE as ENTRY_TYPE, PATH_TO_CONFIG, POSSIBLE_TYPES, ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE
+from constants import ARENA_BONUS_TYPE
 g_config = {'checksums': {}, 'bonusTypes': {}, 'allResults': Meta()}
 
 def __processBonusTypeResults(config, allResults, bonusType, serverResults):
@@ -39,9 +41,14 @@ def __processBonusTypeResults(config, allResults, bonusType, serverResults):
 
 def setBattleResultsConfig(config):
     serverResults = {}
+    battlePassIntergated = getAllIntergatedGameModes()
     for bonusType, path in PATH_TO_CONFIG.iteritems():
-        module = importlib.import_module('battle_results.' + path)
+        if path.startswith('.'):
+            path = 'battle_results' + path
+        module = importlib.import_module(path)
         allResults = BATTLE_RESULTS + module.BATTLE_RESULTS
+        if bonusType in battlePassIntergated:
+            allResults += BATTLE_PASS_RESULTS
         __processBonusTypeResults(config, allResults, bonusType, serverResults)
 
     __processBonusTypeResults(config, BATTLE_RESULTS, 'default', serverResults)
@@ -64,6 +71,12 @@ def unpackClientBattleResults(data):
 
 def getBattleResultsNames():
     return g_config['allResults'].names()
+
+
+def getBattleResultsSysMsgType(bonusType):
+    if bonusType not in ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE:
+        return ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE[ARENA_BONUS_TYPE.REGULAR]
+    return ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE[bonusType]
 
 
 def init():

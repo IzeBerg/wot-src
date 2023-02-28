@@ -47,6 +47,7 @@ package net.wg.gui.components.common.lobbyVehicleMarkers
             this.playerNameField.text = this._model.pName;
             App.utils.commons.updateTextFieldSize(this.playerNameField);
             this.playerNameField.x = -this.playerNameField.width >> 1;
+            this.vehicleTypeMarker.visible = this._model.vClass in this._markerHash;
             if(this._markerHash[this._model.vClass])
             {
                this.vehicleTypeMarker.gotoAndStop(this._model.vClass);

@@ -198,7 +198,6 @@ package net.wg.gui.components.popovers
       override public function invokeLayout() : Object
       {
          var _loc4_:DisplayObject = null;
-         var _loc10_:SmartPopOverLayoutInfo = null;
          super.invokeLayout();
          if(this._positionKeyPoint == null || this._stageDimensions == null)
          {
@@ -220,7 +219,7 @@ package net.wg.gui.components.popovers
          }
          var _loc8_:IAbstractWrapperView = _loc2_.wrapperContent;
          var _loc9_:Rectangle = new Rectangle(0,0,_loc2_.hitMc.width,_loc2_.hitMc.height);
-         _loc10_ = getLayoutOptions(_loc1_,_loc3_,this._stageDimensions,this._positionKeyPoint,_loc9_,this._positionKeyPointPadding,this._preferredLayout,this._changeableArrowDirection,_bgInternalPadding);
+         var _loc10_:SmartPopOverLayoutInfo = getLayoutOptions(_loc1_,_loc3_,this._stageDimensions,this._positionKeyPoint,_loc9_,this._positionKeyPointPadding,this._preferredLayout,this._changeableArrowDirection,_bgInternalPadding);
          _loc2_.arrowDirection = _loc10_.arrowDirection;
          _loc2_.arrowPosition = _loc10_.arrowPosition;
          _loc2_.x = Math.round(this.positionKeyPoint.x - _loc10_.popupPaddingLeft - _bgInternalPadding.left);

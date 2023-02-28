@@ -2,7 +2,7 @@ import weakref
 from collections import defaultdict, namedtuple
 import typing
 from constants import DEATH_REASON_ALIVE
-from gui.battle_results.reusable import shared
+from gui.battle_results.reusable import shared, ReusableInfoFactory
 from helpers import dependency
 from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
@@ -34,15 +34,17 @@ def _getVehiclesGenerator(vehicles):
 
 
 class VehiclesInfo(shared.UnpackedInfo):
-    __slots__ = ('__vehicles', '__vehicleToAccountID', '__accountToVehicleID', '__details')
+    __slots__ = ('__vehicles', '__vehicleToAccountID', '__accountToVehicleID', '__details',
+                 '__bonusType')
     itemsCache = dependency.descriptor(IItemsCache)
 
-    def __init__(self, vehicles):
+    def __init__(self, bonusType, vehicles):
         super(VehiclesInfo, self).__init__()
         self.__vehicles = defaultdict(list)
         self.__vehicleToAccountID = {}
         self.__accountToVehicleID = {}
         self.__details = {}
+        self.__bonusType = bonusType
         getItemByCD = self.itemsCache.items.getItemByCD
 
         def _getKey(value):
@@ -100,7 +102,8 @@ class VehiclesInfo(shared.UnpackedInfo):
             items = self.__vehicles[vehicleID]
         else:
             items = []
-        info = shared.VehicleSummarizeInfo(vehicleID, player)
+        vehicleSummarizeInfoCls = ReusableInfoFactory.vehicleSummarizeInfoForBonusType(self.__bonusType)
+        info = vehicleSummarizeInfoCls(vehicleID, player)
         getItemByCD = self.itemsCache.items.getItemByCD
 
         def getVehicleResult(intCD):
@@ -110,9 +113,10 @@ class VehiclesInfo(shared.UnpackedInfo):
 
             return
 
+        vehicleDetailedInfoCls = ReusableInfoFactory.vehicleDetailedInfoForBonusType(self.__bonusType)
         for idx, item in enumerate(items):
             if idx >= len(result):
                 continue
-            info.addVehicleInfo(shared.VehicleDetailedInfo.makeForVehicle(vehicleID, getItemByCD(item.intCD), weakref.proxy(player), getVehicleResult(item.intCD)))
+            info.addVehicleInfo(vehicleDetailedInfoCls.makeForVehicle(vehicleID, getItemByCD(item.intCD), weakref.proxy(player), getVehicleResult(item.intCD)))
 
         return info
