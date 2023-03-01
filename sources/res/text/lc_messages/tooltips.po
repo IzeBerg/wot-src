@@ -61,9 +61,6 @@ msgstr "In Team Battle"
 msgid "Contact/status/inBattle/training"
 msgstr "In Team Training Battle"
 
-msgid "Contact/status/inBattle/tutorial"
-msgstr "In Battle Training"
-
 msgid "Contact/status/inBattle/unknown"
 msgstr "In Battle"
 
@@ -602,10 +599,6 @@ msgstr ""
 "Automatically extinguishes fire in a vehicle right after inflammation. The "
 "passive effect reduces the chance of inflammation."
 
-msgid "advanced/battleTeaching"
-msgstr ""
-"Apply everything you have learned from Bootcamp in a battle against bots."
-
 msgid "advanced/brotherhood"
 msgstr ""
 "Improves major qualifications and all skills for the entire crew. Comes into"
@@ -840,8 +833,8 @@ msgstr ""
 
 msgid "advanced/largeMedkit"
 msgstr ""
-"Prompt treatment of all injured crew members and removes the stun effect. "
-"The passive effect improves the protection of the crew and reduces stun "
+"Prompt treatment of all injured crew members and removal of the stun effect."
+" The passive effect improves the protection of the crew and reduces stun "
 "duration."
 
 msgid "advanced/largeRepairkit"
@@ -928,8 +921,8 @@ msgstr ""
 
 msgid "advanced/relativeCamouflage"
 msgstr ""
-"A set of parameters that show the vehicle concealment and spotting of your "
-"vehicle by enemies."
+"A set of parameters that show the vehicle's concealment and the spotting of "
+"your vehicle by enemies."
 
 msgid "advanced/relativeMobility"
 msgstr ""
@@ -1467,8 +1460,8 @@ msgstr "Days of Premium Account"
 
 msgid "awardItem/premium_plus/body"
 msgstr ""
-"A special account status that gives you more credits and experience, as well"
-" as providing additional options."
+"A special account status that gives you more credits and experience and "
+"provides additional options."
 
 msgid "awardItem/premium_plus/header"
 msgstr "WoT Premium Account"
@@ -1772,7 +1765,7 @@ msgid "battlePassOffer/title/guide_gift"
 msgstr "Training Guides to Select From"
 
 msgid "battlePassOffer/title/new_device_fv_gift"
-msgstr "Equipment to Select From"
+msgstr "Standard Equipment to Select From"
 
 msgid "battlePassOffer/title/new_device_mi_gift"
 msgstr "Equipment to Select From"
@@ -1932,21 +1925,6 @@ msgstr "Event starts in"
 
 msgid "battleTypes/battleRoyale/tillStartCycle"
 msgstr "Starts in:"
-
-msgid "battleTypes/battleTeaching/body"
-msgstr ""
-"Apply everything you have learned from Battle Training in a battle against bots on the %(map1)s map.\n"
-"• Note: after you have fought %(battles)d battles (of any type) on your account, you will not earn credits or experience in this mode.\n"
-"• Tiers allowed: I–II."
-
-msgid "battleTypes/battleTeaching/header"
-msgstr "Proving Ground"
-
-msgid "battleTypes/battleTutorial/body"
-msgstr "Learn to drive your tank and destroy enemy vehicles."
-
-msgid "battleTypes/battleTutorial/header"
-msgstr "Battle Training"
 
 msgid "battleTypes/epic_training/body"
 msgstr ""
@@ -2879,7 +2857,7 @@ msgstr ""
 "players from the following categories: Friends and Permanent Tactical Units."
 
 msgid "chatContactsListOnly/header"
-msgstr "Receive Messages Only from Contact List"
+msgstr "Receive Messages Only From Contact List"
 
 msgid "clanCommonInfo/ClanName"
 msgstr "Clan [%(clanAbbrev)s] %(clanName)s"
@@ -3920,7 +3898,7 @@ msgstr ""
 "your Garage as soon as they are ready for battle."
 
 msgid "displayPlatoonMembers/header"
-msgstr "Display vehicles of Platoon members in the Garage"
+msgstr "Display Vehicles of Platoon Members in the Garage"
 
 msgid "elen/ancor/allGroups/body"
 msgstr "Click to go to this group's positions."
@@ -5693,8 +5671,8 @@ msgstr "Exterior"
 
 msgid "hangar/unlockButton/body"
 msgstr ""
-"Click to open research window\n"
-"of current vehicle."
+"Click to open the research window\n"
+"of the current vehicle."
 
 msgid "hangar/unlockButton/header"
 msgstr "Research"
@@ -6224,6 +6202,12 @@ msgstr "Discounts are applied to the vehicles of the following nations:"
 msgid "header/buttons/techtree/header"
 msgstr "Tech Tree"
 
+msgid "header/buttons/tournaments/body"
+msgstr "See Tournaments and Challenges"
+
+msgid "header/buttons/tournaments/header"
+msgstr "Tournaments"
+
 msgid "header/eliteIcon/body"
 msgstr ""
 "A vehicle with all tech branches fully researched.\n"
@@ -6603,7 +6587,7 @@ msgstr ""
 "in the login dropdown menu uses our algorithm to select the optimal server."
 
 msgid "loginServerSelection/header"
-msgstr "Display server selection upon game launch"
+msgstr "Display Server Selection Upon Game Launch"
 
 msgid "marathon/body"
 msgstr ""
@@ -7472,6 +7456,27 @@ msgstr ""
 msgid "notrecruitedtankman/commander_gagarin21/label"
 msgstr "A unique crew member"
 
+msgid "notrecruitedtankman/commander_hillen/desc"
+msgstr ""
+"I'm a big rugby fan, you know. And the minute they brought me here, I "
+"immediately felt like a fish in water. I mean, think about it. 15-on-15 "
+"scrums? Check. Different roles on the field? Check. Tactical variety? Check."
+" Power moves? Loads of them! Too bad there's no referee—the lads here do "
+"some really crazy stuff sometimes. So I'll just take a couple more fights "
+"and head back to my place, if you don't mind, mate."
+
+msgid "notrecruitedtankman/commander_hillen/label"
+msgstr "Unique Commander"
+
+msgid "notrecruitedtankman/commander_hob/desc"
+msgstr ""
+"Knabe is a force to be reckoned with. He once pulled five tanks out of the "
+"mud with his bare hands and hardly broke a sweat! As a tank commander, he "
+"leads his team to victory—even if the team actively resists."
+
+msgid "notrecruitedtankman/commander_hob/label"
+msgstr "Unique Commander"
+
 msgid "notrecruitedtankman/commander_maeve/desc"
 msgstr ""
 "The embodiment of sheer power and a role model for girls around the globe, "
@@ -8049,6 +8054,15 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankman/label"
 msgstr "A unique crew member"
 
+msgid "notrecruitedtankman/tankmen/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen/label"
+msgstr "Unique Crew Member"
+
 msgid "notrecruitedtankman/tankmen_auc_1/desc"
 msgstr ""
 "Primaris Techmarine. Fascinated by machines from a very young age, "
@@ -8078,6 +8092,52 @@ msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankmen_auc_2/label"
 msgstr "Warhammer 40,000: Special Offer"
+
+msgid "notrecruitedtankman/tankmen_bp10_1/desc"
+msgstr ""
+"Eighteen years of infantry service did not change this soldier's demeanor at"
+" all. He is still a fun and light-hearted hulk of a man who loves to place "
+"bets, believes in his luck, and always relies on chance. He got into the "
+"desert by flipping a coin—what else is there to say? His carelessness got "
+"him into mortal danger several times, but he always got away unscathed. His "
+"catchphrase is \"Betcha I'll come back alive.\""
+
+msgid "notrecruitedtankman/tankmen_bp10_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_1/label"
+msgstr "Battle Pass Season X"
+
+msgid "notrecruitedtankman/tankmen_bp10_2/desc"
+msgstr ""
+"A military translator who can quickly adapt to any specifics of any military"
+" branch. A polyglot who knows eight languages, including Swahili. After the "
+"passing of his comrade in arms, Leo Sommer, he keeps to himself, which is "
+"why he prefers to work alone and prefers not to make new friends. While "
+"working in the archives, he found a mention of an ancient scroll that was "
+"considered lost, and not a week later, he was a part of a special desert "
+"expedition."
+
+msgid "notrecruitedtankman/tankmen_bp10_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_2/label"
+msgstr "Battle Pass Season X"
+
+msgid "notrecruitedtankman/tankmen_bp10_3/desc"
+msgstr ""
+"Only three people have access to this spy's personal file. According to some"
+" info, she is the daughter of an intel officer and an actress. She was "
+"recruited at a young age and is considered the best in covert operations. In"
+" addition to her remarkable wits, she also makes active use of her good "
+"looks. She was sent to the desert by the order of higher commanding "
+"officers, but she never wanted to go there."
+
+msgid "notrecruitedtankman/tankmen_bp10_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_3/label"
+msgstr "Battle Pass Season X"
 
 msgid "notrecruitedtankman/tankmen_bp2_1/desc"
 msgstr ""
@@ -9620,10 +9680,10 @@ msgid "quests/igr"
 msgstr "Mission is available in Premium IGR only"
 
 msgid "quests/linkBtn/battlePass"
-msgstr "To Battle Pass Progression"
+msgstr "See Battle Pass Progression"
 
 msgid "quests/linkBtn/battlePass/select"
-msgstr "To Battle Pass"
+msgstr "To Battle Pass Chapter Selection"
 
 msgid "quests/linkBtn/customizationProgression/disabled"
 msgstr "Detailed information is currently unavailable."
@@ -10827,7 +10887,7 @@ msgstr ""
 "Displays modules and shells that are not compatible with your vehicle."
 
 msgid "storage/mainMenu/for_sell/header"
-msgstr "Modules and shells for sale"
+msgstr "Modules and shells to sale"
 
 msgid "storage/mainMenu/in_hangar/body"
 msgstr "Displays all vehicles in the Garage."
@@ -11008,13 +11068,13 @@ msgstr ""
 
 msgid "tank_params/desc/avgDamagePerMinute"
 msgstr ""
-"The amount of damage that can potentially be caused to an enemy vehicle "
-"within 1 minute if all hits penetrate the armor."
+"Amount of damage potentially caused to an enemy vehicle in 1 minute if all "
+"hits penetrate the armor."
 
 msgid "tank_params/desc/avgPiercingPower"
 msgstr ""
-"The average thickness of armor penetrated by a standard shell adjusted for "
-"shell normalization."
+"Average armor thickness penetrated by a standard shell, adjusted for shell "
+"normalization."
 
 msgid "tank_params/desc/burstFireRate"
 msgstr ""
@@ -11033,7 +11093,7 @@ msgstr "Time to repair a damaged main/reserve track."
 
 msgid "tank_params/desc/chassisRotationSpeed"
 msgstr ""
-"Speed of hull traverse about its axis, and speed of changing direction in "
+"Speed of hull traverse around its axis, and speed of direction change in "
 "motion (maneuverability)."
 
 msgid "tank_params/desc/circularVisionRadius"
@@ -11114,8 +11174,7 @@ msgstr ""
 " shared at any distance."
 
 msgid "tank_params/desc/relativeArmor"
-msgstr ""
-"A set of parameters that shows the vehicle resilience to damage caused."
+msgstr "A set of parameters that show the vehicle's resilience to damage."
 
 msgid "tank_params/desc/relativeCamouflage"
 msgstr ""
@@ -11142,8 +11201,8 @@ msgstr "Number of rounds per minute."
 
 msgid "tank_params/desc/reloadTimeSecs"
 msgstr ""
-"Time it takes to reload the gun (or both guns on vehicles with the double-"
-"barreled gun system) after firing."
+"Time to reload the gun (or both guns on vehicles with the double-barreled "
+"gun system) after firing."
 
 msgid "tank_params/desc/rocketAccelerationEnginePower"
 msgstr ""
@@ -11661,7 +11720,7 @@ msgstr ""
 "• Players can only send messages in the Platoon chat."
 
 msgid "turnOffCombatChat/header"
-msgstr "Disable Chat with Allies"
+msgstr "Disable Chat With Allies"
 
 msgid "useFreeXP/body"
 msgstr ""

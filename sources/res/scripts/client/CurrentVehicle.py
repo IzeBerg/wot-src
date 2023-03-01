@@ -186,6 +186,9 @@ class _CurrentVehicle(_CachedVehicle):
             return
         else:
             if self.isPresent() and self.isInHangar() and self.item.modelState:
+                if self.isInBootcamp():
+                    bootcampOutfit = self.bootcampController.getBootcampOutfit(self.item.descriptor)
+                    outfit = bootcampOutfit if bootcampOutfit else outfit
                 self.hangarSpace.startToUpdateVehicle(self.item, outfit)
             else:
                 self.hangarSpace.removeVehicle()
@@ -715,8 +718,7 @@ class _CurrentPreviewVehicle(_CachedVehicle):
             return
 
     def __getPreviewOutfitByStyle(self, style):
-        isOutfitUnlocked = not self.item.isOutfitLocked or self.item.isRestoredWithStyle
-        if self.isPresent() and isOutfitUnlocked and style.mayInstall(self.item):
+        if self.isPresent() and not self.item.isOutfitLocked and style.mayInstall(self.item):
             return style.getOutfit(first(style.seasons), vehicleCD=self.item.descriptor.makeCompactDescr())
         else:
             return

@@ -12,8 +12,6 @@ package net.wg.gui.lobby.battleResults.data
       
       public var shareButtonTooltip:String = "";
       
-      public var replayButtonLabel:String = "";
-      
       public var ownTitle:String = "";
       
       public var enemyTitle:String = "";

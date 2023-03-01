@@ -185,10 +185,6 @@ package
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_STRONGHOLD:String = "#invites:invites/note/change_and_leave/PREBATTLE_STRONGHOLD";
       
-      public static const INVITES_NOTE_LEAVE_QUEUE_SANDBOX:String = "#invites:invites/note/leave/QUEUE_SANDBOX";
-      
-      public static const INVITES_NOTE_CHANGE_AND_LEAVE_QUEUE_SANDBOX:String = "#invites:invites/note/change_and_leave/QUEUE_SANDBOX";
-      
       public static const INVITES_NOTE_LEAVE_PREBATTLE_EPIC:String = "#invites:invites/note/leave/PREBATTLE_EPIC";
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_EPIC:String = "#invites:invites/note/change_and_leave/PREBATTLE_EPIC";

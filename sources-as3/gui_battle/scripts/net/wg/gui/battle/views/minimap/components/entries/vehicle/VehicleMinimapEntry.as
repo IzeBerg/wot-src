@@ -45,10 +45,6 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       private static const LABEL_SQUADMAN:String = "squadman";
       
       private static const ATLAS_NAME_DELIMITER:String = "_";
-      
-      private static const HP_OFFSET_X:int = 8;
-      
-      private static const HP_OFFSET_Y:int = -2;
        
       
       public var mcTopAnimation:MarkerTopAnimation = null;
@@ -119,15 +115,13 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       
       private var _percentHP:int = 100;
       
-      private var _prevTextPosX:int = 0;
-      
-      private var _prevTextPosY:int = 0;
-      
       private var _showVehicleHp:Boolean = false;
       
       private var _hpTypeMap:Object;
       
       private var _minimapEntryController:MinimapEntryController;
+      
+      private var _labelHelper:MinimapEntryLabelHelper;
       
       public function VehicleMinimapEntry()
       {
@@ -147,13 +141,12 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          this.allyGreenAnimation.visible = this.enemyRedAnimation.visible = this.enemyPurpleAnimation.visible = this.squadmanYellowAnimation.visible = this.squadmanGoldAnimation.visible = this.teamKillerBlueAnimation.visible = this.mcBearerAnimationContainer.visible = this.deadAnimation.visible = this.deadPermanentAnimation.visible = false;
          this.vehicleNameTextFieldAlt.visible = false;
          this._currentTextField = this.vehicleNameTextFieldClassic;
-         this._prevTextPosX = this._currentTextField.x;
-         this._prevTextPosY = this._currentTextField.y;
          TextFieldEx.setNoTranslate(this.vehicleNameTextFieldAlt,true);
          TextFieldEx.setNoTranslate(this.vehicleNameTextFieldClassic,true);
          this._minimapEntryController = MinimapEntryController.instance;
          this._minimapEntryController.registerScalableEntry(this);
          this._isColorBlind = App.colorSchemeMgr.getIsColorBlindS();
+         this._labelHelper = new MinimapEntryLabelHelper(this,this._currentTextField);
       }
       
       override protected function draw() : void
@@ -266,20 +259,11 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
             this.hpCircle.setColorBlindMode(this._isColorBlind);
             this.hpCircle.setIsAoI(this._isInAoI);
             this.hpCircle.setType(this._hpTypeMap[this._guiLabel]);
-            if(_loc5_)
-            {
-               this._currentTextField.x = this._prevTextPosX + HP_OFFSET_X;
-               this._currentTextField.y = this._prevTextPosY + HP_OFFSET_Y;
-            }
-            else
-            {
-               this._currentTextField.x = this._prevTextPosX;
-               this._currentTextField.y = this._prevTextPosY;
-            }
             if(this._showVehicleHp)
             {
                this.hpCircle.updateProgress(Math.max(0,this._percentHP * 0.01));
             }
+            this._labelHelper.forceUpdate();
          }
       }
       
@@ -319,12 +303,15 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          this.vehicleNameTextFieldClassic = null;
          this._hpTypeMap = null;
          App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
+         this._labelHelper.dispose();
+         this._labelHelper = null;
          super.onDispose();
       }
       
       public function hideVehicleName() : void
       {
          this._isVehicleLabelVisible = false;
+         this._labelHelper.stop();
          invalidate(INVALID_VEHICLE_LABEL);
       }
       
@@ -401,6 +388,7 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
             this._actionAnimationType = Values.EMPTY_STR;
             this._currentTextField = this.vehicleNameTextFieldAlt;
          }
+         this._labelHelper.setCurrentTF(this._currentTextField);
          this._isInAoI = param1;
          invalidate(INVALID_VEHICLE_LABEL | INVALID_CHANGE_VEHICLE_ANIMATION_TYPE | INVALID_HP);
       }
@@ -459,6 +447,7 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       public function showVehicleName() : void
       {
          this._isVehicleLabelVisible = true;
+         this._labelHelper.start();
          invalidate(INVALID_VEHICLE_LABEL);
       }
       
@@ -473,6 +462,16 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       public function get vehicleID() : Number
       {
          return this._vehicleID;
+      }
+      
+      public function updateSizeIndex(param1:int) : void
+      {
+         this._labelHelper.updateSizeIndex(param1);
+      }
+      
+      public function get isVehicleLabelVisible() : Boolean
+      {
+         return this._isVehicleLabelVisible;
       }
       
       private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void

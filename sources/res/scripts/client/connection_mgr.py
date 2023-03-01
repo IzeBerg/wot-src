@@ -65,6 +65,7 @@ class ConnectionManager(IConnectionManager):
         self.__lastLoginName = None
         self.__hostItem = g_preDefinedHosts._makeHostItem('', '', '')
         self.__availableHosts = None
+        self.__lastSessionID = ''
         self.__retryConnectionPeriod = _MIN_RECONNECTION_TIMEOUT
         self.__retryConnectionCallbackID = None
         self.__connectionInProgress = False
@@ -148,6 +149,7 @@ class ConnectionManager(IConnectionManager):
             if stage == 1:
                 if self.__connectionMethod == CONNECTION_METHOD.TOKEN and 'token2' in responseData:
                     self.__swtichToToken2(responseData['token2'])
+                self.__lastSessionID = responseData.get('session_id', '')
                 self.onLoggedOn(responseData)
                 self.onConnected()
         else:
@@ -265,6 +267,10 @@ class ConnectionManager(IConnectionManager):
     @property
     def lastLoginName(self):
         return self.__lastLoginName
+
+    @property
+    def lastSessionID(self):
+        return self.__lastSessionID
 
     @property
     def databaseID(self):

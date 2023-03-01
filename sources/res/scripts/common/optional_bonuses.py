@@ -1,10 +1,9 @@
-import random, copy, time
-from typing import Optional, Dict
+import copy, random, time, typing
 from account_shared import getCustomizationItem
-from soft_exception import SoftException
-from items import tankmen
-from items.components.crew_skins_constants import NO_CREW_SKIN_ID
 from battle_pass_common import NON_VEH_CD
+from soft_exception import SoftException
+if typing.TYPE_CHECKING:
+    from typing import Dict, Optional
 
 def _packTrack(track):
     result = []
@@ -673,26 +672,29 @@ class StripVisitor(NodeVisitor):
         def copyMerger(storage, name, value, isLeaf):
             storage[name] = value
 
-    def __init__(self):
+    def __init__(self, needProbabilitiesInfo=False):
+        self.__needProbabilitiesInfo = needProbabilitiesInfo
         super(StripVisitor, self).__init__(self.ValuesMerger(), tuple())
 
     def onOneOf(self, storage, values):
         strippedValues = []
         _, values = values
+        needProbabilitiesInfo = self.__needProbabilitiesInfo
         for probability, bonusProbability, refGlobalID, bonusValue in values:
             stippedValue = {}
             self._walkSubsection(stippedValue, bonusValue)
-            strippedValues.append(([-1], -1, None, stippedValue))
+            strippedValues.append(([probability if needProbabilitiesInfo else -1], -1, None, stippedValue))
 
         storage['oneof'] = (None, strippedValues)
         return
 
     def onAllOf(self, storage, values):
         strippedValues = []
+        needProbabilitiesInfo = self.__needProbabilitiesInfo
         for probability, bonusProbability, refGlobalID, bonusValue in values:
             stippedValue = {}
             self._walkSubsection(stippedValue, bonusValue)
-            strippedValues.append(([-1], -1, None, stippedValue))
+            strippedValues.append(([probability if needProbabilitiesInfo else -1], -1, None, stippedValue))
 
         storage['allof'] = strippedValues
         return

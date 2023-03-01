@@ -51,16 +51,19 @@ def _getSevUtc():
 class GameSessionController(IGameSessionController, IGlobalListener, Notifiable):
     NOTIFY_PERIOD = time_utils.ONE_HOUR
     TIME_RESERVE = 59
-    PLAY_TIME_LEFT_NOTIFY = time_utils.QUARTER_HOUR + TIME_RESERVE
-    TIME_LEFT_NOTIFY_FROM_EPIC = time_utils.HALF_HOUR + TIME_RESERVE
+    PLAY_TIME_LEFT_NOTIFY = time_utils.QUARTER_HOUR
     onClientNotify = Event.Event()
     onTimeTillBan = Event.Event()
     onNewDayNotify = Event.Event()
     onPremiumNotify = Event.Event()
     onPremiumTypeChanged = Event.Event()
     onParentControlNotify = Event.Event()
+    onNotifyTimeTillKick = Event.Event()
     itemsCache = dependency.descriptor(IItemsCache)
     lobbyContext = dependency.descriptor(ILobbyContext)
+    _DEFAULT_TIME_KEY = 'DEFAULT'
+    _QUEUE_TYPE_TO_CONFIG_TIME_KEY = {constants.QUEUE_TYPE.EPIC: constants.ARENA_BONUS_TYPE_IDS[constants.ARENA_BONUS_TYPE.EPIC_BATTLE], 
+       constants.QUEUE_TYPE.COMP7: constants.ARENA_BONUS_TYPE_IDS[constants.ARENA_BONUS_TYPE.COMP7]}
 
     def init(self):
         self.__timeTillKickNotifier = AcyclicNotifier(self.__getClosestTimeTillKickNotification, self.__notifyTimeTillKick)
@@ -73,6 +76,7 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
         self.__doNotifyInStart = False
         self.__battles = 0
         self.__lastNotifyTime = None
+        self.__lastPlayTimeNotify = None
         LOG_DEBUG('GameSessionController::init')
         return
 
@@ -93,6 +97,7 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
     def onLobbyStarted(self, ctx):
         self.__sessionStartedAt = ctx.get('aogasStartedAt', -1)
         LOG_DEBUG('GameSessionController::start', self.__sessionStartedAt)
+        BigWorld.lobbyStarted(self.__sessionStartedAt)
 
     def onLobbyInited(self, event):
         if self.__lastNotifyTime is None:
@@ -112,10 +117,13 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
 
     def onAvatarBecomePlayer(self):
         self._stop(doNotifyInStart=True)
+        self.__lastPlayTimeNotify = None
+        return
 
     def onDisconnected(self):
         self._stop()
         self.__lastNotifyTime = None
+        self.__lastPlayTimeNotify = None
         self.__lastBanMsg = None
         return
 
@@ -171,8 +179,11 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
         playTimeLeft, curfewTimeLeft = self.__getBlockTimeLeft()
         return playTimeLeft < curfewTimeLeft
 
+    def onPrbEntitySwitching(self):
+        self.__lastPlayTimeNotify = self.getPlayTimeNotify()
+
     def onPrbEntitySwitched(self):
-        if self.__timeTillKickNotifier is not None:
+        if self.__timeTillKickNotifier is not None and self.__lastPlayTimeNotify != self.getPlayTimeNotify():
             self.__timeTillKickNotifier.startNotification()
         return
 
@@ -180,9 +191,7 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
         self.__battles += 1
 
     def getPlayTimeNotify(self):
-        if self.prbEntity and self.prbEntity.getQueueType() == constants.QUEUE_TYPE.EPIC:
-            return self.TIME_LEFT_NOTIFY_FROM_EPIC
-        return self.PLAY_TIME_LEFT_NOTIFY
+        return self.__getLockTimeBeforeBattle() + self.TIME_RESERVE
 
     def getCurfewBlockTime(self):
         if self.__curfewBlockTime is not None:
@@ -207,6 +216,14 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
                 return I18nInfoDialogMeta('koreaParentNotification', messageCtx={'preBlockTime': formatter(notifyStartTime), 
                    'blockTime': formatter(blockTime)})
             return
+
+    def getKickAtTime(self):
+        if self._gameRestrictions.hasSessionLimit:
+            return self._gameRestrictions.getKickAt()
+        return 0
+
+    def onStrongholdDataChanged(self, header, isFirstBattle, reserve, reserveOrder):
+        self.__timeTillKickNotifier.startNotification()
 
     @property
     def _stats(self):
@@ -243,6 +260,9 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
     def __regionals(self):
         return self.lobbyContext.getServerSettings().regionals
 
+    def __playLimits(self):
+        return self.lobbyContext.getServerSettings().playLimitsConfig
+
     @classmethod
     def __getClosestNewDayNotification(cls):
         return time_utils.ONE_DAY - _getSvrLocalToday()
@@ -277,7 +297,7 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
     def __loadBanCallback(self, banTimeLeft=0):
         self.__clearBanCallback()
         if not banTimeLeft:
-            banTimeLeft = min(*self.__getBlockTimeLeft()) - self.PLAY_TIME_LEFT_NOTIFY
+            banTimeLeft = min(*self.__getBlockTimeLeft()) - self.getPlayTimeNotify()
         banTimeLeft = max(banTimeLeft, 1)
         LOG_DEBUG('Game session block callback', banTimeLeft)
         if banTimeLeft and self.__lastBanMsg is None:
@@ -311,6 +331,7 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
     def __notifyTimeTillKick(self):
         messageText = backport.text(R.strings.system_messages.gameSessionControl.parentControl.kickTime(), kickTime=backport.getShortTimeFormat(self._gameRestrictions.getKickAt()))
         SystemMessages.pushMessage(messageText, SM_TYPE.Warning, NotificationPriorityLevel.HIGH)
+        self.onNotifyTimeTillKick()
 
     def __notifyParentControlChanged(self, timeLimit):
         msgList = [
@@ -388,3 +409,17 @@ class GameSessionController(IGameSessionController, IGlobalListener, Notifiable)
                 curfewNearest = restr
 
         return curfewNearest
+
+    def __getLockTimeBeforeBattle(self):
+        config = self.__playLimits().lockTimeBeforeBattle
+        timeKey = self._DEFAULT_TIME_KEY
+        if self.prbEntity:
+            queueType = self.prbEntity.getQueueType()
+            if queueType == constants.QUEUE_TYPE.STRONGHOLD_UNITS:
+                if self.prbEntity.isSortie():
+                    timeKey = constants.ARENA_BONUS_TYPE_IDS[constants.ARENA_BONUS_TYPE.SORTIE_2]
+                else:
+                    timeKey = constants.ARENA_BONUS_TYPE_IDS[constants.ARENA_BONUS_TYPE.FORT_BATTLE_2]
+            else:
+                timeKey = self._QUEUE_TYPE_TO_CONFIG_TIME_KEY.get(queueType, self._DEFAULT_TIME_KEY)
+        return config.get(timeKey, self.PLAY_TIME_LEFT_NOTIFY)

@@ -46,7 +46,7 @@ class ShellProvider(VehicleBaseArrayProvider):
             model.setItemTypeID(item.itemTypeID)
             model.setImageName(item.descriptor.iconName)
             BuyPriceModelBuilder.clearPriceModel(model.price)
-            BuyPriceModelBuilder.fillPriceModelByItemPrice(model.price, buyPrice)
+            BuyPriceModelBuilder.fillPriceModelByItemPrice(model.price, buyPrice, checkBalanceAvailability=True)
             self._fillSpecification(model, item)
         vehicle = self._getVehicle()
         inTankCount = 0
@@ -67,7 +67,7 @@ class ShellProvider(VehicleBaseArrayProvider):
         model.setBuyCount(buyCount)
         BuyPriceModelBuilder.clearPriceModel(model.totalPrice)
         if buyCount:
-            BuyPriceModelBuilder.fillPriceModelByItemPrice(model.totalPrice, buyPrice * buyCount)
+            BuyPriceModelBuilder.fillPriceModelByItemPrice(model.totalPrice, buyPrice * buyCount, checkBalanceAvailability=True)
 
     def _fillSpecification(self, model, item):
         specifications = model.getSpecifications()

@@ -79,7 +79,10 @@ SM_TYPE = Enumeration('System message type', [
  'DismantlingForEquipCoin',
  'Deconstructing',
  'UpgradeForEquipCoins',
- 'BattlePassSeasonChange'])
+ 'EventLootBoxStart',
+ 'EventLootBoxFinish',
+ 'EventLootBoxEnabled',
+ 'EventLootBoxDisabled'])
 CURRENCY_TO_SM_TYPE = {Currency.CREDITS: SM_TYPE.PurchaseForCredits, 
    Currency.GOLD: SM_TYPE.PurchaseForGold, 
    Currency.CRYSTAL: SM_TYPE.PurchaseForCrystal, 

@@ -1,3 +1,4 @@
+import typing
 from adisp import adisp_process
 from debug_utils import LOG_ERROR
 from gui.prb_control import settings, prb_getters

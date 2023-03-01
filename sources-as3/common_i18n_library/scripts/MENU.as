@@ -1427,8 +1427,6 @@ package
       
       public static const HEADERBUTTONS_BATTLE_TYPES_TRAININGLEAVE:String = "#menu:headerButtons/battle/types/trainingLeave";
       
-      public static const HEADERBUTTONS_BATTLE_TYPES_BATTLETEACHING:String = "#menu:headerButtons/battle/types/battleTeaching";
-      
       public static const HEADERBUTTONS_BATTLE_TYPES_MAPSTRAINING:String = "#menu:headerButtons/battle/types/mapsTraining";
       
       public static const HEADERBUTTONS_BATTLE_TYPES_SPEC:String = "#menu:headerButtons/battle/types/spec";
@@ -1454,8 +1452,6 @@ package
       public static const HEADERBUTTONS_BATTLE_TYPES_HISTORICALBATTLESLEAVE_DESCR:String = "#menu:headerButtons/battle/types/historicalBattlesLeave/descr";
       
       public static const HEADERBUTTONS_BATTLE_TYPES_HISTORICALBATTLESLEAVE:String = "#menu:headerButtons/battle/types/historicalBattlesLeave";
-      
-      public static const HEADERBUTTONS_BATTLE_TYPES_BATTLETUTORIAL:String = "#menu:headerButtons/battle/types/battleTutorial";
       
       public static const HEADERBUTTONS_BATTLE_TYPES_FALLOUT:String = "#menu:headerButtons/battle/types/fallout";
       
@@ -1560,10 +1556,6 @@ package
       public static const HEADERBUTTONS_FIGHTBTN_TOOLTIP_FALLOUTVEHMIN_HEADER:String = "#menu:headerButtons/fightBtn/tooltip/falloutVehMin/header";
       
       public static const HEADERBUTTONS_FIGHTBTN_TOOLTIP_FALLOUTVEHMIN_BODY:String = "#menu:headerButtons/fightBtn/tooltip/falloutVehMin/body";
-      
-      public static const HEADERBUTTONS_FIGHTBTN_TOOLTIP_SANDBOX_INVALID_HEADER:String = "#menu:headerButtons/fightBtn/tooltip/sandbox/invalid/header";
-      
-      public static const HEADERBUTTONS_FIGHTBTN_TOOLTIP_SANDBOX_INVALID_LEVEL_BODY:String = "#menu:headerButtons/fightBtn/tooltip/sandbox/invalid/level/body";
       
       public static const HEADERBUTTONS_FIGHTBTN_TOOLTIP_RANKEDVEHCLASS_HEADER:String = "#menu:headerButtons/fightBtn/tooltip/rankedVehClass/header";
       
@@ -1671,16 +1663,6 @@ package
       
       public static const HEADERBUTTONS_DEFAULTCOUNTER:String = "#menu:headerButtons/defaultCounter";
       
-      public static const PVESANDBOX_QUEUE_TITLE:String = "#menu:pveSandbox/queue/title";
-      
-      public static const PVESANDBOX_QUEUE_UNITS:String = "#menu:pveSandbox/queue/units";
-      
-      public static const PVESANDBOX_QUEUE_MESSAGE:String = "#menu:pveSandbox/queue/message";
-      
-      public static const PVESANDBOX_QUEUE_MORE_N_MINUTES:String = "#menu:pveSandbox/queue/more_n_minutes";
-      
-      public static const PVESANDBOX_QUEUE_PLAYER_WAITING_TIME:String = "#menu:pveSandbox/queue/player-waiting-time";
-      
       public static const HEADERBUTTONS_RATING:String = "#menu:headerButtons/rating";
       
       public static const HEADERBUTTONS_PROFILE:String = "#menu:headerButtons/profile";
@@ -1696,6 +1678,8 @@ package
       public static const HEADERBUTTONS_BARRACKS:String = "#menu:headerButtons/barracks";
       
       public static const HEADERBUTTONS_CLAN:String = "#menu:headerButtons/clan";
+      
+      public static const HEADERBUTTONS_TOURNAMENT:String = "#menu:headerButtons/tournament";
       
       public static const HEADERBUTTONS_CLANS:String = "#menu:headerButtons/clans";
       
@@ -3685,8 +3669,6 @@ package
       
       public static const AWARDWINDOW_TITLE_SPECIALACHIEVEMENT:String = "#menu:awardWindow/title/specialAchievement";
       
-      public static const AWARDWINDOW_TITLE_INFO:String = "#menu:awardWindow/title/info";
-      
       public static const AWARDWINDOW_OKBUTTON:String = "#menu:awardWindow/okButton";
       
       public static const AWARDWINDOW_TAKENEXTBUTTON:String = "#menu:awardWindow/takeNextButton";
@@ -3738,8 +3720,6 @@ package
       public static const AWARDWINDOW_SPECIALACHIEVEMENT_BATTLE_DESCRIPTION3:String = "#menu:awardWindow/specialAchievement/battle/description3";
       
       public static const AWARDWINDOW_SPECIALACHIEVEMENT_BATTLE_DESCRIPTION4:String = "#menu:awardWindow/specialAchievement/battle/description4";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_PVEBATTLE_DESCRIPTION:String = "#menu:awardWindow/specialAchievement/pveBattle/description";
       
       public static const AWARDWINDOW_SPECIALACHIEVEMENT_HEADER:String = "#menu:awardWindow/specialAchievement/header";
       

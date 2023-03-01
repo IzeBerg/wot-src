@@ -4,13 +4,12 @@
 	<IsEnabled>true</IsEnabled>
 	<Components>
 		<StaticComponents>
-			<ServerReplayConnectionComponent/>
 			<ServerReplayArenaComponent/>
 		</StaticComponents>
 	</Components>
 	<Entities>
 		<ClientServerEntities>
-			<ReplayConnectionHandler/>
+			<ReplayAccount/>
 		</ClientServerEntities>
 		<ServerOnlyEntities>
 			<RecorderEntity/>

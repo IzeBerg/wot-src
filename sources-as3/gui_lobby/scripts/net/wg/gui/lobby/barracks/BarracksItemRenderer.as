@@ -36,8 +36,6 @@ package net.wg.gui.lobby.barracks
       
       private static const INVALIDATE_IN_TANK:String = "inTank";
       
-      private static const PATH_TANKMAN_ICONS_BARRACKS:String = "../maps/icons/tankmen/icons/barracks/";
-      
       private static const PATH_TANKMAN_ICONS_SMALL:String = "../maps/icons/tankmen/ranks/small/";
       
       private static const PATH_TANKMEN_ROLES_SMALL:String = "../maps/icons/tankmen/roles/small/";
@@ -166,32 +164,20 @@ package net.wg.gui.lobby.barracks
          this._tankmanData = BarracksTankmanVO(param1);
          this.empty = this._tankmanData.empty;
          this.buy = this._tankmanData.buy;
-         var _loc2_:String = this._tankmanData.iconFile;
+         this.icon.visible = !StringUtils.isEmpty(this._tankmanData.iconFile);
+         this.icon.source = this._tankmanData.iconFile;
+         var _loc2_:String = this._tankmanData.rankIconFile;
          if(StringUtils.isEmpty(_loc2_))
-         {
-            this.icon.visible = false;
-         }
-         else
-         {
-            this.icon.visible = true;
-            _loc2_ = PATH_TANKMAN_ICONS_BARRACKS + _loc2_;
-            if(this.icon.source != _loc2_)
-            {
-               this.icon.source = _loc2_;
-            }
-         }
-         var _loc3_:String = this._tankmanData.rankIconFile;
-         if(StringUtils.isEmpty(_loc3_))
          {
             this.iconRank.visible = false;
          }
          else
          {
             this.iconRank.visible = true;
-            _loc3_ = PATH_TANKMAN_ICONS_SMALL + _loc3_;
-            if(this.iconRank.source != _loc3_)
+            _loc2_ = PATH_TANKMAN_ICONS_SMALL + _loc2_;
+            if(this.iconRank.source != _loc2_)
             {
-               this.iconRank.source = _loc3_;
+               this.iconRank.source = _loc2_;
             }
          }
          this.sixthSenseIcon.visible = this._tankmanData.hasCommanderFeature;
