@@ -14135,6 +14135,12 @@ package
       
       public static const STYLES_BS_2023_5_MT_DESCRIPTION_LONG:String = "#vehicle_customization:styles/bs_2023_5_MT/description/long";
       
+      public static const STYLES_COSMODAY_2023_MT:String = "#vehicle_customization:styles/cosmoday_2023_MT";
+      
+      public static const STYLES_COSMODAY_2023_MT_DESCRIPTION:String = "#vehicle_customization:styles/cosmoday_2023_MT/description";
+      
+      public static const STYLES_COSMODAY_2023_MT_DESCRIPTION_LONG:String = "#vehicle_customization:styles/cosmoday_2023_MT/description/long";
+      
       public static const CAMOUFLAGE_TSAREVICH_MT:String = "#vehicle_customization:camouflage/Tsarevich_MT";
       
       public static const CAMOUFLAGE_TSAREVICH_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/Tsarevich_MT/description";
@@ -14166,6 +14172,14 @@ package
       public static const CAMOUFLAGE_BS_2023_5_MT:String = "#vehicle_customization:camouflage/bs_2023_5_MT";
       
       public static const CAMOUFLAGE_BS_2023_5_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/bs_2023_5_MT/description";
+      
+      public static const CAMOUFLAGE_COSMODAY_2023_1_MT:String = "#vehicle_customization:camouflage/cosmoday_2023_1_MT";
+      
+      public static const CAMOUFLAGE_COSMODAY_2023_1_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/cosmoday_2023_1_MT/description";
+      
+      public static const CAMOUFLAGE_COSMODAY_2023_2_MT:String = "#vehicle_customization:camouflage/cosmoday_2023_2_MT";
+      
+      public static const CAMOUFLAGE_COSMODAY_2023_2_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/cosmoday_2023_2_MT/description";
       
       public static const INSIGNIA_TSAREVICH_MT:String = "#vehicle_customization:insignia/Tsarevich_MT";
       
@@ -14210,6 +14224,14 @@ package
       public static const REPAINT_BS_2023_5_MT:String = "#vehicle_customization:repaint/bs_2023_5_MT";
       
       public static const REPAINT_BS_2023_5_MT_DESCRIPTION:String = "#vehicle_customization:repaint/bs_2023_5_MT/description";
+      
+      public static const REPAINT_COSMODAY_2023_1_MT:String = "#vehicle_customization:repaint/cosmoday_2023_1_MT";
+      
+      public static const REPAINT_COSMODAY_2023_1_MT_DESCRIPTION:String = "#vehicle_customization:repaint/cosmoday_2023_1_MT/description";
+      
+      public static const REPAINT_COSMODAY_2023_2_MT:String = "#vehicle_customization:repaint/cosmoday_2023_2_MT";
+      
+      public static const REPAINT_COSMODAY_2023_2_MT_DESCRIPTION:String = "#vehicle_customization:repaint/cosmoday_2023_2_MT/description";
       
       public static const PROJECTION_DECALS_TSAREVICH_1_MT:String = "#vehicle_customization:projection_decals/Tsarevich_1_MT";
       
@@ -14314,6 +14336,26 @@ package
       public static const PROJECTION_DECALS_BS_2023_MBLSHKO_MT:String = "#vehicle_customization:projection_decals/bs_2023_Mblshko_MT";
       
       public static const PROJECTION_DECALS_BS_2023_MBLSHKO_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/bs_2023_Mblshko_MT/description";
+      
+      public static const PROJECTION_DECALS_COSMODAY_2023_ASTROMAN_MT:String = "#vehicle_customization:projection_decals/cosmoday_2023_astroman_MT";
+      
+      public static const PROJECTION_DECALS_COSMODAY_2023_ASTROMAN_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/cosmoday_2023_astroman_MT/description";
+      
+      public static const PROJECTION_DECALS_COSMODAY_2023_COVER_MT:String = "#vehicle_customization:projection_decals/cosmoday_2023_cover_MT";
+      
+      public static const PROJECTION_DECALS_COSMODAY_2023_COVER_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/cosmoday_2023_cover_MT/description";
+      
+      public static const PROJECTION_DECALS_COSMODAY_2023_MIMIC_MT:String = "#vehicle_customization:projection_decals/cosmoday_2023_mimic_MT";
+      
+      public static const PROJECTION_DECALS_COSMODAY_2023_MIMIC_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/cosmoday_2023_mimic_MT/description";
+      
+      public static const PROJECTION_DECALS_COSMODAY_2023_ROCKET_MT:String = "#vehicle_customization:projection_decals/cosmoday_2023_rocket_MT";
+      
+      public static const PROJECTION_DECALS_COSMODAY_2023_ROCKET_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/cosmoday_2023_rocket_MT/description";
+      
+      public static const PROJECTION_DECALS_COSMODAY_2023_SAFE_MT:String = "#vehicle_customization:projection_decals/cosmoday_2023_safe_MT";
+      
+      public static const PROJECTION_DECALS_COSMODAY_2023_SAFE_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/cosmoday_2023_safe_MT/description";
       
       public static const INSCRIPTION_BP_WINTER_INSCRIPTION_01_MT:String = "#vehicle_customization:inscription/bp_winter_inscription_01_MT";
       
