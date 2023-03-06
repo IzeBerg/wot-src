@@ -15,9 +15,6 @@ from gui.battle_results.templates.regular import REGULAR_PERSONAL_STATS_BLOCK
 from gui.battle_results.templates.regular import REGULAR_TEAMS_STATS_BLOCK
 from gui.battle_results.templates.regular import REGULAR_TEXT_STATS_BLOCK
 from gui.battle_results.templates.regular import CLAN_TEXT_STATS_BLOCK
-from gui.battle_results.templates.sandbox import SANDBOX_PERSONAL_STATS_BLOCK
-from gui.battle_results.templates.sandbox import SANDBOX_TEAM_ITEM_STATS_ENABLE
-from gui.battle_results.templates.sandbox import SANDBOX_PERSONAL_ACCOUNT_DB_ID
 from gui.battle_results.templates.ranked_battles import RANKED_COMMON_STATS_BLOCK
 from gui.battle_results.templates.ranked_battles import RANKED_TEAMS_STATS_BLOCK
 from gui.battle_results.templates.ranked_battles import RANKED_RESULTS_BLOCK
@@ -50,7 +47,6 @@ __all__ = ('TOTAL_VO_META', 'MULTI_TEAM_TABS_BLOCK', 'REGULAR_TABS_BLOCK', 'VEHI
            'REGULAR_COMMON_STATS_BLOCK', 'REGULAR_PERSONAL_STATS_BLOCK', 'REGULAR_TEAMS_STATS_BLOCK',
            'REGULAR_TEXT_STATS_BLOCK', 'CLAN_TEXT_STATS_BLOCK', 'STRONGHOLD_BATTLE_COMMON_STATS_BLOCK',
            'STRONGHOLD_PERSONAL_STATS_BLOCK', 'STRONGHOLD_TEAMS_STATS_BLOCK', 'CYBER_SPORT_BLOCK',
-           'SANDBOX_PERSONAL_STATS_BLOCK', 'SANDBOX_TEAM_ITEM_STATS_ENABLE', 'SANDBOX_PERSONAL_ACCOUNT_DB_ID',
            'RANKED_COMMON_STATS_BLOCK', 'RANKED_TEAMS_STATS_BLOCK', 'RANKED_RESULTS_BLOCK',
            'RANKED_PERSONAL_STATS_BLOCK', 'RANKED_RESULTS_STATUS_BLOCK', 'BOOTCAMP_RESULTS_BLOCK',
            'RANKED_ENABLE_ANIMATION_BLOCK', 'EPIC_COMMON_STATS_BLOCK', 'EPIC_TABS_BLOCK',

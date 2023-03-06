@@ -28,6 +28,8 @@ package net.wg.gui.components.common.markers.data
       
       private var _entityType:String = "";
       
+      private var _vDist:String = "";
+      
       public function VehicleMarkerVO(param1:Object)
       {
          super(param1);
@@ -141,6 +143,16 @@ package net.wg.gui.components.common.markers.data
       public function set entityType(param1:String) : void
       {
          this._entityType = param1;
+      }
+      
+      public function get vDist() : String
+      {
+         return this._vDist;
+      }
+      
+      public function set vDist(param1:String) : void
+      {
+         this._vDist = param1;
       }
    }
 }

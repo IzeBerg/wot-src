@@ -44,6 +44,10 @@ class _BaseLogger(object):
         return ('<{}: {}, {}>').format(self.__class__.__name__, self._feature, self._group)
 
     @noexcept
+    def ensureSession(self):
+        self._core.ensureSession()
+
+    @noexcept
     def reset(self):
         self._logOnceSet.clear()
         self._timedActions.clear()

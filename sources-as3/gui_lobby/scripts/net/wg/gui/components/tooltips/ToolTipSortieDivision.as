@@ -31,10 +31,9 @@ package net.wg.gui.components.tooltips
       
       override protected function redraw() : void
       {
-         var _loc1_:SortieDivisionVO = null;
          var _loc2_:int = 0;
          var _loc3_:ILocale = null;
-         _loc1_ = new SortieDivisionVO(_data);
+         var _loc1_:SortieDivisionVO = new SortieDivisionVO(_data);
          _loc2_ = bgShadowMargin.left + contentMargin.left;
          _loc3_ = App.utils.locale;
          separators = new Vector.<Separator>();

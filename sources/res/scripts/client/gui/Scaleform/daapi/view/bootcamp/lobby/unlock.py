@@ -23,7 +23,8 @@ class BCUnlockItemConfirmator(UnlockItemConfirmator):
 
     def __getVehicleData(self, bcNationData, item):
         if item.intCD == bcNationData['vehicle_second']:
-            return {'label': backport.text(R.strings.bootcamp.message.unlock.vehicle.title()).format(item.userName), 
+            userName = backport.text(R.strings.bootcamp.award.options.tankTitle()).format(title=item.userName)
+            return {'label': backport.text(R.strings.bootcamp.message.unlock.vehicle.title()).format(userName), 
                'labelExecute': backport.text(R.strings.bootcamp.message.unlock.vehicle.buttonLabel()), 
                'icon': bcNationData['vehicle_second_icon'], 
                'costValue': self._costCtx['xpCost'], 

@@ -503,6 +503,9 @@ msgstr "Ходовая разрушена. Движение невозможно
 msgid "damage_panel/devices/wheel/normal"
 msgstr "Ходовая не повреждена."
 
+msgid "destroyTimer/liftOver"
+msgstr "Машина возвращается в строй..."
+
 msgid "devices/ammo_bay"
 msgstr "боеукладка"
 
@@ -630,7 +633,7 @@ msgid "efficiencyRibbons/assistSpot"
 msgstr "Урон по разведданным"
 
 msgid "efficiencyRibbons/assistStun"
-msgstr "Помощь оглушением"
+msgstr "Помощь дезориентацией"
 
 msgid "efficiencyRibbons/assistTrack"
 msgstr "Постановка на гусеницу"
@@ -738,7 +741,7 @@ msgid "efficiencyRibbons/spotted"
 msgstr "Обнаружил"
 
 msgid "efficiencyRibbons/stun"
-msgstr "Оглушение"
+msgstr "Дезориентация"
 
 msgid "efficiencyRibbons/vehicleRecovery"
 msgstr "Машина оставлена"
@@ -2518,27 +2521,6 @@ msgstr "?empty?"
 msgid "rewardWindow/twitch37/mainReward_4"
 msgstr "?empty?"
 
-msgid "rewardWindow/twitch38/btnLabel"
-msgstr "?empty?"
-
-msgid "rewardWindow/twitch38/descText"
-msgstr "?empty?"
-
-msgid "rewardWindow/twitch38/headerText"
-msgstr "?empty?"
-
-msgid "rewardWindow/twitch38/mainReward_1"
-msgstr "?empty?"
-
-msgid "rewardWindow/twitch38/mainReward_2"
-msgstr "?empty?"
-
-msgid "rewardWindow/twitch38/mainReward_3"
-msgstr "?empty?"
-
-msgid "rewardWindow/twitch38/mainReward_4"
-msgstr "?empty?"
-
 msgid "rewardWindow/twitch4/btnLabel"
 msgstr "Рекрутировать"
 
@@ -2703,7 +2685,7 @@ msgid "shells_kinds/params/shotSpeed"
 msgstr "Скорость полёта:  %(value)s м/с"
 
 msgid "shells_kinds/params/stunDuration"
-msgstr "Время оглушения: %(minValue)s–%(maxValue)s с"
+msgstr "Время дезориентации: %(maxValue)s с"
 
 msgid "siegeMode/hint/forMode/0"
 msgstr "для перехода в осадный режим"
@@ -2905,6 +2887,9 @@ msgstr "Оглушение экипажа"
 
 msgid "stun/seconds"
 msgstr "с"
+
+msgid "stunFlame/indicator"
+msgstr "Эффективность снижена"
 
 msgid "tabStatsHint"
 msgstr "— Статистика"

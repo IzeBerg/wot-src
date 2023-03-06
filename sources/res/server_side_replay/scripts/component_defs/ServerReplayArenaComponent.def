@@ -1,36 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<Properties>
-		<initialRecordingData>
-			<Type>PYTHON</Type>
-			<Flags>CELL_PRIVATE</Flags>
-		</initialRecordingData>
-		<recordingOnlyEntityMappings>
-			<Type>PYTHON</Type>
-			<Flags>CELL_PRIVATE</Flags>
-		</recordingOnlyEntityMappings>
-	</Properties>
-	<TempProperties>
-		<replayFileName/>
-		<spaceID/>
-		<replayServerAddress/>
-	</TempProperties>
+	<Properties/>
 	<BaseMethods>
-		<startSpaceRecording/>
-		<onCellRecordingStarted/>
 		<onRecorderCellReady/>
-		<tearDownRecording/>
+		<onCellRecordingStarted/>
+		<onCellRecordingStopped/>
+		<onRecordingFinalized/>
 	</BaseMethods>
 	<CellMethods>
 		<storeInitialRecordingData>
 			<Arg>PYTHON</Arg>
 		</storeInitialRecordingData>
-		<recordRecordingOnlyEntityMethodFromIndex>
-			<Arg>OBJECT_ID</Arg>
-			<Arg>STRING</Arg>
+		<recordReplayAvatarMethod>
 			<Arg>STRING</Arg>
 			<Arg>PYTHON</Arg>
-		</recordRecordingOnlyEntityMethodFromIndex>
+		</recordReplayAvatarMethod>
 	</CellMethods>
 	<ofEntity>
 		<Arena/>

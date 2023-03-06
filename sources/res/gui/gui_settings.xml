@@ -614,6 +614,11 @@
 		<type>dict</type>
 		<value>
 			<item>
+				https://lesta.ru/shop/wot
+				<name>webShopRootURL</name>
+				<type>url</type>
+			</item>
+			<item>
 				https://webbrg.tanki.su
 				<name>webBridgeRootURL</name>
 				<type>url</type>
@@ -806,16 +811,6 @@
 				<name>isClansTabReplaceStrongholds</name>
 				<type>bool</type>
 				<value>True</value>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>tournament</name>
-		<type>dict</type>
-		<value>
-			<item>
-				<name>testUrl</name>
-				<type>url</type>
 			</item>
 		</value>
 	</setting>
@@ -1049,6 +1044,11 @@
 				<name>integratedAuction</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/event_lootboxes)
+				<name>eventLootboxes</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1093,7 +1093,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/H22BPContentPage/
+				/$LANGUAGE_CODE/promocontent/10BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1102,7 +1102,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/H22BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/10BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1138,49 +1138,11 @@
 				<value>
 					<item>
 						<type>string</type>
-						<value>collaboration</value>
+						<value>styles</value>
 					</item>
 					<item>
 						<type>string</type>
-						<value>newRewards</value>
-					</item>
-					<item>
-						<type>string</type>
-						<value>oneChapter</value>
-					</item>
-				</value>
-			</item>
-			<item>
-				<name>specialVoiceTankmen</name>
-				<type>dict</type>
-				<value>
-					<item>
-						<name>progression</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>string</type>
-								<value>tman_template:::commander_bp_IvanCarevich:210060:::brotherhood::commander_bp_IvanCarevich:commander</value>
-							</item>
-							<item>
-								<type>string</type>
-								<value>tman_template:::commander_bp_Vasilisa:210060:::brotherhood::commander_bp_Vasilisa:commander</value>
-							</item>
-						</value>
-					</item>
-					<item>
-						<name>shop</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>string</type>
-								<value>tman_template:::commander_bp_Kashchei:210060:::brotherhood::commander_bp_Kashchei:commander</value>
-							</item>
-							<item>
-								<type>string</type>
-								<value>tman_template:::commander_bp_BabaYaga:210060:::brotherhood::commander_bp_BabaYaga:commander</value>
-							</item>
-						</value>
+						<value>tanks</value>
 					</item>
 				</value>
 			</item>
@@ -1593,7 +1555,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/RankedBattles/
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/RankedBattles8/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1643,6 +1605,17 @@
 			<item>
 				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2022IntroVideo/
 				<name>introVideo</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>lootBoxes</name>
+		<type>dict</type>
+		<value>
+			<item>
+				{webShopRootURL}/supplyboxes/?force_login=1
+				<name>categoryURL</name>
 				<type>url</type>
 			</item>
 		</value>

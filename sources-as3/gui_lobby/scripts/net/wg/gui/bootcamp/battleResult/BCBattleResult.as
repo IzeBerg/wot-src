@@ -62,7 +62,7 @@ package net.wg.gui.bootcamp.battleResult
       
       private static const RESULT_MARGIN_SMALL_Y:int = -10;
       
-      private static const BUTTON_MARGIN_SMALL_Y:int = -45;
+      private static const BUTTON_MARGIN_SMALL_Y:int = -25;
       
       private static const CONTENT_MIN_MARGIN_Y:int = 330;
       
@@ -76,9 +76,9 @@ package net.wg.gui.bootcamp.battleResult
       
       private static const COMPONENT_WIDTH:int = 571;
       
-      private static const COMPONENT_Y:int = 18;
+      private static const COMPONENT_Y:int = 7;
       
-      private static const COMPONENT_Y_SMALL:int = 16;
+      private static const COMPONENT_Y_SMALL:int = 5;
       
       private static const COMPONENT_CENTER:int = COMPONENT_WIDTH >> 1;
        

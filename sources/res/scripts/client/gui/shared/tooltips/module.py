@@ -148,19 +148,19 @@ class ModuleTooltipBlockConstructor(object):
        GUI_ITEM_TYPE.TURRET: ('armor', 'rotationSpeed', 'circularVisionRadius'), 
        GUI_ITEM_TYPE.GUN: (
                          'avgDamageList', 'avgPiercingPower', RELOAD_TIME_SECS_PROP_NAME, RELOAD_TIME_PROP_NAME,
-                         'avgDamagePerMinute', 'stunMinDurationList', 'stunMaxDurationList', 'dispertionRadius',
+                         'avgDamagePerMinute', 'stunMaxDurationList', 'dispertionRadius',
                          'maxShotDistance', AIMING_TIME_PROP_NAME), 
        GUI_ITEM_TYPE.ENGINE: ('enginePower', 'fireStartingChance'), 
        GUI_ITEM_TYPE.RADIO: ('radioDistance', ), 
        CLIP_GUN_MODULE_PARAM: (
                              'avgDamageList', 'avgPiercingPower', SHELLS_COUNT_PROP_NAME,
                              SHELL_RELOADING_TIME_PROP_NAME, RELOAD_MAGAZINE_TIME_PROP_NAME,
-                             'avgDamagePerMinute', 'stunMinDurationList', 'stunMaxDurationList',
+                             'avgDamagePerMinute', 'stunMaxDurationList',
                              'dispertionRadius', 'maxShotDistance', AIMING_TIME_PROP_NAME), 
        AUTO_RELOAD_GUN_MODULE_PARAM: (
                                     'avgDamageList', 'avgPiercingPower', SHELLS_COUNT_PROP_NAME,
                                     SHELL_RELOADING_TIME_PROP_NAME, AUTO_RELOAD_PROP_NAME,
-                                    'stunMinDurationList', 'stunMaxDurationList', 'dispertionRadius',
+                                    'stunMaxDurationList', 'dispertionRadius',
                                     'maxShotDistance', AIMING_TIME_PROP_NAME), 
        DUAL_GUN_MODULE_PARAM: (
                              'avgDamageList', 'avgPiercingPower', RELOAD_TIME_SECS_PROP_NAME,

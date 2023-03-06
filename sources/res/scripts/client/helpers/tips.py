@@ -11,10 +11,8 @@ from gui.shared.utils.functions import replaceHyphenToUnderscore
 from gui.shared.system_factory import registerBattleTipCriteria, registerBattleTipsCriteria, collectBattleTipsCriteria
 from helpers import dependency
 from realm import CURRENT_REALM
-from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.game_control import IRankedBattlesController, IVehiclePostProgressionController
 _logger = logging.getLogger(__name__)
-_SANDBOX_GEOMETRY_INDEX = ('100_thepit', '10_hills')
 _RANDOM_TIPS_PATTERN = '^(tip\\d+)'
 _EPIC_BATTLE_TIPS_PATTERN = '^(epicTip\\d+)'
 _EPIC_RANDOM_TIPS_PATTERN = '^(epicRandom\\d+)'
@@ -104,33 +102,6 @@ class _EpicBattleTipsCriteria(TipsCriteria):
         return ARENA_GUI_TYPE.EPIC_BATTLE
 
 
-class _SandboxTipsCriteria(TipsCriteria):
-    sessionProvider = dependency.descriptor(IBattleSessionProvider)
-
-    def find(self):
-        playerBaseYPos = enemyBaseYPos = 0
-        arenaDP = self.sessionProvider.getCtx().getArenaDP()
-        playerTeam = 1
-        if arenaDP is not None:
-            playerTeam = arenaDP.getNumberOfTeam()
-        visitor = self.sessionProvider.arenaVisitor
-        positions = visitor.type.getTeamBasePositionsIterator()
-        for team, position, _ in positions:
-            if team == playerTeam:
-                playerBaseYPos = position[2]
-            else:
-                enemyBaseYPos = position[2]
-
-        geometryName = visitor.type.getGeometryName()
-        if geometryName in _SANDBOX_GEOMETRY_INDEX:
-            geometryIndex = _SANDBOX_GEOMETRY_INDEX.index(geometryName)
-        else:
-            geometryIndex = 0
-        positionIndex = 0 if playerBaseYPos < enemyBaseYPos else 1
-        iconKey = ('sandbox{0}{1}').format(str(geometryIndex), str(positionIndex))
-        return TipData(R.strings.tips.howToPlay(), R.strings.tips.dyn(('sandbox{}').format(geometryIndex))(), R.images.gui.maps.icons.battleLoading.tips.dyn(iconKey)())
-
-
 class _EventTipsCriteria(TipsCriteria):
 
     def find(self):
@@ -195,7 +166,6 @@ registerBattleTipCriteria(ARENA_GUI_TYPE.EVENT_BATTLES, _EventTipsCriteria)
 registerBattleTipCriteria(ARENA_GUI_TYPE.RANKED, _RankedTipsCriteria)
 registerBattleTipCriteria(ARENA_GUI_TYPE.BATTLE_ROYALE, BattleRoyaleTipsCriteria)
 registerBattleTipCriteria(ARENA_GUI_TYPE.COMP7, _Comp7TipsCriteria)
-registerBattleTipsCriteria(ARENA_GUI_TYPE.SANDBOX_RANGE, _SandboxTipsCriteria)
 registerBattleTipsCriteria(ARENA_GUI_TYPE.EPIC_RANGE, _EpicBattleTipsCriteria)
 registerBattleTipsCriteria((ARENA_GUI_TYPE.EPIC_RANDOM, ARENA_GUI_TYPE.EPIC_RANDOM_TRAINING), _EpicRandomTipsCriteria)
 
@@ -420,7 +390,8 @@ class _BattlePassValidator(object):
 
 
 class _RankedBattlesValidator(object):
-    __slots__ = ('_isYearRewardEnabled', '_isLeaderboardEnabled', '_isShopEnabled')
+    __slots__ = ('_isYearRewardEnabled', '_isLeaderboardEnabled', '_isShopEnabled',
+                 '_isLeagueRewardEnabled')
     _rankedController = dependency.descriptor(IRankedBattlesController)
 
     def __init__(self):
@@ -428,6 +399,7 @@ class _RankedBattlesValidator(object):
         self._isYearRewardEnabled = self._rankedController.isYearRewardEnabled()
         self._isLeaderboardEnabled = self._rankedController.isYearLBEnabled()
         self._isShopEnabled = self._rankedController.isRankedShopEnabled()
+        self._isLeagueRewardEnabled = self._rankedController.isLeagueRewardEnabled()
 
     def validate(self, tipFilter, _):
         if 'isRankedYearRewardEnabled' in tipFilter:
@@ -438,6 +410,9 @@ class _RankedBattlesValidator(object):
                 return False
         if 'isRankedShopEnabled' in tipFilter:
             if tipFilter['isRankedShopEnabled'] != self._isShopEnabled:
+                return False
+        if 'isRankedLeagueRewardEnabled' in tipFilter:
+            if tipFilter['isRankedLeagueRewardEnabled'] != self._isLeagueRewardEnabled:
                 return False
         return True
 

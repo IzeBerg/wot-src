@@ -7,7 +7,7 @@ BACKWARD_QUALITY_PARAMS = frozenset([
  'aimingTime', 'shotDispersionAngle', 'weight', 'dispertionRadius', 'fireStartingChance', 'reloadTimeSecs',
  'autoReloadTime', 'shellReloadingTime', 'clipFireRate', 'reloadMagazineTime', 'weight', 'switchOnTime',
  'switchOffTime', WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_OFF_TIME, DUAL_GUN_CHARGE_TIME, 'vehicleOwnSpottingTime',
- 'vehicleGunShotDispersion', 'crewStunDuration', 'vehicleReloadTimeAfterShellChange', 'crewRepeatedStunDuration',
+ 'vehicleGunShotDispersion', 'crewStunDuration', 'crewStunResistance', 'vehicleReloadTimeAfterShellChange',
  'vehicleChassisFallDamage', 'vehPenaltyForDamageEngineAndCombat', 'demaskFoliageFactor', TURBOSHAFT_SWITCH_TIME,
  'demaskMovingFactor', 'vehicleRamOrExplosionDamageResistance', 'vehicleFireChance', CHASSIS_REPAIR_TIME,
  'vehicleGunShotFullDispersion', 'vehicleGunShotDispersionAfterShot', 'vehicleGunShotDispersionChassisMovement',

@@ -143,6 +143,7 @@ package net.wg.gui.battle.views.minimap
          if(this._vehicleLabelsEntries.indexOf(param1) == -1)
          {
             this._vehicleLabelsEntries.push(param1);
+            param1.updateSizeIndex(this._sizeIndex);
          }
          if(this._isShowVehicleNamesTurnedOn)
          {
@@ -222,6 +223,7 @@ package net.wg.gui.battle.views.minimap
       public function updateScale(param1:int) : void
       {
          var _loc4_:IMinimapEntryWithNonScaleContent = null;
+         var _loc5_:IVehicleMinimapEntry = null;
          this._sizeIndex = param1;
          var _loc2_:DisplayObject = null;
          var _loc3_:Number = MinimapSizeConst.ENTRY_SCALES[this._sizeIndex];
@@ -241,6 +243,10 @@ package net.wg.gui.battle.views.minimap
          for each(_loc4_ in this._scalableEntriesWithNonScaleContent)
          {
             _loc4_.setContentNormalizedScale(MinimapSizeConst.ENTRY_INTERNAL_CONTENT_CONTR_SCALES[this._sizeIndex]);
+         }
+         for each(_loc5_ in this._vehicleLabelsEntries)
+         {
+            _loc5_.updateSizeIndex(param1);
          }
       }
       

@@ -2352,7 +2352,7 @@ RECORDS = (
  (
   'singleAchievements', 'february23', 'p', 'B', 1),
  (
-  'singleAchievements', 'prime_gaming_reserved_7', 'p', 'B', 1),
+  'singleAchievements', 'march23', 'p', 'B', 1),
  (
   'singleAchievements', 'prime_gaming_reserved_8', 'p', 'B', 1),
  (
@@ -2916,7 +2916,9 @@ RECORDS = (
  (
   'singleAchievements', 'NY23_CelebChallenge', 'p', 'B', 1),
  (
-  'singleAchievements', 'BattlePassCommonPr_NY23', 'p', 'B', 1))
+  'singleAchievements', 'BattlePassCommonPr_NY23', 'p', 'B', 1),
+ (
+  'singleAchievements', 'BattlePassCommonPr_10', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4313,7 +4315,7 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'december22'): 1667, 
    ('singleAchievements', 'january23'): 1668, 
    ('singleAchievements', 'february23'): 1669, 
-   ('singleAchievements', 'prime_gaming_reserved_7'): 1670, 
+   ('singleAchievements', 'march23'): 1670, 
    ('singleAchievements', 'prime_gaming_reserved_8'): 1671, 
    ('singleAchievements', 'prime_gaming_reserved_9'): 1672, 
    ('singleAchievements', 'prime_gaming_reserved_10'): 1673, 
@@ -4376,7 +4378,8 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', '12YearsOfService'): 1731, 
    ('singleAchievements', 'NY23_AtmsphrLevel'): 1732, 
    ('singleAchievements', 'NY23_CelebChallenge'): 1733, 
-   ('singleAchievements', 'BattlePassCommonPr_NY23'): 1734}
+   ('singleAchievements', 'BattlePassCommonPr_NY23'): 1734, 
+   ('singleAchievements', 'BattlePassCommonPr_10'): 1735}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

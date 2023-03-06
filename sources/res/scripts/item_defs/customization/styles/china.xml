@@ -695,6 +695,37 @@
 	<itemGroup>
 		<userString>#vehicle_customization:styles/special_styles</userString>
 		<season>ALL</season>
+		<historical>0</historical>
+		<priceGroup>styles 750g notInShop</priceGroup>
+		<vehicleFilter>
+			<include>
+				<vehicles>china:Ch04_T34_1 china:Ch20_Type58</vehicles>
+			</include>
+		</vehicleFilter>
+		<style>
+			<id>724</id>
+			<texture>gui/maps/vehicles/styles/generic_custom_look_2_ussr.png</texture>
+			<maxNumber>1</maxNumber>
+			<userString>#vehicle_customization:styles/special_styles</userString>
+			<tags>addNationalEmblem</tags>
+			<outfits>
+				<outfit>
+					<season>ALL</season>
+					<camouflages>
+						<item>
+							<id>501</id>
+							<appliedTo>4368</appliedTo>
+							<patternSize>1</patternSize>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+				</outfit>
+			</outfits>
+		</style>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:styles/special_styles</userString>
+		<season>ALL</season>
 		<historical>2</historical>
 		<priceGroup>styles 100g notInShop</priceGroup>
 		<vehicleFilter>
@@ -709,6 +740,7 @@
 			<modelsSet>Ch25_121_mod_1971B_MC_3DSt</modelsSet>
 			<maxNumber>1</maxNumber>
 			<userString>#vehicle_customization:special_style/Ch25_121_mod_1971B_MC_3DSt</userString>
+			<tags>lockedOnVehicle</tags>
 			<outfits>
 				<outfit>
 					<season>ALL</season>

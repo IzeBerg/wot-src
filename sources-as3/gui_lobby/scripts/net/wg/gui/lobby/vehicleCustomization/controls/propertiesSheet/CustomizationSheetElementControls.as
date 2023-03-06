@@ -167,9 +167,10 @@ package net.wg.gui.lobby.vehicleCustomization.controls.propertiesSheet
       
       public function setRenderers(param1:CustomizationPropertiesSheetVO) : void
       {
+         var _loc2_:CustomizationSheetContentRenderer = null;
          this.hideRenderers();
          this._isBigRadius = param1.isBigRadius;
-         var _loc2_:CustomizationSheetContentRenderer = null;
+         _loc2_ = null;
          var _loc3_:int = this._contentRenderers.length;
          this._oldActiveRenderersCount = this._activeRenderersCount;
          this._activeRenderersCount = param1.renderersData.length;

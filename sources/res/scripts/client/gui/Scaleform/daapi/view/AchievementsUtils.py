@@ -8,7 +8,7 @@ class AchievementsUtils(object):
 
     @staticmethod
     def packAchievementList(target, dossierType, dossierCompactDescriptor, isDossierForCurrentUser, defaultShowProgress=True, defaultSeriesCounter=None):
-        return [ AchievementsUtils.packAchievement(a, dossierType, dossierCompactDescriptor, isDossierForCurrentUser, defaultShowProgress, defaultSeriesCounter) for a in target
+        return [ AchievementsUtils.packAchievement(achievement, dossierType, dossierCompactDescriptor, isDossierForCurrentUser, defaultShowProgress, defaultSeriesCounter) for achievement in target if achievement.canDisplayAchievement()
                ]
 
     @staticmethod

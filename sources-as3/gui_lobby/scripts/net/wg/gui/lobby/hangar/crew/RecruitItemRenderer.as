@@ -23,8 +23,6 @@ package net.wg.gui.lobby.hangar.crew
    public class RecruitItemRenderer extends SoundListItemRenderer
    {
       
-      private static const TANKMEN_ICON_SMALL:String = "../maps/icons/tankmen/icons/small/";
-      
       private static const TANKMEN_RANKS_SMALL:String = "../maps/icons/tankmen/ranks/small/";
       
       private static const TANKMEN_ROLES_SMALL:String = "../maps/icons/tankmen/roles/small/";
@@ -83,6 +81,7 @@ package net.wg.gui.lobby.hangar.crew
       
       override public function setData(param1:Object) : void
       {
+         var _loc2_:Boolean = false;
          if(this._recruitData == param1)
          {
             return;
@@ -90,14 +89,14 @@ package net.wg.gui.lobby.hangar.crew
          this._recruitData = TankmanVO(param1);
          this.recruit = this._recruitData.recruit;
          this.personalCase = this._recruitData.personalCase;
-         var _loc2_:Boolean = !this._recruitData.personalCase && !this._recruitData.recruit;
+         _loc2_ = !this._recruitData.personalCase && !this._recruitData.recruit;
          this.icon.visible = this.iconRank.visible = _loc2_;
          if(_loc2_)
          {
             if(this._recruitData.iconFile != this.icon.imageLoader.source && this._recruitData.iconFile)
             {
                this.icon.imageLoader.visible = true;
-               this.icon.imageLoader.source = TANKMEN_ICON_SMALL + this._recruitData.iconFile;
+               this.icon.imageLoader.source = this._recruitData.iconFile;
             }
             if(this._recruitData.rankIconFile != this.iconRank.imageLoader.source && this._recruitData.rankIconFile)
             {

@@ -9,12 +9,9 @@ class GUI_EFFECT_NAME(object):
     SHOW_DIALOG = 'ShowDialog'
     SHOW_WINDOW = 'ShowWindow'
     SHOW_HINT = 'ShowHint'
-    UPDATE_CONTENT = 'UpdateContent'
     SET_CRITERIA = 'SetCriteria'
     SET_VIEW_CRITERIA = 'SetViewCriteria'
     SET_TRIGGER = 'SetTrigger'
-    SHOW_GREETING = 'ShowGreeting'
-    NEXT_TASK = 'NextTask'
     SET_ITEM_PROPS = 'SetItemProps'
     PLAY_ANIMATION = 'PlayAnimation'
 
@@ -123,21 +120,6 @@ class GUIProxy(object):
     def getDispatcher(self):
         return
 
-    def setChapterInfo(self, title, description):
-        pass
-
-    def clearChapterInfo(self):
-        pass
-
-    def setTrainingPeriod(self, currentIdx, total):
-        pass
-
-    def setTrainingProgress(self, mask):
-        pass
-
-    def setChapterProgress(self, total, mask):
-        pass
-
 
 class GUIDispatcher(object):
 
@@ -192,12 +174,6 @@ class GUIDispatcher(object):
         else:
             LOG_ERROR('Tutorial can not be run, loader is not defined')
         return result
-
-    def setChapterInfo(self, title, description):
-        pass
-
-    def clearChapterInfo(self):
-        pass
 
     def setDisabled(self, disabled):
         self._isDisabled = disabled

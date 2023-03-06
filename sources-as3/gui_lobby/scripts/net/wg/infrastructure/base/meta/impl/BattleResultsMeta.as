@@ -17,8 +17,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onResultsSharingBtnPress:Function;
       
-      public var onReplay:Function;
-      
       public var showUnlockWindow:Function;
       
       public var showProgressiveRewardView:Function;
@@ -68,12 +66,6 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onResultsSharingBtnPress,"onResultsSharingBtnPress" + Errors.CANT_NULL);
          this.onResultsSharingBtnPress();
-      }
-      
-      public function onReplayS(param1:String) : void
-      {
-         App.utils.asserter.assertNotNull(this.onReplay,"onReplay" + Errors.CANT_NULL);
-         this.onReplay(param1);
       }
       
       public function showUnlockWindowS(param1:int, param2:String) : void

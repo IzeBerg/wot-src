@@ -117,7 +117,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleloading.BattleLoading;
    import net.wg.gui.battle.battleloading.BattleLoadingForm;
    import net.wg.gui.battle.battleloading.BattleLoadingHelper;
-   import net.wg.gui.battle.battleloading.TutorialBattleLoading;
    import net.wg.gui.battle.battleloading.constants.PlayerStatus;
    import net.wg.gui.battle.battleloading.constants.VehicleStatus;
    import net.wg.gui.battle.battleloading.constants.VehicleStatusSchemes;
@@ -447,24 +446,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.ranked.stats.components.playersPanel.list.PlayersPanelListItemHolder;
    import net.wg.gui.battle.ranked.stats.components.playersPanel.list.PlayersPanelListLeft;
    import net.wg.gui.battle.ranked.stats.components.playersPanel.list.PlayersPanelListRight;
-   import net.wg.gui.battle.tutorial.views.TutorialPage;
-   import net.wg.gui.battle.tutorial.views.tutorial.BattleTutorial;
-   import net.wg.gui.battle.tutorial.views.tutorial.components.doneAnim.BattleTutorialDoneAnim;
-   import net.wg.gui.battle.tutorial.views.tutorial.components.doneAnim.BattleTutorialDoneAnimContainer;
-   import net.wg.gui.battle.tutorial.views.tutorial.components.progressBar.BattleProgressItemLabel;
-   import net.wg.gui.battle.tutorial.views.tutorial.components.progressBar.BattleProgressItemLine;
-   import net.wg.gui.battle.tutorial.views.tutorial.components.progressBar.BattleTutorialProgressBar;
-   import net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.BattleTutorialTasksPanel;
-   import net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.containers.Header;
-   import net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.containers.Hint;
-   import net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.containers.Icon;
-   import net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.containers.Task;
-   import net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.containers.TaskAnimation;
-   import net.wg.gui.battle.tutorial.views.tutorial.interfaces.IBattleTutorialDoneAnim;
-   import net.wg.gui.battle.tutorial.views.tutorial.interfaces.IBattleTutorialTasksPanel;
-   import net.wg.gui.battle.tutorial.views.tutorial.utils.tween.ITutorialTweenerHandler;
-   import net.wg.gui.battle.tutorial.views.tutorial.utils.tween.TutorialTweener;
-   import net.wg.gui.battle.tutorial.views.tutorial.utils.tween.TweenFlowFactory;
    import net.wg.gui.battle.views.BaseBattlePage;
    import net.wg.gui.battle.views.BattlePageQuestsProgress;
    import net.wg.gui.battle.views.actionMarkers.ActionMarkerStates;
@@ -678,7 +659,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.arty.ArtyHitDotMarker;
    import net.wg.gui.battle.views.minimap.components.entries.arty.ArtyMarkerMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.background.BootcampTargetMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.background.TutorialTargetMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.battleRoyale.BRMarker;
    import net.wg.gui.battle.views.minimap.components.entries.battleRoyale.DeathZoneMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.battleRoyale.DiscoveredItemMarker;
@@ -728,6 +708,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.teambase.EnemyTeamBaseMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.teambase.EnemyTeamSpawnMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.vehicle.MarkerTopAnimation;
+   import net.wg.gui.battle.views.minimap.components.entries.vehicle.MinimapEntryLabelHelper;
    import net.wg.gui.battle.views.minimap.components.entries.vehicle.VehicleAnimationMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.vehicle.VehicleMinimapEntry;
    import net.wg.gui.battle.views.minimap.constants.MinimapColorConst;
@@ -899,6 +880,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerSettings;
    import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerVO;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleActionMarker;
+   import net.wg.gui.battle.views.vehicleMarkers.VehicleDistance;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleIconAnimation;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleMarker;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleMarkersConstants;
@@ -928,7 +910,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.windows.IngameHelpWindow;
    import net.wg.gui.battle.windows.IngameMenu;
    import net.wg.gui.battle.windows.MapsTrainingIngameHelpWindow;
-   import net.wg.gui.battle.windows.ReplenishAmmoDialog;
    import net.wg.gui.battle.windows.components.IngameDetailsRoleAction;
    import net.wg.gui.battle.windows.components.IngameDetailsRoleActionContainer;
    import net.wg.gui.battle.windows.vo.IngameDetailsPageVO;
@@ -962,8 +943,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.hintPanel.MessageAnim;
    import net.wg.gui.components.tooltips.inblocks.blocks.TextParameterWithIconBlock;
    import net.wg.gui.components.tooltips.inblocks.data.TextParameterWithIconVO;
-   import net.wg.gui.tutorial.controls.BaseTipLoadingForm;
-   import net.wg.gui.tutorial.controls.TipLoadingForm;
    import net.wg.infrastructure.base.BaseBattleDAAPIComponent;
    import net.wg.infrastructure.base.meta.IBCBattlePageMeta;
    import net.wg.infrastructure.base.meta.IBCBattleTopHintMeta;
@@ -993,7 +972,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IBattleStatisticDataControllerMeta;
    import net.wg.infrastructure.base.meta.IBattleTankCarouselMeta;
    import net.wg.infrastructure.base.meta.IBattleTimerMeta;
-   import net.wg.infrastructure.base.meta.IBattleTutorialMeta;
    import net.wg.infrastructure.base.meta.IBattleUpgradePanelMeta;
    import net.wg.infrastructure.base.meta.IBattleVehicleConfiguratorMeta;
    import net.wg.infrastructure.base.meta.ICalloutPanelMeta;
@@ -1070,7 +1048,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.ITabbedFullStatsMeta;
    import net.wg.infrastructure.base.meta.ITeamBasesPanelMeta;
    import net.wg.infrastructure.base.meta.ITimersPanelMeta;
-   import net.wg.infrastructure.base.meta.ITutorialLoadingMeta;
    import net.wg.infrastructure.base.meta.IVehicleMarkersManagerMeta;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.helpers.statisticsDataController.EpicBattleStatisticDataController;
@@ -1211,8 +1188,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_BATTLELOADINGFORM:Class = BattleLoadingForm;
       
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_BATTLELOADINGHELPER:Class = BattleLoadingHelper;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLELOADING_TUTORIALBATTLELOADING:Class = TutorialBattleLoading;
       
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_CONSTANTS_PLAYERSTATUS:Class = PlayerStatus;
       
@@ -1974,42 +1949,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_RANKED_VO_DAAPI_RANKEDDAAPIVEHICLESDATAVO:Class = RankedDAAPIVehiclesDataVO;
       
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIALPAGE:Class = TutorialPage;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_BATTLETUTORIAL:Class = BattleTutorial;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_COMPONENTS_DONEANIM_BATTLETUTORIALDONEANIM:Class = BattleTutorialDoneAnim;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_COMPONENTS_DONEANIM_BATTLETUTORIALDONEANIMCONTAINER:Class = BattleTutorialDoneAnimContainer;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_COMPONENTS_PROGRESSBAR_BATTLEPROGRESSITEMLABEL:Class = BattleProgressItemLabel;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_COMPONENTS_PROGRESSBAR_BATTLEPROGRESSITEMLINE:Class = BattleProgressItemLine;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_COMPONENTS_PROGRESSBAR_BATTLETUTORIALPROGRESSBAR:Class = BattleTutorialProgressBar;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_COMPONENTS_TASKPANEL_BATTLETUTORIALTASKSPANEL:Class = BattleTutorialTasksPanel;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_COMPONENTS_TASKPANEL_CONTAINERS_HEADER:Class = Header;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_COMPONENTS_TASKPANEL_CONTAINERS_HINT:Class = Hint;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_COMPONENTS_TASKPANEL_CONTAINERS_ICON:Class = Icon;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_COMPONENTS_TASKPANEL_CONTAINERS_TASK:Class = Task;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_COMPONENTS_TASKPANEL_CONTAINERS_TASKANIMATION:Class = TaskAnimation;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_INTERFACES_IBATTLETUTORIALDONEANIM:Class = IBattleTutorialDoneAnim;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_INTERFACES_IBATTLETUTORIALTASKSPANEL:Class = IBattleTutorialTasksPanel;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_UTILS_TWEEN_ITUTORIALTWEENERHANDLER:Class = ITutorialTweenerHandler;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_UTILS_TWEEN_TUTORIALTWEENER:Class = TutorialTweener;
-      
-      public static const NET_WG_GUI_BATTLE_TUTORIAL_VIEWS_TUTORIAL_UTILS_TWEEN_TWEENFLOWFACTORY:Class = TweenFlowFactory;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_BASEBATTLEPAGE:Class = BaseBattlePage;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEPAGEQUESTSPROGRESS:Class = BattlePageQuestsProgress;
@@ -2436,8 +2375,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_BACKGROUND_BOOTCAMPTARGETMINIMAPENTRY:Class = BootcampTargetMinimapEntry;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_BACKGROUND_TUTORIALTARGETMINIMAPENTRY:Class = TutorialTargetMinimapEntry;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_BATTLEROYALE_BRMARKER:Class = BRMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_BATTLEROYALE_DEATHZONEMINIMAPENTRY:Class = DeathZoneMinimapEntry;
@@ -2535,6 +2472,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_ENEMYTEAMSPAWNMINIMAPENTRY:Class = EnemyTeamSpawnMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_VEHICLE_MARKERTOPANIMATION:Class = MarkerTopAnimation;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_VEHICLE_MINIMAPENTRYLABELHELPER:Class = MinimapEntryLabelHelper;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_VEHICLE_VEHICLEANIMATIONMINIMAPENTRY:Class = VehicleAnimationMinimapEntry;
       
@@ -2864,6 +2803,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VEHICLEACTIONMARKER:Class = VehicleActionMarker;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VEHICLEDISTANCE:Class = VehicleDistance;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VEHICLEICONANIMATION:Class = VehicleIconAnimation;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VEHICLEMARKER:Class = VehicleMarker;
@@ -2936,8 +2877,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_WINDOWS_MAPSTRAININGINGAMEHELPWINDOW:Class = MapsTrainingIngameHelpWindow;
       
-      public static const NET_WG_GUI_BATTLE_WINDOWS_REPLENISHAMMODIALOG:Class = ReplenishAmmoDialog;
-      
       public static const NET_WG_GUI_BATTLE_WINDOWS_COMPONENTS_INGAMEDETAILSROLEACTION:Class = IngameDetailsRoleAction;
       
       public static const NET_WG_GUI_BATTLE_WINDOWS_COMPONENTS_INGAMEDETAILSROLEACTIONCONTAINER:Class = IngameDetailsRoleActionContainer;
@@ -3004,10 +2943,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_INBLOCKS_DATA_TEXTPARAMETERWITHICONVO:Class = TextParameterWithIconVO;
       
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_BASETIPLOADINGFORM:Class = BaseTipLoadingForm;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_TIPLOADINGFORM:Class = TipLoadingForm;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_BASEBATTLEDAAPICOMPONENT:Class = BaseBattleDAAPIComponent;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBASEBATTLEDAAPICOMPONENTMETA:Class = IBaseBattleDAAPIComponentMeta;
@@ -3053,8 +2988,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLETANKCAROUSELMETA:Class = IBattleTankCarouselMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLETIMERMETA:Class = IBattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLETUTORIALMETA:Class = IBattleTutorialMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEUPGRADEPANELMETA:Class = IBattleUpgradePanelMeta;
       
@@ -3220,8 +3153,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ITIMERSPANELMETA:Class = ITimersPanelMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ITUTORIALLOADINGMETA:Class = ITutorialLoadingMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IVEHICLEMARKERSMANAGERMETA:Class = IVehicleMarkersManagerMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BASEBATTLEDAAPICOMPONENTMETA:Class = BaseBattleDAAPIComponentMeta;
@@ -3267,8 +3198,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLETANKCAROUSELMETA:Class = BattleTankCarouselMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLETIMERMETA:Class = BattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLETUTORIALMETA:Class = BattleTutorialMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEUPGRADEPANELMETA:Class = BattleUpgradePanelMeta;
       
@@ -3433,8 +3362,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_TEAMBASESPANELMETA:Class = TeamBasesPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_TIMERSPANELMETA:Class = TimersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_TUTORIALLOADINGMETA:Class = TutorialLoadingMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_VEHICLEMARKERSMANAGERMETA:Class = VehicleMarkersManagerMeta;
       

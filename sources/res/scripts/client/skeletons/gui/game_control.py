@@ -31,6 +31,7 @@ if typing.TYPE_CHECKING:
     from gui.shared.gui_items import Tankman, Vehicle
     from gui.shared.gui_items.fitting_item import RentalInfoProvider
     from gui.shared.gui_items.gui_item_economics import ItemPrice
+    from gui.shared.gui_items.loot_box import LootBox, EventLootBoxes
     from gui.shared.gui_items.Tankman import TankmanSkill
     from gui.shared.money import Money, DynamicMoney
     from gui.shared.utils.requesters.EpicMetaGameRequester import EpicMetaGameRequester
@@ -39,6 +40,7 @@ if typing.TYPE_CHECKING:
     from season_common import GameSeason
     from items.artefacts import Equipment
     from skeletons.gui.battle_session import IClientArenaVisitor
+    from gui.entitlements.entitlement_model import AgateEntitlement
     BattlePassBonusOpts = Optional[(TokensBonus, BattlePassSelectTokensBonus)]
 
 class IGameController(object):
@@ -202,6 +204,7 @@ class IGameSessionController(IGameController):
     onPremiumNotify = None
     onPremiumTypeChanged = None
     onParentControlNotify = None
+    onNotifyTimeTillKick = None
 
     def isSessionStartedThisDay(self):
         raise NotImplementedError
@@ -247,6 +250,9 @@ class IGameSessionController(IGameController):
         raise NotImplementedError
 
     def getParentControlNotificationMeta(self):
+        raise NotImplementedError
+
+    def getKickAtTime(self):
         raise NotImplementedError
 
 
@@ -364,7 +370,7 @@ class IExternalLinksController(IGameController):
     def open(self, url):
         raise NotImplementedError
 
-    def getURL(self, name, params, callback):
+    def getURL(self, name, params=None, callback=lambda *args: None):
         raise NotImplementedError
 
     def externalAllowed(self, url):
@@ -555,6 +561,9 @@ class IPlatoonController(IGameController):
         raise NotImplementedError
 
     def hasVehiclesForSearch(self, tierLevel=None):
+        raise NotImplementedError
+
+    def orderSlotsBasedOnDisplaySlotsIndices(self, slots):
         raise NotImplementedError
 
     def processPlatoonActions(self, mapID, entity, currentVehicle, callback):
@@ -868,6 +877,9 @@ class IRankedBattlesController(IGameController, ISeasonProvider):
     def isYearRewardEnabled(self):
         raise NotImplementedError
 
+    def isLeagueRewardEnabled(self):
+        raise NotImplementedError
+
     def hasSpecialSeason(self):
         raise NotImplementedError
 
@@ -1071,6 +1083,9 @@ class IBootcampController(IGameController):
 
     @property
     def version(self):
+        raise NotImplementedError
+
+    def getBootcampOutfit(self, vehDescr):
         raise NotImplementedError
 
     def isInBootcamp(self):
@@ -1875,12 +1890,6 @@ class IBattlePassController(IGameController):
     def getFinalOfferTime(self):
         raise NotImplementedError
 
-    def getPrevSeasonsStats(self):
-        raise NotImplementedError
-
-    def getLastFinishedSeasonStats(self):
-        raise NotImplementedError
-
     def getSeasonsHistory(self):
         raise NotImplementedError
 
@@ -2171,6 +2180,126 @@ class IVehiclePostProgressionController(IGameController):
 class IWotPlusNotificationController(IGameController):
 
     def processSwitchNotifications(self):
+        raise NotImplementedError
+
+
+class IEntitlementsConsumer(object):
+
+    @property
+    def isConsumesEntitlements(self):
+        raise NotImplementedError
+
+
+class IEntitlementsController(IGameController):
+    onCacheUpdated = None
+
+    def updateCache(self, codes):
+        raise NotImplementedError
+
+    def forceUpdateCache(self, codes):
+        raise NotImplementedError
+
+    def getBalanceEntitlementFromCache(self, code):
+        raise NotImplementedError
+
+    def isCacheInited(self):
+        raise NotImplementedError
+
+    def getConsumedEntitlementFromCache(self, code):
+        raise NotImplementedError
+
+    def getGrantedEntitlementFromCache(self, code):
+        raise NotImplementedError
+
+    def isCodesWasFailedInLastRequest(self, codes):
+        raise NotImplementedError
+
+
+class IEventLootBoxesController(IGameController, IEntitlementsConsumer):
+    onStatusChange = None
+    onAvailabilityChange = None
+    onBoxesCountChange = None
+    onIntroShownChanged = None
+    onBoxesUpdate = None
+    onBoxInfoUpdated = None
+
+    @property
+    def boxCountToGuaranteedBonus(self):
+        raise NotImplementedError
+
+    def getSetting(self, category, setting):
+        raise NotImplementedError
+
+    def setSetting(self, category, setting, value):
+        raise NotImplementedError
+
+    def isEnabled(self):
+        raise NotImplementedError
+
+    def isActive(self):
+        raise NotImplementedError
+
+    def isLootBoxesAvailable(self):
+        raise NotImplementedError
+
+    def isBuyAvailable(self):
+        raise NotImplementedError
+
+    def isLootBoxesWasStarted(self):
+        raise NotImplementedError
+
+    def isLootBoxesWasFinished(self):
+        raise NotImplementedError
+
+    def useExternalShop(self):
+        raise NotImplementedError
+
+    def setIntroWasShown(self, value):
+        raise NotImplementedError
+
+    def getDayLimit(self):
+        raise NotImplementedError
+
+    def getGuaranteedBonusLimit(self, boxType):
+        raise NotImplementedError
+
+    def getEventActiveTime(self):
+        raise NotImplementedError
+
+    def openShop(self):
+        raise NotImplementedError
+
+    def getDayInfoStatistics(self):
+        raise NotImplementedError
+
+    def getExpiresAtLootBoxBuyCounter(self):
+        raise NotImplementedError
+
+    def getTimeLeftToResetPurchase(self):
+        raise NotImplementedError
+
+    def getCommonBoxInfo(self):
+        raise NotImplementedError
+
+    def getPremiumBoxInfo(self):
+        raise NotImplementedError
+
+    def getBoxInfo(self, boxType):
+        raise NotImplementedError
+
+    def getStoreInfo(self, category):
+        raise NotImplementedError
+
+    def getBoxesIDs(self, category):
+        raise NotImplementedError
+
+    def getBoxesCount(self):
+        raise NotImplementedError
+
+    def getBoxesInfo(self):
+        raise NotImplementedError
+
+    def getVehicleLevels(self, boxType):
         raise NotImplementedError
 
 

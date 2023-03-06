@@ -1523,7 +1523,6 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'battlePassReward',
  'battlePassBought',
  'battlePassReachedCap',
- 'badges',
  'collectibleVehiclesUnlocked',
  'customizationProgress',
  'enhancementsWipedOnVehicles',

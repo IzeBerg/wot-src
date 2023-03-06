@@ -24,6 +24,7 @@ IS_WEB = BigWorld.component == 'web'
 IS_DYNUPDATER = False
 IS_LOAD_GLOSSARY = False
 IS_CGF_DUMP = BigWorld.component == 'client_cgf_dump'
+IS_PROCESS_REPLAY = BigWorld.component.endswith('process_replay')
 DEFAULT_LANGUAGE = 'ru'
 AUTH_REALM = 'RU'
 IS_DEVELOPMENT = CURRENT_REALM == 'DEV'
@@ -71,7 +72,6 @@ SPECIAL_OL_FILTER = IS_KOREA or IS_SINGAPORE
 IS_RENTALS_ENABLED = True
 IS_SHOW_SERVER_STATS = not IS_CHINA
 IS_CAT_LOADED = False
-IS_TUTORIAL_ENABLED = True
 LEAKS_DETECTOR_MAX_EXECUTION_TIME = 2.0
 IS_IGR_ENABLED = IS_KOREA or IS_CHINA
 SERVER_TICK_LENGTH = 0.1
@@ -151,7 +151,6 @@ VALID_TRAINING_ARENA_GAMEPLAY_IDS = frozenset(ARENA_GAMEPLAY_IDS[gameplayName] f
                                                                                                     'domination2',
                                                                                                     'assault2',
                                                                                                     'epic',
-                                                                                                    'sandbox',
                                                                                                     'bootcamp',
                                                                                                     'ctf30x30',
                                                                                                     'domination30x30',
@@ -174,12 +173,9 @@ class ARENA_GUI_TYPE:
     UNKNOWN = 0
     RANDOM = 1
     TRAINING = 2
-    TUTORIAL = 4
     CYBERSPORT = 5
     FALLOUT = 6
     EVENT_BATTLES = 7
-    RATED_SANDBOX = 11
-    SANDBOX = 12
     FALLOUT_CLASSIC = 13
     FALLOUT_MULTITEAM = 14
     SORTIE_2 = 15
@@ -199,32 +195,29 @@ class ARENA_GUI_TYPE:
     FUN_RANDOM = 29
     COMP7 = 30
     RANGE = (
-     UNKNOWN, RANDOM, TRAINING, TUTORIAL, CYBERSPORT, FALLOUT, EVENT_BATTLES,
-     RATED_SANDBOX, SANDBOX, FALLOUT_CLASSIC,
+     UNKNOWN, RANDOM, TRAINING, CYBERSPORT, FALLOUT, EVENT_BATTLES, FALLOUT_CLASSIC,
      FALLOUT_MULTITEAM, SORTIE_2, FORT_BATTLE_2, RANKED, BOOTCAMP,
      EPIC_RANDOM, EPIC_RANDOM_TRAINING, EPIC_BATTLE, EPIC_TRAINING, BATTLE_ROYALE, MAPBOX,
      MAPS_TRAINING, RTS, RTS_TRAINING, RTS_BOOTCAMP, FUN_RANDOM, COMP7)
     RANDOM_RANGE = (
      RANDOM, EPIC_RANDOM)
-    SANDBOX_RANGE = (
-     SANDBOX, RATED_SANDBOX)
     FALLOUT_RANGE = (
      FALLOUT_CLASSIC, FALLOUT_MULTITEAM)
     EPIC_RANGE = (
      EPIC_BATTLE, EPIC_TRAINING)
     STRONGHOLD_RANGE = (
      SORTIE_2, FORT_BATTLE_2)
+    VOIP_SUPPORTED = RANDOM_RANGE + EPIC_RANGE
+    BATTLE_CHAT_SETTING_SUPPORTED = (
+     RANDOM, RANKED, EPIC_RANDOM, EPIC_BATTLE, MAPBOX, FUN_RANDOM, COMP7)
 
 
 class ARENA_GUI_TYPE_LABEL:
     LABELS = {ARENA_GUI_TYPE.UNKNOWN: 'special', 
        ARENA_GUI_TYPE.RANDOM: 'random', 
        ARENA_GUI_TYPE.TRAINING: 'training', 
-       ARENA_GUI_TYPE.TUTORIAL: 'tutorial', 
        ARENA_GUI_TYPE.CYBERSPORT: 'team7x7', 
        ARENA_GUI_TYPE.EVENT_BATTLES: 'event', 
-       ARENA_GUI_TYPE.RATED_SANDBOX: 'ratedsandbox', 
-       ARENA_GUI_TYPE.SANDBOX: 'sandbox', 
        ARENA_GUI_TYPE.FALLOUT_CLASSIC: 'fallout_classic', 
        ARENA_GUI_TYPE.FALLOUT_MULTITEAM: 'fallout_multiteam', 
        ARENA_GUI_TYPE.BOOTCAMP: 'bootcamp', 
@@ -248,14 +241,11 @@ class ARENA_BONUS_TYPE:
     TRAINING = 2
     TOURNAMENT = 4
     CLAN = 5
-    TUTORIAL = 6
     CYBERSPORT = 7
     EVENT_BATTLES = 9
     GLOBAL_MAP = 13
     TOURNAMENT_REGULAR = 14
     TOURNAMENT_CLAN = 15
-    RATED_SANDBOX = 16
-    SANDBOX = 17
     FALLOUT_CLASSIC = 18
     FALLOUT_MULTITEAM = 19
     SORTIE_2 = 20
@@ -283,16 +273,14 @@ class ARENA_BONUS_TYPE:
     FUN_RANDOM = 42
     COMP7 = 43
     RANGE = (
-     UNKNOWN, REGULAR, TRAINING, TOURNAMENT, CLAN, TUTORIAL,
-     CYBERSPORT, EVENT_BATTLES, EVENT_BATTLES_2, GLOBAL_MAP,
-     TOURNAMENT_REGULAR, TOURNAMENT_CLAN, RATED_SANDBOX, SANDBOX,
+     UNKNOWN, REGULAR, TRAINING, TOURNAMENT, CLAN, CYBERSPORT, EVENT_BATTLES, EVENT_BATTLES_2, GLOBAL_MAP,
+     TOURNAMENT_REGULAR, TOURNAMENT_CLAN,
      FALLOUT_CLASSIC, FALLOUT_MULTITEAM, BOOTCAMP, SORTIE_2, FORT_BATTLE_2, RANKED,
      EPIC_RANDOM, EPIC_RANDOM_TRAINING, EPIC_BATTLE, EPIC_BATTLE_TRAINING, TOURNAMENT_EVENT, EVENT_RANDOM,
      BATTLE_ROYALE_SOLO, BATTLE_ROYALE_SQUAD, BOB, BATTLE_ROYALE_TRN_SOLO, BATTLE_ROYALE_TRN_SQUAD,
      MAPBOX, WEEKEND_BRAWL, MAPS_TRAINING, RTS, RTS_1x1, RTS_BOOTCAMP, FUN_RANDOM, COMP7)
     RANDOM_RANGE = (
      REGULAR, EPIC_RANDOM)
-    SANDBOX_RANGE = (RATED_SANDBOX, SANDBOX)
     FALLOUT_RANGE = (FALLOUT_CLASSIC, FALLOUT_MULTITEAM)
     TOURNAMENT_RANGE = (TOURNAMENT, TOURNAMENT_REGULAR, TOURNAMENT_CLAN, TOURNAMENT_EVENT)
     BATTLE_ROYALE_RANGE = (BATTLE_ROYALE_SOLO, BATTLE_ROYALE_SQUAD, BATTLE_ROYALE_TRN_SOLO, BATTLE_ROYALE_TRN_SQUAD)
@@ -480,7 +468,7 @@ class PREBATTLE_TYPE:
      UNIT, SQUAD, CLAN, FALLOUT, EVENT, STRONGHOLD,
      E_SPORT_COMMON, EPIC, BATTLE_ROYALE, BATTLE_ROYALE_TOURNAMENT, MAPBOX, FUN_RANDOM, COMP7)
     CREATE_FROM_CLIENT = (
-     UNIT, SQUAD, EPIC, FALLOUT, EVENT, BATTLE_ROYALE, BATTLE_ROYALE_TOURNAMENT, MAPBOX, FUN_RANDOM, COMP7)
+     NONE, UNIT, SQUAD, EPIC, FALLOUT, EVENT, BATTLE_ROYALE, BATTLE_ROYALE_TOURNAMENT, MAPBOX, FUN_RANDOM, COMP7)
     CREATE_FROM_WEB = (
      UNIT, SQUAD, STRONGHOLD)
     TRAININGS = (
@@ -785,6 +773,7 @@ MAGNETIC_AUTO_AIM_CONFIG = 'magnetic_auto_aim_config'
 BATTLE_NOTIFIER_CONFIG = 'battle_notifier_config'
 BATTLE_ACHIEVEMENTS_CONFIG = 'battle_achievements_config'
 ACTIVE_TEST_CONFIRMATION_CONFIG = 'active_test_confirmation_config'
+TOURNAMENT_CONFIG = 'tournament_config'
 MISC_GUI_SETTINGS = 'misc_gui_settings'
 META_GAME_SETTINGS = 'meta_game_settings'
 MAPS_TRAINING_ENABLED_KEY = 'isMapsTrainingEnabled'
@@ -807,7 +796,18 @@ class Configs(enum.Enum):
     COMP7_CONFIG = 'comp7_config'
     COMP7_PRESTIGE_RANKS_CONFIG = 'comp7_prestige_ranks_config'
     PERSONAL_RESERVES_CONFIG = 'personal_reserves_config'
+    PLAY_LIMITS_CONFIG = 'play_limits_config'
+    PRE_MODERATION_CONFIG = 'pre_moderation_config'
 
+
+INBATTLE_CONFIGS = (
+ 'spgRedesignFeatures',
+ 'ranked_config',
+ 'battle_royale_config',
+ 'epic_config',
+ 'vehicle_post_progression_config',
+ Configs.COMP7_CONFIG.value,
+ Configs.FUN_RANDOM_CONFIG.value)
 
 class RESTRICTION_TYPE:
     NONE = 0
@@ -855,12 +855,14 @@ class SPA_ATTRS:
     BOOTCAMP_VIDEO_DISABLED = '/wot/game/bc_video_disabled/'
     STEAM_ALLOW = '/wot/steam/allow/'
     RSS = '/wot/game/service/rss/'
+    USER_COUNTRY = 'user_stated_country'
 
     @staticmethod
     def toClientAttrs():
         return [SPA_ATTRS.LOGGING_ENABLED,
          SPA_ATTRS.BOOTCAMP_DISABLED,
-         SPA_ATTRS.BOOTCAMP_VIDEO_DISABLED]
+         SPA_ATTRS.BOOTCAMP_VIDEO_DISABLED,
+         SPA_ATTRS.USER_COUNTRY]
 
 
 class CLAN_MEMBER_FLAGS(object):
@@ -1342,11 +1344,9 @@ class QUEUE_TYPE:
     RANDOMS = 1
     COMPANIES = 2
     VOLUNTEERS = 3
-    SANDBOX = 4
     UNITS = 5
     EVENT_BATTLES = 7
     UNIT_ASSEMBLER = 8
-    TUTORIAL = 9
     SPEC_BATTLE = 13
     FALLOUT_CLASSIC = 14
     FALLOUT_MULTITEAM = 15
@@ -1367,13 +1367,13 @@ class QUEUE_TYPE:
     FALLOUT = (
      FALLOUT_CLASSIC, FALLOUT_MULTITEAM)
     ALL = (
-     RANDOMS, COMPANIES, VOLUNTEERS, SANDBOX, UNITS,
-     EVENT_BATTLES, UNIT_ASSEMBLER, TUTORIAL,
-     SPEC_BATTLE, FALLOUT,
+     RANDOMS, COMPANIES, VOLUNTEERS, UNITS, EVENT_BATTLES, UNIT_ASSEMBLER, SPEC_BATTLE, FALLOUT,
      FALLOUT_CLASSIC, FALLOUT_MULTITEAM, STRONGHOLD_UNITS, RANKED, BOOTCAMP, EPIC, TOURNAMENT_UNITS, BATTLE_ROYALE,
      BATTLE_ROYALE_TOURNAMENT, MAPBOX, MAPS_TRAINING, RTS, RTS_1x1, RTS_BOOTCAMP, FUN_RANDOM, COMP7)
     REMOVED = (
      COMPANIES,)
+    BASE_ON_DEQUEUE = (
+     RANDOMS, EVENT_BATTLES, UNITS, EPIC, BATTLE_ROYALE, MAPBOX, FUN_RANDOM, COMP7)
 
 
 QUEUE_TYPE_NAMES = {v:k for k, v in QUEUE_TYPE.__dict__.iteritems() if isinstance(v, int) if isinstance(v, int)}
@@ -1640,10 +1640,11 @@ class OVERTURN_WARNING_LEVEL:
     SAFE = 0
     CAUTION = 1
     DANGER = 2
+    BLOCKED = 3
 
     @classmethod
     def isOverturned(cls, warningLevel):
-        return warningLevel in (cls.CAUTION, cls.DANGER)
+        return warningLevel in (cls.CAUTION, cls.DANGER, cls.BLOCKED)
 
 
 class OVERTURN_CONDITION:
@@ -1869,7 +1870,7 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    58: 'Contacts', 
    USER_SERVER_SETTINGS.GAME_EXTENDED: 'Game extended section settings', 
    60: 'Fallout', 
-   61: 'Tutorial', 
+   61: '[Free]', 
    62: '[Free]', 
    USER_SERVER_SETTINGS.ARCADE_AIM_4: 'Arcade aim setting', 
    USER_SERVER_SETTINGS.SNIPER_AIM_4: 'Sniper aim setting', 
@@ -2134,24 +2135,15 @@ class INVITATION_TYPE:
     RANGE = (
      SQUAD, EVENT, EPIC, BATTLE_ROYALE, MAPBOX, FUN_RANDOM, COMP7)
     TYPES_WITH_EXTRA_DATA = (FUN_RANDOM,)
+    INVITATION_TYPE_FROM_ARENA_BONUS_TYPE_MAPPING = {ARENA_BONUS_TYPE.REGULAR: SQUAD, 
+       ARENA_BONUS_TYPE.EPIC_RANDOM: SQUAD, 
+       ARENA_BONUS_TYPE.EPIC_BATTLE: EPIC, 
+       ARENA_BONUS_TYPE.EVENT_BATTLES: EVENT, 
+       ARENA_BONUS_TYPE.MAPBOX: MAPBOX}
 
     @staticmethod
     def invitationTypeFromArenaBonusType(arenaBonusType):
-        if arenaBonusType in ARENA_BONUS_TYPE.RANDOM_RANGE:
-            return INVITATION_TYPE.SQUAD
-        else:
-            if arenaBonusType == ARENA_BONUS_TYPE.EPIC_BATTLE:
-                return INVITATION_TYPE.EPIC
-            else:
-                if arenaBonusType == ARENA_BONUS_TYPE.EVENT_BATTLES:
-                    return INVITATION_TYPE.EVENT
-                if arenaBonusType == ARENA_BONUS_TYPE.MAPBOX:
-                    return INVITATION_TYPE.MAPBOX
-                if arenaBonusType == ARENA_BONUS_TYPE.FUN_RANDOM:
-                    return INVITATION_TYPE.FUN_RANDOM
-                return
-
-            return
+        return INVITATION_TYPE.INVITATION_TYPE_FROM_ARENA_BONUS_TYPE_MAPPING.get(arenaBonusType)
 
 
 class REPAIR_FLAGS:
@@ -2321,6 +2313,16 @@ SHELL_TYPES_LIST = (
 BATTLE_RESULT_WAITING_TIMEOUT = 0.1
 SHELL_TYPES_INDICES = dict((value, index) for index, value in enumerate(SHELL_TYPES_LIST))
 
+@enum.unique
+class StunTypes(enum.IntEnum):
+    NONE = 0
+    DEFAULT = 1
+    FLAME = 2
+    BULLET = 3
+
+
+AVAILABLE_STUN_TYPES_NAMES = [ key for key, value in StunTypes.__members__.iteritems() if value > 0 ]
+
 class SHELL_MECHANICS_TYPE:
     LEGACY = 'LEGACY'
     MODERN = 'MODERN'
@@ -2438,13 +2440,8 @@ class TARGET_LOST_FLAGS:
     UNREACHABLE = 8
 
 
-class REPLAY_ONLY_ENTITIES:
-    OBSERVER_AVATAR = 1
-    OBSERVER_VEHICLE = 2
-
-
 GIFT_TANKMAN_TOKEN_NAME = 'WOTD-95479_gift_tankman'
-GAMEPLAY_NAMES_WITH_DISABLED_QUESTS = ('sandbox', 'bootcamp')
+GAMEPLAY_NAMES_WITH_DISABLED_QUESTS = ('bootcamp', )
 
 class BASE_TYPE:
     TEAM_BASE = 1
@@ -2752,6 +2749,7 @@ class ClansConfig(object):
     QUEST_URL = 'clanQuestUrl'
     CRAFT_MACHINE_URL = 'craftMachineUrl'
     NOTIFICATION_START_TIME = 'notificationStartTime'
+    ON_ENTER_CLAN_BONUS = 'onEnterClanBonus'
 
 
 class EnhancementsConfig(object):
@@ -3098,3 +3096,7 @@ DAILY_PLAY_LIMIT = 'dailyPlayLimit'
 SESSION_PLAY_LIMIT = 'sessionLimit'
 PLAY_LIMITS = (
  CURFEW_PLAY_LIMIT, WEEKLY_PLAY_LIMIT, DAILY_PLAY_LIMIT, SESSION_PLAY_LIMIT)
+
+class InitialVehsAdditionStrategy(object):
+    REALM_AND_COUNTRY = 0
+    COUNTRY = 1

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.286854 0.006861 1.967999</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.884401 0.510642 0.523389</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.635441 0.772150</row1>
+					<row2>0.000000 -0.772150 0.635441</row2>
+					<row3>-1.366255 0.038064 2.954038</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-0.999924 -0.002849 0.011968</row0>
+					<row1>-0.012053 0.032214 -0.999408</row1>
+					<row2>0.002462 -0.999477 -0.032246</row2>
+					<row3>-1.366255 -0.201109 -2.845631</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.635441 0.772150</row1>
+					<row2>0.000000 -0.772150 0.635441</row2>
+					<row3>1.366256 0.038064 2.954038</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-0.999958 -0.004558 -0.007916</row0>
+					<row1>0.007764 0.032456 -0.999443</row1>
+					<row2>0.004812 -0.999463 -0.032419</row2>
+					<row3>1.366256 -0.201109 -2.845631</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 -0.999124 -0.041847</row1>
+					<row2>0.000000 0.041847 -0.999124</row2>
+					<row3>1.200868 0.225361 -2.865419</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.005556 0.436253 -0.786036</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_upgrade_01</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416440 8.416440 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000076 -0.019977 0.227386</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_upgrade_04</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416440 8.416440 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.003237 0.024129 -0.572205</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416440 8.416440 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.023892 -0.552734</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>tank_upgrade_03</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416440 8.416440 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.003237 0.024129 -0.572205</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>tank_upgrade_02</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416440 8.416440 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_upgrade_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.003237 0.024129 -0.572205</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.943897 -0.537560 -4.641448</min>
+		<max>1.937423 0.585344 3.497039</max>
+	</boundingBox>
+	<geometrySize>1052100</geometrySize>
+	<minUVDensity>0.002389</minUVDensity>
+</root>

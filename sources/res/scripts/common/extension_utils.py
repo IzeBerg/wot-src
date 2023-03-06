@@ -1,4 +1,5 @@
 import importlib
+from soft_exception import SoftException
 from ExtensionsManager import g_extensionsManager
 from constants import IS_CLIENT, IS_EDITOR
 from debug_utils import LOG_CURRENT_EXCEPTION
@@ -13,6 +14,7 @@ _XML_NAMESPACE = ' xmlns:xmlref="http://bwt/xmlref"'
 _MERGE_TAG = 'xmlref:merge'
 _CONTENT_TAG = 'xmlref:content'
 _INCLUDE_TAG = 'xmlref:include'
+_cachedElements = set()
 
 def importClass(classPath, defaultMod):
     modPath, _, className = classPath.rpartition('.')
@@ -22,41 +24,48 @@ def importClass(classPath, defaultMod):
         LOG_CURRENT_EXCEPTION()
         return
 
-    return getattr(mod, className, None)
+    try:
+        return getattr(mod, className)
+    except AttributeError:
+        LOG_CURRENT_EXCEPTION()
+        return
 
 
 class _MergeExtensionFile(object):
 
     @classmethod
-    def openSection(cls, xmlPath, mergeFiles):
-        if not IS_EDITOR:
-            extensions = g_extensionsManager.activeExtensions if 1 else g_extensionsManager.extensions
-            xmlPaths = [ ext.path + xmlPath for ext in extensions if rmgr.isFile(ext.path + xmlPath)
-                       ]
-            if not xmlPaths:
-                return rmgr.openSection(xmlPath)
-            genString = cls._openTag(('{} {}').format(_ROOT_TAG, _XML_NAMESPACE))
-            if mergeFiles:
-                genString += cls._openTag(_MERGE_TAG)
-            if rmgr.isFile(xmlPath):
-                xmlPaths = [
-                 xmlPath] + xmlPaths
-            xmlPaths = IS_CLIENT or IS_EDITOR or [ getRealmFilePath(xmlPath) if rmgr.isFile(getRealmFilePath(xmlPath)) else xmlPath for xmlPath in xmlPaths
-                                                 ]
+    def makeMergeXMLString(cls, xmlPaths, isMergeRequired):
+        if not xmlPaths:
+            return ''
+        genString = cls._openTag(('{} {}').format(_ROOT_TAG, _XML_NAMESPACE))
+        if isMergeRequired:
+            genString += cls._openTag(_MERGE_TAG)
         for path in xmlPaths:
-            if mergeFiles:
+            if isMergeRequired:
                 genString += cls._openTag(_CONTENT_TAG)
             genString += cls._attributeTag(_INCLUDE_TAG, 'href', path)
-            if mergeFiles:
+            if isMergeRequired:
                 genString += cls._closeTag(_CONTENT_TAG)
 
-        if mergeFiles:
+        if isMergeRequired:
             genString += cls._closeTag(_MERGE_TAG)
         genString += cls._closeTag(_ROOT_TAG)
-        section = rmgr.DataSection()
-        section.createSectionFromString(genString)
-        if section.values() and section.child(0).name == 'root':
-            section = section.child(0)
+        return genString
+
+    @classmethod
+    def openSection(cls, xmlPath, mergeFiles):
+        xmlPaths = [ ext.path + xmlPath for ext in g_extensionsManager.activeExtensions if rmgr.isFile(ext.path + xmlPath)
+                   ]
+        if not xmlPaths:
+            return rmgr.openSection(xmlPath)
+        if rmgr.isFile(xmlPath):
+            xmlPaths = [
+             xmlPath] + xmlPaths
+        if not (IS_CLIENT or IS_EDITOR):
+            xmlPaths = [ getRealmFilePath(xmlPath) if rmgr.isFile(getRealmFilePath(xmlPath)) else xmlPath for xmlPath in xmlPaths ]
+        section = rmgr.DataSection('root')
+        section.createSectionFromString(cls.makeMergeXMLString(xmlPaths, mergeFiles))
+        section = section.child(0)
         return section
 
     @classmethod
@@ -72,6 +81,14 @@ class _MergeExtensionFile(object):
         return ('<{} {}="{}"/>\n').format(tag, attrName, attrValue)
 
 
+def mergeSection(xmlPath, mergeFiles):
+    return _MergeExtensionFile.openSection(xmlPath, mergeFiles)
+
+
+def makeMergeXMLString(xmlPaths, isMergeRequired):
+    return _MergeExtensionFile.makeMergeXMLString(xmlPaths, isMergeRequired)
+
+
 class ResMgr(object):
 
     class __metaclass__(type):
@@ -79,11 +96,29 @@ class ResMgr(object):
         def __getattr__(self, item):
             if IS_CLIENT:
                 return getattr(rmgr, item)
-            return getattr(self if item in ('openSection', ) else rmgr, item)
+            return getattr(self if item in ('openSection', 'addToCache') else rmgr, item)
 
     @staticmethod
     def openSection(filepath, createIfMissing=False):
         readExtXML, readMethod = isExtXML(filepath)
-        if not readExtXML:
+        isXMLCached = rmgr.resolveToAbsolutePath(filepath) in _cachedElements
+        if isXMLCached or not readExtXML:
             return rmgr.openSection(filepath, createIfMissing)
-        return _MergeExtensionFile.openSection(filepath, readMethod == READ_METHOD.MERGE)
+        return mergeSection(filepath, readMethod == READ_METHOD.MERGE)
+
+    @staticmethod
+    def addToCache(ftPath, xml):
+        extensions = g_extensionsManager.activeExtensions
+        extPaths = [ ext.path + ftPath for ext in extensions if rmgr.isFile(ext.path + ftPath) ]
+        corePath = [ftPath] if rmgr.isFile(ftPath) else []
+        xmlPaths = corePath + extPaths
+        if not xmlPaths:
+            resourcePath = rmgr.resolveToAbsolutePath(ftPath)
+            _cachedElements.add(resourcePath)
+            return rmgr.addToCache(resourcePath, xml)
+        mergeRequired, _ = isExtXML(ftPath)
+        if len(xmlPaths) > 1 and not mergeRequired:
+            raise SoftException('Multiple standalone resources for one relative path found: %s', ftPath)
+        resourcePath = rmgr.resolveToAbsolutePath(next(iter(xmlPaths)))
+        _cachedElements.add(resourcePath)
+        return rmgr.addToCache(resourcePath, xml)

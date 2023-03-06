@@ -15,6 +15,8 @@ package net.wg.gui.lobby.hangar.crew
       
       private static const SPECIALIZATION_LEVEL:int = 101;
       
+      private static const ICON_PATH:String = "img://gui/maps/icons/tankmen/icons/small/";
+      
       private static const USSR_EMPTY:String = "ussr-empty.png";
       
       private static const GERMANY_EMPTY:String = "germany-empty.png";
@@ -112,7 +114,7 @@ package net.wg.gui.lobby.hangar.crew
             else
             {
                _loc3_.tankman = new TankmanVO({
-                  "iconFile":(_loc3_.nationID == 0 ? USSR_EMPTY : GERMANY_EMPTY),
+                  "iconFile":ICON_PATH + (_loc3_.nationID == 0 ? USSR_EMPTY : GERMANY_EMPTY),
                   "role":_loc3_.role,
                   "roleIconFile":_loc3_.roleIcon,
                   "vehicleType":_loc3_.vehicleType,

@@ -394,11 +394,6 @@ msgstr ""
 msgid "awardWindow/specialAchievement/header"
 msgstr "Так держать, боец!"
 
-msgid "awardWindow/specialAchievement/pveBattle/description"
-msgstr ""
-"Вы завершили свой %(battlesCount)d-й бой. Настало время перейти к активным "
-"боевым действиям — продолжайте сражаться!"
-
 msgid "awardWindow/specialAchievement/research/description1"
 msgstr ""
 "Командование выражает благодарность и поздравляет с исследованием "
@@ -506,9 +501,6 @@ msgstr "Поздравление с выполнением"
 
 msgid "awardWindow/title/credits"
 msgstr "Денежное довольствие"
-
-msgid "awardWindow/title/info"
-msgstr "Информационный листок"
 
 msgid "awardWindow/title/newMedals"
 msgstr "Представление к награде"
@@ -855,7 +847,9 @@ msgid "booster/influence/booster_free_xp"
 msgstr "к свободному опыту за бой"
 
 msgid "booster/influence/booster_free_xp_and_crew_xp"
-msgstr "к свободному опыту и опыту экипажа за бой"
+msgstr ""
+"к свободному опыту\n"
+"и опыту экипажа за бой"
 
 msgid "booster/influence/booster_xp"
 msgstr "к опыту за бой"
@@ -2167,13 +2161,11 @@ msgstr ""
 msgid "extraParams/name/crewHitChance"
 msgstr "Параметр, отвечающий за шанс избежания ранения членами экипажа."
 
-msgid "extraParams/name/crewRepeatedStunDuration"
-msgstr ""
-"Параметр, отвечающий за время дополнительного оглушения для уже оглушённой "
-"машины."
-
 msgid "extraParams/name/crewStunDuration"
-msgstr "Параметр, отвечающий за время получаемого оглушения."
+msgstr "Параметр, отвечающий за время дезориентации."
+
+msgid "extraParams/name/crewStunResistance"
+msgstr "Параметр, отвечающий за силу эффекта дезориентации."
 
 msgid "extraParams/name/damageEnemiesByRamming"
 msgstr "Параметр, отвечающий за урон от тарана противнику."
@@ -2818,12 +2810,6 @@ msgstr "Взвод охотников"
 msgid "headerButtons/battle/types/battleRoyaleSquad/description"
 msgstr "Создать взвод из 2 игроков"
 
-msgid "headerButtons/battle/types/battleTeaching"
-msgstr "Учебный бой"
-
-msgid "headerButtons/battle/types/battleTutorial"
-msgstr "Боевое обучение"
-
 msgid "headerButtons/battle/types/comp7"
 msgstr "Натиск"
 
@@ -2978,8 +2964,8 @@ msgstr "Сезон окончен"
 msgid "headerButtons/battle/types/ranked/descr"
 msgstr ""
 "Бой за продвижение вверх по ладдерной таблице с получением рангов и ценных наград.\n"
-"• Тип боёв: Стандартный бой.\n"
-"• Допустимая техника: только Х уровень (исследуемая и коллекционная)."
+"• Тип боя: Стандартный бой.\n"
+"• Допустимая техника: только VIII уровень."
 
 msgid "headerButtons/battle/types/rankedLeave/descr"
 msgstr "Выйти из боя"
@@ -3272,14 +3258,6 @@ msgstr "Выберите другую машину."
 msgid "headerButtons/fightBtn/tooltip/rentalIsOver/header"
 msgstr "Аренда техники завершена"
 
-msgid "headerButtons/fightBtn/tooltip/sandbox/invalid/header"
-msgstr "Выход в бой недоступен"
-
-msgid "headerButtons/fightBtn/tooltip/sandbox/invalid/level/body"
-msgstr ""
-"Выйти в бой можно только на исследуемой и премиум технике %(levels)s "
-"уровней."
-
 msgid "headerButtons/fightBtn/tooltip/telecomRentalIsOver/body"
 msgstr "Выберите другую машину."
 
@@ -3331,6 +3309,9 @@ msgstr "Склад"
 
 msgid "headerButtons/techtree"
 msgstr "Исследования"
+
+msgid "headerButtons/tournament"
+msgstr "Турниры"
 
 msgid "headerButtons/wiki"
 msgstr "Руководство"
@@ -4555,20 +4536,11 @@ msgstr "Скорость полёта"
 msgid "moduleInfo/params/shotsNumberRange"
 msgstr "Количество снарядов за залп"
 
-msgid "moduleInfo/params/stunDurationList"
-msgstr "Время оглушения"
-
 msgid "moduleInfo/params/stunMaxDuration"
-msgstr "Максимальное время оглушения"
+msgstr "Время дезориентации"
 
 msgid "moduleInfo/params/stunMaxDurationList"
-msgstr "Максимальное время оглушения"
-
-msgid "moduleInfo/params/stunMinDuration"
-msgstr "Минимальное время оглушения"
-
-msgid "moduleInfo/params/stunMinDurationList"
-msgstr "Минимальное время оглушения"
+msgstr "Время дезориентации"
 
 msgid "moduleInfo/params/turboshaftEnginePower"
 msgstr "Мощность двигателя (турбо)"
@@ -5183,21 +5155,6 @@ msgstr "%(hour)s:%(min)s:%(sec)s"
 msgid "promo/toArchive"
 msgstr "Информационный листок"
 
-msgid "pveSandbox/queue/message"
-msgstr "Идёт формирование команд..."
-
-msgid "pveSandbox/queue/more_n_minutes"
-msgstr "более %(minutes)s мин"
-
-msgid "pveSandbox/queue/player-waiting-time"
-msgstr "Вы в очереди: "
-
-msgid "pveSandbox/queue/title"
-msgstr "Очередь на выход в Учебный бой"
-
-msgid "pveSandbox/queue/units"
-msgstr "%(units)s с"
-
 msgid "quote"
 msgstr "«%(string)s»"
 
@@ -5328,7 +5285,7 @@ msgid "roleExp/action/doFarDamage"
 msgstr "Наносите урон с дальней дистанции."
 
 msgid "roleExp/action/doGroupStun"
-msgstr "Оглушайте одновременно две машины противника и более."
+msgstr "Дезориентируйте одновременно две машины противника и более."
 
 msgid "roleExp/action/doInvisAssist"
 msgstr "Передавайте союзникам разведданные, оставаясь незамеченным."
@@ -5346,7 +5303,7 @@ msgid "roleExp/action/doSpgDamage"
 msgstr "Наносите урон САУ противника."
 
 msgid "roleExp/action/doStun"
-msgstr "Помогайте союзникам наносить урон, оглушая противника."
+msgstr "Помогайте союзникам наносить урон, дезориентируя противника."
 
 msgid "roleExp/action/fragAssist"
 msgstr "Оказывайте помощь в уничтожении противника."
@@ -6386,14 +6343,8 @@ msgstr "(выстр/мин)"
 msgid "tank_params/sqm"
 msgstr "(м²)"
 
-msgid "tank_params/stunDurationList"
-msgstr "Время оглушения"
-
 msgid "tank_params/stunMaxDuration"
-msgstr "Максимальное время оглушения"
-
-msgid "tank_params/stunMinDuration"
-msgstr "Минимальное время оглушения"
+msgstr "Время дезориентации"
 
 msgid "tank_params/switchOffTime"
 msgstr "Время перехода в походный режим "
@@ -7156,10 +7107,7 @@ msgid "vehicleInfo/params/speedLimits"
 msgstr "Макс. скорость / задний ход (км/ч)"
 
 msgid "vehicleInfo/params/stunMaxDuration"
-msgstr "Максимальное время оглушения (c)"
-
-msgid "vehicleInfo/params/stunMinDuration"
-msgstr "Минимальное время оглушения (c)"
+msgstr "Время дезориентации (c)"
 
 msgid "vehicleInfo/params/switchOffTime"
 msgstr "Время перехода в походный режим (с)"

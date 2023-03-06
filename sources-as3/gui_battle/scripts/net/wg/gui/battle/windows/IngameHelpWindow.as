@@ -17,7 +17,13 @@ package net.wg.gui.battle.windows
    public class IngameHelpWindow extends IngameHelpWindowMeta implements IIngameHelpWindowMeta
    {
       
-      private static const CROSSHAIRCONTROLS_TIMELEFT:Number = 7.42;
+      private static const CROSSHAIR_TIMELEFT:Number = 7.42;
+      
+      public static const DEFAULT_FRAME_LABEL:String = "default";
+      
+      public static const COLOR_BLIND_FRAME_LABEL:String = "colorBlind";
+      
+      public static const COLOR_BLIND_INVALID:String = "colorBlindInv";
        
       
       public var closeBtn:CloseButtonText = null;
@@ -25,6 +31,8 @@ package net.wg.gui.battle.windows
       public var pageTitle:TextField = null;
       
       public var exampleTimeLeft:TextField = null;
+      
+      public var exampleDistance:TextField = null;
       
       public var exampleName:TextField = null;
       
@@ -210,6 +218,8 @@ package net.wg.gui.battle.windows
       
       private var _keysDictionary:Dictionary;
       
+      private var _isColorBlind:Boolean = false;
+      
       public function IngameHelpWindow()
       {
          this._keysDictionary = new Dictionary();
@@ -249,17 +259,26 @@ package net.wg.gui.battle.windows
          window.addEventListener(WindowEvent.SCALE_Y_CHANGED,this.onWindowScaleYChangedHandler);
          this.setTitleTexts();
          this.setDescriptionTexts();
-         this.setCrossHairTexts();
-         this.setkeysTexts();
+         this.setKeysTexts();
+         this.setCrosshairTexts();
       }
       
       override protected function draw() : void
       {
          super.draw();
-         if(geometry && window && isInvalid(WindowViewInvalidationType.POSITION_INVALID))
+         if(geometry && window)
          {
-            window.x = App.appWidth - window.getBackground().width >> 1;
-            window.y = App.appHeight - window.getBackground().height >> 1;
+            if(isInvalid(WindowViewInvalidationType.POSITION_INVALID))
+            {
+               window.x = App.appWidth - window.getBackground().width >> 1;
+               window.y = App.appHeight - window.getBackground().height >> 1;
+            }
+            if(isInvalid(COLOR_BLIND_INVALID))
+            {
+               this.bgInfo.imageName = !!this._isColorBlind ? BATTLEATLAS.HELP_WINDOW_INFO_BLIND : BATTLEATLAS.HELP_WINDOW_INFO;
+               gotoAndStop(!!this._isColorBlind ? COLOR_BLIND_FRAME_LABEL : DEFAULT_FRAME_LABEL);
+               this.setCrosshairTexts();
+            }
          }
       }
       
@@ -273,6 +292,7 @@ package net.wg.gui.battle.windows
          this.bgInfo = null;
          this._keysDictionary = null;
          this.exampleTimeLeft = null;
+         this.exampleDistance = null;
          this.exampleName = null;
          this.exampleHp = null;
          this.exampleHit = null;
@@ -366,6 +386,16 @@ package net.wg.gui.battle.windows
          super.onDispose();
       }
       
+      public function as_setColorBlind(param1:Boolean) : void
+      {
+         if(this._isColorBlind == param1)
+         {
+            return;
+         }
+         this._isColorBlind = param1;
+         invalidate(COLOR_BLIND_INVALID);
+      }
+      
       public function as_setKeys(param1:Object) : void
       {
          this.setKeys(param1);
@@ -454,15 +484,16 @@ package net.wg.gui.battle.windows
          this.gunMarker.text = INGAME_HELP.CROSSHAIRCONTROLS_GUNMARKER;
       }
       
-      private function setCrossHairTexts() : void
+      private function setCrosshairTexts() : void
       {
-         this.exampleTimeLeft.text = App.utils.locale.float(CROSSHAIRCONTROLS_TIMELEFT);
+         this.exampleTimeLeft.text = App.utils.locale.float(CROSSHAIR_TIMELEFT);
+         this.exampleDistance.text = INGAME_HELP.CROSSHAIRCONTROLS_EXAMPLE_DISTANCE;
          this.exampleName.text = INGAME_HELP.CROSSHAIRCONTROLS_EXAMPLE_NAME;
          this.exampleHp.text = INGAME_HELP.CROSSHAIRCONTROLS_EXAMPLE_HP;
          this.exampleHit.text = INGAME_HELP.CROSSHAIRCONTROLS_EXAMPLE_DAMAGE;
       }
       
-      private function setkeysTexts() : void
+      private function setKeysTexts() : void
       {
          this.printscreenTF.text = CONTROLS.KEYBOARD_KEY_PRINT_SCREEN;
          this.enterTF.text = CONTROLS.KEYBOARD_KEY_ENTER;

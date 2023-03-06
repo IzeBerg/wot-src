@@ -1,4 +1,3 @@
-import BigWorld
 from constants import ARENA_GUI_TYPE, FINISH_REASON
 from gui.impl import backport
 from gui.impl.gen import R
@@ -144,25 +143,29 @@ class PlayerKillingTimeVO(base.StatsItem):
 class FinishResultMeta(base.DictMeta):
     __slots__ = ()
 
-    def __init__(self, finishReasonLabel, shortResultLabel, fullResultLabel):
+    def __init__(self, finishReasonLabel, finishReasonClarificationLabel, shortResultLabel, fullResultLabel):
         meta = {finishReasonLabel: '', 
-           shortResultLabel: '', fullResultLabel: ''}
+           finishReasonClarificationLabel: '', shortResultLabel: '', fullResultLabel: ''}
         auto = (
          (
           0, base.StatsItem(finishReasonLabel, 'finishReasonLabel')),
          (
-          1, base.StatsItem(shortResultLabel, 'shortResultLabel')),
+          1, base.StatsItem(finishReasonClarificationLabel, 'finishReasonClarificationLabel')),
          (
-          2, base.StatsItem(fullResultLabel, 'fullResultLabel')))
+          2, base.StatsItem(shortResultLabel, 'shortResultLabel')),
+         (
+          3, base.StatsItem(fullResultLabel, 'fullResultLabel')))
         super(FinishResultMeta, self).__init__(meta, auto)
 
 
 class RegularFinishResultBlock(base.StatsBlock):
-    __slots__ = ('finishReasonLabel', 'shortResultLabel', 'fullResultLabel')
+    __slots__ = ('finishReasonLabel', 'finishReasonClarificationLabel', 'shortResultLabel',
+                 'fullResultLabel')
 
     def __init__(self, meta=None, field='', *path):
         super(RegularFinishResultBlock, self).__init__(meta, field, *path)
         self.finishReasonLabel = None
+        self.finishReasonClarificationLabel = None
         self.shortResultLabel = None
         self.fullResultLabel = None
         return
@@ -172,10 +175,10 @@ class RegularFinishResultBlock(base.StatsBlock):
         self.finishReasonLabel = makeRegularFinishResultLabel(reusable.common.finishReason, teamResult)
         self.shortResultLabel = teamResult
         self.fullResultLabel = toUpper(backport.text(R.strings.menu.finalStatistic.commonStats.resultlabel.dyn(teamResult)()))
+        self.finishReasonClarificationLabel = backport.text(R.strings.battle_results.finish.clarification.finishAllPlayersLeft()) if reusable.common.finishAllPlayersLeft else ''
 
 
 class StrongholdBattleFinishResultBlock(RegularFinishResultBlock):
-    __slots__ = ('finishReasonLabel', 'shortResultLabel', 'fullResultLabel')
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     def setRecord(self, result, reusable):
@@ -195,11 +198,11 @@ class StrongholdBattleFinishResultBlock(RegularFinishResultBlock):
         self.finishReasonLabel = makeRegularFinishResultLabel(reusable.common.finishReason, teamResult)
         self.shortResultLabel = teamResult
         self.fullResultLabel = toUpper(backport.text(R.strings.menu.finalStatistic.commonStats.resultlabel.dyn(teamResult)()))
+        self.finishReasonClarificationLabel = backport.text(R.strings.battle_results.finish.clarification.finishAllPlayersLeft()) if reusable.common.finishAllPlayersLeft else ''
         return
 
 
 class EpicBattleBattleFinishResultBlock(RegularFinishResultBlock):
-    __slots__ = ('finishReasonLabel', 'shortResultLabel', 'fullResultLabel')
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     def setRecord(self, result, reusable):
@@ -219,6 +222,7 @@ class EpicBattleBattleFinishResultBlock(RegularFinishResultBlock):
         self.finishReasonLabel = makeEpicBattleFinishResultLabel(reusable.common.finishReason, teamResult)
         self.shortResultLabel = teamResult
         self.fullResultLabel = toUpper(backport.text(R.strings.menu.finalStatistic.commonStats.resultlabel.dyn(teamResult)()))
+        self.finishReasonClarificationLabel = backport.text(R.strings.battle_results.finish.clarification.finishAllPlayersLeft()) if reusable.common.finishAllPlayersLeft else ''
         return
 
 
@@ -289,17 +293,3 @@ class SortieTeamsUiVisibility(TeamsUiVisibility):
         ui_visibility = super(SortieTeamsUiVisibility, self)._convert(value, reusable)
         ui_visibility |= UI_VISIBILITY.SHOW_RESOURCES
         return ui_visibility
-
-
-class SpaFlagItem(base.StatsItem):
-    __slots__ = ('_spaFlag', )
-
-    def __init__(self, field, spaFlag):
-        super(SpaFlagItem, self).__init__(field)
-        self._spaFlag = spaFlag
-
-    def clone(self):
-        return self.__class__(self._field, self._spaFlag)
-
-    def _convert(self, value, reusable):
-        return BigWorld.player().spaFlags.getFlag(self._spaFlag)

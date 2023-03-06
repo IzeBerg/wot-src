@@ -8,7 +8,7 @@ from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
 from battle_pass_common import BATTLE_PASS_CONFIG_NAME, BattlePassConfig
 from collector_vehicle import CollectorVehicleConsts
 from comp7_ranks_common import Comp7Division
-from constants import BATTLE_NOTIFIER_CONFIG, ClansConfig, Configs, DAILY_QUESTS_CONFIG, DOG_TAGS_CONFIG, IS_TUTORIAL_ENABLED, MAGNETIC_AUTO_AIM_CONFIG, MISC_GUI_SETTINGS, PremiumConfigs, RENEWABLE_SUBSCRIPTION_CONFIG, PLAYER_SUBSCRIPTIONS_CONFIG
+from constants import BATTLE_NOTIFIER_CONFIG, ClansConfig, Configs, DAILY_QUESTS_CONFIG, DOG_TAGS_CONFIG, MAGNETIC_AUTO_AIM_CONFIG, MISC_GUI_SETTINGS, PremiumConfigs, RENEWABLE_SUBSCRIPTION_CONFIG, PLAYER_SUBSCRIPTIONS_CONFIG, TOURNAMENT_CONFIG
 from debug_utils import LOG_DEBUG, LOG_WARNING
 from gifts.gifts_common import ClientReqStrategy, GiftEventID, GiftEventState
 from gui import GUI_SETTINGS, SystemMessages
@@ -263,12 +263,25 @@ class _StrongholdSettings(namedtuple('_StrongholdSettings', ('wgshHostUrl',))):
         return cls('')
 
 
-class _TournamentSettings(namedtuple('_TournamentSettings', ('tmsHostUrl',))):
+class _TournamentSettings(namedtuple('_TournamentSettings', (
+ 'isExternalBattleEnabled',
+ 'isTournamentEnabled',
+ 'igbHostUrl'))):
     __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(isExternalBattleEnabled=False, isTournamentEnabled=False, igbHostUrl='')
+        defaults.update(**kwargs)
+        return super(_TournamentSettings, cls).__new__(cls, **defaults)
 
     @classmethod
     def defaults(cls):
-        return cls('')
+        return cls()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
 
 
 class _FrontlineSettings(namedtuple('_FrontlineSettings', (
@@ -332,12 +345,13 @@ class RankedBattlesConfig(namedtuple('RankedBattlesConfig', ('isEnabled', 'perip
  'divisions', 'bonusBattlesMultiplier', 'expectedSeasons', 'yearAwardsMarks',
  'rankGroups', 'qualificationBattles', 'yearLBSize', 'leaguesBonusBattles',
  'forbiddenClassTags', 'forbiddenVehTypes', 'shopState', 'yearLBState',
- 'yearRewardState', 'seasonRatingPageUrl', 'yearRatingPageUrl', 'infoPageUrl',
- 'introPageUrl', 'seasonGapPageUrl', 'shopPageUrl', 'hasSpecialSeason'))):
+ 'yearRewardState', 'leagueRewardEnabled', 'seasonRatingPageUrl',
+ 'yearRatingPageUrl', 'infoPageUrl', 'introPageUrl',
+ 'seasonGapPageUrl', 'shopPageUrl', 'hasSpecialSeason'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, peripheryIDs={}, winnerRankChanges=(), loserRankChanges=(), minXP=0, unburnableRanks={}, unburnableStepRanks={}, minLevel=0, maxLevel=0, accRanks=0, accSteps=(), cycleFinishSeconds=0, primeTimes={}, seasons={}, cycleTimes=(), shields={}, divisions={}, bonusBattlesMultiplier=0, expectedSeasons=0, yearAwardsMarks=(), rankGroups=(), qualificationBattles=0, yearLBSize=0, leaguesBonusBattles=(), forbiddenClassTags=(), forbiddenVehTypes=(), shopState=SwitchState.DISABLED, yearLBState=SwitchState.DISABLED, yearRewardState=SwitchState.ENABLED, seasonRatingPageUrl='', yearRatingPageUrl='', infoPageUrl='', introPageUrl='', seasonGapPageUrl='', shopPageUrl='', hasSpecialSeason=False)
+        defaults = dict(isEnabled=False, peripheryIDs={}, winnerRankChanges=(), loserRankChanges=(), minXP=0, unburnableRanks={}, unburnableStepRanks={}, minLevel=0, maxLevel=0, accRanks=0, accSteps=(), cycleFinishSeconds=0, primeTimes={}, seasons={}, cycleTimes=(), shields={}, divisions={}, bonusBattlesMultiplier=0, expectedSeasons=0, yearAwardsMarks=(), rankGroups=(), qualificationBattles=0, yearLBSize=0, leaguesBonusBattles=(), forbiddenClassTags=(), forbiddenVehTypes=(), shopState=SwitchState.DISABLED, yearLBState=SwitchState.DISABLED, yearRewardState=SwitchState.ENABLED, leagueRewardEnabled=True, seasonRatingPageUrl='', yearRatingPageUrl='', infoPageUrl='', introPageUrl='', seasonGapPageUrl='', shopPageUrl='', hasSpecialSeason=False)
         defaults.update(kwargs)
         return super(RankedBattlesConfig, cls).__new__(cls, **defaults)
 
@@ -890,6 +904,28 @@ class ResourceWellConfig(namedtuple('_ResourceWellConfig', (
         data['rewards'] = {rewardId:makeTupleByDict(_WellRewardConfig, reward) for rewardId, reward in data['rewards'].iteritems()}
 
 
+class PlayLimitsConfig(namedtuple('PlayLimitsConfig', (
+ 'lockTimeBeforeBattle',))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(lockTimeBeforeBattle={})
+        defaults.update(kwargs)
+        return super(PlayLimitsConfig, cls).__new__(cls, **defaults)
+
+    def asDict(self):
+        return self._asdict()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+
 class _BattleMattersConfig(namedtuple('_BattleMattersConfig', (
  'isEnabled',
  'isPaused',
@@ -1062,12 +1098,11 @@ class Comp7PrestigeRanksConfig(namedtuple('Comp7PrestigeRanksConfig', (
 
 
 class PersonalReservesConfig(namedtuple('_PersonalReserves', ('isReservesInBattleActivationEnabled',
- 'displayConversionNotification',
  'supportedQueueTypes'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isReservesInBattleActivationEnabled=False, displayConversionNotification=False, supportedQueueTypes={})
+        defaults = dict(isReservesInBattleActivationEnabled=False, supportedQueueTypes={})
         defaults.update(**kwargs)
         return super(PersonalReservesConfig, cls).__new__(cls, **defaults)
 
@@ -1079,6 +1114,49 @@ class PersonalReservesConfig(namedtuple('_PersonalReserves', ('isReservesInBattl
         allowedFields = self._fields
         dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
         return self._replace(**dataToUpdate)
+
+
+class PreModerationConfig(namedtuple('_PreModerationConfig', ('prebattleDescriptionEnabled',))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(prebattleDescriptionEnabled=False)
+        defaults.update(kwargs)
+        return super(PreModerationConfig, cls).__new__(cls, **defaults)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+
+EVENT_LOOT_BOXES_CONFIG = 'event_loot_boxes_config'
+
+class _EventLootBoxesConfig(object):
+    __slots__ = ('__isEnabled', '__startDateInUTC', '__finishDateInUTC', '__lootBoxBuyDayLimit')
+
+    def __init__(self, **kwargs):
+        super(_EventLootBoxesConfig, self).__init__()
+        self.__isEnabled = kwargs.get('enabled', False)
+        self.__startDateInUTC = kwargs.get('startDateInUTC', 0)
+        self.__finishDateInUTC = kwargs.get('finishDateInUTC', 0)
+        self.__lootBoxBuyDayLimit = kwargs.get('lootBoxBuyDayLimit', 0)
+
+    @property
+    def isEnabled(self):
+        return self.__isEnabled
+
+    @property
+    def lootBoxBuyDayLimit(self):
+        return self.__lootBoxBuyDayLimit
+
+    def getEventActiveTime(self):
+        return (
+         self.__startDateInUTC, self.__finishDateInUTC)
 
 
 class ServerSettings(object):
@@ -1124,6 +1202,9 @@ class ServerSettings(object):
         self.__comp7Config = Comp7Config()
         self.__comp7RanksConfig = Comp7PrestigeRanksConfig()
         self.__personalReservesConfig = PersonalReservesConfig()
+        self.__playLimitsConfig = PlayLimitsConfig()
+        self.__preModerationConfig = PreModerationConfig()
+        self.__eventLootBoxesConfig = _EventLootBoxesConfig()
         self.set(serverSettings)
 
     def set(self, serverSettings):
@@ -1155,9 +1236,6 @@ class ServerSettings(object):
         if 'strongholdSettings' in self.__serverSettings:
             settings = self.__serverSettings['strongholdSettings']
             self.__strongholdSettings = _StrongholdSettings(settings.get('wgshHostUrl', ''))
-        if 'tournamentSettings' in self.__serverSettings:
-            settings = self.__serverSettings['tournamentSettings']
-            self.__tournamentSettings = _TournamentSettings(settings.get('tmsHostUrl', ''))
         if 'frontlineSettings' in self.__serverSettings:
             settings = self.__serverSettings['frontlineSettings']
             self.__frontlineSettings = _FrontlineSettings(settings.get('isEpicTrainingEnabled', True))
@@ -1203,6 +1281,7 @@ class ServerSettings(object):
         if _crystalRewardsConfig.CONFIG_NAME in self.__serverSettings:
             self.__crystalRewardsConfig = makeTupleByDict(_crystalRewardsConfig, self.__serverSettings[_crystalRewardsConfig.CONFIG_NAME])
         self.__updateReactiveCommunicationConfig(self.__serverSettings)
+        self.__updateEventLootBoxesConfig(self.__serverSettings)
         if BonusCapsConst.CONFIG_NAME in self.__serverSettings:
             BONUS_CAPS.OVERRIDE_BONUS_CAPS = self.__serverSettings[BonusCapsConst.CONFIG_NAME]
         else:
@@ -1250,6 +1329,16 @@ class ServerSettings(object):
             self.__personalReservesConfig = makeTupleByDict(PersonalReservesConfig, self.__serverSettings[Configs.PERSONAL_RESERVES_CONFIG.value])
         else:
             self.__personalReservesConfig = PersonalReservesConfig.defaults()
+        if Configs.PLAY_LIMITS_CONFIG.value in self.__serverSettings:
+            self.__playLimitsConfig = makeTupleByDict(PlayLimitsConfig, self.__serverSettings[Configs.PLAY_LIMITS_CONFIG.value])
+        if Configs.PRE_MODERATION_CONFIG.value in self.__serverSettings:
+            self.__preModerationConfig = makeTupleByDict(PreModerationConfig, self.__serverSettings[Configs.PRE_MODERATION_CONFIG.value])
+        else:
+            self.__preModerationConfig = PreModerationConfig.defaults()
+        if TOURNAMENT_CONFIG in self.__serverSettings:
+            self.__tournamentSettings = makeTupleByDict(_TournamentSettings, self.__serverSettings[TOURNAMENT_CONFIG])
+        else:
+            self.__tournamentSettings = _TournamentSettings.defaults()
         self.onServerSettingsChange(serverSettings)
 
     def update(self, serverSettingsDiff):
@@ -1336,16 +1425,23 @@ class ServerSettings(object):
             self.__updateResourceWellConfig(serverSettingsDiff)
         if Configs.PERIPHERY_ROUTING_CONFIG.value in serverSettingsDiff:
             self.__updatePeripheryRoutingConfig(serverSettingsDiff)
+        if Configs.PLAY_LIMITS_CONFIG.value in serverSettingsDiff:
+            self.__updatePlayLimitsConfig(serverSettingsDiff)
+        if Configs.PRE_MODERATION_CONFIG.value in serverSettingsDiff:
+            self.__updatePreModerationConfig(serverSettingsDiff)
+        if TOURNAMENT_CONFIG in serverSettingsDiff:
+            self.__updateTournamentsConfig(serverSettingsDiff)
         self.__updateBlueprintsConvertSaleConfig(serverSettingsDiff)
         self.__updateReactiveCommunicationConfig(serverSettingsDiff)
         if Configs.CUSTOMIZATION_QUESTS.value in serverSettingsDiff:
             key = Configs.CUSTOMIZATION_QUESTS.value
             self.__serverSettings[key] = serverSettingsDiff[key]
-        self.__updatePersonalReserves(serverSettingsDiff)
         if Configs.COLLECTIVE_GOAL_ENTRY_POINT_CONFIG.value in serverSettingsDiff:
             self.__updateCollectiveGoalEntryPointConfig(serverSettingsDiff)
         if Configs.COLLECTIVE_GOAL_MARATHONS_CONFIG.value in serverSettingsDiff:
             self.__updateCollectiveGoalMarathonsConfig(serverSettingsDiff)
+        self.__updatePersonalReserves(serverSettingsDiff)
+        self.__updateEventLootBoxesConfig(serverSettingsDiff)
         self.onServerSettingsChange(serverSettingsDiff)
 
     def clear(self):
@@ -1475,6 +1571,10 @@ class ServerSettings(object):
         return self.__resourceWellConfig
 
     @property
+    def playLimitsConfig(self):
+        return self.__playLimitsConfig
+
+    @property
     def battleMattersConfig(self):
         return self.__battleMattersConfig
 
@@ -1493,6 +1593,10 @@ class ServerSettings(object):
     @property
     def personalReservesConfig(self):
         return self.__personalReservesConfig
+
+    @property
+    def preModerationConfig(self):
+        return self.__preModerationConfig
 
     def isEpicBattleEnabled(self):
         return self.epicBattles.isEnabled
@@ -1575,12 +1679,6 @@ class ServerSettings(object):
 
     def isBlueprintDataChangedInDiff(self, diff):
         return 'blueprints_config' in diff
-
-    def isTutorialEnabled(self):
-        return self.__getGlobalSetting('isTutorialEnabled', IS_TUTORIAL_ENABLED)
-
-    def isSandboxEnabled(self):
-        return self.__getGlobalSetting('isSandboxEnabled', False)
 
     def isBootcampEnabled(self):
         return self.__getGlobalSetting('isBootcampEnabled', False)
@@ -1819,6 +1917,9 @@ class ServerSettings(object):
     def getTradeInConfig(self):
         return self.__getGlobalSetting(TRADE_IN_CONFIG_NAME, {})
 
+    def getEventLootBoxesConfig(self):
+        return self.__eventLootBoxesConfig
+
     def __getGlobalSetting(self, settingsName, default=None):
         return self.__serverSettings.get(settingsName, default)
 
@@ -1917,6 +2018,9 @@ class ServerSettings(object):
     def __updateResourceWellConfig(self, diff):
         self.__resourceWellConfig = self.__resourceWellConfig.replace(diff[Configs.RESOURCE_WELL.value])
 
+    def __updatePlayLimitsConfig(self, serverSettingsDiff):
+        self.__playLimitsConfig = self.__playLimitsConfig.replace(serverSettingsDiff[Configs.PLAY_LIMITS_CONFIG.value])
+
     def __updateBattleMatters(self, targetSettings):
         self.__battleMattersConfig = self.__battleMattersConfig.replace(targetSettings[Configs.BATTLE_MATTERS_CONFIG.value])
 
@@ -1932,6 +2036,25 @@ class ServerSettings(object):
     def __updatePersonalReserves(self, serverSettingsDiff):
         if Configs.PERSONAL_RESERVES_CONFIG.value in serverSettingsDiff:
             self.__personalReservesConfig = self.__personalReservesConfig.replace(serverSettingsDiff[Configs.PERSONAL_RESERVES_CONFIG.value])
+
+    def __updatePreModerationConfig(self, serverSettingsDiff):
+        if Configs.PRE_MODERATION_CONFIG.value in serverSettingsDiff:
+            self.__preModerationConfig = self.__preModerationConfig.replace(serverSettingsDiff[Configs.PRE_MODERATION_CONFIG.value])
+
+    def __updateTournamentsConfig(self, diff):
+        self.__tournamentSettings = self.__tournamentSettings.replace(diff[TOURNAMENT_CONFIG])
+
+    def __updateEventLootBoxesConfig(self, settings):
+        if EVENT_LOOT_BOXES_CONFIG in settings:
+            config = settings[EVENT_LOOT_BOXES_CONFIG]
+            if config is None:
+                self.__eventLootBoxesConfig = _EventLootBoxesConfig()
+            elif isinstance(config, dict):
+                self.__eventLootBoxesConfig = _EventLootBoxesConfig(**config)
+            else:
+                _logger.error('Unexpected format of subscriptions service config: %r', config)
+                self.__eventLootBoxesConfig = _EventLootBoxesConfig()
+        return
 
 
 def serverSettingsChangeListener(*configKeys):

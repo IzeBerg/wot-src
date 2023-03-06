@@ -7,6 +7,7 @@ from VehicleEffects import DamageFromShotDecoder
 from aih_constants import ShakeReason
 from cgf_script.entity_dyn_components import BWEntitiyComponentTracker
 from constants import VEHICLE_HIT_EFFECT, VEHICLE_SIEGE_STATE, ATTACK_REASON_INDICES, ATTACK_REASON, SPT_MATKIND
+from constants import StunTypes
 from debug_utils import LOG_DEBUG_DEV
 from Event import Event
 from gui.battle_control import vehicle_getter, avatar_getter
@@ -68,7 +69,7 @@ class _VehicleSpeedProvider(object):
 
 
 SegmentCollisionResultExt = namedtuple('SegmentCollisionResultExt', ('dist', 'hitAngleCos', 'matInfo', 'compName'))
-StunInfo = namedtuple('StunInfo', ('startTime', 'endTime', 'duration', 'totalTime'))
+StunInfo = namedtuple('StunInfo', ('startTime', 'endTime', 'duration', 'totalTime', 'stunType'))
 DebuffInfo = namedtuple('DebuffInfo', ('duration', 'animated'))
 VEHICLE_COMPONENTS = {
  BattleAbilitiesComponent}
@@ -167,7 +168,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.respawnCompactDescr = None
         self.respawnOutfitCompactDescr = None
         self.__waitingForAppearanceReload = False
-        self.__cachedStunInfo = StunInfo(0.0, 0.0, 0.0, 0.0)
+        self.__cachedStunInfo = StunInfo(0.0, 0.0, 0.0, 0.0, '')
         self.__burnoutStarted = False
         self.__handbrakeFired = False
         self.__wheelsScrollFilter = None
@@ -531,10 +532,6 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         if syncGunAngles:
             yaw, pitch = decodeGunAngles(self.gunAnglesPacked, self.typeDescriptor.gun.pitchLimits['absolute'])
             syncGunAngles(yaw, pitch)
-            replayCtrl = BattleReplay.g_replayCtrl
-            if replayCtrl.isServerSideReplay:
-                replayCtrl.setTurretYaw(yaw)
-                replayCtrl.setGunPitch(pitch)
         return
 
     def set_health(self, _=None):
@@ -667,6 +664,13 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
 
     def onVehiclePickup(self):
         self.entityGameObject.createComponent(VehiclePickupComponent, self.appearance, self.entityGameObject)
+        attachedVehicle = BigWorld.player().getVehicleAttached()
+        if attachedVehicle is None or self.id != attachedVehicle.id:
+            return
+        soundObject = self.appearance.engineAudition.getSoundObject(TankSoundObjectsIndexes.CHASSIS)
+        if soundObject is not None:
+            soundObject.play('lift_over')
+        return
 
     def onExtraHitted(self, extraIndex, hitPoint):
         self.extrasHitPoint[extraIndex] = hitPoint
@@ -706,22 +710,23 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
 
     def set_stunInfo(self, prev=None):
         _logger.debug('Set stun info(curr,~ prev): %s, %s', self.stunInfo, prev)
-        if self.stunInfo > 0.0 and self.appearance.findComponentByType(Health.StunComponent) is None:
+        if self.stunInfo.stunFinishTime > 0.0 and self.appearance.findComponentByType(Health.StunComponent) is None:
             self.appearance.createComponent(Health.StunComponent)
-        if self.stunInfo < 0.01:
+        if self.stunInfo.stunFinishTime < 0.01:
             self.appearance.removeComponentByType(Health.StunComponent)
         self.updateStunInfo()
         return
 
-    def __updateCachedStunInfo(self, endTime):
+    def __updateCachedStunInfo(self, stunInfo):
+        endTime = stunInfo.stunFinishTime
         if endTime:
             cachedStartTime = self.__cachedStunInfo.startTime
             startTime = cachedStartTime if cachedStartTime > 0.0 else BigWorld.serverTime()
             totalTime = max(self.__cachedStunInfo.duration, endTime - startTime)
             duration = endTime - BigWorld.serverTime() if endTime > 0.0 else 0.0
-            self.__cachedStunInfo = StunInfo(startTime, endTime, duration, totalTime)
+            self.__cachedStunInfo = StunInfo(startTime, endTime, duration, totalTime, stunInfo['stunType'])
         else:
-            self.__cachedStunInfo = StunInfo(0.0, 0.0, 0.0, 0.0)
+            self.__cachedStunInfo = StunInfo(0.0, 0.0, 0.0, 0.0, StunTypes.NONE.value)
 
     def getStunInfo(self):
         self.__updateCachedStunInfo(self.stunInfo)
@@ -921,7 +926,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             if TriggersManager.g_manager:
                 TriggersManager.g_manager.fireTrigger(TriggersManager.TRIGGER_TYPE.VEHICLE_VISUAL_VISIBILITY_CHANGED, vehicleId=self.id, isVisible=True)
             self.guiSessionProvider.startVehicleVisual(self.proxy, True)
-            if self.stunInfo > 0.0:
+            if self.stunInfo.stunFinishTime > 0.0:
                 self.updateStunInfo()
             self.refreshBuffEffects()
             if self.isSpeedCapturing:
@@ -1216,8 +1221,13 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.set_stunInfo()
         self.set_wheelsScroll()
         self.set_wheelsState()
+        if hasattr(self, 'remoteCamera'):
+            self.set_remoteCamera()
         if hasattr(self, 'ownVehicle'):
             self.ownVehicle.initialUpdate(True)
+
+    def set_remoteCamera(self, _=None):
+        self.ownVehicle.update_remoteCamera(self.remoteCamera)
 
 
 @dependency.replace_none_kwargs(lobbyContext=ILobbyContext)

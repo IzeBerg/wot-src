@@ -86,6 +86,13 @@
 					<paddingMode>DOWNSCALED_CENTERED_TILED</paddingMode>
 					<pattern>.*\_MAO.png$</pattern>
 				</rule>
+				<directory>
+					<path>dds</path>
+					<rule>
+						<category>content</category>
+						<pattern>.*</pattern>
+					</rule>
+				</directory>
 			</directory>
 			<directory>
 				<path>hd_bld_SU_027_OperaTheatre</path>
@@ -110,31 +117,6 @@
 			<path>Environment</path>
 			<directory>
 				<path>00_Tiles</path>
-				<rule>
-					<format>DXT5</format>
-					<paddingMode>DOWNSCALED_CENTERED_TILED</paddingMode>
-					<pattern>.*\_AM.png$</pattern>
-				</rule>
-				<rule>
-					<format>DXT5</format>
-					<paddingMode>DOWNSCALED_CENTERED_TILED</paddingMode>
-					<pattern>.*\_GBMT.png$</pattern>
-				</rule>
-				<rule>
-					<format>DXT1</format>
-					<paddingMode>DOWNSCALED_CENTERED_TILED</paddingMode>
-					<pattern>.*\_MAO.png$</pattern>
-				</rule>
-			</directory>
-		</directory>
-		<directory>
-			<path>Hangars</path>
-			<directory>
-				<path>h34_Lunar_NY_2022</path>
-				<rule>
-					<category>buildingTiles</category>
-					<pattern>.*</pattern>
-				</rule>
 				<rule>
 					<format>DXT5</format>
 					<paddingMode>DOWNSCALED_CENTERED_TILED</paddingMode>

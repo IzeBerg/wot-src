@@ -269,6 +269,9 @@ class RankedBattlesController(IRankedBattlesController, Notifiable, SeasonProvid
     def isYearRewardEnabled(self):
         return self.__rankedSettings.yearRewardState == SwitchState.ENABLED
 
+    def isLeagueRewardEnabled(self):
+        return self.__rankedSettings.leagueRewardEnabled
+
     def hasSpecialSeason(self):
         return self.__rankedSettings.hasSpecialSeason
 

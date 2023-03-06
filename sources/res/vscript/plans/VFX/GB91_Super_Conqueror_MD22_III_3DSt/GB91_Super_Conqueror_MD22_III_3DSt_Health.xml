@@ -26,18 +26,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_2</id>
-				<params>
-					<param>
-						Animator.startLayerByName
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>FrameEvent</class>
 				<id>FrameEvent_1</id>
 				<params/>
@@ -74,165 +62,6 @@
 						<const>\1.000000\</const>
 					</slot>
 				</slots>
-			</block>
-			<block>
-				<class>CompareFloats</class>
-				<id>CompareFloats_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>b</name>
-						<const>\0.800000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_1</id>
-				<params>
-					<param>
-						Animator.stop
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_3</id>
-				<params>
-					<param>
-						Animator.stop
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_4</id>
-				<params>
-					<param>
-						Animator.startLayerByName
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>CompareFloats</class>
-				<id>CompareFloats_2</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>b</name>
-						<const>\0.600000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>CompareFloats</class>
-				<id>CompareFloats_3</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>b</name>
-						<const>\0.400000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_5</id>
-				<params>
-					<param>
-						Animator.stop
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_6</id>
-				<params>
-					<param>
-						Animator.startLayerByName
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_7</id>
-				<params>
-					<param>
-						Animator.stop
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_8</id>
-				<params>
-					<param>
-						Animator.startLayerByName
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_3</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_10</id>
-				<params>
-					<param>
-						Animator.startLayerByName
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_9</id>
-				<params>
-					<param>
-						Animator.stop
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
 			</block>
 			<block>
 				<class>Variable</class>
@@ -272,23 +101,6 @@
 						<type>TypeT</type>
 					</param>
 				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>CompareFloats</class>
-				<id>CompareFloats_4</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>b</name>
-						<const>\0.200000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_4</id>
-				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -386,87 +198,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>Variable</class>
-				<id>Variable_3</id>
-				<params>
-					<param>
-						VehicleAppearanceGO
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_1</id>
-				<params>
-					<param>
-						TankGO
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_5</id>
-				<params>
-					<param>
-						HullGO
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>StartScript</class>
 				<id>StartScript_1</id>
 				<params/>
@@ -480,191 +211,6 @@
 					<slot>
 						<name>openAtStart</name>
 						<const>\false\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_6</id>
-				<params>
-					<param>
-						H1
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						StringT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						health1
-						<name>Initial Value</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\health1\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_7</id>
-				<params>
-					<param>
-						H2
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						StringT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						health2
-						<name>Initial Value</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\health2\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_8</id>
-				<params>
-					<param>
-						H3
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						StringT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						health3
-						<name>Initial Value</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\health3\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_9</id>
-				<params>
-					<param>
-						H4
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						StringT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						health4
-						<name>Initial Value</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\health4\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_10</id>
-				<params>
-					<param>
-						H5
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						StringT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						health5
-						<name>Initial Value</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\health5\</const>
 					</slot>
 				</slots>
 			</block>
@@ -703,102 +249,153 @@
 				<slots/>
 			</block>
 			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_1</id>
-				<buddy>Variable_6</buddy>
+				<class>ComponentMethod</class>
+				<id>ComponentMethod_11</id>
 				<params>
 					<param>
-						StringT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						Animator.setFloatParam
+						<name>Component Type</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots>
 					<slot>
-						<name>value</name>
-						<const>\health1FWD\</const>
+						<name>arg#0</name>
+						<const>\health\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Variable</class>
+				<id>Variable_11</id>
+				<params>
+					<param>
+						layer_index
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						0
+						<name>Initial Value</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\0\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>VariableReadOnly</class>
+				<id>VariableReadOnly_1</id>
+				<params>
+					<param>
+						layer_index_forward
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						true
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						0
+						<name>Initial Value</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\0\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>VariableReadOnly</class>
+				<id>VariableReadOnly_2</id>
+				<params>
+					<param>
+						layer_index_deferred
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						true
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						1
+						<name>Initial Value</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\1\</const>
 					</slot>
 				</slots>
 			</block>
 			<block>
 				<class>SetVariable</class>
-				<id>SetVariable_3</id>
-				<buddy>Variable_7</buddy>
+				<id>SetVariable_8</id>
+				<buddy>Variable_11</buddy>
 				<params>
 					<param>
-						StringT
+						IntT
 						<name>Variable Type</name>
 						<type>TypeT</type>
 					</param>
 				</params>
-				<slots>
-					<slot>
-						<name>value</name>
-						<const>\health2FWD\</const>
-					</slot>
-				</slots>
+				<slots/>
 			</block>
 			<block>
 				<class>SetVariable</class>
-				<id>SetVariable_4</id>
-				<buddy>Variable_8</buddy>
+				<id>SetVariable_9</id>
+				<buddy>Variable_11</buddy>
 				<params>
 					<param>
-						StringT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>value</name>
-						<const>\health3FWD\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_6</id>
-				<buddy>Variable_9</buddy>
-				<params>
-					<param>
-						StringT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>value</name>
-						<const>\health4FWD\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_7</id>
-				<buddy>Variable_10</buddy>
-				<params>
-					<param>
-						StringT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>value</name>
-						<const>\health5FWD\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_1</id>
-				<buddy>Variable_6</buddy>
-				<params>
-					<param>
-						StringT
+						IntT
 						<name>Variable Type</name>
 						<type>TypeT</type>
 					</param>
@@ -807,11 +404,11 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_3</id>
-				<buddy>Variable_7</buddy>
+				<id>GetVariable_8</id>
+				<buddy>VariableReadOnly_2</buddy>
 				<params>
 					<param>
-						StringT
+						IntT
 						<name>Variable Type</name>
 						<type>TypeT</type>
 					</param>
@@ -820,11 +417,11 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_5</id>
-				<buddy>Variable_8</buddy>
+				<id>GetVariable_9</id>
+				<buddy>VariableReadOnly_1</buddy>
 				<params>
 					<param>
-						StringT
+						IntT
 						<name>Variable Type</name>
 						<type>TypeT</type>
 					</param>
@@ -833,24 +430,11 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_6</id>
-				<buddy>Variable_9</buddy>
+				<id>GetVariable_10</id>
+				<buddy>Variable_11</buddy>
 				<params>
 					<param>
-						StringT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_7</id>
-				<buddy>Variable_10</buddy>
-				<params>
-					<param>
-						StringT
+						IntT
 						<name>Variable Type</name>
 						<type>TypeT</type>
 					</param>
@@ -859,24 +443,6 @@
 			</block>
 		</blocks>
 		<connections>
-			<connection>
-				<from>ComponentMethod_1</from>
-				<input>in</input>
-				<to>ComponentMethod_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>gameObject</input>
-				<to>ComponentMethod_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_7</from>
-				<input>arg#0</input>
-				<to>ComponentMethod_2</to>
-				<output>value</output>
-			</connection>
 			<connection>
 				<from>GetVariable_4</from>
 				<input>vehicle</input>
@@ -902,192 +468,6 @@
 				<output>maxHealth</output>
 			</connection>
 			<connection>
-				<from>DivideFloatIfNotZero_1</from>
-				<input>a</input>
-				<to>CompareFloats_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>FlowGate_1</from>
-				<input>input</input>
-				<to>If_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>CompareFloats_1</from>
-				<input>value</input>
-				<to>If_1</to>
-				<output>greater</output>
-			</connection>
-			<connection>
-				<from>If_1</from>
-				<input>in</input>
-				<to>ComponentMethod_1</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>gameObject</input>
-				<to>ComponentMethod_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>If_2</from>
-				<input>in</input>
-				<to>ComponentMethod_3</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>gameObject</input>
-				<to>ComponentMethod_3</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ComponentMethod_3</from>
-				<input>in</input>
-				<to>ComponentMethod_4</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>gameObject</input>
-				<to>ComponentMethod_4</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_6</from>
-				<input>arg#0</input>
-				<to>ComponentMethod_4</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>DivideFloatIfNotZero_1</from>
-				<input>a</input>
-				<to>CompareFloats_2</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>DivideFloatIfNotZero_1</from>
-				<input>a</input>
-				<to>CompareFloats_3</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>If_3</from>
-				<input>in</input>
-				<to>ComponentMethod_5</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>gameObject</input>
-				<to>ComponentMethod_5</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ComponentMethod_5</from>
-				<input>in</input>
-				<to>ComponentMethod_6</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>gameObject</input>
-				<to>ComponentMethod_6</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_5</from>
-				<input>arg#0</input>
-				<to>ComponentMethod_6</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>If_1</from>
-				<input>input</input>
-				<to>If_2</to>
-				<output>false</output>
-			</connection>
-			<connection>
-				<from>CompareFloats_2</from>
-				<input>value</input>
-				<to>If_2</to>
-				<output>greater</output>
-			</connection>
-			<connection>
-				<from>If_4</from>
-				<input>in</input>
-				<to>ComponentMethod_7</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>gameObject</input>
-				<to>ComponentMethod_7</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ComponentMethod_7</from>
-				<input>in</input>
-				<to>ComponentMethod_8</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>gameObject</input>
-				<to>ComponentMethod_8</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_3</from>
-				<input>arg#0</input>
-				<to>ComponentMethod_8</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>If_2</from>
-				<input>input</input>
-				<to>If_3</to>
-				<output>false</output>
-			</connection>
-			<connection>
-				<from>CompareFloats_3</from>
-				<input>value</input>
-				<to>If_3</to>
-				<output>greater</output>
-			</connection>
-			<connection>
-				<from>ComponentMethod_9</from>
-				<input>in</input>
-				<to>ComponentMethod_10</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>gameObject</input>
-				<to>ComponentMethod_10</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_1</from>
-				<input>arg#0</input>
-				<to>ComponentMethod_10</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>If_4</from>
-				<input>in</input>
-				<to>ComponentMethod_9</to>
-				<output>false</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>gameObject</input>
-				<to>ComponentMethod_9</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>ContextGetSelf_1</from>
 				<input>default</input>
 				<to>Variable_2</to>
@@ -1104,24 +484,6 @@
 				<input>value</input>
 				<to>SetVariable_2</to>
 				<output>node</output>
-			</connection>
-			<connection>
-				<from>DivideFloatIfNotZero_1</from>
-				<input>a</input>
-				<to>CompareFloats_4</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>If_3</from>
-				<input>input</input>
-				<to>If_4</to>
-				<output>false</output>
-			</connection>
-			<connection>
-				<from>CompareFloats_4</from>
-				<input>value</input>
-				<to>If_4</to>
-				<output>greater</output>
 			</connection>
 			<connection>
 				<from>ContextGetSelf_1</from>
@@ -1154,37 +516,19 @@
 				<output>vehicle</output>
 			</connection>
 			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>default</input>
-				<to>Variable_3</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>default</input>
-				<to>Variable_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>default</input>
-				<to>Variable_5</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>FrameEvent_1</from>
 				<input>input</input>
 				<to>FlowGate_1</to>
 				<output>exec</output>
 			</connection>
 			<connection>
-				<from>If_5</from>
+				<from>SetVariable_8</from>
 				<input>open</input>
 				<to>FlowGate_1</to>
-				<output>true</output>
+				<output>out</output>
 			</connection>
 			<connection>
-				<from>SetVariable_7</from>
+				<from>SetVariable_9</from>
 				<input>open</input>
 				<to>FlowGate_1</to>
 				<output>out</output>
@@ -1208,34 +552,52 @@
 				<output>equal</output>
 			</connection>
 			<connection>
+				<from>FlowGate_1</from>
+				<input>in</input>
+				<to>ComponentMethod_11</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetVariable_2</from>
+				<input>gameObject</input>
+				<to>ComponentMethod_11</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>DivideFloatIfNotZero_1</from>
+				<input>arg#1</input>
+				<to>ComponentMethod_11</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>GetVariable_10</from>
+				<input>arg#2</input>
+				<to>ComponentMethod_11</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>If_5</from>
 				<input>input</input>
-				<to>SetVariable_1</to>
+				<to>SetVariable_8</to>
 				<output>false</output>
 			</connection>
 			<connection>
-				<from>SetVariable_1</from>
-				<input>input</input>
-				<to>SetVariable_3</to>
-				<output>out</output>
+				<from>GetVariable_9</from>
+				<input>value</input>
+				<to>SetVariable_8</to>
+				<output>value</output>
 			</connection>
 			<connection>
-				<from>SetVariable_3</from>
+				<from>If_5</from>
 				<input>input</input>
-				<to>SetVariable_4</to>
-				<output>out</output>
+				<to>SetVariable_9</to>
+				<output>true</output>
 			</connection>
 			<connection>
-				<from>SetVariable_4</from>
-				<input>input</input>
-				<to>SetVariable_6</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>SetVariable_6</from>
-				<input>input</input>
-				<to>SetVariable_7</to>
-				<output>out</output>
+				<from>GetVariable_8</from>
+				<input>value</input>
+				<to>SetVariable_9</to>
+				<output>value</output>
 			</connection>
 		</connections>
 		<macros/>

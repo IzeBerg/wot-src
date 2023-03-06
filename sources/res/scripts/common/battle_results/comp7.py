@@ -17,14 +17,4 @@ BATTLE_RESULTS = [
  (
   'comp7TeamStats', dict, {}, None, 'skip', ENTRY_TYPE.SERVER),
  (
-  'fareTeamPrestigePointsPosition', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
- (
-  'bpChapter', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
- (
-  'basePointsDiff', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
- (
-  'bpNonChapterPointsDiff', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
- (
-  'sumPoints', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
- (
-  'hasBattlePass', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL)]
+  'fareTeamPrestigePointsPosition', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF)]

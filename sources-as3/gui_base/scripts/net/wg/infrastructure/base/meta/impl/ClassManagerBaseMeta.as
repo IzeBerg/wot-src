@@ -112,12 +112,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.bootcamp.subtitles.BCSubtitle;
    import net.wg.gui.bootcamp.subtitles.SubtitlesWindow;
    import net.wg.gui.components.UnboundComponent;
-   import net.wg.gui.components.advanced.AtlasDigit;
    import net.wg.gui.components.advanced.BadgeSizes;
    import net.wg.gui.components.advanced.ButtonBarEx;
    import net.wg.gui.components.advanced.ContentTabBar;
    import net.wg.gui.components.advanced.DashLine;
-   import net.wg.gui.components.advanced.DigitsComponent;
    import net.wg.gui.components.advanced.FieldSet;
    import net.wg.gui.components.advanced.InviteIndicator;
    import net.wg.gui.components.advanced.ModuleTypesUIWithFill;
@@ -255,6 +253,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.containers.IGroupEx;
    import net.wg.gui.components.containers.MainViewContainer;
    import net.wg.gui.components.containers.ManagedContainer;
+   import net.wg.gui.components.containers.MultipleGFContainerView;
    import net.wg.gui.components.containers.SimpleManagedContainer;
    import net.wg.gui.components.containers.SoundButtonContainer;
    import net.wg.gui.components.containers.UssWrapper;
@@ -750,6 +749,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.SettingsBaseView;
    import net.wg.gui.lobby.settings.SettingsChangesMap;
    import net.wg.gui.lobby.settings.SettingsContourForm;
+   import net.wg.gui.lobby.settings.SettingsMarkerContentForm;
    import net.wg.gui.lobby.settings.SettingsMarkersForm;
    import net.wg.gui.lobby.settings.SettingsNewCountersForm;
    import net.wg.gui.lobby.settings.SettingsSniperForm;
@@ -763,6 +763,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.components.KeysItemRenderer;
    import net.wg.gui.lobby.settings.components.KeysScrollingList;
    import net.wg.gui.lobby.settings.components.RadioButtonBar;
+   import net.wg.gui.lobby.settings.components.SettingsMarkerScrollPane;
    import net.wg.gui.lobby.settings.components.SettingsStepSlider;
    import net.wg.gui.lobby.settings.components.SoundDeviceButtonBar;
    import net.wg.gui.lobby.settings.components.SoundDeviceTabButton;
@@ -1144,8 +1145,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_UNBOUNDCOMPONENT:Class = UnboundComponent;
       
-      public static const NET_WG_GUI_COMPONENTS_ADVANCED_ATLASDIGIT:Class = AtlasDigit;
-      
       public static const NET_WG_GUI_COMPONENTS_ADVANCED_BADGESIZES:Class = BadgeSizes;
       
       public static const NET_WG_GUI_COMPONENTS_ADVANCED_BUTTONBAREX:Class = ButtonBarEx;
@@ -1153,8 +1152,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_ADVANCED_CONTENTTABBAR:Class = ContentTabBar;
       
       public static const NET_WG_GUI_COMPONENTS_ADVANCED_DASHLINE:Class = DashLine;
-      
-      public static const NET_WG_GUI_COMPONENTS_ADVANCED_DIGITSCOMPONENT:Class = DigitsComponent;
       
       public static const NET_WG_GUI_COMPONENTS_ADVANCED_FIELDSET:Class = FieldSet;
       
@@ -1429,6 +1426,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CONTAINERS_MAINVIEWCONTAINER:Class = MainViewContainer;
       
       public static const NET_WG_GUI_COMPONENTS_CONTAINERS_MANAGEDCONTAINER:Class = ManagedContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTAINERS_MULTIPLEGFCONTAINERVIEW:Class = MultipleGFContainerView;
       
       public static const NET_WG_GUI_COMPONENTS_CONTAINERS_SIMPLEMANAGEDCONTAINER:Class = SimpleManagedContainer;
       
@@ -2420,6 +2419,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSCONTOURFORM:Class = SettingsContourForm;
       
+      public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSMARKERCONTENTFORM:Class = SettingsMarkerContentForm;
+      
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSMARKERSFORM:Class = SettingsMarkersForm;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSNEWCOUNTERSFORM:Class = SettingsNewCountersForm;
@@ -2445,6 +2446,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_KEYSSCROLLINGLIST:Class = KeysScrollingList;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_RADIOBUTTONBAR:Class = RadioButtonBar;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_SETTINGSMARKERSCROLLPANE:Class = SettingsMarkerScrollPane;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_SETTINGSSTEPSLIDER:Class = SettingsStepSlider;
       

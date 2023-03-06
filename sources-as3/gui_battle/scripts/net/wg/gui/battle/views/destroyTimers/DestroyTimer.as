@@ -62,7 +62,7 @@ package net.wg.gui.battle.views.destroyTimers
       
       private static const DESC_TEXT_COLORS:Object = {
          "orange":16689972,
-         "green":8041216
+         "green":8442938
       };
        
       
@@ -259,6 +259,7 @@ package net.wg.gui.battle.views.destroyTimers
          }
          isReversedTimerDirection = param1.isReversedTimerDirection;
          updateIcon();
+         this.setStaticText(Values.EMPTY_STR,param1.description);
       }
       
       public function setStaticText(param1:String, param2:String = "") : void

@@ -564,8 +564,7 @@ class VehPriceActionInfo(ActionInfo):
            VEHICLE_CLASS_NAME.HEAVY_TANK: (
                                          'avgDamage', 'avgPiercingPower', 'hullArmor', 'turretArmor',
                                          DUAL_GUN_CHARGE_TIME), 
-           VEHICLE_CLASS_NAME.SPG: ('avgDamage', 'stunMinDuration', 'stunMaxDuration', 'reloadTimeSecs', 'aimingTime',
- 'explosionRadius'), 
+           VEHICLE_CLASS_NAME.SPG: ('avgDamage', 'stunMaxDuration', 'reloadTimeSecs', 'aimingTime', 'explosionRadius'), 
            VEHICLE_CLASS_NAME.AT_SPG: ('avgPiercingPower', 'shotDispersionAngle', 'avgDamagePerMinute', 'speedLimits', 'chassisRotationSpeed',
  'switchOnTime', 'switchOffTime'), 
            'default': ('speedLimits', 'enginePower', 'chassisRotationSpeed')}

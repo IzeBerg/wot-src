@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>Light_Wide</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/HeadLight_gap.dds</Texture>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1.000000 0.901961 0.635294 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountSoft
+						<Vector4>1.000000 1.000000 0.010000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 0.007394</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>rays</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/HeadLight_ray_01.dds</Texture>
+					</property>
+					<property>
+						alphaFadeAmountSoft
+						<Vector4>1.000000 0.600000 0.200000 0.250000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1.000000 0.850980 0.533333 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						rampFreshnelMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Head_light_rays_gradient.dds</Texture>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>0.300000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 0.750000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 -0.987280</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.754682 -0.754682 -1.985110</min>
+		<max>0.754682 0.754682 0.018679</max>
+	</boundingBox>
+	<primitivesName>particles/content_deferred/GFX_models/tank_customization/HeadLight/HeadLight_01_fwd/normal/lod1/HeadLight_01_fwd</primitivesName>
+	<geometrySize>1660</geometrySize>
+	<minUVDensity>0.134306</minUVDensity>
+</root>

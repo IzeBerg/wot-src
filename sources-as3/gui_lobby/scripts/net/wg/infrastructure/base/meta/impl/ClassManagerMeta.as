@@ -174,12 +174,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.bootcamp.messageWindow.views.MessageViewLinesReward;
    import net.wg.gui.bootcamp.messageWindow.views.bottom.BottomButtonsView;
    import net.wg.gui.bootcamp.messageWindow.views.bottom.BottomListViewBase;
-   import net.wg.gui.bootcamp.nationsWindow.BCNationsWindow;
-   import net.wg.gui.bootcamp.nationsWindow.containers.InfoContainer;
-   import net.wg.gui.bootcamp.nationsWindow.containers.NationButton;
-   import net.wg.gui.bootcamp.nationsWindow.containers.NationsSelectorContainer;
-   import net.wg.gui.bootcamp.nationsWindow.data.NationItemVO;
-   import net.wg.gui.bootcamp.nationsWindow.events.NationSelectEvent;
    import net.wg.gui.bootcamp.queueWindow.BCQueueWindow;
    import net.wg.gui.bootcamp.queueWindow.data.BCQueueVO;
    import net.wg.gui.bootcamp.tooltipsWindow.BCTooltip;
@@ -321,6 +315,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.controls.DropdownMenuPrice;
    import net.wg.gui.components.controls.GlowArrowAsset;
    import net.wg.gui.components.controls.MainMenuButton;
+   import net.wg.gui.components.controls.MainMenuButtonHighlight;
+   import net.wg.gui.components.controls.MainMenuButtonSize;
    import net.wg.gui.components.controls.ProgressBar;
    import net.wg.gui.components.controls.ProgressBarAnim;
    import net.wg.gui.components.controls.ResizableTileList;
@@ -480,8 +476,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.tooltips.inblocks.data.TitleBlockVO;
    import net.wg.gui.components.tooltips.inblocks.data.TitleDescParameterWithIconVO;
    import net.wg.gui.components.tooltips.sortie.SortieDivisionBlock;
-   import net.wg.gui.components.waitingQueue.WaitingQueueMessageHelper;
-   import net.wg.gui.components.waitingQueue.WaitingQueueMessageUpdater;
    import net.wg.gui.components.windows.ScreenBg;
    import net.wg.gui.components.windows.SimpleWindow;
    import net.wg.gui.components.windows.vo.SimpleWindowBtnVo;
@@ -610,7 +604,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.events.TechniqueListComponentEvent;
    import net.wg.gui.events.TrainingEvent;
    import net.wg.gui.events.VehicleSellDialogEvent;
-   import net.wg.gui.events.WaitingQueueMessageEvent;
    import net.wg.gui.fortBase.IBuildingBaseVO;
    import net.wg.gui.fortBase.IBuildingVO;
    import net.wg.gui.interfaces.ICalendarDayVO;
@@ -624,8 +617,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.interfaces.IResettable;
    import net.wg.gui.interfaces.ISaleItemBlockRenderer;
    import net.wg.gui.interfaces.IUpdatableComponent;
-   import net.wg.gui.interfaces.IWaitingQueueMessageHelper;
-   import net.wg.gui.interfaces.IWaitingQueueMessageUpdater;
    import net.wg.gui.intro.IntroInfoVO;
    import net.wg.gui.intro.IntroPage;
    import net.wg.gui.lobby.LobbyPage;
@@ -1181,6 +1172,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.fortifications.popovers.FortVehicleSelectPopover;
    import net.wg.gui.lobby.fortifications.popovers.PopoverWithDropdown;
    import net.wg.gui.lobby.goldFishEvent.GoldFishWindow;
+   import net.wg.gui.lobby.hangar.CarouselEventEntry;
    import net.wg.gui.lobby.hangar.CrewDropDownEvent;
    import net.wg.gui.lobby.hangar.CrewXPPanelInject;
    import net.wg.gui.lobby.hangar.DailyQuestWidget;
@@ -1245,6 +1237,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.mapBox.data.MapBoxItemVO;
    import net.wg.gui.lobby.hangar.quests.BattleMattersEntryPoint;
    import net.wg.gui.lobby.hangar.quests.BattlePassEntryPoint;
+   import net.wg.gui.lobby.hangar.quests.CollectiveGoalEntryPoint;
    import net.wg.gui.lobby.hangar.quests.Comp7Widget;
    import net.wg.gui.lobby.hangar.quests.FlagContainer;
    import net.wg.gui.lobby.hangar.quests.FunRandomHangarWidget;
@@ -1254,6 +1247,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.quests.HeaderQuestsFlags;
    import net.wg.gui.lobby.hangar.quests.IHeaderFlagsEntryPoint;
    import net.wg.gui.lobby.hangar.quests.IHeaderSecondaryEntryPoint;
+   import net.wg.gui.lobby.hangar.quests.QuestFlagEntryPointBase;
    import net.wg.gui.lobby.hangar.quests.QuestFlagIconContainer;
    import net.wg.gui.lobby.hangar.quests.QuestInformerButton;
    import net.wg.gui.lobby.hangar.quests.QuestInformerContent;
@@ -2834,7 +2828,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.window.ProfileWindowInitVO;
    import net.wg.gui.lobby.window.PromoPremiumIgrWindow;
    import net.wg.gui.lobby.window.PunishmentDialog;
-   import net.wg.gui.lobby.window.PvESandboxQueueWindow;
    import net.wg.gui.lobby.window.RankedPrimeTime;
    import net.wg.gui.lobby.window.SwitchPeripheryWindow;
    import net.wg.gui.lobby.window.VcoinExchangeDataVO;
@@ -3103,29 +3096,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.rally.vo.RallyVO;
    import net.wg.gui.rally.vo.SettingRosterVO;
    import net.wg.gui.rally.vo.VehicleAlertVO;
-   import net.wg.gui.tutorial.constants.HintItemType;
-   import net.wg.gui.tutorial.constants.PlayerXPLevel;
-   import net.wg.gui.tutorial.controls.BattleBonusItem;
-   import net.wg.gui.tutorial.controls.BattleProgress;
-   import net.wg.gui.tutorial.controls.ChapterProgressItemRenderer;
-   import net.wg.gui.tutorial.controls.FinalStatisticProgress;
-   import net.wg.gui.tutorial.controls.HintBaseItemRenderer;
-   import net.wg.gui.tutorial.controls.HintList;
-   import net.wg.gui.tutorial.controls.HintTextItemRenderer;
-   import net.wg.gui.tutorial.controls.HintVideoItemRenderer;
-   import net.wg.gui.tutorial.controls.ProgressItem;
-   import net.wg.gui.tutorial.controls.ProgressSeparator;
-   import net.wg.gui.tutorial.meta.ITutorialBattleNoResultsMeta;
-   import net.wg.gui.tutorial.meta.ITutorialBattleStatisticMeta;
-   import net.wg.gui.tutorial.meta.ITutorialConfirmRefuseDialogMeta;
-   import net.wg.gui.tutorial.meta.impl.TutorialBattleNoResultsMeta;
-   import net.wg.gui.tutorial.meta.impl.TutorialBattleStatisticMeta;
-   import net.wg.gui.tutorial.meta.impl.TutorialConfirmRefuseDialogMeta;
-   import net.wg.gui.tutorial.windows.TutorialBattleNoResultsWindow;
-   import net.wg.gui.tutorial.windows.TutorialBattleStatisticWindow;
-   import net.wg.gui.tutorial.windows.TutorialConfirmRefuseDialog;
-   import net.wg.gui.tutorial.windows.TutorialGreetingDialog;
-   import net.wg.gui.tutorial.windows.TutorialQueueDialog;
    import net.wg.gui.utils.ImageSubstitution;
    import net.wg.gui.utils.VO.PriceVO;
    import net.wg.gui.utils.VO.UnitSlotProperties;
@@ -3142,7 +3112,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IAwardWindowsBaseMeta;
    import net.wg.infrastructure.base.meta.IBCBattleResultMeta;
    import net.wg.infrastructure.base.meta.IBCMessageWindowMeta;
-   import net.wg.infrastructure.base.meta.IBCNationsWindowMeta;
    import net.wg.infrastructure.base.meta.IBCOutroVideoPageMeta;
    import net.wg.infrastructure.base.meta.IBCQueueWindowMeta;
    import net.wg.infrastructure.base.meta.IBCTooltipsWindowMeta;
@@ -3178,6 +3147,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IBrowserWindowMeta;
    import net.wg.infrastructure.base.meta.IButtonWithCounterMeta;
    import net.wg.infrastructure.base.meta.ICalendarMeta;
+   import net.wg.infrastructure.base.meta.ICarouselEventEntryMeta;
    import net.wg.infrastructure.base.meta.IChannelCarouselMeta;
    import net.wg.infrastructure.base.meta.ICheckBoxDialogMeta;
    import net.wg.infrastructure.base.meta.IClanInvitesViewMeta;
@@ -3331,7 +3301,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IProgressiveRewardWidgetMeta;
    import net.wg.infrastructure.base.meta.IPromoPremiumIgrWindowMeta;
    import net.wg.infrastructure.base.meta.IPunishmentDialogMeta;
-   import net.wg.infrastructure.base.meta.IPvESandboxQueueWindowMeta;
    import net.wg.infrastructure.base.meta.IQuestsContentTabsMeta;
    import net.wg.infrastructure.base.meta.IRallyMainWindowWithSearchMeta;
    import net.wg.infrastructure.base.meta.IRankedBattlesAwardsViewMeta;
@@ -3470,7 +3439,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.tutorial.builders.bootcamp.TutorialVisibilityEffectBuilder;
    import net.wg.infrastructure.tutorial.builders.bootcamp.TweenFactory;
    import net.wg.infrastructure.tutorial.helpBtnControllers.TutorialHelpBtnController;
-   import net.wg.infrastructure.tutorial.helpBtnControllers.TutorialViewHelpBtnCtrllr;
    import net.wg.infrastructure.tutorial.helpBtnControllers.TutorialWindowHelpBtnCtrllr;
    import net.wg.infrastructure.tutorial.helpBtnControllers.interfaces.ITutorialHelpBtnController;
    
@@ -3825,18 +3793,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BOOTCAMP_MESSAGEWINDOW_VIEWS_BOTTOM_BOTTOMLISTVIEWBASE:Class = BottomListViewBase;
       
-      public static const NET_WG_GUI_BOOTCAMP_NATIONSWINDOW_BCNATIONSWINDOW:Class = BCNationsWindow;
-      
-      public static const NET_WG_GUI_BOOTCAMP_NATIONSWINDOW_CONTAINERS_INFOCONTAINER:Class = InfoContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_NATIONSWINDOW_CONTAINERS_NATIONBUTTON:Class = NationButton;
-      
-      public static const NET_WG_GUI_BOOTCAMP_NATIONSWINDOW_CONTAINERS_NATIONSSELECTORCONTAINER:Class = NationsSelectorContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_NATIONSWINDOW_DATA_NATIONITEMVO:Class = NationItemVO;
-      
-      public static const NET_WG_GUI_BOOTCAMP_NATIONSWINDOW_EVENTS_NATIONSELECTEVENT:Class = NationSelectEvent;
-      
       public static const NET_WG_GUI_BOOTCAMP_QUEUEWINDOW_BCQUEUEWINDOW:Class = BCQueueWindow;
       
       public static const NET_WG_GUI_BOOTCAMP_QUEUEWINDOW_DATA_BCQUEUEVO:Class = BCQueueVO;
@@ -4118,6 +4074,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_GLOWARROWASSET:Class = GlowArrowAsset;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_MAINMENUBUTTON:Class = MainMenuButton;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTROLS_MAINMENUBUTTONHIGHLIGHT:Class = MainMenuButtonHighlight;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTROLS_MAINMENUBUTTONSIZE:Class = MainMenuButtonSize;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_PROGRESSBAR:Class = ProgressBar;
       
@@ -4437,10 +4397,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_VO_FINALSTATS_HEADBLOCKDATA:Class = HeadBlockData;
       
-      public static const NET_WG_GUI_COMPONENTS_WAITINGQUEUE_WAITINGQUEUEMESSAGEHELPER:Class = WaitingQueueMessageHelper;
-      
-      public static const NET_WG_GUI_COMPONENTS_WAITINGQUEUE_WAITINGQUEUEMESSAGEUPDATER:Class = WaitingQueueMessageUpdater;
-      
       public static const NET_WG_GUI_COMPONENTS_WINDOWS_SCREENBG:Class = ScreenBg;
       
       public static const NET_WG_GUI_COMPONENTS_WINDOWS_SIMPLEWINDOW:Class = SimpleWindow;
@@ -4697,8 +4653,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_EVENTS_VEHICLESELLDIALOGEVENT:Class = VehicleSellDialogEvent;
       
-      public static const NET_WG_GUI_EVENTS_WAITINGQUEUEMESSAGEEVENT:Class = WaitingQueueMessageEvent;
-      
       public static const NET_WG_GUI_FORTBASE_IBUILDINGBASEVO:Class = IBuildingBaseVO;
       
       public static const NET_WG_GUI_FORTBASE_IBUILDINGVO:Class = IBuildingVO;
@@ -4724,10 +4678,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_INTERFACES_ISALEITEMBLOCKRENDERER:Class = ISaleItemBlockRenderer;
       
       public static const NET_WG_GUI_INTERFACES_IUPDATABLECOMPONENT:Class = IUpdatableComponent;
-      
-      public static const NET_WG_GUI_INTERFACES_IWAITINGQUEUEMESSAGEHELPER:Class = IWaitingQueueMessageHelper;
-      
-      public static const NET_WG_GUI_INTERFACES_IWAITINGQUEUEMESSAGEUPDATER:Class = IWaitingQueueMessageUpdater;
       
       public static const NET_WG_GUI_INTRO_INTROINFOVO:Class = IntroInfoVO;
       
@@ -5839,6 +5789,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_GOLDFISHEVENT_GOLDFISHWINDOW:Class = GoldFishWindow;
       
+      public static const NET_WG_GUI_LOBBY_HANGAR_CAROUSELEVENTENTRY:Class = CarouselEventEntry;
+      
       public static const NET_WG_GUI_LOBBY_HANGAR_CREWDROPDOWNEVENT:Class = CrewDropDownEvent;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_CREWXPPANELINJECT:Class = CrewXPPanelInject;
@@ -5967,6 +5919,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_BATTLEPASSENTRYPOINT:Class = BattlePassEntryPoint;
       
+      public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_COLLECTIVEGOALENTRYPOINT:Class = CollectiveGoalEntryPoint;
+      
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_COMP7WIDGET:Class = Comp7Widget;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_FLAGCONTAINER:Class = FlagContainer;
@@ -5984,6 +5938,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_IHEADERFLAGSENTRYPOINT:Class = IHeaderFlagsEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_IHEADERSECONDARYENTRYPOINT:Class = IHeaderSecondaryEntryPoint;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_QUESTFLAGENTRYPOINTBASE:Class = QuestFlagEntryPointBase;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_QUESTFLAGICONCONTAINER:Class = QuestFlagIconContainer;
       
@@ -9145,8 +9101,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_WINDOW_PUNISHMENTDIALOG:Class = PunishmentDialog;
       
-      public static const NET_WG_GUI_LOBBY_WINDOW_PVESANDBOXQUEUEWINDOW:Class = PvESandboxQueueWindow;
-      
       public static const NET_WG_GUI_LOBBY_WINDOW_RANKEDPRIMETIME:Class = RankedPrimeTime;
       
       public static const NET_WG_GUI_LOBBY_WINDOW_SWITCHPERIPHERYWINDOW:Class = SwitchPeripheryWindow;
@@ -9683,52 +9637,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_RALLY_VO_VEHICLEALERTVO:Class = VehicleAlertVO;
       
-      public static const NET_WG_GUI_TUTORIAL_CONSTANTS_HINTITEMTYPE:Class = HintItemType;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONSTANTS_PLAYERXPLEVEL:Class = PlayerXPLevel;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_BATTLEBONUSITEM:Class = BattleBonusItem;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_BATTLEPROGRESS:Class = BattleProgress;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_CHAPTERPROGRESSITEMRENDERER:Class = ChapterProgressItemRenderer;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_FINALSTATISTICPROGRESS:Class = FinalStatisticProgress;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_HINTBASEITEMRENDERER:Class = HintBaseItemRenderer;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_HINTLIST:Class = HintList;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_HINTTEXTITEMRENDERER:Class = HintTextItemRenderer;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_HINTVIDEOITEMRENDERER:Class = HintVideoItemRenderer;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_PROGRESSITEM:Class = ProgressItem;
-      
-      public static const NET_WG_GUI_TUTORIAL_CONTROLS_PROGRESSSEPARATOR:Class = ProgressSeparator;
-      
-      public static const NET_WG_GUI_TUTORIAL_META_ITUTORIALBATTLENORESULTSMETA:Class = ITutorialBattleNoResultsMeta;
-      
-      public static const NET_WG_GUI_TUTORIAL_META_ITUTORIALBATTLESTATISTICMETA:Class = ITutorialBattleStatisticMeta;
-      
-      public static const NET_WG_GUI_TUTORIAL_META_ITUTORIALCONFIRMREFUSEDIALOGMETA:Class = ITutorialConfirmRefuseDialogMeta;
-      
-      public static const NET_WG_GUI_TUTORIAL_META_IMPL_TUTORIALBATTLENORESULTSMETA:Class = TutorialBattleNoResultsMeta;
-      
-      public static const NET_WG_GUI_TUTORIAL_META_IMPL_TUTORIALBATTLESTATISTICMETA:Class = TutorialBattleStatisticMeta;
-      
-      public static const NET_WG_GUI_TUTORIAL_META_IMPL_TUTORIALCONFIRMREFUSEDIALOGMETA:Class = TutorialConfirmRefuseDialogMeta;
-      
-      public static const NET_WG_GUI_TUTORIAL_WINDOWS_TUTORIALBATTLENORESULTSWINDOW:Class = TutorialBattleNoResultsWindow;
-      
-      public static const NET_WG_GUI_TUTORIAL_WINDOWS_TUTORIALBATTLESTATISTICWINDOW:Class = TutorialBattleStatisticWindow;
-      
-      public static const NET_WG_GUI_TUTORIAL_WINDOWS_TUTORIALCONFIRMREFUSEDIALOG:Class = TutorialConfirmRefuseDialog;
-      
-      public static const NET_WG_GUI_TUTORIAL_WINDOWS_TUTORIALGREETINGDIALOG:Class = TutorialGreetingDialog;
-      
-      public static const NET_WG_GUI_TUTORIAL_WINDOWS_TUTORIALQUEUEDIALOG:Class = TutorialQueueDialog;
-      
       public static const NET_WG_GUI_UTILS_IMAGESUBSTITUTION:Class = ImageSubstitution;
       
       public static const NET_WG_GUI_UTILS_VO_PRICEVO:Class = PriceVO;
@@ -9809,8 +9717,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCMESSAGEWINDOWMETA:Class = IBCMessageWindowMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCNATIONSWINDOWMETA:Class = IBCNationsWindowMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCOUTROVIDEOPAGEMETA:Class = IBCOutroVideoPageMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCQUEUEWINDOWMETA:Class = IBCQueueWindowMeta;
@@ -9832,6 +9738,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBUTTONWITHCOUNTERMETA:Class = IButtonWithCounterMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICALENDARMETA:Class = ICalendarMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICAROUSELEVENTENTRYMETA:Class = ICarouselEventEntryMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICHANNELCAROUSELMETA:Class = IChannelCarouselMeta;
       
@@ -10139,8 +10047,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IPUNISHMENTDIALOGMETA:Class = IPunishmentDialogMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPVESANDBOXQUEUEWINDOWMETA:Class = IPvESandboxQueueWindowMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IQUESTSCONTENTTABSMETA:Class = IQuestsContentTabsMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IRALLYMAINWINDOWWITHSEARCHMETA:Class = IRallyMainWindowWithSearchMeta;
@@ -10429,8 +10335,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCMESSAGEWINDOWMETA:Class = BCMessageWindowMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCNATIONSWINDOWMETA:Class = BCNationsWindowMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCOUTROVIDEOPAGEMETA:Class = BCOutroVideoPageMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCQUEUEWINDOWMETA:Class = BCQueueWindowMeta;
@@ -10452,6 +10356,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BUTTONWITHCOUNTERMETA:Class = ButtonWithCounterMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CALENDARMETA:Class = CalendarMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CAROUSELEVENTENTRYMETA:Class = CarouselEventEntryMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CHANNELCAROUSELMETA:Class = ChannelCarouselMeta;
       
@@ -10759,8 +10665,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PUNISHMENTDIALOGMETA:Class = PunishmentDialogMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PVESANDBOXQUEUEWINDOWMETA:Class = PvESandboxQueueWindowMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_QUESTSCONTENTTABSMETA:Class = QuestsContentTabsMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_RALLYMAINWINDOWWITHSEARCHMETA:Class = RallyMainWindowWithSearchMeta;
@@ -11036,8 +10940,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_TUTORIAL_BUILDERS_BOOTCAMP_TWEENFACTORY:Class = TweenFactory;
       
       public static const NET_WG_INFRASTRUCTURE_TUTORIAL_HELPBTNCONTROLLERS_TUTORIALHELPBTNCONTROLLER:Class = TutorialHelpBtnController;
-      
-      public static const NET_WG_INFRASTRUCTURE_TUTORIAL_HELPBTNCONTROLLERS_TUTORIALVIEWHELPBTNCTRLLR:Class = TutorialViewHelpBtnCtrllr;
       
       public static const NET_WG_INFRASTRUCTURE_TUTORIAL_HELPBTNCONTROLLERS_TUTORIALWINDOWHELPBTNCTRLLR:Class = TutorialWindowHelpBtnCtrllr;
       

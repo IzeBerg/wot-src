@@ -229,6 +229,8 @@ package
       
       public static const WINDOW_UNIT_MESSAGE_IN_PLAYERS_MATCHING:String = "#cyberSport:window/unit/message/in_players_matching";
       
+      public static const WINDOW_UNIT_MESSAGE_PLAY_LIMITS_IS_ACTIVE:String = "#cyberSport:window/unit/message/play_limits_is_active";
+      
       public static const WINDOW_UNIT_READY:String = "#cyberSport:window/unit/ready";
       
       public static const WINDOW_UNIT_NOTREADY:String = "#cyberSport:window/unit/notReady";

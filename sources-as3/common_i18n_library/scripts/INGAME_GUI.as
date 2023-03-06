@@ -1427,6 +1427,8 @@ package
       
       public static const STUN_INDICATOR:String = "#ingame_gui:stun/indicator";
       
+      public static const STUNFLAME_INDICATOR:String = "#ingame_gui:stunFlame/indicator";
+      
       public static const STUN_SECONDS:String = "#ingame_gui:stun/seconds";
       
       public static const BATTLEPROGRESS_HINT_PRESS:String = "#ingame_gui:battleProgress/hint/press";
@@ -1797,20 +1799,6 @@ package
       
       public static const REWARDWINDOW_TWITCH37_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch37/btnLabel";
       
-      public static const REWARDWINDOW_TWITCH38_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch38/headerText";
-      
-      public static const REWARDWINDOW_TWITCH38_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch38/descText";
-      
-      public static const REWARDWINDOW_TWITCH38_MAINREWARD_1:String = "#ingame_gui:rewardWindow/twitch38/mainReward_1";
-      
-      public static const REWARDWINDOW_TWITCH38_MAINREWARD_2:String = "#ingame_gui:rewardWindow/twitch38/mainReward_2";
-      
-      public static const REWARDWINDOW_TWITCH38_MAINREWARD_3:String = "#ingame_gui:rewardWindow/twitch38/mainReward_3";
-      
-      public static const REWARDWINDOW_TWITCH38_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch38/mainReward_4";
-      
-      public static const REWARDWINDOW_TWITCH38_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch38/btnLabel";
-      
       public static const REWARDWINDOW_LOOTBOX_WINHEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/winHeaderText";
       
       public static const REWARDWINDOW_LOOTBOX_HEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/headerText";
@@ -2010,6 +1998,8 @@ package
       public static const PERSONAL_RESERVES_HINT_DESCRIPTION:String = "#ingame_gui:personal_reserves/hint/description";
       
       public static const HINT_NOBINDINGKEY:String = "#ingame_gui:hint/noBindingKey";
+      
+      public static const DESTROYTIMER_LIFTOVER:String = "#ingame_gui:destroyTimer/liftOver";
        
       
       public function INGAME_GUI()

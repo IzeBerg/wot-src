@@ -19,7 +19,6 @@ from tutorial.data.events import EnabledChangeEvent, VisibleChangeEvent
 from tutorial.doc_loader import gui_config
 from tutorial.gui import GUIProxy, GUI_EFFECT_NAME
 from tutorial.gui.commands import GUICommandsFactory
-from tutorial.gui.Scaleform.items_manager import ItemsManager
 from tutorial.gui.Scaleform.effects_player import GUIEffectScope
 from tutorial.logger import LOG_DEBUG, LOG_ERROR, LOG_WARNING
 from gui.app_loader import sf_lobby
@@ -51,7 +50,6 @@ class SfLobbyProxy(GUIProxy):
     def __init__(self, effectPlayer):
         super(SfLobbyProxy, self).__init__()
         self.config = None
-        self.items = ItemsManager()
         self.effects = effectPlayer
         self._commands = GUICommandsFactory()
         return
@@ -101,7 +99,6 @@ class SfLobbyProxy(GUIProxy):
         return
 
     def clear(self):
-        self.clearChapterInfo()
         self.effects.stopAll()
 
     def lock(self):
@@ -109,7 +106,7 @@ class SfLobbyProxy(GUIProxy):
         self.showWaiting('update-scene', isSingle=True)
 
     def release(self):
-        self.statsCollector.noteHangarLoadingState(HANGAR_LOADING_STATE.FINISH_LOADING_TUTORIAL, showSummaryNow=True)
+        self.statsCollector.noteHangarLoadingState(HANGAR_LOADING_STATE.FINISH_LOADING_TUTORIAL)
         self.hideWaiting('update-scene')
 
     def loadConfig(self, filePath):

@@ -1,9 +1,9 @@
-from gui.impl.gen import R
-from helpers import i18n
-from gui.impl import backport
-from gui.shared.gui_items.gui_item import GUIItem
 from dossiers2.custom.records import RECORD_MAX_VALUES
 from dossiers2.ui import achievements
+from gui.impl import backport
+from gui.impl.gen import R
+from gui.shared.gui_items.gui_item import GUIItem
+from helpers import i18n
 
 class RegularAchievement(GUIItem):
     __slots__ = ('_name', '_block', '_value', '_lvlUpValue', '_lvlUpTotalValue', '_isDone',
@@ -104,11 +104,38 @@ class RegularAchievement(GUIItem):
     def hasCounter(self):
         return bool(self._value)
 
+    def tryGetSmallIcon(self, iconName):
+        accessor = R.images.gui.maps.icons.achievement.num('32x32').dyn(iconName)
+        if accessor.isValid():
+            return backport.image(accessor())
+        return self.ICON_DEFAULT
+
+    def tryGetBigIcon(self, iconName):
+        accessor = R.images.gui.maps.icons.achievement.big.dyn(iconName)
+        if accessor.isValid():
+            return backport.image(accessor())
+        return self.ICON_DEFAULT
+
+    def tryGetMediumIcon(self, iconName):
+        accessor = R.images.gui.maps.icons.achievement.dyn(iconName)
+        if accessor.isValid():
+            return backport.image(accessor())
+        return self.ICON_DEFAULT
+
     def getIcons(self):
         iconName = self._getIconName()
-        return {self.ICON_TYPE.IT_180X180: '%s/%s.png' % (self.ICON_PATH_180X180, iconName), 
-           self.ICON_TYPE.IT_67X71: '%s/%s.png' % (self.ICON_PATH_67X71, iconName), 
-           self.ICON_TYPE.IT_32X32: '%s/%s.png' % (self.ICON_PATH_32X32, iconName)}
+        iconBig = iconMedium = iconSmall = ''
+        if iconName:
+            iconBig = self.tryGetBigIcon(iconName)
+            iconMedium = self.tryGetMediumIcon(iconName)
+            iconSmall = self.tryGetSmallIcon(iconName)
+        return {self.ICON_TYPE.IT_180X180: iconBig, 
+           self.ICON_TYPE.IT_67X71: iconMedium, 
+           self.ICON_TYPE.IT_32X32: iconSmall}
+
+    def canDisplayAchievement(self):
+        iconName = self._getIconName()
+        return R.images.gui.maps.icons.achievement.dyn(iconName).isValid()
 
     def getHugeIcon(self):
         return self.getIcons()[self.ICON_TYPE.IT_180X180]
@@ -130,10 +157,10 @@ class RegularAchievement(GUIItem):
         return self.getIcons()[self.ICON_TYPE.IT_32X32]
 
     def getUserName(self):
-        return i18n.makeString('#achievements:%s' % self._getActualName())
+        return backport.text(R.strings.achievements.dyn(self._getActualName())())
 
     def getUserDescription(self):
-        return i18n.makeString('#achievements:%s_descr' % self._getActualName())
+        return backport.text(R.strings.achievements.dyn('%s_descr' % self._getActualName())())
 
     def getUserWebDescription(self):
         return self.getUserDescription()

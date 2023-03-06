@@ -443,12 +443,13 @@ package net.wg.gui.battle.views.battleMessenger
       
       private function onEnterFrameHandler() : void
       {
+         var _loc2_:Number = NaN;
          if(!this._isEnterFrameEnable)
          {
             return;
          }
          var _loc1_:int = getTimer();
-         var _loc2_:Number = (this._endFadeTime - _loc1_) * this._inverseFadeTime;
+         _loc2_ = (this._endFadeTime - _loc1_) * this._inverseFadeTime;
          if(_loc2_ < this.messageField.alpha)
          {
             this.messageField.alpha = _loc2_;

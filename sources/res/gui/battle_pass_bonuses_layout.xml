@@ -31,12 +31,14 @@
 		</freeXP>
 		<credits>
 			<priority>58</priority>
+			<bigIcon>Standard</bigIcon>
 		</credits>
 		<crystal>
 			<priority>69</priority>
+			<bigIcon>Standard</bigIcon>
 		</crystal>
 		<dossier>
-			<priority>100</priority>
+			<priority>105</priority>
 			<bigIcon>Standard</bigIcon>
 		</dossier>
 		<customizations>
@@ -61,8 +63,8 @@
 			<override>
 				<id>65282 65298 65314 65330 65346 65362 65378 65394 65410 65426 65442</id>
 				<priority>64</priority>
-				<bigIcon>Standard</bigIcon>
 			</override>
+			<bigIcon>Standard</bigIcon>
 		</blueprints>
 		<crewBooks>
 			<override>
@@ -72,13 +74,12 @@
 			<override>
 				<id>286 542 798 1054 1310 1566 1822 2078 2334 2590 2846</id>
 				<priority>55</priority>
-				<bigIcon>Standard</bigIcon>
 			</override>
 			<override>
 				<id>5406 5662 5918 6174 6430 6686 6942 7198  7454 7710 7966</id>
 				<priority>60</priority>
-				<bigIcon>Standard</bigIcon>
 			</override>
+			<bigIcon>Standard</bigIcon>
 		</crewBooks>
 		<goodies>
 			<override>
@@ -117,18 +118,29 @@
 				<id>121002</id>
 				<priority>67</priority>
 			</override>
+			<bigIcon>Standard</bigIcon>
 		</goodies>
 		<items>
-			<equipment>
-				<override>
-					<id>26875 27643 27131</id>
-					<priority>54</priority>
-				</override>
-			</equipment>
+			<consumable>
+				<priority>40</priority>
+				<bigIcon>Standard</bigIcon>
+			</consumable>
+			<crewBattleBooster>
+				<priority>44</priority>
+				<bigIcon>Standard</bigIcon>
+			</crewBattleBooster>
+			<deviceBattleBooster>
+				<priority>54</priority>
+				<bigIcon>Standard</bigIcon>
+			</deviceBattleBooster>
 			<optionalDevice>
 				<priority>65</priority>
 				<bigIcon>Standard</bigIcon>
 			</optionalDevice>
+			<modernizedDevice>
+				<priority>102</priority>
+				<bigIcon>Standard</bigIcon>
+			</modernizedDevice>
 			<trophyDevice>
 				<priority>105</priority>
 				<bigIcon>Standard</bigIcon>
@@ -138,6 +150,10 @@
 			<priority>72</priority>
 			<bigIcon>Standard</bigIcon>
 		</slots>
+		<berths>
+			<priority>72</priority>
+			<bigIcon>Standard</bigIcon>
+		</berths>
 		<battlePassSelectToken>
 			<blueprint_gift>
 				<priority>64</priority>
@@ -181,7 +197,6 @@
 				<id>60529</id>
 				<bigIcon>Standard</bigIcon>
 			</override>
-			<bigIcon>Standard</bigIcon>
 			<priority>130</priority>
 		</vehicles>
 	</bonuses>

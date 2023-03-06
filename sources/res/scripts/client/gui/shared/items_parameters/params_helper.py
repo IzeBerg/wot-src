@@ -13,7 +13,7 @@ from items import vehicles, ITEM_TYPES
 from shared_utils import findFirst, first
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 RELATIVE_POWER_PARAMS = (
- 'avgDamage', 'avgPiercingPower', 'stunMinDuration', 'stunMaxDuration', 'reloadTime', AUTO_RELOAD_PROP_NAME,
+ 'avgDamage', 'avgPiercingPower', 'stunMaxDuration', 'reloadTime', AUTO_RELOAD_PROP_NAME,
  'reloadTimeSecs', 'clipFireRate', 'burstFireRate', 'turboshaftBurstFireRate', DUAL_GUN_CHARGE_TIME,
  'turretRotationSpeed', 'turretYawLimits', 'pitchLimits', 'gunYawLimits', 'aimingTime', 'shotDispersionAngle',
  'avgDamagePerMinute')
@@ -38,7 +38,7 @@ EXTRA_POWER_PARAMS = ('vehicleGunShotDispersion', 'vehicleGunShotDispersionChass
                       'vehicleGunShotDispersionWhileGunDamaged', 'vehicleGunShotDispersionAfterShot',
                       'vehicleReloadTimeAfterShellChange')
 EXTRA_ARMOR_PARAMS = ('vehicleRepairSpeed', 'vehicleRamOrExplosionDamageResistance',
-                      'crewHitChance', 'crewRepeatedStunDuration', 'crewStunDuration',
+                      'crewHitChance', 'crewStunDuration', 'crewStunResistance',
                       'vehicleChassisStrength', 'vehicleChassisFallDamage', 'vehicleAmmoBayEngineFuelStrength',
                       'vehPenaltyForDamageEngineAndCombat', 'vehicleFireChance',
                       'vehicleRamDamageResistance', 'damageEnemiesByRamming')

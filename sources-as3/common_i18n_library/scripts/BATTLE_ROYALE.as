@@ -567,6 +567,8 @@ package
       
       public static const STATUSNOTIFICATIONTIMERS_DEATHZONE:String = "#battle_royale:statusNotificationTimers/deathZone";
       
+      public static const STATUSNOTIFICATIONTIMERS_DEATHZONEWARNING:String = "#battle_royale:statusNotificationTimers/deathZoneWarning";
+      
       public static const STATUSNOTIFICATIONTIMERS_SMOKE_ALLY:String = "#battle_royale:statusNotificationTimers/smoke/ally";
       
       public static const STATUSNOTIFICATIONTIMERS_SMOKE_DAMAGING:String = "#battle_royale:statusNotificationTimers/smoke/damaging";
