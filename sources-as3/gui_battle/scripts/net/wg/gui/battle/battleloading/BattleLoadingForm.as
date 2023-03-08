@@ -17,13 +17,12 @@ package net.wg.gui.battle.battleloading
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.components.minimap.MinimapPresentation;
-   import net.wg.gui.tutorial.controls.BaseTipLoadingForm;
    import net.wg.infrastructure.events.ListDataProviderEvent;
    import net.wg.utils.IClassFactory;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    
-   public class BattleLoadingForm extends BaseTipLoadingForm
+   public class BattleLoadingForm extends BaseLoadingForm
    {
       
       private static const RENDERERS_COUNT:uint = 15;

@@ -14,8 +14,6 @@ package net.wg.infrastructure.base.meta
       
       function onResultsSharingBtnPressS() : void;
       
-      function onReplayS(param1:String) : void;
-      
       function showUnlockWindowS(param1:int, param2:String) : void;
       
       function showProgressiveRewardViewS() : void;

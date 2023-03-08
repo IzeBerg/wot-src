@@ -134,6 +134,10 @@ def getIntegratedAuctionUrl():
     return _getUrl('integratedAuction')
 
 
+def getEventLootBoxesUrl():
+    return _getUrl('eventLootboxes')
+
+
 def getClientControlledCloseCtx():
     return {'browserParams': makeBrowserParams(isCloseBtnVisible=True), 
        'forcedSkipEscape': True}

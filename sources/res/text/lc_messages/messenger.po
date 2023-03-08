@@ -1623,12 +1623,6 @@ msgstr "新兵成长计划任务已再次开放。"
 msgid "serviceChannelMessages/battleMatters/token"
 msgstr "新兵令牌"
 
-msgid "serviceChannelMessages/battlePass/badges/header/remove"
-msgstr "已移除奖章"
-
-msgid "serviceChannelMessages/battlePass/badges/text/remove"
-msgstr "由于战斗通行证赛季结束，%(badgeName)s奖章已被移除。"
-
 msgid "serviceChannelMessages/battlePass/freePointsUsed/header"
 msgstr "已使用未分配的点数"
 
@@ -1668,7 +1662,6 @@ msgstr "您使用未分配的点数完成了阶段，已获得奖励："
 msgid "serviceChannelMessages/battlePassReward/battle/chapterFinal/text"
 msgstr ""
 "您完成了\"%(chapter)s\"章节！\n"
-"\n"
 "已获得奖励:"
 
 msgid "serviceChannelMessages/battlePassReward/battle/final/additionalText"
@@ -1682,7 +1675,6 @@ msgstr ""
 msgid "serviceChannelMessages/battlePassReward/battle/newLevel/text"
 msgstr ""
 "您完成了\"%(chapter)s\"章节的进度阶段%(newLevel)s。\n"
-"\n"
 "已获得奖励:"
 
 msgid "serviceChannelMessages/battlePassReward/button"
@@ -1710,7 +1702,9 @@ msgid "serviceChannelMessages/battlePassReward/buyWithRewards/text"
 msgstr "您获得了战斗通行证已完成阶段的奖励："
 
 msgid "serviceChannelMessages/battlePassReward/buyWithoutRewards/text"
-msgstr "现在您将同时获得基础和高级奖励。"
+msgstr ""
+"您现在能够在\"%(chapter)s\"章节中获得基础与高级奖励轨道的奖励。\n"
+"该高级通行证仅适用于\"%(chapter)s\"章节。"
 
 msgid "serviceChannelMessages/battlePassReward/header/buyBP"
 msgstr "已购买高级通行证"
@@ -2040,29 +2034,8 @@ msgstr "科技失败"
 msgid "serviceChannelMessages/battleResults/techVictory"
 msgstr "科技胜利"
 
-msgid "serviceChannelMessages/battleResults/training_battle"
-msgstr "战斗训练"
-
 msgid "serviceChannelMessages/battleResults/victory"
 msgstr "胜利"
-
-msgid "serviceChannelMessages/battleTutorial/reasons/extermination"
-msgstr "坦克被击毁"
-
-msgid "serviceChannelMessages/battleTutorial/reasons/failed"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/battleTutorial/reasons/finished"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/battleTutorial/reasons/timeout"
-msgstr "已超时"
-
-msgid "serviceChannelMessages/battleTutorial/results/failed"
-msgstr "失败。"
-
-msgid "serviceChannelMessages/battleTutorial/results/finished"
-msgstr "恭喜您，完成新手教学！"
 
 msgid "serviceChannelMessages/blackMapDisabled"
 msgstr "已移除了一个排除地图的空位。%(mapName)s地图重新加入地图池。"
@@ -2849,7 +2822,7 @@ msgid "serviceChannelMessages/prebattle/battleType/prebattle"
 msgstr "战斗结果"
 
 msgid "serviceChannelMessages/prebattle/battleType/tournament"
-msgstr "锦标赛"
+msgstr "赛事"
 
 msgid "serviceChannelMessages/prebattle/finish/base/defeat"
 msgstr "被击败"
@@ -3017,7 +2990,7 @@ msgid "serviceChannelMessages/recruitGift/text"
 msgstr "您在%(event)s期间获得了乘员。"
 
 msgid "serviceChannelMessages/recruitReminder/text"
-msgstr "你有尚未招募乘员: %(count)s。他们将于%(date)s被移除！"
+msgstr "您有尚未招募的乘员:%(count)s名。下一次移除时间为%(date)s！"
 
 msgid "serviceChannelMessages/recruitReminderTermless/text"
 msgstr "您有尚未招募的乘员数:%(count)s"

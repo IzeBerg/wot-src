@@ -1,4 +1,4 @@
-import logging, BigWorld, BattleReplay
+import logging, BigWorld
 from avatar_helpers import getAvatarSessionID
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.shared.utils import getPlayerDatabaseID, getPlayerName
@@ -69,17 +69,14 @@ class CurrentPlayerHelper(object):
            'stats.clanInfo': self.__setClanInfo})
 
     def onAvatarShowGUI(self):
-        if BattleReplay.isServerSideReplay():
-            return
+        dbID, name, clanAbbrev = _getInfo4AvatarPlayer()
+        user = self.usersStorage.getUser(dbID)
+        if dbID:
+            if user is None:
+                self.usersStorage.addUser(CurrentLobbyUserEntity(dbID, name, clanInfo=ClanInfo(abbrev=clanAbbrev)))
         else:
-            dbID, name, clanAbbrev = _getInfo4AvatarPlayer()
-            user = self.usersStorage.getUser(dbID)
-            if dbID:
-                if user is None:
-                    self.usersStorage.addUser(CurrentLobbyUserEntity(dbID, name, clanInfo=ClanInfo(abbrev=clanAbbrev)))
-            else:
-                _logger.error('Current player is not found')
-            return
+            _logger.info('Current player is not found')
+        return
 
     def onAvatarBecomePlayer(self):
         self.clear()

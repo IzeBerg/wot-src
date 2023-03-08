@@ -557,6 +557,11 @@
 		<type>dict</type>
 		<value>
 			<item>
+				https://shop.wot.360.cn
+				<name>webShopRootURL</name>
+				<type>url</type>
+			</item>
+			<item>
 				https://webbrg-cn360.wotgame.cn
 				<name>webBridgeRootURL</name>
 				<type>url</type>
@@ -782,16 +787,6 @@
 				<name>isClansTabReplaceStrongholds</name>
 				<type>bool</type>
 				<value>True</value>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>tournament</name>
-		<type>dict</type>
-		<value>
-			<item>
-				<name>testUrl</name>
-				<type>url</type>
 			</item>
 		</value>
 	</setting>
@@ -1025,6 +1020,11 @@
 				<name>integratedAuction</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/event_lootboxes)
+				<name>eventLootboxes</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1066,7 +1066,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/H22BPContentPage/
+				/$LANGUAGE_CODE/promocontent/10BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1076,7 +1076,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/H22BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/10BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1113,49 +1113,11 @@
 				<value>
 					<item>
 						<type>string</type>
-						<value>collaboration</value>
+						<value>styles</value>
 					</item>
 					<item>
 						<type>string</type>
-						<value>newRewards</value>
-					</item>
-					<item>
-						<type>string</type>
-						<value>oneChapter</value>
-					</item>
-				</value>
-			</item>
-			<item>
-				<name>specialVoiceTankmen</name>
-				<type>dict</type>
-				<value>
-					<item>
-						<name>progression</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_2:630180:::brotherhood::tankmen_bph_2:commander</value>
-							</item>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_1:630180:::brotherhood::tankmen_bph_1:commander</value>
-							</item>
-						</value>
-					</item>
-					<item>
-						<name>shop</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_3:630180:::brotherhood::tankmen_bph_3:commander</value>
-							</item>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_4:630180:::brotherhood::tankmen_bph_4:commander</value>
-							</item>
-						</value>
+						<value>tanks</value>
 					</item>
 				</value>
 			</item>
@@ -1618,6 +1580,17 @@
 			<item>
 				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2022IntroVideo/
 				<name>introVideo</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>lootBoxes</name>
+		<type>dict</type>
+		<value>
+			<item>
+				{webShopRootURL}/redirect/?category=supplyboxes&amp;wg_id=$DB_ID
+				<name>categoryURL</name>
 				<type>url</type>
 			</item>
 		</value>

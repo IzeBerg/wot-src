@@ -387,6 +387,10 @@ class StyleItem(BaseCustomizationItem):
         return ItemTags.STYLE_PROGRESSION in self.tags
 
     @property
+    def isLockedOnVehicle(self):
+        return ItemTags.LOCKED_ON_VEHICLE in self.tags
+
+    @property
     def isWithSerialNumber(self):
         return ItemTags.STYLE_SERIAL_NUMBER in self.tags
 

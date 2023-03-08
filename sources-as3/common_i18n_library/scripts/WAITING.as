@@ -135,41 +135,11 @@ package
       
       public static const LOADINGDATA:String = "#waiting:loadingData";
       
-      public static const TUTORIAL_REQUEST_BONUS:String = "#waiting:tutorial-request-bonus";
-      
-      public static const TUTORIAL_REQUEST_BATTLE_COUNT:String = "#waiting:tutorial-request-battle-count";
-      
-      public static const TUTORIAL_REQUEST_UNLOCKS:String = "#waiting:tutorial-request-unlocks";
-      
-      public static const TUTORIAL_REQUEST_VEHICLE_SETTINGS:String = "#waiting:tutorial-request-vehicle-settings";
-      
-      public static const TUTORIAL_REQUEST_ELITE_VEHICLES:String = "#waiting:tutorial-request-elite-vehicles";
-      
-      public static const TUTORIAL_REQUEST_CREDITS:String = "#waiting:tutorial-request-credits";
-      
-      public static const TUTORIAL_REQUEST_XP:String = "#waiting:tutorial-request-xp";
-      
-      public static const TUTORIAL_REQUEST_VEHICLE_EQUIPMENTS:String = "#waiting:tutorial-request-vehicle-equipments";
-      
-      public static const TUTORIAL_REQUEST_INVENTORY_ITEMS:String = "#waiting:tutorial-request-inventory-items";
-      
-      public static const TUTORIAL_REQUEST_TANKMAN:String = "#waiting:tutorial-request-tankman";
-      
-      public static const TUTORIAL_START_TRAINING:String = "#waiting:tutorial-start-training";
-      
       public static const TUTORIAL_CHAPTER_LOADING:String = "#waiting:tutorial-chapter-loading";
       
       public static const TUTORIAL_UPDATE_SCENE:String = "#waiting:tutorial-update-scene";
       
-      public static const TUTORIAL_REQUEST_ITEM_PARAMS:String = "#waiting:tutorial-request-item-params";
-      
-      public static const TUTORIAL_REQUEST_TANKMAN_INFO:String = "#waiting:tutorial-request-tankman-info";
-      
       public static const TUTORIAL_REQUEST_SHOP:String = "#waiting:tutorial-request-shop";
-      
-      public static const TUTORIAL_REQUEST_SLOTS:String = "#waiting:tutorial-request-slots";
-      
-      public static const TUTORIAL_QUEUE:String = "#waiting:tutorial-queue";
       
       public static const BUTTONS_EXITQUEUE:String = "#waiting:buttons/exitQueue";
       

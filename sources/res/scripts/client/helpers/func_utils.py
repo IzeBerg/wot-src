@@ -6,6 +6,7 @@ from BWUtil import AsyncReturn
 from PlayerEvents import g_playerEvents
 from wg_async import wg_async, wg_await, AsyncScope, AsyncEvent, BrokenPromiseError
 from debug_utils import LOG_DEBUG
+FLASH_IMG_PREFIX = 'img://'
 
 def callback(delay, obj, methodName, *args):
     return BigWorld.callback(delay, partial(callMethod, obj, methodName, *args))
@@ -35,13 +36,6 @@ def logFunc(func):
         func(*args, **kwargs)
 
     return wrapped
-
-
-def makeFlashPath(s):
-    if s:
-        return '..' + s[3:]
-    else:
-        return
 
 
 def freeze(seconds, nextFrame=True):
@@ -153,3 +147,7 @@ def cooldownCallerDecorator(cooldown, paramsMerger):
         return CooldownCaller(func, cooldown, paramsMerger)
 
     return decorator
+
+
+def replaceImgPrefix(path):
+    return path.replace(FLASH_IMG_PREFIX, '')

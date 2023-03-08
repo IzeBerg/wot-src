@@ -12,10 +12,10 @@ from gui.Scaleform.daapi.view.lobby.store.browser.shop_helpers import getBonsDev
 from gui.shared.event_dispatcher import showShop
 from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE
 from gui.impl.gen import R
+from gui.sounds.filters import switchHangarOverlaySoundFilter
 from helpers import dependency, server_settings
 from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.lobby_context import ILobbyContext
-from sound_gui_manager import CommonSoundSpaceSettings
 _DEFAULT_VEHICLE_PRICE = 1500
 _DEFAULT_EQUIPMENT_PRICE = 3000
 _DEFAULT_INSTRUCTION_PRICE = 6
@@ -32,13 +32,9 @@ _BONUS_TYPE_INFO = {ARENA_BONUS_TYPE.REGULAR: 'random',
 _shopUrlsMap = {CrystalsPromoViewModel.TANKS_TAB: getBonsVehiclesUrl(), 
    CrystalsPromoViewModel.EQUIPMENT_TAB: getBonsDevicesUrl(), 
    CrystalsPromoViewModel.INSTRUCTIONS_TAB: getBonsInstructionsUrl()}
-_SOUND_STATE_HANGAR_FILTERED = 'STATE_hangar_filtered'
-_SOUND_STATE_HANGAR_FILTERED_ON = 'STATE_hangar_filtered_on'
-_SOUND_STATE_HANGAR_FILTERED_OFF = 'STATE_hangar_filtered_off'
 
 class CrystalsPromoView(ViewImpl):
     __slots__ = ('__visibility', '__destroyViewObject')
-    _COMMON_SOUND_SPACE = CommonSoundSpaceSettings(name=_SOUND_STATE_HANGAR_FILTERED, entranceStates={_SOUND_STATE_HANGAR_FILTERED: _SOUND_STATE_HANGAR_FILTERED_ON}, exitStates={_SOUND_STATE_HANGAR_FILTERED: _SOUND_STATE_HANGAR_FILTERED_OFF}, persistentSounds=(), stoppableSounds=(), priorities=(), autoStart=True, enterEvent='', exitEvent='')
     __lobbyContext = dependency.descriptor(ILobbyContext)
     __appLoader = dependency.descriptor(IAppLoader)
 
@@ -59,6 +55,7 @@ class CrystalsPromoView(ViewImpl):
 
     def _onLoading(self, *args, **kwargs):
         super(CrystalsPromoView, self)._onLoading(*args, **kwargs)
+        switchHangarOverlaySoundFilter(on=True)
         self.__destroyViewObject.init(self.getParentWindow())
         isFirstOpen = not AccountSettings.getSettings(CRYSTALS_INFO_SHOWN)
         if isFirstOpen:
@@ -76,6 +73,7 @@ class CrystalsPromoView(ViewImpl):
         g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': HeaderMenuVisibilityState.NOTHING}), EVENT_BUS_SCOPE.LOBBY)
 
     def _finalize(self):
+        switchHangarOverlaySoundFilter(on=False)
         self.__destroyViewObject.fini()
         self.viewModel.goToShop -= self.__goToShopHandler
         self.__lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingsChanged

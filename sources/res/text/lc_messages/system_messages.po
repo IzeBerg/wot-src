@@ -364,9 +364,6 @@ msgstr "操作失败。您的金币将在战游钱包恢复后再次可用。"
 msgid "battlePass/activateChapter/success"
 msgstr "已激活\"%(chapter)s\"章节"
 
-msgid "battlePass/badgeRemoved/text"
-msgstr "由于战斗通行证赛季结束，%(badgeName)s奖章已被移除。"
-
 msgid "battlePass/extraFinish/body"
 msgstr "%(name)s活动已结束。感谢您的参与！"
 
@@ -419,7 +416,7 @@ msgid "battlePass/seasonEnd/rewards/trophy"
 msgstr "已获得赏金配件：%(name)s"
 
 msgid "battlePass/seasonEnd/text"
-msgstr "战斗通行证已结束。您未选择的所有奖励已按默认配置发放:"
+msgstr "战斗通行证赛季已结束。您在赛季期间未选择的所有奖励已按默认选择发放:"
 
 msgid "battlePass/switchChapter/error"
 msgstr "选择章节时发生错误。请再试一次。"
@@ -434,7 +431,7 @@ msgid "battlePass/switch_disable/battle_royale/body"
 msgstr "由于系统维护，战斗通行证功能暂时无法在钢铁猎手中使用。我们对给您造成的不便深表歉意。"
 
 msgid "battlePass/switch_disable/body"
-msgstr "审判日已结束。我们希望它永远只存在于游戏和电影里。"
+msgstr "赛季已结束。下赛季见！"
 
 msgid "battlePass/switch_disable/comp7/body"
 msgstr "由于系统维护，您在天梯战模式中暂时无法获得战斗通行证点数。"
@@ -449,10 +446,12 @@ msgid "battlePass/switch_disable/ranked/body"
 msgstr "由于系统维护，战斗通行证功能暂时无法在排位赛中使用。"
 
 msgid "battlePass/switch_disable/title"
-msgstr "战斗通行证:审判日"
+msgstr "战斗通行证赛季%(seasonNum)d"
 
 msgid "battlePass/switch_enabled/body"
-msgstr "战斗通行证现已重新开放。我们对造成的不便深表歉意。"
+msgstr ""
+"战斗通行证现已重新开放。我们对造成的不便深表歉意。\n"
+"赛季延长至%(expiryTime)s。"
 
 msgid "battlePass/switch_enabled/comp7/body"
 msgstr "您在天梯战模式中可以重新获得战斗通行证点数了。我们对造成的不便深感歉意。"
@@ -1815,15 +1814,6 @@ msgstr "显卡不兼容。以下设置失败:%s。"
 
 msgid "graficsPresetFail"
 msgstr "显卡不兼容。没有适合的图像选项。"
-
-msgid "hbp/seasonStart/body"
-msgstr ""
-"各位指挥官，这是一个特殊的战斗通行证，您很快就可以亲身体验它。\n"
-"\n"
-"完成进度后，您将获得拥有独特专属语音的著名电影角色、拥有特殊3D风格的金币坦克、个性化元素及其他更多奖励！"
-
-msgid "hbp/seasonStart/title"
-msgstr "战斗通行证:审判日"
 
 msgid "igr/customization/begin"
 msgstr "涂装、签名和徽章在%(igrIcon)s中可用。"
@@ -3558,6 +3548,12 @@ msgstr "您被踢出分遣队:分遣队已解散。"
 
 msgid "unit/warnings/CLAN_CHANGED"
 msgstr "您要被踢出分遣队。原因是军团已变更。"
+
+msgid "unit/warnings/EXPIRED_PLAY_LIMITS"
+msgstr "您的游戏时间已结束。您无法加入新战斗。您的服务器连接将于%(expiredTime)s断开。"
+
+msgid "unit/warnings/EXPIRED_PLAY_LIMITS_TO_COMMANDER"
+msgstr "其中一名玩家所剩的游戏时间不足以完成战斗。小队现在处于准备状态。"
 
 msgid "unit/warnings/EXTERNAL_LEGIONARIES_MATCHING_CANCELED"
 msgstr "集合雇佣兵已暂停。"

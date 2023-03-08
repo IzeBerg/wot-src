@@ -13,8 +13,6 @@ package net.wg.data.constants.generated
       
       public static const TEAM:String = "team";
       
-      public static const TUTORIAL:String = "tutorial";
-      
       public static const CTF:String = "ctf";
       
       public static const HISTORICAL:String = "historical";
@@ -50,10 +48,6 @@ package net.wg.data.constants.generated
       public static const RESOURCE_POINT:String = "resourcePoints";
       
       public static const EVENT:String = "event";
-      
-      public static const SANDBOX:String = "sandbox";
-      
-      public static const RATED_SANDBOX:String = "ratedsandbox";
       
       public static const RANKED:String = "ranked";
       

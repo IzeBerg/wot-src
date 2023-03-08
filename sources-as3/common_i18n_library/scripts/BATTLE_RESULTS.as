@@ -107,6 +107,8 @@ package
       
       public static const FINISH_REASON_10LOSE:String = "#battle_results:finish/reason/10lose";
       
+      public static const FINISH_CLARIFICATION_FINISHALLPLAYERSLEFT:String = "#battle_results:finish/clarification/finishAllPlayersLeft";
+      
       public static const FINISH_OVERTIME_WIN:String = "#battle_results:finish/overtime/win";
       
       public static const FINISH_OVERTIME_LOSE:String = "#battle_results:finish/overtime/lose";
@@ -758,8 +760,6 @@ package
       public static const CUSTOMIZATIONPROGRESS_AWARD_RECEIVED:String = "#battle_results:customizationProgress/award/received";
       
       public static const CUSTOMIZATIONPROGRESS_AWARD_NEWLEVEL:String = "#battle_results:customizationProgress/award/newLevel";
-      
-      public static const REPLAYBTNLABEL:String = "#battle_results:replayBtnLabel";
        
       
       public function BATTLE_RESULTS()

@@ -61,9 +61,6 @@ msgstr "在团队战模式中"
 msgid "Contact/status/inBattle/training"
 msgstr "在团队训练模式中"
 
-msgid "Contact/status/inBattle/tutorial"
-msgstr "在训练模式中"
-
 msgid "Contact/status/inBattle/unknown"
 msgstr "战斗中"
 
@@ -560,9 +557,6 @@ msgstr "降低受到撞击和未击穿的HE弹爆炸造成的损伤，降低乘�
 
 msgid "advanced/autoExtinguishers"
 msgstr "坦克起火后自动灭火。被动效果降低起火几率。"
-
-msgid "advanced/battleTeaching"
-msgstr "将你从新兵训练营学到的所有东西应用到与机器人的战斗中。"
 
 msgid "advanced/brotherhood"
 msgstr "提高全员主要专业和所有技能的熟练度。全部乘员的此项特长达到100%熟练度时开始生效。"
@@ -1508,7 +1502,7 @@ msgid "battlePassOffer/title/guide_gift"
 msgstr "可选择的培训指南"
 
 msgid "battlePassOffer/title/new_device_fv_gift"
-msgstr "可选择的配件"
+msgstr "可选择的标准配件"
 
 msgid "battlePassOffer/title/new_device_mi_gift"
 msgstr "可选择的配件"
@@ -1663,21 +1657,6 @@ msgstr "距活动开始还有"
 
 msgid "battleTypes/battleRoyale/tillStartCycle"
 msgstr "开始剩余时间:"
-
-msgid "battleTypes/battleTeaching/body"
-msgstr ""
-"用您在%(map1)s地图上同电脑对抗的战斗训练中学习的技巧。\n"
-"• 注意:当你战斗%(battles)d场(任何模式)后，您将无法在该模式中获得经验与银币。\n"
-"• 等级要求:I-II。"
-
-msgid "battleTypes/battleTeaching/header"
-msgstr "训练场"
-
-msgid "battleTypes/battleTutorial/body"
-msgstr "这里你将学会驾驶你的坦克击毁敌方坦克。"
-
-msgid "battleTypes/battleTutorial/header"
-msgstr "新手教学"
 
 msgid "battleTypes/epic_training/body"
 msgstr ""
@@ -2335,7 +2314,7 @@ msgid "boostersWindow/booster/activateInfo/activation"
 msgstr "激活:"
 
 msgid "boostersWindow/booster/activateInfo/activationInfo"
-msgstr "可在车库中激活或者在战斗中按下TAB或B键激活。加成可应用于标准模式、锦标赛、钢铁猎手以及前线模式。"
+msgstr "可在车库中激活或者在战斗中按下TAB或B键激活。加成可应用于标准模式、赛事、钢铁猎手以及前线模式。"
 
 msgid "boostersWindow/booster/activateInfo/basicReserve"
 msgstr "标准型个人储备"
@@ -2468,7 +2447,7 @@ msgid "boostersWindow/booster/header/xp"
 msgstr "每场战斗经验加成"
 
 msgid "boostersWindow/booster/longDescriptionSpecial"
-msgstr "激活后，个人储备可让您在每场战斗后获得额外奖励。个人储备在标准模式、排位赛、特殊比赛、钢铁猎手和前线模式的特定时期内都有效。"
+msgstr "激活后，个人储备可让您在每场战斗后获得额外奖励。个人储备在标准模式、排位赛、特殊赛事、钢铁猎手和前线模式的特定时期内都有效。"
 
 msgid "boostersWindow/booster/shortDescriptionSpecial"
 msgstr "每场战斗后的额外奖励"
@@ -5289,7 +5268,7 @@ msgid "header/account/header"
 msgstr "用户账号"
 
 msgid "header/accountPopover/boostersTitle/body"
-msgstr "激活后，个人储备可让您在每场战斗后获得额外奖励。个人储备在标准模式、排位赛、特殊比赛、钢铁猎手和前线模式的特定时期内都有效。"
+msgstr "激活后，个人储备可让您在每场战斗后获得额外奖励。个人储备在标准模式、排位赛、特殊赛事、钢铁猎手和前线模式的特定时期内都有效。"
 
 msgid "header/accountPopover/boostersTitle/header"
 msgstr "个人储备"
@@ -5541,6 +5520,12 @@ msgstr "折扣可用于以下系别的战车："
 
 msgid "header/buttons/techtree/header"
 msgstr "升级路线"
+
+msgid "header/buttons/tournaments/body"
+msgstr "查看赛事和挑战赛"
+
+msgid "header/buttons/tournaments/header"
+msgstr "赛事"
 
 msgid "header/eliteIcon/body"
 msgstr ""
@@ -6066,7 +6051,7 @@ msgid "mode_selector/popover/epicStandard/body"
 msgstr ""
 "每队都有各自的基地。大地图上的战斗将持续至所有敌方坦克被摧毁或敌方基地被占领。此模式在研发出任意X级坦克后开放。\n"
 "\n"
-"组成：两队各30名玩家。"
+"组成:两队各30名玩家。"
 
 msgid "mode_selector/popover/epicStandard/header"
 msgstr "战役模式"
@@ -6567,6 +6552,21 @@ msgstr "\"当我乘坐飞船环绕地球时，我为地球的美丽感到惊奇�
 msgid "notrecruitedtankman/commander_gagarin21/label"
 msgstr "一名特殊乘员"
 
+msgid "notrecruitedtankman/commander_hillen/desc"
+msgstr ""
+"你是知道的，我是一名忠实的英式橄榄球迷。在他们把我带到这里的那一刻，我立即就有了一种如鱼得水的感觉。我的意思是，想想看。15对15的激烈争抢？有。场上的队员各负其责？有。各种各样的战术？有。绝招？多的是!"
+" 可惜没有裁判—这些人有时候简直无法无天。伙计，如果你没意见的话，我就再玩一会，然后再回去。"
+
+msgid "notrecruitedtankman/commander_hillen/label"
+msgstr "独特指挥官"
+
+msgid "notrecruitedtankman/commander_hob/desc"
+msgstr ""
+"没人胆敢轻视柯纳比的力量。他曾经赤手空拳地把5辆坦克从泥淖中拉出来，而且几乎没出汗！作为一名坦克指挥官，他能带领团队取得胜利—即使团队拒绝配合也无所谓。"
+
+msgid "notrecruitedtankman/commander_hob/label"
+msgstr "独特指挥官"
+
 msgid "notrecruitedtankman/commander_maeve/desc"
 msgstr "纯粹力量的化身，全世界所有女孩的榜样。她拥有坚不可摧的身体和精神。"
 
@@ -7007,6 +7007,15 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankman/label"
 msgstr "特殊乘员"
 
+msgid "notrecruitedtankman/tankmen/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen/label"
+msgstr "特殊乘员"
+
 msgid "notrecruitedtankman/tankmen_auc_1/desc"
 msgstr ""
 "一名原铸技术军士。维塔里安自幼就对机械着迷，当他晋升为阿斯塔特时，他对所有机械事物的兴趣依旧不减。他能够巧妙地使机械超常发挥。相较于和战友交谈，他更擅长和机魂交流。他总是与机械形影不离，致力于完善人与机械之间的关系。"
@@ -7026,6 +7035,36 @@ msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankmen_auc_2/label"
 msgstr "Warhammer 40,000（战锤40K）：特殊优惠"
+
+msgid "notrecruitedtankman/tankmen_bp10_1/desc"
+msgstr ""
+"18年的步兵生涯丝毫没有改变这名战士的风范，他依然诙谐有趣、身形健硕。他喜欢打赌，坚信自己好运连连，而且总是心存侥幸。他通过抛硬币决定来到沙漠—还有什么好说的呢？粗心大意让他几次三番身处险境，但他总能全身而退。\"打赌我会活着回来的。\"便是他的口头禅。"
+
+msgid "notrecruitedtankman/tankmen_bp10_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_1/label"
+msgstr "战斗通行证赛季X"
+
+msgid "notrecruitedtankman/tankmen_bp10_2/desc"
+msgstr ""
+"一名能够随机应变的军事翻译，可以迅速适应任何军事部门、任何情况。他是个语言天才，会说八种语言，包括斯瓦希里语在内。战友利奥·萨默尔去世后，他一直独来独往，正因如此，他喜欢独自一人工作，不愿意结交新朋友。在档案馆工作时，他发现了被认为已经失传的古代卷轴的线索，不到一个星期之后，他便成为了特殊沙漠探险队的一员。"
+
+msgid "notrecruitedtankman/tankmen_bp10_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_2/label"
+msgstr "战斗通行证赛季X"
+
+msgid "notrecruitedtankman/tankmen_bp10_3/desc"
+msgstr ""
+"只有三个人能够接触到这名谍报人员的个人档案。据一些资料显示，她是一名情报人员和一名女演员的女儿。她在年轻时就被招募，并被视为最适合执行秘密行动的人选。除了非凡的智慧之外，她还常常使用美人计。她根据上级命令被派往沙漠，尽管她从来都不想去那里。"
+
+msgid "notrecruitedtankman/tankmen_bp10_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp10_3/label"
+msgstr "战斗通行证赛季X"
 
 msgid "notrecruitedtankman/tankmen_bp2_1/desc"
 msgstr ""
@@ -8176,7 +8215,7 @@ msgid "quests/awards/additional/bottom"
 msgstr "还有%(count)s个"
 
 msgid "quests/awards/additional/header"
-msgstr "勋章:"
+msgstr "奖励:"
 
 msgid "quests/awards/vehicleRent/bottom"
 msgstr "还有%(count)s个"
@@ -8291,10 +8330,10 @@ msgid "quests/igr"
 msgstr "任务只有在IGR中可见"
 
 msgid "quests/linkBtn/battlePass"
-msgstr "前往战斗通行证进度"
+msgstr "查看战斗通行证进度"
 
 msgid "quests/linkBtn/battlePass/select"
-msgstr "前往战斗通行证"
+msgstr "前往战斗通行证章节选择"
 
 msgid "quests/linkBtn/customizationProgression/disabled"
 msgstr "详细信息当前不可用。"
@@ -9366,7 +9405,7 @@ msgid "storage/mainMenu/for_sell/body"
 msgstr "显示与您的坦克不兼容的模块和弹药。"
 
 msgid "storage/mainMenu/for_sell/header"
-msgstr "模块和弹药出售"
+msgstr "出售模块和弹药"
 
 msgid "storage/mainMenu/in_hangar/body"
 msgstr "显示车库中的所有坦克。"

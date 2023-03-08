@@ -14,6 +14,7 @@ from chat_commands_consts import getUniqueTeamOrControlPointID, INVALID_MARKER_S
 from gui.Scaleform.daapi.view.battle.shared.markers2d import markers
 from gui.Scaleform.daapi.view.battle.shared.markers2d import settings
 from gui.Scaleform.daapi.view.battle.shared.markers2d.markers import LocationMarker, BaseMarker, Marker, ReplyStateForMarker
+from gui.Scaleform.daapi.view.battle.shared.markers2d.settings import CommonMarkerType
 from gui.Scaleform.locale.INGAME_GUI import INGAME_GUI
 from gui.battle_control import avatar_getter
 from gui.battle_control.arena_info.interfaces import IArenaVehiclesController
@@ -52,7 +53,7 @@ MAX_DISTANCE_TEMP_STICKY = 350
 
 class IMarkersManager(object):
 
-    def createMarker(self, symbol, matrixProvider=None, active=True):
+    def createMarker(self, symbol, matrixProvider=None, active=True, markerType=CommonMarkerType.NORMAL):
         raise NotImplementedError
 
     def invokeMarker(self, markerID, *signature):
@@ -94,13 +95,13 @@ class MarkerPlugin(IPlugin):
     def getMarkerSubtype(self, targetID):
         return INVALID_MARKER_SUBTYPE
 
-    def _createMarkerWithPosition(self, symbol, position, active=True):
+    def _createMarkerWithPosition(self, symbol, position, active=True, markerType=CommonMarkerType.NORMAL):
         matrixProvider = Matrix()
         matrixProvider.translation = position
-        return self._parentObj.createMarker(symbol, matrixProvider, active)
+        return self._parentObj.createMarker(symbol, matrixProvider, active, markerType)
 
-    def _createMarkerWithMatrix(self, symbol, matrixProvider=None, active=True):
-        return self._parentObj.createMarker(symbol, matrixProvider=matrixProvider, active=active)
+    def _createMarkerWithMatrix(self, symbol, matrixProvider=None, active=True, markerType=CommonMarkerType.NORMAL):
+        return self._parentObj.createMarker(symbol, matrixProvider=matrixProvider, active=active, markerType=markerType)
 
     def _invokeMarker(self, markerID, function, *args):
         self._parentObj.invokeMarker(markerID, function, *args)
@@ -391,7 +392,7 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
 
     def onVehicleMarkerAdded(self, _, vInfo, __):
         if self._vehicleID and self._vehicleID == vInfo.vehicleID:
-            self._addMarker(self._vehicleID)
+            self.__addAutoAimMarker(vInfo.vehicleID)
 
     def _destroyVehicleMarker(self, vehicleID):
         if vehicleID in self._markers:
@@ -954,10 +955,10 @@ class BaseAreaMarkerPlugin(MarkerPlugin):
         self.__markers = {}
         super(BaseAreaMarkerPlugin, self).stop()
 
-    def createMarker(self, uniqueID, matrixProvider, active):
+    def createMarker(self, uniqueID, matrixProvider, active, symbol=settings.MARKER_SYMBOL_NAME.STATIC_OBJECT_MARKER):
         if uniqueID in self.__markers:
             return False
-        markerID = self._createMarkerWithMatrix(settings.MARKER_SYMBOL_NAME.STATIC_OBJECT_MARKER, matrixProvider, active=active)
+        markerID = self._createMarkerWithMatrix(symbol, matrixProvider, active=active)
         self.__markers[uniqueID] = markerID
         return True
 

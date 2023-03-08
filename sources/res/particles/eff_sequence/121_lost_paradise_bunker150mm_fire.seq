@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>30.000002</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>bunker150mm_fireeweqqwe</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>0.966667</duration>
+				<value>particles/eff_sequence/121_effsfx_bunker150mm_fire.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<duration>0.966666</duration>
+				<value>particles/eff_sequence/121_effsfx_bunker150mm_fire.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+			<frame>
+				<startTime>22.033335</startTime>
+				<duration>0.966667</duration>
+				<value>particles/eff_sequence/121_effsfx_bunker150mm_fire.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>30.000002</duration>
+				<value>bunker150mm_fireeweqqwe|</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.066667</startTime>
+				<duration>8.806311</duration>
+				<sequenceSound>amb_map_121_lost_paradise_bunker_150mm_fire</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<duration>8.872977</duration>
+				<sequenceSound>amb_map_121_lost_paradise_bunker_150mm_fire</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+			<frame>
+				<startTime>22.000002</startTime>
+				<duration>8.000000</duration>
+				<sequenceSound>amb_map_121_lost_paradise_bunker_150mm_fire</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

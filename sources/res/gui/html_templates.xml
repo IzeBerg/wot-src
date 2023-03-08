@@ -750,10 +750,10 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 				<crewBook>&lt;img src=&apos;img://gui/maps/icons/crewBooks/books/small/%(type)s_%(nation)s.png&apos;/&gt; &lt;font color=&apos;#CED9D9&apos;&gt;x%(value)s&lt;/font&gt;</crewBook>
 				<anyBlueprints>_(#quests:bonusName/blueprints/any) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</anyBlueprints>
 				<anyNationalBlueprints>_(#quests:bonusName/blueprints/nation/any) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</anyNationalBlueprints>
-				<crewSkinText>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/crewSkin/text) &lt;/font&gt;</crewSkinText>
-				<crewBookText>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/crewBook/text) &lt;/font&gt;</crewBookText>
-				<dossierAchive>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/dossier/achive) &lt;/font&gt;</dossierAchive>
-				<dossierBadge>&lt;font face=&apos;$FieldFont&apos;&gt; _(#quests:bonuses/dossier/badge) &lt;/font&gt;</dossierBadge>
+				<crewSkinText>_(#quests:bonuses/crewSkin/text)</crewSkinText>
+				<crewBookText>_(#quests:bonuses/crewBook/text)</crewBookText>
+				<dossierAchive>_(#quests:bonuses/dossier/achive)</dossierAchive>
+				<dossierBadge>_(#quests:bonuses/dossier/badge)</dossierBadge>
 				<vehicleBlueprints>_(#quests:bonusName/blueprints/vehicle) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</vehicleBlueprints>
 				<nationBlueprints>_(#quests:bonusName/blueprints/nation) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</nationBlueprints>
 				<universalBlueprints>_(#quests:bonusName/blueprints/universal) &lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt;</universalBlueprints>
@@ -900,10 +900,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 				<teams>_(#menu:prebattle/groupsLabel) &lt;font face=&apos;$TitleFont&apos; color=&apos;#eeeeee&apos; size=&apos;20&apos;&gt;%(count)d&lt;/font&gt;</teams>
 				<twoSides>_(#menu:prebattle/playersLabel)&lt;br&gt;%(sideA)s: &lt;font color=&apos;#eeeeee&apos; size=&apos;16&apos;&gt;%(countA)d&lt;/font&gt;	%(sideB)s: &lt;font color=&apos;#eeeeee&apos; size=&apos;16&apos;&gt;%(countB)d&lt;/font&gt;</twoSides>
 			</playersLabel>
-			<sandbox>
-				<timeTextStart>&lt;b&gt;</timeTextStart>
-				<timeTextEnd>&lt;/b&gt;</timeTextEnd>
-			</sandbox>
 			<bootcamp>
 				<timeTextStart>&lt;b&gt;</timeTextStart>
 				<timeTextEnd>&lt;/b&gt;</timeTextEnd>
@@ -1040,6 +1036,7 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<starYellow>&lt;img src=&apos;img://gui/maps/icons/library/badges/icon_star_yellow.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;%(vspace)d&apos;&gt;</starYellow>
 			<battlePass>&lt;img src=&apos;img://gui/maps/icons/library/BattlePassIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;%(vspace)d&apos; hspace=&apos;0&apos;/&gt;</battlePass>
 			<equipIcon>&lt;img src=&apos;img://gui/maps/icons/library/equipCoin-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</equipIcon>
+			<webLink>&lt;img src=&apos;img://gui/maps/icons/library/buyInWeb.png&apos; width=&apos;14&apos; height=&apos;14&apos; vspace=&apos;0&apos; hspace=&apos;0&apos;/&gt;</webLink>
 		</iconText>
 		<textStyle>
 			<epicTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;73&apos; color=&apos;#F2F2F7&apos;&gt;%(message)s&lt;/font&gt;</epicTitle>
@@ -1246,9 +1243,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<player>&lt;font face=&apos;$FieldFont&apos; size=&apos;15&apos; color=&apos;#FF8516&apos;&gt;%(message)s&lt;/font&gt;</player>
 			<ally>&lt;font face=&apos;$FieldFont&apos; size=&apos;15&apos; color=&apos;#74C730&apos;&gt;%(message)s&lt;/font&gt;</ally>
 		</postmortemMessages>
-		<tutorial>
-			<chapterDescription>&lt;font face=&apos;$TitleFont&apos; size=&apos;18&apos; color=&apos;#ffffff&apos;&gt;%(title)s&lt;/font&gt;&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#DADADA&apos;&gt;%(description)s&lt;/font&gt;</chapterDescription>
-		</tutorial>
 		<siegeMode>
 			<toggle>&lt;font face=&apos;$TitleFont&apos; size=&apos;18&apos; color=&apos;#ffdd99&apos;&gt;%(key)s&lt;/font&gt;</toggle>
 		</siegeMode>

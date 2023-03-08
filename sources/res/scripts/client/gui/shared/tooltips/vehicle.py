@@ -724,6 +724,7 @@ class VehicleTooltipBlockConstructor(object):
 
 
 class HeaderBlockConstructor(VehicleTooltipBlockConstructor):
+    __bootcamp = dependency.descriptor(IBootcampController)
 
     def construct(self):
         block = []
@@ -734,7 +735,12 @@ class HeaderBlockConstructor(VehicleTooltipBlockConstructor):
         else:
             vehicleType = TOOLTIPS.tankcaruseltooltip_vehicletype_normal(self.vehicle.type)
             bgLinkage = BLOCKS_TOOLTIP_TYPES.TOOLTIP_BUILDUP_BLOCK_NORMAL_VEHICLE_BG_LINKAGE
-        nameStr = text_styles.highTitle(self.vehicle.userName)
+        userName = self.vehicle.userName
+        if self.__bootcamp.isInBootcamp():
+            awardVehicles = self.__bootcamp.getAwardVehicles()
+            if self.vehicle.intCD in awardVehicles:
+                userName = backport.text(R.strings.bootcamp.award.options.tankTitle()).format(title=userName)
+        nameStr = text_styles.highTitle(userName)
         typeStr = text_styles.main(vehicleType)
         levelStr = text_styles.concatStylesWithSpace(text_styles.stats(int2roman(self.vehicle.level)), text_styles.standard(_ms(TOOLTIPS.VEHICLE_LEVEL)))
         icon = getTypeBigIconPath(self.vehicle.type, self.vehicle.isElite)

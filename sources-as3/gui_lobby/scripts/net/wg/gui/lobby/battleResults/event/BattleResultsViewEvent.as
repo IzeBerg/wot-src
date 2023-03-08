@@ -14,8 +14,6 @@ package net.wg.gui.lobby.battleResults.event
       public static const BATTLE_QUEUE_ENTERED:String = "BattleLoadingStarted";
       
       public static const BATTLE_QUEUE_EXITED:String = "BattleLoadingFinished";
-      
-      public static const SHOW_REPLAY:String = "showReplay";
        
       
       public function BattleResultsViewEvent(param1:String)

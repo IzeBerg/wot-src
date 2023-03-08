@@ -239,6 +239,9 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
     def _getMarkerSymbol(self, vehicleID):
         return settings.MARKER_SYMBOL_NAME.VEHICLE_MARKER
 
+    def _getMarker2dType(self):
+        return settings.CommonMarkerType.VEHICLE
+
     def _onVehicleFeedbackReceived(self, eventID, vehicleID, value):
         if eventID == _EVENT_ID.ENTITY_IN_FOCUS:
             self.__onVehicleInFocus(vehicleID, value)
@@ -472,7 +475,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
             else:
                 matrixProvider = None
                 active = False
-            markerID = self._createMarkerWithMatrix(self._getMarkerSymbol(vehicleID), matrixProvider=matrixProvider, active=active)
+            markerID = self._createMarkerWithMatrix(self._getMarkerSymbol(vehicleID), matrixProvider=matrixProvider, active=active, markerType=self._getMarker2dType())
             self._setMarkerRenderInfo(markerID, _VEHICLE_MARKER_MIN_SCALE, _VEHICLE_MARKER_BOUNDS, _INNER_VEHICLE_MARKER_BOUNDS, _VEHICLE_MARKER_CULL_DISTANCE, _VEHICLE_MARKER_BOUNDS_MIN_SCALE)
             marker = self._clazz(markerID, vehicleID, vProxy=vProxy, active=active, isPlayerTeam=vInfo.team == avatar_getter.getPlayerTeam())
             marker.onVehicleModelChanged += self.__onVehicleModelChanged

@@ -2987,46 +2987,6 @@
 			</value>
 		</item>
 		<item>
-			<name>FalloutQuestsTabButton</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>EventsWindow</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>view_mc:QuestsSeasonsViewUI.tabs.tabBar:ContentTabRendererUI?id=seasonViewTabFallout</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>2</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>12</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
 			<name>CrewPanel</name>
 			<type>dict</type>
 			<value>
@@ -3934,7 +3894,7 @@
 								<item>
 									<name>top</name>
 									<type>float</type>
-									<value>0</value>
+									<value>1</value>
 								</item>
 								<item>
 									<name>right</name>
@@ -4005,7 +3965,7 @@
 								<item>
 									<name>top</name>
 									<type>float</type>
-									<value>0</value>
+									<value>1</value>
 								</item>
 								<item>
 									<name>right</name>
@@ -4056,7 +4016,7 @@
 								<item>
 									<name>top</name>
 									<type>float</type>
-									<value>0</value>
+									<value>1</value>
 								</item>
 								<item>
 									<name>right</name>
@@ -5440,6 +5400,108 @@
 							<name>bottom</name>
 							<type>float</type>
 							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>BootcampNationSelectButton</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.bootcamp.BootcampNationView</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=select-button]</value>
+				</item>
+				<item>
+					<name>bootcampHint</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>hideBorder</name>
+							<type>bool</type>
+							<value>False</value>
+						</item>
+						<item>
+							<name>padding</name>
+							<type>dict</type>
+							<value>
+								<item>
+									<name>left</name>
+									<type>float</type>
+									<value>0</value>
+								</item>
+								<item>
+									<name>top</name>
+									<type>float</type>
+									<value>0</value>
+								</item>
+								<item>
+									<name>right</name>
+									<type>float</type>
+									<value>-2</value>
+								</item>
+								<item>
+									<name>bottom</name>
+									<type>float</type>
+									<value>0</value>
+								</item>
+							</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>BootcampNationMainNations</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.bootcamp.BootcampNationView</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=main-nations]</value>
+				</item>
+				<item>
+					<name>bootcampHint</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>hideBorder</name>
+							<type>bool</type>
+							<value>False</value>
+						</item>
+						<item>
+							<name>padding</name>
+							<type>dict</type>
+							<value>
+								<item>
+									<name>left</name>
+									<type>float</type>
+									<value>0</value>
+								</item>
+								<item>
+									<name>top</name>
+									<type>float</type>
+									<value>0</value>
+								</item>
+								<item>
+									<name>right</name>
+									<type>float</type>
+									<value>0</value>
+								</item>
+								<item>
+									<name>bottom</name>
+									<type>float</type>
+									<value>0</value>
+								</item>
+							</value>
 						</item>
 					</value>
 				</item>

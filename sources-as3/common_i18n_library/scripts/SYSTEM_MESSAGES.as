@@ -2469,8 +2469,6 @@ package
       
       public static const UPGRADETROPHYDEVICE_SWITCH_OFF_BODY:String = "#system_messages:upgradeTrophyDevice/switch_off/body";
       
-      public static const BATTLEPASS_BADGEREMOVED_TEXT:String = "#system_messages:battlePass/badgeRemoved/text";
-      
       public static const BATTLEPASS_REWARDCHOICE_ERROR:String = "#system_messages:battlePass/rewardChoice/error";
       
       public static const BATTLEPASS_EXTRASTARTED_HEADER:String = "#system_messages:battlePass/extraStarted/header";
@@ -2514,10 +2512,6 @@ package
       public static const BATTLEPASS_SWITCHCHAPTER_REMINDER:String = "#system_messages:battlePass/switchChapter/reminder";
       
       public static const BATTLEPASS_ACTIVATECHAPTER_SUCCESS:String = "#system_messages:battlePass/activateChapter/success";
-      
-      public static const HBP_SEASONSTART_TITLE:String = "#system_messages:hbp/seasonStart/title";
-      
-      public static const HBP_SEASONSTART_BODY:String = "#system_messages:hbp/seasonStart/body";
       
       public static const COLLECTORVEHICLE_SWITCH_OFF_TITLE:String = "#system_messages:collectorVehicle/switch_off/title";
       
@@ -2678,6 +2672,10 @@ package
       public static const RESOURCEWELL_RESOURCESLOADINGERROR:String = "#system_messages:resourceWell/resourcesLoadingError";
       
       public static const RESOURCEWELL_RESOURCESRETURNERROR:String = "#system_messages:resourceWell/resourcesReturnError";
+      
+      public static const UNIT_WARNINGS_EXPIRED_PLAY_LIMITS:String = "#system_messages:unit/warnings/EXPIRED_PLAY_LIMITS";
+      
+      public static const UNIT_WARNINGS_EXPIRED_PLAY_LIMITS_TO_COMMANDER:String = "#system_messages:unit/warnings/EXPIRED_PLAY_LIMITS_TO_COMMANDER";
        
       
       public function SYSTEM_MESSAGES()

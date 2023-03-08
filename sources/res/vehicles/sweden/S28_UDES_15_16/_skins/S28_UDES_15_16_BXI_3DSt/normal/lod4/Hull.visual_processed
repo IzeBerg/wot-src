@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.286854 0.006861 1.967999</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.884401 0.510642 0.523389</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.635441 0.772150</row1>
+					<row2>0.000000 -0.772150 0.635441</row2>
+					<row3>-1.366255 0.038064 2.954038</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-0.999924 -0.002849 0.011968</row0>
+					<row1>-0.012053 0.032214 -0.999408</row1>
+					<row2>0.002462 -0.999477 -0.032246</row2>
+					<row3>-1.366255 -0.201109 -2.845631</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.635441 0.772150</row1>
+					<row2>0.000000 -0.772150 0.635441</row2>
+					<row3>1.366256 0.038064 2.954038</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-0.999958 -0.004558 -0.007916</row0>
+					<row1>0.007764 0.032456 -0.999443</row1>
+					<row2>0.004812 -0.999463 -0.032419</row2>
+					<row3>1.366256 -0.201109 -2.845631</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 -0.999124 -0.041847</row1>
+					<row2>0.000000 0.041847 -0.999124</row2>
+					<row3>1.200868 0.225361 -2.865419</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.005556 0.436253 -0.786036</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_proxy</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_proxy_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_proxy_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_proxy_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/sweden/S28_UDES_15_16/_skins/S28_UDES_15_16_BXI_3DSt/UDES_15_16_BXI_3DSt_proxy_AO.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.017074 0.120202 -0.592959</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.914617 -0.514419 -4.640062</min>
+		<max>1.948764 0.754822 3.454144</max>
+	</boundingBox>
+	<geometrySize>3204</geometrySize>
+	<minUVDensity>0.003465</minUVDensity>
+</root>

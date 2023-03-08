@@ -65,13 +65,19 @@ class _SharedComponentsConfig(ComponentsConfig):
     def __init__(self):
         super(_SharedComponentsConfig, self).__init__((
          (
-          BATTLE_CTRL_ID.HIT_DIRECTION, (_ALIASES.PREDICTION_INDICATOR, _ALIASES.HIT_DIRECTION)),
-         (
           BATTLE_CTRL_ID.BATTLE_NOTIFIER, (_ALIASES.BATTLE_NOTIFIER,)),
          (
           BATTLE_CTRL_ID.ARENA_LOAD_PROGRESS, (_ALIASES.BATTLE_NOTIFIER,)),
          (
-          BATTLE_CTRL_ID.PREBATTLE_SETUPS_CTRL, (_ALIASES.DUAL_GUN_PANEL,))), (
+          BATTLE_CTRL_ID.PREBATTLE_SETUPS_CTRL, (_ALIASES.DUAL_GUN_PANEL,))))
+
+
+class _HitDirectionComponentsConfig(ComponentsConfig):
+
+    def __init__(self):
+        super(_HitDirectionComponentsConfig, self).__init__((
+         (
+          BATTLE_CTRL_ID.HIT_DIRECTION, (_ALIASES.PREDICTION_INDICATOR, _ALIASES.HIT_DIRECTION)),), (
          (
           _ALIASES.PREDICTION_INDICATOR, indicators.createPredictionIndicator),
          (
@@ -79,6 +85,7 @@ class _SharedComponentsConfig(ComponentsConfig):
 
 
 _SHARED_COMPONENTS_CONFIG = _SharedComponentsConfig()
+_HIT_DIRECTION_COMPONENTS_CONFIG = _HitDirectionComponentsConfig()
 
 class SharedPage(BattlePageMeta):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
@@ -102,6 +109,8 @@ class SharedPage(BattlePageMeta):
             components = _SHARED_COMPONENTS_CONFIG
         else:
             components += _SHARED_COMPONENTS_CONFIG
+        if BATTLE_CTRL_ID.HIT_DIRECTION not in dict(components.getConfig()):
+            components += _HIT_DIRECTION_COMPONENTS_CONFIG
         self.__componentsConfig = components
         return
 

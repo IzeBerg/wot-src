@@ -403,9 +403,13 @@ class _ExpandedItem(_EquipmentItem):
 
                 return (
                  False, _ActivationError(self._getEntitiesAreSafeKey(), None))
-            if entityName not in deviceStates:
-                return (False,
-                 NotApplyingError(self._getEntityIsSafeKey(), {'entity': self._getEntityUserString(entityName)}))
+            return self._canApplyForEntity(entityName, deviceStates)
+
+    def _canApplyForEntity(self, entityName, deviceStates):
+        if entityName not in deviceStates:
+            return (False,
+             NotApplyingError(self._getEntityIsSafeKey(), {'entity': self._getEntityUserString(entityName)}))
+        else:
             return (
              True, None)
 
@@ -451,6 +455,17 @@ class _MedKitItem(_RefillEquipmentItem, _ExpandedItem):
         else:
             return (
              result, error)
+
+    def _canApplyForEntity(self, entityName, deviceStates):
+        if entityName not in deviceStates:
+            if not avatar_getter.isVehicleStunned():
+                return (False,
+                 NotApplyingError(self._getEntityIsSafeKey(), {'entity': self._getEntityUserString(entityName)}))
+            return (
+             self.isReusable, None)
+        else:
+            return (
+             True, None)
 
     def _getEntitiesAreSafeKey(self):
         return 'medkitAllTankmenAreSafe'

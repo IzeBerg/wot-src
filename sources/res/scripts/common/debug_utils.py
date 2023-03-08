@@ -1,4 +1,4 @@
-import sys, BigWorld, excepthook, time, traceback
+import sys, re, BigWorld, excepthook, time, traceback
 from GarbageCollectionDebug import gcDump, getGarbageGraph
 from functools import wraps
 from collections import defaultdict
@@ -9,8 +9,7 @@ from constants import LEAKS_DETECTOR_MAX_EXECUTION_TIME
 from contextlib import contextmanager
 from threading import RLock
 from soft_exception import SoftException
-_src_file_trim_to = (
- 'res/wot/scripts/', len('res/wot/scripts/'))
+_src_file_trim_to = re.compile('res/(?:wot|wot_ext)/(?:.*/)?scripts/')
 _g_logMapping = {}
 _g_logLock = RLock()
 GCDUMP_CROWBAR_SWITCH = False
@@ -180,7 +179,7 @@ def LOG_SENTRY(msg, *kargs):
     try:
         raise SoftException(('{} {}').format(msg, kargs))
     except:
-        LOG_CURRENT_EXCEPTION()
+        LOG_CURRENT_EXCEPTION(frame=2)
 
 
 @_LogWrapper(LOG_LEVEL.DEV)
@@ -248,10 +247,11 @@ def _doLog(category, msg, args=None, kwargs={}, frameDepth=2):
 
 def _makeMsgHeader(frame):
     filename = frame.f_code.co_filename
-    trim_to, trim_to_len = _src_file_trim_to
-    idx = filename.find(trim_to)
-    if idx != -1:
-        filename = filename[idx + trim_to_len:]
+    trim_match = _src_file_trim_to.findall(filename)
+    if trim_match:
+        trim_path = trim_match[0]
+        idx = filename.find(trim_path)
+        filename = filename[idx + len(trim_path):]
     return '(%s, %d):' % (filename, frame.f_lineno)
 
 

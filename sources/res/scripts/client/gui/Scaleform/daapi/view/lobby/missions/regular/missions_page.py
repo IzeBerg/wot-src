@@ -13,7 +13,7 @@ from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.event_boards.event_helpers import checkEventExist
 from gui.Scaleform.daapi.view.lobby.missions.missions_helper import HIDE_DONE, HIDE_UNAVAILABLE
 from gui.Scaleform.daapi.view.lobby.missions.regular import group_packers
-from gui.Scaleform.daapi.view.lobby.missions.regular.sound_constants import TASKS_SOUND_SPACE, SOUNDS
+from gui.Scaleform.daapi.view.lobby.missions.regular.sound_constants import TASKS_SOUND_SPACE
 from gui.Scaleform.daapi.view.meta.MissionsListViewBaseMeta import MissionsListViewBaseMeta
 from gui.Scaleform.daapi.view.meta.MissionsPageMeta import MissionsPageMeta
 from gui.Scaleform.framework.entities.DAAPIDataProvider import ListDAAPIDataProvider
@@ -120,6 +120,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
                 self.soundManager.playSound(soundEvents[1])
                 break
 
+        if self.__currentTabAlias == QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS and self.currentTab is not None:
+            self.currentTab.stop()
         self.__currentTabAlias = alias
         self.__marathonPrefix = prefix
         caches.getNavInfo().setMissionsTab(alias)
@@ -137,11 +139,14 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         self.__onPageUpdate()
         self.__fireTabChangedEvent()
         self.__showFilter()
+        if alias == QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS and self.currentTab is not None:
+            self.currentTab.start()
         if alias == QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS:
             self.currentTab.setMarathon(prefix)
         if self.currentTab:
             self.fireEvent(events.LobbySimpleEvent(events.LobbySimpleEvent.CHANGE_SOUND_ENVIRONMENT, ctx=self))
             self.currentTab.setActive(True)
+        return
 
     def getCurrentTabAlias(self):
         return self.__currentTabAlias
@@ -202,8 +207,6 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         self.__updateHeader()
         self.__tryOpenMissionDetails()
         self.fireEvent(events.MissionsEvent(events.MissionsEvent.ON_ACTIVATE), EVENT_BUS_SCOPE.LOBBY)
-        if self.__currentTabAlias not in self.__VOICED_TABS:
-            self.soundManager.playSound(SOUNDS.ENTER)
         return
 
     def _invalidate(self, ctx=None):

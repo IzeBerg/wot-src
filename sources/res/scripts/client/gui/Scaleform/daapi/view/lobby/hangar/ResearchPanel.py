@@ -1,4 +1,5 @@
 import typing
+from bootcamp.Bootcamp import g_bootcamp
 from CurrentVehicle import g_currentVehicle
 from gui.veh_post_progression.helpers import needToShowCounter
 from items.battle_royale import isBattleRoyale
@@ -125,6 +126,7 @@ class ResearchPanel(ResearchPanelMeta):
     def __getVehPostProgressionData(self, vehicle):
         isHintEnabled = False
         isAvailable = vehicle.postProgressionAvailability(unlockOnly=True).result
+        isVisible = vehicle.isPostProgressionExists and not g_bootcamp.isRunning()
         if vehicle.xp > 0 and isAvailable:
             purchasableStep = vehicle.postProgression.getFirstPurchasableStep(ExtendedMoney(xp=vehicle.xp))
             if purchasableStep is not None:
@@ -134,4 +136,4 @@ class ResearchPanel(ResearchPanelMeta):
             tutorialStorage.setValue(GLOBAL_FLAG.HANGAR_VEH_POST_PROGRESSION_PURCHASABLE, isHintEnabled)
         return {'showCounter': needToShowCounter(vehicle), 
            'btnEnabled': isAvailable, 
-           'btnVisible': vehicle.isPostProgressionExists}
+           'btnVisible': isVisible}

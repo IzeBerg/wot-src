@@ -298,6 +298,12 @@ class _AutoReloadingBoostStateCtrl(object):
         self.__gunSettings = None
         return
 
+    def clear(self):
+        self.__cancelCallback()
+        self.__state = self.__prevSnapshot = self.__snapshot = self.__gunSettings = None
+        self.__stateDuration = self.__stateTotalTime = 0.0
+        return
+
     def destroy(self):
         self.__changeEventDispatcher = None
         self.__prevSnapshot = None
@@ -448,6 +454,7 @@ class AmmoController(MethodsRules, ViewComponentsController):
             reloadEffect.stop()
         self.__gunSettings = _GunSettings.default()
         self._reloadingState.clear()
+        self._autoReloadingBoostState.clear()
         if leave:
             self.__autoShoots.destroy()
             self._autoReloadingBoostState.destroy()
