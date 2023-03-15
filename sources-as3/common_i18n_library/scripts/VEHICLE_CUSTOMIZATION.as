@@ -11233,6 +11233,10 @@ package
       
       public static const SPECIAL_STYLE_TWITCH_OCTOBER_2022_DESC_LONG:String = "#vehicle_customization:special_style/twitch_october_2022_desc/long";
       
+      public static const MAIN_STYLE_R159_SU_130PM_OCN_3DST:String = "#vehicle_customization:main_style/R159_SU_130PM_OCN_3DSt";
+      
+      public static const MAIN_STYLE_R159_SU_130PM_OCN_3DST_DESC_LONG:String = "#vehicle_customization:main_style/R159_SU_130PM_OCN_3DSt_desc/long";
+      
       public static const SPECIAL_STYLE_CN_LANTERN_FESTIVAL:String = "#vehicle_customization:special_style/cn_lantern_festival";
       
       public static const SPECIAL_STYLE_CN_LANTERN_FESTIVAL_DESC:String = "#vehicle_customization:special_style/cn_lantern_festival_desc";
