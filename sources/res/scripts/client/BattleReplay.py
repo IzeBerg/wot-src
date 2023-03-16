@@ -1041,7 +1041,7 @@ class BattleReplay(object):
                     for field in ('damageEventList', 'xpReplay', 'creditsReplay', 'tmenXPReplay',
                                   'flXPReplay', 'goldReplay', 'crystalReplay', 'eventCoinReplay',
                                   'bpcoinReplay', 'freeXPReplay', 'avatarDamageEventList',
-                                  'equipCoinReplay'):
+                                  'equipCoinReplay', 'battlePassPointsReplay'):
                         personal[field] = None
 
                     for currency in personal.get('currencies', {}).itervalues():

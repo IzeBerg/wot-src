@@ -2021,6 +2021,8 @@ package net.wg.data.constants.generated
       
       public static const USSR_R159_SU_130_PM:String = "ussr-R159_SU_130PM";
       
+      public static const USSR_R159_SU_130_PM_DR:String = "ussr-R159_SU_130PM_DR";
+      
       public static const USSR_R16_SU_18:String = "ussr-R16_SU-18";
       
       public static const USSR_R160_T_50_2:String = "ussr-R160_T_50_2";
