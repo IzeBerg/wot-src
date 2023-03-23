@@ -54,26 +54,27 @@ msgid "headerButtons/fightBtn/tooltip/mapboxVehLevel/header"
 msgstr "Неподходящий уровень техники"
 
 msgid "headerButtons/fightBtn/tooltip/mapboxVehLevel/levelSubStr"
-msgstr "технике %(levels)s уровня."
+msgstr "технике %(levels)s уровней."
 
 msgid "intro/button"
 msgstr "Так точно!"
 
 msgid "intro/interviewInfoDescription"
 msgstr ""
-"Ваше мнение повлияет на итоговый вид новых карт. Голосуйте за лучшую из них,"
-" и мы добавим её в игру."
+"Ваше мнение повлияет на итоговый вид боевых локаций. Оставляйте отзывы по "
+"новым игровым механикам на картах, и лучшие идеи мы добавим в игру."
 
 msgid "intro/interviewInfoTitle"
 msgstr "Решающие опросы"
 
 msgid "intro/modeInfoDescription"
 msgstr ""
-"Играйте на разрабатываемых картах на технике VIII–X уровней, проходите "
-"опросы и получайте награды."
+"Играйте на картах с новыми механиками на технике VIII–X уровней, проходите "
+"опросы и получайте награды. Через неделю прогрессия будет сброшена, и вы "
+"сможете получить награды ещё раз."
 
 msgid "intro/modeInfoTitle"
-msgstr "Примите участие в разработке новых карт!"
+msgstr "Примите участие в разработке новых механик!"
 
 msgid "intro/startEvent"
 msgstr "До начала события: "
@@ -160,27 +161,33 @@ msgstr "Режим прекращения огня до %(startTime)s на се�
 msgid "primeTimeView/title"
 msgstr "РАЗВЕДКА БОЕМ"
 
-msgid "progression/cardTitle"
-msgstr "Попасть в топ-{rating} по опыту на карте"
+msgid "primeTimes/availableServer"
+msgstr "Доступный для игры сервер:"
 
-msgid "progression/cardTitleCommon"
-msgstr "Попасть в топ-{rating} по опыту на картах"
+msgid "primeTimes/availableServers"
+msgstr "Доступные для игры серверы:"
+
+msgid "progression/cardTitle/mapBattles"
+msgstr "Провести боёв"
+
+msgid "progression/cardTitle/rating"
+msgstr "Попасть в топ-{rating} по опыту"
 
 msgid "progression/changeAnswer"
 msgstr "Изменить ответ"
 
 msgid "progression/chooseBetter"
-msgstr "Выбрать лучшую"
+msgstr "Пройти опрос"
 
 msgid "progression/chooseBetterTooltip"
-msgstr "Чтобы выбрать лучшую карту, выполните указанное выше условие."
+msgstr "Чтобы пройти опрос, выполните указанное выше условие."
 
 msgid "progression/counter"
 msgstr "%(current) / %(mapBattles)"
 
 msgid "progression/info/description"
 msgstr ""
-"Играйте на разрабатываемых картах на технике VIII–X уровней, принимайте "
+"Играйте на картах с новыми механиками на технике VIII–X уровней, принимайте "
 "участие в опросах и получайте награды."
 
 msgid "progression/info/restart"
@@ -198,35 +205,20 @@ msgstr "КАРЕЛИЯ"
 msgid "progression/map_02_malinovka"
 msgstr "МАЛИНОВКА"
 
+msgid "progression/map_04_himmelsdorf_mb"
+msgstr "ХИММЕЛЬСДОРФ"
+
 msgid "progression/map_05_prohorovka"
 msgstr "ПРОХОРОВКА"
 
-msgid "progression/map_117_canyon_ish"
-msgstr "КАНЬОН"
+msgid "progression/map_05_prohorovka_mb"
+msgstr "ПРОХОРОВКА"
 
-msgid "progression/map_119_turning_point_if"
-msgstr "ВОЛГА"
+msgid "progression/map_08_ruinberg_mb"
+msgstr "РУИНБЕРГ"
 
-msgid "progression/map_120_graf_zeppelin_ish"
-msgstr "ВОЗДУШНАЯ ГАВАНЬ"
-
-msgid "progression/map_121_lost_paradise_v"
-msgstr "УСТРИЧНЫЙ ЗАЛИВ"
-
-msgid "progression/map_122_frozen_land"
-msgstr "ЛЕДНИК"
-
-msgid "progression/map_123_dalny_gg"
-msgstr "ДАЛЬНИЙ ВОСТОК"
-
-msgid "progression/map_125_highground_v"
-msgstr "ПРЕДГОРЬЯ"
-
-msgid "progression/map_126_asia_ravine_ish"
-msgstr "МЕСТО СИЛЫ"
-
-msgid "progression/map_128_last_frontier_v"
-msgstr "ЗАСТАВА"
+msgid "progression/map_127_japort_mb"
+msgstr "СТАРАЯ ГАВАНЬ"
 
 msgid "progression/map_14_siegfried_line"
 msgstr "ЗАТЕРЯННЫЙ ГОРОД"
@@ -238,7 +230,9 @@ msgid "progression/map_18_cliff"
 msgstr "ВЕСТФИЛД"
 
 msgid "progression/map_all"
-msgstr "ВСЕ КАРТЫ"
+msgstr ""
+"ИГРОВЫЕ\n"
+"МЕХАНИКИ"
 
 msgid "progression/redirect"
 msgstr "Перейти к режиму"
@@ -297,7 +291,7 @@ msgid "questFlag/frozen/text"
 msgstr "Бои в режиме «Разведка боем» недоступны по техническим причинам."
 
 msgid "questFlag/highlightedText"
-msgstr "разрабатываемых картах на технике VIII–X уровней"
+msgstr "картах с новыми механиками на технике VIII–X уровней"
 
 msgid "questFlag/incomplete"
 msgstr "Боёв до следующей награды: %(count)s"
@@ -344,10 +338,10 @@ msgid "selectableCrewbook/guide"
 msgstr "Учебное руководство"
 
 msgid "selector/startEvent"
-msgstr "Смотр карт начнётся %(day)s"
+msgstr "Смотр карт с новыми механиками начнётся %(day)s"
 
 msgid "selector/tooltip/body"
-msgstr "Смотр шести карт продлится до %(day)s"
+msgstr "Смотр карт с новыми механиками продлится до %(day)s"
 
 msgid "selector/tooltip/title"
 msgstr "Расписание"
@@ -376,239 +370,409 @@ msgstr "Сменить сервер"
 msgid "survey/backBtn"
 msgstr "Назад"
 
+msgid "survey/dynamicAllMaps/question/q1"
+msgstr "Как вы относитесь к добавлению случайных событий на картах?"
+
+msgid "survey/dynamicAllMaps/question/q10"
+msgstr "Хотели бы вы заранее узнавать о событиях на картах в Случайных боях?"
+
+msgid "survey/dynamicAllMaps/question/q11"
+msgstr "Играли бы вы на картах с событиями в Случайных боях?"
+
+msgid "survey/dynamicAllMaps/question/q2"
+msgstr "Какие у вас впечатления от игры на картах со случайными событиями?"
+
+msgid "survey/dynamicAllMaps/question/q3"
+msgstr "Насколько случайные события повлияли на игровой процесс?"
+
+msgid "survey/dynamicAllMaps/question/q4"
+msgstr "Как изменились бои после добавления случайных событий?"
+
+msgid "survey/dynamicAllMaps/question/q5"
+msgstr "В какой момент боя должны происходить случайные события?"
+
+msgid "survey/dynamicAllMaps/question/q6"
+msgstr ""
+"Как вы относитесь к возможности взаимодействия с объектами на картах "
+"(контейнеры, блоки и т.п.)?"
+
+msgid "survey/dynamicAllMaps/question/q7"
+msgstr "Хотели бы вы видеть события на картах в Случайных боях?"
+
+msgid "survey/dynamicAllMaps/question/q8"
+msgstr "Хотели бы вы изменить что-то в случайных событиях?"
+
+msgid "survey/dynamicAllMaps/question/q9"
+msgstr "Укажите необходимые доработки."
+
+msgid "survey/dynamicAllMaps/response/q10_1"
+msgstr "Да, при загрузке карты"
+
+msgid "survey/dynamicAllMaps/response/q10_2"
+msgstr "Да, во время отсчёта"
+
+msgid "survey/dynamicAllMaps/response/q10_3"
+msgstr "Да, перед событием"
+
+msgid "survey/dynamicAllMaps/response/q10_4"
+msgstr "Нет"
+
+msgid "survey/dynamicAllMaps/response/q10_5"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicAllMaps/response/q11_1"
+msgstr "Играл (-а) бы на всех"
+
+msgid "survey/dynamicAllMaps/response/q11_2"
+msgstr "Отключил (-а) бы некоторые"
+
+msgid "survey/dynamicAllMaps/response/q11_3"
+msgstr "Отключил (-а) бы все"
+
+msgid "survey/dynamicAllMaps/response/q11_4"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicAllMaps/response/q1_1"
+msgstr "Положительно"
+
+msgid "survey/dynamicAllMaps/response/q1_2"
+msgstr "Отрицательно"
+
+msgid "survey/dynamicAllMaps/response/q1_3"
+msgstr "Мне всё равно"
+
+msgid "survey/dynamicAllMaps/response/q2_1"
+msgstr "Очень понравилось"
+
+msgid "survey/dynamicAllMaps/response/q2_2"
+msgstr "Скорее понравилось"
+
+msgid "survey/dynamicAllMaps/response/q2_3"
+msgstr "Скорее не понравилось"
+
+msgid "survey/dynamicAllMaps/response/q2_4"
+msgstr "Совсем не понравилось"
+
+msgid "survey/dynamicAllMaps/response/q2_5"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicAllMaps/response/q3_1"
+msgstr "Существенно повлияли"
+
+msgid "survey/dynamicAllMaps/response/q3_2"
+msgstr "Слегка повлияли"
+
+msgid "survey/dynamicAllMaps/response/q3_3"
+msgstr "Совсем не повлияли"
+
+msgid "survey/dynamicAllMaps/response/q3_4"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicAllMaps/response/q4_1"
+msgstr "Стали более увлекательными"
+
+msgid "survey/dynamicAllMaps/response/q4_2"
+msgstr "Не изменились"
+
+msgid "survey/dynamicAllMaps/response/q4_3"
+msgstr "Стали менее увлекательными"
+
+msgid "survey/dynamicAllMaps/response/q4_4"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicAllMaps/response/q5_1"
+msgstr "В начале"
+
+msgid "survey/dynamicAllMaps/response/q5_2"
+msgstr "В середине"
+
+msgid "survey/dynamicAllMaps/response/q5_3"
+msgstr "Ближе к концу"
+
+msgid "survey/dynamicAllMaps/response/q5_4"
+msgstr "В любой момент"
+
+msgid "survey/dynamicAllMaps/response/q5_5"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicAllMaps/response/q6_1"
+msgstr "Положительно"
+
+msgid "survey/dynamicAllMaps/response/q6_2"
+msgstr "Отрицательно"
+
+msgid "survey/dynamicAllMaps/response/q6_3"
+msgstr "Мне всё равно"
+
+msgid "survey/dynamicAllMaps/response/q7_1"
+msgstr "Да"
+
+msgid "survey/dynamicAllMaps/response/q7_2"
+msgstr "Нет"
+
+msgid "survey/dynamicAllMaps/response/q7_3"
+msgstr "Мне всё равно"
+
+msgid "survey/dynamicAllMaps/response/q8_1"
+msgstr "Да"
+
+msgid "survey/dynamicAllMaps/response/q8_2"
+msgstr "Нет"
+
+msgid "survey/dynamicAllMaps/response/q8_3"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicOneMap/question/option/q6_AT-SPG"
+msgstr "ПТ-САУ"
+
+msgid "survey/dynamicOneMap/question/option/q6_SPG"
+msgstr "САУ"
+
+msgid "survey/dynamicOneMap/question/option/q6_heavyTank"
+msgstr "ТТ"
+
+msgid "survey/dynamicOneMap/question/option/q6_lightTank"
+msgstr "ЛТ"
+
+msgid "survey/dynamicOneMap/question/option/q6_mediumTank"
+msgstr "СТ"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_1"
+msgstr "Падение дирижабля на город"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_2"
+msgstr "Появляющийся съезд с горы"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_3"
+msgstr "Бомбардировка поездов на ж/д"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_4"
+msgstr "Взаимодействие с динам. укрытиями (вагоны, танки)"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_1"
+msgstr "Падение самолётов на аллею"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_2"
+msgstr "Падение самолёта на горку"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_3"
+msgstr "Крушение поезда"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_4"
+msgstr "Взаимодействие с динам. укрытиями (остовы техники)"
+
+msgid "survey/dynamicOneMap/question/option/q8_08_ruinberg_mb_1"
+msgstr "Бомбардировка малого города"
+
+msgid "survey/dynamicOneMap/question/option/q8_08_ruinberg_mb_2"
+msgstr "Бомбардировка большого города (появляющиеся проезды в городе)"
+
+msgid "survey/dynamicOneMap/question/option/q8_08_ruinberg_mb_3"
+msgstr "Взаимодействие с динам. укрытиями (остовы техники)"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_1"
+msgstr "Вход корабля в мокрый док"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_2"
+msgstr "Падение самолёта на вход в бункер"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_3"
+msgstr "Разрушение дорожного моста бомбардировками"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_4"
+msgstr "Взаимодействие с динам. укрытиями (контейнеры, бетонный блок)"
+
+msgid "survey/dynamicOneMap/question/q1"
+msgstr "Какие у вас впечатления от игры на этой карте?"
+
+msgid "survey/dynamicOneMap/question/q2"
+msgstr ""
+"Какие у вас впечатления от визуального оформления случайных событий на "
+"карте?"
+
+msgid "survey/dynamicOneMap/question/q3"
+msgstr "Оцените количество случайных событий на карте."
+
+msgid "survey/dynamicOneMap/question/q4"
+msgstr "Хотели бы вы изменить влияние таких событий на игру на карте?"
+
+msgid "survey/dynamicOneMap/question/q5"
+msgstr "На какой технике вы играли на этой карте?"
+
+msgid "survey/dynamicOneMap/question/q6"
+msgstr "Как изменилась игра на {value}?"
+
+msgid "survey/dynamicOneMap/question/q7"
+msgstr ""
+"Какие у вас впечатления от использования динамических укрытий (контейнеры, "
+"блоки и т.п.) в бою?"
+
+msgid "survey/dynamicOneMap/question/q8"
+msgstr ""
+"Какие у вас впечатления от влияния следующих нововведений на игровой процесс"
+" на карте?"
+
+msgid "survey/dynamicOneMap/question/q9_13"
+msgstr "Что вам не понравилось в событии «{value}»?"
+
+msgid "survey/dynamicOneMap/response/q1_1"
+msgstr "Очень понравилось"
+
+msgid "survey/dynamicOneMap/response/q1_2"
+msgstr "Скорее понравилось"
+
+msgid "survey/dynamicOneMap/response/q1_3"
+msgstr "Скорее не понравилось"
+
+msgid "survey/dynamicOneMap/response/q1_4"
+msgstr "Совсем не понравилось"
+
+msgid "survey/dynamicOneMap/response/q1_5"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicOneMap/response/q2_1"
+msgstr "Очень понравилось"
+
+msgid "survey/dynamicOneMap/response/q2_2"
+msgstr "Скорее понравилось"
+
+msgid "survey/dynamicOneMap/response/q2_3"
+msgstr "Скорее не понравилось"
+
+msgid "survey/dynamicOneMap/response/q2_4"
+msgstr "Совсем не понравилось"
+
+msgid "survey/dynamicOneMap/response/q2_5"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicOneMap/response/q3_1"
+msgstr "Слишком много"
+
+msgid "survey/dynamicOneMap/response/q3_2"
+msgstr "Достаточно"
+
+msgid "survey/dynamicOneMap/response/q3_3"
+msgstr "Слишком мало"
+
+msgid "survey/dynamicOneMap/response/q3_4"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicOneMap/response/q4_1"
+msgstr "Да, в большую сторону"
+
+msgid "survey/dynamicOneMap/response/q4_2"
+msgstr "Да, в меньшую сторону"
+
+msgid "survey/dynamicOneMap/response/q4_3"
+msgstr "Нет, не хотел (-а) бы"
+
+msgid "survey/dynamicOneMap/response/q4_4"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicOneMap/response/q5_AT-SPG"
+msgstr "ПТ-САУ"
+
+msgid "survey/dynamicOneMap/response/q5_SPG"
+msgstr "САУ"
+
+msgid "survey/dynamicOneMap/response/q5_heavyTank"
+msgstr "ТТ"
+
+msgid "survey/dynamicOneMap/response/q5_lightTank"
+msgstr "ЛТ"
+
+msgid "survey/dynamicOneMap/response/q5_mediumTank"
+msgstr "СТ"
+
+msgid "survey/dynamicOneMap/response/q5_unknown"
+msgstr "Не помню"
+
+msgid "survey/dynamicOneMap/response/q6_1"
+msgstr "Стало лучше"
+
+msgid "survey/dynamicOneMap/response/q6_2"
+msgstr "Стало хуже"
+
+msgid "survey/dynamicOneMap/response/q6_3"
+msgstr "Не изменилась"
+
+msgid "survey/dynamicOneMap/response/q6_4"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicOneMap/response/q7_1"
+msgstr "Очень понравилось"
+
+msgid "survey/dynamicOneMap/response/q7_2"
+msgstr "Скорее понравилось"
+
+msgid "survey/dynamicOneMap/response/q7_3"
+msgstr "Скорее не понравилось"
+
+msgid "survey/dynamicOneMap/response/q7_4"
+msgstr "Совсем не понравилось"
+
+msgid "survey/dynamicOneMap/response/q7_5"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicOneMap/response/q8_1"
+msgstr "Понравилось"
+
+msgid "survey/dynamicOneMap/response/q8_2"
+msgstr "Не понравилось"
+
+msgid "survey/dynamicOneMap/response/q8_3"
+msgstr "Затрудняюсь ответить"
+
+msgid "survey/dynamicOneMap/response/q9_13_1"
+msgstr "Момент, в который происходит событие"
+
+msgid "survey/dynamicOneMap/response/q9_13_10"
+msgstr "Одна из команд получает преимущество"
+
+msgid "survey/dynamicOneMap/response/q9_13_11"
+msgstr "Сопровождается техническими проблемами"
+
+msgid "survey/dynamicOneMap/response/q9_13_12"
+msgstr "Другое"
+
+msgid "survey/dynamicOneMap/response/q9_13_2"
+msgstr "Событие не влияет на игровой процесс"
+
+msgid "survey/dynamicOneMap/response/q9_13_3"
+msgstr "Часть карты становится непригодной для боя"
+
+msgid "survey/dynamicOneMap/response/q9_13_4"
+msgstr "Появляющиеся объекты мешают ведению боя"
+
+msgid "survey/dynamicOneMap/response/q9_13_5"
+msgstr "Визуальное оформление события"
+
+msgid "survey/dynamicOneMap/response/q9_13_6"
+msgstr "Событие не зрелищно"
+
+msgid "survey/dynamicOneMap/response/q9_13_7"
+msgstr "Есть большой шанс быть уничтоженным из-за события"
+
+msgid "survey/dynamicOneMap/response/q9_13_8"
+msgstr "Заставляет менять позицию"
+
+msgid "survey/dynamicOneMap/response/q9_13_9"
+msgstr "Существенно меняет игровой процесс на карте"
+
+msgid "survey/listSeparator"
+msgstr ", "
+
 msgid "survey/nextBtn"
 msgstr "Далее"
 
-msgid "survey/question/1"
-msgstr "Понравилась ли карта с точки зрения ведения боя?"
-
-msgid "survey/question/10"
-msgstr "Сложно ли захватывать указанную базу?"
-
-msgid "survey/question/11"
-msgstr "Нравится ли вам тематика (сеттинг) карты?"
-
-msgid "survey/question/12"
-msgstr "Хотели бы вы увидеть эту карту в игре?"
-
-msgid "survey/question/13"
-msgstr "Нужны ли доработки для карты?"
-
-msgid "survey/question/14"
-msgstr "Укажите необходимые доработки"
-
-msgid "survey/question/2"
-msgstr "На какой технике вы играли на этой карте?"
-
-msgid "survey/question/3"
-msgstr "Для каких типов техники подходит карта?"
-
-msgid "survey/question/3_0"
-msgstr "Подходит ли карта для {value}?"
-
-msgid "survey/question/3_1"
-msgstr "Для каких типов техники подходит карта?"
-
-msgid "survey/question/4"
-msgstr "Как вам размер карты?"
-
-msgid "survey/question/5"
-msgstr "Сбалансированы ли позиции команд?"
-
-msgid "survey/question/6"
-msgstr "Укажите на мини-карте позиции с явным преимуществом"
-
-msgid "survey/question/7"
-msgstr "С какими высказываниями о карте вы согласны?"
-
-msgid "survey/question/8"
-msgstr "С какими высказываниями о карте вы согласны?"
-
-msgid "survey/question/9"
-msgstr "Сложно ли захватывать указанную базу?"
-
-msgid "survey/question/option/3_AT-SPG"
-msgstr "ПТ-САУ"
-
-msgid "survey/question/option/3_SPG"
-msgstr "САУ"
-
-msgid "survey/question/option/3_heavyTank"
-msgstr "ТТ"
-
-msgid "survey/question/option/3_lightTank"
-msgstr "ЛТ"
-
-msgid "survey/question/option/3_mediumTank"
-msgstr "СТ"
-
-msgid "survey/question/option/7_1"
-msgstr "На ней легко ориентироваться"
-
-msgid "survey/question/option/7_2"
-msgstr "Бои слишком затянуты"
-
-msgid "survey/question/option/7_3"
-msgstr "Бои однообразны, проходят по одной схеме"
-
-msgid "survey/question/option/7_4"
-msgstr "Обнаружение техники в начале боя происходит слишком быстро"
-
-msgid "survey/question/option/7_5"
-msgstr "Значительную часть карты нельзя использовать для боя"
-
-msgid "survey/question/option/8_1"
-msgstr "Можно применять разные тактики"
-
-msgid "survey/question/option/8_2"
-msgstr "Легко найти позиции для стрельбы"
-
-msgid "survey/question/option/8_3"
-msgstr "Достаточно кустов и деревьев, которые можно использовать в бою"
-
-msgid "survey/question/option/8_4"
-msgstr "Достаточно холмов и низин, которые можно использовать в бою"
-
-msgid "survey/question/option/8_5"
-msgstr "Достаточно укрытий от огня САУ"
+msgid "survey/percentage"
+msgstr "%(percent)s%"
 
 msgid "survey/readyBtn"
 msgstr "Так точно!"
 
 msgid "survey/required"
 msgstr "Ответьте на вопрос для продолжения."
-
-msgid "survey/response/10_1"
-msgstr "Слишком легко"
-
-msgid "survey/response/10_2"
-msgstr "В самый раз"
-
-msgid "survey/response/10_3"
-msgstr "Слишком сложно"
-
-msgid "survey/response/10_4"
-msgstr "Трудно сказать"
-
-msgid "survey/response/11_1"
-msgstr "Нравится"
-
-msgid "survey/response/11_2"
-msgstr "Не нравится"
-
-msgid "survey/response/11_3"
-msgstr "Трудно сказать"
-
-msgid "survey/response/12_1"
-msgstr "Да"
-
-msgid "survey/response/12_2"
-msgstr "Нет"
-
-msgid "survey/response/12_3"
-msgstr "Мне всё равно"
-
-msgid "survey/response/13_1"
-msgstr "Да"
-
-msgid "survey/response/13_2"
-msgstr "Нет"
-
-msgid "survey/response/13_3"
-msgstr "Трудно сказать"
-
-msgid "survey/response/1_1"
-msgstr "Определённо, да"
-
-msgid "survey/response/1_2"
-msgstr "Скорее да"
-
-msgid "survey/response/1_3"
-msgstr "Скорее нет"
-
-msgid "survey/response/1_4"
-msgstr "Определённо, нет"
-
-msgid "survey/response/1_5"
-msgstr "Трудно сказать"
-
-msgid "survey/response/2_AT-SPG"
-msgstr "ПТ-САУ"
-
-msgid "survey/response/2_SPG"
-msgstr "САУ"
-
-msgid "survey/response/2_heavyTank"
-msgstr "ТТ"
-
-msgid "survey/response/2_lightTank"
-msgstr "ЛТ"
-
-msgid "survey/response/2_mediumTank"
-msgstr "СТ"
-
-msgid "survey/response/2_unknown"
-msgstr "Не обратил (-а) внимания"
-
-msgid "survey/response/3_1"
-msgstr "Скорее подходит"
-
-msgid "survey/response/3_2"
-msgstr "Скорее не подходит"
-
-msgid "survey/response/3_3"
-msgstr "Трудно сказать"
-
-msgid "survey/response/4_1"
-msgstr "Слишком большая"
-
-msgid "survey/response/4_2"
-msgstr "В самый раз"
-
-msgid "survey/response/4_3"
-msgstr "Слишком маленькая"
-
-msgid "survey/response/4_4"
-msgstr "Трудно сказать"
-
-msgid "survey/response/5_1"
-msgstr "Да"
-
-msgid "survey/response/5_2"
-msgstr "Нет"
-
-msgid "survey/response/5_3"
-msgstr "Трудно сказать"
-
-msgid "survey/response/7_1"
-msgstr "Согласен (-на)"
-
-msgid "survey/response/7_2"
-msgstr "Не согласен (-на)"
-
-msgid "survey/response/7_3"
-msgstr "Трудно сказать"
-
-msgid "survey/response/8_1"
-msgstr "Согласен (-на)"
-
-msgid "survey/response/8_2"
-msgstr "Не согласен (-на)"
-
-msgid "survey/response/8_3"
-msgstr "Трудно сказать"
-
-msgid "survey/response/9_1"
-msgstr "Слишком легко"
-
-msgid "survey/response/9_2"
-msgstr "В самый раз"
-
-msgid "survey/response/9_3"
-msgstr "Слишком сложно"
-
-msgid "survey/response/9_4"
-msgstr "Трудно сказать"
 
 msgid "survey/subTitle"
 msgstr ""
@@ -627,7 +791,7 @@ msgid "survey/template/mapInteractive/hint1"
 msgstr "МАКСИМУМ ТРИ ПОЗИЦИИ НА КАРТЕ"
 
 msgid "survey/template/mapInteractive/point/description"
-msgstr "Детальное описание проблемы (до %(maxLength)s символов)"
+msgstr "Детальное описание (до %(maxLength)s символов)"
 
 msgid "survey/template/mapInteractive/point/title"
 msgstr "Позиция"
@@ -636,7 +800,10 @@ msgid "survey/template/mapInteractive/point/tooltip"
 msgstr "Удалить позицию"
 
 msgid "survey/template/opened/description"
-msgstr "Детальное описание (до %(maxLength)s символов)"
+msgstr "Детальное описание проблемы (до %(maxLength)s символов)"
 
-msgid "survey/title"
-msgstr "Оценка карты «{map}»"
+msgid "survey/title/common"
+msgstr "Оцените нововведения"
+
+msgid "survey/title/map"
+msgstr "Оценка карты «%(map)s»"

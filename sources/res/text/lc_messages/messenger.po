@@ -994,6 +994,12 @@ msgstr "Специальных предложений"
 msgid "listView/emptyList/template"
 msgstr "%(listType)s пока не поступало."
 
+msgid "listView/news/checkNewsBtn"
+msgstr "К новостям"
+
+msgid "listView/news/header"
+msgstr "ЧТО НОВОГО?"
+
 msgid "listView/title"
 msgstr "Центр уведомлений"
 
@@ -1528,6 +1534,9 @@ msgstr "Получено очков"
 
 msgid "serviceChannelMessages/BRbattleResults/victory"
 msgstr "Победа"
+
+msgid "serviceChannelMessages/Financial/add"
+msgstr "Добавлено"
 
 msgid "serviceChannelMessages/achievementReceived/message"
 msgstr "Достижения"
@@ -2223,6 +2232,9 @@ msgstr "%(label)s x%(count)s"
 msgid "serviceChannelMessages/crewSkinsCount"
 msgstr "%(label)s x%(count)s"
 
+msgid "serviceChannelMessages/currenciesReserves/smash/title"
+msgstr "Хранилища кредитов и золота открыты!"
+
 msgid "serviceChannelMessages/currencyUpdate/auction"
 msgstr "Аукцион"
 
@@ -2357,6 +2369,12 @@ msgstr "• Бланки переподготовки"
 
 msgid "serviceChannelMessages/eventCoinReceivedAsGift"
 msgstr "От администрации получено юбилейных монет: %(eventCoin)s."
+
+msgid "serviceChannelMessages/excludedMap/available/title"
+msgstr "Доступен дополнительный слот для исключения карты"
+
+msgid "serviceChannelMessages/excludedMap/unavailable/title"
+msgstr "Исключение карты с подпиской WoT Plus недоступно"
 
 msgid "serviceChannelMessages/failedPersonalMission"
 msgstr "Прогресс сброшен"
@@ -2797,6 +2815,9 @@ msgstr "Списано нераспределённого опыта с член
 msgid "serviceChannelMessages/invoiceReceived/tankmenToRemove"
 msgstr "Демобилизованные"
 
+msgid "serviceChannelMessages/invoiceReceived/unlockedModules"
+msgstr "исследованы все модули"
+
 msgid "serviceChannelMessages/invoiceReceived/vehicleBlueprintsAccrued"
 msgstr "Начислено фрагментов чертежей на %(vehicleName)s"
 
@@ -2907,13 +2928,13 @@ msgid "serviceChannelMessages/mapbox/rewardReceived"
 msgstr "Получена награда:"
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/allMaps"
-msgstr "Вы можете проголосовать за лучшую карту в режиме «Разведка боем»."
+msgstr "Вы можете пройти опрос о механиках режима «Разведка боем»."
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/header"
 msgstr "Доступен опрос"
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/singleMap"
-msgstr "Вы можете пройти опрос о карте %(mapName)s в режиме «Разведка боем»."
+msgstr "Вы можете пройти опрос о карте %(mapName)s режима «Разведка боем»."
 
 msgid "serviceChannelMessages/multiplier"
 msgstr " (x%(count)s)"
@@ -2935,6 +2956,16 @@ msgstr "Конвертация личных резервов"
 
 msgid "serviceChannelMessages/piggyBank/continueAfterSmashed"
 msgstr "Начался новый цикл накопления."
+
+msgid "serviceChannelMessages/piggyBank/continueAfterSmashed/goldBank"
+msgstr ""
+"Начался новый цикл накопления. Активируйте Танковый премиум аккаунт, чтобы "
+"накапливать кредиты."
+
+msgid "serviceChannelMessages/piggyBank/continueAfterSmashed/piggyBank"
+msgstr ""
+"Начался новый цикл накопления. Оформите подписку WoT Plus, чтобы накапливать"
+" золото."
 
 msgid "serviceChannelMessages/piggyBank/onPause"
 msgstr "Накопление кредитов в хранилище приостановлено."
@@ -3267,7 +3298,7 @@ msgid "serviceChannelMessages/serverDowntimeCompensation/premium_plus"
 msgstr "Танкового премиум аккаунта"
 
 msgid "serviceChannelMessages/serverDowntimeCompensation/premium_subs"
-msgstr "?empty?"
+msgstr "WoT Plus"
 
 msgid "serviceChannelMessages/serverDowntimeCompensation/rentals"
 msgstr "аренды"
@@ -3577,80 +3608,142 @@ msgstr ""
 "%(srcWares)s золота отправлено игроку %(dstName)s. Комиссия составила "
 "%(fee)s."
 
+msgid "serviceChannelMessages/winback/awards/blueprints"
+msgstr "Скидка на машину %(level)s уровня"
+
+msgid "serviceChannelMessages/winback/awards/body"
+msgstr "За прохождение прогрессии «Снова в строй» получены награды:"
+
+msgid "serviceChannelMessages/winback/awards/button"
+msgstr "Выбрать награду"
+
+msgid "serviceChannelMessages/winback/awards/discount"
+msgstr "Скидка на машину %(level)s уровня"
+
+msgid "serviceChannelMessages/winback/awards/discountConcrete"
+msgstr "%(name)s (%(expDiscount)d%% и %(creditDiscount)d%%)"
+
+msgid "serviceChannelMessages/winback/awards/discountHeader"
+msgstr "Добавлена скидка на исследование и покупку: "
+
+msgid "serviceChannelMessages/winback/awards/header"
+msgstr "Поздравляем!"
+
+msgid "serviceChannelMessages/winback/awards/vehicle"
+msgstr "Машина %(level)s уровня"
+
+msgid "serviceChannelMessages/winbackSelectableRewardEntry/body"
+msgstr "Выберите награды из доступных категорий."
+
+msgid "serviceChannelMessages/winbackSelectableRewardEntry/button"
+msgstr "Выбрать"
+
+msgid "serviceChannelMessages/winbackSelectableRewardEntry/header"
+msgstr "Получены награды!"
+
+msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/subscribed/text"
+msgstr ""
+"Доступен эксклюзивный тяжёлый танк <font "
+"color='#E9E2BF'>%(vehicleName)s</font>."
+
+msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/unsubscribed/text"
+msgstr ""
+"Эксклюзивный тяжёлый танк <font color='#E9E2BF'>%(vehicleName)s</font> "
+"подписки WoT Plus временно недоступен."
+
+msgid "serviceChannelMessages/wotPlus/expireFreeDemount/title"
+msgstr "Бесплатный демонтаж оборудования недоступен"
+
 msgid "serviceChannelMessages/wotPlus/expireMessage/text"
-msgstr "?empty?"
+msgstr ""
+"Продлите подписку WoT Plus, чтобы продолжить пользоваться всеми "
+"преимуществами."
 
 msgid "serviceChannelMessages/wotPlus/expireMessage/title"
-msgstr "?empty?"
+msgstr "Подписка WoT Plus закончилась: %(time)s"
 
 msgid "serviceChannelMessages/wotPlus/freeDirectives/isDisabled/title"
-msgstr "?empty?"
+msgstr "Поставка бесплатных инструкций приостановлена"
 
 msgid "serviceChannelMessages/wotPlus/freeDirectives/isEnabled/title"
-msgstr "?empty?"
+msgstr "Поставка бесплатных инструкций возобновлена"
 
 msgid "serviceChannelMessages/wotPlus/freeDirectives/received/title"
-msgstr "?empty?"
+msgstr "Получены инструкции"
 
 msgid "serviceChannelMessages/wotPlus/goldReserve/isDisabled/text"
-msgstr "?empty?"
+msgstr "Накопление золота приостановлено."
 
 msgid "serviceChannelMessages/wotPlus/goldReserve/isDisabled/title"
-msgstr "?empty?"
+msgstr "Хранилище золота недоступно"
 
 msgid "serviceChannelMessages/wotPlus/goldReserve/isEnabled/title"
-msgstr "?empty?"
+msgstr "Хранилище золота доступно"
 
 msgid "serviceChannelMessages/wotPlus/goldReserve/isFull/title"
-msgstr "?empty?"
+msgstr "Хранилище золота заполнено: накопление приостановлено"
 
 msgid "serviceChannelMessages/wotPlus/goldReserve/smash/title"
-msgstr "?empty?"
+msgstr "Хранилище золота открыто!"
 
 msgid "serviceChannelMessages/wotPlus/nextDateOfRenewal"
-msgstr "?empty?"
+msgstr "Продление подписки: %(time)s"
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/text"
-msgstr "?empty?"
+msgstr ""
+"Один или несколько членов экипажа <font "
+"color='#E9E2BF'>%(vehicleName)s</font> не отвечают условиям «Курса "
+"подготовки экипажа» и не получают дополнительный опыт."
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/title"
+msgstr "Курс подготовки экипажа"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/isActivated/text"
+msgstr ""
+"«Курс подготовки экипажа» включён для членов экипажа машины %(vehicleName)s."
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/isDeactivated/text"
+msgstr ""
+"«Курс подготовки экипажа» отключён для членов экипажа машины "
+"%(vehicleName)s."
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/isDisabled/text"
-msgstr "?empty?"
+msgstr "Накопление опыта экипажа приостановлено."
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/isDisabled/title"
-msgstr "?empty?"
+msgstr "Курс подготовки экипажа временно недоступен"
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/isEnabled/title"
-msgstr "?empty?"
+msgstr "Курс подготовки экипажа доступен"
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/noTank/text"
-msgstr "?empty?"
+msgstr "Выберите машину, чтобы получать дополнительный опыт экипажа."
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/switching/text"
+msgstr ""
+"«Курс подготовки экипажа» был переназначен с <font "
+"color='#E9E2BF'>%(oldVehName)s</font> на <font "
+"color='#E9E2BF'>%(newVehName)s</font>. Экипаж машины <font "
+"color='#E9E2BF'>%(oldVehName)s</font> больше не получает дополнительный "
+"опыт."
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/switching/title"
+msgstr "Курс подготовки экипажа переназначен"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/wasting/text"
+msgstr "Один или более членов экипажа не могут получать дополнительный опыт."
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/wasting/title"
-msgstr "?empty?"
+msgstr "Получайте дополнительный опыт экипажа!"
 
 msgid "serviceChannelMessages/wotPlus/renewMessage/title"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/wotPlus/rental/end/text"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/wotPlus/rental/end/title"
-msgstr "?empty?"
+msgstr "Подписка WoT Plus успешно продлена: %(time)s"
 
 msgid "serviceChannelMessages/wotPlus/rental/noTank/text"
-msgstr "?empty?"
+msgstr "Выберите машину из списка для аренды."
 
 msgid "serviceChannelMessages/wotPlus/rental/noTank/title"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/wotPlus/tankRental/isDisabled/text"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/wotPlus/tankRental/isDisabled/title"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/wotPlus/tankRental/isEnabled/title"
-msgstr "?empty?"
+msgstr "Арендная машина не выбрана"
 
 msgid "serviceChannelMessages/wotPlus/tankRental/isPending/text"
 msgstr "Машина %(vehicle)s будет начислена на ваш аккаунт в ближайшее время."
@@ -3658,8 +3751,17 @@ msgstr "Машина %(vehicle)s будет начислена на ваш ак�
 msgid "serviceChannelMessages/wotPlus/tankRental/isPending/title"
 msgstr "Получено в аренду!"
 
+msgid "serviceChannelMessages/wotPlus/unavailableMessage/text"
+msgstr "Бонусы подписки WoT Plus недоступны."
+
+msgid "serviceChannelMessages/wotPlus/unavailableMessage/title"
+msgstr "Подписка WoT Plus недоступна"
+
+msgid "serviceChannelMessages/wotPlus/unlockFreeDemount/title"
+msgstr "Бесплатный демонтаж оборудования доступен"
+
 msgid "serviceChannelMessages/wotPlus/unlockMessage/title"
-msgstr "?empty?"
+msgstr "Подписка WoT Plus оформлена: %(startTime)s"
 
 msgid "serviceChannelMessages/xpReceivedAsGift"
 msgstr "От администрации получен свободный опыт: %(freeXP)s."

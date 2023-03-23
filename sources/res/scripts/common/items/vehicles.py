@@ -1,14 +1,8 @@
 import BigWorld, copy, items, itertools, nation_change, nations, os, string, struct, typing
-from ExtensionsManager import g_extensionsManager
-from items import ItemsPrices
-from items.components.supply_slot_categories import LevelsFactor
-from math_common import ceilTo
 from Math import Vector2, Vector3
 from backports.functools_lru_cache import lru_cache
 from collections import namedtuple
-from constants import ACTION_LABEL_TO_TYPE, ROLE_LABEL_TO_TYPE, ROLE_TYPE, DamageAbsorptionLabelToType, ROLE_LEVELS, ROLE_TYPE_TO_LABEL, VEHICLE_HEALTH_DECIMALS, VEHICLE_CLASSES
-from constants import IGR_TYPE, IS_RENTALS_ENABLED, IS_CELLAPP, IS_BASEAPP, IS_CLIENT, IS_UE_EDITOR
-from constants import IS_BOT, IS_WEB, IS_PROCESS_REPLAY, ITEM_DEFS_PATH, SHELL_TYPES, VEHICLE_SIEGE_STATE, VEHICLE_MODE
+from constants import ACTION_LABEL_TO_TYPE, ROLE_LABEL_TO_TYPE, ROLE_TYPE, DamageAbsorptionLabelToType, ROLE_LEVELS, ROLE_TYPE_TO_LABEL, VEHICLE_HEALTH_DECIMALS, CHANCE_TO_HIT_SUFFIX_FACTOR, IGR_TYPE, IS_RENTALS_ENABLED, IS_CELLAPP, IS_BASEAPP, IS_CLIENT, IS_UE_EDITOR, IS_BOT, IS_WEB, IS_PROCESS_REPLAY, ITEM_DEFS_PATH, SHELL_TYPES, VEHICLE_SIEGE_STATE, VEHICLE_MODE, VEHICLE_CLASSES
 from debug_utils import LOG_WARNING, LOG_ERROR, LOG_CURRENT_EXCEPTION
 from functools import partial
 from items import ItemsPrices
@@ -34,14 +28,12 @@ from items.writers import chassis_writers
 from items.writers import gun_writers
 from items.writers import shared_writers
 from items.writers import sound_writers
-from material_kinds import IDS_BY_NAMES
 from math import radians, cos, tan, atan, pi, isnan, degrees
 from math_common import ceilTo
 from post_progression_common import POST_PROGRESSION_ALL_PRICES, ALLOWED_CURRENCIES_FOR_TREE_STEP, ALLOWED_CURRENCIES_FOR_BUY_MODIFICATION_STEP, ALLOWED_CURRENCIES_FOR_CUSTOM_ROLE_SLOT_CHANGE, POST_PROGRESSION_UNLOCK_MODIFICATIONS_PRICES, CUSTOM_ROLE_SLOT_CHANGE_PRICE, POST_PROGRESSION_BUY_MODIFICATIONS_PRICES
 from soft_exception import SoftException
 from string import upper
 from typing import List, Optional, Tuple, Dict, Any, TYPE_CHECKING, Union, Generator, Set, FrozenSet
-from wrapped_reflection_framework import ReflectionMetaclass
 from constants import SHELL_MECHANICS_TYPE, TrackBreakMode, HighExplosiveImpact
 from wrapped_reflection_framework import ReflectionMetaclass
 from collector_vehicle import CollectorVehicleConsts
@@ -66,49 +58,54 @@ if IS_CLIENT or IS_UE_EDITOR:
     import Vehicular
     from CustomEffect import SelectorDescFactory, CustomEffectsDescriptor, ExhaustEffectDescriptor
     import ReloadEffect
-elif IS_WEB:
-    from web_stubs import *
-if IS_CELLAPP:
-    from vehicle_constants import OVERMATCH_MECHANICS_VER
-if TYPE_CHECKING:
-    from ResMgr import DataSection
-    from items.artefacts import OptionalDevice, Equipment
-    from items.components.supply_slots_components import SupplySlotsCache, SupplySlot
-    from helpers.EntityExtra import EntityExtra
-VEHICLE_CLASS_TAGS = frozenset(('lightTank', 'mediumTank', 'heavyTank', 'SPG', 'AT-SPG'))
-VEHICLE_LEVEL_EARN_CRYSTAL = 10
-MODES_WITHOUT_CRYSTAL_EARNINGS = set(('bob', 'fallout', 'event_battles', 'battle_royale', 'clanWarsBattles'))
+else:
+    if IS_WEB:
+        from web_stubs import *
+    if IS_CELLAPP:
+        from vehicle_constants import OVERMATCH_MECHANICS_VER
+    if TYPE_CHECKING:
+        from ResMgr import DataSection
+        from items.artefacts import OptionalDevice, Equipment
+        from items.components.supply_slots_components import SupplySlotsCache, SupplySlot
+        from helpers.EntityExtra import EntityExtra
+    VEHICLE_CLASS_TAGS = frozenset(('lightTank', 'mediumTank', 'heavyTank', 'SPG', 'AT-SPG'))
+    VEHICLE_LEVEL_EARN_CRYSTAL = 10
+    MODES_WITHOUT_CRYSTAL_EARNINGS = set(('bob', 'fallout', 'event_battles', 'battle_royale', 'clanWarsBattles'))
 
-class VEHICLE_PHYSICS_TYPE():
-    TANK = 0
-    WHEELED_TECH = 1
-
-
-VEHICLE_DEVICE_TYPE_NAMES = (
- 'engine', 'ammoBay', 'fuelTank', 'radio', 'track', 'gun', 'turretRotator', 'surveyingDevice', 'STUN_PLACEHOLDER',
- 'wheel')
-VEHICLE_TANKMAN_TYPE_NAMES = (
- 'commander', 'driver', 'radioman', 'gunner', 'loader')
-VEHICLE_DEVICE_INDICES = {deviceName:index for index, deviceName in enumerate(VEHICLE_DEVICE_TYPE_NAMES)}
-
-def _makeExtraNames(tankmanNames):
-    retVal = {}
-    extraSuffix = 'Health'
-    edgeCases = {'track': [
-               'leftTrack0' + extraSuffix, 'rightTrack0' + extraSuffix], 
-       'radioman': [
-                  'radioman1' + extraSuffix, 'radioman2' + extraSuffix], 
-       'gunner': [
-                'gunner1' + extraSuffix, 'gunner2' + extraSuffix], 
-       'loader': [
-                'loader1' + extraSuffix, 'loader2' + extraSuffix]}
-    for name in tankmanNames:
-        retVal[name] = edgeCases.get(name, [name + extraSuffix])
-
-    return retVal
+    class VEHICLE_PHYSICS_TYPE():
+        TANK = 0
+        WHEELED_TECH = 1
 
 
-DEVICE_TANKMAN_NAMES_TO_VEHICLE_EXTRA_NAMES = _makeExtraNames(VEHICLE_DEVICE_TYPE_NAMES + VEHICLE_TANKMAN_TYPE_NAMES)
+    VEHICLE_DEVICE_TYPE_NAMES = (
+     'engine', 'ammoBay', 'fuelTank', 'radio', 'track', 'gun', 'turretRotator', 'surveyingDevice', 'STUN_PLACEHOLDER',
+     'wheel')
+    VEHICLE_TANKMAN_TYPE_NAMES = (
+     'commander', 'driver', 'radioman', 'gunner', 'loader')
+    VEHICLE_DEVICE_INDICES = {deviceName:index for index, deviceName in enumerate(VEHICLE_DEVICE_TYPE_NAMES)}
+
+    def _makeExtraNames(tankmanNames):
+        retVal = {}
+        extraSuffix = 'Health'
+        edgeCases = {'track': [
+                   'leftTrack0' + extraSuffix, 'rightTrack0' + extraSuffix], 
+           'radioman': [
+                      'radioman1' + extraSuffix, 'radioman2' + extraSuffix], 
+           'gunner': [
+                    'gunner1' + extraSuffix, 'gunner2' + extraSuffix], 
+           'loader': [
+                    'loader1' + extraSuffix, 'loader2' + extraSuffix]}
+        for name in tankmanNames:
+            retVal[name] = edgeCases.get(name, [name + extraSuffix])
+
+        return retVal
+
+
+    DEVICE_TANKMAN_NAMES_TO_VEHICLE_EXTRA_NAMES = _makeExtraNames(VEHICLE_DEVICE_TYPE_NAMES + VEHICLE_TANKMAN_TYPE_NAMES)
+    TANKMAN_EXTRA_NAMES = []
+    for t in VEHICLE_TANKMAN_TYPE_NAMES:
+        TANKMAN_EXTRA_NAMES.extend(DEVICE_TANKMAN_NAMES_TO_VEHICLE_EXTRA_NAMES[t])
+
 PREMIUM_IGR_TAGS = frozenset(('premiumIGR',))
 MAX_OPTIONAL_DEVICES_SLOTS = 4
 NUM_SHELLS_SLOTS = 3
@@ -207,7 +204,7 @@ class EnhancementItem(object):
 
 
 def vehicleAttributeFactors():
-    return {'engine/power': 1.0, 
+    factors = {'engine/power': 1.0, 
        'turret/rotationSpeed': 1.0, 
        'circularVisionRadius': 1.0, 
        'invisibility': [
@@ -223,7 +220,7 @@ def vehicleAttributeFactors():
        'gun/clipTimeBetweenShots': 1.0, 
        'gun/canShoot': True, 
        'engine/fireStartingChance': 1.0, 
-       'healthBurnPerSecLossFraction': 1.0, 
+       'healthBurnPerSecLossFraction': 0.57, 
        'repairSpeed': 1.0, 
        'additiveShotDispersionFactor': 1.0, 
        'brokenTrack': 0, 
@@ -238,7 +235,10 @@ def vehicleAttributeFactors():
        'ramming': 1.0, 
        'crewLevelIncrease': 0.0, 
        'crewChanceToHitFactor': 1.0, 
+       'damageMonitoringDelay': float('inf'), 
+       'artNotificationDelay': float('inf'), 
        'crewRolesFactor': 1.0, 
+       'radioDistanceFactor': 0.0, 
        'stunResistanceEffect': 0.0, 
        'stunResistanceDuration': 0.0, 
        'repeatedStunDurationFactor': 1.0, 
@@ -246,14 +246,23 @@ def vehicleAttributeFactors():
        'damageFactor': 1.0, 
        'enginePowerFactor': 1.0, 
        'deathZones/sensitivityFactor': 1.0, 
+       'xRayFactor': 1.0, 
+       'tankAcceleration': 1.0, 
+       'reverseEnginePower': 1.0, 
        'multShotDispersionFactor': 1.0, 
        'gun/changeShell/reloadFactor': 1.0, 
+       'invisibilityFactorAtShot': 1.0, 
        'demaskMovingFactor': 1.0, 
        'demaskFoliageFactor': 1.0, 
        'invisibilityAdditiveTerm': 0.0, 
        'invisibilityMultFactor': 1.0, 
+       'foliageInvisibilityFactor': 1.0, 
        'engineReduceFineFactor': 1.0, 
        'ammoBayReduceFineFactor': 1.0}
+    for ten in TANKMAN_EXTRA_NAMES:
+        factors[ten + CHANCE_TO_HIT_SUFFIX_FACTOR] = 0.0
+
+    return factors
 
 
 WHEEL_SIZE_COEF = 2.2
@@ -306,8 +315,8 @@ class VehicleDescriptor(object):
                  'camouflages', 'playerEmblems', 'playerInscriptions', 'type', 'name',
                  'level', 'extras', 'extrasDict', 'miscAttrs', 'physics', 'visibilityCheckPoints',
                  'observerPosOnChassis', 'observerPosOnTurret', 'battleModifiers',
-                 '_customRoleSlotTypeId', '_modifications', '_optDevSlotsMap', '_maxHealth',
-                 '__activeTurretPos', '__activeGunShotIdx', '__activeGunShotPosition',
+                 '_customRoleSlotTypeId', '_modifications', '_optDevSlotsMap', '_defaultMaxHealth',
+                 '_maxHealth', '__activeTurretPos', '__activeGunShotIdx', '__activeGunShotPosition',
                  '__boundingRadius')
 
     def __init__(self, compactDescr=None, typeID=None, typeName=None, vehMode=VEHICLE_MODE.DEFAULT, xmlPath=None, extData=None):
@@ -357,6 +366,10 @@ class VehicleDescriptor(object):
         if IS_BASEAPP:
             self.__updateAttributes(onAnyApp=True)
         return self._maxHealth
+
+    @property
+    def defaultMaxHealth(self):
+        return self._defaultMaxHealth
 
     def getShot(self, shotIdx=None):
         if shotIdx is None:
@@ -1418,6 +1431,7 @@ class VehicleDescriptor(object):
         for turretDescr, gunDescr in self.turrets:
             maxHealth += turretDescr.maxHealth
 
+        self._defaultMaxHealth = maxHealth
         self._maxHealth = self.battleModifiers(BattleParams.VEHICLE_HEALTH, maxHealth)
         weight, maxWeight = self.__computeWeight()
         self.miscAttrs = miscAttrs = {'maxWeight': maxWeight, 
@@ -1434,6 +1448,7 @@ class VehicleDescriptor(object):
            'stunResistanceEffect': 0.0, 
            'stunResistanceDuration': 0.0, 
            'repeatedStunDurationFactor': 1.0, 
+           'radioDistanceFactor': 0.0, 
            'healthFactor': 1.0, 
            'damageFactor': 1.0, 
            'enginePowerFactor': 1.0, 
@@ -1746,7 +1761,8 @@ class VehicleType(object):
      'rollerExtras', 'hasBurnout', 'hasCharge', 'role', 'actionsGroup', 'actions', 'builtins',
      'nationChangeGroupId', 'isCollectorVehicle', 'isPremium', 'hasTurboshaftEngine', 'hasHydraulicChassis',
      'supplySlots', 'optDevsOverrides', 'postProgressionTree', 'postProgressionPricesOverrides',
-     'customRoleSlotOptions', 'hasRocketAcceleration', 'rocketAccelerationParams', 'classTag', '__weakref__')
+     'customRoleSlotOptions', 'hasRocketAcceleration', 'rocketAccelerationParams', 'classTag', 'armorMaxHealth',
+     '__weakref__')
 
     def __init__(self, nationID, basicInfo, xmlPath, vehMode=VEHICLE_MODE.DEFAULT):
         self.name = basicInfo.name
@@ -1915,6 +1931,7 @@ class VehicleType(object):
         self.useHullZOffset = section.readBool('useHullZOffset', False)
         self.siegeModeParams = _readSiegeModeParams(xmlCtx, section, self)
         self.hullAimingParams = _readHullAimingParams(xmlCtx, section)
+        self.armorMaxHealth = _xml.readIntOrNone(xmlCtx, section, 'armorMaxHealth')
         if self.hasRocketAcceleration:
             self.rocketAccelerationParams = _readRocketAccelerationParams(xmlCtx, section)
         else:
@@ -2546,6 +2563,12 @@ class Cache(object):
     def getVehicleEffect(self, effectID):
         return self._vehicleEffects.get(effectID)
 
+    def getEquipmentByName(self, name):
+        equipmentID = self.equipmentIDs().get(name)
+        if equipmentID is None:
+            raise SoftException("unknown equipment '%s'" % name)
+        return self.equipments()[equipmentID]
+
     @property
     def _vehicleEffects(self):
         if self.__vehicleEffects is None:
@@ -2783,6 +2806,11 @@ def getVehicleTypeCompactDescr(compactDescr):
 def makeVehicleTypeCompDescrByName(name):
     nationID, innationID = g_list.getIDsByName(name)
     return makeIntCompactDescrByID('vehicle', nationID, innationID)
+
+
+def makeVehicleTypeByName(name):
+    nationID, innationID = g_list.getIDsByName(name)
+    return g_cache.vehicle(nationID, innationID)
 
 
 def getItemByCompactDescr(compactDescr):
@@ -3029,6 +3057,14 @@ def getUnlocksSources():
 
 def getRolesActions():
     return g_cache.roles()
+
+
+def getEquipmentIdsFromAmmoIter(ammo):
+    for ammoIdx in xrange(0, len(ammo), 2):
+        itemTypeID, _, equipmentID = parseIntCompactDescr(ammo[ammoIdx])
+        if ammo[(ammoIdx + 1)] <= 0 or itemTypeID != ITEM_TYPES.equipment:
+            continue
+        yield equipmentID
 
 
 def getActionsByRole(role):
@@ -5893,7 +5929,11 @@ def _readDeviceTypes(xmlCtx, section, subsectionName, extrasDict):
             extraInstanceName = template.format(i) if subsection.has_key('multiple') else extraName
             while extraInstanceName in extrasDict:
                 try:
-                    res[extrasDict[extraInstanceName].index] = typeNames.index(subsection.asString)
+                    extra = extrasDict[extraInstanceName]
+                    typeName = subsection.asString
+                    if hasattr(extra, 'typeName'):
+                        extra.typeName = typeName
+                    res[extra.index] = typeNames.index(typeName)
                 except Exception as x:
                     _xml.raiseWrongXml((xmlCtx, kindSectionName), extraName, str(x))
 

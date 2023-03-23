@@ -19,6 +19,8 @@ package
       
       public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BG:String = "../maps/icons/battlePass/chapter_choice/bg.png";
       
+      public static const MAPS_ICONS_BATTLEPASS_COLLECTION_BG:String = "../maps/icons/battlePass/collection/bg.png";
+      
       public static const MAPS_ICONS_BATTLEPASS_OFF_SEASON_BG:String = "../maps/icons/battlePass/off_season/bg.png";
       
       public static const MAPS_ICONS_BATTLEPASS_PROGRESSION_BG:String = "../maps/icons/battlePass/progression/bg.png";
@@ -52,8 +54,6 @@ package
       public static const MAPS_ICONS_RESOURCEWELL_INTRO_BG:String = "../maps/icons/resourceWell/intro/bg.png";
       
       public static const MAPS_ICONS_SUBSCRIPTION_AWARD_VIEW_BG:String = "../maps/icons/subscription/award_view/bg.png";
-      
-      public static const MAPS_ICONS_SUBSCRIPTION_DASHBOARD_CARD_PIGGY_BANK_BG:String = "../maps/icons/subscription/dashboard_card/piggy_bank/bg.png";
       
       public static const MAPS_ICONS_TANKMEN_ICONS_SMALL_USSR_DOG_1:String = "../maps/icons/tankmen/icons/small/ussr-dog-1.png";
       

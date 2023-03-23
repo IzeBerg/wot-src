@@ -268,9 +268,18 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
             return;
          }
          this.drawMoney(_loc1_.currency,_loc1_.value);
-         this.actionPrice.setData(_loc1_.actionPrice);
-         this.alertIcon.visible = _loc1_.toInventory && !this._rendererData.isRemovable;
-         this.money.visible = !this.actionPrice.visible;
+         if(_loc1_.currency == VehicleSellDialogUtils.WOT_PLUS)
+         {
+            this.actionPrice.setData(null);
+            this.alertIcon.visible = false;
+            this.money.visible = false;
+         }
+         else
+         {
+            this.actionPrice.setData(_loc1_.actionPrice);
+            this.alertIcon.visible = _loc1_.toInventory && !this._rendererData.isRemovable;
+            this.money.visible = !this.actionPrice.visible;
+         }
       }
       
       private function drawMoney(param1:String, param2:int) : void

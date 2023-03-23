@@ -15,6 +15,10 @@ package net.wg.gui.battle.views.minimap
          super();
       }
       
+      public function as_clearScenarioEvent(param1:String) : void
+      {
+      }
+      
       public function as_disableHintPanel() : void
       {
       }
@@ -33,6 +37,14 @@ package net.wg.gui.battle.views.minimap
       }
       
       public function as_setBackground(param1:String) : void
+      {
+      }
+      
+      public function as_setScenarioEvent(param1:String, param2:String) : void
+      {
+      }
+      
+      public function as_setScenarioEventVisible(param1:String, param2:Boolean) : void
       {
       }
       

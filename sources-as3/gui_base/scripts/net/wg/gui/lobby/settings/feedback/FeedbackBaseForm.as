@@ -91,7 +91,7 @@ package net.wg.gui.lobby.settings.feedback
          {
             _loc5_ = _loc2_.keys[_loc3_];
             _loc6_ = SettingsControlProp(_loc2_[_loc5_]);
-            _loc7_ = this[_loc5_ + _loc6_.type];
+            _loc7_ = this.getControlByName(_loc5_ + _loc6_.type);
             if(!(_loc6_ && _loc7_))
             {
                continue;
@@ -113,6 +113,11 @@ package net.wg.gui.lobby.settings.feedback
          this._initialized = true;
       }
       
+      protected function getControlByName(param1:String) : IDisplayObject
+      {
+         return this[param1];
+      }
+      
       public function update(param1:Object) : void
       {
       }
@@ -129,7 +134,7 @@ package net.wg.gui.lobby.settings.feedback
          for(_loc4_ in param1)
          {
             _loc3_ = this._data[_loc4_];
-            _loc2_ = this[_loc4_ + _loc3_.type];
+            _loc2_ = this.getControlByName(_loc4_ + _loc3_.type);
             if(!_loc2_)
             {
                continue;

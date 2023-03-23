@@ -23,7 +23,7 @@ from helpers.i18n import makeString as _ms
 from items.components.supply_slot_categories import SlotCategories
 from shared_utils import first
 from skeletons.account_helpers.settings_core import ISettingsCore
-from skeletons.gui.game_control import IBootcampController
+from skeletons.gui.game_control import IBootcampController, IWotPlusController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
@@ -287,6 +287,7 @@ class ModuleHeaderBlockConstructor(ModuleTooltipBlockConstructor):
 
 class PriceBlockConstructor(ModuleTooltipBlockConstructor):
     bootcamp = dependency.descriptor(IBootcampController)
+    wotPlusController = dependency.descriptor(IWotPlusController)
 
     def __init__(self, module, configuration, valueWidth, leftPadding, rightPadding):
         super(PriceBlockConstructor, self).__init__(module, configuration, leftPadding, rightPadding)
@@ -394,7 +395,9 @@ class PriceBlockConstructor(ModuleTooltipBlockConstructor):
                 needValue = value - money.getSignValue(removalPriceCurrency)
                 if needValue <= 0 or self.configuration.isStaticInfoOnly:
                     needValue = None
-                block.append(makeRemovalPriceBlock(value, CURRENCY_SETTINGS.getRemovalSetting(removalPriceCurrency), needValue, defValue if defValue > 0 else None, removalActionPercent, valueWidth=117, gap=15, leftPadding=self._priceLeftPadding, isDeluxe=module.isDeluxe, canUseDemountKit=module.canUseDemountKit))
+                wotPlusStatus = self.wotPlusController.isEnabled()
+                isFreeToDemount = self.wotPlusController.isFreeToDemount(module)
+                block.append(makeRemovalPriceBlock(value, CURRENCY_SETTINGS.getRemovalSetting(removalPriceCurrency), needValue, defValue if defValue > 0 else None, removalActionPercent, valueWidth=117, gap=15, leftPadding=self._priceLeftPadding, isDeluxe=module.isDeluxe, canUseDemountKit=module.canUseDemountKit, wotPlusStatus=wotPlusStatus, isFreeToDemount=isFreeToDemount))
                 isModernized = module.itemTypeID == GUI_ITEM_TYPE.OPTIONALDEVICE and module.isModernized
                 if isModernized:
                     itemPrice = module.getDeconstructPrice(self.itemsCache.items)

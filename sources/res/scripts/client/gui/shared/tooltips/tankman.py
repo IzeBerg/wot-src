@@ -5,7 +5,6 @@ from gui import makeHtmlString
 from gui.game_control.restore_contoller import getTankmenRestoreInfo
 from gui.Scaleform.genConsts.BLOCKS_TOOLTIP_TYPES import BLOCKS_TOOLTIP_TYPES
 from gui.Scaleform.genConsts.ICON_TEXT_FRAMES import ICON_TEXT_FRAMES
-from gui.Scaleform.locale.ITEM_TYPES import ITEM_TYPES
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.impl import backport
 from gui.impl.gen import R
@@ -391,7 +390,7 @@ class TankmanTooltipDataBlock(BlocksTooltipData):
     def _createCommanderFeatureBlock(self, commonStatsBlock):
         if self.item.role == Tankman.ROLES.COMMANDER:
             commonStatsBlock.append(formatters.packTextBlockData(text=makeHtmlString('html_templates:lobby/textStyle', 'grayTitle', {'message': makeString(TOOLTIPS.HANGAR_CREW_COMMANDERFEATURE)})))
-            commonStatsBlock.append(formatters.packTitleDescParameterWithIconBlockData(title=text_styles.main(ITEM_TYPES.TANKMAN_SKILLS_COMMANDER_SIXTHSENSE), value='', icon=backport.image(R.images.gui.maps.icons.tankmen.skills.medium.commander_sixthSense()), **self._skillIconNamePadding))
+            commonStatsBlock.append(formatters.packTitleDescParameterWithIconBlockData(title=text_styles.main(backport.text(R.strings.crew_perks.commander_sixthSense.name())), value='', icon=backport.image(R.images.gui.maps.icons.tankmen.skills.medium.commander_sixthSense()), **self._skillIconNamePadding))
 
     def _createFreeSkillsBlock(self, commonStatsBlock):
         freeSkills = self.item.freeSkills

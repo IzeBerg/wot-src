@@ -1158,7 +1158,12 @@
 				<class>GetVehicleMaxHealth</class>
 				<id>GetVehicleMaxHealth_1</id>
 				<params/>
-				<slots/>
+				<slots>
+					<slot>
+						<name>type</name>
+						<const>\current\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>MultiplyFloat</class>

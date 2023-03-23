@@ -11,6 +11,9 @@ class NotificationsListMeta(SmartPopOverView):
     def onGroupChange(self, groupIdx):
         self._printOverrideError('onGroupChange')
 
+    def onCheckNewsClick(self):
+        self._printOverrideError('onCheckNewsClick')
+
     def as_setInitDataS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setInitData(value)
@@ -34,3 +37,11 @@ class NotificationsListMeta(SmartPopOverView):
     def as_setProgressiveRewardEnabledS(self, isEnabled):
         if self._isDAAPIInited():
             return self.flashObject.as_setProgressiveRewardEnabled(isEnabled)
+
+    def as_setIsNewsBlockEnabledS(self, isEnabled):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setIsNewsBlockEnabled(isEnabled)
+
+    def as_setCheckNewsBtnEnabledS(self, isEnabled):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setCheckNewsBtnEnabled(isEnabled)

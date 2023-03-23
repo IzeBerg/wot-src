@@ -1,0 +1,1 @@
+COMP7_SEASON_MODIFIERS_DOMAIN = 'comp7SeasonModifiers'

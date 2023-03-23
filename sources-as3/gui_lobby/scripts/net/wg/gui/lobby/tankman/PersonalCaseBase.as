@@ -113,7 +113,7 @@ package net.wg.gui.lobby.tankman
          this.skillsModel = [];
          this.convertSkillsData(param1,this.skillsModel,false);
          this.updateSkillsRelatedElements();
-         this.runtimeUpdateByModel(PersonalCaseSkills,new PersonalCaseSkillsModel(this.skillsModel,this.data.isBootcamp));
+         this.runtimeUpdateByModel(PersonalCaseSkills,new PersonalCaseSkillsModel(this.skillsModel,this.data.isBootcamp,this.data.specializationLevel));
       }
       
       private function convertSkillsData(param1:Array, param2:Array, param3:Boolean) : void
@@ -152,6 +152,7 @@ package net.wg.gui.lobby.tankman
                   _loc5_.selfSkill = this.data.roleType == _loc7_;
                   _loc5_.hasNewSkills = this.data.skillsCountForLearn > 0;
                   _loc5_.isFreeSkill = param3;
+                  _loc5_.isSituationalSkill = _loc9_.isSituational;
                   param2.push(_loc5_);
                   _loc8_++;
                }

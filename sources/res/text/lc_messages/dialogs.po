@@ -302,27 +302,27 @@ msgid "addFreeSkillWindow/label"
 msgstr "«Нулевые» навыки"
 
 msgid "addFreeSkillWindow/submit"
-msgstr "Выбрать"
+msgstr "Выбрать навык"
 
 msgid "addSkillWindow/cancel"
 msgstr "Отменить"
 
 msgid "addSkillWindow/desc1"
 msgstr ""
-"Умения начинают действовать с началом обучения. Эффект их действия "
+"Навыки начинают действовать с началом обучения. Эффект их действия "
 "постепенно возрастает до максимального."
 
 msgid "addSkillWindow/desc2"
 msgstr "Навыки начинают оказывать эффект только после изучения на 100%."
 
 msgid "addSkillWindow/label"
-msgstr "Навыки и умения"
+msgstr "Навыки"
 
 msgid "addSkillWindow/label/commander"
 msgstr "командира"
 
 msgid "addSkillWindow/label/common"
-msgstr "общие"
+msgstr "групповые"
 
 msgid "addSkillWindow/label/driver"
 msgstr "механика-водителя"
@@ -337,10 +337,10 @@ msgid "addSkillWindow/label/radioman"
 msgstr "радиста"
 
 msgid "addSkillWindow/submit"
-msgstr "Выбрать"
+msgstr "Выбрать навык"
 
 msgid "addSkillWindow/title"
-msgstr "Просмотр умений и навыков"
+msgstr "Просмотр навыков"
 
 msgid "barracksExpand/cancel"
 msgstr "Отменить"
@@ -581,6 +581,9 @@ msgstr "Купить"
 msgid "buyPremWithoutBenefitsConfirmation/title"
 msgstr "Подтверждение покупки"
 
+msgid "buySlot/hangarSlot/header"
+msgstr "Слот в Ангаре"
+
 msgid "buySlotConfirmation/cancel"
 msgstr "Отменить"
 
@@ -593,16 +596,28 @@ msgstr "Купить"
 msgid "buySlotConfirmation/title"
 msgstr "Подтверждение покупки"
 
-msgid "buySlotNotEnoughCredits/cancel"
+msgid "buySlotNotEnough/credits/cancel"
 msgstr "ОК"
 
-msgid "buySlotNotEnoughCredits/message"
+msgid "buySlotNotEnough/credits/message"
+msgstr "Недостаточно кредитов для покупки дополнительного слота в Ангаре."
+
+msgid "buySlotNotEnough/credits/submit"
+msgstr "ОК"
+
+msgid "buySlotNotEnough/credits/title"
+msgstr "Недостаточно кредитов"
+
+msgid "buySlotNotEnough/gold/cancel"
+msgstr "ОК"
+
+msgid "buySlotNotEnough/gold/message"
 msgstr "Недостаточно золота для покупки дополнительного слота в Ангаре."
 
-msgid "buySlotNotEnoughCredits/submit"
+msgid "buySlotNotEnough/gold/submit"
 msgstr "ОК"
 
-msgid "buySlotNotEnoughCredits/title"
+msgid "buySlotNotEnough/gold/title"
 msgstr "Недостаточно золота"
 
 msgid "buySlotShopConfirmation/cancel"
@@ -610,7 +625,7 @@ msgstr "Отменить"
 
 msgid "buySlotShopConfirmation/messageCombine"
 msgstr ""
-"Нет свободных слотов в Ангаре. Купить дополнительный слот за {%d} золота?"
+"Нет свободных слотов в Ангаре. Купить дополнительный слот за {%d} кредитов?"
 
 msgid "buySlotShopConfirmation/submit"
 msgstr "Купить"
@@ -1489,10 +1504,10 @@ msgid "dropSkill/fullscreen/ok"
 msgstr "Сбросить"
 
 msgid "dropSkill/fullscreen/title"
-msgstr "Сбросить все навыки и умения?"
+msgstr "Сбросить все навыки?"
 
 msgid "dropSkill/message"
-msgstr "Сбросить все умения и навыки?"
+msgstr "Сбросить все навыки?"
 
 msgid "dropSkill/submit"
 msgstr "Сбросить"
@@ -1990,25 +2005,32 @@ msgid "hofDisabled/title"
 msgstr "Внимание!"
 
 msgid "idleCrewBonus/cancel"
-msgstr "?empty?"
+msgstr "Отменить"
 
 msgid "idleCrewBonus/message/crewIncomplete"
-msgstr "?empty?"
+msgstr "{orange_Open}Неполный экипаж{orange_Close}"
 
 msgid "idleCrewBonus/message/crewUnsuitable"
-msgstr "?empty?"
+msgstr ""
+"{orange_Open}Один или более членов экипажа не соответствуют "
+"требованиям{orange_Close}"
 
 msgid "idleCrewBonus/message/crewWarning"
-msgstr "?empty?"
+msgstr "Выбранная машина не отвечает одному или нескольким условиям:"
 
-msgid "idleCrewBonus/message/remove"
-msgstr "?empty?"
+msgid "idleCrewBonus/message/removeName"
+msgstr "{white_Open}%(vehicleName)s{white_Close}"
+
+msgid "idleCrewBonus/message/removeType"
+msgstr ""
+"Вы можете выбрать только один экипаж для получения бонуса. Бонус будет "
+"деактивирован для %(typeIcon)"
 
 msgid "idleCrewBonus/submit"
-msgstr "?empty?"
+msgstr "Подтвердить"
 
 msgid "idleCrewBonus/title"
-msgstr "?empty?"
+msgstr "Включить «Курс подготовки экипажа»?"
 
 msgid "interviewQuit/cancel"
 msgstr "Назад"
@@ -2363,9 +2385,6 @@ msgid "protectedDismissTankman/additionalMessage"
 msgstr ""
 "Для совершения операции введите уровень %(skillType)s «%(skillName)s» "
 "(%(roleLevel)s)"
-
-msgid "protectedDismissTankman/additionalMessage/isAbillity"
-msgstr "умения"
 
 msgid "protectedDismissTankman/additionalMessage/isPerk"
 msgstr "навыка"
@@ -3009,7 +3028,7 @@ msgid "skillDropWindow/submit"
 msgstr "Сбросить"
 
 msgid "skillDropWindow/title"
-msgstr "Сброс навыков и умений"
+msgstr "Сброс навыков"
 
 msgid "soundModeInvalid/cancel"
 msgstr "Отменить"

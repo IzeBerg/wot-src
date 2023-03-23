@@ -1,6 +1,6 @@
 import CGF, GenericComponents
 from Math import Matrix
-from cgf_script.component_meta_class import CGFComponent, ComponentProperty, CGFMetaTypes
+from cgf_script.component_meta_class import ComponentProperty, CGFMetaTypes, registerComponent
 from cgf_script.managers_registrator import autoregister, tickGroup, onAddedQuery
 from cgf_demo.demo_category import DEMO_CATEGORY
 
@@ -32,8 +32,10 @@ clamp = --- This code section failed: ---
 
 Parse error at or near `None' instruction at offset -1
 
-class TestScriptAxisRotator(CGFComponent):
+@registerComponent
+class TestScriptAxisRotator(object):
     category = DEMO_CATEGORY
+    domain = CGF.DomainOption.DomainAll
     rotationSpeedYaw = ComponentProperty(type=CGFMetaTypes.FLOAT, editorName='rotation speed yaw', value=1.0)
     rotationSpeedPitch = ComponentProperty(type=CGFMetaTypes.FLOAT, editorName='rotation speed pitch', value=1.0)
     rotationSpeedRoll = ComponentProperty(type=CGFMetaTypes.FLOAT, editorName='rotation speed roll', value=1.0)
@@ -43,8 +45,10 @@ class TestScriptAxisRotator(CGFComponent):
         super(TestScriptAxisRotator, self).__init__()
 
 
-class TestScriptMover(CGFComponent):
+@registerComponent
+class TestScriptMover(object):
     category = DEMO_CATEGORY
+    domain = CGF.DomainOption.DomainAll
     finalPoint = ComponentProperty(type=CGFMetaTypes.LINK, editorName='finalPoint', value=GenericComponents.TransformComponent)
     period = ComponentProperty(type=CGFMetaTypes.FLOAT, editorName='period', value=1.0)
     transform = ComponentProperty(type=CGFMetaTypes.LINK, editorName='transform', value=GenericComponents.TransformComponent)
@@ -96,7 +100,5 @@ class TestAxisRotatorManager(CGF.ComponentManager):
         t = 2 * mover.simTime / mover.period
         if t > 1.0:
             t = 2 - t
-        if shift.length > 0.001:
-            print 'going up by', t, shift, shift * t
         transform.position = startPos + shift * t
         return# Decompile failed :(

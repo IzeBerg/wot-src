@@ -2352,7 +2352,7 @@ RECORDS = (
  (
   'singleAchievements', 'february23', 'p', 'B', 1),
  (
-  'singleAchievements', 'prime_gaming_reserved_7', 'p', 'B', 1),
+  'singleAchievements', 'march23', 'p', 'B', 1),
  (
   'singleAchievements', 'prime_gaming_reserved_8', 'p', 'B', 1),
  (
@@ -2918,7 +2918,105 @@ RECORDS = (
  (
   'singleAchievements', 'BattlePassCommonPr_NY23', 'p', 'B', 1),
  (
-  'singleAchievements', 'BattlePassCommonPr_10', 'p', 'B', 1))
+  'singleAchievements', 'BattlePassCommonPr_10', 'p', 'B', 1),
+ (
+  'comp7Season2', 'xp', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'battlesCount', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'wins', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'winAndSurvived', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'losses', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'survivedBattles', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'frags', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'shots', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'directHits', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'spotted', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'damageDealt', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'damageReceived', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'capturePoints', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'droppedCapturePoints', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'originalXP', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'damageAssistedTrack', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'damageAssistedRadio', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'directHitsReceived', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'noDamageDirectHitsReceived', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'piercingsReceived', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'explosionHitsReceived', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'explosionHits', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'piercings', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'potentialDamageReceived', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'damageBlockedByArmor', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'battlesOnStunningVehicles', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'stunNum', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'damageAssistedStun', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'winSeries', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'squadWinSeries', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'comp7PrestigePoints', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'roleSkillUsed', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'healthRepair', 'p', 'I', 4000000001),
+ (
+  'comp7Season2', 'poiCapturable', 'p', 'I', 4000000001),
+ (
+  'maxComp7Season2', 'maxXP', 'p', 'H', 60001),
+ (
+  'maxComp7Season2', 'maxXPVehicle', 'p', 'I', 4294967295),
+ (
+  'maxComp7Season2', 'maxFrags', 'p', 'B', 201),
+ (
+  'maxComp7Season2', 'maxFragsVehicle', 'p', 'I', 4294967295),
+ (
+  'maxComp7Season2', 'maxDamage', 'p', 'H', 60001),
+ (
+  'maxComp7Season2', 'maxDamageVehicle', 'p', 'I', 4294967295),
+ (
+  'maxComp7Season2', 'maxComp7PrestigePoints', 'p', 'H', 60001),
+ (
+  'maxComp7Season2', 'maxComp7PrestigePointsVehicle', 'p', 'I', 4294967295),
+ (
+  'maxComp7Season2', 'maxEquipmentDamageDealt', 'p', 'H', 60001),
+ (
+  'maxComp7Season2', 'maxEquipmentDamageDealtVehicle', 'p', 'I', 4294967295),
+ (
+  'maxComp7Season2', 'maxHealthRepair', 'p', 'H', 60001),
+ (
+  'maxComp7Season2', 'maxHealthRepairVehicle', 'p', 'I', 4294967295),
+ (
+  'maxComp7Season2', 'maxWinSeries', 'p', 'H', 60001),
+ (
+  'maxComp7Season2', 'maxSquadWinSeries', 'p', 'H', 60001),
+ (
+  'singleAchievements', 'comp7_2023_1', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4315,7 +4413,7 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'december22'): 1667, 
    ('singleAchievements', 'january23'): 1668, 
    ('singleAchievements', 'february23'): 1669, 
-   ('singleAchievements', 'prime_gaming_reserved_7'): 1670, 
+   ('singleAchievements', 'march23'): 1670, 
    ('singleAchievements', 'prime_gaming_reserved_8'): 1671, 
    ('singleAchievements', 'prime_gaming_reserved_9'): 1672, 
    ('singleAchievements', 'prime_gaming_reserved_10'): 1673, 
@@ -4379,7 +4477,56 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'NY23_AtmsphrLevel'): 1732, 
    ('singleAchievements', 'NY23_CelebChallenge'): 1733, 
    ('singleAchievements', 'BattlePassCommonPr_NY23'): 1734, 
-   ('singleAchievements', 'BattlePassCommonPr_10'): 1735}
+   ('singleAchievements', 'BattlePassCommonPr_10'): 1735, 
+   ('comp7Season2', 'xp'): 1736, 
+   ('comp7Season2', 'battlesCount'): 1737, 
+   ('comp7Season2', 'wins'): 1738, 
+   ('comp7Season2', 'winAndSurvived'): 1739, 
+   ('comp7Season2', 'losses'): 1740, 
+   ('comp7Season2', 'survivedBattles'): 1741, 
+   ('comp7Season2', 'frags'): 1742, 
+   ('comp7Season2', 'shots'): 1743, 
+   ('comp7Season2', 'directHits'): 1744, 
+   ('comp7Season2', 'spotted'): 1745, 
+   ('comp7Season2', 'damageDealt'): 1746, 
+   ('comp7Season2', 'damageReceived'): 1747, 
+   ('comp7Season2', 'capturePoints'): 1748, 
+   ('comp7Season2', 'droppedCapturePoints'): 1749, 
+   ('comp7Season2', 'originalXP'): 1750, 
+   ('comp7Season2', 'damageAssistedTrack'): 1751, 
+   ('comp7Season2', 'damageAssistedRadio'): 1752, 
+   ('comp7Season2', 'directHitsReceived'): 1753, 
+   ('comp7Season2', 'noDamageDirectHitsReceived'): 1754, 
+   ('comp7Season2', 'piercingsReceived'): 1755, 
+   ('comp7Season2', 'explosionHitsReceived'): 1756, 
+   ('comp7Season2', 'explosionHits'): 1757, 
+   ('comp7Season2', 'piercings'): 1758, 
+   ('comp7Season2', 'potentialDamageReceived'): 1759, 
+   ('comp7Season2', 'damageBlockedByArmor'): 1760, 
+   ('comp7Season2', 'battlesOnStunningVehicles'): 1761, 
+   ('comp7Season2', 'stunNum'): 1762, 
+   ('comp7Season2', 'damageAssistedStun'): 1763, 
+   ('comp7Season2', 'winSeries'): 1764, 
+   ('comp7Season2', 'squadWinSeries'): 1765, 
+   ('comp7Season2', 'comp7PrestigePoints'): 1766, 
+   ('comp7Season2', 'roleSkillUsed'): 1767, 
+   ('comp7Season2', 'healthRepair'): 1768, 
+   ('comp7Season2', 'poiCapturable'): 1769, 
+   ('maxComp7Season2', 'maxXP'): 1770, 
+   ('maxComp7Season2', 'maxXPVehicle'): 1771, 
+   ('maxComp7Season2', 'maxFrags'): 1772, 
+   ('maxComp7Season2', 'maxFragsVehicle'): 1773, 
+   ('maxComp7Season2', 'maxDamage'): 1774, 
+   ('maxComp7Season2', 'maxDamageVehicle'): 1775, 
+   ('maxComp7Season2', 'maxComp7PrestigePoints'): 1776, 
+   ('maxComp7Season2', 'maxComp7PrestigePointsVehicle'): 1777, 
+   ('maxComp7Season2', 'maxEquipmentDamageDealt'): 1778, 
+   ('maxComp7Season2', 'maxEquipmentDamageDealtVehicle'): 1779, 
+   ('maxComp7Season2', 'maxHealthRepair'): 1780, 
+   ('maxComp7Season2', 'maxHealthRepairVehicle'): 1781, 
+   ('maxComp7Season2', 'maxWinSeries'): 1782, 
+   ('maxComp7Season2', 'maxSquadWinSeries'): 1783, 
+   ('singleAchievements', 'comp7_2023_1'): 1785}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 
@@ -4399,7 +4546,8 @@ RECORD_DB_IDS.update({('vehTypeFrags', ''): 863,
    ('playerBadges', ''): 1145, 
    ('rareAchievements', ''): 872, 
    ('epicBattleCut', ''): 873, 
-   ('comp7CutSeason1', ''): 1727})
+   ('comp7CutSeason1', ''): 1727, 
+   ('comp7CutSeason2', ''): 1784})
 BATTLE_HERO_MEDAL_SET = {RECORD_DB_IDS[achievementDescriptor] for achievementDescriptor in [
  (
   'achievements', 'warrior'),

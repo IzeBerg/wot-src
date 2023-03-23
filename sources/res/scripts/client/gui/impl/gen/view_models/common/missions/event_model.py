@@ -1,4 +1,11 @@
+from enum import Enum
 from frameworks.wulf import ViewModel
+
+class EventStatus(Enum):
+    DONE = 'done'
+    LOCKED = 'notAvailable'
+    ACTIVE = ''
+
 
 class EventModel(ViewModel):
     __slots__ = ()
@@ -43,10 +50,10 @@ class EventModel(ViewModel):
         self._setNumber(5, value)
 
     def getStatus(self):
-        return self._getString(6)
+        return EventStatus(self._getString(6))
 
     def setStatus(self, value):
-        self._setString(6, value)
+        self._setString(6, value.value)
 
     def _initialize(self):
         super(EventModel, self)._initialize()
@@ -56,4 +63,4 @@ class EventModel(ViewModel):
         self._addStringProperty('title', '')
         self._addStringProperty('description', '')
         self._addNumberProperty('decoration', 0)
-        self._addStringProperty('status', '')
+        self._addStringProperty('status')

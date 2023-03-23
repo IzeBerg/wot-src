@@ -4,7 +4,7 @@ from frameworks.wulf import ViewModel
 class Tabs(IntEnum):
     PROGRESSION = 0
     RANKREWARDS = 1
-    WINREWARDS = 2
+    WEEKLYQUESTS = 2
     LEADERBOARD = 3
 
 

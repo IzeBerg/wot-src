@@ -38,6 +38,14 @@
 			<shader>\data\shaders\ps_water.fx</shader>
 			<texture>particles/content_forward/PFX_textures/tracers.dds</texture>
 		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
 		<preloadVisual>particles/mesh_particles/environment/Lightning_mesh_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/environment/Lightning_mesh_02.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/environment/Lightning_mesh_03.visual</preloadVisual>
@@ -116,8 +124,10 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mle020_GerMotocycle.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mle033_WatchTower1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mle046_Bag1.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mleAF_002_Radiolocator.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mleAF_003_WestlandLysander.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mleAF_004_Hurricane.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mleSU_83_02_OpelBlitz_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_shells_detonation_medium.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_shells_detonation_small.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/plane_engine_1.vfx</fn_effect_bin>
@@ -162,17 +172,14 @@
 		<fn_effect_bin>particles/Environment/buildings/inf_mle002_KPP_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_mle002_KPP_02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/31_airfield_dust_devil.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_dust_devil.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_lightning_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_rif_foam.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_rif_wave.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_roof_sand.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/31_airfield_lightning_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/31_airfield_rif_foam.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/31_airfield_rif_wave.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/31_airfield_roof_sand.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_sand_floor_EE.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/31_airfield_sand_floor_ee.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/interior/31_airfield_sea_tornado_sequence.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_shore_wave.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_shore_wave_splash.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/31_airfield_shore_wave.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/31_airfield_shore_wave_splash.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env005_Tun.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env021_pier_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env021_pier_3.eff</fn_effect_bin>
@@ -229,8 +236,10 @@
 		<fn_effect_bin>particles/Environment/objects/inf_mle020_GerMotocycle.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mle033_WatchTower1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mle046_Bag1.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_mleAF_002_Radiolocator.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mleAF_003_WestlandLysander.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mleAF_004_Hurricane.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_mleSU_83_02_OpelBlitz_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_medium.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_small.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/plane_engine_1.eff</fn_effect_bin>
@@ -256,6 +265,7 @@
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_PheonixPalm_Medium_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_PheonixPalm_Small01_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_PheonixPalm_Small01_touchdown.eff</fn_effect_bin>
+		<preloadVisual>particles/mesh_particles/metal_stick.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_brick_03.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_concrete_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_concrete_02.visual</preloadVisual>
@@ -339,6 +349,14 @@
 		<preload>
 			<shader>\data\shaders\ps_shimmer.fx</shader>
 			<texture>particles/content_deferred/PFX_textures/eff_tex_distortion.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_rocket_accelerator.dds</texture>
 		</preload>
 		<preloadVisual>particles/mesh_particles/environment/Lightning_mesh_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/environment/Lightning_mesh_02.visual</preloadVisual>
@@ -431,8 +449,10 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mle020_GerMotocycle.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mle033_WatchTower1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mle046_Bag1.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mleAF_002_Radiolocator.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mleAF_003_WestlandLysander.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mleAF_004_Hurricane.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mleSU_83_02_OpelBlitz_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_shells_detonation_medium.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_shells_detonation_small.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/plane_engine_1.vfx</fn_effect_bin>
@@ -477,17 +497,14 @@
 		<fn_effect_bin>particles/Environment/buildings/inf_mle002_KPP_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_mle002_KPP_02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/31_airfield_dust_devil.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_dust_devil.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_lightning_01.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_rif_foam.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_rif_wave.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_roof_sand.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/31_airfield_lightning_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/31_airfield_rif_foam.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/31_airfield_rif_wave.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/31_airfield_roof_sand.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_sand_floor_EE.eff</fn_effect_bin>
 		<fn_effect_bin>particles/environment/interior/31_airfield_sand_floor_ee.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/interior/31_airfield_sea_tornado_sequence.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_shore_wave.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/31_airfield_shore_wave_splash.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/31_airfield_shore_wave.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/31_airfield_shore_wave_splash.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env005_Tun.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env021_pier_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env021_pier_3.eff</fn_effect_bin>
@@ -544,8 +561,10 @@
 		<fn_effect_bin>particles/Environment/objects/inf_mle020_GerMotocycle.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mle033_WatchTower1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mle046_Bag1.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_mleAF_002_Radiolocator.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mleAF_003_WestlandLysander.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mleAF_004_Hurricane.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_mleSU_83_02_OpelBlitz_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_medium.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_small.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/plane_engine_1.eff</fn_effect_bin>
@@ -571,6 +590,7 @@
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_PheonixPalm_Medium_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_PheonixPalm_Small01_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Conifers/tree_PheonixPalm_Small01_touchdown.eff</fn_effect_bin>
+		<preloadVisual>particles/mesh_particles/metal_stick.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_brick_02.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_brick_03.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_concrete_01.visual</preloadVisual>

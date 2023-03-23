@@ -63,6 +63,7 @@ _EVENTS_REWARD_WINDOW = {recruit_helper.RecruitSourceID.TWITCH_0: TwitchRewardWi
    recruit_helper.RecruitSourceID.TWITCH_36: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.TWITCH_37: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.TWITCH_38: TwitchRewardWindow, 
+   recruit_helper.RecruitSourceID.TWITCH_39: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.COMMANDER_MARINA: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.COMMANDER_PATRICK: TwitchRewardWindow, 
    anniversary_helper.ANNIVERSARY_EVENT_PREFIX: GiveAwayRewardWindow}
@@ -357,6 +358,10 @@ def showCurrencyReserveAwardWindow(creditsValue, goldValue, notificationMgr=None
 def showSubscriptionAwardWindow(notificationMgr=None):
     from gui.impl.lobby.subscription.subscription_award_view import SubscriptionAwardWindow
     notificationMgr.append(WindowNotificationCommand(SubscriptionAwardWindow()))
+
+
+def showSubscriptionScreen():
+    shared_events.showSubscriptionsPage()
 
 
 def showPersonalMissionAward(quest, ctx):

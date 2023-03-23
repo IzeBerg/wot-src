@@ -60,7 +60,7 @@ package net.wg.gui.battle.components
       
       private var _stackView:Boolean = true;
       
-      private var _scheduler:IScheduler = null;
+      private var _scheduler:IScheduler;
       
       private var _secondaryContainerTween:Tween = null;
       
@@ -68,8 +68,8 @@ package net.wg.gui.battle.components
       {
          this.secondaryTimers = {};
          this._timers = {};
-         super();
          this._scheduler = App.utils.scheduler;
+         super();
       }
       
       override protected function setInitData(param1:TimersPanelInitVO) : void

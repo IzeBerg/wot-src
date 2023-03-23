@@ -1,3 +1,4 @@
+from typing import Optional
 import re, calendar, datetime, time, BigWorld
 from debug_utils import LOG_CURRENT_EXCEPTION
 from helpers.i18n import makeString as _ms

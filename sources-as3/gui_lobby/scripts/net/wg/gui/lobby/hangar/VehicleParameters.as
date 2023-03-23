@@ -48,6 +48,8 @@ package net.wg.gui.lobby.hangar
       
       private static const INV_LIPS:String = "invLips";
       
+      private static const INV_SEND_RESIZE:String = "invSendResize";
+      
       private static const CHAR_UNDERSCORE:String = "_";
        
       
@@ -99,6 +101,7 @@ package net.wg.gui.lobby.hangar
          this.paramsList.addEventListener(ListEventEx.ITEM_CLICK,this.onParamsListItemClickHandler);
          this.paramsList.addEventListener(ListEventEx.ITEM_ROLL_OVER,this.onParamsListItemRollOverHandler);
          this.paramsList.addEventListener(MouseEvent.ROLL_OUT,this.onParamsListRollOutHandler);
+         this.paramsList.addEventListener(Event.RESIZE,this.onParamsListResizedHandler);
          mouseEnabled = this.paramsList.mouseEnabled = this.bg.mouseEnabled = this.bg.mouseChildren = false;
          this.hideRendererBG();
          this.topShadow.mouseEnabled = this.topShadow.mouseChildren = false;
@@ -127,6 +130,7 @@ package net.wg.gui.lobby.hangar
          this.paramsList.removeEventListener(MouseEvent.MOUSE_WHEEL,this.onParamsListMouseWheelHandler);
          this.paramsList.removeEventListener(ListEventEx.ITEM_ROLL_OVER,this.onParamsListItemRollOverHandler);
          this.paramsList.removeEventListener(MouseEvent.ROLL_OUT,this.onParamsListRollOutHandler);
+         this.paramsList.removeEventListener(Event.RESIZE,this.onParamsListResizedHandler);
          this.bg = null;
          this.rendererBG = null;
          this.topShadow = null;
@@ -155,18 +159,18 @@ package net.wg.gui.lobby.hangar
          super.draw();
          if(isInvalid(InvalidationType.SIZE))
          {
-            this.paramsList.validateNow();
-            this.paramsList.rowHeight = RENDERER_HEIGHT;
             _loc1_ = RENDERER_HEIGHT * this._dataProvider.length;
             if(_loc1_ > height - BG_MARGIN)
             {
                _loc1_ = !!this._snapHeightToRenderers ? int(RENDERER_HEIGHT * ((height - BG_MARGIN) / RENDERER_HEIGHT ^ 0)) : int(height);
             }
             this.paramsList.height = _loc1_;
+            this.paramsList.rowHeight = RENDERER_HEIGHT;
+            this.paramsList.validateNow();
             this.bg.height = _loc1_ + BG_MARGIN;
             this._listMask.height = this.bg.height - BG_MARGIN * 0.5;
             invalidate(INV_LIPS);
-            dispatchEvent(new Event(Event.RESIZE));
+            invalidate(INV_SEND_RESIZE);
          }
          if(isInvalid(INV_LIPS))
          {
@@ -192,6 +196,10 @@ package net.wg.gui.lobby.hangar
             this._hasListeners = true;
             this.paramsList.scrollBar.addEventListener(MouseEvent.MOUSE_DOWN,this.onParamsListScrollBarMouseDownHandler);
             this.paramsList.scrollBar.addEventListener(MouseEvent.ROLL_OVER,this.onParamsListScrollBarRollOverHandler);
+         }
+         if(isInvalid(INV_SEND_RESIZE))
+         {
+            dispatchEvent(new Event(Event.RESIZE));
          }
       }
       
@@ -353,6 +361,11 @@ package net.wg.gui.lobby.hangar
          this.hideRendererBG();
       }
       
+      private function onParamsListResizedHandler(param1:Event) : void
+      {
+         invalidate(INV_SEND_RESIZE);
+      }
+      
       private function onParamsListScrollBarRollOverHandler(param1:MouseEvent) : void
       {
          this.hideRendererBG();
@@ -381,7 +394,7 @@ package net.wg.gui.lobby.hangar
          App.toolTipMgr.hide();
          this.hideRendererBG();
          onParamClickS(VehParamVO(param1.itemData).paramID);
-         invalidate(INV_LIPS);
+         invalidateSize();
       }
       
       private function onDataProviderChangeHandler(param1:Event) : void

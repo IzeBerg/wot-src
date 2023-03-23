@@ -23,9 +23,12 @@ package net.wg.gui.lobby.settings.feedback.ribbons
       
       private var _disposed:Boolean = false;
       
+      private var _ribbonType:String;
+      
       public function SettingsRibbonItem(param1:RibbonSettingsLobby)
       {
          super();
+         this._ribbonType = param1.getRibbonType();
          var _loc2_:IClassFactory = App.utils.classFactory;
          this._icons = _loc2_.getComponent(Linkages.RIBBON_ICONS,RibbonIcons);
          this._texts = _loc2_.getComponent(Linkages.RIBBON_TEXT,RibbonTexts);

@@ -7,6 +7,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public static const POI_MARKER_BACK_ICON:String = "poiMarkerBack";
       
+      public static const SCENARIO_MARKER_ICON:String = "scenarioMarkerIcon";
+      
       private static const SHADOW_PREFIX:String = "shadow_";
       
       private static const HUNTED_POSTFIX:String = "_hunted";

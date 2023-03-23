@@ -236,13 +236,15 @@ msgstr "Установить"
 
 msgid "dialogs/confirm/demount/item"
 msgstr ""
-"Оборудование можно будет демонтировать за %(price)s, чтобы поместить на "
-"Склад либо уничтожить."
+"Оборудование можно будет демонтировать за %(price)s или "
+"{whiteSpanish_Open}бесплатно{whiteSpanish_Close} при наличии подписки WoT "
+"Plus, чтобы поместить на Склад либо уничтожить."
 
 msgid "dialogs/confirm/demount/itemWithDemountKit"
 msgstr ""
-"Оборудование можно будет демонтировать за %(demountKit)s или %(price)s, "
-"чтобы поместить на Склад либо уничтожить."
+"Оборудование можно будет демонтировать с помощью %(demountKit)s,  за "
+"%(price)s или {whiteSpanish_Open}бесплатно{whiteSpanish_Close} при наличии "
+"подписки WoT Plus, чтобы поместить на Склад либо уничтожить."
 
 msgid "dialogs/confirm/demount/items"
 msgstr "Оборудование можно будет демонтировать, чтобы поместить на Склад."
@@ -782,14 +784,15 @@ msgstr ""
 "наведении и после выстрела"
 
 msgid "kpi/bonus/longDescr/negative/vehicleOwnSpottingTime"
-msgstr "от времени, в течение которого ваша машина остаётся обнаруженной"
+msgstr "от времени вашей видимости"
 
 msgid "kpi/bonus/longDescr/negative/vehicleRamOrExplosionDamageResistance"
 msgstr "от осколочно-фугасного урона, поглощаемого бронёй, а также тарана"
 
 msgid "kpi/bonus/longDescr/negative/vehicleSpeedGain"
 msgstr ""
-"от сохранения набранной скорости при пересечении всех типов поверхности"
+"от сохранения набранной скорости\n"
+"при пересечении всех типов поверхности"
 
 msgid "kpi/bonus/longDescr/negative/vehicleStillCamouflage"
 msgstr "от незаметности неподвижной машины через 3 с после остановки"
@@ -850,14 +853,15 @@ msgstr ""
 "наведении и после выстрела"
 
 msgid "kpi/bonus/longDescr/positive/vehicleOwnSpottingTime"
-msgstr "ко времени, в течение которого ваша машина остаётся обнаруженной"
+msgstr "ко времени вашей видимости"
 
 msgid "kpi/bonus/longDescr/positive/vehicleRamOrExplosionDamageResistance"
 msgstr "к осколочно-фугасному урону, поглощаемому бронёй, а также тарану"
 
 msgid "kpi/bonus/longDescr/positive/vehicleSpeedGain"
 msgstr ""
-"к сохранению набранной скорости при пересечении всех типов поверхности"
+"к сохранению набранной скорости\n"
+"при пересечении всех типов поверхности"
 
 msgid "kpi/bonus/longDescr/positive/vehicleStillCamouflage"
 msgstr "к незаметности неподвижной машины через 3 с после остановки"
@@ -880,11 +884,24 @@ msgstr ""
 "к скорости поворота башни или горизонтального наведения орудия для машин с "
 "неподвижной рубкой"
 
+msgid "kpi/bonus/negative/artNotificationDelayFactor"
+msgstr ""
+"задержки срабатывания звуковой\n"
+"разведки"
+
+msgid "kpi/bonus/negative/circularVisionRadiusWhileSurveyingDeviceDamaged"
+msgstr ""
+"от дальности обзора при выведенных из\n"
+"строя приборах наблюдения"
+
+msgid "kpi/bonus/negative/commanderHitChance"
+msgstr "от защиты командира от ранений"
+
 msgid "kpi/bonus/negative/crewHitChance"
 msgstr "от защиты экипажа от ранений"
 
 msgid "kpi/bonus/negative/crewLevel"
-msgstr "от всех умений всего экипажа"
+msgstr "от всех навыков всего экипажа"
 
 msgid "kpi/bonus/negative/crewRepeatedStunDuration"
 msgstr "от времени дополнительного оглушения"
@@ -892,8 +909,23 @@ msgstr "от времени дополнительного оглушения"
 msgid "kpi/bonus/negative/crewStunDuration"
 msgstr "от времени оглушения"
 
+msgid "kpi/bonus/negative/damageAndPiercingDistributionLowerBound"
+msgstr ""
+"от нижнего порога вилки урона\n"
+"и бронепробития"
+
+msgid "kpi/bonus/negative/damageAndPiercingDistributionUpperBound"
+msgstr ""
+"от верхнего порога вилки урона\n"
+"и бронепробития"
+
 msgid "kpi/bonus/negative/damageEnemiesByRamming"
 msgstr "от нанесения урона тараном"
+
+msgid "kpi/bonus/negative/damagedModulesDetectionTime"
+msgstr ""
+"задержки определения критических\n"
+"повреждений машины в прицеле"
 
 msgid "kpi/bonus/negative/demaskFoliageFactor"
 msgstr "от незаметности противника за растительностью"
@@ -901,17 +933,54 @@ msgstr "от незаметности противника за растител
 msgid "kpi/bonus/negative/demaskMovingFactor"
 msgstr "от незаметности противника, находящегося в движении"
 
+msgid "kpi/bonus/negative/enemyModulesCrewCritChance"
+msgstr ""
+"от шанса поражения модулей и экипажа\n"
+"противника"
+
+msgid "kpi/bonus/negative/equipmentPreparationTime"
+msgstr "от времени подготовки снаряжения"
+
+msgid "kpi/bonus/negative/fireExtinguishingRate"
+msgstr "от скорости тушения пожара"
+
+msgid "kpi/bonus/negative/foliageMaskingFactor"
+msgstr "от эффекта маскировки от растительности"
+
+msgid "kpi/bonus/negative/radiomanActivityTimeAfterVehicleDestroy"
+msgstr ""
+"от времени передачи координат машин\n"
+"противника после уничтожения вашей"
+
+msgid "kpi/bonus/negative/radiomanHitChance"
+msgstr "к защите радиста от ранений"
+
+msgid "kpi/bonus/negative/stunResistanceEffectFactor"
+msgstr ""
+"от негативного эффекта оглушения\n"
+"экипажа"
+
 msgid "kpi/bonus/negative/vehPenaltyForDamageEngineAndCombat"
 msgstr "от штрафа за повреждённые боеукладку и двигатель"
 
 msgid "kpi/bonus/negative/vehicleAllGroundRotationSpeed"
 msgstr "от скорости поворота ходовой"
 
+msgid "kpi/bonus/negative/vehicleAllyRadioDistance"
+msgstr ""
+"от дальности связи союзных машин\n"
+"в зоне покрытия радиостанции"
+
 msgid "kpi/bonus/negative/vehicleAmmoBayEngineFuelStrength"
 msgstr "от прочности внутренних модулей"
 
 msgid "kpi/bonus/negative/vehicleAmmoBayStrength"
 msgstr "от прочности боеукладки"
+
+msgid "kpi/bonus/negative/vehicleAverageSoilResistance"
+msgstr ""
+"от сохранения набранной скорости\n"
+"при пересечении средних грунтов"
 
 msgid "kpi/bonus/negative/vehicleBackwardMaxSpeed"
 msgstr "от максимальной скорости назад"
@@ -938,7 +1007,9 @@ msgid "kpi/bonus/negative/vehicleCircularVisionRadius"
 msgstr "от обзора"
 
 msgid "kpi/bonus/negative/vehicleEnemySpottingTime"
-msgstr "от времени отображения обнаруженного вами противника"
+msgstr ""
+"от времени отображения обнаруженного\n"
+"вами противника"
 
 msgid "kpi/bonus/negative/vehicleEnginePower"
 msgstr "от мощности двигателя"
@@ -948,6 +1019,11 @@ msgstr "от шанса возгорания двигателя"
 
 msgid "kpi/bonus/negative/vehicleForwardMaxSpeed"
 msgstr "от максимальной скорости вперёд"
+
+msgid "kpi/bonus/negative/vehicleFuelTankLesionChance"
+msgstr ""
+"от шанса критического повреждения\n"
+"топливных баков"
 
 msgid "kpi/bonus/negative/vehicleGunAimSpeed"
 msgstr "от скорости сведения"
@@ -982,6 +1058,9 @@ msgstr "от незаметности после выстрела"
 msgid "kpi/bonus/negative/vehicleOwnSpottingTime"
 msgstr "от времени вашей видимости"
 
+msgid "kpi/bonus/negative/vehicleRamChassisDamageResistance"
+msgstr "от полученного урона ходовой при таране"
+
 msgid "kpi/bonus/negative/vehicleRamDamageResistance"
 msgstr "от полученного урона при таране"
 
@@ -990,8 +1069,8 @@ msgstr "от ОФ урона и тарана"
 
 msgid "kpi/bonus/negative/vehicleReloadTimeAfterShellChange"
 msgstr ""
-"от времени заряжания следующего снаряда другого типа после полной зарядки "
-"предыдущего снаряда"
+"от скорости смены типа снаряда\n"
+"в уже заряженном орудии"
 
 msgid "kpi/bonus/negative/vehicleRepairSpeed"
 msgstr "от скорости ремонта"
@@ -1020,11 +1099,46 @@ msgstr ""
 msgid "kpi/bonus/negative/vehicleTurretRotationSpeed"
 msgstr "от скорости вращения башни"
 
+msgid "kpi/bonus/negative/vehicleWeakSoilResistance"
+msgstr ""
+"от сохранения набранной скорости\n"
+"при пересечении вязких грунтов"
+
+msgid "kpi/bonus/negative/wheelsRotationSpeed"
+msgstr "от скорости поворота колёс"
+
+msgid "kpi/bonus/negative/woundedCrewEfficiency"
+msgstr ""
+"от штрафа при ранении члена экипажа,\n"
+"кроме командира"
+
+msgid "kpi/bonus/neutral/artNotificationDelayFactor"
+msgstr "задержки срабатывания звуковой разведки"
+
+msgid "kpi/bonus/neutral/damageMonitoringDelay"
+msgstr "задержки определения критических повреждений машины в прицеле"
+
+msgid "kpi/bonus/neutral/radiomanDurationPerLevel"
+msgstr "продолжительность передачи разведданных после вашего уничтожения"
+
+msgid "kpi/bonus/positive/artNotificationDelayFactor"
+msgstr ""
+"задержки срабатывания звуковой\n"
+"разведки"
+
+msgid "kpi/bonus/positive/circularVisionRadiusWhileSurveyingDeviceDamaged"
+msgstr ""
+"к дальности обзора при выведенных из\n"
+"строя приборах наблюдения"
+
+msgid "kpi/bonus/positive/commanderHitChance"
+msgstr "к защите командира от ранений"
+
 msgid "kpi/bonus/positive/crewHitChance"
 msgstr "к защите экипажа от ранений"
 
 msgid "kpi/bonus/positive/crewLevel"
-msgstr "ко всем умениям всего экипажа"
+msgstr "ко всем навыкам всего экипажа"
 
 msgid "kpi/bonus/positive/crewRepeatedStunDuration"
 msgstr "ко времени дополнительного оглушения"
@@ -1032,8 +1146,23 @@ msgstr "ко времени дополнительного оглушения"
 msgid "kpi/bonus/positive/crewStunDuration"
 msgstr "ко времени оглушения"
 
+msgid "kpi/bonus/positive/damageAndPiercingDistributionLowerBound"
+msgstr ""
+"к нижнему порогу вилки урона\n"
+"и бронепробития"
+
+msgid "kpi/bonus/positive/damageAndPiercingDistributionUpperBound"
+msgstr ""
+"к верхнему порогу вилки урона\n"
+"и бронепробития"
+
 msgid "kpi/bonus/positive/damageEnemiesByRamming"
 msgstr "к нанесению урона тараном"
+
+msgid "kpi/bonus/positive/damagedModulesDetectionTime"
+msgstr ""
+"задержки определения критических\n"
+"повреждений машины в прицеле"
 
 msgid "kpi/bonus/positive/demaskFoliageFactor"
 msgstr "к незаметности противника за растительностью"
@@ -1041,17 +1170,52 @@ msgstr "к незаметности противника за раститель
 msgid "kpi/bonus/positive/demaskMovingFactor"
 msgstr "к незаметности противника, находящегося в движении"
 
+msgid "kpi/bonus/positive/enemyModulesCrewCritChance"
+msgstr ""
+"к шансу поражения модулей и экипажа\n"
+"противника"
+
+msgid "kpi/bonus/positive/equipmentPreparationTime"
+msgstr "ко времени подготовки снаряжения"
+
+msgid "kpi/bonus/positive/fireExtinguishingRate"
+msgstr "к скорости тушения пожара"
+
+msgid "kpi/bonus/positive/foliageMaskingFactor"
+msgstr "к эффекту маскировки от растительности"
+
+msgid "kpi/bonus/positive/radiomanActivityTimeAfterVehicleDestroy"
+msgstr ""
+"ко времени передачи координат машин\n"
+"противника после уничтожения вашей"
+
+msgid "kpi/bonus/positive/radiomanHitChance"
+msgstr "к защите радиста от ранений"
+
+msgid "kpi/bonus/positive/stunResistanceEffectFactor"
+msgstr "к негативному эффекту оглушения"
+
 msgid "kpi/bonus/positive/vehPenaltyForDamageEngineAndCombat"
 msgstr "к штрафу за повреждённые боеукладку и двигатель"
 
 msgid "kpi/bonus/positive/vehicleAllGroundRotationSpeed"
 msgstr "к скорости поворота ходовой"
 
+msgid "kpi/bonus/positive/vehicleAllyRadioDistance"
+msgstr ""
+"к дальности связи союзных машин\n"
+"в зоне покрытия радиостанции"
+
 msgid "kpi/bonus/positive/vehicleAmmoBayEngineFuelStrength"
 msgstr "к прочности внутренних модулей"
 
 msgid "kpi/bonus/positive/vehicleAmmoBayStrength"
 msgstr "к прочности боеукладки"
+
+msgid "kpi/bonus/positive/vehicleAverageSoilResistance"
+msgstr ""
+"к сохранению набранной скорости\n"
+"при пересечении средних грунтов"
 
 msgid "kpi/bonus/positive/vehicleBackwardMaxSpeed"
 msgstr "к максимальной скорости назад"
@@ -1078,7 +1242,9 @@ msgid "kpi/bonus/positive/vehicleCircularVisionRadius"
 msgstr "к обзору (не более 445 метров)"
 
 msgid "kpi/bonus/positive/vehicleEnemySpottingTime"
-msgstr "ко времени отображения обнаруженного вами противника"
+msgstr ""
+"ко времени отображения обнаруженного\n"
+"вами противника"
 
 msgid "kpi/bonus/positive/vehicleEnginePower"
 msgstr "к мощности двигателя"
@@ -1088,6 +1254,11 @@ msgstr "к шансу возгорания двигателя"
 
 msgid "kpi/bonus/positive/vehicleForwardMaxSpeed"
 msgstr "к максимальной скорости вперёд"
+
+msgid "kpi/bonus/positive/vehicleFuelTankLesionChance"
+msgstr ""
+"к шансу критического повреждения\n"
+"топливных баков"
 
 msgid "kpi/bonus/positive/vehicleGunAimSpeed"
 msgstr "к скорости сведения"
@@ -1122,6 +1293,9 @@ msgstr "к незаметности после выстрела"
 msgid "kpi/bonus/positive/vehicleOwnSpottingTime"
 msgstr "ко времени вашей видимости"
 
+msgid "kpi/bonus/positive/vehicleRamChassisDamageResistance"
+msgstr "к полученному урону ходовой при таране"
+
 msgid "kpi/bonus/positive/vehicleRamDamageResistance"
 msgstr "к полученному урону при таране"
 
@@ -1130,8 +1304,8 @@ msgstr "к ОФ урону и тарану"
 
 msgid "kpi/bonus/positive/vehicleReloadTimeAfterShellChange"
 msgstr ""
-"ко времени заряжания следующего снаряда другого типа после полной зарядки "
-"предыдущего снаряда"
+"к скорости смены типа снаряда\n"
+"в уже заряженном орудии"
 
 msgid "kpi/bonus/positive/vehicleRepairSpeed"
 msgstr "к скорости ремонта"
@@ -1160,11 +1334,24 @@ msgstr ""
 msgid "kpi/bonus/positive/vehicleTurretRotationSpeed"
 msgstr "к скорости вращения башни"
 
+msgid "kpi/bonus/positive/vehicleWeakSoilResistance"
+msgstr ""
+"к сохранению набранной скорости\n"
+"при пересечении вязких грунтов"
+
+msgid "kpi/bonus/positive/wheelsRotationSpeed"
+msgstr "к скорости поворота колёс"
+
+msgid "kpi/bonus/positive/woundedCrewEfficiency"
+msgstr ""
+"к штрафу при ранении члена экипажа,\n"
+"кроме командира"
+
 msgid "kpi/bonus/ttc/negative/crewHitChance"
 msgstr "от защиты экипажа от ранений"
 
 msgid "kpi/bonus/ttc/negative/crewLevel"
-msgstr "от всех умений всего экипажа"
+msgstr "от всех навыков всего экипажа"
 
 msgid "kpi/bonus/ttc/negative/crewRepeatedStunDuration"
 msgstr "от времени дополнительного оглушения"
@@ -1175,6 +1362,9 @@ msgstr "от времени оглушения"
 msgid "kpi/bonus/ttc/negative/damageEnemiesByRamming"
 msgstr "от нанесения урона тараном"
 
+msgid "kpi/bonus/ttc/negative/damageMonitoringDelay"
+msgstr "задержки определения критических повреждений машины в прицеле"
+
 msgid "kpi/bonus/ttc/negative/demaskFoliageFactor"
 msgstr ""
 "от незаметности противника\n"
@@ -1184,6 +1374,15 @@ msgid "kpi/bonus/ttc/negative/demaskMovingFactor"
 msgstr ""
 "от незаметности противника,\n"
 "находящегося в движении"
+
+msgid "kpi/bonus/ttc/negative/radiomanChanceToHitPerLevel"
+msgstr "от защиты радиста от ранений"
+
+msgid "kpi/bonus/ttc/negative/shotDispersionAngle"
+msgstr "от разброса орудия неподвижно стоящей машины"
+
+msgid "kpi/bonus/ttc/negative/turretAimingDispersion"
+msgstr "от разброса при горизонтальном наведении"
 
 msgid "kpi/bonus/ttc/negative/vehPenaltyForDamageEngineAndCombat"
 msgstr ""
@@ -1199,9 +1398,7 @@ msgid "kpi/bonus/ttc/negative/vehicleAllGroundRotationSpeed"
 msgstr "от скорости поворота машины"
 
 msgid "kpi/bonus/ttc/negative/vehicleAmmoBayEngineFuelStrength"
-msgstr ""
-"от прочности боеукладки, баков\n"
-"и двигателя"
+msgstr "от прочности внутренних модулей"
 
 msgid "kpi/bonus/ttc/negative/vehicleAmmoBayStrength"
 msgstr "от прочности боеукладки"
@@ -1229,9 +1426,8 @@ msgstr "от радиуса обзора"
 
 msgid "kpi/bonus/ttc/negative/vehicleEnemySpottingTime"
 msgstr ""
-"от времени, в течение которого\n"
-"машина противника остаётся\n"
-"обнаруженной"
+"от времени отображения обнаруженного\n"
+"вами противника"
 
 msgid "kpi/bonus/ttc/negative/vehicleEnginePower"
 msgstr "от мощности двигателя"
@@ -1288,10 +1484,7 @@ msgid "kpi/bonus/ttc/negative/vehicleRamOrExplosionDamageResistance"
 msgstr "от ОФ урона и тарана"
 
 msgid "kpi/bonus/ttc/negative/vehicleReloadTimeAfterShellChange"
-msgstr ""
-"от времени заряжания следующего\n"
-"снаряда другого типа после полной\n"
-"зарядки предыдущего снаряда"
+msgstr "от скорости смены типа снаряда"
 
 msgid "kpi/bonus/ttc/negative/vehicleRepairSpeed"
 msgstr "от скорости ремонта"
@@ -1314,17 +1507,31 @@ msgstr "от скорости горизонтального наведения"
 msgid "kpi/bonus/ttc/negative/vehicleTurretRotationSpeed"
 msgstr "от скорости вращения башни"
 
+msgid "kpi/bonus/ttc/negative/woundedCrewEfficiency"
+msgstr "от штрафа при ранении члена экипажа, кроме командира"
+
+msgid "kpi/bonus/ttc/positive/commanderHitChance"
+msgstr "к защите командира от ранений"
+
 msgid "kpi/bonus/ttc/positive/crewHitChance"
 msgstr "к защите экипажа от ранений"
 
 msgid "kpi/bonus/ttc/positive/crewLevel"
-msgstr "ко всем умениям всего экипажа"
+msgstr "ко всем навыкам всего экипажа"
+
+msgid "kpi/bonus/ttc/positive/crewLevelIncrease"
+msgstr "к уровню владения основной специальностью"
 
 msgid "kpi/bonus/ttc/positive/crewRepeatedStunDuration"
 msgstr "ко времени дополнительного оглушения"
 
 msgid "kpi/bonus/ttc/positive/crewStunDuration"
 msgstr "ко времени оглушения"
+
+msgid "kpi/bonus/ttc/positive/damageAndPiercingDistributionLowerBound"
+msgstr ""
+"к нижнему порогу вилки урона\n"
+"и бронепробития"
 
 msgid "kpi/bonus/ttc/positive/damageEnemiesByRamming"
 msgstr "к нанесению урона тараном"
@@ -1338,6 +1545,26 @@ msgid "kpi/bonus/ttc/positive/demaskMovingFactor"
 msgstr ""
 "к незаметности противника,\n"
 "находящегося в движении"
+
+msgid "kpi/bonus/ttc/positive/enemyModulesCrewCritChance"
+msgstr ""
+"к шансу поражения модулей и экипажа\n"
+"противника"
+
+msgid "kpi/bonus/ttc/positive/fireExtinguishingRate"
+msgstr "к скорости тушения пожара"
+
+msgid "kpi/bonus/ttc/positive/maskingFactor"
+msgstr "к незаметности машины"
+
+msgid "kpi/bonus/ttc/positive/radioDistance"
+msgstr "к дальности связи радиостанции"
+
+msgid "kpi/bonus/ttc/positive/radiomanChanceToHitPerLevel"
+msgstr "к защите радиста от ранений"
+
+msgid "kpi/bonus/ttc/positive/teamRadioBonusFactor"
+msgstr "к дальности связи союзных машин в зоне покрытия радиостанции"
 
 msgid "kpi/bonus/ttc/positive/vehPenaltyForDamageEngineAndCombat"
 msgstr ""
@@ -1353,12 +1580,15 @@ msgid "kpi/bonus/ttc/positive/vehicleAllGroundRotationSpeed"
 msgstr "к скорости поворота машины"
 
 msgid "kpi/bonus/ttc/positive/vehicleAmmoBayEngineFuelStrength"
-msgstr ""
-"к прочности боеукладки, баков\n"
-"и двигателя"
+msgstr "к прочности внутренних модулей"
 
 msgid "kpi/bonus/ttc/positive/vehicleAmmoBayStrength"
 msgstr "к прочности боеукладки"
+
+msgid "kpi/bonus/ttc/positive/vehicleAverageSoilResistance"
+msgstr ""
+"к сохранению набранной скорости\n"
+"при пересечении средних грунтов"
 
 msgid "kpi/bonus/ttc/positive/vehicleBackwardMaxSpeed"
 msgstr "к максимальной скорости назад"
@@ -1385,9 +1615,8 @@ msgstr ""
 
 msgid "kpi/bonus/ttc/positive/vehicleEnemySpottingTime"
 msgstr ""
-"ко времени, в течение которого\n"
-"машина противника остаётся\n"
-"обнаруженной"
+"ко времени отображения обнаруженного\n"
+"вами противника"
 
 msgid "kpi/bonus/ttc/positive/vehicleEnginePower"
 msgstr "к мощности двигателя"
@@ -1444,10 +1673,7 @@ msgid "kpi/bonus/ttc/positive/vehicleRamOrExplosionDamageResistance"
 msgstr "к ОФ урону и тарану"
 
 msgid "kpi/bonus/ttc/positive/vehicleReloadTimeAfterShellChange"
-msgstr ""
-"ко времени заряжания следующего\n"
-"снаряда другого типа после полной\n"
-"зарядки предыдущего снаряда"
+msgstr "к скорости смены типа снаряда"
 
 msgid "kpi/bonus/ttc/positive/vehicleRepairSpeed"
 msgstr "к скорости ремонта"
@@ -1472,11 +1698,28 @@ msgstr "к скорости горизонтального наведения"
 msgid "kpi/bonus/ttc/positive/vehicleTurretRotationSpeed"
 msgstr "к скорости вращения башни"
 
+msgid "kpi/bonus/ttc/positive/vehicleWeakSoilResistance"
+msgstr ""
+"к сохранению набранной скорости\n"
+"при пересечении вязких грунтов"
+
+msgid "kpi/bonus/ttc/positive/xpBonusFactorPerLevel"
+msgstr "к опыту экипажа за бой"
+
+msgid "kpi/bonus/valueTypes/artNotificationDelayFactor"
+msgstr "c"
+
 msgid "kpi/bonus/valueTypes/brackets"
 msgstr "(%(value)s)"
 
+msgid "kpi/bonus/valueTypes/damagedModulesDetectionTime"
+msgstr "c"
+
 msgid "kpi/bonus/valueTypes/default"
 msgstr "%"
+
+msgid "kpi/bonus/valueTypes/radiomanActivityTimeAfterVehicleDestroy"
+msgstr "с"
 
 msgid "kpi/bonus/valueTypes/vehicleBackwardMaxSpeed"
 msgstr "км/ч"
@@ -1637,8 +1880,15 @@ msgstr "Нажмите, чтобы демонтировать оборудова
 msgid "tooltips/action/description/demount_from_setups"
 msgstr "Нажмите, чтобы демонтировать оборудование из всех комплектаций."
 
+msgid "tooltips/action/description/demount_plus"
+msgstr ""
+"Нажмите, чтобы демонтировать оборудование из этого слота бесплатно с помощью"
+" подписки WoT Plus."
+
 msgid "tooltips/action/description/destroy"
-msgstr "Нажмите, чтобы уничтожить оборудование в этом слоте."
+msgstr ""
+"Нажмите, чтобы уничтожить оборудование в этом слоте или, если вы подписаны "
+"на WoT Plus, демонтируйте его бесплатно."
 
 msgid "tooltips/action/description/destroy_modernized"
 msgstr "Нажмите, чтобы разобрать оборудование на компоненты."
@@ -1669,6 +1919,9 @@ msgstr "Демонтировать"
 
 msgid "tooltips/action/title/demount_from_setups"
 msgstr "Демонтировать из всех комплектаций"
+
+msgid "tooltips/action/title/demount_plus"
+msgstr "Демонтировать бесплатно"
 
 msgid "tooltips/action/title/destroy"
 msgstr "Уничтожить"

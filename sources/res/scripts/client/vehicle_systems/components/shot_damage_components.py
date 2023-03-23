@@ -1,4 +1,4 @@
-from cgf_script.component_meta_class import CGFComponent, ComponentProperty, CGFMetaTypes
+from cgf_script.component_meta_class import ComponentProperty, CGFMetaTypes, registerComponent
 from cgf_script.managers_registrator import autoregister, onAddedQuery, onRemovedQuery
 import CGF, Math, BigWorld, GenericComponents
 from items import vehicles
@@ -11,8 +11,10 @@ class ShotDamageComponent(object):
         self.compound = compound
 
 
-class DamageStickerComponent(CGFComponent):
+@registerComponent
+class DamageStickerComponent(object):
     category = 'Render'
+    domain = CGF.DomainOption.DomainClient
     damageSticker = ComponentProperty(type=CGFMetaTypes.STRING, editorName='Damage sticker', value='')
     lodDistance = ComponentProperty(type=CGFMetaTypes.FLOAT, editorName='Lod Distance', value=100)
     fadeoutTime = ComponentProperty(type=CGFMetaTypes.FLOAT, editorName='Fadeout time', value=0)

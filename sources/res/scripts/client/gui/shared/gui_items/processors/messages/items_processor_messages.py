@@ -9,6 +9,7 @@ from gui.shared.gui_items.processors import makeSuccess, makeError
 from gui.shared.money import ZERO_MONEY
 from helpers import dependency
 from skeletons.gui.shared import IItemsCache
+from skeletons.gui.game_control import IWotPlusController
 _logger = logging.getLogger(__name__)
 
 class _ItemProcessorMessage(object):
@@ -157,6 +158,7 @@ class ItemRemoveProcessorMessage(_ItemProcessorMessage):
 
 class OptDeviceRemoveProcessorMessage(ItemRemoveProcessorMessage):
     __itemsCache = dependency.descriptor(IItemsCache)
+    __wotPlusController = dependency.descriptor(IWotPlusController)
 
     def __init__(self, item, removalPrice=ZERO_MONEY, useDemountKit=False):
         self.__removalPrice = removalPrice
@@ -167,6 +169,8 @@ class OptDeviceRemoveProcessorMessage(ItemRemoveProcessorMessage):
         defaultKey = R.strings.system_messages.dyn(self._formMessage()).success
         if self.__useDemountKit:
             msgKey = R.strings.system_messages.dyn(self._formMessage()).demount_kit_success
+        elif self.__wotPlusController.isFreeToDemount(self._item):
+            msgKey = R.strings.system_messages.dyn(self._formMessage()).wot_plus_success
         else:
             msgKey = R.strings.system_messages.dyn(self._formMessage()).money_success
         return makeSuccess(backport.text((msgKey() if msgKey else defaultKey), **self._getMsgCtx()), self._getSuccessMsgType())
@@ -174,6 +178,8 @@ class OptDeviceRemoveProcessorMessage(ItemRemoveProcessorMessage):
     def _getSuccessMsgType(self):
         if self.__useDemountKit:
             return SM_TYPE.DismantlingForDemountKit
+        if self.__wotPlusController.isFreeToDemount(self._item):
+            return SM_TYPE.DismantlingForFreeWotPlus
         return CURRENCY_TO_SM_TYPE_DISMANTLING.get(self.__removalPrice.getCurrency(), SM_TYPE.DismantlingForGold)
 
     def _getMsgCtx(self):

@@ -10,6 +10,10 @@ package net.wg.gui.lobby.battlequeue
       
       public var title:String = "";
       
+      public var subTitle:String = "";
+      
+      public var footerText:String = "";
+      
       public var description:String = "";
       
       public var additional:String = "";

@@ -2125,7 +2125,7 @@
 				</node>
 			</trackNodes>
 			<trackThickness>
-				0.014
+				-0.006
 				<!--BW_String-->
 			</trackThickness>
 			<effects>
@@ -2202,19 +2202,19 @@
 			<physicalTracks>
 				<left>
 					<segmentsCount>88</segmentsCount>
-					<segmentsOuterThickness>0.087755</segmentsOuterThickness>
-					<segmentsInnerThickness>
-						-0.00214
-						<!--BW_String-->
-					</segmentsInnerThickness>
+					<segmentsOuterThickness>0.067748</segmentsOuterThickness>
+					<segmentsInnerThickness>-0.002133</segmentsInnerThickness>
 					<segmentsPlaneOffset>-1.306678</segmentsPlaneOffset>
 					<mainSegment>
 						<model>vehicles/german/G163_Pz_Kpfw_KW_Ir_mit_75mm_kwk40/track/segment_01.model</model>
-						<length>0.164544</length>
+						<length>0.162377</length>
 					</mainSegment>
 					<secSegment>
 						<model>vehicles/german/G163_Pz_Kpfw_KW_Ir_mit_75mm_kwk40/track/segment_02.model</model>
-						<length>0.162456</length>
+						<length>
+							0.16219
+							<!--BW_String-->
+						</length>
 					</secSegment>
 					<springsLength>
 						<backwardMovement>
@@ -2247,42 +2247,39 @@
 						<topFront>
 							<wheelName>WD_L0</wheelName>
 							<basePos>2.885442 0.782385</basePos>
-							<shiftVec>0.313786 0.103909</shiftVec>
+							<shiftVec>0.317102 0.095584</shiftVec>
 							<jointIdx>8</jointIdx>
 						</topFront>
 						<topBack>
 							<wheelName>WD_L4</wheelName>
 							<basePos>-2.864074 0.722619</basePos>
-							<shiftVec>-0.378172 0.139843</shiftVec>
+							<shiftVec>-0.378803 0.141435</shiftVec>
 							<jointIdx>50</jointIdx>
 						</topBack>
 						<bottomBack>
 							<wheelName>W_L5</wheelName>
-							<basePos>-2.103868 0.385615</basePos>
-							<shiftVec>
-								0.020761 -0.29786
-								<!--BW_String-->
-							</shiftVec>
+							<basePos>-2.103868 0.365615</basePos>
+							<shiftVec>0.013857 -0.297867</shiftVec>
 							<jointIdx>60</jointIdx>
 						</bottomBack>
 						<bottomFront>
 							<wheelName>W_L0</wheelName>
 							<basePos>
-								2.27334 0.385616
+								2.27334 0.365616
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>0.065442 -0.290582</shiftVec>
+							<shiftVec>0.065515 -0.290573</shiftVec>
 							<jointIdx>0</jointIdx>
 						</bottomFront>
 					</snapWheels>
 					<radiusOverrides>
 						<wheel>
 							<name>WD_L4</name>
-							<radius>0.397861</radius>
+							<radius>0.399101</radius>
 						</wheel>
 						<wheel>
 							<name>WD_L0</name>
-							<radius>0.324009</radius>
+							<radius>0.324771</radius>
 						</wheel>
 					</radiusOverrides>
 					<teethSyncs>
@@ -2290,12 +2287,12 @@
 						<segmentSyncPivotOffset>0</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_L4</name>
-							<startAngle>-7.608232</startAngle>
+							<startAngle>-2.890453</startAngle>
 							<teethCount>8</teethCount>
 						</sync>
 						<sync>
 							<name>WD_L0</name>
-							<startAngle>-5.756383</startAngle>
+							<startAngle>0.060464</startAngle>
 							<teethCount>6</teethCount>
 						</sync>
 					</teethSyncs>
@@ -2438,16 +2435,16 @@
 				</left>
 				<right>
 					<segmentsCount>88</segmentsCount>
-					<segmentsOuterThickness>0.087446</segmentsOuterThickness>
-					<segmentsInnerThickness>-0.001831</segmentsInnerThickness>
+					<segmentsOuterThickness>0.067449</segmentsOuterThickness>
+					<segmentsInnerThickness>-0.001834</segmentsInnerThickness>
 					<segmentsPlaneOffset>1.305245</segmentsPlaneOffset>
 					<mainSegment>
 						<model>vehicles/german/G163_Pz_Kpfw_KW_Ir_mit_75mm_kwk40/track/segment_01.model</model>
-						<length>0.164541</length>
+						<length>0.161056</length>
 					</mainSegment>
 					<secSegment>
 						<model>vehicles/german/G163_Pz_Kpfw_KW_Ir_mit_75mm_kwk40/track/segment_02.model</model>
-						<length>0.162454</length>
+						<length>0.161442</length>
 					</secSegment>
 					<springsLength>
 						<backwardMovement>
@@ -2480,7 +2477,7 @@
 						<topFront>
 							<wheelName>WD_R0</wheelName>
 							<basePos>2.885442 0.782385</basePos>
-							<shiftVec>0.312558 0.107676</shiftVec>
+							<shiftVec>0.315656 0.099581</shiftVec>
 							<jointIdx>9</jointIdx>
 						</topFront>
 						<topBack>
@@ -2489,36 +2486,30 @@
 								-2.864074 0.72262
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								-0.377793 0.1395
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>-0.378234 0.140595</shiftVec>
 							<jointIdx>51</jointIdx>
 						</topBack>
 						<bottomBack>
 							<wheelName>W_R5</wheelName>
-							<basePos>-2.238285 0.385615</basePos>
-							<shiftVec>-0.010689 -0.297978</shiftVec>
+							<basePos>-2.238285 0.365615</basePos>
+							<shiftVec>-0.018154 -0.297612</shiftVec>
 							<jointIdx>60</jointIdx>
 						</bottomBack>
 						<bottomFront>
 							<wheelName>W_R0</wheelName>
-							<basePos>2.138923 0.385616</basePos>
-							<shiftVec>0.031266 -0.296525</shiftVec>
+							<basePos>2.138923 0.365616</basePos>
+							<shiftVec>0.030187 -0.296634</shiftVec>
 							<jointIdx>0</jointIdx>
 						</bottomFront>
 					</snapWheels>
 					<radiusOverrides>
 						<wheel>
 							<name>WD_R4</name>
-							<radius>
-								0.39738
-								<!--BW_String-->
-							</radius>
+							<radius>0.398331</radius>
 						</wheel>
 						<wheel>
 							<name>WD_R0</name>
-							<radius>0.324052</radius>
+							<radius>0.324646</radius>
 						</wheel>
 					</radiusOverrides>
 					<teethSyncs>
@@ -2526,12 +2517,12 @@
 						<segmentSyncPivotOffset>0</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_R4</name>
-							<startAngle>-7.619735</startAngle>
+							<startAngle>-2.902064</startAngle>
 							<teethCount>8</teethCount>
 						</sync>
 						<sync>
 							<name>WD_R0</name>
-							<startAngle>-5.756525</startAngle>
+							<startAngle>0.060114</startAngle>
 							<teethCount>6</teethCount>
 						</sync>
 					</teethSyncs>

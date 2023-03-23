@@ -28,6 +28,7 @@ from shared_utils import first
 from skeletons.gui.game_control import IMapboxController
 from skeletons.gui.impl import IGuiLoader
 _logger = logging.getLogger(__name__)
+_ALL_MAPS = 'all'
 
 class MapboxProgressionsComponent(InjectComponentAdaptor, MissionsMapboxViewMeta):
     __slots__ = ()
@@ -204,8 +205,12 @@ class MapboxProgressionView(ViewImpl):
             return
         else:
             with self.viewModel.transaction() as (model):
-                actualSeason = self.__mapboxController.getCurrentSeason() or self.__mapboxController.getNextSeason()
-                self.__fillMaps(model, progressionData, actualSeason)
+                actualSeason = self.__mapboxController.getCurrentSeason()
+                if actualSeason is not None:
+                    model.setSeasonNumber(actualSeason.getNumber())
+                    model.setStartEvent(actualSeason.getCycleStartDate())
+                    model.setEndEvent(actualSeason.getCycleEndDate())
+                    self.__fillMaps(model, progressionData, actualSeason)
             return
 
     def __updateProgressionData(self, progression=None):
@@ -253,8 +258,8 @@ class MapboxProgressionView(ViewImpl):
     def __fillMaps(self, model, progressionData, actualSeason):
         geometryIDsToNames = {geometryID:geometryName for geometryName, geometryID in g_geometryNamesToIDs.iteritems()}
         geometryNames = [
-         'all'] + sorted([ geometryIDsToNames[geometryID] for geometryID in self.__mapboxController.getModeSettings().geometryIDs[actualSeason.getSeasonID()]
-                         ])
+         _ALL_MAPS] + sorted([ geometryIDsToNames[geometryID] for geometryID in self.__mapboxController.getModeSettings().geometryIDs[actualSeason.getSeasonID()]
+                             ])
         mapsData = progressionData.surveys
         mapsList = model.getMaps()
         mapsList.clear()
@@ -266,6 +271,7 @@ class MapboxProgressionView(ViewImpl):
             mapModel.setMapBattles(mapData.total)
             mapModel.setMapBattlesPlayed(mapData.progress)
             mapModel.setMapName(mapName)
+            mapModel.setIsSpecial(mapName == _ALL_MAPS)
             mapModel.setRating(progressionData.minRank)
             mapModel.setIsBubble(not self.__mapboxController.isMapVisited(mapName) and mapData.available and mapData.progress == mapData.total)
             mapModel.setMapSurveyPassed(mapData.passed)

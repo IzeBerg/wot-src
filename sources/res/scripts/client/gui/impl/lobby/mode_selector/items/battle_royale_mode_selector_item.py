@@ -1,20 +1,29 @@
+from gui import GUI_SETTINGS
+from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
+from gui.Scaleform.locale.EPIC_BATTLE import EPIC_BATTLE
 from gui.impl import backport
+from gui.impl.backport.backport_tooltip import createAndLoadBackportTooltipWindow
 from gui.impl.gen import R
+from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_battle_royale_model import ModeSelectorBattleRoyaleModel
+from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_battle_royale_widget_model import BattleRoyaleProgressionStatus
 from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_card_types import ModeSelectorCardTypes
 from gui.impl.lobby.mode_selector.items import setBattlePassState
 from gui.impl.lobby.mode_selector.items.base_item import ModeSelectorLegacyItem
-from helpers import dependency, time_utils
 from gui.impl.lobby.mode_selector.items.items_constants import ModeSelectorRewardID
-from gui.Scaleform.locale.EPIC_BATTLE import EPIC_BATTLE
+from helpers import dependency, time_utils
 from skeletons.gui.game_control import IBattleRoyaleController
-from gui.impl.backport.backport_tooltip import createAndLoadBackportTooltipWindow
-from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
-from gui import GUI_SETTINGS
+from battle_royale_progression.skeletons.game_controller import IBRProgressionOnTokensController
 
 class BattleRoyaleModeSelectorItem(ModeSelectorLegacyItem):
     __slots__ = ()
+    _VIEW_MODEL = ModeSelectorBattleRoyaleModel
     _CARD_VISUAL_TYPE = ModeSelectorCardTypes.BATTLE_ROYALE
     __battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
+    brProgression = dependency.descriptor(IBRProgressionOnTokensController)
+
+    @property
+    def viewModel(self):
+        return super(BattleRoyaleModeSelectorItem, self).viewModel
 
     @property
     def hasExtendedCalendarTooltip(self):
@@ -30,11 +39,15 @@ class BattleRoyaleModeSelectorItem(ModeSelectorLegacyItem):
         super(BattleRoyaleModeSelectorItem, self)._onInitializing()
         self.__battleRoyaleController.onPrimeTimeStatusUpdated += self.__onUpdate
         self.__battleRoyaleController.onUpdated += self.__onUpdate
-        self.__fillViewModel()
+        self.brProgression.onProgressPointsUpdated += self.__fillWidgetData
+        self.brProgression.onSettingsChanged += self.__fillWidgetData
+        self.__onUpdate()
 
     def _onDisposing(self):
         self.__battleRoyaleController.onPrimeTimeStatusUpdated -= self.__onUpdate
         self.__battleRoyaleController.onUpdated -= self.__onUpdate
+        self.brProgression.onProgressPointsUpdated -= self.__fillWidgetData
+        self.brProgression.onSettingsChanged -= self.__fillWidgetData
         super(BattleRoyaleModeSelectorItem, self)._onDisposing()
 
     def _getIsDisabled(self):
@@ -47,6 +60,7 @@ class BattleRoyaleModeSelectorItem(ModeSelectorLegacyItem):
 
     def __onUpdate(self, *_):
         self.__fillViewModel()
+        self.__fillWidgetData()
 
     def __fillViewModel(self):
         with self.viewModel.transaction() as (vm):
@@ -80,3 +94,15 @@ class BattleRoyaleModeSelectorItem(ModeSelectorLegacyItem):
         vm.setStatusNotActive('')
         vm.setEventName('')
         vm.getRewardList().clear()
+
+    def __fillWidgetData(self):
+        if not self.brProgression.isEnabled:
+            with self.viewModel.widget.transaction() as (vm):
+                vm.setStatus(BattleRoyaleProgressionStatus.DISABLED)
+            return
+        data = self.brProgression.getCurrentStageData()
+        with self.viewModel.widget.transaction() as (vm):
+            vm.setStatus(BattleRoyaleProgressionStatus.ACTIVE)
+            vm.setCurrentStage(data['currentStage'])
+            vm.setStageCurrentPoints(data['stagePoints'])
+            vm.setStageMaximumPoints(data['stageMaxPoints'])

@@ -227,6 +227,10 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, BattleGUIKeyHandler,
         noShellIconPath = backport.image(R_AMMO_ICON.dyn(NO_AMMO_ICON.format(iconName))())
         self.as_addShellSlotS(idx, keyCode, sfKeyCode, quantity, gunSettings.clip.size, shellIconPath, noShellIconPath, tooltipText)
 
+    def _updateEquipmentSlotTooltipText(self, idx, item):
+        toolTip = self._buildEquipmentSlotTooltipText(item)
+        self.as_updateTooltipS(idx=idx, tooltipStr=toolTip)
+
     def _buildEquipmentSlotTooltipText(self, item):
         descriptor = item.getDescriptor()
         reloadingTime = item.getTotalTime()
@@ -238,7 +242,7 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, BattleGUIKeyHandler,
             if isSharedCooldownConfig:
                 cdSecVal = descriptor.cooldownTime
             else:
-                cdSecVal = descriptor.cooldownSeconds
+                cdSecVal = item.getTotalTime()
             battleModifiers = self.sessionProvider.arenaVisitor.getArenaModifiers()
             cooldownSeconds = str(int(battleModifiers(BattleParams.EQUIPMENT_COOLDOWN, cdSecVal)))
             paramsString = backport.text(tooltipStr, cooldownSeconds=cooldownSeconds)
@@ -300,6 +304,7 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, BattleGUIKeyHandler,
         self._setKeyHandler(item, bwKey, idx)
         self._updateEquipmentGlow(idx, item)
         self._updateActivatedSlot(idx, item)
+        self._updateEquipmentSlotTooltipText(idx, item)
 
     def _updateEquipmentGlow(self, idx, item):
         if item.isReusable or item.isAvatar() and item.getStage() != EQUIPMENT_STAGES.PREPARING:

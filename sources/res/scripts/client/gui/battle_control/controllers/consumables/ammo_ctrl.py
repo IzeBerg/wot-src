@@ -474,7 +474,7 @@ class AmmoController(MethodsRules, ViewComponentsController):
     def getGunSettings(self):
         return self.__gunSettings
 
-    def updateForNewSetup(self, gun, shells, resetShells=True):
+    def updateForNewSetup(self, gun, shells):
         currentShellCD, nextShellCD = self.getCurrentShellCD(), self.getNextShellCD()
         self.clear(leave=False)
         self.setGunSettings(gun)

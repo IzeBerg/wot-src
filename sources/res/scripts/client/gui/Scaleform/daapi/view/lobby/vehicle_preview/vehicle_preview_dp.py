@@ -1,4 +1,4 @@
-import logging, nations
+import logging, typing, nations
 from gui.Scaleform import MENU
 from gui import GUI_NATIONS_ORDER_INDEX_REVERSED
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
@@ -21,6 +21,8 @@ from items_kit_helper import getCompensateItemsCount, getDataOneVehicle, getData
 from items_kit_helper import getCouponDiscountForItemPack, getCouponBonusesForItemPack
 from skeletons.gui.shared import IItemsCache
 from web.web_client_api.common import CompensationType, ItemPackTypeGroup
+if typing.TYPE_CHECKING:
+    from typing import Dict, Any
 _logger = logging.getLogger(__name__)
 _CUSTOM_OFFER_ACTION_PERCENT = 100
 
@@ -102,9 +104,11 @@ class DefaultVehPreviewDataProvider(IVehPreviewDataProvider):
         return factory.UNLOCK_ITEM
 
     def getBuyingPanelData(self, item, data=None, isHeroTank=False, itemsPack=None):
-        isBuyingAvailable = not isHeroTank and (not item.isHidden or item.isRentable or item.isRestorePossible())
+        isBuyingAvailable = not isHeroTank and (not item.isHidden or item.isRentable or item.isRestorePossible()) and not item.isWotPlus
         uniqueVehicleTitle = ''
-        if not (isBuyingAvailable or isHeroTank):
+        if item.isWotPlus:
+            uniqueVehicleTitle = text_styles.tutorial(backport.text(R.strings.vehicle_preview.buyingPanel.availableForWotPlus()))
+        elif not (isBuyingAvailable or isHeroTank):
             uniqueVehicleTitle = text_styles.tutorial(backport.text(R.strings.vehicle_preview.buyingPanel.uniqueVehicleLabel()))
         compensationData = self.__getCompensationData(itemsPack)
         resultVO = {'setTitle': data.title, 

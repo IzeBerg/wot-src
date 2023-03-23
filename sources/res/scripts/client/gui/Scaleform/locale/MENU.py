@@ -40,7 +40,6 @@ class MENU(object):
     LOGIN_STATUS_INVALID_NICKNAME = '#menu:login/status/invalid_nickname'
     LOGIN_STATUS_INVALID_LOGIN = '#menu:login/status/invalid_login'
     LOGIN_STATUS_EMPTY_PASSWORD = '#menu:login/status/empty_password'
-    LOGIN_STATUS_INVALID_PASSWORD = '#menu:login/status/invalid_password'
     LOGIN_STATUS_EMPTY_SERVER = '#menu:login/status/empty_server'
     LOGIN_STATUS_CONNECTING = '#menu:login/status/connecting'
     LOGIN_STATUS_CHECKOUT_ERROR = '#menu:login/status/checkout_error'
@@ -172,6 +171,8 @@ class MENU(object):
     LOADING_BATTLETYPES_DESC_29 = '#menu:loading/battleTypes/desc/29'
     LOADING_BATTLETYPES_30 = '#menu:loading/battleTypes/30'
     LOADING_BATTLETYPES_DESC_30 = '#menu:loading/battleTypes/desc/30'
+    LOADING_BATTLETYPES_31 = '#menu:loading/battleTypes/31'
+    LOADING_BATTLETYPES_DESC_31 = '#menu:loading/battleTypes/desc/31'
     LOADING_TEAM1 = '#menu:loading/team1'
     LOADING_TEAM2 = '#menu:loading/team2'
     LOADING_TEAMS_ALLIES = '#menu:loading/teams/allies'
@@ -243,6 +244,7 @@ class MENU(object):
     TANKMANPERSONALCASE_TABDOCS = '#menu:tankmanPersonalCase/tabDocs'
     TANKMANPERSONALCASE_TABFREESKILLS = '#menu:tankmanPersonalCase/tabFreeSkills'
     TANKMANPERSONALCASE_TABSKILLS = '#menu:tankmanPersonalCase/tabSkills'
+    TANKMANPERSONALCASE_SITUATIONALDESC = '#menu:tankmanPersonalCase/situationalDesc'
     TANKMANPERSONALCASE_SKILLSDESC = '#menu:tankmanPersonalCase/skillsDesc'
     TANKMANPERSONALCASE_DROPSKILLSBUTTONLABEL = '#menu:tankmanPersonalCase/dropSkillsButtonLabel'
     TANKMANPERSONALCASE_ACCELERATETEACHINGOFSKILL = '#menu:tankmanPersonalCase/accelerateTeachingOfSkill'
@@ -308,6 +310,7 @@ class MENU(object):
     TANKCAROUSEL_VEHICLESTATES_UNSUITABLETOQUEUE = '#menu:tankCarousel/vehicleStates/unsuitableToQueue'
     TANKCAROUSEL_VEHICLESTATES_FALLOUT_ONLY = '#menu:tankCarousel/vehicleStates/fallout_only'
     TANKCAROUSEL_VEHICLESTATES_DEALISOVER = '#menu:tankCarousel/vehicleStates/dealIsOver'
+    TANKCAROUSEL_VEHICLESTATES_SUBSCRIPTION_SUSPENDED = '#menu:tankCarousel/vehicleStates/subscription_suspended'
     TANKCAROUSEL_STATSSTATUS_UNAVAILABLE = '#menu:tankCarousel/statsStatus/unavailable'
     TANKCAROUSEL_VEHICLESTATES_UNSUITABLETOUNIT = '#menu:tankCarousel/vehicleStates/unsuitableToUnit'
     TANKCAROUSEL_VEHICLESTATES_DISABLED = '#menu:tankCarousel/vehicleStates/disabled'
@@ -390,6 +393,7 @@ class MENU(object):
     CURRENTVEHICLESTATUS_ROTATIONGROUPUNLOCKED = '#menu:currentVehicleStatus/rotationGroupUnlocked'
     CURRENTVEHICLESTATUS_ROTATIONGROUPLOCKED = '#menu:currentVehicleStatus/rotationGroupLocked'
     CURRENTVEHICLESTATUS_WILLBEUNLOCKEDINBATTLE = '#menu:currentVehicleStatus/willBeUnlockedInBattle'
+    CURRENTVEHICLESTATUS_SUBSCRIPTION_SUSPENDED = '#menu:currentVehicleStatus/subscription_suspended'
     REPAIR_REPAIRSTATUS = '#menu:repair/repairstatus'
     REPAIR_CURIENCY = '#menu:repair/curiency'
     REPAIR_BUTTON = '#menu:repair/button'
@@ -638,7 +642,13 @@ class MENU(object):
     EXTRAPARAMS_DESC = '#menu:extraParams/desc'
     EXTRAPARAMS_NAME_VEHICLEGUNSHOTDISPERSION = '#menu:extraParams/name/vehicleGunShotDispersion'
     EXTRAPARAMS_NAME_VEHICLERELOADTIMEAFTERSHELLCHANGE = '#menu:extraParams/name/vehicleReloadTimeAfterShellChange'
+    EXTRAPARAMS_NAME_EQUIPMENTPREPARATIONTIME = '#menu:extraParams/name/equipmentPreparationTime'
     EXTRAPARAMS_NAME_VEHICLEREPAIRSPEED = '#menu:extraParams/name/vehicleRepairSpeed'
+    EXTRAPARAMS_NAME_FIREEXTINGUISHINGRATE = '#menu:extraParams/name/fireExtinguishingRate'
+    EXTRAPARAMS_NAME_RADIOMANACTIVITYTIMEAFTERVEHICLEDESTROY = '#menu:extraParams/name/radiomanActivityTimeAfterVehicleDestroy'
+    EXTRAPARAMS_NAME_WHEELSROTATIONSPEED = '#menu:extraParams/name/wheelsRotationSpeed'
+    EXTRAPARAMS_NAME_FOLIAGEMASKINGFACTOR = '#menu:extraParams/name/foliageMaskingFactor'
+    EXTRAPARAMS_NAME_VEHICLEOWNSPOTTINGTIME = '#menu:extraParams/name/vehicleOwnSpottingTime'
     EXTRAPARAMS_NAME_VEHICLERAMOREXPLOSIONDAMAGERESISTANCE = '#menu:extraParams/name/vehicleRamOrExplosionDamageResistance'
     EXTRAPARAMS_NAME_CREWHITCHANCE = '#menu:extraParams/name/crewHitChance'
     EXTRAPARAMS_NAME_CREWSTUNDURATION = '#menu:extraParams/name/crewStunDuration'
@@ -651,8 +661,13 @@ class MENU(object):
     EXTRAPARAMS_NAME_VEHPENALTYFORDAMAGEENGINEANDCOMBAT = '#menu:extraParams/name/vehPenaltyForDamageEngineAndCombat'
     EXTRAPARAMS_NAME_VEHICLEFIRECHANCE = '#menu:extraParams/name/vehicleFireChance'
     EXTRAPARAMS_NAME_VEHICLESPEEDGAIN = '#menu:extraParams/name/vehicleSpeedGain'
+    EXTRAPARAMS_NAME_VEHICLEAVERAGESOILRESISTANCE = '#menu:extraParams/name/vehicleAverageSoilResistance'
+    EXTRAPARAMS_NAME_VEHICLEWEAKSOILRESISTANCE = '#menu:extraParams/name/vehicleWeakSoilResistance'
     EXTRAPARAMS_NAME_VEHICLEENEMYSPOTTINGTIME = '#menu:extraParams/name/vehicleEnemySpottingTime'
-    EXTRAPARAMS_NAME_VEHICLEOWNSPOTTINGTIME = '#menu:extraParams/name/vehicleOwnSpottingTime'
+    EXTRAPARAMS_NAME_CIRCULARVISIONRADIUSWHILESURVEYINGDEVICEDAMAGED = '#menu:extraParams/name/circularVisionRadiusWhileSurveyingDeviceDamaged'
+    EXTRAPARAMS_NAME_DAMAGEDMODULESDETECTIONTIME = '#menu:extraParams/name/damagedModulesDetectionTime'
+    EXTRAPARAMS_NAME_VEHICLEALLYRADIODISTANCE = '#menu:extraParams/name/vehicleAllyRadioDistance'
+    EXTRAPARAMS_NAME_ARTNOTIFICATIONDELAYFACTOR = '#menu:extraParams/name/artNotificationDelayFactor'
     EXTRAPARAMS_NAME_DEMASKMOVINGFACTOR = '#menu:extraParams/name/demaskMovingFactor'
     EXTRAPARAMS_NAME_DEMASKFOLIAGEFACTOR = '#menu:extraParams/name/demaskFoliageFactor'
     EXTRAPARAMS_NAME_VEHICLEGUNSHOTDISPERSIONAFTERSHOT = '#menu:extraParams/name/vehicleGunShotDispersionAfterShot'
@@ -661,8 +676,17 @@ class MENU(object):
     EXTRAPARAMS_NAME_VEHICLEGUNSHOTDISPERSIONTURRETROTATION = '#menu:extraParams/name/vehicleGunShotDispersionTurretRotation'
     EXTRAPARAMS_NAME_VEHICLEGUNSHOTDISPERSIONWHILEGUNDAMAGED = '#menu:extraParams/name/vehicleGunShotDispersionWhileGunDamaged'
     EXTRAPARAMS_NAME_VEHICLERAMDAMAGERESISTANCE = '#menu:extraParams/name/vehicleRamDamageResistance'
+    EXTRAPARAMS_NAME_STUNRESISTANCEEFFECTFACTOR = '#menu:extraParams/name/stunResistanceEffectFactor'
+    EXTRAPARAMS_NAME_COMMANDERHITCHANCE = '#menu:extraParams/name/commanderHitChance'
+    EXTRAPARAMS_NAME_RADIOMANHITCHANCE = '#menu:extraParams/name/radiomanHitChance'
+    EXTRAPARAMS_NAME_WOUNDEDCREWEFFICIENCY = '#menu:extraParams/name/woundedCrewEfficiency'
+    EXTRAPARAMS_NAME_VEHICLEFUELTANKLESIONCHANCE = '#menu:extraParams/name/vehicleFuelTankLesionChance'
+    EXTRAPARAMS_NAME_VEHICLERAMCHASSISDAMAGERESISTANCE = '#menu:extraParams/name/vehicleRamChassisDamageResistance'
     EXTRAPARAMS_NAME_DAMAGEENEMIESBYRAMMING = '#menu:extraParams/name/damageEnemiesByRamming'
     EXTRAPARAMS_NAME_VEHICLEINVISIBILITYAFTERSHOT = '#menu:extraParams/name/vehicleInvisibilityAfterShot'
+    EXTRAPARAMS_NAME_DAMAGEANDPIERCINGDISTRIBUTIONLOWERBOUND = '#menu:extraParams/name/damageAndPiercingDistributionLowerBound'
+    EXTRAPARAMS_NAME_DAMAGEANDPIERCINGDISTRIBUTIONUPPERBOUND = '#menu:extraParams/name/damageAndPiercingDistributionUpperBound'
+    EXTRAPARAMS_NAME_ENEMYMODULESCREWCRITCHANCE = '#menu:extraParams/name/enemyModulesCrewCritChance'
     DESCRIPTIONS_VEHICLE = '#menu:descriptions/vehicle'
     DESCRIPTIONS_VEHICLEGUN = '#menu:descriptions/vehicleGun'
     DESCRIPTIONS_VEHICLEGUN_AUTORELOAD = '#menu:descriptions/vehicleGun/autoReload'
@@ -718,6 +742,7 @@ class MENU(object):
     HEADERBUTTONS_BATTLE_TYPES_BATTLEROYALESQUAD_DESCRIPTION = '#menu:headerButtons/battle/types/battleRoyaleSquad/description'
     HEADERBUTTONS_BATTLE_TYPES_TRAINING = '#menu:headerButtons/battle/types/training'
     HEADERBUTTONS_BATTLE_TYPES_TRAINING_DESCR = '#menu:headerButtons/battle/types/training/descr'
+    HEADERBUTTONS_BATTLE_TYPES_WINBACK = '#menu:headerButtons/battle/types/winback'
     HEADERBUTTONS_BATTLE_TYPES_EPICTRAINING = '#menu:headerButtons/battle/types/epicTraining'
     HEADERBUTTONS_BATTLE_TYPES_EPICTRAINING_DESCR = '#menu:headerButtons/battle/types/epicTraining/descr'
     HEADERBUTTONS_BATTLE_TYPES_LEAVETRAINING_DESCR = '#menu:headerButtons/battle/types/leaveTraining/descr'
@@ -2448,6 +2473,7 @@ class MENU(object):
      TANKCAROUSEL_VEHICLESTATES_UNSUITABLETOQUEUE,
      TANKCAROUSEL_VEHICLESTATES_FALLOUT_ONLY,
      TANKCAROUSEL_VEHICLESTATES_DEALISOVER,
+     TANKCAROUSEL_VEHICLESTATES_SUBSCRIPTION_SUSPENDED,
      TANKCAROUSEL_VEHICLESTATES_UNSUITABLETOUNIT,
      TANKCAROUSEL_VEHICLESTATES_DISABLED,
      TANKCAROUSEL_VEHICLESTATES_TOOHEAVY,
@@ -2774,7 +2800,8 @@ class MENU(object):
      LOADING_BATTLETYPES_DESC_26,
      LOADING_BATTLETYPES_DESC_28,
      LOADING_BATTLETYPES_DESC_29,
-     LOADING_BATTLETYPES_DESC_30)
+     LOADING_BATTLETYPES_DESC_30,
+     LOADING_BATTLETYPES_DESC_31)
     LOADING_BATTLETYPES_ENUM = (
      LOADING_BATTLETYPES_0,
      LOADING_BATTLETYPES_DESC_0,
@@ -2831,7 +2858,9 @@ class MENU(object):
      LOADING_BATTLETYPES_29,
      LOADING_BATTLETYPES_DESC_29,
      LOADING_BATTLETYPES_30,
-     LOADING_BATTLETYPES_DESC_30)
+     LOADING_BATTLETYPES_DESC_30,
+     LOADING_BATTLETYPES_31,
+     LOADING_BATTLETYPES_DESC_31)
     CST_ITEM_CTX_MENU_ENUM = (
      CST_ITEM_CTX_MENU_BUY,
      CST_ITEM_CTX_MENU_EXCHANGE,

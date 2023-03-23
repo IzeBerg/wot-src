@@ -17,6 +17,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onGroupChange:Function;
       
+      public var onCheckNewsClick:Function;
+      
       private var _notificationViewInitVO:NotificationViewInitVO;
       
       private var _notificationMessagesListVO:NotificationMessagesListVO;
@@ -64,6 +66,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onGroupChange,"onGroupChange" + Errors.CANT_NULL);
          this.onGroupChange(param1);
+      }
+      
+      public function onCheckNewsClickS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onCheckNewsClick,"onCheckNewsClick" + Errors.CANT_NULL);
+         this.onCheckNewsClick();
       }
       
       public final function as_setInitData(param1:Object) : void

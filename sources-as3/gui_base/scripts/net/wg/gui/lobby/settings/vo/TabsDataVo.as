@@ -10,6 +10,8 @@ package net.wg.gui.lobby.settings.vo
       
       public var linkage:String = "";
       
+      public var alias:String = "";
+      
       public function TabsDataVo(param1:Object)
       {
          super(param1);

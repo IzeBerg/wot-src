@@ -4,7 +4,9 @@ package net.wg.gui.battle.views.ribbonsPanel
    import flash.display.MovieClip;
    import flash.text.TextField;
    import net.wg.data.constants.Linkages;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
+   import net.wg.data.constants.generated.BATTLE_EFFICIENCY_TYPES;
    import net.wg.gui.battle.views.ribbonsPanel.data.RibbonAnimationStates;
    import net.wg.gui.components.ribbon.RibbonIcons;
    import net.wg.gui.components.ribbon.RibbonTexts;
@@ -60,6 +62,8 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       private var _animationState:String = "invisible";
       
+      private var _ribbonSettings:RibbonSettings = null;
+      
       private var _icons:RibbonIcons = null;
       
       private var _texts:RibbonTexts = null;
@@ -99,9 +103,10 @@ package net.wg.gui.battle.views.ribbonsPanel
       public function RibbonCtrl(param1:RibbonSettings, param2:Function)
       {
          super();
+         this._ribbonSettings = param1;
          this._scheduler = App.utils.scheduler;
          this._colorMgr = App.colorSchemeMgr;
-         this.ribbonType = param1.getRibbonType();
+         this.ribbonType = this._ribbonSettings.getRibbonType();
          var _loc3_:IClassFactory = App.utils.classFactory;
          var _loc4_:Class = _loc3_.getClass(Linkages.RIBBONS_ANIMATION_SET);
          this.iconsAnim = new _loc4_();
@@ -111,9 +116,9 @@ package net.wg.gui.battle.views.ribbonsPanel
          this._texts = _loc3_.getComponent(Linkages.RIBBON_TEXT,RibbonTexts);
          this.textsAnim.init(this._texts);
          this.iconsAnim.init(this._icons);
-         this._texts.init(param1);
+         this._texts.init(this._ribbonSettings);
          var _loc5_:TextField = this._texts.ribbonNameTF;
-         this._icons.init(ATLAS_CONSTANTS.BATTLE_ATLAS,param1,_loc5_.x + _loc5_.textWidth);
+         this._icons.init(ATLAS_CONSTANTS.BATTLE_ATLAS,this._ribbonSettings,_loc5_.x + _loc5_.textWidth);
          this.iconsAnim.addFrameScript(this._hideLeftLastFrameIdx,this.onHideAnimCompleteFrameHandler);
          this.iconsAnim.addFrameScript(this._hideBottomLastFrameIdx,this.onHideAnimCompleteFrameHandler);
          this.iconsAnim.addFrameScript(this._shiftLastFrameIdx,this.onShiftPositionAnimCompleteFrameHandler);
@@ -160,6 +165,7 @@ package net.wg.gui.battle.views.ribbonsPanel
          this.bonusAnim = null;
          this._bonus.dispose();
          this._bonus = null;
+         this._ribbonSettings = null;
       }
       
       public function hideByOrder(param1:int) : void
@@ -237,7 +243,15 @@ package net.wg.gui.battle.views.ribbonsPanel
          this._scheduler.scheduleTask(this.onLifetimeCooldown,LIFE_TIME);
          this.ribbonId = param1;
          this._isBonus = !StringUtils.isEmpty(param6);
-         this._texts.setData(param3,param2,param5,param4);
+         if(this.ribbonType == BATTLE_EFFICIENCY_TYPES.PERK)
+         {
+            this.updatePerkRibbonProperties(param3,param5);
+            this._texts.setData(Values.EMPTY_STR,param2,Values.EMPTY_STR,param4);
+         }
+         else
+         {
+            this._texts.setData(param3,param2,param5,param4);
+         }
          this._icons.setDamageSourceIcon(param4);
          this._bonus.update(param6,param7);
          if(this._animationState == RibbonAnimationStates.IS_STATIC_SHOW)
@@ -246,6 +260,13 @@ package net.wg.gui.battle.views.ribbonsPanel
          }
          this._texts.showUpdateAnim();
          this._bonus.show();
+      }
+      
+      private function updatePerkRibbonProperties(param1:String, param2:String) : void
+      {
+         this._ribbonSettings.updateRibbonProperties(param1,param2);
+         this._texts.init(this._ribbonSettings);
+         this._icons.updateIcons();
       }
       
       private function checkAnimSetFrameIdxs(param1:AnimationSet) : void
