@@ -1,6 +1,5 @@
 import AccountCommands
-from items.AbilitiesManager import AbilitiesManager
-from CurrentVehicle import g_currentVehicle
+from items.abilities_manager import AbilitiesManager
 
 class AbilitiesHelper(object):
 
@@ -38,11 +37,8 @@ class AbilitiesHelper(object):
             perksListRes.extend(perksList)
             self.__account._doCmdIntArr(AccountCommands.CMD_ADD_PERK_TO_BATTLE, perksListRes, proxy)
         else:
-            perks = [ (perksList[i], perksList[(i + 1)]) for i in range(0, len(perksList), 2) ]
+            perks = {perksList[i]:perksList[(i + 1)] for i in xrange(0, len(perksList), 2)}
             self.abilitiesManager.addBuild(vehicleID, 'debug' + str(scopeIndex), perks)
-            if not g_currentVehicle.item:
-                return
-            self.reloadPerks(vehicleID)
         return
 
     def resetPerks(self, battle, vehicleID, callback=None):
@@ -58,13 +54,4 @@ class AbilitiesHelper(object):
             self.__account._doCmdInt2(AccountCommands.CMD_RESET_PERK_FOR_BATTLE, vehicleID, 0, proxy)
         else:
             self.abilitiesManager.removePerksByVehicle(vehicleID)
-        self.reloadPerks(vehicleID)
         return
-
-    def reloadPerks(self, vehicleID):
-        if vehicleID != g_currentVehicle.invID:
-            return
-        perksController = g_currentVehicle.item.getPerksController()
-        if perksController:
-            scopedPerks = self.abilitiesManager.getPerksByVehicle(vehicleID)
-            perksController.reload(scopedPerks)

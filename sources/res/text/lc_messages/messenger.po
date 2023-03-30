@@ -994,6 +994,12 @@ msgstr "Специальных предложений"
 msgid "listView/emptyList/template"
 msgstr "%(listType)s пока не поступало."
 
+msgid "listView/news/checkNewsBtn"
+msgstr "К новостям"
+
+msgid "listView/news/header"
+msgstr "ЧТО НОВОГО?"
+
 msgid "listView/title"
 msgstr "Центр уведомлений"
 
@@ -1528,6 +1534,9 @@ msgstr "Получено очков"
 
 msgid "serviceChannelMessages/BRbattleResults/victory"
 msgstr "Победа"
+
+msgid "serviceChannelMessages/Financial/add"
+msgstr "Добавлено"
 
 msgid "serviceChannelMessages/achievementReceived/message"
 msgstr "Достижения"
@@ -2223,6 +2232,9 @@ msgstr "%(label)s x%(count)s"
 msgid "serviceChannelMessages/crewSkinsCount"
 msgstr "%(label)s x%(count)s"
 
+msgid "serviceChannelMessages/currenciesReserves/smash/title"
+msgstr "?empty?"
+
 msgid "serviceChannelMessages/currencyUpdate/auction"
 msgstr "Аукцион"
 
@@ -2357,6 +2369,12 @@ msgstr "• Бланки переподготовки"
 
 msgid "serviceChannelMessages/eventCoinReceivedAsGift"
 msgstr "От администрации получено юбилейных монет: %(eventCoin)s."
+
+msgid "serviceChannelMessages/excludedMap/available/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/excludedMap/unavailable/title"
+msgstr "?empty?"
 
 msgid "serviceChannelMessages/failedPersonalMission"
 msgstr "Прогресс сброшен"
@@ -2797,6 +2815,9 @@ msgstr "Списано нераспределённого опыта с член
 msgid "serviceChannelMessages/invoiceReceived/tankmenToRemove"
 msgstr "Демобилизованные"
 
+msgid "serviceChannelMessages/invoiceReceived/unlockedModules"
+msgstr "исследованы все модули"
+
 msgid "serviceChannelMessages/invoiceReceived/vehicleBlueprintsAccrued"
 msgstr "Начислено фрагментов чертежей на %(vehicleName)s"
 
@@ -2907,13 +2928,13 @@ msgid "serviceChannelMessages/mapbox/rewardReceived"
 msgstr "Получена награда:"
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/allMaps"
-msgstr "Вы можете проголосовать за лучшую карту в режиме «Разведка боем»."
+msgstr "Вы можете пройти опрос о механиках режима «Разведка боем»."
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/header"
 msgstr "Доступен опрос"
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/singleMap"
-msgstr "Вы можете пройти опрос о карте %(mapName)s в режиме «Разведка боем»."
+msgstr "Вы можете пройти опрос о карте %(mapName)s режима «Разведка боем»."
 
 msgid "serviceChannelMessages/multiplier"
 msgstr " (x%(count)s)"
@@ -2935,6 +2956,12 @@ msgstr "Конвертация личных резервов"
 
 msgid "serviceChannelMessages/piggyBank/continueAfterSmashed"
 msgstr "Начался новый цикл накопления."
+
+msgid "serviceChannelMessages/piggyBank/continueAfterSmashed/goldBank"
+msgstr "Начался новый цикл накопления."
+
+msgid "serviceChannelMessages/piggyBank/continueAfterSmashed/piggyBankWotPlus"
+msgstr "?empty?"
 
 msgid "serviceChannelMessages/piggyBank/onPause"
 msgstr "Накопление кредитов в хранилище приостановлено."
@@ -3577,6 +3604,48 @@ msgstr ""
 "%(srcWares)s золота отправлено игроку %(dstName)s. Комиссия составила "
 "%(fee)s."
 
+msgid "serviceChannelMessages/winback/awards/blueprints"
+msgstr "Скидка на машину %(level)s уровня"
+
+msgid "serviceChannelMessages/winback/awards/body"
+msgstr "За прохождение прогрессии «Снова в строй» получены награды:"
+
+msgid "serviceChannelMessages/winback/awards/button"
+msgstr "Выбрать награду"
+
+msgid "serviceChannelMessages/winback/awards/discount"
+msgstr "Скидка на машину %(level)s уровня"
+
+msgid "serviceChannelMessages/winback/awards/discountConcrete"
+msgstr "%(name)s (%(expDiscount)d%% и %(creditDiscount)d%%)"
+
+msgid "serviceChannelMessages/winback/awards/discountHeader"
+msgstr "Добавлена скидка на исследование и покупку: "
+
+msgid "serviceChannelMessages/winback/awards/header"
+msgstr "Поздравляем!"
+
+msgid "serviceChannelMessages/winback/awards/vehicle"
+msgstr "Машина %(level)s уровня"
+
+msgid "serviceChannelMessages/winbackSelectableRewardEntry/body"
+msgstr "Выберите награды из доступных категорий."
+
+msgid "serviceChannelMessages/winbackSelectableRewardEntry/button"
+msgstr "Выбрать"
+
+msgid "serviceChannelMessages/winbackSelectableRewardEntry/header"
+msgstr "Получены награды!"
+
+msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/subscribed/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/unsubscribed/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/expireFreeDemount/title"
+msgstr "?empty?"
+
 msgid "serviceChannelMessages/wotPlus/expireMessage/text"
 msgstr "?empty?"
 
@@ -3613,6 +3682,15 @@ msgstr "?empty?"
 msgid "serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/text"
 msgstr "?empty?"
 
+msgid "serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/title"
+msgstr "Курс подготовки экипажа"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/isActivated/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/isDeactivated/text"
+msgstr "?empty?"
+
 msgid "serviceChannelMessages/wotPlus/passiveXP/isDisabled/text"
 msgstr "?empty?"
 
@@ -3625,16 +3703,19 @@ msgstr "?empty?"
 msgid "serviceChannelMessages/wotPlus/passiveXP/noTank/text"
 msgstr "?empty?"
 
+msgid "serviceChannelMessages/wotPlus/passiveXP/switching/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/switching/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/wasting/text"
+msgstr "?empty?"
+
 msgid "serviceChannelMessages/wotPlus/passiveXP/wasting/title"
 msgstr "?empty?"
 
 msgid "serviceChannelMessages/wotPlus/renewMessage/title"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/wotPlus/rental/end/text"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/wotPlus/rental/end/title"
 msgstr "?empty?"
 
 msgid "serviceChannelMessages/wotPlus/rental/noTank/text"
@@ -3643,20 +3724,20 @@ msgstr "?empty?"
 msgid "serviceChannelMessages/wotPlus/rental/noTank/title"
 msgstr "?empty?"
 
-msgid "serviceChannelMessages/wotPlus/tankRental/isDisabled/text"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/wotPlus/tankRental/isDisabled/title"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/wotPlus/tankRental/isEnabled/title"
-msgstr "?empty?"
-
 msgid "serviceChannelMessages/wotPlus/tankRental/isPending/text"
 msgstr "Машина %(vehicle)s будет начислена на ваш аккаунт в ближайшее время."
 
 msgid "serviceChannelMessages/wotPlus/tankRental/isPending/title"
 msgstr "Получено в аренду!"
+
+msgid "serviceChannelMessages/wotPlus/unavailableMessage/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/unavailableMessage/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/unlockFreeDemount/title"
+msgstr "?empty?"
 
 msgid "serviceChannelMessages/wotPlus/unlockMessage/title"
 msgstr "?empty?"

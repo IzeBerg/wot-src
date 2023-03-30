@@ -38,6 +38,8 @@ package net.wg.data.constants.generated
       public static const BATTLE_ROYALE_SQUAD:String = "battleRoyaleSquad";
       
       public static const COMP7:String = "comp7";
+      
+      public static const COMP7_SEASON2:String = "comp7_s2";
        
       
       public function PROFILE_DROPDOWN_KEYS()

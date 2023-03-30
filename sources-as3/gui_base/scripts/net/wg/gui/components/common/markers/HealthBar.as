@@ -123,16 +123,6 @@ package net.wg.gui.components.common.markers
          }
       }
       
-      override protected function onDispose() : void
-      {
-         this.hitSplash.removeEventListener(HealthBarAnimatedPart.SHOW,this.onSplashVisible);
-         this.hitSplash.removeEventListener(HealthBarAnimatedPart.HIDE,this.onSplashHidden);
-         this.hitSplash.dispose();
-         this.hitSplash = null;
-         this.healthBar = null;
-         super.onDispose();
-      }
-      
       private function onSplashVisible(param1:Event) : void
       {
          invalidate(INVALIDATE_BAR);

@@ -258,7 +258,7 @@ class REQ_CRITERIA(object):
         IS_OUTFIT_LOCKED = RequestCriteria(PredicateCondition(lambda item: item.isOutfitLocked))
         EXPIRED_IGR_RENT = RequestCriteria(PredicateCondition(lambda item: item.isRented and item.rentalIsOver and item.isPremiumIGR))
         RENT_PROMOTION = RequestCriteria(PredicateCondition(lambda item: item.isRentPromotion))
-        WOTPLUS_RENT = RequestCriteria(PredicateCondition(lambda item: item.isWotPlusRent))
+        WOT_PLUS_VEHICLE = RequestCriteria(PredicateCondition(lambda item: item.isWotPlus))
         TELECOM_RENT = RequestCriteria(PredicateCondition(lambda item: item.isTelecomRent))
         SEASON_RENT = RequestCriteria(PredicateCondition(lambda item: item.isSeasonRent))
         DISABLED_IN_PREM_IGR = RequestCriteria(PredicateCondition(lambda item: item.isDisabledInPremIGR))
@@ -674,11 +674,7 @@ Parse error at or near `None' instruction at offset -1
 
     def clear(self):
         while self.__itemsCache:
-            itemsType, cache = self.__itemsCache.popitem()
-            if itemsType == GUI_ITEM_TYPE.VEHICLE:
-                for item in cache.itervalues():
-                    item.stopPerksController()
-
+            _, cache = self.__itemsCache.popitem()
             cache.clear()
 
         self.__vehCustomStateCache.clear()
@@ -889,6 +885,7 @@ Parse error at or near `None' instruction at offset -1
         copyVehicle.consumables.setInstalled(*vehicle.consumables.installed)
         copyVehicle.battleBoosters.setInstalled(*vehicle.battleBoosters.installed)
         copyVehicle.installPostProgression(vehicle.postProgression.getState(), ignoreDisabledProgression)
+        copyVehicle.initCrew()
         copyVehicle.crew = vehicle.crew
         return copyVehicle
 
@@ -1150,7 +1147,6 @@ Parse error at or near `None' instruction at offset -1
                 self.__vehCustomStateCache[uid] = item.getCustomState()
             elif uid in self.__vehCustomStateCache:
                 del self.__vehCustomStateCache[uid]
-            item.stopPerksController()
         del cache[uid]
 
     def __getAccountDossierDescr(self):

@@ -23,6 +23,8 @@ package net.wg.gui.lobby.battleResults.progressReport
       
       private var _isFreeSkill:Boolean = false;
       
+      private var _linkBtnHasListeners:Boolean = false;
+      
       public function NewSkillInfo()
       {
          this._tooltipMgr = App.toolTipMgr;
@@ -32,9 +34,12 @@ package net.wg.gui.lobby.battleResults.progressReport
       override protected function onDispose() : void
       {
          this.title = null;
-         this.linkBtn.removeEventListener(ButtonEvent.CLICK,this.onLinkBtnClickHandler);
-         this.linkBtn.removeEventListener(MouseEvent.ROLL_OUT,this.onLinkBtnRollOutHandler);
-         this.linkBtn.removeEventListener(MouseEvent.ROLL_OVER,this.onLinkBtnRollOverHandler);
+         if(this._linkBtnHasListeners)
+         {
+            this.linkBtn.removeEventListener(ButtonEvent.CLICK,this.onLinkBtnClickHandler);
+            this.linkBtn.removeEventListener(MouseEvent.ROLL_OUT,this.onLinkBtnRollOutHandler);
+            this.linkBtn.removeEventListener(MouseEvent.ROLL_OVER,this.onLinkBtnRollOverHandler);
+         }
          this.linkBtn.dispose();
          this.linkBtn = null;
          if(this._data)
@@ -53,9 +58,13 @@ package net.wg.gui.lobby.battleResults.progressReport
          this.linkBtn.focusable = false;
          this.linkBtn.mouseEnabledOnDisabled = true;
          this.linkBtn.mutedSoundTypes = [MouseEvent.MOUSE_DOWN];
-         this.linkBtn.addEventListener(ButtonEvent.CLICK,this.onLinkBtnClickHandler);
-         this.linkBtn.addEventListener(MouseEvent.ROLL_OUT,this.onLinkBtnRollOutHandler);
-         this.linkBtn.addEventListener(MouseEvent.ROLL_OVER,this.onLinkBtnRollOverHandler);
+         if(!this._linkBtnHasListeners)
+         {
+            this._linkBtnHasListeners = true;
+            this.linkBtn.addEventListener(ButtonEvent.CLICK,this.onLinkBtnClickHandler);
+            this.linkBtn.addEventListener(MouseEvent.ROLL_OUT,this.onLinkBtnRollOutHandler);
+            this.linkBtn.addEventListener(MouseEvent.ROLL_OVER,this.onLinkBtnRollOverHandler);
+         }
       }
       
       public function setData(param1:BattleResultUnlockItemVO, param2:Boolean = false) : void

@@ -215,7 +215,7 @@ package net.wg.gui.lobby.rankedBattles19
          this.header.y = this._headerHelper.getYOffset(_loc3_);
          closeBtn.y = this.header.y + this._headerHelper.getCloseBtnYOffset(_loc3_);
          var _loc4_:String = Values.EMPTY_STR;
-         if(param1 < StageSizeBoundaries.WIDTH_1366)
+         if(param1 == StageSizeBoundaries.WIDTH_1024)
          {
             _loc4_ = Linkages.SIDE_BAR_SMALL_RENDERER;
             this._itemRendererHeight = MENU_RENDERER_SMALL_HEIGHT;

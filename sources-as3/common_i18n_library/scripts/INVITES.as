@@ -3,8 +3,6 @@ package
    public class INVITES
    {
       
-      public static const INVITES_TEXT_EPIC:String = "#invites:invites/text/EPIC";
-      
       public static const ERRORS_UNKNOWNUSER:String = "#invites:errors/unknownuser";
       
       public static const ERRORS_USEROFFLINE:String = "#invites:errors/useroffline";
@@ -72,6 +70,8 @@ package
       public static const INVITES_TEXT_STRONGHOLD:String = "#invites:invites/text/STRONGHOLD";
       
       public static const INVITES_TEXT_MAPBOX:String = "#invites:invites/text/MAPBOX";
+      
+      public static const INVITES_TEXT_EPIC:String = "#invites:invites/text/EPIC";
       
       public static const INVITES_TEXT_COMP7:String = "#invites:invites/text/COMP7";
       
@@ -228,6 +228,14 @@ package
       public static const INVITES_NOTE_LEAVE_PREBATTLE_COMP7:String = "#invites:invites/note/leave/PREBATTLE_COMP7";
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_COMP7:String = "#invites:invites/note/change_and_leave/PREBATTLE_COMP7";
+      
+      public static const INVITES_NOTE_LEAVE_QUEUE_WINBACK:String = "#invites:invites/note/leave/QUEUE_WINBACK";
+      
+      public static const INVITES_NOTE_CHANGE_AND_LEAVE_QUEUE_WINBACK:String = "#invites:invites/note/change_and_leave/QUEUE_WINBACK";
+      
+      public static const INVITES_NOTE_LEAVE_PERMANENTLY_QUEUE_WINBACK:String = "#invites:invites/note/leave_permanently/QUEUE_WINBACK";
+      
+      public static const INVITES_NOTE_CHANGE_AND_LEAVE_PERMANENTLY_QUEUE_WINBACK:String = "#invites:invites/note/change_and_leave_permanently/QUEUE_WINBACK";
       
       public static const INVITES_WARNING_ANONYMIZED:String = "#invites:invites/warning/anonymized";
       

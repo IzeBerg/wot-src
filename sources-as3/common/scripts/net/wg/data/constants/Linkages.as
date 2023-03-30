@@ -119,6 +119,8 @@ package net.wg.data.constants
       
       public static const PROGRESSIVE_REWARD_WIDGET:String = "ProgressiveRewardWidgetUI";
       
+      public static const PERK_ITEM_UI:String = "PerkItemUI";
+      
       public static const GHOST_TOGGLE_RENDERER_UI:String = "GhostToggleRendererUI";
       
       public static const INVITES_FRIENDS:String = "FriendsListFromUI";
@@ -657,6 +659,8 @@ package net.wg.data.constants
       
       public static const VEHICLE_MINIMAP_BEARER_ANIMATION:String = "VehicleMinimapBearerAnimation";
       
+      public static const MINIMAP_SCENARIO_LAYOUT:String = "ScenarioLayerUI";
+      
       public static const COUNTER_UI:String = "CounterUI";
       
       public static const COUNTER_LINE_UI:String = "NewCounterLineUI";
@@ -1040,8 +1044,6 @@ package net.wg.data.constants
       public static const BATTLE_MATTERS_ENTRY_POINT:String = "BattleMattersEntryPointUI";
       
       public static const BATTLE_MATTERS_ANIM_LOADER:String = "BattleMattersAnimLoaderUI";
-      
-      public static const COLLECTIVE_GOAL_ENTRY_POINT:String = "CollectiveGoalEntryPointUI";
       
       public static const PLAYERS_PANEL_POI_PROGRESS_BAR_UI:String = "PlayersPanelPoiProgressBarUI";
       

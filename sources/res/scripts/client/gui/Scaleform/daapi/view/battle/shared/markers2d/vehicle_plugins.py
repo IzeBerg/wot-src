@@ -49,7 +49,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
     __slots__ = ('_markers', '_markersStates', '_clazz', '_isSquadIndicatorEnabled',
                  '_markerTimers', '__callbackIDs', '__playerVehicleID', '__showDamageIcon',
                  '__hiddenEvents', '__targetedTankMarkerID', '__targetedMarkerFromCppID',
-                 '__followingIgnoredTank', '__interval')
+                 '__interval', '__followingIgnoredTank')
 
     def __init__(self, parentObj, clazz=markers.VehicleMarker):
         super(VehicleMarkerPlugin, self).__init__(parentObj)

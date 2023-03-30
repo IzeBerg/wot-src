@@ -15,8 +15,6 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
    public class MainMenuButtonBar extends ButtonBar
    {
       
-      private static const MAX_WIDTH:int = 1024;
-      
       private static const PREBATTLE:String = "prebattle";
       
       private static const INVALIDATE_RENDERER_SIZE:String = "invalidateRendererSize";
@@ -253,18 +251,7 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
          {
             _loc1_ = _renderers[_loc7_];
             _loc4_ = _loc1_.width + spacing;
-            if(_loc3_ + _loc4_ > MAX_WIDTH)
-            {
-               this.disposeRenderer(_loc1_);
-               if(_loc2_ == 0)
-               {
-                  _loc2_ = _loc7_;
-               }
-            }
-            else
-            {
-               _loc3_ += _loc4_;
-            }
+            _loc3_ += _loc4_;
             _loc7_++;
          }
          if(_loc2_)

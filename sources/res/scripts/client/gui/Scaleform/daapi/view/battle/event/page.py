@@ -28,7 +28,9 @@ EVENT_CONFIG = ComponentsConfig(config=(
  (
   BATTLE_CTRL_ID.DEBUG, (BATTLE_VIEW_ALIASES.DEBUG_PANEL,)),
  (
-  BATTLE_CTRL_ID.MAPS, (BATTLE_VIEW_ALIASES.MINIMAP,))), viewsConfig=())
+  BATTLE_CTRL_ID.MAPS, (BATTLE_VIEW_ALIASES.MINIMAP,)),
+ (
+  BATTLE_CTRL_ID.PERKS, (BATTLE_VIEW_ALIASES.PERKS_PANEL,))), viewsConfig=())
 _TUTORIAL_PAGES = ('eventHint1', 'eventHint2')
 _EVENT_EXTERNAL_COMPONENTS = (
  CrosshairPanelContainer, EventMarkersManager)

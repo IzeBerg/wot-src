@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<htmlTemplates>
+		<BattleRoyaleProgressionSystemMessage>
+			<type>grey</type>
+			<icon>br_progression_icon</icon>
+			<bgIcon>br_notification_background</bgIcon>
+			<priority>low</priority>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(body)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#battle_royale_progression.battle_royale_progression:serviceChannelMessages/awards)&lt;/font&gt;&lt;br/&gt;%(awards)s</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#battle_royale_progression.battle_royale_progression:serviceChannelMessages/progressionButton)</label>
+					<action>showBattleRoyaleProgression</action>
+				</button>
+			</buttonsLayout>
+		</BattleRoyaleProgressionSystemMessage>
+	</htmlTemplates>
+</root>

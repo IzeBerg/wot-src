@@ -106,13 +106,11 @@ package net.wg.gui.battle.views.epicRespawnView.components
       
       public function setRespawnLocations(param1:Vector.<RespawnPointVO>) : void
       {
-         var _loc4_:EpicRespawnPoint = null;
-         var _loc5_:RespawnPointVO = null;
          this._locationsVO = param1;
          var _loc2_:uint = this._respawnPoints.length;
          var _loc3_:uint = this._locationsVO.length;
-         _loc4_ = null;
-         _loc5_ = null;
+         var _loc4_:EpicRespawnPoint = null;
+         var _loc5_:RespawnPointVO = null;
          var _loc6_:uint = _loc3_;
          while(_loc6_ < _loc2_)
          {

@@ -1,6 +1,8 @@
-import weakref, math
+import logging, math, weakref
 from collections import defaultdict
-import logging, BigWorld, BattleReplay, SoundGroups
+import BigWorld
+from battle_royale.gui.constants import BattleRoyaleEquipments
+import BattleReplay, SoundGroups
 from AvatarInputHandler import AvatarInputHandler
 from constants import StunTypes
 from ReplayEvents import g_replayEvents
@@ -8,32 +10,32 @@ from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from gui.Scaleform.daapi.view.battle.shared import destroy_times_mapping as _mapping
 from gui.Scaleform.daapi.view.battle.shared.timers_common import TimerComponent, PythonTimer
 from gui.Scaleform.daapi.view.meta.TimersPanelMeta import TimersPanelMeta
-from gui.Scaleform.genConsts.BATTLE_NOTIFICATIONS_TIMER_TYPES import BATTLE_NOTIFICATIONS_TIMER_TYPES as _TIMER_STATES
-from gui.Scaleform.genConsts.BATTLE_NOTIFICATIONS_TIMER_LINKAGES import BATTLE_NOTIFICATIONS_TIMER_LINKAGES
 from gui.Scaleform.genConsts.BATTLE_NOTIFICATIONS_TIMER_COLORS import BATTLE_NOTIFICATIONS_TIMER_COLORS
+from gui.Scaleform.genConsts.BATTLE_NOTIFICATIONS_TIMER_LINKAGES import BATTLE_NOTIFICATIONS_TIMER_LINKAGES
+from gui.Scaleform.genConsts.BATTLE_NOTIFICATIONS_TIMER_TYPES import BATTLE_NOTIFICATIONS_TIMER_TYPES as _TIMER_STATES
 from gui.Scaleform.locale.INGAME_GUI import INGAME_GUI
 from gui.battle_control import avatar_getter
-from gui.battle_control.battle_constants import VEHICLE_VIEW_STATE, CROSSHAIR_VIEW_ID
 from gui.battle_control import event_dispatcher as gui_event_dispatcher
-from gui.shared.items_parameters import isAutoReloadGun
-from gui.shared.utils.MethodsRules import MethodsRules
+from gui.battle_control.battle_constants import VEHICLE_VIEW_STATE, CROSSHAIR_VIEW_ID
 from gui.impl import backport
 from gui.impl.gen import R
+from gui.shared.items_parameters import isAutoReloadGun
+from gui.shared.utils.MethodsRules import MethodsRules
 from helpers import dependency
 from items import vehicles
 from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.lobby_context import ILobbyContext
-from battle_royale.gui.constants import BattleRoyaleEquipments
 _logger = logging.getLogger(__name__)
-_TIMERS_PRIORITY = {(_TIMER_STATES.STUN_FLAME, _TIMER_STATES.WARNING_VIEW): 1, 
-   (_TIMER_STATES.OVERTURNED, _TIMER_STATES.CRITICAL_VIEW): 1, 
+_TIMERS_PRIORITY = {(_TIMER_STATES.OVERTURNED, _TIMER_STATES.CRITICAL_VIEW): 1, 
    (_TIMER_STATES.OVERTURNED, _TIMER_STATES.WARNING_VIEW): 2, 
-   (_TIMER_STATES.STUN, _TIMER_STATES.WARNING_VIEW): 3, 
-   (_TIMER_STATES.DROWN, _TIMER_STATES.CRITICAL_VIEW): 4, 
-   (_TIMER_STATES.DROWN, _TIMER_STATES.WARNING_VIEW): 5, 
-   (_TIMER_STATES.FIRE, _TIMER_STATES.WARNING_VIEW): 6, 
-   (_TIMER_STATES.INSPIRE_SOURCE, _TIMER_STATES.WARNING_VIEW): 7, 
-   (_TIMER_STATES.INSPIRE_INACTIVATION_SOURCE, _TIMER_STATES.WARNING_VIEW): 7}
+   (_TIMER_STATES.DANGER_ZONE, _TIMER_STATES.CRITICAL_VIEW): 3, 
+   (_TIMER_STATES.STUN, _TIMER_STATES.WARNING_VIEW): 4, 
+   (_TIMER_STATES.STUN_FLAME, _TIMER_STATES.WARNING_VIEW): 4, 
+   (_TIMER_STATES.DROWN, _TIMER_STATES.CRITICAL_VIEW): 5, 
+   (_TIMER_STATES.DROWN, _TIMER_STATES.WARNING_VIEW): 6, 
+   (_TIMER_STATES.FIRE, _TIMER_STATES.WARNING_VIEW): 7, 
+   (_TIMER_STATES.INSPIRE_SOURCE, _TIMER_STATES.WARNING_VIEW): 8, 
+   (_TIMER_STATES.INSPIRE_INACTIVATION_SOURCE, _TIMER_STATES.WARNING_VIEW): 8}
 _SECONDARY_TIMERS = (
  _TIMER_STATES.STUN,
  _TIMER_STATES.STUN_FLAME,
@@ -424,7 +426,8 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
         data = [
          self._getNotificationTimerData(_TIMER_STATES.DROWN, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.DROWN_ICON, link),
          self._getNotificationTimerData(_TIMER_STATES.OVERTURNED, overturnedIcon, link, description=overturnedText, color=overturnedColor, iconOffsetY=iconOffsetY),
-         self._getNotificationTimerData(_TIMER_STATES.FIRE, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.FIRE_ICON, link)]
+         self._getNotificationTimerData(_TIMER_STATES.FIRE, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.FIRE_ICON, link),
+         self._getNotificationTimerData(_TIMER_STATES.DANGER_ZONE, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.DANGER_ICON, link, text=INGAME_GUI.DANGER_ZONE_INDICATOR, iconOffsetY=-20)]
         return data
 
     def _generateSecondaryTimersData(self):
@@ -642,6 +645,12 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
             self._hideTimer(_TIMER_STATES.DEATH_ZONE)
         return
 
+    def __updateDangerZoneWarningNotification(self, value):
+        if value.needToCloseTimer():
+            self._hideTimer(_TIMER_STATES.DANGER_ZONE)
+        else:
+            self._showTimer(_TIMER_STATES.DANGER_ZONE, value.totalTime, value.level, value.totalTime + value.startTime)
+
     @MethodsRules.delayable()
     def __initData(self):
         self.as_setInitDataS({'mainTimers': self._generateMainTimersData(), 
@@ -657,6 +666,7 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
          VEHICLE_VIEW_STATE.DEATHZONE_TIMER,
          VEHICLE_VIEW_STATE.STUN,
          VEHICLE_VIEW_STATE.CAPTURE_BLOCKED,
+         VEHICLE_VIEW_STATE.DANGER_ZONE,
          VEHICLE_VIEW_STATE.SMOKE,
          VEHICLE_VIEW_STATE.INSPIRE,
          VEHICLE_VIEW_STATE.DOT_EFFECT)
@@ -713,6 +723,8 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
             self.__updateDeathZoneWarningNotification(*value)
         elif state == VEHICLE_VIEW_STATE.PERSONAL_DEATHZONE:
             self.__updatePersonalDeathZoneWarningNotification(*value)
+        elif state == VEHICLE_VIEW_STATE.DANGER_ZONE:
+            self.__updateDangerZoneWarningNotification(value)
         elif state in (VEHICLE_VIEW_STATE.DESTROYED, VEHICLE_VIEW_STATE.CREW_DEACTIVATED):
             self.__hideAll()
 

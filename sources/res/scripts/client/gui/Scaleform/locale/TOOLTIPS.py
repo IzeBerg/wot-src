@@ -560,11 +560,18 @@ class TOOLTIPS(object):
     BATTLETYPES_BATTLEROYALE_HEADER = '#tooltips:battleTypes/battleRoyale/header'
     BATTLETYPES_BATTLEROYALE_BODY = '#tooltips:battleTypes/battleRoyale/body'
     BATTLETYPES_BATTLEROYALE_BODY2 = '#tooltips:battleTypes/battleRoyale/body2'
+    BATTLETYPES_BATTLEROYALE_WIDGET_BODY2 = '#tooltips:battleTypes/battleRoyale/widget/body2'
     BATTLETYPES_BATTLEROYALE_FROZEN_BODY = '#tooltips:battleTypes/battleRoyale/frozen/body'
     BATTLETYPES_BATTLEROYALE_TILLSTART = '#tooltips:battleTypes/battleRoyale/tillStart'
     BATTLETYPES_BATTLEROYALE_TILLEND = '#tooltips:battleTypes/battleRoyale/tillEnd'
+    BATTLETYPES_BATTLEROYALE_WIDGET_TILLEND = '#tooltips:battleTypes/battleRoyale/widget/tillEnd'
     BATTLETYPES_BATTLEROYALE_TILLSTARTCYCLE = '#tooltips:battleTypes/battleRoyale/tillStartCycle'
     BATTLETYPES_BATTLEROYALE_TILLENDCYCLE = '#tooltips:battleTypes/battleRoyale/tillEndCycle'
+    BATTLETYPES_BATTLEROYALE_WIDGET_TOMORROW = '#tooltips:battleTypes/battleRoyale/widget/tomorrow'
+    BATTLETYPES_BATTLEROYALE_WIDGET_TODAY = '#tooltips:battleTypes/battleRoyale/widget/today'
+    BATTLETYPES_BATTLEROYALE_WIDGET_TIMETABLE_TIME = '#tooltips:battleTypes/battleRoyale/widget/timeTable/time'
+    BATTLETYPES_BATTLEROYALE_WIDGET_TIMETABLE_EMPTY = '#tooltips:battleTypes/battleRoyale/widget/timeTable/empty'
+    BATTLETYPES_BATTLEROYALE_WIDGET_TIMETABLE_TITLE = '#tooltips:battleTypes/battleRoyale/widget/timeTable/title'
     BATTLETYPES_MAPBOX_HEADER = '#tooltips:battleTypes/mapbox/header'
     BATTLETYPES_MAPBOX_BODY = '#tooltips:battleTypes/mapbox/body'
     BATTLETYPES_MAPBOX_FROZEN_BODY = '#tooltips:battleTypes/mapbox/frozen/body'
@@ -785,6 +792,7 @@ class TOOLTIPS(object):
     HANGAR_CREW_COMMANDERFEATURE = '#tooltips:hangar/crew/commanderFeature'
     HANGAR_CREW_FREESKILLS = '#tooltips:hangar/crew/freeSkills'
     HANGAR_CREW_SPECIALTY_SKILLS = '#tooltips:hangar/crew/specialty_skills'
+    HANGAR_CREW_XPTOTMEN = '#tooltips:hangar/crew/xpToTmen'
     HANGAR_XPTOTMENCHECKBOX_HEADER = '#tooltips:hangar/xpToTmenCheckbox/header'
     HANGAR_XPTOTMENCHECKBOX_BODY = '#tooltips:hangar/xpToTmenCheckbox/body'
     PERSONAL_CASE_SKILLS_DROP_HEADER = '#tooltips:personal_case/skills/drop/header'
@@ -971,6 +979,8 @@ class TOOLTIPS(object):
     LOBY_MESSENGER_CHANNELS_CAROUSEL_BUTTON_RIGHT_BODY = '#tooltips:loby_messenger/channels_carousel_button_right/body'
     LOBY_MESSENGER_NEW_CHANNELS_CAROUSEL_BUTTON_RIGHT_HEADER = '#tooltips:loby_messenger/new/channels_carousel_button_right/header'
     LOBY_MESSENGER_NEW_CHANNELS_CAROUSEL_BUTTON_RIGHT_BODY = '#tooltips:loby_messenger/new/channels_carousel_button_right/body'
+    LOBY_MESSENGER_LISTVIEW_NEWS_TOOLTIP_HEADER = '#tooltips:loby_messenger/listView/news/tooltip/header'
+    LOBY_MESSENGER_LISTVIEW_NEWS_TOOLTIP_BODY = '#tooltips:loby_messenger/listView/news/tooltip/body'
     LOBBY_HEADER_BUYPREMIUMACCOUNT_DISABLED_HEADER = '#tooltips:lobby/header/buyPremiumAccount/disabled/header'
     LOBBY_HEADER_BUYPREMIUMACCOUNT_DISABLED_BODY = '#tooltips:lobby/header/buyPremiumAccount/disabled/body'
     TRAINING_CREATE_INVITES_CHECKBOX_HEADER = '#tooltips:training/create/invites_checkbox/header'
@@ -1175,8 +1185,10 @@ class TOOLTIPS(object):
     VEHICLE_RENTLEFTFUTURE_EPIC_BASE = '#tooltips:vehicle/rentLeftFuture/epic/base'
     VEHICLE_RENTAVAILABLE = '#tooltips:vehicle/rentAvailable'
     VEHICLE_WOTPLUSRENTING = '#tooltips:vehicle/wotPlusRenting'
-    VEHICLE_WOTPLUSRENTING_REMAININGTIME_DAYS = '#tooltips:vehicle/wotPlusRenting/remainingTime/days'
-    VEHICLE_WOTPLUSRENTING_REMAININGTIME_HOURS = '#tooltips:vehicle/wotPlusRenting/remainingTime/hours'
+    VEHICLE_WOTPLUSRENTING_INACTIVE = '#tooltips:vehicle/wotPlusRenting/inactive'
+    VEHICLE_WOTPLUSRENTING_REMAININGTIME = '#tooltips:vehicle/wotPlusRenting/remainingTime'
+    VEHICLE_TELECOMRENTAL_REMAININGTIME_DAYS = '#tooltips:vehicle/telecomRental/remainingTime/days'
+    VEHICLE_TELECOMRENTAL_REMAININGTIME_HOURS = '#tooltips:vehicle/telecomRental/remainingTime/hours'
     VEHICLE_TELECOMRENTALSRENTING = '#tooltips:vehicle/telecomRentalsRenting'
     VEHICLE_RESTORELEFT_DAYS = '#tooltips:vehicle/restoreLeft/days'
     VEHICLE_RESTORELEFT_HOURS = '#tooltips:vehicle/restoreLeft/hours'
@@ -1242,6 +1254,7 @@ class TOOLTIPS(object):
     VEHICLESTATUS_EXPLODED_HEADER = '#tooltips:vehicleStatus/exploded/header'
     VEHICLESTATUS_NOTPRESENT_HEADER = '#tooltips:vehicleStatus/notpresent/header'
     VEHICLESTATUS_UNDAMAGED_HEADER = '#tooltips:vehicleStatus/undamaged/header'
+    VEHICLESTATUS_SUBSCRIPTION_SUSPENDED_HEADER = '#tooltips:vehicleStatus/subscription_suspended/header'
     VEHICLESTATUS_WILLBEUNLOCKEDINBATTLE_HEADER = '#tooltips:vehicleStatus/willBeUnlockedInBattle/header'
     VEHICLESTATUS_CREWNOTFULL_HEADER = '#tooltips:vehicleStatus/crewNotFull/header'
     VEHICLESTATUS_TOOHEAVY_HEADER = '#tooltips:vehicleStatus/tooHeavy/header'
@@ -1424,6 +1437,8 @@ class TOOLTIPS(object):
     BLUEPRINT_BLUEPRINTSCREEN_CREATEMAXFRAGMENTS_BODY = '#tooltips:blueprint/BlueprintScreen/createMaxFragments/body'
     BLUEPRINT_BLUEPRINTSCREEN_CREATEMAXFRAGMENTSDISABLED_HEADER = '#tooltips:blueprint/BlueprintScreen/createMaxFragmentsDisabled/header'
     BLUEPRINT_BLUEPRINTSCREEN_CREATEMAXFRAGMENTSDISABLED_BODY = '#tooltips:blueprint/BlueprintScreen/createMaxFragmentsDisabled/body'
+    VEHICLESELLDIALOG_RENDERER_ALERTICONGOLDWOTPLUS_HEADER = '#tooltips:vehicleSellDialog/renderer/alertIconGoldWotPlus/header'
+    VEHICLESELLDIALOG_RENDERER_ALERTICONGOLDWOTPLUS_BODY = '#tooltips:vehicleSellDialog/renderer/alertIconGoldWotPlus/body'
     VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD_HEADER = '#tooltips:vehicleSellDialog/renderer/alertIconGold/header'
     VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD_BODY = '#tooltips:vehicleSellDialog/renderer/alertIconGold/body'
     VEHICLESELLDIALOG_RENDERER_ALERTICONCRYSTAL_HEADER = '#tooltips:vehicleSellDialog/renderer/alertIconCrystal/header'
@@ -1743,6 +1758,15 @@ class TOOLTIPS(object):
     HANGARTUTORIAL_PERSONALCASE_PERKS_HEADERDESCRIPTION = '#tooltips:hangarTutorial/personalCase/perks/headerDescription'
     HANGARTUTORIAL_PERSONALCASE_PERKS_NEWPERKTITLE = '#tooltips:hangarTutorial/personalCase/perks/newPerkTitle'
     HANGARTUTORIAL_PERSONALCASE_PERKS_NEWPERKDESCRIPTION = '#tooltips:hangarTutorial/personalCase/perks/newPerkDescription'
+    PERKTYPE_NAME_MAIN = '#tooltips:perkType/name/main'
+    PERKTYPE_NAME_SITUATIONAL = '#tooltips:perkType/name/situational'
+    PERKTYPE_NAME_COMMON = '#tooltips:perkType/name/common'
+    PERKTYPE_NAME_COMMANDERSPECIAL = '#tooltips:perkType/name/commanderSpecial'
+    PERKTYPE_INFO_SITUATIONAL = '#tooltips:perkType/info/situational'
+    PERKTYPE_INFO_COMMON = '#tooltips:perkType/info/common'
+    PERKS_FULLSKILLTITLE = '#tooltips:perks/fullSkillTitle'
+    PERKS_INFOTEXT = '#tooltips:perks/infoText'
+    PERKS_CONFIGURATIONSCREENTEXT = '#tooltips:perks/configurationScreenText'
     HANGARTUTORIAL_PERSONALCASE_ADDITIONAL_TITLE = '#tooltips:hangarTutorial/personalCase/additional/title'
     HANGARTUTORIAL_PERSONALCASE_ADDITIONAL_RECORDTITLE = '#tooltips:hangarTutorial/personalCase/additional/recordTitle'
     HANGARTUTORIAL_PERSONALCASE_ADDITIONAL_RECORDDESCRIPTION = '#tooltips:hangarTutorial/personalCase/additional/recordDescription'
@@ -1983,6 +2007,18 @@ class TOOLTIPS(object):
     AWARDITEM_BRCOIN_BODY = '#tooltips:awardItem/brcoin/body'
     AWARDITEM_ABILITYTOKEN_HEADER = '#tooltips:awardItem/abilityToken/header'
     AWARDITEM_ABILITYTOKEN_BODY = '#tooltips:awardItem/abilityToken/body'
+    AWARDITEM_GOLD_BANK_HEADER = '#tooltips:awardItem/gold_bank/header'
+    AWARDITEM_GOLD_BANK_BODY = '#tooltips:awardItem/gold_bank/body'
+    AWARDITEM_IDLE_CREW_XP_HEADER = '#tooltips:awardItem/idle_crew_xp/header'
+    AWARDITEM_IDLE_CREW_XP_BODY = '#tooltips:awardItem/idle_crew_xp/body'
+    AWARDITEM_EXCLUDED_MAP_HEADER = '#tooltips:awardItem/excluded_map/header'
+    AWARDITEM_EXCLUDED_MAP_BODY = '#tooltips:awardItem/excluded_map/body'
+    AWARDITEM_FREE_EQUIPMENT_DEMOUNTING_HEADER = '#tooltips:awardItem/free_equipment_demounting/header'
+    AWARDITEM_FREE_EQUIPMENT_DEMOUNTING_BODY = '#tooltips:awardItem/free_equipment_demounting/body'
+    AWARDITEM_EXCLUSIVE_VEHICLE_HEADER = '#tooltips:awardItem/exclusive_vehicle/header'
+    AWARDITEM_EXCLUSIVE_VEHICLE_BODY = '#tooltips:awardItem/exclusive_vehicle/body'
+    AWARDITEM_COMP7_2023_1_WEEKLY_REWARDS_TOKEN_HEADER = '#tooltips:awardItem/comp7_2023_1_weekly_rewards_token/header'
+    AWARDITEM_COMP7_2023_1_WEEKLY_REWARDS_TOKEN_BODY = '#tooltips:awardItem/comp7_2023_1_weekly_rewards_token/body'
     RANKEDBATTLEVIEW_SCOREPOINT_SHORT_HEADER = '#tooltips:rankedBattleView/scorePoint/short/header'
     RANKEDBATTLEVIEW_SCOREPOINT_HEADER = '#tooltips:rankedBattleView/scorePoint/header'
     RANKEDBATTLEVIEW_SCOREPOINT_BODY = '#tooltips:rankedBattleView/scorePoint/body'
@@ -2119,6 +2155,9 @@ class TOOLTIPS(object):
     VEHICLEPARAMS_TITLE_VALUETEMPLATE = '#tooltips:vehicleParams/title/valueTemplate'
     VEHICLEPARAMS_POSSIBLEBONUSES_DESC = '#tooltips:vehicleParams/possibleBonuses/desc'
     VEHICLEPARAMS_BONUSES_TITLE = '#tooltips:vehicleParams/bonuses/title'
+    VEHICLEPARAMS_BONUSES_TITLE_EQUIPMENT = '#tooltips:vehicleParams/bonuses/title/equipment'
+    VEHICLEPARAMS_BONUSES_TITLE_SKILLS = '#tooltips:vehicleParams/bonuses/title/skills'
+    VEHICLEPARAMS_BONUSES_TITLE_CREW_MASTERY = '#tooltips:vehicleParams/bonuses/title/crew_mastery'
     VEHICLEPARAMS_PENALTIES_TITLE = '#tooltips:vehicleParams/penalties/title'
     VEHICLEPARAMS_BONUS_ARTEFACT_TEMPLATE = '#tooltips:vehicleParams/bonus/artefact/template'
     VEHICLEPARAMS_BONUS_SKILL_TEMPLATE = '#tooltips:vehicleParams/bonus/skill/template'
@@ -2271,28 +2310,6 @@ class TOOLTIPS(object):
     SHELL_BASIC = '#tooltips:shell/basic'
     SHELL_BASIC_DESCRIPTION_BOLD = '#tooltips:shell/basic/description/bold'
     SHELL_BASIC_DESCRIPTION = '#tooltips:shell/basic/description'
-    SKILLS_CAMOUFLAGE_HEADER = '#tooltips:skills/camouflage/header'
-    SKILLS_CAMOUFLAGE_DESCR = '#tooltips:skills/camouflage/descr'
-    SKILLS_BROTHERHOOD_HEADER = '#tooltips:skills/brotherhood/header'
-    SKILLS_BROTHERHOOD_DESCR = '#tooltips:skills/brotherhood/descr'
-    SKILLS_REPAIR_HEADER = '#tooltips:skills/repair/header'
-    SKILLS_REPAIR_DESCR = '#tooltips:skills/repair/descr'
-    SKILLS_DRIVER_VIRTUOSO_HEADER = '#tooltips:skills/driver_virtuoso/header'
-    SKILLS_DRIVER_VIRTUOSO_DESCR = '#tooltips:skills/driver_virtuoso/descr'
-    SKILLS_COMMANDER_EAGLEEYE_HEADER = '#tooltips:skills/commander_eagleEye/header'
-    SKILLS_COMMANDER_EAGLEEYE_DESCR = '#tooltips:skills/commander_eagleEye/descr'
-    SKILLS_DRIVER_BADROADSKING_HEADER = '#tooltips:skills/driver_badRoadsKing/header'
-    SKILLS_DRIVER_BADROADSKING_DESCR = '#tooltips:skills/driver_badRoadsKing/descr'
-    SKILLS_RADIOMAN_FINDER_HEADER = '#tooltips:skills/radioman_finder/header'
-    SKILLS_RADIOMAN_FINDER_DESCR = '#tooltips:skills/radioman_finder/descr'
-    SKILLS_RADIOMAN_INVENTOR_HEADER = '#tooltips:skills/radioman_inventor/header'
-    SKILLS_RADIOMAN_INVENTOR_DESCR = '#tooltips:skills/radioman_inventor/descr'
-    SKILLS_COMMANDERFEATURE = '#tooltips:skills/commanderFeature'
-    SKILLS_STATUS_MOMENTAL = '#tooltips:skills/status/momental'
-    SKILLS_STATUS_REQUIERSWHOLECREW = '#tooltips:skills/status/requiersWholeCrew'
-    SKILLS_STATUS_ISFORROLE = '#tooltips:skills/status/isForRole'
-    SKILLS_STATUS_AVGEXP = '#tooltips:skills/status/avgExp'
-    SKILLS_STATUS_FOR2RADIOMEN = '#tooltips:skills/status/for2radiomen'
     SKILLS_FORROLE_COMMANDER = '#tooltips:skills/forRole/commander'
     SKILLS_FORROLE_DRIVER = '#tooltips:skills/forRole/driver'
     SKILLS_FORROLE_RADIOMAN = '#tooltips:skills/forRole/radioman'
@@ -2441,33 +2458,6 @@ class TOOLTIPS(object):
     ADVANCED_RADIOMAN = '#tooltips:advanced/radioman'
     ADVANCED_LOADER = '#tooltips:advanced/loader'
     ADVANCED_GUNNER = '#tooltips:advanced/gunner'
-    ADVANCED_REPAIR = '#tooltips:advanced/repair'
-    ADVANCED_FIREFIGHTING = '#tooltips:advanced/fireFighting'
-    ADVANCED_CAMOUFLAGE = '#tooltips:advanced/camouflage'
-    ADVANCED_NATURALCOVER = '#tooltips:advanced/naturalCover'
-    ADVANCED_BROTHERHOOD = '#tooltips:advanced/brotherhood'
-    ADVANCED_COMMANDER_TUTOR = '#tooltips:advanced/commander_tutor'
-    ADVANCED_COMMANDER_EAGLEEYE = '#tooltips:advanced/commander_eagleEye'
-    ADVANCED_COMMANDER_UNIVERSALIST = '#tooltips:advanced/commander_universalist'
-    ADVANCED_COMMANDER_EXPERT = '#tooltips:advanced/commander_expert'
-    ADVANCED_COMMANDER_SIXTHSENSE = '#tooltips:advanced/commander_sixthSense'
-    ADVANCED_COMMANDER_ENEMYSHOTPREDICTOR = '#tooltips:advanced/commander_enemyShotPredictor'
-    ADVANCED_GUNNER_RANCOROUS = '#tooltips:advanced/gunner_rancorous'
-    ADVANCED_GUNNER_GUNSMITH = '#tooltips:advanced/gunner_gunsmith'
-    ADVANCED_GUNNER_SNIPER = '#tooltips:advanced/gunner_sniper'
-    ADVANCED_GUNNER_SMOOTHTURRET = '#tooltips:advanced/gunner_smoothTurret'
-    ADVANCED_DRIVER_RAMMINGMASTER = '#tooltips:advanced/driver_rammingMaster'
-    ADVANCED_DRIVER_BADROADSKING = '#tooltips:advanced/driver_badRoadsKing'
-    ADVANCED_DRIVER_TIDYPERSON = '#tooltips:advanced/driver_tidyPerson'
-    ADVANCED_DRIVER_VIRTUOSO = '#tooltips:advanced/driver_virtuoso'
-    ADVANCED_DRIVER_SMOOTHDRIVING = '#tooltips:advanced/driver_smoothDriving'
-    ADVANCED_RADIOMAN_FINDER = '#tooltips:advanced/radioman_finder'
-    ADVANCED_RADIOMAN_LASTEFFORT = '#tooltips:advanced/radioman_lastEffort'
-    ADVANCED_RADIOMAN_INVENTOR = '#tooltips:advanced/radioman_inventor'
-    ADVANCED_RADIOMAN_RETRANSMITTER = '#tooltips:advanced/radioman_retransmitter'
-    ADVANCED_LOADER_INTUITION = '#tooltips:advanced/loader_intuition'
-    ADVANCED_LOADER_DESPERADO = '#tooltips:advanced/loader_desperado'
-    ADVANCED_LOADER_PEDANT = '#tooltips:advanced/loader_pedant'
     ADVANCED_ECONOMYBONDS = '#tooltips:advanced/economyBonds'
     ADVANCED_ECONOMYTANKEXPERIENCE = '#tooltips:advanced/economyTankExperience'
     ADVANCED_ECONOMYCONVERTEXP = '#tooltips:advanced/economyConvertExp'
@@ -3206,8 +3196,9 @@ class TOOLTIPS(object):
     CREWBOOKS_TANKMAN_SKILL_LOWGAINEDXP = '#tooltips:crewBooks/tankman/skill/lowGainedXp'
     SENIORITYAWARDS_HANGARENTRYPOINT_TOOLTIP_HEADER = '#tooltips:seniorityAwards/hangarEntryPoint/tooltip/header'
     SENIORITYAWARDS_HANGARENTRYPOINT_TOOLTIP_BODY = '#tooltips:seniorityAwards/hangarEntryPoint/tooltip/body'
-    SENIORITYAWARDS_ADDITIONAL_TOOLTIP_HEADER = '#tooltips:seniorityAwards/additional/tooltip/header'
-    SENIORITYAWARDS_HANGARSLOT_TOOLTIP_HEADER = '#tooltips:seniorityAwards/hangarSlot/tooltip/header'
+    VEHICLE_ADDITIONAL_HEADER = '#tooltips:vehicle/additional/header'
+    VEHICLE_HANGARSLOT_HEADER = '#tooltips:vehicle/hangarSlot/header'
+    VEHICLE_ALLMODULES_HEADER = '#tooltips:vehicle/allModules/header'
     VEHICLECRYSTAL_LIMITSTATUS_COMMON_DESCRIPTION = '#tooltips:vehicleCrystal/limitStatus/common/description'
     VEHICLECRYSTAL_LIMITSTATUS_PROGRESS_DESCRIPTION = '#tooltips:vehicleCrystal/limitStatus/progress/description'
     VEHICLECRYSTAL_LIMITSTATUS_LIMITREACHED_DESCRIPTION = '#tooltips:vehicleCrystal/limitStatus/limitReached/description'
@@ -3489,9 +3480,18 @@ class TOOLTIPS(object):
     IDLE_CREW_TOOLTIP_HEADING = '#tooltips:idle_crew_tooltip/heading'
     IDLE_CREW_TOOLTIP_DESCRIPTION = '#tooltips:idle_crew_tooltip/description'
     IDLE_CREW_TOOLTIP_BOOSTLABEL = '#tooltips:idle_crew_tooltip/boostLabel'
-    IDLE_CREW_TOOLTIP_PERHOUR = '#tooltips:idle_crew_tooltip/perHour'
-    IDLE_CREW_TOOLTIP_ACTIVATEBUTTON = '#tooltips:idle_crew_tooltip/activateButton'
-    IDLE_CREW_TOOLTIP_ACTIVESTATUS = '#tooltips:idle_crew_tooltip/activeStatus'
+    IDLE_CREW_TOOLTIP_BONUSLABEL = '#tooltips:idle_crew_tooltip/bonusLabel'
+    IDLE_CREW_TOOLTIP_EVERY5MINUTES = '#tooltips:idle_crew_tooltip/every5minutes'
+    IDLE_CREW_TOOLTIP_STATUS_ACTIVE_LABEL = '#tooltips:idle_crew_tooltip/status/active/label'
+    IDLE_CREW_TOOLTIP_STATUS_ACTIVE_DESCRIPTION = '#tooltips:idle_crew_tooltip/status/active/description'
+    IDLE_CREW_TOOLTIP_STATUS_INACTIVE_LABEL = '#tooltips:idle_crew_tooltip/status/inactive/label'
+    IDLE_CREW_TOOLTIP_STATUS_INACTIVE_DESCRIPTION = '#tooltips:idle_crew_tooltip/status/inactive/description'
+    IDLE_CREW_TOOLTIP_STATUS_INACTIVE_ANOTHERVEHICLEISSELECTED = '#tooltips:idle_crew_tooltip/status/inactive/anotherVehicleIsSelected'
+    IDLE_CREW_TOOLTIP_STATUS_UNAVAILABLE_LABEL = '#tooltips:idle_crew_tooltip/status/unavailable/label'
+    IDLE_CREW_TOOLTIP_STATUS_UNAVAILABLE_DESCRIPTION_SUBSCRIPTIONISREQUIRED = '#tooltips:idle_crew_tooltip/status/unavailable/description/subscriptionIsRequired'
+    IDLE_CREW_TOOLTIP_STATUS_UNAVAILABLE_DESCRIPTION_INCOMPATIBLEVEHICLE = '#tooltips:idle_crew_tooltip/status/unavailable/description/incompatibleVehicle'
+    IDLE_CREW_TOOLTIP_ACTIVATEDWOTPLUSNEEDED = '#tooltips:idle_crew_tooltip/activatedWoTPlusNeeded'
+    IDLE_CREW_TOOLTIP_CURRENTLYACTIVEON = '#tooltips:idle_crew_tooltip/currentlyActiveOn'
     IDLE_CREW_TOOLTIP_WARNINGHEADER = '#tooltips:idle_crew_tooltip/warningHeader'
     IDLE_CREW_TOOLTIP_WARNINGUNSUITABLE = '#tooltips:idle_crew_tooltip/warningUnsuitable'
     IDLE_CREW_TOOLTIP_WARNINGINCOMPLETE = '#tooltips:idle_crew_tooltip/warningIncomplete'
@@ -3831,7 +3831,13 @@ class TOOLTIPS(object):
      AWARDITEM_RANKEDDAILYBATTLES_HEADER,
      AWARDITEM_RANKEDBONUSBATTLES_HEADER,
      AWARDITEM_BRCOIN_HEADER,
-     AWARDITEM_ABILITYTOKEN_HEADER)
+     AWARDITEM_ABILITYTOKEN_HEADER,
+     AWARDITEM_GOLD_BANK_HEADER,
+     AWARDITEM_IDLE_CREW_XP_HEADER,
+     AWARDITEM_EXCLUDED_MAP_HEADER,
+     AWARDITEM_FREE_EQUIPMENT_DEMOUNTING_HEADER,
+     AWARDITEM_EXCLUSIVE_VEHICLE_HEADER,
+     AWARDITEM_COMP7_2023_1_WEEKLY_REWARDS_TOKEN_HEADER)
     AWARDITEM_ALL_BODY_ENUM = (
      AWARDITEM_GROUPS_BODY,
      AWARDITEM_CREDITS_BODY,
@@ -3901,7 +3907,13 @@ class TOOLTIPS(object):
      AWARDITEM_RANKEDDAILYBATTLES_BODY,
      AWARDITEM_RANKEDBONUSBATTLES_BODY,
      AWARDITEM_BRCOIN_BODY,
-     AWARDITEM_ABILITYTOKEN_BODY)
+     AWARDITEM_ABILITYTOKEN_BODY,
+     AWARDITEM_GOLD_BANK_BODY,
+     AWARDITEM_IDLE_CREW_XP_BODY,
+     AWARDITEM_EXCLUDED_MAP_BODY,
+     AWARDITEM_FREE_EQUIPMENT_DEMOUNTING_BODY,
+     AWARDITEM_EXCLUSIVE_VEHICLE_BODY,
+     AWARDITEM_COMP7_2023_1_WEEKLY_REWARDS_TOKEN_BODY)
     TEMPLATE_ALL_SHORT_ENUM = (
      TEMPLATE_DAYS_SHORT,
      TEMPLATE_HOURS_SHORT,
@@ -3936,25 +3948,6 @@ class TOOLTIPS(object):
     TANK_PARAMS_AVGPARAMCOMMENT_ENUM = (
      TANK_PARAMS_AVGPARAMCOMMENT_DAMAGE,
      TANK_PARAMS_AVGPARAMCOMMENT_PIERCINGPOWER)
-    SKILLS_ALL_HEADER_ENUM = (
-     SKILLS_CAMOUFLAGE_HEADER,
-     SKILLS_BROTHERHOOD_HEADER,
-     SKILLS_REPAIR_HEADER,
-     SKILLS_DRIVER_VIRTUOSO_HEADER,
-     SKILLS_COMMANDER_EAGLEEYE_HEADER,
-     SKILLS_DRIVER_BADROADSKING_HEADER,
-     SKILLS_RADIOMAN_FINDER_HEADER,
-     SKILLS_RADIOMAN_INVENTOR_HEADER,
-     SKILLS_NEWPERK_HEADER)
-    SKILLS_ALL_DESCR_ENUM = (
-     SKILLS_CAMOUFLAGE_DESCR,
-     SKILLS_BROTHERHOOD_DESCR,
-     SKILLS_REPAIR_DESCR,
-     SKILLS_DRIVER_VIRTUOSO_DESCR,
-     SKILLS_COMMANDER_EAGLEEYE_DESCR,
-     SKILLS_DRIVER_BADROADSKING_DESCR,
-     SKILLS_RADIOMAN_FINDER_DESCR,
-     SKILLS_RADIOMAN_INVENTOR_DESCR)
     SKILLS_FORROLE_ENUM = (
      SKILLS_FORROLE_COMMANDER,
      SKILLS_FORROLE_DRIVER,
@@ -4102,33 +4095,6 @@ class TOOLTIPS(object):
      ADVANCED_RADIOMAN,
      ADVANCED_LOADER,
      ADVANCED_GUNNER,
-     ADVANCED_REPAIR,
-     ADVANCED_FIREFIGHTING,
-     ADVANCED_CAMOUFLAGE,
-     ADVANCED_NATURALCOVER,
-     ADVANCED_BROTHERHOOD,
-     ADVANCED_COMMANDER_TUTOR,
-     ADVANCED_COMMANDER_EAGLEEYE,
-     ADVANCED_COMMANDER_UNIVERSALIST,
-     ADVANCED_COMMANDER_EXPERT,
-     ADVANCED_COMMANDER_SIXTHSENSE,
-     ADVANCED_COMMANDER_ENEMYSHOTPREDICTOR,
-     ADVANCED_GUNNER_RANCOROUS,
-     ADVANCED_GUNNER_GUNSMITH,
-     ADVANCED_GUNNER_SNIPER,
-     ADVANCED_GUNNER_SMOOTHTURRET,
-     ADVANCED_DRIVER_RAMMINGMASTER,
-     ADVANCED_DRIVER_BADROADSKING,
-     ADVANCED_DRIVER_TIDYPERSON,
-     ADVANCED_DRIVER_VIRTUOSO,
-     ADVANCED_DRIVER_SMOOTHDRIVING,
-     ADVANCED_RADIOMAN_FINDER,
-     ADVANCED_RADIOMAN_LASTEFFORT,
-     ADVANCED_RADIOMAN_INVENTOR,
-     ADVANCED_RADIOMAN_RETRANSMITTER,
-     ADVANCED_LOADER_INTUITION,
-     ADVANCED_LOADER_DESPERADO,
-     ADVANCED_LOADER_PEDANT,
      ADVANCED_ECONOMYBONDS,
      ADVANCED_ECONOMYTANKEXPERIENCE,
      ADVANCED_ECONOMYCONVERTEXP,
@@ -4849,24 +4815,6 @@ class TOOLTIPS(object):
     def getAvgParameterCommentKey(cls, key0):
         outcome = ('#tooltips:tank_params/avgParamComment/{}').format(key0)
         if outcome not in cls.TANK_PARAMS_AVGPARAMCOMMENT_ENUM:
-            LOG_WARNING(('Localization key "{}" not found').format(outcome))
-            return None
-        else:
-            return outcome
-
-    @classmethod
-    def skillTooltipHeader(cls, skill):
-        outcome = ('#tooltips:skills/{}/header').format(skill)
-        if outcome not in cls.SKILLS_ALL_HEADER_ENUM:
-            LOG_WARNING(('Localization key "{}" not found').format(outcome))
-            return None
-        else:
-            return outcome
-
-    @classmethod
-    def skillTooltipDescr(cls, skill):
-        outcome = ('#tooltips:skills/{}/descr').format(skill)
-        if outcome not in cls.SKILLS_ALL_DESCR_ENUM:
             LOG_WARNING(('Localization key "{}" not found').format(outcome))
             return None
         else:

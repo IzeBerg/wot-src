@@ -342,26 +342,6 @@
 			</condition>
 		</hint>
 		<hint>
-			WotPlusHangarHint
-			<item-id>AccountButton</item-id>
-			<text>_(#tutorial:onceOnlyHints/wotPlus/playerProfile)</text>
-			<arrow>
-				<direction>B</direction>
-				<loop>True</loop>
-			</arrow>
-			<checked-ui-state>
-				<simple-state>
-					<state>enabled</state>
-					<value>True</value>
-				</simple-state>
-			</checked-ui-state>
-			<update-runtime>True</update-runtime>
-			<ignore-outside-click>True</ignore-outside-click>
-			<condition>
-				<global-active>_WotPlusEnabled</global-active>
-			</condition>
-		</hint>
-		<hint>
 			PersonalReservesHangarHint
 			<item-id>ReservesButton</item-id>
 			<text>_(#personal_reserves:hangarEntry/onlyOnceHint)</text>
@@ -461,20 +441,6 @@
 					<path>gui.ui_spam.tutorial_conditions</path>
 					<arguments>DogTagHangarHint</arguments>
 				</class-condition>
-			</condition>
-		</hint>
-		<hint>
-			WotPlusProfileHint
-			<item-id>PiggyBankWidget</item-id>
-			<text>_(#tutorial:onceOnlyHints/wotPlus/playerProfile)</text>
-			<arrow>
-				<direction>T</direction>
-				<loop>True</loop>
-			</arrow>
-			<update-runtime>True</update-runtime>
-			<ignore-outside-click>True</ignore-outside-click>
-			<condition>
-				<global-active>_WotPlusEnabled</global-active>
 			</condition>
 		</hint>
 		<hint>
@@ -714,9 +680,6 @@
 			<update-runtime>True</update-runtime>
 			<hide-immediately>True</hide-immediately>
 			<ignore-outside-click>True</ignore-outside-click>
-			<condition>
-				<global-inactive>DisableSpecializationSlotHint</global-inactive>
-			</condition>
 		</hint>
 		<hint>
 			AmmunitionPanelBattleAbilitiesHint

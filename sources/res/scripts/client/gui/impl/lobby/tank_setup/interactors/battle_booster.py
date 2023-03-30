@@ -49,6 +49,7 @@ class BattleBoosterInteractor(BaseBattleBoosterInteractor):
     def getVehicleAfterInstall(self):
         vehicle = super(BattleBoosterInteractor, self).getVehicleAfterInstall()
         vehicle.battleBoosters.setInstalled(*self.getItem().battleBoosters.layout)
+        vehicle.initCrew()
         return vehicle
 
     def revert(self):

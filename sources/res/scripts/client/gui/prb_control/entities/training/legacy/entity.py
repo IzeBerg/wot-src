@@ -12,7 +12,7 @@ from gui.prb_control.entities.base.legacy.ctx import SetPlayerStateCtx
 from gui.prb_control.entities.base.legacy.entity import LegacyEntryPoint, LegacyIntroEntryPoint, LegacyIntroEntity, LegacyEntity
 from gui.prb_control.entities.training.legacy.ctx import TrainingSettingsCtx, SetPlayerObserverStateCtx
 from gui.prb_control.entities.training.legacy.limits import TrainingLimits
-from gui.prb_control.entities.training.legacy.permissions import TrainingPermissions
+from gui.prb_control.entities.training.legacy.permissions import TrainingPermissions, TrainingIntroPermissions
 from gui.prb_control.entities.training.legacy.requester import TrainingListRequester
 from gui.prb_control.items import prb_items, SelectResult, ValidationResult
 from gui.prb_control.settings import FUNCTIONAL_FLAG, PREBATTLE_ACTION_NAME
@@ -101,6 +101,9 @@ class TrainingIntroEntity(LegacyIntroEntity):
             g_eventDispatcher.loadTrainingList()
             return SelectResult(True)
         return super(TrainingIntroEntity, self).doSelectAction(action)
+
+    def getPermissions(self, pID=None):
+        return TrainingIntroPermissions()
 
     def _createActionsValidator(self):
         return TrainingIntroActionsValidator(self)

@@ -85,6 +85,11 @@ package net.wg.gui.battle.comp7.views.consumablesPanel
          this._textField.text = param1;
       }
       
+      public function setBindKeyTextVisibility(param1:Boolean) : void
+      {
+         this._textField.visible = param1;
+      }
+      
       public function setIcon(param1:String) : void
       {
          this._sourceIcon = param1;

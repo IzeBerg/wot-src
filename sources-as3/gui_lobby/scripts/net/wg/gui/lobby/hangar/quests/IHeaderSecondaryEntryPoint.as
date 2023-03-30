@@ -6,9 +6,5 @@ package net.wg.gui.lobby.hangar.quests
    public interface IHeaderSecondaryEntryPoint extends IDAAPIModule, IDisplayObject
    {
        
-      
-      function get alias() : String;
-      
-      function set alias(param1:String) : void;
    }
 }

@@ -3,10 +3,10 @@ package net.wg.gui.lobby.vehicleCompare.configurator
    import flash.display.MovieClip;
    import net.wg.data.constants.generated.HANGAR_ALIASES;
    import net.wg.gui.lobby.components.data.VehParamVO;
-   import net.wg.gui.lobby.hangar.vehicleParameters.components.VehParamRenderer;
+   import net.wg.gui.lobby.hangar.vehicleParameters.components.VehParamRendererWithHighlight;
    import scaleform.clik.constants.InvalidationType;
    
-   public class VehConfParamRenderer extends VehParamRenderer
+   public class VehConfParamRenderer extends VehParamRendererWithHighlight
    {
        
       
@@ -21,6 +21,12 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       public function VehConfParamRenderer()
       {
          super();
+      }
+      
+      override protected function onDispose() : void
+      {
+         this.anim = null;
+         super.onDispose();
       }
       
       override protected function draw() : void

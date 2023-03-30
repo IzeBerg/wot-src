@@ -200,8 +200,7 @@ class CrosshairDataProxy(IBattleController):
                 self.onCrosshairPositionChanged(posX, posY)
 
     def __setGunMarkerState(self, markerType, value):
-        position, direction, collision = value
-        self.onGunMarkerStateChanged(markerType, position, direction, collision)
+        self.onGunMarkerStateChanged(markerType, *value)
 
     def __onAvatarControlModeChanged(self, ctrlMode):
         viewID = getCrosshairViewIDByCtrlMode(ctrlMode)

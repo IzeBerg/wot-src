@@ -85,9 +85,7 @@ package
       
       public static const OPERATIONINFO_OPERATIONBTN_POSTPONED_LESSTHANDAY:String = "#personal_missions:operationInfo/operationBtn/postponed/lessThanDay";
       
-      public static const OPERATIONINFO_CHAINVEHREQ_REGULAR:String = "#personal_missions:operationInfo/chainVehReq/regular";
-      
-      public static const OPERATIONINFO_CHAINVEHREQ_PM2:String = "#personal_missions:operationInfo/chainVehReq/pm2";
+      public static const OPERATIONINFO_CHAINVEHREQ:String = "#personal_missions:operationInfo/chainVehReq";
       
       public static const AWARDSVIEW_DESCRIPTION:String = "#personal_missions:awardsView/description";
       

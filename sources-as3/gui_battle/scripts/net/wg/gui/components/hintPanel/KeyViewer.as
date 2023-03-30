@@ -66,7 +66,8 @@ package net.wg.gui.components.hintPanel
       
       public function setKey(param1:String, param2:String) : void
       {
-         var _loc3_:Boolean = BUTTONS_WITH_CUSTOM_ICON.indexOf(param1) >= 0;
+         var _loc3_:Boolean = false;
+         _loc3_ = BUTTONS_WITH_CUSTOM_ICON.indexOf(param1) >= 0;
          this.customButtonIcon.visible = _loc3_;
          this.keyTF.visible = !_loc3_;
          this.buttonBgMc.visible = !_loc3_;

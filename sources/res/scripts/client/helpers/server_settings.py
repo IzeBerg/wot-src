@@ -6,6 +6,7 @@ from Event import Event
 from UnitBase import PREBATTLE_TYPE_TO_UNIT_ASSEMBLER, UNIT_ASSEMBLER_IMPL_TO_CONFIG
 from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
 from battle_pass_common import BATTLE_PASS_CONFIG_NAME, BattlePassConfig
+from collections_common import CollectionsConfig
 from collector_vehicle import CollectorVehicleConsts
 from comp7_ranks_common import Comp7Division
 from constants import BATTLE_NOTIFIER_CONFIG, ClansConfig, Configs, DAILY_QUESTS_CONFIG, DOG_TAGS_CONFIG, MAGNETIC_AUTO_AIM_CONFIG, MISC_GUI_SETTINGS, PremiumConfigs, RENEWABLE_SUBSCRIPTION_CONFIG, PLAYER_SUBSCRIPTIONS_CONFIG, TOURNAMENT_CONFIG
@@ -1023,6 +1024,7 @@ class Comp7Config(namedtuple('Comp7Config', (
  'peripheryIDs',
  'primeTimes',
  'seasons',
+ 'battleModifiersDescr',
  'cycleTimes',
  'roleEquipments',
  'numPlayers',
@@ -1035,7 +1037,7 @@ class Comp7Config(namedtuple('Comp7Config', (
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False)
+        defaults = dict(isEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False)
         defaults.update(kwargs)
         return super(Comp7Config, cls).__new__(cls, **defaults)
 
@@ -1095,6 +1097,39 @@ class Comp7PrestigeRanksConfig(namedtuple('Comp7PrestigeRanksConfig', (
         dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
         self.__updateDivisionsData(dataToUpdate)
         return self._replace(**dataToUpdate)
+
+
+class WinbackConfig(namedtuple('WinbackConfig', (
+ 'isEnabled',
+ 'isModeEnabled',
+ 'isWhatsNewEnabled',
+ 'isProgressionEnabled',
+ 'tokenQuestPrefix',
+ 'offerTokenPrefix',
+ 'winbackAccessToken',
+ 'winbackBattlesCountToken',
+ 'winbackShowPromoToken',
+ 'winbackPromoURL',
+ 'lastQuestEnabler',
+ 'winbackStartingQuest'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(isEnabled=False, isModeEnabled=False, isWhatsNewEnabled=False, isProgressionEnabled=False, tokenQuestPrefix='', offerTokenPrefix='', winbackAccessToken='', winbackBattlesCountToken='', winbackShowPromoToken='', winbackPromoURL='', lastQuestEnabler='', winbackStartingQuest='')
+        defaults.update(kwargs)
+        return super(WinbackConfig, cls).__new__(cls, **defaults)
+
+    def asDict(self):
+        return self._asdict()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
 
 
 class PersonalReservesConfig(namedtuple('_PersonalReserves', ('isReservesInBattleActivationEnabled',
@@ -1205,6 +1240,8 @@ class ServerSettings(object):
         self.__playLimitsConfig = PlayLimitsConfig()
         self.__preModerationConfig = PreModerationConfig()
         self.__eventLootBoxesConfig = _EventLootBoxesConfig()
+        self.__collectionsConfig = CollectionsConfig()
+        self.__winbackConfig = WinbackConfig()
         self.set(serverSettings)
 
     def set(self, serverSettings):
@@ -1339,6 +1376,13 @@ class ServerSettings(object):
             self.__tournamentSettings = makeTupleByDict(_TournamentSettings, self.__serverSettings[TOURNAMENT_CONFIG])
         else:
             self.__tournamentSettings = _TournamentSettings.defaults()
+        if Configs.COLLECTIONS_CONFIG.value in self.__serverSettings:
+            self.__collectionsConfig = makeTupleByDict(CollectionsConfig, self.__serverSettings[Configs.COLLECTIONS_CONFIG.value])
+        if Configs.WINBACK_CONFIG.value in self.__serverSettings:
+            _logger.info(Configs.WINBACK_CONFIG.value, self.__serverSettings[Configs.WINBACK_CONFIG.value])
+            self.__winbackConfig = makeTupleByDict(WinbackConfig, self.__serverSettings[Configs.WINBACK_CONFIG.value])
+        else:
+            self.__winbackConfig = WinbackConfig.defaults()
         self.onServerSettingsChange(serverSettings)
 
     def update(self, serverSettingsDiff):
@@ -1436,12 +1480,16 @@ class ServerSettings(object):
         if Configs.CUSTOMIZATION_QUESTS.value in serverSettingsDiff:
             key = Configs.CUSTOMIZATION_QUESTS.value
             self.__serverSettings[key] = serverSettingsDiff[key]
+        if Configs.WINBACK_CONFIG.value in serverSettingsDiff:
+            self.__updateWinbackConfig(serverSettingsDiff)
         if Configs.COLLECTIVE_GOAL_ENTRY_POINT_CONFIG.value in serverSettingsDiff:
             self.__updateCollectiveGoalEntryPointConfig(serverSettingsDiff)
         if Configs.COLLECTIVE_GOAL_MARATHONS_CONFIG.value in serverSettingsDiff:
             self.__updateCollectiveGoalMarathonsConfig(serverSettingsDiff)
         self.__updatePersonalReserves(serverSettingsDiff)
         self.__updateEventLootBoxesConfig(serverSettingsDiff)
+        if Configs.COLLECTIONS_CONFIG.value in serverSettingsDiff:
+            self.__updateCollectionsConfig(serverSettingsDiff)
         self.onServerSettingsChange(serverSettingsDiff)
 
     def clear(self):
@@ -1598,6 +1646,14 @@ class ServerSettings(object):
     def preModerationConfig(self):
         return self.__preModerationConfig
 
+    @property
+    def collectionsConfig(self):
+        return self.__collectionsConfig
+
+    @property
+    def winbackConfig(self):
+        return self.__winbackConfig
+
     def isEpicBattleEnabled(self):
         return self.epicBattles.isEnabled
 
@@ -1734,6 +1790,9 @@ class ServerSettings(object):
     def isRenewableSubEnabled(self):
         return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enabled', True)
 
+    def isWotPlusEnabledForSteam(self):
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enabledForSteam', False)
+
     def isWotPlusTankRentalEnabled(self):
         return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableTankRental', True)
 
@@ -1749,6 +1808,15 @@ class ServerSettings(object):
     def isWotPlusNewSubscriptionEnabled(self):
         return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableNewSubscriptions', True)
 
+    def isWotPlusExcludedMapEnabled(self):
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableExcludedMap', True)
+
+    def isWoTPlusExclusiveVehicleEnabled(self):
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableWoTPlusExclusiveVehicle', True)
+
+    def isFreeEquipmentDemountingEnabled(self):
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeEquipmentDemounting', True)
+
     def getRenewableSubCrewXPPerMinute(self):
         return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('crewXPPerMinute', 0)
 
@@ -1757,6 +1825,9 @@ class ServerSettings(object):
 
     def getArenaTypesWithGoldReserve(self):
         return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get(GOLD_RESERVE_GAINS_SECTION, {}).keys()
+
+    def getWotPlusProductCode(self):
+        return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('subscriptionProductCode', 'subscription_dev')
 
     def isTelecomRentalsEnabled(self):
         return self.__getGlobalSetting(TELECOM_RENTALS_CONFIG, {}).get('enabled', True)
@@ -2055,6 +2126,12 @@ class ServerSettings(object):
                 _logger.error('Unexpected format of subscriptions service config: %r', config)
                 self.__eventLootBoxesConfig = _EventLootBoxesConfig()
         return
+
+    def __updateCollectionsConfig(self, diff):
+        self.__collectionsConfig = self.__collectionsConfig.replace(diff[Configs.COLLECTIONS_CONFIG.value])
+
+    def __updateWinbackConfig(self, diff):
+        self.__winbackConfig = self.__winbackConfig.replace(diff[Configs.WINBACK_CONFIG.value])
 
 
 def serverSettingsChangeListener(*configKeys):

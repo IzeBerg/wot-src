@@ -34,6 +34,7 @@
 		<Interface>RespawnController_Vehicle</Interface>
 		<Interface>SmokeController_Vehicle</Interface>
 		<Interface>Wheels</Interface>
+		<Interface>Perks_Vehicle</Interface>
 	</Implements>
 	<Volatile>
 		<position/>
@@ -234,6 +235,10 @@
 			<Type>FLOAT</Type>
 			<Flags>CELL_PRIVATE</Flags>
 		</xRayFactor>
+		<foliageInvisibilityFactor>
+			<Type>FLOAT</Type>
+			<Flags>CELL_PRIVATE</Flags>
+		</foliageInvisibilityFactor>
 		<masterVehID>
 			<Type>UINT32</Type>
 			<Flags>ALL_CLIENTS</Flags>

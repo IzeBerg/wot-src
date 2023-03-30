@@ -1,5 +1,5 @@
 import CGF
-from cgf_script.component_meta_class import CGFComponent, ComponentProperty, CGFMetaTypes
+from cgf_script.component_meta_class import ComponentProperty, CGFMetaTypes, registerComponent
 from cgf_script.managers_registrator import autoregister, onProcessQuery, onAddedQuery
 import GenericComponents, Triggers, math
 from Math import Matrix
@@ -14,8 +14,10 @@ def createRTMatrix(rotation, translation):
     return result
 
 
-class TestBridge(CGFComponent):
+@registerComponent
+class TestBridge(object):
     category = DEMO_CATEGORY
+    domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     moverTransform1 = ComponentProperty(type=CGFMetaTypes.LINK, editorName='Mover1', value=GenericComponents.TransformComponent)
     moverTransform2 = ComponentProperty(type=CGFMetaTypes.LINK, editorName='Mover2', value=GenericComponents.TransformComponent)
     trigger1 = ComponentProperty(type=CGFMetaTypes.LINK, editorName='Trigger1', value=Triggers.AreaTriggerComponent)

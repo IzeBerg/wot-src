@@ -20,19 +20,19 @@ msgid "actionAchievements/title"
 msgstr "Акционные медали"
 
 msgid "add_tankman_skill/invalid_vehicle"
-msgstr "Ошибка изучения умения. Неправильная машина."
+msgstr "Ошибка изучения навыка. Неправильная машина."
 
 msgid "add_tankman_skill/server_error"
-msgstr "Новое умение не изучено. Попробуйте позже."
+msgstr "Новый навык не изучен. Попробуйте позже."
 
 msgid "add_tankman_skill/success"
-msgstr "Новое умение успешно изучено."
+msgstr "Новый навык успешно изучен."
 
 msgid "add_tankman_skill/vehicle_locked"
-msgstr "Ошибка изучения умения. Машина заблокирована."
+msgstr "Ошибка изучения навыка. Машина заблокирована."
 
 msgid "add_tankman_skill/vehicle_need_repair"
-msgstr "Ошибка изучения умения. Машине необходим ремонт."
+msgstr "Ошибка изучения навыка. Машине необходим ремонт."
 
 msgid "another_periphery"
 msgstr "Не закончена сессия на другом сервере."
@@ -289,6 +289,10 @@ msgid "artefact_remove/vehicle_need_repair"
 msgstr ""
 "Машина повреждена. %(kind)s «%(name)s» не демонтировано. Отремонтируйте "
 "машину и повторите операцию."
+
+msgid "artefact_remove/wot_plus_success"
+msgstr ""
+"%(kind)s «%(name)s» было демонтировано бесплатно благодаря подписке МТ Плюс."
 
 msgid "artefact_sell/invalid_module"
 msgstr "Продажа %(kind)s «%(name)s» не удалась. Неправильный модуль."
@@ -1450,19 +1454,19 @@ msgid "dossiers_unavailable"
 msgstr "Учётная запись не готова (DOSSIERS_UNAVAILABLE)"
 
 msgid "drop_tankman_skill/invalid_vehicle"
-msgstr "Ошибка сброса умений. Неправильная машина."
+msgstr "Ошибка сброса навыков. Неправильная машина."
 
 msgid "drop_tankman_skill/server_error"
-msgstr "Не удалось сбросить умения. Попробуйте позже."
+msgstr "Не удалось сбросить навыки. Попробуйте позже."
 
 msgid "drop_tankman_skill/success"
-msgstr "Все навыки и умения успешно сброшены. Потрачено %(money)s"
+msgstr "Все навыки успешно сброшены. Потрачено %(money)s"
 
 msgid "drop_tankman_skill/vehicle_locked"
-msgstr "Ошибка сброса умений. Машина заблокирована."
+msgstr "Ошибка сброса навыков. Машина заблокирована."
 
 msgid "drop_tankman_skill/vehicle_need_repair"
-msgstr "Ошибка сброса умений. Машине необходим ремонт."
+msgstr "Ошибка сброса навыков. Машине необходим ремонт."
 
 msgid "drr_scale/step_down"
 msgstr "Динамическое разрешение уменьшено до %(scale)d%%."
@@ -2250,6 +2254,15 @@ msgid "maps_black_list/select/success"
 msgstr ""
 "Карта «%(mapName)s» исключена из Случайных боёв (для типа «Стандартный "
 "бой»). Изменить свой выбор можно будет через %(time)s."
+
+msgid "maps_black_list/select/success/wotPlusEnabled/noSubscriptions"
+msgstr "?empty?"
+
+msgid "maps_black_list/select/success/wotPlusEnabled/premium"
+msgstr "?empty?"
+
+msgid "maps_black_list/select/success/wotPlusEnabled/wotPlus"
+msgstr "?empty?"
 
 msgid "maps_black_list/switch_off/body"
 msgstr ""
@@ -4588,6 +4601,9 @@ msgstr ""
 "Операция невозможна. Всё ваше золото станет доступно после автоматического "
 "восстановления работоспособности Единого кошелька."
 
+msgid "vehicle_slot_buy/not_enough_credits"
+msgstr "Ошибка покупки слота. Недостаточно кредитов."
+
 msgid "vehicle_slot_buy/not_enough_gold"
 msgstr "Ошибка покупки слота. Недостаточно золота."
 
@@ -4719,6 +4735,9 @@ msgid "wallet/not_available_gold"
 msgstr ""
 "Идёт получение данных о балансе. Всё ваше золото станет доступно в ближайшее"
 " время."
+
+msgid "winback/turnOffBattlesError"
+msgstr "Не удалось завершить Разминку. Пожалуйста, попробуйте позже."
 
 msgid "window/buttons/close"
 msgstr "Закрыть"

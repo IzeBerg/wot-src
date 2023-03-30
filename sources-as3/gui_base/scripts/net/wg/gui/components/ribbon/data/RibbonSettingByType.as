@@ -57,5 +57,10 @@ package net.wg.gui.components.ribbon.data
       {
          return this._disposed;
       }
+      
+      public function set icon(param1:String) : void
+      {
+         this._icon = param1;
+      }
    }
 }

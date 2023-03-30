@@ -2,7 +2,6 @@ package net.wg.gui.lobby.missions
 {
    import flash.display.Sprite;
    import flash.text.TextField;
-   import flash.text.TextFieldAutoSize;
    import net.wg.gui.components.controls.Image;
    import net.wg.gui.components.controls.ScrollingListEx;
    import net.wg.gui.components.popovers.PopOver;
@@ -23,25 +22,15 @@ package net.wg.gui.lobby.missions
       
       private static const LIST_MAX_RENDERERS:int = 4;
       
-      private static const BUY_BTN_OFFSET_LIST:int = 15;
+      private static const BUY_BTN_OFFSET:int = 15;
       
-      private static const BUY_BTN_ONLY_SHOP_OFFSET_TEXT_SMALL:int = 1;
-      
-      private static const BUY_BTN_ONLY_SHOP_OFFSET_TEXT_BIG:int = 7;
+      private static const BUY_BTN_ONLY_SHOP_OFFSET:int = 1;
       
       private static const BUY_BTN_X:int = 90;
       
       private static const HEIGHT_BUY_AVAILABLE_OFFSET:int = 39;
       
       private static const HEIGHT_BUY_UNAVAILABLE_OFFSET:int = 12;
-      
-      private static const DESCR_TF_MIN_HEIGHT:int = 50;
-      
-      private static const DESCR_TF_MAX_HEIGHT:int = 82;
-      
-      private static const SEPARATOR_TOP_PADDING_TOP:int = 12;
-      
-      private static const LIST_PADDING_TOP:int = -3;
        
       
       public var headerTF:TextField = null;
@@ -81,7 +70,6 @@ package net.wg.gui.lobby.missions
          this._rendererHeight = this._originalListHeight / LIST_MAX_RENDERERS;
          this.buyBtn.addEventListener(ButtonEvent.CLICK,this.onBuyBtnClickHandler);
          this.list.addEventListener(MissionsTokenListRendererEvent.QUEST_RENDERER_CLICK,this.onQuestRendererClickHandler);
-         this.descrTF.autoSize = TextFieldAutoSize.RIGHT;
       }
       
       override protected function setStaticData(param1:MissionsTokenPopoverVO) : void
@@ -127,38 +115,24 @@ package net.wg.gui.lobby.missions
       {
          var _loc1_:int = 0;
          var _loc2_:int = 0;
-         var _loc3_:int = 0;
          super.draw();
          if(isInvalid(InvalidationType.SIZE))
          {
-            if(this.descrTF.height < DESCR_TF_MIN_HEIGHT)
-            {
-               this.descrTF.autoSize = TextFieldAutoSize.NONE;
-               this.descrTF.height = DESCR_TF_MIN_HEIGHT;
-            }
-            else if(this.descrTF.height > DESCR_TF_MAX_HEIGHT)
-            {
-               this.descrTF.autoSize = TextFieldAutoSize.NONE;
-               this.descrTF.height = DESCR_TF_MAX_HEIGHT;
-            }
             _loc1_ = this.list.dataProvider.length;
             this.list.height = _loc1_ < LIST_MAX_RENDERERS ? Number(this._rendererHeight * _loc1_) : Number(this._originalListHeight);
             if(_loc1_ > 0)
             {
                this.separatorTop.visible = this.separatorBottom.visible = true;
-               this.separatorTop.y = this.descrTF.y + this.descrTF.height + SEPARATOR_TOP_PADDING_TOP | 0;
-               this.list.y = this.separatorTop.y + LIST_PADDING_TOP | 0;
                this.separatorBottom.y = this.list.y + this.list.height;
                this.buyBtn.x = BUY_BTN_X;
-               this.buyBtn.y = this.separatorBottom.y + BUY_BTN_OFFSET_LIST;
+               this.buyBtn.y = this.separatorBottom.y + BUY_BTN_OFFSET;
                _loc2_ = !!this.buyBtn.visible ? int(this.buyBtn.y + HEIGHT_BUY_AVAILABLE_OFFSET) : int(this.separatorBottom.y + HEIGHT_BUY_UNAVAILABLE_OFFSET);
             }
             else
             {
-               _loc3_ = this.descrTF.height == DESCR_TF_MIN_HEIGHT ? int(BUY_BTN_ONLY_SHOP_OFFSET_TEXT_SMALL) : int(BUY_BTN_ONLY_SHOP_OFFSET_TEXT_BIG);
                this.separatorTop.visible = this.separatorBottom.visible = false;
                this.buyBtn.x = this.descrTF.x;
-               this.buyBtn.y = this.descrTF.y + this.descrTF.height + _loc3_ | 0;
+               this.buyBtn.y = this.descrTF.y + this.descrTF.height + BUY_BTN_ONLY_SHOP_OFFSET;
                _loc2_ = !!this.buyBtn.visible ? int(this.buyBtn.y + HEIGHT_BUY_AVAILABLE_OFFSET) : int(this.descrTF.y + this.descrTF.height + HEIGHT_BUY_UNAVAILABLE_OFFSET);
             }
             setViewSize(POPOVER_WIDTH,_loc2_);

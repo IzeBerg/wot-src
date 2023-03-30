@@ -79,13 +79,13 @@ package net.wg.gui.components.common.markers
          {
             this.tweenState = ACTIVE_STATE;
             App.utils.scheduler.scheduleTask(this.playHideTween,SPLASH_DURATION);
-            dispatchEvent(new Event(SHOW,true));
+            dispatchEvent(new Event(SHOW));
          }
          else
          {
             this.tweenState = INACTIVE_STATE;
             visible = false;
-            dispatchEvent(new Event(HIDE,true));
+            dispatchEvent(new Event(HIDE));
          }
       }
       

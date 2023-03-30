@@ -550,12 +550,11 @@ class AmmoPlugin(CrosshairPlugin):
         return
 
     def __onGunAutoReloadTimeSet(self, state, stunned):
-        if not self.__autoReloadCallbackID:
-            timeLeft = min(state.getTimeLeft(), state.getActualValue())
-            baseValue = round(state.getBaseValue(), 1)
-            if self.__shellsInClip == 0:
-                baseValue = self.__reCalcFirstShellAutoReload(baseValue)
-            self.__reloadAnimator.setClipAutoLoading(timeLeft, baseValue, isStun=stunned, isTimerOn=True, isRedText=self.__shellsInClip == 0)
+        timeLeft = min(state.getTimeLeft(), state.getActualValue())
+        baseValue = round(state.getBaseValue(), 1)
+        if self.__shellsInClip == 0:
+            baseValue = self.__reCalcFirstShellAutoReload(baseValue)
+        self.__reloadAnimator.setClipAutoLoading(timeLeft, baseValue, isStun=stunned, isTimerOn=True, isRedText=self.__shellsInClip == 0)
         self.__autoReloadSnapshot = state
 
     def __onGunAutoReloadBoostUpd(self, state, stateDuration, stateTotalTime, extraData):

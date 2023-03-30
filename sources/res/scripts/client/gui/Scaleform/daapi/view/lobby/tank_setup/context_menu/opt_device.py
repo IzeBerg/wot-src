@@ -1,12 +1,17 @@
+import typing
 from adisp import adisp_process, adisp_async
 from gui.Scaleform.daapi.view.lobby.shared.cm_handlers import option, CMLabel
 from gui.Scaleform.daapi.view.lobby.tank_setup.context_menu.base import TankSetupCMLabel
 from gui.Scaleform.daapi.view.lobby.tank_setup.context_menu.base_equipment import BaseEquipmentItemContextMenu, BaseEquipmentSlotContextMenu, BaseHangarEquipmentSlotContextMenu
-from gui.impl.lobby.tank_setup.tank_setup_helper import NONE_ID
 from gui.impl.gen.view_models.views.lobby.tank_setup.sub_views.base_setup_model import BaseSetupModel
 from gui.impl.gen.view_models.views.lobby.tank_setup.tank_setup_constants import TankSetupConstants
+from gui.impl.lobby.tank_setup.tank_setup_helper import NONE_ID
 from gui.shared.gui_items.items_actions import factory as ActionsFactory
+from helpers import dependency
 from ids_generators import SequenceIDGenerator
+from skeletons.gui.game_control import IWotPlusController
+if typing.TYPE_CHECKING:
+    from gui.game_control.wot_plus_controller import WotPlusController
 
 class OptDeviceItemContextMenu(BaseEquipmentItemContextMenu):
     _sqGen = SequenceIDGenerator(BaseEquipmentItemContextMenu._sqGen.currSequenceID)
@@ -91,6 +96,7 @@ class OptDeviceSlotContextMenu(BaseEquipmentSlotContextMenu):
 
 class HangarOptDeviceSlotContextMenu(BaseHangarEquipmentSlotContextMenu):
     _sqGen = SequenceIDGenerator(BaseHangarEquipmentSlotContextMenu._sqGen.currSequenceID)
+    _wotPlusController = dependency.descriptor(IWotPlusController)
 
     @option(_sqGen.next(), TankSetupCMLabel.DEMOUNT)
     def demount(self):
@@ -164,7 +170,7 @@ class HangarOptDeviceSlotContextMenu(BaseHangarEquipmentSlotContextMenu):
         if label == TankSetupCMLabel.DEMOUNT_FROM_SETUP or label == TankSetupCMLabel.DEMOUNT_FROM_SETUPS:
             return self._isMountedMoreThanOne
         if label == TankSetupCMLabel.DESTROY:
-            return self._isMounted and not self._getItem().isModernized
+            return self._isMounted and not self._getItem().isModernized and not self._wotPlusController.isFreeToDemount(self._getItem())
         if label == CMLabel.DECONSTRUCT:
             return self._isMounted and self._getItem().isModernized
         return super(HangarOptDeviceSlotContextMenu, self)._isVisible(label)

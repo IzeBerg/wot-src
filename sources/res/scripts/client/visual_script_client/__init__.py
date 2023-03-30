@@ -45,8 +45,6 @@ def registerForVSEditor():
 
 def registerForClient():
     registerForGeneral()
-    from visual_script_client import client_perk_blocks
-    g_blockRegistrar.regBlocksFromModule(client_perk_blocks)
 
 
 if IS_UE_EDITOR:

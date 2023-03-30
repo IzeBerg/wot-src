@@ -83,6 +83,8 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_ROYALE_ENTRY_POINT:String = "battleRoyaleEntryPoint";
       
+      public static const BATTLE_ROYALE_HANGAR_WIDGET:String = "battleRoyaleHangarWidget";
+      
       public static const BATTLE_ROYALE_TOURNAMENT:String = "battleRoyaleTournament";
       
       public static const SECONDARY_ENTRY_POINT:String = "secondaryEntryPoint";
@@ -91,9 +93,9 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_MATTERS_ENTRY_POINT:String = "battleMattersEntryPoint";
       
-      public static const COLLECTIVE_GOAL_ENTRY_POINT:String = "collectiveGoalEntryPoint";
-      
       public static const COMP7_WIDGET:String = "comp7Widget";
+      
+      public static const COMP7_MODIFIERS_PANEL:String = "comp7ModifiersPanel";
       
       public static const AMMUNITION_SETUP_VIEW_VEHICLE_PARAMS:String = "ammunitionSetupViewVehicleParams";
       

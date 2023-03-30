@@ -7,6 +7,8 @@ package net.wg.data.constants.generated
       
       public static const DEATH_ZONE:String = "deathZone";
       
+      public static const DANGER_ZONE:String = "dangerZone";
+      
       public static const OVERTURNED:String = "overturned";
       
       public static const FIRE:String = "fire";
@@ -24,8 +26,6 @@ package net.wg.data.constants.generated
       public static const EVENT_WARNING:String = "eventWarning";
       
       public static const STUN:String = "stun";
-      
-      public static const STUN_FLAME:String = "stunFlame";
       
       public static const CAPTURE_BLOCK:String = "captureLock";
       

@@ -1,8 +1,9 @@
 import logging, typing
+from comp7_common import COMP7_TOKEN_WEEKLY_REWARD_NAME
 from dog_tags_common.components_config import componentConfigAdapter
 from dog_tags_common.config.common import ComponentViewType
 from gui.impl import backport
-from gui.impl.backport import TooltipData
+from gui.impl.backport import TooltipData, createTooltipData
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.comp7.comp7_bonus_model import Comp7BonusModel, DogTagType
 from gui.impl.gen.view_models.views.lobby.comp7.comp7_style_bonus_model import Comp7StyleBonusModel
@@ -10,7 +11,7 @@ from gui.impl.lobby.comp7.comp7_bonus_helpers import BonusTypes, getBonusType
 from gui.impl.lobby.comp7.comp7_c11n_helpers import getComp7ProgressionStyleCamouflage
 from gui.server_events.bonuses import mergeBonuses, splitBonuses, C11nProgressTokenBonus
 from gui.shared.gui_items.customization import CustomizationTooltipContext
-from gui.shared.missions.packers.bonus import DossierBonusUIPacker, DogTagComponentsUIPacker, BonusUIPacker, BaseBonusUIPacker, BACKPORT_TOOLTIP_CONTENT_ID, SimpleBonusUIPacker, CustomizationBonusUIPacker, VehiclesBonusUIPacker
+from gui.shared.missions.packers.bonus import DossierBonusUIPacker, DogTagComponentsUIPacker, BonusUIPacker, BaseBonusUIPacker, BACKPORT_TOOLTIP_CONTENT_ID, SimpleBonusUIPacker, CustomizationBonusUIPacker, VehiclesBonusUIPacker, TokenBonusUIPacker
 from gui.shared.missions.packers.bonus import getDefaultBonusPackersMap
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.shared.money import Currency
@@ -25,7 +26,7 @@ _RANK_REWARDS_BONUSES_ORDER = (
  BonusTypes.STYLE_PROGRESS, BonusTypes.BADGE_SUFFIX, BonusTypes.BADGE,
  BonusTypes.DOGTAG_ENGRAVING, BonusTypes.DOGTAG_BACKGROUND,
  BonusTypes.CRYSTAL, BonusTypes.STYLE, BonusTypes.RENT_VEHICLE)
-_WINS_REWARDS_BONUSES_ORDER = (
+_TOKENS_REWARDS_BONUSES_ORDER = (
  BonusTypes.ACHIEVEMENT, BonusTypes.DELUXE_DEVICE, BonusTypes.CREWBOOK, BonusTypes.PREMIUM,
  BonusTypes.CRYSTAL, BonusTypes.CREDITS, BonusTypes.OPTIONAL_DEVICE, BonusTypes.BOOSTER,
  BonusTypes.BATTLE_BOOSTER, BonusTypes.EQUIPMENT)
@@ -37,7 +38,8 @@ def getComp7BonusPacker():
        'customizations': Comp7CustomizationBonusUIPacker(), 
        'vehicles': Comp7VehicleBonusUIPacker(), 
        Currency.CRYSTAL: Comp7CrystalBonusPacker(), 
-       C11nProgressTokenBonus.BONUS_NAME: Comp7StyleProgressBonusUIPacker()})
+       C11nProgressTokenBonus.BONUS_NAME: Comp7StyleProgressBonusUIPacker(), 
+       COMP7_TOKEN_WEEKLY_REWARD_NAME: Comp7TokenRewardBonusUIPacker()})
     return BonusUIPacker(mapping)
 
 
@@ -161,6 +163,26 @@ class Comp7VehicleBonusUIPacker(VehiclesBonusUIPacker):
         return vehicle.shortUserName
 
 
+class Comp7TokenRewardBonusUIPacker(TokenBonusUIPacker):
+
+    @classmethod
+    def _pack(cls, bonus):
+        model = cls._getBonusModel()
+        model.setValue(str(bonus.getCount()))
+        model.setName(bonus.getName())
+        return [
+         model]
+
+    @classmethod
+    def _getBonusModel(cls):
+        return Comp7BonusModel()
+
+    @classmethod
+    def _getToolTip(cls, bonus):
+        return [
+         createTooltipData(bonus.getTooltip())]
+
+
 def packQuestBonuses(bonuses, bonusPacker, order=None):
     packedBonuses = []
     packedToolTips = []
@@ -188,9 +210,9 @@ def packRanksRewardsQuestBonuses(quest, periodicQuest=None):
     return packQuestBonuses(bonuses, bonusPacker=getComp7BonusPacker(), order=_RANK_REWARDS_BONUSES_ORDER)
 
 
-def packWinsRewardsQuestBonuses(quest):
+def packTokensRewardsQuestBonuses(quest):
     bonuses = quest.getBonuses()
-    return packQuestBonuses(bonuses, bonusPacker=getComp7BonusPacker(), order=_WINS_REWARDS_BONUSES_ORDER)
+    return packQuestBonuses(bonuses, bonusPacker=getComp7BonusPacker(), order=_TOKENS_REWARDS_BONUSES_ORDER)
 
 
 def _getSortKey(order):

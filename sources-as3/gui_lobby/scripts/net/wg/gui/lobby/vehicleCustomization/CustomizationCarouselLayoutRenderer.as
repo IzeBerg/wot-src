@@ -109,8 +109,9 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private function addArrowItem(param1:Point, param2:Boolean) : void
       {
+         var _loc4_:MovieClip = null;
          var _loc3_:Class = App.instance.utils.classFactory.getClass(!!this._isMinResolution ? ITEM_ARROW_SMALL_MOVIE : ITEM_ARROW_BIG_MOVIE);
-         var _loc4_:MovieClip = new _loc3_() as MovieClip;
+         _loc4_ = new _loc3_() as MovieClip;
          if(_loc4_ != null)
          {
             _loc4_.gotoAndStop(!!param2 ? ARROW_ENABLED_STATE : ARROW_DISABLED_STATE);

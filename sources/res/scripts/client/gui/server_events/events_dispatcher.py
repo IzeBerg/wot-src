@@ -360,6 +360,10 @@ def showSubscriptionAwardWindow(notificationMgr=None):
     notificationMgr.append(WindowNotificationCommand(SubscriptionAwardWindow()))
 
 
+def showSubscriptionScreen():
+    shared_events.showSubscriptionsPage()
+
+
 def showPersonalMissionAward(quest, ctx):
     shared_events.showPersonalMissionsQuestAwardScreen(quest, ctx, showPersonalMission)
 

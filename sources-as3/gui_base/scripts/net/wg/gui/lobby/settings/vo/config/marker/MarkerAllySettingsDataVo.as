@@ -36,10 +36,6 @@ package net.wg.gui.lobby.settings.vo.config.marker
       
       public var markerAltVehicleName:SettingsControlProp = null;
       
-      public var markerBaseVehicleDist:SettingsControlProp = null;
-      
-      public var markerAltVehicleDist:SettingsControlProp = null;
-      
       public function MarkerAllySettingsDataVo()
       {
          super({
@@ -56,9 +52,7 @@ package net.wg.gui.lobby.settings.vo.config.marker
             "markerAltHpIndicator":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "markerAltHp":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
             "markerBaseLevel":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
-            "markerAltVehicleName":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
-            "markerBaseVehicleDist":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
-            "markerAltVehicleDist":createControl(ControlsFactory.TYPE_CHECKBOX).build()
+            "markerAltVehicleName":createControl(ControlsFactory.TYPE_CHECKBOX).build()
          });
       }
       
@@ -78,8 +72,6 @@ package net.wg.gui.lobby.settings.vo.config.marker
          this.markerAltHp = null;
          this.markerBaseLevel = null;
          this.markerAltVehicleName = null;
-         this.markerBaseVehicleDist = null;
-         this.markerAltVehicleDist = null;
          super.onDispose();
       }
    }

@@ -219,7 +219,9 @@ class EventsCache(IEventsCache):
                 isEventsDataUpdated = ('eventsData', '_r') in diff or diff.get('eventsData', {})
                 isNeedToInvalidate = isQPUpdated or isEventsDataUpdated
                 hasVehicleUnlocks = False
-                for intCD in diff.get('stats', {}).get('unlocks', set()):
+                diffStats = diff.get('stats', {})
+                for intCD in diffStats.get('unlocks', set()) | diffStats.get(('unlocks',
+                                                                              '_r'), set()):
                     if getTypeOfCompactDescr(intCD) == GUI_ITEM_TYPE.VEHICLE:
                         hasVehicleUnlocks = True
                         break

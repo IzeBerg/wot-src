@@ -10,7 +10,6 @@ from gui.Scaleform.genConsts.FITTING_TYPES import FITTING_TYPES
 from gui.goodies.demount_kit import isDemountKitApplicableTo, getDemountKitForOptDevice
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.shop import showBuyGoldForEquipment
 from gui.shared import event_dispatcher
 from gui.shared.formatters import text_styles, getRoleTextWithLabel
 from gui.shared.formatters.tankmen import formatDeletedTankmanStr
@@ -23,14 +22,18 @@ from gui.shared.tooltips.formatters import packActionTooltipData
 from gui.shared.tooltips.formatters import packItemActionTooltipData
 from gui.shared.utils import decorators
 from gui.shared.utils.requesters import REQ_CRITERIA
+from gui.shop import showBuyGoldForEquipment
 from helpers import int2roman, dependency
+from items import ITEM_TYPES
 from items.components.c11n_constants import ItemTags
 from nation_change.nation_change_helpers import iterVehTypeCDsInNationGroup
-from skeletons.gui.game_control import IRestoreController
+from skeletons.gui.game_control import IRestoreController, IWotPlusController
 from skeletons.gui.goodies import IGoodiesCache
+from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
     from typing import List, Set, Iterator, Optional, Tuple, Dict, Union, Any
+    from gui.game_control.wot_plus_controller import WotPlusController
     from gui.shared.gui_items.fitting_item import FittingItem
     from gui.shared.gui_items.Vehicle import Vehicle
     from gui.shared.gui_items.artefacts import OptionalDevice, BattleBooster
@@ -40,6 +43,7 @@ if typing.TYPE_CHECKING:
     from gui.shared.gui_items.gui_item_economics import ItemPrice
     from gui.shared.money import Money
 _DK_CURRENCY = GOODIE_VARIETY.DEMOUNT_KIT_NAME
+_WP_CURRENCY = 'wotPlusVSD'
 _SETTINGS_KEY = 'vehicleSellDialog'
 _SETTINGS_OPEN_ENTRY = 'isOpened'
 _INVENTORY_SHELLS = 'inventoryShells'
@@ -49,6 +53,7 @@ class VehicleSellDialog(VehicleSellDialogMeta):
     __itemsCache = dependency.descriptor(IItemsCache)
     __restore = dependency.descriptor(IRestoreController)
     __goodiesCache = dependency.descriptor(IGoodiesCache)
+    __wotPlus = dependency.descriptor(IWotPlusController)
     __slots__ = ('__vehInvID', '__vehicle', '__nationGroupVehicles', '__controlNumber',
                  '__enteredControlNumber', '__income', '__accountMoney', '__isCrewDismissal',
                  '__vehicleSellPrice', '__items', '__otherVehicleShells', '__isDemountKitEnabled')
@@ -140,6 +145,9 @@ class VehicleSellDialog(VehicleSellDialogMeta):
                         self.__accountMoney[_DK_CURRENCY] = demountKit.inventoryCount
 
             self.__isDemountKitEnabled = True
+        if self.__wotPlus.isEnabled():
+            devicesSlotsNumber = self.__vehicle.descriptor.supplySlots.getAmountForType(ITEM_TYPES.optionalDevice)
+            self.__accountMoney[_WP_CURRENCY] = devicesSlotsNumber
         optionalDevicesOnVehicle = []
         shellsOnVehicle = []
         equipmentsOnVehicle = []
@@ -259,12 +267,14 @@ class VehicleSellDialog(VehicleSellDialogMeta):
     def __prepareVehicleOptionalDevices(self, vehicle, currentBalance):
         onVehicleOptionalDevices = []
         for optDevice in vehicle.optDevices.setupLayouts.getUniqueItems():
-            data = _OptionalDeviceData(optDevice, vehicle)
+            data = _OptionalDeviceData(optDevice)
             removeCurrency = _findCurrency(currentBalance, data.itemRemovalPrice)
             if removeCurrency is not None:
                 currentBalance -= data.itemRemovalPrice.extract(removeCurrency)
             data.removeCurrency = removeCurrency
-            if optDevice.isModernized and data.removeCurrency != _DK_CURRENCY:
+            if data.removeCurrency == _WP_CURRENCY:
+                data.toInventory = True
+            elif optDevice.isModernized and data.removeCurrency != _DK_CURRENCY:
                 data.toInventory = False
             elif data.isRemovableForMoney:
                 data.toInventory = data.removeCurrency is not None
@@ -474,7 +484,7 @@ def _getSlidingComponentOpened():
 
 def _getCurrencyIterator():
     order = (
-     _DK_CURRENCY,) + Currency.BY_WEIGHT
+     _WP_CURRENCY, _DK_CURRENCY) + Currency.BY_WEIGHT
     for c in order:
         yield c
 
@@ -650,19 +660,28 @@ class _ModulesData(_VSDItemData):
 
 
 _DEMOUNT_KIT_ONE = _VSDMoney(**{_DK_CURRENCY: 1})
+_WOT_PLUS_ONE = _VSDMoney(**{_WP_CURRENCY: 1})
 
 class _OptionalDeviceData(_VSDItemData):
     __slots__ = ()
     __itemsCache = dependency.descriptor(IItemsCache)
+    __wotPlus = dependency.descriptor(IWotPlusController)
+    __lobbyContext = dependency.descriptor(ILobbyContext)
 
-    def __init__(self, optDevice, vehicle=None):
+    def __init__(self, optDevice):
         super(_OptionalDeviceData, self).__init__(optDevice, FITTING_TYPES.OPTIONAL_DEVICE)
+        isWotPlusEnabled = self.__wotPlus.isWotPlusEnabled()
         self._flashData['isRemovable'] = optDevice.isRemovable
         self._flashData['isModernized'] = optDevice.isModernized
+        self._flashData['isWotPlusEnabled'] = isWotPlusEnabled
         removalPrice = optDevice.getRemovalPrice(self.__itemsCache.items)
         if removalPrice.isActionPrice():
             self._flashData['removeActionPrice'] = packActionTooltipData(ACTION_TOOLTIPS_TYPE.ECONOMICS, 'paidRemovalCost', True, removalPrice.price, removalPrice.defPrice)
-        self._itemRemovalPrice = _VSDMoney(removalPrice.price)
-        if isDemountKitApplicableTo(optDevice):
-            self._itemRemovalPrice += _DEMOUNT_KIT_ONE
+        isFreeEquipmentDemountingEnabled = self.__lobbyContext.getServerSettings().isFreeEquipmentDemountingEnabled()
+        if isFreeEquipmentDemountingEnabled and isWotPlusEnabled and self.__wotPlus.isFreeToDemount(optDevice):
+            self._itemRemovalPrice = _WOT_PLUS_ONE
+        else:
+            self._itemRemovalPrice = _VSDMoney(removalPrice.price)
+            if isDemountKitApplicableTo(optDevice):
+                self._itemRemovalPrice += _DEMOUNT_KIT_ONE
         self._flashData['removePrice'] = self._itemRemovalPrice.toDict()

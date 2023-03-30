@@ -18,6 +18,7 @@ from gui.shared.utils.requesters import REQ_CRITERIA
 from helpers import dependency
 from items.components.supply_slot_categories import SlotCategories
 from shared_utils import first
+from skeletons.gui.game_control import IWotPlusController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
@@ -185,10 +186,14 @@ class DeconstructOptDeviceOnVehicleProvider(ArrayOptDeviceProvider):
 
 
 class BaseOptDeviceProvider(VehicleBaseArrayProvider):
+    _wotPlusController = dependency.descriptor(IWotPlusController)
     __slots__ = ()
 
     def getItemViewModel(self):
         return OptDeviceSlotModel()
+
+    def _fillWotPlusStatus(self, model, item):
+        model.setIsFreeToDemount(self._wotPlusController.isFreeToDemount(item))
 
     def createSlot(self, item, ctx):
         model = super(BaseOptDeviceProvider, self).createSlot(item, ctx)
@@ -198,11 +203,13 @@ class BaseOptDeviceProvider(VehicleBaseArrayProvider):
         self._fillBonuses(model, item, ctx.slotID)
         self._fillSpecializations(model, item, ctx.slotID)
         self._fillBuyPrice(model, item)
+        self._fillWotPlusStatus(model, item)
         return model
 
     def updateSlot(self, model, item, ctx):
         super(BaseOptDeviceProvider, self).updateSlot(model, item, ctx)
         self._fillStatus(model, item, ctx.slotID)
+        self._fillWotPlusStatus(model, item)
         if not model.getIsDisabled():
             isInstalledOrMounted = item in self._getCurrentLayout() or self._getSetupLayout().containsIntCD(item.intCD)
             self._fillBuyStatus(model, item, isInstalledOrMounted)

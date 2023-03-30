@@ -77,9 +77,11 @@ package net.wg.gui.components.advanced.tutorial
       
       private function layoutHints() : void
       {
-         var _loc1_:int = this._hints.length;
          var _loc2_:TutorialContextHintVO = null;
          var _loc3_:TutorialContextHint = null;
+         var _loc1_:int = this._hints.length;
+         _loc2_ = null;
+         _loc3_ = null;
          var _loc4_:int = 0;
          while(_loc4_ < _loc1_)
          {

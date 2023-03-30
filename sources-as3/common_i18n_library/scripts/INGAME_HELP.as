@@ -113,8 +113,6 @@ package
       
       public static const CROSSHAIRCONTROLS_EXAMPLE_NAME:String = "#ingame_help:crosshairControls/example/name";
       
-      public static const CROSSHAIRCONTROLS_EXAMPLE_DISTANCE:String = "#ingame_help:crosshairControls/example/distance";
-      
       public static const MARKERMARKS_TITLE:String = "#ingame_help:markerMarks/title";
       
       public static const MARKERMARKS_FOLLOW:String = "#ingame_help:markerMarks/follow";
@@ -220,6 +218,20 @@ package
       public static const DETAILSHELP_ROLE_DESCRIPTION:String = "#ingame_help:detailsHelp/role/description";
       
       public static const ROLEDESCRIPTION_MSG:String = "#ingame_help:roleDescription/msg";
+      
+      public static const DETAILSHELP_MAPBOX_HEADERTITLE:String = "#ingame_help:detailsHelp/mapbox/headerTitle";
+      
+      public static const DETAILSHELP_MAPBOX_MARKERS_TITLE:String = "#ingame_help:detailsHelp/mapbox/markers/title";
+      
+      public static const DETAILSHELP_MAPBOX_MARKERS_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/markers/description";
+      
+      public static const DETAILSHELP_MAPBOX_ENVIRONMENT_TITLE:String = "#ingame_help:detailsHelp/mapbox/environment/title";
+      
+      public static const DETAILSHELP_MAPBOX_ENVIRONMENT_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/environment/description";
+      
+      public static const DETAILSHELP_MAPBOX_ARTEFACTS_TITLE:String = "#ingame_help:detailsHelp/mapbox/artefacts/title";
+      
+      public static const DETAILSHELP_MAPBOX_ARTEFACTS_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/artefacts/description";
       
       public static const RADIALMENU_ATTENTION_TO_POSITION:String = "#ingame_help:radialMenu/attention_to_position";
       

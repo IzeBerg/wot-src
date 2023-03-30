@@ -68,6 +68,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.bootcamp.BCHighlightsBase;
    import net.wg.gui.bootcamp.bootcampProgress.BootcampProgress;
    import net.wg.gui.bootcamp.containers.AnimatedButtonContainer;
+   import net.wg.gui.bootcamp.containers.AnimatedEmptyContainer;
    import net.wg.gui.bootcamp.containers.AnimatedHtmlTextContainer;
    import net.wg.gui.bootcamp.containers.AnimatedLoaderTextContainer;
    import net.wg.gui.bootcamp.containers.AnimatedSpriteContainer;
@@ -749,7 +750,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.SettingsBaseView;
    import net.wg.gui.lobby.settings.SettingsChangesMap;
    import net.wg.gui.lobby.settings.SettingsContourForm;
-   import net.wg.gui.lobby.settings.SettingsMarkerContentForm;
    import net.wg.gui.lobby.settings.SettingsMarkersForm;
    import net.wg.gui.lobby.settings.SettingsNewCountersForm;
    import net.wg.gui.lobby.settings.SettingsSniperForm;
@@ -763,7 +763,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.components.KeysItemRenderer;
    import net.wg.gui.lobby.settings.components.KeysScrollingList;
    import net.wg.gui.lobby.settings.components.RadioButtonBar;
-   import net.wg.gui.lobby.settings.components.SettingsMarkerScrollPane;
    import net.wg.gui.lobby.settings.components.SettingsStepSlider;
    import net.wg.gui.lobby.settings.components.SoundDeviceButtonBar;
    import net.wg.gui.lobby.settings.components.SoundDeviceTabButton;
@@ -773,6 +772,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
    import net.wg.gui.lobby.settings.events.AlternativeVoiceEvent;
    import net.wg.gui.lobby.settings.events.SettingViewEvent;
+   import net.wg.gui.lobby.settings.events.SettingsGroupEvent;
    import net.wg.gui.lobby.settings.events.SettingsSubVewEvent;
    import net.wg.gui.lobby.settings.feedback.FeedbackBaseForm;
    import net.wg.gui.lobby.settings.feedback.FeedbackSettings;
@@ -787,7 +787,12 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.feedback.questsProgress.QuestsProgressControls;
    import net.wg.gui.lobby.settings.feedback.questsProgress.QuestsProgressForm;
    import net.wg.gui.lobby.settings.feedback.questsProgress.ScorePanelControls;
+   import net.wg.gui.lobby.settings.feedback.ribbons.BattleEfficiencyControlsGroupContent;
    import net.wg.gui.lobby.settings.feedback.ribbons.BattleRibbonsForm;
+   import net.wg.gui.lobby.settings.feedback.ribbons.ControlsContainer;
+   import net.wg.gui.lobby.settings.feedback.ribbons.ControlsGroup;
+   import net.wg.gui.lobby.settings.feedback.ribbons.DamageControlsGroupContent;
+   import net.wg.gui.lobby.settings.feedback.ribbons.GroupContent;
    import net.wg.gui.lobby.settings.feedback.ribbons.SettingsRibbonContainer;
    import net.wg.gui.lobby.settings.feedback.ribbons.SettingsRibbonItem;
    import net.wg.gui.lobby.settings.feedback.ribbons.data.RibbonItemData;
@@ -1056,6 +1061,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BOOTCAMP_BOOTCAMPPROGRESS_BOOTCAMPPROGRESS:Class = BootcampProgress;
       
       public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDBUTTONCONTAINER:Class = AnimatedButtonContainer;
+      
+      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDEMPTYCONTAINER:Class = AnimatedEmptyContainer;
       
       public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDHTMLTEXTCONTAINER:Class = AnimatedHtmlTextContainer;
       
@@ -2419,8 +2426,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSCONTOURFORM:Class = SettingsContourForm;
       
-      public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSMARKERCONTENTFORM:Class = SettingsMarkerContentForm;
-      
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSMARKERSFORM:Class = SettingsMarkersForm;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSNEWCOUNTERSFORM:Class = SettingsNewCountersForm;
@@ -2447,8 +2452,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_RADIOBUTTONBAR:Class = RadioButtonBar;
       
-      public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_SETTINGSMARKERSCROLLPANE:Class = SettingsMarkerScrollPane;
-      
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_SETTINGSSTEPSLIDER:Class = SettingsStepSlider;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_SOUNDDEVICEBUTTONBAR:Class = SoundDeviceButtonBar;
@@ -2464,6 +2467,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_CONFIG_SETTINGSCONFIGHELPER:Class = SettingsConfigHelper;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_EVENTS_ALTERNATIVEVOICEEVENT:Class = AlternativeVoiceEvent;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_EVENTS_SETTINGSGROUPEVENT:Class = SettingsGroupEvent;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_EVENTS_SETTINGSSUBVEWEVENT:Class = SettingsSubVewEvent;
       
@@ -2495,7 +2500,17 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_FEEDBACK_QUESTSPROGRESS_SCOREPANELCONTROLS:Class = ScorePanelControls;
       
+      public static const NET_WG_GUI_LOBBY_SETTINGS_FEEDBACK_RIBBONS_BATTLEEFFICIENCYCONTROLSGROUPCONTENT:Class = BattleEfficiencyControlsGroupContent;
+      
       public static const NET_WG_GUI_LOBBY_SETTINGS_FEEDBACK_RIBBONS_BATTLERIBBONSFORM:Class = BattleRibbonsForm;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_FEEDBACK_RIBBONS_CONTROLSCONTAINER:Class = ControlsContainer;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_FEEDBACK_RIBBONS_CONTROLSGROUP:Class = ControlsGroup;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_FEEDBACK_RIBBONS_DAMAGECONTROLSGROUPCONTENT:Class = DamageControlsGroupContent;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_FEEDBACK_RIBBONS_GROUPCONTENT:Class = GroupContent;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_FEEDBACK_RIBBONS_SETTINGSRIBBONCONTAINER:Class = SettingsRibbonContainer;
       

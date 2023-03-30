@@ -6,6 +6,7 @@ package net.wg.gui.battle.views.minimap
    import flash.geom.Point;
    import flash.geom.Rectangle;
    import net.wg.data.constants.Errors;
+   import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.gui.battle.components.BattleAtlasSprite;
@@ -51,6 +52,8 @@ package net.wg.gui.battle.views.minimap
       public var background:UILoaderAlt = null;
       
       public var minimapHint:MinimapHint = null;
+      
+      private var _scenarioLayer:ScenarioLayer = null;
       
       private var _foregrounds:Vector.<Sprite> = null;
       
@@ -114,6 +117,32 @@ package net.wg.gui.battle.views.minimap
       override public function as_setBackground(param1:String) : void
       {
          this.background.source = param1;
+      }
+      
+      override public function as_setScenarioEventVisible(param1:String, param2:Boolean) : void
+      {
+         if(this._scenarioLayer != null)
+         {
+            this._scenarioLayer.setScenarioEventVisible(param1,param2);
+         }
+      }
+      
+      override public function as_setScenarioEvent(param1:String, param2:String) : void
+      {
+         if(this._scenarioLayer == null)
+         {
+            this._scenarioLayer = App.utils.classFactory.getComponent(Linkages.MINIMAP_SCENARIO_LAYOUT,ScenarioLayer);
+            addChildAt(this._scenarioLayer,getChildIndex(this.background) + 1);
+            this._scenarioLayer.x = this.background.x;
+            this._scenarioLayer.y = this.background.y;
+            this._scenarioLayer.updateSize(this.background.width,this.background.height);
+         }
+         this._scenarioLayer.setScenarioEvent(param1,param2);
+      }
+      
+      override public function as_clearScenarioEvent(param1:String) : void
+      {
+         this._scenarioLayer.clearScenarioEvent(param1);
       }
       
       override public function as_setSize(param1:int) : void
@@ -214,7 +243,6 @@ package net.wg.gui.battle.views.minimap
       
       override protected function onDispose() : void
       {
-         this.fakePixel = null;
          this.foreground0 = null;
          this.foreground1 = null;
          this.foreground2 = null;
@@ -222,14 +250,18 @@ package net.wg.gui.battle.views.minimap
          this.foreground4 = null;
          this.foreground5 = null;
          this._currForeground = null;
+         this.fakePixel = null;
+         if(this._scenarioLayer)
+         {
+            this._scenarioLayer.dispose();
+            this._scenarioLayer = null;
+         }
          if(this._foregrounds)
          {
             this._foregrounds.fixed = false;
             this._foregrounds.splice(0,this._foregrounds.length);
             this._foregrounds = null;
          }
-         this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
-         this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
          this._clickAreaSpr.removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
          this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
@@ -240,6 +272,7 @@ package net.wg.gui.battle.views.minimap
          this.mapHit = null;
          this.background.dispose();
          this.background = null;
+         this.minimapHint.stop();
          this.minimapHint.dispose();
          this.minimapHint = null;
          super.onDispose();
@@ -256,26 +289,36 @@ package net.wg.gui.battle.views.minimap
       private function updateContainersSize() : void
       {
          var _loc1_:Rectangle = MinimapSizeConst.MAP_SIZE[this._currentSizeIndex];
-         this.background.width = _loc1_.width;
-         this.background.height = _loc1_.height;
-         this.background.x = _loc1_.x;
-         this.background.y = _loc1_.y;
-         var _loc2_:Point = MinimapSizeConst.ENTRY_CONTAINER_POINT[this._currentSizeIndex];
+         var _loc2_:int = _loc1_.width;
+         var _loc3_:int = _loc1_.height;
+         var _loc4_:int = _loc1_.x;
+         var _loc5_:int = _loc1_.y;
+         this.background.width = _loc2_;
+         this.background.height = _loc3_;
+         this.background.x = _loc4_;
+         this.background.y = _loc5_;
+         if(this._scenarioLayer)
+         {
+            this._scenarioLayer.x = _loc4_;
+            this._scenarioLayer.y = _loc5_;
+            this._scenarioLayer.updateSize(_loc2_,_loc3_);
+         }
+         var _loc6_:Point = MinimapSizeConst.ENTRY_CONTAINER_POINT[this._currentSizeIndex];
          this.entriesContainer.scaleX = this.background.scaleX;
          this.entriesContainer.scaleY = this.background.scaleY;
          MinimapEntryController.instance.updateScale(this._currentSizeIndex);
-         this.entriesContainer.x = _loc2_.x;
-         this.entriesContainer.y = _loc2_.y;
-         this.entriesContainerMask.width = _loc1_.width;
-         this.entriesContainerMask.height = _loc1_.height;
-         this.entriesContainerMask.x = _loc2_.x;
-         this.entriesContainerMask.y = _loc2_.y;
-         this.mapHit.width = _loc1_.width;
-         this.mapHit.height = _loc1_.height;
-         this.mapHit.x = _loc1_.x;
-         this.mapHit.y = _loc1_.y;
-         this.minimapHint.x = _loc1_.x;
-         this.minimapHint.y = _loc1_.y;
+         this.entriesContainer.x = _loc6_.x;
+         this.entriesContainer.y = _loc6_.y;
+         this.entriesContainerMask.width = _loc2_;
+         this.entriesContainerMask.height = _loc3_;
+         this.entriesContainerMask.x = _loc6_.x;
+         this.entriesContainerMask.y = _loc6_.y;
+         this.mapHit.width = _loc2_;
+         this.mapHit.height = _loc3_;
+         this.mapHit.x = _loc4_;
+         this.mapHit.y = _loc5_;
+         this.minimapHint.x = _loc4_;
+         this.minimapHint.y = _loc5_;
       }
       
       private function checkNewSize(param1:int) : void
@@ -329,7 +372,7 @@ package net.wg.gui.battle.views.minimap
       
       private function onMouseOverHandler(param1:MouseEvent) : void
       {
-         if(param1 is MouseEventEx && param1.target == this._clickAreaSpr && this._bIsHintPanelEnabled)
+         if(this._bIsHintPanelEnabled && param1 is MouseEventEx && param1.target == this._clickAreaSpr)
          {
             this.minimapHint.gotoAndPlay(ANIM_FADE_OUT);
          }
@@ -337,7 +380,7 @@ package net.wg.gui.battle.views.minimap
       
       private function onMouseOutHandler(param1:MouseEvent) : void
       {
-         if(param1 is MouseEventEx && param1.target == this._clickAreaSpr && this._bIsHintPanelEnabled)
+         if(this._bIsHintPanelEnabled && param1 is MouseEventEx && param1.target == this._clickAreaSpr)
          {
             this.minimapHint.gotoAndPlay(ANIM_FADE_IN);
          }

@@ -1475,14 +1475,8 @@ class ItemsBonusFormatter(SimpleBonusFormatter):
 
     @classmethod
     def _getOverlayType(cls, item):
-
-        def formatOverlayType(overlayType):
-            if item.itemTypeID == GUI_ITEM_TYPE.OPTIONALDEVICE and item.isModernized:
-                return ('{}_{}').format(overlayType, item.level)
-            return overlayType
-
-        return {AWARDS_SIZES.BIG: formatOverlayType(item.getBigOverlayType()), 
-           AWARDS_SIZES.SMALL: formatOverlayType(item.getOverlayType())}
+        return {AWARDS_SIZES.BIG: item.getBigOverlayType(), 
+           AWARDS_SIZES.SMALL: item.getOverlayType()}
 
     @classmethod
     def _getHighlightIcon(cls, item):

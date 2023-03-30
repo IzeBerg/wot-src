@@ -1,5 +1,5 @@
-from functools import partial
 from frameworks.wulf import Array
+from functools import partial
 from gui.impl.lobby.tank_setup.tank_setup_helper import NONE_ID
 from gui.impl.wrappers.user_compound_price_model import BuyPriceModelBuilder
 from gui.shared.utils.requesters import REQ_CRITERIA

@@ -9,7 +9,6 @@ package net.wg.gui.components.common.markers
    import net.wg.gui.components.common.markers.data.VehicleMarkerFlags;
    import net.wg.gui.components.common.markers.data.VehicleMarkerSettings;
    import net.wg.gui.components.common.markers.data.VehicleMarkerVO;
-   import net.wg.gui.components.controls.TextFieldContainer;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.events.UILoaderEvent;
    import net.wg.infrastructure.base.UIComponentEx;
@@ -43,47 +42,39 @@ package net.wg.gui.components.common.markers
       
       private static var DAMAGE_PANEL:String = "Damage";
       
-      private static var VEHICLE_DIST:String = "VehicleDist";
+      private static var ACTION_Y:Number = -93;
       
-      private static var ACTION_Y:int = -93;
+      private static var ICON_Y:Number = -86;
       
-      private static var V_DIST_Y:int = -102;
+      private static var LEVEL_Y:Number = -74;
       
-      private static var V_DIST_Y_SHIFT:int = 12;
+      private static var V_NAME_LBL_Y:Number = -62;
       
-      private static var ICON_Y:int = -86;
+      private static var P_NAME_LBL_Y:Number = -49;
       
-      private static var LEVEL_Y:int = -74;
+      private static var HEALTH_BAR_Y:Number = -29;
       
-      private static var V_NAME_LBL_Y:int = -62;
+      private static var ICON_OFFSET:Number = 15;
       
-      private static var P_NAME_LBL_Y:int = -49;
+      private static var LEVEL_OFFSET:Number = 3;
       
-      private static var HEALTH_BAR_Y:int = -29;
+      private static var V_NAME_LBL_OFFSET:Number = 13;
       
-      private static var V_DIST_OFFSET:int = 0;
+      private static var P_NAME_LBL_OFFSET:Number = 13;
       
-      private static var ICON_OFFSET:int = 10;
+      private static var HEALTH_BAR_OFFSET:Number = 13;
       
-      private static var LEVEL_OFFSET:int = 3;
+      private static var OFFSETS:Array = [ICON_OFFSET,LEVEL_OFFSET,V_NAME_LBL_OFFSET,P_NAME_LBL_OFFSET,HEALTH_BAR_OFFSET];
       
-      private static var V_NAME_LBL_OFFSET:int = 13;
+      private static const ICON_HORIZONTAL_OFFSET:Number = 6;
       
-      private static var P_NAME_LBL_OFFSET:int = 13;
-      
-      private static var HEALTH_BAR_OFFSET:int = 13;
-      
-      private static var OFFSETS:Array = [V_DIST_OFFSET,ICON_OFFSET,LEVEL_OFFSET,V_NAME_LBL_OFFSET,P_NAME_LBL_OFFSET,HEALTH_BAR_OFFSET];
-      
-      private static const ICON_HORIZONTAL_OFFSET:int = 6;
-      
-      private static const HP_FIELD_VERTICAL_OFFSET:int = -2;
+      private static const HP_FIELD_VERTICAL_OFFSET:Number = -2;
       
       private static const SHADOW_TYPE_HBAR_OFFSET:int = 2;
       
-      private static const EXPLOSION_HORIZONTAL_OFFSET:int = 15;
+      private static const EXPLOSION_HORIZONTAL_OFFSET:Number = 15;
       
-      private static const VEHICLE_DESTROY_COLOR:uint = 6710886;
+      private static const VEHICLE_DESTROY_COLOR:Number = 6710886;
        
       
       public var levelIcon:MovieClip;
@@ -107,8 +98,6 @@ package net.wg.gui.components.common.markers
       public var healthBar:HealthBar;
       
       public var backgroundShadow:MovieClip;
-      
-      public var vehicleDist:TextFieldContainer;
       
       protected var model:VehicleMarkerVO;
       
@@ -135,41 +124,13 @@ package net.wg.gui.components.common.markers
       override protected function onDispose() : void
       {
          this.iconLoader.removeEventListener(UILoaderEvent.COMPLETE,this.onIconLoaded);
-         this.healthBar.removeEventListener(HealthBarAnimatedPart.HIDE,this.onSplashHidden);
+         this.healthBar.hitSplash.removeEventListener(HealthBarAnimatedPart.HIDE,this.onSplashHidden);
          this.model = null;
          if(this._markerSettingsOverride)
          {
             this._markerSettingsOverride = null;
          }
-         this.vehicleDist.dispose();
-         this.vehicleDist = null;
          super.onDispose();
-      }
-      
-      override protected function configUI() : void
-      {
-         super.configUI();
-         this.healthBar.addEventListener(HealthBarAnimatedPart.HIDE,this.onSplashHidden);
-      }
-      
-      override protected function draw() : void
-      {
-         super.draw();
-         if(this.model && !this._isPopulated && isInvalid(InvalidationType.DATA))
-         {
-            this.initMarkerColor();
-            this.setupHealthBar();
-            this.setupIconLoader();
-            this.setupTexts();
-            this.levelIcon.gotoAndStop(this.model.vLevel);
-            if(this.model.vClass)
-            {
-               this.setVehicleClass();
-            }
-            this.setMarkerState(this._markerState);
-            this.updateMarkerSettings();
-            this._isPopulated = true;
-         }
       }
       
       public function init(param1:VehicleMarkerVO) : void
@@ -179,29 +140,28 @@ package net.wg.gui.components.common.markers
          {
             this._entityName = this.model.entityName;
          }
-         invalidateData();
+         invalidate(InvalidationType.DATA);
       }
       
       public function updateHealth(param1:Number, param2:int, param3:String) : void
       {
-         var _loc5_:String = null;
          var _loc4_:String = VehicleMarkerFlags.DAMAGE_FROM[param2];
          param3 = param1 < 0 ? VehicleMarkerFlags.DAMAGE_EXPLOSION : param3;
          param1 = Math.max(param1,0);
+         var _loc5_:Number = this.model.curHealth - param1;
          this.model.curHealth = param1;
          if(this._isPopulated)
          {
-            _loc5_ = VehicleMarkerFlags.DAMAGE_COLOR[_loc4_][this._markerColor];
             if(this.getIsPartVisible(HEALTH_BAR))
             {
-               this.healthBar.updateHealth(param1,_loc5_);
+               this.healthBar.updateHealth(param1,VehicleMarkerFlags.DAMAGE_COLOR[_loc4_][this._markerColor]);
             }
             if(this.getIsPartVisible(DAMAGE_PANEL))
             {
-               this.hitLabel.damage(this.model.curHealth - param1,_loc5_);
+               this.hitLabel.damage(_loc5_,VehicleMarkerFlags.DAMAGE_COLOR[_loc4_][this._markerColor]);
                if(VehicleMarkerFlags.checkAllowedDamages(param3))
                {
-                  this.hitExplosion.setColorAndDamageType(_loc5_,param3);
+                  this.hitExplosion.setColorAndDamageType(VehicleMarkerFlags.DAMAGE_COLOR[_loc4_][this._markerColor],param3);
                   this.hitExplosion.x = Math.round(this.hitLabel.x + this.hitLabel.damageLabel.textWidth + EXPLOSION_HORIZONTAL_OFFSET);
                   this.hitExplosion.playShowTween();
                }
@@ -295,9 +255,9 @@ package net.wg.gui.components.common.markers
       
       public function settingsUpdate(param1:Number) : void
       {
+         var _loc2_:String = VehicleMarkerFlags.DAMAGE_FROM[param1];
          this.setupIconLoader();
          this.update();
-         var _loc2_:String = VehicleMarkerFlags.DAMAGE_FROM[param1];
          this.hitLabel.fakeDamage = this.model.maxHealth - this.model.curHealth;
          this.hitLabel.imitationFlag = VehicleMarkerFlags.DAMAGE_COLOR[_loc2_][this._markerColor];
          this.hitLabel.imitation = this.getIsPartVisible(DAMAGE_PANEL);
@@ -311,18 +271,17 @@ package net.wg.gui.components.common.markers
       
       public function updateMarkerSettings() : void
       {
-         var _loc7_:Boolean = false;
          var _loc1_:Boolean = this.getIsPartVisible(ICON);
          var _loc2_:Boolean = this.getIsPartVisible(LEVEL);
          var _loc3_:Boolean = this.getIsPartVisible(P_NAME_LBL);
          var _loc4_:Boolean = this.getIsPartVisible(V_NAME_LBL);
          var _loc5_:Boolean = this.getIsPartVisible(HEALTH_BAR);
          var _loc6_:Boolean = this.getIsPartVisible(HEALTH_LBL);
-         _loc7_ = this.getIsPartVisible(DAMAGE_PANEL);
-         var _loc8_:Boolean = !this.vehicleDestroyed && this.getIsPartVisible(VEHICLE_DIST);
-         this.vehicleDist.visible = _loc8_;
+         var _loc7_:Boolean = this.getIsPartVisible(DAMAGE_PANEL);
          this.playerNameField.visible = _loc3_;
+         this.playerNameField.text = this.model.pFullName;
          this.vehicleNameField.visible = _loc4_;
+         this.vehicleNameField.text = this.model.vType;
          if(_loc5_)
          {
             this.healthBar.curHealth = this.model.curHealth;
@@ -338,25 +297,25 @@ package net.wg.gui.components.common.markers
          this.hitExplosion.visible = _loc7_;
          this.levelIcon.visible = _loc2_;
          this.iconLoader.visible = _loc1_;
-         var _loc9_:int = (!!_loc3_ ? 1 : 0) + (!!_loc4_ ? 1 : 0);
+         var _loc8_:int = (!!_loc3_ ? 1 : 0) + (!!_loc4_ ? 1 : 0);
          if(!_loc5_)
          {
-            _loc9_ += !!_loc6_ ? 1 : 0;
-            if(_loc9_ > 0)
+            _loc8_ += !!_loc6_ ? 1 : 0;
+            if(_loc8_ > 0)
             {
-               _loc9_ += SHADOW_TYPE_HBAR_OFFSET;
+               _loc8_ += SHADOW_TYPE_HBAR_OFFSET;
             }
          }
-         if(_loc9_ > 0)
+         if(_loc8_ > 0)
          {
             this.backgroundShadow.visible = true;
-            this.backgroundShadow.gotoAndStop("shadow_" + _loc9_);
+            this.backgroundShadow.gotoAndStop("shadow_" + _loc8_);
          }
          else
          {
             this.backgroundShadow.visible = false;
          }
-         this.layoutParts([_loc8_,_loc1_,_loc2_,_loc4_,_loc3_,_loc5_ || _loc6_]);
+         this.layoutParts([_loc1_,_loc2_,_loc4_,_loc3_,_loc5_ || _loc6_]);
       }
       
       public function setEntityName(param1:String) : void
@@ -431,6 +390,31 @@ package net.wg.gui.components.common.markers
       public function get vehicleDestroyed() : Boolean
       {
          return this._markerState == MarkerState.STATE_DEAD || this._markerState == MarkerState.STATE_IMMEDIATE_DEAD;
+      }
+      
+      override protected function configUI() : void
+      {
+         super.configUI();
+         this.healthBar.hitSplash.addEventListener(HealthBarAnimatedPart.HIDE,this.onSplashHidden);
+      }
+      
+      override protected function draw() : void
+      {
+         super.draw();
+         if(isInvalid(InvalidationType.DATA) && this.model && !this._isPopulated)
+         {
+            this.initMarkerColor();
+            this.setupHealthBar();
+            this.setupIconLoader();
+            this.levelIcon.gotoAndStop(this.model.vLevel);
+            if(this.model.vClass)
+            {
+               this.setVehicleClass();
+            }
+            this.setMarkerState(this._markerState);
+            this.updateMarkerSettings();
+            this._isPopulated = true;
+         }
       }
       
       private function initMarkerColor() : void
@@ -509,13 +493,6 @@ package net.wg.gui.components.common.markers
          this.updateIconColor();
       }
       
-      private function setupTexts() : void
-      {
-         this.vehicleDist.label = this.model.vDist;
-         this.playerNameField.text = this.model.pFullName;
-         this.vehicleNameField.text = this.model.vType;
-      }
-      
       private function updateIconColor() : void
       {
          this.iconLoader.transform.colorTransform = this.colorsManager.getTransform(this.colorSchemeName);
@@ -523,9 +500,8 @@ package net.wg.gui.components.common.markers
       
       private function layoutParts(param1:Array) : void
       {
-         var _loc5_:int = 0;
-         var _loc6_:DisplayObject = null;
-         var _loc7_:int = 0;
+         var _loc5_:DisplayObject = null;
+         var _loc6_:int = 0;
          this.actionMarker.y = ACTION_Y;
          this.iconLoader.y = ICON_Y;
          this.levelIcon.y = LEVEL_Y;
@@ -533,27 +509,26 @@ package net.wg.gui.components.common.markers
          this.playerNameField.y = P_NAME_LBL_Y;
          this.healthBar.y = HEALTH_BAR_Y;
          this.hpFieldContainer.y = HEALTH_BAR_Y + HP_FIELD_VERTICAL_OFFSET;
-         var _loc2_:Boolean = !(this.iconLoader.visible || this.levelIcon.visible);
-         this.vehicleDist.y = !!_loc2_ ? Number(V_DIST_Y + V_DIST_Y_SHIFT) : Number(V_DIST_Y);
-         var _loc3_:Array = [];
-         var _loc4_:Array = [this.vehicleDist,this.iconLoader,this.levelIcon,this.vehicleNameField,this.playerNameField,this.healthBar];
-         _loc5_ = 0;
-         while(_loc5_ < _loc4_.length)
+         var _loc2_:Array = [];
+         var _loc3_:Array = [this.iconLoader,this.levelIcon,this.vehicleNameField,this.playerNameField,this.healthBar];
+         var _loc4_:int = 0;
+         _loc4_ = 0;
+         while(_loc4_ < _loc3_.length)
          {
-            _loc3_.push(Boolean(param1[_loc5_]) ? 0 : OFFSETS[_loc5_]);
-            _loc5_++;
+            _loc2_.push(Boolean(param1[_loc4_]) ? 0 : OFFSETS[_loc4_]);
+            _loc4_++;
          }
-         _loc5_ = 0;
-         while(_loc5_ < _loc4_.length)
+         _loc4_ = 0;
+         while(_loc4_ < _loc3_.length)
          {
-            _loc6_ = _loc4_[_loc5_];
-            _loc7_ = _loc5_ + 1;
-            while(_loc7_ < _loc3_.length)
+            _loc5_ = _loc3_[_loc4_];
+            _loc6_ = _loc4_ + 1;
+            while(_loc6_ < _loc2_.length)
             {
-               _loc6_.y += _loc3_[_loc7_];
-               _loc7_++;
+               _loc5_.y += _loc2_[_loc6_];
+               _loc6_++;
             }
-            _loc5_++;
+            _loc4_++;
          }
       }
       
@@ -561,6 +536,7 @@ package net.wg.gui.components.common.markers
       {
          var _loc2_:Boolean = false;
          var _loc3_:String = "marker" + (!!this.exInfo ? "Alt" : "Base") + param1;
+         var _loc4_:String = "marker" + (!!this.exInfo ? "Alt" : "Base") + "Dead";
          if(param1 == HEALTH_LBL)
          {
             _loc2_ = this.markerSettings[_loc3_] != HPDisplayMode.HIDDEN;

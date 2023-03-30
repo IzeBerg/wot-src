@@ -40,7 +40,7 @@ package net.wg.gui.components.common.markers.data
             "green":"green",
             "red":"red",
             "gold":"green",
-            "blue":"green",
+            "blue":"geen",
             "yellow":"green",
             "purple":"purple"
          },

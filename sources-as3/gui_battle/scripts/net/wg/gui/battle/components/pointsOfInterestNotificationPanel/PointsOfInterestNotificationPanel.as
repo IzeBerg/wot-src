@@ -114,7 +114,8 @@ package net.wg.gui.battle.components.pointsOfInterestNotificationPanel
       
       override protected function addPoiStatus(param1:PointsOfInterestNotificationVO) : void
       {
-         var _loc2_:PoiStatusIndicator = this.getPoiStatusIndicatorById(param1.id);
+         var _loc2_:PoiStatusIndicator = null;
+         _loc2_ = this.getPoiStatusIndicatorById(param1.id);
          if(!_loc2_)
          {
             _loc2_ = new PoiStatusIndicator();

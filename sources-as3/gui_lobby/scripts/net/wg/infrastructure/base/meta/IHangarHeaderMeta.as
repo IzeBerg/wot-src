@@ -40,8 +40,6 @@ package net.wg.infrastructure.base.meta
       
       function as_setBattleMattersEntryPoint(param1:Boolean) : void;
       
-      function as_setCollectiveGoalEntryPoint(param1:Boolean) : void;
-      
       function as_createComp7() : void;
       
       function as_removeComp7() : void;

@@ -136,7 +136,10 @@ package net.wg.gui.lobby.battleResults
       {
          this._data = param1;
          this.tabs_mc.dataProvider = param1.tabInfo;
-         this.tabs_mc.selectedIndex = 0;
+         if(this.tabs_mc.selectedIndex == -1)
+         {
+            this.tabs_mc.selectedIndex = 0;
+         }
          this.tabs_mc.validateNow();
          setFocus(this.tabs_mc);
          this.resultsShareBtn.visible = this._data.common.battleResultsSharingIsAvailable;

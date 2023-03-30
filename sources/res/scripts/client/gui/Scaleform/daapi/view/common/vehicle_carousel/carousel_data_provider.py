@@ -65,6 +65,10 @@ def getStatusStrings(vState, vStateLvl=Vehicle.VEHICLE_STATE_LEVEL.INFO, substit
 
 @dependency.replace_none_kwargs(bootcampCtrl=IBootcampController)
 def getVehicleDataVO(vehicle, bootcampCtrl=None):
+    return _getVehicleDataVO(vehicle, bootcampCtrl)
+
+
+def _getVehicleDataVO(vehicle, bootcampCtrl):
     rentInfoText = ''
     if not vehicle.isWotPlusRent and not vehicle.isTelecomRent:
         rentInfoText = RentLeftFormatter(vehicle.rentInfo, vehicle.isPremiumIGR).getRentLeftStr()
@@ -324,7 +328,7 @@ class CarouselDataProvider(SortableDAAPIDataProvider):
         self._addCriteria()
 
     def _addCriteria(self):
-        self._addVehicleItemsByCriteria(self._baseCriteria | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP | (~REQ_CRITERIA.VEHICLE.WOTPLUS_RENT | ~REQ_CRITERIA.VEHICLE.TELECOM_RENT))
+        self._addVehicleItemsByCriteria(self._baseCriteria | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP | ~REQ_CRITERIA.VEHICLE.TELECOM_RENT)
 
     def _buildVehicle(self, vehicle):
         vo = getVehicleDataVO(vehicle)

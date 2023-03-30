@@ -1,3 +1,4 @@
+import typing
 from collections import namedtuple
 from itertools import chain
 from constants import BonusTypes
@@ -9,7 +10,7 @@ from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.shared.formatters import text_styles
-from gui.shared.gui_items import KPI, kpiFormatValue
+from gui.shared.gui_items import KPI, kpiFormatValue, kpiFormatNoSignValue
 from gui.shared.items_parameters import RELATIVE_PARAMS
 from gui.shared.items_parameters.comparator import PARAM_STATE
 from gui.shared.items_parameters.params_helper import hasGroupPenalties, getCommonParam, PARAMS_GROUPS
@@ -87,6 +88,7 @@ MEASURE_UNITS = {'aimingTime': MENU.TANK_PARAMS_S,
    'stunMaxDuration': MENU.TANK_PARAMS_S, 
    'stunMaxDurationList': MENU.TANK_PARAMS_S, 
    'cooldownSeconds': MENU.TANK_PARAMS_S, 
+   'activeSeconds': MENU.TANK_PARAMS_S, 
    AUTO_RELOAD_PROP_NAME: MENU.TANK_PARAMS_S, 
    MAX_STEERING_LOCK_ANGLE: MENU.TANK_PARAMS_GRADS, 
    WHEELED_SWITCH_ON_TIME: MENU.TANK_PARAMS_S, 
@@ -97,14 +99,6 @@ MEASURE_UNITS = {'aimingTime': MENU.TANK_PARAMS_S,
    DUAL_GUN_CHARGE_TIME: MENU.TANK_PARAMS_S, 
    DUAL_GUN_RATE_TIME: MENU.TANK_PARAMS_S, 
    'shotSpeed': MENU.TANK_PARAMS_MPS, 
-   'vehicleGunShotDispersionAfterShot': MENU.TANK_PARAMS_PERCENT, 
-   'vehicleGunShotDispersionChassisMovement': MENU.TANK_PARAMS_PERCENT, 
-   'vehicleGunShotDispersionChassisRotation': MENU.TANK_PARAMS_PERCENT, 
-   'vehicleGunShotDispersionTurretRotation': MENU.TANK_PARAMS_PERCENT, 
-   'vehicleGunShotDispersionWhileGunDamaged': MENU.TANK_PARAMS_PERCENT, 
-   'vehicleRamDamageResistance': MENU.TANK_PARAMS_PERCENT, 
-   'damageEnemiesByRamming': MENU.TANK_PARAMS_PERCENT, 
-   'vehicleInvisibilityAfterShot': MENU.TANK_PARAMS_PERCENT, 
    CHASSIS_REPAIR_TIME: MENU.TANK_PARAMS_S, 
    CHASSIS_REPAIR_TIME_YOH: MENU.TANK_PARAMS_YOH_S_S, 
    'commonDelay': MENU.TANK_PARAMS_S, 
@@ -113,11 +107,17 @@ MEASURE_UNITS = {'aimingTime': MENU.TANK_PARAMS_S,
    'commonAreaRadius': MENU.TANK_PARAMS_M, 
    'crewRolesFactor': MENU.TANK_PARAMS_PERCENT, 
    'maxDamage': MENU.TANK_PARAMS_VAL, 
-   'increaseHealth': MENU.TANK_PARAMS_VAL}
+   'increaseHealth': MENU.TANK_PARAMS_VAL, 
+   'artNotificationDelayFactor': MENU.TANK_PARAMS_S, 
+   'vehicleOwnSpottingTime': MENU.TANK_PARAMS_S, 
+   'damagedModulesDetectionTime': MENU.TANK_PARAMS_S}
 MEASURE_UNITS_NO_BRACKETS = {'weight': MENU.TANK_PARAMS_NO_BRACKETS_KG, 
    'cooldownSeconds': MENU.TANK_PARAMS_NO_BRACKETS_S, 
+   'activeSeconds': MENU.TANK_PARAMS_NO_BRACKETS_S, 
    'reloadCooldownSeconds': MENU.TANK_PARAMS_NO_BRACKETS_S, 
    'caliber': MENU.TANK_PARAMS_NO_BRACKETS_MM}
+KPI_FORMATTERS = {KPI.Name.DAMAGED_MODULES_DETECTION_TIME: kpiFormatNoSignValue, 
+   KPI.Name.ART_NOTIFICATION_DELAY_FACTOR: kpiFormatNoSignValue}
 COLORLESS_SCHEME = (
  text_styles.stats, text_styles.stats, text_styles.stats)
 NO_BONUS_SIMPLIFIED_SCHEME = (text_styles.warning, text_styles.warning, text_styles.warning)
@@ -362,6 +362,7 @@ FORMAT_SETTINGS = {'relativePower': _integralFormat,
    'stunMaxDuration': _niceFormat, 
    'stunMaxDurationList': _niceListFormat, 
    'cooldownSeconds': _niceFormat, 
+   'activeSeconds': _niceFormat, 
    AUTO_RELOAD_PROP_NAME: {'preprocessor': _autoReloadPreprocessor, 'rounder': _getRoundReload}, MAX_STEERING_LOCK_ANGLE: _niceFormat, 
    WHEELED_SWITCH_ON_TIME: _niceFormat, 
    WHEELED_SWITCH_OFF_TIME: _niceFormat, 
@@ -374,21 +375,16 @@ FORMAT_SETTINGS = {'relativePower': _integralFormat,
    TURBOSHAFT_SPEED_MODE_SPEED: _niceListFormat, 
    ROCKET_ACCELERATION_SPEED_LIMITS: _niceListFormat, 
    ROCKET_ACCELERATION_REUSE_AND_DURATION: _niceListFormat, 
-   'vehicleGunShotDispersionAfterShot': _integralFormat, 
-   'vehicleGunShotDispersionChassisMovement': _integralFormat, 
-   'vehicleGunShotDispersionChassisRotation': _integralFormat, 
-   'vehicleGunShotDispersionTurretRotation': _integralFormat, 
-   'vehicleGunShotDispersionWhileGunDamaged': _integralFormat, 
-   'vehicleRamDamageResistance': _integralFormat, 
-   'damageEnemiesByRamming': _integralFormat, 
-   'vehicleInvisibilityAfterShot': _integralFormat, 
    CHASSIS_REPAIR_TIME: _niceListFormat, 
    'commonDelay': _niceFormat, 
    'duration': _niceFormat, 
    'inactivationDelay': _niceFormat, 
    'commonAreaRadius': _niceFormat, 
    'crewRolesFactor': _plusPercentFormat, 
-   'maxDamage': _niceFormat}
+   'maxDamage': _niceFormat, 
+   'artNotificationDelayFactor': _niceFormat, 
+   'vehicleOwnSpottingTime': _niceFormat, 
+   'damagedModulesDetectionTime': _niceFormat}
 
 def _deltaWrapper(fn):
 
@@ -480,7 +476,8 @@ def formatParameter(parameterName, paramValue, parameterState=None, colorScheme=
     doSmartRound = allowSmartRound and parameterName in _SMART_ROUND_PARAMS
     preprocessor = settings.get('preprocessor')
     if KPI.Name.hasValue(parameterName):
-        values, separator = kpiFormatValue(parameterName, paramValue), None
+        formatter = KPI_FORMATTERS.get(parameterName, kpiFormatValue)
+        values, separator = formatter(parameterName, paramValue), None
     elif preprocessor:
         values, separator, parameterState = preprocessor(paramValue, parameterState)
     else:
@@ -542,7 +539,7 @@ def getFormattedParamsList(descriptor, parameters, excludeRelative=False):
     return params
 
 
-def getBonusIcon(bonusId, bonusType):
+def getBonusIconRes(bonusId, bonusType, archetype=None):
     if bonusType == BonusTypes.PAIR_MODIFICATION:
         mod = vehicles.g_cache.postProgression().getModificationByName(bonusId)
         if mod is not None:
@@ -551,13 +548,23 @@ def getBonusIcon(bonusId, bonusType):
             iconR = R.invalid()
     elif bonusId.find('Rammer') >= 0 and bonusId != 'deluxRammer' and bonusId.find('trophy') == -1:
         iconR = R.images.gui.maps.icons.vehParams.tooltips.bonuses.rammer()
+    elif archetype:
+        iconR = R.images.gui.maps.icons.vehParams.tooltips.bonuses.archetypes.dyn(archetype, R.invalid)()
     else:
         iconR = R.images.gui.maps.icons.vehParams.tooltips.bonuses.dyn(bonusId.split('_class')[0], R.invalid)()
-    return backport.image(iconR)
+    return iconR
+
+
+def getBonusIcon(bonusId, bonusType, archetype=None):
+    return backport.image(getBonusIconRes(bonusId, bonusType, archetype))
+
+
+def getPenaltyIconRes(penaltyId):
+    return R.images.gui.maps.icons.vehParams.tooltips.penalties.dyn(penaltyId, R.invalid)()
 
 
 def getPenaltyIcon(penaltyId):
-    return backport.image(R.images.gui.maps.icons.vehParams.tooltips.penalties.dyn(penaltyId, R.invalid)())
+    return backport.image(getPenaltyIconRes(penaltyId))
 
 
 def packSituationalIcon(text, icon):

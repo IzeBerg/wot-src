@@ -784,7 +784,10 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
     def __updateBattlePassSmallWidget(self):
         currentArenaBonusType = self.__getCurentArenaBonusType()
         secondaryPointCanBeAvailable = currentArenaBonusType not in (
-         constants.ARENA_BONUS_TYPE.REGULAR, constants.ARENA_BONUS_TYPE.UNKNOWN, constants.ARENA_BONUS_TYPE.MAPBOX)
+         constants.ARENA_BONUS_TYPE.REGULAR,
+         constants.ARENA_BONUS_TYPE.UNKNOWN,
+         constants.ARENA_BONUS_TYPE.MAPBOX,
+         constants.ARENA_BONUS_TYPE.WINBACK)
         secondaryEntryPointAvailable = secondaryPointCanBeAvailable and not self.__battlePassController.isDisabled()
         self.as_setSecondaryEntryPointVisibleS(secondaryEntryPointAvailable)
         if secondaryEntryPointAvailable:

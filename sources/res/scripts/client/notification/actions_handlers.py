@@ -2,6 +2,7 @@ from collections import defaultdict
 import typing, BigWorld
 from CurrentVehicle import g_currentVehicle
 from adisp import adisp_process
+from constants import PREBATTLE_TYPE
 from debug_utils import LOG_DEBUG, LOG_ERROR
 from gui import DialogsInterface, SystemMessages, makeHtmlString
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -21,7 +22,7 @@ from gui.prb_control import prbDispatcherProperty, prbInvitesProperty
 from gui.ranked_battles import ranked_helpers
 from gui.server_events.events_dispatcher import showMissionsBattlePass, showMissionsMapboxProgression, showPersonalMission
 from gui.shared import EVENT_BUS_SCOPE, actions, event_dispatcher as shared_events, events, g_eventBus
-from gui.shared.event_dispatcher import hideWebBrowserOverlay, showBlueprintsSalePage, showDelayedReward, showEpicBattlesAfterBattleWindow, showProgressiveRewardWindow, showRankedYearAwardWindow, showResourceWellProgressionWindow, showShop, showSteamConfirmEmailOverlay
+from gui.shared.event_dispatcher import hideWebBrowserOverlay, showBlueprintsSalePage, showCollectionAwardsWindow, showCollectionWindow, showDelayedReward, showEpicBattlesAfterBattleWindow, showProgressiveRewardWindow, showRankedYearAwardWindow, showResourceWellProgressionWindow, showShop, showSteamConfirmEmailOverlay, showPersonalReservesConversion, showWinbackSelectRewardView
 from gui.shared.notifications import NotificationPriorityLevel
 from gui.shared.system_factory import collectAllNotificationsActionsHandlers, registerNotificationsActionsHandlers
 from gui.shared.utils import decorators
@@ -34,7 +35,7 @@ from notification.settings import NOTIFICATION_BUTTON_STATE, NOTIFICATION_TYPE
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, IEventLootBoxesController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.web import IWebController
@@ -505,6 +506,7 @@ class OpenPollHandler(ActionHandler):
 
 
 class AcceptPrbInviteHandler(ActionHandler):
+    __winbackController = dependency.descriptor(IWinbackController)
 
     @prbDispatcherProperty
     def prbDispatcher(self):
@@ -531,6 +533,8 @@ class AcceptPrbInviteHandler(ActionHandler):
         state = self.prbDispatcher.getFunctionalState()
         if state.doLeaveToAcceptInvite(invite.type):
             postActions.append(actions.LeavePrbModalEntity())
+            if self.__winbackController.isModeAvailable() and invite.type == PREBATTLE_TYPE.SQUAD:
+                postActions.append(actions.LeaveWinbackModeEntity())
         if invite and invite.anotherPeriphery:
             success = True
             if g_preDefinedHosts.isRoamingPeriphery(invite.peripheryID):
@@ -1112,6 +1116,20 @@ class _OpenIntegratedAuctionFinish(_OpenIntegratedAuction):
         return ('showAuctionFinishShop', )
 
 
+class _OpenPersonalReservesConversion(NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('openPersonalReservesConversion', )
+
+    def doAction(self, model, entityID, action):
+        showPersonalReservesConversion()
+
+
 class _OpenPersonalReservesHandler(NavigationDisabledActionHandler):
 
     @classmethod
@@ -1158,6 +1176,27 @@ class _OpenSeniorityAwards(NavigationDisabledActionHandler):
         self.__seniorityAwardCtrl.claimReward()
 
 
+class _OpenWinbackSelectableRewardView(NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.WINBACK_SELECTABLE_REWARD_AVAILABLE
+
+    @classmethod
+    def getActions(cls):
+        return ('openWinbackSelectableRewardView', )
+
+    def doAction(self, model, entityID, action):
+        showWinbackSelectRewardView()
+
+
+class _OpenWinbackSelectableRewardViewFromQuest(_OpenWinbackSelectableRewardView):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+
 class _OpenEventLootBoxesShopHandler(NavigationDisabledActionHandler):
     __eventLootBoxes = dependency.descriptor(IEventLootBoxesController)
 
@@ -1172,6 +1211,38 @@ class _OpenEventLootBoxesShopHandler(NavigationDisabledActionHandler):
     def doAction(self, model, entityID, action):
         if self.__eventLootBoxes.isActive():
             self.__eventLootBoxes.openShop()
+
+
+class _OpenCollectionHandler(NavigationDisabledActionHandler):
+    __collections = dependency.descriptor(ICollectionsSystemController)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('openCollection', )
+
+    def doAction(self, model, entityID, action):
+        collectionID = model.getNotification(self.getNotType(), entityID).getSavedData()['collectionId']
+        showCollectionWindow(collectionID)
+
+
+class _OpenCollectionRewardHandler(NavigationDisabledActionHandler):
+    __collections = dependency.descriptor(ICollectionsSystemController)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('openCollectionRewards', )
+
+    def doAction(self, model, entityID, action):
+        savedData = model.getNotification(self.getNotType(), entityID).getSavedData()
+        showCollectionAwardsWindow(savedData['collectionId'], savedData['bonuses'])
 
 
 _AVAILABLE_HANDLERS = (
@@ -1227,11 +1298,16 @@ _AVAILABLE_HANDLERS = (
  _OpenIntegratedAuction,
  _OpenIntegratedAuctionStart,
  _OpenIntegratedAuctionFinish,
+ _OpenPersonalReservesConversion,
  _OpenPersonalReservesHandler,
  _SeniorityAwardsTokensHandler,
  _OpenSeniorityAwards,
  _OpenMissingEventsHandler,
- _OpenEventLootBoxesShopHandler)
+ _OpenEventLootBoxesShopHandler,
+ _OpenCollectionHandler,
+ _OpenCollectionRewardHandler,
+ _OpenWinbackSelectableRewardView,
+ _OpenWinbackSelectableRewardViewFromQuest)
 registerNotificationsActionsHandlers(_AVAILABLE_HANDLERS)
 
 class NotificationsActionsHandlers(object):

@@ -22,6 +22,10 @@ package net.wg.gui.components.ribbon.data
       
       private static const PURPLE_RIBBON_SHADOW_COLOR:String = "ribbonPurpleShadow";
       
+      private static const PERK_TEXT_COLOR:String = "ribbonPerkValueText";
+      
+      private static const PERK_SHADOW_COLOR:String = "ribbonPerkShadow";
+      
       public static const SHADOW_BLUR:Number = 5;
       
       public static const SHADOW_STRENGTH:Number = 1.5;
@@ -78,6 +82,11 @@ package net.wg.gui.components.ribbon.data
                this._valueTextColor = _loc3_;
                this._shadowColor = _loc2_.getRGB(PURPLE_RIBBON_SHADOW_COLOR);
                this._ribbonNameTextColor = _loc3_;
+               break;
+            case RibbonColors.PERK:
+               this._valueTextColor = _loc2_.getRGB(PERK_TEXT_COLOR);
+               this._shadowColor = _loc2_.getRGB(PERK_SHADOW_COLOR);
+               this._ribbonNameTextColor = _loc2_.getRGB(PERK_TEXT_COLOR);
                break;
             default:
                App.utils.asserter.assert(false,"No such rendererType: " + param1);

@@ -33,13 +33,13 @@ package net.wg.data.constants.generated
       
       public static const OVERTURNED_ICON:String = "destroyTimerOverTurnedUI";
       
-      public static const OVERTURNED_GREEN_ICON:String = "destroyTimerOverTurnedGreenUI";
-      
       public static const HALF_OVERTURNED_ICON:String = "HalfOverTurnedIconUI";
       
       public static const DEATHZONE_ICON:String = "destroyTimerDeathZoneUI";
       
       public static const DEATHZONE_ICON_CN:String = "destroyTimerDeathZoneCNUI";
+      
+      public static const DANGER_ICON:String = "dangerTimerDeathZoneUI";
       
       public static const DAMAGING_DEATHZONE_ICON:String = "DamageZoneIconContentUI";
       
@@ -56,8 +56,6 @@ package net.wg.data.constants.generated
       public static const GAS_DRAFT_ICON:String = "destroyTimerGazDraftUI";
       
       public static const STUN_ICON:String = "secondaryStunIconUI";
-      
-      public static const STUN_FLAME_ICON:String = "secondaryStunFlameIconUI";
       
       public static const BLOCKED_ICON:String = "secondaryBlockedIconUI";
       

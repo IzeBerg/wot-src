@@ -40,10 +40,6 @@ package net.wg.gui.lobby.settings.vo.config.marker
       
       public var markerAltAimMarker2D:SettingsControlProp = null;
       
-      public var markerBaseVehicleDist:SettingsControlProp = null;
-      
-      public var markerAltVehicleDist:SettingsControlProp = null;
-      
       public function MarkerEnemySettingsDataVo()
       {
          super({
@@ -62,9 +58,7 @@ package net.wg.gui.lobby.settings.vo.config.marker
             "markerBaseLevel":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "markerAltVehicleName":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "markerBaseAimMarker2D":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
-            "markerAltAimMarker2D":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
-            "markerBaseVehicleDist":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
-            "markerAltVehicleDist":createControl(ControlsFactory.TYPE_CHECKBOX).build()
+            "markerAltAimMarker2D":createControl(ControlsFactory.TYPE_CHECKBOX).build()
          });
       }
       
@@ -86,8 +80,6 @@ package net.wg.gui.lobby.settings.vo.config.marker
          this.markerAltVehicleName = null;
          this.markerBaseAimMarker2D = null;
          this.markerAltAimMarker2D = null;
-         this.markerBaseVehicleDist = null;
-         this.markerAltVehicleDist = null;
          super.onDispose();
       }
    }

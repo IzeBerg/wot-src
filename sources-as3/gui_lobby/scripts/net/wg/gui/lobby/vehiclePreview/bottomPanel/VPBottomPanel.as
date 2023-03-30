@@ -445,6 +445,7 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
                this.compoundPrice.visible = false;
                this.discountOverlay.visible = false;
                this.discountValueOverlay.visible = false;
+               this.actionButton.visible = false;
             }
             this.actionButton.label = this._data.buyButtonLabel;
             this.actionButton.iconSource = this._data.buyButtonIcon;

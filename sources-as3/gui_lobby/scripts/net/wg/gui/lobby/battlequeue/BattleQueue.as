@@ -59,6 +59,10 @@ package net.wg.gui.lobby.battlequeue
       
       public var modeTitle:TextField;
       
+      public var subTitle:TextField;
+      
+      public var footerText:TextField;
+      
       public var exitButton:ISoundButtonEx;
       
       public var listByType:ScrollingListEx;
@@ -135,6 +139,8 @@ package net.wg.gui.lobby.battlequeue
          this.playersLabel = null;
          this.gameplayTip = null;
          this.modeTitle = null;
+         this.subTitle = null;
+         this.footerText = null;
          this.timerText = null;
          this.tankName = null;
          this.exitButton.dispose();
@@ -195,6 +201,8 @@ package net.wg.gui.lobby.battlequeue
                this.listByType.height = getListHeight(_loc1_);
             }
             this.modeTitle.text = this._typeInfo.title;
+            this.subTitle.htmlText = this._typeInfo.subTitle;
+            this.footerText.text = this._typeInfo.footerText;
             _loc2_ = this._typeInfo.iconLabel;
             this.battleIcon.type = _loc2_;
             if(this._battleIconBgFrameHelper.getFrameByLabel(_loc2_) != FrameHelper.NOT_EXIST_INDEX)
