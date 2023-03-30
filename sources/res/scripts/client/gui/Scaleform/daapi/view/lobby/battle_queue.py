@@ -257,6 +257,12 @@ class _Comp7QueueProvider(RandomQueueProvider):
     def getTankName(self, vehicle):
         return ''
 
+    def needAdditionalInfo(self):
+        return False
+
+    def additionalInfo(self):
+        return ''
+
 
 class _WinbackQueueProvider(RandomQueueProvider):
     __winbackController = dependency.descriptor(IWinbackController)

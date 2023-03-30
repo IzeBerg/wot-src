@@ -3,7 +3,6 @@ from functools import partial
 from types import NoneType
 from typing import TYPE_CHECKING
 import BigWorld, CommandMapping
-from battle_modifiers_common import BattleParams
 from constants import EQUIPMENT_STAGES, SHELL_TYPES
 from gui.battle_control.controllers.consumables.ammo_ctrl import IAmmoListener
 from items import vehicles
@@ -32,7 +31,7 @@ from shared_utils import forEach
 from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.lobby_context import ILobbyContext
 if TYPE_CHECKING:
-    from gui.battle_control.controllers.consumables.equipment_ctrl import _OrderItem
+    from gui.battle_control.controllers.consumables.equipment_ctrl import _OrderItem, _EquipmentItem
 _logger = logging.getLogger(__name__)
 R_AMMO_ICON = R.images.gui.maps.icons.ammopanel.battle_ammo
 NO_AMMO_ICON = 'NO_{}'
@@ -243,9 +242,7 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, BattleGUIKeyHandler,
                 cdSecVal = descriptor.cooldownTime
             else:
                 cdSecVal = item.getTotalTime()
-            battleModifiers = self.sessionProvider.arenaVisitor.getArenaModifiers()
-            cooldownSeconds = str(int(battleModifiers(BattleParams.EQUIPMENT_COOLDOWN, cdSecVal)))
-            paramsString = backport.text(tooltipStr, cooldownSeconds=cooldownSeconds)
+            paramsString = backport.text(tooltipStr, cooldownSeconds=str(int(cdSecVal)))
             body = ('\n\n').join((body, paramsString))
         toolTip = TOOLTIP_FORMAT.format(descriptor.userString, body)
         return toolTip

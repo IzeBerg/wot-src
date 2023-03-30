@@ -1125,7 +1125,7 @@ def makeRemovalPriceBlock(price, currencySetting, neededValue=None, oldPrice=Non
         icon = settings.icon
         countFormatted = text_styles.concatStylesWithSpace(settings.textStyle(_int(price)), icon)
         dkText = ''
-        wotPlusLabel = text_styles.wotPlusText('free')
+        wotPlusLabel = text_styles.wotPlusText(backport.text(R.strings.demount_kit.equipmentDemount.optionFree()))
         wotPlusIcon = icons.wotPlus()
         wotPlusText = text_styles.concatStylesWithSpace(wotPlusIcon, wotPlusLabel)
         if not wotPlusStatus:

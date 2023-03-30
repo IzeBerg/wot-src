@@ -266,6 +266,7 @@ package net.wg.gui.lobby.hangar
          if(this.rendererBG.visible)
          {
             this.rendererBG.visible = false;
+            this.rendererBG.y = 0;
          }
       }
       

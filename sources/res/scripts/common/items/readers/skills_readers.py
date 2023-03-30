@@ -32,13 +32,13 @@ def _readLocales(skillName, section):
 
     def localeText(locRoot, dynName):
         if locRoot.isValid():
-            dynStr = locRoot.dyn(dynName, R.invalid)
+            dynStr = locRoot.dyn(dynName)
             if dynStr.isValid():
                 return backport.text(dynStr())
         return EMPTY_STRING
 
-    localeRoot = R.strings.crew_perks.dyn(skillName, R.invalid())
-    altRoot = localeRoot.dyn('alt', R.invalid)
+    localeRoot = R.strings.crew_perks.dyn(skillName)
+    altRoot = localeRoot.dyn('alt')
     return skills_components.SkillLocales(section.readString('userString', localeText(localeRoot, 'name')), section.readString('shortDescription', localeText(localeRoot, 'shortDescription')), section.readString('maxLvlDescription', localeText(localeRoot, 'maxLvlDescription')), section.readString('currentLvlDescription', localeText(localeRoot, 'currentLvlDescription')), section.readString('altDescription', localeText(altRoot, 'description')), section.readString('altInfo', localeText(altRoot, 'info')))
 
 

@@ -10547,7 +10547,7 @@ package
       
       public static const SPECIAL_STYLE_PL21_CS_63_3DST_BV:String = "#vehicle_customization:special_style/Pl21_CS_63_3Dst_BV";
       
-      public static const SPECIALSTYLE_PL21_CS_63_3DST_BV_DESC_LONG:String = "#vehicle_customization:specialstyle/Pl21_CS_63_3Dst_BV_desc/long";
+      public static const SPECIAL_STYLE_PL21_CS_63_3DST_BV_DESC_LONG:String = "#vehicle_customization:special_style/Pl21_CS_63_3Dst_BV_desc/long";
       
       public static const SPECIAL_STYLE_MAY_MARATHON_2021:String = "#vehicle_customization:special_style/may_marathon_2021";
       

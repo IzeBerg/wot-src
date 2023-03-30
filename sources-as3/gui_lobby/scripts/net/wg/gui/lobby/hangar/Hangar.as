@@ -892,10 +892,6 @@ package net.wg.gui.lobby.hangar
          this.vehResearchPanel.visible = this.isControlsVisible;
          this.vehResearchBG.visible = this.isControlsVisible;
          this.ammunitionPanelInject.visible = this.isControlsVisible;
-         if(this._comp7ModifiersPanelInject)
-         {
-            this._comp7ModifiersPanelInject.visible = this.isControlsVisible;
-         }
          this.updateCrewOperationsVisibility();
       }
       
@@ -1143,7 +1139,7 @@ package net.wg.gui.lobby.hangar
       {
          if(this._comp7ModifiersPanelInject)
          {
-            this._comp7ModifiersPanelInject.y = this.params.y + this.params.actualHeight + COMP7_MODIFIERS_PANEL_INJECT_OFFSET_Y ^ 0;
+            this._comp7ModifiersPanelInject.y = this.params.y + (this.params.visible && this.params.actualHeight + COMP7_MODIFIERS_PANEL_INJECT_OFFSET_Y) ^ 0;
             this._comp7ModifiersPanelInject.x = this.params.x + this.params.width - this._comp7ModifiersPanelInject.width + COMP7_MODIFIERS_PANEL_INJECT_OFFSET_X ^ 0;
          }
       }

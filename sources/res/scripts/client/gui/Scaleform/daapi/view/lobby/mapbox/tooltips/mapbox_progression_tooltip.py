@@ -14,6 +14,7 @@ _IMG_PATH = R.images.gui.maps.icons.mapbox
 _STR_PATH = R.strings.mapbox.questFlag
 _MAPS_IN_ROW = 3
 _MAX_MAPS_IN_ROW = 4
+_NAME_MAPPING = {'all': 'all'}
 
 class MapboxProgressionTooltip(BlocksTooltipData):
     __mapboxCtrl = dependency.descriptor(IMapboxController)
@@ -43,14 +44,12 @@ class MapboxProgressionTooltip(BlocksTooltipData):
 
     def __packMapsProgressionBlock(self, progressionData):
         items = []
-        seasonNumber = self.__mapboxCtrl.getCurrentSeason().getNumber()
-        nameMapping = {'all': ('all_{}').format(seasonNumber)}
         mapVOs = []
         sortedProgressionData = sorted(progressionData.surveys.items(), key=lambda item: (item[0].startswith(tuple(string.digits)), item[0]))
         passedSurveys = 0
         for mapName, mapData in sortedProgressionData:
             counter = (mapData.passed or backport.text)(_STR_PATH.counter(), progress=text_styles.bonusPreviewText(min(mapData.progress, mapData.total)), total=mapData.total) if 1 else ''
-            iconPath = _IMG_PATH.progressionTooltip.dyn(self.__formatMapName(nameMapping.get(mapName, mapName)))()
+            iconPath = _IMG_PATH.progressionTooltip.dyn(self.__formatMapName(_NAME_MAPPING.get(mapName, mapName)))()
             if iconPath == -1:
                 _logger.error('Invalid icon for map with name %s', mapName)
                 icon = ''

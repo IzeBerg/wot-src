@@ -1,4 +1,4 @@
-import sys, re, BigWorld, excepthook, time, traceback
+import sys, re, subprocess, BigWorld, excepthook, time, traceback
 from GarbageCollectionDebug import gcDump, getGarbageGraph
 from functools import wraps
 from collections import defaultdict
@@ -394,6 +394,28 @@ def memoryLeaksSafeDump(id, _):
         gcDump()
     if time.time() - curTime > LEAKS_DETECTOR_MAX_EXECUTION_TIME or GCDUMP_CROWBAR_SWITCH:
         BigWorld.delTimer(id)
+
+
+def printConnections(ports):
+    portsRE = ('\\|').join(map(lambda p: str(p), ports))
+    ns = subprocess.Popen(['netstat', '-atupn'], stdout=subprocess.PIPE)
+    gr = subprocess.Popen(['grep', portsRE], stdin=ns.stdout, stdout=subprocess.PIPE)
+    output = gr.communicate()[0].splitlines()
+    for line in output:
+        LOG_DEBUG('Connection: ', line)
+
+
+def printProcesses():
+    ps = subprocess.Popen([
+     'ps', '-eo', 'pid,etimes,args', '--sort', 'start_time'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    procs = ps.communicate()[0].splitlines()
+    procsCnt = 0
+    for proc in procs:
+        if 'app' in proc and 'bigworld' in proc:
+            LOG_DEBUG('Process: ', proc)
+            procsCnt += 1
+
+    LOG_DEBUG('Total processes: ', procsCnt)
 
 
 def initMemoryLeaksLogging(repeatOffset=300):

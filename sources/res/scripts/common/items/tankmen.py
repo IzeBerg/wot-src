@@ -709,6 +709,13 @@ class TankmanDescr(object):
         numSkills = self.lastSkillNumber - self.freeSkillsNumber
         if numSkills <= 0:
             return
+        fullSkillXpCost = 2 ** numSkills * (_g_levelXpCosts[MAX_SKILL_LEVEL] - _g_levelXpCosts[self.__lastSkillLevel])
+        if self.freeXP >= fullSkillXpCost:
+            skillLevelsGained = MAX_SKILL_LEVEL - self.__lastSkillLevel
+            self.freeXP -= fullSkillXpCost
+            self.__lastSkillLevel = MAX_SKILL_LEVEL
+            self.__updateRankAtSkillLevelUp(numLevels=skillLevelsGained)
+            return
         while self.__lastSkillLevel < MAX_SKILL_LEVEL:
             xpCost = self.levelUpXpCost(self.__lastSkillLevel, numSkills)
             if xpCost > self.freeXP:

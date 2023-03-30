@@ -207,7 +207,6 @@ class MapboxProgressionView(ViewImpl):
             with self.viewModel.transaction() as (model):
                 actualSeason = self.__mapboxController.getCurrentSeason()
                 if actualSeason is not None:
-                    model.setSeasonNumber(actualSeason.getNumber())
                     model.setStartEvent(actualSeason.getCycleStartDate())
                     model.setEndEvent(actualSeason.getCycleEndDate())
                     self.__fillMaps(model, progressionData, actualSeason)
@@ -230,7 +229,6 @@ class MapboxProgressionView(ViewImpl):
                 model.setTotalBattles(totalRequeredBattles)
                 self.__fillMaps(model, progressionData, actualSeason)
                 model.setIsMapboxModeSelected(self.__mapboxController.isMapboxMode())
-                model.setSeasonNumber(actualSeason.getNumber())
                 model.setStartEvent(actualSeason.getCycleStartDate())
                 model.setEndEvent(actualSeason.getCycleEndDate())
                 progressionRewardsList = model.getProgressionRewards()

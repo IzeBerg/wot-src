@@ -14223,13 +14223,7 @@ package
       
       public static const MAPS_ICONS_MAPBOX_PROGRESSION_MAP_127_JAPORT_MB:String = "../maps/icons/mapbox/progression/map_127_japort_mb.png";
       
-      public static const MAPS_ICONS_MAPBOX_PROGRESSION_MAP_ALL_1:String = "../maps/icons/mapbox/progression/map_all_1.png";
-      
-      public static const MAPS_ICONS_MAPBOX_PROGRESSION_MAP_ALL_2:String = "../maps/icons/mapbox/progression/map_all_2.png";
-      
-      public static const MAPS_ICONS_MAPBOX_PROGRESSION_MAP_ALL_3:String = "../maps/icons/mapbox/progression/map_all_3.png";
-      
-      public static const MAPS_ICONS_MAPBOX_PROGRESSION_MAP_ALL_4:String = "../maps/icons/mapbox/progression/map_all_4.png";
+      public static const MAPS_ICONS_MAPBOX_PROGRESSION_MAP_ALL:String = "../maps/icons/mapbox/progression/map_all.png";
       
       public static const MAPS_ICONS_MAPBOX_PROGRESSION_MODE:String = "../maps/icons/mapbox/progression/mode.png";
       
@@ -14249,13 +14243,7 @@ package
       
       public static const MAPS_ICONS_MAPBOX_PROGRESSIONTOOLTIP_127_JAPORT_MB:String = "../maps/icons/mapbox/progressionTooltip/127_japort_mb.png";
       
-      public static const MAPS_ICONS_MAPBOX_PROGRESSIONTOOLTIP_ALL_1:String = "../maps/icons/mapbox/progressionTooltip/all_1.png";
-      
-      public static const MAPS_ICONS_MAPBOX_PROGRESSIONTOOLTIP_ALL_2:String = "../maps/icons/mapbox/progressionTooltip/all_2.png";
-      
-      public static const MAPS_ICONS_MAPBOX_PROGRESSIONTOOLTIP_ALL_3:String = "../maps/icons/mapbox/progressionTooltip/all_3.png";
-      
-      public static const MAPS_ICONS_MAPBOX_PROGRESSIONTOOLTIP_ALL_4:String = "../maps/icons/mapbox/progressionTooltip/all_4.png";
+      public static const MAPS_ICONS_MAPBOX_PROGRESSIONTOOLTIP_ALL:String = "../maps/icons/mapbox/progressionTooltip/all.png";
       
       public static const MAPS_ICONS_MAPBOX_QUESTS_TOOLTIP_HEADER_BG:String = "../maps/icons/mapbox/quests/tooltip_header_bg.png";
       
@@ -14272,6 +14260,8 @@ package
       public static const MAPS_ICONS_MAPBOX_REWARDITEMS_BOOSTER_CREW_XP:String = "../maps/icons/mapbox/rewardItems/booster_crew_xp.png";
       
       public static const MAPS_ICONS_MAPBOX_REWARDITEMS_BOOSTER_FREE_XP:String = "../maps/icons/mapbox/rewardItems/booster_free_xp.png";
+      
+      public static const MAPS_ICONS_MAPBOX_REWARDITEMS_BOOSTER_FREE_XP_AND_CREW_XP:String = "../maps/icons/mapbox/rewardItems/booster_free_xp_and_crew_xp.png";
       
       public static const MAPS_ICONS_MAPBOX_REWARDITEMS_BOOSTER_XP:String = "../maps/icons/mapbox/rewardItems/booster_xp.png";
       
@@ -14346,6 +14336,8 @@ package
       public static const MAPS_ICONS_MAPBOX_REWARDITEMS_SMALL_BOOSTER_CREW_XP:String = "../maps/icons/mapbox/rewardItems/small/booster_crew_xp.png";
       
       public static const MAPS_ICONS_MAPBOX_REWARDITEMS_SMALL_BOOSTER_FREE_XP:String = "../maps/icons/mapbox/rewardItems/small/booster_free_xp.png";
+      
+      public static const MAPS_ICONS_MAPBOX_REWARDITEMS_SMALL_BOOSTER_FREE_XP_AND_CREW_XP:String = "../maps/icons/mapbox/rewardItems/small/booster_free_xp_and_crew_xp.png";
       
       public static const MAPS_ICONS_MAPBOX_REWARDITEMS_SMALL_BOOSTER_XP:String = "../maps/icons/mapbox/rewardItems/small/booster_xp.png";
       
