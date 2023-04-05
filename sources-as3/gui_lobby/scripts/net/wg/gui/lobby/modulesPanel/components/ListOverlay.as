@@ -99,11 +99,12 @@ package net.wg.gui.lobby.modulesPanel.components
       
       private function updateLayout() : void
       {
+         var _loc1_:int = 0;
          this.bg.width = _width;
          this.bg.height = _height;
          this.descTf.width = _width - PADDING_DESC | 0;
          App.utils.commons.updateTextFieldSize(this.descTf,false,true);
-         var _loc1_:int = _height - GAP_TOP_ICON - this.icon.height - GAP_ICON_DESC - this.titleTf.height - this.descTf.height - GAP_DESC_BTN - this.okBtn.height >> 1;
+         _loc1_ = _height - GAP_TOP_ICON - this.icon.height - GAP_ICON_DESC - this.titleTf.height - this.descTf.height - GAP_DESC_BTN - this.okBtn.height >> 1;
          this.icon.x = _width - this.icon.width >> 1;
          this.titleTf.x = _width - this.titleTf.width >> 1;
          this.descTf.x = PADDING_DESC >> 1;

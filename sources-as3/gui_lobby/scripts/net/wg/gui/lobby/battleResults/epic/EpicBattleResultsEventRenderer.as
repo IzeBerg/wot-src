@@ -163,8 +163,9 @@ package net.wg.gui.lobby.battleResults.epic
       
       private function checkProgressList(param1:int) : int
       {
+         var _loc3_:Boolean = false;
          var _loc2_:Array = this._data.progressList;
-         var _loc3_:Boolean = _loc2_ && _loc2_.length > 0;
+         _loc3_ = _loc2_ && _loc2_.length > 0;
          this.progressList.visible = _loc3_;
          if(_loc3_)
          {
