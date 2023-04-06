@@ -3211,6 +3211,10 @@ package
       
       public static const CAMOUFLAGE_BP2023_4_DESCRIPTION:String = "#vehicle_customization:camouflage/bp2023_4/description";
       
+      public static const CAMOUFLAGE_TWITCH_APRIL_2023_LABEL:String = "#vehicle_customization:camouflage/twitch_april_2023/label";
+      
+      public static const CAMOUFLAGE_TWITCH_APRIL_2023_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_april_2023/description";
+      
       public static const EMBLEM:String = "#vehicle_customization:emblem";
       
       public static const EMBLEM_CLAN_CONTENT:String = "#vehicle_customization:emblem/clan_content";
@@ -11393,6 +11397,10 @@ package
       
       public static const SPECIAL_STYLE_BP2023_4_DESC_LONG:String = "#vehicle_customization:special_style/bp2023_4_desc/long";
       
+      public static const SPECIAL_STYLE_TWITCH_APRIL_2023:String = "#vehicle_customization:special_style/twitch_april_2023";
+      
+      public static const SPECIAL_STYLE_TWITCH_APRIL_2023_DESC_LONG:String = "#vehicle_customization:special_style/twitch_april_2023_desc/long";
+      
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_DESERT:String = "#vehicle_customization:customization/popover/style/desert";
@@ -13740,6 +13748,10 @@ package
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_524:String = "#vehicle_customization:projection_decals/special/projection_decal_524";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_525:String = "#vehicle_customization:projection_decals/special/projection_decal_525";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_526:String = "#vehicle_customization:projection_decals/special/projection_decal_526";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_527:String = "#vehicle_customization:projection_decals/special/projection_decal_527";
       
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       
