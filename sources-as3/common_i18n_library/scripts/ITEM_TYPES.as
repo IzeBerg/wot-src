@@ -45,6 +45,8 @@ package
       
       public static const DUALGUN_NAME:String = "#item_types:dualGun/name";
       
+      public static const FLAMEGUN_NAME:String = "#item_types:flameGun/name";
+      
       public static const GUN_DESC:String = "#item_types:gun/desc";
       
       public static const GUN_TAGS:String = "#item_types:gun/tags";
@@ -84,6 +86,8 @@ package
       public static const OPTIONALDEVICE_TAGS:String = "#item_types:optionalDevice/tags";
       
       public static const SHOT_NAME:String = "#item_types:shot/name";
+      
+      public static const ALTSHOT_NAME:String = "#item_types:altShot/name";
       
       public static const SHOT_DESC:String = "#item_types:shot/desc";
       
@@ -147,6 +151,8 @@ package
       
       public static const SHELL_KINDS_HIGH_EXPLOSIVE:String = "#item_types:shell/kinds/HIGH_EXPLOSIVE";
       
+      public static const SHELL_KINDS_FLAME:String = "#item_types:shell/kinds/FLAME";
+      
       public static const SHELL_KINDSABBREVIATION_ARMOR_PIERCING:String = "#item_types:shell/kindsAbbreviation/ARMOR_PIERCING";
       
       public static const SHELL_KINDSABBREVIATION_ARMOR_PIERCING_CR:String = "#item_types:shell/kindsAbbreviation/ARMOR_PIERCING_CR";
@@ -156,6 +162,8 @@ package
       public static const SHELL_KINDSABBREVIATION_HOLLOW_CHARGE:String = "#item_types:shell/kindsAbbreviation/HOLLOW_CHARGE";
       
       public static const SHELL_KINDSABBREVIATION_HIGH_EXPLOSIVE:String = "#item_types:shell/kindsAbbreviation/HIGH_EXPLOSIVE";
+      
+      public static const SHELL_KINDSABBREVIATION_FLAME:String = "#item_types:shell/kindsAbbreviation/FLAME";
       
       public static const SHELL_DIMENSION_SM:String = "#item_types:shell/dimension/sm";
       
@@ -219,9 +227,9 @@ package
       
       public static const TANKMAN_GENDER_WOMAN:String = "#item_types:tankman/gender/woman";
       
-      public static const SHELL_KINDSABBREVIATION_ENUM:Array = [SHELL_KINDSABBREVIATION_ARMOR_PIERCING,SHELL_KINDSABBREVIATION_ARMOR_PIERCING_CR,SHELL_KINDSABBREVIATION_ARMOR_PIERCING_HE,SHELL_KINDSABBREVIATION_HOLLOW_CHARGE,SHELL_KINDSABBREVIATION_HIGH_EXPLOSIVE];
+      public static const SHELL_KINDSABBREVIATION_ENUM:Array = [SHELL_KINDSABBREVIATION_ARMOR_PIERCING,SHELL_KINDSABBREVIATION_ARMOR_PIERCING_CR,SHELL_KINDSABBREVIATION_ARMOR_PIERCING_HE,SHELL_KINDSABBREVIATION_HOLLOW_CHARGE,SHELL_KINDSABBREVIATION_HIGH_EXPLOSIVE,SHELL_KINDSABBREVIATION_FLAME];
       
-      public static const SHELL_KINDS_ENUM:Array = [SHELL_KINDS_ARMOR_PIERCING,SHELL_KINDS_ARMOR_PIERCING_CR,SHELL_KINDS_ARMOR_PIERCING_HE,SHELL_KINDS_HOLLOW_CHARGE,SHELL_KINDS_HIGH_EXPLOSIVE];
+      public static const SHELL_KINDS_ENUM:Array = [SHELL_KINDS_ARMOR_PIERCING,SHELL_KINDS_ARMOR_PIERCING_CR,SHELL_KINDS_ARMOR_PIERCING_HE,SHELL_KINDS_HOLLOW_CHARGE,SHELL_KINDS_HIGH_EXPLOSIVE,SHELL_KINDS_FLAME];
       
       public static const TANKMAN_SKILLS_TYPE_ENUM:Array = [TANKMAN_SKILLS_TYPE_SKILL,TANKMAN_SKILLS_TYPE_SKILL_SHORT,TANKMAN_SKILLS_TYPE_PERK,TANKMAN_SKILLS_TYPE_PERK_COMMON,TANKMAN_SKILLS_TYPE_PERK_SHORT];
        

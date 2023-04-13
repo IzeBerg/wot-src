@@ -423,7 +423,7 @@ class BattleChatCommandHandler(bw2_provider.ResponseDictHandler, IBattleCommandF
                 if decorator.isEnemyTarget():
                     self.__targetIDs.append(decorator.getTargetID())
                 if _ACTIONS.isBattleChatAction(command.id):
-                    cooldownConfig = getCoolDownConfig()
+                    cooldownConfig = getCoolDownConfig(self.__sessionProvider.arenaVisitor.getArenaBonusType())
                     provider.setBattleActionCoolDown(reqID, command.id, decorator.getTargetID(), cooldownConfig)
                 else:
                     provider.setActionCoolDown(command.id, command.cooldownPeriod)
@@ -686,13 +686,14 @@ class AntispamHandler(CallbackDelayer):
         return self.__SEND_COMMAND_TICK_DELAY
 
 
-def getCoolDownConfig():
-    teamInfo = BigWorld.player().arena.teamInfo
-    spamProtection = teamInfo.dynamicComponents.get('spamProtection') if teamInfo else None
-    if spamProtection is not None:
-        return BattleChatCmdGameModeCoolDownData(*spamProtection.settingValues)
-    else:
+def getCoolDownConfig(bonusType):
+    if ARENA_BONUS_TYPE_CAPS.checkAny(bonusType, ARENA_BONUS_TYPE_CAPS.SPAM_PROTECTION):
+        teamInfo = BigWorld.player().arena.teamInfo
+        spamProtection = teamInfo.dynamicComponents.get('spamProtection') if teamInfo else None
+        if spamProtection is not None:
+            return BattleChatCmdGameModeCoolDownData(*spamProtection.settingValues)
         return DEFAULT_SPAM_PROTECTION_SETTING
+    return
 
 
 g_mutedMessages = {}

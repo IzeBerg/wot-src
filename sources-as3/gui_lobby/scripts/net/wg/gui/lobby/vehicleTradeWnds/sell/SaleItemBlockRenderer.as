@@ -297,6 +297,10 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          {
             App.toolTipMgr.showComplex(TOOLTIPS.VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN,_loc3_);
          }
+         else if(CURRENCIES_CONSTANTS.GOLD in this._rendererData.removePrice && this._rendererData.isWotPlusEnabled)
+         {
+            App.toolTipMgr.showComplex(TOOLTIPS.VEHICLESELLDIALOG_RENDERER_ALERTICONGOLDWOTPLUS,_loc3_);
+         }
          else if(CURRENCIES_CONSTANTS.GOLD in this._rendererData.removePrice)
          {
             App.toolTipMgr.showComplex(TOOLTIPS.VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD,_loc3_);

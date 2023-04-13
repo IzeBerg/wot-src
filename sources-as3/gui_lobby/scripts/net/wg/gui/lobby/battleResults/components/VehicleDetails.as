@@ -45,7 +45,7 @@ package net.wg.gui.lobby.battleResults.components
       
       private static const TIME_WIDTH:int = 362;
       
-      private static const EPIC_LBL_WIDTH:int = 286;
+      private static const EPIC_LBL_WIDTH:int = 296;
       
       private static const EPIC_VALUES_POS_X:int = 288;
       

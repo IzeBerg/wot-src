@@ -380,6 +380,25 @@ class BpcoinBonus(IntegralBonus):
         return text_styles.bpcoin(self.getValue())
 
 
+class EquipCoinBonus(IntegralBonus):
+
+    def getIcon(self):
+        return backport.image(R.images.gui.maps.icons.library.equipCoin_1())
+
+    def getList(self):
+        res = [
+         {'value': self.formatValue(), 
+            'itemSource': self.getIcon(), 
+            'tooltip': TOOLTIPS.AWARDITEM_EQUIPCOIN}]
+        return res
+
+    def hasIconFormat(self):
+        return True
+
+    def getIconLabel(self):
+        return text_styles.equipCoin(self.getValue())
+
+
 class CurrenciesBonus(IntegralBonus):
 
     def __init__(self, *args, **kwargs):
@@ -2682,6 +2701,7 @@ _BONUSES = {Currency.CREDITS: CreditsBonus,
    Currency.CRYSTAL: CrystalBonus, 
    Currency.EVENT_COIN: EventCoinBonus, 
    Currency.BPCOIN: BpcoinBonus, 
+   Currency.EQUIP_COIN: EquipCoinBonus, 
    'strBonus': SimpleBonus, 
    'groups': SimpleBonus, 
    'xp': IntegralBonus, 

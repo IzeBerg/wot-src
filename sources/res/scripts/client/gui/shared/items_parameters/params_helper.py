@@ -13,7 +13,7 @@ from items import vehicles, ITEM_TYPES
 from shared_utils import findFirst, first
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 RELATIVE_POWER_PARAMS = (
- 'avgDamage', 'avgPiercingPower', 'stunMaxDuration', 'reloadTime', AUTO_RELOAD_PROP_NAME,
+ 'avgDamage', 'avgPiercingPower', 'stunMaxDuration', 'flameMaxDistance', 'reloadTime', AUTO_RELOAD_PROP_NAME,
  'reloadTimeSecs', 'clipFireRate', 'burstFireRate', 'turboshaftBurstFireRate', DUAL_GUN_CHARGE_TIME,
  'turretRotationSpeed', 'turretYawLimits', 'pitchLimits', 'gunYawLimits', 'aimingTime', 'shotDispersionAngle',
  'avgDamagePerMinute')
@@ -40,7 +40,6 @@ EXTRA_POWER_PARAMS = (
  KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_TURRET_ROTATION,
  KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_WHILE_GUN_DAMAGED,
  KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_AFTER_SHOT,
- KPI.Name.VEHICLE_RELOAD_TIME_AFTER_SHELL_CHANGE,
  KPI.Name.DAMAGE_AND_PIERCING_DISTRIBUTION_LOWER_BOUND,
  KPI.Name.DAMAGE_AND_PIERCING_DISTRIBUTION_UPPER_BOUND,
  KPI.Name.ENEMY_MODULES_CREW_CRIT_CHANCE,

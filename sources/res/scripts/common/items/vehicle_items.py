@@ -297,12 +297,12 @@ class Turret(InstallableItem):
 class Gun(InstallableItem):
     __metaclass__ = ReflectionMetaclass
     __slots__ = ('rotationSpeed', 'reloadTime', 'aimingTime', 'maxAmmo', 'invisibilityFactorAtShot',
-                 'effects', 'reloadEffect', 'reloadEffectSets', 'impulse', 'recoil',
-                 'animateEmblemSlots', 'shotOffset', 'turretYawLimits', 'pitchLimits',
-                 'staticTurretYaw', 'staticPitch', 'shotDispersionAngle', 'shotDispersionFactors',
-                 'burst', 'clip', 'shots', 'autoreload', 'autoreloadHasBoost', 'drivenJoints',
-                 'customizableVehicleAreas', 'dualGun', 'edgeByVisualModel', 'prefabs',
-                 '__weakref__')
+                 'effects', 'burstStartEffects', 'reloadEffect', 'reloadEffectSets',
+                 'impulse', 'recoil', 'animateEmblemSlots', 'shotOffset', 'turretYawLimits',
+                 'pitchLimits', 'staticTurretYaw', 'staticPitch', 'shotDispersionAngle',
+                 'shotDispersionFactors', 'burst', 'clip', 'shots', 'autoreload',
+                 'autoreloadHasBoost', 'drivenJoints', 'customizableVehicleAreas',
+                 'dualGun', 'edgeByVisualModel', 'prefabs', '__weakref__')
 
     def __init__(self, typeID, componentID, componentName, compactDescr, level=1):
         super(Gun, self).__init__(typeID, componentID, componentName, compactDescr, level)
@@ -326,6 +326,7 @@ class Gun(InstallableItem):
         self.dualGun = component_constants.DEFAULT_GUN_DUALGUN
         self.drivenJoints = None
         self.effects = None
+        self.burstStartEffects = None
         self.reloadEffect = None
         self.reloadEffectSets = None
         self.impulse = component_constants.ZERO_FLOAT
@@ -387,7 +388,8 @@ class Hull(BasicItem):
 class Shell(BasicItem):
     __slots__ = ('caliber', 'isTracer', 'isForceTracer', 'damage', 'damageRandomization',
                  'piercingPowerRandomization', 'icon', 'iconName', 'isGold', 'type',
-                 'stun', 'effectsIndex', 'tags', 'secondaryAttackReason', 'useAltDamageRandomization')
+                 'stun', 'effectsIndex', 'tags', 'secondaryAttackReason', 'useAltDamageRandomization',
+                 'hitDeviceChanceMultiplier', 'hitCrewChanceMultiplier')
 
     def __init__(self, typeID, componentID, componentName, compactDescr):
         super(Shell, self).__init__(typeID, componentID, componentName, compactDescr)
@@ -405,6 +407,8 @@ class Shell(BasicItem):
         self.iconName = None
         self.secondaryAttackReason = ATTACK_REASON.NONE
         self.useAltDamageRandomization = False
+        self.hitDeviceChanceMultiplier = component_constants.DEFAULT_SHELL_HIT_EXTRAS_CHANCE_MULTIPLIER
+        self.hitCrewChanceMultiplier = component_constants.DEFAULT_SHELL_HIT_EXTRAS_CHANCE_MULTIPLIER
         return
 
     def __repr__(self):

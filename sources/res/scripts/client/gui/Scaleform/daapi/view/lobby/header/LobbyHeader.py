@@ -54,12 +54,11 @@ from gui.prb_control.entities.base.ctx import PrbAction
 from gui.prb_control.entities.listener import IGlobalListener
 from gui.prb_control.settings import PRE_QUEUE_RESTRICTION, REQUEST_TYPE
 from gui.server_events import recruit_helper, settings as quest_settings
-from gui.server_events.events_dispatcher import showSubscriptionScreen
 from gui.server_events.events_helpers import isDailyQuest
 from gui.shared import event_dispatcher as shared_events, events
 from gui.shared.ClanCache import g_clanCache
 from gui.shared.event_bus import EVENT_BUS_SCOPE
-from gui.shared.event_dispatcher import hideWebBrowserOverlay, showActiveTestConfirmDialog, showModeSelectorWindow, showShop, showStorage
+from gui.shared.event_dispatcher import hideWebBrowserOverlay, showActiveTestConfirmDialog, showModeSelectorWindow, showShop, showStorage, showSubscriptionsPage
 from gui.shared.events import FullscreenModeSelectorEvent, PlatoonDropdownEvent
 from gui.shared.formatters import text_styles
 from gui.shared.formatters.currency import getBWFormatter
@@ -386,11 +385,11 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
     def showWotPlusView(self):
         wotPlusState = self._wotPlusCtrl.getState()
         self._wotPlusUILogger.logClickEvent(wotPlusState)
-        if wotPlusState in (WotPlusState.ACTIVE, WotPlusState.CANCELLED):
+        if self._wotPlusCtrl.isEnabled():
             views = self.gui.windowsManager.findViews(lambda view: view.layoutID == R.views.lobby.player_subscriptions.PlayerSubscriptions())
             if not views:
                 self.showDashboard()
-                showSubscriptionScreen()
+                showSubscriptionsPage()
             return
         showShop(getWotPlusShopUrl())
 

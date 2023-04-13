@@ -79,6 +79,8 @@ package
       
       public static const PLAYER_ERRORS_CANT_SHOOT_NO_AMMO:String = "#ingame_gui:player_errors/cant_shoot/no_ammo";
       
+      public static const PLAYER_ERRORS_CANT_SHOOT_NO_FLAME_AMMO:String = "#ingame_gui:player_errors/cant_shoot/no_flame_ammo";
+      
       public static const PLAYER_ERRORS_CANT_SHOOT_GUN_DAMAGED:String = "#ingame_gui:player_errors/cant_shoot/gun_damaged";
       
       public static const PLAYER_ERRORS_CANT_SHOOT_GUN_RELOAD:String = "#ingame_gui:player_errors/cant_shoot/gun_reload";
@@ -475,6 +477,8 @@ package
       
       public static const SHELLS_KINDS_ARMOR_PIERCING_CR:String = "#ingame_gui:shells_kinds/ARMOR_PIERCING_CR";
       
+      public static const SHELLS_KINDS_FLAME:String = "#ingame_gui:shells_kinds/FLAME";
+      
       public static const SHELLS_KINDS_PARAMS_DAMAGE:String = "#ingame_gui:shells_kinds/params/damage";
       
       public static const SHELLS_KINDS_PARAMS_PIERCINGPOWER:String = "#ingame_gui:shells_kinds/params/piercingPower";
@@ -582,6 +586,8 @@ package
       public static const CONSUMABLES_PANEL_EQUIPMENT_TOOLTIP_EMPTY:String = "#ingame_gui:consumables_panel/equipment/tooltip/empty";
       
       public static const CONSUMABLES_PANEL_EQUIPMENT_COOLDOWNSECONDS:String = "#ingame_gui:consumables_panel/equipment/cooldownSeconds";
+      
+      public static const CONSUMABLES_PANEL_EQUIPMENT_ACTIVESECONDS:String = "#ingame_gui:consumables_panel/equipment/activeSeconds";
       
       public static const TIMER_WAITING:String = "#ingame_gui:timer/waiting";
       
@@ -1255,6 +1261,8 @@ package
       
       public static const DAMAGELOG_SHELLTYPE_HIGH_EXPLOSIVE:String = "#ingame_gui:damageLog/shellType/HIGH_EXPLOSIVE";
       
+      public static const DAMAGELOG_SHELLTYPE_FLAME:String = "#ingame_gui:damageLog/shellType/FLAME";
+      
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING_HE:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING_HE";
       
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING_CR:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING_CR";
@@ -1426,6 +1434,8 @@ package
       public static const TRAJECTORYVIEW_HINT_ALTERNATEMODERIGHT:String = "#ingame_gui:trajectoryView/hint/alternateModeRight";
       
       public static const STUN_INDICATOR:String = "#ingame_gui:stun/indicator";
+      
+      public static const STUNFLAME_INDICATOR:String = "#ingame_gui:stunFlame/indicator";
       
       public static const STUN_SECONDS:String = "#ingame_gui:stun/seconds";
       
@@ -2002,6 +2012,8 @@ package
       public static const HINT_NOBINDINGKEY:String = "#ingame_gui:hint/noBindingKey";
       
       public static const DANGER_ZONE_INDICATOR:String = "#ingame_gui:danger_zone/indicator";
+      
+      public static const DESTROYTIMER_LIFTOVER:String = "#ingame_gui:destroyTimer/liftOver";
        
       
       public function INGAME_GUI()

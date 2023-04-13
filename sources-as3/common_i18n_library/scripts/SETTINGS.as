@@ -1049,6 +1049,10 @@ package
       
       public static const MARKER_DEAD:String = "#settings:marker/dead";
       
+      public static const MARKER_DISTANCE:String = "#settings:marker/distance";
+      
+      public static const MARKER_DISTANCELABEL:String = "#settings:marker/distanceLabel";
+      
       public static const KEYBOARD_KEYBOARD:String = "#settings:keyboard/keyboard";
       
       public static const KEYBOARD_MOUSE:String = "#settings:keyboard/mouse";
@@ -1324,8 +1328,6 @@ package
       public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ASSISTSTUN:String = "#settings:feedback/tab/battleEvents/checkbox/AssistStun";
       
       public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_STUN:String = "#settings:feedback/tab/battleEvents/checkbox/Stun";
-      
-      public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_CREWPERKS:String = "#settings:feedback/tab/battleEvents/checkbox/CrewPerks";
       
       public static const FEEDBACK_TAB_BATTLEEVENTS_INFO:String = "#settings:feedback/tab/battleEvents/info";
       

@@ -929,8 +929,6 @@ def _migrateTo101(core, data, initialized):
 def _migrateTo102(core, data, initialized):
     from account_helpers.settings_core.ServerSettingsManager import GUI_START_BEHAVIOR
     data[GUI_START_BEHAVIOR][GuiSettingsBehavior.CREW_22_WELCOME_SHOWN] = False
-    feedbackBattleEvents = data.get('feedbackBattleEvents', {})
-    feedbackBattleEvents[BATTLE_EVENTS.CREW_PERKS] = True
 
 
 _versions = (

@@ -20725,6 +20725,31 @@
 				</outfit>
 			</outfits>
 		</style>
+		<style>
+			<id>776</id>
+			<texture>gui/maps/vehicles/styles/twitch_april_2023.png</texture>
+			<userString>#vehicle_customization:special_style/twitch_april_2023</userString>
+			<longDescriptionSpecial>#vehicle_customization:special_style/twitch_april_2023_desc/long</longDescriptionSpecial>
+			<outfits>
+				<outfit>
+					<season>ALL</season>
+					<camouflages>
+						<item>
+							<id>723</id>
+							<appliedTo>4368</appliedTo>
+							<patternSize>1</patternSize>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+					<paints>
+						<item>
+							<id>396</id>
+							<appliedTo>30583</appliedTo>
+						</item>
+					</paints>
+				</outfit>
+			</outfits>
+		</style>
 	</itemGroup>
 	<itemGroup>
 		<userString>#vehicle_customization:styles/special_styles</userString>
@@ -35794,6 +35819,47 @@
 					</projection_decals>
 				</outfit>
 			</outfits>
+		</style>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:styles/unique_styles</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>MT 3D styles 6-7-8 levels 4000g notInShop</priceGroup>
+		<vehicleFilter>
+			<include>
+				<vehicles>ussr:R208_Object_156O</vehicles>
+			</include>
+		</vehicleFilter>
+		<style>
+			<id>31013</id>
+			<texture>gui/maps/vehicles/styles/R208_Object_156O_3dst.png</texture>
+			<maxNumber>1</maxNumber>
+			<modelsSet>R208_Object_156O_3dst</modelsSet>
+			<userString>#vehicle_customization:special_style/R208_Object_156O_3dst_MT</userString>
+			<description>#vehicle_customization:special_style/R208_Object_156O_3dst_MT/description</description>
+			<longDescriptionSpecial>#vehicle_customization:special_style/R208_Object_156O_3dst_MT/description/long</longDescriptionSpecial>
+			<tags>addNationalEmblem progression_required</tags>
+			<outfits>
+				<outfit>
+					<season>All</season>
+					<camouflages>
+						<item>
+							<id>1</id>
+							<appliedTo>4368</appliedTo>
+							<patternSize>1</patternSize>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+				</outfit>
+			</outfits>
+			<itemFilters>
+				<projection_decal>
+					<include>
+						<itemGroupName>Progression Decals</itemGroupName>
+					</include>
+				</projection_decal>
+			</itemFilters>
 		</style>
 	</itemGroup>
 	<itemGroup>

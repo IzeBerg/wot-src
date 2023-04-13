@@ -36,6 +36,8 @@ package net.wg.gui.battle.views.destroyTimers.data
       
       public var canBlink:Boolean = false;
       
+      public var description:String = "";
+      
       public function NotificationTimerSettingVO(param1:Object)
       {
          super(param1);

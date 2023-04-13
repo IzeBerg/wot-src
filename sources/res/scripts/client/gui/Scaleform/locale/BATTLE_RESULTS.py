@@ -217,6 +217,7 @@ class BATTLE_RESULTS(object):
     TEAM_STATS_LABELS_SHOTS = '#battle_results:team/stats/labels_shots'
     TEAM_STATS_LABELS_HITS = '#battle_results:team/stats/labels_hits'
     TEAM_STATS_LABELS_EXPLOSIONHITS = '#battle_results:team/stats/labels_explosionHits'
+    TEAM_STATS_LABELS_FLAMEEXPLOSIONHITS = '#battle_results:team/stats/labels_flameExplosionHits'
     TEAM_STATS_LABELS_DAMAGEDEALT = '#battle_results:team/stats/labels_damageDealt'
     TEAM_STATS_LABELS_SNIPERDAMAGEDEALT = '#battle_results:team/stats/labels_sniperDamageDealt'
     TEAM_STATS_LABELS_DESTRUCTIBLESDAMAGEDEALT = '#battle_results:team/stats/labels_destructiblesDamageDealt'
@@ -412,6 +413,7 @@ class BATTLE_RESULTS(object):
      TEAM_STATS_LABELS_SHOTS,
      TEAM_STATS_LABELS_HITS,
      TEAM_STATS_LABELS_EXPLOSIONHITS,
+     TEAM_STATS_LABELS_FLAMEEXPLOSIONHITS,
      TEAM_STATS_LABELS_DAMAGEDEALT,
      TEAM_STATS_LABELS_SNIPERDAMAGEDEALT,
      TEAM_STATS_LABELS_DESTRUCTIBLESDAMAGEDEALT,

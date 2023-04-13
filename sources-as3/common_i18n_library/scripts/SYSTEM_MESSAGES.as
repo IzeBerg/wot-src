@@ -2335,11 +2335,11 @@ package
       
       public static const MAPS_BLACK_LIST_SELECT_SUCCESS:String = "#system_messages:maps_black_list/select/success";
       
-      public static const MAPS_BLACK_LIST_SELECT_SUCCESS_NOSUBSCRIPTIONS:String = "#system_messages:maps_black_list/select/success/noSubscriptions";
+      public static const MAPS_BLACK_LIST_SELECT_SUCCESS_WOTPLUSENABLED_NOSUBSCRIPTIONS:String = "#system_messages:maps_black_list/select/success/wotPlusEnabled/noSubscriptions";
       
-      public static const MAPS_BLACK_LIST_SELECT_SUCCESS_WOTPLUS:String = "#system_messages:maps_black_list/select/success/wotPlus";
+      public static const MAPS_BLACK_LIST_SELECT_SUCCESS_WOTPLUSENABLED_WOTPLUS:String = "#system_messages:maps_black_list/select/success/wotPlusEnabled/wotPlus";
       
-      public static const MAPS_BLACK_LIST_SELECT_SUCCESS_PREMIUM:String = "#system_messages:maps_black_list/select/success/premium";
+      public static const MAPS_BLACK_LIST_SELECT_SUCCESS_WOTPLUSENABLED_PREMIUM:String = "#system_messages:maps_black_list/select/success/wotPlusEnabled/premium";
       
       public static const MAPS_BLACK_LIST_SELECT_SERVER_ERROR_COOLDOWN:String = "#system_messages:maps_black_list/select/server_error/COOLDOWN";
       

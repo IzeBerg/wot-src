@@ -208,10 +208,9 @@ package net.wg.gui.battle
       
       public function updateStageSize(param1:Number, param2:Number) : void
       {
-         var _loc4_:int = 0;
          this.modalBgSpr.visible = false;
          var _loc3_:int = param1 >> 1;
-         _loc4_ = 0;
+         var _loc4_:int = 0;
          x = _loc3_;
          y = _loc4_;
          this.modalBgSpr.x = -_loc3_;

@@ -59,7 +59,9 @@ package net.wg.gui.components.tooltips
       
       override protected function updatePositions() : void
       {
-         var _loc1_:Number = contentMargin.left + bgShadowMargin.left + HALF_TEXTFIELD_PADDING;
+         var _loc1_:Number = NaN;
+         var _loc2_:Separator = null;
+         _loc1_ = contentMargin.left + bgShadowMargin.left + HALF_TEXTFIELD_PADDING;
          topPosition = bgShadowMargin.top + contentMargin.top;
          this._titleTF.height = this._titleTF.textHeight + TEXT_FIELD_HEIGHT_PADDING;
          this._bodyTF.height = this._bodyTF.textHeight + TEXT_FIELD_HEIGHT_PADDING;
@@ -74,7 +76,7 @@ package net.wg.gui.components.tooltips
          topPosition += this._titleTF.height + TITLE_PADDING;
          this._bodyTF.y = topPosition ^ 0;
          topPosition += this._bodyTF.height + SEPARATOR_TOP_PADDING;
-         var _loc2_:Separator = Utils.instance.createSeparate(content);
+         _loc2_ = Utils.instance.createSeparate(content);
          _loc2_.x = contentMargin.left + (contentWidth - _loc2_.width >> 1);
          _loc2_.y = topPosition ^ 0;
          separators.push(_loc2_);

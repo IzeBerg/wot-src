@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<dynamicCameraCommon>
+		<excludedShellTypes>FLAME</excludedShellTypes>
 		<caliberImpulses>
 			<range>
 				0 0.01
@@ -2016,6 +2017,136 @@
 			</transitionSettings>
 		</camera>
 	</epicVideoMode>
+	<flamethrowerMode>
+		<aim>arty</aim>
+		<camera>
+			<aimingSystem>
+				<T>
+					0.5 0.5 0.4
+					<!--BW_String-->
+				</T>
+				<deviation>
+					-0.0 0.0
+					<!--BW_String-->
+				</deviation>
+			</aimingSystem>
+			<keySensitivity>
+				0.5
+				<!--BW_String-->
+			</keySensitivity>
+			<sensitivity>
+				0.05
+				<!--BW_String-->
+			</sensitivity>
+			<scrollSensitivity>
+				0.25
+				<!--BW_String-->
+			</scrollSensitivity>
+			<distRange>25 95</distRange>
+			<transitionDist>55</transitionDist>
+			<angularSpeed>
+				0.6
+				<!--BW_String-->
+			</angularSpeed>
+			<minimalPitch>
+				0.1745
+				<!--BW_String-->
+			</minimalPitch>
+			<maximalPitch>
+				0.8727
+				<!--BW_String-->
+			</maximalPitch>
+			<interpolationSpeed>
+				100.0
+				<!--BW_String-->
+			</interpolationSpeed>
+			<distInterpolationSpeed>
+				5.0
+				<!--BW_String-->
+			</distInterpolationSpeed>
+			<highPitchThreshold>
+				3.0
+				<!--BW_String-->
+			</highPitchThreshold>
+			<hysteresis>
+				<timeThreshold>3</timeThreshold>
+				<positionThreshold>50</positionThreshold>
+			</hysteresis>
+			<dynamics>
+				<oscillator>
+					<mass>
+						1.5
+						<!--BW_String-->
+					</mass>
+					<stiffness>
+						90.0 90.0 90.0
+						<!--BW_String-->
+					</stiffness>
+					<drag>
+						12.0 12.0 12.0
+						<!--BW_String-->
+					</drag>
+					<constraints>
+						10.0 10.0 30.0
+						<!--BW_String-->
+					</constraints>
+				</oscillator>
+				<randomNoiseOscillatorFlat>
+					<mass>
+						1.0
+						<!--BW_String-->
+					</mass>
+					<stiffness>
+						8600.0
+						<!--BW_String-->
+					</stiffness>
+					<drag>
+						33.0
+						<!--BW_String-->
+					</drag>
+				</randomNoiseOscillatorFlat>
+				<impulseSensitivities>
+					<hit>
+						5.0
+						<!--BW_String-->
+					</hit>
+					<splash>
+						50.0
+						<!--BW_String-->
+					</splash>
+				</impulseSensitivities>
+				<noiseSensitivities>
+					<shot>
+						100.0
+						<!--BW_String-->
+					</shot>
+					<hit>
+						1500.0
+						<!--BW_String-->
+					</hit>
+					<splash>
+						1500.0
+						<!--BW_String-->
+					</splash>
+					<projectileHit>
+						21.0
+						<!--BW_String-->
+					</projectileHit>
+				</noiseSensitivities>
+				<impulseLimits/>
+				<noiseLimits>
+					<shot>
+						50.0 50.0
+						<!--BW_String-->
+					</shot>
+					<projectileHit>
+						10.0 10.0
+						<!--BW_String-->
+					</projectileHit>
+				</noiseLimits>
+			</dynamics>
+		</camera>
+	</flamethrowerMode>
 	<vehiclesSelection>
 		<camera>
 			<pitchLimits>

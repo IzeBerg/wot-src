@@ -32,7 +32,8 @@ DEFAULT_MATERIAL_INFO = MaterialInfo(0, 0, None, False, 0.0, False, False, False
 EmblemSlot = reflectedNamedTuple('EmblemSlot', ('rayStart', 'rayEnd', 'rayUp', 'size',
                                                 'hideIfDamaged', 'type', 'isMirrored',
                                                 'isUVProportional', 'emblemId', 'slotId',
-                                                'applyToFabric', 'compatibleModels'))
+                                                'applyToFabric', 'compatibleModels',
+                                                'planeProjection'))
 
 class CustomizationSlotDescription(object):
     __metaclass__ = ReflectionMetaclass

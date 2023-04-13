@@ -1045,6 +1045,8 @@ package net.wg.data.constants
       
       public static const BATTLE_MATTERS_ANIM_LOADER:String = "BattleMattersAnimLoaderUI";
       
+      public static const COLLECTIVE_GOAL_ENTRY_POINT:String = "CollectiveGoalEntryPointUI";
+      
       public static const PLAYERS_PANEL_POI_PROGRESS_BAR_UI:String = "PlayersPanelPoiProgressBarUI";
       
       public static const POI_PROGRESS_BAR_UI:String = "PoiProgressBarUI";

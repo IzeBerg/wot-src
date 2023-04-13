@@ -320,4 +320,5 @@ SHELL_MOVIES = {(SHELL_TYPES.ARMOR_PIERCING, False): 'bulletAP',
    (SHELL_TYPES.HOLLOW_CHARGE, False): 'bulletHEAT', 
    (SHELL_TYPES.HIGH_EXPLOSIVE, False): 'bulletHE', 
    (SHELL_TYPES.ARMOR_PIERCING_CR, False): 'bulletAPCR', 
-   (SHELL_TYPES.HIGH_EXPLOSIVE, True): 'bulletHEModern'}
+   (SHELL_TYPES.HIGH_EXPLOSIVE, True): 'bulletHEModern', 
+   (SHELL_TYPES.FLAME, False): 'bulletFlame'}

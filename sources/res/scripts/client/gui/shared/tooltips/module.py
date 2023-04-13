@@ -154,9 +154,9 @@ class ModuleTooltipBlockConstructor(object):
        GUI_ITEM_TYPE.ENGINE: ('enginePower', 'fireStartingChance'), 
        GUI_ITEM_TYPE.RADIO: ('radioDistance', ), 
        CLIP_GUN_MODULE_PARAM: (
-                             'avgDamageList', 'avgPiercingPower', SHELLS_COUNT_PROP_NAME,
+                             'avgDamageList', 'avgPiercingPower', SHELLS_COUNT_PROP_NAME, 'shellsBurstCount', 'shellsFlameBurstCount',
                              SHELL_RELOADING_TIME_PROP_NAME, RELOAD_MAGAZINE_TIME_PROP_NAME,
-                             'avgDamagePerMinute', 'stunMaxDurationList',
+                             'avgDamagePerMinute', 'stunMaxDurationList', 'flameMaxDistance',
                              'dispertionRadius', 'maxShotDistance', AIMING_TIME_PROP_NAME), 
        AUTO_RELOAD_GUN_MODULE_PARAM: (
                                     'avgDamageList', 'avgPiercingPower', SHELLS_COUNT_PROP_NAME,
@@ -560,7 +560,9 @@ class CommonStatsBlockConstructor(ModuleTooltipBlockConstructor):
                 title = None
                 if module.itemTypeID == GUI_ITEM_TYPE.GUN:
                     if extraInfo:
-                        if module.isClipGun(vDescr):
+                        if module.isFlameGun():
+                            title = R.strings.menu.moduleInfo.flameGunLabel()
+                        elif module.isClipGun(vDescr):
                             title = R.strings.menu.moduleInfo.clipGunLabel()
                         elif module.isAutoReloadable(vDescr):
                             hasBoost = False

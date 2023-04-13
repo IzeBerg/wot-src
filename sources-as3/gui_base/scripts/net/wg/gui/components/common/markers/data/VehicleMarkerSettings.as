@@ -40,6 +40,10 @@ package net.wg.gui.components.common.markers.data
       
       public var markerAltRoleName:Boolean = false;
       
+      public var markerBaseVehicleDist:Boolean = false;
+      
+      public var markerAltVehicleDist:Boolean = false;
+      
       public function VehicleMarkerSettings()
       {
          super();

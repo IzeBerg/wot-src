@@ -113,6 +113,8 @@ package
       
       public static const CROSSHAIRCONTROLS_EXAMPLE_NAME:String = "#ingame_help:crosshairControls/example/name";
       
+      public static const CROSSHAIRCONTROLS_EXAMPLE_DISTANCE:String = "#ingame_help:crosshairControls/example/distance";
+      
       public static const MARKERMARKS_TITLE:String = "#ingame_help:markerMarks/title";
       
       public static const MARKERMARKS_FOLLOW:String = "#ingame_help:markerMarks/follow";
@@ -186,6 +188,14 @@ package
       public static const DETAILSHELP_ROCKETACCELERATION_PAGE2:String = "#ingame_help:detailsHelp/rocketAcceleration/page2";
       
       public static const DETAILSHELP_NOKEYSWARNING:String = "#ingame_help:detailsHelp/noKeysWarning";
+      
+      public static const DETAILSHELP_FLAMETANK_TITLE:String = "#ingame_help:detailsHelp/flameTank/title";
+      
+      public static const DETAILSHELP_FLAMETANK:String = "#ingame_help:detailsHelp/flameTank";
+      
+      public static const DETAILSHELP_FLAMETANK_PROSCONS_TITLE:String = "#ingame_help:detailsHelp/flameTank/prosCons/title";
+      
+      public static const DETAILSHELP_FLAMETANK_PROSCONS:String = "#ingame_help:detailsHelp/flameTank/prosCons";
       
       public static const DETAILSHELP_BATTLEROYALE_RADAR_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/radar/title";
       

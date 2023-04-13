@@ -39,6 +39,7 @@ class OptDeviceItemContextMenu(BaseEquipmentItemContextMenu):
 
 class OptDeviceSlotContextMenu(BaseEquipmentSlotContextMenu):
     _sqGen = SequenceIDGenerator(BaseEquipmentSlotContextMenu._sqGen.currSequenceID)
+    _wotPlusController = dependency.descriptor(IWotPlusController)
 
     @option(_sqGen.next(), TankSetupCMLabel.DEMOUNT)
     def demount(self):
@@ -74,7 +75,7 @@ class OptDeviceSlotContextMenu(BaseEquipmentSlotContextMenu):
 
     def _isVisible(self, label):
         if label == TankSetupCMLabel.DESTROY:
-            return self._isMounted and not self._getItem().isModernized
+            return self._isMounted and not self._getItem().isModernized and not self._wotPlusController.isFreeToDemount(self._getItem())
         if label == CMLabel.DECONSTRUCT:
             return self._isMounted and self._getItem().isModernized
         if label == TankSetupCMLabel.DEMOUNT:

@@ -353,9 +353,7 @@ package
       
       public static const COMMON_PREMIUMBONUS_TANKMENSTATECHANGED:String = "#battle_results:common/premiumBonus/tankmenStateChanged";
       
-      public static const COMMON_PREMIUMBONUS_ISXPTOTMENENABLED:String = "#battle_results:common/premiumBonus/isXPToTmenEnabled";
-      
-      public static const COMMON_PREMIUMBONUS_ISXPTOTMENDISABLED:String = "#battle_results:common/premiumBonus/isXPToTmenDisabled";
+      public static const COMMON_PREMIUMBONUS_ISXPTOTMENCHANGED:String = "#battle_results:common/premiumBonus/isXPToTmenChanged";
       
       public static const COMMON_PREMIUMBONUS_BONUSLEFT:String = "#battle_results:common/premiumBonus/bonusLeft";
       
@@ -488,6 +486,8 @@ package
       public static const TEAM_STATS_LABELS_HITS:String = "#battle_results:team/stats/labels_hits";
       
       public static const TEAM_STATS_LABELS_EXPLOSIONHITS:String = "#battle_results:team/stats/labels_explosionHits";
+      
+      public static const TEAM_STATS_LABELS_FLAMEEXPLOSIONHITS:String = "#battle_results:team/stats/labels_flameExplosionHits";
       
       public static const TEAM_STATS_LABELS_DAMAGEDEALT:String = "#battle_results:team/stats/labels_damageDealt";
       

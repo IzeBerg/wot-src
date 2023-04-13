@@ -385,6 +385,7 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
         self._timers = _createTimersCollection(self)
         self.__sound = None
         self.__stunSoundPlaying = None
+        self.__stunType = None
         self.__vehicleID = None
         self.__viewID = CROSSHAIR_VIEW_ID.UNDEFINED
         self.__equipmentCtrl = None
@@ -476,8 +477,11 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
     def __hideAll(self):
         self._timers.removeTimers()
         if self.__stunSoundPlaying:
-            SoundGroups.g_instance.playSound2D('artillery_stun_effect_end')
+            stunStopSoundName = 'flamer_stun_effect_end' if self.__stunType == StunTypes.FLAME.value else 'artillery_stun_effect_end'
+            SoundGroups.g_instance.playSound2D(stunStopSoundName)
             self.__stunSoundPlaying = False
+            self.__stunType = None
+        return
 
     def __setFireInVehicle(self, isInFire):
         if isInFire:
@@ -564,23 +568,27 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
             self.__sound.play()
         return
 
-    def __playStunSoundIfNeed(self, isVisible, timerType):
+    def __playStunSoundIfNeed(self, isVisible, timerType, stunType):
         vehicle = self.sessionProvider.shared.vehicleState.getControllingVehicle()
         if vehicle is None or not vehicle.isPlayerVehicle:
             return
         hasActiveSecondaryTimer = self._timers.hasActiveSecondaryTimer(timerType)
+        stunStartSoundName, stunStopSoundName = ('flamer_stun_effect_start', 'flamer_stun_effect_end') if stunType == StunTypes.FLAME.value else ('artillery_stun_effect_start',
+                                                                                                                                                  'artillery_stun_effect_end')
         if isVisible:
-            SoundGroups.g_instance.playSound2D('artillery_stun_effect_start')
+            SoundGroups.g_instance.playSound2D(stunStartSoundName)
             self.__stunSoundPlaying = True
         elif not isVisible and hasActiveSecondaryTimer and self.__stunSoundPlaying:
-            SoundGroups.g_instance.playSound2D('artillery_stun_effect_end')
+            SoundGroups.g_instance.playSound2D(stunStopSoundName)
             self.__stunSoundPlaying = False
         return
 
     def __showStunTimer(self, value):
         isVisible = value.duration > 0.0
-        timerType = _TIMER_STATES.STUN_FLAME if value.stunType == StunTypes.FLAME.value else _TIMER_STATES.STUN
-        self.__playStunSoundIfNeed(isVisible, timerType)
+        stunTypeForClient = value.stunType if isVisible else self.__stunType
+        timerType = _TIMER_STATES.STUN_FLAME if stunTypeForClient == StunTypes.FLAME.value else _TIMER_STATES.STUN
+        self.__playStunSoundIfNeed(isVisible, timerType, stunTypeForClient)
+        self.__stunType = value.stunType
         if isVisible:
             self._showTimer(timerType, value.totalTime, _TIMER_STATES.WARNING_VIEW, value.endTime, value.startTime)
         else:

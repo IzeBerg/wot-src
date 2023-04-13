@@ -2312,11 +2312,16 @@ class SHELL_TYPES(object):
     ARMOR_PIERCING_HE = 'ARMOR_PIERCING_HE'
     ARMOR_PIERCING_CR = 'ARMOR_PIERCING_CR'
     SMOKE = 'SMOKE'
+    FLAME = 'FLAME'
 
 
+HAS_EXPLOSION_EFFECT = (
+ SHELL_TYPES.HIGH_EXPLOSIVE, SHELL_TYPES.FLAME)
+HAS_EXPLOSION = (SHELL_TYPES.HIGH_EXPLOSIVE,)
 SHELL_TYPES_LIST = (
  SHELL_TYPES.HOLLOW_CHARGE, SHELL_TYPES.HIGH_EXPLOSIVE,
- SHELL_TYPES.ARMOR_PIERCING, SHELL_TYPES.ARMOR_PIERCING_HE, SHELL_TYPES.ARMOR_PIERCING_CR, SHELL_TYPES.SMOKE)
+ SHELL_TYPES.ARMOR_PIERCING, SHELL_TYPES.ARMOR_PIERCING_HE, SHELL_TYPES.ARMOR_PIERCING_CR, SHELL_TYPES.SMOKE,
+ SHELL_TYPES.FLAME)
 BATTLE_RESULT_WAITING_TIMEOUT = 0.1
 SHELL_TYPES_INDICES = dict((value, index) for index, value in enumerate(SHELL_TYPES_LIST))
 
@@ -2344,14 +2349,18 @@ class BATTLE_LOG_SHELL_TYPES(enum.IntEnum):
     HE_MODERN = 5
     HE_LEGACY_STUN = 6
     HE_LEGACY_NO_STUN = 7
+    FLAME = 8
 
     @classmethod
     def getType(cls, shellDescr):
-        if shellDescr.kind != SHELL_TYPES.HIGH_EXPLOSIVE:
-            return cls[shellDescr.kind]
+        shellKind = shellDescr.kind
+        if shellKind not in HAS_EXPLOSION_EFFECT:
+            return cls[shellKind]
         else:
-            if shellDescr.type.mechanics == SHELL_MECHANICS_TYPE.MODERN:
+            if shellDescr.type.mechanics == SHELL_MECHANICS_TYPE.MODERN and shellKind == SHELL_TYPES.HIGH_EXPLOSIVE:
                 return cls.HE_MODERN
+            if shellDescr.type.mechanics == SHELL_MECHANICS_TYPE.MODERN and shellKind == SHELL_TYPES.FLAME:
+                return cls.FLAME
             if shellDescr.hasStun:
                 return cls.HE_LEGACY_STUN
             return cls.HE_LEGACY_NO_STUN
@@ -2642,10 +2651,12 @@ class ROLE_TYPE:
     ATSPG_SUPPORT = 13
     LT_UNIVERSAL = 14
     LT_WHEELED = 15
+    SPG_FLAME = 16
 
 
 ROLE_LABEL_TO_TYPE = {'NotDefined': ROLE_TYPE.NOT_DEFINED, 
    'role_SPG': ROLE_TYPE.SPG, 
+   'role_SPG_flame': ROLE_TYPE.SPG_FLAME, 
    'role_HT_assault': ROLE_TYPE.HT_ASSAULT, 
    'role_HT_break': ROLE_TYPE.HT_BREAK, 
    'role_HT_universal': ROLE_TYPE.HT_UNIVERSAL, 

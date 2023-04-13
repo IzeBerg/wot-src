@@ -33,8 +33,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
       
       public var battleEventsEnemyStunCheckbox:CheckBox = null;
       
-      public var battleEventsCrewPerksCheckbox:CheckBox = null;
-      
       public function BattleEfficiencyControlsGroupContent()
       {
          super();
@@ -58,7 +56,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          this.battleEventsEnemyStunCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_STUN;
          this.battleEventsEnemyStunCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.battleEventsEnemyStunCheckbox.toolTip = TOOLTIPS.SETTINGS_RIBBONS_ENEMYSTUN;
-         this.battleEventsCrewPerksCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_CREWPERKS;
       }
       
       override protected function onDispose() : void
@@ -89,8 +86,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          this.battleEventsEnemyAssistStunCheckbox = null;
          this.battleEventsEnemyStunCheckbox.dispose();
          this.battleEventsEnemyStunCheckbox = null;
-         this.battleEventsCrewPerksCheckbox.dispose();
-         this.battleEventsCrewPerksCheckbox = null;
          super.onDispose();
       }
    }

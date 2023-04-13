@@ -555,6 +555,14 @@ msgstr ""
 "брони. Если броня под углом — может отрикошетить. Теряет бронепробиваемость "
 "с расстоянием."
 
+msgid "advanced/FLAME"
+msgstr ""
+"Может нанести урон, а также повредить внутренние модули и членов экипажа "
+"даже без пробития брони. Имеет более высокую вероятность нанесения урона по "
+"сравнению со снарядами других типов, хотя само значение урона может быть "
+"невысоким. Может пробить тонкие экраны и некоторые разрушаемые препятствия. "
+"При попадании в цель дезориентирует экипаж противника."
+
 msgid "advanced/HIGH_EXPLOSIVE"
 msgstr ""
 "Наносят урон даже без пробития брони. Имеют более высокую вероятность "
@@ -588,8 +596,9 @@ msgstr ""
 
 msgid "advanced/antifragmentationLining"
 msgstr ""
-"Снижает урон от тарана и ОФ снарядов при непробитии. Уменьшает время "
-"дезориентации экипажа, а также снижает вероятность ранений членов экипажа."
+"Снижает урон от тарана, огнесмеси и ОФ снарядов при непробитии. Уменьшает "
+"время дезориентации экипажа, а также снижает вероятность ранений членов "
+"экипажа."
 
 msgid "advanced/autoExtinguishers"
 msgstr ""
@@ -720,6 +729,9 @@ msgstr "Бронебойные снаряды"
 
 msgid "advanced/header/shellType/ARMOR_PIERCING_CR"
 msgstr "Подкалиберные снаряды"
+
+msgid "advanced/header/shellType/FLAME"
+msgstr "Огнемётная смесь"
 
 msgid "advanced/header/shellType/HIGH_EXPLOSIVE"
 msgstr "Осколочно-фугасные снаряды"
@@ -1280,6 +1292,12 @@ msgstr ""
 
 msgid "awardItem/crystal/header"
 msgstr "Боны"
+
+msgid "awardItem/equipCoin/body"
+msgstr "Компоненты необходимы для наладки экспериментального оборудования."
+
+msgid "awardItem/equipCoin/header"
+msgstr "Компоненты"
 
 msgid "awardItem/eventCoin/body"
 msgstr ""
@@ -8383,7 +8401,7 @@ msgid "notrecruitedtankman/tankmen_bp8_7/howToGetInfo"
 msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankmen_bp8_7/label"
-msgstr "Боевой пропуск, восьмой сезон"
+msgstr "Боевой пропуск, десятый сезон"
 
 msgid "notrecruitedtankman/tankmen_bp8_8/desc"
 msgstr ""
@@ -8397,7 +8415,7 @@ msgid "notrecruitedtankman/tankmen_bp8_8/howToGetInfo"
 msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankmen_bp8_8/label"
-msgstr "Боевой пропуск, восьмой сезон"
+msgstr "Боевой пропуск, девятый сезон"
 
 msgid "notrecruitedtankman/tankmen_bp9_1/desc"
 msgstr ""
@@ -10455,11 +10473,11 @@ msgstr "Базовый"
 
 msgid "shell/basic/description"
 msgstr ""
-"%(bold)s — снаряд, применяемый по умолчанию для выбранного орудия. "
+"%(bold)s - %(shot)s, применяемый по умолчанию для выбранного орудия. "
 "Используется для вычисления характеристик орудия и параметра «Огневая мощь»."
 
 msgid "shell/basic/description/bold"
-msgstr "Базовый снаряд"
+msgstr "Базовый %(shot)s"
 
 msgid "showArtyHitOnMap/body"
 msgstr ""
@@ -10912,7 +10930,9 @@ msgstr ""
 "нормализации."
 
 msgid "tank_params/desc/burstFireRate"
-msgstr "Время смены снаряда в кассете. / Количество снарядов в залпе."
+msgstr ""
+"Время смены снаряда в кассете. / Количество снарядов или расход огнесмеси в "
+"очереди."
 
 msgid "tank_params/desc/chargeTime"
 msgstr ""
@@ -10959,6 +10979,10 @@ msgid "tank_params/desc/explosionRadius"
 msgstr ""
 "Радиус поражения осколочно-фугасного снаряда, описывающий способность "
 "наносить урон на расстоянии от точки попадания."
+
+msgid "tank_params/desc/flameMaxDistance"
+msgstr ""
+"Максимальное расстояние, на котором возможно огневое поражение противника."
 
 msgid "tank_params/desc/gunYawLimits"
 msgstr ""
@@ -11088,8 +11112,8 @@ msgstr ""
 
 msgid "tank_params/desc/turboshaftBurstFireRate"
 msgstr ""
-"Время смены снаряда в кассете. / Количество снарядов в залпе в специальном "
-"режиме."
+"Время смены снаряда в кассете. / Количество снарядов в очереди в специальном"
+" режиме."
 
 msgid "tank_params/desc/turboshaftEnginePower"
 msgstr ""

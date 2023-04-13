@@ -93,6 +93,8 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_MATTERS_ENTRY_POINT:String = "battleMattersEntryPoint";
       
+      public static const COLLECTIVE_GOAL_ENTRY_POINT:String = "collectiveGoalEntryPoint";
+      
       public static const COMP7_WIDGET:String = "comp7Widget";
       
       public static const COMP7_MODIFIERS_PANEL:String = "comp7ModifiersPanel";

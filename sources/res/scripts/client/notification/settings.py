@@ -1,9 +1,12 @@
+import logging
 from collections import namedtuple
 from gui.impl import backport
 from gui.impl.gen import R
 from shared_utils import ScalarTypes
+log = logging.getLogger(__name__)
 LIST_SCROLL_STEP_FACTOR = 10
 DEF_ICON_NAME = '{0:>s}_1'
+DEF_ICON_PATH = '../maps/icons/library/{0:>s}-1.png'
 NotificationData = namedtuple('NotificationData', ('entityID', 'savedData', 'priorityLevel',
                                                    'entity'))
 
@@ -72,6 +75,8 @@ def makePathToIcon(iconName):
     if not iconName:
         return ''
     iconRes = R.images.gui.maps.icons.library.dyn(DEF_ICON_NAME.format(iconName))
-    if iconRes.exists():
-        return backport.image(iconRes())
-    return ''
+    if not iconRes.exists():
+        resIcon = DEF_ICON_PATH.format(iconName)
+        log.warning('Deprecated format, iconName %s-1.png does not match with file name %s', iconName, resIcon)
+        return resIcon
+    return backport.image(iconRes())

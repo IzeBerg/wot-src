@@ -21,7 +21,7 @@ package net.wg.gui.lobby.tankman
       
       private static const FIRST_ICON_MARGIN:int = 4;
       
-      private static const SECOND_ICON_X:int = 82;
+      private static const SECOND_ICON_X:int = 87;
       
       private static const SECOND_ICON_X_WOT_PLUS:int = 83;
       

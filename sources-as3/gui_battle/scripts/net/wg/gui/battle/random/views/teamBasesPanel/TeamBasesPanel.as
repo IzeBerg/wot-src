@@ -182,12 +182,17 @@ package net.wg.gui.battle.random.views.teamBasesPanel
       
       private function removeBar(param1:Number) : void
       {
-         var _loc2_:uint = this._capturedBarsIndexesById[param1];
-         var _loc3_:TeamCaptureBar = this._captureBars.splice(_loc2_,1)[0];
-         removeChild(_loc3_);
-         this._cachedBars.push(_loc3_);
-         this.updateBuildIndexByIDCache();
-         this.updatePositions();
+         var _loc2_:uint = 0;
+         var _loc3_:TeamCaptureBar = null;
+         if(this._capturedBarsIndexesById)
+         {
+            _loc2_ = this._capturedBarsIndexesById[param1];
+            _loc3_ = this._captureBars.splice(_loc2_,1)[0];
+            removeChild(_loc3_);
+            this._cachedBars.push(_loc3_);
+            this.updateBuildIndexByIDCache();
+            this.updatePositions();
+         }
       }
       
       private function removeFadeOutTween(param1:Number) : void

@@ -16,6 +16,8 @@ package net.wg.data.VO
       
       public var isModernized:Boolean;
       
+      public var isWotPlusEnabled:Boolean;
+      
       public var count:Number = 1;
       
       public var toInventory:Boolean;

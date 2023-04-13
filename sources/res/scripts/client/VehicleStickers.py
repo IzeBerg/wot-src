@@ -42,6 +42,7 @@ class StickerAttributes(object):
     IS_MIRRORED = 4
     IS_UV_PROPORTIONAL = 8
     APPLY_TO_FABRIC = 16
+    IS_PLANE_PROJECTION = 32
 
 
 class SlotTypes(object):
@@ -555,6 +556,8 @@ class InsigniaStickerPack(StickerPack):
         stickerAttributes = StickerAttributes.DOUBLESIDED
         if slot.applyToFabric:
             stickerAttributes |= StickerAttributes.APPLY_TO_FABRIC
+        if slot.planeProjection:
+            stickerAttributes |= StickerAttributes.IS_PLANE_PROJECTION
         return stickerAttributes | super(InsigniaStickerPack, self)._getStickerAttributes(slot, sticker)
 
     def _convertToInsignia(self, item):

@@ -65,7 +65,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          this._itemsMap["battleEventsEnemyWorldCollisionCheckbox"] = BATTLE_EFFICIENCY_TYPES.WORLD_COLLISION;
          this._itemsMap["battleEventsEnemyAssistStunCheckbox"] = BATTLE_EFFICIENCY_TYPES.ASSIST_STUN;
          this._itemsMap["battleEventsEnemyStunCheckbox"] = BATTLE_EFFICIENCY_TYPES.STUN;
-         this._itemsMap["battleEventsCrewPerksCheckbox"] = BATTLE_EFFICIENCY_TYPES.PERK;
       }
       
       override protected function getControlByName(param1:String) : IDisplayObject

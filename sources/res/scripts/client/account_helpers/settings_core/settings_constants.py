@@ -278,7 +278,6 @@ class BATTLE_EVENTS(CONST_CONTAINER):
     RECEIVED_CRITS = 'battleEventsReceivedCrits'
     ENEMY_ASSIST_STUN = 'battleEventsEnemyAssistStun'
     ENEMIES_STUN = 'battleEventsEnemyStun'
-    CREW_PERKS = 'battleEventsCrewPerks'
 
 
 class BATTLE_BORDER_MAP(CONST_CONTAINER):

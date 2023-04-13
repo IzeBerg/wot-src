@@ -204,6 +204,12 @@ class TrainingEntity(LegacyEntity):
     def getTeamLimits(self):
         return prb_getters.getPrebattleSettings().getTeamLimits(self.getPlayerTeam())
 
+    def canPlayerDoAction(self):
+        if self._isActive:
+            return super(TrainingEntity, self).canPlayerDoAction()
+        else:
+            return ValidationResult(False, PREBATTLE_RESTRICTION.UNDEFINED, None)
+
     def doAction(self, action=None):
         self.__enterTrainingRoom()
         return True

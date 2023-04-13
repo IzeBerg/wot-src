@@ -107,6 +107,8 @@ package
       
       public static const BARRACKS_ITEM_BUY:String = "#tooltips:barracks/item_buy";
       
+      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLDWOTPLUS:String = "#tooltips:vehicleSellDialog/renderer/alertIconGoldWotPlus";
+      
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD:String = "#tooltips:vehicleSellDialog/renderer/alertIconGold";
       
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONCRYSTAL:String = "#tooltips:vehicleSellDialog/renderer/alertIconCrystal";
@@ -1607,6 +1609,8 @@ package
       
       public static const HANGAR_CREW_SPECIALTY_SKILLS:String = "#tooltips:hangar/crew/specialty_skills";
       
+      public static const HANGAR_CREW_XPTOTMEN:String = "#tooltips:hangar/crew/xpToTmen";
+      
       public static const HANGAR_XPTOTMENCHECKBOX_HEADER:String = "#tooltips:hangar/xpToTmenCheckbox/header";
       
       public static const HANGAR_XPTOTMENCHECKBOX_BODY:String = "#tooltips:hangar/xpToTmenCheckbox/body";
@@ -2895,6 +2899,10 @@ package
       
       public static const BLUEPRINT_BLUEPRINTSCREEN_CREATEMAXFRAGMENTSDISABLED_BODY:String = "#tooltips:blueprint/BlueprintScreen/createMaxFragmentsDisabled/body";
       
+      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLDWOTPLUS_HEADER:String = "#tooltips:vehicleSellDialog/renderer/alertIconGoldWotPlus/header";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLDWOTPLUS_BODY:String = "#tooltips:vehicleSellDialog/renderer/alertIconGoldWotPlus/body";
+      
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD_HEADER:String = "#tooltips:vehicleSellDialog/renderer/alertIconGold/header";
       
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD_BODY:String = "#tooltips:vehicleSellDialog/renderer/alertIconGold/body";
@@ -3781,6 +3789,10 @@ package
       
       public static const AWARDITEM_BPCOIN_BODY:String = "#tooltips:awardItem/bpcoin/body";
       
+      public static const AWARDITEM_EQUIPCOIN_HEADER:String = "#tooltips:awardItem/equipCoin/header";
+      
+      public static const AWARDITEM_EQUIPCOIN_BODY:String = "#tooltips:awardItem/equipCoin/body";
+      
       public static const AWARDITEM_STEELHUNTERPOINT_HEADER:String = "#tooltips:awardItem/steelHunterPoint/header";
       
       public static const AWARDITEM_STEELHUNTERPOINT_BODY:String = "#tooltips:awardItem/steelHunterPoint/body";
@@ -4317,9 +4329,9 @@ package
       
       public static const TANK_PARAMS_DESC_ROCKETACCELERATIONREUSEANDDURATION:String = "#tooltips:tank_params/desc/rocketAccelerationReuseAndDuration";
       
-      public static const TANK_PARAMS_DESC_STUNMINDURATION:String = "#tooltips:tank_params/desc/stunMinDuration";
-      
       public static const TANK_PARAMS_DESC_STUNMAXDURATION:String = "#tooltips:tank_params/desc/stunMaxDuration";
+      
+      public static const TANK_PARAMS_DESC_FLAMEMAXDISTANCE:String = "#tooltips:tank_params/desc/flameMaxDistance";
       
       public static const TANK_PARAMS_DESC_CHARGETIME:String = "#tooltips:tank_params/desc/chargeTime";
       
@@ -4661,8 +4673,6 @@ package
       
       public static const MISSIONS_TOKENPOPOVER_QUEST_BODY:String = "#tooltips:missions/tokenPopover/quest/body";
       
-      public static const MISSIONS_TOKEN_HEADER:String = "#tooltips:missions/token/header";
-      
       public static const MISSIONS_TOKEN_QUESTS_SINGLE:String = "#tooltips:missions/token/quests/single";
       
       public static const MISSIONS_TOKEN_QUESTS_MULTIPLE:String = "#tooltips:missions/token/quests/multiple";
@@ -4825,8 +4835,6 @@ package
       
       public static const QUESTS_CONDITION_ACHIEVEMENTS_OTHERS:String = "#tooltips:quests/condition/achievements/others";
       
-      public static const QUESTS_BONUSES_TOKEN_HEADER:String = "#tooltips:quests/bonuses/token/header";
-      
       public static const QUESTS_BONUSES_TOKEN_BODY:String = "#tooltips:quests/bonuses/token/body";
       
       public static const QUESTS_BONUSES_TOKEN_BATTLE_ROYALE_BODY:String = "#tooltips:quests/bonuses/token/battle_royale/body";
@@ -4872,6 +4880,8 @@ package
       public static const ADVANCED_ARMOR_PIERCING:String = "#tooltips:advanced/ARMOR_PIERCING";
       
       public static const ADVANCED_ARMOR_PIERCING_CR:String = "#tooltips:advanced/ARMOR_PIERCING_CR";
+      
+      public static const ADVANCED_FLAME:String = "#tooltips:advanced/FLAME";
       
       public static const ADVANCED_LARGEREPAIRKIT:String = "#tooltips:advanced/largeRepairkit";
       
@@ -4986,6 +4996,8 @@ package
       public static const ADVANCED_HEADER_SHELLTYPE_ARMOR_PIERCING:String = "#tooltips:advanced/header/shellType/ARMOR_PIERCING";
       
       public static const ADVANCED_HEADER_SHELLTYPE_ARMOR_PIERCING_CR:String = "#tooltips:advanced/header/shellType/ARMOR_PIERCING_CR";
+      
+      public static const ADVANCED_HEADER_SHELLTYPE_FLAME:String = "#tooltips:advanced/header/shellType/FLAME";
       
       public static const ADVANCED_DEMOUNTKIT_COMMON:String = "#tooltips:advanced/demountKit/common";
       
@@ -5183,9 +5195,9 @@ package
       
       public static const PERSONALMISSIONS_STATUS_LOCKEDBYVEHICLE_HEADER:String = "#tooltips:personalMissions/status/lockedByVehicle/header";
       
-      public static const PERSONALMISSIONS_STATUS_LOCKEDBYVEHICLETYPE_BODY:String = "#tooltips:personalMissions/status/lockedByVehicleType/body";
+      public static const PERSONALMISSION_STATUS_LOCKEDBYVEHICLETYPE_BODY_REGULAR:String = "#tooltips:personalMission/status/lockedByVehicleType/body/regular";
       
-      public static const PERSONALMISSIONS_STATUS_LOCKEDBYVEHICLEALLIANCE_BODY:String = "#tooltips:personalMissions/status/lockedByVehicleAlliance/body";
+      public static const PERSONALMISSION_STATUS_LOCKEDBYVEHICLETYPE_BODY_PM2:String = "#tooltips:personalMission/status/lockedByVehicleType/body/pm2";
       
       public static const PERSONALMISSIONS_STATUS_LOCKEDBYPREVMISSIONS_HEADER:String = "#tooltips:personalMissions/status/lockedByPrevMissions/header";
       
@@ -7202,6 +7214,22 @@ package
       public static const NOTRECRUITEDTANKMAN_WT22_HUNTER_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/wt22_hunter_commander/desc";
       
       public static const NOTRECRUITEDTANKMAN_WT22_HUNTER_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/wt22_hunter_commander/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_IVANCAREVICH_DESC:String = "#tooltips:notrecruitedtankman/commander_bp_IvanCarevich/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_IVANCAREVICH_LABEL:String = "#tooltips:notrecruitedtankman/commander_bp_IvanCarevich/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_VASILISA_DESC:String = "#tooltips:notrecruitedtankman/commander_bp_Vasilisa/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_VASILISA_LABEL:String = "#tooltips:notrecruitedtankman/commander_bp_Vasilisa/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_KASHCHEI_DESC:String = "#tooltips:notrecruitedtankman/commander_bp_Kashchei/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_KASHCHEI_LABEL:String = "#tooltips:notrecruitedtankman/commander_bp_Kashchei/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_BABAYAGA_DESC:String = "#tooltips:notrecruitedtankman/commander_bp_BabaYaga/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_BABAYAGA_LABEL:String = "#tooltips:notrecruitedtankman/commander_bp_BabaYaga/label";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

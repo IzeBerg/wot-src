@@ -15,7 +15,7 @@ def registerForGeneral():
     g_blockRegistrar.regContext(SoundNotificationsContext)
     g_blockRegistrar.regContext(CGFGameObjectContext)
     registerContext()
-    import arena_blocks, vehicle_blocks, scene_blocks, event_platform_blocks, triggers_blocks, hint_blocks, marker_blocks, player_blocks, sound_blocks, game_settings_blocks, hangar_blocks, battle_hud_block, cgf_blocks, bitmask_blocks
+    import arena_blocks, vehicle_blocks, scene_blocks, event_platform_blocks, triggers_blocks, hint_blocks, marker_blocks, player_blocks, sound_blocks, game_settings_blocks, hangar_blocks, battle_hud_block, cgf_blocks, bitmask_blocks, web_blocks
     g_blockRegistrar.regBlocksFromModule(event_platform_blocks)
     g_blockRegistrar.regBlocksFromModule(arena_blocks)
     g_blockRegistrar.regBlocksFromModule(vehicle_blocks)
@@ -29,6 +29,7 @@ def registerForGeneral():
     g_blockRegistrar.regBlocksFromModule(battle_hud_block)
     g_blockRegistrar.regBlocksFromModule(cgf_blocks)
     g_blockRegistrar.regBlocksFromModule(bitmask_blocks)
+    g_blockRegistrar.regBlocksFromModule(web_blocks)
     g_blockRegistrar.regBlocksFromModule(hangar_blocks)
     g_blockRegistrar.regBlocksFromModule(hint_blocks)
 

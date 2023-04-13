@@ -107,11 +107,13 @@ class BattlePassProgressionsView(ViewImpl):
         self.__updateBuyButtonState()
 
     def setChapter(self, chapterID):
+        chapterChanged = chapterID != self.__chapterID
         self.__chapterID = chapterID or self.__getDefaultChapterID()
         with self.viewModel.transaction() as (model):
             self.__updateProgressData(model=model)
         self.__updateBuyButtonState()
-        self.__setShowBuyAnimations()
+        if chapterChanged:
+            self.__setShowBuyAnimations()
 
     def _getEvents(self):
         return (
@@ -716,7 +718,7 @@ class BattlePassProgressionsView(ViewImpl):
 
     def __openCollection(self):
         backText = backport.text(getCollectionRes(self.__battlePass.getCurrentCollectionId()).featureName())
-        backCallback = partial(showMissionsBattlePass, R.views.lobby.battle_pass.BattlePassProgressionsView())
+        backCallback = partial(showMissionsBattlePass, R.views.lobby.battle_pass.BattlePassProgressionsView(), self.__chapterID)
         showCollectionWindow(collectionId=self.__battlePass.getCurrentCollectionId(), backCallback=backCallback, backBtnText=backText)
 
     @staticmethod

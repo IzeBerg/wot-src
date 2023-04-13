@@ -2219,7 +2219,8 @@ msgstr ""
 msgid "extraParams/name/enemyModulesCrewCritChance"
 msgstr ""
 "Параметр, отвечающий за изменение шанса нанести критические повреждения "
-"экипажу и внутренним модулям противника. Работает для всех типов снарядов."
+"экипажу и внутренним модулям противника. Работает только для бронебойных, "
+"кумулятивных и подкалиберных снарядов."
 
 msgid "extraParams/name/equipmentPreparationTime"
 msgstr ""
@@ -2347,8 +2348,8 @@ msgstr ""
 
 msgid "extraParams/name/vehicleRamOrExplosionDamageResistance"
 msgstr ""
-"Параметр, отвечающий за получаемый урон от ОФ снарядов и тарана. Чем больше "
-"брони в точке взрыва, тем сильнее эффект."
+"Параметр, отвечающий за полученный урон от ОФ снарядов, огнесмеси и тарана. "
+"Чем больше брони в точке попадания, тем сильнее эффект."
 
 msgid "extraParams/name/vehicleReloadTimeAfterShellChange"
 msgstr ""
@@ -4405,6 +4406,9 @@ msgstr "Магазинная система заряжания"
 msgid "moduleInfo/closeBtn"
 msgstr "Закрыть"
 
+msgid "moduleInfo/compatible/ammunition"
+msgstr "Применяемые боеприпасы:"
+
 msgid "moduleInfo/compatible/clipVehicles"
 msgstr "Оснащается магазинной системой заряжания на технике:"
 
@@ -4428,6 +4432,9 @@ msgstr "Устанавливается на технику:"
 
 msgid "moduleInfo/dualGunLabel"
 msgstr "Спаренная орудийная установка"
+
+msgid "moduleInfo/flameGunLabel"
+msgstr "Автоматический огнемёт"
 
 msgid "moduleInfo/hydraulicAutoSiegeChassisLabel"
 msgstr "Гидропневматическая подвеска: позволяет изменять угол наклона корпуса"
@@ -4542,6 +4549,9 @@ msgstr "Радиус поражения"
 msgid "moduleInfo/params/fireStartingChance"
 msgstr "Вероятность пожара при попадании"
 
+msgid "moduleInfo/params/flameMaxDistance"
+msgstr "Дальность огнеметания"
+
 msgid "moduleInfo/params/flyDelayRange"
 msgstr "Время полёта"
 
@@ -4590,6 +4600,9 @@ msgstr "* для данного типа снарядов не зависит о
 msgid "moduleInfo/params/noPiercingDistance/footnote/maxDistance"
 msgstr ", максимальная дальность полёта - 400 м"
 
+msgid "moduleInfo/params/noPiercingDistance/footnoteFlame"
+msgstr "* для данного типа боеприпасов не зависит от расстояния"
+
 msgid "moduleInfo/params/piercingDistance"
 msgstr "%(dist)s м"
 
@@ -4635,8 +4648,14 @@ msgstr "Скорость поворота"
 msgid "moduleInfo/params/shellReloadingTime"
 msgstr "Время перезарядки между выстрелами"
 
+msgid "moduleInfo/params/shellsBurstCount"
+msgstr "Снарядов в очереди / в магазине"
+
 msgid "moduleInfo/params/shellsCount"
 msgstr "Снарядов в магазине"
+
+msgid "moduleInfo/params/shellsFlameBurstCount"
+msgstr "Расход огнесмеси на выстрел / Ёмкость магазина"
 
 msgid "moduleInfo/params/short/crewRolesFactor"
 msgstr "К специальности экипажа"
@@ -5500,6 +5519,12 @@ msgstr ""
 "Загоризонтная поддержка атаки. Вспомогательные машины, эффективность "
 "которых, как правило, зависит от ситуации в бою и поведения команд."
 
+msgid "roleExp/roleDescr/role_SPG_flame"
+msgstr ""
+"Подавление обороны противника с небольших дистанций и непосредственное "
+"участие в атаке. Вспомогательные машины, эффективность которых как правило "
+"зависит от ситуации в бою и поведения команд."
+
 msgid "roleExp/roleGroupName/role_ATSPG_assault"
 msgstr "штурмовая"
 
@@ -5544,6 +5569,9 @@ msgstr "универсальный"
 
 msgid "roleExp/roleGroupName/role_SPG"
 msgstr " "
+
+msgid "roleExp/roleGroupName/role_SPG_flame"
+msgstr "огнемётная"
 
 msgid "roleExp/roleLabel"
 msgstr "Роль:"
@@ -5591,6 +5619,9 @@ msgid "roleExp/roleName/role_MT_universal"
 msgstr "Средний танк %(groupName)s"
 
 msgid "roleExp/roleName/role_SPG"
+msgstr "САУ %(groupName)s"
+
+msgid "roleExp/roleName/role_SPG_flame"
 msgstr "САУ %(groupName)s"
 
 msgid "screenshot/save"
@@ -6293,7 +6324,7 @@ msgid "tank_params/clipSec"
 msgstr "(полная/между/кол-во)"
 
 msgid "tank_params/cnt"
-msgstr "(шт)"
+msgstr "(шт.)"
 
 msgid "tank_params/damage"
 msgstr "Урон базовым снарядом"
@@ -6312,6 +6343,9 @@ msgstr "к скорости ремонта"
 
 msgid "tank_params/faceFrontBoardInMM"
 msgstr "(лоб/борт/корма в мм)"
+
+msgid "tank_params/flameMaxDistance"
+msgstr "Дальность огнеметания"
 
 msgid "tank_params/forwardMaxSpeed"
 msgstr "Максимальная скорость"
@@ -6345,6 +6379,9 @@ msgstr "Неподвижной машины (%)"
 
 msgid "tank_params/kg"
 msgstr "(кг)"
+
+msgid "tank_params/l"
+msgstr "(л.)"
 
 msgid "tank_params/m"
 msgstr "(м)"
@@ -7164,6 +7201,9 @@ msgstr "Мощность двигателя (л.с.)"
 
 msgid "vehicleInfo/params/enginePowerPerTon"
 msgstr "Удельная мощность (л.с./т)"
+
+msgid "vehicleInfo/params/flameMaxDistance"
+msgstr "Дальность огнеметания (м)"
 
 msgid "vehicleInfo/params/gunYawLimits"
 msgstr "Углы горизонтальной наводки (град)"

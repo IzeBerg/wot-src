@@ -2,7 +2,7 @@ import base64, cPickle as pickle, copy, logging
 from copy import deepcopy
 import BigWorld, CommandMapping, Event, Settings, WWISE, constants, nations
 from account_helpers import gameplay_ctx
-from account_helpers.settings_core.settings_constants import AIM, BattleCommStorageKeys, CONTOUR, GAME, GuiSettingsBehavior, SOUND, SPGAim, ScorePanelStorageKeys, BATTLE_EVENTS, SETTINGS_GROUP, MARKERS, MARKER_SETTINGS
+from account_helpers.settings_core.settings_constants import AIM, BattleCommStorageKeys, CONTOUR, GAME, GuiSettingsBehavior, SOUND, SPGAim, ScorePanelStorageKeys, SETTINGS_GROUP, MARKERS, MARKER_SETTINGS
 from aih_constants import CTRL_MODE_NAME
 from constants import MAX_VEHICLE_LEVEL, VEHICLE_CLASSES
 from debug_utils import LOG_CURRENT_EXCEPTION
@@ -906,8 +906,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                                                          ScorePanelStorageKeys.SHOW_HP_BAR: True, 
                                                                                          'progressViewType': True, 
                                                                                          'progressViewConditions': True}, 
-                                                              'feedbackDamageIndicator': {'damageIndicatorAllies': True}, 
-                                                              'feedbackBattleEvents': {BATTLE_EVENTS.CREW_PERKS: True}}, 
+                                                              'feedbackDamageIndicator': {'damageIndicatorAllies': True}}, 
                                          'ControlsSettings': {'highlightLocation': True, 
                                                               'showQuestProgress': True, 
                                                               'chargeFire': True, 

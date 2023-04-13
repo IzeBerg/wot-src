@@ -2287,8 +2287,6 @@ package
       
       public static const MISSIONDETAILS_PREVPAGEBTN_LABEL:String = "#quests:missionDetails/prevPageBtn/label";
       
-      public static const MISSIONS_TOKENPOPOVER_HEADER:String = "#quests:missions/tokenPopover/header";
-      
       public static const MISSIONS_TOKENPOPOVER_DESCR:String = "#quests:missions/tokenPopover/descr";
       
       public static const MISSIONS_TOKENPOPOVER_DESCR_SHOP:String = "#quests:missions/tokenPopover/descr/shop";
@@ -2386,6 +2384,8 @@ package
       public static const BONUSNAME_EVENTCOIN:String = "#quests:bonusName/eventCoin";
       
       public static const BONUSNAME_BPCOIN:String = "#quests:bonusName/bpcoin";
+      
+      public static const BONUSNAME_EQUIPCOIN:String = "#quests:bonusName/equipCoin";
       
       public static const BONUSNAME_XP:String = "#quests:bonusName/xp";
       
@@ -3092,6 +3092,8 @@ package
       public static const PERSONALMISSION_STATUS_ADDBOTTOM_VEHICLETYPE_AT_SPG:String = "#quests:personalMission/status/addBottom/vehicleType/AT-SPG";
       
       public static const PERSONALMISSION_STATUS_ADDBOTTOM_VEHICLETYPE_SPG:String = "#quests:personalMission/status/addBottom/vehicleType/SPG";
+      
+      public static const PERSONALMISSION_STATUS_ADDBOTTOM_VEHICLETYPE_ANY:String = "#quests:personalMission/status/addBottom/vehicleType/any";
       
       public static const PERSONALMISSION_STATUS_MISSIONDISABLED:String = "#quests:personalMission/status/missionDisabled";
       

@@ -200,6 +200,9 @@ class VehicleGun(VehicleModule):
         typeToCheck = GUN_DUAL_GUN if vehicleDescr is not None else GUN_CAN_BE_DUAL_GUN
         return self.getReloadingType(vehicleDescr) == typeToCheck
 
+    def isFlameGun(self):
+        return self._defaultAmmo[0].type == SHELL_TYPES.FLAME
+
     def getInstalledVehicles(self, vehicles):
         result = set()
         for vehicle in vehicles:
@@ -228,14 +231,18 @@ class VehicleGun(VehicleModule):
     @property
     def userType(self):
         userType = super(VehicleGun, self).userType
+        if self.isFlameGun():
+            return backport.text(R.strings.item_types.flameGun.name())
         if self.isDualGun():
             return backport.text(R.strings.item_types.dualGun.name())
         return userType
 
     def getExtraIconInfo(self, vehDescr=None):
-        if self.isClipGun(vehDescr):
-            return backport.image(R.images.gui.maps.icons.modules.magazineGunIcon())
+        if self.isFlameGun():
+            return backport.image(R.images.gui.maps.icons.modules.flameGunIcon())
         else:
+            if self.isClipGun(vehDescr):
+                return backport.image(R.images.gui.maps.icons.modules.magazineGunIcon())
             if self.isAutoReloadable(vehDescr):
                 if vehDescr:
                     for gun in vehDescr.type.getGuns():
@@ -438,6 +445,12 @@ class Shell(FittingItem):
     @property
     def defaultLayoutValue(self):
         return ((self.isBoughtForAltPrice or self).intCD if 1 else -self.intCD, self.count)
+
+    @property
+    def userType(self):
+        if self.type != SHELL_TYPES.FLAME:
+            return super(Shell, self).userType
+        return backport.text(R.strings.item_types.altShot.name())
 
     def isInstalled(self, vehicle, slotIdx=None):
         for shell in vehicle.shells.installed.getItems():

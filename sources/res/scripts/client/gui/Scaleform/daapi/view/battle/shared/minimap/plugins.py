@@ -259,8 +259,8 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
             if entryID:
                 yield (
                  entryID, name, active)
-        if _CTRL_MODE.STRATEGIC in modes or _CTRL_MODE.ARTY in modes:
-            if self._isInStrategicMode() or self._isInArtyMode():
+        if _CTRL_MODE.STRATEGIC in modes or _CTRL_MODE.ARTY in modes or _CTRL_MODE.FLAMETHROWER in modes:
+            if self._isInStrategicMode() or self._isInArtyMode() or self._isInFlamethrowerMode():
                 matrix = matrix_factory.makeStrategicCameraMatrix()
                 active = True
             else:
@@ -287,7 +287,7 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
 
     def __updateCameraEntries(self):
         activateID = self.__cameraIDs[_S_NAME.ARCADE_CAMERA]
-        if self._isInStrategicMode() or self._isInArtyMode():
+        if self._isInStrategicMode() or self._isInArtyMode() or self._isInFlamethrowerMode():
             activateID = self.__cameraIDs[_S_NAME.STRATEGIC_CAMERA]
             matrix = matrix_factory.makeStrategicCameraMatrix()
         else:
@@ -1052,6 +1052,10 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
             self.__showFeatures(isDown)
         if _FEATURES.isChanged(self.__flagHpMinimap):
             self.__showMinimapHP(isDown)
+        for entry in self._entries.itervalues():
+            if not entry.isActive():
+                continue
+            self._invoke(entry.getID(), 'showExtendedInfo', isDown)
 
 
 class EquipmentsPlugin(common.IntervalPlugin):

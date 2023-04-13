@@ -106,7 +106,7 @@ class VehicleInfoTooltipData(BlocksTooltipData):
             headerBlockItems.append(formatters.packBuildUpBlockData(telecomBlock, padding=leftRightPadding))
         self.__createStatusBlock(vehicle, headerBlockItems, statsConfig, paramsConfig, valueWidth)
         items.append(formatters.packBuildUpBlockData(headerBlockItems, gap=-4, padding=formatters.packPadding(bottom=-12)))
-        if vehicle.isWotPlusRent:
+        if vehicle.isWotPlus:
             wotPlusBlock, linkage = WotPlusBlockConstructor(vehicle, statsConfig, leftPadding, rightPadding).construct()
             if wotPlusBlock:
                 items.append(formatters.packBuildUpBlockData(wotPlusBlock, linkage=linkage, padding=formatters.packPadding(left=leftPadding, right=rightPadding, top=0, bottom=0)))
@@ -654,6 +654,7 @@ class CommonStatsBlockConstructor(VehicleTooltipBlockConstructor):
        VEHICLE_CLASS_NAME.SPG: ('avgDamage', 'stunMaxDuration', 'reloadTimeSecs', 'aimingTime', 'explosionRadius'), 
        VEHICLE_CLASS_NAME.AT_SPG: ('avgPiercingPower', 'shotDispersionAngle', 'avgDamagePerMinute', 'speedLimits', 'chassisRotationSpeed',
  'switchTime'), 
+       'roles': {constants.ROLE_TYPE.SPG_FLAME: ('avgDamage', 'flameMaxDistance', 'stunMaxDuration', 'enginePowerPerTon', 'speedLimits')}, 
        'default': ('speedLimits', 'enginePower', 'chassisRotationSpeed')}
     __CONDITIONAL_PARAMS = (
      (
@@ -691,7 +692,11 @@ class CommonStatsBlockConstructor(VehicleTooltipBlockConstructor):
         return params
 
     def __getShownParameters(self, paramsDict):
-        return chain([ p for p in self.PARAMS.get(self.vehicle.type, 'default') if p in paramsDict ], [ p for group in self.__CONDITIONAL_PARAMS if group[0] in paramsDict for p in group[1] ])
+        if self.vehicle.role in self.PARAMS['roles']:
+            paramsToDisplay = self.PARAMS['roles'][self.vehicle.role]
+        else:
+            paramsToDisplay = self.PARAMS.get(self.vehicle.type, 'default')
+        return chain([ p for p in paramsToDisplay if p in paramsDict ], [ p for group in self.__CONDITIONAL_PARAMS if group[0] in paramsDict for p in group[1] ])
 
 
 class VehicleAdditionalItems(VehicleTooltipBlockConstructor):

@@ -378,40 +378,17 @@ package net.wg.gui.lobby.hangar
       
       public function as_setResourceWellEntryPoint(param1:Boolean) : void
       {
-         var _loc2_:IHeaderSecondaryEntryPoint = null;
-         if(param1 && !this.questsFlags.getSecondaryEntryPoint(true))
-         {
-            _loc2_ = App.instance.utils.classFactory.getComponent(Linkages.RESOURCE_WELL_ENTRY_POINT,IHeaderSecondaryEntryPoint);
-            this.questsFlags.addSecondaryEntryPoint(_loc2_,true);
-            registerFlashComponentS(_loc2_,HANGAR_ALIASES.RESOURCE_WELL_ENTRY_POINT);
-         }
-         if(!param1)
-         {
-            this.questsFlags.removeSecondaryEntryPoint(true);
-            if(isFlashComponentRegisteredS(HANGAR_ALIASES.RESOURCE_WELL_ENTRY_POINT))
-            {
-               unregisterFlashComponentS(HANGAR_ALIASES.RESOURCE_WELL_ENTRY_POINT);
-            }
-         }
+         this.setQuestFlagsEntryPoint(param1,Linkages.RESOURCE_WELL_ENTRY_POINT,HANGAR_ALIASES.RESOURCE_WELL_ENTRY_POINT,true);
       }
       
       public function as_setBattleMattersEntryPoint(param1:Boolean) : void
       {
-         var _loc2_:IHeaderSecondaryEntryPoint = null;
-         if(param1 && !this.questsFlags.getSecondaryEntryPoint(false))
-         {
-            _loc2_ = App.instance.utils.classFactory.getComponent(Linkages.BATTLE_MATTERS_ENTRY_POINT,IHeaderSecondaryEntryPoint);
-            this.questsFlags.addSecondaryEntryPoint(_loc2_,false);
-            registerFlashComponentS(_loc2_,HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT);
-         }
-         if(!param1)
-         {
-            this.questsFlags.removeSecondaryEntryPoint(false);
-            if(isFlashComponentRegisteredS(HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT))
-            {
-               unregisterFlashComponentS(HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT);
-            }
-         }
+         this.setQuestFlagsEntryPoint(param1,Linkages.BATTLE_MATTERS_ENTRY_POINT,HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT,false);
+      }
+      
+      public function as_setCollectiveGoalEntryPoint(param1:Boolean) : void
+      {
+         this.setQuestFlagsEntryPoint(param1,Linkages.COLLECTIVE_GOAL_ENTRY_POINT,HANGAR_ALIASES.COLLECTIVE_GOAL_ENTRY_POINT,true);
       }
       
       public function as_setSecondaryEntryPointVisible(param1:Boolean) : void
@@ -457,6 +434,45 @@ package net.wg.gui.lobby.hangar
          this.questsFlags.setEntryPoint(this._comp7Widget);
          registerFlashComponentS(this._comp7Widget,HANGAR_ALIASES.COMP7_WIDGET);
          invalidateLayout();
+      }
+      
+      private function setQuestFlagsEntryPoint(param1:Boolean, param2:String, param3:String, param4:Boolean) : void
+      {
+         if(param1)
+         {
+            this.addQuestFlagsEntryPoint(param2,param3,param4);
+         }
+         else
+         {
+            this.removeQuestFlagsEntryPoint(param3,param4);
+         }
+      }
+      
+      private function addQuestFlagsEntryPoint(param1:String, param2:String, param3:Boolean) : void
+      {
+         var _loc4_:IHeaderSecondaryEntryPoint = this.questsFlags.getSecondaryEntryPoint(param3);
+         if(_loc4_)
+         {
+            if(_loc4_.alias == param2)
+            {
+               return;
+            }
+            this.removeQuestFlagsEntryPoint(param2,param3);
+         }
+         _loc4_ = App.instance.utils.classFactory.getComponent(param1,IHeaderSecondaryEntryPoint);
+         _loc4_.alias = param2;
+         this.questsFlags.addSecondaryEntryPoint(_loc4_,param3);
+         registerFlashComponentS(_loc4_,param2);
+      }
+      
+      private function removeQuestFlagsEntryPoint(param1:String, param2:Boolean) : void
+      {
+         var _loc3_:IHeaderSecondaryEntryPoint = this.questsFlags.getSecondaryEntryPoint(param2);
+         if(_loc3_ && _loc3_.alias == param1)
+         {
+            this.questsFlags.removeSecondaryEntryPoint(param2);
+            unregisterFlashComponentS(param1);
+         }
       }
       
       private function createBattlePass() : void

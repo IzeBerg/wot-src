@@ -1851,7 +1851,7 @@ package
       
       public static const SERVICECHANNELMESSAGES_PIGGYBANK_TITLE:String = "#messenger:serviceChannelMessages/piggyBank/title";
       
-      public static const SERVICECHANNELMESSAGES_PIGGYBANK_CONTINUEAFTERSMASHED_PIGGYBANK:String = "#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed/piggyBank";
+      public static const SERVICECHANNELMESSAGES_PIGGYBANK_CONTINUEAFTERSMASHED_PIGGYBANKWOTPLUS:String = "#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed/piggyBankWotPlus";
       
       public static const SERVICECHANNELMESSAGES_PIGGYBANK_CONTINUEAFTERSMASHED_GOLDBANK:String = "#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed/goldBank";
       

@@ -166,12 +166,9 @@ class VehicleDescrCrew(object):
         self._shotDispFactor = 1.0
         self._terrainResistanceFactors = [1.0, 1.0, 1.0]
         self._levelIncreaseByBrotherhood = self._calculateLevelIncreaseByBrotherhood()
-        commonLevelIncrease = self._levelIncreaseByBrotherhood + self._levelIncreaseByVehicle
-        nonCommanderLevelIncrease = self._calcLeverIncreaseForNonCommander(commonLevelIncrease)
         if _DO_DEBUG_LOG:
             LOG_DEBUG(('Crew level increase by vehicle={}, by brotherhood={}').format(self._levelIncreaseByVehicle, self._levelIncreaseByBrotherhood))
-        skillEfficiencies = self._calculateSkillEfficiencies(commonLevelIncrease, nonCommanderLevelIncrease)
-        self._processSkills(skillEfficiencies, commonLevelIncrease, nonCommanderLevelIncrease)
+        self._processSkills(self._calculateSkillEfficiencies())
         self._factorsDirty = False
 
     def _calculateLevelIncreaseByBrotherhood(self):
@@ -190,11 +187,12 @@ class VehicleDescrCrew(object):
             broLevel = broSum / (len(self._crewCompactDescrs) * tankmen.MAX_SKILL_LEVEL)
             return broLevel * tankmen.getSkillsConfig().getSkill('brotherhood').crewLevelIncrease
 
-    def _calculateSkillEfficiencies(self, commonLevelIncrease, nonCommanderLevelIncrease):
+    def _calculateSkillEfficiencies(self):
         skills = self._skills
         isFire = self._isFire
         MAX_SKILL_LEVEL = tankmen.MAX_SKILL_LEVEL
         skillEfficiencies = []
+        commonLevelIncrease = self._levelIncreaseByBrotherhood + self._levelIncreaseByVehicle
         universalistAddition = self._calculateUniversalistAddition(commonLevelIncrease)
         self._updateCommanderUniversalistNotifications(universalistAddition)
         computeSummSkillLevel = self._computeSummSkillLevel
@@ -205,7 +203,7 @@ class VehicleDescrCrew(object):
                 baseAvgLevel = 0.0
             else:
                 skillData = skills[skillName]
-                baseSummLevel, summLevel, numInactive = computeSummSkillLevel(skillData, nonCommanderLevelIncrease=nonCommanderLevelIncrease, commanderLevelIncrease=commonLevelIncrease)
+                baseSummLevel, summLevel, numInactive = computeSummSkillLevel({'crew': skillData})
                 summLevel += numInactive * universalistAddition
                 skillDataLen = llen(skillData)
                 avgLevel = summLevel / skillDataLen
@@ -221,7 +219,10 @@ class VehicleDescrCrew(object):
                 efficiency = 0.0
                 baseAvgLevel = 0.0
             else:
-                baseSummLevel, summLevel, numInactive = computeSummSkillLevel(skillData, nonCommanderLevelIncrease=nonCommanderLevelIncrease, commanderLevelIncrease=commonLevelIncrease)
+                skillConfig = tankmen.getSkillsConfig().getSkill(skillName)
+                perkID = skillConfig.vsePerk
+                perkData = self._perks.get(perkID)
+                baseSummLevel, summLevel, numInactive = computeSummSkillLevel({'crew': skillData} if perkData is None else perkData.args.skillData)
                 efficiency = summLevel / crewCompactDescrsLenMaxSkillLev
                 baseAvgLevel = baseSummLevel / crewCompactDescrsLen
             skillEfficiencies.append((skillName, efficiency, baseAvgLevel))
@@ -241,7 +242,7 @@ class VehicleDescrCrew(object):
                 universalistAddition *= tankmen.getSkillsConfig().getSkill('commander_universalist').efficiency
         return universalistAddition
 
-    def _processSkills(self, skillEfficiencies, commonLevelIncrease, nonCommanderLevelIncrease):
+    def _processSkills(self, skillEfficiencies):
         skills = self._skills
         isFire = self._isFire
         getSkill = tankmen.getSkillsConfig().getSkill
@@ -431,13 +432,19 @@ class VehicleDescrCrew(object):
     def _addPerksFromEquipment(self, perks):
         pass
 
-    def _computeSummSkillLevel(self, skillData, nonCommanderLevelIncrease=0.0, commanderLevelIncrease=0.0):
+    def _computeSummSkillLevel(self, skillData):
+        if not self._useCachedLevelIncrease:
+            commanderLevelIncrease = self._levelIncreaseByBrotherhood + self._levelIncreaseByVehicle
+            nonCommanderLevelIncrease = self._calcLeverIncreaseForNonCommander(commanderLevelIncrease)
+            self._cachedLevelIncrease = (commanderLevelIncrease, nonCommanderLevelIncrease)
+        else:
+            commanderLevelIncrease, nonCommanderLevelIncrease = self._cachedLevelIncrease
         summLevel = 0.0
         baseSummLevel = 0.0
         numInactive = 0
         activityFlags = self._activityFlags
         commanderIdx = self._commanderIdx
-        for idx, level in skillData:
+        for idx, level in skillData.get('crew', []):
             if not activityFlags[idx]:
                 numInactive += 1
                 continue

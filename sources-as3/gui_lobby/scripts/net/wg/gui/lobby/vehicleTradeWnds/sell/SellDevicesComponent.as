@@ -136,6 +136,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
             _loc6_.removeCurrency = _loc4_.removeCurrency;
             _loc6_.isRemovable = _loc4_.isRemovable;
             _loc6_.isModernized = _loc4_.isModernized;
+            _loc6_.isWotPlusEnabled = _loc4_.isWotPlusEnabled;
             _loc6_.toInventory = _loc4_.toInventory;
             _loc6_.onlyToInventory = _loc4_.onlyToInventory;
             _loc6_.removeActionPriceVo = _loc4_.removeActionPrice;

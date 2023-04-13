@@ -7,6 +7,12 @@ class PerkState(object):
     ACTIVE = 1
 
 
+class CrewPerkLevelCollectors(object):
+    MAX = 0
+    AVERAGE = 1
+    AVERAGE_ALL = 2
+
+
 class PerkTags(object):
     AUTOPERK = 4
 

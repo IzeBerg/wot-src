@@ -131,18 +131,6 @@ package
       
       public static const COMMANDER_ENEMYSHOTPREDICTOR_ALT_INFO:String = "#crew_perks:commander_enemyShotPredictor/alt/info";
       
-      public static const COMMANDER_PRACTICAL_NAME:String = "#crew_perks:commander_practical/name";
-      
-      public static const COMMANDER_PRACTICAL_SHORTDESCRIPTION:String = "#crew_perks:commander_practical/shortDescription";
-      
-      public static const COMMANDER_PRACTICAL_MAXLVLDESCRIPTION:String = "#crew_perks:commander_practical/maxLvlDescription";
-      
-      public static const COMMANDER_PRACTICAL_CURRENTLVLDESCRIPTION:String = "#crew_perks:commander_practical/currentLvlDescription";
-      
-      public static const COMMANDER_PRACTICAL_ALT_DESCRIPTION:String = "#crew_perks:commander_practical/alt/description";
-      
-      public static const COMMANDER_PRACTICAL_ALT_INFO:String = "#crew_perks:commander_practical/alt/info";
-      
       public static const GUNNER_SMOOTHTURRET_NAME:String = "#crew_perks:gunner_smoothTurret/name";
       
       public static const GUNNER_SMOOTHTURRET_SHORTDESCRIPTION:String = "#crew_perks:gunner_smoothTurret/shortDescription";
@@ -179,20 +167,6 @@ package
       
       public static const GUNNER_RANCOROUS_ALT_INFO:String = "#crew_perks:gunner_rancorous/alt/info";
       
-      public static const GUNNER_FOCUS_NAME:String = "#crew_perks:gunner_focus/name";
-      
-      public static const GUNNER_FOCUS_SHORTDESCRIPTION:String = "#crew_perks:gunner_focus/shortDescription";
-      
-      public static const GUNNER_FOCUS_HUDDESCRIPTION:String = "#crew_perks:gunner_focus/hudDescription";
-      
-      public static const GUNNER_FOCUS_MAXLVLDESCRIPTION:String = "#crew_perks:gunner_focus/maxLvlDescription";
-      
-      public static const GUNNER_FOCUS_CURRENTLVLDESCRIPTION:String = "#crew_perks:gunner_focus/currentLvlDescription";
-      
-      public static const GUNNER_FOCUS_ALT_DESCRIPTION:String = "#crew_perks:gunner_focus/alt/description";
-      
-      public static const GUNNER_FOCUS_ALT_INFO:String = "#crew_perks:gunner_focus/alt/info";
-      
       public static const GUNNER_GUNSMITH_NAME:String = "#crew_perks:gunner_gunsmith/name";
       
       public static const GUNNER_GUNSMITH_SHORTDESCRIPTION:String = "#crew_perks:gunner_gunsmith/shortDescription";
@@ -206,18 +180,6 @@ package
       public static const GUNNER_GUNSMITH_ALT_DESCRIPTION:String = "#crew_perks:gunner_gunsmith/alt/description";
       
       public static const GUNNER_GUNSMITH_ALT_INFO:String = "#crew_perks:gunner_gunsmith/alt/info";
-      
-      public static const GUNNER_QUICKAIMING_NAME:String = "#crew_perks:gunner_quickAiming/name";
-      
-      public static const GUNNER_QUICKAIMING_SHORTDESCRIPTION:String = "#crew_perks:gunner_quickAiming/shortDescription";
-      
-      public static const GUNNER_QUICKAIMING_MAXLVLDESCRIPTION:String = "#crew_perks:gunner_quickAiming/maxLvlDescription";
-      
-      public static const GUNNER_QUICKAIMING_CURRENTLVLDESCRIPTION:String = "#crew_perks:gunner_quickAiming/currentLvlDescription";
-      
-      public static const GUNNER_QUICKAIMING_ALT_DESCRIPTION:String = "#crew_perks:gunner_quickAiming/alt/description";
-      
-      public static const GUNNER_QUICKAIMING_ALT_INFO:String = "#crew_perks:gunner_quickAiming/alt/info";
       
       public static const DRIVER_VIRTUOSO_NAME:String = "#crew_perks:driver_virtuoso/name";
       
@@ -279,18 +241,6 @@ package
       
       public static const DRIVER_RAMMINGMASTER_ALT_INFO:String = "#crew_perks:driver_rammingMaster/alt/info";
       
-      public static const DRIVER_MOTOREXPERT_NAME:String = "#crew_perks:driver_motorExpert/name";
-      
-      public static const DRIVER_MOTOREXPERT_SHORTDESCRIPTION:String = "#crew_perks:driver_motorExpert/shortDescription";
-      
-      public static const DRIVER_MOTOREXPERT_MAXLVLDESCRIPTION:String = "#crew_perks:driver_motorExpert/maxLvlDescription";
-      
-      public static const DRIVER_MOTOREXPERT_CURRENTLVLDESCRIPTION:String = "#crew_perks:driver_motorExpert/currentLvlDescription";
-      
-      public static const DRIVER_MOTOREXPERT_ALT_DESCRIPTION:String = "#crew_perks:driver_motorExpert/alt/description";
-      
-      public static const DRIVER_MOTOREXPERT_ALT_INFO:String = "#crew_perks:driver_motorExpert/alt/info";
-      
       public static const LOADER_DESPERADO_NAME:String = "#crew_perks:loader_desperado/name";
       
       public static const LOADER_DESPERADO_SHORTDESCRIPTION:String = "#crew_perks:loader_desperado/shortDescription";
@@ -331,44 +281,6 @@ package
       
       public static const LOADER_INTUITION_ALT_INFO:String = "#crew_perks:loader_intuition/alt/info";
       
-      public static const LOADER_AMBUSHMASTER_NAME:String = "#crew_perks:loader_ambushMaster/name";
-      
-      public static const LOADER_AMBUSHMASTER_SHORTDESCRIPTION:String = "#crew_perks:loader_ambushMaster/shortDescription";
-      
-      public static const LOADER_AMBUSHMASTER_MAXLVLDESCRIPTION:String = "#crew_perks:loader_ambushMaster/maxLvlDescription";
-      
-      public static const LOADER_AMBUSHMASTER_CURRENTLVLDESCRIPTION:String = "#crew_perks:loader_ambushMaster/currentLvlDescription";
-      
-      public static const LOADER_AMBUSHMASTER_ALT_DESCRIPTION:String = "#crew_perks:loader_ambushMaster/alt/description";
-      
-      public static const LOADER_AMBUSHMASTER_ALT_INFO:String = "#crew_perks:loader_ambushMaster/alt/info";
-      
-      public static const LOADER_MELEE_NAME:String = "#crew_perks:loader_melee/name";
-      
-      public static const LOADER_MELEE_SHORTDESCRIPTION:String = "#crew_perks:loader_melee/shortDescription";
-      
-      public static const LOADER_MELEE_HUDDESCRIPTION:String = "#crew_perks:loader_melee/hudDescription";
-      
-      public static const LOADER_MELEE_MAXLVLDESCRIPTION:String = "#crew_perks:loader_melee/maxLvlDescription";
-      
-      public static const LOADER_MELEE_CURRENTLVLDESCRIPTION:String = "#crew_perks:loader_melee/currentLvlDescription";
-      
-      public static const LOADER_MELEE_ALT_DESCRIPTION:String = "#crew_perks:loader_melee/alt/description";
-      
-      public static const LOADER_MELEE_ALT_INFO:String = "#crew_perks:loader_melee/alt/info";
-      
-      public static const LOADER_AMMUNITIONIMPROVE_NAME:String = "#crew_perks:loader_ammunitionImprove/name";
-      
-      public static const LOADER_AMMUNITIONIMPROVE_SHORTDESCRIPTION:String = "#crew_perks:loader_ammunitionImprove/shortDescription";
-      
-      public static const LOADER_AMMUNITIONIMPROVE_MAXLVLDESCRIPTION:String = "#crew_perks:loader_ammunitionImprove/maxLvlDescription";
-      
-      public static const LOADER_AMMUNITIONIMPROVE_CURRENTLVLDESCRIPTION:String = "#crew_perks:loader_ammunitionImprove/currentLvlDescription";
-      
-      public static const LOADER_AMMUNITIONIMPROVE_ALT_DESCRIPTION:String = "#crew_perks:loader_ammunitionImprove/alt/description";
-      
-      public static const LOADER_AMMUNITIONIMPROVE_ALT_INFO:String = "#crew_perks:loader_ammunitionImprove/alt/info";
-      
       public static const RADIOMAN_FINDER_NAME:String = "#crew_perks:radioman_finder/name";
       
       public static const RADIOMAN_FINDER_SHORTDESCRIPTION:String = "#crew_perks:radioman_finder/shortDescription";
@@ -394,18 +306,6 @@ package
       public static const RADIOMAN_RETRANSMITTER_ALT_DESCRIPTION:String = "#crew_perks:radioman_retransmitter/alt/description";
       
       public static const RADIOMAN_RETRANSMITTER_ALT_INFO:String = "#crew_perks:radioman_retransmitter/alt/info";
-      
-      public static const RADIOMAN_INTERFERENCE_NAME:String = "#crew_perks:radioman_interference/name";
-      
-      public static const RADIOMAN_INTERFERENCE_SHORTDESCRIPTION:String = "#crew_perks:radioman_interference/shortDescription";
-      
-      public static const RADIOMAN_INTERFERENCE_MAXLVLDESCRIPTION:String = "#crew_perks:radioman_interference/maxLvlDescription";
-      
-      public static const RADIOMAN_INTERFERENCE_CURRENTLVLDESCRIPTION:String = "#crew_perks:radioman_interference/currentLvlDescription";
-      
-      public static const RADIOMAN_INTERFERENCE_ALT_DESCRIPTION:String = "#crew_perks:radioman_interference/alt/description";
-      
-      public static const RADIOMAN_INTERFERENCE_ALT_INFO:String = "#crew_perks:radioman_interference/alt/info";
       
       public static const RADIOMAN_LASTEFFORT_NAME:String = "#crew_perks:radioman_lastEffort/name";
       
@@ -447,9 +347,9 @@ package
       
       public static const FIREFIGHTING_ALT_INFO:String = "#crew_perks:fireFighting/alt/info";
       
-      public static const ALL_NAME_ENUM:Array = [COMMANDER_SIXTHSENSE_NAME,BROTHERHOOD_NAME,BROTHERHOOD_SABATON_NAME,BROTHERHOOD_OFFSPRING_NAME,BROTHERHOOD_YHA_NAME,BROTHERHOOD_WITCHES_NAME,REPAIR_NAME,CAMOUFLAGE_NAME,COMMANDER_EAGLEEYE_NAME,COMMANDER_UNIVERSALIST_NAME,COMMANDER_TUTOR_NAME,COMMANDER_EXPERT_NAME,COMMANDER_ENEMYSHOTPREDICTOR_NAME,COMMANDER_PRACTICAL_NAME,GUNNER_SMOOTHTURRET_NAME,GUNNER_SNIPER_NAME,GUNNER_RANCOROUS_NAME,GUNNER_FOCUS_NAME,GUNNER_GUNSMITH_NAME,GUNNER_QUICKAIMING_NAME,DRIVER_VIRTUOSO_NAME,DRIVER_SMOOTHDRIVING_NAME,DRIVER_BADROADSKING_NAME,DRIVER_TIDYPERSON_NAME,DRIVER_RAMMINGMASTER_NAME,DRIVER_MOTOREXPERT_NAME,LOADER_DESPERADO_NAME,LOADER_PEDANT_NAME,LOADER_INTUITION_NAME,LOADER_AMBUSHMASTER_NAME,LOADER_MELEE_NAME,LOADER_AMMUNITIONIMPROVE_NAME,RADIOMAN_FINDER_NAME,RADIOMAN_RETRANSMITTER_NAME,RADIOMAN_INTERFERENCE_NAME,RADIOMAN_LASTEFFORT_NAME,RADIOMAN_INVENTOR_NAME,FIREFIGHTING_NAME];
+      public static const ALL_NAME_ENUM:Array = [COMMANDER_SIXTHSENSE_NAME,BROTHERHOOD_NAME,BROTHERHOOD_SABATON_NAME,BROTHERHOOD_OFFSPRING_NAME,BROTHERHOOD_YHA_NAME,BROTHERHOOD_WITCHES_NAME,REPAIR_NAME,CAMOUFLAGE_NAME,COMMANDER_EAGLEEYE_NAME,COMMANDER_UNIVERSALIST_NAME,COMMANDER_TUTOR_NAME,COMMANDER_EXPERT_NAME,COMMANDER_ENEMYSHOTPREDICTOR_NAME,GUNNER_SMOOTHTURRET_NAME,GUNNER_SNIPER_NAME,GUNNER_RANCOROUS_NAME,GUNNER_GUNSMITH_NAME,DRIVER_VIRTUOSO_NAME,DRIVER_SMOOTHDRIVING_NAME,DRIVER_BADROADSKING_NAME,DRIVER_TIDYPERSON_NAME,DRIVER_RAMMINGMASTER_NAME,LOADER_DESPERADO_NAME,LOADER_PEDANT_NAME,LOADER_INTUITION_NAME,RADIOMAN_FINDER_NAME,RADIOMAN_RETRANSMITTER_NAME,RADIOMAN_LASTEFFORT_NAME,RADIOMAN_INVENTOR_NAME,FIREFIGHTING_NAME];
       
-      public static const ALL_HUDDESCRIPTION_ENUM:Array = [COMMANDER_EAGLEEYE_HUDDESCRIPTION,COMMANDER_UNIVERSALIST_HUDDESCRIPTION,GUNNER_FOCUS_HUDDESCRIPTION,GUNNER_GUNSMITH_HUDDESCRIPTION,LOADER_DESPERADO_HUDDESCRIPTION,LOADER_INTUITION_HUDDESCRIPTION,LOADER_MELEE_HUDDESCRIPTION,RADIOMAN_RETRANSMITTER_HUDDESCRIPTION,RADIOMAN_LASTEFFORT_HUDDESCRIPTION,RADIOMAN_INVENTOR_HUDDESCRIPTION];
+      public static const ALL_HUDDESCRIPTION_ENUM:Array = [COMMANDER_EAGLEEYE_HUDDESCRIPTION,COMMANDER_UNIVERSALIST_HUDDESCRIPTION,GUNNER_GUNSMITH_HUDDESCRIPTION,LOADER_DESPERADO_HUDDESCRIPTION,LOADER_INTUITION_HUDDESCRIPTION,RADIOMAN_RETRANSMITTER_HUDDESCRIPTION,RADIOMAN_LASTEFFORT_HUDDESCRIPTION,RADIOMAN_INVENTOR_HUDDESCRIPTION];
        
       
       public function CREW_PERKS()

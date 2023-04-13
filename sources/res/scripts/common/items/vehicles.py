@@ -2,7 +2,7 @@ import BigWorld, copy, items, itertools, nation_change, nations, os, string, str
 from Math import Vector2, Vector3
 from backports.functools_lru_cache import lru_cache
 from collections import namedtuple
-from constants import ACTION_LABEL_TO_TYPE, ROLE_LABEL_TO_TYPE, ROLE_TYPE, DamageAbsorptionLabelToType, ROLE_LEVELS, ROLE_TYPE_TO_LABEL, VEHICLE_HEALTH_DECIMALS, CHANCE_TO_HIT_SUFFIX_FACTOR, IGR_TYPE, IS_RENTALS_ENABLED, IS_CELLAPP, IS_BASEAPP, IS_CLIENT, IS_UE_EDITOR, IS_BOT, IS_WEB, IS_PROCESS_REPLAY, ITEM_DEFS_PATH, SHELL_TYPES, VEHICLE_SIEGE_STATE, VEHICLE_MODE, VEHICLE_CLASSES, AVAILABLE_STUN_TYPES_NAMES, StunTypes
+from constants import ACTION_LABEL_TO_TYPE, ROLE_LABEL_TO_TYPE, ROLE_TYPE, DamageAbsorptionLabelToType, ROLE_LEVELS, ROLE_TYPE_TO_LABEL, VEHICLE_HEALTH_DECIMALS, CHANCE_TO_HIT_SUFFIX_FACTOR, IGR_TYPE, IS_RENTALS_ENABLED, IS_CELLAPP, IS_BASEAPP, IS_CLIENT, IS_UE_EDITOR, IS_BOT, IS_WEB, IS_PROCESS_REPLAY, ITEM_DEFS_PATH, VEHICLE_SIEGE_STATE, VEHICLE_MODE, VEHICLE_CLASSES, AVAILABLE_STUN_TYPES_NAMES, StunTypes, HAS_EXPLOSION_EFFECT, HAS_EXPLOSION
 from debug_utils import LOG_WARNING, LOG_ERROR, LOG_CURRENT_EXCEPTION
 from functools import partial
 from items import ItemsPrices
@@ -78,6 +78,7 @@ else:
         WHEELED_TECH = 1
 
 
+    FLAMETHROWER = 'flamethrower'
     VEHICLE_DEVICE_TYPE_NAMES = (
      'engine', 'ammoBay', 'fuelTank', 'radio', 'track', 'gun', 'turretRotator', 'surveyingDevice', 'STUN_PLACEHOLDER',
      'wheel')
@@ -409,6 +410,7 @@ class VehicleDescriptor(object):
     hasSiegeMode = property(lambda self: self.type.hasSiegeMode)
     hasAutoSiegeMode = property(lambda self: self.type.hasAutoSiegeMode)
     isWheeledVehicle = property(lambda self: self.type.isWheeledVehicle)
+    isFlamethrower = property(lambda self: self.type.isFlamethrower)
     isDualgunVehicle = property(lambda self: 'dualGun' in self.gun.tags)
     hasTurboshaftEngine = property(lambda self: self.type.hasTurboshaftEngine)
     hasHydraulicChassis = property(lambda self: self.type.hasHydraulicChassis)
@@ -1762,8 +1764,8 @@ class VehicleType(object):
     __metaclass__ = ReflectionMetaclass
     __slots__ = (
      'name', 'id', 'compactDescr', 'mode', 'tags', 'level', 'hasSiegeMode', 'hasAutoSiegeMode', 'isWheeledVehicle',
-     'isDualgunVehicleType', 'hasCustomDefaultCamouflage', 'customizationNationID', 'baseColorID', 'speedLimits',
-     'repairCost', 'crewXpFactor', 'premiumVehicleXPFactor', 'xpFactor',
+     'isFlamethrower', 'isDualgunVehicleType', 'hasCustomDefaultCamouflage', 'customizationNationID', 'baseColorID',
+     'speedLimits', 'repairCost', 'crewXpFactor', 'premiumVehicleXPFactor', 'xpFactor',
      'creditsFactor', 'freeXpFactor', 'healthBurnPerSec', 'healthBurnPerSecLossFraction',
      'invisibility', 'invisibilityDeltas', 'crewRoles', 'extras', 'extrasDict', 'extrasProtection',
      'devices', 'tankmen', 'damageByStaticsChances', 'i18nInfo', 'balanceByClass',
@@ -1796,6 +1798,7 @@ class VehicleType(object):
         self.hasHydraulicChassis = 'hydraulicChassis' in self.tags
         self.hasAutoSiegeMode = 'autoSiege' in self.tags
         self.isWheeledVehicle = 'wheeledVehicle' in self.tags
+        self.isFlamethrower = FLAMETHROWER in self.tags
         self.isDualgunVehicleType = 'dualgun' in self.tags
         self.hasTurboshaftEngine = 'turboshaftEngine' in self.tags
         self.hasCharge = 'charger' in self.tags
@@ -3108,6 +3111,10 @@ def hasAnyOfTags(vehTypeCD, tags=()):
     return bool(vehicleType.tags.intersection(tags))
 
 
+def isFlamethrower(vehTypeCD):
+    return hasAnyOfTags(vehTypeCD, (FLAMETHROWER,))
+
+
 def _readComponents(xmlPath, reader, nationID, itemTypeID):
     section = ResMgr.openSection(xmlPath)
     if section is None:
@@ -4379,6 +4386,12 @@ def _readGun(xmlCtx, section, item, unlocksDescrs=None, _=None):
         if eff is None:
             _xml.raiseWrongXml(xmlCtx, 'effects', "unknown effect '%s'" % effName)
         item.effects = eff
+        burstStartEffName = _xml.readStringOrNone(xmlCtx, section, 'burstStartEffects')
+        if burstStartEffName is not None:
+            burstStartEff = g_cache.gunEffects.get(burstStartEffName)
+            if burstStartEff is None:
+                _xml.raiseWrongXml(xmlCtx, 'burstStartEffects', "unknown burst start effect '%s'" % burstStartEffName)
+            item.burstStartEffects = burstStartEff
         effName = _xml.readStringOrNone(xmlCtx, section, 'reloadEffect')
         if effName is not None:
             reloadEff = g_cache._gunReloadEffects.get(effName, None)
@@ -4467,6 +4480,10 @@ def _readGun(xmlCtx, section, item, unlocksDescrs=None, _=None):
         tags = tags.difference(('dualGun', ))
     else:
         tags = tags.union(('dualGun', ))
+    if not section.has_key(FLAMETHROWER):
+        tags = tags.difference((FLAMETHROWER,))
+    else:
+        tags = tags.union((FLAMETHROWER,))
     item.tags = tags
     nationID = parseIntCompactDescr(item.compactDescr)[1]
     v = []
@@ -4746,6 +4763,10 @@ def _readGunLocals(xmlCtx, section, sharedItem, unlocksDescrs, turretCompactDesc
             else:
                 tags = tags.union(('dualGun', ))
             item.tags = tags
+        if not section.has_key(FLAMETHROWER):
+            item.tags = item.tags.difference((FLAMETHROWER,))
+        else:
+            item.tags = item.tags.union((FLAMETHROWER,))
         if IS_CLIENT or IS_UE_EDITOR:
             item.modelsSets = modelsSets
             item.models = models
@@ -4992,8 +5013,10 @@ def _readShell(xmlCtx, section, name, nationID, shellTypeID, icons):
      _xml.readPositiveFloat(xmlCtx, section, 'damage/devices'))
     if section.has_key('deviceDamagePossibility/protectFromDirectHits'):
         shellType.protectFromDirectHits = readProtectedModules(xmlCtx, section, 'deviceDamagePossibility/protectFromDirectHits')
-    if kind == 'HIGH_EXPLOSIVE' and section.has_key('deviceDamagePossibility/protectFromIndirectHits'):
+    if kind in HAS_EXPLOSION_EFFECT and section.has_key('deviceDamagePossibility/protectFromIndirectHits'):
         shellType.protectFromIndirectHits = readProtectedModules(xmlCtx, section, 'deviceDamagePossibility/protectFromIndirectHits')
+    if section.has_key('deviceFaultTolerance'):
+        shellType.protectFromDestroy = readProtectedModules(xmlCtx, section, 'deviceFaultTolerance')
     if not IS_CLIENT and not IS_BOT:
         if kind.startswith('ARMOR_PIERCING'):
             shellType.normalizationAngle = radians(_xml.readNonNegativeFloat(xmlCtx, section, 'normalizationAngle'))
@@ -5001,8 +5024,12 @@ def _readShell(xmlCtx, section, name, nationID, shellTypeID, icons):
         elif kind == 'HOLLOW_CHARGE':
             shellType.piercingPowerLossFactorByDistance = 10.0 * _xml.readNonNegativeFloat(xmlCtx, section, 'piercingPowerLossFactorByDistance')
             shellType.ricochetAngleCos = cos(radians(_xml.readNonNegativeFloat(xmlCtx, section, 'ricochetAngle')))
-    if kind == 'HIGH_EXPLOSIVE':
+    if kind in HAS_EXPLOSION_EFFECT:
         shellType.mechanics = mechanics
+        factor = section.readFloat('shellFragmentsDamageAbsorptionFactor')
+        if factor <= 0:
+            factor = g_cache.commonConfig['miscParams']['shellFragmentsDamageAbsorptionFactor']
+        setattr(shellType, 'shellFragmentsDamageAbsorptionFactor', factor)
         if isModernHighExplosive:
             shellType.obstaclePenetration = _xml.readBool(xmlCtx, section, 'obstaclePenetration', component_constants.DEFAULT_MODERN_HE_OBSTACLE_PENETRATION)
             shellType.shieldPenetration = _xml.readBool(xmlCtx, section, 'shieldPenetration', component_constants.DEFAULT_MODERN_HE_SHIELD_PENETRATION)
@@ -5015,19 +5042,20 @@ def _readShell(xmlCtx, section, name, nationID, shellTypeID, icons):
             shellType.shellFragments = shellFragments
             shellType.armorSpalls = armorSpalls
             shellType.maxDamage = max(shellFragments.damages[0], shellFragments.damages[1], armorSpalls.damages[0], armorSpalls.damages[1], blastWave.damages[0], blastWave.damages[1])
-        shellType.explosionRadius = cachedFloat(section.readFloat('explosionRadius'))
-        if shellType.explosionRadius <= 0.0:
-            shellType.explosionRadius = cachedFloat(shell.caliber * shell.caliber / 5555.0)
-        explosionSettings = ('explosionDamageFactor', 'explosionDamageAbsorptionFactor',
-                             'explosionEdgeDamageFactor', 'shellFragmentsDamageAbsorptionFactor')
-        for f in explosionSettings:
-            factor = section.readFloat(f)
-            if factor <= 0:
-                factor = g_cache.commonConfig['miscParams'][f]
-            setattr(shellType, f, factor)
+        if kind in HAS_EXPLOSION or not isModernHighExplosive:
+            shellType.explosionRadius = cachedFloat(section.readFloat('explosionRadius'))
+            if shellType.explosionRadius <= 0.0:
+                shellType.explosionRadius = cachedFloat(shell.caliber * shell.caliber / 5555.0)
+            explosionSettings = ('explosionDamageFactor', 'explosionDamageAbsorptionFactor',
+                                 'explosionEdgeDamageFactor')
+            for f in explosionSettings:
+                factor = section.readFloat(f)
+                if factor <= 0:
+                    factor = g_cache.commonConfig['miscParams'][f]
+                setattr(shellType, f, factor)
 
-        if shellType.explosionEdgeDamageFactor > 1.0:
-            _xml.raiseWrongXml(xmlCtx, 'explosionEdgeDamageFactor', 'explosionEdgeDamageFactor must be < 1')
+            if shellType.explosionEdgeDamageFactor > 1.0:
+                _xml.raiseWrongXml(xmlCtx, 'explosionEdgeDamageFactor', 'explosionEdgeDamageFactor must be < 1')
     shell.damageRandomization = _xml.readNonNegativeFloat(xmlCtx, section, 'damageRandomization', component_constants.DEFAULT_DAMAGE_RANDOMIZATION)
     shell.piercingPowerRandomization = _xml.readNonNegativeFloat(xmlCtx, section, 'piercingPowerRandomization', component_constants.DEFAULT_PIERCING_POWER_RANDOMIZATION)
     hasStun = section.readBool('hasStun', False)
@@ -5041,13 +5069,15 @@ def _readShell(xmlCtx, section, name, nationID, shellTypeID, icons):
         if stunType not in AVAILABLE_STUN_TYPES_NAMES:
             _xml.raiseWrongXml(xmlCtx, 'stunType', "Stun type '%s' must be defined in StunTypes" % stunType)
         stun.stunType = StunTypes[stunType]
-        if section.has_key('stunRadius'):
-            stunRadius = _xml.readPositiveFloat(xmlCtx, section, 'stunRadius')
-        elif kind == 'HIGH_EXPLOSIVE':
-            stunRadius = shellType.explosionRadius
-        else:
-            _xml.raiseWrongXml(xmlCtx, 'stunRadius', 'hasStun = true, but neither explosionRadius nor stunRadius defined')
-        stun.stunRadius = stunRadius
+        stun.stunInPoint = _xml.readBool(xmlCtx, section, 'stunInPoint', False)
+        if not stun.stunInPoint:
+            if kind not in HAS_EXPLOSION:
+                _xml.raiseWrongXml(xmlCtx, 'stunRadius', 'hasStun = true, stunInPoint = False,stunning by area can only shells with an explosion')
+            if section.has_key('stunRadius'):
+                stunRadius = _xml.readPositiveFloat(xmlCtx, section, 'stunRadius')
+            else:
+                stunRadius = shellType.explosionRadius
+            stun.stunRadius = stunRadius
         stun.stunDuration = _xml.readPositiveFloat(xmlCtx, section, 'stunDuration') if section.has_key('stunDuration') else stunConfig.get('baseStunDuration', 30)
     else:
         stun = None
@@ -5061,12 +5091,12 @@ def _readShell(xmlCtx, section, name, nationID, shellTypeID, icons):
         shell.tags = _readTags(xmlCtx, section, 'tags', 'shell')
     if section.has_key('secondaryAttackReason'):
         shell.secondaryAttackReason = _xml.readStringOrNone(xmlCtx, section, 'secondaryAttackReason')
+    if section.has_key('hitCrewChanceMultiplier'):
+        shell.hitCrewChanceMultiplier = _xml.readNonNegativeFloat(xmlCtx, section, 'hitCrewChanceMultiplier')
+    if section.has_key('hitDeviceChanceMultiplier'):
+        shell.hitDeviceChanceMultiplier = _xml.readNonNegativeFloat(xmlCtx, section, 'hitDeviceChanceMultiplier')
     return shell
 
-
-_shellKinds = (
- SHELL_TYPES.HOLLOW_CHARGE, SHELL_TYPES.HIGH_EXPLOSIVE,
- SHELL_TYPES.ARMOR_PIERCING, SHELL_TYPES.ARMOR_PIERCING_HE, SHELL_TYPES.ARMOR_PIERCING_CR, SHELL_TYPES.SMOKE)
 
 def readProtectedModules(xmlCtx, section, subsection):
     moduleKind = g_cache._moduleKind
@@ -5791,6 +5821,7 @@ def _readShotEffects(xmlCtx, section):
         if airstrike and IS_CLIENT:
             res['airstrikeID'] = BigWorld.PyGroundEffectManager().loadAirstrike(section['airstrike'])
         res['caliber'] = _xml.readNonNegativeFloat(xmlCtx, section, 'caliber')
+        res['shellType'] = _xml.readStringOrNone(xmlCtx, section, 'shellType')
         res['targetImpulse'] = _xml.readNonNegativeFloat(xmlCtx, section, 'targetImpulse')
         res['physicsParams'] = {'shellVelocity': _xml.readNonNegativeFloat(xmlCtx, section, 'physicsParams/shellVelocity'), 
            'shellMass': _xml.readNonNegativeFloat(xmlCtx, section, 'physicsParams/shellMass'), 

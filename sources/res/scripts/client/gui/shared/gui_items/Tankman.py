@@ -982,12 +982,7 @@ def crewMemberRealSkillLevel(vehicle, skillName, role, commonWithIncrease=True):
     booster = getBattleBooster(vehicle, skillName) if shouldIncrease else None
     tankmenSkillLevels = [ tankmanPersonalSkillLevel(tankman, skillName, booster, shouldIncrease) for _, tankman in vehicle.crew if tankman and (role in tankman.combinedRoles or skillName in tankmen.COMMON_SKILLS)
                          ]
-    if skillName in tankmen.COMMON_SKILLS:
-        if tankmenSkillLevels and not all(hasSkill == tankmen.NO_SKILL for hasSkill in tankmenSkillLevels):
-            return sum(lvl for lvl in tankmenSkillLevels if lvl != tankmen.NO_SKILL) / float(len(vehicle.crew))
-        return tankmen.NO_SKILL
-    else:
-        return max(tankmenSkillLevels or [0])
+    return SKILL_LEVEL_PROCESSORS.get(skillName, DEFAULT_LEVEL_PROCESSOR)(vehicle.crew, tankmenSkillLevels)
 
 
 def tankmanPersonalSkillLevel(tankman, skillName, booster=None, withIncrease=True):
@@ -1028,3 +1023,23 @@ def __makeFakeTankmanDescr(startRoleLevel, freeXpValue, typeID, skills=(), freeS
     tmanDescr = tankmen.TankmanDescr(tankmen.generateCompactDescr(tankmen.generatePassport(vehType.id[0], False), vehType.id[1], vehType.crewRoles[0][0], startRoleLevel, skills=skills, freeSkills=freeSkills, lastSkillLevel=lastSkillLevel))
     tmanDescr.addXP(freeXpValue)
     return tmanDescr
+
+
+def __averageLevelProcessor(crew, levels):
+    return sum([ lvl for lvl in levels if lvl != tankmen.NO_SKILL ] or [0]) / float(len(levels))
+
+
+def __averageAllLevelProcessor(crew, levels):
+    return sum([ lvl for lvl in levels if lvl != tankmen.NO_SKILL ] or [0]) / float(len(crew))
+
+
+def __maxLevelProcessor(crew, levels):
+    return max(levels or [0])
+
+
+DEFAULT_LEVEL_PROCESSOR = __maxLevelProcessor
+SKILL_LEVEL_PROCESSORS = {'repair': __averageAllLevelProcessor, 
+   'camouflage': __averageAllLevelProcessor, 
+   'brotherhood': __averageAllLevelProcessor, 
+   'fireFighting': __averageAllLevelProcessor, 
+   'loader_intuition': __averageLevelProcessor}

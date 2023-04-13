@@ -39,7 +39,6 @@ class HangarCarouselDataProvider(CarouselDataProvider):
         self._serverSettings = self._lobbyContext.getServerSettings()
         self._setBaseCriteria()
         self._frontSupplyItems = []
-        self._wotPlusVehicles = []
         self._telecomRentalsVehicles = []
         self._supplyItems = []
         self._emptySlotsCount = 0
@@ -49,7 +48,6 @@ class HangarCarouselDataProvider(CarouselDataProvider):
 
     def _populate(self):
         self._wotPlusCtrl.onDataChanged += self._onWotPlusDataChanged
-        self._wotPlusCtrl.onPendingRentChanged += self._onWotPlusPendingRentChanged
         self._telecomRentals = BigWorld.player().telecomRentals
         self._telecomRentals.onPendingRentChanged += self._onTelecomPendingRentChanged
         g_clientUpdateManager.addCallback('tokens', self._onTelecomRentalsChanged)
@@ -57,7 +55,6 @@ class HangarCarouselDataProvider(CarouselDataProvider):
 
     def _dispose(self):
         self._wotPlusCtrl.onDataChanged -= self._onWotPlusDataChanged
-        self._wotPlusCtrl.onPendingRentChanged -= self._onWotPlusPendingRentChanged
         self._telecomRentals.onPendingRentChanged -= self._onTelecomPendingRentChanged
         g_clientUpdateManager.removeObjectCallbacks(self, True)
         super(HangarCarouselDataProvider, self)._dispose()
@@ -65,11 +62,6 @@ class HangarCarouselDataProvider(CarouselDataProvider):
     def _onWotPlusDataChanged(self, diff):
         if 'exclusiveVehicle' in diff:
             self.buildList()
-
-    def _onWotPlusPendingRentChanged(self, vehCD):
-        if vehCD is not None:
-            self.buildList()
-        return
 
     def _onTelecomRentalsChanged(self, diff):
         if PARTNERSHIP_TOKEN_NAME in diff or ROSTER_EXPIRATION_TOKEN_NAME in diff:
@@ -90,19 +82,16 @@ class HangarCarouselDataProvider(CarouselDataProvider):
         return len(self._filteredIndices) - backItems - frontItems
 
     def updateVehicles(self, vehiclesCDs=None, filterCriteria=None, forceUpdate=False):
-        rentalVehicles = self._wotPlusVehicles + self._telecomRentalsVehicles
+        rentalVehicles = self._telecomRentalsVehicles
         changeInRentals = set(vehiclesCDs or ()).issubset(rentalVehicles)
         filterCriteria = filterCriteria or REQ_CRITERIA.EMPTY
         if vehiclesCDs:
             filterCriteria |= REQ_CRITERIA.IN_CD_LIST(vehiclesCDs)
-        criteria = self._baseCriteria | filterCriteria | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP | REQ_CRITERIA.VEHICLE.WOT_PLUS_VEHICLE ^ REQ_CRITERIA.VEHICLE.TELECOM_RENT
+        criteria = self._baseCriteria | filterCriteria | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP | REQ_CRITERIA.VEHICLE.TELECOM_RENT
         newRentalsVehicles = self._itemsCache.items.getVehicles(criteria).viewkeys()
         isVehicleRemoved = not set(vehiclesCDs or ()).issubset(newRentalsVehicles)
         isVehicleAdded = not set(vehiclesCDs or ()).issubset(rentalVehicles)
         if changeInRentals or isVehicleRemoved or isVehicleAdded:
-            rentPendingVehCD = self._wotPlusCtrl.getRentPending()
-            if isVehicleAdded and rentPendingVehCD in newRentalsVehicles:
-                self._wotPlusCtrl.resetRentPending()
             rentPendingVehCD = self._telecomRentals.getRentsPending()
             rentPendingVehCD = rentPendingVehCD.intersection(newRentalsVehicles)
             if isVehicleAdded and rentPendingVehCD:
@@ -149,7 +138,7 @@ class HangarCarouselDataProvider(CarouselDataProvider):
     def _getFrontAdditionalItemsIndexes(self):
         frontIndices = self._getFrontIndices()
         pruneIndices = set()
-        if (not self._isWotPlusRentEnabled() or self._wotPlusVehicles) and (not self._isTelecomRentalsEnabled() or self._telecomRentals.getAvailableRentCount() == 0):
+        if not self._isTelecomRentalsEnabled() or self._telecomRentals.getAvailableRentCount() == 0:
             pruneIndices.add(_FRONT_SUPPLY_ITEMS.RENT_TANK)
         return [ suppIdx for suppIdx in frontIndices if frontIndices.index(suppIdx) not in pruneIndices ]
 
@@ -209,7 +198,7 @@ class HangarCarouselDataProvider(CarouselDataProvider):
 
     def _buildFrontSupplyItems(self):
         self._frontSupplyItems = []
-        if not self._wotPlusVehicles and self._isWotPlusRentEnabled() or self._isTelecomRentalsEnabled() and not self._telecomRentals.getAvailableRentCount() == 0:
+        if self._isTelecomRentalsEnabled() and not self._telecomRentals.getAvailableRentCount() == 0:
             text = MENU.TANKCAROUSEL_WOTPLUSSELECTIONAVAILABLE
             if self._telecomRentals.getRentsPending():
                 text = MENU.TANKCAROUSEL_WOTPLUSSELECTIONPENDING
@@ -231,12 +220,6 @@ class HangarCarouselDataProvider(CarouselDataProvider):
 
     def _getSupplyIndices(self):
         return [ len(self._vehicles) + idx for idx in _SUPPLY_ITEMS.ALL ]
-
-    def _isWotPlusRentEnabled(self):
-        hasWotPlusActive = self._wotPlusCtrl.isEnabled()
-        isRentalEnabled = self._serverSettings.isWotPlusTankRentalEnabled()
-        isNotRentPending = self._wotPlusCtrl.getRentPending() is None
-        return hasWotPlusActive and isRentalEnabled and isNotRentPending
 
     def _isTelecomRentalsEnabled(self):
         hasTelecomRentalsActive = self._telecomRentals.isActive()

@@ -131,6 +131,8 @@ package net.wg.data.constants.generated
       
       public static const CHINA_CH41_WZ_111_5_A_7X7:String = "china-Ch41_WZ_111_5A_7x7";
       
+      public static const CHINA_CH41_WZ_111_MT:String = "china-Ch41_WZ_111_MT";
+      
       public static const CHINA_CH41_WZ_111_QL:String = "china-Ch41_WZ_111_QL";
       
       public static const CHINA_CH42_WALKER_BULLDOG_M41_D:String = "china-Ch42_WalkerBulldog_M41D";
@@ -1111,6 +1113,8 @@ package net.wg.data.constants.generated
       
       public static const ROLE_SPG:String = "role_SPG";
       
+      public static const ROLE_SPG_FLAME:String = "role_SPG_flame";
+      
       public static const ROLE_SKILL_LEVEL_0:String = "roleSkillLevel_0";
       
       public static const ROLE_SKILL_LEVEL_1:String = "roleSkillLevel_1";
@@ -1835,6 +1839,8 @@ package net.wg.data.constants.generated
       
       public static const USA_A69_T110_E5:String = "usa-A69_T110E5";
       
+      public static const USA_A69_T110_E5_7X7:String = "usa-A69_T110E5_7x7";
+      
       public static const USA_A69_T110_E5_CL:String = "usa-A69_T110E5_cl";
       
       public static const USA_A71_T21:String = "usa-A71_T21";
@@ -2120,6 +2126,10 @@ package net.wg.data.constants.generated
       public static const USSR_R202_SU_2_122:String = "ussr-R202_SU_2_122";
       
       public static const USSR_R205_TANK_ROZANOVA:String = "ussr-R205_Tank_Rozanova";
+      
+      public static const USSR_R207_HT_130:String = "ussr-R207_HT_130";
+      
+      public static const USSR_R208_OBJECT_156_O:String = "ussr-R208_Object_156O";
       
       public static const USSR_R22_T_46:String = "ussr-R22_T-46";
       

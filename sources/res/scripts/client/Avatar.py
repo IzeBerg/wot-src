@@ -1986,7 +1986,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             canShoot, error = self.guiSessionProvider.shared.ammo.canShoot(isRepeat)
             if not canShoot:
                 if not isRepeat and error in self.__cantShootCriticals:
-                    self.showVehicleError(self.__cantShootCriticals[error])
+                    self.showVehicleError(self.__cantShootCriticals[error], args={'typeDescriptor': self.getVehicleDescriptor()})
                 return
             if self.__gunReloadCommandWaitEndTime > BigWorld.time():
                 return
