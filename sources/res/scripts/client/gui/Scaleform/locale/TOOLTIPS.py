@@ -103,6 +103,7 @@ class TOOLTIPS(object):
     AWARDITEM_PREMIUM = '#tooltips:awardItem/premium'
     AWARDITEM_STEELHUNTERPOINT = '#tooltips:awardItem/steelHunterPoint'
     AWARDITEM_BPCOIN = '#tooltips:awardItem/bpcoin'
+    AWARDITEM_EQUIPCOIN = '#tooltips:awardItem/equipCoin'
     FALLOUTBATTLESELECTORWINDOW_BTNINSQUADDISABLED = '#tooltips:falloutBattleSelectorWindow/btnInSquadDisabled'
     FALLOUTBATTLESELECTORWINDOW_BTNDISABLED = '#tooltips:falloutBattleSelectorWindow/btnDisabled'
     RESEARCHPAGE_VEHICLE_BUTTON_COMPARE_DISABLED = '#tooltips:researchPage/vehicle/button/compare/disabled'
@@ -1440,8 +1441,16 @@ class TOOLTIPS(object):
     VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD_BODY = '#tooltips:vehicleSellDialog/renderer/alertIconGold/body'
     VEHICLESELLDIALOG_RENDERER_ALERTICONCRYSTAL_HEADER = '#tooltips:vehicleSellDialog/renderer/alertIconCrystal/header'
     VEHICLESELLDIALOG_RENDERER_ALERTICONCRYSTAL_BODY = '#tooltips:vehicleSellDialog/renderer/alertIconCrystal/body'
-    VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN_HEADER = '#tooltips:vehicleSellDialog/renderer/alertIconEquipCoin/header'
-    VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN_BODY = '#tooltips:vehicleSellDialog/renderer/alertIconEquipCoin/body'
+    VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTNOTENABLED_HEADER = '#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountNotEnabled/header'
+    VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTNOTENABLED_BODY = '#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountNotEnabled/body'
+    VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTENABLED_HEADER = '#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountEnabled/header'
+    VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTENABLED_BODY = '#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountEnabled/body'
+    VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_SUB_DEMOUNTNOTENABLED_HEADER = '#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/sub/demountNotEnabled/header'
+    VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_SUB_DEMOUNTNOTENABLED_BODY = '#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/sub/demountNotEnabled/body'
+    VEHICLESELLDIALOG_RENDERER_SBSCR_STANDARD_NONSUB_HEADER = '#tooltips:vehicleSellDialog/renderer/sbscr/Standard/nonsub/header'
+    VEHICLESELLDIALOG_RENDERER_SBSCR_STANDARD_NONSUB_BODY = '#tooltips:vehicleSellDialog/renderer/sbscr/Standard/nonsub/body'
+    VEHICLESELLDIALOG_RENDERER_SBSCR_MODERNIZED_HEADER = '#tooltips:vehicleSellDialog/renderer/sbscr/Modernized/header'
+    VEHICLESELLDIALOG_RENDERER_SBSCR_MODERNIZED_BODY = '#tooltips:vehicleSellDialog/renderer/sbscr/Modernized/body'
     VEHICLESELLDIALOG_CREW_ALERTICON_RECOVERY_HEADER = '#tooltips:vehicleSellDialog/crew/alertIcon/recovery/header'
     VEHICLESELLDIALOG_CREW_ALERTICON_RECOVERY_BODY = '#tooltips:vehicleSellDialog/crew/alertIcon/recovery/body'
     ACHIEVEMENT_CUSTOM_NOTENOUGH = '#tooltips:achievement/custom/notEnough'
@@ -1762,6 +1771,7 @@ class TOOLTIPS(object):
     PERKTYPE_INFO_SITUATIONAL = '#tooltips:perkType/info/situational'
     PERKTYPE_INFO_COMMON = '#tooltips:perkType/info/common'
     PERKS_FULLSKILLTITLE = '#tooltips:perks/fullSkillTitle'
+    PERKS_FULLGROUPSKILLTITLE = '#tooltips:perks/fullGroupSkillTitle'
     PERKS_INFOTEXT = '#tooltips:perks/infoText'
     PERKS_CONFIGURATIONSCREENTEXT = '#tooltips:perks/configurationScreenText'
     HANGARTUTORIAL_PERSONALCASE_ADDITIONAL_TITLE = '#tooltips:hangarTutorial/personalCase/additional/title'
@@ -1879,6 +1889,8 @@ class TOOLTIPS(object):
     AWARDITEM_EVENTCOIN_BODY = '#tooltips:awardItem/eventCoin/body'
     AWARDITEM_BPCOIN_HEADER = '#tooltips:awardItem/bpcoin/header'
     AWARDITEM_BPCOIN_BODY = '#tooltips:awardItem/bpcoin/body'
+    AWARDITEM_EQUIPCOIN_HEADER = '#tooltips:awardItem/equipCoin/header'
+    AWARDITEM_EQUIPCOIN_BODY = '#tooltips:awardItem/equipCoin/body'
     AWARDITEM_STEELHUNTERPOINT_HEADER = '#tooltips:awardItem/steelHunterPoint/header'
     AWARDITEM_STEELHUNTERPOINT_BODY = '#tooltips:awardItem/steelHunterPoint/body'
     AWARDITEM_FREEXP_HEADER = '#tooltips:awardItem/freeXP/header'
@@ -3764,6 +3776,7 @@ class TOOLTIPS(object):
      AWARDITEM_GOLD_HEADER,
      AWARDITEM_EVENTCOIN_HEADER,
      AWARDITEM_BPCOIN_HEADER,
+     AWARDITEM_EQUIPCOIN_HEADER,
      AWARDITEM_STEELHUNTERPOINT_HEADER,
      AWARDITEM_FREEXP_HEADER,
      AWARDITEM_PREMIUM_HEADER,
@@ -3839,6 +3852,7 @@ class TOOLTIPS(object):
      AWARDITEM_GOLD_BODY,
      AWARDITEM_EVENTCOIN_BODY,
      AWARDITEM_BPCOIN_BODY,
+     AWARDITEM_EQUIPCOIN_BODY,
      AWARDITEM_STEELHUNTERPOINT_BODY,
      AWARDITEM_FREEXP_BODY,
      AWARDITEM_PREMIUM_BODY,

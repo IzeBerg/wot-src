@@ -1191,6 +1191,7 @@ class QUESTS(object):
     BONUSNAME_CRYSTAL = '#quests:bonusName/crystal'
     BONUSNAME_EVENTCOIN = '#quests:bonusName/eventCoin'
     BONUSNAME_BPCOIN = '#quests:bonusName/bpcoin'
+    BONUSNAME_EQUIPCOIN = '#quests:bonusName/equipCoin'
     BONUSNAME_XP = '#quests:bonusName/xp'
     BONUSNAME_FREEXP = '#quests:bonusName/freeXP'
     BONUSNAME_TANKMENXP = '#quests:bonusName/tankmenXP'
@@ -1743,6 +1744,7 @@ class QUESTS(object):
      BONUSNAME_CRYSTAL,
      BONUSNAME_EVENTCOIN,
      BONUSNAME_BPCOIN,
+     BONUSNAME_EQUIPCOIN,
      BONUSNAME_XP,
      BONUSNAME_FREEXP,
      BONUSNAME_TANKMENXP,

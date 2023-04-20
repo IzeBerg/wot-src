@@ -16,22 +16,20 @@ SKILL_NAMES = ('reserved', 'commander', 'radioman', 'driver', 'gunner', 'loader'
 SKILL_INDICES = dict((x[1], x[0]) for x in enumerate(SKILL_NAMES) if not x[1].startswith('reserved'))
 ORDERED_ROLES = ('commander', 'gunner', 'driver', 'radioman', 'loader')
 ROLES = frozenset(('commander', 'radioman', 'driver', 'gunner', 'loader'))
+COMMON_SKILL_ROLE_TYPE = 'common'
 ROLE_LIMITS = {'commander': 1, 'driver': 1}
-COMMON_SKILLS = frozenset(('repair', 'camouflage', 'brotherhood'))
+COMMON_SKILLS = frozenset(('repair', 'fireFighting', 'camouflage', 'brotherhood'))
 SEPARATE_SKILLS = frozenset(('radioman_lastEffort', ))
 ROLES_AND_COMMON_SKILLS = ROLES | COMMON_SKILLS
 COMMANDER_SKILLS = frozenset(('commander_tutor', 'commander_expert', 'commander_universalist',
-                              'commander_sixthSense', 'commander_eagleEye', 'commander_enemyShotPredictor',
-                              'commander_practical'))
+                              'commander_sixthSense', 'commander_eagleEye', 'commander_enemyShotPredictor'))
 SKILLS_BY_ROLES = {'commander': COMMON_SKILLS.union(COMMANDER_SKILLS), 
    'driver': COMMON_SKILLS.union(('driver_tidyPerson', 'driver_smoothDriving', 'driver_virtuoso',
-                     'driver_badRoadsKing', 'driver_rammingMaster', 'driver_motorExpert')), 
-   'gunner': COMMON_SKILLS.union(('gunner_smoothTurret', 'gunner_sniper', 'gunner_rancorous', 'gunner_gunsmith',
-                     'gunner_focus', 'gunner_quickAiming')), 
-   'loader': COMMON_SKILLS.union(('loader_pedant', 'loader_desperado', 'loader_intuition', 'loader_ambushMaster',
-                     'loader_melee', 'loader_ammunitionImprove')), 
+                     'driver_badRoadsKing', 'driver_rammingMaster')), 
+   'gunner': COMMON_SKILLS.union(('gunner_smoothTurret', 'gunner_sniper', 'gunner_rancorous', 'gunner_gunsmith')), 
+   'loader': COMMON_SKILLS.union(('loader_pedant', 'loader_desperado', 'loader_intuition')), 
    'radioman': COMMON_SKILLS.union(('radioman_finder', 'radioman_inventor', 'radioman_lastEffort',
-                     'radioman_retransmitter', 'radioman_interference', 'fireFighting'))}
+                     'radioman_retransmitter'))}
 ROLES_BY_SKILLS = {}
 for role, skills in SKILLS_BY_ROLES.iteritems():
     for skill in skills:

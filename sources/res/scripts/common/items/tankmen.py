@@ -25,9 +25,12 @@ if typing.TYPE_CHECKING:
 SKILL_NAMES = skills_constants.SKILL_NAMES
 SKILL_INDICES = skills_constants.SKILL_INDICES
 ROLES = skills_constants.ROLES
+COMMON_SKILL_ROLE_TYPE = skills_constants.COMMON_SKILL_ROLE_TYPE
 COMMON_SKILLS = skills_constants.COMMON_SKILLS
 SEPARATE_SKILLS = skills_constants.SEPARATE_SKILLS
 ROLES_AND_COMMON_SKILLS = skills_constants.ROLES_AND_COMMON_SKILLS
+LEARNABLE_ACTIVE_SKILLS = skills_constants.LEARNABLE_ACTIVE_SKILLS
+UNLEARNABLE_SKILLS = skills_constants.UNLEARNABLE_SKILLS
 SKILLS_BY_ROLES = skills_constants.SKILLS_BY_ROLES
 MAX_FREE_SKILLS_SIZE = 16
 NO_SKILL = -1
@@ -72,7 +75,7 @@ def getSkillsMask(skills):
     return result
 
 
-ALL_SKILLS_MASK = getSkillsMask([ skill for skill in SKILL_NAMES if skill != 'reserved' ])
+ALL_SKILLS_MASK = getSkillsMask([ skill for skill in LEARNABLE_ACTIVE_SKILLS if skill != 'reserved' ])
 
 def getNationConfig(nationID):
     global _g_nationsConfig
@@ -145,9 +148,8 @@ def crewMemberPreviewProducer(nationID, isPremium=False, vehicleTypeID=None, rol
 
 
 def generateSkills(role, skillsMask):
-    skills = []
+    tankmanSkills = set()
     if skillsMask != 0:
-        tankmanSkills = set()
         for i in xrange(len(role)):
             roleSkills = SKILLS_BY_ROLES[role[i]]
             if skillsMask == ALL_SKILLS_MASK:
@@ -157,8 +159,7 @@ def generateSkills(role, skillsMask):
                     if 1 << idx & skillsMask and skill in roleSkills:
                         tankmanSkills.add(skill)
 
-        skills.extend(tankmanSkills)
-    return skills
+    return [ skill for skill in tankmanSkills if skill not in UNLEARNABLE_SKILLS ]
 
 
 def generateTankmen(nationID, vehicleTypeID, roles, isPremium, roleLevel, skillsMask, isPreview=False):
@@ -1211,3 +1212,14 @@ class Cache(object):
 
     def crewBooks(self):
         return self.__crewBooks
+
+
+def getSkillRoleType(skillName):
+    if skillName in COMMON_SKILLS:
+        return COMMON_SKILL_ROLE_TYPE
+    else:
+        for role, skills in SKILLS_BY_ROLES.iteritems():
+            if skillName in skills:
+                return role
+
+        return

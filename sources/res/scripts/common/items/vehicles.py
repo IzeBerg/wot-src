@@ -220,7 +220,7 @@ def vehicleAttributeFactors():
        'gun/clipTimeBetweenShots': 1.0, 
        'gun/canShoot': True, 
        'engine/fireStartingChance': 1.0, 
-       'healthBurnPerSecLossFraction': 0.57, 
+       'healthBurnPerSecLossFraction': 1.0, 
        'repairSpeed': 1.0, 
        'additiveShotDispersionFactor': 1.0, 
        'brokenTrack': 0, 

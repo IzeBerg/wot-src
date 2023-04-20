@@ -8,6 +8,42 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
+		<node>
+			<identifier>hd_bld_UNI_005_Hangar_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
@@ -22,18 +58,6 @@
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>112</materialKind>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 					<property>
 						diffuseMap
 						<Texture>content/Buildings/hd_bld_UNI_005_Hangar/hd_bld_UNI_005_Hangar_BAM.dds</Texture>
@@ -56,8 +80,8 @@
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-24.979965 -0.032469 -18.336487</min>
-		<max>23.287380 11.549539 18.266401</max>
+		<min>-24.979965 -0.032469 -18.426863</min>
+		<max>23.287380 11.656692 18.326210</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
 	<geometrySize>4948</geometrySize>

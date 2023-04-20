@@ -106,7 +106,7 @@ class VehicleInfoTooltipData(BlocksTooltipData):
             headerBlockItems.append(formatters.packBuildUpBlockData(telecomBlock, padding=leftRightPadding))
         self.__createStatusBlock(vehicle, headerBlockItems, statsConfig, paramsConfig, valueWidth)
         items.append(formatters.packBuildUpBlockData(headerBlockItems, gap=-4, padding=formatters.packPadding(bottom=-12)))
-        if vehicle.isWotPlusRent:
+        if vehicle.isWotPlus:
             wotPlusBlock, linkage = WotPlusBlockConstructor(vehicle, statsConfig, leftPadding, rightPadding).construct()
             if wotPlusBlock:
                 items.append(formatters.packBuildUpBlockData(wotPlusBlock, linkage=linkage, padding=formatters.packPadding(left=leftPadding, right=rightPadding, top=0, bottom=0)))
@@ -195,7 +195,7 @@ class VehicleInfoTooltipData(BlocksTooltipData):
                 items.append(formatters.packTextParameterWithIconBlockData(name=text_styles.main(descrStr), value=text_styles.expText(leftStr), icon=ICON_TEXT_FRAMES.RENTALS, iconYOffset=2, gap=0, valueWidth=valueWidth, padding=formatters.packPadding(left=2, bottom=-10)))
         if statsConfig.showRankedBonusBattle:
             items.append(formatters.packTextParameterWithIconBlockData(name=text_styles.main(backport.text(R.strings.tooltips.vehicle.rankedBonusBattle())), value='', icon=ICON_TEXT_FRAMES.BONUS_BATTLE, iconYOffset=2, valueWidth=valueWidth, gap=0, padding=formatters.packPadding(left=0, top=-2, bottom=5)))
-        if statsConfig.dailyXP and not vehicle.isWotPlusRent:
+        if statsConfig.dailyXP and not vehicle.isWotPlus:
             attrs = self.__itemsCache.items.stats.attributes
             if attrs & constants.ACCOUNT_ATTR.DAILY_MULTIPLIED_XP and vehicle.dailyXPFactor > 0:
                 dailyXPText = text_styles.main(text_styles.expText(('').join(('x', backport.getIntegralFormat(vehicle.dailyXPFactor)))))

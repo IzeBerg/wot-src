@@ -130,6 +130,7 @@ def _readCommanderEnemyShotPredictorSkill(xmlCtx, section, subsectionName):
 
 
 _g_skillConfigReaders = {'repair': _readRole, 
+   'fireFighting': _readRole, 
    'camouflage': _readRole, 
    'brotherhood': _readBrotherhoodSkill, 
    'commander_tutor': _readCommanderTutorSkill, 
@@ -161,7 +162,6 @@ _g_skillConfigReaders = {'repair': _readRole,
    'radioman_inventor': _readCrewMasterySkill, 
    'radioman_lastEffort': _readRadiomanLastEffortSkill, 
    'radioman_retransmitter': _readCrewMasterySkill, 
-   'fireFighting': _readCommonSkill, 
    'radioman_interference': _readCommonSkill}
 
 def readSkillsConfig(xmlPath):

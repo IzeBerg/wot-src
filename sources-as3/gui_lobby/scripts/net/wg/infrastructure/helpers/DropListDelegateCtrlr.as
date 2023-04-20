@@ -22,24 +22,12 @@ package net.wg.infrastructure.helpers
       
       public function DropListDelegateCtrlr(param1:Vector.<InteractiveObject>, param2:Class, param3:String)
       {
-         var _loc4_:InteractiveObject = null;
-         var _loc5_:IDropListDelegate = null;
-         super();
-         if(App.instance)
-         {
-            this.assertLinkage(param3);
-            this._delegates = new Vector.<IDropListDelegate>();
-            for each(_loc4_ in param1)
-            {
-               _loc5_ = new param2(_loc4_,param3);
-               _loc5_.setPairedDropLists(this.getPairedElementsFromVector(_loc4_,param1));
-               this._delegates.push(_loc5_);
-               App.cursor.registerDragging(_loc5_,Cursors.DRAG_CLOSE);
-               _loc4_.addEventListener(DropEvent.BEFORE_DROP,this.onControllerBeforeDropHandler);
-               _loc4_.addEventListener(DropEvent.START_DROP,this.onControllerStartDropHandler);
-               _loc4_.addEventListener(DropEvent.AFTER_DROP,this.onControllerAfterDropHandler);
-            }
-         }
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 95
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       public final function dispose() : void

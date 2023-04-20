@@ -15,6 +15,7 @@ from web.web_client_api import W2CSchema, w2c, Field
 _logger = logging.getLogger(__name__)
 if TYPE_CHECKING:
     from typing import List
+    from helpers.server_settings import ServerSettings
 
 class _RenewableSubRentVehicleInfoSchema(W2CSchema):
     vehCD = Field(required=True, type=int)
@@ -26,12 +27,13 @@ class RenewableSubWebApiMixin(object):
 
     @w2c(W2CSchema, 'get_subscription_info')
     def getSubscriptionInfo(self, cmd):
+        serverSettings = self._lobbyContext.getServerSettings()
         return {'period_start': self._wotPlusCtrl.getStartTime(), 
            'period_end': self._wotPlusCtrl.getExpiryTime(), 
-           'enabled_bonuses': self.getEnabledBonuses()}
+           'enabled_bonuses': self.getEnabledBonuses(serverSettings), 
+           'is_free_deluxe_demount_included': serverSettings.isFreeDeluxeEquipmentDemountingEnabled()}
 
-    def getEnabledBonuses(self):
-        serverSettings = self._lobbyContext.getServerSettings()
+    def getEnabledBonuses(self, serverSettings):
         enabledBonuses = []
         if serverSettings.isRenewableSubGoldReserveEnabled():
             enabledBonuses.append(WoTPlusBonusType.GOLD_BANK)

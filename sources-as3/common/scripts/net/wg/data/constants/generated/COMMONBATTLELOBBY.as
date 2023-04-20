@@ -147,7 +147,7 @@ package net.wg.data.constants.generated
       
       public static const GUN_PIERCING:String = "gun_piercing";
       
-      public static const GUNNER_FOCUS:String = "gunner_focus";
+      public static const LOADER_INTUITION:String = "loader_intuition";
       
       public static const RADAR_COOLDOWN:String = "radar_cooldown";
       

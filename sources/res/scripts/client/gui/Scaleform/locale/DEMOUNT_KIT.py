@@ -8,6 +8,7 @@ class DEMOUNT_KIT(object):
     DIALOGUE_DESCRIPTION_COMMON = '#demount_kit:dialogue/description/common'
     EQUIPMENTINSTALL_DEMOUNTWITHKITOR = '#demount_kit:equipmentInstall/demountWithKitOr'
     EQUIPMENTINSTALL_DEMOUNTNOKITOR = '#demount_kit:equipmentInstall/demountNoKitOr'
+    EQUIPMENTINSTALL_DEMOUNTWITHKIT = '#demount_kit:equipmentInstall/demountWithKit'
     EQUIPMENTINSTALL_DEMOUNT = '#demount_kit:equipmentInstall/demount'
     EQUIPMENTDEMOUNT_OPTIONFREE = '#demount_kit:equipmentDemount/optionFree'
     EQUIPMENTDEMOUNT_CONFIRMATION_TITLE = '#demount_kit:equipmentDemount/confirmation/title'

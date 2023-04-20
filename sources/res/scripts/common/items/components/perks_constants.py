@@ -1,6 +1,7 @@
 import typing
 PERKS_XML_FILE = 'perks.xml'
 PERK_BONUS_VALUE_PRECISION = 5
+AVG_LVL_PERKS = ('loader_intuition', )
 
 class PerkState(object):
     INACTIVE = 0

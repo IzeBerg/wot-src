@@ -1749,6 +1749,9 @@ class ServerSettings(object):
     def isFreeEquipmentDemountingEnabled(self):
         return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeEquipmentDemounting', True)
 
+    def isFreeDeluxeEquipmentDemountingEnabled(self):
+        return self.isFreeEquipmentDemountingEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeDeluxeEquipmentDemounting', True)
+
     def getRenewableSubCrewXPPerMinute(self):
         return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('crewXPPerMinute', 0)
 

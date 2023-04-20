@@ -1,14 +1,5 @@
-package net.wg.infrastructure.base.meta.impl
-{
-   import net.wg.infrastructure.base.BaseDAAPIComponent;
-   
-   public class BattleRoyaleTournamentWidgetMeta extends BaseDAAPIComponent
-   {
-       
-      
-      public function BattleRoyaleTournamentWidgetMeta()
-      {
-         super();
-      }
-   }
-}
+/*
+ * Decompilation error
+ * Timeout (5 minutes) was reached
+ */
+throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");

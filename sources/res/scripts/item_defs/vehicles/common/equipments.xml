@@ -4750,8 +4750,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster armor</tags>
 		<script>
-			SkillEquipment
+			FactorSkillBattleBooster
 			<skillName>fireFighting</skillName>
+			<efficiencyFactor>
+				1.5
+				<!--BW_String-->
+			</efficiencyFactor>
 			<perkLevelMultiplier>
 				1.5
 				<!--BW_String-->
@@ -4881,11 +4885,11 @@
 			LastEffortBattleBooster
 			<skillName>radioman_lastEffort</skillName>
 			<durationPerLevel>
-				0.06
+				0.03
 				<!--BW_String-->
 			</durationPerLevel>
 			<chanceToHitPerLevel>
-				-0.0045
+				0.0
 				<!--BW_String-->
 			</chanceToHitPerLevel>
 			<perkLevelMultiplier>
@@ -4901,7 +4905,7 @@
 				</boostSkill>
 				<add>
 					<name>crewSkillLastEffortDuration</name>
-					<value>3</value>
+					<value>1</value>
 				</add>
 			</oneOf>
 		</kpi>
@@ -10820,7 +10824,7 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<crewBuff>
-				4.0 7.5 11.0
+				3 6.5 10.0
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</crewBuff>
@@ -10930,7 +10934,7 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				20
+				15
 				<exports>vse tooltip</exports>
 			</duration>
 			<gunReloadTimeBuff>
@@ -10939,7 +10943,7 @@
 				<exports>vse</exports>
 			</gunReloadTimeBuff>
 			<damageDistance>
-				200
+				150
 				<exports>vse tooltip</exports>
 			</damageDistance>
 			<shotDispersionFactors>

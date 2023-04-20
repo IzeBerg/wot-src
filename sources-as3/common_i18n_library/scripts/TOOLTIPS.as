@@ -111,8 +111,6 @@ package
       
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONCRYSTAL:String = "#tooltips:vehicleSellDialog/renderer/alertIconCrystal";
       
-      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN:String = "#tooltips:vehicleSellDialog/renderer/alertIconEquipCoin";
-      
       public static const REPAIR_AUTO:String = "#tooltips:repair/auto";
       
       public static const AMMO_AUTO:String = "#tooltips:ammo/auto";
@@ -2903,9 +2901,25 @@ package
       
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONCRYSTAL_BODY:String = "#tooltips:vehicleSellDialog/renderer/alertIconCrystal/body";
       
-      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN_HEADER:String = "#tooltips:vehicleSellDialog/renderer/alertIconEquipCoin/header";
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTNOTENABLED_HEADER:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountNotEnabled/header";
       
-      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN_BODY:String = "#tooltips:vehicleSellDialog/renderer/alertIconEquipCoin/body";
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTNOTENABLED_BODY:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountNotEnabled/body";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTENABLED_HEADER:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountEnabled/header";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTENABLED_BODY:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountEnabled/body";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_SUB_DEMOUNTNOTENABLED_HEADER:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/sub/demountNotEnabled/header";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_SUB_DEMOUNTNOTENABLED_BODY:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/sub/demountNotEnabled/body";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_STANDARD_NONSUB_HEADER:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Standard/nonsub/header";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_STANDARD_NONSUB_BODY:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Standard/nonsub/body";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_MODERNIZED_HEADER:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Modernized/header";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_MODERNIZED_BODY:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Modernized/body";
       
       public static const VEHICLESELLDIALOG_CREW_ALERTICON_RECOVERY_HEADER:String = "#tooltips:vehicleSellDialog/crew/alertIcon/recovery/header";
       
@@ -3547,6 +3561,8 @@ package
       
       public static const PERKS_FULLSKILLTITLE:String = "#tooltips:perks/fullSkillTitle";
       
+      public static const PERKS_FULLGROUPSKILLTITLE:String = "#tooltips:perks/fullGroupSkillTitle";
+      
       public static const PERKS_INFOTEXT:String = "#tooltips:perks/infoText";
       
       public static const PERKS_CONFIGURATIONSCREENTEXT:String = "#tooltips:perks/configurationScreenText";
@@ -3780,6 +3796,10 @@ package
       public static const AWARDITEM_BPCOIN_HEADER:String = "#tooltips:awardItem/bpcoin/header";
       
       public static const AWARDITEM_BPCOIN_BODY:String = "#tooltips:awardItem/bpcoin/body";
+      
+      public static const AWARDITEM_EQUIPCOIN_HEADER:String = "#tooltips:awardItem/equipCoin/header";
+      
+      public static const AWARDITEM_EQUIPCOIN_BODY:String = "#tooltips:awardItem/equipCoin/body";
       
       public static const AWARDITEM_STEELHUNTERPOINT_HEADER:String = "#tooltips:awardItem/steelHunterPoint/header";
       

@@ -1535,17 +1535,7 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
 
     def _formatData(self, assetType, data):
         operations = self._composeOperations(data)
-        compensation = Money()
-        for customizationData in data[b'data'].get(b'customizations', ()):
-            compensation += Money.makeFromMoneyTuple(customizationData.get(b'customCompensation', (0,
-                                                                                                   0)))
-
-        if compensation.gold > 0:
-            icon = b'goldIcon'
-        elif compensation.credits > 0:
-            icon = b'creditsIcon'
-        else:
-            icon = b'informationIcon'
+        icon = b'InformationIcon'
         if not operations:
             return None
         else:

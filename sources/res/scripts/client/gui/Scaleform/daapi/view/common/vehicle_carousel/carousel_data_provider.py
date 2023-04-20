@@ -1,6 +1,7 @@
 import typing
 from CurrentVehicle import g_currentVehicle
 from constants import SEASON_NAME_BY_TYPE
+from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.impl.gen import R
 from dossiers2.ui.achievements import MARK_ON_GUN_RECORD
 from gui import GUI_NATIONS_ORDER_INDEX, makeHtmlString
@@ -8,7 +9,6 @@ from gui.Scaleform import getButtonsAssetPath
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.Scaleform.framework.entities.DAAPIDataProvider import SortableDAAPIDataProvider
 from gui.Scaleform.locale.MENU import MENU
-from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.impl import backport
 from gui.shared.formatters import icons, text_styles
 from gui.shared.formatters.time_formatters import RentLeftFormatter
@@ -104,8 +104,9 @@ def _getVehicleDataVO(vehicle, bootcampCtrl):
     tankType = ('{}_elite').format(vehicle.type) if vehicle.isElite else vehicle.type
     current, maximum = vehicle.getCrystalsEarnedInfo()
     isCrystalsLimitReached = current == maximum
-    isWotPlusSlot = (vehicle.isWotPlusRent or vehicle.isTelecomRent) and not vehicle.rentExpiryState
-    extraImage = RES_ICONS.MAPS_ICONS_LIBRARY_RENT_ICO_BIG if isWotPlusSlot else ''
+    isWotPlusSlot = (vehicle.isWotPlus or vehicle.isTelecomRent) and not vehicle.rentExpiryState
+    showIcon = vehicle.isTelecomRent and not vehicle.rentExpiryState
+    extraImage = RES_ICONS.MAPS_ICONS_LIBRARY_RENT_ICO_BIG if showIcon else ''
     return {'id': vehicle.invID, 
        'intCD': vehicle.intCD, 
        'infoText': largeStatus, 
@@ -162,7 +163,10 @@ class CarouselDataProvider(SortableDAAPIDataProvider):
         return
 
     def hasRentedVehicles(self):
-        return bool(self._getFilteredVehicles(REQ_CRITERIA.VEHICLE.RENT | ~REQ_CRITERIA.VEHICLE.CLAN_WARS))
+        criteria = REQ_CRITERIA.VEHICLE.RENT
+        criteria |= ~REQ_CRITERIA.VEHICLE.CLAN_WARS
+        criteria |= ~REQ_CRITERIA.VEHICLE.WOT_PLUS_VEHICLE
+        return bool(self._getFilteredVehicles(criteria))
 
     def hasEventVehicles(self):
         return bool(self._getFilteredVehicles(REQ_CRITERIA.VEHICLE.EVENT))

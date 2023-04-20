@@ -985,7 +985,7 @@ class Vehicle(FittingItem):
 
     @property
     def isWotPlusRent(self):
-        return self.isRented and self.isWotPlus
+        return self._rentInfo.isWotPlus
 
     @property
     def ignoreRoleIncompatibility(self):

@@ -1,13 +1,5 @@
-package net.wg.infrastructure.base.meta
-{
-   import flash.events.IEventDispatcher;
-   
-   public interface IProfileTechniquePageMeta extends IEventDispatcher
-   {
-       
-      
-      function setIsInHangarSelectedS(param1:Boolean) : void;
-      
-      function as_setSelectedVehicleIntCD(param1:Number) : void;
-   }
-}
+/*
+ * Decompilation error
+ * Timeout (5 minutes) was reached
+ */
+throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");

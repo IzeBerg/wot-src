@@ -3,7 +3,7 @@ from constants import IS_CELLAPP
 from items import perks
 from visual_script.misc import ASPECT
 from functools import wraps
-from debug_utils import LOG_ERROR, LOG_DEBUG_DEV
+from debug_utils import LOG_ERROR, LOG_DEBUG_DEV, LOG_WARNING
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from visual_script.contexts.perks_context import PerkContext
@@ -116,7 +116,11 @@ class VsePlan(object):
             return
 
     def destroy(self):
-        self._plan.stop()
+        if self._plan is not None:
+            self._plan.stop()
+        else:
+            ownerId = self._owner.id if self._owner else -1
+            LOG_WARNING(('[PerksController] No plan for perkID:{0} vehicleID:{1} after destroy in applySelectedSetup ').format(self.perkId, ownerId))
         self._plan = None
         self._isPlanLoaded = False
         self._isAutoStart = False

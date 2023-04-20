@@ -501,8 +501,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster armor</tags>
 		<script>
-			SkillEquipment
+			FactorSkillBattleBooster
 			<skillName>fireFighting</skillName>
+			<efficiencyFactor>
+				1.5
+				<!--BW_String-->
+			</efficiencyFactor>
 			<perkLevelMultiplier>
 				1.5
 				<!--BW_String-->
@@ -632,11 +636,11 @@
 			LastEffortBattleBooster
 			<skillName>radioman_lastEffort</skillName>
 			<durationPerLevel>
-				0.06
+				0.03
 				<!--BW_String-->
 			</durationPerLevel>
 			<chanceToHitPerLevel>
-				-0.0045
+				0.0
 				<!--BW_String-->
 			</chanceToHitPerLevel>
 			<perkLevelMultiplier>
@@ -652,7 +656,7 @@
 				</boostSkill>
 				<add>
 					<name>crewSkillLastEffortDuration</name>
-					<value>3</value>
+					<value>1</value>
 				</add>
 			</oneOf>
 		</kpi>

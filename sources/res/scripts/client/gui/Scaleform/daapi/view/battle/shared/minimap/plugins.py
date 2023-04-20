@@ -1052,6 +1052,10 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
             self.__showFeatures(isDown)
         if _FEATURES.isChanged(self.__flagHpMinimap):
             self.__showMinimapHP(isDown)
+        for entry in self._entries.itervalues():
+            if not entry.isActive():
+                continue
+            self._invoke(entry.getID(), 'showExtendedInfo', isDown)
 
 
 class EquipmentsPlugin(common.IntervalPlugin):

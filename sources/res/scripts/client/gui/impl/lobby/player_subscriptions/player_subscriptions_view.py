@@ -129,7 +129,7 @@ class PlayerSubscriptionsView(ViewImpl):
             self.__fetchExternalSubs()
 
     def __updateViewModel(self):
-        if not self.viewModel:
+        if not self.viewModel or not self.viewModel.proxy:
             return
         with self.viewModel.transaction() as (model):
             model.setWarningTitle(R.invalid())

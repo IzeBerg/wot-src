@@ -2387,6 +2387,8 @@ package
       
       public static const BONUSNAME_BPCOIN:String = "#quests:bonusName/bpcoin";
       
+      public static const BONUSNAME_EQUIPCOIN:String = "#quests:bonusName/equipCoin";
+      
       public static const BONUSNAME_XP:String = "#quests:bonusName/xp";
       
       public static const BONUSNAME_FREEXP:String = "#quests:bonusName/freeXP";

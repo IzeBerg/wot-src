@@ -1116,7 +1116,7 @@ def makePriceBlock(price, currencySetting, neededValue=None, oldPrice=None, perc
         return formatters.packTextParameterWithIconBlockData(name=text, value=valueFormatted, icon=settings.frame, valueWidth=valueWidth, padding=formatters.packPadding(left=-5), nameOffset=iconRightOffset, gap=gap, iconYOffset=settings.iconYOffset)
 
 
-def makeRemovalPriceBlock(price, currencySetting, neededValue=None, oldPrice=None, percent=0, valueWidth=-1, leftPadding=61, forcedText='', isDeluxe=False, gap=15, canUseDemountKit=False, wotPlusStatus=False, isFreeToDemount=False):
+def makeRemovalPriceBlock(price, currencySetting, neededValue=None, oldPrice=None, percent=0, valueWidth=-1, leftPadding=61, forcedText='', isDeluxe=False, gap=15, canUseDemountKit=False, wotPlusStatus=False, isFreeToDemount=False, isFreeDeluxeEnabled=False, isFreeDemountEnabled=False):
     _int = backport.getIntegralFormat
     settings = _getCurrencySetting(currencySetting)
     if settings is None:
@@ -1124,26 +1124,30 @@ def makeRemovalPriceBlock(price, currencySetting, neededValue=None, oldPrice=Non
     else:
         icon = settings.icon
         countFormatted = text_styles.concatStylesWithSpace(settings.textStyle(_int(price)), icon)
-        dkText = ''
         wotPlusLabel = text_styles.wotPlusText(backport.text(R.strings.demount_kit.equipmentDemount.optionFree()))
         wotPlusIcon = icons.wotPlus()
         wotPlusText = text_styles.concatStylesWithSpace(wotPlusIcon, wotPlusLabel)
-        if not wotPlusStatus:
-            dkCount = text_styles.demountKitText('1')
-            dkIcon = icons.demountKit()
-            dkText = text_styles.concatStylesWithSpace(dkCount, dkIcon)
-        else:
+        dkCount = text_styles.demountKitText('1')
+        dkIcon = icons.demountKit()
+        dkText = text_styles.concatStylesWithSpace(dkCount, dkIcon)
+        if wotPlusStatus:
             if isFreeToDemount:
                 countFormatted = wotPlusText
-            descr = R.strings.demount_kit.equipmentInstall
-            if wotPlusStatus:
-                dynAccId = descr.demount()
-            elif not canUseDemountKit and not isDeluxe:
+        descr = R.strings.demount_kit.equipmentInstall
+        if wotPlusStatus and isFreeToDemount:
+            dynAccId = descr.demount()
+        else:
+            if not canUseDemountKit and not isDeluxe:
                 dynAccId = descr.demount()
             elif isDeluxe:
-                dynAccId = descr.demountNoKitOr()
-            else:
+                if isFreeDeluxeEnabled:
+                    dynAccId = descr.demountNoKitOr()
+                else:
+                    dynAccId = descr.demount()
+            elif isFreeDemountEnabled:
                 dynAccId = descr.demountWithKitOr()
+            else:
+                dynAccId = descr.demountWithKit()
             valueFormatted = backport.text(dynAccId, count=countFormatted, countDK=text_styles.main(dkText), wotPlus=text_styles.main(wotPlusText))
             neededText = getFormattedNeededValue(settings, _int(neededValue)) if neededValue else ''
             text = text_styles.concatStylesWithSpace(text_styles.main((forcedText or settings).text if 1 else forcedText), neededText)
