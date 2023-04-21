@@ -751,6 +751,12 @@ package
       
       public static const SERVICECHANNELMESSAGES_BOOTCAMP_CREW:String = "#messenger:serviceChannelMessages/bootcamp/crew";
       
+      public static const SERVICECHANNELMESSAGES_ARMORYYARD_BUTTON_MAIN:String = "#messenger:serviceChannelMessages/armoryYard/button/main";
+      
+      public static const SERVICECHANNELMESSAGES_ARMORYYARD_BUTTON_POSTPROGRESSION:String = "#messenger:serviceChannelMessages/armoryYard/button/postProgression";
+      
+      public static const SERVICECHANNELMESSAGES_ARMORYYARD_BUTTON_QUEST:String = "#messenger:serviceChannelMessages/armoryYard/button/quest";
+      
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_AUCTION:String = "#messenger:serviceChannelMessages/currencyUpdate/auction";
       
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_BATTLEPASS:String = "#messenger:serviceChannelMessages/currencyUpdate/battlepass";

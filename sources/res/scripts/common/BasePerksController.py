@@ -3,7 +3,7 @@ import weakref
 from operator import mul
 from typing import Union, List, Dict, Tuple, TYPE_CHECKING, Optional, Hashable, Set, Any
 from PerkPlanHolder import PCPlanHolder
-from debug_utils import LOG_DEBUG_DEV, LOG_ERROR, LOG_DEBUG
+from debug_utils import LOG_DEBUG_DEV, LOG_ERROR, LOG_DEBUG, LOG_WARNING
 from data_structures import DynamicFactorCollectorKeyError
 from constants import IS_DEVELOPMENT
 from perks.PerksLoadStrategy import LoadType
@@ -220,9 +220,12 @@ class BasePerksController(object):
                         continue
                     self.dropAllPerkModifiers(scope, perkID)
                     plan = self._planHolder.getPlan(scope, perkID)
-                    plan.stop()
-                    plan.setContextArgs(perkData.args)
-                    plan.start()
+                    if plan is not None:
+                        plan.stop()
+                        plan.setContextArgs(perkData.args)
+                        plan.start()
+                    else:
+                        LOG_WARNING(('[PerksController] No plan for perkID:{0} vehicleID:{1} after applySelectedSetup ').format(perkID, self.vehicleID))
 
         self._scopedPerks = newScopedPerks
         return

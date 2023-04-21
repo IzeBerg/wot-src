@@ -1116,7 +1116,7 @@ def makePriceBlock(price, currencySetting, neededValue=None, oldPrice=None, perc
         return formatters.packTextParameterWithIconBlockData(name=text, value=valueFormatted, icon=settings.frame, valueWidth=valueWidth, padding=formatters.packPadding(left=-5), nameOffset=iconRightOffset, gap=gap, iconYOffset=settings.iconYOffset)
 
 
-def makeRemovalPriceBlock(price, currencySetting, neededValue=None, oldPrice=None, percent=0, valueWidth=-1, leftPadding=61, forcedText='', isDeluxe=False, gap=15, canUseDemountKit=False, wotPlusStatus=False, isFreeToDemount=False):
+def makeRemovalPriceBlock(price, currencySetting, neededValue=None, oldPrice=None, percent=0, valueWidth=-1, leftPadding=61, forcedText='', isDeluxe=False, gap=15, canUseDemountKit=False, wotPlusStatus=False, isFreeToDemount=False, isFreeDeluxeEnabled=False, isFreeDemountEnabled=False):
     _int = backport.getIntegralFormat
     settings = _getCurrencySetting(currencySetting)
     if settings is None:
@@ -1124,40 +1124,38 @@ def makeRemovalPriceBlock(price, currencySetting, neededValue=None, oldPrice=Non
     else:
         icon = settings.icon
         countFormatted = text_styles.concatStylesWithSpace(settings.textStyle(_int(price)), icon)
-        dkText = ''
         if wotPlusStatus:
             wotPlusLabel = text_styles.wotPlusText('free')
             wotPlusIcon = icons.wotPlus()
             wotPlusText = text_styles.concatStylesWithSpace(wotPlusIcon, wotPlusLabel)
         else:
             wotPlusText = ''
-        if not wotPlusStatus:
-            dkCount = text_styles.demountKitText('1')
-            dkIcon = icons.demountKit()
-            dkText = text_styles.concatStylesWithSpace(dkCount, dkIcon)
-        else:
+        dkCount = text_styles.demountKitText('1')
+        dkIcon = icons.demountKit()
+        dkText = text_styles.concatStylesWithSpace(dkCount, dkIcon)
+        if wotPlusStatus:
             if isFreeToDemount:
                 countFormatted = wotPlusText
-            descr = R.strings.demount_kit.equipmentInstall
-            if wotPlusStatus or not canUseDemountKit or isDeluxe:
-                dynAccId = descr.demount()
+        descr = R.strings.demount_kit.equipmentInstall
+        if wotPlusStatus or not canUseDemountKit or isDeluxe:
+            dynAccId = descr.demount()
+        else:
+            dynAccId = descr.demountWithKit()
+        valueFormatted = backport.text(dynAccId, count=countFormatted, countDK=text_styles.main(dkText), wotPlus=text_styles.main(wotPlusText))
+        neededText = getFormattedNeededValue(settings, _int(neededValue)) if neededValue else ''
+        text = text_styles.concatStylesWithSpace(text_styles.main((forcedText or settings).text if 1 else forcedText), neededText)
+        if percent != 0:
+            oldPriceText = text_styles.concatStylesToSingleLine(icon, settings.textStyle(_int(oldPrice)))
+            actionText = text_styles.main(makeString(TOOLTIPS.VEHICLE_ACTION_PRC, actionPrc=text_styles.stats(str(percent) + '%'), oldPrice=oldPriceText))
+            text = text_styles.concatStylesToMultiLine(text, actionText)
+            settingsFrame = settings.frame
+            if settingsFrame in Currency.ALL:
+                newPrice = MONEY_UNDEFINED.replace(settingsFrame, price)
+                oldPrice = MONEY_UNDEFINED.replace(settingsFrame, oldPrice)
             else:
-                dynAccId = descr.demountWithKit()
-            valueFormatted = backport.text(dynAccId, count=countFormatted, countDK=text_styles.main(dkText), wotPlus=text_styles.main(wotPlusText))
-            neededText = getFormattedNeededValue(settings, _int(neededValue)) if neededValue else ''
-            text = text_styles.concatStylesWithSpace(text_styles.main((forcedText or settings).text if 1 else forcedText), neededText)
-            if percent != 0:
-                oldPriceText = text_styles.concatStylesToSingleLine(icon, settings.textStyle(_int(oldPrice)))
-                actionText = text_styles.main(makeString(TOOLTIPS.VEHICLE_ACTION_PRC, actionPrc=text_styles.stats(str(percent) + '%'), oldPrice=oldPriceText))
-                text = text_styles.concatStylesToMultiLine(text, actionText)
-                settingsFrame = settings.frame
-                if settingsFrame in Currency.ALL:
-                    newPrice = MONEY_UNDEFINED.replace(settingsFrame, price)
-                    oldPrice = MONEY_UNDEFINED.replace(settingsFrame, oldPrice)
-                else:
-                    newPrice = Money(credits=price)
-                    oldPrice = Money(credits=oldPrice)
-                return formatters.packSaleTextParameterBlockData(name=text, saleData={'newPrice': newPrice.toMoneyTuple(), 'oldPrice': oldPrice.toMoneyTuple(), 'valuePadding': -2}, actionStyle='alignTop', padding=formatters.packPadding(left=leftPadding), currency=newPrice.getCurrency())
+                newPrice = Money(credits=price)
+                oldPrice = Money(credits=oldPrice)
+            return formatters.packSaleTextParameterBlockData(name=text, saleData={'newPrice': newPrice.toMoneyTuple(), 'oldPrice': oldPrice.toMoneyTuple(), 'valuePadding': -2}, actionStyle='alignTop', padding=formatters.packPadding(left=leftPadding), currency=newPrice.getCurrency())
         return formatters.packTextParameterBlockData(name=text, value=valueFormatted, valueWidth=valueWidth, gap=gap, padding=formatters.packPadding(left=-5))
 
 

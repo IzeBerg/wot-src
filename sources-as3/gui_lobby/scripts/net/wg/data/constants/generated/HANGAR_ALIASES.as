@@ -55,6 +55,12 @@ package net.wg.data.constants.generated
       
       public static const BR_TANK_CAROUSEL_UI:String = "BRTanksCarouselUI";
       
+      public static const ARMORY_YARD_CAROUSEL_WIDGET:String = "armoryYardCarouselWidget";
+      
+      public static const ARMORY_YARD_ENTRY_POINT:String = "armoryYardEntryPoint";
+      
+      public static const ARMORY_YARD_VEHICLE_PREVIEW:String = "armoryYardVehiclePreview";
+      
       public static const VEH_PARAM_RENDERER_STATE_SIMPLE_TOP:String = "simpleTop";
       
       public static const VEH_PARAM_RENDERER_STATE_SIMPLE_BOTTOM:String = "simpleBottom";

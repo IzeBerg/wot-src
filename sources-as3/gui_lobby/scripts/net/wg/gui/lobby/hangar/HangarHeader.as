@@ -383,12 +383,22 @@ package net.wg.gui.lobby.hangar
       
       public function as_setBattleMattersEntryPoint(param1:Boolean) : void
       {
+         var _loc2_:IHeaderSecondaryEntryPoint = this.questsFlags.getSecondaryEntryPoint(false);
+         if(_loc2_ && _loc2_.alias == HANGAR_ALIASES.ARMORY_YARD_ENTRY_POINT)
+         {
+            return;
+         }
          this.setQuestFlagsEntryPoint(param1,Linkages.BATTLE_MATTERS_ENTRY_POINT,HANGAR_ALIASES.BATTLE_MATTERS_ENTRY_POINT,false);
       }
       
       public function as_setCollectiveGoalEntryPoint(param1:Boolean) : void
       {
          this.setQuestFlagsEntryPoint(param1,Linkages.COLLECTIVE_GOAL_ENTRY_POINT,HANGAR_ALIASES.COLLECTIVE_GOAL_ENTRY_POINT,true);
+      }
+      
+      public function as_setArmoryYardEntryPoint(param1:Boolean) : void
+      {
+         this.setQuestFlagsEntryPoint(param1,Linkages.ARMORY_YARD_ENTRY_POINT,HANGAR_ALIASES.ARMORY_YARD_ENTRY_POINT,false);
       }
       
       public function as_setSecondaryEntryPointVisible(param1:Boolean) : void

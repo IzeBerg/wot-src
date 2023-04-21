@@ -13,9 +13,9 @@ package
       
       public static const DIALOGUE_DESCRIPTION_COMMON:String = "#demount_kit:dialogue/description/common";
       
-      public static const EQUIPMENTINSTALL_DEMOUNT:String = "#demount_kit:equipmentInstall/demount";
-      
       public static const EQUIPMENTINSTALL_DEMOUNTWITHKIT:String = "#demount_kit:equipmentInstall/demountWithKit";
+      
+      public static const EQUIPMENTINSTALL_DEMOUNT:String = "#demount_kit:equipmentInstall/demount";
       
       public static const EQUIPMENTDEMOUNT_OPTIONFREE:String = "#demount_kit:equipmentDemount/optionFree";
       

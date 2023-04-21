@@ -47,6 +47,9 @@ class IEventsCache(object):
     def questsProgress(self):
         raise NotImplementedError
 
+    def getQuestByID(self, questID):
+        raise NotImplementedError
+
     def getPersonalMissions(self):
         raise NotImplementedError
 

@@ -27,6 +27,7 @@ from helpers import int2roman, dependency
 from items import ITEM_TYPES
 from items.components.c11n_constants import ItemTags
 from nation_change.nation_change_helpers import iterVehTypeCDsInNationGroup
+from shared_utils import CONST_CONTAINER
 from skeletons.gui.game_control import IRestoreController, IWotPlusController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.lobby_context import ILobbyContext
@@ -42,6 +43,7 @@ if typing.TYPE_CHECKING:
     from gui.shared.gui_items.gui_item import GUIItem
     from gui.shared.gui_items.gui_item_economics import ItemPrice
     from gui.shared.money import Money
+    from helpers.server_settings import ServerSettings
 _DK_CURRENCY = GOODIE_VARIETY.DEMOUNT_KIT_NAME
 _WP_CURRENCY = 'wotPlusVSD'
 _SETTINGS_KEY = 'vehicleSellDialog'
@@ -668,6 +670,49 @@ class _OptionalDeviceData(_VSDItemData):
     __wotPlus = dependency.descriptor(IWotPlusController)
     __lobbyContext = dependency.descriptor(ILobbyContext)
 
+    class _AlertIconStateData(CONST_CONTAINER):
+        _DELUXE = 1
+        _MODERNIZED_HIGH = 2
+        _STANDARD = 3
+        _SUBSCRIBED_USER = True
+        _NON_SUBSCRIBED_USER = False
+        _DELUXE_DEMOUNT_ENABLED = True
+        _DELUXE_DEMOUNT_NOT_ENABLED = False
+        _SUBSCRIPTION_STATES = {_DELUXE: {_SUBSCRIBED_USER: {_DELUXE_DEMOUNT_ENABLED: '', 
+                                        _DELUXE_DEMOUNT_NOT_ENABLED: '#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/sub/demountNotEnabled'}, 
+                     _NON_SUBSCRIBED_USER: {_DELUXE_DEMOUNT_ENABLED: '#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountEnabled', 
+                                            _DELUXE_DEMOUNT_NOT_ENABLED: '#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountNotEnabled'}}, 
+           _STANDARD: {_SUBSCRIBED_USER: {_DELUXE_DEMOUNT_ENABLED: '', 
+                                          _DELUXE_DEMOUNT_NOT_ENABLED: ''}, 
+                       _NON_SUBSCRIBED_USER: {_DELUXE_DEMOUNT_ENABLED: '#tooltips:vehicleSellDialog/renderer/sbscr/Standard/nonsub', 
+                                              _DELUXE_DEMOUNT_NOT_ENABLED: '#tooltips:vehicleSellDialog/renderer/sbscr/Standard/nonsub'}}, 
+           _MODERNIZED_HIGH: {_SUBSCRIBED_USER: {_DELUXE_DEMOUNT_ENABLED: '#tooltips:vehicleSellDialog/renderer/sbscr/Modernized', 
+                                                 _DELUXE_DEMOUNT_NOT_ENABLED: '#tooltips:vehicleSellDialog/renderer/sbscr/Modernized'}, 
+                              _NON_SUBSCRIBED_USER: {_DELUXE_DEMOUNT_ENABLED: '#tooltips:vehicleSellDialog/renderer/sbscr/Modernized', 
+                                                     _DELUXE_DEMOUNT_NOT_ENABLED: '#tooltips:vehicleSellDialog/renderer/sbscr/Modernized'}}}
+
+        @classmethod
+        def getData(cls, servSettings, optDevice, removePrice, wotPlusCtrl):
+            alertIconTooltipID = ''
+            if servSettings.isRenewableSubEnabled():
+                alertGuiType = cls._getType(optDevice)
+                return cls._SUBSCRIPTION_STATES[alertGuiType][wotPlusCtrl.isEnabled()][servSettings.isFreeDeluxeEquipmentDemountingEnabled()]
+            if not optDevice.isRemovable:
+                if not optDevice.isModernized:
+                    if Currency.GOLD in removePrice:
+                        alertIconTooltipID = '#tooltips:vehicleSellDialog/renderer/alertIconGold'
+                    else:
+                        alertIconTooltipID = '#tooltips:vehicleSellDialog/renderer/alertIconCrystal'
+            return alertIconTooltipID
+
+        @classmethod
+        def _getType(cls, optDevice):
+            if optDevice.isDeluxe:
+                return cls._DELUXE
+            if optDevice.isModernized and (optDevice.level == 2 or optDevice.level == 3):
+                return cls._MODERNIZED_HIGH
+            return cls._STANDARD
+
     def __init__(self, optDevice):
         super(_OptionalDeviceData, self).__init__(optDevice, FITTING_TYPES.OPTIONAL_DEVICE)
         isWotPlusEnabled = self.__wotPlus.isWotPlusEnabled()
@@ -677,7 +722,8 @@ class _OptionalDeviceData(_VSDItemData):
         removalPrice = optDevice.getRemovalPrice(self.__itemsCache.items)
         if removalPrice.isActionPrice():
             self._flashData['removeActionPrice'] = packActionTooltipData(ACTION_TOOLTIPS_TYPE.ECONOMICS, 'paidRemovalCost', True, removalPrice.price, removalPrice.defPrice)
-        isFreeEquipmentDemountingEnabled = self.__lobbyContext.getServerSettings().isFreeEquipmentDemountingEnabled()
+        serverSettings = self.__lobbyContext.getServerSettings()
+        isFreeEquipmentDemountingEnabled = serverSettings.isFreeEquipmentDemountingEnabled()
         if isFreeEquipmentDemountingEnabled and isWotPlusEnabled and self.__wotPlus.isFreeToDemount(optDevice):
             self._itemRemovalPrice = _WOT_PLUS_ONE
         else:
@@ -685,3 +731,4 @@ class _OptionalDeviceData(_VSDItemData):
             if isDemountKitApplicableTo(optDevice):
                 self._itemRemovalPrice += _DEMOUNT_KIT_ONE
         self._flashData['removePrice'] = self._itemRemovalPrice.toDict()
+        self._flashData['alertIconDataID'] = self._AlertIconStateData.getData(serverSettings, optDevice, self._flashData['removePrice'], self.__wotPlus)

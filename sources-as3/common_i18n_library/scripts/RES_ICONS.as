@@ -14057,6 +14057,8 @@ package
       
       public static const MAPS_ICONS_LINKEDSET_PICTURES_MISSIONSET3BG3:String = "../maps/icons/linkedSet/pictures/missionSet3Bg3.png";
       
+      public static const MAPS_ICONS_LOBBY_AY_LOADING_BG:String = "../maps/icons/lobby/ay_loading_bg.png";
+      
       public static const MAPS_ICONS_LOBBY_BRWAITINGBG:String = "../maps/icons/lobby/brWaitingBg.png";
       
       public static const MAPS_ICONS_LOBBY_EVENTPOPOVERBTNBG:String = "../maps/icons/lobby/eventPopoverBtnBG.png";
@@ -18779,6 +18781,10 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_CREDITS:String = "../maps/icons/quests/bonuses/s180x135/credits.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_CRYSTAL:String = "../maps/icons/quests/bonuses/s180x135/crystal.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_DEFAULT:String = "../maps/icons/quests/bonuses/s180x135/default.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_DRIVER_SMOOTHDRIVING:String = "../maps/icons/quests/bonuses/s180x135/driver_smoothDriving.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_EMBLEM:String = "../maps/icons/quests/bonuses/s180x135/emblem.png";
@@ -18809,6 +18815,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_HANDEXTINGUISHERS:String = "../maps/icons/quests/bonuses/s180x135/handExtinguishers.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_IMPROVEDVENTILATION:String = "../maps/icons/quests/bonuses/s180x135/improvedVentilation.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_LARGEMEDKIT:String = "../maps/icons/quests/bonuses/s180x135/largeMedkit.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_LARGEREPAIRKIT:String = "../maps/icons/quests/bonuses/s180x135/largeRepairkit.png";
@@ -18823,6 +18831,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_RAMMER:String = "../maps/icons/quests/bonuses/s180x135/rammer.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_RECERTIFICATIONFORM:String = "../maps/icons/quests/bonuses/s180x135/recertificationForm.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_SLOTS:String = "../maps/icons/quests/bonuses/s180x135/slots.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_SMALLMEDKIT:String = "../maps/icons/quests/bonuses/s180x135/smallMedkit.png";
@@ -18834,6 +18844,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_TIMER:String = "../maps/icons/quests/bonuses/s180x135/timer.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_TURBOCHARGER:String = "../maps/icons/quests/bonuses/s180x135/turbocharger.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_VEHICLES:String = "../maps/icons/quests/bonuses/s180x135/vehicles.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_ADDITIONALINVISIBILITYDEVICE:String = "../maps/icons/quests/bonuses/s232x174/additionalInvisibilityDevice.png";
       
@@ -19185,6 +19197,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_PREMIUM_PLUS_UNIVERSAL:String = "../maps/icons/quests/bonuses/s296x222/premium_plus_universal.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_PREMIUM_UNIVERSAL:String = "../maps/icons/quests/bonuses/s296x222/premium_universal.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_PROGRESSIONSTYLE:String = "../maps/icons/quests/bonuses/s296x222/progressionStyle.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_QUALITYOIL:String = "../maps/icons/quests/bonuses/s296x222/qualityOil.png";
@@ -19534,6 +19548,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_PREMIUM_PLUS_90:String = "../maps/icons/quests/bonuses/s400x300/premium_plus_90.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_PREMIUM_PLUS_UNIVERSAL:String = "../maps/icons/quests/bonuses/s400x300/premium_plus_universal.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_PREMIUM_UNIVERSAL:String = "../maps/icons/quests/bonuses/s400x300/premium_universal.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_PROGRESSIONSTYLE:String = "../maps/icons/quests/bonuses/s400x300/progressionStyle.png";
       

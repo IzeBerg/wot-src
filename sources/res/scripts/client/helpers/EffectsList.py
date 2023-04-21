@@ -1,6 +1,7 @@
 import logging, random, string
 from collections import namedtuple
 from functools import partial
+from collections import defaultdict
 import AnimationSequence, BigWorld, Math, WWISE, DecalMap, SoundGroups, helpers, material_kinds
 from PixieBG import PixieBG
 from helpers import dependency
@@ -630,7 +631,8 @@ class _ShotSoundEffectDesc(_BaseSoundEvent):
         if vehicle is not None and vehicle.isAlive() and vehicle.isStarted:
             soundObject = vehicle.appearance.engineAudition.getSoundObject(TankSoundObjectsIndexes.GUN)
             if soundObject is not None:
-                soundName, _ = self._getName(args)
+                soundName, pID = self._getName(args)
+                self._registerCreatedSound(model, effects, soundObject, pID)
                 if IS_EDITOR:
                     distance = vehicle.position.length
                 else:
@@ -639,15 +641,14 @@ class _ShotSoundEffectDesc(_BaseSoundEvent):
                     soundObject.play(sndName)
 
                 soundObject.setRTPC('RTPC_ext_control_reflections_priority', distance)
-                self._registerCreatedSound(model, effects, soundObject)
         return
 
-    def _registerCreatedSound(self, model, effects, soundObject):
+    def _registerCreatedSound(self, model, effects, soundObject, pID):
         pass
 
 
 class _ContinuousShotSoundEffectDesc(_ShotSoundEffectDesc):
-    __slots__ = ('_soundName', '__stopSoundEventName')
+    __slots__ = ('_soundName', '__pcSoundObjectIDs')
     TYPE = '_ContinuousShotSoundEffectDesc'
 
     def __init__(self, dataSection):
@@ -659,21 +660,38 @@ class _ContinuousShotSoundEffectDesc(_ShotSoundEffectDesc):
          (
           dataSection.readString('soundStart/wwsoundNPC', ''),
           dataSection.readString('soundStop/wwsoundNPC', '')))
-        self.__stopSoundEventName = None
-        return
+        self.__pcSoundObjectIDs = defaultdict(int)
 
     def _getName(self, args):
         isPlayer, pID = self._isPlayer(args)
-        soundName, self.__stopSoundEventName = self._soundName[(0 if isPlayer else 1)]
+        soundName, _ = self._soundName[(0 if isPlayer else 1)]
         return ((soundName,), pID)
 
-    def _registerCreatedSound(self, model, effects, soundObject):
+    def _registerCreatedSound(self, model, effects, soundObject, pID):
+        if BigWorld.player().playerVehicleID == pID:
+            self.__registerPlayerSoundObject(soundObject)
         node = _findTargetNodeSafe(model, self._nodeName)
         self._register(effects, node, soundObject)
 
     def _handleDeleteSoundObject(self, soundObject, reason):
-        soundObject.play(self.__stopSoundEventName)
+        isPlayer = self.__isPlayerSoundObject(soundObject)
+        if isPlayer:
+            self.__unregisterPlayerSoundObject(soundObject)
+        _, stopEvent = self._soundName[(0 if isPlayer else 1)]
+        soundObject.play(stopEvent)
         super(_ContinuousShotSoundEffectDesc, self)._handleDeleteSoundObject(soundObject, reason)
+
+    def __isPlayerSoundObject(self, soundObject):
+        return id(soundObject) in self.__pcSoundObjectIDs
+
+    def __registerPlayerSoundObject(self, soundObject):
+        soundObjectID = id(soundObject)
+        self.__pcSoundObjectIDs[soundObjectID] += 1
+
+    def __unregisterPlayerSoundObject(self, soundObject):
+        soundObjectID = id(soundObject)
+        newValue = self.__pcSoundObjectIDs[soundObjectID] - 1
+        self.__pcSoundObjectIDs[soundObjectID] = max(0, newValue)
 
 
 class _NodeSoundEffectDesc(_BaseSoundEvent):

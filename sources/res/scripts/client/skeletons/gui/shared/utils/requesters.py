@@ -1184,3 +1184,10 @@ class IResourceWellRequester(IRequester):
 
     def getReward(self):
         raise NotImplementedError
+
+
+class IArmoryYardRequester(IRequester):
+
+    @property
+    def data(self):
+        raise NotImplementedError

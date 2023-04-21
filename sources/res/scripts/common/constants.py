@@ -800,6 +800,7 @@ class Configs(enum.Enum):
     PLAY_LIMITS_CONFIG = 'play_limits_config'
     PRE_MODERATION_CONFIG = 'pre_moderation_config'
     SPAM_PROTECTION_CONFIG = 'spam_protection_config'
+    ARMORY_YARD_CONFIG = 'armory_yard_config'
     COLLECTIONS_CONFIG = 'collections_config'
     WINBACK_CONFIG = 'winback_config'
 
@@ -1604,6 +1605,10 @@ class REQUEST_COOLDOWN:
     SET_VIVOX_PRESENCE = 0.5
     UNIT_UPDATE_EXTRAS = 2.0
     SURVEY_RESULT = 1.0
+    ARMORY_YARD_COLLECT_REWARDS = 1.0
+    ARMORY_YARD_BUY_STEPS = 1.0
+    ARMORY_YARD_CLAIM_FINAL_REWARDS = 1.0
+    DEV_ARMORY_YARD_ADD_TOKEN_S = 1.0
 
 
 IS_SHOW_INGAME_HELP_FIRST_TIME = False
@@ -1924,7 +1929,8 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    111: 'Competitive7x7 carousel filter 2', 
    112: 'Enemy marker setting', 
    113: 'Dead marker setting', 
-   114: 'Ally marker setting'}
+   114: 'Ally marker setting', 
+   31001: 'Armory Yard progression'}
 
 class WG_GAMES:
     TANKS = 'wot'

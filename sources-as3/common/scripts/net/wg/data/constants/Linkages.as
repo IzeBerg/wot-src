@@ -1054,6 +1054,10 @@ package net.wg.data.constants
       public static const COMP7_BATTLE_LOADING_TIPS_RENDERERS:String = "Comp7BattleTipRenderersUI";
       
       public static const BADGE_SUFFIX_ITEM:String = "SuffixItemUI";
+      
+      public static const ARMORY_YARD_ENTRY_POINT:String = "ArmoryYardEntryPointUI";
+      
+      public static const ARMORY_YARD_WIDGET:String = "ArmoryYardCarouselWidgetUI";
        
       
       public function Linkages()

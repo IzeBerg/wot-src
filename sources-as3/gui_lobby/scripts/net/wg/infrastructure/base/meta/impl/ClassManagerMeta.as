@@ -1235,6 +1235,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.interfaces.IVehicleParameters;
    import net.wg.gui.lobby.hangar.mapBox.MapBoxItemRenderer;
    import net.wg.gui.lobby.hangar.mapBox.data.MapBoxItemVO;
+   import net.wg.gui.lobby.hangar.quests.ArmoryYardEntryPoint;
    import net.wg.gui.lobby.hangar.quests.BattleMattersEntryPoint;
    import net.wg.gui.lobby.hangar.quests.BattlePassEntryPoint;
    import net.wg.gui.lobby.hangar.quests.CollectiveGoalEntryPoint;
@@ -5916,6 +5917,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_MAPBOX_MAPBOXITEMRENDERER:Class = MapBoxItemRenderer;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_MAPBOX_DATA_MAPBOXITEMVO:Class = MapBoxItemVO;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_ARMORYYARDENTRYPOINT:Class = ArmoryYardEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_BATTLEMATTERSENTRYPOINT:Class = BattleMattersEntryPoint;
       

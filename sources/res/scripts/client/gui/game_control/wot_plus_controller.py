@@ -127,8 +127,15 @@ class WotPlusController(IWotPlusController):
         return self._cache.get('isEnabled', False)
 
     def isFreeToDemount(self, device):
-        isFreeEquipmentDemountingEnabled = self._lobbyContext.getServerSettings().isFreeEquipmentDemountingEnabled()
-        return isFreeEquipmentDemountingEnabled and self.isEnabled() and not (device.isModernized and device.level > 1)
+        gs = self._lobbyContext.getServerSettings()
+        if not gs.isFreeEquipmentDemountingEnabled():
+            return False
+        if device.isDeluxe and not gs.isFreeDeluxeEquipmentDemountingEnabled():
+            return False
+        if device.isModernized:
+            if device.level > 1:
+                return False
+        return self.isEnabled()
 
     def getState(self):
         return self._state

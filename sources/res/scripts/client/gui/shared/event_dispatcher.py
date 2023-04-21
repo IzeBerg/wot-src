@@ -62,7 +62,7 @@ from items import ITEM_TYPES, parseIntCompactDescr, vehicles as vehicles_core
 from nations import NAMES
 from shared_utils import first
 from skeletons.gui.app_loader import IAppLoader
-from skeletons.gui.game_control import IBrowserController, IClanNotificationController, ICollectionsSystemController, IHeroTankController, IMarathonEventsController, IReferralProgramController, IResourceWellController, IWotPlusController
+from skeletons.gui.game_control import IBrowserController, IClanNotificationController, ICollectionsSystemController, IHeroTankController, IMarathonEventsController, IReferralProgramController, IResourceWellController, IWotPlusController, IArmoryYardController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import IGuiLoader, INotificationWindowController
 from skeletons.gui.lobby_context import ILobbyContext
@@ -566,13 +566,17 @@ def goToHeroTankOnScene(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, 
     from HeroTank import HeroTank
     from ClientSelectableCameraObject import ClientSelectableCameraObject
     marathonCtrl = dependency.instance(IMarathonEventsController)
+    armoryYardCtrl = dependency.instance(IArmoryYardController)
     for entity in BigWorld.entities.values():
         if entity and isinstance(entity, HeroTank):
             descriptor = entity.typeDescriptor
             if descriptor:
                 marathons = marathonCtrl.getMarathons()
                 activeMarathon = next((marathon for marathon in marathons if marathon.vehicleID == descriptor.type.compactDescr), None)
-                if activeMarathon:
+                isArmoryYard = armoryYardCtrl is not None and armoryYardCtrl.isActive() and armoryYardCtrl.getFinalRewardVehicle().intCD == descriptor.type.compactDescr
+                if isArmoryYard:
+                    armoryYardCtrl.showHeroTankVehiclePreview()
+                elif activeMarathon:
                     title = backport.text(R.strings.marathon.vehiclePreview.buyingPanel.title())
                     showMarathonVehiclePreview(descriptor.type.compactDescr, activeMarathon.remainingPackedRewards, title, activeMarathon.prefix, True)
                 elif isResourceWellRewardVehicle(descriptor.type.compactDescr):

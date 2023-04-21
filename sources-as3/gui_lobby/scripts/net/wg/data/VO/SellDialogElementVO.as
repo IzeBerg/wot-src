@@ -40,6 +40,8 @@ package net.wg.data.VO
       
       public var sellActionPriceVo:ActionPriceVO = null;
       
+      public var alertIconDataID:String = "";
+      
       private var _disposed:Boolean = false;
       
       public function SellDialogElementVO()

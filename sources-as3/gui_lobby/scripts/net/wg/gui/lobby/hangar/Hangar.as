@@ -60,7 +60,7 @@ package net.wg.gui.lobby.hangar
       
       private static const INVALIDATE_AMMUNITION_PANEL_SIZE:String = "InvalidateAmmunitionPanelSize";
       
-      private static const INVALIDATE_EVENT_LOOT_BOXES_VISIBLE:String = "invalidateEventLootBoxesVisible";
+      private static const INVALIDATE_CAROUSEL_EVENT_ENTRY_STATE:String = "invalidateCarouselEventEntryState";
       
       private static const INVALIDATE_COMP7_MODIFIERS_VISIBILITY:String = "invalidComp7Modifiers";
       
@@ -154,9 +154,7 @@ package net.wg.gui.lobby.hangar
       
       private static const WIDGETS_OFFSET_Y:int = 64;
       
-      private static const CAROUSEL_EVENT_ENTRY_X_OFFSET:int = -65;
-      
-      private static const CAROUSEL_EVENT_ENTRY_Y_OFFSET:int = 127;
+      private static const CAROUSEL_EVENT_ENTRY_MARGIN:int = 1;
        
       
       public var vehResearchPanel:ResearchPanel;
@@ -187,7 +185,7 @@ package net.wg.gui.lobby.hangar
       
       public var dqWidget:DailyQuestWidget;
       
-      public var carouselEventEntry:CarouselEventEntry = null;
+      public var carouselEventEntry:CarouselEventEntry;
       
       public var crewXPPanelInject:CrewXPPanelInject;
       
@@ -251,7 +249,7 @@ package net.wg.gui.lobby.hangar
       
       private var _carouselEventEntryContainer:Sprite = null;
       
-      private var _carouselEventEntryVisible:Boolean = true;
+      private var _carouselEventEntryVisible:Boolean = false;
       
       public function Hangar()
       {
@@ -273,7 +271,7 @@ package net.wg.gui.lobby.hangar
          addChildAt(this._header,getChildIndex(this.vehResearchPanel as DisplayObject) + 1);
          this._carouselEventEntryContainer = new Sprite();
          addChild(this._carouselEventEntryContainer);
-         this._carouselEventEntryContainer.name = "eventLootBoxesContainer";
+         this._carouselEventEntryContainer.name = "carouselEventEntryContainer";
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
@@ -282,10 +280,9 @@ package net.wg.gui.lobby.hangar
          _originalWidth = param1;
          _originalHeight = param2;
          setSize(param1,param2);
-         if(this.carousel != null)
+         if(this._carousel != null)
          {
-            this.carousel.updateStage(param1,param2);
-            this.updateCarouselPosition();
+            this._carousel.updateStage(param1,param2);
          }
          if(this.bottomBg != null)
          {
@@ -361,7 +358,7 @@ package net.wg.gui.lobby.hangar
          this.teaser.removeEventListener(TeaserEvent.HIDE,this.onTeaserHideHandler);
          this.switchModePanel.removeEventListener(ComponentEvent.SHOW,this.onSwitchModePanelShowHandler);
          this.switchModePanel.removeEventListener(ComponentEvent.HIDE,this.onSwitchModePanelHideHandler);
-         this.carousel.removeEventListener(Event.RESIZE,this.onCarouselResizeHandler);
+         this._carousel.removeEventListener(Event.RESIZE,this.onCarouselResizeHandler);
          if(this._hangarViewSwitchAnimator)
          {
             this._hangarViewSwitchAnimator.dispose();
@@ -470,7 +467,7 @@ package net.wg.gui.lobby.hangar
          var _loc3_:Boolean = false;
          if(isInvalid(INVALIDATE_CAROUSEL_SIZE))
          {
-            this.carousel.visible = true;
+            this._carousel.visible = true;
             this.updateCarouselPosition();
             this.updateCrewSize();
             if(hasEventListener(Event.RESIZE))
@@ -488,12 +485,13 @@ package net.wg.gui.lobby.hangar
             this.updateBRComponentsPos();
             _loc1_ = true;
             _loc3_ = true;
+            invalidate(INVALIDATE_CAROUSEL_EVENT_ENTRY_STATE);
          }
          if(isInvalid(INVALIDATE_COMP7_MODIFIERS_VISIBILITY))
          {
             _loc2_ = true;
          }
-         if(isInvalid(INVALIDATE_EVENT_LOOT_BOXES_VISIBLE))
+         if(isInvalid(INVALIDATE_CAROUSEL_EVENT_ENTRY_STATE))
          {
             if(this._carouselEventEntryVisible)
             {
@@ -505,13 +503,11 @@ package net.wg.gui.lobby.hangar
                if(!isFlashComponentRegisteredS(HANGAR_ALIASES.CAROUSEL_EVENT_ENTRY_HOLDER))
                {
                   registerFlashComponentS(this.carouselEventEntry,HANGAR_ALIASES.CAROUSEL_EVENT_ENTRY_HOLDER);
+                  this.carouselEventEntry.updateStateS();
                }
-               this.carouselEventEntry.visible = true;
-               this.carouselEventEntry.updateStateS();
             }
             else if(this.carouselEventEntry)
             {
-               this.carouselEventEntry.updateStateS();
                if(isFlashComponentRegisteredS(HANGAR_ALIASES.CAROUSEL_EVENT_ENTRY_HOLDER))
                {
                   unregisterFlashComponentS(HANGAR_ALIASES.CAROUSEL_EVENT_ENTRY_HOLDER);
@@ -519,11 +515,13 @@ package net.wg.gui.lobby.hangar
                this._carouselEventEntryContainer.removeChild(this.carouselEventEntry);
                this.carouselEventEntry = null;
             }
-            if(this.carousel)
+            if(this._carousel && this.carouselEventEntry)
             {
-               this.carousel.setRightMargin(!!this._carouselEventEntryVisible ? int(CarouselEventEntry.WIDTH + CAROUSEL_EVENT_ENTRY_X_OFFSET) : int(0));
+               this.carouselEventEntry.isSmall = this._carousel.isSmall;
+               this._carousel.setRightMargin(!!this._carouselEventEntryVisible ? int(this.carouselEventEntry.width) : int(0));
+               this.carouselEventEntry.x = this._carousel.width - this.carouselEventEntry.width + CAROUSEL_EVENT_ENTRY_MARGIN;
+               this.carouselEventEntry.y = this._carousel.y - CAROUSEL_EVENT_ENTRY_MARGIN;
             }
-            this.updateEventLootBoxWidgetPosition();
          }
          if(_loc1_)
          {
@@ -652,25 +650,21 @@ package net.wg.gui.lobby.hangar
       
       public function as_setCarousel(param1:String, param2:String) : void
       {
-         if(this.carousel != null)
+         if(this._carousel != null)
          {
-            this.carousel.removeEventListener(Event.RESIZE,this.onCarouselResizeHandler);
-            this.carouselContainer.removeChild(this.carousel);
+            this._carousel.removeEventListener(Event.RESIZE,this.onCarouselResizeHandler);
+            this.carouselContainer.removeChild(this._carousel);
             unregisterFlashComponentS(this._carouselAlias);
          }
          this._carouselAlias = param2;
          this._carousel = App.instance.utils.classFactory.getComponent(param1,TankCarousel);
-         this.carousel.visible = false;
-         if(this._carouselEventEntryVisible)
-         {
-            this.carousel.setRightMargin(CarouselEventEntry.WIDTH + CAROUSEL_EVENT_ENTRY_X_OFFSET);
-         }
-         this.carousel.addEventListener(Event.RESIZE,this.onCarouselResizeHandler);
-         this.carousel.updateStage(_originalWidth,_originalHeight);
-         this.carousel.name = CAROUSEL_NAME;
-         this.carouselContainer.addChild(this.carousel);
-         registerFlashComponentS(this.carousel,this._carouselAlias);
-         this.carousel.validateNow();
+         this._carousel.visible = false;
+         this._carousel.addEventListener(Event.RESIZE,this.onCarouselResizeHandler);
+         this._carousel.updateStage(_originalWidth,_originalHeight);
+         this._carousel.name = CAROUSEL_NAME;
+         this.carouselContainer.addChild(this._carousel);
+         registerFlashComponentS(this._carousel,this._carouselAlias);
+         this._carousel.validateNow();
          invalidate(INVALIDATE_CAROUSEL_SIZE);
       }
       
@@ -827,7 +821,7 @@ package net.wg.gui.lobby.hangar
          if(param1 != this._carouselEventEntryVisible)
          {
             this._carouselEventEntryVisible = param1;
-            invalidate(INVALIDATE_EVENT_LOOT_BOXES_VISIBLE);
+            invalidate(INVALIDATE_CAROUSEL_EVENT_ENTRY_STATE);
          }
       }
       
@@ -1127,7 +1121,6 @@ package net.wg.gui.lobby.hangar
       private function updateCarouselPosition() : void
       {
          this._carousel.updateCarouselPosition(_height - this._carousel.getBottom() ^ 0);
-         this.updateEventLootBoxWidgetPosition();
          this.updateAmmunitionPanelPosition();
          if(this._hangarViewSwitchAnimator)
          {
@@ -1141,20 +1134,6 @@ package net.wg.gui.lobby.hangar
          {
             this._comp7ModifiersPanelInject.y = this.params.y + (this.params.visible && this.params.actualHeight + COMP7_MODIFIERS_PANEL_INJECT_OFFSET_Y) ^ 0;
             this._comp7ModifiersPanelInject.x = this.params.x + this.params.width - this._comp7ModifiersPanelInject.width + COMP7_MODIFIERS_PANEL_INJECT_OFFSET_X ^ 0;
-         }
-      }
-      
-      private function updateEventLootBoxWidgetPosition() : void
-      {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         if(this.carouselEventEntry && this._carousel)
-         {
-            _loc1_ = this.carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + CAROUSEL_EVENT_ENTRY_X_OFFSET;
-            _loc2_ = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1);
-            _loc2_ -= CAROUSEL_EVENT_ENTRY_Y_OFFSET;
-            this.carouselEventEntry.x = _loc1_;
-            this.carouselEventEntry.y = _loc2_;
          }
       }
       

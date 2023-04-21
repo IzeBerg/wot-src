@@ -245,6 +245,18 @@ class Winback(object):
     BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN = 'battleSelectorSettingsBulletShown'
 
 
+class ArmoryYard(object):
+    ARMORY_YARD_SETTINGS = 'armoryYardSettings'
+    ARMORY_YARD_LAST_INTRO_VIEWED = 'armoryYardLastIntroViewed'
+    ARMORY_YARD_PREV_COMPLETED_QUESTS = 'armoryYardPrevCompletedQuests'
+    EVENT_ANNOUNCEMENT = 'announcement'
+    ANNOUNCEMENT_CHAPTER_PREFIX = 'announcement_chapter'
+    CHAPTER_PREFIX = 'chapter'
+    FINISH_CHAPTER_PREFIX = 'finish_chapter'
+    START_CHAPTER_PREFIX = 'start_chapter'
+    STYLE_QUEST_ENDS = 'style_quest_ends'
+
+
 KNOWN_SELECTOR_BATTLES = 'knownSelectorBattles'
 MODE_SELECTOR_BATTLE_PASS_SHOWN = 'modeSelectorBattlePassShown'
 RANKED_LAST_CYCLE_ID = 'rankedLastCycleID'
@@ -1003,7 +1015,9 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                   LOOT_BOXES_EVENT_UNIQUE_ID: 0}}, 
                   Winback.WINBACK_SETTINGS: {Winback.COMPLETED_STARTING_QUEST_COUNT: 0, 
                                              Winback.INTRO_SHOWN: False, 
-                                             Winback.BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN: False}}, 
+                                             Winback.BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN: False}, 
+                  ArmoryYard.ARMORY_YARD_SETTINGS: {ArmoryYard.ARMORY_YARD_LAST_INTRO_VIEWED: None, 
+                                                    ArmoryYard.ARMORY_YARD_PREV_COMPLETED_QUESTS: {}}}, 
    KEY_COUNTERS: {NEW_HOF_COUNTER: {PROFILE_CONSTANTS.HOF_ACHIEVEMENTS_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VEHICLES_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VIEW_RATING_BUTTON: True}, 
@@ -1135,7 +1149,13 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                           OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES: set()}, 
    KEY_UI_FLAGS: {COMP7_UI_SECTION: {COMP7_WEEKLY_QUESTS_PAGE_TOKENS_COUNT: 0}, 
                   COLLECTIONS_SECTION: {COLLECTION_SHOWN_NEW_REWARDS: {}, COLLECTION_SHOWN_NEW_ITEMS: {}, COLLECTION_SHOWN_NEW_ITEMS_COUNT: {}, COLLECTION_TUTORIAL_COMPLETED: set(), 
-                                        COLLECTION_WAS_ENABLED: True}}}
+                                        COLLECTION_WAS_ENABLED: True}}, 
+   ArmoryYard.ARMORY_YARD_SETTINGS: {ArmoryYard.ARMORY_YARD_LAST_INTRO_VIEWED: None, 
+                                     ArmoryYard.ARMORY_YARD_PREV_COMPLETED_QUESTS: {}, ArmoryYard.EVENT_ANNOUNCEMENT: False, 
+                                     ArmoryYard.ANNOUNCEMENT_CHAPTER_PREFIX: False, 
+                                     ArmoryYard.CHAPTER_PREFIX: False, 
+                                     ArmoryYard.FINISH_CHAPTER_PREFIX: False, 
+                                     ArmoryYard.STYLE_QUEST_ENDS: False}}
 
 def _filterAccountSection(dataSec):
     for key, section in dataSec.items()[:]:
@@ -1930,6 +1950,14 @@ class AccountSettings(object):
             cls._setValue(BattleMatters.BATTLE_MATTERS_SETTINGS, bmSection, KEY_SETTINGS)
         else:
             _logger.error("Cann't set value in %s section.", BattleMatters.BATTLE_MATTERS_SETTINGS)
+
+    @staticmethod
+    def getArmoryYard(name):
+        return AccountSettings._getValue(name, ArmoryYard.ARMORY_YARD_SETTINGS, True)
+
+    @staticmethod
+    def setArmoryYard(name, value):
+        AccountSettings._setValue(name, value, ArmoryYard.ARMORY_YARD_SETTINGS, True)
 
     @staticmethod
     def _getValue(name, setting, force=False):

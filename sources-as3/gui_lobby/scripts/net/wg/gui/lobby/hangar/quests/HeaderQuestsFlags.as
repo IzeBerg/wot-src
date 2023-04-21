@@ -416,7 +416,7 @@ package net.wg.gui.lobby.hangar.quests
          if(this._secondaryEntryPointLeft)
          {
             _loc7_ = !!this._isSmall ? int(SECONDARY_OFFSET_LEFT_X_SMALL) : int(SECONDARY_OFFSET_LEFT_X);
-            this._secondaryEntryPointLeft.x = -((this.entryPointWidth >> 1) + this._secondaryEntryPointLeft.width + this.entryPointMarginLeft + _loc7_) | 0;
+            this._secondaryEntryPointLeft.x = -((this.entryPointWidth >> 1) + this._secondaryEntryPointLeft.width + this.entryPointMarginLeft + _loc7_ - this.secondaryEntryPointLeftOffset) | 0;
             this._secondaryEntryPointLeft.y = this.entryPointMarginTop | 0;
          }
          if(this._secondaryEntryPointRight)
@@ -699,6 +699,15 @@ package net.wg.gui.lobby.hangar.quests
             this._flagsOffsetY = param1;
             invalidateSize();
          }
+      }
+      
+      private function get secondaryEntryPointLeftOffset() : int
+      {
+         if(this._secondaryEntryPointLeft is ArmoryYardEntryPoint)
+         {
+            return ArmoryYardEntryPoint(this._secondaryEntryPointLeft).glowAreaOffset;
+         }
+         return 0;
       }
       
       private function get entryPointWidth() : int

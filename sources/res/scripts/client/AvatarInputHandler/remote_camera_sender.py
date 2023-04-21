@@ -2,7 +2,7 @@ import weakref, BigWorld
 from aih_constants import CTRL_MODES
 from AvatarInputHandler.commands.input_handler_command import InputHandlerCommand
 from AvatarInputHandler.control_modes import ArcadeControlMode, SniperControlMode, DualGunControlMode, StrategicControlMode, ArtyControlMode, FlamethrowerControlMode
-from BigWorld import ArcadeAimingSystem, SniperAimingSystem, DualGunAimingSystem, StrategicAimingSystem, ArtyAimingSystem, FlameArtyAimingSystem
+from BigWorld import ArcadeAimingSystem, SniperAimingSystem, DualGunAimingSystem, StrategicAimingSystem, ArtyAimingSystem
 from AvatarInputHandler.MapCaseMode import MapCaseControlModeBase
 from system_events import g_systemEvents
 
@@ -16,6 +16,7 @@ class RemoteCameraSender(InputHandlerCommand):
         g_systemEvents.onBeforeSend -= self.__sendCameraData
 
     def __sendCameraData(self):
+        from BigWorld import FlameArtyAimingSystem
         player = BigWorld.player()
         if player.isObserver() or not player.arena.hasObservers:
             return

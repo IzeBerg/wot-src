@@ -1,5 +1,4 @@
 import BigWorld
-from BigWorld import FlameArtyAimingSystemRemote, FlameArtyAimingSystem
 from AvatarInputHandler.DynamicCameras.ArtyCamera import ArtyCamera
 
 def getCameraAsSettingsHolder(settingsDataSec):
@@ -10,6 +9,7 @@ class FlameArtyCamera(ArtyCamera):
 
     @staticmethod
     def _createAimingSystem():
+        from BigWorld import FlameArtyAimingSystemRemote, FlameArtyAimingSystem
         if BigWorld.player().isObserver():
             return FlameArtyAimingSystemRemote(BigWorld.player().getVehicleDescriptor().shot.maxDistance)
         return FlameArtyAimingSystem(BigWorld.player().getVehicleDescriptor().shot.maxDistance)

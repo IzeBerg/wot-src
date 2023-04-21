@@ -8,7 +8,7 @@ package net.wg.infrastructure.base.meta
       
       function as_showWaiting(param1:String, param2:Boolean) : void;
       
-      function as_showBackgroundImg(param1:String) : void;
+      function as_showBackgroundImg(param1:String, param2:Boolean) : void;
       
       function as_hideWaiting() : void;
       

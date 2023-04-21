@@ -91,7 +91,7 @@ class IVehPreviewDataProvider(object):
     def getBuyType(self, vehicle):
         raise NotImplementedError
 
-    def getBuyingPanelData(self, item, data=None, isHeroTank=False, itemsPack=None):
+    def getBuyingPanelData(self, item, data=None, isHeroTank=False, itemsPack=None, uniqueVehicleTitle=None):
         raise NotImplementedError
 
 
@@ -103,13 +103,14 @@ class DefaultVehPreviewDataProvider(IVehPreviewDataProvider):
             return factory.BUY_VEHICLE
         return factory.UNLOCK_ITEM
 
-    def getBuyingPanelData(self, item, data=None, isHeroTank=False, itemsPack=None):
-        isBuyingAvailable = not isHeroTank and (not item.isHidden or item.isRentable or item.isRestorePossible()) and not item.isWotPlus
-        uniqueVehicleTitle = ''
-        if item.isWotPlus:
-            uniqueVehicleTitle = text_styles.tutorial(backport.text(R.strings.vehicle_preview.buyingPanel.availableForWotPlus()))
-        elif not (isBuyingAvailable or isHeroTank):
-            uniqueVehicleTitle = text_styles.tutorial(backport.text(R.strings.vehicle_preview.buyingPanel.uniqueVehicleLabel()))
+    def getBuyingPanelData(self, item, data=None, isHeroTank=False, itemsPack=None, uniqueVehicleTitle=None):
+        isBuyingAvailable = not isHeroTank and not item.isWotPlus and (not item.isHidden or item.isRentable or item.isRestorePossible())
+        if uniqueVehicleTitle is None:
+            uniqueVehicleTitle = ''
+            if item.isWotPlus:
+                uniqueVehicleTitle = text_styles.tutorial(backport.text(R.strings.vehicle_preview.buyingPanel.availableForWotPlus()))
+            elif not (isBuyingAvailable or isHeroTank):
+                uniqueVehicleTitle = text_styles.tutorial(backport.text(R.strings.vehicle_preview.buyingPanel.uniqueVehicleLabel()))
         compensationData = self.__getCompensationData(itemsPack)
         resultVO = {'setTitle': data.title, 
            'uniqueVehicleTitle': uniqueVehicleTitle, 
@@ -134,10 +135,10 @@ class DefaultVehPreviewDataProvider(IVehPreviewDataProvider):
             resultVO.update({'customOffer': customOffer})
         return resultVO
 
-    def getItemPackBuyingPanelData(self, data, itemsPack, couponSelected, price):
+    def getItemPackBuyingPanelData(self, data, itemsPack, couponSelected, price, uniqueVehicleTitle=None):
         compensationData = self.__getCompensationData(itemsPack)
         resultVO = {'setTitle': data.title, 
-           'uniqueVehicleTitle': '', 
+           'uniqueVehicleTitle': uniqueVehicleTitle or '', 
            'vehicleId': 0, 
            'couponDiscount': getCouponDiscountForItemPack(itemsPack, price).gold if couponSelected else 0, 
            'isBuyingAvailable': True, 
@@ -158,9 +159,9 @@ class DefaultVehPreviewDataProvider(IVehPreviewDataProvider):
             resultVO.update({'customOffer': data.customOffer})
         return resultVO
 
-    def getOffersBuyingPanelData(self, data):
+    def getOffersBuyingPanelData(self, data, uniqueVehicleTitle=None):
         return {'setTitle': data.title, 
-           'uniqueVehicleTitle': '', 
+           'uniqueVehicleTitle': uniqueVehicleTitle or '', 
            'vehicleId': 0, 
            'couponDiscount': 0, 
            'isBuyingAvailable': True, 

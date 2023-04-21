@@ -94,9 +94,9 @@ package net.wg.gui.components.common.waiting
          this.updateAwardsPosition();
       }
       
-      public function as_showBackgroundImg(param1:String) : void
+      public function as_showBackgroundImg(param1:String, param2:Boolean) : void
       {
-         this.waitingComponent.setBackgroundImg(param1);
+         this.waitingComponent.setBackgroundImg(param1,param2);
       }
       
       public function as_showWaiting(param1:String, param2:Boolean) : void

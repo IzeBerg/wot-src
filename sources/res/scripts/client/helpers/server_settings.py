@@ -1194,6 +1194,30 @@ class _EventLootBoxesConfig(object):
          self.__startDateInUTC, self.__finishDateInUTC)
 
 
+class ArmoryYardConfig(namedtuple('ArmoryYardConfig', (
+ 'isEnabled', 'isPaused', 'seasons', 'animations', 'cycleTimes', 'tokenBase', 'receivedRewardTokenPostfix',
+ 'stageTokenPostfix', 'currencyTokenPostfix', 'tokenCost', 'rewards', 'introVideoLink', 'infoPageLink',
+ 'activeHoursCountdown', 'announcementCountdown'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(isEnabled=False, isPaused=False, seasons={}, animations={}, cycleTimes={}, tokenBase='', receivedRewardTokenPostfix='', stageTokenPostfix='', currencyTokenPostfix='', tokenCost={}, rewards={}, introVideoLink='', infoPageLink='', activeHoursCountdown=0, announcementCountdown=0)
+        defaults.update(kwargs)
+        return super(ArmoryYardConfig, cls).__new__(cls, **defaults)
+
+    def asDict(self):
+        return self._asdict()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+
 class ServerSettings(object):
 
     def __init__(self, serverSettings):
@@ -1383,6 +1407,10 @@ class ServerSettings(object):
             self.__winbackConfig = makeTupleByDict(WinbackConfig, self.__serverSettings[Configs.WINBACK_CONFIG.value])
         else:
             self.__winbackConfig = WinbackConfig.defaults()
+        if Configs.ARMORY_YARD_CONFIG.value in self.__serverSettings:
+            self.__armoryYardSettings = makeTupleByDict(ArmoryYardConfig, self.__serverSettings[Configs.ARMORY_YARD_CONFIG.value])
+        else:
+            self.__armoryYardSettings = ArmoryYardConfig.defaults()
         self.onServerSettingsChange(serverSettings)
 
     def update(self, serverSettingsDiff):
@@ -1486,6 +1514,8 @@ class ServerSettings(object):
             self.__updateCollectiveGoalEntryPointConfig(serverSettingsDiff)
         if Configs.COLLECTIVE_GOAL_MARATHONS_CONFIG.value in serverSettingsDiff:
             self.__updateCollectiveGoalMarathonsConfig(serverSettingsDiff)
+        if Configs.ARMORY_YARD_CONFIG.value in serverSettingsDiff:
+            self.__updateArmoryYard(serverSettingsDiff)
         self.__updatePersonalReserves(serverSettingsDiff)
         self.__updateEventLootBoxesConfig(serverSettingsDiff)
         if Configs.COLLECTIONS_CONFIG.value in serverSettingsDiff:
@@ -1654,6 +1684,10 @@ class ServerSettings(object):
     def winbackConfig(self):
         return self.__winbackConfig
 
+    @property
+    def armoryYard(self):
+        return self.__armoryYardSettings
+
     def isEpicBattleEnabled(self):
         return self.epicBattles.isEnabled
 
@@ -1816,6 +1850,9 @@ class ServerSettings(object):
 
     def isFreeEquipmentDemountingEnabled(self):
         return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeEquipmentDemounting', True)
+
+    def isFreeDeluxeEquipmentDemountingEnabled(self):
+        return self.isFreeEquipmentDemountingEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeDeluxeEquipmentDemounting', True)
 
     def getRenewableSubCrewXPPerMinute(self):
         return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('crewXPPerMinute', 0)
@@ -2132,6 +2169,9 @@ class ServerSettings(object):
 
     def __updateWinbackConfig(self, diff):
         self.__winbackConfig = self.__winbackConfig.replace(diff[Configs.WINBACK_CONFIG.value])
+
+    def __updateArmoryYard(self, diff):
+        self.__armoryYardSettings = self.__armoryYardSettings.replace(diff[Configs.ARMORY_YARD_CONFIG.value])
 
 
 def serverSettingsChangeListener(*configKeys):

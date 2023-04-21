@@ -6,7 +6,7 @@ from gui.impl.gen.view_models.views.lobby.tank_setup.sub_views.base_slot_model i
 class OptDeviceSlotModel(BaseSlotModel):
     __slots__ = ()
 
-    def __init__(self, properties=29, commands=0):
+    def __init__(self, properties=30, commands=0):
         super(OptDeviceSlotModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -61,11 +61,17 @@ class OptDeviceSlotModel(BaseSlotModel):
     def setLevel(self, value):
         self._setNumber(27, value)
 
+    def getDestroyTooltipBodyPath(self):
+        return self._getString(28)
+
+    def setDestroyTooltipBodyPath(self, value):
+        self._setString(28, value)
+
     def getActiveSpecsMask(self):
-        return self._getNumber(28)
+        return self._getNumber(29)
 
     def setActiveSpecsMask(self, value):
-        self._setNumber(28, value)
+        self._setNumber(29, value)
 
     def _initialize(self):
         super(OptDeviceSlotModel, self)._initialize()
@@ -77,4 +83,5 @@ class OptDeviceSlotModel(BaseSlotModel):
         self._addBoolProperty('isUpgradable', False)
         self._addResourceProperty('effect', R.invalid())
         self._addNumberProperty('level', 0)
+        self._addStringProperty('destroyTooltipBodyPath', '')
         self._addNumberProperty('activeSpecsMask', 0)
