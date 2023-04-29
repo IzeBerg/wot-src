@@ -74,15 +74,19 @@ class GetLastListenedMessage(Block, AYMeta):
         self._index = self._makeDataOutputSlot('index', SLOT_TYPE.INT, self._execute)
 
     def _execute(self):
-        currentSeason = self.__ayController.serverSettings.getCurrentSeason().getSeasonID()
-        sectionName = AY_SECTION_TEMPLATE + '_' + str(currentSeason)
-        section = settings.g_instance.userPrefs
-        if not section.has_key(sectionName):
-            self._index.setValue(0)
+        currentSeason = self.__ayController.serverSettings.getCurrentSeason()
+        if currentSeason is None:
             return
-        subsec = section[sectionName]
-        value = subsec.readInt(AY_SECTION_LAST_LISTENED_MESSAGE, 0)
-        self._index.setValue(value)
+        else:
+            sectionName = AY_SECTION_TEMPLATE + '_' + str(currentSeason.getSeasonID())
+            section = settings.g_instance.userPrefs
+            if not section.has_key(sectionName):
+                self._index.setValue(0)
+                return
+            subsec = section[sectionName]
+            value = subsec.readInt(AY_SECTION_LAST_LISTENED_MESSAGE, 0)
+            self._index.setValue(value)
+            return
 
 
 class SaveLastListenedMessage(Block, AYMeta):
@@ -95,14 +99,18 @@ class SaveLastListenedMessage(Block, AYMeta):
         self._out = self._makeEventOutputSlot('out')
 
     def _execute(self):
-        currentSeason = self.__ayController.serverSettings.getCurrentSeason().getSeasonID()
-        sectionName = AY_SECTION_TEMPLATE + '_' + str(currentSeason)
-        section = settings.g_instance.userPrefs
-        section.deleteSection(sectionName)
-        subsec = section.createSection(sectionName)
-        subsec.writeInt(AY_SECTION_LAST_LISTENED_MESSAGE, self._index.getValue())
-        settings.g_instance.save()
-        self._out.call()
+        currentSeason = self.__ayController.serverSettings.getCurrentSeason()
+        if currentSeason is None:
+            return
+        else:
+            sectionName = AY_SECTION_TEMPLATE + '_' + str(currentSeason.getSeasonID())
+            section = settings.g_instance.userPrefs
+            section.deleteSection(sectionName)
+            subsec = section.createSection(sectionName)
+            subsec.writeInt(AY_SECTION_LAST_LISTENED_MESSAGE, self._index.getValue())
+            settings.g_instance.save()
+            self._out.call()
+            return
 
 
 class OnStageFinish(Block, AYMeta):

@@ -17,7 +17,7 @@ msgstr ""
 "(n%100<10 || n%100>=20) ? 1 : 2);"
 
 msgid "buyView/backButton/mainView"
-msgstr "В СБОРОЧНЫЙ ЦЕХ"
+msgstr "В ЦЕХ"
 
 msgid "buyView/backButton/vehiclePreview"
 msgstr "В АНГАР ПРЕДПРОСМОТРА"
@@ -32,7 +32,7 @@ msgid "buyView/price"
 msgstr "Стоимость покупки: %(price)"
 
 msgid "buyView/reward/rest"
-msgstr "И еще: %(count)s"
+msgstr "И ещё: %(count)s"
 
 msgid "buyView/reward/rest/tooltip/header"
 msgstr "Награды"
@@ -57,7 +57,7 @@ msgid "buyView/title/h1"
 msgstr "СБОРОЧНЫЙ ЦЕХ"
 
 msgid "buyView/title/h2"
-msgstr "ПОКУПКА ЖЕТОНОВ СТРОИТЕЛЬСТВА"
+msgstr "ПОКУПКА ЖЕТОНОВ СБОРОЧНОГО ЦЕХА"
 
 msgid "buyView/title/h3"
 msgstr ""
@@ -68,7 +68,7 @@ msgid "buyView/vehiclePreview/label"
 msgstr "Предпросмотр"
 
 msgid "buyView/vehiclePreview/tooltip"
-msgstr "Нажмите, чтобы перейти к предпросмотру техники."
+msgstr "Нажмите, чтобы перейти к предпросмотру машины."
 
 msgid "closeBtn/label"
 msgstr "ЗАКРЫТЬ"
@@ -177,7 +177,7 @@ msgid "introView/season"
 msgstr "%(from)s - %(to)s"
 
 msgid "introView/vehicle/descr"
-msgstr "Забирайте огнемётный танк и поддайте огоньку!"
+msgstr "Заберите огнемётный танк и поддайте огоньку!"
 
 msgid "mainView/banner/button"
 msgstr "Докупить жетоны"
@@ -209,7 +209,7 @@ msgid "mainView/chapter/index/4"
 msgstr "Ходовая и экстерьер"
 
 msgid "mainView/chapter/quests/label"
-msgstr "%(par_open)sВыполнено заданий:%(par_close)s"
+msgstr "%(par_open)sВыполнено задач:%(par_close)s"
 
 msgid "mainView/chapter/quests/progress"
 msgstr "%(completed)s %(par_open)s/ %(total)s%(par_close)s"
@@ -269,11 +269,14 @@ msgstr "Этап строительства"
 msgid "mainView/progress/title"
 msgstr "СБОРОЧНЫЙ ЦЕХ"
 
-msgid "mainView/quest/currencyToken/completed"
-msgstr "Награда получена"
-
 msgid "mainView/quest/currencyToken/label"
 msgstr "Бонусная награда:"
+
+msgid "mainView/quest/currencyToken/rewardReceived"
+msgstr "Награда получена"
+
+msgid "mainView/quest/currencyToken/rewardsReceived"
+msgstr "Награды получены"
 
 msgid "mainView/quest/progress"
 msgstr "%(current)s %(par_open)s/ %(total)s%(par_close)s"
@@ -360,10 +363,10 @@ msgid "mainView/title/step/21"
 msgstr "Установка радиостанции"
 
 msgid "mainView/title/step/22"
-msgstr "Монтаж торсионов"
+msgstr "Обшивка"
 
 msgid "mainView/title/step/23"
-msgstr "Монтаж ведущего моста"
+msgstr "Монтаж ведущих катков"
 
 msgid "mainView/title/step/24"
 msgstr "Установка балансиров"
@@ -407,7 +410,7 @@ msgstr "Строительство завершено!"
 msgid "notifications/active"
 msgstr ""
 "Бойцы! Новое событие уже началось. Успейте пройти весь путь строительства "
-"уникальной машины: от набросков на кульмане до готовой боевой единице. В "
+"уникальной машины: от набросков на кульмане до готовой боевой единицы. В "
 "процессе прохождения вас ждёт множество ценных наград."
 
 msgid "notifications/announcement/chapter"
@@ -419,21 +422,22 @@ msgstr ""
 "огнемётный танк. Событие начинается %(startDate)s."
 
 msgid "notifications/collectRewards"
-msgstr "Не забудьте забрать награды за пройденые этапы Сборочного цеха."
+msgstr ""
+"Не забудьте забрать награды за пройденные этапы прогрессии Сборочного цеха."
 
 msgid "notifications/payed"
-msgstr "Жетоны Сборочного цеха (%(count)d шт.) успешно приобретены."
+msgstr "Жетоны Сборочного цеха (%(count)d шт.) приобретены."
 
 msgid "notifications/payed/error"
 msgstr "Произошла ошибка при покупке этапов. Пожалуйста, попробуйте ещё раз."
 
 msgid "notifications/postProgression"
 msgstr ""
-"Задачи события больше не доступны. Недостающие этапы можно докупить на "
-"экране события."
+"Задачи события более не доступны. Недостающие этапы можно докупить на экране"
+" события."
 
 msgid "notifications/rewards/title"
-msgstr "Этапы пройдены!"
+msgstr "Этапы пройдены"
 
 msgid "notifications/started/chapter"
 msgstr ""
@@ -460,7 +464,7 @@ msgstr ""
 "Эта машина — награда за прохождение прогрессии события «Сборочный цех»."
 
 msgid "prevView/button"
-msgstr "В сборочный цех"
+msgstr "В Сборочный цех"
 
 msgid "prevView/title"
 msgstr "Покупка недоступна"
@@ -474,7 +478,7 @@ msgstr ""
 "докупите недостающие этапы и забирайте главную награду."
 
 msgid "rewardsView/label/style"
-msgstr "3D стиль «Горыныч»"
+msgstr "Стиль «Горыныч»"
 
 msgid "rewardsView/subTitle/stage"
 msgid_plural "plural/rewardsView/subTitle/stage"
@@ -483,7 +487,7 @@ msgstr[1] "Получена награда за %(stages)s этапа строи
 msgstr[2] "Получена награда за %(stages)s этапов строительства машины"
 
 msgid "rewardsView/subTitle/style"
-msgstr "Вы получили награду за боевое задание"
+msgstr "Вы получили награду за боевую задачу"
 
 msgid "rewardsView/title/stage/many"
 msgstr "ЭТАПЫ ПРОЙДЕНЫ!"
@@ -507,7 +511,7 @@ msgid "tooltip/chapter/disabled/doFuture/noteDate"
 msgstr "%(color_open)sс %(startDate)s%(color_close)s"
 
 msgid "tooltip/chapter/disabled/doPrevious/body"
-msgstr "Выполните %(count)d задач предыдущей главы для доступа к текущей++"
+msgstr "Выполните ещё %(count)d задач предыдущей главы для доступа к текущей"
 
 msgid "tooltip/chapter/disabled/header"
 msgstr "Глава недоступна"
@@ -589,20 +593,34 @@ msgid "widget/active"
 msgstr "%(cream_open)sДо %(date)s%(cream_close)s"
 
 msgid "widget/activeLastHours"
-msgstr ""
-"%(whiteSpanish_open)sДо конца события: %(duration)s.%(whiteSpanish_close)s"
+msgstr "%(cream_open)sДо конца события: %(countdown)s.%(cream_close)s"
 
 msgid "widget/beforeProgression"
-msgstr "%(cream_open)sДо открытия: %(date)s%(cream_close)s"
+msgstr "%(cream_open)sДо открытия: %(countdown)s%(cream_close)s"
 
 msgid "widget/completed"
 msgstr "%(greenBright_open)sГлавная награда получена%(greenBright_close)s"
+
+msgid "widget/countdown/days"
+msgid_plural "widget/countdown/days"
+msgstr[0] "{value} день"
+msgstr[1] "{value} дня"
+msgstr[2] "{value} дней"
+
+msgid "widget/countdown/hours"
+msgstr "%(hour)s ч %(min)s мин"
+
+msgid "widget/countdown/min"
+msgstr "%(min)s мин"
+
+msgid "widget/countdown/sec"
+msgstr "< 1 мин"
 
 msgid "widget/disabled"
 msgstr "%(cream_open)sСобытие временно недоступно%(cream_close)s"
 
 msgid "widget/postProgression"
-msgstr "%(cream_open)sПокупка доступна ещё: %(duration)s%(cream_close)s"
+msgstr "%(cream_open)sПокупка доступна ещё: %(countdown)s%(cream_close)s"
 
 msgid "widget/progress"
 msgstr "%(par_open)s%(current)s / %(total)s%(par_close)s"

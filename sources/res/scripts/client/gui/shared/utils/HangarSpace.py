@@ -117,6 +117,7 @@ class HangarVideoCameraController(object):
             self.__videoCamera.enable()
             self.appLoader.detachCursor(app_settings.APP_NAME_SPACE.SF_LOBBY)
             BigWorld.player().objectsSelectionEnabled(False)
+            self.hangarSpace.setSelectionEnabled(False)
             g_eventDispatcher.loadHangar()
             return
 
@@ -125,6 +126,7 @@ class HangarVideoCameraController(object):
         BigWorld.camera(self.hangarSpace.space.camera)
         self.appLoader.attachCursor(app_settings.APP_NAME_SPACE.SF_LOBBY, _CTRL_FLAG.GUI_ENABLED)
         BigWorld.player().objectsSelectionEnabled(True)
+        self.hangarSpace.setSelectionEnabled(True)
 
     def handleMouseEvent(self, event):
         if self.__videoCamera is None:
@@ -174,6 +176,7 @@ class HangarSpace(IHangarSpace):
         self.onSpaceChangedByAction = Event.Event()
         self.onNotifyCursorOver3dScene = Event.Event()
         self.__isCursorOver3DScene = False
+        self.__isSelectionEnabledCounter = 0
         self._performanceMetricsLogger = HangarMetricsLogger()
         return
 
@@ -204,6 +207,10 @@ class HangarSpace(IHangarSpace):
         return self.__isCursorOver3DScene
 
     @property
+    def isSelectionEnabled(self):
+        return self.__isSelectionEnabledCounter > 0
+
+    @property
     def isModelLoaded(self):
         return self.__isModelLoaded
 
@@ -232,6 +239,12 @@ class HangarSpace(IHangarSpace):
 
     def updateAnchorsParams(self, *args):
         self.__space.updateAnchorsParams(*args)
+
+    def setSelectionEnabled(self, enabled):
+        if enabled:
+            self.__isSelectionEnabledCounter += 1
+        else:
+            self.__isSelectionEnabledCounter -= 1
 
     def __onNotifyCursorOver3dScene(self, event):
         self.__isCursorOver3DScene = event.ctx.get('isOver3dScene', False)

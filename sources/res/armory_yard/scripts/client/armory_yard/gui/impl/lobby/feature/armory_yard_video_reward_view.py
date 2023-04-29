@@ -1,4 +1,4 @@
-import Windowing
+import BigWorld, Windowing
 from CurrentVehicle import g_currentVehicle
 from armory_yard.gui.Scaleform.daapi.view.lobby.hangar.sound_constants import ARMORY_YARD_REWARD_VIDEO_SOUND_SPACE
 from armory_yard.gui.Scaleform.daapi.view.lobby.hangar.sounds import ArmoryYardRewardVideoSoundControl
@@ -16,6 +16,9 @@ class ArmoryYardVideoRewardView(ViewImpl):
     __slots__ = ('__vehicle', '__soundControl')
     __itemsCache = dependency.descriptor(IItemsCache)
     _COMMON_SOUND_SPACE = ARMORY_YARD_REWARD_VIDEO_SOUND_SPACE
+    __LOW_QUALITY_PRESETS = ('LOW', 'MIN')
+    __LOW_VIDEO = 'video_reward_min'
+    __DEFAULT_VIDEO = 'video_reward'
 
     def __init__(self, layoutID, vehicle):
         settings = ViewSettings(layoutID)
@@ -42,6 +45,7 @@ class ArmoryYardVideoRewardView(ViewImpl):
             vm.setVehicleType(getVehicleClassFromVehicleType(self.__vehicle.descriptor.type))
             vm.setIsElite(self.__vehicle.isElite)
             vm.setIsWindowAccessible(Windowing.isWindowAccessible())
+            vm.setVideoName(self.__getVideoNameByPreset())
         Windowing.addWindowAccessibilitynHandler(self.__onWindowAccessibilityChanged)
 
     def _getEvents(self):
@@ -52,6 +56,13 @@ class ArmoryYardVideoRewardView(ViewImpl):
           self.viewModel.onShowVehicle, self.__onShowVehicle),
          (
           self.viewModel.onVideoStarted, self.__onVideoStarted))
+
+    def __getVideoNameByPreset(self):
+        presetIndx = BigWorld.detectGraphicsPresetFromSystemSettings()
+        lowPresets = [ BigWorld.getSystemPerformancePresetIdFromName(pName) for pName in self.__LOW_QUALITY_PRESETS ]
+        if presetIndx in lowPresets:
+            return self.__LOW_VIDEO
+        return self.__DEFAULT_VIDEO
 
     def __onShowVehicle(self):
         vehicle = self.__itemsCache.items.getItemByCD(self.__vehicle.intCD)

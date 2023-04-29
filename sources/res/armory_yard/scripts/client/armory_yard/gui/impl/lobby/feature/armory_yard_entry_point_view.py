@@ -56,7 +56,6 @@ class ArmoryYardEntryPointView(ViewImpl):
                 nextCycle = self.__armoryYardCtrl.getNextCycle(currentTime)
                 if nextCycle is not None and nextCycle.startDate - currentTime <= time_utils.ONE_DAY:
                     state = State.ACTIVE
-                    availableQuestsCount = 0
                 elif self.__armoryYardCtrl.isQuestActive() and availableQuestsCount == 0:
                     state = State.COMPLETED
             with self.viewModel.transaction() as (model):

@@ -2039,7 +2039,7 @@ class ArmoryYardListener(_NotificationListener):
         nowTime = time_utils.getServerUTCTime()
         for cycle in self.__armoryYardCtrl.serverSettings.getCurrentSeason().getAllCycles().values():
             key = '%s_%s' % (ArmoryYard.START_CHAPTER_PREFIX, cycle.ID)
-            if cycle.startDate <= nowTime and not AccountSettings.getArmoryYard(key):
+            if cycle.startDate <= nowTime < cycle.endDate and not AccountSettings.getArmoryYard(key):
                 AccountSettings.setArmoryYard(key, True)
                 SystemMessages.pushMessage(text=backport.text(self.ARMORY_YARD_TEXT.started.chapter(), count=cycle.ordinalNumber, chapter_name=backport.text(R.strings.armory_yard.mainView.chapter.index.dyn('c_%d' % cycle.ordinalNumber)())), type=SystemMessages.SM_TYPE.ArmoryYardOpenChapter, priority=NotificationPriorityLevel.MEDIUM, messageData={'header': self.__getHeader()})
 

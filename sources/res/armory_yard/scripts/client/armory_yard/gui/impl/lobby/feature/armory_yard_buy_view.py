@@ -86,7 +86,7 @@ class ArmoryYardBuyView(ViewImpl):
         if shortage:
             setCurrencies = shortage.getSetCurrencies()
             if len(setCurrencies) == 1 and setCurrencies[0] == Currency.GOLD:
-                showBuyGoldForArmoryYard(shortage.get(Currency.GOLD))
+                showBuyGoldForArmoryYard(price)
         else:
             action = factory.getAction(BUY_STEP_TOKENS, stepCount)
             result = yield factory.asyncDoAction(action)

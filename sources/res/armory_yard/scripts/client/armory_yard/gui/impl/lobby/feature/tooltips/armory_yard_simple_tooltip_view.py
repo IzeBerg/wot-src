@@ -40,16 +40,17 @@ class ArmoryYardSimpleTooltipView(ViewImpl):
         return ''
 
     def __getBody(self):
-        if not self.__armoryYardCtrl.isEnabled():
+        ctrl = self.__armoryYardCtrl
+        if not ctrl.isEnabled():
             return ''
         if self.__state == SimpleTooltipStates.CHAPTER:
-            currentSeason = self.__armoryYardCtrl.serverSettings.getCurrentSeason()
+            currentSeason = ctrl.serverSettings.getCurrentSeason()
             prevChapterTokens = 0
             nowTime = time_utils.getServerUTCTime()
             for cycle in sorted(currentSeason.getAllCycles().values(), key=attrgetter('ID')):
                 if cycle.ID == self.__id and cycle.startDate <= nowTime:
                     return backport.text(self._RES_ROOT.chapter.disabled.doPrevious.body(), count=prevChapterTokens)
-                prevChapterTokens = self.__armoryYardCtrl.totalTokensInChapter(cycle.ID)
+                prevChapterTokens = ctrl.totalTokensInChapter(cycle.ID) - ctrl.receivedTokensInChapter(cycle.ID)
 
         elif self.__state == SimpleTooltipStates.TAB:
             tab = 'progression' if self.__id == TabId.PROGRESS else 'quests'
@@ -69,7 +70,7 @@ class ArmoryYardSimpleTooltipView(ViewImpl):
 
         elif self.__state == SimpleTooltipStates.TAB:
             if self.__id == TabId.QUESTS:
-                startTime, endTime = self.__armoryYardCtrl.getSeasonInterval()
+                startTime, endTime = self.__armoryYardCtrl.getProgressionTimes()
                 periodString = backport.text(self._RES_ROOT.tab.quests.noteDate(), color_open='%(brown_open)s', startDate=backport.getDateTimeFormat(startTime), endDate=backport.getDateTimeFormat(endTime), color_close='%(brown_close)s')
                 return backport.text(self._RES_ROOT.tab.quests.note(), periodText=periodString)
         return ''

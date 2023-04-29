@@ -29,6 +29,7 @@ class SceneLoadingManager(object):
     def loadScene(self, loadedCallback=None, hangarSpace=None):
         self.__loadedCallback = loadedCallback
         if hangarSpace is not None and hangarSpace.space is not None:
+            hangarSpace.setSelectionEnabled(True)
             hangarCameraManager = hangarSpace.space.getCameraManager()
             if hangarCameraManager is not None:
                 hangarCameraManager.setCameraLocation(targetPos=ARMORY_YARD_PREFAB_TARGET_POS, movementMode=IMMEDIATE_CAMERA_MOVEMENT_MODE)
@@ -46,6 +47,7 @@ class SceneLoadingManager(object):
     @dependency.replace_none_kwargs(hangarSpace=IHangarSpace)
     def unloadScene(self, hangarSpace=None):
         if hangarSpace is not None and hangarSpace.space is not None:
+            hangarSpace.setSelectionEnabled(False)
             cgfStageManager = CGF.getManager(hangarSpace.space.getSpaceID(), AssemblyStageIndexManager)
             root = cgfStageManager.getRoot()
             if root is not None:

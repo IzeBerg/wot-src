@@ -1131,6 +1131,15 @@
 						</transform>
 					</node>
 				</node>
+				<node>
+					<identifier>Tank_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.000000 -0.500000 0.000000</row3>
+					</transform>
+				</node>
 			</node>
 		</node>
 	</node>
@@ -1154,6 +1163,7 @@
 		<node>Track_VT_R4_BlendBone</node>
 		<geometry>
 			<vertices>track_R_Shape.vertices</vertices>
+			<stream>track_R_Shape.uv2</stream>
 			<primitive>track_R_Shape.indices</primitive>
 			<primitiveGroup>
 				0
@@ -1164,7 +1174,7 @@
 					<collisionFlags>0</collisionFlags>
 					<property>
 						alphaReference
-						<Int>64</Int>
+						<Int>128</Int>
 					</property>
 					<property>
 						alphaTestEnable
@@ -1181,10 +1191,6 @@
 					<property>
 						g_detailUVTiling
 						<Vector4>1.753430 0.438356 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
 					</property>
 					<property>
 						metallicDetailMap
@@ -1223,6 +1229,7 @@
 		<node>Track_VT_L4_BlendBone</node>
 		<geometry>
 			<vertices>track_L_Shape.vertices</vertices>
+			<stream>track_L_Shape.uv2</stream>
 			<primitive>track_L_Shape.indices</primitive>
 			<primitiveGroup>
 				0
@@ -1233,7 +1240,7 @@
 					<collisionFlags>0</collisionFlags>
 					<property>
 						alphaReference
-						<Int>64</Int>
+						<Int>128</Int>
 					</property>
 					<property>
 						alphaTestEnable
@@ -1250,10 +1257,6 @@
 					<property>
 						g_detailUVTiling
 						<Vector4>1.753430 0.438356 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
 					</property>
 					<property>
 						metallicDetailMap
@@ -1274,32 +1277,33 @@
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>WD_L5_BlendBone</node>
+		<node>WD_L4_BlendBone</node>
+		<node>WD_L3_BlendBone</node>
+		<node>WD_L2_BlendBone</node>
+		<node>WD_L1_BlendBone</node>
+		<node>WD_L0_BlendBone</node>
+		<node>W_L7_BlendBone</node>
+		<node>W_L6_BlendBone</node>
+		<node>W_L5_BlendBone</node>
+		<node>W_L4_BlendBone</node>
+		<node>W_L3_BlendBone</node>
+		<node>W_L2_BlendBone</node>
+		<node>W_L1_BlendBone</node>
+		<node>W_L0_BlendBone</node>
 		<node>V_BlendBone</node>
-		<node>Track_L7_BlendBone</node>
 		<node>Track_L6_BlendBone</node>
-		<node>Track_L5_BlendBone</node>
+		<node>Track_L7_BlendBone</node>
 		<node>Track_L4_BlendBone</node>
+		<node>Track_L5_BlendBone</node>
+		<node>Tank_BlendBone</node>
 		<node>Track_L2_BlendBone</node>
 		<node>Track_L3_BlendBone</node>
 		<node>Track_L1_BlendBone</node>
 		<node>Track_L0_BlendBone</node>
-		<node>W_L0_BlendBone</node>
-		<node>W_L1_BlendBone</node>
-		<node>W_L2_BlendBone</node>
-		<node>W_L3_BlendBone</node>
-		<node>W_L4_BlendBone</node>
-		<node>W_L5_BlendBone</node>
-		<node>W_L6_BlendBone</node>
-		<node>W_L7_BlendBone</node>
-		<node>WD_L0_BlendBone</node>
-		<node>WD_L1_BlendBone</node>
-		<node>WD_L2_BlendBone</node>
-		<node>WD_L3_BlendBone</node>
-		<node>WD_L4_BlendBone</node>
-		<node>WD_L5_BlendBone</node>
 		<geometry>
-			<vertices>chassis_L_Shape.vertices</vertices>
-			<primitive>chassis_L_Shape.indices</primitive>
+			<vertices>exportChassL1_Shape.vertices</vertices>
+			<primitive>exportChassL1_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
@@ -1341,10 +1345,6 @@
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
 						metallicGlossMap
 						<Texture>vehicles/russian/R207_HT_130/HT_130_chassis_01_GMM.dds</Texture>
 					</property>
@@ -1359,6 +1359,10 @@
 					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/russian/R207_HT_130/HT_130_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 					<property>
 						alphaReference
@@ -1375,32 +1379,33 @@
 	</renderSet>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>WD_R5_BlendBone</node>
+		<node>WD_R4_BlendBone</node>
+		<node>WD_R3_BlendBone</node>
+		<node>WD_R2_BlendBone</node>
+		<node>WD_R1_BlendBone</node>
+		<node>WD_R0_BlendBone</node>
+		<node>W_R7_BlendBone</node>
+		<node>W_R6_BlendBone</node>
+		<node>W_R5_BlendBone</node>
+		<node>W_R4_BlendBone</node>
+		<node>W_R3_BlendBone</node>
+		<node>W_R2_BlendBone</node>
+		<node>W_R1_BlendBone</node>
+		<node>W_R0_BlendBone</node>
 		<node>V_BlendBone</node>
 		<node>Track_R6_BlendBone</node>
 		<node>Track_R7_BlendBone</node>
 		<node>Track_R5_BlendBone</node>
 		<node>Track_R4_BlendBone</node>
+		<node>Tank_BlendBone</node>
 		<node>Track_R2_BlendBone</node>
 		<node>Track_R3_BlendBone</node>
-		<node>Track_R1_BlendBone</node>
 		<node>Track_R0_BlendBone</node>
-		<node>W_R0_BlendBone</node>
-		<node>W_R1_BlendBone</node>
-		<node>W_R2_BlendBone</node>
-		<node>W_R3_BlendBone</node>
-		<node>W_R4_BlendBone</node>
-		<node>W_R5_BlendBone</node>
-		<node>W_R6_BlendBone</node>
-		<node>W_R7_BlendBone</node>
-		<node>WD_R0_BlendBone</node>
-		<node>WD_R1_BlendBone</node>
-		<node>WD_R2_BlendBone</node>
-		<node>WD_R3_BlendBone</node>
-		<node>WD_R4_BlendBone</node>
-		<node>WD_R5_BlendBone</node>
+		<node>Track_R1_BlendBone</node>
 		<geometry>
-			<vertices>chassis_R_Shape.vertices</vertices>
-			<primitive>chassis_R_Shape.indices</primitive>
+			<vertices>exportChassR1_Shape.vertices</vertices>
+			<primitive>exportChassR1_Shape.indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
@@ -1442,10 +1447,6 @@
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
 						metallicGlossMap
 						<Texture>vehicles/russian/R207_HT_130/HT_130_chassis_01_GMM.dds</Texture>
 					</property>
@@ -1460,6 +1461,10 @@
 					<property>
 						excludeMaskAndAOMap
 						<Texture>vehicles/russian/R207_HT_130/HT_130_chassis_01_AO.dds</Texture>
+					</property>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 					<property>
 						alphaReference
@@ -1479,6 +1484,6 @@
 		<min>-1.221144 0.000504 -2.290573</min>
 		<max>1.222145 1.129919 2.198732</max>
 	</boundingBox>
-	<geometrySize>238008</geometrySize>
+	<geometrySize>256248</geometrySize>
 	<minUVDensity>0.003373</minUVDensity>
 </root>

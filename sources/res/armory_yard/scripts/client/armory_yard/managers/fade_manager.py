@@ -35,6 +35,9 @@ class ArmoryYardFadeManager(CallbackDelayer, TimeDeltaMeter):
         super(ArmoryYardFadeManager, self).destroy()
         return
 
+    def isActive(self):
+        return self.__fadeWindow is not None
+
     @adisp_async
     def startFade(self, callback, fadeIn=True):
         if not self.isInFade():

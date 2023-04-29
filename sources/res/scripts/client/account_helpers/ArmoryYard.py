@@ -2,7 +2,6 @@ from functools import partial
 import AccountCommands
 from shared_utils.account_helpers.diff_utils import synchronizeDicts
 from debug_utils import LOG_DEBUG_DEV
-from armory_yard_constants import PDATA_KEY_ARMORY_YARD
 
 def _skipResponse(resultID, errorCode):
     LOG_DEBUG_DEV('_skipResponse', resultID, errorCode)
@@ -27,6 +26,7 @@ class ArmoryYard(object):
         self.__account = account
 
     def synchronize(self, isFullSync, diff):
+        from armory_yard_constants import PDATA_KEY_ARMORY_YARD
         dataResetKey = (
          PDATA_KEY_ARMORY_YARD, '_r')
         if dataResetKey in diff:

@@ -38,7 +38,7 @@
 							<row0>1.000000 0.000000 0.000000</row0>
 							<row1>0.000000 1.000000 0.000000</row1>
 							<row2>0.000000 0.000000 1.000000</row2>
-							<row3>-0.132583 0.004982 -2.594450</row3>
+							<row3>-0.132583 -0.000000 -2.664569</row3>
 						</transform>
 					</node>
 					<node>
@@ -79,7 +79,7 @@
 					<materialKind>0</materialKind>
 					<property>
 						g_detailUVTiling
-						<Vector4>1.753430 1.753430 0.000000 0.000000</Vector4>
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_detailPowerGloss
@@ -111,10 +111,6 @@
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
 						metallicGlossMap
 						<Texture>vehicles/russian/R207_HT_130/HT_130_guns_GMM.dds</Texture>
 					</property>
@@ -132,17 +128,17 @@
 					</property>
 					<property>
 						colorIdMap
-						<Texture>vehicles/russian/R197_KV_1S_MZ/KV_1S_MZ_guns_ID.dds</Texture>
+						<Texture>vehicles/russian/R207_HT_130/HT_130_guns_ID.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.000497 -0.003881 -0.203502</groupOrigin>
+				<groupOrigin>-0.000497 -0.003881 -0.143021</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<constraints/>
 	<boundingBox>
-		<min>-0.250149 -0.119217 0.003853</min>
-		<max>0.249155 0.111454 0.403151</max>
+		<min>-0.250149 -0.119217 -0.056628</min>
+		<max>0.249155 0.111454 0.342670</max>
 	</boundingBox>
 	<geometrySize>13082</geometrySize>
 	<minUVDensity>0.299154</minUVDensity>

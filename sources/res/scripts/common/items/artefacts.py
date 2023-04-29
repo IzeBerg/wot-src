@@ -1593,17 +1593,15 @@ class PedantBattleBooster(SkillEquipment):
 
 
 class LastEffortBattleBooster(SkillEquipment):
-    __slots__ = ('durationPerLevel', 'chanceToHitPerLevel')
+    __slots__ = ('durationPerLevel', )
 
     def __init__(self):
         super(LastEffortBattleBooster, self).__init__()
         self.durationPerLevel = component_constants.ZERO_FLOAT
-        self.chanceToHitPerLevel = component_constants.ZERO_FLOAT
 
     def _readConfig(self, xmlCtx, section):
         super(LastEffortBattleBooster, self)._readConfig(xmlCtx, section)
         self.durationPerLevel = _xml.readNonNegativeFloat(xmlCtx, section, 'durationPerLevel')
-        self.chanceToHitPerLevel = _xml.readFloat(xmlCtx, section, 'chanceToHitPerLevel')
 
     def updateCrewSkill(self, a):
         if not a.isBoosterApplicable():
@@ -1612,7 +1610,7 @@ class LastEffortBattleBooster(SkillEquipment):
             a.level = MAX_SKILL_LEVEL
             a.isActive = True
         else:
-            a.skillConfig = a.skillConfig.recreate(self.durationPerLevel, self.chanceToHitPerLevel)
+            a.skillConfig = a.skillConfig.recreate(self.durationPerLevel)
 
 
 class _OptionalDeviceFilter(object):

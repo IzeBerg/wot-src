@@ -90,7 +90,8 @@ class _ProgressionTabPresenter(object):
          self.__viewModel.onBuyTokens, self.__onBuyTokens), (
          self.__viewModel.onStartMoving, self.__onStartMoving), (
          self.__viewModel.onShowVehiclePreview, self.__onShowVehiclePreview), (
-         self.__hangarSpace.onSpaceDestroy, lambda _: self.__closeView()))
+         self.__hangarSpace.onSpaceDestroy, lambda _: self.__closeView()), (
+         self.__armoryYardCtrl.onStatusChange, self.__updateState))
         self.__eventsSubscriber.pause()
 
     def fini(self):
@@ -108,25 +109,31 @@ class _ProgressionTabPresenter(object):
         with self.__viewModel.transaction() as (model):
             self.__updateSteps(model)
             self.__updateProgressionTimes(model)
-            model.setViewedLevel(self.__armoryYardCtrl.getProgressionLevel())
+            model.setViewedLevel(self.__armoryYardCtrl.getProgressionLevel() + int(self.__armoryYardCtrl.isClaimedFinalReward()))
             model.setCurrentLevel(self.__armoryYardCtrl.getCurrentProgress())
             model.setAnimationLevel(-1)
             model.setLevelDuration(-1)
             model.setAnimationStatus(AnimationStatus.DISABLED)
             model.setReplay(True)
+            model.setState(self.__armoryYardCtrl.getState())
         if self.__state.isAnimation:
             self.__stageManager.resume()
         else:
             self.__firstEnterActions()
         g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.NOTIFY_CURSOR_OVER_3DSCENE, ctx={'isOver3dScene': True}), EVENT_BUS_SCOPE.GLOBAL)
 
-    def getTooltipData(self, key):
-        return self.__tooltipData.get(key)
+    def getTooltipData(self, key, type):
+        if key is not None and type is not None:
+            if type == ArmoryYardMainViewModel.FINAL_REWARD_TOOLTIP_TYPE:
+                return self.__tooltipData.get(type, {}).get(key, None)
+            return self.__tooltipData.get(key, {})
+        else:
+            return
 
     def onUnload(self):
         self.__eventsSubscriber.pause()
         if self.__state.isAnimation:
-            self.__stageManager.pause()
+            self.__onSkipAnimation()
         g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.NOTIFY_CURSOR_OVER_3DSCENE, ctx={'isOver3dScene': False}), EVENT_BUS_SCOPE.GLOBAL)
 
     def __onMoveSpace(self, args=None):
@@ -192,26 +199,29 @@ class _ProgressionTabPresenter(object):
         if not self.__armoryYardCtrl.isActive():
             self.__closeView()
             return
+        self.__updateState()
         with self.__viewModel.transaction() as (model):
             self.__updateSteps(model)
             self.__updateProgressionTimes(model)
 
     def __onProgressUpdate(self):
+        self.__viewModel.setCurrentLevel(self.__armoryYardCtrl.getCurrentProgress())
         if not self.__state.isAnimation:
             self.__updateView()
-            self.__viewModel.setCurrentLevel(self.__armoryYardCtrl.getCurrentProgress())
 
     def __updateView(self):
         self.__updateStage()
         self.__updateProgress()
-        with self.__viewModel.transaction() as (model):
-            self.__fillFinalReward(model)
+        self.__updateState()
+        self.__fillFinalReward()
 
-    def __fillFinalReward(self, model):
+    def __fillFinalReward(self):
         finalRewardVehicle = self.__armoryYardCtrl.getFinalRewardVehicle()
-        if finalRewardVehicle:
+        if not finalRewardVehicle:
+            return
+        with self.__viewModel.transaction() as (model):
             packVehicleModel(model.finalReward, finalRewardVehicle)
-            self.__tooltipData[ArmoryYardMainViewModel.FINAL_REWARD_TOOLTIP_TYPE] = {'0': createTooltipData(isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.AWARD_VEHICLE, specialArgs=[
+            self.__tooltipData[ArmoryYardMainViewModel.FINAL_REWARD_TOOLTIP_TYPE] = {'0': createTooltipData(isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.ARMORY_YARD_AWARD_VEHICLE, specialArgs=[
                    finalRewardVehicle.intCD])}
             model.finalReward.setTooltipContentId(str(BACKPORT_TOOLTIP_CONTENT_ID))
             model.finalReward.setTooltipId('0')
@@ -224,6 +234,13 @@ class _ProgressionTabPresenter(object):
         _, endSeasonTime = self.__armoryYardCtrl.getSeasonInterval()
         model.setToTimestamp(endSeasonTime)
         model.setFromTimestamp(startProgressionTime)
+
+    def __updateState(self):
+        if not self.__armoryYardCtrl.isActive():
+            self.__closeView()
+            return
+        with self.__viewModel.transaction() as (model):
+            model.setState(self.__armoryYardCtrl.getState())
 
     def __updateSteps(self, model):
         steps = model.getLevels()
@@ -327,8 +344,7 @@ class _ProgressionTabPresenter(object):
 
     def _checkAndShowFinalRewardWindow(self):
         if self.__lastPlayedStageID == self.__armoryYardCtrl.getTotalSteps():
-            data = self.__itemsCache.items.armoryYard.data
-            if data and not data.get('claimedFinalReward', False):
+            if not self.__armoryYardCtrl.isClaimedFinalReward():
                 self._showVideoRewardWindow()
                 BigWorld.player().AccountArmoryYardComponent.claimFinalReward()
 

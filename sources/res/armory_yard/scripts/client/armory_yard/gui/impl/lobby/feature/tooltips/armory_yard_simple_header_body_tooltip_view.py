@@ -10,9 +10,8 @@ class ArmoryYardSimpleHeaderBodyTooltipView(ViewImpl):
         settings = ViewSettings(R.views.armory_yard.lobby.feature.tooltips.ArmoryYardSimpleTooltipView())
         settings.model = SimpleTooltipContentModel()
         self.__header = header
-        self.__body = body if body is not None else ''
+        self.__body = body or ''
         super(ArmoryYardSimpleHeaderBodyTooltipView, self).__init__(settings)
-        return
 
     @property
     def viewModel(self):

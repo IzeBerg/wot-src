@@ -514,11 +514,12 @@ package net.wg.gui.lobby.hangar
                }
                this._carouselEventEntryContainer.removeChild(this.carouselEventEntry);
                this.carouselEventEntry = null;
+               this._carousel.setRightMargin(0);
             }
             if(this._carousel && this.carouselEventEntry)
             {
                this.carouselEventEntry.isSmall = this._carousel.isSmall;
-               this._carousel.setRightMargin(!!this._carouselEventEntryVisible ? int(this.carouselEventEntry.width) : int(0));
+               this._carousel.setRightMargin(this.carouselEventEntry.width);
                this.carouselEventEntry.x = this._carousel.width - this.carouselEventEntry.width + CAROUSEL_EVENT_ENTRY_MARGIN;
                this.carouselEventEntry.y = this._carousel.y - CAROUSEL_EVENT_ENTRY_MARGIN;
             }

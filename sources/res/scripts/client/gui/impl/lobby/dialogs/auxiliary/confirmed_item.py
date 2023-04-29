@@ -140,11 +140,11 @@ class ConfirmedOptDevice(ConfirmedArtefact):
                     return 'itemWotPlus'
                 return 'itemDeluxeWotPlus'
             return 'itemDeluxe'
-        if isActive:
-            return 'itemWotPlus'
         if self._item.isModernized:
             if self._item.level > 1:
                 return 'itemDeluxe'
+        if isActive:
+            return 'itemWotPlus'
         return 'itemWithDemountKit'
 
     @classmethod

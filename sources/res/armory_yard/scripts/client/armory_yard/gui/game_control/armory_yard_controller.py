@@ -1,7 +1,7 @@
 from functools import partial
 import BigWorld, CGF
 from account_helpers.AccountSettings import ArmoryYard, AccountSettings
-from armory_yard_constants import getCurrencyToken, getGroupName, getStageToken, getEndToken, getEndQuestID, PROGRESSION_LEVEL_PDATA_KEY, State, CLAIMED_FINAL_REWARD, PDATA_KEY_ARMORY_YARD, INTO_VIDEO, isArmoryYardStyleQuest, DAY_BEFORE_END_STYLE_QUEST, AY_VIDEOS
+from armory_yard_constants import getCurrencyToken, getGroupName, getStageToken, getEndToken, getEndQuestID, PROGRESSION_LEVEL_PDATA_KEY, State, CLAIMED_FINAL_REWARD, PDATA_KEY_ARMORY_YARD, INTO_VIDEO, isArmoryYardStyleQuest, DAY_BEFORE_END_STYLE_QUEST, AY_VIDEOS, VEHICLE_NAME
 from armory_yard.gui.window_events import showArmoryYardIntroWindow, showArmoryYardVehiclePreview, showArmoryYardWaiting, hideArmoryYardWaiting
 from armory_yard.gui.impl.lobby.feature.armory_yard_main_view import ArmoryYardMainView
 from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_main_view_model import TabId
@@ -22,6 +22,7 @@ from gui.Scaleform.framework.managers.loaders import GuiImplViewLoadParams
 from gui.Scaleform.framework import ScopeTemplates
 from helpers.server_settings import serverSettingsChangeListener
 from skeletons.connection_mgr import IConnectionManager
+from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.game_control import IArmoryYardController
 from skeletons.gui.server_events import IEventsCache
@@ -32,6 +33,7 @@ from armory_yard.managers.stage_manager import showVideo
 from gui.impl.gen import R
 import ScaleformFileLoader
 from gui.Scaleform import SCALEFORM_STARTUP_VIDEO_PATH
+from items import vehicles
 AY_VIDEOS_FOLDER = ('/').join((SCALEFORM_STARTUP_VIDEO_PATH, 'armory_yard'))
 
 class ArmoryYardController(IArmoryYardController):
@@ -39,6 +41,8 @@ class ArmoryYardController(IArmoryYardController):
     __lobbyContext = dependency.descriptor(ILobbyContext)
     __itemsCache = dependency.descriptor(IItemsCache)
     __connectionMgr = dependency.descriptor(IConnectionManager)
+    __appLoader = dependency.descriptor(IAppLoader)
+    __BACKGROUND_ALPHA = 0
 
     def __init__(self):
         self.__eventManager = EventManager()
@@ -61,6 +65,8 @@ class ArmoryYardController(IArmoryYardController):
         self.__isPaused = False
         self.__isStarted = False
         self.__isStreamingEnabled = False
+        nationID, vehID = vehicles.g_list.getIDsByName(VEHICLE_NAME)
+        self.__vehicleCD = vehicles.makeIntCompactDescrByID('vehicle', nationID, vehID)
 
     def disableVideoStreaming(self):
         if self.__isStreamingEnabled:
@@ -93,7 +99,7 @@ class ArmoryYardController(IArmoryYardController):
             self.onCheckNotify()
             self.__checkAnnouncement()
             self.__isPaused = self.serverSettings.isPaused
-            if not self.__isStarted and self.getCollectableRewards() > 0:
+            if not self.__isStarted and self.getCollectableRewards() > int(self.isClaimedFinalReward()):
                 self.onCollectReward()
         self.__connectionMgr.onDisconnected += self.__onDisconnected
         self.__isStarted = True
@@ -132,6 +138,10 @@ class ArmoryYardController(IArmoryYardController):
         totalTokens, receivedTokens = self.getTokensInfo()
         return totalTokens <= receivedTokens
 
+    def isClaimedFinalReward(self):
+        data = self.__itemsCache.items.armoryYard.data
+        return data is not None and data.get('claimedFinalReward', False)
+
     def isProgressionQuest(self, questID):
         return any([ quest.getID() == questID for _, quest in self.iterProgressionQuests() ])
 
@@ -162,7 +172,11 @@ class ArmoryYardController(IArmoryYardController):
         return self.getCurrencyTokenCount() - self.getProgressionLevel()
 
     def getCurrencyTokenCount(self):
-        return self.__eventsCache.questsProgress.getTokenCount(self.serverSettings.getCurrencyToken())
+        count = self.__eventsCache.questsProgress.getTokenCount(self.serverSettings.getCurrencyToken())
+        total = self.getTotalSteps()
+        if count <= total:
+            return count
+        return total
 
     def getProgressionLevel(self):
         return self.__itemsCache.items.armoryYard.progressionLevel
@@ -269,6 +283,8 @@ class ArmoryYardController(IArmoryYardController):
     def goToArmoryYard(self, tabId=TabId.PROGRESS, loadBuyView=False):
         if not self.isActive():
             return
+        app = self.__appLoader.getApp()
+        app.setBackgroundAlpha(self.__BACKGROUND_ALPHA)
         self.enableVideoStreaming()
 
         def _loadedCallback():
@@ -348,9 +364,10 @@ class ArmoryYardController(IArmoryYardController):
     def __checkStyleQuest(self):
         armoryYardStyleQuests = self.__eventsCache.getAllQuests(lambda q: isArmoryYardStyleQuest(q.getID()))
         nowTime = time_utils.getServerUTCTime()
+        vehicle = self.__itemsCache.items.getItemByCD(self.__vehicleCD)
         for quest in armoryYardStyleQuests.values():
-            deltaTime = quest.getFinishTime() - nowTime
-            if not quest.isCompleted() and 0 < deltaTime <= DAY_BEFORE_END_STYLE_QUEST * time_utils.ONE_DAY:
+            isHotTime = 0 < quest.getFinishTime() - nowTime <= DAY_BEFORE_END_STYLE_QUEST * time_utils.ONE_DAY
+            if not quest.isCompleted() and vehicle.inventoryCount > 0 and isHotTime:
                 self.onStyleQuestEnds(quest.getFinishTime())
 
     def __onTokensUpdate(self, diff):
@@ -374,9 +391,12 @@ class ArmoryYardController(IArmoryYardController):
             currentSeason = self.serverSettings.getCurrentSeason()
             cycleData = currentSeason.getNextByTimeCycle(nowTime)
             if cycleData is not None:
-                delta = cycleData.startDate - nowTime
-                if delta > 0:
-                    return delta + 1
+                announcement = self.serverSettings.getModeSettings().announcementCountdown * time_utils.ONE_HOUR
+                announcementDate = cycleData.startDate - announcement
+                if announcementDate > nowTime:
+                    return announcementDate - nowTime + 1
+                if cycleData.startDate > nowTime:
+                    return cycleData.startDate - nowTime + 1
             delta = currentSeason.getLastCycleInfo().endDate - nowTime
             if delta > 0:
                 return delta + 1

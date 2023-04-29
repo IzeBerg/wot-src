@@ -115,11 +115,12 @@ class ArmoryYardMainView(ViewImpl):
         return super(ArmoryYardMainView, self).createToolTipContent(event, contentID)
 
     def getTooltipData(self, event):
-        tooltipId = event.getArgument(ArmoryYardMainViewModel.TOOLTIP_ID_ARG)
+        tooltipId = event.getArgument('tooltipId')
+        tooltipType = event.getArgument('tooltipType')
         if not tooltipId:
             return None
         else:
-            return first([ presenter.getTooltipData(tooltipId) for presenter in self.__tabs.itervalues() ])
+            return first([ presenter.getTooltipData(tooltipId, tooltipType) for presenter in self.__tabs.itervalues() ])
 
     def __setTab(self, tabID=None):
         if tabID is None:

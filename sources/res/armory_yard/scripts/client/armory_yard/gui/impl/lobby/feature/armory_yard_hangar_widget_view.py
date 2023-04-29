@@ -55,7 +55,9 @@ class ArmoryYardCarouselWidgetView(ViewImpl, ICarouselEventEntry):
             model.setStartTime(startProgressionTime)
             model.setEndTime(endSeasonDate if state == State.POSTPROGRESSION else finishProgressionTime)
             model.setCurrentTime(getServerUTCTime())
-            model.setState(State.COMPLETED if self.__armoryYardCtrl.isActive() and self.__armoryYardCtrl.isCompleted() else state)
+            if self.__armoryYardCtrl.isActive() and self.__armoryYardCtrl.isClaimedFinalReward():
+                state = State.COMPLETED
+            model.setState(state)
 
     def __showMainView(self):
         self.__armoryYardCtrl.goToArmoryYard()

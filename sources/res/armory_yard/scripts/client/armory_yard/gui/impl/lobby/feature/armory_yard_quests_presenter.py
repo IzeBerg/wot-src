@@ -57,10 +57,9 @@ class _QuestsTabPresenter(object):
         self.__parent = None
         return
 
-    def getTooltipData(self, key):
+    def getTooltipData(self, key, type):
         missionParams = key.rsplit(':', 1)
         if len(missionParams) != 2:
-            _logger.warning('Wrong TooltipData: %s', key)
             return None
         else:
             questId, tooltipId = missionParams
@@ -76,6 +75,7 @@ class _QuestsTabPresenter(object):
         with self.__viewModel.transaction() as (model):
             model.setCurrentLevel(self.__armoryYardCtrl.getCurrencyTokenCount())
             model.setViewedLevel(self.__armoryYardCtrl.getProgressionLevel())
+            model.setState(self.__armoryYardCtrl.getState())
             startProgressionTime, _ = self.__armoryYardCtrl.getProgressionTimes()
             _, endSeasonTime = self.__armoryYardCtrl.getSeasonInterval()
             model.setToTimestamp(endSeasonTime)

@@ -1,10 +1,19 @@
-from enum import IntEnum
+from enum import Enum, IntEnum
 from frameworks.wulf import Array
 from frameworks.wulf import ViewModel
 from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_chapter_model import ArmoryYardChapterModel
 from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_level_model import ArmoryYardLevelModel
 from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_quest_model import ArmoryYardQuestModel
 from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_rewards_vehicle_model import ArmoryYardRewardsVehicleModel
+
+class State(Enum):
+    BEFOREPROGRESSION = 'beforeProgression'
+    ACTIVE = 'active'
+    ACTIVELASTHOURS = 'activeLastHours'
+    POSTPROGRESSION = 'postProgression'
+    COMPLETED = 'completed'
+    DISABLED = 'disabled'
+
 
 class AnimationStatus(IntEnum):
     DISABLED = 0
@@ -39,7 +48,7 @@ class ArmoryYardMainViewModel(ViewModel):
     TOOLTIP_ID_ARG = 'tooltipId'
     FINAL_REWARD_TOOLTIP_TYPE = 'finalReward'
 
-    def __init__(self, properties=14, commands=10):
+    def __init__(self, properties=15, commands=10):
         super(ArmoryYardMainViewModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -50,99 +59,106 @@ class ArmoryYardMainViewModel(ViewModel):
     def getFinalRewardType():
         return ArmoryYardRewardsVehicleModel
 
+    def getState(self):
+        return State(self._getString(1))
+
+    def setState(self, value):
+        self._setString(1, value.value)
+
     def getTabId(self):
-        return TabId(self._getNumber(1))
+        return TabId(self._getNumber(2))
 
     def setTabId(self, value):
-        self._setNumber(1, value.value)
+        self._setNumber(2, value.value)
 
     def getCurrentLevel(self):
-        return self._getNumber(2)
-
-    def setCurrentLevel(self, value):
-        self._setNumber(2, value)
-
-    def getViewedLevel(self):
         return self._getNumber(3)
 
-    def setViewedLevel(self, value):
+    def setCurrentLevel(self, value):
         self._setNumber(3, value)
 
+    def getViewedLevel(self):
+        return self._getNumber(4)
+
+    def setViewedLevel(self, value):
+        self._setNumber(4, value)
+
     def getRewardStatus(self):
-        return RewardStatus(self._getNumber(4))
+        return RewardStatus(self._getNumber(5))
 
     def setRewardStatus(self, value):
-        self._setNumber(4, value.value)
+        self._setNumber(5, value.value)
 
     def getChapters(self):
-        return self._getArray(5)
+        return self._getArray(6)
 
     def setChapters(self, value):
-        self._setArray(5, value)
+        self._setArray(6, value)
 
     @staticmethod
     def getChaptersType():
         return ArmoryYardChapterModel
 
     def getLevels(self):
-        return self._getArray(6)
+        return self._getArray(7)
 
     def setLevels(self, value):
-        self._setArray(6, value)
+        self._setArray(7, value)
 
     @staticmethod
     def getLevelsType():
         return ArmoryYardLevelModel
 
     def getQuests(self):
-        return self._getArray(7)
+        return self._getArray(8)
 
     def setQuests(self, value):
-        self._setArray(7, value)
+        self._setArray(8, value)
 
     @staticmethod
     def getQuestsType():
         return ArmoryYardQuestModel
 
     def getAnimationLevel(self):
-        return self._getNumber(8)
-
-    def setAnimationLevel(self, value):
-        self._setNumber(8, value)
-
-    def getLevelDuration(self):
         return self._getNumber(9)
 
-    def setLevelDuration(self, value):
+    def setAnimationLevel(self, value):
         self._setNumber(9, value)
 
-    def getFromTimestamp(self):
+    def getLevelDuration(self):
         return self._getNumber(10)
 
-    def setFromTimestamp(self, value):
+    def setLevelDuration(self, value):
         self._setNumber(10, value)
 
-    def getToTimestamp(self):
+    def getFromTimestamp(self):
         return self._getNumber(11)
 
-    def setToTimestamp(self, value):
+    def setFromTimestamp(self, value):
         self._setNumber(11, value)
 
+    def getToTimestamp(self):
+        return self._getNumber(12)
+
+    def setToTimestamp(self, value):
+        self._setNumber(12, value)
+
     def getAnimationStatus(self):
-        return AnimationStatus(self._getNumber(12))
+        return AnimationStatus(self._getNumber(13))
 
     def setAnimationStatus(self, value):
-        self._setNumber(12, value.value)
+        self._setNumber(13, value.value)
 
     def getReplay(self):
-        return self._getBool(13)
+        return self._getBool(14)
 
     def setReplay(self, value):
-        self._setBool(13, value)
+        self._setBool(14, value)
 
     def _initialize(self):
         super(ArmoryYardMainViewModel, self)._initialize()
         self._addViewModelProperty('finalReward', ArmoryYardRewardsVehicleModel())
+        self._addStringProperty('state')
         self._addNumberProperty('tabId')
         self._addNumberProperty('currentLevel', 0)
         self._addNumberProperty('viewedLevel', 0)

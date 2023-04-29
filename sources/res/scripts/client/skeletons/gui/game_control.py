@@ -2901,6 +2901,9 @@ class IArmoryYardController(IGameController):
     def getSeasonInterval(self):
         raise NotImplementedError
 
+    def getProgressionTimes(self):
+        raise NotImplementedError
+
     def totalTokensInChapter(self, cycleID):
         raise NotImplementedError
 
@@ -2944,6 +2947,9 @@ class IArmoryYardController(IGameController):
         raise NotImplementedError
 
     def isEnabled(self):
+        raise NotImplementedError
+
+    def isClaimedFinalReward(self):
         raise NotImplementedError
 
     def isQuestActive(self):

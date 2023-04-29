@@ -11,11 +11,5 @@ class AccountArmoryYardComponent(BigWorld.StaticScriptComponent):
     def devAddToken(self, count, callback=None):
         self.entity._doCmdInt(armory_yard_constants.DEV_CMD_ADD_TOKEN_S, count, callback)
 
-    def setQuest(self, cycle, number, state, callback=None):
-        self.entity._doCmdInt3(armory_yard_constants.DEV_CMD_SET_QUEST, cycle, number, state, callback)
-
-    def setCycle(self, cycle, state, callback=None):
-        self.entity._doCmdInt2(armory_yard_constants.DEV_CMD_SET_CYCLE, cycle, state, callback)
-
     def claimFinalReward(self, callback=None):
         self.entity._doCmdInt(armory_yard_constants.CMD_CLAIM_FINAL_REWARD, 0, callback)

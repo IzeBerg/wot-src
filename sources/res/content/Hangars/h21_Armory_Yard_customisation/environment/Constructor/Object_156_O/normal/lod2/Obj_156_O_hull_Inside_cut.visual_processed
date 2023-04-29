@@ -18,48 +18,6 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>s_nd0</identifier>
-					<fx>shaders/experimental/PBS_spawn_effect.fx</fx>
-					<collisionFlags>255</collisionFlags>
-					<materialKind>112</materialKind>
-					<property>
-						alphaReference
-						<Int>120</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>content/Hangars/h21_Armory_Yard_customisation/environment/Constructor/Object_156O_outside_AM.dds</Texture>
-					</property>
-					<property>
-						g_enableAO
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>content/Hangars/h21_Armory_Yard_customisation/environment/Constructor/Object_156O_outside_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>content/Hangars/h21_Armory_Yard_customisation/environment/Constructor/Object_156O_outside_ANM.dds</Texture>
-					</property>
-					<property>
-						preSpawnTextureMap
-						<Texture>content/Hangars/h21_Armory_Yard_customisation/environment/Constructor/noise_alpha_mask.dds</Texture>
-					</property>
-					<property>
-						spawnContourThickness
-						<Float>0.020000</Float>
-					</property>
-				</material>
-				<groupOrigin>-0.001492 1.196095 -0.663535</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				1
-				<material>
 					<identifier>s_nd1</identifier>
 					<fx>shaders/experimental/PBS_spawn_effect.fx</fx>
 					<collisionFlags>255</collisionFlags>
@@ -89,14 +47,14 @@
 						<Float>0.020000</Float>
 					</property>
 				</material>
-				<groupOrigin>0.950991 1.451225 -0.683547</groupOrigin>
+				<groupOrigin>-0.000501 1.186132 -0.663515</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-1.006501 0.865647 -2.930063</min>
-		<max>1.003517 1.526543 1.602993</max>
+		<min>-0.986502 0.865262 -2.929851</min>
+		<max>0.985499 1.507001 1.602820</max>
 	</boundingBox>
-	<geometrySize>33038</geometrySize>
-	<minUVDensity>0.004041</minUVDensity>
+	<geometrySize>3184</geometrySize>
+	<minUVDensity>0.005268</minUVDensity>
 </root>

@@ -768,7 +768,9 @@ class _TracerSoundEffectDesc(_NodeSoundEffectDesc):
 
     def create(self, model, effects, args):
         isPlayer, _ = self._isPlayer(args)
-        self.__stopSoundEventName = 'psb_pc_stop' if isPlayer else 'psb_npc_stop'
+        soundName, _ = self._getName(args)
+        if soundName and not soundName[0].startswith('flamer'):
+            self.__stopSoundEventName = 'psb_pc_stop' if isPlayer else 'psb_npc_stop'
         soundObject = super(_TracerSoundEffectDesc, self).create(model, effects, args)
         if soundObject is not None and self.__tracerDelaySound is not None:
             self.__tracerDelaySound.create(soundObject, args)
@@ -777,11 +779,15 @@ class _TracerSoundEffectDesc(_NodeSoundEffectDesc):
     def delete(self, elem, reason):
         if self.__tracerDelaySound is not None:
             self.__tracerDelaySound.delete()
+            self.__tracerDelaySound = None
         soundObject = elem.get('sound', None)
         if soundObject is not None:
             if self._dopplerEffect is not None:
                 soundObject.stopDopplerEffect()
-            soundObject.play(self.__stopSoundEventName)
+            if self.__stopSoundEventName:
+                soundObject.play(self.__stopSoundEventName)
+            else:
+                soundObject.stopAll()
         super(_TracerSoundEffectDesc, self).delete(elem, 0)
         return
 
@@ -1049,6 +1055,7 @@ class _SoundEffectDesc(_EffectDesc):
                     for soundStartParam in startParams:
                         sound.setRTPC(soundStartParam.name, soundStartParam.value)
 
+                    elem['sound'] = sound
             elif startParams:
                 sound = SoundGroups.g_instance.WWgetSoundObject(soundName + '_POS_' + str(id(pos)), None, pos)
                 if SoundGroups.DEBUG_TRACE_EFFECTLIST is True:
