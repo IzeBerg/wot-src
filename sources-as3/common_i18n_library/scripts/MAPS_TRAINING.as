@@ -1369,8 +1369,6 @@ package
       
       public static const BOTVEHICLETYPE_SPG:String = "#maps_training:botVehicleType/SPG";
       
-      public static const BOTVEHICLEDESCRIPTION:String = "#maps_training:botVehicleDescription";
-      
       public static const BOTNAME:String = "#maps_training:botName";
        
       

@@ -34,6 +34,8 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       
       public static const INVALID_MT_STATE:int = InvalidationType.SYSTEM_FLAGS_BORDER << 6;
       
+      public static const INVALID_IS_EXTENDED_INFO_SHOWN:int = InvalidationType.SYSTEM_FLAGS_BORDER << 7;
+      
       private static const ENEMY_BEARER_LABEL:String = "enemyBearer";
       
       private static const ENEMY_BEARER_BLIND_LABEL:String = "enemyBearerBlind";
@@ -116,6 +118,8 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       private var _percentHP:int = 100;
       
       private var _showVehicleHp:Boolean = false;
+      
+      private var _isExtendedInfoShown:Boolean = false;
       
       private var _hpTypeMap:Object;
       
@@ -265,6 +269,10 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
             }
             this._labelHelper.forceUpdate();
          }
+         if(isInvalid(INVALID_IS_EXTENDED_INFO_SHOWN))
+         {
+            this._labelHelper.suspend(!this._isExtendedInfoShown);
+         }
       }
       
       override protected function onDispose() : void
@@ -311,7 +319,7 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       public function hideVehicleName() : void
       {
          this._isVehicleLabelVisible = false;
-         this._labelHelper.stop();
+         this._labelHelper.validateLabel();
          invalidate(INVALID_VEHICLE_LABEL);
       }
       
@@ -444,10 +452,19 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          }
       }
       
+      public function showExtendedInfo(param1:Boolean) : void
+      {
+         if(this._isExtendedInfoShown != param1)
+         {
+            this._isExtendedInfoShown = param1;
+            invalidate(INVALID_IS_EXTENDED_INFO_SHOWN);
+         }
+      }
+      
       public function showVehicleName() : void
       {
          this._isVehicleLabelVisible = true;
-         this._labelHelper.start();
+         this._labelHelper.validateLabel();
          invalidate(INVALID_VEHICLE_LABEL);
       }
       

@@ -44,6 +44,8 @@ package net.wg.infrastructure.base.meta
       
       function as_updateLevelInformation(param1:int, param2:int) : void;
       
+      function as_updateTooltip(param1:int, param2:String) : void;
+      
       function as_addOptionalDeviceSlot(param1:int, param2:Number, param3:String, param4:String, param5:Boolean, param6:int, param7:Boolean) : void;
       
       function as_setOptionalDeviceUsed(param1:int, param2:Boolean) : void;

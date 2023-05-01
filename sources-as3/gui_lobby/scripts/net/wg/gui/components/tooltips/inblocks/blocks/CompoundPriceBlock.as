@@ -8,7 +8,7 @@ package net.wg.gui.components.tooltips.inblocks.blocks
    public class CompoundPriceBlock extends BaseTooltipBlock
    {
       
-      private static const PRICE_ACTION_OFFSET:Point = new Point(0,3);
+      private static const PRICE_ACTION_OFFSET:Point = new Point(0,1);
        
       
       public var priceView:CompoundPrice;

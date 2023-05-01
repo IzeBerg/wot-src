@@ -454,6 +454,7 @@ class SYSTEM_MESSAGES(object):
     VEHICLE_RESTORE_DISABLED = '#system_messages:vehicle_restore/DISABLED'
     VEHICLE_SLOT_BUY_SUCCESS = '#system_messages:vehicle_slot_buy/success'
     VEHICLE_SLOT_BUY_NOT_ENOUGH_GOLD = '#system_messages:vehicle_slot_buy/not_enough_gold'
+    VEHICLE_SLOT_BUY_NOT_ENOUGH_CREDITS = '#system_messages:vehicle_slot_buy/not_enough_credits'
     VEHICLE_SLOT_BUY_WALLET_NOT_AVAILABLE = '#system_messages:vehicle_slot_buy/wallet_not_available'
     VEHICLE_SLOT_BUY_SERVER_ERROR = '#system_messages:vehicle_slot_buy/server_error'
     VEHICLE_SELL_SUCCESS = '#system_messages:vehicle_sell/success'
@@ -631,6 +632,7 @@ class SYSTEM_MESSAGES(object):
     ARTEFACT_APPLY_SUCCESS = '#system_messages:artefact_apply/success'
     ARTEFACT_APPLY_MONEY_SUCCESS = '#system_messages:artefact_apply/money_success'
     ARTEFACT_REMOVE_SUCCESS = '#system_messages:artefact_remove/success'
+    ARTEFACT_REMOVE_WOT_PLUS_SUCCESS = '#system_messages:artefact_remove/wot_plus_success'
     ARTEFACT_REMOVE_MONEY_SUCCESS = '#system_messages:artefact_remove/money_success'
     ARTEFACT_REMOVE_DEMOUNT_KIT_SUCCESS = '#system_messages:artefact_remove/demount_kit_success'
     ARTEFACT_REMOVE_INCOMPATIBLEEQS = '#system_messages:artefact_remove/incompatibleEqs'
@@ -1165,6 +1167,9 @@ class SYSTEM_MESSAGES(object):
     PROGRESSIVEREWARD_SWITCH_ON = '#system_messages:progressiveReward/switch_on'
     PROGRESSIVEREWARD_ERROR = '#system_messages:progressiveReward/error'
     MAPS_BLACK_LIST_SELECT_SUCCESS = '#system_messages:maps_black_list/select/success'
+    MAPS_BLACK_LIST_SELECT_SUCCESS_NOSUBSCRIPTIONS = '#system_messages:maps_black_list/select/success/noSubscriptions'
+    MAPS_BLACK_LIST_SELECT_SUCCESS_WOTPLUS = '#system_messages:maps_black_list/select/success/wotPlus'
+    MAPS_BLACK_LIST_SELECT_SUCCESS_PREMIUM = '#system_messages:maps_black_list/select/success/premium'
     MAPS_BLACK_LIST_SELECT_SERVER_ERROR_COOLDOWN = '#system_messages:maps_black_list/select/server_error/COOLDOWN'
     MAPS_BLACK_LIST_SELECT_SERVER_ERROR = '#system_messages:maps_black_list/select/server_error'
     MAPS_BLACK_LIST_SWITCH_OFF_TITLE = '#system_messages:maps_black_list/switch_off/title'
@@ -1338,6 +1343,7 @@ class SYSTEM_MESSAGES(object):
     RESOURCEWELL_RESOURCESRETURNERROR = '#system_messages:resourceWell/resourcesReturnError'
     UNIT_WARNINGS_EXPIRED_PLAY_LIMITS = '#system_messages:unit/warnings/EXPIRED_PLAY_LIMITS'
     UNIT_WARNINGS_EXPIRED_PLAY_LIMITS_TO_COMMANDER = '#system_messages:unit/warnings/EXPIRED_PLAY_LIMITS_TO_COMMANDER'
+    WINBACK_TURNOFFBATTLESERROR = '#system_messages:winback/turnOffBattlesError'
     UNIT_NOTIFICATION_DIVISIONTYPE_ENUM = (
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -1927,6 +1933,7 @@ class SYSTEM_MESSAGES(object):
      VEHICLE_RESTORE_DISABLED,
      VEHICLE_SLOT_BUY_SUCCESS,
      VEHICLE_SLOT_BUY_NOT_ENOUGH_GOLD,
+     VEHICLE_SLOT_BUY_NOT_ENOUGH_CREDITS,
      VEHICLE_SLOT_BUY_WALLET_NOT_AVAILABLE,
      VEHICLE_SLOT_BUY_SERVER_ERROR,
      VEHICLE_SELL_SUCCESS,
@@ -2104,6 +2111,7 @@ class SYSTEM_MESSAGES(object):
      ARTEFACT_APPLY_SUCCESS,
      ARTEFACT_APPLY_MONEY_SUCCESS,
      ARTEFACT_REMOVE_SUCCESS,
+     ARTEFACT_REMOVE_WOT_PLUS_SUCCESS,
      ARTEFACT_REMOVE_MONEY_SUCCESS,
      ARTEFACT_REMOVE_DEMOUNT_KIT_SUCCESS,
      ARTEFACT_REMOVE_INCOMPATIBLEEQS,
@@ -2638,6 +2646,9 @@ class SYSTEM_MESSAGES(object):
      PROGRESSIVEREWARD_SWITCH_ON,
      PROGRESSIVEREWARD_ERROR,
      MAPS_BLACK_LIST_SELECT_SUCCESS,
+     MAPS_BLACK_LIST_SELECT_SUCCESS_NOSUBSCRIPTIONS,
+     MAPS_BLACK_LIST_SELECT_SUCCESS_WOTPLUS,
+     MAPS_BLACK_LIST_SELECT_SUCCESS_PREMIUM,
      MAPS_BLACK_LIST_SELECT_SERVER_ERROR_COOLDOWN,
      MAPS_BLACK_LIST_SELECT_SERVER_ERROR,
      MAPS_BLACK_LIST_SWITCH_OFF_TITLE,
@@ -2810,7 +2821,8 @@ class SYSTEM_MESSAGES(object):
      RESOURCEWELL_RESOURCESLOADINGERROR,
      RESOURCEWELL_RESOURCESRETURNERROR,
      UNIT_WARNINGS_EXPIRED_PLAY_LIMITS,
-     UNIT_WARNINGS_EXPIRED_PLAY_LIMITS_TO_COMMANDER)
+     UNIT_WARNINGS_EXPIRED_PLAY_LIMITS_TO_COMMANDER,
+     WINBACK_TURNOFFBATTLESERROR)
 
     @classmethod
     def unit_notification_divisiontype(cls, key0):

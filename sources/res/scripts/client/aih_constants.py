@@ -19,11 +19,11 @@ class CTRL_MODE_NAME(object):
     VIDEO = 'video'
     MAP_CASE = 'mapcase'
     MAP_CASE_ARCADE = 'arcadeMapcase'
-    MAP_CASE_ARCADE_EPIC_MINEFIELD = 'arcadeEpicMinefieldMapcase'
     MAP_CASE_EPIC = 'epicMapcase'
     RESPAWN_DEATH = 'respawn'
     DEATH_FREE_CAM = 'deathfreecam'
     DUAL_GUN = 'dualgun'
+    MAP_CASE_ARCADE_EPIC_MINEFIELD = 'arcadeEpicMinefieldMapcase'
     VEHICLES_SELECTION = 'vehiclesSelection'
     DEFAULT = ARCADE
 

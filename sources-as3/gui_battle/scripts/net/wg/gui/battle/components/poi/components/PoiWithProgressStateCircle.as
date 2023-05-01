@@ -75,7 +75,6 @@ package net.wg.gui.battle.components.poi.components
          if(isInvalid(InvalidationType.STATE))
          {
             _loc1_ = 1;
-            _loc2_ = PROGRESS_STATE;
             if(this.statusID == POI_CONSTS.POI_STATUS_CAPTURING)
             {
                _loc2_ = !!this._isAlly ? ALLY_STATE : this.getCorrectState(ENEMY_STATE);

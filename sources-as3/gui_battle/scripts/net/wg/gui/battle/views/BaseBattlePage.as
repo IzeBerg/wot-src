@@ -19,6 +19,7 @@ package net.wg.gui.battle.views
    import net.wg.gui.battle.views.minimap.BaseMinimap;
    import net.wg.gui.battle.views.minimap.MinimapEntryController;
    import net.wg.gui.battle.views.minimap.events.MinimapEvent;
+   import net.wg.gui.battle.views.perksPanel.PerksPanel;
    import net.wg.gui.battle.views.piercingDebugPanel.PiercingDebugPanel;
    import net.wg.gui.battle.views.postmortemPanel.BasePostmortemPanel;
    import net.wg.gui.battle.views.postmortemPanel.PostmortemPanel;
@@ -37,7 +38,7 @@ package net.wg.gui.battle.views
    public class BaseBattlePage extends BattlePageMeta implements IBattlePageMeta
    {
       
-      protected static const VEHICLE_MESSAGES_LIST_OFFSET:Point = new Point(500,76);
+      protected static const VEHICLE_MESSAGES_LIST_OFFSET:Point = new Point(500,111);
       
       protected static const VEHICLE_MESSAGES_LIST_POSTMORTEM_Y_OFFSET:int = 20;
       
@@ -58,6 +59,8 @@ package net.wg.gui.battle.views
       private static const AMMUNITION_PANEL_Y_SHIFT:int = 498;
       
       private static const HIT_TEST_FIX_NAME:String = "HitTest Fix";
+      
+      private static const PERKS_PANEL_OFFSET_Y:int = 115;
        
       
       public var battleLoading:BaseBattleLoading = null;
@@ -75,6 +78,8 @@ package net.wg.gui.battle.views
       public var battleTimer:BattleTimerMeta = null;
       
       public var ribbonsPanel:RibbonsPanel = null;
+      
+      public var perksPanel:PerksPanel = null;
       
       public var gameMessagesPanel:GameMessagesPanel = null;
       
@@ -126,8 +131,9 @@ package net.wg.gui.battle.views
       
       override public function updateStage(param1:Number, param2:Number) : void
       {
+         var _loc3_:int = 0;
          super.updateStage(param1,param2);
-         var _loc3_:int = param1 >> 1;
+         _loc3_ = param1 >> 1;
          var _loc4_:int = param2 >> 1;
          _originalWidth = param1;
          _originalHeight = param2;
@@ -153,6 +159,11 @@ package net.wg.gui.battle.views
          this.ribbonsPanel.setFreeWorkingHeight(_loc6_);
          var _loc7_:int = _loc4_ + (_loc6_ - this.ribbonsPanel.freeHeightForRenderers >> 1) + _loc5_;
          this.ribbonsPanel.y = _loc7_;
+         if(this.perksPanel)
+         {
+            this.perksPanel.x = _loc3_;
+            this.perksPanel.y = param2 - PERKS_PANEL_OFFSET_Y;
+         }
          this.updateMinimapPosition();
          if(this.postmortemTips)
          {
@@ -212,6 +223,10 @@ package net.wg.gui.battle.views
          this.registerComponent(this.damagePanel,BATTLE_VIEW_ALIASES.DAMAGE_PANEL);
          this.registerComponent(this.battleTimer,BATTLE_VIEW_ALIASES.BATTLE_TIMER);
          this.registerComponent(this.ribbonsPanel,BATTLE_VIEW_ALIASES.RIBBONS_PANEL);
+         if(this.perksPanel)
+         {
+            this.registerComponent(this.perksPanel,BATTLE_VIEW_ALIASES.PERKS_PANEL);
+         }
          this.registerComponent(this.vehicleMessageList,BATTLE_VIEW_ALIASES.VEHICLE_MESSAGES);
          this.registerComponent(this.vehicleErrorMessageList,BATTLE_VIEW_ALIASES.VEHICLE_ERROR_MESSAGES);
          this.registerComponent(this.playerMessageList,BATTLE_VIEW_ALIASES.PLAYER_MESSAGES);
@@ -269,10 +284,12 @@ package net.wg.gui.battle.views
       override protected function onDispose() : void
       {
          this.battleLoading = null;
+         this.prebattleTimer = null;
          this.damagePanel = null;
          this.battleTimer = null;
          this.prebattleTimer = null;
          this.ribbonsPanel = null;
+         this.perksPanel = null;
          this.dualGunPanel = null;
          this.rocketAcceleratorPanel = null;
          this.calloutPanel = null;
@@ -433,6 +450,7 @@ package net.wg.gui.battle.views
          this._messagesContainer.name = "messageListsContainer";
          this._messagesContainer.mouseEnabled = this._messagesContainer.mouseChildren = false;
          addChild(this._messagesContainer);
+         swapChildren(this._messagesContainer,this.battleLoading);
          this.vehicleMessageList = new VehicleMessages(this._messagesContainer);
          this.vehicleErrorMessageList = new MessageListDAAPI(this._messagesContainer);
          this.playerMessageList = new MessageListDAAPI(this._messagesContainer);

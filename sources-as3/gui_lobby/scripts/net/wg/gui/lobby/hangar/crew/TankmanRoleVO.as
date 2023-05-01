@@ -24,6 +24,8 @@ package net.wg.gui.lobby.hangar.crew
       
       public var tankType:String = "";
       
+      public var ignoreRoleIncompatibility:Boolean = false;
+      
       public var vehicleElite:Boolean = false;
       
       public var tankman:TankmanVO = null;

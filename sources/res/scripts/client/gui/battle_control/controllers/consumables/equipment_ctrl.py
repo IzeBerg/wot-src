@@ -212,8 +212,7 @@ class _EquipmentItem(object):
         self._prevStage = self._stage
         self._stage = stage
         self._timeRemaining = timeRemaining
-        if not self.isReusable:
-            self._totalTime = totalTime
+        self._totalTime = totalTime
         self._soundUpdate(self._prevQuantity, quantity)
 
     def updateMapCase(self, stage=None):
@@ -317,7 +316,9 @@ class _RefillEquipmentItem(object):
 
     def update(self, quantity, stage, timeRemaining, totalTime):
         super(_RefillEquipmentItem, self).update(quantity, stage, timeRemaining, totalTime)
-        if timeRemaining > self._PRE_REFILL_TIME and self._preRefillCallback is None:
+        if timeRemaining > self._PRE_REFILL_TIME:
+            if self._preRefillCallback is not None:
+                self.clear()
             self._preRefillCallback = BigWorld.callback(timeRemaining - self._PRE_REFILL_TIME, self._preRefill)
         if self.isReady and self._prevStage in (EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.SHARED_COOLDOWN):
             self._refillComplete()

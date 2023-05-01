@@ -13,7 +13,7 @@ from skeletons.dynamic_objects_cache import IBattleDynamicObjectsCache
 from skeletons.gui.battle_session import IBattleSessionProvider
 from cgf_obsolete_script.py_component import Component
 from cgf_obsolete_script.script_game_object import ScriptGameObject, ComponentDescriptorTyped, ComponentDescriptor
-from cgf_script.component_meta_class import CGFComponent, ComponentProperty, CGFMetaTypes
+from cgf_script.component_meta_class import ComponentProperty, CGFMetaTypes, registerComponent
 
 class DescendSimulator(Component):
     matrix = property(lambda self: self.__matrix)
@@ -135,7 +135,9 @@ class DropPlane(Component, CallbackDelayer):
         self.prevTime = curTime
 
 
-class PlaneLootAirdrop(CGFComponent, CallbackDelayer, ISelfAssembler):
+@registerComponent
+class PlaneLootAirdrop(CallbackDelayer, ISelfAssembler):
+    domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     parent = ComponentProperty(type=CGFMetaTypes.LINK, value=CGF.GameObject)
     __dynamicObjectsCache = dependency.descriptor(IBattleDynamicObjectsCache)
     __sessionProvider = dependency.descriptor(IBattleSessionProvider)
@@ -146,7 +148,6 @@ class PlaneLootAirdrop(CGFComponent, CallbackDelayer, ISelfAssembler):
     POST_DELIVERY_CARGO_LIFETIME = 12.0
 
     def __init__(self, dropID, deliveryPosition, deliveryTime):
-        CGFComponent.__init__(self)
         CallbackDelayer.__init__(self)
         owner = CGF.GameObject(BigWorld.player().spaceID)
         owner.addComponent(self)

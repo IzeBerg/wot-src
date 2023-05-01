@@ -144,13 +144,12 @@ package net.wg.gui.lobby.rankedBattles19.view.intro
       
       private function doLayout() : void
       {
-         var _loc2_:RankedIntroBlock = null;
          if(!this._blocks || this._viewSizeID == Values.EMPTY_STR)
          {
             return;
          }
          var _loc1_:int = this._blocks.length;
-         _loc2_ = null;
+         var _loc2_:RankedIntroBlock = null;
          var _loc3_:int = -(this._itemsWidth >> 1);
          var _loc4_:int = Values.ZERO;
          while(_loc4_ < _loc1_)

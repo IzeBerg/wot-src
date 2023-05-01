@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>3.733334</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Ground_plowing_Right_Wing</name>
+		<type>particle</type>
+		<resource>particles/Environment/MapBox/05_prohorovka_ground_plowing.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 -1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.700000</startTime>
+				<value>0.000000</value>
+				<inTangent>2.608696</inTangent>
+				<outTangent>2.608696</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.466667</startTime>
+				<value>2.000000</value>
+				<inTangent>0.863171</inTangent>
+				<outTangent>0.863171</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.733334</startTime>
+				<value>0.000000</value>
+				<inTangent>-1.499527</inTangent>
+				<outTangent>-1.499527</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emissionSize</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>13.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Dust</name>
+		<type>particle</type>
+		<resource>particles/Environment/MapBox/05_prohorovka_plane_dust.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 -1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.700000</startTime>
+				<value>0.000000</value>
+				<inTangent>1.891992</inTangent>
+				<outTangent>1.891992</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.500000</startTime>
+				<value>1.513594</value>
+				<inTangent>0.607132</inTangent>
+				<outTangent>0.607132</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.733334</startTime>
+				<value>0.000000</value>
+				<inTangent>-1.499527</inTangent>
+				<outTangent>-1.499527</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emissionSize</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>13.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>right_wing_sound</name>
+		<type>sound</type>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>3.692088</duration>
+				<sequenceSound>dstrct_metal_small</sequenceSound>
+				<type>one_shot</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

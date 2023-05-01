@@ -153,7 +153,7 @@ package net.wg.gui.lobby.header.headerButtonBar.container
                this.spinner.visible = false;
                this.leftBGShieldsIcon.visible = this.rightBGShieldsIcon.visible = false;
             }
-            if(this._playAnimation)
+            if(this._playAnimation && enabled)
             {
                this.playAnimations();
                this._playAnimation = false;
@@ -251,6 +251,17 @@ package net.wg.gui.lobby.header.headerButtonBar.container
       private function setLeftPlayerData(param1:String) : void
       {
          this.leftBGShieldsIcon.gotoAndStop(param1);
+      }
+      
+      override public function set enabled(param1:Boolean) : void
+      {
+         super.enabled = param1;
+         if(!param1)
+         {
+            this.shieldsIconAnimation.gotoAndStop(0);
+            this.rightBGShieldsIconAnimation.gotoAndStop(0);
+            this.leftBGShieldsIconAnimation.gotoAndStop(0);
+         }
       }
       
       public function set isMain(param1:Boolean) : void

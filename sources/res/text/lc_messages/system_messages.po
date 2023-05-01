@@ -20,19 +20,19 @@ msgid "actionAchievements/title"
 msgstr "Medals for Specials"
 
 msgid "add_tankman_skill/invalid_vehicle"
-msgstr "Error training for a skill. Wrong vehicle."
+msgstr "Error training for a perk. Wrong vehicle."
 
 msgid "add_tankman_skill/server_error"
-msgstr "Failed to train a crew member for a new skill. Try again later."
+msgstr "Failed to train a crew member for a new perk. Try again later."
 
 msgid "add_tankman_skill/success"
-msgstr "New skill successfully trained."
+msgstr "New perk successfully trained."
 
 msgid "add_tankman_skill/vehicle_locked"
-msgstr "Error training for a skill. The vehicle is locked."
+msgstr "Error training for a perk. The vehicle is locked."
 
 msgid "add_tankman_skill/vehicle_need_repair"
-msgstr "Error training for a skill. Repair your vehicle."
+msgstr "Error training for a perk. Repair your vehicle."
 
 msgid "another_periphery"
 msgstr "You are still logged in on another server."
@@ -289,6 +289,11 @@ msgid "artefact_remove/vehicle_need_repair"
 msgstr ""
 "Vehicle damaged. %(kind)s \"%(name)s\" not demounted. Repair vehicle and try"
 " again."
+
+msgid "artefact_remove/wot_plus_success"
+msgstr ""
+"%(kind)s \"%(name)s\" was demounted from the vehicle for free through your "
+"active WoT Plus subscription."
 
 msgid "artefact_sell/invalid_module"
 msgstr "Unable to sell %(kind)s \"%(name)s\". Wrong module."
@@ -1420,20 +1425,19 @@ msgid "dossiers_unavailable"
 msgstr "Account is not ready (DOSSIERS_UNAVAILABLE)"
 
 msgid "drop_tankman_skill/invalid_vehicle"
-msgstr "Error resetting skills. Wrong vehicle."
+msgstr "Error resetting perks. Wrong vehicle."
 
 msgid "drop_tankman_skill/server_error"
-msgstr "Unable to reset skills. Try again later."
+msgstr "Unable to reset perks. Try again later."
 
 msgid "drop_tankman_skill/success"
-msgstr ""
-"All skills and perks have been successfully reset. You have spent %(money)s."
+msgstr "All perks have been successfully reset. You have spent %(money)s."
 
 msgid "drop_tankman_skill/vehicle_locked"
-msgstr "Error resetting skills. The vehicle is locked."
+msgstr "Error resetting perks. The vehicle is locked."
 
 msgid "drop_tankman_skill/vehicle_need_repair"
-msgstr "Error resetting skills. Repair your vehicle."
+msgstr "Error resetting perks. Repair your vehicle."
 
 msgid "drr_scale/step_down"
 msgstr "Dynamic resolution is reduced to %(scale)d%%."
@@ -2208,6 +2212,25 @@ msgid "maps_black_list/select/success"
 msgstr ""
 "The %(mapName)s map was excluded from Random Battles of the Standard Battle "
 "type. You can change your selection in %(time)s."
+
+msgid "maps_black_list/select/success/noSubscriptions"
+msgstr ""
+"The %(mapName)s map was excluded from Random Battles of the Standard Battle "
+"type. You can change your selection in %(time)s, or you can unlock an "
+"additional slot by activating WoT Premium Account or subscribing to WoT "
+"Plus."
+
+msgid "maps_black_list/select/success/premium"
+msgstr ""
+"The %(mapName)s map was excluded from Random Battles of the Standard Battle "
+"type. You can change your selection in %(time)s, or you can unlock an "
+"additional slot by subscribing to WoT Plus."
+
+msgid "maps_black_list/select/success/wotPlus"
+msgstr ""
+"The %(mapName)s map was excluded from Random Battles of the Standard Battle "
+"type. You can change your selection in %(time)s, or you can unlock an "
+"additional slot by activating WoT Premium Account."
 
 msgid "maps_black_list/switch_off/body"
 msgstr ""
@@ -4546,6 +4569,9 @@ msgstr ""
 "Operation unavailable. All your gold will be available after WG Wallet "
 "operability is restored automatically."
 
+msgid "vehicle_slot_buy/not_enough_credits"
+msgstr "Error purchasing a slot. Not enough credits."
+
 msgid "vehicle_slot_buy/not_enough_gold"
 msgstr "Error purchasing a slot. Not enough gold."
 
@@ -4681,6 +4707,9 @@ msgid "wallet/not_available_gold"
 msgstr ""
 "Acquisition of balance data is in progress. All your gold will be available "
 "soon."
+
+msgid "winback/turnOffBattlesError"
+msgstr "Unable to exit Warm-Up. Please try again later."
 
 msgid "window/buttons/close"
 msgstr "Close"

@@ -10,6 +10,8 @@ from helpers import dependency
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 from sound_constants import SHOP_SOUND_SPACE
+from uilogging.shop.loggers import ShopMetricsLogger
+from uilogging.shop.logging_constants import ShopLogKeys
 _logger = logging.getLogger(__name__)
 _logger.addHandler(logging.NullHandler())
 
@@ -48,6 +50,7 @@ class ShopView(LobbySubView, ShopBase):
     def __init__(self, ctx=None):
         super(ShopView, self).__init__(ctx)
         g_playerEvents.onShopResync += self.__onShopResync
+        self.__uiLogger = ShopMetricsLogger(item=ShopLogKeys.SHOP_VIEW)
 
     def onCloseBtnClick(self):
         self.fireEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_HANGAR)), scope=EVENT_BUS_SCOPE.LOBBY)
@@ -57,6 +60,7 @@ class ShopView(LobbySubView, ShopBase):
 
     def _dispose(self):
         g_playerEvents.onShopResync -= self.__onShopResync
+        self.__uiLogger.onViewClosed()
         super(ShopView, self)._dispose()
 
     def __onShopResync(self):
@@ -64,6 +68,14 @@ class ShopView(LobbySubView, ShopBase):
 
 
 class ShopOverlay(_ShopOverlayBase):
+
+    def __init__(self, ctx=None):
+        super(ShopOverlay, self).__init__(ctx)
+        self.__uiLogger = ShopMetricsLogger(item=ShopLogKeys.SHOP_OVERLAY)
+
+    def _dispose(self):
+        self.__uiLogger.onViewClosed()
+        super(ShopOverlay, self)._dispose()
 
     def onEscapePress(self):
         if not self._browserParams.get('isHidden'):

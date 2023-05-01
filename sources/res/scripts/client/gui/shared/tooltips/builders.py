@@ -85,6 +85,28 @@ class TooltipWindowBuilder(DataBuilder):
         return self._provider
 
 
+class AdvancedTooltipWindowBuilder(AdvancedBuilder):
+    __slots__ = ('_adProvider', '_condition', '_provider')
+
+    def __init__(self, tooltipType, linkage, provider, adProvider, condition=None):
+        super(AdvancedTooltipWindowBuilder, self).__init__(tooltipType, linkage)
+        self._adProvider = adProvider
+        self._condition = condition
+        self._provider = provider
+
+    def build(self, manager, formatType, advanced_, *args, **kwargs):
+        supportAdvanced = self.supportAdvanced(self._tooltipType, *args)
+        if advanced_ and supportAdvanced:
+            return self._adProvider
+        return self._provider
+
+    def supportAdvanced(self, tooltipType, *args):
+        if self._condition is not None:
+            return self._condition(*args)
+        else:
+            return True
+
+
 class AdvancedDataBuilder(AdvancedBuilder):
     __slots__ = ('_provider', '_adProvider', '_condition')
 

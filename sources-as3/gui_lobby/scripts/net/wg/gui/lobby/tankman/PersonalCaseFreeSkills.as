@@ -1,6 +1,7 @@
 package net.wg.gui.lobby.tankman
 {
    import flash.display.InteractiveObject;
+   import flash.display.MovieClip;
    import flash.events.Event;
    import flash.text.TextField;
    import net.wg.gui.components.controls.ScrollBar;
@@ -17,7 +18,19 @@ package net.wg.gui.lobby.tankman
    {
       
       private static const UPDATE_DATA_PROVIDER:String = "updateDataProvider";
+      
+      private static const MIN_PERCENTS:int = 50;
+      
+      private static const MAX_PERCENTS:int = 100;
+      
+      private static const SITUATIONAL_X_SHIFT:int = 18;
        
+      
+      public var iconSituational:MovieClip;
+      
+      public var situationalDesc:TextField;
+      
+      public var specializationLevelWarning:TextField;
       
       public var windowDescr:TextField;
       
@@ -55,6 +68,9 @@ package net.wg.gui.lobby.tankman
          this.scrollBar = null;
          this.model = null;
          this.windowDescr = null;
+         this.specializationLevelWarning = null;
+         this.situationalDesc = null;
+         this.iconSituational = null;
          super.onDispose();
       }
       
@@ -93,6 +109,7 @@ package net.wg.gui.lobby.tankman
             return;
          }
          this.model = _loc2_.list;
+         this.specializationLevelWarning.visible = _loc2_.specializationLevel >= MIN_PERCENTS && _loc2_.specializationLevel < MAX_PERCENTS;
          this.modifiers.enableKeyboardInput = !_loc2_.isBootcamp;
          this.modifiers.dataProvider = new DataProvider(this.model);
          invalidate(UPDATE_DATA_PROVIDER);
@@ -112,6 +129,7 @@ package net.wg.gui.lobby.tankman
                this.selectBtn.addEventListener(ButtonEvent.CLICK,this.selectBtn_buttonClickHandler);
             }
             this.updateSelectBtn();
+            this.updateSituationalInfo();
          }
       }
       
@@ -156,6 +174,30 @@ package net.wg.gui.lobby.tankman
          var _loc1_:PersonalCaseEvent = new PersonalCaseEvent(PersonalCaseEvent.TRAINING_FREE_SKILL,true);
          _loc1_.trainingSkillName = this.selectedSkillName;
          dispatchEvent(_loc1_);
+      }
+      
+      private function updateSituationalInfo() : void
+      {
+         this.iconSituational.visible = this.situationalDesc.visible = this.situationalVisibility;
+         this.iconSituational.x = Math.round(this.situationalDesc.x + (this.situationalDesc.width - this.situationalDesc.textWidth) / 2 - SITUATIONAL_X_SHIFT);
+      }
+      
+      private function get situationalVisibility() : Boolean
+      {
+         if(!this.model)
+         {
+            return false;
+         }
+         var _loc1_:int = 0;
+         while(_loc1_ < this.model.length)
+         {
+            if(this.model[_loc1_].isSituationalSkill)
+            {
+               return true;
+            }
+            _loc1_++;
+         }
+         return false;
       }
       
       private function modifiers_listIndexChangeHandler(param1:ListEvent) : void

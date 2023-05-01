@@ -1,4 +1,4 @@
-import sys
+import sys, BigWorld
 from SpaceVisibilityFlags import SpaceVisibilityFlagsFactory
 from constants import ARENA_GAMEPLAY_IDS
 DEFAULT_VISIBILITY_MASK = -1
@@ -14,3 +14,13 @@ def gameModeVisibilityMask(spaceName):
         return DEFAULT_VISIBILITY_MASK
     spaceVisibilityFlags = SpaceVisibilityFlagsFactory.create(spaceName)
     return spaceVisibilityFlags.getMaskForGameplayID(gameMode)
+
+
+def createFakeAvatar():
+    entityID = BigWorld.createEntity('OfflineEntity', BigWorld.camera().spaceID, 0, (0,
+                                                                                     0,
+                                                                                     0), (0,
+                                                                                          0,
+                                                                                          0), {})
+    entity = BigWorld.entity(entityID)
+    BigWorld.player = lambda : entity

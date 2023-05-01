@@ -87,6 +87,11 @@ package net.wg.gui.battle.views.consumablesPanel
          this._textField.text = param1;
       }
       
+      public function setBindKeyTextVisibility(param1:Boolean) : void
+      {
+         this._textField.visible = param1;
+      }
+      
       public function showGlow(param1:int, param2:Boolean = true) : void
       {
          switch(param1)

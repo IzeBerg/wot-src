@@ -653,9 +653,9 @@ msgstr "No Available Recruits"
 
 msgid "barracks/noRecoveryTankmen/message"
 msgstr ""
-"Only those crew members who have enough experience to train at least one skill or perk to 100%% (or who already have at least one skill or perk trained) are included here after they are dismissed. You can recover such a crew member within a period of %(totalDays)s d:\n"
-"• for free—during the next %(freeDays)s d after dismissal\n"
-"• for %(price)s—during the next %(paidDays)s d after dismissal."
+"Only crew members with enough experience to train at least one perk to 100%% (or with at least one perk trained) are included here after they are dismissed. You can recover such a crew member within a period of %(totalDays)s d:\n"
+"• for free—during the next %(freeDays)s d after dismissal\n"
+"• for %(price)s—during the next %(paidDays)s d after dismissal."
 
 msgid "barracks/noRecoveryTankmen/title"
 msgstr "No Dismissed Crew Members"
@@ -1272,7 +1272,7 @@ msgstr "Additionally, crew training for Elite vehicles can be accelerated."
 msgid "contextMenu/personalCase/stats/wotPlus"
 msgstr ""
 "Intensive Crew Regimen can be used to train crew members without sending "
-"them into battle"
+"them into battle."
 
 msgid "contextMenu/personalCase/statsBlockTitle"
 msgstr "IN PREMIUM VEHICLE"
@@ -1758,6 +1758,9 @@ msgstr "Ready for battle!"
 msgid "currentVehicleStatus/serverRestriction"
 msgstr "Server limit"
 
+msgid "currentVehicleStatus/subscription_suspended"
+msgstr "WoT Plus subscription suspended"
+
 msgid "currentVehicleStatus/tooHeavy"
 msgstr "Vehicle overloaded"
 
@@ -2155,6 +2158,20 @@ msgstr ""
 "The total bonus is calculated multiplicatively and may vary from nominal "
 "values."
 
+msgid "extraParams/name/artNotificationDelayFactor"
+msgstr ""
+"This parameter shows the time between the SPG shot and receiving the "
+"warning."
+
+msgid "extraParams/name/circularVisionRadiusWhileSurveyingDeviceDamaged"
+msgstr ""
+"This parameter shows the maximum view range when the observation devices are"
+" destroyed. The higher the value, the better."
+
+msgid "extraParams/name/commanderHitChance"
+msgstr ""
+"This parameter shows the chance of avoiding injuries to your Commander."
+
 msgid "extraParams/name/crewHitChance"
 msgstr ""
 "This parameter shows the chance of avoiding injuries for your crew members."
@@ -2167,8 +2184,26 @@ msgstr ""
 msgid "extraParams/name/crewStunDuration"
 msgstr "This parameter shows the duration of the received stun."
 
+msgid "extraParams/name/damageAndPiercingDistributionLowerBound"
+msgstr ""
+"This parameter shows the change of the minimum potential damage and "
+"potential penetration value compared to the base value (-25%)."
+
+msgid "extraParams/name/damageAndPiercingDistributionUpperBound"
+msgstr ""
+"This parameter shows the change of the maximum potential damage and "
+"potential penetration value compared to the base value (+25%)."
+
 msgid "extraParams/name/damageEnemiesByRamming"
-msgstr "This parameter shows the damage caused to enemies by ramming."
+msgstr ""
+"This parameter shows the amount of damage caused by ramming. When vehicles "
+"collide, the system considers the thickness of armor at the point of impact,"
+" the difference in the vehicles' weights, and their speeds."
+
+msgid "extraParams/name/damagedModulesDetectionTime"
+msgstr ""
+"This parameter shows the delay before the Commander detects critical damage "
+"to the enemy vehicle in your reticle."
 
 msgid "extraParams/name/demaskFoliageFactor"
 msgstr ""
@@ -2181,11 +2216,46 @@ msgstr ""
 "This parameter shows the exposure of moving enemy vehicles. The higher the "
 "value, the higher the chances of spotting."
 
+msgid "extraParams/name/enemyModulesCrewCritChance"
+msgstr ""
+"This parameter shows the changes to the chance of causing critical damage to"
+" enemy crew and internal modules. It only works for AP, APCR, and HEAT "
+"shells."
+
+msgid "extraParams/name/equipmentPreparationTime"
+msgstr "This parameter shows the cooldown time of consumables."
+
+msgid "extraParams/name/fireExtinguishingRate"
+msgstr ""
+"This parameter determines the decrease to a fire's duration and the amount "
+"of damage it causes."
+
+msgid "extraParams/name/foliageMaskingFactor"
+msgstr "This parameter shows the effect of concealment behind foliage."
+
+msgid "extraParams/name/radiomanActivityTimeAfterVehicleDestroy"
+msgstr ""
+"This parameter shows the additional transmission time of enemy positions "
+"after your vehicle is destroyed."
+
+msgid "extraParams/name/radiomanHitChance"
+msgstr ""
+"This parameter shows the chance of avoiding injuries to your Radio Operator."
+
+msgid "extraParams/name/stunResistanceEffectFactor"
+msgstr ""
+"This parameter shows the degree of negative effects from crew stunning."
+
 msgid "extraParams/name/vehPenaltyForDamageEngineAndCombat"
 msgstr ""
 "This parameter shows the reduction in the penalty to gun reload time due to "
 "a damaged ammo rack and to dynamic characteristics due to a damaged engine "
 "(x2 by default)."
+
+msgid "extraParams/name/vehicleAllyRadioDistance"
+msgstr ""
+"This parameter shows the range of sharing information with allies about the "
+"positions of all vehicles on the minimap."
 
 msgid "extraParams/name/vehicleAmmoBayEngineFuelStrength"
 msgstr ""
@@ -2196,6 +2266,12 @@ msgid "extraParams/name/vehicleAmmoBayStrength"
 msgstr ""
 "This parameter shows the durability of the ammo rack. The higher the value, "
 "the more durable your ammo rack."
+
+msgid "extraParams/name/vehicleAverageSoilResistance"
+msgstr ""
+"This parameter shows the crossing capacity of the suspension on moderately "
+"soft terrain. The higher the value, the less time is required to reach "
+"linear speed."
 
 msgid "extraParams/name/vehicleChassisFallDamage"
 msgstr ""
@@ -2219,10 +2295,12 @@ msgstr ""
 "visibility range. The default value is 10 seconds."
 
 msgid "extraParams/name/vehicleFireChance"
+msgstr "This parameter shows the chance of engine fire when it is damaged."
+
+msgid "extraParams/name/vehicleFuelTankLesionChance"
 msgstr ""
-"This parameter shows the chance of engine fire. The engine has a chance of "
-"fire each time damage is received (except for damage from the smallest "
-"caliber shells)."
+"This parameter shows the durability of fuel tanks against critical damage. "
+"Upon destruction, fuel tanks always cause a fire."
 
 msgid "extraParams/name/vehicleGunShotDispersion"
 msgstr ""
@@ -2234,7 +2312,9 @@ msgid "extraParams/name/vehicleGunShotDispersionAfterShot"
 msgstr "This parameter shows the size of the aiming circle after firing."
 
 msgid "extraParams/name/vehicleGunShotDispersionChassisMovement"
-msgstr "This parameter shows the dispersion during movement."
+msgstr ""
+"This parameter shows dispersion during movement. The lower the value, the "
+"more accurate the gun."
 
 msgid "extraParams/name/vehicleGunShotDispersionChassisRotation"
 msgstr "This parameter shows the dispersion during hull traverse."
@@ -2243,7 +2323,9 @@ msgid "extraParams/name/vehicleGunShotDispersionTurretRotation"
 msgstr "This parameter shows the dispersion during gun traverse."
 
 msgid "extraParams/name/vehicleGunShotDispersionWhileGunDamaged"
-msgstr "This parameter shows the dispersion with a damaged gun."
+msgstr ""
+"This parameter shows dispersion with a damaged gun. The higher the value, "
+"the lower the dispersion."
 
 msgid "extraParams/name/vehicleInvisibilityAfterShot"
 msgstr "This parameter shows the concealment after firing."
@@ -2251,10 +2333,20 @@ msgstr "This parameter shows the concealment after firing."
 msgid "extraParams/name/vehicleOwnSpottingTime"
 msgstr ""
 "This parameter shows the duration your vehicle is visible to enemies after "
-"you leave their visibility range. The default value is 10 seconds."
+"you leave their view range. The default value is 10 s."
+
+msgid "extraParams/name/vehicleRamChassisDamageResistance"
+msgstr ""
+"This parameter shows the amount of damage to suspension received from "
+"ramming. When vehicles collide, the system considers the thickness of the "
+"armor at the point of impact, the difference in the vehicles' weights, and "
+"their speeds."
 
 msgid "extraParams/name/vehicleRamDamageResistance"
-msgstr "This parameter shows the damage caused to your vehicle by ramming."
+msgstr ""
+"This parameter shows the amount of damage received from ramming. When "
+"vehicles collide, the system considers the thickness of the armor at the "
+"point of impact, the difference in the vehicles' weights, and their speeds."
 
 msgid "extraParams/name/vehicleRamOrExplosionDamageResistance"
 msgstr ""
@@ -2263,18 +2355,34 @@ msgstr ""
 
 msgid "extraParams/name/vehicleReloadTimeAfterShellChange"
 msgstr ""
-"This parameter shows the loading time when switching from a fully loaded "
-"shell to a different type of shell."
+"This parameter shows the speed when switching between shell types in a "
+"loaded gun."
 
 msgid "extraParams/name/vehicleRepairSpeed"
 msgstr ""
-"This parameter shows the speed of internal and external module repairs. The "
-"higher the value, the faster the repairs."
+"This parameter shows the speed of internal and external module repairs from "
+"the \"red\" state to the \"yellow\" state. The higher the value, the faster "
+"the repairs."
 
 msgid "extraParams/name/vehicleSpeedGain"
 msgstr ""
 "This parameter shows the crossing capacity of the suspension. The higher the"
 " value, the less time is required to reach linear speed."
+
+msgid "extraParams/name/vehicleWeakSoilResistance"
+msgstr ""
+"This parameter shows the crossing capacity of the suspension on soft "
+"terrain. The higher the value, the less time is required to reach linear "
+"speed."
+
+msgid "extraParams/name/wheelsRotationSpeed"
+msgstr ""
+"This parameter shows the speed of changing direction for a wheeled vehicle."
+
+msgid "extraParams/name/woundedCrewEfficiency"
+msgstr ""
+"This parameter shows the decrease of penalties to the major qualification "
+"for any crew member when they are injured (except for the Commander)."
 
 msgid "finalStatistic/commonStats/resultlabel/ended"
 msgstr "Battle Ended"
@@ -3039,6 +3147,9 @@ msgstr "Battle between peer teams."
 msgid "headerButtons/battle/types/unitLeave"
 msgstr "Team Battle"
 
+msgid "headerButtons/battle/types/winback"
+msgstr "Random Battle: Warm-Up"
+
 msgid "headerButtons/browser"
 msgstr "Browser"
 
@@ -3728,6 +3839,9 @@ msgstr "Arcade Cabinet"
 msgid "loading/battleTypes/30"
 msgstr "Onslaught"
 
+msgid "loading/battleTypes/31"
+msgstr "Warm-Up"
+
 msgid "loading/battleTypes/4"
 msgstr "Battle Training"
 
@@ -3813,6 +3927,9 @@ msgid "loading/battleTypes/desc/29"
 msgstr " "
 
 msgid "loading/battleTypes/desc/30"
+msgstr " "
+
+msgid "loading/battleTypes/desc/31"
 msgstr " "
 
 msgid "loading/battleTypes/desc/4"
@@ -4154,11 +4271,6 @@ msgstr "Minimum number of characters for nickname: %(count)d"
 msgid "login/status/invalid_nickname"
 msgstr "Nickname must contain Latin letters, numbers and '_'."
 
-msgid "login/status/invalid_password"
-msgstr ""
-"Password length must be from %(minLength)d to %(maxLength)d characters and "
-"contain only Latin letters, numbers and '_'."
-
 msgid "login/status/launchernotfound"
 msgstr "File WOTLauncher.exe not found. Please reload the application."
 
@@ -4391,7 +4503,7 @@ msgid "moduleInfo/params/cooldownSeconds"
 msgstr "Cooldown"
 
 msgid "moduleInfo/params/crewRolesFactor"
-msgstr "To major qualifications and crew skills"
+msgstr "to major qualifications and crew perks"
 
 msgid "moduleInfo/params/damage"
 msgstr "Damage"
@@ -5078,13 +5190,13 @@ msgid "profile/stats/items/nextSkillBattlesLeft"
 msgstr "Battles left (approximately)"
 
 msgid "profile/stats/items/nextSkillXPLeft"
-msgstr "Experience required to increase skill"
+msgstr "Experience required to increase perk"
 
 msgid "profile/stats/items/ready"
-msgstr "The skill is available."
+msgstr "The perk is available."
 
 msgid "profile/stats/items/readyToLearn"
-msgstr "Skills and perks available"
+msgstr "Perks available:"
 
 msgid "profile/stats/items/scout"
 msgstr "Scout:"
@@ -5790,7 +5902,7 @@ msgid "skillDropWindow/direction"
 msgstr "Retraining Orders"
 
 msgid "skillDropWindow/freeDropLabel"
-msgstr "Skills and perks up %(percent)s can be reset for free."
+msgstr "Perks up %(percent)s can be reset for free."
 
 msgid "skillDropWindow/freeDropPercent"
 msgstr "to 1%"
@@ -5814,7 +5926,7 @@ msgid "skillDropWindow/study/scool"
 msgstr "High"
 
 msgid "skillDropWindow/title"
-msgstr "Skill and Perk Reset"
+msgstr "Perk Reset"
 
 msgid "skillDropWindow/tooltip/visibleDisabled"
 msgstr "Temporarily unavailable for technical reasons."
@@ -6092,6 +6204,9 @@ msgstr "Available battles: %(battlesLeft)s"
 
 msgid "tankCarousel/vehicleStates/serverRestriction"
 msgstr "Server limit"
+
+msgid "tankCarousel/vehicleStates/subscription_suspended"
+msgstr "Suspended"
 
 msgid "tankCarousel/vehicleStates/tooHeavy"
 msgstr "Vehicle overloaded"
@@ -6501,7 +6616,7 @@ msgid "tankmanPersonalCase/modifiers/fromEquipment"
 msgstr "Equipment and consumables"
 
 msgid "tankmanPersonalCase/modifiers/fromSkills"
-msgstr "Skills and perks"
+msgstr "Perks"
 
 msgid "tankmanPersonalCase/modifiers/penalty"
 msgstr "Unsuitable specialization"
@@ -6539,11 +6654,15 @@ msgid "tankmanPersonalCase/retrainingWarning2"
 msgstr ""
 "Retraining for gold does not decrease the level of major qualification."
 
+msgid "tankmanPersonalCase/situationalDesc"
+msgstr ""
+"Situational perks that activate when certain conditions are met in battle."
+
 msgid "tankmanPersonalCase/skillsButton/additionText"
 msgstr "(Training is available upon achieving major qualification level 100%)"
 
 msgid "tankmanPersonalCase/skillsButton/mainText"
-msgstr "View All Skills and Perks"
+msgstr "View All Perks"
 
 msgid "tankmanPersonalCase/skillsDesc"
 msgstr "(Training is available upon achieving major qualification level 100%)"
@@ -6561,7 +6680,7 @@ msgid "tankmanPersonalCase/tabFreeSkills"
 msgstr "Zero Perks"
 
 msgid "tankmanPersonalCase/tabSkills"
-msgstr "Skills"
+msgstr "Perks"
 
 msgid "tankmanPersonalCase/tabTraining"
 msgstr "Training"
@@ -6669,8 +6788,7 @@ msgid "tankmen/mediumTank"
 msgstr "Medium Tank"
 
 msgid "tankmsnPersonalCase/lackOfSkillsForLearn"
-msgstr ""
-"Crew member has learned all additional skills and perks for this vehicle."
+msgstr "The crew member has trained all additional perks for this vehicle."
 
 msgid "tankmsnPersonalCase/loadingInfo"
 msgstr "Loading information... Please wait..."
@@ -6689,8 +6807,8 @@ msgstr "Training cost"
 
 msgid "teachingSkill/freeXpIsTight"
 msgstr ""
-"Not enough Free Experience to learn the perk/skill. Convert Combat "
-"Experience to Free Experience."
+"Not enough Free Experience to train the perk. Convert Combat Experience to "
+"Free Experience."
 
 msgid "teachingSkill/submit"
 msgstr "Train"

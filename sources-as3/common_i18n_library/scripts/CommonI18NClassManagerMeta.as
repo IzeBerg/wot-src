@@ -27,6 +27,8 @@ package
       
       public static const CREW_OPERATIONS:Class = CREW_OPERATIONS;
       
+      public static const CREW_PERKS:Class = CREW_PERKS;
+      
       public static const CREW_SKINS:Class = CREW_SKINS;
       
       public static const CYBERSPORT:Class = CYBERSPORT;

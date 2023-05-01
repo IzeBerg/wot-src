@@ -1084,6 +1084,7 @@ class RocketAcceleratorIndicator(RocketAcceleratorIndicatorMeta):
     def __init__(self):
         super(RocketAcceleratorIndicator, self).__init__()
         self.__isEnabled = False
+        self.__isAllowedByContext = True
         self.__updater = RocketIndicatorUpdater(self)
 
     def _populate(self):
@@ -1093,6 +1094,10 @@ class RocketAcceleratorIndicator(RocketAcceleratorIndicatorMeta):
             crosshairCtrl.onCrosshairPositionChanged += self.__onCrosshairPositionChanged
             crosshairCtrl.onCrosshairScaleChanged += self.__onCrosshairPositionChanged
             crosshairCtrl.onCrosshairViewChanged += self.__onCrosshairViewChanged
+        prbCtrl = self.sessionProvider.dynamic.comp7PrebattleSetup
+        if prbCtrl is not None:
+            prbCtrl.onBattleStarted += self.__onBattleStarted
+            self.__updateContextAvailability()
         vStateCtrl = self.sessionProvider.shared.vehicleState
         if vStateCtrl is not None:
             vStateCtrl.onVehicleStateUpdated += self.__onVehicleStateUpdated
@@ -1100,7 +1105,7 @@ class RocketAcceleratorIndicator(RocketAcceleratorIndicatorMeta):
             vehicle = vStateCtrl.getControllingVehicle()
             if vehicle is not None:
                 self.__onVehicleControlling(vehicle)
-        self.as_setVisibleS(self.__isEnabled)
+        self.__updateVisibility()
         return
 
     def _dispose(self):
@@ -1111,11 +1116,26 @@ class RocketAcceleratorIndicator(RocketAcceleratorIndicatorMeta):
             crosshairCtrl.onCrosshairPositionChanged -= self.__onCrosshairPositionChanged
             crosshairCtrl.onCrosshairScaleChanged -= self.__onCrosshairPositionChanged
             crosshairCtrl.onCrosshairViewChanged -= self.__onCrosshairViewChanged
+        prbCtrl = self.sessionProvider.dynamic.comp7PrebattleSetup
+        if prbCtrl is not None:
+            prbCtrl.onBattleStarted -= self.__onBattleStarted
         vStateCtrl = self.sessionProvider.shared.vehicleState
         if vStateCtrl is not None:
             vStateCtrl.onVehicleStateUpdated -= self.__onVehicleStateUpdated
             vStateCtrl.onVehicleControlling -= self.__onVehicleControlling
         super(RocketAcceleratorIndicator, self)._dispose()
+        return
+
+    def __onBattleStarted(self):
+        self.__updateContextAvailability()
+        self.__updateVisibility()
+
+    def __updateContextAvailability(self):
+        prebattleCtrl = self.sessionProvider.dynamic.comp7PrebattleSetup
+        if prebattleCtrl is not None:
+            self.__isAllowedByContext = prebattleCtrl.isVehicleStateIndicatorAllowed()
+        else:
+            self.__isAllowedByContext = True
         return
 
     def __onVehicleControlling(self, vehicle):
@@ -1127,7 +1147,7 @@ class RocketAcceleratorIndicator(RocketAcceleratorIndicatorMeta):
                 self.__updater.setRocketCmp(rocketCmp)
                 self.__isEnabled = True
         self.__onCrosshairPositionChanged()
-        self.as_setVisibleS(self.__isEnabled)
+        self.__updateVisibility()
         return
 
     def __onVehicleStateUpdated(self, state, value):
@@ -1138,7 +1158,7 @@ class RocketAcceleratorIndicator(RocketAcceleratorIndicatorMeta):
 
     def __updateDestroyed(self, _):
         self.__isEnabled = False
-        self.as_setVisibleS(self.__isEnabled)
+        self.__updateVisibility()
 
     def __onCrosshairPositionChanged(self, *args):
         if not self.__isEnabled:
@@ -1149,4 +1169,7 @@ class RocketAcceleratorIndicator(RocketAcceleratorIndicatorMeta):
         if viewID == CROSSHAIR_VIEW_ID.UNDEFINED:
             self.as_setVisibleS(False)
         else:
-            self.as_setVisibleS(self.__isEnabled)
+            self.__updateVisibility()
+
+    def __updateVisibility(self):
+        self.as_setVisibleS(self.__isEnabled and self.__isAllowedByContext)

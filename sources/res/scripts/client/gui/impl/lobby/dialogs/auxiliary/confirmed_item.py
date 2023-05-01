@@ -10,6 +10,8 @@ from gui.shared.utils.requesters import REQ_CRITERIA
 from gui.impl.gen.view_models.views.lobby.common.confirmed_item_model import ConfirmedItemModel
 from helpers import dependency
 from post_progression_common import ACTION_TYPES
+from skeletons.gui.game_control import IWotPlusController
+from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 from gui.shared.gui_items.gui_item_economics import ITEM_PRICE_EMPTY
 if typing.TYPE_CHECKING:
@@ -52,6 +54,11 @@ class ConfirmedItem(object):
     def canUseDemountKit(self):
         return False
 
+    def getOptItemDescKey(self):
+        if self.canUseDemountKit():
+            return 'itemWithDemountKit'
+        return 'itemDeluxe'
+
     def getLevel(self):
         return 0
 
@@ -75,7 +82,7 @@ class ConfirmedItem(object):
         itemModel.setImageSource(self.getImageSource())
         itemModel.setHighlightType(self.getHighlightsType())
         itemModel.setOverlayType(self.getOverlayType())
-        itemModel.setCanUseDemountKit(self.canUseDemountKit())
+        itemModel.setOptItemDescKey(self.getOptItemDescKey())
         itemModel.setLevel(self.getLevel())
         price = self.getRemovalPrice()
         if price:
@@ -111,12 +118,34 @@ class ConfirmedArtefact(ConfirmedItem):
 
 class ConfirmedOptDevice(ConfirmedArtefact):
     __itemsCache = dependency.descriptor(IItemsCache)
+    __wotPlus = dependency.descriptor(IWotPlusController)
+    __lobbyContext = dependency.descriptor(ILobbyContext)
 
     def getRemovalPrice(self):
         return self._item.getRemovalPrice(self.__itemsCache.items)
 
     def canUseDemountKit(self):
         return not self._item.isRemovable and not self._item.isDeluxe and self._item.canUseDemountKit
+
+    def getOptItemDescKey(self):
+        isActive = self.__wotPlus.isEnabled()
+        isFEDEnabled = self.__lobbyContext.getServerSettings().isFreeEquipmentDemountingEnabled()
+        isDeluxeEnabled = self.__lobbyContext.getServerSettings().isFreeDeluxeEquipmentDemountingEnabled()
+        isDeluxe = self._item.isDeluxe
+        if not isFEDEnabled:
+            return super(ConfirmedOptDevice, self).getOptItemDescKey()
+        if isDeluxe:
+            if isDeluxeEnabled:
+                if isActive:
+                    return 'itemWotPlus'
+                return 'itemDeluxeWotPlus'
+            return 'itemDeluxe'
+        if self._item.isModernized:
+            if self._item.level > 1:
+                return 'itemDeluxe'
+        if isActive:
+            return 'itemWotPlus'
+        return 'itemWithDemountKit'
 
     @classmethod
     def createFromGUIItem(cls, item, ctx=None):

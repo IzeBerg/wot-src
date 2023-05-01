@@ -1813,6 +1813,10 @@ package
       
       public static const HELPSCREEN_HINT_DESCRIPTION:String = "#ingame_gui:helpScreen/hint/description";
       
+      public static const HELPSCREEN_MAPBOX_PRESS:String = "#ingame_gui:helpScreen/mapbox/press";
+      
+      public static const HELPSCREEN_MAPBOX_DESCRIPTION:String = "#ingame_gui:helpScreen/mapbox/description";
+      
       public static const COMMANDERCAM_HINT_DESCRIPTION:String = "#ingame_gui:commanderCam/hint/description";
       
       public static const BATTLECOMMUNICATION_HINT_PRESS:String = "#ingame_gui:battleCommunication/hint/press";
@@ -1996,6 +2000,8 @@ package
       public static const PERSONAL_RESERVES_HINT_DESCRIPTION:String = "#ingame_gui:personal_reserves/hint/description";
       
       public static const HINT_NOBINDINGKEY:String = "#ingame_gui:hint/noBindingKey";
+      
+      public static const DANGER_ZONE_INDICATOR:String = "#ingame_gui:danger_zone/indicator";
        
       
       public function INGAME_GUI()

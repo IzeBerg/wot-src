@@ -26,6 +26,7 @@ package net.wg.gui.components.ribbon.data
          var _loc2_:String = RibbonColors.RED;
          var _loc3_:String = RibbonColors.PURPLE;
          var _loc4_:String = RibbonColors.GREY;
+         var _loc5_:String = RibbonColors.PERK;
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.ARMOR] = new RibbonSettingByType(_loc4_,COMMONBATTLELOBBY.RIBBONS_ARMOR,_loc4_,COMMONBATTLELOBBY.RIBBONS_ARMOR,3);
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.DAMAGE] = new RibbonSettingByType(_loc1_,COMMONBATTLELOBBY.RIBBONS_DAMAGE,_loc1_,COMMONBATTLELOBBY.RIBBONS_DAMAGE,3);
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.WORLD_COLLISION] = new RibbonSettingByType(_loc1_,COMMONBATTLELOBBY.RIBBONS_DAMAGE,_loc1_,COMMONBATTLELOBBY.RIBBONS_DAMAGE,3);
@@ -51,11 +52,18 @@ package net.wg.gui.components.ribbon.data
          BACKGROUNDS[RibbonColors.ORANGE] = new BackgroundAtlasNamesLobby(RibbonColors.ORANGE);
          BACKGROUNDS[RibbonColors.YELLOW] = new BackgroundAtlasNamesLobby(RibbonColors.YELLOW);
          BACKGROUNDS[_loc3_] = new BackgroundAtlasNamesLobby(_loc3_);
+         BACKGROUNDS[_loc5_] = new BackgroundAtlasNames(_loc5_);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.LIGHT_TANK] = new DamageSourceSetting(COMMONBATTLELOBBY.WHITE_ICON_LIGHT_TANK16X16);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.MEDIUM_TANK] = new DamageSourceSetting(COMMONBATTLELOBBY.WHITE_ICON_MEDIUM_TANK16X16);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.HEAVY_TANK] = new DamageSourceSetting(COMMONBATTLELOBBY.WHITE_ICON_HEAVY_TANK16X16);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.AT_SPG] = new DamageSourceSetting(COMMONBATTLELOBBY.WHITE_ICON_AT_SPG16X16);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.SPG] = new DamageSourceSetting(COMMONBATTLELOBBY.WHITE_ICON_SPG16X16);
+      }
+      
+      override protected function initDynamicRibbons() : void
+      {
+         var _loc1_:String = RibbonColors.PERK;
+         DYNAMIC_RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.PERK] = new RibbonSettingByType(_loc1_,COMMONBATTLELOBBY.LOADER_INTUITION,_loc1_,COMMONBATTLELOBBY.LOADER_INTUITION,1);
       }
    }
 }

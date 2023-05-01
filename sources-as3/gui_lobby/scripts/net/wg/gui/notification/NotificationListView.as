@@ -13,6 +13,7 @@ package net.wg.gui.notification
    import net.wg.gui.components.controls.ScrollBar;
    import net.wg.gui.components.controls.events.ScrollEvent;
    import net.wg.gui.components.popovers.PopOver;
+   import net.wg.gui.components.popovers.PopoverInternalLayout;
    import net.wg.gui.data.TabDataVO;
    import net.wg.gui.lobby.progressiveReward.ProgressiveRewardWidget;
    import net.wg.gui.notification.events.ServiceMessageEvent;
@@ -39,9 +40,35 @@ package net.wg.gui.notification
       
       private static const DEFAULT_SCROLL_STEP:int = 7;
       
+      private static const BUTTON_BAR_DEFAULT_Y:int = -3;
+      
+      private static const BUTTON_BAR_EXTENDED_Y:int = 83;
+      
+      private static const TOP_SEPARATOR_DEFAULT_Y:int = 8;
+      
+      private static const TOP_SEPARATOR_EXTENDED_Y:int = 94;
+      
+      private static const BOTTOM_LIP_DEFAULT_Y:int = 582;
+      
+      private static const BOTTOM_LIP_EXTENDED_Y:int = 603;
+      
+      private static const BOTTOM_SHADOW_DEFAULT_Y:int = 502;
+      
+      private static const BOTTOM_SHADOW_EXTENDED_Y:int = 522;
+      
+      private static const EMPTY_LIST_TF_DEFAULT_Y:int = 210;
+      
+      private static const EMPTY_LIST_TF_EXTENDED_Y:int = 294;
+      
       private static const LIST_Y_OFFSET:int = -10;
       
-      private static const LIST_DEFAULT_TOP_Y:int = 35;
+      private static const LIST_DEFAULT_Y:int = 35;
+      
+      private static const LIST_EXTENDED_Y:int = 123;
+      
+      private static const BACKGROUND_DEFAULT_HEIGHT:int = 512;
+      
+      private static const BACKGROUND_EXTENDED_HEIGHT:int = 534;
       
       private static const SCROLLBAR_Y_OFFSET:int = 10;
       
@@ -50,17 +77,31 @@ package net.wg.gui.notification
       private static const PROGRESSIVE_REWARD_TOP_OFFSET:int = 30;
       
       private static const INV_WIDGET_VISIBILITY:String = "invWidgetVisibility";
+      
+      private static const INV_GO_TO_NEWS_WIDGET_VISIBILITY:String = "invGoToNewsWidgetVisibility";
+      
+      private static const TITLE_TOP_PADDING:int = 13;
+      
+      private static const TITLE_TEXT_OFFSET_Y:int = 0;
+      
+      private static const TITLE_TOP_PADDING_WITH_NEWS:int = -73;
+      
+      private static const TITLE_TEXT_OFFSET_Y_WITH_NEWS:int = 93;
        
       
-      public var list:NotificationsList;
+      public var goToNewsWidget:GoToNewsWidget = null;
       
-      public var background:MovieClip;
+      public var list:NotificationsList = null;
       
-      public var bottomLip:MovieClip;
+      public var background:MovieClip = null;
       
-      public var scrollBar:ScrollBar;
+      public var bottomLip:MovieClip = null;
+      
+      public var scrollBar:ScrollBar = null;
       
       public var buttonBar:ContentTabBar = null;
+      
+      public var topSeparator:MovieClip = null;
       
       public var emptyListTF:TextField = null;
       
@@ -88,6 +129,8 @@ package net.wg.gui.notification
       
       private var _isProgressRewardRegistred:Boolean = false;
       
+      private var _isNewsBlockEnabled:Boolean = false;
+      
       public function NotificationListView()
       {
          super();
@@ -105,6 +148,7 @@ package net.wg.gui.notification
          this._emptyListTFbaseY = this.emptyListTF.y;
          this._emptyListTFreplacedY = this._emptyListTFbaseY + EMPTY_TF_Y_OFFSET;
          this.updateScrollBarProperties();
+         this.goToNewsWidget.onCheckNewsClick = onCheckNewsClick;
          this.list.itemRendererClassName = Linkages.SERVICE_MESSAGE_IR_UI;
          this.list.verticalScrollStep = this._scrollStepSize;
          this.list.addEventListener(ServiceMessageEvent.MESSAGE_BUTTON_CLICKED,this.onListMessageButtonClickedHandler,false,0,true);
@@ -122,6 +166,8 @@ package net.wg.gui.notification
          {
             this.progressiveRewardWidget.removeEventListener(Event.RESIZE,this.onProgressiveRewardResizeHandler);
          }
+         this.goToNewsWidget.dispose();
+         this.goToNewsWidget = null;
          this.list.removeEventListener(Event.SCROLL,this.onListScrollHandler);
          this.list.removeEventListener(ScrollEvent.UPDATE_SIZE,this.onListUpdateSizeHandler);
          this.list.removeEventListener(ServiceMessageEvent.MESSAGE_BUTTON_CLICKED,this.onListMessageButtonClickedHandler);
@@ -133,6 +179,7 @@ package net.wg.gui.notification
          this.topShadow = null;
          this.bottomShadow = null;
          this.widgetSeparator = null;
+         this.topSeparator = null;
          this.scrollBar.removeEventListener(Event.SCROLL,this.onScrollBarScrollHandler);
          this.scrollBar.dispose();
          this.scrollBar = null;
@@ -172,6 +219,12 @@ package net.wg.gui.notification
             }
             this.updateListItemsLayout();
             this.emptyListTF.y = !!_loc2_ ? Number(this._emptyListTFreplacedY) : Number(this._emptyListTFbaseY);
+         }
+         if(isInvalid(INV_GO_TO_NEWS_WIDGET_VISIBILITY))
+         {
+            this.goToNewsWidget.visible = this._isNewsBlockEnabled;
+            this.updateListItemsLayout();
+            this.updateWrapper();
          }
       }
       
@@ -241,6 +294,20 @@ package net.wg.gui.notification
          }
       }
       
+      public function as_setCheckNewsBtnEnabled(param1:Boolean) : void
+      {
+         this.goToNewsWidget.setCheckNewsBtnEnabled(param1);
+      }
+      
+      public function as_setIsNewsBlockEnabled(param1:Boolean) : void
+      {
+         if(this._isNewsBlockEnabled != param1)
+         {
+            this._isNewsBlockEnabled = param1;
+            invalidate(INV_GO_TO_NEWS_WIDGET_VISIBILITY);
+         }
+      }
+      
       public function as_setProgressiveRewardEnabled(param1:Boolean) : void
       {
          this._progressiveRewardEnabled = param1;
@@ -262,14 +329,37 @@ package net.wg.gui.notification
       
       private function updateListItemsLayout() : void
       {
-         var _loc1_:int = LIST_DEFAULT_TOP_Y;
+         var _loc1_:int = 0;
+         if(this._isNewsBlockEnabled)
+         {
+            _loc1_ = LIST_EXTENDED_Y;
+            this.buttonBar.y = BUTTON_BAR_EXTENDED_Y;
+            this.topSeparator.y = TOP_SEPARATOR_EXTENDED_Y;
+            this.bottomLip.y = BOTTOM_LIP_EXTENDED_Y;
+            this.bottomShadow.y = BOTTOM_SHADOW_EXTENDED_Y;
+            this.emptyListTF.y = EMPTY_LIST_TF_EXTENDED_Y;
+            this.background.height = BACKGROUND_EXTENDED_HEIGHT;
+         }
+         else
+         {
+            _loc1_ = LIST_DEFAULT_Y;
+            this.buttonBar.y = BUTTON_BAR_DEFAULT_Y;
+            this.topSeparator.y = TOP_SEPARATOR_DEFAULT_Y;
+            this.bottomLip.y = BOTTOM_LIP_DEFAULT_Y;
+            this.bottomShadow.y = BOTTOM_SHADOW_DEFAULT_Y;
+            this.emptyListTF.y = EMPTY_LIST_TF_DEFAULT_Y;
+            this.background.height = BACKGROUND_DEFAULT_HEIGHT;
+         }
          if(this._progressiveRewardEnabled && this.progressiveRewardWidget.visible)
          {
             _loc1_ = this.progressiveRewardWidget.y + this.progressiveRewardWidget.actualHeight;
          }
          this.list.y = _loc1_;
          this.list.height = this.background.height - _loc1_ + LIST_Y_OFFSET;
-         this.widgetSeparator.y = this.list.y + this.list.actualHeight;
+         if(!this._isNewsBlockEnabled)
+         {
+            this.widgetSeparator.y = this.list.y + this.list.actualHeight;
+         }
          this.scrollBar.y = _loc1_ + SCROLLBAR_Y_OFFSET;
          this.scrollBar.height = this.list.height - (SCROLLBAR_Y_OFFSET << 1);
          this.topShadow.y = _loc1_;
@@ -320,12 +410,30 @@ package net.wg.gui.notification
          }
       }
       
+      private function updateWrapper() : void
+      {
+         var _loc1_:PopOver = PopOver(wrapper);
+         _loc1_.layout.invokeLayout();
+         if(this._isNewsBlockEnabled)
+         {
+            PopoverInternalLayout(_loc1_.layout).contentPadding.titleTop = TITLE_TOP_PADDING_WITH_NEWS;
+            _loc1_.titleTextOffsetY = TITLE_TEXT_OFFSET_Y_WITH_NEWS;
+         }
+         else
+         {
+            PopoverInternalLayout(_loc1_.layout).contentPadding.titleTop = TITLE_TOP_PADDING;
+            _loc1_.titleTextOffsetY = TITLE_TEXT_OFFSET_Y;
+         }
+         _loc1_.validateNow();
+      }
+      
       override public function set wrapper(param1:IWrapper) : void
       {
          super.wrapper = param1;
          var _loc2_:PopOver = PopOver(wrapper);
          _loc2_.title = App.utils.locale.makeString(MESSENGER.LISTVIEW_TITLE);
          _loc2_.isCloseBtnVisible = true;
+         this.updateWrapper();
       }
       
       override public function get width() : Number

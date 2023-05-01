@@ -7,7 +7,7 @@ package net.wg.gui.lobby.tank_setup
    import flash.ui.Keyboard;
    import net.wg.data.constants.generated.HANGAR_ALIASES;
    import net.wg.gui.lobby.hangar.HangarAmunitionSwitchAnimator;
-   import net.wg.gui.lobby.hangar.interfaces.IVehicleParameters;
+   import net.wg.gui.lobby.hangar.VehicleParametersWithHighlight;
    import net.wg.infrastructure.base.meta.IAmmunitionSetupViewMeta;
    import net.wg.infrastructure.base.meta.impl.AmmunitionSetupViewMeta;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
@@ -40,7 +40,7 @@ package net.wg.gui.lobby.tank_setup
       
       public var gfContent:AmmunitionSetupViewInject = null;
       
-      public var params:IVehicleParameters;
+      public var params:VehicleParametersWithHighlight = null;
       
       private var _paramsTween:Tween;
       

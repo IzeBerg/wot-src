@@ -195,7 +195,7 @@ package net.wg.gui.lobby.tankman
          }
          else
          {
-            App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_SKILL,null,this._skillName,this._tankmanID);
+            App.toolTipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.CREW_PERK_GF,this._skillName,this._tankmanID);
          }
       }
       

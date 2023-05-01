@@ -5,9 +5,6 @@ class HangarMeta(View):
     def onEscape(self):
         self._printOverrideError('onEscape')
 
-    def onCloseBtnClick(self):
-        self._printOverrideError('onCloseBtnClick')
-
     def showHelpLayout(self):
         self._printOverrideError('showHelpLayout')
 
@@ -35,6 +32,10 @@ class HangarMeta(View):
     def as_setControlsVisibleS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setControlsVisible(value)
+
+    def as_setComp7ModifiersVisibleS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setComp7ModifiersVisible(value)
 
     def as_setVisibleS(self, value):
         if self._isDAAPIInited():

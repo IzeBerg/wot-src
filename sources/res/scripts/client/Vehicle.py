@@ -642,13 +642,6 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
     def set_publicInfo(self, _):
         self.refreshNationalVoice()
 
-    def set_vehPerks(self, _=None):
-        vehPerks = self.vehPerks
-        ctrl = self.guiSessionProvider.shared.prebattleSetups
-        if ctrl is not None and vehPerks is not None:
-            ctrl.setPerks(self.id, vehPerks)
-        return
-
     def set_vehPostProgression(self, _=None):
         ctrl = self.guiSessionProvider.shared.prebattleSetups
         if ctrl is not None:
@@ -672,6 +665,18 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             return Math.Vector3(0.0, 10.0, 0.0)
         else:
             return self.extrasHitPoint[extraIndex]
+
+    def set_perks(self, _=None):
+        ctrl = self.guiSessionProvider.dynamic.perks
+        if ctrl is not None:
+            ctrl.updatePerks(self.perks)
+        return
+
+    def set_perksRibbonNotify(self, _=None):
+        ctrl = self.guiSessionProvider.dynamic.perks
+        if ctrl is not None and self.perksRibbonNotify:
+            ctrl.notifyRibbonChanges(self.perksRibbonNotify)
+        return
 
     def onHealthChanged(self, newHealth, oldHealth, attackerID, attackReasonID):
         if newHealth > 0 and self.health <= 0:

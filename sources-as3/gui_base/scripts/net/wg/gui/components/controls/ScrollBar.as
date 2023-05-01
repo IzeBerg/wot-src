@@ -8,6 +8,7 @@ package net.wg.gui.components.controls
    import net.wg.gui.components.controls.events.ScrollBarEvent;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.controls.ScrollBar;
+   import scaleform.clik.core.UIComponent;
    import scaleform.clik.events.ButtonEvent;
    import scaleform.gfx.MouseEventEx;
    
@@ -39,9 +40,15 @@ package net.wg.gui.components.controls
       
       override protected function draw() : void
       {
-         var _loc1_:TextField = null;
+         var _loc1_:UIComponent = null;
+         var _loc2_:TextField = null;
          if(isInvalid(InvalidationType.SIZE))
          {
+            _loc1_ = track as UIComponent;
+            if(_loc1_)
+            {
+               _loc1_.setActualScale(1,1);
+            }
             this.layoutContainer();
             this.updateThumb();
          }
@@ -49,8 +56,8 @@ package net.wg.gui.components.controls
          {
             if(_scrollTarget is TextField)
             {
-               _loc1_ = _scrollTarget as TextField;
-               this.setScrollProperties(_loc1_.bottomScrollV - _loc1_.scrollV,1,_loc1_.maxScrollV);
+               _loc2_ = _scrollTarget as TextField;
+               this.setScrollProperties(_loc2_.bottomScrollV - _loc2_.scrollV,1,_loc2_.maxScrollV);
             }
             updateThumbPosition();
          }
