@@ -12,8 +12,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onEscape:Function;
       
-      public var onCloseBtnClick:Function;
-      
       public var showHelpLayout:Function;
       
       public var closeHelpLayout:Function;
@@ -57,12 +55,6 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onEscape,"onEscape" + Errors.CANT_NULL);
          this.onEscape();
-      }
-      
-      public function onCloseBtnClickS() : void
-      {
-         App.utils.asserter.assertNotNull(this.onCloseBtnClick,"onCloseBtnClick" + Errors.CANT_NULL);
-         this.onCloseBtnClick();
       }
       
       public function showHelpLayoutS() : void

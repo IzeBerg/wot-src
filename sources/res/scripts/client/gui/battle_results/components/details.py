@@ -338,8 +338,8 @@ class MoneyDetailsBlock(_EconomicsDetailsBlock):
         column2 = None
         column4 = None
         if self.__lobbyContext.getServerSettings().isRenewableSubGoldReserveEnabled():
-            column2 = style.makeGoldLabel(baseGold, canBeFaded=True)
-            column4 = style.makeGoldLabel(premiumGold, canBeFaded=True)
+            column2 = style.makeGoldLabel(baseGold, canBeFaded=True, isDiff=baseGold > 0)
+            column4 = style.makeGoldLabel(premiumGold, canBeFaded=True, isDiff=premiumGold > 0)
         self._addStatsRow('piggyBankInfo', column1=style.makeCreditsLabel(baseCredits, canBeFaded=not self.hasAnyPremium, isDiff=baseCredits > 0), column2=column2, column3=style.makeCreditsLabel(premiumCredits, canBeFaded=self.hasAnyPremium, isDiff=premiumCredits > 0), column4=column4)
         return
 

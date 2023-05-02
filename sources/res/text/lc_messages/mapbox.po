@@ -59,19 +59,19 @@ msgid "intro/button"
 msgstr "收到！"
 
 msgid "intro/interviewInfoDescription"
-msgstr "您的反馈将会影响新地图的后续改动。选出最佳地图，我们后续会将该地图添加到游戏中。"
+msgstr "玩家反馈可帮助我们优化地图。请留下您关于新地图机制的看法，我们将择优引入游戏。"
 
 msgid "intro/interviewInfoTitle"
 msgstr "重要反馈"
 
 msgid "intro/modeInfoDescription"
-msgstr "在开发中的地图上使用VIII–X级坦克战斗，参与调查，并获得奖励。"
+msgstr "在具有新机制的地图上驾驶VIII–X级坦克参加战斗，完成问卷调查并获得奖励。进度将会在一周后重置，您届时即可再次开始获取奖励。"
 
 msgid "intro/modeInfoTitle"
-msgstr "参加到新地图的开发中！"
+msgstr "开发全新机制离不开您的帮助！"
 
 msgid "intro/startEvent"
-msgstr "活动开始于："
+msgstr "距活动开始还有:"
 
 msgid "intro/taskInfoDescription"
 msgstr "通过侦察任务中的战斗，您可以完成日常任务和战斗通行证任务，还能达成渐变贴花的解锁条件。"
@@ -152,32 +152,38 @@ msgstr "%(server)s服务器已进入休战期，休战期将持续至%(startTime
 msgid "primeTimeView/title"
 msgstr "侦察任务"
 
-msgid "progression/cardTitle"
-msgstr "在地图上战斗时，获得的经验排名前{rating}"
+msgid "primeTimes/availableServer"
+msgstr "开放服务器:"
 
-msgid "progression/cardTitleCommon"
-msgstr "在地图上战斗时，获得的经验排名前{rating}"
+msgid "primeTimes/availableServers"
+msgstr "开放服务器:"
+
+msgid "progression/cardTitle/mapBattles"
+msgstr "参加战斗"
+
+msgid "progression/cardTitle/rating"
+msgstr "所获经验排名前{rating}"
 
 msgid "progression/changeAnswer"
 msgstr "更换答案"
 
 msgid "progression/chooseBetter"
-msgstr "选择最佳地图"
+msgstr "参与问卷调查"
 
 msgid "progression/chooseBetterTooltip"
-msgstr "满足以上条件后，才能选择最佳地图。"
+msgstr "满足以上条件才能参与调查。"
 
 msgid "progression/counter"
 msgstr "%(current)/%(mapBattles)"
 
 msgid "progression/info/description"
-msgstr "在开发中的地图上使用VIII–X级坦克战斗，参与调查，并获得奖励。"
+msgstr "在具有全新机制的地图上驾驶VIII–X级坦克参加战斗，完成问卷调查并获得奖励。"
 
 msgid "progression/info/restart"
 msgstr "距离奖励进度重置还剩%(leftTime)s"
 
 msgid "progression/info/title"
-msgstr "参战数：%(current)/%(total)"
+msgstr "战斗场次: %(current)/%(total)"
 
 msgid "progression/infoButton"
 msgstr "关于活动"
@@ -188,35 +194,20 @@ msgstr "卡累利阿"
 msgid "progression/map_02_malinovka"
 msgstr "马利诺夫卡"
 
+msgid "progression/map_04_himmelsdorf_mb"
+msgstr "锡默尔斯多夫"
+
 msgid "progression/map_05_prohorovka"
 msgstr "普罗霍洛夫卡"
 
-msgid "progression/map_117_canyon_ish"
-msgstr "峡谷"
+msgid "progression/map_05_prohorovka_mb"
+msgstr "普罗霍洛夫卡"
 
-msgid "progression/map_119_turning_point_if"
-msgstr "伏尔加"
+msgid "progression/map_08_ruinberg_mb"
+msgstr "鲁别克"
 
-msgid "progression/map_120_graf_zeppelin_ish"
-msgstr "飞空艇坞"
-
-msgid "progression/map_121_lost_paradise_v"
-msgstr "牡蛎湾"
-
-msgid "progression/map_122_frozen_land"
-msgstr "山崩"
-
-msgid "progression/map_123_dalny_gg"
-msgstr "远东"
-
-msgid "progression/map_125_highground_v"
-msgstr "山麓"
-
-msgid "progression/map_126_asia_ravine_ish"
-msgstr "首府"
-
-msgid "progression/map_128_last_frontier_v"
-msgstr "前哨"
+msgid "progression/map_127_japort_mb"
+msgstr "避风港"
 
 msgid "progression/map_14_siegfried_line"
 msgstr "魅影小镇"
@@ -228,7 +219,9 @@ msgid "progression/map_18_cliff"
 msgstr "韦斯特菲尔德"
 
 msgid "progression/map_all"
-msgstr "所有地图"
+msgstr ""
+"游戏\n"
+"机制"
 
 msgid "progression/redirect"
 msgstr "前往模式"
@@ -276,7 +269,7 @@ msgid "questFlag/counter"
 msgstr "%(progress)s/%(total)s"
 
 msgid "questFlag/description"
-msgstr "使用%(highlightedText)s战斗，在调查中分享您的反馈并获得奖励。"
+msgstr "驾驶%(highlightedText)s参加战斗，在问卷调查中分享反馈并获得奖励。"
 
 msgid "questFlag/frozen/header"
 msgstr "侦察任务不可用"
@@ -285,13 +278,13 @@ msgid "questFlag/frozen/text"
 msgstr "由于技术原因，侦察任务无法使用。"
 
 msgid "questFlag/highlightedText"
-msgstr "VIII–X级坦克在开发中的地图上"
+msgstr "具有全新机制的地图上的VIII–X级坦克战斗"
 
 msgid "questFlag/incomplete"
 msgstr "获得下个奖励所需要的参战场数：%(count)s"
 
 msgid "questFlag/progressTitle"
-msgstr "参战数"
+msgstr "战斗场次:"
 
 msgid "questFlag/surveysTitle"
 msgstr "参与调查数：%(count)s"
@@ -330,10 +323,10 @@ msgid "selectableCrewbook/guide"
 msgstr "培训指南"
 
 msgid "selector/startEvent"
-msgstr "地图探索将于%(day)s后开始"
+msgstr "具有全新机制的地图探索将于%(day)s开始"
 
 msgid "selector/tooltip/body"
-msgstr "6张地图的探索将持续至%(day)s。"
+msgstr "具有全新机制的地图探索将持续至%(day)s"
 
 msgid "selector/tooltip/title"
 msgstr "时间表"
@@ -362,239 +355,401 @@ msgstr "选择其他服务器"
 msgid "survey/backBtn"
 msgstr "上一页"
 
+msgid "survey/dynamicAllMaps/question/q1"
+msgstr "您对在地图上添加随机事件有何看法？"
+
+msgid "survey/dynamicAllMaps/question/q10"
+msgstr "您是否想提前了解标准模式地图上的事件？"
+
+msgid "survey/dynamicAllMaps/question/q11"
+msgstr "您是否会在具有事件的标准模式地图上参加战斗？"
+
+msgid "survey/dynamicAllMaps/question/q2"
+msgstr "对于具有随机事件的地图上的战斗，您有何看法？"
+
+msgid "survey/dynamicAllMaps/question/q3"
+msgstr "随机事件多大程度上影响了您的玩法？"
+
+msgid "survey/dynamicAllMaps/question/q4"
+msgstr "添加随机事件后，战斗发生了什么变化？"
+
+msgid "survey/dynamicAllMaps/question/q5"
+msgstr "战斗中的随机事件应该何时发生？"
+
+msgid "survey/dynamicAllMaps/question/q6"
+msgstr "对于能够与地图上的物体(集装箱、混凝土块等)互动，您有何看法？"
+
+msgid "survey/dynamicAllMaps/question/q7"
+msgstr "您是否希望标准模式地图上发生随机事件？"
+
+msgid "survey/dynamicAllMaps/question/q8"
+msgstr "您是否认为随机事件需要任何改动？"
+
+msgid "survey/dynamicAllMaps/question/q9"
+msgstr "请具体说明任何必要的改进措施。"
+
+msgid "survey/dynamicAllMaps/response/q10_1"
+msgstr "是，在地图加载期间"
+
+msgid "survey/dynamicAllMaps/response/q10_2"
+msgstr "是，在倒计时期间"
+
+msgid "survey/dynamicAllMaps/response/q10_3"
+msgstr "是，在事件发生之前"
+
+msgid "survey/dynamicAllMaps/response/q10_4"
+msgstr "否"
+
+msgid "survey/dynamicAllMaps/response/q10_5"
+msgstr "不好说"
+
+msgid "survey/dynamicAllMaps/response/q11_1"
+msgstr "我会游玩全部内容"
+
+msgid "survey/dynamicAllMaps/response/q11_2"
+msgstr "我会关闭其中一部分内容"
+
+msgid "survey/dynamicAllMaps/response/q11_3"
+msgstr "我会关闭全部内容"
+
+msgid "survey/dynamicAllMaps/response/q11_4"
+msgstr "不好说"
+
+msgid "survey/dynamicAllMaps/response/q1_1"
+msgstr "认同"
+
+msgid "survey/dynamicAllMaps/response/q1_2"
+msgstr "不认同"
+
+msgid "survey/dynamicAllMaps/response/q1_3"
+msgstr "我不在乎"
+
+msgid "survey/dynamicAllMaps/response/q2_1"
+msgstr "我很喜欢"
+
+msgid "survey/dynamicAllMaps/response/q2_2"
+msgstr "我有点喜欢"
+
+msgid "survey/dynamicAllMaps/response/q2_3"
+msgstr "我有点不喜欢"
+
+msgid "survey/dynamicAllMaps/response/q2_4"
+msgstr "我很不喜欢"
+
+msgid "survey/dynamicAllMaps/response/q2_5"
+msgstr "不好说"
+
+msgid "survey/dynamicAllMaps/response/q3_1"
+msgstr "影响很大"
+
+msgid "survey/dynamicAllMaps/response/q3_2"
+msgstr "影响很小"
+
+msgid "survey/dynamicAllMaps/response/q3_3"
+msgstr "完全没有影响"
+
+msgid "survey/dynamicAllMaps/response/q3_4"
+msgstr "不好说"
+
+msgid "survey/dynamicAllMaps/response/q4_1"
+msgstr "战斗的趣味性增强"
+
+msgid "survey/dynamicAllMaps/response/q4_2"
+msgstr "我没注意到任何变化"
+
+msgid "survey/dynamicAllMaps/response/q4_3"
+msgstr "战斗的趣味性减弱"
+
+msgid "survey/dynamicAllMaps/response/q4_4"
+msgstr "不好说"
+
+msgid "survey/dynamicAllMaps/response/q5_1"
+msgstr "战斗开场"
+
+msgid "survey/dynamicAllMaps/response/q5_2"
+msgstr "战斗中间"
+
+msgid "survey/dynamicAllMaps/response/q5_3"
+msgstr "战斗尾声"
+
+msgid "survey/dynamicAllMaps/response/q5_4"
+msgstr "战斗的任意时刻"
+
+msgid "survey/dynamicAllMaps/response/q5_5"
+msgstr "不好说"
+
+msgid "survey/dynamicAllMaps/response/q6_1"
+msgstr "认同"
+
+msgid "survey/dynamicAllMaps/response/q6_2"
+msgstr "不认同"
+
+msgid "survey/dynamicAllMaps/response/q6_3"
+msgstr "我不在乎"
+
+msgid "survey/dynamicAllMaps/response/q7_1"
+msgstr "是"
+
+msgid "survey/dynamicAllMaps/response/q7_2"
+msgstr "否"
+
+msgid "survey/dynamicAllMaps/response/q7_3"
+msgstr "我不在乎"
+
+msgid "survey/dynamicAllMaps/response/q8_1"
+msgstr "是"
+
+msgid "survey/dynamicAllMaps/response/q8_2"
+msgstr "否"
+
+msgid "survey/dynamicAllMaps/response/q8_3"
+msgstr "不好说"
+
+msgid "survey/dynamicOneMap/question/option/q6_AT-SPG"
+msgstr "自行反坦克炮"
+
+msgid "survey/dynamicOneMap/question/option/q6_SPG"
+msgstr "自行火炮"
+
+msgid "survey/dynamicOneMap/question/option/q6_heavyTank"
+msgstr "重型坦克"
+
+msgid "survey/dynamicOneMap/question/option/q6_lightTank"
+msgstr "轻型坦克"
+
+msgid "survey/dynamicOneMap/question/option/q6_mediumTank"
+msgstr "中型坦克"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_1"
+msgstr "飞艇坠毁在城镇中"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_2"
+msgstr "山丘上出现坡道"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_3"
+msgstr "轰炸铁路上的火车"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_4"
+msgstr "与动态掩体(轨道车厢、坦克)互动"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_1"
+msgstr "飞机坠毁在小路上"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_2"
+msgstr "飞机坠毁在山丘上"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_3"
+msgstr "火车脱轨"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_4"
+msgstr "与动态掩体(坦克残骸)互动"
+
+msgid "survey/dynamicOneMap/question/option/q8_08_ruinberg_mb_1"
+msgstr "轰炸小城"
+
+msgid "survey/dynamicOneMap/question/option/q8_08_ruinberg_mb_2"
+msgstr "轰炸城市(城区中出现通道)"
+
+msgid "survey/dynamicOneMap/question/option/q8_08_ruinberg_mb_3"
+msgstr "与动态掩体(坦克残骸)互动"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_1"
+msgstr "船只冲入码头"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_2"
+msgstr "飞机坠毁在地堡入口处"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_3"
+msgstr "桥梁被炸毁"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_4"
+msgstr "与动态掩体(集装箱、混凝土块)互动"
+
+msgid "survey/dynamicOneMap/question/q1"
+msgstr "对于在这张地图上参加战斗，您有何看法？"
+
+msgid "survey/dynamicOneMap/question/q2"
+msgstr "对于这张地图上的随机事件视觉效果，您有何看法？"
+
+msgid "survey/dynamicOneMap/question/q3"
+msgstr "请对地图上的随机事件数量进行评价。"
+
+msgid "survey/dynamicOneMap/question/q4"
+msgstr "您是否希望调整这些事件对该地图玩法的影响？"
+
+msgid "survey/dynamicOneMap/question/q5"
+msgstr "您在这张地图上使用了哪些坦克？"
+
+msgid "survey/dynamicOneMap/question/q6"
+msgstr "{value}的玩法有何变化？"
+
+msgid "survey/dynamicOneMap/question/q7"
+msgstr "对于在战斗中使用动态掩体(集装箱、混凝土块等)，您有何看法？"
+
+msgid "survey/dynamicOneMap/question/q8"
+msgstr "您认为以下内容对该地图玩法的影响如何？"
+
+msgid "survey/dynamicOneMap/question/q9_13"
+msgstr "您不喜欢\"{value}\"事件的哪些方面？"
+
+msgid "survey/dynamicOneMap/response/q1_1"
+msgstr "我很喜欢"
+
+msgid "survey/dynamicOneMap/response/q1_2"
+msgstr "我有点喜欢"
+
+msgid "survey/dynamicOneMap/response/q1_3"
+msgstr "我有点不喜欢"
+
+msgid "survey/dynamicOneMap/response/q1_4"
+msgstr "我很不喜欢"
+
+msgid "survey/dynamicOneMap/response/q1_5"
+msgstr "不好说"
+
+msgid "survey/dynamicOneMap/response/q2_1"
+msgstr "我很喜欢"
+
+msgid "survey/dynamicOneMap/response/q2_2"
+msgstr "我有点喜欢"
+
+msgid "survey/dynamicOneMap/response/q2_3"
+msgstr "我有点不喜欢"
+
+msgid "survey/dynamicOneMap/response/q2_4"
+msgstr "我很不喜欢"
+
+msgid "survey/dynamicOneMap/response/q2_5"
+msgstr "不好说"
+
+msgid "survey/dynamicOneMap/response/q3_1"
+msgstr "太多"
+
+msgid "survey/dynamicOneMap/response/q3_2"
+msgstr "刚刚好"
+
+msgid "survey/dynamicOneMap/response/q3_3"
+msgstr "太少"
+
+msgid "survey/dynamicOneMap/response/q3_4"
+msgstr "不好说"
+
+msgid "survey/dynamicOneMap/response/q4_1"
+msgstr "是，增加其影响"
+
+msgid "survey/dynamicOneMap/response/q4_2"
+msgstr "是，降低其影响"
+
+msgid "survey/dynamicOneMap/response/q4_3"
+msgstr "否"
+
+msgid "survey/dynamicOneMap/response/q4_4"
+msgstr "不好说"
+
+msgid "survey/dynamicOneMap/response/q5_AT-SPG"
+msgstr "自行反坦克炮"
+
+msgid "survey/dynamicOneMap/response/q5_SPG"
+msgstr "自行火炮"
+
+msgid "survey/dynamicOneMap/response/q5_heavyTank"
+msgstr "重型坦克"
+
+msgid "survey/dynamicOneMap/response/q5_lightTank"
+msgstr "轻型坦克"
+
+msgid "survey/dynamicOneMap/response/q5_mediumTank"
+msgstr "中型坦克"
+
+msgid "survey/dynamicOneMap/response/q5_unknown"
+msgstr "我不记得了"
+
+msgid "survey/dynamicOneMap/response/q6_1"
+msgstr "有所改进"
+
+msgid "survey/dynamicOneMap/response/q6_2"
+msgstr "有所变差"
+
+msgid "survey/dynamicOneMap/response/q6_3"
+msgstr "我没注意到任何变化"
+
+msgid "survey/dynamicOneMap/response/q6_4"
+msgstr "不好说"
+
+msgid "survey/dynamicOneMap/response/q7_1"
+msgstr "我很喜欢"
+
+msgid "survey/dynamicOneMap/response/q7_2"
+msgstr "我有点喜欢"
+
+msgid "survey/dynamicOneMap/response/q7_3"
+msgstr "我有点不喜欢"
+
+msgid "survey/dynamicOneMap/response/q7_4"
+msgstr "我很不喜欢"
+
+msgid "survey/dynamicOneMap/response/q7_5"
+msgstr "不好说"
+
+msgid "survey/dynamicOneMap/response/q8_1"
+msgstr "我喜欢"
+
+msgid "survey/dynamicOneMap/response/q8_2"
+msgstr "我不喜欢"
+
+msgid "survey/dynamicOneMap/response/q8_3"
+msgstr "不好说"
+
+msgid "survey/dynamicOneMap/response/q9_13_1"
+msgstr "事件发生时间"
+
+msgid "survey/dynamicOneMap/response/q9_13_10"
+msgstr "其中一方团队更具优势"
+
+msgid "survey/dynamicOneMap/response/q9_13_11"
+msgstr "导致技术问题"
+
+msgid "survey/dynamicOneMap/response/q9_13_12"
+msgstr "其他"
+
+msgid "survey/dynamicOneMap/response/q9_13_2"
+msgstr "事件不影响玩法"
+
+msgid "survey/dynamicOneMap/response/q9_13_3"
+msgstr "地图的一部分成为非游戏用区域"
+
+msgid "survey/dynamicOneMap/response/q9_13_4"
+msgstr "新物体干扰战斗"
+
+msgid "survey/dynamicOneMap/response/q9_13_5"
+msgstr "事件的视觉方面"
+
+msgid "survey/dynamicOneMap/response/q9_13_6"
+msgstr "事件没有给我留下深刻印象"
+
+msgid "survey/dynamicOneMap/response/q9_13_7"
+msgstr "有很大的几率因事件而被摧毁"
+
+msgid "survey/dynamicOneMap/response/q9_13_8"
+msgstr "我不得不因其而改变位置"
+
+msgid "survey/dynamicOneMap/response/q9_13_9"
+msgstr "它大幅改变了该地图的玩法"
+
+msgid "survey/listSeparator"
+msgstr "、"
+
 msgid "survey/nextBtn"
 msgstr "下一页"
 
-msgid "survey/question/1"
-msgstr "就战斗方式而言，您喜欢这张地图吗？"
-
-msgid "survey/question/10"
-msgstr "占领指定基地的难度如何？"
-
-msgid "survey/question/11"
-msgstr "您喜欢这张地图的设定吗？"
-
-msgid "survey/question/12"
-msgstr "您希望将这张地图加入游戏吗？"
-
-msgid "survey/question/13"
-msgstr "这张地图需要改进吗？"
-
-msgid "survey/question/14"
-msgstr "请具体说明需要改进的地方。"
-
-msgid "survey/question/2"
-msgstr "您在这张地图上使用了哪些坦克？"
-
-msgid "survey/question/3"
-msgstr "这张地图适合哪种类型的坦克？"
-
-msgid "survey/question/3_0"
-msgstr "这张地图适合{value}吗？"
-
-msgid "survey/question/3_1"
-msgstr "这张地图适合哪种类型的坦克？"
-
-msgid "survey/question/4"
-msgstr "您觉得这张地图的大小如何？"
-
-msgid "survey/question/5"
-msgstr "双方团队的位置优势均衡吗？"
-
-msgid "survey/question/6"
-msgstr "在小地图上显示了具有明显优势的位置。"
-
-msgid "survey/question/7"
-msgstr "您同意以下关于这张地图的哪种说法？"
-
-msgid "survey/question/8"
-msgstr "您同意以下关于这张地图的哪种说法？"
-
-msgid "survey/question/9"
-msgstr "占领指定基地的难度如何？"
-
-msgid "survey/question/option/3_AT-SPG"
-msgstr "自行反坦克炮"
-
-msgid "survey/question/option/3_SPG"
-msgstr "自行火炮"
-
-msgid "survey/question/option/3_heavyTank"
-msgstr "重型坦克"
-
-msgid "survey/question/option/3_lightTank"
-msgstr "轻型坦克"
-
-msgid "survey/question/option/3_mediumTank"
-msgstr "中型坦克"
-
-msgid "survey/question/option/7_1"
-msgstr "容易定位和行进"
-
-msgid "survey/question/option/7_2"
-msgstr "战斗持续时间太长"
-
-msgid "survey/question/option/7_3"
-msgstr "战斗很单调，战斗的情形也很单一"
-
-msgid "survey/question/option/7_4"
-msgstr "战斗开始时，坦克被点亮得太快了"
-
-msgid "survey/question/option/7_5"
-msgstr "这张地图有相当大一部分无法进入"
-
-msgid "survey/question/option/8_1"
-msgstr "可采用各种策略"
-
-msgid "survey/question/option/8_2"
-msgstr "容易找到射击位置"
-
-msgid "survey/question/option/8_3"
-msgstr "在战斗中有足够的灌木丛和树木供利用"
-
-msgid "survey/question/option/8_4"
-msgstr "在战斗中有足够的山脉和山谷供利用"
-
-msgid "survey/question/option/8_5"
-msgstr "有足够抵挡自行火炮火力的掩体"
+msgid "survey/percentage"
+msgstr "%(percent)s%"
 
 msgid "survey/readyBtn"
 msgstr "收到！"
 
 msgid "survey/required"
 msgstr "回答该问题后才可继续。"
-
-msgid "survey/response/10_1"
-msgstr "太容易了"
-
-msgid "survey/response/10_2"
-msgstr "刚刚好"
-
-msgid "survey/response/10_3"
-msgstr "太难了"
-
-msgid "survey/response/10_4"
-msgstr "不好说"
-
-msgid "survey/response/11_1"
-msgstr "我喜欢"
-
-msgid "survey/response/11_2"
-msgstr "我不喜欢"
-
-msgid "survey/response/11_3"
-msgstr "不好说"
-
-msgid "survey/response/12_1"
-msgstr "希望"
-
-msgid "survey/response/12_2"
-msgstr "不希望"
-
-msgid "survey/response/12_3"
-msgstr "我不在乎"
-
-msgid "survey/response/13_1"
-msgstr "需要"
-
-msgid "survey/response/13_2"
-msgstr "不需要"
-
-msgid "survey/response/13_3"
-msgstr "不好说"
-
-msgid "survey/response/1_1"
-msgstr "非常喜欢"
-
-msgid "survey/response/1_2"
-msgstr "比较喜欢"
-
-msgid "survey/response/1_3"
-msgstr "比较不喜欢"
-
-msgid "survey/response/1_4"
-msgstr "非常不喜欢"
-
-msgid "survey/response/1_5"
-msgstr "不好说"
-
-msgid "survey/response/2_AT-SPG"
-msgstr "自行反坦克炮"
-
-msgid "survey/response/2_SPG"
-msgstr "自行火炮"
-
-msgid "survey/response/2_heavyTank"
-msgstr "重型坦克"
-
-msgid "survey/response/2_lightTank"
-msgstr "轻型坦克"
-
-msgid "survey/response/2_mediumTank"
-msgstr "中型坦克"
-
-msgid "survey/response/2_unknown"
-msgstr "我忘了"
-
-msgid "survey/response/3_1"
-msgstr "很适合"
-
-msgid "survey/response/3_2"
-msgstr "不太适合"
-
-msgid "survey/response/3_3"
-msgstr "不好说"
-
-msgid "survey/response/4_1"
-msgstr "太大了"
-
-msgid "survey/response/4_2"
-msgstr "刚刚好"
-
-msgid "survey/response/4_3"
-msgstr "太小了"
-
-msgid "survey/response/4_4"
-msgstr "不好说"
-
-msgid "survey/response/5_1"
-msgstr "均衡"
-
-msgid "survey/response/5_2"
-msgstr "不均衡"
-
-msgid "survey/response/5_3"
-msgstr "不好说"
-
-msgid "survey/response/7_1"
-msgstr "同意"
-
-msgid "survey/response/7_2"
-msgstr "不同意"
-
-msgid "survey/response/7_3"
-msgstr "不好说"
-
-msgid "survey/response/8_1"
-msgstr "同意"
-
-msgid "survey/response/8_2"
-msgstr "不同意"
-
-msgid "survey/response/8_3"
-msgstr "不好说"
-
-msgid "survey/response/9_1"
-msgstr "太容易了"
-
-msgid "survey/response/9_2"
-msgstr "刚刚好"
-
-msgid "survey/response/9_3"
-msgstr "太难了"
-
-msgid "survey/response/9_4"
-msgstr "不好说"
 
 msgid "survey/subTitle"
 msgstr "感谢您抽出宝贵的时间参与此调查！调查时长大约两分钟。您的回答将仅被用于该调查，我们将会依据隐私策略删除个人信息。"
@@ -609,7 +764,7 @@ msgid "survey/template/mapInteractive/hint1"
 msgstr "您可以在地图上选择最多3个位置"
 
 msgid "survey/template/mapInteractive/point/description"
-msgstr "问题详细说明（最多%(maxLength)s字）"
+msgstr "详细说明(最多%(maxLength)s字符)"
 
 msgid "survey/template/mapInteractive/point/title"
 msgstr "位置"
@@ -618,7 +773,10 @@ msgid "survey/template/mapInteractive/point/tooltip"
 msgstr "移除位置"
 
 msgid "survey/template/opened/description"
-msgstr "详细说明（最多%(maxLength)s字）"
+msgstr "问题详细说明(最多%(maxLength)s字符)"
 
-msgid "survey/title"
-msgstr "{map}地图的评价"
+msgid "survey/title/common"
+msgstr "请对新内容作出评价"
+
+msgid "survey/title/map"
+msgstr "%(map)s地图的评价"

@@ -1285,6 +1285,8 @@ package
       
       public static const FEEDBACK_TAB_BATTLEEVENTS_LABEL_POSITIVE:String = "#settings:feedback/tab/battleEvents/label/positive";
       
+      public static const FEEDBACK_TAB_BATTLEEVENTS_LABEL_BATTLEEVENTS:String = "#settings:feedback/tab/battleEvents/label/BattleEvents";
+      
       public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_SHOWINBATTLE:String = "#settings:feedback/tab/battleEvents/checkbox/ShowInBattle";
       
       public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ENEMYHPDAMAGE:String = "#settings:feedback/tab/battleEvents/checkbox/EnemyHpDamage";
@@ -1322,6 +1324,8 @@ package
       public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ASSISTSTUN:String = "#settings:feedback/tab/battleEvents/checkbox/AssistStun";
       
       public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_STUN:String = "#settings:feedback/tab/battleEvents/checkbox/Stun";
+      
+      public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_CREWPERKS:String = "#settings:feedback/tab/battleEvents/checkbox/CrewPerks";
       
       public static const FEEDBACK_TAB_BATTLEEVENTS_INFO:String = "#settings:feedback/tab/battleEvents/info";
       

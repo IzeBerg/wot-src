@@ -73,6 +73,7 @@ class Crew(CrewMeta):
                    'slot': slotIdx, 
                    'vehicleType': vehicle.shortUserName, 
                    'tankType': vehicle.type, 
+                   'ignoreRoleIncompatibility': vehicle.ignoreRoleIncompatibility, 
                    'vehicleElite': vehicle.isPremium or vehicle.isPremiumIGR})
 
             tankmenData = []
@@ -90,7 +91,7 @@ class Crew(CrewMeta):
                        'desc': skill.description, 
                        'icon': skill.icon, 
                        'level': skill.level, 
-                       'active': skill.isEnable and skill.isActive})
+                       'active': skill.isEnable})
 
                 newFreeSkillsCount = tankman.newFreeSkillsCount
                 newSkillsCount, lastNewSkillLvl = tankman.newSkillCount

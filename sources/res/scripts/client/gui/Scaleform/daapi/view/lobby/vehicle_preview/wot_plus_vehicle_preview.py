@@ -10,6 +10,8 @@ from gui.Scaleform.daapi.view.lobby.event_boards.formaters import formatDate
 from gui.shared.event_dispatcher import showWotPlusRentDialog
 from gui.shared.gui_items.Vehicle import getIconResourceName, getNationLessName
 from gui.shop import showRentProductOverlay
+from helpers import dependency
+from skeletons.gui.game_control import IWotPlusController
 
 class WotPlusVehiclePreview(VehiclePreview):
 
@@ -18,6 +20,7 @@ class WotPlusVehiclePreview(VehiclePreview):
 
 
 class VehiclePreviewBottomPanelWotPlus(VehiclePreviewBottomPanelWotPlusMeta):
+    _wotPlusCtrl = dependency.descriptor(IWotPlusController)
 
     def _populate(self):
         super(VehiclePreviewBottomPanelWotPlus, self)._populate()
@@ -41,7 +44,7 @@ class VehiclePreviewBottomPanelWotPlus(VehiclePreviewBottomPanelWotPlusMeta):
         vehicleName = vehicleName.replace('(', '%((')
         vehicleName = vehicleName.replace(')', '))')
         title %= vehicleName
-        date = formatDate(BigWorld.player().renewableSubscription.getExpiryTime())
+        date = formatDate(self._wotPlusCtrl.getExpiryTime())
         if 'event_type' in self.__buyParams and self.__buyParams['event_type'] == 'telecom_rentals':
             date = formatDate(BigWorld.player().telecomRentals.getRosterExpirationTime())
         description = backport.text(R.strings.dialogs.wotPlusRental.description()) % date

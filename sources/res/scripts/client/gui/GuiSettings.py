@@ -116,7 +116,7 @@ _DEFAULT_SETTINGS = {'registrationURL': '',
    'frontlineChangedURL': '', 
    'tokenShopAPIKey': '', 
    'personalMissions': {}, 'progressiveItems': {}, 'rankedBattles': {}, 'referralProgram': {}, 'easterEgg': EasterEggProps(True, []), 
-   'premiumInfo': {}, 'checkPromoFrequencyInBattles': 5, 
+   'premiumInfo': {}, 'crew': {'welcomeScreens': {}}, 'checkPromoFrequencyInBattles': 5, 
    'vivoxLicense': '', 
    'spgHitDirectionDelta': 10.0, 
    'vehicleDisclaimerURLs': {}}

@@ -14,6 +14,8 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.vo
       
       public var actionVo:ActionPriceVO = null;
       
+      public var alertIconDataID:String = "";
+      
       public function SellOnVehicleOptionalDeviceVo(param1:Object)
       {
          super(param1);

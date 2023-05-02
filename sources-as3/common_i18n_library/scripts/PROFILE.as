@@ -1087,6 +1087,10 @@ package
       
       public static const SECTION_STATISTICS_HEADERTEXT_COMP7:String = "#profile:section/statistics/headerText/comp7";
       
+      public static const PROFILE_DROPDOWN_LABELS_COMP7_S2:String = "#profile:profile/dropdown/labels/comp7_s2";
+      
+      public static const SECTION_STATISTICS_HEADERTEXT_COMP7_S2:String = "#profile:section/statistics/headerText/comp7_s2";
+      
       public static const SECTION_STATISTICS_SCORES_AVGPRESTIGEPOINTS:String = "#profile:section/statistics/scores/avgPrestigePoints";
       
       public static const SECTION_STATISTICS_DETAILED_AVGPRESTIGEPOINTS:String = "#profile:section/statistics/detailed/avgPrestigePoints";
@@ -1166,6 +1170,8 @@ package
       public static const PROFILE_PARAMS_TOOLTIP_MAXHEALTHREPAIR_VEHICLE_BODY:String = "#profile:profile/params/tooltip/maxHealthRepair/vehicle/body";
       
       public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_COMP7:String = "#profile:section/technique/emptyScreenLabel/battleType/comp7";
+      
+      public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_COMP7_SEASON2:String = "#profile:section/technique/emptyScreenLabel/battleType/comp7_season2";
       
       public static const SECTION_TECHNIQUE_BUTTONBAR_PRESTIGEPOINTS:String = "#profile:section/technique/buttonBar/prestigePoints";
       

@@ -1,4 +1,5 @@
 import typing
+from constants import VEHICLE_NO_CREW_TRANSFER_PENALTY_TAG
 from items import vehicles, tankmen
 from items.tankmen import TankmanDescr, VEHICLE_CLASS_TAGS
 if typing.TYPE_CHECKING:
@@ -12,6 +13,10 @@ class _Tank(object):
     @property
     def isPremium(self):
         return 'premium' in self.vehicleType.tags
+
+    @property
+    def hasNoCrewTransferPenalty(self):
+        return VEHICLE_NO_CREW_TRANSFER_PENALTY_TAG in self.vehicleType.tags
 
     @property
     def nation(self):
@@ -76,7 +81,7 @@ class CrewValidator(object):
         else:
             associatedVehType = vehicles.g_cache.vehicle(tmanDescr.nationID, tmanDescr.vehicleTypeID)
             associatedTank = _Tank(associatedVehType)
-            if associatedTank == self.tank:
+            if associatedTank == self.tank or self.tank.hasNoCrewTransferPenalty:
                 return result
             if not self.tank.isPremium:
                 result.isValid = False

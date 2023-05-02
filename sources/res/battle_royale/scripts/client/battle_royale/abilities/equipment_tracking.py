@@ -1,6 +1,9 @@
-from cgf_script.component_meta_class import CGFComponent, ComponentProperty, CGFMetaTypes
+import CGF
+from cgf_script.component_meta_class import ComponentProperty, CGFMetaTypes, registerComponent
 
-class EquipmentAnimatorTrigger(CGFComponent):
+@registerComponent
+class EquipmentAnimatorTrigger(object):
+    domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     activeTrigger = ComponentProperty(type=CGFMetaTypes.STRING, value='', editorName='active trigger name')
     inactiveTrigger = ComponentProperty(type=CGFMetaTypes.STRING, value='', editorName='inactive trigger name')
 

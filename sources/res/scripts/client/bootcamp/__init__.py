@@ -123,6 +123,7 @@ _GAME_SETTINGS_NEWBIE = {'vehicleCarouselStats': False,
    'battleEventsEnemyAssistStun': True, 
    'battleEventsEnemyStun': True, 
    'battleEventsVehicleInfo': True, 
+   'battleEventsCrewPerks': True, 
    'battleBorderMapMode': 2}
 GAME_SETTINGS_NEWBIE = {}
 GAME_SETTINGS_NEWBIE.update(GAME_SETTINGS_COMMON)

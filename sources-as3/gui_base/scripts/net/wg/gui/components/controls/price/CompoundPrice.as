@@ -63,7 +63,7 @@ package net.wg.gui.components.controls.price
       
       private var _actionMode:String = "enabled";
       
-      private var _actionState:String;
+      private var _actionState:String = "percentBG";
       
       private var _bigFonts:Boolean = false;
       
@@ -90,7 +90,6 @@ package net.wg.gui.components.controls.price
       public function CompoundPrice()
       {
          this._classFactory = App.utils.classFactory;
-         this._actionState = ACTION_STATE_SIMPLE;
          this._priceIconOffset = new Point(0,0);
          this._priceActionOffset = new Point(0,0);
          super();

@@ -941,6 +941,12 @@ msgstr "特价"
 msgid "listView/emptyList/template"
 msgstr "还没有%(listType)s。"
 
+msgid "listView/news/checkNewsBtn"
+msgstr "前往新闻"
+
+msgid "listView/news/header"
+msgstr "有何新内容？"
+
 msgid "listView/title"
 msgstr "系统消息"
 
@@ -1470,6 +1476,9 @@ msgstr "获得积分"
 msgid "serviceChannelMessages/BRbattleResults/victory"
 msgstr "胜利"
 
+msgid "serviceChannelMessages/Financial/add"
+msgstr "已添加"
+
 msgid "serviceChannelMessages/achievementReceived/message"
 msgstr "服役记录"
 
@@ -1821,7 +1830,7 @@ msgid "serviceChannelMessages/battleResults/freeXP"
 msgstr "收到全局经验"
 
 msgid "serviceChannelMessages/battleResults/gold"
-msgstr "收到金币"
+msgstr "已获得金币"
 
 msgid "serviceChannelMessages/battleResults/penaltyForDamageAllies"
 msgstr "因TK队友已被扣除:%s"
@@ -2123,6 +2132,9 @@ msgstr "%(label)s x%(count)s"
 msgid "serviceChannelMessages/crewSkinsCount"
 msgstr "%(label)s x%(count)s"
 
+msgid "serviceChannelMessages/currenciesReserves/smash/title"
+msgstr "银币和金币储备库已开启！"
+
 msgid "serviceChannelMessages/currencyUpdate/auction"
 msgstr "竞拍"
 
@@ -2253,6 +2265,12 @@ msgstr "• 再训练命令"
 
 msgid "serviceChannelMessages/eventCoinReceivedAsGift"
 msgstr "您已获得周年纪念币：%(eventCoin)s。"
+
+msgid "serviceChannelMessages/excludedMap/available/title"
+msgstr "已解锁额外的排除地图空位"
+
+msgid "serviceChannelMessages/excludedMap/unavailable/title"
+msgstr "无法使用坦克世界Plus排除地图"
 
 msgid "serviceChannelMessages/failedPersonalMission"
 msgstr "进度重置"
@@ -2675,6 +2693,9 @@ msgstr "已移除乘员未分配的经验"
 msgid "serviceChannelMessages/invoiceReceived/tankmenToRemove"
 msgstr "已解雇"
 
+msgid "serviceChannelMessages/invoiceReceived/unlockedModules"
+msgstr "已研发所有模块"
+
 msgid "serviceChannelMessages/invoiceReceived/vehicleBlueprintsAccrued"
 msgstr "收到%(vehicleName)s蓝图碎片"
 
@@ -2780,13 +2801,13 @@ msgid "serviceChannelMessages/mapbox/rewardReceived"
 msgstr "已获得奖励："
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/allMaps"
-msgstr "您可以在侦察任务中选出最佳地图。"
+msgstr "您可以在侦察任务中参与关于模式机制的问卷调查。"
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/header"
 msgstr "调查已开放"
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/singleMap"
-msgstr "您在侦察任务中可以参与关于%(mapName)s地图的调查。"
+msgstr "您可以在侦察任务中参与关于%(mapName)s地图的问卷调查。"
 
 msgid "serviceChannelMessages/multiplier"
 msgstr " (x%(count)s)"
@@ -2809,11 +2830,17 @@ msgstr "个人储备转换"
 msgid "serviceChannelMessages/piggyBank/continueAfterSmashed"
 msgstr "新的积累周期开始了。"
 
+msgid "serviceChannelMessages/piggyBank/continueAfterSmashed/goldBank"
+msgstr "新的累积周期已开始。激活《坦克世界》高级账号即可累积银币。"
+
+msgid "serviceChannelMessages/piggyBank/continueAfterSmashed/piggyBank"
+msgstr "新的累积周期已开始。激活坦克世界Plus即可累积金币。"
+
 msgid "serviceChannelMessages/piggyBank/onPause"
 msgstr "银币储备库已停用。"
 
 msgid "serviceChannelMessages/piggyBank/title"
-msgstr "银币储备库开启！"
+msgstr "银币储备库已开启！"
 
 msgid "serviceChannelMessages/prebattle/battleType/clan"
 msgstr "军团战斗"
@@ -3420,23 +3447,65 @@ msgstr "玩家%(srcName)s已转移%(srcWares)s金币到您的账号中。"
 msgid "serviceChannelMessages/waresSoldAsGold"
 msgstr "%(srcWares)s 金币被转移给玩家 %(dstName)s。 花费:%(fee)s。"
 
+msgid "serviceChannelMessages/winback/awards/blueprints"
+msgstr "%(level)s级坦克的折扣"
+
+msgid "serviceChannelMessages/winback/awards/body"
+msgstr "已获得完成厉兵秣马进度的奖励:"
+
+msgid "serviceChannelMessages/winback/awards/button"
+msgstr "选择奖励"
+
+msgid "serviceChannelMessages/winback/awards/discount"
+msgstr "%(level)s级坦克的折扣"
+
+msgid "serviceChannelMessages/winback/awards/discountConcrete"
+msgstr "%(name)s(%(expDiscount)d%%和%(creditDiscount)d%%)"
+
+msgid "serviceChannelMessages/winback/awards/discountHeader"
+msgstr "已添加购买和研发折扣:"
+
+msgid "serviceChannelMessages/winback/awards/header"
+msgstr "恭喜！"
+
+msgid "serviceChannelMessages/winback/awards/vehicle"
+msgstr "%(level)s级坦克"
+
+msgid "serviceChannelMessages/winbackSelectableRewardEntry/body"
+msgstr "从可用类别中选择奖励。"
+
+msgid "serviceChannelMessages/winbackSelectableRewardEntry/button"
+msgstr "选择"
+
+msgid "serviceChannelMessages/winbackSelectableRewardEntry/header"
+msgstr "已获得奖励！"
+
+msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/subscribed/text"
+msgstr "专属重型坦克<font color='#E9E2BF'>%(vehicleName)s</font>已开放使用。"
+
+msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/unsubscribed/text"
+msgstr "坦克世界Plus专属重型坦克<font color='#E9E2BF'>%(vehicleName)s</font>暂时无法使用。"
+
+msgid "serviceChannelMessages/wotPlus/expireFreeDemount/title"
+msgstr "免费拆卸配件不可用"
+
 msgid "serviceChannelMessages/wotPlus/expireMessage/text"
-msgstr "续订坦克世界Plus，获得所有专属福利。"
+msgstr "续订坦克世界Plus即可获得所有专属福利。"
 
 msgid "serviceChannelMessages/wotPlus/expireMessage/title"
-msgstr "坦克世界Plus将于%(time)s过期"
+msgstr "坦克世界Plus已于%(time)s到期"
 
 msgid "serviceChannelMessages/wotPlus/freeDirectives/isDisabled/title"
-msgstr "获取免费指令的功能已停用"
+msgstr "已暂停获取免费指令"
 
 msgid "serviceChannelMessages/wotPlus/freeDirectives/isEnabled/title"
-msgstr "获取免费指令的功能已恢复"
+msgstr "恢复获取免费指令"
 
 msgid "serviceChannelMessages/wotPlus/freeDirectives/received/title"
-msgstr "已获取免费的指令"
+msgstr "已获取免费指令"
 
 msgid "serviceChannelMessages/wotPlus/goldReserve/isDisabled/text"
-msgstr "金币储备库已停用。"
+msgstr "金币储备库已暂停。"
 
 msgid "serviceChannelMessages/wotPlus/goldReserve/isDisabled/title"
 msgstr "金币储备库暂时不可用"
@@ -3445,19 +3514,30 @@ msgid "serviceChannelMessages/wotPlus/goldReserve/isEnabled/title"
 msgstr "金币储备库可用"
 
 msgid "serviceChannelMessages/wotPlus/goldReserve/isFull/title"
-msgstr "金币储备库已满:您不能获取更多金币了"
+msgstr "金币储备库已满:您无法再累积金币了"
 
 msgid "serviceChannelMessages/wotPlus/goldReserve/smash/title"
-msgstr "金币储备库开启！"
+msgstr "金币储备库已开启！"
 
 msgid "serviceChannelMessages/wotPlus/nextDateOfRenewal"
 msgstr "下次续订:%(time)s"
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/text"
-msgstr "乘员经验加成不能应用于一名或多名乘员。"
+msgstr ""
+"<font "
+"color='#E9E2BF'>%(vehicleName)s</font>的一名或多名乘员不符合高强度乘员训练的资格，因此无法累积乘员经验。"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/title"
+msgstr "高强度乘员训练"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/isActivated/text"
+msgstr "%(vehicleName)s乘员的高强度乘员训练已开启。"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/isDeactivated/text"
+msgstr "%(vehicleName)s乘员的高强度乘员训练已关闭。"
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/isDisabled/text"
-msgstr "乘员经验储备库已停用。"
+msgstr "乘员经验累积已暂停。"
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/isDisabled/title"
 msgstr "高强度乘员训练暂时不可用"
@@ -3466,19 +3546,25 @@ msgid "serviceChannelMessages/wotPlus/passiveXP/isEnabled/title"
 msgstr "高强度乘员训练可用"
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/noTank/text"
-msgstr "请选择一辆获取免费乘员经验加成的坦克。"
+msgstr "请选择一辆坦克来获取免费乘员经验加成。"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/switching/text"
+msgstr ""
+"高强度乘员训练已从<font color='#E9E2BF'>%(oldVehName)s</font>转移至<font "
+"color='#E9E2BF'>%(newVehName)s</font>。<font "
+"color='#E9E2BF'>%(oldVehName)s</font>的乘员已停止累积经验。"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/switching/title"
+msgstr "高强度乘员训练已转移"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/wasting/text"
+msgstr "一名或多名乘员无法应用该乘员经验加成。"
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/wasting/title"
 msgstr "您错过了珍贵的乘员经验！"
 
 msgid "serviceChannelMessages/wotPlus/renewMessage/title"
-msgstr "坦克世界Plus已经于%(time)s续订"
-
-msgid "serviceChannelMessages/wotPlus/rental/end/text"
-msgstr "请另选一辆坦克进行租用。"
-
-msgid "serviceChannelMessages/wotPlus/rental/end/title"
-msgstr "%(vehicleName)s的租用时间到期"
+msgstr "坦克世界Plus已于%(time)s续订"
 
 msgid "serviceChannelMessages/wotPlus/rental/noTank/text"
 msgstr "请从列表中选择一辆坦克进行租用。"
@@ -3486,23 +3572,23 @@ msgstr "请从列表中选择一辆坦克进行租用。"
 msgid "serviceChannelMessages/wotPlus/rental/noTank/title"
 msgstr "没有选择租用坦克"
 
-msgid "serviceChannelMessages/wotPlus/tankRental/isDisabled/text"
-msgstr "选择坦克和租用坦克的功能已停用。"
-
-msgid "serviceChannelMessages/wotPlus/tankRental/isDisabled/title"
-msgstr "租用坦克暂时不可用"
-
-msgid "serviceChannelMessages/wotPlus/tankRental/isEnabled/title"
-msgstr "租用坦克可用"
-
 msgid "serviceChannelMessages/wotPlus/tankRental/isPending/text"
 msgstr "%(vehicle)s不久后将发放至您的游戏账号。"
 
 msgid "serviceChannelMessages/wotPlus/tankRental/isPending/title"
 msgstr "已租用！"
 
+msgid "serviceChannelMessages/wotPlus/unavailableMessage/text"
+msgstr "坦克世界Plus福利已关闭。"
+
+msgid "serviceChannelMessages/wotPlus/unavailableMessage/title"
+msgstr "坦克世界Plus不可用"
+
+msgid "serviceChannelMessages/wotPlus/unlockFreeDemount/title"
+msgstr "免费拆卸配件已解锁"
+
 msgid "serviceChannelMessages/wotPlus/unlockMessage/title"
-msgstr "坦克世界Plus已经于%(startTime)s激活"
+msgstr "坦克世界Plus已于%(startTime)s激活"
 
 msgid "serviceChannelMessages/xpReceivedAsGift"
 msgstr "您收到%(freeXP)s全局经验。"

@@ -19,6 +19,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
    import net.wg.gui.events.VehicleSellDialogEvent;
    import net.wg.gui.interfaces.ISaleItemBlockRenderer;
    import net.wg.gui.lobby.vehicleTradeWnds.sell.utils.VehicleSellDialogUtils;
+   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.controls.ListItemRenderer;
    import scaleform.clik.data.DataProvider;
@@ -57,6 +58,11 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          super();
       }
       
+      private static function onAlertIconRollOutHandler(param1:MouseEvent) : void
+      {
+         App.toolTipMgr.hide();
+      }
+      
       override public function setData(param1:Object) : void
       {
          this.data = param1;
@@ -86,7 +92,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       override protected function onDispose() : void
       {
          this.alertIcon.removeEventListener(MouseEvent.ROLL_OVER,this.onAlertIconRollOverHandler,false);
-         this.alertIcon.removeEventListener(MouseEvent.ROLL_OUT,this.onAlertIconRollOutHandler,false);
+         this.alertIcon.removeEventListener(MouseEvent.ROLL_OUT,onAlertIconRollOutHandler,false);
          this.alertIcon.dispose();
          this.alertIcon = null;
          this.clickArea.removeEventListener(MouseEvent.ROLL_OVER,handleMouseRollOver,false);
@@ -121,7 +127,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          this.actionPrice.textYOffset = VehicleSellDialog.ICONS_TEXT_OFFSET;
          this.labelTf.text = DIALOGS.VEHICLESELLDIALOG_UNLOAD;
          this.alertIcon.addEventListener(MouseEvent.ROLL_OVER,this.onAlertIconRollOverHandler,false,0,true);
-         this.alertIcon.addEventListener(MouseEvent.ROLL_OUT,this.onAlertIconRollOutHandler,false,0,true);
+         this.alertIcon.addEventListener(MouseEvent.ROLL_OUT,onAlertIconRollOutHandler,false,0,true);
          this.alertIcon.buttonMode = false;
          this.tfShort.buttonMode = false;
          this.tfShort.useHtml = true;
@@ -268,9 +274,18 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
             return;
          }
          this.drawMoney(_loc1_.currency,_loc1_.value);
-         this.actionPrice.setData(_loc1_.actionPrice);
-         this.alertIcon.visible = _loc1_.toInventory && !this._rendererData.isRemovable;
-         this.money.visible = !this.actionPrice.visible;
+         if(_loc1_.currency == VehicleSellDialogUtils.WOT_PLUS)
+         {
+            this.actionPrice.setData(null);
+            this.alertIcon.visible = false;
+            this.money.visible = false;
+         }
+         else
+         {
+            this.actionPrice.setData(_loc1_.actionPrice);
+            this.alertIcon.visible = _loc1_.toInventory && !StringUtils.isEmpty(this._rendererData.alertIconDataID);
+            this.money.visible = !this.actionPrice.visible;
+         }
       }
       
       private function drawMoney(param1:String, param2:int) : void
@@ -284,23 +299,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       {
          var _loc2_:int = 330;
          var _loc3_:TooltipProps = new TooltipProps(BaseTooltips.TYPE_INFO,0,0,0,-1,0,_loc2_);
-         if(this._rendererData.isModernized)
-         {
-            App.toolTipMgr.showComplex(TOOLTIPS.VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN,_loc3_);
-         }
-         else if(CURRENCIES_CONSTANTS.GOLD in this._rendererData.removePrice)
-         {
-            App.toolTipMgr.showComplex(TOOLTIPS.VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD,_loc3_);
-         }
-         else
-         {
-            App.toolTipMgr.showComplex(TOOLTIPS.VEHICLESELLDIALOG_RENDERER_ALERTICONCRYSTAL,_loc3_);
-         }
-      }
-      
-      private function onAlertIconRollOutHandler(param1:MouseEvent) : void
-      {
-         App.toolTipMgr.hide();
+         App.toolTipMgr.showComplex(this._rendererData.alertIconDataID,_loc3_);
       }
       
       private function onIndexChangeHandler(param1:ListEvent) : void

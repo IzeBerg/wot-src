@@ -136,6 +136,70 @@ msgstr "防崩落内衬(中型)"
 msgid "antifragmentationLining_tier4/name"
 msgstr "防崩落内衬(轻型)"
 
+msgid "archetype/additionalInvisibilityDevice/name"
+msgstr "排气系统"
+
+msgid "archetype/aimingStabilizer/name"
+msgstr "垂直稳定器"
+
+msgid "archetype/antifragmentationLining/name"
+msgstr "防崩落内衬"
+
+msgid "archetype/camouflageNet/name"
+msgstr "伪装网"
+
+msgid "archetype/coatedOptics/name"
+msgstr "观察镜"
+
+msgid "archetype/commandersView/name"
+msgstr "观瞄系统"
+
+msgid "archetype/enhancedAimDrives/name"
+msgstr "炮控系统"
+
+msgid "archetype/extraHealthReserve/name"
+msgstr "耐久"
+
+msgid "archetype/grousers/name"
+msgstr "履带齿"
+
+msgid "archetype/improvedConfiguration/name"
+msgstr "结构"
+
+msgid "archetype/improvedRadioCommunication/name"
+msgstr "无线电台"
+
+msgid "archetype/improvedRotationMechanism/name"
+msgstr "旋转装置"
+
+msgid "archetype/improvedSights/name"
+msgstr "瞄具"
+
+msgid "archetype/improvedVentilation/name"
+msgstr "通风系统"
+
+msgid "archetype/modernizedAimDrivesAimingStabilizer/name/noTemplate"
+msgstr "火控系统"
+
+msgid ""
+"archetype/modernizedExtraHealthReserveAntifragmentationLining/name/noTemplate"
+msgstr "防护增强套件"
+
+msgid "archetype/modernizedTurbochargerRotationMechanism/name/noTemplate"
+msgstr "机动强化系统"
+
+msgid "archetype/stereoscope/name"
+msgstr "炮队镜"
+
+msgid "archetype/tankRammer/name"
+msgstr "输弹机"
+
+msgid "archetype/template"
+msgstr "\"%(name)s\"类别配件"
+
+msgid "archetype/turbocharger/name"
+msgstr "涡轮增压器"
+
 msgid "artillery/longDescr"
 msgstr "命令火炮使用HE炮弹向小范围区域开火。落点区域中心的坦克将受到最多损伤。对重装甲坦克特别有效。"
 
@@ -283,25 +347,24 @@ msgid "camouflageBattleBooster/action/boost"
 msgstr "提升10%的坦克隐蔽性"
 
 msgid "camouflageBattleBooster/action/perk"
-msgstr "把所有乘员的隐蔽技能训练到100%"
+msgstr "把全体乘员的隐蔽特长训练至100%"
 
 msgid "camouflageBattleBooster/long_special"
 msgstr ""
-"隐蔽技能降低了移动和静止坦克在战斗过程中的可见度。如果技能训练达到100%，则装备指令会增加其效果；如果没有，该指令为您的坦克提供100%熟练度的技能。"
+"隐蔽特长提高坦克静止和移动时的隐蔽系数，整场战斗有效。如果该特长已训练至100%，安装指令会增强其效果；否则该指令为坦克提供100%熟练度的特长。"
 
 msgid "camouflageBattleBooster/name"
 msgstr "天然屏障"
 
 msgid "camouflageBattleBooster/short_special"
-msgstr "提供100%熟练度的隐蔽技能或增强其效果"
+msgstr "提供100%熟练度的隐蔽特长或增强其效果"
 
 msgid "camouflageNet/battle_descr"
 msgstr "增加坦克静止3秒后的隐蔽系数"
 
 msgid "camouflageNet/long_special"
 msgstr ""
-"效果取决于坦克类型。伪装网对隐蔽型坦克更有用: "
-"车身低矮的自行火炮和自行反坦克炮。它可以增强伪装技能的效果。两者结合使用效果更好。伪装网在坦克停止移动3秒后激活。"
+"效果取决于坦克类型。伪装网主要对车身低矮的自行火炮和自行反坦克炮等隐蔽型坦克有利，它可以增强隐蔽特长的效果。两者结合可以给坦克提供相当高的加成。该配件在坦克停止移动3秒后激活。"
 
 msgid "camouflageNet/name"
 msgstr "伪装网"
@@ -316,10 +379,10 @@ msgid "camouflageNet_tier3/name"
 msgstr "3级伪装网"
 
 msgid "chocolate/always"
-msgstr "{colorTagOpen}%(crewLevel)s{colorTagClose} 所有乘员技能和特长在整场战斗中的效果。"
+msgstr "{colorTagOpen}%(crewLevel)s{colorTagClose}全体乘员特长，整场战斗有效。"
 
 msgid "chocolate/descr"
-msgstr "乘员所有技能和特长熟练度{colorTagOpen}增加10%{colorTagClose} 。"
+msgstr "全体乘员特长熟练度{colorTagOpen}+10%{colorTagClose}。"
 
 msgid "chocolate/long_special"
 msgstr "在战斗开始时自动激活，并在战斗过程中有效。只适用于D系坦克。"
@@ -389,10 +452,10 @@ msgid "coatedOptics_tier3/name"
 msgstr "3级高级光学观察镜"
 
 msgid "cocacola/always"
-msgstr "{colorTagOpen}%(crewLevel)s{colorTagClose} 所有乘员技能和特长在整场战斗中的效果。"
+msgstr "{colorTagOpen}%(crewLevel)s{colorTagClose}全体乘员特长，整场战斗有效。"
 
 msgid "cocacola/descr"
-msgstr "乘员所有技能和特长熟练度{colorTagOpen}增加10%{colorTagClose} 。"
+msgstr "全体乘员特长熟练度{colorTagOpen}+10%{colorTagClose}。"
 
 msgid "cocacola/long_special"
 msgstr "在战斗开始时自动激活，对战斗过程有效。仅适用于M系坦克。"
@@ -429,36 +492,32 @@ msgstr "激进侦察"
 
 msgid "comp7_ally_support/descr/active"
 msgstr ""
-"{colorTagOpen}%(radius)d米{colorTagClose}观察范围内的每辆盟友坦克将使您坦克乘员的主要专业水平和全部技能/特长获得{colorTagOpen}%(crewBuff_1).1f/%(crewBuff_2).1f/%(crewBuff_3).1f%%{colorTagClose}加成，持续{colorTagOpen}%(duration)d秒{colorTagClose}。\n"
+"团队中每一种不同的坦克角色可让乘员的主要专业水平获得{colorTagOpen}%(crewBuff_1).1f/%(crewBuff_2).1f/%(crewBuff_3).1f%%{colorTagClose}的加成，持续{colorTagOpen}%(duration)d秒{colorTagClose}。\n"
 "\n"
-"此加成的计算会始终将您的坦克包括在内。"
+"此加成的计算会始终将自身坦克包括在内。"
 
 msgid "comp7_ally_support/name"
 msgstr "薪火相传"
 
 msgid "comp7_aoe_heal/descr/active"
 msgstr ""
-"您的坦克周围将生成{colorTagOpen}%(radius)d米{colorTagClose}半径的领域，为您自身及领域内盟友的坦克恢复{colorTagOpen}%(heal_1)d/%(heal_2)d/%(heal_3)d{colorTagClose}点生命值，持续{colorTagOpen}%(duration)d秒{colorTagClose}。\n"
-"\n"
-"在战斗中首次使用此能力后，恢复的生命值数量将减少{colorTagOpen}%(secondaryHealDebuff)d%%{colorTagClose}。"
+"坦克周围生成{colorTagOpen}%(radius)d米{colorTagClose}半径的领域，为自身及领域内的盟友坦克恢复{colorTagOpen}%(heal_1)d/%(heal_2)d/%(heal_3)d{colorTagClose}点生命值，持续{colorTagOpen}%(duration)d秒{colorTagClose}。"
 
 msgid "comp7_aoe_heal/name"
 msgstr "现场维修"
 
 msgid "comp7_aoe_inspire/descr/active"
 msgstr ""
-"您的坦克周围生成{colorTagOpen}%(radius)d米{colorTagClose}半径的领域，为您自身及领域内盟友乘员的主要专业水平和技能/特长提供{colorTagOpen}%(crewBuff_1).0f/%(crewBuff_2).0f/%(crewBuff_3).0f%%{colorTagClose}的加成，持续{colorTagOpen}%(duration)d秒{colorTagClose}。\n"
-"\n"
-"该能力对正在处于角色能力效果下的盟友无效。"
+"自身及盟友乘员的主要专业水平获得{colorTagOpen}%(crewBuff_1).0f/%(crewBuff_2).0f/%(crewBuff_3).0f%%{colorTagClose}的加成，持续{colorTagOpen}%(duration)d秒{colorTagClose}。"
 
 msgid "comp7_aoe_inspire/name"
 msgstr "鼓舞"
 
 msgid "comp7_berserk/descr/active"
 msgstr ""
-"装填时间减少{colorTagOpen}%(gunReloadTimeBuff_1).0f/%(gunReloadTimeBuff_2).0f/%(gunReloadTimeBuff_3).0f%%{colorTagClose}，持续{colorTagOpen}%(duration)d秒{colorTagClose}。\n"
+"装填时间减少{colorTagOpen}%(gunReloadTimeBuff_1).0f/%(gunReloadTimeBuff_2).0f/%(gunReloadTimeBuff_3).0f%%{colorTagClose}，同时，射击后、移动时、车体及炮塔旋转时的炮弹散布范围降低{colorTagOpen}%(shotDispersionFactorsBuff_1).0f/%(shotDispersionFactorsBuff_2).0f/%(shotDispersionFactorsBuff_3).0f%%{colorTagClose}，持续{colorTagOpen}%(duration)d秒{colorTagClose}。\n"
 "\n"
-"当您通过撞击或在{colorTagOpen}%(damageDistance)d米{colorTagClose}内射击造成损伤时，能力持续时间将重置。"
+"当通过撞击或在{colorTagOpen}%(damageDistance)d米{colorTagClose}内射击造成损伤时，能力持续时间将重置。"
 
 msgid "comp7_berserk/name"
 msgstr "狂怒"
@@ -467,7 +526,9 @@ msgid "comp7_concentration/descr/active"
 msgstr ""
 "射击后、移动时、车体和炮塔旋转时的炮弹散布范围降低{colorTagOpen}%(shotDispersionFactorsBuff_1).0f/%(shotDispersionFactorsBuff_2).0f/%(shotDispersionFactorsBuff_3).0f%%{colorTagClose}，持续{colorTagOpen}%(duration)d秒{colorTagClose}。\n"
 "\n"
-"此能力激活时，两次射击之间的装填时间减少{colorTagOpen}%(clipReloadTimeBoost_1).1f/%(clipReloadTimeBoost_2).1f/%(clipReloadTimeBoost_3).1f秒{colorTagClose}。"
+"此角色能力激活时，两次射击之间的装填时间减少{colorTagOpen}%(clipReloadTimeBoost_1).1f/%(clipReloadTimeBoost_2).1f/%(clipReloadTimeBoost_3).1f秒{colorTagClose}。\n"
+"\n"
+"战斗开始时，此角色能力的充能等级为1。"
 
 msgid "comp7_concentration/name"
 msgstr "专注目标"
@@ -517,7 +578,9 @@ msgstr "战术转移"
 
 msgid "comp7_recon/descr/active"
 msgstr ""
-"{colorTagOpen}%(delay)d秒{colorTagClose}后，侦察机将飞越指定区域。{colorTagOpen}%(radius_1)d/%(radius_2)d/%(radius_3)d米{colorTagClose}半径范围内被发现的敌方坦克将在{colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d秒{colorTagClose}内保持可见。"
+"{colorTagOpen}%(delay)d秒{colorTagClose}后，侦察机将飞越指定区域。{colorTagOpen}%(radius_1)d/%(radius_2)d/%(radius_3)d米{colorTagClose}半径范围内被发现的敌方坦克将在{colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d&nbsp;秒{colorTagClose}内保持可见。\n"
+"\n"
+"战斗开始时，此角色能力的充能等级为1。"
 
 msgid "comp7_recon/name"
 msgstr "侦察飞行"
@@ -535,20 +598,24 @@ msgid "comp7_risky_attack/descr/active"
 msgstr ""
 "加速\n"
 "\n"
-"发动机功率提升{colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}，最大前进速度提升{colorTagOpen}%(fwdSpeedBoost)d{colorTagClose}千米/小时，最大倒车速度提升{colorTagOpen}%(bkwSpeedBoost)d{colorTagClose}千米/小时，持续{colorTagOpen}%(duration)d秒{colorTagClose}。\n"
+"发动机功率提高{colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}，最大前进速度提高{colorTagOpen}%(fwdSpeedBoost)d{colorTagClose}千米/小时，最大倒车速度提高{colorTagOpen}%(bkwSpeedBoost)d{colorTagClose}千米/小时，持续{colorTagOpen}%(duration)d秒{colorTagClose}。\n"
 "\n"
 "恢复\n"
 "\n"
-"您的坦克将恢复{colorTagOpen}%(baseHeal)d{colorTagClose}点生命值{colorTagOpen}外加%(extraHealFactor_1)d/%(extraHealFactor_2)d/%(extraHealFactor_3)d%%{colorTagClose}在加速过程中损失的生命值，持续{colorTagOpen}%(healDuration)d秒{colorTagClose}。"
+"坦克将恢复{colorTagOpen}%(baseHeal)d{colorTagClose}点生命值，外加{colorTagOpen}+%(extraHealFactor_1)d/%(extraHealFactor_2)d/%(extraHealFactor_3)d%%{colorTagClose}加速激活过程中损失的生命值，持续{colorTagOpen}%(healDuration)d秒{colorTagClose}。\n"
+"\n"
+"战斗开始时，此角色能力的充能等级为1。"
 
 msgid "comp7_risky_attack/name"
 msgstr "险中求胜"
 
 msgid "comp7_sniper/descr/active"
 msgstr ""
-"\"100米精度\"将等效于{colorTagOpen}%(dispersionFactor).2f米{colorTagClose}精度，持续{colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d秒{colorTagClose}。\n"
+"100米精度将等效于{colorTagOpen}%(dispersionFactor).2f米{colorTagClose}精度，持续{colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d秒{colorTagClose}。\n"
 "\n"
-"在超过{colorTagOpen}%(damageDistance)d米{colorTagClose}外造成损伤时，能力持续时间将重置。"
+"如果坦克射击时没有被点亮，其射击造成的损伤将提高{colorTagOpen}%(damageFactors_1).0f/%(damageFactors_2).0f/%(damageFactors_3).0f%%{colorTagClose}。\n"
+"\n"
+"在{colorTagOpen}%(damageDistance)d米{colorTagClose}外造成射击损伤时，能力持续时间将重置。"
 
 msgid "comp7_sniper/name"
 msgstr "百步穿杨"
@@ -594,7 +661,7 @@ msgid "crewBattleBooster/descr/replace"
 msgstr "赋予以下"
 
 msgid "crewBattleBooster/descr/skill"
-msgstr "技能:"
+msgstr "特长:"
 
 msgid "deluxAimingStabilizer/long_special"
 msgstr ""
@@ -631,8 +698,7 @@ msgstr "加速维修，保护弹药架、油箱和发动机"
 
 msgid "deluxImprovedVentilation/long_special"
 msgstr ""
-"通风系统(全体车组乘员技能水平{colorTagOpen}提高5%{colorTagClose})的改进版本提供更强的效果: "
-"全体车组乘员技能水平{colorTagOpen}提高8.5%{colorTagClose}。该配件适用于各种系别和类型的坦克。只能使用战争债券拆卸。"
+"通风系统(全体乘员特长{colorTagOpen}+5%{colorTagClose})为改进型配件版本，提供更强的效果:所有乘员特长{colorTagOpen}+8.5%{colorTagClose}。该配件适用于所有系别和类型的坦克。只能使用战争债券拆卸。"
 
 msgid "deluxImprovedVentilation/name"
 msgstr "通风系统"
@@ -810,19 +876,19 @@ msgid "fireCircle/shortDescr"
 msgstr "炽炎之环"
 
 msgid "fireFightingBattleBooster/action/boost"
-msgstr "灭火技能提高50%"
+msgstr "灭火特长提高50%"
 
 msgid "fireFightingBattleBooster/action/perk"
-msgstr "把所有乘员的灭火技能训练到100%"
+msgstr "把通信兵的灭火特长训练至100%"
 
 msgid "fireFightingBattleBooster/long_special"
-msgstr "灭火技能提高了坦克在战斗过程中的灭火能力。如果技能被训练到100%，装备指令增强它的效果；否则指令为你的坦克提供技能熟练度100%。"
+msgstr "灭火特长提高坦克的灭火能力，整场战斗有效。如果该特长已训练至100%，安装指令会增强其效果；否则该指令会为坦克提供100%熟练度的特长。"
 
 msgid "fireFightingBattleBooster/name"
 msgstr "炉火纯青"
 
 msgid "fireFightingBattleBooster/short_special"
-msgstr "提供100%熟练度的灭火技能或提高其效果"
+msgstr "提供100%熟练度的灭火特长或增强其效果"
 
 msgid "fort_aoe_artillery/longDescr"
 msgstr "命令火炮向指定区域开火，对区域内的所有坦克造成损伤。"
@@ -834,13 +900,13 @@ msgid "fort_aoe_artillery/shortDescr"
 msgstr "命令火炮向指定区域开火，对区域内的所有坦克造成损伤。"
 
 msgid "fort_inspire/longDescr"
-msgstr "为全体乘员及附近盟友乘员提供主要专业和所有技能的加成。"
+msgstr "为全体乘员及附近盟友乘员提供主要专业和所有特长的加成。"
 
 msgid "fort_inspire/name"
 msgstr "鼓舞"
 
 msgid "fort_inspire/shortDescr"
-msgstr "为全体乘员及附近盟友乘员提供主要专业和所有技能的加成。"
+msgstr "为全体乘员及附近盟友乘员提供主要专业和所有特长的加成。"
 
 msgid "fuel_system_revision_1/name"
 msgstr "燃料系统修改(类型 1)"
@@ -890,7 +956,7 @@ msgid "gasoline105/short_special"
 msgstr "发动机功率和炮塔旋转速度{colorTagOpen}提高10%{colorTagClose}"
 
 msgid "grousers/long_special"
-msgstr "增加车体旋转速度并且使其能在跨越不同地形时维持速度。该配件在软地和普通地面的效果非常好。与快速转弯和如履平地技能一起使用效果最佳。"
+msgstr "提高坦克旋转速度和驶过各类地形时维持速度的能力。该配件在松软和中度松软地形上行驶时效果显著，与快速转弯和如履平地特长一起使用效果最佳。"
 
 msgid "grousers/name"
 msgstr "附加履带齿"
@@ -944,10 +1010,10 @@ msgid "healPoint/shortDescr"
 msgstr "在坦克周围生成一片恢复区域。在该区域内，玩家以及小队成员每秒可以恢复一定比例的生命值，持续%(duration)s秒。"
 
 msgid "hotCoffee/always"
-msgstr "%(crewLevel)s 所有乘员技能和特长在整场战斗中的效果。"
+msgstr "%(crewLevel)s全体乘员特长，整场战斗有效。"
 
 msgid "hotCoffee/descr"
-msgstr "乘员所有技能和特长熟练度{colorTagOpen}增加10%{colorTagClose} 。"
+msgstr "全体乘员特长熟练度{colorTagOpen}+10%{colorTagClose}。"
 
 msgid "hotCoffee/long_special"
 msgstr "在战斗开始时自动激活，对战斗过程有效。仅适用于F系坦克。"
@@ -1036,7 +1102,7 @@ msgstr "增加敌方坦克被点亮后的可见时间并降低您被点亮后的
 
 msgid "improvedRotationMechanism/long_special"
 msgstr ""
-"增加有炮塔坦克的车体和炮塔旋转速度。增加无炮塔坦克的车体和炮管旋转速度。降低坦克移动、车体旋转、炮塔旋转、开火之后的炮弹散布范围。该配件与快速转弯技能一起使用时效果更好。"
+"提高有炮塔坦克的车体和炮塔旋转速度，以及无炮塔坦克的车体和火炮旋转速度。降低坦克移动时、车体和炮塔旋转时、射击后的炮弹散布范围。该配件与快速转弯特长一起使用时效果更好。"
 
 msgid "improvedRotationMechanism/name"
 msgstr "改进型旋转装置"
@@ -1093,7 +1159,7 @@ msgid "improvedVentilation/name"
 msgstr "改进型通风系统"
 
 msgid "improvedVentilationBattleBooster/descr"
-msgstr "%s 安装改进型通风系统(任意等级)、赏金通风系统或通风系统时，全体车组乘员主要技能水平提高。"
+msgstr "%s安装改进型通风系统(任意等级)、通风系统或赏金通风系统时的全体乘员特长。"
 
 msgid "improvedVentilationBattleBooster/gain/deluxe"
 msgstr "提高2.5%"
@@ -1200,7 +1266,7 @@ msgid "largeRepairkit/short_special"
 msgstr "修复所有损坏的模块"
 
 msgid "lastEffortBattleBooster/action/boost"
-msgstr "使坦克被毁但未阵亡的通信兵继续报告敌人位置的持续时间增加3秒(总计13秒)"
+msgstr "最后的电波特长提高50%"
 
 msgid "lastEffortBattleBooster/action/perk"
 msgstr "把特长最后的电波训练到100%"
@@ -1355,7 +1421,7 @@ msgid "passive_engineering/shortFilterAlert"
 msgstr "不适用于自行火炮"
 
 msgid "pedantBattleBooster/action/boost"
-msgstr "弹药架持久度增加37.5%"
+msgstr "规整弹药特长提高300%"
 
 msgid "pedantBattleBooster/action/perk"
 msgstr "把特长规整弹药训练到100%"
@@ -1372,7 +1438,7 @@ msgstr "提供100%熟练度的规整弹药特长，或者增强它的效果"
 
 msgid "poi_artillery_aoe/descr"
 msgstr ""
-"{colorTagOpen}3秒{colorTagClose}后，火炮支援将攻击指定区域。弹震25米半径范围内的所有坦克{colorTagOpen}15秒{colorTagClose}，并对范围内所有敌方坦克造成{colorTagOpen}325点{colorTagClose}左右的损伤。"
+"{colorTagOpen}3秒{colorTagClose}后，火炮支援将攻击指定区域。弹震25米半径范围内的所有坦克{colorTagOpen}10秒{colorTagClose}，并对范围内所有敌方坦克造成{colorTagOpen}325点{colorTagClose}左右的损伤。"
 
 msgid "poi_artillery_aoe/name"
 msgstr "火炮支援"
@@ -1433,7 +1499,7 @@ msgid "rammerBattleBooster/short_special"
 msgstr "改善夯锤的效果"
 
 msgid "rancorousBattleBooster/action/boost"
-msgstr "使目标敌方坦克可见时间延长2秒"
+msgstr "复仇女神特长的效果加倍"
 
 msgid "rancorousBattleBooster/action/perk"
 msgstr "把特长复仇女神训练到100%"
@@ -1450,10 +1516,10 @@ msgid "rancorousBattleBooster/short_special"
 msgstr "提供100%熟练度的复仇女神特长，或者增强其效果"
 
 msgid "ration/always"
-msgstr "%(crewLevel)s 所有乘员技能和特长在整场战斗中的效果。"
+msgstr "%(crewLevel)s全体乘员特长，整场战斗有效。"
 
 msgid "ration/descr"
-msgstr "乘员所有技能和特长熟练度{colorTagOpen}增加10%{colorTagClose} 。"
+msgstr "全体乘员特长熟练度{colorTagOpen}+10%{colorTagClose}。"
 
 msgid "ration/long_special"
 msgstr "在战斗开始时自动激活，对战斗过程有效。 仅适用于S系坦克。"
@@ -1471,10 +1537,10 @@ msgid "ration/short_special"
 msgstr "提高S系乘员的属性"
 
 msgid "ration_china/always"
-msgstr "%(crewLevel)s 所有乘员技能和特长在整场战斗中的效果。"
+msgstr "%(crewLevel)s全体乘员特长，整场战斗有效。"
 
 msgid "ration_china/descr"
-msgstr "乘员所有技能和特长熟练度{colorTagOpen}增加10%{colorTagClose} 。"
+msgstr "全体乘员特长熟练度{colorTagOpen}+10%{colorTagClose}。"
 
 msgid "ration_china/long_special"
 msgstr "在战斗开始时自动激活，对战斗过程有效。 仅适用于C系坦克。"
@@ -1492,10 +1558,10 @@ msgid "ration_china/short_special"
 msgstr "提高C系乘员的属性"
 
 msgid "ration_czech/always"
-msgstr "%(crewLevel)s 所有乘员技能和特长在整场战斗中的效果。"
+msgstr "%(crewLevel)s全体乘员特长，整场战斗有效。"
 
 msgid "ration_czech/descr"
-msgstr "乘员所有技能和特长熟练度{colorTagOpen}增加10%{colorTagClose} 。"
+msgstr "全体乘员特长熟练度{colorTagOpen}+10%{colorTagClose}。"
 
 msgid "ration_czech/long_special"
 msgstr "在战斗开始时自动激活，对战斗过程有效。 仅适用于J系坦克。"
@@ -1513,10 +1579,10 @@ msgid "ration_czech/short_special"
 msgstr "提高J系乘员属性"
 
 msgid "ration_italy/always"
-msgstr "%(crewLevel)s 所有乘员技能和特长在整场战斗中的效果。"
+msgstr "%(crewLevel)s全体乘员特长，整场战斗有效。"
 
 msgid "ration_italy/descr"
-msgstr "乘员所有技能和特长熟练度{colorTagOpen}增加10%{colorTagClose} 。"
+msgstr "全体乘员特长熟练度{colorTagOpen}+10%{colorTagClose}。"
 
 msgid "ration_italy/long_special"
 msgstr "在战斗开始时自动激活，对战斗过程有效。 仅适用于I系坦克。"
@@ -1534,10 +1600,10 @@ msgid "ration_italy/short_special"
 msgstr "提高I系乘员属性"
 
 msgid "ration_japan/always"
-msgstr "%(crewLevel)s 所有乘员技能和特长在整场战斗中的效果。"
+msgstr "%(crewLevel)s全体乘员特长，整场战斗有效。"
 
 msgid "ration_japan/descr"
-msgstr "乘员所有技能和特长熟练度{colorTagOpen}增加10%{colorTagClose} 。"
+msgstr "全体乘员特长熟练度{colorTagOpen}+10%{colorTagClose}。"
 
 msgid "ration_japan/long_special"
 msgstr "在战斗开始时自动激活，对战斗过程有效。 仅适用于R系坦克。"
@@ -1555,10 +1621,10 @@ msgid "ration_japan/short_special"
 msgstr "提高R系乘员的属性"
 
 msgid "ration_poland/always"
-msgstr "%(crewLevel)s 所有乘员技能和特长在整场战斗中的效果。"
+msgstr "%(crewLevel)s全体乘员特长，整场战斗有效。"
 
 msgid "ration_poland/descr"
-msgstr "乘员所有技能和特长熟练度{colorTagOpen}增加10%{colorTagClose} 。"
+msgstr "全体乘员特长熟练度{colorTagOpen}+10%{colorTagClose}。"
 
 msgid "ration_poland/long_special"
 msgstr "在战斗开始时自动激活，对战斗过程有效。 仅适用于B系坦克。"
@@ -1576,10 +1642,10 @@ msgid "ration_poland/short_special"
 msgstr "提高B系乘员属性"
 
 msgid "ration_sweden/always"
-msgstr "%(crewLevel)s 所有乘员技能和特长在整场战斗中的效果。"
+msgstr "%(crewLevel)s全体乘员特长，整场战斗有效。"
 
 msgid "ration_sweden/descr"
-msgstr "乘员所有技能和特长熟练度{colorTagOpen}增加10%{colorTagClose} 。"
+msgstr "全体乘员特长熟练度{colorTagOpen}+10%{colorTagClose}。"
 
 msgid "ration_sweden/long_special"
 msgstr "在战斗开始时自动激活，对战斗过程有效。 仅适用于V系坦克。"
@@ -1597,10 +1663,10 @@ msgid "ration_sweden/short_special"
 msgstr "提高V系乘员的属性"
 
 msgid "ration_uk/always"
-msgstr "%(crewLevel)s 所有乘员技能和特长在整场战斗中的效果。"
+msgstr "%(crewLevel)s全体乘员特长，整场战斗有效。"
 
 msgid "ration_uk/descr"
-msgstr "乘员所有技能和特长熟练度{colorTagOpen}增加10%{colorTagClose} 。"
+msgstr "全体乘员特长熟练度{colorTagOpen}+10%{colorTagClose}。"
 
 msgid "ration_uk/long_special"
 msgstr "在战斗开始时自动激活，对战斗过程有效。 仅适用于Y系坦克。"
@@ -2421,8 +2487,7 @@ msgid "sixthSenseBattleBooster/description/builtinPerkBooster"
 msgstr "战场直觉能够让车长识别坦克是否被敌方点亮。在您的坦克被点亮3秒后激活。"
 
 msgid "sixthSenseBattleBooster/long_special"
-msgstr ""
-"战场直觉使您确定自身是否在战斗过程中被敌人发现。如果特长已训练至100%，则装备指令会增强其效果；如果没有，该指令为您的坦克提供100%熟练度的特长。"
+msgstr "战场直觉车长特性能够让车长识别坦克是否被敌方点亮，整场战斗有效。安装指令可增强其效果。"
 
 msgid "sixthSenseBattleBooster/name"
 msgstr "全神贯注"
@@ -2489,36 +2554,36 @@ msgid "smoke/shortDescr"
 msgstr "隐藏烟幕中及烟幕后方的所有坦克。烟幕中敌方坦克的观察范围及乘员技能水平会下降。"
 
 msgid "smoothDrivingBattleBooster/action/boost"
-msgstr "加倍平稳驾驶技能的效果"
+msgstr "平稳驾驶特长的效果加倍"
 
 msgid "smoothDrivingBattleBooster/action/perk"
-msgstr "把技能平稳驾驶训练到100%"
+msgstr "把平稳驾驶特长训练至100%"
 
 msgid "smoothDrivingBattleBooster/long_special"
 msgstr ""
-"平稳驾驶技能可提高坦克在战斗中移动射击的精度。如果技能已经训练至100%熟练度，则装备指令会增加其效果；如果没有，该指令将为您的坦克提供100%熟练度的这项技能。"
+"平稳驾驶特长增强坦克的移动射击精度，整场战斗有效。如果该特长已训练至100%，安装指令会增强其效果；否则该指令会为坦克提供100%熟练度的特长。"
 
 msgid "smoothDrivingBattleBooster/name"
 msgstr "变速之钥"
 
 msgid "smoothDrivingBattleBooster/short_special"
-msgstr "提供100%熟练度的平稳驾驶技能或提升其效果"
+msgstr "提供100%熟练度的平稳驾驶特长或增强其效果"
 
 msgid "smoothTurretBattleBooster/action/boost"
-msgstr "加倍人工稳定技能的效果"
+msgstr "人工稳定特长的效果加倍"
 
 msgid "smoothTurretBattleBooster/action/perk"
-msgstr "把技能人工稳定训练到100%"
+msgstr "把人工稳定特长训练至100%"
 
 msgid "smoothTurretBattleBooster/long_special"
 msgstr ""
-"人工稳定技能可提高战斗过程中炮塔旋转时的精度。如果技能训练至100%，则装备指令会增强其效果；如果没有，该指令为您的坦克提供100%熟练度的技能。"
+"人工稳定特长增强炮塔旋转时的射击精度，整场战斗有效。如果该特长已训练至100%，安装指令会增强其效果；否则该指令会为坦克提供100%熟练度的特长。"
 
 msgid "smoothTurretBattleBooster/name"
 msgstr "稳若泰山"
 
 msgid "smoothTurretBattleBooster/short_special"
-msgstr "提供训练至100%的人工稳定技能，或提升它的效果"
+msgstr "提供100%熟练度的人工稳定特长或增强其效果"
 
 msgid "spawn_kamikaze/descr"
 msgstr "部署一个自走式地雷，地雷会追逐最近的敌人，并在爆炸时造成损伤。敌人可以射击您的飞火流星，将其摧毁。"
@@ -2766,17 +2831,17 @@ msgid "turbocharger_tier3/name"
 msgstr "3级涡轮增压器"
 
 msgid "virtuosoBattleBooster/action/boost"
-msgstr "加倍快速转弯技能的效果"
+msgstr "快速转弯特长的效果加倍"
 
 msgid "virtuosoBattleBooster/action/perk"
-msgstr "把技能快速转弯训练到100%"
+msgstr "把快速转弯特长训练至100%"
 
 msgid "virtuosoBattleBooster/long_special"
 msgstr ""
-"快速转弯技能提高了战斗过程中静止和移动坦克的转弯速度。如果技能训练至100%，则装备指令会增加其效果；如果没有，该指令为您的坦克提供100%熟练度的技能。"
+"快速转弯特长提高坦克静止和移动时的旋转速度，整场战斗有效。如果该特长已训练至100%，安装指令会增强其效果；否则该指令会为坦克提供100%熟练度的特长。"
 
 msgid "virtuosoBattleBooster/name"
 msgstr "战斗培训"
 
 msgid "virtuosoBattleBooster/short_special"
-msgstr "提供100%熟练度的快速转弯技能，或者提升它的效果"
+msgstr "提供100%熟练度的快速转弯特长或增强其效果"

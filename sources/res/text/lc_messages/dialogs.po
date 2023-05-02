@@ -277,25 +277,25 @@ msgid "addFreeSkillWindow/label"
 msgstr "零历练特长"
 
 msgid "addFreeSkillWindow/submit"
-msgstr "确认"
+msgstr "选择特长"
 
 msgid "addSkillWindow/cancel"
 msgstr "取消"
 
 msgid "addSkillWindow/desc1"
-msgstr "技能和特长在训练开始的时候就已生效，技能水平会慢慢提高最终发挥乘员的最大潜力。"
+msgstr "特长在开始训练后立即生效，并逐渐提高至最高熟练度。"
 
 msgid "addSkillWindow/desc2"
 msgstr "只有当特长的熟练度到达100%时才发挥效用。"
 
 msgid "addSkillWindow/label"
-msgstr "技能和特长"
+msgstr "特长"
 
 msgid "addSkillWindow/label/commander"
 msgstr "车长"
 
 msgid "addSkillWindow/label/common"
-msgstr "普通"
+msgstr "团体特长"
 
 msgid "addSkillWindow/label/driver"
 msgstr "驾驶员"
@@ -310,10 +310,10 @@ msgid "addSkillWindow/label/radioman"
 msgstr "通信兵"
 
 msgid "addSkillWindow/submit"
-msgstr "确认"
+msgstr "选择特长"
 
 msgid "addSkillWindow/title"
-msgstr "查看其它技能和特长"
+msgstr "查看附加特长"
 
 msgid "barracksExpand/cancel"
 msgstr "取消"
@@ -536,11 +536,14 @@ msgstr "确认"
 msgid "buyPremWithoutBenefitsConfirmation/title"
 msgstr "确认购买"
 
+msgid "buySlot/hangarSlot/header"
+msgstr "车位"
+
 msgid "buySlotConfirmation/cancel"
 msgstr "取消"
 
 msgid "buySlotConfirmation/message"
-msgstr "您要花费%(goldCost)s金币购买一个车位吗？"
+msgstr "花费%(goldCost)s购买一个车位？"
 
 msgid "buySlotConfirmation/submit"
 msgstr "确认"
@@ -548,23 +551,35 @@ msgstr "确认"
 msgid "buySlotConfirmation/title"
 msgstr "确认购买"
 
-msgid "buySlotNotEnoughCredits/cancel"
-msgstr "取消"
-
-msgid "buySlotNotEnoughCredits/message"
-msgstr "没有足够的金币购买车位。"
-
-msgid "buySlotNotEnoughCredits/submit"
+msgid "buySlotNotEnough/credits/cancel"
 msgstr "确认"
 
-msgid "buySlotNotEnoughCredits/title"
+msgid "buySlotNotEnough/credits/message"
+msgstr "没有足够的银币购买车位。"
+
+msgid "buySlotNotEnough/credits/submit"
+msgstr "确认"
+
+msgid "buySlotNotEnough/credits/title"
+msgstr "银币不足"
+
+msgid "buySlotNotEnough/gold/cancel"
+msgstr "确认"
+
+msgid "buySlotNotEnough/gold/message"
+msgstr "没有足够的金币购买车位。"
+
+msgid "buySlotNotEnough/gold/submit"
+msgstr "确认"
+
+msgid "buySlotNotEnough/gold/title"
 msgstr "金币不足。"
 
 msgid "buySlotShopConfirmation/cancel"
 msgstr "取消"
 
 msgid "buySlotShopConfirmation/messageCombine"
-msgstr "车库无可用车位。确认用{%d} 金币购买一个额外车位么？"
+msgstr "车库中无可用车位。确认用{%d}银币购买一个额外车位？"
 
 msgid "buySlotShopConfirmation/submit"
 msgstr "确认"
@@ -1389,10 +1404,10 @@ msgid "dropSkill/fullscreen/ok"
 msgstr "重置"
 
 msgid "dropSkill/fullscreen/title"
-msgstr "重置所有技能和特长？"
+msgstr "重置所有特长？"
 
 msgid "dropSkill/message"
-msgstr "确认重置所有技能和特长么？"
+msgstr "重置所有特长？"
 
 msgid "dropSkill/submit"
 msgstr "重置"
@@ -1854,19 +1869,22 @@ msgid "idleCrewBonus/message/crewIncomplete"
 msgstr "{orange_Open}乘员不足{orange_Close}"
 
 msgid "idleCrewBonus/message/crewUnsuitable"
-msgstr "{orange_Open}您有一名或多名乘员专精不符合{orange_Close}"
+msgstr "{orange_Open}一名或多名乘员专精不符{orange_Close}"
 
 msgid "idleCrewBonus/message/crewWarning"
 msgstr "您所选择的坦克不适合，可能是由于以下原因之一:"
 
-msgid "idleCrewBonus/message/remove"
-msgstr "只有1组乘员可以获得加成。{white_Open}%s{white_Close}上的加成将被移除"
+msgid "idleCrewBonus/message/removeName"
+msgstr "{white_Open}%(vehicleName)s{white_Close}"
+
+msgid "idleCrewBonus/message/removeType"
+msgstr "只有1组乘员可以获得加成。将移除下列坦克的加成: %(typeIcon)"
 
 msgid "idleCrewBonus/submit"
 msgstr "确认"
 
 msgid "idleCrewBonus/title"
-msgstr "开启高强度乘员训练吗？"
+msgstr "开启高强度乘员训练？"
 
 msgid "interviewQuit/cancel"
 msgstr "返回"
@@ -2199,9 +2217,6 @@ msgstr "确认"
 
 msgid "protectedDismissTankman/additionalMessage"
 msgstr "要完成操作，请输入等级%(skillType)s \"%(skillName)s\" (%(roleLevel)s)"
-
-msgid "protectedDismissTankman/additionalMessage/isAbillity"
-msgstr "技能"
 
 msgid "protectedDismissTankman/additionalMessage/isPerk"
 msgstr "特性"
@@ -2812,7 +2827,7 @@ msgid "skillDropWindow/submit"
 msgstr "重置"
 
 msgid "skillDropWindow/title"
-msgstr "重置技能和特长"
+msgstr "重置特长"
 
 msgid "soundModeInvalid/cancel"
 msgstr "取消"

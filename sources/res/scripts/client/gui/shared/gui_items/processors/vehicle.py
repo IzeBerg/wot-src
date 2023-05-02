@@ -17,7 +17,7 @@ from gui import SystemMessages, g_tankActiveCamouflage
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
 from gui.SystemMessages import SM_TYPE, CURRENCY_TO_SM_TYPE
-from gui.shared.formatters import formatPrice, formatGoldPrice, text_styles
+from gui.shared.formatters import formatPrice, text_styles, getStyle
 from gui.shared.formatters import icons
 from gui.shared.formatters.time_formatters import formatTime, getTimeLeftInfo
 from gui.shared.utils.requesters import REQ_CRITERIA
@@ -277,14 +277,19 @@ class VehicleSlotBuyer(Processor):
         self.__hasDiscounts = bool(self.itemsCache.items.shop.personalSlotDiscounts)
         self.__frozenSlotPrice = None
         slotCost = self.__getSlotPrice()
+        currency = slotCost.getCurrency()
         if self.__hasDiscounts and not slotCost:
             confirmationType = 'freeSlotConfirmation'
             ctx = {}
         else:
             confirmationType = 'buySlotConfirmation'
-            ctx = {'goldCost': text_styles.concatStylesWithSpace(text_styles.gold(str(slotCost.gold)), icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_GOLDICON_2))}
+            img = RES_ICONS.MAPS_ICONS_LIBRARY_GOLDICON_2
+            if currency == Currency.CREDITS:
+                img = RES_ICONS.MAPS_ICONS_LIBRARY_CREDITSICON_2
+            style = getStyle(currency) if currency in Currency.ALL else text_styles.credits
+            ctx = {'goldCost': text_styles.concatStylesWithSpace(style(backport.getIntegralFormat(abs(slotCost.get(currency)))), icons.makeImageTag(img))}
         super(VehicleSlotBuyer, self).__init__((
-         proc_plugs.MessageInformator('buySlotNotEnoughCredits', activeHandler=lambda : not proc_plugs.MoneyValidator(slotCost).validate().success, isEnabled=showWarning),
+         proc_plugs.MessageInformator(('buySlotNotEnough/{}').format(currency), activeHandler=lambda : not proc_plugs.MoneyValidator(slotCost).validate().success, isEnabled=showWarning),
          proc_plugs.MessageConfirmator(confirmationType, isEnabled=showConfirm, ctx=ctx),
          proc_plugs.MoneyValidator(slotCost)))
         return
@@ -294,11 +299,10 @@ class VehicleSlotBuyer(Processor):
 
     def _successHandler(self, code, ctx=None):
         price = self.__getSlotPrice()
-        if price:
-            money = formatPrice(price)
-        else:
-            money = formatGoldPrice(price.gold)
-        return makeI18nSuccess(sysMsgKey='vehicle_slot_buy/success', money=money, type=SM_TYPE.FinancialTransactionWithGold)
+        msgType = SM_TYPE.FinancialTransactionWithGold
+        if price.getCurrency() == Currency.CREDITS:
+            msgType = SM_TYPE.FinancialTransactionWithCredits
+        return makeI18nSuccess(sysMsgKey='vehicle_slot_buy/success', money=formatPrice(price), type=msgType)
 
     def _request(self, callback):
         _logger.debug('Attempt to request server for buying vehicle slot')
@@ -310,8 +314,8 @@ class VehicleSlotBuyer(Processor):
         else:
             price = self.itemsCache.items.shop.getVehicleSlotsPrice(self.itemsCache.items.stats.vehicleSlots)
             if self.__hasDiscounts:
-                self.__frozenSlotPrice = Money(gold=price)
-            return Money(gold=price)
+                self.__frozenSlotPrice = price
+            return price
 
 
 class VehicleSeller(ItemProcessor):

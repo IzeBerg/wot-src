@@ -146,7 +146,7 @@ def _packDismissedTankman(tankman):
            'desc': skill.description, 
            'icon': skill.icon, 
            'level': skill.level, 
-           'active': skill.isEnable and skill.isActive})
+           'active': skill.isEnable})
 
     newSkillsCount, lastNewSkillLvl = tankman.newSkillCount
     if newSkillsCount > 0:

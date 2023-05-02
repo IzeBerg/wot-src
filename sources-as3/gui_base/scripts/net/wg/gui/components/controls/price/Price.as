@@ -97,7 +97,7 @@ package net.wg.gui.components.controls.price
       
       private var _actionMode:String = "enabled";
       
-      private var _actionState:String;
+      private var _actionState:String = "percentBG";
       
       private var _iconAlign:String = "right";
       
@@ -129,7 +129,6 @@ package net.wg.gui.components.controls.price
       
       public function Price()
       {
-         this._actionState = ACTION_STATE_SIMPLE;
          this._iconOffset = new Point(0,0);
          this._actionOffset = new Point(0,0);
          this._toolTipMgr = App.toolTipMgr;
@@ -235,9 +234,12 @@ package net.wg.gui.components.controls.price
          this._iconOffset = null;
          this._actionOffset = null;
          this._toolTipMgr = null;
-         this._oldPriceLine.graphics.clear();
-         removeChild(this._oldPriceLine);
-         this._oldPriceLine = null;
+         if(this._oldPriceLine)
+         {
+            this._oldPriceLine.graphics.clear();
+            removeChild(this._oldPriceLine);
+            this._oldPriceLine = null;
+         }
          this._oldPriceOffsetCustom = null;
          super.onDispose();
       }

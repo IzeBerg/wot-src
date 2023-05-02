@@ -20,19 +20,19 @@ msgid "actionAchievements/title"
 msgstr "勋章的活动"
 
 msgid "add_tankman_skill/invalid_vehicle"
-msgstr "训练技能错误，坦克错误。"
+msgstr "训练特长错误，坦克错误。"
 
 msgid "add_tankman_skill/server_error"
-msgstr "训练新技能失败，请稍后再试。"
+msgstr "训练新乘员特长失败。请稍后再试。"
 
 msgid "add_tankman_skill/success"
-msgstr "开始学习附加技能。"
+msgstr "已成功训练新特长。"
 
 msgid "add_tankman_skill/vehicle_locked"
-msgstr "训练技能错误，坦克正处在锁定状态。"
+msgstr "训练特长错误。坦克正处在锁定状态。"
 
 msgid "add_tankman_skill/vehicle_need_repair"
-msgstr "训练技能错误，请先维修坦克。"
+msgstr "训练特长错误。请先维修坦克。"
 
 msgid "another_periphery"
 msgstr "您当前账号还登录在另外一个服务器上。"
@@ -255,6 +255,9 @@ msgstr "坦克被锁定。%(kind)s '%(name)s'无法安装。"
 
 msgid "artefact_remove/vehicle_need_repair"
 msgstr "坦克受损。%(kind)s '%(name)s'无法安装。维修坦克并重试。"
+
+msgid "artefact_remove/wot_plus_success"
+msgstr "您已使用激活的坦克世界Plus订阅从坦克上免费拆卸了%(kind)s\"%(name)s\"。"
 
 msgid "artefact_sell/invalid_module"
 msgstr "%(kind)s '%(name)s'出售失败。模块错误。"
@@ -1277,19 +1280,19 @@ msgid "dossiers_unavailable"
 msgstr "账户没有准备好(数据不可用)"
 
 msgid "drop_tankman_skill/invalid_vehicle"
-msgstr "技能重置错误，坦克不正确。"
+msgstr "特长重置错误。坦克不正确。"
 
 msgid "drop_tankman_skill/server_error"
-msgstr "未能重置该技能。请稍后重试。"
+msgstr "未能重置该特长。请稍后重试。"
 
 msgid "drop_tankman_skill/success"
-msgstr "全部技能和特长已成功重置。您花费了%(money)s。"
+msgstr "全部特长都已成功重置。您花费了%(money)s。"
 
 msgid "drop_tankman_skill/vehicle_locked"
-msgstr "技能重置错误，坦克正处于锁定状态。"
+msgstr "特长重置错误。坦克正处于锁定状态。"
 
 msgid "drop_tankman_skill/vehicle_need_repair"
-msgstr "技能重置错误，请先维修坦克。"
+msgstr "特长重置错误，请先维修坦克。"
 
 msgid "drr_scale/step_down"
 msgstr "画面分辨率提升至 %(scale)d%%。"
@@ -1973,6 +1976,17 @@ msgstr "操作失败。请耐心等待当前操作完成。"
 
 msgid "maps_black_list/select/success"
 msgstr "%(mapName)s地图已排除在标准模式类型的随机战之外。您可以在%(time)s后更改您的选择。"
+
+msgid "maps_black_list/select/success/noSubscriptions"
+msgstr ""
+"%(mapName)s地图已从标准模式的随机战中排除。您可以在%(time)s后更换选择，或通过激活《坦克世界》高级账号、订阅坦克世界Plus来额外解锁一个空位。"
+
+msgid "maps_black_list/select/success/premium"
+msgstr "%(mapName)s地图已从标准模式的随机战中排除。您可以在%(time)s后更换选择，或通过订阅坦克世界Plus来额外解锁一个空位。"
+
+msgid "maps_black_list/select/success/wotPlus"
+msgstr ""
+"%(mapName)s地图已从标准模式的随机战中排除。您可以在%(time)s后更换选择，或通过激活《坦克世界》高级账号来额外解锁一个空位。"
 
 msgid "maps_black_list/switch_off/body"
 msgstr ""
@@ -4026,6 +4040,9 @@ msgstr "坦克 '%(vehName)s'出售失败。你当天出售数量限制已到。"
 msgid "vehicle_sell/wallet_not_available"
 msgstr "操作失败。您的所有金币将在资产同步完成后可用。"
 
+msgid "vehicle_slot_buy/not_enough_credits"
+msgstr "购买车位失败。银币不足。"
+
 msgid "vehicle_slot_buy/not_enough_gold"
 msgstr "购买车位失败。金币不足。"
 
@@ -4124,6 +4141,9 @@ msgstr "获取数据正在进行中。您的全局经验将会很快恢复。"
 
 msgid "wallet/not_available_gold"
 msgstr "获取数据正在进行中。您的金币将会很快恢复。"
+
+msgid "winback/turnOffBattlesError"
+msgstr "无法退出热身模式。请稍后再试。"
 
 msgid "window/buttons/close"
 msgstr "关闭"

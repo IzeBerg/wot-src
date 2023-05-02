@@ -1,18 +1,55 @@
 import collections, sys
 from constants import BonusTypes
+from gui.shared.gui_items import KPI
 from gui.shared.items_parameters import params_cache
-from gui.shared.utils import WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_OFF_TIME, DUAL_GUN_CHARGE_TIME, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, CHASSIS_REPAIR_TIME, TURBOSHAFT_SWITCH_TIME
 from shared_utils import first
+from gui.shared.utils import WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_OFF_TIME, DUAL_GUN_CHARGE_TIME, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, CHASSIS_REPAIR_TIME, TURBOSHAFT_SWITCH_TIME, DUAL_GUN_RATE_TIME
 BACKWARD_QUALITY_PARAMS = frozenset([
- 'aimingTime', 'shotDispersionAngle', 'weight', 'dispertionRadius', 'fireStartingChance', 'reloadTimeSecs',
- 'autoReloadTime', 'shellReloadingTime', 'clipFireRate', 'reloadMagazineTime', 'weight', 'switchOnTime',
- 'switchOffTime', WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_OFF_TIME, DUAL_GUN_CHARGE_TIME, 'vehicleOwnSpottingTime',
- 'vehicleGunShotDispersion', 'crewStunDuration', 'vehicleReloadTimeAfterShellChange', 'crewRepeatedStunDuration',
- 'vehicleChassisFallDamage', 'vehPenaltyForDamageEngineAndCombat', 'demaskFoliageFactor', TURBOSHAFT_SWITCH_TIME,
- 'demaskMovingFactor', 'vehicleRamOrExplosionDamageResistance', 'vehicleFireChance', CHASSIS_REPAIR_TIME,
- 'vehicleGunShotFullDispersion', 'vehicleGunShotDispersionAfterShot', 'vehicleGunShotDispersionChassisMovement',
- 'vehicleGunShotDispersionChassisRotation', 'vehicleGunShotDispersionTurretRotation', 'turboshaftBurstFireRate',
- 'vehicleGunShotDispersionWhileGunDamaged', 'vehicleRamDamageResistance', 'vehicleGunReloadTime', 'burstFireRate'])
+ 'aimingTime',
+ 'autoReloadTime',
+ 'dispertionRadius',
+ 'fireStartingChance',
+ 'reloadMagazineTime',
+ 'reloadTimeSecs',
+ 'shellReloadingTime',
+ 'shotDispersionAngle',
+ 'weight',
+ 'turboshaftBurstFireRate',
+ 'burstFireRate',
+ 'switchOnTime',
+ 'switchOffTime',
+ CHASSIS_REPAIR_TIME,
+ DUAL_GUN_CHARGE_TIME,
+ KPI.Name.ART_NOTIFICATION_DELAY_FACTOR,
+ KPI.Name.CREW_REPEATED_STUN_DURATION,
+ KPI.Name.CREW_STUN_DURATION,
+ KPI.Name.DAMAGE_AND_PIERCING_DISTRIBUTION_UPPER_BOUND,
+ KPI.Name.DEMASK_FOLIAGE_FACTOR,
+ KPI.Name.DEMASK_MOVING_FACTOR,
+ KPI.Name.EQUIPMENT_PREPARATION_TIME,
+ KPI.Name.STUN_RESISTANCE_EFFECT_FACTOR,
+ KPI.Name.VEHICLE_CHASSIS_FALL_DAMAGE,
+ KPI.Name.VEHICLE_FIRE_CHANCE,
+ KPI.Name.VEHICLE_GUN_RELOAD_TIME,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_AFTER_SHOT,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_CHASSIS_MOVEMENT,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_CHASSIS_ROTATION,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_TURRET_ROTATION,
+ KPI.Name.VEHICLE_GUN_SHOT_DISPERSION_WHILE_GUN_DAMAGED,
+ KPI.Name.VEHICLE_GUN_SHOT_FULL_DISPERSION,
+ KPI.Name.VEHICLE_OWN_SPOTTING_TIME,
+ KPI.Name.VEHICLE_PENALTY_FOR_DAMAGED_ENGINE_AND_COMBAT,
+ KPI.Name.VEHICLE_RAM_DAMAGE_RESISTANCE,
+ KPI.Name.VEHICLE_RAM_OR_EXPLOSION_DAMAGE_RESISTANCE,
+ KPI.Name.VEHICLE_FUEL_TANK_LESION_CHANCE,
+ WHEELED_SWITCH_OFF_TIME,
+ WHEELED_SWITCH_ON_TIME,
+ TURBOSHAFT_SWITCH_TIME,
+ KPI.Name.VEHICLE_RAM_CHASSIS_DAMAGE_RESISTANCE,
+ KPI.Name.DAMAGED_MODULES_DETECTION_TIME,
+ KPI.Name.WOUNDED_CREW_EFFICIENCY,
+ DUAL_GUN_RATE_TIME])
 NEGATIVE_PARAMS = [
  'switchOnTime', 'switchOffTime']
 _CUSTOM_QUALITY_PARAMS = {'vehicleWeight': (
@@ -36,12 +73,12 @@ class PARAM_STATE(object):
 DEFAULT_AVG_VALUE = (
  sys.maxint, -1)
 
-def getParamExtendedData(paramName, value, otherValue, penalties=None, customQualityParams=None):
+def getParamExtendedData(paramName, value, otherValue, penalties=None, customQualityParams=None, isSituational=False):
     possibleBonuses, bonuses, inactive, penalties = penalties if penalties is not None else ([], [], [], [])
     if paramName not in NEGATIVE_PARAMS:
         if otherValue is None or otherValue == DEFAULT_AVG_VALUE:
             otherValue = value
-    return _ParameterInfo(paramName, value, rateParameterState(paramName, value, otherValue, customQualityParams=customQualityParams), possibleBonuses, inactive, bonuses, penalties)
+    return _ParameterInfo(paramName, value, rateParameterState(paramName, value, otherValue, customQualityParams=customQualityParams), possibleBonuses, inactive, bonuses, penalties, isSituational)
 
 
 class ItemsComparator(object):
@@ -119,7 +156,7 @@ class VehiclesComparator(ItemsComparator):
         unmatchedDependencies = []
         for dependency in dependencies:
             unmatchedDependency = self.__getUnmatchedDependency(paramName, activeBonuses, dependency)
-            if unmatchedDependency is not None and unmatchedDependency not in activeBonuses:
+            if unmatchedDependency is not None and unmatchedDependency not in activeBonuses and bonus not in NOT_HARD_DEPENDENCY:
                 unmatchedDependencies.append(unmatchedDependency)
 
         unmatchedDependency = first(unmatchedDependencies) if len(unmatchedDependencies) == len(dependencies) else None
@@ -129,7 +166,8 @@ class VehiclesComparator(ItemsComparator):
 
 
 class _ParameterInfo(collections.namedtuple('_ParameterInfo', ('name', 'value', 'state', 'possibleBonuses',
-                                          'inactiveBonuses', 'bonuses', 'penalties'))):
+                                          'inactiveBonuses', 'bonuses', 'penalties',
+                                          'isSituational'))):
 
     def getParamDiff(self):
         if isinstance(self.value, (tuple, list)):
@@ -223,6 +261,19 @@ CONDITIONAL_BONUSES = {('invisibilityMovingFactor', 'invisibilityStillFactor', T
                                                                                                                    'trophyBasicTankRammer', BonusTypes.OPTIONAL_DEVICE),
                                                                                                                   (
                                                                                                                    'trophyUpgradedTankRammer', BonusTypes.OPTIONAL_DEVICE))}, 
+   ('clipFireRate', 'autoReloadTime'): {(('improvedVentilationBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
+                                                                                                           (
+                                                                                                            'improvedVentilation_tier1', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                           (
+                                                                                                            'improvedVentilation_tier2', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                           (
+                                                                                                            'improvedVentilation_tier3', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                           (
+                                                                                                            'deluxImprovedVentilation', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                           (
+                                                                                                            'trophyBasicImprovedVentilation', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                           (
+                                                                                                            'trophyUpgradedImprovedVentilation', BonusTypes.OPTIONAL_DEVICE))}, 
    ('circularVisionRadius', ): {(('improvedVentilationBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
                                                                                                    (
                                                                                                     'improvedVentilation_tier1', BonusTypes.OPTIONAL_DEVICE),
@@ -317,27 +368,71 @@ CONDITIONAL_BONUSES = {('invisibilityMovingFactor', 'invisibilityStillFactor', T
                                                                                                                                          (
                                                                                                                                           'trophyBasicImprovedVentilation', BonusTypes.OPTIONAL_DEVICE),
                                                                                                                                          (
-                                                                                                                                          'trophyUpgradedImprovedVentilation', BonusTypes.OPTIONAL_DEVICE))}, 
-   ('enginePower', 'rocketAccelerationEnginePower', 'enginePowerPerTon'): {(('turbochargerBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
-                                                                                                                                       (
-                                                                                                                                        'turbocharger_tier1', BonusTypes.OPTIONAL_DEVICE),
-                                                                                                                                       (
-                                                                                                                                        'turbocharger_tier2', BonusTypes.OPTIONAL_DEVICE),
-                                                                                                                                       (
-                                                                                                                                        'turbocharger_tier3', BonusTypes.OPTIONAL_DEVICE),
-                                                                                                                                       (
-                                                                                                                                        'modernizedTurbochargerRotationMechanism1', BonusTypes.OPTIONAL_DEVICE),
-                                                                                                                                       (
-                                                                                                                                        'modernizedTurbochargerRotationMechanism2', BonusTypes.OPTIONAL_DEVICE),
-                                                                                                                                       (
-                                                                                                                                        'modernizedTurbochargerRotationMechanism3', BonusTypes.OPTIONAL_DEVICE),
-                                                                                                                                       (
-                                                                                                                                        'deluxeTurbocharger', BonusTypes.OPTIONAL_DEVICE),
-                                                                                                                                       (
-                                                                                                                                        'trophyBasicTurbocharger', BonusTypes.OPTIONAL_DEVICE),
-                                                                                                                                       (
-                                                                                                                                        'trophyUpgradedTurbocharger', BonusTypes.OPTIONAL_DEVICE))}}
+                                                                                                                                          'trophyUpgradedImprovedVentilation', BonusTypes.OPTIONAL_DEVICE)), 
+                                                                      (('driver_virtuoso', BonusTypes.SKILL),): (
+                                                                                                               (
+                                                                                                                'brotherhood', BonusTypes.SKILL),)}, 
+   ('enginePower', 'rocketAccelerationEnginePower', 'enginePowerPerTon', 'turboshaftEnginePower'): {(('turbochargerBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
+                                                                                                                                                                (
+                                                                                                                                                                 'turbocharger_tier1', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                                                                                (
+                                                                                                                                                                 'turbocharger_tier2', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                                                                                (
+                                                                                                                                                                 'turbocharger_tier3', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                                                                                (
+                                                                                                                                                                 'modernizedTurbochargerRotationMechanism1', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                                                                                (
+                                                                                                                                                                 'modernizedTurbochargerRotationMechanism2', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                                                                                (
+                                                                                                                                                                 'modernizedTurbochargerRotationMechanism3', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                                                                                (
+                                                                                                                                                                 'deluxeTurbocharger', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                                                                                (
+                                                                                                                                                                 'trophyBasicTurbocharger', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                                                                                (
+                                                                                                                                                                 'trophyUpgradedTurbocharger', BonusTypes.OPTIONAL_DEVICE))}, 
+   ('vehicleRepairSpeed', ): {(('improvedConfigurationBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
+                                                                                                   (
+                                                                                                    'improvedConfiguration_tier1', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                   (
+                                                                                                    'improvedConfiguration_tier2', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                   (
+                                                                                                    'deluxImprovedConfiguration', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                   (
+                                                                                                    'trophyBasicImprovedConfiguration', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                   (
+                                                                                                    'trophyUpgradedImprovedConfiguration', BonusTypes.OPTIONAL_DEVICE))}, 
+   ('vehicleGunShotDispersion', ): {(('aimingStabilizerBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
+                                                                                                    (
+                                                                                                     'aimingStabilizer_tier1', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                    (
+                                                                                                     'aimingStabilizer_tier2', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                    (
+                                                                                                     'deluxAimingStabilizer', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                    (
+                                                                                                     'trophyBasicAimingStabilizer', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                    (
+                                                                                                     'trophyUpgradedAimingStabilizer', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                    (
+                                                                                                     'modernizedAimDrivesAimingStabilizer1', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                    (
+                                                                                                     'modernizedAimDrivesAimingStabilizer2', BonusTypes.OPTIONAL_DEVICE),
+                                                                                                    (
+                                                                                                     'modernizedAimDrivesAimingStabilizer3', BonusTypes.OPTIONAL_DEVICE))}, 
+   ('fireExtinguishingRate', ): {(('fireFightingBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
+                                                                                             (
+                                                                                              'fireFighting', BonusTypes.SKILL),)}, 
+   ('wheelsRotationSpeed', ): {(('virtuosoBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
+                                                                                       (
+                                                                                        'driver_virtuoso', BonusTypes.SKILL),)}}
 CONDITIONAL_BONUSES = {k:{k1:v1 for keys1, v1 in values.iteritems() for k1 in keys1} for keys, values in CONDITIONAL_BONUSES.items() for k in keys}
+NOT_HARD_DEPENDENCY = {
+ (
+  'driver_virtuoso', BonusTypes.SKILL),
+ (
+  'fireFightingBattleBooster', BonusTypes.BATTLE_BOOSTER),
+ (
+  'virtuosoBattleBooster', BonusTypes.BATTLE_BOOSTER)}
 
 def _getComparableValue(currentValue, comparableList, idx):
     if len(comparableList) > idx:
@@ -382,7 +477,7 @@ def rateParameterState(paramName, val1, val2, customQualityParams=None):
             customQualityParams = _CUSTOM_QUALITY_PARAMS.get(paramName)
         customQualityLen = len(customQualityParams) if customQualityParams else 0
         result = []
-        val2Len = len(val2)
+        val2Len = len(val2) if isinstance(val2, (tuple, list)) else 0
         for i, val in enumerate(val1):
             if val2Len == 0:
                 result.append((PARAM_STATE.NORMAL, None))

@@ -541,7 +541,7 @@
 		<purpose>DEDICATION</purpose>
 		<isExternalUnlockOnly>true</isExternalUnlockOnly>
 		<progressKey>stats_api.comp7PrestigePoints</progressKey>
-		<grades>0 1500 3500 6500 10000 14000 18000 22500 27000 32000</grades>
+		<grades>0 2250 5250 9750 15000 21000 27000 33750 40500 48000</grades>
 		<isDefault>false</isDefault>
 		<battleTypes>43</battleTypes>
 		<glossaryName>COMP7_SEASON1_PRESTIGE_POINTS</glossaryName>
@@ -552,11 +552,12 @@
 		<viewType>engraving</viewType>
 		<purpose>DEDICATION</purpose>
 		<isExternalUnlockOnly>true</isExternalUnlockOnly>
-		<progressKey>stats_api.comp7Wins</progressKey>
+		<progressKey>stats_api.comp7Season1Wins</progressKey>
 		<grades>0 60 70 80 90 110 130 150 175 200</grades>
 		<isDefault>false</isDefault>
 		<battleTypes>43</battleTypes>
 		<glossaryName>COMP7_SEASON1_WINS</glossaryName>
+		<isSecret>true</isSecret>
 	</component>
 	<component>
 		<componentId>602</componentId>
@@ -564,6 +565,7 @@
 		<viewType>background</viewType>
 		<purpose>BASE</purpose>
 		<glossaryName>COMP7_SEASON1_SILVER</glossaryName>
+		<isSecret>true</isSecret>
 	</component>
 	<component>
 		<componentId>603</componentId>
@@ -571,6 +573,7 @@
 		<viewType>background</viewType>
 		<purpose>BASE</purpose>
 		<glossaryName>COMP7_SEASON1_GOLD</glossaryName>
+		<isSecret>true</isSecret>
 	</component>
 	<component>
 		<componentId>604</componentId>
@@ -578,6 +581,7 @@
 		<viewType>background</viewType>
 		<purpose>BASE</purpose>
 		<glossaryName>COMP7_SEASON1_PLATINUM</glossaryName>
+		<isSecret>true</isSecret>
 	</component>
 	<component>
 		<componentId>605</componentId>
@@ -585,6 +589,7 @@
 		<viewType>background</viewType>
 		<purpose>BASE</purpose>
 		<glossaryName>COMP7_SEASON1_DIAMOND</glossaryName>
+		<isSecret>true</isSecret>
 	</component>
 	<component>
 		<componentId>606</componentId>
@@ -592,6 +597,7 @@
 		<viewType>background</viewType>
 		<purpose>BASE</purpose>
 		<glossaryName>COMP7_SEASON1_MAESTRO</glossaryName>
+		<isSecret>true</isSecret>
 	</component>
 	<component>
 		<componentId>607</componentId>
@@ -599,6 +605,67 @@
 		<viewType>background</viewType>
 		<purpose>BASE</purpose>
 		<glossaryName>COMP7_SEASON1_ELITE</glossaryName>
+		<isSecret>true</isSecret>
+	</component>
+	<component>
+		<componentId>608</componentId>
+		<resourceRoot>#dogtags:component/engraving/dedication/608</resourceRoot>
+		<viewType>engraving</viewType>
+		<purpose>DEDICATION</purpose>
+		<isExternalUnlockOnly>true</isExternalUnlockOnly>
+		<progressKey>stats_api.comp7Season2Wins</progressKey>
+		<grades>0 60 70 80 90 110 130 150 175 200</grades>
+		<isDefault>false</isDefault>
+		<battleTypes>43</battleTypes>
+		<glossaryName>COMP7_2023_1_WINS</glossaryName>
+	</component>
+	<component>
+		<componentId>609</componentId>
+		<resourceRoot>#dogtags:component/background/base/602</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_2023_1_SILVER</glossaryName>
+		<isSecret>true</isSecret>
+	</component>
+	<component>
+		<componentId>610</componentId>
+		<resourceRoot>#dogtags:component/background/base/603</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_2023_1_GOLD</glossaryName>
+		<isSecret>true</isSecret>
+	</component>
+	<component>
+		<componentId>611</componentId>
+		<resourceRoot>#dogtags:component/background/base/604</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_2023_1_PLATINUM</glossaryName>
+		<isSecret>true</isSecret>
+	</component>
+	<component>
+		<componentId>612</componentId>
+		<resourceRoot>#dogtags:component/background/base/605</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_2023_1_DIAMOND</glossaryName>
+		<isSecret>true</isSecret>
+	</component>
+	<component>
+		<componentId>613</componentId>
+		<resourceRoot>#dogtags:component/background/base/606</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_2023_1_MAESTRO</glossaryName>
+		<isSecret>true</isSecret>
+	</component>
+	<component>
+		<componentId>614</componentId>
+		<resourceRoot>#dogtags:component/background/base/607</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_2023_1_ELITE</glossaryName>
+		<isSecret>true</isSecret>
 	</component>
 	<startingComponents>
 		<components>66 300</components>

@@ -6,8 +6,6 @@ package net.wg.gui.lobby.missions.data
    {
        
       
-      public var alias:String = "";
-      
       public var selected:Boolean = false;
       
       public var tooltip:String = "";

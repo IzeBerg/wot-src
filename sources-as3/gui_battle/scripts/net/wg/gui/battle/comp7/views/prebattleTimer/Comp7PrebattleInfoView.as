@@ -89,6 +89,7 @@ package net.wg.gui.battle.comp7.views.prebattleTimer
       private function onReadyBtnClickHandler(param1:Event) : void
       {
          dispatchEvent(new Comp7PrebattleInfoViewEvent(Comp7PrebattleInfoViewEvent.READY_BTN_CLICKED));
+         this.readyBtn.enabled = false;
       }
    }
 }

@@ -1,10 +1,10 @@
 package net.wg.gui.lobby.battleRoyale.widget.data
 {
-   import flash.display.MovieClip;
    import flash.events.Event;
    import flash.events.MouseEvent;
    import net.wg.data.constants.SoundManagerStates;
    import net.wg.data.constants.SoundTypes;
+   import net.wg.data.constants.generated.HANGAR_ALIASES;
    import net.wg.gui.lobby.hangar.alertMessage.AlertMessageBlock;
    import net.wg.gui.lobby.hangar.quests.IHeaderFlagsEntryPoint;
    import net.wg.infrastructure.base.meta.IBattleRoyaleHangarWidgetMeta;
@@ -26,14 +26,12 @@ package net.wg.gui.lobby.battleRoyale.widget.data
       
       private static const MARGIN_LEFT_SMALL:int = 7;
       
-      private static const HIT_AREA_PADDING_Y:int = 5;
+      private static const CONTENT_TOP_PADDING:int = -2;
       
       private static const OUT_LABEL:String = "out";
       
       private static const OVER_LABEL:String = "over";
        
-      
-      public var hit:MovieClip = null;
       
       public var calendarStatus:AlertMessageBlock = null;
       
@@ -51,6 +49,73 @@ package net.wg.gui.lobby.battleRoyale.widget.data
       {
          this._toolTipMgr = App.toolTipMgr;
          super();
+      }
+      
+      override protected function configUI() : void
+      {
+         super.configUI();
+         App.stageSizeMgr.register(this);
+         this.content.addEventListener(Event.RESIZE,this.onContentResizeHandler);
+         this.content.addEventListener(Event.ACTIVATE,this.onContentActivateHandler);
+         this.calendarStatus.x = -this.calendarStatus.width >> 1;
+         registerFlashComponent(this.content,HANGAR_ALIASES.BATTLE_ROYALE_HANGAR_WIDGET);
+      }
+      
+      override protected function setData(param1:BattleRoyaleHangarWidgetVO) : void
+      {
+         this._data = param1;
+         this._tooltipId = param1.tooltipId;
+         this.content.y = !!this._data.showAlert ? Number(ALERT_BG_Y_OFFSET) : Number(BG_NORMAL_Y_OFFSET + CONTENT_TOP_PADDING);
+         invalidateData();
+      }
+      
+      override protected function draw() : void
+      {
+         var _loc1_:Boolean = false;
+         super.draw();
+         if(this._data && isInvalid(InvalidationType.DATA))
+         {
+            _loc1_ = this.calendarStatus.visible != this._data.showAlert;
+            this.calendarStatus.visible = this._data.showAlert;
+            this.calendarStatus.setLocalData(this._data.calendarStatus);
+            this.calendarStatus.btnClickHandler = onChangeServerClickS;
+            this.content.setIsProgressionFinished(this._data.isProgressionFinished);
+            if(_loc1_)
+            {
+               dispatchEvent(new Event(Event.RESIZE));
+            }
+         }
+      }
+      
+      override protected function onDispose() : void
+      {
+         stop();
+         App.stageSizeMgr.unregister(this);
+         this.content.removeEventListener(Event.RESIZE,this.onContentResizeHandler);
+         this.content.removeEventListener(Event.ACTIVATE,this.onContentActivateHandler);
+         if(this.content.hitObject)
+         {
+            this.content.hitObject.removeEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
+            this.content.hitObject.removeEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
+            this.content.hitObject.removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
+         }
+         this.content = null;
+         this.calendarStatus.dispose();
+         this.calendarStatus = null;
+         if(isFlashComponentRegisteredS(HANGAR_ALIASES.BATTLE_ROYALE_HANGAR_WIDGET))
+         {
+            unregisterFlashComponent(HANGAR_ALIASES.BATTLE_ROYALE_HANGAR_WIDGET);
+         }
+         this._toolTipMgr = null;
+         this._data = null;
+         super.onDispose();
+      }
+      
+      public function setStateSizeBoundaries(param1:int, param2:int) : void
+      {
+         this._isCompactLayout = param2 < StageSizeBoundaries.HEIGHT_900;
+         this.content.isSmall = this._isCompactLayout;
+         invalidateLayout();
       }
       
       override public function get width() : Number
@@ -75,83 +140,17 @@ package net.wg.gui.lobby.battleRoyale.widget.data
       
       public function get marginTop() : int
       {
-         return this.hit.y;
+         return this.content.y;
       }
       
-      public function setStateSizeBoundaries(param1:int, param2:int) : void
+      private function onContentActivateHandler(param1:Event) : void
       {
-         this._isCompactLayout = param2 < StageSizeBoundaries.HEIGHT_900;
-         invalidateLayout();
-      }
-      
-      override protected function configUI() : void
-      {
-         super.configUI();
-         App.stageSizeMgr.register(this);
-         this.hit.buttonMode = this.hit.useHandCursor = true;
-         this.hit.addEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
-         this.hit.addEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
-         this.hit.addEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
-         this.calendarStatus.x = -this.calendarStatus.width >> 1;
-         this.content.addEventListener(Event.RESIZE,this.onContentResizeHandler);
-      }
-      
-      override protected function setData(param1:BattleRoyaleHangarWidgetVO) : void
-      {
-         this._data = param1;
-         this._tooltipId = param1.tooltipId;
-         this.hit.y = !!this._data.showAlert ? Number(ALERT_BG_Y_OFFSET) : Number(BG_NORMAL_Y_OFFSET);
-         this.content.yOffset = this.hit.y;
-         invalidateData();
-      }
-      
-      override protected function draw() : void
-      {
-         var _loc1_:Boolean = false;
-         super.draw();
-         if(isInvalid(InvalidationType.DATA))
+         if(this.content.hitObject)
          {
-            if(this._data)
-            {
-               _loc1_ = this.calendarStatus.visible != this._data.showAlert;
-               this.calendarStatus.visible = this._data.showAlert;
-               this.calendarStatus.setLocalData(this._data.calendarStatus);
-               this.calendarStatus.btnClickHandler = onChangeServerClickS;
-               if(_loc1_)
-               {
-                  dispatchEvent(new Event(Event.RESIZE));
-               }
-               if(this._data.isModeAvailable)
-               {
-                  this.content.setIcon(!!this._isCompactLayout ? RES_ICONS.MAPS_ICONS_BATTLEROYALE_HANGAR_WIDGET_SH_WIDGET_ACTIVE_130X130 : RES_ICONS.MAPS_ICONS_BATTLEROYALE_HANGAR_WIDGET_SH_WIDGET_ACTIVE_150X150);
-               }
-               else
-               {
-                  this.content.setIcon(!!this._isCompactLayout ? RES_ICONS.MAPS_ICONS_BATTLEROYALE_HANGAR_WIDGET_SH_WIDGET_PASSIVE_130X130 : RES_ICONS.MAPS_ICONS_BATTLEROYALE_HANGAR_WIDGET_SH_WIDGET_PASSIVE_150X150);
-               }
-            }
-            else
-            {
-               this.content.setIcon(!!this._isCompactLayout ? RES_ICONS.MAPS_ICONS_BATTLEROYALE_HANGAR_WIDGET_SH_WIDGET_PASSIVE_130X130 : RES_ICONS.MAPS_ICONS_BATTLEROYALE_HANGAR_WIDGET_SH_WIDGET_PASSIVE_150X150);
-            }
+            this.content.hitObject.addEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
+            this.content.hitObject.addEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
+            this.content.hitObject.addEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          }
-      }
-      
-      override protected function onDispose() : void
-      {
-         App.stageSizeMgr.unregister(this);
-         this.hit.removeEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
-         this.hit.removeEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
-         this.hit.removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
-         this.hit = null;
-         this.calendarStatus.dispose();
-         this.calendarStatus = null;
-         this.content.removeEventListener(Event.RESIZE,this.onContentResizeHandler);
-         this.content.dispose();
-         this.content = null;
-         this._toolTipMgr = null;
-         this._data = null;
-         super.onDispose();
       }
       
       private function onMouseRollOutHandler(param1:MouseEvent) : void
@@ -180,9 +179,7 @@ package net.wg.gui.lobby.battleRoyale.widget.data
       
       private function onContentResizeHandler(param1:Event) : void
       {
-         this.hit.width = this.content.width;
-         this.hit.height = this.content.height + HIT_AREA_PADDING_Y;
-         this.hit.x = this.content.x + this.content.icon.x;
+         this.content.x = -this.content.width >> 1;
          dispatchEvent(new Event(Event.RESIZE));
       }
    }

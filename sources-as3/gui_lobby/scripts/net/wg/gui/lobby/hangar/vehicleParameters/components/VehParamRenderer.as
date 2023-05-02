@@ -4,6 +4,7 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
    import flash.display.Sprite;
    import flash.events.MouseEvent;
    import flash.text.TextField;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.HANGAR_ALIASES;
    import net.wg.gui.components.advanced.StatusDeltaIndicatorAnim;
    import net.wg.gui.components.controls.Image;
@@ -36,7 +37,7 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
       
       private static const ROTATION_90:int = 90;
       
-      private static const BUFF_ICON_PADDING:int = -17;
+      private static const BUFF_ICON_PADDING:int = -21;
       
       private static const LINE_SEPARATOR_WIDTH:int = 260;
       
@@ -49,6 +50,8 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
       private static const MAX_HIT_VALUE_OVERLAY:int = 80;
       
       private static const ADVANCED_VALUE_TF_X:int = 5;
+      
+      private static const MAX_LINES:uint = 2;
        
       
       public var valueTF:TextField = null;
@@ -169,10 +172,9 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
                if(this.buffIcon.visible)
                {
                   this.buffIcon.source = this._model.buffIconSrc;
-                  this.buffIcon.x = this.valueTF.x + this.valueTF.width - this.valueTF.textWidth + BUFF_ICON_PADDING;
+                  this.buffIcon.x = Math.round(this.valueTF.x + this.valueTF.width - this.valueTF.textWidth + BUFF_ICON_PADDING);
                }
-               this.titleTF.visible = true;
-               this.valueTF.visible = true;
+               this.titleTF.visible = this.valueTF.visible = true;
                this.arrow.visible = true;
             }
             else if(this._model.state == HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_SIMPLE_BOTTOM)
@@ -190,10 +192,9 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
                {
                   this.icon.source = this._model.iconSource;
                }
-               mouseChildren = true;
-               this.titleTF.visible = true;
-               this.valueTF.visible = true;
+               this.titleTF.visible = this.valueTF.visible = true;
                this.buffIcon.visible = false;
+               mouseChildren = true;
             }
             else if(this._model.state == HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_EXTRA)
             {
@@ -211,13 +212,13 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
                   this.titleTF.width = TITLE_EXTRA_WIDTH;
                   this.titleTF.x = EXTRA_TITLE_TF_X;
                }
+               App.utils.commons.truncateHtmlTextMultiline(this.titleTF,this._model.titleText,MAX_LINES,Values.THREE_DOTS);
                this.titleTF.height = Math.max(RENDERER_HEIGHT,this.titleTF.textHeight + EXTRA_TITLE_TEXT_HEIGHT);
                this.valueTF.x = ADVANCED_VALUE_TF_X;
                height = this.titleTF.height;
                this.hitMC.height = height;
+               this.titleTF.visible = this.valueTF.visible = true;
                mouseChildren = true;
-               this.titleTF.visible = true;
-               this.valueTF.visible = true;
             }
             else if(this._model.state == HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_LINE_SEPARATOR && this.separator)
             {
@@ -225,6 +226,10 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
                this.separator.x = LINE_SEPARATOR_X;
                this.separator.y = LINE_SEPARATOR_Y;
                this.separator.width = LINE_SEPARATOR_WIDTH;
+            }
+            else if(this._model.state == HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_SEPARATOR)
+            {
+               mouseChildren = mouseEnabled = false;
             }
             if(this._model.state != HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_ADVANCED)
             {
@@ -240,7 +245,7 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
       
       protected function onShowTooltip() : void
       {
-         this._tooltipMgr.showSpecial(this._tooltip,null,this._model.paramID);
+         this._tooltipMgr.showWulfTooltip(this._tooltip,this._model.paramID);
       }
       
       protected function onHideTooltip() : void

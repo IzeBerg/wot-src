@@ -10,6 +10,8 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.utils
       
       public static const DEMOUNT_KIT:String = "demountKit";
       
+      public static const WOT_PLUS:String = "wotPlusVSD";
+      
       public static const EMPTY_STR:String = "";
       
       public static const PLUS_STR:String = "+";
@@ -32,6 +34,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.utils
             _iconsByCurrency[CURRENCIES_CONSTANTS.CRYSTAL] = RES_ICONS.MAPS_ICONS_LIBRARY_CRYSTAL_16X16;
             _iconsByCurrency[CURRENCIES_CONSTANTS.EQUIP_COIN] = RES_ICONS.MAPS_ICONS_LIBRARY_EQUIPCOIN_1;
             _iconsByCurrency[DEMOUNT_KIT] = RES_ICONS.MAPS_ICONS_DEMOUNTKIT_COMMON_16X16;
+            _iconsByCurrency[WOT_PLUS] = RES_ICONS.MAPS_ICONS_LIBRARY_WOTPLUS_16X16;
          }
          if(_iconsByCurrency.hasOwnProperty(param1))
          {
@@ -45,6 +48,10 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.utils
          if(param2 == CURRENCIES_CONSTANTS.CREDITS)
          {
             return (param1 > 0 ? PLUS_STR : EMPTY_STR) + App.utils.locale.integer(param1);
+         }
+         if(param2 == WOT_PLUS)
+         {
+            return EMPTY_STR;
          }
          return (param1 > 0 ? PLUS_STR : EMPTY_STR) + App.utils.locale.gold(param1);
       }

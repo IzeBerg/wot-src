@@ -603,9 +603,9 @@ msgstr "没有招募"
 
 msgid "barracks/noRecoveryTankmen/message"
 msgstr ""
-"仅显示至少有一个技能熟练度达到100%%或拥有相应经验值的被解雇乘员。您可以恢复在%(totalDays)s天内解雇的乘员：\n"
-"• 免费-被解雇的%(freeDays)s天内\n"
-"• 花费%(price)s-被解雇的%(paidDays)s天内"
+"仅显示拥有足以将至少一项特长训练至100%%的经验(或已训练完成至少一项特长)的乘员。您可以在乘员被解雇的%(totalDays)s天内将其恢复:\n"
+"• 免费—被解雇的%(freeDays)s天内\n"
+"• 花费%(price)s—被解雇的%(paidDays)s天内。"
 
 msgid "barracks/noRecoveryTankmen/title"
 msgstr "无解雇的乘员"
@@ -1208,7 +1208,7 @@ msgid "contextMenu/personalCase/stats/secondInfo"
 msgstr "除此之外，精英坦克的乘员训练可以加速。"
 
 msgid "contextMenu/personalCase/stats/wotPlus"
-msgstr "使用高强度乘员训练时，您无需将乘员投入战斗也可以训练乘员"
+msgstr "使用高强度乘员训练时，您无需将乘员投入战斗也可以训练乘员。"
 
 msgid "contextMenu/personalCase/statsBlockTitle"
 msgstr "金币坦克"
@@ -1687,6 +1687,9 @@ msgstr "准备完毕！"
 msgid "currentVehicleStatus/serverRestriction"
 msgstr "服务器限制"
 
+msgid "currentVehicleStatus/subscription_suspended"
+msgstr "坦克世界Plus订阅已暂停"
+
 msgid "currentVehicleStatus/tooHeavy"
 msgstr "坦克超载"
 
@@ -2080,6 +2083,15 @@ msgstr "%(paramName)s加成"
 msgid "extraParams/multiDesc"
 msgstr "总计加成以乘法叠加计算得出，可能与所显示的数值有所不同。"
 
+msgid "extraParams/name/artNotificationDelayFactor"
+msgstr "该参数表示从自行火炮开火到收到警告的时间。"
+
+msgid "extraParams/name/circularVisionRadiusWhileSurveyingDeviceDamaged"
+msgstr "该参数表示观察设备被击毁后的最大观察范围。数值越高越好。"
+
+msgid "extraParams/name/commanderHitChance"
+msgstr "该参数表示车长免于受伤的几率。"
+
 msgid "extraParams/name/crewHitChance"
 msgstr "该参数表示车组乘员免于受伤的几率。"
 
@@ -2089,8 +2101,17 @@ msgstr "该参数表示已受弹震效果影响的坦克被再次弹震的时长
 msgid "extraParams/name/crewStunDuration"
 msgstr "该参数表示受到弹震效果的时长。"
 
+msgid "extraParams/name/damageAndPiercingDistributionLowerBound"
+msgstr "该参数表示相较于基础数值(-25%)，潜在损伤和潜在穿透力浮动范围下限的变化。"
+
+msgid "extraParams/name/damageAndPiercingDistributionUpperBound"
+msgstr "该参数表示相较于基础数值(+25%)，潜在损伤和潜在穿透力浮动范围上限的变化。"
+
 msgid "extraParams/name/damageEnemiesByRamming"
-msgstr "此参数代表撞击敌人造成的损伤。"
+msgstr "该参数表示撞击造成的损伤。坦克相撞时，系统会考虑撞击处双方的装甲厚度、坦克重量之差及速度。"
+
+msgid "extraParams/name/damagedModulesDetectionTime"
+msgstr "该参数表示车长在准星内识别敌方坦克何处严重受损之前的延迟时间。"
 
 msgid "extraParams/name/demaskFoliageFactor"
 msgstr "该参数表示完全被植被(单个植被或是多个植被)遮挡的敌人的暴露系数。适用于静止和移动中的坦克。"
@@ -2098,14 +2119,41 @@ msgstr "该参数表示完全被植被(单个植被或是多个植被)遮挡的�
 msgid "extraParams/name/demaskMovingFactor"
 msgstr "该参数表示敌方坦克在移动时的暴露系数。此数值越高，点亮敌人的几率也就越高。"
 
+msgid "extraParams/name/enemyModulesCrewCritChance"
+msgstr "该参数表示击伤敌方乘员和严重损伤敌方内部模块的几率变化。仅适用于AP、APCR和HEAT炮弹。"
+
+msgid "extraParams/name/equipmentPreparationTime"
+msgstr "该参数表示给养的冷却时间。"
+
+msgid "extraParams/name/fireExtinguishingRate"
+msgstr "该参数决定减少起火持续时间及起火造成损伤的能力。"
+
+msgid "extraParams/name/foliageMaskingFactor"
+msgstr "该参数表示在植被后方的隐蔽效果。"
+
+msgid "extraParams/name/radiomanActivityTimeAfterVehicleDestroy"
+msgstr "该参数表示坦克被击毁后敌方位置的额外报告时间。"
+
+msgid "extraParams/name/radiomanHitChance"
+msgstr "该参数表示通信兵免于受伤的几率。"
+
+msgid "extraParams/name/stunResistanceEffectFactor"
+msgstr "该参数表示乘员被弹震时的负面效果程度。"
+
 msgid "extraParams/name/vehPenaltyForDamageEngineAndCombat"
 msgstr "该参数表示损坏弹药架对装填时间的影响，以及损坏发动机对机动性的影响(默认x2)"
+
+msgid "extraParams/name/vehicleAllyRadioDistance"
+msgstr "该参数表示与盟友分享小地图上所有坦克位置信息的范围。"
 
 msgid "extraParams/name/vehicleAmmoBayEngineFuelStrength"
 msgstr "该参数表示弹药架、油箱、发动机的耐久度。数值越高，这些模块的耐久度也就越高"
 
 msgid "extraParams/name/vehicleAmmoBayStrength"
-msgstr "该参数表示弹药架的耐久度。数值越高，弹药架的耐久度也就越高。"
+msgstr "该参数表示弹药架的耐久度。数值越高，其耐久度也就越高。"
+
+msgid "extraParams/name/vehicleAverageSoilResistance"
+msgstr "该参数表示悬挂装置在中度松软地形上的越野能力。数值越高，达到最高速度的时间越短。"
 
 msgid "extraParams/name/vehicleChassisFallDamage"
 msgstr "该参数表示悬挂装置造成的坠落损伤。它不会影响坠落时对炮塔侧面或顶部造成的损伤。"
@@ -2120,7 +2168,10 @@ msgid "extraParams/name/vehicleEnemySpottingTime"
 msgstr "该参数表示敌方坦克在离开您的可视范围后的可见时长。默认值为10秒。"
 
 msgid "extraParams/name/vehicleFireChance"
-msgstr "该参数表示发动机着火的概率。发动机每次受到损伤时都有概率着火(除了来自最小口径炮弹的损伤)。"
+msgstr "该参数表示发动机受损时的起火几率。"
+
+msgid "extraParams/name/vehicleFuelTankLesionChance"
+msgstr "该参数表示严重损伤对油箱耐久度的影响。被击毁后，油箱一定会起火。"
 
 msgid "extraParams/name/vehicleGunShotDispersion"
 msgstr "该参数表示移动、旋转、炮塔旋转对火炮精准度的影响。数值越低，瞄准圈扩散也就越少。"
@@ -2129,7 +2180,7 @@ msgid "extraParams/name/vehicleGunShotDispersionAfterShot"
 msgstr "此参数代表射击后瞄准圈的大小。"
 
 msgid "extraParams/name/vehicleGunShotDispersionChassisMovement"
-msgstr "此参数代表移动时的炮弹散布范围。"
+msgstr "该参数表示移动中的炮弹散布范围。数值越低，火炮越准。"
 
 msgid "extraParams/name/vehicleGunShotDispersionChassisRotation"
 msgstr "此参数代表车体旋转时的炮弹散布范围。"
@@ -2138,28 +2189,40 @@ msgid "extraParams/name/vehicleGunShotDispersionTurretRotation"
 msgstr "此参数代表火炮旋转时的炮弹散布范围。"
 
 msgid "extraParams/name/vehicleGunShotDispersionWhileGunDamaged"
-msgstr "此参数代表火炮受损时的炮弹散布范围。"
+msgstr "该参数表示受损火炮的炮弹散布范围。数值越高，炮弹散布范围越低。"
 
 msgid "extraParams/name/vehicleInvisibilityAfterShot"
 msgstr "此参数代表射击后的隐蔽值。"
 
 msgid "extraParams/name/vehicleOwnSpottingTime"
-msgstr "该参数表示您的坦克在离开敌方可视范围后的可见时长。默认值为10秒。"
+msgstr "该参数表示自身坦克在离开敌方观察范围后的可见时长。默认值为10秒。"
+
+msgid "extraParams/name/vehicleRamChassisDamageResistance"
+msgstr "该参数表示悬挂装置受到的撞击损伤。坦克相撞时，系统会考虑撞击处双方的装甲厚度、坦克重量之差及速度。"
 
 msgid "extraParams/name/vehicleRamDamageResistance"
-msgstr "此参数代表撞击时，您的坦克承受的损伤。"
+msgstr "该参数表示坦克受到的撞击损伤。坦克相撞时，系统会考虑撞击处双方的装甲厚度、坦克重量之差及速度。"
 
 msgid "extraParams/name/vehicleRamOrExplosionDamageResistance"
 msgstr "该参数表示因高爆弹和撞击受到的损伤。发生冲击的装甲位置越高，减伤效果越好。"
 
 msgid "extraParams/name/vehicleReloadTimeAfterShellChange"
-msgstr "该参数表示装填完成后切换至另一个炮弹种类的装填时间。"
+msgstr "该参数表示已装填炮弹类型的切换速度。"
 
 msgid "extraParams/name/vehicleRepairSpeed"
-msgstr "该参数表示内部和外部模块的维修速度。数值越高，维修速度越快。"
+msgstr "该参数表示把内部和外部模块从\"红色\"状态维修至\"黄色\"状态的速度。数值越高，维修越快。"
 
 msgid "extraParams/name/vehicleSpeedGain"
 msgstr "该参数表示悬挂装置的越野能力。数值越高，抵达最高速度的时间也就越短。"
+
+msgid "extraParams/name/vehicleWeakSoilResistance"
+msgstr "该参数表示悬挂装置在松软地形上的越野能力。数值越高，达到最高速度的时间越短。"
+
+msgid "extraParams/name/wheelsRotationSpeed"
+msgstr "该参数表示轮式战车的转弯速度。"
+
+msgid "extraParams/name/woundedCrewEfficiency"
+msgstr "该参数表示乘员(车长除外)受伤时，对主要专业的惩罚的减少。"
 
 msgid "finalStatistic/commonStats/resultlabel/ended"
 msgstr "战斗已结束"
@@ -2913,6 +2976,9 @@ msgstr "同其它队伍进行战斗。"
 msgid "headerButtons/battle/types/unitLeave"
 msgstr "团队战模式"
 
+msgid "headerButtons/battle/types/winback"
+msgstr "标准模式:热身"
+
 msgid "headerButtons/browser"
 msgstr "热点"
 
@@ -3598,6 +3664,9 @@ msgstr "街机模式"
 msgid "loading/battleTypes/30"
 msgstr "天梯战"
 
+msgid "loading/battleTypes/31"
+msgstr "热身模式"
+
 msgid "loading/battleTypes/4"
 msgstr "新手教学"
 
@@ -3683,6 +3752,9 @@ msgid "loading/battleTypes/desc/29"
 msgstr " "
 
 msgid "loading/battleTypes/desc/30"
+msgstr " "
+
+msgid "loading/battleTypes/desc/31"
 msgstr " "
 
 msgid "loading/battleTypes/desc/4"
@@ -3999,9 +4071,6 @@ msgstr "昵称必须至少包含%(count)d个字符"
 msgid "login/status/invalid_nickname"
 msgstr "昵称必须仅包含拉丁字母、数字以及下划线。"
 
-msgid "login/status/invalid_password"
-msgstr "密码必须至少%(minLength)d-%(maxLength)d个字符，并只包含拉丁字母、数字和 '_'。"
-
 msgid "login/status/launchernotfound"
 msgstr "文件WOTLauncher.exe未找到。请重启应用程序。"
 
@@ -4229,7 +4298,7 @@ msgid "moduleInfo/params/cooldownSeconds"
 msgstr "冷却时间"
 
 msgid "moduleInfo/params/crewRolesFactor"
-msgstr "主要专业及乘员技能"
+msgstr "主要专业和乘员特长"
 
 msgid "moduleInfo/params/damage"
 msgstr "损伤"
@@ -4909,13 +4978,13 @@ msgid "profile/stats/items/nextSkillBattlesLeft"
 msgstr "剩余战斗次数(估算)"
 
 msgid "profile/stats/items/nextSkillXPLeft"
-msgstr "升级技能所需经验"
+msgstr "提升特长所需经验"
 
 msgid "profile/stats/items/ready"
-msgstr "技能已可用。"
+msgstr "特长已可用。"
 
 msgid "profile/stats/items/readyToLearn"
-msgstr "可学习新技能/特长"
+msgstr "可训练的特长:"
 
 msgid "profile/stats/items/scout"
 msgstr "尖兵:"
@@ -4933,7 +5002,7 @@ msgid "profile/stats/items/survivedBattles"
 msgstr "幸存"
 
 msgid "profile/stats/items/timeUntilNextLevel"
-msgstr "剩余时间（高强度乘员训练）"
+msgstr "剩余时间(高强度乘员训练)"
 
 msgid "profile/stats/items/unknown"
 msgstr "未知"
@@ -5584,10 +5653,10 @@ msgid "skillDropWindow/direction"
 msgstr "再训练命令"
 
 msgid "skillDropWindow/freeDropLabel"
-msgstr "技能和特性升级到%(percent)s能被免费重置。"
+msgstr "熟练度低%(percent)s的特长可免费重置。"
 
 msgid "skillDropWindow/freeDropPercent"
-msgstr "到1%"
+msgstr "于1%"
 
 msgid "skillDropWindow/inStorage"
 msgstr "仓库中:"
@@ -5608,7 +5677,7 @@ msgid "skillDropWindow/study/scool"
 msgstr "高"
 
 msgid "skillDropWindow/title"
-msgstr "重置技能和特长"
+msgstr "重置特长"
 
 msgid "skillDropWindow/tooltip/visibleDisabled"
 msgstr "由于技术原因暂时无法使用。"
@@ -5886,6 +5955,9 @@ msgstr "可用的战斗:%(battlesLeft)s"
 
 msgid "tankCarousel/vehicleStates/serverRestriction"
 msgstr "服务器限制"
+
+msgid "tankCarousel/vehicleStates/subscription_suspended"
+msgstr "已暂停"
 
 msgid "tankCarousel/vehicleStates/tooHeavy"
 msgstr "坦克超载"
@@ -6293,16 +6365,16 @@ msgid "tankmanPersonalCase/modifiers/fromEquipment"
 msgstr "配件和给养"
 
 msgid "tankmanPersonalCase/modifiers/fromSkills"
-msgstr "技能和特长"
+msgstr "特长"
 
 msgid "tankmanPersonalCase/modifiers/penalty"
 msgstr "不符合专精"
 
 msgid "tankmanPersonalCase/modifiersHeader"
-msgstr "附加技能:"
+msgstr "加成:"
 
 msgid "tankmanPersonalCase/modifiersResult"
-msgstr "最后等级:"
+msgstr "最终数值:"
 
 msgid "tankmanPersonalCase/name"
 msgstr "姓名:"
@@ -6330,14 +6402,17 @@ msgstr "训练只提高乘员的主要专业。"
 msgid "tankmanPersonalCase/retrainingWarning2"
 msgstr "使用金币进行再训练不会降低主要专业的等级。"
 
+msgid "tankmanPersonalCase/situationalDesc"
+msgstr "当满足战斗中的特定条件时，触发式特长便会激活。"
+
 msgid "tankmanPersonalCase/skillsButton/additionText"
-msgstr "(乘员的主要专业熟练度达到100%后可进行技能的训练)"
+msgstr "(乘员的主要专业水平达到100%后可进行训练)"
 
 msgid "tankmanPersonalCase/skillsButton/mainText"
-msgstr "查看所有技能和特长"
+msgstr "查看所有特长"
 
 msgid "tankmanPersonalCase/skillsDesc"
-msgstr "(乘员的主要专业熟练度达到100%后可进行技能的训练)"
+msgstr "(乘员的主要专业水平达到100%后可进行训练)"
 
 msgid "tankmanPersonalCase/specialization"
 msgstr "专精:"
@@ -6352,7 +6427,7 @@ msgid "tankmanPersonalCase/tabFreeSkills"
 msgstr "零历练特长"
 
 msgid "tankmanPersonalCase/tabSkills"
-msgstr "附加技能"
+msgstr "特长"
 
 msgid "tankmanPersonalCase/tabTraining"
 msgstr "训练"
@@ -6460,7 +6535,7 @@ msgid "tankmen/mediumTank"
 msgstr "中型坦克"
 
 msgid "tankmsnPersonalCase/lackOfSkillsForLearn"
-msgstr "乘员已学习了该坦克所有的额外技能和特性。"
+msgstr "乘员已为该坦克训练了所有的附加特长。"
 
 msgid "tankmsnPersonalCase/loadingInfo"
 msgstr "正加载信息中…请稍等..."
@@ -6478,7 +6553,7 @@ msgid "teachingSkill/cost"
 msgstr "训练花费"
 
 msgid "teachingSkill/freeXpIsTight"
-msgstr "全局经验不足无法学习技能与特长。请兑换全局经验。"
+msgstr "全局经验不足，无法训练特长。请将战斗经验兑换成全局经验。"
 
 msgid "teachingSkill/submit"
 msgstr "训  练"

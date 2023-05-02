@@ -48,6 +48,8 @@ from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
 from tutorial.control.context import GLOBAL_FLAG
+from uilogging.shop.loggers import getPreviewUILoggers
+from uilogging.shop.logging_constants import ShopCloseItemStates
 from web.web_client_api.common import ItemPackEntry, ItemPackType, ItemPackTypeGroup
 VEHICLE_PREVIEW_ALIASES = (
  VIEW_ALIAS.VEHICLE_PREVIEW, VIEW_ALIAS.HERO_VEHICLE_PREVIEW, VIEW_ALIAS.OFFER_GIFT_VEHICLE_PREVIEW,
@@ -186,6 +188,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         if not self.__isHeroTank:
             self.__hangarSpace.removeVehicle()
         g_currentPreviewVehicle.selectHeroTank(self.__isHeroTank)
+        self.__uiMetricsLogger, self.__uiFlowLogger = getPreviewUILoggers(bool(self._itemsPack), str(self._vehicleCD), self.__buyParams)
         return
 
     def setTopPanel(self):
@@ -219,6 +222,9 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             event_dispatcher.showHangar()
         if not self._heroInteractive:
             self.__heroTanksControl.setInteractive(False)
+        if self._backAlias == VIEW_ALIAS.LOBBY_STORE:
+            self.__uiFlowLogger.logOpenPreview()
+            self.__uiMetricsLogger.onViewOpen()
         self.addListener(CameraRelatedEvents.CAMERA_ENTITY_UPDATED, self.handleSelectedEntityUpdated)
         specialData = getHeroTankPreviewParams() if self.__isHeroTank else None
         if specialData is not None and specialData.enterEvent:
@@ -260,9 +266,13 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         return
 
     def closeView(self):
+        if self._backAlias == VIEW_ALIAS.LOBBY_STORE:
+            self.__uiMetricsLogger.onViewClosed(ShopCloseItemStates.CLOSE_BUTTON.value)
         event_dispatcher.showHangar()
 
     def onBackClick(self):
+        if self._backAlias == VIEW_ALIAS.LOBBY_STORE:
+            self.__uiMetricsLogger.onViewClosed(ShopCloseItemStates.BACK_BUTTON.value)
         self._processBackClick()
 
     def onOpenInfoTab(self, index):
@@ -320,6 +330,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
                 viewPy.setPackItems(self._itemsPack, self._price, self._oldPrice, self._title)
                 viewPy.setTimerData(self.__endTime)
                 viewPy.setBuyParams(self.__buyParams)
+                viewPy.setBundlePreviewMetricsLogger(self.__uiMetricsLogger)
             elif self.__offers:
                 viewPy.setOffers(self.__offers, self._title, self.__description)
         elif alias == VEHPREVIEW_CONSTANTS.CREW_LINKAGE:

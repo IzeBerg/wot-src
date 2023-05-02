@@ -47,8 +47,11 @@ class _DogTagsRootSettings(utils.SettingRootRecord):
 
 class _WotPlusSettings(utils.SettingRootRecord):
 
-    def __init__(self, isWotPlusEnabled=False, isEntryPointsEnabled=False, isGoldReserveEnabled=False, isPassiveXpEnabled=False, isTankRentalEnabled=False, isFreeDirectivesEnabled=False, rentPendingVehCD=None):
-        super(_WotPlusSettings, self).__init__(isWotPlusEnabled=isWotPlusEnabled, isEntryPointsEnabled=isEntryPointsEnabled, isGoldReserveEnabled=isGoldReserveEnabled, isPassiveXpEnabled=isPassiveXpEnabled, isTankRentalEnabled=isTankRentalEnabled, isFreeDirectivesEnabled=isFreeDirectivesEnabled, rentPendingVehCD=rentPendingVehCD)
+    def __init__(self, isFirstTime=True, isWotPlusEnabled=False, isEntryPointsEnabled=False, isGoldReserveEnabled=False, isPassiveXpEnabled=False, isTankRentalEnabled=False, isFreeDirectivesEnabled=False, isFreeDemountingEnabled=False, isExcludedMapEnabled=False, rentPendingVehCD=None):
+        super(_WotPlusSettings, self).__init__(isFirstTime=isFirstTime, isWotPlusEnabled=isWotPlusEnabled, isEntryPointsEnabled=isEntryPointsEnabled, isGoldReserveEnabled=isGoldReserveEnabled, isPassiveXpEnabled=isPassiveXpEnabled, isTankRentalEnabled=isTankRentalEnabled, isFreeDirectivesEnabled=isFreeDirectivesEnabled, isFreeDemountingEnabled=isFreeDemountingEnabled, isExcludedMapEnabled=isExcludedMapEnabled, rentPendingVehCD=rentPendingVehCD)
+
+    def setIsFirstTime(self, isFirstTime):
+        self.update(isFirstTime=isFirstTime)
 
     def setWotPlusEnabledState(self, isEnabled):
         self.update(isWotPlusEnabled=isEnabled)
@@ -67,6 +70,12 @@ class _WotPlusSettings(utils.SettingRootRecord):
 
     def setFreeDirectivesState(self, isEnabled):
         self.update(isFreeDirectivesEnabled=isEnabled)
+
+    def setFreeDemountingState(self, isEnabled):
+        self.update(isFreeDemountingEnabled=isEnabled)
+
+    def setExcludedMapState(self, isEnabled):
+        self.update(isExcludedMapEnabled=isEnabled)
 
     def setRentPending(self, vehCD):
         self.update(rentPendingVehCD=vehCD)

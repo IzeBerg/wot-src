@@ -45,6 +45,8 @@ package net.wg.data.constants.generated
       
       public static const STUN:String = "stun";
       
+      public static const PERK:String = "perk";
+      
       public static const VEHICLE_RECOVERY:String = "vehicleRecovery";
       
       public static const ENEMY_SECTOR_CAPTURED:String = "enemySectorCaptured";

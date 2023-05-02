@@ -176,18 +176,11 @@ class BattleRoyaleRentVehiclesController(IBattleRoyaleRentVehiclesController):
             state = self.getRentState(intCD)
         if state == EquipmentPanelCmpRentStates.STATE_TEST_DRIVE_AVAILABLE:
             price = self.getTestDrivePrice(intCD)
+        elif state == EquipmentPanelCmpRentStates.STATE_RENT_AVAILABLE:
+            price = self.getRentPrice(intCD)
         else:
-            if state == EquipmentPanelCmpRentStates.STATE_RENT_AVAILABLE:
-                price = self.getRentPrice(intCD)
-            else:
-                return False
-            for currency in self.__balance.currencies:
-                currencyValue = price.get(currency)
-                if currencyValue is not None:
-                    if currencyValue > self.__balance.get(currency):
-                        return False
-
-        return True
+            return False
+        return not self.__balance.getShortage(price)
 
     @_defaultCurrentVehicle
     def purchaseRent(self, intCD=None):

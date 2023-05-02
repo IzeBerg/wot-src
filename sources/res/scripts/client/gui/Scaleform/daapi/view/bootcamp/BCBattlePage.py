@@ -45,6 +45,8 @@ class _BCComponentsConfig(ComponentsConfig):
            BATTLE_VIEW_ALIASES.BATTLE_END_WARNING_PANEL,
            self.BC_FINISH_SOUND_PLAYER)),
          (
+          BATTLE_CTRL_ID.PERKS, (BATTLE_VIEW_ALIASES.PERKS_PANEL,)),
+         (
           BATTLE_CTRL_ID.TEAM_BASES,
           (
            BATTLE_VIEW_ALIASES.TEAM_BASES_PANEL,
