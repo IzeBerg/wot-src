@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 import WWISE
 from PlayerEvents import g_playerEvents
 from account_helpers import AccountSettings
-from account_helpers.AccountSettings import INTEGRATED_AUCTION_NOTIFICATIONS, IS_BATTLE_PASS_EXTRA_STARTED, LOOT_BOXES_WAS_FINISHED, PROGRESSIVE_REWARD_VISITED, RESOURCE_WELL_END_SHOWN, RESOURCE_WELL_NOTIFICATIONS, RESOURCE_WELL_START_SHOWN, SENIORITY_AWARDS_COINS_REMINDER_SHOWN_TIMESTAMP
+from account_helpers.AccountSettings import COLLECTIONS_NOTIFICATIONS, INTEGRATED_AUCTION_NOTIFICATIONS, IS_BATTLE_PASS_EXTRA_STARTED, LOOT_BOXES_WAS_FINISHED, PROGRESSIVE_REWARD_VISITED, RESOURCE_WELL_END_SHOWN, RESOURCE_WELL_NOTIFICATIONS, RESOURCE_WELL_START_SHOWN, SENIORITY_AWARDS_COINS_REMINDER_SHOWN_TIMESTAMP
 from adisp import adisp_process
 from battle_pass_common import FinalReward
 from chat_shared import SYS_MESSAGE_TYPE
@@ -20,6 +20,7 @@ from gui.battle_pass.battle_pass_helpers import getStyleInfoForChapter
 from gui.clans.clan_account_profile import SYNC_KEYS
 from gui.clans.clan_helpers import ClanListener, isInClanEnterCooldown
 from gui.clans.settings import CLAN_APPLICATION_STATES
+from gui.collection.collections_constants import COLLECTION_START_EVENT_TYPE, COLLECTION_START_SEEN
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.lobby.premacc.premacc_helpers import PiggyBankConstants, getDeltaTimeHelper
@@ -48,10 +49,10 @@ from messenger.m_constants import PROTO_TYPE, SCH_CLIENT_MSG_TYPE, USER_ACTION_I
 from messenger.proto import proto_getter
 from messenger.proto.events import g_messengerEvents
 from messenger.proto.xmpp.xmpp_constants import XMPP_ITEM_TYPE
-from notification.decorators import BattlePassLockButtonDecorator, BattlePassSwitchChapterReminderDecorator, C11nMessageDecorator, C2DProgressionStyleDecorator, ClanAppActionDecorator, ClanAppsDecorator, ClanInvitesActionDecorator, ClanInvitesDecorator, ClanSingleAppDecorator, ClanSingleInviteDecorator, EmailConfirmationReminderMessageDecorator, EventLootBoxesDecorator, FriendshipRequestDecorator, IntegratedAuctionStageFinishDecorator, IntegratedAuctionStageStartDecorator, LockButtonMessageDecorator, MapboxButtonDecorator, MessageDecorator, MissingEventsDecorator, PrbInviteDecorator, ProgressiveRewardDecorator, RecruitReminderMessageDecorator, ResourceWellLockButtonDecorator, ResourceWellStartDecorator, SeniorityAwardsDecorator, WGNCPopUpDecorator
+from notification.decorators import BattlePassLockButtonDecorator, BattlePassSwitchChapterReminderDecorator, C11nMessageDecorator, C2DProgressionStyleDecorator, ClanAppActionDecorator, ClanAppsDecorator, ClanInvitesActionDecorator, ClanInvitesDecorator, ClanSingleAppDecorator, ClanSingleInviteDecorator, CollectionsLockButtonDecorator, EmailConfirmationReminderMessageDecorator, EventLootBoxesDecorator, FriendshipRequestDecorator, IntegratedAuctionStageFinishDecorator, IntegratedAuctionStageStartDecorator, LockButtonMessageDecorator, MapboxButtonDecorator, MessageDecorator, MissingEventsDecorator, PrbInviteDecorator, ProgressiveRewardDecorator, RecruitReminderMessageDecorator, ResourceWellLockButtonDecorator, ResourceWellStartDecorator, SeniorityAwardsDecorator, WGNCPopUpDecorator, WinbackSelectableRewardReminderDecorator
 from notification.settings import NOTIFICATION_TYPE, NotificationData
 from shared_utils import first
-from skeletons.gui.game_control import IBattlePassController, IBootcampController, IEventLootBoxesController, IEventsNotificationsController, IGameSessionController, IResourceWellController, ISeniorityAwardsController, ISteamCompletionController
+from skeletons.gui.game_control import IBattlePassController, IBootcampController, ICollectionsSystemController, IEventLootBoxesController, IEventsNotificationsController, IGameSessionController, IResourceWellController, ISeniorityAwardsController, ISteamCompletionController, IWinbackController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.lobby_context import ILobbyContext
@@ -299,6 +300,8 @@ class ServiceChannelListener(_NotificationListener):
                     return ResourceWellLockButtonDecorator
                 if messageType == SYS_MESSAGE_TYPE.customization2dProgressionChanged.index():
                     return C2DProgressionStyleDecorator
+                if messageType in (SYS_MESSAGE_TYPE.collectionsItems.index(), SYS_MESSAGE_TYPE.collectionsReward.index()):
+                    return CollectionsLockButtonDecorator
             return MessageDecorator
 
 
@@ -1851,13 +1854,118 @@ class EventLootBoxesListener(_NotificationListener, EventsHandler):
         SystemMessages.pushMessage(text=backport.text(R.strings.lootboxes.notification.lootBoxesIsDisabled.text()), priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.EventLootBoxDisabled, messageData={'title': backport.text(R.strings.lootboxes.notification.lootBoxesIsDisabled.title())})
 
 
+class CollectionsListener(_NotificationListener, EventsHandler):
+    __collections = dependency.descriptor(ICollectionsSystemController)
+    __eventNotifications = dependency.descriptor(IEventsNotificationsController)
+    __EVENT_TYPE_TO_SETTING = {COLLECTION_START_EVENT_TYPE: COLLECTION_START_SEEN}
+    __NOTIFICATIONS = R.strings.collections.notifications
+
+    def start(self, model):
+        result = super(CollectionsListener, self).start(model)
+        if result:
+            self._subscribe()
+            self.__tryNotify(self.__eventNotifications.getEventsNotifications())
+        return True
+
+    def stop(self):
+        self._unsubscribe()
+        super(CollectionsListener, self).stop()
+
+    def _getEvents(self):
+        return (
+         (
+          self.__eventNotifications.onEventNotificationsChanged, self.__onEventNotification),
+         (
+          self.__collections.onAvailabilityChanged, self.__onAvailabilityChanged))
+
+    def __onEventNotification(self, added, _):
+        self.__tryNotify(added)
+
+    def __onAvailabilityChanged(self, enabled):
+        (self.__pushEnabled if enabled else self.__pushDisabled)()
+
+    def __tryNotify(self, notifications):
+        for notification in notifications:
+            if notification.eventType == COLLECTION_START_EVENT_TYPE:
+                notificationData = json.loads(notification.data)
+                collectionID = int(notificationData['collectionId'])
+                collection = self.__collections.getCollection(collectionID)
+                if collection is None:
+                    continue
+                settings = AccountSettings.getNotifications(COLLECTIONS_NOTIFICATIONS)
+                settingName = self.__EVENT_TYPE_TO_SETTING[notification.eventType]
+                if self.__needPushStarted(settings, settingName, collectionID):
+                    self.__pushStarted(collection)
+                    self.__setStartPushed(settings, settingName, collectionID)
+
+        return
+
+    @staticmethod
+    def __needPushStarted(settings, settingName, collectionID):
+        settings = AccountSettings.getNotifications(COLLECTIONS_NOTIFICATIONS)
+        return collectionID not in settings[settingName]
+
+    @staticmethod
+    def __setStartPushed(settings, settingName, collectionID):
+        settings[settingName].append(collectionID)
+        AccountSettings.setNotifications(COLLECTIONS_NOTIFICATIONS, settings)
+
+    def __pushStarted(self, collection):
+        feature = backport.text(self.__NOTIFICATIONS.feature.dyn(collection.name)())
+        title = backport.text(self.__NOTIFICATIONS.eventStart.title(), feature=feature)
+        text = backport.text(self.__NOTIFICATIONS.eventStart.text(), feature=feature)
+        SystemMessages.pushMessage(text=text, priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.CollectionStart, messageData={'title': title}, savedData={'collectionId': collection.collectionId})
+
+    def __pushDisabled(self):
+        SystemMessages.pushMessage(text=backport.text(self.__NOTIFICATIONS.eventDisabled.text()), priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.CollectionsDisabled)
+
+    def __pushEnabled(self):
+        SystemMessages.pushMessage(text=backport.text(self.__NOTIFICATIONS.eventEnabled.text()), priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.CollectionsEnabled)
+
+
+class WinbackSelectableRewardReminder(BaseReminderListener):
+    __winbackController = dependency.descriptor(IWinbackController)
+    __itemsCache = dependency.descriptor(IItemsCache)
+    __ENTITY_ID = 0
+
+    def __init__(self):
+        super(WinbackSelectableRewardReminder, self).__init__(NOTIFICATION_TYPE.WINBACK_SELECTABLE_REWARD_AVAILABLE, self.__ENTITY_ID)
+
+    def start(self, model):
+        result = super(WinbackSelectableRewardReminder, self).start(model)
+        if result:
+            self.__addListeners()
+            self.__tryNotify()
+        return result
+
+    def stop(self):
+        self.__removeListeners()
+        super(WinbackSelectableRewardReminder, self).stop()
+
+    def _createDecorator(self, _):
+        return WinbackSelectableRewardReminderDecorator(self._getNotificationId())
+
+    def __addListeners(self):
+        self.__itemsCache.onSyncCompleted += self.__tryNotify
+        self.__winbackController.onStateUpdated += self.__tryNotify
+
+    def __removeListeners(self):
+        self.__itemsCache.onSyncCompleted -= self.__tryNotify
+        self.__winbackController.onStateUpdated -= self.__tryNotify
+
+    def __tryNotify(self, *_):
+        isAdding = self.__winbackController.hasWinbackOfferToken() and self.__winbackController.isFinished()
+        self._notifyOrRemove(isAdding)
+
+
 registerNotificationsListeners((
  ServiceChannelListener, MissingEventsListener, PrbInvitesListener, FriendshipRqsListener, _WGNCListenersContainer,
  ProgressiveRewardListener, SwitcherListener, TankPremiumListener,
  BattlePassListener, UpgradeTrophyDeviceListener, RecertificationFormStateListener, RecruitReminderListener,
  EmailConfirmationReminderListener, VehiclePostProgressionUnlockListener,
  BattlePassSwitchChapterReminder, ResourceWellListener, IntegratedAuctionListener,
- SeniorityAwardsQuestListener, SeniorityAwardsTokenListener, EventLootBoxesListener))
+ SeniorityAwardsQuestListener, SeniorityAwardsTokenListener, EventLootBoxesListener, CollectionsListener,
+ WinbackSelectableRewardReminder))
 
 class NotificationsListeners(_NotificationListener):
 

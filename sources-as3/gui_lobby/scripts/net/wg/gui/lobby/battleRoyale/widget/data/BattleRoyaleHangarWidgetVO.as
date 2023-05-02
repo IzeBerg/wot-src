@@ -11,7 +11,7 @@ package net.wg.gui.lobby.battleRoyale.widget.data
       
       public var calendarStatus:AlertMessageBlockVO = null;
       
-      public var isModeAvailable:Boolean = false;
+      public var isProgressionFinished:Boolean = false;
       
       public var tooltipId:String = "";
       

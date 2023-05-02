@@ -31,13 +31,9 @@ package net.wg.gui.components.popovers
       public static const GlowArrowTop_UI:String = "GlowArrowTop_UI";
       
       private static const TITLE_INVALID:String = "titleInv";
+      
+      private static const TITLE_Y_POSITION_INVALID:String = "titleYPositionInv";
        
-      
-      protected var _arrowDirection:int = -1;
-      
-      protected var _arrowPosition:int = 0;
-      
-      private var _title:String = "";
       
       public var titleTextField:TextField;
       
@@ -55,18 +51,24 @@ package net.wg.gui.components.popovers
       
       public var arrowBottom:MovieClip;
       
+      protected var _arrowDirection:int = -1;
+      
+      protected var _arrowPosition:int = 0;
+      
+      private var _title:String = "";
+      
+      private var _titleY:int = 0;
+      
+      private var _titleTextOffsetY:int = 0;
+      
       private var _isCloseBtnVisible:Boolean = false;
       
       public function PopOver()
       {
          super();
+         this._titleY = this.titleTextField.y;
          this.setArrowVisible(PopOverConst.ARROW_NONE);
          this.initLayout();
-      }
-      
-      protected function initLayout() : void
-      {
-         layout = new PopoverInternalLayout();
       }
       
       override protected function configUI() : void
@@ -77,6 +79,10 @@ package net.wg.gui.components.popovers
       
       override protected function draw() : void
       {
+         if(isInvalid(TITLE_Y_POSITION_INVALID))
+         {
+            this.titleTextField.y = this._titleY;
+         }
          super.draw();
          this.mouseEnabled = false;
          if(isInvalid(TITLE_INVALID))
@@ -107,9 +113,43 @@ package net.wg.gui.components.popovers
          }
       }
       
-      private function closeBtnClickHandler(param1:ButtonEvent) : void
+      override protected function onDispose() : void
       {
-         dispatchEvent(new ComponentEvent(ComponentEvent.HIDE));
+         this.titleTextField = null;
+         this.background = null;
+         this.hitMc = null;
+         this.arrowLeft = null;
+         this.arrowRight = null;
+         this.arrowTop = null;
+         this.arrowBottom = null;
+         this.closeBtn.removeEventListener(ButtonEvent.CLICK,this.closeBtnClickHandler);
+         this.closeBtn = null;
+         super.onDispose();
+      }
+      
+      public function getArrowsList() : Vector.<DisplayObject>
+      {
+         var _loc1_:Vector.<DisplayObject> = new Vector.<DisplayObject>(4);
+         _loc1_[PopOverConst.ARROW_RIGHT] = this.arrowRight;
+         _loc1_[PopOverConst.ARROW_TOP] = this.arrowTop;
+         _loc1_[PopOverConst.ARROW_BOTTOM] = this.arrowBottom;
+         _loc1_[PopOverConst.ARROW_LEFT] = this.arrowLeft;
+         return _loc1_;
+      }
+      
+      protected function initLayout() : void
+      {
+         layout = new PopoverInternalLayout();
+      }
+      
+      protected function applyArrowDirectionChanges() : void
+      {
+         this.setArrowVisible(this._arrowDirection);
+      }
+      
+      protected function applyArrowPositionChanges() : void
+      {
+         invalidateLayout();
       }
       
       private function setArrowVisible(param1:int) : void
@@ -131,24 +171,26 @@ package net.wg.gui.components.popovers
          addChild(this.closeBtn);
       }
       
-      protected function applyArrowDirectionChanges() : void
+      override public function get width() : Number
       {
-         this.setArrowVisible(this._arrowDirection);
+         return this.hitMc.width;
       }
       
-      protected function applyArrowPositionChanges() : void
+      override public function get height() : Number
       {
-         invalidateLayout();
+         return this.hitMc.height;
       }
       
-      public function getArrowsList() : Vector.<DisplayObject>
+      public function set titleTextOffsetY(param1:int) : void
       {
-         var _loc1_:Vector.<DisplayObject> = new Vector.<DisplayObject>(4);
-         _loc1_[PopOverConst.ARROW_RIGHT] = this.arrowRight;
-         _loc1_[PopOverConst.ARROW_TOP] = this.arrowTop;
-         _loc1_[PopOverConst.ARROW_BOTTOM] = this.arrowBottom;
-         _loc1_[PopOverConst.ARROW_LEFT] = this.arrowLeft;
-         return _loc1_;
+         if(this._titleTextOffsetY == param1)
+         {
+            return;
+         }
+         this._titleY -= this._titleTextOffsetY;
+         this._titleTextOffsetY = param1;
+         this._titleY += this._titleTextOffsetY;
+         invalidate(TITLE_Y_POSITION_INVALID);
       }
       
       public function get arrowDirection() : uint
@@ -190,33 +232,9 @@ package net.wg.gui.components.popovers
          invalidate(TITLE_INVALID);
       }
       
-      override public function get width() : Number
-      {
-         return this.hitMc.width;
-      }
-      
       public function get hitAreaTopLeftPaddings() : Point
       {
          return new Point(this.hitMc.x,this.hitMc.y);
-      }
-      
-      override public function get height() : Number
-      {
-         return this.hitMc.height;
-      }
-      
-      override protected function onDispose() : void
-      {
-         this.titleTextField = null;
-         this.background = null;
-         this.hitMc = null;
-         this.arrowLeft = null;
-         this.arrowRight = null;
-         this.arrowTop = null;
-         this.arrowBottom = null;
-         this.closeBtn.removeEventListener(ButtonEvent.CLICK,this.closeBtnClickHandler);
-         this.closeBtn = null;
-         super.onDispose();
       }
       
       public function get isCloseBtnVisible() : Boolean
@@ -231,6 +249,11 @@ package net.wg.gui.components.popovers
             this._isCloseBtnVisible = param1;
             invalidate(CLOSE_BTN_VISIBLE_INV,InvalidationType.LAYOUT);
          }
+      }
+      
+      private function closeBtnClickHandler(param1:ButtonEvent) : void
+      {
+         dispatchEvent(new ComponentEvent(ComponentEvent.HIDE));
       }
    }
 }

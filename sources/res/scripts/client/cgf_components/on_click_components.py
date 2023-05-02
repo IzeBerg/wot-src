@@ -1,7 +1,7 @@
 import logging, CGF, Event
 from GenericComponents import VSEComponent
 from adisp import adisp_process
-from cgf_script.component_meta_class import CGFComponent, CGFMetaTypes, ComponentProperty
+from cgf_script.component_meta_class import CGFMetaTypes, ComponentProperty, registerComponent
 from cgf_script.managers_registrator import autoregister, onAddedQuery, onRemovedQuery
 from constants import MarathonConfig, IS_CLIENT
 from helpers import dependency
@@ -14,16 +14,20 @@ if IS_CLIENT:
     from gui.shared.event_dispatcher import showBrowserOverlayView
 _logger = logging.getLogger(__name__)
 
-class OnClickComponent(CGFComponent):
+@registerComponent
+class OnClickComponent(object):
     editorTitle = 'OnClick'
     category = 'Common'
+    domain = CGF.DomainOption.DomainClient
 
     def __init__(self):
         super(OnClickComponent, self).__init__()
         self.onClickAction = Event.Event()
 
 
-class OpenBrowserOnClickComponent(CGFComponent):
+@registerComponent
+class OpenBrowserOnClickComponent(object):
+    domain = CGF.DomainOption.DomainClient
     urlProvider = ComponentProperty(type=CGFMetaTypes.STRING, editorName='url provider', value='MARATHON_VIDEO_URL_PROVIDER')
 
     def __init__(self):

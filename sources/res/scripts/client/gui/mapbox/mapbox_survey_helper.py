@@ -1,5 +1,6 @@
 from enum import Enum
 import logging, json, typing
+from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.mapbox.map_box_question_model import QuestionType
 from gui.shared.utils.functions import replaceHyphenToUnderscore
@@ -19,18 +20,20 @@ class QuantifierTypes(Enum):
 
 
 class Condition(object):
-    __slots__ = ('__requiredQuestionId', '__requiredAnswers', '__quantifier', '__isRequiredAnswer')
+    __slots__ = ('__requiredQuestionId', '__requiredAnswers', '__requiredOptionId',
+                 '__quantifier', '__isRequiredAnswer')
     __mapboxCtrl = dependency.descriptor(IMapboxController)
 
-    def __init__(self, requiredQuestionId, requiredAnswers, quantifier, isRequired=False):
+    def __init__(self, requiredQuestionId, requiredOptionId, requiredAnswers, quantifier, isRequired=False):
         self.__requiredQuestionId = requiredQuestionId
+        self.__requiredOptionId = requiredOptionId
         self.__requiredAnswers = requiredAnswers
         self.__quantifier = quantifier
         self.__isRequiredAnswer = isRequired
 
     def isValid(self):
         surveyManager = self.__mapboxCtrl.surveyManager
-        selectedAnswers = surveyManager.getSelectedAnswers(self.__requiredQuestionId)
+        selectedAnswers = surveyManager.getSelectedAnswers(self.__requiredQuestionId, self.__requiredOptionId)
         if not selectedAnswers and self.__isRequiredAnswer:
             return False
         if self.__quantifier == QuantifierTypes.MULTIPLE.value:
@@ -50,12 +53,15 @@ class IQuestion(object):
         raise NotImplementedError
 
     def isRequired(self):
-        raise NotImplementedError
+        pass
 
     def isReadyToShow(self):
         raise NotImplementedError
 
     def getLinkedQuestionId(self):
+        pass
+
+    def getOptions(self):
         pass
 
     def isMultipleChoice(self):
@@ -78,19 +84,19 @@ class IQuestion(object):
 
 
 class Question(IQuestion):
-    __slots__ = ('__questionId', '__isMultiple', '__isRequired', '__condition', '__answers',
-                 '__guiParameters', '__linkedParameters')
+    __slots__ = ('__surveyGroup', '__questionId', '__isMultiple', '__isRequired', '__condition',
+                 '__answers', '__guiParameters', '__linkedParameters')
     _mapboxCtrl = dependency.descriptor(IMapboxController)
 
     def __init__(self, *args, **kwargs):
-        self.__questionId = kwargs.get('questionId', None)
+        self.__surveyGroup = kwargs.get('surveyGroup')
+        self.__questionId = kwargs.get('questionId')
         self.__isRequired = kwargs.get('isRequired', False)
         self.__isMultiple = kwargs.get('isMultiple', False)
         self.__condition = kwargs.get('condition')
         self.__answers = kwargs.get('answers')
         self.__guiParameters = kwargs.get('guiParameters')
         self.__linkedParameters = kwargs.get('linkedParameters')
-        return
 
     def getQuestionId(self):
         return self.__questionId
@@ -124,16 +130,32 @@ class Question(IQuestion):
             return ''
 
     def getTitleParameters(self):
-        if not self.__linkedParameters:
+        if self.__linkedParameters is None or not self.__linkedParameters.param:
             return []
-        sourceQuestionId = self.__linkedParameters.fromQuestion
-        answerResIds = [ _STR_PATH.response.num(('_').join((sourceQuestionId, replaceHyphenToUnderscore(answer))))() for answer in self.__linkedParameters.answers if answer in self._mapboxCtrl.surveyManager.getSelectedAnswers(sourceQuestionId)
-                       ]
-        return [ resId for resId in answerResIds if resId != R.invalid() ]
+        param = self.__linkedParameters.param
+        sourceQuestionId = param.fromQuestion
+        pathPrefix = self._mapboxCtrl.surveyManager.getQuestion(sourceQuestionId).getPathPrefix()
+        if param.answers is not None:
+            strPath = _STR_PATH.dyn(self.__surveyGroup).response
+            sources = [ answer for answer in param.answers if answer in self._mapboxCtrl.surveyManager.getSelectedAnswers(sourceQuestionId)
+                      ]
+        else:
+            strPath = _STR_PATH.dyn(self.__surveyGroup).question.option
+            sources = [ option for option in param.options ]
+        itemsResIds = [ strPath.dyn(('_').join((pathPrefix, replaceHyphenToUnderscore(source))))() for source in sources
+                      ]
+        items = [ backport.text(resId) for resId in itemsResIds if resId != R.invalid() ]
+        if items and self.__linkedParameters.isJoined:
+            return [backport.text(_STR_PATH.listSeparator()).join(items)]
+        else:
+            return items
+
+    def getPathPrefix(self):
+        return self.__guiParameters.pathPrefix
 
     def getLinkedQuestionId(self):
         if self.__linkedParameters:
-            return self.__linkedParameters.fromQuestion
+            return self.__linkedParameters.param.fromQuestion
         else:
             return
 
@@ -246,6 +268,13 @@ class _ImageQuestion(Question):
         return QuestionType.IMAGE
 
 
+class _MulptipleChoiceQuestion(Question):
+    __slots__ = ()
+
+    def getQuestionType(self):
+        return QuestionType.MULTIPLE_CHOICE
+
+
 class _TextQuestion(Question):
     __slots__ = ()
 
@@ -271,9 +300,6 @@ class AlternativeQuestion(IQuestion):
 
     def getQuestionId(self):
         return self.__questionId
-
-    def isRequired(self):
-        return all(q.isRequired() for q in self._alternatives)
 
     def isSyncronizedAnswers(self):
         return self.__isSynchronizedAnswers
@@ -353,6 +379,7 @@ _SUPPORTED_QUESTION_TYPES = {QuestionType.IMAGE.value: _ImageQuestion,
    QuestionType.TABLE.value: _TableQuestion, 
    QuestionType.INTERACTIVE_MAP.value: _InteractiveMapQuestion, 
    QuestionType.TEXT.value: _TextQuestion, 
+   QuestionType.MULTIPLE_CHOICE.value: _MulptipleChoiceQuestion, 
    QuestionType.ALTERNATIVE.value: AlternativeQuestion}
 
 def getQuestionClass(questionType):

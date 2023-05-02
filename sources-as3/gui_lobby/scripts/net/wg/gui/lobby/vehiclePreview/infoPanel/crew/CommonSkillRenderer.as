@@ -12,6 +12,8 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.crew
    
    public class CommonSkillRenderer extends UIComponentEx
    {
+      
+      private static const SKILL_LEVEL:uint = 100;
        
       
       public var icon:Image = null;
@@ -73,7 +75,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.crew
       {
          if(this._data.skillName)
          {
-            this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.PREVIEW_CREW_SKILL,null,this._data.skillName);
+            this._toolTipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.CREW_PERK_GF,this._data.skillName,null,SKILL_LEVEL);
          }
       }
       

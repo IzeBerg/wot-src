@@ -27,6 +27,10 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       
       private static const TWEEN_DURATION:Number = 150;
       
+      private static const SKILL_LEVEL_ZERO:int = 0;
+      
+      private static const SKILL_LEVEL_FULL:int = 100;
+      
       private static const TOGGLE_ON:String = "on";
       
       private static const TOGGLE_OFF:String = "off";
@@ -36,7 +40,7 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       
       public var icon:UILoaderAlt;
       
-      public var isForAllIcon:UILoaderAlt;
+      public var commonIcon:UILoaderAlt;
       
       public var glow:DisplayObject;
       
@@ -49,6 +53,8 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       private var _vo:VehConfSkillVO;
       
       private var _slotIndex:int = -1;
+      
+      private var _isCommon:Boolean = false;
       
       public function VehConfCrewSkillSlot()
       {
@@ -81,8 +87,8 @@ package net.wg.gui.lobby.vehicleCompare.configurator
          this.icon.dispose();
          this.icon = null;
          this._vo = null;
-         this.isForAllIcon.dispose();
-         this.isForAllIcon = null;
+         this.commonIcon.dispose();
+         this.commonIcon = null;
          super.onDispose();
       }
       
@@ -106,9 +112,10 @@ package net.wg.gui.lobby.vehicleCompare.configurator
             this.icon.source = this._vo.icon;
             this.labelTf.htmlText = this._vo.label;
             this.selected = this._vo.selected;
-            if(this._vo.isForAll)
+            if(this._vo.isCommon)
             {
-               this.isForAllIcon.source = RES_ICONS.MAPS_ICONS_TANKMEN_CREW_CREWOPERATIONS;
+               this._isCommon = true;
+               this.commonIcon.source = RES_ICONS.MAPS_ICONS_TANKMEN_CREW_CREWOPERATIONS;
             }
          }
       }
@@ -125,7 +132,7 @@ package net.wg.gui.lobby.vehicleCompare.configurator
          var _loc4_:Number = !!param3 ? Number(0.1) : Number(TWEEN_DURATION);
          this._tweenManager.registerAndLaunch(_loc4_,this.bg,{"alpha":param1},{});
          this._tweenManager.registerAndLaunch(_loc4_,this.icon,{"alpha":param2},{});
-         this._tweenManager.registerAndLaunch(_loc4_,this.isForAllIcon,{"alpha":param2},{});
+         this._tweenManager.registerAndLaunch(_loc4_,this.commonIcon,{"alpha":param2},{});
       }
       
       override public function set selected(param1:Boolean) : void
@@ -165,7 +172,8 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       override protected function handleMouseRollOver(param1:MouseEvent) : void
       {
          super.handleMouseRollOver(param1);
-         App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_SKILL_EXTENDED,null,this._vo.skillType,false);
+         var _loc2_:Number = !!selected ? Number(this._vo.skillLevel) : Number(SKILL_LEVEL_ZERO);
+         App.toolTipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.CREW_PERK_GF,this._vo.skillType,null,_loc2_,true);
          if(!selected)
          {
             this.applyAlpha(BG_ROLL_OVER_ALPHA,ICON_ROLL_OVER_ALPHA);

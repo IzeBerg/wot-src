@@ -230,15 +230,27 @@ msgstr "Purchase and Mount"
 msgid "dialogs/confirm/confirm/setup"
 msgstr "Mount"
 
-msgid "dialogs/confirm/demount/item"
+msgid "dialogs/confirm/demount/itemDeluxe"
 msgstr ""
 "You can demount the equipment for %(price)s to send it to the Depot, or you "
 "can destroy it."
 
+msgid "dialogs/confirm/demount/itemDeluxeWotPlus"
+msgstr ""
+"You can demount the equipment for %(price)s or {whiteSpanish_Open}for "
+"free{whiteSpanish_Close} with WoT Plus to send it to the Depot, or you can "
+"destroy it."
+
 msgid "dialogs/confirm/demount/itemWithDemountKit"
 msgstr ""
-"You can demount the equipment for %(demountKit)s or %(price)s to send it to "
+"You can demount the equipment for %(demountKit)s, %(price)s, or "
+"{whiteSpanish_Open}for free{whiteSpanish_Close} with WoT Plus to send it to "
 "the Depot, or you can destroy it."
+
+msgid "dialogs/confirm/demount/itemWotPlus"
+msgstr ""
+"You can demount the equipment {whiteSpanish_Open}for "
+"free{whiteSpanish_Close} with WoT Plus to send it to the Depot."
 
 msgid "dialogs/confirm/demount/items"
 msgstr "You can demount the equipment to send it to the Depot."
@@ -780,13 +792,15 @@ msgstr ""
 "traverse and after firing"
 
 msgid "kpi/bonus/longDescr/negative/vehicleOwnSpottingTime"
-msgstr "to the duration your vehicle is visible to the enemy"
+msgstr "to duration your vehicle is visible"
 
 msgid "kpi/bonus/longDescr/negative/vehicleRamOrExplosionDamageResistance"
 msgstr "to HE-shell damage absorbed by armor, as well as ramming damage"
 
 msgid "kpi/bonus/longDescr/negative/vehicleSpeedGain"
-msgstr "to maintaining speed when moving across any terrain type"
+msgstr ""
+"to maintaining speed\n"
+"when moving across any terrain type"
 
 msgid "kpi/bonus/longDescr/negative/vehicleStillCamouflage"
 msgstr "to concealment of a stationary vehicle 3 s after it stops"
@@ -847,13 +861,15 @@ msgstr ""
 "traverse and after firing"
 
 msgid "kpi/bonus/longDescr/positive/vehicleOwnSpottingTime"
-msgstr "to the duration your vehicle is visible to the enemy"
+msgstr "to duration your vehicle is visible"
 
 msgid "kpi/bonus/longDescr/positive/vehicleRamOrExplosionDamageResistance"
 msgstr "to HE-shell damage absorbed by armor, as well as ramming damage"
 
 msgid "kpi/bonus/longDescr/positive/vehicleSpeedGain"
-msgstr "to maintaining speed when moving across any terrain type"
+msgstr ""
+"to maintaining speed\n"
+"when moving across any terrain type"
 
 msgid "kpi/bonus/longDescr/positive/vehicleStillCamouflage"
 msgstr "to concealment of a stationary vehicle 3 s after it stops"
@@ -877,11 +893,26 @@ msgstr ""
 "to turret traverse speed or gun traverse speed for vehicles with stationary "
 "cabins"
 
+msgid "kpi/bonus/negative/artNotificationDelayFactor"
+msgstr ""
+"delay before Sound Detection\n"
+"activation"
+
+msgid "kpi/bonus/negative/circularVisionRadiusWhileSurveyingDeviceDamaged"
+msgstr ""
+"to view range when\n"
+"observation devices are damaged"
+
+msgid "kpi/bonus/negative/commanderHitChance"
+msgstr ""
+"to protection of the Commander\n"
+"from injuries"
+
 msgid "kpi/bonus/negative/crewHitChance"
 msgstr "to crew protection from injuries"
 
 msgid "kpi/bonus/negative/crewLevel"
-msgstr "to all crew skills"
+msgstr "to all crew perks"
 
 msgid "kpi/bonus/negative/crewRepeatedStunDuration"
 msgstr "to additional stun duration"
@@ -889,8 +920,23 @@ msgstr "to additional stun duration"
 msgid "kpi/bonus/negative/crewStunDuration"
 msgstr "to stun duration"
 
+msgid "kpi/bonus/negative/damageAndPiercingDistributionLowerBound"
+msgstr ""
+"to minimum potential damage\n"
+"and penetration value"
+
+msgid "kpi/bonus/negative/damageAndPiercingDistributionUpperBound"
+msgstr ""
+"to maximum potential damage\n"
+"and penetration value"
+
 msgid "kpi/bonus/negative/damageEnemiesByRamming"
 msgstr "to ramming damage caused"
+
+msgid "kpi/bonus/negative/damagedModulesDetectionTime"
+msgstr ""
+"delay before critical damage to\n"
+"the vehicle in reticle is displayed"
 
 msgid "kpi/bonus/negative/demaskFoliageFactor"
 msgstr "to concealment of enemy vehicles behind foliage"
@@ -898,17 +944,57 @@ msgstr "to concealment of enemy vehicles behind foliage"
 msgid "kpi/bonus/negative/demaskMovingFactor"
 msgstr "to concealment of moving enemy vehicles"
 
+msgid "kpi/bonus/negative/enemyModulesCrewCritChance"
+msgstr ""
+"to chance of damaging enemy modules\n"
+"and crew members"
+
+msgid "kpi/bonus/negative/equipmentPreparationTime"
+msgstr "to consumable cooldown time"
+
+msgid "kpi/bonus/negative/fireExtinguishingRate"
+msgstr "to firefighting speed"
+
+msgid "kpi/bonus/negative/foliageMaskingFactor"
+msgstr "to concealment behind foliage"
+
+msgid "kpi/bonus/negative/radiomanActivityTimeAfterVehicleDestroy"
+msgstr ""
+"to time of transmission of\n"
+"enemy vehicle positions\n"
+"after being destroyed"
+
+msgid "kpi/bonus/negative/radiomanHitChance"
+msgstr ""
+"to protection of the radio operator\n"
+"from injuries"
+
+msgid "kpi/bonus/negative/stunResistanceEffectFactor"
+msgstr ""
+"to negative effects\n"
+"from crew injuries"
+
 msgid "kpi/bonus/negative/vehPenaltyForDamageEngineAndCombat"
 msgstr "to the damaged ammo rack penalty and damaged engine penalty"
 
 msgid "kpi/bonus/negative/vehicleAllGroundRotationSpeed"
 msgstr "to hull traverse speed"
 
+msgid "kpi/bonus/negative/vehicleAllyRadioDistance"
+msgstr ""
+"to signal range of allied comms\n"
+"within the vehicle's radio coverage"
+
 msgid "kpi/bonus/negative/vehicleAmmoBayEngineFuelStrength"
 msgstr "to internal module durability"
 
 msgid "kpi/bonus/negative/vehicleAmmoBayStrength"
 msgstr "to ammo rack durability"
+
+msgid "kpi/bonus/negative/vehicleAverageSoilResistance"
+msgstr ""
+"to maintaining speed\n"
+"on moderately soft terrain"
 
 msgid "kpi/bonus/negative/vehicleBackwardMaxSpeed"
 msgstr "to top reverse speed"
@@ -935,7 +1021,9 @@ msgid "kpi/bonus/negative/vehicleCircularVisionRadius"
 msgstr "to view range"
 
 msgid "kpi/bonus/negative/vehicleEnemySpottingTime"
-msgstr "to the duration an enemy vehicle is visible to you"
+msgstr ""
+"to duration an enemy vehicle\n"
+"is visible to you"
 
 msgid "kpi/bonus/negative/vehicleEnginePower"
 msgstr "to engine power"
@@ -945,6 +1033,11 @@ msgstr "to the chance of engine fire"
 
 msgid "kpi/bonus/negative/vehicleForwardMaxSpeed"
 msgstr "to top forward speed"
+
+msgid "kpi/bonus/negative/vehicleFuelTankLesionChance"
+msgstr ""
+"to chance of critical damage\n"
+"to fuel tanks"
 
 msgid "kpi/bonus/negative/vehicleGunAimSpeed"
 msgstr "to aiming speed"
@@ -979,6 +1072,11 @@ msgstr "to concealment after firing"
 msgid "kpi/bonus/negative/vehicleOwnSpottingTime"
 msgstr "to the duration your vehicle is visible"
 
+msgid "kpi/bonus/negative/vehicleRamChassisDamageResistance"
+msgstr ""
+"to ramming damage received\n"
+"to suspension"
+
 msgid "kpi/bonus/negative/vehicleRamDamageResistance"
 msgstr "to ramming damage received"
 
@@ -987,8 +1085,8 @@ msgstr "to HE-shell and ramming damage"
 
 msgid "kpi/bonus/negative/vehicleReloadTimeAfterShellChange"
 msgstr ""
-"to the reload time when switching from a fully loaded shell to a shell of a "
-"different type"
+"to speed of changing shell types\n"
+"in a loaded gun"
 
 msgid "kpi/bonus/negative/vehicleRepairSpeed"
 msgstr "to repair speed"
@@ -1016,11 +1114,54 @@ msgstr ""
 msgid "kpi/bonus/negative/vehicleTurretRotationSpeed"
 msgstr "to turret traverse speed"
 
+msgid "kpi/bonus/negative/vehicleWeakSoilResistance"
+msgstr ""
+"to maintaining speed\n"
+"on soft terrain"
+
+msgid "kpi/bonus/negative/wheelsRotationSpeed"
+msgstr "to wheel turn speed"
+
+msgid "kpi/bonus/negative/woundedCrewEfficiency"
+msgstr ""
+"to penalty when a crew member\n"
+"is injured, except the Commander"
+
+msgid "kpi/bonus/neutral/artNotificationDelayFactor"
+msgstr ""
+"delay before Sound Detection\n"
+"activation"
+
+msgid "kpi/bonus/neutral/damageMonitoringDelay"
+msgstr ""
+"delay before critical damage to\n"
+"the vehicle in reticle is displayed"
+
+msgid "kpi/bonus/neutral/radiomanDurationPerLevel"
+msgstr ""
+"duration of spotting enemies\n"
+"after being destroyed"
+
+msgid "kpi/bonus/positive/artNotificationDelayFactor"
+msgstr ""
+"delay before Sound Detection\n"
+"activation"
+
+msgid "kpi/bonus/positive/circularVisionRadiusWhileSurveyingDeviceDamaged"
+msgstr ""
+"to view range when\n"
+"observation devices are damaged"
+
+msgid "kpi/bonus/positive/commanderHitChance"
+msgstr ""
+"to protection of the Commander\n"
+"from injuries"
+
 msgid "kpi/bonus/positive/crewHitChance"
 msgstr "to crew protection from injuries"
 
 msgid "kpi/bonus/positive/crewLevel"
-msgstr "to all crew skills"
+msgstr "to all crew perks"
 
 msgid "kpi/bonus/positive/crewRepeatedStunDuration"
 msgstr "to additional stun duration"
@@ -1028,8 +1169,23 @@ msgstr "to additional stun duration"
 msgid "kpi/bonus/positive/crewStunDuration"
 msgstr "to stun duration"
 
+msgid "kpi/bonus/positive/damageAndPiercingDistributionLowerBound"
+msgstr ""
+"to minimum potential damage\n"
+"and penetration value"
+
+msgid "kpi/bonus/positive/damageAndPiercingDistributionUpperBound"
+msgstr ""
+"to maximum potential damage\n"
+"and penetration value"
+
 msgid "kpi/bonus/positive/damageEnemiesByRamming"
 msgstr "to ramming damage caused"
+
+msgid "kpi/bonus/positive/damagedModulesDetectionTime"
+msgstr ""
+"delay before critical damage to\n"
+"the vehicle in reticle is displayed"
 
 msgid "kpi/bonus/positive/demaskFoliageFactor"
 msgstr "to concealment of enemy vehicles behind foliage"
@@ -1037,17 +1193,55 @@ msgstr "to concealment of enemy vehicles behind foliage"
 msgid "kpi/bonus/positive/demaskMovingFactor"
 msgstr "to concealment of moving enemy vehicles"
 
+msgid "kpi/bonus/positive/enemyModulesCrewCritChance"
+msgstr ""
+"to chance of damaging enemy modules\n"
+"and crew members"
+
+msgid "kpi/bonus/positive/equipmentPreparationTime"
+msgstr "to consumable cooldown time"
+
+msgid "kpi/bonus/positive/fireExtinguishingRate"
+msgstr "to firefighting speed"
+
+msgid "kpi/bonus/positive/foliageMaskingFactor"
+msgstr "to concealment behind foliage"
+
+msgid "kpi/bonus/positive/radiomanActivityTimeAfterVehicleDestroy"
+msgstr ""
+"to time of transmission of\n"
+"enemy vehicle positions\n"
+"after being destroyed"
+
+msgid "kpi/bonus/positive/radiomanHitChance"
+msgstr ""
+"to protection of the radio operator\n"
+"from injuries"
+
+msgid "kpi/bonus/positive/stunResistanceEffectFactor"
+msgstr "to negative stun effect"
+
 msgid "kpi/bonus/positive/vehPenaltyForDamageEngineAndCombat"
 msgstr "to the damaged ammo rack penalty and damaged engine penalty"
 
 msgid "kpi/bonus/positive/vehicleAllGroundRotationSpeed"
 msgstr "to hull traverse speed"
 
+msgid "kpi/bonus/positive/vehicleAllyRadioDistance"
+msgstr ""
+"to signal range of allied comms\n"
+"within the vehicle's radio coverage"
+
 msgid "kpi/bonus/positive/vehicleAmmoBayEngineFuelStrength"
 msgstr "to internal module durability"
 
 msgid "kpi/bonus/positive/vehicleAmmoBayStrength"
 msgstr "to ammo rack durability"
+
+msgid "kpi/bonus/positive/vehicleAverageSoilResistance"
+msgstr ""
+"to maintaining speed\n"
+"on moderately soft terrain"
 
 msgid "kpi/bonus/positive/vehicleBackwardMaxSpeed"
 msgstr "to top reverse speed"
@@ -1074,7 +1268,9 @@ msgid "kpi/bonus/positive/vehicleCircularVisionRadius"
 msgstr "to view range (up to 445 m)"
 
 msgid "kpi/bonus/positive/vehicleEnemySpottingTime"
-msgstr "to the duration an enemy vehicle is visible to you"
+msgstr ""
+"to duration an enemy vehicle\n"
+"is visible to you"
 
 msgid "kpi/bonus/positive/vehicleEnginePower"
 msgstr "to engine power"
@@ -1084,6 +1280,11 @@ msgstr "to the chance of engine fire"
 
 msgid "kpi/bonus/positive/vehicleForwardMaxSpeed"
 msgstr "to top forward speed"
+
+msgid "kpi/bonus/positive/vehicleFuelTankLesionChance"
+msgstr ""
+"to chance of critical damage\n"
+"to fuel tanks"
 
 msgid "kpi/bonus/positive/vehicleGunAimSpeed"
 msgstr "to aiming speed"
@@ -1118,6 +1319,11 @@ msgstr "to concealment after firing"
 msgid "kpi/bonus/positive/vehicleOwnSpottingTime"
 msgstr "to the duration your vehicle is visible"
 
+msgid "kpi/bonus/positive/vehicleRamChassisDamageResistance"
+msgstr ""
+"to ramming damage received\n"
+"to suspension"
+
 msgid "kpi/bonus/positive/vehicleRamDamageResistance"
 msgstr "to ramming damage received"
 
@@ -1126,8 +1332,8 @@ msgstr "to HE-shell and ramming damage"
 
 msgid "kpi/bonus/positive/vehicleReloadTimeAfterShellChange"
 msgstr ""
-"to the reload time when switching from a fully loaded shell to a shell of a "
-"different type"
+"to speed of changing shell types\n"
+"in a loaded gun"
 
 msgid "kpi/bonus/positive/vehicleRepairSpeed"
 msgstr "to repair speed"
@@ -1155,13 +1361,26 @@ msgstr ""
 msgid "kpi/bonus/positive/vehicleTurretRotationSpeed"
 msgstr "to turret traverse speed"
 
+msgid "kpi/bonus/positive/vehicleWeakSoilResistance"
+msgstr ""
+"to maintaining speed\n"
+"on soft terrain"
+
+msgid "kpi/bonus/positive/wheelsRotationSpeed"
+msgstr "to wheel turn speed"
+
+msgid "kpi/bonus/positive/woundedCrewEfficiency"
+msgstr ""
+"to penalty when a crew member is injured,\n"
+"except the Commander"
+
 msgid "kpi/bonus/ttc/negative/crewHitChance"
 msgstr ""
 "to protection of the crew\n"
 "from injuries"
 
 msgid "kpi/bonus/ttc/negative/crewLevel"
-msgstr "to all crew skills"
+msgstr "to all crew perks"
 
 msgid "kpi/bonus/ttc/negative/crewRepeatedStunDuration"
 msgstr "to additional stun duration"
@@ -1172,6 +1391,11 @@ msgstr "to stun duration"
 msgid "kpi/bonus/ttc/negative/damageEnemiesByRamming"
 msgstr "to ramming damage caused"
 
+msgid "kpi/bonus/ttc/negative/damageMonitoringDelay"
+msgstr ""
+"delay before critical damage to\n"
+"the vehicle in reticle is displayed"
+
 msgid "kpi/bonus/ttc/negative/demaskFoliageFactor"
 msgstr ""
 "to concealment of enemy vehicles\n"
@@ -1181,6 +1405,15 @@ msgid "kpi/bonus/ttc/negative/demaskMovingFactor"
 msgstr ""
 "to concealment of moving\n"
 "enemy vehicles"
+
+msgid "kpi/bonus/ttc/negative/radiomanChanceToHitPerLevel"
+msgstr "to protection of the radio operator from injuries"
+
+msgid "kpi/bonus/ttc/negative/shotDispersionAngle"
+msgstr "to dispersion of a stationary vehicle"
+
+msgid "kpi/bonus/ttc/negative/turretAimingDispersion"
+msgstr "to dispersion during gun traverse"
 
 msgid "kpi/bonus/ttc/negative/vehPenaltyForDamageEngineAndCombat"
 msgstr ""
@@ -1196,9 +1429,7 @@ msgid "kpi/bonus/ttc/negative/vehicleAllGroundRotationSpeed"
 msgstr "to vehicle traverse speed"
 
 msgid "kpi/bonus/ttc/negative/vehicleAmmoBayEngineFuelStrength"
-msgstr ""
-"to ammo rack, fuel tank,\n"
-"and engine durability"
+msgstr "to internal module durability"
 
 msgid "kpi/bonus/ttc/negative/vehicleAmmoBayStrength"
 msgstr "to ammo rack durability"
@@ -1226,8 +1457,8 @@ msgstr "to view range"
 
 msgid "kpi/bonus/ttc/negative/vehicleEnemySpottingTime"
 msgstr ""
-"to the duration an enemy\n"
-"vehicle is visible"
+"to duration an enemy vehicle\n"
+"is visible to you"
 
 msgid "kpi/bonus/ttc/negative/vehicleEnginePower"
 msgstr "to engine power"
@@ -1284,10 +1515,7 @@ msgid "kpi/bonus/ttc/negative/vehicleRamOrExplosionDamageResistance"
 msgstr "to HE-shell and ramming damage"
 
 msgid "kpi/bonus/ttc/negative/vehicleReloadTimeAfterShellChange"
-msgstr ""
-"to the reload time when switching\n"
-"from a fully loaded shell\n"
-"to a shell of a different type"
+msgstr "to speed of changing shell types"
 
 msgid "kpi/bonus/ttc/negative/vehicleRepairSpeed"
 msgstr "to repair speed"
@@ -1312,19 +1540,35 @@ msgstr "to gun traverse speed"
 msgid "kpi/bonus/ttc/negative/vehicleTurretRotationSpeed"
 msgstr "to turret traverse speed"
 
+msgid "kpi/bonus/ttc/negative/woundedCrewEfficiency"
+msgstr "to penalty when a crew member is injured, except the Commander"
+
+msgid "kpi/bonus/ttc/positive/commanderHitChance"
+msgstr ""
+"to protection of the Commander\n"
+"from injuries"
+
 msgid "kpi/bonus/ttc/positive/crewHitChance"
 msgstr ""
 "to protection of the crew\n"
 "from injuries"
 
 msgid "kpi/bonus/ttc/positive/crewLevel"
-msgstr "to all crew skills"
+msgstr "to all crew perks"
+
+msgid "kpi/bonus/ttc/positive/crewLevelIncrease"
+msgstr "to major qualification"
 
 msgid "kpi/bonus/ttc/positive/crewRepeatedStunDuration"
 msgstr "to additional stun duration"
 
 msgid "kpi/bonus/ttc/positive/crewStunDuration"
 msgstr "to stun duration"
+
+msgid "kpi/bonus/ttc/positive/damageAndPiercingDistributionLowerBound"
+msgstr ""
+"to minimum potential damage\n"
+"and penetration value"
 
 msgid "kpi/bonus/ttc/positive/damageEnemiesByRamming"
 msgstr "to ramming damage caused"
@@ -1338,6 +1582,26 @@ msgid "kpi/bonus/ttc/positive/demaskMovingFactor"
 msgstr ""
 "to concealment of moving\n"
 "enemy vehicles"
+
+msgid "kpi/bonus/ttc/positive/enemyModulesCrewCritChance"
+msgstr ""
+"to chance of damaging enemy modules and\n"
+"crew members"
+
+msgid "kpi/bonus/ttc/positive/fireExtinguishingRate"
+msgstr "to firefighting speed"
+
+msgid "kpi/bonus/ttc/positive/maskingFactor"
+msgstr "to concealment of the vehicle"
+
+msgid "kpi/bonus/ttc/positive/radioDistance"
+msgstr "to radio signal range"
+
+msgid "kpi/bonus/ttc/positive/radiomanChanceToHitPerLevel"
+msgstr "to protection of the radio operator from injuries"
+
+msgid "kpi/bonus/ttc/positive/teamRadioBonusFactor"
+msgstr "to signal range of allied comms within the vehicle's radio coverage"
 
 msgid "kpi/bonus/ttc/positive/vehPenaltyForDamageEngineAndCombat"
 msgstr ""
@@ -1353,12 +1617,15 @@ msgid "kpi/bonus/ttc/positive/vehicleAllGroundRotationSpeed"
 msgstr "to vehicle traverse speed"
 
 msgid "kpi/bonus/ttc/positive/vehicleAmmoBayEngineFuelStrength"
-msgstr ""
-"to ammo rack, fuel tank,\n"
-"and engine durability"
+msgstr "to internal module durability"
 
 msgid "kpi/bonus/ttc/positive/vehicleAmmoBayStrength"
 msgstr "to ammo rack durability"
+
+msgid "kpi/bonus/ttc/positive/vehicleAverageSoilResistance"
+msgstr ""
+"to maintaining speed\n"
+"on moderately soft terrain"
 
 msgid "kpi/bonus/ttc/positive/vehicleBackwardMaxSpeed"
 msgstr "to top reverse speed"
@@ -1385,8 +1652,8 @@ msgstr ""
 
 msgid "kpi/bonus/ttc/positive/vehicleEnemySpottingTime"
 msgstr ""
-"to the duration an enemy\n"
-"vehicle is visible"
+"to duration an enemy vehicle\n"
+"is visible to you"
 
 msgid "kpi/bonus/ttc/positive/vehicleEnginePower"
 msgstr "to engine power"
@@ -1443,10 +1710,7 @@ msgid "kpi/bonus/ttc/positive/vehicleRamOrExplosionDamageResistance"
 msgstr "to HE-shell and ramming damage"
 
 msgid "kpi/bonus/ttc/positive/vehicleReloadTimeAfterShellChange"
-msgstr ""
-"to the reload time when switching\n"
-"from a fully loaded shell\n"
-"to a shell of a different type"
+msgstr "to speed of changing shell types"
 
 msgid "kpi/bonus/ttc/positive/vehicleRepairSpeed"
 msgstr "to repair speed"
@@ -1471,11 +1735,28 @@ msgstr "to gun traverse speed"
 msgid "kpi/bonus/ttc/positive/vehicleTurretRotationSpeed"
 msgstr "to turret traverse speed"
 
+msgid "kpi/bonus/ttc/positive/vehicleWeakSoilResistance"
+msgstr ""
+"to maintaining speed\n"
+"on soft terrain"
+
+msgid "kpi/bonus/ttc/positive/xpBonusFactorPerLevel"
+msgstr "to Crew Experience earned in battle"
+
+msgid "kpi/bonus/valueTypes/artNotificationDelayFactor"
+msgstr "s"
+
 msgid "kpi/bonus/valueTypes/brackets"
 msgstr "(%(value)s)"
 
+msgid "kpi/bonus/valueTypes/damagedModulesDetectionTime"
+msgstr "s"
+
 msgid "kpi/bonus/valueTypes/default"
 msgstr "%"
+
+msgid "kpi/bonus/valueTypes/radiomanActivityTimeAfterVehicleDestroy"
+msgstr "s"
 
 msgid "kpi/bonus/valueTypes/vehicleBackwardMaxSpeed"
 msgstr "km/h"
@@ -1636,11 +1917,21 @@ msgstr "Click to demount equipment from this slot."
 msgid "tooltips/action/description/demount_from_setups"
 msgstr "Click to demount equipment from all configurations."
 
+msgid "tooltips/action/description/demount_plus"
+msgstr ""
+"Click to demount equipment from this slot for free with your active WoT Plus"
+" subscription."
+
 msgid "tooltips/action/description/destroy"
-msgstr "Click to destroy equipment in this slot."
+msgstr ""
+"Click to destroy equipment in this slot or, if you have an active WoT Plus "
+"subscription, demount it for free."
 
 msgid "tooltips/action/description/destroy_modernized"
 msgstr "Click to disassemble equipment into components."
+
+msgid "tooltips/action/description/destroy_without_wotplus_demount"
+msgstr "Click to destroy equipment in this slot."
 
 msgid "tooltips/action/description/swap"
 msgstr "Click to swap items between slots."
@@ -1668,6 +1959,9 @@ msgstr "Demount"
 
 msgid "tooltips/action/title/demount_from_setups"
 msgstr "Demount From All Configurations"
+
+msgid "tooltips/action/title/demount_plus"
+msgstr "Demount for free"
 
 msgid "tooltips/action/title/destroy"
 msgstr "Destroy"

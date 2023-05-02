@@ -2,6 +2,7 @@ package net.wg.gui.battle
 {
    import flash.text.TextField;
    import net.wg.data.VO.daapi.DAAPIQuestStatusVO;
+   import net.wg.data.constants.Values;
    import net.wg.gui.battle.interfaces.IReservesStats;
    import net.wg.gui.battle.views.personalReservesTab.PersonalReservesTab;
    import net.wg.gui.battle.views.questProgress.data.QPProgressTrackingVO;
@@ -10,6 +11,7 @@ package net.wg.gui.battle
    import net.wg.gui.battle.views.questProgress.events.QuestProgressTabEvent;
    import net.wg.gui.battle.views.questProgress.interfaces.IQuestProgressView;
    import net.wg.gui.battle.views.questProgress.interfaces.IQuestProgressViewOperationSelector;
+   import net.wg.gui.lobby.settings.vo.TabsDataVo;
    import net.wg.infrastructure.base.meta.IClassicFullStatsMeta;
    import net.wg.infrastructure.base.meta.impl.ClassicFullStatsMeta;
    import net.wg.infrastructure.interfaces.IDAAPIDataClass;
@@ -24,7 +26,7 @@ package net.wg.gui.battle
       
       private static const TAB_RESERVES_Y_SHIFT:int = 13;
       
-      private static const PERSONAL_RESERVES_TAB_IDX:int = 2;
+      private static const PERSONAL_RESERVES_TAB_ALIAS:String = "boosters";
        
       
       public var tabQuest:IQuestProgressViewOperationSelector = null;
@@ -50,6 +52,16 @@ package net.wg.gui.battle
          super();
       }
       
+      override public function as_setActiveTab(param1:Number) : void
+      {
+         this._tabIndexChangedByShortcut = param1 != tabs.selectedIndex;
+         if(this.tabReserves != null && this.getTabDataAlias(param1) == PERSONAL_RESERVES_TAB_ALIAS)
+         {
+            this._pr20Logger.logOpenActivationThroughShortcut();
+         }
+         super.as_setActiveTab(param1);
+      }
+      
       override public function getStatsProgressView() : IQuestProgressView
       {
          return this.tabQuest;
@@ -73,16 +85,6 @@ package net.wg.gui.battle
             this.tabReserves.height = param2 - this.tabReserves.y;
             this.tabReserves.x = -this.tabReserves.width >> 1;
          }
-      }
-      
-      override public function as_setActiveTab(param1:Number) : void
-      {
-         this._tabIndexChangedByShortcut = param1 != tabs.selectedIndex;
-         if(this.tabReserves != null && param1 == PERSONAL_RESERVES_TAB_IDX)
-         {
-            this._pr20Logger.logOpenActivationThroughShortcut();
-         }
-         super.as_setActiveTab(param1);
       }
       
       override protected function configUI() : void
@@ -183,7 +185,7 @@ package net.wg.gui.battle
       override protected function updateCurrentTab() : void
       {
          statsTable.visible = tabs.selectedIndex == 0;
-         var _loc1_:Boolean = tabs.selectedIndex == PERSONAL_RESERVES_TAB_IDX;
+         var _loc1_:Boolean = this.getTabDataAlias(tabs.selectedIndex) == PERSONAL_RESERVES_TAB_ALIAS;
          if(this.tabReserves != null)
          {
             this.tabReserves.visible = _loc1_;
@@ -208,6 +210,16 @@ package net.wg.gui.battle
          return this.tabReserves;
       }
       
+      private function getTabDataAlias(param1:int) : String
+      {
+         if(param1 < 0)
+         {
+            return Values.EMPTY_STR;
+         }
+         var _loc2_:TabsDataVo = tabs.dataProvider[param1];
+         return _loc2_.alias;
+      }
+      
       override public function set visible(param1:Boolean) : void
       {
          if(param1 && title.visible)
@@ -224,7 +236,7 @@ package net.wg.gui.battle
       
       private function logTabsIndexChangeHandler(param1:IndexEvent) : void
       {
-         if(this.tabReserves != null && param1.index == PERSONAL_RESERVES_TAB_IDX && !this._tabIndexChangedByShortcut)
+         if(this.tabReserves != null && this.getTabDataAlias(param1.index) == PERSONAL_RESERVES_TAB_ALIAS && !this._tabIndexChangedByShortcut)
          {
             this._pr20Logger.logActivationTabSelected();
          }

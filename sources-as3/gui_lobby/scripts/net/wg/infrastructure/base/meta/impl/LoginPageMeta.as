@@ -35,10 +35,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public var isCSISUpdateOnRequest:Function;
       
-      public var isPwdInvalid:Function;
-      
-      public var isLoginInvalid:Function;
-      
       public var startListenCsisUpdate:Function;
       
       public var showLegal:Function;
@@ -162,18 +158,6 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.isCSISUpdateOnRequest,"isCSISUpdateOnRequest" + Errors.CANT_NULL);
          return this.isCSISUpdateOnRequest();
-      }
-      
-      public function isPwdInvalidS(param1:String) : Boolean
-      {
-         App.utils.asserter.assertNotNull(this.isPwdInvalid,"isPwdInvalid" + Errors.CANT_NULL);
-         return this.isPwdInvalid(param1);
-      }
-      
-      public function isLoginInvalidS(param1:String) : Boolean
-      {
-         App.utils.asserter.assertNotNull(this.isLoginInvalid,"isLoginInvalid" + Errors.CANT_NULL);
-         return this.isLoginInvalid(param1);
       }
       
       public function startListenCsisUpdateS(param1:Boolean) : void

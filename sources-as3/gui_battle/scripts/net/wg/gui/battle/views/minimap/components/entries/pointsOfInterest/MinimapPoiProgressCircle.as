@@ -16,17 +16,17 @@ package net.wg.gui.battle.views.minimap.components.entries.pointsOfInterest
       
       private var _atlasManager:IAtlasManager;
       
-      private var _colorSchemeMgr:IColorSchemeManager = null;
+      private var _colorSchemeMgr:IColorSchemeManager;
       
       public function MinimapPoiProgressCircle()
       {
          this._atlasManager = App.atlasMgr;
+         this._colorSchemeMgr = App.colorSchemeMgr;
          super();
       }
       
       override protected function initialize() : void
       {
-         this._colorSchemeMgr = App.colorSchemeMgr;
          this._colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onSchemasUpdatedHandler);
          this.updateColorBlind();
          super.initialize();

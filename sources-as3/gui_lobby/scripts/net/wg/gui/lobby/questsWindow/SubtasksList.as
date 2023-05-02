@@ -97,64 +97,34 @@ package net.wg.gui.lobby.questsWindow
       private function createTasks() : void
       {
          var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         var _loc3_:int = 0;
-         var _loc4_:int = 0;
-         var _loc5_:int = 0;
-         var _loc6_:Object = null;
-         var _loc7_:ISubtaskComponent = null;
-         var _loc8_:String = null;
-         var _loc9_:ISubtaskComponent = null;
+         var _loc2_:Object = null;
+         var _loc3_:ISubtaskComponent = null;
+         var _loc4_:String = null;
+         this.clearTasks();
          if(this._data)
          {
-            _loc1_ = this._data.length;
-            if(this.tasks.length < _loc1_)
+            _loc1_ = 0;
+            while(_loc1_ < this._data.length)
             {
-               _loc3_ = _loc1_ - this.tasks.length;
-               _loc4_ = this.tasks.length;
-               _loc5_ = 0;
-               while(_loc5_ < _loc3_)
+               _loc2_ = this._data[_loc1_];
+               _loc3_ = null;
+               _loc4_ = null;
+               if(this._linkageSelector)
                {
-                  _loc6_ = this._data[_loc5_];
-                  _loc7_ = null;
-                  _loc8_ = null;
-                  if(this._linkageSelector)
-                  {
-                     _loc8_ = this._linkageSelector.getSpecialLinkage(_loc6_,_loc5_);
-                  }
-                  if(StringUtils.isEmpty(_loc8_))
-                  {
-                     _loc8_ = this._linkage;
-                  }
-                  _loc7_ = App.utils.classFactory.getComponent(_loc8_,ISubtaskComponent);
-                  _loc7_.addEventListener(Event.RESIZE,this.onTaskResizeHandler);
-                  this.tasks.push(_loc7_);
-                  addChild(DisplayObject(_loc7_));
-                  _loc4_++;
-                  _loc5_++;
+                  _loc4_ = this._linkageSelector.getSpecialLinkage(_loc2_,_loc1_);
                }
-            }
-            else if(this.tasks.length > _loc1_)
-            {
-               while(this.tasks.length > _loc1_)
+               if(StringUtils.isEmpty(_loc4_))
                {
-                  _loc9_ = this.tasks.pop();
-                  _loc9_.removeEventListener(Event.RESIZE,this.onTaskResizeHandler);
-                  _loc9_.dispose();
-                  removeChild(DisplayObject(_loc9_));
+                  _loc4_ = this._linkage;
                }
+               _loc3_ = App.utils.classFactory.getComponent(_loc4_,ISubtaskComponent);
+               _loc3_.addEventListener(Event.RESIZE,this.onTaskResizeHandler);
+               this.tasks.push(_loc3_);
+               addChild(DisplayObject(_loc3_));
+               _loc3_.setData(this._data[_loc1_]);
+               _loc3_.validateNow();
+               _loc1_++;
             }
-            _loc2_ = 0;
-            while(_loc2_ < this._data.length)
-            {
-               this.tasks[_loc2_].setData(this._data[_loc2_]);
-               this.tasks[_loc2_].validateNow();
-               _loc2_++;
-            }
-         }
-         else
-         {
-            this.clearTasks();
          }
       }
       

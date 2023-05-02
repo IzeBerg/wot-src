@@ -24,6 +24,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.staticMarkers.repairPoint.RepairPointIcon;
    import net.wg.gui.battle.views.staticMarkers.repairPoint.RepairPointMarker;
    import net.wg.gui.battle.views.staticMarkers.safeZone.SafeZoneMarker;
+   import net.wg.gui.battle.views.staticMarkers.scenario.ScenarioMarker;
+   import net.wg.gui.battle.views.staticMarkers.scenario.ScenarioMarkerProgressCircle;
    import net.wg.gui.battle.views.vehicleMarkers.ActionIconStateMarker;
    import net.wg.gui.battle.views.vehicleMarkers.AnimateExplosion;
    import net.wg.gui.battle.views.vehicleMarkers.BranderVehicle2dMarker;
@@ -120,6 +122,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_REPAIRPOINT_REPAIRPOINTMARKER:Class = RepairPointMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_SAFEZONE_SAFEZONEMARKER:Class = SafeZoneMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_SCENARIO_SCENARIOMARKER:Class = ScenarioMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_SCENARIO_SCENARIOMARKERPROGRESSCIRCLE:Class = ScenarioMarkerProgressCircle;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_ACTIONICONSTATEMARKER:Class = ActionIconStateMarker;
       

@@ -170,6 +170,7 @@ class PREBATTLE_ACTION_NAME(object):
     EVENT_BATTLE = 'event'
     MAPBOX = 'mapbox'
     COMP7 = 'comp7'
+    WINBACK = 'winback'
 
 
 class PREBATTLE_INIT_STEP(object):
@@ -189,6 +190,7 @@ class SELECTOR_BATTLE_TYPES(object):
     MAPS_TRAINING = 'mapsTraining'
     EVENT = 'event'
     COMP7 = 'comp7'
+    WINBACK = 'winback'
 
 
 class REQUEST_TYPE(object):

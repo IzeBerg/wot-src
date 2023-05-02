@@ -1,11 +1,10 @@
 import json
 from collections import defaultdict
-import BigWorld, WWISE, constants
+import BigWorld, WWISE
 from PlayerEvents import g_playerEvents
 from adisp import adisp_process
 from wg_async import wg_async, wg_await
 from connection_mgr import LOGIN_STATUS
-from external_strings_utils import isAccountLoginValid, isPasswordValid
 from frameworks.wulf import WindowFlags, WindowStatus
 from gui import DialogsInterface, GUI_SETTINGS
 from gui import makeHtmlString
@@ -106,18 +105,6 @@ class LoginView(LoginPageMeta):
 
     def showLegal(self):
         self.fireEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LEGAL_INFO_WINDOW)), EVENT_BUS_SCOPE.LOBBY)
-
-    def isPwdInvalid(self, password):
-        isInvalid = False
-        if not constants.IS_DEVELOPMENT and not self._loginMode.isToken2():
-            isInvalid = not isPasswordValid(password)
-        return isInvalid
-
-    def isLoginInvalid(self, login):
-        isInvalid = False
-        if not constants.IS_DEVELOPMENT and not self._loginMode.isToken2():
-            isInvalid = not isAccountLoginValid(login)
-        return isInvalid
 
     def onRecovery(self):
         self.fireEvent(OpenLinkEvent(OpenLinkEvent.RECOVERY_PASSWORD))

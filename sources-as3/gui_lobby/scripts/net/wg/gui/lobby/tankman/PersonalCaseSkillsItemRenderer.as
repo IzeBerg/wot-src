@@ -23,6 +23,10 @@ package net.wg.gui.lobby.tankman
       private static const OVER_LABEL:String = "over";
       
       private static const DISABLED_LABEL:String = "disabled";
+      
+      private static const SITUATIONAL_X_SHIFT:int = 3;
+      
+      private static const SITUATIONAL_Y_SHIFT:int = -15;
        
       
       public var clickArea:MovieClip;
@@ -31,11 +35,13 @@ package net.wg.gui.lobby.tankman
       
       public var rank:SkillsItemsRendererRankIcon;
       
-      public var _name:TextField;
+      public var nameLabel:TextField;
       
-      public var desc:TextField;
+      public var descLabel:TextField;
       
       public var focusIndicatorUI:MovieClip;
+      
+      public var iconSituational:MovieClip;
       
       private var _isHeader:Boolean = false;
       
@@ -94,11 +100,12 @@ package net.wg.gui.lobby.tankman
             this.rank.dispose();
          }
          this.focusIndicatorUI = null;
+         this.iconSituational = null;
          this.clickArea = null;
          this.icon = null;
          this.rank = null;
-         this._name = null;
-         this.desc = null;
+         this.nameLabel = null;
+         this.descLabel = null;
          super.onDispose();
       }
       
@@ -142,7 +149,7 @@ package net.wg.gui.lobby.tankman
       {
          if(!this._isHeader)
          {
-            App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_SKILL,null,data.title,data.tankmanID,data.isFreeSkill);
+            App.toolTipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.CREW_PERK_GF,data.title,data.tankmanID);
          }
          else
          {
@@ -155,16 +162,21 @@ package net.wg.gui.lobby.tankman
          var _loc1_:String = null;
          if(this._isHeader)
          {
-            this._name.text = App.utils.toUpperOrLowerCase(App.utils.locale.makeString("#dialogs:addSkillWindow/label/" + data.title),true);
-            this.desc.text = data.rankId == "common" || data.selfSkill ? "" : "#item_types:tankman/Skill_not_be_used";
-            this.rank.visible = false;
+            this.nameLabel.text = App.utils.toUpperOrLowerCase(App.utils.locale.makeString("#dialogs:addSkillWindow/label/" + data.title),true);
+            this.descLabel.text = data.rankId == "common" || data.selfSkill ? "" : "#item_types:tankman/Skill_not_be_used";
+            this.rank.visible = this.iconSituational.visible = false;
          }
          else
          {
             this.addEventListener(MouseEvent.DOUBLE_CLICK,this.onDoubleClickHandler);
-            this._name.text = data.name;
-            this.desc.visible = true;
-            this.desc.text = data.desc;
+            this.nameLabel.text = data.name;
+            this.descLabel.text = data.desc;
+            this.iconSituational.visible = data.isSituationalSkill;
+            if(this.iconSituational.visible)
+            {
+               this.iconSituational.x = Math.round(this.nameLabel.x + this.nameLabel.textWidth + SITUATIONAL_X_SHIFT);
+               this.iconSituational.y = Math.round(this.nameLabel.y + this.nameLabel.textHeight + SITUATIONAL_Y_SHIFT);
+            }
             if(data.title == "common")
             {
                this.rank.visible = false;

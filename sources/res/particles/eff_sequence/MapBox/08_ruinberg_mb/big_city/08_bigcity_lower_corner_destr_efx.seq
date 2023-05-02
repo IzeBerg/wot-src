@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>2.200000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-0.000427 -0.000019 0.000610</inTangent>
+				<outTangent>-0.000427 -0.000019 0.000610</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>part1</name>
+		<type>model</type>
+		<resource>content/Buildings/hd_bld_EU_033_KitCrashHouses/normal/lod0/hd_bld_EU_033_KitCrashHouses_Corner_04.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>5.501440 -0.075700 -0.517780</value>
+				<inTangent>0.089535 -6.150762 0.000000</inTangent>
+				<outTangent>0.089535 -6.150762 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>5.561130 -4.176210 -0.517780</value>
+				<inTangent>0.130587 -8.969801 0.000000</inTangent>
+				<outTangent>0.130587 -8.969801 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.166667</startTime>
+				<value>5.646950 -10.070630 -0.517780</value>
+				<inTangent>0.171639 -11.788840 -0.000000</inTangent>
+				<outTangent>0.171639 -11.788840 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 56.000000 0.000000</value>
+				<inTangent>36.486485 0.810811 0.000000</inTangent>
+				<outTangent>36.486485 0.810811 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.233333</startTime>
+				<value>45.000000 57.000000 0.000000</value>
+				<inTangent>36.486485 0.810811 -0.000000</inTangent>
+				<outTangent>36.486485 0.810811 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>part2</name>
+		<type>model</type>
+		<resource>content/Buildings/hd_bld_EU_033_KitCrashHouses/normal/lod0/hd_bld_EU_033_KitCrashHouses_Corner_02.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>-5.479233 0.154552 0.599621</value>
+				<inTangent>3.181586 -3.682502 3.971032</inTangent>
+				<outTangent>3.181586 -3.682502 3.971032</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>-3.994492 -1.563950 2.452770</value>
+				<inTangent>1.590793 -10.283098 3.016732</inTangent>
+				<outTangent>1.590793 -10.283098 3.016732</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>-3.994492 -7.754642 3.208996</value>
+				<inTangent>-0.000000 -16.883694 2.062432</inTangent>
+				<outTangent>-0.000000 -16.883694 2.062432</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.000000 13.000000 0.000000</value>
+				<inTangent>122.727264 0.000000 0.000000</inTangent>
+				<outTangent>122.727264 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.400000</startTime>
+				<value>45.000000 13.000000 0.000000</value>
+				<inTangent>136.363632 0.000000 0.000000</inTangent>
+				<outTangent>136.363632 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.700000</startTime>
+				<value>90.000000 13.000000 0.000000</value>
+				<inTangent>150.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>150.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>dust01_eff</name>
+		<type>particle</type>
+		<resource>particles/Environment/MapBox/08_ruinberg_city_wall_dust.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>2.200000</duration>
+				<value>Root|</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>dust02_eff</name>
+		<type>particle</type>
+		<resource>particles/Environment/MapBox/08_ruinberg_city_wall_dust.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.591522 0.254097 11.483982</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>1.578947</inTangent>
+				<outTangent>1.578947</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.000000</value>
+				<inTangent>1.578947</inTangent>
+				<outTangent>1.578947</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

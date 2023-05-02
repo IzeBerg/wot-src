@@ -25,6 +25,8 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_ROYALE_PRIME_TIME:String = "BattleRoyalePrimeTimeView";
       
+      public static const BATTLE_ROYALE_BROWSER_VIEW:String = "BattleRoyaleBrowserView";
+      
       public static const LEVEL_UP_UI:String = "battleRoyaleLevelUpView.swf";
        
       

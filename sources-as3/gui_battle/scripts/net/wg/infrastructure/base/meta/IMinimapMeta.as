@@ -27,5 +27,11 @@ package net.wg.infrastructure.base.meta
       function as_updateHintPanelData(param1:Boolean, param2:Boolean) : void;
       
       function as_initPrebattleSize(param1:int) : void;
+      
+      function as_setScenarioEvent(param1:String, param2:String) : void;
+      
+      function as_setScenarioEventVisible(param1:String, param2:Boolean) : void;
+      
+      function as_clearScenarioEvent(param1:String) : void;
    }
 }

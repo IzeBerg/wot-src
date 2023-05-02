@@ -15,6 +15,7 @@ from helpers import dependency
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.battle_session import IBattleSessionProvider
 from gui.Scaleform.daapi.view.battle.shared.ribbons_aggregator import DAMAGE_SOURCE
+from items import tankmen
 from items.battle_royale import isSpawnedBot, isBattleRoyale
 _logger = logging.getLogger(__name__)
 _RIBBON_SOUNDS_ENABLED = True
@@ -78,7 +79,9 @@ _BATTLE_EVENTS_SETTINGS_TO_BATTLE_EFFICIENCY_TYPES = {BATTLE_EVENTS.ENEMY_HP_DAM
    BATTLE_EVENTS.ENEMIES_STUN: (
                               _BET.STUN,), 
    BATTLE_EVENTS.ENEMY_ASSIST_STUN: (
-                                   _BET.ASSIST_STUN,)}
+                                   _BET.ASSIST_STUN,), 
+   BATTLE_EVENTS.CREW_PERKS: (
+                            _BET.PERK,)}
 
 def _getVehicleData(arenaDP, vehArenaID):
     vTypeInfoVO = arenaDP.getVehicleInfo(vehArenaID).vehicleType
@@ -97,6 +100,13 @@ def _baseRibbonFormatter(ribbon, arenaDP, updater):
     updater(ribbonID=ribbon.getID(), ribbonType=ribbon.getType(), leftFieldStr=str(ribbon.getPoints()))
 
 
+def _perkRibbonFormatter(ribbon, arenaDP, updater):
+    perkID = ribbon.getPerkID()
+    skillName = tankmen.getSkillsConfig().vsePerkToSkill.get(perkID)
+    rightFieldStr = R.strings.crew_perks.dyn(skillName).name
+    updater(ribbonID=ribbon.getID(), ribbonType=ribbon.getType(), vehName=skillName, rightFieldStr=backport.text(rightFieldStr()))
+
+
 def _enemyDetectionRibbonFormatter(ribbon, arenaDP, updater):
     count = ribbon.getTargetsAmount()
     bonusRibbonLabelID = _BRL.BASE_BONUS_LABEL if ribbon.isRoleBonus() else _BRL.NO_BONUS
@@ -107,7 +117,7 @@ def _enemyDetectionRibbonFormatter(ribbon, arenaDP, updater):
         if vIDs:
             vehicleName, vehicleClassTag = _getVehicleData(arenaDP, vIDs[0])
         else:
-            _logger.error('Enemy detection ribbon has no vehicle ID! %s', ribbon)
+            _logger.error('Enemy detection ribbon has no vehicle ID! %s', ribbon.getID())
             vehicleName = ''
             vehicleClassTag = ''
         updater(ribbonID=ribbon.getID(), ribbonType=ribbon.getType(), vehName=vehicleName, vehType=vehicleClassTag, bonusRibbonLabelID=bonusRibbonLabelID, role=ribbon.role())
@@ -210,7 +220,8 @@ _RIBBONS_FMTS = {_BET.CAPTURE: _baseRibbonFormatter,
    _BET.DEALT_DMG_BY_CLING_BRANDER: _singleVehRibbonFormatter, 
    _BET.RECEIVED_BY_CLING_BRANDER: _singleVehRibbonFormatter, 
    _BET.DEALT_DMG_BY_THUNDER_STRIKE: _singleVehRibbonFormatter, 
-   _BET.RECEIVED_BY_THUNDER_STRIKE: _singleVehRibbonFormatter}
+   _BET.RECEIVED_BY_THUNDER_STRIKE: _singleVehRibbonFormatter, 
+   _BET.PERK: _perkRibbonFormatter}
 _DISPLAY_PRECONDITIONS = {_BET.DETECTION: lambda dp, ribbon: dp.getVehicleInfo(ribbon.getVehIDs()[0]).vehicleType.compactDescr > 0}
 
 class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
@@ -293,10 +304,10 @@ class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
         return self.__checkUserPreferences(ribbon) and self.__checkControllingOwnVehicle()
 
     def __processDelayedRibbons(self):
-        for ribbon, method in self.__delayedRibbons[:]:
+        for ribbon, method in ((self.__ribbonsAggregator.getRibbon(ribbonID), method) for ribbonID, method in self.__delayedRibbons):
             if self.__canBeShown(ribbon):
                 self.__invalidateRibbon(ribbon, method)
-                self.__delayedRibbons.remove((ribbon, method))
+                self.__delayedRibbons.remove((ribbon.getID(), method))
 
     def __playSound(self, eventName):
         if not self.__isVisible or not _RIBBON_SOUNDS_ENABLED:
@@ -318,14 +329,15 @@ class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
     def __invalidateRibbon(self, ribbon, method):
         if not self.__canBeShown(ribbon):
             _logger.debug('Delaying ribbon processing %s', ribbon)
-            self.__delayedRibbons.append((ribbon, method))
+            self.__delayedRibbons.append((ribbon.getID(), method))
             return
         if self._shouldShowRibbon(ribbon):
-            if ribbon.getType() in _RIBBONS_FMTS:
-                updater = _RIBBONS_FMTS[ribbon.getType()]
+            ribbonType = ribbon.getType()
+            if ribbonType in _RIBBONS_FMTS:
+                updater = _RIBBONS_FMTS[ribbonType]
                 updater(ribbon, self.__arenaDP, method)
             else:
-                _logger.error('Could not find formatter for ribbon %s', ribbon)
+                _logger.error('Could not find formatter for ribbon type %s', ribbonType)
         else:
             self.__ribbonsAggregator.resetRibbonData(ribbon.getID())
 
@@ -522,5 +534,8 @@ class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
           backport.text(R.strings.ingame_gui.efficiencyRibbons.dealtDamageByThunderStrike())],
          [
           _BET.RECEIVED_BY_THUNDER_STRIKE,
-          backport.text(R.strings.ingame_gui.efficiencyRibbons.receivedByThunderStrike())]], self.__isExtendedAnim, self.__enabled, self.__isWithRibbonName, self.__isWithVehName, [
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.receivedByThunderStrike())],
+         [
+          _BET.PERK,
+          '']], self.__isExtendedAnim, self.__enabled, self.__isWithRibbonName, self.__isWithVehName, [
          backport.text(R.strings.ingame_gui.efficiencyRibbons.bonusRibbon())])

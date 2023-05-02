@@ -5,15 +5,16 @@ from gui.impl.backport import TooltipData
 from gui.selectable_reward.constants import FEATURE_TO_PREFIX, Features
 from gui.server_events.bonuses import SelectableBonus
 from gui.shared.gui_items.processors import makeError
-from gui.shared.gui_items.processors.offers import ReceiveMultipleOfferGiftsProcessor, ReceiveOfferGiftProcessor, BattleMattersOfferProcessor
+from gui.shared.gui_items.processors.offers import ReceiveMultipleOfferGiftsProcessor, ReceiveOfferGiftProcessor, BattleMattersOfferProcessor, WinbackMultipleOfferProcessor
 from helpers import dependency
 from shared_utils import first
 from skeletons.gui.battle_matters import IBattleMattersController
+from skeletons.gui.game_control import IWinbackController
 from skeletons.gui.offers import IOffersDataProvider
 from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
-    from typing import Callable, Dict, List, Tuple
-    from account_helpers.offers.events_data import OfferEventData
+    from typing import Callable, Dict, List, Optional, Tuple
+    from account_helpers.offers.events_data import OfferEventData, OfferGift
     from gui.SystemMessages import ResultMsg
 _logger = logging.getLogger(__name__)
 
@@ -59,11 +60,24 @@ class SelectableRewardManager(object):
         offer = cls._getBonusOffer(bonus)
         return {gift.id:{'option': gift.bonus, 'count': gift.giftCount, 'limit': gift.limit()} for gift in offer.getAllGifts()}
 
+    @staticmethod
+    def defaultGiftExtractor(gift, count):
+        return (gift.bonus, count)
+
+    @staticmethod
+    def giftBonusesExtractor(gift, *_):
+        return gift.bonuses
+
+    @staticmethod
+    def giftRawBonusesExtractor(gift, *_):
+        return gift.rawBonuses
+
     @classmethod
-    def getBonusReceivedOptions(cls, bonus):
+    def getBonusReceivedOptions(cls, bonus, extractor=None):
         if not isinstance(bonus, SelectableBonus):
             return []
         else:
+            extractor = extractor or cls.defaultGiftExtractor
             offer = cls._getBonusOffer(bonus)
             result = []
             receivedGifts = cls.__offersDataProvider.getReceivedGifts(offer.id)
@@ -71,7 +85,7 @@ class SelectableRewardManager(object):
                 if count > 0:
                     gift = offer.getGift(giftId)
                     if gift is not None:
-                        result.append((gift.bonus, count))
+                        result.append(extractor(gift, count))
 
             return result
 
@@ -179,6 +193,36 @@ class BattleMattersSelectableRewardManager(SelectableRewardManager):
     @classmethod
     def getTabTooltipData(cls, selectableBonus):
         return
+
+    @classmethod
+    def getBonusOffer(cls, bonus):
+        return cls._getBonusOffer(bonus)
+
+
+class WinbackSelectableRewardManager(SelectableRewardManager):
+    _MULTIPLE_GIFT_PROCESSOR = WinbackMultipleOfferProcessor
+    _winbackController = dependency.descriptor(IWinbackController)
+
+    @classmethod
+    def isFeatureReward(cls, tokenID):
+        return cls._winbackController.isWinbackOfferToken(tokenID)
+
+    @classmethod
+    def getRawBonusOptions(cls, bonus):
+        if not isinstance(bonus, SelectableBonus):
+            return {}
+        offer = cls._getBonusOffer(bonus)
+        return {gift.id:{'option': gift.rawBonuses, 'count': gift.giftCount, 'limit': gift.limit()} for gift in offer.getAllGifts()}
+
+    @classmethod
+    def getFirstOfferGift(cls, bonus):
+        if not isinstance(bonus, SelectableBonus):
+            return
+        else:
+            offer = cls._getBonusOffer(bonus)
+            if offer is not None:
+                return offer.getFirstGift()
+            return
 
     @classmethod
     def getBonusOffer(cls, bonus):

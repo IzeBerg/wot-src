@@ -1,4 +1,5 @@
-
+from collections import defaultdict
+from soft_exception import SoftException
 
 class DictObj(dict):
 
@@ -115,3 +116,14 @@ class OrderedSet(set):
         return self
 
     __isub__ = difference_update
+
+
+class ParametrisedFactoryDefaultDict(defaultdict):
+
+    def __missing__(self, key):
+        self[key] = value = self.default_factory(key)
+        return value
+
+
+class DynamicFactorCollectorKeyError(SoftException):
+    pass

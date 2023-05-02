@@ -13,6 +13,8 @@ package net.wg.gui.lobby.tankman
    {
       
       private static const SIXTH_SENSE:String = "commander_sixthSense";
+      
+      private static const SKILL_LEVEL:uint = 100;
        
       
       public var commanderFeature:TextField;
@@ -66,7 +68,7 @@ package net.wg.gui.lobby.tankman
          {
             return;
          }
-         this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_SKILL,null,SIXTH_SENSE,this._tankmanID);
+         this._toolTipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.CREW_PERK_GF,SIXTH_SENSE,this._tankmanID,SKILL_LEVEL);
       }
       
       private function onMouseOutHandler(param1:MouseEvent) : void

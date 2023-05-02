@@ -250,6 +250,14 @@ package net.wg.gui.lobby.header
       
       override protected function setHangarMenuData(param1:DataProvider) : void
       {
+         var _loc2_:HangarMenuTabItemVO = null;
+         for each(_loc2_ in param1)
+         {
+            if(this.mainMenuButtonBar.getButtonByValue(_loc2_.value))
+            {
+               this.removeButtonCounter(_loc2_.value);
+            }
+         }
          this.mainMenuButtonBar.dataProvider = param1;
          this.mainMenuButtonBar.validateNow();
       }
@@ -400,9 +408,7 @@ package net.wg.gui.lobby.header
       
       public function as_removeButtonCounter(param1:String) : void
       {
-         var _loc2_:MainMenuButton = this.mainMenuButtonBar.getButtonByValue(param1);
-         this.assertMainMenuButtonWasntFound(_loc2_,param1);
-         this._counterManager.removeCounter(_loc2_.hitMc);
+         this.removeButtonCounter(param1);
       }
       
       public function as_setButtonCounter(param1:String, param2:String) : void
@@ -650,6 +656,13 @@ package net.wg.gui.lobby.header
       public function setStateSizeBoundaries(param1:int, param2:int) : void
       {
          this.mainMenuButtonBar.isSmallWidth = param1 < StageSizeBoundaries.WIDTH_1366;
+      }
+      
+      private function removeButtonCounter(param1:String) : void
+      {
+         var _loc2_:MainMenuButton = this.mainMenuButtonBar.getButtonByValue(param1);
+         this.assertMainMenuButtonWasntFound(_loc2_,param1);
+         this._counterManager.removeCounter(_loc2_.hitMc);
       }
       
       private function assertMainMenuButtonWasntFound(param1:Button, param2:String) : void

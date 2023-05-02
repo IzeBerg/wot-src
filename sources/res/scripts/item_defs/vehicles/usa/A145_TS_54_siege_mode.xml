@@ -12,7 +12,7 @@
 	<postProgressionTree>role_HT_universal</postProgressionTree>
 	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
-		<forward>35</forward>
+		<forward>40</forward>
 		<backward>15</backward>
 	</speedLimits>
 	<invisibility>
@@ -4241,7 +4241,10 @@
 						0.38
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>8</reloadTime>
+					<reloadTime>
+						7.5
+						<!--BW_String-->
+					</reloadTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.06
@@ -4265,7 +4268,10 @@
 							2.0
 							<!--BW_String-->
 						</reloadLockTime>
-						<reloadTimes>8 8</reloadTimes>
+						<reloadTimes>
+							7.5 7.5
+							<!--BW_String-->
+						</reloadTimes>
 						<rateTime>5</rateTime>
 						<chargeThreshold>
 							0.5
@@ -5378,8 +5384,8 @@
 		<detailed>
 			<engines>
 				<GM_12V71T>
-					<smplEnginePower>650</smplEnginePower>
-					<smplFwMaxSpeed>35</smplFwMaxSpeed>
+					<smplEnginePower>800</smplEnginePower>
+					<smplFwMaxSpeed>40</smplFwMaxSpeed>
 				</GM_12V71T>
 			</engines>
 			<chassis>

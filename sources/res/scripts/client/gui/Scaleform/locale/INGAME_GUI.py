@@ -896,6 +896,8 @@ class INGAME_GUI(object):
     BATTLEPROGRESS_HINT_NOBINDINGKEY = '#ingame_gui:battleProgress/hint/noBindingKey'
     HELPSCREEN_HINT_PRESS = '#ingame_gui:helpScreen/hint/press'
     HELPSCREEN_HINT_DESCRIPTION = '#ingame_gui:helpScreen/hint/description'
+    HELPSCREEN_MAPBOX_PRESS = '#ingame_gui:helpScreen/mapbox/press'
+    HELPSCREEN_MAPBOX_DESCRIPTION = '#ingame_gui:helpScreen/mapbox/description'
     COMMANDERCAM_HINT_DESCRIPTION = '#ingame_gui:commanderCam/hint/description'
     BATTLECOMMUNICATION_HINT_PRESS = '#ingame_gui:battleCommunication/hint/press'
     BATTLECOMMUNICATION_HINT_DESCRIPTION = '#ingame_gui:battleCommunication/hint/description'
@@ -988,6 +990,7 @@ class INGAME_GUI(object):
     PERSONAL_RESERVES_HINT_PRESS = '#ingame_gui:personal_reserves/hint/press'
     PERSONAL_RESERVES_HINT_DESCRIPTION = '#ingame_gui:personal_reserves/hint/description'
     HINT_NOBINDINGKEY = '#ingame_gui:hint/noBindingKey'
+    DANGER_ZONE_INDICATOR = '#ingame_gui:danger_zone/indicator'
     CHAT_SHORTCUTS_ENUM = (
      CHAT_SHORTCUTS_ATTENTION_TO_POSITION_GRIDINFO,
      CHAT_SHORTCUTS_ATTENTION_TO_POSITION,
