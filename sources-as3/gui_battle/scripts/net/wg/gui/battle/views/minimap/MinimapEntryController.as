@@ -109,8 +109,7 @@ package net.wg.gui.battle.views.minimap
       public function registerNonScalableEntry(param1:DisplayObject) : void
       {
          this._nonScalableEntries.push(param1);
-         var _loc2_:Number = MinimapSizeConst.ENTRY_CONTR_SCALES[this._sizeIndex];
-         param1.scaleX = param1.scaleY = _loc2_;
+         param1.scaleX = param1.scaleY = MinimapSizeConst.ENTRY_CONTR_SCALES[this._sizeIndex];
       }
       
       public function registerScalableEntry(param1:DisplayObject, param2:Boolean = false) : void

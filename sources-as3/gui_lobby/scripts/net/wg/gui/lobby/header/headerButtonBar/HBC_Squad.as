@@ -446,6 +446,11 @@ package net.wg.gui.lobby.header.headerButtonBar
          }
       }
       
+      override public function set enabled(param1:Boolean) : void
+      {
+         super.enabled = this.leftIconContainer.enabled = this.mainIconContainer.enabled = this.rightIconContainer.enabled = param1;
+      }
+      
       override public function set data(param1:Object) : void
       {
          if(_baseDisposed)

@@ -1,15 +1,19 @@
-import logging
-from functools import partial
-import typing, BigWorld
+import typing
+from account_helpers.AccountSettings import NATION_CHANGE_VIEWED
+from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
+from helpers.CallbackDelayer import CallbackDelayer
+from helpers.i18n import makeString as _ms
+from helpers.statistics import HANGAR_LOADING_STATE
+from helpers.time_utils import ONE_MINUTE
+import BigWorld, logging
 from CurrentVehicle import g_currentVehicle
 from HeroTank import HeroTank
 from PlayerEvents import g_playerEvents
 from account_helpers import AccountSettings
-from account_helpers.AccountSettings import NATION_CHANGE_VIEWED
-from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
 from battle_pass_common import BATTLE_PASS_CONFIG_NAME
 from constants import Configs, DOG_TAGS_CONFIG, PREBATTLE_TYPE, QUEUE_TYPE, RENEWABLE_SUBSCRIPTION_CONFIG
 from frameworks.wulf import WindowFlags, WindowLayer, WindowStatus
+from functools import partial
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -44,14 +48,10 @@ from gui.shared.tutorial_helper import getTutorialGlobalStorage
 from gui.shared.utils.functions import makeTooltip
 from gui.sounds.filters import States, StatesGroup
 from helpers import dependency
-from helpers.CallbackDelayer import CallbackDelayer
-from helpers.i18n import makeString as _ms
-from helpers.statistics import HANGAR_LOADING_STATE
-from helpers.time_utils import ONE_MINUTE
 from shared_utils import nextTick
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBootcampController, IComp7Controller, IEpicBattleMetaGameController, IEventLootBoxesController, IFunRandomController, IIGRController, IMapboxController, IMarathonEventsController, IPromoController, IRankedBattlesController
+from skeletons.gui.game_control import IWotPlusController, IBattlePassController, IBattleRoyaleController, IBootcampController, IComp7Controller, IEpicBattleMetaGameController, IEventLootBoxesController, IFunRandomController, IIGRController, IMapboxController, IMarathonEventsController, IPromoController, IRankedBattlesController
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersBannerController
@@ -98,6 +98,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     __mapboxCtrl = dependency.descriptor(IMapboxController)
     __marathonCtrl = dependency.descriptor(IMarathonEventsController)
     __funRandomCtrl = dependency.descriptor(IFunRandomController)
+    _wotPlusCtrl = dependency.descriptor(IWotPlusController)
     _bootcamp = dependency.descriptor(IBootcampController)
     __eventLootBoxes = dependency.descriptor(IEventLootBoxesController)
     _COMMON_SOUND_SPACE = __SOUND_SETTINGS
@@ -113,7 +114,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__teaser = None
         self.__timer = None
         self.__banTimer = None
-        self.__wotPlusInfo = BigWorld.player().renewableSubscription
         self.__updateDogTagsState()
         self.__updateWotPlusState()
         self.__isEventLootBoxesActive = False
@@ -124,9 +124,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         dialogsContainer = self.app.containerManager.getContainer(WindowLayer.TOP_WINDOW)
         if not dialogsContainer.getView(criteria={POP_UP_CRITERIA.VIEW_ALIAS: VIEW_ALIAS.LOBBY_MENU}):
             self.fireEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_MENU)), scope=EVENT_BUS_SCOPE.LOBBY)
-
-    def onCloseBtnClick(self):
-        self.battleRoyaleController.selectRandomBattle()
 
     def hideTeaser(self):
         self.__teaser.stop(byUser=True)
@@ -187,7 +184,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         g_clientUpdateManager.addCallbacks({'inventory': self.__updateAlertMessage})
         self.lobbyContext.getServerSettings().onServerSettingsChange += self.__onServerSettingChanged
         self._settingsCore.onSettingsChanged += self.__onSettingsChanged
-        self.__wotPlusInfo.onRenewableSubscriptionDataChanged += self.__onWotPlusDataChanged
+        self._wotPlusCtrl.onDataChanged += self.__onWotPlusDataChanged
         self.battlePassController.onSeasonStateChanged += self.__switchCarousels
         self.startGlobalListening()
         self.__updateAll()
@@ -246,7 +243,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         g_clientUpdateManager.removeObjectCallbacks(self)
         self._settingsCore.onSettingsChanged -= self.__onSettingsChanged
         self.lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingChanged
-        self.__wotPlusInfo.onRenewableSubscriptionDataChanged -= self.__onWotPlusDataChanged
+        self._wotPlusCtrl.onDataChanged -= self.__onWotPlusDataChanged
         self.battlePassController.onSeasonStateChanged -= self.__switchCarousels
         self.__timer.clearCallbacks()
         self.__timer = None
@@ -259,8 +256,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         return
 
     def _updateCnSubscriptionMode(self):
-        toggleGFPanel = self.lobbyContext.getServerSettings().isRenewableSubEnabled()
-        self.as_toggleCnSubscriptionS(toggleGFPanel)
+        self.as_toggleCnSubscriptionS(self._wotPlusCtrl.isWotPlusEnabled())
 
     def _updateBattleRoyaleMode(self):
         self.as_toggleBattleRoyaleS(g_currentVehicle.isOnlyForBattleRoyaleBattles())
@@ -270,9 +266,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         getTutorialGlobalStorage().setValue(GLOBAL_FLAG.DOGTAGS_ENABLED, isDogTagsEnabled)
 
     def __updateWotPlusState(self):
-        isWotPlusGoldEnabled = self.lobbyContext.getServerSettings().isRenewableSubGoldReserveEnabled()
-        hasWotPlusActive = BigWorld.player().renewableSubscription.isEnabled()
-        getTutorialGlobalStorage().setValue(GLOBAL_FLAG.WOTPLUS_ENABLED, hasWotPlusActive and isWotPlusGoldEnabled)
         self._updateCnSubscriptionMode()
 
     def __onWindowLoaded(self, uniqueID, newStatus):
@@ -541,6 +534,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__updateCrew()
         self.__updateAlertMessage()
         self.__updateBattleRoyaleComponents()
+        self.__updateComp7ModifiersWidget()
         self._updateCnSubscriptionMode()
         self._updateBattleRoyaleMode()
         Waiting.hide('updateVehicle')
@@ -562,6 +556,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     def __onSpaceRefresh(self):
         self.__isSpaceReadyForC11n = False
         self.__updateState()
+        self.__updateComp7ModifiersWidget()
 
     def __onSpaceCreate(self):
         self.__isSpaceReadyForC11n = True
@@ -716,3 +711,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
 
     def __updateCarouselEventEntryState(self):
         self.as_updateCarouselEventEntryStateS(isAnyEntryVisible())
+
+    def __updateComp7ModifiersWidget(self):
+        self.as_setComp7ModifiersVisibleS(self.__comp7Controller.isBattleModifiersAvailable())

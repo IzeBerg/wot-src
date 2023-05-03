@@ -1537,12 +1537,17 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'battlePassStyleRecieved',
  'battlePassSeasonEnd',
  'wotPlusUnlocked',
+ 'bonusExcludedMap',
  'wotPlusRenewed',
+ 'wotPlusFreeDemountExpired',
  'wotPlusExpired',
  'goldReserveIsFull',
  'passiveXPNoTank',
  'passiveXPIncompatibleCrew',
- 'wotPlusRentEnd',
+ 'passiveXPIncompatibleCrewNewDay',
+ 'passiveXPActivated',
+ 'passiveXPDeactivated',
+ 'passiveXPSwitched',
  'wotPlusNoRentSelected',
  'giftSystemMessage',
  'telecomMergeResults',
@@ -1560,7 +1565,12 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'prbVehicleMaxScoutKick',
  'personalReservesHaveBeenConverted',
  'changeSquadSize',
- 'fairplay'])
+ 'fairplay',
+ 'wotPlusExcludedVehicleExpired',
+ 'wotPlusExcludedVehicleEnabled',
+ 'collectionsItems',
+ 'collectionsReward',
+ 'collectionEntitlementReceived'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

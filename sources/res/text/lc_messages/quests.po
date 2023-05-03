@@ -23,13 +23,13 @@ msgid "action/auto/clanCreationCost"
 msgstr "Discount on creating a clan"
 
 msgid "action/auto/creditsDropSkillsCost"
-msgstr "Discount on resetting crew skills and perks"
+msgstr "Discount on resetting crew perks"
 
 msgid "action/auto/creditsTankmanCost"
 msgstr "Discount on crew training and retraining"
 
 msgid "action/auto/dropSkills/mixed"
-msgstr "Discount on resetting crew skills and perks"
+msgstr "Discount on resetting crew perks"
 
 msgid "action/auto/equipment/creditsPriceMultiplier"
 msgstr "Discount on consumables"
@@ -53,7 +53,7 @@ msgid "action/auto/freeXPToTManXPRate"
 msgstr "Bonus to converting Free Experience to Crew Experience"
 
 msgid "action/auto/goldDropSkillsCost"
-msgstr "Discount on resetting crew skills and perks"
+msgstr "Discount on resetting crew perks"
 
 msgid "action/auto/goldTankmanCost"
 msgstr "Discount on crew training and retraining"
@@ -194,13 +194,13 @@ msgid "action/button/clanCreationCost"
 msgstr "Create a Clan"
 
 msgid "action/button/creditsDropSkillsCost"
-msgstr "Reset Skills and Perks"
+msgstr "Reset Perks"
 
 msgid "action/button/creditsTankmanCost"
 msgstr "Train Crew"
 
 msgid "action/button/dropSkills/mixed"
-msgstr "Reset Skills and Perks"
+msgstr "Reset Perks"
 
 msgid "action/button/equipment/creditsPriceMultiplier"
 msgstr "Purchase Consumables"
@@ -224,7 +224,7 @@ msgid "action/button/freeXPToTManXPRate"
 msgstr "Convert Experience"
 
 msgid "action/button/goldDropSkillsCost"
-msgstr "Reset Skills and Perks"
+msgstr "Reset Perks"
 
 msgid "action/button/goldTankmanCost"
 msgstr "Train Crew"
@@ -329,7 +329,7 @@ msgid "action/chain/hint/customization"
 msgstr "GO TO EXTERIOR"
 
 msgid "action/chain/hint/dropSkills"
-msgstr "RESET SKILLS AND PERKS"
+msgstr "RESET PERKS"
 
 msgid "action/chain/hint/emblems"
 msgstr "CHOOSE EMBLEMS"
@@ -418,9 +418,9 @@ msgstr "Create a clan and gather your friends at a discounted price."
 
 msgid "action/full/creditsDropSkillsCost"
 msgstr ""
-"Reset the skills and perks of your crew members using credits at a discount "
-"of %(discount)s. It can help when you transfer your crew to a vehicle with a"
-" different role in battle."
+"Reset the perks of your crew members using credits at a discount of "
+"%(discount)s. This can help when you transfer your crew to a vehicle with a "
+"different role in battle."
 
 msgid "action/full/creditsTankmanCost"
 msgstr ""
@@ -430,9 +430,9 @@ msgstr ""
 
 msgid "action/full/dropSkills/mixed"
 msgstr ""
-"Reset the skills and perks of your crew members at a discount of "
-"%(discount)s. It can help when you transfer your crew to a vehicle with a "
-"different role in battle."
+"Reset the perks of your crew members at a discount of %(discount)s. This can"
+" help when you transfer your crew to a vehicle with a different role in "
+"battle."
 
 msgid "action/full/exchangeRate"
 msgstr ""
@@ -449,18 +449,18 @@ msgid "action/full/freeXPConversionDiscrecity"
 msgstr ""
 "Convert Combat Experience to Free Experience with this attractive offer. "
 "Free Experience can be used to research any vehicle or module, as well as to"
-" train crew skills and perks."
+" train crew perks."
 
 msgid "action/full/freeXPToTManXPRate"
 msgstr ""
 "Convert Free Experience to Crew Experience with a x%(discount)s gain. The "
-"more experienced the crew, the more skills and perks they can learn, and the"
-" more efficient they are in battle."
+"more experienced the crew, the more perks they can train, and the more "
+"efficient they are in battle."
 
 msgid "action/full/goldDropSkillsCost"
 msgstr ""
-"Reset the skills and perks of your crew members using gold at a discount of "
-"%(discount)s. It can help when you transfer your crew to a vehicle with a "
+"Reset the perks of your crew members using gold at a discount of "
+"%(discount)s. This can help when you transfer your crew to a vehicle with a "
 "different role in battle."
 
 msgid "action/full/goldTankmanCost"
@@ -606,9 +606,9 @@ msgstr ""
 
 msgid "action/hero/full/creditsDropSkillsCost"
 msgstr ""
-"Reset the skills and perks of your crew members using credits at a discount of %(discount)s. It can help when you transfer your crew to a vehicle with a different role in battle.\n"
+"Reset the perks of your crew members using credits at a discount of %(discount)s. This can help when you transfer your crew to a vehicle with a different role in battle.\n"
 "\n"
-"In addition, this option should definitely be considered if you want to retrain your crew for a different vehicle type or change your playing style: for example, if you decide to build your battles around staying unnoticed or transfer your crew from a heavy tank to a tank destroyer, the Concealment skill will become your primary choice."
+"In addition, this option should definitely be considered if you want to retrain your crew for a different vehicle type or change your playstyle. For example, if you decide to center your battles around staying unnoticed or transfer your crew from a heavy tank to a tank destroyer, the Concealment perk will become your primary choice."
 
 msgid "action/hero/full/creditsTankmanCost"
 msgstr ""
@@ -618,9 +618,9 @@ msgstr ""
 
 msgid "action/hero/full/dropSkills/mixed"
 msgstr ""
-"Reset the skills and perks of your crew members at a discount of %(discount)s. It can help when you transfer your crew to a vehicle with a different role in battle.\n"
+"Reset the perks of your crew members at a discount of %(discount)s. This can help when you transfer your crew to a vehicle with a different role in battle.\n"
 "\n"
-"In addition, this option should definitely be considered if you want to retrain your crew for a different vehicle type or change your playing style: for example, if you decide to build your battles around staying unnoticed or transfer your crew from a heavy tank to a tank destroyer, the Concealment skill will become your primary choice."
+"In addition, this option should definitely be considered if you want to retrain your crew for a different vehicle type or change your playstyle. For example, if you decide to center your battles around staying unnoticed or transfer your crew from a heavy tank to a tank destroyer, the Concealment perk will become your primary choice."
 
 msgid "action/hero/full/exchangeRate"
 msgstr ""
@@ -636,24 +636,24 @@ msgstr ""
 
 msgid "action/hero/full/freeXPConversionDiscrecity"
 msgstr ""
-"Convert Combat Experience to Free Experience with this attractive offer. Free Experience can be used to research any vehicle or module, as well as to train crew skills and perks.\n"
-"You can use Free Experience to immediately unlock the desired vehicle without the need to play in all the previous vehicles in the branch. You can just research all the previous vehicles to jump to the targeted one. Free Experience is the most effective means for saving time."
+"Convert Combat Experience to Free Experience with this attractive offer. Free Experience can be used to research any vehicle or module, as well as to train crew perks.\n"
+"You can use Free Experience to immediately unlock the vehicle you desire without needing to play in all the previous vehicles in the branch. You can simply research all the previous vehicles to jump to the one you want. Free Experience is the most effective way to save time."
 
 msgid "action/hero/full/freeXPToTManXPRate"
 msgstr ""
 "Convert Free Experience to Crew Experience with a x%(discount)s gain. The "
-"more experienced the crew, the more skills and perks they can learn, and the"
-" more efficient they are in battle. It is important to remember that some "
-"skills and perks—like Sixth Sense, Repairs, or Concealment—are top priority,"
-" because it will be harder for you to reveal the full combat potential of "
-"your vehicle without them. Converting Free Experience to Crew Experience "
-"will allow you to stay ahead of the game."
+"more experienced the crew, the more perks they can train, and the more "
+"efficient they will be in battle. It is important to remember that some "
+"perks—like Sixth Sense, Repairs, or Concealment—are top priority as it will "
+"be harder for you to reveal the full combat potential of your vehicle "
+"without them. Converting Free Experience to Crew Experience will allow you "
+"to stay ahead of the game."
 
 msgid "action/hero/full/goldDropSkillsCost"
 msgstr ""
-"Reset the skills and perks of your crew members using gold at a discount of %(discount)s. It can help when you transfer your crew to a vehicle with a different role in battle.\n"
+"Reset the perks of your crew members using gold at a discount of %(discount)s. This can help when you transfer your crew to a vehicle with a different role in battle.\n"
 "\n"
-"In addition, this option should definitely be considered if you want to retrain your crew for a different vehicle type or change your playing style: for example, if you decide to build your battles around staying unnoticed or transfer your crew from a heavy tank to a tank destroyer, the Concealment skill will become your primary choice."
+"In addition, this option should definitely be considered if you want to retrain your crew for a different vehicle type or change your playstyle. For example, if you decide to center your battles around staying unnoticed or transfer your crew from a heavy tank to a tank destroyer, the Concealment perk will become your primary choice."
 
 msgid "action/hero/full/goldTankmanCost"
 msgstr ""
@@ -801,14 +801,13 @@ msgid "action/short/clanCreationCost"
 msgstr "A %(discount)s discount on creating a clan"
 
 msgid "action/short/creditsDropSkillsCost"
-msgstr ""
-"A %(discount)s discount on resetting crew skills and perks using credits"
+msgstr "A %(discount)s discount on resetting crew perks using credits"
 
 msgid "action/short/creditsTankmanCost"
 msgstr "A %(discount)s discount on crew training and retraining using credits"
 
 msgid "action/short/dropSkills/mixed"
-msgstr "A %(discount)s discount on resetting crew skills and perks"
+msgstr "A %(discount)s discount on resetting crew perks"
 
 msgid "action/short/equipment/creditsPriceMultiplier"
 msgstr "Up to a %(discount)s discount on purchasing consumables"
@@ -835,7 +834,7 @@ msgid "action/short/freeXPToTManXPRate"
 msgstr "A %(discount)s bonus on converting Free Experience to Crew Experience"
 
 msgid "action/short/goldDropSkillsCost"
-msgstr "A %(discount)s discount on resetting crew skills and perks using gold"
+msgstr "A %(discount)s discount on resetting crew perks using gold"
 
 msgid "action/short/goldTankmanCost"
 msgstr "A %(discount)s discount on crew training and retraining using gold"
@@ -1175,8 +1174,17 @@ msgstr "Access to Purchase"
 msgid "bonusName/entitlements/testEntitlement"
 msgstr "Test Entitlement"
 
+msgid "bonusName/equipCoin"
+msgstr "Components"
+
 msgid "bonusName/eventCoin"
 msgstr "Special event currency"
+
+msgid "bonusName/excluded_map"
+msgstr "Excluded Map"
+
+msgid "bonusName/exclusive_vehicle"
+msgstr "Exclusive Vehicle"
 
 msgid "bonusName/freeTokens"
 msgstr "Order"
@@ -1187,8 +1195,17 @@ msgstr "Free Experience"
 msgid "bonusName/freeXPFactor"
 msgstr "Free Experience Multiplier"
 
+msgid "bonusName/free_equipment_demounting"
+msgstr "Free Equipment Demounting"
+
 msgid "bonusName/gold"
 msgstr "Gold"
+
+msgid "bonusName/gold_bank"
+msgstr "Gold Reserve"
+
+msgid "bonusName/idle_crew_xp"
+msgstr "Intensive Crew Regimen"
 
 msgid "bonusName/inscription"
 msgstr "Inscription"
@@ -1317,7 +1334,7 @@ msgid "bonuses/item/tankmen/no_skills"
 msgstr "For %(vehName)s: %(roleLevel)d%% crew"
 
 msgid "bonuses/item/tankmen/with_skills"
-msgstr "For %(vehName)s: %(roleLevel)d%% crew (crew skills: %(skills)d)"
+msgstr "For %(vehName)s: %(roleLevel)d%% crew (crew perks: %(skills)d)."
 
 msgid "bonuses/item/tankmenXP"
 msgstr "crew experience"
@@ -1394,6 +1411,9 @@ msgstr "Complete 3 Standard Missions to unlock a Bonus Mission."
 msgid "dailyQuests/bonus/tooltipTitle"
 msgstr "Bonus Mission"
 
+msgid "dailyQuests/bonusQuest/bonusMissionTitle"
+msgstr "Bonus Mission"
+
 msgid "dailyQuests/bonusQuest/countDown_hrs"
 msgstr "Expires in %H h %M min"
 
@@ -1401,70 +1421,70 @@ msgid "dailyQuests/bonusQuest/countDown_minSec"
 msgstr "Expires in %MM:%SS"
 
 msgid "dailyQuests/condition/destroyModule_few"
-msgstr "Cause %(value)d critical hits in a battle"
+msgstr "cause %(value)d critical hits in a battle"
 
 msgid "dailyQuests/condition/destroyModule_few_accum"
-msgstr "Cause %(value)d critical hits"
+msgstr "cause %(value)d critical hits"
 
 msgid "dailyQuests/condition/destroyModule_plural"
-msgstr "Cause %(value)d critical hits in a battle"
+msgstr "cause %(value)d critical hits in a battle"
 
 msgid "dailyQuests/condition/destroyModule_plural_accum"
-msgstr "Cause %(value)d critical hits"
+msgstr "cause %(value)d critical hits"
 
 msgid "dailyQuests/condition/destroyVeh_few"
-msgstr "Destroy %(value)d vehicles in a battle"
+msgstr "destroy %(value)d vehicles in a battle"
 
 msgid "dailyQuests/condition/destroyVeh_few_accum"
-msgstr "Destroy %(value)d vehicles"
+msgstr "destroy %(value)d vehicles"
 
 msgid "dailyQuests/condition/destroyVeh_plural"
-msgstr "Destroy %(value)d vehicles in a battle"
+msgstr "destroy %(value)d vehicles in a battle"
 
 msgid "dailyQuests/condition/destroyVeh_plural_accum"
-msgstr "Destroy %(value)d vehicles"
+msgstr "destroy %(value)d vehicles"
 
 msgid "dailyQuests/condition/destroyVeh_singular"
-msgstr "Destroy %(value)d vehicle in a battle"
+msgstr "destroy %(value)d vehicle in a battle"
 
 msgid "dailyQuests/condition/dmgTop"
-msgstr "Be among the top %(value)d players on your team by damage caused"
+msgstr "be among the top %(value)d players on your team by damage caused"
 
 msgid "dailyQuests/condition/dmgTop_first"
-msgstr "Be the top player on your team by damage caused\t"
+msgstr "be the top player on your team by damage caused\t"
 
 msgid "dailyQuests/condition/doDamage"
-msgstr "Cause %(value)d HP of damage in a battle"
+msgstr "cause %(value)d HP of damage in a battle"
 
 msgid "dailyQuests/condition/doDamageVeh"
-msgstr "Cause damage to %(value)d vehicles in a battle"
+msgstr "cause damage to %(value)d vehicles in a battle"
 
 msgid "dailyQuests/condition/doDamageVeh_accum"
-msgstr "Cause damage to %(value)d vehicles"
+msgstr "cause damage to %(value)d vehicles"
 
 msgid "dailyQuests/condition/doDamage_accum"
-msgstr "Cause %(value)d HP of damage"
+msgstr "cause %(value)d HP of damage"
 
 msgid "dailyQuests/condition/earnExp"
-msgstr "Earn %(value)d base experience in a battle"
+msgstr "earn %(value)d base experience in a battle"
 
 msgid "dailyQuests/condition/earnExp_accum"
-msgstr "Earn %(value)d base experience"
+msgstr "earn %(value)d base experience"
 
 msgid "dailyQuests/condition/expTop"
-msgstr "Be among the top %(value)d players on your team by experience earned"
+msgstr "be among the top %(value)d players on your team by experience earned"
 
 msgid "dailyQuests/condition/expTop_first"
-msgstr "Be the top player on your team by experience earned"
+msgstr "be the top player on your team by experience earned"
 
 msgid "dailyQuests/condition/spotVeh_few"
-msgstr "Spot %(value)d vehicles in a battle"
+msgstr "spot %(value)d vehicles in a battle"
 
 msgid "dailyQuests/condition/winBattle"
-msgstr "Win a battle"
+msgstr "win a battle"
 
 msgid "dailyQuests/condition/winBattle_accum"
-msgstr "Win %(value)d battles"
+msgstr "win %(value)d battles"
 
 msgid "dailyQuests/countDown/remainingText"
 msgstr "until new Standard Missions are available"
@@ -1480,65 +1500,11 @@ msgstr ""
 msgid "dailyQuests/footer/title"
 msgstr "Completed missions:"
 
-msgid "dailyQuests/header/aboutInfo"
-msgstr "ABOUT DAILY MISSIONS"
-
-msgid "dailyQuests/header/aboutTooltip/body"
-msgstr "Click on the link for additional information."
-
-msgid "dailyQuests/header/aboutTooltip/header"
-msgstr "About Daily Missions"
-
-msgid "dailyQuests/header/title"
+msgid "dailyQuests/header/default"
 msgstr "DAILY MISSIONS"
 
-msgid "dailyQuests/info/battlePassDailyMissionTitle"
-msgstr "Standard Missions"
-
-msgid "dailyQuests/info/battlePassDailyMissions"
-msgstr ""
-"Standard Missions are random conditions that can be completed every day. "
-"Similar to Personal Missions, the progress on Standard Missions is updated "
-"only after the end of each battle. We recommend completing it on the same "
-"day it is received. Otherwise, it will be transferred to the next day, "
-"blocking the next mission from being completed. During Battle Pass, each "
-"mission will provide additional Battle Pass Points."
-
-msgid "dailyQuests/info/bonusMission"
-msgstr ""
-"After completing 3 Standard Missions, a Bonus Mission becomes available with"
-" even more valuable rewards. The Bonus Mission must be completed by the end "
-"of the day. Otherwise, the Bonus Mission will expire."
-
-msgid "dailyQuests/info/bonusMissionTitle"
-msgstr "Bonus Mission"
-
-msgid "dailyQuests/info/dailyMissionTitle"
-msgstr "Standard Missions"
-
-msgid "dailyQuests/info/dailyMissions"
-msgstr ""
-"Standard Missions are random conditions that can be completed every day. "
-"Similar to Personal Missions, the progress on Standard Missions is updated "
-"only after the end of each battle. These missions do not have any time "
-"limits and can be completed at any time."
-
-msgid "dailyQuests/info/missionSwitchTitle"
-msgstr "Mission Re-roll"
-
-msgid "dailyQuests/info/missionSwitch_hrs"
-msgstr ""
-"Players can re-roll an unwanted Standard Mission to receive a different one."
-" After doing this, the Mission Re-roll button will become unavailable for %H"
-" h. You may lose your progression after re-rolling the mission if one or "
-"several of your vehicles are in battle."
-
-msgid "dailyQuests/info/missionSwitch_min"
-msgstr ""
-"Players can re-roll an unwanted Standard Mission to receive a different one."
-" After doing this, the Mission Re-roll button will become unavailable for %H"
-" h and %MM min. You may lose your progression after re-rolling the mission "
-"if one or several of your vehicles are in battle."
+msgid "dailyQuests/header/winback"
+msgstr "BACK IN ACTION"
 
 msgid "dailyQuests/missionSwitch/tooltip/body/available"
 msgstr "Available in:"
@@ -1582,6 +1548,19 @@ msgstr "Second Daily Mission"
 
 msgid "dailyQuests/tab/label"
 msgstr "Standard"
+
+msgid "dailyQuests/takeRewardsButton/countdown"
+msgstr "Available: {cream_Open}%(leftTime)s{cream_Close}"
+
+msgid "dailyQuests/takeRewardsButton/text"
+msgstr "CLAIM REWARDS"
+
+msgid "dailyQuests/takeRewardsButton/tooltip"
+msgstr "Click to select and claim rewards."
+
+msgid "dailyQuests/takeRewardsButton/tooltipDisable"
+msgstr ""
+"Rewards are temporarily unavailable. We apologize for the inconvenience."
 
 msgid "details/conditions/achievements"
 msgstr "Receive one of the following awards:"
@@ -1792,6 +1771,9 @@ msgstr "Total:"
 msgid "details/conditions/cumulative/capturePoints"
 msgstr "Base capture points"
 
+msgid "details/conditions/cumulative/comp7PrestigePoints"
+msgstr "Prestige Points"
+
 msgid "details/conditions/cumulative/critsCount"
 msgstr ""
 "Total damaged or destroyed enemy vehicles’ internal or external modules or "
@@ -1839,7 +1821,7 @@ msgid "details/conditions/cumulative/damaged"
 msgstr "Enemy vehicles damaged"
 
 msgid "details/conditions/cumulative/damagedHp"
-msgstr "Enemy vehicles damaged"
+msgstr "enemy vehicles damaged"
 
 msgid "details/conditions/cumulative/damagedVehicleCntAssistedRadio"
 msgstr "Enable your allies to cause damage to enemy vehicles by spotting them"
@@ -4020,7 +4002,7 @@ msgid "details/modifiers/economics/clanCreationCost"
 msgstr "On creating a clan"
 
 msgid "details/modifiers/economics/creditsDropSkillsCost"
-msgstr "On resetting crew skills for credits"
+msgstr "On resetting crew perks for credits"
 
 msgid "details/modifiers/economics/creditsTankmanCost"
 msgstr "On crew training and retraining for credits"
@@ -4043,7 +4025,7 @@ msgid "details/modifiers/economics/freeXPToTManXPRate"
 msgstr "On cost of converting Free Experience to crew XP"
 
 msgid "details/modifiers/economics/goldDropSkillsCost"
-msgstr "On resetting crew skills for gold"
+msgstr "On resetting crew perks for gold"
 
 msgid "details/modifiers/economics/goldTankmanCost"
 msgstr "On crew training and retraining for gold"
@@ -4490,17 +4472,176 @@ msgstr "%M min"
 msgid "general/countdown/timer_sec"
 msgstr "%S s"
 
-msgid "general/info/back/goto"
-msgstr "TO MISSIONS"
-
-msgid "general/info/back/title"
-msgstr "BACK"
-
 msgid "igr/tooltip/battlesLabel"
 msgstr "Battles"
 
 msgid "igr/tooltip/winsLabel"
 msgstr "Victories"
+
+msgid "infoPage/bonusMission/default"
+msgstr ""
+"After completing 3 Standard Missions, a Bonus Mission becomes available with"
+" even more valuable rewards. The Bonus Mission must be completed by the end "
+"of the day. Otherwise, the Bonus Mission will expire."
+
+msgid "infoPage/bonusMission/winback"
+msgstr ""
+"After completing 3 Standard Missions, a Bonus Mission becomes available with"
+" even more valuable rewards. The Bonus Mission must be completed by the end "
+"of the day. Otherwise, the Bonus Mission will expire."
+
+msgid "infoPage/bonusMissionTitle"
+msgstr "Bonus Mission"
+
+msgid "infoPage/conditions/default"
+msgstr ""
+"Some missions must be completed in one battle, while others are accumulative"
+" and can be completed over an unlimited time. Accumulative missions have a "
+"progress bar. You can complete missions in Random Battles and Grand Battles,"
+" as well as in Onslaught, and your mission progress will be saved between "
+"game modes."
+
+msgid "infoPage/conditions/winback"
+msgstr ""
+"Some missions must be completed in one battle, while others are accumulative"
+" and can be completed over an unlimited time. Accumulative missions have a "
+"progress bar. You can complete missions in Warm-Up and Random Battles "
+"(including Grand Battles)."
+
+msgid "infoPage/conditions/winback_comp7Active"
+msgstr ""
+"Some missions must be completed in one battle, while others are accumulative"
+" and can be completed over an unlimited time. Accumulative missions have a "
+"progress bar. You can complete missions in Warm-Up, Random Battles "
+"(including Grand Battles), and Onslaught, and your mission progress will be "
+"saved between game modes."
+
+msgid "infoPage/conditionsTitle"
+msgstr "Conditions"
+
+msgid "infoPage/dailyMissionTitle"
+msgstr "Standard Missions"
+
+msgid "infoPage/dailyMissions/battlePassDailyMissions/default"
+msgstr ""
+"Standard Missions are random conditions that can be completed every day. "
+"Similar to Personal Missions, the progress on Standard Missions is updated "
+"only after the end of each battle. We recommend completing it on the same "
+"day it is received. Otherwise, it will be transferred to the next day, "
+"blocking the next mission from being completed. During Battle Pass, each "
+"mission will provide additional Battle Pass Points."
+
+msgid "infoPage/dailyMissions/battlePassDailyMissions/winback"
+msgstr ""
+"Standard Missions with random conditions can be completed every day. "
+"Progress on Standard Missions is only updated at the end of each battle. We "
+"recommend completing each mission on the same day it is received. Otherwise,"
+" it will be transferred to the next day, blocking the next mission from "
+"being completed. During Battle Pass, each mission will provide additional "
+"Battle Pass Points."
+
+msgid "infoPage/dailyMissions/default"
+msgstr ""
+"Standard Missions are random conditions that can be completed every day. "
+"Similar to Personal Missions, the progress on Standard Missions is updated "
+"only after the end of each battle. These missions do not have any time "
+"limits and can be completed at any time."
+
+msgid "infoPage/dailyMissions/winback"
+msgstr ""
+"Standard Missions with random conditions can be completed every day. "
+"Progress on Standard Missions is only updated at the end of each battle. "
+"These missions do not have a time limit and can be completed at any time."
+
+msgid "infoPage/epicRewards/default"
+msgstr ""
+"Epic Reward is a marathon-like cycle. Every Standard, Premium, and Bonus "
+"Mission completed counts towards its progress. After reaching the end of the"
+" cycle, it starts anew. The Epic Reward cycle does not have a time limit and"
+" can be completed at any time."
+
+msgid "infoPage/epicRewards/winback"
+msgstr ""
+"You need to complete the entire Back in Action mission Progression to "
+"receive the main reward. Every Standard, Premium, and Bonus Mission "
+"completed counts towards its progress. Upon completing the final mission, "
+"you will receive your rewards. At that time, the Progression will be reset, "
+"and you will be able to complete it again."
+
+msgid "infoPage/epicRewardsTitle"
+msgstr "Epic Reward"
+
+msgid "infoPage/header/default"
+msgstr "ABOUT DAILY MISSIONS"
+
+msgid "infoPage/header/winback"
+msgstr "BACK IN ACTION"
+
+msgid "infoPage/infoButton/back/goto"
+msgstr "TO MISSIONS"
+
+msgid "infoPage/infoButton/back/title"
+msgstr "BACK"
+
+msgid "infoPage/infoButton/default"
+msgstr "ABOUT DAILY MISSIONS"
+
+msgid "infoPage/infoButton/winback"
+msgstr "ABOUT MISSIONS"
+
+msgid "infoPage/infoButtonTooltip/body"
+msgstr "Click on the link for additional information."
+
+msgid "infoPage/infoButtonTooltip/header/default"
+msgstr "About Daily Missions"
+
+msgid "infoPage/infoButtonTooltip/header/winback"
+msgstr "About Missions"
+
+msgid "infoPage/missionSwitch/winback"
+msgstr ""
+"Once every 4 hours, any Standard Mission can be replaced with another random"
+" mission. If one of your vehicles is in battle at this time, your completion"
+" progress will be lost."
+
+msgid "infoPage/missionSwitchTitle"
+msgstr "Mission Re-roll"
+
+msgid "infoPage/missionSwitch_hrs"
+msgstr ""
+"Players can re-roll an unwanted Standard Mission to receive a different one."
+" After doing this, the Mission Re-roll button will become unavailable for %H"
+" h. You may lose your progression after re-rolling the mission if one or "
+"several of your vehicles are in battle."
+
+msgid "infoPage/missionSwitch_min"
+msgstr ""
+"Players can re-roll an unwanted Standard Mission to receive a different one."
+" After doing this, the Mission Re-roll button will become unavailable for %H"
+" h and %MM min. You may lose your progression after re-rolling the mission "
+"if one or several of your vehicles are in battle."
+
+msgid "infoPage/premiumMissions/default"
+msgstr ""
+"With WoT Premium Account, you will have access to a set of 3 Premium "
+"Missions that must be completed sequentially. These missions can all be "
+"completed in Random Battles and Onslaught. Your progress on these Premium "
+"Missions will only be updated at the end of each battle."
+
+msgid "infoPage/premiumMissions/winback"
+msgstr ""
+"WoT Premium Account gives access to a set of 3 Premium Missions that are "
+"completed sequentially. These missions can be completed in Warm-Up and "
+"Random Battles. Progress is only updated at the end of each battle."
+
+msgid "infoPage/premiumMissions/winback_comp7Active"
+msgstr ""
+"WoT Premium Account gives access to a set of 3 Premium Missions that are "
+"completed sequentially. These missions can be completed in Warm-Up, Random "
+"Battles, and Onslaught. Progress is only updated at the end of each battle."
+
+msgid "infoPage/premiumMissionsTitle"
+msgstr "Premium Missions"
 
 msgid "item/timer/tillFinish"
 msgstr "Finish time"
@@ -4942,7 +5083,8 @@ msgid "missions/tab/label/missions"
 msgstr "Training Missions"
 
 msgid "missions/tab/mapbox/body"
-msgstr "Explore new maps, choose the best one, and receive rewards."
+msgstr ""
+"Test new map mechanics, choose the ones you like, and receive rewards."
 
 msgid "missions/tab/mapbox/header"
 msgstr "Recon Mission"
@@ -5174,10 +5316,10 @@ msgid "premiumQuests/body/title"
 msgstr "Additional credits, experience, and bonds"
 
 msgid "premiumQuests/condition/dmgTop_5"
-msgstr "Be among the top 5 players on your team by damage caused"
+msgstr "be among the top 5 players on your team by damage caused"
 
 msgid "premiumQuests/condition/win/winLong"
-msgstr "Win a battle"
+msgstr "win a battle"
 
 msgid "premiumQuests/countDown/remainingText"
 msgstr "until new Premium Missions are available"
@@ -5191,48 +5333,11 @@ msgstr "WoT Premium Account required"
 msgid "premiumQuests/detailedQuests/requirements/token"
 msgstr "The previous mission has not been completed"
 
-msgid "premiumQuests/header/aboutInfo"
-msgstr "ABOUT DAILY MISSIONS"
-
-msgid "premiumQuests/header/aboutTooltip/body"
-msgstr "Click on the link for additional information."
-
-msgid "premiumQuests/header/aboutTooltip/header"
-msgstr "About Daily Missions"
-
-msgid "premiumQuests/header/title"
+msgid "premiumQuests/header/default"
 msgstr "PREMIUM MISSIONS"
 
-msgid "premiumQuests/info/conditions"
-msgstr ""
-"Some missions must be completed in one battle, while others are accumulative"
-" and can be completed over an unlimited time. Accumulative missions have a "
-"progress bar. You can complete missions in Random Battles and Grand Battles,"
-" as well as in Onslaught, and your mission progress will be saved between "
-"game modes."
-
-msgid "premiumQuests/info/conditionsTitle"
-msgstr "Conditions"
-
-msgid "premiumQuests/info/epicRewards"
-msgstr ""
-"Epic Reward is a marathon-like cycle. Every Standard, Premium, and Bonus "
-"Mission completed counts towards its progress. After reaching the end of the"
-" cycle, it starts anew. The Epic Reward cycle does not have a time limit and"
-" can be completed at any time."
-
-msgid "premiumQuests/info/epicRewardsTitle"
-msgstr "Epic Reward"
-
-msgid "premiumQuests/info/premiumMissions"
-msgstr ""
-"With WoT Premium Account, you will have access to a set of 3 Premium "
-"Missions that must be completed sequentially. These missions can all be "
-"completed in Random Battles and Onslaught. Your progress on these Premium "
-"Missions will only be updated at the end of each battle."
-
-msgid "premiumQuests/info/premiumMissionsTitle"
-msgstr "Premium Missions"
+msgid "premiumQuests/header/winback"
+msgstr "BACK IN ACTION"
 
 msgid "premiumQuests/notPremiumAccount/button"
 msgstr "Purchase Premium"

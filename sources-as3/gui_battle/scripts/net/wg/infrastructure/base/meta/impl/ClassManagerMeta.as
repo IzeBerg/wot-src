@@ -656,6 +656,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.MinimapHint;
    import net.wg.gui.battle.views.minimap.MinimapHintIconInfo;
    import net.wg.gui.battle.views.minimap.MinimapIconCollection;
+   import net.wg.gui.battle.views.minimap.ScenarioLayer;
    import net.wg.gui.battle.views.minimap.components.entries.arty.ArtyHitDotMarker;
    import net.wg.gui.battle.views.minimap.components.entries.arty.ArtyMarkerMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.background.BootcampTargetMinimapEntry;
@@ -672,6 +673,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.constants.PersonalMinimapEntryConst;
    import net.wg.gui.battle.views.minimap.components.entries.constants.PointsOfInterestMinimapEntryConst;
    import net.wg.gui.battle.views.minimap.components.entries.constants.RepairMinimapEntryConst;
+   import net.wg.gui.battle.views.minimap.components.entries.constants.ScenarioMinimapEntryConst;
    import net.wg.gui.battle.views.minimap.components.entries.constants.TeamBaseMinimapEntryConst;
    import net.wg.gui.battle.views.minimap.components.entries.constants.VehicleMinimapEntryConst;
    import net.wg.gui.battle.views.minimap.components.entries.epic.FrontLinePointEntry;
@@ -702,6 +704,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.personal.ViewRangeSectorMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.pointsOfInterest.MinimapPoiProgressCircle;
    import net.wg.gui.battle.views.minimap.components.entries.pointsOfInterest.PoiMinimapEntry;
+   import net.wg.gui.battle.views.minimap.components.entries.scenario.ScenarioMinimapEntry;
+   import net.wg.gui.battle.views.minimap.components.entries.scenario.ScenarioMinimapProgressCircle;
    import net.wg.gui.battle.views.minimap.components.entries.teambase.AllyTeamBaseMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.teambase.AllyTeamSpawnMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.teambase.ControlPointMinimapEntry;
@@ -716,6 +720,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.containers.EpicMinimapEntriesContainer;
    import net.wg.gui.battle.views.minimap.containers.MinimapEntriesContainer;
    import net.wg.gui.battle.views.minimap.events.MinimapEvent;
+   import net.wg.gui.battle.views.perksPanel.PerksPanel;
+   import net.wg.gui.battle.views.perksPanel.components.PerkItem;
+   import net.wg.gui.battle.views.perksPanel.data.PerkItemVO;
+   import net.wg.gui.battle.views.perksPanel.events.PerkItemEvent;
    import net.wg.gui.battle.views.personalReservesTab.PersonalReservesTab;
    import net.wg.gui.battle.views.piercingDebugPanel.PiercingDebugPanel;
    import net.wg.gui.battle.views.piercingDebugPanel.PiercingDebugRenderer;
@@ -824,6 +832,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.staticMarkers.repairPoint.RepairPointIcon;
    import net.wg.gui.battle.views.staticMarkers.repairPoint.RepairPointMarker;
    import net.wg.gui.battle.views.staticMarkers.safeZone.SafeZoneMarker;
+   import net.wg.gui.battle.views.staticMarkers.scenario.ScenarioMarker;
+   import net.wg.gui.battle.views.staticMarkers.scenario.ScenarioMarkerProgressCircle;
    import net.wg.gui.battle.views.stats.SpeakAnimation;
    import net.wg.gui.battle.views.stats.SquadTooltip;
    import net.wg.gui.battle.views.stats.StatsUserProps;
@@ -1023,6 +1033,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IMapsTrainingIngameHelpWindowMeta;
    import net.wg.infrastructure.base.meta.IMapsTrainingPrebattleTimerMeta;
    import net.wg.infrastructure.base.meta.IMinimapMeta;
+   import net.wg.infrastructure.base.meta.IPerksPanelMeta;
    import net.wg.infrastructure.base.meta.IPersonalReservesTabMeta;
    import net.wg.infrastructure.base.meta.IPiercingDebugPanelMeta;
    import net.wg.infrastructure.base.meta.IPlayersPanelMeta;
@@ -2368,6 +2379,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_MINIMAPICONCOLLECTION:Class = MinimapIconCollection;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_SCENARIOLAYER:Class = ScenarioLayer;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_ARTY_ARTYHITDOTMARKER:Class = ArtyHitDotMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_ARTY_ARTYMARKERMINIMAPENTRY:Class = ArtyMarkerMinimapEntry;
@@ -2399,6 +2412,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_CONSTANTS_POINTSOFINTERESTMINIMAPENTRYCONST:Class = PointsOfInterestMinimapEntryConst;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_CONSTANTS_REPAIRMINIMAPENTRYCONST:Class = RepairMinimapEntryConst;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_CONSTANTS_SCENARIOMINIMAPENTRYCONST:Class = ScenarioMinimapEntryConst;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_CONSTANTS_TEAMBASEMINIMAPENTRYCONST:Class = TeamBaseMinimapEntryConst;
       
@@ -2460,6 +2475,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_POINTSOFINTEREST_POIMINIMAPENTRY:Class = PoiMinimapEntry;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_SCENARIO_SCENARIOMINIMAPENTRY:Class = ScenarioMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_SCENARIO_SCENARIOMINIMAPPROGRESSCIRCLE:Class = ScenarioMinimapProgressCircle;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_ALLYTEAMBASEMINIMAPENTRY:Class = AllyTeamBaseMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_ALLYTEAMSPAWNMINIMAPENTRY:Class = AllyTeamSpawnMinimapEntry;
@@ -2487,6 +2506,14 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_CONTAINERS_MINIMAPENTRIESCONTAINER:Class = MinimapEntriesContainer;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_EVENTS_MINIMAPEVENT:Class = MinimapEvent;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_PERKSPANEL_PERKSPANEL:Class = PerksPanel;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_PERKSPANEL_COMPONENTS_PERKITEM:Class = PerkItem;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_PERKSPANEL_DATA_PERKITEMVO:Class = PerkItemVO;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_PERKSPANEL_EVENTS_PERKITEMEVENT:Class = PerkItemEvent;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_PERSONALRESERVESTAB_PERSONALRESERVESTAB:Class = PersonalReservesTab;
       
@@ -2703,6 +2730,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_REPAIRPOINT_REPAIRPOINTMARKER:Class = RepairPointMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_SAFEZONE_SAFEZONEMARKER:Class = SafeZoneMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_SCENARIO_SCENARIOMARKER:Class = ScenarioMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_SCENARIO_SCENARIOMARKERPROGRESSCIRCLE:Class = ScenarioMarkerProgressCircle;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATS_SPEAKANIMATION:Class = SpeakAnimation;
       
@@ -3102,6 +3133,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMINIMAPMETA:Class = IMinimapMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPERKSPANELMETA:Class = IPerksPanelMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IPERSONALRESERVESTABMETA:Class = IPersonalReservesTabMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IPIERCINGDEBUGPANELMETA:Class = IPiercingDebugPanelMeta;
@@ -3311,6 +3344,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MAPSTRAININGPREBATTLETIMERMETA:Class = MapsTrainingPrebattleTimerMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MINIMAPMETA:Class = MinimapMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PERKSPANELMETA:Class = PerksPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PERSONALRESERVESTABMETA:Class = PersonalReservesTabMeta;
       

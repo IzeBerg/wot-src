@@ -17,13 +17,13 @@ msgstr ""
 "(n%100<10 || n%100>=20) ? 1 : 2);"
 
 msgid "alertMessage/afterSeason"
-msgstr "Season of the Griffin has ended"
+msgstr "Season of the Crimson Griffin has ended"
 
 msgid "alertMessage/allNotAvailable"
 msgstr "Battles on servers will be available in %(primeDelta)s"
 
 msgid "alertMessage/allNotAvailableEnd"
-msgstr "Season of the Griffin has ended"
+msgstr "Season of the Crimson Griffin has ended"
 
 msgid "alertMessage/allNotSet"
 msgstr "This mode is unavailable on all servers"
@@ -50,7 +50,7 @@ msgid "alertMessage/standaloneNotAvailable"
 msgstr "Battles on this server will be available in %(primeDelta)s"
 
 msgid "alertMessage/standaloneNotAvailableEnd"
-msgstr "Season of the Griffin has ended"
+msgstr "Season of the Crimson Griffin has ended"
 
 msgid "alertMessage/standaloneNotSet"
 msgstr "This mode is not available on the %(serverName)s server"
@@ -87,13 +87,13 @@ msgid "banner/info/seasonEndSoon"
 msgstr "This is your last chance to prove your skills!"
 
 msgid "banner/info/seasonJustStarted"
-msgstr "Try out our new mode!"
+msgstr "Show them what you can do!"
 
 msgid "banner/infoSmall/disabled"
 msgstr "Wait for Prime Time"
 
 msgid "banner/season"
-msgstr "Season of the Griffin"
+msgstr "Crimson Griffin"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(season)s, until %(month)s %(day)s"
@@ -276,9 +276,9 @@ msgstr "%(start)s–%(end)s"
 
 msgid "calendarDay/timeLeft"
 msgid_plural "plural/calendarDay/timeLeft"
-msgstr[0] "Season of the Griffin will last for %(days)d day"
-msgstr[1] "Season of the Griffin will last for %(days)d days"
-msgstr[2] "Season of the Griffin will last for %(days)d days"
+msgstr[0] "Season of the Crimson Griffin will last for %(days)d day"
+msgstr[1] "Season of the Crimson Griffin will last for %(days)d days"
+msgstr[2] "Season of the Crimson Griffin will last for %(days)d days"
 
 msgid "calendarDay/title"
 msgstr "Schedule"
@@ -325,16 +325,24 @@ msgstr ""
 msgid "detailsHelp/rules/title"
 msgstr "Prestige Points"
 
-msgid "division/0"
+msgid "detailsHelp/seasonModifiers"
+msgstr ""
+"This mode has a season modifier that increases the durability of all "
+"vehicles and decreases consumable cooldown time."
+
+msgid "detailsHelp/seasonModifiers/title"
+msgstr "Season of the Crimson Griffin Modifier"
+
+msgid "division/A"
 msgstr "A"
 
-msgid "division/1"
+msgid "division/B"
 msgstr "B"
 
-msgid "division/2"
+msgid "division/C"
 msgstr "C"
 
-msgid "division/3"
+msgid "division/D"
 msgstr "D"
 
 msgid "division/note"
@@ -358,34 +366,34 @@ msgstr "ONSLAUGHT"
 msgid "featureNameCapitalized"
 msgstr "ONSLAUGHT"
 
-msgid "generalRankTooltip/body/1"
+msgid "generalRankTooltip/body/fifth"
+msgstr ""
+"The {whiteSpanish_Open}Gold{whiteSpanish_Close} rank is awarded to players "
+"who have earned {whiteSpanish_Open}%(fromScore) to "
+"%(toScore){whiteSpanish_Close} Rating Points."
+
+msgid "generalRankTooltip/body/first"
 msgstr ""
 "The {whiteSpanish_Open}Debutant{whiteSpanish_Close} rank is awarded to "
 "players who have earned {whiteSpanish_Open}%(fromScore) to "
 "%(toScore){whiteSpanish_Close} Rating Points."
 
-msgid "generalRankTooltip/body/2"
-msgstr ""
-"The {whiteSpanish_Open}Iron{whiteSpanish_Close} rank is awarded to players "
-"who have earned {whiteSpanish_Open}%(fromScore) to "
-"%(toScore){whiteSpanish_Close} Rating Points."
-
-msgid "generalRankTooltip/body/3"
-msgstr ""
-"The {whiteSpanish_Open}Bronze{whiteSpanish_Close} rank is awarded to players"
-" who have earned {whiteSpanish_Open}%(fromScore) to "
-"%(toScore){whiteSpanish_Close} Rating Points."
-
-msgid "generalRankTooltip/body/4"
+msgid "generalRankTooltip/body/fourth"
 msgstr ""
 "The {whiteSpanish_Open}Silver{whiteSpanish_Close} rank is awarded to players"
 " who have earned {whiteSpanish_Open}%(fromScore) to "
 "%(toScore){whiteSpanish_Close} Rating Points."
 
-msgid "generalRankTooltip/body/5"
+msgid "generalRankTooltip/body/second"
 msgstr ""
-"The {whiteSpanish_Open}Gold{whiteSpanish_Close} rank is awarded to players "
+"The {whiteSpanish_Open}Iron{whiteSpanish_Close} rank is awarded to players "
 "who have earned {whiteSpanish_Open}%(fromScore) to "
+"%(toScore){whiteSpanish_Close} Rating Points."
+
+msgid "generalRankTooltip/body/third"
+msgstr ""
+"The {whiteSpanish_Open}Bronze{whiteSpanish_Close} rank is awarded to players"
+" who have earned {whiteSpanish_Open}%(fromScore) to "
 "%(toScore){whiteSpanish_Close} Rating Points."
 
 msgid "generalRankTooltip/subheading"
@@ -397,14 +405,13 @@ msgstr "ABOUT THE EVENT"
 msgid "intro/confirmButton"
 msgstr "Affirmative!"
 
-msgid "intro/description/0"
+msgid "intro/description/crimsonSeason"
 msgstr ""
-"You can enter battle in Tier X Researchable or Collectors' vehicles. Prepare"
-" your vehicles in the Garage, then once you get into battle, choose the best"
-" one based on the features of the given map. When selecting your vehicle, "
-"consider which vehicles your allies have chosen as well."
+"Meet Season of the Crimson Griffin!\n"
+"\n"
+"This mode has a season modifier that increases the durability of all vehicles and decreases consumable cooldown time."
 
-msgid "intro/description/1"
+msgid "intro/description/pointsOfInterest"
 msgstr ""
 "Once you capture certain areas of the map, you will be able to use Tactical "
 "Skills. There are two types of Points of Interest: the Artillery "
@@ -412,28 +419,38 @@ msgstr ""
 "position, and the Comms Center will spot all enemy vehicles. Depending on "
 "the map, the presence and location of these Points of Interest can change."
 
-msgid "intro/description/2"
+msgid "intro/description/ranks"
+msgstr ""
+"A system that reflects the player's skill. The higher the rank, the better "
+"the reward."
+
+msgid "intro/description/roleSkills"
 msgstr ""
 "Depending on the role, each vehicle has a special skill with three charge levels. The higher the charge level when the skill is activated, the stronger the effect will be. The charge level will depend on the number of Prestige Points that can be earned for impressive performance in battle, capturing Points of Interest, using Tactical Skills, etc.\n"
 "\n"
 "Check out the event regulations to learn more about the different ways you can earn Prestige Points."
 
-msgid "intro/description/3"
+msgid "intro/description/vehiclesOnMap"
 msgstr ""
-"A system that reflects the player's skill. The higher the rank, the better "
-"the reward."
+"You can enter battle in Tier X Researchable or Collectors' vehicles. Prepare"
+" your vehicles in the Garage, then once you get into battle, choose the best"
+" one based on the features of the given map. When selecting your vehicle, "
+"consider which vehicles your allies have chosen as well."
 
-msgid "intro/title/0"
-msgstr "CHOOSE A VEHICLE FOR A SPECIFIC MAP"
+msgid "intro/title/crimsonSeason"
+msgstr "SEASON OF THE CRIMSON GRIFFIN"
 
-msgid "intro/title/1"
+msgid "intro/title/pointsOfInterest"
 msgstr "POINTS OF INTEREST"
 
-msgid "intro/title/2"
+msgid "intro/title/ranks"
+msgstr "RANKS"
+
+msgid "intro/title/roleSkills"
 msgstr "ROLE SKILLS"
 
-msgid "intro/title/3"
-msgstr "RANKS"
+msgid "intro/title/vehiclesOnMap"
+msgstr "CHOOSE A VEHICLE FOR A SPECIFIC MAP"
 
 msgid "lastUpdateNote/info"
 msgstr "Updated: %(date)s"
@@ -541,14 +558,14 @@ msgstr ""
 "This Division is for the players with {whiteSpanish_Open}%(fromScore) to "
 "%(toScore){whiteSpanish_Close} Rating Points."
 
-msgid "mainWidgetTooltip/info/6"
-msgstr ""
-"To receive the Legend rank, be among the {whiteSpanish_Open}top "
-"%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard."
-
-msgid "mainWidgetTooltip/info/7"
+msgid "mainWidgetTooltip/info/seventh"
 msgstr ""
 "The Legend rank is awarded to the {whiteSpanish_Open}top "
+"%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard."
+
+msgid "mainWidgetTooltip/info/sixth"
+msgstr ""
+"To receive the Legend rank, be among the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard."
 
 msgid "mainWidgetTooltip/ratingScore"
@@ -596,8 +613,8 @@ msgstr "RANKED SYSTEM"
 msgid "page/heading/rankRewards"
 msgstr "REWARDS FOR RANKS"
 
-msgid "page/heading/winRewards"
-msgstr "REWARDS FOR VICTORIES"
+msgid "page/heading/weeklyQuests"
+msgstr "WEEKLY MISSIONS"
 
 msgid "pagination/dots"
 msgstr "…"
@@ -686,7 +703,7 @@ msgid "primeTimeView/status/primeWillBeAvailable"
 msgstr "Battles will start on the %(server)s server in %(time)s"
 
 msgid "primeTimeView/status/seasonDisabled"
-msgstr "Season of the Griffin on the %(server)s server has finished."
+msgstr "Season of the Crimson Griffin has ended on the %(server)s server."
 
 msgid "primeTimeView/status/untill"
 msgstr ""
@@ -695,32 +712,32 @@ msgstr ""
 msgid "primeTimeView/title"
 msgstr "ONSLAUGHT"
 
-msgid "rank/1"
-msgstr "Debutant"
-
-msgid "rank/2"
-msgstr "Iron"
-
-msgid "rank/3"
-msgstr "Bronze"
-
-msgid "rank/4"
-msgstr "Silver"
-
-msgid "rank/5"
-msgstr "Gold"
-
-msgid "rank/6"
-msgstr "Champion"
-
-msgid "rank/7"
-msgstr "Legend"
-
 msgid "rank/current"
 msgstr "Current"
 
+msgid "rank/fifth"
+msgstr "Gold"
+
+msgid "rank/first"
+msgstr "Debutant"
+
+msgid "rank/fourth"
+msgstr "Silver"
+
+msgid "rank/second"
+msgstr "Iron"
+
+msgid "rank/seventh"
+msgstr "Legend"
+
+msgid "rank/sixth"
+msgstr "Champion"
+
 msgid "rank/text"
 msgstr "%(rank)s Rank"
+
+msgid "rank/third"
+msgstr "Bronze"
 
 msgid "rankInactivityTooltip/description"
 msgstr "If you do not play in the mode, you will lose Rating Points."
@@ -741,27 +758,19 @@ msgstr ""
 "The Champion rank is awarded to players who have earned at least "
 "{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating Points."
 
-msgid "rankItemStatus/current/description/6"
-msgstr ""
-"To reach the Legend rank, be among the {whiteSpanish_Open}top "
-"%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
-"Rating Points."
-
-msgid "rankItemStatus/current/description/7"
+msgid "rankItemStatus/current/description/seventh"
 msgstr ""
 "To defend your Legend rank, stay in the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
 "Rating Points."
 
-msgid "rankItemStatus/current/extendedDescription/6"
+msgid "rankItemStatus/current/description/sixth"
 msgstr ""
 "To reach the Legend rank, be among the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
-"Rating Points. Rating Points earned by the bottom player in "
-"the&nbsp;Legend&nbsp;rank: "
-"{whiteSpanish_Open}%(pointsCount){whiteSpanish_Close}"
+"Rating Points."
 
-msgid "rankItemStatus/current/extendedDescription/7"
+msgid "rankItemStatus/current/extendedDescription/seventh"
 msgstr ""
 "To defend your Legend rank, stay in the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
@@ -769,43 +778,51 @@ msgstr ""
 "the&nbsp;Legend&nbsp;rank: "
 "{whiteSpanish_Open}%(pointsCount){whiteSpanish_Close}"
 
-msgid "rankItemStatus/future/description/2"
+msgid "rankItemStatus/current/extendedDescription/sixth"
 msgstr ""
-"The Iron rank is awarded to players who have earned "
-"{whiteSpanish_Open}%(fromScore)&nbsp;to&nbsp;%(toScore){whiteSpanish_Close} "
-"Rating Points."
+"To reach the Legend rank, be among the {whiteSpanish_Open}top "
+"%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
+"Rating Points. Rating Points earned by the bottom player in "
+"the&nbsp;Legend&nbsp;rank: "
+"{whiteSpanish_Open}%(pointsCount){whiteSpanish_Close}"
 
-msgid "rankItemStatus/future/description/3"
-msgstr ""
-"The Bronze rank is awarded to players who have earned "
-"{whiteSpanish_Open}%(fromScore)&nbsp;to&nbsp;%(toScore){whiteSpanish_Close} "
-"Rating Points."
-
-msgid "rankItemStatus/future/description/4"
-msgstr ""
-"The Silver rank is awarded to players who have earned "
-"{whiteSpanish_Open}%(fromScore)&nbsp;to&nbsp;%(toScore){whiteSpanish_Close} "
-"Rating Points."
-
-msgid "rankItemStatus/future/description/5"
+msgid "rankItemStatus/future/description/fifth"
 msgstr ""
 "The Gold rank is awarded to players who have earned "
 "{whiteSpanish_Open}%(fromScore) to&nbsp;%(toScore){whiteSpanish_Close} "
 "Rating Points."
 
-msgid "rankItemStatus/future/description/6"
+msgid "rankItemStatus/future/description/fourth"
 msgstr ""
-"The Champion rank is awarded to players who have earned at "
-"least&nbsp;{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating "
-"Points."
+"The Silver rank is awarded to players who have earned "
+"{whiteSpanish_Open}%(fromScore)&nbsp;to&nbsp;%(toScore){whiteSpanish_Close} "
+"Rating Points."
 
-msgid "rankItemStatus/future/description/7"
+msgid "rankItemStatus/future/description/second"
+msgstr ""
+"The Iron rank is awarded to players who have earned "
+"{whiteSpanish_Open}%(fromScore)&nbsp;to&nbsp;%(toScore){whiteSpanish_Close} "
+"Rating Points."
+
+msgid "rankItemStatus/future/description/seventh"
 msgstr ""
 "To reach the Legend rank, be among the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
 "Rating Points."
 
-msgid "rankItemStatus/future/extendedDescription/7"
+msgid "rankItemStatus/future/description/sixth"
+msgstr ""
+"The Champion rank is awarded to players who have earned at "
+"least&nbsp;{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating "
+"Points."
+
+msgid "rankItemStatus/future/description/third"
+msgstr ""
+"The Bronze rank is awarded to players who have earned "
+"{whiteSpanish_Open}%(fromScore)&nbsp;to&nbsp;%(toScore){whiteSpanish_Close} "
+"Rating Points."
+
+msgid "rankItemStatus/future/extendedDescription/seventh"
 msgstr ""
 "To reach the Legend rank, be among the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
@@ -813,32 +830,32 @@ msgstr ""
 "the&nbsp;Legend&nbsp;rank: "
 "{whiteSpanish_Open}%(pointsCount){whiteSpanish_Close}"
 
-msgid "rankItemStatus/previous/description/6"
+msgid "rankItemStatus/previous/description/sixth"
 msgstr ""
 "The Champion rank is awarded to players who have earned at "
 "least&nbsp;{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating "
 "Points."
 
-msgid "rankUpper/1"
-msgstr "DEBUTANT"
-
-msgid "rankUpper/2"
-msgstr "IRON"
-
-msgid "rankUpper/3"
-msgstr "BRONZE"
-
-msgid "rankUpper/4"
-msgstr "SILVER"
-
-msgid "rankUpper/5"
+msgid "rankUpper/fifth"
 msgstr "GOLD"
 
-msgid "rankUpper/6"
+msgid "rankUpper/first"
+msgstr "DEBUTANT"
+
+msgid "rankUpper/fourth"
+msgstr "SILVER"
+
+msgid "rankUpper/second"
+msgstr "IRON"
+
+msgid "rankUpper/seventh"
+msgstr "LEGEND"
+
+msgid "rankUpper/sixth"
 msgstr "CHAMPION"
 
-msgid "rankUpper/7"
-msgstr "LEGEND"
+msgid "rankUpper/third"
+msgstr "BRONZE"
 
 msgid "ratingScore/title"
 msgstr "Rating Points"
@@ -902,8 +919,17 @@ msgstr ""
 "You have received rewards for your promotion to the "
 "{cream_Open}%(rank)s{cream_Close} rank"
 
-msgid "rewardsScreen/subtitle/winRewards"
-msgstr "Victories in Onslaught mode: {cream_Open}%(count)s{cream_Close}"
+msgid "rewardsScreen/subtitle/tokensRewards"
+msgid_plural "plural/rewardsScreen/subtitle/tokensRewards"
+msgstr[0] ""
+"Rewards received for collecting {cream_Open}%(tokensCount)s{cream_Close} "
+"Lucky Сhip"
+msgstr[1] ""
+"Rewards received for collecting {cream_Open}%(tokensCount)s{cream_Close} "
+"Lucky Сhips"
+msgstr[2] ""
+"Rewards received for collecting {cream_Open}%(tokensCount)s{cream_Close} "
+"Lucky Сhips"
 
 msgid "rewardsScreen/title/division"
 msgstr "DIVISION %(division)s REACHED"
@@ -912,13 +938,13 @@ msgid "rewardsScreen/title/firstRankRewards"
 msgstr "CONGRATULATIONS!"
 
 msgid "rewardsScreen/title/rank"
-msgstr "{cream_Open}%(rankNameUpper)s{cream_Close} RANK REACHED"
+msgstr "{cream_Open}%(rankUpperName)s{cream_Close} RANK REACHED"
 
 msgid "rewardsScreen/title/rankRewards"
 msgstr "REWARD FOR YOUR NEW RANK"
 
-msgid "rewardsScreen/title/winRewards"
-msgstr "REWARD FOR YOUR VICTORIES"
+msgid "rewardsScreen/title/tokensRewards"
+msgstr "LUCKY CHIPS COLLECTED"
 
 msgid "scoreTooltip/body"
 msgstr ""
@@ -938,16 +964,19 @@ msgid "season/minutesLeft"
 msgstr "Ends in %(minutes)s min"
 
 msgid "season/name"
-msgstr "Season of the Griffin"
+msgstr "Season of the Crimson Griffin"
 
 msgid "season/over"
-msgstr "Season of the Griffin has ended"
+msgstr "Season of the Crimson Griffin has ended"
 
 msgid "season/range"
 msgstr "%(startDate)s–%(endDate)s"
 
 msgid "season/secondsLeft"
 msgstr "Ends in %(seconds)s s"
+
+msgid "seasonModifier/title"
+msgstr "Season Modifier"
 
 msgid "seasonalBattleSelector/tillEnd"
 msgstr "Season ends in:"
@@ -1005,10 +1034,9 @@ msgstr ""
 "This section contains information about the available rewards for achieving "
 "higher ranks in Onslaught mode."
 
-msgid "sidebar/tabs/tooltip/body/winRewards"
+msgid "sidebar/tabs/tooltip/body/weeklyQuests"
 msgstr ""
-"This section contains information about the available rewards for victories "
-"in Onslaught mode."
+"This section contains information about weekly missions in Onslaught mode."
 
 msgid "sidebar/tabs/tooltip/header/leaderboard"
 msgstr "Leaderboard"
@@ -1019,8 +1047,8 @@ msgstr "Ranked System"
 msgid "sidebar/tabs/tooltip/header/rankRewards"
 msgstr "Rewards for Ranks"
 
-msgid "sidebar/tabs/tooltip/header/winRewards"
-msgstr "Rewards for Victories"
+msgid "sidebar/tabs/tooltip/header/weeklyQuests"
+msgstr "Weekly Missions"
 
 msgid "sixthRankTooltip/description"
 msgstr ""
@@ -1063,6 +1091,14 @@ msgstr ""
 msgid "system_messages/temporaryBan/end/title"
 msgstr "End of Block"
 
+msgid "system_messages/tokenWeeklyReward/body"
+msgstr ""
+"Date: %(at)s\n"
+"%(rewards)s"
+
+msgid "system_messages/tokenWeeklyReward/title"
+msgstr "Rewards for Collecting Lucky Chips"
+
 msgid "unit/message/modeOffline"
 msgstr "Unable to join the battle: Database error."
 
@@ -1080,17 +1116,42 @@ msgstr "Join voice chat"
 msgid "waitingSpinner/message"
 msgstr "Loading content..."
 
-msgid "winCounter/description"
-msgstr "Current victories"
+msgid "weeklyQuests/card/progress/counter"
+msgstr "%(current)s / %(total)s"
 
-msgid "winCounter/limitExceeded"
-msgstr "%(winCount)s+"
+msgid "weeklyQuests/card/status/active"
+msgstr "In Progress"
 
-msgid "winRewards/description"
-msgstr "Win battles to receive additional rewards."
+msgid "weeklyQuests/card/status/completed"
+msgstr "Completed"
 
-msgid "winRewards/rewards/subTitle"
-msgstr "Rewards already received"
+msgid "weeklyQuests/card/status/locked"
+msgstr "Unavailable"
 
-msgid "winRewards/rewards/title"
-msgstr "Rewards for %(value)s Victories"
+msgid "weeklyQuests/card/statusLockedTooltip/body"
+msgstr "Complete the previous mission to unlock this one."
+
+msgid "weeklyQuests/card/statusLockedTooltip/header"
+msgstr "Mission Unavailable"
+
+msgid "weeklyQuests/card/statusUnavailableTooltip/body"
+msgstr "Unavailable for completion: The mode is not active."
+
+msgid "weeklyQuests/resetStatus/ended"
+msgstr "All missions have been completed."
+
+msgid "weeklyQuests/resetStatus/lastWeek"
+msgstr ""
+"It is the last week of the Season—hurry up to complete missions and receive "
+"rewards!"
+
+msgid "weeklyQuests/resetStatus/timer"
+msgstr ""
+"The progress on completing missions is reset every week. Next update in: "
+"%(countdown)s"
+
+msgid "weeklyQuests/tokenProgress/description/done"
+msgstr "All rewards received"
+
+msgid "weeklyQuests/tokenProgress/description/normal"
+msgstr "Earn Lucky Chips to receive rewards"

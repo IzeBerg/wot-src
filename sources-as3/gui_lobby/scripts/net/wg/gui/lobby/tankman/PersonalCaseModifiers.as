@@ -13,11 +13,11 @@ package net.wg.gui.lobby.tankman
       
       private static const MODIFIER_COLOR_ALERT:String = "#b70000";
       
-      private static const MODIFIER_TEXT_SIZE:uint = 16;
+      private static const MODIFIER_TEXT_SIZE:uint = 14;
       
       private static const MODIFIER_HEADER_TEXT_SIZE:uint = 16;
       
-      private static const MODIFIER_ADDITIONAL_HEIGHT:uint = 5;
+      private static const MODIFIER_ADDITIONAL_HEIGHT:uint = 7;
       
       private static const BR_TAG:String = "<br/>";
        

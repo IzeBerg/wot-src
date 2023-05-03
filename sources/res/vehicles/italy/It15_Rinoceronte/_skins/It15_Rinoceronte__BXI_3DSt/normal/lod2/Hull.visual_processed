@@ -108,10 +108,128 @@
 			<primitiveGroup>
 				0
 				<material>
+					<identifier>upgrade_eq_04</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.014000 7.014000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.119962 0.131985 -0.099195</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>upgrade_eq_03</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.014000 7.014000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.021643 0.131985 -0.046233</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>upgrade_eq_02</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.014000 7.014000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.022637 0.131985 -0.046233</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
 					<identifier>tank_hull_01</identifier>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
 					<property>
 						diffuseMap
 						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_hull_01_AM.dds</Texture>
@@ -125,10 +243,6 @@
 						<Vector4>7.013700 7.013700 0.000000 0.000000</Vector4>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
 						metallicDetailMap
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
@@ -140,21 +254,21 @@
 						normalMap
 						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_hull_01_ANM.dds</Texture>
 					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
 				</material>
 				<groupOrigin>-0.007437 0.123797 -0.044338</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				1
+				4
 				<material>
 					<identifier>upgrade_eq_01</identifier>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
 					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
 						diffuseMap
 						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AM.dds</Texture>
 					</property>
@@ -167,10 +281,6 @@
 						<Vector4>7.014000 7.014000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
 						metallicDetailMap
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
@@ -181,139 +291,9 @@
 					<property>
 						normalMap
 						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_ANM.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>-0.022637 0.429656 -0.983720</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				2
-				<material>
-					<identifier>upgrade_eq_02</identifier>
-					<fx>shaders/std_effects/PBS_tank.fx</fx>
-					<materialKind>0</materialKind>
-					<collisionFlags>0</collisionFlags>
-					<property>
-						diffuseMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AO.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>7.014000 7.014000 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_ANM.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>-0.022637 0.131985 -0.046233</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				3
-				<material>
-					<identifier>upgrade_eq_03</identifier>
-					<fx>shaders/std_effects/PBS_tank.fx</fx>
-					<materialKind>0</materialKind>
-					<collisionFlags>0</collisionFlags>
-					<property>
-						diffuseMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AO.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>7.014000 7.014000 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_ANM.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>-0.021643 0.131985 -0.046233</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				4
-				<material>
-					<identifier>upgrade_eq_04</identifier>
-					<fx>shaders/std_effects/PBS_tank.fx</fx>
-					<materialKind>0</materialKind>
-					<collisionFlags>0</collisionFlags>
-					<property>
-						diffuseMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AM.dds</Texture>
-					</property>
-					<property>
-						excludeMaskAndAOMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_AO.dds</Texture>
-					</property>
-					<property>
-						g_detailUVTiling
-						<Vector4>7.014000 7.014000 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
-						metallicDetailMap
-						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_GMM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_equipment_ANM.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>-0.119962 0.131985 -0.099195</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				5
@@ -322,6 +302,10 @@
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
 					<property>
 						diffuseMap
 						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_hull_01_AM.dds</Texture>
@@ -335,10 +319,6 @@
 						<Vector4>7.014000 7.014000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
 						metallicDetailMap
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
@@ -349,10 +329,6 @@
 					<property>
 						normalMap
 						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_hull_01_ANM.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>0.579208 0.176284 -0.267825</groupOrigin>
@@ -365,6 +341,10 @@
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
 					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
 						diffuseMap
 						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_hull_01_AM.dds</Texture>
 					</property>
@@ -377,10 +357,6 @@
 						<Vector4>7.014000 7.014000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
-					</property>
-					<property>
 						metallicDetailMap
 						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
 					</property>
@@ -391,10 +367,6 @@
 					<property>
 						normalMap
 						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_hull_01_ANM.dds</Texture>
-					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>-0.031946 0.217459 -0.269376</groupOrigin>
@@ -407,6 +379,10 @@
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
 					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
 						diffuseMap
 						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_hull_01_AM.dds</Texture>
 					</property>
@@ -417,10 +393,6 @@
 					<property>
 						g_detailUVTiling
 						<Vector4>7.014000 7.014000 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_useDetailMetallic
-						<Bool>true</Bool>
 					</property>
 					<property>
 						metallicDetailMap
@@ -434,10 +406,6 @@
 						normalMap
 						<Texture>vehicles/italy/It15_Rinoceronte/_skins/It15_Rinoceronte__BXI_3DSt/Rinoceronte_BXI_3DSt_hull_01_ANM.dds</Texture>
 					</property>
-					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
-					</property>
 				</material>
 				<groupOrigin>-0.044023 -0.003728 -0.269376</groupOrigin>
 			</primitiveGroup>
@@ -447,6 +415,6 @@
 		<min>-2.065067 -0.719302 -3.973464</min>
 		<max>1.825143 0.830971 3.775074</max>
 	</boundingBox>
-	<geometrySize>620170</geometrySize>
+	<geometrySize>622320</geometrySize>
 	<minUVDensity>0.000137</minUVDensity>
 </root>

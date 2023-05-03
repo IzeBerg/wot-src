@@ -39,6 +39,8 @@ package net.wg.gui.components.carousels.data
       
       public var slotPrice:Number = 0;
       
+      public var slotPriceCurrency:String = "";
+      
       public var alpha:Number = 1;
       
       public var unlockedInBattle:Boolean = false;
@@ -164,6 +166,11 @@ package net.wg.gui.components.carousels.data
          super.onDispose();
       }
       
+      public function dataBasedWidth(param1:Boolean, param2:uint) : int
+      {
+         return !!this._hasExtendedInfo ? int(this.levelInfo.getActualWidth(param1,param2)) : int(Values.DEFAULT_INT);
+      }
+      
       public function getActionPriceVO() : ActionPriceVO
       {
          return this._slotPriceActionData;
@@ -182,11 +189,6 @@ package net.wg.gui.components.carousels.data
       public function get isItemExtendendable() : Boolean
       {
          return this._hasExtendedInfo && this.levelInfo.isCollapsible;
-      }
-      
-      public function dataBasedWidth(param1:Boolean, param2:uint) : int
-      {
-         return !!this._hasExtendedInfo ? int(this.levelInfo.getActualWidth(param1,param2)) : int(Values.DEFAULT_INT);
       }
    }
 }

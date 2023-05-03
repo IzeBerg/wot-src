@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>9.466667</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>plane_falling</name>
+		<type>sound</type>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.066667</startTime>
+				<duration>9.400001</duration>
+				<sequenceSound>dstrct_plane_falling</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+		<track>
+			<name>RTPC_dstrct_upcoming</name>
+			<type>rtpc_value</type>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.000000</value>
+				<inTangent>37.234039</inTangent>
+				<outTangent>37.234039</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.466667</startTime>
+				<value>350.000000</value>
+				<inTangent>37.234039</inTangent>
+				<outTangent>37.234039</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

@@ -1,13 +1,17 @@
-from collections import namedtuple
+from collections import namedtuple, defaultdict
 import logging
 from gui.mapbox.mapbox_survey_helper import Condition, QuantifierTypes, AlternativeOneManyQuestion, AlternativeQuestion, getQuestionClass
 import resource_helper
 from soft_exception import SoftException
+from shared_utils import findFirst
 _logger = logging.getLogger(__name__)
 _SURVEYS_XML_PATH = 'gui/surveys.xml'
 _SURVEYS = None
-_GuiParams = namedtuple('_GuiParams', ('image', 'showIcons', 'useMapId', 'useLinkedParams'))
-_AdditionalParam = namedtuple('_AdditionalParam', ('fromQuestion', 'answers'))
+_Survey = namedtuple('_Survey', ('surveyGroup', 'surveyId', 'questions'))
+_GuiParams = namedtuple('_GuiParams', ('pathPrefix', 'image', 'showIcons', 'useMapId',
+                                       'useLinkedParams'))
+_AdditionalParam = namedtuple('_AdditionalParam', ('fromQuestion', 'answers', 'options'))
+_TextParams = namedtuple('_TextParams', ('param', 'isJoined'))
 _Responses = namedtuple('_Responses', ('variants', 'responseGroups'))
 
 def _readCondition(section, isRequired):
@@ -16,6 +20,7 @@ def _readCondition(section, isRequired):
     else:
         subSection = section['condition']
         requiredQuestionId = subSection['requiredQuestionId'].asString
+        requiredOptionId = subSection.readString('requiredOptionId')
         requiredAnswers = [ answerId for answerId in subSection['requiredAnswers'].asString.split(' ') ]
         if not requiredAnswers:
             raise SoftException('Unfilled required answers for the condition')
@@ -23,30 +28,49 @@ def _readCondition(section, isRequired):
         if not innerSubsection.keys():
             quantifier = QuantifierTypes.SINGLE.value if 1 else innerSubsection['quantifier'].asString
             raise (QuantifierTypes.hasValue(quantifier) or SoftException)('Unsupported condition type for the mapbox survey')
-        return Condition(requiredQuestionId, requiredAnswers, quantifier, isRequired)
+        return Condition(requiredQuestionId, requiredOptionId, requiredAnswers, quantifier, isRequired)
 
 
-def _readUseAnswersSection(section):
+def _readSourceSection(section):
+    questionId = None
+    answers = None
+    options = None
     if section.has_key('useAnswers'):
-        answers = section.readString('useAnswers').split(' ')
-        innerSubsection = section['useAnswers']
-        if not innerSubsection.has_key('questionID'):
-            raise SoftException('Invalid useAnswers section for the mapbox survey')
-        questionId = innerSubsection['questionID'].asString
-        return _AdditionalParam(questionId, answers)
+        questionId, answers = _readSomeSourceSection(section, 'useAnswers')
+    elif section.has_key('useOptions'):
+        questionId, options = _readSomeSourceSection(section, 'useOptions')
+    if questionId is not None:
+        return _AdditionalParam(questionId, answers, options)
     else:
         return
 
 
+def _readSomeSourceSection(section, sectionName):
+    if section.has_key(sectionName):
+        answers = section.readString(sectionName).split(' ')
+        innerSubsection = section[sectionName]
+        if not innerSubsection.has_key('questionID'):
+            raise SoftException(('Invalid {} section for the mapbox survey').format(sectionName))
+        questionId = innerSubsection['questionID'].asString
+        return (
+         questionId, answers)
+    else:
+        return (None, None)
+
+
 def _readLinkedParameters(section):
     if not section.has_key('linkedParameters'):
-        return None
+        return
     else:
-        return _readUseAnswersSection(section['linkedParameters'])
+        param = _readSourceSection(section['linkedParameters'])
+        if param:
+            isJoined = section['linkedParameters'].readBool('join')
+            return _TextParams(param, isJoined)
+        return
 
 
 def _readGuiParameters(section):
-    return _GuiParams(image=section.readString('image'), showIcons=section.readBool('showIcons'), useMapId=section.readBool('useMapId'), useLinkedParams=section.readBool('useLinkedParams'))
+    return _GuiParams(pathPrefix=section.readString('pathPrefix'), image=section.readString('image'), showIcons=section.readBool('showIcons'), useMapId=section.readBool('useMapId'), useLinkedParams=section.readBool('useLinkedParams'))
 
 
 def _readOptions(section):
@@ -54,10 +78,10 @@ def _readOptions(section):
         return
     else:
         optionsSection = section['options']
-        result = _readUseAnswersSection(optionsSection)
+        result = _readSourceSection(optionsSection)
         if result is not None:
             return result
-        return _AdditionalParam(fromQuestion=None, answers=optionsSection.asString.split(' '))
+        return _AdditionalParam(fromQuestion=None, answers=optionsSection.asString.split(' '), options=None)
 
 
 def _readResponses(section):
@@ -69,7 +93,7 @@ def _readResponses(section):
     return _Responses(variants.split(' ') if variants else [], groups)
 
 
-def _readQuestion(questionSection, questionTypes):
+def _readQuestion(surveyGroup, questionSection, questionTypes):
     qId = questionSection['questionId'].asString
     isRequired = questionSection['isRequired'].asBool
     isMultiple = questionSection['isMultiple'].asBool
@@ -82,11 +106,11 @@ def _readQuestion(questionSection, questionTypes):
     if qType not in questionTypes:
         raise SoftException('Incorrect question type "%s" in the survey settings' % qType)
     clz = getQuestionClass(qType)
-    return clz(questionId=qId, questionType=qType, isMultiple=isMultiple, isRequired=isRequired, condition=condition, answers=responses, options=options, linkedParameters=linkedParameters, guiParameters=guiParameters)
+    return clz(surveyGroup=surveyGroup, questionId=qId, questionType=qType, isMultiple=isMultiple, isRequired=isRequired, condition=condition, answers=responses, options=options, linkedParameters=linkedParameters, guiParameters=guiParameters)
 
 
-def _readAlternativeQuestion(questionSection, questionTypes, qId):
-    alternativeQuestions = [ _readQuestion(variant, questionTypes) for variant in questionSection['alternatives'].values()
+def _readAlternativeQuestion(surveyGroup, questionSection, questionTypes, qId):
+    alternativeQuestions = [ _readQuestion(surveyGroup, variant, questionTypes) for variant in questionSection['alternatives'].values()
                            ]
     isSynchronizedAnswers = questionSection.readBool('synchronizeAnswers')
     clz = AlternativeOneManyQuestion if isSynchronizedAnswers else AlternativeQuestion
@@ -94,30 +118,37 @@ def _readAlternativeQuestion(questionSection, questionTypes, qId):
 
 
 def _readSurveys():
-    result = {}
+    result = defaultdict(list)
     ctx, root = resource_helper.getRoot(_SURVEYS_XML_PATH)
-    for _, serveySection in resource_helper.getIterator(ctx, root['surveys']):
-        bonusType = serveySection['bonusType'].asInt
+    questionTypes = frozenset(root['questionTypes'].asString.split(' '))
+    for _, surveySection in resource_helper.getIterator(ctx, root['surveys']):
+        bonusType = surveySection['bonusType'].asInt
         if not bonusType:
             raise SoftException('Incorrect bonusType for a survey')
-        questionTypes = frozenset(serveySection['questionTypes'].asString.split(' '))
+        surveyGroup = surveySection['surveyGroup'].asString
+        if not surveyGroup:
+            raise SoftException('Empty survey group')
+        surveyId = surveySection['surveyId'].asString
+        if not surveyId:
+            raise SoftException('Empty survey id')
         questions = []
-        for questionSection in serveySection['questions'].values():
+        for questionSection in surveySection['questions'].values():
             if questionSection.has_key('alternatives'):
                 qId = questionSection['questionId'].asString
-                question = _readAlternativeQuestion(questionSection, questionTypes, qId)
+                question = _readAlternativeQuestion(surveyGroup, questionSection, questionTypes, qId)
             else:
-                question = _readQuestion(questionSection, questionTypes)
+                question = _readQuestion(surveyGroup, questionSection, questionTypes)
             questions.append(question)
 
-        result[bonusType] = questions
+        result[bonusType].append(_Survey(surveyGroup, surveyId, questions))
 
     resource_helper.purgeResource(_SURVEYS_XML_PATH)
     return result
 
 
-def getSurvey(bonusType):
+def getSurvey(bonusType, surveyId):
     global _SURVEYS
     if _SURVEYS is None:
         _SURVEYS = _readSurveys()
-    return _SURVEYS.get(bonusType)
+    surveys = _SURVEYS.get(bonusType, [])
+    return findFirst(lambda e: e.surveyId == surveyId, surveys)

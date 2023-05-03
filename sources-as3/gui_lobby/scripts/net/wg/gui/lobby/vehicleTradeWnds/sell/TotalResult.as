@@ -105,7 +105,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
                   _loc5_++;
                   _loc3_.iconPosition = _loc3_.textAlign = TextFormatAlign.RIGHT;
                   _loc3_.text = VehicleSellDialogUtils.getCost(_loc4_.value,_loc4_.type);
-                  _loc3_.icon = _loc4_.type;
+                  _loc3_.icon = _loc4_.type != VehicleSellDialogUtils.WOT_PLUS ? _loc4_.type : null;
                   if(!_loc4_.hasEnough)
                   {
                      _loc3_.textColor = Colors.ERROR_COLOR;

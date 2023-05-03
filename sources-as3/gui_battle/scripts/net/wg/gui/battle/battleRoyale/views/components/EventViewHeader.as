@@ -106,8 +106,9 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       private function onBattleIconChangeHandler(param1:Event) : void
       {
+         var _loc2_:Number = NaN;
          var _loc3_:Number = NaN;
-         var _loc2_:Number = !!this._isSmallScreenSize ? Number(HEADER_BG_SMALL_HEIGHT) : Number(HEADER_BG_BIG_HEIGHT);
+         _loc2_ = !!this._isSmallScreenSize ? Number(HEADER_BG_SMALL_HEIGHT) : Number(HEADER_BG_BIG_HEIGHT);
          _loc3_ = -this.battleIcon.width >> 1;
          this.battleIcon.x = _loc3_;
          this.battleIcon.y = _loc2_ - this.battleIcon.height >> 1;

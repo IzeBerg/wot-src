@@ -157,6 +157,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
                this.renderersContainer.removeChildAt(0);
             }
          }
+         this._toolTipString = null;
       }
       
       public function resetFrags() : void

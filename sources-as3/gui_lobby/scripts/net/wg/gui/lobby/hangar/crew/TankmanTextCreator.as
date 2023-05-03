@@ -27,12 +27,12 @@ package net.wg.gui.lobby.hangar.crew
             this._levelSpecializationMainHtml = "";
             this._roleHtml += ", " + _loc4_ + " " + param1.vehicleType;
          }
-         else if(param2.tankType != param1.tankType)
+         else if(!param2.ignoreRoleIncompatibility && param2.tankType != param1.tankType)
          {
             this._levelSpecializationMainHtml = " <font color=\'" + DEBUFF + "\'>" + _loc3_ + "</font>";
             this._roleHtml += ", <font color=\'" + DEBUFF + "\'>" + _loc4_ + " " + param1.vehicleType + "</font>";
          }
-         else if(param2.vehicleType != param1.vehicleType)
+         else if(!param2.ignoreRoleIncompatibility && param2.vehicleType != param1.vehicleType)
          {
             if(!param2.vehicleElite)
             {

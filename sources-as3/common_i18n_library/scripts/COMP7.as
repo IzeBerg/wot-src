@@ -19,13 +19,9 @@ package
       
       public static const PAGE_HEADING_RANKREWARDS:String = "#comp7:page/heading/rankRewards";
       
-      public static const PAGE_HEADING_WINREWARDS:String = "#comp7:page/heading/winRewards";
+      public static const PAGE_HEADING_WEEKLYQUESTS:String = "#comp7:page/heading/weeklyQuests";
       
       public static const PAGE_HEADING_LEADERBOARD:String = "#comp7:page/heading/leaderboard";
-      
-      public static const WINCOUNTER_LIMITEXCEEDED:String = "#comp7:winCounter/limitExceeded";
-      
-      public static const WINCOUNTER_DESCRIPTION:String = "#comp7:winCounter/description";
       
       public static const COUNTDOWN_TEXT:String = "#comp7:countDown/text";
       
@@ -53,47 +49,47 @@ package
       
       public static const RANK_TEXT:String = "#comp7:rank/text";
       
-      public static const RANK_1:String = "#comp7:rank/1";
+      public static const RANK_FIRST:String = "#comp7:rank/first";
       
-      public static const RANK_2:String = "#comp7:rank/2";
+      public static const RANK_SECOND:String = "#comp7:rank/second";
       
-      public static const RANK_3:String = "#comp7:rank/3";
+      public static const RANK_THIRD:String = "#comp7:rank/third";
       
-      public static const RANK_4:String = "#comp7:rank/4";
+      public static const RANK_FOURTH:String = "#comp7:rank/fourth";
       
-      public static const RANK_5:String = "#comp7:rank/5";
+      public static const RANK_FIFTH:String = "#comp7:rank/fifth";
       
-      public static const RANK_6:String = "#comp7:rank/6";
+      public static const RANK_SIXTH:String = "#comp7:rank/sixth";
       
-      public static const RANK_7:String = "#comp7:rank/7";
+      public static const RANK_SEVENTH:String = "#comp7:rank/seventh";
       
       public static const RANK_CURRENT:String = "#comp7:rank/current";
       
-      public static const RANKUPPER_1:String = "#comp7:rankUpper/1";
+      public static const RANKUPPER_FIRST:String = "#comp7:rankUpper/first";
       
-      public static const RANKUPPER_2:String = "#comp7:rankUpper/2";
+      public static const RANKUPPER_SECOND:String = "#comp7:rankUpper/second";
       
-      public static const RANKUPPER_3:String = "#comp7:rankUpper/3";
+      public static const RANKUPPER_THIRD:String = "#comp7:rankUpper/third";
       
-      public static const RANKUPPER_4:String = "#comp7:rankUpper/4";
+      public static const RANKUPPER_FOURTH:String = "#comp7:rankUpper/fourth";
       
-      public static const RANKUPPER_5:String = "#comp7:rankUpper/5";
+      public static const RANKUPPER_FIFTH:String = "#comp7:rankUpper/fifth";
       
-      public static const RANKUPPER_6:String = "#comp7:rankUpper/6";
+      public static const RANKUPPER_SIXTH:String = "#comp7:rankUpper/sixth";
       
-      public static const RANKUPPER_7:String = "#comp7:rankUpper/7";
+      public static const RANKUPPER_SEVENTH:String = "#comp7:rankUpper/seventh";
       
       public static const DIVISION_NOTE:String = "#comp7:division/note";
       
       public static const DIVISION_TEXT:String = "#comp7:division/text";
       
-      public static const DIVISION_0:String = "#comp7:division/0";
+      public static const DIVISION_A:String = "#comp7:division/A";
       
-      public static const DIVISION_1:String = "#comp7:division/1";
+      public static const DIVISION_B:String = "#comp7:division/B";
       
-      public static const DIVISION_2:String = "#comp7:division/2";
+      public static const DIVISION_C:String = "#comp7:division/C";
       
-      public static const DIVISION_3:String = "#comp7:division/3";
+      public static const DIVISION_D:String = "#comp7:division/D";
       
       public static const SIDEBAR_TABS_TOOLTIP_HEADER_PROGRESSION:String = "#comp7:sidebar/tabs/tooltip/header/progression";
       
@@ -103,9 +99,9 @@ package
       
       public static const SIDEBAR_TABS_TOOLTIP_BODY_RANKREWARDS:String = "#comp7:sidebar/tabs/tooltip/body/rankRewards";
       
-      public static const SIDEBAR_TABS_TOOLTIP_HEADER_WINREWARDS:String = "#comp7:sidebar/tabs/tooltip/header/winRewards";
+      public static const SIDEBAR_TABS_TOOLTIP_HEADER_WEEKLYQUESTS:String = "#comp7:sidebar/tabs/tooltip/header/weeklyQuests";
       
-      public static const SIDEBAR_TABS_TOOLTIP_BODY_WINREWARDS:String = "#comp7:sidebar/tabs/tooltip/body/winRewards";
+      public static const SIDEBAR_TABS_TOOLTIP_BODY_WEEKLYQUESTS:String = "#comp7:sidebar/tabs/tooltip/body/weeklyQuests";
       
       public static const SIDEBAR_TABS_TOOLTIP_HEADER_LEADERBOARD:String = "#comp7:sidebar/tabs/tooltip/header/leaderboard";
       
@@ -131,6 +127,10 @@ package
       
       public static const SYSTEM_MESSAGES_REGULARREWARD_BODY:String = "#comp7:system_messages/regularReward/body";
       
+      public static const SYSTEM_MESSAGES_TOKENWEEKLYREWARD_TITLE:String = "#comp7:system_messages/tokenWeeklyReward/title";
+      
+      public static const SYSTEM_MESSAGES_TOKENWEEKLYREWARD_BODY:String = "#comp7:system_messages/tokenWeeklyReward/body";
+      
       public static const MAINWIDGET_STATUS:String = "#comp7:mainWidget/status";
       
       public static const MAINWIDGET_WARNING:String = "#comp7:mainWidget/warning";
@@ -141,6 +141,8 @@ package
       
       public static const MAINWIDGET_TOOLTIP_INACTIVE_NOTE:String = "#comp7:mainWidget/tooltip/inactive/note";
       
+      public static const SEASONMODIFIER_TITLE:String = "#comp7:seasonModifier/title";
+      
       public static const REWARDSSCREEN_TITLE_RANK:String = "#comp7:rewardsScreen/title/rank";
       
       public static const REWARDSSCREEN_TITLE_DIVISION:String = "#comp7:rewardsScreen/title/division";
@@ -149,7 +151,7 @@ package
       
       public static const REWARDSSCREEN_TITLE_RANKREWARDS:String = "#comp7:rewardsScreen/title/rankRewards";
       
-      public static const REWARDSSCREEN_TITLE_WINREWARDS:String = "#comp7:rewardsScreen/title/winRewards";
+      public static const REWARDSSCREEN_TITLE_TOKENSREWARDS:String = "#comp7:rewardsScreen/title/tokensRewards";
       
       public static const REWARDSSCREEN_SUBTITLE_DIVISION:String = "#comp7:rewardsScreen/subtitle/division";
       
@@ -157,7 +159,7 @@ package
       
       public static const REWARDSSCREEN_SUBTITLE_RANKREWARDS:String = "#comp7:rewardsScreen/subtitle/rankRewards";
       
-      public static const REWARDSSCREEN_SUBTITLE_WINREWARDS:String = "#comp7:rewardsScreen/subtitle/winRewards";
+      public static const REWARDSSCREEN_SUBTITLE_TOKENSREWARDS:String = "#comp7:rewardsScreen/subtitle/tokensRewards";
       
       public static const REWARDSSCREEN_ADDITIONALREWARDS:String = "#comp7:rewardsScreen/additionalRewards";
       
@@ -169,57 +171,79 @@ package
       
       public static const REWARDSSCREEN_NOTICE_SUBTITLE:String = "#comp7:rewardsScreen/notice/subTitle";
       
-      public static const WINREWARDS_DESCRIPTION:String = "#comp7:winRewards/description";
-      
-      public static const WINREWARDS_REWARDS_TITLE:String = "#comp7:winRewards/rewards/title";
-      
-      public static const WINREWARDS_REWARDS_SUBTITLE:String = "#comp7:winRewards/rewards/subTitle";
-      
       public static const RANKINFO_CURRENT_SIXTH:String = "#comp7:rankInfo/current/sixth";
       
       public static const RANKINFO_CURRENT_SEVENTH:String = "#comp7:rankInfo/current/seventh";
       
-      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_2:String = "#comp7:rankItemStatus/future/description/2";
+      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_SECOND:String = "#comp7:rankItemStatus/future/description/second";
       
-      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_3:String = "#comp7:rankItemStatus/future/description/3";
+      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_THIRD:String = "#comp7:rankItemStatus/future/description/third";
       
-      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_4:String = "#comp7:rankItemStatus/future/description/4";
+      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_FOURTH:String = "#comp7:rankItemStatus/future/description/fourth";
       
-      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_5:String = "#comp7:rankItemStatus/future/description/5";
+      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_FIFTH:String = "#comp7:rankItemStatus/future/description/fifth";
       
-      public static const RANKITEMSTATUS_PREVIOUS_DESCRIPTION_6:String = "#comp7:rankItemStatus/previous/description/6";
+      public static const RANKITEMSTATUS_PREVIOUS_DESCRIPTION_SIXTH:String = "#comp7:rankItemStatus/previous/description/sixth";
       
-      public static const RANKITEMSTATUS_CURRENT_DESCRIPTION_6:String = "#comp7:rankItemStatus/current/description/6";
+      public static const RANKITEMSTATUS_CURRENT_DESCRIPTION_SIXTH:String = "#comp7:rankItemStatus/current/description/sixth";
       
-      public static const RANKITEMSTATUS_CURRENT_EXTENDEDDESCRIPTION_6:String = "#comp7:rankItemStatus/current/extendedDescription/6";
+      public static const RANKITEMSTATUS_CURRENT_EXTENDEDDESCRIPTION_SIXTH:String = "#comp7:rankItemStatus/current/extendedDescription/sixth";
       
-      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_6:String = "#comp7:rankItemStatus/future/description/6";
+      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_SIXTH:String = "#comp7:rankItemStatus/future/description/sixth";
       
-      public static const RANKITEMSTATUS_CURRENT_DESCRIPTION_7:String = "#comp7:rankItemStatus/current/description/7";
+      public static const RANKITEMSTATUS_CURRENT_DESCRIPTION_SEVENTH:String = "#comp7:rankItemStatus/current/description/seventh";
       
-      public static const RANKITEMSTATUS_CURRENT_EXTENDEDDESCRIPTION_7:String = "#comp7:rankItemStatus/current/extendedDescription/7";
+      public static const RANKITEMSTATUS_CURRENT_EXTENDEDDESCRIPTION_SEVENTH:String = "#comp7:rankItemStatus/current/extendedDescription/seventh";
       
-      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_7:String = "#comp7:rankItemStatus/future/description/7";
+      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_SEVENTH:String = "#comp7:rankItemStatus/future/description/seventh";
       
-      public static const RANKITEMSTATUS_FUTURE_EXTENDEDDESCRIPTION_7:String = "#comp7:rankItemStatus/future/extendedDescription/7";
+      public static const RANKITEMSTATUS_FUTURE_EXTENDEDDESCRIPTION_SEVENTH:String = "#comp7:rankItemStatus/future/extendedDescription/seventh";
       
       public static const RATINGSCORE_TITLE:String = "#comp7:ratingScore/title";
       
-      public static const INTRO_TITLE_0:String = "#comp7:intro/title/0";
+      public static const WEEKLYQUESTS_RESETSTATUS_LASTWEEK:String = "#comp7:weeklyQuests/resetStatus/lastWeek";
       
-      public static const INTRO_TITLE_1:String = "#comp7:intro/title/1";
+      public static const WEEKLYQUESTS_RESETSTATUS_TIMER:String = "#comp7:weeklyQuests/resetStatus/timer";
       
-      public static const INTRO_TITLE_2:String = "#comp7:intro/title/2";
+      public static const WEEKLYQUESTS_RESETSTATUS_ENDED:String = "#comp7:weeklyQuests/resetStatus/ended";
       
-      public static const INTRO_TITLE_3:String = "#comp7:intro/title/3";
+      public static const WEEKLYQUESTS_CARD_PROGRESS_COUNTER:String = "#comp7:weeklyQuests/card/progress/counter";
       
-      public static const INTRO_DESCRIPTION_0:String = "#comp7:intro/description/0";
+      public static const WEEKLYQUESTS_CARD_STATUS_LOCKED:String = "#comp7:weeklyQuests/card/status/locked";
       
-      public static const INTRO_DESCRIPTION_1:String = "#comp7:intro/description/1";
+      public static const WEEKLYQUESTS_CARD_STATUS_ACTIVE:String = "#comp7:weeklyQuests/card/status/active";
       
-      public static const INTRO_DESCRIPTION_2:String = "#comp7:intro/description/2";
+      public static const WEEKLYQUESTS_CARD_STATUS_COMPLETED:String = "#comp7:weeklyQuests/card/status/completed";
       
-      public static const INTRO_DESCRIPTION_3:String = "#comp7:intro/description/3";
+      public static const WEEKLYQUESTS_CARD_STATUSLOCKEDTOOLTIP_HEADER:String = "#comp7:weeklyQuests/card/statusLockedTooltip/header";
+      
+      public static const WEEKLYQUESTS_CARD_STATUSLOCKEDTOOLTIP_BODY:String = "#comp7:weeklyQuests/card/statusLockedTooltip/body";
+      
+      public static const WEEKLYQUESTS_CARD_STATUSUNAVAILABLETOOLTIP_BODY:String = "#comp7:weeklyQuests/card/statusUnavailableTooltip/body";
+      
+      public static const WEEKLYQUESTS_TOKENPROGRESS_DESCRIPTION_NORMAL:String = "#comp7:weeklyQuests/tokenProgress/description/normal";
+      
+      public static const WEEKLYQUESTS_TOKENPROGRESS_DESCRIPTION_DONE:String = "#comp7:weeklyQuests/tokenProgress/description/done";
+      
+      public static const INTRO_TITLE_CRIMSONSEASON:String = "#comp7:intro/title/crimsonSeason";
+      
+      public static const INTRO_TITLE_VEHICLESONMAP:String = "#comp7:intro/title/vehiclesOnMap";
+      
+      public static const INTRO_TITLE_POINTSOFINTEREST:String = "#comp7:intro/title/pointsOfInterest";
+      
+      public static const INTRO_TITLE_ROLESKILLS:String = "#comp7:intro/title/roleSkills";
+      
+      public static const INTRO_TITLE_RANKS:String = "#comp7:intro/title/ranks";
+      
+      public static const INTRO_DESCRIPTION_CRIMSONSEASON:String = "#comp7:intro/description/crimsonSeason";
+      
+      public static const INTRO_DESCRIPTION_VEHICLESONMAP:String = "#comp7:intro/description/vehiclesOnMap";
+      
+      public static const INTRO_DESCRIPTION_POINTSOFINTEREST:String = "#comp7:intro/description/pointsOfInterest";
+      
+      public static const INTRO_DESCRIPTION_ROLESKILLS:String = "#comp7:intro/description/roleSkills";
+      
+      public static const INTRO_DESCRIPTION_RANKS:String = "#comp7:intro/description/ranks";
       
       public static const INTRO_CONFIRMBUTTON:String = "#comp7:intro/confirmButton";
       
@@ -235,15 +259,15 @@ package
       
       public static const GENERALRANKTOOLTIP_SUBHEADING:String = "#comp7:generalRankTooltip/subheading";
       
-      public static const GENERALRANKTOOLTIP_BODY_1:String = "#comp7:generalRankTooltip/body/1";
+      public static const GENERALRANKTOOLTIP_BODY_FIRST:String = "#comp7:generalRankTooltip/body/first";
       
-      public static const GENERALRANKTOOLTIP_BODY_2:String = "#comp7:generalRankTooltip/body/2";
+      public static const GENERALRANKTOOLTIP_BODY_SECOND:String = "#comp7:generalRankTooltip/body/second";
       
-      public static const GENERALRANKTOOLTIP_BODY_3:String = "#comp7:generalRankTooltip/body/3";
+      public static const GENERALRANKTOOLTIP_BODY_THIRD:String = "#comp7:generalRankTooltip/body/third";
       
-      public static const GENERALRANKTOOLTIP_BODY_4:String = "#comp7:generalRankTooltip/body/4";
+      public static const GENERALRANKTOOLTIP_BODY_FOURTH:String = "#comp7:generalRankTooltip/body/fourth";
       
-      public static const GENERALRANKTOOLTIP_BODY_5:String = "#comp7:generalRankTooltip/body/5";
+      public static const GENERALRANKTOOLTIP_BODY_FIFTH:String = "#comp7:generalRankTooltip/body/fifth";
       
       public static const SIXTHRANKTOOLTIP_DESCRIPTION:String = "#comp7:sixthRankTooltip/description";
       
@@ -275,9 +299,9 @@ package
       
       public static const MAINWIDGETTOOLTIP_RATINGSCORE:String = "#comp7:mainWidgetTooltip/ratingScore";
       
-      public static const MAINWIDGETTOOLTIP_INFO_6:String = "#comp7:mainWidgetTooltip/info/6";
+      public static const MAINWIDGETTOOLTIP_INFO_SIXTH:String = "#comp7:mainWidgetTooltip/info/sixth";
       
-      public static const MAINWIDGETTOOLTIP_INFO_7:String = "#comp7:mainWidgetTooltip/info/7";
+      public static const MAINWIDGETTOOLTIP_INFO_SEVENTH:String = "#comp7:mainWidgetTooltip/info/seventh";
       
       public static const MAINWIDGETTOOLTIP_DIVISION:String = "#comp7:mainWidgetTooltip/division";
       
@@ -490,6 +514,10 @@ package
       public static const DETAILSHELP_RULES_TITLE:String = "#comp7:detailsHelp/rules/title";
       
       public static const DETAILSHELP_RULES:String = "#comp7:detailsHelp/rules";
+      
+      public static const DETAILSHELP_SEASONMODIFIERS_TITLE:String = "#comp7:detailsHelp/seasonModifiers/title";
+      
+      public static const DETAILSHELP_SEASONMODIFIERS:String = "#comp7:detailsHelp/seasonModifiers";
       
       public static const VOICECHAT_ACTIVE:String = "#comp7:voiceChat/active";
       

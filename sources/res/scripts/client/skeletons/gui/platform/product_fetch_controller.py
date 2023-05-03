@@ -10,3 +10,9 @@ class ISubscriptionsFetchController(IProductFetchController):
 
     def getProducts(self, showWaiting=True):
         raise NotImplementedError
+
+
+class IUserSubscriptionsFetchController(IProductFetchController):
+
+    def getProducts(self, showWaiting=True):
+        raise NotImplementedError

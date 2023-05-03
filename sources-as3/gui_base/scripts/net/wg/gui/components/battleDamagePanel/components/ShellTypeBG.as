@@ -87,7 +87,6 @@ package net.wg.gui.components.battleDamagePanel.components
       
       public function setData(param1:String) : void
       {
-         var _loc2_:Boolean = false;
          var _loc3_:String = null;
          var _loc4_:String = null;
          if(param1 == Values.EMPTY_STR)
@@ -95,7 +94,7 @@ package net.wg.gui.components.battleDamagePanel.components
             this._emptyShellBG.visible = this._compositeBGContainer.visible = false;
             return;
          }
-         _loc2_ = param1 == DAMAGE_LOG_SHELL_BG_TYPES.EMPTY;
+         var _loc2_:Boolean = param1 == DAMAGE_LOG_SHELL_BG_TYPES.EMPTY;
          if(_loc2_ != this._isEmpty)
          {
             this._isEmpty = _loc2_;

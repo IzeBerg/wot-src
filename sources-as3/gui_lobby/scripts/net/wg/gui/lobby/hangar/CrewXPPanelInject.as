@@ -37,7 +37,7 @@ package net.wg.gui.lobby.hangar
          _loc1_.width = actualWidth;
          _loc1_.height = actualHeight;
          _loc1_.extensibilityDirection = Directions.RIGHT;
-         _loc1_.message = "QUESTS.DAILYQUESTS_HEADER_TITLE";
+         _loc1_.message = LOBBY_HELP.HANGAR_CREWOPERATIONBTN;
          _loc1_.id = this._helpLayoutId;
          _loc1_.scope = this;
          return new <HelpLayoutVO>[_loc1_];

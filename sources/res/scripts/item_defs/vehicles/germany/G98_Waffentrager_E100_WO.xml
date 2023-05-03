@@ -138,8 +138,8 @@
 			</turret>
 		</turretPositions>
 		<hitTester>
-			<collisionModelServer>vehicles/german/G98_Waffentrager_E100_WO/collision/Hull.model</collisionModelServer>
-			<collisionModelClient>vehicles/german/G98_Waffentrager_E100_WO/collision_client/Hull.model</collisionModelClient>
+			<collisionModelServer>vehicles/german/G98_Waffentrager_E100/collision/Hull.model</collisionModelServer>
+			<collisionModelClient>vehicles/german/G98_Waffentrager_E100/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
 		<hangarShadowTexture>vehicles/german/G98_Waffentrager_E100/Waffentrager_E100_HangarShadowMap.dds</hangarShadowTexture>
 		<customizationSlots>
@@ -944,8 +944,8 @@
 				<!--BW_String-->
 			</hullPosition>
 			<hitTester>
-				<collisionModelServer>vehicles/german/G98_Waffentrager_E100_WO/collision/Chassis.model</collisionModelServer>
-				<collisionModelClient>vehicles/german/G98_Waffentrager_E100_WO/collision_client/Chassis.model</collisionModelClient>
+				<collisionModelServer>vehicles/german/G98_Waffentrager_E100/collision/Chassis.model</collisionModelServer>
+				<collisionModelClient>vehicles/german/G98_Waffentrager_E100/collision_client/Chassis.model</collisionModelClient>
 			</hitTester>
 			<topRightCarryingPoint>
 				1.53656 2.54262
@@ -1703,8 +1703,8 @@
 						<exploded>vehicles/german/G98_Waffentrager_E100_WO/crash/lod0/Gun_01.model</exploded>
 					</models>
 					<hitTester>
-						<collisionModelServer>vehicles/german/G98_Waffentrager_E100_WO/collision/Gun_01.model</collisionModelServer>
-						<collisionModelClient>vehicles/german/G98_Waffentrager_E100_WO/collision_client/Gun_01.model</collisionModelClient>
+						<collisionModelServer>vehicles/german/G98_Waffentrager_E100/collision/Gun_01.model</collisionModelServer>
+						<collisionModelClient>vehicles/german/G98_Waffentrager_E100/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
 					<shotOffset>
 						0.0 -0.143 0.737
@@ -1744,6 +1744,7 @@
 							<camouflage/>
 						</customizableVehicleAreas>
 					</customization>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							1 0.5 0.000000 0.000000
@@ -1763,8 +1764,8 @@
 				<exploded>vehicles/german/G98_Waffentrager_E100_WO/crash/lod0/Turret_01.model</exploded>
 			</models>
 			<hitTester>
-				<collisionModelServer>vehicles/german/G98_Waffentrager_E100_WO/collision/Turret_01.model</collisionModelServer>
-				<collisionModelClient>vehicles/german/G98_Waffentrager_E100_WO/collision_client/Turret_01.model</collisionModelClient>
+				<collisionModelServer>vehicles/german/G98_Waffentrager_E100/collision/Turret_01.model</collisionModelServer>
+				<collisionModelClient>vehicles/german/G98_Waffentrager_E100/collision_client/Turret_01.model</collisionModelClient>
 			</hitTester>
 			<gunPosition>
 				0.000000 1.42445 -0.713915

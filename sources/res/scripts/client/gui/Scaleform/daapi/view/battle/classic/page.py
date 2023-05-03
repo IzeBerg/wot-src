@@ -31,6 +31,8 @@ class _ClassicComponentsConfig(ComponentsConfig):
            BATTLE_VIEW_ALIASES.PREBATTLE_AMMUNITION_PANEL,
            DynamicAliases.DRONE_MUSIC_PLAYER)),
          (
+          BATTLE_CTRL_ID.PERKS, (BATTLE_VIEW_ALIASES.PERKS_PANEL,)),
+         (
           BATTLE_CTRL_ID.TEAM_BASES,
           (
            BATTLE_VIEW_ALIASES.TEAM_BASES_PANEL,

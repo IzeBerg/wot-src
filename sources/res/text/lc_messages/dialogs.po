@@ -304,27 +304,27 @@ msgid "addFreeSkillWindow/label"
 msgstr "Zero Perks"
 
 msgid "addFreeSkillWindow/submit"
-msgstr "Select"
+msgstr "Select Perk"
 
 msgid "addSkillWindow/cancel"
 msgstr "Cancel"
 
 msgid "addSkillWindow/desc1"
 msgstr ""
-"Skills take effect as soon as training starts, gradually increasing to their"
-" full potential."
+"Perks take effect as soon as training starts, gradually increasing to their "
+"full potential."
 
 msgid "addSkillWindow/desc2"
 msgstr "Perks only come into effect after reaching 100%."
 
 msgid "addSkillWindow/label"
-msgstr "Skills and Perks"
+msgstr "Perks"
 
 msgid "addSkillWindow/label/commander"
 msgstr "Commander"
 
 msgid "addSkillWindow/label/common"
-msgstr "common"
+msgstr "group"
 
 msgid "addSkillWindow/label/driver"
 msgstr "Driver"
@@ -339,10 +339,10 @@ msgid "addSkillWindow/label/radioman"
 msgstr "Radio Operator"
 
 msgid "addSkillWindow/submit"
-msgstr "Select"
+msgstr "Select Perk"
 
 msgid "addSkillWindow/title"
-msgstr "View Additional Skills and Perks"
+msgstr "View Additional Perks"
 
 msgid "barracksExpand/cancel"
 msgstr "Cancel"
@@ -583,11 +583,14 @@ msgstr "Purchase"
 msgid "buyPremWithoutBenefitsConfirmation/title"
 msgstr "Confirm Purchase"
 
+msgid "buySlot/hangarSlot/header"
+msgstr "Garage Slot"
+
 msgid "buySlotConfirmation/cancel"
 msgstr "Cancel"
 
 msgid "buySlotConfirmation/message"
-msgstr "Purchase an additional slot for %(goldCost)s gold in the Garage?"
+msgstr "Purchase an additional slot in the Garage for %(goldCost)s?"
 
 msgid "buySlotConfirmation/submit"
 msgstr "Purchase"
@@ -595,16 +598,28 @@ msgstr "Purchase"
 msgid "buySlotConfirmation/title"
 msgstr "Confirm Purchase"
 
-msgid "buySlotNotEnoughCredits/cancel"
+msgid "buySlotNotEnough/credits/cancel"
 msgstr "OK"
 
-msgid "buySlotNotEnoughCredits/message"
+msgid "buySlotNotEnough/credits/message"
+msgstr "Not enough credits to purchase a slot."
+
+msgid "buySlotNotEnough/credits/submit"
+msgstr "OK"
+
+msgid "buySlotNotEnough/credits/title"
+msgstr "Not Enough Credits"
+
+msgid "buySlotNotEnough/gold/cancel"
+msgstr "OK"
+
+msgid "buySlotNotEnough/gold/message"
 msgstr "Not enough gold to purchase a slot."
 
-msgid "buySlotNotEnoughCredits/submit"
+msgid "buySlotNotEnough/gold/submit"
 msgstr "OK"
 
-msgid "buySlotNotEnoughCredits/title"
+msgid "buySlotNotEnough/gold/title"
 msgstr "Not enough gold"
 
 msgid "buySlotShopConfirmation/cancel"
@@ -612,7 +627,8 @@ msgstr "Cancel"
 
 msgid "buySlotShopConfirmation/messageCombine"
 msgstr ""
-"No available slots in the Garage. Purchase an additional slot for {%d} gold?"
+"No available slots in the Garage. Purchase an additional slot for {%d} "
+"credits?"
 
 msgid "buySlotShopConfirmation/submit"
 msgstr "Purchase"
@@ -1490,10 +1506,10 @@ msgid "dropSkill/fullscreen/ok"
 msgstr "Reset"
 
 msgid "dropSkill/fullscreen/title"
-msgstr "Reset all skills and perks?"
+msgstr "Reset all perks?"
 
 msgid "dropSkill/message"
-msgstr "Reset all skills and perks?"
+msgstr "Reset all perks?"
 
 msgid "dropSkill/submit"
 msgstr "Reset"
@@ -1998,10 +2014,13 @@ msgstr "{orange_Open}One or more crew members are unsuitable{orange_Close}"
 msgid "idleCrewBonus/message/crewWarning"
 msgstr "The selected vehicle is unsuitable for one of the following reasons:"
 
-msgid "idleCrewBonus/message/remove"
+msgid "idleCrewBonus/message/removeName"
+msgstr "{white_Open}%(vehicleName)s{white_Close}"
+
+msgid "idleCrewBonus/message/removeType"
 msgstr ""
-"Only 1 crew can receive the bonus. The bonus will be removed from the "
-"{white_Open}%s{white_Close}"
+"Only one crew can receive the bonus. The bonus will be removed from the "
+"%(typeIcon)"
 
 msgid "idleCrewBonus/submit"
 msgstr "Confirm"
@@ -2367,9 +2386,6 @@ msgid "protectedDismissTankman/additionalMessage"
 msgstr ""
 "For this operation, enter the level %(skillType)s \"%(skillName)s\" "
 "(%(roleLevel)s)"
-
-msgid "protectedDismissTankman/additionalMessage/isAbillity"
-msgstr "of a skill"
 
 msgid "protectedDismissTankman/additionalMessage/isPerk"
 msgstr "of a perk"
@@ -3017,7 +3033,7 @@ msgid "skillDropWindow/submit"
 msgstr "Reset"
 
 msgid "skillDropWindow/title"
-msgstr "Skill and Perk Reset"
+msgstr "Perk Reset"
 
 msgid "soundModeInvalid/cancel"
 msgstr "Cancel"

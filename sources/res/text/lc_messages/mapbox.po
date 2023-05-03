@@ -60,19 +60,20 @@ msgstr "Affirmative!"
 
 msgid "intro/interviewInfoDescription"
 msgstr ""
-"Your feedback will affect how the new maps turn out. Vote for the best one, "
-"and we will add it to the game."
+"Your feedback helps us improve the battlefields. Leave your thoughts on the "
+"new map mechanics, and we will add the best ideas to the game."
 
 msgid "intro/interviewInfoTitle"
 msgstr "Crucial Feedback"
 
 msgid "intro/modeInfoDescription"
 msgstr ""
-"Fight in Tier VIII–X vehicles on maps under development, complete the "
-"surveys, and receive rewards."
+"Fight in Tier VIII–X vehicles on maps with new mechanics, complete surveys, "
+"and receive rewards. In a week, the progression will be reset, and you can "
+"start earning rewards again."
 
 msgid "intro/modeInfoTitle"
-msgstr "Participate in Developing New Maps!"
+msgstr "Help Us Develop New Mechanics!"
 
 msgid "intro/startEvent"
 msgstr "Event starts in: "
@@ -160,32 +161,34 @@ msgstr "Ceasefire is in effect on the %(server)s server until %(startTime)s"
 msgid "primeTimeView/title"
 msgstr "RECON MISSION"
 
-msgid "progression/cardTitle"
-msgstr ""
-"Be among the top {rating} players by experience earned when playing on the "
-"map"
+msgid "primeTimes/availableServer"
+msgstr "Available server:"
 
-msgid "progression/cardTitleCommon"
-msgstr ""
-"Be among the top {rating} players by experience earned when playing on the "
-"maps"
+msgid "primeTimes/availableServers"
+msgstr "Available servers:"
+
+msgid "progression/cardTitle/mapBattles"
+msgstr "Fight battles"
+
+msgid "progression/cardTitle/rating"
+msgstr "Be among the top {rating} players by XP earned"
 
 msgid "progression/changeAnswer"
 msgstr "Change Answer"
 
 msgid "progression/chooseBetter"
-msgstr "Select the Best Map"
+msgstr "Take Survey"
 
 msgid "progression/chooseBetterTooltip"
-msgstr "Fulfill the above condition to select the best map."
+msgstr "Fulfill the condition above to take a survey."
 
 msgid "progression/counter"
 msgstr "%(current) / %(mapBattles)"
 
 msgid "progression/info/description"
 msgstr ""
-"Fight in Tier VIII–X vehicles on maps under development, complete the "
-"surveys, and receive rewards."
+"Fight in Tier VIII–X vehicles on maps with new mechanics, complete surveys, "
+"and receive rewards."
 
 msgid "progression/info/restart"
 msgstr "The progress with rewards will be reset in %(leftTime)s"
@@ -202,35 +205,20 @@ msgstr "KARELIA"
 msgid "progression/map_02_malinovka"
 msgstr "MALINOVKA"
 
+msgid "progression/map_04_himmelsdorf_mb"
+msgstr "HIMMELSDORF"
+
 msgid "progression/map_05_prohorovka"
 msgstr "PROKHOROVKA"
 
-msgid "progression/map_117_canyon_ish"
-msgstr "CANYON"
+msgid "progression/map_05_prohorovka_mb"
+msgstr "PROKHOROVKA"
 
-msgid "progression/map_119_turning_point_if"
-msgstr "VOLGA"
+msgid "progression/map_08_ruinberg_mb"
+msgstr "RUINBERG"
 
-msgid "progression/map_120_graf_zeppelin_ish"
-msgstr "AIRSHIPYARD"
-
-msgid "progression/map_121_lost_paradise_v"
-msgstr "OYSTER BAY"
-
-msgid "progression/map_122_frozen_land"
-msgstr "AVALANCHE"
-
-msgid "progression/map_123_dalny_gg"
-msgstr "FAR EAST"
-
-msgid "progression/map_125_highground_v"
-msgstr "FOOTHILLS"
-
-msgid "progression/map_126_asia_ravine_ish"
-msgstr "PLACE OF POWER"
-
-msgid "progression/map_128_last_frontier_v"
-msgstr "OUTPOST"
+msgid "progression/map_127_japort_mb"
+msgstr "SAFE HAVEN"
 
 msgid "progression/map_14_siegfried_line"
 msgstr "GHOST TOWN"
@@ -242,7 +230,9 @@ msgid "progression/map_18_cliff"
 msgstr "WESTFIELD"
 
 msgid "progression/map_all"
-msgstr "ALL MAPS"
+msgstr ""
+"GAME\n"
+"MECHANICS"
 
 msgid "progression/redirect"
 msgstr "Go to Mode"
@@ -301,7 +291,7 @@ msgid "questFlag/frozen/text"
 msgstr "Recon Mission battles are unavailable for technical reasons."
 
 msgid "questFlag/highlightedText"
-msgstr "Tier VIII–X vehicles on maps under development"
+msgstr "Tier VIII–X vehicles on maps with new mechanics"
 
 msgid "questFlag/incomplete"
 msgstr "Battles to be fought to receive the next reward: %(count)s"
@@ -348,10 +338,10 @@ msgid "selectableCrewbook/guide"
 msgstr "Training Guide"
 
 msgid "selector/startEvent"
-msgstr "Map exploration will start on %(day)s"
+msgstr "The exploration of maps with new mechanics will start on %(day)s"
 
 msgid "selector/tooltip/body"
-msgstr "The exploration of six maps will last until %(day)s."
+msgstr "The exploration of maps with new mechanics will last until %(day)s"
 
 msgid "selector/tooltip/title"
 msgstr "Schedule"
@@ -380,239 +370,410 @@ msgstr "Select Another Server"
 msgid "survey/backBtn"
 msgstr "Back"
 
+msgid "survey/dynamicAllMaps/question/q1"
+msgstr "What is your opinion on the addition of random events to the maps?"
+
+msgid "survey/dynamicAllMaps/question/q10"
+msgstr ""
+"Would you like to learn in advance about events on the maps in Random "
+"Battles?"
+
+msgid "survey/dynamicAllMaps/question/q11"
+msgstr "Would you play on maps with events in Random Battles?"
+
+msgid "survey/dynamicAllMaps/question/q2"
+msgstr "What did you think about the battles on the maps with random events?"
+
+msgid "survey/dynamicAllMaps/question/q3"
+msgstr "How much did the random events influence your gameplay?"
+
+msgid "survey/dynamicAllMaps/question/q4"
+msgstr "How did the battles change after the addition of random events?"
+
+msgid "survey/dynamicAllMaps/question/q5"
+msgstr "At what point during the battle should the random events occur?"
+
+msgid "survey/dynamicAllMaps/question/q6"
+msgstr ""
+"What do you think about the ability to interact with objects on the maps "
+"(containers, blocks, etc.)?"
+
+msgid "survey/dynamicAllMaps/question/q7"
+msgstr "Would you like to see events on the maps in Random Battles?"
+
+msgid "survey/dynamicAllMaps/question/q8"
+msgstr "Would you like to change anything about the random events?"
+
+msgid "survey/dynamicAllMaps/question/q9"
+msgstr "Specify any necessary improvements."
+
+msgid "survey/dynamicAllMaps/response/q10_1"
+msgstr "Yes, during map loading"
+
+msgid "survey/dynamicAllMaps/response/q10_2"
+msgstr "Yes, during the countdown"
+
+msgid "survey/dynamicAllMaps/response/q10_3"
+msgstr "Yes, before the event"
+
+msgid "survey/dynamicAllMaps/response/q10_4"
+msgstr "No"
+
+msgid "survey/dynamicAllMaps/response/q10_5"
+msgstr "Hard to say"
+
+msgid "survey/dynamicAllMaps/response/q11_1"
+msgstr "I would play on all of them"
+
+msgid "survey/dynamicAllMaps/response/q11_2"
+msgstr "I would disable some of them"
+
+msgid "survey/dynamicAllMaps/response/q11_3"
+msgstr "I would disable all of them"
+
+msgid "survey/dynamicAllMaps/response/q11_4"
+msgstr "Hard to say"
+
+msgid "survey/dynamicAllMaps/response/q1_1"
+msgstr "Positively"
+
+msgid "survey/dynamicAllMaps/response/q1_2"
+msgstr "Negatively"
+
+msgid "survey/dynamicAllMaps/response/q1_3"
+msgstr "I don't care"
+
+msgid "survey/dynamicAllMaps/response/q2_1"
+msgstr "I liked them a lot"
+
+msgid "survey/dynamicAllMaps/response/q2_2"
+msgstr "I somewhat liked them"
+
+msgid "survey/dynamicAllMaps/response/q2_3"
+msgstr "I somewhat disliked them"
+
+msgid "survey/dynamicAllMaps/response/q2_4"
+msgstr "I disliked them a lot"
+
+msgid "survey/dynamicAllMaps/response/q2_5"
+msgstr "Hard to say"
+
+msgid "survey/dynamicAllMaps/response/q3_1"
+msgstr "They influenced it considerably"
+
+msgid "survey/dynamicAllMaps/response/q3_2"
+msgstr "They influenced it a little"
+
+msgid "survey/dynamicAllMaps/response/q3_3"
+msgstr "They did not influence it at all"
+
+msgid "survey/dynamicAllMaps/response/q3_4"
+msgstr "Hard to say"
+
+msgid "survey/dynamicAllMaps/response/q4_1"
+msgstr "Battles became more engaging"
+
+msgid "survey/dynamicAllMaps/response/q4_2"
+msgstr "I haven't noticed any changes"
+
+msgid "survey/dynamicAllMaps/response/q4_3"
+msgstr "Battles became less engaging"
+
+msgid "survey/dynamicAllMaps/response/q4_4"
+msgstr "Hard to say"
+
+msgid "survey/dynamicAllMaps/response/q5_1"
+msgstr "At the beginning of the battle"
+
+msgid "survey/dynamicAllMaps/response/q5_2"
+msgstr "In the middle of the battle"
+
+msgid "survey/dynamicAllMaps/response/q5_3"
+msgstr "Closer to the end of the battle"
+
+msgid "survey/dynamicAllMaps/response/q5_4"
+msgstr "At any moment in the battle"
+
+msgid "survey/dynamicAllMaps/response/q5_5"
+msgstr "Hard to say"
+
+msgid "survey/dynamicAllMaps/response/q6_1"
+msgstr "Positively"
+
+msgid "survey/dynamicAllMaps/response/q6_2"
+msgstr "Negatively"
+
+msgid "survey/dynamicAllMaps/response/q6_3"
+msgstr "I don't care"
+
+msgid "survey/dynamicAllMaps/response/q7_1"
+msgstr "Yes"
+
+msgid "survey/dynamicAllMaps/response/q7_2"
+msgstr "No"
+
+msgid "survey/dynamicAllMaps/response/q7_3"
+msgstr "I don't care"
+
+msgid "survey/dynamicAllMaps/response/q8_1"
+msgstr "Yes"
+
+msgid "survey/dynamicAllMaps/response/q8_2"
+msgstr "No"
+
+msgid "survey/dynamicAllMaps/response/q8_3"
+msgstr "Hard to say"
+
+msgid "survey/dynamicOneMap/question/option/q6_AT-SPG"
+msgstr "TDs"
+
+msgid "survey/dynamicOneMap/question/option/q6_SPG"
+msgstr "SPGs"
+
+msgid "survey/dynamicOneMap/question/option/q6_heavyTank"
+msgstr "HTs"
+
+msgid "survey/dynamicOneMap/question/option/q6_lightTank"
+msgstr "LTs"
+
+msgid "survey/dynamicOneMap/question/option/q6_mediumTank"
+msgstr "MTs"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_1"
+msgstr "Zeppelin falling in the town"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_2"
+msgstr "Appearance of the descent from the hill"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_3"
+msgstr "Bombing of the trains on the railway"
+
+msgid "survey/dynamicOneMap/question/option/q8_04_himmelsdorf_mb_4"
+msgstr "Interaction with dynam. cover (rail cars, tanks)"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_1"
+msgstr "Planes falling on the alley"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_2"
+msgstr "Plane falling on the hill"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_3"
+msgstr "Train derailment"
+
+msgid "survey/dynamicOneMap/question/option/q8_05_prohorovka_mb_4"
+msgstr "Interaction with dynam. cover (vehicle frames)"
+
+msgid "survey/dynamicOneMap/question/option/q8_08_ruinberg_mb_1"
+msgstr "Bombardment of the small town"
+
+msgid "survey/dynamicOneMap/question/option/q8_08_ruinberg_mb_2"
+msgstr "Bombardment of a large town (passages appear in the town)"
+
+msgid "survey/dynamicOneMap/question/option/q8_08_ruinberg_mb_3"
+msgstr "Interaction with dynam. cover (vehicle frames)"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_1"
+msgstr "Ship entering the wet dock"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_2"
+msgstr "Plane falling on the bunker entrance"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_3"
+msgstr "Destruction of a bridge by bombing"
+
+msgid "survey/dynamicOneMap/question/option/q8_127_japort_mb_4"
+msgstr "Interaction with dynam. cover (containers, concrete block)"
+
+msgid "survey/dynamicOneMap/question/q1"
+msgstr "What are your impressions from playing on this map?"
+
+msgid "survey/dynamicOneMap/question/q2"
+msgstr "What are your impressions from the random event visuals on this map?"
+
+msgid "survey/dynamicOneMap/question/q3"
+msgstr "Rate the number of random events on the map."
+
+msgid "survey/dynamicOneMap/question/q4"
+msgstr ""
+"Would you like to adjust the influence of these events on the map gameplay?"
+
+msgid "survey/dynamicOneMap/question/q5"
+msgstr "Which vehicles did you play this map in?"
+
+msgid "survey/dynamicOneMap/question/q6"
+msgstr "How did the {value} gameplay change?"
+
+msgid "survey/dynamicOneMap/question/q7"
+msgstr ""
+"What are your impressions from using dynamic covers (containers, blocks, "
+"etc.) in battle?"
+
+msgid "survey/dynamicOneMap/question/q8"
+msgstr ""
+"What do you think about the influence of the following features on the map "
+"gameplay?"
+
+msgid "survey/dynamicOneMap/question/q9_13"
+msgstr "What didn't you like about the \"{value}\" event?"
+
+msgid "survey/dynamicOneMap/response/q1_1"
+msgstr "I liked it a lot"
+
+msgid "survey/dynamicOneMap/response/q1_2"
+msgstr "I somewhat liked it"
+
+msgid "survey/dynamicOneMap/response/q1_3"
+msgstr "I somewhat disliked it"
+
+msgid "survey/dynamicOneMap/response/q1_4"
+msgstr "I disliked it a lot"
+
+msgid "survey/dynamicOneMap/response/q1_5"
+msgstr "Hard to say"
+
+msgid "survey/dynamicOneMap/response/q2_1"
+msgstr "I liked them a lot"
+
+msgid "survey/dynamicOneMap/response/q2_2"
+msgstr "I somewhat liked them"
+
+msgid "survey/dynamicOneMap/response/q2_3"
+msgstr "I somewhat disliked them"
+
+msgid "survey/dynamicOneMap/response/q2_4"
+msgstr "I disliked them a lot"
+
+msgid "survey/dynamicOneMap/response/q2_5"
+msgstr "Hard to say"
+
+msgid "survey/dynamicOneMap/response/q3_1"
+msgstr "Too many"
+
+msgid "survey/dynamicOneMap/response/q3_2"
+msgstr "Just enough"
+
+msgid "survey/dynamicOneMap/response/q3_3"
+msgstr "Too few"
+
+msgid "survey/dynamicOneMap/response/q3_4"
+msgstr "Hard to say"
+
+msgid "survey/dynamicOneMap/response/q4_1"
+msgstr "Yes, to increase it"
+
+msgid "survey/dynamicOneMap/response/q4_2"
+msgstr "Yes, to decrease it"
+
+msgid "survey/dynamicOneMap/response/q4_3"
+msgstr "No"
+
+msgid "survey/dynamicOneMap/response/q4_4"
+msgstr "Hard to say"
+
+msgid "survey/dynamicOneMap/response/q5_AT-SPG"
+msgstr "TDs"
+
+msgid "survey/dynamicOneMap/response/q5_SPG"
+msgstr "SPGs"
+
+msgid "survey/dynamicOneMap/response/q5_heavyTank"
+msgstr "HTs"
+
+msgid "survey/dynamicOneMap/response/q5_lightTank"
+msgstr "LTs"
+
+msgid "survey/dynamicOneMap/response/q5_mediumTank"
+msgstr "MTs"
+
+msgid "survey/dynamicOneMap/response/q5_unknown"
+msgstr "I don't remember"
+
+msgid "survey/dynamicOneMap/response/q6_1"
+msgstr "It improved"
+
+msgid "survey/dynamicOneMap/response/q6_2"
+msgstr "It worsened"
+
+msgid "survey/dynamicOneMap/response/q6_3"
+msgstr "I haven't noticed any changes"
+
+msgid "survey/dynamicOneMap/response/q6_4"
+msgstr "Hard to say"
+
+msgid "survey/dynamicOneMap/response/q7_1"
+msgstr "I liked it a lot"
+
+msgid "survey/dynamicOneMap/response/q7_2"
+msgstr "I somewhat liked it"
+
+msgid "survey/dynamicOneMap/response/q7_3"
+msgstr "I somewhat disliked it"
+
+msgid "survey/dynamicOneMap/response/q7_4"
+msgstr "I disliked it a lot"
+
+msgid "survey/dynamicOneMap/response/q7_5"
+msgstr "Hard to say"
+
+msgid "survey/dynamicOneMap/response/q8_1"
+msgstr "I liked it"
+
+msgid "survey/dynamicOneMap/response/q8_2"
+msgstr "I disliked it"
+
+msgid "survey/dynamicOneMap/response/q8_3"
+msgstr "Hard to say"
+
+msgid "survey/dynamicOneMap/response/q9_13_1"
+msgstr "The time the event occurs"
+
+msgid "survey/dynamicOneMap/response/q9_13_10"
+msgstr "One of the teams gains an advantage"
+
+msgid "survey/dynamicOneMap/response/q9_13_11"
+msgstr "It causes technical issues"
+
+msgid "survey/dynamicOneMap/response/q9_13_12"
+msgstr "Other"
+
+msgid "survey/dynamicOneMap/response/q9_13_2"
+msgstr "The event does not influence gameplay"
+
+msgid "survey/dynamicOneMap/response/q9_13_3"
+msgstr "A part of the map becomes unplayable"
+
+msgid "survey/dynamicOneMap/response/q9_13_4"
+msgstr "The new objects interfere with the battle"
+
+msgid "survey/dynamicOneMap/response/q9_13_5"
+msgstr "The visual aspect of the event"
+
+msgid "survey/dynamicOneMap/response/q9_13_6"
+msgstr "The event is not very impressive"
+
+msgid "survey/dynamicOneMap/response/q9_13_7"
+msgstr "There is a high chance of being destroyed because of the event"
+
+msgid "survey/dynamicOneMap/response/q9_13_8"
+msgstr "It makes me change my position"
+
+msgid "survey/dynamicOneMap/response/q9_13_9"
+msgstr "It considerably changes the map gameplay"
+
+msgid "survey/listSeparator"
+msgstr ", "
+
 msgid "survey/nextBtn"
 msgstr "Next"
 
-msgid "survey/question/1"
-msgstr "Did you like the map in terms of the way battles are fought?"
-
-msgid "survey/question/10"
-msgstr "Is it hard to capture the specified base?"
-
-msgid "survey/question/11"
-msgstr "Do you like the map's setting?"
-
-msgid "survey/question/12"
-msgstr "Would you like to see this map in the game?"
-
-msgid "survey/question/13"
-msgstr "Does this map need improvements?"
-
-msgid "survey/question/14"
-msgstr "Specify the necessary improvements."
-
-msgid "survey/question/2"
-msgstr "Which vehicles did you play this map in?"
-
-msgid "survey/question/3"
-msgstr "Which vehicle types is this map suitable for?"
-
-msgid "survey/question/3_0"
-msgstr "Is this map suitable for {value}?"
-
-msgid "survey/question/3_1"
-msgstr "Which vehicle types is this map suitable for?"
-
-msgid "survey/question/4"
-msgstr "What do you think about the size of the map?"
-
-msgid "survey/question/5"
-msgstr "Are the team positions balanced?"
-
-msgid "survey/question/6"
-msgstr "Show the positions with a clear advantage on the minimap."
-
-msgid "survey/question/7"
-msgstr "Which of the statements about the map do you agree with?"
-
-msgid "survey/question/8"
-msgstr "Which of the statements about the map do you agree with?"
-
-msgid "survey/question/9"
-msgstr "Is it hard to capture the specified base?"
-
-msgid "survey/question/option/3_AT-SPG"
-msgstr "TDs"
-
-msgid "survey/question/option/3_SPG"
-msgstr "SPGs"
-
-msgid "survey/question/option/3_heavyTank"
-msgstr "HTs"
-
-msgid "survey/question/option/3_lightTank"
-msgstr "LTs"
-
-msgid "survey/question/option/3_mediumTank"
-msgstr "MTs"
-
-msgid "survey/question/option/7_1"
-msgstr "It is easy to navigate"
-
-msgid "survey/question/option/7_2"
-msgstr "Battles are too long"
-
-msgid "survey/question/option/7_3"
-msgstr "Battles are monotonous, and there's always the same scenario"
-
-msgid "survey/question/option/7_4"
-msgstr "Vehicles are spotted too quickly at the beginning of the battle"
-
-msgid "survey/question/option/7_5"
-msgstr "A considerable part of the map is inaccessible for playing on"
-
-msgid "survey/question/option/8_1"
-msgstr "Various tactics can be used"
-
-msgid "survey/question/option/8_2"
-msgstr "Firing positions are easy to find"
-
-msgid "survey/question/option/8_3"
-msgstr "There are enough bushes and trees that can be used in battle"
-
-msgid "survey/question/option/8_4"
-msgstr "There are enough hills and valleys that can be used in battle"
-
-msgid "survey/question/option/8_5"
-msgstr "There is enough cover from SPG fire"
+msgid "survey/percentage"
+msgstr "%(percent)s%"
 
 msgid "survey/readyBtn"
 msgstr "Affirmative!"
 
 msgid "survey/required"
 msgstr "Answer the question to continue."
-
-msgid "survey/response/10_1"
-msgstr "Too easy"
-
-msgid "survey/response/10_2"
-msgstr "Just right"
-
-msgid "survey/response/10_3"
-msgstr "Too difficult"
-
-msgid "survey/response/10_4"
-msgstr "Hard to say"
-
-msgid "survey/response/11_1"
-msgstr "I like it"
-
-msgid "survey/response/11_2"
-msgstr "I don't like it"
-
-msgid "survey/response/11_3"
-msgstr "Hard to say"
-
-msgid "survey/response/12_1"
-msgstr "Yes"
-
-msgid "survey/response/12_2"
-msgstr "No"
-
-msgid "survey/response/12_3"
-msgstr "I don't care"
-
-msgid "survey/response/13_1"
-msgstr "Yes"
-
-msgid "survey/response/13_2"
-msgstr "No"
-
-msgid "survey/response/13_3"
-msgstr "Hard to say"
-
-msgid "survey/response/1_1"
-msgstr "Definitely yes"
-
-msgid "survey/response/1_2"
-msgstr "Probably yes"
-
-msgid "survey/response/1_3"
-msgstr "Probably not"
-
-msgid "survey/response/1_4"
-msgstr "Definitely not"
-
-msgid "survey/response/1_5"
-msgstr "Hard to say"
-
-msgid "survey/response/2_AT-SPG"
-msgstr "TDs"
-
-msgid "survey/response/2_SPG"
-msgstr "SPGs"
-
-msgid "survey/response/2_heavyTank"
-msgstr "HTs"
-
-msgid "survey/response/2_lightTank"
-msgstr "LTs"
-
-msgid "survey/response/2_mediumTank"
-msgstr "MTs"
-
-msgid "survey/response/2_unknown"
-msgstr "I didn't make a note of it"
-
-msgid "survey/response/3_1"
-msgstr "Rather suitable"
-
-msgid "survey/response/3_2"
-msgstr "Rather unsuitable"
-
-msgid "survey/response/3_3"
-msgstr "Hard to say"
-
-msgid "survey/response/4_1"
-msgstr "Too large"
-
-msgid "survey/response/4_2"
-msgstr "Just right"
-
-msgid "survey/response/4_3"
-msgstr "Too small"
-
-msgid "survey/response/4_4"
-msgstr "Hard to say"
-
-msgid "survey/response/5_1"
-msgstr "Yes"
-
-msgid "survey/response/5_2"
-msgstr "No"
-
-msgid "survey/response/5_3"
-msgstr "Hard to say"
-
-msgid "survey/response/7_1"
-msgstr "Agree"
-
-msgid "survey/response/7_2"
-msgstr "Disagree"
-
-msgid "survey/response/7_3"
-msgstr "Hard to say"
-
-msgid "survey/response/8_1"
-msgstr "Agree"
-
-msgid "survey/response/8_2"
-msgstr "Disagree"
-
-msgid "survey/response/8_3"
-msgstr "Hard to say"
-
-msgid "survey/response/9_1"
-msgstr "Too easy"
-
-msgid "survey/response/9_2"
-msgstr "Just right"
-
-msgid "survey/response/9_3"
-msgstr "Too difficult"
-
-msgid "survey/response/9_4"
-msgstr "Hard to say"
 
 msgid "survey/subTitle"
 msgstr ""
@@ -631,7 +792,7 @@ msgid "survey/template/mapInteractive/hint1"
 msgstr "YOU CAN SELECT UP TO THREE POSITIONS ON THE MAP"
 
 msgid "survey/template/mapInteractive/point/description"
-msgstr "Detailed description of the issue (up to %(maxLength)s characters)"
+msgstr "Detailed description (up to %(maxLength)s characters)"
 
 msgid "survey/template/mapInteractive/point/title"
 msgstr "Position"
@@ -640,7 +801,10 @@ msgid "survey/template/mapInteractive/point/tooltip"
 msgstr "Remove position"
 
 msgid "survey/template/opened/description"
-msgstr "Detailed description (up to %(maxLength)s characters)"
+msgstr "Detailed description of the issue (up to %(maxLength)s characters)"
 
-msgid "survey/title"
-msgstr "Evaluation of the {map} Map"
+msgid "survey/title/common"
+msgstr "Please rate the new features"
+
+msgid "survey/title/map"
+msgstr "Evaluation of the %(map)s Map"

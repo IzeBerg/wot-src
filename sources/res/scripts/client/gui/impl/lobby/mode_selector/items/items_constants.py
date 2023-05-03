@@ -12,6 +12,8 @@ class CustomModeName(object):
 
 COLUMN_SETTINGS = {PREBATTLE_ACTION_NAME.RANDOM: (
                                 ModeSelectorColumns.COLUMN_0, -1), 
+   PREBATTLE_ACTION_NAME.WINBACK: (
+                                 ModeSelectorColumns.COLUMN_0, -1), 
    PREBATTLE_ACTION_NAME.EPIC: (
                               ModeSelectorColumns.COLUMN_1, 10), 
    PREBATTLE_ACTION_NAME.BATTLE_ROYALE: (

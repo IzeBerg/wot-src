@@ -33,7 +33,7 @@ _MULTIPLIER = 'Multiplier'
 _ALL = 'All'
 _PREMIUM_PACKET = 'premiumPacket'
 _gold_bonus_list = (
- 'slotsPrices', 'berthsPrices', 'premiumPacket1Cost',
+ 'berthsPrices', 'premiumPacket1Cost',
  'premiumPacket3Cost', 'premiumPacket7Cost',
  'premiumPacket14Cost', 'premiumPacket30Cost',
  'premiumPacket90Cost', 'premiumPacket180Cost',
@@ -965,7 +965,9 @@ class MarathonEventActionInfo(ActionInfo):
 def getEconomicalStatsDict():
     itemsCache = dependency.instance(IItemsCache)
     shop = itemsCache.items.shop
-    return {'exchangeRate': shop.exchangeRate, 'slotsPrices': shop.slotsPrices[1][0], 
+    slotPrices = shop.slotsPrices[1]
+    slotPricesValue = slotPrices[0][1]
+    return {'exchangeRate': shop.exchangeRate, 'slotsPrices': slotPricesValue, 
        'berthsPrices': shop.berthsPrices[2][0], 
        'premiumPacket1Cost': shop.getPremiumPacketCost(1), 
        'premiumPacket3Cost': shop.getPremiumPacketCost(3), 

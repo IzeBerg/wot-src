@@ -273,6 +273,7 @@ class BATTLE_EVENTS(CONST_CONTAINER):
     RECEIVED_CRITS = 'battleEventsReceivedCrits'
     ENEMY_ASSIST_STUN = 'battleEventsEnemyAssistStun'
     ENEMIES_STUN = 'battleEventsEnemyStun'
+    CREW_PERKS = 'battleEventsCrewPerks'
 
 
 class BATTLE_BORDER_MAP(CONST_CONTAINER):
@@ -311,6 +312,7 @@ class GuiSettingsBehavior(CONST_CONTAINER):
     BIRTHDAY_CALENDAR_INTRO_SHOWED = 'birthdayCalendarIntroShowed'
     RESOURCE_WELL_INTRO_SHOWN = 'resourceWellIntroShown'
     COMP7_INTRO_SHOWN = 'isComp7IntroShown'
+    CREW_22_WELCOME_SHOWN = 'crew22WelcomeShown'
 
 
 class OnceOnlyHints(CONST_CONTAINER):

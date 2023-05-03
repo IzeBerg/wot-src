@@ -32,6 +32,8 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       
       private var _hpOffsetY:int;
       
+      private var _isSuspended:Boolean = true;
+      
       private var _sizeIndex:int;
       
       private var _currentTF:TextField;
@@ -72,20 +74,41 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          this.forceUpdate();
       }
       
-      public function start() : void
+      public function suspend(param1:Boolean) : void
       {
-         this._timer.start();
+         this._isSuspended = param1;
+         this.validateState();
       }
       
-      public function stop() : void
+      public function validateLabel() : void
+      {
+         this.validateState();
+      }
+      
+      private function validateState() : void
+      {
+         if(!this._isSuspended && this._entryRef.isVehicleLabelVisible)
+         {
+            this._timer.start();
+         }
+         else
+         {
+            this.stopTimer();
+         }
+         this.forceUpdate();
+      }
+      
+      private function stopTimer() : void
       {
          this._timer.stop();
+         this.__prevEntityX = 0;
+         this.__prevEntityY = 0;
       }
       
       public function dispose() : void
       {
          this._timer.removeEventListener(TimerEvent.TIMER,this.onTimerHandler);
-         this.stop();
+         this.stopTimer();
          this._timer = null;
          this._currentTF = null;
          this._entryRef = null;
@@ -108,12 +131,12 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          var _loc4_:int = 0;
          var _loc5_:Number = NaN;
          var _loc6_:Number = NaN;
+         if(!this._entryRef.isVehicleLabelVisible)
+         {
+            return;
+         }
          if(param1 || this.__prevEntityX != this._entryRef.x || this.__prevEntityY != this._entryRef.y)
          {
-            if(!this._entryRef.isVehicleLabelVisible)
-            {
-               return;
-            }
             this.__prevEntityX = this._entryRef.x;
             this.__prevEntityY = this._entryRef.y;
             _loc2_ = this._entryRef.hpCircle.visible;
@@ -128,7 +151,7 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
                _loc4_ = this._initialOffsetY;
             }
             _loc5_ = this._currentTF.width;
-            if(this._entryRef.x + this._tfWidthOnScreen + _loc3_ > this.bounds.x)
+            if(!this._isSuspended && this._entryRef.x + this._tfWidthOnScreen + _loc3_ > this.bounds.x)
             {
                this._currentTF.x = -(_loc5_ + _loc3_);
             }
@@ -137,11 +160,11 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
                this._currentTF.x = _loc3_;
             }
             _loc6_ = this._currentTF.height;
-            if(this._entryRef.y + this._tfHeightOnScreen + _loc4_ > this.bounds.y)
+            if(!this._isSuspended && this._entryRef.y + this._tfHeightOnScreen + _loc4_ > this.bounds.y)
             {
                this._currentTF.y = -_loc6_ + OFFSET_Y_BETWEEN_TEXT_AND_BORDER;
             }
-            else if(this._entryRef.y < -this.bounds.y - HP_OFFSET_Y)
+            else if(!this._isSuspended && this._entryRef.y < -this.bounds.y - HP_OFFSET_Y)
             {
                this._currentTF.y = this._initialOffsetY;
             }

@@ -1,15 +1,16 @@
-import logging, base64, cPickle as pickle, copy
+import base64, cPickle as pickle, copy, logging
 from copy import deepcopy
 import BigWorld, CommandMapping, Event, Settings, WWISE, constants, nations
 from account_helpers import gameplay_ctx
-from account_helpers.settings_core.settings_constants import GAME, BattleCommStorageKeys, ScorePanelStorageKeys, SPGAim, SOUND, AIM, CONTOUR, GuiSettingsBehavior
+from account_helpers.settings_core.settings_constants import AIM, BattleCommStorageKeys, CONTOUR, GAME, GuiSettingsBehavior, SOUND, SPGAim, ScorePanelStorageKeys, BATTLE_EVENTS
 from aih_constants import CTRL_MODE_NAME
-from constants import VEHICLE_CLASSES, MAX_VEHICLE_LEVEL
+from constants import MAX_VEHICLE_LEVEL, VEHICLE_CLASSES
 from debug_utils import LOG_CURRENT_EXCEPTION
 from gui.Scaleform.genConsts.MISSIONS_CONSTANTS import MISSIONS_CONSTANTS
 from gui.Scaleform.genConsts.PROFILE_CONSTANTS import PROFILE_CONSTANTS
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
-from gui.integrated_auction.constants import AUCTION_STAGE_START_SEEN, AUCTION_FINISH_STAGE_SEEN
+from gui.collection.collections_constants import COLLECTION_START_SEEN
+from gui.integrated_auction.constants import AUCTION_FINISH_STAGE_SEEN, AUCTION_STAGE_START_SEEN
 from gui.prb_control.settings import SELECTOR_BATTLE_TYPES
 from helpers import dependency, getClientVersion
 from items.components.crew_books_constants import CREW_BOOK_RARITY
@@ -54,6 +55,7 @@ COMP7_CAROUSEL_FILTER_2 = 'COMP7_CAROUSEL_FILTER_2'
 COMP7_CAROUSEL_FILTER_CLIENT_1 = 'COMP7_CAROUSEL_FILTER_CLIENT_1'
 COMP7_PREBATTLE_CAROUSEL_ROW_VALUE = 'comp7PrebattleCarouselRowValue'
 COMP7_PREBATTLE_MINIMAP_SIZE = 'comp7PrebattleMinimapSize'
+COMP7_IS_VOIP_IN_BATTLE_ACTIVATED = 'comp7IsVoipInBattleActivated'
 BARRACKS_FILTER = 'barracks_filter'
 ORDERS_FILTER = 'ORDERS_FILTER'
 CURRENT_VEHICLE = 'current'
@@ -128,7 +130,9 @@ SELECTED_QUEST_IN_REPLAY = 'SELECTED_QUEST_IN_REPLAY'
 LAST_SELECTED_PM_BRANCH = 'lastSelectedPMBranch'
 WHEELED_DEATH_DELAY_COUNT = 'wheeledDeathCounter'
 LAST_BATTLE_PASS_POINTS_SEEN = 'lastBattlePassPointsSeen'
+BR_PROGRESSION_POINTS_SEEN = 'brProgressionPointsSeen'
 IS_BATTLE_PASS_EXTRA_STARTED = 'isBattlePassExtraStarted'
+IS_BATTLE_PASS_COLLECTION_SEEN = 'isCollectionSeen'
 CRYSTALS_INFO_SHOWN = 'crystalsInfoShown'
 IS_CUSTOMIZATION_INTRO_VIEWED = 'isCustomizationIntroViewed'
 CUSTOMIZATION_STYLE_ITEMS_VISITED = 'CustomizationStyleItemsVisited'
@@ -149,6 +153,7 @@ RADAR_HINT_SECTION = 'radarHint'
 PRE_BATTLE_HINT_SECTION = 'preBattleHintSection'
 PRE_BATTLE_ROLE_HINT_SECTION = 'preBattleRoleHintSection'
 FUN_RANDOM_HINT_SECTION = 'funRandomHintSection'
+MAPBOX_HINT_SECTION = 'mapboxHintSection'
 QUEST_PROGRESS_HINT_SECTION = 'questProgressHint'
 HELP_SCREEN_HINT_SECTION = 'helpScreenHint'
 IBC_HINT_SECTION = 'battleCommunicationHint'
@@ -207,7 +212,7 @@ INTEGRATED_AUCTION_NOTIFICATIONS = 'integratedAuctionNotifications'
 SHOWN_PERSONAL_RESERVES_INTRO = 'shownPersonalReserves'
 MINIMAP_SIZE = 'minimapSize'
 COMP7_UI_SECTION = 'comp7'
-COMP7_WIN_REWARDS_PAGE_WINS_COUNT = 'comp7WinRewardsPageWinsCount'
+COMP7_WEEKLY_QUESTS_PAGE_TOKENS_COUNT = 'comp7WeeklyQuestsPageTokensCount'
 FUN_RANDOM_NOTIFICATIONS = 'funRandomNotifications'
 FUN_RANDOM_NOTIFICATIONS_FROZEN = 'funRandomNotificationsFrozen'
 FUN_RANDOM_NOTIFICATIONS_PROGRESSIONS = 'funRandomNotificationsProgressions'
@@ -219,11 +224,25 @@ LOOT_BOXES_WAS_FINISHED = 'lootBoxesWasFinished'
 LOOT_BOXES_OPEN_ANIMATION_ENABLED = 'lootBoxesOpenAnimationEnabled'
 LOOT_BOXES_VIEWED_COUNT = 'lootBoxesViewedCount'
 LOOT_BOXES_EVENT_UNIQUE_ID = 'lootBoxesEventUniqueID'
+COLLECTIONS_SECTION = 'collections'
+COLLECTION_SHOWN_NEW_REWARDS = 'collectionsNewRewards'
+COLLECTION_SHOWN_NEW_ITEMS = 'collectionNewItems'
+COLLECTION_SHOWN_NEW_ITEMS_COUNT = 'collectionNewItemsCount'
+COLLECTION_TUTORIAL_COMPLETED = 'collectionTutorialCompleted'
+COLLECTION_WAS_ENABLED = 'collectionsWasEnabled'
+COLLECTIONS_NOTIFICATIONS = 'collectionsNotifications'
 
 class BattleMatters(object):
     BATTLE_MATTERS_SETTINGS = 'battleMattersSettings'
     BATTLES_COUNT_WITHOUT_PROGRESS = 'battlesCountWithoutProgress'
     QUEST_IDX_FOR_LAST_UPDATED_PORGRESS = 'progressForQuest'
+
+
+class Winback(object):
+    WINBACK_SETTINGS = 'winbackSettings'
+    COMPLETED_STARTING_QUEST_COUNT = 'completedStartingQuestCount'
+    INTRO_SHOWN = 'introShown'
+    BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN = 'battleSelectorSettingsBulletShown'
 
 
 KNOWN_SELECTOR_BATTLES = 'knownSelectorBattles'
@@ -744,6 +763,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                        'markerAltAimMarker2D': False}}, 
                   COMP7_PREBATTLE_CAROUSEL_ROW_VALUE: -1, 
                   COMP7_PREBATTLE_MINIMAP_SIZE: -1, 
+                  COMP7_IS_VOIP_IN_BATTLE_ACTIVATED: False, 
                   'showVehicleIcon': False, 
                   'showVehicleLevel': False, 
                   'showExInf4Destroyed': False, 
@@ -804,12 +824,15 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   DOG_TAGS: {'lastVisitedDogTagsTabIdx': None, 
                              'onboardingEnabled': True, 
                              'seenComps': set()}, 
-                  WOT_PLUS: {'isWotPlusEnabled': False, 
+                  WOT_PLUS: {'isFirstTime': True, 
+                             'isWotPlusEnabled': False, 
                              'isEntryPointsEnabled': False, 
                              'isGoldReserveEnabled': True, 
                              'isPassiveXpEnabled': True, 
                              'isTankRentalEnabled': True, 
                              'isFreeDirectivesEnabled': True, 
+                             'isFreeDemountingEnabled': True, 
+                             'isExcludedMapEnabled': True, 
                              'rentPendingVehCD': None}, 
                   TELECOM_RENTALS: {'isTelecomRentalsEnabled': True, 
                                     'isTelecomRentalsBlocked': True}, 
@@ -876,7 +899,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                                                          ScorePanelStorageKeys.SHOW_HP_BAR: True, 
                                                                                          'progressViewType': True, 
                                                                                          'progressViewConditions': True}, 
-                                                              'feedbackDamageIndicator': {'damageIndicatorAllies': True}}, 
+                                                              'feedbackDamageIndicator': {'damageIndicatorAllies': True}, 
+                                                              'feedbackBattleEvents': {BATTLE_EVENTS.CREW_PERKS: True}}, 
                                          'ControlsSettings': {'highlightLocation': True, 
                                                               'showQuestProgress': True, 
                                                               'chargeFire': True, 
@@ -915,7 +939,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                                           NUM_BATTLES: 0}, 
                                             HELP_SCREEN_HINT_SECTION: {}, IBC_HINT_SECTION: {HINTS_LEFT: 10}, 
                                             RESERVES_HINT_SECTION: {HINTS_LEFT: 10}}, 
-                  PRE_BATTLE_ROLE_HINT_SECTION: {}, FUN_RANDOM_HINT_SECTION: {}, COMMANDER_CAM_HINT_SECTION: {HINTS_LEFT: 5}, 
+                  PRE_BATTLE_ROLE_HINT_SECTION: {}, FUN_RANDOM_HINT_SECTION: {}, MAPBOX_HINT_SECTION: {}, COMMANDER_CAM_HINT_SECTION: {HINTS_LEFT: 5}, 
                   MINIMAP_IBC_HINT_SECTION: {HINTS_LEFT: 10}, 
                   WATCHED_PRE_BATTLE_TIPS_SECTION: {}, SIEGE_HINT_SECTION: {HINTS_LEFT: 3, 
                                        LAST_DISPLAY_DAY: 0, 
@@ -943,6 +967,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   RANKED_CURRENT_AWARDS_BUBBLE_YEAR_REACHED: False, 
                   NATION_CHANGE_VIEWED: False, 
                   LAST_BATTLE_PASS_POINTS_SEEN: {}, IS_BATTLE_PASS_EXTRA_STARTED: False, 
+                  IS_BATTLE_PASS_COLLECTION_SEEN: False, 
                   MODULES_ANIMATION_SHOWN: False, 
                   SUBTITLES: True, 
                   RANKED_YEAR_POSITION: None, 
@@ -960,11 +985,15 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   SHOWN_PERSONAL_RESERVES_INTRO: False, 
                   OPT_DEVICE_TAB_VISITED: {}, BattleMatters.BATTLE_MATTERS_SETTINGS: {BattleMatters.BATTLES_COUNT_WITHOUT_PROGRESS: 0, 
                                                           BattleMatters.QUEST_IDX_FOR_LAST_UPDATED_PORGRESS: 0}, 
+                  BR_PROGRESSION_POINTS_SEEN: 0, 
                   LOOT_BOXES: {EVENT_LOOT_BOXES: {LOOT_BOXES_WAS_STARTED: False, 
                                                   LOOT_BOXES_WAS_FINISHED: False, 
                                                   LOOT_BOXES_OPEN_ANIMATION_ENABLED: True, 
                                                   LOOT_BOXES_VIEWED_COUNT: 0, 
-                                                  LOOT_BOXES_EVENT_UNIQUE_ID: 0}}}, 
+                                                  LOOT_BOXES_EVENT_UNIQUE_ID: 0}}, 
+                  Winback.WINBACK_SETTINGS: {Winback.COMPLETED_STARTING_QUEST_COUNT: 0, 
+                                             Winback.INTRO_SHOWN: False, 
+                                             Winback.BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN: False}}, 
    KEY_COUNTERS: {NEW_HOF_COUNTER: {PROFILE_CONSTANTS.HOF_ACHIEVEMENTS_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VEHICLES_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VIEW_RATING_BUTTON: True}, 
@@ -997,7 +1026,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                   FUN_RANDOM_NOTIFICATIONS_PROGRESSIONS: set(), 
                                                   FUN_RANDOM_NOTIFICATIONS_SUB_MODES: set()}, 
                        RESOURCE_WELL_NOTIFICATIONS: {RESOURCE_WELL_START_SHOWN: set(), 
-                                                     RESOURCE_WELL_END_SHOWN: set()}}, 
+                                                     RESOURCE_WELL_END_SHOWN: set()}, 
+                       COLLECTIONS_NOTIFICATIONS: {COLLECTION_START_SEEN: []}}, 
    KEY_SESSION_SETTINGS: {STORAGE_VEHICLES_CAROUSEL_FILTER_1: {'ussr': False, 
                                                                'germany': False, 
                                                                'usa': False, 
@@ -1093,7 +1123,9 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                           IS_SHOP_VISITED: False, 
                           LAST_SHOP_ACTION_COUNTER_MODIFICATION: None, 
                           OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES: set()}, 
-   KEY_UI_FLAGS: {COMP7_UI_SECTION: {COMP7_WIN_REWARDS_PAGE_WINS_COUNT: 0}}}
+   KEY_UI_FLAGS: {COMP7_UI_SECTION: {COMP7_WEEKLY_QUESTS_PAGE_TOKENS_COUNT: 0}, 
+                  COLLECTIONS_SECTION: {COLLECTION_SHOWN_NEW_REWARDS: {}, COLLECTION_SHOWN_NEW_ITEMS: {}, COLLECTION_SHOWN_NEW_ITEMS_COUNT: {}, COLLECTION_TUTORIAL_COMPLETED: set(), 
+                                        COLLECTION_WAS_ENABLED: True}}}
 
 def _filterAccountSection(dataSec):
     for key, section in dataSec.items()[:]:
@@ -1133,7 +1165,7 @@ def _recursiveStep(defaultDict, savedDict, finalDict):
 
 class AccountSettings(object):
     onSettingsChanging = Event.Event()
-    version = 58
+    version = 59
     settingsCore = dependency.descriptor(ISettingsCore)
     __cache = {'login': None, 'section': None}
     __sessionSettings = {'login': None, 'section': None}
@@ -1724,6 +1756,12 @@ class AccountSettings(object):
                     obsoleteKey = 'seniorityAwardsWindowShown'
                     if obsoleteKey in accSessionSettings.keys():
                         accSessionSettings.deleteSection(obsoleteKey)
+
+            if currVersion < 59:
+                for key, section in _filterAccountSection(ads):
+                    keySettings = AccountSettings._readSection(section, KEY_SETTINGS)
+                    if IS_BATTLE_PASS_COLLECTION_SEEN in keySettings.keys():
+                        keySettings.write(IS_BATTLE_PASS_COLLECTION_SEEN, _pack(False))
 
             ads.writeInt('version', AccountSettings.version)
         return

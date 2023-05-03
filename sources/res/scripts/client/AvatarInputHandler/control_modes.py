@@ -1291,7 +1291,6 @@ class PostMortemControlMode(IControlMode):
         self.__aih = weakref.proxy(avatarInputHandler)
         self.__cam = ArcadeCamera.ArcadeCamera(dataSection['camera'], dataSection.readVector2('defaultOffset'))
         self.__curVehicleID = None
-        self.__selfVehicleID = None
         self.__isEnabled = False
         self.__postmortemDelay = None
         self.__isObserverMode = False
@@ -1383,7 +1382,6 @@ class PostMortemControlMode(IControlMode):
         self.__disconnectFromArena()
         self.__cam.disable()
         self.__curVehicleID = None
-        self.__selfVehicleID = None
         return
 
     def handleKeyEvent(self, isDown, key, mods, event=None):

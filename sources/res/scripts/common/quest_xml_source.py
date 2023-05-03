@@ -346,6 +346,7 @@ class Source(object):
            'consume': self.__readCondition_consume, 
            'inClan': self.__readListOfInts, 
            'vehiclesUnlocked': self.__readBattleResultsConditionList, 
+           'vehiclesLocked': self.__readBattleResultsConditionList, 
            'vehiclesOwned': self.__readBattleResultsConditionList, 
            'vehiclesUnlockedAndOwned': self.__readBattleResultsConditionList, 
            'classes': self.__readVehicleFilter_classes, 
@@ -371,6 +372,7 @@ class Source(object):
            'bonusLimit': self.__readCondition_int, 
            'isTutorialCompleted': self.__readCondition_bool, 
            'isBattleMattersEnabled': self.__readCondition_bool, 
+           'isWinbackQuestsEnabled': self.__readCondition_bool, 
            'isSteamAllowed': self.__readCondition_bool, 
            'totalBattles': self.__readBattleResultsConditionList, 
            'lastLogout': self.__readBattleResultsConditionList, 
@@ -505,7 +507,8 @@ class Source(object):
          'premium', 'premium_plus', 'premium_vip', 'token', 'goodie', 'vehicle', 'dossier', 'tankmen',
          'customizations', 'vehicleChoice', 'crewSkin', 'blueprint', 'blueprintAny', 'enhancement',
          'eventCoin', 'bpcoin', 'entitlement', 'rankedDailyBattles', 'rankedBonusBattles', 'equipCoin',
-         'dogTagComponent', 'battlePassPoints', 'currency', 'freePremiumCrew', 'entitlementList'}
+         'dogTagComponent', 'battlePassPoints', 'currency', 'freePremiumCrew', 'entitlementList',
+         'dailyQuestReroll', 'noviceReset'}
         if eventType in (EVENT_TYPE.BATTLE_QUEST, EVENT_TYPE.PERSONAL_QUEST, EVENT_TYPE.NT_QUEST):
             bonusTypes.update(('xp', 'tankmenXP', 'xpFactor', 'creditsFactor', 'freeXPFactor',
                                'tankmenXPFactor'))

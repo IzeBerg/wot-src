@@ -43,6 +43,8 @@ package
       
       public static const HEADER_BACKBTN_DESCRLABEL_BATTLEMATTERSMAINREWARD:String = "#vehicle_preview:header/backBtn/descrLabel/battleMattersMainReward";
       
+      public static const HEADER_BACKBTN_DESCRLABEL_COLLECTIONS:String = "#vehicle_preview:header/backBtn/descrLabel/collections";
+      
       public static const HEADER_TITLE:String = "#vehicle_preview:header/title";
       
       public static const HEADER_CLOSEBTN_LABEL:String = "#vehicle_preview:header/closeBtn/label";
@@ -58,6 +60,8 @@ package
       public static const BUYINGPANEL_ALERTLABEL:String = "#vehicle_preview:buyingPanel/alertLabel";
       
       public static const BUYINGPANEL_UNIQUEVEHICLELABEL:String = "#vehicle_preview:buyingPanel/uniqueVehicleLabel";
+      
+      public static const BUYINGPANEL_AVAILABLEFORWOTPLUS:String = "#vehicle_preview:buyingPanel/availableForWotPlus";
       
       public static const BUYINGPANEL_TRADEINLABEL:String = "#vehicle_preview:buyingPanel/tradeInLabel";
       
@@ -180,6 +184,8 @@ package
       public static const INFOPANEL_PREMIUM_CREWTRANSFERTITLE:String = "#vehicle_preview:infoPanel/premium/crewTransferTitle";
       
       public static const INFOPANEL_PREMIUM_CREWTRANSFERTEXT:String = "#vehicle_preview:infoPanel/premium/crewTransferText";
+      
+      public static const INFOPANEL_PREMIUM_NOCREWTRANSFERPENALTYTEXT:String = "#vehicle_preview:infoPanel/premium/noCrewTransferPenaltyText";
       
       public static const INFOPANEL_PREMIUM_BONSTITLE:String = "#vehicle_preview:infoPanel/premium/bonsTitle";
       

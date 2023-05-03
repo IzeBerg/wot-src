@@ -139,6 +139,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
             _loc6_.toInventory = _loc4_.toInventory;
             _loc6_.onlyToInventory = _loc4_.onlyToInventory;
             _loc6_.removeActionPriceVo = _loc4_.removeActionPrice;
+            _loc6_.alertIconDataID = _loc4_.alertIconDataID;
             if(_loc4_.isRemovable)
             {
                _loc2_.elements.push(_loc6_);

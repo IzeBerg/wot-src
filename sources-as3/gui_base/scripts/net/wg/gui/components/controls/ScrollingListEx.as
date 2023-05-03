@@ -428,6 +428,13 @@ package net.wg.gui.components.controls
          this.updateVisibleScrollBar();
       }
       
+      override protected function drawRenderers(param1:Number) : void
+      {
+         super.drawRenderers(param1);
+         this.updateScrollBar();
+         dispatchEvent(new Event(Event.RESIZE));
+      }
+      
       protected function selectedRenderer(param1:IListItemRenderer, param2:Boolean) : void
       {
          param1.selected = param2;
