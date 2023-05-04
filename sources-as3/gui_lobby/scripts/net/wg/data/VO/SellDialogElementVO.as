@@ -16,6 +16,8 @@ package net.wg.data.VO
       
       public var isModernized:Boolean;
       
+      public var isWotPlusEnabled:Boolean;
+      
       public var count:Number = 1;
       
       public var toInventory:Boolean;
@@ -37,6 +39,8 @@ package net.wg.data.VO
       public var removeActionPriceVo:ActionPriceVO = null;
       
       public var sellActionPriceVo:ActionPriceVO = null;
+      
+      public var alertIconDataID:String = "";
       
       private var _disposed:Boolean = false;
       

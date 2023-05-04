@@ -234,9 +234,12 @@ package net.wg.gui.components.controls.price
          this._iconOffset = null;
          this._actionOffset = null;
          this._toolTipMgr = null;
-         this._oldPriceLine.graphics.clear();
-         removeChild(this._oldPriceLine);
-         this._oldPriceLine = null;
+         if(this._oldPriceLine)
+         {
+            this._oldPriceLine.graphics.clear();
+            removeChild(this._oldPriceLine);
+            this._oldPriceLine = null;
+         }
          this._oldPriceOffsetCustom = null;
          super.onDispose();
       }

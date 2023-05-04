@@ -1235,6 +1235,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.interfaces.IVehicleParameters;
    import net.wg.gui.lobby.hangar.mapBox.MapBoxItemRenderer;
    import net.wg.gui.lobby.hangar.mapBox.data.MapBoxItemVO;
+   import net.wg.gui.lobby.hangar.quests.ArmoryYardEntryPoint;
    import net.wg.gui.lobby.hangar.quests.BattleMattersEntryPoint;
    import net.wg.gui.lobby.hangar.quests.BattlePassEntryPoint;
    import net.wg.gui.lobby.hangar.quests.CollectiveGoalEntryPoint;
@@ -2969,6 +2970,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.messenger.windows.LobbyChannelWindow;
    import net.wg.gui.messenger.windows.PMWarningPanel;
    import net.wg.gui.notification.AuctionMessageContent;
+   import net.wg.gui.notification.GoToNewsWidget;
    import net.wg.gui.notification.NotificationListView;
    import net.wg.gui.notification.NotificationPopUpViewer;
    import net.wg.gui.notification.NotificationTimeComponent;
@@ -3132,6 +3134,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IBattlePassEntryPointMeta;
    import net.wg.infrastructure.base.meta.IBattleQueueMeta;
    import net.wg.infrastructure.base.meta.IBattleResultsMeta;
+   import net.wg.infrastructure.base.meta.IBattleRoyaleHangarWidgetContentMeta;
    import net.wg.infrastructure.base.meta.IBattleRoyaleHangarWidgetMeta;
    import net.wg.infrastructure.base.meta.IBattleRoyaleLevelUpViewMeta;
    import net.wg.infrastructure.base.meta.IBattleRoyaleTechParametersComponent;
@@ -5914,6 +5917,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_MAPBOX_MAPBOXITEMRENDERER:Class = MapBoxItemRenderer;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_MAPBOX_DATA_MAPBOXITEMVO:Class = MapBoxItemVO;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_ARMORYYARDENTRYPOINT:Class = ArmoryYardEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_QUESTS_BATTLEMATTERSENTRYPOINT:Class = BattleMattersEntryPoint;
       
@@ -9383,6 +9388,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_NOTIFICATION_AUCTIONMESSAGECONTENT:Class = AuctionMessageContent;
       
+      public static const NET_WG_GUI_NOTIFICATION_GOTONEWSWIDGET:Class = GoToNewsWidget;
+      
       public static const NET_WG_GUI_NOTIFICATION_NOTIFICATIONLISTVIEW:Class = NotificationListView;
       
       public static const NET_WG_GUI_NOTIFICATION_NOTIFICATIONPOPUPVIEWER:Class = NotificationPopUpViewer;
@@ -9698,6 +9705,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEQUEUEMETA:Class = IBattleQueueMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLERESULTSMETA:Class = IBattleResultsMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEROYALEHANGARWIDGETCONTENTMETA:Class = IBattleRoyaleHangarWidgetContentMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEROYALEHANGARWIDGETMETA:Class = IBattleRoyaleHangarWidgetMeta;
       
@@ -10316,6 +10325,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEQUEUEMETA:Class = BattleQueueMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLERESULTSMETA:Class = BattleResultsMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEROYALEHANGARWIDGETCONTENTMETA:Class = BattleRoyaleHangarWidgetContentMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEROYALEHANGARWIDGETMETA:Class = BattleRoyaleHangarWidgetMeta;
       

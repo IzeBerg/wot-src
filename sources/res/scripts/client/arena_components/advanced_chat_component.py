@@ -82,6 +82,8 @@ class AdvancedChatComponent(ClientArenaComponent):
         if player is None:
             return
         else:
+            if player.isDestroyed:
+                return
             if not player.userSeesWorld():
                 g_playerEvents.onAvatarReady += self.__onAvatarReady
                 return
@@ -89,7 +91,8 @@ class AdvancedChatComponent(ClientArenaComponent):
                 return
             componentSystem = self._componentSystem()
             if componentSystem is not None:
-                player.base.messenger_onActionByClient_chat2(_ACTIONS.REINIT_BATTLE_CHAT, 0, messageArgs())
+                if player.isPlayer:
+                    player.base.messenger_onActionByClient_chat2(_ACTIONS.REINIT_BATTLE_CHAT, 0, messageArgs())
             self.__addEventListeners()
             return
 

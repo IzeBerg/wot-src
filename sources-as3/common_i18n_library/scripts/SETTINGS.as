@@ -1289,6 +1289,8 @@ package
       
       public static const FEEDBACK_TAB_BATTLEEVENTS_LABEL_POSITIVE:String = "#settings:feedback/tab/battleEvents/label/positive";
       
+      public static const FEEDBACK_TAB_BATTLEEVENTS_LABEL_BATTLEEVENTS:String = "#settings:feedback/tab/battleEvents/label/BattleEvents";
+      
       public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_SHOWINBATTLE:String = "#settings:feedback/tab/battleEvents/checkbox/ShowInBattle";
       
       public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ENEMYHPDAMAGE:String = "#settings:feedback/tab/battleEvents/checkbox/EnemyHpDamage";

@@ -8,8 +8,6 @@ package net.wg.infrastructure.base.meta
       
       function onEscapeS() : void;
       
-      function onCloseBtnClickS() : void;
-      
       function showHelpLayoutS() : void;
       
       function closeHelpLayoutS() : void;
@@ -25,6 +23,8 @@ package net.wg.infrastructure.base.meta
       function as_setupAmmunitionPanel(param1:Object) : void;
       
       function as_setControlsVisible(param1:Boolean) : void;
+      
+      function as_setComp7ModifiersVisible(param1:Boolean) : void;
       
       function as_setVisible(param1:Boolean) : void;
       

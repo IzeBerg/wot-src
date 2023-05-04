@@ -1,10 +1,12 @@
-import logging, GenericComponents
+import logging, GenericComponents, CGF
 from cgf_demo.demo_category import DEMO_CATEGORY
-from cgf_script.component_meta_class import CGFComponent, ComponentProperty, CGFMetaTypes
+from cgf_script.component_meta_class import ComponentProperty, CGFMetaTypes, registerComponent
 _logger = logging.getLogger(__name__)
 
-class ClientTestComponent(CGFComponent):
+@registerComponent
+class ClientTestComponent(object):
     category = DEMO_CATEGORY
+    domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     stringList = ComponentProperty(type=CGFMetaTypes.STRING_LIST, editorName='String List', value=('Test1',
                                                                                                    'Test2'))
     intList = ComponentProperty(type=CGFMetaTypes.INT_LIST, editorName='Int List', value=(1,

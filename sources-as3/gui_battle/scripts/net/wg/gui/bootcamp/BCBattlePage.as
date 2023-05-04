@@ -21,6 +21,8 @@ package net.wg.gui.bootcamp
       private static const MINIMAP_HINT_OFFSET_POS:int = 10;
       
       private static const MINIMAP_HINT_OFFSET_SIZE:int = 7;
+      
+      private static const PERKS_PANEL_OFFSET_Y:int = 145;
        
       
       public var secondaryHint:BCSecondaryHint;
@@ -40,6 +42,7 @@ package net.wg.gui.bootcamp
          this.battleTopHint.updateStage(param1,param2);
          this.secondaryHint.y = ribbonsPanel.y - SEC_HINT_OFFSET_Y;
          this.secondaryHint.x = param1 >> 1;
+         perksPanel.y = param2 - PERKS_PANEL_OFFSET_Y;
          playerMessageListPositionUpdate();
       }
       

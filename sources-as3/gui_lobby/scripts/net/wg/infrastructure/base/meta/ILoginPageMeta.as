@@ -28,10 +28,6 @@ package net.wg.infrastructure.base.meta
       
       function isCSISUpdateOnRequestS() : Boolean;
       
-      function isPwdInvalidS(param1:String) : Boolean;
-      
-      function isLoginInvalidS(param1:String) : Boolean;
-      
       function startListenCsisUpdateS(param1:Boolean) : void;
       
       function showLegalS() : void;

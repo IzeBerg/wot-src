@@ -12,9 +12,12 @@
 		<tags>extinguisher</tags>
 		<script>
 			Extinguisher
-			<cooldownSeconds>90</cooldownSeconds>
+			<autoactivate>true</autoactivate>
+			<cooldownSeconds>105</cooldownSeconds>
 			<reuseCount>-1</reuseCount>
+			<activeSeconds>3</activeSeconds>
 		</script>
+		<tooltipSection>equipment</tooltipSection>
 	</handExtinguishers>
 	<autoExtinguishers>
 		<id>1</id>
@@ -35,6 +38,7 @@
 			<autoactivate>true</autoactivate>
 			<cooldownSeconds>90</cooldownSeconds>
 			<reuseCount>-1</reuseCount>
+			<activeSeconds>3</activeSeconds>
 		</script>
 		<kpi>
 			<mul>
@@ -45,6 +49,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>equipment</tooltipSection>
 	</autoExtinguishers>
 	<smallMedkit>
 		<id>2</id>
@@ -57,7 +62,7 @@
 		<tags>medkit</tags>
 		<script>
 			Repairkit
-			<repairAll>false</repairAll>
+			<repairAll>true</repairAll>
 			<bonusValue>0</bonusValue>
 			<stunResistanceEffect>
 				0.0
@@ -67,9 +72,11 @@
 				0.0
 				<!--BW_String-->
 			</stunResistanceDuration>
-			<cooldownSeconds>90</cooldownSeconds>
+			<cooldownSeconds>105</cooldownSeconds>
 			<reuseCount>-1</reuseCount>
+			<activeSeconds>3</activeSeconds>
 		</script>
+		<tooltipSection>equipment</tooltipSection>
 	</smallMedkit>
 	<largeMedkit>
 		<id>3</id>
@@ -98,6 +105,7 @@
 			</stunResistanceDuration>
 			<cooldownSeconds>90</cooldownSeconds>
 			<reuseCount>-1</reuseCount>
+			<activeSeconds>3</activeSeconds>
 		</script>
 		<kpi>
 			<mul>
@@ -115,6 +123,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>equipment</tooltipSection>
 	</largeMedkit>
 	<smallRepairkit>
 		<id>4</id>
@@ -127,11 +136,13 @@
 		<tags>repairkit</tags>
 		<script>
 			Repairkit
-			<repairAll>false</repairAll>
+			<repairAll>true</repairAll>
 			<bonusValue>0</bonusValue>
-			<cooldownSeconds>90</cooldownSeconds>
+			<cooldownSeconds>105</cooldownSeconds>
 			<reuseCount>-1</reuseCount>
+			<activeSeconds>3</activeSeconds>
 		</script>
+		<tooltipSection>equipment</tooltipSection>
 	</smallRepairkit>
 	<largeRepairkit>
 		<id>5</id>
@@ -158,6 +169,7 @@
 				<!--BW_String-->
 			</bonusValue>
 			<cooldownSeconds>90</cooldownSeconds>
+			<activeSeconds>3</activeSeconds>
 			<reuseCount>-1</reuseCount>
 		</script>
 		<kpi>
@@ -169,6 +181,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>equipment</tooltipSection>
 	</largeRepairkit>
 	<lendLeaseOil>
 		<id>6</id>
@@ -207,6 +220,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>equipment</tooltipSection>
 	</lendLeaseOil>
 	<gasoline100>
 		<id>7</id>
@@ -257,6 +271,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>equipment</tooltipSection>
 	</gasoline100>
 	<gasoline105>
 		<id>8</id>
@@ -308,6 +323,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>equipment</tooltipSection>
 	</gasoline105>
 	<chocolate>
 		<id>9</id>
@@ -337,6 +353,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</chocolate>
 	<cocacola>
 		<id>100</id>
@@ -366,6 +383,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</cocacola>
 	<ration>
 		<id>11</id>
@@ -395,6 +413,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</ration>
 	<removedRpmLimiter>
 		<id>12</id>
@@ -430,6 +449,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>equipment</tooltipSection>
 	</removedRpmLimiter>
 	<hotCoffee>
 		<id>13</id>
@@ -459,6 +479,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</hotCoffee>
 	<afterburning>
 		<id>14</id>
@@ -492,6 +513,7 @@
 			</maxSpeedFactor>
 			<cooldownSeconds>3</cooldownSeconds>
 		</script>
+		<tooltipSection>equipment</tooltipSection>
 	</afterburning>
 	<ration_china>
 		<id>15</id>
@@ -521,6 +543,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</ration_china>
 	<qualityOil>
 		<id>16</id>
@@ -559,6 +582,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>equipment</tooltipSection>
 	</qualityOil>
 	<ration_uk>
 		<id>17</id>
@@ -588,6 +612,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</ration_uk>
 	<ration_japan>
 		<id>18</id>
@@ -617,6 +642,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</ration_japan>
 	<ration_czech>
 		<id>61</id>
@@ -646,6 +672,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</ration_czech>
 	<ration_sweden>
 		<id>62</id>
@@ -675,6 +702,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</ration_sweden>
 	<ration_poland>
 		<id>63</id>
@@ -704,6 +732,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</ration_poland>
 	<ration_italy>
 		<id>64</id>
@@ -733,6 +762,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</ration_italy>
 	<artillery_cw_tier6>
 		<id>45</id>
@@ -4341,6 +4371,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</improvedVentilationBattleBooster>
 	<rammerBattleBooster>
 		<id>105</id>
@@ -4617,6 +4648,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</camouflageBattleBooster>
 	<smoothTurretBattleBooster>
 		<id>110</id>
@@ -4629,13 +4661,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster firepower</tags>
 		<script>
-			FactorPerLevelBattleBooster
+			SkillEquipment
 			<skillName>gunner_smoothTurret</skillName>
-			<factorName>shotDispersionFactorPerLevel</factorName>
-			<factorPerLevel>
-				0.0015
+			<perkLevelMultiplier>
+				2.0
 				<!--BW_String-->
-			</factorPerLevel>
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -4649,6 +4680,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</smoothTurretBattleBooster>
 	<virtuosoBattleBooster>
 		<id>111</id>
@@ -4661,13 +4693,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster mobility</tags>
 		<script>
-			FactorPerLevelBattleBooster
+			SkillEquipment
 			<skillName>driver_virtuoso</skillName>
-			<factorName>rotationSpeedFactorPerLevel</factorName>
-			<factorPerLevel>
-				0.001
+			<perkLevelMultiplier>
+				2.0
 				<!--BW_String-->
-			</factorPerLevel>
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -4681,6 +4712,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</virtuosoBattleBooster>
 	<smoothDrivingBattleBooster>
 		<id>112</id>
@@ -4693,13 +4725,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster firepower</tags>
 		<script>
-			FactorPerLevelBattleBooster
+			SkillEquipment
 			<skillName>driver_smoothDriving</skillName>
-			<factorName>shotDispersionFactorPerLevel</factorName>
-			<factorPerLevel>
-				0.0008
+			<perkLevelMultiplier>
+				2.0
 				<!--BW_String-->
-			</factorPerLevel>
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -4713,6 +4744,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</smoothDrivingBattleBooster>
 	<fireFightingBattleBooster>
 		<id>113</id>
@@ -4725,12 +4757,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster armor</tags>
 		<script>
-			FactorSkillBattleBooster
+			SkillEquipment
 			<skillName>fireFighting</skillName>
-			<efficiencyFactor>
+			<perkLevelMultiplier>
 				1.5
 				<!--BW_String-->
-			</efficiencyFactor>
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -4747,6 +4779,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</fireFightingBattleBooster>
 	<sixthSenseBattleBooster>
 		<id>114</id>
@@ -4761,6 +4794,7 @@
 		<notInShop>true</notInShop>
 		<script>
 			SixthSenseBattleBooster
+			<skillName>commander_sixthSense</skillName>
 			<delay>2</delay>
 		</script>
 		<kpi>
@@ -4787,9 +4821,9 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster reconnaissance</tags>
 		<script>
-			RancorousBattleBooster
-			<duration>4</duration>
-			<sectorHalfAngle>5</sectorHalfAngle>
+			SkillEquipment
+			<skillName>gunner_rancorous</skillName>
+			<perkLevelMultiplier>2</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -4803,6 +4837,7 @@
 				</add>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</rancorousBattleBooster>
 	<pedantBattleBooster>
 		<id>116</id>
@@ -4815,11 +4850,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster armor</tags>
 		<script>
-			PedantBattleBooster
-			<ammoBayHealthFactor>
-				1.375
+			SkillEquipment
+			<skillName>loader_pedant</skillName>
+			<perkLevelMultiplier>
+				3.0
 				<!--BW_String-->
-			</ammoBayHealthFactor>
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -4836,6 +4872,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</pedantBattleBooster>
 	<lastEffortBattleBooster>
 		<id>117</id>
@@ -4849,7 +4886,15 @@
 		<tags>notForSale crewSkillBattleBooster reconnaissance</tags>
 		<script>
 			LastEffortBattleBooster
-			<duration>5</duration>
+			<skillName>radioman_lastEffort</skillName>
+			<durationPerLevel>
+				0.06
+				<!--BW_String-->
+			</durationPerLevel>
+			<perkLevelMultiplier>
+				1.5
+				<!--BW_String-->
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -4863,6 +4908,7 @@
 				</add>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</lastEffortBattleBooster>
 	<turbochargerBattleBooster>
 		<id>202</id>
@@ -9110,6 +9156,7 @@
 			</bonusValue>
 			<cooldownSeconds>90</cooldownSeconds>
 			<reuseCount>-1</reuseCount>
+			<activeSeconds>3</activeSeconds>
 		</script>
 		<kpi>
 			<mul>
@@ -9182,8 +9229,8 @@
 					<type>DamageVehicleWithDispersion</type>
 					<applyTo>enemy_team</applyTo>
 					<args>
-						<damage>325</damage>
-						<damageDispersionPercent>10</damageDispersionPercent>
+						<damage>350</damage>
+						<damageDispersionPercent>5</damageDispersionPercent>
 					</args>
 				</action>
 				<action>
@@ -10726,23 +10773,23 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				40
+				15
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				10
+				5
 				<exports>vse tooltip</exports>
 			</duration>
 			<radius>
-				25
+				45
 				<exports>vse tooltip</exports>
 			</radius>
 			<heal>
-				20 30 40
+				13 21 30
 				<exports>vse</exports>
 			</heal>
 			<secondaryHealDebuff>
-				30
+				0
 				<exports>vse tooltip</exports>
 			</secondaryHealDebuff>
 			<tickInterval>
@@ -10769,19 +10816,15 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				15
+				5
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
 				20
 				<exports>vse tooltip</exports>
 			</duration>
-			<radius>
-				350
-				<exports>vse tooltip</exports>
-			</radius>
 			<crewBuff>
-				3.0 5.0 7.0
+				3 6.5 10.0
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</crewBuff>
@@ -10807,7 +10850,7 @@
 				</client>
 			</visualScript>
 			<cooldownSeconds>
-				25
+				15
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
@@ -10815,11 +10858,11 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<heal>
-				12 14 16
+				3 5 7
 				<exports>vse</exports>
 			</heal>
 			<gunReloadTimeBuff>
-				2
+				1
 				<exports>vse tooltip</exports>
 			</gunReloadTimeBuff>
 			<tickInterval>
@@ -10846,7 +10889,7 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				15
+				5
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
@@ -10854,17 +10897,17 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<aimingTimeBuff>
-				0.85 0.75 0.65
+				0.65 0.475 0.3
 				<!--BW_String-->
 				<exports>vse</exports>
 			</aimingTimeBuff>
 			<shotDispersionFactors>
-				0.85 0.75 0.65
+				0.65 0.475 0.3
 				<!--BW_String-->
 				<exports>vse</exports>
 			</shotDispersionFactors>
 			<clipReloadTimeBoost>
-				0.2 0.4 0.6
+				0.45 0.6 0.75
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</clipReloadTimeBoost>
@@ -10891,18 +10934,23 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				20
+				15
 				<exports>vse tooltip</exports>
 			</duration>
 			<gunReloadTimeBuff>
-				0.85 0.8 0.75
+				0.85 0.725 0.6
 				<!--BW_String-->
 				<exports>vse</exports>
 			</gunReloadTimeBuff>
 			<damageDistance>
-				250
+				150
 				<exports>vse tooltip</exports>
 			</damageDistance>
+			<shotDispersionFactors>
+				0.85 0.7 0.55
+				<!--BW_String-->
+				<exports>vse</exports>
+			</shotDispersionFactors>
 		</script>
 	</comp7_berserk>
 	<comp7_aoe_inspire>
@@ -10922,19 +10970,15 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				15
+				5
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				25
+				20
 				<exports>vse tooltip</exports>
 			</duration>
-			<radius>
-				50
-				<exports>vse tooltip</exports>
-			</radius>
 			<crewBuff>
-				10 20 30
+				15 25 35
 				<exports>vse tooltip</exports>
 			</crewBuff>
 		</script>
@@ -10957,7 +11001,7 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				40
+				5
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<delay>
@@ -10965,19 +11009,19 @@
 				<exports>vse tooltip</exports>
 			</delay>
 			<radius>
-				15 20 25
+				8 11 15
 				<exports>vse tooltip</exports>
 			</radius>
 			<damage>
-				75 150 225
+				50 130 225
 				<exports>vse tooltip</exports>
 			</damage>
 			<stunDuration>
-				8 12 16
+				7 9 11
 				<exports>vse tooltip</exports>
 			</stunDuration>
 			<fraction>
-				0.10
+				0.05
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</fraction>
@@ -11021,11 +11065,11 @@
 				</client>
 			</visualScript>
 			<cooldownSeconds>
-				20
+				10
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<gunReloadTimeBuff>
-				0.88 0.76 0.64
+				0.73 0.6 0.45
 				<!--BW_String-->
 				<exports>vse</exports>
 			</gunReloadTimeBuff>
@@ -11048,15 +11092,15 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				15
+				5
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				12 18 24
+				10 20 30
 				<exports>vse tooltip</exports>
 			</duration>
 			<enginePowerFactor>
-				1.1
+				1.25
 				<!--BW_String-->
 				<exports>vse</exports>
 			</enginePowerFactor>
@@ -11066,11 +11110,11 @@
 				<exports>vse</exports>
 			</stunDurationFactor>
 			<repairBuff>
-				10
+				15
 				<exports>vse tooltip</exports>
 			</repairBuff>
 			<gunReloadBoost>
-				3.0
+				4.0
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</gunReloadBoost>
@@ -11093,7 +11137,7 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				15
+				5
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
@@ -11101,7 +11145,7 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<shotDispersionFactors>
-				0.9 0.8 0.7
+				0.8 0.7 0.6
 				<!--BW_String-->
 				<exports>vse</exports>
 			</shotDispersionFactors>
@@ -11150,6 +11194,11 @@
 				250
 				<exports>vse tooltip</exports>
 			</damageDistance>
+			<damageFactors>
+				1.11 1.23 1.35
+				<!--BW_String-->
+				<exports>vse tooltip</exports>
+			</damageFactors>
 		</script>
 	</comp7_sniper>
 	<comp7_risky_attack>
@@ -11169,11 +11218,11 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				20
+				10
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				10
+				8
 				<exports>vse tooltip</exports>
 			</duration>
 			<healDuration>
@@ -11185,7 +11234,7 @@
 				<exports>vse tooltip</exports>
 			</baseHeal>
 			<extraHealFactor>
-				0.25 0.50 0.75
+				0.3 0.55 0.85
 				<!--BW_String-->
 				<exports>vse</exports>
 			</extraHealFactor>
@@ -11220,19 +11269,19 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				15
+				10
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				10 12 14
+				10 12 15
 				<exports>vse tooltip</exports>
 			</duration>
 			<delay>
-				2
+				3
 				<exports>vse tooltip</exports>
 			</delay>
 			<radius>
-				40 50 60
+				45 55 60
 				<exports>vse tooltip</exports>
 			</radius>
 			<areaVisual>content/Interface/TargetPoint/ReconFlight_02.visual</areaVisual>
@@ -11263,7 +11312,7 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<visionFactor>
-				1.05 1.075 1.1
+				1.03 1.075 1.115
 				<!--BW_String-->
 				<exports>vse</exports>
 			</visionFactor>
@@ -11290,7 +11339,7 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				15 25 35
+				10 20 30
 				<exports>vse tooltip</exports>
 			</duration>
 			<enginePowerBuff>

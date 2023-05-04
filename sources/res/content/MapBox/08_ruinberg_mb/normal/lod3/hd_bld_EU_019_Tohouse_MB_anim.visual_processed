@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Root_hd_bld_EU_019_Tohouse_jnt</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>wall_01_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>5.182295 10.180907 1.983556</row3>
+				</transform>
+				<node>
+					<identifier>wall_01_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-5.182295 -10.180907 -1.983556</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>wall_01_jnt_BlendBone</node>
+		<geometry>
+			<vertices>s38Shape.vertices</vertices>
+			<stream>s38Shape.uv2</stream>
+			<primitive>s38Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd7_skinned</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_tiled_atlas_skinned.fx</fx>
+					<property>
+						g_atlasIndexes
+						<Vector4>2.000000 4.000000 15.000000 9.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>0.639216 0.603922 0.537255 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile1Tint
+						<Vector4>0.805000 0.805000 0.805000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.749020 0.713726 0.674510 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.030000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>4.000000 4.000000 6.000000 4.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Buildings/00_Atlases/EU_OldCity_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Buildings/00_Atlases/EU_OldCity_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Buildings/00_Atlases/EU_OldCity_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Buildings/00_Atlases/EU_OldCity_01_atlas_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Plaster_01.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>5.067510 14.134491 -0.984584</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>wall_01_jnt_BlendBone</node>
+		<geometry>
+			<vertices>s39Shape.vertices</vertices>
+			<stream>s39Shape.uv2</stream>
+			<primitive>s39Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2_skinned</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_tiled_atlas_skinned.fx</fx>
+					<property>
+						g_atlasIndexes
+						<Vector4>5.000000 14.000000 15.000000 9.000000</Vector4>
+					</property>
+					<property>
+						g_fakeShadowsParams
+						<Vector4>0.160000 0.410000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tile0Tint
+						<Vector4>1.000000 0.919500 0.825000 1.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.929412 0.878431 0.807843 1.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.775000 0.709043 0.626596 0.100000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>4.000000 4.000000 6.000000 4.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Buildings/00_Atlases/EU_OldCity_01_atlas_AM.atlas</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Buildings/00_Atlases/EU_OldCity_01_atlas_GBMT.atlas</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Buildings/00_Atlases/EU_OldCity_01_atlas_MAO.atlas</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Buildings/00_Atlases/EU_OldCity_01_atlas_blend.png</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Plaster_01.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>4.997287 13.545135 -1.339495</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>4.749965 9.456964 -3.439250</min>
+		<max>5.244609 17.633307 6.118240</max>
+	</boundingBox>
+	<geometrySize>11880</geometrySize>
+	<minUVDensity>0.102845</minUVDensity>
+</root>

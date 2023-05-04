@@ -11,6 +11,9 @@ class PlayersPanel(Comp7PlayersPanelMeta):
     def onVoiceChatControlClick(self):
         self.__voipHelper.onVoiceChatControlClick()
 
+    def setPeriod(self, period):
+        self.__voipHelper.enable(enable=self.__isVoipControlEnabled(period))
+
     def _populate(self):
         super(PlayersPanel, self)._populate()
         self.__voipHelper.populate()
@@ -19,9 +22,6 @@ class PlayersPanel(Comp7PlayersPanelMeta):
     def _dispose(self):
         self.__voipHelper.dispose()
         super(PlayersPanel, self)._dispose()
-
-    def setPeriod(self, period):
-        self.__voipHelper.enable(enable=self.__isVoipControlEnabled(period))
 
     @classmethod
     def __isVoipControlEnabled(cls, period=None):

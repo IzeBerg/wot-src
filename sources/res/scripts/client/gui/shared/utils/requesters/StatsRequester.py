@@ -1,5 +1,5 @@
 from collections import namedtuple
-import json, BigWorld
+import json, typing, BigWorld
 from account_helpers.premium_info import PremiumInfo
 from adisp import adisp_async
 from gui.shared.money import Money, Currency, DynamicMoney
@@ -11,6 +11,8 @@ from skeletons.gui.game_control import IWalletController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared.utils.requesters import IStatsRequester
 from nation_change.nation_change_helpers import NationalGroupDataAccumulator
+if typing.TYPE_CHECKING:
+    from typing import List, Tuple
 _ADDITIONAL_XP_DATA_KEY = '_additionalXPCache'
 _ControllableXPData = namedtuple('_ControllableXPData', ('vehicleID', 'bonusType',
                                                          'extraXP', 'extraFreeXP',

@@ -59,6 +59,8 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       private var _isShowSeparator:Boolean = false;
       
+      private var _isDisableMcVisible:Boolean = true;
+      
       private var _helpLayoutId:String = "";
       
       private var _toolTipMgr:ITooltipMgr;
@@ -93,11 +95,6 @@ package net.wg.gui.lobby.header.headerButtonBar
          _loc3_.id = this._helpLayoutId;
          _loc3_.scope = this;
          return new <HelpLayoutVO>[_loc3_];
-      }
-      
-      override public function get width() : Number
-      {
-         return Boolean(this.bounds) ? Number(this.bounds.width) : Number(super.width);
       }
       
       override public function gotoAndPlay(param1:Object, param2:String = null) : void
@@ -208,7 +205,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             disableMc.scaleY = 1 / scaleY;
             disableMc.widthFill = (this.bounds.width * scaleX | 0) - disabledFillPadding.horizontal;
             disableMc.heightFill = (this.bounds.height * scaleY | 0) - disabledFillPadding.vertical;
-            disableMc.visible = this.disableMcVisible;
+            disableMc.visible = !this._dataVo.enabled && this._dataVo.id != HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR && this._isDisableMcVisible;
          }
       }
       
@@ -321,6 +318,11 @@ package net.wg.gui.lobby.header.headerButtonBar
          return new Rectangle(_loc2_.x,_loc2_.y,_loc3_.x - _loc2_.x,_loc3_.y - _loc2_.y);
       }
       
+      override public function get width() : Number
+      {
+         return Boolean(this.bounds) ? Number(this.bounds.width) : Number(super.width);
+      }
+      
       override public function set data(param1:Object) : void
       {
          super.data = param1;
@@ -340,6 +342,10 @@ package net.wg.gui.lobby.header.headerButtonBar
             this._helpLayout.unregisterComponent(this);
          }
          mouseEnabledOnDisabled = this._dataVo.id == HeaderButtonsHelper.ITEM_ID_PREM || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_WOT_PLUS || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD;
+         if(this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD)
+         {
+            this.isDisableMcVisible = false;
+         }
          invalidate(_loc2_);
       }
       
@@ -350,6 +356,10 @@ package net.wg.gui.lobby.header.headerButtonBar
             this.alpha = !!param1 ? Number(ALPHA_ENABLED) : Number(ALPHA_DISABLED);
          }
          super.enabled = param1;
+         if(this._content)
+         {
+            this._content.enabled = param1;
+         }
       }
       
       public function get headerButtonData() : HeaderButtonVo
@@ -382,9 +392,10 @@ package net.wg.gui.lobby.header.headerButtonBar
          return this._content;
       }
       
-      private function get disableMcVisible() : Boolean
+      public function set isDisableMcVisible(param1:Boolean) : void
       {
-         return !this._dataVo.enabled && this._dataVo.id != HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR;
+         this._isDisableMcVisible = param1;
+         this.updateDisable();
       }
       
       private function onContentHbcSizeUpdatedHandler(param1:HeaderEvents) : void

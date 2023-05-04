@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_rw_UNI_004_Carriage_03</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>n0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+		<node>
+			<identifier>root_carriage_jnt</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>wheels_A_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>1.016554 0.568929 2.622148</row3>
+				</transform>
+				<node>
+					<identifier>wheels_A_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-1.016554 -0.568929 -2.622148</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>wheels_B_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>1.016554 0.568930 -2.661183</row3>
+				</transform>
+				<node>
+					<identifier>wheels_B_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-1.016554 -0.568930 2.661183</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>root_carriage_jnt_BlendBone</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 -1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>root_carriage_jnt_BlendBone</node>
+		<node>wheels_B_jnt_BlendBone</node>
+		<node>wheels_A_jnt_BlendBone</node>
+		<geometry>
+			<vertices>n0_skinnedShape.vertices</vertices>
+			<primitive>n0_skinnedShape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_metal0_skinned</identifier>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/MapBox/Railway/hd_rw_UNI_004_Carriage/hd_rw_UNI_004_Carriage_02_AM.dds</Texture>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MapBox/Railway/hd_rw_UNI_004_Carriage/hd_rw_UNI_004_Carriage_02_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MapBox/Railway/hd_rw_UNI_004_Carriage/hd_rw_UNI_004_Carriage_02_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.004434 2.193595 -0.000001</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.221931 0.045825 -4.711599</min>
+		<max>1.213064 4.341365 4.711602</max>
+	</boundingBox>
+	<geometrySize>82628</geometrySize>
+	<minUVDensity>0.004215</minUVDensity>
+</root>

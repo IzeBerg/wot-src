@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>10.000001</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>4.000000</startTime>
+				<value>true</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>explosion</name>
+		<type>particle</type>
+		<resource>particles/Environment/MapBox/05_prohorovka_plane_explosion.eff</resource>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>7.225893</inTangent>
+				<outTangent>7.225893</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.000000</value>
+				<inTangent>29.999998</inTangent>
+				<outTangent>29.999998</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Trails</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/83_kharkiv/explosion_03.model</resource>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -105.000000 0.000000</value>
+				<inTangent>0.000000 -6.666666 0.000000</inTangent>
+				<outTangent>0.000000 -6.666666 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.500000</startTime>
+				<value>0.000000 -115.000000 0.000000</value>
+				<inTangent>-0.000000 -6.666666 -0.000000</inTangent>
+				<outTangent>-0.000000 -6.666666 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.005943 0.000000 0.000000</value>
+				<inTangent>1.619118 1.439000 1.439000</inTangent>
+				<outTangent>1.619118 1.439000 1.439000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.500000</startTime>
+				<value>0.700000 0.600000 0.700000</value>
+				<inTangent>-0.000958 -0.000975 0.009309</inTangent>
+				<outTangent>-0.000958 -0.000975 0.009309</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>1.500000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>1.533333</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Material #80</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 0.282353 0.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -1.480497</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.480497</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>0.196078 0.196078 0.196078 0.700000</value>
+				<inTangent>0.000000 0.000000 0.000000 -1.480497</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.480497</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.500000</startTime>
+				<value>0.196078 0.196078 0.196078 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -1.480497</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.480497</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Material #80</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>2.000000 0.200000 0.200000 0.000000</value>
+				<inTangent>-1.333333 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-1.333333 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.500000</startTime>
+				<value>0.000000 0.200000 0.200000 0.000000</value>
+				<inTangent>-1.333333 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-1.333333 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Steam_01</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/83_kharkiv/Steam_01.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>3.000000 3.000000 3.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.700000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>9.966667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Smoke</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.866667 0.866667 0.866667 0.080000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.001178</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.001178</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>0.866667 0.866667 0.866667 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.030340</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.030340</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Steam_02</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/83_kharkiv/Steam_01.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-1.531494 0.000000 -9.331360</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 45.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>3.000000 3.000000 3.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.700000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>9.966667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Smoke</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.866667 0.866667 0.866667 0.080000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.001178</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.001178</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>0.866667 0.866667 0.866667 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.030340</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.030340</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>dust</name>
+		<type>particle</type>
+		<resource>particles/Environment/MapBox/05_prohorovka_plane_falling_ground.eff</resource>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>33.000000</inTangent>
+				<outTangent>33.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.100000</value>
+				<inTangent>16.125166</inTangent>
+				<outTangent>16.125166</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.500000</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.750000</inTangent>
+				<outTangent>-0.750000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>explosion_sound</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>6.366668</duration>
+				<value>Root|</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>6.331729</duration>
+				<sequenceSound>dstrct_explosion_small</sequenceSound>
+				<type>one_shot</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.233333</startTime>
+				<duration>3.842001</duration>
+				<sequenceSound>dstrct_stone_small</sequenceSound>
+				<type>one_shot</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

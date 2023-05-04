@@ -11,6 +11,6 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       function get rowCount() : int;
       
-      function get smallDoubleCarouselEnable() : Boolean;
+      function get isSmallDoubleCarouselEnabled() : Boolean;
    }
 }

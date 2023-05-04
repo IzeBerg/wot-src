@@ -570,6 +570,15 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
+      public function as_updateTooltip(param1:int, param2:String) : void
+      {
+         var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
+         if(_loc3_)
+         {
+            _loc3_.tooltipStr = param2;
+         }
+      }
+      
       public function getRendererBySlotIdx(param1:int) : IConsumablesButton
       {
          return this._renderers[param1];

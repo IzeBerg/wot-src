@@ -9,6 +9,8 @@ package
       
       public static const LOADPAGE:String = "#waiting:loadPage";
       
+      public static const LOADARMORYYARD:String = "#waiting:loadArmoryYard";
+      
       public static const LOADMODALWINDOW:String = "#waiting:loadModalWindow";
       
       public static const LOADCONTENT:String = "#waiting:loadContent";

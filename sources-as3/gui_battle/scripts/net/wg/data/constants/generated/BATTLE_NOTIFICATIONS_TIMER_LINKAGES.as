@@ -41,6 +41,8 @@ package net.wg.data.constants.generated
       
       public static const DEATHZONE_ICON_CN:String = "destroyTimerDeathZoneCNUI";
       
+      public static const DANGER_ICON:String = "dangerTimerDeathZoneUI";
+      
       public static const DAMAGING_DEATHZONE_ICON:String = "DamageZoneIconContentUI";
       
       public static const DAMAGING_DEATHZONE_ICON_CN:String = "DamageZoneIconContentCNUI";

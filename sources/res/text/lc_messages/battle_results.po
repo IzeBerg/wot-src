@@ -59,7 +59,7 @@ msgid "common/crewMember/newFreeSkill"
 msgstr "Доступен «нулевой» навык"
 
 msgid "common/crewMember/newSkill"
-msgstr "Доступен новый навык"
+msgstr "Новый навык"
 
 msgid "common/details/buyPremiumBtn"
 msgstr "Купить премиум"
@@ -156,11 +156,8 @@ msgstr "Управляемый бонус к опыту"
 msgid "common/premiumBonus/expiredBattleResult"
 msgstr "Для данной машины есть свежие результаты боя."
 
-msgid "common/premiumBonus/isXPToTmenDisabled"
-msgstr "Нельзя применить бонус: ускоренное обучение экипажа отключено."
-
-msgid "common/premiumBonus/isXPToTmenEnabled"
-msgstr "Нельзя применить бонус: активно ускоренное обучение экипажа."
+msgid "common/premiumBonus/isXPToTmenChanged"
+msgstr "Нельзя применить бонус: изменился статус машины."
 
 msgid "common/premiumBonus/rule"
 msgstr "Бонус можно применить только в победном бою"
@@ -1033,10 +1030,13 @@ msgid "team/stats/labels_explosionHits"
 msgstr "\tосколочно-фугасных повреждений"
 
 msgid "team/stats/labels_explosionHitsReceived"
-msgstr "Получено попаданий осколками"
+msgstr "Получено попаданий осколками или огнесмесью"
 
 msgid "team/stats/labels_flags"
 msgstr "Доставлено флагов"
+
+msgid "team/stats/labels_flameExplosionHits"
+msgstr "\tповреждений от ОС или ОФ снарядов"
 
 msgid "team/stats/labels_healed"
 msgstr "Восстановлено очков прочности (себе/союзникам)"

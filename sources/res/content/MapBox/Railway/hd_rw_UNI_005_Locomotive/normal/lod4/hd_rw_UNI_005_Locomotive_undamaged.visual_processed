@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/MapBox/Railway/hd_rw_UNI_005_Locomotive/hd_rw_UNI_005_Locomotive_BAM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MapBox/Railway/hd_rw_UNI_005_Locomotive/hd_rw_UNI_005_Locomotive_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MapBox/Railway/hd_rw_UNI_005_Locomotive/hd_rw_UNI_005_Locomotive_BANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 2.297349 -6.216935</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/MapBox/Railway/hd_rw_UNI_005_Locomotive/hd_rw_UNI_005_Locomotive_BAM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MapBox/Railway/hd_rw_UNI_005_Locomotive/hd_rw_UNI_005_Locomotive_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MapBox/Railway/hd_rw_UNI_005_Locomotive/hd_rw_UNI_005_Locomotive_BANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 2.474767 4.353706</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_wall_1</identifier>
+					<materialKind>112</materialKind>
+					<collisionFlags>131</collisionFlags>
+				</material>
+				<groupOrigin>-0.000284 2.428234 -6.247595</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_wall_0</identifier>
+					<materialKind>112</materialKind>
+					<collisionFlags>131</collisionFlags>
+				</material>
+				<groupOrigin>-0.000284 2.569339 4.449126</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.750262 -0.015322 -10.621160</min>
+		<max>1.749694 5.138677 11.026057</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>27426</geometrySize>
+	<minUVDensity>0.000103</minUVDensity>
+</root>

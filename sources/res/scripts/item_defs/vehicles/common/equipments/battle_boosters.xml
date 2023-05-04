@@ -115,6 +115,7 @@
 				</value>
 			</mul>
 		</kpi>
+		<tooltipSection>crew_mastery</tooltipSection>
 	</improvedVentilationBattleBooster>
 	<rammerBattleBooster>
 		<id>105</id>
@@ -391,6 +392,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</camouflageBattleBooster>
 	<smoothTurretBattleBooster>
 		<id>110</id>
@@ -403,13 +405,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster firepower</tags>
 		<script>
-			FactorPerLevelBattleBooster
+			SkillEquipment
 			<skillName>gunner_smoothTurret</skillName>
-			<factorName>shotDispersionFactorPerLevel</factorName>
-			<factorPerLevel>
-				0.0015
+			<perkLevelMultiplier>
+				2.0
 				<!--BW_String-->
-			</factorPerLevel>
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -423,6 +424,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</smoothTurretBattleBooster>
 	<virtuosoBattleBooster>
 		<id>111</id>
@@ -435,13 +437,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster mobility</tags>
 		<script>
-			FactorPerLevelBattleBooster
+			SkillEquipment
 			<skillName>driver_virtuoso</skillName>
-			<factorName>rotationSpeedFactorPerLevel</factorName>
-			<factorPerLevel>
-				0.001
+			<perkLevelMultiplier>
+				2.0
 				<!--BW_String-->
-			</factorPerLevel>
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -455,6 +456,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</virtuosoBattleBooster>
 	<smoothDrivingBattleBooster>
 		<id>112</id>
@@ -467,13 +469,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster firepower</tags>
 		<script>
-			FactorPerLevelBattleBooster
+			SkillEquipment
 			<skillName>driver_smoothDriving</skillName>
-			<factorName>shotDispersionFactorPerLevel</factorName>
-			<factorPerLevel>
-				0.0008
+			<perkLevelMultiplier>
+				2.0
 				<!--BW_String-->
-			</factorPerLevel>
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -487,6 +488,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</smoothDrivingBattleBooster>
 	<fireFightingBattleBooster>
 		<id>113</id>
@@ -499,12 +501,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster armor</tags>
 		<script>
-			FactorSkillBattleBooster
+			SkillEquipment
 			<skillName>fireFighting</skillName>
-			<efficiencyFactor>
+			<perkLevelMultiplier>
 				1.5
 				<!--BW_String-->
-			</efficiencyFactor>
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -521,6 +523,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</fireFightingBattleBooster>
 	<sixthSenseBattleBooster>
 		<id>114</id>
@@ -535,6 +538,7 @@
 		<notInShop>true</notInShop>
 		<script>
 			SixthSenseBattleBooster
+			<skillName>commander_sixthSense</skillName>
 			<delay>2</delay>
 		</script>
 		<kpi>
@@ -561,9 +565,9 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster reconnaissance</tags>
 		<script>
-			RancorousBattleBooster
-			<duration>4</duration>
-			<sectorHalfAngle>5</sectorHalfAngle>
+			SkillEquipment
+			<skillName>gunner_rancorous</skillName>
+			<perkLevelMultiplier>2</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -577,6 +581,7 @@
 				</add>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</rancorousBattleBooster>
 	<pedantBattleBooster>
 		<id>116</id>
@@ -589,11 +594,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster armor</tags>
 		<script>
-			PedantBattleBooster
-			<ammoBayHealthFactor>
-				1.375
+			SkillEquipment
+			<skillName>loader_pedant</skillName>
+			<perkLevelMultiplier>
+				3.0
 				<!--BW_String-->
-			</ammoBayHealthFactor>
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -610,6 +616,7 @@
 				</mul>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</pedantBattleBooster>
 	<lastEffortBattleBooster>
 		<id>117</id>
@@ -623,7 +630,15 @@
 		<tags>notForSale crewSkillBattleBooster reconnaissance</tags>
 		<script>
 			LastEffortBattleBooster
-			<duration>5</duration>
+			<skillName>radioman_lastEffort</skillName>
+			<durationPerLevel>
+				0.06
+				<!--BW_String-->
+			</durationPerLevel>
+			<perkLevelMultiplier>
+				1.5
+				<!--BW_String-->
+			</perkLevelMultiplier>
 		</script>
 		<kpi>
 			<oneOf>
@@ -637,6 +652,7 @@
 				</add>
 			</oneOf>
 		</kpi>
+		<tooltipSection>skills</tooltipSection>
 	</lastEffortBattleBooster>
 	<turbochargerBattleBooster>
 		<id>202</id>

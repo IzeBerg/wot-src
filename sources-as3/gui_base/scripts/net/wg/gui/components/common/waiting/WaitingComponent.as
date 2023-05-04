@@ -132,7 +132,7 @@ package net.wg.gui.components.common.waiting
          }
       }
       
-      public function setBackgroundImg(param1:String) : void
+      public function setBackgroundImg(param1:String, param2:Boolean = false) : void
       {
          if(this.backgroundImg == null && param1 == Values.EMPTY_STR)
          {
@@ -146,13 +146,17 @@ package net.wg.gui.components.common.waiting
             this.backgroundImg.cacheType = ImageCacheTypes.NOT_USE_CACHE;
          }
          this.backgroundImg.source = param1;
-         if(this._sparksMc == null)
+         this.backgroundImg.visible = param1 != Values.EMPTY_STR;
+         if(this._sparksMc == null && param2)
          {
             this._sparksMc = new Sprite();
             addChildAt(this._sparksMc,getChildIndex(this.backgroundImg) + 1);
             this.createSparks();
          }
-         this._sparksMc.visible = this.backgroundImg.visible = param1 != Values.EMPTY_STR;
+         if(this._sparksMc != null)
+         {
+            this._sparksMc.visible = param2;
+         }
       }
       
       public function setMessage(param1:String) : void

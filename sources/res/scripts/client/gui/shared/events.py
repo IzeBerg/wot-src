@@ -11,7 +11,7 @@ __all__ = ('ArgsEvent', 'ComponentEvent', 'LoadViewEvent', 'LoadGuiImplViewEvent
            'HangarCustomizationEvent', 'GameEvent', 'BootcampEvent', 'ViewEventType',
            'OpenLinkEvent', 'ChannelManagementEvent', 'PreBattleChannelEvent', 'AmmunitionSetupViewEvent',
            'HasCtxEvent', 'DogTagsEvent', 'FullscreenModeSelectorEvent', 'ModeSelectorPopoverEvent',
-           'ModeSelectorLoadedEvent', 'ModeSubSelectorEvent')
+           'ModeSelectorLoadedEvent', 'ModeSubSelectorEvent', 'ArmoryYardEvent')
 _logger = logging.getLogger(__name__)
 
 class HasCtxEvent(SharedEvent):
@@ -547,6 +547,8 @@ class OpenLinkEvent(SharedEvent):
     PREM_SHOP = 'premShopURL'
     TOKEN_SHOP = 'tokenShopUrl'
     FRONTLINE_CHANGES = 'frontlineChangesURL'
+    WOT_PLUS_STEAM_SHOP = 'wotPlusSteamURL'
+    WOT_PLUS_SHOP = 'wotPlusShopURL'
 
     def __init__(self, eventType, url='', title='', params=None):
         super(OpenLinkEvent, self).__init__(eventType)
@@ -804,3 +806,14 @@ class PointOfInterestEvent(HasCtxEvent):
 class RoleSkillEvent(HasCtxEvent):
     STATE_CHANGED = 'roleSkill/stateChanged'
     COUNTER_CHANGED = 'roleSkill/counterChanged'
+
+
+class CollectionsEvent(HasCtxEvent):
+    NEW_ITEM_SHOWN = 'newItemShown'
+    BATTLE_PASS_ENTRY_POINT_VISITED = 'battlePassEntryPointVisited'
+
+
+class ArmoryYardEvent(HasCtxEvent):
+    STAGE_FINISHED = 'ayStageFinished'
+    DESTROY_ARMORY_YARD_MAIN_VIEW = 'armoryYardEvents/destroyMainView'
+    SHOW_ARMORY_YARD_BUY_VIEW = 'armoryYardEvents/showBuyView'

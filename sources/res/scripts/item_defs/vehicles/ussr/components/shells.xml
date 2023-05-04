@@ -13,6 +13,7 @@
 		<hc_premium>HOLLOW_CHARGE_PREMIUM.png 0 0</hc_premium>
 		<he_spg>HIGH_EXPLOSIVE_SPG.png 0 0</he_spg>
 		<he_spg_stun>HIGH_EXPLOSIVE_SPG_STUN.png 0 0</he_spg_stun>
+		<flame>FLAME.png 0 0</flame>
 	</icons>
 	<_12.7mm_AP_B32>
 		<id>117</id>
@@ -4706,7 +4707,7 @@
 		</explosionRadius>
 		<hasStun>true</hasStun>
 		<stunDuration>
-			20.3
+			17.0
 			<!--BW_String-->
 		</stunDuration>
 		<isTracer>true</isTracer>
@@ -4761,7 +4762,7 @@
 		</explosionRadius>
 		<hasStun>true</hasStun>
 		<stunDuration>
-			19.6
+			17.6
 			<!--BW_String-->
 		</stunDuration>
 		<isTracer>true</isTracer>
@@ -5115,4 +5116,72 @@
 		</damage>
 		<notInShop>True</notInShop>
 	</_107mm_UBR-420_MapsTraining_Dummy_HT_2>
+	<_25mm_AP_1_flameshell>
+		<id>31002</id>
+		<userString>#ussr_vehicles:_25mm_AP_1_flameshell</userString>
+		<icon>flame</icon>
+		<price>4</price>
+		<kind>FLAME</kind>
+		<mechanics>MODERN</mechanics>
+		<caliber>25</caliber>
+		<isTracer>true</isTracer>
+		<effects>smallFlamePneumatic</effects>
+		<damage>
+			<armor>20</armor>
+			<devices>15</devices>
+		</damage>
+		<armorSpalls>
+			<impactRadius>1</impactRadius>
+			<coneAngle>90</coneAngle>
+			<damage>
+				<armor>40</armor>
+				<devices>10</devices>
+			</damage>
+		</armorSpalls>
+		<deviceFaultTolerance>ammoBay</deviceFaultTolerance>
+		<hitDeviceChanceMultiplier>
+			1.0
+			<!--BW_String-->
+		</hitDeviceChanceMultiplier>
+		<hitCrewChanceMultiplier>
+			0.25
+			<!--BW_String-->
+		</hitCrewChanceMultiplier>
+	</_25mm_AP_1_flameshell>
+	<_40mm_AP_7_flameshell>
+		<id>31001</id>
+		<userString>#ussr_vehicles:_40mm_AP_7_flameshell</userString>
+		<icon>flame</icon>
+		<price>57</price>
+		<kind>FLAME</kind>
+		<mechanics>MODERN</mechanics>
+		<caliber>40</caliber>
+		<isTracer>true</isTracer>
+		<effects>smallFlame</effects>
+		<hasStun>true</hasStun>
+		<stunType>FLAME</stunType>
+		<stunInPoint>true</stunInPoint>
+		<stunDuration>8</stunDuration>
+		<damage>
+			<armor>40</armor>
+			<devices>40</devices>
+		</damage>
+		<armorSpalls>
+			<impactRadius>3</impactRadius>
+			<coneAngle>90</coneAngle>
+			<damage>
+				<armor>120</armor>
+				<devices>30</devices>
+			</damage>
+		</armorSpalls>
+		<deviceFaultTolerance>ammoBay</deviceFaultTolerance>
+		<hitDeviceChanceMultiplier>
+			1.0
+			<!--BW_String-->
+		</hitDeviceChanceMultiplier>
+		<hitCrewChanceMultiplier>
+			0.25
+			<!--BW_String-->
+		</hitCrewChanceMultiplier>
+	</_40mm_AP_7_flameshell>
 </root>

@@ -5,6 +5,7 @@ package net.wg.gui.lobby.hangar.quests
    import flash.display.Sprite;
    import flash.geom.Point;
    import net.wg.data.constants.Values;
+   import net.wg.data.constants.generated.HANGAR_HEADER_QUESTS;
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.lobby.hangar.data.HeaderQuestsVO;
    import net.wg.gui.lobby.hangar.interfaces.IQuestInformerButton;
@@ -42,6 +43,8 @@ package net.wg.gui.lobby.hangar.quests
       public var flagGray:FlagContainer;
       
       public var rewardAnimMc:MovieClip;
+      
+      public var blink:MovieClip;
       
       public var hover:Sprite;
       
@@ -112,6 +115,8 @@ package net.wg.gui.lobby.hangar.quests
       override protected function configUI() : void
       {
          super.configUI();
+         this.blink.visible = false;
+         this.blink.stop();
          mouseEnabledOnDisabled = true;
       }
       
@@ -131,6 +136,8 @@ package net.wg.gui.lobby.hangar.quests
          this.flagGray.dispose();
          this.flagGray = null;
          this.rewardAnimMc = null;
+         this.blink.stop();
+         this.blink = null;
          this.hover = null;
          this.hoverFlipped = null;
          this._questVO = null;
@@ -147,6 +154,10 @@ package net.wg.gui.lobby.hangar.quests
             if(this._questVO.isReward)
             {
                this.rewardAnimMc.gotoAndPlay(REWARD_ANIM_FIRST_FRAME);
+               if(_baseDisposed)
+               {
+                  return;
+               }
             }
             else
             {
@@ -162,11 +173,29 @@ package net.wg.gui.lobby.hangar.quests
             {
                this.hoverFlipped.alpha = 0;
             }
+            if(this._questVO.questType == HANGAR_HEADER_QUESTS.QUEST_TYPE_MAPBOX && this._questVO.enable)
+            {
+               this.blink.visible = true;
+               this.blink.gotoAndPlay(0);
+               if(_baseDisposed)
+               {
+                  return;
+               }
+            }
+            else
+            {
+               this.blink.visible = false;
+               this.blink.stop();
+            }
             invalidate(INVALIDATE_FIELDS);
          }
          if(isInvalid(INVALIDATE_FIELDS) && !isInvalid(INVALIDATE_FIELDS) && enabled)
          {
             this.switchGlowMc.gotoAndPlay(GLOW_FIRST_FRAME_ANIM);
+            if(_baseDisposed)
+            {
+               return;
+            }
          }
       }
       

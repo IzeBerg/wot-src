@@ -189,6 +189,14 @@ package
       
       public static const DETAILSHELP_NOKEYSWARNING:String = "#ingame_help:detailsHelp/noKeysWarning";
       
+      public static const DETAILSHELP_FLAMETANK_TITLE:String = "#ingame_help:detailsHelp/flameTank/title";
+      
+      public static const DETAILSHELP_FLAMETANK:String = "#ingame_help:detailsHelp/flameTank";
+      
+      public static const DETAILSHELP_FLAMETANK_PROSCONS_TITLE:String = "#ingame_help:detailsHelp/flameTank/prosCons/title";
+      
+      public static const DETAILSHELP_FLAMETANK_PROSCONS:String = "#ingame_help:detailsHelp/flameTank/prosCons";
+      
       public static const DETAILSHELP_BATTLEROYALE_RADAR_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/radar/title";
       
       public static const DETAILSHELP_BATTLEROYALE_RADAR_DESCRIPTION:String = "#ingame_help:detailsHelp/battleRoyale/radar/description";
@@ -220,6 +228,20 @@ package
       public static const DETAILSHELP_ROLE_DESCRIPTION:String = "#ingame_help:detailsHelp/role/description";
       
       public static const ROLEDESCRIPTION_MSG:String = "#ingame_help:roleDescription/msg";
+      
+      public static const DETAILSHELP_MAPBOX_HEADERTITLE:String = "#ingame_help:detailsHelp/mapbox/headerTitle";
+      
+      public static const DETAILSHELP_MAPBOX_MARKERS_TITLE:String = "#ingame_help:detailsHelp/mapbox/markers/title";
+      
+      public static const DETAILSHELP_MAPBOX_MARKERS_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/markers/description";
+      
+      public static const DETAILSHELP_MAPBOX_ENVIRONMENT_TITLE:String = "#ingame_help:detailsHelp/mapbox/environment/title";
+      
+      public static const DETAILSHELP_MAPBOX_ENVIRONMENT_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/environment/description";
+      
+      public static const DETAILSHELP_MAPBOX_ARTEFACTS_TITLE:String = "#ingame_help:detailsHelp/mapbox/artefacts/title";
+      
+      public static const DETAILSHELP_MAPBOX_ARTEFACTS_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/artefacts/description";
       
       public static const RADIALMENU_ATTENTION_TO_POSITION:String = "#ingame_help:radialMenu/attention_to_position";
       

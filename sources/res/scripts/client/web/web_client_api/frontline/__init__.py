@@ -79,7 +79,6 @@ class FrontLineWebApi(W2CSchema):
         if hasattr(cmd, 'skill_id') and cmd.skill_id:
             self.__epicController.increaseSkillLevel(cmd.skill_id)
 
-    @frontlineDeprecated
     @w2c(W2CSchema, name='get_player_discount')
     def handleGetPlayerDiscount(self, _):
         return self.__epicController.getStoredEpicDiscount()
@@ -104,7 +103,6 @@ class FrontLineWebApi(W2CSchema):
            'rewards_count': self.__epicController.getNotChosenRewardCount()}
         return data
 
-    @frontlineDeprecated
     @w2c(W2CSchema, name='get_calendar_info')
     def handleGetCalendarInfo(self, _):
         calendarData = dict()

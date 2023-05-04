@@ -594,6 +594,24 @@ package
       public static const BADGE_129:String = "#badge:badge_129";
       
       public static const BADGE_129_DESCR:String = "#badge:badge_129_descr";
+      
+      public static const BADGE_130:String = "#badge:badge_130";
+      
+      public static const BADGE_130_DESCR:String = "#badge:badge_130_descr";
+      
+      public static const BADGE_131:String = "#badge:badge_131";
+      
+      public static const BADGE_131_DESCR:String = "#badge:badge_131_descr";
+      
+      public static const BADGE_132:String = "#badge:badge_132";
+      
+      public static const BADGE_132_DESCR:String = "#badge:badge_132_descr";
+      
+      public static const BADGE_133:String = "#badge:badge_133";
+      
+      public static const BADGE_133_DESCR:String = "#badge:badge_133_descr";
+      
+      public static const SUFFIX_BADGE_133:String = "#badge:suffix/badge_133";
        
       
       public function BADGE()

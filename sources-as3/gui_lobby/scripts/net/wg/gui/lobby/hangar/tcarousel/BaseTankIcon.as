@@ -264,6 +264,10 @@ package net.wg.gui.lobby.hangar.tcarousel
                this.price.text = param1.slotPrice.toString();
             }
             this.price.visible = !param1.hasSale;
+            if(StringUtils.isNotEmpty(param1.slotPriceCurrency))
+            {
+               this.price.icon = param1.slotPriceCurrency;
+            }
             this.actionPrice.visible = param1.hasSale;
          }
          else

@@ -6,9 +6,9 @@ class WaitingViewMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_showWaiting(message, softStart)
 
-    def as_showBackgroundImgS(self, img):
+    def as_showBackgroundImgS(self, img, showSparks):
         if self._isDAAPIInited():
-            return self.flashObject.as_showBackgroundImg(img)
+            return self.flashObject.as_showBackgroundImg(img, showSparks)
 
     def as_hideWaitingS(self):
         if self._isDAAPIInited():

@@ -119,6 +119,8 @@ package net.wg.data.constants
       
       public static const PROGRESSIVE_REWARD_WIDGET:String = "ProgressiveRewardWidgetUI";
       
+      public static const PERK_ITEM_UI:String = "PerkItemUI";
+      
       public static const GHOST_TOGGLE_RENDERER_UI:String = "GhostToggleRendererUI";
       
       public static const INVITES_FRIENDS:String = "FriendsListFromUI";
@@ -657,6 +659,8 @@ package net.wg.data.constants
       
       public static const VEHICLE_MINIMAP_BEARER_ANIMATION:String = "VehicleMinimapBearerAnimation";
       
+      public static const MINIMAP_SCENARIO_LAYOUT:String = "ScenarioLayerUI";
+      
       public static const COUNTER_UI:String = "CounterUI";
       
       public static const COUNTER_LINE_UI:String = "NewCounterLineUI";
@@ -1050,6 +1054,10 @@ package net.wg.data.constants
       public static const COMP7_BATTLE_LOADING_TIPS_RENDERERS:String = "Comp7BattleTipRenderersUI";
       
       public static const BADGE_SUFFIX_ITEM:String = "SuffixItemUI";
+      
+      public static const ARMORY_YARD_ENTRY_POINT:String = "ArmoryYardEntryPointUI";
+      
+      public static const ARMORY_YARD_WIDGET:String = "ArmoryYardCarouselWidgetUI";
        
       
       public function Linkages()

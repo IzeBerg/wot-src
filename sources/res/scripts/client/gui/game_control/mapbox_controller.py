@@ -36,6 +36,7 @@ ProgressionData = namedtuple('ProgressionData', ('surveys', 'rewards', 'minRank'
 MapData = namedtuple('MapData', ('progress', 'total', 'passed', 'available', 'url'))
 RewardData = namedtuple('RewardData', ('bonusList', 'status'))
 _LAST_PERIOD = 0
+_RESTART_PROGRESSION_DELAY = 30
 
 class MapboxController(Notifiable, SeasonProvider, IMapboxController, IGlobalListener):
     __lobbyContext = dependency.descriptor(ILobbyContext)
@@ -117,13 +118,15 @@ class MapboxController(Notifiable, SeasonProvider, IMapboxController, IGlobalLis
         if unitMgr is not None:
             unitMgr.onUnitJoined -= self.__onUnitJoined
         self.__lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingsChanged
-        if self.__progressionDataProvider is not None:
-            self.__progressionDataProvider.stop()
-        if self.__settingsManager is not None:
-            self.__settingsManager.stop()
-        if self.__surveyManager is not None:
-            self.__surveyManager.fini()
+        self.__stopSubsystems()
         return
+
+    def onDisconnected(self):
+        super(MapboxController, self).onDisconnected()
+        self.stopNotification()
+        self.stopGlobalListening()
+        self.__stopSubsystems()
+        self.__lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingsChanged
 
     def isEnabled(self):
         return self.getModeSettings().isEnabled
@@ -183,8 +186,9 @@ class MapboxController(Notifiable, SeasonProvider, IMapboxController, IGlobalLis
         if self.__webCtrl.isAvailable():
             result = yield self.__webCtrl.sendRequest(MapboxCompleteSurveyCtx(surveyData))
             if result.isSuccess():
-                self.onMapboxSurveyCompleted(self.surveyManager.getMapId())
-                self.surveyManager.resetSurvey()
+                mapId = surveyData['name']
+                self.onMapboxSurveyCompleted(mapId)
+                self.surveyManager.resetSurvey(mapId)
             yield proxy()
         else:
             _logger.error('Survey completed request not sent due to WGCG unavailability')
@@ -265,6 +269,15 @@ class MapboxController(Notifiable, SeasonProvider, IMapboxController, IGlobalLis
             self.__callbackID = BigWorld.callback(0, partial(self.__doSelectRandomPrb, dispatcher))
             return
 
+    def __stopSubsystems(self):
+        if self.__progressionDataProvider is not None:
+            self.__progressionDataProvider.stop()
+        if self.__settingsManager is not None:
+            self.__settingsManager.stop()
+        if self.__surveyManager is not None:
+            self.__surveyManager.fini()
+        return
+
     @adisp.adisp_process
     def __doSelectRandomPrb(self, dispatcher):
         self.__callbackID = None
@@ -314,7 +327,7 @@ class MapboxProgressionDataProvider(Notifiable):
     __mapboxCtrl = dependency.descriptor(IMapboxController)
     __eventsCache = dependency.descriptor(IEventsCache)
     __slots__ = ('onProgressionDataUpdated', '__progressionData', '__isSyncing', '__isShuttingDown',
-                 '__isStarted', '__restartNotifier')
+                 '__isStarted', '__restartNotifier', '__randomRestartProgressionDelay')
 
     def __init__(self):
         super(MapboxProgressionDataProvider, self).__init__()
@@ -323,6 +336,7 @@ class MapboxProgressionDataProvider(Notifiable):
         self.__isShuttingDown = False
         self.__isStarted = False
         self.__restartNotifier = SimpleNotifier(self.getRestartTimer, self.__timerUpdate)
+        self.__randomRestartProgressionDelay = _RESTART_PROGRESSION_DELAY * random.random()
         self.onProgressionDataUpdated = Event.Event()
         return
 
@@ -363,11 +377,11 @@ class MapboxProgressionDataProvider(Notifiable):
         if not self.__progressionData:
             return None
         else:
-            return ProgressionData({key:MapData(value['progress'], value['total'], value['passed'], value['available'], value['url']) for key, value in self.__progressionData.get('surveys', {}).iteritems()}, {value['battles']:RewardData(formatMapboxBonuses(value['reward']), value['status']) for value in self.__progressionData.get('rewards', [])}, self.__progressionData.get('min_rank'), self.__progressionData.get('total_battles_amount'), self.__convertProgressionRestartTime())
+            return ProgressionData({key:MapData(value['progress'], value['total'], value['passed'], value['available'], value['url']) for key, value in self.__progressionData.get('surveys', {}).iteritems()}, {value['battles']:RewardData(formatMapboxBonuses(value['reward']), value['status']) for value in self.__progressionData.get('rewards', [])}, self.__progressionData.get('min_rank'), self.__progressionData.get('total_battles_amount'), self.__getProgressionRestartTimeWithRandomDelay())
 
     def getProgressionRestartTime(self):
         if self.__progressionData:
-            return self.__convertProgressionRestartTime()
+            return self.__getProgressionRestartTimeWithRandomDelay()
         return _LAST_PERIOD
 
     def getTimer(self):
@@ -378,7 +392,7 @@ class MapboxProgressionDataProvider(Notifiable):
         if endTime:
             timeLeft = time_utils.getTimeDeltaFromNow(time_utils.makeLocalServerTime(endTime))
             if timeLeft >= 0:
-                return timeLeft + random.randint(0, 3)
+                return timeLeft
         return time_utils.ONE_DAY
 
     @wg_async
@@ -429,10 +443,10 @@ class MapboxProgressionDataProvider(Notifiable):
             callback(False)
         return
 
-    def __convertProgressionRestartTime(self):
+    def __getProgressionRestartTimeWithRandomDelay(self):
         endTime = self.__progressionData.get('next_substage_at')
         if endTime:
-            return convertTimeFromISO(endTime)
+            return convertTimeFromISO(endTime) + self.__randomRestartProgressionDelay
         return _LAST_PERIOD
 
 

@@ -9,61 +9,6 @@
 		</aspect>
 		<blocks>
 			<block>
-				<class>ContextGetSelf</class>
-				<id>ContextGetSelf_1</id>
-				<params>
-					<param>
-						CGFGameObjectContext
-						<name>Context Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						getSelf
-						<name>Member Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>FrameEvent</class>
-				<id>FrameEvent_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>active</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>cooldown</name>
-						<const>\1.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>GetVehicleHealth</class>
-				<id>GetVehicleHealth_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVehicleMaxHealth</class>
-				<id>GetVehicleMaxHealth_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>DivideFloatIfNotZero</class>
-				<id>DivideFloatIfNotZero_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\1.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>Variable</class>
 				<id>Variable_2</id>
 				<params>
@@ -89,49 +34,6 @@
 					</param>
 				</params>
 				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_2</id>
-				<buddy>Variable_2</buddy>
-				<params>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_2</id>
-				<buddy>Variable_2</buddy>
-				<params>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVehicleGameObject</class>
-				<id>GetVehicleGameObject_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>FindFirstNode</class>
-				<id>FindFirstNode_2</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>name</name>
-						<const>\HealthBar\</const>
-					</slot>
-				</slots>
 			</block>
 			<block>
 				<class>Variable</class>
@@ -166,106 +68,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_4</id>
-				<buddy>Variable_4</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GameObjectToVehicle</class>
-				<id>GameObjectToVehicle_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_5</id>
-				<buddy>Variable_4</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>StartScript</class>
-				<id>StartScript_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>FlowGate</class>
-				<id>FlowGate_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>openAtStart</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>GetGameSetting</class>
-				<id>GetGameSetting_1</id>
-				<params>
-					<param>
-						int
-						<name>Game Setting Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>settingName</name>
-						<const>\RENDER_PIPELINE\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>CompareIntegers</class>
-				<id>CompareIntegers_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>a</name>
-						<const>\0\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_5</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentMethod</class>
-				<id>ComponentMethod_11</id>
-				<params>
-					<param>
-						Animator.setFloatParam
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>arg#0</name>
-						<const>\health\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>Variable</class>
 				<id>Variable_11</id>
 				<params>
@@ -286,43 +88,6 @@
 					</param>
 					<param>
 						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						0
-						<name>Initial Value</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\0\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>VariableReadOnly</class>
-				<id>VariableReadOnly_1</id>
-				<params>
-					<param>
-						layer_index_forward
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						IntT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						true
 						<name>Is Const</name>
 						<type>BoolT</type>
 					</param>
@@ -377,9 +142,228 @@
 				</slots>
 			</block>
 			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_8</id>
+				<class>VariableReadOnly</class>
+				<id>VariableReadOnly_1</id>
+				<params>
+					<param>
+						layer_index_forward
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						true
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						0
+						<name>Initial Value</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\0\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>FrameEvent</class>
+				<id>FrameEvent_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>active</name>
+						<const>\true\</const>
+					</slot>
+					<slot>
+						<name>cooldown</name>
+						<const>\1.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>FlowGate</class>
+				<id>FlowGate_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>openAtStart</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ComponentMethod</class>
+				<id>ComponentMethod_11</id>
+				<params>
+					<param>
+						Animator.setFloatParam
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>arg#0</name>
+						<const>\health\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_2</id>
+				<buddy>Variable_2</buddy>
+				<params>
+					<param>
+						GameObjectT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_10</id>
 				<buddy>Variable_11</buddy>
+				<params>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>StartScript</class>
+				<id>StartScript_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_5</id>
+				<buddy>Variable_4</buddy>
+				<params>
+					<param>
+						VehicleT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GameObjectToVehicle</class>
+				<id>GameObjectToVehicle_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_2</id>
+				<buddy>Variable_2</buddy>
+				<params>
+					<param>
+						GameObjectT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVehicleGameObject</class>
+				<id>GetVehicleGameObject_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>FindFirstNode</class>
+				<id>FindFirstNode_2</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>name</name>
+						<const>\HealthBar\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>GetVehicleHealth</class>
+				<id>GetVehicleHealth_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_4</id>
+				<buddy>Variable_4</buddy>
+				<params>
+					<param>
+						VehicleT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>DivideFloatIfNotZero</class>
+				<id>DivideFloatIfNotZero_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\1.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>GetVehicleMaxHealth</class>
+				<id>GetVehicleMaxHealth_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>type</name>
+						<const>\current\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ContextGetSelf</class>
+				<id>ContextGetSelf_1</id>
+				<params>
+					<param>
+						CGFGameObjectContext
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						getSelf
+						<name>Member Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_8</id>
+				<buddy>VariableReadOnly_2</buddy>
 				<params>
 					<param>
 						IntT
@@ -403,9 +387,26 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_8</id>
-				<buddy>VariableReadOnly_2</buddy>
+				<class>CompareIntegers</class>
+				<id>CompareIntegers_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>a</name>
+						<const>\0\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_5</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_8</id>
+				<buddy>Variable_11</buddy>
 				<params>
 					<param>
 						IntT
@@ -429,91 +430,29 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_10</id>
-				<buddy>Variable_11</buddy>
+				<class>GetGameSetting</class>
+				<id>GetGameSetting_1</id>
 				<params>
 					<param>
-						IntT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						int
+						<name>Game Setting Type</name>
+						<type>StringT</type>
 					</param>
 				</params>
-				<slots/>
+				<slots>
+					<slot>
+						<name>settingName</name>
+						<const>\RENDER_PIPELINE\</const>
+					</slot>
+				</slots>
 			</block>
 		</blocks>
 		<connections>
-			<connection>
-				<from>GetVariable_4</from>
-				<input>vehicle</input>
-				<to>GetVehicleHealth_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_4</from>
-				<input>vehicle</input>
-				<to>GetVehicleMaxHealth_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVehicleHealth_1</from>
-				<input>a</input>
-				<to>DivideFloatIfNotZero_1</to>
-				<output>health</output>
-			</connection>
-			<connection>
-				<from>GetVehicleMaxHealth_1</from>
-				<input>b</input>
-				<to>DivideFloatIfNotZero_1</to>
-				<output>maxHealth</output>
-			</connection>
 			<connection>
 				<from>ContextGetSelf_1</from>
 				<input>default</input>
 				<to>Variable_2</to>
 				<output>value</output>
-			</connection>
-			<connection>
-				<from>SetVariable_5</from>
-				<input>input</input>
-				<to>SetVariable_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>FindFirstNode_2</from>
-				<input>value</input>
-				<to>SetVariable_2</to>
-				<output>node</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>GetVehicleGameObject_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVehicleGameObject_1</from>
-				<input>gameObject</input>
-				<to>FindFirstNode_2</to>
-				<output>vehicleObject</output>
-			</connection>
-			<connection>
-				<from>GetVehicleGameObject_1</from>
-				<input>gameObject</input>
-				<to>GameObjectToVehicle_1</to>
-				<output>vehicleObject</output>
-			</connection>
-			<connection>
-				<from>StartScript_1</from>
-				<input>input</input>
-				<to>SetVariable_5</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GameObjectToVehicle_1</from>
-				<input>value</input>
-				<to>SetVariable_5</to>
-				<output>vehicle</output>
 			</connection>
 			<connection>
 				<from>FrameEvent_1</from>
@@ -532,24 +471,6 @@
 				<input>open</input>
 				<to>FlowGate_1</to>
 				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetGameSetting_1</from>
-				<input>b</input>
-				<to>CompareIntegers_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>SetVariable_2</from>
-				<input>input</input>
-				<to>If_5</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>CompareIntegers_1</from>
-				<input>value</input>
-				<to>If_5</to>
-				<output>equal</output>
 			</connection>
 			<connection>
 				<from>FlowGate_1</from>
@@ -576,15 +497,69 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>If_5</from>
+				<from>StartScript_1</from>
 				<input>input</input>
-				<to>SetVariable_8</to>
-				<output>false</output>
+				<to>SetVariable_5</to>
+				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetVariable_9</from>
+				<from>GameObjectToVehicle_1</from>
 				<input>value</input>
-				<to>SetVariable_8</to>
+				<to>SetVariable_5</to>
+				<output>vehicle</output>
+			</connection>
+			<connection>
+				<from>GetVehicleGameObject_1</from>
+				<input>gameObject</input>
+				<to>GameObjectToVehicle_1</to>
+				<output>vehicleObject</output>
+			</connection>
+			<connection>
+				<from>SetVariable_5</from>
+				<input>input</input>
+				<to>SetVariable_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>FindFirstNode_2</from>
+				<input>value</input>
+				<to>SetVariable_2</to>
+				<output>node</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>GetVehicleGameObject_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetVehicleGameObject_1</from>
+				<input>gameObject</input>
+				<to>FindFirstNode_2</to>
+				<output>vehicleObject</output>
+			</connection>
+			<connection>
+				<from>GetVariable_4</from>
+				<input>vehicle</input>
+				<to>GetVehicleHealth_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetVehicleHealth_1</from>
+				<input>a</input>
+				<to>DivideFloatIfNotZero_1</to>
+				<output>health</output>
+			</connection>
+			<connection>
+				<from>GetVehicleMaxHealth_1</from>
+				<input>b</input>
+				<to>DivideFloatIfNotZero_1</to>
+				<output>maxHealth</output>
+			</connection>
+			<connection>
+				<from>GetVariable_4</from>
+				<input>vehicle</input>
+				<to>GetVehicleMaxHealth_1</to>
 				<output>value</output>
 			</connection>
 			<connection>
@@ -597,6 +572,36 @@
 				<from>GetVariable_8</from>
 				<input>value</input>
 				<to>SetVariable_9</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetGameSetting_1</from>
+				<input>b</input>
+				<to>CompareIntegers_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>SetVariable_2</from>
+				<input>input</input>
+				<to>If_5</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>CompareIntegers_1</from>
+				<input>value</input>
+				<to>If_5</to>
+				<output>equal</output>
+			</connection>
+			<connection>
+				<from>If_5</from>
+				<input>input</input>
+				<to>SetVariable_8</to>
+				<output>false</output>
+			</connection>
+			<connection>
+				<from>GetVariable_9</from>
+				<input>value</input>
+				<to>SetVariable_8</to>
 				<output>value</output>
 			</connection>
 		</connections>

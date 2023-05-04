@@ -280,9 +280,6 @@ package net.wg.gui.battle.views.consumablesPanel
             this.state = BATTLE_ITEM_STATES.COOLDOWN;
             this._firstShow = false;
             this._isReloading = true;
-            this.setColorTransform(COLOR_STATES.DARK_COLOR_TRANSFORM);
-            this._lockColorTransform = true;
-            this._delayColorTransform = COLOR_STATES.DARK_COLOR_TRANSFORM;
             this.cooldownMc.visible = false;
             this._curAnimReversed = false;
             if((param4 & ANIMATION_TYPES.MOVE_GREEN_BAR_DOWN) > 0)
@@ -350,10 +347,17 @@ package net.wg.gui.battle.views.consumablesPanel
                }
             }
             this._prevAnimation = param4;
+            this._lockColorTransform = false;
             if((param4 & ANIMATION_TYPES.DARK_COLOR_TRANSFORM) > 0)
             {
                this.setColorTransform(COLOR_STATES.DARK_COLOR_TRANSFORM);
+               this._delayColorTransform = COLOR_STATES.DARK_COLOR_TRANSFORM;
             }
+            else
+            {
+               this.clearColorTransform();
+            }
+            this._lockColorTransform = true;
             this.cooldownMc.visible = true;
             this.intervalRun(this._useBigTimer);
             if(!this._isReplay)
@@ -385,6 +389,7 @@ package net.wg.gui.battle.views.consumablesPanel
             else if(param1 == 0)
             {
                this.clearCoolDownTime();
+               this.clearCoolDownText();
             }
          }
       }

@@ -8,16 +8,43 @@
 		<track>
 			<name>animation</name>
 			<type>animation</type>
-			<startTime>0.000000</startTime>
 			<frame>
 				<startTime>0.000000</startTime>
 				<duration>4.333330</duration>
+				<resourceID>content/Hangars/CharacterAnimations/Soldier_NoJacket/animations/StandingIdle01_Action_B.fbx</resourceID>
+				<clipName/>
 				<speed>1.000000</speed>
 				<layer>0</layer>
 				<blendIn>constant</blendIn>
 				<blendOut>constant</blendOut>
-				<resourceID>content/Hangars/CharacterAnimations/Soldier_NoJacket/animations/StandingIdle01_Action_B.fbx</resourceID>
-				<clipName/>
+				<blendInTime>0.000000</blendInTime>
+				<blendOutTime>0.000000</blendOutTime>
+				<clipStartTime>0.000000</clipStartTime>
+				<clipEndTime>4.333333</clipEndTime>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>4.300000</duration>
+				<value>Root|</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>4.233334</duration>
+				<sequenceSound>ay_ambient_seq_action_b_step</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
 			</frame>
 		</track>
 	</sequenceObject>

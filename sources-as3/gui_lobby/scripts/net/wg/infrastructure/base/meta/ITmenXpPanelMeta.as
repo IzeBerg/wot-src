@@ -6,8 +6,6 @@ package net.wg.infrastructure.base.meta
    {
        
       
-      function accelerateTmenXpS(param1:Boolean) : void;
-      
-      function as_setTankmenXpPanel(param1:Boolean, param2:Boolean) : void;
+      function as_setTankmenXpPanel(param1:Boolean) : void;
    }
 }

@@ -119,6 +119,7 @@ package net.wg.gui.battle.epicBattle.views.components
          if(_loc2_ || _loc3_)
          {
             this.levelIcon.alpha = !!_loc1_ ? Number(LOCKED_TF_ALPHA) : Number(1);
+            glow.setBindKeyTextVisibility(!_loc1_);
          }
       }
       

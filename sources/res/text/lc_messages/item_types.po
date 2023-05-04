@@ -10,6 +10,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "altShot/name"
+msgstr "Боеприпас"
+
 msgid "ammoBay/name"
 msgstr "Боеукладка"
 
@@ -124,6 +127,9 @@ msgstr "Снаряжение"
 msgid "equipment/tags"
 msgstr "?empty?"
 
+msgid "flameGun/name"
+msgstr "Огнемёт"
+
 msgid "fuelTank/name"
 msgstr "Топливный бак"
 
@@ -184,6 +190,9 @@ msgstr "Подкалиберный"
 msgid "shell/kinds/ARMOR_PIERCING_HE"
 msgstr "Бронебойный каморный"
 
+msgid "shell/kinds/FLAME"
+msgstr "Огнемётная смесь"
+
 msgid "shell/kinds/HIGH_EXPLOSIVE"
 msgstr "Осколочно-фугасный"
 
@@ -198,6 +207,9 @@ msgstr "БП"
 
 msgid "shell/kindsAbbreviation/ARMOR_PIERCING_HE"
 msgstr "БК"
+
+msgid "shell/kindsAbbreviation/FLAME"
+msgstr "ОC"
 
 msgid "shell/kindsAbbreviation/HIGH_EXPLOSIVE"
 msgstr "ОФ"
@@ -221,7 +233,7 @@ msgid "surveyingDevice/name"
 msgstr "Приборы наблюдения"
 
 msgid "tankman/Skill_not_be_used"
-msgstr "После изменения специализации навыки и умения не действуют."
+msgstr "После изменения специализации навыки не действуют."
 
 msgid "tankman/gender/man"
 msgstr "Мужчина"
@@ -259,293 +271,14 @@ msgstr "Заряжающий"
 msgid "tankman/roles/radioman"
 msgstr "Радист"
 
-msgid "tankman/skills/brotherhood"
-msgstr "Боевое братство"
-
-msgid "tankman/skills/brotherhood_descr"
-msgstr ""
-"<shortDesc>Улучшает уровень владения основной специальностью и всеми "
-"умениями всех членов экипажа.</shortDesc> Эффект усиливается в сочетании с "
-"оборудованием «Улучшенная вентиляция», «Трофейная вентиляция» и «Система "
-"отвода пороховых газов», в сочетании со снаряжением «Доппаёк», «Шоколад», "
-"«Ящик колы», «Крепкий кофе», «Улучшенный рацион», «Пудинг с чаем», "
-"«Онигири», «Бухты», «Кофе с выпечкой», «Хлеб со смальцем», «Спагетти с "
-"мясным соусом», а также при наличии предбоевой инструкции «Продувка "
-"воздуховодов»."
-
-msgid "tankman/skills/brotherhood_offspring"
-msgstr "Одной крови"
-
-msgid "tankman/skills/brotherhood_sabaton"
-msgstr "Одной крови"
-
-msgid "tankman/skills/brotherhood_witches"
-msgstr "Шабаш"
-
-msgid "tankman/skills/brotherhood_yha"
-msgstr "Братство зайцев"
-
-msgid "tankman/skills/camouflage"
-msgstr "Маскировка"
-
-msgid "tankman/skills/camouflage_descr"
-msgstr ""
-"<shortDesc>Увеличивает незаметность машины.</shortDesc> Эффект усиливается "
-"при наличии камуфляжа (для соответствующего типа карт), в сочетании с "
-"оборудованием «Маскировочная сеть» и «Малошумная система выхлопа», а также "
-"при наличии предбоевой инструкции «Укрытия на местности»."
-
-msgid "tankman/skills/commander_eagleEye"
-msgstr "Орлиный глаз"
-
-msgid "tankman/skills/commander_eagleEye_descr"
-msgstr ""
-"<shortDesc>Увеличивает максимальную дальность обзора.</shortDesc> При "
-"неисправных приборах наблюдения эффективность умения выше. Эффект "
-"увеличивается в сочетании с умением «Радиоперехват», оборудованием "
-"«Просветлённая оптика», «Юстированная оптика», «Трофейная оптика» и "
-"«Стереотруба», а также инструкцией «Калибровка оптики»."
-
-msgid "tankman/skills/commander_enemyShotPredictor"
-msgstr "Звуковая разведка"
-
-msgid "tankman/skills/commander_enemyShotPredictor_descr"
-msgstr ""
-"<shortDesc>Предупреждает о выстреле САУ противника.</shortDesc> Позволяет "
-"определять, когда и откуда выстрелила САУ противника. Срабатывает в момент "
-"выстрела."
-
-msgid "tankman/skills/commander_expert"
-msgstr "Эксперт"
-
-msgid "tankman/skills/commander_expert_descr"
-msgstr ""
-"<shortDesc>Позволяет командиру определять повреждения и выход из строя "
-"модулей в прицеле.</shortDesc> Действует как в режиме прямой наводки, так и "
-"в артиллерийском режиме прицеливания, если цель попадает в радиус обзора."
-
-msgid "tankman/skills/commander_sixthSense"
-msgstr "Шестое чувство"
-
-msgid "tankman/skills/commander_sixthSense_descr"
-msgstr ""
-"<shortDesc>Позволяет командиру определять, обнаружена ли его машина "
-"противником.</shortDesc> Срабатывает через 3 секунды с момента обнаружения."
-
-msgid "tankman/skills/commander_tutor"
-msgstr "Наставник"
-
-msgid "tankman/skills/commander_tutor_descr"
-msgstr ""
-"<shortDesc>Предоставляет дополнительный опыт всем членам экипажа, кроме "
-"командира.</shortDesc>"
-
-msgid "tankman/skills/commander_universalist"
-msgstr "Мастер на все руки"
-
-msgid "tankman/skills/commander_universalist_descr"
-msgstr ""
-"<shortDesc>Позволяет командиру овладеть всеми специальностями и заменить "
-"выведенных из строя членов экипажа.</shortDesc> Заменяются только основные "
-"специальности. Эффективность замены падает при выводе из строя очередного "
-"члена экипажа."
-
-msgid "tankman/skills/driver_badRoadsKing"
-msgstr "Король бездорожья"
-
-msgid "tankman/skills/driver_badRoadsKing_descr"
-msgstr ""
-"<shortDesc>Снижает сопротивление вязких и средних грунтов при движении "
-"машины.</shortDesc> Повышает манёвренность машины и уменьшает время набора "
-"максимальной скорости. Эффект усиливается в сочетании с оборудованием "
-"«Дополнительные грунтозацепы»."
-
-msgid "tankman/skills/driver_rammingMaster"
-msgstr "Мастер тарана"
-
-msgid "tankman/skills/driver_rammingMaster_descr"
-msgstr ""
-"<shortDesc>Уменьшает повреждения собственной машины и увеличивает "
-"повреждения машины противника при таране.</shortDesc> Влияет только на "
-"движущиеся машины и не учитывается при столкновениях с союзниками."
-
-msgid "tankman/skills/driver_smoothDriving"
-msgstr "Плавный ход"
-
-msgid "tankman/skills/driver_smoothDriving_descr"
-msgstr ""
-"<shortDesc>Уменьшает разброс при стрельбе на ходу.</shortDesc> Не влияет на "
-"разброс при повороте и на месте. Эффект усиливается в сочетании с "
-"оборудованием типа «Стабилизатор вертикальной наводки» и «Улучшенные "
-"механизмы поворота», а также инструкциями «Смазка стабилизаторов» или "
-"«Тонкости работы КПП»."
-
-msgid "tankman/skills/driver_tidyPerson"
-msgstr "Чистота и порядок"
-
-msgid "tankman/skills/driver_tidyPerson_descr"
-msgstr ""
-"<shortDesc>Уменьшает вероятность возгорания двигателя, не допуская подтеков "
-"масла и горючего в моторном отсеке.</shortDesc> Эффект усиливается в "
-"сочетании с оборудованием типа «Изменённая компоновка» и снаряжением "
-"«Автоматический огнетушитель»."
-
-msgid "tankman/skills/driver_virtuoso"
-msgstr "Виртуоз"
-
-msgid "tankman/skills/driver_virtuoso_descr"
-msgstr ""
-"<shortDesc>Увеличивает скорость поворота машины.</shortDesc> Эффект "
-"усиливается в сочетании с оборудованием «Дополнительные грунтозацепы» и "
-"«Улучшенные механизмы поворота», снаряжением «Ленд-лизовское масло», "
-"«Качественное масло», «Подкрученный регулятор оборотов двигателя» и «100-, "
-"105-октановый бензин»."
-
-msgid "tankman/skills/fireFighting"
-msgstr "Пожаротушение"
-
-msgid "tankman/skills/fire_fighting"
-msgstr "Пожаротушение"
-
-msgid "tankman/skills/fire_fighting_descr"
-msgstr ""
-"<shortDesc>Ускоряет тушение пожара.</shortDesc> Учитывается средний уровень "
-"по экипажу. Эффект усиливается в сочетании с предбоевой инструкцией "
-"«Искусство сбивать пламя»."
-
-msgid "tankman/skills/gunner_gunsmith"
-msgstr "Мастер-оружейник"
-
-msgid "tankman/skills/gunner_gunsmith_descr"
-msgstr ""
-"<shortDesc>Уменьшает разброс повреждённого орудия.</shortDesc> Если умение "
-"приобретено двумя наводчиками, учитывается максимальный уровень умения по "
-"экипажу. Эффект усиливается в сочетании с оборудованием типа «Стабилизатор "
-"вертикальной наводки», «Улучшенные механизмы поворота», «Комплекс "
-"стабилизационного оборудования» и инструкцией «Смазка стабилизаторов»."
-
-msgid "tankman/skills/gunner_rancorous"
-msgstr "Злопамятный"
-
-msgid "tankman/skills/gunner_rancorous_descr"
-msgstr ""
-"<shortDesc>Позволяет наводчику в зоне видимости наблюдать машину противника "
-"в прицеле в течение дополнительных двух секунд.</shortDesc> Действует как в "
-"режиме прямой наводки, так и в артиллерийском режиме прицеливания. Если "
-"навык приобретён двумя наводчиками, эффективность не увеличивается. Эффект "
-"усиливается в сочетании с оборудованием «Улучшенное радиооборудование» и "
-"инструкцией «Концентрация на цели»."
-
-msgid "tankman/skills/gunner_smoothTurret"
-msgstr "Плавный поворот башни"
-
-msgid "tankman/skills/gunner_smoothTurret_descr"
-msgstr ""
-"<shortDesc>Уменьшает разброс при повороте башни.</shortDesc> Если умение "
-"приобретено двумя наводчиками, учитывается максимальный уровень по экипажу. "
-"Эффект усиливается в сочетании с оборудованием типа «Стабилизатор "
-"вертикальной наводки», «Улучшенные механизмы поворота», «Комплекс "
-"стабилизационного оборудования» и инструкцией «Смазка стабилизаторов»."
-
-msgid "tankman/skills/gunner_sniper"
-msgstr "Снайпер"
-
-msgid "tankman/skills/gunner_sniper_descr"
-msgstr ""
-"<shortDesc>Увеличивает вероятность нанесения повреждений модулям и ранений "
-"членам экипажа противника.</shortDesc> Только для бронебойных, подкалиберных"
-" и кумулятивных снарядов. Если навык приобретён двумя наводчиками, "
-"эффективность не увеличивается."
-
-msgid "tankman/skills/loader_desperado"
-msgstr "Отчаянный"
-
-msgid "tankman/skills/loader_desperado_descr"
-msgstr ""
-"<shortDesc>Ускоряет перезарядку орудия, если у машины остаётся менее 10% "
-"прочности.</shortDesc> Если навык приобретён двумя заряжающими, "
-"эффективность не увеличивается. Эффект усиливается в сочетании с "
-"оборудованием типа «Орудийный досылатель», «Трофейный досылатель», "
-"«Экспериментальная система заряжания» и инструкцией «Рациональная "
-"боеукладка»."
-
-msgid "tankman/skills/loader_intuition"
-msgstr "Интуиция"
-
-msgid "tankman/skills/loader_intuition_descr"
-msgstr ""
-"<shortDesc>Позволяет быстрее сменить тип снаряда в заряженном "
-"орудии.</shortDesc> Для активации умения орудие, оба орудия или магазин "
-"должны быть заряжены полностью. Учитывается средний уровень умения между "
-"всеми заряжающими. Минимальное время смены снаряда для цикличных "
-"(стандартных) орудий — 1 с, для двухорудийных установок и магазинов — 2,5 с."
-
-msgid "tankman/skills/loader_pedant"
-msgstr "Бесконтактная боеукладка"
-
-msgid "tankman/skills/loader_pedant_descr"
-msgstr ""
-"<shortDesc>Увеличивает прочность боеукладки: снаряды уложены в таком "
-"порядке, что не касаются друг друга.</shortDesc> Если навык изучен двумя "
-"заряжающими, эффект не суммируется. Эффект усиливается в сочетании с "
-"оборудованием типа «Изменённая компоновка» и инструкцией «Разложить "
-"снаряды»."
-
 msgid "tankman/skills/main"
-msgstr "Основное умение"
+msgstr "Основной навык"
 
 msgid "tankman/skills/permanent_descr"
-msgstr "Навык не может быть сброшен."
-
-msgid "tankman/skills/radioman_finder"
-msgstr "Радиоперехват"
-
-msgid "tankman/skills/radioman_finder_descr"
 msgstr ""
-"<shortDesc>Увеличивает дальность обзора.</shortDesc> Если умение приобретено"
-" двумя радистами, учитывается максимальный уровень умения по экипажу. Эффект"
-" увеличивается в сочетании с умением «Орлиный глаз», оборудованием "
-"«Просветлённая оптика», «Юстированная оптика», «Трофейная оптика» и "
-"«Стереотруба», а также инструкцией «Калибровка оптики»."
-
-msgid "tankman/skills/radioman_inventor"
-msgstr "Изобретатель"
-
-msgid "tankman/skills/radioman_inventor_descr"
-msgstr ""
-"<shortDesc>Увеличивает дальность связи радиостанции.</shortDesc> Если умение"
-" приобретено двумя радистами, учитывается максимальный уровень умения по "
-"экипажу."
-
-msgid "tankman/skills/radioman_lastEffort"
-msgstr "Из последних сил"
-
-msgid "tankman/skills/radioman_lastEffort_descr"
-msgstr ""
-"<shortDesc>Позволяет радисту, не выведенному из строя на момент уничтожения "
-"машины, передавать позиции техники противника в течение ещё двух "
-"секунд.</shortDesc> Если навык приобретён двумя радистами, эффект не "
-"суммируется."
-
-msgid "tankman/skills/radioman_retransmitter"
-msgstr "Ретранслятор"
-
-msgid "tankman/skills/radioman_retransmitter_descr"
-msgstr ""
-"<shortDesc>Увеличивает дальность связи союзной техники в радиусе действия "
-"радиостанции игрока.</shortDesc> Не влияет на дальность связи собственной "
-"машины. Если умение приобретено двумя радистами, учитывается максимальный "
-"уровень умения по экипажу."
-
-msgid "tankman/skills/repair"
-msgstr "Ремонт"
-
-msgid "tankman/skills/repair_descr"
-msgstr ""
-"<shortDesc>Ускоряет ремонт повреждённых модулей.</shortDesc> Учитывается "
-"средний уровень умения по экипажу. Эффект усиливается в сочетании с "
-"оборудованием типа «Изменённая компоновка» и «Улучшенная закалка», "
-"снаряжением «Большой ремкомплект» и инструкцией «Предбоевое ТО»."
+" \n"
+"\n"
+"Навык не может быть сброшен."
 
 msgid "tankman/skills/type/perk"
 msgstr "Навык. Начинает действовать при 100%-м изучении."
@@ -559,11 +292,11 @@ msgstr "Навык"
 
 msgid "tankman/skills/type/skill"
 msgstr ""
-"Умение. Начинает действовать с начала изучения.<br/>Эффективность "
+"Навык. Начинает действовать с начала изучения.<br/>Эффективность "
 "увеличивается по мере изучения."
 
 msgid "tankman/skills/type/skill_short"
-msgstr "Умение"
+msgstr "Навык"
 
 msgid "track/name"
 msgstr "Гусеница"

@@ -26,14 +26,6 @@
 			<periphery_id>104</periphery_id>
 		</host>
 		<host>
-			<name>WOT RU5</name>
-			<short_name>RU5</short_name>
-			<url>login.p5.tanki.su:20014</url>
-			<url_token>login2.p5.tanki.su:20014</url_token>
-			<public_key_path>loginapp_wot.pubkey</public_key_path>
-			<periphery_id>105</periphery_id>
-		</host>
-		<host>
 			<name>WOT RU6</name>
 			<short_name>RU6</short_name>
 			<url>login.p6.tanki.su:20014</url>
@@ -66,7 +58,7 @@
 			<periphery_id>109</periphery_id>
 		</host>
 	</login>
-	<updateUrl>http://tanki.su/update</updateUrl>
+	<updateUrl/>
 	<csisUrl>http://csis.tanki.su/csis/wotru/</csisUrl>
 	<silhouetteColors>
 		<common>
@@ -291,6 +283,15 @@
 			<Mine_2_GMM>
 				<texture>maps/decals_pbs/Mine_2_GMM.dds</texture>
 			</Mine_2_GMM>
+			<flamethrower_AM>
+				<texture>maps/fx/flamethrower_AM.dds</texture>
+			</flamethrower_AM>
+			<flamethrower_NM>
+				<texture>maps/fx/flamethrower_NM.dds</texture>
+			</flamethrower_NM>
+			<flamethrower_GMM>
+				<texture>maps/fx/flamethrower_GMM.dds</texture>
+			</flamethrower_GMM>
 		</textures>
 	</decal>
 	<camouflage>

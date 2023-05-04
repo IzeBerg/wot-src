@@ -466,7 +466,7 @@ package net.wg.gui.lobby.tankman
          }
          else if(param1 is PersonalCaseSkills && skillsModel)
          {
-            param1.update(new PersonalCaseSkillsModel(skillsModel,data.isBootcamp));
+            param1.update(new PersonalCaseSkillsModel(skillsModel,data.isBootcamp,data.specializationLevel));
          }
          else if(param1 is PersonalCaseFreeSkills && freeSkillsModel)
          {

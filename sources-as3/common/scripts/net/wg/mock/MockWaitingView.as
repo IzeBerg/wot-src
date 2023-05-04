@@ -752,7 +752,7 @@ package net.wg.mock
       {
       }
       
-      public function as_showBackgroundImg(param1:String) : void
+      public function as_showBackgroundImg(param1:String, param2:Boolean) : void
       {
       }
       

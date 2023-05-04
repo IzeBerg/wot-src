@@ -427,7 +427,7 @@ package net.wg.gui.lobby.messengerBar
       
       public function as_setSessionStatsButtonEnable(param1:Boolean, param2:String) : void
       {
-         if(this._sessionStatsBtnEnable != param1)
+         if(this._sessionStatsBtnEnable != param1 || this._sessionStatsBtnTooltip != param2)
          {
             this._sessionStatsBtnEnable = param1;
             this._sessionStatsBtnTooltip = param2;

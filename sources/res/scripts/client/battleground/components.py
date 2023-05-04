@@ -1,5 +1,5 @@
 import BigWorld, Math, AnimationSequence, CGF, math_utils
-from cgf_script.component_meta_class import CGFComponent, ComponentProperty, CGFMetaTypes
+from cgf_script.component_meta_class import ComponentProperty, CGFMetaTypes, registerComponent
 from cgf_obsolete_script.py_component import Component
 from battleground.iself_assembler import ISelfAssembler
 from cgf_obsolete_script.script_game_object import ScriptGameObject, ComponentDescriptorTyped
@@ -154,7 +154,9 @@ class SequenceComponent(Component):
         self.__sequenceAnimator.setEnabled(False)
 
 
-class _SequenceAnimatorTimer(CGFComponent):
+@registerComponent
+class _SequenceAnimatorTimer(object):
+    domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     parent = ComponentProperty(type=CGFMetaTypes.LINK, value=CGF.GameObject)
 
     def __init__(self, sequenceAnimator, parent):

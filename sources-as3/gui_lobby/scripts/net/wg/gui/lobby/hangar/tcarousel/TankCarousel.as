@@ -76,7 +76,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private var _helper:ITankCarouselHelper = null;
       
-      private var _smallDoubleCarouselEnable:Boolean = false;
+      private var _isSmallDoubleCarouselEnabled:Boolean = false;
       
       private var _listVisibleHeight:int = -1;
       
@@ -104,9 +104,10 @@ package net.wg.gui.lobby.hangar.tcarousel
             _loc3_ += _loc4_;
          }
          var _loc5_:Number = param1 - _loc3_ - OFFSET_ARROW - this._rightMargin >> 0;
+         var _loc6_:int = param1 - _loc3_ - OFFSET_ARROW - this._rightMargin;
          this.background.width = param1 >> 0;
-         var _loc6_:int = _loc5_ + leftArrowOffset - rightArrowOffset >> 0;
-         super.updateLayout(_loc5_,(_loc5_ - _loc6_ >> 1) + _loc3_ >> 0);
+         var _loc7_:int = _loc6_ + leftArrowOffset - rightArrowOffset;
+         super.updateLayout(_loc6_,(_loc6_ - _loc7_ >> 1) + _loc3_);
          leftArrow.x = !!this.vehicleFilters.visible ? Number(param2 + _loc4_ + OFFSET_ARROW) : Number(OFFSET_ARROW);
          startFadeMask.x = scrollList.x = leftArrow.x + ARROW_WIDTH + OFFSET_CAROUSEL;
          endFadeMask.x = rightArrow.x - rightArrow.width - endFadeMask.width >> 0;
@@ -242,7 +243,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       public function as_setSmallDoubleCarousel(param1:Boolean) : void
       {
-         this._smallDoubleCarouselEnable = param1;
+         this._isSmallDoubleCarouselEnabled = param1;
          invalidateSize();
       }
       
@@ -333,8 +334,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       protected function getNewHelper() : ITankCarouselHelper
       {
          var _loc1_:ITankCarouselHelper = this._helper;
-         var _loc2_:Boolean = this._rowCount > 1;
-         if(_loc2_ && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable))
+         if(this.isSmallDoubleCarouselEnabled)
          {
             if(!(_loc1_ is SmallTankCarouselHelper))
             {
@@ -365,13 +365,11 @@ package net.wg.gui.lobby.hangar.tcarousel
          var _loc1_:int = 0;
          var _loc2_:int = 0;
          var _loc3_:Boolean = false;
-         var _loc4_:Boolean = false;
          if(scrollList.useExtendedViewPort)
          {
-            _loc3_ = this._rowCount > 1;
-            _loc4_ = _loc3_ && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable);
-            _loc1_ = !!_loc4_ ? int(MASK_TOP_OFFSET_EPIC_SMALL) : int(MASK_TOP_OFFSET_EPIC_BIG);
-            _loc2_ = !!_loc4_ ? int(MASK_BOTTOM_OFFSET_EPIC_SMALL) : int(MASK_BOTTOM_OFFSET_EPIC_BIG);
+            _loc3_ = this.isSmallDoubleCarouselEnabled;
+            _loc1_ = !!_loc3_ ? int(MASK_TOP_OFFSET_EPIC_SMALL) : int(MASK_TOP_OFFSET_EPIC_BIG);
+            _loc2_ = !!_loc3_ ? int(MASK_BOTTOM_OFFSET_EPIC_SMALL) : int(MASK_BOTTOM_OFFSET_EPIC_BIG);
          }
          else
          {
@@ -415,14 +413,19 @@ package net.wg.gui.lobby.hangar.tcarousel
          return this._rowCount;
       }
       
-      public function get smallDoubleCarouselEnable() : Boolean
+      public function get isSmallDoubleCarouselEnabled() : Boolean
       {
-         return this._rowCount > 1 && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable);
+         return this._rowCount > 1 && (this._stageHeight < THRESHOLD || this._isSmallDoubleCarouselEnabled);
       }
       
       public function get helper() : ITankCarouselHelper
       {
          return this._helper;
+      }
+      
+      public function get isSmall() : Boolean
+      {
+         return !(this._helper is TankCarouselHelper && this._rowCount > 1);
       }
       
       private function onSelectWotPlusVehicleHandler(param1:TankItemEvent) : void

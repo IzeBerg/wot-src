@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>3.500000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model 2</name>
+		<type>model</type>
+		<resource>content/Hangars/h21_Armory_Yard_customisation/environment/Constructor/Object_156_O/normal/lod0/Details_03_03_28.model</resource>
+		<track>
+			<name>material property float</name>
+			<type>float</type>
+			<identifier>s_nd0</identifier>
+			<property>spawnProgeression</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.500000</inTangent>
+				<outTangent>0.500000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>0.500000</inTangent>
+				<outTangent>0.500000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model 4</name>
+		<type>model</type>
+		<resource>content/Hangars/h21_Armory_Yard_customisation/environment/Constructor/Object_156_O/normal/lod0/Details_05_03_28.model</resource>
+		<track>
+			<name>material property float</name>
+			<type>float</type>
+			<identifier>s_nd0</identifier>
+			<property>spawnProgeression</property>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>0.000000</value>
+				<inTangent>0.500000</inTangent>
+				<outTangent>0.500000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.666667</startTime>
+				<value>1.000000</value>
+				<inTangent>0.500000</inTangent>
+				<outTangent>0.500000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model 5</name>
+		<type>model</type>
+		<resource>content/Hangars/h21_Armory_Yard_customisation/environment/Constructor/Object_156_O/normal/lod0/Details_06_03_28.model</resource>
+		<track>
+			<name>material property float</name>
+			<type>float</type>
+			<identifier>s_nd0</identifier>
+			<property>spawnProgeression</property>
+			<frame>
+				<startTime>1.500000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.500000</inTangent>
+				<outTangent>0.500000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.500000</startTime>
+				<value>1.000000</value>
+				<inTangent>0.500000</inTangent>
+				<outTangent>0.500000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.500000</startTime>
+				<duration>2.900000</duration>
+				<value>Model 2|</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.500000</startTime>
+				<duration>2.900000</duration>
+				<sequenceSound>ay_seq_stage_27</sequenceSound>
+				<type>one_shot</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

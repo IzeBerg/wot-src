@@ -1,6 +1,7 @@
 import typing
 if typing.TYPE_CHECKING:
-    from gui.battle_control.arena_info.interfaces import IAppearanceCacheController, IPointsOfInterestController, IComp7PrebattleSetupController, IComp7VOIPController
+    from gui.battle_control.arena_info.interfaces import IAppearanceCacheController, IPointsOfInterestController, IComp7PrebattleSetupController, IComp7VOIPController, IMapZonesController
+    from gui.battle_control.controllers.consumables.equipment_ctrl import EquipmentsController
 
 class ISharedControllersLocator(object):
     __slots__ = ()
@@ -95,6 +96,10 @@ class ISharedControllersLocator(object):
 
     @property
     def ingameHelp(self):
+        raise NotImplementedError
+
+    @property
+    def mapZones(self):
         raise NotImplementedError
 
 

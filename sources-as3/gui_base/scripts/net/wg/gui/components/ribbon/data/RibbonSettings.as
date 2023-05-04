@@ -46,13 +46,15 @@ package net.wg.gui.components.ribbon.data
       
       private var _disposed:Boolean = false;
       
+      protected const DYNAMIC_RIBBON_TYPES_MAP:Dictionary = new Dictionary();
+      
       public function RibbonSettings(param1:String, param2:String)
       {
          super();
          this.init();
          this._ribbonType = param1;
          this._ribbonText = param2;
-         this._ribbonSettingsByType = RIBBON_TYPES_MAP[param1];
+         this._ribbonSettingsByType = this.getSettingsByType();
          if(this._ribbonSettingsByType == null)
          {
             App.utils.asserter.assert(false,"No such ribbonType: " + param1);
@@ -87,6 +89,13 @@ package net.wg.gui.components.ribbon.data
             RIBBON_TYPES_MAP[_loc2_].dispose();
             _loc2_++;
          }
+         _loc1_ = this.DYNAMIC_RIBBON_TYPES_MAP.length;
+         _loc2_ = 0;
+         while(_loc2_ < _loc1_)
+         {
+            this.DYNAMIC_RIBBON_TYPES_MAP[_loc2_].dispose();
+            _loc2_++;
+         }
       }
       
       public function getAtlas() : String
@@ -114,6 +123,12 @@ package net.wg.gui.components.ribbon.data
          return this._ribbonText;
       }
       
+      public function updateRibbonProperties(param1:String, param2:String) : void
+      {
+         this._ribbonText = param2;
+         this._ribbonSettingsByType.icon = param1;
+      }
+      
       public function getRibbonType() : String
       {
          return this._ribbonType;
@@ -129,13 +144,19 @@ package net.wg.gui.components.ribbon.data
          return TEXT_SETTINGS[this._ribbonSettingsByType.getCurrentColor()];
       }
       
+      public function getSettingsByType() : RibbonSettingByType
+      {
+         return RIBBON_TYPES_MAP[this._ribbonType] || this.DYNAMIC_RIBBON_TYPES_MAP[this._ribbonType];
+      }
+      
       protected function atlasInit() : void
       {
-         var _loc6_:DamageSourceSetting = null;
+         var _loc7_:DamageSourceSetting = null;
          var _loc1_:String = RibbonColors.GREEN;
          var _loc2_:String = RibbonColors.RED;
          var _loc3_:String = RibbonColors.PURPLE;
          var _loc4_:String = RibbonColors.GREY;
+         var _loc5_:String = RibbonColors.PERK;
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.ARMOR] = new RibbonSettingByType(_loc4_,BATTLEATLAS.RIBBONS_ARMOR,_loc4_,BATTLEATLAS.RIBBONS_ARMOR,3);
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.DAMAGE] = new RibbonSettingByType(_loc1_,BATTLEATLAS.RIBBONS_DAMAGE,_loc1_,BATTLEATLAS.RIBBONS_DAMAGE,3);
          RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.WORLD_COLLISION] = new RibbonSettingByType(_loc1_,BATTLEATLAS.RIBBONS_DAMAGE,_loc1_,BATTLEATLAS.RIBBONS_DAMAGE,3);
@@ -189,20 +210,21 @@ package net.wg.gui.components.ribbon.data
          BACKGROUNDS[RibbonColors.ORANGE] = new BackgroundAtlasNames(RibbonColors.ORANGE);
          BACKGROUNDS[RibbonColors.YELLOW] = new BackgroundAtlasNames(RibbonColors.YELLOW);
          BACKGROUNDS[_loc3_] = new BackgroundAtlasNames(_loc3_);
+         BACKGROUNDS[_loc5_] = new BackgroundAtlasNames(_loc5_);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.LIGHT_TANK] = new DamageSourceSetting(BATTLEATLAS.WHITE_ICON_LIGHT_TANK16X16);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.MEDIUM_TANK] = new DamageSourceSetting(BATTLEATLAS.WHITE_ICON_MEDIUM_TANK16X16);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.HEAVY_TANK] = new DamageSourceSetting(BATTLEATLAS.WHITE_ICON_HEAVY_TANK16X16);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.AT_SPG] = new DamageSourceSetting(BATTLEATLAS.WHITE_ICON_AT_SPG16X16);
          DAMAGE_SOURCE_MAP[DAMAGE_SOURCE_TYPES.SPG] = new DamageSourceSetting(BATTLEATLAS.WHITE_ICON_SPG16X16);
          this.setupComplexDamageSourceSettings();
-         var _loc5_:int = 0;
-         for each(_loc6_ in DAMAGE_SOURCE_MAP)
+         var _loc6_:int = 0;
+         for each(_loc7_ in DAMAGE_SOURCE_MAP)
          {
-            _loc5_++;
+            _loc6_++;
          }
-         if(_loc5_ != DAMAGE_SOURCE_TYPES.DAMAGE_SOURCES.length)
+         if(_loc6_ != DAMAGE_SOURCE_TYPES.DAMAGE_SOURCES.length)
          {
-            DebugUtils.LOG_ERROR(DAMAGE_SOURCE_MISSING,_loc5_,DAMAGE_SOURCE_TYPES.DAMAGE_SOURCES.length);
+            DebugUtils.LOG_ERROR(DAMAGE_SOURCE_MISSING,_loc6_,DAMAGE_SOURCE_TYPES.DAMAGE_SOURCES.length);
          }
       }
       
@@ -224,6 +246,7 @@ package net.wg.gui.components.ribbon.data
       
       private function init() : void
       {
+         this.initDynamicRibbons();
          if(!_isInit)
          {
             _isInit = true;
@@ -234,6 +257,7 @@ package net.wg.gui.components.ribbon.data
             TEXT_SETTINGS[RibbonColors.ORANGE] = new RibbonTextSettings(RibbonColors.ORANGE);
             TEXT_SETTINGS[RibbonColors.YELLOW] = new RibbonTextSettings(RibbonColors.YELLOW);
             TEXT_SETTINGS[RibbonColors.PURPLE] = new RibbonTextSettings(RibbonColors.PURPLE);
+            TEXT_SETTINGS[RibbonColors.PERK] = new RibbonTextSettings(RibbonColors.PERK);
             PADDINGS_X[WITH_NAME_WITH_TANKNAME_PADDINGS] = new PaddingSettings(-156,10,0,7,26);
             PADDINGS_X[WITHOUT_NAME_WITH_TANKNAME_PADDINGS] = new PaddingSettings(-112,13,0,0,24);
             PADDINGS_X[WITH_NAME_WITHOUT_TANKNAME_PADDINGS] = new PaddingSettings(-135,10,0,0,0);
@@ -255,6 +279,12 @@ package net.wg.gui.components.ribbon.data
             ICON_Y_PADDINGS[DAMAGE_SOURCE_TYPES.AIRSTRIKE] = -6;
             ICON_Y_PADDINGS[DAMAGE_SOURCE_TYPES.FORT_ARTILLERY] = -6;
          }
+      }
+      
+      protected function initDynamicRibbons() : void
+      {
+         var _loc1_:String = RibbonColors.PERK;
+         this.DYNAMIC_RIBBON_TYPES_MAP[BATTLE_EFFICIENCY_TYPES.PERK] = new RibbonSettingByType(_loc1_,BATTLEATLAS.GUNNER_FOCUS,_loc1_,BATTLEATLAS.GUNNER_FOCUS,1);
       }
       
       public function isDisposed() : Boolean

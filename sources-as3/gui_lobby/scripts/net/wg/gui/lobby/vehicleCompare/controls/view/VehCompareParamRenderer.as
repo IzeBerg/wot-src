@@ -185,7 +185,7 @@ package net.wg.gui.lobby.vehicleCompare.controls.view
       {
          if(StringUtils.isNotEmpty(this._tooltip))
          {
-            this._tooltipMgr.showSpecial(this._tooltip,null,this._model.paramID);
+            this._tooltipMgr.showWulfTooltip(this._tooltip,this._model.paramID);
          }
       }
       

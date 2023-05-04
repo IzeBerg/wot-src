@@ -1,6 +1,7 @@
 package net.wg.gui.components.ribbon.data
 {
    import net.wg.data.constants.generated.BATTLEATLAS;
+   import net.wg.data.constants.generated.COMMONBATTLELOBBY;
    import net.wg.gui.components.ribbon.constants.RibbonColors;
    
    public class BackgroundAtlasNames
@@ -52,6 +53,11 @@ package net.wg.gui.components.ribbon.data
                this._small = BATTLEATLAS.RIBBONS_BG_PURPLE_SMALL;
                this._medium = BATTLEATLAS.RIBBONS_BG_PURPLE_MEDIUM;
                this._large = BATTLEATLAS.RIBBONS_BG_PURPLE_LARGE;
+               break;
+            case RibbonColors.PERK:
+               this._small = COMMONBATTLELOBBY.RIBBONS_BG_PERK_SMALL;
+               this._medium = COMMONBATTLELOBBY.RIBBONS_BG_PERK_MEDIUM;
+               this._large = COMMONBATTLELOBBY.RIBBONS_BG_PERK_LARGE;
          }
       }
       

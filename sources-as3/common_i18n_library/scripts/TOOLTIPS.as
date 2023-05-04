@@ -107,11 +107,11 @@ package
       
       public static const BARRACKS_ITEM_BUY:String = "#tooltips:barracks/item_buy";
       
+      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLDWOTPLUS:String = "#tooltips:vehicleSellDialog/renderer/alertIconGoldWotPlus";
+      
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD:String = "#tooltips:vehicleSellDialog/renderer/alertIconGold";
       
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONCRYSTAL:String = "#tooltips:vehicleSellDialog/renderer/alertIconCrystal";
-      
-      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN:String = "#tooltips:vehicleSellDialog/renderer/alertIconEquipCoin";
       
       public static const REPAIR_AUTO:String = "#tooltips:repair/auto";
       
@@ -350,6 +350,8 @@ package
       public static const RANKEDBATTLESVIEW_SPRINTER:String = "#tooltips:rankedBattlesView/sprinter";
       
       public static const DEMONSTRATOR_PLATOONWARNING:String = "#tooltips:demonstrator/platoonWarning";
+      
+      public static const LOBY_MESSENGER_LISTVIEW_NEWS_TOOLTIP:String = "#tooltips:loby_messenger/listView/news/tooltip";
       
       public static const BADGEINFO_TITLE:String = "#tooltips:badgeinfo/title";
       
@@ -1141,15 +1143,29 @@ package
       
       public static const BATTLETYPES_BATTLEROYALE_BODY2:String = "#tooltips:battleTypes/battleRoyale/body2";
       
+      public static const BATTLETYPES_BATTLEROYALE_WIDGET_BODY2:String = "#tooltips:battleTypes/battleRoyale/widget/body2";
+      
       public static const BATTLETYPES_BATTLEROYALE_FROZEN_BODY:String = "#tooltips:battleTypes/battleRoyale/frozen/body";
       
       public static const BATTLETYPES_BATTLEROYALE_TILLSTART:String = "#tooltips:battleTypes/battleRoyale/tillStart";
       
       public static const BATTLETYPES_BATTLEROYALE_TILLEND:String = "#tooltips:battleTypes/battleRoyale/tillEnd";
       
+      public static const BATTLETYPES_BATTLEROYALE_WIDGET_TILLEND:String = "#tooltips:battleTypes/battleRoyale/widget/tillEnd";
+      
       public static const BATTLETYPES_BATTLEROYALE_TILLSTARTCYCLE:String = "#tooltips:battleTypes/battleRoyale/tillStartCycle";
       
       public static const BATTLETYPES_BATTLEROYALE_TILLENDCYCLE:String = "#tooltips:battleTypes/battleRoyale/tillEndCycle";
+      
+      public static const BATTLETYPES_BATTLEROYALE_WIDGET_TOMORROW:String = "#tooltips:battleTypes/battleRoyale/widget/tomorrow";
+      
+      public static const BATTLETYPES_BATTLEROYALE_WIDGET_TODAY:String = "#tooltips:battleTypes/battleRoyale/widget/today";
+      
+      public static const BATTLETYPES_BATTLEROYALE_WIDGET_TIMETABLE_TIME:String = "#tooltips:battleTypes/battleRoyale/widget/timeTable/time";
+      
+      public static const BATTLETYPES_BATTLEROYALE_WIDGET_TIMETABLE_EMPTY:String = "#tooltips:battleTypes/battleRoyale/widget/timeTable/empty";
+      
+      public static const BATTLETYPES_BATTLEROYALE_WIDGET_TIMETABLE_TITLE:String = "#tooltips:battleTypes/battleRoyale/widget/timeTable/title";
       
       public static const BATTLETYPES_MAPBOX_HEADER:String = "#tooltips:battleTypes/mapbox/header";
       
@@ -1591,6 +1607,8 @@ package
       
       public static const HANGAR_CREW_SPECIALTY_SKILLS:String = "#tooltips:hangar/crew/specialty_skills";
       
+      public static const HANGAR_CREW_XPTOTMEN:String = "#tooltips:hangar/crew/xpToTmen";
+      
       public static const HANGAR_XPTOTMENCHECKBOX_HEADER:String = "#tooltips:hangar/xpToTmenCheckbox/header";
       
       public static const HANGAR_XPTOTMENCHECKBOX_BODY:String = "#tooltips:hangar/xpToTmenCheckbox/body";
@@ -1962,6 +1980,10 @@ package
       public static const LOBY_MESSENGER_NEW_CHANNELS_CAROUSEL_BUTTON_RIGHT_HEADER:String = "#tooltips:loby_messenger/new/channels_carousel_button_right/header";
       
       public static const LOBY_MESSENGER_NEW_CHANNELS_CAROUSEL_BUTTON_RIGHT_BODY:String = "#tooltips:loby_messenger/new/channels_carousel_button_right/body";
+      
+      public static const LOBY_MESSENGER_LISTVIEW_NEWS_TOOLTIP_HEADER:String = "#tooltips:loby_messenger/listView/news/tooltip/header";
+      
+      public static const LOBY_MESSENGER_LISTVIEW_NEWS_TOOLTIP_BODY:String = "#tooltips:loby_messenger/listView/news/tooltip/body";
       
       public static const LOBBY_HEADER_BUYPREMIUMACCOUNT_DISABLED_HEADER:String = "#tooltips:lobby/header/buyPremiumAccount/disabled/header";
       
@@ -2371,9 +2393,13 @@ package
       
       public static const VEHICLE_WOTPLUSRENTING:String = "#tooltips:vehicle/wotPlusRenting";
       
-      public static const VEHICLE_WOTPLUSRENTING_REMAININGTIME_DAYS:String = "#tooltips:vehicle/wotPlusRenting/remainingTime/days";
+      public static const VEHICLE_WOTPLUSRENTING_INACTIVE:String = "#tooltips:vehicle/wotPlusRenting/inactive";
       
-      public static const VEHICLE_WOTPLUSRENTING_REMAININGTIME_HOURS:String = "#tooltips:vehicle/wotPlusRenting/remainingTime/hours";
+      public static const VEHICLE_WOTPLUSRENTING_REMAININGTIME:String = "#tooltips:vehicle/wotPlusRenting/remainingTime";
+      
+      public static const VEHICLE_TELECOMRENTAL_REMAININGTIME_DAYS:String = "#tooltips:vehicle/telecomRental/remainingTime/days";
+      
+      public static const VEHICLE_TELECOMRENTAL_REMAININGTIME_HOURS:String = "#tooltips:vehicle/telecomRental/remainingTime/hours";
       
       public static const VEHICLE_TELECOMRENTALSRENTING:String = "#tooltips:vehicle/telecomRentalsRenting";
       
@@ -2504,6 +2530,8 @@ package
       public static const VEHICLESTATUS_NOTPRESENT_HEADER:String = "#tooltips:vehicleStatus/notpresent/header";
       
       public static const VEHICLESTATUS_UNDAMAGED_HEADER:String = "#tooltips:vehicleStatus/undamaged/header";
+      
+      public static const VEHICLESTATUS_SUBSCRIPTION_SUSPENDED_HEADER:String = "#tooltips:vehicleStatus/subscription_suspended/header";
       
       public static const VEHICLESTATUS_WILLBEUNLOCKEDINBATTLE_HEADER:String = "#tooltips:vehicleStatus/willBeUnlockedInBattle/header";
       
@@ -2869,6 +2897,10 @@ package
       
       public static const BLUEPRINT_BLUEPRINTSCREEN_CREATEMAXFRAGMENTSDISABLED_BODY:String = "#tooltips:blueprint/BlueprintScreen/createMaxFragmentsDisabled/body";
       
+      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLDWOTPLUS_HEADER:String = "#tooltips:vehicleSellDialog/renderer/alertIconGoldWotPlus/header";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLDWOTPLUS_BODY:String = "#tooltips:vehicleSellDialog/renderer/alertIconGoldWotPlus/body";
+      
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD_HEADER:String = "#tooltips:vehicleSellDialog/renderer/alertIconGold/header";
       
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD_BODY:String = "#tooltips:vehicleSellDialog/renderer/alertIconGold/body";
@@ -2877,9 +2909,25 @@ package
       
       public static const VEHICLESELLDIALOG_RENDERER_ALERTICONCRYSTAL_BODY:String = "#tooltips:vehicleSellDialog/renderer/alertIconCrystal/body";
       
-      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN_HEADER:String = "#tooltips:vehicleSellDialog/renderer/alertIconEquipCoin/header";
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTNOTENABLED_HEADER:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountNotEnabled/header";
       
-      public static const VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN_BODY:String = "#tooltips:vehicleSellDialog/renderer/alertIconEquipCoin/body";
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTNOTENABLED_BODY:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountNotEnabled/body";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTENABLED_HEADER:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountEnabled/header";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTENABLED_BODY:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountEnabled/body";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_SUB_DEMOUNTNOTENABLED_HEADER:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/sub/demountNotEnabled/header";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_SUB_DEMOUNTNOTENABLED_BODY:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/sub/demountNotEnabled/body";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_STANDARD_NONSUB_HEADER:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Standard/nonsub/header";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_STANDARD_NONSUB_BODY:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Standard/nonsub/body";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_MODERNIZED_HEADER:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Modernized/header";
+      
+      public static const VEHICLESELLDIALOG_RENDERER_SBSCR_MODERNIZED_BODY:String = "#tooltips:vehicleSellDialog/renderer/sbscr/Modernized/body";
       
       public static const VEHICLESELLDIALOG_CREW_ALERTICON_RECOVERY_HEADER:String = "#tooltips:vehicleSellDialog/crew/alertIcon/recovery/header";
       
@@ -3507,6 +3555,26 @@ package
       
       public static const HANGARTUTORIAL_PERSONALCASE_PERKS_NEWPERKDESCRIPTION:String = "#tooltips:hangarTutorial/personalCase/perks/newPerkDescription";
       
+      public static const PERKTYPE_NAME_MAIN:String = "#tooltips:perkType/name/main";
+      
+      public static const PERKTYPE_NAME_SITUATIONAL:String = "#tooltips:perkType/name/situational";
+      
+      public static const PERKTYPE_NAME_COMMON:String = "#tooltips:perkType/name/common";
+      
+      public static const PERKTYPE_NAME_COMMANDERSPECIAL:String = "#tooltips:perkType/name/commanderSpecial";
+      
+      public static const PERKTYPE_INFO_SITUATIONAL:String = "#tooltips:perkType/info/situational";
+      
+      public static const PERKTYPE_INFO_COMMON:String = "#tooltips:perkType/info/common";
+      
+      public static const PERKS_FULLSKILLTITLE:String = "#tooltips:perks/fullSkillTitle";
+      
+      public static const PERKS_FULLGROUPSKILLTITLE:String = "#tooltips:perks/fullGroupSkillTitle";
+      
+      public static const PERKS_INFOTEXT:String = "#tooltips:perks/infoText";
+      
+      public static const PERKS_CONFIGURATIONSCREENTEXT:String = "#tooltips:perks/configurationScreenText";
+      
       public static const HANGARTUTORIAL_PERSONALCASE_ADDITIONAL_TITLE:String = "#tooltips:hangarTutorial/personalCase/additional/title";
       
       public static const HANGARTUTORIAL_PERSONALCASE_ADDITIONAL_RECORDTITLE:String = "#tooltips:hangarTutorial/personalCase/additional/recordTitle";
@@ -3736,6 +3804,10 @@ package
       public static const AWARDITEM_BPCOIN_HEADER:String = "#tooltips:awardItem/bpcoin/header";
       
       public static const AWARDITEM_BPCOIN_BODY:String = "#tooltips:awardItem/bpcoin/body";
+      
+      public static const AWARDITEM_EQUIPCOIN_HEADER:String = "#tooltips:awardItem/equipCoin/header";
+      
+      public static const AWARDITEM_EQUIPCOIN_BODY:String = "#tooltips:awardItem/equipCoin/body";
       
       public static const AWARDITEM_STEELHUNTERPOINT_HEADER:String = "#tooltips:awardItem/steelHunterPoint/header";
       
@@ -3986,6 +4058,30 @@ package
       public static const AWARDITEM_ABILITYTOKEN_HEADER:String = "#tooltips:awardItem/abilityToken/header";
       
       public static const AWARDITEM_ABILITYTOKEN_BODY:String = "#tooltips:awardItem/abilityToken/body";
+      
+      public static const AWARDITEM_GOLD_BANK_HEADER:String = "#tooltips:awardItem/gold_bank/header";
+      
+      public static const AWARDITEM_GOLD_BANK_BODY:String = "#tooltips:awardItem/gold_bank/body";
+      
+      public static const AWARDITEM_IDLE_CREW_XP_HEADER:String = "#tooltips:awardItem/idle_crew_xp/header";
+      
+      public static const AWARDITEM_IDLE_CREW_XP_BODY:String = "#tooltips:awardItem/idle_crew_xp/body";
+      
+      public static const AWARDITEM_EXCLUDED_MAP_HEADER:String = "#tooltips:awardItem/excluded_map/header";
+      
+      public static const AWARDITEM_EXCLUDED_MAP_BODY:String = "#tooltips:awardItem/excluded_map/body";
+      
+      public static const AWARDITEM_FREE_EQUIPMENT_DEMOUNTING_HEADER:String = "#tooltips:awardItem/free_equipment_demounting/header";
+      
+      public static const AWARDITEM_FREE_EQUIPMENT_DEMOUNTING_BODY:String = "#tooltips:awardItem/free_equipment_demounting/body";
+      
+      public static const AWARDITEM_EXCLUSIVE_VEHICLE_HEADER:String = "#tooltips:awardItem/exclusive_vehicle/header";
+      
+      public static const AWARDITEM_EXCLUSIVE_VEHICLE_BODY:String = "#tooltips:awardItem/exclusive_vehicle/body";
+      
+      public static const AWARDITEM_COMP7_2023_1_WEEKLY_REWARDS_TOKEN_HEADER:String = "#tooltips:awardItem/comp7_2023_1_weekly_rewards_token/header";
+      
+      public static const AWARDITEM_COMP7_2023_1_WEEKLY_REWARDS_TOKEN_BODY:String = "#tooltips:awardItem/comp7_2023_1_weekly_rewards_token/body";
       
       public static const RANKEDBATTLEVIEW_SCOREPOINT_SHORT_HEADER:String = "#tooltips:rankedBattleView/scorePoint/short/header";
       
@@ -4251,6 +4347,8 @@ package
       
       public static const TANK_PARAMS_DESC_STUNMAXDURATION:String = "#tooltips:tank_params/desc/stunMaxDuration";
       
+      public static const TANK_PARAMS_DESC_FLAMEMAXDISTANCE:String = "#tooltips:tank_params/desc/flameMaxDistance";
+      
       public static const TANK_PARAMS_DESC_CHARGETIME:String = "#tooltips:tank_params/desc/chargeTime";
       
       public static const VEHICLEPARAMS_TITLE_VALUETEMPLATE:String = "#tooltips:vehicleParams/title/valueTemplate";
@@ -4258,6 +4356,12 @@ package
       public static const VEHICLEPARAMS_POSSIBLEBONUSES_DESC:String = "#tooltips:vehicleParams/possibleBonuses/desc";
       
       public static const VEHICLEPARAMS_BONUSES_TITLE:String = "#tooltips:vehicleParams/bonuses/title";
+      
+      public static const VEHICLEPARAMS_BONUSES_TITLE_EQUIPMENT:String = "#tooltips:vehicleParams/bonuses/title/equipment";
+      
+      public static const VEHICLEPARAMS_BONUSES_TITLE_SKILLS:String = "#tooltips:vehicleParams/bonuses/title/skills";
+      
+      public static const VEHICLEPARAMS_BONUSES_TITLE_CREW_MASTERY:String = "#tooltips:vehicleParams/bonuses/title/crew_mastery";
       
       public static const VEHICLEPARAMS_PENALTIES_TITLE:String = "#tooltips:vehicleParams/penalties/title";
       
@@ -4563,50 +4667,6 @@ package
       
       public static const SHELL_BASIC_DESCRIPTION:String = "#tooltips:shell/basic/description";
       
-      public static const SKILLS_CAMOUFLAGE_HEADER:String = "#tooltips:skills/camouflage/header";
-      
-      public static const SKILLS_CAMOUFLAGE_DESCR:String = "#tooltips:skills/camouflage/descr";
-      
-      public static const SKILLS_BROTHERHOOD_HEADER:String = "#tooltips:skills/brotherhood/header";
-      
-      public static const SKILLS_BROTHERHOOD_DESCR:String = "#tooltips:skills/brotherhood/descr";
-      
-      public static const SKILLS_REPAIR_HEADER:String = "#tooltips:skills/repair/header";
-      
-      public static const SKILLS_REPAIR_DESCR:String = "#tooltips:skills/repair/descr";
-      
-      public static const SKILLS_DRIVER_VIRTUOSO_HEADER:String = "#tooltips:skills/driver_virtuoso/header";
-      
-      public static const SKILLS_DRIVER_VIRTUOSO_DESCR:String = "#tooltips:skills/driver_virtuoso/descr";
-      
-      public static const SKILLS_COMMANDER_EAGLEEYE_HEADER:String = "#tooltips:skills/commander_eagleEye/header";
-      
-      public static const SKILLS_COMMANDER_EAGLEEYE_DESCR:String = "#tooltips:skills/commander_eagleEye/descr";
-      
-      public static const SKILLS_DRIVER_BADROADSKING_HEADER:String = "#tooltips:skills/driver_badRoadsKing/header";
-      
-      public static const SKILLS_DRIVER_BADROADSKING_DESCR:String = "#tooltips:skills/driver_badRoadsKing/descr";
-      
-      public static const SKILLS_RADIOMAN_FINDER_HEADER:String = "#tooltips:skills/radioman_finder/header";
-      
-      public static const SKILLS_RADIOMAN_FINDER_DESCR:String = "#tooltips:skills/radioman_finder/descr";
-      
-      public static const SKILLS_RADIOMAN_INVENTOR_HEADER:String = "#tooltips:skills/radioman_inventor/header";
-      
-      public static const SKILLS_RADIOMAN_INVENTOR_DESCR:String = "#tooltips:skills/radioman_inventor/descr";
-      
-      public static const SKILLS_COMMANDERFEATURE:String = "#tooltips:skills/commanderFeature";
-      
-      public static const SKILLS_STATUS_MOMENTAL:String = "#tooltips:skills/status/momental";
-      
-      public static const SKILLS_STATUS_REQUIERSWHOLECREW:String = "#tooltips:skills/status/requiersWholeCrew";
-      
-      public static const SKILLS_STATUS_ISFORROLE:String = "#tooltips:skills/status/isForRole";
-      
-      public static const SKILLS_STATUS_AVGEXP:String = "#tooltips:skills/status/avgExp";
-      
-      public static const SKILLS_STATUS_FOR2RADIOMEN:String = "#tooltips:skills/status/for2radiomen";
-      
       public static const SKILLS_FORROLE_COMMANDER:String = "#tooltips:skills/forRole/commander";
       
       public static const SKILLS_FORROLE_DRIVER:String = "#tooltips:skills/forRole/driver";
@@ -4837,6 +4897,8 @@ package
       
       public static const ADVANCED_ARMOR_PIERCING_CR:String = "#tooltips:advanced/ARMOR_PIERCING_CR";
       
+      public static const ADVANCED_FLAME:String = "#tooltips:advanced/FLAME";
+      
       public static const ADVANCED_LARGEREPAIRKIT:String = "#tooltips:advanced/largeRepairkit";
       
       public static const ADVANCED_LARGEMEDKIT:String = "#tooltips:advanced/largeMedkit";
@@ -4903,60 +4965,6 @@ package
       
       public static const ADVANCED_GUNNER:String = "#tooltips:advanced/gunner";
       
-      public static const ADVANCED_REPAIR:String = "#tooltips:advanced/repair";
-      
-      public static const ADVANCED_FIREFIGHTING:String = "#tooltips:advanced/fireFighting";
-      
-      public static const ADVANCED_CAMOUFLAGE:String = "#tooltips:advanced/camouflage";
-      
-      public static const ADVANCED_NATURALCOVER:String = "#tooltips:advanced/naturalCover";
-      
-      public static const ADVANCED_BROTHERHOOD:String = "#tooltips:advanced/brotherhood";
-      
-      public static const ADVANCED_COMMANDER_TUTOR:String = "#tooltips:advanced/commander_tutor";
-      
-      public static const ADVANCED_COMMANDER_EAGLEEYE:String = "#tooltips:advanced/commander_eagleEye";
-      
-      public static const ADVANCED_COMMANDER_UNIVERSALIST:String = "#tooltips:advanced/commander_universalist";
-      
-      public static const ADVANCED_COMMANDER_EXPERT:String = "#tooltips:advanced/commander_expert";
-      
-      public static const ADVANCED_COMMANDER_SIXTHSENSE:String = "#tooltips:advanced/commander_sixthSense";
-      
-      public static const ADVANCED_COMMANDER_ENEMYSHOTPREDICTOR:String = "#tooltips:advanced/commander_enemyShotPredictor";
-      
-      public static const ADVANCED_GUNNER_RANCOROUS:String = "#tooltips:advanced/gunner_rancorous";
-      
-      public static const ADVANCED_GUNNER_GUNSMITH:String = "#tooltips:advanced/gunner_gunsmith";
-      
-      public static const ADVANCED_GUNNER_SNIPER:String = "#tooltips:advanced/gunner_sniper";
-      
-      public static const ADVANCED_GUNNER_SMOOTHTURRET:String = "#tooltips:advanced/gunner_smoothTurret";
-      
-      public static const ADVANCED_DRIVER_RAMMINGMASTER:String = "#tooltips:advanced/driver_rammingMaster";
-      
-      public static const ADVANCED_DRIVER_BADROADSKING:String = "#tooltips:advanced/driver_badRoadsKing";
-      
-      public static const ADVANCED_DRIVER_TIDYPERSON:String = "#tooltips:advanced/driver_tidyPerson";
-      
-      public static const ADVANCED_DRIVER_VIRTUOSO:String = "#tooltips:advanced/driver_virtuoso";
-      
-      public static const ADVANCED_DRIVER_SMOOTHDRIVING:String = "#tooltips:advanced/driver_smoothDriving";
-      
-      public static const ADVANCED_RADIOMAN_FINDER:String = "#tooltips:advanced/radioman_finder";
-      
-      public static const ADVANCED_RADIOMAN_LASTEFFORT:String = "#tooltips:advanced/radioman_lastEffort";
-      
-      public static const ADVANCED_RADIOMAN_INVENTOR:String = "#tooltips:advanced/radioman_inventor";
-      
-      public static const ADVANCED_RADIOMAN_RETRANSMITTER:String = "#tooltips:advanced/radioman_retransmitter";
-      
-      public static const ADVANCED_LOADER_INTUITION:String = "#tooltips:advanced/loader_intuition";
-      
-      public static const ADVANCED_LOADER_DESPERADO:String = "#tooltips:advanced/loader_desperado";
-      
-      public static const ADVANCED_LOADER_PEDANT:String = "#tooltips:advanced/loader_pedant";
-      
       public static const ADVANCED_ECONOMYBONDS:String = "#tooltips:advanced/economyBonds";
       
       public static const ADVANCED_ECONOMYTANKEXPERIENCE:String = "#tooltips:advanced/economyTankExperience";
@@ -5004,6 +5012,8 @@ package
       public static const ADVANCED_HEADER_SHELLTYPE_ARMOR_PIERCING:String = "#tooltips:advanced/header/shellType/ARMOR_PIERCING";
       
       public static const ADVANCED_HEADER_SHELLTYPE_ARMOR_PIERCING_CR:String = "#tooltips:advanced/header/shellType/ARMOR_PIERCING_CR";
+      
+      public static const ADVANCED_HEADER_SHELLTYPE_FLAME:String = "#tooltips:advanced/header/shellType/FLAME";
       
       public static const ADVANCED_DEMOUNTKIT_COMMON:String = "#tooltips:advanced/demountKit/common";
       
@@ -6433,9 +6443,11 @@ package
       
       public static const SENIORITYAWARDS_HANGARENTRYPOINT_TOOLTIP_BODY:String = "#tooltips:seniorityAwards/hangarEntryPoint/tooltip/body";
       
-      public static const SENIORITYAWARDS_ADDITIONAL_TOOLTIP_HEADER:String = "#tooltips:seniorityAwards/additional/tooltip/header";
+      public static const VEHICLE_ADDITIONAL_HEADER:String = "#tooltips:vehicle/additional/header";
       
-      public static const SENIORITYAWARDS_HANGARSLOT_TOOLTIP_HEADER:String = "#tooltips:seniorityAwards/hangarSlot/tooltip/header";
+      public static const VEHICLE_HANGARSLOT_HEADER:String = "#tooltips:vehicle/hangarSlot/header";
+      
+      public static const VEHICLE_ALLMODULES_HEADER:String = "#tooltips:vehicle/allModules/header";
       
       public static const VEHICLECRYSTAL_LIMITSTATUS_COMMON_DESCRIPTION:String = "#tooltips:vehicleCrystal/limitStatus/common/description";
       
@@ -6999,11 +7011,29 @@ package
       
       public static const IDLE_CREW_TOOLTIP_BOOSTLABEL:String = "#tooltips:idle_crew_tooltip/boostLabel";
       
-      public static const IDLE_CREW_TOOLTIP_PERHOUR:String = "#tooltips:idle_crew_tooltip/perHour";
+      public static const IDLE_CREW_TOOLTIP_BONUSLABEL:String = "#tooltips:idle_crew_tooltip/bonusLabel";
       
-      public static const IDLE_CREW_TOOLTIP_ACTIVATEBUTTON:String = "#tooltips:idle_crew_tooltip/activateButton";
+      public static const IDLE_CREW_TOOLTIP_EVERY5MINUTES:String = "#tooltips:idle_crew_tooltip/every5minutes";
       
-      public static const IDLE_CREW_TOOLTIP_ACTIVESTATUS:String = "#tooltips:idle_crew_tooltip/activeStatus";
+      public static const IDLE_CREW_TOOLTIP_STATUS_ACTIVE_LABEL:String = "#tooltips:idle_crew_tooltip/status/active/label";
+      
+      public static const IDLE_CREW_TOOLTIP_STATUS_ACTIVE_DESCRIPTION:String = "#tooltips:idle_crew_tooltip/status/active/description";
+      
+      public static const IDLE_CREW_TOOLTIP_STATUS_INACTIVE_LABEL:String = "#tooltips:idle_crew_tooltip/status/inactive/label";
+      
+      public static const IDLE_CREW_TOOLTIP_STATUS_INACTIVE_DESCRIPTION:String = "#tooltips:idle_crew_tooltip/status/inactive/description";
+      
+      public static const IDLE_CREW_TOOLTIP_STATUS_INACTIVE_ANOTHERVEHICLEISSELECTED:String = "#tooltips:idle_crew_tooltip/status/inactive/anotherVehicleIsSelected";
+      
+      public static const IDLE_CREW_TOOLTIP_STATUS_UNAVAILABLE_LABEL:String = "#tooltips:idle_crew_tooltip/status/unavailable/label";
+      
+      public static const IDLE_CREW_TOOLTIP_STATUS_UNAVAILABLE_DESCRIPTION_SUBSCRIPTIONISREQUIRED:String = "#tooltips:idle_crew_tooltip/status/unavailable/description/subscriptionIsRequired";
+      
+      public static const IDLE_CREW_TOOLTIP_STATUS_UNAVAILABLE_DESCRIPTION_INCOMPATIBLEVEHICLE:String = "#tooltips:idle_crew_tooltip/status/unavailable/description/incompatibleVehicle";
+      
+      public static const IDLE_CREW_TOOLTIP_ACTIVATEDWOTPLUSNEEDED:String = "#tooltips:idle_crew_tooltip/activatedWoTPlusNeeded";
+      
+      public static const IDLE_CREW_TOOLTIP_CURRENTLYACTIVEON:String = "#tooltips:idle_crew_tooltip/currentlyActiveOn";
       
       public static const IDLE_CREW_TOOLTIP_WARNINGHEADER:String = "#tooltips:idle_crew_tooltip/warningHeader";
       

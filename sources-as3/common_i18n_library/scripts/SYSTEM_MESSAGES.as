@@ -909,6 +909,8 @@ package
       
       public static const VEHICLE_SLOT_BUY_NOT_ENOUGH_GOLD:String = "#system_messages:vehicle_slot_buy/not_enough_gold";
       
+      public static const VEHICLE_SLOT_BUY_NOT_ENOUGH_CREDITS:String = "#system_messages:vehicle_slot_buy/not_enough_credits";
+      
       public static const VEHICLE_SLOT_BUY_WALLET_NOT_AVAILABLE:String = "#system_messages:vehicle_slot_buy/wallet_not_available";
       
       public static const VEHICLE_SLOT_BUY_SERVER_ERROR:String = "#system_messages:vehicle_slot_buy/server_error";
@@ -1262,6 +1264,8 @@ package
       public static const ARTEFACT_APPLY_MONEY_SUCCESS:String = "#system_messages:artefact_apply/money_success";
       
       public static const ARTEFACT_REMOVE_SUCCESS:String = "#system_messages:artefact_remove/success";
+      
+      public static const ARTEFACT_REMOVE_WOT_PLUS_SUCCESS:String = "#system_messages:artefact_remove/wot_plus_success";
       
       public static const ARTEFACT_REMOVE_MONEY_SUCCESS:String = "#system_messages:artefact_remove/money_success";
       
@@ -2331,6 +2335,12 @@ package
       
       public static const MAPS_BLACK_LIST_SELECT_SUCCESS:String = "#system_messages:maps_black_list/select/success";
       
+      public static const MAPS_BLACK_LIST_SELECT_SUCCESS_WOTPLUSENABLED_NOSUBSCRIPTIONS:String = "#system_messages:maps_black_list/select/success/wotPlusEnabled/noSubscriptions";
+      
+      public static const MAPS_BLACK_LIST_SELECT_SUCCESS_WOTPLUSENABLED_WOTPLUS:String = "#system_messages:maps_black_list/select/success/wotPlusEnabled/wotPlus";
+      
+      public static const MAPS_BLACK_LIST_SELECT_SUCCESS_WOTPLUSENABLED_PREMIUM:String = "#system_messages:maps_black_list/select/success/wotPlusEnabled/premium";
+      
       public static const MAPS_BLACK_LIST_SELECT_SERVER_ERROR_COOLDOWN:String = "#system_messages:maps_black_list/select/server_error/COOLDOWN";
       
       public static const MAPS_BLACK_LIST_SELECT_SERVER_ERROR:String = "#system_messages:maps_black_list/select/server_error";
@@ -2676,6 +2686,8 @@ package
       public static const UNIT_WARNINGS_EXPIRED_PLAY_LIMITS:String = "#system_messages:unit/warnings/EXPIRED_PLAY_LIMITS";
       
       public static const UNIT_WARNINGS_EXPIRED_PLAY_LIMITS_TO_COMMANDER:String = "#system_messages:unit/warnings/EXPIRED_PLAY_LIMITS_TO_COMMANDER";
+      
+      public static const WINBACK_TURNOFFBATTLESERROR:String = "#system_messages:winback/turnOffBattlesError";
        
       
       public function SYSTEM_MESSAGES()

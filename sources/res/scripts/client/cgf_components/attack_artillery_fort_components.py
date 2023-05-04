@@ -1,7 +1,7 @@
 import CGF, GenericComponents, Math
 from GenericComponents import EntityGOSync
 from cache import cached_property
-from cgf_script.component_meta_class import CGFComponent, ComponentProperty, CGFMetaTypes
+from cgf_script.component_meta_class import ComponentProperty, CGFMetaTypes, registerComponent
 from cgf_script.managers_registrator import autoregister, onAddedQuery, onProcessQuery, onRemovedQuery
 from constants import IS_CGF_DUMP, IS_CLIENT
 from helpers import dependency
@@ -15,9 +15,11 @@ else:
         pass
 
 
-class ColorComponent(CGFComponent):
+@registerComponent
+class ColorComponent(object):
     category = 'UI'
     editorTitle = 'Color Component'
+    domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     model = ComponentProperty(type=CGFMetaTypes.LINK, editorName='model', value=GenericComponents.DynamicModelComponent)
     colorParamName = ComponentProperty(type=CGFMetaTypes.STRING, editorName='colorParamName', value='g_color')
     color = ComponentProperty(type=CGFMetaTypes.VECTOR4, value=Math.Vector4(1, 0, 0, 0), editorName='color')
@@ -48,8 +50,10 @@ class ColorManager(CGF.ComponentManager):
             colorComponent.currentModel = colorComponent.model
 
 
-class ArtilleryFortColorComponent(CGFComponent):
+@registerComponent
+class ArtilleryFortColorComponent(object):
     category = 'Abilities'
+    domain = CGF.DomainOption.DomainClient | CGF.DomainOption.DomainEditor
     colorComponent = ComponentProperty(type=CGFMetaTypes.LINK, editorName='colorComponent', value=ColorComponent)
 
     def __init__(self):

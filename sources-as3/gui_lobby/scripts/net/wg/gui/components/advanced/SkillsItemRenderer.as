@@ -278,7 +278,7 @@ package net.wg.gui.components.advanced
          }
          else
          {
-            this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_SKILL,null,this._skillName,this._tankmanID,this._isFreeSkill);
+            this._tooltipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.CREW_PERK_GF,this._skillName,this._tankmanID);
          }
       }
       

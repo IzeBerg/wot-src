@@ -1,64 +1,45 @@
 package net.wg.gui.lobby.settings.feedback.ribbons
 {
-   import flash.text.TextField;
+   import flash.display.DisplayObject;
+   import flash.text.TextFormatAlign;
    import flash.utils.Dictionary;
+   import net.wg.data.VO.CountersVo;
    import net.wg.data.constants.Linkages;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLE_EFFICIENCY_TYPES;
+   import net.wg.gui.components.common.CounterBase;
    import net.wg.gui.components.controls.CheckBox;
-   import net.wg.gui.components.controls.InfoIcon;
+   import net.wg.gui.components.controls.ResizableScrollPane;
+   import net.wg.gui.components.controls.ScrollBar;
+   import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
    import net.wg.gui.lobby.settings.feedback.FeedbackBaseForm;
+   import net.wg.gui.lobby.settings.vo.SettingsControlProp;
+   import net.wg.infrastructure.interfaces.IDisplayObject;
+   import net.wg.infrastructure.managers.counter.CounterProps;
+   import net.wg.utils.ICounterProps;
+   import scaleform.clik.core.UIComponent;
    
    public class BattleRibbonsForm extends FeedbackBaseForm
    {
       
+      private static const SCROLL_STEP_FACTOR:int = 30;
+      
       private static const RIBBONS_COUNTER_CONTAINER_ID:String = "RIBBONS_COUNTER_CONTAINER_ID ";
+      
+      private static const COUNTER_CHECKBOX_OFFSET_X:Number = -27;
        
       
-      public var battleEventsShowInBattleCheckbox:CheckBox = null;
-      
-      public var battleEventsVisibleEventsLabel:TextField = null;
-      
-      public var negativeLabel:TextField = null;
-      
-      public var battleEventsEnemyHpDamageCheckbox:CheckBox = null;
-      
-      public var battleEventsEnemyBurningCheckbox:CheckBox = null;
-      
-      public var battleEventsEnemyRamAttackCheckbox:CheckBox = null;
-      
-      public var battleEventsBlockedDamageCheckbox:CheckBox = null;
-      
-      public var battleEventsEnemyDetectionDamageCheckbox:CheckBox = null;
-      
-      public var battleEventsEnemyTrackDamageCheckbox:CheckBox = null;
-      
-      public var battleEventsEnemyDetectionCheckbox:CheckBox = null;
-      
-      public var battleEventsEnemyKillCheckbox:CheckBox = null;
-      
-      public var battleEventsBaseCaptureDropCheckbox:CheckBox = null;
-      
-      public var battleEventsBaseCaptureCheckbox:CheckBox = null;
-      
-      public var battleEventsEnemyCriticalHitCheckbox:CheckBox = null;
-      
-      public var battleEventsEnemyWorldCollisionCheckbox:CheckBox = null;
-      
-      public var battleEventsReceivedDamageCheckbox:CheckBox = null;
-      
-      public var battleEventsReceivedCritsCheckbox:CheckBox = null;
-      
-      public var battleEventsEnemyAssistStunCheckbox:CheckBox = null;
-      
-      public var battleEventsEnemyStunCheckbox:CheckBox = null;
-      
-      public var battleEventsInformationLabel:TextField = null;
-      
-      public var battleEventsEventNameCheckbox:CheckBox = null;
-      
-      public var battleEventsVehicleInfoCheckbox:CheckBox = null;
-      
       public var ribbonsContainer:SettingsRibbonContainer = null;
+      
+      public var controlsContainer:ControlsContainer = null;
+      
+      public var controlsScrollBar:ScrollBar = null;
+      
+      public var controlsScrollPane:ResizableScrollPane = null;
+      
+      public var ribbonsScrollBar:ScrollBar = null;
+      
+      public var ribbonsScrollPane:ResizableScrollPane = null;
       
       private var _itemsMap:Dictionary = null;
       
@@ -68,22 +49,68 @@ package net.wg.gui.lobby.settings.feedback.ribbons
       {
          super();
          this._itemsMap = new Dictionary();
-         this._itemsMap[this.battleEventsReceivedDamageCheckbox.name] = BATTLE_EFFICIENCY_TYPES.RECEIVED_DAMAGE;
-         this._itemsMap[this.battleEventsReceivedCritsCheckbox.name] = BATTLE_EFFICIENCY_TYPES.RECEIVED_CRITS;
-         this._itemsMap[this.battleEventsBlockedDamageCheckbox.name] = BATTLE_EFFICIENCY_TYPES.ARMOR;
-         this._itemsMap[this.battleEventsEnemyBurningCheckbox.name] = BATTLE_EFFICIENCY_TYPES.BURN;
-         this._itemsMap[this.battleEventsEnemyRamAttackCheckbox.name] = BATTLE_EFFICIENCY_TYPES.RAM;
-         this._itemsMap[this.battleEventsEnemyHpDamageCheckbox.name] = BATTLE_EFFICIENCY_TYPES.DAMAGE;
-         this._itemsMap[this.battleEventsEnemyDetectionDamageCheckbox.name] = BATTLE_EFFICIENCY_TYPES.ASSIST_SPOT;
-         this._itemsMap[this.battleEventsEnemyTrackDamageCheckbox.name] = BATTLE_EFFICIENCY_TYPES.ASSIST_TRACK;
-         this._itemsMap[this.battleEventsEnemyDetectionCheckbox.name] = BATTLE_EFFICIENCY_TYPES.DETECTION;
-         this._itemsMap[this.battleEventsEnemyKillCheckbox.name] = BATTLE_EFFICIENCY_TYPES.DESTRUCTION;
-         this._itemsMap[this.battleEventsBaseCaptureDropCheckbox.name] = BATTLE_EFFICIENCY_TYPES.DEFENCE;
-         this._itemsMap[this.battleEventsBaseCaptureCheckbox.name] = BATTLE_EFFICIENCY_TYPES.CAPTURE;
-         this._itemsMap[this.battleEventsEnemyCriticalHitCheckbox.name] = BATTLE_EFFICIENCY_TYPES.CRITS;
-         this._itemsMap[this.battleEventsEnemyWorldCollisionCheckbox.name] = BATTLE_EFFICIENCY_TYPES.WORLD_COLLISION;
-         this._itemsMap[this.battleEventsEnemyAssistStunCheckbox.name] = BATTLE_EFFICIENCY_TYPES.ASSIST_STUN;
-         this._itemsMap[this.battleEventsEnemyStunCheckbox.name] = BATTLE_EFFICIENCY_TYPES.STUN;
+         this._itemsMap[this.getControlByName("battleEventsReceivedDamageCheckbox").name] = BATTLE_EFFICIENCY_TYPES.RECEIVED_DAMAGE;
+         this._itemsMap[this.getControlByName("battleEventsReceivedCritsCheckbox").name] = BATTLE_EFFICIENCY_TYPES.RECEIVED_CRITS;
+         this._itemsMap["battleEventsBlockedDamageCheckbox"] = BATTLE_EFFICIENCY_TYPES.ARMOR;
+         this._itemsMap["battleEventsEnemyBurningCheckbox"] = BATTLE_EFFICIENCY_TYPES.BURN;
+         this._itemsMap["battleEventsEnemyRamAttackCheckbox"] = BATTLE_EFFICIENCY_TYPES.RAM;
+         this._itemsMap["battleEventsEnemyHpDamageCheckbox"] = BATTLE_EFFICIENCY_TYPES.DAMAGE;
+         this._itemsMap["battleEventsEnemyDetectionDamageCheckbox"] = BATTLE_EFFICIENCY_TYPES.ASSIST_SPOT;
+         this._itemsMap["battleEventsEnemyTrackDamageCheckbox"] = BATTLE_EFFICIENCY_TYPES.ASSIST_TRACK;
+         this._itemsMap["battleEventsEnemyDetectionCheckbox"] = BATTLE_EFFICIENCY_TYPES.DETECTION;
+         this._itemsMap["battleEventsEnemyKillCheckbox"] = BATTLE_EFFICIENCY_TYPES.DESTRUCTION;
+         this._itemsMap["battleEventsBaseCaptureDropCheckbox"] = BATTLE_EFFICIENCY_TYPES.DEFENCE;
+         this._itemsMap["battleEventsBaseCaptureCheckbox"] = BATTLE_EFFICIENCY_TYPES.CAPTURE;
+         this._itemsMap["battleEventsEnemyCriticalHitCheckbox"] = BATTLE_EFFICIENCY_TYPES.CRITS;
+         this._itemsMap["battleEventsEnemyWorldCollisionCheckbox"] = BATTLE_EFFICIENCY_TYPES.WORLD_COLLISION;
+         this._itemsMap["battleEventsEnemyAssistStunCheckbox"] = BATTLE_EFFICIENCY_TYPES.ASSIST_STUN;
+         this._itemsMap["battleEventsEnemyStunCheckbox"] = BATTLE_EFFICIENCY_TYPES.STUN;
+      }
+      
+      override protected function getControlByName(param1:String) : IDisplayObject
+      {
+         return this.controlsContainer.getControlByName(param1) || super.getControlByName(param1);
+      }
+      
+      override protected function getControl(param1:String, param2:String) : DisplayObject
+      {
+         return this.getControlByName(param1 + param2) as DisplayObject;
+      }
+      
+      override public function updateNewCounters(param1:Vector.<CountersVo>) : void
+      {
+         var _loc6_:CountersVo = null;
+         super.updateNewCounters(param1);
+         var _loc2_:String = Values.EMPTY_STR;
+         var _loc3_:DisplayObject = null;
+         var _loc4_:ControlsGroup = null;
+         var _loc5_:SettingsControlProp = null;
+         for each(_loc6_ in param1)
+         {
+            _loc2_ = _loc6_.componentId;
+            _loc5_ = getControlPropsByKey(_loc2_);
+            if(_loc5_)
+            {
+               _loc3_ = this.getControl(_loc2_,_loc5_.type);
+               if(_loc3_ && _loc6_.count != CounterBase.DEFAULT_EMPTY_VALUE)
+               {
+                  _loc4_ = _loc3_.parent.parent as ControlsGroup;
+                  if(_loc4_)
+                  {
+                     _loc4_.isOpen = true;
+                  }
+               }
+            }
+         }
+      }
+      
+      override protected function getCounterProps(param1:String) : ICounterProps
+      {
+         if(param1 == SettingsConfigHelper.TYPE_CHECKBOX)
+         {
+            return new CounterProps(COUNTER_CHECKBOX_OFFSET_X,CounterProps.DEFAULT_OFFSET_Y,TextFormatAlign.LEFT,false,Linkages.COUNTER_LINE_UI);
+         }
+         return super.getCounterProps(param1);
       }
       
       override public function updateContent(param1:Object) : void
@@ -95,7 +122,7 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          this._countSelectedItems = 0;
          for(_loc4_ in this._itemsMap)
          {
-            _loc3_ = this[_loc4_];
+            _loc3_ = CheckBox(this.getControlByName(_loc4_));
             _loc2_ = _loc3_.selected;
             this.ribbonsContainer.updateItemVisible(this._itemsMap[_loc4_],_loc2_);
             if(_loc2_)
@@ -103,7 +130,8 @@ package net.wg.gui.lobby.settings.feedback.ribbons
                ++this._countSelectedItems;
             }
          }
-         this.ribbonsContainer.updateSettings(this.battleEventsEventNameCheckbox.selected,this.battleEventsVehicleInfoCheckbox.selected);
+         this.ribbonsContainer.redraw();
+         this.ribbonsContainer.updateSettings(this.controlsContainer.battleEventsEventNameCheckbox.selected,this.controlsContainer.battleEventsVehicleInfoCheckbox.selected);
          this.setEventsCheckboxesEnabled();
       }
       
@@ -120,17 +148,17 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          {
             if(this._countSelectedItems == 0)
             {
-               this.battleEventsShowInBattleCheckbox.selected = false;
+               this.controlsContainer.battleEventsShowInBattleCheckbox.selected = false;
             }
          }
-         else if(this._countSelectedItems == 0 && param1 == this.battleEventsShowInBattleCheckbox && param1.selected)
+         else if(this._countSelectedItems == 0 && param1 == this.controlsContainer.battleEventsShowInBattleCheckbox && param1.selected)
          {
             for(_loc2_ in this._itemsMap)
             {
-               this[_loc2_].selected = true;
+               CheckBox(this.getControlByName(_loc2_)).selected = true;
             }
-            this.battleEventsEventNameCheckbox.selected = true;
-            this.battleEventsVehicleInfoCheckbox.selected = true;
+            this.controlsContainer.battleEventsEventNameCheckbox.selected = true;
+            this.controlsContainer.battleEventsVehicleInfoCheckbox.selected = true;
          }
       }
       
@@ -138,95 +166,41 @@ package net.wg.gui.lobby.settings.feedback.ribbons
       {
          App.utils.data.cleanupDynamicObject(this._itemsMap);
          this._itemsMap = null;
-         this.battleEventsBaseCaptureCheckbox.dispose();
-         this.battleEventsBaseCaptureCheckbox = null;
-         this.battleEventsBaseCaptureDropCheckbox.dispose();
-         this.battleEventsBaseCaptureDropCheckbox = null;
-         this.battleEventsBlockedDamageCheckbox.dispose();
-         this.battleEventsBlockedDamageCheckbox = null;
-         this.battleEventsEnemyBurningCheckbox.dispose();
-         this.battleEventsEnemyBurningCheckbox = null;
-         this.battleEventsEnemyCriticalHitCheckbox.dispose();
-         this.battleEventsEnemyCriticalHitCheckbox = null;
-         this.battleEventsEnemyDetectionCheckbox.dispose();
-         this.battleEventsEnemyDetectionCheckbox = null;
-         this.battleEventsEnemyDetectionDamageCheckbox.dispose();
-         this.battleEventsEnemyDetectionDamageCheckbox = null;
-         this.battleEventsEnemyHpDamageCheckbox.dispose();
-         this.battleEventsEnemyHpDamageCheckbox = null;
-         this.battleEventsEnemyKillCheckbox.dispose();
-         this.battleEventsEnemyKillCheckbox = null;
-         this.battleEventsEnemyRamAttackCheckbox.dispose();
-         this.battleEventsEnemyRamAttackCheckbox = null;
-         this.battleEventsEnemyTrackDamageCheckbox.dispose();
-         this.battleEventsEnemyTrackDamageCheckbox = null;
-         this.battleEventsShowInBattleCheckbox.dispose();
-         this.battleEventsShowInBattleCheckbox = null;
-         this.battleEventsVisibleEventsLabel = null;
-         this.negativeLabel = null;
-         this.battleEventsInformationLabel = null;
-         this.battleEventsEventNameCheckbox.dispose();
-         this.battleEventsEventNameCheckbox = null;
-         this.battleEventsVehicleInfoCheckbox.dispose();
-         this.battleEventsVehicleInfoCheckbox = null;
          this.ribbonsContainer.dispose();
          this.ribbonsContainer = null;
-         this.battleEventsEnemyWorldCollisionCheckbox.dispose();
-         this.battleEventsEnemyWorldCollisionCheckbox = null;
-         this.battleEventsReceivedDamageCheckbox.dispose();
-         this.battleEventsReceivedDamageCheckbox = null;
-         this.battleEventsReceivedCritsCheckbox.dispose();
-         this.battleEventsReceivedCritsCheckbox = null;
-         this.battleEventsEnemyAssistStunCheckbox.dispose();
-         this.battleEventsEnemyAssistStunCheckbox = null;
-         this.battleEventsEnemyStunCheckbox.dispose();
-         this.battleEventsEnemyStunCheckbox = null;
+         this.controlsContainer.dispose();
+         this.controlsContainer = null;
          super.onDispose();
       }
       
       override protected function configUI() : void
       {
          super.configUI();
-         this.battleEventsShowInBattleCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_SHOWINBATTLE;
-         this.negativeLabel.text = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_LABEL_NEGATIVE;
-         this.battleEventsVisibleEventsLabel.text = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_LABEL_POSITIVE;
-         this.battleEventsBaseCaptureCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_BASECAPTURE;
-         this.battleEventsBaseCaptureDropCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_BASECAPTUREDROP;
-         this.battleEventsBlockedDamageCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_BLOCKEDDAMAGE;
-         this.battleEventsEnemyBurningCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ENEMYBURNING;
-         this.battleEventsEnemyCriticalHitCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ENEMYCRITICALHIT;
-         this.battleEventsEnemyDetectionCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ENEMYDETECTION;
-         this.battleEventsEnemyDetectionDamageCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ENEMYDETECTIONDAMAGE;
-         this.battleEventsEnemyHpDamageCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ENEMYHPDAMAGE;
-         this.battleEventsEnemyKillCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ENEMYKILL;
-         this.battleEventsEnemyRamAttackCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ENEMYRAMATTACK;
-         this.battleEventsEnemyTrackDamageCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ENEMYTRACKDAMAGE;
-         this.battleEventsInformationLabel.text = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_LABEL_INFORMATION;
-         this.battleEventsEventNameCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_EVENTNAME;
-         this.battleEventsVehicleInfoCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_VEHICLEINFO;
-         this.battleEventsEnemyWorldCollisionCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_WORLDCOLLISION;
-         this.battleEventsReceivedDamageCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_RECEIVEDDAMAGE;
-         this.battleEventsReceivedDamageCheckbox.toolTip = TOOLTIPS.SETTINGS_RIBBONS_RECEIVEDDAMAGE;
-         this.battleEventsReceivedDamageCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
-         this.battleEventsReceivedCritsCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_RECEIVEDCRITS;
-         this.battleEventsEnemyAssistStunCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ASSISTSTUN;
-         this.battleEventsEnemyStunCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_STUN;
-         this.battleEventsEnemyStunCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
-         this.battleEventsEnemyStunCheckbox.toolTip = TOOLTIPS.SETTINGS_RIBBONS_ENEMYSTUN;
+         this.controlsScrollPane.scrollBar = this.controlsScrollBar;
+         this.controlsScrollPane.scrollStepFactor = SCROLL_STEP_FACTOR;
+         this.controlsScrollPane.target = this.controlsContainer;
+         this.controlsScrollPane.scrollPosition = 0;
+         this.controlsScrollPane.setSize(200,492);
+         this.ribbonsScrollPane.scrollBar = this.ribbonsScrollBar;
+         this.ribbonsScrollPane.scrollStepFactor = SCROLL_STEP_FACTOR;
+         this.ribbonsContainer.x -= this.ribbonsScrollPane.x;
+         this.ribbonsContainer.y -= this.ribbonsScrollPane.y;
+         this.ribbonsScrollPane.target = this.ribbonsContainer;
+         this.ribbonsScrollPane.scrollPosition = this.ribbonsScrollPane.maxScroll;
+         this.ribbonsScrollPane.setSize(550,492);
       }
       
       private function setEventsCheckboxesEnabled() : void
       {
          var _loc2_:* = null;
-         var _loc1_:Boolean = this.battleEventsShowInBattleCheckbox.selected && this.battleEventsShowInBattleCheckbox.enabled;
+         var _loc1_:Boolean = this.controlsContainer.battleEventsShowInBattleCheckbox.selected && this.controlsContainer.battleEventsShowInBattleCheckbox.enabled;
          for(_loc2_ in this._itemsMap)
          {
-            setElementEnabled(this[_loc2_],_loc1_);
+            setElementEnabled(UIComponent(this.getControlByName(_loc2_)),_loc1_);
          }
-         setElementEnabled(this.battleEventsEventNameCheckbox,_loc1_);
-         setElementEnabled(this.battleEventsVehicleInfoCheckbox,_loc1_);
-         setElementEnabled(this.ribbonsContainer,_loc1_);
-         this.ribbonsContainer.visible = _loc1_;
+         setElementEnabled(this.controlsContainer.battleEventsEventNameCheckbox,_loc1_);
+         setElementEnabled(this.controlsContainer.battleEventsVehicleInfoCheckbox,_loc1_);
+         this.ribbonsScrollPane.alpha = this.ribbonsScrollBar.alpha = int(_loc1_);
       }
       
       override public function get formId() : String

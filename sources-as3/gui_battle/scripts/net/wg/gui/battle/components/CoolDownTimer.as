@@ -133,7 +133,8 @@ package net.wg.gui.battle.components
       
       private function run() : void
       {
-         if(this._currentFrame < 0 || this._currentFrame >= this._progressValues.length)
+         var _loc1_:Boolean = !!this._reversed ? Boolean(this._currentFrame < 0) : Boolean(this._currentFrame >= this._progressValues.length);
+         if(_loc1_)
          {
             this.end();
             this._coolDownHandler.onCoolDownComplete();

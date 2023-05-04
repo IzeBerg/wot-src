@@ -27,6 +27,8 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.vo
       
       public var userName:String = "";
       
+      public var isWotPlusEnabled:Boolean = false;
+      
       public function SellVehicleItemBaseVo(param1:Object)
       {
          super(param1);

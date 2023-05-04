@@ -147,6 +147,10 @@ package net.wg.data.constants.generated
       
       public static const GUN_PIERCING:String = "gun_piercing";
       
+      public static const GUNNER_FOCUS:String = "gunner_focus";
+      
+      public static const LOADER_INTUITION:String = "loader_intuition";
+      
       public static const RADAR_COOLDOWN:String = "radar_cooldown";
       
       public static const RADAR_DISTANCE:String = "radar_distance";
@@ -176,6 +180,12 @@ package net.wg.data.constants.generated
       public static const RIBBONS_BG_ORANGE_MEDIUM:String = "ribbonsBgOrangeMedium";
       
       public static const RIBBONS_BG_ORANGE_SMALL:String = "ribbonsBgOrangeSmall";
+      
+      public static const RIBBONS_BG_PERK_LARGE:String = "ribbonsBgPerkLarge";
+      
+      public static const RIBBONS_BG_PERK_MEDIUM:String = "ribbonsBgPerkMedium";
+      
+      public static const RIBBONS_BG_PERK_SMALL:String = "ribbonsBgPerkSmall";
       
       public static const RIBBONS_BG_PURPLE_LARGE:String = "ribbonsBgPurpleLarge";
       

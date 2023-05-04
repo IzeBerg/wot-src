@@ -55,6 +55,12 @@ package net.wg.data.constants.generated
       
       public static const BR_TANK_CAROUSEL_UI:String = "BRTanksCarouselUI";
       
+      public static const ARMORY_YARD_CAROUSEL_WIDGET:String = "armoryYardCarouselWidget";
+      
+      public static const ARMORY_YARD_ENTRY_POINT:String = "armoryYardEntryPoint";
+      
+      public static const ARMORY_YARD_VEHICLE_PREVIEW:String = "armoryYardVehiclePreview";
+      
       public static const VEH_PARAM_RENDERER_STATE_SIMPLE_TOP:String = "simpleTop";
       
       public static const VEH_PARAM_RENDERER_STATE_SIMPLE_BOTTOM:String = "simpleBottom";
@@ -83,6 +89,8 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_ROYALE_ENTRY_POINT:String = "battleRoyaleEntryPoint";
       
+      public static const BATTLE_ROYALE_HANGAR_WIDGET:String = "battleRoyaleHangarWidget";
+      
       public static const BATTLE_ROYALE_TOURNAMENT:String = "battleRoyaleTournament";
       
       public static const SECONDARY_ENTRY_POINT:String = "secondaryEntryPoint";
@@ -94,6 +102,8 @@ package net.wg.data.constants.generated
       public static const COLLECTIVE_GOAL_ENTRY_POINT:String = "collectiveGoalEntryPoint";
       
       public static const COMP7_WIDGET:String = "comp7Widget";
+      
+      public static const COMP7_MODIFIERS_PANEL:String = "comp7ModifiersPanel";
       
       public static const AMMUNITION_SETUP_VIEW_VEHICLE_PARAMS:String = "ammunitionSetupViewVehicleParams";
       

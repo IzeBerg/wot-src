@@ -259,8 +259,8 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
             if entryID:
                 yield (
                  entryID, name, active)
-        if _CTRL_MODE.STRATEGIC in modes or _CTRL_MODE.ARTY in modes:
-            if self._isInStrategicMode() or self._isInArtyMode():
+        if _CTRL_MODE.STRATEGIC in modes or _CTRL_MODE.ARTY in modes or _CTRL_MODE.FLAMETHROWER in modes:
+            if self._isInStrategicMode() or self._isInArtyMode() or self._isInFlamethrowerMode():
                 matrix = matrix_factory.makeStrategicCameraMatrix()
                 active = True
             else:
@@ -287,7 +287,7 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
 
     def __updateCameraEntries(self):
         activateID = self.__cameraIDs[_S_NAME.ARCADE_CAMERA]
-        if self._isInStrategicMode() or self._isInArtyMode():
+        if self._isInStrategicMode() or self._isInArtyMode() or self._isInFlamethrowerMode():
             activateID = self.__cameraIDs[_S_NAME.STRATEGIC_CAMERA]
             matrix = matrix_factory.makeStrategicCameraMatrix()
         else:
@@ -1052,6 +1052,10 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
             self.__showFeatures(isDown)
         if _FEATURES.isChanged(self.__flagHpMinimap):
             self.__showMinimapHP(isDown)
+        for entry in self._entries.itervalues():
+            if not entry.isActive():
+                continue
+            self._invoke(entry.getID(), 'showExtendedInfo', isDown)
 
 
 class EquipmentsPlugin(common.IntervalPlugin):
@@ -1332,19 +1336,6 @@ class MinimapPingPlugin(SimpleMinimapPingPlugin):
             self._processReplyCommand(replyState, commands, uniqueId, commandKey)
             return
 
-    def _getNearestLocationIDForPosition(self, position, pRange):
-
-        def getDistance(entity):
-            return Math.Vector3(entity.position).flatDistTo(Math.Vector3(position.x, position.y, position.z - pRange * 0.5))
-
-        if not g_locationPointManager.markedAreas:
-            return
-        else:
-            closestMarker = min(g_locationPointManager.markedAreas.itervalues(), key=getDistance)
-            if getDistance(closestMarker) < pRange:
-                return closestMarker.targetID
-            return
-
     def _specialMinimapCommand(self, x, y, mapScaleIndex):
         handler = avatar_getter.getInputHandler()
         if handler is None:
@@ -1379,6 +1370,22 @@ class MinimapPingPlugin(SimpleMinimapPingPlugin):
             commands.sendCommand(ONE_SHOT_COMMANDS_TO_REPLIES[commandKey])
             return
         commands.sendReplyChatCommand(uniqueId, commandKey)
+
+    @staticmethod
+    def _getNearestLocationIDForPosition(position, pRange):
+        repliableAreas = g_locationPointManager.getRepliablePoints(avatar_getter.getPlayerVehicleID())
+        if not repliableAreas:
+            return
+        else:
+            positionWithOffset = Math.Vector3(position.x, position.y, position.z - pRange * 0.5)
+
+            def getDistance(entity):
+                return Math.Vector3(entity.position).flatDistTo(positionWithOffset)
+
+            closestMarker = min(repliableAreas, key=getDistance)
+            if getDistance(closestMarker) < pRange:
+                return closestMarker.targetID
+            return
 
 
 class _ReplayRegistrator(object):

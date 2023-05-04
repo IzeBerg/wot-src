@@ -73,6 +73,10 @@ class HangarHeaderMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setCollectiveGoalEntryPoint(value)
 
+    def as_setArmoryYardEntryPointS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setArmoryYardEntryPoint(value)
+
     def as_createComp7S(self):
         if self._isDAAPIInited():
             return self.flashObject.as_createComp7()

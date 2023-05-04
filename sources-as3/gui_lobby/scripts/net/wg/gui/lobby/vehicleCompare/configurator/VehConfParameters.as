@@ -1,9 +1,9 @@
 package net.wg.gui.lobby.vehicleCompare.configurator
 {
    import net.wg.data.constants.generated.VEHICLE_COMPARE_CONSTANTS;
-   import net.wg.gui.lobby.hangar.VehicleParameters;
+   import net.wg.gui.lobby.hangar.VehicleParametersWithHighlight;
    
-   public class VehConfParameters extends VehicleParameters
+   public class VehConfParameters extends VehicleParametersWithHighlight
    {
       
       private static const BOTTOM_SHADOW_OFFSET:int = 8;
