@@ -1026,11 +1026,13 @@ def __makeFakeTankmanDescr(startRoleLevel, freeXpValue, typeID, skills=(), freeS
 
 
 def __averageLevelProcessor(crew, levels):
-    return sum([ lvl for lvl in levels if lvl != tankmen.NO_SKILL ] or [0]) / float(len(levels))
+    if levels:
+        return sum([ lvl for lvl in levels if lvl != tankmen.NO_SKILL ]) / float(len(levels))
+    return 0
 
 
 def __averageAllLevelProcessor(crew, levels):
-    return sum([ lvl for lvl in levels if lvl != tankmen.NO_SKILL ] or [0]) / float(len(crew))
+    return sum([ lvl for lvl in levels if lvl != tankmen.NO_SKILL ]) / float(len(crew) or len(levels) or 1)
 
 
 def __maxLevelProcessor(crew, levels):
