@@ -84,12 +84,12 @@ _CTRLS_DESC_MAP = {_CTRL_MODE.ARCADE: (
                        control_modes.DualGunControlMode, 'dualGunMode', _CTRL_TYPE.USUAL), 
    _CTRL_MODE.VEHICLES_SELECTION: (
                                  VehiclesSelectionControlMode, _CTRL_MODE.VEHICLES_SELECTION, _CTRL_TYPE.USUAL)}
-_OVERWRITE_CTRLS_DESC_MAP = {constants.ARENA_BONUS_TYPE.EPIC_BATTLE: {_CTRL_MODE.POSTMORTEM: (
+OVERWRITE_CTRLS_DESC_MAP = {constants.ARENA_BONUS_TYPE.EPIC_BATTLE: {_CTRL_MODE.POSTMORTEM: (
                                                                   epic_battle_death_mode.DeathTankFollowMode, 'postMortemMode', _CTRL_TYPE.USUAL)}, 
    constants.ARENA_BONUS_TYPE.EPIC_BATTLE_TRAINING: {_CTRL_MODE.POSTMORTEM: (
                                                                            epic_battle_death_mode.DeathTankFollowMode, 'postMortemMode', _CTRL_TYPE.USUAL)}}
 for royaleBonusCap in constants.ARENA_BONUS_TYPE.BATTLE_ROYALE_RANGE:
-    _OVERWRITE_CTRLS_DESC_MAP[royaleBonusCap] = {_CTRL_MODE.POSTMORTEM: (
+    OVERWRITE_CTRLS_DESC_MAP[royaleBonusCap] = {_CTRL_MODE.POSTMORTEM: (
                              steel_hunter_control_modes.SHPostMortemControlMode, 'postMortemMode', _CTRL_TYPE.USUAL)}
 
 _DYNAMIC_CAMERAS = (
@@ -873,7 +873,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
 
     def __setupCtrls(self, section):
         bonusType = BigWorld.player().arenaBonusType
-        bonusTypeCtrlsMap = _OVERWRITE_CTRLS_DESC_MAP.get(bonusType, {})
+        bonusTypeCtrlsMap = OVERWRITE_CTRLS_DESC_MAP.get(bonusType, {})
         for name, desc in _CTRLS_DESC_MAP.items():
             if name in bonusTypeCtrlsMap:
                 desc = bonusTypeCtrlsMap[name]
@@ -883,7 +883,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                     if name not in self.__ctrls:
                         self.__ctrls[name] = classType(section[modeName] if modeName else None, self)
                     else:
-                        _logger.warning('Control "%s" is already added to the list! Please check _OVERWRITE_CTRLS_DESC_MAP. %s is skipped!', name, classType)
+                        _logger.warning('Control "%s" is already added to the list! Please check OVERWRITE_CTRLS_DESC_MAP. %s is skipped!', name, classType)
             except Exception:
                 _logger.error('Error while setting ctrls %s %s %s', name, desc, constants.HAS_DEV_RESOURCES)
                 LOG_CURRENT_EXCEPTION()

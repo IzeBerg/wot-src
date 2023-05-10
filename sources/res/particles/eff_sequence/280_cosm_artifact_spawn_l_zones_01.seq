@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>6.200000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>fx_dust</name>
+		<type>particle</type>
+		<resource>particles/Environment/interior/280_cosm_abilities_spawn_dust_04.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -66.294518 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.337079</inTangent>
+				<outTangent>-0.337079</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.033334</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.337079</inTangent>
+				<outTangent>-0.337079</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>stone</name>
+		<type>particle</type>
+		<resource>particles/environment/interior/280_cosm_artifact_spawn_l_zone_01.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -66.657028 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.004811</inTangent>
+				<outTangent>-0.004811</outTangent>
+				<tangentMode>512</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.666667</startTime>
+				<value>0.991981</value>
+				<inTangent>-0.318995</inTangent>
+				<outTangent>-0.318995</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.233334</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.633179</inTangent>
+				<outTangent>-0.633179</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Column</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/cosm_event/Artifact_column_L_zone_01.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -66.340897 0.000000</value>
+				<inTangent>0.000000 7.437860 0.000000</inTangent>
+				<outTangent>0.000000 7.437860 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 23.999998 0.000000</inTangent>
+				<outTangent>0.000000 119.999992 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.000000</startTime>
+				<value>0.000000 720.000000 0.000000</value>
+				<inTangent>-0.000000 119.999992 -0.000000</inTangent>
+				<outTangent>-0.000000 23.999998 -0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>60.000000 40.000000 60.000000</value>
+				<inTangent>10.000000 150.000000 10.000000</inTangent>
+				<outTangent>0.000000 -1.475409 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>column</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.415686 0.878431 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 1.111111</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 1.111111</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.900000</startTime>
+				<value>0.415686 0.878431 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.498737</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.498737</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.300000</startTime>
+				<value>0.415686 0.878431 1.000000 0.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.413961</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.413961</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.000000</startTime>
+				<value>0.415686 0.878431 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.714285</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.714285</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Lightning</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 18.670670 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 63.333328 0.000000</inTangent>
+				<outTangent>0.000000 63.333328 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.000000</startTime>
+				<value>0.000000 380.000000 0.000000</value>
+				<inTangent>-0.000000 63.333328 -0.000000</inTangent>
+				<outTangent>-0.000000 63.333328 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.466667</startTime>
+				<duration>0.700000</duration>
+				<value>particles/eff_sequence/280_cosm_artifact_l_zones_lightning.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Lightning_copied</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 14.479813 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 63.333328 0.000000</inTangent>
+				<outTangent>0.000000 63.333328 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.000000</startTime>
+				<value>0.000000 380.000000 0.000000</value>
+				<inTangent>-0.000000 63.333328 -0.000000</inTangent>
+				<outTangent>-0.000000 63.333328 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>1.633333</startTime>
+				<duration>0.433333</duration>
+				<value>particles/eff_sequence/280_cosm_artifact_l_zones_lightning.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Lightning_copied_copied</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 63.333328 0.000000</inTangent>
+				<outTangent>0.000000 63.333328 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.000000</startTime>
+				<value>0.000000 380.000000 0.000000</value>
+				<inTangent>-0.000000 63.333328 -0.000000</inTangent>
+				<outTangent>-0.000000 63.333328 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>2.300000</startTime>
+				<duration>0.433333</duration>
+				<value>particles/eff_sequence/280_cosm_artifact_l_zones_lightning.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Lightning_copied_copied_copied</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 63.333328 0.000000</inTangent>
+				<outTangent>0.000000 63.333328 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.000000</startTime>
+				<value>0.000000 380.000000 0.000000</value>
+				<inTangent>-0.000000 63.333328 -0.000000</inTangent>
+				<outTangent>-0.000000 63.333328 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>5.133334</startTime>
+				<duration>0.433333</duration>
+				<value>particles/eff_sequence/280_cosm_artifact_l_zones_lightning.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Lightning_copied 0</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 20.803635 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 63.333328 0.000000</inTangent>
+				<outTangent>0.000000 63.333328 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.000000</startTime>
+				<value>0.000000 380.000000 0.000000</value>
+				<inTangent>-0.000000 63.333328 -0.000000</inTangent>
+				<outTangent>-0.000000 63.333328 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>3.466667</startTime>
+				<duration>0.700000</duration>
+				<value>particles/eff_sequence/280_cosm_artifact_l_zones_lightning.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>6.200000</duration>
+				<sequenceSound>ev_cosmic_artifact_spawn_zone_03</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

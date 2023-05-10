@@ -1,15 +1,13 @@
 from enum import Enum
-from helpers import dependency
-from skeletons.gui.app_loader import IAppLoader
-import WWISE
+import cosmic_sound, WWISE
 
 class _EventLootBoxesSounds(Enum):
-    LOOT_BOX_ENTER = 'ev_hangar_lootbox_enter'
-    LOOT_BOX_EXIT = 'ev_hangar_lootbox_exit'
-    LOOT_BOX_HIGHLIGHT = 'ev_hangar_lootbox_highlight'
-    STATE_GROUP = 'STATE_hangar_place'
-    STATE_LOOTBOXES = 'STATE_hangar_place_lootboxes'
-    STATE_GARAGE = 'STATE_hangar_place_garage'
+    LOOT_BOX_ENTER = 'ev_cosmic_lootbox_award'
+    LOOT_BOX_EXIT = 'ev_cosmic_lootbox_award_stop'
+    LOOT_BOX_HIGHLIGHT = 'ev_cosmic_lootbox_highlight'
+    STATE_GROUP = 'STATE_overlay_hangar_general'
+    STATE_LOOTBOXES = 'STATE_overlay_hangar_general_on'
+    STATE_GARAGE = 'STATE_overlay_hangar_general_off'
 
 
 def enterLootBoxSoundState():
@@ -31,9 +29,6 @@ def playStorageClosed():
     _playSound((_EventLootBoxesSounds.LOOT_BOX_EXIT.value,))
 
 
-@dependency.replace_none_kwargs(appLoader=IAppLoader)
-def _playSound(names, appLoader=None):
-    app = appLoader.getApp()
-    if app and app.soundManager:
-        for name in names:
-            app.soundManager.playEffectSound(name)
+def _playSound(names):
+    for name in names:
+        cosmic_sound.play2DSoundEvent(name)

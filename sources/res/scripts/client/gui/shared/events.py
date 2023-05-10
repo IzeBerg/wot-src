@@ -1,5 +1,6 @@
-import logging, typing
+import logging
 from collections import namedtuple
+import typing
 from gui.shared.event_bus import SharedEvent
 from shared_utils import CONST_CONTAINER
 if typing.TYPE_CHECKING:
@@ -811,3 +812,7 @@ class RoleSkillEvent(HasCtxEvent):
 class CollectionsEvent(HasCtxEvent):
     NEW_ITEM_SHOWN = 'newItemShown'
     BATTLE_PASS_ENTRY_POINT_VISITED = 'battlePassEntryPointVisited'
+
+
+class CosmicEvent(SharedEvent):
+    OPEN_COSMIC = 'openCosmic'
