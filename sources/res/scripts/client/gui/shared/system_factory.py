@@ -34,6 +34,8 @@ BATTLE_RESULTS_COMPOSER = 32
 SEASON_PROVIDER_HANDLER = 33
 MESSENGER_SERVER_FORMATTERS = 34
 CAROUSEL_EVENTS_ENTRIES = 35
+DYN_OBJ_CACHE = 36
+SHARED_REPO = 37
 
 class _CollectEventsManager(object):
 
@@ -143,6 +145,20 @@ def registerBattleControllerRepo(guiType, repoCls):
 
 def collectBattleControllerRepo(guiType, setup):
     ctx = __collectEM.handleEvent((BATTLE_REPO, guiType), ctx={'setup': setup})
+    return (ctx.get('repo'), 'repo' in ctx)
+
+
+def registerSharedControllerRepo(guiType, repoCls):
+
+    def onCollect(ctx):
+        ctx['repo'] = repoCls.create(ctx['setup']) if repoCls else None
+        return
+
+    __collectEM.addListener((SHARED_REPO, guiType), onCollect)
+
+
+def collectSharedControllerRepo(guiType, setup):
+    ctx = __collectEM.handleEvent((SHARED_REPO, guiType), ctx={'setup': setup})
     return (ctx.get('repo'), 'repo' in ctx)
 
 
@@ -556,3 +572,15 @@ def registerSeasonProviderHandler(seasonType, seasonControllerHandler):
 
 def collectSeasonProviderHandler(seasonType):
     return __collectEM.handleEvent((SEASON_PROVIDER_HANDLER, seasonType), ctx={}).get(seasonType, None)
+
+
+def registerDynObjCache(queueType, dynCache):
+
+    def onCollect(ctx):
+        ctx['dynCache'] = dynCache
+
+    __collectEM.addListener((DYN_OBJ_CACHE, queueType), onCollect)
+
+
+def collectDynObjCache(queueType):
+    return __collectEM.handleEvent((DYN_OBJ_CACHE, queueType), ctx={}).get('dynCache')

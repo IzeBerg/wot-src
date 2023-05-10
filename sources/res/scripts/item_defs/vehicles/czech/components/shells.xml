@@ -1154,22 +1154,75 @@
 			</damage>
 		</armorSpalls>
 	</_130mm_Narazovy_vz_55>
+	<_150mm_PlasmaBall>
+		<id>63</id>
+		<userString>#czech_vehicles:_150mm_PlasmaBall</userString>
+		<icon>he</icon>
+		<price>0</price>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<caliber>380</caliber>
+		<isTracer>true</isTracer>
+		<effects>Gravizapa_Default</effects>
+		<damage>
+			<armor>1</armor>
+			<devices>1</devices>
+		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.0
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
+		<explosionRadius>20</explosionRadius>
+		<explosionDamageFactor>
+			0.0
+			<!--BW_String-->
+		</explosionDamageFactor>
+	</_150mm_PlasmaBall>
+	<_150mm_Railgun>
+		<id>64</id>
+		<userString>#czech_vehicles:_150mm_Railgun</userString>
+		<icon>he</icon>
+		<price>0</price>
+		<notInShop>true</notInShop>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<caliber>380</caliber>
+		<isTracer>true</isTracer>
+		<effects>Gravizapa_Railgun</effects>
+		<damage>
+			<armor>1</armor>
+			<devices>1</devices>
+		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.0
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
+		<explosionRadius>20</explosionRadius>
+		<explosionDamageFactor>
+			0.0
+			<!--BW_String-->
+		</explosionDamageFactor>
+	</_150mm_Railgun>
 	<Development_Shell>
 		<id>65000</id>
 		<userString>Development_Shell</userString>
-		<icon>ap</icon>
+		<icon>he</icon>
 		<price>1</price>
 		<notInShop>true</notInShop>
-		<kind>ARMOR_PIERCING</kind>
-		<caliber>
-			12.7
-			<!--BW_String-->
-		</caliber>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<caliber>380</caliber>
 		<isTracer>true</isTracer>
 		<effects>autoArmorPiercing</effects>
 		<damage>
-			<armor>8</armor>
-			<devices>17</devices>
+			<armor>1</armor>
+			<devices>1</devices>
 		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.0
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
+		<explosionRadius>20</explosionRadius>
+		<explosionDamageFactor>
+			0.0
+			<!--BW_String-->
+		</explosionDamageFactor>
 	</Development_Shell>
 </root>

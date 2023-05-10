@@ -50,8 +50,7 @@ package net.wg.gui.lobby.fortifications.cmp.battleRoom
       
       override protected function applyDataToButton(param1:Button, param2:ButtonFiltersItemVO) : void
       {
-         var _loc3_:BlackButton = null;
-         _loc3_ = BlackButton(param1);
+         var _loc3_:BlackButton = BlackButton(param1);
          _loc3_.toggleEnable = true;
          _loc3_.toggle = false;
          _loc3_.iconSource = param2.icon;

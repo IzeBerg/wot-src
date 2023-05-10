@@ -190,6 +190,7 @@ class StorageCategoryCustomizationView(StorageCategoryCustomizationViewMeta):
         criteria |= ~REQ_CRITERIA.VEHICLE.IS_OUTFIT_LOCKED
         criteria |= ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
         criteria |= ~REQ_CRITERIA.VEHICLE.MAPS_TRAINING
+        criteria |= ~REQ_CRITERIA.VEHICLE.HIDDEN_IN_HANGAR
         return criteria
 
     def _getVoList(self):

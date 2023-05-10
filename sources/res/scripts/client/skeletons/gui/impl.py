@@ -5,6 +5,7 @@ if typing.TYPE_CHECKING:
     from frameworks.wulf import ViewModel
     from frameworks.wulf.tutorial import Tutorial
     from frameworks.wulf.ui_logger import UILogger
+    from frameworks.wulf.markers_manager import MarkersManager
 
 class IGuiLoader(object):
     __slots__ = ()
@@ -23,6 +24,10 @@ class IGuiLoader(object):
 
     @property
     def tutorial(self):
+        raise NotImplementedError
+
+    @property
+    def markers(self):
         raise NotImplementedError
 
     @property
