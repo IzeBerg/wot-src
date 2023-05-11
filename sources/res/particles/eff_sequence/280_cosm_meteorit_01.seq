@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>20.033335</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>ctrl_meteorite_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 -598.006653</inTangent>
+				<outTangent>0.000000 0.000000 -702.341125</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>0.000000 0.000000 -7000.000000</value>
+				<inTangent>-0.000000 -0.000000 -702.341125</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>20.033335</startTime>
+				<value>0.000000 0.000000 -7000.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>1</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>10.000000</duration>
+				<value>particles/eff_sequence/280_cosm_meteorits_group.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Particle 0</name>
+		<type>particle</type>
+		<resource>particles/Environment/interior/280_cosm_comet_trail_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>6.366668</duration>
+				<value>ctrl_meteorite_01|HP_module_0</value>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.000000</value>
+				<inTangent>15.000038</inTangent>
+				<outTangent>0.769231</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.633333</startTime>
+				<value>2.000000</value>
+				<inTangent>0.769231</inTangent>
+				<outTangent>-0.441176</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.900000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.441176</inTangent>
+				<outTangent>-1.764705</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.466667</startTime>
+				<value>0.000000</value>
+				<inTangent>-1.764705</inTangent>
+				<outTangent>-1.764706</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Particle 0_copied</name>
+		<type>particle</type>
+		<resource>particles/Environment/interior/280_cosm_comet_explosion_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>9.900001</duration>
+				<value>ctrl_meteorite_01|HP_module_0</value>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.000000</value>
+				<inTangent>15.000038</inTangent>
+				<outTangent>2.068965</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.966667</startTime>
+				<value>1.000000</value>
+				<inTangent>2.068965</inTangent>
+				<outTangent>-0.265487</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.566668</startTime>
+				<value>0.000000</value>
+				<inTangent>-1.764708</inTangent>
+				<outTangent>-1.764706</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

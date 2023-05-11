@@ -143,6 +143,8 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_NOTIFIER:String = "battleNotifier";
       
+      public static const COSMIC_HUD:String = "cosmicHud";
+      
       public static const CORRODING_SHOT_INDICATOR:String = "corrodingShotIndicator";
       
       public static const PERSONAL_RESERVES_TAB:String = "personalReservesTab";

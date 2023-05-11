@@ -6225,6 +6225,10 @@ package
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_HOB_DESC:String = "#tooltips:notrecruitedtankman/commander_hob/desc";
       
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_LABEL:String = "#tooltips:notrecruitedtankman/commander_tolmeron/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_DESC:String = "#tooltips:notrecruitedtankman/commander_tolmeron/desc";
+      
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/yha_commander/label";
       
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/yha_commander/desc";

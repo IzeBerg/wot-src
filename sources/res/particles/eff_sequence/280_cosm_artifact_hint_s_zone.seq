@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>10.000001</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>ctrl</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 359.999969 0.000000</inTangent>
+				<outTangent>0.000000 359.999969 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>0.000000 3600.000000 0.000000</value>
+				<inTangent>-0.000000 359.999969 -0.000000</inTangent>
+				<outTangent>-0.000000 359.999969 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Artifact</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/cosm_event/light_column_02.model</resource>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>3.000000 10.000000 3.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Light 0</name>
+		<type>light</type>
+		<lightType>omnilight</lightType>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.075462 0.868392 -0.030655</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>multiplier</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>795.774658</value>
+				<inTangent>-275.460480</inTangent>
+				<outTangent>-275.460480</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.600000</startTime>
+				<value>79.577469</value>
+				<inTangent>11.477509</inTangent>
+				<outTangent>11.477509</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.000000</startTime>
+				<value>795.774658</value>
+				<inTangent>9.688797</inTangent>
+				<outTangent>9.688797</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.566667</startTime>
+				<value>79.577469</value>
+				<inTangent>7.644836</inTangent>
+				<outTangent>7.644836</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>795.774658</value>
+				<inTangent>294.327545</inTangent>
+				<outTangent>294.327545</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>lodShift</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>300.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Particle 0</name>
+		<type>particle</type>
+		<resource>particles/environment/interior/280_cosm_artifact_hint_s_zone_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>10.000001</duration>
+				<value>ctrl|HP_module_0</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>9.966667</duration>
+				<sequenceSound>ev_cosmic_zone_hint</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

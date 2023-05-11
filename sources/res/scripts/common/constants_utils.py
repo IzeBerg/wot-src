@@ -1,6 +1,5 @@
 import types
 from UnitBase import CMD_NAMES, ROSTER_TYPE, PREBATTLE_TYPE_BY_UNIT_MGR_ROSTER, PREBATTLE_TYPE_BY_UNIT_MGR_ROSTER_EXT, ROSTER_TYPE_TO_CLASS, UNIT_MGR_FLAGS_TO_PREBATTLE_TYPE, UNIT_MGR_FLAGS_TO_UNIT_MGR_ENTITY_NAME, UNIT_MGR_FLAGS_TO_INVITATION_TYPE, UNIT_MGR_FLAGS_TO_QUEUE_TYPE, QUEUE_TYPE_BY_UNIT_MGR_ROSTER, UNIT_ERROR, VEHICLE_TAGS_GROUP_BY_UNIT_MGR_FLAGS
-from chat_shared import SYS_MESSAGE_TYPE
 from constants import ARENA_GUI_TYPE, ARENA_GUI_TYPE_LABEL, ARENA_BONUS_TYPE, ARENA_BONUS_TYPE_NAMES, ARENA_BONUS_TYPE_IDS, ARENA_BONUS_MASK, QUEUE_TYPE, QUEUE_TYPE_NAMES, PREBATTLE_TYPE, PREBATTLE_TYPE_NAMES, INVITATION_TYPE, BATTLE_MODE_VEHICLE_TAGS, SEASON_TYPE_BY_NAME, SEASON_NAME_BY_TYPE, QUEUE_TYPE_IDS
 from BattleFeedbackCommon import BATTLE_EVENT_TYPE
 from debug_utils import LOG_DEBUG
@@ -302,6 +301,10 @@ class AbstractBattleMode(object):
         return
 
     @property
+    def _client_sharedControllersRepository(self):
+        return
+
+    @property
     def _client_providerBattleQueue(self):
         return
 
@@ -453,6 +456,10 @@ class AbstractBattleMode(object):
         from gui.shared.system_factory import registerBattleControllerRepo
         registerBattleControllerRepo(self._ARENA_GUI_TYPE, self._client_battleControllersRepository)
 
+    def registerSharedControllersRepository(self):
+        from gui.shared.system_factory import registerSharedControllerRepo
+        registerSharedControllerRepo(self._ARENA_GUI_TYPE, self._client_sharedControllersRepository)
+
     def registerBattleResultsConfig(self):
         config = self._BATTLE_RESULTS_CONFIG
         if config is None:
@@ -504,10 +511,12 @@ class AbstractBattleMode(object):
             addBattleRequiredLibraries(self._client_battleRequiredLibraries, self._ARENA_GUI_TYPE, self._personality)
 
     def registerSystemMessagesTypes(self):
+        from chat_shared import SYS_MESSAGE_TYPE
         SYS_MESSAGE_TYPE.inject(self._SM_TYPES)
 
     def registerBattleResultSysMsgType(self):
         from battle_results import ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE
+        from chat_shared import SYS_MESSAGE_TYPE
         if self._ARENA_BONUS_TYPE in ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE:
             raise SoftException(('ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE already has ARENA_BONUS_TYPE:{t}. Personality: {p}').format(t=self._ARENA_BONUS_TYPE, p=self._personality))
         try:

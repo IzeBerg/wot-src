@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>cosmic_event_capture_zone_big</name>
+			<UUID>7850bd06-60dd-4cc7-8e49-506949546ba6</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name/>
+			<UUID>b2f1f0de-50b4-4826-a345-7ce88fc0f5db</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Hierarchy</type>
+			<version>2</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>7850bd06-60dd-4cc7-8e49-506949546ba6</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Animator</type>
+			<version>2</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Auto Start</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Layers</name>
+						<collection>
+							<item>
+								<object>
+									<property>
+										<name>Path</name>
+										<isAsset>true</isAsset>
+										<value>particles/eff_sequence/280_cosm_big_zone_animation.seq</value>
+									</property>
+									<property>
+										<name>Properties</name>
+										<object>
+											<property>
+												<name>delay</name>
+												<value>0</value>
+											</property>
+											<property>
+												<name>speed</name>
+												<value>1</value>
+											</property>
+											<property>
+												<name>loop</name>
+												<value>0</value>
+											</property>
+											<property>
+												<name>loopCount</name>
+												<value>-1</value>
+											</property>
+										</object>
+									</property>
+									<property>
+										<name>Clip</name>
+										<value>&lt;Default Clip&gt;</value>
+									</property>
+									<property>
+										<name>LayerName</name>
+										<value>0</value>
+									</property>
+									<property>
+										<name>Weight</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>LOD Scale</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Auto Start</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Graphics preset</name>
+										<value>2</value>
+									</property>
+								</object>
+							</item>
+						</collection>
+					</property>
+					<property>
+						<name>Path</name>
+						<isAsset>true</isAsset>
+						<value>particles/eff_sequence/280_cosm_big_zone_animation.seq</value>
+					</property>
+					<property>
+						<name>Delay</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Speed</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Loop</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Loop Count</name>
+						<value>-1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>TerrainSelectedAreaComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Visual</name>
+						<isAsset>true</isAsset>
+						<value>content/Interface/CheckPoint/CheckPoint_yellow_05.visual</value>
+					</property>
+					<property>
+						<name>Match Terrain</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Color</name>
+						<value>
+							0.909804 0.607843 0.235294 1
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Size</name>
+						<value>40 40</value>
+					</property>
+					<property>
+						<name>OverTerrainHeight</name>
+						<value>
+							0.2
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Enable Accurate Collision</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Enable Water Collision</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Enable Y Cut Off</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>CutOff Distance</name>
+						<value>-1</value>
+					</property>
+					<property>
+						<name>CutOff Angle</name>
+						<value>90</value>
+					</property>
+					<property>
+						<name>Min Height</name>
+						<value>-10000</value>
+					</property>
+					<property>
+						<name>Max Height</name>
+						<value>50</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

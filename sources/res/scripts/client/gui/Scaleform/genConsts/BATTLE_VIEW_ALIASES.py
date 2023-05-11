@@ -71,6 +71,7 @@ class BATTLE_VIEW_ALIASES(object):
     EVENT_OBJECTIVES = 'eventObjectives'
     CALLOUT_PANEL = 'calloutPanel'
     BATTLE_NOTIFIER = 'battleNotifier'
+    COSMIC_HUD = 'cosmicHud'
     CORRODING_SHOT_INDICATOR = 'corrodingShotIndicator'
     PERSONAL_RESERVES_TAB = 'personalReservesTab'
     EVENT_POSTMORTEM_PANEL = 'eventPostmortemPanel'

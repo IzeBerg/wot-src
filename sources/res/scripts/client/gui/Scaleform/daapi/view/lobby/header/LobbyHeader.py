@@ -1099,9 +1099,11 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         brAvailable = isBrCycle and self.__battleRoyaleController.isEnabled()
         isEpicBattleAvailabe = self.epicController.isEnabled() and self.epicController.isCurrentCycleActive()
         isEventBattlesAvailable = self.__eventBattlesController.isEnabled()
+        from cosmic_event.skeletons.battle_controller import ICosmicEventBattleController
+        isCosmicEvtAvailable = dependency.instance(ICosmicEventBattleController).isEnabled
         mapboxAvailable = self.__mapboxCtrl.isActive() and self.__mapboxCtrl.isInPrimeTime()
         winbackAvailable = self.__winbackController.isModeAvailable()
-        return not self.bootcampController.isInBootcamp() and (self.rankedController.isAvailable() or self.__funRandomCtrl.subModesInfo.isAvailable() or isEpicBattleAvailabe or brAvailable or mapboxAvailable or isEventBattlesAvailable or winbackAvailable)
+        return not self.bootcampController.isInBootcamp() and (self.rankedController.isAvailable() or self.__funRandomCtrl.subModesInfo.isAvailable() or isEpicBattleAvailabe or brAvailable or mapboxAvailable or isEventBattlesAvailable or winbackAvailable or isCosmicEvtAvailable)
 
     def _updatePrebattleControls(self, *_):
         if self._isLobbyHeaderControlsDisabled:
@@ -1502,7 +1504,8 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
          'epic_config' in diff,
          battleRoyaleStateChanged,
          mapsTrainingStateChanged,
-         eventBattlesStateChanged))
+         eventBattlesStateChanged,
+         'cosmic_event_battles_config' in diff))
         if bootcampStateChanged:
             self._rebootBattleSelector()
         if updateHangarMenuData:

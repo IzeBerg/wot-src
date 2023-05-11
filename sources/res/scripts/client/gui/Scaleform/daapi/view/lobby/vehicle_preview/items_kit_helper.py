@@ -104,6 +104,7 @@ _TOOLTIP_TYPE = {ItemPackType.ITEM_DEVICE: TOOLTIPS_CONSTANTS.SHOP_MODULE,
    ItemPackType.PLAYER_BADGE: TOOLTIPS_CONSTANTS.SHOP_BADGE, 
    ItemPackType.TRADE_IN_INFO: TOOLTIPS_CONSTANTS.TRADE_IN_INFO, 
    ItemPackType.CREW_BUNDLE: TOOLTIPS_CONSTANTS.SHOP_CREW_BUNDLE, 
+   ItemPackType.ITEM_CREW_SKIN: TOOLTIPS_CONSTANTS.CREW_SKIN, 
    ItemPackType.CREW_BOOK: TOOLTIPS_CONSTANTS.CREW_BOOK, 
    ItemPackType.CREW_BOOK_BROCHURE: TOOLTIPS_CONSTANTS.CREW_BOOK, 
    ItemPackType.CREW_BOOK_GUIDE: TOOLTIPS_CONSTANTS.CREW_BOOK, 
@@ -307,6 +308,8 @@ def getItemTitle(rawItem, item, forBox=False, additionalInfo=False):
         title = backport.text(R.strings.tooltips.quests.bonuses.token.battle_bonus_x5.header())
     elif rawItem.type == ItemPackType.CREW_BOOK_RANDOM:
         title = backport.text(R.strings.tooltips.awardItem.randomBooklet.header())
+    elif rawItem.type == ItemPackType.CUSTOM_FREE_XP:
+        title = backport.text(R.strings.tooltips.awardItem.freeXP.header())
     else:
         title = rawItem.title or ''
     return title
@@ -347,6 +350,8 @@ def getItemDescription(rawItem, item):
         description = backport.text(R.strings.tooltips.quests.bonuses.token.battle_bonus_x5.body())
     elif rawItem.type == ItemPackType.CREW_BOOK_RANDOM:
         description = backport.text(R.strings.tooltips.awardItem.randomBooklet.body())
+    elif rawItem.type == ItemPackType.CUSTOM_FREE_XP:
+        description = backport.text(R.strings.tooltips.awardItem.freeXP.body())
     else:
         description = rawItem.description or ''
     return description

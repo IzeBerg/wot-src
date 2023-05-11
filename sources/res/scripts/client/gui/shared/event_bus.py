@@ -20,6 +20,7 @@ class EVENT_BUS_SCOPE(object):
 class EventPriority(object):
     HIGH = 0
     LOW = 1
+    VERY_LOW = 2
     DEFAULT = LOW
 
 
