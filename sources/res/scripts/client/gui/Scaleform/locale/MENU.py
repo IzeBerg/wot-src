@@ -1792,6 +1792,7 @@ class MENU(object):
     BONUSTYPE_38 = '#menu:bonusType/38'
     BONUSTYPE_42 = '#menu:bonusType/42'
     BONUSTYPE_43 = '#menu:bonusType/43'
+    BONUSTYPE_44 = '#menu:bonusType/44'
     FORTIFICATIONCTX_ASSIGNEDPLAYERS = '#menu:fortificationCtx/assignedPlayers'
     FORTIFICATIONCTX_PREPAREORDER = '#menu:fortificationCtx/prepareOrder'
     FORTIFICATIONCTX_CLANDESCRIPTION_OPENCLANCARD = '#menu:fortificationCtx/clanDescription/openClanCard'

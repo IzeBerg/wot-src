@@ -3565,6 +3565,8 @@ package
       
       public static const BONUSTYPE_43:String = "#menu:bonusType/43";
       
+      public static const BONUSTYPE_44:String = "#menu:bonusType/44";
+      
       public static const FORTIFICATIONCTX_ASSIGNEDPLAYERS:String = "#menu:fortificationCtx/assignedPlayers";
       
       public static const FORTIFICATIONCTX_PREPAREORDER:String = "#menu:fortificationCtx/prepareOrder";

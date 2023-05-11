@@ -2281,6 +2281,7 @@ class RESPAWN_TYPES:
     SHARED = 2
     LIMITED = 3
     EPIC = 4
+    SAFE = 5
 
 
 class VISIBILITY:

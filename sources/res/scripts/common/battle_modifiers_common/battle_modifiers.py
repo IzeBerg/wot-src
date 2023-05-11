@@ -70,6 +70,7 @@ class BattleParams(object):
     ARMOR_SPALLS_CONE_ANGLE = 60
     ARMOR_SPALLS_DAMAGE_ABSORPTION = 61
     MODE_CREDITS_FACTOR = 62
+    DIVING_DESTRUCTION_DELAY = 63
     ALL = None
     MAX = None
 

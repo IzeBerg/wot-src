@@ -1221,6 +1221,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.eventEntryPoint.IEventEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.data.EntryPointVO;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.Comp7EntryPoint;
+   import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.CosmicBannerEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.CraftMachineEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.EpicBattlesEntryPoint;
    import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.FunRandomEntryPoint;
@@ -3172,6 +3173,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IConfirmExchangeDialogMeta;
    import net.wg.infrastructure.base.meta.IConfirmItemWindowMeta;
    import net.wg.infrastructure.base.meta.IContactsTreeComponentMeta;
+   import net.wg.infrastructure.base.meta.ICosmicBannerEntryPointMeta;
    import net.wg.infrastructure.base.meta.ICraftMachineEntryPointMeta;
    import net.wg.infrastructure.base.meta.ICrewMeta;
    import net.wg.infrastructure.base.meta.ICrewOperationsPopOverMeta;
@@ -5886,6 +5888,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_DATA_ENTRYPOINTVO:Class = EntryPointVO;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_COMP7ENTRYPOINT:Class = Comp7EntryPoint;
+      
+      public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_COSMICBANNERENTRYPOINT:Class = CosmicBannerEntryPoint;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_EVENTENTRYPOINT_GFWRAPPER_CRAFTMACHINEENTRYPOINT:Class = CraftMachineEntryPoint;
       
@@ -9789,6 +9793,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICONTACTSTREECOMPONENTMETA:Class = IContactsTreeComponentMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOSMICBANNERENTRYPOINTMETA:Class = ICosmicBannerEntryPointMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICRAFTMACHINEENTRYPOINTMETA:Class = ICraftMachineEntryPointMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICREWMETA:Class = ICrewMeta;
@@ -10408,6 +10414,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CONFIRMITEMWINDOWMETA:Class = ConfirmItemWindowMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CONTACTSTREECOMPONENTMETA:Class = ContactsTreeComponentMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COSMICBANNERENTRYPOINTMETA:Class = CosmicBannerEntryPointMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CRAFTMACHINEENTRYPOINTMETA:Class = CraftMachineEntryPointMeta;
       

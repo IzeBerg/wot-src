@@ -85,6 +85,8 @@ from skeletons.gui.shared.utils import IHangarSpace
 from skeletons.gui.sounds import ISoundsController
 from skeletons.gui.system_messages import ISystemMessages
 if typing.TYPE_CHECKING:
+    from typing import Tuple, Union, Dict, Literal
+    from messenger.proto.bw.wrappers import _ServiceChannelData
     from comp7_ranks_common import Comp7Division
     from gui.platform.catalog_service.controller import _PurchaseDescriptor
     from gui.server_events.event_items import TokenQuest

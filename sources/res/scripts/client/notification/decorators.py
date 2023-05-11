@@ -2,6 +2,7 @@ import typing, BigWorld
 from CurrentVehicle import g_currentVehicle
 from debug_utils import LOG_ERROR
 from frameworks.wulf import WindowLayer
+from PlayerEvents import g_playerEvents
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import currentHangarIsBattleRoyale
@@ -265,13 +266,23 @@ class LockButtonMessageDecorator(MessageDecorator):
     def __init__(self, entityID, entity=None, settings=None, model=None):
         super(LockButtonMessageDecorator, self).__init__(entityID, entity, settings, model)
         g_eventBus.addListener(ViewEventType.LOAD_VIEW, self._viewLoaded, EVENT_BUS_SCOPE.LOBBY)
+        g_playerEvents.onEnqueued += self._onEqueued
+        g_playerEvents.onDequeued += self._onDequeued
 
     def clear(self):
         super(LockButtonMessageDecorator, self).clear()
         g_eventBus.removeListener(ViewEventType.LOAD_VIEW, self._viewLoaded, EVENT_BUS_SCOPE.LOBBY)
+        g_playerEvents.onEnqueued -= self._onEqueued
+        g_playerEvents.onDequeued -= self._onDequeued
 
     def update(self, formatted):
         _NotificationDecorator.update(self, formatted)
+
+    def _onEqueued(self, _):
+        self._updateButtonsState(lock=True)
+
+    def _onDequeued(self, _):
+        self._updateButtonsState(lock=False)
 
     def _make(self, formatted=None, settings=None):
         super(LockButtonMessageDecorator, self)._make(formatted, settings)
@@ -279,7 +290,7 @@ class LockButtonMessageDecorator(MessageDecorator):
         return
 
     def _getLockAliases(self):
-        return (VIEW_ALIAS.BATTLE_QUEUE,)
+        return ()
 
     def _updateButtons(self, _):
         self._updateButtonsState(lock=False)

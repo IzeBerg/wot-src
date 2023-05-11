@@ -74,6 +74,9 @@ class IMarkersManager(object):
     def destroyMarker(self, markerID):
         raise NotImplementedError
 
+    def setMarkerSticky(self, markerID, isSticky):
+        raise NotImplementedError
+
     def _createCanvas(self, arenaVisitor):
         raise NotImplementedError
 

@@ -271,6 +271,7 @@ class REQ_CRITERIA(object):
         EVENT_BATTLE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForEventBattles))
         EPIC_BATTLE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForEpicBattles))
         BATTLE_ROYALE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForBattleRoyaleBattles))
+        HIDDEN_IN_HANGAR = RequestCriteria(PredicateCondition(lambda item: item.isHiddenInHangar))
         MAPS_TRAINING = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForMapsTrainingBattles))
         CLAN_WARS = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForClanWarsBattles))
         COMP7 = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForComp7Battles))
@@ -549,7 +550,7 @@ class ItemsRequester(IItemsRequester):
 
     def isSynced--- This code section failed: ---
 
- L. 918         0  LOAD_FAST             0  'self'
+ L. 920         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  '__blueprints'
                 6  LOAD_CONST               None
                 9  COMPARE_OP            9  is-not

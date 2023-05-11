@@ -386,6 +386,36 @@ package
       public static const KADETTKNABE_LASTNAME:String = "#crew_skins:kadettKnabe/LastName";
       
       public static const KADETTKNABE_DESCR:String = "#crew_skins:kadettKnabe/Descr";
+      
+      public static const COSM_FARMER_NAME:String = "#crew_skins:cosm_farmer/Name";
+      
+      public static const COSM_FARMER_LASTNAME:String = "#crew_skins:cosm_farmer/LastName";
+      
+      public static const COSM_FARMER_DESCR:String = "#crew_skins:cosm_farmer/Descr";
+      
+      public static const COSM_ADAMS_NAME:String = "#crew_skins:cosm_adams/Name";
+      
+      public static const COSM_ADAMS_LASTNAME:String = "#crew_skins:cosm_adams/LastName";
+      
+      public static const COSM_ADAMS_DESCR:String = "#crew_skins:cosm_adams/Descr";
+      
+      public static const COSM_KOSTRITSYN_NAME:String = "#crew_skins:cosm_kostritsyn/Name";
+      
+      public static const COSM_KOSTRITSYN_LASTNAME:String = "#crew_skins:cosm_kostritsyn/LastName";
+      
+      public static const COSM_KOSTRITSYN_DESCR:String = "#crew_skins:cosm_kostritsyn/Descr";
+      
+      public static const COSM_HORTON_NAME:String = "#crew_skins:cosm_horton/Name";
+      
+      public static const COSM_HORTON_LASTNAME:String = "#crew_skins:cosm_horton/LastName";
+      
+      public static const COSM_HORTON_DESCR:String = "#crew_skins:cosm_horton/Descr";
+      
+      public static const COSM_GEORGE_NAME:String = "#crew_skins:cosm_george/Name";
+      
+      public static const COSM_GEORGE_LASTNAME:String = "#crew_skins:cosm_george/LastName";
+      
+      public static const COSM_GEORGE_DESCR:String = "#crew_skins:cosm_george/Descr";
        
       
       public function CREW_SKINS()
