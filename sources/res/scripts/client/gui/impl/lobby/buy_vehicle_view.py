@@ -195,7 +195,7 @@ class BuyVehicleView(ViewImpl, EventSystemEntity, IPrbListener):
             emptySlotAvailable = self.__itemsCache.items.inventory.getFreeSlots(self.__stats.vehicleSlots) > 0
             equipmentBlock.setEmtySlotAvailable(emptySlotAvailable)
             equipmentBlock.setIsRestore(isRestore)
-            if self.__vehicle.hasRentPackages and (not isRestore or self.__actionType == VehicleBuyActionTypes.RENT) and self.__actionType != VehicleBuyActionTypes.BUY:
+            if self.__vehicle.hasRentPackages and (not isRestore or self.__actionType == VehicleBuyActionTypes.RENT) and (self.__actionType != VehicleBuyActionTypes.BUY or self.__vehicle.isDisabledForBuy):
                 self.__selectedRentIdx = 0
                 self.__selectedRentID = self.__vehicle.rentPackages[self.__selectedRentIdx]['rentID']
             self.__updateCommanderCards()

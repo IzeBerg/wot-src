@@ -4,6 +4,8 @@ package net.wg.infrastructure.managers.impl
    import flash.display.DisplayObjectContainer;
    import flash.events.Event;
    import flash.utils.Dictionary;
+   import flash.utils.clearTimeout;
+   import flash.utils.setTimeout;
    import net.wg.data.TutorialBuilderVO;
    import net.wg.data.TutorialComponentData;
    import net.wg.data.TutorialComponentRect;
@@ -43,6 +45,8 @@ package net.wg.infrastructure.managers.impl
       private static const CRITERIA_REG_EXP:RegExp = new RegExp(/\?%[^%]*%/);
       
       private static const PARAMS_REG_EXP:RegExp = new RegExp(/\?.*$/);
+      
+      private static const SHOW_DELAY:uint = 300;
        
       
       private var _descriptions:Object;
@@ -71,6 +75,8 @@ package net.wg.infrastructure.managers.impl
       
       private var _customObjectFinder:ICustomObjectFinder;
       
+      private var _timeoutsIds:Object;
+      
       private var _buildersMap:BuildersMap;
       
       private var _unboudViewsForRegister:Dictionary;
@@ -89,6 +95,7 @@ package net.wg.infrastructure.managers.impl
          this._criteriaHash = {};
          this._shownIds = new Vector.<String>();
          this._compIdToWatchers = {};
+         this._timeoutsIds = new Object();
          this._buildersMap = new BuildersMap();
          this._unboudViewsForRegister = new Dictionary();
          this._unboundComponents = new Dictionary();
@@ -134,14 +141,16 @@ package net.wg.infrastructure.managers.impl
       override protected function onDispose() : void
       {
          var _loc1_:* = null;
-         var _loc2_:int = 0;
-         var _loc3_:int = 0;
-         var _loc4_:* = null;
-         var _loc5_:* = null;
-         var _loc6_:IDisposable = null;
-         var _loc7_:DisplayObject = null;
-         var _loc8_:Vector.<String> = null;
-         var _loc9_:TutorialComponentPathVO = null;
+         var _loc2_:Array = null;
+         var _loc3_:* = null;
+         var _loc4_:int = 0;
+         var _loc5_:int = 0;
+         var _loc6_:* = null;
+         var _loc7_:* = null;
+         var _loc8_:IDisposable = null;
+         var _loc9_:DisplayObject = null;
+         var _loc10_:Vector.<String> = null;
+         var _loc11_:TutorialComponentPathVO = null;
          App.utils.data.cleanupDynamicObject(this._descriptions);
          for(_loc1_ in this._criteriaHash)
          {
@@ -149,37 +158,47 @@ package net.wg.infrastructure.managers.impl
             delete this._criteriaHash[_loc1_];
          }
          this._criteriaHash = null;
-         this._descriptions = null;
-         _loc2_ = this._ignoredInTutorialComponents.length;
-         _loc3_ = 0;
-         while(_loc3_ < _loc2_)
+         _loc2_ = [];
+         for(_loc3_ in this._timeoutsIds)
          {
-            _loc7_ = this._ignoredInTutorialComponents[_loc3_];
-            this.removeListenersFromNotTutorialObject(_loc7_);
-            _loc3_++;
+            _loc2_.push(_loc3_);
          }
-         this._ignoredInTutorialComponents.splice(0,_loc2_);
-         this._tutorialLinkages.splice(0,this._tutorialLinkages.length);
-         for(_loc4_ in this._aliasToPathsList)
+         for each(_loc3_ in _loc2_)
          {
-            _loc8_ = this._aliasToPathsList[_loc4_];
-            _loc8_.splice(0,_loc8_.length);
+            this.clearTimeoutByKey(_loc3_);
+         }
+         this._timeoutsIds = null;
+         this._descriptions = null;
+         _loc4_ = this._ignoredInTutorialComponents.length;
+         _loc5_ = 0;
+         while(_loc5_ < _loc4_)
+         {
+            _loc9_ = this._ignoredInTutorialComponents[_loc5_];
+            this.removeListenersFromNotTutorialObject(_loc9_);
+            _loc5_++;
+         }
+         this._ignoredInTutorialComponents.splice(0,_loc4_);
+         this._tutorialLinkages.splice(0,this._tutorialLinkages.length);
+         for(_loc6_ in this._aliasToPathsList)
+         {
+            _loc10_ = this._aliasToPathsList[_loc6_];
+            _loc10_.splice(0,_loc10_.length);
          }
          App.utils.data.cleanupDynamicObject(this._aliasToPathsList);
          this._aliasToPathsList = null;
-         for(_loc5_ in this._fullPathToVO)
+         for(_loc7_ in this._fullPathToVO)
          {
-            _loc9_ = this._fullPathToVO[_loc5_];
-            _loc9_.dispose();
+            _loc11_ = this._fullPathToVO[_loc7_];
+            _loc11_.dispose();
          }
          App.utils.data.cleanupDynamicObject(this._fullPathToVO);
          App.utils.data.cleanupDynamicObject(this._idToVO);
          App.utils.data.cleanupDynamicObject(this._componentToVO);
          App.utils.data.cleanupDynamicObject(this._isSystemEnabled);
          App.utils.data.cleanupDynamicObject(this._compIdToWatchers);
-         for each(_loc6_ in this._unboudViewsForRegister)
+         for each(_loc8_ in this._unboudViewsForRegister)
          {
-            _loc6_.dispose();
+            _loc8_.dispose();
          }
          App.utils.data.cleanupDynamicObject(this._unboudViewsForRegister);
          App.utils.data.cleanupDynamicObject(this._unboundComponents);
@@ -251,26 +270,10 @@ package net.wg.infrastructure.managers.impl
       
       override protected function showEffect(param1:String, param2:String, param3:String, param4:TutorialBuilderVO) : void
       {
-         var _loc6_:TutorialComponentPathVO = null;
-         var _loc7_:DisplayObject = null;
-         var _loc5_:IView = this._idToView[param1];
-         App.utils.asserter.assertNotNull(_loc5_,"view id " + param1 + Errors.WASNT_FOUND);
-         if(StringUtils.isNotEmpty(param2))
-         {
-            _loc6_ = this._idToVO[param2];
-            if(_loc6_)
-            {
-               _loc7_ = _loc6_.foundComponent;
-               if(_loc7_)
-               {
-                  this.setupEffectBuilder(_loc5_,param3,param4,_loc7_);
-               }
-            }
-         }
-         else
-         {
-            this.setupEffectBuilder(_loc5_,param3,param4,null);
-         }
+         var _loc5_:String = this.getTimeoutKey(param1,param2,param3);
+         this.clearTimeoutByKey(_loc5_);
+         var _loc6_:int = setTimeout(this.showDelayedEffect,SHOW_DELAY,param1,param2,param3,new TutorialBuilderVO(param4.toHash()));
+         this._timeoutsIds[_loc5_] = _loc6_;
       }
       
       public function addListenersToCustomTutorialComponent(param1:ITutorialCustomComponent) : void
@@ -318,22 +321,24 @@ package net.wg.infrastructure.managers.impl
       
       public function as_hideEffect(param1:String, param2:String, param3:String, param4:String) : void
       {
-         var _loc6_:int = 0;
-         var _loc7_:String = null;
-         var _loc5_:TutorialComponentPathVO = this._idToVO[param2];
-         if(_loc5_)
+         var _loc7_:int = 0;
+         var _loc8_:String = null;
+         var _loc5_:String = this.getTimeoutKey(param1,param2,param3);
+         this.clearTimeoutByKey(_loc5_);
+         var _loc6_:TutorialComponentPathVO = this._idToVO[param2];
+         if(_loc6_)
          {
-            _loc6_ = this._shownIds.indexOf(param2);
-            if(_loc6_ != -1)
+            _loc7_ = this._shownIds.indexOf(param2);
+            if(_loc7_ != -1)
             {
-               this._shownIds.splice(_loc6_,1);
+               this._shownIds.splice(_loc7_,1);
             }
-            _loc7_ = Values.EMPTY_STR;
+            _loc8_ = Values.EMPTY_STR;
             if(StringUtils.isNotEmpty(param3))
             {
-               _loc7_ = BuilderTypeMapping.getLnk(param3,param4);
+               _loc8_ = BuilderTypeMapping.getLnk(param3,param4);
             }
-            this.stopEffects(param1,Boolean(_loc5_.foundComponent) ? this._componentToVO[_loc5_.foundComponent].id : param2,_loc7_);
+            this.stopEffects(param1,Boolean(_loc6_.foundComponent) ? this._componentToVO[_loc6_.foundComponent].id : param2,_loc8_);
          }
       }
       
@@ -670,6 +675,51 @@ package net.wg.infrastructure.managers.impl
             this._buildersMap.removeBuildersForView(param1);
             delete this._idToView[param1];
          }
+      }
+      
+      private function getTimeoutKey(param1:String, param2:String, param3:String) : String
+      {
+         return param1 + param2 + param3;
+      }
+      
+      private function doEffect(param1:String, param2:String, param3:String, param4:TutorialBuilderVO) : void
+      {
+         var _loc6_:TutorialComponentPathVO = null;
+         var _loc7_:DisplayObject = null;
+         var _loc5_:IView = this._idToView[param1];
+         App.utils.asserter.assertNotNull(_loc5_,"view id " + param1 + Errors.WASNT_FOUND);
+         if(StringUtils.isNotEmpty(param2))
+         {
+            _loc6_ = this._idToVO[param2];
+            if(_loc6_)
+            {
+               _loc7_ = _loc6_.foundComponent;
+               if(_loc7_)
+               {
+                  this.setupEffectBuilder(_loc5_,param3,param4,_loc7_);
+               }
+            }
+         }
+         else
+         {
+            this.setupEffectBuilder(_loc5_,param3,param4,null);
+         }
+      }
+      
+      private function clearTimeoutByKey(param1:String) : void
+      {
+         if(this._timeoutsIds.hasOwnProperty(param1))
+         {
+            clearTimeout(this._timeoutsIds[param1]);
+            delete this._timeoutsIds[param1];
+         }
+      }
+      
+      private function showDelayedEffect(param1:String, param2:String, param3:String, param4:TutorialBuilderVO) : void
+      {
+         var _loc5_:String = this.getTimeoutKey(param1,param2,param3);
+         this.clearTimeoutByKey(_loc5_);
+         this.doEffect(param1,param2,param3,param4);
       }
       
       private function updateWatchers(param1:String, param2:Array) : void

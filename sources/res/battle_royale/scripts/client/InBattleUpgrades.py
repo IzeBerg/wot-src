@@ -60,13 +60,12 @@ def onBattleRoyalePrerequisites(vehicle, oldTypeDescriptor):
         return False
     if not oldTypeDescriptor:
         return True
-    forceReloding = False
+    forceReloading = False
     for moduleName in ('gun', 'turret', 'chassis'):
         oldModule = getattr(oldTypeDescriptor, moduleName)
         newModule = getattr(vehicle.typeDescriptor, moduleName)
         if oldModule.id != newModule.id:
-            forceReloding = True
-            vehicle.isForceReloading = True
+            forceReloading = True
             if moduleName == 'gun' and vehicle.id == BigWorld.player().getObservedVehicleID():
                 player = BigWorld.player()
                 if player.isObserver():
@@ -74,4 +73,4 @@ def onBattleRoyalePrerequisites(vehicle, oldTypeDescriptor):
                     vehicle.guiSessionProvider.shared.ammo.setGunSettings(newModule)
                 player.gunRotator.switchActiveGun(0)
 
-    return forceReloding
+    return forceReloading

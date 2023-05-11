@@ -971,21 +971,23 @@ def crewMemberRealSkillLevel(vehicle, skillName, role, commonWithIncrease=True):
     booster = getBattleBooster(vehicle, skillName) if shouldIncrease else None
     tankmenSkillLevels = []
     skillRoleType = tankmen.getSkillRoleType(skillName)
-    isCommonSkill = skillRoleType == tankmen.COMMON_SKILL_ROLE_TYPE
-    for _, tankman in vehicle.crew:
-        if tankman is None:
-            continue
-        if skillRoleType in tankman.combinedRoles or isCommonSkill:
-            tankmenSkillLevels.append(tankmanPersonalSkillLevel(tankman, skillName, booster if not isCommonSkill else None, shouldIncrease))
-
-    if isCommonSkill:
-        tankmenSkillLevels = _boostCommonSkill(vehicle.crew, skillName, tankmenSkillLevels, booster)
-    if skillName in tankmen.COMMON_SKILLS:
-        if tankmenSkillLevels and not all(hasSkill == tankmen.NO_SKILL for hasSkill in tankmenSkillLevels):
-            return sum(lvl for lvl in tankmenSkillLevels if lvl != tankmen.NO_SKILL) / float(len(vehicle.crew))
+    if skillRoleType is None:
         return tankmen.NO_SKILL
     else:
-        if skillName in perks_constants.AVG_LVL_PERKS:
+        isCommonSkill = skillRoleType == tankmen.COMMON_SKILL_ROLE_TYPE
+        for _, tankman in vehicle.crew:
+            if tankman is None:
+                continue
+            if skillRoleType in tankman.combinedRoles or isCommonSkill:
+                tankmenSkillLevels.append(tankmanPersonalSkillLevel(tankman, skillName, booster if not isCommonSkill else None, shouldIncrease))
+
+        if isCommonSkill:
+            tankmenSkillLevels = _boostCommonSkill(vehicle.crew, skillName, tankmenSkillLevels, booster)
+        if vehicle.crew and skillName in tankmen.COMMON_SKILLS:
+            if tankmenSkillLevels and not all(hasSkill == tankmen.NO_SKILL for hasSkill in tankmenSkillLevels):
+                return sum(lvl for lvl in tankmenSkillLevels if lvl != tankmen.NO_SKILL) / float(len(vehicle.crew))
+            return tankmen.NO_SKILL
+        if tankmenSkillLevels and skillName in perks_constants.AVG_LVL_PERKS:
             tmpTankmenSkillLevels = [ level for level in tankmenSkillLevels if level != tankmen.NO_SKILL ]
             return sum(tmpTankmenSkillLevels) / len(tankmenSkillLevels)
         return max(tankmenSkillLevels or [0])

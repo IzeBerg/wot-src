@@ -632,6 +632,16 @@ class _DeathZoneRibbon(_ReceivedDamageByUnknownSourceRibbon):
         self.setExtraValue(ribbon.getExtraValue())
 
 
+class _StaticDeathZoneRibbon(_ReceivedDamageByUnknownSourceRibbon):
+    __slots__ = ()
+
+    def getType(self):
+        return BATTLE_EFFICIENCY_TYPES.STATIC_DEATH_ZONE
+
+    def _aggregate(self, ribbon):
+        self.setExtraValue(ribbon.getExtraValue())
+
+
 class _MultiVehicleRibbon(_MultiTargetsRibbon):
     __slots__ = ('_vehicles', )
 
@@ -716,9 +726,9 @@ class _DamageRibbonClassFactory(_RibbonClassFactory):
                  '__deathZoneCls', '__damagedByFortArtillery', '__berserker', '__spawnedBotDmgCls',
                  '__damageByMinefield', '__damagedBySmoke', '__damagedByCorrodingShot',
                  '__dmgByFireCircle', '__dmgByClingBrander', '__damageByThunderStrike',
-                 '__damageByAirStrike', '__damageByArtillery')
+                 '__damageByAirStrike', '__damageByArtillery', '__staticDeathZoneCls')
 
-    def __init__(self, damageCls, fireCls, ramCls, wcCls, artDmgCls, bombDmgCls, artFireCls, bombFireCls, deathZoneCls, recoveryCls, berserker, spawnedBotDmgCls, minefieldDamageCls, damagedBySmoke, dmgByCorrodingShot, dmgByFireCircle, dmgByClingBrander, dmgByThunderStrike, damagedByFortArtillery, airStrikeDamageCls, artilleryDamageCls):
+    def __init__(self, damageCls, fireCls, ramCls, wcCls, artDmgCls, bombDmgCls, artFireCls, bombFireCls, deathZoneCls, recoveryCls, berserker, spawnedBotDmgCls, minefieldDamageCls, damagedBySmoke, dmgByCorrodingShot, dmgByFireCircle, dmgByClingBrander, dmgByThunderStrike, damagedByFortArtillery, airStrikeDamageCls, artilleryDamageCls, staticDeathZoneCls):
         super(_DamageRibbonClassFactory, self).__init__()
         self.__damageCls = damageCls
         self.__fireCls = fireCls
@@ -741,6 +751,7 @@ class _DamageRibbonClassFactory(_RibbonClassFactory):
         self.__damagedByFortArtillery = damagedByFortArtillery
         self.__damageByAirStrike = airStrikeDamageCls
         self.__damageByArtillery = artilleryDamageCls
+        self.__staticDeathZoneCls = staticDeathZoneCls
 
     def getRibbonClass(self, event):
         damageExtra = event.getExtra()
@@ -765,6 +776,8 @@ class _DamageRibbonClassFactory(_RibbonClassFactory):
             ribbonCls = self.__recoveryCls
         elif damageExtra.isDeathZone():
             ribbonCls = self.__deathZoneCls
+        elif damageExtra.isStaticDeathZone():
+            ribbonCls = self.__staticDeathZoneCls
         elif damageExtra.isBerserker():
             ribbonCls = self.__berserker
         elif damageExtra.isSpawnedBotExplosion() or damageExtra.isSpawnedBotRam():
@@ -949,8 +962,8 @@ _FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY = {FEEDBACK_EVENT_ID.PLAYER_CAPTURED_BASE:
    FEEDBACK_EVENT_ID.PLAYER_DAMAGED_DEVICE_ENEMY: _RibbonSingleClassFactory(_CriticalHitRibbon), 
    FEEDBACK_EVENT_ID.PLAYER_KILLED_ENEMY: _RibbonSingleClassFactory(_EnemyKillRibbon), 
    FEEDBACK_EVENT_ID.ENEMY_DAMAGED_DEVICE_PLAYER: _CriticalRibbonClassFactory(), 
-   FEEDBACK_EVENT_ID.PLAYER_DAMAGED_HP_ENEMY: _DamageRibbonClassFactory(damageCls=_CausedDamageRibbon, fireCls=_FireHitRibbon, ramCls=_RamHitRibbon, wcCls=_WorldCollisionHitRibbon, artDmgCls=_ArtilleryHitRibbon, bombDmgCls=_BombersHitRibbon, artFireCls=_ArtilleryFireHitRibbon, bombFireCls=_BombersFireHitRibbon, recoveryCls=_EpicRecoveryRibbon, deathZoneCls=_DeathZoneRibbon, berserker=_ReceivedBerserkerHitRibbon, spawnedBotDmgCls=_SpawnedBotCausedDamageRibbon, minefieldDamageCls=_MinefieldDamageRibbon, damagedBySmoke=_ReceivedByDamagingSmokeRibbon, dmgByCorrodingShot=_DealtDamageByCorrodingShot, dmgByFireCircle=_DealtDamageByFireCircle, dmgByClingBrander=_DealtDamageByClingBrander, dmgByThunderStrike=_DealtDamageByThunderStrike, damagedByFortArtillery=_FortArtilleryHitRibbon, airStrikeDamageCls=_AirStrikeDamageRibbon, artilleryDamageCls=_ArtilleryDamageRibbon), 
-   FEEDBACK_EVENT_ID.ENEMY_DAMAGED_HP_PLAYER: _DamageRibbonClassFactory(damageCls=_ReceivedDamageHitRibbon, fireCls=_ReceivedFireHitRibbon, ramCls=_ReceivedRamHitRibbon, wcCls=_ReceivedWorldCollisionHitRibbon, artDmgCls=_ArtilleryReceivedDamageHitRibbon, bombDmgCls=_BombersReceivedDamageHitRibbon, artFireCls=_ArtilleryReceivedFireHitRibbon, bombFireCls=_BombersReceivedFireHitRibbon, recoveryCls=_EpicRecoveryRibbon, deathZoneCls=_DeathZoneRibbon, berserker=_ReceivedBerserkerHitRibbon, spawnedBotDmgCls=_ReceivedBySpawnedBotHitRibbon, minefieldDamageCls=_ReceivedByMinefieldRibbon, damagedBySmoke=_ReceivedByDamagingSmokeRibbon, dmgByCorrodingShot=_ReceivedByDamagingCorrodingShotRibbon, dmgByFireCircle=_ReceivedByFireCircleRibbon, dmgByClingBrander=_ReceivedByClingBranderRibbon, dmgByThunderStrike=_ReceivedByDamagingThunderStrikeRibbon, damagedByFortArtillery=_FortArtilleryReceivedDamageHitRibbon, airStrikeDamageCls=_ReceivedByAirStrikeRibbon, artilleryDamageCls=_ReceivedByArtilleryRibbon), 
+   FEEDBACK_EVENT_ID.PLAYER_DAMAGED_HP_ENEMY: _DamageRibbonClassFactory(damageCls=_CausedDamageRibbon, fireCls=_FireHitRibbon, ramCls=_RamHitRibbon, wcCls=_WorldCollisionHitRibbon, artDmgCls=_ArtilleryHitRibbon, bombDmgCls=_BombersHitRibbon, artFireCls=_ArtilleryFireHitRibbon, bombFireCls=_BombersFireHitRibbon, recoveryCls=_EpicRecoveryRibbon, deathZoneCls=_DeathZoneRibbon, berserker=_ReceivedBerserkerHitRibbon, spawnedBotDmgCls=_SpawnedBotCausedDamageRibbon, minefieldDamageCls=_MinefieldDamageRibbon, damagedBySmoke=_ReceivedByDamagingSmokeRibbon, dmgByCorrodingShot=_DealtDamageByCorrodingShot, dmgByFireCircle=_DealtDamageByFireCircle, dmgByClingBrander=_DealtDamageByClingBrander, dmgByThunderStrike=_DealtDamageByThunderStrike, damagedByFortArtillery=_FortArtilleryHitRibbon, airStrikeDamageCls=_AirStrikeDamageRibbon, artilleryDamageCls=_ArtilleryDamageRibbon, staticDeathZoneCls=_StaticDeathZoneRibbon), 
+   FEEDBACK_EVENT_ID.ENEMY_DAMAGED_HP_PLAYER: _DamageRibbonClassFactory(damageCls=_ReceivedDamageHitRibbon, fireCls=_ReceivedFireHitRibbon, ramCls=_ReceivedRamHitRibbon, wcCls=_ReceivedWorldCollisionHitRibbon, artDmgCls=_ArtilleryReceivedDamageHitRibbon, bombDmgCls=_BombersReceivedDamageHitRibbon, artFireCls=_ArtilleryReceivedFireHitRibbon, bombFireCls=_BombersReceivedFireHitRibbon, recoveryCls=_EpicRecoveryRibbon, deathZoneCls=_DeathZoneRibbon, berserker=_ReceivedBerserkerHitRibbon, spawnedBotDmgCls=_ReceivedBySpawnedBotHitRibbon, minefieldDamageCls=_ReceivedByMinefieldRibbon, damagedBySmoke=_ReceivedByDamagingSmokeRibbon, dmgByCorrodingShot=_ReceivedByDamagingCorrodingShotRibbon, dmgByFireCircle=_ReceivedByFireCircleRibbon, dmgByClingBrander=_ReceivedByClingBranderRibbon, dmgByThunderStrike=_ReceivedByDamagingThunderStrikeRibbon, damagedByFortArtillery=_FortArtilleryReceivedDamageHitRibbon, airStrikeDamageCls=_ReceivedByAirStrikeRibbon, artilleryDamageCls=_ReceivedByArtilleryRibbon, staticDeathZoneCls=_StaticDeathZoneRibbon), 
    FEEDBACK_EVENT_ID.PLAYER_ASSIST_TO_KILL_ENEMY: _AssistRibbonClassFactory(trackAssistCls=_TrackAssistRibbon, radioAssistCls=_RadioAssistRibbon, stunAssistCls=_StunAssistRibbon), 
    FEEDBACK_EVENT_ID.PLAYER_ASSIST_TO_STUN_ENEMY: _AssistRibbonClassFactory(trackAssistCls=_TrackAssistRibbon, radioAssistCls=_RadioAssistRibbon, stunAssistCls=_StunAssistRibbon), 
    FEEDBACK_EVENT_ID.ENEMY_SECTOR_CAPTURED: _RibbonSingleClassFactory(_EpicEnemySectorCapturedRibbon), 
@@ -1128,7 +1141,9 @@ class RibbonsAggregator(object):
     def _aggregateRibbons(self, ribbons):
         aggregatedRibbons = {}
         for ribbon in ribbons:
-            if self.__isSuspended and ribbon and ribbon.getType() not in _ACCUMULATED_RIBBON_TYPES:
+            if ribbon is None:
+                continue
+            if self.__isSuspended and ribbon.getType() not in _ACCUMULATED_RIBBON_TYPES:
                 continue
             if ribbon.getType() in aggregatedRibbons:
                 temporaryRibbons = aggregatedRibbons[ribbon.getType()]
@@ -1174,6 +1189,8 @@ class RibbonsAggregator(object):
                     elif not self.__isSuspended:
                         self.__cache.add(ribbon)
                         self.onRibbonAdded(ribbon)
+
+        return
 
     def __filterRibbons(self, ribbons):
         if self.__isInPostmortemMode and not avatar_getter.isObserver():

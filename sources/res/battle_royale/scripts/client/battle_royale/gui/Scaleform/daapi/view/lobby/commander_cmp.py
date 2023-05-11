@@ -9,8 +9,10 @@ from gui.impl.pub import ViewImpl
 from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import isIncorrectVehicle
 from gui.Scaleform.framework.entities.inject_component_adaptor import InjectComponentAdaptor
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
+from gui.shared.gui_items.Tankman import TankmanSkill
 from helpers import dependency
 from skeletons.gui.game_control import IBattleRoyaleController
+from skeletons.gui.app_loader import IAppLoader
 _R_SKILLS_ICONS = R.images.gui.maps.icons.tankmen.skills.big
 
 class CommanderComponent(InjectComponentAdaptor):
@@ -22,11 +24,13 @@ class CommanderComponent(InjectComponentAdaptor):
 class CommanderView(ViewImpl):
     _RU_REALM_TAG = 'cis'
     __brControl = dependency.descriptor(IBattleRoyaleController)
+    __appLoader = dependency.descriptor(IAppLoader)
 
     def __init__(self, viewKey, viewModelClazz=CommanderCmpViewModel):
         settings = ViewSettings(viewKey)
         settings.flags = ViewFlags.COMPONENT
         settings.model = viewModelClazz()
+        self.__toolTipMgr = self.__appLoader.getApp().getToolTipMgr()
         super(CommanderView, self).__init__(settings)
 
     @property
@@ -35,11 +39,21 @@ class CommanderView(ViewImpl):
 
     def createToolTip(self, event):
         if event.contentID == R.views.common.tooltip_window.backport_tooltip_content.BackportTooltipContent():
-            tooltipData = self.__getTooltipData(event)
-            window = BackportTooltipWindow(tooltipData, self.getParentWindow()) if tooltipData is not None else None
-            if window is not None:
-                window.load()
-            return window
+            tooltipId = event.getArgument('tooltipId')
+            if tooltipId is None:
+                return
+            commanderID = self.__getCommanderID()
+            if commanderID is None:
+                return
+            if tooltipId == CommanderCmpTooltips.TOOLTIP_TANKMAN:
+                tipData = self.__getTooltipData(commanderID)
+                window = BackportTooltipWindow(tipData, self.getParentWindow()) if tipData is not None else None
+                if window is not None:
+                    window.load()
+                return window
+            args = (tooltipId, commanderID)
+            self.__toolTipMgr.onCreateWulfTooltip(TOOLTIPS_CONSTANTS.CREW_PERK_GF, args, event.mouse.positionX, event.mouse.positionY)
+            return TOOLTIPS_CONSTANTS.CREW_PERK_GF
         return super(CommanderView, self).createToolTip(event)
 
     def _initialize(self):
@@ -69,6 +83,7 @@ class CommanderView(ViewImpl):
             perkList = model.getPerkList()
             perkList.clear()
             commanderSkills = self.__brControl.getBrCommanderSkills()
+            commanderSkills.insert(0, TankmanSkill('commander_sixthSense'))
             for skill in commanderSkills:
                 skillName = skill.name
                 perkModel = CommanderCmpPerkModel()
@@ -77,19 +92,9 @@ class CommanderView(ViewImpl):
                 perkList.addViewModel(perkModel)
                 perkList.invalidate()
 
-    def __getTooltipData(self, event):
-        tooltipId = event.getArgument('tooltipId')
-        if tooltipId is None:
-            return
-        else:
-            commanderID = self.__getCommanderID()
-            if commanderID is None:
-                return
-            if tooltipId == CommanderCmpTooltips.TOOLTIP_TANKMAN:
-                return createTooltipData(isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.BATTLE_ROYALE_TANKMAN, specialArgs=(
-                 commanderID, False))
-            return createTooltipData(isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.TANKMAN_SKILL, specialArgs=(
-             tooltipId, commanderID))
+    def __getTooltipData(self, commanderID):
+        return createTooltipData(isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.BATTLE_ROYALE_TANKMAN, specialArgs=(
+         commanderID, False))
 
     @staticmethod
     def __getCommanderID():

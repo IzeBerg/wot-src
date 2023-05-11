@@ -1,7 +1,7 @@
 import BigWorld, weakref, Math, items
-from visual_script.block import Meta, Block, InitParam, buildStrKeysValue, EDITOR_TYPE
+from visual_script.block import Meta, Block, InitParam, buildStrKeysValue
 from visual_script.slot_types import SLOT_TYPE, arrayOf
-from visual_script.misc import ASPECT, errorVScript
+from visual_script.misc import ASPECT, EDITOR_TYPE, errorVScript
 
 class EntityMeta(Meta):
 

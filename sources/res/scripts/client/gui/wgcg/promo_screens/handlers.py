@@ -11,7 +11,7 @@ class PromoScreensRequestHandlers(RequestHandlers):
         return handlers
 
     def __getTeaser(self, ctx, callback):
-        return self._requester.doRequestEx(ctx, callback, ('promo_screens', 'get_teaser'))
+        return self._requester.doRequestEx(ctx, callback, ('promo_screens', 'get_teaser'), **ctx.getAdditionalData())
 
     def __sendShownTeaser(self, ctx, callback):
         return self._requester.doRequestEx(ctx, callback, ('promo_screens', 'send_teaser'), ctx.getPromoID())

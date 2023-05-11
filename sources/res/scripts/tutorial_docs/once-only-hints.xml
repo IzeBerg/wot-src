@@ -85,7 +85,13 @@
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
-				<global-active>_HaveNewBadge</global-active>
+				<condition-and>
+					<condition-hint-showed>
+						<hint-id>DogTagProfileHint</hint-id>
+						<value>False</value>
+					</condition-hint-showed>
+					<global-active>_HaveNewBadge</global-active>
+				</condition-and>
 			</condition>
 		</hint>
 		<hint>
@@ -105,7 +111,13 @@
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
-				<global-active>_HaveNewSuffixBadge</global-active>
+				<condition-and>
+					<condition-hint-showed>
+						<hint-id>DogTagProfileHint</hint-id>
+						<value>False</value>
+					</condition-hint-showed>
+					<global-active>_HaveNewSuffixBadge</global-active>
+				</condition-and>
 			</condition>
 		</hint>
 		<hint>
@@ -181,8 +193,8 @@
 						<value>True</value>
 					</condition-hint-showed>
 					<class-condition>
-						UISpamCondition
-						<path>gui.ui_spam.tutorial_conditions</path>
+						LimitedUIHintChecker
+						<path>gui.limited_ui.lui_tutorial_hints</path>
 						<arguments>blueprintsButton</arguments>
 					</class-condition>
 				</condition-and>
@@ -206,8 +218,8 @@
 			</checked-ui-state>
 			<condition>
 				<class-condition>
-					UISpamCondition
-					<path>gui.ui_spam.tutorial_conditions</path>
+					LimitedUIHintChecker
+					<path>gui.limited_ui.lui_tutorial_hints</path>
 					<arguments>blueprintsButton</arguments>
 				</class-condition>
 			</condition>
@@ -313,6 +325,14 @@
 					<value>True</value>
 				</simple-state>
 			</checked-ui-state>
+			<condition>
+				<condition-and>
+					<condition-hint-showed>
+						<hint-id>DogTagProfileHint</hint-id>
+						<value>False</value>
+					</condition-hint-showed>
+				</condition-and>
+			</condition>
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
 		</hint>
@@ -333,12 +353,18 @@
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
-				<global-active>_DogTagsEnabled</global-active>
-				<class-condition>
-					UISpamCondition
-					<path>gui.ui_spam.tutorial_conditions</path>
-					<arguments>DogTagHangarHint</arguments>
-				</class-condition>
+				<condition-and>
+					<condition-hint-showed>
+						<hint-id>DogTagProfileHint</hint-id>
+						<value>False</value>
+					</condition-hint-showed>
+					<class-condition>
+						LimitedUIHintChecker
+						<path>gui.limited_ui.lui_tutorial_hints</path>
+						<arguments>DogTagHangarHint</arguments>
+					</class-condition>
+					<global-active>_DogTagsEnabled</global-active>
+				</condition-and>
 			</condition>
 		</hint>
 		<hint>
@@ -360,8 +386,8 @@
 			<condition>
 				<global-active>_Personal_reserves_available</global-active>
 				<class-condition>
-					UISpamCondition
-					<path>gui.ui_spam.tutorial_conditions</path>
+					LimitedUIHintChecker
+					<path>gui.limited_ui.lui_tutorial_hints</path>
 					<arguments>PersonalReservesHangarHint</arguments>
 				</class-condition>
 			</condition>
@@ -382,6 +408,14 @@
 			</checked-ui-state>
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
+			<condition>
+				<global-active>_Personal_reserves_available</global-active>
+				<class-condition>
+					LimitedUIHintChecker
+					<path>gui.limited_ui.lui_tutorial_hints</path>
+					<arguments>PersonalReservesHangarHint</arguments>
+				</class-condition>
+			</condition>
 		</hint>
 		<hint>
 			HangarManualHint
@@ -437,8 +471,8 @@
 			<condition>
 				<global-active>_DogTagsEnabled</global-active>
 				<class-condition>
-					UISpamCondition
-					<path>gui.ui_spam.tutorial_conditions</path>
+					LimitedUIHintChecker
+					<path>gui.limited_ui.lui_tutorial_hints</path>
 					<arguments>DogTagHangarHint</arguments>
 				</class-condition>
 			</condition>
@@ -470,16 +504,22 @@
 			</arrow>
 			<checked-ui-state>
 				<simple-state>
-					<state>enabled</state>
+					<state>visible</state>
 					<value>True</value>
 				</simple-state>
 			</checked-ui-state>
 			<condition>
-				<class-condition>
-					UISpamCondition
-					<path>gui.ui_spam.tutorial_conditions</path>
-					<arguments>sessionStats</arguments>
-				</class-condition>
+				<condition-and>
+					<condition-hint-showed>
+						<hint-id>SessionStatsSettingsBtnHint</hint-id>
+						<value>False</value>
+					</condition-hint-showed>
+					<class-condition>
+						LimitedUIHintChecker
+						<path>gui.limited_ui.lui_tutorial_hints</path>
+						<arguments>sessionStats</arguments>
+					</class-condition>
+				</condition-and>
 			</condition>
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
@@ -732,13 +772,11 @@
 				</simple-state>
 			</checked-ui-state>
 			<condition>
-				<condition-and>
-					<class-condition>
-						UISpamCondition
-						<path>gui.ui_spam.tutorial_conditions</path>
-						<arguments>ModernizedSetupTabHint</arguments>
-					</class-condition>
-				</condition-and>
+				<class-condition>
+					LimitedUIHintChecker
+					<path>gui.limited_ui.lui_tutorial_hints</path>
+					<arguments>ModernizedSetupTabHint</arguments>
+				</class-condition>
 			</condition>
 			<update-runtime>True</update-runtime>
 			<hide-immediately>True</hide-immediately>
@@ -805,8 +843,8 @@
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
 				<class-condition>
-					UISpamCondition
-					<path>gui.ui_spam.tutorial_conditions</path>
+					LimitedUIHintChecker
+					<path>gui.limited_ui.lui_tutorial_hints</path>
 					<arguments>ModeSelectorWidgetsBtnHint</arguments>
 				</class-condition>
 			</condition>
@@ -986,6 +1024,18 @@
 			CompareSpecializationButtonHint
 			<item-id>CompareSpecializationButton</item-id>
 			<text>_(#veh_post_progression:hint/CompareSpecializationButton)</text>
+			<arrow>
+				<direction>R</direction>
+				<loop>True</loop>
+			</arrow>
+			<update-runtime>True</update-runtime>
+			<hide-immediately>True</hide-immediately>
+			<ignore-outside-click>True</ignore-outside-click>
+		</hint>
+		<hint>
+			SummaryCustomizationButtonHint
+			<item-id>SummaryCustomizationButtonHintZone</item-id>
+			<text>_(#achievements_page:hint/summary/customizationButton)</text>
 			<arrow>
 				<direction>R</direction>
 				<loop>True</loop>

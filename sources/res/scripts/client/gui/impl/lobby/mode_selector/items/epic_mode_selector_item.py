@@ -58,6 +58,7 @@ class EpicModeSelectorItem(ModeSelectorLegacyItem):
         return True
 
     def handleClick(self):
+        self.__epicController.showWelcomeScreenIfNeed()
         self.__epicController.showProgressionDuringSomeStates(True)
 
     @property

@@ -77,14 +77,6 @@ package
       
       public static const LOGIN_CHANGEACCOUNT:String = "#tooltips:login/changeAccount";
       
-      public static const LOGIN_BGMODEBUTTON_ON:String = "#tooltips:login/bgModeButton/on";
-      
-      public static const LOGIN_BGMODEBUTTON_OFF:String = "#tooltips:login/bgModeButton/off";
-      
-      public static const LOGIN_SOUNDBUTTON_ON:String = "#tooltips:login/soundButton/on";
-      
-      public static const LOGIN_SOUNDBUTTON_OFF:String = "#tooltips:login/soundButton/off";
-      
       public static const PREBATTLE_INVITATIONS_TOOLTIP_ISONLINE:String = "#tooltips:prebattle/invitations/tooltip/isOnline";
       
       public static const CYBERSPORT_SELECTVEHICLE:String = "#tooltips:cyberSport/selectVehicle";
@@ -312,6 +304,8 @@ package
       public static const BATTLEBORDERMAPMODEBUTTONBAR_INFO:String = "#tooltips:battleBorderMapModeButtonBar/info";
       
       public static const BATTLEBORDERMAPTYPEBUTTONBAR_INFO:String = "#tooltips:battleBorderMapTypeButtonBar/info";
+      
+      public static const LIMITEDUISETTINGBLOCK_INFO:String = "#tooltips:limitedUISettingBlock/info";
       
       public static const CUSTOMIZATION_SCROLLBAR_BOOKMARK:String = "#tooltips:customization/scrollbar/bookmark";
       
@@ -550,22 +544,6 @@ package
       public static const LOGIN_CHANGEACCOUNT_BODY:String = "#tooltips:login/changeAccount/body";
       
       public static const LOGIN_LEGAL_BODY:String = "#tooltips:login/legal/body";
-      
-      public static const LOGIN_BGMODEBUTTON_ON_HEADER:String = "#tooltips:login/bgModeButton/on/header";
-      
-      public static const LOGIN_BGMODEBUTTON_ON_BODY:String = "#tooltips:login/bgModeButton/on/body";
-      
-      public static const LOGIN_BGMODEBUTTON_OFF_HEADER:String = "#tooltips:login/bgModeButton/off/header";
-      
-      public static const LOGIN_BGMODEBUTTON_OFF_BODY:String = "#tooltips:login/bgModeButton/off/body";
-      
-      public static const LOGIN_SOUNDBUTTON_ON_HEADER:String = "#tooltips:login/soundButton/on/header";
-      
-      public static const LOGIN_SOUNDBUTTON_ON_BODY:String = "#tooltips:login/soundButton/on/body";
-      
-      public static const LOGIN_SOUNDBUTTON_OFF_HEADER:String = "#tooltips:login/soundButton/off/header";
-      
-      public static const LOGIN_SOUNDBUTTON_OFF_BODY:String = "#tooltips:login/soundButton/off/body";
       
       public static const PREBATTLE_NAMEFILTERBUTTON_HEADER:String = "#tooltips:prebattle/nameFilterButton/header";
       
@@ -867,6 +845,8 @@ package
       
       public static const EPICBATTLESOFFER_TITLE_BATTLEBOOSTER_GIFT:String = "#tooltips:epicBattlesOffer/title/battleBooster_gift";
       
+      public static const EPICBATTLESOFFER_TITLE_EXPEQUIPMENTS_GIFT:String = "#tooltips:epicBattlesOffer/title/expequipments_gift";
+      
       public static const EPICBATTLESOFFER_TITLE_BROCHURE_GIFT:String = "#tooltips:epicBattlesOffer/title/brochure_gift";
       
       public static const EPICBATTLESOFFER_POINT:String = "#tooltips:epicBattlesOffer/point";
@@ -884,6 +864,12 @@ package
       public static const BATTLEBORDERMAPTYPEBUTTONBAR_INFO_BODY:String = "#tooltips:battleBorderMapTypeButtonBar/info/body";
       
       public static const BATTLEBORDERMAPTYPEBUTTONBAR_INFO_ATTENTION:String = "#tooltips:battleBorderMapTypeButtonBar/info/attention";
+      
+      public static const LIMITEDUISETTINGBLOCK_INFO_HEADER:String = "#tooltips:limitedUISettingBlock/info/header";
+      
+      public static const LIMITEDUISETTINGBLOCK_INFO_BODY:String = "#tooltips:limitedUISettingBlock/info/body";
+      
+      public static const LIMITEDUISETTINGBLOCK_INFO_ATTENTION:String = "#tooltips:limitedUISettingBlock/info/attention";
       
       public static const GAMMA_HEADER:String = "#tooltips:gamma/header";
       
@@ -1136,6 +1122,8 @@ package
       public static const BATTLETYPES_RANKED_BONUSBATTLE_DESCRIPTION:String = "#tooltips:battleTypes/ranked/bonusBattle/description";
       
       public static const BATTLETYPES_BATTLEROYALE_HEADER:String = "#tooltips:battleTypes/battleRoyale/header";
+      
+      public static const BATTLETYPES_BATTLEROYALE_WIDGET_HEADER:String = "#tooltips:battleTypes/battleRoyale/widget/header";
       
       public static const BATTLETYPES_BATTLEROYALE_BODY:String = "#tooltips:battleTypes/battleRoyale/body";
       
@@ -2544,6 +2532,8 @@ package
       public static const VEHICLESTATUS_RESTORECOOLDOWN_HOURS:String = "#tooltips:vehicleStatus/restoreCooldown/hours";
       
       public static const VEHICLESTATUS_SERVERRESTRICTION_HEADER:String = "#tooltips:vehicleStatus/serverRestriction/header";
+      
+      public static const VEHICLESTATUS_STRONGHOLDEVENTFROZEN_BODY:String = "#tooltips:vehicleStatus/StrongholdEventFrozen/body";
       
       public static const VEHICLESTATUS_DEALISOVER_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/header";
       
@@ -6225,6 +6215,10 @@ package
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_HOB_DESC:String = "#tooltips:notrecruitedtankman/commander_hob/desc";
       
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_LABEL:String = "#tooltips:notrecruitedtankman/commander_tolmeron/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_DESC:String = "#tooltips:notrecruitedtankman/commander_tolmeron/desc";
+      
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/yha_commander/label";
       
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/yha_commander/desc";
@@ -6832,6 +6826,30 @@ package
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BPH_4_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bph_4/desc";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BPH_4_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bph_4/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp11_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp11_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_1_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp11_1/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_2_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp11_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_2_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp11_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_2_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp11_2/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_3_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp11_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp11_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_3_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp11_3/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_4_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp11_4/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_4_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp11_4/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP11_4_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp11_4/howToGetInfo";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_AUC_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_auc_1/label";
       

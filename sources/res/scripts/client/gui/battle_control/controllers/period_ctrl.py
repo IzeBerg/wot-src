@@ -135,6 +135,9 @@ class ArenaPeriodController(IArenaPeriodController, ViewComponentsController):
     def getEndTime(self):
         return self._endTime
 
+    def getLength(self):
+        return self._length
+
     def getPeriod(self):
         return self._period
 

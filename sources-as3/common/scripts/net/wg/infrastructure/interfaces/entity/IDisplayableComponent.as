@@ -1,5 +1,11 @@
-/*
- * Decompilation error
- * Timeout (5 minutes) was reached
- */
-throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
+package net.wg.infrastructure.interfaces.entity
+{
+   public interface IDisplayableComponent extends IDisplayable
+   {
+       
+      
+      function setCompVisible(param1:Boolean) : void;
+      
+      function isCompVisible() : Boolean;
+   }
+}

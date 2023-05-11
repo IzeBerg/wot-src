@@ -137,6 +137,7 @@ class GAME(CONST_CONTAINER):
     UNIT_FILTER = 'unitFilter'
     SWITCH_SETUPS_IN_LOADING = 'switchEquipment'
     SCROLL_SMOOTHING = 'scrollSmoothing'
+    LIMITED_UI_ACTIVE = 'limitedUIActive'
 
 
 class SOUND(CONST_CONTAINER):
@@ -377,6 +378,7 @@ class OnceOnlyHints(CONST_CONTAINER):
     SHOW_ABILITIES_BUTTON_HINT = 'ShowAbilitiesButtonHint'
     BATTLE_MATTERS_FIGHT_BUTTON_HINT = 'BattleMattersFightButtonHint'
     BATTLE_MATTERS_ENTRY_POINT_BUTTON_HINT = 'BattleMattersEntryPointHint'
+    SUMMARY_CUSTOMIZATION_BUTTON_HINT = 'SummaryCustomizationButtonHint'
 
 
 class SESSION_STATS(CONST_CONTAINER):

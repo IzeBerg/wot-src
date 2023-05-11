@@ -10,7 +10,9 @@ from gui.impl.pub import ViewImpl
 from gui.impl.pub.lobby_window import LobbyWindow
 from helpers import dependency
 from skeletons.account_helpers.settings_core import ISettingsCore
-from skeletons.gui.game_control import IUISpamController
+from skeletons.gui.game_control import ILimitedUIController
+if typing.TYPE_CHECKING:
+    from gui.limited_ui.lui_rules_storage import LuiRules
 _logger = logging.getLogger(__name__)
 
 class InfoView(ViewImpl):
@@ -88,27 +90,27 @@ class _InfoWindow(LobbyWindow):
 
 
 class _InfoWindowProcessor(IInfoWindowProcessor):
-    __slots__ = ('layoutID', 'contentData', 'uiStorageKey', 'wndFlags', 'hintKey')
+    __slots__ = ('layoutID', 'contentData', 'uiStorageKey', 'ruleID', 'wndFlags')
     __settingsCore = dependency.descriptor(ISettingsCore)
-    __uiSpamController = dependency.descriptor(IUISpamController)
+    __limitedUIController = dependency.descriptor(ILimitedUIController)
 
-    def __init__(self, layoutID, contentData, uiStorageKey, hintKey, wndFlags):
+    def __init__(self, layoutID, contentData, uiStorageKey, ruleID, wndFlags):
         self.layoutID = layoutID
         self.contentData = contentData
         self.uiStorageKey = uiStorageKey
         self.wndFlags = wndFlags
-        self.hintKey = hintKey
+        self.ruleID = ruleID
 
     def showAllowed(self):
         allowedByUIStorage = self.uiStorageKey is None or not self.__settingsCore.serverSettings.getUIStorage().get(self.uiStorageKey, False)
-        allowedBySpamController = self.hintKey is None or self.__uiSpamController.shouldBeHidden(self.hintKey)
-        return allowedBySpamController and allowedByUIStorage
+        allowByLimitedUI = self.ruleID is None or self.__limitedUIController.isRuleCompleted(self.ruleID)
+        return allowedByUIStorage and allowByLimitedUI
 
     def setShown(self):
         if self.uiStorageKey is not None:
             self.__settingsCore.serverSettings.saveInUIStorage({self.uiStorageKey: True})
-        if self.hintKey is not None:
-            self.__uiSpamController.setVisited(self.hintKey)
+        if self.ruleID is not None:
+            self.__limitedUIController.completeRule(self.ruleID)
         return
 
     @wg_async.wg_async
@@ -124,5 +126,5 @@ class _InfoWindowProcessor(IInfoWindowProcessor):
         self.setShown()
 
 
-def getInfoWindowProc(layoutID, contentData=DEFAULT_CONTENT_DATA, uiStorageKey=None, hintKey=None, wndFlags=WindowFlags.WINDOW_FULLSCREEN | WindowFlags.WINDOW):
-    return _InfoWindowProcessor(layoutID, contentData, uiStorageKey, hintKey, wndFlags)
+def getInfoWindowProc(layoutID, contentData=DEFAULT_CONTENT_DATA, uiStorageKey=None, ruleID=None, wndFlags=WindowFlags.WINDOW_FULLSCREEN | WindowFlags.WINDOW):
+    return _InfoWindowProcessor(layoutID, contentData, uiStorageKey, ruleID, wndFlags)

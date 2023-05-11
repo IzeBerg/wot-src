@@ -13,7 +13,7 @@ from gui.impl.gen.view_models.common.missions.bonuses.icon_bonus_model import Ic
 from gui.impl.gen.view_models.common.missions.bonuses.item_bonus_model import ItemBonusModel
 from gui.impl.gen.view_models.common.missions.bonuses.token_bonus_model import TokenBonusModel
 from gui.ranked_battles.constants import YEAR_POINTS_TOKEN
-from gui.server_events.awards_formatters import AWARDS_SIZES, BATTLE_BONUS_X5_TOKEN, ItemsBonusFormatter, TOKEN_SIZES, TokenBonusFormatter, formatCountLabel
+from gui.server_events.awards_formatters import AWARDS_SIZES, BATTLE_BONUS_X5_TOKEN, GOLD_MISSION, ItemsBonusFormatter, TOKEN_SIZES, TokenBonusFormatter, formatCountLabel
 from gui.server_events.formatters import COMPLEX_TOKEN, TokenComplex, parseComplexToken
 from gui.shared.gui_items.crew_skin import localizedFullName
 from gui.shared.gui_items.customization import CustomizationTooltipContext
@@ -168,6 +168,7 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
     _eventsCache = dependency.descriptor(IEventsCache)
     _RANKED_TOKEN_SOURCE = 'rankedPoint'
     _BATTLE_BONUS_X5_TOKEN_SOURCE = 'bonus_battle_task'
+    _GOLD_MISSION_TOKEN_SOURCE = 'gold_mission'
 
     @classmethod
     def _pack(cls, bonus):
@@ -189,9 +190,9 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
     @classmethod
     def _getToolTip(cls, bonus):
         bonusTokens = bonus.getTokens()
-        tooltipPackers = cls.__getTooltipsPackers()
+        tooltipPackers = cls._getTooltipsPackers()
         result = []
-        for tokenID, _ in bonusTokens.iteritems():
+        for tokenID, token in bonusTokens.iteritems():
             complexToken = parseComplexToken(tokenID)
             tokenType = cls._getTokenBonusType(tokenID, complexToken)
             if tokenType == '':
@@ -200,8 +201,8 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
             if tooltipPacker is None:
                 _logger.warning('There is not a tooltip creator for a token bonus %s', tokenType)
                 continue
-            tooltip = tooltipPacker(complexToken)
-            result.append(createTooltipData(tooltip))
+            tooltip = tooltipPacker(complexToken, token)
+            result.append(tooltip)
 
         return result
 
@@ -209,8 +210,12 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
     def _getContentId(cls, bonus):
         result = []
         bonusTokens = bonus.getTokens()
-        for _ in bonusTokens:
-            result.append(BACKPORT_TOOLTIP_CONTENT_ID)
+        for token in bonusTokens:
+            name = token.split(':')[0]
+            if name.endswith(GOLD_MISSION):
+                result.append(R.views.lobby.battle_pass.tooltips.BattlePassGoldMissionTooltipView())
+            else:
+                result.append(BACKPORT_TOOLTIP_CONTENT_ID)
 
         return result
 
@@ -218,7 +223,8 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
     def _getTokenBonusPackers(cls):
         return {BATTLE_BONUS_X5_TOKEN: cls.__packBattleBonusX5Token, 
            COMPLEX_TOKEN: cls.__packComplexToken, 
-           YEAR_POINTS_TOKEN: cls.__packRankedToken}
+           YEAR_POINTS_TOKEN: cls.__packRankedToken, 
+           GOLD_MISSION: cls.__packGoldMissionToken}
 
     @classmethod
     def _packToken(cls, bonusPacker, bonus, *args):
@@ -234,13 +240,16 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
             return BATTLE_BONUS_X5_TOKEN
         if tokenID.startswith(YEAR_POINTS_TOKEN):
             return YEAR_POINTS_TOKEN
+        if tokenID.split(':')[0].endswith(GOLD_MISSION):
+            return GOLD_MISSION
         return ''
 
     @classmethod
-    def __getTooltipsPackers(cls):
+    def _getTooltipsPackers(cls):
         return {BATTLE_BONUS_X5_TOKEN: TokenBonusFormatter.getBattleBonusX5Tooltip, 
            COMPLEX_TOKEN: cls.__getComplexToolTip, 
-           YEAR_POINTS_TOKEN: cls.__getRankedPointToolTip}
+           YEAR_POINTS_TOKEN: cls.__getRankedPointToolTip, 
+           GOLD_MISSION: cls.__getGoldMissionTooltip}
 
     @classmethod
     def __packComplexToken(cls, model, bonus, complexToken, token):
@@ -271,15 +280,28 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
         return model
 
     @classmethod
-    def __getComplexToolTip(cls, complexToken):
+    def __packGoldMissionToken(cls, model, bonus, *args):
+        name = cls._GOLD_MISSION_TOKEN_SOURCE
+        model.setName(name)
+        model.setIconSmall(backport.image(R.images.gui.maps.icons.quests.bonuses.dyn(AWARDS_SIZES.SMALL).dyn(name)()))
+        model.setIconBig(backport.image(R.images.gui.maps.icons.quests.bonuses.dyn(AWARDS_SIZES.BIG).dyn(name)()))
+        return model
+
+    @classmethod
+    def __getComplexToolTip(cls, complexToken, *_):
         webCache = cls._eventsCache.prefetcher
         userName = i18n.makeString(webCache.getTokenInfo(complexToken.styleID))
         tooltip = makeTooltip(i18n.makeString(TOOLTIPS.QUESTS_BONUSES_TOKEN_HEADER, userName=userName), i18n.makeString(TOOLTIPS.QUESTS_BONUSES_TOKEN_BODY))
-        return tooltip
+        return createTooltipData(tooltip)
 
     @classmethod
     def __getRankedPointToolTip(cls, *_):
-        return makeTooltip(header=backport.text(R.strings.tooltips.rankedBattleView.scorePoint.header()), body=backport.text(R.strings.tooltips.rankedBattleView.scorePoint.body()))
+        return createTooltipData(makeTooltip(header=backport.text(R.strings.tooltips.rankedBattleView.scorePoint.header()), body=backport.text(R.strings.tooltips.rankedBattleView.scorePoint.body())))
+
+    @classmethod
+    def __getGoldMissionTooltip(cls, complexToken, token):
+        return TooltipData(tooltip=None, isSpecial=True, specialAlias=None, specialArgs=[
+         token.id])
 
 
 class ItemBonusUIPacker(BaseBonusUIPacker):

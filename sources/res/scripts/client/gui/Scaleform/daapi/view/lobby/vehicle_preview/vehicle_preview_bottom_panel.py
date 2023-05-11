@@ -382,6 +382,9 @@ class VehiclePreviewBottomPanel(VehiclePreviewBottomPanelMeta):
                 btnIcon = backport.image(R.images.gui.maps.icons.library.buyInWeb())
                 buyingPanelData.update({'buyButtonIcon': btnIcon, 
                    'buyButtonIconAlign': 'right'})
+                if self.__isHeroTank:
+                    buyingPanelData.update({'isBuyingAvailable': True, 
+                       'itemPrice': None})
             self.as_setBuyDataS(buyingPanelData)
             return
 

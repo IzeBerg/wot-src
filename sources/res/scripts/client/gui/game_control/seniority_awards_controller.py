@@ -114,7 +114,6 @@ class SeniorityAwardsController(ISeniorityAwardsController):
     def __clear(self):
         self.__removeListeners()
         self.__cancelClaimTimeout()
-        self.__hideWaiting()
         self.__endTimestamp = None
         self.__clockOnNotification = None
         return

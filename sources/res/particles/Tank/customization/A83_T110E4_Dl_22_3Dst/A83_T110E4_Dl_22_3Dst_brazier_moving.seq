@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>burning_coals</name>
+		<type>model</type>
+		<resource>particles/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_coals_mesh.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>A83_T110E4_Dl_22_3Dst_coals</identifier>
+			<property>g_emissiveParams</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>7.000000 2.000000 0.250000 12.000000</value>
+				<inTangent>0.000000 0.000000 0.150000 9.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>7.000000 2.000000 0.250000 12.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 0.150000 9.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

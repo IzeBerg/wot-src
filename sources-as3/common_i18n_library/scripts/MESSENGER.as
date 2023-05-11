@@ -1913,6 +1913,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_EPICREWARD_BATTLEBOOSTER_GIFT:String = "#messenger:serviceChannelMessages/epicReward/battleBooster_gift";
       
+      public static const SERVICECHANNELMESSAGES_EPICREWARD_EXPEQUIPMENTS_GIFT:String = "#messenger:serviceChannelMessages/epicReward/expequipments_gift";
+      
       public static const SERVICECHANNELMESSAGES_EPICREWARD_BATTLEPASSPOINTS:String = "#messenger:serviceChannelMessages/epicReward/battlePassPoints";
       
       public static const SERVICECHANNELMESSAGES_EPICREWARD_EPICABILITYPOINTS:String = "#messenger:serviceChannelMessages/epicReward/epicAbilityPoints";
@@ -2186,6 +2188,10 @@ package
       public static const PLATFORMCURRENCYMSG_RECEIVED_EQUIP_COIN:String = "#messenger:platformCurrencyMsg/received/equip_coin";
       
       public static const PLATFORMCURRENCYMSG_DEBITED_EQUIP_COIN:String = "#messenger:platformCurrencyMsg/debited/equip_coin";
+      
+      public static const PLATFORMCURRENCYMSG_RECEIVED_FAMECOIN:String = "#messenger:platformCurrencyMsg/received/famecoin";
+      
+      public static const PLATFORMCURRENCYMSG_DEBITED_FAMECOIN:String = "#messenger:platformCurrencyMsg/debited/famecoin";
       
       public static const PLATFORMCURRENCYMSG_RECEIVED_FREEXP:String = "#messenger:platformCurrencyMsg/received/freeXP";
       

@@ -75,6 +75,7 @@
 		<fn_effect_bin>particles/tank/rocket_accelerator/end_fire.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/start_smoke.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_brazier.eff</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/soul_shimmer.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/holy_settling.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/holy_settling2.vfx</fn_effect_bin>
@@ -91,6 +92,7 @@
 		<fn_effect_bin>particles/content_forward/pfx/tank/rocket_accelerator/end_fire.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/rocket_accelerator/start_smoke.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_brazier.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Fail.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Trace.vfx</fn_effect_bin>
@@ -116,11 +118,9 @@
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/armorHit_HE_3.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/armorHit_HE_4.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/armorhit_trace.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/br_trace_base_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/br_trace_base_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/br_trace_upgraded_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/br_trace_upgraded_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/br_trace_upgraded_smoke.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/br_arcade_trace_1.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/br_arcade_trace_2.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/br_arcade_trace_HE_upgraded_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/dirtHit_AP_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/dirtHit_AP_1_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Shells_Eff/dirtHit_AP_1_3.vfx</fn_effect_bin>
@@ -1195,11 +1195,9 @@
 		<fn_effect_bin>particles/Shells_Eff/armorHit_SC_4.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/armorHit_SF_4.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/armorHit_SH_4.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Shells_Eff/br_br_trace_base_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Shells_Eff/br_br_trace_base_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Shells_Eff/br_br_trace_upgraded_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Shells_Eff/br_br_trace_upgraded_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Shells_Eff/br_br_trace_upgraded_smoke.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/br_arcade_trace_1.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/br_arcade_trace_2.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/br_arcade_trace_HE_upgraded_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/dirtHit_AP_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/dirtHit_AP_1_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/dirtHit_AP_1_3.eff</fn_effect_bin>
@@ -2257,6 +2255,7 @@
 		<fn_effect_bin>particles/tank/rocket_accelerator/end_fire.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/start_smoke.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_brazier.eff</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/s31_strv_k/soul_shimmer.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/s31_strv_k/holy_settling.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/s31_strv_k/holy_settling2.vfx</fn_effect_bin>
@@ -2279,6 +2278,7 @@
 		<fn_effect_bin>particles/content_deferred/pfx/tank/rocket_accelerator/end_fire.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/rocket_accelerator/start_smoke.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_brazier.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_royal/CorrodedHit/CorrodedHit.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_royal/CorrodedHit/CorrodedHit_Fail.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_royal/CorrodedHit/CorrodedHit_Trace.vfx</fn_effect_bin>
@@ -2304,11 +2304,9 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/armorHit_HE_3.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/armorHit_HE_4.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/armorhit_trace.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/br_trace_base_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/br_trace_base_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/br_trace_upgraded_1.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/br_trace_upgraded_2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/br_trace_upgraded_smoke.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/br_arcade_trace_1.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/br_arcade_trace_2.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/br_arcade_trace_HE_upgraded_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/dirtHit_AP_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/dirtHit_AP_1_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Shells_Eff/dirtHit_AP_1_3.vfx</fn_effect_bin>
@@ -3512,11 +3510,9 @@
 		<fn_effect_bin>particles/Shells_Eff/armorHit_SC_4.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/armorHit_SF_4.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/armorHit_SH_4.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Shells_Eff/br_br_trace_base_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Shells_Eff/br_br_trace_base_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Shells_Eff/br_br_trace_upgraded_1.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Shells_Eff/br_br_trace_upgraded_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Shells_Eff/br_br_trace_upgraded_smoke.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/br_arcade_trace_1.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/br_arcade_trace_2.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Shells_Eff/br_arcade_trace_HE_upgraded_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/dirtHit_AP_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/dirtHit_AP_1_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Shells_Eff/dirtHit_AP_1_3.eff</fn_effect_bin>

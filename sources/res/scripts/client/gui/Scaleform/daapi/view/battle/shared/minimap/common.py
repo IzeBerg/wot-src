@@ -134,6 +134,16 @@ class EntriesPlugin(SimplePlugin):
             self._setMatrix(model.getID(), matrix)
         return
 
+    def _invokeEx(self, uniqueID, name, *args):
+        model = self._entries.get(uniqueID)
+        if model:
+            self._invoke(model.getID(), name, *args)
+
+    def _setActiveEx(self, uniqueID, isActive):
+        model = self._entries.get(uniqueID)
+        if model:
+            self._setActive(model.getID(), isActive)
+
 
 class IntervalPlugin(EntriesPlugin):
     __slots__ = ('__callbackIDs', )
@@ -210,3 +220,9 @@ class BaseAreaMarkerEntriesPlugin(EntriesPlugin):
 
     def update(self, *args, **kwargs):
         super(BaseAreaMarkerEntriesPlugin, self).update()
+
+    def invoke(self, uniqueID, name, *args):
+        self._invokeEx(uniqueID, name, *args)
+
+    def setActive(self, uniqueID, isActive):
+        self._setActiveEx(uniqueID, isActive)

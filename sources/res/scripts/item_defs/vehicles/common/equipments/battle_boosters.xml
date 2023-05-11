@@ -601,7 +601,7 @@
 			SkillEquipment
 			<skillName>loader_pedant</skillName>
 			<perkLevelMultiplier>
-				1.5
+				4.0
 				<!--BW_String-->
 			</perkLevelMultiplier>
 		</script>
@@ -614,7 +614,7 @@
 				<mul>
 					<name>vehicleAmmoBayStrength</name>
 					<value>
-						1.375
+						4.0
 						<!--BW_String-->
 					</value>
 				</mul>
@@ -679,7 +679,7 @@
 		<vehicleFilter>
 			<exclude>
 				<vehicle>
-					<tags>wheeledVehicle</tags>
+					<mandatoryTags>wheeledVehicle lightTank</mandatoryTags>
 				</vehicle>
 			</exclude>
 		</vehicleFilter>

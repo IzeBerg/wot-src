@@ -320,6 +320,10 @@ package
       public static const GETRESOURCESBACK:String = "#waiting:getResourcesBack";
       
       public static const PUTRESOURCES:String = "#waiting:putResources";
+      
+      public static const ACHIVEMENTS20:String = "#waiting:achivements20";
+      
+      public static const DOWNLOAD_ACHIEVEMENTS20:String = "#waiting:download/achievements20";
        
       
       public function WAITING()
