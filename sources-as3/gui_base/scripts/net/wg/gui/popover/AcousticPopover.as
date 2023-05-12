@@ -278,22 +278,74 @@ package net.wg.gui.popover
       
       override protected function onItemSelect(param1:Array) : void
       {
-         /*
-          * Decompilation error
-          * Timeout (1 minute) was reached
-          * Instruction count: 110
-          */
-         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
+         var _loc5_:AcousticButton = null;
+         if(!this._isPopulated)
+         {
+            this._selectedItemsRaw = param1;
+            return;
+         }
+         var _loc2_:int = this._lastSelectedItems.length;
+         var _loc3_:int = 0;
+         var _loc4_:Boolean = !(param1 && param1.length > 0);
+         _loc3_ = 0;
+         while(_loc3_ < _loc2_)
+         {
+            this._lastSelectedItems[_loc3_].selected = false;
+            _loc3_++;
+         }
+         this._lastSelectedItems.splice(0,_loc2_);
+         if(_loc4_)
+         {
+            return;
+         }
+         _loc2_ = param1.length;
+         _loc3_ = 0;
+         while(_loc3_ < _loc2_)
+         {
+            if(this._acousticsById && this._acousticsById.hasOwnProperty(param1[_loc3_]))
+            {
+               _loc5_ = this._acousticsById[param1[_loc3_]];
+               _loc5_.selected = true;
+               this._lastSelectedItems.push(_loc5_);
+            }
+            _loc3_++;
+         }
       }
       
       override protected function onItemPlay(param1:Array) : void
       {
-         /*
-          * Decompilation error
-          * Timeout (1 minute) was reached
-          * Instruction count: 110
-          */
-         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
+         var _loc5_:AcousticButton = null;
+         if(!this._isPopulated)
+         {
+            this._animatedItemsRaw = param1;
+            return;
+         }
+         var _loc2_:int = this._lastAnimatedItems.length;
+         var _loc3_:int = 0;
+         var _loc4_:Boolean = !(param1 && param1.length > 0);
+         _loc3_ = 0;
+         while(_loc3_ < _loc2_)
+         {
+            this._lastAnimatedItems[_loc3_].animate = false;
+            _loc3_++;
+         }
+         this._lastAnimatedItems.splice(0,_loc2_);
+         if(_loc4_)
+         {
+            return;
+         }
+         _loc2_ = param1.length;
+         _loc3_ = 0;
+         while(_loc3_ < _loc2_)
+         {
+            if(this._acousticsById && this._acousticsById.hasOwnProperty(param1[_loc3_]))
+            {
+               _loc5_ = this._acousticsById[param1[_loc3_]];
+               _loc5_.animate = true;
+               this._lastAnimatedItems.push(_loc5_);
+            }
+            _loc3_++;
+         }
       }
       
       public function as_setEnable(param1:Boolean) : void
