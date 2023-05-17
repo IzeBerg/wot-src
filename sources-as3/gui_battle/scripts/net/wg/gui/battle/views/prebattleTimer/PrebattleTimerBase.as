@@ -201,9 +201,12 @@ package net.wg.gui.battle.views.prebattleTimer
       
       protected function doUpdateSize(param1:String) : void
       {
-         var _loc2_:Boolean = param1 == SMALL_STATE;
-         this.timer.scaleX = this.timer.scaleY = !!_loc2_ ? Number(TIMER_SMALL_SCALE) : Number(TIMER_LARGE_SCALE);
-         this.timer.y = !!_loc2_ ? Number(TIMER_SMALL_Y) : Number(TIMER_LARGE_Y);
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 40
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       protected function doResetHideAnim() : void
@@ -246,17 +249,12 @@ package net.wg.gui.battle.views.prebattleTimer
       
       protected function initFramesScript() : void
       {
-         var _loc3_:FrameLabel = null;
-         this._frameHelper = new FrameHelper(this);
-         var _loc1_:Array = this.currentLabels;
-         var _loc2_:int = _loc1_.length;
-         var _loc4_:int = 0;
-         while(_loc4_ < _loc2_)
-         {
-            _loc3_ = _loc1_[_loc4_];
-            this.addScriptFrame(this._frameHelper,_loc3_.name,_loc3_.frame);
-            _loc4_++;
-         }
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 45
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       protected function addScriptFrame(param1:FrameHelper, param2:String, param3:int) : void

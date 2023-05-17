@@ -34,19 +34,12 @@ package net.wg.gui.battle.ranked.battleloading.renderers
       
       override protected function draw() : void
       {
-         var _loc2_:Function = null;
-         var _loc1_:RankedDAAPIVehicleInfoVO = model as RankedDAAPIVehicleInfoVO;
-         if(_loc1_ != null && (_loc1_.level > -1 || _loc1_.division > -1))
-         {
-            this._rankIcon.visible = true;
-            _loc2_ = !!_loc1_.isGroup ? BATTLEATLAS.getRBRanksGroupIcon : BATTLEATLAS.getRBRankIcon;
-            this._rankIcon.imageName = _loc2_(_loc1_.division.toString(),_loc1_.level.toString());
-         }
-         else
-         {
-            this._rankIcon.visible = false;
-         }
-         super.draw();
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 75
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
    }
 }
