@@ -161,146 +161,12 @@ package net.wg.gui.lobby.congrats
       
       override protected function draw() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         var _loc3_:int = 0;
-         var _loc4_:int = 0;
-         super.draw();
-         if(isInvalid(InvalidationType.SIZE))
-         {
-            _loc1_ = LEFT_TF_OFFSET;
-            _loc2_ = RIGHT_TF_OFFSET;
-            if(this._isElite)
-            {
-               _loc1_ += TF_ELITE_EXTRA_OFFSET;
-               _loc2_ += TF_ELITE_EXTRA_OFFSET;
-            }
-            _loc3_ = this.vehicleLevelTF.width + _loc1_ + this._vehicleType.width + _loc2_ + this.vehicleNameTF.width;
-            _loc4_ = width - _loc3_ >> 1;
-            this.titleTF.x = width - this.titleTF.width >> 1;
-            this.collectibleTF.x = width - this.collectibleTF.width >> 1;
-            this.vehicleLevelTF.x = _loc4_;
-            _loc4_ += this.vehicleLevelTF.width + _loc1_;
-            this._vehicleType.x = _loc4_;
-            _loc4_ += _loc2_ + this._vehicleType.width;
-            this.vehicleNameTF.x = _loc4_;
-            if(this.backButton.visible)
-            {
-               this.showInHangarButton.x = width - this.showInHangarButton.width - this.backButton.width - BUTTON_GAP >> 1;
-               this.backButton.x = this.showInHangarButton.x + this.showInHangarButton.width + BUTTON_GAP | 0;
-            }
-            else
-            {
-               this.showInHangarButton.x = width - this.showInHangarButton.width >> 1;
-            }
-            this.image.scaleX = this.image.scaleY = this._imageScale;
-            this.image.x = (width - this.image.width >> 1) - VEHICLE_H_OFFSET * this._imageScale;
-            this.image.y = (height - this.image.height >> 1) + VEHICLE_V_OFFSET / this._imageScale;
-            dispatchEvent(new Event(Event.RESIZE));
-         }
-         if(this._showAnimation && isInvalid(ANIMATION_FLAG))
-         {
-            this._showAnimation = false;
-            visible = true;
-            this.disposeTweens();
-            this.repositionItems();
-            this._tweens.push(new Tween(ANIMATION_DURATION,this.titleTF,{
-               "y":this.titleTF.y,
-               "alpha":1
-            },{
-               "ease":Regular.easeOut,
-               "fastTransform":false
-            }));
-            this.titleTF.y -= TEXTS_TWEEN_TOP_PADDING;
-            this.titleTF.alpha = 0;
-            if(this._isCollectible)
-            {
-               this._tweens.push(new Tween(ANIMATION_DURATION,this.collectibleTF,{
-                  "y":this.collectibleTF.y,
-                  "alpha":1
-               },{
-                  "ease":Regular.easeOut,
-                  "fastTransform":false
-               }));
-            }
-            this.collectibleTF.y -= TEXTS_TWEEN_TOP_PADDING;
-            this.collectibleTF.alpha = 0;
-            this._tweens.push(new Tween(ANIMATION_DURATION,this.vehicleLevelTF,{
-               "y":this.vehicleLevelTF.y,
-               "alpha":1
-            },{
-               "ease":Regular.easeOut,
-               "fastTransform":false,
-               "delay":TEXTS_TWEEN_DELAY
-            }));
-            this.vehicleLevelTF.y -= TEXTS_TWEEN_TOP_PADDING;
-            this.vehicleLevelTF.alpha = 0;
-            this._tweens.push(new Tween(ANIMATION_DURATION,this._vehicleType,{
-               "y":this._vehicleType.y,
-               "alpha":1
-            },{
-               "ease":Regular.easeOut,
-               "fastTransform":false,
-               "delay":TEXTS_TWEEN_DELAY
-            }));
-            this._vehicleType.y -= TEXTS_TWEEN_TOP_PADDING;
-            this._vehicleType.alpha = 0;
-            this._tweens.push(new Tween(ANIMATION_DURATION,this.vehicleNameTF,{
-               "y":this.vehicleNameTF.y,
-               "alpha":1
-            },{
-               "ease":Regular.easeOut,
-               "fastTransform":false,
-               "delay":TEXTS_TWEEN_DELAY
-            }));
-            this.vehicleNameTF.y -= TEXTS_TWEEN_TOP_PADDING;
-            this.vehicleNameTF.alpha = 0;
-            this._tweens.push(new Tween(ANIMATION_DURATION * 1.2,this.image,{
-               "x":this.image.x,
-               "y":this.image.y,
-               "alpha":1,
-               "scaleX":this._imageScale,
-               "scaleY":this._imageScale
-            },{
-               "ease":Back.easeOut,
-               "fastTransform":false,
-               "delay":200
-            }));
-            this.image.scaleX = 0.5 * this._imageScale;
-            this.image.scaleY = 0.5 * this._imageScale;
-            this.image.x = (width - this.image.width >> 1) + 30 * this._imageScale;
-            this.image.y = height - this.image.height >> 1;
-            this.image.alpha = 0;
-            this.vehicleHighlight.scaleX = this.vehicleHighlight.scaleY = this._imageScale;
-            this.vehicleHighlight.x = width - this.vehicleHighlight.width >> 1;
-            this.vehicleHighlight.y = (height - this.vehicleHighlight.height >> 1) + VEHICLE_HIGHLIGHT_OFFSET / this._imageScale + 30;
-            this.vehicleHighlight.alpha = 1;
-            this.vehicleHighlight.visible = false;
-            this._tweens.push(new Tween(ANIMATION_DURATION * 3,this.vehicleHighlight,{
-               "scaleX":4 * this._imageScale,
-               "scaleY":3 * this._imageScale,
-               "alpha":0,
-               "x":width - this.vehicleHighlight.width * 4 >> 1,
-               "y":(height - this.vehicleHighlight.height * 3 >> 1) + VEHICLE_HIGHLIGHT_OFFSET * this._imageScale
-            },{
-               "ease":Strong.easeOut,
-               "fastTransform":false,
-               "delay":ANIMATION_DURATION * 0.75,
-               "onChange":this.onStartVehicleHighlightAnimation
-            }));
-            this._tweens.push(new Tween(ANIMATION_DURATION,this.showInHangarButton,{"alpha":1},{
-               "ease":Strong.easeOut,
-               "fastTransform":false,
-               "delay":BUTTON_TWEEN_DELAY
-            }));
-            this.showInHangarButton.alpha = 0;
-            this._tweens.push(new Tween(ANIMATION_DURATION,this.backButton,{"alpha":1},{
-               "ease":Strong.easeOut,
-               "fastTransform":false,
-               "delay":BUTTON_TWEEN_DELAY
-            }));
-            this.backButton.alpha = 0;
-         }
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 700
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       public function setData(param1:Object) : void
@@ -322,8 +188,12 @@ package net.wg.gui.lobby.congrats
       
       public function setStateSizeBoundaries(param1:int, param2:int) : void
       {
-         this._imageScale = param2 >= StageSizeBoundaries.HEIGHT_900 ? Number(SCALE_BIG) : Number(SCALE_SMALL);
-         invalidateSize();
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 21
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       private function onStartVehicleHighlightAnimation(param1:Tween) : void

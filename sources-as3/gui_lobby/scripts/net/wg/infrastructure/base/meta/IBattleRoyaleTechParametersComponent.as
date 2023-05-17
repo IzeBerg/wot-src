@@ -1,11 +1,5 @@
-package net.wg.infrastructure.base.meta
-{
-   import flash.events.IEventDispatcher;
-   
-   public interface IBattleRoyaleTechParametersComponent extends IEventDispatcher
-   {
-       
-      
-      function as_updateHeight(param1:Number) : void;
-   }
-}
+/*
+ * Decompilation error
+ * Timeout (5 minutes) was reached
+ */
+throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
