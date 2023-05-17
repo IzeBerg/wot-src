@@ -37,41 +37,12 @@ package net.wg.data.VO.daapi
       
       override protected function onDataWrite(param1:String, param2:Object) : Boolean
       {
-         switch(param1)
-         {
-            case COND_LEFT_INFO_FIELD_NAME:
-               this.leftVehicleInfos = Vector.<DAAPIVehicleInfoVO>(App.utils.data.convertVOArrayToVector(param1,param2,DAAPIVehicleInfoVO));
-               return false;
-            case COND_RIGHT_INFO_FIELD_NAME:
-               this.rightVehicleInfos = Vector.<DAAPIVehicleInfoVO>(App.utils.data.convertVOArrayToVector(param1,param2,DAAPIVehicleInfoVO));
-               return false;
-            case COND_LEFT_VIDS_FIELD_NAME:
-               if(param2)
-               {
-                  this.leftVehiclesIDs = App.utils.data.convertNumberArrayToVector(param1,param2);
-               }
-               return false;
-            case COND_RIGHT_VIDS_FIELD_NAME:
-               if(param2)
-               {
-                  this.rightVehiclesIDs = App.utils.data.convertNumberArrayToVector(param1,param2);
-               }
-               return false;
-            case COND_LEFT_CIDS_FIELD_NAME:
-               if(param2)
-               {
-                  this.leftCorrelationIDs = App.utils.data.convertNumberArrayToVector(param1,param2);
-               }
-               return false;
-            case COND_RIGHT_CIDS_FIELD_NAME:
-               if(param2)
-               {
-                  this.rightCorrelationIDs = App.utils.data.convertNumberArrayToVector(param1,param2);
-               }
-               return false;
-            default:
-               return super.onDataWrite(param1,param2);
-         }
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 157
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       override protected function onDispose() : void

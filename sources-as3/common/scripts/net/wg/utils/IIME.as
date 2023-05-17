@@ -1,18 +1,5 @@
-package net.wg.utils
-{
-   import net.wg.infrastructure.interfaces.ISimpleManagedContainer;
-   import net.wg.infrastructure.interfaces.entity.IDisposable;
-   
-   public interface IIME extends IDisposable
-   {
-       
-      
-      function init(param1:Boolean) : void;
-      
-      function setVisible(param1:Boolean) : void;
-      
-      function getContainer() : ISimpleManagedContainer;
-      
-      function onLangBarResize(param1:Number, param2:Number) : void;
-   }
-}
+/*
+ * Decompilation error
+ * Timeout (5 minutes) was reached
+ */
+throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
