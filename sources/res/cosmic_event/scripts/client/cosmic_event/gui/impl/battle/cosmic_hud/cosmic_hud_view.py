@@ -498,6 +498,7 @@ class CosmicHudView(ViewImpl):
     def __onVehicleDeployed(self):
         self._respawnAnnouncement = None
         with self.viewModel.transaction() as (model):
+            model.setIsTargeting(False)
             if self._currentGoal is not None and self._currentGoal.type == AnnouncementTypeEnum.AWAITINGPLAYERS:
                 return
             model.setAnnouncementType(AnnouncementTypeEnum.NONE)
