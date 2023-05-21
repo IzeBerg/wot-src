@@ -228,6 +228,8 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
         self.__setVehicleMProv(self.getTargetMProv())
 
     def setToVehicleDirection(self):
+        if not self.__aimingSystem:
+            return
         matrix = Math.Matrix(self.getTargetMProv())
         self.setYawPitch(matrix.yaw, matrix.pitch)
 

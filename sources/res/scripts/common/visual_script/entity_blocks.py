@@ -251,8 +251,11 @@ class IsEntityDestroyed(Block, EntityMeta):
         return [ASPECT.SERVER]
 
     def _exec(self):
-        entity = self._entity.getValue()
-        if entity:
-            self._isDestroyed.setValue(entity.isDestroyed)
-        else:
+        try:
+            entity = self._entity.getValue()
+            if entity:
+                self._isDestroyed.setValue(entity.isDestroyed)
+            else:
+                self._isDestroyed.setValue(True)
+        except (AttributeError, ReferenceError):
             self._isDestroyed.setValue(True)

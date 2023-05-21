@@ -1,6 +1,5 @@
 import logging
 from CurrentVehicle import g_currentVehicle
-from account_helpers.settings_core.ServerSettingsManager import UI_STORAGE_KEYS
 from account_helpers.settings_core.settings_constants import OnceOnlyHints
 from gui.limited_ui.lui_rules_storage import LuiRules
 from skeletons.gui.game_control import ILimitedUIController
@@ -14,8 +13,8 @@ from gui.shared.gui_items.Vehicle import Vehicle
 from helpers import dependency
 from skeletons.account_helpers.settings_core import ISettingsCore
 _logger = logging.getLogger(__name__)
-_AMMUNITION_PANEL_HINTS = {OnceOnlyHints.AMMUNITION_PANEL_HINT: UI_STORAGE_KEYS.OPTIONAL_DEVICE_SETUP_INTRO_SHOWN, 
-   OnceOnlyHints.AMUNNITION_PANEL_EPIC_BATTLE_ABILITIES_HINT: UI_STORAGE_KEYS.EPIC_BATTLE_ABILITIES_INTRO_SHOWN}
+_AMMUNITION_PANEL_HINTS = (
+ OnceOnlyHints.AMMUNITION_PANEL_HINT, OnceOnlyHints.AMUNNITION_PANEL_EPIC_BATTLE_ABILITIES_HINT)
 _HINT_TO_RULE_ID = {OnceOnlyHints.AMMUNITION_PANEL_HINT: LuiRules.AP_ZONE_HINT, 
    OnceOnlyHints.AMUNNITION_PANEL_EPIC_BATTLE_ABILITIES_HINT: LuiRules.AP_BATTLE_ABILITIES_HINT}
 
@@ -46,12 +45,11 @@ class HangarAmmunitionPanelView(BaseAmmunitionPanelView):
     def _onLoading(self, *args, **kwargs):
         super(HangarAmmunitionPanelView, self)._onLoading(*args, **kwargs)
         serverSettings = self._settingsCore.serverSettings
-        for hintName, uiStorage in _AMMUNITION_PANEL_HINTS.iteritems():
+        for hintName in _AMMUNITION_PANEL_HINTS:
             showHint = not serverSettings.getOnceOnlyHintsSetting(hintName, default=False)
             ruleID = _HINT_TO_RULE_ID.get(hintName)
             if showHint and (ruleID is None or self._limitedUIController.isRuleCompleted(ruleID)):
                 serverSettings.setOnceOnlyHintsSettings({hintName: True})
-                serverSettings.saveInUIStorage({uiStorage: True})
 
         return
 

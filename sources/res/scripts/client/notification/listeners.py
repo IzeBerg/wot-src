@@ -1872,7 +1872,7 @@ class CollectionsListener(_NotificationListener, EventsHandler):
     __limitedUIController = dependency.descriptor(ILimitedUIController)
     __EVENT_TYPE_TO_SETTING = {COLLECTION_START_EVENT_TYPE: COLLECTION_START_SEEN}
     __NOTIFICATIONS = R.strings.collections.notifications
-    __FEATURE_NAME_TO_LUI_ID = {'battle_pass_10': LuiRules.SYS_MSG_COLLECTION_START_BP}
+    __FEATURE_NAME_TO_LUI_ID = {'battle_pass_': LuiRules.SYS_MSG_COLLECTION_START_BP}
 
     def __init__(self):
         super(CollectionsListener, self).__init__()
@@ -1937,15 +1937,23 @@ class CollectionsListener(_NotificationListener, EventsHandler):
                 collection = self.__collections.getCollection(collectionID)
                 if collection is None:
                     continue
-                luiRuleID = self.__FEATURE_NAME_TO_LUI_ID.get(collection.name)
+                luiRuleID = self.__getLuiRuleID(collection.name)
                 if not self.__limitedUIController.isInited or luiRuleID and luiRuleID in LuiRules and not self.__limitedUIController.isRuleCompleted(luiRuleID):
-                    self.__postponedNotifications.append(notification)
+                    if notification not in self.__postponedNotifications:
+                        self.__postponedNotifications.append(notification)
                     continue
                 settings = AccountSettings.getNotifications(COLLECTIONS_NOTIFICATIONS)
                 settingName = self.__EVENT_TYPE_TO_SETTING[notification.eventType]
                 if self.__needPushStarted(settings, settingName, collectionID):
                     self.__pushStarted(collection)
                     self.__setStartPushed(settings, settingName, collectionID)
+
+        return
+
+    def __getLuiRuleID(self, collectionID):
+        for key in self.__FEATURE_NAME_TO_LUI_ID:
+            if key in collectionID:
+                return self.__FEATURE_NAME_TO_LUI_ID[key]
 
         return
 

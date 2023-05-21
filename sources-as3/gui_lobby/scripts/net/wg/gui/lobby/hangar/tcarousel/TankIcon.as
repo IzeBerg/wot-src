@@ -78,6 +78,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.txtRentInfo.htmlText = param1.rentLeft;
          if(txtInfo.visible)
          {
+            statsBg.visible = statsTF.visible = false;
             this.updateTextInfo(param1,false);
          }
          imgIcon.source = param1.icon;

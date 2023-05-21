@@ -53,28 +53,25 @@ class PlayersPanel(IBattleFieldListener, IArenaVehiclesController, BattleRoyaleT
         return
 
     def updateRespawnTime(self, timeLeft):
-        if not isVehicleAlive() or not self.__sessionProvider.arenaVisitor.bonus.isSquadSupported():
-            return
-        if self.__respawningDelayCallbackID and not timeLeft:
-            self.__clearDelayCallback()
-            self.updateRespawningStatus(timeLeft)
+        if not isVehicleAlive() and not self.__isRespawning or not self.__sessionProvider.arenaVisitor.bonus.isSquadSupported():
             return
         if self.__respawningDelayCallbackID:
             self.__clearDelayCallback()
-        BigWorld.callback(RESPAWNING_TIMER_DELAY, partial(self.updateRespawningStatus, timeLeft))
+        self.__respawningDelayCallbackID = BigWorld.callback(RESPAWNING_TIMER_DELAY, partial(self.updateRespawningStatus, timeLeft))
 
     def updateRespawningStatus(self, timeLeft):
-        if self.__respawningDelayCallbackID:
-            self.__clearDelayCallback()
+        self.__respawningDelayCallbackID = None
         if not self.__vehicleIDs:
             _logger.warning('PlayersPanel vehicleIDs empty')
             return
-        arenaDP = self.__sessionProvider.getArenaDP()
-        vehicleID = self.__vehicleIDs[0]
-        vInfoVO = arenaDP.getVehicleInfo(vehicleID)
-        self.__isRespawning = bool(timeLeft)
-        _logger.debug('updateRespawnTime as_setPlayerStatusS %s %s %s %s', 0, vInfoVO.isAlive(), vInfoVO.isReady(), self.__isRespawning)
-        self.as_setPlayerStatusS(0, vInfoVO.isAlive(), vInfoVO.isReady(), self.__isRespawning)
+        else:
+            arenaDP = self.__sessionProvider.getArenaDP()
+            vehicleID = self.__vehicleIDs[0]
+            vInfoVO = arenaDP.getVehicleInfo(vehicleID)
+            self.__isRespawning = bool(timeLeft)
+            _logger.debug('updateRespawnTime as_setPlayerStatusS %s %s %s %s', 0, vInfoVO.isAlive(), vInfoVO.isReady(), self.__isRespawning)
+            self.as_setPlayerStatusS(0, vInfoVO.isAlive(), vInfoVO.isReady(), self.__isRespawning)
+            return
 
     def invalidateVehicleStatus(self, flags, vInfoVO, arenaDP):
         if vInfoVO.vehicleID in self.__vehicleIDs:

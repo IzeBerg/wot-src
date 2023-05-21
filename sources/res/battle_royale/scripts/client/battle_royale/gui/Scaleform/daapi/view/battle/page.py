@@ -57,6 +57,8 @@ class _BattleRoyaleComponentsConfig(ComponentsConfig):
            BATTLE_VIEW_ALIASES.CORRODING_SHOT_INDICATOR,
            BATTLE_VIEW_ALIASES.BR_TIMERS_PANEL)),
          (
+          BATTLE_CTRL_ID.PERKS, (BATTLE_VIEW_ALIASES.PERKS_PANEL,)),
+         (
           BATTLE_CTRL_ID.TEAM_BASES,
           (
            BATTLE_VIEW_ALIASES.TEAM_BASES_PANEL,

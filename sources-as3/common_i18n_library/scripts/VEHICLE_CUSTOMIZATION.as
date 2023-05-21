@@ -3283,6 +3283,10 @@ package
       
       public static const CAMOUFLAGE_AM_INDEPENDENCE_DAY_2023_DESCRIPTION:String = "#vehicle_customization:camouflage/am_independence_day_2023/description";
       
+      public static const CAMOUFLAGE_F64_AMX_50FOSH_B_BXI_3DST_LABEL:String = "#vehicle_customization:camouflage/F64_AMX_50Fosh_B_BXI_3DSt/label";
+      
+      public static const CAMOUFLAGE_F64_AMX_50FOSH_B_BXI_3DST_DESCRIPTION:String = "#vehicle_customization:camouflage/F64_AMX_50Fosh_B_BXI_3DSt/description";
+      
       public static const CAMOUFLAGE_COSM_1_LABEL:String = "#vehicle_customization:camouflage/cosm_1/label";
       
       public static const CAMOUFLAGE_COSM_1_DESCRIPTION:String = "#vehicle_customization:camouflage/cosm_1/description";
@@ -3294,6 +3298,10 @@ package
       public static const CAMOUFLAGE_COSM_3_LABEL:String = "#vehicle_customization:camouflage/cosm_3/label";
       
       public static const CAMOUFLAGE_COSM_3_DESCRIPTION:String = "#vehicle_customization:camouflage/cosm_3/description";
+      
+      public static const CAMOUFLAGE_A67_T57_58_BXI_3DST_LABEL:String = "#vehicle_customization:camouflage/A67_T57_58_BXI_3DSt/label";
+      
+      public static const CAMOUFLAGE_A67_T57_58_BXI_3DST_DESCRIPTION:String = "#vehicle_customization:camouflage/A67_T57_58_BXI_3DSt/description";
       
       public static const CAMOUFLAGE_DRAGON_BOAT_FESTIVAL_LABEL:String = "#vehicle_customization:camouflage/dragon_boat_festival/label";
       
@@ -3326,6 +3334,10 @@ package
       public static const CAMOUFLAGE_TANKFEST_2_LABEL:String = "#vehicle_customization:camouflage/tankfest_2/label";
       
       public static const CAMOUFLAGE_TANKFEST_2_DESCRIPTION:String = "#vehicle_customization:camouflage/tankfest_2/description";
+      
+      public static const CAMOUFLAGE_J20_TYPE_2605_BXI_3DST_LABEL:String = "#vehicle_customization:camouflage/J20_Type_2605_BXI_3DSt/label";
+      
+      public static const CAMOUFLAGE_J20_TYPE_2605_BXI_3DST_DESCRIPTION:String = "#vehicle_customization:camouflage/J20_Type_2605_BXI_3DSt/description";
       
       public static const CAMOUFLAGE_TWITCH_W_2023_LABEL:String = "#vehicle_customization:camouflage/twitch_w_2023/label";
       
@@ -11713,6 +11725,10 @@ package
       
       public static const SPECIAL_STYLE_TWITCH_APRIL_2023_DESC_LONG:String = "#vehicle_customization:special_style/twitch_april_2023_desc/long";
       
+      public static const SPECIAL_STYLE_J20_TYPE_2605_BXI_3DST:String = "#vehicle_customization:special_style/J20_Type_2605_BXI_3DSt";
+      
+      public static const SPECIAL_STYLE_J20_TYPE_2605_BXI_3DST_DESC_LONG:String = "#vehicle_customization:special_style/J20_Type_2605_BXI_3DSt_desc/long";
+      
       public static const UNIQUE_STYLE_J27_O_I_120_BP:String = "#vehicle_customization:unique_style/J27_O_I_120_BP";
       
       public static const SPECIAL_STYLE_NATISK_2023_STYLE_L1:String = "#vehicle_customization:special_style/natisk_2023_style_l1";
@@ -11757,6 +11773,10 @@ package
       
       public static const SPECIAL_STYLE_AM_INDEPENDENCE_DAY_2023_DESC_LONG:String = "#vehicle_customization:special_style/am_independence_day_2023_desc/long";
       
+      public static const SPECIAL_STYLE_F64_AMX_50FOSH_B_BXI_3DST:String = "#vehicle_customization:special_style/F64_AMX_50Fosh_B_BXI_3DSt";
+      
+      public static const SPECIAL_STYLE_F64_AMX_50FOSH_B_BXI_3DST_DESC_LONG:String = "#vehicle_customization:special_style/F64_AMX_50Fosh_B_BXI_3DSt_desc/long";
+      
       public static const SPECIAL_STYLE_COSM_1:String = "#vehicle_customization:special_style/cosm_1";
       
       public static const SPECIAL_STYLE_COSM_DESC:String = "#vehicle_customization:special_style/cosm_desc";
@@ -11764,6 +11784,10 @@ package
       public static const SPECIAL_STYLE_COSM_2:String = "#vehicle_customization:special_style/cosm_2";
       
       public static const SPECIAL_STYLE_COSM_3:String = "#vehicle_customization:special_style/cosm_3";
+      
+      public static const SPECIAL_STYLE_A67_T57_58_BXI_3DST:String = "#vehicle_customization:special_style/A67_T57_58_BXI_3DSt";
+      
+      public static const SPECIAL_STYLE_A67_T57_58_BXI_3DST_DESC_LONG:String = "#vehicle_customization:special_style/A67_T57_58_BXI_3DSt_desc/long";
       
       public static const SPECIAL_STYLE_DRAGON_BOAT_FESTIVAL:String = "#vehicle_customization:special_style/dragon_boat_festival";
       

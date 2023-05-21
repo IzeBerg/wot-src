@@ -663,8 +663,6 @@ package
       
       public static const DIALOGS_TITLE_INSTALL_ITEMS:String = "#epic_battle:dialogs/title/install/items";
       
-      public static const DIALOGS_TITLE_INSTALLFORALLOFTYPE:String = "#epic_battle:dialogs/title/installForAllOfType";
-      
       public static const DIALOGS_QUOTEDNAME:String = "#epic_battle:dialogs/quotedName";
       
       public static const SKILL_CATEGORY_FIRESUPPORT:String = "#epic_battle:skill/category/firesupport";

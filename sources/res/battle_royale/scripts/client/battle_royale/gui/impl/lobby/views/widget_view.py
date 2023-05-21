@@ -38,15 +38,20 @@ class WidgetView(ViewImpl):
         self.viewModel.onWrapperInitialized += self.__onWrapperInitialized
         self.brProgression.onProgressPointsUpdated += self.__onProgressionUpdated
         self.brProgression.onSettingsChanged += self.__onProgressionUpdated
+        self.__battleRoyaleController.onPrimeTimeStatusUpdated += self.__onPrimeTimeStatusUpdated
         self.updateModel()
 
     def _finalize(self):
         self.viewModel.onWrapperInitialized -= self.__onWrapperInitialized
         self.brProgression.onProgressPointsUpdated -= self.__onProgressionUpdated
         self.brProgression.onSettingsChanged -= self.__onProgressionUpdated
+        self.__battleRoyaleController.onPrimeTimeStatusUpdated -= self.__onPrimeTimeStatusUpdated
         self.onWrapperInitialized = None
         super(WidgetView, self)._finalize()
         return
+
+    def __onPrimeTimeStatusUpdated(self, *args):
+        self.updateModel()
 
     def __onWrapperInitialized(self):
         self.onWrapperInitialized()

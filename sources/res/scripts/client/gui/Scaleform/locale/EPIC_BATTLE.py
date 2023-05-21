@@ -331,7 +331,6 @@ class EPIC_BATTLE(object):
     DIALOGS_TITLE_BUY_ITEMS = '#epic_battle:dialogs/title/buy/items'
     DIALOGS_TITLE_INSTALL_ITEM = '#epic_battle:dialogs/title/install/item'
     DIALOGS_TITLE_INSTALL_ITEMS = '#epic_battle:dialogs/title/install/items'
-    DIALOGS_TITLE_INSTALLFORALLOFTYPE = '#epic_battle:dialogs/title/installForAllOfType'
     DIALOGS_QUOTEDNAME = '#epic_battle:dialogs/quotedName'
     SKILL_CATEGORY_FIRESUPPORT = '#epic_battle:skill/category/firesupport'
     SKILL_CATEGORY_RECONNAISSANCE = '#epic_battle:skill/category/reconnaissance'

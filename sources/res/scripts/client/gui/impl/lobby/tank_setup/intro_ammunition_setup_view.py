@@ -5,7 +5,6 @@ from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.tank_setup.tank_setup_constants import TankSetupConstants
 from gui.impl.lobby.tank_setup.tank_setup_sounds import playEnterTankSetupView, playExitTankSetupView
 from gui.impl.lobby.common.info_view import InfoView, getInfoWindowProc, createContentData
-from gui.limited_ui.lui_rules_storage import LuiRules
 from helpers import dependency
 from skeletons.gui.impl import IGuiLoader
 if typing.TYPE_CHECKING:
@@ -40,8 +39,8 @@ def showIntro(introKey, *args, **kwargs):
 
 
 def getIntroAmmunitionSetupWindowProc():
-    return getInfoWindowProc(R.views.lobby.tanksetup.IntroScreen(), createContentData(_IntroAmmunitionSetupView), UI_STORAGE_KEYS.OPTIONAL_DEVICE_SETUP_INTRO_SHOWN, LuiRules.AP_ZONE_HINT)
+    return getInfoWindowProc(R.views.lobby.tanksetup.IntroScreen(), createContentData(_IntroAmmunitionSetupView), UI_STORAGE_KEYS.OPTIONAL_DEVICE_SETUP_INTRO_SHOWN)
 
 
 def getIntroBattleAbilitiesSetupWindowProc():
-    return getInfoWindowProc(R.views.lobby.frontline.IntroScreen(), createContentData(_IntroAmmunitionSetupView), UI_STORAGE_KEYS.EPIC_BATTLE_ABILITIES_INTRO_SHOWN, LuiRules.AP_BATTLE_ABILITIES_HINT)
+    return getInfoWindowProc(R.views.lobby.frontline.IntroScreen(), createContentData(_IntroAmmunitionSetupView), UI_STORAGE_KEYS.EPIC_BATTLE_ABILITIES_INTRO_SHOWN)

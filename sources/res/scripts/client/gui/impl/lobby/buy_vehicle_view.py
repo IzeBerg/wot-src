@@ -419,6 +419,8 @@ class BuyVehicleView(ViewImpl, EventSystemEntity, IPrbListener):
         self.viewModel.commit()
 
     def __onWindowClose(self, *_):
+        if self.__bootcamp.isInBootcamp() and self.__vehicle.isInInventory:
+            event_dispatcher.selectVehicleInHangar(self.__vehicle.intCD)
         self.__startTutorial()
         self.__destroyWindow()
         if self.__useUiLogging and self.__returnAlias == VIEW_ALIAS.LOBBY_STORE:

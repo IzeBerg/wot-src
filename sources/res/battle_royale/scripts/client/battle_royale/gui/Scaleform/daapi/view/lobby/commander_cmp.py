@@ -9,7 +9,6 @@ from gui.impl.pub import ViewImpl
 from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import isIncorrectVehicle
 from gui.Scaleform.framework.entities.inject_component_adaptor import InjectComponentAdaptor
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
-from gui.shared.gui_items.Tankman import TankmanSkill
 from helpers import dependency
 from skeletons.gui.game_control import IBattleRoyaleController
 from skeletons.gui.app_loader import IAppLoader
@@ -83,7 +82,6 @@ class CommanderView(ViewImpl):
             perkList = model.getPerkList()
             perkList.clear()
             commanderSkills = self.__brControl.getBrCommanderSkills()
-            commanderSkills.insert(0, TankmanSkill('commander_sixthSense'))
             for skill in commanderSkills:
                 skillName = skill.name
                 perkModel = CommanderCmpPerkModel()

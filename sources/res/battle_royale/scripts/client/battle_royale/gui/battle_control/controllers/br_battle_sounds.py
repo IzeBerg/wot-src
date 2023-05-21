@@ -542,40 +542,17 @@ class ArenaTypeSoundPlayer(object):
 
 
 class SelectRespawnSoundPlayer(ISpawnListener, IAbstractPeriodView):
-    __slots__ = ('__isSpawnTimerWorking', '__isSpawnTimerStopped', '__mainTimerStopped',
-                 '__selectEndingSoonTime')
+    __slots__ = ('__selectEndingSoonTime', )
 
     def __init__(self):
         super(SelectRespawnSoundPlayer, self).__init__()
-        self.__isSpawnTimerWorking = False
-        self.__isSpawnTimerStopped = False
-        self.__mainTimerStopped = False
         self.__selectEndingSoonTime = getBattleRoyaleSettings().spawn.selectEndingSoonTime
 
-    def closeSpawnPoints(self):
-        self.__isSpawnTimerStopped = True
-
-    def updateCloseTime(self, timeLeft, state):
-        if state == COUNTDOWN_STATE.WAIT:
+    def setCountdown(self, state, timeLeft):
+        if state != COUNTDOWN_STATE.START or timeLeft < 0:
             return
-        if self.__isSpawnTimerStopped:
-            self.__isSpawnTimerWorking = False
-            return
-        if self.__mainTimerStopped:
-            return
-        self.__isSpawnTimerWorking = not timeLeft == 0
         eventName = BREvents.SPAWN_TIMER_WARNING if timeLeft < self.__selectEndingSoonTime else BREvents.SPAWN_TIMER
         BREvents.playSound(eventName)
-
-    def setCountdown(self, state, timeLeft):
-        if state != COUNTDOWN_STATE.START:
-            return
-        self.__mainTimerStopped = False
-        if self.__isSpawnTimerStopped or not self.__isSpawnTimerWorking:
-            BREvents.playSound(BREvents.SPAWN_TIMER)
-
-    def hideCountdown(self, state, speed):
-        self.__mainTimerStopped = True
 
     def updatePoint(self, vehicleId, pointId, prevPointId):
         BREvents.playSound(BREvents.SPAWN_ALLY)

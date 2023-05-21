@@ -25,7 +25,12 @@ class InBattleUpgrades(BigWorld.DynamicScriptComponent):
             vehicle.entityGameObject.removeComponentByType(UpgradeInProgressComponent)
         vehicle.entityGameObject.createComponent(UpgradeInProgressComponent)
         self.__onVehicleUpgraded(vehicle, newVehCompactDescr, newVehOutfitCompactDescr)
-        BigWorld.callback(0, lambda : vehicle.entityGameObject.removeComponentByType(UpgradeInProgressComponent))
+
+        def removeUpgrageInProgressComponent():
+            if vehicle and vehicle.entityGameObject:
+                vehicle.entityGameObject.removeComponentByType(UpgradeInProgressComponent)
+
+        BigWorld.callback(0, lambda : removeUpgrageInProgressComponent)
         vehicle.isUpgrading = False
 
     @noexcept

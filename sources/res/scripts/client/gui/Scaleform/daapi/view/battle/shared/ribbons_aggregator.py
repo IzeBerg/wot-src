@@ -1259,11 +1259,14 @@ class RibbonsAggregatorPlayer(RibbonsAggregator):
     def _aggregateRibbons(self, ribbons):
         replayRibbons = []
         for ribbon in ribbons:
+            if ribbon is None:
+                continue
             if BattleReplay.g_replayCtrl.isTimeWarpInProgress and ribbon.getType() not in _ACCUMULATED_RIBBON_TYPES:
                 continue
             replayRibbons.append(ribbon)
 
         super(RibbonsAggregatorPlayer, self)._aggregateRibbons(replayRibbons)
+        return
 
 
 def createRibbonsAggregator():

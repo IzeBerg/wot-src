@@ -1,5 +1,5 @@
 from battle_royale.gui.battle_control.controllers.notification_manager import NotificationManager
-from gui.battle_control.controllers import battle_hints_ctrl, battle_field_ctrl, debug_ctrl, default_maps_ctrl
+from gui.battle_control.controllers import battle_hints_ctrl, battle_field_ctrl, debug_ctrl, default_maps_ctrl, perk_ctrl
 from gui.battle_control.controllers.repositories import _ControllersRepository, registerBattleControllerRepo
 from battle_royale.gui.battle_control.controllers import spawn_ctrl, vehicles_count_ctrl, radar_ctrl, progression_ctrl, death_ctrl
 from battle_royale.gui.battle_control.controllers.battle_royale_appearance_cache_ctrl import BattleRoyaleAppearanceCacheController
@@ -15,6 +15,7 @@ class BattleRoyaleControllersRepository(_ControllersRepository):
         repository.addArenaViewController(progression_ctrl.ProgressionController(notificationManager), setup)
         repository.addArenaViewController(battle_field_ctrl.BattleFieldCtrl(), setup)
         repository.addViewController(battle_hints_ctrl.createBattleHintsController(), setup)
+        repository.addViewController(perk_ctrl.PerksController(), setup)
         repository.addViewController(spawn_ctrl.SpawnController(notificationManager), setup)
         repository.addViewController(debug_ctrl.DebugController(), setup)
         repository.addArenaViewController(vehicles_count_ctrl.VehicleCountController(), setup)

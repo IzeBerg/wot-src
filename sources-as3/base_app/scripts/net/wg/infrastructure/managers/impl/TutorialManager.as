@@ -46,7 +46,7 @@ package net.wg.infrastructure.managers.impl
       
       private static const PARAMS_REG_EXP:RegExp = new RegExp(/\?.*$/);
       
-      private static const SHOW_DELAY:uint = 300;
+      private static const SHOW_DELAY:uint = 200;
        
       
       private var _descriptions:Object;
@@ -545,18 +545,20 @@ package net.wg.infrastructure.managers.impl
       
       public function registerUnboundComponent(param1:String, param2:String, param3:DisplayObject) : void
       {
-         var _loc7_:TutorialUnboundViewVO = null;
+         var _loc7_:String = null;
+         var _loc8_:TutorialUnboundViewVO = null;
          var _loc4_:String = this.makeFullPath(param1,param2);
          var _loc5_:TutorialComponentPathVO = this._fullPathToVO[_loc4_];
          if(_loc5_ && (_loc5_.foundComponent || this._unboundComponents[_loc4_]))
          {
-            assert(false,"registerUnboundComponent: Component already registered. componentID = " + param2);
+            _loc7_ = "registerUnboundComponent: Component already registered. componentID = " + param2;
+            assert(false,_loc7_);
          }
          var _loc6_:Boolean = this._unboudViewsForRegister[param1] != null;
          if(_loc6_)
          {
-            _loc7_ = this._unboudViewsForRegister[param1];
-            _loc7_.componentPaths.push(_loc4_);
+            _loc8_ = this._unboudViewsForRegister[param1];
+            _loc8_.componentPaths.push(_loc4_);
          }
          this._unboundComponents[_loc4_] = param3;
          param3.addEventListener(Event.REMOVED_FROM_STAGE,this.onUnboundComponentRemovedHandler);
@@ -570,6 +572,7 @@ package net.wg.infrastructure.managers.impl
       public function registerUnboundView(param1:String, param2:DisplayObject) : void
       {
          var _loc3_:TutorialUnboundViewVO = null;
+         var _loc4_:String = null;
          if(!this._idToView[param1])
          {
             _loc3_ = new TutorialUnboundViewVO();
@@ -579,7 +582,8 @@ package net.wg.infrastructure.managers.impl
          }
          else
          {
-            assert(false,"registerUnboundView: View already registered. viewTutorialId = " + param1);
+            _loc4_ = "registerUnboundView: View already registered. viewTutorialId = " + param1;
+            assert(false,_loc4_);
          }
       }
       
@@ -646,6 +650,7 @@ package net.wg.infrastructure.managers.impl
          var _loc5_:TutorialUnboundViewVO = null;
          var _loc6_:Vector.<String> = null;
          var _loc7_:DisplayObject = null;
+         var _loc8_:String = null;
          var _loc3_:String = this.makeFullPath(param1,param2);
          var _loc4_:TutorialComponentPathVO = this._fullPathToVO[_loc3_];
          if(_loc4_)
@@ -664,7 +669,8 @@ package net.wg.infrastructure.managers.impl
          }
          else
          {
-            assert(false,"unregisterUnboundComponent: Componennt doesn\'t exist. componentID = " + param2);
+            _loc8_ = "unregisterUnboundComponent: Component doesn\'t exist. componentID = " + param2;
+            assert(false,_loc8_);
          }
       }
       
@@ -684,19 +690,25 @@ package net.wg.infrastructure.managers.impl
       
       private function doEffect(param1:String, param2:String, param3:String, param4:TutorialBuilderVO) : void
       {
-         var _loc6_:TutorialComponentPathVO = null;
-         var _loc7_:DisplayObject = null;
+         var _loc6_:String = null;
+         var _loc7_:TutorialComponentPathVO = null;
+         var _loc8_:DisplayObject = null;
+         if(!this._idToView[param1])
+         {
+            _loc6_ = "view id " + param1 + Errors.WASNT_FOUND + " May be BotNet clicks too fast";
+            DebugUtils.LOG_ERROR(_loc6_);
+            return;
+         }
          var _loc5_:IView = this._idToView[param1];
-         App.utils.asserter.assertNotNull(_loc5_,"view id " + param1 + Errors.WASNT_FOUND);
          if(StringUtils.isNotEmpty(param2))
          {
-            _loc6_ = this._idToVO[param2];
-            if(_loc6_)
+            _loc7_ = this._idToVO[param2];
+            if(_loc7_)
             {
-               _loc7_ = _loc6_.foundComponent;
-               if(_loc7_)
+               _loc8_ = _loc7_.foundComponent;
+               if(_loc8_)
                {
-                  this.setupEffectBuilder(_loc5_,param3,param4,_loc7_);
+                  this.setupEffectBuilder(_loc5_,param3,param4,_loc8_);
                }
             }
          }
