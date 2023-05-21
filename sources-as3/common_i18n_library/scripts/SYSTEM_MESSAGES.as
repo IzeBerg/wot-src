@@ -517,6 +517,8 @@ package
       
       public static const CUSTOMIZATION_PROGRESSION_DOWN_STYLE:String = "#system_messages:customization/progression/down/style";
       
+      public static const CUSTOMIZATION_CURRENCY_NOT_ENOUGH:String = "#system_messages:customization/currency_not_enough";
+      
       public static const BONUSES_BOOSTER_VALUE:String = "#system_messages:bonuses/booster/value";
       
       public static const CHECKOUT_ERROR:String = "#system_messages:checkout_error";
@@ -2297,6 +2299,8 @@ package
       
       public static const EPICBATTLES_SEASONEND_REWARDS_EQUIPMENT:String = "#system_messages:epicBattles/seasonEnd/rewards/equipment";
       
+      public static const EPICBATTLES_SEASONEND_REWARDS_OPTIONALDEVICE:String = "#system_messages:epicBattles/seasonEnd/rewards/optionalDevice";
+      
       public static const EPICBATTLES_LEVELUP_TITLE:String = "#system_messages:epicBattles/levelUp/title";
       
       public static const EPICBATTLES_LEVELUP_BODY_LEVELCONGRATS:String = "#system_messages:epicBattles/levelUp/body/levelCongrats";
@@ -2688,6 +2692,12 @@ package
       public static const UNIT_WARNINGS_EXPIRED_PLAY_LIMITS_TO_COMMANDER:String = "#system_messages:unit/warnings/EXPIRED_PLAY_LIMITS_TO_COMMANDER";
       
       public static const WINBACK_TURNOFFBATTLESERROR:String = "#system_messages:winback/turnOffBattlesError";
+      
+      public static const ACHIEVEMENTS_SERVER_ERROR:String = "#system_messages:achievements/server_error";
+      
+      public static const LIMITEDUI_SWITCHON:String = "#system_messages:limitedUI/switchOn";
+      
+      public static const LIMITEDUI_SWITCHOFF:String = "#system_messages:limitedUI/switchOff";
        
       
       public function SYSTEM_MESSAGES()

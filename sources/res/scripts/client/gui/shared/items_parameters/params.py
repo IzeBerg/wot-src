@@ -241,7 +241,7 @@ class ChassisParams(WeightedParam):
 
     @property
     def rotationSpeed(self):
-        if not self.isWheeled:
+        if not self.isWheeled or self.isWheeledOnSpotRotation:
             return int(round(math.degrees(self._itemDescr.rotationSpeed)))
         else:
             return
@@ -281,6 +281,10 @@ class ChassisParams(WeightedParam):
     @property
     def hasAutoSiege(self):
         return self._getPrecachedInfo().hasAutoSiege
+
+    @property
+    def isWheeledOnSpotRotation(self):
+        return self._getPrecachedInfo().isWheeledOnSpotRotation
 
 
 class TurretParams(WeightedParam):
@@ -412,7 +416,7 @@ class VehicleParams(_ParameterBase):
     def chassisRotationSpeed(self):
         skillName = 'driver_virtuoso'
         argName = 'vehicleAllGroundRotationSpeed'
-        if self._itemDescr.isWheeledVehicle:
+        if self._itemDescr.isWheeledVehicle and not self._itemDescr.isWheeledOnSpotRotation:
             return None
         else:
             allTrfs = self.__getTerrainResistanceFactors()
@@ -513,18 +517,12 @@ class VehicleParams(_ParameterBase):
 
     @property
     def circularVisionRadius(self):
-        skillName = 'commander_eagleEye'
-        argName = 'circularVisionRadius'
         baseCircularVisionRadius = items_utils.getCircularVisionRadius(self._itemDescr, self.__factors)
-        eagleEyeSkillFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.COMMANDER)
-        skillName = 'radioman_finder'
-        argName = 'vehicleCircularVisionRadius'
-        finderSkillFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.RADIOMAN)
-        result = round(baseCircularVisionRadius * eagleEyeSkillFactor * finderSkillFactor)
+        result = round(baseCircularVisionRadius)
         if self.__hasUnsupportedSwitchMode():
             visRadiusSiegeVal = items_utils.getCircularVisionRadius(self._itemDescr.siegeVehicleDescr, self.__factors)
             return (
-             result, round(visRadiusSiegeVal * eagleEyeSkillFactor * finderSkillFactor))
+             result, round(visRadiusSiegeVal))
         return (
          result,)
 
@@ -643,7 +641,7 @@ class VehicleParams(_ParameterBase):
     @property
     def relativeMobility(self):
         coeffs = self.__coefficients['mobility']
-        if self._itemDescr.isWheeledVehicle:
+        if self._itemDescr.isWheeledVehicle and not self._itemDescr.isWheeledOnSpotRotation:
             suspensionInfluence = self.maxSteeringLockAngle * coeffs['maxSteeringLockAngle']
         else:
             suspensionInfluence = self.chassisRotationSpeed * coeffs['chassisRotation']
@@ -912,7 +910,7 @@ class VehicleParams(_ParameterBase):
 
     @property
     def wheelsRotationSpeed(self):
-        if not self._itemDescr.isWheeledVehicle:
+        if not self._itemDescr.isWheeledVehicle and not self._itemDescr.isWheeledOnSpotRotation:
             return
         return self.__kpi.getFactor(KPI.Name.WHEELS_ROTATION_SPEED)
 

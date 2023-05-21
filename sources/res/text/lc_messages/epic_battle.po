@@ -226,6 +226,21 @@ msgstr "Повышенный риск"
 msgid "deploymentMap/spgLimitReached"
 msgstr "Направление заблокировано — достигнут максимум по типам техники"
 
+msgid "dialogs/quotedName"
+msgstr "«%(name)s»"
+
+msgid "dialogs/title/buy/item"
+msgstr "Купить %(type)s «%(name)s»?"
+
+msgid "dialogs/title/buy/items"
+msgstr "Купить %(type)s?"
+
+msgid "dialogs/title/install/item"
+msgstr "Установить %(type)s «%(name)s»?"
+
+msgid "dialogs/title/install/items"
+msgstr "Установить %(type)s?"
+
 msgid "epicBattleItem/supplyPoints/body"
 msgstr ""
 "Накопив необходимое количество очков, вы сможете активировать боевые резервы"
@@ -386,25 +401,24 @@ msgstr "Опыт"
 
 msgid "intro/card/categories/desc"
 msgstr ""
-"Теперь резервы разделены на категории. В слот каждой категории можно "
-"поставить только соответствующие резервы."
+"Резервы разделены на категории. В слот каждой категории можно поставить "
+"только соответствующие резервы."
 
 msgid "intro/card/categories/title"
 msgstr "Категории резервов"
 
 msgid "intro/card/slots/desc"
 msgstr ""
-"При достижении званий «сержант» и «лейтенант» разблокируются второй и третий"
-" слот соответственно. Резерв в первом слоте усилится на званиях «капитан» и "
-"«майор», а на звании «генерал» усилится резерв во втором слоте."
+"По достижении званий «сержант» и «лейтенант» в бою откроются второй и третий"
+" слот. По достижении званий «капитан» и «майор» резервы в слотах усилятся."
 
 msgid "intro/card/slots/title"
 msgstr "Разблокируйте слоты в бою"
 
 msgid "intro/card/types/desc"
 msgstr ""
-"Конфигурации слотов у разных типов техники различаются, поэтому в бою они "
-"разблокируются и усиливаются тоже по-разному."
+"Конфигурации слотов у разных типов техники различаются, но разблокируются и "
+"усиливаются они одинаково."
 
 msgid "intro/card/types/title"
 msgstr "Слоты и типы техники"
@@ -413,7 +427,7 @@ msgid "intro/confirm"
 msgstr "Так точно!"
 
 msgid "intro/title"
-msgstr "Новая механика боевых резервов"
+msgstr "МЕХАНИКА БОЕВЫХ РЕЗЕРВОВ"
 
 msgid "lane_central_name"
 msgstr "Центр"
@@ -593,7 +607,7 @@ msgid "questsTooltip/epicBattle/startIn"
 msgstr "Новые задачи появятся через %(time)s"
 
 msgid "questsTooltip/epicBattle/steelhunter/header"
-msgstr "Задачи Стального охотника"
+msgstr "Задачи режима «Стальной охотник: Возрождение»"
 
 msgid "questsTooltip/epicBattle/timeLeft"
 msgstr "До окончания события «Линия фронта»: %(time)s"
@@ -601,11 +615,23 @@ msgstr "До окончания события «Линия фронта»: %(ti
 msgid "questsTooltip/epicBattle/unavailable"
 msgstr "Недоступно: %(reason)s."
 
+msgid "rank/allReserveUpgraded"
+msgstr "Уровень всех резервов повышен"
+
+msgid "rank/crewRolesFactorPromotion"
+msgstr "Командный бонус к эффективности экипажа увеличен до +%(percent)s%%"
+
+msgid "rank/crewRolesFactorPromotion1"
+msgstr "Достигнута максимальная эффективность экипажа в +%(percent)s%%"
+
+msgid "rank/crewRolesFactorSelf"
+msgstr "Командный бонус к эффективности экипажа +%(percent)s%%"
+
 msgid "rank/no_name"
 msgstr "Игрок"
 
 msgid "rank/promotion"
-msgstr "получает звание %(rank)s"
+msgstr "получает звание %(rank)s%(placeholder)s"
 
 msgid "rank/rank1"
 msgstr "Рядовой"
@@ -797,6 +823,15 @@ msgstr "Сегодня"
 msgid "selectorTooltip/epicBattle/timeTable/tomorrow"
 msgstr "Завтра"
 
+msgid "skill/category/firesupport"
+msgstr "Ударные"
+
+msgid "skill/category/reconnaissance"
+msgstr "Разведывательные"
+
+msgid "skill/category/tactics"
+msgstr "Тактические"
+
 msgid "spectator_mode/camera_controls_title"
 msgstr "Камера в режиме наблюдателя"
 
@@ -874,6 +909,13 @@ msgstr "Активируется через %(activationDelay)s с после о
 
 msgid "super_platoon_panel/title"
 msgstr "Взвод"
+
+msgid "tab_screen/generalBonusDescr"
+msgstr ""
+"— суммарный командный бонус к эффективности экипажа за присутствие генерала."
+
+msgid "tab_screen/generalBonusValue"
+msgstr "+%(value)s%%"
 
 msgid "tab_screen/show_all_lanes"
 msgstr "Все направления"

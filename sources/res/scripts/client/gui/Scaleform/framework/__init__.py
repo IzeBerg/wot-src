@@ -10,8 +10,6 @@ def getSwfExtensionUrl(extension, swf):
 
 class COMMON_VIEW_ALIAS(object):
     LOGIN = 'login'
-    INTRO_VIDEO = 'introVideo'
-    EXTRA_INTRO_VIDEO = 'ExtraIntroVideo'
     LOBBY = 'lobby'
     BATTLE = 'battle'
     CURSOR = 'cursor'

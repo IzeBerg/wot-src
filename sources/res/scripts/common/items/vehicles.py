@@ -2,7 +2,7 @@ import BigWorld, copy, items, itertools, nation_change, nations, os, string, str
 from Math import Vector2, Vector3
 from backports.functools_lru_cache import lru_cache
 from collections import namedtuple
-from constants import ACTION_LABEL_TO_TYPE, ROLE_LABEL_TO_TYPE, ROLE_TYPE, DamageAbsorptionLabelToType, ROLE_LEVELS, ROLE_TYPE_TO_LABEL, VEHICLE_HEALTH_DECIMALS, CHANCE_TO_HIT_SUFFIX_FACTOR, IGR_TYPE, IS_RENTALS_ENABLED, IS_CELLAPP, IS_BASEAPP, IS_CLIENT, IS_UE_EDITOR, IS_BOT, IS_WEB, IS_PROCESS_REPLAY, ITEM_DEFS_PATH, VEHICLE_SIEGE_STATE, VEHICLE_MODE, VEHICLE_CLASSES, AVAILABLE_STUN_TYPES_NAMES, StunTypes, HAS_EXPLOSION_EFFECT, HAS_EXPLOSION
+from constants import ACTION_LABEL_TO_TYPE, ROLE_LABEL_TO_TYPE, ROLE_TYPE, DamageAbsorptionLabelToType, ROLE_LEVELS, ROLE_TYPE_TO_LABEL, VEHICLE_HEALTH_DECIMALS, CHANCE_TO_HIT_SUFFIX_FACTOR, IGR_TYPE, IS_RENTALS_ENABLED, IS_CELLAPP, IS_BASEAPP, IS_CLIENT, IS_UE_EDITOR, IS_BOT, IS_WEB, IS_PROCESS_REPLAY, ITEM_DEFS_PATH, SHELL_TYPES, VEHICLE_SIEGE_STATE, VEHICLE_MODE, VEHICLE_CLASSES, ShootImpulseApplicationPoint, AVAILABLE_STUN_TYPES_NAMES, StunTypes, HAS_EXPLOSION_EFFECT, HAS_EXPLOSION
 from debug_utils import LOG_WARNING, LOG_ERROR, LOG_CURRENT_EXCEPTION
 from functools import partial
 from items import ItemsPrices
@@ -40,7 +40,7 @@ from collector_vehicle import CollectorVehicleConsts
 from material_kinds import IDS_BY_NAMES
 from items.customization_slot_tags_validator import getDirectionAndFormFactorTags
 from extension_utils import ResMgr, importClass
-from battle_modifiers_common import BattleParams, BattleModifiers, ModifiersContext, getModificationCache
+from battle_modifiers_common import BattleParams, BattleModifiers, ModifiersContext
 if IS_UE_EDITOR:
     from meta_objects.items.vehicle_items_meta.utils import getEffectNameByEffect
     from combined_data_section import CombinedDataSection
@@ -279,7 +279,7 @@ class CamouflageBonus():
     MAX = 0.0
 
 
-def init(preloadEverything, pricesToCollect):
+def init(preloadEverything, pricesToCollect, step=None):
     global _g_prices
     global g_cache
     global g_list
@@ -296,6 +296,8 @@ def init(preloadEverything, pricesToCollect):
             g_cache.customization(nationID)
             for vehicleTypeID in g_list.getList(nationID).iterkeys():
                 g_cache.vehicle(nationID, vehicleTypeID)
+                if step is not None:
+                    step()
 
         g_cache.customization20()
         g_cache.supplySlots()
@@ -411,15 +413,31 @@ class VehicleDescriptor(object):
     hasAutoSiegeMode = property(lambda self: self.type.hasAutoSiegeMode)
     isWheeledVehicle = property(lambda self: self.type.isWheeledVehicle)
     isFlamethrower = property(lambda self: self.type.isFlamethrower)
+    hasSpeedometer = property(lambda self: self.type.hasSpeedometer)
     isDualgunVehicle = property(lambda self: 'dualGun' in self.gun.tags)
     hasTurboshaftEngine = property(lambda self: self.type.hasTurboshaftEngine)
     hasHydraulicChassis = property(lambda self: self.type.hasHydraulicChassis)
-    hasBurnout = property(lambda self: self.type.hasBurnout)
     hasCharge = property(lambda self: self.type.hasCharge)
     hasRocketAcceleration = property(lambda self: self.type.hasRocketAcceleration)
     role = property(lambda self: self.type.role)
     isPitchHullAimingAvailable = property(lambda self: self.type.hullAimingParams['pitch']['isAvailable'])
     isYawHullAimingAvailable = property(lambda self: self.type.hullAimingParams['yaw']['isAvailable'])
+
+    @property
+    def hasBurnout(self):
+        if IS_CLIENT or IS_WEB:
+            chassisCfg = self.type.xphysics['chassis'][self.chassis.name]
+        else:
+            chassisCfg = self.type.xphysics['detailed']['chassis'][self.chassis.name]
+        return self.isWheeledVehicle and chassisCfg['burnout'] is not None
+
+    @property
+    def isWheeledOnSpotRotation(self):
+        if IS_CLIENT or IS_WEB:
+            chassisCfg = self.type.xphysics['chassis'][self.chassis.name]
+        else:
+            chassisCfg = self.type.xphysics['detailed']['chassis'][self.chassis.name]
+        return self.isWheeledVehicle and chassisCfg['isWheeledOnSpotRotation']
 
     @property
     def isTrackWithinTrack(self):
@@ -1283,7 +1301,7 @@ class VehicleDescriptor(object):
         try:
             type, components, optionalDeviceSlots, optionalDevices, enhancements, emblemPositions, emblems, inscriptions, camouflages = _splitVehicleCompactDescr(compactDescr, vehMode, vehType)
             if not IS_UE_EDITOR:
-                type = getModificationCache().get(type, self.battleModifiers)
+                type = self.battleModifiers.getVehicleModification(type)
             custNationID = type.customizationNationID
             customization = g_cache.customization(custNationID)
             self.type = type
@@ -1613,11 +1631,8 @@ class CompositeVehicleDescriptor(object):
         setattr(self.__siegeDescr, key, value)
         setattr(self.__vehicleDescr, key, value)
 
-    def onSiegeStateChanged(self, siegeMode):
-        if siegeMode == VEHICLE_SIEGE_STATE.ENABLED:
-            self.__dict__['_CompositeVehicleDescriptor__vehicleMode'] = VEHICLE_MODE.SIEGE
-        elif self.__vehicleMode == VEHICLE_MODE.SIEGE:
-            self.__dict__['_CompositeVehicleDescriptor__vehicleMode'] = VEHICLE_MODE.DEFAULT
+    def onSiegeStateChanged(self, siegeState):
+        self.__dict__['_CompositeVehicleDescriptor__vehicleMode'] = VEHICLE_SIEGE_STATE.getMode(siegeState)
 
     def installComponent(self, compactDescr, positionIndex=0):
         self.__siegeDescr.installComponent(compactDescr, positionIndex)
@@ -1775,9 +1790,9 @@ class VehicleType(object):
      'fuelTanks', 'radios', 'turrets', 'hulls', 'installableComponents', 'unlocksDescrs',
      'autounlockedItems', 'collisionEffectVelocities', 'isRotationStill', 'useHullZSize', 'useHullZOffset',
      'siegeModeParams', 'hullAimingParams', 'overmatchMechanicsVer', 'xphysics', 'repaintParameters',
-     'rollerExtras', 'hasBurnout', 'hasCharge', 'role', 'actionsGroup', 'actions', 'builtins',
+     'rollerExtras', 'hasCharge', 'role', 'actionsGroup', 'actions', 'builtins',
      'nationChangeGroupId', 'isCollectorVehicle', 'isPremium', 'hasTurboshaftEngine', 'hasHydraulicChassis',
-     'supplySlots', 'optDevsOverrides', 'postProgressionTree', 'postProgressionPricesOverrides',
+     'hasSpeedometer', 'supplySlots', 'optDevsOverrides', 'postProgressionTree', 'postProgressionPricesOverrides',
      'customRoleSlotOptions', 'hasRocketAcceleration', 'rocketAccelerationParams', 'classTag', 'armorMaxHealth',
      '__weakref__')
 
@@ -1801,9 +1816,9 @@ class VehicleType(object):
         self.isFlamethrower = FLAMETHROWER in self.tags
         self.isDualgunVehicleType = 'dualgun' in self.tags
         self.hasTurboshaftEngine = 'turboshaftEngine' in self.tags
+        self.hasSpeedometer = 'speedometer' in self.tags
         self.hasCharge = 'charger' in self.tags
         self.builtins = {t.split('_user')[0] for t in self.tags if t.startswith('builtin') if t.startswith('builtin')}
-        self.hasBurnout = 'burnout' in self.tags
         self.hasRocketAcceleration = 'rocketAcceleration' in self.tags
         self.isCollectorVehicle = CollectorVehicleConsts.COLLECTOR_VEHICLES_TAG in self.tags
         self.isPremium = 'premium' in self.tags
@@ -1878,7 +1893,7 @@ class VehicleType(object):
                 self.extrasDict = copyMethod(commonConfig['extrasDict'])
                 self.devices = copyMethod(commonConfig['_devices'])
                 self.tankmen = _selectCrewExtras(self.crewRoles, self.extrasDict)
-            if IS_CLIENT or IS_WEB:
+            if IS_CLIENT or IS_WEB or IS_BOT:
                 self.i18nInfo = basicInfo.i18n
             if IS_CLIENT or IS_UE_EDITOR:
                 self.damageStickersLodDist = commonConfig['miscParams']['damageStickersLodDist']
@@ -1960,7 +1975,7 @@ class VehicleType(object):
                 overmatchVer = OVERMATCH_MECHANICS_VER.DEFAULT
             self.overmatchMechanicsVer = overmatchVer
             try:
-                self.xphysics = _readXPhysics(xmlCtx, section, 'physics')
+                self.xphysics = _readXPhysics(xmlCtx, section, 'physics', self)
             except:
                 LOG_CURRENT_EXCEPTION()
                 self.xphysics = None
@@ -1968,9 +1983,9 @@ class VehicleType(object):
             if self.xphysics:
                 _validateBrokenTrackLosses(xmlCtx, self)
         elif IS_CLIENT or IS_WEB:
-            self.xphysics = _readXPhysicsClient(xmlCtx, section, 'physics', self.isWheeledVehicle)
+            self.xphysics = _readXPhysicsClient(xmlCtx, section, 'physics', self)
         elif IS_UE_EDITOR:
-            self.xphysics = _readXPhysicsEditor(xmlCtx, section, 'physics', self.isWheeledVehicle)
+            self.xphysics = _readXPhysicsEditor(xmlCtx, section, 'physics', self)
         else:
             self.xphysics = None
         if (IS_CLIENT or IS_UE_EDITOR) and section.has_key('repaintParameters'):
@@ -2787,7 +2802,7 @@ class VehicleList(object):
                 _xml.raiseWrongXml(ctx, 'tags', 'vehicle %s with level %s does not have tag earn_crystals' % (vname, item.level))
             item.tags = tags
             res[innationID] = item
-            if IS_CLIENT or IS_WEB:
+            if IS_CLIENT or IS_WEB or IS_BOT:
                 item.i18n = shared_readers.readUserText(vsection)
             price = _xml.readPrice(ctx, vsection, 'price')
             if 'gold' in price:
@@ -3998,7 +4013,7 @@ def _xphysicsParseGround(ctx, sec):
     return res
 
 
-def _xphysicsParseChassis(ctx, sec):
+def _xphysicsParseChassis(type, ctx, sec):
     res = {}
     res['grounds'] = _parseSectionList(ctx, sec, _xphysicsParseGround, 'grounds')
     floatParamsCommon = ('chassisMassFraction', 'hullCOMShiftY', 'wheelRadius', 'bodyHeight',
@@ -4048,14 +4063,12 @@ def _xphysicsParseChassis(ctx, sec):
     return res
 
 
-def _xphysicsParseWheeledChassis(ctx, sec):
-    res = _xphysicsParseChassis(ctx, sec)
+def _xphysicsParseWheeledChassis(type, ctx, sec):
+    res = _xphysicsParseChassis(type, ctx, sec)
+    res['isWheeledOnSpotRotation'] = _xml.readBool(ctx, sec, 'isWheeledOnSpotRotation', False)
     axleCount = sec.readInt('axleCount', 5)
+    res['axleSteeringAngles'], res['axleSteeringLockAngles'] = _readSteeringAngles(ctx, sec, axleCount, not res['isWheeledOnSpotRotation'])
     floatArrParams = (
-     (
-      'axleSteeringLockAngles', axleCount),
-     (
-      'axleSteeringAngles', axleCount),
      (
       'axleSteeringSpeed', axleCount),
      (
@@ -4068,24 +4081,22 @@ def _xphysicsParseWheeledChassis(ctx, sec):
       'sinkageResistOnAxis', axleCount))
     res.update(_parseFloatArrList(ctx, sec, floatArrParams))
     res['axleIsLeading'] = _xml.readTupleOfBools(ctx, sec, 'axleIsLeading', axleCount)
-    res['axleCanBeRised'] = _xml.readTupleOfBools(ctx, sec, 'axleCanBeRised', axleCount)
-    floatParams = ('wheelRiseHeight', 'wheelRiseSpeed', 'handbrakeBrakeForce', 'noSignalBrakeForce',
-                   'afterDeathBrakeForce', 'afterDeathMinSpeedForImpulse', 'afterDeathImpulse',
-                   'jumpingFactor', 'jumpingMinForce', 'slowTurnChocker', 'airPitchReduction',
-                   'wheelToHullRollTransmission', 'steeringSpeedInTurnMultiplier')
+    res['axleCanBeRised'], res['wheelRiseHeight'], res['wheelRiseSpeed'] = _readAxleRiseParams(ctx, sec, axleCount, type.hasSiegeMode)
+    floatParams = ('handbrakeBrakeForce', 'noSignalBrakeForce', 'afterDeathBrakeForce',
+                   'afterDeathMinSpeedForImpulse', 'afterDeathImpulse', 'slowTurnChocker',
+                   'airPitchReduction', 'wheelToHullRollTransmission', 'steeringSpeedInTurnMultiplier')
     res.update(_parseFloatList(ctx, sec, floatParams))
     res['afterDeathMinSpeedForImpulse'] *= component_constants.KMH_TO_MS
+    res['jumpingFactor'] = _xml.readFloat(ctx, sec, 'jumpingFactor', 0.0)
+    res['jumpingMinForce'] = _xml.readFloat(ctx, sec, 'jumpingMinForce', 0.0)
     res['brokenWheelRollingFrictionModifier'] = _xml.readFloat(ctx, sec, 'brokenWheelRollingFrictionModifier', 1.0)
-    res['brokenWheelPowerLoss'], res['brokenWheelSpeedLoss'] = _readBrokenWheelLosses(ctx, sec, res['axleIsLeading'], res['axleCanBeRised'], res['wheelRiseHeight'])
-    burnoutSubsection = _xml.getSubsection(ctx, sec, 'burnout')
-    burnoutParams = ('preparationTime', 'activityTime', 'engineDamageMin', 'engineDamageMax',
-                     'warningMaxHealth', 'warningMaxHealthCritEngine', 'power', 'impulse')
-    res['burnout'] = _parseFloatList(ctx, burnoutSubsection, burnoutParams)
+    res['brokenWheelPowerLoss'], res['brokenWheelSpeedLoss'], res['brokenWheelRotationSpeedLoss'] = _readBrokenWheelLosses(ctx, sec, res['axleIsLeading'], res['axleCanBeRised'], res['wheelRiseHeight'])
+    res['burnout'] = _readBurnout(ctx, sec)
     res['enableRail'] = _xml.readBool(ctx, sec, 'enableRail')
     return res
 
 
-def _readXPhysicsMode(xmlCtx, sec, subsectionName):
+def _readXPhysicsMode(xmlCtx, sec, subsectionName, type):
     subsec = sec[subsectionName]
     if subsec is None:
         return
@@ -4101,11 +4112,11 @@ def _readXPhysicsMode(xmlCtx, sec, subsectionName):
             res['swingCompensator'] = _xphysicsReadSwingCompensator(ctx, subsec['swingCompensator'])
         isTank = res['vehiclePhysicsType'] == VEHICLE_PHYSICS_TYPE.TANK
         readChassisFunc = _xphysicsParseChassis if isTank else _xphysicsParseWheeledChassis
-        res['chassis'] = _parseSectionList(ctx, subsec, readChassisFunc, 'chassis')
+        res['chassis'] = _parseSectionList(ctx, subsec, partial(readChassisFunc, type), 'chassis')
         return res
 
 
-def _readXPhysics(xmlCtx, section, subsectionName):
+def _readXPhysics(xmlCtx, section, subsectionName, type):
     xsec = section[subsectionName]
     if xsec is None:
         return
@@ -4114,7 +4125,7 @@ def _readXPhysics(xmlCtx, section, subsectionName):
          xmlCtx, subsectionName)
         res = {}
         res['mode'] = _xml.readInt(ctx, xsec, 'mode', 1)
-        res['detailed'] = _readXPhysicsMode(ctx, xsec, 'detailed')
+        res['detailed'] = _readXPhysicsMode(ctx, xsec, 'detailed', type)
         return res
 
 
@@ -4135,12 +4146,10 @@ def _xphysicsParseChassisClient(ctx, sec):
 def _xphysicsParseWheeledChassisClient(ctx, sec):
     res = _xphysicsParseChassisClient(ctx, sec)
     axleCount = sec.readInt('axleCount', 5)
-    floatArrParams = (
-     (
-      'axleSteeringLockAngles', axleCount),)
-    res.update(_parseFloatArrList(ctx, sec, floatArrParams))
-    floatParams = ('wheelRiseSpeed', )
-    res.update(_parseFloatList(ctx, sec, floatParams))
+    res['isWheeledOnSpotRotation'] = _xml.readBool(ctx, sec, 'isWheeledOnSpotRotation', False)
+    res['axleSteeringAngles'], res['axleSteeringLockAngles'] = _readSteeringAngles(ctx, sec, axleCount, not res['isWheeledOnSpotRotation'])
+    res['wheelRiseSpeed'] = _xml.readFloat(ctx, sec, 'wheelRiseSpeed', 0.0)
+    res['burnout'] = {} if sec.has_key('burnout') else None
     return res
 
 
@@ -4154,14 +4163,14 @@ def _xphysicsParseEngineClient(ctx, sec):
     return res
 
 
-def _readXPhysicsClient(xmlCtx, section, subsectionName, isWheeledVehicle=False):
+def _readXPhysicsClient(xmlCtx, section, subsectionName, type):
     xsec = section[subsectionName]
     if xsec is None:
         _xml.raiseWrongXml(xmlCtx, '', "subsection '%s' is missing" % subsectionName)
     ctx = (xmlCtx, subsectionName)
     res = {}
     res['engines'] = _parseSectionList(ctx, xsec, _xphysicsParseEngineClient, 'detailed/engines')
-    if isWheeledVehicle:
+    if type.isWheeledVehicle:
         readFunc = _xphysicsParseWheeledChassisClient
     else:
         readFunc = _xphysicsParseChassisClient
@@ -4169,7 +4178,7 @@ def _readXPhysicsClient(xmlCtx, section, subsectionName, isWheeledVehicle=False)
     return res
 
 
-def _readXPhysicsEditor(xmlCtx, section, subsectionName, isWheeledVehicle=False):
+def _readXPhysicsEditor(xmlCtx, section, subsectionName, type):
     xsec = section[subsectionName]
     if xsec is None:
         return
@@ -4178,9 +4187,9 @@ def _readXPhysicsEditor(xmlCtx, section, subsectionName, isWheeledVehicle=False)
          xmlCtx, subsectionName)
         res = {}
         res['mode'] = _xml.readInt(ctx, xsec, 'mode', 1)
-        res['detailed'] = _readXPhysicsMode(ctx, xsec, 'detailed')
+        res['detailed'] = _readXPhysicsMode(ctx, xsec, 'detailed', type)
         res['engines'] = _parseSectionList(ctx, xsec, _xphysicsParseEngineClient, 'detailed/engines')
-        if isWheeledVehicle:
+        if type.isWheeledVehicle:
             readFunc = _xphysicsParseWheeledChassisClient
         else:
             readFunc = _xphysicsParseChassisClient
@@ -4467,6 +4476,7 @@ def _readGun(xmlCtx, section, item, unlocksDescrs=None, _=None):
     if section.has_key('dualGun'):
         dualGun = _readGunDualGunParams(xmlCtx, section)
         item.dualGun = dualGun
+    item.shootImpulses = _readShootImpulses(xmlCtx, section)
     tags = item.tags
     if item.clip[0] == 1:
         tags = tags.difference(('clip', ))
@@ -4605,6 +4615,9 @@ def _readGunLocals(xmlCtx, section, sharedItem, unlocksDescrs, turretCompactDesc
     if section.has_key('dualGun'):
         hasOverride = True
         dualGun = _readGunDualGunParams(xmlCtx, section)
+    shootImpulses = _readShootImpulses(xmlCtx, section)
+    if shootImpulses:
+        hasOverride = True
     if not section.has_key('invisibilityFactorAtShot'):
         invisibilityFactorAtShot = sharedItem.invisibilityFactorAtShot
     else:
@@ -4767,6 +4780,8 @@ def _readGunLocals(xmlCtx, section, sharedItem, unlocksDescrs, turretCompactDesc
             item.tags = item.tags.difference((FLAMETHROWER,))
         else:
             item.tags = item.tags.union((FLAMETHROWER,))
+        if shootImpulses:
+            item.shootImpulses = shootImpulses
         if IS_CLIENT or IS_UE_EDITOR:
             item.modelsSets = modelsSets
             item.models = models
@@ -6798,7 +6813,58 @@ def _readBrokenWheelLosses(xmlCtx, section, axleIsLeading, axleCanBeRised, wheel
     groundedAxleCount = len([ v for v in axleCanBeRised if v is False ]) if wheelRiseHeight > 0.0 else len(axleCanBeRised)
     return (
      readLoss('brokenWheelPowerLoss', 2 * leadingAxleCount),
-     readLoss('brokenWheelSpeedLoss', 2 * groundedAxleCount))
+     readLoss('brokenWheelSpeedLoss', 2 * groundedAxleCount),
+     readLoss('brokenWheelRotationSpeedLoss', 2 * groundedAxleCount))
+
+
+def _readSteeringAngles(xmlCtx, section, axleCount, lockAnglesRequired=True):
+    axleSteeringAngles = _xml.readTupleOfFloats(xmlCtx, section, 'axleSteeringAngles', axleCount)
+    if not section.has_key('axleSteeringLockAngles') and not lockAnglesRequired:
+        return (axleSteeringAngles, axleSteeringAngles)
+    axleSteeringLockAngles = _xml.readTupleOfFloats(xmlCtx, section, 'axleSteeringLockAngles', axleCount)
+    return (axleSteeringAngles, axleSteeringLockAngles)
+
+
+def _readBurnout(xmlCtx, section):
+    if not section.has_key('burnout'):
+        return None
+    else:
+        burnoutCtx, burnoutSection = _xml.getSubSectionWithContext(xmlCtx, section, 'burnout')
+        burnout = {'preparationTime': _xml.readPositiveFloat(burnoutCtx, burnoutSection, 'preparationTime'), 
+           'activityTime': _xml.readPositiveFloat(burnoutCtx, burnoutSection, 'activityTime')}
+        burnoutParams = ('engineDamageMin', 'engineDamageMax', 'warningMaxHealth',
+                         'warningMaxHealthCritEngine', 'power', 'impulse')
+        burnout.update(_parseFloatList(burnoutCtx, burnoutSection, burnoutParams))
+        return burnout
+
+
+def _readAxleRiseParams(xmlCtx, section, axleCount, hasSiegeMode=True):
+    if not section.has_key('axleCanBeRised') and not hasSiegeMode:
+        axleCanBeRised = (
+         False,) * axleCount
+    else:
+        axleCanBeRised = _xml.readTupleOfBools(xmlCtx, section, 'axleCanBeRised', axleCount)
+    defaultValue = None if hasSiegeMode and any(axleCanBeRised) else 0.0
+    wheelRiseHeight = _xml.readFloat(xmlCtx, section, 'wheelRiseHeight', defaultValue)
+    wheelRiseSpeed = _xml.readFloat(xmlCtx, section, 'wheelRiseSpeed', defaultValue)
+    return (
+     axleCanBeRised, wheelRiseHeight, wheelRiseSpeed)
+
+
+def _readShootImpulses(xmlCtx, section):
+    if not section.has_key('shootImpulse'):
+        return component_constants.EMPTY_TUPLE
+    shootImpulses = []
+    subsectionCtx = (xmlCtx, 'shootImpulse')
+    for subsectionName, subsection in section.items():
+        if subsectionName != 'shootImpulse':
+            continue
+        shootImpulse = component_constants.ShootImpulse(_xml.readFloat(subsectionCtx, subsection, 'magnitude'), _xml.readString(subsectionCtx, subsection, 'applicationPoint'), _xml.readBool(subsectionCtx, subsection, 'isStillSafe', False))
+        if shootImpulse.applicationPoint not in ShootImpulseApplicationPoint.ALL:
+            _xml.raiseWrongXml(subsectionCtx, 'applicationPoint', ('unknown value - {}, possible values - {}').format(shootImpulse.applicationPoint, ShootImpulseApplicationPoint.ALL))
+        shootImpulses.append(shootImpulse)
+
+    return tuple(shootImpulses)
 
 
 def _readOptDevsOverrides(xmlCtx, section):

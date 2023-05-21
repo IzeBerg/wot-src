@@ -379,9 +379,6 @@ class BattlePassConfig(object):
         return self.capBonusList()[(getVehicleLevel(vehTypeCompDescr) - 1)]
 
     def vehicleCapacity(self, vehTypeCompDescr):
-        isSecret = 'secret' in vehicles.getVehicleType(vehTypeCompDescr).tags
-        if isSecret and vehTypeCompDescr not in self.vehCDCaps:
-            return 0
         return self.vehCDCaps.get(vehTypeCompDescr, self.vehLevelCaps[(getVehicleLevel(vehTypeCompDescr) - 1)])
 
     def bonusPointsList(self, vehTypeCompDescr=None, isWinner=True, gameMode=ARENA_BONUS_TYPE.REGULAR):

@@ -205,12 +205,6 @@ package
       
       public static const LOGIN_STATUS_CLIENT_SERVER_VERSIONS_ARE_DIFFERENT:String = "#menu:login/status/CLIENT_SERVER_VERSIONS_ARE_DIFFERENT";
       
-      public static const LOADING_GAME:String = "#menu:loading/game";
-      
-      public static const LOADING_GAMEINFO:String = "#menu:loading/gameInfo";
-      
-      public static const LOADING_GAMEINFO_AGE:String = "#menu:loading/gameInfo/age";
-      
       public static const LOADING_BATTLETYPES_0:String = "#menu:loading/battleTypes/0";
       
       public static const LOADING_BATTLETYPES_DESC_0:String = "#menu:loading/battleTypes/desc/0";
@@ -3427,6 +3421,20 @@ package
       
       public static const SKILLDROPWINDOW_TOOLTIP_VISIBLEDISABLED:String = "#menu:skillDropWindow/tooltip/visibleDisabled";
       
+      public static const SKILLDROPFORFREEWINDOW_ACTIONTIME_TITLE:String = "#menu:skillDropForFreeWindow/actionTime/title";
+      
+      public static const SKILLDROPFORFREEWINDOW_ACTIONTIME_DESCRIPTION:String = "#menu:skillDropForFreeWindow/actionTime/description";
+      
+      public static const SKILLDROPFORFREEWINDOW_DAYS:String = "#menu:skillDropForFreeWindow/days";
+      
+      public static const SKILLDROPFORFREEWINDOW_HOURS:String = "#menu:skillDropForFreeWindow/hours";
+      
+      public static const SKILLDROPFORFREEWINDOW_MINUTES:String = "#menu:skillDropForFreeWindow/minutes";
+      
+      public static const SKILLDROPFORFREEWINDOW_SECONDS:String = "#menu:skillDropForFreeWindow/seconds";
+      
+      public static const SKILLDROPFORFREEWINDOW_TIMER_TOOLTIP:String = "#menu:skillDropForFreeWindow/timer/tooltip";
+      
       public static const CENTERISAVAILABLE:String = "#menu:centerIsAvailable";
       
       public static const CENTERISUNAVAILABLE:String = "#menu:centerIsUnAvailable";
@@ -3572,6 +3580,8 @@ package
       public static const BONUSTYPE_42:String = "#menu:bonusType/42";
       
       public static const BONUSTYPE_43:String = "#menu:bonusType/43";
+      
+      public static const BONUSTYPE_44:String = "#menu:bonusType/44";
       
       public static const FORTIFICATIONCTX_ASSIGNEDPLAYERS:String = "#menu:fortificationCtx/assignedPlayers";
       
@@ -3725,8 +3735,6 @@ package
       
       public static const AWARDWINDOW_TITLE_TASKCOMPLETE:String = "#menu:awardWindow/title/taskComplete";
       
-      public static const AWARDWINDOW_TITLE_SPECIALACHIEVEMENT:String = "#menu:awardWindow/title/specialAchievement";
-      
       public static const AWARDWINDOW_OKBUTTON:String = "#menu:awardWindow/okButton";
       
       public static const AWARDWINDOW_TAKENEXTBUTTON:String = "#menu:awardWindow/takeNextButton";
@@ -3754,32 +3762,6 @@ package
       public static const AWARDWINDOW_QUESTS_VEHICLE_HEADER:String = "#menu:awardWindow/quests/vehicle/header";
       
       public static const AWARDWINDOW_QUESTS_VEHICLE_DESCRIPTION:String = "#menu:awardWindow/quests/vehicle/description";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_RESEARCH_DESCRIPTION1:String = "#menu:awardWindow/specialAchievement/research/description1";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_RESEARCH_DESCRIPTION2:String = "#menu:awardWindow/specialAchievement/research/description2";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_RESEARCH_DESCRIPTION3:String = "#menu:awardWindow/specialAchievement/research/description3";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_RESEARCH_DESCRIPTION4:String = "#menu:awardWindow/specialAchievement/research/description4";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_VICTORY_DESCRIPTION1:String = "#menu:awardWindow/specialAchievement/victory/description1";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_VICTORY_DESCRIPTION2:String = "#menu:awardWindow/specialAchievement/victory/description2";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_VICTORY_DESCRIPTION3:String = "#menu:awardWindow/specialAchievement/victory/description3";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_VICTORY_DESCRIPTION4:String = "#menu:awardWindow/specialAchievement/victory/description4";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_BATTLE_DESCRIPTION1:String = "#menu:awardWindow/specialAchievement/battle/description1";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_BATTLE_DESCRIPTION2:String = "#menu:awardWindow/specialAchievement/battle/description2";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_BATTLE_DESCRIPTION3:String = "#menu:awardWindow/specialAchievement/battle/description3";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_BATTLE_DESCRIPTION4:String = "#menu:awardWindow/specialAchievement/battle/description4";
-      
-      public static const AWARDWINDOW_SPECIALACHIEVEMENT_HEADER:String = "#menu:awardWindow/specialAchievement/header";
       
       public static const AWARDWINDOW_TITLE_BOOSTERAWARD:String = "#menu:awardWindow/title/boosterAward";
       

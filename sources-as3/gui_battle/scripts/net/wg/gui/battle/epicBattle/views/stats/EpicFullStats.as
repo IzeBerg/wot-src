@@ -63,6 +63,7 @@ package net.wg.gui.battle.epicBattle.views.stats
       override protected function configUI() : void
       {
          super.configUI();
+         this.statsTable.generalBonus.visible = false;
          this.statsTable.statsFilters.btnTabPlayerLane.selected = true;
          this.statsTable.statsFilters.addEventListener(EpicFullStatsEvent.FILTER_CHANGED,this.onFilterChangedHandler);
          this._tableCtrl.setupSquadElements();
@@ -103,6 +104,17 @@ package net.wg.gui.battle.epicBattle.views.stats
       {
          this._isInteractive = param1;
          this.applyInteractivity();
+      }
+      
+      public function as_setGeneralBonus(param1:Number) : void
+      {
+         var _loc2_:Boolean = false;
+         _loc2_ = param1 > 0;
+         this.statsTable.generalBonus.visible = _loc2_;
+         if(_loc2_)
+         {
+            this.statsTable.generalBonus.bonusValue = param1;
+         }
       }
       
       public function setArenaInfo(param1:IDAAPIDataClass) : void
@@ -204,12 +216,13 @@ package net.wg.gui.battle.epicBattle.views.stats
       
       public function updateStageSize(param1:Number, param2:Number) : void
       {
-         var _loc4_:Number = NaN;
-         var _loc3_:Number = param1 >> 1;
-         _loc4_ = param2 >> 1;
+         var _loc3_:Number = NaN;
+         _loc3_ = param1 >> 1;
+         var _loc4_:Number = param2 >> 1;
          this.header.modalBgSpr.width = param1;
          this.header.modalBgSpr.x = -_loc3_;
          this.statsTable.y = _loc4_ - TOP_TABLE_OFFSET * (param2 / MIN_HEIGHT);
+         this.statsTable.updateHeight(param2);
          this.modalBgSpr.width = param1;
          this.modalBgSpr.height = param2;
          this.modalBgSpr.x = -_loc3_;

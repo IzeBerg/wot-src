@@ -172,7 +172,7 @@ class ItemsPrices(object):
         return ItemsPrices(result)
 
 
-def init(preloadEverything, pricesToCollect=None):
+def init(preloadEverything, pricesToCollect=None, step=None):
     global _g_itemTypes
     _g_itemTypes = _readItemTypes()
     if pricesToCollect is not None:
@@ -195,7 +195,7 @@ def init(preloadEverything, pricesToCollect=None):
     from items import stun
     stun.init()
     from items import vehicles
-    vehicles.init(preloadEverything, pricesToCollect)
+    vehicles.init(preloadEverything, pricesToCollect, step)
     from items import avatars
     avatars.init()
     from items import tankmen

@@ -1,11 +1,13 @@
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import Winback
 from adisp import adisp_process
+from constants import ARENA_BONUS_TYPE
 from gui.impl.gen import R
 from gui.impl.lobby.winback.winback_leave_mode_dialog_view import WinbackLeaveModeDialogView
 from gui.prb_control.entities.base.ctx import PrbAction
 from gui.prb_control.settings import PREBATTLE_ACTION_NAME
 from gui.shared import g_eventBus, events
+from helpers import dependency
 
 @adisp_process
 def leaveWinbackMode(reason, showConfirmDialog=False, callback=None):
@@ -37,3 +39,11 @@ def setWinbackSetting(settingName, settingValue):
     settings = AccountSettings.getSettings(Winback.WINBACK_SETTINGS)
     settings.update({settingName: settingValue})
     AccountSettings.setSettings(Winback.WINBACK_SETTINGS, settings)
+
+
+def getQuestsFormatterBonusType():
+    from skeletons.gui.game_control import IWinbackController
+    winbackController = dependency.instance(IWinbackController)
+    if winbackController.isModeAvailable():
+        return ARENA_BONUS_TYPE.WINBACK
+    return ARENA_BONUS_TYPE.REGULAR

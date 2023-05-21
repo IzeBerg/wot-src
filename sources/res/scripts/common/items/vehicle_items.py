@@ -302,7 +302,7 @@ class Gun(InstallableItem):
                  'pitchLimits', 'staticTurretYaw', 'staticPitch', 'shotDispersionAngle',
                  'shotDispersionFactors', 'burst', 'clip', 'shots', 'autoreload',
                  'autoreloadHasBoost', 'drivenJoints', 'customizableVehicleAreas',
-                 'dualGun', 'edgeByVisualModel', 'prefabs', '__weakref__')
+                 'dualGun', 'edgeByVisualModel', 'prefabs', 'shootImpulses', '__weakref__')
 
     def __init__(self, typeID, componentID, componentName, compactDescr, level=1):
         super(Gun, self).__init__(typeID, componentID, componentName, compactDescr, level)
@@ -335,6 +335,7 @@ class Gun(InstallableItem):
         self.customizableVehicleAreas = None
         self.edgeByVisualModel = True
         self.prefabs = component_constants.EMPTY_TUPLE
+        self.shootImpulses = component_constants.EMPTY_TUPLE
         return
 
 

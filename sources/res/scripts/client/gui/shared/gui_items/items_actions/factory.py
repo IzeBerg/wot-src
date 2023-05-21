@@ -22,6 +22,7 @@ CONVERT_BLUEPRINT_FRAGMENT = 'convertFragment'
 USE_CREW_BOOK = 'useCrewBook'
 CHANGE_NATION = 'changeNation'
 INSTALL_BATTLE_ABILITIES = 'installBattleAbilities'
+BUY_BATTLE_ABILITIES = 'buyBattleAbilities'
 BUY_AND_INSTALL_OPT_DEVICES = 'buyAndInstallOptDevices'
 BUY_AND_INSTALL_CONSUMABLES = 'buyAndInstallConsumables'
 BUY_AND_INSTALL_SHELLS = 'buyAndInstallShells'
@@ -55,6 +56,7 @@ _ACTION_MAP = {SELL_ITEM: actions.SellItemAction,
    USE_CREW_BOOK: actions.UseCrewBookAction, 
    CHANGE_NATION: actions.ChangeVehicleNationAction, 
    INSTALL_BATTLE_ABILITIES: actions.InstallBattleAbilities, 
+   BUY_BATTLE_ABILITIES: actions.BuyBattleAbilities, 
    BUY_AND_INSTALL_OPT_DEVICES: actions.BuyAndInstallOptDevices, 
    BUY_AND_INSTALL_CONSUMABLES: actions.BuyAndInstallConsumables, 
    BUY_AND_INSTALL_SHELLS: actions.BuyAndInstallShells, 

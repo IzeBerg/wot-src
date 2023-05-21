@@ -2012,6 +2012,9 @@
 			<customRoleSlotTypeId>
 				<Type>UINT8</Type>
 			</customRoleSlotTypeId>
+			<botDisplayStatus>
+				<Type>UINT8</Type>
+			</botDisplayStatus>
 		</Properties>
 	</CLIENT_VEHICLE_PUBLIC_INFO>
 	<PLAY_LIMITS>
@@ -2083,6 +2086,9 @@
 		FIXED_DICT
 		<AllowNone>true</AllowNone>
 		<Properties>
+			<vehicleId>
+				<Type>OBJECT_ID</Type>
+			</vehicleId>
 			<nextStrikeTime>
 				<Type>FLOAT32</Type>
 			</nextStrikeTime>
@@ -2802,4 +2808,62 @@
 			</end>
 		</Properties>
 	</GAME_OBJECT_ACTIVATION>
+	<POLYGON_TRIGGER_PARAMS>
+		FIXED_DICT
+		<AllowNone>true</AllowNone>
+		<Properties>
+			<step>
+				<Type>UINT16</Type>
+			</step>
+			<origin>
+				<Type>VECTOR3</Type>
+			</origin>
+			<dimensions>
+				<Type>VECTOR3</Type>
+			</dimensions>
+			<verts>
+				<Type>
+					ARRAY
+					<of>VECTOR3</of>
+				</Type>
+			</verts>
+			<segments>
+				<Type>
+					ARRAY
+					<of>
+						ARRAY
+						<of>UINT16</of>
+					</of>
+				</Type>
+			</segments>
+		</Properties>
+	</POLYGON_TRIGGER_PARAMS>
+	<SPAWNGROUP_INFO>
+		FIXED_DICT
+		<Properties>
+			<name>
+				<Type>STRING</Type>
+			</name>
+			<position>
+				<Type>VECTOR2</Type>
+			</position>
+		</Properties>
+	</SPAWNGROUP_INFO>
+	<TEAM_LIVES>
+		FIXED_DICT
+		<Properties>
+			<vehicleID>
+				<Type>OBJECT_ID</Type>
+			</vehicleID>
+			<lives>
+				<Type>INT8</Type>
+			</lives>
+			<usedLives>
+				<Type>INT8</Type>
+			</usedLives>
+			<lockedLives>
+				<Type>INT8</Type>
+			</lockedLives>
+		</Properties>
+	</TEAM_LIVES>
 </root>

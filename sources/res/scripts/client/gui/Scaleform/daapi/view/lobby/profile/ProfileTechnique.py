@@ -39,6 +39,7 @@ class ProfileTechnique(ProfileTechniqueMeta):
     def __init__(self, *args):
         super(ProfileTechnique, self).__init__(*args)
         selectedData = self._selectedData
+        self.__dumpedVehDossiers = {}
         self._selectedVehicleIntCD = selectedData.get('itemCD') if selectedData else None
         return
 
@@ -67,8 +68,10 @@ class ProfileTechnique(ProfileTechniqueMeta):
 
     def _dispose(self):
         self.lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingChanged
+        self.__dumpedVehDossiers = None
         super(ProfileTechnique, self)._dispose()
         g_eventBus.handleEvent(ProfileTechniqueEvent(ProfileTechniqueEvent.DISPOSE), scope=EVENT_BUS_SCOPE.LOBBY)
+        return
 
     def _getInitData(self, accountDossier=None, isFallout=False):
         dropDownProvider = [
@@ -273,6 +276,7 @@ class ProfileTechnique(ProfileTechniqueMeta):
                     markOfMastery = ProfileUtils.UNAVAILABLE_VALUE
                 result.append({'id': intCD, 
                    'inventoryID': vehicle.invID, 
+                   'isOtherPlayer': self._userID is None, 
                    'shortUserName': vehicle.shortUserName, 
                    'battlesCount': battlesCount, 
                    'winsEfficiency': winsEfficiency, 
@@ -300,66 +304,70 @@ class ProfileTechnique(ProfileTechniqueMeta):
         vehDossier = self.itemsCache.items.getVehicleDossier(vehicleIntCD, databaseId)
         if not vehDossier:
             return
-        achievementsList = None
-        specialMarksStats = []
-        specialRankedStats = []
-        if self._battlesType in (PROFILE_DROPDOWN_KEYS.ALL, PROFILE_DROPDOWN_KEYS.EPIC_RANDOM):
-            achievementsEnabled = True
-            if self._battlesType == PROFILE_DROPDOWN_KEYS.ALL:
-                stats = vehDossier.getRandomStats()
-            elif self._battlesType == PROFILE_DROPDOWN_KEYS.EPIC_RANDOM:
-                stats = vehDossier.getEpicRandomStats()
-                achievementsEnabled = self.lobbyContext.getServerSettings().isEpicRandomAchievementsEnabled()
-            if achievementsEnabled:
-                achievementsList = self.__getAchievementsList(stats, vehDossier)
-            if self.__showMarksOnGun(vehicleIntCD):
-                if self._battlesType != PROFILE_DROPDOWN_KEYS.EPIC_RANDOM or self.lobbyContext.getServerSettings().isEpicRandomMarksOnGunEnabled():
-                    specialMarksStats.append(self.__packAchievement(stats, vehDossier, MARK_ON_GUN_RECORD))
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.TEAM:
-            stats = vehDossier.getTeam7x7Stats()
-            achievementsList = self.__getAchievementsList(stats, vehDossier)
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.STATICTEAM:
-            stats = vehDossier.getRated7x7Stats()
-            achievementsList = self.__getAchievementsList(stats, vehDossier)
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.HISTORICAL:
-            stats = vehDossier.getHistoricalStats()
-            achievementsList = self.__getAchievementsList(stats, vehDossier)
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_SORTIES:
-            stats = vehDossier.getFortSortiesStats()
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_BATTLES:
-            stats = vehDossier.getFortBattlesStats()
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.CLAN:
-            stats = vehDossier.getGlobalMapStats()
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.FALLOUT:
-            stats = vehDossier.getFalloutStats()
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.RANKED:
-            stats = vehDossier.getRankedStats()
-            achievementsList = self.__getAchievementsList(stats, vehDossier)
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.RANKED_10X10:
-            stats = vehDossier.getRanked10x10Stats()
-            achievementsList = self.__getAchievementsList(stats, vehDossier)
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.BATTLE_ROYALE_SOLO:
-            stats = vehDossier.getBattleRoyaleSoloStats(vehicleIntCD)
-            if not stats:
-                return
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.BATTLE_ROYALE_SQUAD:
-            stats = vehDossier.getBattleRoyaleSquadStats(vehicleIntCD)
-            if not stats:
-                return
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.COMP7:
-            stats = vehDossier.getComp7Stats()
-        elif self._battlesType == PROFILE_DROPDOWN_KEYS.COMP7_SEASON2:
-            stats = vehDossier.getComp7Stats(seasonID=2)
         else:
-            raise SoftException('Profile Technique: Unknown battle type: ' + self._battlesType)
-        if achievementsList is not None:
-            achievementsList.insert(0, specialRankedStats)
-            achievementsList.insert(1, specialMarksStats)
-        preparedStatistics = DetailedStatisticsUtils.getStatistics(stats, self._userID is None, self.__getLayout())
-        self._selectedVehicleIntCD = vehicleIntCD
-        self.as_responseVehicleDossierS({'detailedData': preparedStatistics, 
-           'achievements': achievementsList})
-        return
+            vehDossierDumped = self.__dumpedVehDossiers.get(vehicleIntCD)
+            if vehDossierDumped is None:
+                self.__dumpedVehDossiers[vehicleIntCD] = vehDossierDumped = dumpDossier(vehDossier)
+            achievementsList = None
+            specialMarksStats = []
+            specialRankedStats = []
+            if self._battlesType in (PROFILE_DROPDOWN_KEYS.ALL, PROFILE_DROPDOWN_KEYS.EPIC_RANDOM):
+                achievementsEnabled = True
+                if self._battlesType == PROFILE_DROPDOWN_KEYS.ALL:
+                    stats = vehDossier.getRandomStats()
+                elif self._battlesType == PROFILE_DROPDOWN_KEYS.EPIC_RANDOM:
+                    stats = vehDossier.getEpicRandomStats()
+                    achievementsEnabled = self.lobbyContext.getServerSettings().isEpicRandomAchievementsEnabled()
+                if achievementsEnabled:
+                    achievementsList = self.__getAchievementsList(stats, vehDossier, vehDossierDumped)
+                if self.__showMarksOnGun(vehicleIntCD):
+                    if self._battlesType != PROFILE_DROPDOWN_KEYS.EPIC_RANDOM or self.lobbyContext.getServerSettings().isEpicRandomMarksOnGunEnabled():
+                        specialMarksStats.append(self.__packAchievement(stats, vehDossier, MARK_ON_GUN_RECORD, vehDossierDumped))
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.TEAM:
+                stats = vehDossier.getTeam7x7Stats()
+                achievementsList = self.__getAchievementsList(stats, vehDossier, vehDossierDumped)
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.STATICTEAM:
+                stats = vehDossier.getRated7x7Stats()
+                achievementsList = self.__getAchievementsList(stats, vehDossier, vehDossierDumped)
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.HISTORICAL:
+                stats = vehDossier.getHistoricalStats()
+                achievementsList = self.__getAchievementsList(stats, vehDossier, vehDossierDumped)
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_SORTIES:
+                stats = vehDossier.getFortSortiesStats()
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_BATTLES:
+                stats = vehDossier.getFortBattlesStats()
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.CLAN:
+                stats = vehDossier.getGlobalMapStats()
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.FALLOUT:
+                stats = vehDossier.getFalloutStats()
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.RANKED:
+                stats = vehDossier.getRankedStats()
+                achievementsList = self.__getAchievementsList(stats, vehDossier, vehDossierDumped)
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.RANKED_10X10:
+                stats = vehDossier.getRanked10x10Stats()
+                achievementsList = self.__getAchievementsList(stats, vehDossier, vehDossierDumped)
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.BATTLE_ROYALE_SOLO:
+                stats = vehDossier.getBattleRoyaleSoloStats(vehicleIntCD)
+                if not stats:
+                    return
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.BATTLE_ROYALE_SQUAD:
+                stats = vehDossier.getBattleRoyaleSquadStats(vehicleIntCD)
+                if not stats:
+                    return
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.COMP7:
+                stats = vehDossier.getComp7Stats()
+            elif self._battlesType == PROFILE_DROPDOWN_KEYS.COMP7_SEASON2:
+                stats = vehDossier.getComp7Stats(seasonID=2)
+            else:
+                raise SoftException('Profile Technique: Unknown battle type: ' + self._battlesType)
+            if achievementsList is not None:
+                achievementsList.insert(0, specialRankedStats)
+                achievementsList.insert(1, specialMarksStats)
+            preparedStatistics = DetailedStatisticsUtils.getStatistics(stats, self._userID is None, self.__getLayout())
+            self._selectedVehicleIntCD = vehicleIntCD
+            self.as_responseVehicleDossierS({'detailedData': preparedStatistics, 
+               'achievements': achievementsList})
+            return
 
     def __getLayout(self):
         if self._battlesType == PROFILE_DROPDOWN_KEYS.FALLOUT:
@@ -372,11 +380,11 @@ class ProfileTechnique(ProfileTechniqueMeta):
             return COMP7_VEHICLE_STATISTICS_LAYOUT
         return STATISTICS_LAYOUT
 
-    def __getAchievementsList(self, targetData, vehDossier):
+    def __getAchievementsList(self, targetData, vehDossier, vehDossierDumped):
         packedList = []
         achievements = targetData.getAchievements(True)
         for achievementBlockList in achievements:
-            packedList.append(AchievementsUtils.packAchievementList(achievementBlockList, vehDossier.getDossierType(), dumpDossier(vehDossier), self._userID is None, True, ACHIEVEMENTS_ALIASES.GREY_COUNTER))
+            packedList.append(AchievementsUtils.packAchievementList(achievementBlockList, vehDossier.getDossierType(), vehDossierDumped, self._userID is None, True, ACHIEVEMENTS_ALIASES.GREY_COUNTER))
 
         return packedList
 
@@ -384,8 +392,8 @@ class ProfileTechnique(ProfileTechniqueMeta):
         if 'hallOfFame' in diff:
             self._setRatingButton()
 
-    def __packAchievement(self, stats, vehDossier, record):
-        return AchievementsUtils.packAchievement(stats.getAchievement(record), vehDossier.getDossierType(), dumpDossier(vehDossier), self._userID is None)
+    def __packAchievement(self, stats, vehDossier, record, vehDossierDumped):
+        return AchievementsUtils.packAchievement(stats.getAchievement(record), vehDossier.getDossierType(), vehDossierDumped, self._userID is None)
 
     def __showMarksOnGun(self, vehicleIntCD):
         return self.itemsCache.items.getItemByCD(int(vehicleIntCD)).level >= _MARK_ON_GUN_MIN_LVL

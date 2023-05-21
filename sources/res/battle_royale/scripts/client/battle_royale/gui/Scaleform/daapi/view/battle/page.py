@@ -1,4 +1,5 @@
 import BigWorld
+from battle_royale.gui.Scaleform.daapi.view.battle.respawn_message_panel import RespawnMessagePanel
 from shared_utils import CONST_CONTAINER
 from constants import ARENA_PERIOD
 from aih_constants import CTRL_MODE_NAME
@@ -35,6 +36,7 @@ class _DynamicAliases(CONST_CONTAINER):
     VEH_UPGRADE_EFFECT_PLAYER = 'vehicleUpgradeEffectPlayer'
     SPAWNED_BOT_MSG_PUBLISHER = 'SpawnedBotMsgPublisher'
     MINEFIELD_MSG_PUBLISHER = 'MinefieldMsgPublisher'
+    RESPAWN_PANEL = 'RespawnPanel'
 
 
 class _BattleRoyaleComponentsConfig(ComponentsConfig):
@@ -52,13 +54,18 @@ class _BattleRoyaleComponentsConfig(ComponentsConfig):
            BATTLE_VIEW_ALIASES.RADAR_BUTTON,
            _DynamicAliases.ARENA_PERIOD_SOUND_PLAYER,
            _DynamicAliases.SELECT_RESPAWN_SOUND_PLAYER,
-           BATTLE_VIEW_ALIASES.CORRODING_SHOT_INDICATOR)),
+           BATTLE_VIEW_ALIASES.CORRODING_SHOT_INDICATOR,
+           BATTLE_VIEW_ALIASES.BR_TIMERS_PANEL)),
+         (
+          BATTLE_CTRL_ID.PERKS, (BATTLE_VIEW_ALIASES.PERKS_PANEL,)),
          (
           BATTLE_CTRL_ID.TEAM_BASES,
           (
            BATTLE_VIEW_ALIASES.TEAM_BASES_PANEL,
            DynamicAliases.DRONE_MUSIC_PLAYER,
            BATTLE_VIEW_ALIASES.PLAYERS_PANEL)),
+         (
+          BATTLE_CTRL_ID.BATTLE_HINTS, (BATTLE_VIEW_ALIASES.BATTLE_HINT,)),
          (
           BATTLE_CTRL_ID.DEBUG, (BATTLE_VIEW_ALIASES.DEBUG_PANEL,)),
          (
@@ -95,7 +102,10 @@ class _BattleRoyaleComponentsConfig(ComponentsConfig):
           BATTLE_CTRL_ID.SPAWN_CTRL,
           (
            BATTLE_VIEW_ALIASES.BR_SELECT_RESPAWN,
-           _DynamicAliases.SELECT_RESPAWN_SOUND_PLAYER)),
+           BATTLE_VIEW_ALIASES.BR_RESPAWN_MESSAGE_PANEL,
+           _DynamicAliases.SELECT_RESPAWN_SOUND_PLAYER,
+           BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL,
+           BATTLE_VIEW_ALIASES.BATTLE_TEAM_PANEL)),
          (
           BATTLE_CTRL_ID.VEHICLES_COUNT_CTRL,
           (
@@ -135,7 +145,9 @@ class _BattleRoyaleComponentsConfig(ComponentsConfig):
          (
           _DynamicAliases.SPAWNED_BOT_MSG_PUBLISHER, SpawnedBotMsgPlayerMsgs),
          (
-          _DynamicAliases.MINEFIELD_MSG_PUBLISHER, MinefieldPlayerMessenger)))
+          _DynamicAliases.MINEFIELD_MSG_PUBLISHER, MinefieldPlayerMessenger),
+         (
+          _DynamicAliases.RESPAWN_PANEL, RespawnMessagePanel)))
 
 
 _BATTLE_ROYALE_CFG = _BattleRoyaleComponentsConfig()
@@ -362,7 +374,7 @@ class BattleRoyalePage(BattleRoyalePageMeta, ISpawnListener):
             self._setComponentsVisibility(visible=self.__PANELS_FOR_SHOW_HIDE)
             self.__panelsIsVisible = True
         if vehicle and not vehicle.isAlive():
-            if avatar_getter.isBecomeObserverAfterDeath():
+            if avatar_getter.isBecomeObserverAfterDeath() and BigWorld.player().isObserverBothTeams:
                 self._setComponentsVisibility(visible=[
                  BATTLE_VIEW_ALIASES.PLAYERS_PANEL, BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL])
                 BigWorld.player().setIsObserver()

@@ -131,6 +131,9 @@ class _DamageExtra(object):
     def isDeathZone(self):
         return self.isAttackReason(ATTACK_REASON.DEATH_ZONE)
 
+    def isStaticDeathZone(self):
+        return self.isAttackReason(ATTACK_REASON.STATIC_DEATH_ZONE)
+
     def isProtectionZone(self, primary=True):
         if primary:
             return self.isAttackReason(ATTACK_REASON.ARTILLERY_PROTECTION) or self.isAttackReason(ATTACK_REASON.ARTILLERY_SECTOR)
@@ -298,6 +301,9 @@ class _CritsExtra(object):
 
     def isDeathZone(self):
         return self.isAttackReason(ATTACK_REASON.DEATH_ZONE)
+
+    def isStaticDeathZone(self):
+        return self.isAttackReason(ATTACK_REASON.STATIC_DEATH_ZONE)
 
     def isProtectionZone(self, primary=True):
         if primary:

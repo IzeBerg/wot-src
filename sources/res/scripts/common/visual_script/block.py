@@ -1,11 +1,6 @@
 from typing import List, Any, Sequence
-from misc import ASPECT, BLOCK_MODE
+from misc import ASPECT, BLOCK_MODE, EDITOR_TYPE
 from itertools import imap
-
-class EDITOR_TYPE(object):
-    STR_KEY_SELECTOR = 1
-    ENUM_SELECTOR = 2
-
 
 def buildStrKeysValue(*args):
     return (';').join(args)

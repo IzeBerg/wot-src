@@ -51,6 +51,6 @@ class MessengerBarMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setSessionStatsButtonEnable(value, tooltip)
 
-    def as_setSessionStatsButtonSettingsUpdateS(self, show, tooltip):
+    def as_setSessionStatsButtonSettingsUpdateS(self, show, value):
         if self._isDAAPIInited():
-            return self.flashObject.as_setSessionStatsButtonSettingsUpdate(show, tooltip)
+            return self.flashObject.as_setSessionStatsButtonSettingsUpdate(show, value)

@@ -7,6 +7,16 @@ package net.wg.gui.battle.epicBattle.views.stats.components
    
    public class EpicFullStatsTable extends BattleUIComponent
    {
+      
+      private static const STATS_FILTER_Y:int = -158;
+      
+      private static const STATS_FILTER_Y_SMALL:int = -121;
+      
+      private static const GENERAL_BONUS_Y:int = -88;
+      
+      private static const GENERAL_BONUS_Y_SMALL:int = -75;
+      
+      private static const ADAPTIVE_HEIGHT:int = 860;
        
       
       public var team1TF:TextField = null;
@@ -27,6 +37,8 @@ package net.wg.gui.battle.epicBattle.views.stats.components
       
       public var statsFilters:EpicStatsTableFilterGroup = null;
       
+      public var generalBonus:EpicStatsGeneralBonus = null;
+      
       public function EpicFullStatsTable()
       {
          super();
@@ -40,6 +52,8 @@ package net.wg.gui.battle.epicBattle.views.stats.components
          this.squadAddBt = null;
          this.statsFilters.dispose();
          this.statsFilters = null;
+         this.generalBonus.dispose();
+         this.generalBonus = null;
          this.team1TF = null;
          this.team2TF = null;
          this.team1PlayerList.dispose();
@@ -51,6 +65,20 @@ package net.wg.gui.battle.epicBattle.views.stats.components
          this.team2ScrollBar.dispose();
          this.team2ScrollBar = null;
          super.onDispose();
+      }
+      
+      public function updateHeight(param1:Number) : void
+      {
+         if(param1 > ADAPTIVE_HEIGHT)
+         {
+            this.statsFilters.y = STATS_FILTER_Y;
+            this.generalBonus.y = GENERAL_BONUS_Y;
+         }
+         else
+         {
+            this.statsFilters.y = STATS_FILTER_Y_SMALL;
+            this.generalBonus.y = GENERAL_BONUS_Y_SMALL;
+         }
       }
    }
 }

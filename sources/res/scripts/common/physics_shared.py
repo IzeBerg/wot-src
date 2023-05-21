@@ -192,6 +192,7 @@ def getDefaultWheeledChassisXPhysicsCfg():
        'axleSteeringSpeed': (0.0, 0.0, 0.0, 90.0), 
        'brokenWheelPowerLoss': (0.0, 0.0, 0.0, 0.0), 
        'brokenWheelSpeedLoss': (0.0, 0.0, 0.0, 0.0), 
+       'brokenWheelRotationSpeedLoss': (0.0, 0.0, 0.0, 0.0), 
        'fwdFrictionOnAxisModifiers': (1.0, 1.0, 1.0, 1.0), 
        'sideFrictionOnAxisModifiers': (1.0, 1.0, 1.0, 1.0), 
        'sideFrictionConstantRatioOnAxis': (0.0, 0.0, 0.0, 0.0), 
@@ -222,7 +223,8 @@ def getDefaultWheeledChassisXPhysicsCfg():
                    'warningMaxHealth': 100.0, 
                    'warningMaxHealthCritEngine': 50.0, 
                    'power': 1.0, 
-                   'impulse': 0.0}})
+                   'impulse': 0.0}, 
+       'isWheeledOnSpotRotation': False})
 
 
 def getDefaultTankVehicleXPhysicsShapeCfg():
@@ -585,7 +587,8 @@ def configurePhysicsMode(cfg, typeDesc, gravityFactor):
                     'handbrakeBrakeForce', 'brokenWheelRollingFrictionModifier',
                     'noSignalBrakeForce', 'afterDeathBrakeForce', 'afterDeathMinSpeedForImpulse',
                     'afterDeathImpulse', 'jumpingFactor', 'jumpingMinForce', 'slowTurnChocker',
-                    'airPitchReduction', 'wheelToHullRollTransmission', 'steeringSpeedInTurnMultiplier'):
+                    'airPitchReduction', 'wheelToHullRollTransmission', 'steeringSpeedInTurnMultiplier',
+                    'isWheeledOnSpotRotation'):
             cfg[key] = cfg['chassis'][key]
 
     cfg['gimletGoalWOnSpot'] = cfg['chassis']['gimletGoalWOnSpot']

@@ -9,6 +9,7 @@ from gui.shared.system_factory import registerIngameHelpPagesBuilders, collectIn
 from gui.shared.utils.functions import replaceHyphenToUnderscore
 from gui.shared.utils.key_mapping import getReadableKey, getVirtualKey
 from items.vehicles import getRolesActions
+from nations import NAMES as NATIONS_NAMES
 from shared_utils import findFirst
 from soft_exception import SoftException
 if typing.TYPE_CHECKING:
@@ -146,7 +147,7 @@ class BurnOutPagesBuilder(DetailedHelpPagesBuilder):
 
 
 class WheeledPagesBuilder(DetailedHelpPagesBuilder):
-    _SUITABLE_CTX_KEYS = ('isWheeledVehicle', )
+    _SUITABLE_CTX_KEYS = ('isFrenchWheeledVehicle', )
 
     @classmethod
     def priority(cls):
@@ -162,8 +163,10 @@ class WheeledPagesBuilder(DetailedHelpPagesBuilder):
 
     @classmethod
     def _collectHelpCtx(cls, ctx, arenaVisitor, vehicle):
-        ctx['isWheeledVehicle'] = isWheeledVehicle = vehicle is not None and vehicle.typeDescriptor.isWheeledVehicle
-        ctx['hasUniqueVehicleHelpScreen'] = ctx.get('hasUniqueVehicleHelpScreen') or isWheeledVehicle
+        isRoleLtWheeled = vehicle is not None and vehicle.typeDescriptor.role == ROLE_TYPE.LT_WHEELED
+        isFrenchWheeledVehicle = isRoleLtWheeled and NATIONS_NAMES[vehicle.typeDescriptor.type.id[0]] == 'france'
+        ctx['isFrenchWheeledVehicle'] = isFrenchWheeledVehicle
+        ctx['hasUniqueVehicleHelpScreen'] = ctx.get('hasUniqueVehicleHelpScreen') or isFrenchWheeledVehicle
         return
 
 
@@ -257,7 +260,6 @@ class BattleRoyalePagesBuilder(DetailedHelpPagesBuilder):
             raise SoftException(('No icons found for map {}').format(mapGeometryName))
         addPage(pages, headerTitle, backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.radar.title()), text_styles.mainBig(backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.radar.description())), [], [], backport.image(imagePath.br_radar()), hintCtx=HelpHintContext.BATTLE_ROYALE)
         addPage(pages, headerTitle, backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.zone.title()), text_styles.mainBig(backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.zone.description())), [], [], backport.image(imagePath.br_zone()), hintCtx=HelpHintContext.BATTLE_ROYALE)
-        addPage(pages, headerTitle, backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.sectorVision.title()), text_styles.mainBig(backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.sectorVision.description())), [], [], backport.image(imagePath.br_sector()), hintCtx=HelpHintContext.BATTLE_ROYALE)
         addPage(pages, headerTitle, backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.airDrop.title()), text_styles.mainBig(backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.airDrop.description())), [], [], backport.image(imagePath.br_airdrop()), hintCtx=HelpHintContext.BATTLE_ROYALE)
         addPage(pages, headerTitle, backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.upgrade.title()), text_styles.mainBig(backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.upgrade.description())), [], [], backport.image(imagePath.br_tree()), hintCtx=HelpHintContext.BATTLE_ROYALE)
         addPage(pages, headerTitle, backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.uniqueAbilities.title()), text_styles.mainBig(backport.text(R.strings.ingame_help.detailsHelp.battleRoyale.uniqueAbilities.description())), [], [], backport.image(imagePath.br_unique_abilities()), hintCtx=HelpHintContext.BATTLE_ROYALE)
@@ -400,5 +402,4 @@ class MapboxPagesBuilder(DetailedHelpPagesBuilder):
 registerIngameHelpPagesBuilders((
  SiegeModePagesBuilder, BurnOutPagesBuilder, WheeledPagesBuilder, TrackWithinTrackPagesBuilder,
  DualGunPagesBuilder, BattleRoyalePagesBuilder, TurboshaftEnginePagesBuilder, RoleTypePagesBuilder,
- RocketAccelerationPagesBuilder, Comp7PagesBuilder, MapboxPagesBuilder,
- RocketAccelerationPagesBuilder, Comp7PagesBuilder, FlameTankPagesBuilder))
+ RocketAccelerationPagesBuilder, Comp7PagesBuilder, MapboxPagesBuilder, FlameTankPagesBuilder))

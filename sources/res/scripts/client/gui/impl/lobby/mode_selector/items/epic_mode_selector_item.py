@@ -28,7 +28,7 @@ class EpicModeSelectorItem(ModeSelectorLegacyItem):
 
     @property
     def isVisible(self):
-        return self.__epicController.isEnabled() and self.__epicController.getCurrentSeasonID()
+        return self.__epicController.getCurrentSeasonID()
 
     def _getIsDisabled(self):
         return not self.__epicController.isEnabled()
@@ -58,6 +58,7 @@ class EpicModeSelectorItem(ModeSelectorLegacyItem):
         return True
 
     def handleClick(self):
+        self.__epicController.showWelcomeScreenIfNeed()
         self.__epicController.showProgressionDuringSomeStates(True)
 
     @property

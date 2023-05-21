@@ -9,6 +9,7 @@ package net.wg.gui.lobby.settings
    import net.wg.data.constants.Values;
    import net.wg.gui.components.controls.CheckBox;
    import net.wg.gui.components.controls.DropdownMenu;
+   import net.wg.gui.components.controls.InfoIcon;
    import net.wg.gui.components.controls.ResizableScrollPane;
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
    import net.wg.gui.lobby.settings.events.SettingsSubVewEvent;
@@ -117,6 +118,8 @@ package net.wg.gui.lobby.settings
       override protected function configUI() : void
       {
          super.configUI();
+         this.markerBaseLevelCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
+         this.markerBaseLevelCheckbox.toolTip = SETTINGS.MARKER_LEVEL_TOOLTIP;
          this.scrollPaneBase.setSize(PANE_WIDTH,PANE_HEIGHT);
          this.scrollPaneAlt.setSize(PANE_WIDTH,PANE_HEIGHT);
          this.topShadowBase.mouseChildren = this.topShadowBase.mouseEnabled = false;

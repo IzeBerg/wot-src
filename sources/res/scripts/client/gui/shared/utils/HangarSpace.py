@@ -1,10 +1,12 @@
 from Queue import Queue
 from functools import wraps, partial
-import BigWorld, Math, Event, Keys, ResMgr, constants
+import BigWorld, Math, CGF, Event, Keys, ResMgr, constants
+from PlayerEvents import g_playerEvents
 from debug_utils import LOG_DEBUG, LOG_DEBUG_DEV
 from gui import g_mouseEventHandlers, InputHandler
 from gui.ClientHangarSpace import ClientHangarSpace
 from gui.Scaleform.Waiting import Waiting
+from gui.game_loading.resources.consts import Milestones
 from helpers import dependency, uniprof
 from helpers.statistics import HANGAR_LOADING_STATE
 from shared_utils import BoundMethodWeakref
@@ -22,6 +24,7 @@ from gui import GUI_CTRL_MODE_FLAG as _CTRL_FLAG
 from gui.hangar_cameras.hangar_camera_common import CameraMovementStates
 from gui.prb_control.events_dispatcher import g_eventDispatcher
 from uilogging.performance.hangar.loggers import HangarMetricsLogger
+from cgf_components.hangar_camera_manager import HangarCameraManager
 _Q_CHECK_DELAY = 0.0
 
 class _execute_after_hangar_space_inited(object):
@@ -41,7 +44,7 @@ class _execute_after_hangar_space_inited(object):
         return wrapped
 
     def checkConditionForExit(self):
-        if not self.hangarSpace.spaceInited:
+        if not self.hangarSpace.spaceInited or not self.hangarSpace.space.getVehicleEntity():
             BigWorld.callback(_Q_CHECK_DELAY, self.checkConditionForExit)
             return
         self.delayCall()
@@ -114,6 +117,9 @@ class HangarVideoCameraController(object):
             self.__enabled = False
             return
         else:
+            cameraManager = CGF.getManager(self.hangarSpace.spaceID, HangarCameraManager)
+            if cameraManager:
+                cameraManager.deactivate()
             self.__videoCamera.enable()
             self.appLoader.detachCursor(app_settings.APP_NAME_SPACE.SF_LOBBY)
             BigWorld.player().objectsSelectionEnabled(False)
@@ -123,7 +129,10 @@ class HangarVideoCameraController(object):
 
     def __disableVideoCamera(self):
         self.__videoCamera.disable()
-        BigWorld.camera(self.hangarSpace.space.camera)
+        cameraManager = CGF.getManager(self.hangarSpace.spaceID, HangarCameraManager)
+        if cameraManager:
+            cameraManager.activate()
+            cameraManager.switchToTank()
         self.appLoader.attachCursor(app_settings.APP_NAME_SPACE.SF_LOBBY, _CTRL_FLAG.GUI_ENABLED)
         BigWorld.player().objectsSelectionEnabled(True)
         self.hangarSpace.setSelectionEnabled(True)
@@ -259,6 +268,7 @@ class HangarSpace(IHangarSpace):
         self.__spaceDestroyedDuringLoad = False
         if not self.__spaceInited:
             LOG_DEBUG('HangarSpace::init')
+            g_playerEvents.onLoadingMilestoneReached(Milestones.HANGAR_SPACE)
             Waiting.show('loadHangarSpace')
             self.__inited = True
             self.__isSpacePremium = isPremium
@@ -341,6 +351,7 @@ class HangarSpace(IHangarSpace):
         return
 
     def startToUpdateVehicle(self, vehicle, outfit=None):
+        g_playerEvents.onLoadingMilestoneReached(Milestones.HANGAR_SPACE_VEHICLE)
         self.__vehicleUpdateRequested = True
         Waiting.show('loadHangarSpaceVehicle', isSingle=True)
         self.updateVehicle(vehicle, outfit)
@@ -406,6 +417,10 @@ class HangarSpace(IHangarSpace):
         self.__isSpacePremium = isPremium
         self.hangarSwitchController.processPossibleSceneChange()
 
+    def resetLastUpdatedVehicle(self):
+        self.__lastUpdatedVehicle = None
+        return
+
     @uniprof.regionDecorator(label='hangar.space.loading', scope='exit')
     def __spaceDone(self):
         self.__spaceInited = True
@@ -421,6 +436,7 @@ class HangarSpace(IHangarSpace):
             self.__logStatistics()
         else:
             self.__logStatisticsPostponed = True
+        g_playerEvents.onLoadingMilestoneReached(Milestones.HANGAR_READY)
         self.onHeroTankReady()
 
     @uniprof.regionDecorator(label='hangar.vehicle.loading', scope='exit')

@@ -1,4 +1,4 @@
-import math, BigWorld, Math, math_utils
+import math, BigWorld, Math, Event, math_utils
 
 class ImpulseReason(object):
     MY_SHOT = 0
@@ -287,6 +287,7 @@ class FovExtended(object):
         self.__horizontalFov = value
         self.__verticalFov = FovExtended.lookupVerticalFov(value)
         self.setFovByMultiplier(self.__multiplier)
+        self.onSetFovSettingEvent()
 
     horizontalFov = property(lambda self: self.__horizontalFov, __setHorizontalFov)
 
@@ -300,6 +301,7 @@ class FovExtended(object):
         self.__enabled = True
         BigWorld.addWatcher('Render/Fov(horizontal, deg)', lambda : self.__horizontalFov)
         BigWorld.addWatcher('Render/Fov(vertical, deg)', lambda : math.degrees(self.__verticalFov))
+        self.onSetFovSettingEvent = Event.Event()
         self.horizontalFov = 90
         self.defaultVerticalFov = FovExtended.lookupVerticalFov(self.horizontalFov)
         from gui import g_guiResetters
