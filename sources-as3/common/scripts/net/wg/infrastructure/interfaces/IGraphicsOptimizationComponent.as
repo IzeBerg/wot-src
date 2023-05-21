@@ -1,5 +1,14 @@
-/*
- * Decompilation error
- * Timeout (5 minutes) was reached
- */
-throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
+package net.wg.infrastructure.interfaces
+{
+   import flash.events.IEventDispatcher;
+   import flash.geom.Rectangle;
+   
+   public interface IGraphicsOptimizationComponent extends IEventDispatcher
+   {
+       
+      
+      function getRectangles() : Vector.<Rectangle>;
+      
+      function getAliasS() : String;
+   }
+}
