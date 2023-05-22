@@ -9230,7 +9230,7 @@
 					<applyTo>enemy_team</applyTo>
 					<args>
 						<damage>350</damage>
-						<damageDispersionPercent>5</damageDispersionPercent>
+						<damageDispersionPercent>0</damageDispersionPercent>
 					</args>
 				</action>
 				<action>
@@ -10816,7 +10816,7 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				5
+				3
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
@@ -10824,7 +10824,7 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<crewBuff>
-				3 6.5 10.0
+				4 7.5 11.0
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</crewBuff>
@@ -10897,12 +10897,12 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<aimingTimeBuff>
-				0.65 0.475 0.3
+				0.55 0.475 0.3
 				<!--BW_String-->
 				<exports>vse</exports>
 			</aimingTimeBuff>
 			<shotDispersionFactors>
-				0.65 0.475 0.3
+				0.55 0.475 0.3
 				<!--BW_String-->
 				<exports>vse</exports>
 			</shotDispersionFactors>
@@ -10930,7 +10930,7 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				5
+				3
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
@@ -10938,7 +10938,7 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<gunReloadTimeBuff>
-				0.85 0.725 0.6
+				0.75 0.7 0.6
 				<!--BW_String-->
 				<exports>vse</exports>
 			</gunReloadTimeBuff>
@@ -10947,7 +10947,7 @@
 				<exports>vse tooltip</exports>
 			</damageDistance>
 			<shotDispersionFactors>
-				0.85 0.7 0.55
+				0.8 0.675 0.55
 				<!--BW_String-->
 				<exports>vse</exports>
 			</shotDispersionFactors>
@@ -10970,7 +10970,7 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				5
+				3
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
@@ -11009,20 +11009,20 @@
 				<exports>vse tooltip</exports>
 			</delay>
 			<radius>
-				8 11 15
+				10 12.5 15
+				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</radius>
 			<damage>
-				50 130 225
+				75 150 250
 				<exports>vse tooltip</exports>
 			</damage>
 			<stunDuration>
-				7 9 11
+				0 6 10
 				<exports>vse tooltip</exports>
 			</stunDuration>
 			<fraction>
-				0.05
-				<!--BW_String-->
+				0
 				<exports>vse tooltip</exports>
 			</fraction>
 			<areaShow>always</areaShow>
@@ -11037,8 +11037,8 @@
 			<effects>
 				<action>
 					<shotEffects>epicArtilleryStrike</shotEffects>
-					<offsetDeviation>20</offsetDeviation>
-					<repeatCount>5</repeatCount>
+					<offsetDeviation>15</offsetDeviation>
+					<repeatCount>4</repeatCount>
 					<repeatDelay>0</repeatDelay>
 					<repeatDelayDeviationPercent>0</repeatDelayDeviationPercent>
 				</action>
@@ -11065,11 +11065,11 @@
 				</client>
 			</visualScript>
 			<cooldownSeconds>
-				10
+				3
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<gunReloadTimeBuff>
-				0.73 0.6 0.45
+				0.7 0.55 0.4
 				<!--BW_String-->
 				<exports>vse</exports>
 			</gunReloadTimeBuff>
@@ -11230,11 +11230,11 @@
 				<exports>vse tooltip</exports>
 			</healDuration>
 			<baseHeal>
-				125
+				150
 				<exports>vse tooltip</exports>
 			</baseHeal>
 			<extraHealFactor>
-				0.3 0.55 0.85
+				0.35 0.6 0.85
 				<!--BW_String-->
 				<exports>vse</exports>
 			</extraHealFactor>
@@ -11243,11 +11243,11 @@
 				<exports>vse tooltip</exports>
 			</fwdSpeedBoost>
 			<bkwSpeedBoost>
-				5
+				10
 				<exports>vse tooltip</exports>
 			</bkwSpeedBoost>
 			<enginePowerBuff>
-				10
+				15
 				<exports>vse tooltip</exports>
 			</enginePowerBuff>
 		</script>
@@ -11269,15 +11269,15 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				10
+				3
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				10 12 15
+				15 20 25
 				<exports>vse tooltip</exports>
 			</duration>
 			<delay>
-				3
+				2
 				<exports>vse tooltip</exports>
 			</delay>
 			<radius>
