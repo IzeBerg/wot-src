@@ -381,7 +381,7 @@ class ItemsRequester(IItemsRequester):
     _AccountItem = namedtuple('_AccountItem', ['dossier', 'clanInfo', 'seasons', 'ranked',
      'dogTag', 'battleRoyaleStats', 'wtr', 'layout', 'layoutState'])
 
-    def __init__(self, inventory, stats, dossiers, goodies, shop, recycleBin, vehicleRotation, ranked, battleRoyale, badges, epicMetaGame, tokens, festivityRequester, armoryYard, blueprints=None, sessionStatsRequester=None, anonymizerRequester=None, battlePassRequester=None, giftSystemRequester=None, gameRestrictionsRequester=None, resourceWellRequester=None, achievements20Requester=None):
+    def __init__(self, inventory, stats, dossiers, goodies, shop, recycleBin, vehicleRotation, ranked, battleRoyale, badges, epicMetaGame, tokens, festivityRequester, armoryYard, blueprints=None, sessionStatsRequester=None, anonymizerRequester=None, battlePassRequester=None, giftSystemRequester=None, gameRestrictionsRequester=None, resourceWellRequester=None, achievements20Requester=None, refProgramRequester=None):
         self.__inventory = inventory
         self.__stats = stats
         self.__dossiers = dossiers
@@ -404,6 +404,7 @@ class ItemsRequester(IItemsRequester):
         self.__gameRestrictions = gameRestrictionsRequester
         self.__resourceWell = resourceWellRequester
         self.__achievements20 = achievements20Requester
+        self.__refProgram = refProgramRequester
         self.__itemsCache = defaultdict(dict)
         self.__brokenSyncAlreadyLoggedTypes = set()
         self.__fittingItemRequesters = {
@@ -498,6 +499,10 @@ class ItemsRequester(IItemsRequester):
     def achievements20(self):
         return self.__achievements20
 
+    @property
+    def refProgram(self):
+        return self.__refProgram
+
     @adisp_async
     @adisp_process
     def request(self, callback=None):
@@ -568,12 +573,15 @@ class ItemsRequester(IItemsRequester):
         Waiting.show('download/achievements20')
         yield self.__achievements20.request()
         Waiting.hide('download/achievements20')
+        Waiting.show('download/refProgram')
+        yield self.__refProgram.request()
+        Waiting.hide('download/refProgram')
         self.__brokenSyncAlreadyLoggedTypes.clear()
         callback(self)
 
     def isSynced--- This code section failed: ---
 
- L. 948         0  LOAD_FAST             0  'self'
+ L. 959         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  '__blueprints'
                 6  LOAD_CONST               None
                 9  COMPARE_OP            9  is-not

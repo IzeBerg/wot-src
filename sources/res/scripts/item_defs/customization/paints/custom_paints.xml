@@ -6397,7 +6397,6 @@
 		<userString>#vehicle_customization:repaint/color_group_04</userString>
 		<season>ALL</season>
 		<historical>1</historical>
-		<tags>hiddenInUI</tags>
 		<priceGroup>paints 20g notInShop</priceGroup>
 		<vehicleFilter>
 			<exclude>
@@ -6417,6 +6416,55 @@
 				<!--BW_String-->
 			</metallic>
 			<userString>#vehicle_customization:repaint/compendium_2_2023_MT</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<usages>
+			<item>
+				<componentType>ALL</componentType>
+				<cost>1</cost>
+			</item>
+		</usages>
+	</itemGroup>
+	<itemGroup>
+		<name>Flags BY RU</name>
+		<userString>#vehicle_customization:repaint/color_group_04</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<paint>
+			<id>31020</id>
+			<texture>gui/maps/vehicles/repaints/china_base_color.png</texture>
+			<color>47 84 67 255</color>
+			<gloss>
+				0.6
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.3
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/FlagBY_MT</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>31021</id>
+			<texture>gui/maps/vehicles/repaints/sweden_color_07.png</texture>
+			<color>46 70 102 255</color>
+			<gloss>
+				0.6
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.3
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/FlagRU_MT</userString>
+			<tags>hiddenInUI</tags>
 		</paint>
 		<usages>
 			<item>

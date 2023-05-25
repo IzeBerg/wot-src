@@ -383,6 +383,8 @@ class OnceOnlyHints(CONST_CONTAINER):
     BATTLE_MATTERS_FIGHT_BUTTON_HINT = 'BattleMattersFightButtonHint'
     BATTLE_MATTERS_ENTRY_POINT_BUTTON_HINT = 'BattleMattersEntryPointHint'
     SUMMARY_CUSTOMIZATION_BUTTON_HINT = 'SummaryCustomizationButtonHint'
+    REFERRAL_RECRUIT_ENTRY_POINT_HINT = 'ReferralRecruitEntryPointHint'
+    REFERRAL_ENTRY_POINT_HINT = 'ReferralEntryPointHint'
 
 
 class SESSION_STATS(CONST_CONTAINER):

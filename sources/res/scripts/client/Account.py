@@ -28,6 +28,7 @@ from account_helpers.spa_flags import SPAFlags
 from account_helpers.gift_system import GiftSystem
 from account_helpers.trade_in import TradeIn
 from account_helpers.winback import Winback
+from account_helpers.referral_program import ReferralProgram
 from account_shared import NotificationItem, readClientServerVersion
 from items import tankmen
 from adisp import adisp_process
@@ -184,6 +185,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.resourceWell = g_accountRepository.resourceWell
         self.winback = g_accountRepository.winback
         self.achievements20 = g_accountRepository.achievements20
+        self.referralProgram = g_accountRepository.referralProgram
         self.customFilesCache = g_accountRepository.customFilesCache
         self.syncData.setAccount(self)
         self.inventory.setAccount(self)
@@ -214,6 +216,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.mapsTraining.setAccount(self)
         self.telecomRentals.setAccount(self)
         self.tradeIn.setAccount(self)
+        self.referralProgram.setAccount(self)
         g_accountRepository.commandProxy.setGateway(self.__doCmd)
         self.isLongDisconnectedFromCenter = False
         self.prebattle = None
@@ -274,6 +277,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.gameRestrictions.onAccountBecomePlayer()
         self.resourceWell.onAccountBecomePlayer()
         self.achievements20.onAccountBecomePlayer()
+        self.referralProgram.onAccountBecomePlayer()
         chatManager.switchPlayerProxy(self)
         events.onAccountBecomePlayer()
         BigWorld.target.source = BigWorld.MouseTargetingMatrix()
@@ -320,6 +324,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.gameRestrictions.onAccountBecomeNonPlayer()
         self.resourceWell.onAccountBecomeNonPlayer()
         self.achievements20.onAccountBecomeNonPlayer()
+        self.referralProgram.onAccountBecomeNonPlayer()
         self.__cancelCommands()
         self.syncData.setAccount(None)
         self.inventory.setAccount(None)
@@ -345,6 +350,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.anonymizer.setAccount(None)
         self.offers.setAccount(None)
         self.achievements20.setAccount(None)
+        self.referralProgram.setAccount(None)
         g_accountRepository.commandProxy.setGateway(None)
         self.unitMgr.clear()
         self.unitBrowser.clear()
@@ -1234,6 +1240,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
             self.gameRestrictions.synchronize(isFullSync, diff)
             self.resourceWell.synchronize(isFullSync, diff)
             self.achievements20.synchronize(isFullSync, diff)
+            self.referralProgram.synchronize(isFullSync, diff)
             self._synchronizeServerSettings(diff)
             self._synchronizeDisabledPersonalMissions(diff)
             self._synchronizeEventNotifications(diff)
@@ -1491,6 +1498,7 @@ class _AccountRepository(object):
         self.gameRestrictions = GameRestrictions(self.syncData)
         self.platformBlueprintsConvertSaleLimits = {}
         self.freePremiumCrew = {}
+        self.referralProgram = ReferralProgram(self.syncData)
         self.gMap = ClientGlobalMap()
         self.onTokenReceived = Event.Event()
         self.requestID = AccountCommands.REQUEST_ID_UNRESERVED_MIN

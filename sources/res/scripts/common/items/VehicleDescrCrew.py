@@ -43,7 +43,8 @@ class VehicleDescrCrew(object):
            'radioDistanceFactor': 0.0}
         self._camouflageFactor = 1.0
         self._boostedSkills = {}
-        self._useCachedLevelIncrease = False
+        self._perksLevelIncrease = None
+        self._crewLevelIncrease = None
         self.lastUsedLevels = {}
         return
 
@@ -94,14 +95,6 @@ class VehicleDescrCrew(object):
     def _factorsDirty(self, necessity):
         self.__factorsDirty = necessity
 
-    @property
-    def useCachedLevelIncrease(self):
-        return self._useCachedLevelIncrease
-
-    @useCachedLevelIncrease.setter
-    def useCachedLevelIncrease(self, value):
-        self._useCachedLevelIncrease = value
-
     def isCrewActive(self):
         return True in self._activityFlags
 
@@ -120,7 +113,7 @@ class VehicleDescrCrew(object):
         newLevelIncreaseByVehicle = factors['crewLevelIncrease'] + self._vehicleDescr.miscAttrs['crewLevelIncrease']
         if self._levelIncreaseByVehicle != newLevelIncreaseByVehicle:
             self._levelIncreaseByVehicle = newLevelIncreaseByVehicle
-            if hasattr(self, '_vehicle') and not self._useCachedLevelIncrease:
+            if hasattr(self, '_vehicle') and self._perksLevelIncrease is None:
                 self._vehicle.events.onTankmanStatusChanged(self._vehicle, CREW_CONTEXT_FORCE_UPDATE_INDEX)
             self._factorsDirty = True
         for key, factor in self._affectingFactors.iteritems():
@@ -153,6 +146,8 @@ class VehicleDescrCrew(object):
             r[2] *= value[2]
         except:
             pass
+
+        return
 
     def saveLastUsedPerkLevel(self, perkID, level):
         skillName = tankmen.getSkillsConfig().vsePerkToSkill.get(perkID)
@@ -204,6 +199,7 @@ class VehicleDescrCrew(object):
         commonLevelIncrease = self._levelIncreaseByBrotherhood + self._levelIncreaseByVehicle
         universalistAddition = self._calculateUniversalistAddition(commonLevelIncrease)
         self._updateCommanderUniversalistNotifications(universalistAddition)
+        self._crewLevelIncrease = None
         computeSummSkillLevel = self._computeSummSkillLevel
         llen = len
         for skillName in tankmen.ROLES:
@@ -212,7 +208,7 @@ class VehicleDescrCrew(object):
                 baseAvgLevel = 0.0
             else:
                 skillData = skills[skillName]
-                baseSummLevel, summLevel, numInactive = computeSummSkillLevel({'crew': skillData})
+                baseSummLevel, summLevel, numInactive = computeSummSkillLevel({'crew': skillData}, isAbility=False)
                 summLevel += numInactive * universalistAddition
                 skillDataLen = llen(skillData)
                 avgLevel = summLevel / skillDataLen
@@ -371,13 +367,8 @@ class VehicleDescrCrew(object):
         factorPerLevel = perkCfg.defaultBlockSettings[argName].value
         self._setFactor(factorName, round(a.level + a.levelIncrease) * factorPerLevel)
 
-    def _findBestTankmanForSkill(self, skillData):
-        if not self._useCachedLevelIncrease:
-            commanderLevelIncrease = self._levelIncreaseByBrotherhood + self._levelIncreaseByVehicle
-            nonCommanderLevelIncrease = self._calcLeverIncreaseForNonCommander(commanderLevelIncrease)
-            self._cachedLevelIncrease = (commanderLevelIncrease, nonCommanderLevelIncrease)
-        else:
-            commanderLevelIncrease, nonCommanderLevelIncrease = self._cachedLevelIncrease
+    def _findBestTankmanForSkill(self, skillData, isAbility=True):
+        commanderLevelIncrease, nonCommanderLevelIncrease = self._processCurrentLevelIncrease(isAbility)
         commanderIdx = self._commanderIdx
         bestActiveTankman = None
         maxActiveLevel = 0
@@ -457,13 +448,8 @@ class VehicleDescrCrew(object):
     def _addPerksFromEquipment(self, perks):
         pass
 
-    def _computeSummSkillLevel(self, skillData):
-        if not self._useCachedLevelIncrease:
-            commanderLevelIncrease = self._levelIncreaseByBrotherhood + self._levelIncreaseByVehicle
-            nonCommanderLevelIncrease = self._calcLeverIncreaseForNonCommander(commanderLevelIncrease)
-            self._cachedLevelIncrease = (commanderLevelIncrease, nonCommanderLevelIncrease)
-        else:
-            commanderLevelIncrease, nonCommanderLevelIncrease = self._cachedLevelIncrease
+    def _computeSummSkillLevel(self, skillData, isAbility=True):
+        commanderLevelIncrease, nonCommanderLevelIncrease = self._processCurrentLevelIncrease(isAbility)
         summLevel = 0.0
         baseSummLevel = 0.0
         numInactive = 0
@@ -485,6 +471,20 @@ class VehicleDescrCrew(object):
     def _crewComp(self):
         roleSkills = {name:data for name, data in self._skills.iteritems() if name in tankmen.ROLES if name in tankmen.ROLES}
         return roleSkills
+
+    def _processCurrentLevelIncrease(self, isAbility):
+        if not (self._crewLevelIncrease and self._perksLevelIncrease):
+            commanderLevelIncrease = self._levelIncreaseByBrotherhood + self._levelIncreaseByVehicle
+            nonCommanderLevelIncrease = self._calcLeverIncreaseForNonCommander(commanderLevelIncrease)
+            if not self._perksLevelIncrease:
+                self._perksLevelIncrease = (
+                 commanderLevelIncrease, nonCommanderLevelIncrease)
+            if not self._crewLevelIncrease:
+                self._crewLevelIncrease = (
+                 commanderLevelIncrease, nonCommanderLevelIncrease)
+        if isAbility:
+            return self._perksLevelIncrease
+        return self._crewLevelIncrease
 
     _skillProcessors = {'commander': _updateCommanderFactors, 
        'radioman': _updateRadiomanFactors, 

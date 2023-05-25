@@ -35,7 +35,7 @@ from notification.settings import NOTIFICATION_BUTTON_STATE, NOTIFICATION_TYPE
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController, IArmoryYardController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController, IArmoryYardController, IReferralProgramController
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.web import IWebController
@@ -1227,6 +1227,21 @@ class _OpenEventLootBoxesShopHandler(NavigationDisabledActionHandler):
             self.__eventLootBoxes.openShop()
 
 
+class _OpenReferralProgramMainViewHandler(NavigationDisabledActionHandler):
+    __referralProgramController = dependency.descriptor(IReferralProgramController)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('openReferralProgramMainView', )
+
+    def doAction(self, model, entityID, action):
+        self.__referralProgramController.showWindow()
+
+
 class _OpenCollectionHandler(NavigationDisabledActionHandler):
     __collections = dependency.descriptor(ICollectionsSystemController)
 
@@ -1354,7 +1369,8 @@ _AVAILABLE_HANDLERS = (
  _OpenWinbackSelectableRewardViewFromQuest,
  _OpenArmoryYardMain,
  _OpenArmoryYardQuest,
- _OpenAchievementsScreen)
+ _OpenAchievementsScreen,
+ _OpenReferralProgramMainViewHandler)
 registerNotificationsActionsHandlers(_AVAILABLE_HANDLERS)
 
 class NotificationsActionsHandlers(object):

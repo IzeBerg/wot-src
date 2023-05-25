@@ -1172,6 +1172,16 @@ class MESSENGER(object):
     SERVICECHANNELMESSAGES_WINBACK_AWARDS_DISCOUNTCONCRETE = '#messenger:serviceChannelMessages/winback/awards/discountConcrete'
     SERVICECHANNELMESSAGES_WINBACK_AWARDS_DISCOUNTHEADER = '#messenger:serviceChannelMessages/winback/awards/discountHeader'
     SERVICECHANNELMESSAGES_FINANCIAL_ADD = '#messenger:serviceChannelMessages/Financial/add'
+    SERVICECHANNELMESSAGES_REFERRALPROGRAMCASHBACK_HEADER = '#messenger:serviceChannelMessages/referralProgramCashback/header'
+    SERVICECHANNELMESSAGES_REFERRALPROGRAMCASHBACK_TEXT = '#messenger:serviceChannelMessages/referralProgramCashback/text'
+    SERVICECHANNELMESSAGES_REFERRALPROGRAMPGBFULL_TEXT = '#messenger:serviceChannelMessages/referralProgramPGBFull/text'
+    SERVICECHANNELMESSAGES_REFERRALPROGRAMPGBFULL_BUTTON = '#messenger:serviceChannelMessages/referralProgramPGBFull/button'
+    SERVICECHANNELMESSAGES_REFERRALPROGRAMPOINTSADDED_HEADER = '#messenger:serviceChannelMessages/referralProgramPointsAdded/header'
+    SERVICECHANNELMESSAGES_REFERRALPROGRAMPOINTSADDED_BODY = '#messenger:serviceChannelMessages/referralProgramPointsAdded/body'
+    SERVICECHANNELMESSAGES_REFERRALPROGRAMPOINTSDEBITED_BODY = '#messenger:serviceChannelMessages/referralProgramPointsDebited/body'
+    SERVICECHANNELMESSAGES_REFERRALLOOTBOXESRECEIVED_BODY = '#messenger:serviceChannelMessages/referralLootBoxesReceived/body'
+    SERVICECHANNELMESSAGES_REFERRALTRANSACTION_HEADER = '#messenger:serviceChannelMessages/referralTransaction/header'
+    SERVICECHANNELMESSAGES_REFERRALTRANSACTION_DATE = '#messenger:serviceChannelMessages/referralTransaction/date'
     CLIENT_ERROR_SHARED_ENUM = (
      CLIENT_ERROR_SHARED_TRY_LATER,
      CLIENT_ERROR_SHARED_GENERIC,

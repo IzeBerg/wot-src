@@ -12783,6 +12783,8 @@ package
       
       public static const MAPS_ICONS_LIBRARY_RIBBON:String = "../maps/icons/library/ribbon.png";
       
+      public static const MAPS_ICONS_LIBRARY_RPICON_1:String = "../maps/icons/library/rpIcon-1.png";
+      
       public static const MAPS_ICONS_LIBRARY_SACOINICON_1:String = "../maps/icons/library/sacoinIcon-1.png";
       
       public static const MAPS_ICONS_LIBRARY_SALLYRESULT_1:String = "../maps/icons/library/SallyResult-1.png";

@@ -53,6 +53,7 @@ from gui.shared.gui_items.crew_skin import localizedFullName
 from gui.shared.gui_items.dossier.achievements.abstract.class_progress import ClassProgressAchievement
 from gui.shared.gui_items.dossier.factories import getAchievementFactory
 from gui.shared.gui_items.fitting_item import RentalInfoProvider
+from gui.shared.gui_items.loot_box import REFERRAL_PROGRAM_CATEGORY
 from gui.shared.money import Currency, MONEY_UNDEFINED, Money, ZERO_MONEY
 from gui.shared.notifications import NotificationGuiSettings, NotificationPriorityLevel
 from gui.shared.system_factory import collectTokenQuestsSubFormatters
@@ -1169,6 +1170,8 @@ class GiftReceivedFormatter(ServiceChannelFormatter):
 
 class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
     __purchaseCache = dependency.descriptor(IPurchaseCache)
+    __emitterAssetHandlers = {constants.INVOICE_EMITTER.WOTRP: {INVOICE_ASSET.GOLD: b'_formatWOTRPGold', 
+                                         INVOICE_ASSET.DATA: b'_formatWOTRPData'}}
     __assetHandlers = {INVOICE_ASSET.GOLD: b'_formatAmount', 
        INVOICE_ASSET.CREDITS: b'_formatAmount', 
        INVOICE_ASSET.CRYSTAL: b'_formatAmount', 
@@ -1203,6 +1206,8 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
     __blueprintsTemplateKeys = {BlueprintTypes.VEHICLE: ('vehicleBlueprintsAccruedInvoiceReceived', 'vehicleBlueprintsDebitedInvoiceReceived'), 
        BlueprintTypes.NATIONAL: ('nationalBlueprintsAccruedInvoiceReceived', 'nationalBlueprintsDebitedInvoiceReceived'), 
        BlueprintTypes.INTELLIGENCE_DATA: ('intelligenceBlueprintsAccruedInvoiceReceived', 'intelligenceBlueprintsDebitedInvoiceReceived')}
+    __emitterMessageTemplateKeys = {constants.INVOICE_EMITTER.WOTRP: {INVOICE_ASSET.GOLD: b'WOTRPCachbackInvoiceReceived', 
+                                         INVOICE_ASSET.DATA: b'WOTRPCachbackInvoiceReceived'}}
     __messageTemplateKeys = {INVOICE_ASSET.GOLD: b'goldInvoiceReceived', 
        INVOICE_ASSET.CREDITS: b'creditsInvoiceReceived', 
        INVOICE_ASSET.CRYSTAL: b'crystalInvoiceReceived', 
@@ -1213,7 +1218,8 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
        INVOICE_ASSET.DATA: b'dataInvoiceReceived', 
        INVOICE_ASSET.PURCHASE: b'purchaseInvoiceReceived'}
     __INVALID_TYPE_ASSET = -1
-    __auxMessagesHandlers = {INVOICE_ASSET.DATA: b'getInvoiceDataAuxMessages'}
+    __auxMessagesHandlers = {INVOICE_ASSET.DATA: b'getInvoiceDataAuxMessages', 
+       INVOICE_ASSET.PURCHASE: b'getPurchaseDataAuxMessages'}
     __DESTROY_PAIR_MODIFICATIONS_MSG_TEMPLATE = b'DestroyAllPairsModifications'
     __goodiesCache = dependency.descriptor(IGoodiesCache)
     __eventsCache = dependency.descriptor(IEventsCache)
@@ -1230,12 +1236,13 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
             isDataSynced = yield self.__waitForSyncData(data)
             if isDataSynced:
                 self.__prerocessRareAchievements(data)
+                emitterID = data.get(b'emitterID')
                 assetType = data.get(b'assetType', self.__INVALID_TYPE_ASSET)
-                handler = self.__assetHandlers.get(assetType)
+                handler = self._getMessageHandler(emitterID, assetType)
                 if handler is not None:
-                    formatted = getattr(self, handler)(assetType, data)
+                    formatted = getattr(self, handler)(emitterID, assetType, data)
                 if formatted is not None:
-                    settings = self._getGuiSettings(message, self._getMessageTemplateKey(assetType))
+                    settings = self._getGuiSettings(message, self._getMessageTemplateKey(emitterID, assetType))
             else:
                 assetType = self.__INVALID_TYPE_ASSET
                 _logger.debug(b'Message will not be shown!')
@@ -1248,6 +1255,9 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
         result.extend(auxMassages)
         callback(result)
         return
+
+    def _getMessageHandler(self, emitterId, assetType):
+        return self.__emitterAssetHandlers.get(emitterId, {}).get(assetType, None) or self.__assetHandlers.get(assetType)
 
     @classmethod
     def getBlueprintString(cls, blueprints):
@@ -1449,6 +1459,11 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
         result.extend(self.__getDiscardPairModificationsMsg(data))
         return result
 
+    def getPurchaseDataAuxMessages(self, data):
+        result = []
+        result.extend(self.__getReferralProgramMsg(data))
+        return result
+
     def _composeOperations(self, data):
         dataEx = data.get(b'data', {})
         if not dataEx:
@@ -1536,7 +1551,7 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
             entitlementsStr = self.__getEntitlementsString(dataEx.get(b'entitlements', {}))
             if entitlementsStr:
                 operations.append(entitlementsStr)
-            lootBoxStr = self.__getLootBoxString(dataEx.get(b'tokens', {}))
+            lootBoxStr = self.__getLootBoxString(dataEx.get(b'tokens', {}), data.get(b'assetType', self.__INVALID_TYPE_ASSET))
             if lootBoxStr:
                 operations.append(lootBoxStr)
             rankedDailyBattles = dataEx.get(b'rankedDailyBattles', 0)
@@ -1549,26 +1564,26 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
                 operations.append(platformCurrenciesStr)
             return operations
 
-    def _formatData(self, assetType, data):
+    def _formatData(self, emitterID, assetType, data):
         operations = self._composeOperations(data)
         icon = b'InformationIcon'
         if not operations:
             return None
         else:
-            return g_settings.msgTemplates.format(self._getMessageTemplateKey(assetType), ctx={b'at': self._getOperationTimeString(data), 
+            return g_settings.msgTemplates.format(self._getMessageTemplateKey(emitterID, assetType), ctx={b'at': self._getOperationTimeString(data), 
                b'desc': self.__getL10nDescription(data), 
                b'op': (b'<br/>').join(operations)}, data={b'icon': icon})
 
-    def _formatAmount(self, assetType, data):
+    def _formatAmount(self, emitterID, assetType, data):
         amount = data.get(b'amount', None)
         if amount is None:
             return
         else:
-            return g_settings.msgTemplates.format(self._getMessageTemplateKey(assetType), ctx={b'at': self._getOperationTimeString(data), 
+            return g_settings.msgTemplates.format(self._getMessageTemplateKey(emitterID, assetType), ctx={b'at': self._getOperationTimeString(data), 
                b'desc': self.__getL10nDescription(data), 
                b'op': self.__getFinOperationString(assetType, amount)})
 
-    def _formatPurchase(self, assetType, data):
+    def _formatPurchase(self, emitterID, assetType, data):
         if b'customFormatting' in data.get(b'tags', ()):
             return None
         else:
@@ -1601,10 +1616,18 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
                     _logger.info(b'Could not find icon in the purchase descriptor!')
             ctx[b'title'] = title
             ctx[b'subtitle'] = subtitle
-            return g_settings.msgTemplates.format(self._getMessageTemplateKey(assetType), ctx=ctx, data=templateData)
+            return g_settings.msgTemplates.format(self._getMessageTemplateKey(emitterID, assetType), ctx=ctx, data=templateData)
 
-    def _getMessageTemplateKey(self, assetType):
-        return self.__messageTemplateKeys[assetType]
+    def _formatWOTRPGold(self, emitterID, assetType, data):
+        ctx = {b'amount': data.get(b'amount', 0)}
+        return g_settings.msgTemplates.format(self._getMessageTemplateKey(emitterID, assetType), ctx=ctx)
+
+    def _formatWOTRPData(self, emitterID, assetType, data):
+        ctx = {b'amount': data.get(b'data', {}).get(b'gold', 0)}
+        return g_settings.msgTemplates.format(self._getMessageTemplateKey(emitterID, assetType), ctx=ctx)
+
+    def _getMessageTemplateKey(self, emitterID, assetType):
+        return self.__emitterMessageTemplateKeys.get(emitterID, {}).get(assetType) or self.__messageTemplateKeys[assetType]
 
     @classmethod
     def _getOperationTimeString(cls, data):
@@ -1929,12 +1952,12 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
             tokenStrings.append(g_settings.htmlTemplates.format(template, {b'count': count}))
         return tokenStrings
 
-    def __getLootBoxString(self, data):
+    def __getLootBoxString(self, data, assetType):
         boxesList = []
         for tokenName, tokenData in data.iteritems():
             if constants.LOOTBOX_TOKEN_PREFIX in tokenName:
                 lootBox = self._itemsCache.items.tokens.getLootBoxByTokenID(tokenName)
-                if lootBox is not None:
+                if lootBox is not None and (lootBox.getCategory() not in (REFERRAL_PROGRAM_CATEGORY,) or assetType != INVOICE_ASSET.PURCHASE):
                     boxesList.append(backport.text(R.strings.lootboxes.notification.lootBoxesAutoOpen.counter(), boxName=lootBox.getUserName(), count=tokenData.get(b'count', 0)))
 
         if boxesList:
@@ -2016,6 +2039,31 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
                             result.append(MessageData(formatted, self._getGuiSettings(formatted, template)))
 
             return result
+
+    def __getReferralProgramMsg(self, data):
+        dataEx = data.get(b'data', {})
+        price = data.get(b'meta', {}).get(b'price', {})
+        referralLootBoxCount = 0
+        result = []
+        if price.get(b'currency_code') == constants.RP_POINT:
+            template = b'ReferralProgramFinanceOperationSysMessage'
+            atStr = g_settings.htmlTemplates.format(b'transactionTime', ctx={b'at': self._getOperationTimeString(data)})
+            debitedStr = g_settings.htmlTemplates.format(b'rpPointsDebited', ctx={b'points': price.get(b'amount', 0)})
+            formatted = g_settings.msgTemplates.format(template, ctx={b'text': (b'<br/>').join((atStr, debitedStr)), 
+               b'header': backport.text(R.strings.messenger.serviceChannelMessages.referralTransaction.header())})
+            result.append(MessageData(formatted, self._getGuiSettings(formatted, template)))
+        for tokenName, tokenData in dataEx.get(b'tokens', {}).iteritems():
+            if constants.LOOTBOX_TOKEN_PREFIX in tokenName:
+                lootBox = self._itemsCache.items.tokens.getLootBoxByTokenID(tokenName)
+                if lootBox is not None and lootBox.getCategory() == REFERRAL_PROGRAM_CATEGORY:
+                    referralLootBoxCount += tokenData.get(b'count', 0)
+
+        if referralLootBoxCount:
+            template = b'rpLootBoxesInvoiceReceived'
+            formatted = g_settings.msgTemplates.format(template, ctx={b'count': referralLootBoxCount, 
+               b'at': self._getOperationTimeString(data)})
+            result.append(MessageData(formatted, self._getGuiSettings(formatted, template)))
+        return result
 
     @adisp_async
     @adisp_process
@@ -3537,7 +3585,7 @@ class TelecomReceivedInvoiceFormatter(InvoiceReceivedFormatter):
                 _, _, rentedVehNames = self._getVehicleNames(vehicles)
             return rentedVehNames
 
-    def _getMessageTemplateKey(self, data):
+    def _getMessageTemplateKey(self, emitterID, assetType):
         return b'telecomVehicleReceived'
 
     def _getMessageContext(self, data, vehicleNames):
@@ -3560,7 +3608,7 @@ class TelecomReceivedInvoiceFormatter(InvoiceReceivedFormatter):
 
         return ctx
 
-    def _formatData(self, assetType, data):
+    def _formatData(self, emitterID, assetType, data):
         vehicleNames = self._getVehicles(data)
         if not vehicleNames:
             return None

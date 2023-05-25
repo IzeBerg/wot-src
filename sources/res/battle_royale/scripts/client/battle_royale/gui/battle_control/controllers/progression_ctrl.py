@@ -825,4 +825,8 @@ class ProgressionController(IProgressionController, ViewComponentsController):
             self.updateXP(vehicle.battleXP.battleXP, vehicle.id)
 
     def __onRespawnBaseMoving(self):
-        pass
+        avatar = BigWorld.player()
+        avatar.setVehicleOverturned(False)
+        if self.__upgradesAvailability is not None:
+            self.__upgradesAvailability.onVehicleStatusChanged()
+        return

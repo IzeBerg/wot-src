@@ -86,6 +86,7 @@ class IntSettingsRequester(object):
        'MARKERS_ENEMY_2': 112, 
        'MARKERS_DEAD_2': 113, 
        'MARKERS_ALLY_2': 114, 
+       'ONCE_ONLY_HINTS_3': 115, 
        'ARMORY_YARD': 31001}
 
     def __init__(self):

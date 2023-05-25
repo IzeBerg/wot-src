@@ -118,8 +118,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__banTimer = None
         self.__updateDogTagsState()
         self.__updateWotPlusState()
-        self.__isEventLootBoxesActive = False
-        self.__isLootBoxesAvailable = False
         return
 
     def onEscape(self):
@@ -153,8 +151,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__banTimer = CallbackDelayer()
         self.__isSpaceReadyForC11n = self.hangarSpace.spaceInited
         self.__isVehicleReadyForC11n = self.hangarSpace.isModelLoaded
-        self.__isEventLootBoxesActive = self.__eventLootBoxes.isActive()
-        self.__isLootBoxesAvailable = self.__eventLootBoxes.isLootBoxesAvailable()
         self.__checkVehicleCameraState()
         g_currentVehicle.onChanged += self.__onCurrentVehicleChanged
         self.hangarSpace.onVehicleChangeStarted += self.__onVehicleLoading

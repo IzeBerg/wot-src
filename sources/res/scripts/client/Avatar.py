@@ -1373,6 +1373,9 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 ctrl.onVehicleStatusChanged()
             return
 
+    def setVehicleOverturned(self, isOverturned):
+        self.__isVehicleOverturned = isOverturned
+
     def updateVehicleSettings(self, vehicleSettings):
         for vehicleSetting in vehicleSettings:
             self.updateVehicleSetting(vehicleSetting.vehicleID, vehicleSetting.code, vehicleSetting.value)

@@ -2698,6 +2698,10 @@ package
       public static const LIMITEDUI_SWITCHON:String = "#system_messages:limitedUI/switchOn";
       
       public static const LIMITEDUI_SWITCHOFF:String = "#system_messages:limitedUI/switchOff";
+      
+      public static const REFERRALPROGRAM_COLLECTPGBPOINTS_SERVER_ERROR:String = "#system_messages:referralProgram_collectPgbPoints/server_error";
+      
+      public static const REFERRAL_PROGRAM_DISABLED:String = "#system_messages:referral_program/disabled";
        
       
       public function SYSTEM_MESSAGES()

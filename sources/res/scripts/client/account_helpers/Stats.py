@@ -26,7 +26,7 @@ _SIMPLE_VALUE_STATS = ('fortResource', 'slots', 'berths', 'freeXP', 'dossier', '
                        'tutorialsCompleted', 'battlesTillCaptcha', 'dailyPlayHours',
                        'playLimits', 'applyAdditionalXPCount') + Currency.ALL
 _DICT_STATS = ('vehTypeXP', 'vehTypeLocks', 'restrictions', 'globalVehicleLocks', 'dummySessionStats',
-               'maxResearchedLevelByNation', 'weeklyVehicleCrystals')
+               'maxResearchedLevelByNation', 'weeklyVehicleCrystals', 'refSystem20')
 _GROWING_SET_STATS = ('unlocks', 'eliteVehicles', 'multipliedXPVehs', 'multipliedRankedBattlesVehs')
 _ACCOUNT_STATS = ('clanDBID', 'attrs', 'premiumExpiryTime', 'autoBanTime', 'globalRating')
 _CACHE_STATS = ('isFinPswdVerified', 'mayConsumeWalletResources', 'oldVehInvIDs', 'isSsrPlayEnabled',

@@ -1002,6 +1002,8 @@ class VehicleDescriptor(object):
 
     def getMaxRepairCost(self):
         type = self.type
+        if 'battle_royale' in type.tags:
+            return 10000
         cost = self.maxHealth * type.repairCost
         for turretDescr, gunDescr in self.turrets:
             cost += gunDescr.maxRepairCost + turretDescr.turretRotatorHealth.maxRepairCost + turretDescr.surveyingDeviceHealth.maxRepairCost

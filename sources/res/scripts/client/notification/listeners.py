@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 import WWISE
 from PlayerEvents import g_playerEvents
 from account_helpers import AccountSettings
-from account_helpers.AccountSettings import COLLECTIONS_NOTIFICATIONS, INTEGRATED_AUCTION_NOTIFICATIONS, IS_BATTLE_PASS_EXTRA_STARTED, LOOT_BOXES_WAS_FINISHED, PROGRESSIVE_REWARD_VISITED, RESOURCE_WELL_END_SHOWN, RESOURCE_WELL_NOTIFICATIONS, RESOURCE_WELL_START_SHOWN, SENIORITY_AWARDS_COINS_REMINDER_SHOWN_TIMESTAMP, ArmoryYard
+from account_helpers.AccountSettings import COLLECTIONS_NOTIFICATIONS, INTEGRATED_AUCTION_NOTIFICATIONS, IS_BATTLE_PASS_EXTRA_STARTED, LOOT_BOXES_WAS_FINISHED, PROGRESSIVE_REWARD_VISITED, RESOURCE_WELL_END_SHOWN, RESOURCE_WELL_NOTIFICATIONS, RESOURCE_WELL_START_SHOWN, SENIORITY_AWARDS_COINS_REMINDER_SHOWN_TIMESTAMP, ArmoryYard, REFERRAL_PROGRAM_PGB_FULL
 from adisp import adisp_process
 from armory_yard_constants import State
 from battle_pass_common import FinalReward
@@ -15,6 +15,7 @@ from constants import ARENA_BONUS_TYPE, AUTO_MAINTENANCE_RESULT, DAILY_QUESTS_CO
 from debug_utils import LOG_DEBUG, LOG_ERROR
 from gui import SystemMessages
 from gui.ClientUpdateManager import g_clientUpdateManager
+from gui.Scaleform.daapi.view.lobby.referral_program.referral_program_helpers import isReferralProgramEnabled
 from gui.Scaleform.locale.CLANS import CLANS
 from gui.SystemMessages import SM_TYPE
 from gui.battle_pass.battle_pass_helpers import getStyleInfoForChapter
@@ -54,7 +55,7 @@ from messenger.proto.xmpp.xmpp_constants import XMPP_ITEM_TYPE
 from notification.decorators import BattlePassLockButtonDecorator, BattlePassSwitchChapterReminderDecorator, C11nMessageDecorator, C2DProgressionStyleDecorator, ClanAppActionDecorator, ClanAppsDecorator, ClanInvitesActionDecorator, ClanInvitesDecorator, ClanSingleAppDecorator, ClanSingleInviteDecorator, CollectionsLockButtonDecorator, EmailConfirmationReminderMessageDecorator, EventLootBoxesDecorator, FriendshipRequestDecorator, IntegratedAuctionStageFinishDecorator, IntegratedAuctionStageStartDecorator, LockButtonMessageDecorator, MapboxButtonDecorator, MessageDecorator, MissingEventsDecorator, PrbInviteDecorator, ProgressiveRewardDecorator, RecruitReminderMessageDecorator, ResourceWellLockButtonDecorator, ResourceWellStartDecorator, SeniorityAwardsDecorator, WGNCPopUpDecorator, WinbackSelectableRewardReminderDecorator
 from notification.settings import NOTIFICATION_TYPE, NotificationData
 from shared_utils import first
-from skeletons.gui.game_control import IBattlePassController, IBootcampController, ICollectionsSystemController, IEventLootBoxesController, IEventsNotificationsController, IGameSessionController, ILimitedUIController, IResourceWellController, ISeniorityAwardsController, ISteamCompletionController, IWinbackController, IArmoryYardController
+from skeletons.gui.game_control import IBattlePassController, IBootcampController, ICollectionsSystemController, IEventLootBoxesController, IEventsNotificationsController, IGameSessionController, ILimitedUIController, IResourceWellController, ISeniorityAwardsController, ISteamCompletionController, IWinbackController, IArmoryYardController, IReferralProgramController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.lobby_context import ILobbyContext
@@ -2110,6 +2111,43 @@ class ArmoryYardListener(_NotificationListener):
             SystemMessages.pushMessage(text=backport.text(self.ARMORY_YARD_TEXT.styleQuest(), endDate=backport.getDateTimeFormat(endDate)), type=SystemMessages.SM_TYPE.InformationHeader, priority=NotificationPriorityLevel.MEDIUM, messageData={'header': self.__getHeader()})
 
 
+class ReferralProgramListener(_NotificationListener):
+    __referralProgramController = dependency.descriptor(IReferralProgramController)
+
+    def start(self, model):
+        result = super(ReferralProgramListener, self).start(model)
+        if result:
+            self.__addListeners()
+            self.__tryNotify()
+        return result
+
+    def stop(self):
+        self.__removeListeners()
+        super(ReferralProgramListener, self).stop()
+
+    def __addListeners(self):
+        self.__referralProgramController.onReferralProgramEnabled += self.__tryNotify
+        self.__referralProgramController.onPointsChanged += self.__tryNotify
+
+    def __removeListeners(self):
+        self.__referralProgramController.onReferralProgramEnabled -= self.__tryNotify
+        self.__referralProgramController.onPointsChanged -= self.__tryNotify
+
+    def __tryNotify(self):
+        if not isReferralProgramEnabled():
+            return
+        scoresLimitReached = self.__referralProgramController.isScoresLimitReached()
+        prevPgbFullValue = AccountSettings.getNotifications(REFERRAL_PROGRAM_PGB_FULL)
+        if scoresLimitReached and not prevPgbFullValue:
+            self.__pushReferralProgramPGBFull()
+        AccountSettings.setNotifications(REFERRAL_PROGRAM_PGB_FULL, scoresLimitReached)
+
+    @staticmethod
+    def __pushReferralProgramPGBFull():
+        text = backport.text(R.strings.messenger.serviceChannelMessages.referralProgramPGBFull.text())
+        SystemMessages.pushMessage(text=text, type=SM_TYPE.ReferralProgramPGBFull, priority=NotificationPriorityLevel.MEDIUM)
+
+
 registerNotificationsListeners((
  ServiceChannelListener, MissingEventsListener, PrbInvitesListener, FriendshipRqsListener, _WGNCListenersContainer,
  ProgressiveRewardListener, SwitcherListener, TankPremiumListener,
@@ -2117,7 +2155,7 @@ registerNotificationsListeners((
  EmailConfirmationReminderListener, VehiclePostProgressionUnlockListener,
  BattlePassSwitchChapterReminder, ResourceWellListener, IntegratedAuctionListener,
  SeniorityAwardsQuestListener, SeniorityAwardsTokenListener, EventLootBoxesListener, CollectionsListener,
- WinbackSelectableRewardReminder, ArmoryYardListener))
+ WinbackSelectableRewardReminder, ArmoryYardListener, ReferralProgramListener))
 
 class NotificationsListeners(_NotificationListener):
 

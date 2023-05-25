@@ -14821,6 +14821,18 @@ package
       
       public static const STYLES_COMPENDIUM_2_2023_MT_DESCRIPTION_LONG:String = "#vehicle_customization:styles/compendium_2_2023_MT/description/long";
       
+      public static const STYLES_FLAGBY_MT:String = "#vehicle_customization:styles/FlagBY_MT";
+      
+      public static const STYLES_FLAGBY_MT_DESCRIPTION:String = "#vehicle_customization:styles/FlagBY_MT/description";
+      
+      public static const STYLES_FLAGBY_MT_DESCRIPTION_LONG:String = "#vehicle_customization:styles/FlagBY_MT/description/long";
+      
+      public static const STYLES_FLAGRU_MT:String = "#vehicle_customization:styles/FlagRU_MT";
+      
+      public static const STYLES_FLAGRU_MT_DESCRIPTION:String = "#vehicle_customization:styles/FlagRU_MT/description";
+      
+      public static const STYLES_FLAGRU_MT_DESCRIPTION_LONG:String = "#vehicle_customization:styles/FlagRU_MT/description/long";
+      
       public static const CAMOUFLAGE_TSAREVICH_MT:String = "#vehicle_customization:camouflage/Tsarevich_MT";
       
       public static const CAMOUFLAGE_TSAREVICH_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/Tsarevich_MT/description";
@@ -14873,9 +14885,25 @@ package
       
       public static const CAMOUFLAGE_COMPENDIUM_2_2023_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/compendium_2_2023_MT/description";
       
+      public static const CAMOUFLAGE_FLAGBY_MT:String = "#vehicle_customization:camouflage/FlagBY_MT";
+      
+      public static const CAMOUFLAGE_FLAGBY_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/FlagBY_MT/description";
+      
+      public static const CAMOUFLAGE_FLAGRU_MT:String = "#vehicle_customization:camouflage/FlagRU_MT";
+      
+      public static const CAMOUFLAGE_FLAGRU_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/FlagRU_MT/description";
+      
       public static const DECAL_STALINGRAD_2023_80_MT:String = "#vehicle_customization:decal/stalingrad_2023_80_MT";
       
       public static const DECAL_STALINGRAD_2023_80_MT_DESCRIPTION:String = "#vehicle_customization:decal/stalingrad_2023_80_MT/description";
+      
+      public static const DECAL_FLAGBY_MT:String = "#vehicle_customization:decal/FlagBY_MT";
+      
+      public static const DECAL_FLAGBY_MT_DESCRIPTION:String = "#vehicle_customization:decal/FlagBY_MT/description";
+      
+      public static const DECAL_FLAGRU_MT:String = "#vehicle_customization:decal/FlagRU_MT";
+      
+      public static const DECAL_FLAGRU_MT_DESCRIPTION:String = "#vehicle_customization:decal/FlagRU_MT/description";
       
       public static const INSIGNIA_TSAREVICH_MT:String = "#vehicle_customization:insignia/Tsarevich_MT";
       
@@ -14940,6 +14968,14 @@ package
       public static const REPAINT_COMPENDIUM_2_2023_MT:String = "#vehicle_customization:repaint/compendium_2_2023_MT";
       
       public static const REPAINT_COMPENDIUM_2_2023_MT_DESCRIPTION:String = "#vehicle_customization:repaint/compendium_2_2023_MT/description";
+      
+      public static const REPAINT_FLAGBY_MT:String = "#vehicle_customization:repaint/FlagBY_MT";
+      
+      public static const REPAINT_FLAGBY_MT_DESCRIPTION:String = "#vehicle_customization:repaint/FlagBY_MT/description";
+      
+      public static const REPAINT_FLAGRU_MT:String = "#vehicle_customization:repaint/FlagRU_MT";
+      
+      public static const REPAINT_FLAGRU_MT_DESCRIPTION:String = "#vehicle_customization:repaint/FlagRU_MT/description";
       
       public static const PROJECTION_DECALS_TSAREVICH_1_MT:String = "#vehicle_customization:projection_decals/Tsarevich_1_MT";
       

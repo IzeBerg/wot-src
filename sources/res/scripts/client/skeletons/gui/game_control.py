@@ -1642,6 +1642,7 @@ class IReferralProgramController(IGameController):
     onReferralProgramEnabled = None
     onReferralProgramDisabled = None
     onReferralProgramUpdated = None
+    onPointsChanged = None
 
     def isFirstIndication(self):
         raise NotImplementedError
@@ -1650,6 +1651,9 @@ class IReferralProgramController(IGameController):
         raise NotImplementedError
 
     def updateBubble(self):
+        raise NotImplementedError
+
+    def isScoresLimitReached(self):
         raise NotImplementedError
 
 
@@ -2364,12 +2368,6 @@ class IEventLootBoxesController(IGameController, IEntitlementsConsumer):
         raise NotImplementedError
 
     def getTimeLeftToResetPurchase(self):
-        raise NotImplementedError
-
-    def getCommonBoxInfo(self):
-        raise NotImplementedError
-
-    def getPremiumBoxInfo(self):
         raise NotImplementedError
 
     def getBoxInfo(self, boxType):

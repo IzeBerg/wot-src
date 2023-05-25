@@ -949,6 +949,9 @@ def _migrateTo103(core, data, initialized):
     newSettingsCounter = AccountSettings.getSettings(NEW_SETTINGS_COUNTER)
     newSettingsCounter['GameSettings'].update({GAME.LIMITED_UI_ACTIVE: True})
     AccountSettings.setSettings(NEW_SETTINGS_COUNTER, newSettingsCounter)
+    onceOnlyHintsData = data['onceOnlyHints3']
+    onceOnlyHintsData[OnceOnlyHints.REFERRAL_ENTRY_POINT_HINT] = False
+    onceOnlyHintsData[OnceOnlyHints.REFERRAL_RECRUIT_ENTRY_POINT_HINT] = False
 
 
 _versions = (

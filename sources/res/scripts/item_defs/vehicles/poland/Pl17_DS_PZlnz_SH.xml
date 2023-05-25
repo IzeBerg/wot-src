@@ -6106,7 +6106,7 @@
 				<maxRegenHealth>65</maxRegenHealth>
 				<repairCost>0</repairCost>
 			</turretRotatorHealth>
-			<circularVisionRadius>350</circularVisionRadius>
+			<circularVisionRadius>330</circularVisionRadius>
 			<armor>
 				<armor_1>85</armor_1>
 				<armor_2>80</armor_2>
@@ -6472,7 +6472,7 @@
 				</_90mm_armata_wz_46_G3_SH>
 				<_100mm_armata_wz_62_G4_SH>
 					shared
-					<maxAmmo>128</maxAmmo>
+					<maxAmmo>126</maxAmmo>
 					<shotDispersionRadius>
 						0.38
 						<!--BW_String-->
@@ -6501,7 +6501,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<clip>
-						<count>8</count>
+						<count>7</count>
 						<rate>40</rate>
 					</clip>
 					<turretYawLimits>-180 180</turretYawLimits>
@@ -6841,7 +6841,7 @@
 				<maxRegenHealth>65</maxRegenHealth>
 				<repairCost>0</repairCost>
 			</turretRotatorHealth>
-			<circularVisionRadius>350</circularVisionRadius>
+			<circularVisionRadius>330</circularVisionRadius>
 			<armor>
 				<armor_1>170</armor_1>
 				<armor_2>150</armor_2>
@@ -7287,7 +7287,10 @@
 						0.36
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>5</reloadTime>
+					<reloadTime>
+						4.7
+						<!--BW_String-->
+					</reloadTime>
 					<aimingTime>
 						1.4
 						<!--BW_String-->
@@ -7464,12 +7467,15 @@
 				</_100mm_armata_wz_58_G5_SH>
 				<_122mm_wz_43_50_G6_SH>
 					shared
-					<maxAmmo>88</maxAmmo>
+					<maxAmmo>85</maxAmmo>
 					<shotDispersionRadius>
 						0.38
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>15</reloadTime>
+					<reloadTime>
+						12.9
+						<!--BW_String-->
+					</reloadTime>
 					<aimingTime>
 						1.8
 						<!--BW_String-->
@@ -7493,7 +7499,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<clip>
-						<count>6</count>
+						<count>5</count>
 						<rate>24</rate>
 					</clip>
 					<pitchLimits>

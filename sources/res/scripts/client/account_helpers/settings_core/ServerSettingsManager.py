@@ -48,6 +48,7 @@ class SETTINGS_SECTIONS(CONST_CONTAINER):
     FALLOUT = 'FALLOUT'
     ONCE_ONLY_HINTS = 'ONCE_ONLY_HINTS'
     ONCE_ONLY_HINTS_2 = 'ONCE_ONLY_HINTS_2'
+    ONCE_ONLY_HINTS_3 = 'ONCE_ONLY_HINTS_3'
     FEEDBACK = 'FEEDBACK'
     DAMAGE_INDICATOR = 'FEEDBACK_DAMAGE_INDICATOR'
     DAMAGE_LOG = 'FEEDBACK_DAMAGE_LOG'
@@ -68,7 +69,7 @@ class SETTINGS_SECTIONS(CONST_CONTAINER):
     LIMITED_UI_1 = 'LIMITED_UI_1'
     LIMITED_UI_2 = 'LIMITED_UI_2'
     ARMORY_YARD = 'ARMORY_YARD'
-    ONCE_ONLY_HINTS_GROUP = (ONCE_ONLY_HINTS, ONCE_ONLY_HINTS_2)
+    ONCE_ONLY_HINTS_GROUP = (ONCE_ONLY_HINTS, ONCE_ONLY_HINTS_2, ONCE_ONLY_HINTS_3)
 
 
 class UI_STORAGE_KEYS(CONST_CONTAINER):
@@ -111,7 +112,6 @@ class LIMITED_UI_SPAM_OFF(CONST_CONTAINER):
     LOBBY_HEADER_COUNTERS_MISSIONS = 'missions'
     MISSIONS_MARATHON_VIEW = 'MissionsMarathonView'
     LOBBY_HEADER_COUNTERS_PM_OPERATIONS = 'PersonalMissionOperations'
-    REFERRAL_BTN_COUNTER = 'referralButtonCounter'
     AP_ZONE_HINT = 'AmmunitionPanelHintZoneHint'
     AP_BATTLE_ABILITIES_HINT = 'AmmunitionPanelBattleAbilitiesHint'
     C7N_PROGRESSION_HINT = 'CustomizationProgressionViewHint'
@@ -124,7 +124,7 @@ class LIMITED_UI_SPAM_OFF(CONST_CONTAINER):
     ORDER = (
      LOBBY_HEADER_COUNTERS_STORE, LOBBY_HEADER_COUNTERS_PROFILE, PROFILE_HOF, PROFILE_TECHNIQUE_PAGE,
      SESSION_STATS, BLUEPRINTS_BUTTON, LOBBY_HEADER_COUNTERS_MISSIONS, MISSIONS_MARATHON_VIEW,
-     LOBBY_HEADER_COUNTERS_PM_OPERATIONS, REFERRAL_BTN_COUNTER, AP_ZONE_HINT, AP_BATTLE_ABILITIES_HINT,
+     LOBBY_HEADER_COUNTERS_PM_OPERATIONS, AP_ZONE_HINT, AP_BATTLE_ABILITIES_HINT,
      C7N_PROGRESSION_HINT, TECH_TREE_EVENTS, DOG_TAG_HINT, MODE_SELECTOR_WIDGET_BTN_HINT, PR_HANGAR_HINT,
      MODERNIZE_SETUP_HINT, OFFER_BANNER_WINDOW)
 
@@ -519,6 +519,8 @@ class ServerSettingsManager(object):
                                              OnceOnlyHints.PERSONAL_RESERVES_ACTIVATION_HINT: 28, 
                                              OnceOnlyHints.AMMUNITION_FILTER_HINT: 29, 
                                              OnceOnlyHints.SUMMARY_CUSTOMIZATION_BUTTON_HINT: 30}, offsets={}), 
+       SETTINGS_SECTIONS.ONCE_ONLY_HINTS_3: Section(masks={OnceOnlyHints.REFERRAL_RECRUIT_ENTRY_POINT_HINT: 0, 
+                                             OnceOnlyHints.REFERRAL_ENTRY_POINT_HINT: 1}, offsets={}), 
        SETTINGS_SECTIONS.DAMAGE_INDICATOR: Section(masks={DAMAGE_INDICATOR.TYPE: 0, 
                                             DAMAGE_INDICATOR.PRESET_CRITS: 1, 
                                             DAMAGE_INDICATOR.DAMAGE_VALUE: 2, 
@@ -1150,7 +1152,7 @@ class ServerSettingsManager(object):
     @adisp_process
     def _updateToVersion(self, callback=None):
         currentVersion = self.settingsCache.getVersion()
-        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, 'clear': {}, 'delete': [], SETTINGS_SECTIONS.LIMITED_UI_1: {}, SETTINGS_SECTIONS.LIMITED_UI_2: {}}
+        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'onceOnlyHints3': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, 'clear': {}, 'delete': [], SETTINGS_SECTIONS.LIMITED_UI_1: {}, SETTINGS_SECTIONS.LIMITED_UI_2: {}}
         yield migrateToVersion(currentVersion, self._core, data)
         self._setSettingsSections(data)
         callback(self)
@@ -1243,6 +1245,10 @@ class ServerSettingsManager(object):
         clearOnceOnlyHints2 = clear.get('onceOnlyHints2', 0)
         if onceOnlyHints or clearOnceOnlyHints:
             settings[SETTINGS_SECTIONS.ONCE_ONLY_HINTS_2] = self._buildSectionSettings(SETTINGS_SECTIONS.ONCE_ONLY_HINTS_2, onceOnlyHints2) ^ clearOnceOnlyHints2
+        onceOnlyHints3 = data.get('onceOnlyHints3', {})
+        clearOnceOnlyHints3 = clear.get('onceOnlyHints3', 0)
+        if onceOnlyHints3 or clearOnceOnlyHints3:
+            settings[SETTINGS_SECTIONS.ONCE_ONLY_HINTS_3] = self._buildSectionSettings(SETTINGS_SECTIONS.ONCE_ONLY_HINTS_3, onceOnlyHints3) ^ clearOnceOnlyHints3
         uiStorage = data.get('uiStorage', {})
         clearUIStorage = clear.get('uiStorage', 0)
         if uiStorage or clearUIStorage:

@@ -246,6 +246,10 @@ class StatsRequester(AbstractSyncDataRequester, IStatsRequester):
         return self.getCacheValue('SPA', {})
 
     @property
+    def refSystem20(self):
+        return self.getCacheValue('refSystem20', {})
+
+    @property
     def piggyBank(self):
         return self.getCacheValue('piggyBank', {})
 

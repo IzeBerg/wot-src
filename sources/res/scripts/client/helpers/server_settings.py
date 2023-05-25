@@ -1199,6 +1199,29 @@ class _EventLootBoxesConfig(object):
          self.__startDateInUTC, self.__finishDateInUTC)
 
 
+class RPConfig(namedtuple('RPConfig', (
+ 'pgbCapacity',
+ 'pgbDayLimit'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(pgbCapacity=0, pgbDayLimit=0)
+        defaults.update(kwargs)
+        return super(RPConfig, cls).__new__(cls, **defaults)
+
+    def asDict(self):
+        return self._asdict()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+
 class ArmoryYardConfig(namedtuple('ArmoryYardConfig', (
  'isEnabled', 'isPaused', 'seasons', 'animations', 'cycleTimes', 'tokenBase', 'receivedRewardTokenPostfix',
  'stageTokenPostfix', 'currencyTokenPostfix', 'tokenCost', 'rewards', 'introVideoLink', 'infoPageLink',
@@ -1293,6 +1316,7 @@ class ServerSettings(object):
         self.__playLimitsConfig = PlayLimitsConfig()
         self.__preModerationConfig = PreModerationConfig()
         self.__eventLootBoxesConfig = _EventLootBoxesConfig()
+        self.__referralProgramConfig = RPConfig()
         self.__collectionsConfig = CollectionsConfig()
         self.__winbackConfig = WinbackConfig()
         self.__limitedUIConfig = _LimitedUIConfig()
@@ -1430,6 +1454,10 @@ class ServerSettings(object):
             self.__tournamentSettings = makeTupleByDict(_TournamentSettings, self.__serverSettings[TOURNAMENT_CONFIG])
         else:
             self.__tournamentSettings = _TournamentSettings.defaults()
+        if Configs.REFERRAL_PROGRAM_CONFIG.value in self.__serverSettings:
+            self.__referralProgramConfig = makeTupleByDict(RPConfig, self.__serverSettings[Configs.REFERRAL_PROGRAM_CONFIG.value])
+        else:
+            self.__referralProgramConfig = RPConfig.defaults()
         if Configs.COLLECTIONS_CONFIG.value in self.__serverSettings:
             self.__collectionsConfig = makeTupleByDict(CollectionsConfig, self.__serverSettings[Configs.COLLECTIONS_CONFIG.value])
         if Configs.WINBACK_CONFIG.value in self.__serverSettings:
@@ -1548,6 +1576,8 @@ class ServerSettings(object):
             self.__updateCollectiveGoalEntryPointConfig(serverSettingsDiff)
         if Configs.COLLECTIVE_GOAL_MARATHONS_CONFIG.value in serverSettingsDiff:
             self.__updateCollectiveGoalMarathonsConfig(serverSettingsDiff)
+        if Configs.REFERRAL_PROGRAM_CONFIG.value in serverSettingsDiff:
+            self.__updateRPConfig(serverSettingsDiff)
         if Configs.ARMORY_YARD_CONFIG.value in serverSettingsDiff:
             self.__updateArmoryYard(serverSettingsDiff)
         self.__updatePersonalReserves(serverSettingsDiff)
@@ -2067,6 +2097,9 @@ class ServerSettings(object):
     def getEventLootBoxesConfig(self):
         return self.__eventLootBoxesConfig
 
+    def getRPConfig(self):
+        return self.__referralProgramConfig
+
     def getAchievements20GeneralConfig(self):
         return Achievements20GeneralConfig(self.__getGlobalSetting(Configs.ACHIEVEMENTS20_CONFIG.value, {}))
 
@@ -2205,6 +2238,9 @@ class ServerSettings(object):
                 _logger.error('Unexpected format of subscriptions service config: %r', config)
                 self.__eventLootBoxesConfig = _EventLootBoxesConfig()
         return
+
+    def __updateRPConfig(self, diff):
+        self.__referralProgramConfig = self.__referralProgramConfig.replace(diff[Configs.REFERRAL_PROGRAM_CONFIG.value])
 
     def __updateCollectionsConfig(self, diff):
         self.__collectionsConfig = self.__collectionsConfig.replace(diff[Configs.COLLECTIONS_CONFIG.value])

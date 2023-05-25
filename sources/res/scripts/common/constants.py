@@ -32,7 +32,7 @@ IS_CHINA = CURRENT_REALM == 'CN'
 IS_KOREA = CURRENT_REALM == 'KR'
 IS_SINGAPORE = CURRENT_REALM == 'ASIA'
 IS_SANDBOX = CURRENT_REALM == 'SB'
-IS_CT = CURRENT_REALM == 'CT'
+IS_CT = CURRENT_REALM == 'RU'
 REALMS = frozenset(['RU', 'EU', 'NA', 'ASIA', 'CN', 'KR', 'CT', 'ST', 'QA', 'DEV', 'SB'])
 OVERRIDE_CODES = frozenset(['RU', 'EU', 'NA', 'ASIA', 'CN', 'KR', 'CT', 'ST', 'QA', 'DEV', 'SB', 'PC'])
 REGIONAL_REALMS = frozenset(['RU', 'EU', 'NA', 'ASIA', 'CN', 'KR'])
@@ -806,6 +806,7 @@ class Configs(enum.Enum):
     ACHIEVEMENTS20_CONFIG = 'achievements20_config'
     AB_FEATURE_TEST = 'ab_feature_test'
     LIMITED_UI_CONFIG = 'limited_ui_config'
+    REFERRAL_PROGRAM_CONFIG = 'referral_program_config'
 
 
 INBATTLE_CONFIGS = (
@@ -1616,6 +1617,9 @@ class REQUEST_COOLDOWN:
     ARMORY_YARD_CLAIM_FINAL_REWARDS = 1.0
     DEV_ARMORY_YARD_ADD_TOKEN_S = 1.0
     SET_ACHIEVEMENTS20_LAYOUT = 1.0
+    COLLECT_RP_PGB_POINTS = 1.0
+    RP_INCREMENT_RECRUIT_DELTA = 1.0
+    RP_RESET_RECRUIT_DELTA = 1.0
 
 
 IS_SHOW_INGAME_HELP_FIRST_TIME = False
@@ -1937,6 +1941,7 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    112: 'Enemy marker setting', 
    113: 'Dead marker setting', 
    114: 'Ally marker setting', 
+   115: 'Once only hints', 
    31001: 'Armory Yard progression'}
 
 class WG_GAMES:
@@ -3247,3 +3252,7 @@ class ShootImpulseApplicationPoint(object):
     SHOOT_POINT = 'shootPoint'
     ALL = {
      VEHICLE_COM, SHOOT_POINT}
+
+
+RP_POINT = 'rp_point'
+RP_PGB_POINT = 'rp_pgb_point'

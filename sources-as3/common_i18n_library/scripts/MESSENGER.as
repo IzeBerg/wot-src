@@ -2343,6 +2343,26 @@ package
       
       public static const SERVICECHANNELMESSAGES_FINANCIAL_ADD:String = "#messenger:serviceChannelMessages/Financial/add";
       
+      public static const SERVICECHANNELMESSAGES_REFERRALPROGRAMCASHBACK_HEADER:String = "#messenger:serviceChannelMessages/referralProgramCashback/header";
+      
+      public static const SERVICECHANNELMESSAGES_REFERRALPROGRAMCASHBACK_TEXT:String = "#messenger:serviceChannelMessages/referralProgramCashback/text";
+      
+      public static const SERVICECHANNELMESSAGES_REFERRALPROGRAMPGBFULL_TEXT:String = "#messenger:serviceChannelMessages/referralProgramPGBFull/text";
+      
+      public static const SERVICECHANNELMESSAGES_REFERRALPROGRAMPGBFULL_BUTTON:String = "#messenger:serviceChannelMessages/referralProgramPGBFull/button";
+      
+      public static const SERVICECHANNELMESSAGES_REFERRALPROGRAMPOINTSADDED_HEADER:String = "#messenger:serviceChannelMessages/referralProgramPointsAdded/header";
+      
+      public static const SERVICECHANNELMESSAGES_REFERRALPROGRAMPOINTSADDED_BODY:String = "#messenger:serviceChannelMessages/referralProgramPointsAdded/body";
+      
+      public static const SERVICECHANNELMESSAGES_REFERRALPROGRAMPOINTSDEBITED_BODY:String = "#messenger:serviceChannelMessages/referralProgramPointsDebited/body";
+      
+      public static const SERVICECHANNELMESSAGES_REFERRALLOOTBOXESRECEIVED_BODY:String = "#messenger:serviceChannelMessages/referralLootBoxesReceived/body";
+      
+      public static const SERVICECHANNELMESSAGES_REFERRALTRANSACTION_HEADER:String = "#messenger:serviceChannelMessages/referralTransaction/header";
+      
+      public static const SERVICECHANNELMESSAGES_REFERRALTRANSACTION_DATE:String = "#messenger:serviceChannelMessages/referralTransaction/date";
+      
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        
       

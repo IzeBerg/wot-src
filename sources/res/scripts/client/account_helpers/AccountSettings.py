@@ -230,6 +230,7 @@ COLLECTION_SHOWN_NEW_ITEMS_COUNT = 'collectionNewItemsCount'
 COLLECTION_TUTORIAL_COMPLETED = 'collectionTutorialCompleted'
 COLLECTION_WAS_ENABLED = 'collectionsWasEnabled'
 COLLECTIONS_NOTIFICATIONS = 'collectionsNotifications'
+REFERRAL_PROGRAM_PGB_FULL = 'referralProgramPgbFull'
 ACHIEVEMENTS_INFO = 'achievements20_info'
 ACHIEVEMENTS_INITIAL_BATTLE_COUNT = 'achievements20InitialBattleCount'
 ACHIEVEMENTS_MAX_WTR_POINTS = 'achievements20MaxWtrPoints'
@@ -864,8 +865,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                              'isFreeDirectivesEnabled': True, 
                              'isFreeDemountingEnabled': True, 
                              'isExcludedMapEnabled': True, 
-                             'rentPendingVehCD': None, 
-                             'isExclusiveVehicleEnabled': False}, 
+                             'rentPendingVehCD': None}, 
                   TELECOM_RENTALS: {'isTelecomRentalsEnabled': True, 
                                     'isTelecomRentalsBlocked': True}, 
                   CUSTOMIZATION_SECTION: {CAROUSEL_ARROWS_HINT_SHOWN_FIELD: False, 
@@ -1079,7 +1079,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                   FUN_RANDOM_NOTIFICATIONS_SUB_MODES: set()}, 
                        RESOURCE_WELL_NOTIFICATIONS: {RESOURCE_WELL_START_SHOWN: set(), 
                                                      RESOURCE_WELL_END_SHOWN: set()}, 
-                       COLLECTIONS_NOTIFICATIONS: {COLLECTION_START_SEEN: []}}, 
+                       COLLECTIONS_NOTIFICATIONS: {COLLECTION_START_SEEN: []}, REFERRAL_PROGRAM_PGB_FULL: False}, 
    KEY_SESSION_SETTINGS: {STORAGE_VEHICLES_CAROUSEL_FILTER_1: {'ussr': False, 
                                                                'germany': False, 
                                                                'usa': False, 
@@ -1187,7 +1187,6 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   'uiSpamVisited_missions': False, 
                   'uiSpamVisited_MissionsMarathonView': False, 
                   'uiSpamVisited_PersonalMissionOperations': False, 
-                  'uiSpamVisited_referralButtonCounter': False, 
                   'uiSpamVisited_AmmunitionPanelHintZoneHint': False, 
                   'uiSpamVisited_AmmunitionPanelBattleAbilitiesHint': False, 
                   'uiSpamVisited_CustomizationProgressionViewHint': False, 

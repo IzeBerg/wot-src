@@ -209,6 +209,8 @@ package
       
       public static const DOWNLOAD_RESOURCEWELL:String = "#waiting:download/resourceWell";
       
+      public static const DOWNLOAD_REFPROGRAM:String = "#waiting:download/refProgram";
+      
       public static const UPDATINGSKILLWINDOW:String = "#waiting:updatingSkillWindow";
       
       public static const PREBATTLE_CREATE:String = "#waiting:prebattle/create";
