@@ -513,18 +513,12 @@ class VehicleParams(_ParameterBase):
 
     @property
     def circularVisionRadius(self):
-        skillName = 'commander_eagleEye'
-        argName = 'circularVisionRadius'
         baseCircularVisionRadius = items_utils.getCircularVisionRadius(self._itemDescr, self.__factors)
-        eagleEyeSkillFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.COMMANDER)
-        skillName = 'radioman_finder'
-        argName = 'vehicleCircularVisionRadius'
-        finderSkillFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.RADIOMAN)
-        result = round(baseCircularVisionRadius * eagleEyeSkillFactor * finderSkillFactor)
+        result = round(baseCircularVisionRadius)
         if self.__hasUnsupportedSwitchMode():
             visRadiusSiegeVal = items_utils.getCircularVisionRadius(self._itemDescr.siegeVehicleDescr, self.__factors)
             return (
-             result, round(visRadiusSiegeVal * eagleEyeSkillFactor * finderSkillFactor))
+             result, round(visRadiusSiegeVal))
         return (
          result,)
 
