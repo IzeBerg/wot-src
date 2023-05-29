@@ -1,7 +1,6 @@
-import logging, typing
+import logging, typing, constants
 from event_lootboxes.gui.impl.gen.view_models.views.lobby.event_lootboxes.reward_model import RewardModel
 from event_lootboxes.gui.impl.gen.view_models.views.lobby.event_lootboxes.tooltips.infotype_reward_model import InfotypeRewardModel
-import constants
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.impl.backport import TooltipData, createTooltipData
 from gui.impl.gen import R
@@ -10,16 +9,11 @@ from gui.server_events.bonuses import BlueprintsBonusSubtypes, IntelligenceBluep
 from gui.server_events.formatters import parseComplexToken
 from gui.server_events.recruit_helper import getRecruitInfo
 from gui.shared.gui_items.Vehicle import getIconResourceName
-from gui.shared.missions.packers.bonus import BACKPORT_TOOLTIP_CONTENT_ID, BlueprintBonusUIPacker, BonusUIPacker, CrewBookBonusUIPacker, CustomizationBonusUIPacker, GoodiesBonusUIPacker, ItemBonusUIPacker, SimpleBonusUIPacker, TokenBonusUIPacker, VEHICLE_RENT_ICON_POSTFIX, VehiclesBonusUIPacker, getDefaultBonusPackersMap, CrewSkinBonusUIPacker
+from gui.shared.missions.packers.bonus import BACKPORT_TOOLTIP_CONTENT_ID, BlueprintBonusUIPacker, BonusUIPacker, CrewBookBonusUIPacker, CustomizationBonusUIPacker, GoodiesBonusUIPacker, ItemBonusUIPacker, SimpleBonusUIPacker, TokenBonusUIPacker, VEHICLE_RENT_ICON_POSTFIX, VehiclesBonusUIPacker, getDefaultBonusPackersMap
 from gui.shared.money import Currency
 from items.tankmen import RECRUIT_TMAN_TOKEN_PREFIX
 if typing.TYPE_CHECKING:
-    from typing import List, Type
-    from gui.server_events.bonuses import SimpleBonus, CrewBooksBonus, CrewSkinsBonus, CustomizationsBonus, ItemsBonus
-    from gui.shared.gui_items.crew_book import CrewBook
-    from gui.shared.gui_items.fitting_item import FittingItem
-    from gui.server_events.bonuses import PlusPremiumDaysBonus
-    from items.components.crew_skins_components import CrewSkin
+    from gui.server_events.bonuses import SimpleBonus
 _logger = logging.getLogger(__name__)
 _R_BONUS_ICONS = R.images.gui.maps.icons.quests.bonuses
 _R_CREW_BOOKS_ICONS = R.images.gui.maps.icons.crewBooks
@@ -32,8 +26,7 @@ def getEventLootBoxesBonusPacker():
        'blueprints': blueprintPacker, 
        'blueprintsAny': blueprintPacker, 
        'crewBooks': EventLootBoxCrewBookBonusUIPacker(), 
-       'crewSkins': EventLootBoxCrewSkinBonusUIPacker(), 
-       'customizations': EventLootBoxCustomizationBonusUIPacker(), 
+       'customizations': EventLootBoxCustomizationBonusUIPacker, 
        'finalBlueprints': blueprintPacker, 
        'goodies': EventLootBoxGoodiesBonusUIPacker(), 
        'items': EventLootBoxItemBonusUIPacker(), 
@@ -41,10 +34,9 @@ def getEventLootBoxesBonusPacker():
        'tmanToken': TmanTemplateBonusPacker(), 
        'tokens': EventLootBoxTokenBonusUIPacker, 
        'vehicles': EventLootBoxVehiclesBonusUIPacker(), 
-       'freeXP': simplePacker, 
        Currency.CREDITS: simplePacker, 
        Currency.GOLD: simplePacker, 
-       constants.PREMIUM_ENTITLEMENTS.PLUS: EventLootBoxPremiumBonusUIPacker()})
+       constants.PREMIUM_ENTITLEMENTS.PLUS: EventLootBoxPremiumBonusUIPacker})
     return BonusUIPacker(mapping)
 
 
@@ -52,7 +44,6 @@ def getEventLootBoxesInfoTypeBonusPacker():
     defaultMapper = getDefaultBonusPackersMap()
     infoTypeRewardPacker = InfoTypeRewardPacker()
     blueprintPacker = InfoTypeBlueprintRewardPacker()
-    integralPacker = InfoTypeIntegralRewardsPacker()
     mapping = {k:infoTypeRewardPacker for k in defaultMapper}
     mapping.update({'battleToken': InfoTypeTokenPacker(), 
        'blueprints': blueprintPacker, 
@@ -65,9 +56,7 @@ def getEventLootBoxesInfoTypeBonusPacker():
        'items': InfoTypeItemPacker(), 
        'tmanToken': InfoTypeTmanTemplateBonusPacker(), 
        'tokens': InfoTypeTokenPacker(), 
-       'vehicles': InfoTypeVehiclePacker(), 
-       'freeXP': integralPacker, 
-       Currency.CREDITS: integralPacker})
+       'vehicles': InfoTypeVehiclePacker()})
     return BonusUIPacker(mapping)
 
 
@@ -185,19 +174,6 @@ class EventLootBoxCrewBookBonusUIPacker(CrewBookBonusUIPacker):
         return model
 
 
-class EventLootBoxCrewSkinBonusUIPacker(CrewSkinBonusUIPacker):
-
-    @classmethod
-    def _packSingleBonus(cls, bonus, crewSkin, count, label):
-        model = RewardModel()
-        cls._packCommon(bonus, model)
-        model.setCount(count)
-        resourceID = str(crewSkin.itemTypeName + str(crewSkin.getRarity()))
-        iconSource = _R_BONUS_ICONS.s600x450.dyn(resourceID)()
-        model.setIconSource(iconSource)
-        return model
-
-
 class EventLootBoxTokenBonusUIPacker(TokenBonusUIPacker):
 
     @classmethod
@@ -241,7 +217,7 @@ class EventLootBoxPremiumBonusUIPacker(EventLootBoxSimpleBonusUIPacker):
     def _packSingleBonus(cls, bonus, label):
         model = RewardModel()
         cls._packCommon(bonus, model)
-        if bonus.getValue() >= cls._SPEC_ICON_FOR_COUNT:
+        if bonus.getValue() <= cls._SPEC_ICON_FOR_COUNT:
             model.setCount(1)
             model.setIconSource(_R_BONUS_ICONS.s600x450.dyn(('_').join((bonus.getName(), str(bonus.getValue()))))())
         else:
@@ -414,7 +390,7 @@ class InfoTypeCustomizationPacker(InfoTypeRewardPacker):
         model = InfotypeRewardModel()
         model.setName(bonus.getName())
         model.setCount(sum(item.get('value', 1) for item in bonus.getCustomizations()))
-        model.setIcon(_R_BONUS_ICONS.small.dyn(bonus.getC11nItem(bonus.getCustomizations()[0]).itemTypeName)())
+        model.setIcon(_R_BONUS_ICONS.small.style())
         return model
 
 
@@ -433,20 +409,7 @@ class InfoTypeGoodiesPacker(GoodiesBonusUIPacker):
         return []
 
 
-class InfoTypeIntegralRewardsPacker(InfoTypeRewardPacker):
-
-    @classmethod
-    def _packSingleBonus(cls, bonus, label):
-        model = super(cls, InfoTypeIntegralRewardsPacker)._packSingleBonus(bonus, label)
-        model.setCount(bonus.getValue())
-        return model
-
-    @classmethod
-    def _getToolTip(cls, bonus):
-        return []
-
-
-class InfoTypeCrewBooksPacker(InfoTypeRewardPacker):
+class InfoTypeCrewBooksPacker(InfoTypeItemPacker):
 
     @classmethod
     def _packSingleItem(cls, item, count):
@@ -464,7 +427,7 @@ class InfoTypeCrewBooksPacker(InfoTypeRewardPacker):
         return [ cls._packSingleItem(item, count) for item, count in bonus.getItems() ]
 
 
-class InfoTypeCrewSkinsPacker(InfoTypeRewardPacker):
+class InfoTypeCrewSkinsPacker(InfoTypeCrewBooksPacker):
 
     @classmethod
     def _packSingleItem(cls, item, count):
@@ -472,11 +435,6 @@ class InfoTypeCrewSkinsPacker(InfoTypeRewardPacker):
         model.setCount(count)
         model.setIcon(_R_BONUS_ICONS.small.dyn(('{}{}').format(item.itemTypeName, item.getRarity()))())
         return model
-
-    @classmethod
-    def _pack(cls, bonus):
-        return [ cls._packSingleItem(item, count) for item, count, _, _ in bonus.getItems()
-               ]
 
 
 class InfoTypeTokenPacker(EventLootBoxTokenBonusUIPacker):

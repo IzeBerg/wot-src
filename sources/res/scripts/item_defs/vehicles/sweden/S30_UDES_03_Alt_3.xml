@@ -11,8 +11,8 @@
 	<postProgressionTree>role_MT_sniper</postProgressionTree>
 	<customRoleSlotOptions>3 5</customRoleSlotOptions>
 	<speedLimits>
-		<forward>65</forward>
-		<backward>20</backward>
+		<forward>55</forward>
+		<backward>18</backward>
 	</speedLimits>
 	<invisibility>
 		<moving>
@@ -3440,7 +3440,7 @@
 			<guns>
 				<_105mm_strvkan_L_45_Alt_3>
 					shared
-					<maxAmmo>40</maxAmmo>
+					<maxAmmo>45</maxAmmo>
 					<armor>
 						<armor_1>
 							70
@@ -3488,12 +3488,15 @@
 						0.198
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
-					<reloadTime>23</reloadTime>
+					<reloadTime>30</reloadTime>
 					<clip>
 						<count>3</count>
 						<rate>20</rate>
 					</clip>
-					<aimingTime>2</aimingTime>
+					<aimingTime>
+						2.3
+						<!--BW_String-->
+					</aimingTime>
 					<shotDispersionRadius>
 						0.33
 						<!--BW_String-->
@@ -4658,8 +4661,8 @@
 		<detailed>
 			<engines>
 				<Saab_Scania_DS14_Alt_3>
-					<smplEnginePower>650</smplEnginePower>
-					<smplFwMaxSpeed>65</smplFwMaxSpeed>
+					<smplEnginePower>540</smplEnginePower>
+					<smplFwMaxSpeed>55</smplFwMaxSpeed>
 				</Saab_Scania_DS14_Alt_3>
 			</engines>
 			<chassis>

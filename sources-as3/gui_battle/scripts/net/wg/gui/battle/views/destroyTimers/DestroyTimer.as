@@ -1,6 +1,7 @@
 package net.wg.gui.battle.views.destroyTimers
 {
    import flash.display.MovieClip;
+   import flash.filters.DropShadowFilter;
    import flash.text.TextField;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Time;
@@ -61,8 +62,17 @@ package net.wg.gui.battle.views.destroyTimers
       private static const BEAT_LAST_FRAME:String = "repeat";
       
       private static const DESC_TEXT_COLORS:Object = {
+         "red":15626240,
          "orange":16689972,
-         "green":8041216
+         "green":8041216,
+         "yellow":16689972
+      };
+      
+      private static const DESC_TEXT_FILTERS:Object = {
+         "red":[new DropShadowFilter(0,0,0,0.5,12,12),new DropShadowFilter(0,0,0,1,4,4)],
+         "orange":[],
+         "green":[],
+         "yellow":[new DropShadowFilter(0,0,12783619,1,8,8)]
       };
        
       
@@ -91,6 +101,8 @@ package net.wg.gui.battle.views.destroyTimers
       private var _typeId:String = null;
       
       private var _currentColor:String = "orange";
+      
+      private var _fontSize:int = -1;
       
       public function DestroyTimer()
       {
@@ -258,6 +270,8 @@ package net.wg.gui.battle.views.destroyTimers
             this._currentColor = _loc2_;
             this.updateColor();
          }
+         this._fontSize = param1.descriptionFontSize;
+         this.desc.textOffsetY = param1.descriptionOffsetY;
          isReversedTimerDirection = param1.isReversedTimerDirection;
          updateIcon();
       }
@@ -265,6 +279,7 @@ package net.wg.gui.battle.views.destroyTimers
       public function setStaticText(param1:String, param2:String = "") : void
       {
          this.desc.label = param2;
+         this.desc.fontSize = this._fontSize;
       }
       
       public function setTimerFx(param1:ISecondaryTimerFX) : void
@@ -376,6 +391,7 @@ package net.wg.gui.battle.views.destroyTimers
       {
          this.graphicsSpr.setColor(this._currentColor);
          this.desc.textColor = DESC_TEXT_COLORS[this._currentColor];
+         this.desc.textFilters = DESC_TEXT_FILTERS[this._currentColor];
       }
       
       private function clearTweenX() : void

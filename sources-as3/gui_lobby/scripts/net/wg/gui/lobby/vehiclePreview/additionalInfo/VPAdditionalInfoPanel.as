@@ -19,6 +19,8 @@ package net.wg.gui.lobby.vehiclePreview.additionalInfo
       
       private static const OBJECT_DESC_OFFSET:int = 10;
       
+      private static const VEH_INFO_DESC_OFFSET:int = 32;
+      
       private static const DESC_TITLE_TEXT_OFFSET:int = 3;
       
       private static const PAGE_SCROLL_SIZE:int = 10;
@@ -35,6 +37,8 @@ package net.wg.gui.lobby.vehiclePreview.additionalInfo
       public var objectSubtitle:TextField;
       
       public var objectTitle:TextField;
+      
+      public var vehicleInfoDesc:VehicleInfoDesc;
       
       public var descriptionTitle:TextField;
       
@@ -65,6 +69,7 @@ package net.wg.gui.lobby.vehiclePreview.additionalInfo
          this.descriptionTitle.wordWrap = false;
          this.descriptionText.mouseEnabled = this.descriptionText.mouseWheelEnabled = false;
          this.descriptionText.wordWrap = true;
+         this.vehicleInfoDesc.visible = false;
          this._containerBg = new Sprite();
          this._containerBg.graphics.lineStyle(0,CONTAINER_BG_COLOR,0);
          this._containerBg.graphics.beginFill(CONTAINER_BG_COLOR,0);
@@ -85,6 +90,8 @@ package net.wg.gui.lobby.vehiclePreview.additionalInfo
          this._data = null;
          this.objectSubtitle = null;
          this.objectTitle = null;
+         this.vehicleInfoDesc.dispose();
+         this.vehicleInfoDesc = null;
          this.descriptionTitle = null;
          this.descriptionText = null;
          this.scrollBar.removeEventListener(Event.SCROLL,this.onScrollBarScrollHandler);
@@ -101,6 +108,11 @@ package net.wg.gui.lobby.vehiclePreview.additionalInfo
          super.draw();
          if(this._data && isInvalid(InvalidationType.DATA))
          {
+            if(this._data.vehicleInfoDesc)
+            {
+               this.vehicleInfoDesc.visible = true;
+               this.vehicleInfoDesc.setData(this._data.vehicleInfoDesc);
+            }
             this.objectSubtitle.htmlText = this._data.objectSubtitle;
             this.objectTitle.htmlText = this._data.objectTitle;
             this.descriptionTitle.htmlText = this._data.descriptionTitle;
@@ -119,6 +131,11 @@ package net.wg.gui.lobby.vehiclePreview.additionalInfo
             this._containerBg.width = this._container.width;
             this._containerBg.height = this._container.height;
             this._container.addChildAt(this._containerBg,0);
+            if(this._data.vehicleInfoDesc)
+            {
+               this.vehicleInfoDesc.y = this.objectTitle.y + this.objectTitle.height;
+               this._container.y = this.vehicleInfoDesc.y + VEH_INFO_DESC_OFFSET;
+            }
          }
       }
       
@@ -166,6 +183,12 @@ package net.wg.gui.lobby.vehiclePreview.additionalInfo
          this._container.scrollRect = null;
       }
       
+      private function updateContainerPosByScroll() : void
+      {
+         var _loc1_:int = height - this._container.y | 0;
+         this._container.scrollRect = new Rectangle(0,this.scrollBar.position,this._container.width,_loc1_);
+      }
+      
       private function onScrollBarScrollHandler(param1:Event) : void
       {
          this.updateContainerPosByScroll();
@@ -178,12 +201,6 @@ package net.wg.gui.lobby.vehiclePreview.additionalInfo
             this.scrollBar.position -= param1.delta * PAGE_SCROLL_SIZE | 0;
             this.updateContainerPosByScroll();
          }
-      }
-      
-      private function updateContainerPosByScroll() : void
-      {
-         var _loc1_:int = height - this._container.y | 0;
-         this._container.scrollRect = new Rectangle(0,this.scrollBar.position,this._container.width,_loc1_);
       }
    }
 }

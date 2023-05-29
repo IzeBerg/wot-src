@@ -229,6 +229,21 @@ msgstr "Danger Area"
 msgid "deploymentMap/spgLimitReached"
 msgstr "Front blocked—vehicle type limit reached"
 
+msgid "dialogs/quotedName"
+msgstr "\"%(name)s\""
+
+msgid "dialogs/title/buy/item"
+msgstr "Purchase the %(name)s %(type)s?"
+
+msgid "dialogs/title/buy/items"
+msgstr "Purchase %(type)s?"
+
+msgid "dialogs/title/install/item"
+msgstr "Enable the %(name)s %(type)s?"
+
+msgid "dialogs/title/install/items"
+msgstr "Enable %(type)s?"
+
 msgid "epicBattleItem/supplyPoints/body"
 msgstr ""
 "Accumulate the required number of Points and activate the Frontline Combat "
@@ -386,8 +401,8 @@ msgstr "XP"
 
 msgid "intro/card/categories/desc"
 msgstr ""
-"Now Combat Reserves are divided into categories. Only corresponding Reserves"
-" can be placed in the slot of each category."
+"Combat Reserves are divided into categories. Only corresponding Reserves can"
+" be placed in the slot of each category."
 
 msgid "intro/card/categories/title"
 msgstr "Combat Reserve Categories"
@@ -395,17 +410,16 @@ msgstr "Combat Reserve Categories"
 msgid "intro/card/slots/desc"
 msgstr ""
 "Upon achieving the Sergeant and Lieutenant ranks, you will unlock the second"
-" and third slots respectively. The Reserve in the first slot will be "
-"improved after reaching the Captain and Major ranks, and the Reserve in the "
-"second slot after reaching the General rank."
+" and third slots, respectively. The Reserve will be improved after reaching "
+"the Captain and Major ranks."
 
 msgid "intro/card/slots/title"
 msgstr "Unlock Slots in Battle"
 
 msgid "intro/card/types/desc"
 msgstr ""
-"Different vehicle types have different slot configurations, which means "
-"slots can be unlocked and improved in various ways in battle."
+"Different vehicle types have different slot configurations, but they are "
+"unlocked and improved in the same way."
 
 msgid "intro/card/types/title"
 msgstr "Slots and Vehicle Types"
@@ -414,7 +428,7 @@ msgid "intro/confirm"
 msgstr "Affirmative!"
 
 msgid "intro/title"
-msgstr "New Combat Reserve Mechanics"
+msgstr "COMBAT RESERVE MECHANICS"
 
 msgid "lane_central_name"
 msgstr "Center"
@@ -594,7 +608,7 @@ msgid "questsTooltip/epicBattle/startIn"
 msgstr "New missions will be available in %(time)s"
 
 msgid "questsTooltip/epicBattle/steelhunter/header"
-msgstr "Steel Hunter Missions"
+msgstr "Steel Hunter: Reborn Missions"
 
 msgid "questsTooltip/epicBattle/timeLeft"
 msgstr "Frontline ends in: %(time)s"
@@ -602,11 +616,23 @@ msgstr "Frontline ends in: %(time)s"
 msgid "questsTooltip/epicBattle/unavailable"
 msgstr "Unavailable: %(reason)s."
 
+msgid "rank/allReserveUpgraded"
+msgstr "All Combat Reserve Levels increased"
+
+msgid "rank/crewRolesFactorPromotion"
+msgstr "Team bonus to crew performance increased to +%(percent)s%%"
+
+msgid "rank/crewRolesFactorPromotion1"
+msgstr "Maximum crew performance is reached at +%(percent)s%%"
+
+msgid "rank/crewRolesFactorSelf"
+msgstr "Team bonus to crew performance +%(percent)s%%"
+
 msgid "rank/no_name"
 msgstr "Player"
 
 msgid "rank/promotion"
-msgstr "promoted to %(rank)s"
+msgstr "promoted to %(rank)s%(placeholder)s"
 
 msgid "rank/rank1"
 msgstr "Private"
@@ -754,9 +780,9 @@ msgstr "This mode demands high computer performance"
 msgid ""
 "selectorTooltip/epicBattle/attention/possibleLowPerformance/description"
 msgstr ""
-"This mode demands high computer performance. You may experience issues with "
-"map loading, graphics, and vehicle movement. In case of insufficient "
-"performance, try a lower graphics quality in Settings."
+"This mode requires high computer performance. You may experience issues with"
+" map loading, graphics, and vehicle movement. In case of insufficient "
+"performance, try reducing the graphics quality in your Settings."
 
 msgid "selectorTooltip/epicBattle/attention/possibleLowPerformance/title"
 msgstr "Low Performance"
@@ -797,6 +823,15 @@ msgstr "Today"
 
 msgid "selectorTooltip/epicBattle/timeTable/tomorrow"
 msgstr "Tomorrow"
+
+msgid "skill/category/firesupport"
+msgstr "Attack Reserves"
+
+msgid "skill/category/reconnaissance"
+msgstr "Recon Reserves"
+
+msgid "skill/category/tactics"
+msgstr "Tactical Reserves"
 
 msgid "spectator_mode/camera_controls_title"
 msgstr "Spectator Mode Camera"
@@ -875,6 +910,12 @@ msgstr "Activates %(activationDelay)s s after the vehicle stops"
 
 msgid "super_platoon_panel/title"
 msgstr "Platoon"
+
+msgid "tab_screen/generalBonusDescr"
+msgstr "—total team bonus to crew performance for the presence of a General."
+
+msgid "tab_screen/generalBonusValue"
+msgstr "+%(value)s%%"
 
 msgid "tab_screen/show_all_lanes"
 msgstr "All fronts"

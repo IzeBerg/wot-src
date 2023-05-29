@@ -1,3 +1,4 @@
+from battle_royale.gui.Scaleform.daapi.view.lobby.battle_royale_entry_point_inject import BattleRoyaleEntryPointInject
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.framework import ScopeTemplates, ViewSettings, ComponentSettings
 from gui.Scaleform.framework.package_layout import PackageBusinessHandler
@@ -41,7 +42,8 @@ def getViewSettings():
      ComponentSettings(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT, TechParametersComponent, ScopeTemplates.LOBBY_SUB_SCOPE),
      ComponentSettings(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT, HangarBottomPanelComponent, ScopeTemplates.LOBBY_SUB_SCOPE),
      ComponentSettings(BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT, ProxyCurrencyComponentInject, ScopeTemplates.LOBBY_SUB_SCOPE),
-     ComponentSettings(HANGAR_ALIASES.ROYALE_TANK_CAROUSEL, RoyaleTankCarousel, ScopeTemplates.DEFAULT_SCOPE))
+     ComponentSettings(HANGAR_ALIASES.ROYALE_TANK_CAROUSEL, RoyaleTankCarousel, ScopeTemplates.DEFAULT_SCOPE),
+     ComponentSettings(HANGAR_ALIASES.BR_ENTRY_POINT, BattleRoyaleEntryPointInject, ScopeTemplates.DEFAULT_SCOPE))
 
 
 def getBusinessHandlers():

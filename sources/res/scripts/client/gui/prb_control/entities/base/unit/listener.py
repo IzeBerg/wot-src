@@ -118,3 +118,6 @@ class IStrongholdListener(IPrbListener):
 
     def onSlotVehileFiltersChanged(self):
         pass
+
+    def onEventFrozenVehiclesChanged(self, data):
+        pass

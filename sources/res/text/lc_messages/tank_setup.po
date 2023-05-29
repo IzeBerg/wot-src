@@ -10,11 +10,41 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "abilities/actions/toInfoPage"
+msgstr "MORE DETAILS"
+
 msgid "abilities/actions/toReserves"
 msgstr "Manage Reserves"
 
 msgid "abilities/applyToType"
-msgstr "Apply to %(icon)s %(vehicle)s"
+msgstr "Apply to all %(icon)s %(vehicle)s"
+
+msgid "abilities/details/level"
+msgstr "Level:"
+
+msgid "abilities/details/param/valueTemplate/default"
+msgstr "%(sign)s%(value)s"
+
+msgid "abilities/details/param/valueTemplate/meters"
+msgstr "%(sign)s%(value)s m"
+
+msgid "abilities/details/param/valueTemplate/percents"
+msgstr "%(sign)s%(value)s %"
+
+msgid "abilities/details/param/valueTemplate/percentsBySecond"
+msgstr "%(sign)s%(value)s %/s"
+
+msgid "abilities/details/param/valueTemplate/seconds"
+msgstr "%(sign)s%(value)s s"
+
+msgid "abilities/details/paramDiff"
+msgstr "(%(diff)s)"
+
+msgid "abilities/details/status/locked"
+msgstr "Combat Reserve not purchased"
+
+msgid "abilities/details/status/unlocked"
+msgstr "Combat Reserve purchased"
 
 msgid "abilities/noSelected/subTitle"
 msgstr "Activate them on the Manage Reserves screen."
@@ -25,14 +55,8 @@ msgstr "Reserves Not Activated"
 msgid "abilities/noSelected/toReserves"
 msgstr "Manage Reserves"
 
-msgid "battleAbilities/firesupport"
-msgstr "ATTACK RESERVES"
-
-msgid "battleAbilities/reconnaissance"
-msgstr "RECON RESERVES"
-
-msgid "battleAbilities/tactics"
-msgstr "TACTICAL RESERVES"
+msgid "abilities/pointsAmount"
+msgstr "Combat Reserve Points: %(points)s"
 
 msgid "categories/body/firepower"
 msgstr ""
@@ -134,6 +158,9 @@ msgstr "Apply to Vehicle"
 
 msgid "dealPanel/button/cancel"
 msgstr "Cancel"
+
+msgid "dealPanel/button/purchase"
+msgstr "Purchase"
 
 msgid "dealPanel/fromStorage"
 msgstr "From the Depot:"
@@ -1771,7 +1798,7 @@ msgid "kpi/bonus/valueTypes/vehicleOwnSpottingTime"
 msgstr "s"
 
 msgid "section/battleAbilities"
-msgstr "RESERVES"
+msgstr "COMBAT RESERVES"
 
 msgid "section/battleBoosters"
 msgstr "DIRECTIVES"
@@ -1904,6 +1931,15 @@ msgstr "Changes will be applied to all light tanks."
 
 msgid "tooltips/abilities/actions/checkbox/mediumTank"
 msgstr "Changes will be applied to all medium tanks."
+
+msgid "tooltips/abilities/points/body"
+msgstr ""
+"By increasing your Frontline Tier, you receive Combat Reserve Points. Once "
+"you accumulate the required number of Combat Reserve Points, you will be "
+"able to activate Frontline Combat Reserves."
+
+msgid "tooltips/abilities/points/header"
+msgstr "Combat Reserve Points"
 
 msgid "tooltips/action/description/add_one"
 msgstr "Click to purchase additional items for this slot."

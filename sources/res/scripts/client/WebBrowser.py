@@ -34,6 +34,13 @@ def destroyExternalCache():
     return
 
 
+def pauseExternalCache(value):
+    if _g_webCache is not None:
+        _logger.info('WebExternalCache setPause(%r)', value)
+        _g_webCache.setPause(value)
+    return
+
+
 def getWebCache():
     return _g_webCache
 
@@ -165,6 +172,7 @@ class WebBrowser(object):
         self.onChangeAddressBar = Event(self.__eventMgr)
         self.onFocusChanged = Event(self.__eventMgr)
         self.onResized = Event(self.__eventMgr)
+        self.onTextureStateChanged = Event(self.__eventMgr)
         _logger.info('INIT %s, id: %s', self.__baseUrl, self.__browserID)
         levelSetting = Settings.g_instance.engineConfig['webBrowser']['logVerbosity'].asString
         levelSettingEnum = LogSeverity[levelSetting]
@@ -192,6 +200,7 @@ class WebBrowser(object):
             self.__browser.script.onConsoleMessage += self.__onConsoleMessage
             self.__browser.script.onChangeAddressBar += self.__onChangeAddressBar
             self.__browser.script.onResized += self.__onResized
+            self.__browser.script.onTextureStateChanged += self.__onTextureStateChanged
             self.__browser.script.isBrowserPlayingAudio = False
 
             def injectBrowserKeyEvent(me, e):
@@ -577,6 +586,10 @@ class WebBrowser(object):
     def __onResized(self, width, height):
         self.onResized(width, height)
 
+    def __onTextureStateChanged(self, isOk):
+        _logger.info('onTextureStateChanged isOk: %r', isOk)
+        self.onTextureStateChanged(isOk)
+
     def __onAudioStatusChanged(self, isPlaying):
         if self.__isAudioMutable:
             self.__isAudioPlaying = bool(isPlaying)
@@ -605,6 +618,7 @@ class EventListener(object):
         self.onConsoleMessage = Event(self.__eventMgr)
         self.onChangeAddressBar = Event(self.__eventMgr)
         self.onResized = Event(self.__eventMgr)
+        self.onTextureStateChanged = Event(self.__eventMgr)
         self.__urlFailed = False
         self.__browserProxy = weakref.proxy(browser)
 

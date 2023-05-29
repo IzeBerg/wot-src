@@ -60,7 +60,9 @@ def _loadLoot(typeID, radius, callback, desc):
     loot.prepareCompositeLoader(callback)
     spaceID = BigWorld.player().spaceID
     cachingManager = CGF.getManager(spaceID, SteelHunterDynamicObjectsCachingManager)
-    if cachingManager is not None and cachingManager.hasCachedLoot(typeID):
+    hasLoot = cachingManager.hasCachedLoot(typeID)
+    useForeground = cachingManager is not None and hasLoot
+    if useForeground:
         _loadLootForeground(loot, spaceID, desc)
     else:
         cachingManager.cacheForegroundLootLoading(loot)
@@ -179,9 +181,7 @@ class SteelHunterDynamicObjectsCachingManager(CGF.ComponentManager):
 
         self.__lootCache[lootType] = cachedResources
         for effectPath in effectsPaths:
-            effect = resourceList[effectPath]
-            if effect:
-                effect.halt()
+            resourceList[effectPath].halt()
 
         _logger.info('[Loot] Loot %d resources has been cached', lootType)
         toForegroundLoad = self.__cachingQueue[lootType]

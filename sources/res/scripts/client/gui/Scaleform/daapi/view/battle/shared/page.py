@@ -109,7 +109,8 @@ class SharedPage(BattlePageMeta):
             components = _SHARED_COMPONENTS_CONFIG
         else:
             components += _SHARED_COMPONENTS_CONFIG
-        components = self._addDefaultHitDirectionController(components)
+        if BATTLE_CTRL_ID.HIT_DIRECTION not in dict(components.getConfig()):
+            components += _HIT_DIRECTION_COMPONENTS_CONFIG
         self.__componentsConfig = components
         return
 
@@ -180,11 +181,6 @@ class SharedPage(BattlePageMeta):
         self._stopBattleSession()
         super(SharedPage, self)._dispose()
 
-    def _addDefaultHitDirectionController(self, components):
-        if BATTLE_CTRL_ID.HIT_DIRECTION not in dict(components.getConfig()):
-            components += _HIT_DIRECTION_COMPONENTS_CONFIG
-        return components
-
     def _toggleGuiVisible(self):
         self._isVisible = not self._isVisible
         if self._isVisible:
@@ -223,7 +219,7 @@ class SharedPage(BattlePageMeta):
                 self._onPostMortemSwitched(noRespawnPossible=False, respawnAvailable=False)
             self._isInPostmortem = ctrl.isInPostmortem
             ctrl.onPostMortemSwitched += self._onPostMortemSwitched
-            ctrl.onRespawnBaseMoving += self.__onRespawnBaseMoving
+            ctrl.onRespawnBaseMoving += self._onRespawnBaseMoving
         crosshairCtrl = self.sessionProvider.shared.crosshair
         if crosshairCtrl is not None:
             crosshairCtrl.onCrosshairViewChanged += self.__onCrosshairViewChanged
@@ -243,7 +239,7 @@ class SharedPage(BattlePageMeta):
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
             ctrl.onPostMortemSwitched -= self._onPostMortemSwitched
-            ctrl.onRespawnBaseMoving -= self.__onRespawnBaseMoving
+            ctrl.onRespawnBaseMoving -= self._onRespawnBaseMoving
         aih_global_binding.unsubscribe(aih_global_binding.BINDING_ID.CTRL_MODE_NAME, self._onAvatarCtrlModeChanged)
         for alias, _ in self.__componentsConfig.getViewsConfig():
             self.sessionProvider.removeViewComponent(alias)
@@ -298,9 +294,7 @@ class SharedPage(BattlePageMeta):
         for component in self._external:
             component.active(True)
 
-        if self.sessionProvider.shared.hitDirection is not None:
-            self.sessionProvider.shared.hitDirection.setVisible(True)
-        return
+        self.sessionProvider.shared.hitDirection.setVisible(True)
 
     def _onDestroyTimerStart(self):
         hintPanel = self.getComponent(_ALIASES.HINT_PANEL)
@@ -390,7 +384,7 @@ class SharedPage(BattlePageMeta):
             self._isInPostmortem = True
             self._switchToPostmortem()
 
-    def __onRespawnBaseMoving(self):
+    def _onRespawnBaseMoving(self):
         if not self.sessionProvider.getCtx().isPlayerObserver() and not BattleReplay.g_replayCtrl.isPlaying:
             self.as_setPostmortemTipsVisibleS(False)
             self._isInPostmortem = False
@@ -414,17 +408,13 @@ class SharedPage(BattlePageMeta):
         for component in self._external:
             component.active(True)
 
-        if self.sessionProvider.shared.hitDirection is not None:
-            self.sessionProvider.shared.hitDirection.setVisible(True)
-        return
+        self.sessionProvider.shared.hitDirection.setVisible(True)
 
     def __handleHideExternals(self, _):
         for component in self._external:
             component.active(False)
 
-        if self.sessionProvider.shared.hitDirection is not None:
-            self.sessionProvider.shared.hitDirection.setVisible(False)
-        return
+        self.sessionProvider.shared.hitDirection.setVisible(False)
 
     def __handleShowBtnHint(self, _):
         self._processHint(True)

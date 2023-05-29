@@ -3,7 +3,6 @@ from PlayerEvents import g_playerEvents
 from account_helpers.AccountSettings import LOOT_BOXES_OPEN_ANIMATION_ENABLED
 from frameworks.wulf import ViewSettings, WindowFlags
 from event_lootboxes.gui.event_lootboxes.bonuses_packers import packBonusModelAndTooltipData
-from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
 from sound import enterLootBoxSoundState, exitLootBoxSoundState, playStorageClosed, playStorageOpened
 from event_lootboxes.gui.impl.lobby.event_lootboxes.tooltips.compensation_tooltip import EventLootBoxesCompensationTooltip
 from event_lootboxes.gui.impl.gen.view_models.views.lobby.event_lootboxes.vehicle_model import VehicleType
@@ -17,7 +16,7 @@ from gui.impl.wrappers.function_helpers import replaceNoneKwargsModel
 from gui.server_events.bonuses import GoldBonus, IntegralBonus
 from gui.shared.event_dispatcher import selectVehicleInHangar
 from event_lootboxes.gui.shared.event_dispatcher import showEventLootBoxOpenErrorWindow, showEventLootBoxOpenWindow
-from gui.shared.gui_items.Vehicle import getIconShopResource
+from gui.shared.gui_items.Vehicle import getNationLessName
 from gui.shared.gui_items.loot_box import EVENT_LOOT_BOXES_CATEGORY, EventLootBoxes
 from gui.shared.gui_items.processors.loot_boxes import LootBoxOpenProcessor
 from gui.shared.money import Currency
@@ -79,7 +78,6 @@ class EventLootBoxesOpenBoxScreen(ViewImpl):
         self.__rewards = kwargs.get('rewards')
         self.__updateData()
         self.__updateCounters()
-        self.__inBoxesFlowEnter()
         return
 
     def _initialize(self, *args, **kwargs):
@@ -92,7 +90,6 @@ class EventLootBoxesOpenBoxScreen(ViewImpl):
             self.__notifier.stopNotification()
             self.__notifier.clear()
         self.__onHideWaiting()
-        self.__inBoxesFlowExit()
         super(EventLootBoxesOpenBoxScreen, self)._finalize()
         return
 
@@ -207,7 +204,7 @@ class EventLootBoxesOpenBoxScreen(ViewImpl):
         model.vehicle.setName(self.__vehicle.userName)
         model.vehicle.setType(VehicleType(self.__vehicle.type))
         model.vehicle.setLevel(self.__vehicle.level)
-        iconSource = getIconShopResource(self.__vehicle.name, STORE_CONSTANTS.ICON_SIZE_LARGE)
+        iconSource = R.images.gui.maps.shop.vehicles.c_600x450.dyn(getNationLessName(self.__vehicle.name))()
         model.vehicle.setIconSource(iconSource)
         model.setHasVehicle(True)
 
@@ -220,7 +217,7 @@ class EventLootBoxesOpenBoxScreen(ViewImpl):
                 compensation = {'currency': currency, 'value': value}
                 break
 
-        self.__compensationTooltipData = {'iconBefore': getIconShopResource(self.__vehicle.name, STORE_CONSTANTS.ICON_SIZE_SMALL), 
+        self.__compensationTooltipData = {'iconBefore': R.images.gui.maps.shop.vehicles.c_180x135.dyn(getNationLessName(self.__vehicle.name))(), 
            'vehicleLevel': self.__vehicle.level, 
            'vehicleType': self.__vehicle.type, 
            'vehicleName': self.__vehicle.userName, 

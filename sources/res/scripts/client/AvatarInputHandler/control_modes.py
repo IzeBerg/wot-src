@@ -475,7 +475,7 @@ class ArcadeControlMode(_GunControlMode):
 
     def __init__(self, dataSection, avatarInputHandler):
         super(ArcadeControlMode, self).__init__(dataSection, avatarInputHandler, mode=CTRL_MODE_NAME.ARCADE)
-        self._setupCamera(dataSection)
+        self._cam = ArcadeCamera.ArcadeCamera(dataSection['camera'], defaultOffset=self._defaultOffset)
         self.__mouseVehicleRotator = _MouseVehicleRotator()
         self.__videoControlModeAvailable = dataSection.readBool('videoModeAvailable', constants.HAS_DEV_RESOURCES)
         self.__videoControlModeAvailable &= BattleReplay.g_replayCtrl.isPlaying or constants.HAS_DEV_RESOURCES
@@ -617,9 +617,6 @@ class ArcadeControlMode(_GunControlMode):
             return True
         else:
             return False
-
-    def _setupCamera(self, dataSection):
-        self._cam = ArcadeCamera.ArcadeCamera(dataSection['camera'], defaultOffset=self._defaultOffset)
 
     def __activateAlternateMode(self, pos=None, bByScroll=False):
         ownVehicle = BigWorld.entity(BigWorld.player().playerVehicleID)
@@ -1348,10 +1345,13 @@ class PostMortemControlMode(IControlMode):
             arena.onVehicleKilled += self.__onArenaVehicleKilled
         if bool(args.get('respawn', False)):
             respawnCtrl = self.guiSessionProvider.dynamic.respawn
-            self._targetCtrlModeAfterDelay = None if respawnCtrl.respawnInfo is None else CTRL_MODE_NAME.RESPAWN_DEATH
-            respawnCtrl.onRespawnInfoUpdated += self.__onRespawnInfoUpdated
-            if respawnCtrl.respawnInfo is not None:
-                self.__onRespawnInfoUpdated(respawnCtrl.respawnInfo)
+            if respawnCtrl:
+                self._targetCtrlModeAfterDelay = CTRL_MODE_NAME.RESPAWN_DEATH
+                if respawnCtrl.respawnInfo is None:
+                    self._targetCtrlModeAfterDelay = None
+                respawnCtrl.onRespawnInfoUpdated += self.__onRespawnInfoUpdated
+                if respawnCtrl.respawnInfo is not None:
+                    self.__onRespawnInfoUpdated(respawnCtrl.respawnInfo)
         return
 
     def __startPostmortemDelay(self, vehicleID):

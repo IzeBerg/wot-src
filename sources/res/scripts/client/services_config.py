@@ -1,9 +1,9 @@
-import logging, festivity
+import logging
 __all__ = ('getClientServicesConfig', )
 _logger = logging.getLogger(__name__)
 
 def getClientServicesConfig(manager):
-    import account_helpers, connection_mgr, MapActivities, dyn_objects_cache, gui, gameplay, helpers, uilogging
+    import account_helpers, connection_mgr, MapActivities, dyn_objects_cache, gui, gameplay, helpers, uilogging, festivity
     from vehicle_systems.appearance_cache import AppearanceCache
     from skeletons.connection_mgr import IConnectionManager
     from skeletons.map_activities import IMapActivities

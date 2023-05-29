@@ -2,18 +2,18 @@ import copy, logging
 from collections import namedtuple
 from functools import partial
 from operator import itemgetter
-import BigWorld, typing
+import typing, BigWorld
 from adisp import adisp_process
 from battle_pass_common import BATTLE_PASS_OFFER_TOKEN_PREFIX, BATTLE_PASS_Q_CHAIN_BONUS_NAME, BATTLE_PASS_Q_CHAIN_TOKEN_PREFIX, BATTLE_PASS_SELECT_BONUS_NAME, BATTLE_PASS_STYLE_PROGRESS_BONUS_NAME, BATTLE_PASS_TOKEN_3D_STYLE, BATTLE_PASS_TOKEN_PREFIX
 from blueprints.BlueprintTypes import BlueprintTypes
 from blueprints.FragmentTypes import getFragmentType
-from comp7_common import COMP7_TOKEN_WEEKLY_REWARD_NAME
 from constants import CURRENCY_TOKEN_PREFIX, DOSSIER_TYPE, EVENT_TYPE as _ET, LOOTBOX_TOKEN_PREFIX, PREMIUM_ENTITLEMENTS, RESOURCE_TOKEN_PREFIX, RentType, CUSTOMIZATION_PROGRESS_PREFIX, WoTPlusBonusType
+from comp7_common import COMP7_TOKEN_WEEKLY_REWARD_NAME
 from debug_utils import LOG_CURRENT_EXCEPTION, LOG_ERROR
 from dossiers2.custom.records import RECORD_DB_IDS
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK, BADGES_BLOCK
-from epic_constants import EPIC_OFFER_TOKEN_PREFIX, EPIC_SELECT_BONUS_NAME
 from external_strings_utils import strtobool
+from epic_constants import EPIC_OFFER_TOKEN_PREFIX, EPIC_SELECT_BONUS_NAME
 from frameworks.wulf import WindowLayer
 from gui import makeHtmlString
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -76,7 +76,6 @@ if typing.TYPE_CHECKING:
     from account_helpers.offers.offer_bonuses import ItemsOfferBonus
     from gui.shared.gui_items.customization import C11nStyleProgressData
     from gui.lobby_context import LobbyContext
-    from gui.shared.gui_items.crew_book import CrewBook
 DEFAULT_CREW_LVL = 50
 _CUSTOMIZATIONS_SCALE = 44.0 / 128
 _ZERO_COMPENSATION_MONEY = Money(credits=0, gold=0)
@@ -2463,14 +2462,13 @@ class CrewSkinsBonus(SimpleBonus):
         result = []
         for item, count, _, _ in self.getItems():
             if item is not None:
-                resourceID = str(item.itemTypeName + str(item.getRarity()))
                 result.append({'id': item.intCD, 
                    'name': localizedFullName(item), 
                    'description': item.getDescription(), 
                    'type': ('item/{}').format(item.itemTypeName), 
                    'value': count, 
-                   'icon': {AWARDS_SIZES.SMALL: backport.image(R.images.gui.maps.icons.quests.bonuses.small.dyn(resourceID)()), 
-                            AWARDS_SIZES.BIG: backport.image(R.images.gui.maps.icons.quests.bonuses.big.dyn(resourceID)())}})
+                   'icon': {AWARDS_SIZES.SMALL: backport.image(R.images.gui.maps.icons.tankmen.icons.small.crewSkins.dyn(item.getIconID())()), 
+                            AWARDS_SIZES.BIG: backport.image(R.images.gui.maps.icons.tankmen.icons.big.crewSkins.dyn(item.getIconID())())}})
 
         return result
 

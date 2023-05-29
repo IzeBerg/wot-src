@@ -3,6 +3,7 @@ package net.wg.gui.lobby.settings
    import flash.display.DisplayObject;
    import flash.events.Event;
    import flash.text.TextFormatAlign;
+   import net.wg.data.VO.CountersVo;
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
@@ -12,6 +13,8 @@ package net.wg.gui.lobby.settings
    import net.wg.gui.components.controls.DropdownMenu;
    import net.wg.gui.components.controls.LabelControl;
    import net.wg.gui.components.controls.Slider;
+   import net.wg.gui.lobby.settings.components.LimitedUISettingBlock;
+   import net.wg.gui.lobby.settings.components.evnts.LimitedUIEvent;
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
    import net.wg.gui.lobby.settings.events.SettingViewEvent;
    import net.wg.gui.lobby.settings.vo.AnonymizerExtraVO;
@@ -29,6 +32,8 @@ package net.wg.gui.lobby.settings
    
    public class GameSettings extends SettingsBaseView
    {
+      
+      public static const LINKAGE:String = "GameSettings";
       
       private static const PANE_WIDTH:Number = 800;
       
@@ -50,14 +55,24 @@ package net.wg.gui.lobby.settings
       
       private static const GAME_COUNTER_CONTAINER_ID:String = "GAME_COUNTER_CONTAINER_ID";
       
+      private static const GAME_COUNTER_LIMITED_UI_CONTROL:String = "limitedUIActive";
+      
       private static const COUNTER_CHECKBOX_OFFSET_X:Number = -11;
       
       private static const BATTLE_TYPES_HEIGHT_EXTRA:int = 180;
       
       private static const BATTLE_TYPES_HEIGHT:int = 160;
+      
+      private static const LIMITED_UI_SETTING_BLOCK_X:uint = 400;
+      
+      private static const LIMITED_UI_SETTING_BLOCK_PADDING:uint = 80;
+      
+      private static const PANE_HEIGHT_WITH_LIMITED_UI_SETTING_BLOCK:uint = PANE_HEIGHT - LIMITED_UI_SETTING_BLOCK_PADDING;
        
       
       public var scrollPane:BorderShadowScrollPane;
+      
+      private var _limitedUISettingBlock:LimitedUISettingBlock;
       
       public function GameSettings()
       {
@@ -245,14 +260,63 @@ package net.wg.gui.lobby.settings
                }
             }
          }
+         if(this._limitedUISettingBlock)
+         {
+            this._limitedUISettingBlock.removeEventListener(LimitedUIEvent.TURN_OFF,this.onLimitedUITurnOffHandler);
+            removeChild(this._limitedUISettingBlock);
+            this._limitedUISettingBlock.dispose();
+            this._limitedUISettingBlock = null;
+         }
          this.scrollPane.dispose();
          this.scrollPane = null;
          super.onDispose();
       }
       
+      override protected function updateNewCounter(param1:CountersVo) : Boolean
+      {
+         var _loc2_:ICounterProps = null;
+         var _loc3_:DisplayObject = null;
+         var _loc4_:String = null;
+         if(this._limitedUISettingBlock && param1.componentId == GAME_COUNTER_LIMITED_UI_CONTROL)
+         {
+            _loc2_ = this.getCounterProps(SettingsConfigHelper.TYPE_BUTTON);
+            _loc3_ = this._limitedUISettingBlock.turnOffBtn;
+            _loc4_ = !!this._limitedUISettingBlock.visible ? param1.count : Values.EMPTY_STR;
+            addNewCounterControl(_loc3_,_loc4_,_loc2_,false);
+            return true;
+         }
+         return super.updateNewCounter(param1);
+      }
+      
+      override protected function isCounterCanMarkAsVisited(param1:String, param2:CountersVo) : Boolean
+      {
+         if(this._limitedUISettingBlock && param2.componentId == GAME_COUNTER_LIMITED_UI_CONTROL)
+         {
+            return true;
+         }
+         return super.isCounterCanMarkAsVisited(param1,param2);
+      }
+      
       public function getContent() : GameSettingsContent
       {
          return GameSettingsContent(this.scrollPane.target);
+      }
+      
+      public function setLimitedUISettingVisible(param1:Boolean) : void
+      {
+         var _loc2_:Class = null;
+         if(!this._limitedUISettingBlock)
+         {
+            _loc2_ = App.utils.classFactory.getClass(Linkages.LIMITED_UI_SETTING_BLOCK);
+            this._limitedUISettingBlock = new _loc2_();
+            this._limitedUISettingBlock.x = LIMITED_UI_SETTING_BLOCK_X;
+            addChild(this._limitedUISettingBlock);
+            this._limitedUISettingBlock.addEventListener(LimitedUIEvent.TURN_OFF,this.onLimitedUITurnOffHandler);
+         }
+         this._limitedUISettingBlock.visible = param1;
+         this.scrollPane.y = !!param1 ? Number(LIMITED_UI_SETTING_BLOCK_PADDING) : Number(0);
+         this.scrollPane.setSize(PANE_WIDTH,!!param1 ? Number(PANE_HEIGHT_WITH_LIMITED_UI_SETTING_BLOCK) : Number(PANE_HEIGHT));
+         invalidateCounter();
       }
       
       private function setupLabel(param1:LabelControl, param2:String) : void
@@ -297,6 +361,12 @@ package net.wg.gui.lobby.settings
          param1.enabled = param3;
          param1.selectedIndex = int(param2.current);
          param1.addEventListener(IndexEvent.INDEX_CHANGE,this.onButtonBarIndexChangeHandler);
+      }
+      
+      private function onLimitedUITurnOffHandler(param1:LimitedUIEvent) : void
+      {
+         var _loc2_:SettingViewEvent = new SettingViewEvent(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,viewId,formId,null,[GAME_COUNTER_LIMITED_UI_CONTROL]);
+         dispatchEvent(_loc2_);
       }
       
       private function onSliderValueChangeHandler(param1:SliderEvent) : void

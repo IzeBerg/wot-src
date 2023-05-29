@@ -1101,7 +1101,7 @@ class SpeedometerWheeledTech(CrosshairPlugin):
             vStateCtrl.onVehicleControlling += self.__onVehicleControlling
             crosshairCtrl.onCrosshairViewChanged += self.__onCrosshairViewChanged
             vehicle = vStateCtrl.getControllingVehicle()
-            if vehicle is not None and vehicle.isWheeledTech:
+            if vehicle is not None and vehicle.hasSpeedometer:
                 self.__onVehicleControlling(vehicle)
         specCtrl = self.sessionProvider.dynamic.spectator
         if specCtrl is not None:
@@ -1131,7 +1131,7 @@ class SpeedometerWheeledTech(CrosshairPlugin):
     def __onVehicleControlling(self, vehicle):
         vStateCtrl = self.sessionProvider.shared.vehicleState
         vTypeDesc = vehicle.typeDescriptor
-        if vTypeDesc.isWheeledVehicle and vehicle.health > 0:
+        if vTypeDesc.hasSpeedometer and vehicle.health > 0:
             if vStateCtrl.isInPostmortem:
                 self.__resetSpeedometer()
             self.__updateBurnoutWarning(vStateCtrl)
@@ -1173,7 +1173,7 @@ class SpeedometerWheeledTech(CrosshairPlugin):
         if vehicle is None:
             return
         else:
-            if vehicle.typeDescriptor.isWheeledVehicle and viewID == CROSSHAIR_VIEW_ID.ARCADE:
+            if vehicle.hasSpeedometer and viewID == CROSSHAIR_VIEW_ID.ARCADE:
                 self.__onVehicleControlling(vehicle)
                 self.__updateCurStateSpeedMode(vStateCtrl)
             return
@@ -1280,7 +1280,7 @@ class SpeedometerWheeledTech(CrosshairPlugin):
                     vStateCtrl = self.sessionProvider.shared.vehicleState
                     if vStateCtrl is not None:
                         vehicle = vStateCtrl.getControllingVehicle()
-                        if vehicle is not None and vehicle.isWheeledTech:
+                        if vehicle is not None and vehicle.hasSpeedometer:
                             self.__onVehicleControlling(vehicle)
             else:
                 self.parentObj.as_removeSpeedometerS()

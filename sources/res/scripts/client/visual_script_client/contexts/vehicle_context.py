@@ -3,14 +3,14 @@ from visual_script.context import VScriptContext, vse_get_property
 from visual_script.misc import ASPECT
 from visual_script.slot_types import SLOT_TYPE
 
-class VehicleContextClient(VScriptContext):
+class VehicleContext(VScriptContext):
 
     def __init__(self, vehicle):
-        super(VehicleContextClient, self).__init__(ASPECT.CLIENT)
+        super(VehicleContext, self).__init__(ASPECT.CLIENT)
         self._vehicle = vehicle
 
     def destroy(self):
-        super(VehicleContextClient, self).destroy()
+        super(VehicleContext, self).destroy()
         self._vehicle = None
         return
 

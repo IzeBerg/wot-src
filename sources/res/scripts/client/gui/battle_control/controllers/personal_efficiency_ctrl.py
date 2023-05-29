@@ -86,6 +86,9 @@ class _DamageEfficiencyInfo(_FeedbackEventEfficiencyInfo):
     def isDeathZone(self):
         return self.__damage.isDeathZone()
 
+    def isStaticDeathZone(self):
+        return self.__damage.isStaticDeathZone()
+
     def isShellGold(self):
         return self.__damage.isShellGold()
 
@@ -160,6 +163,9 @@ class _CriticalHitsEfficiencyInfo(_FeedbackEventEfficiencyInfo):
     def isDeathZone(self):
         return self.__critsExtra.isDeathZone()
 
+    def isStaticDeathZone(self):
+        return self.__critsExtra.isStaticDeathZone()
+
     def isShellGold(self):
         return self.__critsExtra.isShellGold()
 
@@ -214,6 +220,9 @@ class _DestructibleDamagedEfficiencyInfo(_FeedbackEventEfficiencyInfo):
         return True
 
     def isDeathZone(self):
+        return False
+
+    def isStaticDeathZone(self):
         return False
 
     def isClingBrander(self):

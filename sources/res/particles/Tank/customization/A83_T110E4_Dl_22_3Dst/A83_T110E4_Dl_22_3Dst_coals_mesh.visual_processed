@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>A83_T110E4_Dl_22_3Dst_coals</identifier>
+					<fx>shaders/custom/emissive.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						emissiveTexture
+						<Texture>particles/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_coals_burning.dds</Texture>
+					</property>
+					<property>
+						g_coldColor
+						<Vector4>0.250980 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_emissiveParams
+						<Vector4>7.000000 2.000000 0.250000 7.000000</Vector4>
+					</property>
+					<property>
+						g_maskFromTex
+						<Bool>true</Bool>
+					</property>
+					<property>
+						phaseTexture
+						<Texture>particles/Tank/customization/A83_T110E4_Dl_22_3Dst/noise.dds</Texture>
+					</property>
+					<property>
+						srcBlend
+						<Int>2</Int>
+					</property>
+				</material>
+				<groupOrigin>-1.452172 0.647096 -2.062574</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.671508 0.617632 -2.456230</min>
+		<max>-1.232835 0.676559 -1.668918</max>
+	</boundingBox>
+	<geometrySize>2556</geometrySize>
+	<minUVDensity>0.049523</minUVDensity>
+</root>

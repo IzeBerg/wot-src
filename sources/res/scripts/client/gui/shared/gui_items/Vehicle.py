@@ -3,7 +3,7 @@ from collections import namedtuple
 from copy import deepcopy
 from itertools import izip
 from operator import itemgetter
-import BigWorld, typing
+import typing, BigWorld
 from backports.functools_lru_cache import lru_cache
 import constants
 from AccountCommands import LOCK_REASON, VEHICLE_SETTINGS_FLAG, VEHICLE_EXTRA_SETTING_FLAG
@@ -166,7 +166,6 @@ class VEHICLE_TAGS(CONST_CONTAINER):
     COMP7_BATTLES = 'comp7'
     WOT_PLUS = constants.VEHICLE_WOT_PLUS_TAG
     NO_CREW_TRANSFER_PENALTY_TAG = constants.VEHICLE_NO_CREW_TRANSFER_PENALTY_TAG
-    HIDDEN = 'hidden_in_hangar'
 
 
 DISCLAIMER_TAGS = frozenset((VEHICLE_TAGS.T34_DISCLAIMER,))
@@ -659,7 +658,8 @@ class Vehicle(FittingItem):
             for turretCD in filterIntCDsByItemType(total, GUI_ITEM_TYPE.TURRET):
                 total.remove(turretCD)
 
-        unlocked = total & self.itemsCache.items.stats.unlocks
+        unlocks = {items for items in self.itemsCache.items.stats.unlocks}
+        unlocked = total & unlocks
         toUnlock = total - unlocked
         return EliteStatusProgress(unlocked, toUnlock, total)
 
@@ -1422,10 +1422,6 @@ class Vehicle(FittingItem):
         return checkForTags(self.tags, VEHICLE_TAGS.BATTLE_ROYALE)
 
     @property
-    def isHiddenInHangar(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.HIDDEN)
-
-    @property
     def isOnlyForMapsTrainingBattles(self):
         return checkForTags(self.tags, VEHICLE_TAGS.MAPS_TRAINING)
 
@@ -2038,13 +2034,6 @@ def getIconShopPath(vehicleName, size=STORE_CONSTANTS.ICON_SIZE_MEDIUM):
     unicName = getIconResourceName(name)
     path = getShopVehicleIconPath(size, unicName)
     return path or backport.image(R.images.gui.maps.shop.vehicles.num(size).empty_tank())
-
-
-def getIconShopResource(vehicleName, size):
-    name = getNationLessName(vehicleName)
-    unicName = getIconResourceName(name)
-    resID = R.images.gui.maps.shop.vehicles.num(size).dyn(unicName)()
-    return resID or R.images.gui.maps.shop.vehicles.num(size).empty_tank()
 
 
 def getIconResource(vehicleName):

@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_F64_Attachment_hull</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.479088 0.204023 -2.280567</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.437082 0.142458 0.542546</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.116991 0.993133</row1>
+					<row2>0.000000 -0.993133 0.116991</row2>
+					<row3>-1.331977 -0.181197 3.432967</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.933836 -0.357701</row1>
+					<row2>-0.000000 -0.357701 -0.933836</row2>
+					<row3>-1.331977 0.072534 -3.282306</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.116991 0.993133</row1>
+					<row2>0.000000 -0.993133 0.116991</row2>
+					<row3>1.331977 -0.181197 3.432968</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.933836 -0.357701</row1>
+					<row2>-0.000000 -0.357701 -0.933836</row2>
+					<row3>1.331977 0.072534 -3.282306</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 -0.009770 -0.999952</row1>
+					<row2>0.000000 0.999952 -0.009770</row2>
+					<row3>-1.586700 1.614435 -4.294409</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 -0.009770 -0.999952</row1>
+					<row2>0.000000 0.999952 -0.009770</row2>
+					<row3>1.586700 1.614435 -4.238453</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.004400 0.527810 2.162380</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416438 8.416438 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000002 1.131530 -0.563109</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_upgrade_04_1</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.122177 0.725389 -0.587841</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>tank_upgrade_01</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416438 8.416438 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.006893 0.404293 -0.195770</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>tank_upgrade_01_1</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.009636 1.235851 -4.258054</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>tank_upgrade_02</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416438 8.416438 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.006893 0.393620 -0.195770</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				5
+				<material>
+					<identifier>tank_upgrade_02_1</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.132269 0.889088 -0.749095</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				6
+				<material>
+					<identifier>tank_upgrade_03_1</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.163066 0.725389 -0.587841</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				7
+				<material>
+					<identifier>tank_upgrade_04</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_02_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_02_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_02_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_equipment_02_ANM.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416438 8.416438 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.581318 1.370109 -2.998834</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				8
+				<material>
+					<identifier>tank_upgrade_decals</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_decals_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_decals_ANM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_decals_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_decals_AO.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-1.604902 0.821974 -0.997241</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				9
+				<material>
+					<identifier>tank_upgrade_03</identifier>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/AMX_50Fosh_B_BXI_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>8.416438 8.416438 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-1.543931 0.826589 -3.080613</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-2.019482 -0.737559 -4.473365</min>
+		<max>1.818750 3.000618 3.567620</max>
+	</boundingBox>
+	<geometrySize>1408476</geometrySize>
+	<minUVDensity>0.002628</minUVDensity>
+</root>

@@ -4,6 +4,7 @@ package net.wg.gui.battle.views.epicMessagesPanel.components
    import net.wg.gui.battle.views.epicMessagesPanel.data.RankUpMessageVO;
    import net.wg.gui.battle.views.gameMessagesPanel.components.MessageContainerBase;
    import net.wg.gui.battle.views.gameMessagesPanel.data.GameMessageVO;
+   import org.idmedia.as3commons.util.StringUtils;
    
    public class RankUpMessage extends MessageContainerBase
    {
@@ -32,7 +33,14 @@ package net.wg.gui.battle.views.epicMessagesPanel.components
          this._msgDataVO = _loc2_;
          this.mainTextMc.titleTF.text = _loc2_.title;
          this.icon.gotoAndStop(_loc2_.rank);
-         this.rankUpSubMc.setText(_loc2_.subTitle);
+         if(StringUtils.isNotEmpty(_loc2_.subTitle))
+         {
+            this.rankUpSubMc.setText(_loc2_.subTitle);
+         }
+         else
+         {
+            this.rankUpSubMc.visible = false;
+         }
       }
       
       override protected function onDispose() : void

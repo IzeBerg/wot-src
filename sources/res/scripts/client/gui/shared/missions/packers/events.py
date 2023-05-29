@@ -58,7 +58,7 @@ class BattleQuestUIDataPacker(_EventUIDataPacker):
 
     def __init__(self, event):
         super(BattleQuestUIDataPacker, self).__init__(event)
-        self.__tooltipData = {}
+        self._tooltipData = {}
 
     def pack(self, model=None):
         if model is not None and not isinstance(model, QuestModel):
@@ -70,7 +70,7 @@ class BattleQuestUIDataPacker(_EventUIDataPacker):
             return model
 
     def getTooltipData(self):
-        return self.__tooltipData
+        return self._tooltipData
 
     def _packModel(self, model):
         super(BattleQuestUIDataPacker, self)._packModel(model)
@@ -80,13 +80,9 @@ class BattleQuestUIDataPacker(_EventUIDataPacker):
         self._packDefaultConds(model)
 
     def _packBonuses(self, model):
-        packer = self._getBonusPacker()
-        self.__tooltipData = {}
-        packQuestBonusModelAndTooltipData(packer, model.getBonuses(), self._event, tooltipData=self.__tooltipData)
-
-    def _getBonusPacker(self):
         packer = getDefaultBonusPacker()
-        return packer
+        self._tooltipData = {}
+        packQuestBonusModelAndTooltipData(packer, model.getBonuses(), self._event, tooltipData=self._tooltipData)
 
     def _packPostBattleConds(self, model):
         postBattleContitionPacker = PostBattleConditionPacker()

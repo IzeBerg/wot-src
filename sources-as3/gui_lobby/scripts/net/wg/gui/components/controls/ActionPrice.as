@@ -68,6 +68,12 @@ package net.wg.gui.components.controls
       public static const COLOR_ERROR:uint = 11993088;
       
       public static const CHAR_PLUS:String = "+";
+      
+      public static const ICON_TEXT_ALIGN_MIDDLE:String = "iconTextAlignMiddle";
+      
+      private static const ICON_TEXT_ALIGN_MIDDLE_Y:int = 11;
+      
+      private static const ICON_TEXT_ALIGN_BOTTOM_Y:int = 14;
        
       
       public var iconText:IconText = null;
@@ -117,6 +123,8 @@ package net.wg.gui.components.controls
       private var _isInteractive:Boolean = true;
       
       private var _extraDiscountPrice:Number = 0;
+      
+      private var _iconTextY:int = 14;
       
       public function ActionPrice()
       {
@@ -220,6 +228,19 @@ package net.wg.gui.components.controls
          }
       }
       
+      public function setIconTextAlign(param1:String) : void
+      {
+         if(param1 == ICON_TEXT_ALIGN_MIDDLE)
+         {
+            this._iconTextY = ICON_TEXT_ALIGN_MIDDLE_Y;
+         }
+         else
+         {
+            this._iconTextY = ICON_TEXT_ALIGN_BOTTOM_Y;
+         }
+         this.iconText.y = this._iconTextY;
+      }
+      
       public function setup(param1:UIComponent, param2:Boolean = false) : void
       {
          this._isUseMouseActionSameOwner = param2;
@@ -275,8 +296,14 @@ package net.wg.gui.components.controls
             case IconsTypes.GOLD:
                _loc2_ = CURRENCIES_CONSTANTS.GOLD_COLOR;
                break;
+            case IconsTypes.GOLD_BIG:
+               _loc2_ = CURRENCIES_CONSTANTS.GOLD_BIG_COLOR;
+               break;
             case IconsTypes.CREDITS:
                _loc2_ = CURRENCIES_CONSTANTS.CREDITS_COLOR;
+               break;
+            case IconsTypes.CREDITS_BIG:
+               _loc2_ = CURRENCIES_CONSTANTS.GOLD_BIG_COLOR;
                break;
             case IconsTypes.ELITE_XP:
                _loc2_ = COLOR_ELITE_XP;
@@ -311,6 +338,7 @@ package net.wg.gui.components.controls
          this._defTextFieldXPos = 0;
          this._defBgPos = 0;
          this.iconText.mouseEnabled = this.iconText.mouseChildren = false;
+         this.iconText.y = this._iconTextY;
          var _loc1_:int = this.numChildren;
          var _loc2_:int = 0;
          while(_loc2_ < _loc1_)

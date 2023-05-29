@@ -220,6 +220,10 @@
 					2.7 2.7 0.000000 0.000000
 					<!--BW_String-->
 				</china:Ch41_WZ_111_5A_7x7>
+				<china:Ch41_WZ_111_TEST>
+					2.7 2.7 0.000000 0.000000
+					<!--BW_String-->
+				</china:Ch41_WZ_111_TEST>
 				<china:Ch42_WalkerBulldog_M41D>
 					1.2 1.2 0.000000 0.000000
 					<!--BW_String-->
@@ -3277,6 +3281,10 @@
 					1.62703 1.62703 0.000000 4.21688
 					<!--BW_String-->
 				</china:Ch41_WZ_111_5A_7x7>
+				<china:Ch41_WZ_111_TEST>
+					1.62703 1.62703 0.000000 4.21688
+					<!--BW_String-->
+				</china:Ch41_WZ_111_TEST>
 				<china:Ch42_WalkerBulldog_M41D>
 					1.3 1.3 0.000000 0.000000
 					<!--BW_String-->
@@ -11326,6 +11334,75 @@
 					<!--BW_String-->
 				</offset>
 			</tilingSettings>
+		</camouflage>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:camouflage/opaque</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>camouflages 50g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<camouflage>
+			<id>724</id>
+			<texture>vehicles/russian/Camouflage/am_independence_day_2023.dds</texture>
+			<description>#vehicle_customization:camouflage/am_independence_day_2023/description</description>
+			<scales>
+				1.3 1 0.7
+				<!--BW_String-->
+			</scales>
+			<userString>#vehicle_customization:camouflage/am_independence_day_2023/label</userString>
+			<tags>fullRGB hiddenInUI</tags>
+			<invisibilityFactor>1</invisibilityFactor>
+			<palettes>
+				<palette>
+					<c0>255 0 0 255</c0>
+					<c1>0 255 0 255</c1>
+					<c2>0 0 255 255</c2>
+					<c3>0 0 0 255</c3>
+				</palette>
+			</palettes>
+			<rotation>
+				<HULL>-1.164658</HULL>
+				<TURRET>-1.164658</TURRET>
+				<GUN>-1.164658</GUN>
+			</rotation>
+			<tilingSettings>
+				<type>relativewithfactor</type>
+				<factor>
+					2.8 2.8
+					<!--BW_String-->
+				</factor>
+				<offset>
+					-0.58 0.34
+					<!--BW_String-->
+				</offset>
+			</tilingSettings>
+			<tiling>
+				<usa:A09_T1_hvy>
+					4.09 4.09 2.86 3.36
+					<!--BW_String-->
+				</usa:A09_T1_hvy>
+				<usa:A35_Pershing>
+					2.85 2.85 4.66 -2.95
+					<!--BW_String-->
+				</usa:A35_Pershing>
+				<usa:A41_M18_Hellcat>
+					2.6 2.6 -13.05 -6.33
+					<!--BW_String-->
+				</usa:A41_M18_Hellcat>
+				<usa:A11_T29>
+					4.45 4.45 3.98 0.47
+					<!--BW_String-->
+				</usa:A11_T29>
+				<usa:A10_M6>
+					2.75 2.75 1.2 1.93
+					<!--BW_String-->
+				</usa:A10_M6>
+			</tiling>
 		</camouflage>
 	</itemGroup>
 	<itemGroup>
