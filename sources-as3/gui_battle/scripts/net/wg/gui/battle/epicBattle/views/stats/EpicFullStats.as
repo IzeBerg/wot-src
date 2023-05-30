@@ -105,6 +105,11 @@ package net.wg.gui.battle.epicBattle.views.stats
          this.applyInteractivity();
       }
       
+      public function as_setGeneralBonus(param1:Number) : void
+      {
+         this.statsTable.generalBonus.bonusValue = param1;
+      }
+      
       public function setArenaInfo(param1:IDAAPIDataClass) : void
       {
          var _loc2_:DAAPIArenaInfoVO = DAAPIArenaInfoVO(param1);
@@ -204,12 +209,13 @@ package net.wg.gui.battle.epicBattle.views.stats
       
       public function updateStageSize(param1:Number, param2:Number) : void
       {
-         var _loc4_:Number = NaN;
-         var _loc3_:Number = param1 >> 1;
-         _loc4_ = param2 >> 1;
+         var _loc3_:Number = NaN;
+         _loc3_ = param1 >> 1;
+         var _loc4_:Number = param2 >> 1;
          this.header.modalBgSpr.width = param1;
          this.header.modalBgSpr.x = -_loc3_;
          this.statsTable.y = _loc4_ - TOP_TABLE_OFFSET * (param2 / MIN_HEIGHT);
+         this.statsTable.updateHeight(param2);
          this.modalBgSpr.width = param1;
          this.modalBgSpr.height = param2;
          this.modalBgSpr.x = -_loc3_;

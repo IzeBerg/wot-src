@@ -119,9 +119,17 @@ package
       
       public static const RANK_PROMOTION:String = "#epic_battle:rank/promotion";
       
+      public static const RANK_CREWROLESFACTORSELF:String = "#epic_battle:rank/crewRolesFactorSelf";
+      
+      public static const RANK_CREWROLESFACTORPROMOTION:String = "#epic_battle:rank/crewRolesFactorPromotion";
+      
+      public static const RANK_CREWROLESFACTORPROMOTION1:String = "#epic_battle:rank/crewRolesFactorPromotion1";
+      
       public static const RANK_RECERVEUNLOCKED:String = "#epic_battle:rank/recerveUnlocked";
       
       public static const RANK_RESERVEUPGRADED:String = "#epic_battle:rank/reserveUpgraded";
+      
+      public static const RANK_ALLRESERVEUPGRADED:String = "#epic_battle:rank/allReserveUpgraded";
       
       public static const MISSION_PRIMARY_TITLE:String = "#epic_battle:mission/primary/title";
       
@@ -252,6 +260,10 @@ package
       public static const TAB_SCREEN_SHOW_MY_LANE:String = "#epic_battle:tab_screen/show_my_lane";
       
       public static const TAB_SCREEN_SHOW_ALL_LANES:String = "#epic_battle:tab_screen/show_all_lanes";
+      
+      public static const TAB_SCREEN_GENERALBONUSVALUE:String = "#epic_battle:tab_screen/generalBonusValue";
+      
+      public static const TAB_SCREEN_GENERALBONUSDESCR:String = "#epic_battle:tab_screen/generalBonusDescr";
       
       public static const IN_GAME_RANK_EXPERIENCE_TEXT:String = "#epic_battle:in_game_rank/experience_text";
       
@@ -642,6 +654,22 @@ package
       public static const STATUSNOTIFICATIONTIMERS_STEALTHRADAR_ACTIVE:String = "#epic_battle:statusNotificationTimers/stealthRadar/active";
       
       public static const STATUSNOTIFICATIONTIMERS_STEALTHRADAR_INACTIVE:String = "#epic_battle:statusNotificationTimers/stealthRadar/inactive";
+      
+      public static const DIALOGS_TITLE_BUY_ITEM:String = "#epic_battle:dialogs/title/buy/item";
+      
+      public static const DIALOGS_TITLE_BUY_ITEMS:String = "#epic_battle:dialogs/title/buy/items";
+      
+      public static const DIALOGS_TITLE_INSTALL_ITEM:String = "#epic_battle:dialogs/title/install/item";
+      
+      public static const DIALOGS_TITLE_INSTALL_ITEMS:String = "#epic_battle:dialogs/title/install/items";
+      
+      public static const DIALOGS_QUOTEDNAME:String = "#epic_battle:dialogs/quotedName";
+      
+      public static const SKILL_CATEGORY_FIRESUPPORT:String = "#epic_battle:skill/category/firesupport";
+      
+      public static const SKILL_CATEGORY_RECONNAISSANCE:String = "#epic_battle:skill/category/reconnaissance";
+      
+      public static const SKILL_CATEGORY_TACTICS:String = "#epic_battle:skill/category/tactics";
        
       
       public function EPIC_BATTLE()

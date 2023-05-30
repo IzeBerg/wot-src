@@ -15,25 +15,14 @@
 		</param>
 	</params>
 	<node>
-		<name>feathers_idle</name>
-		<type>sequence</type>
-		<resource>particles/Tank/customization/Ch25_121_mod_1971B_MC_3DSt/Ch25_121_MK_feathers_idle.seq</resource>
+		<name>idle_animation</name>
+		<type>animation</type>
+		<resource>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/normal/lod0/Gun_01_idle.fbx</resource>
+		<clipName/>
 		<isLoop>true</isLoop>
-		<loop>-1</loop>
 		<transition>
-			<to>feathers_shot</to>
-			<blendDuration>0.000000</blendDuration>
-			<allowRootMotion>false</allowRootMotion>
-			<conditions>
-				<condition>
-					<type>trigger</type>
-					<name>shot</name>
-				</condition>
-			</conditions>
-		</transition>
-		<transition>
-			<to>feathers_moving</to>
-			<blendDuration>0.000000</blendDuration>
+			<to>moving_animation</to>
+			<blendDuration>1.000000</blendDuration>
 			<allowRootMotion>false</allowRootMotion>
 			<conditions>
 				<condition>
@@ -42,16 +31,8 @@
 				</condition>
 			</conditions>
 		</transition>
-		<uiPosition>-795.000000 -236.000000 0.000000</uiPosition>
-	</node>
-	<node>
-		<name>feathers_moving</name>
-		<type>sequence</type>
-		<resource>particles/Tank/customization/Ch25_121_mod_1971B_MC_3DSt/Ch25_121_MK_feathers_moving.seq</resource>
-		<isLoop>false</isLoop>
-		<loop>1</loop>
 		<transition>
-			<to>feathers_shot</to>
+			<to>shooting_animation</to>
 			<blendDuration>0.000000</blendDuration>
 			<allowRootMotion>false</allowRootMotion>
 			<conditions>
@@ -61,28 +42,47 @@
 				</condition>
 			</conditions>
 		</transition>
+		<uiPosition>-841.000000 -255.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>moving_animation</name>
+		<type>animation</type>
+		<resource>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/normal/lod0/Gun_01_move.fbx</resource>
+		<clipName/>
+		<isLoop>true</isLoop>
 		<transition>
-			<to>feathers_idle</to>
+			<to>idle_animation</to>
+			<blendDuration>0.500000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>idle</name>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>shooting_animation</to>
 			<blendDuration>0.000000</blendDuration>
 			<allowRootMotion>false</allowRootMotion>
 			<conditions>
 				<condition>
-					<type>exit_time</type>
-					<exitOffset>1.000000</exitOffset>
+					<type>trigger</type>
+					<name>shot</name>
 				</condition>
 			</conditions>
 		</transition>
-		<uiPosition>-43.000000 -82.000000 0.000000</uiPosition>
+		<uiPosition>-493.000000 -329.500000 0.000000</uiPosition>
 	</node>
 	<node>
-		<name>feathers_shot</name>
-		<type>sequence</type>
-		<resource>particles/Tank/customization/Ch25_121_mod_1971B_MC_3DSt/Ch25_121_MK_feathers_shooting.seq</resource>
+		<name>shooting_animation</name>
+		<type>animation</type>
+		<resource>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/normal/lod0/Gun_01_shoot.fbx</resource>
+		<clipName/>
 		<isLoop>false</isLoop>
-		<loop>1</loop>
 		<transition>
-			<to>feathers_idle</to>
-			<blendDuration>0.000000</blendDuration>
+			<to>idle_animation</to>
+			<blendDuration>0.250000</blendDuration>
 			<allowRootMotion>false</allowRootMotion>
 			<conditions>
 				<condition>
@@ -92,8 +92,8 @@
 			</conditions>
 		</transition>
 		<transition>
-			<to>feathers_moving</to>
-			<blendDuration>0.000000</blendDuration>
+			<to>moving_animation</to>
+			<blendDuration>0.500000</blendDuration>
 			<allowRootMotion>false</allowRootMotion>
 			<conditions>
 				<condition>
@@ -102,6 +102,6 @@
 				</condition>
 			</conditions>
 		</transition>
-		<uiPosition>-42.000000 -319.000000 0.000000</uiPosition>
+		<uiPosition>-492.500000 -181.500000 0.000000</uiPosition>
 	</node>
 </root>

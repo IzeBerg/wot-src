@@ -1,0 +1,4 @@
+
+
+class SPLASHSCREENCONSTANTS(object):
+    ON_SPLASH_SCREEN_LOADED_CALLBACK = 'onSplashScreenLoaded'

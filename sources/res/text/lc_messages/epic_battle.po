@@ -226,6 +226,21 @@ msgstr "危险区域"
 msgid "deploymentMap/spgLimitReached"
 msgstr "前线模式拥堵—坦克类型达到上限"
 
+msgid "dialogs/quotedName"
+msgstr "\"%(name)s\""
+
+msgid "dialogs/title/buy/item"
+msgstr "购买%(name)s%(type)s？"
+
+msgid "dialogs/title/buy/items"
+msgstr "购买%(type)s？"
+
+msgid "dialogs/title/install/item"
+msgstr "开启%(name)s%(type)s？"
+
+msgid "dialogs/title/install/items"
+msgstr "开启%(type)s？"
+
 msgid "epicBattleItem/supplyPoints/body"
 msgstr "积攒所需的积分并激活前线模式战斗储备。"
 
@@ -365,20 +380,19 @@ msgid "in_game_rank/experience_text"
 msgstr "经验"
 
 msgid "intro/card/categories/desc"
-msgstr "战斗储备今后将分为多个类别。每个栏位都只能放入对应类别的储备。"
+msgstr "战斗储备分为多个类别。每个栏位都只能放入对应类别的储备。"
 
 msgid "intro/card/categories/title"
 msgstr "战斗储备类别"
 
 msgid "intro/card/slots/desc"
-msgstr ""
-"达到中士军阶，就会解锁第二个栏位。达到中尉军阶，就会解锁第三个栏位。达到上尉和少校军阶后，就可以加强第一个栏位的储备。达到将军军阶后，就可以加强第二个栏位的储备。"
+msgstr "达到中士军阶即可解锁第2个栏位，达到中尉军阶即可解锁第3个栏位。达到上尉和少校军阶即可强化储备。"
 
 msgid "intro/card/slots/title"
 msgstr "在战斗中解锁栏位"
 
 msgid "intro/card/types/desc"
-msgstr "不同的坦克类型有不同的栏位配置。也就是说，在战斗中有多种解锁栏位和强化栏位的方式。"
+msgstr "不同类型的坦克拥有不同的栏位配置，但其解锁和强化方式一样。"
 
 msgid "intro/card/types/title"
 msgstr "栏位和坦克类型"
@@ -387,7 +401,7 @@ msgid "intro/confirm"
 msgstr "收到！"
 
 msgid "intro/title"
-msgstr "新的战斗储备机制"
+msgstr "战斗储备机制"
 
 msgid "lane_central_name"
 msgstr "中路"
@@ -561,7 +575,7 @@ msgid "questsTooltip/epicBattle/startIn"
 msgstr "新任务将于%(time)s后解锁"
 
 msgid "questsTooltip/epicBattle/steelhunter/header"
-msgstr "钢铁猎手任务"
+msgstr "钢铁猎手:复苏任务"
 
 msgid "questsTooltip/epicBattle/timeLeft"
 msgstr "距离前线模式结束还有：%(time)s"
@@ -569,11 +583,23 @@ msgstr "距离前线模式结束还有：%(time)s"
 msgid "questsTooltip/epicBattle/unavailable"
 msgstr "不可用：%(reason)s。"
 
+msgid "rank/allReserveUpgraded"
+msgstr "已提高所有的战斗储备等级"
+
+msgid "rank/crewRolesFactorPromotion"
+msgstr "乘员表现的团队加成提高至+%(percent)s%%"
+
+msgid "rank/crewRolesFactorPromotion1"
+msgstr "乘员表现在+%(percent)s%%时达到上限"
+
+msgid "rank/crewRolesFactorSelf"
+msgstr "乘员表现的团队加成提高+%(percent)s%%"
+
 msgid "rank/no_name"
 msgstr "玩家"
 
 msgid "rank/promotion"
-msgstr "晋升为%(rank)s"
+msgstr "晋升为%(rank)s%(placeholder)s"
 
 msgid "rank/rank1"
 msgstr "列兵"
@@ -715,7 +741,7 @@ msgstr "该模式对计算机性能要求较高"
 
 msgid ""
 "selectorTooltip/epicBattle/attention/possibleLowPerformance/description"
-msgstr "该模式需要较高的计算机性能。您可能会遇到地图加载、图形和坦克移动等问题。如果性能不足，请在设置中尝试降低图形质量。"
+msgstr "该模式需要较高的计算机性能。您可能会遇到地图加载、图形和坦克移动方面的问题。如果性能不足，请在设置中尝试较低的图形质量。"
 
 msgid "selectorTooltip/epicBattle/attention/possibleLowPerformance/title"
 msgstr "低性能"
@@ -752,6 +778,15 @@ msgstr "今天"
 
 msgid "selectorTooltip/epicBattle/timeTable/tomorrow"
 msgstr "明天"
+
+msgid "skill/category/firesupport"
+msgstr "进攻储备"
+
+msgid "skill/category/reconnaissance"
+msgstr "侦察储备"
+
+msgid "skill/category/tactics"
+msgstr "战术储备"
 
 msgid "spectator_mode/camera_controls_title"
 msgstr "观察者视角"
@@ -830,6 +865,12 @@ msgstr "坦克停止后%(activationDelay)s秒激活"
 
 msgid "super_platoon_panel/title"
 msgstr "小队"
+
+msgid "tab_screen/generalBonusDescr"
+msgstr "—达到将军军阶时，整个团队的乘员表现获得加成。"
+
+msgid "tab_screen/generalBonusValue"
+msgstr "+%(value)s%%"
 
 msgid "tab_screen/show_all_lanes"
 msgstr "所有战线"

@@ -768,6 +768,14 @@ def getGenericProjectionDecals(outfit, vehDesc):
     return decalsParams
 
 
+def getNonTankMaterials(outfit):
+    style = outfit.style
+    if style is not None:
+        return style.nonTankMaterials
+    else:
+        return
+
+
 def __vehicleSlotsByType(vehDesc, slotType):
     for partName in TankPartNames.ALL:
         partDesc = getattr(vehDesc, partName, None)
@@ -911,5 +919,6 @@ def getOutfitData(appearance, outfit, vehicleDescr, isDamaged):
         paints.append(getRepaint(outfit, fashionIdx, vehicleDescr))
 
     decals = getGenericProjectionDecals(outfit, vehicleDescr)
+    nonTankMaterials = getNonTankMaterials(outfit)
     return (
-     camos, paints, decals)
+     camos, paints, decals, nonTankMaterials)

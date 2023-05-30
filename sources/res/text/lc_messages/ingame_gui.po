@@ -336,9 +336,6 @@ msgstr "- -"
 msgid "damageIndicator/multiplier"
 msgstr "x%(multiplier)s"
 
-msgid "damageLog/DEATH_ZONE"
-msgstr "危险区"
-
 msgid "damageLog/multiplier"
 msgstr "x%(multiplier)s"
 
@@ -731,6 +728,9 @@ msgstr "飞火流星损伤"
 
 msgid "efficiencyRibbons/spotted"
 msgstr "点亮次数"
+
+msgid "efficiencyRibbons/staticDeathZone"
+msgstr "崩坏区域造成的损伤"
 
 msgid "efficiencyRibbons/stun"
 msgstr "弹震"
@@ -1354,6 +1354,9 @@ msgstr "%(target)s被击毁"
 msgid "player_messages/DEATH_FROM_SHOT_SELF_ENEMY_POI"
 msgstr "%(target)s被击毁"
 
+msgid "player_messages/DEATH_FROM_STATIC_DEATH_ZONE_ALLY_SUICIDE"
+msgstr "盟友%(target)s被崩坏区域摧毁。"
+
 msgid "player_messages/DEATH_FROM_WORLD_COLLISION_ALLY_ALLY"
 msgstr "盟友 %(attacker)s 撞毁盟友 %(target)s。"
 
@@ -1697,6 +1700,9 @@ msgstr "坦克被火炮支援击毁"
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_BOMBER"
 msgstr "坦克被空袭击毁"
+
+msgid "postmortem_messages/DEATH_FROM_STATIC_DEATH_ZONE_SELF_SUICIDE"
+msgstr "坦克被崩坏区域摧毁"
 
 msgid "postmortem_messages/DEATH_FROM_THUNDER_STRIKE"
 msgstr "坦克被脉冲电场击毁。"
@@ -2792,6 +2798,11 @@ msgstr "我军"
 
 msgid "statistics/team2title"
 msgstr "敌军"
+
+msgid "statusNotificationTimers/staticDeathZone"
+msgstr ""
+"立刻离开\n"
+"崩坏区域！"
 
 msgid "stun/indicator"
 msgstr "乘员受到弹震影响"

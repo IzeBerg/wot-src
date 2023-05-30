@@ -1,5 +1,5 @@
-from visual_script.block import Block, InitParam, EDITOR_TYPE, buildStrKeysValue, Meta
-from visual_script.misc import errorVScript
+from visual_script.block import Block, InitParam, buildStrKeysValue, Meta
+from visual_script.misc import errorVScript, EDITOR_TYPE
 from visual_script.slot_types import SLOT_TYPE
 
 class BitMaskMeta(Meta):

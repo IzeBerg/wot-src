@@ -690,6 +690,14 @@ RECORDS = (
  (
   'max15x15', 'maxDamageVehicle', 'p', 'I', 4294967295),
  (
+  'max15x15', 'maxAssisted', 'p', 'H', 60001),
+ (
+  'max15x15', 'maxAssistedVehicle', 'p', 'I', 4294967295),
+ (
+  'max15x15', 'maxDamageBlockedByArmor', 'p', 'H', 60001),
+ (
+  'max15x15', 'maxDamageBlockedByArmorVehicle', 'p', 'I', 4294967295),
+ (
   'max7x7', 'maxXP', 'p', 'H', 60001),
  (
   'max7x7', 'maxXPVehicle', 'p', 'I', 4294967295),
@@ -3020,7 +3028,9 @@ RECORDS = (
  (
   'singleAchievements', 'Cosmic_MartianStalker', 'p', 'B', 1),
  (
-  'singleAchievements', 'Cosmic_SpaceTrace', 'p', 'B', 1))
+  'singleAchievements', 'Cosmic_SpaceTrace', 'p', 'B', 1),
+ (
+  'singleAchievements', 'BattlePassCommonPr_11', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4532,7 +4542,12 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('maxComp7Season2', 'maxSquadWinSeries'): 1783, 
    ('singleAchievements', 'comp7_2023_1'): 1785, 
    ('singleAchievements', 'Cosmic_MartianStalker'): 1786, 
-   ('singleAchievements', 'Cosmic_SpaceTrace'): 1787}
+   ('singleAchievements', 'Cosmic_SpaceTrace'): 1787, 
+   ('max15x15', 'maxAssisted'): 1788, 
+   ('max15x15', 'maxAssistedVehicle'): 1789, 
+   ('max15x15', 'maxDamageBlockedByArmor'): 1790, 
+   ('max15x15', 'maxDamageBlockedByArmorVehicle'): 1791, 
+   ('singleAchievements', 'BattlePassCommonPr_11'): 1792}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

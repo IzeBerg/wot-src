@@ -515,7 +515,7 @@ class _BattleRoyaleDailyMissionInfo(_EventDailyMissionInfo):
 
     def _getCompleteKey(self):
         if not self._controller.isDailyQuestsRefreshAvailable():
-            return R.strings.battle_royale.questsTooltip.mission_info.timeLeft()
+            return R.strings.battle_royale.questsTooltip.timeLeft()
         return super(_BattleRoyaleDailyMissionInfo, self)._getCompleteKey()
 
 
@@ -664,9 +664,7 @@ class _DetailedMissionInfo(_MissionInfo):
         xpMultCond = conds.find('hasReceivedMultipliedXP')
         if xpMultCond:
             extraConditions.append(xpMultCond)
-        criteria |= ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
-        criteria |= ~REQ_CRITERIA.VEHICLE.MAPS_TRAINING
-        criteria |= ~REQ_CRITERIA.VEHICLE.HIDDEN_IN_HANGAR
+        criteria = criteria | ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE | ~REQ_CRITERIA.VEHICLE.MAPS_TRAINING
         return (criteria, extraConditions, isQuestForBattleRoyale)
 
     def _getUIDecoration(self):

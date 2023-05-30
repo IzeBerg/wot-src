@@ -228,6 +228,8 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
         self.__setVehicleMProv(self.getTargetMProv())
 
     def setToVehicleDirection(self):
+        if not self.__aimingSystem:
+            return
         matrix = Math.Matrix(self.getTargetMProv())
         self.setYawPitch(matrix.yaw, matrix.pitch)
 
@@ -284,7 +286,7 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
                 self.delayCallback(0.0, self.enable, preferredPos, closesDist, postmortemParams, turretYaw, gunPitch, camTransitionParams, initialVehicleMatrix)
                 return
         if initialVehicleMatrix is None:
-            initialVehicleMatrix = player.getOwnVehicleMatrix(self.vehicleMProv) if vehicle is None else vehicle.matrix
+            initialVehicleMatrix = player.getOwnVehicleMatrix(Math.Matrix(self.vehicleMProv)) if vehicle is None else vehicle.matrix
         vehicleMProv = initialVehicleMatrix
         if self.__compareCurrStateSettingsKey(GAME.COMMANDER_CAM) or arcadeState is not None:
             state = None

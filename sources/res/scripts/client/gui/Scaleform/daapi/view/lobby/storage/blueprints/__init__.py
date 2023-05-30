@@ -95,7 +95,7 @@ class BlueprintsStorageCarouselDataProvider(StorageCarouselDataProvider):
     def __init__(self, carouselFilter, itemsCache, filterCallback):
         super(BlueprintsStorageCarouselDataProvider, self).__init__(carouselFilter, itemsCache)
         g_techTreeDP.load()
-        self._baseCriteria = _BlueprintsCriteriesGroup.getGroupCriteria() | ~REQ_CRITERIA.VEHICLE.HIDDEN_IN_HANGAR
+        self._baseCriteria = _BlueprintsCriteriesGroup.getGroupCriteria()
         self.__filterCallback = filterCallback
 
     def applyFilter(self, forceApply=False):

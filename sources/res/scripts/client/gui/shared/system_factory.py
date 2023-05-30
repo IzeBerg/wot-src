@@ -34,8 +34,8 @@ BATTLE_RESULTS_COMPOSER = 32
 SEASON_PROVIDER_HANDLER = 33
 MESSENGER_SERVER_FORMATTERS = 34
 CAROUSEL_EVENTS_ENTRIES = 35
-DYN_OBJ_CACHE = 36
-SHARED_REPO = 37
+BANNER_ENTRY_POINT_LUI_RULE = 36
+LIMITED_UI_TOKENS = 37
 
 class _CollectEventsManager(object):
 
@@ -145,20 +145,6 @@ def registerBattleControllerRepo(guiType, repoCls):
 
 def collectBattleControllerRepo(guiType, setup):
     ctx = __collectEM.handleEvent((BATTLE_REPO, guiType), ctx={'setup': setup})
-    return (ctx.get('repo'), 'repo' in ctx)
-
-
-def registerSharedControllerRepo(guiType, repoCls):
-
-    def onCollect(ctx):
-        ctx['repo'] = repoCls.create(ctx['setup']) if repoCls else None
-        return
-
-    __collectEM.addListener((SHARED_REPO, guiType), onCollect)
-
-
-def collectSharedControllerRepo(guiType, setup):
-    ctx = __collectEM.handleEvent((SHARED_REPO, guiType), ctx={'setup': setup})
     return (ctx.get('repo'), 'repo' in ctx)
 
 
@@ -436,6 +422,18 @@ def collectBannerEntryPointValidator(alias):
     return __collectEM.handleEvent((BANNER_ENTRY_POINT_VALIDATOR, alias), ctx={}).get('validator')
 
 
+def registerBannerEntryPointLUIRule(alias, ruleID):
+
+    def onCollect(ctx):
+        ctx['ruleID'] = ruleID
+
+    __collectEM.addListener((BANNER_ENTRY_POINT_LUI_RULE, alias), onCollect)
+
+
+def collectBannerEntryPointLUIRule(alias):
+    return __collectEM.handleEvent((BANNER_ENTRY_POINT_LUI_RULE, alias), ctx={}).get('ruleID')
+
+
 def registerCarouselEventEntryPoint(viewID, viewClass):
 
     def onCollect(ctx):
@@ -574,13 +572,21 @@ def collectSeasonProviderHandler(seasonType):
     return __collectEM.handleEvent((SEASON_PROVIDER_HANDLER, seasonType), ctx={}).get(seasonType, None)
 
 
-def registerDynObjCache(queueType, dynCache):
+def registerLimitedUIToken(tokenInfo):
 
     def onCollect(ctx):
-        ctx['dynCache'] = dynCache
+        ctx['tokens'].append(tokenInfo)
 
-    __collectEM.addListener((DYN_OBJ_CACHE, queueType), onCollect)
+    __collectEM.addListener(LIMITED_UI_TOKENS, onCollect)
 
 
-def collectDynObjCache(queueType):
-    return __collectEM.handleEvent((DYN_OBJ_CACHE, queueType), ctx={}).get('dynCache')
+def registerLimitedUITokens(tokensInfos):
+
+    def onCollect(ctx):
+        ctx['tokens'].extend(tokensInfos)
+
+    __collectEM.addListener(LIMITED_UI_TOKENS, onCollect)
+
+
+def collectLimitedUITokens():
+    return __collectEM.handleEvent(LIMITED_UI_TOKENS, ctx={'tokens': []})['tokens']

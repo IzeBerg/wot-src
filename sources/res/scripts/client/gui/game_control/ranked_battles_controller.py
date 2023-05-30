@@ -1156,7 +1156,6 @@ class RankedBattlesController(IRankedBattlesController, Notifiable, SeasonProvid
         criteria |= ~REQ_CRITERIA.VEHICLE.CLASSES(self.__rankedSettings.forbiddenClassTags)
         criteria |= ~REQ_CRITERIA.VEHICLE.SPECIFIC_BY_CD(self.__rankedSettings.forbiddenVehTypes)
         criteria |= ~REQ_CRITERIA.VEHICLE.EVENT_BATTLE | ~REQ_CRITERIA.VEHICLE.EPIC_BATTLE
-        criteria |= ~REQ_CRITERIA.VEHICLE.HIDDEN_IN_HANGAR
         return criteria
 
     def __showBetweenSeason(self):

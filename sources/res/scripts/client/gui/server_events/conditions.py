@@ -885,7 +885,7 @@ class BattleBonusType(_Condition, _Negatable):
         self._types = self._data.get('value')
 
     def __repr__(self):
-        return 'BattleBonusType<types=%r>' % self._types
+        return 'BonusType<types=%r>' % self._types
 
     def negate(self):
         newTypes = []

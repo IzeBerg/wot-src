@@ -88,7 +88,7 @@ def _getContextMenuHandlerID(item):
     return handlers[0]
 
 
-_CUSTOMIZATION_VEHICLE_CRITERIA = ~REQ_CRITERIA.VEHICLE.IS_PREMIUM_IGR | ~REQ_CRITERIA.VEHICLE.EVENT_BATTLE | ~REQ_CRITERIA.VEHICLE.IS_BOT | ~REQ_CRITERIA.VEHICLE.HIDDEN_IN_HANGAR
+_CUSTOMIZATION_VEHICLE_CRITERIA = ~REQ_CRITERIA.VEHICLE.IS_PREMIUM_IGR | ~REQ_CRITERIA.VEHICLE.EVENT_BATTLE | ~REQ_CRITERIA.VEHICLE.IS_BOT
 
 def getStorageItemDescr(item):
     itemType = item.itemTypeID
@@ -310,8 +310,11 @@ def getItemVo(item):
         elif item.level == 2:
             upgradeIconResId = R.images.gui.maps.icons.tanksetup.actions.upgrade_last_modernized()
         upgradeButtonIcon = backport.image(upgradeIconResId) if upgradeIconResId is not None else ''
-        itemType = ('_').join((item.getOverlayType(), str(item.level)))
         actionButtonLabel = backport.text(R.strings.storage.buttonLabel.deconstruct())
+        if item.isModernized:
+            itemType = item.getOverlayType()
+        else:
+            itemType = ('_').join((item.getOverlayType(), str(item.level)))
     else:
         upgradeButtonIcon = backport.image(R.images.gui.maps.icons.tanksetup.actions.upgrade())
         itemType = item.getOverlayType()

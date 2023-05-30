@@ -10,11 +10,41 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "abilities/actions/toInfoPage"
+msgstr "更多详情"
+
 msgid "abilities/actions/toReserves"
 msgstr "管理储备"
 
 msgid "abilities/applyToType"
-msgstr "应用于%(icon)s%(vehicle)s"
+msgstr "应用于全部%(icon)s%(vehicle)s"
+
+msgid "abilities/details/level"
+msgstr "等级:"
+
+msgid "abilities/details/param/valueTemplate/default"
+msgstr "%(sign)s%(value)s"
+
+msgid "abilities/details/param/valueTemplate/meters"
+msgstr "%(sign)s%(value)s米"
+
+msgid "abilities/details/param/valueTemplate/percents"
+msgstr "%(sign)s%(value)s%"
+
+msgid "abilities/details/param/valueTemplate/percentsBySecond"
+msgstr "%(sign)s%(value)s%/秒"
+
+msgid "abilities/details/param/valueTemplate/seconds"
+msgstr "%(sign)s%(value)s秒"
+
+msgid "abilities/details/paramDiff"
+msgstr "(%(diff)s)"
+
+msgid "abilities/details/status/locked"
+msgstr "未购买战斗储备"
+
+msgid "abilities/details/status/unlocked"
+msgstr "已购买战斗储备"
 
 msgid "abilities/noSelected/subTitle"
 msgstr "在储备管理界面激活它们。"
@@ -25,14 +55,8 @@ msgstr "未激活储备"
 msgid "abilities/noSelected/toReserves"
 msgstr "管理储备"
 
-msgid "battleAbilities/firesupport"
-msgstr "进攻储备"
-
-msgid "battleAbilities/reconnaissance"
-msgstr "侦察储备"
-
-msgid "battleAbilities/tactics"
-msgstr "战术储备"
+msgid "abilities/pointsAmount"
+msgstr "战斗储备积分: %(points)s"
 
 msgid "categories/body/firepower"
 msgstr "一组表示击毁敌方坦克效率的参数。该过滤器可用于显示/隐藏涉及这组参数的配件。"
@@ -114,6 +138,9 @@ msgstr "应用"
 
 msgid "dealPanel/button/cancel"
 msgstr "取消"
+
+msgid "dealPanel/button/purchase"
+msgstr "购买"
 
 msgid "dealPanel/fromStorage"
 msgstr "仓库中:"
@@ -1671,7 +1698,7 @@ msgid "kpi/bonus/valueTypes/vehicleOwnSpottingTime"
 msgstr "秒"
 
 msgid "section/battleAbilities"
-msgstr "储备"
+msgstr "战斗储备"
 
 msgid "section/battleBoosters"
 msgstr "指令"
@@ -1795,6 +1822,12 @@ msgstr "变动将应用于所有轻型坦克。"
 
 msgid "tooltips/abilities/actions/checkbox/mediumTank"
 msgstr "变动将应用于所有中型坦克。"
+
+msgid "tooltips/abilities/points/body"
+msgstr "通过提升前线模式等级，您会获得战斗储备积分。累积足够数量的战斗储备积分后，您将能够激活前线模式战斗储备。"
+
+msgid "tooltips/abilities/points/header"
+msgstr "战斗储备积分"
 
 msgid "tooltips/action/description/add_one"
 msgstr "点击以购买要在该栏位中安装的物品。"

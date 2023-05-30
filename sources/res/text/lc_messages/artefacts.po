@@ -10,6 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "#PluralForms"
+msgstr ""
+"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2);"
+
 msgid "actionStub/name"
 msgstr "改装"
 
@@ -302,6 +307,21 @@ msgstr "雷区"
 msgid "br_minefield/shortDescr"
 msgstr "在指定区域内埋下激活的地雷，持续一段时间。敌人可以射击您的地雷将其摧毁。"
 
+msgid "br_respawn/name"
+msgstr "重生"
+
+msgid "br_respawn/platoon/descr"
+msgstr ""
+"让您可以在坦克被击毁后重返战斗。该机制在战斗的前%(duration)s分钟内生效。\n"
+"\n"
+"您需要脱离战斗%(timeToResurrect)s秒才能使盟友重生。小队中的盟友共享重生充能次数。"
+
+msgid "br_respawn/solo/descr"
+msgstr ""
+"让您可以在坦克被击毁后重返战斗。该机制在战斗的前%(duration)s分钟内生效。\n"
+"\n"
+"坦克在击毁后自动重生。"
+
 msgid "br_smoke/descr"
 msgstr "增强该给养范围内所有坦克的隐蔽性能。"
 
@@ -394,7 +414,7 @@ msgid "chocolate/onUse"
 msgstr "?empty?"
 
 msgid "chocolate/restriction"
-msgstr "仅限于D系坦克使用。"
+msgstr "仅适用于D系坦克。"
 
 msgid "chocolate/short_special"
 msgstr "提高D系乘员的效率"
@@ -467,7 +487,7 @@ msgid "cocacola/onUse"
 msgstr "?empty?"
 
 msgid "cocacola/restriction"
-msgstr "仅限于M系坦克使用。"
+msgstr "仅适用于M系坦克。"
 
 msgid "cocacola/short_special"
 msgstr "增强M系乘员的属性"
@@ -879,7 +899,7 @@ msgid "fireFightingBattleBooster/action/boost"
 msgstr "灭火特长提高50%"
 
 msgid "fireFightingBattleBooster/action/perk"
-msgstr "把通信兵的灭火特长训练至100%"
+msgstr "将灭火特长训练至100%"
 
 msgid "fireFightingBattleBooster/long_special"
 msgstr "灭火特长提高坦克的灭火能力，整场战斗有效。如果该特长已训练至100%，安装指令会增强其效果；否则该指令会为坦克提供100%熟练度的特长。"
@@ -1025,7 +1045,7 @@ msgid "hotCoffee/onUse"
 msgstr "?empty?"
 
 msgid "hotCoffee/restriction"
-msgstr "仅限F系坦克使用。"
+msgstr "仅适用于F系坦克。"
 
 msgid "hotCoffee/short_special"
 msgstr "提高F系乘员的表现"
@@ -1298,7 +1318,7 @@ msgid "lendLeaseOil/onUse"
 msgstr "?empty?"
 
 msgid "lendLeaseOil/restriction"
-msgstr "仅限于S系坦克使用。"
+msgstr "仅适用于S系坦克。"
 
 msgid "lendLeaseOil/short_special"
 msgstr "发动机功率{colorTagOpen}提高5%{colorTagClose}"
@@ -1466,7 +1486,7 @@ msgid "qualityOil/onUse"
 msgstr "?empty?"
 
 msgid "qualityOil/restriction"
-msgstr "仅限于C系和R系坦克使用。"
+msgstr "仅适用于C系和R系坦克。"
 
 msgid "qualityOil/short_special"
 msgstr "发动机功率{colorTagOpen}提高5%{colorTagClose}"
@@ -1531,7 +1551,7 @@ msgid "ration/onUse"
 msgstr "?empty?"
 
 msgid "ration/restriction"
-msgstr "仅限于S系坦克使用。"
+msgstr "仅适用于S系坦克。"
 
 msgid "ration/short_special"
 msgstr "提高S系乘员的属性"
@@ -1552,7 +1572,7 @@ msgid "ration_china/onUse"
 msgstr "?empty?"
 
 msgid "ration_china/restriction"
-msgstr "仅限于C系坦克使用。"
+msgstr "仅适用于C系坦克。"
 
 msgid "ration_china/short_special"
 msgstr "提高C系乘员的属性"
@@ -1573,7 +1593,7 @@ msgid "ration_czech/onUse"
 msgstr "?empty?"
 
 msgid "ration_czech/restriction"
-msgstr "仅限于J系坦克使用。"
+msgstr "仅适用于J系坦克。"
 
 msgid "ration_czech/short_special"
 msgstr "提高J系乘员属性"
@@ -1594,7 +1614,7 @@ msgid "ration_italy/onUse"
 msgstr "?empty?"
 
 msgid "ration_italy/restriction"
-msgstr "仅限I系坦克使用。"
+msgstr "仅适用于I系坦克。"
 
 msgid "ration_italy/short_special"
 msgstr "提高I系乘员属性"
@@ -1615,7 +1635,7 @@ msgid "ration_japan/onUse"
 msgstr "?empty?"
 
 msgid "ration_japan/restriction"
-msgstr "仅限于R系坦克使用。"
+msgstr "仅适用于R系坦克。"
 
 msgid "ration_japan/short_special"
 msgstr "提高R系乘员的属性"
@@ -1636,7 +1656,7 @@ msgid "ration_poland/onUse"
 msgstr "?empty?"
 
 msgid "ration_poland/restriction"
-msgstr "仅限于B系坦克使用。"
+msgstr "仅适用于B系坦克。"
 
 msgid "ration_poland/short_special"
 msgstr "提高B系乘员属性"
@@ -1657,7 +1677,7 @@ msgid "ration_sweden/onUse"
 msgstr "?empty?"
 
 msgid "ration_sweden/restriction"
-msgstr "仅限V系坦克使用。"
+msgstr "仅适用于V系坦克。"
 
 msgid "ration_sweden/short_special"
 msgstr "提高V系乘员的属性"
@@ -1678,7 +1698,7 @@ msgid "ration_uk/onUse"
 msgstr "?empty?"
 
 msgid "ration_uk/restriction"
-msgstr "仅限于Y系坦克使用。"
+msgstr "仅适用于Y系坦克。"
 
 msgid "ration_uk/short_special"
 msgstr "提高Y系乘员的属性"
@@ -1709,7 +1729,7 @@ msgid "removedRpmLimiter/onUse"
 msgstr "%(vehicleEnginePower)s发动机功率，但是会损坏发动机。一场战斗中可多次使用。"
 
 msgid "removedRpmLimiter/restriction"
-msgstr "仅限于S系和C系坦克使用。"
+msgstr "仅适用于S系和C系坦克。"
 
 msgid "removedRpmLimiter/short_special"
 msgstr "{colorTagOpen}增加10%{colorTagClose}发动机功率，但是对发动机有害"

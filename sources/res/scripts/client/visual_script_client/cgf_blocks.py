@@ -28,20 +28,6 @@ class CGFMeta(Meta):
         return [ASPECT.CLIENT, ASPECT.HANGAR]
 
 
-class GetEntityGameObject(Block, CGFMeta):
-
-    def __init__(self, *args, **kwargs):
-        super(GetEntityGameObject, self).__init__(*args, **kwargs)
-        self._entity = self._makeDataInputSlot('entity', SLOT_TYPE.ENTITY)
-        self._gameObject = self._makeDataOutputSlot('gameObject', SLOT_TYPE.GAME_OBJECT, self._exec)
-
-    def _exec(self):
-        entity = self._entity.getValue()
-        gameObject = entity.entityGameObject
-        goWrapper = GameObjectWrapper(gameObject)
-        self._gameObject.setValue(weakref.proxy(goWrapper))
-
-
 class GetVehicleAppearanceGameObject(Block, CGFMeta):
 
     def __init__(self, *args, **kwargs):
@@ -134,7 +120,7 @@ class RocketAcceleratorEvents(Block, CGFMeta):
     def __deactivate(self):
         self.__switcher = None
         if self.__controllerLink:
-            controller = self.__controllerLink()
+            controller = self.__controllerLink() if self.__controllerLink else None
             if controller:
                 controller.unsubscribe(self.__onStateChange, self.__onTryActivate)
             self.__controllerLink = None

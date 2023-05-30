@@ -104,7 +104,6 @@ class BaseMarkerController(IArenaVehiclesController):
         return
 
     def showMarkersById(self, markerID, unblock=True):
-        player = BigWorld.player()
         marker = self._markers.get(markerID, None)
         if marker:
             if unblock:
@@ -113,13 +112,9 @@ class BaseMarkerController(IArenaVehiclesController):
                 return
             if marker.isEmpty():
                 return
-            conditionDistance = marker.disappearingRadius
-            if conditionDistance > 0:
-                distanceToArea = BaseMarkerController.getDistanceToArea(marker, player)
-                hide = conditionDistance < distanceToArea if marker.reverseDisappearing else conditionDistance > distanceToArea
-                if hide:
-                    marker.setVisible(False)
-                    return
+            if not self.isMarkerActuallyVisible(marker):
+                marker.setVisible(False)
+                return
             marker.setVisible(True)
         self.checkStartTimer()
         return
@@ -134,11 +129,8 @@ class BaseMarkerController(IArenaVehiclesController):
     def getMarkerById(self, markerID):
         return self._markers.get(markerID)
 
-    @staticmethod
-    def getDistanceToArea(marker, player):
-        absDistance = (marker.getMarkerPosition() - player.getOwnVehiclePosition()).length
-        distanceToArea = max(0, absDistance - marker.areaRadius)
-        return distanceToArea
+    def isMarkerActuallyVisible(self, marker):
+        return True
 
     def start(self):
         if self._gui is None:

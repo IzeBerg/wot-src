@@ -445,6 +445,8 @@ package net.wg.data.constants
       
       public static const TUTORIAL_BOOTCAMP_HINT_UI:String = "BCLobbyHintUI";
       
+      public static const PROFILE_TOTAL_PAGE:String = "ProfileTotalPage_UI";
+      
       public static const PROFILE_SUMMARY_PAGE:String = "ProfileSummaryPage_UI";
       
       public static const PROFILE_TEST:String = "ProfileTest_UI";
@@ -886,6 +888,8 @@ package net.wg.data.constants
       public static const COLOR_SETTINGS_FILTER_RENDER:String = "ColorSettingsFilterRendererUI";
       
       public static const COLOR_SETTINGS_BUTTON_RENDER:String = "ColorSettingsButtonRendererUI";
+      
+      public static const LIMITED_UI_SETTING_BLOCK:String = "LimitedUISettingBlockUI";
       
       public static const TIME_REMAINING_POSITIVE_UI_LINKAGE:String = "msgTimeRemainingPositiveUI";
       

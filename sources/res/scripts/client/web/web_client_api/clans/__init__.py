@@ -1,4 +1,4 @@
-from gui.shared.ClanCache import g_clanCache
+from gui.clans.clan_cache import g_clanCache
 from messenger.proto.shared_find_criteria import MutualFriendsFindCriteria
 from web.web_client_api import w2capi, w2c, W2CSchema
 from web.web_client_api.social import getStatuses

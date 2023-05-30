@@ -236,11 +236,6 @@ class AS3_AppFactory(IAppFactory):
             self.__importer = None
         return
 
-    def goToIntroVideo(self, appNS):
-        if appNS != _SPACE.SF_LOBBY:
-            return
-        g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.INTRO_VIDEO)), EVENT_BUS_SCOPE.LOBBY)
-
     def goToLogin(self, appNS):
         if appNS != _SPACE.SF_LOBBY:
             return
@@ -303,7 +298,7 @@ class AS3_AppFactory(IAppFactory):
     def getMainWindow(cls):
         windows = cls.__gui.windowsManager.findWindows(lambda w: w.typeFlag == WindowFlags.MAIN_WINDOW)
         if not windows:
-            _logger.error('The main window does not exist')
+            _logger.error('The mian window does not exist')
             return None
         else:
             return windows[0]

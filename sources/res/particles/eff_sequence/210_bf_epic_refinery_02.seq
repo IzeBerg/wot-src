@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>15.000001</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>huge_smoke</name>
+		<type>particle</type>
+		<resource>particles/environment/interior/210_bf_epic_pipe_flame_02.eff</resource>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>10.000000 0.000000 -15.000000</value>
+				<inTangent>-0.714286 0.000000 2.142857</inTangent>
+				<outTangent>-0.714286 0.000000 2.142857</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.000000</startTime>
+				<value>5.000000 0.000000 0.000000</value>
+				<inTangent>-0.044643 0.000000 0.133929</inTangent>
+				<outTangent>-0.044643 0.000000 0.133929</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>15.000001</startTime>
+				<value>10.000000 0.000000 -15.000000</value>
+				<inTangent>0.625000 -0.000000 -1.875000</inTangent>
+				<outTangent>0.625000 -0.000000 -1.875000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

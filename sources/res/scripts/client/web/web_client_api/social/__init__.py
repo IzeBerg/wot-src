@@ -1,5 +1,5 @@
 import BigWorld
-from gui.shared.ClanCache import g_clanCache
+from gui.clans.clan_cache import g_clanCache
 from gui.shared.view_helpers import UsersInfoHelper
 from helpers import isPlayerAccount
 from messenger.m_constants import USER_TAG
