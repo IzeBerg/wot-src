@@ -62,7 +62,7 @@ class BattleRoyaleRentVehiclesController(IBattleRoyaleRentVehiclesController):
 
     def __init__(self):
         super(BattleRoyaleRentVehiclesController, self).__init__()
-        self.__balance = DynamicMoney()
+        self.__balance = None
         self.__economics = None
         self.__rentWatcher = None
         self.__rentWatchCallbackId = None
@@ -73,6 +73,9 @@ class BattleRoyaleRentVehiclesController(IBattleRoyaleRentVehiclesController):
         self.onRentInfoUpdated = Event(self._eManager)
         self.onUpdated = Event(self._eManager)
         return
+
+    def init(self):
+        self.__balance = DynamicMoney()
 
     def fini(self):
         self._eManager.clear()
@@ -87,6 +90,9 @@ class BattleRoyaleRentVehiclesController(IBattleRoyaleRentVehiclesController):
 
     def onAvatarBecomePlayer(self):
         self.__removeEventHandlers()
+
+    def onAccountBecomePlayer(self):
+        self.init()
 
     def onAccountBecomeNonPlayer(self):
         self.__clear()

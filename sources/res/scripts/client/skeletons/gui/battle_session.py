@@ -281,6 +281,9 @@ class IClientArenaVisitor(object):
     def getVisibilityMinRadius(self):
         raise NotImplementedError
 
+    def getVehicleCircularAoiRadius(self):
+        raise NotImplementedError
+
     def getArenaSubscription(self):
         raise NotImplementedError
 

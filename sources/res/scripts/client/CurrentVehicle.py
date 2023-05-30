@@ -146,6 +146,8 @@ class _CurrentVehicle(_CachedVehicle):
         super(_CurrentVehicle, self).destroy()
         self.__vehInvID = 0
         self.hangarSpace.removeVehicle()
+        if self.hangarSpace.spaceInited and not self.hangarSpace.space.getVehicleEntity():
+            self.hangarSpace.resetLastUpdatedVehicle()
         self.selectNoVehicle()
 
     def onIgrTypeChanged(self, *args):
@@ -322,7 +324,7 @@ class _CurrentVehicle(_CachedVehicle):
         vehicle = self.itemsCache.items.getVehicle(vehInvID)
         vehicle = vehicle if self.__isVehicleSuitable(vehicle) else None
         if vehicle is None:
-            vehiclesCriteria = REQ_CRITERIA.INVENTORY | ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE | ~REQ_CRITERIA.VEHICLE.HIDDEN_IN_HANGAR | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP
+            vehiclesCriteria = REQ_CRITERIA.INVENTORY | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP | ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
             invVehs = self.itemsCache.items.getVehicles(criteria=vehiclesCriteria)
 
             def notEvent(x, y):
@@ -430,7 +432,7 @@ class _CurrentVehicle(_CachedVehicle):
         if vehicle is None:
             return False
         else:
-            return not REQ_CRITERIA.VEHICLE.HIDDEN_IN_HANGAR(vehicle) and (not REQ_CRITERIA.VEHICLE.BATTLE_ROYALE(vehicle) or self.battleRoyaleController.isBattleRoyaleMode())
+            return not REQ_CRITERIA.VEHICLE.BATTLE_ROYALE(vehicle) or self.battleRoyaleController.isBattleRoyaleMode()
 
     def __checkPrebattleLockedVehicle(self):
         from gui.prb_control import prb_getters

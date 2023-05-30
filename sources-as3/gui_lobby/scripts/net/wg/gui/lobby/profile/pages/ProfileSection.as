@@ -3,6 +3,7 @@ package net.wg.gui.lobby.profile.pages
    import flash.display.InteractiveObject;
    import flash.events.Event;
    import flash.geom.Point;
+   import flash.text.TextField;
    import net.wg.gui.lobby.components.IResizableContent;
    import net.wg.gui.lobby.profile.components.BattlesTypeDropdown;
    import net.wg.gui.lobby.profile.components.ResizableInvalidationTypes;
@@ -16,7 +17,11 @@ package net.wg.gui.lobby.profile.pages
       private static const DOSSIER_DATA_INVALID:String = "ddInvalid";
       
       private static const ANIMATION_INVALID:String = "animInv";
+      
+      private static const TOP_OFFSET:Number = -100;
        
+      
+      public var title:TextField = null;
       
       public var layoutManager:SectionLayoutManager = null;
       
@@ -32,7 +37,11 @@ package net.wg.gui.lobby.profile.pages
       
       private var _centerOffset:int = 0;
       
+      private var _windowOffset:int = 0;
+      
       private var _isActive:Boolean = false;
+      
+      private var _isWindowed:Boolean = false;
       
       private var _isDataInitialized:Boolean = false;
       
@@ -133,7 +142,7 @@ package net.wg.gui.lobby.profile.pages
             this.currentDimension = new Point();
          }
          this.currentDimension.x = param1;
-         this.currentDimension.y = param2;
+         this.currentDimension.y = param2 + TOP_OFFSET;
          invalidate(ResizableInvalidationTypes.CURRENT_DIMENSION_INVALID);
       }
       
@@ -148,6 +157,10 @@ package net.wg.gui.lobby.profile.pages
             this.layoutManager.setDimension(this.currentDimension.x,this.currentDimension.y);
          }
          this.x = (this.currentDimension.x >> 1) - this._centerOffset;
+         if(this.isWindowed)
+         {
+            this.y = this.windowOffset;
+         }
       }
       
       protected function applyData(param1:Object) : void
@@ -200,6 +213,30 @@ package net.wg.gui.lobby.profile.pages
       private function onDropDownChangeHandler(param1:Event) : void
       {
          requestDossierS(this.battlesDropdown.selectedItem);
+      }
+      
+      public function get isWindowed() : Boolean
+      {
+         return this._isWindowed;
+      }
+      
+      public function set isWindowed(param1:Boolean) : void
+      {
+         this._isWindowed = param1;
+      }
+      
+      public function get windowOffset() : int
+      {
+         return this._windowOffset;
+      }
+      
+      public function set windowOffset(param1:int) : void
+      {
+         this._windowOffset = param1;
+         if(this.isWindowed)
+         {
+            this.y = this.windowOffset;
+         }
       }
    }
 }

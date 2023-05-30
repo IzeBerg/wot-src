@@ -9,3 +9,7 @@ class EpicFullStatsMeta(StatsBase):
     def as_setIsInteractiveS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setIsInteractive(value)
+
+    def as_setGeneralBonusS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setGeneralBonus(value)

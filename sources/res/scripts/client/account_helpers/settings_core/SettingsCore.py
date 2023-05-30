@@ -104,7 +104,7 @@ class SettingsCore(ISettingsCore):
            'contour': CONTOUR_SETTINGS_STORAGE}
         self.isDeviseRecreated = False
         self.isChangesConfirmed = True
-        graphicSettings = tuple((settingName, options.GraphicSetting(settingName, settingName == GRAPHICS.COLOR_GRADING_TECHNIQUE)) for settingName in BigWorld.generateGfxSettings())
+        graphicSettings = tuple((settingName, options.GraphicSetting(settingName)) for settingName in BigWorld.generateGfxSettings() if settingName != GRAPHICS.COLOR_GRADING_TECHNIQUE)
         self.__options = options.SettingsContainer(graphicSettings + (
          (
           GAME.REPLAY_ENABLED,
@@ -341,6 +341,8 @@ class SettingsCore(ISettingsCore):
           GRAPHICS.GAMMA_SETTING, options.ReadOnlySetting(lambda : SETTINGS.GAMMABTN_LABEL)),
          (
           GRAPHICS.NATIVE_RESOLUTION, options.ReadOnlySetting(graphics.getNativeResolutionIndex)),
+         (
+          GRAPHICS.COLOR_GRADING_TECHNIQUE, options.ColorGradingSetting(GRAPHICS.COLOR_GRADING_TECHNIQUE, True)),
          (
           GRAPHICS.BRIGHTNESS_CORRECTION, options.BrightnessCorrectionSetting(True)),
          (

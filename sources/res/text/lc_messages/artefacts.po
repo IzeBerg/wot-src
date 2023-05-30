@@ -10,6 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "#PluralForms"
+msgstr ""
+"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2);"
+
 msgid "actionStub/name"
 msgstr "Modification"
 
@@ -364,6 +369,21 @@ msgstr ""
 "Deploys an active minefield in the selected area for a certain period of "
 "time. Enemies can destroy your mines by shooting them."
 
+msgid "br_respawn/name"
+msgstr "Respawn"
+
+msgid "br_respawn/platoon/descr"
+msgstr ""
+"Allows you to get back to battle after your vehicle is destroyed. This mechanic works within the first %(duration)s min of a battle.\n"
+"\n"
+"To respawn an ally, stay out of combat for %(timeToResurrect)s s. Respawn charges are shared between Platoon members."
+
+msgid "br_respawn/solo/descr"
+msgstr ""
+"Allows you to get back to battle after your vehicle has been destroyed. This mechanic works within the first %(duration)s min of a battle.\n"
+"\n"
+"Once destroyed, your vehicle respawns automatically."
+
 msgid "br_smoke/descr"
 msgstr ""
 "Adds a concealment bonus to all vehicles within range of the consumable."
@@ -481,7 +501,7 @@ msgid "chocolate/onUse"
 msgstr "?empty?"
 
 msgid "chocolate/restriction"
-msgstr "Restricted: German vehicles."
+msgstr "Only suitable for German vehicles."
 
 msgid "chocolate/short_special"
 msgstr "Improves the performance of German crews"
@@ -570,7 +590,7 @@ msgid "cocacola/onUse"
 msgstr "?empty?"
 
 msgid "cocacola/restriction"
-msgstr "Restricted: American vehicles."
+msgstr "Only suitable for American vehicles."
 
 msgid "cocacola/short_special"
 msgstr "Improves the performance of American crews"
@@ -1071,7 +1091,7 @@ msgid "fireFightingBattleBooster/action/boost"
 msgstr "Additional 50% to the Firefighting perk"
 
 msgid "fireFightingBattleBooster/action/perk"
-msgstr "Gives the Firefighting perk trained to 100% to the Radio Operator"
+msgstr "Gives the Firefighting perk trained to 100%"
 
 msgid "fireFightingBattleBooster/long_special"
 msgstr ""
@@ -1268,7 +1288,7 @@ msgid "hotCoffee/onUse"
 msgstr "?empty?"
 
 msgid "hotCoffee/restriction"
-msgstr "Restricted: French vehicles."
+msgstr "Only suitable for French vehicles."
 
 msgid "hotCoffee/short_special"
 msgstr "Improves the performance of French crews"
@@ -1613,7 +1633,7 @@ msgid "lendLeaseOil/onUse"
 msgstr "?empty?"
 
 msgid "lendLeaseOil/restriction"
-msgstr "Restricted: Soviet vehicles."
+msgstr "Only suitable for Soviet vehicles."
 
 msgid "lendLeaseOil/short_special"
 msgstr "{colorTagOpen}+5%{colorTagClose} to engine power"
@@ -1802,7 +1822,7 @@ msgid "qualityOil/onUse"
 msgstr "?empty?"
 
 msgid "qualityOil/restriction"
-msgstr "Restricted: Chinese and Japanese vehicles."
+msgstr "Only suitable for Chinese and Japanese vehicles."
 
 msgid "qualityOil/short_special"
 msgstr "{colorTagOpen}+5%{colorTagClose} to engine power"
@@ -1882,7 +1902,7 @@ msgid "ration/onUse"
 msgstr "?empty?"
 
 msgid "ration/restriction"
-msgstr "Restricted: Soviet vehicles."
+msgstr "Only suitable for Soviet vehicles."
 
 msgid "ration/short_special"
 msgstr "Improves the performance of Soviet crews"
@@ -1905,7 +1925,7 @@ msgid "ration_china/onUse"
 msgstr "?empty?"
 
 msgid "ration_china/restriction"
-msgstr "Restricted: Chinese vehicles."
+msgstr "Only suitable for Chinese vehicles."
 
 msgid "ration_china/short_special"
 msgstr "Improves the performance of Chinese crews"
@@ -1928,7 +1948,7 @@ msgid "ration_czech/onUse"
 msgstr "?empty?"
 
 msgid "ration_czech/restriction"
-msgstr "Restricted: Czechoslovakian vehicles."
+msgstr "Only suitable for Czechoslovakian vehicles."
 
 msgid "ration_czech/short_special"
 msgstr "Improves the performance of Czechoslovakian crews"
@@ -1951,7 +1971,7 @@ msgid "ration_italy/onUse"
 msgstr "?empty?"
 
 msgid "ration_italy/restriction"
-msgstr "Restricted: Italian vehicles."
+msgstr "Only suitable for Italian vehicles."
 
 msgid "ration_italy/short_special"
 msgstr "Improves the performance of Italian crews"
@@ -1974,7 +1994,7 @@ msgid "ration_japan/onUse"
 msgstr "?empty?"
 
 msgid "ration_japan/restriction"
-msgstr "Restricted: Japanese vehicles."
+msgstr "Only suitable for Japanese vehicles."
 
 msgid "ration_japan/short_special"
 msgstr "Improves the performance of Japanese crews"
@@ -1997,7 +2017,7 @@ msgid "ration_poland/onUse"
 msgstr "?empty?"
 
 msgid "ration_poland/restriction"
-msgstr "Restricted: Polish vehicles."
+msgstr "Only suitable for Polish vehicles."
 
 msgid "ration_poland/short_special"
 msgstr "Improves the performance of Polish crews"
@@ -2020,7 +2040,7 @@ msgid "ration_sweden/onUse"
 msgstr "?empty?"
 
 msgid "ration_sweden/restriction"
-msgstr "Restricted: Swedish vehicles."
+msgstr "Only suitable for Swedish vehicles."
 
 msgid "ration_sweden/short_special"
 msgstr "Improves the performance of Swedish crews"
@@ -2043,7 +2063,7 @@ msgid "ration_uk/onUse"
 msgstr "?empty?"
 
 msgid "ration_uk/restriction"
-msgstr "Restricted: British vehicles."
+msgstr "Only suitable for British vehicles."
 
 msgid "ration_uk/short_special"
 msgstr "Improves the performance of British crews"
@@ -2082,7 +2102,7 @@ msgstr ""
 "multiple times in a battle."
 
 msgid "removedRpmLimiter/restriction"
-msgstr "Restricted: Soviet and Chinese vehicles."
+msgstr "Only suitable for Soviet and Chinese vehicles."
 
 msgid "removedRpmLimiter/short_special"
 msgstr ""

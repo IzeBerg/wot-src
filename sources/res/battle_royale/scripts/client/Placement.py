@@ -22,7 +22,7 @@ class _AirDropCmpHandler(IPlacementHandler):
     def _getAirdropCmp(self):
         cmpSystem = self.__guiSessionProvider.arenaVisitor.getComponentSystem()
         if cmpSystem:
-            return getattr(cmpSystem, self.__CMP_NAME, None)
+            return getattr(cmpSystem, self.__CMP_NAME)
         else:
             LOG_ERROR(("Couldn't find {}!").format(self.__CMP_NAME))
             return
@@ -31,8 +31,7 @@ class _AirDropCmpHandler(IPlacementHandler):
 class _AirdropLootHandler(_AirDropCmpHandler):
 
     def onCreated(self, placement):
-        event = AirDropEvent(AirDropEvent.AIR_DROP_SPAWNED, ctx={'id': placement.id, 'position': placement.position, 
-           'dropTime': placement.dropTime})
+        event = AirDropEvent(AirDropEvent.AIR_DROP_SPAWNED, ctx={'id': placement.id, 'position': placement.position})
         g_eventBus.handleEvent(event, scope=EVENT_BUS_SCOPE.BATTLE)
         acmp = self._getAirdropCmp()
         if acmp:

@@ -182,6 +182,33 @@ class PoIBlockedNotInvaderSN(PointOfInterestSN):
         return backport.text(R.strings.points_of_interest.statusNotifications.blocked.notInvader(), poiName=self._getPoiName(value))
 
 
+class PoIBlockedOverturnedSN(PointOfInterestSN):
+
+    def getItemID(self):
+        return VEHICLE_VIEW_STATE.POINT_OF_INTEREST_VEHICLE_STATE
+
+    def getViewTypeID(self):
+        return BATTLE_NOTIFICATIONS_TIMER_TYPES.POI_BLOCKED_OVERTURNED
+
+    def _getTimeParams(self, value):
+        return (0, 0)
+
+    def getIconNames(self, value=None):
+        poiType = self._getPoiType(value)
+        if poiType == PoiType.ARTILLERY:
+            return (_LINKS.POI_ORANGE_ARTILLERY_ICON, _LINKS.POI_ORANGE_ARTILLERY_SMALL_ICON)
+        if poiType == PoiType.RECON:
+            return (_LINKS.POI_ORANGE_RECON_ICON, _LINKS.POI_ORANGE_RECON_SMALL_ICON)
+        return (
+         self.NOT_CHANGE_DEFAULT_ICON, self.NOT_CHANGE_DEFAULT_ICON)
+
+    def _isActive(self, value):
+        return any(reason for reason in value.blockReasons if reason.statusID is PoiBlockReasons.OVERTURNED)
+
+    def _getTitle(self, value):
+        return backport.text(R.strings.points_of_interest.statusNotifications.blocked.overturned(), poiName=self._getPoiName(value))
+
+
 class PoiNotificationsGroup(StatusNotificationsGroup):
 
     def __init__(self, updateCallback):
@@ -190,4 +217,5 @@ class PoiNotificationsGroup(StatusNotificationsGroup):
          PoIBlockedNotUsedAbilitySN,
          PoICapturingInterruptedSN,
          PoIBlockedNotInvaderSN,
-         PoICapturingSN), updateCallback)
+         PoICapturingSN,
+         PoIBlockedOverturnedSN), updateCallback)

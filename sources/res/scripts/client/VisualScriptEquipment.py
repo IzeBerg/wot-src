@@ -6,18 +6,14 @@ from items import vehicles
 from skeletons.gui.battle_session import IBattleSessionProvider
 from visual_script.misc import ASPECT
 from visual_script_client.contexts.ability_context import AbilityContextClient
-from script_component.DynamicScriptComponent import DynamicScriptComponent
 
-class VisualScriptEquipment(DynamicScriptComponent):
+class VisualScriptEquipment(BigWorld.DynamicScriptComponent):
     __sessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     def __init__(self):
         super(VisualScriptEquipment, self).__init__()
         self._vsPlan = None
         self._context = None
-        return
-
-    def _onAvatarReady(self):
         player = BigWorld.player()
         descriptor = vehicles.getItemByCompactDescr(self.compactDescr)
         arenaInfo = player.arena.arenaInfo
@@ -27,6 +23,7 @@ class VisualScriptEquipment(DynamicScriptComponent):
         self._vsPlan.start()
         self.set_errorState()
         self.set_equipmentState()
+        return
 
     def canActivate(self):
         self._context.canActive()

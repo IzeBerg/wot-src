@@ -7,27 +7,8 @@
 			<UUID>d7019cf5-9555-4595-8cbe-52c688f5ddcc</UUID>
 			<flags>0</flags>
 		</GameObject>
-		<GameObject>
-			<name>Gun</name>
-			<UUID>98fbd53f-2863-469c-9a5b-23979f8441d9</UUID>
-			<flags>0</flags>
-		</GameObject>
 	</GameObjects>
 	<components>
-		<ComponentPool>
-			<type>Hierarchy</type>
-			<version>2</version>
-			<component>
-				<objectIndex>1</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>Parent</name>
-						<link>d7019cf5-9555-4595-8cbe-52c688f5ddcc</link>
-					</property>
-				</config>
-			</component>
-		</ComponentPool>
 		<ComponentPool>
 			<type>Transform</type>
 			<version>1</version>
@@ -49,30 +30,12 @@
 					</property>
 				</config>
 			</component>
-			<component>
-				<objectIndex>1</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>Position</name>
-						<value>0 0 0</value>
-					</property>
-					<property>
-						<name>Scale</name>
-						<value>1 1 1</value>
-					</property>
-					<property>
-						<name>Rotation</name>
-						<value>-0 0 0</value>
-					</property>
-				</config>
-			</component>
 		</ComponentPool>
 		<ComponentPool>
 			<type>EngineStateAnimatorTriggerComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<objectIndex>0</objectIndex>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -81,7 +44,7 @@
 					</property>
 					<property>
 						<name>stoppedTrigger</name>
-						<value>stop</value>
+						<value>idle</value>
 					</property>
 					<property>
 						<name>idleTrigger</name>
@@ -122,7 +85,7 @@
 			<type>ShotsAnimatorTriggerComponent</type>
 			<version>1</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<objectIndex>0</objectIndex>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -150,25 +113,7 @@
 					<property>
 						<name>Model name</name>
 						<isAsset>true</isAsset>
-						<value>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/normal/lod0/Hull.model</value>
-					</property>
-				</config>
-			</component>
-		</ComponentPool>
-		<ComponentPool>
-			<type>NodeFollower</type>
-			<version>1</version>
-			<component>
-				<objectIndex>1</objectIndex>
-				<flags>3</flags>
-				<config>
-					<property>
-						<name>NodeName</name>
-						<value>HP_feathers</value>
-					</property>
-					<property>
-						<name>modelLink</name>
-						<link>d7019cf5-9555-4595-8cbe-52c688f5ddcc</link>
+						<value>vehicles/chinese/Ch25_121_mod_1971B/_skins/Ch25_121_mod_1971B_MC_3DSt/normal/lod0/Chassis.model</value>
 					</property>
 				</config>
 			</component>
@@ -177,7 +122,7 @@
 			<type>Animator</type>
 			<version>2</version>
 			<component>
-				<objectIndex>1</objectIndex>
+				<objectIndex>0</objectIndex>
 				<flags>3</flags>
 				<config>
 					<property>
@@ -221,7 +166,7 @@
 									</property>
 									<property>
 										<name>LayerName</name>
-										<value>idle</value>
+										<value>feathers_animation</value>
 									</property>
 									<property>
 										<name>Weight</name>

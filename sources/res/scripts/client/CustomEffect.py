@@ -163,7 +163,7 @@ class DiscreteSelectorDesc(SelectorDesc):
         self._selectors = newSelectors
 
     def getActiveEffects(self, effects, args):
-        keyValue = args.get(self._variable, None)
+        keyValue = args[self._variable]
         if keyValue is None:
             return
         else:

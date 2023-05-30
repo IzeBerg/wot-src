@@ -167,7 +167,3 @@ class CombatSelectedArea(object):
     def enableWaterCollision(self, isEnabled):
         if self.__terrainSelectedArea:
             self.__terrainSelectedArea.enableWaterCollision(isEnabled)
-
-    def setMaxHeight(self, height):
-        if self.__terrainSelectedArea:
-            self.__terrainSelectedArea.setMaxHeight(height)

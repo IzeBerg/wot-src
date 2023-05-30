@@ -24,6 +24,7 @@ from renewable_subscription_common.settings_constants import GOLD_RESERVE_GAINS_
 from shared_utils import makeTupleByDict, updateDict, findFirst
 from telecom_rentals_common import TELECOM_RENTALS_CONFIG
 from trade_in_common.constants_types import CONFIG_NAME as TRADE_IN_CONFIG_NAME
+from achievements20.Achievements20GeneralConfig import Achievements20GeneralConfig
 if typing.TYPE_CHECKING:
     from typing import Callable, Dict, List, Sequence
 _logger = logging.getLogger(__name__)
@@ -123,6 +124,9 @@ class _FileServerSettings(object):
 
     def getOffersRootUrl(self):
         return self.__getUrl('offers')
+
+    def getGameLoadingConfigUrl(self):
+        return self.__getUrl('game_loading_config')
 
     def __getUrl(self, urlKey, *args):
         try:
@@ -395,12 +399,13 @@ class _EpicMetaGameConfig(namedtuple('_EpicMetaGameConfig', ['maxCombatReserveLe
 _EpicMetaGameConfig.__new__.__defaults__ = (
  0, (0, False), (0, 0, 0), {}, {}, {}, {}, 0)
 
-class EpicGameConfig(namedtuple('EpicGameConfig', ('isEnabled', 'validVehicleLevels', 'battlePassDataEnabled', 'seasons', 'cycleTimes',
- 'unlockableInBattleVehLevels', 'peripheryIDs', 'primeTimes', 'rentVehicles'))):
+class EpicGameConfig(namedtuple('EpicGameConfig', ('isEnabled', 'validVehicleLevels', 'battlePassDataEnabled', 'levelsToUpgrateAllReserves',
+ 'seasons', 'cycleTimes', 'unlockableInBattleVehLevels', 'inBattleModifiers', 'peripheryIDs',
+ 'primeTimes', 'rentVehicles', 'tooltips'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, validVehicleLevels=[], battlePassDataEnabled=True, unlockableInBattleVehLevels=[], seasons={}, cycleTimes=(), peripheryIDs={}, primeTimes={}, rentVehicles=[])
+        defaults = dict(isEnabled=False, validVehicleLevels=[], battlePassDataEnabled=True, levelsToUpgrateAllReserves=[], unlockableInBattleVehLevels=[], inBattleModifiers={}, seasons={}, cycleTimes=(), peripheryIDs={}, primeTimes={}, rentVehicles=[], tooltips={})
         defaults.update(kwargs)
         return super(EpicGameConfig, cls).__new__(cls, **defaults)
 
@@ -492,11 +497,11 @@ class _SquadPremiumBonus(namedtuple('_SquadPremiumBonus', ('isEnabled', 'ownCred
 class BattleRoyaleConfig(namedtuple('BattleRoyaleConfig', ('isEnabled', 'peripheryIDs', 'unburnableTitles',
  'eventProgression', 'primeTimes', 'seasons', 'cycleTimes',
  'maps', 'battleXP', 'coneVisibility', 'loot', 'defaultAmmo',
- 'vehiclesSlotsConfig', 'economics', 'url'))):
+ 'vehiclesSlotsConfig', 'economics', 'url', 'respawns'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, peripheryIDs={}, eventProgression={}, unburnableTitles=(), primeTimes={}, seasons={}, cycleTimes={}, maps=(), battleXP={}, coneVisibility={}, loot={}, defaultAmmo={}, vehiclesSlotsConfig={}, economics={}, url='')
+        defaults = dict(isEnabled=False, peripheryIDs={}, eventProgression={}, unburnableTitles=(), primeTimes={}, seasons={}, cycleTimes={}, maps=(), battleXP={}, coneVisibility={}, loot={}, defaultAmmo={}, vehiclesSlotsConfig={}, economics={}, url='', respawns={})
         defaults.update(kwargs)
         return super(BattleRoyaleConfig, cls).__new__(cls, **defaults)
 
@@ -1144,6 +1149,30 @@ class _EventLootBoxesConfig(object):
          self.__startDateInUTC, self.__finishDateInUTC)
 
 
+class _LimitedUIConfig(namedtuple('_LimitedUIConfig', ('enabled', 'rules', 'version'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(enabled=False, rules=[], version=0)
+        defaults.update(kwargs)
+        return super(_LimitedUIConfig, cls).__new__(cls, **defaults)
+
+    def hasRules(self):
+        return bool(self.rules)
+
+    def asDict(self):
+        return self._asdict()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+
 class ServerSettings(object):
 
     def __init__(self, serverSettings):
@@ -1190,6 +1219,7 @@ class ServerSettings(object):
         self.__eventLootBoxesConfig = _EventLootBoxesConfig()
         self.__collectionsConfig = CollectionsConfig()
         self.__winbackConfig = WinbackConfig()
+        self.__limitedUIConfig = _LimitedUIConfig()
         self.set(serverSettings)
 
     def set(self, serverSettings):
@@ -1327,6 +1357,10 @@ class ServerSettings(object):
             self.__winbackConfig = makeTupleByDict(WinbackConfig, self.__serverSettings[Configs.WINBACK_CONFIG.value])
         else:
             self.__winbackConfig = WinbackConfig.defaults()
+        if Configs.LIMITED_UI_CONFIG.value in self.__serverSettings:
+            self.__limitedUIConfig = makeTupleByDict(_LimitedUIConfig, self.__serverSettings[Configs.LIMITED_UI_CONFIG.value])
+        else:
+            self.__limitedUIConfig = _LimitedUIConfig.defaults()
         self.onServerSettingsChange(serverSettings)
 
     def update(self, serverSettingsDiff):
@@ -1430,6 +1464,7 @@ class ServerSettings(object):
         self.__updateEventLootBoxesConfig(serverSettingsDiff)
         if Configs.COLLECTIONS_CONFIG.value in serverSettingsDiff:
             self.__updateCollectionsConfig(serverSettingsDiff)
+        self.__updateLimitedUIConfig(serverSettingsDiff)
         self.onServerSettingsChange(serverSettingsDiff)
 
     def clear(self):
@@ -1585,6 +1620,10 @@ class ServerSettings(object):
     @property
     def winbackConfig(self):
         return self.__winbackConfig
+
+    @property
+    def limitedUIConfig(self):
+        return self.__limitedUIConfig
 
     def isEpicBattleEnabled(self):
         return self.epicBattles.isEnabled
@@ -1926,6 +1965,9 @@ class ServerSettings(object):
     def getEventLootBoxesConfig(self):
         return self.__eventLootBoxesConfig
 
+    def getAchievements20GeneralConfig(self):
+        return Achievements20GeneralConfig(self.__getGlobalSetting(Configs.ACHIEVEMENTS20_CONFIG.value, {}))
+
     def __getGlobalSetting(self, settingsName, default=None):
         return self.__serverSettings.get(settingsName, default)
 
@@ -2061,6 +2103,10 @@ class ServerSettings(object):
 
     def __updateWinbackConfig(self, diff):
         self.__winbackConfig = self.__winbackConfig.replace(diff[Configs.WINBACK_CONFIG.value])
+
+    def __updateLimitedUIConfig(self, serverSettingsDiff):
+        if Configs.LIMITED_UI_CONFIG.value in serverSettingsDiff:
+            self.__limitedUIConfig = self.__limitedUIConfig.replace(serverSettingsDiff[Configs.LIMITED_UI_CONFIG.value])
 
 
 def serverSettingsChangeListener(*configKeys):

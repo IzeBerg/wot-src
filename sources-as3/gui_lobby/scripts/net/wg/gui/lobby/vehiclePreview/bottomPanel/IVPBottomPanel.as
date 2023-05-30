@@ -12,5 +12,7 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
       function getTotalHeight() : Number;
       
       function getOffsetY() : int;
+      
+      function getSmallScreenOffsetY() : int;
    }
 }

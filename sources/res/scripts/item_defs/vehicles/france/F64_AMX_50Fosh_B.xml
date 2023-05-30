@@ -133,6 +133,13 @@
 			<undamaged>vehicles/french/F64_AMX_50Fosh_155/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/french/F64_AMX_50Fosh_155/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/french/F64_AMX_50Fosh_155/crash/lod0/Hull.model</exploded>
+			<sets>
+				<F64_AMX_50Fosh_B_BXI_3DSt>
+					<undamaged>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/crash/lod0/Hull.model</exploded>
+				</F64_AMX_50Fosh_B_BXI_3DSt>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -171,23 +178,19 @@
 			<slot>
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
-				<rayStart>
-					0.956516 0.768805 1.82196
-					<!--BW_String-->
-				</rayStart>
+				<rayStart>1.264061 0.576638 2.155546</rayStart>
 				<rayEnd>
-					0.960751 0.606947 1.70455
+					1.268296 0.41478 2.038137
 					<!--BW_String-->
 				</rayEnd>
 				<rayUp>
-					0.000000 0.000000 -1
+					-0.015355 0.58684 -0.809557
 					<!--BW_String-->
 				</rayUp>
 				<size>
 					0.32
 					<!--BW_String-->
 				</size>
-				<hideIfDamaged>false</hideIfDamaged>
 				<isUVProportional>true</isUVProportional>
 			</slot>
 			<slot>
@@ -2177,6 +2180,149 @@
 				<clipAngle>0.397583</clipAngle>
 				<anchorShift>0.721811</anchorShift>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15084</slotId>
+				<compatibleModels>F64_AMX_50Fosh_B_BXI_3DSt</compatibleModels>
+				<position>
+					-0.822649 1.49523 2.05231
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.619751 0.000010 3.14157
+					<!--BW_String-->
+				</rotation>
+				<tags>formfactor_square</tags>
+				<scale>0.518871 0.158306 0.518871</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.707357</clipAngle>
+				<anchorShift>0.097913</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15085</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>F64_AMX_50Fosh_B_BXI_3DSt</compatibleModels>
+				<position>
+					-1.52058 1.80872 0.875539
+					<!--BW_String-->
+				</position>
+				<rotation>
+					1.81462 1.55195 -0.0087347
+					<!--BW_String-->
+				</rotation>
+				<scale>0.568963 0.524153 0.568963</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.553895</clipAngle>
+				<anchorShift>0.041507</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15086</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>F64_AMX_50Fosh_B_BXI_3DSt</compatibleModels>
+				<position>
+					1.49966 1.78147 -0.119905
+					<!--BW_String-->
+				</position>
+				<rotation>
+					1.8146 -1.55195 -0.00872779
+					<!--BW_String-->
+				</rotation>
+				<scale>0.453515 0.417797 0.453515</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.553895</clipAngle>
+				<anchorShift>0.061507</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15087</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>F64_AMX_50Fosh_B_BXI_3DSt</compatibleModels>
+				<position>
+					-0.247117 2.2762 0.770631
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.000003 0.000000 3.14158
+					<!--BW_String-->
+				</rotation>
+				<scale>0.393937 0.274825 0.393937</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>
+					1.27825
+					<!--BW_String-->
+				</clipAngle>
+				<anchorShift>0.033557</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15088</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>F64_AMX_50Fosh_B_BXI_3DSt</compatibleModels>
+				<position>
+					-1.81547 1.04609 1.00905
+					<!--BW_String-->
+				</position>
+				<rotation>
+					1.61036 1.56907 -0.000002
+					<!--BW_String-->
+				</rotation>
+				<scale>0.443007 0.408116 0.443007</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.553895</clipAngle>
+				<anchorShift>0.031507</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15089</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>F64_AMX_50Fosh_B_BXI_3DSt</compatibleModels>
+				<position>
+					1.81548 1.04606 1.00905
+					<!--BW_String-->
+				</position>
+				<rotation>
+					1.61034 -1.56905 -0.000004
+					<!--BW_String-->
+				</rotation>
+				<scale>0.443007 0.408116 0.443007</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.553895</clipAngle>
+				<anchorShift>0.031507</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15090</slotId>
+				<position>
+					0.869881 2.02922 -4.30424
+					<!--BW_String-->
+				</position>
+				<rotation>
+					1.71054 -0.000063 -0.000063
+					<!--BW_String-->
+				</rotation>
+				<tags>formfactor_square</tags>
+				<compatibleModels>F64_AMX_50Fosh_B_BXI_3DSt</compatibleModels>
+				<scale>0.418241 0.159293 0.418242</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.000000</clipAngle>
+				<anchorShift>0.033557</anchorShift>
+			</slot>
+			<slot>
+				<slotType>attachment</slotType>
+				<slotId>18000</slotId>
+				<compatibleModels>F64_AMX_50Fosh_B_BXI_3DSt</compatibleModels>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -2236,13 +2382,20 @@
 				<undamaged>vehicles/french/F64_AMX_50Fosh_155/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/french/F64_AMX_50Fosh_155/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/french/F64_AMX_50Fosh_155/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<F64_AMX_50Fosh_B_BXI_3DSt>
+						<undamaged>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/crash/lod0/Chassis.model</exploded>
+					</F64_AMX_50Fosh_B_BXI_3DSt>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>FAR</lodDist>
 				<bufferPrefs>mediumTank</bufferPrefs>
 				<textureSet>germany_01</textureSet>
 				<size>
-					0.44 0.74
+					0.44 0.93
 					<!--BW_String-->
 				</size>
 			</traces>
@@ -2268,7 +2421,10 @@
 							<wheelGroups>
 								<wheelGroup>
 									<wheelName>WD_L2</wheelName>
-									<groupRadius>0.377529</groupRadius>
+									<groupRadius>
+										0.38753
+										<!--BW_String-->
+									</groupRadius>
 									<groupInnerOffset>0.469842</groupInnerOffset>
 									<groupOuterOffset>-0.369842</groupOuterOffset>
 								</wheelGroup>
@@ -2304,10 +2460,10 @@
 							</wheelGroups>
 							<hullCollider>
 								<boxCollider>
-									<row0>1.820196 0.000000 0.000000</row0>
-									<row1>0.000000 2.137549 0.000000</row1>
-									<row2>0.000000 0.000000 7.100057</row2>
-									<row3>0.000000 1.577235 -0.411564</row3>
+									<row0>1.891854 0.000000 0.000000</row0>
+									<row1>-0.000000 2.137549 0.000000</row1>
+									<row2>-0.000000 -0.000000 7.100058</row2>
+									<row3>-0.000000 1.577235 -0.411572</row3>
 								</boxCollider>
 								<boxCollider>
 									<row0>3.545323 0.000000 0.000000</row0>
@@ -2322,10 +2478,10 @@
 									<row3>0.000000 1.262506 3.377581</row3>
 								</boxCollider>
 								<boxCollider>
-									<row0>0.300000 0.000000 0.000000</row0>
-									<row1>0.000000 0.650851 0.000000</row1>
-									<row2>0.000000 0.000000 7.504883</row2>
-									<row3>-1.888241 1.129405 -0.218055</row3>
+									<row0>0.300000 -0.000000 0.000000</row0>
+									<row1>0.000000 1.332525 -0.000000</row1>
+									<row2>-0.000000 0.000000 7.504888</row2>
+									<row3>-1.872206 1.129405 -0.218056</row3>
 								</boxCollider>
 							</hullCollider>
 						</physicalParams>
@@ -2346,7 +2502,7 @@
 								<wheelGroup>
 									<wheelName>WD_R2</wheelName>
 									<groupRadius>
-										0.37834
+										0.38753
 										<!--BW_String-->
 									</groupRadius>
 									<groupInnerOffset>-0.469842</groupInnerOffset>
@@ -2381,10 +2537,10 @@
 							</wheelGroups>
 							<hullCollider>
 								<boxCollider>
-									<row0>1.820196 0.000000 0.000000</row0>
+									<row0>1.891854 -0.000000 -0.000000</row0>
 									<row1>0.000000 2.137549 0.000000</row1>
-									<row2>0.000000 0.000000 7.100057</row2>
-									<row3>-0.000000 1.577235 -0.411564</row3>
+									<row2>0.000000 -0.000000 7.100058</row2>
+									<row3>0.000000 1.577235 -0.411572</row3>
 								</boxCollider>
 								<boxCollider>
 									<row0>3.545323 0.000000 0.000000</row0>
@@ -2399,10 +2555,10 @@
 									<row3>-0.000000 1.262506 3.377581</row3>
 								</boxCollider>
 								<boxCollider>
-									<row0>0.300000 0.000000 0.000000</row0>
-									<row1>0.000000 0.650851 0.000000</row1>
-									<row2>0.000000 0.000000 7.504883</row2>
-									<row3>1.888241 1.129405 -0.218055</row3>
+									<row0>0.300000 0.000000 -0.000000</row0>
+									<row1>-0.000000 1.332525 -0.000000</row1>
+									<row2>0.000000 0.000000 7.504888</row2>
+									<row3>1.872206 1.129405 -0.218056</row3>
 								</boxCollider>
 							</hullCollider>
 						</physicalParams>
@@ -2525,11 +2681,11 @@
 					<count>9</count>
 					<isLeft>true</isLeft>
 					<minOffset>
-						-0.0785124
+						-0.08
 						<!--BW_String-->
 					</minOffset>
 					<maxOffset>
-						0.0785124
+						0.08
 						<!--BW_String-->
 					</maxOffset>
 				</group>
@@ -2539,11 +2695,11 @@
 					<count>9</count>
 					<isLeft>false</isLeft>
 					<minOffset>
-						-0.0785124
+						-0.08
 						<!--BW_String-->
 					</minOffset>
 					<maxOffset>
-						0.0785124
+						0.08
 						<!--BW_String-->
 					</maxOffset>
 				</group>
@@ -2575,18 +2731,18 @@
 				<enable>true</enable>
 				<linkBones>true</linkBones>
 				<maxAmplitude>
-					0.1
+					0.01
 					<!--BW_String-->
 				</maxAmplitude>
 				<maxOffset>
-					0.1
+					0.01
 					<!--BW_String-->
 				</maxOffset>
 				<gravity>
 					-9.8
 					<!--BW_String-->
 				</gravity>
-				<elasticity>1113</elasticity>
+				<elasticity>1105</elasticity>
 				<damping>2</damping>
 				<node>
 					<isLeft>true</isLeft>
@@ -2649,7 +2805,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.4
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2667,7 +2823,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.5
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2685,7 +2841,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.6
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2703,7 +2859,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.7
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2721,7 +2877,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.8
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2739,7 +2895,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.9
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2756,7 +2912,10 @@
 						0.9
 						<!--BW_String-->
 					</forwardElastK>
-					<backwardElastK>2</backwardElastK>
+					<backwardElastK>
+						1.3
+						<!--BW_String-->
+					</backwardElastK>
 					<offset>
 						-0.112
 						<!--BW_String-->
@@ -2824,7 +2983,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.4
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2842,7 +3001,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.5
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2860,7 +3019,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.6
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2878,7 +3037,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.7
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2896,7 +3055,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.8
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2914,7 +3073,7 @@
 						<!--BW_String-->
 					</forwardElastK>
 					<backwardElastK>
-						1.9
+						1.3
 						<!--BW_String-->
 					</backwardElastK>
 					<offset>
@@ -2931,7 +3090,10 @@
 						0.9
 						<!--BW_String-->
 					</forwardElastK>
-					<backwardElastK>2</backwardElastK>
+					<backwardElastK>
+						1.3
+						<!--BW_String-->
+					</backwardElastK>
 					<offset>
 						-0.112
 						<!--BW_String-->
@@ -2941,18 +3103,34 @@
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VD_R0</name>
+					<forwardElastK>
+						0.7
+						<!--BW_String-->
+					</forwardElastK>
 				</node>
 				<node>
 					<isLeft>true</isLeft>
 					<name>Track_VD_L0</name>
+					<forwardElastK>
+						0.7
+						<!--BW_String-->
+					</forwardElastK>
 				</node>
 				<node>
 					<isLeft>true</isLeft>
 					<name>Track_VD_L1</name>
+					<backwardElastK>
+						0.7
+						<!--BW_String-->
+					</backwardElastK>
 				</node>
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VD_R1</name>
+					<backwardElastK>
+						0.7
+						<!--BW_String-->
+					</backwardElastK>
 				</node>
 			</trackNodes>
 			<physicalTracks>
@@ -4139,6 +4317,13 @@
 						<undamaged>vehicles/french/F64_AMX_50Fosh_155/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/french/F64_AMX_50Fosh_155/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/french/F64_AMX_50Fosh_155/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<F64_AMX_50Fosh_B_BXI_3DSt>
+								<undamaged>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/crash/lod0/Gun_01.model</exploded>
+							</F64_AMX_50Fosh_B_BXI_3DSt>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/french/F64_AMX_50Fosh_155/collision/Gun_01.model</collisionModelServer>
@@ -4224,6 +4409,49 @@
 							<anchorShift>0.438582</anchorShift>
 						</slot>
 						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45002</slotId>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F64_AMX_50Fosh_B_BXI_3DSt</compatibleModels>
+							<position>
+								-0.284 1.832 2.336
+								<!--BW_String-->
+							</position>
+							<rotation>1.540078 2.792351 1.137952</rotation>
+							<scale>
+								1.686 0.628 1.686
+								<!--BW_String-->
+							</scale>
+							<showOn>4112</showOn>
+							<clipAngle>0.244346</clipAngle>
+							<anchorShift>
+								0.2
+								<!--BW_String-->
+							</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45003</slotId>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F64_AMX_50Fosh_B_BXI_3DSt</compatibleModels>
+							<position>
+								0.296744 1.829 2.328
+								<!--BW_String-->
+							</position>
+							<rotation>1.394444 1.416826 -0.090958</rotation>
+							<scale>
+								1.686 0.628 1.686
+								<!--BW_String-->
+							</scale>
+							<doubleSided>true</doubleSided>
+							<showOn>4112</showOn>
+							<clipAngle>0.244346</clipAngle>
+							<anchorShift>
+								-0.26
+								<!--BW_String-->
+							</anchorShift>
+						</slot>
+						<slot>
 							<slotType>insigniaOnGun</slotType>
 							<slotId>49000</slotId>
 							<rayStart>
@@ -4270,6 +4498,13 @@
 				<undamaged>vehicles/french/F64_AMX_50Fosh_155/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/french/F64_AMX_50Fosh_155/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/french/F64_AMX_50Fosh_155/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<F64_AMX_50Fosh_B_BXI_3DSt>
+						<undamaged>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/french/F64_AMX_50Fosh_155/_skins/F64_AMX_50Fosh_B_BXI_3DSt/crash/lod0/Turret_01.model</exploded>
+					</F64_AMX_50Fosh_B_BXI_3DSt>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/french/F64_AMX_50Fosh_155/collision/Turret_01.model</collisionModelServer>

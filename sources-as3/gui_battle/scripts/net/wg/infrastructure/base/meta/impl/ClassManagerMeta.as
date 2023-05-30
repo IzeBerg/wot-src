@@ -66,6 +66,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.data.BattleRoyaleEventHeaderVO;
    import net.wg.gui.battle.battleRoyale.data.BattleRoyaleFullStatsVO;
    import net.wg.gui.battle.battleRoyale.data.DescriptionBlockWithIconVO;
+   import net.wg.gui.battle.battleRoyale.data.RespawnMessageVO;
    import net.wg.gui.battle.battleRoyale.data.VehicleCounterVO;
    import net.wg.gui.battle.battleRoyale.ub.UnboundContainer;
    import net.wg.gui.battle.battleRoyale.views.BattleRoyaleLoading;
@@ -85,6 +86,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.views.components.CorrodingShotIndicator;
    import net.wg.gui.battle.battleRoyale.views.components.DamageScreen;
    import net.wg.gui.battle.battleRoyale.views.components.EventViewHeader;
+   import net.wg.gui.battle.battleRoyale.views.components.RespawnButton.BattleRoyaleRespawnButton;
+   import net.wg.gui.battle.battleRoyale.views.components.RespawnButton.RespawnIcon;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.BattleRoyaleFullStats;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.DescriptionWithIconRenderer;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.DescriptionWithIconRendererSmall;
@@ -97,6 +100,15 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyaleNationsVehiclesCounterVO;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyaleNationsVehiclesVO;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyalePlatoonVO;
+   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.BaseRespawnMessage;
+   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.IRespawnMessage;
+   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.RespawnMessagePanel;
+   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.RespawnMessageTimer;
+   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.RespawnMessageWithDescription;
+   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.AirDropTimer;
+   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.BattleRoyaleTimersPanel;
+   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.RespawnTimer;
+   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.TimerTextField;
    import net.wg.gui.battle.battleRoyale.views.configurator.BattleVehicleConfigurator;
    import net.wg.gui.battle.battleRoyale.views.configurator.ChoiceInfoPanel;
    import net.wg.gui.battle.battleRoyale.views.configurator.ConfiguratorRenderer;
@@ -117,8 +129,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleloading.BattleLoading;
    import net.wg.gui.battle.battleloading.BattleLoadingForm;
    import net.wg.gui.battle.battleloading.BattleLoadingHelper;
-   import net.wg.gui.battle.battleloading.SimpleBattleLoading;
-   import net.wg.gui.battle.battleloading.SimpleBattleLoadingForm;
    import net.wg.gui.battle.battleloading.constants.PlayerStatus;
    import net.wg.gui.battle.battleloading.constants.VehicleStatus;
    import net.wg.gui.battle.battleloading.constants.VehicleStatusSchemes;
@@ -260,7 +270,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.components.stats.playersPanel.list.BasePlayersPanelList;
    import net.wg.gui.battle.components.stats.playersPanel.list.BasePlayersPanelListItem;
    import net.wg.gui.battle.components.stats.playersPanel.list.HPBarPlayersPanelListItem;
-   import net.wg.gui.battle.cosmic.CosmicBattlePage;
    import net.wg.gui.battle.epicBattle.VO.daapi.EpicPlayerStatsVO;
    import net.wg.gui.battle.epicBattle.VO.daapi.EpicVehicleStatsVO;
    import net.wg.gui.battle.epicBattle.VO.daapi.EpicVehiclesStatsVO;
@@ -276,11 +285,13 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.epicBattle.views.EpicBattlePage;
    import net.wg.gui.battle.epicBattle.views.EpicCarouselFilterPopoverView;
    import net.wg.gui.battle.epicBattle.views.components.EpicBattleConsumableButton;
+   import net.wg.gui.battle.epicBattle.views.components.EpicBattleEquipmentButtonGlow;
    import net.wg.gui.battle.epicBattle.views.data.EpicStatsDataProviderBaseCtrl;
    import net.wg.gui.battle.epicBattle.views.data.EpicVehicleDataProvider;
    import net.wg.gui.battle.epicBattle.views.stats.EpicFullStats;
    import net.wg.gui.battle.epicBattle.views.stats.components.EpicFullStatsTable;
    import net.wg.gui.battle.epicBattle.views.stats.components.EpicFullStatsTableCtrl;
+   import net.wg.gui.battle.epicBattle.views.stats.components.EpicStatsGeneralBonus;
    import net.wg.gui.battle.epicBattle.views.stats.components.EpicStatsHeader;
    import net.wg.gui.battle.epicBattle.views.stats.components.EpicStatsTableFilterGroup;
    import net.wg.gui.battle.epicBattle.views.stats.components.EpicStatsTableTabButton;
@@ -343,6 +354,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.eventBattle.views.eventTimer.EventTimer;
    import net.wg.gui.battle.eventBattle.views.eventTimer.TimerMovie;
    import net.wg.gui.battle.eventBattle.views.introVideoPage.EventIntroLogoContainer;
+   import net.wg.gui.battle.eventBattle.views.minimap.entries.CustomDeathZoneMinimapEntry;
    import net.wg.gui.battle.eventBattle.views.minimap.entries.EventDeathZoneMinimapEntry;
    import net.wg.gui.battle.eventBattle.views.radialMenu.EventRadialButton;
    import net.wg.gui.battle.eventBattle.views.radialMenu.EventRadialMenu;
@@ -510,7 +522,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IConsumablesButton;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IConsumablesPanel;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IEntityStateButton;
-   import net.wg.gui.battle.views.cosmicHud.CosmicHud;
    import net.wg.gui.battle.views.damageIndicator.DamageIndicator;
    import net.wg.gui.battle.views.damageInfoPanel.DamageInfoPanel;
    import net.wg.gui.battle.views.damageInfoPanel.components.DamageItem;
@@ -583,6 +594,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.dualGunPanel.DualGunPanelGunIndicator;
    import net.wg.gui.battle.views.dualGunPanel.DualGunPanelState;
    import net.wg.gui.battle.views.dualGunPanel.DualGunPanelTimer;
+   import net.wg.gui.battle.views.epicDamagePanel.EpicDamagePanel;
+   import net.wg.gui.battle.views.epicDamagePanel.components.GeneralBonus;
    import net.wg.gui.battle.views.epicDeploymentMap.EpicDeploymentMap;
    import net.wg.gui.battle.views.epicDeploymentMap.components.EpicDeploymentMapEntriesContainer;
    import net.wg.gui.battle.views.epicDeploymentMap.components.EpicMapContainer;
@@ -957,112 +970,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.tooltips.inblocks.blocks.TextParameterWithIconBlock;
    import net.wg.gui.components.tooltips.inblocks.data.TextParameterWithIconVO;
    import net.wg.infrastructure.base.BaseBattleDAAPIComponent;
-   import net.wg.infrastructure.base.meta.IBCBattlePageMeta;
-   import net.wg.infrastructure.base.meta.IBCBattleTopHintMeta;
-   import net.wg.infrastructure.base.meta.IBCFragCorrelationBarMeta;
-   import net.wg.infrastructure.base.meta.IBCIntroFadeOutMeta;
-   import net.wg.infrastructure.base.meta.IBCPrebattleHintsMeta;
-   import net.wg.infrastructure.base.meta.IBCSecondaryHintMeta;
-   import net.wg.infrastructure.base.meta.IBaseBattleDAAPIComponentMeta;
-   import net.wg.infrastructure.base.meta.IBaseBattleLoadingMeta;
-   import net.wg.infrastructure.base.meta.IBasePostmortemPanelMeta;
-   import net.wg.infrastructure.base.meta.IBattleDAAPIComponentMeta;
-   import net.wg.infrastructure.base.meta.IBattleEndWarningPanelMeta;
-   import net.wg.infrastructure.base.meta.IBattleHintMeta;
-   import net.wg.infrastructure.base.meta.IBattleHintPanelMeta;
-   import net.wg.infrastructure.base.meta.IBattleLevelPanelMeta;
-   import net.wg.infrastructure.base.meta.IBattleMessageListMeta;
-   import net.wg.infrastructure.base.meta.IBattleMessengerMeta;
-   import net.wg.infrastructure.base.meta.IBattleNotifierMeta;
-   import net.wg.infrastructure.base.meta.IBattlePageMeta;
-   import net.wg.infrastructure.base.meta.IBattleRoyaleFullStatsMeta;
-   import net.wg.infrastructure.base.meta.IBattleRoyaleLoadingMeta;
-   import net.wg.infrastructure.base.meta.IBattleRoyalePageMeta;
-   import net.wg.infrastructure.base.meta.IBattleRoyalePlayerStatsMeta;
-   import net.wg.infrastructure.base.meta.IBattleRoyalePlayersPanelMeta;
-   import net.wg.infrastructure.base.meta.IBattleRoyalePostmortemPanelMeta;
-   import net.wg.infrastructure.base.meta.IBattleRoyaleTeamPanelMeta;
-   import net.wg.infrastructure.base.meta.IBattleStatisticDataControllerMeta;
-   import net.wg.infrastructure.base.meta.IBattleTankCarouselMeta;
-   import net.wg.infrastructure.base.meta.IBattleTimerMeta;
-   import net.wg.infrastructure.base.meta.IBattleUpgradePanelMeta;
-   import net.wg.infrastructure.base.meta.IBattleVehicleConfiguratorMeta;
-   import net.wg.infrastructure.base.meta.ICalloutPanelMeta;
-   import net.wg.infrastructure.base.meta.IClassicFullStatsMeta;
-   import net.wg.infrastructure.base.meta.IComp7BattlePageMeta;
-   import net.wg.infrastructure.base.meta.IComp7BattleStatisticDataControllerMeta;
-   import net.wg.infrastructure.base.meta.IComp7BattleTankCarouselMeta;
-   import net.wg.infrastructure.base.meta.IComp7FullStatsMeta;
-   import net.wg.infrastructure.base.meta.IComp7PlayersPanelMeta;
-   import net.wg.infrastructure.base.meta.IComp7PrebattleTimerMeta;
-   import net.wg.infrastructure.base.meta.IConsumablesPanelMeta;
-   import net.wg.infrastructure.base.meta.ICorrodingShotIndicatorMeta;
-   import net.wg.infrastructure.base.meta.IDamageInfoPanelMeta;
-   import net.wg.infrastructure.base.meta.IDamagePanelMeta;
-   import net.wg.infrastructure.base.meta.IDebugPanelMeta;
-   import net.wg.infrastructure.base.meta.IDeserterDialogMeta;
-   import net.wg.infrastructure.base.meta.IDualGunPanelMeta;
-   import net.wg.infrastructure.base.meta.IEpicBattlePageMeta;
-   import net.wg.infrastructure.base.meta.IEpicBattleStatisticDataControllerMeta;
-   import net.wg.infrastructure.base.meta.IEpicBattleTimerMeta;
-   import net.wg.infrastructure.base.meta.IEpicDeploymentMapMeta;
-   import net.wg.infrastructure.base.meta.IEpicDestroyTimersPanelMeta;
-   import net.wg.infrastructure.base.meta.IEpicFullStatsMeta;
-   import net.wg.infrastructure.base.meta.IEpicInGameRankMeta;
-   import net.wg.infrastructure.base.meta.IEpicMinimapMeta;
-   import net.wg.infrastructure.base.meta.IEpicMissionsPanelMeta;
-   import net.wg.infrastructure.base.meta.IEpicOverviewMapScreenMeta;
-   import net.wg.infrastructure.base.meta.IEpicRandomPlayersPanelMeta;
-   import net.wg.infrastructure.base.meta.IEpicReinforcementPanelMeta;
-   import net.wg.infrastructure.base.meta.IEpicRespawnViewMeta;
-   import net.wg.infrastructure.base.meta.IEpicScorePanelMeta;
-   import net.wg.infrastructure.base.meta.IEpicSpectatorViewMeta;
-   import net.wg.infrastructure.base.meta.IEventBuffsPanelMeta;
-   import net.wg.infrastructure.base.meta.IEventDestroyTimersPanelMeta;
-   import net.wg.infrastructure.base.meta.IEventObjectivesMeta;
-   import net.wg.infrastructure.base.meta.IEventPlayersPanelMeta;
-   import net.wg.infrastructure.base.meta.IEventPointCounterMeta;
-   import net.wg.infrastructure.base.meta.IEventRadialMenuMeta;
-   import net.wg.infrastructure.base.meta.IEventStatsMeta;
-   import net.wg.infrastructure.base.meta.IEventTimerMeta;
-   import net.wg.infrastructure.base.meta.IFMStatsMeta;
-   import net.wg.infrastructure.base.meta.IFragCorrelationBarMeta;
-   import net.wg.infrastructure.base.meta.IFragPanelMeta;
-   import net.wg.infrastructure.base.meta.IGameMessagesPanelMeta;
-   import net.wg.infrastructure.base.meta.IIngameDetailsHelpWindowMeta;
-   import net.wg.infrastructure.base.meta.IIngameHelpWindowMeta;
-   import net.wg.infrastructure.base.meta.IIngameMenuMeta;
-   import net.wg.infrastructure.base.meta.IMapsTrainingBattleLoadingMeta;
-   import net.wg.infrastructure.base.meta.IMapsTrainingGoalsMeta;
-   import net.wg.infrastructure.base.meta.IMapsTrainingIngameHelpWindowMeta;
-   import net.wg.infrastructure.base.meta.IMapsTrainingPrebattleTimerMeta;
-   import net.wg.infrastructure.base.meta.IMinimapMeta;
-   import net.wg.infrastructure.base.meta.IPerksPanelMeta;
-   import net.wg.infrastructure.base.meta.IPersonalReservesTabMeta;
-   import net.wg.infrastructure.base.meta.IPiercingDebugPanelMeta;
-   import net.wg.infrastructure.base.meta.IPlayersPanelMeta;
-   import net.wg.infrastructure.base.meta.IPointsOfInterestNotificationPanelMeta;
-   import net.wg.infrastructure.base.meta.IPostmortemPanelMeta;
-   import net.wg.infrastructure.base.meta.IPrebattleAmmunitionPanelViewMeta;
-   import net.wg.infrastructure.base.meta.IPrebattleTimerBaseMeta;
-   import net.wg.infrastructure.base.meta.IPrebattleTimerMeta;
-   import net.wg.infrastructure.base.meta.IProgressTimersPanelMeta;
-   import net.wg.infrastructure.base.meta.IQuestProgressTopViewMeta;
-   import net.wg.infrastructure.base.meta.IRadarButtonMeta;
-   import net.wg.infrastructure.base.meta.IRadialMenuMeta;
-   import net.wg.infrastructure.base.meta.IRecoveryPanelMeta;
-   import net.wg.infrastructure.base.meta.IRibbonsPanelMeta;
-   import net.wg.infrastructure.base.meta.IRocketAcceleratorIndicatorMeta;
-   import net.wg.infrastructure.base.meta.IRoleDescriptionMeta;
-   import net.wg.infrastructure.base.meta.ISiegeModeIndicatorMeta;
-   import net.wg.infrastructure.base.meta.ISixthSenseMeta;
-   import net.wg.infrastructure.base.meta.IStatsBaseMeta;
-   import net.wg.infrastructure.base.meta.IStatusNotificationsPanelMeta;
-   import net.wg.infrastructure.base.meta.ISuperPlatoonPanelMeta;
-   import net.wg.infrastructure.base.meta.ITabbedFullStatsMeta;
-   import net.wg.infrastructure.base.meta.ITeamBasesPanelMeta;
-   import net.wg.infrastructure.base.meta.ITimersPanelMeta;
-   import net.wg.infrastructure.base.meta.IVehicleMarkersManagerMeta;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.helpers.statisticsDataController.EpicBattleStatisticDataController;
    import net.wg.infrastructure.helpers.statisticsDataController.intarfaces.IBattleComponentDataController;
@@ -1203,10 +1110,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_BATTLELOADINGHELPER:Class = BattleLoadingHelper;
       
-      public static const NET_WG_GUI_BATTLE_BATTLELOADING_SIMPLEBATTLELOADING:Class = SimpleBattleLoading;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLELOADING_SIMPLEBATTLELOADINGFORM:Class = SimpleBattleLoadingForm;
-      
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_CONSTANTS_PLAYERSTATUS:Class = PlayerStatus;
       
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_CONSTANTS_VEHICLESTATUS:Class = VehicleStatus;
@@ -1262,6 +1165,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_DATA_BATTLEROYALEFULLSTATSVO:Class = BattleRoyaleFullStatsVO;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_DATA_DESCRIPTIONBLOCKWITHICONVO:Class = DescriptionBlockWithIconVO;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_DATA_RESPAWNMESSAGEVO:Class = RespawnMessageVO;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_DATA_VEHICLECOUNTERVO:Class = VehicleCounterVO;
       
@@ -1324,6 +1229,28 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_FULLSTATS_NATIONSVEHICLESCOUNTER_DATA_BATTLEROYALENATIONSVEHICLESVO:Class = BattleRoyaleNationsVehiclesVO;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_FULLSTATS_NATIONSVEHICLESCOUNTER_DATA_BATTLEROYALEPLATOONVO:Class = BattleRoyalePlatoonVO;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNBUTTON_BATTLEROYALERESPAWNBUTTON:Class = BattleRoyaleRespawnButton;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNBUTTON_RESPAWNICON:Class = RespawnIcon;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_BASERESPAWNMESSAGE:Class = BaseRespawnMessage;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_IRESPAWNMESSAGE:Class = IRespawnMessage;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_RESPAWNMESSAGEPANEL:Class = RespawnMessagePanel;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_RESPAWNMESSAGETIMER:Class = RespawnMessageTimer;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_RESPAWNMESSAGEWITHDESCRIPTION:Class = RespawnMessageWithDescription;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_AIRDROPTIMER:Class = AirDropTimer;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_BATTLEROYALETIMERSPANEL:Class = BattleRoyaleTimersPanel;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_RESPAWNTIMER:Class = RespawnTimer;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_TIMERTEXTFIELD:Class = TimerTextField;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_CONFIGURATOR_BATTLEVEHICLECONFIGURATOR:Class = BattleVehicleConfigurator;
       
@@ -1591,8 +1518,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_COMPONENTS_STATS_PLAYERSPANEL_LIST_HPBARPLAYERSPANELLISTITEM:Class = HPBarPlayersPanelListItem;
       
-      public static const NET_WG_GUI_BATTLE_COSMIC_COSMICBATTLEPAGE:Class = CosmicBattlePage;
-      
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_BATTLELOADING_EPICBATTLELOADING:Class = EpicBattleLoading;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_BATTLELOADING_EPICBATTLELOADINGFORM:Class = EpicBattleLoadingForm;
@@ -1617,6 +1542,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_COMPONENTS_EPICBATTLECONSUMABLEBUTTON:Class = EpicBattleConsumableButton;
       
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_COMPONENTS_EPICBATTLEEQUIPMENTBUTTONGLOW:Class = EpicBattleEquipmentButtonGlow;
+      
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_DATA_EPICSTATSDATAPROVIDERBASECTRL:Class = EpicStatsDataProviderBaseCtrl;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_DATA_EPICVEHICLEDATAPROVIDER:Class = EpicVehicleDataProvider;
@@ -1626,6 +1553,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_STATS_COMPONENTS_EPICFULLSTATSTABLE:Class = EpicFullStatsTable;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_STATS_COMPONENTS_EPICFULLSTATSTABLECTRL:Class = EpicFullStatsTableCtrl;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_STATS_COMPONENTS_EPICSTATSGENERALBONUS:Class = EpicStatsGeneralBonus;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_STATS_COMPONENTS_EPICSTATSHEADER:Class = EpicStatsHeader;
       
@@ -1756,6 +1685,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTTIMER_TIMERMOVIE:Class = TimerMovie;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_INTROVIDEOPAGE_EVENTINTROLOGOCONTAINER:Class = EventIntroLogoContainer;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_ENTRIES_CUSTOMDEATHZONEMINIMAPENTRY:Class = CustomDeathZoneMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_ENTRIES_EVENTDEATHZONEMINIMAPENTRY:Class = EventDeathZoneMinimapEntry;
       
@@ -2091,8 +2022,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_CONSUMABLESPANEL_VO_CONSUMABLESVO:Class = ConsumablesVO;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_COSMICHUD_COSMICHUD:Class = CosmicHud;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEINDICATOR_DAMAGEINDICATOR:Class = DamageIndicator;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_DAMAGEINFOPANEL_DAMAGEINFOPANEL:Class = DamageInfoPanel;
@@ -2236,6 +2165,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_DUALGUNPANEL_DUALGUNPANELSTATE:Class = DualGunPanelState;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_DUALGUNPANEL_DUALGUNPANELTIMER:Class = DualGunPanelTimer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_EPICDAMAGEPANEL_EPICDAMAGEPANEL:Class = EpicDamagePanel;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_EPICDAMAGEPANEL_COMPONENTS_GENERALBONUS:Class = GeneralBonus;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_EPICDEPLOYMENTMAP_EPICDEPLOYMENTMAP:Class = EpicDeploymentMap;
       
@@ -2984,430 +2917,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_INBLOCKS_DATA_TEXTPARAMETERWITHICONVO:Class = TextParameterWithIconVO;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_BASEBATTLEDAAPICOMPONENT:Class = BaseBattleDAAPIComponent;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBASEBATTLEDAAPICOMPONENTMETA:Class = IBaseBattleDAAPIComponentMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBASEBATTLELOADINGMETA:Class = IBaseBattleLoadingMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBASEPOSTMORTEMPANELMETA:Class = IBasePostmortemPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEDAAPICOMPONENTMETA:Class = IBattleDAAPIComponentMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEENDWARNINGPANELMETA:Class = IBattleEndWarningPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEHINTMETA:Class = IBattleHintMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEHINTPANELMETA:Class = IBattleHintPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLELEVELPANELMETA:Class = IBattleLevelPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEMESSAGELISTMETA:Class = IBattleMessageListMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEMESSENGERMETA:Class = IBattleMessengerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLENOTIFIERMETA:Class = IBattleNotifierMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEPAGEMETA:Class = IBattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEROYALEFULLSTATSMETA:Class = IBattleRoyaleFullStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEROYALELOADINGMETA:Class = IBattleRoyaleLoadingMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEROYALEPAGEMETA:Class = IBattleRoyalePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEROYALEPLAYERSPANELMETA:Class = IBattleRoyalePlayersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEROYALEPLAYERSTATSMETA:Class = IBattleRoyalePlayerStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEROYALEPOSTMORTEMPANELMETA:Class = IBattleRoyalePostmortemPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEROYALETEAMPANELMETA:Class = IBattleRoyaleTeamPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLESTATISTICDATACONTROLLERMETA:Class = IBattleStatisticDataControllerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLETANKCAROUSELMETA:Class = IBattleTankCarouselMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLETIMERMETA:Class = IBattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEUPGRADEPANELMETA:Class = IBattleUpgradePanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEVEHICLECONFIGURATORMETA:Class = IBattleVehicleConfiguratorMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCBATTLEPAGEMETA:Class = IBCBattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCBATTLETOPHINTMETA:Class = IBCBattleTopHintMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCFRAGCORRELATIONBARMETA:Class = IBCFragCorrelationBarMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCINTROFADEOUTMETA:Class = IBCIntroFadeOutMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCPREBATTLEHINTSMETA:Class = IBCPrebattleHintsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCSECONDARYHINTMETA:Class = IBCSecondaryHintMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICALLOUTPANELMETA:Class = ICalloutPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICLASSICFULLSTATSMETA:Class = IClassicFullStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMP7BATTLEPAGEMETA:Class = IComp7BattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMP7BATTLESTATISTICDATACONTROLLERMETA:Class = IComp7BattleStatisticDataControllerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMP7BATTLETANKCAROUSELMETA:Class = IComp7BattleTankCarouselMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMP7FULLSTATSMETA:Class = IComp7FullStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMP7PLAYERSPANELMETA:Class = IComp7PlayersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMP7PREBATTLETIMERMETA:Class = IComp7PrebattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICONSUMABLESPANELMETA:Class = IConsumablesPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICORRODINGSHOTINDICATORMETA:Class = ICorrodingShotIndicatorMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IDAMAGEINFOPANELMETA:Class = IDamageInfoPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IDAMAGEPANELMETA:Class = IDamagePanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IDEBUGPANELMETA:Class = IDebugPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IDESERTERDIALOGMETA:Class = IDeserterDialogMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IDUALGUNPANELMETA:Class = IDualGunPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICBATTLEPAGEMETA:Class = IEpicBattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICBATTLESTATISTICDATACONTROLLERMETA:Class = IEpicBattleStatisticDataControllerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICBATTLETIMERMETA:Class = IEpicBattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICDEPLOYMENTMAPMETA:Class = IEpicDeploymentMapMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICDESTROYTIMERSPANELMETA:Class = IEpicDestroyTimersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICFULLSTATSMETA:Class = IEpicFullStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICINGAMERANKMETA:Class = IEpicInGameRankMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICMINIMAPMETA:Class = IEpicMinimapMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICMISSIONSPANELMETA:Class = IEpicMissionsPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICOVERVIEWMAPSCREENMETA:Class = IEpicOverviewMapScreenMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICRANDOMPLAYERSPANELMETA:Class = IEpicRandomPlayersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICREINFORCEMENTPANELMETA:Class = IEpicReinforcementPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICRESPAWNVIEWMETA:Class = IEpicRespawnViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICSCOREPANELMETA:Class = IEpicScorePanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICSPECTATORVIEWMETA:Class = IEpicSpectatorViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTBUFFSPANELMETA:Class = IEventBuffsPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTDESTROYTIMERSPANELMETA:Class = IEventDestroyTimersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTOBJECTIVESMETA:Class = IEventObjectivesMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTPLAYERSPANELMETA:Class = IEventPlayersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTPOINTCOUNTERMETA:Class = IEventPointCounterMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTRADIALMENUMETA:Class = IEventRadialMenuMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTSTATSMETA:Class = IEventStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTTIMERMETA:Class = IEventTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IFMSTATSMETA:Class = IFMStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IFRAGCORRELATIONBARMETA:Class = IFragCorrelationBarMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IFRAGPANELMETA:Class = IFragPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IGAMEMESSAGESPANELMETA:Class = IGameMessagesPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IINGAMEDETAILSHELPWINDOWMETA:Class = IIngameDetailsHelpWindowMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IINGAMEHELPWINDOWMETA:Class = IIngameHelpWindowMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IINGAMEMENUMETA:Class = IIngameMenuMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMAPSTRAININGBATTLELOADINGMETA:Class = IMapsTrainingBattleLoadingMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMAPSTRAININGGOALSMETA:Class = IMapsTrainingGoalsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMAPSTRAININGINGAMEHELPWINDOWMETA:Class = IMapsTrainingIngameHelpWindowMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMAPSTRAININGPREBATTLETIMERMETA:Class = IMapsTrainingPrebattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMINIMAPMETA:Class = IMinimapMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPERKSPANELMETA:Class = IPerksPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPERSONALRESERVESTABMETA:Class = IPersonalReservesTabMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPIERCINGDEBUGPANELMETA:Class = IPiercingDebugPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPLAYERSPANELMETA:Class = IPlayersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPOINTSOFINTERESTNOTIFICATIONPANELMETA:Class = IPointsOfInterestNotificationPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPOSTMORTEMPANELMETA:Class = IPostmortemPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPREBATTLEAMMUNITIONPANELVIEWMETA:Class = IPrebattleAmmunitionPanelViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPREBATTLETIMERBASEMETA:Class = IPrebattleTimerBaseMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPREBATTLETIMERMETA:Class = IPrebattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPROGRESSTIMERSPANELMETA:Class = IProgressTimersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IQUESTPROGRESSTOPVIEWMETA:Class = IQuestProgressTopViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IRADARBUTTONMETA:Class = IRadarButtonMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IRADIALMENUMETA:Class = IRadialMenuMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IRECOVERYPANELMETA:Class = IRecoveryPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IRIBBONSPANELMETA:Class = IRibbonsPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IROCKETACCELERATORINDICATORMETA:Class = IRocketAcceleratorIndicatorMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IROLEDESCRIPTIONMETA:Class = IRoleDescriptionMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISIEGEMODEINDICATORMETA:Class = ISiegeModeIndicatorMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISIXTHSENSEMETA:Class = ISixthSenseMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISTATSBASEMETA:Class = IStatsBaseMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISTATUSNOTIFICATIONSPANELMETA:Class = IStatusNotificationsPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISUPERPLATOONPANELMETA:Class = ISuperPlatoonPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ITABBEDFULLSTATSMETA:Class = ITabbedFullStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ITEAMBASESPANELMETA:Class = ITeamBasesPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ITIMERSPANELMETA:Class = ITimersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IVEHICLEMARKERSMANAGERMETA:Class = IVehicleMarkersManagerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BASEBATTLEDAAPICOMPONENTMETA:Class = BaseBattleDAAPIComponentMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BASEBATTLELOADINGMETA:Class = BaseBattleLoadingMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BASEPOSTMORTEMPANELMETA:Class = BasePostmortemPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEDAAPICOMPONENTMETA:Class = BattleDAAPIComponentMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEENDWARNINGPANELMETA:Class = BattleEndWarningPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEHINTMETA:Class = BattleHintMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEHINTPANELMETA:Class = BattleHintPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLELEVELPANELMETA:Class = BattleLevelPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEMESSAGELISTMETA:Class = BattleMessageListMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEMESSENGERMETA:Class = BattleMessengerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLENOTIFIERMETA:Class = BattleNotifierMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEPAGEMETA:Class = BattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEROYALEFULLSTATSMETA:Class = BattleRoyaleFullStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEROYALELOADINGMETA:Class = BattleRoyaleLoadingMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEROYALEPAGEMETA:Class = BattleRoyalePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEROYALEPLAYERSPANELMETA:Class = BattleRoyalePlayersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEROYALEPLAYERSTATSMETA:Class = BattleRoyalePlayerStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEROYALEPOSTMORTEMPANELMETA:Class = BattleRoyalePostmortemPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEROYALETEAMPANELMETA:Class = BattleRoyaleTeamPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLESTATISTICDATACONTROLLERMETA:Class = BattleStatisticDataControllerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLETANKCAROUSELMETA:Class = BattleTankCarouselMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLETIMERMETA:Class = BattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEUPGRADEPANELMETA:Class = BattleUpgradePanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEVEHICLECONFIGURATORMETA:Class = BattleVehicleConfiguratorMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCBATTLEPAGEMETA:Class = BCBattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCBATTLETOPHINTMETA:Class = BCBattleTopHintMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCFRAGCORRELATIONBARMETA:Class = BCFragCorrelationBarMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCINTROFADEOUTMETA:Class = BCIntroFadeOutMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCPREBATTLEHINTSMETA:Class = BCPrebattleHintsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCSECONDARYHINTMETA:Class = BCSecondaryHintMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CALLOUTPANELMETA:Class = CalloutPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CLASSICFULLSTATSMETA:Class = ClassicFullStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COMP7BATTLEPAGEMETA:Class = Comp7BattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COMP7BATTLESTATISTICDATACONTROLLERMETA:Class = Comp7BattleStatisticDataControllerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COMP7BATTLETANKCAROUSELMETA:Class = Comp7BattleTankCarouselMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COMP7FULLSTATSMETA:Class = Comp7FullStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COMP7PLAYERSPANELMETA:Class = Comp7PlayersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COMP7PREBATTLETIMERMETA:Class = Comp7PrebattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CONSUMABLESPANELMETA:Class = ConsumablesPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CORRODINGSHOTINDICATORMETA:Class = CorrodingShotIndicatorMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_DAMAGEINFOPANELMETA:Class = DamageInfoPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_DAMAGEPANELMETA:Class = DamagePanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_DEBUGPANELMETA:Class = DebugPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_DESERTERDIALOGMETA:Class = DeserterDialogMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_DUALGUNPANELMETA:Class = DualGunPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICBATTLEPAGEMETA:Class = EpicBattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICBATTLESTATISTICDATACONTROLLERMETA:Class = EpicBattleStatisticDataControllerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICBATTLETIMERMETA:Class = EpicBattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICDEPLOYMENTMAPMETA:Class = EpicDeploymentMapMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICDESTROYTIMERSPANELMETA:Class = EpicDestroyTimersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICFULLSTATSMETA:Class = EpicFullStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICINGAMERANKMETA:Class = EpicInGameRankMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICMINIMAPMETA:Class = EpicMinimapMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICMISSIONSPANELMETA:Class = EpicMissionsPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICOVERVIEWMAPSCREENMETA:Class = EpicOverviewMapScreenMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICRANDOMPLAYERSPANELMETA:Class = EpicRandomPlayersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICREINFORCEMENTPANELMETA:Class = EpicReinforcementPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICRESPAWNVIEWMETA:Class = EpicRespawnViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICSCOREPANELMETA:Class = EpicScorePanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICSPECTATORVIEWMETA:Class = EpicSpectatorViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTBUFFSPANELMETA:Class = EventBuffsPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTDESTROYTIMERSPANELMETA:Class = EventDestroyTimersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTOBJECTIVESMETA:Class = EventObjectivesMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTPLAYERSPANELMETA:Class = EventPlayersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTPOINTCOUNTERMETA:Class = EventPointCounterMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTRADIALMENUMETA:Class = EventRadialMenuMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTSTATSMETA:Class = EventStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTTIMERMETA:Class = EventTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_FMSTATSMETA:Class = FMStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_FRAGCORRELATIONBARMETA:Class = FragCorrelationBarMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_FRAGPANELMETA:Class = FragPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_GAMEMESSAGESPANELMETA:Class = GameMessagesPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_INGAMEDETAILSHELPWINDOWMETA:Class = IngameDetailsHelpWindowMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_INGAMEHELPWINDOWMETA:Class = IngameHelpWindowMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_INGAMEMENUMETA:Class = IngameMenuMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MAPSTRAININGBATTLELOADINGMETA:Class = MapsTrainingBattleLoadingMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MAPSTRAININGGOALSMETA:Class = MapsTrainingGoalsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MAPSTRAININGINGAMEHELPWINDOWMETA:Class = MapsTrainingIngameHelpWindowMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MAPSTRAININGPREBATTLETIMERMETA:Class = MapsTrainingPrebattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MINIMAPMETA:Class = MinimapMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PERKSPANELMETA:Class = PerksPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PERSONALRESERVESTABMETA:Class = PersonalReservesTabMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PIERCINGDEBUGPANELMETA:Class = PiercingDebugPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PLAYERSPANELMETA:Class = PlayersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_POINTSOFINTERESTNOTIFICATIONPANELMETA:Class = PointsOfInterestNotificationPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_POSTMORTEMPANELMETA:Class = PostmortemPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PREBATTLEAMMUNITIONPANELVIEWMETA:Class = PrebattleAmmunitionPanelViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PREBATTLETIMERBASEMETA:Class = PrebattleTimerBaseMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PREBATTLETIMERMETA:Class = PrebattleTimerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PROGRESSTIMERSPANELMETA:Class = ProgressTimersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_QUESTPROGRESSTOPVIEWMETA:Class = QuestProgressTopViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_RADARBUTTONMETA:Class = RadarButtonMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_RADIALMENUMETA:Class = RadialMenuMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_RECOVERYPANELMETA:Class = RecoveryPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_RIBBONSPANELMETA:Class = RibbonsPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_ROCKETACCELERATORINDICATORMETA:Class = RocketAcceleratorIndicatorMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_ROLEDESCRIPTIONMETA:Class = RoleDescriptionMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SIEGEMODEINDICATORMETA:Class = SiegeModeIndicatorMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SIXTHSENSEMETA:Class = SixthSenseMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_STATSBASEMETA:Class = StatsBaseMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_STATUSNOTIFICATIONSPANELMETA:Class = StatusNotificationsPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SUPERPLATOONPANELMETA:Class = SuperPlatoonPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_TABBEDFULLSTATSMETA:Class = TabbedFullStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_TEAMBASESPANELMETA:Class = TeamBasesPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_TIMERSPANELMETA:Class = TimersPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_VEHICLEMARKERSMANAGERMETA:Class = VehicleMarkersManagerMeta;
       
       public static const NET_WG_INFRASTRUCTURE_HELPERS_STATISTICSDATACONTROLLER_BATTLESTATISTICDATACONTROLLER:Class = BattleStatisticDataController;
       

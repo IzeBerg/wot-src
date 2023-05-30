@@ -29,6 +29,7 @@ from gui.hangar_cameras.hangar_camera_common import CameraMovementStates, Camera
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
 from gui.ClientHangarSpace import hangarCFG
 from gui.battle_control.vehicle_getter import hasTurretRotator
+from cgf_components.hangar_camera_manager import HangarCameraManager
 import GenericComponents, CGF
 if TYPE_CHECKING:
     from vehicle_outfit.outfit import Outfit as TOutfit
@@ -36,6 +37,7 @@ if TYPE_CHECKING:
 _SHOULD_CHECK_DECAL_UNDER_GUN = True
 _PROJECTION_DECAL_OVERLAPPING_FACTOR = 0.7
 _HANGAR_TURRET_SHIFT = math.pi / 8
+_CAMERA_MIN_DIST_FACTOR = 0.8
 AnchorLocation = namedtuple('AnchorLocation', ['position', 'normal', 'up'])
 AnchorId = namedtuple('AnchorId', ('slotType', 'areaId', 'regionIdx'))
 AnchorHelper = namedtuple('AnchorHelper', ['location', 'descriptor', 'turretYaw', 'partIdx', 'attachedPartIdx'])
@@ -341,28 +343,28 @@ class HangarVehicleAppearance(ScriptGameObject):
         bspModels = bspModels + (
          (
           TankPartNames.getIdx(TankPartNames.GUN) + 1,
-          vDesc.hull.hitTesterManager.modelHitTester.bspModelName, capsuleScale),
+          vDesc.hull.hitTesterManager.modelHitTester.bspModelName, capsuleScale, True),
          (
           TankPartNames.getIdx(TankPartNames.GUN) + 2,
-          vDesc.turret.hitTesterManager.modelHitTester.bspModelName, capsuleScale),
+          vDesc.turret.hitTesterManager.modelHitTester.bspModelName, capsuleScale, True),
          (
           TankPartNames.getIdx(TankPartNames.GUN) + 3,
-          vDesc.gun.hitTesterManager.modelHitTester.bspModelName, gunScale))
+          vDesc.gun.hitTesterManager.modelHitTester.bspModelName, gunScale, True))
         if vDesc.hull.hitTesterManager.crashedModelHitTester:
             crashedBspModels = crashedBspModels + (
              (
               TankPartNames.getIdx(TankPartNames.GUN) + 1,
-              vDesc.hull.hitTesterManager.crashedModelHitTester.bspModelName, capsuleScale),)
+              vDesc.hull.hitTesterManager.crashedModelHitTester.bspModelName, capsuleScale, True),)
         if vDesc.turret.hitTesterManager.crashedModelHitTester:
             crashedBspModels = crashedBspModels + (
              (
               TankPartNames.getIdx(TankPartNames.GUN) + 2,
-              vDesc.turret.hitTesterManager.crashedModelHitTester.bspModelName, capsuleScale),)
+              vDesc.turret.hitTesterManager.crashedModelHitTester.bspModelName, capsuleScale, True),)
         if vDesc.gun.hitTesterManager.crashedModelHitTester:
             crashedBspModels = crashedBspModels + (
              (
               TankPartNames.getIdx(TankPartNames.GUN) + 3,
-              vDesc.gun.hitTesterManager.crashedModelHitTester.bspModelName, gunScale),)
+              vDesc.gun.hitTesterManager.crashedModelHitTester.bspModelName, gunScale, True),)
         modelCA = BigWorld.CollisionAssembler(bspModels, self.__spaceId)
         modelCA.name = 'ModelCollisions'
         resources.append(modelCA)
@@ -420,6 +422,8 @@ class HangarVehicleAppearance(ScriptGameObject):
             self.turretRotator = SimpleTurretRotator(self.compoundModel, self.__staticTurretYaw, self.__vDesc.hull.turretPositions[0], self.__vDesc.hull.turretPitches[0], easingCls=math_utils.Easing.squareEasing)
             self.__applyAttachmentsVisibility()
             self.__fireResourcesLoadedEvent()
+            if succesLoaded:
+                self.__doFinalSetup(buildInd)
             super(HangarVehicleAppearance, self).activate()
             return
 
@@ -566,7 +570,6 @@ class HangarVehicleAppearance(ScriptGameObject):
         self.__assembleModel()
         matrix = math_utils.createSRTMatrix(Math.Vector3(1.0, 1.0, 1.0), Math.Vector3(self.__vEntity.yaw, self.__vEntity.pitch, self.__vEntity.roll), self.__vEntity.position)
         self.__vEntity.model.matrix = matrix
-        self.__doFinalSetup(buildIdx)
         self.__vEntity.typeDescriptor = self.__vDesc
         typeDescr = self.__vDesc
         wheelConfig = typeDescr.chassis.generalWheelsAnimatorConfig
@@ -622,6 +625,9 @@ class HangarVehicleAppearance(ScriptGameObject):
               TankPartNames.getIdx(TankPartNames.GUN) + 2,
               TankPartNames.getIdx(TankPartNames.GUN) + 3))
             BigWorld.appendCameraCollider(colliderData)
+            cameraManager = CGF.getManager(self.__spaceId, HangarCameraManager)
+            if cameraManager:
+                cameraManager.setMinDist(_CAMERA_MIN_DIST_FACTOR * self.computeVehicleLength())
         else:
             BigWorld.removeCameraCollider(self.collisions.getColliderID())
 

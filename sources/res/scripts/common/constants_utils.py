@@ -1,5 +1,6 @@
 import types
 from UnitBase import CMD_NAMES, ROSTER_TYPE, PREBATTLE_TYPE_BY_UNIT_MGR_ROSTER, PREBATTLE_TYPE_BY_UNIT_MGR_ROSTER_EXT, ROSTER_TYPE_TO_CLASS, UNIT_MGR_FLAGS_TO_PREBATTLE_TYPE, UNIT_MGR_FLAGS_TO_UNIT_MGR_ENTITY_NAME, UNIT_MGR_FLAGS_TO_INVITATION_TYPE, UNIT_MGR_FLAGS_TO_QUEUE_TYPE, QUEUE_TYPE_BY_UNIT_MGR_ROSTER, UNIT_ERROR, VEHICLE_TAGS_GROUP_BY_UNIT_MGR_FLAGS
+from chat_shared import SYS_MESSAGE_TYPE
 from constants import ARENA_GUI_TYPE, ARENA_GUI_TYPE_LABEL, ARENA_BONUS_TYPE, ARENA_BONUS_TYPE_NAMES, ARENA_BONUS_TYPE_IDS, ARENA_BONUS_MASK, QUEUE_TYPE, QUEUE_TYPE_NAMES, PREBATTLE_TYPE, PREBATTLE_TYPE_NAMES, INVITATION_TYPE, BATTLE_MODE_VEHICLE_TAGS, SEASON_TYPE_BY_NAME, SEASON_NAME_BY_TYPE, QUEUE_TYPE_IDS
 from BattleFeedbackCommon import BATTLE_EVENT_TYPE
 from debug_utils import LOG_DEBUG
@@ -238,7 +239,8 @@ class AbstractBattleMode(object):
 
     @property
     def _battleMgrConfig(self):
-        return (self._BATTLE_MGR_NAME, 0.2, ('periphery', 'standalone'))
+        from server_constants import SINGLETON_DEFAULT_GROUP
+        return (self._BATTLE_MGR_NAME, 0.2, SINGLETON_DEFAULT_GROUP, ('periphery', 'standalone'))
 
     @property
     def _client_prbEntityClass(self):
@@ -266,6 +268,10 @@ class AbstractBattleMode(object):
 
     @property
     def _client_bannerEntryPointValidatorMethod(self):
+        return
+
+    @property
+    def _client_bannerEntryPointLUIRule(self):
         return
 
     @property
@@ -298,10 +304,6 @@ class AbstractBattleMode(object):
 
     @property
     def _client_battleControllersRepository(self):
-        return
-
-    @property
-    def _client_sharedControllersRepository(self):
         return
 
     @property
@@ -377,6 +379,10 @@ class AbstractBattleMode(object):
     def _server_unitMethodRoles(self):
         return []
 
+    @property
+    def _client_limitedUITokensInfos(self):
+        return []
+
     def registerSquadTypes(self):
         addQueueTypeByUnitMgrRoster(self._QUEUE_TYPE, self._ROSTER_TYPE, self._personality)
         addUnitMgrFlagToQueueType(self._UNIT_MGR_FLAGS, self._QUEUE_TYPE, self._personality)
@@ -428,6 +434,10 @@ class AbstractBattleMode(object):
         from gui.prb_control import prb_utils
         prb_utils.addBannerEntryPointValidatorMethod(self._CLIENT_BANNER_ENTRY_POINT_ALIAS, self._client_bannerEntryPointValidatorMethod, self._personality)
 
+    def registerBannerEntryPointLUIRule(self):
+        from gui.prb_control import prb_utils
+        prb_utils.addBannerEntryPointLUIRule(self._CLIENT_BANNER_ENTRY_POINT_ALIAS, self._client_bannerEntryPointLUIRule, self._personality)
+
     def registerProviderBattleQueue(self):
         from gui.prb_control import prb_utils
         prb_utils.addProviderBattleQueueCls(self._QUEUE_TYPE, self._client_providerBattleQueue, self._personality)
@@ -455,10 +465,6 @@ class AbstractBattleMode(object):
     def registerBattleControllersRepository(self):
         from gui.shared.system_factory import registerBattleControllerRepo
         registerBattleControllerRepo(self._ARENA_GUI_TYPE, self._client_battleControllersRepository)
-
-    def registerSharedControllersRepository(self):
-        from gui.shared.system_factory import registerSharedControllerRepo
-        registerSharedControllerRepo(self._ARENA_GUI_TYPE, self._client_sharedControllersRepository)
 
     def registerBattleResultsConfig(self):
         config = self._BATTLE_RESULTS_CONFIG
@@ -511,12 +517,10 @@ class AbstractBattleMode(object):
             addBattleRequiredLibraries(self._client_battleRequiredLibraries, self._ARENA_GUI_TYPE, self._personality)
 
     def registerSystemMessagesTypes(self):
-        from chat_shared import SYS_MESSAGE_TYPE
         SYS_MESSAGE_TYPE.inject(self._SM_TYPES)
 
     def registerBattleResultSysMsgType(self):
         from battle_results import ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE
-        from chat_shared import SYS_MESSAGE_TYPE
         if self._ARENA_BONUS_TYPE in ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE:
             raise SoftException(('ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE already has ARENA_BONUS_TYPE:{t}. Personality: {p}').format(t=self._ARENA_BONUS_TYPE, p=self._personality))
         try:
@@ -546,3 +550,9 @@ class AbstractBattleMode(object):
     def registerClientTokenQuestsSubFormatters(self):
         from gui.shared.system_factory import registerTokenQuestsSubFormatters
         registerTokenQuestsSubFormatters(self._client_tokenQuestsSubFormatters)
+
+    def registerLimitedUITokens(self):
+        tokensInfos = self._client_limitedUITokensInfos
+        if tokensInfos:
+            from gui.shared.system_factory import registerLimitedUITokens
+            registerLimitedUITokens(tokensInfos)

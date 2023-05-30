@@ -21,6 +21,7 @@ package net.wg.gui.lobby.vehicleCustomization
    import net.wg.gui.components.controls.events.RendererEvent;
    import net.wg.gui.interfaces.IMagneticClickHandler;
    import net.wg.gui.lobby.vehicleCustomization.controls.CarouselItemRenderer;
+   import net.wg.gui.lobby.vehicleCustomization.controls.ShopEntryPoint;
    import net.wg.gui.lobby.vehicleCustomization.data.customizationPanel.CustomizationCarouselBookmarkVO;
    import net.wg.gui.lobby.vehicleCustomization.data.customizationPanel.CustomizationCarouselDataVO;
    import net.wg.gui.lobby.vehicleCustomization.data.customizationPanel.CustomizationCarouselFilterVO;
@@ -28,6 +29,7 @@ package net.wg.gui.lobby.vehicleCustomization
    import net.wg.gui.lobby.vehicleCustomization.events.CustomizationEvent;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.IFocusChainContainer;
+   import net.wg.utils.IClassFactory;
    import scaleform.clik.constants.InvalidationType;
    
    public class CustomizationCarousel extends ScrollCarousel implements IFocusChainContainer, IMagneticClickHandler
@@ -55,6 +57,10 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private static const BOOK_MARK_BACK_MOVIE:String = "BookmarkBackingUI";
       
+      private static const SHOP_ENTRY_POINT_BUTTON_SMALL_UI:String = "ShopEntryPointButtonSmallUI";
+      
+      private static const SHOP_ENTRY_POINT_BUTTON_BIG_UI:String = "ShopEntryPointButtonBigUI";
+      
       private static const GO_TO_OFFSET:Number = 0.5;
       
       private static const GO_TO_DURATION:Number = 1;
@@ -64,6 +70,20 @@ package net.wg.gui.lobby.vehicleCustomization
       private static const HIT_AREA_HEIGHT:int = 116;
       
       private static const HIT_AREA_HEIGHT_MIN:int = 95;
+      
+      private static const SHOP_BTN_WIDTH_SMALL:int = 135;
+      
+      private static const SHOP_BTN_WIDTH_BIG:int = 180;
+      
+      private static const FILTERS_COUNTER_OFFSET:int = -23;
+      
+      private static const FILTERS_LEFT_OFFSET:int = 20;
+      
+      private static const SHOP_ENTRY_Y_SMALL:int = 64;
+      
+      private static const SHOP_ENTRY_Y_BIG:int = 26;
+      
+      private static const SHOP_ENTRY_X:int = 0;
        
       
       public var lblMessage:TextField = null;
@@ -75,6 +95,8 @@ package net.wg.gui.lobby.vehicleCustomization
       public var dragBlocker:MovieClip = null;
       
       public var carouselFilters:TankCarouselFilters = null;
+      
+      public var shopEntryPointBtn:ShopEntryPoint = null;
       
       public var projectionDecalHint:UIComponentEx = null;
       
@@ -96,9 +118,12 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private var _isMinResolution:Boolean;
       
+      private var _classFactory:IClassFactory;
+      
       public function CustomizationCarousel()
       {
          this._bookmarkBackings = new Vector.<MovieClip>();
+         this._classFactory = App.utils.classFactory;
          super();
          roundCountRenderer = false;
       }
@@ -124,6 +149,7 @@ package net.wg.gui.lobby.vehicleCustomization
          this.scrollBar.setBookmarkStartOffset(BOOKMARK_START_OFFSET);
          this.carouselFilters.addEventListener(RendererEvent.ITEM_CLICK,this.onCarouselFiltersItemClickHandler);
          this.carouselFilters.addEventListener(Event.RESIZE,this.onCarouselFiltersResizeHandler);
+         this.createShopEntryPoint();
       }
       
       override protected function onDispose() : void
@@ -154,15 +180,24 @@ package net.wg.gui.lobby.vehicleCustomization
          this._layoutController = null;
          this._data = null;
          this.dragBlocker = null;
+         this._classFactory = null;
+         this.removeShopEntryPoint();
          super.onDispose();
       }
       
       override protected function updateLayout(param1:int, param2:int = 0) : void
       {
          var _loc6_:Rectangle = null;
-         var _loc3_:int = param2 + OFFSET_ARROW + EXTRA_OFFSET;
+         var _loc3_:int = param2 + OFFSET_ARROW + EXTRA_OFFSET + this.leftOffset;
          var _loc4_:int = param1 - _loc3_ - OFFSET_ARROW;
          var _loc5_:int = _loc4_ + leftArrowOffset - rightArrowOffset;
+         if(this.shopEntryPointBtn)
+         {
+            this.shopEntryPointBtn.x = SHOP_ENTRY_X;
+            this.shopEntryPointBtn.y = !!this._isMinResolution ? Number(SHOP_ENTRY_Y_SMALL) : Number(SHOP_ENTRY_Y_BIG);
+         }
+         this.filterCounter.x = FILTERS_COUNTER_OFFSET + this.leftOffset;
+         this.carouselFilters.x = FILTERS_LEFT_OFFSET + this.leftOffset;
          this.lblMessage.x = (_loc4_ - this.lblMessage.textWidth >> 1) + _loc3_;
          super.updateLayout(_loc4_,(_loc4_ - _loc5_ >> 1) + _loc3_);
          this.scrollBar.setVisibleBookmarks(scrollList.viewPort.width / _loc4_ > BOOKMARKS_COEFFICIENT);
@@ -219,7 +254,11 @@ package net.wg.gui.lobby.vehicleCustomization
          if((this._oldWidth != _width || this._isMinResolution != _loc1_) && isInvalid(InvalidationType.SIZE))
          {
             this._oldWidth = _width;
-            this._isMinResolution = _loc1_;
+            if(this._isMinResolution != _loc1_)
+            {
+               this._isMinResolution = _loc1_;
+               this.createShopEntryPoint();
+            }
             scrollList.horizontalGap = !!_loc1_ ? int(MIN_RES_ITEM_GAP) : int(NORMAL_ITEM_GAP);
             this._dataProvider.dispatchEvent(new Event(Event.CHANGE));
          }
@@ -389,10 +428,29 @@ package net.wg.gui.lobby.vehicleCustomization
          this.lblMessage.htmlText = param1;
       }
       
+      private function removeShopEntryPoint() : void
+      {
+         if(this.shopEntryPointBtn)
+         {
+            removeChild(this.shopEntryPointBtn);
+            this.shopEntryPointBtn.dispose();
+            this.shopEntryPointBtn = null;
+         }
+      }
+      
+      private function createShopEntryPoint() : void
+      {
+         this.removeShopEntryPoint();
+         this.shopEntryPointBtn = this._classFactory.getComponent(!!this._isMinResolution ? SHOP_ENTRY_POINT_BUTTON_SMALL_UI : SHOP_ENTRY_POINT_BUTTON_BIG_UI,ShopEntryPoint);
+         this.shopEntryPointBtn.label = VEHICLE_CUSTOMIZATION.SHOP_ENTRYPOINT;
+         addChild(this.shopEntryPointBtn);
+      }
+      
       private function addBookmarkItem(param1:Rectangle, param2:CustomizationCarouselBookmarkVO, param3:Boolean) : void
       {
+         var _loc5_:CustomizationCarouselBookmark = null;
          var _loc4_:Class = App.instance.utils.classFactory.getClass(BOOK_MARK_BACK_MOVIE);
-         var _loc5_:CustomizationCarouselBookmark = new _loc4_() as CustomizationCarouselBookmark;
+         _loc5_ = new _loc4_() as CustomizationCarouselBookmark;
          if(_loc5_ != null)
          {
             _loc5_.visible = true;
@@ -413,6 +471,11 @@ package net.wg.gui.lobby.vehicleCustomization
       private function updatePopoverData() : void
       {
          dispatchEvent(new CustomizationEvent(CustomizationEvent.REFRESH_FILTER_DATA,false));
+      }
+      
+      private function get leftOffset() : int
+      {
+         return !!this._isMinResolution ? int(SHOP_BTN_WIDTH_SMALL) : int(SHOP_BTN_WIDTH_BIG);
       }
       
       public function handleLeftClick(param1:MouseEvent) : Boolean

@@ -35,7 +35,7 @@ class AppearanceCache(IAppearanceCache):
         self.__loadingAssemblerQueue = {}
         self.__loadingResourceQueue = {}
 
-    def getAppearance(self, vId, info, onCreatedCallback=None, strCD=None):
+    def getAppearance(self, vId, info, onCreatedCallback=None, strCD=None, needLoad=True):
         _logger.debug('getAppearance(%d)', vId)
         key = self.__makeUniqueKey(vId, strCD)
         self.__validateAppearanceCache(key)
@@ -45,9 +45,11 @@ class AppearanceCache(IAppearanceCache):
             if onCreatedCallback is not None:
                 onCreatedCallback(appearance)
             return appearance
-        if key in self.__assemblerCache:
-            return self.__construct(key, onCreatedCallback)
+        if needLoad is False:
+            return
         else:
+            if key in self.__assemblerCache:
+                return self.__construct(key, onCreatedCallback)
             return self.__load(key, info, onCreatedCallback)
 
     def removeAppearance(self, vId, strCD=None):

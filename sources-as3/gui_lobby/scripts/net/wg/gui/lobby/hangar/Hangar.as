@@ -679,6 +679,24 @@ package net.wg.gui.lobby.hangar
          this.carousel.enabled = param1;
       }
       
+      public function as_setComp7ModifiersVisible(param1:Boolean) : void
+      {
+         if(param1 && !this._comp7ModifiersPanelInject)
+         {
+            this._comp7ModifiersPanelInject = new GFInjectComponent();
+            this._comp7ModifiersPanelInject.width = COMP7_MODIFIERS_PANEL_INJECT_WIDTH;
+            this._comp7ModifiersPanelInject.height = COMP7_MODIFIERS_PANEL_INJECT_HEIGHT;
+            addChild(this._comp7ModifiersPanelInject);
+            registerFlashComponentS(this._comp7ModifiersPanelInject,HANGAR_ALIASES.COMP7_MODIFIERS_PANEL);
+            invalidate(INVALIDATE_COMP7_MODIFIERS_VISIBILITY);
+         }
+         if(!param1 && this._comp7ModifiersPanelInject)
+         {
+            this.removeComp7ModifiersPanel();
+            invalidate(INVALIDATE_COMP7_MODIFIERS_VISIBILITY);
+         }
+      }
+      
       public function as_setControlsVisible(param1:Boolean) : void
       {
          if(param1 != this.isControlsVisible)
@@ -737,24 +755,6 @@ package net.wg.gui.lobby.hangar
             this.params.showHelpLayoutEx(this.vehResearchPanel.x - this.params.x,_loc2_);
          }
          this._helpLayout.show();
-      }
-      
-      public function as_setComp7ModifiersVisible(param1:Boolean) : void
-      {
-         if(param1 && !this._comp7ModifiersPanelInject)
-         {
-            this._comp7ModifiersPanelInject = new GFInjectComponent();
-            this._comp7ModifiersPanelInject.width = COMP7_MODIFIERS_PANEL_INJECT_WIDTH;
-            this._comp7ModifiersPanelInject.height = COMP7_MODIFIERS_PANEL_INJECT_HEIGHT;
-            addChild(this._comp7ModifiersPanelInject);
-            registerFlashComponentS(this._comp7ModifiersPanelInject,HANGAR_ALIASES.COMP7_MODIFIERS_PANEL);
-            invalidate(INVALIDATE_COMP7_MODIFIERS_VISIBILITY);
-         }
-         if(!param1 && this._comp7ModifiersPanelInject)
-         {
-            this.removeComp7ModifiersPanel();
-            invalidate(INVALIDATE_COMP7_MODIFIERS_VISIBILITY);
-         }
       }
       
       public function as_showMiniClientInfo(param1:String, param2:String) : void
@@ -956,26 +956,35 @@ package net.wg.gui.lobby.hangar
       private function updateEntriesPosition() : void
       {
          var _loc1_:DisplayObject = null;
-         var _loc3_:Boolean = false;
+         var _loc4_:Boolean = false;
          _loc1_ = this.ammunitionPanelInject.hitObject;
-         var _loc2_:Boolean = this.carousel && this._eventsEntryContainer.isActive && _loc1_ && _loc1_.width > 0;
-         this._eventsEntryContainer.visible = _loc2_;
-         if(_loc2_)
+         var _loc2_:Boolean = _loc1_ && _loc1_.width > 0;
+         var _loc3_:Boolean = this.carousel && this._eventsEntryContainer.isActive;
+         this._eventsEntryContainer.visible = _loc3_;
+         if(_loc3_)
          {
-            this._eventsEntryContainer.x = _width - this._eventsEntryContainer.width - this._eventsEntryContainer.margin.width | 0;
-            this._eventsEntryContainer.y = this.carousel.y - this._eventsEntryContainer.height | 0;
-            _loc3_ = false;
-            if(this.ammunitionPanelInject.visible)
+            if(_loc2_)
             {
-               _loc3_ = this.ammunitionPanelInject.x + _loc1_.x + _loc1_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
-            }
-            if(_loc3_)
-            {
-               this._eventsEntryContainer.y -= _loc1_.y + (_loc1_.height >> 1);
+               this._eventsEntryContainer.x = _width - this._eventsEntryContainer.width - this._eventsEntryContainer.margin.width | 0;
+               this._eventsEntryContainer.y = this.carousel.y - this._eventsEntryContainer.height | 0;
+               _loc4_ = false;
+               if(this.ammunitionPanelInject.visible)
+               {
+                  _loc4_ = this.ammunitionPanelInject.x + _loc1_.x + _loc1_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
+               }
+               if(_loc4_)
+               {
+                  this._eventsEntryContainer.y -= _loc1_.y + (_loc1_.height >> 1);
+               }
+               else
+               {
+                  this._eventsEntryContainer.y -= this._eventsEntryContainer.margin.height;
+               }
             }
             else
             {
-               this._eventsEntryContainer.y -= this._eventsEntryContainer.margin.height;
+               this._eventsEntryContainer.x = _width - this._eventsEntryContainer.width - this._eventsEntryContainer.margin.width | 0;
+               this._eventsEntryContainer.y = this.ammunitionPanel.y + this.ammunitionPanelInject.offsetY;
             }
          }
       }
