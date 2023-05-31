@@ -83,6 +83,8 @@ package net.wg.data.constants.generated
       
       public static const POI_BLOCKED_NOT_INVADER:String = "PoIBlockedNotInvader";
       
+      public static const POI_BLOCKED_OVERTURNED:String = "PoIBlockedOverturned";
+      
       public static const COMP7_RISKY_ATTACK:String = "riskyAttack";
       
       public static const COMP7_AOE_HEAL:String = "aoeHeal";

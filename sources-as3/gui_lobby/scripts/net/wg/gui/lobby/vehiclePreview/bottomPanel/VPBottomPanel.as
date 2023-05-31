@@ -358,6 +358,16 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
          return this.actionButton;
       }
       
+      public function getOffsetY() : int
+      {
+         return 0;
+      }
+      
+      public function getSmallScreenOffsetY() : int
+      {
+         return 0;
+      }
+      
       public function getTotalHeight() : Number
       {
          return TOTAL_H;
@@ -626,11 +636,6 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
       override public function get height() : Number
       {
          return this.actionButton.height;
-      }
-      
-      public function getOffsetY() : int
-      {
-         return 0;
       }
       
       private function onCouponViewSelectHandler(param1:Event) : void

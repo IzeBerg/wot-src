@@ -1,7 +1,7 @@
 import BigWorld
-from block import Block, Meta, InitParam, buildStrKeysValue, EDITOR_TYPE, makeResEditorData
+from block import Block, Meta, InitParam, buildStrKeysValue, makeResEditorData
 from slot_types import SLOT_TYPE, arrayOf
-from misc import ASPECT, BLOCK_MODE
+from misc import ASPECT, BLOCK_MODE, EDITOR_TYPE
 from constants import IS_DEVELOPMENT
 
 class QAMeta(Meta):

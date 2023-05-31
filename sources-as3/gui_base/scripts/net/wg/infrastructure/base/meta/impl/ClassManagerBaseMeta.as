@@ -195,7 +195,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.carousels.interfaces.IScrollerViewPort;
    import net.wg.gui.components.carousels.interfaces.IScrollerViewPortBase;
    import net.wg.gui.components.common.AlphaPropertyWrapper;
-   import net.wg.gui.components.common.BaseLogoView;
    import net.wg.gui.components.common.Counter;
    import net.wg.gui.components.common.CounterBase;
    import net.wg.gui.components.common.CounterLabel;
@@ -695,13 +694,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.events.UILoaderEvent;
    import net.wg.gui.events.ViewStackContentEvent;
    import net.wg.gui.events.ViewStackEvent;
-   import net.wg.gui.gameloading.GameLoading;
-   import net.wg.gui.gameloading.GameLoadingLogos;
    import net.wg.gui.gameloading.LoadingLogo;
    import net.wg.gui.interfaces.IButtonIconLoader;
    import net.wg.gui.interfaces.IButtonIconTextTransparent;
    import net.wg.gui.interfaces.IContentSize;
-   import net.wg.gui.interfaces.IGameLoading;
    import net.wg.gui.interfaces.IGroupedControl;
    import net.wg.gui.interfaces.IHighlighted;
    import net.wg.gui.interfaces.IMagneticClickHandler;
@@ -762,12 +758,14 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.components.KeyInput;
    import net.wg.gui.lobby.settings.components.KeysItemRenderer;
    import net.wg.gui.lobby.settings.components.KeysScrollingList;
+   import net.wg.gui.lobby.settings.components.LimitedUISettingBlock;
    import net.wg.gui.lobby.settings.components.RadioButtonBar;
    import net.wg.gui.lobby.settings.components.SettingsStepSlider;
    import net.wg.gui.lobby.settings.components.SoundDeviceButtonBar;
    import net.wg.gui.lobby.settings.components.SoundDeviceTabButton;
    import net.wg.gui.lobby.settings.components.SoundVoiceWaves;
    import net.wg.gui.lobby.settings.components.evnts.KeyInputEvents;
+   import net.wg.gui.lobby.settings.components.evnts.LimitedUIEvent;
    import net.wg.gui.lobby.settings.config.ControlsFactory;
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
    import net.wg.gui.lobby.settings.events.AlternativeVoiceEvent;
@@ -868,31 +866,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.ViewPrototype;
    import net.wg.infrastructure.base.interfaces.IAbstractPopOverView;
    import net.wg.infrastructure.base.interfaces.IWaiting;
-   import net.wg.infrastructure.base.meta.IAcousticPopoverMeta;
-   import net.wg.infrastructure.base.meta.IBCHighlightsMeta;
-   import net.wg.infrastructure.base.meta.IBCIntroVideoPageMeta;
-   import net.wg.infrastructure.base.meta.IBattleDamageLogPanelMeta;
-   import net.wg.infrastructure.base.meta.IBootcampDialogMeta;
-   import net.wg.infrastructure.base.meta.IBootcampProgressMeta;
-   import net.wg.infrastructure.base.meta.ICarouselEnvironmentMeta;
-   import net.wg.infrastructure.base.meta.IColorSettingsViewMeta;
-   import net.wg.infrastructure.base.meta.ICrosshairPanelContainerMeta;
-   import net.wg.infrastructure.base.meta.IDAAPISimpleContainerMeta;
-   import net.wg.infrastructure.base.meta.IGameLoadingMeta;
-   import net.wg.infrastructure.base.meta.IGammaWizardViewMeta;
-   import net.wg.infrastructure.base.meta.IMinimapEntityMeta;
-   import net.wg.infrastructure.base.meta.IMinimapGridMeta;
-   import net.wg.infrastructure.base.meta.IMinimapPresentationMeta;
-   import net.wg.infrastructure.base.meta.IPopOverViewMeta;
-   import net.wg.infrastructure.base.meta.IReportBugPanelMeta;
-   import net.wg.infrastructure.base.meta.IServerStatsMeta;
-   import net.wg.infrastructure.base.meta.ISettingsWindowMeta;
-   import net.wg.infrastructure.base.meta.ISimpleDialogMeta;
-   import net.wg.infrastructure.base.meta.ISmartPopOverViewMeta;
-   import net.wg.infrastructure.base.meta.ISubtitlesWindowMeta;
-   import net.wg.infrastructure.base.meta.ITankCarouselFilterPopoverMeta;
-   import net.wg.infrastructure.base.meta.ITutorialDialogMeta;
-   import net.wg.infrastructure.base.meta.IVehModulesConfiguratorCmpMeta;
    import net.wg.infrastructure.base.meta.IWaitingTransitionMeta;
    import net.wg.infrastructure.constants.WindowViewInvalidationType;
    import net.wg.infrastructure.events.ColorSchemeEvent;
@@ -1315,8 +1288,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CAROUSELS_INTERFACES_ISCROLLERVIEWPORTBASE:Class = IScrollerViewPortBase;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_ALPHAPROPERTYWRAPPER:Class = AlphaPropertyWrapper;
-      
-      public static const NET_WG_GUI_COMPONENTS_COMMON_BASELOGOVIEW:Class = BaseLogoView;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_COUNTER:Class = Counter;
       
@@ -2316,10 +2287,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_EVENTS_VIEWSTACKEVENT:Class = ViewStackEvent;
       
-      public static const NET_WG_GUI_GAMELOADING_GAMELOADING:Class = GameLoading;
-      
-      public static const NET_WG_GUI_GAMELOADING_GAMELOADINGLOGOS:Class = GameLoadingLogos;
-      
       public static const NET_WG_GUI_GAMELOADING_LOADINGLOGO:Class = LoadingLogo;
       
       public static const NET_WG_GUI_INTERFACES_IBUTTONICONLOADER:Class = IButtonIconLoader;
@@ -2327,8 +2294,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_INTERFACES_IBUTTONICONTEXTTRANSPARENT:Class = IButtonIconTextTransparent;
       
       public static const NET_WG_GUI_INTERFACES_ICONTENTSIZE:Class = IContentSize;
-      
-      public static const NET_WG_GUI_INTERFACES_IGAMELOADING:Class = IGameLoading;
       
       public static const NET_WG_GUI_INTERFACES_IGROUPEDCONTROL:Class = IGroupedControl;
       
@@ -2450,6 +2415,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_KEYSSCROLLINGLIST:Class = KeysScrollingList;
       
+      public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_LIMITEDUISETTINGBLOCK:Class = LimitedUISettingBlock;
+      
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_RADIOBUTTONBAR:Class = RadioButtonBar;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_SETTINGSSTEPSLIDER:Class = SettingsStepSlider;
@@ -2461,6 +2428,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_SOUNDVOICEWAVES:Class = SoundVoiceWaves;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_EVNTS_KEYINPUTEVENTS:Class = KeyInputEvents;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_EVNTS_LIMITEDUIEVENT:Class = LimitedUIEvent;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_CONFIG_CONTROLSFACTORY:Class = ControlsFactory;
       
@@ -2662,115 +2631,9 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_INTERFACES_IWAITING:Class = IWaiting;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IACOUSTICPOPOVERMETA:Class = IAcousticPopoverMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBATTLEDAMAGELOGPANELMETA:Class = IBattleDamageLogPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCHIGHLIGHTSMETA:Class = IBCHighlightsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCINTROVIDEOPAGEMETA:Class = IBCIntroVideoPageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBOOTCAMPDIALOGMETA:Class = IBootcampDialogMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBOOTCAMPPROGRESSMETA:Class = IBootcampProgressMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICAROUSELENVIRONMENTMETA:Class = ICarouselEnvironmentMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOLORSETTINGSVIEWMETA:Class = IColorSettingsViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICROSSHAIRPANELCONTAINERMETA:Class = ICrosshairPanelContainerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IDAAPISIMPLECONTAINERMETA:Class = IDAAPISimpleContainerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IGAMELOADINGMETA:Class = IGameLoadingMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IGAMMAWIZARDVIEWMETA:Class = IGammaWizardViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMINIMAPENTITYMETA:Class = IMinimapEntityMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMINIMAPGRIDMETA:Class = IMinimapGridMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMINIMAPPRESENTATIONMETA:Class = IMinimapPresentationMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPOPOVERVIEWMETA:Class = IPopOverViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IREPORTBUGPANELMETA:Class = IReportBugPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISERVERSTATSMETA:Class = IServerStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISETTINGSWINDOWMETA:Class = ISettingsWindowMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISIMPLEDIALOGMETA:Class = ISimpleDialogMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISMARTPOPOVERVIEWMETA:Class = ISmartPopOverViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISUBTITLESWINDOWMETA:Class = ISubtitlesWindowMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ITANKCAROUSELFILTERPOPOVERMETA:Class = ITankCarouselFilterPopoverMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ITUTORIALDIALOGMETA:Class = ITutorialDialogMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IVEHMODULESCONFIGURATORCMPMETA:Class = IVehModulesConfiguratorCmpMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IWAITINGTRANSITIONMETA:Class = IWaitingTransitionMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_ACOUSTICPOPOVERMETA:Class = AcousticPopoverMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BATTLEDAMAGELOGPANELMETA:Class = BattleDamageLogPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCHIGHLIGHTSMETA:Class = BCHighlightsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCINTROVIDEOPAGEMETA:Class = BCIntroVideoPageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BOOTCAMPDIALOGMETA:Class = BootcampDialogMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BOOTCAMPPROGRESSMETA:Class = BootcampProgressMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CAROUSELENVIRONMENTMETA:Class = CarouselEnvironmentMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COLORSETTINGSVIEWMETA:Class = ColorSettingsViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CROSSHAIRPANELCONTAINERMETA:Class = CrosshairPanelContainerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_DAAPISIMPLECONTAINERMETA:Class = DAAPISimpleContainerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_GAMELOADINGMETA:Class = GameLoadingMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_GAMMAWIZARDVIEWMETA:Class = GammaWizardViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MINIMAPENTITYMETA:Class = MinimapEntityMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MINIMAPGRIDMETA:Class = MinimapGridMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MINIMAPPRESENTATIONMETA:Class = MinimapPresentationMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_POPOVERVIEWMETA:Class = PopOverViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_REPORTBUGPANELMETA:Class = ReportBugPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SERVERSTATSMETA:Class = ServerStatsMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SETTINGSWINDOWMETA:Class = SettingsWindowMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SIMPLEDIALOGMETA:Class = SimpleDialogMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SMARTPOPOVERVIEWMETA:Class = SmartPopOverViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SUBTITLESWINDOWMETA:Class = SubtitlesWindowMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_TANKCAROUSELFILTERPOPOVERMETA:Class = TankCarouselFilterPopoverMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_TUTORIALDIALOGMETA:Class = TutorialDialogMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_VEHMODULESCONFIGURATORCMPMETA:Class = VehModulesConfiguratorCmpMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_WAITINGTRANSITIONMETA:Class = WaitingTransitionMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_WAITINGVIEWMETA:Class = WaitingViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_WINDOWVIEWMETA:Class = WindowViewMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_WRAPPERVIEWMETA:Class = WrapperViewMeta;
       
       public static const NET_WG_INFRASTRUCTURE_CONSTANTS_WINDOWVIEWINVALIDATIONTYPE:Class = WindowViewInvalidationType;
       

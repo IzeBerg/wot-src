@@ -180,5 +180,9 @@ package net.wg.gui.battle.views.epicSpectatorView
       public function as_preloadComponents(param1:Array) : void
       {
       }
+      
+      public function as_hideComponents() : void
+      {
+      }
    }
 }

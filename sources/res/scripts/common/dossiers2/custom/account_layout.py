@@ -42,7 +42,7 @@ _rankedArchiveBlockBuilder = StaticSizeBlockBuilder('rankedArchive', RANKED_BLOC
 _ranked_10x10BlockBuilder = StaticSizeBlockBuilder('ranked_10x10', RANKED_BLOCK_LAYOUT, RANKED_STATS_DEPENDENCIES, [])
 _comp7Season1BlockBuilder = StaticSizeBlockBuilder('comp7Season1', COMP7_BLOCK_LAYOUT, {}, [])
 _comp7Season2BlockBuilder = StaticSizeBlockBuilder('comp7Season2', COMP7_BLOCK_LAYOUT, {}, [])
-_max15x15BlockBuilder = StaticSizeBlockBuilder('max15x15', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
+_max15x15BlockBuilder = StaticSizeBlockBuilder('max15x15', MAX_15x15_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
 _max7x7BlockBuilder = StaticSizeBlockBuilder('max7x7', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
 _maxRated7x7BlockBuilder = StaticSizeBlockBuilder('maxRated7x7', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
 _maxHistoricalBlockBuilder = StaticSizeBlockBuilder('maxHistorical', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
@@ -327,7 +327,8 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'prime_gaming_reserved_10', 'prime_gaming_reserved_11', 'prime_gaming_reserved_12',
  'comp7Season1', 'hw2022Medal01', 'hw2022Medal02', '12YearsOfService',
  'NY23_AtmsphrLevel', 'NY23_CelebChallenge', 'BattlePassCommonPr_NY23',
- 'BattlePassCommonPr_10', 'comp7_2023_1', 'Cosmic_MartianStalker', 'Cosmic_SpaceTrace']
+ 'BattlePassCommonPr_10', 'comp7_2023_1', 'Cosmic_MartianStalker', 'Cosmic_SpaceTrace',
+ 'BattlePassCommonPr_11']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -376,7 +377,7 @@ _singleAchievementsPopUps = [
  'prime_gaming_reserved_12', 'comp7Season1', 'hw2022Medal01', 'hw2022Medal02',
  '12YearsOfService', 'NY23_AtmsphrLevel', 'NY23_CelebChallenge',
  'BattlePassCommonPr_NY23', 'BattlePassCommonPr_10', 'comp7_2023_1',
- 'Cosmic_MartianStalker', 'Cosmic_SpaceTrace']
+ 'Cosmic_MartianStalker', 'Cosmic_SpaceTrace', 'BattlePassCommonPr_11']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']

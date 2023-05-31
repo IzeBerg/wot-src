@@ -66,6 +66,7 @@ package net.wg.gui.components.controls
       
       public function set textColor(param1:uint) : void
       {
+         this._tf.color = param1;
          this.textField.textColor = param1;
       }
       
@@ -119,6 +120,26 @@ package net.wg.gui.components.controls
          }
          this._isUpdateWidth = param1;
          this.updateSize();
+      }
+      
+      public function get textFilters() : Array
+      {
+         return this.textField.filters;
+      }
+      
+      public function set textFilters(param1:Array) : void
+      {
+         this.textField.filters = param1;
+      }
+      
+      public function get textOffsetY() : int
+      {
+         return this.textField.y;
+      }
+      
+      public function set textOffsetY(param1:int) : void
+      {
+         this.textField.y = param1;
       }
       
       public function set fontSize(param1:int) : void

@@ -3,6 +3,8 @@ if typing.TYPE_CHECKING:
     from constants import WGC_PUBLICATION
 
 class ILoginManager(object):
+    onConnectionInitiated = None
+    onConnectionRejected = None
 
     @property
     def servers(self):

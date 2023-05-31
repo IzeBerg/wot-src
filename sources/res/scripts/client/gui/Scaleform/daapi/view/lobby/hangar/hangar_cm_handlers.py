@@ -269,8 +269,6 @@ class VehicleContextMenuHandler(SimpleVehicleCMHandler):
                 options.extend([
                  self._makeItem(VEHICLE.INFO, MENU.contextmenu(VEHICLE.INFO)),
                  self._makeItem(VEHICLE.STATS, MENU.contextmenu(VEHICLE.STATS), {'enabled': vehicleWasInBattle})])
-                if not vehicleWasInBattle:
-                    options.append(self._makeSeparator())
                 self._manageVehCompareOptions(options, vehicle)
                 if self.prbDispatcher is not None:
                     isNavigationEnabled = not self.prbDispatcher.getFunctionalState().isNavigationDisabled()

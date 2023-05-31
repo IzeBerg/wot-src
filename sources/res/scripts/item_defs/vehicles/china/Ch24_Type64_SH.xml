@@ -56,10 +56,7 @@
 			</invisibilityBonus>
 		</trophyUpgradedAdditionalInvisibilityDevice>
 	</optDevsOverrides>
-	<repairCost>
-		9.09091
-		<!--BW_String-->
-	</repairCost>
+	<repairCost>8.695652</repairCost>
 	<crewXpFactor>
 		1.0
 		<!--BW_String-->
@@ -78,7 +75,7 @@
 			<hull2>
 				<chassis>Chassis_02_Ch02_Type62_SH</chassis>
 				<armor>
-					<armor_1>60</armor_1>
+					<armor_1>45</armor_1>
 					<armor_2>40</armor_2>
 					<armor_3>40</armor_3>
 					<armor_4>15</armor_4>
@@ -160,7 +157,7 @@
 				</armor>
 				<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 				<weight>8600</weight>
-				<maxHealth>1100</maxHealth>
+				<maxHealth>1000</maxHealth>
 				<ammoBayHealth>
 					<maxHealth>103</maxHealth>
 					<maxRegenHealth>65</maxRegenHealth>
@@ -225,6 +222,27 @@
 							<!--BW_String-->
 						</anchorDirection>
 					</slot>
+					<slot>
+						<slotType>projectionDecal</slotType>
+						<slotId>15000</slotId>
+						<tags>direction_right_to_left formfactor_rect1x2 cover</tags>
+						<position>
+							0 1.522611 0.099924
+							<!--BW_String-->
+						</position>
+						<rotation>
+							-0 -1.570796 2.680651
+							<!--BW_String-->
+						</rotation>
+						<scale>5.282302 3.348103 5.006622</scale>
+						<hiddenForUser>true</hiddenForUser>
+						<showOn>4368</showOn>
+						<clipAngle>0.485202</clipAngle>
+						<anchorShift>
+							1.29
+							<!--BW_String-->
+						</anchorShift>
+					</slot>
 				</customizationSlots>
 				<hitTester>
 					<collisionModelServer>vehicles/chinese/Ch24_Type64_SH/collision/Hull_02.model</collisionModelServer>
@@ -238,8 +256,8 @@
 			<hull3>
 				<chassis>Chassis_03_Ch33_60G_FT_SH</chassis>
 				<armor>
-					<armor_1>75</armor_1>
-					<armor_2>90</armor_2>
+					<armor_1>70</armor_1>
+					<armor_2>120</armor_2>
 					<armor_3>35</armor_3>
 					<armor_4>30</armor_4>
 					<armor_5>15</armor_5>
@@ -254,7 +272,7 @@
 						</vehicleDamageFactor>
 					</armor_9>
 					<armor_10>
-						40
+						10
 						<vehicleDamageFactor>
 							0.0
 							<!--BW_String-->
@@ -303,7 +321,7 @@
 						</vehicleDamageFactor>
 					</armor_16>
 					<armor_17>20</armor_17>
-					<armor_18>40</armor_18>
+					<armor_18>50</armor_18>
 					<armor_19>90</armor_19>
 					<armor_20>80</armor_20>
 					<armor_21>70</armor_21>
@@ -314,7 +332,7 @@
 				</armor>
 				<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 				<weight>11600</weight>
-				<maxHealth>1400</maxHealth>
+				<maxHealth>1200</maxHealth>
 				<ammoBayHealth>
 					<maxHealth>103</maxHealth>
 					<maxRegenHealth>65</maxRegenHealth>
@@ -379,6 +397,30 @@
 							<!--BW_String-->
 						</anchorDirection>
 					</slot>
+					<slot>
+						<slotType>projectionDecal</slotType>
+						<slotId>15000</slotId>
+						<tags>direction_right_to_left formfactor_rect1x2 cover</tags>
+						<position>
+							0 1.653608 0.262055
+							<!--BW_String-->
+						</position>
+						<rotation>
+							-0 -1.570796 2.680652
+							<!--BW_String-->
+						</rotation>
+						<scale>
+							6.015697 5.999998 6.41958
+							<!--BW_String-->
+						</scale>
+						<hiddenForUser>true</hiddenForUser>
+						<showOn>4368</showOn>
+						<clipAngle>0.722566</clipAngle>
+						<anchorShift>
+							1.29
+							<!--BW_String-->
+						</anchorShift>
+					</slot>
 				</customizationSlots>
 				<hitTester>
 					<collisionModelServer>vehicles/chinese/Ch24_Type64_SH/collision/Hull_03.model</collisionModelServer>
@@ -390,6 +432,13 @@
 				</camouflage>
 			</hull3>
 		</variants>
+		<weight>7600</weight>
+		<maxHealth>850</maxHealth>
+		<ammoBayHealth>
+			<maxHealth>103</maxHealth>
+			<maxRegenHealth>65</maxRegenHealth>
+			<repairCost>0</repairCost>
+		</ammoBayHealth>
 		<armor>
 			<armor_1>20</armor_1>
 			<armor_2>15</armor_2>
@@ -401,52 +450,31 @@
 			<armor_8>0</armor_8>
 			<armor_9>
 				20
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_9>
 			<armor_10>
 				10
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_10>
 			<armor_11>
 				10
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_11>
 			<armor_12>
 				10
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_12>
 			<armor_13>
 				10
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_13>
 			<armor_14>
 				10
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_14>
 			<armor_15>
 				10
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_15>
 			<armor_16>10</armor_16>
 			<armor_17>10</armor_17>
@@ -460,14 +488,7 @@
 			<armor_25>10</armor_25>
 			<armor_26>10</armor_26>
 		</armor>
-		<primaryArmor>armor_2 armor_3 armor_4</primaryArmor>
-		<weight>7600</weight>
-		<maxHealth>700</maxHealth>
-		<ammoBayHealth>
-			<maxHealth>103</maxHealth>
-			<maxRegenHealth>65</maxRegenHealth>
-			<repairCost>0</repairCost>
-		</ammoBayHealth>
+		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 		<models>
 			<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Hull_01.model</undamaged>
 			<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Hull_01.model</destroyed>
@@ -553,6 +574,27 @@
 					<!--BW_String-->
 				</anchorDirection>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15000</slotId>
+				<tags>direction_right_to_left formfactor_rect1x2 cover</tags>
+				<position>
+					0 1.453753 0.238583
+					<!--BW_String-->
+				</position>
+				<rotation>
+					-0 -1.570796 2.680651
+					<!--BW_String-->
+				</rotation>
+				<scale>4.586524 3.348102 4.954365</scale>
+				<hiddenForUser>true</hiddenForUser>
+				<showOn>4368</showOn>
+				<clipAngle>0.485202</clipAngle>
+				<anchorShift>
+					1.29
+					<!--BW_String-->
+				</anchorShift>
+			</slot>
 		</customizationSlots>
 		<turretPitches>
 			<turret>0.000000</turret>
@@ -569,10 +611,6 @@
 			<level>1</level>
 			<price>0</price>
 			<notInShop>true</notInShop>
-			<armor>
-				<leftTrack>10</leftTrack>
-				<rightTrack>10</rightTrack>
-			</armor>
 			<weight>4000</weight>
 			<maxLoad>30000</maxLoad>
 			<terrainResistance>
@@ -599,6 +637,10 @@
 			<maxHealth>130</maxHealth>
 			<maxRegenHealth>100</maxRegenHealth>
 			<repairCost>0</repairCost>
+			<armor>
+				<leftTrack>10</leftTrack>
+				<rightTrack>10</rightTrack>
+			</armor>
 			<models>
 				<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Chassis_01.model</undamaged>
 				<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Chassis_01.model</destroyed>
@@ -1994,10 +2036,6 @@
 					<cost>0</cost>
 				</turret>
 			</unlocks>
-			<armor>
-				<leftTrack>10</leftTrack>
-				<rightTrack>10</rightTrack>
-			</armor>
 			<weight>5000</weight>
 			<maxLoad>30000</maxLoad>
 			<terrainResistance>
@@ -2024,6 +2062,10 @@
 			<maxHealth>200</maxHealth>
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>0</repairCost>
+			<armor>
+				<leftTrack>10</leftTrack>
+				<rightTrack>10</rightTrack>
+			</armor>
 			<models>
 				<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Chassis_02.model</undamaged>
 				<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Chassis_02.model</destroyed>
@@ -3608,10 +3650,6 @@
 					<cost>0</cost>
 				</turret>
 			</unlocks>
-			<armor>
-				<leftTrack>20</leftTrack>
-				<rightTrack>20</rightTrack>
-			</armor>
 			<weight>7000</weight>
 			<maxLoad>30000</maxLoad>
 			<terrainResistance>
@@ -3638,6 +3676,10 @@
 			<maxHealth>200</maxHealth>
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>0</repairCost>
+			<armor>
+				<leftTrack>20</leftTrack>
+				<rightTrack>20</rightTrack>
+			</armor>
 			<models>
 				<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Chassis_03.model</undamaged>
 				<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Chassis_03.model</destroyed>
@@ -5353,6 +5395,8 @@
 			<level>1</level>
 			<price>0</price>
 			<notInShop>true</notInShop>
+			<weight>4000</weight>
+			<maxHealth>300</maxHealth>
 			<armor>
 				<armor_1>20</armor_1>
 				<armor_2>60</armor_2>
@@ -5364,38 +5408,23 @@
 				<armor_8>0</armor_8>
 				<armor_9>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_9>
 				<armor_10>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_10>
 				<armor_11>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_11>
 				<armor_12>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_12>
 				<armor_13>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_13>
 				<armor_14>15</armor_14>
 				<armor_15>20</armor_15>
@@ -5404,20 +5433,6 @@
 				<armor_18>20</armor_18>
 				<armor_19>20</armor_19>
 				<armor_20>15</armor_20>
-				<armor_21>15</armor_21>
-				<armor_22>10</armor_22>
-				<armor_23>10</armor_23>
-				<surveyingDevice>
-					0
-					<chanceToHitByProjectile>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByProjectile>
-					<chanceToHitByExplosion>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByExplosion>
-				</surveyingDevice>
 				<ammoBay>
 					0
 					<chanceToHitByProjectile>
@@ -5429,10 +5444,22 @@
 						<!--BW_String-->
 					</chanceToHitByExplosion>
 				</ammoBay>
+				<surveyingDevice>
+					0
+					<chanceToHitByProjectile>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByProjectile>
+					<chanceToHitByExplosion>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByExplosion>
+				</surveyingDevice>
+				<armor_21>15</armor_21>
+				<armor_22>10</armor_22>
+				<armor_23>10</armor_23>
 			</armor>
 			<primaryArmor>armor_2 armor_3 armor_4</primaryArmor>
-			<weight>4000</weight>
-			<maxHealth>400</maxHealth>
 			<rotationSpeed>55</rotationSpeed>
 			<turretRotatorHealth>
 				<maxHealth>103</maxHealth>
@@ -5448,115 +5475,7 @@
 			<guns>
 				<_105mm_F34M_G1_SH>
 					shared
-					<maxAmmo>60</maxAmmo>
-					<armor>
-						<armor_1>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<armor_5>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
-						<armor_6>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_6>
-						<armor_7>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_7>
-						<armor_8>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_8>
-						<armor_9>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_9>
-						<armor_10>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_10>
-						<armor_11>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_11>
-						<armor_12>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_12>
-						<armor_13>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_13>
-						<armor_14>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_14>
-						<armor_15>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_15>
-						<gun>10</gun>
-					</armor>
+					<maxAmmo>83</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -18 1 -18</minPitch>
 						<maxPitch>0 5 1 5</maxPitch>
@@ -5566,7 +5485,7 @@
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
-						3.2
+						3.6
 						<!--BW_String-->
 					</reloadTime>
 					<aimingTime>
@@ -5589,6 +5508,69 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<armor>
+						<armor_1>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<armor_5>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_5>
+						<armor_6>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_6>
+						<armor_7>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_7>
+						<armor_8>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_8>
+						<armor_9>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_9>
+						<armor_10>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_10>
+						<armor_11>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_11>
+						<armor_12>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_12>
+						<armor_13>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_13>
+						<armor_14>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_14>
+						<armor_15>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_15>
+						<gun>10</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Gun_01.model</destroyed>
@@ -5658,115 +5640,7 @@
 							<cost>0</cost>
 						</chassis>
 					</unlocks>
-					<maxAmmo>60</maxAmmo>
-					<armor>
-						<armor_1>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<armor_5>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
-						<armor_6>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_6>
-						<armor_7>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_7>
-						<armor_8>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_8>
-						<armor_9>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_9>
-						<armor_10>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_10>
-						<armor_11>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_11>
-						<armor_12>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_12>
-						<armor_13>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_13>
-						<armor_14>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_14>
-						<armor_15>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_15>
-						<gun>10</gun>
-					</armor>
+					<maxAmmo>98</maxAmmo>
 					<shotDispersionRadius>
 						0.4
 						<!--BW_String-->
@@ -5801,6 +5675,69 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<armor>
+						<armor_1>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<armor_5>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_5>
+						<armor_6>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_6>
+						<armor_7>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_7>
+						<armor_8>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_8>
+						<armor_9>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_9>
+						<armor_10>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_10>
+						<armor_11>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_11>
+						<armor_12>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_12>
+						<armor_13>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_13>
+						<armor_14>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_14>
+						<armor_15>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_15>
+						<gun>10</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Gun_03.model</undamaged>
 						<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Gun_03.model</destroyed>
@@ -5860,7 +5797,7 @@
 				</_76mm_54-76T_G2_SH>
 				<_85mm_56_85TG_FT_G3_SH>
 					shared
-					<maxAmmo>150</maxAmmo>
+					<maxAmmo>167</maxAmmo>
 					<unlocks>
 						<chassis>
 							Chassis_02_Ch02_Type62_SH
@@ -5871,123 +5808,12 @@
 							<cost>0</cost>
 						</chassis>
 					</unlocks>
-					<armor>
-						<armor_1>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<armor_5>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
-						<armor_6>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_6>
-						<armor_7>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_7>
-						<armor_8>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_8>
-						<armor_9>
-							60
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_9>
-						<armor_10>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_10>
-						<armor_11>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_11>
-						<armor_12>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_12>
-						<armor_13>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_13>
-						<armor_14>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_14>
-						<armor_15>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_15>
-						<gun>10</gun>
-					</armor>
 					<turretYawLimits>-180 180</turretYawLimits>
 					<pitchLimits>
 						<minPitch>0 -15 1 -15</minPitch>
 						<maxPitch>0 5 1 5</maxPitch>
 					</pitchLimits>
-					<reloadTime>
-						8.5
-						<!--BW_String-->
-					</reloadTime>
+					<reloadTime>9</reloadTime>
 					<shotDispersionRadius>
 						0.38
 						<!--BW_String-->
@@ -6022,6 +5848,69 @@
 						<count>2</count>
 						<rate>120</rate>
 					</burst>
+					<armor>
+						<armor_1>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<armor_5>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_5>
+						<armor_6>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_6>
+						<armor_7>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_7>
+						<armor_8>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_8>
+						<armor_9>
+							60
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_9>
+						<armor_10>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_10>
+						<armor_11>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_11>
+						<armor_12>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_12>
+						<armor_13>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_13>
+						<armor_14>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_14>
+						<armor_15>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_15>
+						<gun>10</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Gun_02.model</undamaged>
 						<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Gun_02.model</destroyed>
@@ -6153,8 +6042,10 @@
 					<cost>0</cost>
 				</gun>
 			</unlocks>
+			<weight>5000</weight>
+			<maxHealth>600</maxHealth>
 			<armor>
-				<armor_1>120</armor_1>
+				<armor_1>85</armor_1>
 				<armor_2>50</armor_2>
 				<armor_3>40</armor_3>
 				<armor_4>10</armor_4>
@@ -6164,24 +6055,15 @@
 				<armor_8>0</armor_8>
 				<armor_9>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_9>
 				<armor_10>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_10>
 				<armor_11>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_11>
 				<armor_12>15</armor_12>
 				<armor_13>30</armor_13>
@@ -6192,19 +6074,6 @@
 				<armor_18>20</armor_18>
 				<armor_19>15</armor_19>
 				<armor_20>10</armor_20>
-				<armor_21>20</armor_21>
-				<armor_22>80</armor_22>
-				<surveyingDevice>
-					0
-					<chanceToHitByProjectile>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByProjectile>
-					<chanceToHitByExplosion>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByExplosion>
-				</surveyingDevice>
 				<ammoBay>
 					0
 					<chanceToHitByProjectile>
@@ -6216,17 +6085,28 @@
 						<!--BW_String-->
 					</chanceToHitByExplosion>
 				</ammoBay>
+				<surveyingDevice>
+					0
+					<chanceToHitByProjectile>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByProjectile>
+					<chanceToHitByExplosion>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByExplosion>
+				</surveyingDevice>
+				<armor_21>20</armor_21>
+				<armor_22>80</armor_22>
 			</armor>
 			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
-			<weight>5000</weight>
-			<maxHealth>500</maxHealth>
 			<rotationSpeed>60</rotationSpeed>
 			<turretRotatorHealth>
 				<maxHealth>103</maxHealth>
 				<maxRegenHealth>65</maxRegenHealth>
 				<repairCost>0</repairCost>
 			</turretRotatorHealth>
-			<circularVisionRadius>370</circularVisionRadius>
+			<circularVisionRadius>350</circularVisionRadius>
 			<surveyingDeviceHealth>
 				<maxHealth>52</maxHealth>
 				<maxRegenHealth>33</maxRegenHealth>
@@ -6235,52 +6115,7 @@
 			<guns>
 				<_76mm_54-76T_G2_SH>
 					shared
-					<maxAmmo>60</maxAmmo>
-					<armor>
-						<armor_1>
-							140
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							120
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							25
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<armor_5>
-							80
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
-						<armor_6>
-							90
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_6>
-						<gun>10</gun>
-					</armor>
+					<maxAmmo>98</maxAmmo>
 					<shotDispersionRadius>
 						0.4
 						<!--BW_String-->
@@ -6315,6 +6150,33 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
+					<armor>
+						<armor_1>
+							85
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							85
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							25
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<armor_5>
+							80
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_5>
+						<armor_6>
+							90
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_6>
+						<gun>10</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Gun_05.model</undamaged>
 						<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Gun_05.model</destroyed>
@@ -6374,61 +6236,13 @@
 				</_76mm_54-76T_G2_SH>
 				<_85mm_56_85TG_FT_G3_SH>
 					shared
-					<maxAmmo>150</maxAmmo>
-					<armor>
-						<armor_1>
-							140
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							120
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							25
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<armor_5>
-							80
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
-						<armor_6>
-							90
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_6>
-						<gun>10</gun>
-					</armor>
+					<maxAmmo>167</maxAmmo>
 					<turretYawLimits>-180 180</turretYawLimits>
 					<pitchLimits>
 						<minPitch>0 -15 1 -15</minPitch>
 						<maxPitch>0 5 1 5</maxPitch>
 					</pitchLimits>
-					<reloadTime>
-						8.5
-						<!--BW_String-->
-					</reloadTime>
+					<reloadTime>9</reloadTime>
 					<shotDispersionRadius>
 						0.38
 						<!--BW_String-->
@@ -6463,6 +6277,33 @@
 						<count>2</count>
 						<rate>120</rate>
 					</burst>
+					<armor>
+						<armor_1>
+							85
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							85
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							25
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<armor_5>
+							80
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_5>
+						<armor_6>
+							90
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_6>
+						<gun>10</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Gun_04.model</undamaged>
 						<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Gun_04.model</destroyed>
@@ -6523,60 +6364,12 @@
 				</_85mm_56_85TG_FT_G3_SH>
 				<_85mm_Tip_64-85T_G4_SH>
 					shared
-					<maxAmmo>60</maxAmmo>
-					<armor>
-						<armor_1>
-							140
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							120
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							25
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<armor_5>
-							80
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
-						<armor_6>
-							90
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_6>
-						<gun>10</gun>
-					</armor>
+					<maxAmmo>98</maxAmmo>
 					<shotDispersionRadius>
-						0.39
+						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>
-						4.8
-						<!--BW_String-->
-					</reloadTime>
+					<reloadTime>5</reloadTime>
 					<aimingTime>
 						1.2
 						<!--BW_String-->
@@ -6601,6 +6394,33 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<armor>
+						<armor_1>
+							85
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							85
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							25
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<armor_5>
+							80
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_5>
+						<armor_6>
+							90
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_6>
+						<gun>10</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Gun_06.model</undamaged>
 						<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Gun_06.model</destroyed>
@@ -6660,52 +6480,7 @@
 				</_85mm_Tip_64-85T_G4_SH>
 				<_100mm_62-100TA_G5_SH>
 					shared
-					<maxAmmo>150</maxAmmo>
-					<armor>
-						<armor_1>
-							140
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							120
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							25
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<armor_5>
-							80
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
-						<armor_6>
-							90
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_6>
-						<gun>40</gun>
-					</armor>
+					<maxAmmo>200</maxAmmo>
 					<turretYawLimits>-180 180</turretYawLimits>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
@@ -6714,12 +6489,9 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<reloadTime>
-						9.5
-						<!--BW_String-->
-					</reloadTime>
+					<reloadTime>10</reloadTime>
 					<shotDispersionRadius>
-						0.36
+						0.38
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<aimingTime>
@@ -6746,12 +6518,39 @@
 					</shotDispersionFactors>
 					<clip>
 						<count>8</count>
-						<rate>30</rate>
+						<rate>40</rate>
 					</clip>
 					<burst>
 						<count>2</count>
 						<rate>120</rate>
 					</burst>
+					<armor>
+						<armor_1>
+							85
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							85
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							25
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<armor_5>
+							80
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_5>
+						<armor_6>
+							90
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_6>
+						<gun>40</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Gun_07.model</undamaged>
 						<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Gun_07.model</destroyed>
@@ -6873,72 +6672,42 @@
 					<cost>0</cost>
 				</gun>
 			</unlocks>
+			<weight>7000</weight>
+			<maxHealth>800</maxHealth>
 			<armor>
-				<armor_1>90</armor_1>
-				<armor_2>75</armor_2>
-				<armor_3>80</armor_3>
-				<armor_4>28</armor_4>
-				<armor_5>24</armor_5>
-				<armor_6>53</armor_6>
-				<armor_7>60</armor_7>
+				<armor_1>80</armor_1>
+				<armor_2>65</armor_2>
+				<armor_3>70</armor_3>
+				<armor_4>30</armor_4>
+				<armor_5>25</armor_5>
+				<armor_6>35</armor_6>
+				<armor_7>40</armor_7>
 				<armor_8>0</armor_8>
 				<armor_9>32</armor_9>
 				<armor_10>100</armor_10>
 				<armor_11>
 					24
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_11>
 				<armor_12>30</armor_12>
 				<armor_15>65</armor_15>
-				<armor_16>43</armor_16>
+				<armor_16>45</armor_16>
 				<armor_17>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_17>
 				<armor_18>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_18>
 				<armor_19>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_19>
 				<armor_20>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_20>
-				<armor_21>100</armor_21>
-				<armor_22>85</armor_22>
-				<armor_23>70</armor_23>
-				<armor_24>60</armor_24>
-				<armor_25>45</armor_25>
-				<armor_26>30</armor_26>
-				<surveyingDevice>
-					0
-					<chanceToHitByProjectile>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByProjectile>
-					<chanceToHitByExplosion>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByExplosion>
-				</surveyingDevice>
 				<ammoBay>
 					0
 					<chanceToHitByProjectile>
@@ -6950,10 +6719,25 @@
 						<!--BW_String-->
 					</chanceToHitByExplosion>
 				</ammoBay>
+				<surveyingDevice>
+					0
+					<chanceToHitByProjectile>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByProjectile>
+					<chanceToHitByExplosion>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByExplosion>
+				</surveyingDevice>
+				<armor_21>100</armor_21>
+				<armor_22>85</armor_22>
+				<armor_23>70</armor_23>
+				<armor_24>60</armor_24>
+				<armor_25>45</armor_25>
+				<armor_26>30</armor_26>
 			</armor>
 			<primaryArmor>armor_10 armor_3 armor_9</primaryArmor>
-			<weight>7000</weight>
-			<maxHealth>700</maxHealth>
 			<rotationSpeed>55</rotationSpeed>
 			<turretRotatorHealth>
 				<maxHealth>103</maxHealth>
@@ -6969,52 +6753,7 @@
 			<guns>
 				<_76mm_54-76T_G2_SH>
 					shared
-					<maxAmmo>60</maxAmmo>
-					<armor>
-						<armor_1>
-							140
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<armor_5>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
-						<armor_6>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_6>
-						<gun>20</gun>
-					</armor>
+					<maxAmmo>98</maxAmmo>
 					<shotDispersionRadius>
 						0.4
 						<!--BW_String-->
@@ -7049,6 +6788,33 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
+					<armor>
+						<armor_1>
+							110
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<armor_5>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_5>
+						<armor_6>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_6>
+						<gun>20</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Gun_09.model</undamaged>
 						<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Gun_09.model</destroyed>
@@ -7108,61 +6874,13 @@
 				</_76mm_54-76T_G2_SH>
 				<_85mm_56_85TG_FT_G3_SH>
 					shared
-					<maxAmmo>150</maxAmmo>
-					<armor>
-						<armor_1>
-							140
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<armor_5>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
-						<armor_6>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_6>
-						<gun>20</gun>
-					</armor>
+					<maxAmmo>167</maxAmmo>
 					<turretYawLimits>-180 180</turretYawLimits>
 					<pitchLimits>
 						<minPitch>0 -15 1 -15</minPitch>
 						<maxPitch>0 5 1 5</maxPitch>
 					</pitchLimits>
-					<reloadTime>
-						8.5
-						<!--BW_String-->
-					</reloadTime>
+					<reloadTime>9</reloadTime>
 					<shotDispersionRadius>
 						0.38
 						<!--BW_String-->
@@ -7197,6 +6915,33 @@
 						<count>2</count>
 						<rate>120</rate>
 					</burst>
+					<armor>
+						<armor_1>
+							110
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<armor_5>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_5>
+						<armor_6>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_6>
+						<gun>20</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Gun_08.model</undamaged>
 						<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Gun_08.model</destroyed>
@@ -7260,52 +7005,7 @@
 				</_85mm_56_85TG_FT_G3_SH>
 				<_85mm_Tip_64-85T_G4_SH>
 					shared
-					<maxAmmo>200</maxAmmo>
-					<armor>
-						<armor_1>
-							140
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<armor_5>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
-						<armor_6>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_6>
-						<gun>20</gun>
-					</armor>
+					<maxAmmo>98</maxAmmo>
 					<turretYawLimits>-180 180</turretYawLimits>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
@@ -7314,12 +7014,9 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<reloadTime>
-						4.8
-						<!--BW_String-->
-					</reloadTime>
+					<reloadTime>5</reloadTime>
 					<shotDispersionRadius>
-						0.39
+						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<aimingTime>
@@ -7341,6 +7038,33 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<armor>
+						<armor_1>
+							110
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<armor_5>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_5>
+						<armor_6>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_6>
+						<gun>20</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Gun_10.model</undamaged>
 						<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Gun_10.model</destroyed>
@@ -7401,61 +7125,13 @@
 				</_85mm_Tip_64-85T_G4_SH>
 				<_152mm_59_152JG_FT_G6_SH>
 					shared
-					<maxAmmo>60</maxAmmo>
-					<armor>
-						<armor_1>
-							140
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							45
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<armor_5>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
-						<armor_6>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_6>
-						<gun>20</gun>
-					</armor>
+					<maxAmmo>35</maxAmmo>
 					<turretYawLimits>-180 180</turretYawLimits>
 					<pitchLimits>
 						<minPitch>0 -15 1 -15</minPitch>
 						<maxPitch>0 6 1 6</maxPitch>
 					</pitchLimits>
-					<reloadTime>
-						9.5
-						<!--BW_String-->
-					</reloadTime>
+					<reloadTime>9</reloadTime>
 					<shotDispersionRadius>
 						0.55
 						<!--BW_String-->
@@ -7476,6 +7152,33 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<armor>
+						<armor_1>
+							110
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							45
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<armor_5>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_5>
+						<armor_6>
+							30
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_6>
+						<gun>20</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/chinese/Ch24_Type64_SH/normal/lod0/Gun_11.model</undamaged>
 						<destroyed>vehicles/chinese/Ch24_Type64_SH/crash/lod0/Gun_11.model</destroyed>
@@ -7672,7 +7375,7 @@
 					<smplFwMaxSpeed>60</smplFwMaxSpeed>
 				</Continental_AOSI_895_5_Prem_SH>
 				<_12150L-3_V-12_SH>
-					<smplEnginePower>890</smplEnginePower>
+					<smplEnginePower>950</smplEnginePower>
 					<smplFwMaxSpeed>75</smplFwMaxSpeed>
 				</_12150L-3_V-12_SH>
 				<_12150L1_SH>

@@ -341,9 +341,6 @@ msgstr "- -"
 msgid "damageIndicator/multiplier"
 msgstr "x%(multiplier)s"
 
-msgid "damageLog/DEATH_ZONE"
-msgstr "DZ"
-
 msgid "damageLog/multiplier"
 msgstr "x%(multiplier)s"
 
@@ -736,6 +733,9 @@ msgstr "Damage by Fireball"
 
 msgid "efficiencyRibbons/spotted"
 msgstr "Spotted"
+
+msgid "efficiencyRibbons/staticDeathZone"
+msgstr "Damage From Destruction Zone"
 
 msgid "efficiencyRibbons/stun"
 msgstr "Stun"
@@ -1363,6 +1363,9 @@ msgstr "%(target)s destroyed"
 msgid "player_messages/DEATH_FROM_SHOT_SELF_ENEMY_POI"
 msgstr "%(target)s destroyed"
 
+msgid "player_messages/DEATH_FROM_STATIC_DEATH_ZONE_ALLY_SUICIDE"
+msgstr "Ally %(target)s destroyed by the destruction zone."
+
 msgid "player_messages/DEATH_FROM_WORLD_COLLISION_ALLY_ALLY"
 msgstr "Ally %(attacker)s crashed ally %(target)s."
 
@@ -1709,6 +1712,9 @@ msgstr "Vehicle destroyed by Artillery Strike"
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_BOMBER"
 msgstr "Vehicle destroyed by Airstrike"
+
+msgid "postmortem_messages/DEATH_FROM_STATIC_DEATH_ZONE_SELF_SUICIDE"
+msgstr "Vehicle destroyed by the destruction zone"
 
 msgid "postmortem_messages/DEATH_FROM_THUNDER_STRIKE"
 msgstr "Vehicle destroyed by Electric Discharge."
@@ -2884,6 +2890,11 @@ msgstr "Our Team"
 
 msgid "statistics/team2title"
 msgstr "Enemy Team"
+
+msgid "statusNotificationTimers/staticDeathZone"
+msgstr ""
+"Leave the\n"
+"destruction zone!"
 
 msgid "stun/indicator"
 msgstr "Crew stunned"

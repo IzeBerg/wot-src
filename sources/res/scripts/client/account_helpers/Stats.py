@@ -33,6 +33,7 @@ _CACHE_STATS = ('isFinPswdVerified', 'mayConsumeWalletResources', 'oldVehInvIDs'
                 'comp7')
 _PREFERRED_MAPS_KEY = 'preferredMaps'
 _ADDITIONAL_XP_CACHE_KEY = '_additionalXPCache'
+_LIMITED_UI = 'limitedUi'
 
 def _checkIfNonPlayer(*args):
 
@@ -148,6 +149,8 @@ class Stats(object):
             synchronizeDicts(piggyBankDiff, cache.setdefault(PIGGY_BANK_PDATA_KEY, dict()))
         if _PREFERRED_MAPS_KEY in diff:
             synchronizeDicts(diff[_PREFERRED_MAPS_KEY], cache.setdefault(_PREFERRED_MAPS_KEY, {}))
+        if _LIMITED_UI in diff:
+            synchronizeDicts(diff[_LIMITED_UI], cache.setdefault(_LIMITED_UI, {}))
         return
 
     def getCache(self, callback=None):

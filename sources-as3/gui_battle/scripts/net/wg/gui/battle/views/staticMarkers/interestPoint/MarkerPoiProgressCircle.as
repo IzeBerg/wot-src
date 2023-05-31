@@ -161,7 +161,8 @@ package net.wg.gui.battle.views.staticMarkers.interestPoint
       
       private function updateIconsVisibility() : void
       {
-         var _loc1_:Boolean = statusID == POI_CONSTS.POI_STATUS_COOLDOWN;
+         var _loc1_:Boolean = false;
+         _loc1_ = statusID == POI_CONSTS.POI_STATUS_COOLDOWN;
          this.smallIcon.visible = _loc1_;
          icon.visible = !_loc1_;
          highlight.visible = !_loc1_;

@@ -1,6 +1,5 @@
-import logging, weakref, BigWorld, GUI, Math, SoundGroups
+import logging, weakref, GUI, Math, SoundGroups
 from AvatarInputHandler import AvatarInputHandler
-from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
 from gui.Scaleform.daapi.view.battle.shared.map_zones.minimap import MapZonesEntriesPlugin
 from gui.Scaleform.daapi.view.battle.shared.minimap import settings, plugins
 from gui.Scaleform.daapi.view.meta.MinimapMeta import MinimapMeta
@@ -173,9 +172,6 @@ class MinimapComponent(MinimapMeta, IMinimapComponent):
            'area_markers': plugins.AreaMarkerEntriesPlugin, 
            'spgShot': plugins.EnemySPGShotPlugin, 
            'map_zones': MapZonesEntriesPlugin}
-        arenaBonusType = BigWorld.player().arenaBonusType
-        if arenaBonusType and BONUS_CAPS.checkAny(arenaBonusType, BONUS_CAPS.DEATHZONES):
-            setup['deathzones'] = plugins.DeathZonesMinimapPlugin
         return setup
 
     def _createFlashComponent(self):

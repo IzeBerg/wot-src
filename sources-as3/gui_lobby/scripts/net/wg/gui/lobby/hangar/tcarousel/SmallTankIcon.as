@@ -105,6 +105,10 @@ package net.wg.gui.lobby.hangar.tcarousel
          {
             txtInfo.visible = infoImg.visible;
          }
+         if(txtInfo.visible)
+         {
+            statsBg.visible = statsTF.visible = false;
+         }
          if(param1.hasSale && param1.buySlot)
          {
             actionPrice.validateNow();

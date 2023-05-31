@@ -66,6 +66,10 @@ class SettingsWindowMeta(AbstractWindowView):
         if self._isDAAPIInited():
             return self.flashObject.as_confirmWarningDialog(isOk, dialogID)
 
+    def as_showLimitedUISettingS(self, isVisible):
+        if self._isDAAPIInited():
+            return self.flashObject.as_showLimitedUISetting(isVisible)
+
     def as_ConfirmationOfApplicationS(self, isApplied):
         if self._isDAAPIInited():
             return self.flashObject.as_ConfirmationOfApplication(isApplied)

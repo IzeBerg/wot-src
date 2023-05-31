@@ -869,14 +869,31 @@
 			</min>
 		</restrictions>
 	</modeCreditsFactor>
-	<divingDestructionDelay>
+	<invisibilityFactorAtShot>
 		<id>63</id>
 		<dataType>float</dataType>
+		<domain>gun</domain>
+		<restrictions>
+			<min>
+				0.001
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</invisibilityFactorAtShot>
+	<vehicleAoIRadius>
+		<id>64</id>
+		<dataType>float</dataType>
+		<domain>constants</domain>
+		<client>
+			<domain>visibility</domain>
+			<physicalType>meters</physicalType>
+			<useTypes>val mul add</useTypes>
+		</client>
 		<restrictions>
 			<min>
 				0.0
 				<!--BW_String-->
 			</min>
 		</restrictions>
-	</divingDestructionDelay>
+	</vehicleAoIRadius>
 </root>

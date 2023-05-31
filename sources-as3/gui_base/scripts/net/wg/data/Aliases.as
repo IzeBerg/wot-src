@@ -177,6 +177,8 @@ package net.wg.data
       
       public static const PROFILE_SUMMARY_PAGE:String = "profileSummaryPage";
       
+      public static const PROFILE_TOTAL_PAGE:String = "profileTotalPage";
+      
       public static const PROFILE_SECTION:String = "profileSection";
       
       public static const PROFILE_SUMMARY_WINDOW:String = "profileSummaryWindow";

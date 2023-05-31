@@ -25,7 +25,7 @@ package net.wg.gui.lobby.profile.pages.awards
       
       public var blockSpecialAwards:AwardsTileListBlock;
       
-      protected var blocks:Vector.<AwardsTileListBlock>;
+      private var _blocks:Vector.<AwardsTileListBlock>;
       
       private var _gapBetweenBlocks:uint = 20;
       
@@ -84,8 +84,8 @@ package net.wg.gui.lobby.profile.pages.awards
          this.blockCommemoratives.labelText = _loc1_.makeString(PROFILE.SECTION_AWARDS_LABELS_MEMORY);
          this.blockStageAwards.labelText = _loc1_.makeString(PROFILE.SECTION_AWARDS_LABELS_STAGE);
          this.blockSpecialAwards.labelText = _loc1_.makeString(PROFILE.SECTION_AWARDS_LABELS_SPECIAL);
-         this.blocks = new <AwardsTileListBlock>[this.blockBattleHeroes,this.blockHonors,this.blockEpicAwards,this.blockGroupAwards,this.blockCommemoratives,this.blockStageAwards,this.blockSpecialAwards];
-         for each(_loc2_ in this.blocks)
+         this._blocks = new <AwardsTileListBlock>[this.blockBattleHeroes,this.blockHonors,this.blockEpicAwards,this.blockGroupAwards,this.blockCommemoratives,this.blockStageAwards,this.blockSpecialAwards];
+         for each(_loc2_ in this._blocks)
          {
             _loc2_.visible = false;
             _loc2_.addEventListener(Event.RESIZE,this.onBlockResizeHandler,false,0,true);
@@ -103,17 +103,17 @@ package net.wg.gui.lobby.profile.pages.awards
          super.draw();
          if(isInvalid(InvalidationType.DATA))
          {
-            _loc1_ = this.blocks.length;
+            _loc1_ = this._blocks.length;
             _loc2_ = 0;
             while(_loc2_ < _loc1_)
             {
                if(this._allMedalsData)
                {
-                  applyBlockData(this.blocks[_loc2_],this._allMedalsData[_loc2_]);
+                  applyBlockData(this._blocks[_loc2_],this._allMedalsData[_loc2_]);
                }
                else
                {
-                  applyBlockData(this.blocks[_loc2_],[]);
+                  applyBlockData(this._blocks[_loc2_],[]);
                }
                _loc2_++;
             }
@@ -121,11 +121,11 @@ package net.wg.gui.lobby.profile.pages.awards
          if(isInvalid(InvalidationType.SIZE))
          {
             _loc3_ = this._gapBetweenBlocks;
-            _loc5_ = this.blocks.length;
+            _loc5_ = this._blocks.length;
             _loc6_ = 0;
             while(_loc6_ < _loc5_)
             {
-               _loc4_ = this.blocks[_loc6_];
+               _loc4_ = this._blocks[_loc6_];
                _loc4_.y = this._gapBetweenBlocks;
                _loc4_.visible = _loc4_.dataProvider && _loc4_.dataProvider.length > 0;
                if(_loc4_.visible)
@@ -143,9 +143,9 @@ package net.wg.gui.lobby.profile.pages.awards
       override protected function onDispose() : void
       {
          var _loc1_:AwardsTileListBlock = null;
-         while(this.blocks.length > 0)
+         while(this._blocks.length > 0)
          {
-            _loc1_ = this.blocks.splice(this.blocks.length - 1,1)[0];
+            _loc1_ = this._blocks.splice(this._blocks.length - 1,1)[0];
             _loc1_.removeEventListener(Event.RESIZE,this.onBlockResizeHandler);
             _loc1_.dispose();
             if(_loc1_.parent)
@@ -162,7 +162,7 @@ package net.wg.gui.lobby.profile.pages.awards
          this.blockCommemoratives = null;
          this.blockStageAwards = null;
          this.blockSpecialAwards = null;
-         this.blocks = null;
+         this._blocks = null;
          super.onDispose();
       }
       
@@ -187,6 +187,11 @@ package net.wg.gui.lobby.profile.pages.awards
       {
          param1.stopPropagation();
          this.updateSize();
+      }
+      
+      public function get blocks() : Vector.<AwardsTileListBlock>
+      {
+         return this._blocks;
       }
    }
 }

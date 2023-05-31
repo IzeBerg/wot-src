@@ -92,12 +92,15 @@ class ApplicationStorage(object):
         self.__worker.start()
         self.__db = {}
 
+    @property
+    def stopped(self):
+        return self.__worker is None
+
     def close(self):
         for i in self.__db.itervalues():
             i.close()
 
         self.__db = {}
-        self.__cacheDir = {}
         self.stopWorker()
 
     def stopWorker(self):
@@ -107,13 +110,11 @@ class ApplicationStorage(object):
         return
 
     def restartWorker(self, workersLimit, queueLimit=threads.INFINITE_QUEUE_SIZE):
-        if self.__worker is None:
+        if self.stopped:
             self.__worker = threads.ThreadPool(workersLimit, queueLimit)
             self.__worker.start()
             for storage in self.__db.itervalues():
                 storage.setWorker(self.__worker)
-
-        return
 
     @property
     def rootDirPath(self):

@@ -1,1 +1,0 @@
-PROGRESSION_TOKEN = 'cosmic_event:progression_token'

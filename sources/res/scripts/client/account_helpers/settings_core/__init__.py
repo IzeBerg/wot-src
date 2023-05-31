@@ -9,3 +9,12 @@ def getSettingsCoreConfig(manager):
     manager.addInstance(ISettingsCore, core, finalizer='fini')
     cache.init()
     core.init()
+
+
+def longToInt32(value):
+    if 2147483648 <= value <= 4294967295:
+        value &= 2147483647
+        value = int(value)
+        value = ~value
+        value ^= 2147483647
+    return value

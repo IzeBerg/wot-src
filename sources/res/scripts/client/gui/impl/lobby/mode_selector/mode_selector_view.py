@@ -165,9 +165,6 @@ class ModeSelectorView(ViewImpl):
             return RandomBattlePopover()
         return super(ModeSelectorView, self).createPopOverContent(event)
 
-    def refresh(self):
-        self.__dataProvider.forceRefresh()
-
     def close(self):
         g_eventBus.handleEvent(events.DestroyGuiImplViewEvent(self.layoutID))
 

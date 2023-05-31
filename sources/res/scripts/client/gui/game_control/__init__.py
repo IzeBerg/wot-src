@@ -60,7 +60,6 @@ def getGameControllersConfig(manager):
     from gui.game_control.craftmachine_controller import CraftmachineController
     from gui.game_control.reactive_comm import ReactiveCommunicationService
     from gui.game_control.maps_training_controller import MapsTrainingController as _MapsTrainingController
-    from gui.ui_spam.ui_spam_controller import UISpamController
     from gui.game_control.blueprints_convert_sale_controller import BlueprintsConvertSaleController
     from gui.game_control.mapbox_controller import MapboxController
     from gui.game_control.overlay import OverlayController as _OverlayController
@@ -80,6 +79,8 @@ def getGameControllersConfig(manager):
     from gui.entitlements.entitlements_controller import EntitlementsController
     from gui.game_control.winback_controller import WinbackController
     from gui.game_control.daily_quests_intro_presenter import DailyQuestsIntroPresenter
+    from gui.game_control.achievements20_controller import Achievements20Controller as _Ach20Ctrl
+    from gui.limited_ui.lui_controller import LimitedUIController
     from gui.game_control.collections_controller import CollectionsSystemController
     tracker = GameStateTracker()
     tracker.init()
@@ -144,7 +145,6 @@ def getGameControllersConfig(manager):
     _config(_interface.IClanNotificationController, _ClanNotification())
     _config(_interface.IReactiveCommunicationService, ReactiveCommunicationService())
     _config(_interface.IMapsTrainingController, _MapsTrainingController())
-    _config(_interface.IUISpamController, UISpamController())
     _config(_interface.IBlueprintsConvertSaleController, BlueprintsConvertSaleController())
     _config(_interface.IOverlayController, _OverlayController())
     _config(_interface.ISteamCompletionController, _SteamCompletionController())
@@ -160,4 +160,6 @@ def getGameControllersConfig(manager):
     _config(_interface.ICollectionsSystemController, CollectionsSystemController())
     _config(_interface.IWinbackController, WinbackController())
     _config(_interface.IDailyQuestIntroPresenter, DailyQuestsIntroPresenter())
+    _config(_interface.IAchievements20Controller, _Ach20Ctrl())
+    _config(_interface.ILimitedUIController, LimitedUIController())
     collectGameControllers(_config)

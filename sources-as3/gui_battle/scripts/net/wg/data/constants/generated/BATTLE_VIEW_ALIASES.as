@@ -143,8 +143,6 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_NOTIFIER:String = "battleNotifier";
       
-      public static const COSMIC_HUD:String = "cosmicHud";
-      
       public static const CORRODING_SHOT_INDICATOR:String = "corrodingShotIndicator";
       
       public static const PERSONAL_RESERVES_TAB:String = "personalReservesTab";
@@ -165,9 +163,13 @@ package net.wg.data.constants.generated
       
       public static const BR_SELECT_RESPAWN:String = "BRSelectRespawn";
       
+      public static const BR_RESPAWN_MESSAGE_PANEL:String = "BRRespawnMessagePanel";
+      
       public static const FRAG_PANEL:String = "fragPanel";
       
       public static const BR_PLAYER_STATS_IN_BATTLE:String = "brPlayerStatsInBattle";
+      
+      public static const BR_TIMERS_PANEL:String = "brTimersPanel";
       
       public static const ROLE_DESCRIPTION:String = "roleDescription";
       

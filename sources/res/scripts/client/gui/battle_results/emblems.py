@@ -1,6 +1,6 @@
 from adisp import adisp_process
 from gui.battle_results.settings import EMBLEM_TYPE
-from gui.shared.ClanCache import g_clanCache
+from gui.clans.clan_cache import g_clanCache
 
 class EmblemFetcher(object):
     __slots__ = ('_formationDBID', '_url', '_callback')

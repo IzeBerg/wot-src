@@ -44,21 +44,6 @@ class LoginPageMeta(View):
     def changeAccount(self):
         self._printOverrideError('changeAccount')
 
-    def onVideoLoaded(self):
-        self._printOverrideError('onVideoLoaded')
-
-    def musicFadeOut(self):
-        self._printOverrideError('musicFadeOut')
-
-    def videoLoadingFailed(self):
-        self._printOverrideError('videoLoadingFailed')
-
-    def switchBgMode(self):
-        self._printOverrideError('switchBgMode')
-
-    def setMute(self, value):
-        self._printOverrideError('setMute')
-
     def as_setDefaultValuesS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setDefaultValues(data)
@@ -79,14 +64,6 @@ class LoginPageMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_setLoginWarning(value)
 
-    def as_showWallpaperS(self, isShow, path, showSwitcher, isMuted):
-        if self._isDAAPIInited():
-            return self.flashObject.as_showWallpaper(isShow, path, showSwitcher, isMuted)
-
-    def as_showLoginVideoS(self, path, bufferTime, isMuted):
-        if self._isDAAPIInited():
-            return self.flashObject.as_showLoginVideo(path, bufferTime, isMuted)
-
     def as_setLoginWarningHideS(self):
         if self._isDAAPIInited():
             return self.flashObject.as_setLoginWarningHide()
@@ -98,14 +75,6 @@ class LoginPageMeta(View):
     def as_setKeyboardLangS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setKeyboardLang(value)
-
-    def as_pausePlaybackS(self):
-        if self._isDAAPIInited():
-            return self.flashObject.as_pausePlayback()
-
-    def as_resumePlaybackS(self):
-        if self._isDAAPIInited():
-            return self.flashObject.as_resumePlayback()
 
     def as_doAutoLoginS(self):
         if self._isDAAPIInited():

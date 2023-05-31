@@ -675,29 +675,13 @@
 		</value>
 	</setting>
 	<setting>
-		<name>postBattleExchange</name>
-		<type>dict</type>
-		<value>
-			<item>
-				<name>enabled</name>
-				<type>bool</type>
-				<value>False</value>
-			</item>
-			<item>
-				https://eu.wargaming.net
-				<name>url</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
 		<name>socialNetworkLogin</name>
 		<type>dict</type>
 		<value>
 			<item>
 				<name>enabled</name>
 				<type>bool</type>
-				<value>True</value>
+				<value>False</value>
 			</item>
 			<item>
 				<name>encryptToken</name>
@@ -1087,7 +1071,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/vehicles)
+				$PARAMS(/vehicles_container)
 				<name>buyVehiclesUrl</name>
 				<type>url</type>
 			</item>
@@ -1127,12 +1111,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/vehicles/vehicles)
+				$PARAMS(/vehicles_container/vehicles)
 				<name>premiumVehicles</name>
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/collection_vehicles/collection_vehicles)
+				$PARAMS(/vehicles_container/collection_vehicles)
 				<name>buyCollectibleVehicle</name>
 				<type>url</type>
 			</item>
@@ -1191,6 +1175,16 @@
 				<name>eventLootboxes</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/sh_category/sh_category)
+				<name>shProducts</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/showcase/styles_2d)
+				<name>showcase</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1235,22 +1229,22 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/10BPContentPage/
+				/$LANGUAGE_CODE/promocontent/11BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/9BPContentPage#bp9extrachapter/
+				/$LANGUAGE_CODE/promocontent/11BPContentPage#bp11extrachapter/
 				<name>extraInfoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/10BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/11BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/9BPExtraChapter/
+				/$LANGUAGE_CODE/promocontent/11BPExtraChapter/
 				<name>extraIntroVideo</name>
 				<type>url</type>
 			</item>
@@ -1283,10 +1277,6 @@
 					<item>
 						<type>string</type>
 						<value>styles</value>
-					</item>
-					<item>
-						<type>string</type>
-						<value>tanks</value>
 					</item>
 				</value>
 			</item>
@@ -1803,7 +1793,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2022IntroVideo/
+				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2023IntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1834,22 +1824,22 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/recon-mission-2023/
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/mapbox/
 				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/recon-mission-2023/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
 				<name>EU</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/recon-mission-2023/
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/mapbox/
 				<name>ASIA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-cn360.wotgame.cn/zh-cn/promocontent/recon-mission-2023/
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/mapbox/
 				<name>CN</name>
 				<type>url</type>
 			</item>
@@ -1859,7 +1849,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/recon-mission-2023/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -2095,38 +2085,6 @@
 			</item>
 			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/player-subscriptions/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>cosmicInfoPageURL</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/call-to-mars/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/call-to-mars/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/call-to-mars/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/call-to-mars/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/call-to-mars/
 				<name>default</name>
 				<type>url</type>
 			</item>

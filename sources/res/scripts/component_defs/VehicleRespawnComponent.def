@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<CellMethods>
+		<chooseSpawnGroup>
+			<Exposed/>
+			<Arg>STRING</Arg>
+		</chooseSpawnGroup>
+	</CellMethods>
+	<Properties>
+		<spawnGroups>
+			<Type>
+				ARRAY
+				<of>SPAWNGROUP_INFO</of>
+			</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
+		</spawnGroups>
+		<groupName>
+			<Type>STRING</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
+		</groupName>
+		<delay>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</delay>
+		<spawnTime>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</spawnTime>
+	</Properties>
+	<ofEntity>
+		<Vehicle/>
+	</ofEntity>
+	<DefaultKeyName>VehicleRespawnComponent</DefaultKeyName>
+</root>
