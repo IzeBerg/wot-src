@@ -47,7 +47,12 @@ package net.wg.infrastructure.tutorial.builders
       
       public function updateData(param1:Object) : void
       {
-         this._asserter.assertNotNull(param1,"data for tutorial builder" + Errors.CANT_NULL);
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 13
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       public function stopEffect() : void

@@ -122,77 +122,22 @@ package net.wg.gui.lobby.settings
       
       override protected function setData(param1:SettingsDataVo) : void
       {
-         var _loc5_:String = null;
-         var _loc6_:Object = null;
-         var _loc7_:Boolean = false;
-         var _loc9_:CheckBox = null;
-         var _loc10_:Slider = null;
-         var _loc11_:SettingsDataVo = null;
-         var _loc12_:Array = null;
-         super.setData(param1);
-         var _loc2_:Vector.<String> = param1.keys;
-         var _loc3_:Vector.<Object> = param1.values;
-         var _loc4_:int = _loc2_.length;
-         _loc5_ = Values.EMPTY_STR;
-         _loc6_ = null;
-         var _loc8_:int = 0;
-         while(_loc8_ < _loc4_)
-         {
-            _loc5_ = _loc2_[_loc8_];
-            if(_loc3_[_loc8_] is SettingsControlProp)
-            {
-               _loc6_ = _loc3_[_loc8_] as SettingsControlProp;
-               App.utils.asserter.assertNotNull(_loc6_,"valuesView[i] must be SettingsControlProp");
-               _loc7_ = !(_loc6_.current == null || _loc6_.readOnly);
-               if(this[_loc5_ + _loc6_.type])
-               {
-                  switch(_loc6_.type)
-                  {
-                     case SettingsConfigHelper.TYPE_CHECKBOX:
-                        _loc9_ = CheckBox(this[_loc5_ + _loc6_.type]);
-                        _loc9_.selected = _loc6_.current;
-                        _loc9_.addEventListener(Event.SELECT,this.onCheckBoxSelectHandler);
-                        _loc9_.enabled = _loc7_;
-                        break;
-                     case SettingsConfigHelper.TYPE_SLIDER:
-                        _loc10_ = Slider(this[_loc5_ + _loc6_.type]);
-                        _loc10_.value = _loc6_.current;
-                        _loc10_.addEventListener(SliderEvent.VALUE_CHANGE,this.onSliderValueChangeHandler);
-                        _loc10_.enabled = _loc7_;
-                  }
-               }
-            }
-            else if(_loc5_ == SettingsConfigHelper.KEYBOARD)
-            {
-               _loc11_ = _loc3_[_loc8_] as SettingsDataVo;
-               App.utils.asserter.assertNotNull(_loc11_,"valuesView[i] must be SettingsDataVo");
-               _loc12_ = this.createDataProviderForKeys(_loc11_,data[SettingsConfigHelper.KEYS_LAYOUT_ORDER]);
-               keys.dataProvider = new DataProvider(_loc12_);
-               keys.addEventListener(ListEventEx.ITEM_TEXT_CHANGE,this.onKeysItemTextChangeHandler);
-               keys.validateNow();
-            }
-            _loc8_++;
-         }
-         defaultBtn.addEventListener(ButtonEvent.CLICK,this.onSetDefaultClickHandler);
-         this.checkEnabledSetDefBtn();
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 255
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       public function isControlsChanged(param1:Boolean) : Boolean
       {
-         var _loc3_:Boolean = false;
-         var _loc5_:Object = null;
-         var _loc2_:Boolean = this._isControlsChanged;
-         this._isControlsChanged = false;
-         var _loc4_:Vector.<String> = SettingsConfigHelper.instance.settingsData[SettingsConfigHelper.CONTROLS_SETTINGS][SettingsConfigHelper.KEYBOARD_IMPORTANT_BINDS];
-         for each(_loc5_ in keys.dataProvider)
-         {
-            if(KeyProps.KEY_NONE == _loc5_.key && _loc4_.indexOf(_loc5_.id) != -1)
-            {
-               _loc3_ = true;
-               break;
-            }
-         }
-         return !!param1 ? _loc2_ && _loc3_ : Boolean(_loc3_);
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 84
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       private function updateKeysNewCounters(param1:Vector.<CountersVo>) : void
@@ -232,96 +177,22 @@ package net.wg.gui.lobby.settings
       
       private function controlsChanged() : Boolean
       {
-         var _loc2_:Vector.<String> = null;
-         var _loc3_:Vector.<Object> = null;
-         var _loc4_:int = 0;
-         var _loc5_:String = null;
-         var _loc6_:int = 0;
-         var _loc7_:SettingsControlProp = null;
-         var _loc8_:CheckBox = null;
-         var _loc9_:Slider = null;
-         var _loc1_:Boolean = false;
-         if(data)
-         {
-            _loc2_ = data.keys;
-            _loc3_ = data.values;
-            _loc4_ = _loc2_.length;
-            _loc5_ = Values.EMPTY_STR;
-            _loc6_ = 0;
-            while(_loc6_ < _loc4_)
-            {
-               _loc5_ = _loc2_[_loc6_];
-               if(_loc3_[_loc6_] is SettingsControlProp)
-               {
-                  _loc7_ = SettingsControlProp(_loc3_[_loc6_]);
-                  if(this[_loc5_ + _loc7_.type])
-                  {
-                     switch(_loc7_.type)
-                     {
-                        case SettingsConfigHelper.TYPE_CHECKBOX:
-                           _loc8_ = CheckBox(this[_loc5_ + _loc7_.type]);
-                           _loc1_ = _loc8_.selected != _loc7_.defaultValue;
-                           break;
-                        case SettingsConfigHelper.TYPE_SLIDER:
-                           _loc9_ = Slider(this[_loc5_ + _loc7_.type]);
-                           _loc1_ = _loc9_.value != _loc7_.defaultValue;
-                     }
-                  }
-               }
-               if(_loc1_)
-               {
-                  break;
-               }
-               _loc6_++;
-            }
-         }
-         return _loc1_;
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 161
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       private function onSetDefaultClickHandler(param1:ButtonEvent) : void
       {
-         var _loc2_:Vector.<String> = null;
-         var _loc3_:Vector.<Object> = null;
-         var _loc4_:int = 0;
-         var _loc5_:String = null;
-         var _loc6_:int = 0;
-         var _loc7_:SettingsControlProp = null;
-         var _loc8_:CheckBox = null;
-         var _loc9_:Slider = null;
-         keys.restoreDefault();
-         this._isControlsChanged = true;
-         if(data)
-         {
-            _loc2_ = data.keys;
-            _loc3_ = data.values;
-            _loc4_ = _loc2_.length;
-            _loc5_ = Values.EMPTY_STR;
-            _loc6_ = 0;
-            for(; _loc6_ < _loc4_; _loc6_++)
-            {
-               _loc5_ = _loc2_[_loc6_];
-               if(!(_loc3_[_loc6_] is SettingsControlProp))
-               {
-                  continue;
-               }
-               _loc7_ = SettingsControlProp(_loc3_[_loc6_]);
-               if(!this[_loc5_ + _loc7_.type])
-               {
-                  continue;
-               }
-               switch(_loc7_.type)
-               {
-                  case SettingsConfigHelper.TYPE_CHECKBOX:
-                     _loc8_ = CheckBox(this[_loc5_ + _loc7_.type]);
-                     _loc8_.selected = _loc7_.defaultValue;
-                     break;
-                  case SettingsConfigHelper.TYPE_SLIDER:
-                     _loc9_ = Slider(this[_loc5_ + _loc7_.type]);
-                     _loc9_.value = Number(_loc7_.defaultValue);
-                     break;
-               }
-            }
-         }
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 155
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       private function onSliderValueChangeHandler(param1:SliderEvent) : void

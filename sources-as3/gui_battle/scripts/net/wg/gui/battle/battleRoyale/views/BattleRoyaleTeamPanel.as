@@ -59,22 +59,12 @@ package net.wg.gui.battle.battleRoyale.views
       
       override protected function setInitData(param1:String, param2:Array, param3:Array) : void
       {
-         this.titleTF.text = param1;
-         this.removeAllItems();
-         var _loc4_:uint = Values.ZERO;
-         var _loc5_:uint = param2.length;
-         var _loc6_:BattleRoyaleTeamPanelListItem = null;
-         while(_loc4_ < _loc5_)
-         {
-            _loc6_ = this.addItem();
-            _loc6_.setPlayerName(param2[_loc4_]);
-            if(param3[_loc4_])
-            {
-               _loc6_.setClanName(param3[_loc4_]);
-            }
-            _loc4_++;
-         }
-         this.titleTF.visible = this.bg.visible = Boolean(this._listItems.length);
+         /*
+          * Decompilation error
+          * Timeout (1 minute) was reached
+          * Instruction count: 67
+          */
+         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
       }
       
       public function as_setPlayerFrags(param1:int, param2:String) : void
