@@ -698,6 +698,9 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<platformCurrency>&lt;font color=&apos;#8C8C7E&apos;&gt;%(msg)s: &lt;font color=&apos;#D6D7D4&apos;&gt;%(count)s&lt;/font&gt;&lt;/font&gt;</platformCurrency>
 		<boosterExpiredRow>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/boosterExpiredTotalTemplate/total)&lt;/font&gt; &lt;font color=&quot;#E9E2BF&quot;&gt;%(value)s&lt;/font&gt;&lt;br /&gt;</boosterExpiredRow>
 		<boosterExpiredAdditionalRow>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/boosterAdditionalMessage)&lt;/font&gt;</boosterExpiredAdditionalRow>
+		<rpPointsAdded>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/referralProgramPointsAdded/body):&lt;/font&gt; &lt;font color=&apos;#CBAC77&apos;&gt;%(points)s&lt;/font&gt;</rpPointsAdded>
+		<rpPointsDebited>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/referralProgramPointsDebited/body):&lt;/font&gt; &lt;font color=&apos;#CBAC77&apos;&gt;%(points)s&lt;/font&gt;</rpPointsDebited>
+		<transactionTime>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/referralTransaction/date):&lt;/font&gt; &lt;font color=&apos;#8C8C7E&apos;&gt;%(at)s&lt;/font&gt;</transactionTime>
 	</htmlTemplatesSimple>
 	<htmlTemplates>
 		<SimpleGiftSysMessage>
@@ -942,6 +945,19 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 &lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/currencyUpdate/date):&lt;/font&gt; &lt;font color=&apos;#8C8C7E&apos;&gt;%(at)s&lt;/font&gt;&lt;/br&gt;
 %(text)s</message>
 		</resourceWellInvoiceReceived>
+		<WOTRPCachbackInvoiceReceived>
+			<type>yellow</type>
+			<icon>GoldIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/referralProgramCashback/header)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/referralProgramCashback/text)&lt;/font&gt;</message>
+		</WOTRPCachbackInvoiceReceived>
+		<rpLootBoxesInvoiceReceived>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/referralTransaction/header)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/referralTransaction/date):&lt;/font&gt; &lt;font color=&apos;#8C8C7E&apos;&gt;%(at)s&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/referralLootBoxesReceived/body):&lt;/font&gt; &lt;font color=&apos;#CBAC77&apos;&gt;%(count)s&lt;/font&gt;</message>
+		</rpLootBoxesInvoiceReceived>
 		<durationOfPremiumAccountExpires>
 			<type>yellow</type>
 			<icon>WarningIcon</icon>
@@ -1490,6 +1506,82 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			</buttonsLayout>
 			<buttonsAlign>center</buttonsAlign>
 		</seniorityAwardsQuest22>
+		<achievementRating>
+			<priority>high</priority>
+			<groupID>offer</groupID>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<linkage>AchievementRating</linkage>
+			<message>&lt;textformat leading=&quot;4&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;/textformat&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;&lt;/p&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#achievements_page:notifications/ratingUp/button)</label>
+					<action>achievementsScreen</action>
+				</button>
+			</buttonsLayout>
+			<buttonsAlign>center</buttonsAlign>
+		</achievementRating>
+		<achievementEditing>
+			<priority>medium</priority>
+			<groupID>offer</groupID>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<linkage>AchievementEditing</linkage>
+			<message>&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#achievements_page:notifications/editingEnabled/title)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#achievements_page:notifications/editingEnabled/button)</label>
+					<action>achievementsScreen</action>
+				</button>
+			</buttonsLayout>
+			<buttonsAlign>center</buttonsAlign>
+		</achievementEditing>
+		<achievementRatingDowngrade>
+			<type>grey</type>
+			<groupID>offer</groupID>
+			<icon>InformationIcon</icon>
+			<priority>medium</priority>
+			<message>&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#achievements_page:notifications/ratingDowngrade/text)&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#achievements_page:notifications/ratingDowngrade/button)</label>
+					<action>achievementsScreen</action>
+				</button>
+			</buttonsLayout>
+		</achievementRatingDowngrade>
+		<achievementFirstEntry>
+			<priority>high</priority>
+			<groupID>offer</groupID>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<linkage>AchievementsFirstEntry</linkage>
+			<message>&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#achievements_page:notifications/firstEntry/title)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;
+&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#achievements_page:notifications/firstEntry/text)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#achievements_page:notifications/firstEntry/button)</label>
+					<action>achievementsScreen</action>
+				</button>
+			</buttonsLayout>
+			<buttonsAlign>center</buttonsAlign>
+		</achievementFirstEntry>
+		<achievementFirstEntryWithOutWTR>
+			<priority>high</priority>
+			<groupID>offer</groupID>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<linkage>AchievementsFirstEntryWithoutWTR</linkage>
+			<message>&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#achievements_page:notifications/firstEntryWithoutWTR/title)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;
+&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#achievements_page:notifications/firstEntryWithoutWTR/text)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#achievements_page:notifications/firstEntryWithoutWTR/button)</label>
+					<action>achievementsScreen</action>
+				</button>
+			</buttonsLayout>
+			<buttonsAlign>center</buttonsAlign>
+		</achievementFirstEntryWithOutWTR>
 		<royaleVehiclesInvoiceReceived>
 			<type>yellow</type>
 			<icon>MessageIcon</icon>
@@ -3142,5 +3234,24 @@ _(#lootboxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</messag
 			<priority>medium</priority>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;%(text)s</message>
 		</ArmoryYardOpenChapterSysMessage>
+		<ReferralProgramPGBFullSysMessage>
+			<type>grey</type>
+			<priority>medium</priority>
+			<icon>WarningIcon</icon>
+			<message>&lt;font color=&apos;#CBAC77&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/referralProgramPGBFull/button)</label>
+					<action>openReferralProgramMainView</action>
+				</button>
+			</buttonsLayout>
+		</ReferralProgramPGBFullSysMessage>
+		<ReferralProgramFinanceOperationSysMessage>
+			<type>grey</type>
+			<priority>medium</priority>
+			<icon>rpIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;%(text)s</message>
+		</ReferralProgramFinanceOperationSysMessage>
 	</htmlTemplates>
 </root>

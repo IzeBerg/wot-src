@@ -1,13 +1,12 @@
 package net.wg.gui.lobby.settings
 {
-   import flash.display.Sprite;
    import flash.text.TextField;
    import net.wg.gui.components.controls.CheckBox;
    import net.wg.gui.components.controls.DropdownMenu;
    import net.wg.gui.interfaces.IContentSize;
-   import net.wg.infrastructure.interfaces.entity.IDisposable;
+   import net.wg.infrastructure.base.UIComponentEx;
    
-   public class SettingsMarkerContentForm extends Sprite implements IDisposable, IContentSize
+   public class SettingsMarkerContentForm extends UIComponentEx implements IContentSize
    {
       
       private static const SHIFT_VERTICAL:int = 4;
@@ -33,8 +32,6 @@ package net.wg.gui.lobby.settings
       
       public var hpLabel:TextField = null;
       
-      private var _disposed:Boolean = false;
-      
       public function SettingsMarkerContentForm()
       {
          super();
@@ -59,22 +56,7 @@ package net.wg.gui.lobby.settings
          this.damageCheckbox.enabled = false;
       }
       
-      public final function dispose() : void
-      {
-         if(this._disposed)
-         {
-            return;
-         }
-         this.onDispose();
-         this._disposed = true;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
-      }
-      
-      protected function onDispose() : void
+      override protected function onDispose() : void
       {
          if(this.vehicleDistCheckbox)
          {
@@ -101,6 +83,7 @@ package net.wg.gui.lobby.settings
          this.damageCheckbox.dispose();
          this.damageCheckbox = null;
          this.hpLabel = null;
+         super.onDispose();
       }
       
       public function get contentHeight() : Number

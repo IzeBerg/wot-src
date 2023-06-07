@@ -35,7 +35,7 @@ from notification.settings import NOTIFICATION_BUTTON_STATE, NOTIFICATION_TYPE
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController, IArmoryYardController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController, IArmoryYardController, IReferralProgramController
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.web import IWebController
@@ -1197,6 +1197,20 @@ class _OpenWinbackSelectableRewardViewFromQuest(_OpenWinbackSelectableRewardView
         return NOTIFICATION_TYPE.MESSAGE
 
 
+class _OpenAchievementsScreen(NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('achievementsScreen', )
+
+    def doAction(self, model, entityID, action):
+        g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_PROFILE), ctx={'selectedAlias': VIEW_ALIAS.PROFILE_SUMMARY_PAGE}), scope=EVENT_BUS_SCOPE.LOBBY)
+
+
 class _OpenEventLootBoxesShopHandler(NavigationDisabledActionHandler):
     __eventLootBoxes = dependency.descriptor(IEventLootBoxesController)
 
@@ -1211,6 +1225,21 @@ class _OpenEventLootBoxesShopHandler(NavigationDisabledActionHandler):
     def doAction(self, model, entityID, action):
         if self.__eventLootBoxes.isActive():
             self.__eventLootBoxes.openShop()
+
+
+class _OpenReferralProgramMainViewHandler(NavigationDisabledActionHandler):
+    __referralProgramController = dependency.descriptor(IReferralProgramController)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('openReferralProgramMainView', )
+
+    def doAction(self, model, entityID, action):
+        self.__referralProgramController.showWindow()
 
 
 class _OpenCollectionHandler(NavigationDisabledActionHandler):
@@ -1339,7 +1368,9 @@ _AVAILABLE_HANDLERS = (
  _OpenWinbackSelectableRewardView,
  _OpenWinbackSelectableRewardViewFromQuest,
  _OpenArmoryYardMain,
- _OpenArmoryYardQuest)
+ _OpenArmoryYardQuest,
+ _OpenAchievementsScreen,
+ _OpenReferralProgramMainViewHandler)
 registerNotificationsActionsHandlers(_AVAILABLE_HANDLERS)
 
 class NotificationsActionsHandlers(object):

@@ -1,6 +1,7 @@
 
 
 class INVITES(object):
+    INVITES_TEXT_EPIC = '#invites:invites/text/EPIC'
     ERRORS_UNKNOWNUSER = '#invites:errors/unknownuser'
     ERRORS_USEROFFLINE = '#invites:errors/useroffline'
     ERRORS_SELFINVITE = '#invites:errors/selfinvite'
@@ -35,7 +36,6 @@ class INVITES(object):
     INVITES_TEXT_FORT_BATTLE = '#invites:invites/text/FORT_BATTLE'
     INVITES_TEXT_STRONGHOLD = '#invites:invites/text/STRONGHOLD'
     INVITES_TEXT_MAPBOX = '#invites:invites/text/MAPBOX'
-    INVITES_TEXT_EPIC = '#invites:invites/text/EPIC'
     INVITES_TEXT_COMP7 = '#invites:invites/text/COMP7'
     INVITES_TEXT_FORT_OFFENCE = '#invites:invites/text/fort/offence'
     INVITES_TEXT_FORT_DEFENCE = '#invites:invites/text/fort/defence'

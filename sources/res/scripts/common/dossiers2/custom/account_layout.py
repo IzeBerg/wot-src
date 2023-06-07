@@ -42,7 +42,7 @@ _rankedArchiveBlockBuilder = StaticSizeBlockBuilder('rankedArchive', RANKED_BLOC
 _ranked_10x10BlockBuilder = StaticSizeBlockBuilder('ranked_10x10', RANKED_BLOCK_LAYOUT, RANKED_STATS_DEPENDENCIES, [])
 _comp7Season1BlockBuilder = StaticSizeBlockBuilder('comp7Season1', COMP7_BLOCK_LAYOUT, {}, [])
 _comp7Season2BlockBuilder = StaticSizeBlockBuilder('comp7Season2', COMP7_BLOCK_LAYOUT, {}, [])
-_max15x15BlockBuilder = StaticSizeBlockBuilder('max15x15', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
+_max15x15BlockBuilder = StaticSizeBlockBuilder('max15x15', MAX_15x15_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
 _max7x7BlockBuilder = StaticSizeBlockBuilder('max7x7', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
 _maxRated7x7BlockBuilder = StaticSizeBlockBuilder('maxRated7x7', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
 _maxHistoricalBlockBuilder = StaticSizeBlockBuilder('maxHistorical', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
@@ -323,11 +323,12 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'BattlePassCommonPr_8quest', 'july22', 'august22', 'BattlePassCommonPr_9',
  'september22', 'october22', 'november22',
  'december22', 'january23', 'february23',
- 'march23', 'april23', 'prime_gaming_reserved_9',
+ 'march23', 'april23', 'may23',
  'prime_gaming_reserved_10', 'prime_gaming_reserved_11', 'prime_gaming_reserved_12',
  'comp7Season1', 'hw2022Medal01', 'hw2022Medal02', '12YearsOfService',
  'NY23_AtmsphrLevel', 'NY23_CelebChallenge', 'BattlePassCommonPr_NY23',
- 'BattlePassCommonPr_10', 'comp7_2023_1']
+ 'BattlePassCommonPr_10', 'comp7_2023_1', 'Cosmic_MartianStalker', 'Cosmic_SpaceTrace',
+ 'BattlePassCommonPr_11']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -372,10 +373,11 @@ _singleAchievementsPopUps = [
  'august22', 'BattlePassCommonPr_9', 'september22', 'october22',
  'november22', 'december22', 'january23',
  'february23', 'march23', 'april23',
- 'prime_gaming_reserved_9', 'prime_gaming_reserved_10', 'prime_gaming_reserved_11',
+ 'may23', 'prime_gaming_reserved_10', 'prime_gaming_reserved_11',
  'prime_gaming_reserved_12', 'comp7Season1', 'hw2022Medal01', 'hw2022Medal02',
  '12YearsOfService', 'NY23_AtmsphrLevel', 'NY23_CelebChallenge',
- 'BattlePassCommonPr_NY23', 'BattlePassCommonPr_10', 'comp7_2023_1']
+ 'BattlePassCommonPr_NY23', 'BattlePassCommonPr_10', 'comp7_2023_1',
+ 'Cosmic_MartianStalker', 'Cosmic_SpaceTrace', 'BattlePassCommonPr_11']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']
@@ -420,6 +422,10 @@ _epicBattleAchievementsPopUps = ['frontlineMedal']
 _epicBattleAchievementsBlockBuilder = StaticSizeBlockBuilder('epicBattleAchievements', EPIC_BATTLE_ACHIEVEMENTS_BLOCK_LAYOUT, EPIC_BATTLE_STATS_DEPENDENCIES, _epicBattleAchievementsPopUps)
 _epicBattleSeasonsBlockBuilder = DictBlockBuilder('epicSeasons', 'II', 'HHBHH', {})
 _battleRoyaleSeasonsBlockBuilder = DictBlockBuilder('battleRoyaleSeasons', 'II', 'HHH', {})
+MT_BLOCK_LAYOUT = [
+ 'rpBronzeMedal', 'rpSilverMedal', 'rpGoldMedal']
+_mtPopUps = ['rpBronzeMedal', 'rpSilverMedal', 'rpGoldMedal']
+_mtAchievementsBlockBuilder = StaticSizeBlockBuilder('mtAchievements', MT_BLOCK_LAYOUT, {}, _mtPopUps)
 accountDossierLayout = (
  _a15x15BlockBuilder, _a15x15_2BlockBuilder, _clanBlockBuilder,
  _clan2BlockBuilder, _companyBlockBuilder, _company2BlockBuilder, _a7x7BlockBuilder,
@@ -456,7 +462,8 @@ accountDossierLayout = (
  _battleRoyaleSeasonsBlockBuilder, _ranked_10x10BlockBuilder, _maxRanked_10x10BlockBuilder,
  _rankedCut10x10BlockBuilder, _steamAchievementsBlockBuilder,
  _comp7Season1BlockBuilder, _maxComp7Season1BlockBuilder, _comp7CutSeason1BlockBuilder,
- _comp7Season2BlockBuilder, _maxComp7Season2BlockBuilder, _comp7CutSeason2BlockBuilder)
+ _comp7Season2BlockBuilder, _maxComp7Season2BlockBuilder, _comp7CutSeason2BlockBuilder,
+ _mtAchievementsBlockBuilder)
 ACCOUNT_DOSSIER_BLOCKS = {b.name:b for b in accountDossierLayout}
 ACCOUNT_DOSSIER_STATIC_BLOCKS = frozenset(b.name for b in accountDossierLayout if type(b) == StaticSizeBlockBuilder)
 ACCOUNT_DOSSIER_BINARY_SET_BLOCKS = [ b.name for b in accountDossierLayout if type(b) == BinarySetDossierBlockBuilder ]

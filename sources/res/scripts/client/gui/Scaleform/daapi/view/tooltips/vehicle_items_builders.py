@@ -1,4 +1,5 @@
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
+from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.tooltips import contexts, TOOLTIP_COMPONENT
 from gui.shared.tooltips import module
 from gui.shared.tooltips import shell, advanced
@@ -12,7 +13,7 @@ def _advancedBlockCondition(context):
         item = context.buildItem(*args)
         if item.itemTypeName == FITTING_TYPES.VEHICLE_GUN:
             return not item.isFlameGun()
-        return item.getGUIEmblemID() in advanced.MODULE_MOVIES
+        return item.getGUIEmblemID() in advanced.MODULE_MOVIES and not (item.itemTypeID == GUI_ITEM_TYPE.CHASSIS and item.isWheeledOnSpotRotationChassis())
 
     return advancedTooltipExist
 

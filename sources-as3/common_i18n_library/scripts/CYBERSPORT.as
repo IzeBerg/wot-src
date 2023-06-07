@@ -231,6 +231,8 @@ package
       
       public static const WINDOW_UNIT_MESSAGE_PLAY_LIMITS_IS_ACTIVE:String = "#cyberSport:window/unit/message/play_limits_is_active";
       
+      public static const WINDOW_UNIT_MESSAGE_HAS_FROZEN_VEHICLES:String = "#cyberSport:window/unit/message/has_frozen_vehicles";
+      
       public static const WINDOW_UNIT_READY:String = "#cyberSport:window/unit/ready";
       
       public static const WINDOW_UNIT_NOTREADY:String = "#cyberSport:window/unit/notReady";

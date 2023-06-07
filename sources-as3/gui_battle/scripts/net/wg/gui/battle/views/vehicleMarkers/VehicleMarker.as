@@ -108,6 +108,10 @@ package net.wg.gui.battle.views.vehicleMarkers
       private static const LABEL_ALLY_HOVER:String = "allyHover";
       
       private static const SCHEME_NAME_SQUADMAN:String = "vm_squadman";
+      
+      private static const LEVEL_ICON_ALPHA_DESTROYED:Number = 0.4;
+      
+      private static const LEVEL_ICON_ALPHA_ALIVE:int = 1;
        
       
       public var vehicleIcon:MovieClip = null;
@@ -379,6 +383,22 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
       }
       
+      public function onVisibilityChanged(param1:Boolean) : void
+      {
+         if(param1)
+         {
+            this.vmManager.addEventListener(VehicleMarkersManagerEvent.SHOW_EX_INFO,this.onShowExInfoHandler);
+         }
+         else
+         {
+            this.vmManager.removeEventListener(VehicleMarkersManagerEvent.SHOW_EX_INFO,this.onShowExInfoHandler);
+         }
+         if(this._extInfoShow != this.vmManager.showExInfo)
+         {
+            this.onShowExInfoHandler(null);
+         }
+      }
+      
       public function setActiveState(param1:int) : void
       {
          this.actionMarker.updateActionRenderer(param1);
@@ -539,22 +559,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       public function showExInfo() : void
       {
          this.updateMarkerSettings();
-      }
-      
-      public function onVisibilityChanged(param1:Boolean) : void
-      {
-         if(param1)
-         {
-            this.vmManager.addEventListener(VehicleMarkersManagerEvent.SHOW_EX_INFO,this.onShowExInfoHandler);
-         }
-         else
-         {
-            this.vmManager.removeEventListener(VehicleMarkersManagerEvent.SHOW_EX_INFO,this.onShowExInfoHandler);
-         }
-         if(this._extInfoShow != this.vmManager.showExInfo)
-         {
-            this.onShowExInfoHandler(null);
-         }
       }
       
       public function showStatusMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true, param8:Boolean = true) : void
@@ -1012,6 +1016,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       private function updateIconColor() : void
       {
          this.vehicleIcon.transform.colorTransform = this.vmManager.getTransform(this._markerSchemeName);
+         this.levelIcon.alpha = !!this.vehicleDestroyed ? Number(LEVEL_ICON_ALPHA_DESTROYED) : Number(LEVEL_ICON_ALPHA_ALIVE);
       }
       
       private function setupSquadIcon() : void

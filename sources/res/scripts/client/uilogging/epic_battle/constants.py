@@ -29,7 +29,7 @@ class EpicBattleLogButtons(Enum):
     INSTALL = 'install'
     NOT_INSTALL = 'not_install'
     CLOSE = 'close'
-    RESERVES = 'reserves'
+    INFO_PAGE = 'info_page'
     CHECKBOX = 'checkbox'
     CANCEL = 'cancel'
     CONFIRM = 'confirm'

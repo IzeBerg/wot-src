@@ -17,6 +17,7 @@ from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.lobby_context import ILobbyContext
 from soft_exception import SoftException
+from helpers.styles_perf_toolset import g_reportGenerator
 _logger = logging.getLogger(__name__)
 g_replayCtrl = None
 REPLAY_FILE_EXTENSION = '.wotreplay'
@@ -344,6 +345,7 @@ class BattleReplay(object):
     def play(self, fileName=None):
         if self.isRecording:
             self.stop()
+        g_reportGenerator.startCollectingData()
         import SafeUnpickler
         unpickler = SafeUnpickler.SafeUnpickler()
         self.__originalPickleLoads = pickle.loads
@@ -381,6 +383,8 @@ class BattleReplay(object):
             return False
         else:
             self.onStopped()
+            g_reportGenerator.stopCollectingData()
+            g_reportGenerator.generateReport()
             wasPlaying = self.isPlaying
             wasServerReplay = self.isServerSideReplay
             isOffline = self.__replayCtrl.isOfflinePlaybackMode

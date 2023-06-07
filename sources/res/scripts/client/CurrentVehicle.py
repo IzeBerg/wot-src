@@ -1,4 +1,4 @@
-import BigWorld
+import typing, BigWorld
 from constants import CustomizationInvData
 from gui.SystemMessages import pushMessagesFromResult
 from items.components.c11n_constants import SeasonType
@@ -146,6 +146,8 @@ class _CurrentVehicle(_CachedVehicle):
         super(_CurrentVehicle, self).destroy()
         self.__vehInvID = 0
         self.hangarSpace.removeVehicle()
+        if self.hangarSpace.spaceInited and not self.hangarSpace.space.getVehicleEntity():
+            self.hangarSpace.resetLastUpdatedVehicle()
         self.selectNoVehicle()
 
     def onIgrTypeChanged(self, *args):

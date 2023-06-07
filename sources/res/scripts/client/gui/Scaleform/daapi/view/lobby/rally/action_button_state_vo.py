@@ -134,7 +134,9 @@ class ActionButtonStateVO(dict):
         self.__WARNING_UNIT_MESSAGES = {UNIT_RESTRICTION.XP_PENALTY_VEHICLE_LEVELS: (
                                                       PLATOON.MEMBERS_FOOTER_VEHICLES_DIFFERENTLEVELS, {})}
         self.__NEUTRAL_UNIT_MESSAGES = {UNIT_RESTRICTION.UNIT_WILL_SEARCH_PLAYERS: (
-                                                     FORTIFICATIONS.UNIT_WINDOW_WILLSEARCHPLAYERS, {})}
+                                                     FORTIFICATIONS.UNIT_WINDOW_WILLSEARCHPLAYERS, {}), 
+           UNIT_RESTRICTION.HAS_FROZEN_VEHICLES: (
+                                                backport.text(R.strings.cyberSport.window.unit.message.has_frozen_vehicles()), {})}
         stateKey, stateCtx = self.__getState()
         self['stateString'] = self.__stateTextStyleFormatter(i18n.makeString(stateKey, **stateCtx))
         self['label'] = self._getLabel()
@@ -238,6 +240,8 @@ class ActionButtonStateVO(dict):
              icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_ALERTICON, vSpace=-3),
              text_styles.alert(state)))
         if self.__restrictionType in self.__NEUTRAL_UNIT_MESSAGES:
+            if self.__restrictionType is UNIT_RESTRICTION.HAS_FROZEN_VEHICLES:
+                return text_styles.alert(state)
             return text_styles.neutral(state)
         if self.__restrictionType not in self.__NOT_CRITICAL_STATES:
             return text_styles.error(state)

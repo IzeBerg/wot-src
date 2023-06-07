@@ -209,6 +209,8 @@ package
       
       public static const DOWNLOAD_RESOURCEWELL:String = "#waiting:download/resourceWell";
       
+      public static const DOWNLOAD_REFPROGRAM:String = "#waiting:download/refProgram";
+      
       public static const UPDATINGSKILLWINDOW:String = "#waiting:updatingSkillWindow";
       
       public static const PREBATTLE_CREATE:String = "#waiting:prebattle/create";
@@ -322,6 +324,10 @@ package
       public static const GETRESOURCESBACK:String = "#waiting:getResourcesBack";
       
       public static const PUTRESOURCES:String = "#waiting:putResources";
+      
+      public static const ACHIVEMENTS20:String = "#waiting:achivements20";
+      
+      public static const DOWNLOAD_ACHIEVEMENTS20:String = "#waiting:download/achievements20";
        
       
       public function WAITING()

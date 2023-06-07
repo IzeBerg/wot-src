@@ -292,6 +292,10 @@
 						<name>extrapolate</name>
 						<value>1</value>
 					</property>
+					<property>
+						<name>detailed</name>
+						<value>0</value>
+					</property>
 				</config>
 			</component>
 		</ComponentPool>
@@ -357,7 +361,7 @@
 											<property>
 												<name>Model name</name>
 												<isAsset>true</isAsset>
-												<value>content/MapBox/Environment/hd_env_UNI_116_BunkerBody_Block_Dynamic/normal/lod0/hd_env_UNI_116_BunkerBody_Block_Dynamic_Small_01.model</value>
+												<value>content/Environment/hd_env_UNI_104_Container/normal/lod0/hd_env_UNI_104_Container_01.model</value>
 											</property>
 											<property>
 												<name>Module name</name>
@@ -394,7 +398,7 @@
 											<property>
 												<name>Model name</name>
 												<isAsset>true</isAsset>
-												<value>content/MapBox/Environment/hd_env_UNI_116_BunkerBody_Block_Dynamic/normal/lod0/hd_env_UNI_116_BunkerBody_Block_Dynamic_Big_02.model</value>
+												<value>content/Environment/hd_env_UNI_104_Container/normal/lod0/hd_env_UNI_104_Container_01.model</value>
 											</property>
 											<property>
 												<name>Module name</name>
@@ -431,7 +435,7 @@
 											<property>
 												<name>Model name</name>
 												<isAsset>true</isAsset>
-												<value>content/MapBox/Environment/hd_env_UNI_116_BunkerBody_Block_Dynamic/normal/lod0/hd_env_UNI_116_BunkerBody_Block_Dynamic_Small_03.model</value>
+												<value>content/Environment/hd_env_UNI_104_Container/normal/lod0/hd_env_UNI_104_Container_01.model</value>
 											</property>
 											<property>
 												<name>Module name</name>
@@ -547,7 +551,7 @@
 					<property>
 						<name>Model name</name>
 						<isAsset>true</isAsset>
-						<value>content/MapBox/Environment/hd_env_UNI_116_BunkerBody_Block_Dynamic/normal/lod0/hd_env_UNI_116_BunkerBody_Block_Dynamic_Small_01.model</value>
+						<value>content/Environment/hd_env_UNI_104_Container/normal/lod0/hd_env_UNI_104_Container_01.model</value>
 					</property>
 				</config>
 			</component>
@@ -558,7 +562,7 @@
 					<property>
 						<name>Model name</name>
 						<isAsset>true</isAsset>
-						<value>content/MapBox/Environment/hd_env_UNI_116_BunkerBody_Block_Dynamic/normal/lod0/hd_env_UNI_116_BunkerBody_Block_Dynamic_Big_02.model</value>
+						<value>content/Environment/hd_env_UNI_104_Container/normal/lod0/hd_env_UNI_104_Container_01.model</value>
 					</property>
 				</config>
 			</component>
@@ -569,7 +573,7 @@
 					<property>
 						<name>Model name</name>
 						<isAsset>true</isAsset>
-						<value>content/MapBox/Environment/hd_env_UNI_116_BunkerBody_Block_Dynamic/normal/lod0/hd_env_UNI_116_BunkerBody_Block_Dynamic_Small_03.model</value>
+						<value>content/Environment/hd_env_UNI_104_Container/normal/lod0/hd_env_UNI_104_Container_01.model</value>
 					</property>
 				</config>
 			</component>
@@ -606,6 +610,12 @@
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
+				<config>
+					<property>
+						<name>delay</name>
+						<value>0</value>
+					</property>
+				</config>
 			</component>
 		</ComponentPool>
 		<ComponentPool>
@@ -626,10 +636,6 @@
 					<property>
 						<name>critical</name>
 						<link>6134ea11-27df-46c8-8169-f933e9b12861</link>
-					</property>
-					<property>
-						<name>destroyed</name>
-						<link>00000000-0000-0000-0000-000000000000</link>
 					</property>
 				</config>
 			</component>

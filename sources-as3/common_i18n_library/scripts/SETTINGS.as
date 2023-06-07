@@ -19,6 +19,8 @@ package
       
       public static const CURSOR_OVERLAPCONTOUR_TOOLTIP:String = "#settings:cursor/overlapContour/tooltip";
       
+      public static const MARKER_LEVEL_TOOLTIP:String = "#settings:marker/level/tooltip";
+      
       public static const LANGUAGE_CODE:String = "#settings:LANGUAGE_CODE";
       
       public static const WINDOWTITLE:String = "#settings:windowTitle";
@@ -422,6 +424,10 @@ package
       public static const GAME_CUSTOMIZATIONDISPLAYTYPE_NOTHISTORICAL:String = "#settings:game/customizationDisplayType/notHistorical";
       
       public static const GAME_CUSTOMIZATIONDISPLAYTYPE_ALL:String = "#settings:game/customizationDisplayType/all";
+      
+      public static const LIMITEDUI_DESC:String = "#settings:limitedUI/desc";
+      
+      public static const LIMITEDUI_TURNOFFBTN:String = "#settings:limitedUI/turnOffBtn";
       
       public static const MONITOR:String = "#settings:monitor";
       
@@ -1040,6 +1046,10 @@ package
       public static const MARKER_ICON:String = "#settings:marker/icon";
       
       public static const MARKER_LEVEL:String = "#settings:marker/level";
+      
+      public static const MARKER_LEVEL_TOOLTIP_HEADER:String = "#settings:marker/level/tooltip/header";
+      
+      public static const MARKER_LEVEL_TOOLTIP_BODY:String = "#settings:marker/level/tooltip/body";
       
       public static const MARKER_HPINDICATOR:String = "#settings:marker/hpIndicator";
       

@@ -78,10 +78,17 @@
 		<variants>
 			<hull2>
 				<chassis>Chassis_GB97_Chimera_SH</chassis>
+				<weight>16300</weight>
+				<maxHealth>1300</maxHealth>
+				<ammoBayHealth>
+					<maxHealth>103</maxHealth>
+					<maxRegenHealth>65</maxRegenHealth>
+					<repairCost>0</repairCost>
+				</ammoBayHealth>
 				<armor>
 					<armor_1>75</armor_1>
 					<armor_2>80</armor_2>
-					<armor_3>50</armor_3>
+					<armor_3>75</armor_3>
 					<armor_4>35</armor_4>
 					<armor_5>25</armor_5>
 					<armor_6>25</armor_6>
@@ -89,37 +96,21 @@
 					<armor_8>0</armor_8>
 					<armor_9>
 						30
-						<vehicleDamageFactor>
-							0.0
-							<!--BW_String-->
-						</vehicleDamageFactor>
+						<vehicleDamageFactor>0</vehicleDamageFactor>
 					</armor_9>
 					<armor_10>55</armor_10>
-					<armor_11>50</armor_11>
+					<armor_11>80</armor_11>
 					<armor_12>
-						25
-						<vehicleDamageFactor>
-							0.0
-							<!--BW_String-->
-						</vehicleDamageFactor>
+						10
+						<vehicleDamageFactor>0</vehicleDamageFactor>
 					</armor_12>
 					<armor_14>
 						30
-						<vehicleDamageFactor>
-							0.0
-							<!--BW_String-->
-						</vehicleDamageFactor>
+						<vehicleDamageFactor>0</vehicleDamageFactor>
 					</armor_14>
 					<armor_15>60</armor_15>
 				</armor>
 				<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
-				<weight>16300</weight>
-				<maxHealth>1200</maxHealth>
-				<ammoBayHealth>
-					<maxHealth>103</maxHealth>
-					<maxRegenHealth>65</maxRegenHealth>
-					<repairCost>0</repairCost>
-				</ammoBayHealth>
 				<models>
 					<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Hull_02.model</undamaged>
 					<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Hull_02.model</destroyed>
@@ -183,69 +174,75 @@
 						</anchorPosition>
 						<anchorDirection>-0.000000 0.784531 -0.620089</anchorDirection>
 					</slot>
+					<slot>
+						<slotType>projectionDecal</slotType>
+						<slotId>15000</slotId>
+						<tags>formfactor_rect1x2 direction_right_to_left cover</tags>
+						<position>-0.000001 2.347615 0.396324</position>
+						<rotation>
+							-0 -1.570796 2.707704
+							<!--BW_String-->
+						</rotation>
+						<scale>6.039167 5.949393 6.518989</scale>
+						<hiddenForUser>true</hiddenForUser>
+						<showOn>4368</showOn>
+						<clipAngle>0.439823</clipAngle>
+						<anchorShift>
+							0.53
+							<!--BW_String-->
+						</anchorShift>
+					</slot>
 				</customizationSlots>
 			</hull2>
 			<hull3>
 				<chassis>Chassis_GB84_Chieftain_Mk6_SH</chassis>
-				<armor>
-					<armor_1>45</armor_1>
-					<armor_2>40</armor_2>
-					<armor_3>80</armor_3>
-					<armor_4>40</armor_4>
-					<armor_5>20</armor_5>
-					<armor_6>20</armor_6>
-					<armor_7>80</armor_7>
-					<armor_8>0</armor_8>
-					<armor_9>
-						20
-						<vehicleDamageFactor>
-							0.0
-							<!--BW_String-->
-						</vehicleDamageFactor>
-					</armor_9>
-					<armor_10>85</armor_10>
-					<armor_11>120</armor_11>
-					<armor_12>110</armor_12>
-					<armor_13>110</armor_13>
-					<armor_14>100</armor_14>
-					<armor_15>90</armor_15>
-					<armor_16>110</armor_16>
-					<armor_17>
-						60
-						<vehicleDamageFactor>
-							0.0
-							<!--BW_String-->
-						</vehicleDamageFactor>
-					</armor_17>
-					<armor_18>
-						30
-						<vehicleDamageFactor>
-							0.0
-							<!--BW_String-->
-						</vehicleDamageFactor>
-					</armor_18>
-					<armor_19>60</armor_19>
-					<armor_20>85</armor_20>
-					<armor_21>60</armor_21>
-					<armor_22>55</armor_22>
-					<armor_23>75</armor_23>
-					<armor_24>50</armor_24>
-					<armor_25>
-						5
-						<vehicleDamageFactor>
-							0.0
-							<!--BW_String-->
-						</vehicleDamageFactor>
-					</armor_25>
-				</armor>
-				<primaryArmor>armor_23 armor_3 armor_4</primaryArmor>
 				<weight>20800</weight>
-				<maxHealth>1200</maxHealth>
+				<maxHealth>1600</maxHealth>
 				<ammoBayHealth>
 					<maxHealth>103</maxHealth>
 					<maxRegenHealth>65</maxRegenHealth>
 					<repairCost>0</repairCost>
 				</ammoBayHealth>
+				<armor>
+					<armor_1>45</armor_1>
+					<armor_2>70</armor_2>
+					<armor_3>80</armor_3>
+					<armor_4>40</armor_4>
+					<armor_5>20</armor_5>
+					<armor_6>20</armor_6>
+					<armor_7>85</armor_7>
+					<armor_8>0</armor_8>
+					<armor_9>
+						20
+						<vehicleDamageFactor>0</vehicleDamageFactor>
+					</armor_9>
+					<armor_10>85</armor_10>
+					<armor_11>80</armor_11>
+					<armor_12>70</armor_12>
+					<armor_13>80</armor_13>
+					<armor_14>80</armor_14>
+					<armor_15>80</armor_15>
+					<armor_16>75</armor_16>
+					<armor_17>
+						60
+						<vehicleDamageFactor>0</vehicleDamageFactor>
+					</armor_17>
+					<armor_18>
+						30
+						<vehicleDamageFactor>0</vehicleDamageFactor>
+					</armor_18>
+					<armor_19>40</armor_19>
+					<armor_20>60</armor_20>
+					<armor_21>40</armor_21>
+					<armor_22>45</armor_22>
+					<armor_23>45</armor_23>
+					<armor_24>50</armor_24>
+					<armor_25>
+						5
+						<vehicleDamageFactor>0</vehicleDamageFactor>
+					</armor_25>
+				</armor>
+				<primaryArmor>armor_23 armor_3 armor_4</primaryArmor>
 				<models>
 					<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Hull_03.model</undamaged>
 					<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Hull_03.model</destroyed>
@@ -306,54 +303,33 @@
 						</anchorPosition>
 						<anchorDirection>-0.000000 0.752874 -0.658164</anchorDirection>
 					</slot>
+					<slot>
+						<slotType>projectionDecal</slotType>
+						<slotId>15000</slotId>
+						<tags>formfactor_rect1x2 direction_right_to_left cover</tags>
+						<position>
+							-0.000001 2.34762 0.396324
+							<!--BW_String-->
+						</position>
+						<rotation>
+							0 -1.570796 2.707704
+							<!--BW_String-->
+						</rotation>
+						<scale>
+							6.94499 5.949393 6.977474
+							<!--BW_String-->
+						</scale>
+						<hiddenForUser>true</hiddenForUser>
+						<showOn>4368</showOn>
+						<clipAngle>0.439823</clipAngle>
+						<anchorShift>
+							0.53
+							<!--BW_String-->
+						</anchorShift>
+					</slot>
 				</customizationSlots>
 			</hull3>
 		</variants>
-		<armor>
-			<armor_1>50</armor_1>
-			<armor_2>60</armor_2>
-			<armor_3>40</armor_3>
-			<armor_4>25</armor_4>
-			<armor_5>18</armor_5>
-			<armor_6>
-				30
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
-			</armor_6>
-			<armor_7>40</armor_7>
-			<armor_8>0</armor_8>
-			<armor_9>25</armor_9>
-			<armor_10>60</armor_10>
-			<armor_11>
-				40
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
-			</armor_11>
-			<armor_12>10</armor_12>
-			<armor_13>
-				25
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
-			</armor_13>
-			<armor_14>80</armor_14>
-			<armor_15>
-				25
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
-			</armor_15>
-			<armor_16>40</armor_16>
-			<armor_17>25</armor_17>
-			<armor_18>20</armor_18>
-		</armor>
-		<primaryArmor>armor_10 armor_7 armor_4</primaryArmor>
 		<weight>9800</weight>
 		<maxHealth>800</maxHealth>
 		<ammoBayHealth>
@@ -361,6 +337,39 @@
 			<maxRegenHealth>65</maxRegenHealth>
 			<repairCost>0</repairCost>
 		</ammoBayHealth>
+		<armor>
+			<armor_1>70</armor_1>
+			<armor_2>105</armor_2>
+			<armor_3>40</armor_3>
+			<armor_4>25</armor_4>
+			<armor_5>18</armor_5>
+			<armor_6>
+				10
+				<vehicleDamageFactor>0</vehicleDamageFactor>
+			</armor_6>
+			<armor_7>40</armor_7>
+			<armor_8>0</armor_8>
+			<armor_9>25</armor_9>
+			<armor_10>40</armor_10>
+			<armor_11>
+				40
+				<vehicleDamageFactor>0</vehicleDamageFactor>
+			</armor_11>
+			<armor_12>10</armor_12>
+			<armor_13>
+				25
+				<vehicleDamageFactor>0</vehicleDamageFactor>
+			</armor_13>
+			<armor_14>80</armor_14>
+			<armor_15>
+				25
+				<vehicleDamageFactor>0</vehicleDamageFactor>
+			</armor_15>
+			<armor_16>45</armor_16>
+			<armor_17>25</armor_17>
+			<armor_18>20</armor_18>
+		</armor>
+		<primaryArmor>armor_1 armor_7 armor_4</primaryArmor>
 		<models>
 			<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Hull_01.model</undamaged>
 			<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Hull_01.model</destroyed>
@@ -440,6 +449,27 @@
 				</anchorPosition>
 				<anchorDirection>0.000000 0.265911 -0.963997</anchorDirection>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15000</slotId>
+				<tags>formfactor_rect1x2 direction_right_to_left cover</tags>
+				<position>
+					-0 2.189338 0.737921
+					<!--BW_String-->
+				</position>
+				<rotation>
+					-0 -1.570796 2.707704
+					<!--BW_String-->
+				</rotation>
+				<scale>5.788322 5.949388 5.949389</scale>
+				<hiddenForUser>true</hiddenForUser>
+				<showOn>4368</showOn>
+				<clipAngle>0.439823</clipAngle>
+				<anchorShift>
+					0.53
+					<!--BW_String-->
+				</anchorShift>
+			</slot>
 		</customizationSlots>
 		<camouflage>
 			<tiling>
@@ -460,10 +490,6 @@
 			<level>1</level>
 			<price>0</price>
 			<notInShop>true</notInShop>
-			<armor>
-				<leftTrack>20</leftTrack>
-				<rightTrack>20</rightTrack>
-			</armor>
 			<weight>3920</weight>
 			<maxLoad>60000</maxLoad>
 			<terrainResistance>
@@ -490,6 +516,10 @@
 			<maxHealth>150</maxHealth>
 			<maxRegenHealth>115</maxRegenHealth>
 			<repairCost>0</repairCost>
+			<armor>
+				<leftTrack>20</leftTrack>
+				<rightTrack>20</rightTrack>
+			</armor>
 			<models>
 				<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Chassis_01.model</undamaged>
 				<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Chassis_01.model</destroyed>
@@ -2521,10 +2551,6 @@
 				</turret>
 			</unlocks>
 			<notInShop>true</notInShop>
-			<armor>
-				<leftTrack>20</leftTrack>
-				<rightTrack>20</rightTrack>
-			</armor>
 			<weight>6520</weight>
 			<maxLoad>60000</maxLoad>
 			<terrainResistance>
@@ -2551,6 +2577,10 @@
 			<maxHealth>220</maxHealth>
 			<maxRegenHealth>165</maxRegenHealth>
 			<repairCost>0</repairCost>
+			<armor>
+				<leftTrack>20</leftTrack>
+				<rightTrack>20</rightTrack>
+			</armor>
 			<models>
 				<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Chassis_02.model</undamaged>
 				<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Chassis_02.model</destroyed>
@@ -4295,10 +4325,6 @@
 				</turret>
 			</unlocks>
 			<notInShop>true</notInShop>
-			<armor>
-				<leftTrack>30</leftTrack>
-				<rightTrack>30</rightTrack>
-			</armor>
 			<weight>8320</weight>
 			<maxLoad>60000</maxLoad>
 			<terrainResistance>
@@ -4325,6 +4351,10 @@
 			<maxHealth>220</maxHealth>
 			<maxRegenHealth>165</maxRegenHealth>
 			<repairCost>0</repairCost>
+			<armor>
+				<leftTrack>30</leftTrack>
+				<rightTrack>30</rightTrack>
+			</armor>
 			<models>
 				<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Chassis_03.model</undamaged>
 				<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Chassis_03.model</destroyed>
@@ -5883,38 +5913,33 @@
 					<cost>0</cost>
 				</turret>
 			</unlocks>
+			<weight>5880</weight>
+			<maxHealth>400</maxHealth>
+			<rotationSpeed>47</rotationSpeed>
+			<turretRotatorHealth>
+				<maxHealth>103</maxHealth>
+				<maxRegenHealth>65</maxRegenHealth>
+				<repairCost>0</repairCost>
+			</turretRotatorHealth>
+			<circularVisionRadius>300</circularVisionRadius>
 			<armor>
-				<armor_1>110</armor_1>
-				<armor_2>110</armor_2>
-				<armor_3>40</armor_3>
+				<armor_1>115</armor_1>
+				<armor_2>115</armor_2>
+				<armor_3>80</armor_3>
 				<armor_4>40</armor_4>
 				<armor_5>20</armor_5>
-				<armor_6>110</armor_6>
-				<armor_7>110</armor_7>
+				<armor_6>115</armor_6>
+				<armor_7>115</armor_7>
 				<armor_8>0</armor_8>
 				<armor_9>15</armor_9>
 				<armor_10>
-					20
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					25
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_10>
-				<armor_11>45</armor_11>
+				<armor_11>55</armor_11>
 				<armor_12>30</armor_12>
 				<armor_13>25</armor_13>
 				<armor_14>20</armor_14>
-				<surveyingDevice>
-					0
-					<chanceToHitByProjectile>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByProjectile>
-					<chanceToHitByExplosion>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByExplosion>
-				</surveyingDevice>
 				<ammoBay>
 					0
 					<chanceToHitByProjectile>
@@ -5926,17 +5951,19 @@
 						<!--BW_String-->
 					</chanceToHitByExplosion>
 				</ammoBay>
+				<surveyingDevice>
+					0
+					<chanceToHitByProjectile>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByProjectile>
+					<chanceToHitByExplosion>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByExplosion>
+				</surveyingDevice>
 			</armor>
 			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
-			<weight>5880</weight>
-			<maxHealth>400</maxHealth>
-			<rotationSpeed>47</rotationSpeed>
-			<turretRotatorHealth>
-				<maxHealth>103</maxHealth>
-				<maxRegenHealth>65</maxRegenHealth>
-				<repairCost>0</repairCost>
-			</turretRotatorHealth>
-			<circularVisionRadius>300</circularVisionRadius>
 			<surveyingDeviceHealth>
 				<maxHealth>52</maxHealth>
 				<maxRegenHealth>33</maxRegenHealth>
@@ -5945,10 +5972,7 @@
 			<guns>
 				<_3.7inch_Howitzer_SH>
 					shared
-					<maxAmmo>50</maxAmmo>
-					<armor>
-						<gun>40</gun>
-					</armor>
+					<maxAmmo>79</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -5960,7 +5984,10 @@
 						0.45
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>3</reloadTime>
+					<reloadTime>
+						3.5
+						<!--BW_String-->
+					</reloadTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.08
@@ -5977,6 +6004,9 @@
 						0.25
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
+					<armor>
+						<gun>40</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Gun_01.model</destroyed>
@@ -6057,7 +6087,7 @@
 							<cost>0</cost>
 						</chassis>
 					</unlocks>
-					<maxAmmo>50</maxAmmo>
+					<maxAmmo>83</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -6065,9 +6095,6 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<armor>
-						<gun>20</gun>
-					</armor>
 					<invisibilityFactorAtShot>
 						0.234
 						<!--BW_String-->
@@ -6106,6 +6133,9 @@
 						1.8
 						<!--BW_String-->
 					</aimingTime>
+					<armor>
+						<gun>20</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Gun_02.model</undamaged>
 						<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Gun_02.model</destroyed>
@@ -6183,7 +6213,7 @@
 							<cost>0</cost>
 						</chassis>
 					</unlocks>
-					<maxAmmo>50</maxAmmo>
+					<maxAmmo>95</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -6191,11 +6221,8 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<armor>
-						<gun>40</gun>
-					</armor>
 					<shotDispersionRadius>
-						0.41
+						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
@@ -6218,6 +6245,9 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<armor>
+						<gun>40</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Gun_03.model</undamaged>
 						<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Gun_03.model</destroyed>
@@ -6366,57 +6396,43 @@
 				</gun>
 			</unlocks>
 			<notInShop>true</notInShop>
+			<weight>9780</weight>
+			<maxHealth>700</maxHealth>
+			<rotationSpeed>52</rotationSpeed>
+			<turretRotatorHealth>
+				<maxHealth>103</maxHealth>
+				<maxRegenHealth>65</maxRegenHealth>
+				<repairCost>0</repairCost>
+			</turretRotatorHealth>
+			<circularVisionRadius>330</circularVisionRadius>
 			<armor>
 				<armor_1>110</armor_1>
-				<armor_2>110</armor_2>
-				<armor_3>60</armor_3>
+				<armor_2>135</armor_2>
+				<armor_3>90</armor_3>
 				<armor_4>35</armor_4>
-				<armor_5>50</armor_5>
-				<armor_6>80</armor_6>
+				<armor_5>60</armor_5>
+				<armor_6>95</armor_6>
 				<armor_7>45</armor_7>
 				<armor_8>0</armor_8>
 				<armor_9>20</armor_9>
 				<armor_10>
 					20
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_10>
 				<armor_11>20</armor_11>
 				<armor_12>
 					30
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_12>
 				<armor_13>
 					10
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_13>
 				<armor_14>
 					30
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_14>
 				<armor_15>90</armor_15>
-				<surveyingDevice>
-					0
-					<chanceToHitByProjectile>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByProjectile>
-					<chanceToHitByExplosion>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByExplosion>
-				</surveyingDevice>
 				<ammoBay>
 					0
 					<chanceToHitByProjectile>
@@ -6428,17 +6444,19 @@
 						<!--BW_String-->
 					</chanceToHitByExplosion>
 				</ammoBay>
+				<surveyingDevice>
+					0
+					<chanceToHitByProjectile>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByProjectile>
+					<chanceToHitByExplosion>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByExplosion>
+				</surveyingDevice>
 			</armor>
-			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
-			<weight>9780</weight>
-			<maxHealth>800</maxHealth>
-			<rotationSpeed>52</rotationSpeed>
-			<turretRotatorHealth>
-				<maxHealth>103</maxHealth>
-				<maxRegenHealth>65</maxRegenHealth>
-				<repairCost>0</repairCost>
-			</turretRotatorHealth>
-			<circularVisionRadius>350</circularVisionRadius>
+			<primaryArmor>armor_2 armor_3 armor_4</primaryArmor>
 			<surveyingDeviceHealth>
 				<maxHealth>52</maxHealth>
 				<maxRegenHealth>33</maxRegenHealth>
@@ -6447,7 +6465,7 @@
 			<guns>
 				<OQF_17pdr_Gun_Mk_VII_SH>
 					shared
-					<maxAmmo>50</maxAmmo>
+					<maxAmmo>83</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -6455,37 +6473,6 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<armor>
-						<armor_1>
-							100
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							20
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							40
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<gun>20</gun>
-					</armor>
 					<invisibilityFactorAtShot>
 						0.234
 						<!--BW_String-->
@@ -6524,6 +6511,25 @@
 						1.8
 						<!--BW_String-->
 					</aimingTime>
+					<armor>
+						<armor_1>
+							135
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							20
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							40
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<gun>20</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Gun_04.model</undamaged>
 						<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Gun_04.model</destroyed>
@@ -6590,7 +6596,7 @@
 				</OQF_17pdr_Gun_Mk_VII_SH>
 				<_32_pounder_Gun_OQF_SH>
 					shared
-					<maxAmmo>50</maxAmmo>
+					<maxAmmo>95</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -6598,39 +6604,8 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<armor>
-						<armor_1>
-							100
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							20
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							40
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<gun>40</gun>
-					</armor>
 					<shotDispersionRadius>
-						0.41
+						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
@@ -6653,6 +6628,25 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<armor>
+						<armor_1>
+							135
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							20
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							40
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<gun>40</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Gun_05.model</undamaged>
 						<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Gun_05.model</destroyed>
@@ -6722,7 +6716,7 @@
 				</_32_pounder_Gun_OQF_SH>
 				<_20pdr_Gun_Type_B_SH>
 					shared
-					<maxAmmo>50</maxAmmo>
+					<maxAmmo>111</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -6730,47 +6724,16 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<armor>
-						<armor_1>
-							100
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							20
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							40
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<gun>40</gun>
-					</armor>
 					<shotDispersionRadius>
-						0.36
+						0.39
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
-						3.4
+						3.5
 						<!--BW_String-->
 					</reloadTime>
 					<aimingTime>
-						1.7
+						1.9
 						<!--BW_String-->
 					</aimingTime>
 					<invisibilityFactorAtShot>
@@ -6788,6 +6751,25 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<armor>
+						<armor_1>
+							135
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							20
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							40
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<gun>40</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Gun_06.model</undamaged>
 						<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Gun_06.model</destroyed>
@@ -6854,7 +6836,7 @@
 				</_20pdr_Gun_Type_B_SH>
 				<_105mm_Gun_L7_HEAT_SH>
 					shared
-					<maxAmmo>50</maxAmmo>
+					<maxAmmo>77</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -6862,37 +6844,6 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<armor>
-						<armor_1>
-							100
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_1>
-						<armor_2>
-							20
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							40
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
-						<gun>45</gun>
-					</armor>
 					<invisibilityFactorAtShot>
 						0.209
 						<!--BW_String-->
@@ -6931,6 +6882,25 @@
 						1.6
 						<!--BW_String-->
 					</aimingTime>
+					<armor>
+						<armor_1>
+							135
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_1>
+						<armor_2>
+							20
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_2>
+						<armor_3>
+							40
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_3>
+						<armor_4>
+							0
+							<vehicleDamageFactor>0</vehicleDamageFactor>
+						</armor_4>
+						<gun>45</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Gun_07.model</undamaged>
 						<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Gun_07.model</destroyed>
@@ -7065,53 +7035,42 @@
 				</gun>
 			</unlocks>
 			<notInShop>true</notInShop>
+			<weight>12480</weight>
+			<maxHealth>700</maxHealth>
+			<rotationSpeed>47</rotationSpeed>
+			<turretRotatorHealth>
+				<maxHealth>103</maxHealth>
+				<maxRegenHealth>65</maxRegenHealth>
+				<repairCost>0</repairCost>
+			</turretRotatorHealth>
+			<circularVisionRadius>330</circularVisionRadius>
 			<armor>
-				<armor_1>220</armor_1>
-				<armor_2>220</armor_2>
-				<armor_3>100</armor_3>
-				<armor_4>100</armor_4>
+				<armor_1>210</armor_1>
+				<armor_2>190</armor_2>
+				<armor_3>95</armor_3>
+				<armor_4>115</armor_4>
 				<armor_5>25</armor_5>
 				<armor_6>20</armor_6>
-				<armor_7>145</armor_7>
+				<armor_7>125</armor_7>
 				<armor_8>0</armor_8>
-				<armor_9>180</armor_9>
-				<armor_10>150</armor_10>
-				<armor_11>95</armor_11>
+				<armor_9>160</armor_9>
+				<armor_10>130</armor_10>
+				<armor_11>75</armor_11>
 				<armor_12>40</armor_12>
-				<armor_13>135</armor_13>
+				<armor_13>120</armor_13>
 				<armor_14>100</armor_14>
 				<armor_15>90</armor_15>
-				<armor_16>175</armor_16>
+				<armor_16>155</armor_16>
 				<armor_17>
-					30
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					10
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_17>
 				<armor_18>
 					15
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_18>
-				<armor_19>210</armor_19>
-				<armor_20>180</armor_20>
-				<armor_21>150</armor_21>
-				<armor_22>205</armor_22>
-				<armor_23>195</armor_23>
-				<surveyingDevice>
-					0
-					<chanceToHitByProjectile>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByProjectile>
-					<chanceToHitByExplosion>
-						0.7
-						<!--BW_String-->
-					</chanceToHitByExplosion>
-				</surveyingDevice>
+				<armor_19>170</armor_19>
+				<armor_20>145</armor_20>
 				<ammoBay>
 					0
 					<chanceToHitByProjectile>
@@ -7123,17 +7082,22 @@
 						<!--BW_String-->
 					</chanceToHitByExplosion>
 				</ammoBay>
+				<surveyingDevice>
+					0
+					<chanceToHitByProjectile>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByProjectile>
+					<chanceToHitByExplosion>
+						0.7
+						<!--BW_String-->
+					</chanceToHitByExplosion>
+				</surveyingDevice>
+				<armor_21>115</armor_21>
+				<armor_22>190</armor_22>
+				<armor_23>170</armor_23>
 			</armor>
-			<primaryArmor>armor_2 armor_3 armor_12</primaryArmor>
-			<weight>12480</weight>
-			<maxHealth>800</maxHealth>
-			<rotationSpeed>47</rotationSpeed>
-			<turretRotatorHealth>
-				<maxHealth>103</maxHealth>
-				<maxRegenHealth>65</maxRegenHealth>
-				<repairCost>0</repairCost>
-			</turretRotatorHealth>
-			<circularVisionRadius>330</circularVisionRadius>
+			<primaryArmor>armor_1 armor_3 armor_12</primaryArmor>
 			<surveyingDeviceHealth>
 				<maxHealth>52</maxHealth>
 				<maxRegenHealth>33</maxRegenHealth>
@@ -7142,7 +7106,7 @@
 			<guns>
 				<OQF_17pdr_Gun_Mk_VII_SH>
 					shared
-					<maxAmmo>50</maxAmmo>
+					<maxAmmo>83</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -7150,9 +7114,6 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<armor>
-						<gun>20</gun>
-					</armor>
 					<invisibilityFactorAtShot>
 						0.234
 						<!--BW_String-->
@@ -7191,6 +7152,9 @@
 						1.8
 						<!--BW_String-->
 					</aimingTime>
+					<armor>
+						<gun>20</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Gun_08.model</undamaged>
 						<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Gun_08.model</destroyed>
@@ -7257,7 +7221,7 @@
 				</OQF_17pdr_Gun_Mk_VII_SH>
 				<_32_pounder_Gun_OQF_SH>
 					shared
-					<maxAmmo>50</maxAmmo>
+					<maxAmmo>95</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -7265,11 +7229,8 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<armor>
-						<gun>40</gun>
-					</armor>
 					<shotDispersionRadius>
-						0.41
+						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
@@ -7292,6 +7253,9 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<armor>
+						<gun>40</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Gun_09.model</undamaged>
 						<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Gun_09.model</destroyed>
@@ -7361,7 +7325,7 @@
 				</_32_pounder_Gun_OQF_SH>
 				<_105mm_Gun_L7_HEAT_SH>
 					shared
-					<maxAmmo>50</maxAmmo>
+					<maxAmmo>77</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -7369,9 +7333,6 @@
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
-					<armor>
-						<gun>45</gun>
-					</armor>
 					<invisibilityFactorAtShot>
 						0.209
 						<!--BW_String-->
@@ -7410,6 +7371,9 @@
 						1.6
 						<!--BW_String-->
 					</aimingTime>
+					<armor>
+						<gun>45</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Gun_10.model</undamaged>
 						<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Gun_10.model</destroyed>
@@ -7469,10 +7433,7 @@
 				</_105mm_Gun_L7_HEAT_SH>
 				<_5_5inch_AT_Gun_SH>
 					shared
-					<maxAmmo>50</maxAmmo>
-					<armor>
-						<gun>60</gun>
-					</armor>
+					<maxAmmo>67</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -7507,6 +7468,9 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<armor>
+						<gun>60</gun>
+					</armor>
 					<models>
 						<undamaged>vehicles/british/GB107_Cavalier_SH/normal/lod0/Gun_11.model</undamaged>
 						<destroyed>vehicles/british/GB107_Cavalier_SH/crash/lod0/Gun_11.model</destroyed>
@@ -7714,7 +7678,7 @@
 					<smplFwMaxSpeed>45</smplFwMaxSpeed>
 				</Rolls_Royse_Meteor_SH>
 				<Rolls_Royse_Meteor_Mk_XI_supercharged_SH>
-					<smplEnginePower>1110</smplEnginePower>
+					<smplEnginePower>1180</smplEnginePower>
 					<smplFwMaxSpeed>60</smplFwMaxSpeed>
 				</Rolls_Royse_Meteor_Mk_XI_supercharged_SH>
 				<Leyland_L60_No_4_SH>

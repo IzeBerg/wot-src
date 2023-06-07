@@ -1,10 +1,6 @@
-import battle_params, remappings_cache, vehicle_modifications
+import battle_params, remappings_cache, modification_cache
 
 def init():
     battle_params.init()
     remappings_cache.init()
-    vehicle_modifications.init()
-
-
-def getModificationCache():
-    return vehicle_modifications.g_cache
+    modification_cache.init()

@@ -1,6 +1,7 @@
 package net.wg.gui.lobby.battleRoyale
 {
    import flash.display.Sprite;
+   import flash.filters.DropShadowFilter;
    import net.wg.gui.components.carousels.data.VehicleCarouselVO;
    import net.wg.gui.lobby.hangar.tcarousel.TankIcon;
    import org.idmedia.as3commons.util.StringUtils;
@@ -17,6 +18,8 @@ package net.wg.gui.lobby.battleRoyale
       private static const INFO_IMG_OFFSET_V:int = 3;
       
       private static const TEXT_INFO_Y:int = 42;
+      
+      private static const DEF_FILTER:DropShadowFilter = new DropShadowFilter(0,90,0,1,4,4,1.6,2);
        
       
       public var bgGlow:Sprite = null;
@@ -28,6 +31,12 @@ package net.wg.gui.lobby.battleRoyale
       public function BattleRoyaleTankIcon()
       {
          super();
+      }
+      
+      override protected function updateBaseData(param1:VehicleCarouselVO) : void
+      {
+         super.updateBaseData(param1);
+         txtTankName.filters = [DEF_FILTER];
       }
       
       override protected function onDispose() : void

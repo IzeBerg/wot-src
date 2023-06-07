@@ -501,8 +501,12 @@
 		<type>battleBoosters</type>
 		<tags>notForSale crewSkillBattleBooster armor</tags>
 		<script>
-			SkillEquipment
+			FactorSkillBattleBooster
 			<skillName>fireFighting</skillName>
+			<efficiencyFactor>
+				1.5
+				<!--BW_String-->
+			</efficiencyFactor>
 			<perkLevelMultiplier>
 				1.5
 				<!--BW_String-->
@@ -671,7 +675,7 @@
 		<vehicleFilter>
 			<exclude>
 				<vehicle>
-					<tags>wheeledVehicle</tags>
+					<mandatoryTags>wheeledVehicle lightTank</mandatoryTags>
 				</vehicle>
 			</exclude>
 		</vehicleFilter>
