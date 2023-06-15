@@ -1170,8 +1170,8 @@ class GiftReceivedFormatter(ServiceChannelFormatter):
 
 class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
     __purchaseCache = dependency.descriptor(IPurchaseCache)
-    __emitterAssetHandlers = {constants.INVOICE_EMITTER.WOTRP: {INVOICE_ASSET.GOLD: b'_formatWOTRPGold', 
-                                         INVOICE_ASSET.DATA: b'_formatWOTRPData'}}
+    __emitterAssetHandlers = {constants.INVOICE_EMITTER.WOTRP_CASHBACK: {INVOICE_ASSET.GOLD: b'_formatWOTRPCashbackGold', 
+                                                  INVOICE_ASSET.DATA: b'_formatWOTRPCashbackData'}}
     __assetHandlers = {INVOICE_ASSET.GOLD: b'_formatAmount', 
        INVOICE_ASSET.CREDITS: b'_formatAmount', 
        INVOICE_ASSET.CRYSTAL: b'_formatAmount', 
@@ -1206,8 +1206,8 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
     __blueprintsTemplateKeys = {BlueprintTypes.VEHICLE: ('vehicleBlueprintsAccruedInvoiceReceived', 'vehicleBlueprintsDebitedInvoiceReceived'), 
        BlueprintTypes.NATIONAL: ('nationalBlueprintsAccruedInvoiceReceived', 'nationalBlueprintsDebitedInvoiceReceived'), 
        BlueprintTypes.INTELLIGENCE_DATA: ('intelligenceBlueprintsAccruedInvoiceReceived', 'intelligenceBlueprintsDebitedInvoiceReceived')}
-    __emitterMessageTemplateKeys = {constants.INVOICE_EMITTER.WOTRP: {INVOICE_ASSET.GOLD: b'WOTRPCachbackInvoiceReceived', 
-                                         INVOICE_ASSET.DATA: b'WOTRPCachbackInvoiceReceived'}}
+    __emitterMessageTemplateKeys = {constants.INVOICE_EMITTER.WOTRP_CASHBACK: {INVOICE_ASSET.GOLD: b'WOTRPCachbackInvoiceReceived', 
+                                                  INVOICE_ASSET.DATA: b'WOTRPCachbackInvoiceReceived'}}
     __messageTemplateKeys = {INVOICE_ASSET.GOLD: b'goldInvoiceReceived', 
        INVOICE_ASSET.CREDITS: b'creditsInvoiceReceived', 
        INVOICE_ASSET.CRYSTAL: b'crystalInvoiceReceived', 
@@ -1618,12 +1618,15 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
             ctx[b'subtitle'] = subtitle
             return g_settings.msgTemplates.format(self._getMessageTemplateKey(emitterID, assetType), ctx=ctx, data=templateData)
 
-    def _formatWOTRPGold(self, emitterID, assetType, data):
+    def _formatWOTRPCashbackGold(self, emitterID, assetType, data):
         ctx = {b'amount': data.get(b'amount', 0)}
         return g_settings.msgTemplates.format(self._getMessageTemplateKey(emitterID, assetType), ctx=ctx)
 
-    def _formatWOTRPData(self, emitterID, assetType, data):
-        ctx = {b'amount': data.get(b'data', {}).get(b'gold', 0)}
+    def _formatWOTRPCashbackData(self, emitterID, assetType, data):
+        gold = data.get(b'data', {}).get(b'gold', 0)
+        if gold == 0:
+            return self._formatData(emitterID, assetType, data)
+        ctx = {b'amount': gold}
         return g_settings.msgTemplates.format(self._getMessageTemplateKey(emitterID, assetType), ctx=ctx)
 
     def _getMessageTemplateKey(self, emitterID, assetType):
