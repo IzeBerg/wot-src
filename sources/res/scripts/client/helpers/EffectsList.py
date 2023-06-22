@@ -4,6 +4,7 @@ from functools import partial
 import AnimationSequence, BigWorld, Math, WWISE, DecalMap, SoundGroups, helpers, material_kinds
 from PixieBG import PixieBG
 from helpers import dependency
+from items.readers import sound_readers
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.battle_session import IBattleSessionProvider
 from soft_exception import SoftException
@@ -110,6 +111,9 @@ class EffectsList(object):
 
             del data['_EffectsList_effects']
             return
+
+    def descriptors(self):
+        return self.__effectDescList
 
 
 class EffectsListPlayer(object):
@@ -334,13 +338,14 @@ class _PixieEffectDesc(_EffectDesc):
         return self._files
 
     def reattach(self, elem, model):
+        newPos = elem['newPos']
         nodePos = self._nodeName
         elem['model'] = model
-        if elem['newPos'] is not None:
-            nodePos = string.split(elem['newPos'][0], '/') if elem['newPos'][0] else []
+        if newPos is not None:
+            nodePos = string.split(newPos[0], '/') if newPos[0] else []
         if elem['pixie'].pixie is not None and elem['node'] is not None:
             elem['node'].detach(elem['pixie'].pixie)
-            elem['node'] = _findTargetNode(model, nodePos, elem['newPos'][1] if elem['newPos'] else None, self._orientByClosestSurfaceNormal, elem['surfaceNormal'])
+            elem['node'] = _findTargetNode(model, nodePos, newPos[1] if newPos and len(newPos) > 1 else None, self._orientByClosestSurfaceNormal, elem['surfaceNormal'])
             elem['node'].attach(elem['pixie'].pixie)
         else:
             elem['node'] = _findTargetNode(model, nodePos, None, self._orientByClosestSurfaceNormal, elem['surfaceNormal'])
@@ -350,10 +355,10 @@ class _PixieEffectDesc(_EffectDesc):
         elem = {}
         node = args.get('node', None)
         if node is None:
-            elem['newPos'] = args.get('position', None)
+            elem['newPos'] = newPos = args.get('position', None)
             nodePos = self._nodeName
-            if elem['newPos'] is not None:
-                nodePos = string.split(elem['newPos'][0], '/') if elem['newPos'][0] else []
+            if newPos is not None:
+                nodePos = string.split(newPos[0], '/') if newPos[0] else []
             scale = args.get('scale')
             if scale is not None:
                 elem['scale'] = scale
@@ -362,7 +367,7 @@ class _PixieEffectDesc(_EffectDesc):
             if surfaceMatKind is not None and self._surfaceMatKinds is not None:
                 if surfaceMatKind not in self._surfaceMatKinds:
                     return
-            elem['node'] = _findTargetNode(model, nodePos, elem['newPos'][1] if elem['newPos'] else None, self._orientByClosestSurfaceNormal, elem['surfaceNormal'])
+            elem['node'] = _findTargetNode(model, nodePos, newPos[1] if newPos and len(newPos) > 1 else None, self._orientByClosestSurfaceNormal, elem['surfaceNormal'])
         else:
             elem['node'] = node
         elem['model'] = model
@@ -504,10 +509,11 @@ class _ModelEffectDesc(_EffectDesc):
 
     def reattach(self, elem, model):
         elem['node'].detach(elem['attachment'])
+        newPos = elem['newPos']
         nodeName = self._nodeName
-        if elem['newPos'] is not None:
-            nodeName = string.split(elem['newPos'][0], '/') if elem['newPos'][0] else []
-        targetNode = _findTargetNode(model, nodeName, elem['newPos'][1] if elem['newPos'] else None)
+        if newPos is not None:
+            nodeName = string.split(newPos[0], '/') if newPos[0] else []
+        targetNode = _findTargetNode(model, nodeName, newPos[1] if newPos and len(newPos) > 1 else None)
         targetNode.attach(model)
         return
 
@@ -517,7 +523,7 @@ class _ModelEffectDesc(_EffectDesc):
         nodeName = self._nodeName
         if newPos is not None:
             nodeName = string.split(newPos[0], '/') if newPos[0] else []
-        targetNode = _findTargetNode(model, nodeName, newPos[1] if newPos else None)
+        targetNode = _findTargetNode(model, nodeName, newPos[1] if newPos and len(newPos) > 1 else None)
         targetNode.attach(currentModel)
         animator = None
         if self._animation:
@@ -1325,6 +1331,17 @@ class _TracerDelaySound(object):
         return self._soundName[0]
 
 
+class _AutoShootEffectDesc(_EffectDesc):
+    __slots__ = ('effectsPrefab', 'activationSound', 'deactivationSound')
+    TYPE = '_AutoShootEffectDesc'
+
+    def __init__(self, dataSection):
+        super(_AutoShootEffectDesc, self).__init__(dataSection)
+        self.effectsPrefab = dataSection.readString('effectsPrefab')
+        self.activationSound = sound_readers.readWWTripleSoundConfig(dataSection['activationSound'])
+        self.deactivationSound = sound_readers.readWWTripleSoundConfig(dataSection['deactivationSound'])
+
+
 _effectDescFactory = {'pixie': _PixieEffectDesc, 
    'animation': _AnimationEffectDesc, 
    'sound': _SoundEffectDesc, 
@@ -1343,7 +1360,8 @@ _effectDescFactory = {'pixie': _PixieEffectDesc,
    'posteffect': _PostProcessEffectDesc, 
    'light': _LightEffectDesc, 
    'destructionSound': _DestructionSoundEffectDesc, 
-   'lifetimeSound': _DestructionSoundEffectDesc}
+   'lifetimeSound': _DestructionSoundEffectDesc, 
+   'autoShoot': _AutoShootEffectDesc}
 
 def _createEffectDesc(eType, dataSection):
     if not dataSection.values():

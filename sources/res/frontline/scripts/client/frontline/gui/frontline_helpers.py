@@ -1,6 +1,8 @@
 import typing
 from frontline.gui.impl.gen.view_models.views.lobby.views.frontline_const import FrontlineState
 from frontline.gui.impl.gen.view_models.views.lobby.views.frontline_container_tab_model import TabType
+import CommandMapping
+from gui.Scaleform.daapi.view.common.keybord_helpers import getHotKeyVkList, getHotKeyList
 from gui.periodic_battles.models import PrimeTimeStatus
 from helpers import time_utils, dependency
 from skeletons.gui.game_control import IEpicBattleMetaGameController
@@ -35,6 +37,25 @@ def getProperTabWhileHangarUnavailable():
         return TabType.REWARDS
     else:
         return
+
+
+def getReserveIconPath(icon):
+    return ('img://gui/maps/icons/artefact/{}.png').format(icon)
+
+
+def getHotKeyListCommands():
+    return [
+     CommandMapping.CMD_CM_VEHICLE_UPGRADE_PANEL_LEFT, CommandMapping.CMD_CM_VEHICLE_UPGRADE_PANEL_RIGHT]
+
+
+def getHotKeyListByIndex(index):
+    commands = getHotKeyListCommands()
+    return getHotKeyList(commands[index])
+
+
+def getHotKeyVkListByIndex(index):
+    commands = getHotKeyListCommands()
+    return getHotKeyVkList(commands[index])
 
 
 def isHangarAvailable():

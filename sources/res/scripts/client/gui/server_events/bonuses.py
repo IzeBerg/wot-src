@@ -4,7 +4,7 @@ from functools import partial
 from operator import itemgetter
 import typing, BigWorld
 from adisp import adisp_process
-from battle_pass_common import BATTLE_PASS_OFFER_TOKEN_PREFIX, BATTLE_PASS_Q_CHAIN_BONUS_NAME, BATTLE_PASS_Q_CHAIN_TOKEN_PREFIX, BATTLE_PASS_SELECT_BONUS_NAME, BATTLE_PASS_STYLE_PROGRESS_BONUS_NAME, BATTLE_PASS_TOKEN_3D_STYLE, BATTLE_PASS_TOKEN_PREFIX
+from battle_pass_common import BATTLE_PASS_OFFER_TOKEN_PREFIX, BATTLE_PASS_Q_CHAIN_BONUS_NAME, BATTLE_PASS_Q_CHAIN_TOKEN_PREFIX, BATTLE_PASS_RANDOM_QUEST_BONUS_NAME, BATTLE_PASS_RANDOM_QUEST_TOKEN_PREFIX, BATTLE_PASS_SELECT_BONUS_NAME, BATTLE_PASS_STYLE_PROGRESS_BONUS_NAME, BATTLE_PASS_TOKEN_3D_STYLE, BATTLE_PASS_TOKEN_PREFIX
 from blueprints.BlueprintTypes import BlueprintTypes
 from blueprints.FragmentTypes import getFragmentType
 from constants import CURRENCY_TOKEN_PREFIX, DOSSIER_TYPE, EVENT_TYPE as _ET, LOOTBOX_TOKEN_PREFIX, PREMIUM_ENTITLEMENTS, RESOURCE_TOKEN_PREFIX, RentType, CUSTOMIZATION_PROGRESS_PREFIX, WoTPlusBonusType
@@ -70,12 +70,12 @@ from skeletons.gui.shared import IItemsCache
 from web.web_client_api.common import ItemPackEntry, ItemPackType, ItemPackTypeGroup, getItemPackByGroupAndName
 if typing.TYPE_CHECKING:
     from typing import List, Tuple, Dict, Callable, Optional
-    from gui.goodies.goodie_items import Booster, _PersonalDiscount, DemountKit, RecertificationForm, GoodieType
-    from items.components.crew_skins_components import CrewSkin
     from account_helpers.offers.events_data import OfferEventData
     from account_helpers.offers.offer_bonuses import ItemsOfferBonus
+    from gui.goodies.goodie_items import Booster, _PersonalDiscount, DemountKit, RecertificationForm, GoodieType
     from gui.shared.gui_items.customization import C11nStyleProgressData
     from gui.lobby_context import LobbyContext
+    from items.components.crew_skins_components import CrewSkin
 DEFAULT_CREW_LVL = 50
 _CUSTOMIZATIONS_SCALE = 44.0 / 128
 _ZERO_COMPENSATION_MONEY = Money(credits=0, gold=0)
@@ -630,8 +630,7 @@ class BattleTokensBonus(TokensBonus):
         for tokenID, _ in self._value.iteritems():
             complexToken = parseComplexToken(tokenID)
             if complexToken.isDisplayable:
-                userName = self._getUserName(complexToken.styleID)
-                result.append(i18n.makeString(TOOLTIPS.MISSIONS_TOKEN_HEADER, name=userName))
+                result.append(self._getUserName(complexToken.styleID))
 
         if result:
             return (', ').join(result)
@@ -792,6 +791,28 @@ class BattlePassQuestChainTokensBonus(TokensBonus):
 
     def __getTokenIDPart(self, index):
         return self.tokenID.split(':')[index]
+
+
+class BattlePassRandomQuestTokensBonus(TokensBonus):
+    __eventsCache = dependency.descriptor(IEventsCache)
+
+    def __init__(self, value, isCompensation=False, ctx=None):
+        super(BattlePassRandomQuestTokensBonus, self).__init__(BATTLE_PASS_RANDOM_QUEST_BONUS_NAME, value, isCompensation, ctx)
+
+    @property
+    def tokenID(self):
+        return first(self._value.keys())
+
+    @property
+    def vehicle(self):
+        quest = first(self.__eventsCache.getQuestsByTokenRequirement(self.tokenID))
+        condition = first(quest.vehicleReqs.getConditions().items)
+        if not condition.getVehiclesList():
+            _logger.warning('Vehicles List is empty because of filter criteria condition!')
+        return first(condition.getVehiclesList())
+
+    def isShowInGUI(self):
+        return True
 
 
 class BattlePassStyleProgressTokenBonus(TokensBonus):
@@ -1073,6 +1094,8 @@ def tokensFactory(name, value, isCompensation=False, ctx=None):
             result.append(SelectableBonus({tID: tValue}, isCompensation, ctx))
         elif tID.startswith(BATTLE_PASS_Q_CHAIN_TOKEN_PREFIX):
             result.append(BattlePassQuestChainTokensBonus({tID: tValue}, isCompensation, ctx))
+        elif tID.startswith(BATTLE_PASS_RANDOM_QUEST_TOKEN_PREFIX):
+            result.append(BattlePassRandomQuestTokensBonus({tID: tValue}, isCompensation, ctx))
         elif tID.startswith(BATTLE_PASS_TOKEN_PREFIX):
             result.append(BattlePassTokensBonus(name, {tID: tValue}, isCompensation, ctx))
         elif tID.startswith(CURRENCY_TOKEN_PREFIX):

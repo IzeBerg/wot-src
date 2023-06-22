@@ -37,6 +37,8 @@ if TYPE_CHECKING:
 _SHOULD_CHECK_DECAL_UNDER_GUN = True
 _PROJECTION_DECAL_OVERLAPPING_FACTOR = 0.7
 _HANGAR_TURRET_SHIFT = math.pi / 8
+_CAMERA_CAPSULE_GUN_SCALE = Math.Vector3(1.0, 1.0, 1.1)
+_CAMERA_CAPSULE_SCALE = Math.Vector3(1.5, 1.5, 1.5)
 _CAMERA_MIN_DIST_FACTOR = 0.8
 AnchorLocation = namedtuple('AnchorLocation', ['position', 'normal', 'up'])
 AnchorId = namedtuple('AnchorId', ('slotType', 'areaId', 'regionIdx'))
@@ -316,14 +318,8 @@ class HangarVehicleAppearance(ScriptGameObject):
            'vEntityId': self.__vEntity.id, 
            'intCD': self.__vDesc.type.compactDescr}), scope=EVENT_BUS_SCOPE.DEFAULT)
         cfg = hangarCFG()
-        gunScale = Math.Vector3(1.0, 1.0, 1.1)
-        capsuleScale = Math.Vector3(1.5, 1.5, 1.5)
-        loadedGunScale = cfg.get('cam_capsule_gun_scale', gunScale)
-        if loadedGunScale is not None:
-            gunScale = loadedGunScale
-        loadedCapsuleScale = cfg.get('cam_capsule_scale', capsuleScale)
-        if loadedCapsuleScale is not None:
-            capsuleScale = loadedCapsuleScale
+        gunScale = cfg.get('cam_capsule_gun_scale', _CAMERA_CAPSULE_GUN_SCALE)
+        capsuleScale = cfg.get('cam_capsule_scale', _CAMERA_CAPSULE_SCALE)
         hitTesterManagers = {TankPartNames.CHASSIS: vDesc.chassis.hitTesterManager, 
            TankPartNames.HULL: vDesc.hull.hitTesterManager, 
            TankPartNames.TURRET: vDesc.turret.hitTesterManager, 
@@ -627,7 +623,9 @@ class HangarVehicleAppearance(ScriptGameObject):
             BigWorld.appendCameraCollider(colliderData)
             cameraManager = CGF.getManager(self.__spaceId, HangarCameraManager)
             if cameraManager:
-                cameraManager.setMinDist(_CAMERA_MIN_DIST_FACTOR * self.computeVehicleLength())
+                cfg = hangarCFG()
+                minDistFactor = cfg.get('cam_min_dist_vehicle_hull_length_k', _CAMERA_MIN_DIST_FACTOR)
+                cameraManager.setMinDist(minDistFactor * self.computeVehicleLength())
         else:
             BigWorld.removeCameraCollider(self.collisions.getColliderID())
 

@@ -122,8 +122,6 @@ package net.wg.gui.components.crosshairPanel
       
       private var _ammoQuantityInClip:Number = 0;
       
-      private var _isAmmoLow:Boolean = false;
-      
       private var _isAutoloader:Boolean = false;
       
       private var _isAutoloaderCritical:Boolean = false;
@@ -231,6 +229,15 @@ package net.wg.gui.components.crosshairPanel
          if(this._currentCrosshair is CrosshairStrategic)
          {
             (this._currentCrosshair as CrosshairStrategic).setShotFlyTimesData(param1);
+         }
+      }
+      
+      public function as_addOverheat(param1:Number) : void
+      {
+         var _loc2_:ICrosshair = null;
+         for each(_loc2_ in this._crosshairs)
+         {
+            _loc2_.addOverheat(param1);
          }
       }
       
@@ -366,6 +373,15 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
+      public function as_removeOverheat() : void
+      {
+         var _loc1_:ICrosshair = null;
+         for each(_loc1_ in this._crosshairs)
+         {
+            _loc1_.removeOverheat();
+         }
+      }
+      
       public function as_removeSpeedometer() : void
       {
          if(this._speedometer)
@@ -384,13 +400,12 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
-      public function as_setAmmoStock(param1:Number, param2:Number, param3:Boolean, param4:String, param5:Boolean) : void
+      public function as_setAmmoStock(param1:Number, param2:Number, param3:String, param4:Boolean) : void
       {
          this._ammoQuantity = param1;
          this._ammoQuantityInClip = param2;
-         this._isAmmoLow = param3;
-         this._ammoClipState = param4;
-         this._ammoClipReloaded = param5;
+         this._ammoClipState = param3;
+         this._ammoClipReloaded = param4;
          if(this._ammoQuantity == 0)
          {
             this._remainingTimeInSec = 0;
@@ -398,7 +413,7 @@ package net.wg.gui.components.crosshairPanel
          }
          if(this._currentCrosshair != null)
          {
-            this._currentCrosshair.setAmmoStock(this._ammoQuantity,this._ammoQuantityInClip,this._isAmmoLow,this._ammoClipState,this._ammoClipReloaded);
+            this._currentCrosshair.setAmmoStock(this._ammoQuantityInClip,this._ammoClipState,this._ammoClipReloaded);
          }
          this._ammoClipReloaded = false;
       }
@@ -535,6 +550,15 @@ package net.wg.gui.components.crosshairPanel
          if(this._currentCrosshair != null)
          {
             this._currentCrosshair.setVisibleNet(this._visibleNet);
+         }
+      }
+      
+      public function as_setOverheatProgress(param1:Number, param2:Boolean) : void
+      {
+         var _loc3_:ICrosshair = null;
+         for each(_loc3_ in this._crosshairs)
+         {
+            _loc3_.setOverheatProgress(param1,param2);
          }
       }
       
@@ -942,7 +966,7 @@ package net.wg.gui.components.crosshairPanel
       {
          if(this._currentCrosshair != null)
          {
-            this._currentCrosshair.setInfo(this._healthInPercents,this._zoomStr,this._currReloadingState,this._isReloadingTimeFieldShown,this._isDistanceShown,this._distanceStr,this._playerInfoStr,this._clipCapacity,this._burst,this._ammoState,this._ammoQuantity,this._ammoQuantityInClip,this._isAmmoLow,this._ammoClipState,this._ammoClipReloaded,this._isAutoloader,this._isAutoloaderCritical);
+            this._currentCrosshair.setInfo(this._healthInPercents,this._zoomStr,this._currReloadingState,this._isReloadingTimeFieldShown,this._isDistanceShown,this._distanceStr,this._playerInfoStr,this._clipCapacity,this._burst,this._ammoState,this._ammoQuantityInClip,this._ammoClipState,this._ammoClipReloaded,this._isAutoloader,this._isAutoloaderCritical);
             this._currentCrosshair.setQuickReloadingTime(this._isQuickReloadingActive,this._quickReloadingTime);
             if(this._speedometer != null)
             {

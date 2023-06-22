@@ -77,7 +77,6 @@
 			3 3 0.000000 0.000000
 			<!--BW_String-->
 		</tiling>
-		<exclusionMask/>
 		<density>
 			1.06 1.06
 			<!--BW_String-->
@@ -128,35 +127,18 @@
 			<armor_11>
 				50.8
 				<!--BW_String-->
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_11>
 			<armor_12>
 				15.9
 				<!--BW_String-->
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_12>
 			<armor_13>0</armor_13>
-			<armor_14>
-				76.2
-				<!--BW_String-->
-			</armor_14>
-			<armor_15>
-				19.1
-				<!--BW_String-->
-			</armor_15>
 			<armor_16>
 				38.1
 				<!--BW_String-->
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_16>
 		</armor>
 		<primaryArmor>armor_2 armor_3 armor_4</primaryArmor>
@@ -178,11 +160,11 @@
 		<swinging>
 			<lodDist>FAR</lodDist>
 			<pitchParams>
-				0.24 34.00 0.40 1.00 0.05 0.30
+				0.24 34 0.4 1 0.05 0.3
 				<!--BW_String-->
 			</pitchParams>
 			<rollParams>
-				1.00 0.26 34.00 0.40 1.00 0.05 0.30
+				1 0.26 34 0.4 1 0.05 0.3
 				<!--BW_String-->
 			</rollParams>
 			<sensitivityToImpulse>
@@ -202,12 +184,6 @@
 			<collisionModelClient>vehicles/british/GB08_Churchill_I/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
 		<hangarShadowTexture>vehicles/british/GB08_Churchill_I/Churchill_I_HangarShadowMap.dds</hangarShadowTexture>
-		<customization>
-			<customizableVehicleAreas>
-				<paint/>
-				<camouflage>HULL</camouflage>
-			</customizableVehicleAreas>
-		</customization>
 		<customizationSlots>
 			<slot>
 				<slotType>clan</slotType>
@@ -220,16 +196,11 @@
 					1.29659 -0.297713 1.75928
 					<!--BW_String-->
 				</rayEnd>
-				<rayUp>
-					0.000000 1 0.000000
-					<!--BW_String-->
-				</rayUp>
+				<rayUp>0 1 0</rayUp>
 				<size>
 					0.25
 					<!--BW_String-->
 				</size>
-				<hideIfDamaged>false</hideIfDamaged>
-				<isUVProportional>true</isUVProportional>
 			</slot>
 			<slot>
 				<slotType>inscription</slotType>
@@ -242,18 +213,20 @@
 					1.29659 -0.307171 0.245667
 					<!--BW_String-->
 				</rayEnd>
-				<rayUp>
-					0.000000 1 0.000000
-					<!--BW_String-->
-				</rayUp>
+				<rayUp>0 1 0</rayUp>
 				<size>
 					0.74
 					<!--BW_String-->
 				</size>
 				<hideIfDamaged>true</hideIfDamaged>
-				<isUVProportional>true</isUVProportional>
 			</slot>
 		</customizationSlots>
+		<customization>
+			<customizableVehicleAreas>
+				<paint/>
+				<camouflage>HULL</camouflage>
+			</customizableVehicleAreas>
+		</customization>
 		<camouflage>
 			<tiling>
 				1.7 1.7 0.000000 0.000000
@@ -311,25 +284,6 @@
 				<destroyed>vehicles/british/GB08_Churchill_I/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/british/GB08_Churchill_I/crash/lod0/Chassis.model</exploded>
 			</models>
-			<splineDesc>
-				<segmentModelLeft>vehicles/british/GB08_Churchill_I/track/segment.model</segmentModelLeft>
-				<segmentModelRight>vehicles/british/GB08_Churchill_I/track/segment.model</segmentModelRight>
-				<left>vehicles/british/GB08_Churchill_I/track/left.track</left>
-				<right>vehicles/british/GB08_Churchill_I/track/right.track</right>
-				<segmentLength>
-					0.211
-					<!--BW_String-->
-				</segmentLength>
-				<segmentOffset>
-					0.29
-					<!--BW_String-->
-				</segmentOffset>
-				<lodDist>SPLINE_TRACK</lodDist>
-				<atlas>
-					<UTiles>1</UTiles>
-					<VTiles>1</VTiles>
-				</atlas>
-			</splineDesc>
 			<traces>
 				<lodDist>FAR</lodDist>
 				<bufferPrefs>largeTank</bufferPrefs>
@@ -341,12 +295,15 @@
 			</traces>
 			<tracks>
 				<lodDist>MEDIUM_TRACK</lodDist>
-				<leftMaterial>track_mat_L_skinned</leftMaterial>
-				<rightMaterial>track_mat_R_skinned</rightMaterial>
-				<textureScale>
-					-2.25
-					<!--BW_String-->
-				</textureScale>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<leftMaterial>track_mat_L_skinned</leftMaterial>
+					<rightMaterial>track_mat_R_skinned</rightMaterial>
+					<textureScale>
+						-2.25
+						<!--BW_String-->
+					</textureScale>
+				</trackPair>
 			</tracks>
 			<wheels>
 				<lodDist>MEDIUM</lodDist>
@@ -413,83 +370,50 @@
 					<count>1</count>
 					<isLeft>true</isLeft>
 					<minOffset>
-						0.00457036
+						0.00457
 						<!--BW_String-->
 					</minOffset>
-					<maxOffset>
-						0.0856079
-						<!--BW_String-->
-					</maxOffset>
+					<maxOffset>0.085608</maxOffset>
 				</group>
 				<group>
 					<template>Track_L</template>
 					<startIndex>1</startIndex>
 					<count>9</count>
 					<isLeft>true</isLeft>
-					<minOffset>
-						-0.0566836
-						<!--BW_String-->
-					</minOffset>
-					<maxOffset>
-						0.0641026
-						<!--BW_String-->
-					</maxOffset>
+					<minOffset>-0.056684</minOffset>
+					<maxOffset>0.064103</maxOffset>
 				</group>
 				<group>
 					<template>Track_L</template>
 					<startIndex>10</startIndex>
 					<count>1</count>
 					<isLeft>true</isLeft>
-					<minOffset>
-						-0.0393053
-						<!--BW_String-->
-					</minOffset>
-					<maxOffset>
-						0.0959781
-						<!--BW_String-->
-					</maxOffset>
+					<minOffset>-0.039305</minOffset>
+					<maxOffset>0.095978</maxOffset>
 				</group>
 				<group>
 					<template>Track_R</template>
 					<startIndex>0</startIndex>
 					<count>1</count>
 					<isLeft>false</isLeft>
-					<minOffset>
-						-0.00274223
-						<!--BW_String-->
-					</minOffset>
-					<maxOffset>
-						0.0930521
-						<!--BW_String-->
-					</maxOffset>
+					<minOffset>-0.002742</minOffset>
+					<maxOffset>0.093052</maxOffset>
 				</group>
 				<group>
 					<template>Track_R</template>
 					<startIndex>1</startIndex>
 					<count>9</count>
 					<isLeft>false</isLeft>
-					<minOffset>
-						-0.0600677
-						<!--BW_String-->
-					</minOffset>
-					<maxOffset>
-						0.0576923
-						<!--BW_String-->
-					</maxOffset>
+					<minOffset>-0.060068</minOffset>
+					<maxOffset>0.057692</maxOffset>
 				</group>
 				<group>
 					<template>Track_R</template>
 					<startIndex>10</startIndex>
 					<count>1</count>
 					<isLeft>false</isLeft>
-					<minOffset>
-						-0.00274223
-						<!--BW_String-->
-					</minOffset>
-					<maxOffset>
-						0.0978062
-						<!--BW_String-->
-					</maxOffset>
+					<minOffset>-0.002742</minOffset>
+					<maxOffset>0.097806</maxOffset>
 				</group>
 			</groundNodes>
 			<trackThickness>
@@ -520,7 +444,6 @@
 						0.9
 						<!--BW_String-->
 					</forwardElastK>
-					<offset>0.000000</offset>
 				</node>
 				<node>
 					<isLeft>false</isLeft>
@@ -529,7 +452,6 @@
 						0.9
 						<!--BW_String-->
 					</forwardElastK>
-					<offset>0.000000</offset>
 				</node>
 				<node>
 					<isLeft>true</isLeft>
@@ -538,7 +460,6 @@
 						0.9
 						<!--BW_String-->
 					</forwardElastK>
-					<offset>0.000000</offset>
 				</node>
 				<node>
 					<isLeft>false</isLeft>
@@ -547,7 +468,6 @@
 						0.9
 						<!--BW_String-->
 					</forwardElastK>
-					<offset>0.000000</offset>
 				</node>
 				<node>
 					<isLeft>true</isLeft>
@@ -573,7 +493,6 @@
 						0.9
 						<!--BW_String-->
 					</forwardElastK>
-					<backwardElastK>1</backwardElastK>
 					<offset>
 						-0.073
 						<!--BW_String-->
@@ -604,7 +523,6 @@
 						0.9
 						<!--BW_String-->
 					</forwardElastK>
-					<backwardElastK>1</backwardElastK>
 					<offset>
 						-0.073
 						<!--BW_String-->
@@ -612,17 +530,33 @@
 					<leftSibling>Track_VT_R0</leftSibling>
 				</node>
 			</trackNodes>
+			<splineDesc>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<segmentModelLeft>vehicles/british/GB08_Churchill_I/track/segment.model</segmentModelLeft>
+					<segmentModelRight>vehicles/british/GB08_Churchill_I/track/segment.model</segmentModelRight>
+					<left>vehicles/british/GB08_Churchill_I/track/left.track</left>
+					<right>vehicles/british/GB08_Churchill_I/track/right.track</right>
+					<segmentLength>
+						0.211
+						<!--BW_String-->
+					</segmentLength>
+					<segmentOffset>
+						0.29
+						<!--BW_String-->
+					</segmentOffset>
+					<atlas>
+						<UTiles>1</UTiles>
+						<VTiles>1</VTiles>
+					</atlas>
+				</trackPair>
+				<lodDist>SPLINE_TRACK</lodDist>
+			</splineDesc>
 			<physicalTracks>
 				<left>
 					<segmentsCount>75</segmentsCount>
-					<segmentsOuterThickness>
-						0.0463445
-						<!--BW_String-->
-					</segmentsOuterThickness>
-					<segmentsInnerThickness>
-						0.00649357
-						<!--BW_String-->
-					</segmentsInnerThickness>
+					<segmentsOuterThickness>0.046345</segmentsOuterThickness>
+					<segmentsInnerThickness>0.006494</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						-1.0882
 						<!--BW_String-->
@@ -632,10 +566,7 @@
 							<back>0.211833</back>
 							<top>0.187009</top>
 							<front>0.184436</front>
-							<bottom>
-								0.0770731
-								<!--BW_String-->
-							</bottom>
+							<bottom>0.077073</bottom>
 						</backwardMovement>
 						<forwardMovement>
 							<back>0.177168</back>
@@ -656,7 +587,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -681,7 +612,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -738,10 +669,7 @@
 								-1.928 0.197404
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.0761911 -0.173625
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.076191 -0.173625</shiftVec>
 							<jointIdx>56</jointIdx>
 						</bottomBack>
 						<bottomFront>
@@ -797,7 +725,6 @@
 						</sync>
 					</teethSyncs>
 					<sourceCollisionHullPoints>
-						<top/>
 						<bottom>
 							<range>
 								<point>
@@ -901,11 +828,11 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.21486 1.41982 -0.0773144
+									-1.21486 1.41982 -0.077314
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.16486 1.41982 0.0267668
+									-1.16486 1.41982 0.026767
 									<!--BW_String-->
 								</point>
 								<point>
@@ -1019,17 +946,12 @@
 							</range>
 						</bottom>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</left>
 				<right>
 					<segmentsCount>75</segmentsCount>
-					<segmentsOuterThickness>
-						0.0463735
-						<!--BW_String-->
-					</segmentsOuterThickness>
-					<segmentsInnerThickness>
-						0.00739357
-						<!--BW_String-->
-					</segmentsInnerThickness>
+					<segmentsOuterThickness>0.046374</segmentsOuterThickness>
+					<segmentsInnerThickness>0.007394</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						1.0882
 						<!--BW_String-->
@@ -1039,10 +961,7 @@
 							<back>0.211833</back>
 							<top>0.187009</top>
 							<front>0.184436</front>
-							<bottom>
-								0.0770731
-								<!--BW_String-->
-							</bottom>
+							<bottom>0.077073</bottom>
 						</backwardMovement>
 						<forwardMovement>
 							<back>0.177168</back>
@@ -1063,7 +982,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -1088,7 +1007,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -1145,10 +1064,7 @@
 								-1.928 0.197367
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.0933976 -0.173625
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.093398 -0.173625</shiftVec>
 							<jointIdx>56</jointIdx>
 						</bottomBack>
 						<bottomFront>
@@ -1204,7 +1120,6 @@
 						</sync>
 					</teethSyncs>
 					<sourceCollisionHullPoints>
-						<top/>
 						<bottom>
 							<range>
 								<point>
@@ -1308,11 +1223,11 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									1.21488 1.41989 -0.0773057
+									1.21488 1.41989 -0.077306
 									<!--BW_String-->
 								</point>
 								<point>
-									1.21488 1.41989 0.0267759
+									1.21488 1.41989 0.026776
 									<!--BW_String-->
 								</point>
 								<point>
@@ -1426,6 +1341,7 @@
 							</range>
 						</bottom>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</right>
 			</physicalTracks>
 			<effects>
@@ -1497,10 +1413,6 @@
 					76.2
 					<!--BW_String-->
 				</armor_4>
-				<armor_5>
-					76.2
-					<!--BW_String-->
-				</armor_5>
 				<armor_6>
 					19.1
 					<!--BW_String-->
@@ -1522,14 +1434,6 @@
 					88.9
 					<!--BW_String-->
 				</armor_11>
-				<armor_12>
-					19.1
-					<!--BW_String-->
-				</armor_12>
-				<armor_13>
-					19.1
-					<!--BW_String-->
-				</armor_13>
 				<armor_14>
 					88.9
 					<!--BW_String-->
@@ -1571,17 +1475,11 @@
 						<armor_1>
 							101.6
 							<!--BW_String-->
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
 							89
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_2>
 						<gun>30</gun>
 					</armor>
@@ -1626,23 +1524,16 @@
 					</hitTester>
 					<effects>shot_medium_mb</effects>
 					<reloadEffect>reload50_75</reloadEffect>
-					<animateEmblemSlots>true</animateEmblemSlots>
-					<customization>
-						<customizableVehicleAreas>
-							<paint/>
-							<camouflage>GUN</camouflage>
-						</customizableVehicleAreas>
-					</customization>
 					<customizationSlots>
 						<slot>
 							<slotType>insigniaOnGun</slotType>
 							<slotId>49000</slotId>
 							<rayStart>
-								0.000001 -0.00321812 1.77533
+								0.000001 -0.003218 1.77533
 								<!--BW_String-->
 							</rayStart>
 							<rayEnd>
-								0.0249538 -0.0116694 1.775
+								0.000001 -0.003218 2.20233
 								<!--BW_String-->
 							</rayEnd>
 							<rayUp>
@@ -1653,10 +1544,14 @@
 								0.427
 								<!--BW_String-->
 							</size>
-							<hideIfDamaged>false</hideIfDamaged>
-							<isUVProportional>true</isUVProportional>
 						</slot>
 					</customizationSlots>
+					<customization>
+						<customizableVehicleAreas>
+							<paint/>
+							<camouflage>GUN</camouflage>
+						</customizableVehicleAreas>
+					</customization>
 					<camouflage>
 						<tiling>
 							0.3 0.3 0.000000 0.7
@@ -1680,57 +1575,26 @@
 				<collisionModelClient>vehicles/british/GB08_Churchill_I/collision_client/Turret_02.model</collisionModelClient>
 			</hitTester>
 			<gunPosition>0.023538 0.403442 0.640064</gunPosition>
-			<showEmblemsOnGun>false</showEmblemsOnGun>
 			<physicsShape>
-				0.800 0.246 1.000 0.000 0.415 -0.508 0.862 0.388 0.288 0.710 0.002 0.513 0.054 0.604 0.048
+				0.8 0.246 1 0 0.415 -0.508 0.862 0.388 0.288 0.71 0.002 0.513 0.054 0.604 0.048
 				<!--BW_String-->
 			</physicsShape>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
-			<customization>
-				<customizableVehicleAreas>
-					<paint/>
-					<camouflage>TURRET</camouflage>
-				</customizableVehicleAreas>
-			</customization>
 			<customizationSlots>
 				<slot>
 					<slotType>player</slotType>
 					<slotId>33000</slotId>
+					<isMirrored>true</isMirrored>
 					<rayStart>
-						1.15932 0.599581 -0.00860037
+						1.15932 0.599581 -0.0086
 						<!--BW_String-->
 					</rayStart>
 					<rayEnd>0.563181 0.599581 -0.076577</rayEnd>
-					<rayUp>
-						0.000000 1 0.000000
-						<!--BW_String-->
-					</rayUp>
+					<rayUp>0 1 0</rayUp>
 					<size>
 						0.32
 						<!--BW_String-->
 					</size>
-					<hideIfDamaged>false</hideIfDamaged>
-					<isMirrored>true</isMirrored>
-					<isUVProportional>true</isUVProportional>
-				</slot>
-				<slot>
-					<slotType>inscription</slotType>
-					<slotId>34000</slotId>
-					<rayStart>
-						-1.03088 0.436179 0.422504
-						<!--BW_String-->
-					</rayStart>
-					<rayEnd>-0.636156 0.434972 0.357727</rayEnd>
-					<rayUp>
-						0.000000 1 0.000000
-						<!--BW_String-->
-					</rayUp>
-					<size>
-						0.64
-						<!--BW_String-->
-					</size>
-					<hideIfDamaged>false</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>player</slotType>
@@ -1740,18 +1604,33 @@
 						<!--BW_String-->
 					</rayStart>
 					<rayEnd>-0.633596 0.592793 -0.245154</rayEnd>
-					<rayUp>
-						0.000000 1 0.000000
-						<!--BW_String-->
-					</rayUp>
+					<rayUp>0 1 0</rayUp>
 					<size>
 						0.32
 						<!--BW_String-->
 					</size>
-					<hideIfDamaged>false</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
+				</slot>
+				<slot>
+					<slotType>inscription</slotType>
+					<slotId>34000</slotId>
+					<rayStart>
+						-1.03088 0.436179 0.422504
+						<!--BW_String-->
+					</rayStart>
+					<rayEnd>-0.636156 0.434972 0.357727</rayEnd>
+					<rayUp>0 1 0</rayUp>
+					<size>
+						0.64
+						<!--BW_String-->
+					</size>
 				</slot>
 			</customizationSlots>
+			<customization>
+				<customizableVehicleAreas>
+					<paint/>
+					<camouflage>TURRET</camouflage>
+				</customizableVehicleAreas>
+			</customization>
 			<camouflage>
 				<tiling>
 					0.6 0.6 0.000000 0.6

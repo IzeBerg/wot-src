@@ -25,3 +25,4 @@ class LevelReservesTooltip(ViewImpl):
                 levels.addString(level)
 
             levels.invalidate()
+            vm.setHasOptionalReserves(True)

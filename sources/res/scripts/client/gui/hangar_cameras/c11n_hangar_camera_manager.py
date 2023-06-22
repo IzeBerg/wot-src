@@ -8,7 +8,8 @@ from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.customization import ICustomizationService
 from vehicle_systems.tankStructure import TankPartIndexes, TankPartNames
 from cgf_components.hangar_camera_manager import HangarCameraManager, DOFParams
-_VERTICAL_OFFSET = 0.2
+_VERTICAL_OFFSET = (0, -0.2, 0)
+_VERTICAL_EPSILON = 0.1
 _WORLD_UP = Math.Vector3(0, 1, 0)
 _STYLE_INFO_YAW = math.radians(-135)
 _STYLE_INFO_PITCH = math.radians(-5)
@@ -58,11 +59,11 @@ class C11nHangarCameraManager(TimeDeltaMeter):
     def currentMode(self):
         return self.__currentMode
 
-    def resetCustomizationCamera(self):
+    def resetCustomizationCamera(self, resetRotation=True):
         cameraManager = CGF.getManager(self._hangarSpace.spaceID, HangarCameraManager)
         if not cameraManager:
             return
-        cameraManager.resetCameraTarget(EASING_TRANSITION_DURATION)
+        cameraManager.resetCameraTarget(EASING_TRANSITION_DURATION, resetRotation)
         self.enableMovementByMouse()
         self.__rotateTurretAndGun()
         self.__currentMode = C11nCameraModes.PREVIEW
@@ -91,6 +92,10 @@ class C11nHangarCameraManager(TimeDeltaMeter):
             else:
                 yaw = None
                 pitch = None
+            if position is not None:
+                lowestY = self.vEntity.position.y + _VERTICAL_EPSILON
+                position += _VERTICAL_OFFSET
+                position.y = max(position.y, lowestY)
             duration = EASING_TRANSITION_DURATION if not forceRotate else 0
             cameraManager.setDOFParams(False)
             cameraManager.moveCamera(position, yaw, pitch, None, duration)

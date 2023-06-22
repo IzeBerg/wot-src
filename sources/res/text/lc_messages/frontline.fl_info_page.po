@@ -144,6 +144,14 @@ msgstr ""
 "Линия фронта — отличная возможность заработать очки Боевого пропуска за "
 "участие в боях и получение уровней фронта."
 
+msgid "main/cellRandomReserves/header"
+msgstr "Воля случая"
+
+msgid "main/cellRandomReserves/text"
+msgstr ""
+"Сценарий, при котором боевые резервы выдаются в бою "
+"{whiteSpanish_Start}случайным{whiteSpanish_End} образом."
+
 msgid "main/cellReserves/header"
 msgstr "Категории боевых резервов"
 
@@ -238,8 +246,32 @@ msgstr ""
 "При игре в режиме вы будете получать звания, продвигаться по прогрессии "
 "Линии фронта и зарабатывать награды."
 
+msgid "randomReserves/sectionHeader"
+msgstr "Воля случая"
+
+msgid "randomReserves/text"
+msgstr ""
+"При разблокировке каждого нового слота в бою, вы сможете выбрать один из двух резервов. Выдача резервов случайна и не зависит от их категории. Выбранный резерв устанавливается в соответствующий слот и может быть активирован в сражении.\n"
+"\n"
+"При благоприятном стечении обстоятельств вы сможете выбрать любимый резерв несколько раз. Если у него есть активный эффект (например, «Авиаудар»), он будет установлен в разные слоты и сможет быть активирован несколько раз подряд. Если резерв обладает пассивным эффектом (например, «Диверсионный отряд»), его характеристики значительно улучшатся.\n"
+"\n"
+"Вы можете увеличить вероятность выдачи любимого резерва на {whiteSpanish_Start}10%{whiteSpanish_End}, установив его в один из слотов перед боем.\n"
+"\n"
+"В сценарии {whiteSpanish_Start}«Воля случая»{whiteSpanish_End} максимальный уровень боевых резервов повышен до {whiteSpanish_Start}IV{whiteSpanish_End}. Покупка резерва за жетоны Линии фронта повысит его уровень в бою на 1 и откроет возможность его усиления до уровня {whiteSpanish_Start}IV{whiteSpanish_End}.\n"
+"\n"
+"Удачи!"
+
 msgid "reserveCategories/categories/additional"
 msgstr "Дополнительный"
+
+msgid "reserveCategories/categories/cell_1"
+msgstr "Слот резерва 1"
+
+msgid "reserveCategories/categories/cell_2"
+msgstr "Слот резерва 2"
+
+msgid "reserveCategories/categories/cell_3"
+msgstr "Слот резерва 3"
 
 msgid "reserveCategories/categories/main"
 msgstr "Основной"
@@ -252,9 +284,10 @@ msgstr "Конфигурации резервов"
 
 msgid "reserveCategories/config/text"
 msgstr ""
-"Каждому типу техники доступны все три слота боевых резервов, однако "
-"последовательность их открытия отличается. В Ангаре вы можете подготовить "
-"нужные резервы, но отнеситесь к этому мудро."
+"Порядок открытия боевых резервов в сценарии {whiteSpanish_Start}«Воля "
+"случая»{whiteSpanish_End} не зависит от их категории и типа техники. "
+"Установка резерва перед боем в соответствующий слот повышает шанс его выдачи"
+" на {whiteSpanish_Start}10%{whiteSpanish_End}."
 
 msgid "reserveCategories/config/vehicles/destroyer"
 msgstr "ПТ-САУ"
@@ -276,14 +309,20 @@ msgstr "Порядок разблокировки слотов и улучшен
 
 msgid "reserveCategories/levels/text"
 msgstr ""
-"Резервы или слоты становятся доступны в бою по мере получения званий. "
-"Последовательность их разблокировки и улучшения зависит от сценария боя. "
-"Основной резерв или слот для установки доступен сразу, а остальные "
-"открываются по достижении званий «сержант» и «лейтенант». При получении "
-"званий «капитан» и «майор» все три резерва будут усиливаться."
+"По умолчанию вам доступен один резерв. При получении званий «сержант» и "
+"«лейтенант» откроются остальные. При получении званий «капитан» и «майор» "
+"все три резерва будут усилены."
 
 msgid "reserveCategories/progression/tableCell"
-msgstr "{whiteSpanish_Start}%(level){whiteSpanish_End} уровень"
+msgstr ""
+"{whiteSpanish_Start}%(level){whiteSpanish_End} или "
+"{whiteSpanish_Start}%(levelNext)*{whiteSpanish_End} уровень"
+
+msgid "reserveCategories/randomReserves/note"
+msgstr ""
+"* Усиление до этого уровня действует только для "
+"{whiteSpanish_Start}купленных{whiteSpanish_End} боевых резервов в сценарии "
+"{whiteSpanish_Start}«Воля случая»{whiteSpanish_End}."
 
 msgid "reserveCategories/ranks/captain"
 msgstr "Капитан"

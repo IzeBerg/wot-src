@@ -163,6 +163,8 @@ class HangarCameraManager(CGF.ComponentManager):
 
     @onAddedQuery(CGF.GameObject, CameraComponent, TransformComponent, tickGroup='postHierarchyUpdate')
     def onCameraAdded(self, go, cameraComponent, transformComponent):
+        if not self.__isActive:
+            return
         if cameraComponent.name == self.__cameraMode:
             self.switchToTank()
             _logger.info('HangarCameraManager::onCameraAdded')
@@ -229,7 +231,7 @@ class HangarCameraManager(CGF.ComponentManager):
                 self.__startFlight(matrix, Math.Matrix(self.__cam.matrix))
             return
 
-    def resetCameraTarget(self, duration=0):
+    def resetCameraTarget(self, duration=0, resetRotation=True):
         if BigWorld.camera() != self.__cam:
             return
         else:
@@ -246,9 +248,9 @@ class HangarCameraManager(CGF.ComponentManager):
                 targetPos = parentTransformComponent.worldTransform.translation
                 worldYaw = parentTransformComponent.worldTransform.yaw
                 worldPitch = parentTransformComponent.worldTransform.pitch
-                yaw = self.__normaliseAngle(orbitComponent.currentYaw + worldYaw + math.pi)
-                pitch = self.__normaliseAngle(orbitComponent.currentPitch + worldPitch)
-                distance = orbitComponent.currentDist
+                yaw = self.__normaliseAngle(orbitComponent.currentYaw + worldYaw + math.pi) if resetRotation else None
+                pitch = self.__normaliseAngle(orbitComponent.currentPitch + worldPitch) if resetRotation else None
+                distance = orbitComponent.currentDist if resetRotation else None
 
             self.moveCamera(targetPos, yaw=yaw, pitch=pitch, distance=distance, duration=duration)
             return

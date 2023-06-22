@@ -54,7 +54,7 @@ class VehiclePostProgressionController(IVehiclePostProgressionController):
 
     def isDisabledFor(self, veh, settings=None, skipRentalIsOver=False):
         settings = settings or self.__postProgressionSettings
-        inEnabledRented = veh.intCD in settings.enabledRentedVehicles
+        inEnabledRented = settings is not None and veh.intCD in settings.enabledRentedVehicles
         return veh.isRented and not inEnabledRented or veh.rentalIsOver and inEnabledRented and not skipRentalIsOver
 
     def isEnabled(self):

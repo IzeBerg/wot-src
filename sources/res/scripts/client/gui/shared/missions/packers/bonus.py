@@ -246,7 +246,7 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
 
     @classmethod
     def _getTooltipsPackers(cls):
-        return {BATTLE_BONUS_X5_TOKEN: TokenBonusFormatter.getBattleBonusX5Tooltip, 
+        return {BATTLE_BONUS_X5_TOKEN: cls.__getBattleBonusX5Tooltip, 
            COMPLEX_TOKEN: cls.__getComplexToolTip, 
            YEAR_POINTS_TOKEN: cls.__getRankedPointToolTip, 
            GOLD_MISSION: cls.__getGoldMissionTooltip}
@@ -288,10 +288,17 @@ class TokenBonusUIPacker(BaseBonusUIPacker):
         return model
 
     @classmethod
+    def __getBattleBonusX5Tooltip(cls, *_):
+        return createTooltipData(TokenBonusFormatter.getBattleBonusX5Tooltip([]))
+
+    @classmethod
     def __getComplexToolTip(cls, complexToken, *_):
         webCache = cls._eventsCache.prefetcher
         userName = i18n.makeString(webCache.getTokenInfo(complexToken.styleID))
-        tooltip = makeTooltip(i18n.makeString(TOOLTIPS.QUESTS_BONUSES_TOKEN_HEADER, userName=userName), i18n.makeString(TOOLTIPS.QUESTS_BONUSES_TOKEN_BODY))
+        description = webCache.getTokenDetailedInfo(complexToken.styleID)
+        if description is None:
+            description = backport.text(R.strings.tooltips.quests.bonuses.token.body())
+        tooltip = makeTooltip(userName, description if description else None)
         return createTooltipData(tooltip)
 
     @classmethod

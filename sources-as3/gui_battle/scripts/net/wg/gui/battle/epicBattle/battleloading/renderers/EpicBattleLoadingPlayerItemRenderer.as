@@ -251,7 +251,8 @@ package net.wg.gui.battle.epicBattle.battleloading.renderers
       
       private function setSuffixBadge(param1:String, param2:String) : void
       {
-         var _loc3_:Boolean = StringUtils.isNotEmpty(param1);
+         var _loc3_:Boolean = false;
+         _loc3_ = StringUtils.isNotEmpty(param1);
          this.testerIcon.visible = this.testerBG.visible = _loc3_;
          if(_loc3_)
          {

@@ -279,8 +279,6 @@ package
       
       public static const SETTINGS_RIBBONS_RECEIVEDDAMAGE:String = "#tooltips:settings/ribbons/receivedDamage";
       
-      public static const SETTINGS_RIBBONS_ENEMYSTUN:String = "#tooltips:settings/ribbons/enemyStun";
-      
       public static const SETTINGS_FEEDBACK_INDICATORS_DYNAMICWIDTH:String = "#tooltips:settings/feedback/indicators/dynamicWidth";
       
       public static const SETTINGS_FEEDBACK_INDICATORS_ANIMATION:String = "#tooltips:settings/feedback/indicators/animation";
@@ -580,10 +578,6 @@ package
       public static const SETTINGS_RIBBONS_RECEIVEDDAMAGE_HEADER:String = "#tooltips:settings/ribbons/receivedDamage/header";
       
       public static const SETTINGS_RIBBONS_RECEIVEDDAMAGE_BODY:String = "#tooltips:settings/ribbons/receivedDamage/body";
-      
-      public static const SETTINGS_RIBBONS_ENEMYSTUN_HEADER:String = "#tooltips:settings/ribbons/enemyStun/header";
-      
-      public static const SETTINGS_RIBBONS_ENEMYSTUN_BODY:String = "#tooltips:settings/ribbons/enemyStun/body";
       
       public static const SETTINGS_FEEDBACK_INDICATORS_DYNAMICWIDTH_HEADER:String = "#tooltips:settings/feedback/indicators/dynamicWidth/header";
       
@@ -1122,8 +1116,6 @@ package
       public static const BATTLETYPES_RANKED_BONUSBATTLE_DESCRIPTION:String = "#tooltips:battleTypes/ranked/bonusBattle/description";
       
       public static const BATTLETYPES_BATTLEROYALE_HEADER:String = "#tooltips:battleTypes/battleRoyale/header";
-      
-      public static const BATTLETYPES_BATTLEROYALE_WIDGET_HEADER:String = "#tooltips:battleTypes/battleRoyale/widget/header";
       
       public static const BATTLETYPES_BATTLEROYALE_BODY:String = "#tooltips:battleTypes/battleRoyale/body";
       
@@ -2539,17 +2531,17 @@ package
       
       public static const VEHICLESTATUS_DEALISOVER_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/text";
       
-      public static const VEHICLESTATUS_DEALISOVER_ROSTELECOM_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/Rostelecom/header";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER2_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner2/header";
       
-      public static const VEHICLESTATUS_DEALISOVER_ROSTELECOM_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/Rostelecom/text";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER2_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner2/text";
       
-      public static const VEHICLESTATUS_DEALISOVER_BELTELECOM_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/Beltelecom/header";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER3_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner3/header";
       
-      public static const VEHICLESTATUS_DEALISOVER_BELTELECOM_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/Beltelecom/text";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER3_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner3/text";
       
-      public static const VEHICLESTATUS_DEALISOVER_KYIVSTAR_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/Kyivstar/header";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER4_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner4/header";
       
-      public static const VEHICLESTATUS_DEALISOVER_KYIVSTAR_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/Kyivstar/text";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER4_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner4/text";
       
       public static const VEHICLESTATUS_DEALISOVER_KAZAKHTELECOM_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/Kazakhtelecom/header";
       
@@ -4671,8 +4663,6 @@ package
       
       public static const MISSIONS_TOKENPOPOVER_QUEST_BODY:String = "#tooltips:missions/tokenPopover/quest/body";
       
-      public static const MISSIONS_TOKEN_HEADER:String = "#tooltips:missions/token/header";
-      
       public static const MISSIONS_TOKEN_QUESTS_SINGLE:String = "#tooltips:missions/token/quests/single";
       
       public static const MISSIONS_TOKEN_QUESTS_MULTIPLE:String = "#tooltips:missions/token/quests/multiple";
@@ -4825,6 +4815,8 @@ package
       
       public static const QUESTS_COMPLETE_PROGRESS_VALUE_STATUSTOOLTIP:String = "#tooltips:quests/complete/progress/value/statusTooltip";
       
+      public static const QUESTS_CONDITION_BATTLEPASS_TOKEN:String = "#tooltips:quests/condition/battlepass/token";
+      
       public static const QUESTS_CONDITION_ACHIEVEMENT_HEADER:String = "#tooltips:quests/condition/achievement/header";
       
       public static const QUESTS_CONDITION_ACHIEVEMENTS_DESCR:String = "#tooltips:quests/condition/achievements/descr";
@@ -4834,8 +4826,6 @@ package
       public static const MISSIONS_CONDITION_ACHIEVEMENT_PATTERN:String = "#tooltips:missions/condition/achievement/pattern";
       
       public static const QUESTS_CONDITION_ACHIEVEMENTS_OTHERS:String = "#tooltips:quests/condition/achievements/others";
-      
-      public static const QUESTS_BONUSES_TOKEN_HEADER:String = "#tooltips:quests/bonuses/token/header";
       
       public static const QUESTS_BONUSES_TOKEN_BODY:String = "#tooltips:quests/bonuses/token/body";
       

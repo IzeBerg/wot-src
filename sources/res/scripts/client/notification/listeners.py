@@ -67,6 +67,7 @@ if TYPE_CHECKING:
     from typing import List, Dict, Optional, Any, Type
     from notification.NotificationsModel import NotificationsModel
     from gui.platform.wgnp.steam_account.statuses import SteamAccEmailStatus
+    from collections_common import Collection
 _logger = logging.getLogger(__name__)
 
 class _FeatureState(object):
@@ -1068,7 +1069,7 @@ class BattlePassListener(_NotificationListener):
     __battlePassController = dependency.descriptor(IBattlePassController)
     __itemsCache = dependency.descriptor(IItemsCache)
     __notificationCtrl = dependency.descriptor(IEventsNotificationsController)
-    __LUIController = dependency.descriptor(ILimitedUIController)
+    __luiController = dependency.descriptor(ILimitedUIController)
 
     def __init__(self):
         super(BattlePassListener, self).__init__()
@@ -1136,13 +1137,17 @@ class BattlePassListener(_NotificationListener):
         SystemMessages.pushMessage(text=text, type=SystemMessages.SM_TYPE.BattlePassGameModeEnabled, messageData={'header': header})
 
     def __notifyStartExtra(self, chapterID):
+        if not self.__luiController.isRuleCompleted(LuiRules.SYS_MSG_COLLECTION_START_BP):
+            return
         header = backport.text(R.strings.system_messages.battlePass.extraStarted.header())
         chapterName = backport.text(R.strings.battle_pass.chapter.fullName.num(chapterID)())
         SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.battlePass.extraStarted.body(), name=chapterName), priority=NotificationPriorityLevel.HIGH, type=SM_TYPE.BattlePassExtraStart, messageData={'header': header})
 
     def __notifyFinishExtra(self, chapterID):
+        if not self.__luiController.isRuleCompleted(LuiRules.SYS_MSG_COLLECTION_START_BP):
+            return
         chapterID = int(chapterID)
-        textRes = backport.text(R.strings.battle_pass.chapter.fullName.num(chapterID)())
+        textRes = R.strings.battle_pass.chapter.fullName.num(chapterID)
         if not textRes.exists():
             _logger.warning('There is no text for given chapterID: %d', chapterID)
             return
@@ -1152,8 +1157,10 @@ class BattlePassListener(_NotificationListener):
         SystemMessages.pushMessage(text=text, type=SM_TYPE.BattlePassExtraFinish, messageData={'header': header})
 
     def __notifyExtraWillEndSoon(self, chapterID):
+        if not self.__luiController.isRuleCompleted(LuiRules.SYS_MSG_COLLECTION_START_BP):
+            return
         chapterID = int(chapterID)
-        textRes = backport.text(R.strings.battle_pass.chapter.fullName.num(chapterID)())
+        textRes = R.strings.battle_pass.chapter.fullName.num(chapterID)
         if not textRes.exists() or not self.__battlePassController.isChapterExists(chapterID):
             _logger.warning('There is no text or config for given chapterID: %d', chapterID)
             return
@@ -1168,7 +1175,7 @@ class BattlePassListener(_NotificationListener):
             oldValue = self.__arenaBonusTypesEnabledState.get(arenaBonusType, False)
             newValue = self.__battlePassController.isGameModeEnabled(arenaBonusType)
             self.__arenaBonusTypesEnabledState[arenaBonusType] = newValue
-            if oldValue != newValue and self.__LUIController.isRuleCompleted(LuiRules.BP_ENTRY):
+            if oldValue != newValue and self.__luiController.isRuleCompleted(LuiRules.SYS_MSG_COLLECTION_START_BP):
                 self.__pushEnableChangedForArenaBonusType(arenaBonusType, newValue)
 
     def __checkAndNotify(self, oldMode=None, newMode=None):
@@ -1176,7 +1183,7 @@ class BattlePassListener(_NotificationListener):
         isFinished = self.__battlePassController.isSeasonFinished()
         isModeChanged = oldMode is not None and newMode is not None and oldMode != newMode
         isReactivated = newMode == 'enabled' and oldMode == 'paused'
-        isEnabledByLUI = self.__LUIController.isRuleCompleted(LuiRules.BP_ENTRY)
+        isEnabledByLUI = self.__luiController.isRuleCompleted(LuiRules.SYS_MSG_COLLECTION_START_BP)
         needToPushStarted = self.__isStarted != isStarted and isStarted and not isReactivated
         if isEnabledByLUI:
             if needToPushStarted:
@@ -1268,7 +1275,7 @@ class BattlePassListener(_NotificationListener):
 
 class BattlePassSwitchChapterReminder(BaseReminderListener):
     __battlePassController = dependency.descriptor(IBattlePassController)
-    __limitedUIController = dependency.descriptor(ILimitedUIController)
+    __luiController = dependency.descriptor(ILimitedUIController)
     __ENTITY_ID = 0
 
     def __init__(self):
@@ -1292,17 +1299,17 @@ class BattlePassSwitchChapterReminder(BaseReminderListener):
         self.__battlePassController.onChapterChanged += self.__tryNotify
         self.__battlePassController.onBattlePassSettingsChange += self.__tryNotify
         self.__battlePassController.onPointsUpdated += self.__tryNotify
-        self.__limitedUIController.startObserve(LuiRules.BP_ENTRY, self.__updateBattlePassEntryVisibility)
+        self.__luiController.startObserve(LuiRules.BP_ENTRY, self.__updateBattlePassEntryVisibility)
 
     def __removeListeners(self):
         self.__battlePassController.onChapterChanged -= self.__tryNotify
         self.__battlePassController.onBattlePassSettingsChange -= self.__tryNotify
         self.__battlePassController.onPointsUpdated -= self.__tryNotify
-        self.__limitedUIController.stopObserve(LuiRules.BP_ENTRY, self.__updateBattlePassEntryVisibility)
+        self.__luiController.stopObserve(LuiRules.BP_ENTRY, self.__updateBattlePassEntryVisibility)
 
     def __tryNotify(self, *_):
         isAdding = not (self.__battlePassController.hasActiveChapter() or self.__battlePassController.isCompleted() or self.__battlePassController.isDisabled())
-        isAdding &= self.__limitedUIController.isRuleCompleted(LuiRules.BP_ENTRY)
+        isAdding &= self.__luiController.isRuleCompleted(LuiRules.BP_ENTRY)
         self._notifyOrRemove(isAdding)
 
     def __updateBattlePassEntryVisibility(self, *_):
@@ -1869,7 +1876,7 @@ class EventLootBoxesListener(_NotificationListener, EventsHandler):
 class CollectionsListener(_NotificationListener, EventsHandler):
     __collections = dependency.descriptor(ICollectionsSystemController)
     __eventNotifications = dependency.descriptor(IEventsNotificationsController)
-    __limitedUIController = dependency.descriptor(ILimitedUIController)
+    __luiController = dependency.descriptor(ILimitedUIController)
     __EVENT_TYPE_TO_SETTING = {COLLECTION_START_EVENT_TYPE: COLLECTION_START_SEEN}
     __NOTIFICATIONS = R.strings.collections.notifications
     __FEATURE_NAME_TO_LUI_ID = {'battle_pass_': LuiRules.SYS_MSG_COLLECTION_START_BP}
@@ -1895,10 +1902,10 @@ class CollectionsListener(_NotificationListener, EventsHandler):
 
     def _subscribe(self):
         super(CollectionsListener, self)._subscribe()
-        self.__limitedUIController.startObserve(LuiRules.SYS_MSG_COLLECTION_START_BP, self.__onLuiRuleCompleted)
+        self.__luiController.startObserve(LuiRules.SYS_MSG_COLLECTION_START_BP, self.__onLuiRuleCompleted)
 
     def _unsubscribe(self):
-        self.__limitedUIController.stopObserve(LuiRules.SYS_MSG_COLLECTION_START_BP, self.__onLuiRuleCompleted)
+        self.__luiController.stopObserve(LuiRules.SYS_MSG_COLLECTION_START_BP, self.__onLuiRuleCompleted)
         super(CollectionsListener, self)._unsubscribe()
 
     def _getEvents(self):
@@ -1908,7 +1915,7 @@ class CollectionsListener(_NotificationListener, EventsHandler):
          (
           self.__collections.onAvailabilityChanged, self.__onAvailabilityChanged),
          (
-          self.__limitedUIController.onConfigChanged, self.__onLuiConfigChanged))
+          self.__luiController.onConfigChanged, self.__onLuiConfigChanged))
 
     def __onLuiConfigChanged(self):
         self.__tryPostpondNotify()
@@ -1937,8 +1944,8 @@ class CollectionsListener(_NotificationListener, EventsHandler):
                 collection = self.__collections.getCollection(collectionID)
                 if collection is None:
                     continue
-                luiRuleID = self.__getLuiRuleID(collection.name)
-                if not self.__limitedUIController.isInited or luiRuleID and luiRuleID in LuiRules and not self.__limitedUIController.isRuleCompleted(luiRuleID):
+                forbiddenByLui = self.__isForbiddenByLui(collection.name)
+                if forbiddenByLui:
                     if notification not in self.__postponedNotifications:
                         self.__postponedNotifications.append(notification)
                     continue
@@ -1950,6 +1957,10 @@ class CollectionsListener(_NotificationListener, EventsHandler):
 
         return
 
+    def __isForbiddenByLui(self, collectionName):
+        luiRuleID = self.__getLuiRuleID(collectionName)
+        return not self.__luiController.isInited or luiRuleID and luiRuleID in LuiRules and not self.__luiController.isRuleCompleted(luiRuleID)
+
     def __getLuiRuleID(self, collectionID):
         for key in self.__FEATURE_NAME_TO_LUI_ID:
             if key in collectionID:
@@ -1959,7 +1970,6 @@ class CollectionsListener(_NotificationListener, EventsHandler):
 
     @staticmethod
     def __needPushStarted(settings, settingName, collectionID):
-        settings = AccountSettings.getNotifications(COLLECTIONS_NOTIFICATIONS)
         return collectionID not in settings[settingName]
 
     @staticmethod

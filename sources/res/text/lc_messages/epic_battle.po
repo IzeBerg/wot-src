@@ -25,6 +25,9 @@ msgstr "Покрытие"
 msgid "abilityInfo/params/airstrike/stun"
 msgstr "Оглушение"
 
+msgid "abilityInfo/params/arcade_minefield_epic_battle/activationDelay"
+msgstr "Время развёртывания"
+
 msgid "abilityInfo/params/arcade_minefield_epic_battle/bombsNumber"
 msgstr "Количество мин"
 
@@ -137,7 +140,7 @@ msgid "abilityInfo/params/stealth_radar/passiveCircularVisionRadius"
 msgstr "Пассивный бонус к обзору"
 
 msgid "abilityInfo/properties/dynamic"
-msgstr "Усиление резерва"
+msgstr "Уровень резерва"
 
 msgid "abilityInfo/properties/static"
 msgstr "Постоянные характеристики"
@@ -409,11 +412,12 @@ msgstr "Категории резервов"
 
 msgid "intro/card/slots/desc"
 msgstr ""
-"По достижении званий «сержант» и «лейтенант» в бою откроются второй и третий"
-" слот. По достижении званий «капитан» и «майор» резервы в слотах усилятся."
+"По умолчанию вам доступен один резерв. При получении званий «сержант» и "
+"«лейтенант» откроются остальные. При получении званий «капитан» и «майор» "
+"все три резерва будут усилены."
 
 msgid "intro/card/slots/title"
-msgstr "Разблокируйте слоты в бою"
+msgstr "Открывайте резервы в бою"
 
 msgid "intro/card/types/desc"
 msgstr ""
@@ -455,8 +459,8 @@ msgstr "Резерв не активирован"
 
 msgid "metaAbilityScreen/activation_depends"
 msgstr ""
-"Максимальный уровень усиления в бою зависит от типа техники, на которой "
-"установлен резерв."
+"Уровень резерва повышается при получении в бою званий «капитан» и «майор». "
+"Максимальный уровень определяется сценарием боя."
 
 msgid "metaAbilityScreen/how_to_activate"
 msgstr ""
@@ -607,7 +611,7 @@ msgid "questsTooltip/epicBattle/startIn"
 msgstr "Новые задачи появятся через %(time)s"
 
 msgid "questsTooltip/epicBattle/steelhunter/header"
-msgstr "Задачи режима «Стальной охотник: Возрождение»"
+msgstr "Задачи Стального охотника"
 
 msgid "questsTooltip/epicBattle/timeLeft"
 msgstr "До окончания события «Линия фронта»: %(time)s"
@@ -656,6 +660,15 @@ msgstr "Боевой резерв %(reserveName)s разблокирован"
 
 msgid "rank/reserveUpgraded"
 msgstr "Боевой резерв %(reserveName)s улучшен"
+
+msgid "rank/slotUnlocked"
+msgstr "Открыт %(slotNumber)s резерв"
+
+msgid "rank/slot_2"
+msgstr "второй"
+
+msgid "rank/slot_3"
+msgstr "третий"
 
 msgid "recovery/Blocked"
 msgstr ""
@@ -781,7 +794,7 @@ msgid ""
 msgstr ""
 "Режим требователен к компьютеру. Карта может долго загружаться, возможны "
 "проблемы с графикой и перемещением техники в бою. В случае недостаточной "
-"производительности попробуйте понизить настройки графики."
+"производительности, попробуйте понизить настройки графики."
 
 msgid "selectorTooltip/epicBattle/attention/possibleLowPerformance/title"
 msgstr "Низкая производительность"
@@ -949,6 +962,18 @@ msgstr ""
 
 msgid "tooltips/slotSetupInfo/open/title"
 msgstr "Открытие: %(desc)s"
+
+msgid "tooltips/slotSetupInfo/reserve/locked"
+msgstr ""
+"Покупка боевого резерва в сценарии <font color='#E9E2BF'>«Воля "
+"случая»</font> повысит его уровень на 1 и откроет возможность его усиления "
+"до уровня <font color='#E9E2BF'>IV</font>."
+
+msgid "tooltips/slotSetupInfo/reserve/purchased"
+msgstr ""
+"Резерв, установленный в слот, повышает на <font color='#E9E2BF'>10%</font> "
+"шанс выпадения этого резерва при игре по сценарию <font "
+"color='#E9E2BF'>«Воля случая»</font>."
 
 msgid "tooltips/slotSetupInfo/scheme"
 msgstr "Разблокировка и усиление резервов в бою"

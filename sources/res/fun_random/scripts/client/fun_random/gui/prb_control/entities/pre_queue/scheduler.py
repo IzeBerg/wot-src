@@ -1,12 +1,10 @@
 from fun_random_common.fun_constants import UNKNOWN_EVENT_ID
-from fun_random.gui.feature.util.fun_mixins import FunSubModesWatcher
+from fun_random.gui.feature.util.fun_mixins import FunAssetPacksMixin, FunSubModesWatcher
 from fun_random.gui.feature.util.fun_wrappers import hasDesiredSubMode, hasSpecifiedSubMode
 from gui.impl import backport
-from gui.impl.gen import R
 from gui.periodic_battles.prb_control.scheduler import PeriodicScheduler
 
-class FunRandomScheduler(PeriodicScheduler, FunSubModesWatcher):
-    _RES_ROOT = R.strings.fun_random.scheduler
+class FunRandomScheduler(PeriodicScheduler, FunAssetPacksMixin, FunSubModesWatcher):
 
     def _hasConfiguredNotification(self):
         return False
@@ -16,6 +14,9 @@ class FunRandomScheduler(PeriodicScheduler, FunSubModesWatcher):
 
     def _getMessageParams(self, subModeID=None):
         return {'subModeName': self.__getSubModeName(subModeID or self.__getDesiredSubModeID())}
+
+    def _getResRoot(self):
+        return self.getModeLocalsResRoot().scheduler
 
     def _startListening(self):
         self.startSubStatusListening(self.__onDesiredSubUpdate, desiredOnly=True)

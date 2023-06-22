@@ -135,9 +135,14 @@ class EventEntryPointsContainer(EventEntryPointsContainerMeta, Notifiable, IGlob
         self.__itemsCache.onSyncCompleted += self.__onCacheResync
         self.startGlobalListening()
 
-    def _isRandomBattleSelected(self):
+    def _isQueueEnabled(self):
+        enabledQueues = (
+         QUEUE_TYPE.RANDOMS, QUEUE_TYPE.WINBACK)
+        return any(self.__isQueueSelected(queueType) for queueType in enabledQueues)
+
+    def __isQueueSelected(self, queueType):
         if self.prbDispatcher is not None:
-            return self.prbDispatcher.getFunctionalState().isQueueSelected(QUEUE_TYPE.RANDOMS)
+            return self.prbDispatcher.getFunctionalState().isQueueSelected(queueType)
         else:
             return False
 
@@ -199,7 +204,7 @@ class EventEntryPointsContainer(EventEntryPointsContainerMeta, Notifiable, IGlob
 
     def __updateEntries(self):
         data = []
-        if not self.__bootcamp.isInBootcamp() and self._isRandomBattleSelected():
+        if not self.__bootcamp.isInBootcamp() and self._isQueueEnabled():
             count = 0
             priorities = [ item.priority for item in self.__entries.itervalues() ]
             if len(priorities) > len(set(priorities)):

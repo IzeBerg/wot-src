@@ -122,7 +122,7 @@ class SharedPage(BattlePageMeta):
 
     def reload(self):
         self._stopBattleSession()
-        self.__onPostMortemReload()
+        self._onPostMortemReload()
         self._startBattleSession()
         self.reloadComponents()
         for component in self._external:
@@ -389,7 +389,7 @@ class SharedPage(BattlePageMeta):
             self.as_setPostmortemTipsVisibleS(False)
             self._isInPostmortem = False
 
-    def __onPostMortemReload(self):
+    def _onPostMortemReload(self):
         self._isInPostmortem = False
         self._reloadPostmortem()
 

@@ -325,7 +325,7 @@ class StyleItem(BaseCustomizationItem):
         self._changeableSlotTypes = None
         self.styleProgressions = {}
         self.questsProgression = None
-        self.nonTankMaterials = ['PBS_ext.fx']
+        self.nonTankMaterials = ['PBS_ext.fx', 'PBS_ext_skinned.fx']
         super(StyleItem, self).__init__(parentGroup)
         return
 

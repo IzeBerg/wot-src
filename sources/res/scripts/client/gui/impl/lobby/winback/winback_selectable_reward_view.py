@@ -173,16 +173,16 @@ class WinbackSelectableRewardView(ViewImpl):
         self._selectableRewardManager.chooseRewards(rewardsToChoose, _showRewardView)
 
     def _update(self, selectableTokens):
-        if not self._winbackController.isProgressionAvailable():
+        winbackConfig = self._winbackController.winbackConfig
+        if not winbackConfig.isEnabled or not winbackConfig.isProgressionEnabled:
             return
-        else:
-            selectableBonuses = self._selectableRewardManager.getAvailableSelectableBonuses(None if selectableTokens is None else (lambda tID: tID in selectableTokens))
-            for bonus in selectableBonuses:
-                level = int(getLevelFromSelectableToken(first(bonus.getValue())))
-                self.__bonuses[level] = self._createTabBonuses(level, bonus)
+        selectableBonuses = self._selectableRewardManager.getAvailableSelectableBonuses(None if selectableTokens is None else (lambda tID: tID in selectableTokens))
+        for bonus in selectableBonuses:
+            level = int(getLevelFromSelectableToken(first(bonus.getValue())))
+            self.__bonuses[level] = self._createTabBonuses(level, bonus)
 
-            self.__bonuses = OrderedDict(sorted(self.__bonuses.iteritems(), key=lambda item: item[0]))
-            return
+        self.__bonuses = OrderedDict(sorted(self.__bonuses.iteritems(), key=lambda item: item[0]))
+        return
 
     def _createTabBonuses(self, level, bonus):
         currentTabBonuses = {}

@@ -9,12 +9,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-
-msgid "#PluralForms"
-msgstr ""
-"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2);"
 
 msgid "alertMessage/allPeripheriesHalt"
 msgstr "Режим прекращения огня на всех серверах. Бои начнутся через %(time)s"
@@ -23,13 +17,13 @@ msgid "alertMessage/button"
 msgstr "Сменить сервер"
 
 msgid "alertMessage/seasonAlmostFinished"
-msgstr "Событие «Стальной охотник: Возрождение» завершится через %(time)s"
+msgstr "Событие «Стальной охотник» завершится через %(time)s"
 
 msgid "alertMessage/seasonFinished"
-msgstr "Событие «Стальной охотник: Возрождение» завершено"
+msgstr "Событие «Стальной охотник» завершено"
 
 msgid "alertMessage/seasonIsComing"
-msgstr "Событие «Стальной охотник: Возрождение» начнётся через %(time)s"
+msgstr "Событие «Стальной охотник» начнётся через %(time)s"
 
 msgid "alertMessage/singleModeHalt"
 msgstr "Режим прекращения огня на сервере. Бои начнутся через %(time)s"
@@ -44,82 +38,19 @@ msgid "banner/info/disabled"
 msgstr "Режим прекращения огня"
 
 msgid "banner/info/seasonActive"
-msgstr "Второй шанс и награды!"
+msgstr "Почувствуйте жар королевской битвы"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "До %(day)s %(month)s"
 
-msgid "banner/subtitle"
-msgstr "Возрождение"
-
-msgid "banner/timeLeft/hour"
-msgstr "%(hour)s ч"
-
 msgid "banner/timeLeft/hours"
-msgstr "%(hours)s ч %(minutes)s мин"
+msgstr "%(hour)s ч %(min)s мин"
 
-msgid "banner/timeLeft/minutes"
-msgstr "%(minutes)s мин"
-
-msgid "banner/timer/lessOneMin"
-msgstr "<1"
+msgid "banner/timeLeft/min"
+msgstr "%(min)s мин"
 
 msgid "banner/title"
-msgstr "Стальной охотник:"
-
-msgid "battle/respawnMessagePanel/respawnActivated/description"
-msgstr "Бой продолжится с новой позиции."
-
-msgid "battle/respawnMessagePanel/respawnActivated/title"
-msgstr "Вы скоро возродитесь"
-
-msgid "battle/respawnMessagePanel/respawnActivatedSquad/title"
-msgstr "Идёт Возрождение"
-
-msgid "battle/respawnMessagePanel/respawnNotAvailable/description"
-msgstr "Второго шанса не будет."
-
-msgid "battle/respawnMessagePanel/respawnNotAvailable/title"
-msgstr "Возрождение больше недоступно"
-
-msgid "battle/respawnMessagePanel/respawnNotAvailableSoon/title"
-msgstr "Возрождение скоро станет недоступно!"
-
-msgid "battle/respawnMessagePanel/respawned/description"
-msgstr "В этот раз будьте осторожнее."
-
-msgid "battle/respawnMessagePanel/respawned/title"
-msgstr "Машина готова к бою!"
-
-msgid "battle/respawnMessagePanel/returnToBattle/title"
-msgstr "Возвращение в бой"
-
-msgid "battle/respawnMessagePanel/squad/inBattle/description"
-msgstr "Идут активные боевые действия."
-
-msgid "battle/respawnMessagePanel/squad/inBattle/title"
-msgstr "Возрождение невозможно"
-
-msgid "battle/respawnMessagePanel/squad/pickUp/description"
-msgstr "Найдите заряд Возрождения, чтобы вернуть её в строй."
-
-msgid "battle/respawnMessagePanel/squad/pickUp/title"
-msgstr "Машина союзника уничтожена"
-
-msgid "battle/respawnMessagePanel/squad/respawning/title"
-msgstr "Идёт Возрождение"
-
-msgid "battle/respawnMessagePanel/squad/squadmanRespawned/description"
-msgstr "Одна машина хорошо, а две — лучше!"
-
-msgid "battle/respawnMessagePanel/squad/squadmanRespawned/title"
-msgstr "Союзник возрождён"
-
-msgid "battle/respawnMessagePanel/squad/stayInCover/description"
-msgstr "Не вступайте в бой."
-
-msgid "battle/respawnMessagePanel/squad/stayInCover/title"
-msgstr "Возрождение союзника"
+msgstr "СТАЛЬНОЙ ОХОТНИК"
 
 msgid "battleResult/battlePassWidget/chapterNotChosen"
 msgstr ""
@@ -170,9 +101,6 @@ msgstr "Нажмите %(esc), чтобы пропустить анимацию"
 
 msgid "battleResult/playerVehicleStatus/alive"
 msgstr "Выжил"
-
-msgid "battleResult/playerVehicleStatus/reason/deathByBot"
-msgstr "Машина уничтожена Боевым роботом"
 
 msgid "battleResult/playerVehicleStatus/reason/deathByPlayer"
 msgstr "Машина уничтожена игроком"
@@ -258,18 +186,14 @@ msgstr "ВЗВОД УНИЧТОЖЕН"
 msgid "battleResult/title/vehicleDestroyed"
 msgstr "МАШИНА УНИЧТОЖЕНА"
 
-msgid "battleResult/title/victoryFirst"
+msgid "battleResult/title/victory"
 msgstr "ПОБЕДА"
-
-msgid "battleResult/title/victoryOther"
-msgstr "ПОЧЁТНОЕ МЕСТО"
 
 msgid "battleRoyaleCarousel/hint"
 msgstr "ВЫБЕРИТЕ МАШИНУ ДЛЯ БЕСПЛАТНОГО ТЕСТ-ДРАЙВА"
 
 msgid "battleRoyaleCarousel/lockedToolTip/body"
-msgstr ""
-"Выберите одну из специальных машин режима «Стальной охотник: Возрождение»."
+msgstr "Выберите одну из специальных машин режима «Стальной охотник»."
 
 msgid "battleRoyaleCarousel/lockedToolTip/header"
 msgstr "Неподходящая машина"
@@ -337,13 +261,8 @@ msgstr "Reginald Berly"
 msgid "commanderInfo/fullName/ussr"
 msgstr "Пётр Лопахин"
 
-msgid "commanderTooltip/specialty_skills"
-msgstr "Навыки"
-
 msgid "commanderTooltip/vehicleDescription"
-msgstr ""
-"%(vehicle)s\n"
-"Специальная машина события «Стальной охотник: Возрождение»"
+msgstr "Специального танка «%(vehicle)s» события «Стальной охотник»."
 
 msgid "fragPanel/squadsCount"
 msgstr "Взводов: %(squadsCount)s"
@@ -385,7 +304,7 @@ msgid "fullStats/subTitle"
 msgstr "Битва за ценные ресурсы по правилам «один против всех»."
 
 msgid "fullStats/title"
-msgstr "Стальной охотник: Возрождение"
+msgstr "Стальной охотник"
 
 msgid "hangarResults/btns/score"
 msgstr "Таблица лидеров"
@@ -442,25 +361,40 @@ msgstr "Так точно!"
 
 msgid "intro/slide1/text"
 msgstr ""
-"Механика Возрождения позволяет вернуться в бой после того, как машина была "
-"уничтожена, сохранив при этом её уровень улучшений. Кроме того, теперь в бою"
-" можно встретить нового противника — Мародёров. Побеждайте и забирайте "
-"ценную добычу."
+"Три новых танка: средний польский, лёгкий китайский и тяжёлый шведский."
 
 msgid "intro/slide1/title"
-msgstr "Новые механики"
+msgstr "НОВАЯ ТЕХНИКА"
 
 msgid "intro/slide2/text"
 msgstr ""
-"Выполняя боевые задачи, вы будете получать очки прогрессии и награды. А "
-"эффективные действия в бою принесут вам стальные печати, за которые можно "
-"покупать стили Стального охотника."
+"Техника доступна в аренду за стальные печати. Это специальная валюта, "
+"которую можно зарабатывать в режиме. Также у вас будет возможность бесплатно"
+" взять на 1 день тест-драйва каждый из танков."
 
 msgid "intro/slide2/title"
-msgstr "Прогрессия и Магазин"
+msgstr "АРЕНДА МАШИН И ТЕСТ-ДРАЙВ"
+
+msgid "intro/slide3/text"
+msgstr ""
+"Добыча в зелёных дымах восстанавливает очки прочности, содержит заряд "
+"Восстановления, снаряды и опыт для повышения уровня и увеличения мощности "
+"машины. В жёлтых дымах вы найдёте добычу с зарядами Ремонтного набора или "
+"уникальных боевых умений."
+
+msgid "intro/slide3/title"
+msgstr "ИЗМЕНЕНИЯ СОСТАВОВ ДОБЫЧИ"
+
+msgid "intro/slide4/text"
+msgstr ""
+"Заснеженная тундра в Скандинавии с характерной холмистой местностью, "
+"небольшими посёлками и замёрзшими водоёмами."
+
+msgid "intro/slide4/title"
+msgstr "НОВАЯ КАРТА"
 
 msgid "intro/title"
-msgstr "СТАЛЬНОЙ ОХОТНИК: ВОЗРОЖДЕНИЕ"
+msgstr "СТАЛЬНОЙ ОХОТНИК 2022"
 
 msgid "levelUp/severalTitles"
 msgstr "ПОЛУЧЕНЫ УРОВНИ: %(firstLevel)s – %(lastLevel)s!"
@@ -511,12 +445,6 @@ msgstr "Машина полностью исправна. Восстановле
 
 msgid "player_messages/Ch00_ClingeBot_SH_DESTROYED"
 msgstr "Боевой робот уничтожен"
-
-msgid "player_messages/DEATH_BY_BOT_ENEMY_ALLY"
-msgstr "Боевой робот %(attacker)s уничтожил %(target)s."
-
-msgid "player_messages/DEATH_BY_BOT_ENEMY_ENEMY"
-msgstr "Боевой робот %(attacker)s уничтожил противника %(target)s."
 
 msgid "player_messages/G00_Bomber_SH_DESTROYED"
 msgstr "Брандер подорван"
@@ -613,16 +541,13 @@ msgstr "Сезон %(cycleNo)s на сервере %(server)s завершилс
 msgid "primeTime/tooltip/endOfCycleOnThisServer"
 msgstr "Сезон на сервере %(server)s завершился."
 
-msgid "proxyPanel/button"
-msgstr "Магазин"
-
 msgid "proxyPanel/label"
 msgstr ""
 "Стальные\n"
 "печати"
 
 msgid "questsTooltip/lessThanDay"
-msgstr "менее 1 д"
+msgstr "менее 1 д"
 
 msgid "questsTooltip/mission_info/timeLeft"
 msgstr "До конца этапа %(cycle)s: %(time)s"
@@ -632,6 +557,18 @@ msgstr "Новые задачи появятся через %(time)s"
 
 msgid "questsTooltip/timeLeft"
 msgstr "До конца сезона: %(time)s"
+
+msgid "questsTooltip/timeLeftShort/days"
+msgstr "%(day)s д"
+
+msgid "questsTooltip/timeLeftShort/hours"
+msgstr "%(hour)s ч"
+
+msgid "questsTooltip/timeLeftShort/lessMin"
+msgstr "менее минуты"
+
+msgid "questsTooltip/timeLeftShort/min"
+msgstr "%(min)s мин"
 
 msgid "radar/hint/noBinding"
 msgstr "На радар не назначена клавиша"
@@ -718,10 +655,10 @@ msgid "selectRespawn/title/selectRespawn"
 msgstr "Выберите точку высадки"
 
 msgid "status/timeLeft/days"
-msgstr "%(day)s д "
+msgstr "%(day)s д"
 
 msgid "status/timeLeft/hours"
-msgstr "%(hour)s ч %(min)s мин"
+msgstr "%(hour)s ч"
 
 msgid "status/timeLeft/lessMin"
 msgstr "минуту"
@@ -775,7 +712,7 @@ msgid "statusNotificationTimers/loot/multiple"
 msgstr "Комбинированная добыча: %(count)s"
 
 msgid "statusNotificationTimers/loot/pickup"
-msgstr "Подбор: %(lootType)s"
+msgstr "Захват: %(lootType)s"
 
 msgid "statusNotificationTimers/repairPoint"
 msgstr "Ремзона"
@@ -874,8 +811,7 @@ msgid "tooltips/brCoin/title"
 msgstr "Стальные печати"
 
 msgid "tooltips/rentIcon/rent/description"
-msgstr ""
-"Техника подходит только для боёв в режиме «Стальной охотник: Возрождение»"
+msgstr "Техника подходит только для боёв в режиме «Стальной охотник»"
 
 msgid "tooltips/rentIcon/rent/footer"
 msgstr "В аренде: {time}"
@@ -895,44 +831,6 @@ msgstr "Аренда на {days} дней"
 msgid "tooltips/rentIcon/testDrive/title"
 msgstr "Бесплатный тест-драйв машины на 1 день"
 
-msgid "tooltips/respawnIcon/definition"
-msgstr "Заряд Возрождения можно найти в Воздушном грузе."
-
-msgid "tooltips/respawnIcon/description"
-msgstr ""
-"Позволяет вернуться в бой после того, как ваша машина была уничтожена, "
-"сохранив при этом её уровень улучшений. Можно использовать ограниченное "
-"количество раз."
-
-msgid "tooltips/respawnIcon/min"
-msgstr "%(duration)s мин"
-
-msgid "tooltips/respawnIcon/platoon/description"
-msgstr ""
-"Для возрождения вашего союзника не вступайте в бой в течение "
-"%(timeToResurrect)s. Механика действует в течение первых %(duration)s "
-"сражения. Для взвода заряд Возрождения общий."
-
-msgid "tooltips/respawnIcon/platoon/subtitle"
-msgstr "При игре во взводе"
-
-msgid "tooltips/respawnIcon/sec"
-msgstr "%(duration)s с"
-
-msgid "tooltips/respawnIcon/solo/description"
-msgstr ""
-"Возрождение происходит автоматически после уничтожения вашей машины. "
-"Механика действует в течение первых %(duration)s сражения."
-
-msgid "tooltips/respawnIcon/solo/subtitle"
-msgstr "При игре в одиночку"
-
-msgid "tooltips/respawnIcon/subtitle"
-msgstr "Однократное использование"
-
-msgid "tooltips/respawnIcon/title"
-msgstr "Возрождение"
-
 msgid "tooltips/testDriveInfo/footer"
 msgstr ""
 "%(brown_Open)sСтальные печати%(brown_Close)s можно получить в боях и за "
@@ -951,7 +849,7 @@ msgid "tooltips/testDriveInfo/title"
 msgstr "Бесплатный тест-драйв машины"
 
 msgid "tooltips/vehicle/description"
-msgstr "Машина режима «Стальной охотник: Возрождение»"
+msgstr "Машина режима «Стальной охотник»"
 
 msgid "tooltips/vehicle/status/notRented"
 msgstr "Не арендован"

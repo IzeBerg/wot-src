@@ -2,7 +2,6 @@ package net.wg.gui.battle.battleRoyale.views
 {
    import flash.display.MovieClip;
    import flash.display.Sprite;
-   import flash.events.Event;
    import flash.text.TextField;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
@@ -19,17 +18,11 @@ package net.wg.gui.battle.battleRoyale.views
       private static const PADDING_V:uint = 16;
       
       private static const TITLE_TF_ALPHA:Number = 0.5;
-      
-      private static const BLINK_DEAD_FRAME_LABEL:String = "die";
-      
-      private static const BLINK_REVIVE_FRAME_LABEL:String = "revive";
        
       
       public var titleTF:TextField = null;
       
       public var bg:MovieClip = null;
-      
-      public var bgBlinkMC:MovieClip = null;
       
       private var _renderersContainer:Sprite = null;
       
@@ -51,7 +44,6 @@ package net.wg.gui.battle.battleRoyale.views
          this.removeAllItems();
          this.titleTF = null;
          this.bg = null;
-         this.bgBlinkMC = null;
          this._renderersContainer = null;
          this._listItems = null;
          super.onDispose();
@@ -109,14 +101,13 @@ package net.wg.gui.battle.battleRoyale.views
          }
       }
       
-      public function as_setPlayerStatus(param1:int, param2:Boolean, param3:Boolean, param4:Boolean) : void
+      public function as_setPlayerStatus(param1:int, param2:Boolean, param3:Boolean) : void
       {
-         var _loc5_:BattleRoyaleTeamPanelListItem = this.getListItem(param1);
-         if(_loc5_)
+         var _loc4_:BattleRoyaleTeamPanelListItem = this.getListItem(param1);
+         if(_loc4_)
          {
-            _loc5_.setAlive(param2);
-            _loc5_.setReady(param3);
-            _loc5_.setIsRespawning(param4);
+            _loc4_.setAlive(param2);
+            _loc4_.setReady(param3);
          }
       }
       
@@ -154,12 +145,9 @@ package net.wg.gui.battle.battleRoyale.views
       
       private function addItem() : BattleRoyaleTeamPanelListItem
       {
-         var _loc1_:BattleRoyaleTeamPanelListItem = null;
-         _loc1_ = App.utils.classFactory.getComponent(Linkages.TEAM_PANEL_LIST_ITEM,BattleRoyaleTeamPanelListItem);
+         var _loc1_:BattleRoyaleTeamPanelListItem = App.utils.classFactory.getComponent(Linkages.TEAM_PANEL_LIST_ITEM,BattleRoyaleTeamPanelListItem);
          _loc1_.x = PADDING_H;
          _loc1_.y = this._listItems.length * (_loc1_.height + PADDING_V) + LIST_PADDING_V;
-         _loc1_.addEventListener(BattleRoyaleTeamPanelListItem.EVENT_TYPE_DEAD,this.onRendererDeadHandler);
-         _loc1_.addEventListener(BattleRoyaleTeamPanelListItem.EVENT_TYPE_REVIVE,this.onRendererReviveHandler);
          this._listItems.push(_loc1_);
          this._renderersContainer.addChild(_loc1_);
          return _loc1_;
@@ -170,22 +158,10 @@ package net.wg.gui.battle.battleRoyale.views
          var _loc1_:BattleRoyaleTeamPanelListItem = null;
          for each(_loc1_ in this._listItems)
          {
-            _loc1_.removeEventListener(BattleRoyaleTeamPanelListItem.EVENT_TYPE_REVIVE,this.onRendererReviveHandler);
-            _loc1_.removeEventListener(BattleRoyaleTeamPanelListItem.EVENT_TYPE_DEAD,this.onRendererDeadHandler);
             this._renderersContainer.removeChild(_loc1_);
             _loc1_.dispose();
          }
          this._listItems.splice(Values.ZERO,this._listItems.length);
-      }
-      
-      private function onRendererDeadHandler(param1:Event) : void
-      {
-         this.bgBlinkMC.gotoAndPlay(BLINK_DEAD_FRAME_LABEL);
-      }
-      
-      private function onRendererReviveHandler(param1:Event) : void
-      {
-         this.bgBlinkMC.gotoAndPlay(BLINK_REVIVE_FRAME_LABEL);
       }
    }
 }

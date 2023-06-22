@@ -74,8 +74,6 @@
 			1.0
 			<!--BW_String-->
 		</priceFactor>
-		<tiling>1 1 0 0</tiling>
-		<exclusionMask/>
 		<density>
 			0.95 0.95
 			<!--BW_String-->
@@ -93,10 +91,7 @@
 			<armor_8>0</armor_8>
 			<armor_9>
 				5
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_9>
 			<armor_10>30</armor_10>
 			<armor_11>8</armor_11>
@@ -124,11 +119,11 @@
 		<swinging>
 			<lodDist>FAR</lodDist>
 			<pitchParams>
-				0.34 38.00 0.36 1.00 0.05 0.34
+				0.34 38 0.36 1 0.05 0.34
 				<!--BW_String-->
 			</pitchParams>
 			<rollParams>
-				1.00 0.34 38.00 0.36 1.00 0.06 0.40
+				1 0.34 38 0.36 1 0.06 0.4
 				<!--BW_String-->
 			</rollParams>
 			<sensitivityToImpulse>
@@ -151,12 +146,6 @@
 			<collisionModelClient>vehicles/german/G81_Pz_IV_AusfH_GuP/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
 		<hangarShadowTexture>vehicles/german/G81_Pz_IV_AusfH_GuP/Pz_IV_AusfH_GuP_HangarShadowMap.dds</hangarShadowTexture>
-		<customization>
-			<customizableVehicleAreas>
-				<paint/>
-				<camouflage/>
-			</customizableVehicleAreas>
-		</customization>
 		<customizationSlots>
 			<slot>
 				<slotType>clan</slotType>
@@ -169,16 +158,11 @@
 					-0.770685 0.427969 1.43144
 					<!--BW_String-->
 				</rayEnd>
-				<rayUp>
-					0.000000 1 0.000000
-					<!--BW_String-->
-				</rayUp>
+				<rayUp>0 1 0</rayUp>
 				<size>
 					0.21
 					<!--BW_String-->
 				</size>
-				<hideIfDamaged>false</hideIfDamaged>
-				<isUVProportional>true</isUVProportional>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -193,9 +177,7 @@
 					<!--BW_String-->
 				</rotation>
 				<scale>0.557808 0.100135 0.557819</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>0.000000</clipAngle>
 				<anchorShift>0.084059</anchorShift>
 			</slot>
 			<slot>
@@ -211,7 +193,6 @@
 					<!--BW_String-->
 				</rotation>
 				<scale>0.808006 0.136636 0.808022</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.906288</clipAngle>
 				<anchorShift>0.065625</anchorShift>
@@ -229,7 +210,6 @@
 					<!--BW_String-->
 				</rotation>
 				<scale>0.808006 0.136636 0.808022</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.906288</clipAngle>
 				<anchorShift>0.065625</anchorShift>
@@ -247,7 +227,6 @@
 					<!--BW_String-->
 				</rotation>
 				<scale>0.861708 0.145717 0.861725</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.906288</clipAngle>
 				<anchorShift>0.045626</anchorShift>
@@ -265,15 +244,17 @@
 					<!--BW_String-->
 				</rotation>
 				<scale>0.861708 0.145717 0.861725</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.906288</clipAngle>
 				<anchorShift>0.045626</anchorShift>
 			</slot>
 		</customizationSlots>
-		<turretPitches>
-			<turret>0.000000</turret>
-		</turretPitches>
+		<customization>
+			<customizableVehicleAreas>
+				<paint/>
+				<camouflage/>
+			</customizableVehicleAreas>
+		</customization>
 		<camouflage>
 			<tiling>
 				1.36 1.36 0.000000 0.000000
@@ -675,22 +656,6 @@
 				-0.0251046
 				<!--BW_String-->
 			</trackThickness>
-			<splineDesc>
-				<segmentModelLeft>vehicles/german/G81_Pz_IV_AusfH_GuP/track/segment.model</segmentModelLeft>
-				<segmentModelRight>vehicles/german/G81_Pz_IV_AusfH_GuP/track/segment.model</segmentModelRight>
-				<left>vehicles/german/G81_Pz_IV_AusfH_GuP/track/left.track</left>
-				<right>vehicles/german/G81_Pz_IV_AusfH_GuP/track/right.track</right>
-				<segmentLength>0.122601</segmentLength>
-				<segmentOffset>
-					0.0984849
-					<!--BW_String-->
-				</segmentOffset>
-				<lodDist>SPLINE_TRACK</lodDist>
-				<atlas>
-					<UTiles>1</UTiles>
-					<VTiles>1</VTiles>
-				</atlas>
-			</splineDesc>
 			<trackNodes>
 				<enable>true</enable>
 				<linkBones>true</linkBones>
@@ -889,13 +854,26 @@
 					<leftSibling>Track_VT_R3</leftSibling>
 				</node>
 			</trackNodes>
+			<splineDesc>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<segmentModelLeft>vehicles/german/G81_Pz_IV_AusfH_GuP/track/segment.model</segmentModelLeft>
+					<segmentModelRight>vehicles/german/G81_Pz_IV_AusfH_GuP/track/segment.model</segmentModelRight>
+					<left>vehicles/german/G81_Pz_IV_AusfH_GuP/track/left.track</left>
+					<right>vehicles/german/G81_Pz_IV_AusfH_GuP/track/right.track</right>
+					<segmentLength>0.122601</segmentLength>
+					<segmentOffset>0.098485</segmentOffset>
+					<atlas>
+						<UTiles>1</UTiles>
+						<VTiles>1</VTiles>
+					</atlas>
+				</trackPair>
+				<lodDist>SPLINE_TRACK</lodDist>
+			</splineDesc>
 			<physicalTracks>
 				<left>
 					<segmentsCount>99</segmentsCount>
-					<segmentsOuterThickness>
-						0.0346776
-						<!--BW_String-->
-					</segmentsOuterThickness>
+					<segmentsOuterThickness>0.034678</segmentsOuterThickness>
 					<segmentsInnerThickness>-0.102876</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						-1.222
@@ -930,7 +908,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -955,7 +933,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -970,10 +948,7 @@
 									-2.82305
 									<!--BW_String-->
 								</xStart>
-								<xStep>
-									0.0621671
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.062167</xStep>
 								<ySamples>
 									1.06619 1.11579 1.1591 1.18299 1.15253 1.15671 1.15954 1.16106 1.16101 1.16095 1.1609 1.16085 1.16081 1.16064 1.16033 1.15986 1.15909 1.15832 1.15755 1.15678 1.15626 1.15576 1.15538 1.15499 1.1545 1.15415 1.15371 1.15327 1.15291 1.15243 1.15203 1.15167 1.15115 1.1508 1.15039 1.1736 1.18729 1.18271 1.15855 1.14867 1.14848 1.1483 1.14812 1.14793 1.14812 1.15111 1.15542 1.15827 1.15827 1.15827 1.15827 1.16292 1.18431 1.18658 1.17041 1.15802 1.15751 1.157 1.15649 1.15598 1.15547 1.15496 1.15445 1.15393 1.15342 1.15291 1.17721 1.18793 1.18052 1.15278 1.15035 1.14984 1.14933 1.14882 1.14831 1.1478 1.14729 1.14678 1.14634 1.14598 1.14561 1.14957 1.15394 1.15826 1.15735 1.15706 1.14898 1.13335 1.12527
 									<!--BW_String-->
@@ -1013,7 +988,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								-0.331112 0.0754198
+								-0.331112 0.07542
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>58</jointIdx>
@@ -1024,10 +999,7 @@
 								-1.76881 0.267517
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								-0.0200524 -0.246309
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>-0.020052 -0.246309</shiftVec>
 							<jointIdx>69</jointIdx>
 						</bottomBack>
 						<bottomFront>
@@ -1036,10 +1008,7 @@
 								1.77069 0.267519
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.0344938 -0.244705
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.034494 -0.244705</shiftVec>
 							<jointIdx>0</jointIdx>
 						</bottomFront>
 					</snapWheels>
@@ -1055,7 +1024,7 @@
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_L5</name>
 							<startAngle>
@@ -1254,7 +1223,7 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.05517 1.22102 -0.0254648
+									-1.05517 1.22102 -0.025465
 									<!--BW_String-->
 								</point>
 								<point>
@@ -1262,7 +1231,7 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.29517 1.22817 0.0988717
+									-1.29517 1.22817 0.098872
 									<!--BW_String-->
 								</point>
 								<point>
@@ -1431,15 +1400,12 @@
 								</point>
 							</range>
 						</top>
-						<bottom/>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</left>
 				<right>
 					<segmentsCount>99</segmentsCount>
-					<segmentsOuterThickness>
-						0.0346776
-						<!--BW_String-->
-					</segmentsOuterThickness>
+					<segmentsOuterThickness>0.034678</segmentsOuterThickness>
 					<segmentsInnerThickness>-0.102876</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						1.222
@@ -1474,7 +1440,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -1499,7 +1465,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -1514,10 +1480,7 @@
 									-2.82304
 									<!--BW_String-->
 								</xStart>
-								<xStep>
-									0.0621674
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.062167</xStep>
 								<ySamples>
 									1.06389 1.10666 1.14938 1.19239 1.16424 1.16162 1.16062 1.16047 1.16032 1.16017 1.16002 1.15987 1.15972 1.15957 1.15942 1.15926 1.15911 1.15896 1.15881 1.15866 1.15851 1.15836 1.15821 1.15833 1.15844 1.15823 1.15834 1.15844 1.15825 1.15882 1.15938 1.15995 1.16051 1.16107 1.16164 1.17361 1.18729 1.18271 1.1639 1.16446 1.16503 1.16558 1.1661 1.16662 1.16714 1.16766 1.16818 1.1687 1.16922 1.16974 1.17026 1.17078 1.18431 1.18658 1.17234 1.17286 1.17184 1.17017 1.16798 1.16576 1.16363 1.1615 1.15926 1.15709 1.15526 1.15344 1.17722 1.18793 1.18052 1.15277 1.14598 1.14591 1.14584 1.14577 1.1457 1.14563 1.14556 1.14549 1.14542 1.14535 1.1458 1.14663 1.14745 1.14821 1.14972 1.14549 1.13711 1.1243 1.15561
 									<!--BW_String-->
@@ -1562,10 +1525,7 @@
 								-1.76902 0.267469
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								-0.0198721 -0.246323
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>-0.019872 -0.246323</shiftVec>
 							<jointIdx>69</jointIdx>
 						</bottomBack>
 						<bottomFront>
@@ -1574,10 +1534,7 @@
 								1.77069 0.26747
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.0344865 -0.244706
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.034486 -0.244706</shiftVec>
 							<jointIdx>0</jointIdx>
 						</bottomFront>
 					</snapWheels>
@@ -1593,7 +1550,7 @@
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_R5</name>
 							<startAngle>
@@ -1792,7 +1749,7 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									1.05517 1.22102 -0.0254648
+									1.05517 1.22102 -0.025465
 									<!--BW_String-->
 								</point>
 								<point>
@@ -1800,7 +1757,7 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									1.29517 1.22817 0.0988717
+									1.29517 1.22817 0.098872
 									<!--BW_String-->
 								</point>
 								<point>
@@ -1969,8 +1926,8 @@
 								</point>
 							</range>
 						</top>
-						<bottom/>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</right>
 			</physicalTracks>
 			<customization>
@@ -2003,10 +1960,7 @@
 				<armor_8>0</armor_8>
 				<armor_9>
 					8
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_9>
 				<armor_10>50</armor_10>
 				<armor_11>95</armor_11>
@@ -2056,52 +2010,31 @@
 					<armor>
 						<armor_1>
 							50
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
 							50
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_2>
 						<armor_3>
 							20
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_3>
 						<armor_4>
 							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_4>
 						<armor_5>
 							20
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_5>
 						<armor_6>
 							20
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_6>
 						<armor_7>
 							50
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_7>
 						<gun>20</gun>
 					</armor>
@@ -2128,38 +2061,34 @@
 					</hitTester>
 					<effects>shot_medium_mb</effects>
 					<reloadEffect>reload50_75</reloadEffect>
+					<customizationSlots>
+						<slot>
+							<slotType>insigniaOnGun</slotType>
+							<slotId>49000</slotId>
+							<rayStart>
+								0.011662 0 2.60251
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								0.011662 0 3.00251
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.056 0 0
+								<!--BW_String-->
+							</rayUp>
+							<size>
+								0.4
+								<!--BW_String-->
+							</size>
+						</slot>
+					</customizationSlots>
 					<customization>
 						<customizableVehicleAreas>
 							<paint/>
 							<camouflage/>
 						</customizableVehicleAreas>
 					</customization>
-					<customizationSlots>
-						<slot>
-							<slotType>insigniaOnGun</slotType>
-							<slotId>49000</slotId>
-							<rayStart>
-								0.011662 0.000000 2.60251
-								<!--BW_String-->
-							</rayStart>
-							<rayEnd>
-								0.00676937 0.0221841 2.60208
-								<!--BW_String-->
-							</rayEnd>
-							<rayUp>
-								0.056 0.000000 0.000000
-								<!--BW_String-->
-							</rayUp>
-							<applyToFabric>true</applyToFabric>
-							<size>
-								0.4
-								<!--BW_String-->
-							</size>
-							<hideIfDamaged>false</hideIfDamaged>
-							<isUVProportional>true</isUVProportional>
-						</slot>
-					</customizationSlots>
-					<animateEmblemSlots>true</animateEmblemSlots>
 					<camouflage>
 						<tiling>
 							0.49 0.49 0.000000 0.000000
@@ -2187,17 +2116,10 @@
 				<!--BW_String-->
 			</gunPosition>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
-			<showEmblemsOnGun>false</showEmblemsOnGun>
 			<physicsShape>
-				0.932 0.000 0.915 0.000 0.444 0.116 0.500 0.696 0.266 0.500 0.000 0.500 0.000 0.100 0.000
+				0.932 0 0.915 0 0.444 0.116 0.5 0.696 0.266 0.5 0 0.5 0 0.1 0
 				<!--BW_String-->
 			</physicsShape>
-			<customization>
-				<customizableVehicleAreas>
-					<paint/>
-					<camouflage/>
-				</customizableVehicleAreas>
-			</customization>
 			<customizationSlots>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2212,9 +2134,7 @@
 						<!--BW_String-->
 					</rotation>
 					<scale>0.812308 0.145822 0.812317</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
-					<clipAngle>0.000000</clipAngle>
 					<anchorShift>0.042625</anchorShift>
 				</slot>
 				<slot>
@@ -2226,17 +2146,16 @@
 						<!--BW_String-->
 					</position>
 					<rotation>
-						1.56716 -0.00314128 -0.00314231
+						1.56716 -0.003141 -0.003142
 						<!--BW_String-->
 					</rotation>
-					<scale>
-						0.492817 0.0884679 0.492824
-						<!--BW_String-->
-					</scale>
-					<doubleSided>false</doubleSided>
+					<scale>0.492817 0.088468 0.492824</scale>
 					<showOn>256</showOn>
 					<clipAngle>0.738586</clipAngle>
-					<anchorShift>0.054480</anchorShift>
+					<anchorShift>
+						0.05448
+						<!--BW_String-->
+					</anchorShift>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2251,7 +2170,6 @@
 						<!--BW_String-->
 					</rotation>
 					<scale>0.353377 0.218785 0.353381</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.929694</clipAngle>
 					<anchorShift>-0.050507</anchorShift>
@@ -2269,12 +2187,20 @@
 						<!--BW_String-->
 					</rotation>
 					<scale>0.365089 0.226036 0.365093</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.929694</clipAngle>
-					<anchorShift>-0.052570</anchorShift>
+					<anchorShift>
+						-0.05257
+						<!--BW_String-->
+					</anchorShift>
 				</slot>
 			</customizationSlots>
+			<customization>
+				<customizableVehicleAreas>
+					<paint/>
+					<camouflage/>
+				</customizableVehicleAreas>
+			</customization>
 			<camouflage>
 				<tiling>
 					1.12 1.12 0.000000 0.000000

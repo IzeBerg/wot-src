@@ -19,4 +19,6 @@ def grouper(iterable, batch):
 def convertEnum(value):
     if isinstance(value, Enum):
         return value.value
+    if hasattr(value, '__enum__'):
+        return int(value)
     return value

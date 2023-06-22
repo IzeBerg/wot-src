@@ -333,6 +333,14 @@ package net.wg.gui.battle.views.consumablesPanel
       {
       }
       
+      public function showPossibleStacks(param1:int) : void
+      {
+      }
+      
+      public function updateStacks(param1:int) : void
+      {
+      }
+      
       protected function setBindKeyText() : void
       {
          if(this._bindSfKeyCode == KeyProps.KEY_NONE)

@@ -332,10 +332,11 @@ class AdaptationHealthRestoreSN(_BRLocalizationProvider, sn_items.TimerSN):
     def _update(self, value):
         restoreHealth = value.get('restoreHealth')
         duration = value.get('duration')
+        endTime = value.get('endTime')
         if duration is not None:
             if duration > 0.0:
                 self._setVisible(True)
-                self._updateTimeParams(duration, 0.0)
+                self._updateTimeParams(duration, endTime)
             else:
                 self._setVisible(False)
                 self._vo['additionalState'] = BATTLE_ROYAL_CONSTS.COUNTER_STATE_INITIAL

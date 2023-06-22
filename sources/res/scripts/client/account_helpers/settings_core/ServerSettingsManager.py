@@ -902,6 +902,8 @@ class ServerSettingsManager(object):
         self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, {BATTLE_MATTERS_KEYS.QUEST_PROGRESS: lastSeenProgress})
 
     def getLimitedUIProgress(self, storageIdx, offset):
+        if not self.settingsCache.isSynced():
+            return False
         if storageIdx >= len(LIMITED_UI_STORAGES):
             LOG_ERROR("Can't read LimitedUI flag. storageIdx is out of range")
             return 0
@@ -910,16 +912,34 @@ class ServerSettingsManager(object):
         return flags & 1 << offset
 
     def setLimitedUIProgress(self, storageIdx, offset):
+        if not self.settingsCache.isSynced():
+            return False
         if storageIdx >= len(LIMITED_UI_STORAGES):
             LOG_ERROR("Can't store LimitedUI flag. storageIdx is out of range")
-            return
+            return False
         luiProgress = self.getLimitedUIProgress(storageIdx, offset)
         if luiProgress:
-            return
+            return True
         storageID = LIMITED_UI_STORAGES[storageIdx]
         flags = self.getSectionSettings(storageID, LIMITED_UI_KEY, 0)
         flags |= 1 << offset
         self.setSectionSettings(storageID, {LIMITED_UI_KEY: flags})
+        return True
+
+    def setLimitedUIGroupProgress(self, data):
+        if not self.settingsCache.isSynced():
+            return False
+        settings = {}
+        for storageIdx, offsets in data.iteritems():
+            storageID = LIMITED_UI_STORAGES[storageIdx]
+            flags = self.getSectionSettings(storageID, LIMITED_UI_KEY, 0)
+            for offset in offsets:
+                flags |= 1 << offset
+
+            settings[storageID] = flags
+
+        self.setSettings(settings)
+        return True
 
     def setLimitedUIFullComplete(self, offset):
         settings = {storage:4294967295 for storage in LIMITED_UI_STORAGES}

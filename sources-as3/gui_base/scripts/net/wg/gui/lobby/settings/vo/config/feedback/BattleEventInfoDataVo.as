@@ -40,13 +40,11 @@ package net.wg.gui.lobby.settings.vo.config.feedback
       
       public var battleEventsEnemyAssistStun:SettingsControlProp = null;
       
-      public var battleEventsEnemyStun:SettingsControlProp = null;
+      public var battleEventsCrewPerks:SettingsControlProp = null;
       
       public var battleEventsEventName:SettingsControlProp = null;
       
       public var battleEventsVehicleInfo:SettingsControlProp = null;
-      
-      public var battleEventsCrewPerks:SettingsControlProp = null;
       
       public function BattleEventInfoDataVo()
       {
@@ -69,7 +67,6 @@ package net.wg.gui.lobby.settings.vo.config.feedback
             "battleEventsVehicleInfo":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "battleEventsEnemyWorldCollision":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "battleEventsEnemyAssistStun":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
-            "battleEventsEnemyStun":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "battleEventsCrewPerks":createControl(ControlsFactory.TYPE_CHECKBOX).build()
          });
       }
@@ -94,7 +91,6 @@ package net.wg.gui.lobby.settings.vo.config.feedback
          this.battleEventsVehicleInfo = null;
          this.battleEventsEnemyWorldCollision = null;
          this.battleEventsEnemyAssistStun = null;
-         this.battleEventsEnemyStun = null;
          this.battleEventsCrewPerks = null;
          super.onDispose();
       }

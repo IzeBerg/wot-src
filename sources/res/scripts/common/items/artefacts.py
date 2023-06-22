@@ -588,6 +588,10 @@ class Equipment(Artefact):
         return False
 
 
+class EpicEmptySlot(Equipment):
+    pass
+
+
 class ExtraHealthReserve(StaticOptionalDevice):
     __slots__ = ('chassisMaxLoadFactor', )
 

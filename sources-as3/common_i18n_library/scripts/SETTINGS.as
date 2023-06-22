@@ -19,8 +19,6 @@ package
       
       public static const CURSOR_OVERLAPCONTOUR_TOOLTIP:String = "#settings:cursor/overlapContour/tooltip";
       
-      public static const MARKER_LEVEL_TOOLTIP:String = "#settings:marker/level/tooltip";
-      
       public static const LANGUAGE_CODE:String = "#settings:LANGUAGE_CODE";
       
       public static const WINDOWTITLE:String = "#settings:windowTitle";
@@ -363,19 +361,11 @@ package
       
       public static const GAME_BATTLELOADINGINFO:String = "#settings:game/battleLoadingInfo";
       
-      public static const GAME_BATTLELOADINGRANKEDINFO:String = "#settings:game/battleLoadingRankedInfo";
-      
       public static const GAME_BATTLELOADINGINFO_TEXTTIP:String = "#settings:game/battleLoadingInfo/textTip";
       
       public static const GAME_BATTLELOADINGINFO_VISUALTIP:String = "#settings:game/battleLoadingInfo/visualTip";
       
       public static const GAME_BATTLELOADINGINFO_MINIMAP:String = "#settings:game/battleLoadingInfo/minimap";
-      
-      public static const GAME_BATTLELOADINGRANKEDINFO_TEXTTIP:String = "#settings:game/battleLoadingRankedInfo/textTip";
-      
-      public static const GAME_BATTLELOADINGRANKEDINFO_VISUALTIP:String = "#settings:game/battleLoadingRankedInfo/visualTip";
-      
-      public static const GAME_BATTLELOADINGRANKEDINFO_MINIMAP:String = "#settings:game/battleLoadingRankedInfo/minimap";
       
       public static const GAME_SWITCHEQUIPMENT:String = "#settings:game/switchEquipment";
       
@@ -1047,10 +1037,6 @@ package
       
       public static const MARKER_LEVEL:String = "#settings:marker/level";
       
-      public static const MARKER_LEVEL_TOOLTIP_HEADER:String = "#settings:marker/level/tooltip/header";
-      
-      public static const MARKER_LEVEL_TOOLTIP_BODY:String = "#settings:marker/level/tooltip/body";
-      
       public static const MARKER_HPINDICATOR:String = "#settings:marker/hpIndicator";
       
       public static const MARKER_AIMMARKER2D:String = "#settings:marker/aimMarker2D";
@@ -1333,8 +1319,6 @@ package
       
       public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ASSISTSTUN:String = "#settings:feedback/tab/battleEvents/checkbox/AssistStun";
       
-      public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_STUN:String = "#settings:feedback/tab/battleEvents/checkbox/Stun";
-      
       public static const FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_CREWPERKS:String = "#settings:feedback/tab/battleEvents/checkbox/CrewPerks";
       
       public static const FEEDBACK_TAB_BATTLEEVENTS_INFO:String = "#settings:feedback/tab/battleEvents/info";
@@ -1396,8 +1380,6 @@ package
       public static const FEEDBACK_TAB_RIBBONS_VISIBLEITEMSCOUNT:String = "#settings:feedback/tab/ribbons/visibleItemsCount";
       
       public static const FEEDBACK_TAB_RIBBONS_ASSISTSTUN:String = "#settings:feedback/tab/ribbons/assistStun";
-      
-      public static const FEEDBACK_TAB_RIBBONS_STUN:String = "#settings:feedback/tab/ribbons/stun";
       
       public static const FEEDBACK_TAB_DAMAGELOGPANEL_TOTAL_VALUE1:String = "#settings:feedback/tab/damageLogPanel/total/value1";
       

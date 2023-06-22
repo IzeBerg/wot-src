@@ -245,6 +245,14 @@ package net.wg.gui.battle.views.consumablesPanel
       {
       }
       
+      public function showPossibleStacks(param1:int) : void
+      {
+      }
+      
+      public function updateStacks(param1:int) : void
+      {
+      }
+      
       private function onGlowOnIdleStateHandler(param1:Event) : void
       {
          if(this._lockColorTransform)

@@ -32,6 +32,10 @@ class DataInputSlot(object):
         return False
 
     @staticmethod
+    def isConstValue():
+        return False
+
+    @staticmethod
     def setDefaultValue(value):
         pass
 

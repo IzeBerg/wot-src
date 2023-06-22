@@ -7,7 +7,7 @@ package net.wg.gui.lobby.sessionStats.helpers
       
       private static const COLLAPSED_HEIGHT:int = 491;
       
-      private static const EXTENDED_HEIGHT:int = 735;
+      private static const EXTENDED_HEIGHT:int = 747;
       
       private static const MIN_EXTENDED_HEIGHT:int = 580;
       

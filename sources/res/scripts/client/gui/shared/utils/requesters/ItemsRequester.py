@@ -258,6 +258,7 @@ class REQ_CRITERIA(object):
         ACTIVE_RENT = RequestCriteria(InventoryPredicateCondition(lambda item: item.isRented and not item.rentalIsOver))
         EXPIRED_RENT = RequestCriteria(PredicateCondition(lambda item: item.isRented and item.rentalIsOver))
         IS_OUTFIT_LOCKED = RequestCriteria(PredicateCondition(lambda item: item.isOutfitLocked))
+        IS_STORAGE_HIDDEN = RequestCriteria(PredicateCondition(lambda item: item.isStorageHidden))
         EXPIRED_IGR_RENT = RequestCriteria(PredicateCondition(lambda item: item.isRented and item.rentalIsOver and item.isPremiumIGR))
         RENT_PROMOTION = RequestCriteria(PredicateCondition(lambda item: item.isRentPromotion))
         WOT_PLUS_VEHICLE = RequestCriteria(PredicateCondition(lambda item: item.isWotPlus))
@@ -268,6 +269,7 @@ class REQ_CRITERIA(object):
         ELITE = RequestCriteria(PredicateCondition(lambda item: item.isElite))
         IS_BOT = RequestCriteria(PredicateCondition(lambda item: item.name.endswith('_bot')))
         IS_CREW_LOCKED = RequestCriteria(PredicateCondition(lambda item: item.isCrewLocked))
+        IS_CREW_HIDDEN = RequestCriteria(PredicateCondition(lambda item: item.isCrewHidden))
         FULLY_ELITE = RequestCriteria(PredicateCondition(lambda item: item.isFullyElite))
         EVENT = RequestCriteria(PredicateCondition(lambda item: item.isEvent))
         EVENT_BATTLE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForEventBattles))
@@ -275,7 +277,9 @@ class REQ_CRITERIA(object):
         BATTLE_ROYALE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForBattleRoyaleBattles))
         MAPS_TRAINING = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForMapsTrainingBattles))
         CLAN_WARS = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForClanWarsBattles))
+        FUN_RANDOM = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForFunRandomBattles))
         COMP7 = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForComp7Battles))
+        MODE_HIDDEN = RequestCriteria(PredicateCondition(lambda item: item.isModeHidden))
         HAS_XP_FACTOR = RequestCriteria(PredicateCondition(lambda item: item.dailyXPFactor != -1))
         IS_RESTORE_POSSIBLE = RequestCriteria(PredicateCondition(lambda item: item.isRestorePossible()))
         CAN_TRADE_IN = RequestCriteria(PredicateCondition(lambda item: item.canTradeIn))
@@ -372,7 +376,7 @@ class REQ_CRITERIA(object):
 
 
 class RESEARCH_CRITERIA(object):
-    VEHICLE_TO_UNLOCK = ~REQ_CRITERIA.SECRET | ~REQ_CRITERIA.HIDDEN | ~REQ_CRITERIA.VEHICLE.PREMIUM | ~REQ_CRITERIA.VEHICLE.IS_PREMIUM_IGR | ~REQ_CRITERIA.VEHICLE.EVENT | ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE | ~REQ_CRITERIA.VEHICLE.MAPS_TRAINING
+    VEHICLE_TO_UNLOCK = ~REQ_CRITERIA.SECRET | ~REQ_CRITERIA.HIDDEN | ~REQ_CRITERIA.VEHICLE.PREMIUM | ~REQ_CRITERIA.VEHICLE.IS_PREMIUM_IGR | ~REQ_CRITERIA.VEHICLE.MAPS_TRAINING | ~REQ_CRITERIA.VEHICLE.HAS_ANY_TAG(constants.BATTLE_MODE_VEHICLE_TAGS)
 
 
 class ItemsRequester(IItemsRequester):
@@ -565,7 +569,7 @@ class ItemsRequester(IItemsRequester):
 
     def isSynced--- This code section failed: ---
 
- L. 937         0  LOAD_FAST             0  'self'
+ L. 945         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  '__blueprints'
                 6  LOAD_CONST               None
                 9  COMPARE_OP            9  is-not

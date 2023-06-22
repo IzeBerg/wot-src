@@ -765,6 +765,8 @@ package net.wg.data.constants
       
       public static const ARTY_SHOT_INDICATOR_RENDERER:String = "ArtyShotIndicatorUI";
       
+      public static const OVERHEAT_WIDGET:String = "OverheatWidgetUI";
+      
       public static const EQUIPMENT_OVERLAY:String = "ListOverlayUI";
       
       public static const NEW_INDICATOR_LINKAGE:String = "NewIndicator_UI";

@@ -26,6 +26,10 @@ package net.wg.infrastructure.base.meta.impl
       
       private var _teaserVO:TeaserVO;
       
+      private var _array1:Array;
+      
+      private var _array2:Array;
+      
       public function HangarMeta()
       {
          super();
@@ -47,6 +51,16 @@ package net.wg.infrastructure.base.meta.impl
          {
             this._teaserVO.dispose();
             this._teaserVO = null;
+         }
+         if(this._array1)
+         {
+            this._array1.splice(0,this._array1.length);
+            this._array1 = null;
+         }
+         if(this._array2)
+         {
+            this._array2.splice(0,this._array2.length);
+            this._array2 = null;
          }
          super.onDispose();
       }
@@ -114,6 +128,23 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
+      public final function as_updateHangarComponents(param1:Array, param2:Array) : void
+      {
+         var _loc3_:Array = this._array1;
+         this._array1 = param1;
+         var _loc4_:Array = this._array2;
+         this._array2 = param2;
+         this.updateHangarComponents(this._array1,this._array2);
+         if(_loc3_)
+         {
+            _loc3_.splice(0,_loc3_.length);
+         }
+         if(_loc4_)
+         {
+            _loc4_.splice(0,_loc4_.length);
+         }
+      }
+      
       protected function setupAmmunitionPanel(param1:AmmunitionPanelVO) : void
       {
          var _loc2_:String = "as_setupAmmunitionPanel" + Errors.ABSTRACT_INVOKE;
@@ -133,6 +164,13 @@ package net.wg.infrastructure.base.meta.impl
          var _loc2_:String = "as_showTeaser" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
+      }
+      
+      protected function updateHangarComponents(param1:Array, param2:Array) : void
+      {
+         var _loc3_:String = "as_updateHangarComponents" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc3_);
+         throw new AbstractException(_loc3_);
       }
    }
 }

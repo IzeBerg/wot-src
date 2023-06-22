@@ -72,8 +72,6 @@
 			1.6
 			<!--BW_String-->
 		</priceFactor>
-		<tiling>1 1 0 0</tiling>
-		<exclusionMask/>
 		<density>
 			1.01917 1.01917
 			<!--BW_String-->
@@ -150,11 +148,11 @@
 		<swinging>
 			<lodDist>FAR</lodDist>
 			<pitchParams>
-				0.34 38.00 0.36 1.00 0.05 0.34
+				0.34 38 0.36 1 0.05 0.34
 				<!--BW_String-->
 			</pitchParams>
 			<rollParams>
-				1.00 0.34 38.00 0.36 1.00 0.06 0.40
+				1 0.34 38 0.36 1 0.06 0.4
 				<!--BW_String-->
 			</rollParams>
 			<sensitivityToImpulse>
@@ -173,6 +171,10 @@
 			</turret>
 		</turretPositions>
 		<hangarShadowTexture>vehicles/american/A152_M_Project/M_Project_HangarShadowMap.dds</hangarShadowTexture>
+		<hitTester>
+			<collisionModelServer>vehicles/american/A152_M_Project/collision/Hull.model</collisionModelServer>
+			<collisionModelClient>vehicles/american/A152_M_Project/collision_client/Hull.model</collisionModelClient>
+		</hitTester>
 		<customizationSlots>
 			<slot>
 				<slotType>clan</slotType>
@@ -191,7 +193,6 @@
 					<!--BW_String-->
 				</size>
 				<hideIfDamaged>true</hideIfDamaged>
-				<isUVProportional>true</isUVProportional>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -210,13 +211,10 @@
 					<!--BW_String-->
 				</scale>
 				<showOn>16</showOn>
-				<clipAngle>0.000000</clipAngle>
 				<anchorShift>
 					-0.01
 					<!--BW_String-->
 				</anchorShift>
-				<compatibleModels>default</compatibleModels>
-				<doubleSided>false</doubleSided>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -232,13 +230,10 @@
 				</rotation>
 				<scale>0.590452 0.343484 0.590458</scale>
 				<showOn>16</showOn>
-				<clipAngle>0.000000</clipAngle>
 				<anchorShift>
 					0.04
 					<!--BW_String-->
 				</anchorShift>
-				<compatibleModels>default</compatibleModels>
-				<doubleSided>false</doubleSided>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -254,13 +249,10 @@
 				</rotation>
 				<scale>0.759042 0.432842 0.759049</scale>
 				<showOn>16</showOn>
-				<clipAngle>0.000000</clipAngle>
 				<anchorShift>
 					0.04
 					<!--BW_String-->
 				</anchorShift>
-				<compatibleModels>default</compatibleModels>
-				<doubleSided>false</doubleSided>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -276,13 +268,10 @@
 				</rotation>
 				<scale>0.759041 0.432842 0.759048</scale>
 				<showOn>16</showOn>
-				<clipAngle>0.000000</clipAngle>
 				<anchorShift>
 					0.04
 					<!--BW_String-->
 				</anchorShift>
-				<compatibleModels>default</compatibleModels>
-				<doubleSided>false</doubleSided>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -303,8 +292,6 @@
 					0.06
 					<!--BW_String-->
 				</anchorShift>
-				<compatibleModels>default</compatibleModels>
-				<doubleSided>false</doubleSided>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -328,23 +315,14 @@
 					0.01
 					<!--BW_String-->
 				</anchorShift>
-				<compatibleModels>default</compatibleModels>
-				<doubleSided>false</doubleSided>
 			</slot>
 		</customizationSlots>
-		<hitTester>
-			<collisionModelServer>vehicles/american/A152_M_Project/collision/Hull.model</collisionModelServer>
-			<collisionModelClient>vehicles/american/A152_M_Project/collision_client/Hull.model</collisionModelClient>
-		</hitTester>
 		<customization>
 			<customizableVehicleAreas>
 				<paint/>
 				<camouflage/>
 			</customizableVehicleAreas>
 		</customization>
-		<turretPitches>
-			<turret>0.000000</turret>
-		</turretPitches>
 		<camouflage>
 			<density>93.061424 92.910675</density>
 			<aoTextureSize>1024 1024</aoTextureSize>
@@ -823,31 +801,6 @@
 				0.0069
 				<!--BW_String-->
 			</trackThickness>
-			<splineDesc>
-				<segmentModelLeft>vehicles/american/A152_M_Project/track/segment_01.model</segmentModelLeft>
-				<segmentModelRight>vehicles/american/A152_M_Project/track/segment_01.model</segmentModelRight>
-				<segment2ModelLeft>vehicles/american/A152_M_Project/track/segment_02.model</segment2ModelLeft>
-				<segment2ModelRight>vehicles/american/A152_M_Project/track/segment_02.model</segment2ModelRight>
-				<left>vehicles/american/A152_M_Project/track/left.track</left>
-				<right>vehicles/american/A152_M_Project/track/right.track</right>
-				<segmentLength>
-					0.134
-					<!--BW_String-->
-				</segmentLength>
-				<segmentOffset>
-					0.166
-					<!--BW_String-->
-				</segmentOffset>
-				<segment2Offset>
-					0.063
-					<!--BW_String-->
-				</segment2Offset>
-				<atlas>
-					<UTiles>1</UTiles>
-					<VTiles>1</VTiles>
-				</atlas>
-				<lodDist>SPLINE_TRACK</lodDist>
-			</splineDesc>
 			<trackNodes>
 				<enable>true</enable>
 				<linkBones>false</linkBones>
@@ -950,6 +903,34 @@
 					</offset>
 				</node>
 			</trackNodes>
+			<splineDesc>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<segmentModelLeft>vehicles/american/A152_M_Project/track/segment_01.model</segmentModelLeft>
+					<segmentModelRight>vehicles/american/A152_M_Project/track/segment_01.model</segmentModelRight>
+					<segment2ModelLeft>vehicles/american/A152_M_Project/track/segment_02.model</segment2ModelLeft>
+					<segment2ModelRight>vehicles/american/A152_M_Project/track/segment_02.model</segment2ModelRight>
+					<left>vehicles/american/A152_M_Project/track/left.track</left>
+					<right>vehicles/american/A152_M_Project/track/right.track</right>
+					<segmentLength>
+						0.134
+						<!--BW_String-->
+					</segmentLength>
+					<segmentOffset>
+						0.166
+						<!--BW_String-->
+					</segmentOffset>
+					<segment2Offset>
+						0.063
+						<!--BW_String-->
+					</segment2Offset>
+					<atlas>
+						<UTiles>1</UTiles>
+						<VTiles>1</VTiles>
+					</atlas>
+				</trackPair>
+				<lodDist>SPLINE_TRACK</lodDist>
+			</splineDesc>
 			<physicalTracks>
 				<left>
 					<segmentsCount>194</segmentsCount>
@@ -1799,6 +1780,7 @@
 							</range>
 						</top>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</left>
 				<right>
 					<segmentsCount>194</segmentsCount>
@@ -2645,6 +2627,7 @@
 							</range>
 						</top>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</right>
 			</physicalTracks>
 			<repairTime>
@@ -2696,10 +2679,7 @@
 				<armor_15>195</armor_15>
 				<armor_16>
 					65
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_16>
 				<armor_17>85</armor_17>
 				<armor_18>115</armor_18>
@@ -2718,10 +2698,7 @@
 				<armor_31>
 					38.1
 					<!--BW_String-->
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_31>
 				<armor_32>
 					330.2
@@ -2764,52 +2741,31 @@
 						<armor_1>
 							330.2
 							<!--BW_String-->
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
 							100
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_2>
 						<armor_3>
 							70
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_3>
 						<armor_4>
 							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_4>
 						<armor_5>
 							65
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_5>
 						<armor_6>
 							40
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_6>
 						<armor_7>
 							40
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_7>
 						<gun>40</gun>
 					</armor>
@@ -2860,7 +2816,6 @@
 								0.5
 								<!--BW_String-->
 							</size>
-							<isUVProportional>true</isUVProportional>
 						</slot>
 					</customizationSlots>
 					<customization>
@@ -2878,7 +2833,6 @@
 						<collisionModelServer>vehicles/american/A152_M_Project/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A152_M_Project/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
-					<animateEmblemSlots>true</animateEmblemSlots>
 					<edgeByVisualModel>false</edgeByVisualModel>
 					<shotOffset>
 						0.0208911 -0.043000 0.000000
@@ -2902,6 +2856,10 @@
 				<collisionModelServer>vehicles/american/A152_M_Project/collision/Turret_01.model</collisionModelServer>
 				<collisionModelClient>vehicles/american/A152_M_Project/collision_client/Turret_01.model</collisionModelClient>
 			</hitTester>
+			<gunPosition>
+				0.000658 0.39104 1.10215
+				<!--BW_String-->
+			</gunPosition>
 			<customizationSlots>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2925,8 +2883,6 @@
 						0.05
 						<!--BW_String-->
 					</anchorShift>
-					<compatibleModels>default</compatibleModels>
-					<doubleSided>false</doubleSided>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2950,8 +2906,6 @@
 						0.05
 						<!--BW_String-->
 					</anchorShift>
-					<compatibleModels>default</compatibleModels>
-					<doubleSided>false</doubleSided>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2975,8 +2929,6 @@
 						0.05
 						<!--BW_String-->
 					</anchorShift>
-					<compatibleModels>default</compatibleModels>
-					<doubleSided>false</doubleSided>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -3000,8 +2952,6 @@
 						0.05
 						<!--BW_String-->
 					</anchorShift>
-					<compatibleModels>default</compatibleModels>
-					<doubleSided>false</doubleSided>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -3019,8 +2969,6 @@
 						0.05
 						<!--BW_String-->
 					</anchorShift>
-					<compatibleModels>default</compatibleModels>
-					<doubleSided>false</doubleSided>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -3044,14 +2992,8 @@
 						0.09
 						<!--BW_String-->
 					</anchorShift>
-					<compatibleModels>default</compatibleModels>
-					<doubleSided>false</doubleSided>
 				</slot>
 			</customizationSlots>
-			<gunPosition>
-				0.000658 0.39104 1.10215
-				<!--BW_String-->
-			</gunPosition>
 			<customization>
 				<customizableVehicleAreas>
 					<paint/>
@@ -3060,7 +3002,7 @@
 			</customization>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
 			<physicsShape>
-				1.007 -0.006 1.014 0.000 0.631 0.016 0.725 0.583 0.467 0.494 0.202 0.519 0.048 0.184 0.000
+				1.007 -0.006 1.014 0 0.631 0.016 0.725 0.583 0.467 0.494 0.202 0.519 0.048 0.184 0
 				<!--BW_String-->
 			</physicsShape>
 			<camouflage>

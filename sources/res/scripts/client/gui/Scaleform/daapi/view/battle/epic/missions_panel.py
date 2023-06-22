@@ -29,6 +29,7 @@ class EpicMissionsPanel(EpicMissionsPanelMeta, CallbackDelayer):
             ctrl.onPlayerMissionReset += self.__onPlayerMissionReset
             ctrl.onPlayerMissionTimerSet += self.__onPlayerMissionTimerSet
             ctrl.onNearestObjectiveChanged += self.__onNearestObjectiveChanged
+            ctrl.epicMissionPanelDelayQueue(True)
 
     def _dispose(self):
         ctrl = self.sessionProvider.dynamic.missions
@@ -37,6 +38,7 @@ class EpicMissionsPanel(EpicMissionsPanelMeta, CallbackDelayer):
             ctrl.onPlayerMissionReset -= self.__onPlayerMissionReset
             ctrl.onPlayerMissionTimerSet -= self.__onPlayerMissionTimerSet
             ctrl.onNearestObjectiveChanged -= self.__onNearestObjectiveChanged
+            ctrl.epicMissionPanelDelayQueue(False)
         EpicMissionsPanelMeta._dispose(self)
         CallbackDelayer.destroy(self)
 

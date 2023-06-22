@@ -6,6 +6,14 @@ package net.wg.gui.lobby.battleResults.components
    
    public class EfficiencyIconRenderer extends UIComponentEx
    {
+      
+      private static const MAX_FORMATTED_VALUE:String = "99K";
+      
+      private static const THOUSANDS_POSTFIX:String = "K";
+      
+      private static const THOUSANDS_VALUE:int = 1000;
+      
+      private static const MAX_VALUE:int = 99000;
        
       
       public var iconMc:MovieClip;
@@ -76,7 +84,7 @@ package net.wg.gui.lobby.battleResults.components
          }
          if(this._valueDirty)
          {
-            this.iconLabelMc.countLabel.text = this.value;
+            this.iconLabelMc.countLabel.text = this.formatValue();
             this._valueDirty = false;
          }
          this.iconLabelMc.visible = enabled && this.value > 1;
@@ -87,6 +95,19 @@ package net.wg.gui.lobby.battleResults.components
          this.iconMc = null;
          this.iconLabelMc = null;
          super.onDispose();
+      }
+      
+      private function formatValue() : String
+      {
+         if(this._value > THOUSANDS_VALUE)
+         {
+            if(this._value < MAX_VALUE)
+            {
+               return int(this._value / THOUSANDS_VALUE) + THOUSANDS_POSTFIX;
+            }
+            return MAX_FORMATTED_VALUE;
+         }
+         return this._value.toString();
       }
       
       override public function set enabled(param1:Boolean) : void

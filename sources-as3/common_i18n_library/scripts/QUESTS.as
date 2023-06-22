@@ -2287,8 +2287,6 @@ package
       
       public static const MISSIONDETAILS_PREVPAGEBTN_LABEL:String = "#quests:missionDetails/prevPageBtn/label";
       
-      public static const MISSIONS_TOKENPOPOVER_HEADER:String = "#quests:missions/tokenPopover/header";
-      
       public static const MISSIONS_TOKENPOPOVER_DESCR:String = "#quests:missions/tokenPopover/descr";
       
       public static const MISSIONS_TOKENPOPOVER_DESCR_SHOP:String = "#quests:missions/tokenPopover/descr/shop";

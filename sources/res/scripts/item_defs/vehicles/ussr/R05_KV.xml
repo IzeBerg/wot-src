@@ -70,8 +70,6 @@
 			1.0
 			<!--BW_String-->
 		</priceFactor>
-		<tiling>1 1 0 0</tiling>
-		<exclusionMask/>
 		<density>
 			0.96 0.96
 			<!--BW_String-->
@@ -80,18 +78,8 @@
 	<hull>
 		<armor>
 			<armor_1>75</armor_1>
-			<armor_2>40</armor_2>
 			<armor_3>75</armor_3>
 			<armor_4>70</armor_4>
-			<armor_5>60</armor_5>
-			<armor_6>40</armor_6>
-			<armor_7>30</armor_7>
-			<armor_8>0</armor_8>
-			<armor_9>40</armor_9>
-			<armor_10>50</armor_10>
-			<armor_11>30</armor_11>
-			<armor_12>75</armor_12>
-			<armor_13>70</armor_13>
 		</armor>
 		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 		<weight>27670</weight>
@@ -112,11 +100,11 @@
 		<swinging>
 			<lodDist>FAR</lodDist>
 			<pitchParams>
-				0.26 36.00 0.48 1.00 0.05 0.32
+				0.26 36 0.48 1 0.05 0.32
 				<!--BW_String-->
 			</pitchParams>
 			<rollParams>
-				1.00 0.26 36.00 0.48 1.00 0.05 0.32
+				1 0.26 36 0.48 1 0.05 0.32
 				<!--BW_String-->
 			</rollParams>
 			<sensitivityToImpulse>
@@ -136,36 +124,32 @@
 			<collisionModelClient>vehicles/russian/R00_Placeholder/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
 		<hangarShadowTexture>vehicles/russian/R00_Placeholder/Placeholder_HangarShadowMap.dds</hangarShadowTexture>
+		<customizationSlots>
+			<slot>
+				<slotType>clan</slotType>
+				<slotId>10000</slotId>
+				<rayStart>
+					0.020944 5.03019 4.36902
+					<!--BW_String-->
+				</rayStart>
+				<rayEnd>
+					0.020944 -4.43685 1.14798
+					<!--BW_String-->
+				</rayEnd>
+				<rayUp>0 0 -1</rayUp>
+				<size>
+					0.34
+					<!--BW_String-->
+				</size>
+				<hideIfDamaged>true</hideIfDamaged>
+			</slot>
+		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
 				<paint/>
 				<camouflage>HULL</camouflage>
 			</customizableVehicleAreas>
 		</customization>
-		<customizationSlots>
-			<slot>
-				<slotType>clan</slotType>
-				<slotId>10000</slotId>
-				<rayStart>
-					0.0209436 5.03019 4.36902
-					<!--BW_String-->
-				</rayStart>
-				<rayEnd>
-					0.0209436 -4.43685 1.14798
-					<!--BW_String-->
-				</rayEnd>
-				<rayUp>
-					0.000000 0.000000 -1
-					<!--BW_String-->
-				</rayUp>
-				<size>
-					0.34
-					<!--BW_String-->
-				</size>
-				<hideIfDamaged>true</hideIfDamaged>
-				<isUVProportional>true</isUVProportional>
-			</slot>
-		</customizationSlots>
 		<camouflage>
 			<density>
 				16.2785 16.0146
@@ -230,12 +214,15 @@
 			</traces>
 			<tracks>
 				<lodDist>MEDIUM_TRACK</lodDist>
-				<leftMaterial>track_mat_L_skinned</leftMaterial>
-				<rightMaterial>track_mat_R_skinned</rightMaterial>
-				<textureScale>
-					-0.547
-					<!--BW_String-->
-				</textureScale>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<leftMaterial>track_mat_L_skinned</leftMaterial>
+					<rightMaterial>track_mat_R_skinned</rightMaterial>
+					<textureScale>
+						-0.547
+						<!--BW_String-->
+					</textureScale>
+				</trackPair>
 			</tracks>
 			<wheels>
 				<lodDist>MEDIUM</lodDist>
@@ -336,15 +323,8 @@
 			<notInShop>true</notInShop>
 			<armor>
 				<armor_1>90</armor_1>
-				<armor_2>95</armor_2>
 				<armor_3>75</armor_3>
 				<armor_4>75</armor_4>
-				<armor_5>40</armor_5>
-				<armor_6>40</armor_6>
-				<armor_7>40</armor_7>
-				<armor_8>0</armor_8>
-				<armor_9>15</armor_9>
-				<armor_10>30</armor_10>
 			</armor>
 			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 			<weight>7020</weight>
@@ -374,32 +354,8 @@
 					<armor>
 						<armor_1>
 							90
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
-						<armor_2>
-							110
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_2>
-						<armor_3>
-							30
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_3>
-						<armor_4>
-							10
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_4>
 						<gun>20</gun>
 					</armor>
 					<shotDispersionRadius>
@@ -461,18 +417,11 @@
 				0.019607 0.457312 1.01427
 				<!--BW_String-->
 			</gunPosition>
-			<showEmblemsOnGun>false</showEmblemsOnGun>
 			<physicsShape>
-				0.952 -0.064 1.000 0.000 0.624 0.071 0.828 0.640 0.093 0.500 0.225 0.500 0.148 0.608 0.000
+				0.952 -0.064 1 0 0.624 0.071 0.828 0.64 0.093 0.5 0.225 0.5 0.148 0.608 0
 				<!--BW_String-->
 			</physicsShape>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
-			<customization>
-				<customizableVehicleAreas>
-					<paint/>
-					<camouflage>TURRET</camouflage>
-				</customizableVehicleAreas>
-			</customization>
 			<customizationSlots>
 				<slot>
 					<slotType>player</slotType>
@@ -482,38 +431,35 @@
 						-0.565803 0.45015 -0.863205
 						<!--BW_String-->
 					</rayEnd>
-					<rayUp>
-						0.000000 1 0.000000
-						<!--BW_String-->
-					</rayUp>
+					<rayUp>0 1 0</rayUp>
 					<size>
 						0.4
 						<!--BW_String-->
 					</size>
 					<hideIfDamaged>true</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>player</slotType>
 					<slotId>33001</slotId>
+					<isMirrored>true</isMirrored>
 					<rayStart>0.950314 0.558178 -0.885143</rayStart>
 					<rayEnd>
 						0.565803 0.45015 -0.863205
 						<!--BW_String-->
 					</rayEnd>
-					<rayUp>
-						0.000000 1 0.000000
-						<!--BW_String-->
-					</rayUp>
+					<rayUp>0 1 0</rayUp>
 					<size>
 						0.4
 						<!--BW_String-->
 					</size>
-					<hideIfDamaged>false</hideIfDamaged>
-					<isMirrored>true</isMirrored>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 			</customizationSlots>
+			<customization>
+				<customizableVehicleAreas>
+					<paint/>
+					<camouflage>TURRET</camouflage>
+				</customizableVehicleAreas>
+			</customization>
 			<camouflage>
 				<tiling>
 					1.24 1.24 0.000000 0.000000

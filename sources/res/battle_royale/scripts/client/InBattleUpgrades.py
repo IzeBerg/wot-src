@@ -30,7 +30,7 @@ class InBattleUpgrades(BigWorld.DynamicScriptComponent):
             if vehicle and vehicle.entityGameObject:
                 vehicle.entityGameObject.removeComponentByType(UpgradeInProgressComponent)
 
-        BigWorld.callback(0, lambda : removeUpgrageInProgressComponent)
+        BigWorld.callback(0, removeUpgrageInProgressComponent)
         vehicle.isUpgrading = False
 
     @noexcept
@@ -65,12 +65,13 @@ def onBattleRoyalePrerequisites(vehicle, oldTypeDescriptor):
         return False
     if not oldTypeDescriptor:
         return True
-    forceReloading = False
+    forceReloding = False
     for moduleName in ('gun', 'turret', 'chassis'):
         oldModule = getattr(oldTypeDescriptor, moduleName)
         newModule = getattr(vehicle.typeDescriptor, moduleName)
         if oldModule.id != newModule.id:
-            forceReloading = True
+            forceReloding = True
+            vehicle.isForceReloading = True
             if moduleName == 'gun' and vehicle.id == BigWorld.player().getObservedVehicleID():
                 player = BigWorld.player()
                 if player.isObserver():
@@ -78,4 +79,4 @@ def onBattleRoyalePrerequisites(vehicle, oldTypeDescriptor):
                     vehicle.guiSessionProvider.shared.ammo.setGunSettings(newModule)
                 player.gunRotator.switchActiveGun(0)
 
-    return forceReloading
+    return forceReloding
