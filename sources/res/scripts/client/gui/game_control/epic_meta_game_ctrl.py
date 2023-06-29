@@ -323,7 +323,8 @@ class EpicBattleMetaGameController(Notifiable, SeasonProvider, IEpicBattleMetaGa
         return bool(self.__metaSettings.randomReservesMode)
 
     def getRandomReservesBonusProbability(self):
-        return self.__metaSettings.randomReservesOpt['boardingVehAmmo']['extraWeight']
+        bonusProbability = 0 if not self.__metaSettings.randomReservesMode else self.__metaSettings.randomReservesOpt['boardingVehAmmo']['extraWeight']
+        return bonusProbability
 
     def getSeasonData(self):
         return self.__itemsCache.items.epicMetaGame.seasonData

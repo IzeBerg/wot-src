@@ -1,7 +1,10 @@
-import BigWorld
+from battle_royale.gui.constants import BattleRoyaleEquipments
 from gui.battle_control.battle_constants import VEHICLE_VIEW_STATE
 from gui.Scaleform.genConsts.BATTLE_MARKER_STATES import BATTLE_MARKER_STATES
 from VehicleAbilityBaseComponent import VehicleAbilityBaseComponent
+from items import vehicles
+from items.artefacts import FireCircle
+from shared_utils import first
 
 class VehicleFireCircleEffectComponent(VehicleAbilityBaseComponent):
     __CLASS_NAME = 'VehicleFireCircleEffectComponent'
@@ -12,14 +15,17 @@ class VehicleFireCircleEffectComponent(VehicleAbilityBaseComponent):
         super(VehicleFireCircleEffectComponent, self).__init__(self.__TIMER_VIEW_ID, self.__MARKER_ID)
 
     def _getDuration(self):
+        return int(self.getEquipment().influenceZone.timer)
 
-        def isCandidate(key, comp):
-            if key:
-                return key.startswith(self.__CLASS_NAME)
-            return isinstance(comp, VehicleFireCircleEffectComponent)
+    @staticmethod
+    def getEquipment():
+        equipmentID = vehicles.g_cache.equipmentIDs().get(BattleRoyaleEquipments.FIRE_CIRCLE)
+        equipment = vehicles.g_cache.equipments()[equipmentID]
+        return equipment
 
-        compItems = self.entity.dynamicComponents.items()
-        allTimes = [ comp.finishTime for key, comp in compItems if isCandidate(key, comp) ]
-        if allTimes:
-            return max(max(allTimes) - BigWorld.serverTime(), 0.0)
-        return 0.0
+    def _destroy(self):
+        super(VehicleFireCircleEffectComponent, self)._destroy()
+        otherComp = first([ comp for comp in self.entity.dynamicComponents.values() if isinstance(comp, VehicleFireCircleEffectComponent) and comp is not self
+                          ])
+        if otherComp:
+            otherComp.set_finishTime()

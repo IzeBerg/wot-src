@@ -606,7 +606,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
                         normal.setPitchYaw(anchorParams.location.normal.pitch, worldRotation.yaw)
                 else:
                     normal = None
-                located = self.__ctx.c11nCameraManager.locateCameraOnAnchor(position=anchorParams.location.position, normal=normal, up=anchorParams.location.up, slotId=anchorParams.id, forceRotate=forceRotate)
+                located = self.__ctx.c11nCameraManager.locateCameraOnAnchor(position=anchorParams.location.position, normal=normal, up=anchorParams.location.up, slotId=anchorParams.id, forceRotate=forceRotate, customConstraints=True)
             if located and not forceRotate:
                 self.__selectedSlot = slotId
                 self.__propertiesSheet.locateOnAnchor(slotId)

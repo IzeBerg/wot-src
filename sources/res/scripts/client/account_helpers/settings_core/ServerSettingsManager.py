@@ -853,10 +853,11 @@ class ServerSettingsManager(object):
     def getBPStorage(self, defaults=None):
         if not self.settingsCache.isSynced():
             return {}
-        storageData = self.getSection(SETTINGS_SECTIONS.BATTLE_PASS_STORAGE, defaults)
-        if updateBattlePassSettings(storageData):
-            self.saveInBPStorage(storageData)
-        return storageData
+        return self.getSection(SETTINGS_SECTIONS.BATTLE_PASS_STORAGE, defaults)
+
+    def updateBPStorageData(self, data, defaults=None):
+        if updateBattlePassSettings(data):
+            self.saveInBPStorage(data)
 
     def saveInBPStorage(self, settings):
         if self.settingsCache.isSynced():

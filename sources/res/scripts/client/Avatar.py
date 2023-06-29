@@ -50,7 +50,7 @@ from gui.Scaleform.genConsts.BATTLE_VIEW_ALIASES import BATTLE_VIEW_ALIASES
 from gui.sounds.epic_sound_constants import EPIC_SOUND
 from gui.wgnc import g_wgncProvider
 from gun_rotation_shared import decodeGunAngles
-from helpers import bound_effects, dependency, uniprof
+from helpers import bound_effects, dependency, uniprof, EffectsList
 from items import ITEM_TYPE_INDICES, getTypeOfCompactDescr, vehicles
 from material_kinds import EFFECT_MATERIALS
 from messenger.m_constants import PROTO_TYPE
@@ -340,6 +340,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.statsCollector.start()
             self.__prereqs = dict()
             self.loadPrerequisites(self.__initGUI())
+            EffectsList.resetPartialTracers()
             self.__projectileMover = ProjectileMover.ProjectileMover()
             SoundGroups.g_instance.enableArenaSounds(False)
             MusicControllerWWISE.onBecomePlayer()
@@ -480,7 +481,6 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         except Exception:
             LOG_CURRENT_EXCEPTION()
 
-        from helpers import EffectsList
         EffectsList.EffectsListPlayer.clear()
         self.__vehicleToVehicleCollisions = None
         if self.intUserSettings is not None:
@@ -826,14 +826,14 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                             return True
                     isComp7 = ARENA_BONUS_TYPE_CAPS.checkAny(self.arenaBonusType, ARENA_BONUS_TYPE_CAPS.COMP7)
                     if not isComp7 and cmdMap.isFired(CommandMapping.CMD_VOICECHAT_ENABLE, key) and not isDown:
-                        if self.__isPlayerInSquad() and not BattleReplay.isPlaying() and VOIP.getVOIPManager().isVoiceSupported():
-                            gui_event_dispatcher.toggleVoipChannelEnabled(self.arenaBonusType)
-                    return True
-                if cmdMap.isFired(CommandMapping.CMD_VEHICLE_MARKERS_SHOW_INFO, key):
-                    gui_event_dispatcher.showExtendedInfo(isDown)
-                    return True
-                if cmdMap.isFired(CommandMapping.CMD_SHOW_HELP, key) and isDown and mods == 0:
-                    if g_bootcamp.isRunning():
+                        if self.__isPlayerInSquad() and not BattleReplay.isPlaying():
+                            if VOIP.getVOIPManager().isVoiceSupported():
+                                gui_event_dispatcher.toggleVoipChannelEnabled(self.arenaBonusType)
+                        return True
+                    if cmdMap.isFired(CommandMapping.CMD_VEHICLE_MARKERS_SHOW_INFO, key):
+                        gui_event_dispatcher.showExtendedInfo(isDown)
+                        return True
+                    if cmdMap.isFired(CommandMapping.CMD_SHOW_HELP, key) and isDown and mods == 0 and (g_bootcamp.isRunning() or not self.sessionProvider.shared.ingameHelp.canShow()):
                         return True
                     return self.sessionProvider.shared.ingameHelp.showIngameHelp(self.getVehicleAttached())
                 if key == Keys.KEY_F12 and isDown and mods == 0 and constants.HAS_DEV_RESOURCES:

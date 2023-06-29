@@ -4663,6 +4663,8 @@ package
       
       public static const MISSIONS_TOKENPOPOVER_QUEST_BODY:String = "#tooltips:missions/tokenPopover/quest/body";
       
+      public static const MISSIONS_TOKEN_HEADER:String = "#tooltips:missions/token/header";
+      
       public static const MISSIONS_TOKEN_QUESTS_SINGLE:String = "#tooltips:missions/token/quests/single";
       
       public static const MISSIONS_TOKEN_QUESTS_MULTIPLE:String = "#tooltips:missions/token/quests/multiple";
@@ -4826,6 +4828,8 @@ package
       public static const MISSIONS_CONDITION_ACHIEVEMENT_PATTERN:String = "#tooltips:missions/condition/achievement/pattern";
       
       public static const QUESTS_CONDITION_ACHIEVEMENTS_OTHERS:String = "#tooltips:quests/condition/achievements/others";
+      
+      public static const QUESTS_BONUSES_TOKEN_HEADER:String = "#tooltips:quests/bonuses/token/header";
       
       public static const QUESTS_BONUSES_TOKEN_BODY:String = "#tooltips:quests/bonuses/token/body";
       

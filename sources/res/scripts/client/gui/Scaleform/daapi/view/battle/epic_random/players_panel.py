@@ -92,6 +92,8 @@ class EpicRandomPlayersPanel(EpicRandomPlayersPanelMeta):
         self.as_setPanelModeS(mode)
 
     def tryToSetPanelModeByMouse(self, mode):
+        if mode == PLAYERS_PANEL_STATE.SHORT:
+            mode = PLAYERS_PANEL_STATE.EPIC_RANDOM_THREE_COLUMN_SHORT
         if mode == PLAYERS_PANEL_STATE.EPIC_RANDOM_THREE_COLUMN_HIDDEN or mode not in PLAYERS_PANEL_STATE.EXTENDED_STATES:
             self.__focusedColumn = 0
         newMode = mode

@@ -149,6 +149,7 @@ def getDefaultFormattersMap():
        'freeXPFactor': simpleBonusFormatter, 
        'tankmenXPFactor': simpleBonusFormatter, 
        'dailyXPFactor': simpleBonusFormatter, 
+       'groups': EmptyFormatter(), 
        PREMIUM_ENTITLEMENTS.BASIC: PremiumDaysBonusFormatter(), 
        PREMIUM_ENTITLEMENTS.PLUS: PremiumDaysBonusFormatter(), 
        'vehicles': VehiclesBonusFormatter(), 
@@ -465,6 +466,12 @@ class AwardFormatter(object):
 
     def _format(self, bonus):
         return
+
+
+class EmptyFormatter(AwardFormatter):
+
+    def _format(self, bonus):
+        return []
 
 
 class SimpleBonusFormatter(AwardFormatter):

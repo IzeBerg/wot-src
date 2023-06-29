@@ -720,11 +720,13 @@ class _TracerSoundEffectDesc(_NodeSoundEffectDesc):
 
     def create(self, model, effects, args):
         isPlayer, _ = self._isPlayer(args)
-        self.__stopSoundEventName = 'psb_pc_stop' if isPlayer else 'psb_npc_stop'
-        soundObject = super(_TracerSoundEffectDesc, self).create(model, effects, args)
-        if soundObject is not None and self.__tracerDelaySound is not None:
-            self.__tracerDelaySound.create(soundObject, args)
-        return soundObject
+        if self._canCreateSoundObject(isPlayer):
+            self.__stopSoundEventName = 'psb_pc_stop' if isPlayer else 'psb_npc_stop'
+            soundObject = super(_TracerSoundEffectDesc, self).create(model, effects, args)
+            if soundObject is not None and self.__tracerDelaySound is not None:
+                self.__tracerDelaySound.create(soundObject, args)
+            return soundObject
+        return
 
     def delete(self, elem, reason):
         if self.__tracerDelaySound is not None:
@@ -745,6 +747,28 @@ class _TracerSoundEffectDesc(_NodeSoundEffectDesc):
             return (attackerID == BigWorld.player().playerVehicleID, attackerID)
         else:
             return super(_TracerSoundEffectDesc, self)._isPlayer(args)
+
+    def _canCreateSoundObject(self, isPlayer):
+        return True
+
+
+class _PartialTracerSoundEffectDesc(_TracerSoundEffectDesc):
+    __slots__ = ('__partialCount', )
+    effectNumber = 0
+    TYPE = '_ProbTracerSoundEffectDesc'
+
+    def __init__(self, dataSection):
+        super(_PartialTracerSoundEffectDesc, self).__init__(dataSection)
+        self.__partialCount = dataSection.readInt('partialCount', 1)
+
+    @classmethod
+    def nextEffectNumber(cls):
+        effectNumber = cls.effectNumber
+        cls.effectNumber += 1
+        return effectNumber
+
+    def _canCreateSoundObject(self, isPlayer):
+        return self.nextEffectNumber() % self.__partialCount == 0
 
 
 class _CollisionSoundEffectDesc(_BaseSoundEvent):
@@ -1349,6 +1373,7 @@ _effectDescFactory = {'pixie': _PixieEffectDesc,
    'collisionSound': _CollisionSoundEffectDesc, 
    'collisionDamageSound': _CollisionDamageSoundEffectDesc, 
    'tracerSound': _TracerSoundEffectDesc, 
+   'pTracerSound': _PartialTracerSoundEffectDesc, 
    'shotSound': _ShotSoundEffectDesc, 
    'visibility': _VisibilityEffectDesc, 
    'model': _ModelEffectDesc, 
@@ -1614,3 +1639,7 @@ class RespawnDestroyEffect(object):
             effectsPlayer = EffectsListPlayer(effects[0][1], effects[0][0])
             effectsPlayer.play(fakeModel, SpecialKeyPointNames.START, partial(BigWorld.player().delModel, fakeModel))
         return
+
+
+def resetPartialTracers():
+    _PartialTracerSoundEffectDesc.effectNumber = 0

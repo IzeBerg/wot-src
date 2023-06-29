@@ -61,6 +61,7 @@ from skeletons.gui.login_manager import ILoginManager
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
+from skeletons.account_helpers.settings_core import ISettingsCore
 from tutorial.control.game_vars import getVehicleByIntCD
 from wg_async import wg_async, wg_await
 if TYPE_CHECKING:
@@ -1070,6 +1071,7 @@ class BattlePassListener(_NotificationListener):
     __itemsCache = dependency.descriptor(IItemsCache)
     __notificationCtrl = dependency.descriptor(IEventsNotificationsController)
     __luiController = dependency.descriptor(ILimitedUIController)
+    __settingsCore = dependency.descriptor(ISettingsCore)
 
     def __init__(self):
         super(BattlePassListener, self).__init__()
@@ -1115,6 +1117,8 @@ class BattlePassListener(_NotificationListener):
 
     def __onBattlePassSettingsChange(self, newMode, oldMode):
         self.__checkAndNotify(oldMode, newMode)
+        storageData = self.__settingsCore.serverSettings.getBPStorage()
+        self.__settingsCore.serverSettings.updateBPStorageData(storageData)
         if self.__battlePassController.isEnabled() and newMode == oldMode:
             self.__checkAndNotifyOtherBattleTypes()
         if self.__battlePassController.hasExtra() and not AccountSettings.getSettings(IS_BATTLE_PASS_EXTRA_STARTED) and self.__battlePassController.isActive():

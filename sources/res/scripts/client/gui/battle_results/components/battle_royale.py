@@ -192,7 +192,8 @@ class BattleRoyaleFinancialPremBlock(BattleRoyaleFinancialBlock):
         avatarInfo = result['personal']['avatar']
         for rec in reusable.personal.getMoneyRecords():
             _, premiumCredits = rec[:2]
-            names = ('originalCredits', 'appliedPremiumCreditsFactor100', 'boosterCreditsFactor100')
+            names = ('originalCredits', 'originalPremSquadCredits', 'appliedPremiumCreditsFactor100',
+                     'boosterCreditsFactor100')
             self.credits = premiumCredits.getRecord(*names)
 
         for rec in reusable.personal.getCrystalRecords():

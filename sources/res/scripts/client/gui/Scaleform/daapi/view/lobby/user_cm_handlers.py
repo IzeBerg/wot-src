@@ -490,8 +490,9 @@ class UserVehicleCMHandler(AppealCMHandler):
 
     def _manageVehCompareOptions(self, options):
         vehicle = self.itemsCache.items.getItemByCD(self._vehicleCD)
-        if self.comparisonBasket.isEnabled() and not vehicle.isOnlyForFunRandomBattles:
+        if self.comparisonBasket.isEnabled() and vehicle is not None and not vehicle.isOnlyForFunRandomBattles:
             options.insert(2, self._makeItem(_EXTENDED_OPT_IDS.VEHICLE_COMPARE, MENU.contextmenu(_EXTENDED_OPT_IDS.VEHICLE_COMPARE), {'enabled': self.comparisonBasket.isReadyToAdd(vehicle)}))
+        return
 
 
 class CustomUserCMHandler(BaseUserCMHandler):

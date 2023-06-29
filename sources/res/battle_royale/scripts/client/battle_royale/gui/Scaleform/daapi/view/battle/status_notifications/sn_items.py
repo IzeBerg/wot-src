@@ -284,9 +284,10 @@ class FireCircleSN(_BRLocalizationProvider, sn_items.SmokeSN):
 
     def _update(self, value):
         duration = value.get('duration', 0.0) if isinstance(value, dict) else value
+        endTime = value.get('endTime')
         if duration > 0.0:
             self._setVisible(True)
-            self._updateTimeParams(duration, 0.0)
+            self._updateTimeParams(duration, endTime)
             self._sendUpdate()
         else:
             self._setVisible(False)

@@ -643,13 +643,9 @@ package
       
       public static const MAPS_ICONS_BATTLELOADING_GROUPS_ECONOMICS:String = "../maps/icons/battleLoading/groups/economics.png";
       
-      public static const MAPS_ICONS_BATTLELOADING_GROUPS_INTERFACE:String = "../maps/icons/battleLoading/groups/interface.png";
-      
       public static const MAPS_ICONS_BATTLELOADING_GROUPS_RULES:String = "../maps/icons/battleLoading/groups/rules.png";
       
       public static const MAPS_ICONS_BATTLELOADING_GROUPS_SECURITY:String = "../maps/icons/battleLoading/groups/security.png";
-      
-      public static const MAPS_ICONS_BATTLELOADING_GROUPS_TACTICS:String = "../maps/icons/battleLoading/groups/tactics.png";
       
       public static const MAPS_ICONS_BATTLELOADING_GROUPS_TECHPROBLEMS:String = "../maps/icons/battleLoading/groups/techProblems.png";
       

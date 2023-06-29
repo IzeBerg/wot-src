@@ -1,4 +1,4 @@
-import math, BigWorld, Math, CGF
+import copy, math, BigWorld, Math, CGF
 from gui.shared.utils.graphics import isRendererPipelineDeferred
 from items.components.c11n_constants import EASING_TRANSITION_DURATION
 from helpers import dependency
@@ -11,6 +11,7 @@ from cgf_components.hangar_camera_manager import HangarCameraManager, DOFParams
 _VERTICAL_OFFSET = (0, -0.2, 0)
 _VERTICAL_EPSILON = 0.1
 _WORLD_UP = Math.Vector3(0, 1, 0)
+_CLOSE_DIST_CONSTRAINTS = Math.Vector2(0.5, 9.5)
 _STYLE_INFO_YAW = math.radians(-135)
 _STYLE_INFO_PITCH = math.radians(-5)
 _STYLE_INFO_MAX_CAMERA_DIST = 15
@@ -82,23 +83,25 @@ class C11nHangarCameraManager(TimeDeltaMeter):
         self.__currentMode = C11nCameraModes.EMBLEM
         return True
 
-    def locateCameraOnAnchor(self, position, normal, up, slotId, forceRotate=False):
+    def locateCameraOnAnchor(self, position, normal, up, slotId, forceRotate=False, customConstraints=False):
         cameraManager = CGF.getManager(self._hangarSpace.spaceID, HangarCameraManager)
         if not cameraManager:
             return False
         else:
+            camPosition = copy.copy(position)
             if normal is not None:
                 yaw, pitch = self.__getCameraYawPitch(up, normal, clipCos=_PROJECTION_DECALS_DIR_CLIP_COS)
             else:
                 yaw = None
                 pitch = None
-            if position is not None:
+            if camPosition is not None:
                 lowestY = self.vEntity.position.y + _VERTICAL_EPSILON
-                position += _VERTICAL_OFFSET
-                position.y = max(position.y, lowestY)
+                camPosition += _VERTICAL_OFFSET
+                camPosition.y = max(camPosition.y, lowestY)
             duration = EASING_TRANSITION_DURATION if not forceRotate else 0
+            distConstraints = _CLOSE_DIST_CONSTRAINTS if customConstraints else None
             cameraManager.setDOFParams(False)
-            cameraManager.moveCamera(position, yaw, pitch, None, duration)
+            cameraManager.moveCamera(camPosition, yaw, pitch, None, duration, distConstraints)
             self.__rotateTurretAndGun(slotId)
             self.__currentMode = C11nCameraModes.ANCHOR
             return True

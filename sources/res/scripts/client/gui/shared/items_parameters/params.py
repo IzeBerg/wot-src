@@ -1117,7 +1117,7 @@ class VehicleParams(_ParameterBase):
         return self._itemDescr.type.compactDescr == 32321
 
     def __getRealSpeedLimit(self):
-        enginePower = self.__getEnginePhysics()['smplEnginePower']
+        enginePower = self._itemDescr.miscAttrs['enginePowerFactor'] * self.__getEnginePhysics()['smplEnginePower']
         rollingFriction = self.__getChassisPhysics()['grounds']['medium']['rollingFriction']
         return enginePower / self.vehicleWeight.current * METERS_PER_SECOND_TO_KILOMETERS_PER_HOUR * self.__factors['engine/power'] / 12.25 / rollingFriction
 

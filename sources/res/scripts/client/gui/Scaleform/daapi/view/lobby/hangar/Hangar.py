@@ -347,7 +347,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     def __switchCarousels(self, force=False):
         prevCarouselAlias = self.__currentCarouselAlias
         newCarouselAlias, linkage = self.__hangarComponentsCtrl.getHangarCarouselSettings()
-        if newCarouselAlias is None and self.prbDispatcher is not None:
+        if self.prbDispatcher is not None and (newCarouselAlias is None or newCarouselAlias == HANGAR_ALIASES.TANK_CAROUSEL):
             if self.prbDispatcher.getFunctionalState().isInPreQueue(QUEUE_TYPE.RANKED):
                 newCarouselAlias = HANGAR_ALIASES.RANKED_TANK_CAROUSEL
             elif self.prbDispatcher.getFunctionalState().isInPreQueue(QUEUE_TYPE.EPIC) or self.prbDispatcher.getFunctionalState().isInUnit(PREBATTLE_TYPE.EPIC):
