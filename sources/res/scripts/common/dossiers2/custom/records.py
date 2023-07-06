@@ -2366,7 +2366,7 @@ RECORDS = (
  (
   'singleAchievements', 'may23', 'p', 'B', 1),
  (
-  'singleAchievements', 'prime_gaming_reserved_10', 'p', 'B', 1),
+  'singleAchievements', 'june23', 'p', 'B', 1),
  (
   'singleAchievements', 'prime_gaming_reserved_11', 'p', 'B', 1),
  (
@@ -4436,7 +4436,7 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'march23'): 1670, 
    ('singleAchievements', 'april23'): 1671, 
    ('singleAchievements', 'may23'): 1672, 
-   ('singleAchievements', 'prime_gaming_reserved_10'): 1673, 
+   ('singleAchievements', 'june23'): 1673, 
    ('singleAchievements', 'prime_gaming_reserved_11'): 1674, 
    ('singleAchievements', 'prime_gaming_reserved_12'): 1675, 
    ('achievements', 'wt2022HunterWins'): 1676, 

@@ -3355,6 +3355,10 @@ package
       
       public static const CAMOUFLAGE_TWITCH_W_2023_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_w_2023/description";
       
+      public static const CAMOUFLAGE_SPARTA_LABEL:String = "#vehicle_customization:camouflage/sparta/label";
+      
+      public static const CAMOUFLAGE_SPARTA_DESCRIPTION:String = "#vehicle_customization:camouflage/sparta/description";
+      
       public static const EMBLEM:String = "#vehicle_customization:emblem";
       
       public static const EMBLEM_CLAN_CONTENT:String = "#vehicle_customization:emblem/clan_content";
@@ -8795,6 +8799,8 @@ package
       
       public static const REPAINT_BATTLE_PASS_S11_CAMO4:String = "#vehicle_customization:repaint/battle_pass_s11_camo4";
       
+      public static const REPAINT_SPARTA:String = "#vehicle_customization:repaint/sparta";
+      
       public static const MODIFICATIONS_AGE_EFFECT_01:String = "#vehicle_customization:modifications/age_effect_01";
       
       public static const MODIFICATIONS_AGE_EFFECT_01_DESCRIPTION:String = "#vehicle_customization:modifications/age_effect_01/description";
@@ -11881,6 +11887,10 @@ package
       
       public static const SPECIAL_STYLE_CZ14_SKODA_T_56_DB_3DST_DESC_LONG:String = "#vehicle_customization:special_style/Cz14_Skoda_T-56_DB_3DSt_desc/long";
       
+      public static const SPECIAL_STYLE_SPARTA:String = "#vehicle_customization:special_style/sparta";
+      
+      public static const SPECIAL_STYLE_SPARTA_DESC_LONG:String = "#vehicle_customization:special_style/sparta_desc/long";
+      
       public static const SPECIAL_STYLE_OBLIQUE_STRIPES_DESC:String = "#vehicle_customization:special_style/oblique_stripes_desc";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
@@ -14141,6 +14151,8 @@ package
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_543:String = "#vehicle_customization:projection_decals/special/projection_decal_543";
       
+      public static const PROJECTION_DECALS_COOL_PROJECTION_DECAL_70:String = "#vehicle_customization:projection_decals/cool/projection_decal_70";
+      
       public static const CAMOUFLAGE_MULTICOLOR_BRASS_LABEL:String = "#vehicle_customization:camouflage/Multicolor_Brass/label";
       
       public static const CAMOUFLAGE_MULTICOLOR_BRASS_DESCRIPTION:String = "#vehicle_customization:camouflage/Multicolor_Brass/description";
@@ -14340,6 +14352,10 @@ package
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_564:String = "#vehicle_customization:projection_decals/special/projection_decal_564";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_561_562_DESCRIPTION:String = "#vehicle_customization:projection_decals/special/projection_decal_561_562/description";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_570:String = "#vehicle_customization:projection_decals/special/projection_decal_570";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_571:String = "#vehicle_customization:projection_decals/special/projection_decal_571";
       
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       
