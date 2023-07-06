@@ -10,9 +10,9 @@ class BattleRoyaleTeamPanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setPlayerState(index, alive, ready, hpPercent, fragsCount, vehicleLevel, icon)
 
-    def as_setPlayerStatusS(self, index, alive, ready, isRespawning=False):
+    def as_setPlayerStatusS(self, index, alive, ready):
         if self._isDAAPIInited():
-            return self.flashObject.as_setPlayerStatus(index, alive, ready, isRespawning)
+            return self.flashObject.as_setPlayerStatus(index, alive, ready)
 
     def as_setPlayerHPS(self, index, percent):
         if self._isDAAPIInited():

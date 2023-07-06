@@ -755,13 +755,9 @@ package
       
       public static const SHOWVEHMODELSONMAP_BODY:String = "#tooltips:showVehModelsOnMap/body";
       
-      public static const SHOWVEHMODELSONMAP_ATTENTION:String = "#tooltips:showVehModelsOnMap/attention";
-      
       public static const MINIMAPALPHA_HEADER:String = "#tooltips:minimapAlpha/header";
       
       public static const MINIMAPALPHA_BODY:String = "#tooltips:minimapAlpha/body";
-      
-      public static const MINIMAPALPHA_ATTENTION:String = "#tooltips:minimapAlpha/attention";
       
       public static const BATTLELOADINGINFO_HEADER:String = "#tooltips:battleLoadingInfo/header";
       
@@ -1124,8 +1120,6 @@ package
       public static const BATTLETYPES_RANKED_BONUSBATTLE_DESCRIPTION:String = "#tooltips:battleTypes/ranked/bonusBattle/description";
       
       public static const BATTLETYPES_BATTLEROYALE_HEADER:String = "#tooltips:battleTypes/battleRoyale/header";
-      
-      public static const BATTLETYPES_BATTLEROYALE_WIDGET_HEADER:String = "#tooltips:battleTypes/battleRoyale/widget/header";
       
       public static const BATTLETYPES_BATTLEROYALE_BODY:String = "#tooltips:battleTypes/battleRoyale/body";
       
@@ -2391,6 +2385,8 @@ package
       
       public static const VEHICLE_TELECOMRENTALSRENTING:String = "#tooltips:vehicle/telecomRentalsRenting";
       
+      public static const VEHICLE_RESTORELEFT_INF:String = "#tooltips:vehicle/restoreLeft/inf";
+      
       public static const VEHICLE_RESTORELEFT_DAYS:String = "#tooltips:vehicle/restoreLeft/days";
       
       public static const VEHICLE_RESTORELEFT_HOURS:String = "#tooltips:vehicle/restoreLeft/hours";
@@ -2543,17 +2539,17 @@ package
       
       public static const VEHICLESTATUS_DEALISOVER_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/text";
       
-      public static const VEHICLESTATUS_DEALISOVER_ROSTELECOM_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/Rostelecom/header";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER2_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner2/header";
       
-      public static const VEHICLESTATUS_DEALISOVER_ROSTELECOM_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/Rostelecom/text";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER2_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner2/text";
       
-      public static const VEHICLESTATUS_DEALISOVER_BELTELECOM_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/Beltelecom/header";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER3_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner3/header";
       
-      public static const VEHICLESTATUS_DEALISOVER_BELTELECOM_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/Beltelecom/text";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER3_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner3/text";
       
-      public static const VEHICLESTATUS_DEALISOVER_KYIVSTAR_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/Kyivstar/header";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER4_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner4/header";
       
-      public static const VEHICLESTATUS_DEALISOVER_KYIVSTAR_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/Kyivstar/text";
+      public static const VEHICLESTATUS_DEALISOVER_LOCALPARTNER4_TEXT:String = "#tooltips:vehicleStatus/dealIsOver/LocalPartner4/text";
       
       public static const VEHICLESTATUS_DEALISOVER_KAZAKHTELECOM_HEADER:String = "#tooltips:vehicleStatus/dealIsOver/Kazakhtelecom/header";
       
@@ -4677,6 +4673,8 @@ package
       
       public static const MISSIONS_TOKENPOPOVER_QUEST_BODY:String = "#tooltips:missions/tokenPopover/quest/body";
       
+      public static const MISSIONS_TOKEN_HEADER:String = "#tooltips:missions/token/header";
+      
       public static const MISSIONS_TOKEN_QUESTS_SINGLE:String = "#tooltips:missions/token/quests/single";
       
       public static const MISSIONS_TOKEN_QUESTS_MULTIPLE:String = "#tooltips:missions/token/quests/multiple";
@@ -4829,6 +4827,8 @@ package
       
       public static const QUESTS_COMPLETE_PROGRESS_VALUE_STATUSTOOLTIP:String = "#tooltips:quests/complete/progress/value/statusTooltip";
       
+      public static const QUESTS_CONDITION_BATTLEPASS_TOKEN:String = "#tooltips:quests/condition/battlepass/token";
+      
       public static const QUESTS_CONDITION_ACHIEVEMENT_HEADER:String = "#tooltips:quests/condition/achievement/header";
       
       public static const QUESTS_CONDITION_ACHIEVEMENTS_DESCR:String = "#tooltips:quests/condition/achievements/descr";
@@ -4838,6 +4838,8 @@ package
       public static const MISSIONS_CONDITION_ACHIEVEMENT_PATTERN:String = "#tooltips:missions/condition/achievement/pattern";
       
       public static const QUESTS_CONDITION_ACHIEVEMENTS_OTHERS:String = "#tooltips:quests/condition/achievements/others";
+      
+      public static const QUESTS_BONUSES_TOKEN_HEADER:String = "#tooltips:quests/bonuses/token/header";
       
       public static const QUESTS_BONUSES_TOKEN_BODY:String = "#tooltips:quests/bonuses/token/body";
       
@@ -6224,6 +6226,10 @@ package
       public static const NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_LABEL:String = "#tooltips:notrecruitedtankman/commander_tolmeron/label";
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_DESC:String = "#tooltips:notrecruitedtankman/commander_tolmeron/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_LABEL:String = "#tooltips:notrecruitedtankman/commander_whiskers/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_DESC:String = "#tooltips:notrecruitedtankman/commander_whiskers/desc";
       
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/yha_commander/label";
       

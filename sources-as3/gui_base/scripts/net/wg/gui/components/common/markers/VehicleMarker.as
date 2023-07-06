@@ -61,10 +61,6 @@ package net.wg.gui.components.common.markers
       
       private static var HEALTH_BAR_Y:int = -29;
       
-      private static const LEVEL_ICON_ALPHA_DESTROYED:Number = 0.4;
-      
-      private static const LEVEL_ICON_ALPHA_ALIVE:int = 1;
-      
       private static var V_DIST_OFFSET:int = 0;
       
       private static var ICON_OFFSET:int = 10;
@@ -315,14 +311,14 @@ package net.wg.gui.components.common.markers
       
       public function updateMarkerSettings() : void
       {
-         var _loc3_:Boolean = false;
+         var _loc7_:Boolean = false;
          var _loc1_:Boolean = this.getIsPartVisible(ICON);
          var _loc2_:Boolean = this.getIsPartVisible(LEVEL);
-         _loc3_ = this.getIsPartVisible(P_NAME_LBL);
+         var _loc3_:Boolean = this.getIsPartVisible(P_NAME_LBL);
          var _loc4_:Boolean = this.getIsPartVisible(V_NAME_LBL);
          var _loc5_:Boolean = this.getIsPartVisible(HEALTH_BAR);
          var _loc6_:Boolean = this.getIsPartVisible(HEALTH_LBL);
-         var _loc7_:Boolean = this.getIsPartVisible(DAMAGE_PANEL);
+         _loc7_ = this.getIsPartVisible(DAMAGE_PANEL);
          var _loc8_:Boolean = !this.vehicleDestroyed && this.getIsPartVisible(VEHICLE_DIST);
          this.vehicleDist.visible = _loc8_;
          this.playerNameField.visible = _loc3_;
@@ -523,7 +519,6 @@ package net.wg.gui.components.common.markers
       private function updateIconColor() : void
       {
          this.iconLoader.transform.colorTransform = this.colorsManager.getTransform(this.colorSchemeName);
-         this.levelIcon.alpha = !!this.vehicleDestroyed ? Number(LEVEL_ICON_ALPHA_DESTROYED) : Number(LEVEL_ICON_ALPHA_ALIVE);
       }
       
       private function layoutParts(param1:Array) : void

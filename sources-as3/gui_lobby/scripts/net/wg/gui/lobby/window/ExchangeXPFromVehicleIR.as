@@ -121,6 +121,7 @@ package net.wg.gui.lobby.window
                this.mcGreyAssets.visible = true;
                this.vehicleIcon.visible = true;
                this.vehicleIcon.source = this._vehicleData.vehicleIco;
+               this.vehicleTypeIcon.unload();
                this.vehicleTypeIcon.source = this._vehicleData.vehicleType;
                this.vehicleNation.source = this._vehicleData.nationIco;
                buttonMode = true;

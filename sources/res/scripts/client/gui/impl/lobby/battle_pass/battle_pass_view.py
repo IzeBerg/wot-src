@@ -5,12 +5,11 @@ from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.meta.MissionsBattlePassViewMeta import MissionsBattlePassViewMeta
 from gui.Scaleform.framework.entities.inject_component_adaptor import InjectComponentAdaptor
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
-from gui.battle_pass.battle_pass_helpers import getExtraIntroVideoURL, getIntroVideoURL
+from gui.battle_pass.battle_pass_helpers import getExtraIntroVideoURL, getIntroVideoURL, isIntroVideoExist, isExtraIntroVideoExist
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.lobby.battle_pass.battle_pass_progressions_view import BattlePassProgressionsView
 from gui.impl.lobby.battle_pass.chapter_choice_view import ChapterChoiceView
-from gui.impl.lobby.battle_pass.extra_intro_view import ExtraIntroView
 from gui.impl.lobby.battle_pass.intro_view import IntroView
 from gui.server_events.events_dispatcher import showMissionsBattlePass
 from gui.shared import EVENT_BUS_SCOPE, events, g_eventBus
@@ -23,7 +22,6 @@ from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.impl import IGuiLoader
 _R_VIEWS = R.views.lobby.battle_pass
 _VIEWS = {_R_VIEWS.BattlePassIntroView(): IntroView, 
-   _R_VIEWS.ExtraIntroView(): ExtraIntroView, 
    _R_VIEWS.ChapterChoiceView(): ChapterChoiceView, 
    _R_VIEWS.BattlePassProgressionsView(): BattlePassProgressionsView}
 _INTRO_VIDEO_SHOWN = BattlePassStorageKeys.INTRO_VIDEO_SHOWN
@@ -52,7 +50,7 @@ class _IntroVideoManager(object):
         g_eventBus.removeListener(events.BattlePassEvent.VIDEO_SHOWN, self.showIntroVideoIfNeeded, EVENT_BUS_SCOPE.LOBBY)
 
     def showIntroVideoIfNeeded(self, *_):
-        if not self.isIntroVideoShown:
+        if not self.isIntroVideoShown and isIntroVideoExist():
             _showOverlayVideo(getIntroVideoURL())
             _setTrueToBPStorage(_INTRO_VIDEO_SHOWN)
             self.__isIntroVideoShown = True
@@ -66,7 +64,7 @@ class _IntroVideoManager(object):
 
     @nextTick
     def __showExtraVideoIfNeeded(self):
-        if not self.isExtraVideoShown and self.__battlePass.hasExtra():
+        if not self.isExtraVideoShown and self.__battlePass.hasExtra() and isExtraIntroVideoExist():
             _showOverlayVideo(getExtraIntroVideoURL())
             _setTrueToBPStorage(_EXTRA_VIDEO_SHOWN)
             if not self.__isIntroVideoShown:
@@ -150,7 +148,7 @@ class BattlePassViewsHolderComponent(InjectComponentAdaptor, MissionsBattlePassV
         return _VIEWS[layoutID](chapterID=chapterID)
 
     def __needTakeDefault(self, layoutID, chapterID):
-        return layoutID not in _VIEWS or layoutID == _R_VIEWS.BattlePassProgressionsView() and chapterID and not self.__battlePass.isChapterExists(chapterID)
+        return layoutID not in _VIEWS or not _hasTrueInBPStorage(_INTRO_SHOWN) or layoutID == _R_VIEWS.BattlePassProgressionsView() and chapterID and not self.__battlePass.isChapterExists(chapterID)
 
     def __needReload(self, layoutID):
         return self._injectView is None or self._injectView.layoutID != layoutID or self._injectView.layoutID == _R_VIEWS.BattlePassProgressionsView()

@@ -253,6 +253,8 @@ package
       
       public static const EPICBATTLESCAROUSEL_LOCKEDTOOLTIP_BODY:String = "#epic_battle:epicBattlesCarousel/lockedTooltip/body";
       
+      public static const EPICBATTLESCAROUSEL_WRONGMODE_BODY:String = "#epic_battle:epicBattlesCarousel/wrongMode/body";
+      
       public static const EPICBATTLESCAROUSEL_LOBBY_LEVELINFO:String = "#epic_battle:epicBattlesCarousel/lobby/levelInfo";
       
       public static const EPICBATTLESCAROUSEL_LOBBY_LEVELINFO_LEVEL:String = "#epic_battle:epicBattlesCarousel/lobby/levelInfo/level";

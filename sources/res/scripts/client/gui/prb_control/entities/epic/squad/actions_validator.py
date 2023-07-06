@@ -1,3 +1,4 @@
+from constants import BATTLE_MODE_VEH_TAGS_EXCEPT_EPIC
 from CurrentVehicle import g_currentVehicle
 from gui.prb_control.entities.base.actions_validator import ActionsValidatorComposite
 from gui.prb_control.entities.base.squad.actions_validator import SquadActionsValidator, SquadVehiclesValidator
@@ -10,9 +11,7 @@ from skeletons.gui.game_control import IEpicBattleMetaGameController
 from gui.prb_control.entities.base.unit.actions_validator import CommanderValidator
 
 class _EpicVehiclesValidator(SquadVehiclesValidator):
-
-    def _isValidMode(self, vehicle):
-        return not vehicle.isEvent
+    _BATTLE_MODE_VEHICLE_TAGS = BATTLE_MODE_VEH_TAGS_EXCEPT_EPIC
 
 
 class _EpicBalancedSquadVehiclesValidator(BalancedSquadVehiclesValidator):

@@ -234,6 +234,9 @@ msgstr ""
 msgid "battlePassBuyView/card/divider"
 msgstr "или"
 
+msgid "battlePassBuyView/card/priceDivider"
+msgstr "или"
+
 msgid "battlePassBuyView/card/purchased"
 msgstr "УЖЕ КУПЛЕНО"
 
@@ -305,8 +308,14 @@ msgstr "Открывает доступ к улучшенным наградам
 msgid "battlePassBuyView/levelsSelected"
 msgstr "Выбрано этапов:"
 
+msgid "battlePassBuyView/multicurrencyPrice"
+msgstr "Стоимость покупки:"
+
 msgid "battlePassBuyView/price"
 msgstr "Стоимость покупки:"
+
+msgid "battlePassBuyView/priceDivider"
+msgstr "или"
 
 msgid "battlePassBuyView/reward/backBtn"
 msgstr "Назад"
@@ -367,6 +376,9 @@ msgstr "Скрытое послание"
 msgid "chapter/fullName/113"
 msgstr "Западный шторм"
 
+msgid "chapter/fullName/114"
+msgstr "Новогодний марафон"
+
 msgid "chapter/fullName/2"
 msgstr "Работа для героев"
 
@@ -387,6 +399,9 @@ msgstr "СКРЫТОЕ ПОСЛАНИЕ"
 
 msgid "chapter/fullNameUppercased/113"
 msgstr "ЗАПАДНЫЙ ШТОРМ"
+
+msgid "chapter/fullNameUppercased/114"
+msgstr "НОВОГОДНИЙ МАРАФОН"
 
 msgid "chapter/fullNameUppercased/74"
 msgstr "НОВАЯ ГЛАВА"
@@ -441,7 +456,7 @@ msgid "chapterChoice/confirmation/title/switch"
 msgstr "Переключиться на главу «%(chName)s»?"
 
 msgid "chapterChoice/extraChapter/reward"
-msgstr "Машина и 3D-стиль"
+msgstr "Премиум машина"
 
 msgid "chapterChoice/freePoints/description"
 msgstr "Нераспределённые очки Боевого пропуска: "
@@ -798,8 +813,8 @@ msgstr ""
 
 msgid "progression/activateExtraChapterDescr"
 msgstr ""
-"Приобретите и активируйте главу, чтобы получить в итоге уникальный 3D-стиль "
-"«%(styleName)s»."
+"За прохождение активной главы вы будете получать очки Боевого пропуска и "
+"другие награды."
 
 msgid "progression/activatePausedExtraChapterDescr"
 msgstr ""
@@ -896,20 +911,23 @@ msgstr ""
 msgid "progression/errorBtn"
 msgstr "В Ангар"
 
-msgid "progression/extraChapter/widget/reward/caption"
-msgstr "Главная награда за полное прохождение этой главы."
+msgid "progression/extraChapterWidget/styleRemark"
+msgstr "С Улучшенным пропуском"
 
-msgid "progression/extraChapter/widget/reward/label"
-msgstr "%(vehicleName)s и 3D-стиль «%(styleName)s»"
+msgid "progression/extraChapterWidget/styleSubTitle"
+msgstr "и боевая задача для %(vehicleName)s"
 
-msgid "progression/extraChapter/widget/shortTimer"
-msgstr "%(H)s : %(m)s : %(s)s"
+msgid "progression/extraChapterWidget/styleTitle"
+msgstr "Стиль «%(styleName)s»"
 
-msgid "progression/extraChapter/widget/timer"
-msgstr "%(D)s д %(H)s : %(m)s : %(s)s"
+msgid "progression/extraChapterWidget/vehicleCaption"
+msgstr "Премиум техника"
 
 msgid "progression/footer/freePointsDescr"
 msgstr "Нераспределённых очков Боевого пропуска: "
+
+msgid "progression/footer/multicurrencyTooltip"
+msgstr "Можно купить за золото или свободный опыт."
 
 msgid "progression/footer/status/inactive"
 msgstr "Глава неактивна"
@@ -993,6 +1011,9 @@ msgstr "Посмотреть все стили"
 
 msgid "questChainBonus"
 msgstr "Цепочка боевых задач"
+
+msgid "randomQuestBonus"
+msgstr "Боевая задача для %(vehicle)s"
 
 msgid "reward/postBattle/comp7/progress"
 msgstr "Получено очков за попадание в топ по очкам престижа:"
@@ -1095,6 +1116,46 @@ msgstr "Новый уровень стиля «%(styleName)s»"
 
 msgid "styleProgression/newStyle"
 msgstr "Первый уровень стиля «%(styleName)s»"
+
+msgid "tooltips/RandomQuestTooltip/condition"
+msgstr "Условие: %(condition)"
+
+msgid "tooltips/RandomQuestTooltip/expireTime"
+msgstr ""
+"Задача действует %(whiteSpanish_Open)sдо %(day)s "
+"%(month)s%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/consumables"
+msgstr ""
+"%(whiteSpanish_Open)sСнаряжение:%(whiteSpanish_Close)s аптечки, ремкомплекты"
+" и огнетушители"
+
+msgid "tooltips/RandomQuestTooltip/rewards/directives"
+msgstr ""
+"%(whiteSpanish_Open)sПредбоевые инструкции%(whiteSpanish_Close)s для "
+"оборудования"
+
+msgid "tooltips/RandomQuestTooltip/rewards/money"
+msgstr ""
+"%(whiteSpanish_Open)sКредиты, боны и свободный опыт%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/personal_reserves"
+msgstr "%(whiteSpanish_Open)sЛичные резервы%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/premium"
+msgstr ""
+"%(whiteSpanish_Open)sДни Танкового премиум аккаунта%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/standardEquipment"
+msgstr "%(whiteSpanish_Open)sШтатное оборудование%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewardsTitle"
+msgstr ""
+"Раз в сутки за выполнение задачи вы сможете получить одну из следующих "
+"наград:"
+
+msgid "tooltips/RandomQuestTooltip/title"
+msgstr "Боевая задача для %(vehicleName)"
 
 msgid "tooltips/battlePassCoins/secondaryText"
 msgstr ""
@@ -1249,7 +1310,7 @@ msgid "tooltips/inProgress/baseReward"
 msgstr "Базовая награда"
 
 msgid "tooltips/inProgress/battleRoyale"
-msgstr "«Стальной охотник: Возрождение»"
+msgstr "«Стальной охотник»"
 
 msgid "tooltips/inProgress/chapter"
 msgstr "Глава «{name}»"
@@ -1258,7 +1319,7 @@ msgid "tooltips/inProgress/epic"
 msgstr "«Линия фронта»"
 
 msgid "tooltips/inProgress/getPointsFrom"
-msgstr "Правила начисления очков в режиме %(battleType)s."
+msgstr "Начисление очков в режиме %(battleType)s."
 
 msgid "tooltips/inProgress/hurryUp"
 msgstr ""

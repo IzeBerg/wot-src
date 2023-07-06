@@ -1,0 +1,8 @@
+from constants import QUEUE_TYPE
+from fun_random.gui.hangar_presets.fun_hangar_presets_reader import FunRandomPresetsReader
+from fun_random.gui.hangar_presets.fun_hangar_presets_getter import FunRandomPresetsGetter
+from gui.shared.system_factory import registerHangarPresetsReader, registerHangarPresetGetter
+
+def registerFunRandomHangarPresets():
+    registerHangarPresetsReader(FunRandomPresetsReader)
+    registerHangarPresetGetter(QUEUE_TYPE.FUN_RANDOM, FunRandomPresetsGetter)

@@ -74,6 +74,7 @@ class EpicModeSelectorItem(ModeSelectorLegacyItem):
     def __fillViewModel(self):
         with self.viewModel.transaction() as (vm):
             self.__resetViewModel(vm)
+            vm.setIsSelected(self.__epicController.isEpicPrbActive())
             season = self.__epicController.getActiveSeason()
             currentTime = time_utils.getCurrentLocalServerTimestamp()
             vehicleLevels = self.__epicController.getValidVehicleLevels()

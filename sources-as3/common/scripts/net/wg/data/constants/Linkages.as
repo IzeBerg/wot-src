@@ -763,7 +763,11 @@ package net.wg.data.constants
       
       public static const SPEEDOMETER_UI:String = "SpeedometerUI";
       
+      public static const SPEEDOMETER_BG_UI:String = "SpeedometerBgUI";
+      
       public static const ARTY_SHOT_INDICATOR_RENDERER:String = "ArtyShotIndicatorUI";
+      
+      public static const OVERHEAT_WIDGET:String = "OverheatWidgetUI";
       
       public static const EQUIPMENT_OVERLAY:String = "ListOverlayUI";
       

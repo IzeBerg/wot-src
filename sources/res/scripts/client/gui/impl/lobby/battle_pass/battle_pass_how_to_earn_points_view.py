@@ -42,15 +42,26 @@ class BattlePassHowToEarnPointsView(ViewImpl):
         super(BattlePassHowToEarnPointsView, self)._onLoading(*args, **kwargs)
         self.__createGeneralModel()
 
+    def __getGameMode(self, arenaType):
+        if arenaType == ARENA_BONUS_TYPE.BATTLE_ROYALE_SOLO:
+            return self.__createBattleRoyalGameModel()
+        return self.__createGameModel(arenaType)
+
     def __createGeneralModel(self):
         with self.viewModel.transaction() as (tx):
             gameModes = tx.getGameModes()
-            gameModes.clear()
-            for supportedArenaType in SUPPORTED_ARENA_BONUS_TYPES:
-                if supportedArenaType == ARENA_BONUS_TYPE.BATTLE_ROYALE_SOLO:
-                    gameModes.addViewModel(self.__createBattleRoyalGameModel())
-                else:
-                    gameModes.addViewModel(self.__createGameModel(supportedArenaType))
+            if not gameModes:
+                for supportedArenaType in SUPPORTED_ARENA_BONUS_TYPES:
+                    gameModes.addViewModel(self.__getGameMode(supportedArenaType))
+
+            else:
+                for gameMode in gameModes:
+                    arenaBonusType = gameMode.getArenaBonusType()
+                    newMode = self.__getGameMode(arenaBonusType)
+                    gameMode.setTitle(newMode.getTitle())
+                    gameMode.setText(newMode.getText())
+                    gameMode.setTableRows(newMode.getTableRows())
+                    gameMode.setCards(newMode.getCards())
 
             tx.setSyncInitiator((tx.getSyncInitiator() + 1) % 1000)
             tx.setChapterID(self.__chapterID)

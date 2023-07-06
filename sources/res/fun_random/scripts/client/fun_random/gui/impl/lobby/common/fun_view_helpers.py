@@ -1,16 +1,24 @@
-import typing, math_utils
+import typing
+from functools import wraps
+import operator, math_utils
+from fun_random.gui.doc_loaders.vehicle_gui_parameters_reader import getVehicleParametersConfig
 from fun_random.gui.impl.gen.view_models.views.lobby.common.fun_random_progression_state import FunRandomProgressionStatus
 from fun_random.gui.impl.gen.view_models.views.lobby.common.fun_random_progression_stage import FunRandomProgressionStage
+from fun_random.gui.impl.gen.view_models.views.lobby.common.fun_random_vehicle_parameter import FunRandomVehicleParameter
+from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.lobby.common.view_helpers import packBonusModelAndTooltipData
 from gui.shared.formatters import time_formatters
+from gui.shared.formatters.ranges import toRomanRangeString
 from gui.shared.missions.packers.bonus import BonusUIPacker, getDefaultBonusPackersMap
-from shared_utils import findFirst
+from shared_utils import first, findFirst
 if typing.TYPE_CHECKING:
     from frameworks.wulf import Array
+    from fun_random.gui.doc_loaders import VehicleParameters
     from fun_random.gui.feature.models.progressions import FunProgressionStage, FunProgression
     from fun_random.gui.impl.gen.view_models.views.lobby.common.fun_random_progression_state import FunRandomProgressionState
     from fun_random.gui.impl.gen.view_models.views.lobby.common.fun_random_progression_condition import FunRandomProgressionCondition
+    from fun_random.gui.impl.gen.view_models.views.lobby.common.fun_random_strengths_weaknesses import FunRandomStrengthsWeaknesses
     from gui.impl.gen.view_models.common.missions.bonuses.bonus_model import BonusModel
     from gui.impl.gen.view_models.common.missions.bonuses.item_bonus_model import ItemBonusModel
 _PROGRESSION_STATUS_MAP = {(False, False): FunRandomProgressionStatus.ACTIVE_RESETTABLE, 
@@ -22,9 +30,40 @@ def getFormattedTimeLeft(seconds):
     return time_formatters.getTillTimeByResource(seconds, R.strings.fun_random.modeSelector.status.timeLeft, removeLeadingZeros=True)
 
 
+def getConditionText(rootStrPath, levels):
+    battleCondition = rootStrPath.dyn('battleCondition')
+    components = [backport.text(battleCondition()) if battleCondition.exists() else '']
+    levelCondition = rootStrPath.dyn('levelCondition')
+    levels = toRomanRangeString(levels)
+    if levelCondition.exists() and levels:
+        components.append(backport.text(levelCondition(), levels=levels))
+    if len(components) > 1:
+        return (' ').join(components)
+    return first(components, '')
+
+
 def getFunRandomBonusPacker():
     mapping = getDefaultBonusPackersMap()
     return BonusUIPacker(mapping)
+
+
+def hasVehicleConfig(defReturn=None, abortAction=None):
+
+    def decorator(method):
+
+        @wraps(method)
+        def wrapper(view, vehicleName, *args, **kwargs):
+            config = getVehicleParametersConfig()
+            if vehicleName in config.vehicles:
+                return method(view, vehicleName, config, *args, **kwargs)
+            else:
+                if abortAction is not None:
+                    return operator.methodcaller(abortAction)(view)
+                return defReturn
+
+        return wrapper
+
+    return decorator
 
 
 def defineProgressionStatus(progression):
@@ -72,6 +111,11 @@ def packProgressionState(progression, stateModel):
     stateModel.setResetTimer(progression.condition.resetTimer)
 
 
+def packVehicleParameters(model, allParameters, vehicleParameters):
+    _packParametersGroup(model.getStrengths(), allParameters, vehicleParameters.strengths)
+    _packParametersGroup(model.getWeaknesses(), allParameters, vehicleParameters.weaknesses)
+
+
 def _packProgressionConditions(progression, conditionsModel):
     conditionsModel.clear()
     for conditionPointer in progression.condition.conditions:
@@ -92,3 +136,14 @@ def _packStageRewards(stage, rewardsModel, tooltips=None):
     rewardsModel.clear()
     packBonusModelAndTooltipData(stage.bonuses, rewardsModel, tooltipData=tooltips, packer=getFunRandomBonusPacker())
     rewardsModel.invalidate()
+
+
+def _packParametersGroup(model, allParameters, vehicleParameters):
+    model.clear()
+    for parameterName in vehicleParameters:
+        parameterModel = FunRandomVehicleParameter()
+        parameterModel.setParameterName(parameterName)
+        parameterModel.setIcon(allParameters[parameterName])
+        model.addViewModel(parameterModel)
+
+    model.invalidate()

@@ -1,5 +1,4 @@
 from collections import namedtuple
-from battle_royale.gui.Scaleform.daapi.view.common.respawn_ability import RespawnAbility
 from battle_royale.gui.constants import AmmoTypes
 from CurrentVehicle import g_currentVehicle
 from adisp import adisp_process
@@ -85,7 +84,6 @@ class HangarBottomPanelView(ViewImpl, IGlobalListener):
 
     def _finalize(self):
         self.__removeListeners()
-        self.__removeListeners()
         super(HangarBottomPanelView, self)._finalize()
 
     @decorators.adisp_process('updateMyVehicles')
@@ -144,7 +142,6 @@ class HangarBottomPanelView(ViewImpl, IGlobalListener):
             return
         self.__setAmmo(vehicle)
         self.__setAbilities(vehicle)
-        self.__setSpecialAbilities()
         self.__updateRentPrice()
         self.__updateRentState()
         self.__updateVehicleInfo()
@@ -161,17 +158,6 @@ class HangarBottomPanelView(ViewImpl, IGlobalListener):
         items = self.viewModel.abilities.getItems()
         self.__fillArtefactGroup(items, vehicleEquipment, True, vehicle)
         return
-
-    def __setSpecialAbilities(self):
-        items = self.viewModel.specialAbilities.getItems()
-        items.clear()
-        itemModel = BattleRoyaleConsumableModel()
-        itemModel.setIconSource(RespawnAbility.icon)
-        itemModel.setQuantity(0)
-        itemModel.setIntCD(-1)
-        itemModel.setTooltipType(RespawnAbility.tooltipType)
-        items.addViewModel(itemModel)
-        items.invalidate()
 
     def __updateRentPrice(self):
         vehicle = g_currentVehicle.item

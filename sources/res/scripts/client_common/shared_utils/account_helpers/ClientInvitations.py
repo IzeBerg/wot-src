@@ -1,5 +1,6 @@
 from collections import namedtuple
 from functools import partial
+from shared_utils import safeCancelCallback
 import BigWorld, AccountCommands
 from constants import INVITATION_STATUS
 from helpers.time_utils import getCurrentTimestamp, getServerUTCTime
@@ -103,7 +104,7 @@ class ClientInvitations(object):
 
     def _clearExpiryCallback(self):
         if self.__expCbID is not None:
-            BigWorld.cancelCallback(self.__expCbID)
+            safeCancelCallback(self.__expCbID)
             self.__expCbID = None
         return
 

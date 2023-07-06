@@ -6,7 +6,6 @@ package net.wg.gui.battle.views.upgradePanel
    import flash.display.DisplayObject;
    import flash.display.Sprite;
    import flash.events.Event;
-   import flash.filters.DropShadowFilter;
    import flash.text.TextField;
    import net.wg.gui.battle.battleRoyale.views.configurator.ChoiceInfoPanel;
    import net.wg.gui.battle.views.upgradePanel.data.UpgradePanelVO;
@@ -126,17 +125,9 @@ package net.wg.gui.battle.views.upgradePanel
       
       private var _alertText:String = "";
       
-      private var DEST_FILTERS:Array;
-      
       public function BattleUpgradePanel()
       {
-         this.DEST_FILTERS = [new DropShadowFilter(0,0,0,0.5,12,12),new DropShadowFilter(0,0,0,1,4,4)];
          super();
-      }
-      
-      override public function isCompVisible() : Boolean
-      {
-         return _isCompVisible;
       }
       
       override protected function initialize() : void
@@ -147,7 +138,6 @@ package net.wg.gui.battle.views.upgradePanel
          this._messageTweens = new Vector.<Tween>(0);
          this._notificationTweens = new Vector.<Tween>(0);
          this.alertAnim.addChild(this.alertTF);
-         this.descriptionTF.filters = this.DEST_FILTERS;
          this.titleTF.alpha = this.descriptionTF.alpha = this.bg.alpha = this.selectBG.alpha = this.leftHoverBG.alpha = this.rightHoverBG.alpha = 0;
          this._alertTF.text = BATTLE_ROYALE.UPGRADEPANEL_ALERT_0;
          this.choicePanel.visible = false;
@@ -215,6 +205,11 @@ package net.wg.gui.battle.views.upgradePanel
       override protected function updateVisibility() : void
       {
          this.visible = this.state == STATE_ACTIVE || this.state == STATE_ALERT_FLAG || this.state == STATE_SELECT_FLAG;
+      }
+      
+      override public function isCompVisible() : Boolean
+      {
+         return _isCompVisible;
       }
       
       public function as_hideNotificationAnim() : void

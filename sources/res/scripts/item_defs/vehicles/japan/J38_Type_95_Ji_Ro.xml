@@ -72,8 +72,6 @@
 			1.2
 			<!--BW_String-->
 		</priceFactor>
-		<tiling>1 1 0 0</tiling>
-		<exclusionMask/>
 		<density>0.973778 0.973778</density>
 	</camouflage>
 	<hull>
@@ -94,9 +92,7 @@
 			<armor_16>70</armor_16>
 			<armor_17>50</armor_17>
 			<armor_18>40</armor_18>
-			<armor_19>30</armor_19>
 			<armor_20>20</armor_20>
-			<armor_21>40</armor_21>
 			<armor_22>
 				10
 				<vehicleDamageFactor>0</vehicleDamageFactor>
@@ -129,11 +125,11 @@
 		<swinging>
 			<lodDist>FAR</lodDist>
 			<pitchParams>
-				0.34 38.00 0.36 1.00 0.05 0.34
+				0.34 38 0.36 1 0.05 0.34
 				<!--BW_String-->
 			</pitchParams>
 			<rollParams>
-				1.00 0.34 38.00 0.36 1.00 0.06 0.40
+				1 0.34 38 0.36 1 0.06 0.4
 				<!--BW_String-->
 			</rollParams>
 			<sensitivityToImpulse>
@@ -151,6 +147,10 @@
 				<!--BW_String-->
 			</turret>
 		</turretPositions>
+		<hitTester>
+			<collisionModelServer>vehicles/japan/J38_Type_95_Ji_Ro/collision/Hull.model</collisionModelServer>
+			<collisionModelClient>vehicles/japan/J38_Type_95_Ji_Ro/collision_client/Hull.model</collisionModelClient>
+		</hitTester>
 		<customizationSlots>
 			<slot>
 				<slotType>clan</slotType>
@@ -1795,10 +1795,6 @@
 				</anchorShift>
 			</slot>
 		</customizationSlots>
-		<hitTester>
-			<collisionModelServer>vehicles/japan/J38_Type_95_Ji_Ro/collision/Hull.model</collisionModelServer>
-			<collisionModelClient>vehicles/japan/J38_Type_95_Ji_Ro/collision_client/Hull.model</collisionModelClient>
-		</hitTester>
 		<customization>
 			<customizableVehicleAreas>
 				<paint>HULL</paint>
@@ -1806,16 +1802,12 @@
 			</customizableVehicleAreas>
 		</customization>
 		<hangarShadowTexture>vehicles/japan/J38_Type_95_Ji_Ro/Type_95_Ji_Ro_HangarShadowMap.dds</hangarShadowTexture>
-		<turretPitches>
-			<turret>0.000000</turret>
-		</turretPitches>
 		<camouflage>
 			<density>
 				114.254 114.472
 				<!--BW_String-->
 			</density>
 			<aoTextureSize>1024 1024</aoTextureSize>
-			<tiling>1 1 0 0</tiling>
 		</camouflage>
 	</hull>
 	<chassis>
@@ -2172,6 +2164,10 @@
 			</effects>
 			<wwsoundPC>treads_type_pc</wwsoundPC>
 			<wwsoundNPC>trds_chf_npc</wwsoundNPC>
+			<hullPosition>
+				0.000000 1.12452 0.000000
+				<!--BW_String-->
+			</hullPosition>
 			<customizationSlots>
 				<slot>
 					<slotType>paint</slotType>
@@ -2195,10 +2191,6 @@
 					<anchorDirection>-0 1 0</anchorDirection>
 				</slot>
 			</customizationSlots>
-			<hullPosition>
-				0.000000 1.12452 0.000000
-				<!--BW_String-->
-			</hullPosition>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>CHASSIS</paint>
@@ -2280,25 +2272,6 @@
 					</maxOffset>
 				</group>
 			</groundNodes>
-			<splineDesc>
-				<segmentModelLeft>vehicles/japan/J38_Type_95_Ji_Ro/track/segment_01.model</segmentModelLeft>
-				<segmentModelRight>vehicles/japan/J38_Type_95_Ji_Ro/track/segment_01.model</segmentModelRight>
-				<left>vehicles/japan/J38_Type_95_Ji_Ro/track/left.track</left>
-				<right>vehicles/japan/J38_Type_95_Ji_Ro/track/right.track</right>
-				<segmentLength>
-					0.137
-					<!--BW_String-->
-				</segmentLength>
-				<segmentOffset>
-					0.177
-					<!--BW_String-->
-				</segmentOffset>
-				<atlas>
-					<UTiles>1</UTiles>
-					<VTiles>1</VTiles>
-				</atlas>
-				<lodDist>SPLINE_TRACK</lodDist>
-			</splineDesc>
 			<trackNodes>
 				<enable>true</enable>
 				<linkBones>false</linkBones>
@@ -2521,6 +2494,28 @@
 					</offset>
 				</node>
 			</trackNodes>
+			<splineDesc>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<segmentModelLeft>vehicles/japan/J38_Type_95_Ji_Ro/track/segment_01.model</segmentModelLeft>
+					<segmentModelRight>vehicles/japan/J38_Type_95_Ji_Ro/track/segment_01.model</segmentModelRight>
+					<left>vehicles/japan/J38_Type_95_Ji_Ro/track/left.track</left>
+					<right>vehicles/japan/J38_Type_95_Ji_Ro/track/right.track</right>
+					<segmentLength>
+						0.137
+						<!--BW_String-->
+					</segmentLength>
+					<segmentOffset>
+						0.177
+						<!--BW_String-->
+					</segmentOffset>
+					<atlas>
+						<UTiles>1</UTiles>
+						<VTiles>1</VTiles>
+					</atlas>
+				</trackPair>
+				<lodDist>SPLINE_TRACK</lodDist>
+			</splineDesc>
 			<physicalTracks>
 				<left>
 					<segmentsCount>99</segmentsCount>
@@ -2924,6 +2919,7 @@
 							</range>
 						</top>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</left>
 				<right>
 					<segmentsCount>99</segmentsCount>
@@ -3669,12 +3665,9 @@
 							</range>
 						</top>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</right>
 			</physicalTracks>
-			<camouflage>
-				<tiling>1 1 0 0</tiling>
-				<density>1 1</density>
-			</camouflage>
 			<repairTime>
 				6.85714293
 				<!--BW_String-->
@@ -4027,6 +4020,10 @@
 			</effects>
 			<wwsoundPC>treads_type_pc</wwsoundPC>
 			<wwsoundNPC>trds_chf_npc</wwsoundNPC>
+			<hullPosition>
+				0.000000 1.12452 0.000000
+				<!--BW_String-->
+			</hullPosition>
 			<customizationSlots>
 				<slot>
 					<slotType>paint</slotType>
@@ -4050,10 +4047,6 @@
 					<anchorDirection>-0 1 0</anchorDirection>
 				</slot>
 			</customizationSlots>
-			<hullPosition>
-				0.000000 1.12452 0.000000
-				<!--BW_String-->
-			</hullPosition>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>CHASSIS</paint>
@@ -4135,25 +4128,6 @@
 					</maxOffset>
 				</group>
 			</groundNodes>
-			<splineDesc>
-				<segmentModelLeft>vehicles/japan/J38_Type_95_Ji_Ro/track/segment_01.model</segmentModelLeft>
-				<segmentModelRight>vehicles/japan/J38_Type_95_Ji_Ro/track/segment_01.model</segmentModelRight>
-				<left>vehicles/japan/J38_Type_95_Ji_Ro/track/left.track</left>
-				<right>vehicles/japan/J38_Type_95_Ji_Ro/track/right.track</right>
-				<segmentLength>
-					0.137
-					<!--BW_String-->
-				</segmentLength>
-				<segmentOffset>
-					0.177
-					<!--BW_String-->
-				</segmentOffset>
-				<atlas>
-					<UTiles>1</UTiles>
-					<VTiles>1</VTiles>
-				</atlas>
-				<lodDist>SPLINE_TRACK</lodDist>
-			</splineDesc>
 			<trackNodes>
 				<enable>true</enable>
 				<linkBones>false</linkBones>
@@ -4376,6 +4350,28 @@
 					</offset>
 				</node>
 			</trackNodes>
+			<splineDesc>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<segmentModelLeft>vehicles/japan/J38_Type_95_Ji_Ro/track/segment_01.model</segmentModelLeft>
+					<segmentModelRight>vehicles/japan/J38_Type_95_Ji_Ro/track/segment_01.model</segmentModelRight>
+					<left>vehicles/japan/J38_Type_95_Ji_Ro/track/left.track</left>
+					<right>vehicles/japan/J38_Type_95_Ji_Ro/track/right.track</right>
+					<segmentLength>
+						0.137
+						<!--BW_String-->
+					</segmentLength>
+					<segmentOffset>
+						0.177
+						<!--BW_String-->
+					</segmentOffset>
+					<atlas>
+						<UTiles>1</UTiles>
+						<VTiles>1</VTiles>
+					</atlas>
+				</trackPair>
+				<lodDist>SPLINE_TRACK</lodDist>
+			</splineDesc>
 			<physicalTracks>
 				<left>
 					<segmentsCount>99</segmentsCount>
@@ -4779,6 +4775,7 @@
 							</range>
 						</top>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</left>
 				<right>
 					<segmentsCount>99</segmentsCount>
@@ -5524,11 +5521,9 @@
 							</range>
 						</top>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</right>
 			</physicalTracks>
-			<camouflage>
-				<tiling>1 1 0 0</tiling>
-			</camouflage>
 			<repairTime>
 				6.85714293
 				<!--BW_String-->
@@ -5581,31 +5576,19 @@
 					<armor>
 						<armor_1>
 							70
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
 							25
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_2>
 						<armor_3>
 							25
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_3>
 						<armor_4>
 							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_4>
 						<gun>30</gun>
 					</armor>
@@ -5716,7 +5699,6 @@
 						<collisionModelServer>vehicles/japan/J38_Type_95_Ji_Ro/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/japan/J38_Type_95_Ji_Ro/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
-					<animateEmblemSlots>true</animateEmblemSlots>
 					<edgeByVisualModel>false</edgeByVisualModel>
 					<shotOffset>
 						0 0.060453 0
@@ -5728,7 +5710,6 @@
 							<!--BW_String-->
 						</density>
 						<aoTextureSize>512 512</aoTextureSize>
-						<tiling>1 1 0 0</tiling>
 					</camouflage>
 				</_75mm_Type_5_Gun_Ro>
 				<_105mm_Type_92_Gun_Ro>
@@ -5743,31 +5724,19 @@
 					<armor>
 						<armor_1>
 							70
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
 							25
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_2>
 						<armor_3>
 							25
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_3>
 						<armor_4>
 							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_4>
 						<gun>40</gun>
 					</armor>
@@ -5872,7 +5841,6 @@
 						<collisionModelServer>vehicles/japan/J38_Type_95_Ji_Ro/collision/Gun_03.model</collisionModelServer>
 						<collisionModelClient>vehicles/japan/J38_Type_95_Ji_Ro/collision_client/Gun_03.model</collisionModelClient>
 					</hitTester>
-					<animateEmblemSlots>true</animateEmblemSlots>
 					<edgeByVisualModel>false</edgeByVisualModel>
 					<shotOffset>
 						0 0.060453 0
@@ -5884,7 +5852,6 @@
 							<!--BW_String-->
 						</density>
 						<aoTextureSize>512 512</aoTextureSize>
-						<tiling>1 1 0 0</tiling>
 					</camouflage>
 				</_105mm_Type_92_Gun_Ro>
 			</guns>
@@ -5897,6 +5864,7 @@
 				<collisionModelServer>vehicles/japan/J38_Type_95_Ji_Ro/collision/Turret_01.model</collisionModelServer>
 				<collisionModelClient>vehicles/japan/J38_Type_95_Ji_Ro/collision_client/Turret_01.model</collisionModelClient>
 			</hitTester>
+			<gunPosition>0.000000 0.000000 0.000000</gunPosition>
 			<customizationSlots>
 				<slot>
 					<slotType>paint</slotType>
@@ -5917,7 +5885,6 @@
 					<anchorDirection>-0 1 0</anchorDirection>
 				</slot>
 			</customizationSlots>
-			<gunPosition>0.000000 0.000000 0.000000</gunPosition>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>TURRET</paint>
@@ -5926,7 +5893,7 @@
 			</customization>
 			<wwturretRotatorSoundManual>tur_man_trav_03</wwturretRotatorSoundManual>
 			<physicsShape>
-				1.000 0.000 1.000 0.000 1.000 0.000 0.500 0.500 0.500 0.500 0.500 0.500 0.600 0.100 0.500
+				1 0 1 0 1 0 0.5 0.5 0.5 0.5 0.5 0.5 0.6 0.1 0.5
 				<!--BW_String-->
 			</physicsShape>
 			<camouflage>
@@ -5935,7 +5902,6 @@
 					<!--BW_String-->
 				</density>
 				<aoTextureSize>512 512</aoTextureSize>
-				<tiling>1 1 0 0</tiling>
 			</camouflage>
 		</Turret_J38_Type_95_Ji_Ro>
 	</turrets0>
@@ -6031,7 +5997,6 @@
 	</physics>
 	<effects>
 		<collision/>
-		<damagedStateGroup>medium</damagedStateGroup>
 	</effects>
 	<emblems>
 		<default>15508</default>
