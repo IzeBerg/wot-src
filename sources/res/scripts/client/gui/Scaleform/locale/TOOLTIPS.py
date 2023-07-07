@@ -368,10 +368,8 @@ class TOOLTIPS(object):
     LOGINSERVERSELECTION_BODY = '#tooltips:loginServerSelection/body'
     SHOWVEHMODELSONMAP_HEADER = '#tooltips:showVehModelsOnMap/header'
     SHOWVEHMODELSONMAP_BODY = '#tooltips:showVehModelsOnMap/body'
-    SHOWVEHMODELSONMAP_ATTENTION = '#tooltips:showVehModelsOnMap/attention'
     MINIMAPALPHA_HEADER = '#tooltips:minimapAlpha/header'
     MINIMAPALPHA_BODY = '#tooltips:minimapAlpha/body'
-    MINIMAPALPHA_ATTENTION = '#tooltips:minimapAlpha/attention'
     BATTLELOADINGINFO_HEADER = '#tooltips:battleLoadingInfo/header'
     BATTLELOADINGINFO_BODY = '#tooltips:battleLoadingInfo/body'
     CUSTOMIZATIONDISPLAYTYPE_HISTORICAL_HEADER = '#tooltips:customizationDisplayType/historical/header'
@@ -3101,6 +3099,8 @@ class TOOLTIPS(object):
     NOTRECRUITEDTANKMAN_COMMANDER_HOB_DESC = '#tooltips:notrecruitedtankman/commander_hob/desc'
     NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_LABEL = '#tooltips:notrecruitedtankman/commander_tolmeron/label'
     NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_DESC = '#tooltips:notrecruitedtankman/commander_tolmeron/desc'
+    NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_LABEL = '#tooltips:notrecruitedtankman/commander_whiskers/label'
+    NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_DESC = '#tooltips:notrecruitedtankman/commander_whiskers/desc'
     NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL = '#tooltips:notrecruitedtankman/yha_commander/label'
     NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC = '#tooltips:notrecruitedtankman/yha_commander/desc'
     NOTRECRUITEDTANKMAN_YHA_DRIVER_LABEL = '#tooltips:notrecruitedtankman/yha_driver/label'
@@ -4274,6 +4274,7 @@ class TOOLTIPS(object):
      NOTRECRUITEDTANKMAN_COMMANDER_HILLEN_LABEL,
      NOTRECRUITEDTANKMAN_COMMANDER_HOB_LABEL,
      NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_LABEL,
+     NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_LABEL,
      NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL,
      NOTRECRUITEDTANKMAN_YHA_DRIVER_LABEL,
      NOTRECRUITEDTANKMAN_YHA_GUNNER_LABEL,
@@ -4439,6 +4440,7 @@ class TOOLTIPS(object):
      NOTRECRUITEDTANKMAN_COMMANDER_HILLEN_DESC,
      NOTRECRUITEDTANKMAN_COMMANDER_HOB_DESC,
      NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_DESC,
+     NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_DESC,
      NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC,
      NOTRECRUITEDTANKMAN_YHA_DRIVER_DESC,
      NOTRECRUITEDTANKMAN_YHA_GUNNER_DESC,

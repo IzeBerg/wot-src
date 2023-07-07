@@ -1,5 +1,4 @@
 from account_helpers.settings_core.settings_constants import GAME
-from debug_utils import LOG_ERROR
 from gui.Scaleform.daapi.view.meta.EpicRandomPlayersPanelMeta import EpicRandomPlayersPanelMeta
 from gui.Scaleform.genConsts.PLAYERS_PANEL_STATE import PLAYERS_PANEL_STATE
 from helpers import dependency
@@ -59,7 +58,6 @@ class EpicPlayerPanelStateSetting(object):
         if state in _EPIC_RANDOM_PLAYERS_PANEL_STATE_RANGE:
             cls.settingsCore.applySetting(GAME.EPIC_RANDOM_PLAYERS_PANELS_STATE, state)
             return True
-        LOG_ERROR('State of players panel is invalid', state)
         return False
 
 
@@ -85,11 +83,15 @@ class EpicRandomPlayersPanel(EpicRandomPlayersPanelMeta):
         return
 
     def focusedColumnChanged(self, value):
-        buttonMode = _EPIC_RANDOM_BUTTON_STATE_TO_MODE[self._mode]
-        mode = _EPIC_RANDOM_MULTI_COLUMN_TO_STATE[buttonMode][value]
-        self.__focusedColumn = value
-        self._mode = mode
-        self.as_setPanelModeS(mode)
+        buttonMode = _EPIC_RANDOM_BUTTON_STATE_TO_MODE.get(self._mode)
+        if buttonMode is None:
+            return
+        else:
+            mode = _EPIC_RANDOM_MULTI_COLUMN_TO_STATE[buttonMode][value]
+            self.__focusedColumn = value
+            self._mode = mode
+            self.as_setPanelModeS(mode)
+            return
 
     def tryToSetPanelModeByMouse(self, mode):
         if mode == PLAYERS_PANEL_STATE.SHORT:

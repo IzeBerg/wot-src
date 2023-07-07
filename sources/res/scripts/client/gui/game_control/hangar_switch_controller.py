@@ -165,9 +165,8 @@ class HangarSpaceSwitchController(IHangarSpaceSwitchController, IGlobalListener)
         success = None
         err = ErrorFlags.NONE
         if self.hangarSpaceUpdated:
-            if prevSceneName != self.currentSceneName:
-                currentSceneConfig = self._sceneSpaceParams[self.currentSceneName]
-                success, err = self.hangarSpaceReloader.changeHangarSpace(currentSceneConfig.getHangarSpaceId(), currentSceneConfig.getVisibilityMask(), currentSceneConfig.waitingMessage, currentSceneConfig.waitingBackground)
+            currentSceneConifg = self._sceneSpaceParams[self.currentSceneName]
+            success, err = self.hangarSpaceReloader.changeHangarSpace(currentSceneConifg.getHangarSpaceId(), currentSceneConifg.getVisibilityMask(), currentSceneConifg.waitingMessage, currentSceneConifg.waitingBackground)
         else:
             self.currentSceneName = DEFAULT_HANGAR_SCENE
             hangarSpacePath = self._defaultHangarSpaceConfig.getHangarSpaceId(self.hangarSpace.isPremium)

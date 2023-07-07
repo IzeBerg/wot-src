@@ -747,13 +747,9 @@ package
       
       public static const SHOWVEHMODELSONMAP_BODY:String = "#tooltips:showVehModelsOnMap/body";
       
-      public static const SHOWVEHMODELSONMAP_ATTENTION:String = "#tooltips:showVehModelsOnMap/attention";
-      
       public static const MINIMAPALPHA_HEADER:String = "#tooltips:minimapAlpha/header";
       
       public static const MINIMAPALPHA_BODY:String = "#tooltips:minimapAlpha/body";
-      
-      public static const MINIMAPALPHA_ATTENTION:String = "#tooltips:minimapAlpha/attention";
       
       public static const BATTLELOADINGINFO_HEADER:String = "#tooltips:battleLoadingInfo/header";
       
@@ -6212,6 +6208,10 @@ package
       public static const NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_LABEL:String = "#tooltips:notrecruitedtankman/commander_tolmeron/label";
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_DESC:String = "#tooltips:notrecruitedtankman/commander_tolmeron/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_LABEL:String = "#tooltips:notrecruitedtankman/commander_whiskers/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_DESC:String = "#tooltips:notrecruitedtankman/commander_whiskers/desc";
       
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/yha_commander/label";
       

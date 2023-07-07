@@ -150,6 +150,7 @@ def getDefaultFormattersMap():
        'tankmenXPFactor': simpleBonusFormatter, 
        'dailyXPFactor': simpleBonusFormatter, 
        'groups': EmptyFormatter(), 
+       'collectionItem': EmptyFormatter(), 
        PREMIUM_ENTITLEMENTS.BASIC: PremiumDaysBonusFormatter(), 
        PREMIUM_ENTITLEMENTS.PLUS: PremiumDaysBonusFormatter(), 
        'vehicles': VehiclesBonusFormatter(), 

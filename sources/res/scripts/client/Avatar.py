@@ -748,7 +748,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                             else:
                                 Cat.Tasks.ScreenInfo.ScreenInfoObject.setVisible(True)
                             return True
-                    if cmdMap.isFired(CommandMapping.CMD_INCREMENT_CRUISE_MODE, key) and isDown and not isGuiEnabled and self.__isVehicleAlive:
+                    if cmdMap.isFired(CommandMapping.CMD_INCREMENT_CRUISE_MODE, key) and isDown and self.__isVehicleAlive:
                         if self.__stopUntilFire:
                             self.__stopUntilFire = False
                             self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
@@ -765,7 +765,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                                 self.moveVehicle(self.makeVehicleMovementCommandByKeys(), isDown)
                         self.__updateCruiseControlPanel()
                         return True
-                    if cmdMap.isFired(CommandMapping.CMD_DECREMENT_CRUISE_MODE, key) and isDown and not isGuiEnabled and self.__isVehicleAlive:
+                    if cmdMap.isFired(CommandMapping.CMD_DECREMENT_CRUISE_MODE, key) and isDown and self.__isVehicleAlive:
                         if self.__stopUntilFire:
                             self.__stopUntilFire = False
                             self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
@@ -784,7 +784,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                         return True
                     if cmdMap.isFiredList((CommandMapping.CMD_MOVE_FORWARD,
                      CommandMapping.CMD_MOVE_FORWARD_SPEC,
-                     CommandMapping.CMD_MOVE_BACKWARD), key) and isDown and not isGuiEnabled:
+                     CommandMapping.CMD_MOVE_BACKWARD), key) and isDown:
                         self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
                         self.__updateCruiseControlPanel()
                     if cmdMap.isFired(CommandMapping.CMD_STOP_UNTIL_FIRE, key) and isDown and not isGuiEnabled:

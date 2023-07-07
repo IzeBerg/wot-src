@@ -511,10 +511,10 @@ class HangarVehicleAppearance(ScriptGameObject):
                 self.dirtComponent.setBase()
             outfitData = camouflages.getOutfitData(self, self.__outfit, self.__vDesc, self.__vState != 'undamaged')
             self.c11nComponent = self.createComponent(Vehicular.C11nEditComponent, self.__fashions, self.compoundModel, outfitData)
-            self.__updateDecals(self.__outfit)
-            self.__updateSequences(self.__outfit)
             if self.__outfit.style and self.__outfit.style.isProgression:
                 self.__updateStyleProgression(self.__outfit)
+            self.__updateDecals(self.__outfit)
+            self.__updateSequences(self.__outfit)
         else:
             self.__fashions = VehiclePartsTuple(BigWorld.WGVehicleFashion(), BigWorld.WGBaseFashion(), BigWorld.WGBaseFashion(), BigWorld.WGBaseFashion())
             self.__vEntity.model.setupFashions(self.__fashions)
@@ -718,13 +718,12 @@ class HangarVehicleAppearance(ScriptGameObject):
     def __applyCustomization(self, outfit, callback):
         if outfit.style and outfit.style.isProgression:
             outfit = self.__getStyleProgressionOutfitData(outfit)
+            self.__updateStyleProgression(outfit)
         self.__updateCamouflage(outfit)
         self.__updatePaint(outfit)
         self.__updateDecals(outfit)
         self.__updateProjectionDecals(outfit)
         self.__updateSequences(outfit)
-        if outfit.style and outfit.style.isProgression:
-            self.__updateStyleProgression(outfit)
         if callback is not None:
             callback()
         return

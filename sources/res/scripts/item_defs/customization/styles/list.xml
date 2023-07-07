@@ -13987,6 +13987,7 @@
 			<texture>gui/maps/vehicles/styles/Tree_Frog_style.png</texture>
 			<userString>#vehicle_customization:special_style/Tree_Frog</userString>
 			<description>#vehicle_customization:special_style/Tree_Frog_desc</description>
+			<tags>progression_required</tags>
 			<outfits>
 				<outfit>
 					<season>ALL</season>
@@ -14015,6 +14016,13 @@
 					</projection_decals>
 				</outfit>
 			</outfits>
+			<itemFilters>
+				<projection_decal>
+					<include>
+						<itemGroupName>Progression Decals</itemGroupName>
+					</include>
+				</projection_decal>
+			</itemFilters>
 		</style>
 	</itemGroup>
 	<itemGroup>

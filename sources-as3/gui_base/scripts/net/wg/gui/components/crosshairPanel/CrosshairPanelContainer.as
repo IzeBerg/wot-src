@@ -4,6 +4,7 @@ package net.wg.gui.components.crosshairPanel
    import flash.display.BlendMode;
    import flash.display.DisplayObject;
    import flash.display.DisplayObjectContainer;
+   import flash.display.Sprite;
    import flash.display.StageAlign;
    import flash.display.StageScaleMode;
    import flash.utils.clearInterval;
@@ -144,6 +145,8 @@ package net.wg.gui.components.crosshairPanel
       
       private var _speedometer:Speedometer = null;
       
+      private var _speedometerBg:Sprite = null;
+      
       private var _speed:int = 0;
       
       private var _burnout:Number = 0;
@@ -197,6 +200,7 @@ package net.wg.gui.components.crosshairPanel
             this._speedometer.dispose();
             this._speedometer = null;
          }
+         this._speedometerBg = null;
          this._currentCrosshair = null;
          this._settings = null;
          for each(_loc1_ in this._crosshairs)
@@ -252,6 +256,13 @@ package net.wg.gui.components.crosshairPanel
             this._speedometer.setMaxSpeedSpeedMode(param2);
             this._speedometer.blendMode = BlendMode.ADD;
          }
+         if(this._speedometerBg == null)
+         {
+            this._speedometerBg = Sprite(createComponent(Linkages.SPEEDOMETER_BG_UI));
+            this._speedometerBg.x = SPEEDOMETER_X_OFFSET;
+            this._speedometerBg.y = SPEEDOMETER_Y_OFFSET;
+         }
+         this._speedometerBg.visible = true;
          this._speedometer.visible = true;
          this.attachSpeedometer();
       }
@@ -387,6 +398,10 @@ package net.wg.gui.components.crosshairPanel
          if(this._speedometer)
          {
             this._speedometer.visible = false;
+         }
+         if(this._speedometerBg)
+         {
+            this._speedometerBg.visible = false;
          }
       }
       
@@ -884,14 +899,24 @@ package net.wg.gui.components.crosshairPanel
       
       private function attachSpeedometer() : void
       {
+         var _loc1_:DisplayObjectContainer = null;
          if(this._currentCrosshair != null && this._speedometer != null)
          {
             if(this._speedometer.parent != null)
             {
                this._speedometer.parent.removeChild(this._speedometer);
             }
-            DisplayObjectContainer(this._currentCrosshair).addChild(this._speedometer);
-            DisplayObject(this._currentCrosshair).blendMode = BlendMode.LAYER;
+            if(this._speedometerBg.parent != null)
+            {
+               this._speedometerBg.parent.removeChild(this._speedometer);
+            }
+            _loc1_ = this._currentCrosshair as DisplayObjectContainer;
+            if(this._currentCrosshair)
+            {
+               _loc1_.addChild(this._speedometer);
+               _loc1_.addChild(this._speedometerBg);
+               _loc1_.blendMode = BlendMode.LAYER;
+            }
          }
       }
       
