@@ -2700,6 +2700,14 @@ package
       public static const LIMITEDUI_SWITCHOFF:String = "#system_messages:limitedUI/switchOff";
       
       public static const REFERRAL_PROGRAM_DISABLED:String = "#system_messages:referral_program/disabled";
+      
+      public static const DEBUTBOXES_ENABLED_HEADER:String = "#system_messages:debutBoxes/enabled/header";
+      
+      public static const DEBUTBOXES_ENABLED_BODY:String = "#system_messages:debutBoxes/enabled/body";
+      
+      public static const DEBUTBOXES_DISABLED_HEADER:String = "#system_messages:debutBoxes/disabled/header";
+      
+      public static const DEBUTBOXES_DISABLED_BODY:String = "#system_messages:debutBoxes/disabled/body";
        
       
       public function SYSTEM_MESSAGES()

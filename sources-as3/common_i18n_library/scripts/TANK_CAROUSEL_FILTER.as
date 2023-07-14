@@ -135,6 +135,10 @@ package
       
       public static const TOOLTIP_COMP7_BODY:String = "#tank_carousel_filter:tooltip/comp7/body";
       
+      public static const TOOLTIP_DEBUT_BOXES_HEADER:String = "#tank_carousel_filter:tooltip/debut_boxes/header";
+      
+      public static const TOOLTIP_DEBUT_BOXES_BODY:String = "#tank_carousel_filter:tooltip/debut_boxes/body";
+      
       public static const INFOTIP_HEADER_TITLE:String = "#tank_carousel_filter:infotip/header/title";
       
       public static const INFOTIP_HEADER_DESCRIPTION:String = "#tank_carousel_filter:infotip/header/description";

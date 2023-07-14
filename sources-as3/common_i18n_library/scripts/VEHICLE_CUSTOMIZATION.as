@@ -11895,6 +11895,10 @@ package
       
       public static const SPECIAL_STYLE_CZ14_SKODA_T_56_DB_3DST_DESC_LONG:String = "#vehicle_customization:special_style/Cz14_Skoda_T-56_DB_3DSt_desc/long";
       
+      public static const SPECIAL_STYLE_PL24_56TP_BISONTIS_3DST:String = "#vehicle_customization:special_style/PL24_56TP_bisontis_3Dst";
+      
+      public static const SPECIAL_STYLE_PL24_56TP_BISONTIS_3DST_DESC_LONG:String = "#vehicle_customization:special_style/PL24_56TP_bisontis_3Dst_desc/long";
+      
       public static const SPECIAL_STYLE_SPARTA:String = "#vehicle_customization:special_style/sparta";
       
       public static const SPECIAL_STYLE_SPARTA_DESC_LONG:String = "#vehicle_customization:special_style/sparta_desc/long";
@@ -14945,6 +14949,12 @@ package
       
       public static const STYLES_13TH_ANNIVERSARY_NIGHT_MT_DESCRIPTION_LONG:String = "#vehicle_customization:styles/13th_Anniversary_Night_MT/description/long";
       
+      public static const STYLES_COMPENDIUM_3_2023_MT:String = "#vehicle_customization:styles/compendium_3_2023_MT";
+      
+      public static const STYLES_COMPENDIUM_3_2023_MT_DESCRIPTION:String = "#vehicle_customization:styles/compendium_3_2023_MT/description";
+      
+      public static const STYLES_COMPENDIUM_3_2023_MT_DESCRIPTION_LONG:String = "#vehicle_customization:styles/compendium_3_2023_MT/description/long";
+      
       public static const CAMOUFLAGE_TSAREVICH_MT:String = "#vehicle_customization:camouflage/Tsarevich_MT";
       
       public static const CAMOUFLAGE_TSAREVICH_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/Tsarevich_MT/description";
@@ -15016,6 +15026,10 @@ package
       public static const CAMOUFLAGE_13TH_ANNIVERSARY_NIGHT_MT:String = "#vehicle_customization:camouflage/13th_Anniversary_Night_MT";
       
       public static const CAMOUFLAGE_13TH_ANNIVERSARY_NIGHT_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/13th_Anniversary_Night_MT/description";
+      
+      public static const CAMOUFLAGE_COMPENDIUM_3_2023_MT:String = "#vehicle_customization:camouflage/compendium_3_2023_MT";
+      
+      public static const CAMOUFLAGE_COMPENDIUM_3_2023_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/compendium_3_2023_MT/description";
       
       public static const DECAL_STALINGRAD_2023_80_MT:String = "#vehicle_customization:decal/stalingrad_2023_80_MT";
       
@@ -15116,6 +15130,10 @@ package
       public static const REPAINT_13TH_ANNIVERSARY_NIGHT_MT:String = "#vehicle_customization:repaint/13th_Anniversary_Night_MT";
       
       public static const REPAINT_13TH_ANNIVERSARY_NIGHT_MT_DESCRIPTION:String = "#vehicle_customization:repaint/13th_Anniversary_Night_MT/description";
+      
+      public static const REPAINT_COMPENDIUM_3_2023_MT:String = "#vehicle_customization:repaint/compendium_3_2023_MT";
+      
+      public static const REPAINT_COMPENDIUM_3_2023_MT_DESCRIPTION:String = "#vehicle_customization:repaint/compendium_3_2023_MT/description";
       
       public static const PROJECTION_DECALS_TSAREVICH_1_MT:String = "#vehicle_customization:projection_decals/Tsarevich_1_MT";
       

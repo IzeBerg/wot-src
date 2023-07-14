@@ -14,7 +14,7 @@ from gui.shared.gui_items.customization import C11nStyleProgressData
 from helpers import time_utils, i18n, dependency, isPlayerAccount
 from shared_utils import CONST_CONTAINER, findFirst, first
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IMarathonEventsController, IArmoryYardController
+from skeletons.gui.game_control import IMarathonEventsController, IArmoryYardController, IDebutBoxesController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
@@ -310,6 +310,20 @@ def isDailyEpic(eventID):
 def isBattleRoyale(eventID):
     if eventID:
         return eventID.startswith(BATTLE_ROYALE_GROUPS_ID)
+    return False
+
+
+@dependency.replace_none_kwargs(debutBoxesController=IDebutBoxesController)
+def isDebutBoxesGroup(groupID, debutBoxesController=None):
+    if groupID:
+        return groupID == debutBoxesController.getGroupID()
+    return False
+
+
+@dependency.replace_none_kwargs(debutBoxesController=IDebutBoxesController)
+def isDebutBoxesQuest(questID, debutBoxesController=None):
+    if questID:
+        return questID in debutBoxesController.getQuestsIDs()
     return False
 
 

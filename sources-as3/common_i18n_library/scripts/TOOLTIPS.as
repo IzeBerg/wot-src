@@ -125,6 +125,8 @@ package
       
       public static const HANGAR_XPTOTMENCHECKBOX:String = "#tooltips:hangar/xpToTmenCheckbox";
       
+      public static const TANKCARUSEL_XPMULTIPLIER:String = "#tooltips:tankCarusel/xpMultiplier";
+      
       public static const WALLET_NOT_AVAILABLE_GOLD:String = "#tooltips:wallet/not_available_gold";
       
       public static const WALLET_NOT_AVAILABLE_FREEXP:String = "#tooltips:wallet/not_available_freexp";
@@ -1905,6 +1907,8 @@ package
       
       public static const TANKS_CAROUSEL_WOT_PLUS_SLOT_BODY:String = "#tooltips:tanks_carousel/wot_plus_slot/body";
       
+      public static const TANKCARUSEL_XPMULTIPLIER_BODY:String = "#tooltips:tankCarusel/xpMultiplier/body";
+      
       public static const TANKCARUSEL_MAINPROPERTY:String = "#tooltips:tankCarusel/MainProperty";
       
       public static const TANKCARUSEL_LOCK_HEADER:String = "#tooltips:tankCarusel/lock/header";
@@ -2311,6 +2315,8 @@ package
       
       public static const VEHICLE_MULTIPLIED_XP:String = "#tooltips:vehicle/multiplied_xp";
       
+      public static const VEHICLE_DEBUT_BOX_AVAILABLE:String = "#tooltips:vehicle/debut_box_available";
+      
       public static const VEHICLE_UNLOCK_PRICE:String = "#tooltips:vehicle/unlock_price";
       
       public static const VEHICLE_BUY_PRICE:String = "#tooltips:vehicle/buy_price";
@@ -2425,6 +2431,8 @@ package
       
       public static const QUESTS_PROGRESS_EARNEDINBATTLE:String = "#tooltips:quests/progress/earnedInBattle";
       
+      public static const QUESTS_PROGRESS_DEBUTBOXES:String = "#tooltips:quests/progress/debutBoxes";
+      
       public static const QUESTS_IGR:String = "#tooltips:quests/igr";
       
       public static const QUESTS_NEWLABEL_TASK:String = "#tooltips:quests/newLabel/task";
@@ -2444,6 +2452,8 @@ package
       public static const QUESTS_LINKBTN_BATTLEPASS:String = "#tooltips:quests/linkBtn/battlePass";
       
       public static const QUESTS_LINKBTN_BATTLEPASS_SELECT:String = "#tooltips:quests/linkBtn/battlePass/select";
+      
+      public static const QUESTS_LINKBTN_DEBUTBOXES:String = "#tooltips:quests/linkBtn/debutBoxes";
       
       public static const QUESTS_STATUS_DONE:String = "#tooltips:quests/status/done";
       
@@ -7268,6 +7278,10 @@ package
       public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_BABAYAGA_DESC:String = "#tooltips:notrecruitedtankman/commander_bp_BabaYaga/desc";
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_BP_BABAYAGA_LABEL:String = "#tooltips:notrecruitedtankman/commander_bp_BabaYaga/label";
+      
+      public static const DEBUT_BOXES_TITLE:String = "#tooltips:debut_boxes/title";
+      
+      public static const DEBUT_BOXES_REWARD_CAPTION:String = "#tooltips:debut_boxes/reward/caption";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       
