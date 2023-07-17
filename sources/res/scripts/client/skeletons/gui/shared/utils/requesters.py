@@ -1189,6 +1189,9 @@ class IResourceWellRequester(IRequester):
     def getReward(self):
         raise NotImplementedError
 
+    def getInitialNumberAmounts(self):
+        raise NotImplementedError
+
 
 class IAchievements20Requester(IRequester):
 

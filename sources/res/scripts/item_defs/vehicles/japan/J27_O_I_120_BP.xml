@@ -77,8 +77,6 @@
 			1.6
 			<!--BW_String-->
 		</priceFactor>
-		<tiling>1 1 0 0</tiling>
-		<exclusionMask/>
 		<density>
 			1.30 1.30
 			<!--BW_String-->
@@ -94,10 +92,7 @@
 			<armor_6>30</armor_6>
 			<armor_7>
 				35
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_7>
 			<armor_8>0</armor_8>
 			<armor_9>70</armor_9>
@@ -108,18 +103,12 @@
 			<armor_14>
 				17.5
 				<!--BW_String-->
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_14>
 			<armor_15>105</armor_15>
 			<armor_16>
 				55
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_16>
 		</armor>
 		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
@@ -141,11 +130,11 @@
 		<swinging>
 			<lodDist>FAR</lodDist>
 			<pitchParams>
-				0.20 36.00 0.34 1.00 0.04 0.26
+				0.2 36 0.34 1 0.04 0.26
 				<!--BW_String-->
 			</pitchParams>
 			<rollParams>
-				1.00 0.20 36.00 0.34 1.00 0.04 0.26
+				1 0.2 36 0.34 1 0.04 0.26
 				<!--BW_String-->
 			</rollParams>
 			<sensitivityToImpulse>
@@ -164,6 +153,7 @@
 			<collisionModelServer>vehicles/japan/J27_O_I_120/collision/Hull.model</collisionModelServer>
 			<collisionModelClient>vehicles/japan/J27_O_I_120/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
+		<hangarShadowTexture>vehicles/japan/J27_O_I_120/O_I_120_HangarShadowMap.dds</hangarShadowTexture>
 		<customizationSlots>
 			<slot>
 				<slotType>clan</slotType>
@@ -181,7 +171,6 @@
 					0.3
 					<!--BW_String-->
 				</size>
-				<isUVProportional>true</isUVProportional>
 			</slot>
 			<slot>
 				<slotType>paint</slotType>
@@ -2397,10 +2386,8 @@
 				<slotId>18000</slotId>
 				<position>0 0 0</position>
 				<rotation>0 0 0</rotation>
-				<attachNode/>
 			</slot>
 		</customizationSlots>
-		<hangarShadowTexture>vehicles/japan/J27_O_I_120/O_I_120_HangarShadowMap.dds</hangarShadowTexture>
 		<customization>
 			<customizableVehicleAreas>
 				<paint>HULL</paint>
@@ -2872,47 +2859,27 @@
 				</node>
 			</trackNodes>
 			<splineDesc>
-				<segmentModelLeft>vehicles/japan/J27_O_I_120/track/segment1.model</segmentModelLeft>
-				<segmentModelRight>vehicles/japan/J27_O_I_120/track/segment1.model</segmentModelRight>
-				<left>vehicles/japan/J27_O_I_120/track/left.track</left>
-				<right>vehicles/japan/J27_O_I_120/track/right.track</right>
-				<segmentLength>
-					0.177
-					<!--BW_String-->
-				</segmentLength>
-				<segmentOffset>
-					0.048
-					<!--BW_String-->
-				</segmentOffset>
-				<atlas>
-					<UTiles>1</UTiles>
-					<VTiles>1</VTiles>
-				</atlas>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<segmentModelLeft>vehicles/japan/J27_O_I_120/track/segment1.model</segmentModelLeft>
+					<segmentModelRight>vehicles/japan/J27_O_I_120/track/segment1.model</segmentModelRight>
+					<left>vehicles/japan/J27_O_I_120/track/left.track</left>
+					<right>vehicles/japan/J27_O_I_120/track/right.track</right>
+					<segmentLength>
+						0.177
+						<!--BW_String-->
+					</segmentLength>
+					<segmentOffset>
+						0.048
+						<!--BW_String-->
+					</segmentOffset>
+					<atlas>
+						<UTiles>1</UTiles>
+						<VTiles>1</VTiles>
+					</atlas>
+				</trackPair>
 				<lodDist>SPLINE_TRACK</lodDist>
 			</splineDesc>
-			<customizationSlots>
-				<slot>
-					<slotType>paint</slotType>
-					<slotId>21000</slotId>
-					<anchorPosition>
-						-2.02377 0.792131 -0.281395
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>
-						-0.923499 0.36147 -0.128408
-						<!--BW_String-->
-					</anchorDirection>
-				</slot>
-				<slot>
-					<slotType>style</slotType>
-					<slotId>29000</slotId>
-					<anchorPosition>
-						0.000226 3.60821 0.097841
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>0 1 0</anchorDirection>
-				</slot>
-			</customizationSlots>
 			<physicalTracks>
 				<left>
 					<segmentsCount>117</segmentsCount>
@@ -3540,6 +3507,7 @@
 							</range>
 						</bottom>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</left>
 				<right>
 					<segmentsCount>117</segmentsCount>
@@ -4164,8 +4132,32 @@
 							</range>
 						</bottom>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</right>
 			</physicalTracks>
+			<customizationSlots>
+				<slot>
+					<slotType>paint</slotType>
+					<slotId>21000</slotId>
+					<anchorPosition>
+						-2.02377 0.792131 -0.281395
+						<!--BW_String-->
+					</anchorPosition>
+					<anchorDirection>
+						-0.923499 0.36147 -0.128408
+						<!--BW_String-->
+					</anchorDirection>
+				</slot>
+				<slot>
+					<slotType>style</slotType>
+					<slotId>29000</slotId>
+					<anchorPosition>
+						0.000226 3.60821 0.097841
+						<!--BW_String-->
+					</anchorPosition>
+					<anchorDirection>0 1 0</anchorDirection>
+				</slot>
+			</customizationSlots>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>CHASSIS</paint>
@@ -4231,31 +4223,19 @@
 					<armor>
 						<armor_1>
 							200
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
 							150
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_2>
 						<armor_3>
 							70
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_3>
 						<armor_4>
 							70
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_4>
 						<gun>40</gun>
 					</armor>
@@ -4364,7 +4344,6 @@
 								0.7
 								<!--BW_String-->
 							</size>
-							<isUVProportional>true</isUVProportional>
 						</slot>
 						<slot>
 							<slotType>insigniaOnGun</slotType>
@@ -4386,10 +4365,8 @@
 								0.7
 								<!--BW_String-->
 							</size>
-							<isUVProportional>true</isUVProportional>
 						</slot>
 					</customizationSlots>
-					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>
@@ -4423,6 +4400,10 @@
 				<!--BW_String-->
 			</gunPosition>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
+			<physicsShape>
+				0.965 0 0.948 0 0.894 -0.068 0.728 0.578 0.491 0.5 0 0.5 0.098 0 0
+				<!--BW_String-->
+			</physicsShape>
 			<customizationSlots>
 				<slot>
 					<slotType>paint</slotType>
@@ -4458,7 +4439,6 @@
 						0.3
 						<!--BW_String-->
 					</size>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>player</slotType>
@@ -4478,7 +4458,6 @@
 						<!--BW_String-->
 					</size>
 					<hideIfDamaged>true</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>inscription</slotType>
@@ -4494,7 +4473,6 @@
 						<!--BW_String-->
 					</size>
 					<hideIfDamaged>true</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>inscription</slotType>
@@ -4509,7 +4487,6 @@
 						0.74
 						<!--BW_String-->
 					</size>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -5307,13 +5284,8 @@
 					<slotId>38000</slotId>
 					<position>0 0 0</position>
 					<rotation>0 0 0</rotation>
-					<attachNode/>
 				</slot>
 			</customizationSlots>
-			<physicsShape>
-				0.965 0.000 0.948 0.000 0.894 -0.068 0.728 0.578 0.491 0.500 0.000 0.500 0.098 0.000 0.000
-				<!--BW_String-->
-			</physicsShape>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>TURRET</paint>

@@ -4,7 +4,6 @@ package net.wg.gui.battle.views.postmortemPanel
    import flash.events.Event;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
-   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.components.controls.Image;
@@ -51,14 +50,9 @@ package net.wg.gui.battle.views.postmortemPanel
          this.nameTF = null;
          this.typeMC.dispose();
          this.typeMC = null;
-         this._vehicleMC.removeEventListener(Event.CHANGE,this.onVehicleMCChangeHandler);
+         this._vehicleMC.removeEventListener(Event.CHANGE,this.onChange);
          this._vehicleMC.dispose();
          this._vehicleMC = null;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
       
       public function setVehicleData(param1:String, param2:String, param3:String, param4:String) : void
@@ -66,16 +60,15 @@ package net.wg.gui.battle.views.postmortemPanel
          this.typeMC.source = param2;
          this.nameTF.text = param3;
          this.levelTF.text = param1;
-         if(param4 == Values.EMPTY_STR)
-         {
-            this._vehicleMC.clearImage();
-            this.adjustPositions();
-         }
-         else
-         {
-            this._vehicleMC.source = param4;
-            this._vehicleMC.addEventListener(Event.CHANGE,this.onVehicleMCChangeHandler);
-         }
+         this._vehicleMC.source = param4;
+         this._vehicleMC.addEventListener(Event.CHANGE,this.onChange);
+      }
+      
+      private function onChange(param1:Event) : void
+      {
+         this._vehicleMC.height = VEHICLE_IMAGE_HEIGHT;
+         this._vehicleMC.scaleX = this._vehicleMC.scaleY;
+         this.adjustPositions();
       }
       
       private function adjustPositions() : void
@@ -89,11 +82,9 @@ package net.wg.gui.battle.views.postmortemPanel
          this.x = -this.width >> 1;
       }
       
-      private function onVehicleMCChangeHandler(param1:Event) : void
+      public function isDisposed() : Boolean
       {
-         this._vehicleMC.height = VEHICLE_IMAGE_HEIGHT;
-         this._vehicleMC.scaleX = this._vehicleMC.scaleY;
-         this.adjustPositions();
+         return this._disposed;
       }
    }
 }

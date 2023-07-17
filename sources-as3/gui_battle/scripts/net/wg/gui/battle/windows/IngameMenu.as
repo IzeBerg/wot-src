@@ -119,11 +119,6 @@ package net.wg.gui.battle.windows
          TextFieldEx.setNoTranslate(this.serverStatsTF,true);
       }
       
-      override protected function configUI() : void
-      {
-         super.configUI();
-      }
-      
       override protected function onPopulate() : void
       {
          var _loc1_:DisplayObject = null;

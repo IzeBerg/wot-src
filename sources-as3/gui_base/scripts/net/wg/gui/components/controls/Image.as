@@ -39,20 +39,10 @@ package net.wg.gui.components.controls
          addChild(this._bitmap);
       }
       
-      public function clearImage() : void
-      {
-         this.removeImgData();
-      }
-      
       public final function dispose() : void
       {
          this._disposed = true;
          this.onDispose();
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
       
       public function readjustSize() : void
@@ -217,6 +207,11 @@ package net.wg.gui.components.controls
          {
             dispatchEvent(new Event(Event.CHANGE));
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

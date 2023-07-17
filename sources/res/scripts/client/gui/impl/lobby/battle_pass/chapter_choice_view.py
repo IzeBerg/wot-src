@@ -1,7 +1,6 @@
 from functools import partial
 import typing
 from PlayerEvents import g_playerEvents
-from account_helpers.settings_core.settings_constants import BattlePassStorageKeys
 from battle_pass_common import CurrencyBP, FinalReward
 from frameworks.wulf import ViewFlags, ViewSettings
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -24,7 +23,6 @@ from gui.server_events.events_dispatcher import showMissionsBattlePass
 from gui.shared import events, EVENT_BUS_SCOPE
 from gui.shared.event_dispatcher import hideVehiclePreview, showBattlePassBuyWindow, showBattlePassHowToEarnPointsView, showBrowserOverlayView, showHangar, showShop, showStylePreview, showStyleProgressionPreview, showCollectionWindow
 from helpers import dependency
-from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.game_control import IBattlePassController, ICollectionsSystemController
 from skeletons.gui.shared import IItemsCache
 from tutorial.control.game_vars import getVehicleByIntCD
@@ -42,7 +40,6 @@ class ChapterChoiceView(ViewImpl):
     __battlePass = dependency.descriptor(IBattlePassController)
     __collectionsSystem = dependency.descriptor(ICollectionsSystemController)
     __itemsCache = dependency.descriptor(IItemsCache)
-    __settingsCore = dependency.descriptor(ISettingsCore)
 
     def __init__(self, *args, **kwargs):
         settings = ViewSettings(R.views.lobby.battle_pass.ChapterChoiceView())
@@ -232,7 +229,8 @@ class ChapterChoiceView(ViewImpl):
         showStylePreview(vehicleCD, style=style, topPanelData={'linkage': VEHPREVIEW_CONSTANTS.TOP_PANEL_TABS_LINKAGE, 
            'tabIDs': (
                     TabID.VEHICLE, TabID.STYLE), 
-           'currentTabID': TabID.STYLE}, itemsPack=itemsPack, backCallback=self.__getPreviewCallback())
+           'currentTabID': TabID.STYLE, 
+           'style': style}, itemsPack=itemsPack, backCallback=self.__getPreviewCallback())
 
     @staticmethod
     def __getPreviewCallback():
@@ -243,13 +241,7 @@ class ChapterChoiceView(ViewImpl):
 
     def __selectChapter(self, args):
         chapterID = int(args.get('chapterID', 0))
-        settings = self.__settingsCore.serverSettings
-        needShowExtraIntro = settings.getBPStorage().get(BattlePassStorageKeys.EXTRA_CHAPTER_INTRO_SHOWN)
-        if self.__battlePass.isExtraChapter(chapterID) and not needShowExtraIntro:
-            layoutID = R.views.lobby.battle_pass.ExtraIntroView()
-        else:
-            layoutID = R.views.lobby.battle_pass.BattlePassProgressionsView()
-        showMissionsBattlePass(layoutID, chapterID)
+        showMissionsBattlePass(R.views.lobby.battle_pass.BattlePassProgressionsView(), chapterID)
 
     @staticmethod
     def __showAboutView():

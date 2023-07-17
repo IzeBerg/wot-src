@@ -77,8 +77,6 @@
 			1.6
 			<!--BW_String-->
 		</priceFactor>
-		<tiling>1 1 0 0</tiling>
-		<exclusionMask/>
 		<density>1.057769 1.057769</density>
 	</camouflage>
 	<hull>
@@ -96,7 +94,6 @@
 			<armor_11>38</armor_11>
 			<armor_12>76</armor_12>
 			<armor_13>38</armor_13>
-			<armor_14>25</armor_14>
 		</armor>
 		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 		<weight>30000</weight>
@@ -124,11 +121,11 @@
 		<swinging>
 			<lodDist>FAR</lodDist>
 			<pitchParams>
-				0.34 38.00 0.36 1.00 0.05 0.34
+				0.34 38 0.36 1 0.05 0.34
 				<!--BW_String-->
 			</pitchParams>
 			<rollParams>
-				1.00 0.34 38.00 0.36 1.00 0.06 0.40
+				1 0.34 38 0.36 1 0.06 0.4
 				<!--BW_String-->
 			</rollParams>
 			<sensitivityToImpulse>
@@ -147,6 +144,7 @@
 			<collisionModelServer>vehicles/american/A158_T832/collision/Hull.model</collisionModelServer>
 			<collisionModelClient>vehicles/american/A158_T832/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
+		<hangarShadowTexture>vehicles/american/A158_T832/T832_HangarShadowMap.dds</hangarShadowTexture>
 		<customizationSlots>
 			<slot>
 				<slotType>clan</slotType>
@@ -162,7 +160,6 @@
 					<!--BW_String-->
 				</size>
 				<hideIfDamaged>true</hideIfDamaged>
-				<isUVProportional>true</isUVProportional>
 			</slot>
 			<slot>
 				<slotType>paint</slotType>
@@ -202,7 +199,6 @@
 					<!--BW_String-->
 				</rotation>
 				<scale>0.389838 0.155935 0.389838</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.282479</clipAngle>
 				<anchorShift>
@@ -214,6 +210,7 @@
 				<slotType>projectionDecal</slotType>
 				<slotId>15001</slotId>
 				<tags>formfactor_square</tags>
+				<compatibleModels>A158_T832_BX_T_3DSt</compatibleModels>
 				<position>
 					0.000009 1.60658 -3.29133
 					<!--BW_String-->
@@ -223,17 +220,14 @@
 					<!--BW_String-->
 				</rotation>
 				<scale>0.423257 0.169303 0.423258</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.282479</clipAngle>
 				<anchorShift>
 					-0.01
 					<!--BW_String-->
 				</anchorShift>
-				<compatibleModels>A158_T832_BX_T_3DSt</compatibleModels>
 			</slot>
 		</customizationSlots>
-		<hangarShadowTexture>vehicles/american/A158_T832/T832_HangarShadowMap.dds</hangarShadowTexture>
 		<customization>
 			<customizableVehicleAreas>
 				<paint>HULL</paint>
@@ -241,7 +235,6 @@
 			</customizableVehicleAreas>
 		</customization>
 		<camouflage>
-			<tiling>1 1 0 0</tiling>
 			<density>92.801849 92.902893</density>
 			<aoTextureSize>1024 1024</aoTextureSize>
 		</camouflage>
@@ -656,6 +649,10 @@
 			</effects>
 			<wwsoundPC>treads_type_pc</wwsoundPC>
 			<wwsoundNPC>trds_chf_npc</wwsoundNPC>
+			<hullPosition>
+				0 1.1549 0
+				<!--BW_String-->
+			</hullPosition>
 			<customizationSlots>
 				<slot>
 					<slotType>paint</slotType>
@@ -679,10 +676,6 @@
 					<anchorDirection>0 1 0</anchorDirection>
 				</slot>
 			</customizationSlots>
-			<hullPosition>
-				0 1.1549 0
-				<!--BW_String-->
-			</hullPosition>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>CHASSIS</paint>
@@ -736,39 +729,6 @@
 					</maxOffset>
 				</group>
 			</groundNodes>
-			<splineDesc>
-				<segmentModelLeft>vehicles/american/A158_T832/track/segment1_L.model</segmentModelLeft>
-				<segmentModelRight>vehicles/american/A158_T832/track/segment1_R.model</segmentModelRight>
-				<segment2ModelLeft>vehicles/american/A158_T832/track/segment2_L.model</segment2ModelLeft>
-				<segment2ModelRight>vehicles/american/A158_T832/track/segment2_R.model</segment2ModelRight>
-				<left>vehicles/american/A158_T832/track/left.track</left>
-				<right>vehicles/american/A158_T832/track/right.track</right>
-				<segmentLength>
-					0.14
-					<!--BW_String-->
-				</segmentLength>
-				<segmentOffset>
-					0.25
-					<!--BW_String-->
-				</segmentOffset>
-				<segment2Offset>
-					0.07
-					<!--BW_String-->
-				</segment2Offset>
-				<atlas>
-					<UTiles>1</UTiles>
-					<VTiles>1</VTiles>
-				</atlas>
-				<modelSets>
-					<A158_T832_BX_T_3DSt>
-						<segmentModelLeft>vehicles/american/A158_T832/_skins/A158_T832_BX_T_3DSt/track/segment1_L.model</segmentModelLeft>
-						<segmentModelRight>vehicles/american/A158_T832/_skins/A158_T832_BX_T_3DSt/track/segment1_R.model</segmentModelRight>
-						<segment2ModelLeft>vehicles/american/A158_T832/_skins/A158_T832_BX_T_3DSt/track/segment2_L.model</segment2ModelLeft>
-						<segment2ModelRight>vehicles/american/A158_T832/_skins/A158_T832_BX_T_3DSt/track/segment2_R.model</segment2ModelRight>
-					</A158_T832_BX_T_3DSt>
-				</modelSets>
-				<lodDist>SPLINE_TRACK</lodDist>
-			</splineDesc>
 			<trackNodes>
 				<enable>true</enable>
 				<linkBones>false</linkBones>
@@ -994,6 +954,42 @@
 					</offset>
 				</node>
 			</trackNodes>
+			<splineDesc>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<segmentModelLeft>vehicles/american/A158_T832/track/segment1_L.model</segmentModelLeft>
+					<segmentModelRight>vehicles/american/A158_T832/track/segment1_R.model</segmentModelRight>
+					<segment2ModelLeft>vehicles/american/A158_T832/track/segment2_L.model</segment2ModelLeft>
+					<segment2ModelRight>vehicles/american/A158_T832/track/segment2_R.model</segment2ModelRight>
+					<left>vehicles/american/A158_T832/track/left.track</left>
+					<right>vehicles/american/A158_T832/track/right.track</right>
+					<segmentLength>
+						0.14
+						<!--BW_String-->
+					</segmentLength>
+					<segmentOffset>
+						0.25
+						<!--BW_String-->
+					</segmentOffset>
+					<segment2Offset>
+						0.07
+						<!--BW_String-->
+					</segment2Offset>
+					<atlas>
+						<UTiles>1</UTiles>
+						<VTiles>1</VTiles>
+					</atlas>
+					<modelSets>
+						<A158_T832_BX_T_3DSt>
+							<segmentModelLeft>vehicles/american/A158_T832/_skins/A158_T832_BX_T_3DSt/track/segment1_L.model</segmentModelLeft>
+							<segmentModelRight>vehicles/american/A158_T832/_skins/A158_T832_BX_T_3DSt/track/segment1_R.model</segmentModelRight>
+							<segment2ModelLeft>vehicles/american/A158_T832/_skins/A158_T832_BX_T_3DSt/track/segment2_L.model</segment2ModelLeft>
+							<segment2ModelRight>vehicles/american/A158_T832/_skins/A158_T832_BX_T_3DSt/track/segment2_R.model</segment2ModelRight>
+						</A158_T832_BX_T_3DSt>
+					</modelSets>
+				</trackPair>
+				<lodDist>SPLINE_TRACK</lodDist>
+			</splineDesc>
 			<physicalTracks>
 				<left>
 					<segmentsCount>204</segmentsCount>
@@ -1451,6 +1447,7 @@
 							</range>
 						</top>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</left>
 				<right>
 					<segmentsCount>204</segmentsCount>
@@ -1853,6 +1850,7 @@
 							</range>
 						</top>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</right>
 			</physicalTracks>
 			<repairTime>
@@ -1891,10 +1889,7 @@
 				<armor_14>298</armor_14>
 				<armor_15>
 					15
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_15>
 			</armor>
 			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
@@ -1951,46 +1946,24 @@
 					<armor>
 						<armor_1>
 							298
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
 							203
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_2>
 						<armor_3>
 							152.4
 							<!--BW_String-->
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_3>
-						<armor_5>
-							35
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
-						</armor_5>
 						<armor_6>
 							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_6>
 						<armor_9>
 							298
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_9>
 						<gun>45</gun>
 					</armor>
@@ -2041,7 +2014,6 @@
 							<slotId>48000</slotId>
 							<position>0 0 0</position>
 							<rotation>0 0 0</rotation>
-							<compatibleModels>A158_T832_BX_T_3DSt</compatibleModels>
 						</slot>
 						<slot>
 							<slotType>insigniaOnGun</slotType>
@@ -2051,18 +2023,17 @@
 								<!--BW_String-->
 							</rayStart>
 							<rayEnd>
-								0.006985 0.003484 3.35
+								0.006985 0.003484 4.5637
 								<!--BW_String-->
 							</rayEnd>
 							<rayUp>
-								0.104 0.000000 0.000000
+								0.104 0 0
 								<!--BW_String-->
 							</rayUp>
 							<size>
 								0.6
 								<!--BW_String-->
 							</size>
-							<isUVProportional>true</isUVProportional>
 						</slot>
 					</customizationSlots>
 					<customization>
@@ -2087,10 +2058,8 @@
 						<collisionModelServer>vehicles/american/A158_T832/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A158_T832/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
-					<animateEmblemSlots>true</animateEmblemSlots>
 					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
-						<tiling>1 1 0 0</tiling>
 						<density>119.359352 118.619461</density>
 						<aoTextureSize>512 512</aoTextureSize>
 					</camouflage>
@@ -2112,6 +2081,10 @@
 				<collisionModelServer>vehicles/american/A158_T832/collision/Turret_01.model</collisionModelServer>
 				<collisionModelClient>vehicles/american/A158_T832/collision_client/Turret_01.model</collisionModelClient>
 			</hitTester>
+			<gunPosition>
+				-0.003656 0.393815 1.01736
+				<!--BW_String-->
+			</gunPosition>
 			<customizationSlots>
 				<slot>
 					<slotType>paint</slotType>
@@ -2141,7 +2114,6 @@
 						0.25
 						<!--BW_String-->
 					</size>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>player</slotType>
@@ -2158,7 +2130,6 @@
 						<!--BW_String-->
 					</size>
 					<hideIfDamaged>true</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>inscription</slotType>
@@ -2172,7 +2143,6 @@
 						<!--BW_String-->
 					</size>
 					<hideIfDamaged>true</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>inscription</slotType>
@@ -2192,18 +2162,17 @@
 					<tags>formfactor_square</tags>
 					<compatibleModels>A158_T832_BX_T_3DSt</compatibleModels>
 					<position>
-						-1.01554 2.30011 -0.00125618
+						-1.01554 2.30011 -0.001256
 						<!--BW_String-->
 					</position>
 					<rotation>
-						1.74533 1.25825 -0.0224311
+						1.74533 1.25825 -0.022431
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						0.417276 0.16691 0.417276
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.282479</clipAngle>
 					<anchorShift>
@@ -2228,7 +2197,6 @@
 						0.298056 0.2 0.298057
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.282479</clipAngle>
 					<anchorShift>
@@ -2240,26 +2208,25 @@
 					<slotType>projectionDecal</slotType>
 					<slotId>35002</slotId>
 					<tags>formfactor_square</tags>
+					<compatibleModels>A158_T832_BX_T_3DSt</compatibleModels>
 					<position>
 						0.226705 2.48469 1.02616
 						<!--BW_String-->
 					</position>
 					<rotation>
-						-0.000000 0.000000 3.13986
+						-0 0 3.13986
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						0.41709 0.279874 0.417091
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.282479</clipAngle>
 					<anchorShift>
 						0.02
 						<!--BW_String-->
 					</anchorShift>
-					<compatibleModels>A158_T832_BX_T_3DSt</compatibleModels>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2271,11 +2238,10 @@
 						<!--BW_String-->
 					</position>
 					<rotation>
-						3.14147 0.000000 -0.000008
+						3.14147 0 -0.000008
 						<!--BW_String-->
 					</rotation>
 					<scale>0.341532 0.229174 0.341533</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>
 						1.32616
@@ -2287,10 +2253,6 @@
 					</anchorShift>
 				</slot>
 			</customizationSlots>
-			<gunPosition>
-				-0.003656 0.393815 1.01736
-				<!--BW_String-->
-			</gunPosition>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>TURRET</paint>
@@ -2299,11 +2261,10 @@
 			</customization>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
 			<physicsShape>
-				0.958 -0.019 0.971 0.047 0.674 0.008 0.703 0.674 0.459 0.531 0.000 0.500 0.000 0.100 0.000
+				0.958 -0.019 0.971 0.047 0.674 0.008 0.703 0.674 0.459 0.531 0 0.5 0 0.1 0
 				<!--BW_String-->
 			</physicsShape>
 			<camouflage>
-				<tiling>1 1 0 0</tiling>
 				<density>80.766716 81.170021</density>
 				<aoTextureSize>512 512</aoTextureSize>
 			</camouflage>

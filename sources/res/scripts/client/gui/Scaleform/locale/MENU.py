@@ -616,6 +616,7 @@ class MENU(object):
     TANK_PARAMS_MM = '#menu:tank_params/mm'
     TANK_PARAMS_VAL = '#menu:tank_params/val'
     TANK_PARAMS_VPM = '#menu:tank_params/vpm'
+    TANK_PARAMS_VPS = '#menu:tank_params/vps'
     TANK_PARAMS_QPT = '#menu:tank_params/qpt'
     TANK_PARAMS_M = '#menu:tank_params/m'
     TANK_PARAMS_H = '#menu:tank_params/h'
@@ -1175,6 +1176,7 @@ class MENU(object):
     MODULEINFO_PARAMS_AVGDAMAGELIST = '#menu:moduleInfo/params/avgDamageList'
     MODULEINFO_PARAMS_AVGDAMAGE = '#menu:moduleInfo/params/avgDamage'
     MODULEINFO_PARAMS_AVGDAMAGEPERMINUTE = '#menu:moduleInfo/params/avgDamagePerMinute'
+    MODULEINFO_PARAMS_DAMAGEPERSECOND = '#menu:moduleInfo/params/damagePerSecond'
     MODULEINFO_PARAMS_ARMOR = '#menu:moduleInfo/params/armor'
     MODULEINFO_PARAMS_ROTATIONSPEED = '#menu:moduleInfo/params/rotationSpeed'
     MODULEINFO_PARAMS_DISPERTIONRADIUS = '#menu:moduleInfo/params/dispertionRadius'
@@ -1187,10 +1189,9 @@ class MENU(object):
     MODULEINFO_PARAMS_PIERCINGDISTANCEHEADER = '#menu:moduleInfo/params/piercingDistanceHeader'
     MODULEINFO_PARAMS_PIERCINGDISTANCE = '#menu:moduleInfo/params/piercingDistance'
     MODULEINFO_PARAMS_MAXSHOTDISTANCE = '#menu:moduleInfo/params/maxShotDistance'
-    MODULEINFO_PARAMS_MAXSHOTDISTANCE_FOOTNOTE = '#menu:moduleInfo/params/maxShotDistance/footnote'
     MODULEINFO_PARAMS_NOPIERCINGDISTANCE_FOOTNOTE = '#menu:moduleInfo/params/noPiercingDistance/footnote'
     MODULEINFO_PARAMS_PIERCINGDISTANCE_FOOTNOTE = '#menu:moduleInfo/params/piercingDistance/footnote'
-    MODULEINFO_PARAMS_NOPIERCINGDISTANCE_FOOTNOTE_MAXDISTANCE = '#menu:moduleInfo/params/noPiercingDistance/footnote/maxDistance'
+    MODULEINFO_PARAMS_GUARANTEEDDAMAGE_FOOTNOTE = '#menu:moduleInfo/params/guaranteedDamage/footnote'
     MODULEINFO_PARAMS_STUNMAXDURATION = '#menu:moduleInfo/params/stunMaxDuration'
     MODULEINFO_PARAMS_STUNMINDURATION = '#menu:moduleInfo/params/stunMinDuration'
     MODULEINFO_PARAMS_STUNMAXDURATIONLIST = '#menu:moduleInfo/params/stunMaxDurationList'
@@ -2176,12 +2177,12 @@ class MENU(object):
     VIEWHEADER_BACKBTN_DESCRLABEL_TECHTREE_SWEDEN_BLUEPRINTS = '#menu:viewHeader/backBtn/descrLabel/techtree/sweden/blueprints'
     VIEWHEADER_BACKBTN_DESCRLABEL_TECHTREE_POLAND_BLUEPRINTS = '#menu:viewHeader/backBtn/descrLabel/techtree/poland/blueprints'
     VIEWHEADER_BACKBTN_DESCRLABEL_TECHTREE_ITALY_BLUEPRINTS = '#menu:viewHeader/backBtn/descrLabel/techtree/italy/blueprints'
-    INTERNET_PROVIDER_ROSTELECOM_NAME = '#menu:internet_provider/Rostelecom/name'
-    INTERNET_PROVIDER_ROSTELECOM_TARIFF = '#menu:internet_provider/Rostelecom/tariff'
-    INTERNET_PROVIDER_BELTELECOM_NAME = '#menu:internet_provider/Beltelecom/name'
-    INTERNET_PROVIDER_BELTELECOM_TARIFF = '#menu:internet_provider/Beltelecom/tariff'
-    INTERNET_PROVIDER_KYIVSTAR_NAME = '#menu:internet_provider/Kyivstar/name'
-    INTERNET_PROVIDER_KYIVSTAR_TARIFF = '#menu:internet_provider/Kyivstar/tariff'
+    INTERNET_PROVIDER_LOCALPARTNER2_NAME = '#menu:internet_provider/LocalPartner2/name'
+    INTERNET_PROVIDER_LOCALPARTNER2_TARIFF = '#menu:internet_provider/LocalPartner2/tariff'
+    INTERNET_PROVIDER_LOCALPARTNER3_NAME = '#menu:internet_provider/LocalPartner3/name'
+    INTERNET_PROVIDER_LOCALPARTNER3_TARIFF = '#menu:internet_provider/LocalPartner3/tariff'
+    INTERNET_PROVIDER_LOCALPARTNER4_NAME = '#menu:internet_provider/LocalPartner4/name'
+    INTERNET_PROVIDER_LOCALPARTNER4_TARIFF = '#menu:internet_provider/LocalPartner4/tariff'
     INTERNET_PROVIDER_KAZAKHTELECOM_NAME = '#menu:internet_provider/Kazakhtelecom/name'
     INTERNET_PROVIDER_KAZAKHTELECOM_TARIFF = '#menu:internet_provider/Kazakhtelecom/tariff'
     INTERNET_PROVIDER_BEELINEKZ_NAME = '#menu:internet_provider/BeelineKZ/name'
@@ -2216,7 +2217,6 @@ class MENU(object):
     CRYSTALS_INFO_TAB_EARN_LEVEL_DESCRIPTIONCONTENT_LEVEL9 = '#menu:crystals/info/tab/earn/level/descriptionContent/level9'
     CRYSTALS_INFO_TAB_EARN_LEVEL_MOD_0 = '#menu:crystals/info/tab/earn/level/mod/0'
     CRYSTALS_INFO_TAB_EARN_LEVEL_MOD_1 = '#menu:crystals/info/tab/earn/level/mod/1'
-    CRYSTALS_INFO_TAB_EARN_LEVEL_MOD_2 = '#menu:crystals/info/tab/earn/level/mod/2'
     CRYSTALS_INFO_TAB_EARN_MARKER_TITLE = '#menu:crystals/info/tab/earn/marker/title'
     CRYSTALS_INFO_TAB_EARN_MARKER_DESCRIPTION_1 = '#menu:crystals/info/tab/earn/marker/description/1'
     CRYSTALS_INFO_TAB_EARN_MARKER_DESCRIPTION_2 = '#menu:crystals/info/tab/earn/marker/description/2'
@@ -2286,7 +2286,6 @@ class MENU(object):
     CRYSTALS_INFO_TAB_GET_DESCRIPTION = '#menu:crystals/info/tab/get/description'
     CRYSTALS_INFO_TAB_GET_RANDOM = '#menu:crystals/info/tab/get/random'
     CRYSTALS_INFO_TAB_GET_GENERAL = '#menu:crystals/info/tab/get/general'
-    CRYSTALS_INFO_TAB_GET_RANKED = '#menu:crystals/info/tab/get/ranked'
     CRYSTALS_INFO_TAB_GET_CARD_CONDITION = '#menu:crystals/info/tab/get/card/condition'
     CRYSTALS_INFO_TAB_GET_CARD_WIN = '#menu:crystals/info/tab/get/card/win'
     CRYSTALS_INFO_TAB_GET_CARD_DEFEAT = '#menu:crystals/info/tab/get/card/defeat'
@@ -2742,6 +2741,7 @@ class MENU(object):
      TANK_PARAMS_MM,
      TANK_PARAMS_VAL,
      TANK_PARAMS_VPM,
+     TANK_PARAMS_VPS,
      TANK_PARAMS_QPT,
      TANK_PARAMS_M,
      TANK_PARAMS_H,
@@ -2897,15 +2897,15 @@ class MENU(object):
      CST_ITEM_CTX_MENU_UNLOAD,
      CST_ITEM_CTX_MENU_DECONSTRUCT)
     INTERNET_PROVIDER_ALL_NAME_ENUM = (
-     INTERNET_PROVIDER_ROSTELECOM_NAME,
-     INTERNET_PROVIDER_BELTELECOM_NAME,
-     INTERNET_PROVIDER_KYIVSTAR_NAME,
+     INTERNET_PROVIDER_LOCALPARTNER2_NAME,
+     INTERNET_PROVIDER_LOCALPARTNER3_NAME,
+     INTERNET_PROVIDER_LOCALPARTNER4_NAME,
      INTERNET_PROVIDER_KAZAKHTELECOM_NAME,
      INTERNET_PROVIDER_BEELINEKZ_NAME)
     INTERNET_PROVIDER_ALL_TARIFF_ENUM = (
-     INTERNET_PROVIDER_ROSTELECOM_TARIFF,
-     INTERNET_PROVIDER_BELTELECOM_TARIFF,
-     INTERNET_PROVIDER_KYIVSTAR_TARIFF,
+     INTERNET_PROVIDER_LOCALPARTNER2_TARIFF,
+     INTERNET_PROVIDER_LOCALPARTNER3_TARIFF,
+     INTERNET_PROVIDER_LOCALPARTNER4_TARIFF,
      INTERNET_PROVIDER_KAZAKHTELECOM_TARIFF,
      INTERNET_PROVIDER_BEELINEKZ_TARIFF)
     BOOSTER_USERNAME_ENUM = (

@@ -1,4 +1,4 @@
-import cPickle, logging
+import json, logging
 from functools import partial
 import BigWorld
 from AccountCommands import RES_SUCCESS, RES_FAILURE
@@ -81,7 +81,7 @@ class ReceiveMultipleOfferGiftsProcessor(Processor):
     def _request(self, callback):
         _logger.debug('Make server request to receive offers gifts. Choices: %s', self.__chosenGifts)
         Waiting.show('loadContent')
-        choices = cPickle.dumps(self.__chosenGifts)
+        choices = json.dumps(self.__chosenGifts)
         BigWorld.player().receiveMultipleOfferGifts(choices, lambda requestID, resultID, errStr, ext=None: self._response(resultID, callback, ctx=ext, errStr=errStr))
         return
 

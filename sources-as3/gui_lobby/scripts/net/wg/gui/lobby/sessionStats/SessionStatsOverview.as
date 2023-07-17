@@ -11,21 +11,25 @@ package net.wg.gui.lobby.sessionStats
    import net.wg.gui.components.controls.Image;
    import net.wg.gui.interfaces.IButtonIconLoader;
    import net.wg.gui.interfaces.ISoundButtonEx;
-   import net.wg.gui.lobby.components.IResizableContent;
    import net.wg.gui.lobby.sessionStats.components.SessionStatsAnimatedCounter;
    import net.wg.gui.lobby.sessionStats.data.SessionStatsOverviewVO;
    import net.wg.gui.lobby.sessionStats.data.SessionStatsTabVO;
    import net.wg.gui.lobby.sessionStats.events.SessionStatsPopoverResizeEvent;
+   import net.wg.gui.lobby.sessionStats.interfaces.ISeassonResizableContent;
    import net.wg.infrastructure.base.meta.ISessionStatsOverviewMeta;
    import net.wg.infrastructure.base.meta.impl.SessionStatsOverviewMeta;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.IndexEvent;
    
-   public class SessionStatsOverview extends SessionStatsOverviewMeta implements IResizableContent, ISessionStatsOverviewMeta
+   public class SessionStatsOverview extends SessionStatsOverviewMeta implements ISeassonResizableContent, ISessionStatsOverviewMeta
    {
       
       private static const MIN_TAB_WIDTH:int = 142;
+      
+      private static const BTN_TOP_GAP:int = 15;
+      
+      private static const BTN_BOTTOM_GAP:int = 15;
       
       private static const BUTTON_STATES_INVALID:String = "buttonStatesInvalid";
        
@@ -60,7 +64,7 @@ package net.wg.gui.lobby.sessionStats
       
       private var _buttonStates:Vector.<ButtonPropertiesVO> = null;
       
-      private var _isExpanded:Boolean;
+      private var _contentHeight:int = 0;
       
       public function SessionStatsOverview()
       {
@@ -74,7 +78,6 @@ package net.wg.gui.lobby.sessionStats
          var _loc3_:SessionStatsTabVO = null;
          var _loc4_:ISoundButtonEx = null;
          var _loc5_:ButtonPropertiesVO = null;
-         var _loc6_:Number = NaN;
          if(this._data && isInvalid(InvalidationType.DATA))
          {
             this.battleStats.update(this._data);
@@ -118,11 +121,10 @@ package net.wg.gui.lobby.sessionStats
          }
          if(isInvalid(InvalidationType.SIZE))
          {
-            this.lipBg.y = height - (this.lipBg.height >> 1);
-            this.moreBtn.y = this.resetBtn.y = this.settingsBtn.y = this.lipBg.y + (height - this.lipBg.y - this.moreBtn.height >> 1);
-            _loc6_ = height - this.battleStats.y - (this.lipBg.height >> 1);
-            this.battleStats.setViewSize(width,_loc6_);
-            this.vehicleStats.setViewSize(width,_loc6_);
+            this.moreBtn.y = this.resetBtn.y = this.settingsBtn.y = this.getBtnPosition();
+            this.lipBg.y = this.getBottomLipPosition();
+            this.battleStats.setViewSize(width,this.lipBg.y - this.battleStats.y);
+            this.vehicleStats.setViewSize(width,this.lipBg.y - this.vehicleStats.y);
          }
          super.draw();
       }
@@ -148,19 +150,6 @@ package net.wg.gui.lobby.sessionStats
       {
          super.onPopulate();
          this.registerComponents();
-      }
-      
-      private function registerComponents() : void
-      {
-         if(!isFlashComponentRegisteredS(SESSION_STATS_CONSTANTS.SESSION_BATTLE_STATS_VIEW_PY_ALIAS))
-         {
-            registerFlashComponentS(this.battleStats,SESSION_STATS_CONSTANTS.SESSION_BATTLE_STATS_VIEW_PY_ALIAS);
-         }
-         if(!isFlashComponentRegisteredS(SESSION_STATS_CONSTANTS.SESSION_VEHICLE_STATS_VIEW_PY_ALIAS))
-         {
-            registerFlashComponentS(this.vehicleStats,SESSION_STATS_CONSTANTS.SESSION_VEHICLE_STATS_VIEW_PY_ALIAS);
-         }
-         invalidateSize();
       }
       
       override protected function onDispose() : void
@@ -208,16 +197,61 @@ package net.wg.gui.lobby.sessionStats
          invalidate(BUTTON_STATES_INVALID);
       }
       
-      private function onContentExpandedHandler(param1:SessionStatsPopoverResizeEvent) : void
+      public function as_setHeaderTooltip(param1:String) : void
       {
-         var _loc2_:Boolean = Boolean(param1.data);
-         this.expand(_loc2_);
-         onExpandedS(_loc2_);
+         this._titleTooltip = param1;
       }
       
-      private function expand(param1:Boolean) : void
+      public function canShowAutomatically() : Boolean
       {
-         this._isExpanded = param1;
+         return true;
+      }
+      
+      public function contentHeight() : int
+      {
+         return this.battleStats.y + this.battleStats.contentHeight() + BTN_TOP_GAP + this.moreBtn.height + BTN_BOTTOM_GAP;
+      }
+      
+      public function getComponentForFocus() : InteractiveObject
+      {
+         return undefined;
+      }
+      
+      public function setViewSize(param1:Number, param2:Number) : void
+      {
+         if(_width == param1 && _height == param2)
+         {
+            return;
+         }
+         _width = param1;
+         _height = param2;
+         invalidateSize();
+      }
+      
+      public function update(param1:Object) : void
+      {
+      }
+      
+      private function getBtnPosition() : int
+      {
+         return _height - this.moreBtn.height - BTN_BOTTOM_GAP;
+      }
+      
+      private function getBottomLipPosition() : int
+      {
+         return this.getBtnPosition() - BTN_TOP_GAP;
+      }
+      
+      private function registerComponents() : void
+      {
+         if(!isFlashComponentRegisteredS(SESSION_STATS_CONSTANTS.SESSION_BATTLE_STATS_VIEW_PY_ALIAS))
+         {
+            registerFlashComponentS(this.battleStats,SESSION_STATS_CONSTANTS.SESSION_BATTLE_STATS_VIEW_PY_ALIAS);
+         }
+         if(!isFlashComponentRegisteredS(SESSION_STATS_CONSTANTS.SESSION_VEHICLE_STATS_VIEW_PY_ALIAS))
+         {
+            registerFlashComponentS(this.vehicleStats,SESSION_STATS_CONSTANTS.SESSION_VEHICLE_STATS_VIEW_PY_ALIAS);
+         }
          invalidateSize();
       }
       
@@ -233,6 +267,30 @@ package net.wg.gui.lobby.sessionStats
             this.battleStats.visible = false;
             this.vehicleStats.visible = true;
          }
+      }
+      
+      public function get centerOffset() : int
+      {
+         return 0;
+      }
+      
+      public function set centerOffset(param1:int) : void
+      {
+      }
+      
+      public function get active() : Boolean
+      {
+         return false;
+      }
+      
+      public function set active(param1:Boolean) : void
+      {
+      }
+      
+      private function onContentExpandedHandler(param1:SessionStatsPopoverResizeEvent) : void
+      {
+         var _loc2_:Boolean = param1.isExpanded;
+         onExpandedS(_loc2_);
       }
       
       private function onButtonBarIndexChangeHandler(param1:IndexEvent) : void
@@ -281,50 +339,6 @@ package net.wg.gui.lobby.sessionStats
          {
             onClickSettingsBtnS();
          }
-      }
-      
-      public function setViewSize(param1:Number, param2:Number) : void
-      {
-         _width = param1;
-         _height = param2;
-         invalidateSize();
-      }
-      
-      public function get centerOffset() : int
-      {
-         return 0;
-      }
-      
-      public function set centerOffset(param1:int) : void
-      {
-      }
-      
-      public function get active() : Boolean
-      {
-         return false;
-      }
-      
-      public function set active(param1:Boolean) : void
-      {
-      }
-      
-      public function canShowAutomatically() : Boolean
-      {
-         return true;
-      }
-      
-      public function update(param1:Object) : void
-      {
-      }
-      
-      public function getComponentForFocus() : InteractiveObject
-      {
-         return undefined;
-      }
-      
-      public function as_setHeaderTooltip(param1:String) : void
-      {
-         this._titleTooltip = param1;
       }
    }
 }

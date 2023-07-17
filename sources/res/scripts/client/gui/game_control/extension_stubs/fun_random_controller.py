@@ -1,5 +1,6 @@
 from collections import namedtuple
 from skeletons.gui.game_control import IFunRandomController
+from gui.impl.gen import R
 _FunRandomConfig = namedtuple('_FunRandomConfig', ('isEnabled', 'subModes', 'metaProgression'))
 _FunRandomProgressConfig = namedtuple('_FunRandomProgressConfig', ('isEnabled', 'progressions'))
 _FunRandomStatus = namedtuple('_FunRandomStatus', ('state', 'rightBorder', 'primeDelta'))
@@ -180,8 +181,24 @@ class FunRandomController(IFunRandomController):
     def isFunRandomPrbActive(self):
         return False
 
+    def getAssetsPointer(self):
+        return 'undefined'
+
+    def getIconsResRoot(self):
+        if R.images.dyn('fun_random'):
+            return R.images.fun_random.gui.maps.icons.feature.asset_packs.modes.undefined
+        return R.invalid
+
+    def getLocalsResRoot(self):
+        if R.strings.dyn('fun_random'):
+            return R.strings.fun_random.modes.undefined
+        return R.invalid
+
     def getSettings(self):
         return _FUN_CONFIG_STUB
+
+    def setDesiredSubModeID(self, subModeID, trustedSource=False):
+        pass
 
     def setSubModesHolder(self, subModesHolder):
         self.__subModesHolder = subModesHolder

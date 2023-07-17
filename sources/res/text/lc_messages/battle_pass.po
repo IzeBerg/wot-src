@@ -236,6 +236,9 @@ msgstr "Purchase all three Chapters to unlock all Improved Rewards."
 msgid "battlePassBuyView/card/divider"
 msgstr "or"
 
+msgid "battlePassBuyView/card/priceDivider"
+msgstr "or"
+
 msgid "battlePassBuyView/card/purchased"
 msgstr "Already purchased"
 
@@ -308,8 +311,14 @@ msgstr "Unlock Improved Rewards for completed Stages."
 msgid "battlePassBuyView/levelsSelected"
 msgstr "Selected Stages:"
 
+msgid "battlePassBuyView/multicurrencyPrice"
+msgstr "Purchase price:"
+
 msgid "battlePassBuyView/price"
 msgstr "Purchase price:"
+
+msgid "battlePassBuyView/priceDivider"
+msgstr "or"
 
 msgid "battlePassBuyView/reward/backBtn"
 msgstr "Back"
@@ -371,6 +380,9 @@ msgstr "Hidden Message"
 msgid "chapter/fullName/113"
 msgstr "Western Storm"
 
+msgid "chapter/fullName/114"
+msgstr "Carmen de Bisonte"
+
 msgid "chapter/fullName/2"
 msgstr "Job for Heroes"
 
@@ -391,6 +403,9 @@ msgstr "HIDDEN MESSAGE"
 
 msgid "chapter/fullNameUppercased/113"
 msgstr "WESTERN STORM"
+
+msgid "chapter/fullNameUppercased/114"
+msgstr "CARMEN DE BISONTE"
 
 msgid "chapter/fullNameUppercased/74"
 msgstr "NEW CHAPTER"
@@ -445,7 +460,7 @@ msgid "chapterChoice/confirmation/title/switch"
 msgstr "Switch to the \"%(chName)s\" Chapter?"
 
 msgid "chapterChoice/extraChapter/reward"
-msgstr "Vehicle and 3D style"
+msgstr "Premium vehicle"
 
 msgid "chapterChoice/freePoints/description"
 msgstr "Unspent Battle Pass Points: "
@@ -802,8 +817,8 @@ msgstr ""
 
 msgid "progression/activateExtraChapterDescr"
 msgstr ""
-"Purchase and activate the Chapter to receive the unique %(styleName)s 3D "
-"style."
+"You will receive Battle Pass Points and other rewards for completing the "
+"active Chapter."
 
 msgid "progression/activatePausedExtraChapterDescr"
 msgstr ""
@@ -901,20 +916,23 @@ msgstr ""
 msgid "progression/errorBtn"
 msgstr "To Garage"
 
-msgid "progression/extraChapter/widget/reward/caption"
-msgstr "The main reward for completing this Chapter."
+msgid "progression/extraChapterWidget/styleRemark"
+msgstr "With the Improved Pass"
 
-msgid "progression/extraChapter/widget/reward/label"
-msgstr "%(vehicleName)s and %(styleName)s 3D style"
+msgid "progression/extraChapterWidget/styleSubTitle"
+msgstr "and mission for the %(vehicleName)s"
 
-msgid "progression/extraChapter/widget/shortTimer"
-msgstr "%(H)s : %(m)s : %(s)s"
+msgid "progression/extraChapterWidget/styleTitle"
+msgstr "%(styleName)s style"
 
-msgid "progression/extraChapter/widget/timer"
-msgstr "%(D)s d %(H)s : %(m)s : %(s)s"
+msgid "progression/extraChapterWidget/vehicleCaption"
+msgstr "Premium Vehicle"
 
 msgid "progression/footer/freePointsDescr"
 msgstr "Unspent Battle Pass Points: "
+
+msgid "progression/footer/multicurrencyTooltip"
+msgstr "Can be purchased for gold or Free XP."
 
 msgid "progression/footer/status/inactive"
 msgstr "Chapter inactive"
@@ -998,6 +1016,9 @@ msgstr "View All Styles"
 
 msgid "questChainBonus"
 msgstr "A Series of Missions"
+
+msgid "randomQuestBonus"
+msgstr "Mission for the %(vehicle)s"
 
 msgid "reward/postBattle/comp7/progress"
 msgstr "Points for being among the top players by Prestige Points earned:"
@@ -1101,6 +1122,44 @@ msgstr "New Level of the %(styleName)s style"
 
 msgid "styleProgression/newStyle"
 msgstr "First Level of the %(styleName)s style"
+
+msgid "tooltips/RandomQuestTooltip/condition"
+msgstr "Condition: %(condition)"
+
+msgid "tooltips/RandomQuestTooltip/expireTime"
+msgstr ""
+"The mission is available %(whiteSpanish_Open)suntil "
+"%(month)s %(day)s%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/consumables"
+msgstr ""
+"%(whiteSpanish_Open)sConsumables:%(whiteSpanish_Close)s First Aid Kits, "
+"Repair Kits, and Fire Extinguishers"
+
+msgid "tooltips/RandomQuestTooltip/rewards/directives"
+msgstr "%(whiteSpanish_Open)sDirectives%(whiteSpanish_Close)s for equipment"
+
+msgid "tooltips/RandomQuestTooltip/rewards/money"
+msgstr ""
+"%(whiteSpanish_Open)sCredits, bonds, and Free XP%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/personal_reserves"
+msgstr "%(whiteSpanish_Open)sPersonal Reserve%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/premium"
+msgstr ""
+"%(whiteSpanish_Open)sDays of WoT Premium Account%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/standardEquipment"
+msgstr "%(whiteSpanish_Open)sStandard Equipment%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewardsTitle"
+msgstr ""
+"Once a day you can receive one of the following rewards for completing a "
+"mission:"
+
+msgid "tooltips/RandomQuestTooltip/title"
+msgstr "Mission for the %(vehicleName)"
 
 msgid "tooltips/battlePassCoins/secondaryText"
 msgstr ""
@@ -1257,7 +1316,7 @@ msgid "tooltips/inProgress/baseReward"
 msgstr "Base Reward"
 
 msgid "tooltips/inProgress/battleRoyale"
-msgstr "Steel Hunter: Reborn"
+msgstr "\"Steel Hunter\""
 
 msgid "tooltips/inProgress/chapter"
 msgstr "\"{name}\" Chapter"
@@ -1266,7 +1325,7 @@ msgid "tooltips/inProgress/epic"
 msgstr "Frontline"
 
 msgid "tooltips/inProgress/getPointsFrom"
-msgstr "Rules of earning Points in %(battleType)s."
+msgstr "Earning Points in %(battleType)s."
 
 msgid "tooltips/inProgress/hurryUp"
 msgstr ""

@@ -1,7 +1,6 @@
 package net.wg.gui.lobby.settings.feedback.ribbons
 {
    import net.wg.gui.components.controls.CheckBox;
-   import net.wg.gui.components.controls.InfoIcon;
    
    public class BattleEfficiencyControlsGroupContent extends GroupContent
    {
@@ -31,8 +30,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
       
       public var battleEventsEnemyBurningCheckbox:CheckBox = null;
       
-      public var battleEventsEnemyStunCheckbox:CheckBox = null;
-      
       public var battleEventsCrewPerksCheckbox:CheckBox = null;
       
       public function BattleEfficiencyControlsGroupContent()
@@ -55,9 +52,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          this.battleEventsEnemyTrackDamageCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ENEMYTRACKDAMAGE;
          this.battleEventsEnemyWorldCollisionCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_WORLDCOLLISION;
          this.battleEventsEnemyAssistStunCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_ASSISTSTUN;
-         this.battleEventsEnemyStunCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_STUN;
-         this.battleEventsEnemyStunCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
-         this.battleEventsEnemyStunCheckbox.toolTip = TOOLTIPS.SETTINGS_RIBBONS_ENEMYSTUN;
          this.battleEventsCrewPerksCheckbox.label = SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_CHECKBOX_CREWPERKS;
       }
       
@@ -87,8 +81,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          this.battleEventsEnemyWorldCollisionCheckbox = null;
          this.battleEventsEnemyAssistStunCheckbox.dispose();
          this.battleEventsEnemyAssistStunCheckbox = null;
-         this.battleEventsEnemyStunCheckbox.dispose();
-         this.battleEventsEnemyStunCheckbox = null;
          this.battleEventsCrewPerksCheckbox.dispose();
          this.battleEventsCrewPerksCheckbox = null;
          super.onDispose();

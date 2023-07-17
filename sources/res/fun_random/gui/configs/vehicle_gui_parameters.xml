@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<vehicleParameters>
+		<parameters>
+			<parameter>
+				<name>accuracy</name>
+				<icon>accuracy</icon>
+			</parameter>
+			<parameter>
+				<name>armour</name>
+				<icon>armour</icon>
+			</parameter>
+			<parameter>
+				<name>armoured_hull</name>
+				<icon>armoured_hull</icon>
+			</parameter>
+			<parameter>
+				<name>best_speed</name>
+				<icon>best_speed</icon>
+			</parameter>
+			<parameter>
+				<name>curved_trajectory</name>
+				<icon>curved_trajectory</icon>
+			</parameter>
+			<parameter>
+				<name>damage</name>
+				<icon>damage</icon>
+			</parameter>
+			<parameter>
+				<name>four_cannons</name>
+				<icon>four_cannons</icon>
+			</parameter>
+			<parameter>
+				<name>infinity_load</name>
+				<icon>infinity_load</icon>
+			</parameter>
+			<parameter>
+				<name>overheating</name>
+				<icon>overheating</icon>
+			</parameter>
+			<parameter>
+				<name>penetration</name>
+				<icon>penetration</icon>
+			</parameter>
+			<parameter>
+				<name>piercing</name>
+				<icon>piercing</icon>
+			</parameter>
+			<parameter>
+				<name>rate_of_fire</name>
+				<icon>damage</icon>
+			</parameter>
+			<parameter>
+				<name>rate_of_fire_and_dpm</name>
+				<icon>damage</icon>
+			</parameter>
+			<parameter>
+				<name>reload</name>
+				<icon>reload</icon>
+			</parameter>
+			<parameter>
+				<name>rotary_gun</name>
+				<icon>rotary_gun</icon>
+			</parameter>
+			<parameter>
+				<name>six_guns</name>
+				<icon>rotary_gun</icon>
+			</parameter>
+			<parameter>
+				<name>size_and_armour</name>
+				<icon>armour</icon>
+			</parameter>
+			<parameter>
+				<name>speed</name>
+				<icon>speed</icon>
+			</parameter>
+			<parameter>
+				<name>stabilization</name>
+				<icon>stabilization</icon>
+			</parameter>
+			<parameter>
+				<name>strong_armour</name>
+				<icon>armoured_hull</icon>
+			</parameter>
+			<parameter>
+				<name>turret_armour</name>
+				<icon>turret_armour</icon>
+			</parameter>
+			<parameter>
+				<name>two_cannons</name>
+				<icon>two_cannons</icon>
+			</parameter>
+			<parameter>
+				<name>two_cannons_with_autoloader</name>
+				<icon>two_cannons</icon>
+			</parameter>
+			<parameter>
+				<name>two_salvos</name>
+				<icon>two_salvos</icon>
+			</parameter>
+			<parameter>
+				<name>versatility</name>
+				<icon>versatility</icon>
+			</parameter>
+			<parameter>
+				<name>weakspot</name>
+				<icon>weakspot</icon>
+			</parameter>
+			<parameter>
+				<name>weak_armour</name>
+				<icon>turret_armour</icon>
+			</parameter>
+			<parameter>
+				<name>weak_speed</name>
+				<icon>speed</icon>
+			</parameter>
+			<parameter>
+				<name>wide_aoe</name>
+				<icon>wide_aoe</icon>
+			</parameter>
+		</parameters>
+		<vehicles>
+			<vehicle>
+				<name>germany:G42_Maus_FEP23</name>
+				<strengths>two_cannons_with_autoloader piercing armoured_hull</strengths>
+				<weaknesses>speed turret_armour</weaknesses>
+				<description>G42_Maus_FEP23</description>
+			</vehicle>
+			<vehicle>
+				<name>france:F38_Bat_Chatillon155_58_FEP23</name>
+				<strengths>two_salvos curved_trajectory wide_aoe</strengths>
+				<weaknesses>accuracy</weaknesses>
+				<description>F38_Bat_Chatillon155_58_FEP23</description>
+			</vehicle>
+			<vehicle>
+				<name>usa:A143_M_V_Y_FEP23</name>
+				<strengths>infinity_load stabilization armour</strengths>
+				<weaknesses>overheating weakspot</weaknesses>
+				<description>A143_M_V_Y_FEP23</description>
+			</vehicle>
+			<vehicle>
+				<name>germany:G72_JagdPz_E100_FEP23</name>
+				<strengths>rotary_gun damage strong_armour</strengths>
+				<weaknesses>weak_speed reload</weaknesses>
+				<description>G72_JagdPz_E100_FEP23</description>
+			</vehicle>
+			<vehicle>
+				<name>ussr:R97_Object_140_FEP23</name>
+				<strengths>four_cannons rate_of_fire speed</strengths>
+				<weaknesses>weak_armour penetration</weaknesses>
+				<description>R97_Object_140_FEP23</description>
+			</vehicle>
+			<vehicle>
+				<name>czech:Cz04_T50_51_FEP23</name>
+				<strengths>two_cannons speed versatility</strengths>
+				<weaknesses>armour penetration</weaknesses>
+				<description>Cz04_T50_51_FEP23</description>
+			</vehicle>
+			<vehicle>
+				<name>france:F108_Panhard_EBR_105_FEP23</name>
+				<strengths>best_speed</strengths>
+				<weaknesses>armour penetration</weaknesses>
+				<description>F108_Panhard_EBR_105_FEP23</description>
+			</vehicle>
+			<vehicle>
+				<name>usa:A116_XM551_FEP23</name>
+				<strengths>six_guns rate_of_fire_and_dpm speed</strengths>
+				<weaknesses>size_and_armour penetration</weaknesses>
+				<description>A116_XM551_FEP23</description>
+			</vehicle>
+		</vehicles>
+	</vehicleParameters>
+</root>

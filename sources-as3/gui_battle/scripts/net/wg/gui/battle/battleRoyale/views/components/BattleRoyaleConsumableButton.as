@@ -476,6 +476,14 @@ package net.wg.gui.battle.battleRoyale.views.components
       {
       }
       
+      public function showPossibleStacks(param1:int) : void
+      {
+      }
+      
+      public function updateStacks(param1:int) : void
+      {
+      }
+      
       private function get status() : uint
       {
          return this._statusMask;

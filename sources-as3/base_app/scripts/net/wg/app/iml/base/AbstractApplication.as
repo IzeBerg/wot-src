@@ -188,8 +188,8 @@ package net.wg.app.iml.base
                return;
             }
             this._appScale = scale;
-            h = h / scale >> 0;
-            w = w / scale >> 0;
+            h = Math.ceil(h / scale);
+            w = Math.ceil(w / scale);
             stage.scaleX = stage.scaleY = scale;
             this.appWidth = w;
             this.appHeight = h;

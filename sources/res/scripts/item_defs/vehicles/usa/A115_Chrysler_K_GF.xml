@@ -75,8 +75,6 @@
 			1.6
 			<!--BW_String-->
 		</priceFactor>
-		<tiling>1 1 0 0</tiling>
-		<exclusionMask/>
 		<density>
 			1.11 1.11
 			<!--BW_String-->
@@ -141,11 +139,11 @@
 		<swinging>
 			<lodDist>FAR</lodDist>
 			<pitchParams>
-				0.22 38.00 0.48 1.00 0.05 0.34
+				0.22 38 0.48 1 0.05 0.34
 				<!--BW_String-->
 			</pitchParams>
 			<rollParams>
-				1.00 0.24 38.00 0.48 1.00 0.06 0.40
+				1 0.24 38 0.48 1 0.06 0.4
 				<!--BW_String-->
 			</rollParams>
 			<sensitivityToImpulse>
@@ -168,12 +166,6 @@
 			<collisionModelClient>vehicles/american/A115_Chrysler_K_GF/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
 		<hangarShadowTexture>vehicles/american/A115_Chrysler_K_GF/Chrysler_K_GF_HangarShadowMap.dds</hangarShadowTexture>
-		<customization>
-			<customizableVehicleAreas>
-				<paint/>
-				<camouflage/>
-			</customizableVehicleAreas>
-		</customization>
 		<customizationSlots>
 			<slot>
 				<slotType>clan</slotType>
@@ -186,16 +178,11 @@
 					-0.930443 0.432787 2.89122
 					<!--BW_String-->
 				</rayEnd>
-				<rayUp>
-					0.000000 0.000000 -1
-					<!--BW_String-->
-				</rayUp>
+				<rayUp>0 0 -1</rayUp>
 				<size>
 					0.35
 					<!--BW_String-->
 				</size>
-				<hideIfDamaged>false</hideIfDamaged>
-				<isUVProportional>true</isUVProportional>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -213,10 +200,8 @@
 					0.860852 0.271199 0.86085
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.589049</clipAngle>
-				<compatibleModels>default</compatibleModels>
 				<anchorShift>0.007259</anchorShift>
 			</slot>
 			<slot>
@@ -232,13 +217,11 @@
 					<!--BW_String-->
 				</rotation>
 				<scale>0.661966 0.208543 0.661958</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.3464
 					<!--BW_String-->
 				</clipAngle>
-				<compatibleModels>default</compatibleModels>
 				<anchorShift>0.080485</anchorShift>
 			</slot>
 			<slot>
@@ -254,13 +237,17 @@
 					<!--BW_String-->
 				</rotation>
 				<scale>0.860852 0.271198 0.860849</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.589049</clipAngle>
-				<compatibleModels>default</compatibleModels>
 				<anchorShift>0.007267</anchorShift>
 			</slot>
 		</customizationSlots>
+		<customization>
+			<customizableVehicleAreas>
+				<paint/>
+				<camouflage/>
+			</customizableVehicleAreas>
+		</customization>
 		<camouflage>
 			<tiling>
 				2 2 0.000000 0.000000
@@ -596,31 +583,6 @@
 					</transform>
 				</decal>
 			</AODecals>
-			<splineDesc>
-				<segmentModelLeft>vehicles/american/A115_Chrysler_K_GF/track/segment1.model</segmentModelLeft>
-				<segmentModelRight>vehicles/american/A115_Chrysler_K_GF/track/segment1.model</segmentModelRight>
-				<segment2ModelLeft>vehicles/american/A115_Chrysler_K_GF/track/segment2.model</segment2ModelLeft>
-				<segment2ModelRight>vehicles/american/A115_Chrysler_K_GF/track/segment2.model</segment2ModelRight>
-				<left>vehicles/american/A115_Chrysler_K_GF/track/left.track</left>
-				<right>vehicles/american/A115_Chrysler_K_GF/track/right.track</right>
-				<segmentLength>
-					0.166
-					<!--BW_String-->
-				</segmentLength>
-				<segmentOffset>
-					0.222
-					<!--BW_String-->
-				</segmentOffset>
-				<segment2Offset>
-					0.082
-					<!--BW_String-->
-				</segment2Offset>
-				<lodDist>SPLINE_TRACK</lodDist>
-				<atlas>
-					<UTiles>1</UTiles>
-					<VTiles>1</VTiles>
-				</atlas>
-			</splineDesc>
 			<trackThickness>
 				-0.0043
 				<!--BW_String-->
@@ -926,26 +888,22 @@
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VD_R0</name>
-					<forwardElastK>1</forwardElastK>
 					<backwardElastK>2</backwardElastK>
 				</node>
 				<node>
 					<isLeft>true</isLeft>
 					<name>Track_VD_L0</name>
-					<forwardElastK>1</forwardElastK>
 					<backwardElastK>2</backwardElastK>
 				</node>
 				<node>
 					<isLeft>true</isLeft>
 					<name>Track_VD_L1</name>
 					<forwardElastK>2</forwardElastK>
-					<backwardElastK>1</backwardElastK>
 				</node>
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VD_R1</name>
 					<forwardElastK>2</forwardElastK>
-					<backwardElastK>1</backwardElastK>
 				</node>
 			</trackNodes>
 			<groundNodes>
@@ -978,72 +936,67 @@
 					</maxOffset>
 				</group>
 			</groundNodes>
+			<splineDesc>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<segmentModelLeft>vehicles/american/A115_Chrysler_K_GF/track/segment1.model</segmentModelLeft>
+					<segmentModelRight>vehicles/american/A115_Chrysler_K_GF/track/segment1.model</segmentModelRight>
+					<segment2ModelLeft>vehicles/american/A115_Chrysler_K_GF/track/segment2.model</segment2ModelLeft>
+					<segment2ModelRight>vehicles/american/A115_Chrysler_K_GF/track/segment2.model</segment2ModelRight>
+					<left>vehicles/american/A115_Chrysler_K_GF/track/left.track</left>
+					<right>vehicles/american/A115_Chrysler_K_GF/track/right.track</right>
+					<segmentLength>
+						0.166
+						<!--BW_String-->
+					</segmentLength>
+					<segmentOffset>
+						0.222
+						<!--BW_String-->
+					</segmentOffset>
+					<segment2Offset>
+						0.082
+						<!--BW_String-->
+					</segment2Offset>
+					<atlas>
+						<UTiles>1</UTiles>
+						<VTiles>1</VTiles>
+					</atlas>
+				</trackPair>
+				<lodDist>SPLINE_TRACK</lodDist>
+			</splineDesc>
 			<physicalTracks>
 				<left>
 					<segmentsCount>190</segmentsCount>
-					<segmentsOuterThickness>
-						0.0424727
-						<!--BW_String-->
-					</segmentsOuterThickness>
-					<segmentsInnerThickness>
-						0.0365492
-						<!--BW_String-->
-					</segmentsInnerThickness>
+					<segmentsOuterThickness>0.042473</segmentsOuterThickness>
+					<segmentsInnerThickness>0.036549</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						-1.57904
 						<!--BW_String-->
 					</segmentsPlaneOffset>
 					<springsLength>
 						<backwardMovement>
-							<back>
-								0.0837445
-								<!--BW_String-->
-							</back>
-							<top>
-								0.0817106
-								<!--BW_String-->
-							</top>
-							<front>
-								0.0735279
-								<!--BW_String-->
-							</front>
+							<back>0.083745</back>
+							<top>0.081711</top>
+							<front>0.073528</front>
 							<bottom>
-								0.0306304
+								0.03063
 								<!--BW_String-->
 							</bottom>
 						</backwardMovement>
 						<forwardMovement>
-							<back>
-								0.0727138
-								<!--BW_String-->
-							</back>
-							<top>
-								0.0586826
-								<!--BW_String-->
-							</top>
-							<front>
-								0.0824795
-								<!--BW_String-->
-							</front>
-							<bottom>
-								0.0536226
-								<!--BW_String-->
-							</bottom>
+							<back>0.072714</back>
+							<top>0.058683</top>
+							<front>0.082479</front>
+							<bottom>0.053623</bottom>
 						</forwardMovement>
 					</springsLength>
 					<mainSegment>
 						<model>vehicles/american/A115_Chrysler_K_GF/track/segment1.model</model>
-						<length>
-							0.0841734
-							<!--BW_String-->
-						</length>
+						<length>0.084173</length>
 					</mainSegment>
 					<secSegment>
 						<model>vehicles/american/A115_Chrysler_K_GF/track/segment2.model</model>
-						<length>
-							0.0860108
-							<!--BW_String-->
-						</length>
+						<length>0.086011</length>
 					</secSegment>
 					<collisionHull>
 						<bottom/>
@@ -1053,10 +1006,7 @@
 									-3.59587
 									<!--BW_String-->
 								</xStart>
-								<xStep>
-									0.0420867
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.042087</xStep>
 								<ySamples>
 									1.03818 1.03818 1.03818 1.03818 1.03818 1.03818 1.03818 1.03815 1.03809 1.03803 1.03797 1.03791 1.03785 1.03779 1.03773 1.03767 1.0376 1.03754 1.03748 1.03742 1.03736 1.0373 1.03724 1.03718 1.03712 1.03706 1.037 1.03693 1.03687 1.03681 1.03675 1.03669 1.03663 1.03657 1.03651 1.03645 1.03639 1.03633 1.03626 1.0362 1.03614 1.03608 1.03602 1.03596 1.0359 1.03584 1.03578 1.03572 1.03566 1.03559 1.03553 1.03547 1.03541 1.03535 1.03529 1.03523 1.03517 1.03511 1.03505 1.03499 1.03493 1.03486 1.0348 1.03474 1.03468 1.03462 1.03456 1.0345 1.03444 1.03438 1.03432 1.03426 1.03419 1.03413 1.03407 1.03401 1.03395 1.03389 1.03383 1.03377 1.03371 1.03365 1.03359 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03353 1.03375 1.04042 1.04709 1.05388 1.06186 1.06983 1.07781 1.08985 1.10455 1.11925 1.13395 1.14865 1.16336 1.17806 1.19276 1.20746 1.22216 1.23686 1.25157 1.26627 1.28097 1.29567 1.31037 1.32507 1.33978 1.35448 1.34735 1.34745 1.34754 1.34994 1.35363 1.35731 1.3492 1.32494 1.30068 1.27781 1.25834 1.23887
 									<!--BW_String-->
@@ -1083,10 +1033,7 @@
 								3.40582 0.85553
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.341063 0.0816658
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.341063 0.081666</shiftVec>
 							<jointIdx>19</jointIdx>
 						</topFront>
 						<topBack>
@@ -1096,7 +1043,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								-0.336016 0.0834699
+								-0.336016 0.08347
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>111</jointIdx>
@@ -1107,10 +1054,7 @@
 								-2.50334 0.366707
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.0312977 -0.348549
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.031298 -0.348549</shiftVec>
 							<jointIdx>128</jointIdx>
 						</bottomBack>
 						<bottomFront>
@@ -1119,10 +1063,7 @@
 								2.56211 0.366709
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.0318944 -0.347087
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.031894 -0.347087</shiftVec>
 							<jointIdx>0</jointIdx>
 						</bottomFront>
 					</snapWheels>
@@ -1499,19 +1440,19 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.50934 1.0836 -0.0605238
+									-1.50934 1.0836 -0.060524
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.50934 1.08361 -0.0184372
+									-1.50934 1.08361 -0.018437
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.50934 1.08361 0.0236499
+									-1.50934 1.08361 0.02365
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.50934 1.0836 0.0657365
+									-1.50934 1.0836 0.065737
 									<!--BW_String-->
 								</point>
 								<point>
@@ -1868,15 +1809,12 @@
 								</point>
 							</range>
 						</top>
-						<bottom/>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</left>
 				<right>
 					<segmentsCount>190</segmentsCount>
-					<segmentsOuterThickness>
-						0.0424841
-						<!--BW_String-->
-					</segmentsOuterThickness>
+					<segmentsOuterThickness>0.042484</segmentsOuterThickness>
 					<segmentsInnerThickness>0.036551</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						1.57065
@@ -1884,55 +1822,28 @@
 					</segmentsPlaneOffset>
 					<springsLength>
 						<backwardMovement>
-							<back>
-								0.0837445
-								<!--BW_String-->
-							</back>
-							<top>
-								0.0817106
-								<!--BW_String-->
-							</top>
-							<front>
-								0.0735279
-								<!--BW_String-->
-							</front>
+							<back>0.083745</back>
+							<top>0.081711</top>
+							<front>0.073528</front>
 							<bottom>
-								0.0306304
+								0.03063
 								<!--BW_String-->
 							</bottom>
 						</backwardMovement>
 						<forwardMovement>
-							<back>
-								0.0727138
-								<!--BW_String-->
-							</back>
-							<top>
-								0.0586826
-								<!--BW_String-->
-							</top>
-							<front>
-								0.0824795
-								<!--BW_String-->
-							</front>
-							<bottom>
-								0.0536226
-								<!--BW_String-->
-							</bottom>
+							<back>0.072714</back>
+							<top>0.058683</top>
+							<front>0.082479</front>
+							<bottom>0.053623</bottom>
 						</forwardMovement>
 					</springsLength>
 					<mainSegment>
 						<model>vehicles/american/A115_Chrysler_K_GF/track/segment1.model</model>
-						<length>
-							0.0836189
-							<!--BW_String-->
-						</length>
+						<length>0.083619</length>
 					</mainSegment>
 					<secSegment>
 						<model>vehicles/american/A115_Chrysler_K_GF/track/segment2.model</model>
-						<length>
-							0.0859221
-							<!--BW_String-->
-						</length>
+						<length>0.085922</length>
 					</secSegment>
 					<collisionHull>
 						<bottom/>
@@ -1942,10 +1853,7 @@
 									-3.61584
 									<!--BW_String-->
 								</xStart>
-								<xStep>
-									0.0418094
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.041809</xStep>
 								<ySamples>
 									1.03818 1.03818 1.03818 1.03818 1.03818 1.03818 1.03818 1.03817 1.03811 1.03805 1.03799 1.03793 1.03787 1.03781 1.03775 1.03769 1.03763 1.03757 1.03751 1.03745 1.03739 1.03733 1.03727 1.0372 1.03714 1.03708 1.03702 1.03696 1.0369 1.03684 1.03678 1.03672 1.03666 1.0366 1.03654 1.03648 1.03642 1.03636 1.0363 1.03624 1.03618 1.03612 1.03606 1.036 1.03593 1.03587 1.03581 1.03575 1.03569 1.03563 1.03557 1.03551 1.03545 1.03539 1.03533 1.03527 1.03521 1.03515 1.03509 1.03503 1.03497 1.03491 1.03485 1.03479 1.03472 1.03466 1.0346 1.03454 1.03448 1.03442 1.03436 1.0343 1.03424 1.03418 1.03412 1.03406 1.034 1.03394 1.03388 1.03382 1.03376 1.0337 1.03364 1.03358 1.03351 1.03345 1.03344 1.03344 1.03344 1.03344 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03344 1.03344 1.03344 1.03344 1.03344 1.03344 1.03344 1.03344 1.03344 1.03344 1.03344 1.03344 1.03344 1.03344 1.03344 1.03344 1.03345 1.03345 1.03344 1.03344 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03345 1.03344 1.03344 1.03344 1.03344 1.03344 1.03795 1.04501 1.05206 1.05973 1.06765 1.07558 1.08451 1.099 1.11349 1.12798 1.14247 1.15696 1.17145 1.18594 1.20043 1.21492 1.22948 1.24409 1.25869 1.2733 1.2879 1.30251 1.31711 1.33172 1.34632 1.3474 1.34789 1.3484 1.34891 1.34942 1.34993 1.35042 1.32964 1.30539 1.28114 1.25689 1.23265 1.2084
 									<!--BW_String-->
@@ -1972,10 +1880,7 @@
 								3.40582 0.85553
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.340939 0.0821363
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.340939 0.082136</shiftVec>
 							<jointIdx>20</jointIdx>
 						</topFront>
 						<topBack>
@@ -1984,10 +1889,7 @@
 								-3.22982 0.559707
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								-0.335509 0.0854422
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>-0.335509 0.085442</shiftVec>
 							<jointIdx>112</jointIdx>
 						</topBack>
 						<bottomBack>
@@ -1996,10 +1898,7 @@
 								-2.5676 0.366686
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.00787854 -0.348551
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.007879 -0.348551</shiftVec>
 							<jointIdx>128</jointIdx>
 						</bottomBack>
 						<bottomFront>
@@ -2008,10 +1907,7 @@
 								2.49785 0.366689
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.0066452 -0.348488
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.006645 -0.348488</shiftVec>
 							<jointIdx>0</jointIdx>
 						</bottomFront>
 					</snapWheels>
@@ -2395,19 +2291,19 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									1.50095 1.08356 -0.0619526
+									1.50095 1.08356 -0.061953
 									<!--BW_String-->
 								</point>
 								<point>
-									1.50095 1.08355 -0.0201435
+									1.50095 1.08355 -0.020143
 									<!--BW_String-->
 								</point>
 								<point>
-									1.50095 1.08355 0.0216661
+									1.50095 1.08355 0.021666
 									<!--BW_String-->
 								</point>
 								<point>
-									1.50095 1.08355 0.0634756
+									1.50095 1.08355 0.063476
 									<!--BW_String-->
 								</point>
 								<point>
@@ -2768,8 +2664,8 @@
 								</point>
 							</range>
 						</top>
-						<bottom/>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</right>
 			</physicalTracks>
 			<customization>
@@ -2876,63 +2772,39 @@
 					<armor>
 						<armor_1>
 							254
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
 							228.6
 							<!--BW_String-->
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_2>
 						<armor_3>
 							101.6
 							<!--BW_String-->
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_3>
 						<armor_4>
 							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_4>
 						<armor_5>
 							50.8
 							<!--BW_String-->
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_5>
 						<armor_6>
 							127
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_6>
 						<armor_7>
 							177.8
 							<!--BW_String-->
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_7>
 						<armor_8>
 							127
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_8>
 						<gun>45</gun>
 					</armor>
@@ -2977,23 +2849,16 @@
 					</hitTester>
 					<effects>shot_large_mb</effects>
 					<reloadEffect>reload85_107</reloadEffect>
-					<animateEmblemSlots>true</animateEmblemSlots>
-					<customization>
-						<customizableVehicleAreas>
-							<paint/>
-							<camouflage/>
-						</customizableVehicleAreas>
-					</customization>
 					<customizationSlots>
 						<slot>
 							<slotType>insigniaOnGun</slotType>
 							<slotId>49000</slotId>
 							<rayStart>
-								-0.0013139 -0.0736716 2.61533
+								-0.001314 -0.073672 2.61533
 								<!--BW_String-->
 							</rayStart>
 							<rayEnd>
-								0.00761542 -0.128481 2.61343
+								-0.001314 -0.073672 3.21533
 								<!--BW_String-->
 							</rayEnd>
 							<rayUp>
@@ -3004,10 +2869,14 @@
 								0.6
 								<!--BW_String-->
 							</size>
-							<hideIfDamaged>false</hideIfDamaged>
-							<isUVProportional>true</isUVProportional>
 						</slot>
 					</customizationSlots>
+					<customization>
+						<customizableVehicleAreas>
+							<paint/>
+							<camouflage/>
+						</customizableVehicleAreas>
+					</customization>
 					<camouflage>
 						<tiling>
 							1.2 0.6 0.000000 0.000000
@@ -3035,9 +2904,8 @@
 				<!--BW_String-->
 			</gunPosition>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
-			<showEmblemsOnGun>false</showEmblemsOnGun>
 			<physicsShape>
-				0.960 -0.013 1.027 0.000 0.607 0.084 0.610 0.560 0.483 0.470 0.380 0.550 0.397 0.510 0.070
+				0.96 -0.013 1.027 0 0.607 0.084 0.61 0.56 0.483 0.47 0.38 0.55 0.397 0.51 0.07
 				<!--BW_String-->
 			</physicsShape>
 			<customizationSlots>
@@ -3046,24 +2914,22 @@
 					<slotId>35000</slotId>
 					<tags>formfactor_square</tags>
 					<position>
-						0.00493412 2.48103 -3.19533
+						0.004934 2.48103 -3.19533
 						<!--BW_String-->
 					</position>
 					<rotation>
-						2.27003 -0.000075 -0.000101805
+						2.27003 -0.000075 -0.000102
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						0.67953 0.755179 0.67953
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>
 						1.18521
 						<!--BW_String-->
 					</clipAngle>
-					<compatibleModels>default</compatibleModels>
 					<anchorShift>0.150269</anchorShift>
 				</slot>
 				<slot>
@@ -3082,10 +2948,8 @@
 						0.698683 1.16877 0.698685
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.263366</clipAngle>
-					<compatibleModels>default</compatibleModels>
 					<anchorShift>0.061845</anchorShift>
 				</slot>
 				<slot>
@@ -3104,10 +2968,8 @@
 						0.698683 1.16877 0.698685
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.241152</clipAngle>
-					<compatibleModels>default</compatibleModels>
 					<anchorShift>0.061137</anchorShift>
 				</slot>
 				<slot>
@@ -3115,7 +2977,7 @@
 					<slotId>35003</slotId>
 					<tags>formfactor_square</tags>
 					<position>
-						0.0227166 2.50479 -1.11615
+						0.022717 2.50479 -1.11615
 						<!--BW_String-->
 					</position>
 					<rotation>
@@ -3123,10 +2985,8 @@
 						<!--BW_String-->
 					</rotation>
 					<scale>0.650953 0.723419 0.650952</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.977251</clipAngle>
-					<compatibleModels>default</compatibleModels>
 					<anchorShift>0.341604</anchorShift>
 				</slot>
 			</customizationSlots>

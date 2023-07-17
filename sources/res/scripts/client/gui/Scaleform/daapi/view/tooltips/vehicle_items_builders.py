@@ -19,7 +19,12 @@ def _shellAdvancedBlockCondition(context):
 
     def advancedTooltipExist(intCD, *_):
         item = context.buildItem(intCD)
-        return (item.type, item.isModernMechanics) in advanced.SHELL_MOVIES
+        value = context.getParamsConfiguration(item)
+        vehicle = value.vehicle
+        if vehicle and vehicle.isOnlyForFunRandomBattles:
+            return False
+        return (
+         item.type, item.isModernMechanics) in advanced.SHELL_MOVIES
 
     return advancedTooltipExist
 

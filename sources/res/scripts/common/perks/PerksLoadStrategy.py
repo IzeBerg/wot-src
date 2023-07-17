@@ -115,6 +115,7 @@ class DefaultLoadStrategy(BaseLoadStrategy):
             self.loadPlansAsync()
             return
         if self._state == LoadState.PRE_START:
+            self._onPlansReady()
             self._startAsync()
             return
         super(DefaultLoadStrategy, self)._stateLogic()
