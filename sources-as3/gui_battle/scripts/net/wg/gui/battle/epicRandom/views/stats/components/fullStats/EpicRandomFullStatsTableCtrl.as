@@ -273,12 +273,11 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
       
       public function updateInvitationsStatuses(param1:Boolean, param2:Vector.<DAAPIInvitationStatusVO>) : void
       {
-         /*
-          * Decompilation error
-          * Timeout (1 minute) was reached
-          * Instruction count: 21
-          */
-         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
+         var _loc3_:VehiclesDataProvider = !!param1 ? enemyDP : teamDP;
+         if(_loc3_.updateInvitationsStatuses(param2))
+         {
+            _loc3_.invalidate();
+         }
       }
       
       private function onItemDataSet(param1:EpicRandomFullStatsListItemRenderer, param2:Boolean) : void

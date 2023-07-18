@@ -1,5 +1,9 @@
 import typing
+from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
+from gui.Scaleform.framework.entities.View import ViewKey
 from gui.battle_control import event_dispatcher as gui_event_dispatcher
+from skeletons.gui.app_loader import IAppLoader
+from helpers import dependency
 from gui.battle_control.battle_constants import BATTLE_CTRL_ID
 from gui.battle_control.controllers.interfaces import IBattleController
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
@@ -10,6 +14,7 @@ if typing.TYPE_CHECKING:
 
 class IngameHelpController(IBattleController):
     __slots__ = ('__arenaVisitor', '__currentHintContext')
+    __appLoader = dependency.descriptor(IAppLoader)
 
     def __init__(self, setup):
         super(IngameHelpController, self).__init__()
@@ -39,6 +44,13 @@ class IngameHelpController(IBattleController):
         else:
             gui_event_dispatcher.toggleHelp()
         return hasDetailedHelpScreen
+
+    def canShow(self):
+        battleApp = self.__appLoader.getDefBattleApp()
+        if battleApp is None:
+            return False
+        else:
+            return not bool(battleApp.containerManager.getViewByKey(ViewKey(VIEW_ALIAS.INGAME_MENU)))
 
     def __onShowBtnHint(self, event):
         self.__currentHintContext = event.ctx.get('hintCtx')

@@ -114,6 +114,14 @@ msgstr "战斗通行证"
 msgid "main/cellPass/text"
 msgstr "前线模式是获取战斗通行证点数的大好机会，您可以通过参加战斗以及提升前线模式等级来获取通行证点数。"
 
+msgid "main/cellRandomReserves/header"
+msgstr "扭转乾坤"
+
+msgid "main/cellRandomReserves/text"
+msgstr ""
+"在该场景中，您可在战斗中\n"
+"选择{whiteSpanish_Start}随机{whiteSpanish_End}出现的战斗储备。"
+
 msgid "main/cellReserves/header"
 msgstr "战斗储备类别"
 
@@ -189,8 +197,33 @@ msgstr "前线模式进度"
 msgid "progression/text"
 msgstr "在此模式中，您将能提升军阶、推进前线模式进度并获得奖励。"
 
+msgid "randomReserves/sectionHeader"
+msgstr "扭转乾坤"
+
+msgid "randomReserves/text"
+msgstr ""
+"在战斗中解锁新栏位时，您将能从储备中二选一。储备会随机出现，不分类别。所选储备可放入对应栏位，并在战斗中激活。\n"
+"\n"
+"在条件允许的情况下，您将能多次选择最喜欢的储备。如果储备有主动效果(如空袭)，它将被放入不同栏位，并可以连续多次激活。如果储备有被动效果(如工程学)，其参数将获得大幅提高。\n"
+"\n"
+"加入战斗前把最喜欢的储备放入其中一个栏位，其出现的几率将提高{whiteSpanish_Start}10%{whiteSpanish_End}。\n"
+"\n"
+"在{whiteSpanish_Start}扭转乾坤{whiteSpanish_End}场景中，战斗储备的最高等级将升至等级{whiteSpanish_Start}IV{whiteSpanish_End}。使用前线模式积分购买战斗储备\n"
+"可将该储备提高一个等级，并有机会将其加强至等级{whiteSpanish_Start}IV{whiteSpanish_End}。\n"
+"\n"
+"祝您好运！"
+
 msgid "reserveCategories/categories/additional"
 msgstr "次要"
+
+msgid "reserveCategories/categories/cell_1"
+msgstr "储备栏位1"
+
+msgid "reserveCategories/categories/cell_2"
+msgstr "储备栏位2"
+
+msgid "reserveCategories/categories/cell_3"
+msgstr "储备栏位3"
 
 msgid "reserveCategories/categories/main"
 msgstr "主要"
@@ -202,7 +235,8 @@ msgid "reserveCategories/config/header"
 msgstr "储备配置"
 
 msgid "reserveCategories/config/text"
-msgstr "所有坦克都具有3个战斗储备栏位。但栏位解锁的顺序取决于坦克类型。您可以在车库中提前准备好所需的储备，请务必谨慎选择。"
+msgstr ""
+"在{whiteSpanish_Start}扭转乾坤{whiteSpanish_End}场景中，战斗储备的解锁顺序并不取决于储备类别或坦克类型。加入战斗前将战斗储备放入对应栏位，其出现的几率可提高{whiteSpanish_Start}10%{whiteSpanish_End}。"
 
 msgid "reserveCategories/config/vehicles/destroyer"
 msgstr "自行反坦克炮"
@@ -223,11 +257,15 @@ msgid "reserveCategories/levels/header"
 msgstr "如何解锁栏位和强化战斗储备"
 
 msgid "reserveCategories/levels/text"
-msgstr ""
-"随着军阶的提高，战斗储备和栏位将在战斗中逐个解锁。其解锁与强化顺序取决于战况。一开始只可以使用主要储备和栏位，另外2个储备会分别在达到中士和中尉军阶时解锁。升级至上尉和少校军阶时会强化所有3个储备。"
+msgstr "战斗开始时，对您开放的只有一个战斗储备。其他储备会在您晋升至中士和中尉军阶时解锁。晋升至上尉和少校军阶即可强化全部3个储备。"
 
 msgid "reserveCategories/progression/tableCell"
-msgstr "等级{whiteSpanish_Start}%(level){whiteSpanish_End}"
+msgstr ""
+"等级{whiteSpanish_Start}%(level){whiteSpanish_End}或{whiteSpanish_Start}%(levelNext)*{whiteSpanish_End}"
+
+msgid "reserveCategories/randomReserves/note"
+msgstr ""
+"*只有在{whiteSpanish_Start}扭转乾坤{whiteSpanish_End}场景中{whiteSpanish_Start}购买{whiteSpanish_End}的战斗储备才能加强至这个等级。"
 
 msgid "reserveCategories/ranks/captain"
 msgstr "上尉"

@@ -8,7 +8,9 @@ package net.wg.data.VO.daapi
       
       public var mapName:String = "";
       
-      public var battleTypeFrameLabel:String = "";
+      public var battleTypeIconPathBig:String = "";
+      
+      public var battleTypeIconPathSmall:String = "";
       
       public var battleTypeLocaleStr:String = "";
       

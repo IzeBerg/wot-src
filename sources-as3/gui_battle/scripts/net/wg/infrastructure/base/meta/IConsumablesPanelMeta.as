@@ -44,6 +44,10 @@ package net.wg.infrastructure.base.meta
       
       function as_updateLevelInformation(param1:int, param2:int) : void;
       
+      function as_showPossibleStacks(param1:int, param2:int) : void;
+      
+      function as_updateStacks(param1:int, param2:int) : void;
+      
       function as_updateTooltip(param1:int, param2:String) : void;
       
       function as_addOptionalDeviceSlot(param1:int, param2:Number, param3:String, param4:String, param5:Boolean, param6:int, param7:Boolean) : void;
@@ -75,11 +79,5 @@ package net.wg.infrastructure.base.meta
       function as_setRoleSkillSlotProgress(param1:int, param2:int, param3:Number) : void;
       
       function as_setRoleSkillSlotCounter(param1:int, param2:int) : void;
-      
-      function as_addRespawnSlot(param1:int, param2:Number, param3:Number, param4:int, param5:String, param6:Boolean, param7:Boolean) : void;
-      
-      function as_setRespawnSlotQuantity(param1:int, param2:int) : void;
-      
-      function as_setRespawnSlotState(param1:int, param2:Boolean) : void;
    }
 }

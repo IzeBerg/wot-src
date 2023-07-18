@@ -1,4 +1,4 @@
-import cPickle
+import json
 from functools import partial
 import typing, AccountCommands
 from gui.resource_well.resource_well_constants import RESOURCE_WELL_PDATA_KEY
@@ -43,7 +43,7 @@ class ResourceWell(object):
             proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID, errorStr)
         else:
             proxy = None
-        resourcesStr = cPickle.dumps(resources)
+        resourcesStr = json.dumps(resources)
         self.__commandsProxy.perform(AccountCommands.CMD_RESOURCE_WELL_PUT, [reward, resourcesStr], proxy)
         return
 

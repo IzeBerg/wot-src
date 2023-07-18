@@ -60,9 +60,11 @@ class BREvents(object):
     INSTALL_MODULE_HULL = 'BR_upgrade_hull'
     PHASE_MIDDLE = 'BR_combat_phase_activated'
     PLAYER_LEVEL_MIDDLE = 'BR_combat_phase_our'
-    SOLO_ENEMIES_AMOUNT = {5: 'BR_enemy_remained_05', 2: 'BR_enemy_remained_02', 
+    SOLO_ENEMIES_AMOUNT = {10: 'BR_enemy_remained_10', 5: 'BR_enemy_remained_05', 
+       2: 'BR_enemy_remained_02', 
        1: 'BR_enemy_remained_01'}
-    SQUAD_ENEMIES_AMOUNT = {5: 'BR_enemy_remained_platoon_05', 2: 'BR_enemy_remained_platoon_02', 
+    SQUAD_ENEMIES_AMOUNT = {10: 'BR_enemy_remained_platoon_10', 5: 'BR_enemy_remained_platoon_05', 
+       2: 'BR_enemy_remained_platoon_02', 
        1: 'BR_enemy_remained_platoon_01'}
     ENEMY_KILLED = 'BR_enemy_killed'
     BATTLE_STARTED = 'BR_start_battle'
@@ -484,7 +486,6 @@ class ArenaPeriodSoundPlayer(IAbstractPeriodView, IViewComponentsCtrlListener, I
         self.__period = None
         self.__winStatus = None
         self.__isAlive = None
-        self.__lives = None
         return
 
     def detachedFromCtrl(self, ctrlID):
@@ -503,14 +504,9 @@ class ArenaPeriodSoundPlayer(IAbstractPeriodView, IViewComponentsCtrlListener, I
         self.__checkBattleEnd()
 
     def setPlayerVehicleAlive(self, isAlive):
-        if self.__isAlive and not isAlive and self.__lives < 0:
+        if self.__isAlive and not isAlive and not BigWorld.player().isObserver():
             BREvents.playSound(BREvents.BATTLE_DEFEAT)
         self.__isAlive = isAlive
-
-    def setLives(self, lives):
-        if lives < 0 <= self.__lives and not self.__isAlive:
-            BREvents.playSound(BREvents.BATTLE_DEFEAT)
-        self.__lives = lives
 
     def __checkBattleEnd(self):
         if BigWorld.player().isObserver():

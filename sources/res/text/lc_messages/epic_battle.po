@@ -25,6 +25,9 @@ msgstr "影响范围"
 msgid "abilityInfo/params/airstrike/stun"
 msgstr "弹震"
 
+msgid "abilityInfo/params/arcade_minefield_epic_battle/activationDelay"
+msgstr "部署"
+
 msgid "abilityInfo/params/arcade_minefield_epic_battle/bombsNumber"
 msgstr "地雷的数量"
 
@@ -137,7 +140,7 @@ msgid "abilityInfo/params/stealth_radar/passiveCircularVisionRadius"
 msgstr "对观察范围的被动加成"
 
 msgid "abilityInfo/properties/dynamic"
-msgstr "战斗储备强化"
+msgstr "储备等级"
 
 msgid "abilityInfo/properties/static"
 msgstr "永久参数"
@@ -386,10 +389,10 @@ msgid "intro/card/categories/title"
 msgstr "战斗储备类别"
 
 msgid "intro/card/slots/desc"
-msgstr "达到中士军阶即可解锁第2个栏位，达到中尉军阶即可解锁第3个栏位。达到上尉和少校军阶即可强化储备。"
+msgstr "默认情况下，对您开放的只有一个战斗储备。其他储备会在您晋升至中士和中尉军阶时解锁。晋升至上尉和少校军阶即可强化全部3个储备。"
 
 msgid "intro/card/slots/title"
-msgstr "在战斗中解锁栏位"
+msgstr "在战斗中解锁战斗储备"
 
 msgid "intro/card/types/desc"
 msgstr "不同类型的坦克拥有不同的栏位配置，但其解锁和强化方式一样。"
@@ -428,7 +431,7 @@ msgid "metaAbilityScreen/Ability_not_unlocked"
 msgstr "没有激活储备"
 
 msgid "metaAbilityScreen/activation_depends"
-msgstr "强化的最高等级取决于安装此储备的坦克类型。"
+msgstr "在战斗中晋升至上尉和少校军阶可提高战斗储备等级。最高等级取决于战斗场景。"
 
 msgid "metaAbilityScreen/how_to_activate"
 msgstr ""
@@ -460,7 +463,7 @@ msgid "missions/primary/atk/hq_sub_title"
 msgstr "已击毁炮台:"
 
 msgid "missions/primary/atk/longdescription"
-msgstr "占领区域以抵达炮台位置。击毁炮台。"
+msgstr "占领区域以抵达炮台位置。击毁它们！"
 
 msgid "missions/primary/def/base"
 msgstr "防御区域"
@@ -575,7 +578,7 @@ msgid "questsTooltip/epicBattle/startIn"
 msgstr "新任务将于%(time)s后解锁"
 
 msgid "questsTooltip/epicBattle/steelhunter/header"
-msgstr "钢铁猎手:复苏任务"
+msgstr "钢铁猎手任务"
 
 msgid "questsTooltip/epicBattle/timeLeft"
 msgstr "距离前线模式结束还有：%(time)s"
@@ -624,6 +627,15 @@ msgstr "已解锁%(reserveName)s战斗储备"
 
 msgid "rank/reserveUpgraded"
 msgstr "已加强%(reserveName)s战斗储备"
+
+msgid "rank/slotUnlocked"
+msgstr "已解锁%(slotNumber)s中的战斗储备"
+
+msgid "rank/slot_2"
+msgstr "栏位2"
+
+msgid "rank/slot_3"
+msgstr "栏位3"
 
 msgid "recovery/Blocked"
 msgstr ""
@@ -901,6 +913,16 @@ msgstr "解锁战斗储备的顺序取决于坦克类型。一个战斗储备在
 
 msgid "tooltips/slotSetupInfo/open/title"
 msgstr "解锁:%(desc)s"
+
+msgid "tooltips/slotSetupInfo/reserve/locked"
+msgstr ""
+"在<font color='#E9E2BF'>扭转乾坤</font>场景中，购买战斗储备可将该储备提高一个等级，并有机会将其加强至等级<font "
+"color='#E9E2BF'>IV</font>。"
+
+msgid "tooltips/slotSetupInfo/reserve/purchased"
+msgstr ""
+"该栏位中放置的战斗储备在<font color='#E9E2BF'>扭转乾坤</font>场景中出现的几率提高<font "
+"color='#E9E2BF'>10%</font>。"
 
 msgid "tooltips/slotSetupInfo/scheme"
 msgstr "在战斗中解锁储备和加强储备"

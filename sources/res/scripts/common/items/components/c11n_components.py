@@ -325,7 +325,7 @@ class StyleItem(BaseCustomizationItem):
         self._changeableSlotTypes = None
         self.styleProgressions = {}
         self.questsProgression = None
-        self.nonTankMaterials = ['PBS_ext.fx']
+        self.nonTankMaterials = ['PBS_ext.fx', 'PBS_ext_skinned.fx']
         super(StyleItem, self).__init__(parentGroup)
         return
 
@@ -868,10 +868,17 @@ class CustomizationCache(object):
                 usedStyle = self.styles.get(styleID, None)
                 if usedStyle is None:
                     raise SoftException(('Wrong styleId {} ').format(styleID))
-                raise (usedStyle.matchVehicleType(vehType) or SoftException)(('style {} is incompatible with vehicle {}').format(styleID, vehDescr.name))
-            if usedStyle.isProgressive():
-                if usedStyle.progression.defaultLvl > outfit.styleProgressionLevel > len(usedStyle.progression.levels):
-                    raise SoftException(('Progression style {} level out of limits').format(styleID))
+                if not usedStyle.matchVehicleType(vehType):
+                    raise SoftException(('style {} is incompatible with vehicle {}').format(styleID, vehDescr.name))
+                if usedStyle.isProgressive():
+                    if usedStyle.progression.defaultLvl > outfit.styleProgressionLevel > len(usedStyle.progression.levels):
+                        raise SoftException(('Progression style {} level out of limits').format(styleID))
+                    styleProgress = progressionStorage.get(CustomizationType.STYLE, {}).get(styleID, {})
+                    styleProgressVehDescr = vehType.compactDescr if usedStyle.progression.autobound else 0
+                    styleProgressLevel = styleProgress[styleProgressVehDescr][C11N_PROGRESS_LEVEL_IDX]
+                    outfitStyleLevel = outfit.styleProgressionLevel
+                    if not usedStyle.isProgressionRewindEnabled and styleProgressLevel > outfitStyleLevel:
+                        raise SoftException(('Progression style {} can not be applied. Outfit level={} < Progress level={}').format(styleID, outfitStyleLevel, styleProgressLevel))
                 if usedStyle.isWithSerialNumber:
                     _validateSerialNumber(outfit, usedStyle, serialNumbersStorage)
             projectionDecalsCount = len(outfit.projection_decals)

@@ -284,8 +284,6 @@ class TOOLTIPS(object):
     SETTINGS_DAMAGELOG_DETAILS_BODY = '#tooltips:settings/damagelog/details/body'
     SETTINGS_RIBBONS_RECEIVEDDAMAGE_HEADER = '#tooltips:settings/ribbons/receivedDamage/header'
     SETTINGS_RIBBONS_RECEIVEDDAMAGE_BODY = '#tooltips:settings/ribbons/receivedDamage/body'
-    SETTINGS_RIBBONS_ENEMYSTUN_HEADER = '#tooltips:settings/ribbons/enemyStun/header'
-    SETTINGS_RIBBONS_ENEMYSTUN_BODY = '#tooltips:settings/ribbons/enemyStun/body'
     SETTINGS_FEEDBACK_INDICATORS_DYNAMICWIDTH_HEADER = '#tooltips:settings/feedback/indicators/dynamicWidth/header'
     SETTINGS_FEEDBACK_INDICATORS_DYNAMICWIDTH_BODY = '#tooltips:settings/feedback/indicators/dynamicWidth/body'
     SETTINGS_FEEDBACK_INDICATORS_ANIMATION_HEADER = '#tooltips:settings/feedback/indicators/animation/header'
@@ -370,10 +368,8 @@ class TOOLTIPS(object):
     LOGINSERVERSELECTION_BODY = '#tooltips:loginServerSelection/body'
     SHOWVEHMODELSONMAP_HEADER = '#tooltips:showVehModelsOnMap/header'
     SHOWVEHMODELSONMAP_BODY = '#tooltips:showVehModelsOnMap/body'
-    SHOWVEHMODELSONMAP_ATTENTION = '#tooltips:showVehModelsOnMap/attention'
     MINIMAPALPHA_HEADER = '#tooltips:minimapAlpha/header'
     MINIMAPALPHA_BODY = '#tooltips:minimapAlpha/body'
-    MINIMAPALPHA_ATTENTION = '#tooltips:minimapAlpha/attention'
     BATTLELOADINGINFO_HEADER = '#tooltips:battleLoadingInfo/header'
     BATTLELOADINGINFO_BODY = '#tooltips:battleLoadingInfo/body'
     CUSTOMIZATIONDISPLAYTYPE_HISTORICAL_HEADER = '#tooltips:customizationDisplayType/historical/header'
@@ -555,7 +551,6 @@ class TOOLTIPS(object):
     BATTLETYPES_RANKED_BONUSBATTLE_DAILY_BODYOTHER = '#tooltips:battleTypes/ranked/bonusBattle/daily/bodyOther'
     BATTLETYPES_RANKED_BONUSBATTLE_DESCRIPTION = '#tooltips:battleTypes/ranked/bonusBattle/description'
     BATTLETYPES_BATTLEROYALE_HEADER = '#tooltips:battleTypes/battleRoyale/header'
-    BATTLETYPES_BATTLEROYALE_WIDGET_HEADER = '#tooltips:battleTypes/battleRoyale/widget/header'
     BATTLETYPES_BATTLEROYALE_BODY = '#tooltips:battleTypes/battleRoyale/body'
     BATTLETYPES_BATTLEROYALE_BODY2 = '#tooltips:battleTypes/battleRoyale/body2'
     BATTLETYPES_BATTLEROYALE_WIDGET_BODY2 = '#tooltips:battleTypes/battleRoyale/widget/body2'
@@ -1263,12 +1258,12 @@ class TOOLTIPS(object):
     VEHICLESTATUS_STRONGHOLDEVENTFROZEN_BODY = '#tooltips:vehicleStatus/StrongholdEventFrozen/body'
     VEHICLESTATUS_DEALISOVER_HEADER = '#tooltips:vehicleStatus/dealIsOver/header'
     VEHICLESTATUS_DEALISOVER_TEXT = '#tooltips:vehicleStatus/dealIsOver/text'
-    VEHICLESTATUS_DEALISOVER_ROSTELECOM_HEADER = '#tooltips:vehicleStatus/dealIsOver/Rostelecom/header'
-    VEHICLESTATUS_DEALISOVER_ROSTELECOM_TEXT = '#tooltips:vehicleStatus/dealIsOver/Rostelecom/text'
-    VEHICLESTATUS_DEALISOVER_BELTELECOM_HEADER = '#tooltips:vehicleStatus/dealIsOver/Beltelecom/header'
-    VEHICLESTATUS_DEALISOVER_BELTELECOM_TEXT = '#tooltips:vehicleStatus/dealIsOver/Beltelecom/text'
-    VEHICLESTATUS_DEALISOVER_KYIVSTAR_HEADER = '#tooltips:vehicleStatus/dealIsOver/Kyivstar/header'
-    VEHICLESTATUS_DEALISOVER_KYIVSTAR_TEXT = '#tooltips:vehicleStatus/dealIsOver/Kyivstar/text'
+    VEHICLESTATUS_DEALISOVER_LOCALPARTNER2_HEADER = '#tooltips:vehicleStatus/dealIsOver/LocalPartner2/header'
+    VEHICLESTATUS_DEALISOVER_LOCALPARTNER2_TEXT = '#tooltips:vehicleStatus/dealIsOver/LocalPartner2/text'
+    VEHICLESTATUS_DEALISOVER_LOCALPARTNER3_HEADER = '#tooltips:vehicleStatus/dealIsOver/LocalPartner3/header'
+    VEHICLESTATUS_DEALISOVER_LOCALPARTNER3_TEXT = '#tooltips:vehicleStatus/dealIsOver/LocalPartner3/text'
+    VEHICLESTATUS_DEALISOVER_LOCALPARTNER4_HEADER = '#tooltips:vehicleStatus/dealIsOver/LocalPartner4/header'
+    VEHICLESTATUS_DEALISOVER_LOCALPARTNER4_TEXT = '#tooltips:vehicleStatus/dealIsOver/LocalPartner4/text'
     VEHICLESTATUS_DEALISOVER_KAZAKHTELECOM_HEADER = '#tooltips:vehicleStatus/dealIsOver/Kazakhtelecom/header'
     VEHICLESTATUS_DEALISOVER_KAZAKHTELECOM_TEXT = '#tooltips:vehicleStatus/dealIsOver/Kazakhtelecom/text'
     VEHICLESTATUS_DEALISOVER_BEELINEKZ_HEADER = '#tooltips:vehicleStatus/dealIsOver/BeelineKZ/header'
@@ -2406,6 +2401,7 @@ class TOOLTIPS(object):
     QUESTS_COMPLETE_PERSONALREGULAR_BODY = '#tooltips:quests/complete/personalRegular/body'
     QUESTS_COMPLETE_PROGRESS_STATUSTOOLTIP = '#tooltips:quests/complete/progress/statusTooltip'
     QUESTS_COMPLETE_PROGRESS_VALUE_STATUSTOOLTIP = '#tooltips:quests/complete/progress/value/statusTooltip'
+    QUESTS_CONDITION_BATTLEPASS_TOKEN = '#tooltips:quests/condition/battlepass/token'
     QUESTS_CONDITION_ACHIEVEMENT_HEADER = '#tooltips:quests/condition/achievement/header'
     QUESTS_CONDITION_ACHIEVEMENTS_DESCR = '#tooltips:quests/condition/achievements/descr'
     QUESTS_CONDITION_ACHIEVEMENT_PATTERN = '#tooltips:quests/condition/achievement/pattern'
@@ -3103,6 +3099,8 @@ class TOOLTIPS(object):
     NOTRECRUITEDTANKMAN_COMMANDER_HOB_DESC = '#tooltips:notrecruitedtankman/commander_hob/desc'
     NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_LABEL = '#tooltips:notrecruitedtankman/commander_tolmeron/label'
     NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_DESC = '#tooltips:notrecruitedtankman/commander_tolmeron/desc'
+    NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_LABEL = '#tooltips:notrecruitedtankman/commander_whiskers/label'
+    NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_DESC = '#tooltips:notrecruitedtankman/commander_whiskers/desc'
     NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL = '#tooltips:notrecruitedtankman/yha_commander/label'
     NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC = '#tooltips:notrecruitedtankman/yha_commander/desc'
     NOTRECRUITEDTANKMAN_YHA_DRIVER_LABEL = '#tooltips:notrecruitedtankman/yha_driver/label'
@@ -4276,6 +4274,7 @@ class TOOLTIPS(object):
      NOTRECRUITEDTANKMAN_COMMANDER_HILLEN_LABEL,
      NOTRECRUITEDTANKMAN_COMMANDER_HOB_LABEL,
      NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_LABEL,
+     NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_LABEL,
      NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL,
      NOTRECRUITEDTANKMAN_YHA_DRIVER_LABEL,
      NOTRECRUITEDTANKMAN_YHA_GUNNER_LABEL,
@@ -4441,6 +4440,7 @@ class TOOLTIPS(object):
      NOTRECRUITEDTANKMAN_COMMANDER_HILLEN_DESC,
      NOTRECRUITEDTANKMAN_COMMANDER_HOB_DESC,
      NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_DESC,
+     NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_DESC,
      NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC,
      NOTRECRUITEDTANKMAN_YHA_DRIVER_DESC,
      NOTRECRUITEDTANKMAN_YHA_GUNNER_DESC,

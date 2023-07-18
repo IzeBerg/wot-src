@@ -1,5 +1,6 @@
 from enum import unique, Enum
 from gui.periodic_battles.models import PeriodType
+FEP_MODE_ITEMS_QUEST_ID = 'FEP_mode_items'
 FEP_PROGRESSION_PREFIX = 'FEP_progression_'
 FEP_PROGRESSION_TRIGGER_QUEST_ID = FEP_PROGRESSION_PREFIX + 'trigger'
 FEP_PROGRESSION_EXECUTOR_QUEST_ID = FEP_PROGRESSION_PREFIX + 'executor'

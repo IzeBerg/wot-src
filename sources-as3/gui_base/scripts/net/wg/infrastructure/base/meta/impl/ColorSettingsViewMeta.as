@@ -35,12 +35,17 @@ package net.wg.infrastructure.base.meta.impl
       
       override protected function onDispose() : void
       {
-         /*
-          * Decompilation error
-          * Timeout (1 minute) was reached
-          * Instruction count: 28
-          */
-         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
+         if(this._colorSettingsVO)
+         {
+            this._colorSettingsVO.dispose();
+            this._colorSettingsVO = null;
+         }
+         if(this._colorSettingsUpdateVO)
+         {
+            this._colorSettingsUpdateVO.dispose();
+            this._colorSettingsUpdateVO = null;
+         }
+         super.onDispose();
       }
       
       public function onCloseS() : void
@@ -87,22 +92,24 @@ package net.wg.infrastructure.base.meta.impl
       
       public final function as_initData(param1:Object) : void
       {
-         /*
-          * Decompilation error
-          * Timeout (1 minute) was reached
-          * Instruction count: 23
-          */
-         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
+         var _loc2_:ColorSettingsVO = this._colorSettingsVO;
+         this._colorSettingsVO = new ColorSettingsVO(param1);
+         this.initData(this._colorSettingsVO);
+         if(_loc2_)
+         {
+            _loc2_.dispose();
+         }
       }
       
       public final function as_updateData(param1:int, param2:Object) : void
       {
-         /*
-          * Decompilation error
-          * Timeout (1 minute) was reached
-          * Instruction count: 24
-          */
-         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
+         var _loc3_:ColorSettingsUpdateVO = this._colorSettingsUpdateVO;
+         this._colorSettingsUpdateVO = new ColorSettingsUpdateVO(param2);
+         this.updateData(param1,this._colorSettingsUpdateVO);
+         if(_loc3_)
+         {
+            _loc3_.dispose();
+         }
       }
       
       protected function initData(param1:ColorSettingsVO) : void

@@ -284,9 +284,10 @@ class FireCircleSN(_BRLocalizationProvider, sn_items.SmokeSN):
 
     def _update(self, value):
         duration = value.get('duration', 0.0) if isinstance(value, dict) else value
+        endTime = value.get('endTime')
         if duration > 0.0:
             self._setVisible(True)
-            self._updateTimeParams(duration, 0.0)
+            self._updateTimeParams(duration, endTime)
             self._sendUpdate()
         else:
             self._setVisible(False)
@@ -332,10 +333,11 @@ class AdaptationHealthRestoreSN(_BRLocalizationProvider, sn_items.TimerSN):
     def _update(self, value):
         restoreHealth = value.get('restoreHealth')
         duration = value.get('duration')
+        endTime = value.get('endTime')
         if duration is not None:
             if duration > 0.0:
                 self._setVisible(True)
-                self._updateTimeParams(duration, 0.0)
+                self._updateTimeParams(duration, endTime)
             else:
                 self._setVisible(False)
                 self._vo['additionalState'] = BATTLE_ROYAL_CONSTS.COUNTER_STATE_INITIAL

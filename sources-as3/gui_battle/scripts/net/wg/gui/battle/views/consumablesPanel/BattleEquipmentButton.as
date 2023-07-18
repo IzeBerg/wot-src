@@ -356,13 +356,10 @@ package net.wg.gui.battle.views.consumablesPanel
             }
             this.cooldownMc.visible = true;
             this.intervalRun(this._useBigTimer);
-            if(!this._isReplay)
-            {
-               _loc5_ = !!this._useBigTimer ? int(SMALL_INTERVAL_SIZE) : int(INTERVAL_SIZE);
-               this.startCooldownTimer(param1,this._currReloadingInPercent,this._curAnimReversed,this._isFillPartially);
-               this.disableMouse();
-               this._scheduler.scheduleRepeatableTask(this.intervalRun,_loc5_,param2,this._useBigTimer);
-            }
+            _loc5_ = !!this._useBigTimer ? int(SMALL_INTERVAL_SIZE) : int(INTERVAL_SIZE);
+            this.startCooldownTimer(param1,this._currReloadingInPercent,this._curAnimReversed,this._isFillPartially);
+            this.disableMouse();
+            this._scheduler.scheduleRepeatableTask(this.intervalRun,_loc5_,param2,this._useBigTimer);
          }
          else
          {
@@ -440,6 +437,14 @@ package net.wg.gui.battle.views.consumablesPanel
       }
       
       public function updateLockedInformation(param1:int, param2:String) : void
+      {
+      }
+      
+      public function showPossibleStacks(param1:int) : void
+      {
+      }
+      
+      public function updateStacks(param1:int) : void
       {
       }
       

@@ -7,10 +7,6 @@ package net.wg.infrastructure.interfaces
    {
        
       
-      function readjustSize() : void;
-      
-      function clearImage() : void;
-      
       function set bitmapData(param1:BitmapData) : void;
       
       function get source() : String;
@@ -24,6 +20,8 @@ package net.wg.infrastructure.interfaces
       function get bitmapWidth() : int;
       
       function get bitmapHeight() : int;
+      
+      function readjustSize() : void;
       
       function get smoothing() : Boolean;
       

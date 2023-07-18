@@ -20,6 +20,10 @@
 			<priority>100</priority>
 			<bigIcon>Standard</bigIcon>
 		</battlePassQuestChainToken>
+		<randomQuestToken>
+			<priority>110</priority>
+			<bigIcon>Standard</bigIcon>
+		</randomQuestToken>
 		<premium_plus>
 			<priority>85</priority>
 			<bigIcon>Standard</bigIcon>
@@ -49,14 +53,23 @@
 				<priority>95</priority>
 				<bigIcon>Standard</bigIcon>
 			</style>
-			<projection_decal>
-				<priority>75</priority>
+			<style3D>
+				<priority>120</priority>
 				<bigIcon>Standard</bigIcon>
-			</projection_decal>
+			</style3D>
+			<projectionDecal>
+				<priority>75</priority>
+			</projectionDecal>
 			<decal>
 				<priority>74</priority>
-				<bigIcon>Standard</bigIcon>
 			</decal>
+			<emblem>
+				<priority>74</priority>
+			</emblem>
+			<inscription>
+				<priority>74</priority>
+			</inscription>
+			<bigIcon>Standard</bigIcon>
 		</customizations>
 		<blueprints>
 			<override>
@@ -150,7 +163,7 @@
 			</trophyDevice>
 		</items>
 		<slots>
-			<priority>72</priority>
+			<priority>55</priority>
 			<bigIcon>Standard</bigIcon>
 		</slots>
 		<berths>
@@ -196,10 +209,7 @@
 			</override>
 		</styleProgressToken>
 		<vehicles>
-			<override>
-				<id>60529</id>
-				<bigIcon>Standard</bigIcon>
-			</override>
+			<bigIcon>Standard</bigIcon>
 			<priority>130</priority>
 		</vehicles>
 	</bonuses>

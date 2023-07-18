@@ -83,14 +83,14 @@ package net.wg.gui.battle.components
          super.onDispose();
       }
       
-      public function setMinHeight(param1:uint) : void
-      {
-         this._minHeight = param1;
-      }
-      
       public function setLeftSideSmallYShift(param1:int) : void
       {
          this._leftSideSmallYShift = param1;
+      }
+      
+      public function setMinHeight(param1:uint) : void
+      {
+         this._minHeight = param1;
       }
       
       public function update(param1:Object) : void
@@ -133,13 +133,13 @@ package net.wg.gui.battle.components
          }
          if(this._height < this._minHeight)
          {
-            this.battleIcon.source = RES_ICONS.maps_icons_battletypes_64x64_all_png(this._data.battleTypeFrameLabel);
+            this.battleIcon.source = this._data.battleTypeIconPathSmall;
             this.battleIcon.x = BATTLE_ICON_SMALL_X;
             this.battleIcon.y = BATTLE_ICON_SMALL_Y;
          }
          else
          {
-            this.battleIcon.source = RES_ICONS.maps_icons_battletypes_136x136_all_png(this._data.battleTypeFrameLabel);
+            this.battleIcon.source = this._data.battleTypeIconPathBig;
             this.battleIcon.x = BATTLE_ICON_X;
             this.battleIcon.y = BATTLE_ICON_Y;
          }

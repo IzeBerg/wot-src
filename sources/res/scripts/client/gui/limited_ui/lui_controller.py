@@ -14,7 +14,7 @@ from gui.shared import events, g_eventBus, EVENT_BUS_SCOPE
 from gui.shared.notifications import NotificationPriorityLevel
 from helpers import dependency
 from messenger.m_constants import SCH_CLIENT_MSG_TYPE
-from skeletons.account_helpers.settings_core import ISettingsCore
+from skeletons.account_helpers.settings_core import ISettingsCore, ISettingsCache
 from skeletons.gui.game_control import ILimitedUIController, IBootcampController, IBattleRoyaleController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
@@ -94,6 +94,7 @@ class LimitedUIController(ILimitedUIController):
     __settingsCore = dependency.descriptor(ISettingsCore)
     __systemMessages = dependency.descriptor(ISystemMessages)
     __itemsCache = dependency.descriptor(IItemsCache)
+    __settingsCache = dependency.descriptor(ISettingsCache)
     _SERVER_SETTINGS_BLOCK_BITS = 32
 
     def __init__(self):
@@ -103,6 +104,7 @@ class LimitedUIController(ILimitedUIController):
         self.__rules = None
         self.__observers = defaultdict(list)
         self.__skippedObserves = defaultdict(list)
+        self.__postponedCompleteRules = None
         self.__serverSettings = None
         self.__isEnabled = False
         self.__em = EventManager()
@@ -118,7 +120,8 @@ class LimitedUIController(ILimitedUIController):
     def onDisconnected(self):
         self.__clear()
 
-    def onLobbyInited(self, event):
+    def onAccountBecomePlayer(self):
+        super(LimitedUIController, self).onAccountBecomePlayer()
         if self.__bootcampController.isInBootcamp():
             return
         self.__initialize()
@@ -189,6 +192,7 @@ class LimitedUIController(ILimitedUIController):
     def __initialize(self):
         if self.isInited:
             return
+        self.__postponedCompleteRules = set()
         self.__luiService = _LimitedUIConditionsService()
         self.__subscribe()
 
@@ -206,6 +210,7 @@ class LimitedUIController(ILimitedUIController):
             self.__luiService = None
             self.__isEnabled = False
             self.__serverSettings = None
+            self.__postponedCompleteRules = None
             self.__luiConfig = None
             return
 
@@ -214,11 +219,13 @@ class LimitedUIController(ILimitedUIController):
         self.__lobbyContext.onServerSettingsChanged += self.__onServerSettingsChanged
         self.__luiService.onConditionValueUpdated += self.__onConditionUpdated
         self.__itemsCache.onSyncCompleted += self.__onSyncCompleted
+        self.__settingsCache.onSyncCompleted += self.__onSettingsCacheSyncCompleted
 
     def __unsubscribe(self):
         self.__lobbyContext.onServerSettingsChanged -= self.__onServerSettingsChanged
         self.__luiService.onConditionValueUpdated -= self.__onConditionUpdated
         self.__itemsCache.onSyncCompleted -= self.__onSyncCompleted
+        self.__settingsCache.onSyncCompleted -= self.__onSettingsCacheSyncCompleted
         if self.__serverSettings is not None:
             self.__serverSettings.onServerSettingsChange -= self.__onUpdateLimitedUISettings
         return
@@ -234,6 +241,9 @@ class LimitedUIController(ILimitedUIController):
     def __onSyncCompleted(self, _, diff):
         if 'limitedUi' in diff:
             self.onVersionUpdated()
+
+    def __onSettingsCacheSyncCompleted(self):
+        self.__storePostponed()
 
     def __updateStatus(self):
         isEnableState = self.__luiConfig.enabled and self.__luiConfig.hasRules() and not self.__bootcampController.isInBootcamp()
@@ -304,7 +314,7 @@ class LimitedUIController(ILimitedUIController):
 
     def __notifyObservers(self, reason):
         for ruleID, handlers in self.__observers.items():
-            if not self.__isRuleCompleted(ruleID) and self.__checkRule(ruleID):
+            if handlers and not self.__isRuleCompleted(ruleID) and self.__checkRule(ruleID):
                 for handler in handlers:
                     handler(ruleID, reason)
 
@@ -321,7 +331,8 @@ class LimitedUIController(ILimitedUIController):
         isComplete = self.__checkCondition(ruleID)
         if isComplete:
             self.__completeRule(ruleID)
-            self.__updateTutorialHints(state=self.__isEnabled, arguments=ruleID.value)
+            if self.__readSettings(ruleID):
+                self.__updateTutorialHints(state=self.__isEnabled, arguments=ruleID.value)
         return isComplete
 
     def __checkCondition(self, ruleID):
@@ -335,13 +346,10 @@ class LimitedUIController(ILimitedUIController):
         return self.__readSettings(ruleID)
 
     def __completeRule(self, ruleID):
-        self.__storeSettings(ruleID)
-        sysMessageTemplate = self.__rules.getSysMessage(ruleID)
-        if sysMessageTemplate:
-            auxData = [
-             sysMessageTemplate, NotificationPriorityLevel.MEDIUM, None, None]
-            self.__systemMessages.proto.serviceChannel.pushClientMessage('', SCH_CLIENT_MSG_TYPE.SYS_MSG_TYPE, auxData=auxData)
-        return
+        if not self.__storeSettings(ruleID):
+            self.__postponedCompleteRules.add(ruleID)
+            return
+        self.__sendSysMessage(ruleID)
 
     def __getServerSettingsID(self, ruleID):
         rule = self.__rules.getRule(ruleID)
@@ -363,10 +371,32 @@ class LimitedUIController(ILimitedUIController):
     def __storeSettings(self, ruleID):
         storage, offset = self.__getServerSettingsID(ruleID)
         if storage is None:
-            return
+            return False
         else:
-            self.__settingsCore.serverSettings.setLimitedUIProgress(storage, offset)
-            return
+            return self.__settingsCore.serverSettings.setLimitedUIProgress(storage, offset)
+
+    def __storePostponed(self):
+        settings = defaultdict(list)
+        for ruleID in self.__postponedCompleteRules:
+            storage, offset = self.__getServerSettingsID(ruleID)
+            if storage is None:
+                continue
+            settings[storage].append(offset)
+
+        if settings and self.__settingsCore.serverSettings.setLimitedUIGroupProgress(settings):
+            for ruleID in self.__postponedCompleteRules:
+                self.__sendSysMessage(ruleID)
+
+            self.__postponedCompleteRules.clear()
+        return
+
+    def __sendSysMessage(self, ruleID):
+        sysMessageTemplate = self.__rules.getSysMessage(ruleID)
+        if sysMessageTemplate:
+            auxData = [
+             sysMessageTemplate, NotificationPriorityLevel.MEDIUM, None, None]
+            self.__systemMessages.proto.serviceChannel.pushClientMessage('', SCH_CLIENT_MSG_TYPE.SYS_MSG_TYPE, auxData=auxData)
+        return
 
     def __tryNotifyStateChanged(self):
         if self.__bootcampController.isInBootcamp() or self.version <= 0 or self.isOnlyUISpamOff or not self.__luiConfig.hasRules() or self.isFullCompleted:

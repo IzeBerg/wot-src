@@ -217,6 +217,9 @@ msgstr "购买全部3个章节即可解锁所有高级奖励。"
 msgid "battlePassBuyView/card/divider"
 msgstr "或"
 
+msgid "battlePassBuyView/card/priceDivider"
+msgstr "或"
+
 msgid "battlePassBuyView/card/purchased"
 msgstr "已购买"
 
@@ -277,8 +280,14 @@ msgstr "解锁已完成阶段的高级奖励。"
 msgid "battlePassBuyView/levelsSelected"
 msgstr "已选择的阶段数量:"
 
+msgid "battlePassBuyView/multicurrencyPrice"
+msgstr "价格:"
+
 msgid "battlePassBuyView/price"
 msgstr "购买价格："
+
+msgid "battlePassBuyView/priceDivider"
+msgstr "或"
 
 msgid "battlePassBuyView/reward/backBtn"
 msgstr "返回"
@@ -337,6 +346,9 @@ msgstr "隐秘信息"
 msgid "chapter/fullName/113"
 msgstr "西部风暴"
 
+msgid "chapter/fullName/114"
+msgstr "猎牛之歌"
+
 msgid "chapter/fullName/2"
 msgstr "英雄使命"
 
@@ -357,6 +369,9 @@ msgstr "隐秘信息"
 
 msgid "chapter/fullNameUppercased/113"
 msgstr "西部风暴"
+
+msgid "chapter/fullNameUppercased/114"
+msgstr "猎牛之歌"
 
 msgid "chapter/fullNameUppercased/74"
 msgstr "全新章节"
@@ -409,7 +424,7 @@ msgid "chapterChoice/confirmation/title/switch"
 msgstr "切换至\"%(chName)s\"章节？"
 
 msgid "chapterChoice/extraChapter/reward"
-msgstr "坦克和3D风格"
+msgstr "金币坦克"
 
 msgid "chapterChoice/freePoints/description"
 msgstr "未分配的战斗通行证点数: "
@@ -542,7 +557,7 @@ msgid "howToEarnPoints/bonus"
 msgstr "+%(bonus)s"
 
 msgid "howToEarnPoints/card/battle/linkText"
-msgstr "跳转到任务"
+msgstr "前往任务"
 
 msgid "howToEarnPoints/card/battle/text"
 msgstr "在钢铁猎手中完成任务并获得额外点数。"
@@ -557,7 +572,7 @@ msgid "howToEarnPoints/card/comp7/title"
 msgstr "日常任务"
 
 msgid "howToEarnPoints/card/daily/linkText"
-msgstr "跳转到任务"
+msgstr "前往任务"
 
 msgid "howToEarnPoints/card/daily/text"
 msgstr "日常任务可以使用任意等级的坦克完成。"
@@ -740,7 +755,7 @@ msgid "progression/activateChapterDescr"
 msgstr "完成已激活章节即可获得战斗通行证点数与其他奖励。"
 
 msgid "progression/activateExtraChapterDescr"
-msgstr "购买并激活该章节可以收到独特的%(styleName)s3D风格。"
+msgstr "完成已激活章节即可获得战斗通行证点数和其他奖励。"
 
 msgid "progression/activatePausedExtraChapterDescr"
 msgstr "完成已激活章节即可获得战斗通行证点数与其他奖励。"
@@ -828,20 +843,23 @@ msgstr ""
 msgid "progression/errorBtn"
 msgstr "前往车库"
 
-msgid "progression/extraChapter/widget/reward/caption"
-msgstr "完成本章节的主要奖励。"
+msgid "progression/extraChapterWidget/styleRemark"
+msgstr "需要高级通行证"
 
-msgid "progression/extraChapter/widget/reward/label"
-msgstr "%(vehicleName)s和%(styleName)s3D风格"
+msgid "progression/extraChapterWidget/styleSubTitle"
+msgstr "和%(vehicleName)s的任务"
 
-msgid "progression/extraChapter/widget/shortTimer"
-msgstr "%(H)s:%(m)s:%(s)s"
+msgid "progression/extraChapterWidget/styleTitle"
+msgstr "%(styleName)s风格"
 
-msgid "progression/extraChapter/widget/timer"
-msgstr "%(D)s天%(H)s:%(m)s:%(s)s"
+msgid "progression/extraChapterWidget/vehicleCaption"
+msgstr "金币坦克"
 
 msgid "progression/footer/freePointsDescr"
 msgstr "未分配的战斗通行证点数: "
+
+msgid "progression/footer/multicurrencyTooltip"
+msgstr "可使用金币或全局经验购买。"
 
 msgid "progression/footer/status/inactive"
 msgstr "章节未激活"
@@ -925,6 +943,9 @@ msgstr "查看全部风格"
 
 msgid "questChainBonus"
 msgstr "一系列任务"
+
+msgid "randomQuestBonus"
+msgstr "%(vehicle)s的任务"
 
 msgid "reward/postBattle/comp7/progress"
 msgstr "因所获声望点数排名靠前而奖励的点数:"
@@ -1028,6 +1049,36 @@ msgstr "%(styleName)s风格的新等级"
 msgid "styleProgression/newStyle"
 msgstr "%(styleName)s风格的第一个等级"
 
+msgid "tooltips/RandomQuestTooltip/condition"
+msgstr "条件: %(condition)"
+
+msgid "tooltips/RandomQuestTooltip/expireTime"
+msgstr "任务开放%(whiteSpanish_Open)s至%(month)s%(day)s日%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/consumables"
+msgstr "%(whiteSpanish_Open)s给养:%(whiteSpanish_Close)s 急救箱、修理箱和灭火器"
+
+msgid "tooltips/RandomQuestTooltip/rewards/directives"
+msgstr "配件%(whiteSpanish_Open)s指令%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/money"
+msgstr "%(whiteSpanish_Open)s银币、战争债券和全局经验%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/personal_reserves"
+msgstr "%(whiteSpanish_Open)s个人储备%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/premium"
+msgstr "%(whiteSpanish_Open)s《坦克世界》高级账号天数%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewards/standardEquipment"
+msgstr "%(whiteSpanish_Open)s标准配件%(whiteSpanish_Close)s"
+
+msgid "tooltips/RandomQuestTooltip/rewardsTitle"
+msgstr "完成任务即可获得下列奖励之一，每天仅限一次:"
+
+msgid "tooltips/RandomQuestTooltip/title"
+msgstr "%(vehicleName)的任务"
+
 msgid "tooltips/battlePassCoins/secondaryText"
 msgstr "令牌将在一年中的三个战斗通行证赛季中发放。请不要挥霍它们。"
 
@@ -1071,7 +1122,7 @@ msgid "tooltips/commanders/descr"
 msgstr "完成最终阶段并且获得一名独特乘员作为奖励。"
 
 msgid "tooltips/commanders/title"
-msgstr "两名乘员中的一名"
+msgstr "两名乘员之一"
 
 msgid "tooltips/completed/claimRewards"
 msgstr "已获得所有奖励"
@@ -1156,7 +1207,7 @@ msgid "tooltips/inProgress/baseReward"
 msgstr "基础奖励"
 
 msgid "tooltips/inProgress/battleRoyale"
-msgstr "钢铁猎手:复苏"
+msgstr "\"钢铁猎手\""
 
 msgid "tooltips/inProgress/chapter"
 msgstr "\"{name}\"章节"
@@ -1165,7 +1216,7 @@ msgid "tooltips/inProgress/epic"
 msgstr "前线模式"
 
 msgid "tooltips/inProgress/getPointsFrom"
-msgstr "%(battleType)s中的点数获取规则。"
+msgstr "在%(battleType)s中获取点数的规则。"
 
 msgid "tooltips/inProgress/hurryUp"
 msgstr "购买高级通行证就能获得已完成阶段的全部高级奖励！"
@@ -1376,7 +1427,7 @@ msgid "trophyDeviceUpgradeConfim/submit"
 msgstr "升级"
 
 msgid "trophyDeviceUpgradeConfim/submitTooltip"
-msgstr "银币不足，不能升级"
+msgstr "银币不足，无法升级"
 
 msgid "trophyDeviceUpgradeConfim/title"
 msgstr ""

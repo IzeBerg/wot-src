@@ -54,12 +54,8 @@ package net.wg.gui.lobby.manualChapter.controls
       
       public function setData(param1:Object) : void
       {
-         /*
-          * Decompilation error
-          * Timeout (1 minute) was reached
-          * Instruction count: 11
-          */
-         throw new flash.errors.IllegalOperationError("Not decompiled due to timeout");
+         this._data = this.getDataVO(param1);
+         invalidateData();
       }
       
       public function updateScaleFactor(param1:Number) : void

@@ -894,6 +894,9 @@ msgstr "无法开炮:火炮损坏。"
 msgid "player_errors/cant_shoot/gun_locked"
 msgstr "无法开火"
 
+msgid "player_errors/cant_shoot/gun_overheated"
+msgstr "无法射击: 火炮过热"
+
 msgid "player_errors/cant_shoot/gun_reload"
 msgstr "正在装弹"
 
@@ -938,6 +941,9 @@ msgstr "[%(entity)s]完全正常，不需修理。"
 
 msgid "player_messages/ALLY_HIT"
 msgstr "你击中盟友[%(entity)s]！"
+
+msgid "player_messages/ALLY_MULTI_HIT"
+msgstr "您击中了盟友[%(entity)s]！"
 
 msgid "player_messages/COMBAT_BR_EQUIPMENT_READY"
 msgstr "[%(equipment)s] 已就位。"
@@ -2592,6 +2598,9 @@ msgstr "%(caliber)s毫米HEAT弹%(userString)s"
 msgid "shells_kinds/params/damage"
 msgstr "平均损伤: %(value)s 点"
 
+msgid "shells_kinds/params/damagePerSecond"
+msgstr "平均每秒损伤: %(value)s点"
+
 msgid "shells_kinds/params/explosionRadius"
 msgstr "损伤范围：%(value)s米"
 
@@ -2737,7 +2746,7 @@ msgid "statistics/playerState/2"
 msgstr "击毁"
 
 msgid "statistics/playerState/3"
-msgstr "在战斗中"
+msgstr "战斗中"
 
 msgid "statistics/playerState/4"
 msgstr "----"

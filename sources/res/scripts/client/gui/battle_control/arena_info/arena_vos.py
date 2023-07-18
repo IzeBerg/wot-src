@@ -479,7 +479,7 @@ class VehicleArenaInfoVO(object):
         if self.vehicleType.isObserver:
             return True
         if self.vehicleID == avatar_getter.getPlayerVehicleID() and not self.isAlive():
-            return avatar_getter.isBecomeObserverAfterDeath() and avatar_getter.isObserverBothTeams()
+            return avatar_getter.isBecomeObserverAfterDeath()
         return False
 
     def isEnemy(self):

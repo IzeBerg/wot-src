@@ -117,7 +117,7 @@ msgid "accountTypes/premium"
 msgstr "高级账号"
 
 msgid "accountTypes/premiumPlus"
-msgstr "高级账号"
+msgstr "《坦克世界》高级账号"
 
 msgid "accountTypes/premiumPlusShort"
 msgstr "WOT"
@@ -376,7 +376,7 @@ msgstr ""
 "• 一个额外的车位。"
 
 msgid "awardWindow/telecomAward/description/prem/default"
-msgstr "坦克世界高级账号"
+msgstr "《坦克世界》高级账号"
 
 msgid "awardWindow/telecomAward/description/withBrotherhood/Twitchprime"
 msgstr ""
@@ -653,7 +653,7 @@ msgid "bonusType/27"
 msgstr "前线模式"
 
 msgid "bonusType/29"
-msgstr "钢铁猎手:复苏"
+msgstr "\"钢铁猎手\""
 
 msgid "bonusType/37"
 msgstr "侦察任务"
@@ -665,7 +665,7 @@ msgid "bonusType/4"
 msgstr "特殊模式"
 
 msgid "bonusType/42"
-msgstr "街机模式"
+msgstr "\"%(modeName)s\""
 
 msgid "bonusType/43"
 msgstr "天梯战"
@@ -1337,11 +1337,6 @@ msgstr ""
 "战役\n"
 "模式"
 
-msgid "crystals/info/tab/earn/level/mod/2"
-msgstr ""
-"排位\n"
-"赛"
-
 msgid "crystals/info/tab/earn/level/title"
 msgstr "坦克等级"
 
@@ -1378,16 +1373,13 @@ msgid "crystals/info/tab/get/card/win"
 msgstr "胜利"
 
 msgid "crystals/info/tab/get/description"
-msgstr "驾驶有战争债券标记的坦克在标准模式、排位赛或是战役模式中战斗。战斗结果中的基础经验获取排名越高，战斗奖励的战争债券也就越多。"
+msgstr "驾驶有战争债券标记的坦克在标准模式或是战役模式中战斗。所获得的基础经验在战斗结果中排名越高，战斗奖励的战争债券也就越多。"
 
 msgid "crystals/info/tab/get/general"
 msgstr "战役模式"
 
 msgid "crystals/info/tab/get/random"
 msgstr "标准模式"
-
-msgid "crystals/info/tab/get/ranked"
-msgstr "排位赛"
 
 msgid "crystals/info/tab/getTab"
 msgstr "获取条件"
@@ -1566,7 +1558,7 @@ msgid "currentVehicleStatus/ammoNotFullEvents"
 msgstr "弹药不足"
 
 msgid "currentVehicleStatus/battle"
-msgstr "在战斗中"
+msgstr "战斗中"
 
 msgid "currentVehicleStatus/clanLocked"
 msgstr "?empty?"
@@ -3158,7 +3150,7 @@ msgid "headerButtons/fightBtn/tooltip/telecomRentalIsOver/header"
 msgstr "坦克暂不能使用"
 
 msgid "headerButtons/fightBtn/tooltip/unsutableToBattleRoyale/body"
-msgstr "您只能驾驶特殊坦克参加钢铁猎手:复苏的战斗。"
+msgstr "您只能驾驶特殊坦克进入钢铁猎手战斗。"
 
 msgid "headerButtons/fightBtn/tooltip/unsutableToBattleRoyale/header"
 msgstr "坦克不符"
@@ -3244,29 +3236,29 @@ msgstr "Beeline Казахстан"
 msgid "internet_provider/BeelineKZ/tariff"
 msgstr "Игровой"
 
-msgid "internet_provider/Beltelecom/name"
-msgstr "Белтелеком"
-
-msgid "internet_provider/Beltelecom/tariff"
-msgstr "Игровой"
-
 msgid "internet_provider/Kazakhtelecom/name"
 msgstr "Казахтелеком"
 
 msgid "internet_provider/Kazakhtelecom/tariff"
 msgstr "Игровой"
 
-msgid "internet_provider/Kyivstar/name"
-msgstr "Киевстар"
+msgid "internet_provider/LocalPartner2/name"
+msgstr "当地合作伙伴2"
 
-msgid "internet_provider/Kyivstar/tariff"
-msgstr "Игровой"
+msgid "internet_provider/LocalPartner2/tariff"
+msgstr "伊格罗沃伊"
 
-msgid "internet_provider/Rostelecom/name"
-msgstr "Ростелеком"
+msgid "internet_provider/LocalPartner3/name"
+msgstr "当地合作伙伴3"
 
-msgid "internet_provider/Rostelecom/tariff"
-msgstr "Игровой"
+msgid "internet_provider/LocalPartner3/tariff"
+msgstr "伊格罗沃伊"
+
+msgid "internet_provider/LocalPartner4/name"
+msgstr "当地合作伙伴4"
+
+msgid "internet_provider/LocalPartner4/tariff"
+msgstr "伊格罗沃伊"
 
 msgid "inventory/device/errors/not_removable"
 msgstr " "
@@ -3605,7 +3597,7 @@ msgid "loading/battleTypes/22"
 msgstr "前线模式"
 
 msgid "loading/battleTypes/23"
-msgstr "钢铁猎手:复苏"
+msgstr "钢铁猎手"
 
 msgid "loading/battleTypes/24"
 msgstr "侦察任务"
@@ -3620,7 +3612,7 @@ msgid "loading/battleTypes/28"
 msgstr "战略家训练"
 
 msgid "loading/battleTypes/29"
-msgstr "街机模式"
+msgstr " "
 
 msgid "loading/battleTypes/30"
 msgstr "天梯战"
@@ -4255,6 +4247,9 @@ msgstr "主要专业和乘员特长"
 msgid "moduleInfo/params/damage"
 msgstr "损伤"
 
+msgid "moduleInfo/params/damagePerSecond"
+msgstr "平均每秒损伤"
+
 msgid "moduleInfo/params/dispertionRadius"
 msgstr "100米精度"
 
@@ -4281,6 +4276,9 @@ msgstr "飞行时间"
 
 msgid "moduleInfo/params/forwardMaxSpeed"
 msgstr "最大速度"
+
+msgid "moduleInfo/params/guaranteedDamage/footnote"
+msgstr " 如果未击穿装甲，炮弹仅能造成较小比例的损伤。"
 
 msgid "moduleInfo/params/hullAndChassisWeight"
 msgstr "重量"
@@ -4312,23 +4310,17 @@ msgstr "最大载重量"
 msgid "moduleInfo/params/maxShotDistance"
 msgstr "射击范围"
 
-msgid "moduleInfo/params/maxShotDistance/footnote"
-msgstr "* 该火炮炮弹的最大飞行距离"
-
 msgid "moduleInfo/params/maxSteeringLockAngle"
 msgstr "最大车轮转向角度"
 
 msgid "moduleInfo/params/noPiercingDistance/footnote"
-msgstr "* 这种炮弹的穿透力不受距离影响"
-
-msgid "moduleInfo/params/noPiercingDistance/footnote/maxDistance"
-msgstr ",最大飞行距离—400米"
+msgstr " 这种炮弹的穿透力不受距离影响。"
 
 msgid "moduleInfo/params/piercingDistance"
 msgstr "%(dist)s 米"
 
 msgid "moduleInfo/params/piercingDistance/footnote"
-msgstr "* 取决于距离: %(minDist)s–%(maxDist)s米"
+msgstr " 这种炮弹的穿透力受距离影响(%(minDist)s–%(maxDist)s米)。"
 
 msgid "moduleInfo/params/piercingDistanceHeader"
 msgstr "平均穿透力(毫米)—距离"
@@ -4561,7 +4553,7 @@ msgid "prebattle/battleRoyale/solo"
 msgstr "单人战斗"
 
 msgid "prebattle/battleRoyale/squad"
-msgstr "小队战斗"
+msgstr "组队战斗"
 
 msgid "prebattle/description"
 msgstr "准备战斗/描述"
@@ -4747,7 +4739,7 @@ msgid "premium/tariffs/duration"
 msgstr "%d天:"
 
 msgid "premium/tariffs/header"
-msgstr "购买"
+msgstr "选择持续时间"
 
 msgid "price/bpbit"
 msgstr "战斗通行证点数"
@@ -5632,7 +5624,7 @@ msgid "skillDropWindow/freeDropPercent"
 msgstr "于1%"
 
 msgid "skillDropWindow/inStorage"
-msgstr "仓库中:"
+msgstr "在仓库中:"
 
 msgid "skillDropWindow/multiplier"
 msgstr "训练"
@@ -5703,7 +5695,7 @@ msgid "store/vehicleStates/ammoNotFullEvents"
 msgstr "?empty?"
 
 msgid "store/vehicleStates/battle"
-msgstr "在战斗中"
+msgstr "战斗中"
 
 msgid "store/vehicleStates/buySlot"
 msgstr "购买车位"
@@ -5828,7 +5820,7 @@ msgid "tankCarousel/vehicleStates/ammoNotFullEvents"
 msgstr "弹药不足"
 
 msgid "tankCarousel/vehicleStates/battle"
-msgstr "在战斗中"
+msgstr "战斗中"
 
 msgid "tankCarousel/vehicleStates/buySlot"
 msgstr "购买车位"
@@ -6274,6 +6266,9 @@ msgstr "重量/最大载重量"
 msgid "tank_params/vpm"
 msgstr "(HP/分钟)"
 
+msgid "tank_params/vps"
+msgstr "(HP/秒)"
+
 msgid "tank_params/wheeledSpeedModeSpeed"
 msgstr "最大速度/倒车速度(快速)"
 
@@ -6673,7 +6668,7 @@ msgid "training/info/states/state4"
 msgstr "?empty?"
 
 msgid "training/info/states/state8"
-msgstr "在战斗中"
+msgstr "战斗中"
 
 msgid "training/info/team1Label"
 msgstr "队伍1 [%(total)s]"

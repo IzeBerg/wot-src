@@ -76,8 +76,6 @@
 			2.0
 			<!--BW_String-->
 		</priceFactor>
-		<tiling>1 1 0 0</tiling>
-		<exclusionMask/>
 		<density>
 			1.12 1.12
 			<!--BW_String-->
@@ -110,10 +108,7 @@
 			<armor_8>0</armor_8>
 			<armor_9>
 				6
-				<vehicleDamageFactor>
-					0.0
-					<!--BW_String-->
-				</vehicleDamageFactor>
+				<vehicleDamageFactor>0</vehicleDamageFactor>
 			</armor_9>
 			<armor_10>254</armor_10>
 			<armor_11>
@@ -140,11 +135,11 @@
 		<swinging>
 			<lodDist>FAR</lodDist>
 			<pitchParams>
-				0.24 38.00 0.36 1.00 0.04 0.26
+				0.24 38 0.36 1 0.04 0.26
 				<!--BW_String-->
 			</pitchParams>
 			<rollParams>
-				1.00 0.24 38.00 0.36 1.00 0.04 0.26
+				1 0.24 38 0.36 1 0.04 0.26
 				<!--BW_String-->
 			</rollParams>
 			<sensitivityToImpulse>
@@ -179,54 +174,54 @@
 					0.750186 0.37376 2.77072
 					<!--BW_String-->
 				</rayEnd>
-				<rayUp>
-					0.000000 0.000000 -1
-					<!--BW_String-->
-				</rayUp>
+				<rayUp>0 0 -1</rayUp>
 				<size>
 					0.22
 					<!--BW_String-->
 				</size>
 				<hideIfDamaged>true</hideIfDamaged>
-				<isUVProportional>true</isUVProportional>
 			</slot>
 			<slot>
 				<slotType>paint</slotType>
 				<slotId>11000</slotId>
 				<anchorPosition>
-					0.000000 0.551687 2.2635
+					0 0.551687 2.2635
 					<!--BW_String-->
 				</anchorPosition>
-				<anchorDirection>0.000000 0.236799 0.971559</anchorDirection>
+				<anchorDirection>
+					0 0.236799 0.971559
+					<!--BW_String-->
+				</anchorDirection>
 			</slot>
 			<slot>
 				<slotType>camouflage</slotType>
 				<slotId>12000</slotId>
 				<anchorPosition>
-					0.000000 0.551687 2.2635
+					0 0.551687 2.2635
 					<!--BW_String-->
 				</anchorPosition>
-				<anchorDirection>0.000000 0.236799 0.971559</anchorDirection>
+				<anchorDirection>
+					0 0.236799 0.971559
+					<!--BW_String-->
+				</anchorDirection>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
 				<slotId>15000</slotId>
 				<tags>formfactor_square</tags>
 				<position>
-					0.000485153 1.96267 1.60621
+					0.000485 1.96267 1.60621
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 -0.00468084 3.14158
+					-0 -0.004681 3.14158
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					2.17765 1.09472 2.17765
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>0.000000</clipAngle>
 				<anchorShift>-0.210002</anchorShift>
 			</slot>
 			<slot>
@@ -234,21 +229,23 @@
 				<slotId>15001</slotId>
 				<tags>formfactor_rect1x2</tags>
 				<position>
-					-0.00198872 2.06302 1.25541
+					-0.001989 2.06302 1.25541
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 0.000000 3.14157
+					-0 0 3.14157
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					3.5553 1.78729 3.5553
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.684204</clipAngle>
-				<anchorShift>-0.292160</anchorShift>
+				<anchorShift>
+					-0.29216
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -266,7 +263,6 @@
 					3.51962 1.76934 3.51962
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.533804</clipAngle>
 				<anchorShift>-0.435371</anchorShift>
@@ -280,40 +276,38 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 0.000000 3.14157
+					-0 0 3.14157
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					3.34471 0.832773 3.34471
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.861552</clipAngle>
-				<anchorShift>-0.332160</anchorShift>
+				<anchorShift>
+					-0.33216
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
 				<slotId>15004</slotId>
 				<tags>formfactor_rect1x6</tags>
 				<position>
-					-0.0019888 2.063 2.32036
+					-0.001989 2.063 2.32036
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 0.000000 3.14157
+					-0 0 3.14157
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					3.60096 1.81024 3.60096
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>
-					0.0191491
-					<!--BW_String-->
-				</clipAngle>
+				<clipAngle>0.019149</clipAngle>
 				<anchorShift>-0.332157</anchorShift>
 			</slot>
 			<slot>
@@ -321,7 +315,7 @@
 				<slotId>15005</slotId>
 				<tags>formfactor_rect1x2</tags>
 				<position>
-					-0.00277443 1.73057 3.41279
+					-0.002774 1.73057 3.41279
 					<!--BW_String-->
 				</position>
 				<rotation>
@@ -332,10 +326,9 @@
 					1.86667 0.938387 1.86668
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
-					0.00176008
+					0.00176
 					<!--BW_String-->
 				</clipAngle>
 				<anchorShift>-0.325353</anchorShift>
@@ -349,14 +342,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.45341 -0.000051 0.000156016
+					1.45341 -0.000051 0.000156
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.11889 0.795506 1.11888
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.897637</clipAngle>
 				<anchorShift>0.136187</anchorShift>
@@ -377,7 +369,6 @@
 					4.79613 0.399999 4.79611
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.445904</clipAngle>
 				<anchorShift>0.139436</anchorShift>
@@ -391,19 +382,15 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 0.000000 3.14159
+					-0 0 3.14159
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.07772 0.72845 1.07771
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>
-					0.00572178
-					<!--BW_String-->
-				</clipAngle>
+				<clipAngle>0.005722</clipAngle>
 				<anchorShift>-0.162951</anchorShift>
 			</slot>
 			<slot>
@@ -419,7 +406,6 @@
 					<!--BW_String-->
 				</rotation>
 				<scale>0.852577 0.364703 0.852576</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					0.51243
@@ -443,7 +429,6 @@
 					0.840156 0.462779 0.84015
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.588437</clipAngle>
 				<anchorShift>0.002148</anchorShift>
@@ -464,7 +449,6 @@
 					4.79611 0.25 4.7961
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.445904</clipAngle>
 				<anchorShift>0.082638</anchorShift>
@@ -478,19 +462,15 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 0.000000 3.14159
+					-0 0 3.14159
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.07772 0.72845 1.07771
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>
-					0.00572178
-					<!--BW_String-->
-				</clipAngle>
+				<clipAngle>0.005722</clipAngle>
 				<anchorShift>-0.220702</anchorShift>
 			</slot>
 			<slot>
@@ -502,19 +482,15 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					0.280546 -0.00468819 3.14157
+					0.280546 -0.004688 3.14157
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.86946 0.939793 1.86946
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>
-					0.0633386
-					<!--BW_String-->
-				</clipAngle>
+				<clipAngle>0.063339</clipAngle>
 				<anchorShift>-0.089997</anchorShift>
 			</slot>
 			<slot>
@@ -526,19 +502,15 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					0.606268 -0.00469847 3.14157
+					0.606268 -0.004698 3.14157
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.0927 0.549313 1.09271
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>
-					0.0633386
-					<!--BW_String-->
-				</clipAngle>
+				<clipAngle>0.063339</clipAngle>
 				<anchorShift>-0.029993</anchorShift>
 			</slot>
 			<slot>
@@ -546,17 +518,15 @@
 				<slotId>15015</slotId>
 				<tags>formfactor_square</tags>
 				<position>
-					-0.00109033 0.705292 3.43185
+					-0.00109 0.705292 3.43185
 					<!--BW_String-->
 				</position>
 				<rotation>
-					0.865054 3.13693 0.000040
+					0.865054 3.13693 0.00004
 					<!--BW_String-->
 				</rotation>
 				<scale>0.844045 0.424311 0.844049</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>0.000000</clipAngle>
 				<anchorShift>-0.079988</anchorShift>
 			</slot>
 			<slot>
@@ -568,19 +538,15 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 0.000000 3.14159
+					-0 0 3.14159
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.07772 0.72845 1.07771
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>
-					0.00572178
-					<!--BW_String-->
-				</clipAngle>
+				<clipAngle>0.005722</clipAngle>
 				<anchorShift>-0.162951</anchorShift>
 			</slot>
 			<slot>
@@ -592,19 +558,15 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 0.000000 3.14159
+					-0 0 3.14159
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.07772 0.728449 1.07771
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>
-					0.00572178
-					<!--BW_String-->
-				</clipAngle>
+				<clipAngle>0.005722</clipAngle>
 				<anchorShift>-0.170703</anchorShift>
 			</slot>
 			<slot>
@@ -612,7 +574,7 @@
 				<slotId>15018</slotId>
 				<tags>formfactor_rect1x2</tags>
 				<position>
-					-0.00199118 1.98385 2.84666
+					-0.001991 1.98385 2.84666
 					<!--BW_String-->
 				</position>
 				<rotation>
@@ -623,7 +585,6 @@
 					3.55529 1.78729 3.55529
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.867886</clipAngle>
 				<anchorShift>-0.302155</anchorShift>
@@ -633,20 +594,18 @@
 				<slotId>15019</slotId>
 				<tags>formfactor_rect1x2</tags>
 				<position>
-					-0.0019889 2.05719 2.16499
+					-0.001989 2.05719 2.16499
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 0.000000 3.14157
+					-0 0 3.14157
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					2.18856 1.10021 2.18856
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>0.000000</clipAngle>
 				<anchorShift>-0.312153</anchorShift>
 			</slot>
 			<slot>
@@ -654,18 +613,17 @@
 				<slotId>15020</slotId>
 				<tags>formfactor_rect1x2</tags>
 				<position>
-					-0.00108048 0.720223 3.42983
+					-0.00108 0.720223 3.42983
 					<!--BW_String-->
 				</position>
 				<rotation>
-					0.865053 3.13693 0.000040
+					0.865053 3.13693 0.00004
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.56734 0.410445 1.56735
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.088674</clipAngle>
 				<anchorShift>-0.079988</anchorShift>
@@ -686,7 +644,6 @@
 					1.72692 0.497954 1.72692
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.931077</clipAngle>
 				<verticalMirror>true</verticalMirror>
@@ -708,11 +665,13 @@
 					1.72692 0.497953 1.72692
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.931077</clipAngle>
 				<verticalMirror>true</verticalMirror>
-				<anchorShift>0.200100</anchorShift>
+				<anchorShift>
+					0.2001
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -730,10 +689,12 @@
 					2.0043 1.42502 2.00429
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.644283</clipAngle>
-				<anchorShift>0.056180</anchorShift>
+				<anchorShift>
+					0.05618
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -751,7 +712,6 @@
 					3.05393 1.53523 3.05395
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					0.36279
@@ -764,21 +724,23 @@
 				<slotId>15025</slotId>
 				<tags>formfactor_rect1x3</tags>
 				<position>
-					-0.00142238 0.806394 3.50326
+					-0.001422 0.806394 3.50326
 					<!--BW_String-->
 				</position>
 				<rotation>
-					0.865053 3.13693 0.000040
+					0.865053 3.13693 0.00004
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.56734 0.410445 1.56735
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.088674</clipAngle>
-				<anchorShift>-0.069990</anchorShift>
+				<anchorShift>
+					-0.06999
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -796,7 +758,6 @@
 					3.55529 1.78729 3.55529
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.867886</clipAngle>
 				<anchorShift>-0.302156</anchorShift>
@@ -817,7 +778,6 @@
 					2.16372 0.376468 2.16372
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.937411</clipAngle>
 				<verticalMirror>true</verticalMirror>
@@ -839,7 +799,6 @@
 					2.16371 0.351707 2.16372
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.931077</clipAngle>
 				<verticalMirror>true</verticalMirror>
@@ -861,7 +820,6 @@
 					2.11543 0.64258 2.11542
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -885,7 +843,6 @@
 					2.11543 0.64258 2.11542
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -909,7 +866,6 @@
 					2.11543 0.642578 2.11542
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -926,14 +882,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56982 1.56179 -0.000366323
+					1.56982 1.56179 -0.000366
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					2.11543 0.642579 2.11542
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -950,16 +905,14 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 0.000000 3.14157
+					-0 0 3.14157
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					2.20316 0.755339 2.20316
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>0.000000</clipAngle>
 				<anchorShift>-0.170544</anchorShift>
 			</slot>
 			<slot>
@@ -978,10 +931,12 @@
 					2.0043 1.42502 2.00429
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.644283</clipAngle>
-				<anchorShift>0.056190</anchorShift>
+				<anchorShift>
+					0.05619
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -992,14 +947,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56982 -1.56112 0.000122111
+					1.56982 -1.56112 0.000122
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					2.5273 0.767687 2.52728
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -1016,14 +970,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56982 -1.56051 0.000427429
+					1.56982 -1.56051 0.000427
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					2.5273 0.767687 2.52728
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -1040,14 +993,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56995 -1.56088 0.000357793
+					1.56995 -1.56088 0.000358
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					2.5273 0.767687 2.52728
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -1071,7 +1023,6 @@
 					2.5273 0.767687 2.52728
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -1088,14 +1039,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.5696 1.56218 0.000000
+					1.5696 1.56218 0
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					2.5273 0.767687 2.52728
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -1119,7 +1069,6 @@
 					2.52729 0.767687 2.52727
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -1136,14 +1085,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56946 -1.56837 0.000356848
+					1.56946 -1.56837 0.000357
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					3.24794 0.986589 3.24792
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -1167,13 +1115,15 @@
 					3.24794 0.986588 3.24791
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.153460</anchorShift>
+				<anchorShift>
+					0.15346
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1191,31 +1141,35 @@
 					2.0043 1.42502 2.00429
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.644283</clipAngle>
-				<anchorShift>0.056190</anchorShift>
+				<anchorShift>
+					0.05619
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
 				<slotId>15044</slotId>
 				<tags>formfactor_rect1x4</tags>
 				<position>
-					-0.00163426 0.859796 3.54877
+					-0.001634 0.859796 3.54877
 					<!--BW_String-->
 				</position>
 				<rotation>
-					0.865053 3.13693 0.000040
+					0.865053 3.13693 0.00004
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.56734 0.410445 1.56735
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.088674</clipAngle>
-				<anchorShift>-0.069990</anchorShift>
+				<anchorShift>
+					-0.06999
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1226,14 +1180,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 0.000000 3.14157
+					-0 0 3.14157
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					3.56657 1.22278 3.56657
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.671389</clipAngle>
 				<anchorShift>-0.160547</anchorShift>
@@ -1254,7 +1207,6 @@
 					2.16372 0.414491 2.16373
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.937411</clipAngle>
 				<verticalMirror>true</verticalMirror>
@@ -1276,7 +1228,6 @@
 					2.16372 0.385433 2.16372
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.931077</clipAngle>
 				<verticalMirror>true</verticalMirror>
@@ -1291,20 +1242,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56965 -1.56865 0.000249122
+					1.56965 -1.56865 0.000249
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					3.24794 0.986588 3.24791
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.153470</anchorShift>
+				<anchorShift>
+					0.15347
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1315,20 +1268,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56965 -1.56865 0.000249122
+					1.56965 -1.56865 0.000249
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					3.24794 0.986588 3.24791
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.153470</anchorShift>
+				<anchorShift>
+					0.15347
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1346,13 +1301,15 @@
 					3.24794 0.986587 3.24791
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.153470</anchorShift>
+				<anchorShift>
+					0.15347
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1370,13 +1327,15 @@
 					3.24794 0.986587 3.24791
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.153460</anchorShift>
+				<anchorShift>
+					0.15346
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1394,7 +1353,6 @@
 					3.58382 1.03339 3.58383
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.937411</clipAngle>
 				<verticalMirror>true</verticalMirror>
@@ -1416,7 +1374,6 @@
 					3.58382 1.03339 3.58383
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.937411</clipAngle>
 				<verticalMirror>true</verticalMirror>
@@ -1431,20 +1388,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56946 1.56986 0.000200718
+					1.56946 1.56986 0.000201
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					5.61236 0.854698 5.61232
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>-0.026530</anchorShift>
+				<anchorShift>
+					-0.02653
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1455,20 +1414,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56965 -1.56801 0.000363967
+					1.56965 -1.56801 0.000364
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					5.61235 0.854697 5.61231
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>-0.027490</anchorShift>
+				<anchorShift>
+					-0.02749
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1479,14 +1440,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					-0.000000 -0.000000 3.14157
+					-0 -0 3.14157
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					3.36191 1.1526 3.36191
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.848737</clipAngle>
 				<anchorShift>-0.382805</anchorShift>
@@ -1496,7 +1456,7 @@
 				<slotId>15057</slotId>
 				<tags>formfactor_rect1x6</tags>
 				<position>
-					-0.00199079 1.99998 2.86529
+					-0.001991 1.99998 2.86529
 					<!--BW_String-->
 				</position>
 				<rotation>
@@ -1507,7 +1467,6 @@
 					3.60096 1.81024 3.60096
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.829883</clipAngle>
 				<anchorShift>-0.332156</anchorShift>
@@ -1517,7 +1476,7 @@
 				<slotId>15058</slotId>
 				<tags>formfactor_rect1x6</tags>
 				<position>
-					-0.00199743 1.78951 3.25948
+					-0.001997 1.78951 3.25948
 					<!--BW_String-->
 				</position>
 				<rotation>
@@ -1528,7 +1487,6 @@
 					3.60096 1.81024 3.60096
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.639867</clipAngle>
 				<anchorShift>-0.322152</anchorShift>
@@ -1549,7 +1507,6 @@
 					6.76807 0.35279 6.76806
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.445904</clipAngle>
 				<anchorShift>0.142635</anchorShift>
@@ -1570,7 +1527,6 @@
 					6.76807 0.35279 6.76805
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.445904</clipAngle>
 				<anchorShift>0.159437</anchorShift>
@@ -1591,11 +1547,13 @@
 					3.58382 1.03339 3.58383
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.937411</clipAngle>
 				<verticalMirror>true</verticalMirror>
-				<anchorShift>-0.194070</anchorShift>
+				<anchorShift>
+					-0.19407
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1613,7 +1571,6 @@
 					3.58382 1.03339 3.58383
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.937411</clipAngle>
 				<verticalMirror>true</verticalMirror>
@@ -1628,14 +1585,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.57045 1.5591 -0.000773994
+					1.57045 1.5591 -0.000774
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.21948 0.370427 1.21947
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -1652,14 +1608,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56965 -1.5619 -0.000364005
+					1.56965 -1.5619 -0.000364
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.21948 0.370428 1.21947
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
@@ -1676,20 +1631,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56918 -1.56884 0.000169084
+					1.56918 -1.56884 0.000169
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.68108 0.510642 1.68107
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.143460</anchorShift>
+				<anchorShift>
+					0.14346
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1700,20 +1657,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56887 -1.56896 0.000316001
+					1.56887 -1.56896 0.000316
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.68108 0.510642 1.68107
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.133460</anchorShift>
+				<anchorShift>
+					0.13346
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1724,20 +1683,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56875 -1.56879 0.000315074
+					1.56875 -1.56879 0.000315
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.68108 0.510642 1.68107
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.143460</anchorShift>
+				<anchorShift>
+					0.14346
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1748,20 +1709,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56891 -1.569 0.000321089
+					1.56891 -1.569 0.000321
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.68108 0.510642 1.68107
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.143460</anchorShift>
+				<anchorShift>
+					0.14346
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1772,20 +1735,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.5695 1.56917 -0.000382629
+					1.5695 1.56917 -0.000383
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.68108 0.510642 1.68107
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.143450</anchorShift>
+				<anchorShift>
+					0.14345
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1796,20 +1761,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.5696 1.56905 -0.000498182
+					1.5696 1.56905 -0.000498
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.68108 0.510642 1.68107
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.153460</anchorShift>
+				<anchorShift>
+					0.15346
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1820,20 +1787,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56937 1.56911 -0.000519705
+					1.56937 1.56911 -0.00052
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.68108 0.510642 1.68107
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.143460</anchorShift>
+				<anchorShift>
+					0.14346
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1844,20 +1813,22 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					1.56933 1.56921 -0.000264201
+					1.56933 1.56921 -0.000264
 					<!--BW_String-->
 				</rotation>
 				<scale>
 					1.68108 0.510642 1.68107
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>
 					1.10346
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.153450</anchorShift>
+				<anchorShift>
+					0.15345
+					<!--BW_String-->
+				</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1868,11 +1839,10 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					0.606269 -0.00469847 3.14157
+					0.606269 -0.004698 3.14157
 					<!--BW_String-->
 				</rotation>
 				<scale>0.697102 0.350441 0.697108</scale>
-				<doubleSided>false</doubleSided>
 				<hiddenForUser>true</hiddenForUser>
 				<showOn>16</showOn>
 				<clipAngle>
@@ -1890,17 +1860,13 @@
 					<!--BW_String-->
 				</position>
 				<rotation>
-					0.606268 -0.00469847 3.14157
+					0.606268 -0.004698 3.14157
 					<!--BW_String-->
 				</rotation>
 				<scale>0.500827 0.251771 0.500831</scale>
-				<doubleSided>false</doubleSided>
 				<hiddenForUser>true</hiddenForUser>
 				<showOn>16</showOn>
-				<clipAngle>
-					0.0633386
-					<!--BW_String-->
-				</clipAngle>
+				<clipAngle>0.063339</clipAngle>
 				<anchorShift>-0.009993</anchorShift>
 			</slot>
 			<slot>
@@ -1908,7 +1874,7 @@
 				<slotId>15075</slotId>
 				<tags>formfactor_rect1x2 mimic front</tags>
 				<position>
-					-0.00276961 1.74101 2.80748
+					-0.00277 1.74101 2.80748
 					<!--BW_String-->
 				</position>
 				<rotation>
@@ -1919,7 +1885,6 @@
 					2.32604 1.16931 2.32605
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<hiddenForUser>true</hiddenForUser>
 				<showOn>16</showOn>
 				<clipAngle>0.630832</clipAngle>
@@ -2292,25 +2257,6 @@
 					</transform>
 				</decal>
 			</AODecals>
-			<splineDesc>
-				<segmentModelLeft>vehicles/british/GB48_FV215b_183/track/segment.model</segmentModelLeft>
-				<segmentModelRight>vehicles/british/GB48_FV215b_183/track/segment.model</segmentModelRight>
-				<left>vehicles/british/GB48_FV215b_183/track/left.track</left>
-				<right>vehicles/british/GB48_FV215b_183/track/right.track</right>
-				<segmentLength>
-					0.144
-					<!--BW_String-->
-				</segmentLength>
-				<segmentOffset>
-					0.123
-					<!--BW_String-->
-				</segmentOffset>
-				<lodDist>SPLINE_TRACK</lodDist>
-				<atlas>
-					<UTiles>1</UTiles>
-					<VTiles>1</VTiles>
-				</atlas>
-			</splineDesc>
 			<trackThickness>
 				-0.0032
 				<!--BW_String-->
@@ -2440,32 +2386,22 @@
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VT_R0</name>
-					<forwardElastK>1</forwardElastK>
-					<backwardElastK>1</backwardElastK>
 				</node>
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VT_R1</name>
-					<forwardElastK>1</forwardElastK>
-					<backwardElastK>1</backwardElastK>
 				</node>
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VT_R2</name>
-					<forwardElastK>1</forwardElastK>
-					<backwardElastK>1</backwardElastK>
 				</node>
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VT_R3</name>
-					<forwardElastK>1</forwardElastK>
-					<backwardElastK>1</backwardElastK>
 				</node>
 				<node>
 					<isLeft>false</isLeft>
 					<name>Track_VT_R4</name>
-					<forwardElastK>1</forwardElastK>
-					<backwardElastK>1</backwardElastK>
 				</node>
 			</trackNodes>
 			<groundNodes>
@@ -2498,17 +2434,33 @@
 					</maxOffset>
 				</group>
 			</groundNodes>
+			<splineDesc>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<segmentModelLeft>vehicles/british/GB48_FV215b_183/track/segment.model</segmentModelLeft>
+					<segmentModelRight>vehicles/british/GB48_FV215b_183/track/segment.model</segmentModelRight>
+					<left>vehicles/british/GB48_FV215b_183/track/left.track</left>
+					<right>vehicles/british/GB48_FV215b_183/track/right.track</right>
+					<segmentLength>
+						0.144
+						<!--BW_String-->
+					</segmentLength>
+					<segmentOffset>
+						0.123
+						<!--BW_String-->
+					</segmentOffset>
+					<atlas>
+						<UTiles>1</UTiles>
+						<VTiles>1</VTiles>
+					</atlas>
+				</trackPair>
+				<lodDist>SPLINE_TRACK</lodDist>
+			</splineDesc>
 			<physicalTracks>
 				<left>
 					<segmentsCount>112</segmentsCount>
-					<segmentsOuterThickness>
-						0.0753755
-						<!--BW_String-->
-					</segmentsOuterThickness>
-					<segmentsInnerThickness>
-						0.00979756
-						<!--BW_String-->
-					</segmentsInnerThickness>
+					<segmentsOuterThickness>0.075375</segmentsOuterThickness>
+					<segmentsInnerThickness>0.009798</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						-1.455
 						<!--BW_String-->
@@ -2539,7 +2491,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -2552,10 +2504,7 @@
 									-1.53271
 									<!--BW_String-->
 								</xStart>
-								<xStep>
-									0.0325975
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.032598</xStep>
 								<ySamples>
 									1.1584 1.1642 1.16649 1.16274 1.16401
 									<!--BW_String-->
@@ -2567,7 +2516,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -2588,20 +2537,14 @@
 							</part>
 							<part>
 								<xStart>-0.218915</xStart>
-								<xStep>
-									0.0309443
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.030944</xStep>
 								<ySamples>
 									1.15569 1.15419 1.1584 1.15977 1.16114
 									<!--BW_String-->
 								</ySamples>
 							</part>
 							<part>
-								<xStart>
-									-0.0951377
-									<!--BW_String-->
-								</xStart>
+								<xStart>-0.095138</xStart>
 								<xStep>
 									0.01
 									<!--BW_String-->
@@ -2623,14 +2566,8 @@
 								</ySamples>
 							</part>
 							<part>
-								<xStart>
-									0.00748203
-									<!--BW_String-->
-								</xStart>
-								<xStep>
-									0.0313635
-									<!--BW_String-->
-								</xStep>
+								<xStart>0.007482</xStart>
+								<xStep>0.031363</xStep>
 								<ySamples>
 									1.16651 1.17049 1.17177 1.16776 1.16465
 									<!--BW_String-->
@@ -2653,7 +2590,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -2678,7 +2615,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -2692,7 +2629,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -2717,7 +2654,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -2732,10 +2669,7 @@
 									-3.63727
 									<!--BW_String-->
 								</xStart>
-								<xStep>
-									0.0721992
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.072199</xStep>
 								<ySamples>
 									1.19795 1.24419 1.29415 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30354 1.30426 1.30498 1.3057 1.30642 1.30714 1.30786 1.30858 1.3093 1.31002 1.31038 1.31038 1.31038 1.31038 1.31038 1.31038 1.31038 1.31038 1.31038 1.31038 1.31038 1.30922 1.30806 1.30689 1.30572 1.30455 1.30338 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30294 1.30401 1.29811 1.29795 1.29848 1.299 1.29953 1.30006 1.30058 1.30111 1.30164 1.30216 1.30269 1.30294 1.30294 1.26496 1.22398 1.183 1.14202 1.09855 1.03944
 									<!--BW_String-->
@@ -2762,10 +2696,7 @@
 								3.40139 0.806421
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.420518 0.0946094
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.420518 0.094609</shiftVec>
 							<jointIdx>12</jointIdx>
 						</topFront>
 						<topBack>
@@ -2783,10 +2714,7 @@
 								-2.44259 0.32856
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.0295815 -0.249985
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.029582 -0.249985</shiftVec>
 							<jointIdx>77</jointIdx>
 						</bottomBack>
 						<bottomFront>
@@ -2796,7 +2724,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								0.0530398 -0.244293
+								0.05304 -0.244293
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>0</jointIdx>
@@ -2814,7 +2742,7 @@
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_L5</name>
 							<startAngle>
@@ -2825,10 +2753,7 @@
 						</sync>
 						<sync>
 							<name>WD_L0</name>
-							<startAngle>
-								-32.5971
-								<!--BW_String-->
-							</startAngle>
+							<startAngle>-32.597099</startAngle>
 							<teethCount>18</teethCount>
 						</sync>
 					</teethSyncs>
@@ -3036,11 +2961,11 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.44027 1.43372 -0.0273086
+									-1.44027 1.43372 -0.027309
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.44027 1.43408 0.0448907
+									-1.44027 1.43408 0.044891
 									<!--BW_String-->
 								</point>
 								<point>
@@ -3304,15 +3229,15 @@
 							</range>
 							<range>
 								<point>
-									-1.455 1.09506 0.00748671
+									-1.455 1.09506 0.007487
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.455 1.09904 0.0406227
+									-1.455 1.09904 0.040623
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.455 1.10032 0.0747983
+									-1.455 1.10032 0.074798
 									<!--BW_String-->
 								</point>
 								<point>
@@ -3374,17 +3299,12 @@
 							</range>
 						</bottom>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</left>
 				<right>
 					<segmentsCount>112</segmentsCount>
-					<segmentsOuterThickness>
-						0.0753755
-						<!--BW_String-->
-					</segmentsOuterThickness>
-					<segmentsInnerThickness>
-						0.00979756
-						<!--BW_String-->
-					</segmentsInnerThickness>
+					<segmentsOuterThickness>0.075375</segmentsOuterThickness>
+					<segmentsInnerThickness>0.009798</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						1.455
 						<!--BW_String-->
@@ -3415,7 +3335,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -3428,10 +3348,7 @@
 									-1.53271
 									<!--BW_String-->
 								</xStart>
-								<xStep>
-									0.0325975
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.032598</xStep>
 								<ySamples>
 									1.15838 1.16418 1.16647 1.16272 1.16399
 									<!--BW_String-->
@@ -3443,7 +3360,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -3464,20 +3381,14 @@
 							</part>
 							<part>
 								<xStart>-0.218915</xStart>
-								<xStep>
-									0.0309442
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.030944</xStep>
 								<ySamples>
 									1.15567 1.15417 1.15838 1.15975 1.16112
 									<!--BW_String-->
 								</ySamples>
 							</part>
 							<part>
-								<xStart>
-									-0.0951377
-									<!--BW_String-->
-								</xStart>
+								<xStart>-0.095138</xStart>
 								<xStep>
 									0.01
 									<!--BW_String-->
@@ -3499,14 +3410,8 @@
 								</ySamples>
 							</part>
 							<part>
-								<xStart>
-									0.00748198
-									<!--BW_String-->
-								</xStart>
-								<xStep>
-									0.0313636
-									<!--BW_String-->
-								</xStep>
+								<xStart>0.007482</xStart>
+								<xStep>0.031364</xStep>
 								<ySamples>
 									1.16649 1.17047 1.17175 1.16774 1.16463
 									<!--BW_String-->
@@ -3529,7 +3434,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -3554,7 +3459,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -3568,7 +3473,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -3593,7 +3498,7 @@
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.00999999
+									0.01
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
@@ -3608,10 +3513,7 @@
 									-3.63727
 									<!--BW_String-->
 								</xStart>
-								<xStep>
-									0.0721992
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.072199</xStep>
 								<ySamples>
 									1.19793 1.24417 1.29413 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30352 1.30424 1.30496 1.30568 1.3064 1.30712 1.30784 1.30856 1.30928 1.31 1.31036 1.31036 1.31036 1.31036 1.31036 1.31036 1.31036 1.31036 1.31036 1.31036 1.31036 1.3092 1.30804 1.30687 1.3057 1.30453 1.30336 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30292 1.30399 1.29809 1.29793 1.29846 1.29898 1.29951 1.30004 1.30056 1.30109 1.30162 1.30214 1.30267 1.30292 1.30292 1.26494 1.22396 1.18298 1.142 1.09853 1.03942
 									<!--BW_String-->
@@ -3638,10 +3540,7 @@
 								3.40139 0.806421
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.420547 0.0946171
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.420547 0.094617</shiftVec>
 							<jointIdx>12</jointIdx>
 						</topFront>
 						<topBack>
@@ -3659,10 +3558,7 @@
 								-2.44259 0.32856
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.0295937 -0.249985
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.029594 -0.249985</shiftVec>
 							<jointIdx>77</jointIdx>
 						</bottomBack>
 						<bottomFront>
@@ -3671,10 +3567,7 @@
 								2.44783 0.32856
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								0.0530736 -0.244286
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>0.053074 -0.244286</shiftVec>
 							<jointIdx>0</jointIdx>
 						</bottomFront>
 					</snapWheels>
@@ -3693,21 +3586,15 @@
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_R5</name>
-							<startAngle>
-								-35.608
-								<!--BW_String-->
-							</startAngle>
+							<startAngle>-35.608002</startAngle>
 							<teethCount>18</teethCount>
 						</sync>
 						<sync>
 							<name>WD_R0</name>
-							<startAngle>
-								-32.5971
-								<!--BW_String-->
-							</startAngle>
+							<startAngle>-32.597099</startAngle>
 							<teethCount>18</teethCount>
 						</sync>
 					</teethSyncs>
@@ -3915,11 +3802,11 @@
 									<!--BW_String-->
 								</point>
 								<point>
-									1.44027 1.43372 -0.0273086
+									1.44027 1.43372 -0.027309
 									<!--BW_String-->
 								</point>
 								<point>
-									1.44027 1.43408 0.0448907
+									1.44027 1.43408 0.044891
 									<!--BW_String-->
 								</point>
 								<point>
@@ -4183,15 +4070,15 @@
 							</range>
 							<range>
 								<point>
-									1.455 1.09506 0.00748671
+									1.455 1.09506 0.007487
 									<!--BW_String-->
 								</point>
 								<point>
-									1.455 1.09904 0.0406227
+									1.455 1.09904 0.040623
 									<!--BW_String-->
 								</point>
 								<point>
-									1.455 1.10032 0.0747983
+									1.455 1.10032 0.074798
 									<!--BW_String-->
 								</point>
 								<point>
@@ -4253,14 +4140,9 @@
 							</range>
 						</bottom>
 					</sourceCollisionHullPoints>
+					<trackPairIdx>0</trackPairIdx>
 				</right>
 			</physicalTracks>
-			<customization>
-				<customizableVehicleAreas>
-					<paint>CHASSIS</paint>
-					<camouflage/>
-				</customizableVehicleAreas>
-			</customization>
 			<customizationSlots>
 				<slot>
 					<slotType>paint</slotType>
@@ -4269,24 +4151,24 @@
 						-1.79091 0.663966 0.1321
 						<!--BW_String-->
 					</anchorPosition>
-					<anchorDirection>
-						-0.935401 0.346793 0.0689964
-						<!--BW_String-->
-					</anchorDirection>
+					<anchorDirection>-0.935401 0.346793 0.068996</anchorDirection>
 				</slot>
 				<slot>
 					<slotType>style</slotType>
 					<slotId>29000</slotId>
 					<anchorPosition>
-						0.000119346 3.15867 -1.51121
+						0.000119 3.15867 -1.51121
 						<!--BW_String-->
 					</anchorPosition>
-					<anchorDirection>
-						-0.000000 1 0.000000
-						<!--BW_String-->
-					</anchorDirection>
+					<anchorDirection>-0 1 0</anchorDirection>
 				</slot>
 			</customizationSlots>
+			<customization>
+				<customizableVehicleAreas>
+					<paint>CHASSIS</paint>
+					<camouflage/>
+				</customizableVehicleAreas>
+			</customization>
 			<repairTime>
 				6.85714293
 				<!--BW_String-->
@@ -4330,10 +4212,7 @@
 				<armor_9>
 					50.8
 					<!--BW_String-->
-					<vehicleDamageFactor>
-						0.0
-						<!--BW_String-->
-					</vehicleDamageFactor>
+					<vehicleDamageFactor>0</vehicleDamageFactor>
 				</armor_9>
 				<armor_10>
 					50.8
@@ -4429,66 +4308,59 @@
 					</hitTester>
 					<effects>shot_superhuge</effects>
 					<reloadEffect>reload155_170</reloadEffect>
-					<animateEmblemSlots>true</animateEmblemSlots>
 					<customizationSlots>
 						<slot>
 							<slotType>paint</slotType>
 							<slotId>41000</slotId>
 							<anchorPosition>
-								0.000004 -0.0043308 2.76436
+								0.000004 -0.004331 2.76436
 								<!--BW_String-->
 							</anchorPosition>
-							<anchorDirection>
-								0.000000 0.000000 1
-								<!--BW_String-->
-							</anchorDirection>
+							<anchorDirection>0 0 1</anchorDirection>
 							<applyTo>4096</applyTo>
 						</slot>
 						<slot>
 							<slotType>paint</slotType>
 							<slotId>41001</slotId>
 							<anchorPosition>
-								0.000000 0.206491 0.20649
+								0 0.206491 0.20649
 								<!--BW_String-->
 							</anchorPosition>
-							<anchorDirection>0.000000 0.707107 0.707107</anchorDirection>
+							<anchorDirection>
+								0 0.707107 0.707107
+								<!--BW_String-->
+							</anchorDirection>
 							<applyTo>16384</applyTo>
 						</slot>
 						<slot>
 							<slotType>camouflage</slotType>
 							<slotId>42000</slotId>
 							<anchorPosition>
-								0.000004 -0.0043308 2.76436
+								0.000004 -0.004331 2.76436
 								<!--BW_String-->
 							</anchorPosition>
-							<anchorDirection>
-								0.000000 0.000000 1
-								<!--BW_String-->
-							</anchorDirection>
+							<anchorDirection>0 0 1</anchorDirection>
 							<applyTo>4096</applyTo>
 						</slot>
 						<slot>
 							<slotType>insigniaOnGun</slotType>
 							<slotId>49000</slotId>
 							<rayStart>
-								0.000009 -0.00909798 3.8935
+								0.000009 -0.009098 3.8935
 								<!--BW_String-->
 							</rayStart>
 							<rayEnd>
-								-0.0799163 -0.00456279 3.8935
+								0.000009 -0.009098 4.5335
 								<!--BW_String-->
 							</rayEnd>
 							<rayUp>
-								0.124 0.000000 0.000000
+								0.124 0 0
 								<!--BW_String-->
 							</rayUp>
-							<applyToFabric>true</applyToFabric>
 							<size>
 								0.64
 								<!--BW_String-->
 							</size>
-							<hideIfDamaged>false</hideIfDamaged>
-							<isUVProportional>true</isUVProportional>
 						</slot>
 					</customizationSlots>
 					<customization>
@@ -4523,9 +4395,8 @@
 				0.000000 0.5304 1.5893
 				<!--BW_String-->
 			</gunPosition>
-			<showEmblemsOnGun>false</showEmblemsOnGun>
 			<physicsShape>
-				1.021 0.000 0.971 0.000 0.900 -0.071 0.659 0.363 0.469 0.457 0.061 0.536 0.114 0.353 0.232
+				1.021 0 0.971 0 0.9 -0.071 0.659 0.363 0.469 0.457 0.061 0.536 0.114 0.353 0.232
 				<!--BW_String-->
 			</physicsShape>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
@@ -4534,25 +4405,19 @@
 					<slotType>paint</slotType>
 					<slotId>31000</slotId>
 					<anchorPosition>
-						0.000000 1.32949 0.000000
+						0 1.32949 0
 						<!--BW_String-->
 					</anchorPosition>
-					<anchorDirection>
-						0.000000 1 0.000000
-						<!--BW_String-->
-					</anchorDirection>
+					<anchorDirection>0 1 0</anchorDirection>
 				</slot>
 				<slot>
 					<slotType>camouflage</slotType>
 					<slotId>32000</slotId>
 					<anchorPosition>
-						0.000000 1.32949 0.000000
+						0 1.32949 0
 						<!--BW_String-->
 					</anchorPosition>
-					<anchorDirection>
-						0.000000 1 0.000000
-						<!--BW_String-->
-					</anchorDirection>
+					<anchorDirection>0 1 0</anchorDirection>
 				</slot>
 				<slot>
 					<slotType>player</slotType>
@@ -4565,20 +4430,16 @@
 						-1.26446 0.827189 -1.19321
 						<!--BW_String-->
 					</rayEnd>
-					<rayUp>
-						-0.0408579 0.992692 0.113549
-						<!--BW_String-->
-					</rayUp>
+					<rayUp>-0.040858 0.992692 0.113549</rayUp>
 					<size>
 						0.28
 						<!--BW_String-->
 					</size>
-					<hideIfDamaged>false</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>player</slotType>
 					<slotId>33001</slotId>
+					<isMirrored>true</isMirrored>
 					<rayStart>
 						1.63827 0.883125 -1.32412
 						<!--BW_String-->
@@ -4587,17 +4448,12 @@
 						1.26446 0.827189 -1.19321
 						<!--BW_String-->
 					</rayEnd>
-					<rayUp>
-						-0.0408579 0.992692 0.113549
-						<!--BW_String-->
-					</rayUp>
-					<isMirrored>true</isMirrored>
+					<rayUp>-0.040858 0.992692 0.113549</rayUp>
 					<size>
 						0.28
 						<!--BW_String-->
 					</size>
 					<hideIfDamaged>true</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>inscription</slotType>
@@ -4610,16 +4466,11 @@
 						-1.20205 0.272349 0.598673
 						<!--BW_String-->
 					</rayEnd>
-					<rayUp>
-						0.000000 1 0.000000
-						<!--BW_String-->
-					</rayUp>
+					<rayUp>0 1 0</rayUp>
 					<size>
 						0.74
 						<!--BW_String-->
 					</size>
-					<hideIfDamaged>false</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>inscription</slotType>
@@ -4632,16 +4483,11 @@
 						1.22816 0.272945 0.627629
 						<!--BW_String-->
 					</rayEnd>
-					<rayUp>
-						0.000000 1 0.000000
-						<!--BW_String-->
-					</rayUp>
+					<rayUp>0 1 0</rayUp>
 					<size>
 						0.74
 						<!--BW_String-->
 					</size>
-					<hideIfDamaged>false</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -4659,7 +4505,6 @@
 						1.29327 0.392847 1.29326
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>272</showOn>
 					<clipAngle>
 						1.08881
@@ -4683,7 +4528,6 @@
 						1.29328 0.392847 1.29327
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>272</showOn>
 					<clipAngle>0.957784</clipAngle>
 					<anchorShift>0.355081</anchorShift>
@@ -4697,14 +4541,13 @@
 						<!--BW_String-->
 					</position>
 					<rotation>
-						1.70255 -0.000341654 -0.000136852
+						1.70255 -0.000342 -0.000137
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						1.36112 0.522641 1.36112
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.557379</clipAngle>
 					<anchorShift>0.069997</anchorShift>
@@ -4714,18 +4557,17 @@
 					<slotId>35003</slotId>
 					<tags>formfactor_square</tags>
 					<position>
-						-0.000259836 3.15524 -1.72835
+						-0.00026 3.15524 -1.72835
 						<!--BW_String-->
 					</position>
 					<rotation>
-						0.0436913 -0.000055 3.14039
+						0.043691 -0.000055 3.14039
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						2.33973 0.462013 2.33968
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.524345</clipAngle>
 					<verticalMirror>true</verticalMirror>
@@ -4747,7 +4589,6 @@
 						2.13845 0.622125 2.13846
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.962611</clipAngle>
 					<anchorShift>0.051215</anchorShift>
@@ -4761,14 +4602,13 @@
 						<!--BW_String-->
 					</position>
 					<rotation>
-						1.53462 1.67127 0.0466223
+						1.53462 1.67127 0.046622
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						3.66187 2 3.66188
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.431709</clipAngle>
 					<anchorShift>-0.202585</anchorShift>
@@ -4789,7 +4629,6 @@
 						2.13845 0.622126 2.13846
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.962079</clipAngle>
 					<anchorShift>0.078264</anchorShift>
@@ -4803,14 +4642,13 @@
 						<!--BW_String-->
 					</position>
 					<rotation>
-						1.53453 -1.5003 0.0466623
+						1.53453 -1.5003 0.046662
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						3.62669 0.999997 3.62668
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.812697</clipAngle>
 					<anchorShift>0.401197</anchorShift>
@@ -4820,18 +4658,17 @@
 					<slotId>35008</slotId>
 					<tags>formfactor_rect1x2</tags>
 					<position>
-						-0.0163243 2.50576 -3.60283
+						-0.016324 2.50576 -3.60283
 						<!--BW_String-->
 					</position>
 					<rotation>
-						1.58446 -0.00127363 -0.00127625
+						1.58446 -0.001274 -0.001276
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						1.76989 0.679602 1.7699
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.378812</clipAngle>
 					<anchorShift>-0.205689</anchorShift>
@@ -4841,18 +4678,17 @@
 					<slotId>35009</slotId>
 					<tags>formfactor_rect1x2</tags>
 					<position>
-						-0.000010 3.15422 -2.71946
+						-0.00001 3.15422 -2.71946
 						<!--BW_String-->
 					</position>
 					<rotation>
-						3.14159 -0.000030 -0.000045
+						3.14159 -0.00003 -0.000045
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						2.16483 0.236592 2.16483
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.794396</clipAngle>
 					<verticalMirror>true</verticalMirror>
@@ -4863,7 +4699,7 @@
 					<slotId>35010</slotId>
 					<tags>formfactor_rect1x3</tags>
 					<position>
-						0.000236805 3.22071 -0.943607
+						0.000237 3.22071 -0.943607
 						<!--BW_String-->
 					</position>
 					<rotation>
@@ -4874,7 +4710,6 @@
 						2.21229 0.849475 2.21231
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.906002</clipAngle>
 					<anchorShift>-0.033812</anchorShift>
@@ -4888,16 +4723,14 @@
 						<!--BW_String-->
 					</position>
 					<rotation>
-						3.14159 -0.000030 -0.000044
+						3.14159 -0.00003 -0.000044
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						1.73479 0.189593 1.73479
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
-					<clipAngle>0.000000</clipAngle>
 					<verticalMirror>true</verticalMirror>
 					<anchorShift>0.004901</anchorShift>
 				</slot>
@@ -4917,7 +4750,6 @@
 						2.80949 1.84862 2.8095
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.873936</clipAngle>
 					<anchorShift>0.131215</anchorShift>
@@ -4938,7 +4770,6 @@
 						2.72898 1.11086 2.72899
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.899272</clipAngle>
 					<anchorShift>0.151216</anchorShift>
@@ -4959,7 +4790,6 @@
 						2.80948 1.84862 2.8095
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.873936</clipAngle>
 					<anchorShift>0.201209</anchorShift>
@@ -4980,7 +4810,6 @@
 						2.72898 0.636567 2.72899
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.968944</clipAngle>
 					<anchorShift>0.242516</anchorShift>
@@ -4990,7 +4819,7 @@
 					<slotId>35016</slotId>
 					<tags>formfactor_rect1x4</tags>
 					<position>
-						-0.0163358 3.04561 -0.961201
+						-0.016336 3.04561 -0.961201
 						<!--BW_String-->
 					</position>
 					<rotation>
@@ -5001,7 +4830,6 @@
 						2.40131 0.262437 2.40132
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.832399</clipAngle>
 					<anchorShift>0.136184</anchorShift>
@@ -5011,23 +4839,19 @@
 					<slotId>35017</slotId>
 					<tags>formfactor_rect1x6</tags>
 					<position>
-						-0.0163274 2.74053 -3.37691
+						-0.016327 2.74053 -3.37691
 						<!--BW_String-->
 					</position>
 					<rotation>
-						1.58447 -0.00127292 -0.00127602
+						1.58447 -0.001273 -0.001276
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						2.5428 0.399999 2.54281
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
-					<clipAngle>
-						0.0177826
-						<!--BW_String-->
-					</clipAngle>
+					<clipAngle>0.017783</clipAngle>
 					<anchorShift>-0.065696</anchorShift>
 				</slot>
 				<slot>
@@ -5035,7 +4859,7 @@
 					<slotId>35018</slotId>
 					<tags>formfactor_rect1x3</tags>
 					<position>
-						-0.0162798 3.16397 -2.80165
+						-0.01628 3.16397 -2.80165
 						<!--BW_String-->
 					</position>
 					<rotation>
@@ -5046,7 +4870,6 @@
 						2.12212 0.231923 2.12212
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.927407</clipAngle>
 					<verticalMirror>true</verticalMirror>
@@ -5057,18 +4880,17 @@
 					<slotId>35019</slotId>
 					<tags>formfactor_square</tags>
 					<position>
-						-0.000448936 3.00162 -0.344933
+						-0.000449 3.00162 -0.344933
 						<!--BW_String-->
 					</position>
 					<rotation>
-						0.434729 -0.000563654 3.14027
+						0.434729 -0.000564 3.14027
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						2.08314 0.519227 2.08309
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>4352</showOn>
 					<clipAngle>
 						1.01839
@@ -5085,14 +4907,13 @@
 						<!--BW_String-->
 					</position>
 					<rotation>
-						3.14154 1.57079 -0.0682728
+						3.14154 1.57079 -0.068273
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						3.62122 0.777014 3.62121
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>4352</showOn>
 					<clipAngle>0.794396</clipAngle>
 					<verticalMirror>true</verticalMirror>
@@ -5103,7 +4924,7 @@
 					<slotId>35021</slotId>
 					<tags>formfactor_rect1x2</tags>
 					<position>
-						-0.000010 2.92857 -0.477049
+						-0.00001 2.92857 -0.477049
 						<!--BW_String-->
 					</position>
 					<rotation>
@@ -5114,7 +4935,6 @@
 						2.21057 0.241591 2.21057
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.826065</clipAngle>
 					<anchorShift>0.076187</anchorShift>
@@ -5128,14 +4948,13 @@
 						<!--BW_String-->
 					</position>
 					<rotation>
-						3.14154 1.57079 -0.0682728
+						3.14154 1.57079 -0.068273
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						3.71816 0.797815 3.71815
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>4352</showOn>
 					<clipAngle>0.794396</clipAngle>
 					<verticalMirror>true</verticalMirror>
@@ -5146,18 +4965,17 @@
 					<slotId>35023</slotId>
 					<tags>formfactor_rect1x3</tags>
 					<position>
-						-0.0163243 2.50576 -3.60283
+						-0.016324 2.50576 -3.60283
 						<!--BW_String-->
 					</position>
 					<rotation>
-						1.58446 -0.00127363 -0.00127625
+						1.58446 -0.001274 -0.001276
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						1.76989 0.679602 1.7699
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.378812</clipAngle>
 					<anchorShift>-0.205689</anchorShift>
@@ -5171,14 +4989,13 @@
 						<!--BW_String-->
 					</position>
 					<rotation>
-						3.14154 1.57079 -0.0682728
+						3.14154 1.57079 -0.068273
 						<!--BW_String-->
 					</rotation>
 					<scale>
 						3.90534 0.837983 3.90533
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>4352</showOn>
 					<clipAngle>
 						0.80073
@@ -5203,7 +5020,6 @@
 						3.44099 2.26413 3.441
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.930941</clipAngle>
 					<anchorShift>-0.080322</anchorShift>
@@ -5224,7 +5040,6 @@
 						3.44099 2.26413 3.441
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.930941</clipAngle>
 					<anchorShift>-0.080319</anchorShift>
@@ -5242,7 +5057,6 @@
 						<!--BW_String-->
 					</rotation>
 					<scale>0.536893 0.163088 0.536888</scale>
-					<doubleSided>false</doubleSided>
 					<hiddenForUser>true</hiddenForUser>
 					<showOn>256</showOn>
 					<clipAngle>
@@ -5264,7 +5078,6 @@
 						<!--BW_String-->
 					</rotation>
 					<scale>0.915854 0.278202 0.915846</scale>
-					<doubleSided>false</doubleSided>
 					<hiddenForUser>true</hiddenForUser>
 					<showOn>256</showOn>
 					<clipAngle>
@@ -5286,7 +5099,6 @@
 						<!--BW_String-->
 					</rotation>
 					<scale>0.924926 0.280958 0.924917</scale>
-					<doubleSided>false</doubleSided>
 					<hiddenForUser>true</hiddenForUser>
 					<showOn>256</showOn>
 					<clipAngle>
@@ -5308,7 +5120,6 @@
 						<!--BW_String-->
 					</rotation>
 					<scale>0.915854 0.278202 0.915846</scale>
-					<doubleSided>false</doubleSided>
 					<hiddenForUser>true</hiddenForUser>
 					<showOn>256</showOn>
 					<clipAngle>
@@ -5333,7 +5144,6 @@
 						1.95825 0.569702 1.95827
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<hiddenForUser>true</hiddenForUser>
 					<showOn>256</showOn>
 					<clipAngle>0.962611</clipAngle>
@@ -5355,7 +5165,6 @@
 						1.95825 0.569702 1.95827
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<hiddenForUser>true</hiddenForUser>
 					<showOn>256</showOn>
 					<clipAngle>0.962611</clipAngle>
@@ -5377,7 +5186,6 @@
 						7.57 3.99999 7.43709
 						<!--BW_String-->
 					</scale>
-					<doubleSided>false</doubleSided>
 					<hiddenForUser>true</hiddenForUser>
 					<showOn>4368</showOn>
 					<clipAngle>0.502655</clipAngle>
