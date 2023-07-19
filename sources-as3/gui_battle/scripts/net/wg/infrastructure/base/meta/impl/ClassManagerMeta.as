@@ -66,7 +66,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.data.BattleRoyaleEventHeaderVO;
    import net.wg.gui.battle.battleRoyale.data.BattleRoyaleFullStatsVO;
    import net.wg.gui.battle.battleRoyale.data.DescriptionBlockWithIconVO;
-   import net.wg.gui.battle.battleRoyale.data.RespawnMessageVO;
    import net.wg.gui.battle.battleRoyale.data.VehicleCounterVO;
    import net.wg.gui.battle.battleRoyale.ub.UnboundContainer;
    import net.wg.gui.battle.battleRoyale.views.BattleRoyaleLoading;
@@ -86,8 +85,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.views.components.CorrodingShotIndicator;
    import net.wg.gui.battle.battleRoyale.views.components.DamageScreen;
    import net.wg.gui.battle.battleRoyale.views.components.EventViewHeader;
-   import net.wg.gui.battle.battleRoyale.views.components.RespawnButton.BattleRoyaleRespawnButton;
-   import net.wg.gui.battle.battleRoyale.views.components.RespawnButton.RespawnIcon;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.BattleRoyaleFullStats;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.DescriptionWithIconRenderer;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.DescriptionWithIconRendererSmall;
@@ -100,15 +97,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyaleNationsVehiclesCounterVO;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyaleNationsVehiclesVO;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyalePlatoonVO;
-   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.BaseRespawnMessage;
-   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.IRespawnMessage;
-   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.RespawnMessagePanel;
-   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.RespawnMessageTimer;
-   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.RespawnMessageWithDescription;
-   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.AirDropTimer;
-   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.BattleRoyaleTimersPanel;
-   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.RespawnTimer;
-   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.TimerTextField;
    import net.wg.gui.battle.battleRoyale.views.configurator.BattleVehicleConfigurator;
    import net.wg.gui.battle.battleRoyale.views.configurator.ChoiceInfoPanel;
    import net.wg.gui.battle.battleRoyale.views.configurator.ConfiguratorRenderer;
@@ -140,10 +128,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleloading.renderers.TablePlayerItemRenderer;
    import net.wg.gui.battle.battleloading.renderers.TipPlayerItemRenderer;
    import net.wg.gui.battle.battleloading.util.BattleLoadingUtil;
-   import net.wg.gui.battle.battleloading.vo.FullInfoVO;
    import net.wg.gui.battle.battleloading.vo.LoadingFormDisplayDataVO;
-   import net.wg.gui.battle.battleloading.vo.ShortInfoVO;
-   import net.wg.gui.battle.battleloading.vo.TutorialInfoVO;
    import net.wg.gui.battle.battleloading.vo.VehInfoWithSortedIDTeamVO;
    import net.wg.gui.battle.battleloading.vo.VehInfoWithSortedIDVO;
    import net.wg.gui.battle.battleloading.vo.VehStatusTeamVO;
@@ -299,6 +284,15 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.epicBattle.views.stats.events.EpicFullStatsEvent;
    import net.wg.gui.battle.epicBattle.views.stats.events.EpicFullStatsRendererEvent;
    import net.wg.gui.battle.epicBattle.views.stats.renderers.EpicStatsPlayerRenderer;
+   import net.wg.gui.battle.epicBattle.views.upgradePanel.EpicBattleUpgradePanel;
+   import net.wg.gui.battle.epicBattle.views.upgradePanel.EpicChoiceInfoPanel;
+   import net.wg.gui.battle.epicBattle.views.upgradePanel.EpicConfiguratorRenderer;
+   import net.wg.gui.battle.epicBattle.views.upgradePanel.EpicModuleInfo;
+   import net.wg.gui.battle.epicBattle.views.upgradePanel.IEpicConfiguratorRenderer;
+   import net.wg.gui.battle.epicBattle.views.upgradePanel.data.EpicChoiceInfoPanelVO;
+   import net.wg.gui.battle.epicBattle.views.upgradePanel.data.EpicConfiguratorModuleVO;
+   import net.wg.gui.battle.epicBattle.views.upgradePanel.data.EpicModuleInfoVO;
+   import net.wg.gui.battle.epicBattle.views.upgradePanel.data.EpicUpgradePanelVO;
    import net.wg.gui.battle.epicRandom.VO.daapi.EpicRandomDAAPIVehicleInfoVO;
    import net.wg.gui.battle.epicRandom.VO.daapi.EpicRandomDAAPIVehiclesDataVO;
    import net.wg.gui.battle.epicRandom.battleloading.EpicRandomBattleLoading;
@@ -1132,13 +1126,7 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_UTIL_BATTLELOADINGUTIL:Class = BattleLoadingUtil;
       
-      public static const NET_WG_GUI_BATTLE_BATTLELOADING_VO_FULLINFOVO:Class = FullInfoVO;
-      
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_VO_LOADINGFORMDISPLAYDATAVO:Class = LoadingFormDisplayDataVO;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLELOADING_VO_SHORTINFOVO:Class = ShortInfoVO;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLELOADING_VO_TUTORIALINFOVO:Class = TutorialInfoVO;
       
       public static const NET_WG_GUI_BATTLE_BATTLELOADING_VO_VEHICLEDATATEAMVO:Class = VehicleDataTeamVO;
       
@@ -1165,8 +1153,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_DATA_BATTLEROYALEFULLSTATSVO:Class = BattleRoyaleFullStatsVO;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_DATA_DESCRIPTIONBLOCKWITHICONVO:Class = DescriptionBlockWithIconVO;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_DATA_RESPAWNMESSAGEVO:Class = RespawnMessageVO;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_DATA_VEHICLECOUNTERVO:Class = VehicleCounterVO;
       
@@ -1229,28 +1215,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_FULLSTATS_NATIONSVEHICLESCOUNTER_DATA_BATTLEROYALENATIONSVEHICLESVO:Class = BattleRoyaleNationsVehiclesVO;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_FULLSTATS_NATIONSVEHICLESCOUNTER_DATA_BATTLEROYALEPLATOONVO:Class = BattleRoyalePlatoonVO;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNBUTTON_BATTLEROYALERESPAWNBUTTON:Class = BattleRoyaleRespawnButton;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNBUTTON_RESPAWNICON:Class = RespawnIcon;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_BASERESPAWNMESSAGE:Class = BaseRespawnMessage;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_IRESPAWNMESSAGE:Class = IRespawnMessage;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_RESPAWNMESSAGEPANEL:Class = RespawnMessagePanel;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_RESPAWNMESSAGETIMER:Class = RespawnMessageTimer;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_RESPAWNMESSAGEWITHDESCRIPTION:Class = RespawnMessageWithDescription;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_AIRDROPTIMER:Class = AirDropTimer;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_BATTLEROYALETIMERSPANEL:Class = BattleRoyaleTimersPanel;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_RESPAWNTIMER:Class = RespawnTimer;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_TIMERTEXTFIELD:Class = TimerTextField;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_CONFIGURATOR_BATTLEVEHICLECONFIGURATOR:Class = BattleVehicleConfigurator;
       
@@ -1569,6 +1533,24 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_STATS_EVENTS_EPICFULLSTATSRENDEREREVENT:Class = EpicFullStatsRendererEvent;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_STATS_RENDERERS_EPICSTATSPLAYERRENDERER:Class = EpicStatsPlayerRenderer;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_UPGRADEPANEL_EPICBATTLEUPGRADEPANEL:Class = EpicBattleUpgradePanel;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_UPGRADEPANEL_EPICCHOICEINFOPANEL:Class = EpicChoiceInfoPanel;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_UPGRADEPANEL_EPICCONFIGURATORRENDERER:Class = EpicConfiguratorRenderer;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_UPGRADEPANEL_EPICMODULEINFO:Class = EpicModuleInfo;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_UPGRADEPANEL_IEPICCONFIGURATORRENDERER:Class = IEpicConfiguratorRenderer;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_UPGRADEPANEL_DATA_EPICCHOICEINFOPANELVO:Class = EpicChoiceInfoPanelVO;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_UPGRADEPANEL_DATA_EPICCONFIGURATORMODULEVO:Class = EpicConfiguratorModuleVO;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_UPGRADEPANEL_DATA_EPICMODULEINFOVO:Class = EpicModuleInfoVO;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_UPGRADEPANEL_DATA_EPICUPGRADEPANELVO:Class = EpicUpgradePanelVO;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VO_DAAPI_EPICPLAYERSTATSVO:Class = EpicPlayerStatsVO;
       

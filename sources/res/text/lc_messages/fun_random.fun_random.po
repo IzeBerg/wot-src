@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "alertMessage/afterCycle"
-msgstr "The \"Arcade Cabinet: %(leftSeasonName)s\" battles have ended"
+msgstr "The %(leftDetailedSeasonName)s battles have ended"
 
 msgid "alertMessage/allNotAvailable"
 msgstr ""
@@ -19,7 +19,7 @@ msgstr ""
 "%(primeDelta)s"
 
 msgid "alertMessage/allNotAvailableEnd"
-msgstr "The \"Arcade Cabinet: %(leftSeasonName)s\" battles have ended"
+msgstr "The %(leftDetailedSeasonName)s battles have ended"
 
 msgid "alertMessage/allNotSet"
 msgstr "This mode is not available on the %(serverName)s server"
@@ -45,7 +45,7 @@ msgstr ""
 "%(primeDelta)s"
 
 msgid "alertMessage/standaloneNotAvailableEnd"
-msgstr "The \"Arcade Cabinet: %(leftSeasonName)s\" battles have ended"
+msgstr "The %(leftDetailedSeasonName)s battles have ended"
 
 msgid "alertMessage/standaloneNotSet"
 msgstr "This mode is not available on the %(serverName)s server"
@@ -67,9 +67,6 @@ msgstr "?empty?"
 
 msgid "alertMessage/unsuitableVehicles"
 msgstr "No suitable vehicles in your Garage"
-
-msgid "battleLoading/title"
-msgstr "Arcade Cabinet: %(subModeName)s"
 
 msgid "battleResult/progressDescription"
 msgstr "1. %(triggerDescription)s."
@@ -101,17 +98,15 @@ msgstr "Battles have ended"
 msgid "entryPoint/startDate"
 msgstr "From %(month)s %(day)s"
 
-msgid "entryPoint/title"
-msgstr "ARCADE CABINET"
-
 msgid "funRandomCarousel/lockedTooltip/vehClass/body"
-msgstr "%(forbiddenClass)s cannot fight in Arcade Cabinet."
+msgstr "%(forbiddenClass)s cannot fight in %(modeName)s battles."
 
 msgid "funRandomCarousel/lockedTooltip/vehClass/header"
 msgstr "Incompatible Vehicle Type"
 
 msgid "funRandomCarousel/lockedTooltip/vehLvl/body"
-msgstr "Select a %(levelSubStr)s vehicle to participate in Arcade Cabinet."
+msgstr ""
+"Select a %(levelSubStr)s vehicle to participate in the %(modeName)s mode."
 
 msgid "funRandomCarousel/lockedTooltip/vehLvl/header"
 msgstr "Incompatible Vehicle Tier"
@@ -120,20 +115,24 @@ msgid "funRandomCarousel/lockedTooltip/vehLvl/levelSubStr"
 msgstr "Tier %(levels)s"
 
 msgid "funRandomCarousel/lockedTooltip/vehType/body"
-msgstr "The %(forbiddenType)s cannot fight in Arcade Cabinet."
+msgstr "The %(forbiddenType)s cannot fight in the %(modeName)s mode."
 
 msgid "funRandomCarousel/lockedTooltip/vehType/header"
 msgstr "Incompatible Vehicle"
 
+msgid "headerButton/tooltips/funRandomSquad/body"
+msgstr ""
+"Create a tactical unit of 2 or 3 players to cooperate in %(modeName)s "
+"battles."
+
+msgid "headerButton/tooltips/funRandomSquad/header"
+msgstr "Platoon"
+
 msgid "invite/text/detailedTitle"
-msgstr "Invitation to Join the \"Arcade Cabinet: %(subModeName)s\" Platoon"
+msgstr "Invitation to Join the \"%(detailedModeName)s\" Platoon"
 
 msgid "invite/tooltip/noVehicles"
 msgstr "You need at least one vehicle in your Garage."
-
-msgid "metaProgressionTooltip/header/active"
-msgstr ""
-"Arcade Cabinet Mission – Stage: %(done)s{par_Open}/%(total)s{par_Close}"
 
 msgid "metaProgressionTooltip/header/completedFinal"
 msgstr "ALL STAGES COMPLETED"
@@ -146,17 +145,17 @@ msgstr ""
 msgid "metaProgressionTooltip/reward/header"
 msgstr "Reward"
 
-msgid "metaProgressionTooltip/reward/tip"
-msgstr "Your progress is counted in any Arcade Cabinet submode."
-
-msgid "metaProgressionTooltip/subheader"
-msgstr "Arcade Cabinet Mission"
-
 msgid "metaProgressionTooltip/timer/activeResettable"
 msgstr "until the progress with rewards is reset"
 
-msgid "metaProgressionTooltip/timer/completedResettable"
-msgstr "until a new Arcade Cabinet mission is available"
+msgid "modeSelector/notStarted"
+msgstr "This mode will start soon"
+
+msgid "modeSelector/progression/steps"
+msgstr "{yellow_Open}%(done)s{yellow_Close}/%(total)s"
+
+msgid "modeSelector/progression/stepsNoProgress"
+msgstr "{bond_Open}%(done)s{bond_Close}/%(total)s"
 
 msgid "modeSelector/status/timeLeft/days"
 msgstr "%(day)s d"
@@ -176,17 +175,8 @@ msgstr "TO MODES"
 msgid "modeSubSelector/disabledCard/tooltip/body"
 msgstr "Unavailable for technical reasons"
 
-msgid "modeSubSelector/progression/header/completedFinal"
-msgstr "You have completed all Arcade Cabinet missions"
-
 msgid "modeSubSelector/progression/header/completedResettable"
 msgstr "You have completed all Stages of the current mission"
-
-msgid "modeSubSelector/progression/info"
-msgstr "Your progress is counted in any Arcade Cabinet submode."
-
-msgid "modeSubSelector/progression/timer"
-msgstr "until a new Arcade Cabinet mission is available"
 
 msgid "modeSubSelector/subModeCard/finished"
 msgstr "Battles have ended"
@@ -200,47 +190,272 @@ msgstr "Starts in:"
 msgid "modeSubSelector/subtitle"
 msgstr "SELECT SUBMODE"
 
-msgid "modeSubSelector/title"
+msgid "modes/auto_shoot_guns/capsUserName"
+msgstr "OVERWHELMING FIRE"
+
+msgid "modes/auto_shoot_guns/detailedUserName"
+msgstr "%(modeName)s"
+
+msgid "modes/auto_shoot_guns/metaProgressionTooltip/header/active"
+msgstr ""
+"Overwhelming Fire Mission – Stage: %(done)s{par_Open}/%(total)s{par_Close}"
+
+msgid "modes/auto_shoot_guns/metaProgressionTooltip/subheader"
+msgstr "Overwhelming Fire Mission"
+
+msgid "modes/auto_shoot_guns/metaProgressionTooltip/timer/completedResettable"
+msgstr "until a new mission is available"
+
+msgid "modes/auto_shoot_guns/modeSubSelector/progression/info"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/modeSubSelector/progression/timer"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/mode_selector/description"
+msgstr "Experimental battles with non-standard rules in unusual vehicles."
+
+msgid "modes/auto_shoot_guns/mode_selector/progression/resettable"
+msgstr "Until a new mission is available"
+
+msgid "modes/auto_shoot_guns/notification/finishSubModes/withProgression"
+msgstr "The %(subModeName)s mode has ended. Progression reset."
+
+msgid "modes/auto_shoot_guns/notification/finishSubModes/withoutProgression"
+msgstr "The %(subModeName)s mode has ended."
+
+msgid "modes/auto_shoot_guns/notification/newSubModes/withProgression"
+msgstr "New rewards and the %(subModeName)s mode are available."
+
+msgid "modes/auto_shoot_guns/notification/newSubModes/withoutProgression"
+msgstr "The %(subModeName)s mode is available."
+
+msgid "modes/auto_shoot_guns/notification/switchOffSubModes"
+msgstr "The %(subModeName)s mode is unavailable due to maintenance."
+
+msgid "modes/auto_shoot_guns/notification/switchOnSubModes"
+msgstr "The %(subModeName)s mode is available again."
+
+msgid "modes/auto_shoot_guns/progression/congratulation/descr"
+msgstr "You have completed all Overwhelming Fire missions"
+
+msgid "modes/auto_shoot_guns/progression/title"
+msgstr "OVERWHELMING FIRE MISSION"
+
+msgid "modes/auto_shoot_guns/scheduler/notification/available"
+msgstr "The %(subModeName)s battles are available again."
+
+msgid "modes/auto_shoot_guns/scheduler/notification/available/title"
+msgstr "Ceasefire"
+
+msgid "modes/auto_shoot_guns/scheduler/notification/primeTime"
+msgstr ""
+"Ceasefire is in effect. The %(subModeName)s battles are temporarily "
+"unavailable."
+
+msgid "modes/auto_shoot_guns/scheduler/notification/primeTime/title"
+msgstr "Ceasefire"
+
+msgid "modes/auto_shoot_guns/tooltip/filter/body"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/tooltip/filter/header"
+msgstr "?empty?"
+
+msgid "modes/auto_shoot_guns/userName"
+msgstr "Overwhelming Fire"
+
+msgid "modes/development/capsUserName"
+msgstr "?empty?"
+
+msgid "modes/development/detailedUserName"
+msgstr "?empty?"
+
+msgid "modes/development/metaProgressionTooltip/header/active"
+msgstr "?empty?"
+
+msgid "modes/development/metaProgressionTooltip/reward/tip"
+msgstr "?empty?"
+
+msgid "modes/development/metaProgressionTooltip/subheader"
+msgstr "?empty?"
+
+msgid "modes/development/metaProgressionTooltip/timer/completedResettable"
+msgstr "?empty?"
+
+msgid "modes/development/modeSubSelector/progression/info"
+msgstr "?empty?"
+
+msgid "modes/development/modeSubSelector/progression/timer"
+msgstr "?empty?"
+
+msgid "modes/development/mode_selector/description"
+msgstr "?empty?"
+
+msgid "modes/development/mode_selector/progression/resettable"
+msgstr "?empty?"
+
+msgid "modes/development/notification/finishSubModes/withProgression"
+msgstr "?empty?"
+
+msgid "modes/development/notification/finishSubModes/withoutProgression"
+msgstr "?empty?"
+
+msgid "modes/development/notification/newSubModes/withProgression"
+msgstr "?empty?"
+
+msgid "modes/development/notification/newSubModes/withoutProgression"
+msgstr "?empty?"
+
+msgid "modes/development/notification/switchOffSubModes"
+msgstr "?empty?"
+
+msgid "modes/development/notification/switchOnSubModes"
+msgstr "?empty?"
+
+msgid "modes/development/progression/congratulation/descr"
+msgstr "?empty?"
+
+msgid "modes/development/progression/info"
+msgstr "?empty?"
+
+msgid "modes/development/progression/title"
+msgstr "?empty?"
+
+msgid "modes/development/scheduler/notification/available"
+msgstr "?empty?"
+
+msgid "modes/development/scheduler/notification/available/title"
+msgstr "?empty?"
+
+msgid "modes/development/scheduler/notification/primeTime"
+msgstr "?empty?"
+
+msgid "modes/development/scheduler/notification/primeTime/title"
+msgstr "?empty?"
+
+msgid "modes/development/tooltip/filter/body"
+msgstr "?empty?"
+
+msgid "modes/development/tooltip/filter/header"
+msgstr "?empty?"
+
+msgid "modes/development/userName"
+msgstr "?empty?"
+
+msgid "modes/undefined/capsUserName"
 msgstr "ARCADE CABINET"
+
+msgid "modes/undefined/detailedUserName"
+msgstr "%(modeName)s: %(subModeName)s"
+
+msgid "modes/undefined/metaProgressionTooltip/header/active"
+msgstr ""
+"Arcade Cabinet Mission – Stage: %(done)s{par_Open}/%(total)s{par_Close}"
+
+msgid "modes/undefined/metaProgressionTooltip/reward/tip"
+msgstr "Your progress is counted in any Arcade Cabinet submode."
+
+msgid "modes/undefined/metaProgressionTooltip/subheader"
+msgstr "Arcade Cabinet Mission"
+
+msgid "modes/undefined/metaProgressionTooltip/timer/completedResettable"
+msgstr "until a new Arcade Cabinet mission is available"
+
+msgid "modes/undefined/modeSubSelector/progression/info"
+msgstr "Your progress is counted in any Arcade Cabinet submode."
+
+msgid "modes/undefined/modeSubSelector/progression/timer"
+msgstr "until a new Arcade Cabinet mission is available"
+
+msgid "modes/undefined/mode_selector/battleCondition"
+msgstr "15v15"
+
+msgid "modes/undefined/mode_selector/description"
+msgstr "Experimental battles with non-standard rules."
+
+msgid "modes/undefined/mode_selector/levelCondition"
+msgstr "{parSecondary_open}I{parSecondary_close} Tiers&nbsp;%(levels)s"
+
+msgid "modes/undefined/mode_selector/progression/resettable"
+msgstr "A new Arcade Cabinet mission is available in:"
+
+msgid "modes/undefined/notification/finishSubModes/withProgression"
+msgstr "The %(subModeName)s submode has ended. Progression reset."
+
+msgid "modes/undefined/notification/finishSubModes/withoutProgression"
+msgstr "The %(subModeName)s submode has ended."
+
+msgid "modes/undefined/notification/newSubModes/withProgression"
+msgstr "New rewards and the %(subModeName)s submode are available."
+
+msgid "modes/undefined/notification/newSubModes/withoutProgression"
+msgstr "A new submode is available: %(subModeName)s."
+
+msgid "modes/undefined/notification/switchOffSubModes"
+msgstr "The %(subModeName)s submode is unavailable due to maintenance."
+
+msgid "modes/undefined/notification/switchOnSubModes"
+msgstr "The %(subModeName)s submode is available again."
+
+msgid "modes/undefined/progression/congratulation/descr"
+msgstr "You have completed all Arcade Cabinet missions"
+
+msgid "modes/undefined/progression/info"
+msgstr "You can complete this mission in any Arcade Cabinet submode."
+
+msgid "modes/undefined/progression/title"
+msgstr "ARCADE CABINET MISSION"
+
+msgid "modes/undefined/scheduler/notification/available"
+msgstr "The %(subModeName)s battles are available again."
+
+msgid "modes/undefined/scheduler/notification/available/title"
+msgstr "Ceasefire"
+
+msgid "modes/undefined/scheduler/notification/primeTime"
+msgstr ""
+"Ceasefire is in effect. The %(subModeName)s battles are temporarily "
+"unavailable."
+
+msgid "modes/undefined/scheduler/notification/primeTime/title"
+msgstr "Ceasefire"
+
+msgid "modes/undefined/tooltip/filter/body"
+msgstr "Show/hide suitable vehicles for Arcade Cabinet mode."
+
+msgid "modes/undefined/tooltip/filter/header"
+msgstr "Arcade Cabinet Vehicles"
+
+msgid "modes/undefined/userName"
+msgstr "Arcade Cabinet"
 
 msgid "notification/congratulation"
 msgstr "Congratulations!"
 
 msgid "notification/finishSubModes"
-msgstr "The Arcade Cabinet event has ended."
+msgstr "The \"%(modeName)s\" event has ended."
 
-msgid "notification/finishSubModes/withProgression/multiple"
+msgid "notification/finishSubModes/withProgression"
 msgstr "The %(subModesNames)s submodes have ended. Progression reset."
 
-msgid "notification/finishSubModes/withProgression/single"
-msgstr "The %(subModeName)s submode has ended. Progression reset."
-
-msgid "notification/finishSubModes/withoutProgression/multiple"
+msgid "notification/finishSubModes/withoutProgression"
 msgstr "The %(subModesNames)s submodes have ended."
-
-msgid "notification/finishSubModes/withoutProgression/single"
-msgstr "The %(subModeName)s submode has ended."
 
 msgid "notification/newProgression"
 msgstr "The event progression has been reset—you can receive rewards again!"
 
-msgid "notification/newSubModes/withProgression/multiple"
+msgid "notification/newSubModes/withProgression"
 msgstr ""
 "The event progression has been reset. New submodes are available: "
 "%(subModesNames)s."
 
-msgid "notification/newSubModes/withProgression/single"
-msgstr "New rewards and the %(subModeName)s submode are available."
-
-msgid "notification/newSubModes/withoutProgression/multiple"
+msgid "notification/newSubModes/withoutProgression"
 msgstr "New submodes are available: %(subModesNames)s."
-
-msgid "notification/newSubModes/withoutProgression/single"
-msgstr "A new submode is available: %(subModeName)s."
 
 msgid "notification/progressionComplete"
 msgstr ""
-"You have completed all available Arcade Cabinet missions. Reward received:"
+"You have completed all available \"%(modeName)s\" missions. Reward received:"
 
 msgid "notification/progressionComplete/resetLessDay"
 msgstr ""
@@ -254,25 +469,16 @@ msgstr ""
 
 msgid "notification/progressionStageComplete"
 msgstr ""
-"You have completed Arcade Cabinet missions: %(counter)s. Reward received:"
+"You have completed \"%(modeName)s\" missions: %(counter)s. Reward received:"
 
 msgid "notification/subModesSeparator"
 msgstr ", "
 
-msgid "notification/switchOffSubModes/multiple"
+msgid "notification/switchOffSubModes"
 msgstr "The %(subModesNames)s submodes are unavailable due to maintenance."
 
-msgid "notification/switchOffSubModes/single"
-msgstr "The %(subModeName)s submode is unavailable due to maintenance."
-
-msgid "notification/switchOnSubModes/multiple"
+msgid "notification/switchOnSubModes"
 msgstr "The %(subModesNames)s submodes are available again."
-
-msgid "notification/switchOnSubModes/single"
-msgstr "The %(subModeName)s submode is available again."
-
-msgid "notification/title"
-msgstr "Arcade Cabinet"
 
 msgid "platoonView/title"
 msgstr "Platoon: %(subModeName)s"
@@ -291,7 +497,7 @@ msgstr ""
 msgid "primeTimes/serverTooltip/allNotAvailableEnd"
 msgstr ""
 "Server %(serverName)s\n"
-"The \"Arcade Cabinet: %(leftSeasonName)s\" battles have ended."
+"The \"%(leftDetailedSeasonName)s\" battles have ended."
 
 msgid "primeTimes/serverTooltip/available"
 msgstr ""
@@ -306,7 +512,7 @@ msgstr ""
 msgid "primeTimes/serverTooltip/notAvailableEnd"
 msgstr ""
 "Server %(serverName)s\n"
-"The \"Arcade Cabinet: %(leftSeasonName)s\" battles have ended."
+"The \"%(leftDetailedSeasonName)s\" battles have ended."
 
 msgid "primeTimes/serverTooltip/standaloneNotAvailable"
 msgstr ""
@@ -316,7 +522,7 @@ msgstr ""
 msgid "primeTimes/serverTooltip/standaloneNotAvailableEnd"
 msgstr ""
 "Server %(serverName)s\n"
-"The \"Arcade Cabinet: %(leftSeasonName)s\" battles have ended."
+"The \"%(leftDetailedSeasonName)s\" battles have ended."
 
 msgid "primeTimes/serverTooltip/timeLeft/days"
 msgstr "%(day)s d"
@@ -339,7 +545,7 @@ msgstr ""
 "Battles will be available in %(primeDelta)s"
 
 msgid "primeTimes/statusText/allNotAvailableEnd"
-msgstr "The \"Arcade Cabinet: %(leftSeasonName)s\" battles have ended."
+msgstr "The \"%(leftDetailedSeasonName)s\" battles have ended."
 
 msgid "primeTimes/statusText/allNotSet"
 msgstr "This mode is not available on the %(serverName)s server"
@@ -361,7 +567,7 @@ msgstr ""
 "Battles will be available in %(primeDelta)s"
 
 msgid "primeTimes/statusText/standaloneNotAvailableEnd"
-msgstr "The \"Arcade Cabinet: %(leftSeasonName)s\" battles have ended."
+msgstr "The \"%(leftDetailedSeasonName)s\" battles have ended."
 
 msgid "primeTimes/statusText/standaloneNotSet"
 msgstr "This mode is not available on the %(serverName)s server"
@@ -374,8 +580,8 @@ msgstr "Battles on the %(serverName)s server will start in %(primeDelta)s"
 
 msgid "primeTimes/timeText/allNotAvailableEnd"
 msgstr ""
-"The \"Arcade Cabinet: %(leftSeasonName)s\" battles on the %(serverName)s "
-"server have ended."
+"The \"%(leftDetailedSeasonName)s\" battles on the %(serverName)s server have"
+" ended."
 
 msgid "primeTimes/timeText/available"
 msgstr ""
@@ -387,22 +593,19 @@ msgstr "Battles on the %(serverName)s server will start in %(primeDelta)s"
 
 msgid "primeTimes/timeText/notAvailableEnd"
 msgstr ""
-"The \"Arcade Cabinet: %(leftSeasonName)s\" battles on the %(serverName)s "
-"server have ended."
+"The \"%(leftDetailedSeasonName)s\" battles on the %(serverName)s server have"
+" ended."
 
 msgid "primeTimes/timeText/standaloneNotAvailable"
 msgstr "Battles on the %(serverName)s server will start in %(primeDelta)s"
 
 msgid "primeTimes/timeText/standaloneNotAvailableEnd"
 msgstr ""
-"The \"Arcade Cabinet: %(leftSeasonName)s\" battles on the %(serverName)s "
-"server have ended."
+"The \"%(leftDetailedSeasonName)s\" battles on the %(serverName)s server have"
+" ended."
 
 msgid "primeTimes/timeText/undefined"
 msgstr "?empty?"
-
-msgid "primeTimes/title"
-msgstr "Arcade Cabinet: %(subModeName)s"
 
 msgid "progression/complete/timer"
 msgstr "until a new mission is available"
@@ -410,14 +613,8 @@ msgstr "until a new mission is available"
 msgid "progression/complete/title"
 msgstr "You have completed all mission Stages"
 
-msgid "progression/congratulation/descr"
-msgstr "You have completed all Arcade Cabinet missions"
-
 msgid "progression/congratulation/title"
 msgstr "Congratulations!"
-
-msgid "progression/info"
-msgstr "You can complete this mission in any Arcade Cabinet submode."
 
 msgid "progression/steps"
 msgstr "%(done)s / %(total)s"
@@ -431,122 +628,325 @@ msgstr "{bond_Open}%(done)s{bond_Close} / %(total)s"
 msgid "progression/timer"
 msgstr "until the progression is reset and a new mission is available"
 
-msgid "progression/title"
-msgstr "ARCADE CABINET MISSION"
-
-msgid "scheduler/notification/available"
-msgstr "The %(subModeName)s battles are available again."
-
-msgid "scheduler/notification/available/title"
-msgstr "Ceasefire"
-
-msgid "scheduler/notification/primeTime"
-msgstr ""
-"Ceasefire is in effect. The %(subModeName)s battles are temporarily "
-"unavailable."
-
-msgid "scheduler/notification/primeTime/title"
-msgstr "Ceasefire"
-
 msgid "scheduler/notification/squadModeSwitch"
 msgstr "The Platoon Commander has switched to the %(subModeName)s submode."
 
 msgid "scheduler/notification/squadModeSwitch/title"
 msgstr "Submode Switch"
 
-msgid "subModes/development/capsUserName"
-msgstr "?empty?"
+msgid "strengths_weaknesses/strength/armour"
+msgstr "Reliable hull and turret armor"
 
-msgid "subModes/development/detailsHelp/commonTitle"
-msgstr "?empty?"
+msgid "strengths_weaknesses/strength/armoured_hull"
+msgstr "Reliable hull armor"
 
-msgid "subModes/development/detailsHelp/description"
-msgstr "?empty?"
+msgid "strengths_weaknesses/strength/best_speed"
+msgstr "Best (ultimate) speed, mobility, and maneuverability"
 
-msgid "subModes/development/detailsHelp/title"
-msgstr "?empty?"
+msgid "strengths_weaknesses/strength/curved_trajectory"
+msgstr "Steep shell trajectory"
 
-msgid "subModes/development/subModeCard/condition"
-msgstr "15v15 {parSecondary_open}I{parSecondary_close} Tiers&nbsp;%(levels)s"
+msgid "strengths_weaknesses/strength/damage"
+msgstr "Nice damage per burst"
 
-msgid "subModes/development/subModeCard/description"
-msgstr "?empty?"
+msgid "strengths_weaknesses/strength/four_cannons"
+msgstr "Quadruple gun"
 
-msgid "subModes/development/subModeCard/title"
-msgstr "?empty?"
+msgid "strengths_weaknesses/strength/infinity_load"
+msgstr "Large belt"
 
-msgid "subModes/development/tips/tip1/description"
-msgstr "?empty?"
+msgid "strengths_weaknesses/strength/piercing"
+msgstr "High penetration"
 
-msgid "subModes/development/tips/tip1/title"
-msgstr "?empty?"
+msgid "strengths_weaknesses/strength/rate_of_fire"
+msgstr "Rapid rate of fire"
 
-msgid "subModes/development/userName"
-msgstr "?empty?"
+msgid "strengths_weaknesses/strength/rate_of_fire_and_dpm"
+msgstr "High rate of fire"
 
-msgid "subModes/development/userName/quoted"
-msgstr "?empty?"
+msgid "strengths_weaknesses/strength/rotary_gun"
+msgstr "Powerful rotary gun"
 
-msgid "subModes/night_battles/capsUserName"
-msgstr "DARKNESS OF THE NIGHT"
+msgid "strengths_weaknesses/strength/six_guns"
+msgstr "Six-barrel rotary gun"
 
-msgid "subModes/night_battles/detailsHelp/commonTitle"
-msgstr "Arcade Cabinet: Darkness of the Night"
+msgid "strengths_weaknesses/strength/speed"
+msgstr "Nice speed and maneuverability"
 
-msgid "subModes/night_battles/detailsHelp/description"
+msgid "strengths_weaknesses/strength/stabilization"
+msgstr "Good gun handling"
+
+msgid "strengths_weaknesses/strength/strong_armour"
+msgstr "Strong armor"
+
+msgid "strengths_weaknesses/strength/two_cannons"
+msgstr "Double-barreled 57 mm guns"
+
+msgid "strengths_weaknesses/strength/two_cannons_with_autoloader"
+msgstr "Double-barreled 88 mm guns"
+
+msgid "strengths_weaknesses/strength/two_salvos"
+msgstr "Two rocket launchers"
+
+msgid "strengths_weaknesses/strength/versatility"
+msgstr "Versatility"
+
+msgid "strengths_weaknesses/strength/wide_aoe"
+msgstr "Large area of effect"
+
+msgid "strengths_weaknesses/strengths"
+msgstr "Strengths"
+
+msgid "strengths_weaknesses/weakness/accuracy"
+msgstr "High dispersion"
+
+msgid "strengths_weaknesses/weakness/armour"
+msgstr "Weak armor"
+
+msgid "strengths_weaknesses/weakness/overheating"
+msgstr "Gun heating"
+
+msgid "strengths_weaknesses/weakness/penetration"
+msgstr "Mediocre penetration"
+
+msgid "strengths_weaknesses/weakness/reload"
+msgstr "Long reload time"
+
+msgid "strengths_weaknesses/weakness/size_and_armour"
+msgstr "Large dimensions and weak armor"
+
+msgid "strengths_weaknesses/weakness/speed"
+msgstr "Low speed and maneuverability"
+
+msgid "strengths_weaknesses/weakness/turret_armour"
+msgstr "Weak turret armor"
+
+msgid "strengths_weaknesses/weakness/weak_armour"
+msgstr "Weak armor"
+
+msgid "strengths_weaknesses/weakness/weak_speed"
+msgstr "Mediocre speed and maneuverability"
+
+msgid "strengths_weaknesses/weakness/weakspot"
+msgstr "Weak spots in the armor"
+
+msgid "strengths_weaknesses/weaknesses"
+msgstr "Weaknesses"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/alert"
+msgstr "Reduced Performance"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/description"
 msgstr ""
-"Night is not a reason to stop fighting. In the darkness, observation device "
-"and radio performance worsens—it is much harder to detect a lurking enemy "
-"than in the daylight… Unless they lose their nerve, reveal their position, "
-"and start shooting at everything that moves."
+"This mode demands high computer performance. The FPS rate may decrease "
+"during intensive fighting. In case of insufficient performance, try a lower "
+"graphics quality in Settings."
 
-msgid "subModes/night_battles/detailsHelp/title"
-msgstr "Darkness of the Night"
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/entryPointHeader"
+msgstr "Possible Reduced Performance"
 
-msgid "subModes/night_battles/tips/tip1/description"
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/modeSelectHeader"
+msgstr "Reduced Performance"
+
+msgid "sub_modes/auto_shoot_guns/alert_tooltip/submodeDescription"
+msgstr "A mode with unusual vehicles equipped with automatic cannons."
+
+msgid "sub_modes/auto_shoot_guns/capsUserName"
+msgstr "OVERWHELMING FIRE"
+
+msgid "sub_modes/auto_shoot_guns/detailsHelp/page1/description"
 msgstr ""
-"In the darkness, observation device and radio performance worsens—it is much"
-" harder to detect a lurking enemy than in the daylight. Turn it into your "
-"advantage: Move stealthily and do not fire without cause."
+"It is time for a deafening roar of guns! Vehicles with automatic cannons are"
+" just made for fast shooting. Set up suppressive fire and do not let the "
+"enemy stick their nose out of cover—but make sure that your gun does not "
+"overheat."
 
-msgid "subModes/night_battles/tips/tip1/title"
-msgstr "DARKNESS OF THE NIGHT"
+msgid "sub_modes/auto_shoot_guns/detailsHelp/page1/title"
+msgstr "OVERWHELMING FIRE"
 
-msgid "subModes/night_battles/userName"
-msgstr "Darkness of the Night"
+msgid "sub_modes/auto_shoot_guns/detailsHelpHint/description"
+msgstr "to view the vehicle characteristics"
 
-msgid "subModes/night_battles/userName/quoted"
-msgstr "\"Darkness of the Night\""
+msgid "sub_modes/auto_shoot_guns/detailsHelpHint/press"
+msgstr "Press"
 
-msgid "subModes/undefined/capsUserName"
+msgid "sub_modes/auto_shoot_guns/detailsHelpTitle"
+msgstr "OVERWHELMING FIRE"
+
+msgid "sub_modes/auto_shoot_guns/subModeCard/description"
+msgstr "?empty?"
+
+msgid "sub_modes/auto_shoot_guns/subModeCard/title"
+msgstr "?empty?"
+
+msgid "sub_modes/auto_shoot_guns/tips/tip1/description"
+msgstr ""
+"Forget about cyclic guns and long reload times! Vehicles with automatic "
+"cannons are just made for suppressive fire. Prepare clips and belts, do not "
+"let the enemy stick their nose out of cover, and give it to them hot—but be "
+"sure not to overheat."
+
+msgid "sub_modes/auto_shoot_guns/tips/tip1/title"
+msgstr "OVERWHELMING FIRE"
+
+msgid "sub_modes/auto_shoot_guns/userName"
+msgstr "Overwhelming Fire"
+
+msgid "sub_modes/auto_shoot_guns/userName/quoted"
+msgstr "\"Overwhelming Fire\""
+
+msgid "sub_modes/development/capsUserName"
+msgstr "?empty?"
+
+msgid "sub_modes/development/detailsHelp/page1/description"
+msgstr "?empty?"
+
+msgid "sub_modes/development/detailsHelp/page1/title"
+msgstr "?empty?"
+
+msgid "sub_modes/development/detailsHelp/page2/description"
+msgstr "?empty?"
+
+msgid "sub_modes/development/detailsHelp/page2/title"
+msgstr "?empty?"
+
+msgid "sub_modes/development/detailsHelpHint/description"
+msgstr "?empty?"
+
+msgid "sub_modes/development/detailsHelpHint/press"
+msgstr "?empty?"
+
+msgid "sub_modes/development/detailsHelpTitle"
+msgstr "?empty?"
+
+msgid "sub_modes/development/subModeCard/battleCondition"
+msgstr "?empty?"
+
+msgid "sub_modes/development/subModeCard/description"
+msgstr "?empty?"
+
+msgid "sub_modes/development/subModeCard/levelCondition"
+msgstr "?empty?"
+
+msgid "sub_modes/development/subModeCard/title"
+msgstr "?empty?"
+
+msgid "sub_modes/development/tips/tip1/description"
+msgstr "?empty?"
+
+msgid "sub_modes/development/tips/tip1/title"
+msgstr "?empty?"
+
+msgid "sub_modes/development/userName"
+msgstr "?empty?"
+
+msgid "sub_modes/development/userName/quoted"
+msgstr "?empty?"
+
+msgid "sub_modes/undefined/capsUserName"
 msgstr "UNKNOWN SUB MODE NAME"
 
-msgid "subModes/undefined/detailsHelp/commonTitle"
-msgstr "Unknown sub mode F1 screen common title"
-
-msgid "subModes/undefined/detailsHelp/description"
+msgid "sub_modes/undefined/detailsHelp/page1/description"
 msgstr "Unknown sub mode F1 description text"
 
-msgid "subModes/undefined/detailsHelp/title"
+msgid "sub_modes/undefined/detailsHelp/page1/title"
 msgstr "Unknown sub mode F1 screen title"
 
-msgid "subModes/undefined/subModeCard/condition"
-msgstr "15v15 {parSecondary_open}I{parSecondary_close} Tiers&nbsp;%(levels)s"
+msgid "sub_modes/undefined/detailsHelpHint/description"
+msgstr "?empty?"
 
-msgid "subModes/undefined/subModeCard/description"
+msgid "sub_modes/undefined/detailsHelpHint/press"
+msgstr "?empty?"
+
+msgid "sub_modes/undefined/detailsHelpTitle"
+msgstr "Unknown sub mode F1 screen common title"
+
+msgid "sub_modes/undefined/subModeCard/battleCondition"
+msgstr "?empty?"
+
+msgid "sub_modes/undefined/subModeCard/description"
 msgstr "Unknown subModeCard description"
 
-msgid "subModes/undefined/subModeCard/title"
+msgid "sub_modes/undefined/subModeCard/levelCondition"
+msgstr "?empty?"
+
+msgid "sub_modes/undefined/subModeCard/title"
 msgstr "Unknown subModeCard title"
 
-msgid "subModes/undefined/tips/tip1/description"
+msgid "sub_modes/undefined/tips/tip1/description"
 msgstr "Unknown sub mode first tip description"
 
-msgid "subModes/undefined/tips/tip1/title"
+msgid "sub_modes/undefined/tips/tip1/title"
 msgstr "Unknown sub mode first tip title"
 
-msgid "subModes/undefined/userName"
+msgid "sub_modes/undefined/userName"
 msgstr "Unknown sub mode name"
 
-msgid "subModes/undefined/userName/quoted"
+msgid "sub_modes/undefined/userName/quoted"
 msgstr "\"Unknown sub mode name\""
+
+msgid "vehicle_tooltip/status/in_battle"
+msgstr "In battle"
+
+msgid "vehicle_tooltip/status/not_ready"
+msgstr "Not ready for battle"
+
+msgid "vehicle_tooltip/status/ready"
+msgstr "Ready for battle"
+
+msgid "vehicle_tooltip/subtitle"
+msgstr "Vehicle for Overwhelming Fire mode"
+
+msgid "vehicle_tooltip/vehicle/description/A116_XM551_FEP23"
+msgstr ""
+"This descendant of the Sheridan did not inherit its predecessor's powerful "
+"155 mm gun. Instead, it was equipped with a six-barreled rotary Minigun, "
+"which allowed it to fire a great number of shells at the enemy in a short "
+"time. Its other parameters—mobility, large dimensions, and hull "
+"screens—remained unchanged."
+
+msgid "vehicle_tooltip/vehicle/description/A143_M_V_Y_FEP23"
+msgstr ""
+"A versatile heavy tank, equipped with a 75 mm belt-fed gun and with decent "
+"mobility. It can cause the enemy a lot of trouble, but do not forget that "
+"its gun is experimental and can overheat. In addition, the vehicle has "
+"vulnerable spots, so playing in it will require some skill."
+
+msgid "vehicle_tooltip/vehicle/description/Cz04_T50_51_FEP23"
+msgstr ""
+"This vehicle with nice armor and mobility is equipped with double-barreled "
+"57 mm guns and is considered the most versatile."
+
+msgid "vehicle_tooltip/vehicle/description/F108_Panhard_EBR_105_FEP23"
+msgstr ""
+"A \"budget version\" of the Panhard EBR. It has all the advantages of the "
+"original vehicle, except for its gun. Its excellent mobility, small "
+"dimensions, and sturdy wheels allow it to cause havoc on the battlefield, "
+"and its new 40 mm gun demonstrates an impressive rate of fire."
+
+msgid "vehicle_tooltip/vehicle/description/F38_Bat_Chatillon155_58_FEP23"
+msgstr ""
+"This is not just another cannon artillery. While it has all the mobility and"
+" fragility characteristic of B.C.-based vehicles, it is also equipped with "
+"two 150 mm rocket launchers. In a single reload cycle, this SPG can fire two"
+" salvos of six missiles, covering a wide area."
+
+msgid "vehicle_tooltip/vehicle/description/G42_Maus_FEP23"
+msgstr ""
+"A superheavy vehicle equipped with high-caliber double-barreled anti-"
+"aircraft guns. It does not boast high mobility, but its dynamics are enough "
+"to release two shots at the enemy. That said, the Flakmaus itself does not "
+"withstand every hit, because only its hull is heavily armored."
+
+msgid "vehicle_tooltip/vehicle/description/G72_JagdPz_E100_FEP23"
+msgstr ""
+"This steel monster is well armored, which compensates for its low mobility "
+"and large dimensions. However, its main feature is its armament. Its huge "
+"eight-barreled rotary gun simply sweeps opponents aside."
+
+msgid "vehicle_tooltip/vehicle/description/R97_Object_140_FEP23"
+msgstr ""
+"A vehicle with an excellent armament. Its four-barreled gun demonstrates a "
+"high rate of fire, while its good carrier allows it to be used effectively. "
+"Together with its decent—though not perfect—armor, this makes a strong "
+"combination."

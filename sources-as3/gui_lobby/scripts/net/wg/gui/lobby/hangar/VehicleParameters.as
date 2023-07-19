@@ -32,6 +32,8 @@ package net.wg.gui.lobby.hangar
       
       private static const BG_MARGIN:int = 20;
       
+      private static const HALF_BG_MARGIN:int = BG_MARGIN >> 1;
+      
       private static const SB_PADDING:Padding = new Padding(0,0,0,7);
       
       private static const HELP_LAYOUT_X_CORRECTION:int = 71;
@@ -77,7 +79,7 @@ package net.wg.gui.lobby.hangar
       
       private var _listMask:Sprite = null;
       
-      private var _forceInvalidateOnDataChange:Boolean;
+      private var _forceInvalidateOnDataChange:Boolean = true;
       
       private var _showShadowLipWhenOverflow:Boolean;
       
@@ -118,7 +120,7 @@ package net.wg.gui.lobby.hangar
          this.paramsList.mask = this._listMask;
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
          this._dataProvider.removeEventListener(Event.CHANGE,this.onDataProviderChangeHandler);
          if(this._hasListeners)
@@ -131,6 +133,11 @@ package net.wg.gui.lobby.hangar
          this.paramsList.removeEventListener(ListEventEx.ITEM_ROLL_OVER,this.onParamsListItemRollOverHandler);
          this.paramsList.removeEventListener(MouseEvent.ROLL_OUT,this.onParamsListRollOutHandler);
          this.paramsList.removeEventListener(Event.RESIZE,this.onParamsListResizedHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
          this.bg = null;
          this.rendererBG = null;
          this.topShadow = null;
@@ -168,7 +175,7 @@ package net.wg.gui.lobby.hangar
             this.paramsList.rowHeight = RENDERER_HEIGHT;
             this.paramsList.validateNow();
             this.bg.height = _loc1_ + BG_MARGIN;
-            this._listMask.height = this.bg.height - BG_MARGIN * 0.5;
+            this._listMask.height = this.bg.height - HALF_BG_MARGIN;
             invalidate(INV_LIPS);
             invalidate(INV_SEND_RESIZE);
          }
@@ -246,10 +253,6 @@ package net.wg.gui.lobby.hangar
          this._helpLayoutW = param2;
       }
       
-      protected function onRendererClick() : void
-      {
-      }
-      
       protected function getRendererLinkage() : String
       {
          return Linkages.VEH_PARAMS_RENDERER_UI;
@@ -287,11 +290,6 @@ package net.wg.gui.lobby.hangar
       public function set forceInvalidateOnDataChange(param1:Boolean) : void
       {
          this._forceInvalidateOnDataChange = param1;
-      }
-      
-      public function get showBottomShadowLipAlways() : Boolean
-      {
-         return this._showBottomShadowLipAlways;
       }
       
       public function set showBottomShadowLipAlways(param1:Boolean) : void

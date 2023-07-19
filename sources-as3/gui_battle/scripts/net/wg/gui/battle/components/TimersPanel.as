@@ -337,8 +337,7 @@ package net.wg.gui.battle.components
       
       protected function showSecondaryTimer(param1:String, param2:int, param3:Number, param4:Boolean = false) : void
       {
-         var _loc5_:SecondaryTimerBase = null;
-         _loc5_ = this.getSecondaryTimer(param1);
+         var _loc5_:SecondaryTimerBase = this.getSecondaryTimer(param1);
          if(!_loc5_)
          {
             return;

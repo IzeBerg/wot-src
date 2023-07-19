@@ -11,8 +11,6 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       
       private static const ALLY:String = "tank_small_platoon_squad";
       
-      private static const DEFAULT_ALPHA:Number = 1;
-      
       private static const DESTROYED_ALPHA:Number = 0.2;
        
       
@@ -31,7 +29,10 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
          this._platoonData = new BattleRoyalePlatoonVO(param1);
          this.icon.imageName = !!this._platoonData.isEnemy ? ENEMY : ALLY;
          visible = !this._platoonData.isDefaultData;
-         alpha = !!this._platoonData.isDead ? Number(DESTROYED_ALPHA) : Number(DEFAULT_ALPHA);
+         if(this._platoonData.isDead)
+         {
+            alpha = DESTROYED_ALPHA;
+         }
       }
       
       override protected function onDispose() : void

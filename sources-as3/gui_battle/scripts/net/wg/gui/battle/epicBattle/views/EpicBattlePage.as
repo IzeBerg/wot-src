@@ -10,6 +10,7 @@ package net.wg.gui.battle.epicBattle.views
    import net.wg.gui.battle.epicBattle.battleloading.EpicBattleLoading;
    import net.wg.gui.battle.epicBattle.battleloading.events.EpicBattleLoadingEvent;
    import net.wg.gui.battle.epicBattle.views.stats.EpicFullStats;
+   import net.wg.gui.battle.epicBattle.views.upgradePanel.EpicBattleUpgradePanel;
    import net.wg.gui.battle.random.views.teamBasesPanel.TeamBasesPanel;
    import net.wg.gui.battle.views.battleEndWarning.BattleEndWarningPanel;
    import net.wg.gui.battle.views.battleMessenger.BattleMessenger;
@@ -46,6 +47,7 @@ package net.wg.gui.battle.epicBattle.views
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.helpers.statisticsDataController.EpicBattleStatisticDataController;
    import net.wg.utils.StageSizeBoundaries;
+   import scaleform.clik.events.ComponentEvent;
    import scaleform.clik.motion.Tween;
    
    public class EpicBattlePage extends EpicBattlePageMeta implements IEpicBattlePageMeta
@@ -94,6 +96,10 @@ package net.wg.gui.battle.epicBattle.views
       private static const HINT_PANEL_AMMUNITION_OFFSET_Y:int = -160;
       
       private static const AMMUNITION_PANEL_Y_SHIFT:int = 587;
+      
+      private static const MESSAGE_STAGE_HEIGHT_SMALL:int = 1000;
+      
+      private static const UPGRADE_PANEL_MESSAGE_OFFSET:int = 230;
        
       
       public var fullStats:EpicFullStats = null;
@@ -144,6 +150,8 @@ package net.wg.gui.battle.epicBattle.views
       
       public var statusNotificationsPanel:StatusNotificationsPanel = null;
       
+      public var upgradePanel:EpicBattleUpgradePanel = null;
+      
       private var _scorePanelState:int = 0;
       
       private var _messagePlaying:Boolean = false;
@@ -171,6 +179,7 @@ package net.wg.gui.battle.epicBattle.views
          _loc3_ = param1 >> 1;
          _originalWidth = param1;
          _originalHeight = param2;
+         this.upgradePanel.x = _loc3_;
          if(this.prebattleTimerBackground)
          {
             this.prebattleTimerBackground.y = 0;
@@ -271,6 +280,7 @@ package net.wg.gui.battle.epicBattle.views
          prebattleTimer.addEventListener(PrebattleTimerEvent.START_HIDING,this.onPrebattleTimerStartHidingHandler);
          this.epicRespawnView.mouseEnabled = false;
          this.hintPanel.addEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
+         this.upgradePanel.addEventListener(ComponentEvent.STATE_CHANGE,this.onUpgradePanelStateChange);
       }
       
       override protected function onPopulate() : void
@@ -297,6 +307,7 @@ package net.wg.gui.battle.epicBattle.views
          registerComponent(this.epicInGameRank,BATTLE_VIEW_ALIASES.EPIC_INGAME_RANK);
          registerComponent(this.hintPanel,BATTLE_VIEW_ALIASES.HINT_PANEL);
          registerComponent(this.statusNotificationsPanel,BATTLE_VIEW_ALIASES.STATUS_NOTIFICATIONS_PANEL);
+         registerComponent(this.upgradePanel,BATTLE_VIEW_ALIASES.UPGRADE_PANEL);
          super.onPopulate();
          this.endWarningPanel.alpha = 0;
       }
@@ -334,6 +345,8 @@ package net.wg.gui.battle.epicBattle.views
       override protected function onDispose() : void
       {
          this.hintPanel = null;
+         this.upgradePanel.removeEventListener(ComponentEvent.STATE_CHANGE,this.onUpgradePanelStateChange);
+         this.upgradePanel = null;
          this.sixthSense = null;
          this.debugPanel = null;
          this.fullStats = null;
@@ -359,6 +372,13 @@ package net.wg.gui.battle.epicBattle.views
          this.prebattleTimerBackground = null;
          this.statusNotificationsPanel = null;
          super.onDispose();
+      }
+      
+      override protected function initializeMessageLists() : void
+      {
+         super.initializeMessageLists();
+         addChild(this.upgradePanel);
+         swapChildren(battleLoading,this.upgradePanel);
       }
       
       override protected function getAllowedMinimapSizeIndex(param1:Number) : Number
@@ -624,6 +644,40 @@ package net.wg.gui.battle.epicBattle.views
             {
                this.prebattleTimerBackground.visible = false;
             }
+         }
+      }
+      
+      private function onUpgradePanelStateChange(param1:ComponentEvent) : void
+      {
+         this.vehicleErrorMessageListPositionUpdate();
+      }
+      
+      override protected function vehicleErrorMessageListPositionUpdate() : void
+      {
+         var _loc1_:Boolean = true;
+         if(this.upgradePanel.isActive)
+         {
+            if(_originalHeight < MESSAGE_STAGE_HEIGHT_SMALL)
+            {
+               _loc1_ = false;
+            }
+            else
+            {
+               vehicleErrorMessageList.setLocation(_originalWidth - VEHICLE_ERRORS_LIST_OFFSET.x >> 1,this.upgradePanel.y + UPGRADE_PANEL_MESSAGE_OFFSET);
+            }
+         }
+         else
+         {
+            super.vehicleErrorMessageListPositionUpdate();
+         }
+         this.updateVehicleErrorMessageListVisible(_loc1_);
+      }
+      
+      private function updateVehicleErrorMessageListVisible(param1:Boolean) : void
+      {
+         if(vehicleErrorMessageList.visible != param1)
+         {
+            vehicleErrorMessageList.visible = param1;
          }
       }
    }

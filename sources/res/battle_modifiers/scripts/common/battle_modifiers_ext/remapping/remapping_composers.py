@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Optional, Any, Dict, List, FrozenSet
+from typing import TYPE_CHECKING, Optional, Any, Dict, List, FrozenSet, Type
 from battle_modifiers_ext.constants_ext import ModifiersWithRemapping
 if TYPE_CHECKING:
     from battle_modifiers_common import ModifiersContext
@@ -9,7 +9,10 @@ _END_PATTERN = '}'
 class IComposer(object):
     __slots__ = ()
 
-    def __call__(self, ctx, oldValue):
+    def getValue(self, ctx, oldValue):
+        raise NotImplementedError
+
+    def getValues(self, oldValue):
         raise NotImplementedError
 
 
@@ -21,7 +24,7 @@ class _BaseComposer(IComposer):
         self._targetTemplate = targetTemplate
         self._specialRules = specialRules
 
-    def __call__(self, ctx, oldValue):
+    def getValue(self, ctx, oldValue):
         resStr = self.__applySpecialRules(ctx, oldValue)
         if resStr is not None:
             return resStr
@@ -35,9 +38,12 @@ class _BaseComposer(IComposer):
 
             return resStr
 
+    def getValues(self, oldValue):
+        return
+
     @classmethod
     def _getItemName(cls, ctx, oldValue):
-        pass
+        return oldValue
 
     def __applySpecialRules(self, ctx, oldValue):
         if not self._specialRules:
@@ -71,9 +77,33 @@ class _DefaultShotEffectsComposer(_BaseComposer):
         return vehicles.g_cache.shotEffectsNames[oldValue]
 
 
+class _DefaultSoundNotificationsComposer(_BaseComposer):
+    _REMOVE_NOTIFICATION = 'none'
+
+    def getValue(self, ctx, oldValue):
+        resStr = super(_DefaultSoundNotificationsComposer, self).getValue(ctx, oldValue)
+        if not resStr:
+            return oldValue
+        return self.__applyRemoveRule(resStr)
+
+    def getValues(self, oldValue):
+        result = oldValue.copy()
+        for sources, target in self._specialRules.iteritems():
+            result.update({s:self.__applyRemoveRule(target) for s in sources})
+
+        return result
+
+    def __applyRemoveRule(self, value):
+        if value == self._REMOVE_NOTIFICATION:
+            return None
+        else:
+            return value
+
+
 _DEFAULT_COMPOSERS = {ModifiersWithRemapping.GUN_EFFECTS: _DefaultGunEffectsComposer, 
-   ModifiersWithRemapping.SHOT_EFFECTS: _DefaultShotEffectsComposer}
+   ModifiersWithRemapping.SHOT_EFFECTS: _DefaultShotEffectsComposer, 
+   ModifiersWithRemapping.SOUND_NOTIFICATIONS: _DefaultSoundNotificationsComposer}
 _COMPOSERS_FACTORY = {}
 
 def getComposerClass(remappingName, modifierName):
-    return _COMPOSERS_FACTORY.get(remappingName, _DEFAULT_COMPOSERS).get(modifierName)
+    return _COMPOSERS_FACTORY.get(remappingName, _DEFAULT_COMPOSERS).get(modifierName, _BaseComposer)

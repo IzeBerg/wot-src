@@ -43,5 +43,9 @@ package net.wg.gui.battle.views.consumablesPanel.interfaces
       function updateLockedInformation(param1:int, param2:String) : void;
       
       function updateLevelInformation(param1:int) : void;
+      
+      function showPossibleStacks(param1:int) : void;
+      
+      function updateStacks(param1:int) : void;
    }
 }

@@ -793,29 +793,6 @@
 			</transform>
 		</color_blind>
 	</vm_dead_squadman_name>
-	<vm_br_enemy_bot>
-		<default>
-			<alias_color>white</alias_color>
-			<rgba>255 255 255 255</rgba>
-			<transform>
-				<mult>
-					.86 .14 .11 1
-					<!--BW_String-->
-				</mult>
-				<offset>0 0 0 0</offset>
-			</transform>
-		</default>
-		<color_blind>
-			<schemeGroup>purpleColor</schemeGroup>
-			<transform>
-				<mult>
-					0.75 0.85 1 1
-					<!--BW_String-->
-				</mult>
-				<offset>0 0 100 0</offset>
-			</transform>
-		</color_blind>
-	</vm_br_enemy_bot>
 	<vm_team1>
 		<default>
 			<alias_color>white</alias_color>
@@ -1152,7 +1129,7 @@
 			<rgba>255 255 255 255</rgba>
 			<transform>
 				<mult>
-					.16 .53 .31 1
+					0.87 0.09 0 1
 					<!--BW_String-->
 				</mult>
 				<offset>0 0 0 0</offset>

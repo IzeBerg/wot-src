@@ -137,7 +137,6 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
          this.oldPriceTf.autoSize = TextFieldAutoSize.LEFT;
          this.currentPriceTf.autoSize = TextFieldAutoSize.LEFT;
          this.priceIcon.stop();
-         this.actionPrice.setIconTextAlign(ActionPrice.ICON_TEXT_ALIGN_MIDDLE);
          this.actionPrice.mouseEnabled = this.actionPrice.mouseChildren = false;
          this.actionButton.mouseEnabledOnDisabled = true;
          this.actionButton.addEventListener(ButtonEvent.CLICK,this.onActionButtonClickHandler);

@@ -61,9 +61,9 @@ package net.wg.gui.components.controls.price
       
       private var _numVisibleItems:int = 0;
       
-      private var _actionMode:String;
+      private var _actionMode:String = "enabled";
       
-      private var _actionState:String;
+      private var _actionState:String = "percentBG";
       
       private var _bigFonts:Boolean = false;
       
@@ -73,7 +73,7 @@ package net.wg.gui.components.controls.price
       
       private var _customActionTooltip:String = "";
       
-      private var _priceIconAlign:String;
+      private var _priceIconAlign:String = "right";
       
       private var _priceIconOffset:Point;
       
@@ -83,19 +83,15 @@ package net.wg.gui.components.controls.price
       
       private var _itemsAnchor:String = "bottomLeft";
       
-      private var _oldPriceAlign:String;
+      private var _oldPriceAlign:String = "oldPriceAlignBottom";
       
       private var _oldPriceVisible:Boolean = false;
       
       public function CompoundPrice()
       {
          this._classFactory = App.utils.classFactory;
-         this._actionMode = ACTION_MODE_ENABLED;
-         this._actionState = ACTION_STATE_SIMPLE;
-         this._priceIconAlign = PRICE_ICON_ALIGN_RIGHT;
          this._priceIconOffset = new Point(0,0);
          this._priceActionOffset = new Point(0,0);
-         this._oldPriceAlign = OLD_PRICE_ALIGN_BOTTOM;
          super();
          this._items = new Vector.<Price>(0);
       }
@@ -282,48 +278,54 @@ package net.wg.gui.components.controls.price
          {
             _loc19_ = !!_loc11_ ? int(_loc2_ - 1 - _loc20_) : int(_loc20_);
             _loc3_ = this._items[_loc19_];
-            _loc3_.validateNow();
-            _loc3_.x = _loc3_.y = 0;
-            if(_loc4_)
+            if(_loc3_)
             {
-               _loc1_ += -_loc3_.contentWidth;
-               _loc3_.x = _loc1_;
+               _loc3_.validateNow();
+               _loc3_.x = _loc3_.y = 0;
+               if(_loc4_)
+               {
+                  _loc1_ += -_loc3_.contentWidth;
+                  _loc3_.x = _loc1_;
+               }
+               else if(_loc5_)
+               {
+                  _loc3_.x = _loc1_;
+                  _loc1_ += _loc3_.contentWidth;
+               }
+               else if(_loc6_)
+               {
+                  _loc1_ += -_loc3_.contentHeight;
+                  _loc3_.y = _loc1_;
+               }
+               else if(_loc7_)
+               {
+                  _loc3_.y = _loc1_;
+                  _loc1_ += _loc3_.contentHeight;
+               }
+               if(_loc6_ || _loc19_ != 0 && _loc19_ != _loc2_ - 1)
+               {
+                  _loc1_ += _loc10_ * _loc16_;
+               }
+               if(_loc9_ && this._itemsAnchor == ANCHOR_BOTTOM_RIGHT)
+               {
+                  _loc3_.x -= _loc3_.contentWidth;
+               }
+               _loc17_ = _loc3_.x + _loc3_.contentWidth;
+               _loc18_ = _loc3_.y + _loc3_.contentHeight;
+               _loc12_ = _loc3_.x < _loc12_ ? Number(_loc3_.x) : Number(_loc12_);
+               _loc14_ = _loc3_.y < _loc14_ ? Number(_loc3_.y) : Number(_loc14_);
+               _loc13_ = _loc17_ > _loc13_ ? Number(_loc17_) : Number(_loc13_);
+               _loc15_ = _loc18_ > _loc15_ ? Number(_loc18_) : Number(_loc15_);
             }
-            else if(_loc5_)
-            {
-               _loc3_.x = _loc1_;
-               _loc1_ += _loc3_.contentWidth;
-            }
-            else if(_loc6_)
-            {
-               _loc1_ += -_loc3_.contentHeight;
-               _loc3_.y = _loc1_;
-            }
-            else if(_loc7_)
-            {
-               _loc3_.y = _loc1_;
-               _loc1_ += _loc3_.contentHeight;
-            }
-            if(_loc6_ || _loc19_ != 0 && _loc19_ != _loc2_ - 1)
-            {
-               _loc1_ += _loc10_ * _loc16_;
-            }
-            if(_loc9_ && this._itemsAnchor == ANCHOR_BOTTOM_RIGHT)
-            {
-               _loc3_.x -= _loc3_.contentWidth;
-            }
-            _loc17_ = _loc3_.x + _loc3_.contentWidth;
-            _loc18_ = _loc3_.y + _loc3_.contentHeight;
-            _loc12_ = _loc3_.x < _loc12_ ? Number(_loc3_.x) : Number(_loc12_);
-            _loc14_ = _loc3_.y < _loc14_ ? Number(_loc3_.y) : Number(_loc14_);
-            _loc13_ = _loc17_ > _loc13_ ? Number(_loc17_) : Number(_loc13_);
-            _loc15_ = _loc18_ > _loc15_ ? Number(_loc18_) : Number(_loc15_);
             _loc20_++;
          }
-         this.hit.x = _loc12_;
-         this.hit.y = _loc14_;
-         this.hit.width = _loc13_ - _loc12_;
-         this.hit.height = _loc15_ - _loc14_;
+         if(this.hit)
+         {
+            this.hit.x = _loc12_;
+            this.hit.y = _loc14_;
+            this.hit.width = _loc13_ - _loc12_;
+            this.hit.height = _loc15_ - _loc14_;
+         }
       }
       
       public function get itemsDirection() : String

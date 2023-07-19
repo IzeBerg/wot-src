@@ -1213,6 +1213,8 @@ package
       
       public static const TANK_PARAMS_VPM:String = "#menu:tank_params/vpm";
       
+      public static const TANK_PARAMS_VPS:String = "#menu:tank_params/vps";
+      
       public static const TANK_PARAMS_QPT:String = "#menu:tank_params/qpt";
       
       public static const TANK_PARAMS_M:String = "#menu:tank_params/m";
@@ -2331,6 +2333,8 @@ package
       
       public static const MODULEINFO_PARAMS_AVGDAMAGEPERMINUTE:String = "#menu:moduleInfo/params/avgDamagePerMinute";
       
+      public static const MODULEINFO_PARAMS_DAMAGEPERSECOND:String = "#menu:moduleInfo/params/damagePerSecond";
+      
       public static const MODULEINFO_PARAMS_ARMOR:String = "#menu:moduleInfo/params/armor";
       
       public static const MODULEINFO_PARAMS_ROTATIONSPEED:String = "#menu:moduleInfo/params/rotationSpeed";
@@ -2355,13 +2359,11 @@ package
       
       public static const MODULEINFO_PARAMS_MAXSHOTDISTANCE:String = "#menu:moduleInfo/params/maxShotDistance";
       
-      public static const MODULEINFO_PARAMS_MAXSHOTDISTANCE_FOOTNOTE:String = "#menu:moduleInfo/params/maxShotDistance/footnote";
-      
       public static const MODULEINFO_PARAMS_NOPIERCINGDISTANCE_FOOTNOTE:String = "#menu:moduleInfo/params/noPiercingDistance/footnote";
       
       public static const MODULEINFO_PARAMS_PIERCINGDISTANCE_FOOTNOTE:String = "#menu:moduleInfo/params/piercingDistance/footnote";
       
-      public static const MODULEINFO_PARAMS_NOPIERCINGDISTANCE_FOOTNOTE_MAXDISTANCE:String = "#menu:moduleInfo/params/noPiercingDistance/footnote/maxDistance";
+      public static const MODULEINFO_PARAMS_GUARANTEEDDAMAGE_FOOTNOTE:String = "#menu:moduleInfo/params/guaranteedDamage/footnote";
       
       public static const MODULEINFO_PARAMS_STUNMAXDURATION:String = "#menu:moduleInfo/params/stunMaxDuration";
       
@@ -4333,17 +4335,17 @@ package
       
       public static const VIEWHEADER_BACKBTN_DESCRLABEL_TECHTREE_ITALY_BLUEPRINTS:String = "#menu:viewHeader/backBtn/descrLabel/techtree/italy/blueprints";
       
-      public static const INTERNET_PROVIDER_ROSTELECOM_NAME:String = "#menu:internet_provider/Rostelecom/name";
+      public static const INTERNET_PROVIDER_LOCALPARTNER2_NAME:String = "#menu:internet_provider/LocalPartner2/name";
       
-      public static const INTERNET_PROVIDER_ROSTELECOM_TARIFF:String = "#menu:internet_provider/Rostelecom/tariff";
+      public static const INTERNET_PROVIDER_LOCALPARTNER2_TARIFF:String = "#menu:internet_provider/LocalPartner2/tariff";
       
-      public static const INTERNET_PROVIDER_BELTELECOM_NAME:String = "#menu:internet_provider/Beltelecom/name";
+      public static const INTERNET_PROVIDER_LOCALPARTNER3_NAME:String = "#menu:internet_provider/LocalPartner3/name";
       
-      public static const INTERNET_PROVIDER_BELTELECOM_TARIFF:String = "#menu:internet_provider/Beltelecom/tariff";
+      public static const INTERNET_PROVIDER_LOCALPARTNER3_TARIFF:String = "#menu:internet_provider/LocalPartner3/tariff";
       
-      public static const INTERNET_PROVIDER_KYIVSTAR_NAME:String = "#menu:internet_provider/Kyivstar/name";
+      public static const INTERNET_PROVIDER_LOCALPARTNER4_NAME:String = "#menu:internet_provider/LocalPartner4/name";
       
-      public static const INTERNET_PROVIDER_KYIVSTAR_TARIFF:String = "#menu:internet_provider/Kyivstar/tariff";
+      public static const INTERNET_PROVIDER_LOCALPARTNER4_TARIFF:String = "#menu:internet_provider/LocalPartner4/tariff";
       
       public static const INTERNET_PROVIDER_KAZAKHTELECOM_NAME:String = "#menu:internet_provider/Kazakhtelecom/name";
       
@@ -4412,8 +4414,6 @@ package
       public static const CRYSTALS_INFO_TAB_EARN_LEVEL_MOD_0:String = "#menu:crystals/info/tab/earn/level/mod/0";
       
       public static const CRYSTALS_INFO_TAB_EARN_LEVEL_MOD_1:String = "#menu:crystals/info/tab/earn/level/mod/1";
-      
-      public static const CRYSTALS_INFO_TAB_EARN_LEVEL_MOD_2:String = "#menu:crystals/info/tab/earn/level/mod/2";
       
       public static const CRYSTALS_INFO_TAB_EARN_MARKER_TITLE:String = "#menu:crystals/info/tab/earn/marker/title";
       
@@ -4552,8 +4552,6 @@ package
       public static const CRYSTALS_INFO_TAB_GET_RANDOM:String = "#menu:crystals/info/tab/get/random";
       
       public static const CRYSTALS_INFO_TAB_GET_GENERAL:String = "#menu:crystals/info/tab/get/general";
-      
-      public static const CRYSTALS_INFO_TAB_GET_RANKED:String = "#menu:crystals/info/tab/get/ranked";
       
       public static const CRYSTALS_INFO_TAB_GET_CARD_CONDITION:String = "#menu:crystals/info/tab/get/card/condition";
       

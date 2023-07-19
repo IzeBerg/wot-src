@@ -10,7 +10,7 @@ from collections_common import CollectionsConfig
 from collector_vehicle import CollectorVehicleConsts
 from comp7_ranks_common import Comp7Division
 from constants import BATTLE_NOTIFIER_CONFIG, ClansConfig, Configs, DAILY_QUESTS_CONFIG, DOG_TAGS_CONFIG, MAGNETIC_AUTO_AIM_CONFIG, MISC_GUI_SETTINGS, PremiumConfigs, RENEWABLE_SUBSCRIPTION_CONFIG, PLAYER_SUBSCRIPTIONS_CONFIG, TOURNAMENT_CONFIG
-from debug_utils import LOG_DEBUG, LOG_WARNING
+from debug_utils import LOG_DEBUG, LOG_NOTE
 from gifts.gifts_common import ClientReqStrategy, GiftEventID, GiftEventState
 from gui import GUI_SETTINGS, SystemMessages
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
@@ -132,7 +132,7 @@ class _FileServerSettings(object):
         try:
             return self.__urls[urlKey] % args
         except (KeyError, TypeError):
-            LOG_WARNING('There is invalid url while getting emblem from web', urlKey, args)
+            LOG_NOTE('There is invalid url while getting emblem from web', urlKey, args)
 
         return
 
@@ -385,7 +385,8 @@ _ProgressiveReward.__new__.__defaults__ = (
  True, 'pr:level', 'pr:probability', 0)
 
 class _EpicMetaGameConfig(namedtuple('_EpicMetaGameConfig', ['maxCombatReserveLevel', 'seasonData', 'metaLevel', 'rewards', 'defaultSlots', 'slots',
- 'inBattleReservesByRank', 'skipParamsValidation'])):
+ 'inBattleReservesByRank', 'skipParamsValidation', 'randomReservesMode',
+ 'randomReservesOpt'])):
 
     def asDict(self):
         return self._asdict()
@@ -397,7 +398,7 @@ class _EpicMetaGameConfig(namedtuple('_EpicMetaGameConfig', ['maxCombatReserveLe
 
 
 _EpicMetaGameConfig.__new__.__defaults__ = (
- 0, (0, False), (0, 0, 0), {}, {}, {}, {}, 0)
+ 0, (0, False), (0, 0, 0), {}, {}, {}, {}, 0, 0, {})
 
 class EpicGameConfig(namedtuple('EpicGameConfig', ('isEnabled', 'validVehicleLevels', 'battlePassDataEnabled', 'levelsToUpgrateAllReserves',
  'seasons', 'cycleTimes', 'unlockableInBattleVehLevels', 'inBattleModifiers', 'peripheryIDs',
@@ -497,11 +498,11 @@ class _SquadPremiumBonus(namedtuple('_SquadPremiumBonus', ('isEnabled', 'ownCred
 class BattleRoyaleConfig(namedtuple('BattleRoyaleConfig', ('isEnabled', 'peripheryIDs', 'unburnableTitles',
  'eventProgression', 'primeTimes', 'seasons', 'cycleTimes',
  'maps', 'battleXP', 'coneVisibility', 'loot', 'defaultAmmo',
- 'vehiclesSlotsConfig', 'economics', 'url', 'respawns'))):
+ 'vehiclesSlotsConfig', 'economics', 'url'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, peripheryIDs={}, eventProgression={}, unburnableTitles=(), primeTimes={}, seasons={}, cycleTimes={}, maps=(), battleXP={}, coneVisibility={}, loot={}, defaultAmmo={}, vehiclesSlotsConfig={}, economics={}, url='', respawns={})
+        defaults = dict(isEnabled=False, peripheryIDs={}, eventProgression={}, unburnableTitles=(), primeTimes={}, seasons={}, cycleTimes={}, maps=(), battleXP={}, coneVisibility={}, loot={}, defaultAmmo={}, vehiclesSlotsConfig={}, economics={}, url='')
         defaults.update(kwargs)
         return super(BattleRoyaleConfig, cls).__new__(cls, **defaults)
 

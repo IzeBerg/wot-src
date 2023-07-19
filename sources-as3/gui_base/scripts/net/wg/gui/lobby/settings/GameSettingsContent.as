@@ -68,10 +68,6 @@ package net.wg.gui.lobby.settings
       
       public var battleLoadingInfoDropDown:DropdownMenu = null;
       
-      public var battleLoadingRankedInfoLabelControl:LabelControl = null;
-      
-      public var battleLoadingRankedInfoDropDown:DropdownMenu = null;
-      
       public var switchEquipmentCheckbox:CheckBox = null;
       
       public var showCommInPlayerlistCheckbox:CheckBox = null;
@@ -280,7 +276,6 @@ package net.wg.gui.lobby.settings
          this.battleLoadingInfoLabelControl.text = SETTINGS.GAME_BATTLELOADINGINFO;
          this.battleLoadingInfoLabelControl.toolTip = TOOLTIPS.BATTLELOADINGINFO;
          this.battleLoadingInfoLabelControl.infoIcoType = InfoIcon.TYPE_INFO;
-         this.battleLoadingRankedInfoLabelControl.text = SETTINGS.GAME_BATTLELOADINGRANKEDINFO;
          this.switchEquipmentCheckbox.label = SETTINGS.GAME_SWITCHEQUIPMENT;
          this.switchEquipmentCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.switchEquipmentCheckbox.toolTip = TOOLTIPS_CONSTANTS.SETTINGS_SWITCH_EQUIPMENT;
@@ -431,10 +426,6 @@ package net.wg.gui.lobby.settings
          this.battleLoadingInfoLabelControl = null;
          this.battleLoadingInfoDropDown.dispose();
          this.battleLoadingInfoDropDown = null;
-         this.battleLoadingRankedInfoLabelControl.dispose();
-         this.battleLoadingRankedInfoLabelControl = null;
-         this.battleLoadingRankedInfoDropDown.dispose();
-         this.battleLoadingRankedInfoDropDown = null;
          this.switchEquipmentCheckbox.dispose();
          this.switchEquipmentCheckbox = null;
          this.minimapAlphaSlider.dispose();

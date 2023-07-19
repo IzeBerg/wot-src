@@ -26,7 +26,7 @@ package net.wg.infrastructure.base.meta
       
       function as_setHealth(param1:Number) : void;
       
-      function as_setAmmoStock(param1:Number, param2:Number, param3:Boolean, param4:String, param5:Boolean) : void;
+      function as_setAmmoStock(param1:Number, param2:Number, param3:String, param4:Boolean) : void;
       
       function as_setClipParams(param1:Number, param2:Number, param3:Boolean) : void;
       
@@ -103,5 +103,11 @@ package net.wg.infrastructure.base.meta
       function as_isFaded(param1:Boolean) : void;
       
       function as_blinkReloadTime(param1:int) : void;
+      
+      function as_setOverheatProgress(param1:Number, param2:Boolean) : void;
+      
+      function as_addOverheat(param1:Number) : void;
+      
+      function as_removeOverheat() : void;
    }
 }

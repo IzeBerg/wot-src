@@ -27,7 +27,7 @@ package net.wg.gui.battle.epicBattle.views.stats.components
       
       private var _mapName:String = "";
       
-      private var _frameLabel:String = "";
+      private var _battleTypeIconPath:String = "";
       
       public function EpicStatsHeader()
       {
@@ -46,7 +46,7 @@ package net.wg.gui.battle.epicBattle.views.stats.components
             }
             this.mapText.htmlText = this._mapName;
             this.battleIcon.visible = true;
-            this.battleIcon.source = RES_ICONS.maps_icons_battletypes_136x136_all_png(this._frameLabel);
+            this.battleIcon.source = this._battleTypeIconPath;
          }
       }
       
@@ -61,11 +61,11 @@ package net.wg.gui.battle.epicBattle.views.stats.components
          super.onDispose();
       }
       
-      public function setBattleTypeFrameName(param1:String) : void
+      public function setBattleTypeIconPath(param1:String) : void
       {
-         if(param1 != this._frameLabel)
+         if(param1 != this._battleTypeIconPath)
          {
-            this._frameLabel = param1;
+            this._battleTypeIconPath = param1;
             invalidateData();
          }
       }

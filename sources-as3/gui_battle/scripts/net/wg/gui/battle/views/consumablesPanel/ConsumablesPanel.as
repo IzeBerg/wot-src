@@ -7,7 +7,6 @@ package net.wg.gui.battle.views.consumablesPanel
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.generated.CONSUMABLES_PANEL_SETTINGS;
-   import net.wg.gui.battle.battleRoyale.views.components.RespawnButton.BattleRoyaleRespawnButton;
    import net.wg.gui.battle.comp7.views.consumablesPanel.Comp7ConsumableButton;
    import net.wg.gui.battle.components.buttons.BattleButton;
    import net.wg.gui.battle.views.consumablesPanel.VO.ConsumablesVO;
@@ -285,36 +284,6 @@ package net.wg.gui.battle.views.consumablesPanel
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }
       
-      public function as_addRespawnSlot(param1:int, param2:Number, param3:Number, param4:int, param5:String, param6:Boolean, param7:Boolean) : void
-      {
-         var _loc8_:BattleRoyaleRespawnButton = null;
-         var _loc9_:ConsumablesVO = null;
-         if(this._renderers[param1] == null)
-         {
-            _loc8_ = this._classFactory.getComponent("BattleRoyaleRespawnButtonUI",BattleRoyaleRespawnButton);
-            this._renderers[param1] = _loc8_;
-            addChild(_loc8_);
-         }
-         else
-         {
-            _loc8_ = this.getRendererBySlotIdx(param1) as BattleRoyaleRespawnButton;
-         }
-         if(_loc8_)
-         {
-            _loc9_ = _loc8_.consumablesVO;
-            _loc9_.keyCode = param2;
-            _loc9_.idx = param1;
-            _loc8_.isReplay = this._isReplay;
-            _loc8_.tooltipStr = param5;
-            _loc8_.isTooltipSpecial = param6;
-            _loc8_.key = param3;
-            _loc8_.quantity = param4;
-            _loc8_.isAvailable = param7;
-            _loc8_.addClickCallBack(this);
-            invalidate(INVALIDATE_DRAW_LAYOUT);
-         }
-      }
-      
       public function as_addRoleSkillSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int) : void
       {
          this._equipmentButtonLinkage = Linkages.COMP7_CONSUMABLE_BUTTON;
@@ -529,24 +498,6 @@ package net.wg.gui.battle.views.consumablesPanel
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }
       
-      public function as_setRespawnSlotQuantity(param1:int, param2:int) : void
-      {
-         var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
-         if(_loc3_)
-         {
-            _loc3_.quantity = param2;
-         }
-      }
-      
-      public function as_setRespawnSlotState(param1:int, param2:Boolean) : void
-      {
-         var _loc3_:BattleRoyaleRespawnButton = this.getRendererBySlotIdx(param1) as BattleRoyaleRespawnButton;
-         if(_loc3_)
-         {
-            _loc3_.isAvailable = param2;
-         }
-      }
-      
       public function as_setRoleSkillSlotCounter(param1:int, param2:int) : void
       {
          var _loc3_:Comp7ConsumableButton = Comp7ConsumableButton(this.getRendererBySlotIdx(param1));
@@ -607,6 +558,24 @@ package net.wg.gui.battle.views.consumablesPanel
          if(_loc3_)
          {
             _loc3_.updateLevelInformation(param2);
+         }
+      }
+      
+      public function as_updateStacks(param1:int, param2:int) : void
+      {
+         var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
+         if(_loc3_)
+         {
+            _loc3_.updateStacks(param2);
+         }
+      }
+      
+      public function as_showPossibleStacks(param1:int, param2:int) : void
+      {
+         var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
+         if(_loc3_)
+         {
+            _loc3_.showPossibleStacks(param2);
          }
       }
       

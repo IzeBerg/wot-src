@@ -2,6 +2,7 @@ import os, time, base64, urllib2, binascii, threading, random, shelve as provide
 from functools import partial
 from Queue import Queue
 from pickle import HIGHEST_PROTOCOL as HIGHEST_PICKLE_PROTOCOL, UnpicklingError
+from shared_utils import safeCancelCallback
 import BigWorld
 from debug_utils import LOG_WARNING, LOG_ERROR, LOG_CURRENT_EXCEPTION, LOG_DEBUG, LOG_DEBUG_DEV
 from helpers import getFullClientVersion
@@ -197,7 +198,7 @@ class CustomFilesCache(object):
         self.__processedCache = {}
         self.__written_cache = set()
         if self.__timer is not None:
-            BigWorld.cancelCallback(self.__timer)
+            safeCancelCallback(self.__timer)
             self.__timer = None
         if self.__db is not None:
             startTime = time.time()
