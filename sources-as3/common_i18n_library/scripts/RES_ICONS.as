@@ -4915,6 +4915,12 @@ package
       
       public static const MAPS_ICONS_BATTLETYPES_BACKGROUNDS_RANDOM:String = "../maps/icons/battleTypes/backgrounds/random.png";
       
+      public static const MAPS_ICONS_BIRTHDAY2023_BACKGROUND:String = "../maps/icons/birthday2023/background.png";
+      
+      public static const MAPS_ICONS_BIRTHDAY2023_BLUR:String = "../maps/icons/birthday2023/blur.png";
+      
+      public static const MAPS_ICONS_BIRTHDAY2023_IMAGE:String = "../maps/icons/birthday2023/image.png";
+      
       public static const MAPS_ICONS_BLUEPRINTS_BLUECHECK:String = "../maps/icons/blueprints/blueCheck.png";
       
       public static const MAPS_ICONS_BLUEPRINTS_BORDERSLOT:String = "../maps/icons/blueprints/borderSlot.png";
@@ -5957,11 +5963,111 @@ package
       
       public static const MAPS_ICONS_COLLECTIONITEMS_1000X680_PHOTO_2_22:String = "../maps/icons/collectionItems/1000x680/photo_2_22.png";
       
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_ANY_31001:String = "../maps/icons/collectionItems/232x174/any_31001.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_1_1:String = "../maps/icons/collectionItems/232x174/customizationItem_1_1.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_1_10:String = "../maps/icons/collectionItems/232x174/customizationItem_1_10.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_1_11:String = "../maps/icons/collectionItems/232x174/customizationItem_1_11.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_1_12:String = "../maps/icons/collectionItems/232x174/customizationItem_1_12.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_1_2:String = "../maps/icons/collectionItems/232x174/customizationItem_1_2.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_1_3:String = "../maps/icons/collectionItems/232x174/customizationItem_1_3.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_1_7:String = "../maps/icons/collectionItems/232x174/customizationItem_1_7.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_1_8:String = "../maps/icons/collectionItems/232x174/customizationItem_1_8.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_1_9:String = "../maps/icons/collectionItems/232x174/customizationItem_1_9.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_2_1:String = "../maps/icons/collectionItems/232x174/customizationItem_2_1.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_2_10:String = "../maps/icons/collectionItems/232x174/customizationItem_2_10.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_2_11:String = "../maps/icons/collectionItems/232x174/customizationItem_2_11.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_2_12:String = "../maps/icons/collectionItems/232x174/customizationItem_2_12.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_2_2:String = "../maps/icons/collectionItems/232x174/customizationItem_2_2.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_2_3:String = "../maps/icons/collectionItems/232x174/customizationItem_2_3.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_2_7:String = "../maps/icons/collectionItems/232x174/customizationItem_2_7.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_2_8:String = "../maps/icons/collectionItems/232x174/customizationItem_2_8.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_CUSTOMIZATIONITEM_2_9:String = "../maps/icons/collectionItems/232x174/customizationItem_2_9.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_DOSSIER_1_13:String = "../maps/icons/collectionItems/232x174/dossier_1_13.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_DOSSIER_2_13:String = "../maps/icons/collectionItems/232x174/dossier_2_13.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_NOTE_1_20:String = "../maps/icons/collectionItems/232x174/note_1_20.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_NOTE_1_21:String = "../maps/icons/collectionItems/232x174/note_1_21.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_NOTE_2_20:String = "../maps/icons/collectionItems/232x174/note_2_20.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_1_14:String = "../maps/icons/collectionItems/232x174/photo_1_14.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_1_15:String = "../maps/icons/collectionItems/232x174/photo_1_15.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_1_16:String = "../maps/icons/collectionItems/232x174/photo_1_16.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_1_17:String = "../maps/icons/collectionItems/232x174/photo_1_17.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_1_18:String = "../maps/icons/collectionItems/232x174/photo_1_18.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_1_19:String = "../maps/icons/collectionItems/232x174/photo_1_19.png";
+      
       public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_1_22:String = "../maps/icons/collectionItems/232x174/photo_1_22.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_2_14:String = "../maps/icons/collectionItems/232x174/photo_2_14.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_2_15:String = "../maps/icons/collectionItems/232x174/photo_2_15.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_2_16:String = "../maps/icons/collectionItems/232x174/photo_2_16.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_2_17:String = "../maps/icons/collectionItems/232x174/photo_2_17.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_2_18:String = "../maps/icons/collectionItems/232x174/photo_2_18.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_2_19:String = "../maps/icons/collectionItems/232x174/photo_2_19.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_2_21:String = "../maps/icons/collectionItems/232x174/photo_2_21.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_2_22:String = "../maps/icons/collectionItems/232x174/photo_2_22.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_31001_1:String = "../maps/icons/collectionItems/232x174/photo_31001_1.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_31001_2:String = "../maps/icons/collectionItems/232x174/photo_31001_2.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_31001_3:String = "../maps/icons/collectionItems/232x174/photo_31001_3.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_31001_4:String = "../maps/icons/collectionItems/232x174/photo_31001_4.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_31001_5:String = "../maps/icons/collectionItems/232x174/photo_31001_5.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_31001_6:String = "../maps/icons/collectionItems/232x174/photo_31001_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_PHOTO_31001_7:String = "../maps/icons/collectionItems/232x174/photo_31001_7.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_TANKMAN_1_4:String = "../maps/icons/collectionItems/232x174/tankman_1_4.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_TANKMAN_1_5:String = "../maps/icons/collectionItems/232x174/tankman_1_5.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_TANKMAN_1_6:String = "../maps/icons/collectionItems/232x174/tankman_1_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_TANKMAN_2_4:String = "../maps/icons/collectionItems/232x174/tankman_2_4.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_TANKMAN_2_5:String = "../maps/icons/collectionItems/232x174/tankman_2_5.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_232X174_TANKMAN_2_6:String = "../maps/icons/collectionItems/232x174/tankman_2_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_296X222_ANY_31001:String = "../maps/icons/collectionItems/296x222/any_31001.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_296X222_CUSTOMIZATIONITEM_1_1:String = "../maps/icons/collectionItems/296x222/customizationItem_1_1.png";
       
@@ -6039,6 +6145,20 @@ package
       
       public static const MAPS_ICONS_COLLECTIONITEMS_296X222_PHOTO_2_22:String = "../maps/icons/collectionItems/296x222/photo_2_22.png";
       
+      public static const MAPS_ICONS_COLLECTIONITEMS_296X222_PHOTO_31001_1:String = "../maps/icons/collectionItems/296x222/photo_31001_1.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_296X222_PHOTO_31001_2:String = "../maps/icons/collectionItems/296x222/photo_31001_2.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_296X222_PHOTO_31001_3:String = "../maps/icons/collectionItems/296x222/photo_31001_3.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_296X222_PHOTO_31001_4:String = "../maps/icons/collectionItems/296x222/photo_31001_4.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_296X222_PHOTO_31001_5:String = "../maps/icons/collectionItems/296x222/photo_31001_5.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_296X222_PHOTO_31001_6:String = "../maps/icons/collectionItems/296x222/photo_31001_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_296X222_PHOTO_31001_7:String = "../maps/icons/collectionItems/296x222/photo_31001_7.png";
+      
       public static const MAPS_ICONS_COLLECTIONITEMS_296X222_TANKMAN_1_4:String = "../maps/icons/collectionItems/296x222/tankman_1_4.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_296X222_TANKMAN_1_5:String = "../maps/icons/collectionItems/296x222/tankman_1_5.png";
@@ -6050,6 +6170,8 @@ package
       public static const MAPS_ICONS_COLLECTIONITEMS_296X222_TANKMAN_2_5:String = "../maps/icons/collectionItems/296x222/tankman_2_5.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_296X222_TANKMAN_2_6:String = "../maps/icons/collectionItems/296x222/tankman_2_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_400X300_ANY_31001:String = "../maps/icons/collectionItems/400x300/any_31001.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_400X300_CUSTOMIZATIONITEM_1_1:String = "../maps/icons/collectionItems/400x300/customizationItem_1_1.png";
       
@@ -6127,6 +6249,20 @@ package
       
       public static const MAPS_ICONS_COLLECTIONITEMS_400X300_PHOTO_2_22:String = "../maps/icons/collectionItems/400x300/photo_2_22.png";
       
+      public static const MAPS_ICONS_COLLECTIONITEMS_400X300_PHOTO_31001_1:String = "../maps/icons/collectionItems/400x300/photo_31001_1.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_400X300_PHOTO_31001_2:String = "../maps/icons/collectionItems/400x300/photo_31001_2.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_400X300_PHOTO_31001_3:String = "../maps/icons/collectionItems/400x300/photo_31001_3.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_400X300_PHOTO_31001_4:String = "../maps/icons/collectionItems/400x300/photo_31001_4.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_400X300_PHOTO_31001_5:String = "../maps/icons/collectionItems/400x300/photo_31001_5.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_400X300_PHOTO_31001_6:String = "../maps/icons/collectionItems/400x300/photo_31001_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_400X300_PHOTO_31001_7:String = "../maps/icons/collectionItems/400x300/photo_31001_7.png";
+      
       public static const MAPS_ICONS_COLLECTIONITEMS_400X300_TANKMAN_1_4:String = "../maps/icons/collectionItems/400x300/tankman_1_4.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_400X300_TANKMAN_1_5:String = "../maps/icons/collectionItems/400x300/tankman_1_5.png";
@@ -6138,6 +6274,8 @@ package
       public static const MAPS_ICONS_COLLECTIONITEMS_400X300_TANKMAN_2_5:String = "../maps/icons/collectionItems/400x300/tankman_2_5.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_400X300_TANKMAN_2_6:String = "../maps/icons/collectionItems/400x300/tankman_2_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_48X48_ANY_31001:String = "../maps/icons/collectionItems/48x48/any_31001.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_48X48_NOTE_1_20:String = "../maps/icons/collectionItems/48x48/note_1_20.png";
       
@@ -6174,6 +6312,22 @@ package
       public static const MAPS_ICONS_COLLECTIONITEMS_48X48_PHOTO_2_21:String = "../maps/icons/collectionItems/48x48/photo_2_21.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_48X48_PHOTO_2_22:String = "../maps/icons/collectionItems/48x48/photo_2_22.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_48X48_PHOTO_31001_1:String = "../maps/icons/collectionItems/48x48/photo_31001_1.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_48X48_PHOTO_31001_2:String = "../maps/icons/collectionItems/48x48/photo_31001_2.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_48X48_PHOTO_31001_3:String = "../maps/icons/collectionItems/48x48/photo_31001_3.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_48X48_PHOTO_31001_4:String = "../maps/icons/collectionItems/48x48/photo_31001_4.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_48X48_PHOTO_31001_5:String = "../maps/icons/collectionItems/48x48/photo_31001_5.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_48X48_PHOTO_31001_6:String = "../maps/icons/collectionItems/48x48/photo_31001_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_48X48_PHOTO_31001_7:String = "../maps/icons/collectionItems/48x48/photo_31001_7.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_600X450_ANY_31001:String = "../maps/icons/collectionItems/600x450/any_31001.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_600X450_CUSTOMIZATIONITEM_1_1:String = "../maps/icons/collectionItems/600x450/customizationItem_1_1.png";
       
@@ -6251,6 +6405,20 @@ package
       
       public static const MAPS_ICONS_COLLECTIONITEMS_600X450_PHOTO_2_22:String = "../maps/icons/collectionItems/600x450/photo_2_22.png";
       
+      public static const MAPS_ICONS_COLLECTIONITEMS_600X450_PHOTO_31001_1:String = "../maps/icons/collectionItems/600x450/photo_31001_1.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_600X450_PHOTO_31001_2:String = "../maps/icons/collectionItems/600x450/photo_31001_2.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_600X450_PHOTO_31001_3:String = "../maps/icons/collectionItems/600x450/photo_31001_3.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_600X450_PHOTO_31001_4:String = "../maps/icons/collectionItems/600x450/photo_31001_4.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_600X450_PHOTO_31001_5:String = "../maps/icons/collectionItems/600x450/photo_31001_5.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_600X450_PHOTO_31001_6:String = "../maps/icons/collectionItems/600x450/photo_31001_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_600X450_PHOTO_31001_7:String = "../maps/icons/collectionItems/600x450/photo_31001_7.png";
+      
       public static const MAPS_ICONS_COLLECTIONITEMS_600X450_TANKMAN_1_4:String = "../maps/icons/collectionItems/600x450/tankman_1_4.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_600X450_TANKMAN_1_5:String = "../maps/icons/collectionItems/600x450/tankman_1_5.png";
@@ -6262,6 +6430,58 @@ package
       public static const MAPS_ICONS_COLLECTIONITEMS_600X450_TANKMAN_2_5:String = "../maps/icons/collectionItems/600x450/tankman_2_5.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_600X450_TANKMAN_2_6:String = "../maps/icons/collectionItems/600x450/tankman_2_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_ANY_31001:String = "../maps/icons/collectionItems/80x80/any_31001.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_NOTE_1_20:String = "../maps/icons/collectionItems/80x80/note_1_20.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_NOTE_1_21:String = "../maps/icons/collectionItems/80x80/note_1_21.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_NOTE_2_20:String = "../maps/icons/collectionItems/80x80/note_2_20.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_1_14:String = "../maps/icons/collectionItems/80x80/photo_1_14.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_1_15:String = "../maps/icons/collectionItems/80x80/photo_1_15.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_1_16:String = "../maps/icons/collectionItems/80x80/photo_1_16.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_1_17:String = "../maps/icons/collectionItems/80x80/photo_1_17.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_1_18:String = "../maps/icons/collectionItems/80x80/photo_1_18.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_1_19:String = "../maps/icons/collectionItems/80x80/photo_1_19.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_1_22:String = "../maps/icons/collectionItems/80x80/photo_1_22.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_2_14:String = "../maps/icons/collectionItems/80x80/photo_2_14.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_2_15:String = "../maps/icons/collectionItems/80x80/photo_2_15.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_2_16:String = "../maps/icons/collectionItems/80x80/photo_2_16.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_2_17:String = "../maps/icons/collectionItems/80x80/photo_2_17.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_2_18:String = "../maps/icons/collectionItems/80x80/photo_2_18.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_2_19:String = "../maps/icons/collectionItems/80x80/photo_2_19.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_2_21:String = "../maps/icons/collectionItems/80x80/photo_2_21.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_2_22:String = "../maps/icons/collectionItems/80x80/photo_2_22.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_31001_1:String = "../maps/icons/collectionItems/80x80/photo_31001_1.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_31001_2:String = "../maps/icons/collectionItems/80x80/photo_31001_2.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_31001_3:String = "../maps/icons/collectionItems/80x80/photo_31001_3.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_31001_4:String = "../maps/icons/collectionItems/80x80/photo_31001_4.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_31001_5:String = "../maps/icons/collectionItems/80x80/photo_31001_5.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_31001_6:String = "../maps/icons/collectionItems/80x80/photo_31001_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_80X80_PHOTO_31001_7:String = "../maps/icons/collectionItems/80x80/photo_31001_7.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_RECEIVED_CUSTOMIZATIONITEM_1_1:String = "../maps/icons/collectionItems/received/customizationItem_1_1.png";
       
@@ -6338,6 +6558,20 @@ package
       public static const MAPS_ICONS_COLLECTIONITEMS_RECEIVED_PHOTO_2_21:String = "../maps/icons/collectionItems/received/photo_2_21.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_RECEIVED_PHOTO_2_22:String = "../maps/icons/collectionItems/received/photo_2_22.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_RECEIVED_PHOTO_31001_1:String = "../maps/icons/collectionItems/received/photo_31001_1.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_RECEIVED_PHOTO_31001_2:String = "../maps/icons/collectionItems/received/photo_31001_2.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_RECEIVED_PHOTO_31001_3:String = "../maps/icons/collectionItems/received/photo_31001_3.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_RECEIVED_PHOTO_31001_4:String = "../maps/icons/collectionItems/received/photo_31001_4.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_RECEIVED_PHOTO_31001_5:String = "../maps/icons/collectionItems/received/photo_31001_5.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_RECEIVED_PHOTO_31001_6:String = "../maps/icons/collectionItems/received/photo_31001_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_RECEIVED_PHOTO_31001_7:String = "../maps/icons/collectionItems/received/photo_31001_7.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_RECEIVED_TANKMAN_1_4:String = "../maps/icons/collectionItems/received/tankman_1_4.png";
       
@@ -6427,6 +6661,20 @@ package
       
       public static const MAPS_ICONS_COLLECTIONITEMS_UNRECEIVED_PHOTO_2_22:String = "../maps/icons/collectionItems/unreceived/photo_2_22.png";
       
+      public static const MAPS_ICONS_COLLECTIONITEMS_UNRECEIVED_PHOTO_31001_1:String = "../maps/icons/collectionItems/unreceived/photo_31001_1.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_UNRECEIVED_PHOTO_31001_2:String = "../maps/icons/collectionItems/unreceived/photo_31001_2.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_UNRECEIVED_PHOTO_31001_3:String = "../maps/icons/collectionItems/unreceived/photo_31001_3.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_UNRECEIVED_PHOTO_31001_4:String = "../maps/icons/collectionItems/unreceived/photo_31001_4.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_UNRECEIVED_PHOTO_31001_5:String = "../maps/icons/collectionItems/unreceived/photo_31001_5.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_UNRECEIVED_PHOTO_31001_6:String = "../maps/icons/collectionItems/unreceived/photo_31001_6.png";
+      
+      public static const MAPS_ICONS_COLLECTIONITEMS_UNRECEIVED_PHOTO_31001_7:String = "../maps/icons/collectionItems/unreceived/photo_31001_7.png";
+      
       public static const MAPS_ICONS_COLLECTIONITEMS_UNRECEIVED_TANKMAN_1_4:String = "../maps/icons/collectionItems/unreceived/tankman_1_4.png";
       
       public static const MAPS_ICONS_COLLECTIONITEMS_UNRECEIVED_TANKMAN_1_5:String = "../maps/icons/collectionItems/unreceived/tankman_1_5.png";
@@ -6463,11 +6711,29 @@ package
       
       public static const MAPS_ICONS_COLLECTIONS_COLLECTIONS_CONTENT_BATTLEPASS_BATTLEPASS11_BGPAGE3:String = "../maps/icons/collections/collections_content/battlePass/battlePass11/bgPage3.png";
       
+      public static const MAPS_ICONS_COLLECTIONS_COLLECTIONS_CONTENT_BIRTHDAY_BGAWARDS:String = "../maps/icons/collections/collections_content/birthday/bgAwards.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_COLLECTIONS_CONTENT_BIRTHDAY_BIRTHDAYCOLLECTIONBG:String = "../maps/icons/collections/collections_content/birthday/BirthdayCollectionBG.png";
+      
       public static const MAPS_ICONS_COLLECTIONS_COMMON_ARROW:String = "../maps/icons/collections/common/arrow.png";
       
       public static const MAPS_ICONS_COLLECTIONS_COMMON_ARROW_DISABLED:String = "../maps/icons/collections/common/arrow_disabled.png";
       
       public static const MAPS_ICONS_COLLECTIONS_COMMON_NEWELEMENTMASKOVERSIZE:String = "../maps/icons/collections/common/newElementMaskOverSize.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_ENTRY_POINT_BIRTHDAY_2023_BORDERSPARKS:String = "../maps/icons/collections/entry_point/birthday_2023/borderSparks.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_ENTRY_POINT_BIRTHDAY_2023_BORDERSPARKSHOVER:String = "../maps/icons/collections/entry_point/birthday_2023/borderSparksHover.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_ENTRY_POINT_BIRTHDAY_2023_DOCUMENTS:String = "../maps/icons/collections/entry_point/birthday_2023/documents.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_ENTRY_POINT_BIRTHDAY_2023_DOCUMENTSDISABLED:String = "../maps/icons/collections/entry_point/birthday_2023/documentsDisabled.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_ENTRY_POINT_BIRTHDAY_2023_ENTRYBACK:String = "../maps/icons/collections/entry_point/birthday_2023/entryBack.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_ENTRY_POINT_BIRTHDAY_2023_GREEN_GLOW:String = "../maps/icons/collections/entry_point/birthday_2023/green_glow.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_ENTRY_POINT_BIRTHDAY_2023_GREEN_GLOW_LARGE:String = "../maps/icons/collections/entry_point/birthday_2023/green_glow_large.png";
       
       public static const MAPS_ICONS_COLLECTIONS_OVERLAYS_LOUPE:String = "../maps/icons/collections/overlays/loupe.png";
       
@@ -6490,6 +6756,16 @@ package
       public static const MAPS_ICONS_COLLECTIONS_PROGRESS_BAR_PBLIGHT:String = "../maps/icons/collections/progress_bar/pbLight.png";
       
       public static const MAPS_ICONS_COLLECTIONS_PROGRESS_BAR_PROGRESSBARBG:String = "../maps/icons/collections/progress_bar/progressBarBg.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_PROGRESS_BAR_PROGRESSSCROLLLEFTSHADOW:String = "../maps/icons/collections/progress_bar/progressScrollLeftShadow.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_PROGRESS_BAR_PROGRESSSCROLLLEFTSHADOWSMALL:String = "../maps/icons/collections/progress_bar/progressScrollLeftShadowSmall.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_PROGRESS_BAR_PROGRESSSCROLLRIGHTSHADOW:String = "../maps/icons/collections/progress_bar/progressScrollRightShadow.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_PROGRESS_BAR_PROGRESSSCROLLRIGHTSHADOWSMALL:String = "../maps/icons/collections/progress_bar/progressScrollRightShadowSmall.png";
+      
+      public static const MAPS_ICONS_COLLECTIONS_REWARDS_COLLECTIONREWARD:String = "../maps/icons/collections/rewards/collectionReward.png";
       
       public static const MAPS_ICONS_COLLECTIONS_REWARDS_LINES:String = "../maps/icons/collections/rewards/lines.png";
       
@@ -7629,6 +7905,8 @@ package
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_BIG_BROCHURE_UK:String = "../maps/icons/crewBooks/books/big/brochure_uk.png";
       
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_BIG_BROCHURE_UNIVERSAL:String = "../maps/icons/crewBooks/books/big/brochure_universal.png";
+      
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_BIG_BROCHURE_USA:String = "../maps/icons/crewBooks/books/big/brochure_usa.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_BIG_BROCHURE_USSR:String = "../maps/icons/crewBooks/books/big/brochure_ussr.png";
@@ -7672,6 +7950,8 @@ package
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_BIG_GUIDE_SWEDEN:String = "../maps/icons/crewBooks/books/big/guide_sweden.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_BIG_GUIDE_UK:String = "../maps/icons/crewBooks/books/big/guide_uk.png";
+      
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_BIG_GUIDE_UNIVERSAL:String = "../maps/icons/crewBooks/books/big/guide_universal.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_BIG_GUIDE_USA:String = "../maps/icons/crewBooks/books/big/guide_usa.png";
       
@@ -7839,6 +8119,8 @@ package
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S232X174_BROCHURE_UK:String = "../maps/icons/crewBooks/books/s232x174/brochure_uk.png";
       
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_S232X174_BROCHURE_UNIVERSAL:String = "../maps/icons/crewBooks/books/s232x174/brochure_universal.png";
+      
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S232X174_BROCHURE_USA:String = "../maps/icons/crewBooks/books/s232x174/brochure_usa.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S232X174_BROCHURE_USSR:String = "../maps/icons/crewBooks/books/s232x174/brochure_ussr.png";
@@ -7860,6 +8142,8 @@ package
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S232X174_GUIDE_SWEDEN:String = "../maps/icons/crewBooks/books/s232x174/guide_sweden.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S232X174_GUIDE_UK:String = "../maps/icons/crewBooks/books/s232x174/guide_uk.png";
+      
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_S232X174_GUIDE_UNIVERSAL:String = "../maps/icons/crewBooks/books/s232x174/guide_universal.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S232X174_GUIDE_USA:String = "../maps/icons/crewBooks/books/s232x174/guide_usa.png";
       
@@ -7887,6 +8171,8 @@ package
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S296X222_BROCHURE_UK:String = "../maps/icons/crewBooks/books/s296x222/brochure_uk.png";
       
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_S296X222_BROCHURE_UNIVERSAL:String = "../maps/icons/crewBooks/books/s296x222/brochure_universal.png";
+      
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S296X222_BROCHURE_USA:String = "../maps/icons/crewBooks/books/s296x222/brochure_usa.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S296X222_BROCHURE_USSR:String = "../maps/icons/crewBooks/books/s296x222/brochure_ussr.png";
@@ -7908,6 +8194,8 @@ package
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S296X222_GUIDE_SWEDEN:String = "../maps/icons/crewBooks/books/s296x222/guide_sweden.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S296X222_GUIDE_UK:String = "../maps/icons/crewBooks/books/s296x222/guide_uk.png";
+      
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_S296X222_GUIDE_UNIVERSAL:String = "../maps/icons/crewBooks/books/s296x222/guide_universal.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S296X222_GUIDE_USA:String = "../maps/icons/crewBooks/books/s296x222/guide_usa.png";
       
@@ -8005,6 +8293,8 @@ package
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S400X300_BROCHURE_UK:String = "../maps/icons/crewBooks/books/s400x300/brochure_uk.png";
       
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_S400X300_BROCHURE_UNIVERSAL:String = "../maps/icons/crewBooks/books/s400x300/brochure_universal.png";
+      
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S400X300_BROCHURE_USA:String = "../maps/icons/crewBooks/books/s400x300/brochure_usa.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S400X300_BROCHURE_USSR:String = "../maps/icons/crewBooks/books/s400x300/brochure_ussr.png";
@@ -8026,6 +8316,8 @@ package
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S400X300_GUIDE_SWEDEN:String = "../maps/icons/crewBooks/books/s400x300/guide_sweden.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S400X300_GUIDE_UK:String = "../maps/icons/crewBooks/books/s400x300/guide_uk.png";
+      
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_S400X300_GUIDE_UNIVERSAL:String = "../maps/icons/crewBooks/books/s400x300/guide_universal.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S400X300_GUIDE_USA:String = "../maps/icons/crewBooks/books/s400x300/guide_usa.png";
       
@@ -8054,6 +8346,8 @@ package
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S600X450_BROCHURE_SWEDEN:String = "../maps/icons/crewBooks/books/s600x450/brochure_sweden.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S600X450_BROCHURE_UK:String = "../maps/icons/crewBooks/books/s600x450/brochure_uk.png";
+      
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_S600X450_BROCHURE_UNIVERSAL:String = "../maps/icons/crewBooks/books/s600x450/brochure_universal.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S600X450_BROCHURE_USA:String = "../maps/icons/crewBooks/books/s600x450/brochure_usa.png";
       
@@ -8099,6 +8393,8 @@ package
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S600X450_GUIDE_UK:String = "../maps/icons/crewBooks/books/s600x450/guide_uk.png";
       
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_S600X450_GUIDE_UNIVERSAL:String = "../maps/icons/crewBooks/books/s600x450/guide_universal.png";
+      
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S600X450_GUIDE_USA:String = "../maps/icons/crewBooks/books/s600x450/guide_usa.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_S600X450_GUIDE_USSR:String = "../maps/icons/crewBooks/books/s600x450/guide_ussr.png";
@@ -8126,6 +8422,8 @@ package
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_SMALL_BROCHURE_SWEDEN:String = "../maps/icons/crewBooks/books/small/brochure_sweden.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_SMALL_BROCHURE_UK:String = "../maps/icons/crewBooks/books/small/brochure_uk.png";
+      
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_SMALL_BROCHURE_UNIVERSAL:String = "../maps/icons/crewBooks/books/small/brochure_universal.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_SMALL_BROCHURE_USA:String = "../maps/icons/crewBooks/books/small/brochure_usa.png";
       
@@ -8170,6 +8468,8 @@ package
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_SMALL_GUIDE_SWEDEN:String = "../maps/icons/crewBooks/books/small/guide_sweden.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_SMALL_GUIDE_UK:String = "../maps/icons/crewBooks/books/small/guide_uk.png";
+      
+      public static const MAPS_ICONS_CREWBOOKS_BOOKS_SMALL_GUIDE_UNIVERSAL:String = "../maps/icons/crewBooks/books/small/guide_universal.png";
       
       public static const MAPS_ICONS_CREWBOOKS_BOOKS_SMALL_GUIDE_USA:String = "../maps/icons/crewBooks/books/small/guide_usa.png";
       
@@ -19479,6 +19779,14 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_LOOTBOX_NEWYEAR_USUAL:String = "../maps/icons/quests/bonuses/big/lootBox_newYear_usual.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_BIG_LOOTBOX_TANKS_BIRTHDAY_2023_IX:String = "../maps/icons/quests/bonuses/big/lootbox_tanks_birthday_2023_IX.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BIG_LOOTBOX_TANKS_BIRTHDAY_2023_PREMIUM:String = "../maps/icons/quests/bonuses/big/lootBox_tanks_birthday_2023_premium.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BIG_LOOTBOX_TANKS_BIRTHDAY_2023_VI:String = "../maps/icons/quests/bonuses/big/lootbox_tanks_birthday_2023_VI.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BIG_LOOTBOX_TANKS_BIRTHDAY_2023_X:String = "../maps/icons/quests/bonuses/big/lootbox_tanks_birthday_2023_X.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_MILITARYEXERCISES:String = "../maps/icons/quests/bonuses/big/militaryExercises.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_MODERNIZEDAIMDRIVESAIMINGSTABILIZER:String = "../maps/icons/quests/bonuses/big/modernizedAimDrivesAimingStabilizer.png";
@@ -19943,6 +20251,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_STYLE_3D:String = "../maps/icons/quests/bonuses/s232x174/style_3d.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_STYLE_3D_31013:String = "../maps/icons/quests/bonuses/s232x174/style_3d_31013.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_STYLE_PROGRESS_648_1:String = "../maps/icons/quests/bonuses/s232x174/style_progress_648_1.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_STYLE_PROGRESS_648_2:String = "../maps/icons/quests/bonuses/s232x174/style_progress_648_2.png";
@@ -20071,6 +20381,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_IMPROVEDVENTILATION:String = "../maps/icons/quests/bonuses/s296x222/improvedVentilation.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_INSCRIPTION:String = "../maps/icons/quests/bonuses/s296x222/inscription.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_LARGEMEDKIT:String = "../maps/icons/quests/bonuses/s296x222/largeMedkit.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_LARGEREPAIRKIT:String = "../maps/icons/quests/bonuses/s296x222/largeRepairkit.png";
@@ -20113,7 +20425,11 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_PROGRESSIONSTYLE:String = "../maps/icons/quests/bonuses/s296x222/progressionStyle.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_PROJECTIONDECAL:String = "../maps/icons/quests/bonuses/s296x222/projectionDecal.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_QUALITYOIL:String = "../maps/icons/quests/bonuses/s296x222/qualityOil.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_R207_HT_130:String = "../maps/icons/quests/bonuses/s296x222/R207_HT_130.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_RADIOMAN_LASTEFFORT:String = "../maps/icons/quests/bonuses/s296x222/radioman_lastEffort.png";
       
@@ -20146,6 +20462,10 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_SMALLREPAIRKIT:String = "../maps/icons/quests/bonuses/s296x222/smallRepairkit.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_STEREOSCOPE:String = "../maps/icons/quests/bonuses/s296x222/stereoscope.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_STYLE:String = "../maps/icons/quests/bonuses/s296x222/style.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_STYLE_3D_31013:String = "../maps/icons/quests/bonuses/s296x222/style_3d_31013.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_STYLE_PROGRESS_648_1:String = "../maps/icons/quests/bonuses/s296x222/style_progress_648_1.png";
       
@@ -20469,6 +20789,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_QUALITYOIL:String = "../maps/icons/quests/bonuses/s400x300/qualityOil.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_R207_HT_130:String = "../maps/icons/quests/bonuses/s400x300/R207_HT_130.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_RADIOMAN_LASTEFFORT:String = "../maps/icons/quests/bonuses/s400x300/radioman_lastEffort.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_RAMMER:String = "../maps/icons/quests/bonuses/s400x300/rammer.png";
@@ -20504,6 +20826,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_STYLE:String = "../maps/icons/quests/bonuses/s400x300/style.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_STYLE_3D:String = "../maps/icons/quests/bonuses/s400x300/style_3d.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_STYLE_3D_31013:String = "../maps/icons/quests/bonuses/s400x300/style_3d_31013.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_STYLE_PROGRESS_648_1:String = "../maps/icons/quests/bonuses/s400x300/style_progress_648_1.png";
       
@@ -20587,7 +20911,11 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_CAMOUFLAGENE:String = "../maps/icons/quests/bonuses/s600x450/camouflageNe.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_CHOCOLATE:String = "../maps/icons/quests/bonuses/s600x450/chocolate.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_COATEDOPTICS:String = "../maps/icons/quests/bonuses/s600x450/coatedOptics.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_COCACOLA:String = "../maps/icons/quests/bonuses/s600x450/cocacola.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_COMMANDERSVIEW:String = "../maps/icons/quests/bonuses/s600x450/commandersView.png";
       
@@ -20622,6 +20950,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_GUNNER_SMOOTHTURRET:String = "../maps/icons/quests/bonuses/s600x450/gunner_smoothTurret.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_HANDEXTINGUISHERS:String = "../maps/icons/quests/bonuses/s600x450/handExtinguishers.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_HOTCOFFEE:String = "../maps/icons/quests/bonuses/s600x450/hotCoffee.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_IMPROVEDCONFIGURATION:String = "../maps/icons/quests/bonuses/s600x450/improvedConfiguration.png";
       
@@ -20681,7 +21011,27 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_PROJECTIONDECAL:String = "../maps/icons/quests/bonuses/s600x450/projectionDecal.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_R207_HT_130:String = "../maps/icons/quests/bonuses/s600x450/R207_HT_130.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RAMMER:String = "../maps/icons/quests/bonuses/s600x450/rammer.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RATION:String = "../maps/icons/quests/bonuses/s600x450/ration.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RATION_CHINA:String = "../maps/icons/quests/bonuses/s600x450/ration_china.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RATION_CZECH:String = "../maps/icons/quests/bonuses/s600x450/ration_czech.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RATION_ITALY:String = "../maps/icons/quests/bonuses/s600x450/ration_italy.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RATION_JAPAN:String = "../maps/icons/quests/bonuses/s600x450/ration_japan.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RATION_POLAND:String = "../maps/icons/quests/bonuses/s600x450/ration_poland.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RATION_SWEDEN:String = "../maps/icons/quests/bonuses/s600x450/ration_sweden.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RATION_UK:String = "../maps/icons/quests/bonuses/s600x450/ration_uk.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_S32_BOFORS_TORNVAGN:String = "../maps/icons/quests/bonuses/s600x450/S32_Bofors_Tornvagn.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_SLOTS:String = "../maps/icons/quests/bonuses/s600x450/slots.png";
       
@@ -20694,6 +21044,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_STYLE:String = "../maps/icons/quests/bonuses/s600x450/style.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_STYLE_3D:String = "../maps/icons/quests/bonuses/s600x450/style_3d.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_STYLE_3D_31013:String = "../maps/icons/quests/bonuses/s600x450/style_3d_31013.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_STYLE_PROGRESS_648_1:String = "../maps/icons/quests/bonuses/s600x450/style_progress_648_1.png";
       
@@ -21036,6 +21388,14 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_LOOTBOX_NEWYEAR_PREMIUM:String = "../maps/icons/quests/bonuses/small/lootBox_newYear_premium.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_LOOTBOX_NEWYEAR_USUAL:String = "../maps/icons/quests/bonuses/small/lootBox_newYear_usual.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_LOOTBOX_TANKS_BIRTHDAY_2023_IX:String = "../maps/icons/quests/bonuses/small/lootbox_tanks_birthday_2023_IX.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_LOOTBOX_TANKS_BIRTHDAY_2023_PREMIUM:String = "../maps/icons/quests/bonuses/small/lootBox_tanks_birthday_2023_premium.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_LOOTBOX_TANKS_BIRTHDAY_2023_VI:String = "../maps/icons/quests/bonuses/small/lootbox_tanks_birthday_2023_VI.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_LOOTBOX_TANKS_BIRTHDAY_2023_X:String = "../maps/icons/quests/bonuses/small/lootbox_tanks_birthday_2023_X.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_MODERNIZEDAIMDRIVESAIMINGSTABILIZER:String = "../maps/icons/quests/bonuses/small/modernizedAimDrivesAimingStabilizer.png";
       
@@ -26114,6 +26474,34 @@ package
       public static const MAPS_ICONS_TANKMEN_ICONS_BARRACKS_CREWSKINS_VOJTECH:String = "../maps/icons/tankmen/icons/barracks/crewSkins/vojtech.png";
       
       public static const MAPS_ICONS_TANKMEN_ICONS_BARRACKS_CREWSKINS_ZELENY:String = "../maps/icons/tankmen/icons/barracks/crewSkins/zeleny.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S232X174_TANKMAN:String = "../maps/icons/tankmen/icons/s232x174/tankman.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S232X174_TANKMEN_BP10_3:String = "../maps/icons/tankmen/icons/s232x174/tankmen_bp10_3.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S232X174_TANKWOMAN:String = "../maps/icons/tankmen/icons/s232x174/tankwoman.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S296X222_TANKMAN:String = "../maps/icons/tankmen/icons/s296x222/tankman.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S296X222_TANKMEN_BP10_3:String = "../maps/icons/tankmen/icons/s296x222/tankmen_bp10_3.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S296X222_TANKWOMAN:String = "../maps/icons/tankmen/icons/s296x222/tankwoman.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S400X300_TANKMAN:String = "../maps/icons/tankmen/icons/s400x300/tankman.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S400X300_TANKMEN_BP10_3:String = "../maps/icons/tankmen/icons/s400x300/tankmen_bp10_3.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S400X300_TANKWOMAN:String = "../maps/icons/tankmen/icons/s400x300/tankwoman.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S600X450_TANKMAN:String = "../maps/icons/tankmen/icons/s600x450/tankman.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S600X450_TANKMEN_BP10_3:String = "../maps/icons/tankmen/icons/s600x450/tankmen_bp10_3.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S80X80_TANKMAN:String = "../maps/icons/tankmen/icons/s80x80/tankman.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S80X80_TANKMEN:String = "../maps/icons/tankmen/icons/s80x80/tankmen.png";
+      
+      public static const MAPS_ICONS_TANKMEN_ICONS_S80X80_TANKWOMAN:String = "../maps/icons/tankmen/icons/s80x80/tankwoman.png";
       
       public static const MAPS_ICONS_TANKMEN_ICONS_SPECIAL_CROSSIVENT_EKIPAZH:String = "../maps/icons/tankmen/icons/special/crossivent_ekipazh.png";
       

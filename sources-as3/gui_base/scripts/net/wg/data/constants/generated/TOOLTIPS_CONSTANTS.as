@@ -755,6 +755,8 @@ package net.wg.data.constants.generated
       
       public static const RANDOM_CREWBOOK:String = "RandomCrewbookTooltipData";
       
+      public static const RANDOM_CREWBOOK_MAPBOX:String = "RandomCrewbookMapboxTooltipData";
+      
       public static const ACCOUNT_COMPLETION:String = "AccountCompletion";
       
       public static const DEMO_ACCOUNT_RENAME_PROCESSING:String = "DemoAccountRenameProcessing";
@@ -781,7 +783,7 @@ package net.wg.data.constants.generated
       
       public static const OPTDEV_SLOT_STATE_ACTIVE_SELECTED:String = "activeSelected";
       
-      public static const EVENT_LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT:String = "eventLootBoxesVehicleBlueprintFragment";
+      public static const LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT:String = "lootBoxesVehicleBlueprintFragment";
       
       public static const ARMORY_YARD_AWARD_VEHICLE:String = "armoryYardAwardVehicle";
       
@@ -833,7 +835,7 @@ package net.wg.data.constants.generated
       
       public static const CREW_SKIN_SET:Array = [CREW_SKIN,CREW_SKIN_RESTRICTED,CREW_SKIN_NO_AVAILABLE_SKINS,CREW_SKIN_SOUND];
       
-      public static const CREW_BOOK_SET:Array = [CREW_BOOK,CREW_BOOK_RESTRICTED];
+      public static const CREW_BOOK_SET:Array = [CREW_BOOK,CREW_BOOK_RESTRICTED,RANDOM_CREWBOOK];
       
       public static const CREW_BUNDLE_SET:Array = [SHOP_CREW_BUNDLE];
       
@@ -859,7 +861,7 @@ package net.wg.data.constants.generated
       
       public static const ROYALE_LOBBY_SET:Array = [BATTLE_ROYALE_VEHICLE,BATTLE_ROYALE_MODULES_HANGAR,BATTLE_ROYALE_BATTLE_PROGRESSION,BATTLE_ROYALE_EQUIPMENT,BATTLE_ROYALE_PERF_SIMPLE,BATTLE_ROYALE_PERF_ADVANCED,BATTLE_ROYALE_SELECTOR_INFO,BATTLE_ROYALE_WIDGET_INFO,BATTLE_ROYALE_COMPLETED_QUESTS_INFO,BATTLE_ROYALE_SELECTOR_CALENDAR_INFO,BATTLE_ROYALE_PROXY_CURRENCY];
       
-      public static const MAPBOX_LOBBY_SET:Array = [MAPBOX_SELECTOR_INFO,MAPBOX_PROGRESSION_PREVIEW,SELECTABLE_CREWBOOK,RANDOM_CREWBOOK,MAPBOX_CALENDAR];
+      public static const MAPBOX_LOBBY_SET:Array = [MAPBOX_SELECTOR_INFO,MAPBOX_PROGRESSION_PREVIEW,SELECTABLE_CREWBOOK,RANDOM_CREWBOOK_MAPBOX,MAPBOX_CALENDAR];
       
       public static const ACCOUNT_COMPLETION_SET:Array = [ACCOUNT_COMPLETION,DEMO_ACCOUNT_RENAME_PROCESSING];
       
@@ -873,7 +875,7 @@ package net.wg.data.constants.generated
       
       public static const COMP7_BATTLE_SET:Array = [COMP7_ROLE_SKILL_BATTLE_TOOLTIP,VEHICLE_ROLES];
       
-      public static const EVLB_LOBBY_SET:Array = [EVENT_LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT];
+      public static const LB_LOBBY_SET:Array = [LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT];
       
       public static const ARMORY_YARD_LOBBY_SET:Array = [ARMORY_YARD_AWARD_VEHICLE];
        

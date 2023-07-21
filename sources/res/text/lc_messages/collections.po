@@ -16,6 +16,9 @@ msgstr "К коллекции"
 msgid "footer/collectionCompleted"
 msgstr "Коллекция собрана!"
 
+msgid "footer/okButtonText"
+msgstr "Так точно!"
+
 msgid "footer/progressbar/activeState/receivedElements/text"
 msgstr "Собрано элементов: %(received)s / %(total)s"
 
@@ -30,13 +33,22 @@ msgid "footer/progressbar/tooltip/note"
 msgstr ""
 "В коллекции могут быть элементы, получаемые в награду за сбор этой же "
 "коллекции. Они не учитываются в счётчике элементов и не ускоряют прогресс "
-"сбора, но раскрывают детали истории."
+"сбора, но раскрывают детали текущего события."
 
 msgid "footer/progressbar/tooltip/title"
 msgstr "Сбор элементов коллекции"
 
 msgid "header/overhead"
 msgstr "КОЛЛЕКЦИЯ"
+
+msgid "header/rewardScreen/completed/battle_pass_10"
+msgstr "КОЛЛЕКЦИЯ БОЕВОЙ ПРОПУСК X СЕЗОН"
+
+msgid "header/rewardScreen/completed/battle_pass_11"
+msgstr "КОЛЛЕКЦИЯ БОЕВОЙ ПРОПУСК XI СЕЗОН"
+
+msgid "header/rewardScreen/completed/mt_birthday2023"
+msgstr "КОЛЛЕКЦИЯ ДЕНЬ РОЖДЕНИЯ 12+1"
 
 msgid "header/seasonText/battle_pass_10"
 msgstr "X СЕЗОН"
@@ -47,8 +59,17 @@ msgstr "XI СЕЗОН"
 msgid "header/seasonText/defaultConfig"
 msgstr "НАЗВАНИЕ СЕЗОНА"
 
+msgid "header/seasonText/mt_birthday2023"
+msgstr "2023"
+
 msgid "header/subtitle"
 msgstr "КОЛЛЕКЦИЯ СОБРАНА!"
+
+msgid "header/subtitle/active"
+msgstr "НАГРАДА ЗА СБОР КОЛЛЕКЦИИ"
+
+msgid "header/subtitle/completed"
+msgstr "КОЛЛЕКЦИЯ СОБРАНА"
 
 msgid "header/title/battle_pass_10"
 msgstr "БОЕВОЙ ПРОПУСК"
@@ -58,6 +79,9 @@ msgstr "БОЕВОЙ ПРОПУСК"
 
 msgid "header/title/defaultConfig"
 msgstr "ШАБЛОННАЯ КОЛЛЕКЦИЯ"
+
+msgid "header/title/mt_birthday2023"
+msgstr "ДЕНЬ РОЖДЕНИЯ"
 
 msgid "navigation/pageCounter"
 msgstr " / %(pageCount)s"
@@ -76,11 +100,11 @@ msgstr "Коллекции снова доступны. Приносим изв�
 
 msgid "notifications/eventStart/text"
 msgstr ""
-"Бойцы, мы подготовили для вас что-то новое! Собирайте элементы коллекции "
-"«%(feature)s», чтобы получить уникальные награды."
+"Бойцы, новая коллекция готова к сбору! Собирайте элементы коллекции "
+"«%(feature)s», чтобы получить уникальную награду."
 
 msgid "notifications/eventStart/title"
-msgstr "Коллекция «%(feature)s» доступна!"
+msgstr "Коллекция «%(feature)s» стала доступна"
 
 msgid "notifications/feature/battle_pass_10"
 msgstr "БОЕВОЙ ПРОПУСК"
@@ -88,8 +112,11 @@ msgstr "БОЕВОЙ ПРОПУСК"
 msgid "notifications/feature/battle_pass_11"
 msgstr "БОЕВОЙ ПРОПУСК"
 
+msgid "notifications/feature/mt_birthday2023"
+msgstr "День рождения 12+1"
+
 msgid "notifications/finalReceived/text"
-msgstr "Вы собрали коллекцию «%(feature)s: %(season)s»"
+msgstr "Вы собрали коллекцию «%(feature)s»"
 
 msgid "notifications/newItemsReceived/text"
 msgstr ""
@@ -109,8 +136,11 @@ msgstr "X СЕЗОН"
 msgid "notifications/season/battle_pass_11"
 msgstr "XI СЕЗОН"
 
+msgid "notifications/templates/featureSeason"
+msgstr "%(feature)s %(season)s"
+
 msgid "notifications/title/collectionName"
-msgstr "Коллекция «%(feature)s: %(season)s»"
+msgstr "Коллекция «%(feature)s»"
 
 msgid "notifications/title/congratulation"
 msgstr "Поздравляем!"

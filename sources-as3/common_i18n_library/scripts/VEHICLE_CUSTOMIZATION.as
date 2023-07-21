@@ -15383,6 +15383,30 @@ package
       
       public static const INSCRIPTION_STALINGRAD_2023_MT_DESCRIPTION:String = "#vehicle_customization:inscription/stalingrad_2023_MT/description";
       
+      public static const PROJECTION_DECALS_LESTA_COLLECTIONS_DECALS_01_MT:String = "#vehicle_customization:projection_decals/Lesta_Collections_Decals_01_MT";
+      
+      public static const PROJECTION_DECALS_LESTA_COLLECTIONS_DECALS_01_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/Lesta_Collections_Decals_01_MT/description";
+      
+      public static const PROJECTION_DECALS_LESTA_COLLECTIONS_DECALS_02_MT:String = "#vehicle_customization:projection_decals/Lesta_Collections_Decals_02_MT";
+      
+      public static const PROJECTION_DECALS_LESTA_COLLECTIONS_DECALS_02_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/Lesta_Collections_Decals_02_MT/description";
+      
+      public static const PROJECTION_DECALS_LESTA_COLLECTIONS_DECALS_03_MT:String = "#vehicle_customization:projection_decals/Lesta_Collections_Decals_03_MT";
+      
+      public static const PROJECTION_DECALS_LESTA_COLLECTIONS_DECALS_03_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/Lesta_Collections_Decals_03_MT/description";
+      
+      public static const INSCRIPTION_LESTA_COLLECTIONS_DESCRIPTION_01_MT:String = "#vehicle_customization:inscription/Lesta_Collections_Description_01_MT";
+      
+      public static const INSCRIPTION_LESTA_COLLECTIONS_DESCRIPTION_01_MT_DESCRIPTION:String = "#vehicle_customization:inscription/Lesta_Collections_Description_01_MT/description";
+      
+      public static const INSCRIPTION_LESTA_COLLECTIONS_DESCRIPTION_02_MT:String = "#vehicle_customization:inscription/Lesta_Collections_Description_02_MT";
+      
+      public static const INSCRIPTION_LESTA_COLLECTIONS_DESCRIPTION_02_MT_DESCRIPTION:String = "#vehicle_customization:inscription/Lesta_Collections_Description_02_MT/description";
+      
+      public static const INSCRIPTION_LESTA_COLLECTIONS_DESCRIPTION_03_MT:String = "#vehicle_customization:inscription/Lesta_Collections_Description_03_MT";
+      
+      public static const INSCRIPTION_LESTA_COLLECTIONS_DESCRIPTION_03_MT_DESCRIPTION:String = "#vehicle_customization:inscription/Lesta_Collections_Description_03_MT/description";
+      
       public static const STYLES_23_FEBRUARY_2023_STYLE:String = "#vehicle_customization:styles/23_February_2023_style";
       
       public static const STYLES_23_FEBRUARY_2023_STYLE_DESCRIPTION:String = "#vehicle_customization:styles/23_February_2023_style/description";

@@ -107,6 +107,8 @@ package
       
       public static const BONUSES_ITEM_CREWSKIN:String = "#quests:bonuses/item/crewSkin";
       
+      public static const BONUSES_ITEM_LOOTBOXES:String = "#quests:bonuses/item/lootBoxes";
+      
       public static const BONUSNAME_BLUEPRINTS_ANY:String = "#quests:bonusName/blueprints/any";
       
       public static const BONUSES_CREWBOOK_TEXT:String = "#quests:bonuses/crewBook/text";

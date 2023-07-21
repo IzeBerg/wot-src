@@ -347,6 +347,13 @@ def showDashboardView():
     g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.account_dashboard.AccountDashboard(), AccountDashboardView, ScopeTemplates.LOBBY_SUB_SCOPE)), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
+@dependency.replace_none_kwargs(notificationMgr=INotificationWindowController)
+def showBirthday2023Intro(notificationMgr=None):
+    from gui.impl.lobby.birthday2023.birthday_intro_view import BirthdayIntro2023Window
+    window = BirthdayIntro2023Window()
+    notificationMgr.append(WindowNotificationCommand(window))
+
+
 @wg_async
 def showBattleBoosterBuyDialog(battleBoosterIntCD):
     from gui.impl.dialogs import dialogs
@@ -463,6 +470,7 @@ def showShop(url='', path='', params=None, isClientCloseControl=False):
         if browserWindow is not None:
             browser = browserWindow.getBrowser()
             browser.navigate(url)
+            print 'browser______', browser
             return
     ctx = {'url': url}
     if isClientCloseControl:
@@ -2029,10 +2037,10 @@ def showCollectionItemPreviewWindow(itemId, collectionId, page, backCallback, ba
 
 
 @dependency.replace_none_kwargs(guiLoader=IGuiLoader, notificationMgr=INotificationWindowController)
-def showCollectionAwardsWindow(collectionId, bonuses, guiLoader=None, notificationMgr=None):
+def showCollectionAwardsWindow(collectionId, bonuses, isFinal, guiLoader=None, notificationMgr=None):
     from gui.impl.lobby.collection.awards_view import AwardsWindow
     if guiLoader.windowsManager.getViewByLayoutID(R.views.lobby.collection.AwardsView()) is None:
-        window = AwardsWindow(collectionId, bonuses)
+        window = AwardsWindow(collectionId, bonuses, isFinal)
         notificationMgr.append(WindowNotificationCommand(window))
     return
 

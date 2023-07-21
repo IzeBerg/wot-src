@@ -27,4 +27,5 @@ class CrewBookRestrictedTooltipBuilder(DataBuilder):
 def getTooltipBuilders():
     return (
      CrewBookTooltipBuilder(TOOLTIPS_CONSTANTS.CREW_BOOK, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI),
-     CrewBookRestrictedTooltipBuilder(TOOLTIPS_CONSTANTS.CREW_BOOK_RESTRICTED, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI))
+     CrewBookRestrictedTooltipBuilder(TOOLTIPS_CONSTANTS.CREW_BOOK_RESTRICTED, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI),
+     DataBuilder(TOOLTIPS_CONSTANTS.RANDOM_CREWBOOK, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI, crew_book.RandomCrewBookTooltipDataBlock(contexts.ToolTipContext(None))))

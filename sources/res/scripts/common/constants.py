@@ -1301,6 +1301,7 @@ OFFER_TOKEN_PREFIX = 'offer:'
 ENDLESS_TOKEN_TIME_STRING = '28.01.2100 00:01'
 ENDLESS_TOKEN_TIME = int(calendar.timegm(time.strptime(ENDLESS_TOKEN_TIME_STRING, '%d.%m.%Y %H:%M')))
 LOOTBOX_TOKEN_PREFIX = 'lootBox:'
+LOOTBOX_LIMIT_ITEM_PREFIX = 'lb_limit_item:'
 TWITCH_TOKEN_PREFIX = 'token:twitch'
 CUSTOMIZATION_PROGRESS_PREFIX = 'cust_progress_'
 EMAIL_CONFIRMATION_QUEST_ID = 'email_confirmation'
@@ -3265,3 +3266,12 @@ class ShootImpulseApplicationPoint(object):
 
 RP_POINT = 'rp_point'
 RP_PGB_POINT = 'rp_pgb_point'
+
+class LootBoxTiers(enum.IntEnum):
+    SIMPLE = 1
+    BRONZE = 2
+    SILVER = 3
+    GOLD = 4
+
+
+ALL_LOOTBOX_TIERS = tuple(t for t in LootBoxTiers)
