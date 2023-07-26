@@ -24,13 +24,10 @@ package net.wg.gui.battle.battleRoyale
    import net.wg.gui.battle.battleRoyale.views.components.CorrodingShotIndicator;
    import net.wg.gui.battle.battleRoyale.views.components.DamageScreen;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.BattleRoyaleFullStats;
-   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.RespawnMessagePanel;
-   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.BattleRoyaleTimersPanel;
    import net.wg.gui.battle.battleRoyale.views.playerStats.BattleRoyalePlayerStats;
    import net.wg.gui.battle.battleRoyale.views.playersPanel.BattleRoyalePlayersPanel;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.components.StatusNotificationsPanel;
-   import net.wg.gui.battle.eventBattle.views.battleHints.EventBattleHint;
    import net.wg.gui.battle.random.views.teamBasesPanel.TeamBasesPanel;
    import net.wg.gui.battle.views.battleEndWarning.BattleEndWarningPanel;
    import net.wg.gui.battle.views.battleLevelPanel.BattleLevelPanel;
@@ -115,10 +112,6 @@ package net.wg.gui.battle.battleRoyale
       private static const PLAYER_STATS_Y:int = 175;
       
       private static const MESSANGER_SWAP_AREA_MIN_HEIGHT:int = 220;
-      
-      private static const TIMERS_PANEL_Y_OFFSET:Vector.<int> = new <int>[50,50,51,51,52,52,52];
-      
-      private static const PLAYER_MESSAGES_LIST_OFFSET_Y:int = -46;
        
       
       public var fragPanel:BattleRoyaleScoreBar = null;
@@ -143,8 +136,6 @@ package net.wg.gui.battle.battleRoyale
       
       public var consumablesPanel:ConsumablesPanel = null;
       
-      public var eventMessage:EventBattleHint = null;
-      
       public var statusNotificationsPanel:StatusNotificationsPanel = null;
       
       public var hintPanel:HintPanel = null;
@@ -168,10 +159,6 @@ package net.wg.gui.battle.battleRoyale
       public var playersPanel:BattleRoyalePlayersPanel = null;
       
       public var corrodingShotIndicator:CorrodingShotIndicator = null;
-      
-      public var respawnMessagePanel:RespawnMessagePanel = null;
-      
-      public var timersPanel:BattleRoyaleTimersPanel = null;
       
       private var _selectRespawn:UnboundContainer = null;
       
@@ -210,10 +197,8 @@ package net.wg.gui.battle.battleRoyale
          PrebattleTimerBase(prebattleTimer).background.y = -TIMER_OFFSET_Y;
          this.updateBattleMessengerPosition();
          this.fragPanel.x = _loc3_;
-         this.respawnMessagePanel.x = param1 - this.respawnMessagePanel.width >> 1;
          this.statusNotificationsPanel.updateStage(param1,param2);
          this.consumablesPanel.updateStage(param1,param2);
-         this.eventMessage.updateStage(param1,param2);
          this.battleDamageLogPanel.x = BATTLE_DAMAGE_LOG_X_POSITION;
          this.battleDamageLogPanel.y = damagePanel.y + BATTLE_DAMAGE_LOG_Y_PADDING;
          this.battleDamageLogPanel.updateSize(param1,param2);
@@ -223,7 +208,6 @@ package net.wg.gui.battle.battleRoyale
          this.fullStats.updateStage(param1,param2);
          this.playerStats.x = _loc3_;
          this.playerStats.y = param2 <= StageSizeBoundaries.HEIGHT_800 ? Number(PLAYER_STATS_MIN_HEIGHT_Y) : Number(PLAYER_STATS_Y);
-         this.timersPanel.x = param1 - this.timersPanel.width;
          this.updateHintPanelPosition();
          this.updateRadarBtnPosition();
          if(this._respawnVisible)
@@ -302,7 +286,6 @@ package net.wg.gui.battle.battleRoyale
          registerComponent(this.debugPanel,BATTLE_VIEW_ALIASES.DEBUG_PANEL);
          registerComponent(this.battleMessenger,BATTLE_VIEW_ALIASES.BATTLE_MESSENGER);
          registerComponent(this.consumablesPanel,BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL);
-         registerComponent(this.eventMessage,BATTLE_VIEW_ALIASES.BATTLE_HINT);
          registerComponent(this.statusNotificationsPanel,BATTLE_VIEW_ALIASES.STATUS_NOTIFICATIONS_PANEL);
          registerComponent(this.radialMenu,BATTLE_VIEW_ALIASES.RADIAL_MENU);
          registerComponent(this.endWarningPanel,BATTLE_VIEW_ALIASES.BATTLE_END_WARNING_PANEL);
@@ -316,9 +299,7 @@ package net.wg.gui.battle.battleRoyale
          registerComponent(this.fullStats,BATTLE_VIEW_ALIASES.FULL_STATS);
          registerComponent(this.playerStats,BATTLE_VIEW_ALIASES.BR_PLAYER_STATS_IN_BATTLE);
          registerComponent(this.playersPanel,BATTLE_VIEW_ALIASES.PLAYERS_PANEL);
-         registerComponent(this.respawnMessagePanel,BATTLE_VIEW_ALIASES.BR_RESPAWN_MESSAGE_PANEL);
          registerComponent(this.corrodingShotIndicator,BATTLE_VIEW_ALIASES.CORRODING_SHOT_INDICATOR);
-         registerComponent(this.timersPanel,BATTLE_VIEW_ALIASES.BR_TIMERS_PANEL);
          setChildIndex(postmortemTips,getChildIndex(this.consumablesPanel) - 1);
          this._minimap.mapShortcutLabel.visible = false;
       }
@@ -361,12 +342,10 @@ package net.wg.gui.battle.battleRoyale
          this.radialMenu = null;
          this.endWarningPanel = null;
          this.siegeModePanel = null;
-         this.respawnMessagePanel = null;
          this._selectRespawn = null;
          this.playerStats = null;
          this.playersPanel = null;
          this.corrodingShotIndicator = null;
-         this.timersPanel = null;
          this.hintPanel = null;
          this.fullStats = null;
          this._minimap = null;
@@ -431,7 +410,6 @@ package net.wg.gui.battle.battleRoyale
          else
          {
             super.updateMinimapPosition();
-            this.timersPanel.y = minimap.y - TIMERS_PANEL_Y_OFFSET[minimap.currentSizeIndex];
          }
       }
       
@@ -440,11 +418,6 @@ package net.wg.gui.battle.battleRoyale
          super.initializeMessageLists();
          addChild(this.upgradePanel);
          swapChildren(battleLoading,this.upgradePanel);
-      }
-      
-      override protected function playerMessageListPositionUpdate() : void
-      {
-         playerMessageList.setLocation(_originalWidth - PLAYER_MESSAGES_LIST_OFFSET.x | 0,_originalHeight - minimap.getMessageCoordinate() + PLAYER_MESSAGES_LIST_OFFSET_Y);
       }
       
       override protected function onComponentVisibilityChanged(param1:String, param2:Boolean) : void
@@ -488,10 +461,6 @@ package net.wg.gui.battle.battleRoyale
          this.updateVehicleErrorMessageListVisible(_loc1_);
       }
       
-      override protected function anchorVictimDogTag() : void
-      {
-      }
-      
       public function as_updateDamageScreen(param1:Boolean) : void
       {
          this.damageScreen.visible = param1;
@@ -509,8 +478,7 @@ package net.wg.gui.battle.battleRoyale
       
       private function updateBattleMessengerPosition() : void
       {
-         var _loc1_:int = 0;
-         _loc1_ = this.teamPanel.y + this.teamPanel.height;
+         var _loc1_:int = this.teamPanel.y + this.teamPanel.height;
          if(this._respawnVisible)
          {
             this.battleMessenger.x = damagePanel.x + MESSENGER_RESPAWN_X_OFFSET;
@@ -574,9 +542,13 @@ package net.wg.gui.battle.battleRoyale
          this.updateMinimapPosition();
          if(!this._minimap.isTabMode)
          {
-            this.playerMessageListPositionUpdate();
+            playerMessageListPositionUpdate();
             this.updateRadarBtnPosition();
          }
+      }
+      
+      override protected function anchorVictimDogTag() : void
+      {
       }
       
       private function onUbComponentsLoaderIoErrorHandler(param1:IOErrorEvent) : void

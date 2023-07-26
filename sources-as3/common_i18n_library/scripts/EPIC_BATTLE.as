@@ -131,6 +131,12 @@ package
       
       public static const RANK_ALLRESERVEUPGRADED:String = "#epic_battle:rank/allReserveUpgraded";
       
+      public static const RANK_SLOTUNLOCKED:String = "#epic_battle:rank/slotUnlocked";
+      
+      public static const RANK_SLOT_2:String = "#epic_battle:rank/slot_2";
+      
+      public static const RANK_SLOT_3:String = "#epic_battle:rank/slot_3";
+      
       public static const MISSION_PRIMARY_TITLE:String = "#epic_battle:mission/primary/title";
       
       public static const MISSIONS_PRIMARY_ATK_BASE:String = "#epic_battle:missions/primary/atk/base";
@@ -352,6 +358,8 @@ package
       public static const ABILITYINFO_PARAMS_FL_REGENERATIONKIT_MINESDAMAGEREDUCEFACTOR:String = "#epic_battle:abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor";
       
       public static const ABILITYINFO_PARAMS_FL_REGENERATIONKIT_MINESDAMAGEREDUCEFACTOR_VALUE:String = "#epic_battle:abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor/value";
+      
+      public static const ABILITYINFO_PARAMS_ARCADE_MINEFIELD_EPIC_BATTLE_ACTIVATIONDELAY:String = "#epic_battle:abilityInfo/params/arcade_minefield_epic_battle/activationDelay";
       
       public static const ABILITYINFO_PARAMS_ARCADE_MINEFIELD_EPIC_BATTLE_LIFETIME:String = "#epic_battle:abilityInfo/params/arcade_minefield_epic_battle/lifetime";
       
@@ -630,6 +638,10 @@ package
       public static const TOOLTIPS_SLOTSETUPINFO_UPGRADE_TITLE:String = "#epic_battle:tooltips/slotSetupInfo/upgrade/title";
       
       public static const TOOLTIPS_SLOTSETUPINFO_UPGRADE_DESC:String = "#epic_battle:tooltips/slotSetupInfo/upgrade/desc";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_RESERVE_PURCHASED:String = "#epic_battle:tooltips/slotSetupInfo/reserve/purchased";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_RESERVE_LOCKED:String = "#epic_battle:tooltips/slotSetupInfo/reserve/locked";
       
       public static const TOOLTIPS_CHOOSEREWARDS_DESC:String = "#epic_battle:tooltips/chooseRewards/desc";
       

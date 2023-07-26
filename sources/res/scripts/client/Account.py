@@ -91,6 +91,8 @@ class _ClientCommandProxy(object):
      (
       'doCmdInt2Str', lambda args: len(args) == 3 and _isStr(args[2]) and all([ _isInt(arg) for arg in args[:2] ])),
      (
+      'doCmdInt3Str', lambda args: len(args) == 4 and _isStr(args[3]) and all([ _isInt(arg) for arg in args[:3] ])),
+     (
       'doCmdIntArr', lambda args: len(args) == 1 and _isIntList(args[0])),
      (
       'doCmdIntStrArr', lambda args: len(args) == 2 and _isInt(args[0]) and _isStrList(args[1])),
@@ -1187,6 +1189,9 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def _doCmdInt3(self, cmd, int1, int2, int3, callback):
         return self.__doCmd('doCmdInt3', cmd, callback, int1, int2, int3)
+
+    def _doCmdInt3Str(self, cmd, int1, int2, int3, s, callback):
+        return self.__doCmd('doCmdInt3Str', cmd, callback, int1, int2, int3, s)
 
     def _doCmdInt4(self, cmd, int1, int2, int3, int4, callback):
         return self.__doCmd('doCmdInt4', cmd, callback, int1, int2, int3, int4)

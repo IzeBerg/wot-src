@@ -57,8 +57,6 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       public var actionPrice:ActionPrice = null;
       
-      public var imgXp:Image = null;
-      
       public var statsBg:MovieClip = null;
       
       public var statsTF:TextField = null;
@@ -136,8 +134,6 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.clanLock = null;
          this.actionPrice.dispose();
          this.actionPrice = null;
-         this.imgXp.dispose();
-         this.imgXp = null;
          this.statsBg = null;
          this.statsTF = null;
          this.lockedBG = null;
@@ -289,7 +285,6 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.mcFlag.gotoAndStop(param1.nation + 1);
          this.mcTankType.gotoAndStop(param1.tankType);
          this.mcLevel.gotoAndStop(param1.level);
-         this.imgXp.source = param1.xpImgSource;
          this.extraImage.source = param1.extraImage;
          this.txtTankName.htmlText = param1.label;
          this.txtTankName.filters = !!param1.premium ? [PREM_FILTER] : [DEF_FILTER];
@@ -311,7 +306,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          if(this._visibleVehicleInfo != param1)
          {
             this._visibleVehicleInfo = param1;
-            this.txtTankName.visible = this.imgXp.visible = this.mcTankType.visible = this.mcFlag.visible = this.mcLevel.visible = param1;
+            this.txtTankName.visible = this.mcTankType.visible = this.mcFlag.visible = this.mcLevel.visible = param1;
          }
       }
       

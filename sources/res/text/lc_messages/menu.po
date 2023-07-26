@@ -684,7 +684,7 @@ msgid "bonusType/27"
 msgstr "Линия фронта"
 
 msgid "bonusType/29"
-msgstr "«Стальной охотник: Возрождение»"
+msgstr "«Стальной охотник»"
 
 msgid "bonusType/37"
 msgstr "«Разведка боем»"
@@ -696,7 +696,7 @@ msgid "bonusType/4"
 msgstr "Специальный бой"
 
 msgid "bonusType/42"
-msgstr "«Аркада»"
+msgstr "«%(modeName)s»"
 
 msgid "bonusType/43"
 msgstr "Натиск"
@@ -3323,8 +3323,7 @@ msgstr "Машина недоступна"
 
 msgid "headerButtons/fightBtn/tooltip/unsutableToBattleRoyale/body"
 msgstr ""
-"В бой можно выйти только на специальной технике режима «Стальной охотник: "
-"Возрождение»."
+"В бой можно выйти только на специальной технике режима «Стальной охотник»."
 
 msgid "headerButtons/fightBtn/tooltip/unsutableToBattleRoyale/header"
 msgstr "Неподходящая машина"
@@ -3410,28 +3409,28 @@ msgstr "Beeline Казахстан"
 msgid "internet_provider/BeelineKZ/tariff"
 msgstr "Игровой"
 
-msgid "internet_provider/Beltelecom/name"
-msgstr "Белтелеком"
-
-msgid "internet_provider/Beltelecom/tariff"
-msgstr "Игровой"
-
 msgid "internet_provider/Kazakhtelecom/name"
 msgstr "Казахтелеком"
 
 msgid "internet_provider/Kazakhtelecom/tariff"
 msgstr "Игровой"
 
-msgid "internet_provider/Kyivstar/name"
-msgstr "Киевстар"
-
-msgid "internet_provider/Kyivstar/tariff"
-msgstr "Игровой"
-
-msgid "internet_provider/Rostelecom/name"
+msgid "internet_provider/LocalPartner2/name"
 msgstr "Ростелеком"
 
-msgid "internet_provider/Rostelecom/tariff"
+msgid "internet_provider/LocalPartner2/tariff"
+msgstr "Игровой"
+
+msgid "internet_provider/LocalPartner3/name"
+msgstr "Белтелеком"
+
+msgid "internet_provider/LocalPartner3/tariff"
+msgstr "Игровой"
+
+msgid "internet_provider/LocalPartner4/name"
+msgstr "Киевстар"
+
+msgid "internet_provider/LocalPartner4/tariff"
 msgstr "Игровой"
 
 msgid "inventory/device/errors/not_removable"
@@ -3771,7 +3770,7 @@ msgid "loading/battleTypes/22"
 msgstr "Линия фронта"
 
 msgid "loading/battleTypes/23"
-msgstr "Стальной охотник: Возрождение"
+msgstr "Стальной охотник"
 
 msgid "loading/battleTypes/24"
 msgstr "Разведка боем"
@@ -3786,7 +3785,7 @@ msgid "loading/battleTypes/28"
 msgstr "Основы стратегии"
 
 msgid "loading/battleTypes/29"
-msgstr "Аркада"
+msgstr " "
 
 msgid "loading/battleTypes/30"
 msgstr "Натиск"
@@ -4469,6 +4468,9 @@ msgstr "к основной специальности и навыкам эки�
 msgid "moduleInfo/params/damage"
 msgstr "Урон"
 
+msgid "moduleInfo/params/damagePerSecond"
+msgstr "Урон в секунду"
+
 msgid "moduleInfo/params/dispertionRadius"
 msgstr "Разброс на 100 м"
 
@@ -4498,6 +4500,9 @@ msgstr "Время полёта"
 
 msgid "moduleInfo/params/forwardMaxSpeed"
 msgstr "Максимальная скорость"
+
+msgid "moduleInfo/params/guaranteedDamage/footnote"
+msgstr " Снаряд наносит небольшую часть урона при непробитии."
 
 msgid "moduleInfo/params/hullAndChassisWeight"
 msgstr "Масса"
@@ -4529,17 +4534,11 @@ msgstr "Максимальная нагрузка"
 msgid "moduleInfo/params/maxShotDistance"
 msgstr "Дальность стрельбы"
 
-msgid "moduleInfo/params/maxShotDistance/footnote"
-msgstr "* максимальная дальность полета снарядов для данного орудия"
-
 msgid "moduleInfo/params/maxSteeringLockAngle"
 msgstr "Максимальный угол поворота колёс"
 
 msgid "moduleInfo/params/noPiercingDistance/footnote"
-msgstr "* для данного типа снарядов не зависит от расстояния"
-
-msgid "moduleInfo/params/noPiercingDistance/footnote/maxDistance"
-msgstr ", максимальная дальность полёта - 400 м"
+msgstr " Для данного типа снарядов не зависит от дистанции."
 
 msgid "moduleInfo/params/noPiercingDistance/footnoteFlame"
 msgstr "* для данного типа боеприпасов не зависит от расстояния"
@@ -4548,7 +4547,7 @@ msgid "moduleInfo/params/piercingDistance"
 msgstr "%(dist)s м"
 
 msgid "moduleInfo/params/piercingDistance/footnote"
-msgstr "* зависит от расстояния: %(minDist)s–%(maxDist)s м"
+msgstr " Для этих снарядов зависит от дистанции (%(minDist)s–%(maxDist)s м)."
 
 msgid "moduleInfo/params/piercingDistanceHeader"
 msgstr "Средняя бронепробиваемость (мм) — Расстояние"
@@ -5331,8 +5330,11 @@ msgstr "Ускоренное обучение и пересадка без ш�
 msgid "research/premium/discount"
 msgstr "Скидка на покупку:"
 
-msgid "research/restore/commmonInfo"
+msgid "research/restore/commonInfo"
 msgstr "Восстановление доступно"
+
+msgid "research/restore/commonInfoUnlim"
+msgstr "Время восстановления не ограничено"
 
 msgid "research/restore/dueDate"
 msgstr "до %(date)s"
@@ -6548,7 +6550,10 @@ msgid "tank_params/vehicleWeight"
 msgstr "Масса / предельная масса машины"
 
 msgid "tank_params/vpm"
-msgstr "(ед/мин)"
+msgstr "(ед./мин)"
+
+msgid "tank_params/vps"
+msgstr "(ед/с)"
 
 msgid "tank_params/wheeledSpeedModeSpeed"
 msgstr "Макс. скорость / задний ход (скоростной)"

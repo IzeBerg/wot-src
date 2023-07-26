@@ -1,8 +1,8 @@
-import collections, copy, inspect, logging, math, operator, typing
+import collections, copy, inspect, logging, math, operator
 from collections import namedtuple, defaultdict
-from math import ceil, floor
 from itertools import izip_longest
-import BigWorld
+from math import ceil, floor
+import BigWorld, typing
 from constants import SHELL_TYPES, PIERCING_POWER, BonusTypes, HAS_EXPLOSION
 from gui import GUI_SETTINGS
 from gui.shared.formatters import text_styles
@@ -1087,7 +1087,7 @@ class VehicleParams(_ParameterBase):
         return self._itemDescr.type.compactDescr == 32321
 
     def __getRealSpeedLimit(self):
-        enginePower = self.__getEnginePhysics()['smplEnginePower']
+        enginePower = self._itemDescr.miscAttrs['enginePowerFactor'] * self.__getEnginePhysics()['smplEnginePower']
         rollingFriction = self.__getChassisPhysics()['grounds']['medium']['rollingFriction']
         return enginePower / self.vehicleWeight.current * METERS_PER_SECOND_TO_KILOMETERS_PER_HOUR * self.__factors['engine/power'] / 12.25 / rollingFriction
 
@@ -1404,7 +1404,17 @@ class ShellParams(CompatibleParams):
 
     @property
     def damage(self):
-        return self._getRawParams()[DAMAGE_PROP_NAME]
+        if self._vehicleDescr and self._vehicleDescr.isAutoShootGunVehicle:
+            return None
+        else:
+            return self._getRawParams()[DAMAGE_PROP_NAME]
+
+    @property
+    def damagePerSecond(self):
+        if self._vehicleDescr and self._vehicleDescr.isAutoShootGunVehicle:
+            return self.avgDamage / self._vehicleDescr.gun.clip[1]
+        else:
+            return
 
     @property
     def avgDamage(self):

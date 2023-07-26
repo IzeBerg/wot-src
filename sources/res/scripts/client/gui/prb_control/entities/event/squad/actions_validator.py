@@ -1,3 +1,4 @@
+from constants import BATTLE_MODE_VEH_TAGS_EXCEPT_EVENT
 from gui.prb_control.entities.base.actions_validator import ActionsValidatorComposite
 from gui.prb_control.entities.base.squad.actions_validator import SquadActionsValidator, SquadVehiclesValidator
 from gui.prb_control.entities.base.unit.actions_validator import CommanderValidator
@@ -15,7 +16,7 @@ class _EventBattleVehiclesValidator(SquadVehiclesValidator):
         return super(_EventBattleVehiclesValidator, self)._validate()
 
     def _isValidMode(self, vehicle):
-        return vehicle.isEvent and not vehicle.isOnlyForEpicBattles
+        return vehicle.isEvent and not bool(vehicle.tags & BATTLE_MODE_VEH_TAGS_EXCEPT_EVENT)
 
 
 class EventSquadSlotsValidator(CommanderValidator):

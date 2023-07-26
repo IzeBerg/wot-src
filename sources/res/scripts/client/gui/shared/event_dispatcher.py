@@ -34,13 +34,14 @@ from gui.impl.gen.view_models.views.dialogs.template_settings.default_dialog_tem
 from gui.impl.gen.view_models.views.lobby.vehicle_preview.top_panel.top_panel_tabs_model import TabID
 from gui.impl.lobby.account_completion.utils.common import AccountCompletionType
 from gui.impl.lobby.account_completion.utils.decorators import waitShowOverlay
+from gui.impl.lobby.battle_royale import BATTLE_ROYALE_LOCK_SOURCE_NAME
 from gui.impl.lobby.common.congrats.common_congrats_view import CongratsWindow
 from gui.impl.lobby.maps_training.maps_training_queue_view import MapsTrainingQueueView
 from gui.impl.lobby.tank_setup.dialogs.confirm_dialog import TankSetupConfirmDialog, TankSetupExitConfirmDialog
 from gui.impl.lobby.tank_setup.dialogs.refill_shells import ExitFromShellsConfirm, RefillShells
 from gui.impl.lobby.crew.crew_header_view import BuildedMessage
 from gui.impl.pub.lobby_window import LobbyNotificationWindow, LobbyWindow
-from gui.impl.pub.notification_commands import WindowNotificationCommand
+from gui.impl.pub.notification_commands import WindowNotificationCommand, EventNotificationCommand, NotificationEvent
 from gui.prb_control.settings import CTRL_ENTITY_TYPE
 from gui.resource_well.resource import Resource
 from gui.resource_well.resource_well_helpers import isResourceWellRewardVehicle
@@ -50,6 +51,7 @@ from gui.shared.event_bus import EVENT_BUS_SCOPE
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items.Vehicle import getNationLessName, getUserName
 from gui.shared.gui_items.processors.goodies import BoosterActivator
+from gui.shared.lock_overlays import lockNotificationManager
 from gui.shared.money import Currency, MONEY_UNDEFINED, Money
 from gui.shared.utils import isPopupsWindowsOpenDisabled
 from gui.shared.utils.functions import getUniqueViewName, getViewName
@@ -160,6 +162,11 @@ def showBattleRoyalePrimeTimeWindow():
 
 @dependency.replace_none_kwargs(notificationsMgr=INotificationWindowController)
 def showBattleRoyaleResultsView(ctx, notificationsMgr=None):
+    notificationsMgr.append(EventNotificationCommand(NotificationEvent(method=showBattleRoyaleResultsInfo, ctx=ctx)))
+
+
+def showBattleRoyaleResultsInfo(ctx):
+    lockNotificationManager(True, source=BATTLE_ROYALE_LOCK_SOURCE_NAME)
     from gui.impl.lobby.battle_royale.battle_result_view import BrBattleResultsViewInLobby
     uiLoader = dependency.instance(IGuiLoader)
     contentResId = R.views.lobby.battle_royale.BattleResultView()
@@ -170,7 +177,7 @@ def showBattleRoyaleResultsView(ctx, notificationsMgr=None):
         battleResultView.destroyWindow()
     view = BrBattleResultsViewInLobby(ctx=ctx)
     window = LobbyNotificationWindow(WindowFlags.WINDOW_FULLSCREEN, content=view, layer=view.layer)
-    notificationsMgr.append(WindowNotificationCommand(window))
+    window.load()
     return
 
 
@@ -340,6 +347,13 @@ def showDashboardView():
     g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.account_dashboard.AccountDashboard(), AccountDashboardView, ScopeTemplates.LOBBY_SUB_SCOPE)), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
+@dependency.replace_none_kwargs(notificationMgr=INotificationWindowController)
+def showBirthday2023Intro(notificationMgr=None):
+    from gui.impl.lobby.birthday2023.birthday_intro_view import BirthdayIntro2023Window
+    window = BirthdayIntro2023Window()
+    notificationMgr.append(WindowNotificationCommand(window))
+
+
 @wg_async
 def showBattleBoosterBuyDialog(battleBoosterIntCD):
     from gui.impl.dialogs import dialogs
@@ -456,6 +470,7 @@ def showShop(url='', path='', params=None, isClientCloseControl=False):
         if browserWindow is not None:
             browser = browserWindow.getBrowser()
             browser.navigate(url)
+            print 'browser______', browser
             return
     ctx = {'url': url}
     if isClientCloseControl:
@@ -782,8 +797,8 @@ def showExchangeCurrencyWindow():
 
 
 @pointcutable
-def showExchangeXPWindow():
-    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.EXCHANGE_XP_WINDOW)), EVENT_BUS_SCOPE.LOBBY)
+def showExchangeXPWindow(needXP=None):
+    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.EXCHANGE_XP_WINDOW), ctx={'needXP': needXP}), EVENT_BUS_SCOPE.LOBBY)
 
 
 def showBubbleTooltip(msg):
@@ -1169,8 +1184,11 @@ def _killOldView(layoutID):
 
 def showOfferGiftsWindow(offerID, overrideSuccessCallback=None):
     from gui.impl.lobby.offers.offer_gifts_window import OfferGiftsWindow
+    from gui.impl.lobby.offers.offer_banner_window import OfferBannerWindow
     layoutID = R.views.lobby.offers.OfferGiftsWindow()
     _killOldView(layoutID)
+    if OfferBannerWindow.isLoaded(offerID):
+        OfferBannerWindow.destroyBannerWindow(offerID)
     g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(layoutID, OfferGiftsWindow, ScopeTemplates.LOBBY_SUB_SCOPE), offerID=offerID, overrideSuccessCallback=overrideSuccessCallback), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
@@ -2019,10 +2037,10 @@ def showCollectionItemPreviewWindow(itemId, collectionId, page, backCallback, ba
 
 
 @dependency.replace_none_kwargs(guiLoader=IGuiLoader, notificationMgr=INotificationWindowController)
-def showCollectionAwardsWindow(collectionId, bonuses, guiLoader=None, notificationMgr=None):
+def showCollectionAwardsWindow(collectionId, bonuses, isFinal, guiLoader=None, notificationMgr=None):
     from gui.impl.lobby.collection.awards_view import AwardsWindow
     if guiLoader.windowsManager.getViewByLayoutID(R.views.lobby.collection.AwardsView()) is None:
-        window = AwardsWindow(collectionId, bonuses)
+        window = AwardsWindow(collectionId, bonuses, isFinal)
         notificationMgr.append(WindowNotificationCommand(window))
     return
 
@@ -2043,3 +2061,15 @@ def showAchievementEditView(*args, **kwargs):
     from gui.impl.lobby.achievements.edit_view import EditWindow
     window = EditWindow(parent=getParentWindow(), *args, **kwargs)
     window.load()
+
+
+def showDebutBoxesInfoPage(url, returnCallback=None, parent=None):
+    from gui.impl.lobby.debut_boxes.debut_boxes_browser_view import DebutBoxesBrowserView
+    from gui.impl.lobby.common.browser_view import makeSettings
+    from web.web_client_api.promo import PromoWebApi
+    from web.web_client_api.request import RequestWebApi
+    from web.web_client_api import webApiCollection, ui as ui_web_api, sound as sound_web_api
+    webHandlers = webApiCollection(PromoWebApi, RequestWebApi, ui_web_api.OpenWindowWebApi, ui_web_api.CloseWindowWebApi, ui_web_api.OpenTabWebApi, ui_web_api.NotificationWebApi, ui_web_api.ContextMenuWebApi, ui_web_api.UtilWebApi, sound_web_api.SoundWebApi, sound_web_api.HangarSoundWebApi)
+    layoutID = R.views.lobby.common.BrowserView()
+    g_eventBus.handleEvent(events.LoadGuiImplViewEvent(loadParams=GuiImplViewLoadParams(layoutID, DebutBoxesBrowserView, ScopeTemplates.DEFAULT_SCOPE, parent if parent is not None else getParentWindow()), settings=makeSettings(url=url, isClosable=True, webHandlers=webHandlers, viewFlags=ViewFlags.LOBBY_TOP_SUB_VIEW, returnClb=returnCallback, restoreBackground=False)))
+    return

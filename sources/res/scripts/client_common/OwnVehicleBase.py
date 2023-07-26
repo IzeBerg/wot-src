@@ -1,6 +1,5 @@
 from collections import namedtuple
 from functools import partial
-from math_utils import almostZero
 import BigWorld
 from constants import VEHICLE_SETTING, DAMAGE_INFO_CODES, DAMAGE_INFO_INDICES
 from items import vehicles, ITEM_TYPES
@@ -43,12 +42,12 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
             return
         else:
             for vehicleAmmo in ammoList:
-                timeRemainig = vehicleAmmo.endTime
-                if timeRemainig > 0:
-                    timeRemainig = max(vehicleAmmo.endTime - self._serverTime(), 0)
-                    if not almostZero(vehicleAmmo.totalTime) and timeRemainig > vehicleAmmo.totalTime:
-                        timeRemainig = vehicleAmmo.totalTime
-                avatar.updateVehicleAmmo(self.entity.id, vehicleAmmo.compactDescr, vehicleAmmo.quantity, vehicleAmmo.quantityInClip, None if self.__isAttachingToVehicle else vehicleAmmo.previousStage, timeRemainig, vehicleAmmo.totalTime)
+                timeRemaining = vehicleAmmo.endTime
+                if timeRemaining > 0:
+                    timeRemaining = max(vehicleAmmo.endTime - self._serverTime(), 0)
+                    if timeRemaining > vehicleAmmo.totalTime:
+                        timeRemaining = vehicleAmmo.totalTime
+                avatar.updateVehicleAmmo(self.entity.id, vehicleAmmo.compactDescr, vehicleAmmo.quantity, vehicleAmmo.quantityInClip, None if self.__isAttachingToVehicle else vehicleAmmo.previousStage, timeRemaining, vehicleAmmo.totalTime)
 
             return
 
@@ -215,7 +214,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         avatar = self._avatar()
         if not avatar:
             return
-        avatar.updateTargetingInfo(self.entity.id, data.turretYaw, data.gunPitch, data.maxTurretRotationSpeed, data.maxGunRotationSpeed, data.shotDispMultiplierFactor, data.gunShotDispersionFactorsTurretRotation, data.chassisShotDispersionFactorsMovement, data.chassisShotDispersionFactorsRotation, data.aimingTime)
+        avatar.updateTargetingInfo(self.entity.id, data.turretYaw, data.gunPitch, data.maxTurretRotationSpeed, data.maxGunRotationSpeed, data.shotDispMultiplierFactor, data.gunShotDispersionFactorsTurretRotation, data.chassisShotDispersionFactorsMovement, data.chassisShotDispersionFactorsRotation, data.gunShotDispersionFactorsAfterShot, data.aimingTime)
 
     @noexcept
     def update_vehicleHealthInfo(self, data):
@@ -448,6 +447,3 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
 
     def _avatar(self):
         raise NotImplementedError('_avatar must be overrided in ownVehicle')
-
-    def _entities(self):
-        raise NotImplementedError('_entities must be overrided in ownVehicle')

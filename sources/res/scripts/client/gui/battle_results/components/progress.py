@@ -7,7 +7,7 @@ from dog_tags_common.components_config import componentConfigAdapter as cca
 from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import currentHangarIsBattleRoyale
 from gui.Scaleform.daapi.view.lobby.customization.progression_helpers import getC11nProgressionLinkBtnParams, getProgressionPostBattleInfo, parseEventID, getC11n2dProgressionLinkBtnParams
 from gui.Scaleform.daapi.view.lobby.server_events.awards_formatters import BattlePassTextBonusesPacker
-from gui.Scaleform.daapi.view.lobby.server_events.events_helpers import getEventPostBattleInfo, get2dProgressionStylePostBattleInfo
+from gui.Scaleform.daapi.view.lobby.server_events.events_helpers import getEventPostBattleInfo, get2dProgressionStylePostBattleInfo, DebutBoxesQuestPostBattleInfo
 from gui.Scaleform.daapi.view.lobby.techtree.techtree_dp import g_techTreeDP
 from gui.Scaleform.genConsts.MISSIONS_STATES import MISSIONS_STATES
 from gui.Scaleform.genConsts.PROGRESSIVEREWARD_CONSTANTS import PROGRESSIVEREWARD_CONSTANTS as prConst
@@ -34,7 +34,7 @@ from gui.shared.money import Currency
 from helpers import dependency
 from helpers.i18n import makeString as _ms
 from items.components.crew_skins_constants import NO_CREW_SKIN_ID
-from skeletons.gui.game_control import IBattlePassController
+from skeletons.gui.game_control import IBattlePassController, IDebutBoxesController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
@@ -284,7 +284,7 @@ class BattlePassProgressBlock(base.StatsBlock):
         bpp = reusable.battlePassProgress
         if not bpp.hasProgress:
             return
-        isNewPoints = bpp.pointsNew > 0 or bpp.questPoints > 0 or bpp.bonusCapPoints > 0
+        isNewPoints = bpp.pointsNew > 0 or bpp.questPoints > 0 or bpp.bonusCapPoints > 0 or bpp.bpTopPoints > 0
         isNewLevel = bpp.currLevel > bpp.prevLevel
         if isNewPoints or isNewLevel:
             self.addComponent(self.getNextComponentIndex(), base.DirectStatsItem(*self.__formatBattlePassProgressPoints(bpp, bpp.currLevel)))
@@ -454,6 +454,7 @@ class Comp7BattlePassProgressBlock(BattlePassProgressBlock):
 
 class QuestsProgressBlock(base.StatsBlock):
     eventsCache = dependency.descriptor(IEventsCache)
+    __debutBoxesController = dependency.descriptor(IDebutBoxesController)
     __slots__ = ()
 
     def getVO(self):
@@ -464,10 +465,13 @@ class QuestsProgressBlock(base.StatsBlock):
         commonQuests = []
         c11nQuests = []
         personalMissions = {}
+        debutBoxesQuests = []
         allCommonQuests = self.eventsCache.getQuests()
         allCommonQuests.update(self.eventsCache.getHiddenQuests(lambda q: q.isShowedPostBattle()))
         battleMattersProgressData = []
         questsProgress = reusable.personal.getQuestsProgress()
+        debutBoxesQuestsIDs = self.__debutBoxesController.getQuestsIDs()
+        vehicleCDs = list(vehCD for vehCD, _ in reusable.personal.getVehicleCDsIterator(result))
         if questsProgress:
             for qID, qProgress in questsProgress.iteritems():
                 pGroupBy, pPrev, pCur = qProgress
@@ -481,6 +485,10 @@ class QuestsProgressBlock(base.StatsBlock):
                     data = self.__packQuestProgressData(qID, allCommonQuests, qProgress, isCompleted)
                     if data:
                         battleMattersProgressData.append(data)
+                elif qID in debutBoxesQuestsIDs:
+                    data = self.__packQuestProgressData(qID, allCommonQuests, qProgress, isCompleted)
+                    if data:
+                        debutBoxesQuests.append(data)
                 elif qID in allCommonQuests:
                     data = self.__packQuestProgressData(qID, allCommonQuests, qProgress, isCompleted)
                     if data:
@@ -494,6 +502,11 @@ class QuestsProgressBlock(base.StatsBlock):
 
         for e, pCur, pPrev, reset, complete in battleMattersProgressData:
             info = getEventPostBattleInfo(e, allCommonQuests, pCur, pPrev, reset, complete)
+            if info is not None:
+                self.addComponent(self.getNextComponentIndex(), base.DirectStatsItem('', info))
+
+        for e, pCur, pPrev, reset, complete in debutBoxesQuests:
+            info = DebutBoxesQuestPostBattleInfo(e).getPostBattleInfo(allCommonQuests, pCur, pPrev, reset, complete, {'vehicleCDs': vehicleCDs})
             if info is not None:
                 self.addComponent(self.getNextComponentIndex(), base.DirectStatsItem('', info))
 

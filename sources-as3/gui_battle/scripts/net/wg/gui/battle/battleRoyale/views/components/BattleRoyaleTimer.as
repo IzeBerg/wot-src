@@ -1,7 +1,6 @@
 package net.wg.gui.battle.battleRoyale.views.components
 {
    import flash.display.MovieClip;
-   import flash.filters.DropShadowFilter;
    import flash.text.TextField;
    import net.wg.data.constants.generated.BATTLE_NOTIFICATIONS_TIMER_COLORS;
    import net.wg.gui.battle.components.interfaces.IStatusNotification;
@@ -25,8 +24,6 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       private static const DESC_TEXT_COLOR:Object = {};
       
-      private static const DESC_TEXT_FILTERS:Object = {};
-      
       private static const START_FRAME:int = 0;
       
       private static const END_FRAME:int = 100;
@@ -43,9 +40,6 @@ package net.wg.gui.battle.battleRoyale.views.components
          DESC_TEXT_COLOR[BATTLE_NOTIFICATIONS_TIMER_COLORS.ORANGE] = 16757350;
          DESC_TEXT_COLOR[BATTLE_NOTIFICATIONS_TIMER_COLORS.GREEN] = 15137433;
          DESC_TEXT_COLOR[BATTLE_NOTIFICATIONS_TIMER_COLORS.RED] = 15626240;
-         DESC_TEXT_FILTERS[BATTLE_NOTIFICATIONS_TIMER_COLORS.ORANGE] = [new DropShadowFilter(0,0,0,0.5,12,12),new DropShadowFilter(0,0,0,1,4,4)];
-         DESC_TEXT_FILTERS[BATTLE_NOTIFICATIONS_TIMER_COLORS.GREEN] = [];
-         DESC_TEXT_FILTERS[BATTLE_NOTIFICATIONS_TIMER_COLORS.RED] = [new DropShadowFilter(0,0,0,0.5,12,12),new DropShadowFilter(0,0,0,1,4,4)];
       }
       
       public var bg:MovieClip = null;
@@ -113,10 +107,6 @@ package net.wg.gui.battle.battleRoyale.views.components
          if(DESC_TEXT_COLOR[param1.color])
          {
             this.desc.textColor = DESC_TEXT_COLOR[param1.color];
-         }
-         if(DESC_TEXT_FILTERS[param1.color])
-         {
-            this.desc.textFilters = DESC_TEXT_FILTERS[param1.color];
          }
          this.bg.gotoAndStop(param1.color);
          this.timerContainer.countdownVisible = param1.countdownVisible;

@@ -1959,6 +1959,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BUY_GOLD:String = "#messenger:serviceChannelMessages/battlePassReward/buy/gold";
       
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BUY_FREEXP:String = "#messenger:serviceChannelMessages/battlePassReward/buy/freeXP";
+      
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BUTTON:String = "#messenger:serviceChannelMessages/battlePassReward/button";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_TMAN:String = "#messenger:serviceChannelMessages/battlePassReward/tman";

@@ -111,6 +111,9 @@ class QueueProvider(object):
             return backport.text(titleRes())
         return ''
 
+    def getIconPath(self, iconlabel):
+        return backport.image(R.images.gui.maps.icons.battleTypes.c_136x136.dyn(iconlabel)())
+
     def getTankInfoLabel(self):
         return makeString(MENU.PREBATTLE_TANKLABEL)
 
@@ -369,6 +372,7 @@ class BattleQueue(BattleQueueMeta, LobbySubView):
             iconPath = self.__provider.getTankIcon(vehicle)
             layoutStr = self.__provider.getLayoutStr()
             typeInfo = {'iconLabel': iconlabel, 
+               'iconPath': self.__provider.getIconPath(iconlabel), 
                'title': title, 
                'description': description, 
                'additional': additional, 

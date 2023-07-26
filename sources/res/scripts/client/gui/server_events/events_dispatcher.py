@@ -18,7 +18,7 @@ from gui.shared.events import PersonalMissionsEvent
 from helpers import dependency
 from shared_utils import first
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IMarathonEventsController, IArmoryYardController
+from skeletons.gui.game_control import IMarathonEventsController, IArmoryYardController, IDebutBoxesController
 from skeletons.gui.impl import INotificationWindowController, IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
@@ -67,6 +67,7 @@ _EVENTS_REWARD_WINDOW = {recruit_helper.RecruitSourceID.TWITCH_0: TwitchRewardWi
    recruit_helper.RecruitSourceID.TWITCH_40: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.TWITCH_41: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.TWITCH_42: TwitchRewardWindow, 
+   recruit_helper.RecruitSourceID.TWITCH_43: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.COMMANDER_MARINA: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.COMMANDER_PATRICK: TwitchRewardWindow, 
    anniversary_helper.ANNIVERSARY_EVENT_PREFIX: GiveAwayRewardWindow}
@@ -271,6 +272,12 @@ def showMission(eventID, eventType=None):
                 showDailyQuests(subTab=DailyTabs.QUESTS)
             elif events_helpers.isPremium(quest.getID()):
                 showDailyQuests(subTab=DailyTabs.PREMIUM_MISSIONS)
+            elif events_helpers.isDebutBoxesQuest(quest.getID()):
+                debutBoxesController = dependency.instance(IDebutBoxesController)
+                if debutBoxesController.isEnabled():
+                    showMissionsGrouped(missionID=quest.getID(), groupID=quest.getGroupID(), anchor=quest.getGroupID())
+                else:
+                    showMissionsGrouped(groupID=quest.getGroupID(), anchor=quest.getGroupID())
             else:
                 showMissionsCategories(missionID=quest.getID(), groupID=quest.getGroupID(), anchor=quest.getGroupID())
         return

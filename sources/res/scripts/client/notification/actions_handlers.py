@@ -35,11 +35,12 @@ from notification.settings import NOTIFICATION_BUTTON_STATE, NOTIFICATION_TYPE
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController, IArmoryYardController, IReferralProgramController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, IGuiLootBoxesController, IMapboxController, ICollectionsSystemController, IRankedBattlesController, ISeniorityAwardsController, IReferralProgramController, IWinbackController, IArmoryYardController
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.web import IWebController
 from soft_exception import SoftException
+from uilogging.collections.loggers import CollectionsLogger
 from uilogging.epic_battle.constants import EpicBattleLogActions, EpicBattleLogButtons, EpicBattleLogKeys
 from uilogging.epic_battle.loggers import EpicBattleLogger
 from uilogging.personal_reserves.loggers import PersonalReservesActivationScreenFlowLogger
@@ -1212,7 +1213,7 @@ class _OpenAchievementsScreen(NavigationDisabledActionHandler):
 
 
 class _OpenEventLootBoxesShopHandler(NavigationDisabledActionHandler):
-    __eventLootBoxes = dependency.descriptor(IEventLootBoxesController)
+    __guiLootBoxes = dependency.descriptor(IGuiLootBoxesController)
 
     @classmethod
     def getNotType(cls):
@@ -1223,8 +1224,7 @@ class _OpenEventLootBoxesShopHandler(NavigationDisabledActionHandler):
         return ('openEventLootBoxesShop', )
 
     def doAction(self, model, entityID, action):
-        if self.__eventLootBoxes.isActive():
-            self.__eventLootBoxes.openShop()
+        self.__guiLootBoxes.openShop()
 
 
 class _OpenReferralProgramMainViewHandler(NavigationDisabledActionHandler):
@@ -1271,7 +1271,9 @@ class _OpenCollectionRewardHandler(NavigationDisabledActionHandler):
 
     def doAction(self, model, entityID, action):
         savedData = model.getNotification(self.getNotType(), entityID).getSavedData()
-        showCollectionAwardsWindow(savedData['collectionId'], savedData['bonuses'])
+        collectionID = savedData['collectionId']
+        CollectionsLogger().handleRewardNotificationAction(collectionID)
+        showCollectionAwardsWindow(collectionID, savedData['bonuses'], savedData['isFinal'])
 
 
 class _OpenArmoryYardMain(NavigationDisabledActionHandler):
@@ -1363,14 +1365,14 @@ _AVAILABLE_HANDLERS = (
  _OpenSeniorityAwards,
  _OpenMissingEventsHandler,
  _OpenEventLootBoxesShopHandler,
+ _OpenReferralProgramMainViewHandler,
  _OpenCollectionHandler,
  _OpenCollectionRewardHandler,
  _OpenWinbackSelectableRewardView,
  _OpenWinbackSelectableRewardViewFromQuest,
  _OpenArmoryYardMain,
  _OpenArmoryYardQuest,
- _OpenAchievementsScreen,
- _OpenReferralProgramMainViewHandler)
+ _OpenAchievementsScreen)
 registerNotificationsActionsHandlers(_AVAILABLE_HANDLERS)
 
 class NotificationsActionsHandlers(object):

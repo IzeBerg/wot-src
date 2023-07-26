@@ -807,6 +807,8 @@ class Configs(enum.Enum):
     AB_FEATURE_TEST = 'ab_feature_test'
     LIMITED_UI_CONFIG = 'limited_ui_config'
     REFERRAL_PROGRAM_CONFIG = 'referral_program_config'
+    RESTORE_CONFIG = 'restore_config'
+    DEBUT_BOXES_CONFIG = 'debut_boxes_config'
 
 
 INBATTLE_CONFIGS = (
@@ -1094,6 +1096,7 @@ class ATTACK_REASON(object):
     BRANDER_RAM = 'ram_brander'
     FORT_ARTILLERY_EQ = 'fort_artillery_eq'
     STATIC_DEATH_ZONE = 'static_deathzone'
+    AUTOSHOOT = 'autoshoot'
     NONE = 'none'
 
     @classmethod
@@ -1112,7 +1115,7 @@ ATTACK_REASONS = (
  ATTACK_REASON.CORRODING_SHOT, ATTACK_REASON.ADAPTATION_HEALTH_RESTORE,
  ATTACK_REASON.THUNDER_STRIKE, ATTACK_REASON.FIRE_CIRCLE, ATTACK_REASON.CLING_BRANDER,
  ATTACK_REASON.CLING_BRANDER_RAM, ATTACK_REASON.BRANDER_RAM,
- ATTACK_REASON.FORT_ARTILLERY_EQ, ATTACK_REASON.STATIC_DEATH_ZONE)
+ ATTACK_REASON.FORT_ARTILLERY_EQ, ATTACK_REASON.STATIC_DEATH_ZONE, ATTACK_REASON.AUTOSHOOT)
 ATTACK_REASON_INDICES = dict((value, index) for index, value in enumerate(ATTACK_REASONS))
 BOT_RAM_REASONS = (
  ATTACK_REASON.BRANDER_RAM, ATTACK_REASON.CLING_BRANDER_RAM)
@@ -1298,6 +1301,7 @@ OFFER_TOKEN_PREFIX = 'offer:'
 ENDLESS_TOKEN_TIME_STRING = '28.01.2100 00:01'
 ENDLESS_TOKEN_TIME = int(calendar.timegm(time.strptime(ENDLESS_TOKEN_TIME_STRING, '%d.%m.%Y %H:%M')))
 LOOTBOX_TOKEN_PREFIX = 'lootBox:'
+LOOTBOX_LIMIT_ITEM_PREFIX = 'lb_limit_item:'
 TWITCH_TOKEN_PREFIX = 'token:twitch'
 CUSTOMIZATION_PROGRESS_PREFIX = 'cust_progress_'
 EMAIL_CONFIRMATION_QUEST_ID = 'email_confirmation'
@@ -2368,6 +2372,7 @@ AVAILABLE_STUN_TYPES_NAMES = [ key for key, value in StunTypes.__members__.iteri
 class SHELL_MECHANICS_TYPE:
     LEGACY = 'LEGACY'
     MODERN = 'MODERN'
+    GUARANTEED_DAMAGE = 'GUARANTEED_DAMAGE'
 
 
 class BATTLE_LOG_SHELL_TYPES(enum.IntEnum):
@@ -3062,7 +3067,11 @@ BATTLE_MODE_VEHICLE_TAGS = {
  'clanWarsBattles',
  'fun_random',
  'comp7'}
+BATTLE_MODE_VEH_TAGS_EXCEPT_EVENT = BATTLE_MODE_VEHICLE_TAGS - {'event_battles'}
+BATTLE_MODE_VEH_TAGS_EXCEPT_EPIC = BATTLE_MODE_VEHICLE_TAGS - {'epic_battles'}
+BATTLE_MODE_VEH_TAGS_EXCEPT_CLAN = BATTLE_MODE_VEHICLE_TAGS - {'clanWarsBattles'}
 BATTLE_MODE_VEH_TAGS_EXCEPT_FUN = BATTLE_MODE_VEHICLE_TAGS - {'fun_random'}
+BATTLE_MODE_VEH_TAGS_EXCEPT_COMP7 = BATTLE_MODE_VEHICLE_TAGS - {'comp7'}
 
 @enum.unique
 class EventPhase(enum.Enum):
@@ -3257,3 +3266,12 @@ class ShootImpulseApplicationPoint(object):
 
 RP_POINT = 'rp_point'
 RP_PGB_POINT = 'rp_pgb_point'
+
+class LootBoxTiers(enum.IntEnum):
+    SIMPLE = 1
+    BRONZE = 2
+    SILVER = 3
+    GOLD = 4
+
+
+ALL_LOOTBOX_TIERS = tuple(t for t in LootBoxTiers)

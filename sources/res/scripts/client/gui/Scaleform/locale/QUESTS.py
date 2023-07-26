@@ -51,6 +51,7 @@ class QUESTS(object):
     BONUSES_ITEM_PREMIUM = '#quests:bonuses/item/premium'
     BONUSES_ITEM_PREMIUMPLUS = '#quests:bonuses/item/premiumPlus'
     BONUSES_ITEM_CREWSKIN = '#quests:bonuses/item/crewSkin'
+    BONUSES_ITEM_LOOTBOXES = '#quests:bonuses/item/lootBoxes'
     BONUSNAME_BLUEPRINTS_ANY = '#quests:bonusName/blueprints/any'
     BONUSES_CREWBOOK_TEXT = '#quests:bonuses/crewBook/text'
     BONUSES_CREWSKIN_TEXT = '#quests:bonuses/crewSkin/text'
@@ -1141,6 +1142,7 @@ class QUESTS(object):
     MISSIONDETAILS_BOTTOMSTATUSNEXTTRY = '#quests:missionDetails/bottomStatusNextTry'
     MISSIONDETAILS_NEXTPAGEBTN_LABEL = '#quests:missionDetails/nextPageBtn/label'
     MISSIONDETAILS_PREVPAGEBTN_LABEL = '#quests:missionDetails/prevPageBtn/label'
+    MISSIONS_TOKENPOPOVER_HEADER = '#quests:missions/tokenPopover/header'
     MISSIONS_TOKENPOPOVER_DESCR = '#quests:missions/tokenPopover/descr'
     MISSIONS_TOKENPOPOVER_DESCR_SHOP = '#quests:missions/tokenPopover/descr/shop'
     MISSIONS_TOKENPOPOVER_BUYBTN_LABEL = '#quests:missions/tokenPopover/buyBtn/label'
@@ -1701,6 +1703,11 @@ class QUESTS(object):
     DAILYQUESTS_CONDITION_DESTROYVEH_PLURAL_ACCUM = '#quests:dailyQuests/condition/destroyVeh_plural_accum'
     DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP = '#quests:details/conditions/cumulative/damagedHp'
     DETAILS_CONDITIONS_CUMULATIVE_COMP7PRESTIGEPOINTS = '#quests:details/conditions/cumulative/comp7PrestigePoints'
+    DEBUTBOXES_MISSIONS_HEADER_CAPTION1 = '#quests:debutBoxes/missions/header/caption1'
+    DEBUTBOXES_MISSIONS_HEADER_CAPTION2 = '#quests:debutBoxes/missions/header/caption2'
+    DEBUTBOXES_MISSIONS_HEADER_CAPTION3 = '#quests:debutBoxes/missions/header/caption3'
+    DEBUTBOXES_MISSIONS_HEADER_DISABLED = '#quests:debutBoxes/missions/header/disabled'
+    DEBUTBOXES_MISSIONS_HEADER_INFO = '#quests:debutBoxes/missions/header/info'
     TOKEN_DEFAULT_ENUM = (
      TOKEN_DEFAULT_USSR,
      TOKEN_DEFAULT_GERMANY,

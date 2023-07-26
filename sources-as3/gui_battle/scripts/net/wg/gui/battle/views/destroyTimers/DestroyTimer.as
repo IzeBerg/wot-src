@@ -62,18 +62,12 @@ package net.wg.gui.battle.views.destroyTimers
       private static const BEAT_LAST_FRAME:String = "repeat";
       
       private static const DESC_TEXT_COLORS:Object = {
-         "red":15626240,
          "orange":16689972,
          "green":8442938,
          "yellow":16689972
       };
       
-      private static const DESC_TEXT_FILTERS:Object = {
-         "red":[new DropShadowFilter(0,0,0,0.5,12,12),new DropShadowFilter(0,0,0,1,4,4)],
-         "orange":[],
-         "green":[],
-         "yellow":[new DropShadowFilter(0,0,12783619,1,8,8)]
-      };
+      private static const DESC_TEXT_FILTERS:Object = {"yellow":[new DropShadowFilter(0,0,12783619,1,8,8)]};
        
       
       public var graphicsSpr:TimerContainer = null;

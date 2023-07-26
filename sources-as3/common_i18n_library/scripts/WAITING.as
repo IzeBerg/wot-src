@@ -11,6 +11,8 @@ package
       
       public static const LOADARMORYYARD:String = "#waiting:loadArmoryYard";
       
+      public static const LOADLOOTBOXESSTORAGE:String = "#waiting:loadLootboxesStorage";
+      
       public static const LOADMODALWINDOW:String = "#waiting:loadModalWindow";
       
       public static const LOADCONTENT:String = "#waiting:loadContent";
@@ -328,6 +330,8 @@ package
       public static const ACHIVEMENTS20:String = "#waiting:achivements20";
       
       public static const DOWNLOAD_ACHIEVEMENTS20:String = "#waiting:download/achievements20";
+      
+      public static const LOOTBOXOPENINIG:String = "#waiting:lootboxOpeninig";
        
       
       public function WAITING()

@@ -1215,6 +1215,8 @@ package
       
       public static const TANK_PARAMS_VPM:String = "#menu:tank_params/vpm";
       
+      public static const TANK_PARAMS_VPS:String = "#menu:tank_params/vps";
+      
       public static const TANK_PARAMS_QPT:String = "#menu:tank_params/qpt";
       
       public static const TANK_PARAMS_M:String = "#menu:tank_params/m";
@@ -2337,6 +2339,8 @@ package
       
       public static const MODULEINFO_PARAMS_AVGDAMAGEPERMINUTE:String = "#menu:moduleInfo/params/avgDamagePerMinute";
       
+      public static const MODULEINFO_PARAMS_DAMAGEPERSECOND:String = "#menu:moduleInfo/params/damagePerSecond";
+      
       public static const MODULEINFO_PARAMS_ARMOR:String = "#menu:moduleInfo/params/armor";
       
       public static const MODULEINFO_PARAMS_ROTATIONSPEED:String = "#menu:moduleInfo/params/rotationSpeed";
@@ -2363,15 +2367,13 @@ package
       
       public static const MODULEINFO_PARAMS_MAXSHOTDISTANCE:String = "#menu:moduleInfo/params/maxShotDistance";
       
-      public static const MODULEINFO_PARAMS_MAXSHOTDISTANCE_FOOTNOTE:String = "#menu:moduleInfo/params/maxShotDistance/footnote";
-      
       public static const MODULEINFO_PARAMS_NOPIERCINGDISTANCE_FOOTNOTEFLAME:String = "#menu:moduleInfo/params/noPiercingDistance/footnoteFlame";
       
       public static const MODULEINFO_PARAMS_NOPIERCINGDISTANCE_FOOTNOTE:String = "#menu:moduleInfo/params/noPiercingDistance/footnote";
       
       public static const MODULEINFO_PARAMS_PIERCINGDISTANCE_FOOTNOTE:String = "#menu:moduleInfo/params/piercingDistance/footnote";
       
-      public static const MODULEINFO_PARAMS_NOPIERCINGDISTANCE_FOOTNOTE_MAXDISTANCE:String = "#menu:moduleInfo/params/noPiercingDistance/footnote/maxDistance";
+      public static const MODULEINFO_PARAMS_GUARANTEEDDAMAGE_FOOTNOTE:String = "#menu:moduleInfo/params/guaranteedDamage/footnote";
       
       public static const MODULEINFO_PARAMS_STUNMAXDURATION:String = "#menu:moduleInfo/params/stunMaxDuration";
       
@@ -2589,9 +2591,11 @@ package
       
       public static const RESEARCH_STATUS_HISTORICALMODULES:String = "#menu:research/status/historicalModules";
       
-      public static const RESEARCH_RESTORE_COMMMONINFO:String = "#menu:research/restore/commmonInfo";
+      public static const RESEARCH_RESTORE_COMMONINFO:String = "#menu:research/restore/commonInfo";
       
       public static const RESEARCH_RESTORE_DUEDATE:String = "#menu:research/restore/dueDate";
+      
+      public static const RESEARCH_RESTORE_COMMONINFOUNLIM:String = "#menu:research/restore/commonInfoUnlim";
       
       public static const RESEARCH_LABELS_BUTTON_BUY:String = "#menu:research/labels/button/buy";
       
@@ -4341,17 +4345,17 @@ package
       
       public static const VIEWHEADER_BACKBTN_DESCRLABEL_TECHTREE_ITALY_BLUEPRINTS:String = "#menu:viewHeader/backBtn/descrLabel/techtree/italy/blueprints";
       
-      public static const INTERNET_PROVIDER_ROSTELECOM_NAME:String = "#menu:internet_provider/Rostelecom/name";
+      public static const INTERNET_PROVIDER_LOCALPARTNER2_NAME:String = "#menu:internet_provider/LocalPartner2/name";
       
-      public static const INTERNET_PROVIDER_ROSTELECOM_TARIFF:String = "#menu:internet_provider/Rostelecom/tariff";
+      public static const INTERNET_PROVIDER_LOCALPARTNER2_TARIFF:String = "#menu:internet_provider/LocalPartner2/tariff";
       
-      public static const INTERNET_PROVIDER_BELTELECOM_NAME:String = "#menu:internet_provider/Beltelecom/name";
+      public static const INTERNET_PROVIDER_LOCALPARTNER3_NAME:String = "#menu:internet_provider/LocalPartner3/name";
       
-      public static const INTERNET_PROVIDER_BELTELECOM_TARIFF:String = "#menu:internet_provider/Beltelecom/tariff";
+      public static const INTERNET_PROVIDER_LOCALPARTNER3_TARIFF:String = "#menu:internet_provider/LocalPartner3/tariff";
       
-      public static const INTERNET_PROVIDER_KYIVSTAR_NAME:String = "#menu:internet_provider/Kyivstar/name";
+      public static const INTERNET_PROVIDER_LOCALPARTNER4_NAME:String = "#menu:internet_provider/LocalPartner4/name";
       
-      public static const INTERNET_PROVIDER_KYIVSTAR_TARIFF:String = "#menu:internet_provider/Kyivstar/tariff";
+      public static const INTERNET_PROVIDER_LOCALPARTNER4_TARIFF:String = "#menu:internet_provider/LocalPartner4/tariff";
       
       public static const INTERNET_PROVIDER_KAZAKHTELECOM_NAME:String = "#menu:internet_provider/Kazakhtelecom/name";
       

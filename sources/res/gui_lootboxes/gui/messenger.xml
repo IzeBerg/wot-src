@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<htmlTemplatesSimple>
+		<collectionsCompensation>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/compensation) _(#gui_lootboxes.lb_messenger:serviceChannelMessages/lootbox/openedLootBox/compensation/collections) (&lt;b&gt;%(amount)s&lt;/b&gt; _(#messenger:serviceChannelMessages/invoiceReceived/pieces)) %(compensation)s&lt;/font&gt;</collectionsCompensation>
+	</htmlTemplatesSimple>
+	<htmlTemplates>
+		<LootBoxOpenedSysMessage>
+			<type>yellow</type>
+			<priority>medium</priority>
+			<icon>WarningIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#gui_lootboxes.lb_messenger:serviceChannelMessages/lootbox/openedLootBox/header)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#gui_lootboxes.lb_messenger:serviceChannelMessages/lootbox/openedLootBox/date): &lt;/font&gt;%(date)s
+&lt;font color=&apos;#8C8C7E&apos; face=&quot;$TitleFont&quot;&gt;_(#gui_lootboxes.lb_messenger:serviceChannelMessages/lootbox/openedLootBox/opened):&lt;/font&gt;
+%(openedBoxes)s
+%(receivedRewards)s
+%(compensation)s</message>
+		</LootBoxOpenedSysMessage>
+	</htmlTemplates>
+</root>

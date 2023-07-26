@@ -129,6 +129,7 @@ class EpicBattleCarouselDataProvider(HangarCarouselDataProvider):
         if state == Vehicle.VEHICLE_STATE.WILL_BE_UNLOCKED_IN_BATTLE:
             result['unlockedInBattle'] = True
         result['xpImgSource'] = ''
+        result['debutBoxesImgSource'] = ''
         return result
 
     def _getSupplyIndices(self):

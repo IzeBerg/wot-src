@@ -930,6 +930,9 @@ def _migrateTo101(core, data, initialized):
 def _migrateTo102(core, data, initialized):
     from account_helpers.settings_core.ServerSettingsManager import GUI_START_BEHAVIOR
     data[GUI_START_BEHAVIOR][GuiSettingsBehavior.CREW_22_WELCOME_SHOWN] = False
+    onceOnlyHintsData = data['onceOnlyHints3']
+    onceOnlyHintsData[OnceOnlyHints.REFERRAL_ENTRY_POINT_HINT] = False
+    onceOnlyHintsData[OnceOnlyHints.REFERRAL_RECRUIT_ENTRY_POINT_HINT] = False
 
 
 def _migrateTo103(core, data, initialized):
@@ -949,9 +952,34 @@ def _migrateTo103(core, data, initialized):
     newSettingsCounter = AccountSettings.getSettings(NEW_SETTINGS_COUNTER)
     newSettingsCounter['GameSettings'].update({GAME.LIMITED_UI_ACTIVE: True})
     AccountSettings.setSettings(NEW_SETTINGS_COUNTER, newSettingsCounter)
-    onceOnlyHintsData = data['onceOnlyHints3']
-    onceOnlyHintsData[OnceOnlyHints.REFERRAL_ENTRY_POINT_HINT] = False
-    onceOnlyHintsData[OnceOnlyHints.REFERRAL_RECRUIT_ENTRY_POINT_HINT] = False
+
+
+def _migrateTo104(_, data, __):
+    from account_helpers import AccountSettings
+    from account_helpers.AccountSettings import FUN_RANDOM_CAROUSEL_FILTER_1, FUN_RANDOM_CAROUSEL_FILTER_2
+    from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS as SECTIONS
+    data[SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_1] = AccountSettings.getFilterDefault(FUN_RANDOM_CAROUSEL_FILTER_1)
+    data[SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_2] = AccountSettings.getFilterDefault(FUN_RANDOM_CAROUSEL_FILTER_2)
+
+
+def _migrateTo105(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
+    clear = data['clear']
+    settingOffset = 67108864
+    storedValue = _getSettingsCache().getSectionSettings(SETTINGS_SECTIONS.CAROUSEL_FILTER_2, 0)
+    if storedValue & settingOffset:
+        clear[SETTINGS_SECTIONS.CAROUSEL_FILTER_2] = clear.get(SETTINGS_SECTIONS.CAROUSEL_FILTER_2, 0) | settingOffset
+    storedValue = _getSettingsCache().getSectionSettings(SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_2, 0)
+    if storedValue & settingOffset:
+        clear[SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_2] = clear.get(SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_2, 0) | settingOffset
+    storedValue = _getSettingsCache().getSectionSettings(SETTINGS_SECTIONS.COMP7_CAROUSEL_FILTER_2, 0)
+    if storedValue & settingOffset:
+        clear[SETTINGS_SECTIONS.COMP7_CAROUSEL_FILTER_2] = clear.get(SETTINGS_SECTIONS.COMP7_CAROUSEL_FILTER_2, 0) | settingOffset
+
+
+def _migrateTo106(_, data, __):
+    from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS, UI_STORAGE_KEYS
+    data[SETTINGS_SECTIONS.UI_STORAGE_2][UI_STORAGE_KEYS.GUI_LOOTBOXES_ENTRY_POINT] = False
 
 
 _versions = (
@@ -1158,7 +1186,13 @@ _versions = (
  (
   102, _migrateTo102, False, False),
  (
-  103, _migrateTo103, False, False))
+  103, _migrateTo103, False, False),
+ (
+  104, _migrateTo104, False, False),
+ (
+  105, _migrateTo105, False, False),
+ (
+  106, _migrateTo106, False, False))
 
 @adisp_async
 @adisp_process

@@ -678,7 +678,7 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<rankedFinalYearCompensation>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/rankedFinaleAwardsNotification/compensation)&lt;/font&gt;</rankedFinalYearCompensation>
 		<rankedFinalYearPoints>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/rankedFinaleAwardsNotification/text)&lt;/font&gt;</rankedFinalYearPoints>
 		<offerTokenText>&lt;font color=&apos;#D6D7D4&apos;&gt;%(text)s&lt;/font&gt;</offerTokenText>
-		<battlePassGold>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battlePassReward/buy/gold) &lt;font color=&apos;#FFC363&apos;&gt;%(gold)s&lt;/font&gt;&lt;/font&gt;</battlePassGold>
+		<battlePassCurrency>&lt;font color=&apos;#8C8C7E&apos;&gt;%(currency)s &lt;font color=&apos;#FFC363&apos;&gt;%(amount)s&lt;/font&gt;&lt;/font&gt;</battlePassCurrency>
 		<battlePassTMan>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</battlePassTMan>
 		<battlePassRewardSelectToken>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s: &lt;font color=&apos;#D6D7D4&apos;&gt;&lt;b&gt;%(count)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</battlePassRewardSelectToken>
 		<battlePassStyleProgressToken>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</battlePassStyleProgressToken>
@@ -3121,7 +3121,7 @@ _(#lootboxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</messag
 			<type>grey</type>
 			<priority>high</priority>
 			<icon>CollectionsIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 			<buttonsLayout>
 				<button>
 					<type>submit</type>

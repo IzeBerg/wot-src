@@ -282,18 +282,19 @@ class Views(DynAccessor):
                 BattlePassQuestsChainTooltipView = DynAccessor(184)
                 BattlePassUndefinedStyleView = DynAccessor(185)
                 BattlePassUpgradeStyleTooltipView = DynAccessor(186)
+                RandomQuestTooltip = DynAccessor(187)
 
                 class _sharedComponents(DynAccessor):
                     __slots__ = ()
-                    BlockCompleted = DynAccessor(187)
-                    Chose = DynAccessor(188)
-                    FinalLevel = DynAccessor(189)
-                    IconTextBlock = DynAccessor(190)
-                    PerBattlePointsTable = DynAccessor(191)
-                    Point = DynAccessor(192)
+                    BlockCompleted = DynAccessor(188)
+                    Chose = DynAccessor(189)
+                    FinalLevel = DynAccessor(190)
+                    IconTextBlock = DynAccessor(191)
+                    PerBattlePointsTable = DynAccessor(192)
+                    Point = DynAccessor(193)
 
                 sharedComponents = _sharedComponents()
-                VehiclePointsTooltipView = DynAccessor(193)
+                VehiclePointsTooltipView = DynAccessor(194)
 
             tooltips = _tooltips()
 
@@ -318,11 +319,11 @@ class Views(DynAccessor):
                 blueprint_screen = _blueprint_screen()
 
             blueprint_screen = _blueprint_screen()
-            Confirm = DynAccessor(199)
+            Confirm = DynAccessor(201)
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                BlueprintsAlliancesTooltipView = DynAccessor(200)
+                BlueprintsAlliancesTooltipView = DynAccessor(202)
 
             tooltips = _tooltips()
 
@@ -341,14 +342,14 @@ class Views(DynAccessor):
                 common_congrats_view = _common_congrats_view()
 
             congrats = _congrats()
-            AwardsView = DynAccessor(214)
-            BrowserView = DynAccessor(215)
-            SelectableRewardBase = DynAccessor(216)
-            SelectSlotSpecDialog = DynAccessor(217)
+            AwardsView = DynAccessor(217)
+            BrowserView = DynAccessor(218)
+            SelectableRewardBase = DynAccessor(219)
+            SelectSlotSpecDialog = DynAccessor(220)
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                SelectedRewardsTooltipView = DynAccessor(218)
+                SelectedRewardsTooltipView = DynAccessor(221)
 
             tooltips = _tooltips()
 
@@ -397,12 +398,12 @@ class Views(DynAccessor):
                 MarathonRewardView = DynAccessor(43)
 
             marathon_reward_view = _marathon_reward_view()
-            EntryPoint = DynAccessor(293)
-            RewardWindow = DynAccessor(294)
+            EntryPoint = DynAccessor(297)
+            RewardWindow = DynAccessor(298)
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                RestRewardTooltip = DynAccessor(295)
+                RestRewardTooltip = DynAccessor(299)
 
             tooltips = _tooltips()
 
@@ -419,16 +420,16 @@ class Views(DynAccessor):
 
             class _common(DynAccessor):
                 __slots__ = ()
-                BattleConditions = DynAccessor(297)
-                Countdown = DynAccessor(298)
-                PendingDots = DynAccessor(299)
+                BattleConditions = DynAccessor(301)
+                Countdown = DynAccessor(302)
+                PendingDots = DynAccessor(303)
 
             common = _common()
-            Daily = DynAccessor(300)
-            DailyQuestsTooltip = DynAccessor(301)
-            DailyQuestsWidget = DynAccessor(302)
-            RerollTooltip = DynAccessor(303)
-            RerollTooltipWithCountdown = DynAccessor(304)
+            Daily = DynAccessor(304)
+            DailyQuestsTooltip = DynAccessor(305)
+            DailyQuestsWidget = DynAccessor(306)
+            RerollTooltip = DynAccessor(307)
+            RerollTooltipWithCountdown = DynAccessor(308)
 
         missions = _missions()
 
@@ -542,16 +543,16 @@ class Views(DynAccessor):
                 RankedYearAward = DynAccessor(57)
 
             ranked_year_award = _ranked_year_award()
-            EntryPoint = DynAccessor(339)
-            QualificationRewardsView = DynAccessor(340)
-            RankedSelectableRewardView = DynAccessor(341)
+            EntryPoint = DynAccessor(342)
+            QualificationRewardsView = DynAccessor(343)
+            RankedSelectableRewardView = DynAccessor(344)
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                RankedBattlesRolesTooltipView = DynAccessor(342)
+                RankedBattlesRolesTooltipView = DynAccessor(345)
 
             tooltips = _tooltips()
-            YearLeaderboardView = DynAccessor(343)
+            YearLeaderboardView = DynAccessor(346)
 
         ranked = _ranked()
 
@@ -603,9 +604,9 @@ class Views(DynAccessor):
                 ClanShortInfoTooltipContent = DynAccessor(63)
 
             clans = _clans()
-            AdditionalRewardsTooltip = DynAccessor(419)
-            TankmanTooltipView = DynAccessor(420)
-            VehPostProgressionEntryPointTooltip = DynAccessor(421)
+            AdditionalRewardsTooltip = DynAccessor(422)
+            TankmanTooltipView = DynAccessor(423)
+            VehPostProgressionEntryPointTooltip = DynAccessor(424)
 
         tooltips = _tooltips()
 
@@ -712,40 +713,47 @@ class Views(DynAccessor):
 
         class _battle_royale(DynAccessor):
             __slots__ = ()
-            BattleResultView = DynAccessor(194)
-            CommanderView = DynAccessor(195)
+            BattleResultView = DynAccessor(195)
+            CommanderView = DynAccessor(196)
 
             class _sharedComponents(DynAccessor):
                 __slots__ = ()
-                CurrencyResolver = DynAccessor(196)
-                PriceResolver = DynAccessor(197)
+                CurrencyResolver = DynAccessor(197)
+                PriceResolver = DynAccessor(198)
 
             sharedComponents = _sharedComponents()
-            TechParametersVIew = DynAccessor(198)
+            TechParametersVIew = DynAccessor(199)
 
         battle_royale = _battle_royale()
 
+        class _birthday2023(DynAccessor):
+            __slots__ = ()
+            BirthdayIntroScreen = DynAccessor(200)
+
+        birthday2023 = _birthday2023()
+
         class _bootcamp(DynAccessor):
             __slots__ = ()
-            BootcampExitView = DynAccessor(201)
-            BootcampFinalRewardView = DynAccessor(202)
-            BootcampNationView = DynAccessor(203)
-            BootcampProgressView = DynAccessor(204)
-            BootcampProgressWidget = DynAccessor(205)
-            BootcampQuestWidget = DynAccessor(206)
-            RewardsTooltip = DynAccessor(207)
+            BootcampExitView = DynAccessor(203)
+            BootcampFinalRewardView = DynAccessor(204)
+            BootcampNationView = DynAccessor(205)
+            BootcampProgressView = DynAccessor(206)
+            BootcampProgressWidget = DynAccessor(207)
+            BootcampQuestWidget = DynAccessor(208)
+            RewardsTooltip = DynAccessor(209)
 
         bootcamp = _bootcamp()
 
         class _collection(DynAccessor):
             __slots__ = ()
-            AwardsView = DynAccessor(208)
-            CollectionItemPreview = DynAccessor(209)
-            CollectionView = DynAccessor(210)
+            AwardsView = DynAccessor(210)
+            CollectionEntryPointView = DynAccessor(211)
+            CollectionItemPreview = DynAccessor(212)
+            CollectionView = DynAccessor(213)
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                CollectionItemTooltipView = DynAccessor(211)
+                CollectionItemTooltipView = DynAccessor(214)
 
             tooltips = _tooltips()
 
@@ -753,11 +761,11 @@ class Views(DynAccessor):
 
         class _collective_goal(DynAccessor):
             __slots__ = ()
-            CollectiveGoalEntryPointView = DynAccessor(212)
+            CollectiveGoalEntryPointView = DynAccessor(215)
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                EntryPointTooltip = DynAccessor(213)
+                EntryPointTooltip = DynAccessor(216)
 
             tooltips = _tooltips()
 
@@ -765,49 +773,49 @@ class Views(DynAccessor):
 
         class _comp7(DynAccessor):
             __slots__ = ()
-            MetaRootView = DynAccessor(219)
+            MetaRootView = DynAccessor(222)
 
             class _sharedComponents(DynAccessor):
                 __slots__ = ()
-                ActiveSeasonState = DynAccessor(220)
-                CloseButton = DynAccessor(221)
-                DivisionTooltip = DynAccessor(222)
-                Heading = DynAccessor(223)
-                HighlightedRankEmblem = DynAccessor(224)
-                LastUpdate = DynAccessor(225)
-                LastUpdateNote = DynAccessor(226)
-                LobbyTopSubViewWrapper = DynAccessor(227)
-                ProgressionScroll = DynAccessor(228)
-                RankEmblem = DynAccessor(229)
-                RankTooltip = DynAccessor(230)
-                ScheduleSubheading = DynAccessor(231)
+                ActiveSeasonState = DynAccessor(223)
+                CloseButton = DynAccessor(224)
+                DivisionTooltip = DynAccessor(225)
+                Heading = DynAccessor(226)
+                HighlightedRankEmblem = DynAccessor(227)
+                LastUpdate = DynAccessor(228)
+                LastUpdateNote = DynAccessor(229)
+                LobbyTopSubViewWrapper = DynAccessor(230)
+                ProgressionScroll = DynAccessor(231)
+                RankEmblem = DynAccessor(232)
+                RankTooltip = DynAccessor(233)
+                ScheduleSubheading = DynAccessor(234)
 
             sharedComponents = _sharedComponents()
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                DivisionTooltip = DynAccessor(232)
-                GeneralRankTooltip = DynAccessor(233)
-                LastUpdateTooltip = DynAccessor(234)
-                MainWidgetTooltip = DynAccessor(235)
-                RankInactivityTooltip = DynAccessor(236)
-                SeventhRankTooltip = DynAccessor(237)
-                SixthRankTooltip = DynAccessor(238)
+                DivisionTooltip = DynAccessor(235)
+                GeneralRankTooltip = DynAccessor(236)
+                LastUpdateTooltip = DynAccessor(237)
+                MainWidgetTooltip = DynAccessor(238)
+                RankInactivityTooltip = DynAccessor(239)
+                SeventhRankTooltip = DynAccessor(240)
+                SixthRankTooltip = DynAccessor(241)
 
             tooltips = _tooltips()
 
             class _views(DynAccessor):
                 __slots__ = ()
-                Banner = DynAccessor(239)
-                IntroScreen = DynAccessor(240)
-                LeaderboardPage = DynAccessor(241)
-                MainWidget = DynAccessor(242)
-                NoVehiclesScreen = DynAccessor(243)
-                ProgressionPage = DynAccessor(244)
-                RankRewardsPage = DynAccessor(245)
-                RewardsScreen = DynAccessor(246)
-                SeasonModifier = DynAccessor(247)
-                WeeklyQuestsPage = DynAccessor(248)
+                Banner = DynAccessor(242)
+                IntroScreen = DynAccessor(243)
+                LeaderboardPage = DynAccessor(244)
+                MainWidget = DynAccessor(245)
+                NoVehiclesScreen = DynAccessor(246)
+                ProgressionPage = DynAccessor(247)
+                RankRewardsPage = DynAccessor(248)
+                RewardsScreen = DynAccessor(249)
+                SeasonModifier = DynAccessor(250)
+                WeeklyQuestsPage = DynAccessor(251)
 
             views = _views()
 
@@ -815,30 +823,30 @@ class Views(DynAccessor):
 
         class _craft_machine(DynAccessor):
             __slots__ = ()
-            CraftmachineEntryPointView = DynAccessor(249)
+            CraftmachineEntryPointView = DynAccessor(252)
 
         craft_machine = _craft_machine()
 
         class _crew(DynAccessor):
             __slots__ = ()
-            AccelerateTrainingTooltipView = DynAccessor(250)
+            AccelerateTrainingTooltipView = DynAccessor(253)
 
             class _common(DynAccessor):
                 __slots__ = ()
-                TooltipAdvancedFooter = DynAccessor(251)
+                TooltipAdvancedFooter = DynAccessor(254)
 
             common = _common()
-            ConfirmLearnSkillsContent = DynAccessor(252)
-            CrewHeader = DynAccessor(253)
-            CrewHeaderTooltipView = DynAccessor(254)
-            CrewIntroView = DynAccessor(255)
+            ConfirmLearnSkillsContent = DynAccessor(255)
+            CrewHeader = DynAccessor(256)
+            CrewHeaderTooltipView = DynAccessor(257)
+            CrewIntroView = DynAccessor(258)
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                AdvancedTooltipView = DynAccessor(256)
-                CrewPerksAdditionalTooltip = DynAccessor(257)
-                CrewPerksTooltip = DynAccessor(258)
-                VehicleParamsTooltipView = DynAccessor(259)
+                AdvancedTooltipView = DynAccessor(259)
+                CrewPerksAdditionalTooltip = DynAccessor(260)
+                CrewPerksTooltip = DynAccessor(261)
+                VehicleParamsTooltipView = DynAccessor(262)
 
             tooltips = _tooltips()
 
@@ -846,154 +854,159 @@ class Views(DynAccessor):
 
         class _crystalsPromo(DynAccessor):
             __slots__ = ()
-            CrystalsPromoView = DynAccessor(260)
+            CrystalsPromoView = DynAccessor(263)
 
         crystalsPromo = _crystalsPromo()
 
         class _currency_reserves(DynAccessor):
             __slots__ = ()
-            CurrencyReserves = DynAccessor(261)
-            ReservesAwardView = DynAccessor(262)
+            CurrencyReserves = DynAccessor(264)
+            ReservesAwardView = DynAccessor(265)
 
         currency_reserves = _currency_reserves()
 
         class _customization(DynAccessor):
             __slots__ = ()
-            CustomizationCart = DynAccessor(263)
+            CustomizationCart = DynAccessor(266)
 
             class _progression_styles(DynAccessor):
                 __slots__ = ()
-                OnboardingView = DynAccessor(264)
-                StageSwitcher = DynAccessor(265)
+                OnboardingView = DynAccessor(267)
+                StageSwitcher = DynAccessor(268)
 
             progression_styles = _progression_styles()
 
             class _progressive_items_reward(DynAccessor):
                 __slots__ = ()
-                ProgressiveItemsUpgradeView = DynAccessor(266)
+                ProgressiveItemsUpgradeView = DynAccessor(269)
 
             progressive_items_reward = _progressive_items_reward()
 
             class _progressive_items_view(DynAccessor):
                 __slots__ = ()
-                ProgressiveItemsView = DynAccessor(267)
+                ProgressiveItemsView = DynAccessor(270)
 
             progressive_items_view = _progressive_items_view()
 
             class _style_unlocked_view(DynAccessor):
                 __slots__ = ()
-                StyleUnlockedView = DynAccessor(268)
+                StyleUnlockedView = DynAccessor(271)
 
             style_unlocked_view = _style_unlocked_view()
 
         customization = _customization()
 
+        class _debutBoxes(DynAccessor):
+            __slots__ = ()
+            DebutBoxesBadgeTooltipView = DynAccessor(272)
+
+        debutBoxes = _debutBoxes()
+
         class _dedication(DynAccessor):
             __slots__ = ()
-            DedicationRewardView = DynAccessor(269)
+            DedicationRewardView = DynAccessor(273)
 
         dedication = _dedication()
 
         class _dog_tags(DynAccessor):
             __slots__ = ()
-            DedicationTooltip = DynAccessor(270)
-            DogTagsView = DynAccessor(271)
-            RankedEfficiencyTooltip = DynAccessor(272)
-            ThreeMonthsTooltip = DynAccessor(273)
-            TriumphTooltip = DynAccessor(274)
+            DedicationTooltip = DynAccessor(274)
+            DogTagsView = DynAccessor(275)
+            RankedEfficiencyTooltip = DynAccessor(276)
+            ThreeMonthsTooltip = DynAccessor(277)
+            TriumphTooltip = DynAccessor(278)
 
         dog_tags = _dog_tags()
 
         class _elite_window(DynAccessor):
             __slots__ = ()
-            EliteView = DynAccessor(275)
+            EliteView = DynAccessor(279)
 
         elite_window = _elite_window()
 
         class _excluded_maps(DynAccessor):
             __slots__ = ()
-            ExcludedMapsView = DynAccessor(276)
+            ExcludedMapsView = DynAccessor(280)
 
         excluded_maps = _excluded_maps()
 
         class _frontline(DynAccessor):
             __slots__ = ()
-            AwardsView = DynAccessor(277)
+            AwardsView = DynAccessor(281)
 
             class _dialogs(DynAccessor):
                 __slots__ = ()
-                BlankPrice = DynAccessor(278)
+                BlankPrice = DynAccessor(282)
 
             dialogs = _dialogs()
-            IntroScreen = DynAccessor(279)
-            RewardsSelectionView = DynAccessor(280)
+            IntroScreen = DynAccessor(283)
+            RewardsSelectionView = DynAccessor(284)
 
         frontline = _frontline()
 
         class _instructions(DynAccessor):
             __slots__ = ()
-            BuyWindow = DynAccessor(281)
-            SellWindow = DynAccessor(282)
+            BuyWindow = DynAccessor(285)
+            SellWindow = DynAccessor(286)
 
         instructions = _instructions()
 
         class _mapbox(DynAccessor):
             __slots__ = ()
-            MapBoxAwardsView = DynAccessor(283)
-            MapBoxEntryPointView = DynAccessor(284)
-            MapBoxIntro = DynAccessor(285)
-            MapBoxProgression = DynAccessor(286)
-            MapBoxRewardChoiceView = DynAccessor(287)
-            MapBoxSurveyView = DynAccessor(288)
+            MapBoxAwardsView = DynAccessor(287)
+            MapBoxEntryPointView = DynAccessor(288)
+            MapBoxIntro = DynAccessor(289)
+            MapBoxProgression = DynAccessor(290)
+            MapBoxRewardChoiceView = DynAccessor(291)
+            MapBoxSurveyView = DynAccessor(292)
 
         mapbox = _mapbox()
 
         class _maps_training(DynAccessor):
             __slots__ = ()
-            MapsTrainingPage = DynAccessor(289)
-            MapsTrainingQueue = DynAccessor(290)
-            MapsTrainingResult = DynAccessor(291)
-            ScenarioTooltip = DynAccessor(292)
+            MapsTrainingPage = DynAccessor(293)
+            MapsTrainingQueue = DynAccessor(294)
+            MapsTrainingResult = DynAccessor(295)
+            ScenarioTooltip = DynAccessor(296)
 
         maps_training = _maps_training()
 
         class _matchmaker(DynAccessor):
             __slots__ = ()
-            ActiveTestConfirmView = DynAccessor(296)
+            ActiveTestConfirmView = DynAccessor(300)
 
         matchmaker = _matchmaker()
 
         class _mode_selector(DynAccessor):
             __slots__ = ()
-            BattleSessionView = DynAccessor(305)
-            ModeSelectorView = DynAccessor(306)
+            BattleSessionView = DynAccessor(309)
+            ModeSelectorView = DynAccessor(310)
 
             class _popovers(DynAccessor):
                 __slots__ = ()
-                RandomBattlePopover = DynAccessor(307)
+                RandomBattlePopover = DynAccessor(311)
 
             popovers = _popovers()
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                AlertTooltip = DynAccessor(308)
+                AlertTooltip = DynAccessor(312)
 
                 class _common(DynAccessor):
                     __slots__ = ()
-                    Divider = DynAccessor(309)
-                    GradientDecorator = DynAccessor(310)
+                    Divider = DynAccessor(313)
+                    GradientDecorator = DynAccessor(314)
 
                 common = _common()
-                SimplyFormatTooltip = DynAccessor(311)
+                SimplyFormatTooltip = DynAccessor(315)
 
             tooltips = _tooltips()
 
             class _widgets(DynAccessor):
                 __slots__ = ()
-                BattleRoyaleProgressionWidget = DynAccessor(312)
-                BattleRoyaleWidget = DynAccessor(313)
-                EpicWidget = DynAccessor(314)
-                RankedWidget = DynAccessor(315)
+                BattleRoyaleProgressionWidget = DynAccessor(316)
+                EpicWidget = DynAccessor(317)
+                RankedWidget = DynAccessor(318)
 
             widgets = _widgets()
 
@@ -1001,104 +1014,104 @@ class Views(DynAccessor):
 
         class _offers(DynAccessor):
             __slots__ = ()
-            OfferBannerWindow = DynAccessor(316)
-            OfferGiftsWindow = DynAccessor(317)
-            OfferRewardWindow = DynAccessor(318)
+            OfferBannerWindow = DynAccessor(319)
+            OfferGiftsWindow = DynAccessor(320)
+            OfferRewardWindow = DynAccessor(321)
 
         offers = _offers()
 
         class _personal_reserves(DynAccessor):
             __slots__ = ()
-            PersonalReservesTooltip = DynAccessor(319)
-            PersonalReservesWidget = DynAccessor(320)
-            ReserveCard = DynAccessor(321)
-            ReserveCardTooltip = DynAccessor(322)
-            ReserveGroup = DynAccessor(323)
-            ReservesActivationView = DynAccessor(324)
-            ReservesConversionView = DynAccessor(325)
-            ReservesIntroView = DynAccessor(326)
+            PersonalReservesTooltip = DynAccessor(322)
+            PersonalReservesWidget = DynAccessor(323)
+            ReserveCard = DynAccessor(324)
+            ReserveCardTooltip = DynAccessor(325)
+            ReserveGroup = DynAccessor(326)
+            ReservesActivationView = DynAccessor(327)
+            ReservesConversionView = DynAccessor(328)
+            ReservesIntroView = DynAccessor(329)
 
         personal_reserves = _personal_reserves()
 
         class _platoon(DynAccessor):
             __slots__ = ()
-            AlertTooltip = DynAccessor(327)
-            MembersWindow = DynAccessor(328)
-            PlatoonDropdown = DynAccessor(329)
-            SearchingDropdown = DynAccessor(330)
-            SettingsPopover = DynAccessor(331)
+            AlertTooltip = DynAccessor(330)
+            MembersWindow = DynAccessor(331)
+            PlatoonDropdown = DynAccessor(332)
+            SearchingDropdown = DynAccessor(333)
+            SettingsPopover = DynAccessor(334)
 
             class _subViews(DynAccessor):
                 __slots__ = ()
-                Chat = DynAccessor(332)
-                SettingsContent = DynAccessor(333)
-                TiersLimit = DynAccessor(334)
+                Chat = DynAccessor(335)
+                SettingsContent = DynAccessor(336)
+                TiersLimit = DynAccessor(337)
 
             subViews = _subViews()
-            WTRTooltip = DynAccessor(335)
+            WTRTooltip = DynAccessor(338)
 
         platoon = _platoon()
 
         class _player_subscriptions(DynAccessor):
             __slots__ = ()
-            PlayerSubscriptions = DynAccessor(336)
-            SubscriptionItem = DynAccessor(337)
-            SubscriptionRewardView = DynAccessor(338)
+            PlayerSubscriptions = DynAccessor(339)
+            SubscriptionItem = DynAccessor(340)
+            SubscriptionRewardView = DynAccessor(341)
 
         player_subscriptions = _player_subscriptions()
 
         class _recruit_window(DynAccessor):
             __slots__ = ()
-            RecruitDialog = DynAccessor(344)
+            RecruitDialog = DynAccessor(347)
 
         recruit_window = _recruit_window()
 
         class _research(DynAccessor):
             __slots__ = ()
-            BuyModuleDialogView = DynAccessor(345)
-            InsufficientCreditsTooltip = DynAccessor(346)
-            SoldModuleInfoTooltip = DynAccessor(347)
+            BuyModuleDialogView = DynAccessor(348)
+            InsufficientCreditsTooltip = DynAccessor(349)
+            SoldModuleInfoTooltip = DynAccessor(350)
 
         research = _research()
 
         class _resource_well(DynAccessor):
             __slots__ = ()
-            AwardView = DynAccessor(348)
-            CompletedProgressionView = DynAccessor(349)
-            EntryPoint = DynAccessor(350)
-            IntroView = DynAccessor(351)
-            NoSerialVehiclesConfirm = DynAccessor(352)
-            NoVehiclesConfirm = DynAccessor(353)
-            ProgressionView = DynAccessor(354)
-            ResourcesLoadingConfirm = DynAccessor(355)
-            ResourcesLoadingView = DynAccessor(356)
+            AwardView = DynAccessor(351)
+            CompletedProgressionView = DynAccessor(352)
+            EntryPoint = DynAccessor(353)
+            IntroView = DynAccessor(354)
+            NoSerialVehiclesConfirm = DynAccessor(355)
+            NoVehiclesConfirm = DynAccessor(356)
+            ProgressionView = DynAccessor(357)
+            ResourcesLoadingConfirm = DynAccessor(358)
+            ResourcesLoadingView = DynAccessor(359)
 
             class _sharedComponents(DynAccessor):
                 __slots__ = ()
 
                 class _award(DynAccessor):
                     __slots__ = ()
-                    AdditionalReward = DynAccessor(357)
-                    Footer = DynAccessor(358)
-                    Header = DynAccessor(359)
-                    Reward = DynAccessor(360)
+                    AdditionalReward = DynAccessor(360)
+                    Footer = DynAccessor(361)
+                    Header = DynAccessor(362)
+                    Reward = DynAccessor(363)
 
                 award = _award()
-                Counter = DynAccessor(361)
-                NoVehiclesState = DynAccessor(362)
-                Resource = DynAccessor(363)
-                VehicleCount = DynAccessor(364)
-                VehicleInfo = DynAccessor(365)
+                Counter = DynAccessor(364)
+                NoVehiclesState = DynAccessor(365)
+                Resource = DynAccessor(366)
+                VehicleCount = DynAccessor(367)
+                VehicleInfo = DynAccessor(368)
 
             sharedComponents = _sharedComponents()
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                EntryPointTooltip = DynAccessor(366)
-                MaxProgressTooltip = DynAccessor(367)
-                ProgressTooltip = DynAccessor(368)
-                RefundResourcesTooltip = DynAccessor(369)
-                SerialNumberTooltip = DynAccessor(370)
+                EntryPointTooltip = DynAccessor(369)
+                MaxProgressTooltip = DynAccessor(370)
+                ProgressTooltip = DynAccessor(371)
+                RefundResourcesTooltip = DynAccessor(372)
+                SerialNumberTooltip = DynAccessor(373)
 
             tooltips = _tooltips()
 
@@ -1106,11 +1119,11 @@ class Views(DynAccessor):
 
         class _seniority_awards(DynAccessor):
             __slots__ = ()
-            SeniorityAwardsView = DynAccessor(371)
+            SeniorityAwardsView = DynAccessor(374)
 
             class _sharedComponents(DynAccessor):
                 __slots__ = ()
-                SeniorityAwardCoin = DynAccessor(372)
+                SeniorityAwardCoin = DynAccessor(375)
 
             sharedComponents = _sharedComponents()
 
@@ -1118,99 +1131,99 @@ class Views(DynAccessor):
 
         class _stronghold(DynAccessor):
             __slots__ = ()
-            StrongholdEntryPointView = DynAccessor(373)
+            StrongholdEntryPointView = DynAccessor(376)
 
         stronghold = _stronghold()
 
         class _subscription(DynAccessor):
             __slots__ = ()
-            SubscriptionAwardView = DynAccessor(374)
-            WotPlusTooltip = DynAccessor(375)
+            SubscriptionAwardView = DynAccessor(377)
+            WotPlusTooltip = DynAccessor(378)
 
         subscription = _subscription()
 
         class _tanksetup(DynAccessor):
             __slots__ = ()
-            AmmunitionPanel = DynAccessor(376)
+            AmmunitionPanel = DynAccessor(379)
 
             class _common(DynAccessor):
                 __slots__ = ()
-                Action = DynAccessor(377)
-                CtaButtons = DynAccessor(378)
-                DealPanel = DynAccessor(379)
-                ExtraImage = DynAccessor(380)
-                FormatColorTagText = DynAccessor(381)
-                MaybeWrapper = DynAccessor(382)
-                Price = DynAccessor(383)
-                SetupApp = DynAccessor(384)
-                ShortenedText = DynAccessor(385)
-                Slider = DynAccessor(386)
+                Action = DynAccessor(380)
+                CtaButtons = DynAccessor(381)
+                DealPanel = DynAccessor(382)
+                ExtraImage = DynAccessor(383)
+                FormatColorTagText = DynAccessor(384)
+                MaybeWrapper = DynAccessor(385)
+                Price = DynAccessor(386)
+                SetupApp = DynAccessor(387)
+                ShortenedText = DynAccessor(388)
+                Slider = DynAccessor(389)
 
                 class _SlotParts(DynAccessor):
                     __slots__ = ()
-                    Bonus = DynAccessor(387)
-                    Container = DynAccessor(388)
-                    Count = DynAccessor(389)
-                    Inside = DynAccessor(390)
-                    Level = DynAccessor(391)
+                    Bonus = DynAccessor(390)
+                    Container = DynAccessor(391)
+                    Count = DynAccessor(392)
+                    Inside = DynAccessor(393)
+                    Level = DynAccessor(394)
 
                 SlotParts = _SlotParts()
-                Specializations = DynAccessor(392)
-                Storage = DynAccessor(393)
-                SwitchButton = DynAccessor(394)
-                SwitchEquipment = DynAccessor(395)
+                Specializations = DynAccessor(395)
+                Storage = DynAccessor(396)
+                SwitchButton = DynAccessor(397)
+                SwitchEquipment = DynAccessor(398)
 
                 class _Transitions(DynAccessor):
                     __slots__ = ()
-                    SlotTransitions = DynAccessor(396)
+                    SlotTransitions = DynAccessor(399)
 
                 Transitions = _Transitions()
-                WeaponOccupancy = DynAccessor(397)
+                WeaponOccupancy = DynAccessor(400)
 
             common = _common()
-            DeconstructionDeviceView = DynAccessor(398)
+            DeconstructionDeviceView = DynAccessor(401)
 
             class _dialogs(DynAccessor):
                 __slots__ = ()
-                Confirm = DynAccessor(399)
-                ConfirmActionsWithEquipmentDialog = DynAccessor(400)
-                DeconstructConfirm = DynAccessor(401)
-                DeviceUpgradeDialog = DynAccessor(402)
-                ExchangeToBuyItems = DynAccessor(403)
-                ExchangeToUpgradeItems = DynAccessor(404)
-                NeedRepair = DynAccessor(405)
-                RefillShells = DynAccessor(406)
+                Confirm = DynAccessor(402)
+                ConfirmActionsWithEquipmentDialog = DynAccessor(403)
+                DeconstructConfirm = DynAccessor(404)
+                DeviceUpgradeDialog = DynAccessor(405)
+                ExchangeToBuyItems = DynAccessor(406)
+                ExchangeToUpgradeItems = DynAccessor(407)
+                NeedRepair = DynAccessor(408)
+                RefillShells = DynAccessor(409)
 
                 class _sub_views(DynAccessor):
                     __slots__ = ()
-                    FrontlineConfirmFooterMoney = DynAccessor(407)
-                    FrontlineConfirmIcons = DynAccessor(408)
-                    FrontlineConfirmMultipleNames = DynAccessor(409)
-                    FrontlineConfirmTitle = DynAccessor(410)
+                    FrontlineConfirmFooterMoney = DynAccessor(410)
+                    FrontlineConfirmIcons = DynAccessor(411)
+                    FrontlineConfirmMultipleNames = DynAccessor(412)
+                    FrontlineConfirmTitle = DynAccessor(413)
 
                 sub_views = _sub_views()
 
             dialogs = _dialogs()
-            HangarAmmunitionSetup = DynAccessor(411)
-            IntroScreen = DynAccessor(412)
+            HangarAmmunitionSetup = DynAccessor(414)
+            IntroScreen = DynAccessor(415)
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                DeconstructFromInventoryTooltip = DynAccessor(413)
-                DeconstructFromVehicleTooltip = DynAccessor(414)
-                SetupTabTooltipView = DynAccessor(415)
-                WarningTooltipView = DynAccessor(416)
+                DeconstructFromInventoryTooltip = DynAccessor(416)
+                DeconstructFromVehicleTooltip = DynAccessor(417)
+                SetupTabTooltipView = DynAccessor(418)
+                WarningTooltipView = DynAccessor(419)
 
             tooltips = _tooltips()
-            VehicleCompareAmmunitionPanel = DynAccessor(417)
-            VehicleCompareAmmunitionSetup = DynAccessor(418)
+            VehicleCompareAmmunitionPanel = DynAccessor(420)
+            VehicleCompareAmmunitionSetup = DynAccessor(421)
 
         tanksetup = _tanksetup()
 
         class _vehicle_compare(DynAccessor):
             __slots__ = ()
-            CompareModificationsPanelView = DynAccessor(422)
-            SelectSlotSpecCompareDialog = DynAccessor(423)
+            CompareModificationsPanelView = DynAccessor(425)
+            SelectSlotSpecCompareDialog = DynAccessor(426)
 
         vehicle_compare = _vehicle_compare()
 
@@ -1219,15 +1232,15 @@ class Views(DynAccessor):
 
             class _buying_panel(DynAccessor):
                 __slots__ = ()
-                StyleBuyingPanel = DynAccessor(424)
-                VPProgressionStylesBuyingPanel = DynAccessor(425)
-                WellPanel = DynAccessor(426)
+                StyleBuyingPanel = DynAccessor(427)
+                VPProgressionStylesBuyingPanel = DynAccessor(428)
+                WellPanel = DynAccessor(429)
 
             buying_panel = _buying_panel()
 
             class _top_panel(DynAccessor):
                 __slots__ = ()
-                TopPanelTabs = DynAccessor(427)
+                TopPanelTabs = DynAccessor(430)
 
             top_panel = _top_panel()
 
@@ -1238,41 +1251,41 @@ class Views(DynAccessor):
 
             class _common(DynAccessor):
                 __slots__ = ()
-                Bonus = DynAccessor(428)
-                Description = DynAccessor(429)
-                Grid = DynAccessor(430)
-                PersistentBonuses = DynAccessor(431)
-                Slide = DynAccessor(432)
-                SlideContent = DynAccessor(433)
-                Slider = DynAccessor(434)
-                TextSplit = DynAccessor(435)
+                Bonus = DynAccessor(431)
+                Description = DynAccessor(432)
+                Grid = DynAccessor(433)
+                PersistentBonuses = DynAccessor(434)
+                Slide = DynAccessor(435)
+                SlideContent = DynAccessor(436)
+                Slider = DynAccessor(437)
+                TextSplit = DynAccessor(438)
 
             common = _common()
-            PostProgressionInfo = DynAccessor(436)
-            PostProgressionIntro = DynAccessor(437)
-            PostProgressionResearchSteps = DynAccessor(438)
+            PostProgressionInfo = DynAccessor(439)
+            PostProgressionIntro = DynAccessor(440)
+            PostProgressionResearchSteps = DynAccessor(441)
 
             class _tooltip(DynAccessor):
                 __slots__ = ()
 
                 class _common(DynAccessor):
                     __slots__ = ()
-                    DisabledBlock = DynAccessor(439)
-                    FeatureLevelSubtitle = DynAccessor(440)
-                    Lock = DynAccessor(441)
-                    NotEnoughCredits = DynAccessor(442)
-                    PriceBlock = DynAccessor(443)
-                    Separator = DynAccessor(444)
+                    DisabledBlock = DynAccessor(442)
+                    FeatureLevelSubtitle = DynAccessor(443)
+                    Lock = DynAccessor(444)
+                    NotEnoughCredits = DynAccessor(445)
+                    PriceBlock = DynAccessor(446)
+                    Separator = DynAccessor(447)
 
                 common = _common()
-                PairModificationTooltipView = DynAccessor(445)
-                PostProgressionLevelTooltipView = DynAccessor(446)
-                RoleSlotTooltipView = DynAccessor(447)
-                SetupTooltipView = DynAccessor(448)
+                PairModificationTooltipView = DynAccessor(448)
+                PostProgressionLevelTooltipView = DynAccessor(449)
+                RoleSlotTooltipView = DynAccessor(450)
+                SetupTooltipView = DynAccessor(451)
 
             tooltip = _tooltip()
-            VehiclePostProgressionCmpView = DynAccessor(449)
-            VehiclePostProgressionView = DynAccessor(450)
+            VehiclePostProgressionCmpView = DynAccessor(452)
+            VehiclePostProgressionView = DynAccessor(453)
 
         veh_post_progression = _veh_post_progression()
 
@@ -1281,22 +1294,22 @@ class Views(DynAccessor):
 
             class _popovers(DynAccessor):
                 __slots__ = ()
-                WinbackLeaveModePopoverView = DynAccessor(451)
+                WinbackLeaveModePopoverView = DynAccessor(454)
 
             popovers = _popovers()
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                MainRewardTooltip = DynAccessor(452)
-                ModeInfoTooltip = DynAccessor(453)
-                SelectableRewardTooltip = DynAccessor(454)
-                SelectedRewardsTooltip = DynAccessor(455)
+                MainRewardTooltip = DynAccessor(455)
+                ModeInfoTooltip = DynAccessor(456)
+                SelectableRewardTooltip = DynAccessor(457)
+                SelectedRewardsTooltip = DynAccessor(458)
 
             tooltips = _tooltips()
-            WinbackDailyQuestsIntroView = DynAccessor(456)
-            WinbackLeaveModeDialogView = DynAccessor(457)
-            WinbackRewardView = DynAccessor(458)
-            WinbackSelectableRewardView = DynAccessor(459)
+            WinbackDailyQuestsIntroView = DynAccessor(459)
+            WinbackLeaveModeDialogView = DynAccessor(460)
+            WinbackRewardView = DynAccessor(461)
+            WinbackSelectableRewardView = DynAccessor(462)
 
         winback = _winback()
 
@@ -1598,21 +1611,21 @@ class Views(DynAccessor):
 
             class _feature(DynAccessor):
                 __slots__ = ()
-                ArmoryYardBuyView = DynAccessor(460)
-                ArmoryYardEntryPointView = DynAccessor(461)
-                ArmoryYardIntroView = DynAccessor(462)
-                ArmoryYardMainView = DynAccessor(463)
-                ArmoryYardRewardsView = DynAccessor(464)
-                ArmoryYardVideoRewardView = DynAccessor(465)
-                ArmoryYardWidgetView = DynAccessor(466)
+                ArmoryYardBuyView = DynAccessor(463)
+                ArmoryYardEntryPointView = DynAccessor(464)
+                ArmoryYardIntroView = DynAccessor(465)
+                ArmoryYardMainView = DynAccessor(466)
+                ArmoryYardRewardsView = DynAccessor(467)
+                ArmoryYardVideoRewardView = DynAccessor(468)
+                ArmoryYardWidgetView = DynAccessor(469)
 
                 class _tooltips(DynAccessor):
                     __slots__ = ()
-                    ArmoryYardCurrencyTooltipView = DynAccessor(467)
-                    ArmoryYardSimpleTooltipView = DynAccessor(468)
-                    EntryPointActiveTooltipView = DynAccessor(469)
-                    EntryPointBeforeProgressionTooltipView = DynAccessor(470)
-                    RestRewardTooltipView = DynAccessor(471)
+                    ArmoryYardCurrencyTooltipView = DynAccessor(470)
+                    ArmoryYardSimpleTooltipView = DynAccessor(471)
+                    EntryPointActiveTooltipView = DynAccessor(472)
+                    EntryPointBeforeProgressionTooltipView = DynAccessor(473)
+                    RestRewardTooltipView = DynAccessor(474)
 
                 tooltips = _tooltips()
 
@@ -1630,7 +1643,7 @@ class Views(DynAccessor):
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                ModifiersDomainTooltipView = DynAccessor(472)
+                ModifiersDomainTooltipView = DynAccessor(475)
 
             tooltips = _tooltips()
 
@@ -1646,29 +1659,28 @@ class Views(DynAccessor):
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                BrCoinTooltipView = DynAccessor(473)
+                BrCoinTooltipView = DynAccessor(476)
 
                 class _common(DynAccessor):
                     __slots__ = ()
-                    PriceBlock = DynAccessor(474)
-                    RentPrice = DynAccessor(475)
+                    PriceBlock = DynAccessor(477)
+                    RentPrice = DynAccessor(478)
 
                 common = _common()
-                RentIconTooltipView = DynAccessor(476)
-                RespawnInfoTooltipView = DynAccessor(477)
-                RewardCurrencyTooltipView = DynAccessor(478)
-                TestDriveInfoTooltipView = DynAccessor(479)
-                VehicleTooltipView = DynAccessor(480)
+                RentIconTooltipView = DynAccessor(479)
+                RewardCurrencyTooltipView = DynAccessor(480)
+                TestDriveInfoTooltipView = DynAccessor(481)
+                VehicleTooltipView = DynAccessor(482)
 
             tooltips = _tooltips()
 
             class _views(DynAccessor):
                 __slots__ = ()
-                BattleRoyaleEntryPoint = DynAccessor(481)
-                IntroView = DynAccessor(482)
-                PreBattleView = DynAccessor(483)
-                ProxyCurrencyView = DynAccessor(484)
-                WidgetView = DynAccessor(485)
+                BattleRoyaleEntryPoint = DynAccessor(483)
+                IntroView = DynAccessor(484)
+                PreBattleView = DynAccessor(485)
+                ProxyCurrencyView = DynAccessor(486)
+                WidgetView = DynAccessor(487)
 
             views = _views()
 
@@ -1678,68 +1690,30 @@ class Views(DynAccessor):
 
     class _battle_royale_progression(DynAccessor):
         __slots__ = ()
-        BattleQuestAwardsView = DynAccessor(486)
-        ProgressionMainView = DynAccessor(487)
+        BattleQuestAwardsView = DynAccessor(488)
+        ProgressionMainView = DynAccessor(489)
 
     battle_royale_progression = _battle_royale_progression()
-
-    class _event_lootboxes(DynAccessor):
-        __slots__ = ()
-
-        class _lobby(DynAccessor):
-            __slots__ = ()
-
-            class _event_lootboxes(DynAccessor):
-                __slots__ = ()
-                EntryPointView = DynAccessor(488)
-                OpenBoxErrorView = DynAccessor(489)
-                OpenBoxScreen = DynAccessor(490)
-                PopoverView = DynAccessor(491)
-
-                class _shared(DynAccessor):
-                    __slots__ = ()
-                    AnimationControls = DynAccessor(492)
-                    BuyBoxFooter = DynAccessor(493)
-                    CloseBtn = DynAccessor(494)
-                    Divider = DynAccessor(495)
-                    Header = DynAccessor(496)
-
-                shared = _shared()
-
-                class _tooltips(DynAccessor):
-                    __slots__ = ()
-                    CompensationTooltip = DynAccessor(497)
-                    EntryPointTooltip = DynAccessor(498)
-                    LootBoxesTooltip = DynAccessor(499)
-
-                tooltips = _tooltips()
-                WelcomeScreen = DynAccessor(500)
-
-            event_lootboxes = _event_lootboxes()
-
-        lobby = _lobby()
-
-    event_lootboxes = _event_lootboxes()
 
     class _frontline(DynAccessor):
         __slots__ = ()
 
         class _lobby(DynAccessor):
             __slots__ = ()
-            BannerView = DynAccessor(501)
-            FrontlineContainerView = DynAccessor(502)
-            InfoView = DynAccessor(503)
-            ProgressView = DynAccessor(504)
-            RewardsView = DynAccessor(505)
+            BannerView = DynAccessor(490)
+            FrontlineContainerView = DynAccessor(491)
+            InfoView = DynAccessor(492)
+            ProgressView = DynAccessor(493)
+            RewardsView = DynAccessor(494)
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                LevelReservesTooltip = DynAccessor(506)
-                NotEnoughPointsTooltip = DynAccessor(507)
-                SkillOrderTooltip = DynAccessor(508)
+                LevelReservesTooltip = DynAccessor(495)
+                NotEnoughPointsTooltip = DynAccessor(496)
+                SkillOrderTooltip = DynAccessor(497)
 
             tooltips = _tooltips()
-            WelcomeView = DynAccessor(509)
+            WelcomeView = DynAccessor(498)
 
         lobby = _lobby()
 
@@ -1753,22 +1727,66 @@ class Views(DynAccessor):
 
             class _feature(DynAccessor):
                 __slots__ = ()
-                FunRandomEntryPointView = DynAccessor(510)
-                FunRandomHangarWidgetView = DynAccessor(511)
-                FunRandomModeSubSelector = DynAccessor(512)
-                FunRandomProgression = DynAccessor(513)
+                FunRandomEntryPointView = DynAccessor(499)
+                FunRandomHangarWidgetView = DynAccessor(500)
+                FunRandomModeSubSelector = DynAccessor(501)
+                FunRandomProgression = DynAccessor(502)
+                FunRandomQuickFireGunsAmmunitionPanelView = DynAccessor(503)
+                FunRandomStrengthsWeaknessesView = DynAccessor(504)
 
             feature = _feature()
 
             class _tooltips(DynAccessor):
                 __slots__ = ()
-                FunRandomProgressionTooltipView = DynAccessor(514)
+                FunRandomAlertTooltipView = DynAccessor(505)
+                FunRandomProgressionTooltipView = DynAccessor(506)
+                FunRandomVehicleTooltipView = DynAccessor(507)
 
             tooltips = _tooltips()
 
         lobby = _lobby()
 
     fun_random = _fun_random()
+
+    class _gui_lootboxes(DynAccessor):
+        __slots__ = ()
+
+        class _lobby(DynAccessor):
+            __slots__ = ()
+
+            class _gui_lootboxes(DynAccessor):
+                __slots__ = ()
+                BonusProbabilitiesView = DynAccessor(508)
+                EntryPointView = DynAccessor(509)
+                LootboxRewardsView = DynAccessor(510)
+                OpenBoxErrorView = DynAccessor(511)
+
+                class _shared(DynAccessor):
+                    __slots__ = ()
+                    AnimationControls = DynAccessor(512)
+                    BuyBoxFooter = DynAccessor(513)
+                    CloseBtn = DynAccessor(514)
+                    Divider = DynAccessor(515)
+                    Header = DynAccessor(516)
+                    VideoComponent = DynAccessor(517)
+
+                shared = _shared()
+                StorageView = DynAccessor(518)
+
+                class _tooltips(DynAccessor):
+                    __slots__ = ()
+                    BonusGroupTooltip = DynAccessor(519)
+                    CompensationTooltip = DynAccessor(520)
+                    LootboxTooltip = DynAccessor(521)
+
+                tooltips = _tooltips()
+                WelcomeScreen = DynAccessor(522)
+
+            gui_lootboxes = _gui_lootboxes()
+
+        lobby = _lobby()
+
+    gui_lootboxes = _gui_lootboxes()
 
     class _survey(DynAccessor):
         __slots__ = ()
@@ -1778,45 +1796,45 @@ class Views(DynAccessor):
 
             class _survey(DynAccessor):
                 __slots__ = ()
-                SurveyView = DynAccessor(515)
+                SurveyView = DynAccessor(523)
 
             survey = _survey()
 
         lobby = _lobby()
 
     survey = _survey()
-    Anchor = DynAccessor(516)
-    ArmoryYardDemoView = DynAccessor(517)
-    Comp7DemoPageView = DynAccessor(518)
-    ComponentsDemo = DynAccessor(519)
-    DataLayerDemoView = DynAccessor(520)
-    DataTrackerDemo = DynAccessor(521)
-    DemoContextMenu = DynAccessor(522)
-    Easings = DynAccessor(523)
-    GameLoadingDebugView = DynAccessor(524)
-    GFCharset = DynAccessor(525)
-    GFComponents = DynAccessor(526)
-    GFDemoPopover = DynAccessor(527)
-    GFDemoRichTooltipWindow = DynAccessor(528)
-    GFDemoWindow = DynAccessor(529)
-    GFHooksDemo = DynAccessor(530)
-    GFInjectView = DynAccessor(531)
-    GFSimpleTooltipWindow = DynAccessor(532)
-    GFWebSubDemoWindow = DynAccessor(533)
+    Anchor = DynAccessor(524)
+    ArmoryYardDemoView = DynAccessor(525)
+    Comp7DemoPageView = DynAccessor(526)
+    ComponentsDemo = DynAccessor(527)
+    DataLayerDemoView = DynAccessor(528)
+    DataTrackerDemo = DynAccessor(529)
+    DemoContextMenu = DynAccessor(530)
+    Easings = DynAccessor(531)
+    GameLoadingDebugView = DynAccessor(532)
+    GFCharset = DynAccessor(533)
+    GFComponents = DynAccessor(534)
+    GFDemoPopover = DynAccessor(535)
+    GFDemoRichTooltipWindow = DynAccessor(536)
+    GFDemoWindow = DynAccessor(537)
+    GFHooksDemo = DynAccessor(538)
+    GFInjectView = DynAccessor(539)
+    GFSimpleTooltipWindow = DynAccessor(540)
+    GFWebSubDemoWindow = DynAccessor(541)
 
     class _gf_dialogs_demo(DynAccessor):
         __slots__ = ()
-        DefaultDialogProxy = DynAccessor(534)
-        GFDialogsDemo = DynAccessor(535)
+        DefaultDialogProxy = DynAccessor(542)
+        GFDialogsDemo = DynAccessor(543)
 
         class _sub_views(DynAccessor):
             __slots__ = ()
-            DummyContent = DynAccessor(536)
-            DummyFooter = DynAccessor(537)
-            DummyIcon = DynAccessor(538)
-            DummyStepper = DynAccessor(539)
-            DummyTitle = DynAccessor(540)
-            DummyTopRight = DynAccessor(541)
+            DummyContent = DynAccessor(544)
+            DummyFooter = DynAccessor(545)
+            DummyIcon = DynAccessor(546)
+            DummyStepper = DynAccessor(547)
+            DummyTitle = DynAccessor(548)
+            DummyTopRight = DynAccessor(549)
 
         sub_views = _sub_views()
 
@@ -1824,43 +1842,43 @@ class Views(DynAccessor):
 
     class _gf_viewer(DynAccessor):
         __slots__ = ()
-        GFViewerWindow = DynAccessor(542)
+        GFViewerWindow = DynAccessor(550)
 
     gf_viewer = _gf_viewer()
 
     class _igb_demo(DynAccessor):
         __slots__ = ()
-        BrowserFullscreenWindow = DynAccessor(543)
-        BrowserWindow = DynAccessor(544)
-        MainView = DynAccessor(545)
+        BrowserFullscreenWindow = DynAccessor(551)
+        BrowserWindow = DynAccessor(552)
+        MainView = DynAccessor(553)
 
     igb_demo = _igb_demo()
-    LocaleDemo = DynAccessor(546)
-    MediaWrapperDemo = DynAccessor(547)
-    MixBlendMode = DynAccessor(548)
-    MixBlendModeAnimation = DynAccessor(549)
-    ModeSelectorDemo = DynAccessor(550)
-    ModeSelectorToolsetView = DynAccessor(551)
-    NewYearLevelUp = DynAccessor(552)
-    PluralLocView = DynAccessor(553)
-    PropsSupportDemo = DynAccessor(554)
-    ReactSpringVizualizer = DynAccessor(555)
-    StructuralDataBindDemo = DynAccessor(556)
+    LocaleDemo = DynAccessor(554)
+    MediaWrapperDemo = DynAccessor(555)
+    MixBlendMode = DynAccessor(556)
+    MixBlendModeAnimation = DynAccessor(557)
+    ModeSelectorDemo = DynAccessor(558)
+    ModeSelectorToolsetView = DynAccessor(559)
+    NewYearLevelUp = DynAccessor(560)
+    PluralLocView = DynAccessor(561)
+    PropsSupportDemo = DynAccessor(562)
+    ReactSpringVizualizer = DynAccessor(563)
+    StructuralDataBindDemo = DynAccessor(564)
 
     class _sub_views_demo(DynAccessor):
         __slots__ = ()
-        GFSubViewsDemo = DynAccessor(557)
+        GFSubViewsDemo = DynAccessor(565)
 
         class _sub_views(DynAccessor):
             __slots__ = ()
-            CustomizationCartProxy = DynAccessor(558)
-            DailyProxy = DynAccessor(559)
-            ProgressiveItemsViewProxy = DynAccessor(560)
+            CustomizationCartProxy = DynAccessor(566)
+            DailyProxy = DynAccessor(567)
+            ProgressiveItemsViewProxy = DynAccessor(568)
 
         sub_views = _sub_views()
 
     sub_views_demo = _sub_views_demo()
-    UILoggerDemo = DynAccessor(561)
-    VideoSupportView = DynAccessor(562)
-    W2CTestPageWindow = DynAccessor(563)
-    WgcgMockView = DynAccessor(564)
+    UILoggerDemo = DynAccessor(569)
+    VideoSupportView = DynAccessor(570)
+    W2CTestPageWindow = DynAccessor(571)
+    WgcgMockView = DynAccessor(572)

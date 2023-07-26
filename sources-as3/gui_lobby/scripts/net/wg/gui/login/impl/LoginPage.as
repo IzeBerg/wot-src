@@ -72,7 +72,7 @@ package net.wg.gui.login.impl
       
       private static const HEALTH_NOTICE_OFFSET:int = 25;
       
-      private static const VERSION_BOTTOM:int = 10;
+      private static const VERSION_BOTTOM:int = 7;
        
       
       public var loginViewStack:LoginViewStack = null;
@@ -393,7 +393,7 @@ package net.wg.gui.login.impl
          this.wotLogo.y = this.loginViewStack.y - WOT_LOGO_OFFSET_Y;
          this.shadowImage.x = this.loginViewStack.x - SHADOW_OFFSET_X;
          this.shadowImage.y = this.loginViewStack.y - SHADOW_OFFSET_Y;
-         this.version.y = App.appHeight - VERSION_BOTTOM - this.version.height | 0;
+         this.version.y = VERSION_BOTTOM;
          this.updateCopyrightPos();
          this.updateLoginWarningPos();
          this.updateRssPositions();

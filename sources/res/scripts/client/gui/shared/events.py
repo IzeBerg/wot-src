@@ -308,6 +308,8 @@ class LobbySimpleEvent(HasCtxEvent):
     BATTLE_RESULTS_SHOW_QUEST = 'battleResultsWindowShowQuest'
     CHANGE_SOUND_ENVIRONMENT = 'changeSoundEnvironment'
     VEHICLE_PREVIEW_HIDDEN = 'vehiclePreviewHidden'
+    ENTITY_TOOLTIP_SHOW = 'entityTooltipShow'
+    ENTITY_TOOLTIP_HIDE = 'entityTooltipHide'
 
 
 class MissionsEvent(HasCtxEvent):
@@ -679,7 +681,6 @@ class AirDropEvent(HasCtxEvent):
     AIR_DROP_LANDED = 'onAirDropLanded'
     AIR_DROP_LOOP_ENTERED = 'onAirDropLootEntered'
     AIR_DROP_LOOP_LEFT = 'onAirDropLootLeft'
-    AIR_DROP_NXT_SPAWNED = 'onAirDropNxtSpawned'
 
 
 class ProfilePageEvent(HasCtxEvent):

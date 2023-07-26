@@ -856,7 +856,6 @@
 			11000
 			<gold/>
 		</price>
-		<notInShop>true</notInShop>
 		<tags>AT-SPG role_ATSPG_support HD sinai heavyAT-SPG improvedVentilation_class1_user tankRammer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user</tags>
 		<level>8</level>
 	</R177_ISU_152K_BL10>
@@ -886,7 +885,6 @@
 			11000
 			<gold/>
 		</price>
-		<notInShop>true</notInShop>
 		<tags>mediumTank role_MT_universal HD mediumTank3 improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
 		<level>8</level>
 	</R180_Object_274_A>
@@ -1233,7 +1231,7 @@
 		</price>
 		<notInShop>true</notInShop>
 		<cannotBeBought>true</cannotBeBought>
-		<tags>mediumTank private HD epic_battles improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
+		<tags>mediumTank role_MT_universal private HD epic_battles improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
 		<level>8</level>
 	</R20_T-44_FL>
 	<R165_Object_703_II>
@@ -1321,6 +1319,7 @@
 			11000
 			<gold/>
 		</price>
+		<notInShop>true</notInShop>
 		<tags>lightTank role_LT_universal HD scout improvedVentilation_class3_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_light_user</tags>
 		<level>8</level>
 	</R158_LT_432>
@@ -1370,7 +1369,7 @@
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
-		<tags>mediumTank role_MT_universal private HD telecom cannot_be_sold disabledInRoaming improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
+		<tags>mediumTank role_MT_universal private HD telecom cannot_be_sold disabledInRoaming improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user debutBoxes</tags>
 		<level>8</level>
 	</R127_T44_100_I>
 	<R156_IS_2M>
@@ -1487,6 +1486,7 @@
 			11000
 			<gold/>
 		</price>
+		<notInShop>true</notInShop>
 		<tags>AT-SPG role_ATSPG_sniper HD heavyAT-SPG improvedVentilation_class1_user tankRammer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user</tags>
 		<level>8</level>
 	</R135_T_103>
@@ -1892,7 +1892,7 @@
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
-		<tags>lightTank role_LT_universal private HD secret scout improvedVentilation_class3_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_light_user</tags>
+		<tags>lightTank role_LT_universal HD scout improvedVentilation_class3_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_light_user</tags>
 		<level>8</level>
 	</R98_T44_85M>
 	<R40_T-54_FL>
@@ -2285,6 +2285,16 @@
 		<tags>observer private secret lightTank improvedVentilation_class1_user unrecoverable</tags>
 		<level>1</level>
 	</Observer>
+	<R97_Object_140_FEP23>
+		<id>142</id>
+		<userString>#ussr_vehicles:Object_140_FEP</userString>
+		<description>#ussr_vehicles:Object_140_FEP_descr</description>
+		<shortUserString>#ussr_vehicles:Object_140_FEP_short</shortUserString>
+		<price>1</price>
+		<notInShop>true</notInShop>
+		<tags>mediumTank role_MT_universal HD fun_random mode_hidden cm_hidden secret cannot_be_sold builtinRepairkit_user lockCrew lockCrewSkills hideCrew lockOptionalDevices lockShells lockEquipment lockDevices hideStorage lockOutfit</tags>
+		<level>10</level>
+	</R97_Object_140_FEP23>
 	<R208_Object_156O>
 		<id>145</id>
 		<userString>#ussr_vehicles:R208_Object_156O</userString>

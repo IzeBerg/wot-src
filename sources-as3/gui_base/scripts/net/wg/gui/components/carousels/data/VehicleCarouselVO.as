@@ -85,6 +85,8 @@ package net.wg.gui.components.carousels.data
       
       public var xpImgSource:String = "";
       
+      public var debutBoxesImgSource:String = "";
+      
       public var tankType:String = "";
       
       public var rentLeft:String = "";
@@ -102,6 +104,8 @@ package net.wg.gui.components.carousels.data
       public var isCritInfo:Boolean = false;
       
       public var tooltip:String = "";
+      
+      public var isWulfTooltip:Boolean = false;
       
       public var lockedTooltip:String = "";
       

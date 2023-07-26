@@ -163,13 +163,9 @@ package net.wg.data.constants.generated
       
       public static const BR_SELECT_RESPAWN:String = "BRSelectRespawn";
       
-      public static const BR_RESPAWN_MESSAGE_PANEL:String = "BRRespawnMessagePanel";
-      
       public static const FRAG_PANEL:String = "fragPanel";
       
       public static const BR_PLAYER_STATS_IN_BATTLE:String = "brPlayerStatsInBattle";
-      
-      public static const BR_TIMERS_PANEL:String = "brTimersPanel";
       
       public static const ROLE_DESCRIPTION:String = "roleDescription";
       

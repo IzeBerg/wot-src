@@ -106,6 +106,10 @@ package net.wg.gui.battle.epicBattle.views.stats
          this.applyInteractivity();
       }
       
+      public function resetFrags() : void
+      {
+      }
+      
       public function as_setGeneralBonus(param1:Number) : void
       {
          var _loc2_:Boolean = false;
@@ -123,7 +127,7 @@ package net.wg.gui.battle.epicBattle.views.stats
          this.header.updateMapName(_loc2_.mapName);
          this.header.setBattleTypeName(_loc2_.battleTypeLocaleStr);
          this.header.updateWinText(_loc2_.winText);
-         this.header.setBattleTypeFrameName(_loc2_.battleTypeFrameLabel);
+         this.header.setBattleTypeIconPath(_loc2_.battleTypeIconPathBig);
          this.statsTable.team1TF.text = _loc2_.allyTeamName;
          this.statsTable.team2TF.text = _loc2_.enemyTeamName;
       }
@@ -171,10 +175,6 @@ package net.wg.gui.battle.epicBattle.views.stats
             _loc3_.push(_loc4_);
          }
          this._tableCtrl.setVehiclesData(_loc3_,_loc2_.rightVehiclesIDs,true);
-      }
-      
-      public function resetFrags() : void
-      {
       }
       
       public function updateEpicPlayerStats(param1:EpicPlayerStatsVO) : void
@@ -227,8 +227,12 @@ package net.wg.gui.battle.epicBattle.views.stats
          this.modalBgSpr.height = param2;
          this.modalBgSpr.x = -_loc3_;
          this.modalBgSpr.y = 0;
-         this.x = _loc3_;
-         this.y = 0;
+         x = _loc3_;
+         y = 0;
+      }
+      
+      public function updateTriggeredChatCommands(param1:IDAAPIDataClass) : void
+      {
       }
       
       public function updateUserTags(param1:IDAAPIDataClass) : void
@@ -252,10 +256,6 @@ package net.wg.gui.battle.epicBattle.views.stats
       }
       
       public function updateVehiclesStat(param1:IDAAPIDataClass) : void
-      {
-      }
-      
-      public function updateTriggeredChatCommands(param1:IDAAPIDataClass) : void
       {
       }
       

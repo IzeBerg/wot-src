@@ -69,9 +69,6 @@
 			0.2
 			<!--BW_String-->
 		</priceFactor>
-		<tiling>1 1 0 0</tiling>
-		<exclusionMask/>
-		<density>1 1</density>
 	</camouflage>
 	<hull>
 		<armor>
@@ -107,11 +104,11 @@
 		<swinging>
 			<lodDist>FAR</lodDist>
 			<pitchParams>
-				0.34 38.00 0.36 1.00 0.05 0.34
+				0.34 38 0.36 1 0.05 0.34
 				<!--BW_String-->
 			</pitchParams>
 			<rollParams>
-				1.00 0.34 38.00 0.36 1.00 0.06 0.40
+				1 0.34 38 0.36 1 0.06 0.4
 				<!--BW_String-->
 			</rollParams>
 			<sensitivityToImpulse>
@@ -130,29 +127,26 @@
 			<collisionModelServer>vehicles/chinese/Ch00_ClingeBot_SH/collision/Hull.model</collisionModelServer>
 			<collisionModelClient>vehicles/chinese/Ch00_ClingeBot_SH/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
+		<customizationSlots>
+			<slot>
+				<slotType>paint</slotType>
+				<slotId>11000</slotId>
+				<anchorPosition>0 0 0</anchorPosition>
+				<anchorDirection>-0 1 0</anchorDirection>
+			</slot>
+			<slot>
+				<slotType>camouflage</slotType>
+				<slotId>12000</slotId>
+				<anchorPosition>0 0 0</anchorPosition>
+				<anchorDirection>-0 1 0</anchorDirection>
+			</slot>
+		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
 				<paint>HULL</paint>
 				<camouflage>HULL</camouflage>
 			</customizableVehicleAreas>
 		</customization>
-		<turretPitches>
-			<turret>0.000000</turret>
-		</turretPitches>
-		<customizationSlots>
-			<slot>
-				<slotType>paint</slotType>
-				<slotId>11000</slotId>
-				<anchorPosition>0.000000 0.000000 0.000000</anchorPosition>
-				<anchorDirection>-0.000000 1.000000 0.000000</anchorDirection>
-			</slot>
-			<slot>
-				<slotType>camouflage</slotType>
-				<slotId>12000</slotId>
-				<anchorPosition>0.000000 0.000000 0.000000</anchorPosition>
-				<anchorDirection>-0.000000 1.000000 0.000000</anchorDirection>
-			</slot>
-		</customizationSlots>
 		<camouflage>
 			<density>0.000000 0.000000</density>
 			<aoTextureSize>0.000000 0.000000</aoTextureSize>
@@ -515,6 +509,20 @@
 			<wwsoundPC>treads_type_pc</wwsoundPC>
 			<wwsoundNPC>trds_med_npc</wwsoundNPC>
 			<hullPosition>0.000000 0.986122 0.000000</hullPosition>
+			<customizationSlots>
+				<slot>
+					<slotType>paint</slotType>
+					<slotId>21000</slotId>
+					<anchorPosition>0 0 0</anchorPosition>
+					<anchorDirection>-0 1 0</anchorDirection>
+				</slot>
+				<slot>
+					<slotType>style</slotType>
+					<slotId>29000</slotId>
+					<anchorPosition>0 0 0</anchorPosition>
+					<anchorDirection>-0 1 0</anchorDirection>
+				</slot>
+			</customizationSlots>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>CHASSIS</paint>
@@ -609,41 +617,99 @@
 					<startIndex>0</startIndex>
 					<count>4</count>
 					<isLeft>true</isLeft>
-					<minOffset>-0.040000</minOffset>
-					<maxOffset>0.040000</maxOffset>
+					<minOffset>
+						-0.04
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.04
+						<!--BW_String-->
+					</maxOffset>
 				</group>
 				<group>
 					<template>Track_R</template>
 					<startIndex>0</startIndex>
 					<count>4</count>
 					<isLeft>false</isLeft>
-					<minOffset>-0.040000</minOffset>
-					<maxOffset>0.040000</maxOffset>
+					<minOffset>
+						-0.04
+						<!--BW_String-->
+					</minOffset>
+					<maxOffset>
+						0.04
+						<!--BW_String-->
+					</maxOffset>
 				</group>
 			</groundNodes>
+			<splineDesc>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<segmentModelLeft>vehicles/chinese/Ch00_ClingeBot_SH/track/segment.model</segmentModelLeft>
+					<segmentModelRight>vehicles/chinese/Ch00_ClingeBot_SH/track/segment.model</segmentModelRight>
+					<left>vehicles/chinese/Ch00_ClingeBot_SH/track/left.track</left>
+					<right>vehicles/chinese/Ch00_ClingeBot_SH/track/right.track</right>
+					<segmentLength>
+						0.08
+						<!--BW_String-->
+					</segmentLength>
+					<segmentOffset>
+						0.026
+						<!--BW_String-->
+					</segmentOffset>
+					<atlas>
+						<UTiles>1</UTiles>
+						<VTiles>1</VTiles>
+					</atlas>
+				</trackPair>
+				<lodDist>SPLINE_TRACK</lodDist>
+			</splineDesc>
 			<physicalTracks>
 				<left>
 					<trackPairIdx>0</trackPairIdx>
 					<segmentsCount>98</segmentsCount>
 					<segmentsOuterThickness>0.050051</segmentsOuterThickness>
 					<segmentsInnerThickness>0.007099</segmentsInnerThickness>
-					<segmentsPlaneOffset>-0.900000</segmentsPlaneOffset>
+					<segmentsPlaneOffset>
+						-0.9
+						<!--BW_String-->
+					</segmentsPlaneOffset>
 					<mainSegment>
 						<model>vehicles/chinese/Ch00_ClingeBot_SH/track/segment.model</model>
 						<length>0.082261</length>
 					</mainSegment>
 					<springsLength>
 						<backwardMovement>
-							<back>0.080000</back>
-							<top>0.076000</top>
+							<back>
+								0.08
+								<!--BW_String-->
+							</back>
+							<top>
+								0.076
+								<!--BW_String-->
+							</top>
 							<front>0.075837</front>
-							<bottom>0.025650</bottom>
+							<bottom>
+								0.02565
+								<!--BW_String-->
+							</bottom>
 						</backwardMovement>
 						<forwardMovement>
-							<back>0.070000</back>
-							<top>0.070000</top>
-							<front>0.080000</front>
-							<bottom>0.031630</bottom>
+							<back>
+								0.07
+								<!--BW_String-->
+							</back>
+							<top>
+								0.07
+								<!--BW_String-->
+							</top>
+							<front>
+								0.08
+								<!--BW_String-->
+							</front>
+							<bottom>
+								0.03163
+								<!--BW_String-->
+							</bottom>
 						</forwardMovement>
 					</springsLength>
 					<bottomWheels>
@@ -692,7 +758,7 @@
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_L3</name>
 							<startAngle>-3.028819</startAngle>
@@ -708,33 +774,53 @@
 						<bottom/>
 						<top/>
 					</collisionHull>
-					<sourceCollisionHullPoints>
-						<bottom/>
-						<top/>
-					</sourceCollisionHullPoints>
 				</left>
 				<right>
 					<trackPairIdx>0</trackPairIdx>
 					<segmentsCount>98</segmentsCount>
 					<segmentsOuterThickness>0.050051</segmentsOuterThickness>
 					<segmentsInnerThickness>0.007099</segmentsInnerThickness>
-					<segmentsPlaneOffset>0.900000</segmentsPlaneOffset>
+					<segmentsPlaneOffset>
+						0.9
+						<!--BW_String-->
+					</segmentsPlaneOffset>
 					<mainSegment>
 						<model>vehicles/chinese/Ch00_ClingeBot_SH/track/segment.model</model>
 						<length>0.082257</length>
 					</mainSegment>
 					<springsLength>
 						<backwardMovement>
-							<back>0.080000</back>
-							<top>0.076000</top>
+							<back>
+								0.08
+								<!--BW_String-->
+							</back>
+							<top>
+								0.076
+								<!--BW_String-->
+							</top>
 							<front>0.075837</front>
-							<bottom>0.025650</bottom>
+							<bottom>
+								0.02565
+								<!--BW_String-->
+							</bottom>
 						</backwardMovement>
 						<forwardMovement>
-							<back>0.070000</back>
-							<top>0.070000</top>
-							<front>0.080000</front>
-							<bottom>0.031630</bottom>
+							<back>
+								0.07
+								<!--BW_String-->
+							</back>
+							<top>
+								0.07
+								<!--BW_String-->
+							</top>
+							<front>
+								0.08
+								<!--BW_String-->
+							</front>
+							<bottom>
+								0.03163
+								<!--BW_String-->
+							</bottom>
 						</forwardMovement>
 					</springsLength>
 					<bottomWheels>
@@ -783,7 +869,7 @@
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_R3</name>
 							<startAngle>-3.028804</startAngle>
@@ -791,7 +877,10 @@
 						</sync>
 						<sync>
 							<name>WD_R0</name>
-							<startAngle>0.135450</startAngle>
+							<startAngle>
+								0.13545
+								<!--BW_String-->
+							</startAngle>
 							<teethCount>22</teethCount>
 						</sync>
 					</teethSyncs>
@@ -799,42 +888,8 @@
 						<bottom/>
 						<top/>
 					</collisionHull>
-					<sourceCollisionHullPoints>
-						<bottom/>
-						<top/>
-					</sourceCollisionHullPoints>
 				</right>
 			</physicalTracks>
-			<customizationSlots>
-				<slot>
-					<slotType>paint</slotType>
-					<slotId>21000</slotId>
-					<anchorPosition>0.000000 0.000000 0.000000</anchorPosition>
-					<anchorDirection>-0.000000 1.000000 0.000000</anchorDirection>
-				</slot>
-				<slot>
-					<slotType>style</slotType>
-					<slotId>29000</slotId>
-					<anchorPosition>0.000000 0.000000 0.000000</anchorPosition>
-					<anchorDirection>-0.000000 1.000000 0.000000</anchorDirection>
-				</slot>
-			</customizationSlots>
-			<splineDesc>
-				<trackPair>
-					<trackPairIdx>0</trackPairIdx>
-					<segmentModelLeft>vehicles/chinese/Ch00_ClingeBot_SH/track/segment.model</segmentModelLeft>
-					<segmentModelRight>vehicles/chinese/Ch00_ClingeBot_SH/track/segment.model</segmentModelRight>
-					<left>vehicles/chinese/Ch00_ClingeBot_SH/track/left.track</left>
-					<right>vehicles/chinese/Ch00_ClingeBot_SH/track/right.track</right>
-					<segmentLength>0.080000</segmentLength>
-					<segmentOffset>0.026000</segmentOffset>
-					<atlas>
-						<UTiles>1</UTiles>
-						<VTiles>1</VTiles>
-					</atlas>
-				</trackPair>
-				<lodDist>SPLINE_TRACK</lodDist>
-			</splineDesc>
 			<repairTime>
 				5.71428585
 				<!--BW_String-->
@@ -889,52 +944,31 @@
 					<armor>
 						<armor_1>
 							10
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_1>
 						<armor_2>
 							10
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_2>
 						<armor_3>
 							10
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_3>
 						<armor_4>
 							0
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_4>
 						<armor_5>
 							10
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_5>
 						<armor_7>
 							10
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_7>
 						<armor_8>
 							10
-							<vehicleDamageFactor>
-								0.0
-								<!--BW_String-->
-							</vehicleDamageFactor>
+							<vehicleDamageFactor>0</vehicleDamageFactor>
 						</armor_8>
 						<gun>
 							10
@@ -976,6 +1010,29 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<customizationSlots>
+						<slot>
+							<slotType>paint</slotType>
+							<slotId>41000</slotId>
+							<anchorPosition>0 0 -0</anchorPosition>
+							<anchorDirection>-0 1 0</anchorDirection>
+							<applyTo>4096</applyTo>
+						</slot>
+						<slot>
+							<slotType>paint</slotType>
+							<slotId>41001</slotId>
+							<anchorPosition>0 0 -0</anchorPosition>
+							<anchorDirection>-0 1 0</anchorDirection>
+							<applyTo>16384</applyTo>
+						</slot>
+						<slot>
+							<slotType>camouflage</slotType>
+							<slotId>42000</slotId>
+							<anchorPosition>0 0 -0</anchorPosition>
+							<anchorDirection>-0 1 0</anchorDirection>
+							<applyTo>4096</applyTo>
+						</slot>
+					</customizationSlots>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>
@@ -991,31 +1048,6 @@
 						<collisionModelServer>vehicles/chinese/Ch00_ClingeBot_SH/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/chinese/Ch00_ClingeBot_SH/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
-					<animateEmblemSlots>true</animateEmblemSlots>
-					<shotOffset>0.000000 0.000000 0.000000</shotOffset>
-					<customizationSlots>
-						<slot>
-							<slotType>paint</slotType>
-							<slotId>41000</slotId>
-							<applyTo>4096</applyTo>
-							<anchorPosition>0.000000 0.000000 -0.000000</anchorPosition>
-							<anchorDirection>-0.000000 1.000000 0.000000</anchorDirection>
-						</slot>
-						<slot>
-							<slotType>paint</slotType>
-							<slotId>41001</slotId>
-							<applyTo>16384</applyTo>
-							<anchorPosition>0.000000 0.000000 -0.000000</anchorPosition>
-							<anchorDirection>-0.000000 1.000000 0.000000</anchorDirection>
-						</slot>
-						<slot>
-							<slotType>camouflage</slotType>
-							<slotId>42000</slotId>
-							<applyTo>4096</applyTo>
-							<anchorPosition>0.000000 0.000000 -0.000000</anchorPosition>
-							<anchorDirection>-0.000000 1.000000 0.000000</anchorDirection>
-						</slot>
-					</customizationSlots>
 					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<density>0.000000 0.000000</density>
@@ -1036,6 +1068,20 @@
 				0.008 0.30215 0.320405
 				<!--BW_String-->
 			</gunPosition>
+			<customizationSlots>
+				<slot>
+					<slotType>paint</slotType>
+					<slotId>31000</slotId>
+					<anchorPosition>-0 0 0</anchorPosition>
+					<anchorDirection>-0 1 0</anchorDirection>
+				</slot>
+				<slot>
+					<slotType>camouflage</slotType>
+					<slotId>32000</slotId>
+					<anchorPosition>-0 0 0</anchorPosition>
+					<anchorDirection>-0 1 0</anchorDirection>
+				</slot>
+			</customizationSlots>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>TURRET</paint>
@@ -1043,25 +1089,10 @@
 				</customizableVehicleAreas>
 			</customization>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
-			<showEmblemsOnGun>false</showEmblemsOnGun>
 			<physicsShape>
-				1.039 -0.035 1.061 0.087 1.000 0.000 0.500 0.500 0.500 0.500 0.139 0.500 0.189 1.000 0.000
+				1.039 -0.035 1.061 0.087 1 0 0.5 0.5 0.5 0.5 0.139 0.5 0.189 1 0
 				<!--BW_String-->
 			</physicsShape>
-			<customizationSlots>
-				<slot>
-					<slotType>paint</slotType>
-					<slotId>31000</slotId>
-					<anchorPosition>-0.000000 0.000000 0.000000</anchorPosition>
-					<anchorDirection>-0.000000 1.000000 0.000000</anchorDirection>
-				</slot>
-				<slot>
-					<slotType>camouflage</slotType>
-					<slotId>32000</slotId>
-					<anchorPosition>-0.000000 0.000000 0.000000</anchorPosition>
-					<anchorDirection>-0.000000 1.000000 0.000000</anchorDirection>
-				</slot>
-			</customizationSlots>
 			<camouflage>
 				<density>0.000000 0.000000</density>
 				<aoTextureSize>0.000000 0.000000</aoTextureSize>

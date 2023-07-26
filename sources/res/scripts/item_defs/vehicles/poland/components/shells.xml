@@ -1434,18 +1434,22 @@
 	<_105mm_wz_22_24_G1_HEAT_SH>
 		<id>86</id>
 		<userString>#poland_vehicles:_105mm_wz_22_24_G1_HEAT_SH</userString>
-		<icon>ap_premium</icon>
+		<icon>hc_premium</icon>
 		<price>0</price>
 		<notInShop>true</notInShop>
 		<improved>true</improved>
-		<kind>ARMOR_PIERCING</kind>
+		<kind>HOLLOW_CHARGE</kind>
 		<caliber>105</caliber>
 		<isTracer>true</isTracer>
-		<effects>BRmainArmorPiercing</effects>
+		<effects>BRmainHollowCharge</effects>
 		<damage>
-			<armor>200</armor>
+			<armor>170</armor>
 			<devices>17</devices>
 		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.05
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
 	</_105mm_wz_22_24_G1_HEAT_SH>
 	<_105mm_wz_22_24_G1_APCR_SH>
 		<id>87</id>
@@ -1459,25 +1463,29 @@
 		<isTracer>true</isTracer>
 		<effects>BRmainAPCR</effects>
 		<damage>
-			<armor>160</armor>
+			<armor>135</armor>
 			<devices>17</devices>
 		</damage>
 	</_105mm_wz_22_24_G1_APCR_SH>
 	<_75mm_wz_36_37_G2_HEAT_SH>
 		<id>88</id>
 		<userString>#poland_vehicles:_75mm_wz_36_37_G2_HEAT_SH</userString>
-		<icon>ap_premium</icon>
+		<icon>hc_premium</icon>
 		<price>0</price>
 		<notInShop>true</notInShop>
 		<improved>true</improved>
-		<kind>ARMOR_PIERCING</kind>
+		<kind>HOLLOW_CHARGE</kind>
 		<caliber>75</caliber>
 		<isTracer>true</isTracer>
-		<effects>BRmainArmorPiercing</effects>
+		<effects>BRmainHollowCharge</effects>
 		<damage>
-			<armor>190</armor>
+			<armor>200</armor>
 			<devices>20</devices>
 		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.05
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
 	</_75mm_wz_36_37_G2_HEAT_SH>
 	<_75mm_wz_36_37_G2_APCR_SH>
 		<id>89</id>
@@ -1491,25 +1499,29 @@
 		<isTracer>true</isTracer>
 		<effects>BRlargeAPCR</effects>
 		<damage>
-			<armor>150</armor>
-			<devices>21</devices>
+			<armor>170</armor>
+			<devices>20</devices>
 		</damage>
 	</_75mm_wz_36_37_G2_APCR_SH>
 	<_90mm_armata_wz_46_G3_HEAT_SH>
 		<id>90</id>
 		<userString>#poland_vehicles:_90mm_armata_wz_46_G3_HEAT_SH</userString>
-		<icon>ap_premium</icon>
+		<icon>hc_premium</icon>
 		<price>0</price>
 		<notInShop>true</notInShop>
 		<improved>true</improved>
-		<kind>ARMOR_PIERCING</kind>
+		<kind>HOLLOW_CHARGE</kind>
 		<caliber>90</caliber>
 		<isTracer>true</isTracer>
-		<effects>BRmainArmorPiercing</effects>
+		<effects>BRmainHollowCharge</effects>
 		<damage>
-			<armor>235</armor>
-			<devices>23</devices>
+			<armor>240</armor>
+			<devices>24</devices>
 		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.05
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
 	</_90mm_armata_wz_46_G3_HEAT_SH>
 	<_90mm_armata_wz_46_G3_APCR_SH>
 		<id>91</id>
@@ -1523,25 +1535,29 @@
 		<isTracer>true</isTracer>
 		<effects>BRmainAPCR</effects>
 		<damage>
-			<armor>190</armor>
-			<devices>23</devices>
+			<armor>210</armor>
+			<devices>24</devices>
 		</damage>
 	</_90mm_armata_wz_46_G3_APCR_SH>
 	<_100mm_armata_wz_62_G4_HEAT_SH>
 		<id>92</id>
 		<userString>#poland_vehicles:_100mm_armata_wz_62_G4_HEAT_SH</userString>
-		<icon>ap_premium</icon>
+		<icon>hc_premium</icon>
 		<price>0</price>
 		<notInShop>true</notInShop>
 		<improved>true</improved>
-		<kind>ARMOR_PIERCING</kind>
+		<kind>HOLLOW_CHARGE</kind>
 		<caliber>100</caliber>
 		<isTracer>true</isTracer>
-		<effects>BRmainArmorPiercing</effects>
+		<effects>BRmainHollowCharge</effects>
 		<damage>
-			<armor>245</armor>
+			<armor>240</armor>
 			<devices>24</devices>
 		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.05
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
 	</_100mm_armata_wz_62_G4_HEAT_SH>
 	<_100mm_armata_wz_62_G4_APCR_SH>
 		<id>93</id>
@@ -1555,25 +1571,29 @@
 		<isTracer>true</isTracer>
 		<effects>BRmainAPCR</effects>
 		<damage>
-			<armor>200</armor>
+			<armor>180</armor>
 			<devices>24</devices>
 		</damage>
 	</_100mm_armata_wz_62_G4_APCR_SH>
 	<_100mm_armata_wz_58_G5_HEAT_SH>
 		<id>94</id>
 		<userString>#poland_vehicles:_100mm_armata_wz_58_G5_HEAT_SH</userString>
-		<icon>ap_premium</icon>
+		<icon>hc_premium</icon>
 		<price>0</price>
 		<notInShop>true</notInShop>
 		<improved>true</improved>
-		<kind>ARMOR_PIERCING</kind>
+		<kind>HOLLOW_CHARGE</kind>
 		<caliber>100</caliber>
 		<isTracer>true</isTracer>
-		<effects>BRmainArmorPiercing</effects>
+		<effects>BRmainHollowCharge</effects>
 		<damage>
-			<armor>365</armor>
+			<armor>390</armor>
 			<devices>39</devices>
 		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.05
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
 	</_100mm_armata_wz_58_G5_HEAT_SH>
 	<_100mm_armata_wz_58_G5_APCR_SH>
 		<id>95</id>
@@ -1587,25 +1607,29 @@
 		<isTracer>true</isTracer>
 		<effects>BRmainAPCR</effects>
 		<damage>
-			<armor>290</armor>
+			<armor>300</armor>
 			<devices>39</devices>
 		</damage>
 	</_100mm_armata_wz_58_G5_APCR_SH>
 	<_122mm_wz_43_50_G6_HEAT_SH>
 		<id>96</id>
 		<userString>#poland_vehicles:_122mm_wz_43_50_G6_HEAT_SH</userString>
-		<icon>ap_premium</icon>
+		<icon>hc_premium</icon>
 		<price>0</price>
 		<notInShop>true</notInShop>
 		<improved>true</improved>
-		<kind>ARMOR_PIERCING</kind>
+		<kind>HOLLOW_CHARGE</kind>
 		<caliber>122</caliber>
 		<isTracer>true</isTracer>
-		<effects>BRlargeArmorPiercing</effects>
+		<effects>BRlargeHollowCharge</effects>
 		<damage>
-			<armor>340</armor>
+			<armor>360</armor>
 			<devices>36</devices>
 		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.05
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
 	</_122mm_wz_43_50_G6_HEAT_SH>
 	<_122mm_wz_43_50_G6_APCR_SH>
 		<id>97</id>
@@ -1619,7 +1643,7 @@
 		<isTracer>true</isTracer>
 		<effects>BRlargeAPCR</effects>
 		<damage>
-			<armor>270</armor>
+			<armor>280</armor>
 			<devices>36</devices>
 		</damage>
 	</_122mm_wz_43_50_G6_APCR_SH>

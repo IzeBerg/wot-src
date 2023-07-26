@@ -222,8 +222,6 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             from InBattleUpgrades import onBattleRoyalePrerequisites
             if onBattleRoyalePrerequisites(self, oldTypeDescriptor):
                 forceReloading = True
-            if forceReloading:
-                self.isForceReloading = True
         strCD = self.typeDescriptor.makeCompactDescr()
         newInfo = VehicleAppearanceCacheInfo(self.typeDescriptor, self.health, self.isCrewActive, self.isTurretDetached, outfitDescr)
         ctrl = self.guiSessionProvider.dynamic.appearanceCache
@@ -249,10 +247,10 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         if respawnCompactDescr is not None:
             self.isCrewActive = True
             descr = vehicles.VehicleDescr(respawnCompactDescr, extData=self)
-            self.__turretDetachmentConfirmed = False
             if 'battle_royale' not in descr.type.tags:
                 self.health = self.publicInfo.maxHealth
                 self.__prevHealth = self.publicInfo.maxHealth
+                self.__turretDetachmentConfirmed = False
             return descr
         return vehicles.VehicleDescr(compactDescr=_stripVehCompDescrIfRoaming(self.publicInfo.compDescr), extData=self)
 
@@ -316,7 +314,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.__stopExtras()
         BigWorld.player().vehicle_onLeaveWorld(self)
 
-    def showShooting(self, burstCount, gunIndex, isPredictedShot=False):
+    def showShooting(self, burstCount, currentGuns, isPredictedShot=False):
         blockShooting = self.siegeState is not None and self.siegeState != VEHICLE_SIEGE_STATE.ENABLED and self.siegeState != VEHICLE_SIEGE_STATE.DISABLED and not self.typeDescriptor.hasAutoSiegeMode
         if not self.isStarted or blockShooting:
             return
@@ -325,7 +323,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
                 return
         extra = self.typeDescriptor.extrasDict[self.typeDescriptor.shootExtraName]
         extra.stopFor(self)
-        extra.startFor(self, (burstCount, gunIndex))
+        extra.startFor(self, (burstCount, currentGuns))
         if not isPredictedShot and self.isPlayerVehicle:
             ctrl = self.guiSessionProvider.shared.feedback
             if ctrl is not None:

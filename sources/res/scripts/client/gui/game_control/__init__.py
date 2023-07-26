@@ -77,13 +77,14 @@ def getGameControllersConfig(manager):
     from gui.game_control.collective_goal_marathons_controller import CollectiveGoalMarathonsController
     from gui.game_control.extension_stubs.fun_random_controller import FunRandomController
     from gui.game_control.hangar_switch_controller import HangarSpaceSwitchController
-    from gui.game_control.event_lootboxes_controller import EventLootBoxesController
     from gui.entitlements.entitlements_controller import EntitlementsController
     from gui.game_control.winback_controller import WinbackController
     from gui.game_control.daily_quests_intro_presenter import DailyQuestsIntroPresenter
     from gui.game_control.achievements20_controller import Achievements20Controller as _Ach20Ctrl
     from gui.limited_ui.lui_controller import LimitedUIController
+    from gui.game_control.debut_boxes_controller import DebutBoxesController
     from gui.game_control.collections_controller import CollectionsSystemController
+    from gui.hangar_presets.hangar_gui_controller import HangarGuiController
     tracker = GameStateTracker()
     tracker.init()
     manager.addInstance(_interface.IGameStateTracker, tracker, finalizer='fini')
@@ -157,7 +158,6 @@ def getGameControllersConfig(manager):
     _config(_interface.IGiftSystemController, GiftSystemController())
     _config(_interface.IRTSBattlesController, RTSBattlesController())
     _config(_interface.IResourceWellController, ResourceWellController())
-    _config(_interface.IEventLootBoxesController, EventLootBoxesController())
     _config(_interface.IEntitlementsController, EntitlementsController())
     _config(_interface.ICollectionsSystemController, CollectionsSystemController())
     _config(_interface.IWinbackController, WinbackController())
@@ -166,4 +166,6 @@ def getGameControllersConfig(manager):
     _config(_interface.ICollectiveGoalMarathonsController, CollectiveGoalMarathonsController())
     _config(_interface.IAchievements20Controller, _Ach20Ctrl())
     _config(_interface.ILimitedUIController, LimitedUIController())
+    _config(_interface.IHangarGuiController, HangarGuiController())
+    _config(_interface.IDebutBoxesController, DebutBoxesController())
     collectGameControllers(_config)

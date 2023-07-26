@@ -19,8 +19,6 @@ package
       
       public static const CURSOR_OVERLAPCONTOUR_TOOLTIP:String = "#settings:cursor/overlapContour/tooltip";
       
-      public static const MARKER_LEVEL_TOOLTIP:String = "#settings:marker/level/tooltip";
-      
       public static const LANGUAGE_CODE:String = "#settings:LANGUAGE_CODE";
       
       public static const WINDOWTITLE:String = "#settings:windowTitle";
@@ -1046,10 +1044,6 @@ package
       public static const MARKER_ICON:String = "#settings:marker/icon";
       
       public static const MARKER_LEVEL:String = "#settings:marker/level";
-      
-      public static const MARKER_LEVEL_TOOLTIP_HEADER:String = "#settings:marker/level/tooltip/header";
-      
-      public static const MARKER_LEVEL_TOOLTIP_BODY:String = "#settings:marker/level/tooltip/body";
       
       public static const MARKER_HPINDICATOR:String = "#settings:marker/hpIndicator";
       

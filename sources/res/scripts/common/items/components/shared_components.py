@@ -82,7 +82,8 @@ NodesAndGroups = reflectedNamedTuple('NodesAndGroups', ('nodes', 'groups', 'acti
                                                         'lodSettings'))
 Camouflage = reflectedNamedTuple('Camouflage', ('tiling', 'exclusionMask', 'density',
                                                 'aoTextureSize'))
-DEFAULT_CAMOUFLAGE = Camouflage(None, None, None, None)
+DEFAULT_CAMOUFLAGE = Camouflage((1.0, 1.0, 0.0, 0.0), '', (1.0, 1.0), (1, 1))
+EMPTY_CAMOUFLAGE = Camouflage(None, None, None, None)
 SwingingSettings = reflectedNamedTuple('SwingingSettings', ('lodDist', 'sensitivityToImpulse',
                                                             'pitchParams', 'rollParams'))
 

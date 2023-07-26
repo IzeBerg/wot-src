@@ -90,6 +90,7 @@ class UI_STORAGE_KEYS(CONST_CONTAINER):
     POST_PROGRESSION_INTRO_SHOWN = 'post_progression_intro_shown'
     VEH_PREVIEW_POST_PROGRESSION_BULLET_SHOWN = 'veh_preview_post_progression_bullet_shown'
     ACHIEVEMENT_EDIT_VIEW_VISITED = 'achievement_edit_view_visited'
+    GUI_LOOTBOXES_ENTRY_POINT = 'gui_lootboxes_entry_point'
 
 
 class BATTLE_MATTERS_KEYS(CONST_CONTAINER):
@@ -286,7 +287,8 @@ class ServerSettingsManager(object):
                                              'role_ATSPG_support': 22, 
                                              'role_LT_universal': 23, 
                                              'role_LT_wheeled': 24, 
-                                             'role_SPG': 25}, offsets={}), 
+                                             'role_SPG': 25, 
+                                             'debut_boxes': 26}, offsets={}), 
        SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_1: Section(masks={'ussr': 0, 
                                                     'germany': 1, 
                                                     'usa': 2, 
@@ -337,7 +339,8 @@ class ServerSettingsManager(object):
                                                     'role_ATSPG_support': 22, 
                                                     'role_LT_universal': 23, 
                                                     'role_LT_wheeled': 24, 
-                                                    'role_SPG': 25}, offsets={}), 
+                                                    'role_SPG': 25, 
+                                                    'debut_boxes': 26}, offsets={}), 
        SETTINGS_SECTIONS.EPICBATTLE_CAROUSEL_FILTER_1: Section(masks={'ussr': 0, 
                                                         'germany': 1, 
                                                         'usa': 2, 
@@ -439,7 +442,8 @@ class ServerSettingsManager(object):
                                                    'role_ATSPG_support': 22, 
                                                    'role_LT_universal': 23, 
                                                    'role_LT_wheeled': 24, 
-                                                   'role_SPG': 25}, offsets={}), 
+                                                   'role_SPG': 25, 
+                                                   'debut_boxes': 26}, offsets={}), 
        SETTINGS_SECTIONS.GUI_START_BEHAVIOR: Section(masks={GuiSettingsBehavior.FREE_XP_INFO_DIALOG_SHOWED: 0, 
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_SHOWED: 1, 
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_STARTED: 2, 
@@ -576,7 +580,8 @@ class ServerSettingsManager(object):
                                       UI_STORAGE_KEYS.DUAL_GUN_HIGHLIGHTS_COUNTER: Offset(19, 3670016), 
                                       UI_STORAGE_KEYS.TURBOSHAFT_HIGHLIGHTS_COUNTER: Offset(23, 58720256)}), 
        SETTINGS_SECTIONS.UI_STORAGE_2: Section(masks={UI_STORAGE_KEYS.ROCKET_ACCELERATION_MARK_IS_SHOWN: 0, 
-                                        UI_STORAGE_KEYS.ACHIEVEMENT_EDIT_VIEW_VISITED: 4}, offsets={UI_STORAGE_KEYS.ROCKET_ACCELERATION_HIGHLIGHTS_COUNTER: Offset(1, 14)}), 
+                                        UI_STORAGE_KEYS.ACHIEVEMENT_EDIT_VIEW_VISITED: 4, 
+                                        UI_STORAGE_KEYS.GUI_LOOTBOXES_ENTRY_POINT: 5}, offsets={UI_STORAGE_KEYS.ROCKET_ACCELERATION_HIGHLIGHTS_COUNTER: Offset(1, 14)}), 
        SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS: Section(masks={}, offsets={BATTLE_MATTERS_KEYS.QUESTS_SHOWN: Offset(0, 255), 
                                                  BATTLE_MATTERS_KEYS.QUEST_PROGRESS: Offset(8, 4294967040)}), 
        SETTINGS_SECTIONS.QUESTS_PROGRESS: Section(masks={}, offsets={QUESTS_PROGRESS.VIEW_TYPE: Offset(0, 3), 
@@ -880,10 +885,11 @@ class ServerSettingsManager(object):
     def getBPStorage(self, defaults=None):
         if not self.settingsCache.isSynced():
             return {}
-        storageData = self.getSection(SETTINGS_SECTIONS.BATTLE_PASS_STORAGE, defaults)
-        if updateBattlePassSettings(storageData):
-            self.saveInBPStorage(storageData)
-        return storageData
+        return self.getSection(SETTINGS_SECTIONS.BATTLE_PASS_STORAGE, defaults)
+
+    def updateBPStorageData(self, data, defaults=None):
+        if updateBattlePassSettings(data):
+            self.saveInBPStorage(data)
 
     def saveInBPStorage(self, settings):
         if self.settingsCache.isSynced():
@@ -929,6 +935,8 @@ class ServerSettingsManager(object):
         self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, {BATTLE_MATTERS_KEYS.QUEST_PROGRESS: lastSeenProgress})
 
     def getLimitedUIProgress(self, storageIdx, offset):
+        if not self.settingsCache.isSynced():
+            return False
         if storageIdx >= len(LIMITED_UI_STORAGES):
             LOG_ERROR("Can't read LimitedUI flag. storageIdx is out of range")
             return 0
@@ -937,16 +945,34 @@ class ServerSettingsManager(object):
         return flags & 1 << offset
 
     def setLimitedUIProgress(self, storageIdx, offset):
+        if not self.settingsCache.isSynced():
+            return False
         if storageIdx >= len(LIMITED_UI_STORAGES):
             LOG_ERROR("Can't store LimitedUI flag. storageIdx is out of range")
-            return
+            return False
         luiProgress = self.getLimitedUIProgress(storageIdx, offset)
         if luiProgress:
-            return
+            return True
         storageID = LIMITED_UI_STORAGES[storageIdx]
         flags = self.getSectionSettings(storageID, LIMITED_UI_KEY, 0)
         flags |= 1 << offset
         self.setSectionSettings(storageID, {LIMITED_UI_KEY: flags})
+        return True
+
+    def setLimitedUIGroupProgress(self, data):
+        if not self.settingsCache.isSynced():
+            return False
+        settings = {}
+        for storageIdx, offsets in data.iteritems():
+            storageID = LIMITED_UI_STORAGES[storageIdx]
+            flags = self.getSectionSettings(storageID, LIMITED_UI_KEY, 0)
+            for offset in offsets:
+                flags |= 1 << offset
+
+            settings[storageID] = flags
+
+        self.setSettings(settings)
+        return True
 
     def setLimitedUIFullComplete(self, offset):
         settings = {storage:4294967295 for storage in LIMITED_UI_STORAGES}

@@ -119,7 +119,9 @@ def _formatBenefits(benefitData):
 
 
 def _getRestoreBannerStr(param):
-    return text_styles.concatStylesToMultiLine(text_styles.mainBig(backport.text(R.strings.menu.research.restore.commmonInfo())), text_styles.mainBig(backport.text(R.strings.menu.research.restore.dueDate(), date=param)))
+    if param != float('inf'):
+        return text_styles.concatStylesToMultiLine(text_styles.mainBig(backport.text(R.strings.menu.research.restore.commonInfo())), text_styles.mainBig(backport.text(R.strings.menu.research.restore.dueDate(), date=param)))
+    return text_styles.mainBig(backport.text(R.strings.menu.research.restore.commonInfoUnlim()))
 
 
 def _getUnlockedBannerStr(param):
@@ -459,7 +461,8 @@ class Research(ResearchMeta):
         if NODE_STATE.canTradeIn(nodeState) and self.__tradeIn.validatePossibleVehicleToBuy(root):
             return htmlStr
         if NODE_STATE.isRestoreAvailable(nodeState):
-            restoreDueDate = getDueDateOrTimeStr(rootNode.getRestoreFinishTime())
+            restoreFinishTime = rootNode.getRestoreFinishTime()
+            restoreDueDate = getDueDateOrTimeStr(restoreFinishTime) if restoreFinishTime < float('inf') else float('inf')
             if restoreDueDate:
                 return _BANNER_GETTERS[States.RESTORE](restoreDueDate)
         if not root.isUnlocked and not root.isCollectible:

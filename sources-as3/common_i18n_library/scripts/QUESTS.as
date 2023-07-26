@@ -107,6 +107,8 @@ package
       
       public static const BONUSES_ITEM_CREWSKIN:String = "#quests:bonuses/item/crewSkin";
       
+      public static const BONUSES_ITEM_LOOTBOXES:String = "#quests:bonuses/item/lootBoxes";
+      
       public static const BONUSNAME_BLUEPRINTS_ANY:String = "#quests:bonusName/blueprints/any";
       
       public static const BONUSES_CREWBOOK_TEXT:String = "#quests:bonuses/crewBook/text";
@@ -2287,6 +2289,8 @@ package
       
       public static const MISSIONDETAILS_PREVPAGEBTN_LABEL:String = "#quests:missionDetails/prevPageBtn/label";
       
+      public static const MISSIONS_TOKENPOPOVER_HEADER:String = "#quests:missions/tokenPopover/header";
+      
       public static const MISSIONS_TOKENPOPOVER_DESCR:String = "#quests:missions/tokenPopover/descr";
       
       public static const MISSIONS_TOKENPOPOVER_DESCR_SHOP:String = "#quests:missions/tokenPopover/descr/shop";
@@ -3406,6 +3410,16 @@ package
       public static const DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP:String = "#quests:details/conditions/cumulative/damagedHp";
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_COMP7PRESTIGEPOINTS:String = "#quests:details/conditions/cumulative/comp7PrestigePoints";
+      
+      public static const DEBUTBOXES_MISSIONS_HEADER_CAPTION1:String = "#quests:debutBoxes/missions/header/caption1";
+      
+      public static const DEBUTBOXES_MISSIONS_HEADER_CAPTION2:String = "#quests:debutBoxes/missions/header/caption2";
+      
+      public static const DEBUTBOXES_MISSIONS_HEADER_CAPTION3:String = "#quests:debutBoxes/missions/header/caption3";
+      
+      public static const DEBUTBOXES_MISSIONS_HEADER_DISABLED:String = "#quests:debutBoxes/missions/header/disabled";
+      
+      public static const DEBUTBOXES_MISSIONS_HEADER_INFO:String = "#quests:debutBoxes/missions/header/info";
       
       public static const BATTLECONDITION_STATE_ENUM:Array = [BATTLECONDITION_STATE_COMPLETED,BATTLECONDITION_STATE_COMPLETED_PERFECTLY,BATTLECONDITION_STATE_IN_PROGRESS,BATTLECONDITION_STATE_FAILED];
       

@@ -41,9 +41,9 @@ class CrosshairPanelContainerMeta(DAAPISimpleContainerMeta):
         if self._isDAAPIInited():
             return self.flashObject.as_setHealth(percent)
 
-    def as_setAmmoStockS(self, quantity, quantityInClip, isLow, clipState, clipReloaded=False):
+    def as_setAmmoStockS(self, quantity, quantityInClip, clipState, clipReloaded=False):
         if self._isDAAPIInited():
-            return self.flashObject.as_setAmmoStock(quantity, quantityInClip, isLow, clipState, clipReloaded)
+            return self.flashObject.as_setAmmoStock(quantity, quantityInClip, clipState, clipReloaded)
 
     def as_setClipParamsS(self, clipCapacity, burst, isAutoloader=False):
         if self._isDAAPIInited():
@@ -196,3 +196,15 @@ class CrosshairPanelContainerMeta(DAAPISimpleContainerMeta):
     def as_blinkReloadTimeS(self, blinkType):
         if self._isDAAPIInited():
             return self.flashObject.as_blinkReloadTime(blinkType)
+
+    def as_setOverheatProgressS(self, value, isOverheated):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setOverheatProgress(value, isOverheated)
+
+    def as_addOverheatS(self, overheatMark):
+        if self._isDAAPIInited():
+            return self.flashObject.as_addOverheat(overheatMark)
+
+    def as_removeOverheatS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_removeOverheat()
