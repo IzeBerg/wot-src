@@ -470,7 +470,6 @@ def showShop(url='', path='', params=None, isClientCloseControl=False):
         if browserWindow is not None:
             browser = browserWindow.getBrowser()
             browser.navigate(url)
-            print 'browser______', browser
             return
     ctx = {'url': url}
     if isClientCloseControl:

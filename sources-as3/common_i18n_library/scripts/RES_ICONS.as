@@ -20619,6 +20619,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S360X270_RATION_UK:String = "../maps/icons/quests/bonuses/s360x270/ration_uk.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S360X270_RECERTIFICATIONFORM:String = "../maps/icons/quests/bonuses/s360x270/recertificationForm.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S360X270_REMOVEDRPMLIMITER:String = "../maps/icons/quests/bonuses/s360x270/removedRpmLimiter.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S360X270_SMALLMEDKIT:String = "../maps/icons/quests/bonuses/s360x270/smallMedkit.png";
@@ -21028,6 +21030,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RATION_SWEDEN:String = "../maps/icons/quests/bonuses/s600x450/ration_sweden.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RATION_UK:String = "../maps/icons/quests/bonuses/s600x450/ration_uk.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_RECERTIFICATIONFORM:String = "../maps/icons/quests/bonuses/s600x450/recertificationForm.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_S32_BOFORS_TORNVAGN:String = "../maps/icons/quests/bonuses/s600x450/S32_Bofors_Tornvagn.png";
       
