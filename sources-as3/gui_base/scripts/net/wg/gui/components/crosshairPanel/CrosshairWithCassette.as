@@ -8,28 +8,9 @@ package net.wg.gui.components.crosshairPanel
       private static const RELOAD_TIME_BLINK_Y_SHIFT:int = -10;
        
       
-      private var _cassettePositions:Array = null;
-      
       public function CrosshairWithCassette()
       {
          super();
-         this._cassettePositions = this.getCassettePositions();
-      }
-      
-      override protected function onDispose() : void
-      {
-         if(this._cassettePositions)
-         {
-            this._cassettePositions.splice(0,this._cassettePositions.length);
-            this._cassettePositions = null;
-         }
-         super.onDispose();
-      }
-      
-      override protected function updateNetType() : void
-      {
-         super.updateNetType();
-         cassetteMC.y = this._cassettePositions[netType];
       }
       
       override protected function arrangeReloadTimeBlink() : void
@@ -45,11 +26,6 @@ package net.wg.gui.components.crosshairPanel
          {
             super.arrangeReloadTimeBlink();
          }
-      }
-      
-      protected function getCassettePositions() : Array
-      {
-         return null;
       }
    }
 }

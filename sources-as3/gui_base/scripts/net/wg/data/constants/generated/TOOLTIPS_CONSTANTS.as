@@ -31,8 +31,6 @@ package net.wg.data.constants.generated
       
       public static const CAROUSEL_VEHICLE:String = "carouselVehicle";
       
-      public static const FUN_RANDOM_CAROUSEL_VEHICLE:String = "funRandomCarouselVehicle";
-      
       public static const INVENTORY_VEHICLE:String = "inventoryVehicle";
       
       public static const TECHTREE_VEHICLE:String = "techtreeVehicle";
@@ -256,6 +254,8 @@ package net.wg.data.constants.generated
       public static const FRONTLINE_COUPON:String = "frontlineCoupon";
       
       public static const FRONTLINE_RANK:String = "frontlineRank";
+      
+      public static const FRONTLINE_RANDOM_RESERVE:String = "FLRandomReserve";
       
       public static const ACTION_XP:String = "actionXP";
       
@@ -509,8 +509,6 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_ROYALE_EQUIPMENT:String = "battleRoyaleEquipment";
       
-      public static const BATTLE_ROYALE_RESPAWN:String = "battleRoyaleRespawn";
-      
       public static const BATTLE_ROYALE_VEHICLE:String = "battleRoyaleVehicle";
       
       public static const BATTLE_ROYALE_PERF_SIMPLE:String = "battleRoyalePerfSimple";
@@ -546,6 +544,10 @@ package net.wg.data.constants.generated
       public static const FUN_RANDOM_MODE_SELECTOR_CALENDAR_DAY:String = "funRandomModeSelectorCalendarDay";
       
       public static const FUN_RANDOM_REWARDS:String = "funRandomRewards";
+      
+      public static const FUN_RANDOM_CAROUSEL_VEHICLE:String = "funRandomCarouselVehicle";
+      
+      public static const FUN_RANDOM_VEHICLE:String = "funRandomVehicle";
       
       public static const COMP7_SELECTOR_INFO:String = "comp7SelectorInfo";
       
@@ -835,6 +837,8 @@ package net.wg.data.constants.generated
       
       public static const FRONTLINE_SET:Array = [FRONTLINE_COUPON,FRONTLINE_RANK];
       
+      public static const FRONTLINE_BATTLE_SET:Array = [FRONTLINE_RANDOM_RESERVE];
+      
       public static const SESSION_STATS_SET:Array = [SESSION_STATS_TANK_INFO,SESSION_STATS_EFFICIENCY_PARAM];
       
       public static const TRADE_IN_SET:Array = [TRADE_IN_INFO,TRADE_IN_INFO_NOT_AVAILABLE,TRADE_IN_STATE_NOT_AVAILABLE];
@@ -853,13 +857,13 @@ package net.wg.data.constants.generated
       
       public static const ROYALE_BATTLE_SET:Array = [BATTLE_ROYALE_MODULES];
       
-      public static const ROYALE_LOBBY_SET:Array = [BATTLE_ROYALE_VEHICLE,BATTLE_ROYALE_MODULES_HANGAR,BATTLE_ROYALE_BATTLE_PROGRESSION,BATTLE_ROYALE_RESPAWN,BATTLE_ROYALE_EQUIPMENT,BATTLE_ROYALE_PERF_SIMPLE,BATTLE_ROYALE_PERF_ADVANCED,BATTLE_ROYALE_SELECTOR_INFO,BATTLE_ROYALE_WIDGET_INFO,BATTLE_ROYALE_COMPLETED_QUESTS_INFO,BATTLE_ROYALE_SELECTOR_CALENDAR_INFO,BATTLE_ROYALE_PROXY_CURRENCY];
+      public static const ROYALE_LOBBY_SET:Array = [BATTLE_ROYALE_VEHICLE,BATTLE_ROYALE_MODULES_HANGAR,BATTLE_ROYALE_BATTLE_PROGRESSION,BATTLE_ROYALE_EQUIPMENT,BATTLE_ROYALE_PERF_SIMPLE,BATTLE_ROYALE_PERF_ADVANCED,BATTLE_ROYALE_SELECTOR_INFO,BATTLE_ROYALE_WIDGET_INFO,BATTLE_ROYALE_COMPLETED_QUESTS_INFO,BATTLE_ROYALE_SELECTOR_CALENDAR_INFO,BATTLE_ROYALE_PROXY_CURRENCY];
       
       public static const MAPBOX_LOBBY_SET:Array = [MAPBOX_SELECTOR_INFO,MAPBOX_PROGRESSION_PREVIEW,SELECTABLE_CREWBOOK,RANDOM_CREWBOOK,MAPBOX_CALENDAR];
       
       public static const ACCOUNT_COMPLETION_SET:Array = [ACCOUNT_COMPLETION,DEMO_ACCOUNT_RENAME_PROCESSING];
       
-      public static const FUN_RANDOM_LOBBY_SET:Array = [FUN_RANDOM_CALENDAR_DAY,FUN_RANDOM_MODE_SELECTOR_CALENDAR_DAY,FUN_RANDOM_CAROUSEL_VEHICLE,FUN_RANDOM_REWARDS];
+      public static const FUN_RANDOM_LOBBY_SET:Array = [FUN_RANDOM_CALENDAR_DAY,FUN_RANDOM_MODE_SELECTOR_CALENDAR_DAY,FUN_RANDOM_CAROUSEL_VEHICLE,FUN_RANDOM_VEHICLE,FUN_RANDOM_REWARDS];
       
       public static const REFERRAL_PROGRAM_SET:Array = [REFERRAL_AWARDS];
       

@@ -22,7 +22,14 @@ class RemappingCache(object):
     def getValue(self, modifierName, remappingName, oldValue, ctx):
         composer = self.__remapping.get(remappingName, {}).get(modifierName)
         if composer is not None:
-            return composer(ctx, oldValue)
+            return composer.getValue(ctx, oldValue)
+        else:
+            return
+
+    def getValues(self, modifierName, remappingName, oldValue):
+        composer = self.__remapping.get(remappingName, {}).get(modifierName)
+        if composer is not None:
+            return composer.getValues(oldValue)
         else:
             return
 

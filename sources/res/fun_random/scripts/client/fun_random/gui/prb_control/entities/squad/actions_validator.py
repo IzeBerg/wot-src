@@ -1,3 +1,4 @@
+from constants import BATTLE_MODE_VEH_TAGS_EXCEPT_FUN
 from fun_random.gui.feature.util.fun_mixins import FunSubModesWatcher
 from fun_random.gui.feature.util.fun_wrappers import hasDesiredSubMode
 from gui.prb_control.entities.base.actions_validator import ActionsValidatorComposite
@@ -12,6 +13,7 @@ class _FunRandomSquadStateValidator(SquadPrimeTimeValidator, FunSubModesWatcher)
 
 
 class _FunRandomSquadVehicleValidator(SquadVehiclesValidator, FunSubModesWatcher):
+    _BATTLE_MODE_VEHICLE_TAGS = BATTLE_MODE_VEH_TAGS_EXCEPT_FUN
 
     @hasDesiredSubMode()
     def _isVehicleSuitableForMode(self, vehicle):

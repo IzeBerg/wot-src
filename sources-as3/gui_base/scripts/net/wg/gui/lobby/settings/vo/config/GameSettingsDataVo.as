@@ -116,8 +116,6 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var battleLoadingInfo:SettingsControlProp = null;
       
-      public var battleLoadingRankedInfo:SettingsControlProp = null;
-      
       public var receiveClanInvitesNotifications:SettingsControlProp = null;
       
       public var customizationDisplayType:SettingsControlProp = null;
@@ -201,7 +199,6 @@ package net.wg.gui.lobby.settings.vo.config
             "enableRepairTimer":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "enableBattleNotifier":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "battleLoadingInfo":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
-            "battleLoadingRankedInfo":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
             "carouselType":createControl(ControlsFactory.TYPE_BUTTON_BAR).build(),
             "doubleCarouselType":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
             "customizationDisplayType":createControl(ControlsFactory.TYPE_BUTTON_BAR).build(),
@@ -323,8 +320,6 @@ package net.wg.gui.lobby.settings.vo.config
          this.sniperModeByShift = null;
          this.battleLoadingInfo.dispose();
          this.battleLoadingInfo = null;
-         this.battleLoadingRankedInfo.dispose();
-         this.battleLoadingRankedInfo = null;
          this.receiveClanInvitesNotifications.dispose();
          this.receiveClanInvitesNotifications = null;
          this.carouselType.dispose();

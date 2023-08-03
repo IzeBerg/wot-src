@@ -1,4 +1,4 @@
-import typing
+import typing, BigWorld
 if typing.TYPE_CHECKING:
     from uilogging.base.logger import LOGGERS_TYPING
 
@@ -23,3 +23,17 @@ class _LazyLoggerDescriptor(object):
 
 def lazyUILogger(class_, *args, **kwargs):
     return _LazyLoggerDescriptor(class_, *args, **kwargs)
+
+
+def getClientSessionID():
+    if BigWorld.player() is None:
+        return ''
+    else:
+        return str(BigWorld.player().connectionMgr.lastSessionID)
+
+
+def getClientPeripheryID():
+    if BigWorld.player() is None:
+        return 0
+    else:
+        return BigWorld.player().connectionMgr.peripheryID

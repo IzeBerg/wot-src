@@ -68,10 +68,10 @@ package net.wg.gui.lobby.settings
          super.configUI();
          this.arcadeCrosshair.isUseFrameAnimation = false;
          this.arcadeCrosshair.setClipsParam(7,1);
-         this.arcadeCrosshair.setAmmoStock(21,7,false,CrosshairClipQuantityBar.STATE_RELOAD_FINISHED,true);
+         this.arcadeCrosshair.setAmmoStock(7,CrosshairClipQuantityBar.STATE_RELOAD_FINISHED,true);
          this.sniperCrosshair.isUseFrameAnimation = false;
          this.sniperCrosshair.setClipsParam(7,1);
-         this.sniperCrosshair.setAmmoStock(21,7,false,CrosshairClipQuantityBar.STATE_RELOAD_FINISHED,true);
+         this.sniperCrosshair.setAmmoStock(7,CrosshairClipQuantityBar.STATE_RELOAD_FINISHED,true);
          this.gunMarker.setMixingScale(CROSSHAIR_SCALE);
          this.gunMarker.setReloadingParams(1,CrosshairConsts.RELOADING_ENDED);
       }

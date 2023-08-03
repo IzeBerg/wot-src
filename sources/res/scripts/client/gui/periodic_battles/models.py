@@ -1,10 +1,11 @@
-import logging, typing
-from enum import Enum
+import logging
 from functools import partial
+import typing
+from enum import Enum
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.shared.utils.decorators import ReprInjector
 from gui.shared.formatters import text_styles
+from gui.shared.utils.decorators import ReprInjector
 from gui.shared.utils.functions import makeTooltip
 from helpers import time_utils
 from shared_utils import collapseIntervals, findFirst, first, CONST_CONTAINER

@@ -149,7 +149,3 @@ def getShowcaseUrl():
 def getClientControlledCloseCtx():
     return {'browserParams': makeBrowserParams(isCloseBtnVisible=True), 
        'forcedSkipEscape': True}
-
-
-def getSteelHunterProductsUrl():
-    return _getUrl('shProducts')

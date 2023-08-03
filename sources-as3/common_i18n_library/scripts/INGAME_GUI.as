@@ -81,6 +81,8 @@ package
       
       public static const PLAYER_ERRORS_CANT_SHOOT_GUN_DAMAGED:String = "#ingame_gui:player_errors/cant_shoot/gun_damaged";
       
+      public static const PLAYER_ERRORS_CANT_SHOOT_GUN_OVERHEATED:String = "#ingame_gui:player_errors/cant_shoot/gun_overheated";
+      
       public static const PLAYER_ERRORS_CANT_SHOOT_GUN_RELOAD:String = "#ingame_gui:player_errors/cant_shoot/gun_reload";
       
       public static const PLAYER_ERRORS_CANT_SHOOT_GUN_LOCKED:String = "#ingame_gui:player_errors/cant_shoot/gun_locked";
@@ -138,6 +140,8 @@ package
       public static const PLAYER_MESSAGES_DEVICE_REPAIRED:String = "#ingame_gui:player_messages/DEVICE_REPAIRED";
       
       public static const PLAYER_MESSAGES_ALLY_HIT:String = "#ingame_gui:player_messages/ALLY_HIT";
+      
+      public static const PLAYER_MESSAGES_ALLY_MULTI_HIT:String = "#ingame_gui:player_messages/ALLY_MULTI_HIT";
       
       public static const PLAYER_MESSAGES_ALLY_BASE_CAPTURED_NOTIFICATION:String = "#ingame_gui:player_messages/ally_base_captured_notification";
       
@@ -476,6 +480,8 @@ package
       public static const SHELLS_KINDS_ARMOR_PIERCING_CR:String = "#ingame_gui:shells_kinds/ARMOR_PIERCING_CR";
       
       public static const SHELLS_KINDS_PARAMS_DAMAGE:String = "#ingame_gui:shells_kinds/params/damage";
+      
+      public static const SHELLS_KINDS_PARAMS_DAMAGEPERSECOND:String = "#ingame_gui:shells_kinds/params/damagePerSecond";
       
       public static const SHELLS_KINDS_PARAMS_PIERCINGPOWER:String = "#ingame_gui:shells_kinds/params/piercingPower";
       

@@ -1136,11 +1136,6 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/sh_category/sh_category)
-				<name>shProducts</name>
-				<type>url</type>
-			</item>
-			<item>
 				$PARAMS(/showcase/styles_2d)
 				<name>showcase</name>
 				<type>url</type>
@@ -1194,7 +1189,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/11BPContentPage#bp11extrachapter/
+				/$LANGUAGE_CODE/promocontent/11BPContentPage/#bp11extrachapter
 				<name>extraInfoPage</name>
 				<type>url</type>
 			</item>
@@ -1237,40 +1232,6 @@
 					<item>
 						<type>string</type>
 						<value>styles</value>
-					</item>
-				</value>
-			</item>
-			<item>
-				<name>specialVoiceTankmen</name>
-				<type>dict</type>
-				<value>
-					<item>
-						<name>progression</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_2:630180:::brotherhood::tankmen_bph_2:commander</value>
-							</item>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_1:630180:::brotherhood::tankmen_bph_1:commander</value>
-							</item>
-						</value>
-					</item>
-					<item>
-						<name>shop</name>
-						<type>list</type>
-						<value>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_3:630180:::brotherhood::tankmen_bph_3:commander</value>
-							</item>
-							<item>
-								<type>string</type>
-								<value>tman_template:::tankmen_bph_4:630180:::brotherhood::tankmen_bph_4:commander</value>
-							</item>
-						</value>
 					</item>
 				</value>
 			</item>
@@ -1753,7 +1714,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2023IntroVideo/
+				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2022IntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -2008,17 +1969,45 @@
 		</value>
 	</setting>
 	<setting>
-		<name>resourceWell</name>
-		<type>dict</type>
+		<name>resourceWellIntroVideoUrl</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/ResourceWellIntroVideo/
-				<name>introVideoUrl</name>
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>resourceWellInfoPage</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/assembly-shop-2023-august/
+				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/assembly-shop-2023/
-				<name>infoPage</name>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/assembly-shop-2023-august/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/assembly-shop-2023-august/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/assembly-shop-2023-august/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/assembly-shop-2023-august/
+				<name>default</name>
 				<type>url</type>
 			</item>
 		</value>

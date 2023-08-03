@@ -115,7 +115,7 @@ class SelectorItem(object):
         return self._isNew
 
     def getFormattedLabel(self):
-        return text_styles.middleTitle(self._label)
+        return text_styles.middleTitle(self.getLabel())
 
     def getOrder(self):
         return self._order

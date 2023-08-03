@@ -25,6 +25,9 @@ msgstr "Impact Area"
 msgid "abilityInfo/params/airstrike/stun"
 msgstr "Stun"
 
+msgid "abilityInfo/params/arcade_minefield_epic_battle/activationDelay"
+msgstr "Deployment"
+
 msgid "abilityInfo/params/arcade_minefield_epic_battle/bombsNumber"
 msgstr "Number of mines"
 
@@ -137,7 +140,7 @@ msgid "abilityInfo/params/stealth_radar/passiveCircularVisionRadius"
 msgstr "Passive bonus to view range"
 
 msgid "abilityInfo/properties/dynamic"
-msgstr "Reserve improvement"
+msgstr "Reserve Level"
 
 msgid "abilityInfo/properties/static"
 msgstr "Permanent characteristics"
@@ -409,12 +412,12 @@ msgstr "Combat Reserve Categories"
 
 msgid "intro/card/slots/desc"
 msgstr ""
-"Upon achieving the Sergeant and Lieutenant ranks, you will unlock the second"
-" and third slots, respectively. The Reserve will be improved after reaching "
-"the Captain and Major ranks."
+"By default, one Combat Reserve is available to you. Others unlock upon "
+"reaching the Sergeant and Lieutenant ranks. All three Reserves will be "
+"improved after reaching the Captain and Major ranks."
 
 msgid "intro/card/slots/title"
-msgstr "Unlock Slots in Battle"
+msgstr "Unlocking Combat Reserves in Battle"
 
 msgid "intro/card/types/desc"
 msgstr ""
@@ -456,8 +459,8 @@ msgstr "Reserve not activated"
 
 msgid "metaAbilityScreen/activation_depends"
 msgstr ""
-"The maximum level of improvement depends on the vehicle type the Reserve is "
-"mounted on."
+"The Combat Reserve Level is increased after reaching the Captain and Major "
+"ranks in battle. The maximum level is determined by the battle scenario."
 
 msgid "metaAbilityScreen/how_to_activate"
 msgstr ""
@@ -608,7 +611,7 @@ msgid "questsTooltip/epicBattle/startIn"
 msgstr "New missions will be available in %(time)s"
 
 msgid "questsTooltip/epicBattle/steelhunter/header"
-msgstr "Steel Hunter: Reborn Missions"
+msgstr "Steel Hunter Missions"
 
 msgid "questsTooltip/epicBattle/timeLeft"
 msgstr "Frontline ends in: %(time)s"
@@ -657,6 +660,15 @@ msgstr "%(reserveName)s Combat Reserve unlocked"
 
 msgid "rank/reserveUpgraded"
 msgstr "%(reserveName)s Combat Reserve improved"
+
+msgid "rank/slotUnlocked"
+msgstr "The %(slotNumber)s Combat Reserve unlocked"
+
+msgid "rank/slot_2"
+msgstr "2nd"
+
+msgid "rank/slot_3"
+msgstr "3rd"
 
 msgid "recovery/Blocked"
 msgstr ""
@@ -780,9 +792,9 @@ msgstr "This mode demands high computer performance"
 msgid ""
 "selectorTooltip/epicBattle/attention/possibleLowPerformance/description"
 msgstr ""
-"This mode requires high computer performance. You may experience issues with"
-" map loading, graphics, and vehicle movement. In case of insufficient "
-"performance, try reducing the graphics quality in your Settings."
+"This mode demands high computer performance. You may experience issues with "
+"map loading, graphics, and vehicle movement. In case of insufficient "
+"performance, try a lower graphics quality in Settings."
 
 msgid "selectorTooltip/epicBattle/attention/possibleLowPerformance/title"
 msgstr "Low Performance"
@@ -949,6 +961,18 @@ msgstr ""
 
 msgid "tooltips/slotSetupInfo/open/title"
 msgstr "Unlocking: %(desc)s"
+
+msgid "tooltips/slotSetupInfo/reserve/locked"
+msgstr ""
+"In the <font color='#E9E2BF'>Twist of Fate</font> scenario, purchasing a "
+"Combat Reserve will increase its level by one and provide the opportunity to"
+" improve it to Level <font color='#E9E2BF'>IV</font>."
+
+msgid "tooltips/slotSetupInfo/reserve/purchased"
+msgstr ""
+"A Combat Reserve placed in this slot increases the chance of it being "
+"offered in the <font color='#E9E2BF'>Twist of Fate</font> scenario by <font "
+"color='#E9E2BF'>10%</font>."
 
 msgid "tooltips/slotSetupInfo/scheme"
 msgstr "Unlocking and Improving Reserves in Battle"

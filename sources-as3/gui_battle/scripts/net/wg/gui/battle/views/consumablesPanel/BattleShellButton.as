@@ -333,6 +333,14 @@ package net.wg.gui.battle.views.consumablesPanel
       {
       }
       
+      public function showPossibleStacks(param1:int) : void
+      {
+      }
+      
+      public function updateStacks(param1:int) : void
+      {
+      }
+      
       protected function setBindKeyText() : void
       {
          if(this._bindSfKeyCode == KeyProps.KEY_NONE)
@@ -347,10 +355,11 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private function reloadingEnd() : void
       {
-         this._isSelectedIndicatorVisible = true;
+         this._isSelectedIndicatorVisible = this._quantity > 0;
          invalidate(SELECTED_INDICATOR_VISIBILITY);
          this.selectedIndicator.gotoAndStop(BATTLE_ITEM_STATES.NORMAL);
          this._isAfterCoolDown = false;
+         validateNow();
       }
       
       override public function set state(param1:String) : void

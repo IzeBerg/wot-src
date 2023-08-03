@@ -10,7 +10,7 @@
 				<nations>germany</nations>
 			</include>
 			<exclude>
-				<vehicles>germany:G119_Panzer58_BF germany:G114_Rheinmetall_Skorpian</vehicles>
+				<vehicles>germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF</vehicles>
 			</exclude>
 		</vehicleFilter>
 		<style>
@@ -70,7 +70,7 @@
 				<nations>germany</nations>
 			</include>
 			<exclude>
-				<vehicles>germany:G119_Panzer58_BF germany:G114_Rheinmetall_Skorpian</vehicles>
+				<vehicles>germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF</vehicles>
 			</exclude>
 		</vehicleFilter>
 		<style>
@@ -217,7 +217,7 @@
 				<nations>germany</nations>
 			</include>
 			<exclude>
-				<vehicles>germany:G119_Panzer58_BF germany:G114_Rheinmetall_Skorpian</vehicles>
+				<vehicles>germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF</vehicles>
 			</exclude>
 		</vehicleFilter>
 		<style>
@@ -357,7 +357,7 @@
 				<nations>germany</nations>
 			</include>
 			<exclude>
-				<vehicles>germany:G119_Panzer58_BF germany:G114_Rheinmetall_Skorpian</vehicles>
+				<vehicles>germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF</vehicles>
 			</exclude>
 		</vehicleFilter>
 		<style>
@@ -751,7 +751,7 @@
 				<nations>germany</nations>
 			</include>
 			<exclude>
-				<vehicles>germany:G119_Panzer58_BF germany:G114_Rheinmetall_Skorpian</vehicles>
+				<vehicles>germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF</vehicles>
 			</exclude>
 		</vehicleFilter>
 		<style>
@@ -1393,15 +1393,8 @@
 							<progressionLevel>0</progressionLevel>
 						</item>
 					</decals>
-					<modifications/>
-					<projection_decals/>
-					<personal_numbers/>
-					<sequences/>
-					<attachments/>
-					<styleProgressionLevel>0</styleProgressionLevel>
 				</outfit>
 			</outfits>
-			<modelsSet/>
 		</style>
 		<modelsSet/>
 	</itemGroup>
@@ -1447,15 +1440,8 @@
 							<progressionLevel>0</progressionLevel>
 						</item>
 					</decals>
-					<modifications/>
-					<projection_decals/>
-					<personal_numbers/>
-					<sequences/>
-					<attachments/>
-					<styleProgressionLevel>0</styleProgressionLevel>
 				</outfit>
 			</outfits>
-			<modelsSet/>
 		</style>
 		<modelsSet/>
 	</itemGroup>
@@ -1501,15 +1487,8 @@
 							<progressionLevel>0</progressionLevel>
 						</item>
 					</decals>
-					<modifications/>
-					<projection_decals/>
-					<personal_numbers/>
-					<sequences/>
-					<attachments/>
-					<styleProgressionLevel>0</styleProgressionLevel>
 				</outfit>
 			</outfits>
-			<modelsSet/>
 		</style>
 		<modelsSet/>
 	</itemGroup>
@@ -2082,6 +2061,101 @@
 							<palette>0</palette>
 						</item>
 					</camouflages>
+				</outfit>
+			</outfits>
+			<itemFilters>
+				<projection_decal>
+					<include>
+						<itemGroupName>Progression Decals</itemGroupName>
+					</include>
+				</projection_decal>
+			</itemFilters>
+		</style>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:styles/special_styles</userString>
+		<season>ALL</season>
+		<historical>0</historical>
+		<priceGroup>styles 3000g notInShop</priceGroup>
+		<vehicleFilter>
+			<include>
+				<vehicles>germany:G162_Project_Kpz_07P_E</vehicles>
+			</include>
+		</vehicleFilter>
+		<style>
+			<id>812</id>
+			<texture>gui/maps/vehicles/styles/G162_Project_Kpz_07P_E_KL_3DSt.png</texture>
+			<modelsSet>G162_Project_Kpz_07P_E_KL_3DSt</modelsSet>
+			<maxNumber>1</maxNumber>
+			<userString>#vehicle_customization:special_style/G162_Project_Kpz_07P_E_KL_3DSt</userString>
+			<longDescriptionSpecial>#vehicle_customization:special_style/G162_Project_Kpz_07P_E_KL_3DSt_desc/long</longDescriptionSpecial>
+			<tags>progression_required styleSerialNumber</tags>
+			<outfits>
+				<outfit>
+					<season>summer</season>
+					<camouflages>
+						<item>
+							<id>740</id>
+							<appliedTo>4368</appliedTo>
+							<patternSize>1</patternSize>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+					<attachments>
+						<item>
+							<slotId>18000</slotId>
+							<id>66</id>
+						</item>
+						<item>
+							<slotId>18001</slotId>
+							<id>67</id>
+						</item>
+					</attachments>
+				</outfit>
+				<outfit>
+					<season>desert</season>
+					<camouflages>
+						<item>
+							<id>741</id>
+							<appliedTo>4368</appliedTo>
+							<patternSize>1</patternSize>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+					<attachments>
+						<item>
+							<slotId>18000</slotId>
+							<id>66</id>
+						</item>
+						<item>
+							<slotId>18001</slotId>
+							<id>67</id>
+						</item>
+					</attachments>
+				</outfit>
+				<outfit>
+					<season>winter</season>
+					<camouflages>
+						<item>
+							<id>742</id>
+							<appliedTo>4368</appliedTo>
+							<patternSize>1</patternSize>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+					<attachments>
+						<item>
+							<slotId>18000</slotId>
+							<id>66</id>
+						</item>
+						<item>
+							<slotId>18001</slotId>
+							<id>68</id>
+						</item>
+					</attachments>
+				</outfit>
+				<outfit>
+					<season>event</season>
 				</outfit>
 			</outfits>
 			<itemFilters>

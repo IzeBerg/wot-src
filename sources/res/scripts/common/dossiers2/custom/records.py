@@ -2372,6 +2372,30 @@ RECORDS = (
  (
   'singleAchievements', 'prime_gaming_reserved_12', 'p', 'B', 1),
  (
+  'singleAchievements', 'prime_gaming_reserved_13', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_14', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_15', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_16', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_17', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_18', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_19', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_20', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_21', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_22', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_23', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_24', 'p', 'B', 1),
+ (
   'singleAchievements', 'hw2019Medal', 'p', 'B', 1),
  (
   'singleAchievements', 'hw2019Medal1', 'p', 'B', 1),
@@ -4547,7 +4571,19 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('max15x15', 'maxAssistedVehicle'): 1789, 
    ('max15x15', 'maxDamageBlockedByArmor'): 1790, 
    ('max15x15', 'maxDamageBlockedByArmorVehicle'): 1791, 
-   ('singleAchievements', 'BattlePassCommonPr_11'): 1792}
+   ('singleAchievements', 'BattlePassCommonPr_11'): 1792, 
+   ('singleAchievements', 'prime_gaming_reserved_13'): 1793, 
+   ('singleAchievements', 'prime_gaming_reserved_14'): 1794, 
+   ('singleAchievements', 'prime_gaming_reserved_15'): 1795, 
+   ('singleAchievements', 'prime_gaming_reserved_16'): 1796, 
+   ('singleAchievements', 'prime_gaming_reserved_17'): 1797, 
+   ('singleAchievements', 'prime_gaming_reserved_18'): 1798, 
+   ('singleAchievements', 'prime_gaming_reserved_19'): 1799, 
+   ('singleAchievements', 'prime_gaming_reserved_20'): 1800, 
+   ('singleAchievements', 'prime_gaming_reserved_21'): 1801, 
+   ('singleAchievements', 'prime_gaming_reserved_22'): 1802, 
+   ('singleAchievements', 'prime_gaming_reserved_23'): 1803, 
+   ('singleAchievements', 'prime_gaming_reserved_24'): 1804}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

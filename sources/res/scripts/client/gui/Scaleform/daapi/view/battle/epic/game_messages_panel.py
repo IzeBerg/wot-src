@@ -1,4 +1,5 @@
 import BattleReplay
+from ReservesEvents import randomReservesEvents
 from gui.Scaleform.daapi.view.meta.GameMessagesPanelMeta import GameMessagesPanelMeta
 from helpers import dependency
 from skeletons.gui.battle_session import IBattleSessionProvider
@@ -43,6 +44,7 @@ class EpicMessagePanel(GameMessagesPanelMeta):
     def onMessageStarted(self, messageType, modificator, id_):
         ctrl = self.sessionProvider.dynamic.gameNotifications
         if ctrl is not None:
+            randomReservesEvents.hidePanel(True)
             ctrl.onMessagePlaybackStarted(messageType, {'id': id_, 'modificator': modificator})
         return
 
@@ -61,6 +63,7 @@ class EpicMessagePanel(GameMessagesPanelMeta):
     def onMessageHiding(self, messageType, id_):
         ctrl = self.sessionProvider.dynamic.gameNotifications
         if ctrl is not None:
+            randomReservesEvents.showPanel()
             ctrl.onMessagePlaybackHide(messageType, {'id': id_})
         return
 

@@ -3,6 +3,7 @@ from functools import partial
 import BigWorld, Keys, Math, ResMgr
 from AvatarInputHandler.AimingSystems import disableShotPointCache
 from AvatarInputHandler.vehicles_selection_mode import VehiclesSelectionControlMode
+from AvatarInputHandler.commands.fl_random_reserves import FLRandomReserves
 from helpers.CallbackDelayer import CallbackDelayer
 import BattleReplay, CommandMapping, DynamicCameras.ArcadeCamera, DynamicCameras.ArtyCamera, DynamicCameras.DualGunCamera, DynamicCameras.SniperCamera, DynamicCameras.StrategicCamera, GenericComponents, MapCaseMode, RespawnDeathMode, aih_constants, cameras, constants, control_modes, epic_battle_death_mode
 from AvatarInputHandler import AimingSystems, keys_handlers
@@ -10,6 +11,7 @@ from AvatarInputHandler import aih_global_binding, gun_marker_ctrl
 from AvatarInputHandler import steel_hunter_control_modes
 from BigWorld import SniperAimingSystem
 from AvatarInputHandler.AimingSystems.steady_vehicle_matrix import SteadyVehicleMatrixCalculator
+from AvatarInputHandler.commands.auto_shoot_gun_control import AutoShootGunControl
 from AvatarInputHandler.commands.bootcamp_mode_control import BootcampModeControl
 from AvatarInputHandler.commands.dualgun_control import DualGunController
 from AvatarInputHandler.commands.prebattle_setups_control import PrebattleSetupsControl
@@ -293,6 +295,8 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                 self.dualGunControl = DualGunController(typeDescr)
             elif not typeDescr.isDualgunVehicle:
                 self.dualGunControl = None
+            if typeDescr.isAutoShootGunVehicle:
+                self.__commands.append(AutoShootGunControl())
             if self.bootcampCtrl.isInBootcamp() and constants.HAS_DEV_RESOURCES:
                 self.__commands.append(BootcampModeControl())
             if ARENA_BONUS_TYPE_CAPS.checkAny(player.arena.bonusType, ARENA_BONUS_TYPE_CAPS.RADAR):
@@ -301,6 +305,8 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                 self.__commands.append(VehicleUpdateControl())
                 self.__commands.append(VehicleUpgradePanelControl())
                 self.__detachedCommands.append(VehicleUpgradePanelControl())
+            if ARENA_BONUS_TYPE_CAPS.checkAny(player.arena.bonusType, ARENA_BONUS_TYPE_CAPS.EPIC):
+                self.__detachedCommands.append(FLRandomReserves())
             if ARENA_BONUS_TYPE_CAPS.checkAny(player.arena.bonusType, ARENA_BONUS_TYPE_CAPS.SWITCH_SETUPS):
                 self.__persistentCommands.append(PrebattleSetupsControl())
             vehicle.appearance.removeComponentByType(GenericComponents.ControlModeStatus)

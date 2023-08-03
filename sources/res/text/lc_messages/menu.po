@@ -682,7 +682,7 @@ msgid "bonusType/27"
 msgstr "Frontline"
 
 msgid "bonusType/29"
-msgstr "Steel Hunter: Reborn"
+msgstr "\"Steel Hunter\""
 
 msgid "bonusType/37"
 msgstr "Recon Mission"
@@ -694,7 +694,7 @@ msgid "bonusType/4"
 msgstr "Special Battle"
 
 msgid "bonusType/42"
-msgstr "Arcade Cabinet"
+msgstr "\"%(modeName)s\""
 
 msgid "bonusType/43"
 msgstr "Onslaught"
@@ -1380,11 +1380,6 @@ msgstr ""
 "Grand\n"
 "Battle"
 
-msgid "crystals/info/tab/earn/level/mod/2"
-msgstr ""
-"Ranked\n"
-"Battle"
-
 msgid "crystals/info/tab/earn/level/title"
 msgstr "VEHICLE TIER"
 
@@ -1422,18 +1417,15 @@ msgstr "Victory"
 
 msgid "crystals/info/tab/get/description"
 msgstr ""
-"Fight in Random, Ranked, and Grand Battles in vehicles with an active "
-"indicator for earning bonds. The higher your position in the battle results "
-"by base experience earned, the more bonds you receive for the battle."
+"Fight in Random and Grand Battles in vehicles with an active indicator for "
+"earning bonds. The higher your position in the battle results by base "
+"experience earned, the more bonds you receive for the battle."
 
 msgid "crystals/info/tab/get/general"
 msgstr "GRAND BATTLE"
 
 msgid "crystals/info/tab/get/random"
 msgstr "RANDOM BATTLE"
-
-msgid "crystals/info/tab/get/ranked"
-msgstr "RANKED BATTLE"
 
 msgid "crystals/info/tab/getTab"
 msgstr "Conditions for Receiving"
@@ -3312,8 +3304,7 @@ msgid "headerButtons/fightBtn/tooltip/telecomRentalIsOver/header"
 msgstr "Vehicle Unavailable"
 
 msgid "headerButtons/fightBtn/tooltip/unsutableToBattleRoyale/body"
-msgstr ""
-"You can only enter a battle in special vehicles for Steel Hunter: Reborn."
+msgstr "You can only enter a battle in special vehicles for Steel Hunter."
 
 msgid "headerButtons/fightBtn/tooltip/unsutableToBattleRoyale/header"
 msgstr "Incompatible Vehicle"
@@ -3399,29 +3390,29 @@ msgstr "Beeline Казахстан"
 msgid "internet_provider/BeelineKZ/tariff"
 msgstr "Игровой"
 
-msgid "internet_provider/Beltelecom/name"
-msgstr "Белтелеком"
-
-msgid "internet_provider/Beltelecom/tariff"
-msgstr "Игровой"
-
 msgid "internet_provider/Kazakhtelecom/name"
 msgstr "Казахтелеком"
 
 msgid "internet_provider/Kazakhtelecom/tariff"
 msgstr "Игровой"
 
-msgid "internet_provider/Kyivstar/name"
-msgstr "Киевстар"
+msgid "internet_provider/LocalPartner2/name"
+msgstr "LocalPartner2"
 
-msgid "internet_provider/Kyivstar/tariff"
-msgstr "Игровой"
+msgid "internet_provider/LocalPartner2/tariff"
+msgstr "Igrovoy"
 
-msgid "internet_provider/Rostelecom/name"
-msgstr "Ростелеком"
+msgid "internet_provider/LocalPartner3/name"
+msgstr "LocalPartner3"
 
-msgid "internet_provider/Rostelecom/tariff"
-msgstr "Игровой"
+msgid "internet_provider/LocalPartner3/tariff"
+msgstr "Igrovoy"
+
+msgid "internet_provider/LocalPartner4/name"
+msgstr "LocalPartner4"
+
+msgid "internet_provider/LocalPartner4/tariff"
+msgstr "Igrovoy"
 
 msgid "inventory/device/errors/not_removable"
 msgstr " "
@@ -3760,7 +3751,7 @@ msgid "loading/battleTypes/22"
 msgstr "Frontline"
 
 msgid "loading/battleTypes/23"
-msgstr "Steel Hunter: Reborn"
+msgstr "Steel Hunter"
 
 msgid "loading/battleTypes/24"
 msgstr "Recon Mission"
@@ -3775,7 +3766,7 @@ msgid "loading/battleTypes/28"
 msgstr "Strategist Training"
 
 msgid "loading/battleTypes/29"
-msgstr "Arcade Cabinet"
+msgstr " "
 
 msgid "loading/battleTypes/30"
 msgstr "Onslaught"
@@ -4432,13 +4423,16 @@ msgid "moduleInfo/params/commonDelay"
 msgstr "Deployment Time"
 
 msgid "moduleInfo/params/cooldownSeconds"
-msgstr "Cooldown"
+msgstr "Cooldown time"
 
 msgid "moduleInfo/params/crewRolesFactor"
 msgstr "to major qualifications and crew perks"
 
 msgid "moduleInfo/params/damage"
 msgstr "Damage"
+
+msgid "moduleInfo/params/damagePerSecond"
+msgstr "Damage per second"
 
 msgid "moduleInfo/params/dispertionRadius"
 msgstr "Dispersion at 100 m"
@@ -4466,6 +4460,10 @@ msgstr "Flight Time"
 
 msgid "moduleInfo/params/forwardMaxSpeed"
 msgstr "Top Speed"
+
+msgid "moduleInfo/params/guaranteedDamage/footnote"
+msgstr ""
+" The shell deals a small percentage of damage if armor is not penetrated."
 
 msgid "moduleInfo/params/hullAndChassisWeight"
 msgstr "Weight"
@@ -4497,23 +4495,18 @@ msgstr "Load Limit"
 msgid "moduleInfo/params/maxShotDistance"
 msgstr "Firing Range"
 
-msgid "moduleInfo/params/maxShotDistance/footnote"
-msgstr "* maximum shell flying range for this gun"
-
 msgid "moduleInfo/params/maxSteeringLockAngle"
 msgstr "Maximum Wheel Turning Angle"
 
 msgid "moduleInfo/params/noPiercingDistance/footnote"
-msgstr "* does not depend on the distance for this type of shell"
-
-msgid "moduleInfo/params/noPiercingDistance/footnote/maxDistance"
-msgstr ", maximum flying range—400 m"
+msgstr " Does not depend on the distance for this type of shell."
 
 msgid "moduleInfo/params/piercingDistance"
 msgstr "%(dist)s m"
 
 msgid "moduleInfo/params/piercingDistance/footnote"
-msgstr "* depends on the distance: %(minDist)s–%(maxDist)s m"
+msgstr ""
+" Depends on the distance for this type of shell (%(minDist)s–%(maxDist)s m)."
 
 msgid "moduleInfo/params/piercingDistanceHeader"
 msgstr "Average Penetration (mm)—Distance"
@@ -6505,6 +6498,9 @@ msgstr "Weight/Load Limit"
 msgid "tank_params/vpm"
 msgstr "(HP/min)"
 
+msgid "tank_params/vps"
+msgstr "(HP/s)"
+
 msgid "tank_params/wheeledSpeedModeSpeed"
 msgstr "Top Speed/Reverse Speed (Rapid)"
 
@@ -6545,7 +6541,7 @@ msgid "tankmanPersonalCase/closeBtn"
 msgstr "Close"
 
 msgid "tankmanPersonalCase/commanderFeature"
-msgstr "Commander feature:"
+msgstr "Commander Feature:"
 
 msgid "tankmanPersonalCase/crew"
 msgstr "Crew:"

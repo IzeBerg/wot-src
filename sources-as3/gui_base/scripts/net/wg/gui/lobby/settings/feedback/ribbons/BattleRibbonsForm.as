@@ -22,11 +22,19 @@ package net.wg.gui.lobby.settings.feedback.ribbons
    public class BattleRibbonsForm extends FeedbackBaseForm
    {
       
-      private static const SCROLL_STEP_FACTOR:int = 30;
-      
       private static const RIBBONS_COUNTER_CONTAINER_ID:String = "RIBBONS_COUNTER_CONTAINER_ID ";
       
       private static const COUNTER_CHECKBOX_OFFSET_X:Number = -27;
+      
+      private static const SCROLL_STEP_FACTOR:int = 30;
+      
+      private static const CONTROLS_SCROLL_PANE_WIDTH:uint = 200;
+      
+      private static const CONTROLS_SCROLL_PANE_HEIGHT:uint = 494;
+      
+      private static const RIBBONS_SCROLL_PANE_WIDTH:uint = 550;
+      
+      private static const RIBBONS_SCROLL_PANE_HEIGHT:uint = 492;
        
       
       public var ribbonsContainer:SettingsRibbonContainer = null;
@@ -64,7 +72,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          this._itemsMap["battleEventsEnemyCriticalHitCheckbox"] = BATTLE_EFFICIENCY_TYPES.CRITS;
          this._itemsMap["battleEventsEnemyWorldCollisionCheckbox"] = BATTLE_EFFICIENCY_TYPES.WORLD_COLLISION;
          this._itemsMap["battleEventsEnemyAssistStunCheckbox"] = BATTLE_EFFICIENCY_TYPES.ASSIST_STUN;
-         this._itemsMap["battleEventsEnemyStunCheckbox"] = BATTLE_EFFICIENCY_TYPES.STUN;
          this._itemsMap["battleEventsCrewPerksCheckbox"] = BATTLE_EFFICIENCY_TYPES.PERK;
       }
       
@@ -167,8 +174,16 @@ package net.wg.gui.lobby.settings.feedback.ribbons
       {
          App.utils.data.cleanupDynamicObject(this._itemsMap);
          this._itemsMap = null;
+         this.ribbonsScrollPane.dispose();
+         this.ribbonsScrollPane = null;
+         this.ribbonsScrollBar.dispose();
+         this.ribbonsScrollBar = null;
          this.ribbonsContainer.dispose();
          this.ribbonsContainer = null;
+         this.controlsScrollPane.dispose();
+         this.controlsScrollPane = null;
+         this.controlsScrollBar.dispose();
+         this.controlsScrollBar = null;
          this.controlsContainer.dispose();
          this.controlsContainer = null;
          super.onDispose();
@@ -181,14 +196,14 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          this.controlsScrollPane.scrollStepFactor = SCROLL_STEP_FACTOR;
          this.controlsScrollPane.target = this.controlsContainer;
          this.controlsScrollPane.scrollPosition = 0;
-         this.controlsScrollPane.setSize(200,492);
+         this.controlsScrollPane.setSize(CONTROLS_SCROLL_PANE_WIDTH,CONTROLS_SCROLL_PANE_HEIGHT);
          this.ribbonsScrollPane.scrollBar = this.ribbonsScrollBar;
          this.ribbonsScrollPane.scrollStepFactor = SCROLL_STEP_FACTOR;
          this.ribbonsContainer.x -= this.ribbonsScrollPane.x;
          this.ribbonsContainer.y -= this.ribbonsScrollPane.y;
          this.ribbonsScrollPane.target = this.ribbonsContainer;
          this.ribbonsScrollPane.scrollPosition = this.ribbonsScrollPane.maxScroll;
-         this.ribbonsScrollPane.setSize(550,492);
+         this.ribbonsScrollPane.setSize(RIBBONS_SCROLL_PANE_WIDTH,RIBBONS_SCROLL_PANE_HEIGHT);
       }
       
       private function setEventsCheckboxesEnabled() : void
