@@ -19,7 +19,7 @@ COLUMN_SETTINGS = {PREBATTLE_ACTION_NAME.RANDOM: (
    PREBATTLE_ACTION_NAME.BATTLE_ROYALE: (
                                        ModeSelectorColumns.COLUMN_1, 10), 
    PREBATTLE_ACTION_NAME.COMP7: (
-                               ModeSelectorColumns.COLUMN_1, 10), 
+                               ModeSelectorColumns.COLUMN_2, 10), 
    PREBATTLE_ACTION_NAME.MAPBOX: (
                                 ModeSelectorColumns.COLUMN_2, 30), 
    PREBATTLE_ACTION_NAME.RANKED: (
