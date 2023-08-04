@@ -23219,6 +23219,22 @@ package
       
       public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_STATES_TOPREWARDRECEIVED:String = "../maps/icons/resourceWell/tooltips/entryPoint/states/topRewardReceived.png";
       
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_G162_PROJECT_KPZ_07P_E_232X174:String = "../maps/icons/resourceWell/vehicles/G162_Project_Kpz_07P_E_232x174.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_G162_PROJECT_KPZ_07P_E_232X174_3D:String = "../maps/icons/resourceWell/vehicles/G162_Project_Kpz_07P_E_232x174_3d.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_G162_PROJECT_KPZ_07P_E_296X222:String = "../maps/icons/resourceWell/vehicles/G162_Project_Kpz_07P_E_296x222.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_G162_PROJECT_KPZ_07P_E_296X222_3D:String = "../maps/icons/resourceWell/vehicles/G162_Project_Kpz_07P_E_296x222_3d.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_G162_PROJECT_KPZ_07P_E_400X300:String = "../maps/icons/resourceWell/vehicles/G162_Project_Kpz_07P_E_400x300.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_G162_PROJECT_KPZ_07P_E_400X300_3D:String = "../maps/icons/resourceWell/vehicles/G162_Project_Kpz_07P_E_400x300_3d.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_G162_PROJECT_KPZ_07P_E_600X450:String = "../maps/icons/resourceWell/vehicles/G162_Project_Kpz_07P_E_600x450.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_G162_PROJECT_KPZ_07P_E_600X450_3D:String = "../maps/icons/resourceWell/vehicles/G162_Project_Kpz_07P_E_600x450_3d.png";
+      
       public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_LEON_232X174:String = "../maps/icons/resourceWell/vehicles/Leon_232x174.png";
       
       public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_LEON_232X174_3D:String = "../maps/icons/resourceWell/vehicles/Leon_232x174_3d.png";

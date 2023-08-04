@@ -3359,6 +3359,10 @@ package
       
       public static const CAMOUFLAGE_SPARTA_DESCRIPTION:String = "#vehicle_customization:camouflage/sparta/description";
       
+      public static const CAMOUFLAGE_G162_PROJECT_KPZ_07P_E_KL_3DST_LABEL:String = "#vehicle_customization:camouflage/G162_Project_Kpz_07P_E_KL_3DSt/label";
+      
+      public static const CAMOUFLAGE_G162_PROJECT_KPZ_07P_E_KL_3DST_DESCRIPTION:String = "#vehicle_customization:camouflage/G162_Project_Kpz_07P_E_KL_3DSt/description";
+      
       public static const CAMOUFLAGE_HORSE_2023_LABEL:String = "#vehicle_customization:camouflage/horse_2023/label";
       
       public static const CAMOUFLAGE_HORSE_2023_DESCRIPTION:String = "#vehicle_customization:camouflage/horse_2023/description";
@@ -11902,6 +11906,10 @@ package
       public static const SPECIAL_STYLE_SPARTA:String = "#vehicle_customization:special_style/sparta";
       
       public static const SPECIAL_STYLE_SPARTA_DESC_LONG:String = "#vehicle_customization:special_style/sparta_desc/long";
+      
+      public static const SPECIAL_STYLE_G162_PROJECT_KPZ_07P_E_KL_3DST:String = "#vehicle_customization:special_style/G162_Project_Kpz_07P_E_KL_3DSt";
+      
+      public static const SPECIAL_STYLE_G162_PROJECT_KPZ_07P_E_KL_3DST_DESC_LONG:String = "#vehicle_customization:special_style/G162_Project_Kpz_07P_E_KL_3DSt_desc/long";
       
       public static const SPECIAL_STYLE_CH58_111_VZ51_PLA_3DST:String = "#vehicle_customization:special_style/Ch58_111_Vz51_PLA_3DSt";
       
