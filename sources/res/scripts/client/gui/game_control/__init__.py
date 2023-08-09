@@ -77,6 +77,7 @@ def getGameControllersConfig(manager):
     from gui.game_control.hangar_switch_controller import HangarSpaceSwitchController
     from gui.game_control.event_lootboxes_controller import EventLootBoxesController
     from gui.entitlements.entitlements_controller import EntitlementsController
+    from gui.game_control.wot_anniversary_controller import WotAnniversaryController as _WotAnniversaryController
     from gui.game_control.winback_controller import WinbackController
     from gui.game_control.daily_quests_intro_presenter import DailyQuestsIntroPresenter
     from gui.game_control.achievements20_controller import Achievements20Controller as _Ach20Ctrl
@@ -158,6 +159,7 @@ def getGameControllersConfig(manager):
     _config(_interface.IResourceWellController, ResourceWellController())
     _config(_interface.IEventLootBoxesController, EventLootBoxesController())
     _config(_interface.IEntitlementsController, EntitlementsController())
+    _config(_interface.IWotAnniversaryController, _WotAnniversaryController())
     _config(_interface.ICollectionsSystemController, CollectionsSystemController())
     _config(_interface.IWinbackController, WinbackController())
     _config(_interface.IDailyQuestIntroPresenter, DailyQuestsIntroPresenter())

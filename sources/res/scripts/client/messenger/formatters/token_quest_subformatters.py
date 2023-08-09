@@ -20,15 +20,17 @@ from gui.server_events.events_helpers import getIdxFromQuestID
 from gui.server_events.recruit_helper import getSourceIdFromQuest
 from gui.shared.formatters import text_styles
 from gui.shared.money import Currency
+from gui.wot_anniversary import wot_anniversary_helpers
+from gui.wot_anniversary.wot_anniversary_helpers import getFactTitleByTechName, getQuestDayNumber
 from messenger import g_settings
 from messenger.formatters import TimeFormatter
-from messenger.formatters.service_channel import WaitItemsSyncFormatter, QuestAchievesFormatter, RankedQuestAchievesFormatter, ServiceChannelFormatter, PersonalMissionsQuestAchievesFormatter, BattlePassQuestAchievesFormatter, InvoiceReceivedFormatter, BattleMattersQuestAchievesFormatter, WinbackQuestAchievesFormatter, CollectionsFormatter
+from messenger.formatters.service_channel import WaitItemsSyncFormatter, QuestAchievesFormatter, RankedQuestAchievesFormatter, ServiceChannelFormatter, PersonalMissionsQuestAchievesFormatter, BattlePassQuestAchievesFormatter, InvoiceReceivedFormatter, BattleMattersQuestAchievesFormatter, WinbackQuestAchievesFormatter, CollectionsFormatter, WotAnniversaryQuestAchievesFormatter
 from messenger.formatters.service_channel_helpers import getRewardsForQuests, EOL, MessageData, getCustomizationItemData, getDefaultMessage, DEFAULT_MESSAGE, popCollectionEntitlements
 from messenger.proto.bw.wrappers import ServiceChannelMessage
 from shared_utils import findFirst, first
 from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.server_events import IEventsCache
-from skeletons.gui.game_control import ICollectionsSystemController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController
+from skeletons.gui.game_control import ICollectionsSystemController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController, IWotAnniversaryController
 from helpers import dependency
 from helpers import time_utils
 _logger = logging.getLogger(__name__)
@@ -954,3 +956,130 @@ class CrewPerksFormatter(AsyncTokenQuestsSubFormatter):
     @classmethod
     def _isQuestOfThisGroup(cls, questID):
         return questID.startswith(cls.__QUEST_PREFIX)
+
+
+class WotAnniversaryTokenQuestFormatter(AsyncTokenQuestsSubFormatter):
+    __LOGIN_QUEST_MESSAGE_TEMPLATE = 'wotAnniversaryLoginReward'
+    __BATTLE_QUEST_MESSAGE_TEMPLATE = 'wotAnniversaryBattleReward'
+    __FINAL_REWARD_MESSAGE_TEMPLATE = 'wotAnniversaryFinalReward'
+    __EVENT_COIN_TEMPLATE = 'wotAnniversaryEventCoin'
+    __INTERESTING_FACT_TEMPLATE = 'wotAnniversaryInterestingFact'
+    __COMPLETED_QUESTS_TEMPLATE = 'wotAnniversaryCompletedQuests'
+    __wotAnniversaryCtrl = dependency.descriptor(IWotAnniversaryController)
+    _battleAchievesFormatter = WotAnniversaryQuestAchievesFormatter()
+
+    @adisp_async
+    @adisp_process
+    def format(self, message, callback):
+        isSynced = yield self._waitForSyncItems()
+        messageDataList = []
+        if isSynced:
+            messageDataList = self._format(message)
+        if messageDataList:
+            callback(messageDataList)
+        callback([MessageData(None, None)])
+        return
+
+    def _format(self, message, *args):
+        messageDataList = []
+        data = message.data or {}
+        completedQuestIDs = self.getQuestOfThisGroup(data.get('completedQuestIDs', set()))
+        grouppedQuests = self.__groupQuests(completedQuestIDs)
+        for handler, questIDs in grouppedQuests.items():
+            if questIDs:
+                rewards = getRewardsForQuests(message, questIDs)
+                templateParams, template = handler(questIDs, rewards)
+                if templateParams and template:
+                    settings = self._getGuiSettings(message, template)
+                    formatted = g_settings.msgTemplates.format(template, templateParams)
+                    messageDataList.append(MessageData(formatted, settings))
+                else:
+                    _logger.error('Failed to build anniversary system message.\n                                Either template or templateParams are None')
+
+        return messageDataList
+
+    def __handleFinalRewardQuests(self, questIDs, rewards):
+        fmt = self._achievesFormatter.formatQuestAchieves(rewards, asBattleFormatter=False, processCustomizations=True)
+        if fmt is not None:
+            return ({'rewards': fmt}, self.__FINAL_REWARD_MESSAGE_TEMPLATE)
+        else:
+            return (
+             None, self.__FINAL_REWARD_MESSAGE_TEMPLATE)
+
+    def __handleLoginQuests(self, questIDs, rewards):
+        eventCoin = rewards.pop('eventCoin', None)
+        formattedRewards = []
+        fmt = self._achievesFormatter.formatQuestAchieves(rewards, asBattleFormatter=False, processCustomizations=True)
+        if fmt is not None:
+            formattedRewards += self.__buildRewardsSection(fmt)
+        if eventCoin is not None:
+            formattedRewards.append(self.__buildEventCoinsSection(eventCoin))
+        qID = next(iter(questIDs))
+        factIndex = getQuestDayNumber(qID) - 1
+        facts = self.__wotAnniversaryCtrl.getInterestingFacts()
+        if factIndex < len(facts):
+            formattedRewards.append(self.__buildInterestingFactSection(facts[factIndex]))
+        return ({'rewards': ('<br/>').join(formattedRewards)}, self.__LOGIN_QUEST_MESSAGE_TEMPLATE)
+
+    def __handleBattleQuests(self, questIDs, rewards):
+        count = len(questIDs)
+        if count:
+            formattedRewards = [
+             self.__buildCompletedQuestsSection(count)]
+            eventCoin = rewards.pop('eventCoin', None)
+            fmt = self._battleAchievesFormatter.formatQuestAchieves(rewards, asBattleFormatter=False, processCustomizations=True)
+            if fmt is not None:
+                formattedRewards += self.__buildRewardsSection(fmt)
+            if eventCoin is not None:
+                formattedRewards.append(self.__buildEventCoinsSection(eventCoin))
+            return ({'rewards': ('<br/>').join(formattedRewards)}, self.__BATTLE_QUEST_MESSAGE_TEMPLATE)
+        else:
+            return (
+             None, self.__BATTLE_QUEST_MESSAGE_TEMPLATE)
+
+    def __groupQuests(self, quests):
+        groups = {self.__handleBattleQuests: [], self.__handleLoginQuests: [], self.__handleFinalRewardQuests: []}
+        for quest in quests:
+            if wot_anniversary_helpers.isWotAnniversaryBattleQuest(quest) or wot_anniversary_helpers.isSecretMessageReward(quest):
+                groups[self.__handleBattleQuests].append(quest)
+            elif wot_anniversary_helpers.isWotAnniversaryLoginQuest(quest):
+                groups[self.__handleLoginQuests].append(quest)
+            elif wot_anniversary_helpers.isFinalTokenQuest(quest):
+                groups[self.__handleFinalRewardQuests].append(quest)
+
+        return groups
+
+    @classmethod
+    def __buildInterestingFactSection(cls, fact):
+        ctx = {'interestingFact': getFactTitleByTechName(fact.techName)}
+        return g_settings.htmlTemplates.format(cls.__INTERESTING_FACT_TEMPLATE, ctx=ctx)
+
+    @classmethod
+    def __buildEventCoinsSection(cls, eventCoins):
+        ctx = {'eventCoin': eventCoins}
+        return g_settings.htmlTemplates.format(cls.__EVENT_COIN_TEMPLATE, ctx=ctx)
+
+    @classmethod
+    def __buildRewardsSection(cls, rewards):
+        return [
+         backport.text(R.strings.wot_anniversary.systemMessage.reward.recieved()),
+         rewards]
+
+    @classmethod
+    def __buildCompletedQuestsSection(cls, count):
+        ctx = {'count': count}
+        return g_settings.htmlTemplates.format(cls.__COMPLETED_QUESTS_TEMPLATE, ctx=ctx)
+
+    @classmethod
+    def _isQuestOfThisGroup(cls, questID):
+        return wot_anniversary_helpers.isWotAnniversaryQuest(questID)
+
+
+class WotAnniversaryBattleResultsFormatter(WotAnniversaryTokenQuestFormatter):
+
+    def format(self, message, auxData):
+        return self._format(message)
+
+    @classmethod
+    def _isQuestOfThisGroup(cls, questID):
+        return wot_anniversary_helpers.isWotAnniversaryBattleQuest(questID)

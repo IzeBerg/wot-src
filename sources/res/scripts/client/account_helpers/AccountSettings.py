@@ -185,6 +185,7 @@ MODULES_ANIMATION_SHOWN = 'collectibleVehiclesAnimWasShown'
 NEW_SHOP_TABS = 'newShopTabs'
 IS_COLLECTIBLE_VEHICLES_VISITED = 'isCollectibleVehiclesVisited'
 LAST_SHOP_TAB_COUNTER = 'lastShopTabCounter'
+IS_WOT_ANNIVERSARY_SECTION_VISITED = 'isWotAnniversarySectionVisited'
 QUESTS = 'quests'
 QUEST_DELTAS = 'questDeltas'
 QUEST_DELTAS_COMPLETION = 'questCompletion'
@@ -208,6 +209,8 @@ RESOURCE_WELL_NOTIFICATIONS = 'resourceWellNotifications'
 MAPBOX_SURVEYS = 'mapbox_surveys'
 CLAN_NEWS_SEEN = 'clanNewsSeen'
 INTEGRATED_AUCTION_NOTIFICATIONS = 'integratedAuctionNotifications'
+WOT_ANNIVERSARY_SECTION = 'wotAnniversarySection'
+WOT_ANNIVERSARY_SEEN_BATTLE_QUESTS = 'wotAnniversarySeenBattleQuests'
 SHOWN_PERSONAL_RESERVES_INTRO = 'shownPersonalReserves'
 MINIMAP_SIZE = 'minimapSize'
 COMP7_UI_SECTION = 'comp7'
@@ -994,6 +997,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   EPIC_LAST_CYCLE_ID: None, 
                   FUN_RANDOM_LAST_PRESET: 'undefined', 
                   SHOW_DEMO_ACC_REGISTRATION: False, 
+                  WOT_ANNIVERSARY_SECTION: {WOT_ANNIVERSARY_SEEN_BATTLE_QUESTS: ''}, 
                   IS_CUSTOMIZATION_INTRO_VIEWED: False, 
                   CUSTOMIZATION_STYLE_ITEMS_VISITED: set(), 
                   SHOWN_PERSONAL_RESERVES_INTRO: False, 
@@ -1035,7 +1039,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   DEMOUNT_KIT_SEEN: False, 
                   RECERTIFICATION_FORM_SEEN: False, 
                   BATTLEMATTERS_SEEN: False, 
-                  NEW_SHOP_TABS: {IS_COLLECTIBLE_VEHICLES_VISITED: False}, 
+                  NEW_SHOP_TABS: {IS_COLLECTIBLE_VEHICLES_VISITED: False, 
+                                  IS_WOT_ANNIVERSARY_SECTION_VISITED: False}, 
                   VPP_ENTRY_POINT_LAST_SEEN_STEP: {}}, 
    KEY_NOTIFICATIONS: {ELEN_NOTIFICATIONS: {MISSIONS_CONSTANTS.ELEN_EVENT_STARTED_NOTIFICATION: set(), 
                                             MISSIONS_CONSTANTS.ELEN_EVENT_FINISHED_NOTIFICATION: set(), 
@@ -1213,7 +1218,7 @@ def _recursiveStep(defaultDict, savedDict, finalDict):
 
 class AccountSettings(object):
     onSettingsChanging = Event.Event()
-    version = 61
+    version = 63
     settingsCore = dependency.descriptor(ISettingsCore)
     __cache = {'login': None, 'section': None}
     __sessionSettings = {'login': None, 'section': None}
@@ -1820,6 +1825,16 @@ class AccountSettings(object):
                     obsoleteKey = 'awards'
                     if obsoleteKey in accSessionSettings.keys():
                         accSessionSettings.deleteSection(obsoleteKey)
+
+            if currVersion < 62:
+                pass
+            if currVersion < 63:
+                for key, section in _filterAccountSection(ads):
+                    keyCounters = AccountSettings._readSection(section, KEY_COUNTERS)
+                    if NEW_SHOP_TABS in keyCounters.keys():
+                        newTabCounters = _unpack(keyCounters[NEW_SHOP_TABS].asString)
+                        newTabCounters[IS_WOT_ANNIVERSARY_SECTION_VISITED] = DEFAULT_VALUES[KEY_COUNTERS][NEW_SHOP_TABS][IS_WOT_ANNIVERSARY_SECTION_VISITED]
+                        keyCounters.write(NEW_SHOP_TABS, _pack(newTabCounters))
 
             ads.writeInt('version', AccountSettings.version)
         return

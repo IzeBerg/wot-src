@@ -30,10 +30,12 @@ BrowserViewSettings = typing.NamedTuple('BrowserViewSettings', (
  (
   'soundSpaceID', typing.Optional[str]),
  (
-  'returnClb', typing.Optional[typing.Callable])))
+  'returnClb', typing.Optional[typing.Callable]),
+ (
+  'setBackAlpha', bool)))
 
-def makeSettings(url, webHandlers=None, isClosable=False, useSpecialKeys=False, allowRightClick=False, viewFlags=ViewFlags.LOBBY_SUB_VIEW, restoreBackground=False, waitingMessageID=R.invalid(), disabledKeys=(), soundSpaceID=None, returnClb=None):
-    return BrowserViewSettings(url, webHandlers, isClosable, useSpecialKeys, allowRightClick, viewFlags, restoreBackground, waitingMessageID, disabledKeys, soundSpaceID, returnClb)
+def makeSettings(url, webHandlers=None, isClosable=False, useSpecialKeys=False, allowRightClick=False, viewFlags=ViewFlags.LOBBY_SUB_VIEW, restoreBackground=False, waitingMessageID=R.invalid(), disabledKeys=(), soundSpaceID=None, returnClb=None, setBackAlpha=True):
+    return BrowserViewSettings(url, webHandlers, isClosable, useSpecialKeys, allowRightClick, viewFlags, restoreBackground, waitingMessageID, disabledKeys, soundSpaceID, returnClb, setBackAlpha)
 
 
 class BrowserView(Browser[BrowserViewModel]):
@@ -69,9 +71,10 @@ class BrowserView(Browser[BrowserViewModel]):
     def _initialize(self, *args, **kwargs):
         super(BrowserView, self)._initialize(*args, **kwargs)
         app = self.__appLoader.getApp()
-        if self.__settings.restoreBackground:
-            self.__savedBackAlpha = app.getBackgroundAlpha()
-        app.setBackgroundAlpha(self.__background_alpha__)
+        if self.__settings.setBackAlpha:
+            if self.__settings.restoreBackground:
+                self.__savedBackAlpha = app.getBackgroundAlpha()
+            app.setBackgroundAlpha(self.__background_alpha__)
 
     def _finalize(self):
         self.getViewModel().onClose -= self.__onClose
@@ -79,7 +82,7 @@ class BrowserView(Browser[BrowserViewModel]):
         returnCallback = self.__settings.returnClb
         if returnCallback is not None:
             returnCallback(byUser=self.__closedByUser, url=self.browser.url if self.browser else '', forceClosed=self.__forceClosed)
-        if self.__settings.restoreBackground and self.__savedBackAlpha is not None:
+        if self.__settings.setBackAlpha and self.__settings.restoreBackground and self.__savedBackAlpha is not None:
             self.__appLoader.getApp().setBackgroundAlpha(self.__savedBackAlpha)
         super(BrowserView, self)._finalize()
         return

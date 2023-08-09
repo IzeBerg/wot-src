@@ -24,7 +24,8 @@ registerTokenQuestsSubFormatters((
  token_quest_subformatters.BattleMattersAwardsFormatter(),
  token_quest_subformatters.Comp7RewardsFormatter(),
  token_quest_subformatters.WinbackRewardFormatter(),
- token_quest_subformatters.CrewPerksFormatter()))
+ token_quest_subformatters.CrewPerksFormatter(),
+ token_quest_subformatters.WotAnniversaryTokenQuestFormatter()))
 _HANGAR_QUESTS_SUB_FORMATTERS = (
  token_quest_subformatters.BattleMattersAwardsFormatter(),)
 _PERSONAL_MISSIONS_SUB_FORMATTERS = (
@@ -257,3 +258,4 @@ def initRegistrationFormatters():
     registerMessengerServerFormatter(_SM_TYPE.collectionsItems.index(), _sc.CollectionsItemsFormatter())
     registerMessengerServerFormatter(_SM_TYPE.collectionsReward.index(), _sc.CollectionsRewardFormatter())
     registerMessengerClientFormatter(SCH_CLIENT_MSG_TYPE.ACHIEVEMENTS20_SM_TYPE, _sc.AchievementsSMFormatter())
+    registerMessengerClientFormatter(SCH_CLIENT_MSG_TYPE.ANNIVERSARY_BATTLE_RESULTS_SM_TYPE, token_quest_subformatters.WotAnniversaryBattleResultsFormatter())

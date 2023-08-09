@@ -28,6 +28,7 @@ from gui.shared.system_factory import collectAllNotificationsActionsHandlers, re
 from gui.shared.utils import decorators
 from gui.wgcg.clan import contexts as clan_ctxs
 from gui.wgnc import g_wgncProvider
+from gui.wot_anniversary.wot_anniversary_helpers import showMainView
 from helpers import dependency
 from messenger.m_constants import PROTO_TYPE
 from messenger.proto import proto_getter
@@ -35,7 +36,7 @@ from notification.settings import NOTIFICATION_BUTTON_STATE, NOTIFICATION_TYPE
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController, IWotAnniversaryController
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.web import IWebController
@@ -1259,6 +1260,22 @@ class _OpenCollectionRewardHandler(NavigationDisabledActionHandler):
         showCollectionAwardsWindow(savedData['collectionId'], savedData['bonuses'])
 
 
+class _OpenAnniversaryMissions(NavigationDisabledActionHandler):
+    __wotAnniversaryCtrl = dependency.descriptor(IWotAnniversaryController)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('OpenAnniversaryMissions', )
+
+    def doAction(self, model, entityID, action):
+        if self.__wotAnniversaryCtrl.isAvailableAndActivePhase():
+            showMainView()
+
+
 _AVAILABLE_HANDLERS = (
  ShowBattleResultsHandler,
  ShowFortBattleResultsHandler,
@@ -1322,7 +1339,8 @@ _AVAILABLE_HANDLERS = (
  _OpenCollectionRewardHandler,
  _OpenWinbackSelectableRewardView,
  _OpenWinbackSelectableRewardViewFromQuest,
- _OpenAchievementsScreen)
+ _OpenAchievementsScreen,
+ _OpenAnniversaryMissions)
 registerNotificationsActionsHandlers(_AVAILABLE_HANDLERS)
 
 class NotificationsActionsHandlers(object):

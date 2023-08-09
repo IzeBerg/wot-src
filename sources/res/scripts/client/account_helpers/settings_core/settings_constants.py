@@ -493,4 +493,14 @@ class ScorePanelStorageKeys(CONST_CONTAINER):
     ENABLE_TIER_GROUPING = 'enableTierGrouping'
 
 
+class WotAnniversaryStorageKeys(CONST_CONTAINER):
+    WOT_ANNIVERSARY_INTRO_SHOWED = 'wotAnniversaryIntroShowed'
+    WOT_ANNIVERSARY_WELCOME_SHOWED = 'wotAnniversaryWelcomeShowed'
+    WOT_ANNIVERSARY_STARTED_NOTIFICATION_SHOWED = 'wotAnniversaryStartedShowed'
+    WOT_ANNIVERSARY_ACTIVE_PHASE_ENDED_NOTIFICATION_SHOWED = 'wotAnniversaryActivePhaseEndedShowed'
+    WOT_ANNIVERSARY_FINISHED_NOTIFICATION_SHOWED = 'wotAnniversaryFinishedShowed'
+    WOT_ANNIVERSARY_EVENT_WILL_END_SOON_NOTIFICATION_SHOWED = 'wotAnniversaryEventWillEndSoonShowed'
+    WOT_ANNIVERSARY_ON_PAUSE_NOTIFICATION_SHOWED = 'wotAnniversaryOnPauseShowed'
+
+
 COLOR_GRADING_TECHNIQUE_DEFAULT = 0

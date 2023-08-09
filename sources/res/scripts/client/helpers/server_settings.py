@@ -25,6 +25,7 @@ from shared_utils import makeTupleByDict, updateDict, findFirst
 from telecom_rentals_common import TELECOM_RENTALS_CONFIG
 from trade_in_common.constants_types import CONFIG_NAME as TRADE_IN_CONFIG_NAME
 from achievements20.Achievements20GeneralConfig import Achievements20GeneralConfig
+from wot_anniversary_common import WOT_ANNIVERSARY_CONFIG_NAME
 if typing.TYPE_CHECKING:
     from typing import Callable, Dict, List, Sequence
 _logger = logging.getLogger(__name__)
@@ -1174,6 +1175,35 @@ class _LimitedUIConfig(namedtuple('_LimitedUIConfig', ('enabled', 'rules', 'vers
         return cls()
 
 
+class _WotAnniversaryConfig(namedtuple('_WotAnniversaryConfig', (
+ 'isEnabled',
+ 'isActive',
+ 'isSecretMessageActive',
+ 'startTime',
+ 'activePhaseEndTime',
+ 'eventCategoryEndTime',
+ 'anniversaryUrls',
+ 'rewardScreenRequiredQuests'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(isEnabled=False, isActive=False, isSecretMessageActive=False, startTime=0, activePhaseEndTime=0, eventCategoryEndTime=0, rewardScreenRequiredQuests=(), anniversaryUrls={})
+        defaults.update(kwargs)
+        return super(_WotAnniversaryConfig, cls).__new__(cls, **defaults)
+
+    def asDict(self):
+        return self._asdict()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+
 class ServerSettings(object):
 
     def __init__(self, serverSettings):
@@ -1221,6 +1251,7 @@ class ServerSettings(object):
         self.__collectionsConfig = CollectionsConfig()
         self.__winbackConfig = WinbackConfig()
         self.__limitedUIConfig = _LimitedUIConfig()
+        self.__wotAnniversaryConfig = _WotAnniversaryConfig()
         self.set(serverSettings)
 
     def set(self, serverSettings):
@@ -1362,6 +1393,8 @@ class ServerSettings(object):
             self.__limitedUIConfig = makeTupleByDict(_LimitedUIConfig, self.__serverSettings[Configs.LIMITED_UI_CONFIG.value])
         else:
             self.__limitedUIConfig = _LimitedUIConfig.defaults()
+        if WOT_ANNIVERSARY_CONFIG_NAME in self.__serverSettings:
+            self.__wotAnniversaryConfig = makeTupleByDict(_WotAnniversaryConfig, self.__serverSettings[WOT_ANNIVERSARY_CONFIG_NAME])
         self.onServerSettingsChange(serverSettings)
 
     def update(self, serverSettingsDiff):
@@ -1440,6 +1473,8 @@ class ServerSettings(object):
             self.__updateVehiclePostProgressionConfig(serverSettingsDiff)
         if Configs.GIFTS_CONFIG.value in serverSettingsDiff:
             self.__updateGiftSystemConfig(serverSettingsDiff)
+        if WOT_ANNIVERSARY_CONFIG_NAME in serverSettingsDiff:
+            self.__updateWotAnniversaryConfig(serverSettingsDiff)
         if Configs.BATTLE_MATTERS_CONFIG.value in serverSettingsDiff:
             self.__updateBattleMatters(serverSettingsDiff)
         if TRADE_IN_CONFIG_NAME in serverSettingsDiff:
@@ -1625,6 +1660,10 @@ class ServerSettings(object):
     @property
     def limitedUIConfig(self):
         return self.__limitedUIConfig
+
+    @property
+    def wotAnniversaryConfig(self):
+        return self.__wotAnniversaryConfig
 
     def isEpicBattleEnabled(self):
         return self.epicBattles.isEnabled
@@ -2066,6 +2105,9 @@ class ServerSettings(object):
 
     def __updateResourceWellConfig(self, diff):
         self.__resourceWellConfig = self.__resourceWellConfig.replace(diff[Configs.RESOURCE_WELL.value])
+
+    def __updateWotAnniversaryConfig(self, serverSettingsDiff):
+        self.__wotAnniversaryConfig = self.__wotAnniversaryConfig.replace(serverSettingsDiff[WOT_ANNIVERSARY_CONFIG_NAME])
 
     def __updatePlayLimitsConfig(self, serverSettingsDiff):
         self.__playLimitsConfig = self.__playLimitsConfig.replace(serverSettingsDiff[Configs.PLAY_LIMITS_CONFIG.value])

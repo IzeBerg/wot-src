@@ -39,6 +39,7 @@ from gui.shared.formatters import getRoleTextWithIcon, text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.money import MONEY_UNDEFINED
 from gui.shared.tutorial_helper import getTutorialGlobalStorage
+from gui.wot_anniversary.wot_anniversary_helpers import WOT_ANNIVERSARY_VEHICLE_PREVIEW
 from helpers import dependency
 from helpers.i18n import makeString as _ms
 from preview_selectable_logic import PreviewSelectableLogic
@@ -70,6 +71,7 @@ _BACK_BTN_LABELS = {VIEW_ALIAS.LOBBY_HANGAR: 'hangar',
    PERSONAL_MISSIONS_ALIASES.PERSONAL_MISSIONS_AWARDS_VIEW_ALIAS: 'personalAwards', 
    VIEW_ALIAS.WOT_PLUS_VEHICLE_PREVIEW: None, 
    VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW: None, 
+   WOT_ANNIVERSARY_VEHICLE_PREVIEW: None, 
    VIEW_ALIAS.RESOURCE_WELL_VEHICLE_PREVIEW: 'resourceWell'}
 _TABS_DATA = (
  {'id': VEHPREVIEW_CONSTANTS.BROWSE_LINKAGE, 
@@ -173,7 +175,8 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         addBuiltInEquipment(self._itemsPack, self._itemsCache, self._vehicleCD)
         notInteractive = (
          VIEW_ALIAS.LOBBY_STORE, VIEW_ALIAS.RANKED_BATTLE_PAGE, VIEW_ALIAS.VEH_POST_PROGRESSION,
-         VIEW_ALIAS.RESOURCE_WELL_VEHICLE_PREVIEW, VIEW_ALIAS.RESOURCE_WELL_HERO_VEHICLE_PREVIEW)
+         VIEW_ALIAS.RESOURCE_WELL_VEHICLE_PREVIEW, VIEW_ALIAS.RESOURCE_WELL_HERO_VEHICLE_PREVIEW,
+         WOT_ANNIVERSARY_VEHICLE_PREVIEW)
         self._heroInteractive = not (self._itemsPack or self.__offers or ctx.get('offerID', 0) or self.__topPanelData or self._backAlias in notInteractive)
         self.__haveCustomCrew = any(item.type == ItemPackType.CREW_CUSTOM for item in self._itemsPack) if self._itemsPack else False
         self.__hangarVehicleCD = ctx.get('hangarVehicleCD')
@@ -537,7 +540,10 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         return
 
     def __onInventoryChanged(self, *_):
-        if not BuyVehicleWindow.getInstances():
+        if self._backAlias == WOT_ANNIVERSARY_VEHICLE_PREVIEW:
+            if self._previewBackCb:
+                return self._previewBackCb()
+        elif not BuyVehicleWindow.getInstances():
             g_currentPreviewVehicle.selectNoVehicle()
 
     def __onOfferChanged(self, event):

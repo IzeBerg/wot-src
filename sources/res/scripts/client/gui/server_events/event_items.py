@@ -22,6 +22,7 @@ from gui.shared.gui_items.Vehicle import VEHICLE_TYPES_ORDER
 from gui.shared.system_factory import registerQuestBuilders
 from gui.shared.utils import ValidationResult
 from gui.shared.utils.requesters.QuestsProgressRequester import PersonalMissionsProgressRequester
+from gui.wot_anniversary.wot_anniversary_helpers import isWotAnniversaryQuest, WOT_ANNIVERSARY_LOGIN_QUEST_PREFIX
 from helpers import dependency, getLocalizedData, i18n, time_utils
 from personal_missions import PM_BRANCH, PM_BRANCH_TO_FINAL_PAWN_COST, PM_FLAG, PM_STATE as _PMS
 from personal_missions_config import getQuestConfig
@@ -486,6 +487,13 @@ class Quest(ServerEventAbstract):
         bonusTypesCond = self.preBattleCond.getConditions().find('bonusTypes')
         return bonusTypesCond is None or bonusType in bonusTypesCond.getValue()
 
+    def isSquad(self):
+        isSquad = self.preBattleCond.getConditions().find('isSquad')
+        if isSquad is None:
+            return False
+        else:
+            return isSquad.getValue()
+
     @staticmethod
     def _bonusDecorator(bonus):
         return bonus
@@ -580,6 +588,14 @@ class DailyEpicTokenQuest(TokenQuest):
 
     def getUserName(self):
         return backport.text(R.strings.quests.dailyQuests.postBattle.genericTitle_epic())
+
+
+class WotAnniversaryQuest(Quest):
+
+    def getUserName(self):
+        if self.getID().startswith(WOT_ANNIVERSARY_LOGIN_QUEST_PREFIX):
+            return backport.text(R.strings.wot_anniversary.quest.title.login())
+        return super(WotAnniversaryQuest, self).getUserName()
 
 
 class PersonalQuest(Quest):
@@ -1429,6 +1445,17 @@ class RankedQuestBuilder(IQuestBuilder):
         return RankedQuest(qID, data, progress)
 
 
+class WotAnniversaryQuestBuilder(IQuestBuilder):
+
+    @classmethod
+    def isSuitableQuest(cls, questType, qID):
+        return isWotAnniversaryQuest(qID)
+
+    @classmethod
+    def buildQuest(cls, questType, qID, data, progress=None, expiryTime=None):
+        return WotAnniversaryQuest(qID, data, progress)
+
+
 class BattleMattersTokenQuestBuilder(IQuestBuilder):
 
     @classmethod
@@ -1499,7 +1526,8 @@ class DailyQuestBuilder(IQuestBuilder):
 
 registerQuestBuilders((
  PersonalQuestBuilder, GroupQuestBuilder, MotiveQuestBuilder, RankedQuestBuilder, BattleMattersTokenQuestBuilder,
- DailyTokenQuestBuilder, TokenQuestBuilder, BattleMattersQuestBuilder, PremiumQuestBuilder, DailyQuestBuilder))
+ DailyTokenQuestBuilder, TokenQuestBuilder, BattleMattersQuestBuilder, PremiumQuestBuilder, DailyQuestBuilder,
+ WotAnniversaryQuestBuilder))
 
 def createQuest(builders, questType, qID, data, progress=None, expiryTime=None):
     for builder in builders:
