@@ -41,9 +41,10 @@ from gui.shared.view_helpers.UsersInfoHelper import UsersInfoHelper
 from gui.wgcg.clan.contexts import GetClanInfoCtx
 from gui.wgnc import g_wgncEvents, g_wgncProvider, wgnc_settings
 from gui.wgnc.settings import WGNC_DATA_PROXY_TYPE
-from helpers import dependency, i18n, time_utils
 from helpers.events_handler import EventsHandler
 from helpers.time_utils import getTimestampByStrDate
+from gui.wot_anniversary.wot_anniversary_helpers import WotAnniversaryEventState
+from helpers import time_utils, i18n, dependency
 from messenger import MessengerEntry
 from messenger.formatters import TimeFormatter
 from messenger.m_constants import PROTO_TYPE, SCH_CLIENT_MSG_TYPE, USER_ACTION_ID
@@ -53,7 +54,7 @@ from messenger.proto.xmpp.xmpp_constants import XMPP_ITEM_TYPE
 from notification.decorators import BattlePassLockButtonDecorator, BattlePassSwitchChapterReminderDecorator, C11nMessageDecorator, C2DProgressionStyleDecorator, ClanAppActionDecorator, ClanAppsDecorator, ClanInvitesActionDecorator, ClanInvitesDecorator, ClanSingleAppDecorator, ClanSingleInviteDecorator, CollectionsLockButtonDecorator, EmailConfirmationReminderMessageDecorator, EventLootBoxesDecorator, FriendshipRequestDecorator, IntegratedAuctionStageFinishDecorator, IntegratedAuctionStageStartDecorator, LockButtonMessageDecorator, MapboxButtonDecorator, MessageDecorator, MissingEventsDecorator, PrbInviteDecorator, ProgressiveRewardDecorator, RecruitReminderMessageDecorator, ResourceWellLockButtonDecorator, ResourceWellStartDecorator, SeniorityAwardsDecorator, WGNCPopUpDecorator, WinbackSelectableRewardReminderDecorator
 from notification.settings import NOTIFICATION_TYPE, NotificationData
 from shared_utils import first
-from skeletons.gui.game_control import IBattlePassController, IBootcampController, ICollectionsSystemController, IEventLootBoxesController, IEventsNotificationsController, IGameSessionController, ILimitedUIController, IResourceWellController, ISeniorityAwardsController, ISteamCompletionController, IWinbackController
+from skeletons.gui.game_control import IBattlePassController, IBootcampController, ICollectionsSystemController, IEventLootBoxesController, IEventsNotificationsController, IGameSessionController, ILimitedUIController, IResourceWellController, ISeniorityAwardsController, ISteamCompletionController, IWinbackController, IWotAnniversaryController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.lobby_context import ILobbyContext
@@ -1868,6 +1869,62 @@ class EventLootBoxesListener(_NotificationListener, EventsHandler):
         SystemMessages.pushMessage(text=backport.text(R.strings.lootboxes.notification.eventFinish.text()) if boxesCount > 0 else '', priority=NotificationPriorityLevel.MEDIUM, type=SystemMessages.SM_TYPE.EventLootBoxFinish, messageData={'title': backport.text(R.strings.lootboxes.notification.eventFinish.title())})
         ctrl.setSetting(EVENT_LOOT_BOXES_CATEGORY, LOOT_BOXES_WAS_FINISHED, True)
 
+
+class WotAnniversaryListener(_NotificationListener):
+    __wotAnniversaryCtrl = dependency.descriptor(IWotAnniversaryController)
+
+    def start(self, model):
+        result = super(WotAnniversaryListener, self).start(model)
+        if result:
+            self.__wotAnniversaryCtrl.onEventStateChanged += self.__notifyEventStateChanged
+            self.__wotAnniversaryCtrl.onEventWillEndSoon += self.__notifyEventWillEndSoon
+            self.__wotAnniversaryCtrl.onEventActivePhaseEnded += self.__notifyActivePhaseFinished
+        return result
+
+    def stop(self):
+        self.__wotAnniversaryCtrl.onEventStateChanged -= self.__notifyEventStateChanged
+        self.__wotAnniversaryCtrl.onEventWillEndSoon -= self.__notifyEventWillEndSoon
+        self.__wotAnniversaryCtrl.onEventActivePhaseEnded -= self.__notifyActivePhaseFinished
+        super(WotAnniversaryListener, self).stop()
+
+    def __notifyEventStateChanged(self, state):
+        if state == WotAnniversaryEventState.STARTED:
+            self.__pushStarted()
+        elif state == WotAnniversaryEventState.PAUSE:
+            self.__pushPause()
+        elif state == WotAnniversaryEventState.ENABLED:
+            self.__pushEnabled()
+        elif state == WotAnniversaryEventState.FINISHED:
+            self.__pushFinished()
+
+    def __notifyEventWillEndSoon(self):
+        self.__pushEventWillEndSoon()
+
+    def __notifyActivePhaseFinished(self):
+        self.__pushActivePhaseFinished()
+
+    def __pushStarted(self):
+        sday, smonth = self.__getParsedDate(self.__wotAnniversaryCtrl.getEventStartTime())
+        eday, emonth = self.__getParsedDate(self.__wotAnniversaryCtrl.getActivePhaseEndTime())
+        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.wotAnniversary.switch_started.body(), startDay=sday, startMonth=smonth, endDay=eday, endMonth=emonth), type=SystemMessages.SM_TYPE.WOTAnniversaryStartedMessage, priority=NotificationPriorityLevel.HIGH, messageData={'header': backport.text(R.strings.system_messages.wotAnniversary.switch_started.title())})
+
+    def __pushPause(self):
+        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.wotAnniversary.switch_pause.body()), type=SystemMessages.SM_TYPE.ErrorSimple, priority=NotificationPriorityLevel.HIGH)
+
+    def __pushEnabled(self):
+        text = backport.text(R.strings.system_messages.wotAnniversary.switch_enabled.body())
+        SystemMessages.pushMessage(text=text, type=SystemMessages.SM_TYPE.Warning, priority=NotificationPriorityLevel.HIGH)
+
+    def __pushActivePhaseFinished(self):
+        day, month = self.__getParsedDate(self.__wotAnniversaryCtrl.getEventCategoryEndTime())
+        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.wotAnniversary.switch_disable.body(), day=day, month=month), type=SystemMessages.SM_TYPE.Information, priority=NotificationPriorityLevel.HIGH)
+
+    def __pushEventWillEndSoon(self):
+        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.wotAnniversary.eventWillEndSoon.body()), type=SystemMessages.SM_TYPE.WarningHeader, priority=NotificationPriorityLevel.MEDIUM, messageData={'header': backport.text(R.strings.system_messages.wotAnniversary.eventWillEndSoon.header())})
+
+    def __pushFinished(self):
+        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.wotAnniversary.eventFinished.body()), type=SystemMessages.SM_TYPE.WarningHeader, priority=NotificationPriorityLevel.MEDIUM, messageData={'header': backport.text(R.strings.system_messages.wotAnniversary.eventWillEndSoon.header())})
+
     @staticmethod
     def __pushLootBoxesEnabled():
         SystemMessages.pushMessage(text=backport.text(R.strings.lootboxes.notification.lootBoxesIsEnabled.text()), priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.EventLootBoxEnabled, messageData={'title': backport.text(R.strings.lootboxes.notification.lootBoxesIsEnabled.title())})
@@ -1875,6 +1932,11 @@ class EventLootBoxesListener(_NotificationListener, EventsHandler):
     @staticmethod
     def __pushLootBoxesDisabled():
         SystemMessages.pushMessage(text=backport.text(R.strings.lootboxes.notification.lootBoxesIsDisabled.text()), priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.EventLootBoxDisabled, messageData={'title': backport.text(R.strings.lootboxes.notification.lootBoxesIsDisabled.title())})
+
+    @staticmethod
+    def __getParsedDate(timeStamp):
+        timeStruct = time_utils.getTimeStructInLocal(timeStamp)
+        return (str(timeStruct.tm_mday), backport.text(R.strings.menu.dateTime.months.num(timeStruct.tm_mon)()))
 
 
 class CollectionsListener(_NotificationListener, EventsHandler):
@@ -2036,7 +2098,7 @@ registerNotificationsListeners((
  EmailConfirmationReminderListener, VehiclePostProgressionUnlockListener,
  BattlePassSwitchChapterReminder, ResourceWellListener, IntegratedAuctionListener,
  SeniorityAwardsQuestListener, SeniorityAwardsTokenListener, EventLootBoxesListener, CollectionsListener,
- WinbackSelectableRewardReminder))
+ WinbackSelectableRewardReminder, WotAnniversaryListener))
 
 class NotificationsListeners(_NotificationListener):
 

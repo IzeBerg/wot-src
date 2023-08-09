@@ -1,7 +1,7 @@
 import time, typing, game_loading_bindings
 from frameworks.state_machine import StateFlags
 from gui.game_loading import loggers
-from gui.game_loading.common import normalizeGfImagePath
+from gui.impl.utils.path import normalizeGfImagePath
 from gui.game_loading.resources.consts import InfoStyles
 from gui.game_loading.state_machine.models import ImageViewSettingsModel
 from gui.game_loading.state_machine.states.base import BaseState, BaseViewResourcesTickingState

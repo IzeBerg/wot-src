@@ -59,6 +59,14 @@ package
       
       public static const MAPS_ICONS_TANKMEN_SKILLS_BIG_NEW_SKILL:String = "../maps/icons/tankmen/skills/big/new_skill.png";
       
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTERESTINGFACTANDBONUSVIEW_BG:String = "../maps/icons/wot_anniversary/interestingFactAndBonusView/bg.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTROSCREEN_BG:String = "../maps/icons/wot_anniversary/introScreen/bg.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_REWARDS_BG:String = "../maps/icons/wot_anniversary/rewards/bg.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_WELCOMESCREEN_BG:String = "../maps/icons/wot_anniversary/welcomeScreen/bg.png";
+      
       public static const MAPS_UIKIT_DIALOG_TEMPLATES_SELECT_OPTION_BG:String = "../maps/uiKit/dialog_templates/select_option/bg.png";
        
       

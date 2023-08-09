@@ -28,14 +28,14 @@ class _RawQuestConditionsFormatters(CardBattleConditionsFormatters):
         return i18n.makeString(*field.args)
 
 
-def _formatQuestConditions(quest):
+def formatQuestConditions(quest):
     formatter = _RawQuestConditionsFormatters()
     conditions = formatter.format(quest)
     return [ {'description': cond['description'], 'title': cond['title'], 'type': cond['state'], 'icon': sanitizeResPath(cond['icon']), 'progress': cond['progress']} for cond in itertools.chain.from_iterable(component['data'] for component in conditions)
            ]
 
 
-def _formatQuestBonuses(quest):
+def formatQuestBonuses(quest):
     entries = []
     for bonus in quest.getBonuses():
         if any(isinstance(bonus, hb) for hb in HIDDEN_BONUSES):
@@ -54,8 +54,8 @@ def _questAsDict(quest):
     return {'id': quest.getID(), 
        'description': quest.getDescription(), 
        'name': quest.getUserName(), 
-       'conditions': _formatQuestConditions(quest), 
-       'bonuses': _formatQuestBonuses(quest), 
+       'conditions': formatQuestConditions(quest), 
+       'bonuses': formatQuestBonuses(quest), 
        'is_completed': quest.isCompleted(), 
        'priority': quest.getPriority()}
 

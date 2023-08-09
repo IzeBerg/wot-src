@@ -704,8 +704,19 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<platformCurrency>&lt;font color=&apos;#8C8C7E&apos;&gt;%(msg)s: &lt;font color=&apos;#D6D7D4&apos;&gt;%(count)s&lt;/font&gt;&lt;/font&gt;</platformCurrency>
 		<boosterExpiredRow>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/boosterExpiredTotalTemplate/total)&lt;/font&gt; &lt;font color=&quot;#E9E2BF&quot;&gt;%(value)s&lt;/font&gt;&lt;br /&gt;</boosterExpiredRow>
 		<boosterExpiredAdditionalRow>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/boosterAdditionalMessage)&lt;/font&gt;</boosterExpiredAdditionalRow>
+		<wotAnniversaryCompletedQuests>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#wot_anniversary:systemMessage/battleReward/completed): &lt;font color=&apos;#C9C9B6&apos;&gt;%(count)s&lt;/font&gt;&lt;/font&gt;</wotAnniversaryCompletedQuests>
+		<wotAnniversaryEventCoin>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#wot_anniversary:systemMessage/eventCoin/recieved): &lt;font color=&apos;#C9C9B6&apos;&gt;%(eventCoin)s&lt;/font&gt;&lt;/font&gt;</wotAnniversaryEventCoin>
+		<wotAnniversaryInterestingFact>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#wot_anniversary:systemMessage/interestingFact/opened): &lt;font color=&apos;#C9C9B6&apos;&gt;«%(interestingFact)s»&lt;/font&gt;&lt;/font&gt;</wotAnniversaryInterestingFact>
 	</htmlTemplatesSimple>
 	<htmlTemplates>
+		<WOTAnniversaryStartedMessageSysMessage>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<priority>high</priority>
+			<bgIcon>bg_wot_anniversary</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</WOTAnniversaryStartedMessageSysMessage>
 		<SimpleGiftSysMessage>
 			<priority>low</priority>
 			<type>yellow</type>
@@ -3101,6 +3112,37 @@ _(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
 &lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#lootboxes:notification/lootBoxesAutoOpen/text)&lt;/font&gt;&lt;br/&gt;
 _(#lootboxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</message>
 		</EventLootBoxesAutoOpenMessage>
+		<wotAnniversaryFinalReward>
+			<priority>high</priority>
+			<bgIcon>bg_wot_anniversary</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<type>red</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#system_messages:wotAnniversary/award/header)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#wot_anniversary:systemMessage/finalReward/completed)&lt;br/&gt;%(rewards)s&lt;/font&gt;</message>
+		</wotAnniversaryFinalReward>
+		<wotAnniversaryLoginReward>
+			<priority>high</priority>
+			<bgIcon>bg_wot_anniversary</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>OpenAnniversaryMissions</action>
+				</button>
+			</buttonsLayout>
+			<type>red</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#system_messages:wotAnniversary/award/header)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#wot_anniversary:systemMessage/loginReward/completed)&lt;br/&gt;%(rewards)s&lt;/font&gt;</message>
+		</wotAnniversaryLoginReward>
+		<wotAnniversaryBattleReward>
+			<priority>high</priority>
+			<bgIcon>bg_wot_anniversary</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<type>red</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#system_messages:wotAnniversary/award/header)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(rewards)s&lt;/font&gt;</message>
+		</wotAnniversaryBattleReward>
 		<CollectionStartSysMessage>
 			<type>grey</type>
 			<priority>high</priority>
