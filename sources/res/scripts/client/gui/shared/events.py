@@ -819,3 +819,8 @@ class Achievements20Event(HasCtxEvent):
     LAYOUT_CHANGED = 'layoutChanged'
     CLOSE_SUMMARY_VIEW = 'closeSummaryView'
     CLOSE_EDIT_VIEW = 'closeEditView'
+
+
+class WotAnniversaryEvent(HasCtxEvent):
+    ON_MAIN_VIEW_CLOSED = 'onMainViewClosed'
+    ON_MAIN_VIEW_OPENED = 'onMainViewOpened'

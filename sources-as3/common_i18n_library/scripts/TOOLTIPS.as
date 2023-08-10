@@ -2433,6 +2433,8 @@ package
       
       public static const QUESTS_LINKBTN_BATTLEPASS_SELECT:String = "#tooltips:quests/linkBtn/battlePass/select";
       
+      public static const QUESTS_LINKBTN_WOTANNIVERSARY:String = "#tooltips:quests/linkBtn/wotAnniversary";
+      
       public static const QUESTS_STATUS_DONE:String = "#tooltips:quests/status/done";
       
       public static const QUESTS_STATUS_CUSTOMIZATIONPROGRESSION_DONEFIRST:String = "#tooltips:quests/status/customizationProgression/doneFirst";

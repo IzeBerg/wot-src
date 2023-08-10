@@ -127,7 +127,7 @@ def _predicateLobbyTopSubViews(view):
 
 def _isActiveShopNewCounters():
     newTabCounters = AccountSettings.getCounters(NEW_SHOP_TABS)
-    return not any(newTabCounters.values())
+    return not all(newTabCounters.values())
 
 
 def _updateShopNewCounters():
@@ -1599,9 +1599,13 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
                     overridenActionAliases = AccountSettings.getSessionSettings(OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES)
                     overridenActionAliases.add(alias)
                     AccountSettings.setSessionSettings(OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES, overridenActionAliases)
-                elif alias not in counters or _isActiveShopNewCounters():
+                elif _isActiveShopNewCounters():
+                    if self.__currentScreen == self.TABS.STORE:
+                        _updateShopNewCounters()
+                    else:
+                        counter = backport.text(R.strings.menu.headerButtons.defaultCounter())
+                elif alias not in counters:
                     counter = backport.text(R.strings.menu.headerButtons.defaultCounter())
-                    _updateShopNewCounters()
                 else:
                     counter = counters[alias]
                 AccountSettings.setCounters(NEW_LOBBY_TAB_COUNTER, counters)

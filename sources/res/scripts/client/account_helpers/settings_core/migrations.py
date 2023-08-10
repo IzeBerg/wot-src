@@ -959,6 +959,19 @@ def _migrateTo104(_, data, __):
     data[SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_2] = AccountSettings.getFilterDefault(FUN_RANDOM_CAROUSEL_FILTER_2)
 
 
+def _migrateTo105(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
+    from account_helpers.settings_core.settings_constants import WotAnniversaryStorageKeys
+    wotAniversaryStorage = data[SETTINGS_SECTIONS.WOT_ANNIVERSARY_STORAGE]
+    wotAniversaryStorage[WotAnniversaryStorageKeys.WOT_ANNIVERSARY_INTRO_SHOWED] = False
+    wotAniversaryStorage[WotAnniversaryStorageKeys.WOT_ANNIVERSARY_WELCOME_SHOWED] = False
+    wotAniversaryStorage[WotAnniversaryStorageKeys.WOT_ANNIVERSARY_FINISHED_NOTIFICATION_SHOWED] = False
+    wotAniversaryStorage[WotAnniversaryStorageKeys.WOT_ANNIVERSARY_ACTIVE_PHASE_ENDED_NOTIFICATION_SHOWED] = False
+    wotAniversaryStorage[WotAnniversaryStorageKeys.WOT_ANNIVERSARY_EVENT_WILL_END_SOON_NOTIFICATION_SHOWED] = False
+    wotAniversaryStorage[WotAnniversaryStorageKeys.WOT_ANNIVERSARY_ON_PAUSE_NOTIFICATION_SHOWED] = False
+    wotAniversaryStorage[WotAnniversaryStorageKeys.WOT_ANNIVERSARY_STARTED_NOTIFICATION_SHOWED] = False
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -1165,7 +1178,9 @@ _versions = (
  (
   103, _migrateTo103, False, False),
  (
-  104, _migrateTo104, False, False))
+  104, _migrateTo104, False, False),
+ (
+  105, _migrateTo105, False, False))
 
 @adisp_async
 @adisp_process

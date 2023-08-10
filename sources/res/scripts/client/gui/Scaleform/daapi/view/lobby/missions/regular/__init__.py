@@ -11,6 +11,7 @@ from gui.impl.lobby.battle_pass.battle_pass_view import BattlePassViewsHolderCom
 from gui.impl.lobby.mapbox.mapbox_progression_view import MapboxProgressionsComponent
 from gui.impl.lobby.battle_matters.battle_matters_main_view import BattleMattersMissionComponent
 from gui.shared import EVENT_BUS_SCOPE
+from gui.wot_anniversary.wot_anniversary_browser_view import WotAnniversaryInjectorView
 
 def getContextMenuHandlers():
     return ()
@@ -44,6 +45,7 @@ def getViewSettings():
      ComponentSettings(QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS, MissionsGroupedView, ScopeTemplates.VIEW_SCOPE),
      ComponentSettings(QUESTS_ALIASES.MISSIONS_PREMIUM_VIEW_PY_ALIAS, DailyQuestsInjectorView, ScopeTemplates.VIEW_SCOPE),
      ComponentSettings(QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS, MissionsMarathonView, ScopeTemplates.VIEW_SCOPE),
+     ComponentSettings(QUESTS_ALIASES.WOT_ANNIVERSARY_VIEW_PY_ALIAS, WotAnniversaryInjectorView, ScopeTemplates.VIEW_SCOPE),
      ComponentSettings(QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS, BattlePassViewsHolderComponent, ScopeTemplates.VIEW_SCOPE),
      ComponentSettings(QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS, MapboxProgressionsComponent, ScopeTemplates.VIEW_SCOPE),
      ComponentSettings(QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS, BattleMattersMissionComponent, ScopeTemplates.VIEW_SCOPE),
@@ -81,7 +83,9 @@ class MissionsPackageBusinessHandler(PackageBusinessHandler):
          (
           EVENTBOARDS_ALIASES.EVENTBOARDS_DETAILS_AWARDS_VIEW, self.loadViewByCtxEvent),
          (
-          EVENTBOARDS_ALIASES.EVENTBOARDS_DETAILS_BATTLE_VIEW, self.loadViewByCtxEvent))
+          EVENTBOARDS_ALIASES.EVENTBOARDS_DETAILS_BATTLE_VIEW, self.loadViewByCtxEvent),
+         (
+          QUESTS_ALIASES.WOT_ANNIVERSARY_VIEW_PY_ALIAS, self.loadViewByCtxEvent))
         super(MissionsPackageBusinessHandler, self).__init__(listeners, app_settings.APP_NAME_SPACE.SF_LOBBY, EVENT_BUS_SCOPE.LOBBY)
 
     def __loadMissionsPageOrUpdateCurrentTab(self, event):

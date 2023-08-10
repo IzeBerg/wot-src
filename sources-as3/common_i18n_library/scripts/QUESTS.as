@@ -25,6 +25,8 @@ package
       
       public static const MISSIONS_TAB_BATTLEMATTERS:String = "#quests:missions/tab/battleMatters";
       
+      public static const MISSIONS_TAB_WOT_ANNIVERSARY:String = "#quests:missions/tab/wot_anniversary";
+      
       public static const MISSIONS_FILTERCOUNTER_CLOSEBUTTON:String = "#quests:missions/filterCounter/closeButton";
       
       public static const MISSIONS_FILTER_FILTERBUTTON:String = "#quests:missions/filter/filterButton";
@@ -2102,6 +2104,10 @@ package
       public static const MISSIONS_TAB_BATTLE_PASS_BODY:String = "#quests:missions/tab/battle_pass/body";
       
       public static const MISSIONS_TAB_BATTLE_PASS_HEADER:String = "#quests:missions/tab/battle_pass/header";
+      
+      public static const MISSIONS_TAB_WOT_ANNIVERSARY_BODY:String = "#quests:missions/tab/wot_anniversary/body";
+      
+      public static const MISSIONS_TAB_WOT_ANNIVERSARY_HEADER:String = "#quests:missions/tab/wot_anniversary/header";
       
       public static const MISSIONS_TAB_MAPBOX_HEADER:String = "#quests:missions/tab/mapbox/header";
       

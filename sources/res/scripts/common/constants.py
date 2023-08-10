@@ -1805,9 +1805,10 @@ class USER_SERVER_SETTINGS:
     SESSION_STATS = 96
     CONTOUR = 106
     UI_STORAGE_2 = 109
+    WOT_ANNIVERSARY = 112
     _ALL = (
      HIDE_MARKS_ON_GUN, EULA_VERSION, GAME_EXTENDED, BATTLE_MATTERS_QUESTS, SESSION_STATS, DOG_TAGS,
-     GAME_EXTENDED_2, BATTLE_HUD, CONTOUR, UI_STORAGE_2, BATTLE_EVENTS)
+     GAME_EXTENDED_2, BATTLE_HUD, CONTOUR, UI_STORAGE_2, BATTLE_EVENTS, WOT_ANNIVERSARY)
 
     @classmethod
     def isBattleInvitesForbidden(cls, settings):
@@ -1922,7 +1923,8 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    108: 'Fun Random carousel filter 2', 
    USER_SERVER_SETTINGS.UI_STORAGE_2: 'ui storage 2, used for preserving first entry flags etc', 
    110: 'Competitive7x7 carousel filter 1', 
-   111: 'Competitive7x7 carousel filter 2'}
+   111: 'Competitive7x7 carousel filter 2', 
+   USER_SERVER_SETTINGS.WOT_ANNIVERSARY: 'wot anniversary settings'}
 
 class WG_GAMES:
     TANKS = 'wot'

@@ -1530,8 +1530,11 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
     def _formatData(self, assetType, data):
         operations = self._composeOperations(data)
         icon = b'InformationIcon'
+        money = Money.makeMoney(data.get(b'data', {}))
+        if money.eventCoin is not None and money.eventCoin != 0:
+            icon = b'eventCoinIcon'
         if not operations:
-            return None
+            return
         else:
             return g_settings.msgTemplates.format(self._getMessageTemplateKey(assetType), ctx={b'at': self._getOperationTimeString(data), 
                b'desc': self.__getL10nDescription(data), 
@@ -3172,6 +3175,18 @@ class LootBoxAchievesFormatter(QuestAchievesFormatter):
     @classmethod
     def _extractAchievements(cls, data):
         return _getAchievementsFromQuestData(data)
+
+
+class WotAnniversaryQuestAchievesFormatter(QuestAchievesFormatter):
+    _BULLET = b'• '
+    _SEPARATOR = b'<br/>' + _BULLET
+
+    @classmethod
+    def formatQuestAchieves(cls, data, asBattleFormatter, processCustomizations=True, processTokens=True):
+        result = super(WotAnniversaryQuestAchievesFormatter, cls).formatQuestAchieves(data, asBattleFormatter, processCustomizations, processTokens)
+        if result:
+            return cls._BULLET + result
+        return result
 
 
 class BattlePassQuestAchievesFormatter(QuestAchievesFormatter):

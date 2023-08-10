@@ -7,6 +7,8 @@ from gui.Scaleform.daapi.view.lobby.missions.missions_helper import getMissionIn
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.Scaleform.genConsts.PERSONAL_MISSIONS_ALIASES import PERSONAL_MISSIONS_ALIASES
 from gui.Scaleform.genConsts.QUESTS_ALIASES import QUESTS_ALIASES
+from gui.impl import backport
+from gui.impl.gen import R
 from gui.impl.lobby.reward_window import GiveAwayRewardWindow, PiggyBankRewardWindow, TwitchRewardWindow
 from gui.impl.pub.notification_commands import WindowNotificationCommand, EventNotificationCommand, NotificationEvent
 from gui.prb_control.dispatcher import g_prbLoader
@@ -15,10 +17,12 @@ from gui.server_events.events_helpers import getLootboxesFromBonuses, isC11nQues
 from gui.shared import EVENT_BUS_SCOPE, event_dispatcher as shared_events, events, g_eventBus
 from gui.shared.event_dispatcher import showProgressiveItemsView, hideWebBrowserOverlay, showBrowserOverlayView
 from gui.shared.events import PersonalMissionsEvent
+from gui.shared.notifications import NotificationPriorityLevel
+from gui.wot_anniversary.wot_anniversary_helpers import showMainView, isWotAnniversaryQuest
 from helpers import dependency
 from shared_utils import first
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IMarathonEventsController
+from skeletons.gui.game_control import IMarathonEventsController, IWotAnniversaryController
 from skeletons.gui.impl import INotificationWindowController, IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
@@ -68,6 +72,7 @@ _EVENTS_REWARD_WINDOW = {recruit_helper.RecruitSourceID.TWITCH_0: TwitchRewardWi
    recruit_helper.RecruitSourceID.TWITCH_41: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.TWITCH_42: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.TWITCH_43: TwitchRewardWindow, 
+   recruit_helper.RecruitSourceID.TWITCH_44: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.COMMANDER_MARINA: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.COMMANDER_PATRICK: TwitchRewardWindow, 
    anniversary_helper.ANNIVERSARY_EVENT_PREFIX: GiveAwayRewardWindow}
@@ -183,6 +188,10 @@ def showMissionsBattlePass(layoutID=None, chapterID=0):
     _showMissions(tab=QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS, layoutID=layoutID, chapterID=chapterID)
 
 
+def showWotAnniversaryMissions(callbackOnClose=None):
+    _showMissions(tab=QUESTS_ALIASES.WOT_ANNIVERSARY_VIEW_PY_ALIAS, callbackOnClose=callbackOnClose)
+
+
 def showMissions(tab=None, missionID=None, groupID=None, marathonPrefix=None, anchor=None, showDetails=True, subTab=None):
     _showMissions(**{'tab': tab, 
        'subTab': subTab, 
@@ -252,6 +261,15 @@ def showMission(eventID, eventType=None):
                 return showMissionsMarathon(marathonPrefix=prefix)
             if events_helpers.isBattleMattersQuestID(eventID):
                 showBattleMatters()
+            if isWotAnniversaryQuest(eventID):
+                wotAnniversaryCtrl = dependency.instance(IWotAnniversaryController)
+                if not wotAnniversaryCtrl.isAvailable():
+                    SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.wotAnniversary.switch_pause.body()), type=SystemMessages.SM_TYPE.ErrorSimple, priority=NotificationPriorityLevel.HIGH)
+                    return
+                if not wotAnniversaryCtrl.isInActivePhase():
+                    wotAnniversaryCtrl.showActivePhaseFinishedNotification()
+                    return
+                return showMainView()
         if eventType is not None and eventType == constants.EVENT_TYPE.PERSONAL_MISSION:
             showPersonalMission(eventID)
         elif quest is not None and quest.showMissionAction() is not None:
