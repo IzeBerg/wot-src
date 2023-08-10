@@ -281,6 +281,8 @@ package net.wg.data.constants.generated
       
       public static const FRANCE_F12_HOTCHKISS_H35:String = "france-F12_Hotchkiss_H35";
       
+      public static const FRANCE_F124_AMX_13_FL11:String = "france-F124_AMX_13FL11";
+      
       public static const FRANCE_F13_AMX38:String = "france-F13_AMX38";
       
       public static const FRANCE_F14_AMX40:String = "france-F14_AMX40";

@@ -1242,7 +1242,7 @@ def _recursiveStep(defaultDict, savedDict, finalDict):
 
 class AccountSettings(object):
     onSettingsChanging = Event.Event()
-    version = 61
+    version = 63
     settingsCore = dependency.descriptor(ISettingsCore)
     __cache = {'login': None, 'section': None}
     __sessionSettings = {'login': None, 'section': None}
@@ -1850,6 +1850,10 @@ class AccountSettings(object):
                     if obsoleteKey in accSessionSettings.keys():
                         accSessionSettings.deleteSection(obsoleteKey)
 
+            if currVersion < 62:
+                pass
+            if currVersion < 63:
+                pass
             ads.writeInt('version', AccountSettings.version)
         return
 
