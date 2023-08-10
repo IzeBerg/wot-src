@@ -37,6 +37,7 @@ from skeletons.gui.game_control import IBootcampController
 LOBBY_OPTIMIZATION_CONFIG = {VIEW_ALIAS.LOBBY_HEADER: OptimizationSetting(), 
    VIEW_ALIAS.LOBBY_TECHTREE: OptimizationSetting(), 
    VIEW_ALIAS.LOBBY_RESEARCH: OptimizationSetting(), 
+   VIEW_ALIAS.LOBBY_MISSIONS: OptimizationSetting(), 
    HANGAR_ALIASES.TANK_CAROUSEL: OptimizationSetting(), 
    HANGAR_ALIASES.RANKED_TANK_CAROUSEL: OptimizationSetting(), 
    HANGAR_ALIASES.BATTLEPASS_TANK_CAROUSEL: OptimizationSetting(), 

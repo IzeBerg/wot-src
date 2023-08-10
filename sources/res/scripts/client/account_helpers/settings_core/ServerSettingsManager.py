@@ -66,6 +66,7 @@ class SETTINGS_SECTIONS(CONST_CONTAINER):
     CONTOUR = 'CONTOUR'
     LIMITED_UI_1 = 'LIMITED_UI_1'
     LIMITED_UI_2 = 'LIMITED_UI_2'
+    WOT_ANNIVERSARY_STORAGE = 'WOT_ANNIVERSARY_STORAGE'
     ONCE_ONLY_HINTS_GROUP = (
      ONCE_ONLY_HINTS, ONCE_ONLY_HINTS_2)
 
@@ -146,6 +147,7 @@ class ServerSettingsManager(object):
     BATTLE_COMM = settings_constants.BattleCommStorageKeys
     BATTLE_PASS = settings_constants.BattlePassStorageKeys
     SCORE_PANEL = settings_constants.ScorePanelStorageKeys
+    WOT_ANNIVERSARY = settings_constants.WotAnniversaryStorageKeys
     SECTIONS = {SETTINGS_SECTIONS.GAME: Section(masks={GAME.ENABLE_OL_FILTER: 0, 
                                 GAME.ENABLE_SPAM_FILTER: 1, 
                                 GAME.INVITES_FROM_FRIENDS: 2, 
@@ -216,6 +218,13 @@ class ServerSettingsManager(object):
                                    SPGAim.AUTO_CHANGE_AIM_MODE: 3}, offsets={SPGAim.AIM_ENTRANCE_MODE: Offset(4, 3 << 4)}), 
        SETTINGS_SECTIONS.CONTOUR: Section(masks={CONTOUR.ENHANCED_CONTOUR: 0}, offsets={CONTOUR.CONTOUR_PENETRABLE_ZONE: Offset(1, 3 << 1), 
                                    CONTOUR.CONTOUR_IMPENETRABLE_ZONE: Offset(3, 3 << 3)}), 
+       SETTINGS_SECTIONS.WOT_ANNIVERSARY_STORAGE: Section(masks={WOT_ANNIVERSARY.WOT_ANNIVERSARY_INTRO_SHOWED: 0, 
+                                                   WOT_ANNIVERSARY.WOT_ANNIVERSARY_WELCOME_SHOWED: 1, 
+                                                   WOT_ANNIVERSARY.WOT_ANNIVERSARY_FINISHED_NOTIFICATION_SHOWED: 2, 
+                                                   WOT_ANNIVERSARY.WOT_ANNIVERSARY_ACTIVE_PHASE_ENDED_NOTIFICATION_SHOWED: 3, 
+                                                   WOT_ANNIVERSARY.WOT_ANNIVERSARY_EVENT_WILL_END_SOON_NOTIFICATION_SHOWED: 4, 
+                                                   WOT_ANNIVERSARY.WOT_ANNIVERSARY_ON_PAUSE_NOTIFICATION_SHOWED: 5, 
+                                                   WOT_ANNIVERSARY.WOT_ANNIVERSARY_STARTED_NOTIFICATION_SHOWED: 6}, offsets={}), 
        SETTINGS_SECTIONS.MARKERS: Section(masks={'markerBaseIcon': 0, 
                                    'markerBaseLevel': 1, 
                                    'markerBaseHpIndicator': 2, 
@@ -1131,7 +1140,7 @@ class ServerSettingsManager(object):
     @adisp_process
     def _updateToVersion(self, callback=None):
         currentVersion = self.settingsCache.getVersion()
-        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, 'clear': {}, 'delete': [], SETTINGS_SECTIONS.LIMITED_UI_1: {}, SETTINGS_SECTIONS.LIMITED_UI_2: {}}
+        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, SETTINGS_SECTIONS.WOT_ANNIVERSARY_STORAGE: {}, 'clear': {}, 'delete': [], SETTINGS_SECTIONS.LIMITED_UI_1: {}, SETTINGS_SECTIONS.LIMITED_UI_2: {}}
         yield migrateToVersion(currentVersion, self._core, data)
         self._setSettingsSections(data)
         callback(self)
@@ -1163,6 +1172,10 @@ class ServerSettingsManager(object):
         clearGraphics = clear.get(SETTINGS_SECTIONS.GRAPHICS, 0)
         if graphicsData or clearGraphics:
             settings[SETTINGS_SECTIONS.GRAPHICS] = self._buildSectionSettings(SETTINGS_SECTIONS.GRAPHICS, graphicsData) ^ clearGraphics
+        wotAnniversaryData = data.get(SETTINGS_SECTIONS.WOT_ANNIVERSARY_STORAGE, {})
+        clearWotAnniversary = clear.get(SETTINGS_SECTIONS.WOT_ANNIVERSARY_STORAGE, 0)
+        if wotAnniversaryData or clearWotAnniversary:
+            settings[SETTINGS_SECTIONS.WOT_ANNIVERSARY_STORAGE] = self._buildSectionSettings(SETTINGS_SECTIONS.WOT_ANNIVERSARY_STORAGE, wotAnniversaryData) ^ clearWotAnniversary
         aimData = data.get('aimData', {})
         if aimData:
             settings.update(self._buildAimSettings(aimData))

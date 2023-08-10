@@ -20,6 +20,7 @@ if typing.TYPE_CHECKING:
     from gui.game_control.trade_in import TradeInDiscounts
     from gui.gift_system.hubs.base.hub_core import IGiftEventHub
     from gui.hangar_presets.hangar_gui_config import HangarGuiPreset
+    from gui.wot_anniversary.wot_anniversary_helpers import InterestingFacts
     from gui.impl.lobby.winback.winback_helpers import WinbackQuestTypes
     from gui.limited_ui.lui_rules_storage import LuiRules
     from gui.mapbox.mapbox_survey_manager import MapboxSurveyManager
@@ -31,7 +32,7 @@ if typing.TYPE_CHECKING:
     from gui.ranked_battles.ranked_helpers.web_season_provider import RankedWebSeasonProvider, WebSeasonInfo
     from gui.ranked_battles.ranked_models import BattleRankInfo, Division, PostBattleRankInfo, Rank
     from gui.server_events.bonuses import BattlePassSelectTokensBonus, BattlePassStyleProgressTokenBonus, SimpleBonus, TokensBonus
-    from gui.server_events.event_items import RankedQuest
+    from gui.server_events.event_items import RankedQuest, Quest
     from gui.shared.event_bus import SharedEvent
     from gui.shared.gui_items import Tankman, Vehicle, ItemsCollection
     from gui.shared.gui_items.artefacts import OptionalDevice
@@ -3142,4 +3143,86 @@ class IHangarGuiController(IGameController):
         raise NotImplementedError
 
     def updateComponentsVisibility(self, preset=None):
+        raise NotImplementedError
+
+
+class IWotAnniversaryController(IGameController):
+    onSettingsChanged = None
+    onEventWillEndSoon = None
+    onEventActivePhaseEnded = None
+    onEventStateChanged = None
+    onSecretMessageStateChanged = None
+    onAnniversaryTabSwitched = None
+    onNewBattleQuestsReceived = None
+
+    def isEnabled(self):
+        raise NotImplementedError
+
+    def isAvailable(self):
+        raise NotImplementedError
+
+    def isSecretMessageActive(self):
+        raise NotImplementedError
+
+    def isAvailableAndActivePhase(self):
+        raise NotImplementedError
+
+    def getConfig(self):
+        raise NotImplementedError
+
+    def getRewardScreenRequiredQuests(self):
+        raise NotImplementedError
+
+    def getUrl(self, urlName):
+        raise NotImplementedError
+
+    def getQuests(self):
+        raise NotImplementedError
+
+    def getInterestingFacts(self):
+        raise NotImplementedError
+
+    def getInterestingFactsInDict(self):
+        raise NotImplementedError
+
+    def getLoginDayUnlockToken(self, dayNumber):
+        raise NotImplementedError
+
+    def getLatestNotFinishedBattleQuestId(self):
+        raise NotImplementedError
+
+    def getTotalDaysNumber(self):
+        raise NotImplementedError
+
+    def isLastDayNow(self):
+        raise NotImplementedError
+
+    def getEventStartTime(self):
+        raise NotImplementedError
+
+    def isActive(self):
+        raise NotImplementedError
+
+    def getEventCategoryEndTime(self):
+        raise NotImplementedError
+
+    def getActivePhaseEndTime(self):
+        raise NotImplementedError
+
+    def isInActivePhase(self):
+        raise NotImplementedError
+
+    def isInPostActivePhase(self):
+        raise NotImplementedError
+
+    def isEventWillEndSoonDaysNow(self):
+        raise NotImplementedError
+
+    def claimSecretReward(self):
+        raise NotImplementedError
+
+    def showActivePhaseFinishedNotification(self):
+        raise NotImplementedError
+
+    def getQuestCompletedAt(self, qID):
         raise NotImplementedError

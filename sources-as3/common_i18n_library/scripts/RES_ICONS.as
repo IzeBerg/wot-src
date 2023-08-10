@@ -12217,6 +12217,8 @@ package
       
       public static const MAPS_ICONS_LIBRARY_BG_PROGRESSIVE_REWARD_1:String = "../maps/icons/library/bg_progressive_reward-1.png";
       
+      public static const MAPS_ICONS_LIBRARY_BG_WOT_ANNIVERSARY_1:String = "../maps/icons/library/bg_wot_anniversary-1.png";
+      
       public static const MAPS_ICONS_LIBRARY_BLOCKER:String = "../maps/icons/library/blocker.png";
       
       public static const MAPS_ICONS_LIBRARY_BLUEACTIONBG:String = "../maps/icons/library/BlueActionBG.png";
@@ -12430,6 +12432,8 @@ package
       public static const MAPS_ICONS_LIBRARY_EVENTCOINICONINACTIVE_2:String = "../maps/icons/library/EventCoinIconInactive-2.png";
       
       public static const MAPS_ICONS_LIBRARY_EVENTICON_1:String = "../maps/icons/library/EventIcon-1.png";
+      
+      public static const MAPS_ICONS_LIBRARY_EVENTICON:String = "../maps/icons/library/EventIcon.png";
       
       public static const MAPS_ICONS_LIBRARY_EVENTICONBG_1:String = "../maps/icons/library/EventIconBg-1.png";
       
@@ -19579,6 +19583,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_EQUIPMENTPLUS_OVERLAY:String = "../maps/icons/quests/bonuses/s232x174/equipmentPlus_overlay.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_EVENTCOIN:String = "../maps/icons/quests/bonuses/s232x174/eventCoin.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_EXTRAHEALTHRESERVE:String = "../maps/icons/quests/bonuses/s232x174/extraHealthReserve.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_FIREFIGHTING:String = "../maps/icons/quests/bonuses/s232x174/fireFighting.png";
@@ -20131,6 +20137,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_EQUIPMENTPLUS_OVERLAY:String = "../maps/icons/quests/bonuses/s400x300/equipmentPlus_overlay.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_EVENTCOIN:String = "../maps/icons/quests/bonuses/s400x300/eventCoin.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_EXTRAHEALTHRESERVE:String = "../maps/icons/quests/bonuses/s400x300/extraHealthReserve.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_FIREFIGHTING:String = "../maps/icons/quests/bonuses/s400x300/fireFighting.png";
@@ -20348,6 +20356,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_ENHANCEDAIMDRIVES:String = "../maps/icons/quests/bonuses/s600x450/enhancedAimDrives.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_EQUIPMENTPLUS_OVERLAY:String = "../maps/icons/quests/bonuses/s600x450/equipmentPlus_overlay.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_EVENTCOIN:String = "../maps/icons/quests/bonuses/s600x450/eventCoin.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_EXTRAHEALTHRESERVE:String = "../maps/icons/quests/bonuses/s600x450/extraHealthReserve.png";
       
@@ -27700,6 +27710,148 @@ package
       public static const MAPS_ICONS_WINBACK_TOOLTIP_SEPARATOR:String = "../maps/icons/winback/tooltip/separator.png";
       
       public static const MAPS_ICONS_WINBACK_TOOLTIP_SEPARATOR_SMALL:String = "../maps/icons/winback/tooltip/separator_small.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_ENTRYPOINTWIDGET_EVENTCOIN:String = "../maps/icons/wot_anniversary/entryPointWidget/eventCoin.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_ENTRYPOINTWIDGET_EVENTLOGOBIG:String = "../maps/icons/wot_anniversary/entryPointWidget/eventLogoBig.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_ENTRYPOINTWIDGET_EVENTLOGOSMALL:String = "../maps/icons/wot_anniversary/entryPointWidget/eventLogoSmall.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_BIG_A1C27892:String = "../maps/icons/wot_anniversary/facts/big/a1c27892.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_BIG_A6539C35:String = "../maps/icons/wot_anniversary/facts/big/a6539c35.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_BIG_AC78C417:String = "../maps/icons/wot_anniversary/facts/big/ac78c417.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_BIG_B259336B:String = "../maps/icons/wot_anniversary/facts/big/b259336b.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_BIG_B487594C:String = "../maps/icons/wot_anniversary/facts/big/b487594c.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_BIG_B9384736:String = "../maps/icons/wot_anniversary/facts/big/b9384736.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_BIG_C3D0EEF5:String = "../maps/icons/wot_anniversary/facts/big/c3d0eef5.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_BIG_D17ABB9A:String = "../maps/icons/wot_anniversary/facts/big/d17abb9a.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_BIG_D27884D0:String = "../maps/icons/wot_anniversary/facts/big/d27884d0.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_BIG_E719ADC6:String = "../maps/icons/wot_anniversary/facts/big/e719adc6.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_BIG_EDC48B51:String = "../maps/icons/wot_anniversary/facts/big/edc48b51.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_LARGE_A1C27892:String = "../maps/icons/wot_anniversary/facts/large/a1c27892.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_LARGE_A6539C35:String = "../maps/icons/wot_anniversary/facts/large/a6539c35.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_LARGE_AC78C417:String = "../maps/icons/wot_anniversary/facts/large/ac78c417.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_LARGE_B259336B:String = "../maps/icons/wot_anniversary/facts/large/b259336b.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_LARGE_B487594C:String = "../maps/icons/wot_anniversary/facts/large/b487594c.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_LARGE_B9384736:String = "../maps/icons/wot_anniversary/facts/large/b9384736.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_LARGE_C3D0EEF5:String = "../maps/icons/wot_anniversary/facts/large/c3d0eef5.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_LARGE_D17ABB9A:String = "../maps/icons/wot_anniversary/facts/large/d17abb9a.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_LARGE_D27884D0:String = "../maps/icons/wot_anniversary/facts/large/d27884d0.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_LARGE_E719ADC6:String = "../maps/icons/wot_anniversary/facts/large/e719adc6.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_LARGE_EDC48B51:String = "../maps/icons/wot_anniversary/facts/large/edc48b51.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_MEDIUM_A1C27892:String = "../maps/icons/wot_anniversary/facts/medium/a1c27892.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_MEDIUM_A6539C35:String = "../maps/icons/wot_anniversary/facts/medium/a6539c35.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_MEDIUM_AC78C417:String = "../maps/icons/wot_anniversary/facts/medium/ac78c417.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_MEDIUM_B259336B:String = "../maps/icons/wot_anniversary/facts/medium/b259336b.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_MEDIUM_B487594C:String = "../maps/icons/wot_anniversary/facts/medium/b487594c.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_MEDIUM_B9384736:String = "../maps/icons/wot_anniversary/facts/medium/b9384736.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_MEDIUM_C3D0EEF5:String = "../maps/icons/wot_anniversary/facts/medium/c3d0eef5.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_MEDIUM_D17ABB9A:String = "../maps/icons/wot_anniversary/facts/medium/d17abb9a.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_MEDIUM_D27884D0:String = "../maps/icons/wot_anniversary/facts/medium/d27884d0.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_MEDIUM_E719ADC6:String = "../maps/icons/wot_anniversary/facts/medium/e719adc6.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_MEDIUM_EDC48B51:String = "../maps/icons/wot_anniversary/facts/medium/edc48b51.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_SMALL_A1C27892:String = "../maps/icons/wot_anniversary/facts/small/a1c27892.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_SMALL_A6539C35:String = "../maps/icons/wot_anniversary/facts/small/a6539c35.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_SMALL_AC78C417:String = "../maps/icons/wot_anniversary/facts/small/ac78c417.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_SMALL_B259336B:String = "../maps/icons/wot_anniversary/facts/small/b259336b.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_SMALL_B487594C:String = "../maps/icons/wot_anniversary/facts/small/b487594c.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_SMALL_B9384736:String = "../maps/icons/wot_anniversary/facts/small/b9384736.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_SMALL_C3D0EEF5:String = "../maps/icons/wot_anniversary/facts/small/c3d0eef5.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_SMALL_D17ABB9A:String = "../maps/icons/wot_anniversary/facts/small/d17abb9a.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_SMALL_D27884D0:String = "../maps/icons/wot_anniversary/facts/small/d27884d0.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_SMALL_E719ADC6:String = "../maps/icons/wot_anniversary/facts/small/e719adc6.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_FACTS_SMALL_EDC48B51:String = "../maps/icons/wot_anniversary/facts/small/edc48b51.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTERESTINGFACTANDBONUSVIEW_BG:String = "../maps/icons/wot_anniversary/interestingFactAndBonusView/bg.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTERESTINGFACTANDBONUSVIEW_FRAME:String = "../maps/icons/wot_anniversary/interestingFactAndBonusView/frame.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTERESTINGFACTANDBONUSVIEW_GREY_BOX:String = "../maps/icons/wot_anniversary/interestingFactAndBonusView/grey_box.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTERESTINGFACTANDBONUSVIEW_LINES:String = "../maps/icons/wot_anniversary/interestingFactAndBonusView/lines.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTERESTINGFACTANDBONUSVIEW_RIBBON:String = "../maps/icons/wot_anniversary/interestingFactAndBonusView/ribbon.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTERESTINGFACTANDBONUSVIEW_SHADOW:String = "../maps/icons/wot_anniversary/interestingFactAndBonusView/shadow.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTROSCREEN_BG:String = "../maps/icons/wot_anniversary/introScreen/bg.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTROSCREEN_ILLUSTRATION_01_EXTRASMALL:String = "../maps/icons/wot_anniversary/introScreen/illustration_01_extraSmall.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTROSCREEN_ILLUSTRATION_01_MEDIUM:String = "../maps/icons/wot_anniversary/introScreen/illustration_01_medium.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTROSCREEN_ILLUSTRATION_02_EXTRASMALL:String = "../maps/icons/wot_anniversary/introScreen/illustration_02_extraSmall.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTROSCREEN_ILLUSTRATION_02_MEDIUM:String = "../maps/icons/wot_anniversary/introScreen/illustration_02_medium.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTROSCREEN_ILLUSTRATION_03_EXTRASMALL:String = "../maps/icons/wot_anniversary/introScreen/illustration_03_extraSmall.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTROSCREEN_ILLUSTRATION_03_MEDIUM:String = "../maps/icons/wot_anniversary/introScreen/illustration_03_medium.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_REWARDS_BG:String = "../maps/icons/wot_anniversary/rewards/bg.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_REWARDS_LIGHT_BP:String = "../maps/icons/wot_anniversary/rewards/light_bp.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_REWARDS_LINES:String = "../maps/icons/wot_anniversary/rewards/lines.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_REWARDS_RIBBON:String = "../maps/icons/wot_anniversary/rewards/ribbon.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_REWARDS_RIBBON_EXTRASMALL:String = "../maps/icons/wot_anniversary/rewards/ribbon_extraSmall.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_REWARDS_RIBBON_MEDIUM:String = "../maps/icons/wot_anniversary/rewards/ribbon_medium.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_REWARDS_RIBBON_SMALL:String = "../maps/icons/wot_anniversary/rewards/ribbon_small.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_REWARDS_VEHICLES_LIGHTTANK_F124_AMX_13FL11_BIG:String = "../maps/icons/wot_anniversary/rewards/vehicles/lightTank/F124_AMX_13FL11_big.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_REWARDS_VEHICLES_LIGHTTANK_F124_AMX_13FL11_MEDIUM:String = "../maps/icons/wot_anniversary/rewards/vehicles/lightTank/F124_AMX_13FL11_medium.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_WELCOMESCREEN_ACCEPTBTN:String = "../maps/icons/wot_anniversary/welcomeScreen/acceptBtn.png";
+      
+      public static const MAPS_ICONS_WOT_ANNIVERSARY_WELCOMESCREEN_BG:String = "../maps/icons/wot_anniversary/welcomeScreen/bg.png";
       
       public static const MAPS_ICONS_LIBRARY_PROFICIENCY_CLASS_ICONS_ENUM:Array = [MAPS_ICONS_LIBRARY_PROFICIENCY_CLASS_ICONS_1,MAPS_ICONS_LIBRARY_PROFICIENCY_CLASS_ICONS_1_SMALL,MAPS_ICONS_LIBRARY_PROFICIENCY_CLASS_ICONS_2,MAPS_ICONS_LIBRARY_PROFICIENCY_CLASS_ICONS_2_SMALL,MAPS_ICONS_LIBRARY_PROFICIENCY_CLASS_ICONS_3,MAPS_ICONS_LIBRARY_PROFICIENCY_CLASS_ICONS_3_SMALL,MAPS_ICONS_LIBRARY_PROFICIENCY_CLASS_ICONS_4,MAPS_ICONS_LIBRARY_PROFICIENCY_CLASS_ICONS_4_SMALL];
       

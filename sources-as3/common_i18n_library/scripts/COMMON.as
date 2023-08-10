@@ -52,6 +52,8 @@ package
       public static const RELATIVEDATETIME_TODAY:String = "#common:relativeDateTime/today";
       
       public static const RELATIVEDATETIME_YESTERDAY:String = "#common:relativeDateTime/yesterday";
+      
+      public static const DATE_LOC_DAYMONTH:String = "#common:date/loc/dayMonth";
        
       
       public function COMMON()

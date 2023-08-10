@@ -87,7 +87,8 @@ SM_TYPE = Enumeration('System message type', [
  'CollectionStart',
  'CollectionsDisabled',
  'CollectionsEnabled',
- 'SimpleGift'])
+ 'SimpleGift',
+ 'WOTAnniversaryStartedMessage'])
 CURRENCY_TO_SM_TYPE = {Currency.CREDITS: SM_TYPE.PurchaseForCredits, 
    Currency.GOLD: SM_TYPE.PurchaseForGold, 
    Currency.CRYSTAL: SM_TYPE.PurchaseForCrystal, 

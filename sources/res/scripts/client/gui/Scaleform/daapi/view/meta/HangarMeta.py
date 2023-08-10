@@ -108,3 +108,7 @@ class HangarMeta(View):
     def as_updateHangarComponentsS(self, showComponents=None, hideComponents=None):
         if self._isDAAPIInited():
             return self.flashObject.as_updateHangarComponents(showComponents, hideComponents)
+
+    def as_setEventEntryPointVisibleS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setEventEntryPointVisible(value)

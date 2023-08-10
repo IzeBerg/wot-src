@@ -57,7 +57,8 @@ class SoundStateWebApi(object):
     _ON_EXIT_STATES = {'STATE_overlay_hangar_general': 'STATE_overlay_hangar_general_off', 
        'STATE_video_overlay': 'STATE_video_overlay_off', 
        'STATE_clans_craft': 'STATE_clans_craft_progress_off', 
-       'STATE_gamemode_progress_page': 'STATE_gamemode_progress_page_off'}
+       'STATE_gamemode_progress_page': 'STATE_gamemode_progress_page_off', 
+       'STATE_ev_bday_2023_easter': 'bday_2023_easter_off'}
 
     def __init__(self):
         super(SoundStateWebApi, self).__init__()

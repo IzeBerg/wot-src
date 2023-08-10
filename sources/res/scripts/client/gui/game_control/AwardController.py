@@ -63,6 +63,8 @@ from gui.shared.system_factory import registerAwardControllerHandlers, collectAw
 from gui.shared.utils import isPopupsWindowsOpenDisabled
 from gui.shared.utils.requesters import REQ_CRITERIA
 from gui.sounds.sound_constants import SPEAKERS_CONFIG
+from gui.wot_anniversary import wot_anniversary_helpers
+from gui.wot_anniversary.wot_anniversary_helpers import showWotAnniversaryAwardWindow, showWotAnniversaryLoginAwardWindow
 from helpers import dependency, i18n
 from items import ITEM_TYPE_INDICES, vehicles as vehicles_core
 from items.components.crew_books_constants import CREW_BOOK_DISPLAYED_AWARDS_COUNT
@@ -74,7 +76,7 @@ from shared_utils import first, findFirst
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import IAwardController, IBattlePassController, IBootcampController, ILimitedUIController, IMapboxController, IRankedBattlesController, IWotPlusController, ISeniorityAwardsController, IWinbackController
+from skeletons.gui.game_control import IAwardController, IBattlePassController, IBootcampController, ILimitedUIController, IMapboxController, IRankedBattlesController, IWotPlusController, ISeniorityAwardsController, IWinbackController, IWotAnniversaryController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import IGuiLoader, INotificationWindowController
 from skeletons.gui.lobby_context import ILobbyContext
@@ -740,7 +742,9 @@ class CrewBooksQuestHandler(MultiTypeServiceChannelHandler):
             questIDs = message.data.get('completedQuestIDs', set())
             res = res and 'items' in message.data
             res = res and any(isCrewBook(intCD) for intCD in message.data['items'].iterkeys())
-            self._qId = next(ifilter(lambda x: x.endswith(QUEST_AWARD_POSTFIX.CREW_BOOKS), questIDs), None)
+            qid = next(ifilter(lambda x: x.endswith(QUEST_AWARD_POSTFIX.CREW_BOOKS), questIDs), None)
+            if qid is not None:
+                self._qId = next(ifilter(lambda x: x.endswith(QUEST_AWARD_POSTFIX.CREW_BOOKS), questIDs), None)
             res = res and self._qId is not None
         return res
 
@@ -1810,6 +1814,49 @@ class WinbackQuestHandler(MultiTypeServiceChannelHandler):
         return qIDs
 
 
+class WotAnniversaryQuestsHandler(MultiTypeServiceChannelHandler):
+    __wotAnniversaryCtrl = dependency.descriptor(IWotAnniversaryController)
+    __systemMessages = dependency.descriptor(ISystemMessages)
+
+    def __init__(self, awardCtrl):
+        super(WotAnniversaryQuestsHandler, self).__init__((
+         SYS_MESSAGE_TYPE.battleResults.index(), SYS_MESSAGE_TYPE.tokenQuests.index()), awardCtrl)
+
+    def _showAward(self, ctx):
+        _, message = ctx
+        data = message.data.copy()
+        rewardQuestIDs = []
+        loginRewardQuestIDs = []
+        battleQuests = False
+        for questID in data.get('completedQuestIDs', set()):
+            if wot_anniversary_helpers.isWotAnniversaryQuest(questID):
+                if wot_anniversary_helpers.isWotAnniversaryLoginQuest(questID):
+                    loginRewardQuestIDs.append(questID)
+                elif wot_anniversary_helpers.isWotAnniversaryBattleQuest(questID):
+                    battleQuests = True
+                    rewardQuestIDs.append(questID)
+                elif wot_anniversary_helpers.isSecretMessageReward(questID) or wot_anniversary_helpers.isFinalTokenQuest(questID):
+                    rewardQuestIDs.append(questID)
+
+        if set(self.__wotAnniversaryCtrl.getRewardScreenRequiredQuests()) & set(rewardQuestIDs):
+            rewards = []
+            for questID in rewardQuestIDs:
+                questData = data.get('detailedRewards', {}).get(questID, {})
+                rewards.append({key:val for key, val in questData.items()})
+
+            if rewards:
+                showWotAnniversaryAwardWindow(rewards, useQueue=True)
+        if battleQuests and message.type == SYS_MESSAGE_TYPE.battleResults.index():
+            self.showWotAnniversaryBattleAwardNotification(message)
+        for questID in loginRewardQuestIDs:
+            questData = data.get('detailedRewards', {}).get(questID, {})
+            filteredQuestData = {key:val for key, val in questData.items() if key != 'tokens' if key != 'tokens'}
+            showWotAnniversaryLoginAwardWindow(questID, filteredQuestData, useQueue=True)
+
+    def showWotAnniversaryBattleAwardNotification(self, message):
+        self.__systemMessages.proto.serviceChannel.pushClientMessage(message, SCH_CLIENT_MSG_TYPE.ANNIVERSARY_BATTLE_RESULTS_SM_TYPE)
+
+
 registerAwardControllerHandlers((
  BattleQuestsAutoWindowHandler,
  PunishWindowHandler,
@@ -1850,4 +1897,5 @@ registerAwardControllerHandlers((
  BattleMattersQuestsHandler,
  ResourceWellRewardHandler,
  Comp7RewardHandler,
- WinbackQuestHandler))
+ WinbackQuestHandler,
+ WotAnniversaryQuestsHandler))
