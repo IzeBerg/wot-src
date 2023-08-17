@@ -88,6 +88,8 @@ class UI_STORAGE_KEYS(CONST_CONTAINER):
     POST_PROGRESSION_INTRO_SHOWN = 'post_progression_intro_shown'
     VEH_PREVIEW_POST_PROGRESSION_BULLET_SHOWN = 'veh_preview_post_progression_bullet_shown'
     ACHIEVEMENT_EDIT_VIEW_VISITED = 'achievement_edit_view_visited'
+    DUAL_ACCURACY_HIGHLIGHTS_COUNTER = 'dual_accuracy_highlights_count'
+    DUAL_ACCURACY_MARK_IS_SHOWN = 'dual_accuracy_mark_shown'
 
 
 class BATTLE_MATTERS_KEYS(CONST_CONTAINER):
@@ -442,6 +444,7 @@ class ServerSettingsManager(object):
                                               GuiSettingsBehavior.VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW: 26, 
                                               GuiSettingsBehavior.BIRTHDAY_CALENDAR_INTRO_SHOWED: 27, 
                                               GuiSettingsBehavior.RESOURCE_WELL_INTRO_SHOWN: 28, 
+                                              GuiSettingsBehavior.COMP7_WHATS_NEW_SHOWN: 29, 
                                               GuiSettingsBehavior.COMP7_INTRO_SHOWN: 30}, offsets={}), 
        SETTINGS_SECTIONS.EULA_VERSION: Section(masks={}, offsets={'version': Offset(0, 4294967295)}), 
        SETTINGS_SECTIONS.MARKS_ON_GUN: Section(masks={}, offsets={GAME.SHOW_MARKS_ON_GUN: Offset(0, 4294967295)}), 
@@ -568,7 +571,9 @@ class ServerSettingsManager(object):
                                       UI_STORAGE_KEYS.DUAL_GUN_HIGHLIGHTS_COUNTER: Offset(19, 3670016), 
                                       UI_STORAGE_KEYS.TURBOSHAFT_HIGHLIGHTS_COUNTER: Offset(23, 58720256)}), 
        SETTINGS_SECTIONS.UI_STORAGE_2: Section(masks={UI_STORAGE_KEYS.ROCKET_ACCELERATION_MARK_IS_SHOWN: 0, 
-                                        UI_STORAGE_KEYS.ACHIEVEMENT_EDIT_VIEW_VISITED: 4}, offsets={UI_STORAGE_KEYS.ROCKET_ACCELERATION_HIGHLIGHTS_COUNTER: Offset(1, 14)}), 
+                                        UI_STORAGE_KEYS.ACHIEVEMENT_EDIT_VIEW_VISITED: 4, 
+                                        UI_STORAGE_KEYS.DUAL_ACCURACY_MARK_IS_SHOWN: 8}, offsets={UI_STORAGE_KEYS.ROCKET_ACCELERATION_HIGHLIGHTS_COUNTER: Offset(1, 14), 
+                                        UI_STORAGE_KEYS.DUAL_ACCURACY_HIGHLIGHTS_COUNTER: Offset(5, 224)}), 
        SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS: Section(masks={}, offsets={BATTLE_MATTERS_KEYS.QUESTS_SHOWN: Offset(0, 255), 
                                                  BATTLE_MATTERS_KEYS.QUEST_PROGRESS: Offset(8, 4294967040)}), 
        SETTINGS_SECTIONS.QUESTS_PROGRESS: Section(masks={}, offsets={QUESTS_PROGRESS.VIEW_TYPE: Offset(0, 3), 
@@ -767,6 +772,7 @@ class ServerSettingsManager(object):
     _MAX_DUAL_GUN_HIGHLIGHTS_COUNT = 5
     _MAX_TURBOSHAFT_HIGHLIGHTS_COUNT = 5
     _MAX_ROCKET_ACCELERATION_HIGHLIGHTS_COUNT = 5
+    _MAX_DUAL_ACCURACY_HIGHLIGHTS_COUNT = 5
 
     def __init__(self, core):
         self._core = weakref.proxy(core)
@@ -874,6 +880,9 @@ class ServerSettingsManager(object):
 
     def checkRocketAccelerationHighlights(self, increase=False):
         return self.__checkUIHighlights(UI_STORAGE_KEYS.ROCKET_ACCELERATION_HIGHLIGHTS_COUNTER, self._MAX_ROCKET_ACCELERATION_HIGHLIGHTS_COUNT, increase)
+
+    def checkDualAccuracyHighlights(self, increase=False):
+        return self.__checkUIHighlights(UI_STORAGE_KEYS.DUAL_ACCURACY_HIGHLIGHTS_COUNTER, self._MAX_DUAL_ACCURACY_HIGHLIGHTS_COUNT, increase)
 
     def updateUIStorageCounter(self, key, step=1):
         storageSection = self.getSection(SETTINGS_SECTIONS.UI_STORAGE)
@@ -1131,7 +1140,7 @@ class ServerSettingsManager(object):
     @adisp_process
     def _updateToVersion(self, callback=None):
         currentVersion = self.settingsCache.getVersion()
-        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, 'clear': {}, 'delete': [], SETTINGS_SECTIONS.LIMITED_UI_1: {}, SETTINGS_SECTIONS.LIMITED_UI_2: {}}
+        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, 'clear': {}, 'delete': [], SETTINGS_SECTIONS.LIMITED_UI_1: {}, SETTINGS_SECTIONS.LIMITED_UI_2: {}, SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS: {}}
         yield migrateToVersion(currentVersion, self._core, data)
         self._setSettingsSections(data)
         callback(self)

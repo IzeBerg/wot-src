@@ -307,6 +307,10 @@ class StatsRequester(AbstractSyncDataRequester, IStatsRequester):
     def dynamicCurrencies(self):
         return self.getCacheValue('dynamicCurrencies', {})
 
+    @property
+    def isEmergencyModeEnabled(self):
+        return self.getCacheValue('isEmergencyModeEnabled', False)
+
     def getMapsBlackList(self):
         blackList = self.getCacheValue('preferredMaps', {}).get('blackList', ())
         return blackList

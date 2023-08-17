@@ -21,12 +21,16 @@ from personal_missions import PM_BRANCH
 from post_progression_common import FEATURE_BY_GROUP_ID, ROLESLOT_FEATURE
 from ranked_common import SwitchState
 from renewable_subscription_common.settings_constants import GOLD_RESERVE_GAINS_SECTION
+from schema_manager import getSchemaManager
 from shared_utils import makeTupleByDict, updateDict, findFirst
+from soft_exception import SoftException
 from telecom_rentals_common import TELECOM_RENTALS_CONFIG
 from trade_in_common.constants_types import CONFIG_NAME as TRADE_IN_CONFIG_NAME
 from achievements20.Achievements20GeneralConfig import Achievements20GeneralConfig
 if typing.TYPE_CHECKING:
     from typing import Callable, Dict, List, Sequence
+    from dict2model.types import ModelType
+    from base_schema_manager import GameParamsSchema
 _logger = logging.getLogger(__name__)
 _CLAN_EMBLEMS_SIZE_MAPPING = {16: 'clan_emblems_16', 
    32: 'clan_emblems_small', 
@@ -127,6 +131,9 @@ class _FileServerSettings(object):
 
     def getGameLoadingConfigUrl(self):
         return self.__getUrl('game_loading_config')
+
+    def getCollectionsContentConfigUrl(self):
+        return self.__getUrl('collections_content_config')
 
     def __getUrl(self, urlKey, *args):
         try:
@@ -975,7 +982,44 @@ class PeripheryRoutingConfig(namedtuple('_PeripheryRoutingConfig', ('isEnabled',
         return self._replace(**dataToUpdate)
 
 
-class Comp7Config(namedtuple('Comp7Config', (
+def settingsBlock(className, fields):
+
+    class SettingsBlock(namedtuple(className, fields)):
+        __slots__ = ()
+
+        def __new__(cls, **kwargs):
+            defaults = cls.defaults()
+            defaults.update(cls._preprocessData(kwargs))
+            return super(SettingsBlock, cls).__new__(cls, **defaults)
+
+        def asDict(self):
+            return self._asdict()
+
+        def replace(self, data):
+            allowedFields = self._fields
+            dataToUpdate = {k:v for k, v in self._preprocessData(data).iteritems() if k in allowedFields}
+            return self._replace(**dataToUpdate)
+
+        @classmethod
+        def defaults(cls):
+            raise NotImplementedError
+
+        @classmethod
+        def _preprocessData(cls, data):
+            return data
+
+    return SettingsBlock
+
+
+class _Comp7QualificationConfig(settingsBlock('_Comp7QualificationConfig', ('battlesNumber',))):
+    __slots__ = ()
+
+    @classmethod
+    def defaults(cls):
+        return {'battlesNumber': 0}
+
+
+class Comp7Config(settingsBlock('Comp7Config', (
  'isEnabled',
  'peripheryIDs',
  'primeTimes',
@@ -989,55 +1033,46 @@ class Comp7Config(namedtuple('Comp7Config', (
  'forbiddenVehTypes',
  'squadRatingRestriction',
  'squadSizes',
- 'createVivoxTeamChannels'))):
+ 'createVivoxTeamChannels',
+ 'qualification'))):
     __slots__ = ()
-
-    def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False)
-        defaults.update(kwargs)
-        return super(Comp7Config, cls).__new__(cls, **defaults)
-
-    def asDict(self):
-        return self._asdict()
-
-    def replace(self, data):
-        allowedFields = self._fields
-        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
-        return self._replace(**dataToUpdate)
 
     @classmethod
     def defaults(cls):
-        return cls()
+        return dict(isEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False, qualification=makeTupleByDict(_Comp7QualificationConfig, {}))
+
+    @classmethod
+    def _preprocessData(cls, data):
+        qualificationConfig = data.get('qualification')
+        if qualificationConfig is not None:
+            data['qualification'] = makeTupleByDict(_Comp7QualificationConfig, qualificationConfig)
+        return data
 
 
-class Comp7PrestigeRanksConfig(namedtuple('Comp7PrestigeRanksConfig', (
+class Comp7RanksConfig(settingsBlock('Comp7RanksConfig', (
  'ranks',
  'ranksOrder',
- 'rankKinds',
  'eliteRankPercent',
  'divisionsByRank',
- 'divisions'))):
+ 'divisions',
+ 'rankInactivityNotificationThreshold'))):
     __slots__ = ()
-
-    def __new__(cls, **kwargs):
-        defaults = dict(ranks=frozenset(), ranksOrder=(), rankKinds=frozenset(), eliteRankPercent=0, divisionsByRank={}, divisions=())
-        defaults.update(kwargs)
-        cls.__updateDivisionsData(defaults)
-        return super(Comp7PrestigeRanksConfig, cls).__new__(cls, **defaults)
 
     @classmethod
     def defaults(cls):
-        return cls()
+        return dict(ranks={}, ranksOrder=(), eliteRankPercent=0, divisionsByRank={}, divisions=(), rankInactivityNotificationThreshold=0)
 
     @classmethod
-    def __updateDivisionsData(cls, data):
+    def _preprocessData(cls, data):
         divisions = data.get('divisions')
         if divisions:
             data['divisions'] = cls.__dictDivisionsToComp7Divisions(divisions)
         divisionsByRank = data.get('divisionsByRank')
         if divisionsByRank:
-            for rankNum, divisions in divisionsByRank.iteritems():
-                data['divisionsByRank'][rankNum] = cls.__dictDivisionsToComp7Divisions(divisions)
+            for rankID, divisions in divisionsByRank.iteritems():
+                data['divisionsByRank'][rankID] = cls.__dictDivisionsToComp7Divisions(divisions)
+
+        return data
 
     @classmethod
     def __dictDivisionsToComp7Divisions(cls, divisionsList):
@@ -1048,11 +1083,15 @@ class Comp7PrestigeRanksConfig(namedtuple('Comp7PrestigeRanksConfig', (
 
         return tuple(divs)
 
-    def replace(self, data):
-        allowedFields = self._fields
-        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
-        self.__updateDivisionsData(dataToUpdate)
-        return self._replace(**dataToUpdate)
+
+class Comp7RewardsConfig(settingsBlock('Comp7RewardsConfig', (
+ 'main',
+ 'extra'))):
+    __slots__ = ()
+
+    @classmethod
+    def defaults(cls):
+        return {'main': [], 'extra': []}
 
 
 class WinbackConfig(namedtuple('WinbackConfig', (
@@ -1213,7 +1252,8 @@ class ServerSettings(object):
         self.__battleMattersConfig = _BattleMattersConfig()
         self.__peripheryRoutingConfig = PeripheryRoutingConfig()
         self.__comp7Config = Comp7Config()
-        self.__comp7RanksConfig = Comp7PrestigeRanksConfig()
+        self.__comp7RanksConfig = Comp7RanksConfig()
+        self.__comp7RewardsConfig = Comp7RewardsConfig()
         self.__personalReservesConfig = PersonalReservesConfig()
         self.__playLimitsConfig = PlayLimitsConfig()
         self.__preModerationConfig = PreModerationConfig()
@@ -1221,6 +1261,7 @@ class ServerSettings(object):
         self.__collectionsConfig = CollectionsConfig()
         self.__winbackConfig = WinbackConfig()
         self.__limitedUIConfig = _LimitedUIConfig()
+        self.__schemaManager = getSchemaManager()
         self.set(serverSettings)
 
     def set(self, serverSettings):
@@ -1332,11 +1373,16 @@ class ServerSettings(object):
             self.__comp7Config = makeTupleByDict(Comp7Config, self.__serverSettings[Configs.COMP7_CONFIG.value])
         else:
             self.__comp7Config = Comp7Config.defaults()
-        if Configs.COMP7_PRESTIGE_RANKS_CONFIG.value in self.__serverSettings:
-            LOG_DEBUG(Configs.COMP7_PRESTIGE_RANKS_CONFIG.value, self.__serverSettings[Configs.COMP7_PRESTIGE_RANKS_CONFIG.value])
-            self.__comp7RanksConfig = makeTupleByDict(Comp7PrestigeRanksConfig, self.__serverSettings[Configs.COMP7_PRESTIGE_RANKS_CONFIG.value])
+        if Configs.COMP7_RANKS_CONFIG.value in self.__serverSettings:
+            LOG_DEBUG(Configs.COMP7_RANKS_CONFIG.value, self.__serverSettings[Configs.COMP7_RANKS_CONFIG.value])
+            self.__comp7RanksConfig = makeTupleByDict(Comp7RanksConfig, self.__serverSettings[Configs.COMP7_RANKS_CONFIG.value])
         else:
-            self.__comp7RanksConfig = Comp7PrestigeRanksConfig.defaults()
+            self.__comp7RanksConfig = Comp7RanksConfig.defaults()
+        if Configs.COMP7_REWARDS_CONFIG.value in self.__serverSettings:
+            LOG_DEBUG(Configs.COMP7_REWARDS_CONFIG.value, self.__serverSettings[Configs.COMP7_REWARDS_CONFIG.value])
+            self.__comp7RewardsConfig = makeTupleByDict(Comp7RewardsConfig, self.__serverSettings[Configs.COMP7_REWARDS_CONFIG.value])
+        else:
+            self.__comp7RewardsConfig = Comp7RewardsConfig.defaults()
         if Configs.PERSONAL_RESERVES_CONFIG.value in self.__serverSettings:
             self.__personalReservesConfig = makeTupleByDict(PersonalReservesConfig, self.__serverSettings[Configs.PERSONAL_RESERVES_CONFIG.value])
         else:
@@ -1362,6 +1408,7 @@ class ServerSettings(object):
             self.__limitedUIConfig = makeTupleByDict(_LimitedUIConfig, self.__serverSettings[Configs.LIMITED_UI_CONFIG.value])
         else:
             self.__limitedUIConfig = _LimitedUIConfig.defaults()
+        self.__schemaManager.set(self.__serverSettings)
         self.onServerSettingsChange(serverSettings)
 
     def update(self, serverSettingsDiff):
@@ -1397,8 +1444,10 @@ class ServerSettings(object):
             self.__serverSettings['unit_assembler_config'] = serverSettingsDiff['unit_assembler_config']
         if 'comp7_config' in serverSettingsDiff:
             self.__updateComp7(serverSettingsDiff)
-        if Configs.COMP7_PRESTIGE_RANKS_CONFIG.value in serverSettingsDiff:
+        if Configs.COMP7_RANKS_CONFIG.value in serverSettingsDiff:
             self.__updateComp7PrestigeRanks(serverSettingsDiff)
+        if Configs.COMP7_REWARDS_CONFIG.value in serverSettingsDiff:
+            self.__updateComp7Rewards(serverSettingsDiff)
         if 'telecom_config' in serverSettingsDiff:
             self.__telecomConfig = _TelecomConfig(self.__serverSettings['telecom_config'])
         if 'disabledPMOperations' in serverSettingsDiff:
@@ -1466,13 +1515,21 @@ class ServerSettings(object):
         if Configs.COLLECTIONS_CONFIG.value in serverSettingsDiff:
             self.__updateCollectionsConfig(serverSettingsDiff)
         self.__updateLimitedUIConfig(serverSettingsDiff)
+        self.__schemaManager.update(serverSettingsDiff)
         self.onServerSettingsChange(serverSettingsDiff)
 
     def clear(self):
+        self.__schemaManager.clear()
         self.onServerSettingsChange.clear()
 
     def getSettings(self):
         return self.__serverSettings
+
+    def getConfigModel(self, schema):
+        configModel = self.__schemaManager.get(schema)
+        if configModel is None:
+            raise SoftException('Schema %s was not registered. All schemas must be registered before ServerSettings inited.', schema.gpKey)
+        return configModel
 
     @property
     def roaming(self):
@@ -1563,8 +1620,12 @@ class ServerSettings(object):
         return self.__comp7Config
 
     @property
-    def comp7PrestigeRanksConfig(self):
+    def comp7RanksConfig(self):
         return self.__comp7RanksConfig
+
+    @property
+    def comp7RewardsConfig(self):
+        return self.__comp7RewardsConfig
 
     @property
     def telecomConfig(self):
@@ -1760,37 +1821,37 @@ class ServerSettings(object):
         return self.isDogTagEnabled() and self.__getGlobalSetting(DOG_TAGS_CONFIG, {}).get('enableComponentUnlocking', True)
 
     def isRenewableSubEnabled(self):
-        return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enabled', True)
+        return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enabled', False)
 
     def isWotPlusEnabledForSteam(self):
         return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enabledForSteam', False)
 
-    def isWotPlusTankRentalEnabled(self):
-        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableTankRental', True)
-
     def isRenewableSubGoldReserveEnabled(self):
-        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableGoldReserve', True)
-
-    def isRenewableSubFreeDirectivesEnabled(self):
-        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeDirectives', True)
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableGoldReserve', False)
 
     def isRenewableSubPassiveCrewXPEnabled(self):
-        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enablePassiveCrewXP', True)
-
-    def isWotPlusNewSubscriptionEnabled(self):
-        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableNewSubscriptions', True)
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enablePassiveCrewXP', False)
 
     def isWotPlusExcludedMapEnabled(self):
-        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableExcludedMap', True)
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableExcludedMap', False)
 
     def isWoTPlusExclusiveVehicleEnabled(self):
-        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableWoTPlusExclusiveVehicle', True)
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableWoTPlusExclusiveVehicle', False)
 
     def isFreeEquipmentDemountingEnabled(self):
-        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeEquipmentDemounting', True)
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeEquipmentDemounting', False)
 
     def isFreeDeluxeEquipmentDemountingEnabled(self):
-        return self.isFreeEquipmentDemountingEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeDeluxeEquipmentDemounting', True)
+        return self.isFreeEquipmentDemountingEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableFreeDeluxeEquipmentDemounting', False)
+
+    def isDailyAttendancesEnabled(self):
+        return self.isRenewableSubEnabled() and self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('enableDailyAttendances', False)
+
+    def getWotPlusExclusiveVehicleInfo(self):
+        return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('exclusiveVehicle', {})
+
+    def getDailyAttendanceQuestPrefix(self):
+        return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('dailyAttendanceQuestPrefix', '')
 
     def getRenewableSubCrewXPPerMinute(self):
         return self.__getGlobalSetting(RENEWABLE_SUBSCRIPTION_CONFIG, {}).get('crewXPPerMinute', 0)
@@ -2006,11 +2067,16 @@ class ServerSettings(object):
         self.__unitAssemblerConfig = self.__unitAssemblerConfig.replace(targetSettings['unit_assembler_config'])
 
     def __updateComp7(self, targetSettings):
-        self.__comp7Config = self.__comp7Config.replace(targetSettings['comp7_config'])
+        config = targetSettings[Configs.COMP7_CONFIG.value]
+        self.__comp7Config = self.__comp7Config.replace(copy.deepcopy(config))
 
     def __updateComp7PrestigeRanks(self, targetSettings):
-        config = targetSettings[Configs.COMP7_PRESTIGE_RANKS_CONFIG.value]
+        config = targetSettings[Configs.COMP7_RANKS_CONFIG.value]
         self.__comp7RanksConfig = self.__comp7RanksConfig.replace(copy.deepcopy(config))
+
+    def __updateComp7Rewards(self, targetSettings):
+        config = targetSettings[Configs.COMP7_REWARDS_CONFIG.value]
+        self.__comp7RewardsConfig = self.__comp7RewardsConfig.replace(config)
 
     def __updateSquadBonus(self, sourceSettings):
         self.__squadPremiumBonus = self.__squadPremiumBonus.replace(sourceSettings[PremiumConfigs.PREM_SQUAD])

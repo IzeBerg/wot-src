@@ -85,7 +85,7 @@ package net.wg.data.constants.generated
       
       public static const BOOTCAMP_SECONDARY_HINT:String = "bootcampSecondaryHint";
       
-      public static const BOOTCAMP_BATTLE_TOP_HINT:String = "bootcampBattleTopHint";
+      public static const ANIMATED_BATTLE_HINT:String = "animatedBattleHint";
       
       public static const GAME_MESSAGES_PANEL:String = "gameMessagesPanel";
       

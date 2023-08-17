@@ -1,11 +1,11 @@
 <root>
   <Paths>
-    <Path cacheSubdirs="true">./res_mods/1.21.1.0 Common Test</Path>
-    <Path mask="*.wotmod" mode="recursive" root="res">./mods/1.21.1.0 Common Test</Path>
+    <Path cacheSubdirs="true">./res_mods/1.22.0.0 Common Test</Path>
+    <Path mask="*.wotmod" mode="recursive" root="res">./mods/1.22.0.0 Common Test</Path>
     <Packages>
+      <Package type="sd,hd">./res/packages/shared_content-part3.pkg</Package>
       <Package type="sd,hd">./res/packages/shared_content-part2.pkg</Package>
       <Package type="sd,hd">./res/packages/shared_content-part1.pkg</Package>
-      <Package type="sd,hd">./res/packages/shared_content-part3.pkg</Package>
       <Package type="hd">./res/packages/shared_content_hd-part2.pkg</Package>
       <Package type="hd">./res/packages/shared_content_hd-part1.pkg</Package>
       <Package type="sandbox,sd,hd">./res/packages/shared_content_sandbox-part1.pkg</Package>
@@ -33,6 +33,8 @@
       <Package type="hd">./res/packages/101_dday_hd.pkg</Package>
       <Package type="sd,hd">./res/packages/105_germany.pkg</Package>
       <Package type="hd">./res/packages/105_germany_hd.pkg</Package>
+      <Package type="sd,hd">./res/packages/108_normandy_nom.pkg</Package>
+      <Package type="hd">./res/packages/108_normandy_nom_hd.pkg</Package>
       <Package type="sandbox,sd,hd">./res/packages/10_hills.pkg</Package>
       <Package type="hd">./res/packages/10_hills_hd.pkg</Package>
       <Package type="sd,hd">./res/packages/112_eiffel_tower_ctf.pkg</Package>
@@ -53,6 +55,8 @@
       <Package type="hd">./res/packages/13_erlenberg_hd.pkg</Package>
       <Package type="sd,hd">./res/packages/14_siegfried_line.pkg</Package>
       <Package type="hd">./res/packages/14_siegfried_line_hd.pkg</Package>
+      <Package type="sd,hd">./res/packages/14_siegfried_line_nom.pkg</Package>
+      <Package type="hd">./res/packages/14_siegfried_line_nom_hd.pkg</Package>
       <Package type="sd,hd">./res/packages/17_munchen.pkg</Package>
       <Package type="hd">./res/packages/17_munchen_hd.pkg</Package>
       <Package type="sd,hd">./res/packages/18_cliff.pkg</Package>
@@ -146,6 +150,7 @@
       <Package type="sandbox,sd,hd">./res/packages/prime_gaming_content.pkg</Package>
       <Package type="sandbox,sd,hd">./res/packages/scripts.pkg</Package>
       <Package type="sandbox,sd,hd">./res/packages/server_side_replay.pkg</Package>
+      <Package type="sandbox,sd,hd">./res/packages/story_mode.pkg</Package>
       <Package type="sandbox,sd,hd">./res/packages/vehicles_level_01.pkg</Package>
       <Package type="hd">./res/packages/vehicles_level_01_hd.pkg</Package>
       <Package type="sandbox,sd,hd">./res/packages/vehicles_level_02.pkg</Package>
@@ -160,8 +165,8 @@
       <Package type="hd">./res/packages/vehicles_level_05_hd-part2.pkg</Package>
       <Package type="sd,hd">./res/packages/vehicles_level_06-part1.pkg</Package>
       <Package type="sd,hd">./res/packages/vehicles_level_06-part2.pkg</Package>
-      <Package type="hd">./res/packages/vehicles_level_06_hd-part1.pkg</Package>
       <Package type="hd">./res/packages/vehicles_level_06_hd-part2.pkg</Package>
+      <Package type="hd">./res/packages/vehicles_level_06_hd-part1.pkg</Package>
       <Package type="sd,hd">./res/packages/vehicles_level_07-part1.pkg</Package>
       <Package type="sd,hd">./res/packages/vehicles_level_07-part2.pkg</Package>
       <Package type="hd">./res/packages/vehicles_level_07_hd-part1.pkg</Package>

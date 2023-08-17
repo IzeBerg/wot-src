@@ -620,6 +620,20 @@ package
       public static const BADGE_135:String = "#badge:badge_135";
       
       public static const BADGE_135_DESCR:String = "#badge:badge_135_descr";
+      
+      public static const BADGE_136:String = "#badge:badge_136";
+      
+      public static const BADGE_136_DESCR:String = "#badge:badge_136_descr";
+      
+      public static const BADGE_137:String = "#badge:badge_137";
+      
+      public static const BADGE_137_DESCR:String = "#badge:badge_137_descr";
+      
+      public static const BADGE_138:String = "#badge:badge_138";
+      
+      public static const BADGE_138_DESCR:String = "#badge:badge_138_descr";
+      
+      public static const SUFFIX_BADGE_138:String = "#badge:suffix/badge_138";
        
       
       public function BADGE()

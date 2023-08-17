@@ -1,6 +1,6 @@
-import BigWorld, Event
+import Event
 
-class SpawnKeyPointTeamInfoBase(BigWorld.DynamicScriptComponent):
+class SpawnKeyPointTeamInfoBase(object):
 
     def __init__(self):
         super(SpawnKeyPointTeamInfoBase, self).__init__()

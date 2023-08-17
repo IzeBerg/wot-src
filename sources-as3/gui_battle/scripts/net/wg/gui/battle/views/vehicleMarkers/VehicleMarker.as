@@ -415,6 +415,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.isStickyAndOutOfScreen = param1;
          this.updateMarkerSettings();
          this.marker.visible = !param1;
+         this.statusContainer.visible = !param1;
       }
       
       public function setMarkerReplied(param1:Boolean) : void

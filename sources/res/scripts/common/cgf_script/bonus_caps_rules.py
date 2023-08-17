@@ -14,4 +14,4 @@ def bonusCapsManager(bonusCap, domain=CGF.DomainOption.DomainAll):
             return ARENA_BONUS_TYPE_CAPS.checkAny(player.arenaBonusType, bonusCap)
         return False
 
-    return autoregister(creationPredicate=predicate, domain=domain)
+    return autoregister(presentInAllWorlds=True, creationPredicate=predicate, domain=domain)

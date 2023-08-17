@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<FeatureName>story_mode</FeatureName>
+	<IsEnabled>true</IsEnabled>
+	<Personality>story_mode_personality</Personality>
+	<EditorPersonality>story_mode_personality_editor</EditorPersonality>
+	<Components>
+		<StaticComponents>
+			<StoryModeMissions/>
+			<StoryModeAccountComponent/>
+			<StoryModeArenaComponent/>
+			<StoryModeAvatarComponent/>
+		</StaticComponents>
+		<DynamicComponents>
+			<StoryModeAfkController/>
+		</DynamicComponents>
+	</Components>
+	<Entities>
+		<ServerOnlyEntities>
+			<StoryModeBattlesMgr/>
+		</ServerOnlyEntities>
+	</Entities>
+	<ExternalComponents/>
+</root>

@@ -1,4 +1,5 @@
-import logging
+import logging, BigWorld
+from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from gui.Scaleform.daapi.view.battle.epic.status_notifications import sn_items as epic_sn_items
 from gui.Scaleform.daapi.view.battle.shared.status_notifications import sn_items
 from gui.Scaleform.daapi.view.battle.shared.status_notifications import components
@@ -13,15 +14,15 @@ class _EpicBattleHighPriorityGroup(components.StatusNotificationsGroup):
 
     def __init__(self, updateCallback):
         super(_EpicBattleHighPriorityGroup, self).__init__((
+         sn_items.OverturnedSN,
+         sn_items.HalfOverturnedSN,
+         sn_items.DrownSN,
          epic_sn_items.EpicDeathZoneDamagingSN,
          epic_sn_items.EpicDeathZoneDangerSN,
          epic_sn_items.EpicDeathZoneWarningSN,
          epic_sn_items.SectorAirstrikeSN,
          sn_items.UnderFireSN,
-         sn_items.FireSN,
-         sn_items.OverturnedSN,
-         sn_items.HalfOverturnedSN,
-         sn_items.DrownSN), updateCallback)
+         sn_items.FireSN), updateCallback)
 
 
 class EpicStatusNotificationTimerPanel(StatusNotificationTimerPanel):
@@ -50,13 +51,22 @@ class EpicStatusNotificationTimerPanel(StatusNotificationTimerPanel):
 
     def _generateNotificationTimerSettings(self):
         data = super(EpicStatusNotificationTimerPanel, self)._generateNotificationTimerSettings()
+        liftOverEnabled = ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arenaBonusType, ARENA_BONUS_TYPE_CAPS.LIFT_OVER)
+        if liftOverEnabled:
+            overturnedIcon = _LINKS.OVERTURNED_GREEN_ICON
+            overturnedColor = _COLORS.GREEN
+            iconOffsetY = 1
+        else:
+            overturnedIcon = _LINKS.OVERTURNED_ICON
+            overturnedColor = _COLORS.ORANGE
+            iconOffsetY = 0
         link = _LINKS.DESTROY_TIMER_UI
         self._addNotificationTimerSetting(data, _TYPES.DROWN, _LINKS.DROWN_ICON, link)
         self._addNotificationTimerSetting(data, _TYPES.DEATH_ZONE, _LINKS.AIRSTRIKE_ICON, link)
         self._addNotificationTimerSetting(data, _TYPES.DAMAGING_ZONE, _LINKS.AIRSTRIKE_ICON, link, countdownVisible=False)
-        self._addNotificationTimerSetting(data, _TYPES.OVERTURNED, _LINKS.OVERTURNED_ICON, link)
+        self._addNotificationTimerSetting(data, _TYPES.OVERTURNED, overturnedIcon, link, color=overturnedColor, iconOffsetY=iconOffsetY)
         self._addNotificationTimerSetting(data, _TYPES.FIRE, _LINKS.FIRE_ICON, link)
-        self._addNotificationTimerSetting(data, _TYPES.HALF_OVERTURNED, _LINKS.OVERTURNED_ICON, link)
+        self._addNotificationTimerSetting(data, _TYPES.HALF_OVERTURNED, overturnedIcon, link, color=overturnedColor, iconOffsetY=iconOffsetY)
         self._addNotificationTimerSetting(data, _TYPES.UNDER_FIRE, _LINKS.UNDER_FIRE_ICON, link)
         self._addNotificationTimerSetting(data, _TYPES.RECOVERY, _LINKS.RECOVERY_ICON, link)
         self._addNotificationTimerSetting(data, _TYPES.ORANGE_ZONE, _LINKS.AIRSTRIKE_ICON, link, _COLORS.ORANGE, countdownVisible=False)

@@ -17,16 +17,19 @@ msgstr ""
 "(n%100<10 || n%100>=20) ? 1 : 2);"
 
 msgid "alertMessage/afterSeason"
-msgstr "Сезон Алого грифона завершён"
+msgstr "Сезон Лазурного пегаса завершён"
 
 msgid "alertMessage/allNotAvailable"
 msgstr "Бои на серверах начнутся через %(primeDelta)s"
 
 msgid "alertMessage/allNotAvailableEnd"
-msgstr "Сезон Алого грифона завершён"
+msgstr "Сезон Лазурного пегаса завершён"
 
 msgid "alertMessage/allNotSet"
 msgstr "Режим недоступен на всех серверах"
+
+msgid "alertMessage/betweenSeasons"
+msgstr "Сезон Лазурного Пегаса завершён"
 
 msgid "alertMessage/button/changeServer"
 msgstr "Сменить сервер"
@@ -50,7 +53,7 @@ msgid "alertMessage/standaloneNotAvailable"
 msgstr "Бои на сервере начнутся через %(primeDelta)s"
 
 msgid "alertMessage/standaloneNotAvailableEnd"
-msgstr "Сезон Алого грифона завершён"
+msgstr "Сезон Лазурного пегаса завершён"
 
 msgid "alertMessage/standaloneNotSet"
 msgstr "Режим недоступен на сервере %(serverName)s"
@@ -92,7 +95,7 @@ msgid "banner/infoSmall/disabled"
 msgstr "Ожидайте прайм-тайма"
 
 msgid "banner/season"
-msgstr "Алый грифон"
+msgstr "Сезон Лазурного пегаса"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(season)s, до %(day)s %(month)s"
@@ -194,10 +197,23 @@ msgid "battleResult/header/deserter"
 msgstr ""
 "К вам было применено дисциплинарное взыскание — штраф к очкам рейтинга"
 
+msgid "battleResult/header/deserterQualification"
+msgstr ""
+"К вам было применено дисциплинарное взыскание — после прохождения "
+"квалификации рейтинг будет снижен"
+
+msgid "battleResult/label/deserter"
+msgstr "Дезертирство"
+
 msgid "battleResult/message/deserter"
 msgstr ""
 "Вы получили дисциплинарное взыскание.\n"
 "Потеряно очков рейтинга: %(penalty)s"
+
+msgid "battleResult/message/deserterQualification"
+msgstr ""
+"Вы сбежали с поля боя и получили дисциплинарное взыскание.\n"
+"Рейтинг после прохождения квалификации будет снижен."
 
 msgid "battleResult/message/header/deserter"
 msgstr "Дисциплинарное взыскание"
@@ -221,6 +237,15 @@ msgstr "Очки рейтинга списываются за:"
 
 msgid "battleResult/personal/tooltip/title"
 msgstr "Очки рейтинга"
+
+msgid "battleResult/qualification/descr/main"
+msgstr "Квалификационный бой"
+
+msgid "battleResult/qualification/descr/stats"
+msgstr "%(battleNumber)s — %(battleResult)s"
+
+msgid "battleResult/qualification/title"
+msgstr "Квалификация"
 
 msgid "battleResult/subTask/descr/getEliteRating"
 msgstr ""
@@ -276,9 +301,9 @@ msgstr "%(start)s – %(end)s"
 
 msgid "calendarDay/timeLeft"
 msgid_plural "plural/calendarDay/timeLeft"
-msgstr[0] "Сезон Алого грифона продлится %(days)d день"
-msgstr[1] "Сезон Алого грифона продлится %(days)d дня"
-msgstr[2] "Сезон Алого грифона продлится %(days)d дней"
+msgstr[0] "Сезон Лазурного пегаса продлится %(days)d день"
+msgstr[1] "Сезон Лазурного пегаса продлится %(days)d дня"
+msgstr[2] "Сезон Лазурного пегаса продлится %(days)d дней"
 
 msgid "calendarDay/title"
 msgstr "Расписание"
@@ -319,19 +344,16 @@ msgstr "Ролевые навыки"
 msgid "detailsHelp/rules"
 msgstr ""
 "Количество получаемых очков престижа напрямую зависит от результативности в бою. Захват ключевых позиций, использование навыков, а также действия, характерные для роли выбранной машины, принесут больше очков престижа.\n"
-"\n"
 "Все способы заработка очков престижа можно узнать в регламенте события."
 
 msgid "detailsHelp/rules/title"
 msgstr "Очки престижа"
 
 msgid "detailsHelp/seasonModifiers"
-msgstr ""
-"В режиме действует сезонный модификатор, увеличивающий прочность всех машин "
-"и уменьшающий время подготовки снаряжения."
+msgstr "В режиме действует модификатор, изменяющий параметры техники."
 
 msgid "detailsHelp/seasonModifiers/title"
-msgstr "Модификатор сезона Алого грифона"
+msgstr "Модификатор сезона Лазурного пегаса"
 
 msgid "division/A"
 msgstr "A"
@@ -344,6 +366,9 @@ msgstr "C"
 
 msgid "division/D"
 msgstr "D"
+
+msgid "division/E"
+msgstr "E"
 
 msgid "division/note"
 msgstr "Дивизион"
@@ -366,34 +391,34 @@ msgstr "НАТИСК"
 msgid "featureNameCapitalized"
 msgstr "НАТИСК"
 
-msgid "generalRankTooltip/body/fifth"
+msgid "fifthRankTooltip/description"
 msgstr ""
-"Ранг {whiteSpanish_Open}«Золото»{whiteSpanish_Close} присваивается игрокам, "
-"набравшим {whiteSpanish_Open}от %(fromScore) до "
-"%(toScore){whiteSpanish_Close} очков рейтинга."
+"Ранг {whiteSpanish_Open}«Чемпион»{whiteSpanish_Close} присваивается игрокам,"
+" набравшим минимум {whiteSpanish_Open}%(fromScore){whiteSpanish_Close} очков"
+" рейтинга."
 
 msgid "generalRankTooltip/body/first"
-msgstr ""
-"Ранг {whiteSpanish_Open}«Дебютант»{whiteSpanish_Close} присваивается "
-"игрокам, набравшим {whiteSpanish_Open}от %(fromScore) до "
-"%(toScore){whiteSpanish_Close} очков рейтинга."
-
-msgid "generalRankTooltip/body/fourth"
-msgstr ""
-"Ранг {whiteSpanish_Open}«Серебро»{whiteSpanish_Close} присваивается игрокам,"
-" набравшим {whiteSpanish_Open}от %(fromScore) до "
-"%(toScore){whiteSpanish_Close} очков рейтинга."
-
-msgid "generalRankTooltip/body/second"
 msgstr ""
 "Ранг {whiteSpanish_Open}«Железо»{whiteSpanish_Close} присваивается игрокам, "
 "набравшим {whiteSpanish_Open}от %(fromScore) до "
 "%(toScore){whiteSpanish_Close} очков рейтинга."
 
-msgid "generalRankTooltip/body/third"
+msgid "generalRankTooltip/body/fourth"
+msgstr ""
+"Ранг {whiteSpanish_Open}«Золото»{whiteSpanish_Close} присваивается игрокам, "
+"набравшим {whiteSpanish_Open}от %(fromScore) до "
+"%(toScore){whiteSpanish_Close} очков рейтинга."
+
+msgid "generalRankTooltip/body/second"
 msgstr ""
 "Ранг {whiteSpanish_Open}«Бронза»{whiteSpanish_Close} присваивается игрокам, "
 "набравшим {whiteSpanish_Open}от %(fromScore) до "
+"%(toScore){whiteSpanish_Close} очков рейтинга."
+
+msgid "generalRankTooltip/body/third"
+msgstr ""
+"Ранг {whiteSpanish_Open}«Серебро»{whiteSpanish_Close} присваивается игрокам,"
+" набравшим {whiteSpanish_Open}от %(fromScore) до "
 "%(toScore){whiteSpanish_Close} очков рейтинга."
 
 msgid "generalRankTooltip/subheading"
@@ -407,9 +432,9 @@ msgstr "Так точно!"
 
 msgid "intro/description/crimsonSeason"
 msgstr ""
-"Встречайте сезон Алого грифона!\n"
+"Встречайте сезон Лазурного пегаса!\n"
 "\n"
-"В режиме действует сезонный модификатор, увеличивающий прочность всех машин и уменьшающий время подготовки снаряжения."
+"В режим добавлены стадия квалификации и годовые награды. Также действует модификатор, изменяющий параметры техники."
 
 msgid "intro/description/pointsOfInterest"
 msgstr ""
@@ -419,9 +444,26 @@ msgstr ""
 "связи поможет обнаружить всю технику противника. В зависимости от карты, "
 "наличие и расположение ключевых позиций может меняться."
 
+msgid "intro/description/qualification"
+msgid_plural "plural/intro/description/qualification"
+msgstr[0] ""
+"Проведите %(count)s квалификационный бой для определения уровня вашего мастерства и присвоения вам ранга. По окончании вы получите награду за достигнутый ранг и все предыдущие.\n"
+"\n"
+"Дезертирство и ничья в квалификации расцениваются как поражение."
+msgstr[1] ""
+"Проведите %(count)s квалификационных боя для определения уровня вашего мастерства и присвоения вам ранга. По окончании вы получите награду за достигнутый ранг и все предыдущие.\n"
+"\n"
+"Дезертирство и ничья в квалификации расцениваются как поражение."
+msgstr[2] ""
+"Проведите %(count)s квалификационных боёв для определения уровня вашего мастерства и присвоения вам ранга. По окончании вы получите награду за достигнутый ранг и все предыдущие.\n"
+"\n"
+"Дезертирство и ничья в квалификации расцениваются как поражение."
+
 msgid "intro/description/ranks"
 msgstr ""
-"Система, отражающая мастерство игрока. Чем выше ранг, тем лучше награда."
+"Система, отражающая мастерство игрока. Продвигайтесь по рангам от «Железа» "
+"до «Легенды» и получайте ценные призы. Сражайтесь в течение всего года "
+"Пегаса, чтобы получить уникальные годовые награды."
 
 msgid "intro/description/roleSkills"
 msgstr ""
@@ -431,19 +473,22 @@ msgstr ""
 
 msgid "intro/description/vehiclesOnMap"
 msgstr ""
-"Выйти в бой можно на исследуемых или коллекционных машинах X уровня. "
-"Готовьте технику в Ангаре и выбирайте подходящую прямо в бою, учитывая "
-"особенности игровой карты. Старайтесь подстраиваться под выбор техники "
+"Выйти в бой можно на исследуемых или коллекционных машинах X уровня (кроме "
+"САУ). Готовьте технику в Ангаре и выбирайте подходящую прямо в бою, учитывая"
+" особенности игровой карты. Старайтесь подстраиваться под выбор техники "
 "союзников."
 
 msgid "intro/title/crimsonSeason"
-msgstr "СЕЗОН АЛОГО ГРИФОНА"
+msgstr "СЕЗОН ЛАЗУРНОГО ПЕГАСА"
 
 msgid "intro/title/pointsOfInterest"
 msgstr "КЛЮЧЕВЫЕ ПОЗИЦИИ"
 
+msgid "intro/title/qualification"
+msgstr "КВАЛИФИКАЦИЯ"
+
 msgid "intro/title/ranks"
-msgstr "РАНГИ"
+msgstr "РАНГОВАЯ СИСТЕМА"
 
 msgid "intro/title/roleSkills"
 msgstr "РОЛЕВЫЕ НАВЫКИ"
@@ -534,6 +579,14 @@ msgstr "Количество очков рейтинга игрока, полу�
 msgid "leaderboard/table/tooltip/score/header"
 msgstr "Очки рейтинга"
 
+msgid "listSeparator"
+msgstr ", "
+
+msgid "mainWidget/ratingCalculation"
+msgstr ""
+"Ожидание результатов квалификации\n"
+"для присвоения ранга %(timer)s"
+
 msgid "mainWidget/status"
 msgstr "%(score)s / %(scoreToNextDivision)s"
 
@@ -550,6 +603,11 @@ msgstr "Дней до снижения рейтинга: %(days)s"
 msgid "mainWidget/warning"
 msgstr "Без участия в боях ваш рейтинг снизится."
 
+msgid "mainWidgetTooltip/battlesCounter"
+msgstr ""
+"%(battleIcon)s{cream_Open}%(battlesCount)s{cream_Close} / "
+"%(maxBattlesCount)s"
+
 msgid "mainWidgetTooltip/division"
 msgstr "Дивизион: %(divisionName)s"
 
@@ -558,17 +616,32 @@ msgstr ""
 "В этом дивизионе находятся игроки, набравшие {whiteSpanish_Open}от "
 "%(fromScore) до %(toScore){whiteSpanish_Close} очков рейтинга."
 
-msgid "mainWidgetTooltip/info/seventh"
+msgid "mainWidgetTooltip/info/fifth"
 msgstr ""
-"Ранг «Легенда» присваивается "
+"Для получения ранга «Легенда» войдите в "
 "{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
 " лидеров."
 
 msgid "mainWidgetTooltip/info/sixth"
 msgstr ""
-"Для получения ранга «Легенда» войдите в "
+"Ранг «Легенда» присваивается "
 "{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
 " лидеров."
+
+msgid "mainWidgetTooltip/qualification/condition"
+msgid_plural "plural/mainWidgetTooltip/qualification/condition"
+msgstr[0] ""
+"Завершите %(maxBattlesCount)s бой в режиме для определения уровня вашего "
+"мастерства и присвоения ранга."
+msgstr[1] ""
+"Завершите %(maxBattlesCount)s боя в режиме для определения уровня вашего "
+"мастерства и присвоения ранга."
+msgstr[2] ""
+"Завершите %(maxBattlesCount)s боёв в режиме для определения уровня вашего "
+"мастерства и присвоения ранга."
+
+msgid "mainWidgetTooltip/qualificationName"
+msgstr "Квалификация"
 
 msgid "mainWidgetTooltip/ratingScore"
 msgstr "Очки рейтинга"
@@ -587,9 +660,6 @@ msgstr "Выполняйте боевые задачи"
 
 msgid "noVehicles/howTo/title"
 msgstr "Как быстрее получить технику %(levels)s уровня?"
-
-msgid "noVehicles/listSeparator"
-msgstr ", "
 
 msgid "noVehicles/text/vehicleAvailableForBuy"
 msgstr ""
@@ -612,11 +682,20 @@ msgstr "ТАБЛИЦА ЛИДЕРОВ"
 msgid "page/heading/progression"
 msgstr "РАНГОВАЯ СИСТЕМА"
 
+msgid "page/heading/qualification"
+msgstr "КВАЛИФИКАЦИЯ"
+
 msgid "page/heading/rankRewards"
 msgstr "НАГРАДЫ ЗА РАНГИ"
 
 msgid "page/heading/weeklyQuests"
 msgstr "ЕЖЕНЕДЕЛЬНЫЕ ЗАДАЧИ"
+
+msgid "page/heading/yearlyRewards"
+msgstr "ГОДОВЫЕ НАГРАДЫ"
+
+msgid "page/heading/yearlyStatistics"
+msgstr "ГОДОВАЯ СТАТИСТИКА"
 
 msgid "pagination/dots"
 msgstr "…"
@@ -706,7 +785,7 @@ msgid "primeTimeView/status/primeWillBeAvailable"
 msgstr "Начало боёв на сервере %(server)s через %(time)s"
 
 msgid "primeTimeView/status/seasonDisabled"
-msgstr "Сезон Алого грифона на сервере %(server)s завершился."
+msgstr "Сезон Лазурного пегаса на сервере %(server)s завершился."
 
 msgid "primeTimeView/status/untill"
 msgstr "Бои недоступны до %(startTime)s на сервере %(server)s"
@@ -714,32 +793,91 @@ msgstr "Бои недоступны до %(startTime)s на сервере %(ser
 msgid "primeTimeView/title"
 msgstr "НАТИСК"
 
+msgid "qualification/battlesCounter"
+msgstr ""
+"%(battleIcon)s{cream_Open}%(battlesCount)s{cream_Close} / "
+"%(maxBattlesCount)s"
+
+msgid "qualification/condition"
+msgid_plural "plural/qualification/condition"
+msgstr[0] ""
+"Завершите {white_Open}%(maxBattlesCount)s бой{white_Close} в режиме для "
+"определения уровня вашего мастерства и присвоения ранга."
+msgstr[1] ""
+"Завершите {white_Open}%(maxBattlesCount)s боя{white_Close} в режиме для "
+"определения уровня вашего мастерства и присвоения ранга."
+msgstr[2] ""
+"Завершите {white_Open}%(maxBattlesCount)s боёв{white_Close} в режиме для "
+"определения уровня вашего мастерства и присвоения ранга."
+
+msgid "qualification/conditionTooltip/body"
+msgid_plural "plural/qualification/conditionTooltip/body"
+msgstr[0] ""
+"Для прохождения квалификации завершите %(maxBattlesCount)s бой и дождитесь расчёта рейтинга. Ваша боевая эффективность во время квалификации влияет на итоговый ранг, который вы получите.\n"
+"Дезертирство в квалификации приведёт к худшему результату, чем в самом неудачном сражении."
+msgstr[1] ""
+"Для прохождения квалификации завершите %(maxBattlesCount)s боя и дождитесь расчёта рейтинга. Ваша боевая эффективность во время квалификации влияет на итоговый ранг, который вы получите.\n"
+"Дезертирство в квалификации приведёт к худшему результату, чем в самом неудачном сражении."
+msgstr[2] ""
+"Для прохождения квалификации завершите %(maxBattlesCount)s боёв и дождитесь расчёта рейтинга. Ваша боевая эффективность во время квалификации влияет на итоговый ранг, который вы получите.\n"
+"Дезертирство в квалификации приведёт к худшему результату, чем в самом неудачном сражении."
+
+msgid "qualification/conditionTooltip/header"
+msgstr "Правила квалификации"
+
+msgid "qualification/counter"
+msgstr "%(battlesCount)s / %(maxBattlesCount)s"
+
+msgid "qualification/counterWithDescription"
+msgstr ""
+"%(counter)s\n"
+"Боёв проведено"
+
+msgid "qualification/ratingCalculationDescription"
+msgstr "Ожидание результатов квалификации для присвоения ранга %(timerIcon)s"
+
+msgid "qualification/ratingCalculationTooltip"
+msgstr ""
+"Расчёт рейтинга по итогам квалификации может занять до пяти минут. После "
+"этого вам будет присвоен ранг, и вы сможете продолжить игру в Натиске."
+
+msgid "qualification/rewardsButton"
+msgstr "К наградам"
+
+msgid "qualification/rewardsDescription"
+msgstr ""
+"По завершении квалификации вы получите награды за уже достигнутый и все "
+"предыдущие ранги."
+
+msgid "rank/achieved"
+msgstr "Достигнут"
+
 msgid "rank/current"
 msgstr "Текущий"
 
 msgid "rank/fifth"
-msgstr "Золото"
+msgstr "Чемпион"
 
 msgid "rank/first"
-msgstr "Дебютант"
-
-msgid "rank/fourth"
-msgstr "Серебро"
-
-msgid "rank/second"
 msgstr "Железо"
 
-msgid "rank/seventh"
-msgstr "Легенда"
+msgid "rank/fourth"
+msgstr "Золото"
+
+msgid "rank/qualification"
+msgstr "Квалификация"
+
+msgid "rank/second"
+msgstr "Бронза"
 
 msgid "rank/sixth"
-msgstr "Чемпион"
+msgstr "Легенда"
 
 msgid "rank/text"
 msgstr "Ранг %(rank)s"
 
 msgid "rank/third"
-msgstr "Бронза"
+msgstr "Серебро"
 
 msgid "rankInactivityTooltip/description"
 msgstr ""
@@ -751,32 +889,32 @@ msgstr "Ранговая неактивность"
 msgid "rankInactivityTooltip/timeLeft"
 msgstr "Дней до снижения рейтинга: %(count)s"
 
-msgid "rankInfo/current/seventh"
+msgid "rankInfo/current/fifth"
 msgstr ""
-"Ранг «Легенда» присваивается "
-"{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
-" лидеров."
+"Ранг «Чемпион» присваивается игрокам, набравшим {whiteSpanish_Open}от "
+"%(fromScore){whiteSpanish_Close} очков рейтинга"
 
 msgid "rankInfo/current/sixth"
 msgstr ""
-"Ранг «Чемпион» присваивается игрокам, набравшим {whiteSpanish_Open}от "
-"%(fromScore){whiteSpanish_Close} очков рейтинга."
-
-msgid "rankItemStatus/current/description/seventh"
-msgstr ""
-"Для защиты ранга «Легенда» оставайтесь в "
+"Ранг «Легенда» присваивается "
 "{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
-" лидеров по количеству очков рейтинга."
+" лидеров"
 
-msgid "rankItemStatus/current/description/sixth"
+msgid "rankItemStatus/current/description/fifth"
 msgstr ""
 "Для получения ранга «Легенда» попадите в "
 "{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
 " лидеров по количеству очков рейтинга."
 
-msgid "rankItemStatus/current/extendedDescription/seventh"
+msgid "rankItemStatus/current/description/sixth"
 msgstr ""
 "Для защиты ранга «Легенда» оставайтесь в "
+"{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
+" лидеров по количеству очков рейтинга."
+
+msgid "rankItemStatus/current/extendedDescription/fifth"
+msgstr ""
+"Для получения ранга «Легенда» попадите в "
 "{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
 " лидеров по количеству очков рейтинга. Количество очков рейтинга у "
 "последнего игрока в ранге "
@@ -784,7 +922,7 @@ msgstr ""
 
 msgid "rankItemStatus/current/extendedDescription/sixth"
 msgstr ""
-"Для получения ранга «Легенда» попадите в "
+"Для защиты ранга «Легенда» оставайтесь в "
 "{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
 " лидеров по количеству очков рейтинга. Количество очков рейтинга у "
 "последнего игрока в ранге "
@@ -792,41 +930,41 @@ msgstr ""
 
 msgid "rankItemStatus/future/description/fifth"
 msgstr ""
-"Ранг «Золото» присваивается игрокам, набравшим "
-"{whiteSpanish_Open}от&nbsp;%(fromScore) "
-"до&nbsp;%(toScore){whiteSpanish_Close} очков рейтинга."
+"Ранг «Чемпион» присваивается игрокам, набравшим "
+"минимум&nbsp;{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} очков "
+"рейтинга."
 
-msgid "rankItemStatus/future/description/fourth"
-msgstr ""
-"Ранг «Серебро» присваивается игрокам, набравшим "
-"{whiteSpanish_Open}от&nbsp;%(fromScore)&nbsp;до&nbsp;%(toScore){whiteSpanish_Close}"
-" очков рейтинга."
-
-msgid "rankItemStatus/future/description/second"
+msgid "rankItemStatus/future/description/first"
 msgstr ""
 "Ранг «Железо» присваивается игрокам, набравшим "
 "{whiteSpanish_Open}от&nbsp;%(fromScore)&nbsp;до&nbsp;%(toScore){whiteSpanish_Close}"
 " очков рейтинга."
 
-msgid "rankItemStatus/future/description/seventh"
+msgid "rankItemStatus/future/description/fourth"
 msgstr ""
-"Для получения ранга «Легенда» попадите в "
-"{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
-" лидеров по количеству очков рейтинга."
+"Ранг «Золото» присваивается игрокам, набравшим "
+"{whiteSpanish_Open}от&nbsp;%(fromScore) "
+"до&nbsp;%(toScore){whiteSpanish_Close} очков рейтинга."
 
-msgid "rankItemStatus/future/description/sixth"
-msgstr ""
-"Ранг «Чемпион» присваивается игрокам, набравшим "
-"минимум&nbsp;{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} очков "
-"рейтинга."
-
-msgid "rankItemStatus/future/description/third"
+msgid "rankItemStatus/future/description/second"
 msgstr ""
 "Ранг «Бронза» присваивается игрокам, набравшим "
 "{whiteSpanish_Open}от&nbsp;%(fromScore)&nbsp;до&nbsp;%(toScore){whiteSpanish_Close}"
 " очков рейтинга."
 
-msgid "rankItemStatus/future/extendedDescription/seventh"
+msgid "rankItemStatus/future/description/sixth"
+msgstr ""
+"Для получения ранга «Легенда» попадите в "
+"{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
+" лидеров по количеству очков рейтинга."
+
+msgid "rankItemStatus/future/description/third"
+msgstr ""
+"Ранг «Серебро» присваивается игрокам, набравшим "
+"{whiteSpanish_Open}от&nbsp;%(fromScore)&nbsp;до&nbsp;%(toScore){whiteSpanish_Close}"
+" очков рейтинга."
+
+msgid "rankItemStatus/future/extendedDescription/sixth"
 msgstr ""
 "Для получения ранга «Легенда» попадите в "
 "{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
@@ -834,32 +972,29 @@ msgstr ""
 "последнего игрока в ранге "
 "«Легенда»&nbsp;—&nbsp;{whiteSpanish_Open}%(pointsCount){whiteSpanish_Close}"
 
-msgid "rankItemStatus/previous/description/sixth"
+msgid "rankItemStatus/previous/description/fifth"
 msgstr ""
 "Ранг «Чемпион» присваивается игрокам, набравшим "
 "минимум&nbsp;{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} очков "
 "рейтинга."
 
 msgid "rankUpper/fifth"
-msgstr "ЗОЛОТО"
-
-msgid "rankUpper/first"
-msgstr "ДЕБЮТАНТ"
-
-msgid "rankUpper/fourth"
-msgstr "СЕРЕБРО"
-
-msgid "rankUpper/second"
-msgstr "ЖЕЛЕЗО"
-
-msgid "rankUpper/seventh"
-msgstr "ЛЕГЕНДА"
-
-msgid "rankUpper/sixth"
 msgstr "ЧЕМПИОН"
 
-msgid "rankUpper/third"
+msgid "rankUpper/first"
+msgstr "ЖЕЛЕЗО"
+
+msgid "rankUpper/fourth"
+msgstr "ЗОЛОТО"
+
+msgid "rankUpper/second"
 msgstr "БРОНЗА"
+
+msgid "rankUpper/sixth"
+msgstr "ЛЕГЕНДА"
+
+msgid "rankUpper/third"
+msgstr "СЕРЕБРО"
 
 msgid "ratingScore/title"
 msgstr "Очки рейтинга"
@@ -873,25 +1008,12 @@ msgstr "Предпросмотр"
 msgid "rewards/status/achieved"
 msgstr "Награда получена"
 
-msgid "rewards/status/future/first"
-msgstr ""
-"Проведите {whiteSpanish_Open}1{whiteSpanish_Close} бой в режиме «Натиск»"
-
-msgid "rewards/status/future/last"
-msgstr ""
-"Попадите в {whiteSpanish_Open}топ-%(topPercentage)s%{whiteSpanish_Close} "
-"таблицы лидеров"
-
-msgid "rewards/status/future/ranksForPoints"
-msgstr ""
-"Заработайте {whiteSpanish_Open}%(count)s{whiteSpanish_Close} очков рейтинга"
-
 msgid "rewards/subtitle/customizations"
 msgstr ""
 "{whiteSpanish_Open}Для %(vehicleLevel)s уровня техники{whiteSpanish_Close}"
 
 msgid "rewards/subtitle/styleProgress"
-msgstr "{whiteSpanish_Open}Для стиля «Крыло и коготь»{whiteSpanish_Close}"
+msgstr "{whiteSpanish_Open}Для стиля «Небесный скакун»{whiteSpanish_Close}"
 
 msgid "rewards/subtitle/vehicles_rent"
 msgstr "%(vehicleLevel)s уровень"
@@ -905,6 +1027,12 @@ msgstr "Так точно!"
 msgid "rewardsScreen/buttonToRewards"
 msgstr "К наградам"
 
+msgid "rewardsScreen/description/qualificationEnded"
+msgstr "НАТИСК. КВАЛИФИКАЦИЯ ЗАВЕРШЕНА"
+
+msgid "rewardsScreen/description/season"
+msgstr "НАТИСК. СЕЗОН ЛАЗУРНОГО ПЕГАСА"
+
 msgid "rewardsScreen/notice/subTitle"
 msgstr ""
 "На этом ранге вы можете потерять часть очков рейтинга, если перестанете "
@@ -916,8 +1044,13 @@ msgstr "Ранговая неактивность"
 msgid "rewardsScreen/subtitle/division"
 msgstr "{cream_Open}Ранг «%(rank)s»{cream_Close}"
 
-msgid "rewardsScreen/subtitle/firstRankRewards"
-msgstr "Вы получили награду за первый бой в режиме «Натиск»"
+msgid "rewardsScreen/subtitle/qualificationRewards"
+msgstr ""
+"По итогам квалификации вы получили награды за следующие ранги: "
+"{cream_Open}%(ranks)s{cream_Close}"
+
+msgid "rewardsScreen/subtitle/qualificationRewardsSeparator"
+msgstr ", "
 
 msgid "rewardsScreen/subtitle/rankRewards"
 msgstr ""
@@ -939,8 +1072,11 @@ msgstr[2] ""
 msgid "rewardsScreen/title/division"
 msgstr "ДОСТИГНУТ ДИВИЗИОН %(division)s"
 
-msgid "rewardsScreen/title/firstRankRewards"
-msgstr "ПОЗДРАВЛЯЕМ!"
+msgid "rewardsScreen/title/qualificationRank"
+msgstr "ДОСТИГНУТ РАНГ {cream_Open}«%(rankUpperName)s»{cream_Close}"
+
+msgid "rewardsScreen/title/qualificationRewards"
+msgstr "НАГРАДА ЗА ДОСТИГНУТЫЕ РАНГИ"
 
 msgid "rewardsScreen/title/rank"
 msgstr "ДОСТИГНУТ РАНГ {cream_Open}«%(rankUpperName)s»{cream_Close}"
@@ -969,10 +1105,10 @@ msgid "season/minutesLeft"
 msgstr "До завершения: %(minutes)s мин"
 
 msgid "season/name"
-msgstr "Сезон Алого грифона"
+msgstr "Сезон Лазурного пегаса"
 
 msgid "season/over"
-msgstr "Сезон Алого грифона завершён"
+msgstr "Сезон Лазурного пегаса завершён"
 
 msgid "season/range"
 msgstr "%(startDate)s – %(endDate)s"
@@ -982,6 +1118,31 @@ msgstr "До завершения: %(seconds)s с"
 
 msgid "seasonModifier/title"
 msgstr "Модификатор сезона"
+
+msgid "seasonPointTooltip/header"
+msgstr "Знамя Пегаса"
+
+msgid "seasonPointTooltip/status/achieved"
+msgstr "Получено"
+
+msgid "seasonPointTooltip/status/notAchieved"
+msgstr "Не получено"
+
+msgid "seasonPointTooltip/status/possible"
+msgstr "Вы претендуете на знамя"
+
+msgid "seasonPointTooltip/text/compensate"
+msgstr ""
+"Оставшиеся знамёна компенсируются бонами по курсу "
+"{bond_Open}1%(seasonPointIcon)s{bond_Close} к "
+"{bond_Open}%(seasonPointExchangeRate)s%(bondsIcon)s{bond_Close}"
+
+msgid "seasonPointTooltip/text/season"
+msgstr ""
+"По окончании сезона вы получите знамёна в соответствии с вашим рангом."
+
+msgid "seasonPointTooltip/text/year"
+msgstr "Каждые 3 знамени улучшают награду, которую вы получите в конце года."
 
 msgid "seasonalBattleSelector/tillEnd"
 msgstr "До конца сезона:"
@@ -1018,18 +1179,14 @@ msgstr "Режим временно отключён по техническим
 msgid "selectorTooltip/unavailable/nextSeason"
 msgstr "Режим станет доступен %(time)s"
 
-msgid "seventhRankTooltip/description"
-msgstr ""
-"Ранг {whiteSpanish_Open}«Легенда»{whiteSpanish_Close} присваивается "
-"{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
-" лидеров по количеству очков рейтинга."
-
 msgid "sidebar/tabs/tooltip/body/leaderboard"
 msgstr ""
 "Раздел содержит информацию о лучших игроках текущего сезона режима «Натиск»."
 
 msgid "sidebar/tabs/tooltip/body/progression"
-msgstr "Раздел содержит информацию о вашем ранге, дивизионе и очках рейтинга."
+msgstr ""
+"Раздел содержит информацию о квалификации, а также о вашем ранге, дивизионе "
+"и очках рейтинга после её завершения."
 
 msgid "sidebar/tabs/tooltip/body/rankRewards"
 msgstr ""
@@ -1037,6 +1194,15 @@ msgstr ""
 
 msgid "sidebar/tabs/tooltip/body/weeklyQuests"
 msgstr "Раздел содержит информацию о еженедельных задачах режима «Натиск»."
+
+msgid "sidebar/tabs/tooltip/body/yearlyRewards"
+msgstr ""
+"Раздел содержит информацию о годовых наградах за получение знамён Пегаса."
+
+msgid "sidebar/tabs/tooltip/body/yearlyStatistics"
+msgstr ""
+"Раздел содержит информацию о ваших достижениях в каждом из сезонов текущего "
+"года Натиска."
 
 msgid "sidebar/tabs/tooltip/header/leaderboard"
 msgstr "Таблица лидеров"
@@ -1050,11 +1216,17 @@ msgstr "Награды за ранги"
 msgid "sidebar/tabs/tooltip/header/weeklyQuests"
 msgstr "Еженедельные задачи"
 
+msgid "sidebar/tabs/tooltip/header/yearlyRewards"
+msgstr "Годовые награды"
+
+msgid "sidebar/tabs/tooltip/header/yearlyStatistics"
+msgstr "Годовая статистика"
+
 msgid "sixthRankTooltip/description"
 msgstr ""
-"Ранг {whiteSpanish_Open}«Чемпион»{whiteSpanish_Close} присваивается игрокам,"
-" набравшим минимум {whiteSpanish_Open}%(fromScore){whiteSpanish_Close} очков"
-" рейтинга."
+"Ранг {whiteSpanish_Open}«Легенда»{whiteSpanish_Close} присваивается "
+"{whiteSpanish_Open}топ-%(topPercentage)%{whiteSpanish_Close} игроков таблицы"
+" лидеров по количеству очков рейтинга."
 
 msgid "system_messages/periodicReward/body"
 msgstr ""
@@ -1077,6 +1249,15 @@ msgstr "Бои в режиме «Натиск» снова доступны. Р�
 msgid "system_messages/primeTime/start/title"
 msgstr "Режим прекращения огня"
 
+msgid "system_messages/qualificationReward/body"
+msgstr ""
+"Поздравляем! Вы достигли ранга «%(maxRank)s».\n"
+"Получены награды за ранги %(ranks)s:\n"
+"%(rewards)s"
+
+msgid "system_messages/qualificationReward/title"
+msgstr "Квалификация завершена"
+
 msgid "system_messages/regularReward/body"
 msgstr ""
 "Дата: %(at)s\n"
@@ -1097,7 +1278,18 @@ msgstr ""
 "%(rewards)s"
 
 msgid "system_messages/tokenWeeklyReward/title"
-msgstr "Награда за сбор Монет натиска"
+msgstr "Награда за сбор монет Натиска"
+
+msgid "system_messages/weeklyReward/body"
+msgstr ""
+"Дата: %(at)s\n"
+"%(rewards)s"
+
+msgid "system_messages/weeklyReward/title"
+msgstr "Награда за выполнение еженедельной задачи"
+
+msgid "system_messages/weeklyReward/tokens"
+msgstr "монета Натиска"
 
 msgid "unit/message/modeOffline"
 msgstr "Невозможно выйти в бой: ошибка базы данных."
@@ -1152,3 +1344,434 @@ msgstr "Все награды получены"
 
 msgid "weeklyQuests/tokenProgress/description/normal"
 msgstr "Зарабатывайте монеты Натиска для получения наград"
+
+msgid "whatsNewView/banner/title/large"
+msgstr "СЕЗОН ЛАЗУРНОГО ПЕГАСА"
+
+msgid "whatsNewView/banner/title/small"
+msgstr "НАТИСК. ЧТО НОВОГО?"
+
+msgid "whatsNewView/button/ok"
+msgstr "Я в деле!"
+
+msgid "whatsNewView/mapChanges/addedMaps"
+msgstr "Добавленные карты:"
+
+msgid "whatsNewView/mapChanges/heading"
+msgstr "Карты"
+
+msgid "whatsNewView/mapChanges/removedMaps"
+msgstr "Исключённые карты:"
+
+msgid "whatsNewView/qualification/description"
+msgstr ""
+"Завершите серию из %(maxBattlesCount)s боёв, чтобы достичь ранга, "
+"соответствующего вашему уровню мастерства."
+
+msgid "whatsNewView/qualification/heading"
+msgstr "Квалификация"
+
+msgid "whatsNewView/rankingSystem/description"
+msgstr ""
+"Убран ранг «Дебютант», добавлен дивизион Е для рангов «Железо», «Бронза», "
+"«Серебро» и «Золото»."
+
+msgid "whatsNewView/rankingSystem/heading"
+msgstr "Ранговая система"
+
+msgid "whatsNewView/tag/changed"
+msgstr "Изменено"
+
+msgid "whatsNewView/tag/mapRemoved"
+msgstr "УБРАНА"
+
+msgid "whatsNewView/tag/new"
+msgstr "Новое"
+
+msgid "whatsNewView/tag/seasonUpdate"
+msgstr "Сезонное обновление"
+
+msgid "whatsNewView/vehicleLimitations/description"
+msgstr ""
+"Начиная с сезона Лазурного пегаса машины роли САУ недоступны для игры в "
+"режиме из-за крайне низкой эффективности в бою."
+
+msgid "whatsNewView/vehicleLimitations/heading"
+msgstr "Ограничения по технике"
+
+msgid "whatsNewView/vehiclesForRent/heading"
+msgstr "Арендная техника"
+
+msgid "whatsNewView/watchVideo"
+msgstr "Смотреть видео"
+
+msgid "whatsNewView/yearOfThePegasus/description"
+msgstr ""
+"Сражайтесь в каждом из трёх сезонов, чтобы получить ценные годовые награды."
+
+msgid "whatsNewView/yearOfThePegasus/heading"
+msgstr "Год Пегаса начался"
+
+msgid "yearlyRewards/banner/willReceived"
+msgstr "Награды будут начислены по окончании рангового года"
+
+msgid "yearlyRewards/description"
+msgstr ""
+"По окончании сезона вы получите знамёна Пегаса в соответствии с вашим рангом"
+
+msgid "yearlyRewards/error/description"
+msgstr ""
+"Приносим извинения за временные неудобства, попробуйте обновить страницу "
+"позже."
+
+msgid "yearlyRewards/error/title"
+msgstr "Ошибка загрузки данных"
+
+msgid "yearlyRewards/main/fifth"
+msgstr "Камуфляж «Чемпион»"
+
+msgid "yearlyRewards/main/first"
+msgstr "Камуфляж «Железо»"
+
+msgid "yearlyRewards/main/fourth"
+msgstr "Камуфляж «Золото»"
+
+msgid "yearlyRewards/main/second"
+msgstr "Камуфляж «Бронза»"
+
+msgid "yearlyRewards/main/sixth"
+msgstr "Камуфляж «Легенда»"
+
+msgid "yearlyRewards/main/third"
+msgstr "Камуфляж «Серебро»"
+
+msgid "yearlyRewards/rank/achieved"
+msgstr "Достигнутый ранг: %(rank)s"
+
+msgid "yearlyRewards/rank/current"
+msgstr "Текущий ранг: %(rank)s"
+
+msgid "yearlyRewards/rewardsState/claimed"
+msgstr "Награда получена"
+
+msgid "yearlyRewards/rewardsState/guaranteed"
+msgstr "Награда гарантирована"
+
+msgid "yearlyRewards/rewardsState/notAvailable"
+msgstr "Награда не получена"
+
+msgid "yearlyRewards/rewardsState/possible"
+msgstr "Вы претендуете на награду"
+
+msgid "yearlyRewards/rewardsState/tooltip/guaranteed"
+msgstr "Вы гарантированно получите эту награду в конце года."
+
+msgid "yearlyRewards/rewardsState/tooltip/notAvailable"
+msgstr ""
+"Заработайте необходимое количество знамён Пегаса для получения награды в "
+"конце года."
+
+msgid "yearlyRewards/rewardsState/tooltip/possible"
+msgstr ""
+"Вы получите эту награду в конце года, если сохраните текущий ранг или "
+"повысите его до окончания сезона."
+
+msgid "yearlyRewards/subtitle/styleProgress"
+msgstr "Для стиля «Небесный скакун»"
+
+msgid "yearlyRewards/vehicle"
+msgstr "Харрикейн"
+
+msgid "yearlyRewards/vehicleTooltip/body"
+msgstr ""
+"Машина с уникальным внешним видом, выдаваемая за достижения в году Пегаса."
+
+msgid "yearlyRewards/vehicleTooltip/header"
+msgstr "Харрикейн"
+
+msgid "yearlyRewardsTooltip/additional/fifth_1/body"
+msgstr "Памятная нашивка, выдаваемая за сбор 15 знамён Пегаса."
+
+msgid "yearlyRewardsTooltip/additional/fifth_1/header"
+msgstr "Натиск 2023–2024: Чемпион"
+
+msgid "yearlyRewardsTooltip/additional/fifth_2/body"
+msgstr ""
+"Вы можете выбрать три единицы усовершенствованного оборудования в качестве награды. Каждый предмет можно забрать только один раз:\n"
+" • Система отвода пороховых газов\n"
+" • Комплекс стабилизационного оборудования\n"
+" • Экспериментальная система заряжания\n"
+" • Износостойкие приводы наводки\n"
+" • Юстированная оптика\n"
+" • Усовершенствованная компоновка\n"
+" • Улучшенный компрессор\n"
+" • Повышенная снарядостойкость\n"
+" • Усовершенствованная бортовая передача"
+
+msgid "yearlyRewardsTooltip/additional/fifth_2/header"
+msgstr "Усовершенствованное оборудование"
+
+msgid "yearlyRewardsTooltip/additional/fifth_3/body"
+msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
+
+msgid "yearlyRewardsTooltip/additional/fifth_3/header"
+msgstr "Стиль «Небесный скакун»"
+
+msgid "yearlyRewardsTooltip/additional/fifth_4/body"
+msgstr ""
+"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
+"\n"
+"3 – Железный пегас\n"
+"6 – Бронзовый пегас\n"
+"9 – Серебряный пегас\n"
+"12 – Золотой пегас\n"
+"15 – Чемпион года Пегаса\n"
+"18 – Легенда года Пегаса\n"
+"\n"
+"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
+
+msgid "yearlyRewardsTooltip/additional/fifth_4/header"
+msgstr "Медаль «Чемпион года Пегаса»"
+
+msgid "yearlyRewardsTooltip/additional/first_1/body"
+msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
+
+msgid "yearlyRewardsTooltip/additional/first_1/header"
+msgstr "Стиль «Небесный скакун»"
+
+msgid "yearlyRewardsTooltip/additional/first_2/body"
+msgstr ""
+"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
+"\n"
+"3 – Железный пегас\n"
+"6 – Бронзовый пегас\n"
+"9 – Серебряный пегас\n"
+"12 – Золотой пегас\n"
+"15 – Чемпион года Пегаса\n"
+"18 – Легенда года Пегаса\n"
+"\n"
+"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
+
+msgid "yearlyRewardsTooltip/additional/first_2/header"
+msgstr "Медаль «Железный пегас»"
+
+msgid "yearlyRewardsTooltip/additional/fourth_1/body"
+msgstr ""
+"Уникальный 100%-й экипаж с «нулевым» навыком «Боевое братство» и опытом на "
+"изучение двух других навыков на выбор."
+
+msgid "yearlyRewardsTooltip/additional/fourth_1/header"
+msgstr "Уникальный экипаж"
+
+msgid "yearlyRewardsTooltip/additional/fourth_2/body"
+msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
+
+msgid "yearlyRewardsTooltip/additional/fourth_2/header"
+msgstr "Стиль «Небесный скакун»"
+
+msgid "yearlyRewardsTooltip/additional/fourth_3/body"
+msgstr ""
+"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
+"\n"
+"3 – Железный пегас\n"
+"6 – Бронзовый пегас\n"
+"9 – Серебряный пегас\n"
+"12 – Золотой пегас\n"
+"15 – Чемпион года Пегаса\n"
+"18 – Легенда года Пегаса\n"
+"\n"
+"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
+
+msgid "yearlyRewardsTooltip/additional/fourth_3/header"
+msgstr "Медаль «Золотой пегас»"
+
+msgid "yearlyRewardsTooltip/additional/second_1/body"
+msgstr ""
+"Вы можете выбрать одну единицу усовершенствованного оборудования в качестве награды. Каждый предмет можно забрать только один раз:\n"
+" • Система отвода пороховых газов\n"
+" • Комплекс стабилизационного оборудования\n"
+" • Экспериментальная система заряжания\n"
+" • Износостойкие приводы наводки\n"
+" • Юстированная оптика\n"
+" • Усовершенствованная компоновка\n"
+" • Улучшенный компрессор\n"
+" • Повышенная снарядостойкость\n"
+" • Усовершенствованная бортовая передача"
+
+msgid "yearlyRewardsTooltip/additional/second_1/header"
+msgstr "Усовершенствованное оборудование"
+
+msgid "yearlyRewardsTooltip/additional/second_2/body"
+msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
+
+msgid "yearlyRewardsTooltip/additional/second_2/header"
+msgstr "Стиль «Небесный скакун»"
+
+msgid "yearlyRewardsTooltip/additional/second_3/body"
+msgstr ""
+"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
+"\n"
+"3 – Железный пегас\n"
+"6 – Бронзовый пегас\n"
+"9 – Серебряный пегас\n"
+"12 – Золотой пегас\n"
+"15 – Чемпион года Пегаса\n"
+"18 – Легенда года Пегаса\n"
+"\n"
+"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
+
+msgid "yearlyRewardsTooltip/additional/second_3/header"
+msgstr "Медаль «Бронзовый пегас»"
+
+msgid "yearlyRewardsTooltip/additional/sixth_1/body"
+msgstr ""
+"Особая отметка, выдаваемая лучшим из лучших в году Пегаса режима «Натиск»."
+
+msgid "yearlyRewardsTooltip/additional/sixth_1/header"
+msgstr "Легенда о Пегасе"
+
+msgid "yearlyRewardsTooltip/additional/sixth_2/body"
+msgstr "Памятная нашивка, выдаваемая за сбор 18 знамён Пегаса."
+
+msgid "yearlyRewardsTooltip/additional/sixth_2/header"
+msgstr "Натиск 2023–2024: Легенда"
+
+msgid "yearlyRewardsTooltip/additional/sixth_3/body"
+msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
+
+msgid "yearlyRewardsTooltip/additional/sixth_3/header"
+msgstr "Стиль «Небесный скакун»"
+
+msgid "yearlyRewardsTooltip/additional/sixth_4/body"
+msgstr ""
+"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
+"\n"
+"3 – Железный пегас\n"
+"6 – Бронзовый пегас\n"
+"9 – Серебряный пегас\n"
+"12 – Золотой пегас\n"
+"15 – Чемпион года Пегаса\n"
+"18 – Легенда года Пегаса\n"
+"\n"
+"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
+
+msgid "yearlyRewardsTooltip/additional/sixth_4/header"
+msgstr "Медаль «Легенда года Пегаса»"
+
+msgid "yearlyRewardsTooltip/additional/third_1/body"
+msgstr ""
+"Вы можете выбрать две единицы усовершенствованного оборудования в качестве награды. Каждый предмет можно забрать только один раз:\n"
+" • Система отвода пороховых газов\n"
+" • Комплекс стабилизационного оборудования\n"
+" • Экспериментальная система заряжания\n"
+" • Износостойкие приводы наводки\n"
+" • Юстированная оптика\n"
+" • Усовершенствованная компоновка\n"
+" • Улучшенный компрессор\n"
+" • Повышенная снарядостойкость\n"
+" • Усовершенствованная бортовая передача"
+
+msgid "yearlyRewardsTooltip/additional/third_1/header"
+msgstr "Усовершенствованное оборудование"
+
+msgid "yearlyRewardsTooltip/additional/third_2/body"
+msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
+
+msgid "yearlyRewardsTooltip/additional/third_2/header"
+msgstr "Стиль «Небесный скакун»"
+
+msgid "yearlyRewardsTooltip/additional/third_3/body"
+msgstr ""
+"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
+"\n"
+"3 – Железный пегас\n"
+"6 – Бронзовый пегас\n"
+"9 – Серебряный пегас\n"
+"12 – Золотой пегас\n"
+"15 – Чемпион года Пегаса\n"
+"18 – Легенда года Пегаса\n"
+"\n"
+"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
+
+msgid "yearlyRewardsTooltip/additional/third_3/header"
+msgstr "Медаль «Серебряный пегас»"
+
+msgid "yearlyRewardsTooltip/main/fifth/body"
+msgstr "Наградной камуфляж за сбор 15 знамён Пегаса."
+
+msgid "yearlyRewardsTooltip/main/fifth/header"
+msgstr "Камуфляж «Чемпион»"
+
+msgid "yearlyRewardsTooltip/main/first/body"
+msgstr "Наградной камуфляж за сбор 3 знамён Пегаса."
+
+msgid "yearlyRewardsTooltip/main/first/header"
+msgstr "Камуфляж «Железо»"
+
+msgid "yearlyRewardsTooltip/main/fourth/body"
+msgstr "Наградной камуфляж за сбор 12 знамён Пегаса."
+
+msgid "yearlyRewardsTooltip/main/fourth/header"
+msgstr "Камуфляж «Золото»"
+
+msgid "yearlyRewardsTooltip/main/second/body"
+msgstr "Наградной камуфляж за сбор 6 знамён Пегаса."
+
+msgid "yearlyRewardsTooltip/main/second/header"
+msgstr "Камуфляж «Бронза»"
+
+msgid "yearlyRewardsTooltip/main/sixth/body"
+msgstr "Наградной камуфляж за сбор 18 знамён Пегаса."
+
+msgid "yearlyRewardsTooltip/main/sixth/header"
+msgstr "Камуфляж «Легенда»"
+
+msgid "yearlyRewardsTooltip/main/third/body"
+msgstr "Наградной камуфляж за сбор 9 знамён Пегаса."
+
+msgid "yearlyRewardsTooltip/main/third/header"
+msgstr "Камуфляж «Серебро»"
+
+msgid "yearlyStatistics/battles"
+msgstr "Бои (один./взводн.)"
+
+msgid "yearlyStatistics/dash"
+msgstr "—"
+
+msgid "yearlyStatistics/generationOfStatistics"
+msgstr "Расчёт сезонной статистики..."
+
+msgid "yearlyStatistics/rankStatus"
+msgstr "Нет ранга"
+
+msgid "yearlyStatistics/rating"
+msgstr "Очки рейтинга"
+
+msgid "yearlyStatistics/seasonName/0"
+msgstr "Сезон I. Лазурный пегас"
+
+msgid "yearlyStatistics/seasonName/1"
+msgstr "Сезон II. Алый пегас"
+
+msgid "yearlyStatistics/seasonName/2"
+msgstr "Сезон III. Нефритовый пегас"
+
+msgid "yearlyStatistics/seasonStatus/0"
+msgstr "%(start)s–%(end)s"
+
+msgid "yearlyStatistics/seasonStatus/1"
+msgstr "Зима 2024"
+
+msgid "yearlyStatistics/seasonStatus/2"
+msgstr "Весна 2024"
+
+msgid "yearlyStatistics/statisticsAvailability"
+msgstr ""
+"Статистика будет доступна\n"
+"после окончания сезона"
+
+msgid "yearlyStatistics/superPlatoonBattles"
+msgstr "Бои (супервзвод)"
+
+msgid "yearlyStatistics/wins"
+msgstr "Процент побед"

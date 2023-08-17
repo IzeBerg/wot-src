@@ -2,7 +2,7 @@ from __future__ import absolute_import, division
 import math
 from itertools import chain
 import BigWorld, WWISE, typing
-from account_helpers.AccountSettings import ACTIVE_TEST_PARTICIPATION_CONFIRMED, AccountSettings, KNOWN_SELECTOR_BATTLES, LAST_SHOP_ACTION_COUNTER_MODIFICATION, NEW_LOBBY_TAB_COUNTER, NEW_SHOP_TABS, OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES, QUESTS, QUEST_DELTAS, QUEST_DELTAS_COMPLETION, RECRUIT_NOTIFICATIONS
+from account_helpers.AccountSettings import ACTIVE_TEST_PARTICIPATION_CONFIRMED, AccountSettings, KNOWN_SELECTOR_BATTLES, LAST_SHOP_ACTION_COUNTER_MODIFICATION, NEW_LOBBY_TAB_COUNTER, NEW_SHOP_TABS, OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES, QUESTS, QUEST_DELTAS, QUEST_DELTAS_COMPLETION, RECRUIT_NOTIFICATIONS, SHOWN_WOT_PLUS_INTRO
 from builtins import filter, object, str
 from past.utils import old_div
 import constants, weakref, wg_async as future_async
@@ -42,10 +42,7 @@ from gui.game_control.wallet import WalletController
 from gui.gold_fish import isGoldFishActionActive, isTimeToShowGoldFishPromo
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.impl.lobby.collection.collection import CollectionWindow
-from gui.impl.lobby.comp7.meta_view.meta_root_view import MetaRootViewWindow
-from gui.impl.lobby.comp7.views.intro_screen import IntroScreenWindow
-from gui.impl.lobby.comp7.views.no_vehicles_screen import NoVehiclesScreenWindow
+from gui.impl.lobby.comp7.no_vehicles_screen import NoVehiclesScreenWindow
 from gui.limited_ui.lui_rules_storage import LuiRules
 from gui.platform.base.statuses.constants import StatusTypes
 from gui.platform.wgnp.demo_account.controller import NICKNAME_CONTEXT
@@ -56,10 +53,10 @@ from gui.prb_control.entities.listener import IGlobalListener
 from gui.prb_control.settings import PRE_QUEUE_RESTRICTION, REQUEST_TYPE
 from gui.server_events import recruit_helper, settings as quest_settings
 from gui.server_events.events_helpers import isDailyQuest
-from gui.shared import event_dispatcher as shared_events, events
+from gui.shared import event_dispatcher as shared_events, events, g_eventBus
 from gui.clans.clan_cache import g_clanCache
 from gui.shared.event_bus import EVENT_BUS_SCOPE
-from gui.shared.event_dispatcher import hideWebBrowserOverlay, showActiveTestConfirmDialog, showModeSelectorWindow, showShop, showStorage, showSubscriptionsPage
+from gui.shared.event_dispatcher import hideWebBrowserOverlay, showActiveTestConfirmDialog, showModeSelectorWindow, showShop, showStorage, showSubscriptionsPage, showWotPlusIntroView
 from gui.shared.events import FullscreenModeSelectorEvent, PlatoonDropdownEvent
 from gui.shared.formatters import text_styles
 from gui.shared.formatters.currency import getBWFormatter
@@ -368,6 +365,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         if navigationPossible:
             hideWebBrowserOverlay()
             self.__hideLobbySubViews()
+            g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.MENU_CLICK, ctx={'alias': alias}), EVENT_BUS_SCOPE.LOBBY)
             self.__triggerViewLoad(alias)
         else:
             self.as_doDeselectHeaderButtonS(alias)
@@ -390,9 +388,17 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         shared_events.showExchangeXPWindow()
 
     def showWotPlusView(self):
+        serverSettings = self.lobbyContext.getServerSettings()
         wotPlusState = self._wotPlusCtrl.getState()
-        self._wotPlusUILogger.logClickEvent(wotPlusState)
-        if self._wotPlusCtrl.isEnabled():
+        wotPlusEnabled = self._wotPlusCtrl.isEnabled()
+        shouldShowNewAttendanceReward = wotPlusEnabled and serverSettings.isDailyAttendancesEnabled() and not AccountSettings.getSettings(SHOWN_WOT_PLUS_INTRO)
+        self._wotPlusUILogger.logClickEvent(wotPlusState, shouldShowNewAttendanceReward)
+        if wotPlusEnabled:
+            if shouldShowNewAttendanceReward:
+                showWotPlusIntroView()
+                return
+            shared_events.closeViewsWithFlags([R.views.lobby.player_subscriptions.PlayerSubscriptions()], [
+             ViewFlags.LOBBY_TOP_SUB_VIEW])
             views = self.gui.windowsManager.findViews(lambda view: view.layoutID == R.views.lobby.player_subscriptions.PlayerSubscriptions())
             if not views:
                 self.showDashboard()
@@ -411,6 +417,9 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         if 'isEnabled' in data:
             self.updateAccountInfo()
             self._populateButtons()
+
+    def _onWotPlusIntroShown(self):
+        self.__updateWotPlusAttrs()
 
     def _onServerSettingsChange(self, diff):
         if constants.RENEWABLE_SUBSCRIPTION_CONFIG in diff:
@@ -529,9 +538,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     def _canShowWotPlus(self):
         isWotPlusEnabled = self._wotPlusCtrl.isWotPlusEnabled()
-        isWotPlusNSEnabled = self.lobbyContext.getServerSettings().isWotPlusNewSubscriptionEnabled()
-        hasWotPlusActive = self._wotPlusCtrl.isEnabled()
-        return isWotPlusEnabled and (hasWotPlusActive or isWotPlusNSEnabled)
+        return isWotPlusEnabled
 
     def _getPremiumLabelText(self, premiumState):
         isWotPlusEnabled = self._wotPlusCtrl.isWotPlusEnabled()
@@ -587,12 +594,15 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__funRandomCtrl.subscription.addSubModesWatcher(self._updatePrebattleControls, True)
         self.__comp7Controller.onBanUpdated += self.__updateComp7
         self.__comp7Controller.onOfflineStatusUpdated += self.__updateComp7
+        self.__comp7Controller.onQualificationStateUpdated += self.__updateComp7
         self.__achievements20Controller.onUpdate += self.__onProfileVisited
         g_playerEvents.onEnqueued += self._updatePrebattleControls
         g_playerEvents.onDequeued += self._updatePrebattleControls
         g_playerEvents.onArenaCreated += self._updatePrebattleControls
+        g_playerEvents.onKickedFromArena += self._updatePrebattleControls
         self.techTreeEventsListener.onSettingsChanged += self._updateHangarMenuData
         self._wotPlusCtrl.onDataChanged += self._onWotPlusDataChanged
+        self._wotPlusCtrl.onIntroShown += self._onWotPlusIntroShown
         self.lobbyContext.getServerSettings().onServerSettingsChange += self._onServerSettingsChange
         self.addListener(events.FightButtonEvent.FIGHT_BUTTON_UPDATE, self.__handleFightButtonUpdated, scope=EVENT_BUS_SCOPE.LOBBY)
         self.addListener(events.CoolDownEvent.PREBATTLE, self.__handleSetPrebattleCoolDown, scope=EVENT_BUS_SCOPE.LOBBY)
@@ -685,12 +695,14 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__mapboxCtrl.onPrimeTimeStatusUpdated -= self.__updateMapbox
         self.__comp7Controller.onBanUpdated -= self.__updateComp7
         self.__comp7Controller.onOfflineStatusUpdated -= self.__updateComp7
+        self.__comp7Controller.onQualificationStateUpdated -= self.__updateComp7
         self.__achievements20Controller.onUpdate -= self.__onProfileVisited
         self.clanNotificationCtrl.onClanNotificationUpdated -= self.__updateStrongholdCounter
         self.__funRandomCtrl.subscription.removeSubModesWatcher(self._updatePrebattleControls, True)
         g_playerEvents.onEnqueued -= self._updatePrebattleControls
         g_playerEvents.onDequeued -= self._updatePrebattleControls
         g_playerEvents.onArenaCreated -= self._updatePrebattleControls
+        g_playerEvents.onKickedFromArena -= self._updatePrebattleControls
         self.app.containerManager.onViewAddedToContainer -= self.__onViewAddedToContainer
         if constants.IS_SHOW_SERVER_STATS:
             self.serverStats.onStatsReceived -= self.__onStatsReceived
@@ -698,6 +710,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.settingsCore.onSettingsChanged -= self.__onSettingsChanged
         self.techTreeEventsListener.onSettingsChanged -= self._updateHangarMenuData
         self._wotPlusCtrl.onDataChanged -= self._onWotPlusDataChanged
+        self._wotPlusCtrl.onIntroShown -= self._onWotPlusIntroShown
         self.lobbyContext.getServerSettings().onServerSettingsChange -= self._onServerSettingsChange
         self.removeListener(events.TutorialEvent.OVERRIDE_HANGAR_MENU_BUTTONS, self.__onOverrideHangarMenuButtons, scope=EVENT_BUS_SCOPE.LOBBY)
         self.removeListener(events.TutorialEvent.OVERRIDE_HEADER_MENU_BUTTONS, self.__onOverrideHeaderMenuButtons, scope=EVENT_BUS_SCOPE.LOBBY)
@@ -773,7 +786,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     @staticmethod
     def __hideLobbySubViews():
-        for window in (MetaRootViewWindow, NoVehiclesScreenWindow, IntroScreenWindow, CollectionWindow):
+        for window in (NoVehiclesScreenWindow,):
             instances = window.getInstances()
             if instances:
                 first(instances).destroy()
@@ -943,6 +956,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.as_setWotPlusDataS({'wotPlusIcon': icon, 
            'label': label, 
            'state': state, 
+           'showAsNew': self._wotPlusCtrl.isEnabled() and self.lobbyContext.getServerSettings().isDailyAttendancesEnabled() and not AccountSettings.getSettings(SHOWN_WOT_PLUS_INTRO), 
            'tooltip': TOOLTIPS_CONSTANTS.WOT_PLUS, 
            'tooltipType': TOOLTIP_TYPES.WULF})
 
@@ -1176,8 +1190,11 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
                         tooltip = PLATOON.HEADERBUTTON_TOOLTIPS_SQUAD
                 else:
                     tooltip = PLATOON.HEADERBUTTON_TOOLTIPS_SQUAD
-                    if isComp7 and canDoMsg == PRE_QUEUE_RESTRICTION.BAN_IS_SET:
-                        tooltip = MENU.HEADERBUTTONS_FIGHTBTN_TOOLTIP_COMP7BANISSET
+                    if isComp7:
+                        if canDoMsg == PRE_QUEUE_RESTRICTION.BAN_IS_SET:
+                            tooltip = MENU.HEADERBUTTONS_FIGHTBTN_TOOLTIP_COMP7BANISSET
+                        if not self.__comp7Controller.isQualificationSquadAllowed():
+                            tooltip = PLATOON.HEADERBUTTON_TOOLTIPS_COMP7QUALIFICATIONSQUAD
                 hasEventSquadCap = bool(BONUS_CAPS.checkAny(constants.ARENA_BONUS_TYPE.EVENT_BATTLES, BONUS_CAPS.SQUADS))
                 isEventSquadEnable = isEvent and hasEventSquadCap
                 hasInfoPopover = self.platoonCtrl.hasWelcomeWindow() or self.platoonCtrl.canSelectSquadSize() or self.prbDispatcher.getEntity().getPermissions().hasSquadArrow()
@@ -1806,3 +1823,7 @@ class _BoosterInfoPresenter(object):
 
     def __hasActiveClanReserves(self):
         return len(self.__getActiveClanReserves()) > 0
+
+
+def toggleMenuVisibility(state):
+    g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': state}), scope=EVENT_BUS_SCOPE.LOBBY)

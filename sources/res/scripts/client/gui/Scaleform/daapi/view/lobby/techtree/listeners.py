@@ -226,10 +226,12 @@ class _PrbGlobalListener(_Listener, IGlobalListener):
 
     def startListen(self, page):
         super(_PrbGlobalListener, self).startListen(page)
+        g_playerEvents.onDisconnected += self.__onDisconnected
         self.startGlobalListening()
 
     def stopListen(self):
         super(_PrbGlobalListener, self).stopListen()
+        g_playerEvents.onDisconnected -= self.__onDisconnected
         self.stopGlobalListening()
 
     def onPrbEntitySwitched(self):
@@ -245,6 +247,9 @@ class _PrbGlobalListener(_Listener, IGlobalListener):
     def onUnitPlayerStateChanged(self, pInfo):
         if pInfo.isCurrentPlayer():
             self._page.invalidatePrbState()
+
+    def __onDisconnected(self):
+        self._page.clearSelectedNation()
 
 
 class TTListenerDecorator(_Listener):

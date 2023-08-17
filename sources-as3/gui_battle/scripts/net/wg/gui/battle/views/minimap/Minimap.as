@@ -91,6 +91,11 @@ package net.wg.gui.battle.views.minimap
          this.minimapHint.gotoAndStop(ANIM_FADE_IN);
       }
       
+      override public function as_clearScenarioEvent(param1:String) : void
+      {
+         this._scenarioLayer.clearScenarioEvent(param1);
+      }
+      
       override public function as_disableHintPanel() : void
       {
          this._bIsHintPanelEnabled = false;
@@ -119,30 +124,21 @@ package net.wg.gui.battle.views.minimap
          this.background.source = param1;
       }
       
+      override public function as_setScenarioEvent(param1:String, param2:String, param3:String) : void
+      {
+         if(this._scenarioLayer == null)
+         {
+            this.createScenarioLayer();
+         }
+         this._scenarioLayer.setScenarioEvent(param1,param2,param3);
+      }
+      
       override public function as_setScenarioEventVisible(param1:String, param2:Boolean) : void
       {
          if(this._scenarioLayer != null)
          {
             this._scenarioLayer.setScenarioEventVisible(param1,param2);
          }
-      }
-      
-      override public function as_setScenarioEvent(param1:String, param2:String) : void
-      {
-         if(this._scenarioLayer == null)
-         {
-            this._scenarioLayer = App.utils.classFactory.getComponent(Linkages.MINIMAP_SCENARIO_LAYOUT,ScenarioLayer);
-            addChildAt(this._scenarioLayer,getChildIndex(this.background) + 1);
-            this._scenarioLayer.x = this.background.x;
-            this._scenarioLayer.y = this.background.y;
-            this._scenarioLayer.updateSize(this.background.width,this.background.height);
-         }
-         this._scenarioLayer.setScenarioEvent(param1,param2);
-      }
-      
-      override public function as_clearScenarioEvent(param1:String) : void
-      {
-         this._scenarioLayer.clearScenarioEvent(param1);
       }
       
       override public function as_setSize(param1:int) : void
@@ -276,6 +272,15 @@ package net.wg.gui.battle.views.minimap
          this.minimapHint.dispose();
          this.minimapHint = null;
          super.onDispose();
+      }
+      
+      private function createScenarioLayer() : void
+      {
+         this._scenarioLayer = App.utils.classFactory.getComponent(Linkages.MINIMAP_SCENARIO_LAYOUT,ScenarioLayer);
+         addChildAt(this._scenarioLayer,getChildIndex(this.background) + 1);
+         this._scenarioLayer.x = this.background.x;
+         this._scenarioLayer.y = this.background.y;
+         this._scenarioLayer.updateSize(this.background.width,this.background.height);
       }
       
       private function updateContent() : void

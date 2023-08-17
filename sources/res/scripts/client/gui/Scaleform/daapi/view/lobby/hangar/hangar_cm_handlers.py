@@ -13,7 +13,7 @@ from gui.impl.lobby.buy_vehicle_view import VehicleBuyActionTypes
 from gui.prb_control import prbDispatcherProperty
 from gui.shared import event_dispatcher as shared_events
 from gui.shared import events, EVENT_BUS_SCOPE
-from gui.shared.event_dispatcher import showShop, showVehicleRentalPage, showTelecomRentalPage
+from gui.shared.event_dispatcher import showShop, showTelecomRentalPage
 from gui.shared.gui_items.items_actions import factory as ItemsActionsFactory
 from gui.shared.gui_items.processors.tankman import TankmanUnload
 from gui.shared.gui_items.processors.vehicle import VehicleFavoriteProcessor
@@ -64,7 +64,6 @@ class VEHICLE(object):
     BLUEPRINT = 'blueprint'
     NATION_CHANGE = 'nationChange'
     GO_TO_COLLECTION = 'goToCollection'
-    WOT_PLUS_RENT = 'wotPlusRent'
     TELECOM_RENT = 'telecomRent'
 
 
@@ -183,7 +182,6 @@ class VehicleContextMenuHandler(SimpleVehicleCMHandler):
            VEHICLE.COMPARE: 'compareVehicle', 
            VEHICLE.NATION_CHANGE: 'changeVehicleNation', 
            VEHICLE.GO_TO_COLLECTION: 'goToCollection', 
-           VEHICLE.WOT_PLUS_RENT: 'showWotPlusRent', 
            VEHICLE.TELECOM_RENT: 'showTelecomRent'})
 
     @prbDispatcherProperty
@@ -231,9 +229,6 @@ class VehicleContextMenuHandler(SimpleVehicleCMHandler):
         vehicle = self.itemsCache.items.getVehicle(self.vehInvID)
         shared_events.showCollectibleVehicles(vehicle.nationID)
 
-    def showWotPlusRent(self):
-        showVehicleRentalPage()
-
     def showTelecomRent(self):
         showTelecomRentalPage()
 
@@ -253,58 +248,59 @@ class VehicleContextMenuHandler(SimpleVehicleCMHandler):
         vehicle = self.itemsCache.items.getVehicle(self.getVehInvID())
         vehicleWasInBattle = False
         accDossier = self.itemsCache.items.getAccountDossier(None)
-        if vehicle is None or vehicle.isContextMenuHidden:
+        if vehicle is None:
             return options
-        isEventVehicle = vehicle.isOnlyForEventBattles
-        if accDossier:
-            wasInBattleSet = set(accDossier.getTotalStats().getVehicles().keys())
-            wasInBattleSet.update(accDossier.getGlobalMapStats().getVehicles().keys())
-            if vehicle.intCD in wasInBattleSet:
-                vehicleWasInBattle = True
-        if vehicle is not None:
-            if vehicle.canTradeOff:
-                options.append(self._makeItem(VEHICLE.EXCHANGE, MENU.contextmenu(VEHICLE.EXCHANGE), {'enabled': vehicle.isReadyToTradeOff, 
-                   'textColor': CM_BUY_COLOR}))
-            options.extend([
-             self._makeItem(VEHICLE.INFO, MENU.contextmenu(VEHICLE.INFO)),
-             self._makeItem(VEHICLE.STATS, MENU.contextmenu(VEHICLE.STATS), {'enabled': vehicleWasInBattle})])
-            self._manageVehCompareOptions(options, vehicle)
-            if self.prbDispatcher is not None:
-                isNavigationEnabled = not self.prbDispatcher.getFunctionalState().isNavigationDisabled()
-            else:
-                isNavigationEnabled = True
-            if not vehicle.isOnlyForEpicBattles:
-                options.append(self._makeItem(VEHICLE.RESEARCH, MENU.contextmenu(VEHICLE.RESEARCH), {'enabled': isNavigationEnabled}))
-            if vehicle.isPostProgressionExists:
-                options.append(self._makeItem(VEHICLE.POST_PROGRESSION, MENU.contextmenu(VEHICLE.POST_PROGRESSION), {'enabled': isNavigationEnabled}))
-            if vehicle.isCollectible:
-                options.append(self._makeItem(VEHICLE.GO_TO_COLLECTION, MENU.contextmenu(VEHICLE.GO_TO_COLLECTION), {'enabled': self._lobbyContext.getServerSettings().isCollectorVehicleEnabled()}))
-            if vehicle.hasNationGroup:
-                isNew = not AccountSettings.getSettings(NATION_CHANGE_VIEWED)
-                options.append(self._makeItem(VEHICLE.NATION_CHANGE, MENU.CONTEXTMENU_NATIONCHANGE, {'enabled': vehicle.isNationChangeAvailable, 'isNew': isNew}))
-            if vehicle.isRented:
-                canSell = vehicle.canSell and vehicle.rentalIsOver
-                if vehicle.isWotPlus and not self._lobbyContext.getServerSettings().isWoTPlusExclusiveVehicleEnabled():
-                    canSell = False
-                if not vehicle.isPremiumIGR and not vehicle.isWotPlus:
-                    items = self.itemsCache.items
-                    enabled = vehicle.mayObtainWithMoneyExchange(items.stats.money, items.shop.exchangeRate)
-                    label = MENU.CONTEXTMENU_RESTORE if vehicle.isRestoreAvailable() else MENU.CONTEXTMENU_BUY
-                    options.append(self._makeItem(VEHICLE.BUY, label, {'enabled': enabled}))
-                if vehicle.isTelecomRent:
-                    canSell = False
-                    serverSettings = self._lobbyContext.getServerSettings()
-                    isRentalEnabled = serverSettings.isTelecomRentalsEnabled()
-                    isActive = BigWorld.player().telecomRentals.isActive()
-                    options.append(self._makeItem(VEHICLE.TELECOM_RENT, MENU.contextmenu(VEHICLE.WOT_PLUS_RENT), {'enabled': isRentalEnabled and isActive}))
-                options.append(self._makeItem(VEHICLE.SELL, MENU.contextmenu(VEHICLE.REMOVE), {'enabled': canSell}))
-            else:
-                options.append(self._makeItem(VEHICLE.SELL, MENU.contextmenu(VEHICLE.SELL), {'enabled': vehicle.canSell and not isEventVehicle}))
-            if vehicle.isFavorite:
-                options.append(self._makeItem(VEHICLE.UNCHECK, MENU.contextmenu(VEHICLE.UNCHECK)))
-            else:
-                options.append(self._makeItem(VEHICLE.CHECK, MENU.contextmenu(VEHICLE.CHECK), {'enabled': not isEventVehicle}))
-        return options
+        else:
+            isEventVehicle = vehicle.isOnlyForEventBattles
+            if accDossier:
+                wasInBattleSet = set(accDossier.getTotalStats().getVehicles().keys())
+                wasInBattleSet.update(accDossier.getGlobalMapStats().getVehicles().keys())
+                if vehicle.intCD in wasInBattleSet:
+                    vehicleWasInBattle = True
+            if vehicle is not None:
+                if vehicle.canTradeOff:
+                    options.append(self._makeItem(VEHICLE.EXCHANGE, MENU.contextmenu(VEHICLE.EXCHANGE), {'enabled': vehicle.isReadyToTradeOff, 
+                       'textColor': CM_BUY_COLOR}))
+                options.extend([
+                 self._makeItem(VEHICLE.INFO, MENU.contextmenu(VEHICLE.INFO)),
+                 self._makeItem(VEHICLE.STATS, MENU.contextmenu(VEHICLE.STATS), {'enabled': vehicleWasInBattle})])
+                self._manageVehCompareOptions(options, vehicle)
+                if self.prbDispatcher is not None:
+                    isNavigationEnabled = not self.prbDispatcher.getFunctionalState().isNavigationDisabled()
+                else:
+                    isNavigationEnabled = True
+                if not vehicle.isOnlyForEpicBattles:
+                    options.append(self._makeItem(VEHICLE.RESEARCH, MENU.contextmenu(VEHICLE.RESEARCH), {'enabled': isNavigationEnabled}))
+                if vehicle.isPostProgressionExists:
+                    options.append(self._makeItem(VEHICLE.POST_PROGRESSION, MENU.contextmenu(VEHICLE.POST_PROGRESSION), {'enabled': isNavigationEnabled}))
+                if vehicle.isCollectible:
+                    options.append(self._makeItem(VEHICLE.GO_TO_COLLECTION, MENU.contextmenu(VEHICLE.GO_TO_COLLECTION), {'enabled': self._lobbyContext.getServerSettings().isCollectorVehicleEnabled()}))
+                if vehicle.hasNationGroup:
+                    isNew = not AccountSettings.getSettings(NATION_CHANGE_VIEWED)
+                    options.append(self._makeItem(VEHICLE.NATION_CHANGE, MENU.CONTEXTMENU_NATIONCHANGE, {'enabled': vehicle.isNationChangeAvailable, 'isNew': isNew}))
+                if vehicle.isRented:
+                    canSell = vehicle.canSell and vehicle.rentalIsOver
+                    if vehicle.isWotPlus and not self._lobbyContext.getServerSettings().isWoTPlusExclusiveVehicleEnabled():
+                        canSell = False
+                    if not vehicle.isPremiumIGR and not vehicle.isWotPlus:
+                        items = self.itemsCache.items
+                        enabled = vehicle.mayObtainWithMoneyExchange(items.stats.money, items.shop.exchangeRate)
+                        label = MENU.CONTEXTMENU_RESTORE if vehicle.isRestoreAvailable() else MENU.CONTEXTMENU_BUY
+                        options.append(self._makeItem(VEHICLE.BUY, label, {'enabled': enabled}))
+                    if vehicle.isTelecomRent:
+                        canSell = False
+                        serverSettings = self._lobbyContext.getServerSettings()
+                        isRentalEnabled = serverSettings.isTelecomRentalsEnabled()
+                        isActive = BigWorld.player().telecomRentals.isActive()
+                        options.append(self._makeItem(VEHICLE.TELECOM_RENT, MENU.contextmenu(VEHICLE.TELECOM_RENT), {'enabled': isRentalEnabled and isActive}))
+                    options.append(self._makeItem(VEHICLE.SELL, MENU.contextmenu(VEHICLE.REMOVE), {'enabled': canSell}))
+                else:
+                    options.append(self._makeItem(VEHICLE.SELL, MENU.contextmenu(VEHICLE.SELL), {'enabled': vehicle.canSell and not isEventVehicle}))
+                if vehicle.isFavorite:
+                    options.append(self._makeItem(VEHICLE.UNCHECK, MENU.contextmenu(VEHICLE.UNCHECK)))
+                else:
+                    options.append(self._makeItem(VEHICLE.CHECK, MENU.contextmenu(VEHICLE.CHECK), {'enabled': not isEventVehicle}))
+            return options
 
     def _manageVehCompareOptions(self, options, vehicle):
         if self._comparisonBasket.isEnabled():

@@ -1,5 +1,6 @@
-import logging, typing
+import logging
 from collections import namedtuple
+import typing
 from gui.shared.event_bus import SharedEvent
 from shared_utils import CONST_CONTAINER
 if typing.TYPE_CHECKING:
@@ -219,11 +220,12 @@ class ShowDialogEvent(SharedEvent):
     SHOW_CONFIRM_C11N_BUY_DIALOG = 'showConfirmC11nBuyDialog'
     SHOW_CONFIRM_C11N_SELL_DIALOG = 'showConfirmC11nSellDialog'
 
-    def __init__(self, meta, handler):
+    def __init__(self, meta, handler, parent=None):
         super(ShowDialogEvent, self).__init__(ViewEventType.LOAD_VIEW)
         self.alias = meta.getEventType()
         self.meta = meta
         self.handler = handler
+        self.parent = parent
 
 
 class LoginEvent(SharedEvent):
@@ -359,6 +361,7 @@ class FightButtonEvent(LobbySimpleEvent):
 
 class LobbyHeaderMenuEvent(LobbySimpleEvent):
     TOGGLE_VISIBILITY = 'toggleVisibilityHeaderMenu'
+    MENU_CLICK = 'headerMenuClick'
 
 
 class SkillDropEvent(SharedEvent):
@@ -812,10 +815,17 @@ class RoleSkillEvent(HasCtxEvent):
 
 class CollectionsEvent(HasCtxEvent):
     NEW_ITEM_SHOWN = 'newItemShown'
-    BATTLE_PASS_ENTRY_POINT_VISITED = 'battlePassEntryPointVisited'
+    TAB_COUNTER_UPDATED = 'tabCounterUpdated'
+    COLLECTION_VIEW_CLOSED = 'collectionViewClosed'
+    COLLECTION_INTRO_CLOSED = 'collectionIntroClosed'
 
 
 class Achievements20Event(HasCtxEvent):
     LAYOUT_CHANGED = 'layoutChanged'
     CLOSE_SUMMARY_VIEW = 'closeSummaryView'
     CLOSE_EDIT_VIEW = 'closeEditView'
+
+
+class PrebattleEvent(HasCtxEvent):
+    SWITCHED = 'PrebattleEvent/SWITCHED'
+    NOT_SWITCHED = 'PrebattleEvent/NOT_SWITCHED'

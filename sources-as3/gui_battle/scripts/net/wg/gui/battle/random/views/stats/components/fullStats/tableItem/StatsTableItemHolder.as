@@ -105,7 +105,7 @@ package net.wg.gui.battle.random.views.stats.components.fullStats.tableItem
          var _loc2_:StatsTableItem = this.getStatsItem;
          _loc2_.setIsMute(UserTags.isMuted(_loc1_));
          _loc2_.setDisableCommunication(UserTags.isIgnored(_loc1_));
-         if(_isCurrPlayer)
+         if(isCurrPlayer)
          {
             this._squadItem.setState(DynamicSquadState.NONE);
          }

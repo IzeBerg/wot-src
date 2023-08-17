@@ -1,6 +1,7 @@
 package net.wg.gui.lobby.settings
 {
    import flash.display.DisplayObject;
+   import flash.display.DisplayObjectContainer;
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.geom.Point;
@@ -54,6 +55,7 @@ package net.wg.gui.lobby.settings
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.IndexEvent;
    import scaleform.clik.interfaces.IDataProvider;
+   import scaleform.clik.interfaces.IUIComponent;
    import scaleform.clik.utils.Padding;
    
    public class SettingsWindow extends SettingsWindowMeta implements ISettingsWindowMeta
@@ -70,6 +72,8 @@ package net.wg.gui.lobby.settings
       private static const FIELD_DATA:String = "data";
       
       private static const FIELD_DESCR:String = "descr";
+      
+      private static const DISABLED_OVERLAY_LINKAGE:String = "DisabledTabsOverlayUI";
       
       private static const FIELD_CURRENT:String = "current";
       
@@ -129,6 +133,8 @@ package net.wg.gui.lobby.settings
       private var _tabToSelect:int = -1;
       
       private var _graphicsPresetToSelect:int = -1;
+      
+      private var _disabledTabsOverlay:DisabledTabsOverlay = null;
       
       private var _settingsConfigHelper:SettingsConfigHelper;
       
@@ -270,6 +276,11 @@ package net.wg.gui.lobby.settings
          this._pythonSettingsData.dispose();
          this._pythonSettingsData = null;
          this._feedbackDataProvider = null;
+         if(this._disabledTabsOverlay != null)
+         {
+            this._disabledTabsOverlay.dispose();
+            this._disabledTabsOverlay = null;
+         }
          SettingsConfigHelper.instance.dispose();
          super.onDispose();
       }
@@ -730,6 +741,25 @@ package net.wg.gui.lobby.settings
          }
       }
       
+      override protected function setDisabledTabsOverlay(param1:Vector.<int>, param2:String) : void
+      {
+         if(this._disabledTabsOverlay == null)
+         {
+            this._disabledTabsOverlay = App.utils.classFactory.getComponent(DISABLED_OVERLAY_LINKAGE,DisabledTabsOverlay);
+            addChild(this._disabledTabsOverlay);
+            this._disabledTabsOverlay.setupTabs(this.tabs,param1,param2);
+            this.updateCurrentDisabledView(this.view.currentView);
+         }
+      }
+      
+      private function updateCurrentDisabledView(param1:IUIComponent) : void
+      {
+         if(this._disabledTabsOverlay != null)
+         {
+            this._disabledTabsOverlay.updateDisabledView(param1 as DisplayObjectContainer,_currentTab);
+         }
+      }
+      
       private function controlDefValEqNewVal(param1:Object, param2:Object) : Boolean
       {
          var _loc3_:Array = null;
@@ -1152,6 +1182,7 @@ package net.wg.gui.lobby.settings
             _loc2_.onViewChanged();
          }
          onTabSelectedS(this._settingsConfigHelper.tabsDataProvider[_currentTab].label);
+         this.updateCurrentDisabledView(this.view.currentView);
       }
       
       private function onViewNeedUpdateHandler(param1:ViewStackEvent) : void

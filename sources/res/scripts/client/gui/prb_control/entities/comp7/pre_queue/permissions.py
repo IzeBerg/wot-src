@@ -10,4 +10,6 @@ class Comp7Permissions(PreQueuePermissions):
             return False
         if not self.__comp7Controller.hasPlayableVehicle():
             return False
+        if not self.__comp7Controller.isQualificationSquadAllowed():
+            return False
         return super(Comp7Permissions, self).canCreateSquad()

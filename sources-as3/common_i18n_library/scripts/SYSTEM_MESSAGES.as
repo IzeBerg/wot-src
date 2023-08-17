@@ -1897,6 +1897,8 @@ package
       
       public static const UNIT_ERRORS_NO_ARENA_VEHICLES:String = "#system_messages:unit/errors/NO_ARENA_VEHICLES";
       
+      public static const UNIT_ERRORS_COMP7_QUALIFICATION:String = "#system_messages:unit/errors/COMP7_QUALIFICATION";
+      
       public static const IGR_CUSTOMIZATION_BEGIN:String = "#system_messages:igr/customization/begin";
       
       public static const IGR_CUSTOMIZATION_END:String = "#system_messages:igr/customization/end";

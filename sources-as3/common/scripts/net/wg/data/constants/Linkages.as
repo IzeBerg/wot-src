@@ -463,6 +463,8 @@ package net.wg.data.constants
       
       public static const PROFILE_FORMATIONS:String = "ProfileFormations_UI";
       
+      public static const PROFILE_COLLECTIONS_PAGE:String = "ProfileCollectionsPage_UI";
+      
       public static const PROFILE_HOF:String = "ProfileHofPage_UI";
       
       public static const TECHNICS_DASH_LINE_TEXT_IR:String = "TechnicsDashLineTextItemIRenderer_UI";
@@ -766,8 +768,6 @@ package net.wg.data.constants
       public static const SPEEDOMETER_BG_UI:String = "SpeedometerBgUI";
       
       public static const ARTY_SHOT_INDICATOR_RENDERER:String = "ArtyShotIndicatorUI";
-      
-      public static const OVERHEAT_WIDGET:String = "OverheatWidgetUI";
       
       public static const EQUIPMENT_OVERLAY:String = "ListOverlayUI";
       

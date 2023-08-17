@@ -1269,6 +1269,9 @@ msgstr "Высадить в Казарму"
 msgid "contextMenu/tankmanUnloadAll"
 msgstr "Высадить весь экипаж"
 
+msgid "contextMenu/telecomRent"
+msgstr "Показать арендную технику"
+
 msgid "contextMenu/unequip"
 msgstr "Выгрузить"
 
@@ -1328,9 +1331,6 @@ msgstr "Профиль клана"
 
 msgid "contextMenu/withdrawInvitationToSquad"
 msgstr "Отозвать приглашение во взвод"
-
-msgid "contextMenu/wotPlusRent"
-msgstr "Показать арендную технику"
 
 msgid "copy"
 msgstr "© 2009–2023 Wargaming.net. Все права защищены."
@@ -1703,6 +1703,9 @@ msgstr "Не хватает бойца"
 
 msgid "currentVehicleStatus/willBeUnlockedInBattle"
 msgstr "Разблокируется в бою"
+
+msgid "currentVehicleStatus/wot_plus_exclusive_vehicle_disabled"
+msgstr "Машина подписки WoT Plus недоступна"
 
 msgid "customization/title"
 msgstr "Внешний вид"
@@ -3159,6 +3162,14 @@ msgstr "Режим недоступен: ошибка базы данных."
 msgid "headerButtons/fightBtn/tooltip/comp7Offline/header"
 msgstr "Невозможно выйти в бой"
 
+msgid "headerButtons/fightBtn/tooltip/comp7RatingCalculation/body"
+msgstr ""
+"Расчёт рейтинга по итогам квалификации может занять до пяти минут. После "
+"этого вам будет присвоен ранг, и вы сможете продолжить игру в Натиске."
+
+msgid "headerButtons/fightBtn/tooltip/comp7RatingCalculation/header"
+msgstr "Выход в бой недоступен"
+
 msgid "headerButtons/fightBtn/tooltip/crewNotFull/body"
 msgstr "Не на месте: <b>%(crewList)s</b>."
 
@@ -3324,6 +3335,12 @@ msgstr "Отремонтируйте машину."
 
 msgid "headerButtons/fightBtn/tooltip/vehicleIsBroken/header"
 msgstr "Машина повреждена"
+
+msgid "headerButtons/fightBtn/tooltip/wotPlusExclusiveUnavailable/body"
+msgstr "Выберите другую машину."
+
+msgid "headerButtons/fightBtn/tooltip/wotPlusExclusiveUnavailable/header"
+msgstr "Эксклюзивная техника недоступна"
 
 msgid "headerButtons/hangar"
 msgstr "Ангар"
@@ -4358,6 +4375,9 @@ msgstr "Работает как однозарядное на технике:"
 msgid "moduleInfo/compatible/vehicles"
 msgstr "Устанавливается на технику:"
 
+msgid "moduleInfo/dualAccuracyGunLabel"
+msgstr "Система двойного сведения"
+
 msgid "moduleInfo/dualGunLabel"
 msgstr "Спаренная орудийная установка"
 
@@ -4420,6 +4440,18 @@ msgstr "Урон одной авиабомбы"
 msgid "moduleInfo/params/bombsNumberRange"
 msgstr "Количество бомб за вылет"
 
+msgid "moduleInfo/params/burstCount"
+msgstr "Количество кассет в магазине"
+
+msgid "moduleInfo/params/burstFireRate"
+msgstr "Кассета"
+
+msgid "moduleInfo/params/burstSize"
+msgstr "Количество снарядов в кассете"
+
+msgid "moduleInfo/params/burstTimeInterval"
+msgstr "Время смены снаряда в кассете"
+
 msgid "moduleInfo/params/caliber"
 msgstr "Калибр"
 
@@ -4450,14 +4482,14 @@ msgstr "к основной специальности и навыкам эки�
 msgid "moduleInfo/params/damage"
 msgstr "Урон"
 
-msgid "moduleInfo/params/damagePerSecond"
-msgstr "Урон в секунду"
-
 msgid "moduleInfo/params/dispertionRadius"
 msgstr "Разброс на 100 м"
 
 msgid "moduleInfo/params/drivingControl"
 msgstr "К управляемости на скорости"
+
+msgid "moduleInfo/params/dualAccuracyCoolingDelay"
+msgstr "Время остывания орудия после выстрела"
 
 msgid "moduleInfo/params/duration"
 msgstr "Продолжительность"
@@ -4479,9 +4511,6 @@ msgstr "Время полёта"
 
 msgid "moduleInfo/params/forwardMaxSpeed"
 msgstr "Максимальная скорость"
-
-msgid "moduleInfo/params/guaranteedDamage/footnote"
-msgstr " Снаряд наносит небольшую часть урона при непробитии."
 
 msgid "moduleInfo/params/hullAndChassisWeight"
 msgstr "Масса"
@@ -4513,17 +4542,23 @@ msgstr "Максимальная нагрузка"
 msgid "moduleInfo/params/maxShotDistance"
 msgstr "Дальность стрельбы"
 
+msgid "moduleInfo/params/maxShotDistance/footnote"
+msgstr "* максимальная дальность полета снарядов для данного орудия"
+
 msgid "moduleInfo/params/maxSteeringLockAngle"
 msgstr "Максимальный угол поворота колёс"
 
 msgid "moduleInfo/params/noPiercingDistance/footnote"
-msgstr " Для данного типа снарядов не зависит от дистанции."
+msgstr "* для данного типа снарядов не зависит от расстояния"
+
+msgid "moduleInfo/params/noPiercingDistance/footnote/maxDistance"
+msgstr ", максимальная дальность полёта - 400 м"
 
 msgid "moduleInfo/params/piercingDistance"
 msgstr "%(dist)s м"
 
 msgid "moduleInfo/params/piercingDistance/footnote"
-msgstr " Для этих снарядов зависит от дистанции (%(minDist)s–%(maxDist)s м)."
+msgstr "* зависит от расстояния: %(minDist)s – %(maxDist)s метров"
 
 msgid "moduleInfo/params/piercingDistanceHeader"
 msgstr "Средняя бронепробиваемость (мм) — Расстояние"
@@ -6192,6 +6227,9 @@ msgstr "Не подходит для взвода"
 msgid "tankCarousel/vehicleStates/willBeUnlockedInBattle"
 msgstr "?empty?"
 
+msgid "tankCarousel/vehicleStates/wot_plus_exclusive_vehicle_disabled"
+msgstr "Приостановлено"
+
 msgid "tankCarousel/vehicleStates/xpMultReceived"
 msgstr "Сбить x%(factor)s"
 
@@ -6226,7 +6264,7 @@ msgid "tank_params/burstFireRate"
 msgstr "Кассета"
 
 msgid "tank_params/burstSec"
-msgstr "(между/кол-во)"
+msgstr "(c/шт./шт.)"
 
 msgid "tank_params/chargeTime"
 msgstr "Время залпа"
@@ -6257,6 +6295,12 @@ msgstr "(шт)"
 
 msgid "tank_params/damage"
 msgstr "Урон базовым снарядом"
+
+msgid "tank_params/dualAccuracyCoolingDelay"
+msgstr "Время остывания орудия"
+
+msgid "tank_params/dualAccuracyCoolingDelay/extendedTitle"
+msgstr "Время остывания орудия после выстрела"
 
 msgid "tank_params/enginePower"
 msgstr "Мощность двигателя"
@@ -6515,9 +6559,6 @@ msgstr "Масса / предельная масса машины"
 
 msgid "tank_params/vpm"
 msgstr "(ед./мин)"
-
-msgid "tank_params/vps"
-msgstr "(ед./с)"
 
 msgid "tank_params/wheeledSpeedModeSpeed"
 msgstr "Макс. скорость / задний ход (скоростной)"
@@ -7108,7 +7149,7 @@ msgid "vehicleInfo/params/avgPiercingPower"
 msgstr "Средняя бронепробиваемость"
 
 msgid "vehicleInfo/params/burstFireRate"
-msgstr "Кассета (между/кол-во)"
+msgstr "Кассета (с/шт./шт.)"
 
 msgid "vehicleInfo/params/chargeTime"
 msgstr "Время залпа (с)"
@@ -7127,6 +7168,9 @@ msgstr "Обзор (м)"
 
 msgid "vehicleInfo/params/clipFireRate"
 msgstr "Перезарядка (полная/между/кол-во)"
+
+msgid "vehicleInfo/params/dualAccuracyCoolingDelay"
+msgstr "Время остывания орудия после выстрела (с)"
 
 msgid "vehicleInfo/params/enginePower"
 msgstr "Мощность двигателя (л.с.)"
@@ -7189,7 +7233,7 @@ msgid "vehicleInfo/params/shotSpeed"
 msgstr "Скорость полёта"
 
 msgid "vehicleInfo/params/speedLimits"
-msgstr "Макс. скорость / задний ход (км/ч)"
+msgstr "Макс. скорость/задний ход (км/ч)"
 
 msgid "vehicleInfo/params/stunMaxDuration"
 msgstr "Максимальное время оглушения (c)"
@@ -7207,7 +7251,7 @@ msgid "vehicleInfo/params/switchTime"
 msgstr "Время перехода в осадный / походный режим (с)"
 
 msgid "vehicleInfo/params/turboshaftBurstFireRate"
-msgstr "Кассета (турбо) (между/кол-во)"
+msgstr "Кассета (турбо) (с/шт./шт.)"
 
 msgid "vehicleInfo/params/turboshaftEnginePower"
 msgstr "Мощность двигателя (турбо) (л.с.)"

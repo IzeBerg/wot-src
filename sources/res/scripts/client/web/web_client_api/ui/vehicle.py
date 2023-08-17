@@ -52,7 +52,7 @@ DEFAULT_STYLED_VEHICLES = (
  19969,
  3937)
 _CUSTOM_CREW_KEYS = {
- 'subscription', 'telecom_rentals'}
+ 'telecom_rentals'}
 
 class _ItemPackValidationError(SoftException):
     pass

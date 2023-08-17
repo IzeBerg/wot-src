@@ -538,6 +538,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__updateBattleRoyaleComponents()
         self._updateCnSubscriptionMode()
         self.__hangarComponentsCtrl.updateComponentsVisibility()
+        self.__updateComp7ModifiersWidget()
         Waiting.hide('updateVehicle')
 
     def __onCurrentVehicleChanged(self):
@@ -556,7 +557,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     def __onSpaceRefresh(self):
         self.__isSpaceReadyForC11n = False
         self.__updateState()
-        self.__updateComp7ModifiersWidget()
 
     def __onSpaceCreate(self):
         self.__isSpaceReadyForC11n = True
@@ -588,7 +588,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
             customizationTooltip = makeTooltip(_ms(backport.text(R.strings.tooltips.hangar.tuning.disabled.header())), _ms(backport.text(R.strings.tooltips.hangar.tuning.disabled.body())))
         changeNationVisibility = g_currentVehicle.isPresent() and g_currentVehicle.item.hasNationGroup
         isNationChangeAvailable = g_currentVehicle.isPresent() and g_currentVehicle.item.isNationChangeAvailable
-        changeNationTooltip = getChangeNationTooltip()
+        changeNationTooltip = getChangeNationTooltip(g_currentVehicle.item)
         changeNationIsNew = not AccountSettings.getSettings(NATION_CHANGE_VIEWED)
         isMaintenanceEnabled = state.isMaintenanceEnabled()
         isEquipmentEnabled = g_currentVehicle.isPresent() and not g_currentVehicle.isEquipmentLocked()
@@ -619,6 +619,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__switchCarousels()
         self.__updateBattleRoyaleComponents()
         self.__hangarComponentsCtrl.updateComponentsVisibility()
+        self.__updateComp7ModifiersWidget()
 
     def __onFunRandomUpdate(self, *_):
         self.__onEntityChanged()
@@ -649,6 +650,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
             self.__updateDogTagsState()
         if RENEWABLE_SUBSCRIPTION_CONFIG in diff:
             self.__updateWotPlusState()
+            self.__updateState()
 
     def __onSettingsChanged(self, diff):
         if SETTINGS_SECTIONS.UI_STORAGE in diff:
