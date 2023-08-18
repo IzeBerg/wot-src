@@ -2,7 +2,7 @@ from functools import partial
 import typing
 from battle_pass_common import BattlePassRewardReason, get3DStyleProgressToken
 from frameworks.state_machine import ConditionTransition, State, StateEvent, StateFlags
-from gui.battle_pass.battle_pass_helpers import getStyleInfoForChapter, showVideo, getStyleForChapter
+from gui.battle_pass.battle_pass_helpers import getStyleInfoForChapter, showBPGamefaceVideo, getStyleForChapter
 from gui.battle_pass.state_machine import lockNotificationManager
 from gui.battle_pass.state_machine.state_machine_helpers import isProgressionComplete, packToken, processRewardsToChoose
 from gui.impl.gen import R
@@ -146,12 +146,8 @@ class VideoState(State):
         machine = self.getMachine()
         if machine is not None:
             chapter = machine.getChosenStyleChapter()
-            intCD, level = getStyleInfoForChapter(chapter)
-            videoSource = R.videos.battle_pass.dyn(('c_{}_{}').format(intCD, level))
-            if not videoSource.exists():
-                machine.post(StateEvent())
-                return
-            showVideo(videoSource, isAutoClose=True, onVideoClosed=partial(machine.post, StateEvent()))
+            _, level = getStyleInfoForChapter(chapter)
+            showBPGamefaceVideo(chapter, level, onVideoClosed=partial(machine.post, StateEvent()))
         return
 
 

@@ -83,9 +83,11 @@ class NotificationsModel(object):
 
     def setup(self):
         self.__collection.default()
+        self.__collection.onNotificationRemoved += self.__onNotificationRemoved
         self.__listeners.start(self)
 
     def cleanUp(self):
+        self.__collection.onNotificationRemoved -= self.__onNotificationRemoved
         self.__collection.clear()
         self.__listeners.stop()
         self.__counter.resetUnreadCount()
@@ -94,3 +96,6 @@ class NotificationsModel(object):
         self.onNotificationReceived.clear()
         self.onNotifiedMessagesCountChanged.clear()
         return
+
+    def __onNotificationRemoved(self, typeID, entityID, groupID, countOnce):
+        self.onNotificationRemoved(typeID, entityID, groupID, countOnce)

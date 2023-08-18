@@ -83,7 +83,7 @@ class _ArenaTypeSkeleton(object):
     squadTeamNumbers = []
     boundingBox = ((0, 0), (0, 0))
     minimap = ''
-    minimapLayers = []
+    minimapLayers = {}
     overviewmap = ''
     winPointsSettings = None
     battleCountdownTimerSound = ''
@@ -302,6 +302,9 @@ class _ArenaGuiTypeVisitor(IArenaVisitor):
 
     def isWinback(self):
         return self._guiType == _GUI_TYPE.WINBACK
+
+    def isVersusAI(self):
+        return self._guiType == _GUI_TYPE.VERSUS_AI
 
     def isMapsTraining(self):
         return self._guiType == _GUI_TYPE.MAPS_TRAINING

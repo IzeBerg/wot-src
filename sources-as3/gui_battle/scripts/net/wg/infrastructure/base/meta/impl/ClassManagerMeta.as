@@ -210,6 +210,15 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.components.PlayersPanelSwitchBase;
    import net.wg.gui.battle.components.StatusNotificationsPanel;
    import net.wg.gui.battle.components.TimersPanel;
+   import net.wg.gui.battle.components.animatedBattleHint.AnimatedBattleHint;
+   import net.wg.gui.battle.components.animatedBattleHint.constants.HINT_LABELS;
+   import net.wg.gui.battle.components.animatedBattleHint.containers.HintAnimationBlind;
+   import net.wg.gui.battle.components.animatedBattleHint.containers.HintAnimationContainer;
+   import net.wg.gui.battle.components.animatedBattleHint.containers.HintBackground;
+   import net.wg.gui.battle.components.animatedBattleHint.containers.HintBlindContainer;
+   import net.wg.gui.battle.components.animatedBattleHint.containers.HintContainer;
+   import net.wg.gui.battle.components.animatedBattleHint.containers.HintInfoContainer;
+   import net.wg.gui.battle.components.animatedBattleHint.containers.HintPenetrationAnimation;
    import net.wg.gui.battle.components.buttons.BattleButton;
    import net.wg.gui.battle.components.buttons.BattleStateButton;
    import net.wg.gui.battle.components.buttons.BattleToolTipButton;
@@ -829,6 +838,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.staticMarkers.flag.constant.FlagMarkerState;
    import net.wg.gui.battle.views.staticMarkers.interestPoint.InterestPointMarker;
    import net.wg.gui.battle.views.staticMarkers.interestPoint.MarkerPoiProgressCircle;
+   import net.wg.gui.battle.views.staticMarkers.location.FlagLocationActionMarker;
    import net.wg.gui.battle.views.staticMarkers.location.LocationActionMarker;
    import net.wg.gui.battle.views.staticMarkers.location.LocationMarker;
    import net.wg.gui.battle.views.staticMarkers.repairPoint.RepairPointIcon;
@@ -935,15 +945,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.bootcamp.BCPrebattleTimer;
    import net.wg.gui.bootcamp.BCSecondaryHint;
    import net.wg.gui.bootcamp.BCVehicleMarkersList;
-   import net.wg.gui.bootcamp.battleTopHint.BCBattleTopHint;
-   import net.wg.gui.bootcamp.battleTopHint.constants.HINT_LABELS;
-   import net.wg.gui.bootcamp.battleTopHint.containers.HintAnimationBlind;
-   import net.wg.gui.bootcamp.battleTopHint.containers.HintAnimationContainer;
-   import net.wg.gui.bootcamp.battleTopHint.containers.HintBackground;
-   import net.wg.gui.bootcamp.battleTopHint.containers.HintBlindContainer;
-   import net.wg.gui.bootcamp.battleTopHint.containers.HintContainer;
-   import net.wg.gui.bootcamp.battleTopHint.containers.HintInfoContainer;
-   import net.wg.gui.bootcamp.battleTopHint.containers.HintPenetrationAnimation;
    import net.wg.gui.bootcamp.prebattleHints.BCPrebattleHints;
    import net.wg.gui.bootcamp.prebattleHints.controls.CrosshairContainer;
    import net.wg.gui.components.controls.ReadOnlyScrollingList;
@@ -1383,6 +1384,24 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_COMPONENTS_STATUSNOTIFICATIONSPANEL:Class = StatusNotificationsPanel;
       
       public static const NET_WG_GUI_BATTLE_COMPONENTS_TIMERSPANEL:Class = TimersPanel;
+      
+      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_ANIMATEDBATTLEHINT:Class = AnimatedBattleHint;
+      
+      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONSTANTS_HINT_LABELS:Class = HINT_LABELS;
+      
+      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTANIMATIONBLIND:Class = HintAnimationBlind;
+      
+      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTANIMATIONCONTAINER:Class = HintAnimationContainer;
+      
+      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTBACKGROUND:Class = HintBackground;
+      
+      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTBLINDCONTAINER:Class = HintBlindContainer;
+      
+      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTCONTAINER:Class = HintContainer;
+      
+      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTINFOCONTAINER:Class = HintInfoContainer;
+      
+      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTPENETRATIONANIMATION:Class = HintPenetrationAnimation;
       
       public static const NET_WG_GUI_BATTLE_COMPONENTS_BUTTONS_BATTLEBUTTON:Class = BattleButton;
       
@@ -2622,6 +2641,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_INTERESTPOINT_MARKERPOIPROGRESSCIRCLE:Class = MarkerPoiProgressCircle;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_LOCATION_FLAGLOCATIONACTIONMARKER:Class = FlagLocationActionMarker;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_LOCATION_LOCATIONACTIONMARKER:Class = LocationActionMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_LOCATION_LOCATIONMARKER:Class = LocationMarker;
@@ -2833,24 +2854,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BOOTCAMP_BCSECONDARYHINT:Class = BCSecondaryHint;
       
       public static const NET_WG_GUI_BOOTCAMP_BCVEHICLEMARKERSLIST:Class = BCVehicleMarkersList;
-      
-      public static const NET_WG_GUI_BOOTCAMP_BATTLETOPHINT_BCBATTLETOPHINT:Class = BCBattleTopHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_BATTLETOPHINT_CONSTANTS_HINT_LABELS:Class = HINT_LABELS;
-      
-      public static const NET_WG_GUI_BOOTCAMP_BATTLETOPHINT_CONTAINERS_HINTANIMATIONBLIND:Class = HintAnimationBlind;
-      
-      public static const NET_WG_GUI_BOOTCAMP_BATTLETOPHINT_CONTAINERS_HINTANIMATIONCONTAINER:Class = HintAnimationContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_BATTLETOPHINT_CONTAINERS_HINTBACKGROUND:Class = HintBackground;
-      
-      public static const NET_WG_GUI_BOOTCAMP_BATTLETOPHINT_CONTAINERS_HINTBLINDCONTAINER:Class = HintBlindContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_BATTLETOPHINT_CONTAINERS_HINTCONTAINER:Class = HintContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_BATTLETOPHINT_CONTAINERS_HINTINFOCONTAINER:Class = HintInfoContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_BATTLETOPHINT_CONTAINERS_HINTPENETRATIONANIMATION:Class = HintPenetrationAnimation;
       
       public static const NET_WG_GUI_BOOTCAMP_PREBATTLEHINTS_BCPREBATTLEHINTS:Class = BCPrebattleHints;
       

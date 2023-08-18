@@ -205,6 +205,8 @@ package
       
       public static const PROXYPANEL_LABEL:String = "#battle_royale:proxyPanel/label";
       
+      public static const PROXYPANEL_BUTTON:String = "#battle_royale:proxyPanel/button";
+      
       public static const BATTLERESULT_TITLE_VICTORY:String = "#battle_royale:battleResult/title/victory";
       
       public static const BATTLERESULT_TITLE_VEHICLEDESTROYED:String = "#battle_royale:battleResult/title/vehicleDestroyed";

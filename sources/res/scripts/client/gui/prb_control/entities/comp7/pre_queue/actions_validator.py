@@ -27,6 +27,10 @@ class Comp7PlayerValidator(BaseActionsValidator):
             return ValidationResult(False, PRE_QUEUE_RESTRICTION.MODE_OFFLINE)
         if self.__comp7Ctrl.isBanned:
             return ValidationResult(False, PRE_QUEUE_RESTRICTION.BAN_IS_SET)
+        if self.__comp7Ctrl.isQualificationResultsProcessing():
+            return ValidationResult(False, PRE_QUEUE_RESTRICTION.QUALIFICATION_RESULTS_PROCESSING)
+        if self.__comp7Ctrl.isQualificationCalculationRating():
+            return ValidationResult(False, PRE_QUEUE_RESTRICTION.QUALIFICATION_CALCULATION_RATING)
         return super(Comp7PlayerValidator, self)._validate()
 
 

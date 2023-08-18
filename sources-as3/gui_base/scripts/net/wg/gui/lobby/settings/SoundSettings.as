@@ -138,7 +138,6 @@ package net.wg.gui.lobby.settings
       
       override protected function setData(param1:SettingsDataVo) : void
       {
-         var _loc3_:Boolean = false;
          var _loc9_:String = null;
          var _loc11_:String = null;
          var _loc12_:String = null;
@@ -148,7 +147,7 @@ package net.wg.gui.lobby.settings
          this.controlsUnsubscribe();
          super.setData(param1);
          var _loc2_:SettingsControlProp = SettingsControlProp(param1.getByKey(SettingsConfigHelper.VOICE_CHAT_SUPPORTED));
-         _loc3_ = _loc2_.current;
+         var _loc3_:Boolean = _loc2_.current;
          var _loc4_:Array = [{"label":SETTINGS.SOUNDS_TABCOMMON}];
          var _loc5_:Boolean = App.voiceChatMgr.getYY();
          if(_loc3_ || _loc5_)

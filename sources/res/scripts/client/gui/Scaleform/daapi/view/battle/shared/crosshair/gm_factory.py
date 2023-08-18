@@ -1,4 +1,5 @@
 from typing import Type
+import BattleReplay
 from AvatarInputHandler.gun_marker_ctrl import useDefaultGunMarkers
 from aih_constants import GUN_MARKER_TYPE
 from gui.Scaleform.daapi.view.battle.shared.crosshair.gm_components import DefaultGunMarkerComponent
@@ -15,6 +16,8 @@ _GUN_MARKER_LINKAGES = {_CONSTANTS.ARCADE_GUN_MARKER_NAME: _CONSTANTS.GUN_MARKER
    _CONSTANTS.SPG_GUN_MARKER_NAME: _CONSTANTS.GUN_MARKER_SPG_LINKAGE, 
    _CONSTANTS.DUAL_GUN_ARCADE_MARKER_NAME: _CONSTANTS.DUAL_GUN_ARCADE_MARKER_LINKAGE, 
    _CONSTANTS.DUAL_GUN_SNIPER_MARKER_NAME: _CONSTANTS.DUAL_GUN_SNIPER_MARKER_LINKAGE, 
+   _CONSTANTS.ARCADE_DUAL_ACC_GUN_MARKER_NAME: _CONSTANTS.GUN_MARKER_LINKAGE, 
+   _CONSTANTS.SNIPER_DUAL_ACC_GUN_MARKER_NAME: _CONSTANTS.GUN_MARKER_LINKAGE, 
    _CONSTANTS.DEBUG_ARCADE_GUN_MARKER_NAME: _CONSTANTS.GUN_MARKER_DEBUG_LINKAGE, 
    _CONSTANTS.DEBUG_SNIPER_GUN_MARKER_NAME: _CONSTANTS.GUN_MARKER_DEBUG_LINKAGE, 
    _CONSTANTS.DEBUG_SPG_GUN_MARKER_NAME: _CONSTANTS.GUN_MARKER_SPG_DEBUG_LINKAGE, 
@@ -78,6 +81,8 @@ class _GunMarkersFactory(object):
         else:
             if markerType is GUN_MARKER_TYPE.CLIENT:
                 return self._markersInfo.clientMarkerDataProvider
+            if markerType is GUN_MARKER_TYPE.DUAL_ACC:
+                return self._markersInfo.dualAccMarkerDataProvider
             return
 
     def _getSPGDataProvider(self, markerType):
@@ -93,12 +98,21 @@ class _ControlMarkersFactory(_GunMarkersFactory):
 
     def create(self):
         if self._vehicleInfo.isSPG():
-            return self._createSPGMarkers()
-        if self._vehicleInfo.isDualGunVehicle():
-            return self._createDualGunMarkers()
-        if self._vehicleInfo.isFlamethrowerVehicle():
-            return self._createFlamethrowerMarkers()
-        return self._createDefaultMarkers()
+            markers = self._createSPGMarkers()
+        elif self._vehicleInfo.isDualGunVehicle():
+            markers = self._createDualGunMarkers()
+        elif self._hasDualAccuracyMarkers():
+            markers = self._createDualAccMarkers()
+        elif self._vehicleInfo.isFlamethrowerVehicle():
+            markers = self._createFlamethrowerMarkers()
+        else:
+            markers = self._createDefaultMarkers()
+        return markers
+
+    def _hasDualAccuracyMarkers(self):
+        isClientMarkers = self._getMarkerType() == GUN_MARKER_TYPE.CLIENT
+        isClientMarkers = isClientMarkers and not BattleReplay.g_replayCtrl.isServerAim
+        return isClientMarkers and self._vehicleInfo.isPlayerVehicle() and self._vehicleInfo.hasDualAccuracy()
 
     def _getMarkerType(self):
         if self._markersInfo.isServerMarkerActivated:
@@ -110,8 +124,13 @@ class _ControlMarkersFactory(_GunMarkersFactory):
     def _createDualGunMarkers(self):
         markerType = self._getMarkerType()
         return (
-         self._createArcadeMarker(markerType, name=_CONSTANTS.DUAL_GUN_ARCADE_MARKER_NAME),
-         self._createSniperMarker(markerType, name=_CONSTANTS.DUAL_GUN_SNIPER_MARKER_NAME))
+         self._createArcadeMarker(markerType, _CONSTANTS.DUAL_GUN_ARCADE_MARKER_NAME),
+         self._createSniperMarker(markerType, _CONSTANTS.DUAL_GUN_SNIPER_MARKER_NAME))
+
+    def _createDualAccMarkers(self):
+        return self._createDefaultMarkers() + (
+         self._createArcadeMarker(GUN_MARKER_TYPE.DUAL_ACC, _CONSTANTS.ARCADE_DUAL_ACC_GUN_MARKER_NAME),
+         self._createSniperMarker(GUN_MARKER_TYPE.DUAL_ACC, _CONSTANTS.SNIPER_DUAL_ACC_GUN_MARKER_NAME))
 
     def _createFlamethrowerMarkers(self):
         markerType = self._getMarkerType()
@@ -122,14 +141,14 @@ class _ControlMarkersFactory(_GunMarkersFactory):
     def _createDefaultMarkers(self):
         markerType = self._getMarkerType()
         return (
-         self._createArcadeMarker(markerType, name=_CONSTANTS.ARCADE_GUN_MARKER_NAME),
-         self._createSniperMarker(markerType, name=_CONSTANTS.SNIPER_GUN_MARKER_NAME))
+         self._createArcadeMarker(markerType, _CONSTANTS.ARCADE_GUN_MARKER_NAME),
+         self._createSniperMarker(markerType, _CONSTANTS.SNIPER_GUN_MARKER_NAME))
 
     def _createSPGMarkers(self):
         markerType = self._getMarkerType()
         return (
-         self._createArcadeMarker(markerType, name=_CONSTANTS.ARCADE_GUN_MARKER_NAME),
-         self._createSPGMarker(markerType, name=_CONSTANTS.SPG_GUN_MARKER_NAME))
+         self._createArcadeMarker(markerType, _CONSTANTS.ARCADE_GUN_MARKER_NAME),
+         self._createSPGMarker(markerType, _CONSTANTS.SPG_GUN_MARKER_NAME))
 
     def _createArcadeMarker(self, markerType, name):
         dataProvider = self._getMarkerDataProvider(markerType)
@@ -145,6 +164,11 @@ class _ControlMarkersFactory(_GunMarkersFactory):
 
 
 class _DevControlMarkersFactory(_ControlMarkersFactory):
+
+    def _hasDualAccuracyMarkers(self):
+        if self._useDebugMarkers():
+            return self._vehicleInfo.isPlayerVehicle() and self._vehicleInfo.hasDualAccuracy()
+        return super(_DevControlMarkersFactory, self)._hasDualAccuracyMarkers()
 
     def _useDebugMarkers(self):
         return self._markersInfo.isClientMarkerActivated and self._markersInfo.isServerMarkerActivated
@@ -180,10 +204,10 @@ class _DevControlMarkersFactory(_ControlMarkersFactory):
 
     def _createSPGDebugMarkers(self):
         return (
-         self._createArcadeMarker(GUN_MARKER_TYPE.CLIENT, name=_CONSTANTS.ARCADE_GUN_MARKER_NAME),
-         self._createArcadeMarker(GUN_MARKER_TYPE.SERVER, name=_CONSTANTS.DEBUG_ARCADE_GUN_MARKER_NAME),
-         self._createSPGMarker(GUN_MARKER_TYPE.CLIENT, name=_CONSTANTS.SPG_GUN_MARKER_NAME),
-         self._createSPGMarker(GUN_MARKER_TYPE.SERVER, name=_CONSTANTS.DEBUG_SPG_GUN_MARKER_NAME))
+         self._createArcadeMarker(GUN_MARKER_TYPE.CLIENT, _CONSTANTS.ARCADE_GUN_MARKER_NAME),
+         self._createArcadeMarker(GUN_MARKER_TYPE.SERVER, _CONSTANTS.DEBUG_ARCADE_GUN_MARKER_NAME),
+         self._createSPGMarker(GUN_MARKER_TYPE.CLIENT, _CONSTANTS.SPG_GUN_MARKER_NAME),
+         self._createSPGMarker(GUN_MARKER_TYPE.SERVER, _CONSTANTS.DEBUG_SPG_GUN_MARKER_NAME))
 
 
 class _EquipmentMarkersFactory(_GunMarkersFactory):

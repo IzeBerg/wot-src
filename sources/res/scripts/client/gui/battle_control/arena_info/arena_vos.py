@@ -86,11 +86,12 @@ class Comp7Keys(Enum):
     ROLE_SKILL_LEVEL = 'vehicleRoleSkillLevel'
     RANK = 'rank'
     VOIP_CONNECTED = 'voipConnected'
+    IS_QUAL_ACTIVE = 'isQualActive'
 
     @staticmethod
     def getKeys(static=True):
         if static:
-            return [(Comp7Keys.ROLE_SKILL_LEVEL, _DEFAULT_ROLE_SKILL_LEVEL), (Comp7Keys.RANK, (_DEFAULT_PLAYER_RANK, _DEFAULT_PLAYER_DIVISION)), (Comp7Keys.VOIP_CONNECTED, False)]
+            return [(Comp7Keys.ROLE_SKILL_LEVEL, _DEFAULT_ROLE_SKILL_LEVEL), (Comp7Keys.RANK, (_DEFAULT_PLAYER_RANK, _DEFAULT_PLAYER_DIVISION)), (Comp7Keys.VOIP_CONNECTED, False), (Comp7Keys.IS_QUAL_ACTIVE, False)]
         return []
 
     @staticmethod
@@ -213,8 +214,8 @@ class PlayerInfoVO(object):
 class VehicleTypeInfoVO(object):
     __slots__ = ('compactDescr', 'shortName', 'name', 'level', 'iconName', 'iconPath',
                  'isObserver', 'isPremiumIGR', 'isDualGunVehicle', 'isFlamethrowerVehicle',
-                 'guiName', 'shortNameWithPrefix', 'classTag', 'nationID', 'turretYawLimits',
-                 'maxHealth', 'strCompactDescr', 'isOnlyForBattleRoyaleBattles',
+                 'hasDualAccuracy', 'guiName', 'shortNameWithPrefix', 'classTag',
+                 'nationID', 'turretYawLimits', 'maxHealth', 'strCompactDescr', 'isOnlyForBattleRoyaleBattles',
                  'tags', 'chassisType', 'role')
 
     def __init__(self, vehicleType=None, maxHealth=None, **kwargs):
@@ -258,6 +259,7 @@ class VehicleTypeInfoVO(object):
             self.turretYawLimits = vehicle_getter.getYawLimits(vehicleDescr)
             self.isDualGunVehicle = vehicleDescr.isDualgunVehicle
             self.isFlamethrowerVehicle = vehicleDescr.isFlamethrower
+            self.hasDualAccuracy = vehicleDescr.hasDualAccuracy
             self.chassisType = vehicleDescr.chassis.chassisType
             self.shortName = vehicleType.shortUserString
             self.name = Vehicle.getUserName(vehicleType=vehicleType, textPrefix=True)
@@ -283,6 +285,7 @@ class VehicleTypeInfoVO(object):
             self.shortName = vehicleName
             self.isDualGunVehicle = False
             self.isFlamethrowerVehicle = False
+            self.hasDualAccuracy = False
             self.chassisType = 0
             self.name = vehicleName
             self.guiName = vehicleName
@@ -503,6 +506,9 @@ class VehicleArenaInfoVO(object):
     def isPlayer(self):
         return not self.isObserver() and bool(self.player.avatarSessionID)
 
+    def isPlayerVehicle(self):
+        return self.vehicleID == avatar_getter.getPlayerVehicleID()
+
     def isChatCommandsDisabled(self, isAlly):
         arena = avatar_getter.getArena()
         isEvent = arena.guiType == ARENA_GUI_TYPE.EVENT_BATTLES if arena else False
@@ -513,6 +519,9 @@ class VehicleArenaInfoVO(object):
              ARENA_GUI_TYPE.EPIC_BATTLE):
                 return True
         return False
+
+    def hasDualAccuracy(self):
+        return self.vehicleType.hasDualAccuracy
 
     def getTypeInfo(self):
         return (

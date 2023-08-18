@@ -6,7 +6,7 @@ from gui.shared.utils import SelectorBattleTypesUtils as selectorUtils
 from gui.shared.utils.scheduled_notifications import Notifiable, PeriodicNotifier
 from gui.impl.pub import ViewImpl
 from gui.impl.gen import R
-from gui.impl.gen.view_models.views.lobby.comp7.views.banner_model import BannerModel, State
+from gui.impl.gen.view_models.views.lobby.comp7.banner_model import BannerModel, State
 from gui.periodic_battles.models import PeriodType
 from gui.prb_control.entities.comp7 import comp7_prb_helpers
 from helpers import dependency, time_utils
@@ -36,7 +36,7 @@ class Comp7EntryPointView(ViewImpl, Notifiable):
     __comp7Controller = dependency.descriptor(IComp7Controller)
 
     def __init__(self, flags=ViewFlags.VIEW):
-        settings = ViewSettings(R.views.lobby.comp7.views.Banner())
+        settings = ViewSettings(R.views.lobby.comp7.Banner())
         settings.flags = flags
         settings.model = BannerModel()
         super(Comp7EntryPointView, self).__init__(settings)

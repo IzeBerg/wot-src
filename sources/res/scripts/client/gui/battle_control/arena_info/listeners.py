@@ -635,6 +635,8 @@ class ListenersCollection(_Listener):
             result |= self.__positions.addController(controller)
         if scope & _SCOPE.VIEW_POINTS > 0:
             result |= self.__viewPoints.addController(controller)
+        if scope & _SCOPE.OVERRIDE_SETTINGS > 0:
+            result |= True
         if not result:
             controller.stopControl()
         return result

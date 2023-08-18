@@ -399,6 +399,10 @@ package
       
       public static const DENUNCIATION_SUCCESS:String = "#system_messages:denunciation/success";
       
+      public static const DENUNCIATION_HANGARCHATSUCCESS_TITLE:String = "#system_messages:denunciation/hangarChatSuccess/title";
+      
+      public static const DENUNCIATION_HANGARCHATSUCCESS_BODY:String = "#system_messages:denunciation/hangarChatSuccess/body";
+      
       public static const CUSTOMIZATION_UNAVAILABLE:String = "#system_messages:customization/unavailable";
       
       public static const CUSTOMIZATION_PROHIBITED:String = "#system_messages:customization/prohibited";
@@ -1896,6 +1900,8 @@ package
       public static const UNIT_ERRORS_ACCOUNT_BANNED:String = "#system_messages:unit/errors/ACCOUNT_BANNED";
       
       public static const UNIT_ERRORS_NO_ARENA_VEHICLES:String = "#system_messages:unit/errors/NO_ARENA_VEHICLES";
+      
+      public static const UNIT_ERRORS_COMP7_QUALIFICATION:String = "#system_messages:unit/errors/COMP7_QUALIFICATION";
       
       public static const IGR_CUSTOMIZATION_BEGIN:String = "#system_messages:igr/customization/begin";
       

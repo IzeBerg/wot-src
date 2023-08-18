@@ -19,15 +19,15 @@ package net.wg.gui.battle.views.stats.fullStats
       
       protected var activePlayerData:DAAPIVehicleInfoVO = null;
       
-      protected var _isCurrPlayer:Boolean = false;
+      protected var isCurrPlayer:Boolean = false;
       
-      protected var _userProps:StatsUserProps = null;
+      protected var userProps:StatsUserProps = null;
+      
+      protected var isRenderingRequired:Boolean;
       
       private var _isDisposed:Boolean = false;
       
       private var _isRenderingAvailable:Boolean;
-      
-      protected var _isRenderingRequired:Boolean;
       
       public function StatsTableItemHolderBase(param1:StatsTableItemBase)
       {
@@ -35,22 +35,24 @@ package net.wg.gui.battle.views.stats.fullStats
          this.statsItem = param1;
       }
       
-      public function setDAAPIVehicleData(param1:DAAPIVehicleInfoVO) : void
+      public final function dispose() : void
       {
-         this.data = param1;
-         if(this._isRenderingAvailable)
+         if(this._isDisposed && App.instance)
          {
-            this.vehicleDataSync();
+            App.utils.asserter.assert(!this._isDisposed,"StatsItemHolder already disposed!");
          }
-         else
-         {
-            this._isRenderingRequired = true;
-         }
+         this._isDisposed = true;
+         this.onDispose();
       }
       
       public function getVehicleID() : Number
       {
          return this.data.vehicleID;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
       }
       
       public function setActivePlayerData(param1:DAAPIVehicleInfoVO) : void
@@ -62,37 +64,35 @@ package net.wg.gui.battle.views.stats.fullStats
          }
          else
          {
-            this._isRenderingRequired = true;
+            this.isRenderingRequired = true;
          }
       }
       
-      public function get containsData() : Boolean
+      public function setDAAPIVehicleData(param1:DAAPIVehicleInfoVO) : void
       {
-         return this.data != null;
+         this.data = param1;
+         if(this._isRenderingAvailable)
+         {
+            this.vehicleDataSync();
+         }
+         else
+         {
+            this.isRenderingRequired = true;
+         }
       }
       
-      public function get isSelected() : Boolean
+      public function showDogTag(param1:DogTagVO) : void
       {
-         return Boolean(this.data) ? Boolean(PlayerStatus.isSelected(this.data.playerStatus)) : Boolean(false);
+         this.statsItem.setShowDogTag(param1 != null);
       }
       
       public function updateColorBlind() : void
       {
-         if(this.containsData && this._isRenderingAvailable)
+         if(this.containsData)
          {
             this.statsItem.updateColorBlind();
             this.updateVehicleType();
          }
-      }
-      
-      public final function dispose() : void
-      {
-         if(this._isDisposed && App.instance)
-         {
-            App.utils.asserter.assert(!this._isDisposed,"StatsItemHolder already disposed!");
-         }
-         this._isDisposed = true;
-         this.onDispose();
       }
       
       protected function vehicleDataSync() : void
@@ -133,30 +133,25 @@ package net.wg.gui.battle.views.stats.fullStats
       
       protected function applyUserTags() : void
       {
-         this._isCurrPlayer = UserTags.isCurrentPlayer(this.data.userTags);
-         this.statsItem.setIsCurrentPlayer(this._isCurrPlayer);
+         this.isCurrPlayer = UserTags.isCurrentPlayer(this.data.userTags);
+         this.statsItem.setIsCurrentPlayer(this.isCurrPlayer);
       }
       
       protected function updateUserProps() : void
       {
-         if(!this._userProps)
+         if(!this.userProps)
          {
-            this._userProps = new StatsUserProps(this.data.playerName,this.data.playerFakeName,this.data.clanAbbrev,this.data.region,0,this.data.userTags);
+            this.userProps = new StatsUserProps(this.data.playerName,this.data.playerFakeName,this.data.clanAbbrev,this.data.region,0,this.data.userTags);
          }
          else
          {
-            this._userProps.userName = this.data.playerName;
-            this._userProps.fakeName = this.data.playerFakeName;
-            this._userProps.clanAbbrev = this.data.clanAbbrev;
-            this._userProps.region = this.data.region;
-            this._userProps.tags = this.data.userTags;
+            this.userProps.userName = this.data.playerName;
+            this.userProps.fakeName = this.data.playerFakeName;
+            this.userProps.clanAbbrev = this.data.clanAbbrev;
+            this.userProps.region = this.data.region;
+            this.userProps.tags = this.data.userTags;
          }
-         this.statsItem.setPlayerName(this._userProps);
-      }
-      
-      public function showDogTag(param1:DogTagVO) : void
-      {
-         this.statsItem.setShowDogTag(param1 != null);
+         this.statsItem.setPlayerName(this.userProps);
       }
       
       protected function updateVehicleType() : void
@@ -171,33 +166,34 @@ package net.wg.gui.battle.views.stats.fullStats
       protected function onDispose() : void
       {
          this.statsItem.dispose();
-         if(this._userProps)
+         if(this.userProps)
          {
-            this._userProps.dispose();
-            this._userProps = null;
+            this.userProps.dispose();
+            this.userProps = null;
          }
          this.statsItem = null;
+         this.activePlayerData = null;
          this.data = null;
       }
       
-      public function get isRenderingAvailable() : Boolean
+      public function get containsData() : Boolean
       {
-         return this._isRenderingAvailable;
+         return this.data != null;
+      }
+      
+      public function get isSelected() : Boolean
+      {
+         return Boolean(this.data) ? Boolean(PlayerStatus.isSelected(this.data.playerStatus)) : Boolean(false);
       }
       
       public function set isRenderingAvailable(param1:Boolean) : void
       {
          this._isRenderingAvailable = param1;
-         if(param1 && this._isRenderingRequired)
+         if(param1 && this.isRenderingRequired)
          {
-            this._isRenderingRequired = false;
+            this.isRenderingRequired = false;
             this.vehicleDataSync();
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._isDisposed;
       }
    }
 }

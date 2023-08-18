@@ -30,6 +30,7 @@ from account_helpers.trade_in import TradeIn
 from account_helpers.winback import Winback
 from account_helpers.referral_program import ReferralProgram
 from account_shared import NotificationItem, readClientServerVersion
+from gui.prb_control import prbEntityProperty
 from items import tankmen
 from adisp import adisp_process
 from bootcamp.Bootcamp import g_bootcamp
@@ -594,7 +595,10 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         if currentVehInvID > 0:
             AccountSettings.setFavorites(CURRENT_VEHICLE, currentVehInvID)
         events.isPlayerEntityChanging = False
-        events.onAccountShowGUI(ctx)
+        if ctx.get('skipShowGUI', False):
+            events.onAccountShowGUISkipped(ctx)
+        else:
+            events.onAccountShowGUI(ctx)
 
     def receiveQueueInfo(self, queueInfo):
         events.onQueueInfoReceived(queueInfo)
@@ -1004,8 +1008,8 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
     def deactivateClanBoosters(self, callback):
         self._doCmdInt(AccountCommands.CMD_DEACTIVATE_CLAN_BOOSTERS, 0, callback)
 
-    def makeDenunciation(self, violatorID, topicID, violatorKind):
-        self._doCmdInt3(AccountCommands.CMD_MAKE_DENUNCIATION, violatorID, topicID, violatorKind, None)
+    def makeDenunciation(self, violatorID, topicID, violatorKind, arenaUniqueID):
+        self._doCmdInt4(AccountCommands.CMD_MAKE_DENUNCIATION, violatorID, topicID, violatorKind, arenaUniqueID, None)
         return
 
     def banUnbanUser(self, accountDBID, restrType, banPeriod, reason, isBan, callback=None):
@@ -1213,7 +1217,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def _update(self, triggerEvents, diff):
         LOG_DEBUG_DEV('_update', diff if triggerEvents else 'full sync')
-        isFullSync = diff.get('prevRev', None) is None
+        isFullSync = AccountSyncData.isFullSyncDiff(diff)
         if not self.syncData.updatePersistentCache(diff, isFullSync):
             return False
         else:
@@ -1398,6 +1402,10 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
                                  serverSettingsDiff, sectionKey))
 
             return
+
+    @prbEntityProperty
+    def _prbEntity(self):
+        return
 
     def __getRequestID(self):
         if g_accountRepository is None:

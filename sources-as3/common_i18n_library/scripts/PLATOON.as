@@ -45,6 +45,10 @@ package
       
       public static const HEADERBUTTON_TOOLTIPS_COMP7SQUAD_BODY:String = "#platoon:headerButton/tooltips/comp7Squad/body";
       
+      public static const HEADERBUTTON_TOOLTIPS_COMP7QUALIFICATIONSQUAD_HEADER:String = "#platoon:headerButton/tooltips/comp7QualificationSquad/header";
+      
+      public static const HEADERBUTTON_TOOLTIPS_COMP7QUALIFICATIONSQUAD_BODY:String = "#platoon:headerButton/tooltips/comp7QualificationSquad/body";
+      
       public static const HEADERBUTTON_TOOLTIPS_INMAPBOXSQUAD_HEADER:String = "#platoon:headerButton/tooltips/inMapboxSquad/header";
       
       public static const HEADERBUTTON_TOOLTIPS_INMAPBOXSQUAD_BODY:String = "#platoon:headerButton/tooltips/inMapboxSquad/body";
@@ -52,6 +56,10 @@ package
       public static const HEADERBUTTON_TOOLTIPS_RANKEDSQUAD_HEADER:String = "#platoon:headerButton/tooltips/rankedSquad/header";
       
       public static const HEADERBUTTON_TOOLTIPS_RANKEDSQUAD_BODY:String = "#platoon:headerButton/tooltips/rankedSquad/body";
+      
+      public static const HEADERBUTTON_TOOLTIPS_VERSUSAISQUAD_HEADER:String = "#platoon:headerButton/tooltips/versusAISquad/header";
+      
+      public static const HEADERBUTTON_TOOLTIPS_VERSUSAISQUAD_BODY:String = "#platoon:headerButton/tooltips/versusAISquad/body";
       
       public static const BUTTONS_FINDPLAYERS_CAPTION:String = "#platoon:buttons/findPlayers/caption";
       

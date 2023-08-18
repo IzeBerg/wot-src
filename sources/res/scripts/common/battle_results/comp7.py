@@ -17,4 +17,8 @@ BATTLE_RESULTS = [
  (
   'comp7TeamStats', dict, {}, None, 'skip', ENTRY_TYPE.SERVER),
  (
-  'fareTeamPrestigePointsPosition', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF)]
+  'fareTeamPrestigePointsPosition', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'comp7QualActive', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'comp7QualBattleIndex', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF)]

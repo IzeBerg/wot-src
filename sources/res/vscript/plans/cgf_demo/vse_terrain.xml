@@ -9,26 +9,45 @@
 		</aspect>
 		<blocks>
 			<block>
-				<class>ContextGetSelf</class>
-				<id>ContextGetSelf_1</id>
+				<class>TerrainIndexToName</class>
+				<id>TerrainIndexToName_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SetComponentProperty</class>
+				<id>SetComponentProperty_1</id>
 				<params>
 					<param>
-						CGFGameObjectContext
-						<name>Context Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						getSelf
-						<name>Member Name</name>
+						Debug Text.frameText
+						<name>Component Type</name>
 						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
 			</block>
 			<block>
-				<class>StartScript</class>
-				<id>StartScript_1</id>
-				<params/>
+				<class>Sequence</class>
+				<id>Sequence_1</id>
+				<params>
+					<param>
+						2
+						<name>Output Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetComponentProperty</class>
+				<id>GetComponentProperty_1</id>
+				<params>
+					<param>
+						Transform.world
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
 				<slots/>
 			</block>
 			<block>
@@ -42,6 +61,17 @@
 					</slot>
 					<slot>
 						<name>cooldown</name>
+						<const>\1.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>GetTerrainMaterialUnderPoint</class>
+				<id>GetTerrainMaterialUnderPoint_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>dropDistance</name>
 						<const>\1.000000\</const>
 					</slot>
 				</slots>
@@ -70,32 +100,21 @@
 				</slots>
 			</block>
 			<block>
-				<class>FinishScript</class>
-				<id>FinishScript_1</id>
+				<class>GetSpaceId</class>
+				<id>GetSpaceId_1</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>GetTerrainMaterialUnderPoint</class>
-				<id>GetTerrainMaterialUnderPoint_1</id>
+				<class>MatrixPosition</class>
+				<id>MatrixPosition_1</id>
 				<params/>
-				<slots>
-					<slot>
-						<name>dropDistance</name>
-						<const>\1.000000\</const>
-					</slot>
-				</slots>
+				<slots/>
 			</block>
 			<block>
-				<class>SetComponentProperty</class>
-				<id>SetComponentProperty_1</id>
-				<params>
-					<param>
-						Debug Text.frameText
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
+				<class>StartScript</class>
+				<id>StartScript_1</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -124,55 +143,96 @@
 				</slots>
 			</block>
 			<block>
-				<class>FloatToString</class>
-				<id>FloatToString_1</id>
+				<class>FinishScript</class>
+				<id>FinishScript_1</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>GetComponentProperty</class>
-				<id>GetComponentProperty_1</id>
+				<class>ContextGetSelf</class>
+				<id>ContextGetSelf_1</id>
 				<params>
 					<param>
-						Transform.world
-						<name>Component Type</name>
+						CGFGameObjectContext
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						getSelf
+						<name>Member Name</name>
 						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
 			</block>
-			<block>
-				<class>MatrixPosition</class>
-				<id>MatrixPosition_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>Sequence</class>
-				<id>Sequence_1</id>
-				<params>
-					<param>
-						2
-						<name>Output Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>TerrainIndexToName</class>
-				<id>TerrainIndexToName_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GetSpaceId</class>
-				<id>GetSpaceId_1</id>
-				<params/>
-				<slots/>
-			</block>
 		</blocks>
 		<connections>
+			<connection>
+				<from>GetComponentProperties_1</from>
+				<input>in</input>
+				<to>TerrainIndexToName_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetComponentProperties_1</from>
+				<input>index</input>
+				<to>TerrainIndexToName_1</to>
+				<output>materialIndex</output>
+			</connection>
+			<connection>
+				<from>GetTerrainMaterialUnderPoint_1</from>
+				<input>in</input>
+				<to>SetComponentProperty_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>SetComponentProperty_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>Concatenate_1</from>
+				<input>frameText</input>
+				<to>SetComponentProperty_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>FlowGate_1</from>
+				<input>input</input>
+				<to>Sequence_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>TerrainIndexToName_1</from>
+				<input>in</input>
+				<to>GetComponentProperty_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>GetComponentProperty_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetComponentProperty_1</from>
+				<input>in</input>
+				<to>GetTerrainMaterialUnderPoint_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetSpaceId_1</from>
+				<input>spaceID</input>
+				<to>GetTerrainMaterialUnderPoint_1</to>
+				<output>spaceId</output>
+			</connection>
+			<connection>
+				<from>MatrixPosition_1</from>
+				<input>position</input>
+				<to>GetTerrainMaterialUnderPoint_1</to>
+				<output>res</output>
+			</connection>
 			<connection>
 				<from>Sequence_1</from>
 				<input>in</input>
@@ -205,39 +265,9 @@
 			</connection>
 			<connection>
 				<from>GetComponentProperty_1</from>
-				<input>in</input>
-				<to>GetTerrainMaterialUnderPoint_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetSpaceId_1</from>
-				<input>spaceID</input>
-				<to>GetTerrainMaterialUnderPoint_1</to>
-				<output>spaceId</output>
-			</connection>
-			<connection>
-				<from>MatrixPosition_1</from>
-				<input>position</input>
-				<to>GetTerrainMaterialUnderPoint_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>GetTerrainMaterialUnderPoint_1</from>
-				<input>in</input>
-				<to>SetComponentProperty_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>SetComponentProperty_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>Concatenate_1</from>
-				<input>frameText</input>
-				<to>SetComponentProperty_1</to>
-				<output>res</output>
+				<input>a</input>
+				<to>MatrixPosition_1</to>
+				<output>world</output>
 			</connection>
 			<connection>
 				<from>TerrainIndexToName_1</from>
@@ -246,58 +276,16 @@
 				<output>material</output>
 			</connection>
 			<connection>
-				<from>FloatToString_1</from>
+				<from>GetComponentProperties_1</from>
 				<input>i3</input>
 				<to>Concatenate_1</to>
-				<output>res</output>
+				<output>distanceToTerrain</output>
 			</connection>
 			<connection>
 				<from>GetTerrainMaterialUnderPoint_1</from>
 				<input>i5</input>
 				<to>Concatenate_1</to>
 				<output>material</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperties_1</from>
-				<input>a</input>
-				<to>FloatToString_1</to>
-				<output>distanceToTerrain</output>
-			</connection>
-			<connection>
-				<from>TerrainIndexToName_1</from>
-				<input>in</input>
-				<to>GetComponentProperty_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>GetComponentProperty_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperty_1</from>
-				<input>a</input>
-				<to>MatrixPosition_1</to>
-				<output>world</output>
-			</connection>
-			<connection>
-				<from>FlowGate_1</from>
-				<input>input</input>
-				<to>Sequence_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperties_1</from>
-				<input>in</input>
-				<to>TerrainIndexToName_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperties_1</from>
-				<input>index</input>
-				<to>TerrainIndexToName_1</to>
-				<output>materialIndex</output>
 			</connection>
 		</connections>
 		<macros/>

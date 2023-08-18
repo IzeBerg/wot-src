@@ -1,3 +1,6 @@
+import typing
+from copy import copy
+from gui.impl import backport
 from gui.Scaleform.daapi.view.lobby.vehicle_compare import cmp_helpers
 from gui.Scaleform.locale.VEH_COMPARE import VEH_COMPARE
 from gui.game_control.veh_comparison_basket import CONFIGURATION_TYPES
@@ -6,10 +9,11 @@ from gui.shared.gui_items import vehicle_adjusters
 from gui.shared.gui_items.Tankman import CrewTypes
 from gui.shared.gui_items.Vehicle import Vehicle
 from gui.shared.items_parameters import formatters
-from gui.shared.items_parameters.comparator import rateParameterState, PARAM_STATE, VehiclesComparator, getParamExtendedData
-from gui.shared.items_parameters.formatters import FORMAT_SETTINGS
+from gui.shared.items_parameters.comparator import rateParameterState, PARAM_STATE, VehiclesComparator, getParamExtendedData, PARAMS_NORMALIZATION_MAP
+from gui.shared.items_parameters.formatters import FORMAT_SETTINGS, shotDispersionAnglePreprocessor
 from gui.shared.items_parameters.params import VehicleParams
-from gui.shared.items_parameters.params_helper import VehParamsBaseGenerator
+from gui.shared.items_parameters.params_helper import VehParamsBaseGenerator, isValidEmptyValue
+from gui.shared.utils import SHOT_DISPERSION_ANGLE
 from helpers import dependency
 from post_progression_common import VehicleState
 from skeletons.gui.game_control import IVehicleComparisonBasket
@@ -22,6 +26,16 @@ _DELTA_PARAM_COLOR_SCHEME = (text_styles.error, text_styles.main, text_styles.bo
 _NO_COLOR_SCHEMES = (
  _HEADER_PARAM_NO_COLOR_SCHEME, _PARAM_NO_COLOR_SCHEME)
 _COLOR_SCHEMES = (_HEADER_PARAM_COLOR_SCHEME, _PARAM_COLOR_SCHEME)
+
+def _generateFormatSettings():
+    settings = copy(FORMAT_SETTINGS)
+    settings.update({SHOT_DISPERSION_ANGLE: {'preprocessor': shotDispersionAnglePreprocessor, 
+                               'rounder': backport.getNiceNumberFormat, 
+                               'skipNone': True}})
+    return settings
+
+
+_CMP_FORMAT_SETTINGS = _generateFormatSettings()
 
 class _BestParamsDict(dict):
 
@@ -51,11 +65,26 @@ def getUndefinedParam():
     return text_styles.stats('--')
 
 
+def _hasNormalizeParameters(cache):
+    for item in cache:
+        vehicle = item.getVehicle()
+        if vehicle is None:
+            continue
+        if vehicle.descriptor.hasDualAccuracy:
+            return True
+
+    return False
+
+
 def _reCalcBestParameters(targetCache):
     bestParamsDict = _BestParamsDict()
+    hasNormalization = _hasNormalizeParameters(targetCache)
     for vcParamData in targetCache:
         params = vcParamData.getParams()
         for pKey, pVal in params.iteritems():
+            if hasNormalization and pKey in PARAMS_NORMALIZATION_MAP:
+                func = PARAMS_NORMALIZATION_MAP[pKey]
+                pVal = func(pVal)
             if pVal is None:
                 continue
             if isinstance(pVal, (tuple, list)):
@@ -99,8 +128,8 @@ class _VehParamsValuesGenerator(VehParamsBaseGenerator):
 
     def _makeAdvancedParamVO(self, param, parent, highlight):
         data = super(_VehParamsValuesGenerator, self)._makeAdvancedParamVO(param, parent, highlight)
-        if param.value:
-            data['text'] = formatters.formatParameter(param.name, param.value, param.state, self.__bodyScheme, FORMAT_SETTINGS, False)
+        if param.value or isValidEmptyValue(param.name, param.value):
+            data['text'] = formatters.formatParameter(param.name, param.value, param.state, self.__bodyScheme, _CMP_FORMAT_SETTINGS, False)
         else:
             data['text'] = getUndefinedParam()
         return data
@@ -192,7 +221,8 @@ class _VehCompareParametersData(object):
             isDifferent = True
         if battleBoosterInvalid:
             self.__battleBooster = battleBooster
-            vehicle_adjusters.installBattleBoosterOnVehicle(self.__vehicle, battleBooster.intCD)
+            intCD = battleBooster.intCD if battleBooster else None
+            vehicle_adjusters.installBattleBoosterOnVehicle(self.__vehicle, intCD)
             isDifferent = True
         if camouflageInvalid:
             cmp_helpers.applyCamouflage(self.__vehicle, hasCamouflage)
@@ -256,8 +286,11 @@ class _VehCompareParametersData(object):
             if currentDataIndex == 0:
                 scheme = _NO_COLOR_SCHEMES if len(self.__cache) == 1 else _COLOR_SCHEMES
                 self.__paramGenerator.setColorSchemes(*scheme)
-            self.__parameters.update(params=self.__paramGenerator.getFormattedParams(VehiclesComparator(self.getParams(), vehMaxParams)), index=currentDataIndex)
+            self.__parameters.update(params=self.__paramGenerator.getFormattedParams(VehiclesComparator(self.getParams(), vehMaxParams), hasNormalization=True), index=currentDataIndex)
         return self.__parameters
+
+    def getVehicle(self):
+        return self.__vehicle
 
     def getParams(self):
         if self.__isCurrVehParamsInvalid:
@@ -265,10 +298,13 @@ class _VehCompareParametersData(object):
             self.__currentVehParams = VehicleParams(self.__vehicle).getParamsDict()
         return self.__currentVehParams
 
-    def getDeltaParams(self, paramName, paramValue):
+    def getDeltaParams(self, paramName, paramValue, hasNormalization=False):
         params = self.getParams()
-        if paramName in params:
-            pInfo = getParamExtendedData(paramName, params[paramName], paramValue)
+        if paramName not in params:
+            return None
+        else:
+            otherValue = params[paramName]
+            pInfo = getParamExtendedData(paramName, otherValue, paramValue, hasNormalization=hasNormalization)
             return formatters.formatParameterDelta(pInfo, _DELTA_PARAM_COLOR_SCHEME, FORMAT_SETTINGS)
 
     @classmethod
@@ -341,7 +377,8 @@ class VehCompareBasketParamsCache(object):
                 if i == index:
                     outcome.append(None)
                 else:
-                    outcome.append(self.__cache[i].getDeltaParams(paramName=paramName, paramValue=targetVal))
+                    hasNormalization = _hasNormalizeParameters(self.__cache)
+                    outcome.append(self.__cache[i].getDeltaParams(paramName=paramName, paramValue=targetVal, hasNormalization=hasNormalization))
 
         return outcome
 

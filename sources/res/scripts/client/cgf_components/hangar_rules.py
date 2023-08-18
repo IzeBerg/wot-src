@@ -1,5 +1,4 @@
 import CGF
-from cgf_components.tooltip_component import TooltipManager
 from cgf_script.managers_registrator import registerManager, Rule, registerRule
 from hover_component import HoverManager
 from highlight_component import HighlightManager
@@ -21,10 +20,6 @@ class SelectionRule(Rule):
 
     @registerManager(ClickManager)
     def reg3(self):
-        return
-
-    @registerManager(TooltipManager)
-    def reg4(self):
         return
 
 

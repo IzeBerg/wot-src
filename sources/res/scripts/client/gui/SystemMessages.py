@@ -87,6 +87,8 @@ SM_TYPE = Enumeration('System message type', [
  'CollectionStart',
  'CollectionsDisabled',
  'CollectionsEnabled',
+ 'CollectionsEntry',
+ 'CollectionRenew',
  'SimpleGift',
  'ArmoryYardPostprogression',
  'ArmoryYardOpenChapter',

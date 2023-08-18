@@ -21,7 +21,7 @@ from gui.impl.lobby.winback.winback_reward_view import WinbackRewardWindow
 from gui.impl.pub import ViewImpl, WindowImpl
 from gui.selectable_reward.common import WinbackSelectableRewardManager
 from gui.server_events.bonuses import VehiclesBonus
-from gui.shared.missions.packers.bonus import packBonusModelAndTooltipData, BonusUIPacker
+from gui.shared.missions.packers.bonus import packMissionsBonusModelAndTooltipData, BonusUIPacker
 from gui.shared.gui_items.Vehicle import VEHICLE_TYPES_ORDER, getNationLessName
 from helpers import dependency
 from nations import NONE_INDEX
@@ -127,7 +127,7 @@ class WinbackSelectableRewardView(ViewImpl):
         tooltipId = event.getArgument('tooltipId')
         window = None
         if tooltipId is not None:
-            tooltipData = self.__tooltipData.get(int(tooltipId))
+            tooltipData = self.__tooltipData.get(tooltipId)
             if tooltipData and isinstance(tooltipData, TooltipData):
                 window = BackportTooltipWindow(tooltipData, self.getParentWindow())
                 window.load()
@@ -335,7 +335,8 @@ class WinbackSelectableRewardView(ViewImpl):
                 options = [ giftData['option'] for giftData in bonuses.itervalues() if needToApplyFilter and __isMatchFilter(giftData['vehicle']) or not needToApplyFilter
                           ]
                 selectedIdx, selectedName = self.__getSelected(bonuses, options)
-                packBonusModelAndTooltipData(options, self._packer, rewards, self.__tooltipData)
+                self.__tooltipData = {}
+                packMissionsBonusModelAndTooltipData(options, self._packer, rewards, self.__tooltipData)
         if selectedName is not None:
             self._select(selectedIdx, selectedName)
         return

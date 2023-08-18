@@ -10,7 +10,7 @@ from gui.impl.gen.view_models.views.lobby.comp7.meta_view.pages.quest_card_model
 from gui.server_events.awards_formatters import AWARDS_SIZES
 from gui.server_events.events_helpers import isPremium, isDailyQuest
 from gui.server_events.formatters import DECORATION_SIZES
-from gui.shared.missions.packers.bonus import getDefaultBonusPacker, packBonusModelAndTooltipData
+from gui.shared.missions.packers.bonus import getDefaultBonusPacker, packMissionsBonusModelAndTooltipData
 from gui.shared.missions.packers.conditions import PostBattleConditionPacker
 from gui.shared.missions.packers.conditions import BonusConditionPacker
 from helpers import dependency
@@ -208,7 +208,7 @@ def packQuestBonusModel(quest, packer, array):
 
 def packQuestBonusModelAndTooltipData(packer, array, quest, tooltipData=None, questBonuses=None):
     bonuses = quest.getBonuses() if questBonuses is None else questBonuses
-    packBonusModelAndTooltipData(bonuses, packer, array, tooltipData)
+    packMissionsBonusModelAndTooltipData(bonuses, packer, array, tooltipData)
     return
 
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<htmlTemplates>
+		<storyModeAwardMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#story_mode.sm_messenger:medal/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&quot;#8C8C7E&quot;&gt;_(#story_mode.sm_messenger:medal/date)&lt;br/&gt;_(#story_mode.sm_messenger:medal/accrued)&lt;/font&gt; &lt;font face=&quot;$TitleFont&quot;&gt;_(#story_mode.sm_messenger:medal/medalName)&lt;/font&gt;</message>
+		</storyModeAwardMessage>
+		<storyModeBattleVictoryResult>
+			<priority>low</priority>
+			<type>battleResult</type>
+			<icon>BattleResultIcon</icon>
+			<bgIcon>BgStoryModeBattleResultIconVictory</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>showBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font size=&quot;15&quot; face=&quot;$TitleFont&quot; color=&quot;#E9E2BF&quot;&gt;_(#story_mode.sm_messenger:result/victory)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#story_mode.sm_messenger:result/scenario): %(scenarioName)s &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#story_mode.sm_messenger:result/vehicle): %(vehicleNames)s&lt;/font&gt;</message>
+		</storyModeBattleVictoryResult>
+		<storyModeBattleDefeatResult>
+			<priority>low</priority>
+			<type>battleResult</type>
+			<icon>BattleResultIcon</icon>
+			<bgIcon>BgStoryModeBattleResultIconDefeat</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>showBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font size=&quot;15&quot; face=&quot;$TitleFont&quot; color=&quot;#E9E2BF&quot;&gt;_(#story_mode.sm_messenger:result/defeat)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#story_mode.sm_messenger:result/scenario): %(scenarioName)s &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#story_mode.sm_messenger:result/vehicle): %(vehicleNames)s&lt;/font&gt;</message>
+		</storyModeBattleDefeatResult>
+	</htmlTemplates>
+</root>

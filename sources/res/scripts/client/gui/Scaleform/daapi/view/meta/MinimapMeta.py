@@ -44,9 +44,9 @@ class MinimapMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_initPrebattleSize(preferableSize)
 
-    def as_setScenarioEventS(self, id, path):
+    def as_setScenarioEventS(self, id, path, type):
         if self._isDAAPIInited():
-            return self.flashObject.as_setScenarioEvent(id, path)
+            return self.flashObject.as_setScenarioEvent(id, path, type)
 
     def as_setScenarioEventVisibleS(self, id, visible):
         if self._isDAAPIInited():

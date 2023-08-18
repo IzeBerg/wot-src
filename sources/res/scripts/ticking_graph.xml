@@ -6,6 +6,9 @@
 		</preInitGroup>
 	</Init>
 	<Simulation>
+		<PreSimulation>
+			<before>true</before>
+		</PreSimulation>
 		<NetworkFilter>
 			<before>true</before>
 		</NetworkFilter>
@@ -13,6 +16,7 @@
 	</Simulation>
 	<PostHierarchy>
 		<postHierarchyUpdate/>
+		<postHierarchyUpdateFinish/>
 	</PostHierarchy>
 	<Finalize/>
 </root>

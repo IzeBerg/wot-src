@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>root</name>
+			<UUID>cc3ed778-2326-496e-9936-9583f0c90d83</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>lamp</name>
+			<UUID>70881e3e-6a35-4d7c-bd07-bbb081793a90</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Hierarchy</type>
+			<version>2</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>cc3ed778-2326-496e-9936-9583f0c90d83</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>ComponentsVisibilityController</type>
+			<version>1</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Visible in ARCADE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in SNIPER MODE</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Visible in STRATEGIC MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in ARTY MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in POSTMORTEM MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE_ARCADE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in RESPAWN_DEATH MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in DEATH_FREE_CAM MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in DUAL_GUN MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE_ARCADE_EPIC_MINEFIELD MODE</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>EdgeDrawerComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>triggerSource</name>
+						<link>cc3ed778-2326-496e-9936-9583f0c90d83</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>DynamicModel</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>2</flags>
+				<config>
+					<property>
+						<name>Model name</name>
+						<isAsset>true</isAsset>
+						<value>vehicles/german/G162_Project_Kpz_07P_E/_skins/G162_Project_Kpz_07P_E_KL_3DSt/normal/lod0/Turret_01.model</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Model name</name>
+						<isAsset>true</isAsset>
+						<value>vehicles/german/G162_Project_Kpz_07P_E/_skins/G162_Project_Kpz_07P_E_KL_3DSt/normal/lod0/lamp_01.model</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>NodeFollower</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>NodeName</name>
+						<value>turret</value>
+					</property>
+					<property>
+						<name>modelLink</name>
+						<link>cc3ed778-2326-496e-9936-9583f0c90d83</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>DecalComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>PartHandle</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>ModelLink</name>
+						<link>70881e3e-6a35-4d7c-bd07-bbb081793a90</link>
+					</property>
+					<property>
+						<name>LodDistance</name>
+						<value>1200</value>
+					</property>
+					<property>
+						<name>CounterStickers</name>
+					</property>
+					<property>
+						<name>ModelStickers</name>
+					</property>
+					<property>
+						<name>EmissiveCounterStickers</name>
+						<collection>
+							<item>
+								<object>
+									<property>
+										<name>FontMap</name>
+										<isAsset>true</isAsset>
+										<value>gui/maps/vehicles/font_maps/font_20.dds</value>
+									</property>
+									<property>
+										<name>FontXml</name>
+										<isAsset>true</isAsset>
+										<value>gui/maps/vehicles/font_maps/font_20.xml</value>
+									</property>
+									<property>
+										<name>CounterValue</name>
+										<value>0</value>
+									</property>
+									<property>
+										<name>RayStart</name>
+										<value>
+											-0.579 1.02 -2.49402
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>RayEnd</name>
+										<value>
+											-0.579 1.02 -2.01346
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>Up</name>
+										<value>0 1 0</value>
+									</property>
+									<property>
+										<name>Size</name>
+										<value>
+											1 0.09
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>FontMask</name>
+										<value/>
+									</property>
+									<property>
+										<name>TargetLettersCount</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Color</name>
+										<value>
+											1 0.0588235 0.0588235 0
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>Deferred Luminance</name>
+										<value>50</value>
+									</property>
+									<property>
+										<name>Forward Luminance</name>
+										<value>6</value>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>FontMap</name>
+										<isAsset>true</isAsset>
+										<value>gui/maps/vehicles/font_maps/font_20.dds</value>
+									</property>
+									<property>
+										<name>FontXml</name>
+										<isAsset>true</isAsset>
+										<value>gui/maps/vehicles/font_maps/font_20.xml</value>
+									</property>
+									<property>
+										<name>CounterValue</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>RayStart</name>
+										<value>
+											-0.477 1.02 -2.49402
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>RayEnd</name>
+										<value>
+											-0.477 1.02 -2.01346
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>Up</name>
+										<value>0 1 0</value>
+									</property>
+									<property>
+										<name>Size</name>
+										<value>
+											1 0.09
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>FontMask</name>
+										<value/>
+									</property>
+									<property>
+										<name>TargetLettersCount</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Color</name>
+										<value>
+											1 0.0588235 0.0588235 0
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>Deferred Luminance</name>
+										<value>50</value>
+									</property>
+									<property>
+										<name>Forward Luminance</name>
+										<value>6</value>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>FontMap</name>
+										<isAsset>true</isAsset>
+										<value>gui/maps/vehicles/font_maps/font_20.dds</value>
+									</property>
+									<property>
+										<name>FontXml</name>
+										<isAsset>true</isAsset>
+										<value>gui/maps/vehicles/font_maps/font_20.xml</value>
+									</property>
+									<property>
+										<name>CounterValue</name>
+										<value>2</value>
+									</property>
+									<property>
+										<name>RayStart</name>
+										<value>
+											-0.373 1.02 -2.49402
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>RayEnd</name>
+										<value>
+											-0.373 1.02 -2.01346
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>Up</name>
+										<value>0 1 0</value>
+									</property>
+									<property>
+										<name>Size</name>
+										<value>
+											1 0.09
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>FontMask</name>
+										<value/>
+									</property>
+									<property>
+										<name>TargetLettersCount</name>
+										<value>1</value>
+									</property>
+									<property>
+										<name>Color</name>
+										<value>
+											1 0.0588235 0.0588235 0
+											<!--BW_String-->
+										</value>
+									</property>
+									<property>
+										<name>Deferred Luminance</name>
+										<value>50</value>
+									</property>
+									<property>
+										<name>Forward Luminance</name>
+										<value>6</value>
+									</property>
+								</object>
+							</item>
+						</collection>
+					</property>
+					<property>
+						<name>Use part transform</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>TransformPart</name>
+						<value/>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>SerialNumberComponent</type>
+			<version>1</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>counterValue</name>
+						<value>
+							000
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>splitNumber</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>decalComponent</name>
+						<link>70881e3e-6a35-4d7c-bd07-bbb081793a90</link>
+					</property>
+					<property>
+						<name>decalCount</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

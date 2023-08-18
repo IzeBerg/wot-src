@@ -18,7 +18,9 @@ package net.wg.gui.components.controls
       
       private static const TEXT_MARGIN:int = 5;
       
-      private static const CHECK_X:int = 15;
+      private static const CHECK_X_SUB:int = 15;
+      
+      private static const CHECK_X_MAIN:int = 5;
       
       private static const CHECK_Y:int = 5;
       
@@ -61,6 +63,8 @@ package net.wg.gui.components.controls
       
       private var _textColor:int = -1;
       
+      private var _showCheckmark:Boolean = false;
+      
       public const CONTEXT_MENU_ITEM_SUB:String = "sub";
       
       public const CONTEXT_MENU_ITEM_GROUP:String = "group";
@@ -94,6 +98,20 @@ package net.wg.gui.components.controls
          super.draw();
          if(isInvalid(InvalidationType.STATE))
          {
+            if(this.showCheckmark)
+            {
+               if(this._checkDynamic)
+               {
+                  this._checkDynamic.visible = !enabled;
+               }
+               else if(!enabled)
+               {
+                  this._checkDynamic = App.utils.classFactory.getComponent(LINKAGE_CHECKMCUI,MovieClip);
+                  this._checkDynamic.x = this.type == this.CONTEXT_MENU_ITEM_SUB ? Number(CHECK_X_SUB) : Number(CHECK_X_MAIN);
+                  this._checkDynamic.y = CHECK_Y;
+                  addChild(this._checkDynamic);
+               }
+            }
             switch(this.type)
             {
                case CONTEXT_MENU_ITEM_MAIN:
@@ -116,17 +134,6 @@ package net.wg.gui.components.controls
                   this.arrowMc.visible = false;
                   this.iconsMc.visible = false;
                   this.iconsMc.visible = false;
-                  if(this._checkDynamic)
-                  {
-                     this._checkDynamic.visible = !enabled;
-                  }
-                  else if(!enabled)
-                  {
-                     this._checkDynamic = App.utils.classFactory.getComponent(LINKAGE_CHECKMCUI,MovieClip);
-                     this._checkDynamic.x = CHECK_X;
-                     this._checkDynamic.y = CHECK_Y;
-                     addChild(this._checkDynamic);
-                  }
                   this.circleMc.visible = this._checkDynamic && !enabled ? Boolean(false) : Boolean(true);
                   textField.visible = false;
                   this.textFieldSub.visible = true;
@@ -326,6 +333,16 @@ package net.wg.gui.components.controls
          }
          this._textColor = param1;
          this.updateText();
+      }
+      
+      public function get showCheckmark() : Boolean
+      {
+         return this._showCheckmark || this.type == this.CONTEXT_MENU_ITEM_SUB;
+      }
+      
+      public function set showCheckmark(param1:Boolean) : void
+      {
+         this._showCheckmark = param1;
       }
       
       override protected function callLogEvent(param1:Event) : void

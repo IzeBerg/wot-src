@@ -2,9 +2,8 @@ import logging
 from collections import namedtuple
 from enum import Enum
 import resource_helper
-from ExtensionsManager import makeExtensionPath
 _logger = logging.getLogger(__name__)
-BONUSES_CONFIG_PATH = makeExtensionPath('gui_lootboxes', 'gui/bonuses_gui_config.xml')
+BONUSES_CONFIG_PATH = 'gui_lootboxes/gui/bonuses_gui_config.xml'
 
 class BonusesSortTags(Enum):
     UNSORTABLE = 'unsortable'

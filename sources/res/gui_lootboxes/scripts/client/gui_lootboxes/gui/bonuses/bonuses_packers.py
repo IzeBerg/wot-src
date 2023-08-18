@@ -1,4 +1,4 @@
-import logging, typing, constants
+import copy, logging, typing, constants
 from dog_tags_common.components_config import componentConfigAdapter
 from dog_tags_common.config.common import ComponentViewType
 from gui.collection.collections_constants import COLLECTION_ITEM_BONUS_NAME
@@ -27,14 +27,19 @@ from shared_utils import first
 from skeletons.gui.game_control import ICollectionsSystemController
 _logger = logging.getLogger(__name__)
 
-def getLootBoxesBonusPacker():
+def getLootBoxesBonusPackerMap():
     mapping = getDefaultBonusPackersMap()
     mapping.update({'crewBooks': LootBoxCrewBookBonusUIPacker(), 
        'tmanToken': TmanTemplateBonusPacker(), 
+       'customizations': LootBoxCustomizationBonusUIPacker(), 
        'collectionItem': LootBoxAnyCollectionItemBonusUIPacker(), 
        'anyCollectionItem': LootBoxAnyCollectionItemBonusUIPacker(), 
        'dogTagComponents': LootBoxDogTagUIPacker()})
-    return BonusUIPacker(mapping)
+    return mapping
+
+
+def getLootBoxesBonusPacker():
+    return BonusUIPacker(getLootBoxesBonusPackerMap())
 
 
 def getRewardsScreenDefaultBonusPackerMap():
@@ -49,6 +54,12 @@ def getRewardsScreenDefaultBonusPackerMap():
        'anyCollectionItem': LootBoxAnyCollectionItemBonusUIPacker(), 
        constants.PREMIUM_ENTITLEMENTS.PLUS: PremiumDaysBonusPacker()})
     return mapping
+
+
+def getAdditionalRewardsTooltipBonusPacker():
+    mapping = getRewardsScreenDefaultBonusPackerMap()
+    mapping.update({'customizations': AdditionalRewardsCustomizationBonusUIPacker()})
+    return BonusUIPacker(mapping)
 
 
 def getRewardsBonusPacker():
@@ -173,7 +184,7 @@ class LootBoxCustomizationBonusUIPacker(CustomizationBonusUIPacker):
                     packer = LootBoxCompensationBonusUIPacker()
                     result.extend(packer.pack(compBonus))
             else:
-                result.append(cls._packSingleBonus(bonus, item, bonus.getC11nItem(item).userName))
+                result.append(cls._packSingleBonus(bonus, item, cls._getLabel(bonus.getC11nItem(item))))
 
         return result
 
@@ -240,6 +251,14 @@ class LootBoxCustomizationBonusUIPacker(CustomizationBonusUIPacker):
 
         return
 
+    @classmethod
+    def _getLabel(cls, c11nItem):
+        userName = c11nItem.userName
+        elementBonusR = R.strings.vehicle_customization.elementBonus.desc.dyn(c11nItem.itemFullTypeName, R.invalid)
+        if elementBonusR:
+            return backport.text(elementBonusR(), value=userName)
+        return userName
+
 
 class LootBoxUniqueCustomizationBonusUIPacker(LootBoxCustomizationBonusUIPacker):
 
@@ -252,6 +271,13 @@ class LootBoxUniqueCustomizationBonusUIPacker(LootBoxCustomizationBonusUIPacker)
         if c11Item.itemTypeID == GUI_ITEM_TYPE.STYLE and c11Item.is3D:
             return itemTypeName + '_3d'
         return itemTypeName
+
+
+class AdditionalRewardsCustomizationBonusUIPacker(LootBoxCustomizationBonusUIPacker):
+
+    @classmethod
+    def _getLabel(cls, c11nItem):
+        return c11nItem.userName
 
 
 class LootBoxCrewBookBonusUIPacker(CrewBookBonusUIPacker):
@@ -308,7 +334,20 @@ class LootBoxCompensationBonusUIPacker(SimpleBonusUIPacker):
     def _getToolTip(cls, bonus):
         return [
          TooltipData(tooltip=None, isSpecial=True, specialAlias=None, specialArgs=[
-          bonus.getCompensationReason(), bonus])]
+          cls._getCompensatedBonus(bonus), bonus])]
+
+    @classmethod
+    def _getCompensatedBonus(cls, bonus):
+        compensatedBonus = bonus.getCompensationReason()
+        if compensatedBonus and compensatedBonus.getName() == 'vehicles':
+            bonusValue = copy.deepcopy(compensatedBonus.getValue())
+            for item in bonusValue:
+                for vehInfo in item.values():
+                    if vehInfo.get('compensatedNumber', 0) > 0:
+                        vehInfo['compensatedNumber'] -= 1
+
+            return getServiceBonuses(compensatedBonus.getName(), bonusValue)[0]
+        return compensatedBonus
 
     @classmethod
     def _getContentId(cls, bonus):

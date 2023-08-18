@@ -1,5 +1,4 @@
 from collections import namedtuple
-import random
 
 class CgfTankNodes(object):
     TANK_ROOT = 'Tank.Root'
@@ -187,19 +186,6 @@ def getCrashedSkeleton(vehicleDesc):
     return result
 
 
-def chooseCrashSkin(partModelSets):
-    crashSetsCount = 0
-    for setName in partModelSets:
-        if setName.find('alterCrash') != -1:
-            crashSetsCount += 1
-
-    crashSkinNum = random.randint(0, crashSetsCount)
-    if crashSkinNum == 0:
-        return partModelSets['default']
-    crashSkinName = 'alterCrash' + str(crashSkinNum)
-    return partModelSets[crashSkinName]
-
-
 def getPartModelsFromDesc(vehicleDesc, modelsSetParams):
     skinName = modelsSetParams.skin
     paths = []
@@ -207,8 +193,6 @@ def getPartModelsFromDesc(vehicleDesc, modelsSetParams):
         part = getattr(vehicleDesc, partName)
         if skinName in part.modelsSets:
             skin = part.modelsSets[skinName]
-        elif modelsSetParams.state != 'undamaged':
-            skin = chooseCrashSkin(part.modelsSets)
         else:
             skin = part.models
         path = skin.getPathByStateName(modelsSetParams.state)

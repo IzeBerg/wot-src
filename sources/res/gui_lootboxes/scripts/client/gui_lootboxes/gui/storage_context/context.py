@@ -26,6 +26,11 @@ class GlobalEvents(IntEnum):
     OPEN_RESPONSE_RECEIVED = 1
 
 
+class ReturnPlaces(IntEnum):
+    TO_HANGAR = 0
+    TO_SHOP = 1
+
+
 def _handlerOnOpenClick(eventData):
     lootBox, count = eventData
     return StringEvent(LootBoxesStorageEventEnum.GOTO_REQUEST, lootBox=lootBox, count=count)
@@ -70,7 +75,7 @@ _STATE_ENTERED_HANDLERS = {States.REQUEST_TO_OPEN: _handleRequestToOpen}
 class LootBoxesContext(object):
     __guiLootBoxesCtr = dependency.descriptor(IGuiLootBoxesController)
     __slots__ = ('__stateMachine', '__stateMachineObserver', '__currentState', 'onStateChanged',
-                 '__asyncScope')
+                 '__asyncScope', '__returnPlace')
 
     def __init__(self):
         super(LootBoxesContext, self).__init__()
@@ -79,6 +84,7 @@ class LootBoxesContext(object):
         self.__stateMachine = LootBoxesStorageStateMachine(self.__stateMachineObserver)
         self.__currentState = LootBoxesStorageStateMachineDescription.INIT_STATE
         self.__asyncScope = AsyncScope()
+        self.__returnPlace = ReturnPlaces.TO_HANGAR
 
     def init(self):
         Waiting.show('loadLootboxesStorage')
@@ -90,7 +96,7 @@ class LootBoxesContext(object):
         Waiting.hide('loadLootboxesStorage')
 
     def fini(self):
-        self.__guiLootBoxesCtr.getHangarOptimizer().disable()
+        self.__guiLootBoxesCtr.getHangarOptimizer().disable(needShowHangar=self.__returnPlace == ReturnPlaces.TO_HANGAR)
         self.__asyncScope.destroy()
         self.onStateChanged.clear()
         self.__stateMachine.stop()
@@ -116,6 +122,9 @@ class LootBoxesContext(object):
 
     def getAsyncScope(self):
         return self.__asyncScope
+
+    def setReturnPlace(self, returnPlace):
+        self.__returnPlace = returnPlace
 
     def __handleStateChanged(self, stateID, event):
         self.__currentState = States(stateID)

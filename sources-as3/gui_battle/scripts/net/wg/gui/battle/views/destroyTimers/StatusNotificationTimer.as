@@ -75,10 +75,12 @@ package net.wg.gui.battle.views.destroyTimers
          this._tweenXDelay = 0;
          if(_loc1_)
          {
+            this.clearFadeTweens();
             if(this._isAppearing)
             {
                this._destroyTimerContainer.visible = false;
                this._secondaryTimerContainer.visible = true;
+               this._secondaryTimerContainer.alpha = 1;
             }
             else
             {
@@ -99,9 +101,11 @@ package net.wg.gui.battle.views.destroyTimers
          this._tweenXDelay = 0;
          if(!_loc1_)
          {
+            this.clearFadeTweens();
             this._tweenXDelay = FADE_OUT_TWEEN_DURATION;
             if(this._isAppearing)
             {
+               this._destroyTimerContainer.alpha = 1;
                this._destroyTimerContainer.visible = true;
                this._secondaryTimerContainer.visible = false;
             }

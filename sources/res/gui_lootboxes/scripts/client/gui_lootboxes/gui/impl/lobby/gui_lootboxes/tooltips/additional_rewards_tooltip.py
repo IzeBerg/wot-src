@@ -3,7 +3,7 @@ from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.tooltips.additional_rewards_tooltip_model import AdditionalRewardsTooltipModel
 from gui.impl.lobby.common.view_helpers import packBonusModelAndTooltipData
 from gui.impl.pub import ViewImpl
-from gui_lootboxes.gui.bonuses.bonuses_packers import getRewardsBonusPacker
+from gui_lootboxes.gui.bonuses.bonuses_packers import getAdditionalRewardsTooltipBonusPacker
 
 class AdditionalRewardsTooltip(ViewImpl):
     __slots__ = ()
@@ -27,5 +27,5 @@ class AdditionalRewardsTooltip(ViewImpl):
             model.setDescription(R.invalid())
             model.setDescriptionCount(0)
             bonusArray = model.getBonus()
-            packBonusModelAndTooltipData(bonuses, bonusArray, packer=getRewardsBonusPacker())
+            packBonusModelAndTooltipData(bonuses, bonusArray, packer=getAdditionalRewardsTooltipBonusPacker())
             bonusArray.invalidate()

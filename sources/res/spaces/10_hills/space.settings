@@ -88,4 +88,34 @@
 		<simRadius>100.000000</simRadius>
 	</havok>
 	<NonChunkUDO>true</NonChunkUDO>
+	<navmeshGenerator>navgen</navmeshGenerator>
+	<enableClusteredShading>false</enableClusteredShading>
+	<isSHGridQualityOverridden>false</isSHGridQualityOverridden>
+	<overrideSHGridQuality>0</overrideSHGridQuality>
+	<spaceVisibilityFlags>
+		<type>
+			<tag>ctf</tag>
+			<bitIndex>0</bitIndex>
+		</type>
+		<type>
+			<tag>domination</tag>
+			<bitIndex>1</bitIndex>
+		</type>
+		<type>
+			<tag>assault2</tag>
+			<bitIndex>6</bitIndex>
+		</type>
+		<type>
+			<tag>bootcamp</tag>
+			<bitIndex>14</bitIndex>
+		</type>
+		<type>
+			<tag>maps_training</tag>
+			<bitIndex>16</bitIndex>
+		</type>
+		<type>
+			<tag>comp7</tag>
+			<bitIndex>2</bitIndex>
+		</type>
+	</spaceVisibilityFlags>
 </root>

@@ -11,7 +11,7 @@ from gui_lootboxes.gui.impl.lobby.gui_lootboxes.tooltips.bonus_group_tooltip imp
 from gui_lootboxes.gui.impl.lobby.gui_lootboxes.tooltips.lootbox_tooltip import LootboxTooltip
 from gui_lootboxes.gui.shared.event_dispatcher import showLootBoxOpenErrorWindow, showLootBoxesWelcomeScreen, showBonusProbabilitiesWindow, showRewardScreenWindow
 from gui_lootboxes.gui.shared.gui_helpers import getLootBoxViewModel
-from gui_lootboxes.gui.storage_context.context import LootBoxesContext, ViewEvents
+from gui_lootboxes.gui.storage_context.context import LootBoxesContext, ViewEvents, ReturnPlaces
 from frameworks.wulf import ViewSettings, ViewStatus, WindowFlags, WindowLayer
 from gui_lootboxes.gui.impl.gen.view_models.views.lobby.gui_lootboxes.lootboxes_storage_view_model import LootboxesStorageViewModel, States
 from gui_lootboxes.gui.impl.lobby.gui_lootboxes.sound import LOOT_BOXES_SOUND_SPACE
@@ -144,7 +144,10 @@ class LootBoxesStorageView(ViewImpl):
         self.__openingAnimEvent.set()
 
     def __onBuyBox(self):
-        self.__guiLootBoxesCtr.openShop()
+        if self.__guiLootBoxesCtr.isBuyAvailable():
+            self.__context.setReturnPlace(ReturnPlaces.TO_SHOP)
+            self.destroy()
+            self.__guiLootBoxesCtr.openShop()
 
     def __onClose(self):
         self.destroy()

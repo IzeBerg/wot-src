@@ -3,6 +3,7 @@
 	<info>
 		<name>BootCamp/Lesson_4_hints_08_ruinberg</name>
 		<isMacro>false</isMacro>
+		<version>0</version>
 		<aspect>
 			<compatibles>CLIENT</compatibles>
 		</aspect>
@@ -11,185 +12,8 @@
 		</tags>
 		<blocks>
 			<block>
-				<class>Variable</class>
-				<id>Variable_3</id>
-				<params>
-					<param>
-						hintTracks
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						-1
-						<name>Initial Value</name>
-						<type>IdentifierT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_6</id>
-				<params>
-					<param>
-						hintFire
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						-1
-						<name>Initial Value</name>
-						<type>IdentifierT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>InitHint</class>
-				<id>InitHint_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>typeId</name>
-						<const>\hintRepairTrack\</const>
-					</slot>
-					<slot>
-						<name>text</name>
-						<const>\#bootcamp:hint/repair/track\</const>
-					</slot>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_bc_use_repair_kit\</const>
-					</slot>
-					<slot>
-						<name>cooldownAfter</name>
-						<const>\2.000000\</const>
-					</slot>
-					<slot>
-						<name>completeDuration</name>
-						<const>\0.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>InitHint</class>
-				<id>InitHint_2</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>typeId</name>
-						<const>\hintUseExtinguisher\</const>
-					</slot>
-					<slot>
-						<name>text</name>
-						<const>\#bootcamp:hint/use/extinguisher\</const>
-					</slot>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_bc_use_fire_extinguisher\</const>
-					</slot>
-					<slot>
-						<name>cooldownAfter</name>
-						<const>\2.000000\</const>
-					</slot>
-					<slot>
-						<name>completeDuration</name>
-						<const>\0.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>InitHint</class>
-				<id>InitHint_3</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>typeId</name>
-						<const>\hintHealCrew\</const>
-					</slot>
-					<slot>
-						<name>text</name>
-						<const>\#bootcamp:hint/heal/crew\</const>
-					</slot>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_bc_gunner_wounded\</const>
-					</slot>
-					<slot>
-						<name>cooldownAfter</name>
-						<const>\2.000000\</const>
-					</slot>
-					<slot>
-						<name>completeDuration</name>
-						<const>\0.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_9</id>
-				<params>
-					<param>
-						hintGunner
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						-1
-						<name>Initial Value</name>
-						<type>IdentifierT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>OnPlayerVehicleDeviceCrit</class>
-				<id>OnPlayerVehicleDeviceCrit_1</id>
+				<class>OnPlayerVehicleDetectEnemy</class>
+				<id>OnPlayerVehicleDetectEnemy_1</id>
 				<params/>
 				<slots>
 					<slot>
@@ -199,69 +23,54 @@
 				</slots>
 			</block>
 			<block>
-				<class>ShowHint</class>
-				<id>ShowHint_1</id>
+				<class>PlayCombatMusic</class>
+				<id>PlayCombatMusic_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>music</name>
+						<const>\wwmusicRelaxed\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>FinishScript</class>
+				<id>FinishScript_1</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>HideHint</class>
-				<id>HideHint_1</id>
+				<class>SetMutedSounds</class>
+				<id>SetMutedSounds_1</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>OnPlayerVehicleFireEvent</class>
-				<id>OnPlayerVehicleFireEvent_1</id>
+				<class>SetMusicSkipArenaChanges</class>
+				<id>SetMusicSkipArenaChanges_2</id>
 				<params/>
-				<slots/>
+				<slots>
+					<slot>
+						<name>skip</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
-				<class>ShowHint</class>
-				<id>ShowHint_2</id>
+				<class>SetMusicSkipArenaChanges</class>
+				<id>SetMusicSkipArenaChanges_1</id>
 				<params/>
-				<slots/>
+				<slots>
+					<slot>
+						<name>skip</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
-				<class>HideHint</class>
-				<id>HideHint_2</id>
+				<class>SetMutedSounds</class>
+				<id>SetMutedSounds_2</id>
 				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>OnPlayerVehicleTankmanEvent</class>
-				<id>OnPlayerVehicleTankmanEvent_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>ShowHint</class>
-				<id>ShowHint_3</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>HideHint</class>
-				<id>HideHint_3</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>StartScript</class>
-				<id>StartScript_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>Sequence</class>
-				<id>Sequence_1</id>
-				<params>
-					<param>
-						3
-						<name>Output Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
 				<slots/>
 			</block>
 			<block>
@@ -299,54 +108,16 @@
 				</slots>
 			</block>
 			<block>
-				<class>FinishScript</class>
-				<id>FinishScript_1</id>
+				<class>PlaySound</class>
+				<id>PlaySound_3</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>SetMusicSkipArenaChanges</class>
-				<id>SetMusicSkipArenaChanges_1</id>
+				<class>PlaySound</class>
+				<id>PlaySound_2</id>
 				<params/>
-				<slots>
-					<slot>
-						<name>skip</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>SetMusicSkipArenaChanges</class>
-				<id>SetMusicSkipArenaChanges_2</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>skip</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>PlayCombatMusic</class>
-				<id>PlayCombatMusic_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>music</name>
-						<const>\wwmusicRelaxed\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>OnPlayerVehicleDetectEnemy</class>
-				<id>OnPlayerVehicleDetectEnemy_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>maxCount</name>
-						<const>\1\</const>
-					</slot>
-				</slots>
+				<slots/>
 			</block>
 			<block>
 				<class>ArenaPeriodStartEvent</class>
@@ -361,82 +132,25 @@
 				<slots/>
 			</block>
 			<block>
-				<class>SetMutedSounds</class>
-				<id>SetMutedSounds_1</id>
-				<params/>
+				<class>Sequence</class>
+				<id>Sequence_1</id>
+				<params>
+					<param>
+						3
+						<name>Output Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
 				<slots/>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_1</id>
-				<params>
-					<param>
-						Client_OnFinishBattle
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
+				<class>Create2DSound</class>
+				<id>Create2DSound_3</id>
+				<params/>
 				<slots>
 					<slot>
-						<name>processMarkers</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_18</id>
-				<params>
-					<param>
-						Bootcamp_SecondaryHints
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>noMoveEnabled</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>noMoveTurretEnabled</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>moveToMarkerEnabled</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>lowHPEnabled</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>exitGameAreaEnabled</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>aimEnabled</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>targetLockedEnabled</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>sniperEnabled</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>shootWhileMovingEnabled</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>waitForReloadEnabled</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>uselessConsumableEnabled</name>
-						<const>\true\</const>
+						<name>soundName</name>
+						<const>\vo_bc_main_task\</const>
 					</slot>
 				</slots>
 			</block>
@@ -452,312 +166,19 @@
 				</slots>
 			</block>
 			<block>
-				<class>PlaySound</class>
-				<id>PlaySound_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>PlaySound</class>
-				<id>PlaySound_3</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>Create2DSound</class>
-				<id>Create2DSound_3</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>soundName</name>
-						<const>\vo_bc_main_task\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>SetMutedSounds</class>
-				<id>SetMutedSounds_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>Repeat</class>
-				<id>Repeat_4</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>interval</name>
-						<const>\10.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Repeat</class>
-				<id>Repeat_5</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>interval</name>
-						<const>\10.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Repeat</class>
-				<id>Repeat_6</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>interval</name>
-						<const>\10.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>PlaySound</class>
-				<id>PlaySound_4</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>Create2DSound</class>
-				<id>Create2DSound_4</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>soundName</name>
-						<const>\vo_bc_use_fire_extinguisher\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>PlaySound</class>
-				<id>PlaySound_5</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>Create2DSound</class>
-				<id>Create2DSound_5</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>soundName</name>
-						<const>\vo_bc_use_repair_kit\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>PlaySound</class>
-				<id>PlaySound_6</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>Create2DSound</class>
-				<id>Create2DSound_6</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>soundName</name>
-						<const>\vo_bc_gunner_wounded\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_8</id>
-				<buddy>Variable_6</buddy>
+				<class>Macro</class>
+				<id>Macro_1</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_2</id>
-				<buddy>Variable_6</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_13</id>
-				<buddy>Variable_9</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_3</id>
-				<buddy>Variable_9</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_3</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_1</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						Client_OnFinishBattle
+						<name>Macro Name</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
 			</block>
 		</blocks>
 		<connections>
-			<connection>
-				<from>StartScript_1</from>
-				<input>in</input>
-				<to>InitHint_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>SetVariable_3</from>
-				<input>in</input>
-				<to>InitHint_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>SetVariable_8</from>
-				<input>in</input>
-				<to>InitHint_3</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>OnPlayerVehicleDeviceCrit_1</from>
-				<input>in</input>
-				<to>ShowHint_1</to>
-				<output>onDestroyed</output>
-			</connection>
-			<connection>
-				<from>GetVariable_1</from>
-				<input>id</input>
-				<to>ShowHint_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>OnPlayerVehicleDeviceCrit_1</from>
-				<input>in</input>
-				<to>HideHint_1</to>
-				<output>onHealed</output>
-			</connection>
-			<connection>
-				<from>OnPlayerVehicleDeviceCrit_1</from>
-				<input>in</input>
-				<to>HideHint_1</to>
-				<output>onAutoHealToDamaged</output>
-			</connection>
-			<connection>
-				<from>GetVariable_1</from>
-				<input>id</input>
-				<to>HideHint_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>OnPlayerVehicleFireEvent_1</from>
-				<input>in</input>
-				<to>ShowHint_2</to>
-				<output>onFire</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>id</input>
-				<to>ShowHint_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>OnPlayerVehicleFireEvent_1</from>
-				<input>in</input>
-				<to>HideHint_2</to>
-				<output>onFireEnds</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>id</input>
-				<to>HideHint_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>OnPlayerVehicleTankmanEvent_1</from>
-				<input>in</input>
-				<to>ShowHint_3</to>
-				<output>onShocked</output>
-			</connection>
-			<connection>
-				<from>GetVariable_3</from>
-				<input>id</input>
-				<to>ShowHint_3</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>OnPlayerVehicleTankmanEvent_1</from>
-				<input>in</input>
-				<to>HideHint_3</to>
-				<output>onHealed</output>
-			</connection>
-			<connection>
-				<from>GetVariable_3</from>
-				<input>id</input>
-				<to>HideHint_3</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ArenaPeriodStartEvent_1</from>
-				<input>input</input>
-				<to>Sequence_1</to>
-				<output>start</output>
-			</connection>
-			<connection>
-				<from>Sequence_1</from>
-				<input>play</input>
-				<to>SetMusicSkipArenaChanges_1</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>SetMutedSounds_1</from>
-				<input>play</input>
-				<to>SetMusicSkipArenaChanges_2</to>
-				<output>out</output>
-			</connection>
 			<connection>
 				<from>OnPlayerVehicleDetectEnemy_1</from>
 				<input>play</input>
@@ -777,16 +198,28 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>Sequence_1</from>
-				<input>in</input>
-				<to>PlaySound_2</to>
-				<output>o2</output>
+				<from>SetMutedSounds_1</from>
+				<input>play</input>
+				<to>SetMusicSkipArenaChanges_2</to>
+				<output>out</output>
 			</connection>
 			<connection>
-				<from>Create2DSound_3</from>
-				<input>soundToPlay</input>
-				<to>PlaySound_2</to>
-				<output>sound</output>
+				<from>Sequence_1</from>
+				<input>play</input>
+				<to>SetMusicSkipArenaChanges_1</to>
+				<output>o1</output>
+			</connection>
+			<connection>
+				<from>Sequence_1</from>
+				<input>in</input>
+				<to>SetMutedSounds_2</to>
+				<output>o0</output>
+			</connection>
+			<connection>
+				<from>CreateArray_1</from>
+				<input>soundNames</input>
+				<to>SetMutedSounds_2</to>
+				<output>res</output>
 			</connection>
 			<connection>
 				<from>PlaySound_2</from>
@@ -803,122 +236,20 @@
 			<connection>
 				<from>Sequence_1</from>
 				<input>in</input>
-				<to>SetMutedSounds_2</to>
-				<output>o0</output>
+				<to>PlaySound_2</to>
+				<output>o2</output>
 			</connection>
 			<connection>
-				<from>CreateArray_1</from>
-				<input>soundNames</input>
-				<to>SetMutedSounds_2</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>ShowHint_1</from>
-				<input>start</input>
-				<to>Repeat_4</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>HideHint_1</from>
-				<input>stop</input>
-				<to>Repeat_4</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ShowHint_2</from>
-				<input>start</input>
-				<to>Repeat_5</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>HideHint_2</from>
-				<input>stop</input>
-				<to>Repeat_5</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ShowHint_3</from>
-				<input>start</input>
-				<to>Repeat_6</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>HideHint_3</from>
-				<input>stop</input>
-				<to>Repeat_6</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>Repeat_5</from>
-				<input>in</input>
-				<to>PlaySound_4</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>Create2DSound_4</from>
+				<from>Create2DSound_3</from>
 				<input>soundToPlay</input>
-				<to>PlaySound_4</to>
+				<to>PlaySound_2</to>
 				<output>sound</output>
 			</connection>
 			<connection>
-				<from>Repeat_4</from>
-				<input>in</input>
-				<to>PlaySound_5</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>Create2DSound_5</from>
-				<input>soundToPlay</input>
-				<to>PlaySound_5</to>
-				<output>sound</output>
-			</connection>
-			<connection>
-				<from>Repeat_6</from>
-				<input>in</input>
-				<to>PlaySound_6</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>Create2DSound_6</from>
-				<input>soundToPlay</input>
-				<to>PlaySound_6</to>
-				<output>sound</output>
-			</connection>
-			<connection>
-				<from>InitHint_2</from>
+				<from>ArenaPeriodStartEvent_1</from>
 				<input>input</input>
-				<to>SetVariable_8</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>InitHint_2</from>
-				<input>value</input>
-				<to>SetVariable_8</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>InitHint_3</from>
-				<input>input</input>
-				<to>SetVariable_13</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>InitHint_3</from>
-				<input>value</input>
-				<to>SetVariable_13</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>InitHint_1</from>
-				<input>input</input>
-				<to>SetVariable_3</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>InitHint_1</from>
-				<input>value</input>
-				<to>SetVariable_3</to>
-				<output>id</output>
+				<to>Sequence_1</to>
+				<output>start</output>
 			</connection>
 		</connections>
 		<macros/>

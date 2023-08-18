@@ -1,4 +1,4 @@
-import logging, typing, AccountCommands, BigWorld
+import logging, typing, constants, AccountCommands, BigWorld
 from Event import Event
 from PlayerEvents import g_playerEvents
 from bootcamp.Bootcamp import g_bootcamp
@@ -7,9 +7,13 @@ from gui import SystemMessages
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.server_events import settings
+from gui.server_events.awards_formatters import AWARDS_SIZES
 from gui.shared.gui_items.artefacts import OptionalDevice
 from gui.shared.utils.requesters.ItemsRequester import REQ_CRITERIA
+from gui.server_events.bonuses import GoldBank, IdleCrewXP, ExcludedMap, FreeEquipmentDemounting, WoTPlusExclusiveVehicle, AttendanceReward, SimpleBonus
+from gui.Scaleform.daapi.view.lobby.missions.awards_formatters import CurtailingAwardsComposer
 from helpers import dependency
+from items.vehicles import getItemByCompactDescr
 from messenger.m_constants import SCH_CLIENT_MSG_TYPE
 from messenger.proto.bw.wrappers import ServiceChannelMessage
 from piggy_bank_common.settings_constants import PIGGY_BANK_PDATA_KEY
@@ -23,9 +27,11 @@ from skeletons.gui.system_messages import ISystemMessages
 from wg_async import wg_async, wg_await
 from wotdecorators import condition
 if typing.TYPE_CHECKING:
-    from typing import Dict, Optional, Callable, Any
+    from typing import Dict, Optional, Callable, Any, List
     from gui.shared.gui_items import ItemsCollection
     from gui.game_control.account_completion import SteamCompletionController
+    from gui.server_events.bonuses import WoTPlusBonus
+    from items.vehicles import VehicleType
 _logger = logging.getLogger(__name__)
 _SECONDS_IN_DAY = 86400
 
@@ -77,6 +83,8 @@ class WotPlusController(IWotPlusController):
         self._account = None
         self._state = WotPlusState.INACTIVE
         self.onDataChanged = Event()
+        self.onAttendanceUpdated = Event()
+        self.onIntroShown = Event()
         self.onPendingRentChanged = Event()
         return
 
@@ -158,21 +166,44 @@ class WotPlusController(IWotPlusController):
     def getExclusiveVehicles(self):
         return self._itemsCache.items.getVehicles(REQ_CRITERIA.VEHICLE.WOT_PLUS_VEHICLE)
 
-    def setRentPending(self, vehCD):
-        with settings.wotPlusSettings() as (dt):
-            dt.setRentPending(vehCD)
-        self.onPendingRentChanged(vehCD)
+    def getActiveExclusiveVehicle(self):
+        vehicleInfo = self._lobbyContext.getServerSettings().getWotPlusExclusiveVehicleInfo()
+        if vehicleInfo:
+            return getItemByCompactDescr(vehicleInfo['vehTypeCompDescr'])
+        else:
+            return
 
-    def getRentPending(self):
-        return settings.getWotPlusSettings().rentPendingVehCD
+    def getActiveExclusiveVehicleName(self):
+        vehicle = self.getActiveExclusiveVehicle()
+        if vehicle is not None:
+            return vehicle.userString
+        else:
+            return ''
 
-    def resetRentPending(self):
-        self.setRentPending(None)
-        return
+    def getEnabledBonuses(self):
+        serverSettings = self._lobbyContext.getServerSettings()
+        enabledBonuses = []
+        if serverSettings.isWoTPlusExclusiveVehicleEnabled():
+            enabledBonuses.append(WoTPlusExclusiveVehicle())
+        if serverSettings.isRenewableSubGoldReserveEnabled():
+            enabledBonuses.append(GoldBank())
+        if serverSettings.isRenewableSubPassiveCrewXPEnabled():
+            enabledBonuses.append(IdleCrewXP())
+        if serverSettings.isWotPlusExcludedMapEnabled():
+            enabledBonuses.append(ExcludedMap())
+        if serverSettings.isFreeEquipmentDemountingEnabled():
+            enabledBonuses.append(FreeEquipmentDemounting())
+        if serverSettings.isDailyAttendancesEnabled():
+            enabledBonuses.append(AttendanceReward())
+        return enabledBonuses
 
     @ifAccount
     def toggleWotPlusDev(self):
         self._account._doCmdInt(AccountCommands.CMD_TOGGLE_RENEWABLE_SUB_DEV, 0, self._onCmdResponseReceived)
+
+    @ifAccount
+    def giveAttendanceRewardDev(self):
+        self._account._doCmdInt(AccountCommands.CMD_GIVE_ATTENDANCE_REWARD_DEV, 0, self._onCmdResponseReceived)
 
     def setWotPlusStateDev(self, state):
         self._state = WotPlusState(state)
@@ -184,9 +215,6 @@ class WotPlusController(IWotPlusController):
 
     def simulateNewGameDay(self):
         self._account._doCmdInt(AccountCommands.CMD_WOT_PLUS_NEW_GAME_DAY, 0, self._onCmdResponseReceived)
-
-    def simulateRentTank(self, tankId):
-        self._account._doCmdInt(AccountCommands.CMD_WOT_PLUS_RENT_TANK, tankId, self._onCmdResponseReceived)
 
     @ifAccount
     def setReservesDev(self, creditsVal, goldVal):
@@ -209,18 +237,30 @@ class WotPlusController(IWotPlusController):
             return False
         return True
 
+    def onDailyAttendanceUpdate(self):
+        with settings.wotPlusSettings() as (dt):
+            dt.increaseDailyAttendance()
+        self.onAttendanceUpdated()
+
+    def isDailyAttendanceQuest(self, questID):
+        dailyAttendancePrefix = self._lobbyContext.getServerSettings().getDailyAttendanceQuestPrefix()
+        return questID.startswith(dailyAttendancePrefix)
+
+    def getFormattedDailyAttendanceBonuses(self, bonuses):
+        composer = CurtailingAwardsComposer(displayedAwardsCount=constants.WoTPlusDailyAttendance.MAXIMUM_DISPLAYED_REWARDS)
+        return composer.getFormattedBonuses(bonuses, AWARDS_SIZES.BIG)
+
     def processSwitchNotifications(self):
         if g_bootcamp.isRunning():
             return
         serverSettings = self._lobbyContext.getServerSettings()
         isWotPlusEnabled = self.isWotPlusEnabled()
-        isEntryPointsEnabled = serverSettings.isWotPlusNewSubscriptionEnabled()
         isGoldReserveEnabled = serverSettings.isRenewableSubGoldReserveEnabled()
         isPassiveXpEnabled = serverSettings.isRenewableSubPassiveCrewXPEnabled()
         isFreeDemountingEnabled = serverSettings.isFreeEquipmentDemountingEnabled()
         isExcludedMapEnabled = serverSettings.isWotPlusExcludedMapEnabled()
+        isDailyAttendancesEnabled = serverSettings.isDailyAttendancesEnabled()
         with settings.wotPlusSettings() as (dt):
-            dt.setEntryPointsEnabledState(isEntryPointsEnabled)
             dt.setWotPlusEnabledState(isWotPlusEnabled)
             hasSubscription = self.isEnabled()
             if not isWotPlusEnabled and not hasSubscription:
@@ -234,11 +274,13 @@ class WotPlusController(IWotPlusController):
                     strategy.notifyClient(dt.isPassiveXpEnabled, isPassiveXpEnabled, SCH_CLIENT_MSG_TYPE.WOTPLUS_PASSIVEXP_ENABLED, SCH_CLIENT_MSG_TYPE.WOTPLUS_PASSIVEXP_DISABLED)
                     strategy.notifyClient(dt.isFreeDemountingEnabled, isFreeDemountingEnabled, SCH_CLIENT_MSG_TYPE.WOTPLUS_FREE_DEMOUNT_ENABLED, SCH_CLIENT_MSG_TYPE.WOTPLUS_FREE_DEMOUNT_DISABLED)
                     strategy.notifyClient(dt.isExcludedMapEnabled, isExcludedMapEnabled, SCH_CLIENT_MSG_TYPE.BONUS_EXCLUDED_MAP_ENABLED, SCH_CLIENT_MSG_TYPE.BONUS_EXCLUDED_MAP_DISABLED)
+                    strategy.notifyClient(dt.isDailyAttendancesEnabled, isDailyAttendancesEnabled, SCH_CLIENT_MSG_TYPE.WOTPLUS_DAILY_ATTENDANCES_ENABLED, SCH_CLIENT_MSG_TYPE.WOTPLUS_DAILY_ATTENDANCES_DISABLED)
             dt.setIsFirstTime(not hasSubscription)
             dt.setGoldReserveEnabledState(isGoldReserveEnabled)
             dt.setPassiveXpState(isPassiveXpEnabled)
             dt.setFreeDemountingState(isFreeDemountingEnabled)
             dt.setExcludedMapState(isExcludedMapEnabled)
+            dt.setDailyAttendancesState(isDailyAttendancesEnabled)
 
     @wg_async
     def _resolveState(self):

@@ -50,13 +50,15 @@
 		<AN-VRC-7_7x7>501</AN-VRC-7_7x7>
 		<AN-ARC-27_FL>502</AN-ARC-27_FL>
 		<AN_VRC-3_7x7>503</AN_VRC-3_7x7>
-		<AN_VRC-3_FEP>601</AN_VRC-3_FEP>
 		<SCR_508_bootcamp>64002</SCR_508_bootcamp>
 		<Development_Radio>65535</Development_Radio>
 		<SCR_506_MapsTraining_Dummy_MT_1>6</SCR_506_MapsTraining_Dummy_MT_1>
 		<SCR_508_1_MapsTraining_Player_HT_1>20</SCR_508_1_MapsTraining_Player_HT_1>
 		<SCR_528_MapsTraining_Dummy_LT_2>22</SCR_528_MapsTraining_Dummy_LT_2>
 		<AN_VRC-3_7x7_HT>31001</AN_VRC-3_7x7_HT>
+		<SCR_619_NewOnBoarding>64005</SCR_619_NewOnBoarding>
+		<SCR_506_NewOnBoarding>64006</SCR_506_NewOnBoarding>
+		<SCR_508_1_NewOnBoarding>64007</SCR_508_1_NewOnBoarding>
 	</ids>
 	<shared>
 		<SCR_200>
@@ -583,21 +585,6 @@
 			<maxRegenHealth>96</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</FuG_7_Ausf_F>
-		<AN_VRC-3_FEP>
-			<userString>#usa_vehicles:AN_VRC-3_FEP</userString>
-			<tags/>
-			<level>10</level>
-			<price>0</price>
-			<notInShop>true</notInShop>
-			<weight>160</weight>
-			<distance>745</distance>
-			<maxHealth>250</maxHealth>
-			<maxRegenHealth>75</maxRegenHealth>
-			<repairCost>
-				3.5
-				<!--BW_String-->
-			</repairCost>
-		</AN_VRC-3_FEP>
 		<T23radio>
 			<userString>#usa_vehicles:SCR_508A</userString>
 			<tags/>
@@ -791,5 +778,44 @@
 				<!--BW_String-->
 			</repairCost>
 		</AN_VRC-3_7x7_HT>
+		<SCR_619_NewOnBoarding>
+			<userString>#usa_vehicles:SCR_619</userString>
+			<tags/>
+			<level>10</level>
+			<price>54000</price>
+			<weight>80</weight>
+			<distance>750</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+			<invulnerable>True</invulnerable>
+			<notInShop>True</notInShop>
+		</SCR_619_NewOnBoarding>
+		<SCR_506_NewOnBoarding>
+			<userString>#usa_vehicles:SCR_506</userString>
+			<tags/>
+			<level>9</level>
+			<price>33600</price>
+			<weight>110</weight>
+			<distance>615</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+			<invulnerable>True</invulnerable>
+			<notInShop>True</notInShop>
+		</SCR_506_NewOnBoarding>
+		<SCR_508_1_NewOnBoarding>
+			<userString>#usa_vehicles:SCR_508_1</userString>
+			<tags/>
+			<invulnerable>True</invulnerable>
+			<notInShop>true</notInShop>
+			<level>8</level>
+			<price>21600</price>
+			<weight>100</weight>
+			<distance>200</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</SCR_508_1_NewOnBoarding>
 	</shared>
 </root>

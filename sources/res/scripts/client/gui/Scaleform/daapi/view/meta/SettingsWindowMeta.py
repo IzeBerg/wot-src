@@ -105,3 +105,7 @@ class SettingsWindowMeta(AbstractWindowView):
     def as_setFeedbackDataProviderS(self, dataProvider):
         if self._isDAAPIInited():
             return self.flashObject.as_setFeedbackDataProvider(dataProvider)
+
+    def as_setDisabledTabsOverlayS(self, tabIndexes, text):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setDisabledTabsOverlay(tabIndexes, text)

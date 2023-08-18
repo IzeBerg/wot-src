@@ -13,5 +13,7 @@ package net.wg.gui.messenger.meta
       function as_hideMembersList() : void;
       
       function as_showWarning(param1:String) : void;
+      
+      function as_setIsPrivate(param1:Boolean) : void;
    }
 }

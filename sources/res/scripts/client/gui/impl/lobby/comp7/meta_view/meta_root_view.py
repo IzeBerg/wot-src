@@ -1,5 +1,5 @@
 import logging, typing
-from frameworks.wulf import ViewFlags, ViewSettings, WindowFlags, WindowLayer
+from frameworks.wulf import ViewFlags, ViewSettings, WindowLayer
 from gui import GUI_SETTINGS
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
@@ -7,22 +7,23 @@ from gui.impl.backport import BackportTooltipWindow
 from gui.impl.backport.backport_tooltip import createTooltipData
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.comp7.meta_view.root_view_model import RootViewModel
-from gui.impl.gen.view_models.views.lobby.comp7.meta_view.tab_model import Tabs, TabModel
+from gui.impl.gen.view_models.views.lobby.comp7.meta_view.tab_model import MetaRootViews, TabModel
 from gui.impl.gui_decorators import args2params
 from gui.impl.lobby.comp7 import comp7_model_helpers
 from gui.impl.lobby.comp7.meta_view.pages.leaderboard_page import LeaderboardPage
 from gui.impl.lobby.comp7.meta_view.pages.progression_page import ProgressionPage
 from gui.impl.lobby.comp7.meta_view.pages.rank_rewards_page import RankRewardsPage
 from gui.impl.lobby.comp7.meta_view.pages.weekly_quests_page import WeeklyQuestsPage
+from gui.impl.lobby.comp7.meta_view.pages.yearly_rewards_page import YearlyRewardsPage
+from gui.impl.lobby.comp7.meta_view.pages.yearly_statistics_page import YearlyStatisticsPage
 from gui.impl.lobby.mode_selector.items.base_item import getInfoPageKey
 from gui.impl.pub import ViewImpl
-from gui.impl.pub.lobby_window import LobbyWindow
 from gui.prb_control.entities.listener import IGlobalListener
 from gui.prb_control.settings import SELECTOR_BATTLE_TYPES
-from gui.shared.event_dispatcher import showBrowserOverlayView
+from gui.shared.event_dispatcher import showBrowserOverlayView, showHangar
 from helpers import dependency
 from skeletons.gui.game_control import IComp7Controller
-from gui.impl.lobby.comp7.comp7_lobby_sounds import getComp7MetaSoundSpace
+from gui.impl.lobby.comp7.comp7_lobby_sounds import getComp7MetaSoundSpace, playComp7MetaViewTabSound
 if typing.TYPE_CHECKING:
     from gui.impl.lobby.comp7.meta_view.pages import PageSubModelPresenter
 _logger = logging.getLogger(__name__)
@@ -34,13 +35,13 @@ class MetaRootView(ViewImpl, IGlobalListener):
 
     def __init__(self, layoutID, *args, **kwargs):
         settings = ViewSettings(layoutID)
-        settings.flags = ViewFlags.LOBBY_TOP_SUB_VIEW
+        settings.flags = ViewFlags.LOBBY_SUB_VIEW
         settings.model = RootViewModel()
         settings.args = args
         settings.kwargs = kwargs
         super(MetaRootView, self).__init__(settings)
         self.__pages = {}
-        self.__tabId = Tabs.PROGRESSION
+        self.__tabId = MetaRootViews.PROGRESSION
 
     @property
     def viewModel(self):
@@ -76,21 +77,31 @@ class MetaRootView(ViewImpl, IGlobalListener):
 
     def onPrbEntitySwitched(self):
         if not self.__comp7Controller.isComp7PrbActive():
-            self.destroyWindow()
+            showHangar()
+
+    def switchPage(self, tabId, *args, **kwargs):
+        if self.__currentPage.isLoaded:
+            self.__currentPage.finalize()
+        page = self.__pages[tabId]
+        page.initialize(*args, **kwargs)
+        self.viewModel.setPageViewId(page.pageId)
+        playComp7MetaViewTabSound(tabId)
+        self.__tabId = tabId
 
     def _finalize(self):
         self.__removeListeners()
         self.__clearPages()
 
-    def _onLoading(self, tabId=None, *args, **kwargs):
+    def _onLoading(self, *args, **kwargs):
+        tabId = kwargs.pop('tabId', None)
         if tabId is not None:
-            if tabId in tuple(Tabs):
+            if tabId in tuple(MetaRootViews):
                 self.__tabId = tabId
             else:
                 _logger.error('Wrong tabId: %s', tabId)
         self.__initPages()
         self.__updateTabs()
-        self.__switchPage(self.__tabId, *args, **kwargs)
+        self.switchPage(self.__tabId, *args, **kwargs)
         comp7_model_helpers.setScheduleInfo(model=self.viewModel.scheduleInfo)
         self.__addListeners()
         return
@@ -102,7 +113,7 @@ class MetaRootView(ViewImpl, IGlobalListener):
     def __addListeners(self):
         self.viewModel.onClose += self.__onClose
         self.viewModel.onInfoPageOpen += self.__onInfoPageOpen
-        self.viewModel.sidebar.onSideBarTabClick += self.__onSidebarTabClicked
+        self.viewModel.sidebar.onSideBarTabChange += self.__onSideBarTabChanged
         self.viewModel.scheduleInfo.season.pollServerTime += self.__onScheduleUpdated
         self.__comp7Controller.onComp7ConfigChanged += self.__onScheduleUpdated
         self.__comp7Controller.onStatusUpdated += self.__onStatusUpdated
@@ -112,7 +123,7 @@ class MetaRootView(ViewImpl, IGlobalListener):
     def __removeListeners(self):
         self.viewModel.onClose -= self.__onClose
         self.viewModel.onInfoPageOpen -= self.__onInfoPageOpen
-        self.viewModel.sidebar.onSideBarTabClick -= self.__onSidebarTabClicked
+        self.viewModel.sidebar.onSideBarTabChange -= self.__onSideBarTabChanged
         self.viewModel.scheduleInfo.season.pollServerTime -= self.__onScheduleUpdated
         self.__comp7Controller.onComp7ConfigChanged -= self.__onScheduleUpdated
         self.__comp7Controller.onStatusUpdated -= self.__onStatusUpdated
@@ -124,20 +135,22 @@ class MetaRootView(ViewImpl, IGlobalListener):
 
     def __onStatusUpdated(self, _):
         if not self.__comp7Controller.isEnabled() or self.__comp7Controller.isFrozen():
-            self.destroyWindow()
+            showHangar()
         else:
             comp7_model_helpers.setScheduleInfo(model=self.viewModel.scheduleInfo)
 
     def __onOfflineStatusUpdated(self):
         if self.__comp7Controller.isOffline:
-            self.destroyWindow()
+            showHangar()
 
     def __initPages(self):
         pages = (
          ProgressionPage(self.viewModel.progressionModel, self),
          RankRewardsPage(self.viewModel.rankRewardsModel, self),
+         YearlyRewardsPage(self.viewModel.yearlyRewardsModel, self),
          WeeklyQuestsPage(self.viewModel.weeklyQuestsModel, self),
-         LeaderboardPage(self.viewModel.leaderboardModel, self))
+         LeaderboardPage(self.viewModel.leaderboardModel, self),
+         YearlyStatisticsPage(self.viewModel.yearlyStatisticsModel, self))
         self.__pages = {p.pageId:p for p in pages}
 
     def __clearPages(self):
@@ -149,42 +162,27 @@ class MetaRootView(ViewImpl, IGlobalListener):
         with self.viewModel.transaction() as (tx):
             tabs = tx.sidebar.getItems()
             tabs.clear()
-            for tab in tuple(Tabs):
+            for tab in tuple(MetaRootViews):
                 tabModel = TabModel()
-                tabModel.setName(tab)
+                tabModel.setId(tab)
                 tabs.addViewModel(tabModel)
 
             tabs.invalidate()
-            tx.sidebar.setStartIndex(self.__tabId)
 
     def __onClose(self):
-        self.destroyWindow()
+        showHangar()
 
     @args2params(int)
-    def __onSidebarTabClicked(self, tabId):
+    def __onSideBarTabChanged(self, tabId):
         if tabId == self.__tabId:
             return
         if tabId not in self.__pages:
             _logger.error('Wrong tabId: %s', tabId)
             return
-        self.__switchPage(tabId)
-
-    def __switchPage(self, tabId, *args, **kwargs):
-        if self.__currentPage.isLoaded:
-            self.__currentPage.finalize()
-        page = self.__pages[tabId]
-        page.initialize(*args, **kwargs)
-        self.viewModel.setViewType(page.pageId)
-        self.__tabId = tabId
+        self.switchPage(tabId)
 
     @staticmethod
     def __onInfoPageOpen():
         url = GUI_SETTINGS.lookup(getInfoPageKey(SELECTOR_BATTLE_TYPES.COMP7))
         showBrowserOverlayView(url, VIEW_ALIAS.WEB_VIEW_TRANSPARENT, hiddenLayers=(
          WindowLayer.MARKER, WindowLayer.VIEW, WindowLayer.WINDOW))
-
-
-class MetaRootViewWindow(LobbyWindow):
-
-    def __init__(self, tabId=None, parent=None, *args, **kwargs):
-        super(MetaRootViewWindow, self).__init__(wndFlags=WindowFlags.WINDOW, content=MetaRootView(layoutID=R.views.lobby.comp7.MetaRootView(), tabId=tabId, *args, **kwargs), parent=parent, layer=WindowLayer.TOP_SUB_VIEW)

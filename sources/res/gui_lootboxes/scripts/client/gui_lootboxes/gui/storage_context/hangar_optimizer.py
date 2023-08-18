@@ -33,8 +33,8 @@ class HangarOptimizer(object):
                 WebBrowser.pauseExternalCache(True)
             self.__state = _HangarOptimizerStates.ENABLED
 
-    def disable(self):
-        if self.isEnabled:
+    def disable(self, needShowHangar=True):
+        if self.isEnabled and needShowHangar:
             showHangar()
             app = self.__appFactory.getApp()
             if app:
@@ -42,6 +42,12 @@ class HangarOptimizer(object):
             if isPlayerAccount() and self.__hangarSpace.spaceInited:
                 BigWorld.worldDrawEnabled(True)
             self.__state = _HangarOptimizerStates.DISABLING
+        elif self.isEnabled and not needShowHangar:
+            if isPlayerAccount() and self.__hangarSpace.spaceInited:
+                BigWorld.worldDrawEnabled(True)
+                AnimationSequence.setEnableAnimationSequenceUpdate(True)
+                WebBrowser.pauseExternalCache(False)
+            self.__state = _HangarOptimizerStates.DISABLED
 
     def clear(self):
         if self.__state == _HangarOptimizerStates.DISABLING:

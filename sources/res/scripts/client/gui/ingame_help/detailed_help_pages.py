@@ -23,13 +23,14 @@ class HelpPagePriority(object):
     TRACK_WITHIN_TRACK = 2
     ROCKET_ACCELERATION = 3
     TURBOSHAFT_ENGINE = 4
-    BATTLE_ROYALE = 5
-    DUAL_GUN = 6
-    WHEELED = 7
-    BURNOUT = 8
-    SIEGE_MODE = 9
-    ROLE_TYPE = 10
-    COMP7 = 11
+    DUAL_ACCURACY = 5
+    BATTLE_ROYALE = 6
+    DUAL_GUN = 7
+    WHEELED = 8
+    BURNOUT = 9
+    SIEGE_MODE = 10
+    ROLE_TYPE = 11
+    COMP7 = 12
     FLAMETHROWER = 11
 
 
@@ -326,6 +327,27 @@ class RocketAccelerationPagesBuilder(DetailedHelpPagesBuilder):
         return
 
 
+class DualAccuracyPagesBuilder(DetailedHelpPagesBuilder):
+    _SUITABLE_CTX_KEYS = ('hasDualAccuracy', )
+
+    @classmethod
+    def priority(cls):
+        return HelpPagePriority.DUAL_ACCURACY
+
+    @classmethod
+    def buildPages(cls, ctx):
+        pages = []
+        addPage(pages, buildTitle(ctx), backport.text(R.strings.ingame_help.detailsHelp.dualAccuracy.mechanics.title()), text_styles.mainBig(backport.text(R.strings.ingame_help.detailsHelp.dualAccuracy.mechanics())), [], [], backport.image(R.images.gui.maps.icons.battleHelp.dualAccuracy.mechanics()), hintCtx=HelpHintContext.MECHANICS)
+        return pages
+
+    @classmethod
+    def _collectHelpCtx(cls, ctx, arenaVisitor, vehicle):
+        hasDualAccuracy = vehicle is not None and vehicle.typeDescriptor.hasDualAccuracy
+        ctx['hasUniqueVehicleHelpScreen'] = ctx.get('hasUniqueVehicleHelpScreen') or hasDualAccuracy
+        ctx['hasDualAccuracy'] = hasDualAccuracy
+        return
+
+
 class RoleTypePagesBuilder(DetailedHelpPagesBuilder):
     _SUITABLE_CTX_KEYS = ('roleType', )
 
@@ -403,4 +425,5 @@ class MapboxPagesBuilder(DetailedHelpPagesBuilder):
 registerIngameHelpPagesBuilders((
  SiegeModePagesBuilder, BurnOutPagesBuilder, WheeledPagesBuilder, TrackWithinTrackPagesBuilder,
  DualGunPagesBuilder, BattleRoyalePagesBuilder, TurboshaftEnginePagesBuilder, RoleTypePagesBuilder,
- RocketAccelerationPagesBuilder, Comp7PagesBuilder, MapboxPagesBuilder, FlameTankPagesBuilder))
+ RocketAccelerationPagesBuilder, Comp7PagesBuilder, MapboxPagesBuilder, DualAccuracyPagesBuilder,
+ FlameTankPagesBuilder))

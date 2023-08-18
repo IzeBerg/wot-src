@@ -183,8 +183,9 @@ package net.wg.gui.battle.battleRoyale
       
       override public function updateStage(param1:Number, param2:Number) : void
       {
+         var _loc3_:Number = NaN;
          super.updateStage(param1,param2);
-         var _loc3_:Number = param1 >> 1;
+         _loc3_ = param1 >> 1;
          this.teamBasesPanelUI.x = _loc3_;
          this.sixthSense.x = _loc3_;
          this.sixthSense.y = param2 >> 2;
