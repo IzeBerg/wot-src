@@ -27,14 +27,7 @@ class StyleVideoView(ViewImpl):
         return super(StyleVideoView, self).getViewModel()
 
     def onClose(self):
-        self.__showBack()
         self.destroyWindow()
-        if callable(self.__onVideoClosedHandle):
-            self.__onVideoClosedHandle()
-            self.__onVideoClosedHandle = None
-        SoundGroups.g_instance.playSound2D(BattlePassSounds.VIDEO_STOP)
-        switchVideoOverlaySoundFilter(on=False)
-        return
 
     def _onLoading(self, chapter, level, *args, **kwargs):
         super(StyleVideoView, self)._onLoading(*args, **kwargs)
@@ -54,8 +47,14 @@ class StyleVideoView(ViewImpl):
         self.__hideBack()
 
     def _finalize(self):
+        self.__showBack()
         Windowing.removeWindowAccessibilityHandler(self.__onWindowAccessibilityChanged)
-        self.onClose()
+        if callable(self.__onVideoClosedHandle):
+            self.__onVideoClosedHandle()
+            self.__onVideoClosedHandle = None
+        SoundGroups.g_instance.playSound2D(BattlePassSounds.VIDEO_STOP)
+        switchVideoOverlaySoundFilter(on=False)
+        return
 
     def __hideBack(self):
         BigWorld.worldDrawEnabled(False)

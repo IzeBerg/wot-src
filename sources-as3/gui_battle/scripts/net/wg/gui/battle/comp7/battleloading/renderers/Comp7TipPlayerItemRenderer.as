@@ -42,11 +42,15 @@ package net.wg.gui.battle.comp7.battleloading.renderers
       
       override protected function draw() : void
       {
-         var _loc1_:Comp7DAAPIVehicleInfoVO = null;
          var _loc2_:String = null;
          var _loc3_:String = null;
          var _loc4_:Boolean = false;
-         _loc1_ = model as Comp7DAAPIVehicleInfoVO;
+         super.draw();
+         var _loc1_:Comp7DAAPIVehicleInfoVO = model as Comp7DAAPIVehicleInfoVO;
+         if(_loc1_ == null)
+         {
+            return;
+         }
          _loc2_ = _loc1_.rank;
          _loc3_ = _loc1_.rankDivision;
          _loc4_ = StringUtils.isNotEmpty(_loc2_) && StringUtils.isNotEmpty(_loc3_);
@@ -59,7 +63,6 @@ package net.wg.gui.battle.comp7.battleloading.renderers
          {
             this._rankIcon.imageName = BATTLEATLAS.QUALIFICATION_22X22;
          }
-         super.draw();
       }
       
       override protected function onDispose() : void

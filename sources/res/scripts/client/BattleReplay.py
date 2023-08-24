@@ -491,10 +491,11 @@ class BattleReplay(object):
                 if self.isControllingCamera:
                     self.appLoader.detachCursor(settings.APP_NAME_SPACE.SF_BATTLE)
                     controlMode = self.getControlMode()
-                    if controlMode not in _POSTMORTEM_CTRL_MODES:
+                    if controlMode in _POSTMORTEM_CTRL_MODES:
+                        self.onControlModeChanged(controlMode)
+                    else:
                         self.onControlModeChanged('arcade')
                     self.__replayCtrl.isControllingCamera = False
-                    self.onControlModeChanged(controlMode)
                     self.__showInfoMessage('replayFreeCameraActivated')
                 else:
                     if not self.__isAllowedSavedCamera():

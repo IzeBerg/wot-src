@@ -50,6 +50,7 @@ class PrebattleView(BaseWaitQueueView, IArenaLoadController):
 
     def spaceLoadCompleted(self):
         if BattleReplay.isPlaying() or BigWorld.checkUnattended():
+            sendViewLoadedEvent(self.LAYOUT_ID)
             self._gotoBattleHandler()
         else:
             self.viewModel.setIsLoading(False)

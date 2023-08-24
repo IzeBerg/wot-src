@@ -10,7 +10,7 @@ from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE
 from helpers import dependency
 from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.impl import IGuiLoader
-from story_mode.gui.fade_in_out import UseStoryModeFading
+from story_mode.gui.fade_in_out import UseStoryModeFading, UseHeaderNavigationImpossible
 from story_mode.gui.story_mode_gui_constants import VIEW_ALIAS
 from story_mode.skeletons.story_mode_controller import IStoryModeController
 from story_mode_common.story_mode_constants import LOGGER_NAME
@@ -51,8 +51,8 @@ def showIntroVideo():
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.STORY_MODE_INTRO_VIDEO_WINDOW)), EVENT_BUS_SCOPE.BATTLE)
 
 
-@UseStoryModeFading(waitForLayoutReady=R.views.story_mode.battle.PrebattleWindow())
 @ifNotArenaLoaded
+@UseStoryModeFading(waitForLayoutReady=R.views.story_mode.battle.PrebattleWindow())
 def showPrebattleWindow(missionId):
     _logger.debug('showPrebattleWindow')
     from story_mode.gui.impl.battle.prebattle_window import PrebattleWindow
@@ -97,6 +97,7 @@ def showCongratulationsWindow(isCloseVisible=False, onClose=None):
     window.load()
 
 
+@UseHeaderNavigationImpossible()
 @UseStoryModeFading(layer=WindowLayer.TOP_SUB_VIEW, waitForLayoutReady=R.views.story_mode.lobby.MissionSelectionView())
 def showMissionSelectionView():
     _logger.debug('showMissionSelectionView')

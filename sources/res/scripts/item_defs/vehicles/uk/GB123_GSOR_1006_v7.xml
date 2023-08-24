@@ -4,8 +4,8 @@
 	<crew>
 		<commander>radioman
 			loader</commander>
-		<driver/>
 		<gunner>loader</gunner>
+		<driver/>
 	</crew>
 	<supplySlots>2 1 1 6 6 6 7 8 8 8</supplySlots>
 	<postProgressionTree>role_MT_sniper</postProgressionTree>
@@ -2034,12 +2034,6 @@
 			<tags/>
 			<level>8</level>
 			<price>35000</price>
-			<unlocks>
-				<turret>
-					Turret_2_GB123_GSOR_1006_v7
-					<cost>24600</cost>
-				</turret>
-			</unlocks>
 			<primaryArmor>armor_2 armor_3 armor_4</primaryArmor>
 			<weight>4000</weight>
 			<maxHealth>300</maxHealth>
@@ -2093,6 +2087,12 @@
 				<_90mm_Kenerga_Mk8>
 					shared
 					<maxAmmo>50</maxAmmo>
+					<unlocks>
+						<gun>
+							_105mm_MV_Gun
+							<cost>51000</cost>
+						</gun>
+					</unlocks>
 					<armor>
 						<gun>20</gun>
 					</armor>
@@ -2204,6 +2204,12 @@
 				<_105mm_MV_Gun>
 					shared
 					<maxAmmo>50</maxAmmo>
+					<unlocks>
+						<turret>
+							Turret_2_GB123_GSOR_1006_v7
+							<cost>24600</cost>
+						</turret>
+					</unlocks>
 					<armor>
 						<gun>20</gun>
 					</armor>
@@ -3026,10 +3032,10 @@
 			<level>9</level>
 			<price>59000</price>
 			<unlocks>
-				<gun>
-					_105mm_MV_Gun
-					<cost>51000</cost>
-				</gun>
+				<vehicle>
+					GB120_Concept_No_5
+					<cost>225000</cost>
+				</vehicle>
 			</unlocks>
 			<primaryArmor>armor_2 armor_3 armor_4</primaryArmor>
 			<weight>4500</weight>
@@ -3229,12 +3235,6 @@
 				<_105mm_MV_Gun>
 					shared
 					<maxAmmo>40</maxAmmo>
-					<unlocks>
-						<vehicle>
-							GB120_Concept_No_5
-							<cost>225000</cost>
-						</vehicle>
-					</unlocks>
 					<armor>
 						<armor_1>
 							100

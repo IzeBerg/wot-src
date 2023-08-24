@@ -498,7 +498,11 @@ class AmmoPlugin(CrosshairPlugin):
         reloadingState = ctrl.getGunReloadingState()
         self.__setReloadingState(reloadingState)
         if self.__guiSettings.hasAutoReload:
-            self.__reloadAnimator.setClipAutoLoading(reloadingState.getActualValue(), reloadingState.getBaseValue(), isStun=False)
+            autoReloadingState = ctrl.getAutoReloadingState()
+            baseValue = autoReloadingState.getBaseValue()
+            if quantityInClip == SHELL_QUANTITY_UNKNOWN:
+                baseValue = ctrl.getShellChangeTime()
+            self.__reloadAnimator.setClipAutoLoading(autoReloadingState.getActualValue(), round(baseValue, 1), isStun=False, isTimerOn=True)
         if self._isHideAmmo():
             self._parentObj.as_setNetVisibleS(CROSSHAIR_CONSTANTS.VISIBLE_NET)
         self._parentObj.as_setShellChangeTimeS(ctrl.canQuickShellChange(), ctrl.getQuickShellChangeTime())
