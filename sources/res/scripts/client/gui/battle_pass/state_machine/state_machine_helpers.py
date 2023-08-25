@@ -21,6 +21,16 @@ def isProgressionComplete(_, battlePass=None):
     return isCompleteState and isAllChosen and isAllChaptersBought
 
 
+@dependency.replace_none_kwargs(battlePass=IBattlePassController)
+def getChapterForStyleId(style, battlePass=None):
+    config = battlePass.getStylesConfig()
+    for chapterId, styleId in config.iteritems():
+        if styleId == style:
+            return chapterId
+
+    return
+
+
 def separateRewards(rewards):
     styleTokens = []
     chosenStyle = None
@@ -41,6 +51,13 @@ def separateRewards(rewards):
 
         if not rewardBlock.get('tokens', {}):
             rewardBlock.pop('tokens', None)
+        if 'customizations' in rewardBlock:
+            for custItem in rewardBlock['customizations']:
+                if custItem['custType'] == 'style':
+                    chapterId = getChapterForStyleId(custItem['id'])
+                    if chapterId is not None:
+                        chosenStyle = chapterId
+
         if not rewardBlock:
             blocksToRemove.append(index)
         styleTokens = []

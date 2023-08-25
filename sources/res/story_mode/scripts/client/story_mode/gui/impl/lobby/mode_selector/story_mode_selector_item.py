@@ -2,7 +2,7 @@ from frameworks.wulf import WindowLayer
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.lobby.mode_selector.items.base_item import ModeSelectorLegacyItem
-from story_mode.gui.fade_in_out import UseStoryModeFading
+from story_mode.gui.fade_in_out import UseStoryModeFading, UseHeaderNavigationImpossible
 from story_mode.uilogging.story_mode.loggers import SelectorCardLogger
 from wg_async import wg_async
 
@@ -25,6 +25,7 @@ class StoryModeSelectorItem(ModeSelectorLegacyItem):
         if not self.viewModel.getIsSelected():
             yield self.animateSelection()
 
+    @UseHeaderNavigationImpossible()
     @UseStoryModeFading(layer=WindowLayer.TOP_SUB_VIEW, hide=False)
     def animateSelection(self):
         pass

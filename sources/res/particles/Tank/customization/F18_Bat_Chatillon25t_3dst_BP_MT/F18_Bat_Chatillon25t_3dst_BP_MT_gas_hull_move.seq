@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.500000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Gas</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/F18_Bat_Chatillon25t_3dst_BP_MT/F18_Bat_Chatillon25t_3dst_BP_MT_gas.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.680000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>gas</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.376471 0.372549 0.862745 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 2.250000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 2.250000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.133333</startTime>
+				<value>0.376471 0.372549 0.862745 0.300000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.634236</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.634236</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.266667</startTime>
+				<value>0.376471 0.372549 0.862745 0.169130</value>
+				<inTangent>0.000000 0.000000 0.000000 0.128419</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.128419</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.566667</startTime>
+				<value>0.376471 0.372549 0.862745 0.540640</value>
+				<inTangent>0.000000 0.000000 0.000000 0.030767</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.030767</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>0.376471 0.372549 0.862745 0.266045</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.368300</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.368300</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.100000</startTime>
+				<value>0.376471 0.372549 0.862745 0.398116</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.347874</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.347874</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.266667</startTime>
+				<value>0.376471 0.372549 0.862745 0.208785</value>
+				<inTangent>0.000000 0.000000 0.000000 -1.015389</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.015389</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.500000</startTime>
+				<value>0.376471 0.372549 0.862745 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.894794</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.894794</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Distortion</name>
+		<type>particle</type>
+		<resource>particles/Tank/customization/F18_Bat_Chatillon25t_3dst_BP_MT/F18_Bat_Chatillon25t_distortion.eff</resource>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Flame</name>
+		<type>particle</type>
+		<resource>particles/tank/customization/f18_bat_chatillon25t_3dst_bp_mt/f18_bat_chatillon25t_flame.eff</resource>
+	</sequenceObject>
+	<events/>
+</root>

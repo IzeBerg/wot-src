@@ -3168,7 +3168,7 @@ class BATTLE_MODE_LOCK_MASKS(object):
 
 RESOURCE_WELL_FORBIDDEN_TOKEN = 'rws{}_forbidden'
 QUESTS_SUPPORTED_EXCLUDE_TAGS = {
- 'collectorVehicle', 'special', 'secret', 'testTank'}
+ 'collectorVehicle', 'special', 'secret', 'testTank', 'premium', 'event_battles'}
 VEHICLE_HEALTH_DECIMALS = 1
 GUARANTEED_RANDOMIZED_DAMAGE = 1.0
 GUARANTEED_RANDOMIZED_PIERCING_POWER = 1.0
@@ -3270,7 +3270,7 @@ class InitialVehsAdditionStrategy(object):
     COUNTRY = 1
 
 
-class WINBACK_CALL_BATTLE_TOKEN_DRAW_REASON(enum.IntEnum):
+class WINBACK_BATTLE_TOKEN_DRAW_REASON(enum.IntEnum):
     REGULAR = 0
     MANUAL = 1
     SQUAD = 2

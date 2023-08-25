@@ -201,12 +201,6 @@ package net.wg.data.constants.generated
       
       public static const BADGE_135:String = "badge_135";
       
-      public static const BADGE_136:String = "badge_136";
-      
-      public static const BADGE_137:String = "badge_137";
-      
-      public static const BADGE_138:String = "badge_138";
-      
       public static const BADGE_14:String = "badge_14";
       
       public static const BADGE_15:String = "badge_15";
@@ -254,6 +248,12 @@ package net.wg.data.constants.generated
       public static const BADGE_31003:String = "badge_31003";
       
       public static const BADGE_31004:String = "badge_31004";
+      
+      public static const BADGE_31005:String = "badge_31005";
+      
+      public static const BADGE_31006:String = "badge_31006";
+      
+      public static const BADGE_31007:String = "badge_31007";
       
       public static const BADGE_32:String = "badge_32";
       
@@ -2697,6 +2697,8 @@ package net.wg.data.constants.generated
       
       public static const STRIP_138:String = "strip_138";
       
+      public static const STRIP_31007:String = "strip_31007";
+      
       public static const STRIP_56:String = "strip_56";
       
       public static const STRIP_57:String = "strip_57";
@@ -3548,6 +3550,8 @@ package net.wg.data.constants.generated
       public static const USSR_R172_OBJECT_752:String = "ussr-R172_Object_752";
       
       public static const USSR_R173_K_91_2:String = "ussr-R173_K_91_2";
+      
+      public static const USSR_R173_K_91_2_122:String = "ussr-R173_K_91_2_122";
       
       public static const USSR_R174_BT_5:String = "ussr-R174_BT-5";
       

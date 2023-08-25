@@ -1,5 +1,5 @@
 import os, random
-from uuid import uuid1
+from uuid import uuid1, UUID
 _node = None
 
 def _getNode():
@@ -15,3 +15,8 @@ def _getNode():
 
 def genUUID():
     return uuid1(_getNode())
+
+
+def utcTimeFromUUID1(u):
+    u = UUID(u)
+    return (u.time - 122192928000000000) * 100 / 1000000000.0

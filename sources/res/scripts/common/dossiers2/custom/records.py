@@ -3342,7 +3342,9 @@ RECORDS = (
  (
   'mt_maxVersusAI', 'maxDamage', 'p', 'H', 60001),
  (
-  'mt_maxVersusAI', 'maxDamageVehicle', 'p', 'I', 4294967295))
+  'mt_maxVersusAI', 'maxDamageVehicle', 'p', 'I', 4294967295),
+ (
+  'singleAchievements', 'mt_comp_3_1', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -5015,7 +5017,8 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('mt_maxVersusAI', 'maxFrags'): 31030, 
    ('mt_maxVersusAI', 'maxFragsVehicle'): 31031, 
    ('mt_maxVersusAI', 'maxDamage'): 31032, 
-   ('mt_maxVersusAI', 'maxDamageVehicle'): 31033}
+   ('mt_maxVersusAI', 'maxDamageVehicle'): 31033, 
+   ('singleAchievements', 'mt_comp_3_1'): 31034}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

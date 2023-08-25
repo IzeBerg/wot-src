@@ -109,6 +109,13 @@
 			<undamaged>vehicles/russian/R144_K_91/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/russian/R144_K_91/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/russian/R144_K_91/crash/lod0/Hull.model</exploded>
+			<sets>
+				<R144_K_91_3dst_MT>
+					<undamaged>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/crash/lod0/Hull.model</exploded>
+				</R144_K_91_3dst_MT>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -126,7 +133,7 @@
 			</sensitivityToImpulse>
 		</swinging>
 		<exhaust>
-			<pixie>diesel_large</pixie>
+			<pixie>gas_small</pixie>
 			<nodes>HP_Track_Exhaus_1 HP_Track_Exhaus_2</nodes>
 		</exhaust>
 		<turretPositions>
@@ -1213,6 +1220,12 @@
 				<clipAngle>0.770706</clipAngle>
 				<anchorShift>0.263942</anchorShift>
 			</slot>
+			<slot>
+				<slotType>attachment</slotType>
+				<slotId>18000</slotId>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -1276,6 +1289,13 @@
 				<undamaged>vehicles/russian/R144_K_91/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/russian/R144_K_91/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/russian/R144_K_91/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<R144_K_91_3dst_MT>
+						<undamaged>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/crash/lod0/Chassis.model</exploded>
+					</R144_K_91_3dst_MT>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>MEDIUM</lodDist>
@@ -1383,6 +1403,45 @@
 									<row3>-0.000004 0.739758 -3.151055</row3>
 								</boxCollider>
 							</hullCollider>
+							<hullCollider>
+								<modelsSet>R144_K_91_3dst_MT</modelsSet>
+								<boxCollider>
+									<row0>1.709212 0.000000 0.000000</row0>
+									<row1>0.000000 0.792767 0.000000</row1>
+									<row2>0.000000 0.000000 6.284265</row2>
+									<row3>0.000000 0.867291 0.131783</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.398612 0.000000 0.000000</row0>
+									<row1>0.000000 0.509897 0.000000</row1>
+									<row2>0.000000 0.000000 4.843834</row2>
+									<row3>0.000000 0.964481 -0.572534</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.398610 0.000001 -0.000001</row0>
+									<row1>-0.000000 0.263632 -0.143172</row1>
+									<row2>0.000000 0.513741 0.945987</row2>
+									<row3>0.000001 1.082839 2.233094</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.398610 0.000004 -0.000003</row0>
+									<row1>-0.000000 0.276790 0.115704</row1>
+									<row2>0.000001 -0.290312 0.694493</row2>
+									<row3>0.000001 1.211887 3.065480</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.398610 -0.000004 0.000020</row0>
+									<row1>-0.000001 -0.281656 0.103296</row1>
+									<row2>0.000001 -0.103296 -0.281656</row2>
+									<row3>-0.000004 0.759234 -3.151055</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>0.500000 0.000000 0.000000</row0>
+									<row1>0.000000 0.509897 0.000000</row1>
+									<row2>-0.000000 0.000000 6.000000</row2>
+									<row3>-2.006133 0.863390 -0.100951</row3>
+								</boxCollider>
+							</hullCollider>
 						</physicalParams>
 					</trackDebris>
 					<trackDebris>
@@ -1470,6 +1529,45 @@
 									<row1>-0.000000 -0.102556 0.281926</row1>
 									<row2>-0.000000 -0.281926 -0.102556</row2>
 									<row3>0.000004 0.739758 -3.151055</row3>
+								</boxCollider>
+							</hullCollider>
+							<hullCollider>
+								<modelsSet>R144_K_91_3dst_MT</modelsSet>
+								<boxCollider>
+									<row0>1.709212 0.000000 0.000000</row0>
+									<row1>0.000000 0.792767 0.000000</row1>
+									<row2>0.000000 0.000000 6.284265</row2>
+									<row3>-0.000000 0.867291 0.131783</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.398612 0.000000 0.000000</row0>
+									<row1>0.000000 0.509897 0.000000</row1>
+									<row2>0.000000 0.000000 4.843834</row2>
+									<row3>-0.000000 0.964481 -0.572534</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.398610 -0.000001 0.000001</row0>
+									<row1>0.000000 0.263632 -0.143172</row1>
+									<row2>0.000000 0.513741 0.945987</row2>
+									<row3>-0.000001 1.082839 2.233094</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.398610 -0.000004 0.000003</row0>
+									<row1>0.000000 0.276790 0.115704</row1>
+									<row2>-0.000001 -0.290312 0.694493</row2>
+									<row3>-0.000001 1.211887 3.065480</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.398610 -0.000004 -0.000014</row0>
+									<row1>0.000000 -0.281656 0.103296</row1>
+									<row2>-0.000001 -0.103296 -0.281656</row2>
+									<row3>0.000004 0.759234 -3.151055</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>0.500000 0.000000 -0.000000</row0>
+									<row1>0.000000 0.509897 0.000000</row1>
+									<row2>0.000000 0.000000 6.000000</row2>
+									<row3>2.006133 0.863390 -0.100951</row3>
 								</boxCollider>
 							</hullCollider>
 						</physicalParams>
@@ -1771,6 +1869,12 @@
 						<UTiles>1</UTiles>
 						<VTiles>1</VTiles>
 					</atlas>
+					<modelSets>
+						<R144_K_91_3dst_MT>
+							<segmentModelLeft>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/track/segment.model</segmentModelLeft>
+							<segmentModelRight>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/track/segment.model</segmentModelRight>
+						</R144_K_91_3dst_MT>
+					</modelSets>
 				</trackPair>
 				<lodDist>SPLINE_TRACK</lodDist>
 			</splineDesc>
@@ -1801,6 +1905,12 @@
 						<model>vehicles/russian/R144_K_91/track/segment.model</model>
 						<length>0.149377</length>
 					</mainSegment>
+					<modelSets>
+						<R144_K_91_3dst_MT>
+							<mainSegmentModel>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/track/segment.model</mainSegmentModel>
+							<secSegmentModel/>
+						</R144_K_91_3dst_MT>
+					</modelSets>
 					<collisionHull>
 						<bottom>
 							<part>
@@ -2803,6 +2913,12 @@
 						<model>vehicles/russian/R144_K_91/track/segment.model</model>
 						<length>0.148777</length>
 					</mainSegment>
+					<modelSets>
+						<R144_K_91_3dst_MT>
+							<mainSegmentModel>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/track/segment.model</mainSegmentModel>
+							<secSegmentModel/>
+						</R144_K_91_3dst_MT>
+					</modelSets>
 					<collisionHull>
 						<bottom>
 							<part>
@@ -3930,6 +4046,13 @@
 						<undamaged>vehicles/russian/R144_K_91/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/russian/R144_K_91/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/russian/R144_K_91/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<R144_K_91_3dst_MT>
+								<undamaged>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/crash/lod0/Gun_01.model</exploded>
+							</R144_K_91_3dst_MT>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/russian/R144_K_91/collision/Gun_01.model</collisionModelServer>
@@ -4057,6 +4180,27 @@
 								<!--BW_String-->
 							</size>
 						</slot>
+						<slot>
+							<slotType>insigniaOnGun</slotType>
+							<slotId>49001</slotId>
+							<rayStart>
+								-0.000001 0.007 2.36152
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								-0.000001 0.007 3.09152
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.14 0 0
+								<!--BW_String-->
+							</rayUp>
+							<compatibleModels>R144_K_91_3dst_MT</compatibleModels>
+							<size>
+								0.73
+								<!--BW_String-->
+							</size>
+						</slot>
 					</customizationSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -4077,6 +4221,13 @@
 				<undamaged>vehicles/russian/R144_K_91/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/russian/R144_K_91/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/russian/R144_K_91/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<R144_K_91_3dst_MT>
+						<undamaged>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/crash/lod0/Turret_01.model</exploded>
+					</R144_K_91_3dst_MT>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/russian/R144_K_91/collision/Turret_01.model</collisionModelServer>

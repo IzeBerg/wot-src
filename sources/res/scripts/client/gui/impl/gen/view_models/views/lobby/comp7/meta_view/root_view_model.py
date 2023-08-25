@@ -4,7 +4,6 @@ from gui.impl.gen.view_models.views.lobby.comp7.meta_view.pages.leaderboard_mode
 from gui.impl.gen.view_models.views.lobby.comp7.meta_view.pages.progression_model import ProgressionModel
 from gui.impl.gen.view_models.views.lobby.comp7.meta_view.pages.rank_rewards_model import RankRewardsModel
 from gui.impl.gen.view_models.views.lobby.comp7.meta_view.pages.weekly_quests_model import WeeklyQuestsModel
-from gui.impl.gen.view_models.views.lobby.comp7.meta_view.pages.yearly_rewards_model import YearlyRewardsModel
 from gui.impl.gen.view_models.views.lobby.comp7.meta_view.pages.yearly_statistics_model import YearlyStatisticsModel
 from gui.impl.gen.view_models.views.lobby.comp7.meta_view.sidebar_model import SidebarModel
 from gui.impl.gen.view_models.views.lobby.comp7.schedule_info_model import ScheduleInfoModel
@@ -12,16 +11,14 @@ from gui.impl.gen.view_models.views.lobby.comp7.schedule_info_model import Sched
 class MetaRootViews(IntEnum):
     PROGRESSION = 0
     RANKREWARDS = 1
-    YEARLYREWARDS = 2
-    WEEKLYQUESTS = 3
-    LEADERBOARD = 4
-    YEARLYSTATISTICS = 5
+    WEEKLYQUESTS = 2
+    LEADERBOARD = 3
 
 
 class RootViewModel(ViewModel):
     __slots__ = ('onClose', 'onInfoPageOpen')
 
-    def __init__(self, properties=9, commands=2):
+    def __init__(self, properties=8, commands=2):
         super(RootViewModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -73,26 +70,18 @@ class RootViewModel(ViewModel):
         return LeaderboardModel
 
     @property
-    def yearlyRewardsModel(self):
-        return self._getViewModel(6)
-
-    @staticmethod
-    def getYearlyRewardsModelType():
-        return YearlyRewardsModel
-
-    @property
     def yearlyStatisticsModel(self):
-        return self._getViewModel(7)
+        return self._getViewModel(6)
 
     @staticmethod
     def getYearlyStatisticsModelType():
         return YearlyStatisticsModel
 
     def getPageViewId(self):
-        return MetaRootViews(self._getNumber(8))
+        return MetaRootViews(self._getNumber(7))
 
     def setPageViewId(self, value):
-        self._setNumber(8, value.value)
+        self._setNumber(7, value.value)
 
     def _initialize(self):
         super(RootViewModel, self)._initialize()
@@ -102,7 +91,6 @@ class RootViewModel(ViewModel):
         self._addViewModelProperty('rankRewardsModel', RankRewardsModel())
         self._addViewModelProperty('weeklyQuestsModel', WeeklyQuestsModel())
         self._addViewModelProperty('leaderboardModel', LeaderboardModel())
-        self._addViewModelProperty('yearlyRewardsModel', YearlyRewardsModel())
         self._addViewModelProperty('yearlyStatisticsModel', YearlyStatisticsModel())
         self._addNumberProperty('pageViewId')
         self.onClose = self._addCommand('onClose')

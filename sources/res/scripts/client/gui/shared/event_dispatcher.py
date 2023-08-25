@@ -373,11 +373,29 @@ def showBattleBoosterSellDialog(battleBoosterIntCD):
 
 
 @wg_async
-def showPlatoonResourceDialog(resources, callback):
-    result = yield wg_await(showResSimpleDialog(resources, None, ''))
-    if result:
-        callback(result)
-    return
+def showPlatoonWarningDialog(resources):
+    from gui.impl.dialogs import dialogs
+    from gui.impl.dialogs.builders import WarningDialogBuilder
+    from gui.impl.pub.dialog_window import DialogButtons
+    builder = WarningDialogBuilder()
+    builder.setTitle(resources.title())
+    builder.setMessagesAndButtons(message=resources, buttons=resources, focused=DialogButtons.CANCEL)
+    result = yield wg_await(dialogs.showSimple(builder.buildInLobby()))
+    raise AsyncReturn(result)
+
+
+@wg_async
+def showPlatoonInfoDialog(resources):
+    from gui.impl.dialogs import dialogs
+    from gui.impl.dialogs.builders import ResSimpleDialogBuilder
+    from gui.impl.gen.view_models.constants.dialog_presets import DialogPresets
+    from gui.impl.pub.dialog_window import DialogButtons
+    builder = ResSimpleDialogBuilder()
+    builder.setTitle(resources.title())
+    builder.setPreset(DialogPresets.CUSTOMIZATION_INSTALL_BOUND)
+    builder.setMessagesAndButtons(message=resources, buttons=resources, focused=DialogButtons.SUBMIT)
+    result = yield wg_await(dialogs.showSimple(builder.buildInLobby()))
+    raise AsyncReturn(result)
 
 
 def showResearchView(vehTypeCompDescr, exitEvent=None):

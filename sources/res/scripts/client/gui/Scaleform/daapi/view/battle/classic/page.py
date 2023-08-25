@@ -108,7 +108,7 @@ class ClassicPage(SharedPage):
 
     def _toggleFullStats(self, isShown, permanent=None, tabAlias=None):
         manager = self.app.containerManager
-        if manager.isModalViewsIsExists():
+        if manager.isModalViewsIsExists() and isShown:
             return
         else:
             if not self._fullStatsAlias:

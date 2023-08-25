@@ -233,7 +233,7 @@ class VehiclesSelectionControlMode(IControlMode):
         return True
 
     def onRecreateDevice(self):
-        self.__camManager.reset()
+        pass
 
     def moveCameraToDefault(self):
         lockIsSoon = 0 < self.__lockStartTime < BigWorld.serverTime() + self.__camManager.CAMERA_TRANSITION_DURATION

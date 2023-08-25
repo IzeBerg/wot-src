@@ -223,6 +223,7 @@
 		<_40mm_ATO_200_flamegun>31001</_40mm_ATO_200_flamegun>
 		<_20mm_KS_25_flamegun>31002</_20mm_KS_25_flamegun>
 		<_100mm_D54_VR>31007</_100mm_D54_VR>
+		<_122mm_M62_T2_122>31008</_122mm_M62_T2_122>
 	</ids>
 	<shared>
 		<_12.7mm_DSHK>
@@ -17331,6 +17332,112 @@
 				</_122mm_BP450S-DG>
 			</shots>
 		</_122mm_cannon_M-30_1938_dualgun>
+		<_122mm_M62_T2_122>
+			<userString>#ussr_vehicles:_122mm_M62_T2_122</userString>
+			<tags/>
+			<level>10</level>
+			<price>335000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.62
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.4
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>large</recoilEffect>
+			</recoil>
+			<effects>shot_large_mb</effects>
+			<reloadEffect>reload115_152</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -15.0 1.0 -15.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 8.0 1.0 8.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				26.25
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>12</reloadTime>
+			<maxAmmo>30</maxAmmo>
+			<aimingTime>3</aimingTime>
+			<weight>2600</weight>
+			<maxHealth>210</maxHealth>
+			<maxRegenHealth>105</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.4
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.08
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					3.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_122mm_BR-471D_KRP>
+					<defaultPortion>
+						0.9
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>940</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>252 238</piercingPower>
+				</_122mm_BR-471D_KRP>
+				<_122mm_BM11_KRP>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>940</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>300 300</piercingPower>
+				</_122mm_BM11_KRP>
+				<_122mm_UOF-472_KRP>
+					<defaultPortion>
+						0.1
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>940</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>68 68</piercingPower>
+				</_122mm_UOF-472_KRP>
+			</shots>
+		</_122mm_M62_T2_122>
 		<_122mm_M62-T2A>
 			<userString>#ussr_vehicles:_122mm_M62-T2A</userString>
 			<tags/>

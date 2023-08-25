@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<info>
+		<name>vehicles/Ch29_Type_62C_prot_3dst_BP_MT_root_vse</name>
+		<isMacro>false</isMacro>
+		<version>0</version>
+		<aspect>
+			<compatibles>CLIENT;HANGAR</compatibles>
+		</aspect>
+		<blocks>
+			<block>
+				<class>StartScript</class>
+				<id>StartScript_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>ChoiceByAspect</class>
+				<id>ChoiceByAspect_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SpawnComponent</class>
+				<id>SpawnComponent_1</id>
+				<params>
+					<param>
+						VSE Plan
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						false
+						<name>Use transform matrix</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						true
+						<name>Spawn with parent</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>autoActivate</name>
+						<const>\true\</const>
+					</slot>
+					<slot>
+						<name>Path</name>
+						<const>\vscript/plans/vehicles/Ch29_Type_62C_prot_3dst_BP_MT_battle_vse.xml\</const>
+					</slot>
+					<slot>
+						<name>AutoStart</name>
+						<const>\true\</const>
+					</slot>
+					<slot>
+						<name>translation</name>
+						<const>\0.000000, 0.000000, 0.000000\</const>
+					</slot>
+					<slot>
+						<name>scale</name>
+						<const>\1.000000, 1.000000, 1.000000\</const>
+					</slot>
+					<slot>
+						<name>rotation</name>
+						<const>\0.000000, 0.000000, 0.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ContextGetSelf</class>
+				<id>ContextGetSelf_1</id>
+				<params>
+					<param>
+						CGFGameObjectContext
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						getSelf
+						<name>Member Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+		</blocks>
+		<connections>
+			<connection>
+				<from>StartScript_1</from>
+				<input>input</input>
+				<to>ChoiceByAspect_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ChoiceByAspect_1</from>
+				<input>in</input>
+				<to>SpawnComponent_1</to>
+				<output>CLIENT</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>parent</input>
+				<to>SpawnComponent_1</to>
+				<output>value</output>
+			</connection>
+		</connections>
+		<macros/>
+		<curves/>
+	</info>
+</root>

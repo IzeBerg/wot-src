@@ -62,6 +62,7 @@ PACK_RENT_VEHICLES_BONUS = 'packRentVehicleBonus'
 BATTLE_BONUS_X5_TOKEN = 'battle_bonus_x5'
 CREW_BONUS_X3_TOKEN = 'crew_bonus_x3'
 GOLD_MISSION = 'goldmission'
+BR_PROGRESSION_TOKEN = 'img:battle_royale:progression'
 AWARD_IMAGES = {AWARDS_SIZES.SMALL: {Currency.CREDITS: RES_ICONS.MAPS_ICONS_QUESTS_BONUSES_SMALL_CREDITS, 
                         Currency.GOLD: RES_ICONS.MAPS_ICONS_QUESTS_BONUSES_SMALL_GOLD, 
                         Currency.CRYSTAL: RES_ICONS.MAPS_ICONS_QUESTS_BONUSES_SMALL_CRYSTAL, 
@@ -734,17 +735,24 @@ class TokenBonusFormatter(SimpleBonusFormatter):
     def _getFormattedBonus(self, tokenID, token, bonus):
         formatted = None
         complexToken = parseComplexToken(tokenID)
-        if complexToken.isDisplayable:
-            formatted = self._formatComplexToken(complexToken, token, bonus)
-        elif tokenID.startswith(LOOTBOX_TOKEN_PREFIX):
-            formatted = self._formatLootBoxToken(tokenID, token, bonus)
-        elif tokenID.startswith(BATTLE_BONUS_X5_TOKEN):
-            formatted = self._formatBonusToken(BATTLE_BONUS_X5_TOKEN, token, bonus)
-        elif tokenID.startswith(CREW_BONUS_X3_TOKEN):
-            formatted = self._formatBonusToken(CREW_BONUS_X3_TOKEN, token, bonus)
-        elif tokenID.startswith(RESOURCE_TOKEN_PREFIX):
-            formatted = self._formatResource(token, bonus)
-        return formatted
+        if tokenID.startswith(BR_PROGRESSION_TOKEN):
+            return self._formatBRComplexToken(complexToken, token, bonus)
+        else:
+            if complexToken.isDisplayable:
+                formatted = self._formatComplexToken(complexToken, token, bonus)
+            elif tokenID.startswith(LOOTBOX_TOKEN_PREFIX):
+                formatted = self._formatLootBoxToken(tokenID, token, bonus)
+            elif tokenID.startswith(BATTLE_BONUS_X5_TOKEN):
+                formatted = self._formatBonusToken(BATTLE_BONUS_X5_TOKEN, token, bonus)
+            elif tokenID.startswith(CREW_BONUS_X3_TOKEN):
+                formatted = self._formatBonusToken(CREW_BONUS_X3_TOKEN, token, bonus)
+            elif tokenID.startswith(RESOURCE_TOKEN_PREFIX):
+                formatted = self._formatResource(token, bonus)
+            return formatted
+
+    def _formatBRComplexToken(self, complexToken, token, bonus):
+        formatted = self._formatComplexToken(complexToken, token, bonus)
+        return formatted._replace(tooltip=self.__getBRProgressionTooltip())
 
     def _formatBonusLabel(self, count):
         return formatCountLabel(count)
@@ -810,6 +818,11 @@ class TokenBonusFormatter(SimpleBonusFormatter):
             images[size] = backport.image(bonusTaskRes()) if bonusTaskRes.isValid() else None
 
         return images
+
+    @staticmethod
+    def __getBRProgressionTooltip():
+        tokenBase = R.strings.battle_royale_progression.quests.bonuses.progressionToken
+        return makeTooltip(backport.text(tokenBase.header()), backport.text(tokenBase.body()))
 
 
 class RankedPointFormatter(TokenBonusFormatter):

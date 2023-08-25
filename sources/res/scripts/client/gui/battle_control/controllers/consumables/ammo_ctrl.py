@@ -618,8 +618,14 @@ class AmmoController(MethodsRules, ViewComponentsController):
     def getGunReloadingState(self):
         return self._reloadingState.getSnapshot()
 
+    def getAutoReloadingState(self):
+        return self._autoReloadingState.getSnapshot()
+
     def isGunReloading(self):
         return not self._reloadingState.isReloadingFinished()
+
+    def getShellChangeTime(self):
+        return self.__shellChangeTime
 
     @MethodsRules.delayable('setGunReloadTime')
     def refreshGunReloading(self):

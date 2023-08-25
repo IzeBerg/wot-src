@@ -382,6 +382,8 @@ class BattlePassProgressionsView(ViewImpl):
         self.__setExpirations(model)
         if self.__battlePass.getRewardType(self.__chapterID) == FinalReward.STYLE:
             self.__setStyleTaken(model)
+            styleInfo = getStyleForChapter(self.__chapterID, battlePass=self.__battlePass)
+            model.setIsStyleProgressive(styleInfo.isProgressive)
         self.__updateRewardSelectButton(model=model)
 
     def __setExpirations(self, model):
@@ -529,20 +531,27 @@ class BattlePassProgressionsView(ViewImpl):
         if level is None:
             return
         else:
-            styleInfo = getStyleForChapter(self.__chapterID, battlePass=self.__battlePass)
-            vehicleCD = getVehicleCDForStyle(styleInfo, itemsCache=self.__itemsCache)
-            showBattlePassStyleProgressionPreview(vehicleCD, styleInfo, styleInfo.getDescription(), self.__getPreviewCallback(), chapterId=self.__chapterID, styleLevel=int(level))
+            style = getStyleForChapter(self.__chapterID, battlePass=self.__battlePass)
+            vehicleCD = getVehicleCDForStyle(style, itemsCache=self.__itemsCache)
+            if style.isProgressive:
+                showBattlePassStyleProgressionPreview(vehicleCD, style, style.getDescription(), self.__getPreviewCallback(), chapterId=self.__chapterID, styleLevel=int(level))
+            else:
+                self.__showStylePreview(style, vehicleCD)
             return
 
     def __onExtraPreviewClick(self):
-        styleInfo = getStyleForChapter(self.__chapterID, battlePass=self.__battlePass)
-        vehicleCD = getVehicleCDForStyle(styleInfo, itemsCache=self.__itemsCache)
-        itemsPack = (ItemPackEntry(type=ItemPackType.CREW_100, groupID=1),)
-        showStylePreview(vehicleCD, style=styleInfo, topPanelData={'linkage': VEHPREVIEW_CONSTANTS.TOP_PANEL_TABS_LINKAGE, 
+        style = getStyleForChapter(self.__chapterID, battlePass=self.__battlePass)
+        vehicleCD = getVehicleCDForStyle(style, itemsCache=self.__itemsCache)
+        self.__showStylePreview(style, vehicleCD)
+
+    def __showStylePreview(self, style, vehicleCD):
+        itemsPack = (
+         ItemPackEntry(type=ItemPackType.CREW_100, groupID=1),)
+        showStylePreview(vehicleCD, style=style, topPanelData={'linkage': VEHPREVIEW_CONSTANTS.TOP_PANEL_TABS_LINKAGE, 
            'tabIDs': (
                     TabID.VEHICLE, TabID.STYLE), 
            'currentTabID': TabID.STYLE, 
-           'style': styleInfo}, itemsPack=itemsPack, backCallback=self.__getPreviewCallback())
+           'style': style}, itemsPack=itemsPack, backCallback=self.__getPreviewCallback())
 
     def __getPreviewCallback(self):
         return partial(showMissionsBattlePass, R.views.lobby.battle_pass.BattlePassProgressionsView(), self.__chapterID)

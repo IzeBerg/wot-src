@@ -7331,6 +7331,34 @@ package
       
       public static const DEBUT_BOXES_REWARD_CAPTION:String = "#tooltips:debut_boxes/reward/caption";
       
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_MF_TRUS_DESC:String = "#tooltips:notrecruitedtankman/commander_mf_Trus/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_MF_TRUS_LABEL:String = "#tooltips:notrecruitedtankman/commander_mf_Trus/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_MF_BALBES_DESC:String = "#tooltips:notrecruitedtankman/commander_mf_Balbes/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_MF_BALBES_LABEL:String = "#tooltips:notrecruitedtankman/commander_mf_Balbes/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_MF_BYVALY_DESC:String = "#tooltips:notrecruitedtankman/commander_mf_Byvaly/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_MF_BYVALY_LABEL:String = "#tooltips:notrecruitedtankman/commander_mf_Byvaly/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12MT_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp12MT_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12MT_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp12MT_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12MT_2_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp12MT_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12MT_2_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp12MT_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12MT_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp12MT_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12MT_3_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp12MT_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12MT_4_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp12MT_4/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12MT_4_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp12MT_4/label";
+      
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       
       public static const ELEN_SUMMARY_PARAM_ALL_ALL_HEADER_ENUM:Array = [ELEN_SUMMARY_PARAM_MAX_ORIGINALXP_HEADER,ELEN_SUMMARY_PARAM_MAX_XP_HEADER,ELEN_SUMMARY_PARAM_MAX_DAMAGEDEALT_HEADER,ELEN_SUMMARY_PARAM_MAX_DAMAGEASSISTED_HEADER,ELEN_SUMMARY_PARAM_SUMALL_ORIGINALXP_HEADER,ELEN_SUMMARY_PARAM_SUMALL_XP_HEADER,ELEN_SUMMARY_PARAM_SUMALL_DAMAGEDEALT_HEADER,ELEN_SUMMARY_PARAM_SUMALL_DAMAGEASSISTED_HEADER];

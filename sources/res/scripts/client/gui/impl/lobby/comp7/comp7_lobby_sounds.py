@@ -6,8 +6,7 @@ from sound_gui_manager import CommonSoundSpaceSettings
 class MetaViewSounds(Enum):
     ENTER_EVENT = 'comp_7_progression_enter'
     EXIT_EVENT = 'comp_7_progression_exit'
-    ENTER_TAB_EVENTS = {MetaRootViews.RANKREWARDS: 'comp_7_rank_rewards_enter', 
-       MetaRootViews.YEARLYSTATISTICS: 'comp_7_season_statistics_screen_appear'}
+    ENTER_TAB_EVENTS = {MetaRootViews.RANKREWARDS: 'comp_7_rank_rewards_enter'}
 
 
 def getComp7MetaSoundSpace():

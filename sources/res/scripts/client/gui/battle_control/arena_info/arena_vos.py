@@ -516,7 +516,7 @@ class VehicleArenaInfoVO(object):
             if isAlly:
                 return True
             if arena is None or arena.guiType not in (ARENA_GUI_TYPE.RANDOM, ARENA_GUI_TYPE.TRAINING,
-             ARENA_GUI_TYPE.EPIC_BATTLE):
+             ARENA_GUI_TYPE.EPIC_BATTLE, ARENA_GUI_TYPE.VERSUS_AI):
                 return True
         return False
 

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Turret_anim_main</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 0.000000 -1.000000</row1>
+				<row2>0.000000 1.000000 0.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Antena_jt01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.000000 1.000000</row1>
+					<row2>0.000000 -1.000000 0.000000</row2>
+					<row3>-0.924107 -0.718641 0.966534</row3>
+				</transform>
+				<node>
+					<identifier>Antena_jt02</identifier>
+					<transform>
+						<row0>0.172454 0.573600 -0.800776</row0>
+						<row1>-0.977587 -0.000000 -0.210532</row1>
+						<row2>-0.120761 0.819136 0.560744</row2>
+						<row3>0.000000 0.066773 0.000000</row3>
+					</transform>
+					<node>
+						<identifier>Antena_jt02_BlendBone</identifier>
+						<transform>
+							<row0>0.172454 -0.977587 -0.120761</row0>
+							<row1>0.573600 -0.000000 0.819136</row1>
+							<row2>0.800776 0.210532 -0.560744</row2>
+							<row3>0.142132 -0.752098 -1.360989</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Antena_jt01_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.924107 -0.966534 -0.718641</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Antena_jt03</identifier>
+				<transform>
+					<row0>0.172454 0.800776 0.573600</row0>
+					<row1>-0.977587 0.210532 -0.000000</row1>
+					<row2>-0.120761 -0.560744 0.819136</row2>
+					<row3>-1.074443 -0.682517 0.642361</row3>
+				</transform>
+				<node>
+					<identifier>Antena_jt03_BlendBone</identifier>
+					<transform>
+						<row0>0.172454 -0.977587 -0.120761</row0>
+						<row1>0.573600 -0.000000 0.819136</row1>
+						<row2>0.800776 0.210532 -0.560744</row2>
+						<row3>0.363377 -0.906670 -1.038649</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Antena_jt01_BlendBone</node>
+		<node>Antena_jt02_BlendBone</node>
+		<node>Antena_jt03_BlendBone</node>
+		<geometry>
+			<vertices>turret_anim_Shape.vertices</vertices>
+			<primitive>turret_anim_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>K_91_3dst_MT_anim:K_91_3dst_MT:tank_turret_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/R144_K_91/K_91_guns_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/K_91_3dst_MT_turret_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/K_91_3dst_MT_turret_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>4.208220 4.208220 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/BP12_details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/K_91_3dst_MT_turret_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/russian/R144_K_91/_skin/R144_K_91_3dst_MT/K_91_3dst_MT_turret_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.996419 1.529206 -1.170064</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.213960 0.576928 0.591282</min>
+		<max>-0.778877 2.481486 1.748846</max>
+	</boundingBox>
+	<geometrySize>111256</geometrySize>
+	<minUVDensity>0.035236</minUVDensity>
+</root>

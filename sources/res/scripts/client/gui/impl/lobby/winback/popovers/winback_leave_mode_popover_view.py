@@ -1,5 +1,5 @@
 from account_helpers.AccountSettings import Winback
-from constants import WINBACK_CALL_BATTLE_TOKEN_DRAW_REASON
+from constants import WINBACK_BATTLE_TOKEN_DRAW_REASON
 from frameworks.wulf import ViewFlags, ViewSettings
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.winback.popovers.winback_leave_mode_popover_view_model import WinbackLeaveModePopoverViewModel
@@ -49,7 +49,7 @@ class WinbackLeaveModePopoverView(PopOverViewImpl):
           self.viewModel.onClick, self.__onClick),)
 
     def __onClick(self):
-        leaveWinbackMode(WINBACK_CALL_BATTLE_TOKEN_DRAW_REASON.MANUAL, showConfirmDialog=True, callback=selectRandom)
+        leaveWinbackMode(WINBACK_BATTLE_TOKEN_DRAW_REASON.MANUAL, showConfirmDialog=True, callback=selectRandom)
 
     def __updateBulletSetting(self):
         setWinbackSetting(Winback.BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN, True)

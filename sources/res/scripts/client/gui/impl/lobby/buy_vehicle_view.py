@@ -1,4 +1,5 @@
 import logging
+from typing import TYPE_CHECKING
 from collections import namedtuple
 from functools import partial
 import BigWorld, adisp, nations, constants
@@ -54,6 +55,8 @@ from skeletons.gui.shared import IItemsCache
 from frameworks.wulf import WindowFlags, ViewStatus, ViewSettings
 from uilogging.shop.loggers import ShopBuyVehicleMetricsLogger
 from uilogging.shop.logging_constants import ShopLogItemStates
+if TYPE_CHECKING:
+    from typing import Optional
 _logger = logging.getLogger(__name__)
 
 class VehicleBuyActionTypes(CONST_CONTAINER):
@@ -943,7 +946,7 @@ class BuyVehicleView(ViewImpl, EventSystemEntity, IPrbListener):
         statsMoney = self.__stats.money
         for currency in Currency.ALL:
             currencyValue = money.get(currency)
-            if currencyValue and currencyValue > statsMoney.get(currency) - reservedMoney.get(currency):
+            if currencyValue and currencyValue > statsMoney.get(currency, 0) - reservedMoney.get(currency, 0):
                 isPurchaseCurrencyAvailable &= self.__isPurchaseCurrencyAvailable(currency)
 
         return statsMoney - reservedMoney >= money or isPurchaseCurrencyAvailable

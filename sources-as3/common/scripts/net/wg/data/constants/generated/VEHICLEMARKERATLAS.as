@@ -2143,6 +2143,8 @@ package net.wg.data.constants.generated
       
       public static const USSR_R173_K_91_2:String = "ussr-R173_K_91_2";
       
+      public static const USSR_R173_K_91_2_122:String = "ussr-R173_K_91_2_122";
+      
       public static const USSR_R174_BT_5:String = "ussr-R174_BT-5";
       
       public static const USSR_R175_IS_2_SCREEN:String = "ussr-R175_IS_2_screen";
