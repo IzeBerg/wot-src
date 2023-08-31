@@ -220,6 +220,7 @@
 		<_76mm_S-54_MapsTraining_Player_MT_1>51</_76mm_S-54_MapsTraining_Player_MT_1>
 		<_85mm_D5T-85BM_MapsTraining_Player_MT_2>60</_85mm_D5T-85BM_MapsTraining_Player_MT_2>
 		<_107mm_ZiS-6_MapsTraining_Dummy_HT_2>63</_107mm_ZiS-6_MapsTraining_Dummy_HT_2>
+		<_85mm_ZiS_S-53A_NewOnBoarding>10011</_85mm_ZiS_S-53A_NewOnBoarding>
 		<_40mm_ATO_200_flamegun>31001</_40mm_ATO_200_flamegun>
 		<_20mm_KS_25_flamegun>31002</_20mm_KS_25_flamegun>
 		<_100mm_D54_VR>31007</_100mm_D54_VR>
@@ -24337,5 +24338,93 @@
 				</_100mm_3UVR10>
 			</shots>
 		</_100mm_D54_VR>
+		<_85mm_ZiS_S-53A_NewOnBoarding>
+			<userString>#ussr_vehicles:_85mm_ZiS_S-53A</userString>
+			<tags/>
+			<level>6</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.44
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.3
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>main</recoilEffect>
+			</recoil>
+			<effects>shot_main</effects>
+			<reloadEffect>reload85_107</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -23.0 1.0 -23.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 8.0 1.0 8.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				39.375
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				5.0
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>55</maxAmmo>
+			<aimingTime>
+				2.8
+				<!--BW_String-->
+			</aimingTime>
+			<weight>1550</weight>
+			<maxHealth>122</maxHealth>
+			<maxRegenHealth>61</maxRegenHealth>
+			<repairCost>6</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.42
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.16
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_85mm_UBR-365KBM_NewOnBoarding>
+					<defaultPortion>
+						0.95
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>950</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>144 125</piercingPower>
+				</_85mm_UBR-365KBM_NewOnBoarding>
+			</shots>
+			<invulnerable>true</invulnerable>
+			<notInShop>true</notInShop>
+		</_85mm_ZiS_S-53A_NewOnBoarding>
 	</shared>
 </root>

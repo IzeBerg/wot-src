@@ -848,47 +848,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_6</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_1</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_5</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
 				<id>GetVariable_2</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -899,8 +860,8 @@
 				<slots/>
 			</block>
 			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_6</id>
+				<class>GetVariable</class>
+				<id>GetVariable_6</id>
 				<buddy>Variable_3</buddy>
 				<params>
 					<param>
@@ -924,6 +885,19 @@
 				<slots/>
 			</block>
 			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_6</id>
+				<buddy>Variable_3</buddy>
+				<params>
+					<param>
+						VehicleT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>IterateArray</class>
 				<id>IterateArray_1</id>
 				<params>
@@ -937,63 +911,6 @@
 					<slot>
 						<name>forward</name>
 						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Choice</class>
-				<id>Choice_1</id>
-				<params>
-					<param>
-						2
-						<name>Output Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVehicleLabel</class>
-				<id>GetVehicleLabel_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_7</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>IndexOf</class>
-				<id>IndexOf_1</id>
-				<params>
-					<param>
-						StringT
-						<name>Slot Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						2
-						<name>Input Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>[0]</name>
-						<const>\Group0Point_B1\</const>
-					</slot>
-					<slot>
-						<name>[1]</name>
-						<const>\Group0Point_B2\</const>
 					</slot>
 				</slots>
 			</block>
@@ -1151,33 +1068,7 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_7</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_8</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_9</id>
+				<id>GetVariable_66</id>
 				<buddy>Variable_3</buddy>
 				<params>
 					<param>
@@ -1191,7 +1082,7 @@
 			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_10</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -1265,8 +1156,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_66</id>
-				<buddy>Variable_8</buddy>
+				<id>GetVariable_88</id>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -1578,21 +1469,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_13</id>
+				<id>GetVariable_8</id>
 				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_16</id>
-				<buddy>Variable_8</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -1831,33 +1709,20 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
+				<id>GetVariable_16</id>
+				<buddy>Variable_3</buddy>
+				<params>
+					<param>
+						VehicleT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
 				<id>GetVariable_18</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_19</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_17</id>
 				<buddy>Variable_3</buddy>
 				<params>
 					<param>
@@ -2324,34 +2189,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_20</id>
+				<id>GetVariable_26</id>
 				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_22</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_25</id>
-				<buddy>Variable_8</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -2459,7 +2298,7 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_29</id>
+				<id>GetVariable_25</id>
 				<buddy>Variable_3</buddy>
 				<params>
 					<param>
@@ -2472,34 +2311,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_26</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_27</id>
+				<id>GetVariable_19</id>
 				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_28</id>
-				<buddy>Variable_8</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -2897,20 +2710,7 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_31</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_30</id>
+				<id>GetVariable_28</id>
 				<buddy>Variable_3</buddy>
 				<params>
 					<param>
@@ -2924,58 +2724,6 @@
 			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_21</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_32</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_33</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_35</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_34</id>
 				<buddy>Variable_3</buddy>
 				<params>
 					<param>
@@ -2988,7 +2736,20 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_36</id>
+				<id>GetVariable_32</id>
+				<buddy>Variable_3</buddy>
+				<params>
+					<param>
+						VehicleT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_33</id>
 				<buddy>Variable_3</buddy>
 				<params>
 					<param>
@@ -3325,19 +3086,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_39</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>Sequence</class>
 				<id>Sequence_18</id>
 				<params>
@@ -3632,19 +3380,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_37</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>Sequence</class>
 				<id>Sequence_19</id>
 				<params>
@@ -3675,8 +3410,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_38</id>
-				<buddy>Variable_8</buddy>
+				<id>GetVariable_35</id>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -3875,6 +3610,19 @@
 				</slots>
 			</block>
 			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_14</id>
+				<buddy>Variable_9</buddy>
+				<params>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>If</class>
 				<id>If_9</id>
 				<params/>
@@ -3991,21 +3739,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>ClampInteger</class>
-				<id>ClampInteger_2</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>a</name>
-						<const>\0\</const>
-					</slot>
-					<slot>
-						<name>b</name>
-						<const>\3\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>GameTime</class>
 				<id>GameTime_2</id>
 				<params/>
@@ -4083,19 +3816,6 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_14</id>
-				<buddy>Variable_9</buddy>
-				<params>
-					<param>
-						IntT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
 				<id>GetVariable_60</id>
 				<buddy>Variable_12</buddy>
 				<params>
@@ -4152,7 +3872,7 @@
 			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_40</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -4418,19 +4138,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_42</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>Macro</class>
 				<id>Macro_12</id>
 				<params>
@@ -4571,7 +4278,7 @@
 			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_41</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -5086,7 +4793,7 @@
 			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_67</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -5114,19 +4821,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_43</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>Macro</class>
 				<id>Macro_39</id>
 				<params>
@@ -5142,19 +4836,6 @@
 						<const>\R3JvdXA0XzE= R3JvdXA0XzM=\</const>
 					</slot>
 				</slots>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_44</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
 			</block>
 			<block>
 				<class>Macro</class>
@@ -5175,8 +4856,21 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
+				<id>GetVariable_44</id>
+				<buddy>Variable_3</buddy>
+				<params>
+					<param>
+						VehicleT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
 				<id>GetVariable_69</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -5233,7 +4927,7 @@
 			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_68</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -5334,19 +5028,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_45</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>Macro</class>
 				<id>Macro_36</id>
 				<params>
@@ -5378,7 +5059,7 @@
 			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_46</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -5525,19 +5206,6 @@
 				<class>IsPlayerVehicle</class>
 				<id>IsPlayerVehicle_1</id>
 				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_78</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
 				<slots/>
 			</block>
 			<block>
@@ -5790,19 +5458,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_32</id>
-				<buddy>Variable_21</buddy>
-				<params>
-					<param>
-						Vector3T
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>FlowGate</class>
 				<id>FlowGate_21</id>
 				<params/>
@@ -5827,25 +5482,6 @@
 			<block>
 				<class>GameTime</class>
 				<id>GameTime_8</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_81</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVehicleTransform</class>
-				<id>GetVehicleTransform_6</id>
 				<params/>
 				<slots/>
 			</block>
@@ -5908,7 +5544,7 @@
 				<id>And_3</id>
 				<params>
 					<param>
-						6
+						5
 						<name>Input Count</name>
 						<type>IntT</type>
 					</param>
@@ -5925,6 +5561,19 @@
 						<const>\10000\</const>
 					</slot>
 				</slots>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_38</id>
+				<buddy>Variable_3</buddy>
+				<params>
+					<param>
+						VehicleT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
 			</block>
 			<block>
 				<class>RandomFloat</class>
@@ -5971,19 +5620,6 @@
 				<params>
 					<param>
 						IntT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_80</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
 						<name>Variable Type</name>
 						<type>TypeT</type>
 					</param>
@@ -6059,73 +5695,6 @@
 				<class>GetVariable</class>
 				<id>GetVariable_83</id>
 				<buddy>Variable_22</buddy>
-				<params>
-					<param>
-						Vector3T
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVehicleTransform</class>
-				<id>GetVehicleTransform_8</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_85</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>VectorLength</class>
-				<id>VectorLength_2</id>
-				<params>
-					<param>
-						Vector3T
-						<name>Value Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SubtractVector</class>
-				<id>SubtractVector_5</id>
-				<params>
-					<param>
-						Vector3T
-						<name>Value Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>CompareFloats</class>
-				<id>CompareFloats_5</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>b</name>
-						<const>\1.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_86</id>
-				<buddy>Variable_21</buddy>
 				<params>
 					<param>
 						Vector3T
@@ -6359,46 +5928,7 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_47</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_51</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
 				<id>GetVariable_48</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_49</id>
 				<buddy>Variable_3</buddy>
 				<params>
 					<param>
@@ -6412,19 +5942,6 @@
 			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_52</id>
-				<buddy>Variable_8</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_53</id>
 				<buddy>Variable_3</buddy>
 				<params>
 					<param>
@@ -6438,7 +5955,7 @@
 			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_50</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -6451,7 +5968,7 @@
 			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_54</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -6524,21 +6041,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_70</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
 				<id>GetVariable_71</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -6770,11 +6274,11 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_55</id>
-				<buddy>Variable_8</buddy>
+				<id>GetVariable_72</id>
+				<buddy>Variable_13</buddy>
 				<params>
 					<param>
-						VehicleT
+						FloatT
 						<name>Variable Type</name>
 						<type>TypeT</type>
 					</param>
@@ -6783,11 +6287,11 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_72</id>
-				<buddy>Variable_13</buddy>
+				<id>GetVariable_55</id>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
-						FloatT
+						VehicleT
 						<name>Variable Type</name>
 						<type>TypeT</type>
 					</param>
@@ -6810,6 +6314,19 @@
 						<const>\BOSS_2B\</const>
 					</slot>
 				</slots>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_73</id>
+				<buddy>Variable_9</buddy>
+				<params>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
 			</block>
 			<block>
 				<class>Sequence</class>
@@ -6921,40 +6438,12 @@
 				</slots>
 			</block>
 			<block>
-				<class>ClampInteger</class>
-				<id>ClampInteger_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>a</name>
-						<const>\0\</const>
-					</slot>
-					<slot>
-						<name>b</name>
-						<const>\4\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_74</id>
 				<buddy>Variable_17</buddy>
 				<params>
 					<param>
 						VehicleT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_73</id>
-				<buddy>Variable_9</buddy>
-				<params>
-					<param>
-						IntT
 						<name>Variable Type</name>
 						<type>TypeT</type>
 					</param>
@@ -6999,7 +6488,7 @@
 			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_56</id>
-				<buddy>Variable_8</buddy>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -7079,8 +6568,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_58</id>
-				<buddy>Variable_8</buddy>
+				<id>GetVariable_59</id>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -7092,8 +6581,8 @@
 			</block>
 			<block>
 				<class>GetVariable</class>
-				<id>GetVariable_59</id>
-				<buddy>Variable_8</buddy>
+				<id>GetVariable_58</id>
+				<buddy>Variable_3</buddy>
 				<params>
 					<param>
 						VehicleT
@@ -7118,12 +6607,6 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_5</from>
-				<input>vehicle</input>
-				<to>Macro_55</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_53</from>
 				<input>in</input>
 				<to>Macro_54</to>
@@ -7142,12 +6625,6 @@
 				<output>event0</output>
 			</connection>
 			<connection>
-				<from>GetVariable_1</from>
-				<input>vehicle</input>
-				<to>Macro_53</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_55</from>
 				<input>in</input>
 				<to>Macro_56</to>
@@ -7160,10 +6637,10 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>Choice_1</from>
+				<from>IterateArray_1</from>
 				<input>input</input>
 				<to>SetVariable_6</to>
-				<output>o0</output>
+				<output>complete</output>
 			</connection>
 			<connection>
 				<from>IterateArray_1</from>
@@ -7182,42 +6659,6 @@
 				<input>array</input>
 				<to>IterateArray_1</to>
 				<output>vehicles</output>
-			</connection>
-			<connection>
-				<from>IterateArray_1</from>
-				<input>input</input>
-				<to>Choice_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>IndexOf_1</from>
-				<input>index</input>
-				<to>Choice_1</to>
-				<output>index</output>
-			</connection>
-			<connection>
-				<from>IterateArray_1</from>
-				<input>vehicle</input>
-				<to>GetVehicleLabel_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>Choice_1</from>
-				<input>input</input>
-				<to>SetVariable_7</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>IterateArray_1</from>
-				<input>value</input>
-				<to>SetVariable_7</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVehicleLabel_2</from>
-				<input>value</input>
-				<to>IndexOf_1</to>
-				<output>label</output>
 			</connection>
 			<connection>
 				<from>Macro_6</from>
@@ -7244,12 +6685,6 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_9</from>
-				<input>vehicle</input>
-				<to>Macro_57</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_60</from>
 				<input>in</input>
 				<to>Macro_58</to>
@@ -7268,19 +6703,13 @@
 				<output>completed</output>
 			</connection>
 			<connection>
-				<from>GetVariable_7</from>
-				<input>vehicle</input>
-				<to>Macro_60</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_57</from>
 				<input>in</input>
 				<to>Macro_59</to>
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_8</from>
+				<from>GetVariable_66</from>
 				<input>vehicle</input>
 				<to>Macro_59</to>
 				<output>value</output>
@@ -7310,7 +6739,7 @@
 				<output>completed</output>
 			</connection>
 			<connection>
-				<from>GetVariable_66</from>
+				<from>GetVariable_88</from>
 				<input>vehicle</input>
 				<to>Macro_61</to>
 				<output>value</output>
@@ -7406,19 +6835,13 @@
 				<output>o1</output>
 			</connection>
 			<connection>
-				<from>GetVariable_13</from>
-				<input>vehicle</input>
-				<to>Macro_62</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_62</from>
 				<input>in</input>
 				<to>Macro_63</to>
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_16</from>
+				<from>GetVariable_8</from>
 				<input>vehicle</input>
 				<to>Macro_63</to>
 				<output>value</output>
@@ -7538,7 +6961,7 @@
 				<output>o0</output>
 			</connection>
 			<connection>
-				<from>GetVariable_18</from>
+				<from>GetVariable_16</from>
 				<input>vehicle</input>
 				<to>Macro_65</to>
 				<output>value</output>
@@ -7550,7 +6973,7 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_19</from>
+				<from>GetVariable_18</from>
 				<input>vehicle</input>
 				<to>Macro_67</to>
 				<output>value</output>
@@ -7560,12 +6983,6 @@
 				<input>in</input>
 				<to>Macro_66</to>
 				<output>finished</output>
-			</connection>
-			<connection>
-				<from>GetVariable_17</from>
-				<input>vehicle</input>
-				<to>Macro_66</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>FlowGate_20</from>
@@ -7856,7 +7273,7 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_25</from>
+				<from>GetVariable_26</from>
 				<input>vehicle</input>
 				<to>Macro_70</to>
 				<output>value</output>
@@ -7868,22 +7285,10 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_22</from>
-				<input>vehicle</input>
-				<to>Macro_71</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>PlayGlobalSound_6</from>
 				<input>in</input>
 				<to>Macro_69</to>
 				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_20</from>
-				<input>vehicle</input>
-				<to>Macro_69</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Timer_1</from>
@@ -7904,7 +7309,7 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_28</from>
+				<from>GetVariable_19</from>
 				<input>vehicle</input>
 				<to>Macro_73</to>
 				<output>value</output>
@@ -7916,22 +7321,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetVariable_29</from>
-				<input>vehicle</input>
-				<to>Macro_72</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_73</from>
 				<input>in</input>
 				<to>Macro_74</to>
 				<output>finished</output>
-			</connection>
-			<connection>
-				<from>GetVariable_27</from>
-				<input>vehicle</input>
-				<to>Macro_74</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Macro_74</from>
@@ -7940,7 +7333,7 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_26</from>
+				<from>GetVariable_25</from>
 				<input>vehicle</input>
 				<to>Macro_75</to>
 				<output>value</output>
@@ -8096,7 +7489,7 @@
 				<output>event0</output>
 			</connection>
 			<connection>
-				<from>GetVariable_21</from>
+				<from>GetVariable_28</from>
 				<input>vehicle</input>
 				<to>Macro_77</to>
 				<output>value</output>
@@ -8108,22 +7501,10 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_30</from>
-				<input>vehicle</input>
-				<to>Macro_78</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>DoOnce_2</from>
 				<input>in</input>
 				<to>Macro_76</to>
 				<output>completed</output>
-			</connection>
-			<connection>
-				<from>GetVariable_31</from>
-				<input>vehicle</input>
-				<to>Macro_76</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Macro_78</from>
@@ -8132,7 +7513,7 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_32</from>
+				<from>GetVariable_21</from>
 				<input>vehicle</input>
 				<to>Macro_79</to>
 				<output>value</output>
@@ -8144,22 +7525,10 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_34</from>
-				<input>vehicle</input>
-				<to>Macro_80</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_81</from>
 				<input>in</input>
 				<to>Macro_82</to>
 				<output>finished</output>
-			</connection>
-			<connection>
-				<from>GetVariable_36</from>
-				<input>vehicle</input>
-				<to>Macro_82</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Macro_80</from>
@@ -8168,7 +7537,7 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_33</from>
+				<from>GetVariable_32</from>
 				<input>vehicle</input>
 				<to>Macro_81</to>
 				<output>value</output>
@@ -8180,7 +7549,7 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_35</from>
+				<from>GetVariable_33</from>
 				<input>vehicle</input>
 				<to>Macro_83</to>
 				<output>value</output>
@@ -8408,12 +7777,6 @@
 				<output>event0</output>
 			</connection>
 			<connection>
-				<from>GetVariable_39</from>
-				<input>vehicle</input>
-				<to>Macro_84</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>If_7</from>
 				<input>input</input>
 				<to>Sequence_18</to>
@@ -8510,12 +7873,6 @@
 				<output>event0</output>
 			</connection>
 			<connection>
-				<from>GetVariable_37</from>
-				<input>vehicle</input>
-				<to>Macro_85</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_85</from>
 				<input>windup</input>
 				<to>Timer_6</to>
@@ -8552,7 +7909,7 @@
 				<output>event0</output>
 			</connection>
 			<connection>
-				<from>GetVariable_38</from>
+				<from>GetVariable_35</from>
 				<input>vehicle</input>
 				<to>Macro_86</to>
 				<output>value</output>
@@ -8708,10 +8065,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>ClampInteger_2</from>
+				<from>GetVariable_14</from>
 				<input>index</input>
 				<to>Choice_2</to>
-				<output>res</output>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>Sequence_4</from>
@@ -8802,12 +8159,6 @@
 				<input>false</input>
 				<to>LogicGate_1</to>
 				<output>onExit</output>
-			</connection>
-			<connection>
-				<from>GetVariable_14</from>
-				<input>value</input>
-				<to>ClampInteger_2</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>SubtractInteger_1</from>
@@ -9042,12 +8393,6 @@
 				<input>in</input>
 				<to>Macro_88</to>
 				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_42</from>
-				<input>vehicle</input>
-				<to>Macro_88</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>SubtractInteger_2</from>
@@ -9404,12 +8749,6 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetVariable_43</from>
-				<input>vehicle</input>
-				<to>Macro_96</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_96</from>
 				<input>in</input>
 				<to>Macro_97</to>
@@ -9552,12 +8891,6 @@
 				<input>in</input>
 				<to>Macro_98</to>
 				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_45</from>
-				<input>vehicle</input>
-				<to>Macro_98</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Macro_98</from>
@@ -9740,22 +9073,10 @@
 				<output>o0</output>
 			</connection>
 			<connection>
-				<from>GetVariable_78</from>
-				<input>vehicle</input>
-				<to>PlayVoiceover_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Choice_5</from>
 				<input>in</input>
 				<to>PlayVoiceover_2</to>
 				<output>o1</output>
-			</connection>
-			<connection>
-				<from>GetVariable_78</from>
-				<input>vehicle</input>
-				<to>PlayVoiceover_2</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Choice_5</from>
@@ -9764,22 +9085,10 @@
 				<output>o2</output>
 			</connection>
 			<connection>
-				<from>GetVariable_78</from>
-				<input>vehicle</input>
-				<to>PlayVoiceover_3</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Choice_5</from>
 				<input>in</input>
 				<to>PlayVoiceover_4</to>
 				<output>o3</output>
-			</connection>
-			<connection>
-				<from>GetVariable_78</from>
-				<input>vehicle</input>
-				<to>PlayVoiceover_4</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>ArenaPeriodStartEvent_3</from>
@@ -9854,12 +9163,6 @@
 				<output>o4</output>
 			</connection>
 			<connection>
-				<from>GetVariable_78</from>
-				<input>vehicle</input>
-				<to>PlayVoiceover_5</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_122</from>
 				<input>input</input>
 				<to>Choice_5</to>
@@ -9908,7 +9211,7 @@
 				<output>o5</output>
 			</connection>
 			<connection>
-				<from>GetVariable_80</from>
+				<from>GetVariable_38</from>
 				<input>vehicle</input>
 				<to>PlayVoiceover_6</to>
 				<output>value</output>
@@ -9918,18 +9221,6 @@
 				<input>a</input>
 				<to>CompareIntegers_6</to>
 				<output>res</output>
-			</connection>
-			<connection>
-				<from>SetVariable_31</from>
-				<input>input</input>
-				<to>SetVariable_32</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVehicleTransform_6</from>
-				<input>value</input>
-				<to>SetVariable_32</to>
-				<output>position</output>
 			</connection>
 			<connection>
 				<from>PlayVoiceover_5</from>
@@ -10010,15 +9301,9 @@
 				<output>o6</output>
 			</connection>
 			<connection>
-				<from>GetVariable_80</from>
+				<from>GetVariable_38</from>
 				<input>vehicle</input>
 				<to>PlayVoiceover_7</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_81</from>
-				<input>vehicle</input>
-				<to>GetVehicleTransform_6</to>
 				<output>value</output>
 			</connection>
 			<connection>
@@ -10064,7 +9349,7 @@
 				<output>o7</output>
 			</connection>
 			<connection>
-				<from>GetVariable_80</from>
+				<from>GetVariable_38</from>
 				<input>vehicle</input>
 				<to>PlayVoiceover_8</to>
 				<output>value</output>
@@ -10094,14 +9379,8 @@
 				<output>less</output>
 			</connection>
 			<connection>
-				<from>CompareFloats_5</from>
-				<input>i5</input>
-				<to>And_3</to>
-				<output>less</output>
-			</connection>
-			<connection>
 				<from>LogicGate_4</from>
-				<input>i6</input>
+				<input>i5</input>
 				<to>And_3</to>
 				<output>value</output>
 			</connection>
@@ -10118,7 +9397,7 @@
 				<output>o8</output>
 			</connection>
 			<connection>
-				<from>GetVariable_80</from>
+				<from>GetVariable_38</from>
 				<input>vehicle</input>
 				<to>PlayVoiceover_9</to>
 				<output>value</output>
@@ -10142,7 +9421,7 @@
 				<output>o9</output>
 			</connection>
 			<connection>
-				<from>GetVariable_80</from>
+				<from>GetVariable_38</from>
 				<input>vehicle</input>
 				<to>PlayVoiceover_10</to>
 				<output>value</output>
@@ -10175,36 +9454,6 @@
 				<from>VectorLength_1</from>
 				<input>a</input>
 				<to>CompareFloats_4</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>GetVariable_85</from>
-				<input>vehicle</input>
-				<to>GetVehicleTransform_8</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>SubtractVector_5</from>
-				<input>a</input>
-				<to>VectorLength_2</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>GetVehicleTransform_8</from>
-				<input>a</input>
-				<to>SubtractVector_5</to>
-				<output>position</output>
-			</connection>
-			<connection>
-				<from>GetVariable_86</from>
-				<input>b</input>
-				<to>SubtractVector_5</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>VectorLength_2</from>
-				<input>a</input>
-				<to>CompareFloats_5</to>
 				<output>res</output>
 			</connection>
 			<connection>
@@ -10244,12 +9493,6 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_49</from>
-				<input>vehicle</input>
-				<to>Macro_105</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_106</from>
 				<input>windup</input>
 				<to>Timer_2</to>
@@ -10274,22 +9517,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetVariable_47</from>
-				<input>vehicle</input>
-				<to>Macro_103</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>FlowGate_4</from>
 				<input>in</input>
 				<to>Macro_107</to>
 				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_51</from>
-				<input>vehicle</input>
-				<to>Macro_107</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Macro_107</from>
@@ -10334,12 +9565,6 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>GetVariable_53</from>
-				<input>vehicle</input>
-				<to>Macro_109</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_109</from>
 				<input>in</input>
 				<to>Macro_110</to>
@@ -10364,12 +9589,6 @@
 				<output>o1</output>
 			</connection>
 			<connection>
-				<from>GetVariable_70</from>
-				<input>vehicle</input>
-				<to>Macro_111</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_111</from>
 				<input>in</input>
 				<to>Macro_112</to>
@@ -10386,6 +9605,12 @@
 				<input>in</input>
 				<to>Macro_114</to>
 				<output>o0</output>
+			</connection>
+			<connection>
+				<from>GetVariable_56</from>
+				<input>vehicle</input>
+				<to>Macro_114</to>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>Choice_3</from>
@@ -10502,10 +9727,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>ClampInteger_1</from>
+				<from>GetVariable_73</from>
 				<input>index</input>
 				<to>Choice_3</to>
-				<output>res</output>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>Sequence_35</from>
@@ -10595,12 +9820,6 @@
 				<from>GetVariable_56</from>
 				<input>vehicle</input>
 				<to>Macro_117</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_73</from>
-				<input>value</input>
-				<to>ClampInteger_1</to>
 				<output>value</output>
 			</connection>
 			<connection>

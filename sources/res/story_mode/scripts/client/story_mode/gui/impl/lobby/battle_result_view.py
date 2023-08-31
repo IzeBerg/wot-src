@@ -3,6 +3,7 @@ from logging import getLogger
 import BigWorld, SoundGroups
 from constants import DEATH_REASON_ALIVE
 from frameworks.wulf import ViewSettings, WindowFlags
+from gui.app_loader import app_getter
 from gui.battle_results.settings import PLAYER_TEAM_RESULT
 from gui.clans.clan_cache import g_clanCache
 from gui.impl import backport
@@ -11,6 +12,8 @@ from gui.impl.pub import ViewImpl, WindowImpl
 from helpers import dependency
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.lobby_context import ILobbyContext
+from skeletons.gui.app_loader import IAppLoader
+from story_mode.gui.fade_in_out import UseStoryModeFading
 from story_mode.gui.impl.gen.view_models.views.lobby.battle_result_view_model import BattleResultViewModel
 from story_mode.gui.impl.gen.view_models.views.lobby.progress_level_model import ProgressLevelModel
 from story_mode.gui.impl.mixins import DestroyWindowOnDisconnectMixin
@@ -20,10 +23,12 @@ from story_mode.skeletons.story_mode_controller import IStoryModeController
 from story_mode_common.story_mode_constants import LOGGER_NAME
 from story_mode.uilogging.story_mode.consts import LogButtons
 from story_mode.uilogging.story_mode.loggers import PostBattleWindowLogger
+if typing.TYPE_CHECKING:
+    from gui.Scaleform.framework.application import AppEntry
 _logger = getLogger(LOGGER_NAME)
 
 class BattleResultView(ViewImpl):
-    __slots__ = ('_uiLogger', '__arenaUniqueId')
+    __slots__ = ('_uiLogger', '__arenaUniqueId', '__isForceOnboarding')
     _MAX_OBJECTIVES_COUNT = 1
     _ICON_OBJECTIVES = 'icon_battle_condition_win'
     _ICON_KILLS = 'icon_battle_condition_kill_vehicles'
@@ -33,10 +38,12 @@ class BattleResultView(ViewImpl):
     _battleResultsService = dependency.descriptor(IBattleResultsService)
     _storyModeCtrl = dependency.descriptor(IStoryModeController)
     _lobbyContext = dependency.descriptor(ILobbyContext)
+    _appLoader = dependency.instance(IAppLoader)
 
-    def __init__(self, arenaUniqueId):
+    def __init__(self, arenaUniqueId, isForceOnboarding=False):
         super(BattleResultView, self).__init__(settings=ViewSettings(layoutID=R.views.story_mode.lobby.BattleResultView(), model=BattleResultViewModel()))
         self.__arenaUniqueId = arenaUniqueId
+        self.__isForceOnboarding = isForceOnboarding
         self._uiLogger = PostBattleWindowLogger()
 
     def _getEvents(self):
@@ -104,12 +111,32 @@ class BattleResultView(ViewImpl):
     def __onClose(self):
         self._uiLogger.logClick(LogButtons.CONTINUE)
         if self._storyModeCtrl.needToShowAward:
-            showCongratulationsWindow(isCloseVisible=True)
+            if self.__isForceOnboarding:
+                showCongratulationsWindow(onClose=self._goToHangarAnimated)
+            else:
+                showCongratulationsWindow(isCloseVisible=True)
+        elif self.__isForceOnboarding:
+            self._goToHangarAnimated()
         self.destroyWindow()
+
+    @UseStoryModeFading(hide=False)
+    def _goToHangarAnimated(self):
+        self._appLoader.destroyBattle()
+        self._storyModeCtrl.goToHangar()
 
 
 class BattleResultWindow(DestroyWindowOnDisconnectMixin, WindowImpl):
-    __slots__ = ()
+    __slots__ = ('__isForceOnboarding', )
 
-    def __init__(self, arenaUniqueId):
-        super(BattleResultWindow, self).__init__(WindowFlags.WINDOW | WindowFlags.WINDOW_FULLSCREEN, content=BattleResultView(arenaUniqueId))
+    def __init__(self, arenaUniqueId, isForceOnboarding=False):
+        super(BattleResultWindow, self).__init__(WindowFlags.WINDOW | WindowFlags.WINDOW_FULLSCREEN, content=BattleResultView(arenaUniqueId, isForceOnboarding))
+        self.__isForceOnboarding = isForceOnboarding
+
+    @app_getter
+    def app(self):
+        return
+
+    def _onContentReady(self):
+        super(BattleResultWindow, self)._onContentReady()
+        if self.__isForceOnboarding:
+            self.app.attachCursor()

@@ -18,9 +18,9 @@ from skeletons.gameplay import PlayerEventID
 from story_mode.gui.impl.battle.prebattle_window import getOpenedPrebattleView
 from story_mode.gui.scaleform.daapi.view.battle.markers2d import StoryModeMarkersManager
 from story_mode.gui.scaleform.genConsts.STORY_MODE_BATTLE_VIEW_ALIASES import STORY_MODE_BATTLE_VIEW_ALIASES
-from story_mode.gui.shared.event_dispatcher import showIntroVideo, showPrebattleWindow
+from story_mode.gui.shared.event_dispatcher import showPrebattleWindow
 from story_mode.skeletons.story_mode_controller import IStoryModeController
-from story_mode_common.story_mode_constants import LOGGER_NAME, FIRST_MISSION_ID
+from story_mode_common.story_mode_constants import LOGGER_NAME
 _logger = getLogger(LOGGER_NAME)
 
 class DynamicAliases(CONST_CONTAINER):
@@ -109,8 +109,6 @@ class StoryModeBattlePage(ClassicPage):
         prebattleWindow = getOpenedPrebattleView()
         if prebattleWindow is not None:
             prebattleWindow.restart()
-        elif missionId is None or missionId == FIRST_MISSION_ID:
-            showIntroVideo()
         else:
             showPrebattleWindow(missionId=missionId)
         return

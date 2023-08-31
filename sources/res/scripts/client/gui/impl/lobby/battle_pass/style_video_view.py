@@ -1,5 +1,5 @@
 import logging, BigWorld, SoundGroups, Windowing
-from frameworks.wulf import ViewSettings, WindowFlags
+from frameworks.wulf import ViewSettings, WindowFlags, WindowLayer
 from gui.battle_pass.sounds import BattlePassSounds
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.battle_pass.style_video_view_model import StyleVideoViewModel
@@ -74,4 +74,4 @@ class StyleVideoViewWindow(LobbyWindow):
     __slots__ = ()
 
     def __init__(self, *args, **kwargs):
-        super(StyleVideoViewWindow, self).__init__(content=StyleVideoView(R.views.lobby.battle_pass.StyleVideoView(), *args, **kwargs), wndFlags=WindowFlags.WINDOW | WindowFlags.WINDOW_FULLSCREEN)
+        super(StyleVideoViewWindow, self).__init__(content=StyleVideoView(R.views.lobby.battle_pass.StyleVideoView(), *args, **kwargs), wndFlags=WindowFlags.WINDOW | WindowFlags.WINDOW_FULLSCREEN, layer=WindowLayer.TOP_WINDOW)

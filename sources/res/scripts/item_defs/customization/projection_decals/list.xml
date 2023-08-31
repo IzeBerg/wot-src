@@ -7812,7 +7812,7 @@
 		<projection_decal>
 			<id>31048</id>
 			<texture>gui/maps/vehicles/decals/projection_decals/special/Mosfilm_Decal_01_2023_MT.dds</texture>
-			<tags>hiddenInUI direction_left_to_right formfactor_square</tags>
+			<tags>hiddenInUI direction_left_to_right formfactor_square styleOnly</tags>
 			<userString>#vehicle_customization:projection_decals/Mosfilm_Decal_02_2023_MT</userString>
 			<mirror>false</mirror>
 		</projection_decal>
@@ -7820,17 +7820,71 @@
 			<id>31049</id>
 			<texture>gui/maps/vehicles/decals/projection_decals/special/Mosfilm_Decal_02_2023_MT.dds</texture>
 			<userString>#vehicle_customization:projection_decals/Mosfilm_Decal_01_2023_MT</userString>
-			<tags>hiddenInUI formfactor_square direction_right_to_left</tags>
+			<tags>hiddenInUI formfactor_square direction_right_to_left styleOnly</tags>
 			<mirror>false</mirror>
 		</projection_decal>
 		<projection_decal>
 			<id>31050</id>
 			<texture>gui/maps/vehicles/decals/projection_decals/special/Mosfilm_Decal_03_2023_MT.dds</texture>
 			<glossTexture>gui/maps/vehicles/decals/projection_decals/special/Mosfilm_Decal_03_2023_MT_GMM.dds</glossTexture>
-			<tags>hiddenInUI direction_right_to_left disableVerticalMirror formfactor_rect1x2</tags>
+			<tags>hiddenInUI direction_right_to_left disableVerticalMirror formfactor_rect1x2 styleOnly</tags>
 			<userString>#vehicle_customization:projection_decals/Mosfilm_Decal_03_2023_MT</userString>
 			<mirror>false</mirror>
 		</projection_decal>
+	</itemGroup>
+	<itemGroup>
+		<name>Crossproduct 2023</name>
+		<userString>#vehicle_customization:projection_decals/special</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<projection_decal>
+			<id>31057</id>
+			<texture>gui/maps/vehicles/decals/projection_decals/special/crossproduct_2023_MK.dds</texture>
+			<userString>#vehicle_customization:projection_decals/Crossproduct_2023_MK_MT</userString>
+			<tags>styleOnly right hiddenInUI formfactor_rect1x2 disableVerticalMirror direction_left_to_right</tags>
+			<vehicleFilter>
+				<exclude>
+					<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF usa:A104_M4A3E8A usa:A126_PzVI_Tiger_II_capt ussr:R61_Object252_BF</vehicles>
+				</exclude>
+			</vehicleFilter>
+			<mirror>false</mirror>
+		</projection_decal>
+		<projection_decal>
+			<id>31058</id>
+			<texture>gui/maps/vehicles/decals/projection_decals/special/crossproduct_2023_comrade.dds</texture>
+			<userString>#vehicle_customization:projection_decals/Crossproduct_2023_Comrade_MT</userString>
+			<tags>styleOnly left formfactor_rect1x2 hiddenInUI safe direction_right_to_left disableVerticalMirror</tags>
+			<vehicleFilter>
+				<exclude>
+					<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF usa:A104_M4A3E8A usa:A126_PzVI_Tiger_II_capt ussr:R61_Object252_BF</vehicles>
+				</exclude>
+			</vehicleFilter>
+		</projection_decal>
+		<projection_decal>
+			<id>31059</id>
+			<texture>gui/maps/vehicles/decals/projection_decals/special/crossproduct_2023_ensign.dds</texture>
+			<userString>#vehicle_customization:projection_decals/Crossproduct_2023_Ensign_MT</userString>
+			<tags>direction_right_to_left formfactor_square disableVerticalMirror</tags>
+			<vehicleFilter>
+				<exclude>
+					<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF usa:A104_M4A3E8A usa:A126_PzVI_Tiger_II_capt ussr:R61_Object252_BF</vehicles>
+				</exclude>
+			</vehicleFilter>
+			<mirror>false</mirror>
+		</projection_decal>
+		<projection_decal>
+			<id>31060</id>
+			<texture>gui/maps/vehicles/decals/projection_decals/special/crossproduct_2023_MK_inv.dds</texture>
+			<userString>#vehicle_customization:projection_decals/Crossproduct_2023_MK_Inv_MT</userString>
+			<tags>formfactor_square disableVerticalMirror</tags>
+			<vehicleFilter>
+				<exclude>
+					<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF usa:A104_M4A3E8A usa:A126_PzVI_Tiger_II_capt ussr:R61_Object252_BF</vehicles>
+				</exclude>
+			</vehicleFilter>
+			<mirror>false</mirror>
+		</projection_decal>
+		<priceGroup>MT projection_decals 100g notInShop</priceGroup>
 	</itemGroup>
 	<itemGroup>
 		<userString>#vehicle_customization:projection_decals/animals</userString>

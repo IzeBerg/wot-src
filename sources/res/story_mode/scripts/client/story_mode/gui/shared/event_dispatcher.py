@@ -111,9 +111,9 @@ def showMissionSelectionView():
         return
 
 
-def showBattleResultWindow(arenaUniqueId):
+def showBattleResultWindow(arenaUniqueId, isForceOnboarding=False):
     from story_mode.gui.impl.lobby.battle_result_view import BattleResultWindow
-    BattleResultWindow(arenaUniqueId).load()
+    BattleResultWindow(arenaUniqueId, isForceOnboarding).load()
 
 
 def sendViewLoadedEvent(layoutID):

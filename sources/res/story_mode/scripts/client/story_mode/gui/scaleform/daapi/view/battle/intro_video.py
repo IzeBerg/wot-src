@@ -45,7 +45,6 @@ class IntroVideo(IntroVideoMeta, IArenaLoadController):
         self._uiLogger.logVideoStarted()
         self._storyModeCtrl.stopOnboardingMusic()
         self._storyModeCtrl.startOnboardingMusic(self._data.music.start)
-        self.soundManager.playSound(self._data.vo)
         g_keyEventHandlers.add(self._handleKeyEvent)
 
     @UseStoryModeFading(hide=False)
@@ -95,7 +94,6 @@ class IntroVideo(IntroVideoMeta, IArenaLoadController):
 
     def _closeWindow(self):
         sendWWISEEventGlobal(self._data.music.stop)
-        self.soundManager.stopSound(self._data.vo)
         self.destroy()
 
     def _onWindowAccessibilityChanged(self, isAccessible):

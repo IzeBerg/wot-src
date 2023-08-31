@@ -768,34 +768,32 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetFromArray</class>
-				<id>GetFromArray_1</id>
-				<params>
-					<param>
-						GameObjectArrayT
-						<name>Array Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
+				<class>FindFirstNode</class>
+				<id>FindFirstNode_1</id>
+				<params/>
 				<slots>
 					<slot>
-						<name>index</name>
-						<const>\2\</const>
+						<name>name</name>
+						<const>\gun_go\</const>
+					</slot>
+					<slot>
+						<name>includingInactive</name>
+						<const>\true\</const>
 					</slot>
 				</slots>
 			</block>
 			<block>
-				<class>GetChildren</class>
-				<id>GetChildren_1</id>
+				<class>FindFirstNode</class>
+				<id>FindFirstNode_2</id>
 				<params/>
 				<slots>
 					<slot>
-						<name>allChildren</name>
-						<const>\true\</const>
+						<name>name</name>
+						<const>\turret_go\</const>
 					</slot>
 					<slot>
 						<name>includingInactive</name>
-						<const>\false\</const>
+						<const>\true\</const>
 					</slot>
 				</slots>
 			</block>
@@ -806,19 +804,17 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetFromArray</class>
-				<id>GetFromArray_2</id>
-				<params>
-					<param>
-						GameObjectArrayT
-						<name>Array Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
+				<class>FindFirstNode</class>
+				<id>FindFirstNode_3</id>
+				<params/>
 				<slots>
 					<slot>
-						<name>index</name>
-						<const>\1\</const>
+						<name>name</name>
+						<const>\hull_go\</const>
+					</slot>
+					<slot>
+						<name>includingInactive</name>
+						<const>\true\</const>
 					</slot>
 				</slots>
 			</block>
@@ -834,23 +830,6 @@
 					</param>
 				</params>
 				<slots/>
-			</block>
-			<block>
-				<class>GetFromArray</class>
-				<id>GetFromArray_3</id>
-				<params>
-					<param>
-						GameObjectArrayT
-						<name>Array Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>index</name>
-						<const>\0\</const>
-					</slot>
-				</slots>
 			</block>
 			<block>
 				<class>GetVariable</class>
@@ -1508,10 +1487,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetFromArray_2</from>
+				<from>FindFirstNode_2</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_4</to>
-				<output>value</output>
+				<output>node</output>
 			</connection>
 			<connection>
 				<from>GetVariable_3</from>
@@ -1532,10 +1511,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetFromArray_2</from>
+				<from>FindFirstNode_2</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_5</to>
-				<output>value</output>
+				<output>node</output>
 			</connection>
 			<connection>
 				<from>GetVariable_3</from>
@@ -1562,10 +1541,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetFromArray_2</from>
+				<from>FindFirstNode_2</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_11</to>
-				<output>value</output>
+				<output>node</output>
 			</connection>
 			<connection>
 				<from>GetVariable_9</from>
@@ -1592,10 +1571,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetFromArray_2</from>
+				<from>FindFirstNode_2</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_10</to>
-				<output>value</output>
+				<output>node</output>
 			</connection>
 			<connection>
 				<from>GetVariable_9</from>
@@ -1670,10 +1649,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetFromArray_1</from>
+				<from>FindFirstNode_1</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_1</to>
-				<output>value</output>
+				<output>node</output>
 			</connection>
 			<connection>
 				<from>GetVariable_2</from>
@@ -1688,15 +1667,15 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>GetChildren_1</from>
-				<input>array</input>
-				<to>GetFromArray_1</to>
-				<output>children</output>
+				<from>GetParentOf_1</from>
+				<input>gameObject</input>
+				<to>FindFirstNode_1</to>
+				<output>parent</output>
 			</connection>
 			<connection>
 				<from>GetParentOf_1</from>
 				<input>gameObject</input>
-				<to>GetChildren_1</to>
+				<to>FindFirstNode_2</to>
 				<output>parent</output>
 			</connection>
 			<connection>
@@ -1706,16 +1685,10 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>GetChildren_1</from>
-				<input>array</input>
-				<to>GetFromArray_2</to>
-				<output>children</output>
-			</connection>
-			<connection>
-				<from>GetChildren_1</from>
-				<input>array</input>
-				<to>GetFromArray_3</to>
-				<output>children</output>
+				<from>GetParentOf_1</from>
+				<input>gameObject</input>
+				<to>FindFirstNode_3</to>
+				<output>parent</output>
 			</connection>
 			<connection>
 				<from>ComponentMethod_8</from>
@@ -1766,10 +1739,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetFromArray_2</from>
+				<from>FindFirstNode_2</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_3</to>
-				<output>value</output>
+				<output>node</output>
 			</connection>
 			<connection>
 				<from>GetVariable_5</from>
@@ -1796,10 +1769,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetFromArray_3</from>
+				<from>FindFirstNode_3</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_8</to>
-				<output>value</output>
+				<output>node</output>
 			</connection>
 			<connection>
 				<from>GetVariable_8</from>
@@ -1814,10 +1787,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetFromArray_2</from>
+				<from>FindFirstNode_2</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_2</to>
-				<output>value</output>
+				<output>node</output>
 			</connection>
 			<connection>
 				<from>GetVariable_4</from>
@@ -1910,10 +1883,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetFromArray_2</from>
+				<from>FindFirstNode_2</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_6</to>
-				<output>value</output>
+				<output>node</output>
 			</connection>
 			<connection>
 				<from>GetVariable_4</from>
@@ -1934,10 +1907,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetFromArray_2</from>
+				<from>FindFirstNode_2</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_7</to>
-				<output>value</output>
+				<output>node</output>
 			</connection>
 			<connection>
 				<from>GetVariable_5</from>
@@ -1970,10 +1943,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetFromArray_3</from>
+				<from>FindFirstNode_3</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_9</to>
-				<output>value</output>
+				<output>node</output>
 			</connection>
 			<connection>
 				<from>GetVariable_8</from>

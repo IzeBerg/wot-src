@@ -15395,6 +15395,12 @@ package
       
       public static const STYLES_TANKIST_DAY_2023_MT_DESCRIPTION_LONG:String = "#vehicle_customization:styles/Tankist_Day_2023_MT/description/long";
       
+      public static const STYLES_CROSSPRODUCT_2023_MT:String = "#vehicle_customization:styles/Crossproduct_2023_MT";
+      
+      public static const STYLES_CROSSPRODUCT_2023_MT_DESCRIPTION:String = "#vehicle_customization:styles/Crossproduct_2023_MT/description";
+      
+      public static const STYLES_CROSSPRODUCT_2023_MT_DESCRIPTION_LONG:String = "#vehicle_customization:styles/Crossproduct_2023_MT/description/long";
+      
       public static const CAMOUFLAGE_TSAREVICH_MT:String = "#vehicle_customization:camouflage/Tsarevich_MT";
       
       public static const CAMOUFLAGE_TSAREVICH_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/Tsarevich_MT/description";
@@ -15575,6 +15581,10 @@ package
       
       public static const CAMOUFLAGE_TANKIST_DAY_2023_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/Tankist_Day_2023_MT/description";
       
+      public static const CAMOUFLAGE_CROSSPRODUCT_2023_MT:String = "#vehicle_customization:camouflage/Crossproduct_2023_MT";
+      
+      public static const CAMOUFLAGE_CROSSPRODUCT_2023_MT_DESCRIPTION:String = "#vehicle_customization:camouflage/Crossproduct_2023_MT/description";
+      
       public static const DECAL_STALINGRAD_2023_80_MT:String = "#vehicle_customization:decal/stalingrad_2023_80_MT";
       
       public static const DECAL_STALINGRAD_2023_80_MT_DESCRIPTION:String = "#vehicle_customization:decal/stalingrad_2023_80_MT/description";
@@ -15726,6 +15736,10 @@ package
       public static const REPAINT_RUSH_2023_06_MT:String = "#vehicle_customization:repaint/Rush_2023_06_MT";
       
       public static const REPAINT_RUSH_2023_06_MT_DESCRIPTION:String = "#vehicle_customization:repaint/Rush_2023_06_MT/description";
+      
+      public static const REPAINT_CROSSPRODUCT_2023_MT:String = "#vehicle_customization:repaint/Crossproduct_2023_MT";
+      
+      public static const REPAINT_CROSSPRODUCT_2023_MT_DESCRIPTION:String = "#vehicle_customization:repaint/Crossproduct_2023_MT/description";
       
       public static const PROJECTION_DECALS_TSAREVICH_1_MT:String = "#vehicle_customization:projection_decals/Tsarevich_1_MT";
       
@@ -15906,6 +15920,22 @@ package
       public static const PROJECTION_DECALS_MANIPULATOR_MT:String = "#vehicle_customization:projection_decals/Manipulator_MT";
       
       public static const PROJECTION_DECALS_MANIPULATOR_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/Manipulator_MT/description";
+      
+      public static const PROJECTION_DECALS_CROSSPRODUCT_2023_MK_MT:String = "#vehicle_customization:projection_decals/Crossproduct_2023_MK_MT";
+      
+      public static const PROJECTION_DECALS_CROSSPRODUCT_2023_MK_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/Crossproduct_2023_MK_MT/description";
+      
+      public static const PROJECTION_DECALS_CROSSPRODUCT_2023_COMRADE_MT:String = "#vehicle_customization:projection_decals/Crossproduct_2023_Comrade_MT";
+      
+      public static const PROJECTION_DECALS_CROSSPRODUCT_2023_COMRADE_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/Crossproduct_2023_Comrade_MT/description";
+      
+      public static const PROJECTION_DECALS_CROSSPRODUCT_2023_ENSIGN_MT:String = "#vehicle_customization:projection_decals/Crossproduct_2023_Ensign_MT";
+      
+      public static const PROJECTION_DECALS_CROSSPRODUCT_2023_ENSIGN_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/Crossproduct_2023_Ensign_MT/description";
+      
+      public static const PROJECTION_DECALS_CROSSPRODUCT_2023_MK_INV_MT:String = "#vehicle_customization:projection_decals/Crossproduct_2023_MK_Inv_MT";
+      
+      public static const PROJECTION_DECALS_CROSSPRODUCT_2023_MK_INV_MT_DESCRIPTION:String = "#vehicle_customization:projection_decals/Crossproduct_2023_MK_Inv_MT/description";
       
       public static const INSCRIPTION_BP_WINTER_INSCRIPTION_01_MT:String = "#vehicle_customization:inscription/bp_winter_inscription_01_MT";
       
@@ -16122,6 +16152,10 @@ package
       public static const INSCRIPTION_RUSH_2023_08_MT:String = "#vehicle_customization:inscription/Rush_2023_08_MT";
       
       public static const INSCRIPTION_RUSH_2023_08_MT_DESCRIPTION:String = "#vehicle_customization:inscription/Rush_2023_08_MT/description";
+      
+      public static const INSCRIPTION_CROSSPRODUCT_2023_FLEET_MT:String = "#vehicle_customization:inscription/Crossproduct_2023_Fleet_MT";
+      
+      public static const INSCRIPTION_CROSSPRODUCT_2023_FLEET_MT_DESCRIPTION:String = "#vehicle_customization:inscription/Crossproduct_2023_Fleet_MT/description";
       
       public static const STYLES_23_FEBRUARY_2023_STYLE:String = "#vehicle_customization:styles/23_February_2023_style";
       

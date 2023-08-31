@@ -2857,11 +2857,7 @@ package net.wg.data.constants.generated
       
       public static const UK_GB101_FV1066_SENLAC:String = "uk-GB101_FV1066_Senlac";
       
-      public static const UK_GB1019_SHERMAN_FIREFLY_NEW_ON_BOARDING:String = "uk-GB1019_Sherman_Firefly_NewOnBoarding";
-      
       public static const UK_GB102_LHMTV:String = "uk-GB102_LHMTV";
-      
-      public static const UK_GB1020_CRUSADER_NEW_ON_BOARDING:String = "uk-GB1020_Crusader_NewOnBoarding";
       
       public static const UK_GB103_GSOR3301_AVR_FS:String = "uk-GB103_GSOR3301_AVR_FS";
       
@@ -3089,8 +3085,6 @@ package net.wg.data.constants.generated
       
       public static const USA_A100_T49:String = "usa-A100_T49";
       
-      public static const USA_A1006_M4_A3_E8_SHERMAN_NEW_ON_BOARDING:String = "usa-A1006_M4A3E8_Sherman_NewOnBoarding";
-      
       public static const USA_A101_M56:String = "usa-A101_M56";
       
       public static const USA_A102_T28_CONCEPT:String = "usa-A102_T28_concept";
@@ -3100,8 +3094,6 @@ package net.wg.data.constants.generated
       public static const USA_A103_T71_E1_IGR:String = "usa-A103_T71E1_IGR";
       
       public static const USA_A104_M4_A3_E8_A:String = "usa-A104_M4A3E8A";
-      
-      public static const USA_A1041_M18_HELLCAT_NEW_ON_BOARDING:String = "usa-A1041_M18_Hellcat_NewOnBoarding";
       
       public static const USA_A106_M48_A2_120:String = "usa-A106_M48A2_120";
       
@@ -3116,8 +3108,6 @@ package net.wg.data.constants.generated
       public static const USA_A11_T29_IGR:String = "usa-A11_T29_IGR";
       
       public static const USA_A111_T25_PILOT:String = "usa-A111_T25_Pilot";
-      
-      public static const USA_A1118_M4_THUNDERBOLT_NEW_ON_BOARDING:String = "usa-A1118_M4_Thunderbolt_NewOnBoarding";
       
       public static const USA_A112_T71_E2:String = "usa-A112_T71E2";
       

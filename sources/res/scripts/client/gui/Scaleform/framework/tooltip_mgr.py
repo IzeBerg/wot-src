@@ -114,6 +114,7 @@ class ToolTip(ToolTipMgrMeta):
                     self.show(drawData, linkage)
             else:
                 _logger.warning('Tooltip can not be displayed: type "%s" is not found', tooltipType)
+                BigWorld.notify(BigWorld.EventType.LOAD_FAILED, name, id, name)
                 return
             self.__cacheTooltipData(_TOOLTIP_VARIANT_TYPED, tooltipType, args, stateType)
             self.onShow(tooltipType, args, self.__isAdvancedKeyPressed)
