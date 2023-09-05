@@ -25,6 +25,8 @@ package
       
       public static const MAPS_ICONS_BLUEPRINTS_FRAGMENT_CONVERSION_BG:String = "../maps/icons/blueprints/fragment/conversion/bg.png";
       
+      public static const MAPS_ICONS_COLLECTIONS_INTRO_BG:String = "../maps/icons/collections/intro/bg.png";
+      
       public static const MAPS_ICONS_CRYSTALSINFO_BG:String = "../maps/icons/crystalsInfo/bg.png";
       
       public static const MAPS_ICONS_CUSTOMIZATION_PROGRESSION_STYLES_STAGE_SWITCHER_BG:String = "../maps/icons/customization/progression_styles/stage_switcher/bg.png";
@@ -51,21 +53,11 @@ package
       
       public static const MAPS_ICONS_RESOURCEWELL_INTRO_BG:String = "../maps/icons/resourceWell/intro/bg.png";
       
-      public static const MAPS_ICONS_SUBSCRIPTION_AWARD_VIEW_BG:String = "../maps/icons/subscription/award_view/bg.png";
-      
       public static const MAPS_ICONS_TANKMEN_ICONS_SMALL_USSR_DOG_1:String = "../maps/icons/tankmen/icons/small/ussr-dog-1.png";
       
       public static const MAPS_ICONS_TANKMEN_ROLES_BIG_DOG:String = "../maps/icons/tankmen/roles/big/dog.png";
       
       public static const MAPS_ICONS_TANKMEN_SKILLS_BIG_NEW_SKILL:String = "../maps/icons/tankmen/skills/big/new_skill.png";
-      
-      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTERESTINGFACTANDBONUSVIEW_BG:String = "../maps/icons/wot_anniversary/interestingFactAndBonusView/bg.png";
-      
-      public static const MAPS_ICONS_WOT_ANNIVERSARY_INTROSCREEN_BG:String = "../maps/icons/wot_anniversary/introScreen/bg.png";
-      
-      public static const MAPS_ICONS_WOT_ANNIVERSARY_REWARDS_BG:String = "../maps/icons/wot_anniversary/rewards/bg.png";
-      
-      public static const MAPS_ICONS_WOT_ANNIVERSARY_WELCOMESCREEN_BG:String = "../maps/icons/wot_anniversary/welcomeScreen/bg.png";
       
       public static const MAPS_UIKIT_DIALOG_TEMPLATES_SELECT_OPTION_BG:String = "../maps/uiKit/dialog_templates/select_option/bg.png";
        

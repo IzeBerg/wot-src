@@ -4,12 +4,7 @@ from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_columns im
 from gui.prb_control.settings import PREBATTLE_ACTION_NAME
 DEFAULT_COLUMN = ModeSelectorColumns.COLUMN_2
 DEFAULT_PRIORITY = -1
-
-class CustomModeName(object):
-    BOOTCAMP = 'bootcamp'
-    DEFAULT = 'default'
-
-
+DEFAULT_MODE_SETTING = 'default'
 COLUMN_SETTINGS = {PREBATTLE_ACTION_NAME.RANDOM: (
                                 ModeSelectorColumns.COLUMN_0, -1), 
    PREBATTLE_ACTION_NAME.WINBACK: (
@@ -34,10 +29,8 @@ COLUMN_SETTINGS = {PREBATTLE_ACTION_NAME.RANDOM: (
                                         ModeSelectorColumns.COLUMN_3, 30), 
    PREBATTLE_ACTION_NAME.MAPS_TRAINING: (
                                        ModeSelectorColumns.COLUMN_3, 40), 
-   CustomModeName.BOOTCAMP: (
-                           ModeSelectorColumns.COLUMN_3, 50), 
-   CustomModeName.DEFAULT: (
-                          ModeSelectorColumns.COLUMN_2, 50)}
+   DEFAULT_MODE_SETTING: (
+                        ModeSelectorColumns.COLUMN_2, 50)}
 
 class ModeSelectorRewardID(Enum):
     BONES = 'bones'

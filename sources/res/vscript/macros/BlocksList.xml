@@ -3,15 +3,47 @@
 	<info>
 		<name>BlocksList</name>
 		<isMacro>true</isMacro>
+		<version>0</version>
 		<aspect>
 			<compatibles>CLIENT;SERVER</compatibles>
 		</aspect>
 		<blocks>
 			<block>
-				<class>IntToString</class>
-				<id>IntToString_1</id>
-				<params/>
-				<slots/>
+				<class>Variable</class>
+				<id>Variable_1</id>
+				<params>
+					<param>
+						totalBlocksCount
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Global</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\0\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>MacroInput</class>
@@ -27,42 +59,12 @@
 						<name>Input Type</name>
 						<type>TypeT</type>
 					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>MacroOutput</class>
-				<id>MacroOutput_1</id>
-				<params>
 					<param>
-						out1
-						<name>Output Name</name>
+						<name>Input Editor</name>
 						<type>StringT</type>
 					</param>
-					<param>
-						EventT
-						<name>Output Type</name>
-						<type>TypeT</type>
-					</param>
 				</params>
 				<slots/>
-			</block>
-			<block>
-				<class>IterateArray</class>
-				<id>IterateArray_1</id>
-				<params>
-					<param>
-						BlockInfoArrayT
-						<name>Array Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>forward</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
 			</block>
 			<block>
 				<class>Concatenate</class>
@@ -110,12 +112,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>GetPlanBlocksInfo</class>
-				<id>GetPlanBlocksInfo_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>BreakBlockInfo</class>
 				<id>BreakBlockInfo_1</id>
 				<params/>
@@ -129,6 +125,85 @@
 						PrintToLogs
 						<name>Macro Name</name>
 						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_1</id>
+				<buddy>Variable_1</buddy>
+				<params>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>value</name>
+						<const>\0\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>IterateArray</class>
+				<id>IterateArray_1</id>
+				<params>
+					<param>
+						BlockInfoArrayT
+						<name>Array Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>forward</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_2</id>
+				<buddy>Variable_1</buddy>
+				<params>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetPlanBlocksInfo</class>
+				<id>GetPlanBlocksInfo_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_2</id>
+				<buddy>Variable_1</buddy>
+				<params>
+					<param>
+						IntT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>AddInteger</class>
+				<id>AddInteger_3</id>
+				<params>
+					<param>
+						2
+						<name>Input Count</name>
+						<type>IntT</type>
 					</param>
 				</params>
 				<slots/>
@@ -171,89 +246,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>Variable</class>
-				<id>Variable_1</id>
-				<params>
-					<param>
-						totalBlocksCount
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						IntT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\0\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_1</id>
-				<buddy>Variable_1</buddy>
-				<params>
-					<param>
-						IntT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>value</name>
-						<const>\0\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>AddInteger</class>
-				<id>AddInteger_3</id>
-				<params>
-					<param>
-						2
-						<name>Input Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_2</id>
-				<buddy>Variable_1</buddy>
-				<params>
-					<param>
-						IntT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_2</id>
-				<buddy>Variable_1</buddy>
-				<params>
-					<param>
-						IntT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_1</id>
 				<buddy>Variable_1</buddy>
@@ -267,9 +259,15 @@
 				<slots/>
 			</block>
 			<block>
-				<class>IntToString</class>
-				<id>IntToString_2</id>
-				<params/>
+				<class>Macro</class>
+				<id>Macro_3</id>
+				<params>
+					<param>
+						PrintToLogs
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
 				<slots/>
 			</block>
 			<block>
@@ -298,6 +296,17 @@
 				</slots>
 			</block>
 			<block>
+				<class>SubtractInteger</class>
+				<id>SubtractInteger_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>b</name>
+						<const>\38\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_3</id>
 				<buddy>Variable_1</buddy>
@@ -311,60 +320,24 @@
 				<slots/>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_3</id>
+				<class>MacroOutput</class>
+				<id>MacroOutput_1</id>
 				<params>
 					<param>
-						PrintToLogs
-						<name>Macro Name</name>
+						out1
+						<name>Output Name</name>
 						<type>StringT</type>
+					</param>
+					<param>
+						EventT
+						<name>Output Type</name>
+						<type>TypeT</type>
 					</param>
 				</params>
 				<slots/>
 			</block>
-			<block>
-				<class>SubtractInteger</class>
-				<id>SubtractInteger_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>b</name>
-						<const>\38\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>IntToString</class>
-				<id>IntToString_3</id>
-				<params/>
-				<slots/>
-			</block>
 		</blocks>
 		<connections>
-			<connection>
-				<from>BreakBlockInfo_1</from>
-				<input>a</input>
-				<to>IntToString_1</to>
-				<output>count</output>
-			</connection>
-			<connection>
-				<from>Macro_3</from>
-				<input>out1</input>
-				<to>MacroOutput_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>SetVariable_1</from>
-				<input>input</input>
-				<to>IterateArray_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetPlanBlocksInfo_1</from>
-				<input>array</input>
-				<to>IterateArray_1</to>
-				<output>res</output>
-			</connection>
 			<connection>
 				<from>BreakBlockInfo_1</from>
 				<input>i3</input>
@@ -378,10 +351,10 @@
 				<output>className</output>
 			</connection>
 			<connection>
-				<from>IntToString_1</from>
+				<from>BreakBlockInfo_1</from>
 				<input>i10</input>
 				<to>Concatenate_1</to>
-				<output>res</output>
+				<output>count</output>
 			</connection>
 			<connection>
 				<from>IterateArray_1</from>
@@ -402,28 +375,34 @@
 				<output>res</output>
 			</connection>
 			<connection>
-				<from>IterateArray_1</from>
-				<input>in</input>
-				<to>Macro_2</to>
-				<output>complete</output>
-			</connection>
-			<connection>
-				<from>Concatenate_2</from>
-				<input>msg</input>
-				<to>Macro_2</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>IntToString_2</from>
-				<input>i3</input>
-				<to>Concatenate_2</to>
-				<output>res</output>
-			</connection>
-			<connection>
 				<from>MacroInput_4</from>
 				<input>input</input>
 				<to>SetVariable_1</to>
 				<output>input1</output>
+			</connection>
+			<connection>
+				<from>SetVariable_1</from>
+				<input>input</input>
+				<to>IterateArray_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetPlanBlocksInfo_1</from>
+				<input>array</input>
+				<to>IterateArray_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>IterateArray_1</from>
+				<input>input</input>
+				<to>SetVariable_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>AddInteger_3</from>
+				<input>value</input>
+				<to>SetVariable_2</to>
+				<output>res</output>
 			</connection>
 			<connection>
 				<from>GetVariable_2</from>
@@ -439,27 +418,21 @@
 			</connection>
 			<connection>
 				<from>IterateArray_1</from>
-				<input>input</input>
-				<to>SetVariable_2</to>
-				<output>out</output>
+				<input>in</input>
+				<to>Macro_2</to>
+				<output>complete</output>
 			</connection>
 			<connection>
-				<from>AddInteger_3</from>
-				<input>value</input>
-				<to>SetVariable_2</to>
+				<from>Concatenate_2</from>
+				<input>msg</input>
+				<to>Macro_2</to>
 				<output>res</output>
 			</connection>
 			<connection>
 				<from>GetVariable_1</from>
-				<input>a</input>
-				<to>IntToString_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>IntToString_3</from>
 				<input>i3</input>
-				<to>Concatenate_3</to>
-				<output>res</output>
+				<to>Concatenate_2</to>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>Macro_2</from>
@@ -474,16 +447,22 @@
 				<output>res</output>
 			</connection>
 			<connection>
+				<from>SubtractInteger_1</from>
+				<input>i3</input>
+				<to>Concatenate_3</to>
+				<output>res</output>
+			</connection>
+			<connection>
 				<from>GetVariable_3</from>
 				<input>a</input>
 				<to>SubtractInteger_1</to>
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>SubtractInteger_1</from>
-				<input>a</input>
-				<to>IntToString_3</to>
-				<output>res</output>
+				<from>Macro_3</from>
+				<input>out1</input>
+				<to>MacroOutput_1</to>
+				<output>out</output>
 			</connection>
 		</connections>
 		<macros/>

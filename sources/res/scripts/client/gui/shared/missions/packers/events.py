@@ -10,7 +10,7 @@ from gui.impl.gen.view_models.views.lobby.comp7.meta_view.pages.quest_card_model
 from gui.server_events.awards_formatters import AWARDS_SIZES
 from gui.server_events.events_helpers import isPremium, isDailyQuest
 from gui.server_events.formatters import DECORATION_SIZES
-from gui.shared.missions.packers.bonus import getDefaultBonusPacker, packBonusModelAndTooltipData
+from gui.shared.missions.packers.bonus import getDefaultBonusPacker, packMissionsBonusModelAndTooltipData
 from gui.shared.missions.packers.conditions import PostBattleConditionPacker
 from gui.shared.missions.packers.conditions import BonusConditionPacker
 from helpers import dependency
@@ -20,6 +20,7 @@ from soft_exception import SoftException
 if typing.TYPE_CHECKING:
     from gui.server_events.event_items import ServerEventAbstract
     from gui.server_events.bonuses import SimpleBonus
+    from gui.shared.missions.packers.bonus import BonusUIPacker
 _logger = logging.getLogger(__name__)
 DEFAULT_AWARDS_COUNT = 10
 DAILY_QUEST_AWARDS_COUNT = 1000
@@ -58,7 +59,7 @@ class BattleQuestUIDataPacker(_EventUIDataPacker):
 
     def __init__(self, event):
         super(BattleQuestUIDataPacker, self).__init__(event)
-        self.__tooltipData = {}
+        self._tooltipData = {}
 
     def pack(self, model=None):
         if model is not None and not isinstance(model, QuestModel):
@@ -70,7 +71,7 @@ class BattleQuestUIDataPacker(_EventUIDataPacker):
             return model
 
     def getTooltipData(self):
-        return self.__tooltipData
+        return self._tooltipData
 
     def _packModel(self, model):
         super(BattleQuestUIDataPacker, self)._packModel(model)
@@ -80,9 +81,13 @@ class BattleQuestUIDataPacker(_EventUIDataPacker):
         self._packDefaultConds(model)
 
     def _packBonuses(self, model):
+        packer = self._getBonusPacker()
+        self._tooltipData = {}
+        packQuestBonusModelAndTooltipData(packer, model.getBonuses(), self._event, tooltipData=self._tooltipData)
+
+    def _getBonusPacker(self):
         packer = getDefaultBonusPacker()
-        self.__tooltipData = {}
-        packQuestBonusModelAndTooltipData(packer, model.getBonuses(), self._event, tooltipData=self.__tooltipData)
+        return packer
 
     def _packPostBattleConds(self, model):
         postBattleContitionPacker = PostBattleConditionPacker()
@@ -207,7 +212,7 @@ def packQuestBonusModel(quest, packer, array):
 
 def packQuestBonusModelAndTooltipData(packer, array, quest, tooltipData=None, questBonuses=None):
     bonuses = quest.getBonuses() if questBonuses is None else questBonuses
-    packBonusModelAndTooltipData(bonuses, packer, array, tooltipData)
+    packMissionsBonusModelAndTooltipData(bonuses, packer, array, tooltipData)
     return
 
 

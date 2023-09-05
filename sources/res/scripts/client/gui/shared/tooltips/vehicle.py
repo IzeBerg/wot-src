@@ -29,7 +29,7 @@ from gui.shared.money import Currency
 from gui.shared.tooltips import formatters, ToolTipBaseData
 from gui.shared.tooltips import getComplexStatus, getUnlockPrice, TOOLTIP_TYPE
 from gui.shared.tooltips.common import BlocksTooltipData, makeCompoundPriceBlock, CURRENCY_SETTINGS
-from gui.shared.utils import MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, DUAL_GUN_CHARGE_TIME, TURBOSHAFT_SPEED_MODE_SPEED, ROCKET_ACCELERATION_SPEED_LIMITS
+from gui.shared.utils import MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, SHOT_DISPERSION_ANGLE, DUAL_GUN_CHARGE_TIME, TURBOSHAFT_SPEED_MODE_SPEED, ROCKET_ACCELERATION_SPEED_LIMITS, DUAL_ACCURACY_COOLING_DELAY
 from gui.impl.lobby.crew.tooltips.vehicle_params_tooltip_view import BaseVehicleParamsTooltipView, BaseVehicleAdvancedParamsTooltipView, VehicleAdvancedParamsTooltipView, VehicleAvgParamsTooltipView
 from helpers import i18n, time_utils, int2roman, dependency
 from helpers.i18n import makeString as _ms
@@ -174,7 +174,7 @@ class VehicleInfoTooltipData(BlocksTooltipData):
             items.append(formatters.packTextParameterBlockData(name=text_styles.main(backport.text(rentText)), value='', valueWidth=valueWidth + 18))
             if formattedTime:
                 items.append(formatters.packTextParameterWithIconBlockData(name=text_styles.gold(backport.text(R.strings.tooltips.vehicle.telecomRental.remainingTime.dyn(timeKey)()) % {'time': formattedTime}), value='', icon=ICON_TEXT_FRAMES.RENTALS, iconYOffset=2, gap=0, valueWidth=valueWidth, padding=formatters.packPadding(left=2, bottom=-10)))
-        if statsConfig.rentals and not vehicle.isPremiumIGR and not frontlineBlock and not (vehicle.isWotPlusRent or vehicle.isTelecomRent):
+        if statsConfig.rentals and not vehicle.isPremiumIGR and not frontlineBlock and not vehicle.isTelecomRent:
             if statsConfig.futureRentals:
                 rentLeftKey = '#tooltips:vehicle/rentLeftFuture/%s'
                 rentInfo = RentalInfoProvider(time=ctxParams.get('rentExpiryTime'), battles=ctxParams.get('rentBattlesLeft'), wins=ctxParams.get('rentWinsLeft'), seasonRent=ctxParams.get('rentSeason'), isRented=True)
@@ -637,7 +637,7 @@ class FrontlineRentBlockConstructor(VehicleTooltipBlockConstructor):
                 if rentInfo.getActiveSeasonRent() is not None:
                     rentFormatter = RentLeftFormatter(rentInfo)
                     rentLeftInfo = rentFormatter.getRentLeftStr(rentLeftKey)
-                    if rentLeftInfo and not (rentInfo.isWotPlus or rentInfo.isTelecomRent):
+                    if rentLeftInfo and not rentInfo.isTelecomRent:
                         block.append(formatters.packTextParameterWithIconBlockData(name=text_styles.neutral(rentLeftInfo), value='', icon=ICON_TEXT_FRAMES.RENTALS, valueWidth=self._valueWidth, padding=paddings))
                 return block
         return
@@ -690,6 +690,9 @@ class CommonStatsBlockConstructor(VehicleTooltipBlockConstructor):
             params.append(TURBOSHAFT_SPEED_MODE_SPEED)
         if descr.hasRocketAcceleration and serverSettings.checkRocketAccelerationHighlights(increase=True):
             params.append(ROCKET_ACCELERATION_SPEED_LIMITS)
+        if descr.hasDualAccuracy and serverSettings.checkDualAccuracyHighlights(increase=True):
+            params.append(DUAL_ACCURACY_COOLING_DELAY)
+            params.append(SHOT_DISPERSION_ANGLE)
         return params
 
     def __getShownParameters(self, paramsDict):

@@ -57,6 +57,8 @@ def makeContactStatusDescription(isOnline, tags, clientInfo=None):
             description = i18n.makeString(TOOLTIPS.CONTACT_STATUS_ONLINE)
         if name:
             description = ('{0}, {1}').format(description, name)
+    else:
+        description = i18n.makeString(TOOLTIPS.CONTACT_STATUS_OFFLINE)
     return description
 
 

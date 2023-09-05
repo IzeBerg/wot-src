@@ -21,15 +21,13 @@ def _addIconResIdsToViewModelArray(source, target):
 class IconSet(ViewImpl):
     __slots__ = ()
 
-    def __init__(self, iconResID, backgroundResIDList=None, overlayResIDList=None, layoutID=None, iconPositionLogic=IconPositionLogicEnum.CENTREDANDTHROUGHCONTENT.value, imageUrl=''):
+    def __init__(self, iconResID, backgroundResIDList=None, overlayResIDList=None, layoutID=None, iconPositionLogic=IconPositionLogicEnum.CENTREDANDTHROUGHCONTENT.value):
         settings = ViewSettings(layoutID or R.views.dialogs.sub_views.icon.IconSet())
         settings.model = IconSetViewModel()
         settings.kwargs = {'iconResID': iconResID, 
            'backgroundResIDList': backgroundResIDList, 
            'overlayResIDList': overlayResIDList, 
            'iconPositionLogic': iconPositionLogic}
-        if imageUrl:
-            settings.kwargs['imageUrl'] = imageUrl
         super(IconSet, self).__init__(settings)
 
     def _onLoading(self, iconResID, backgroundResIDList, overlayResIDList, iconPositionLogic, *args, **kwargs):
@@ -38,8 +36,5 @@ class IconSet(ViewImpl):
         viewModel.setIconPositionLogic(iconPositionLogic)
         if iconResID != INVALID_RES_ID:
             viewModel.icon.setPath(iconResID)
-        imageUrl = kwargs.get('imageUrl')
-        if imageUrl:
-            viewModel.icon.setUrl(imageUrl)
         _addIconResIdsToViewModelArray(backgroundResIDList, viewModel.getBackgrounds())
         _addIconResIdsToViewModelArray(overlayResIDList, viewModel.getOverlays())

@@ -31,6 +31,10 @@
 			<texture>particles/content_forward/PFX_textures/eff_dirt.dds</texture>
 		</preload>
 		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex_water.dds</texture>
+		</preload>
+		<preload>
 			<shader>\data\shaders\ps_long.fx</shader>
 			<texture>particles/content_forward/PFX_textures/eff_dirt.dds</texture>
 		</preload>
@@ -49,6 +53,14 @@
 		<preload>
 			<shader>\data\shaders\ps_foam.fx</shader>
 			<texture>particles/content_forward/PFX_textures/eff_tex_water.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_rocket_accelerator.dds</texture>
 		</preload>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/hd_env_UNI_031_EntryOFMine.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/hd_env_UNI_031_EntryOFMine_01.vfx</fn_effect_bin>
@@ -126,6 +138,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envSU_83_03_OldFurniture_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envSU_83_03_OldFurniture_8.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_env418_OldGMercedes.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_env608_Sovbus.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_mle008_Canisters1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_gaf001_WoodFence.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_gaf002_WoodGates.vfx</fn_effect_bin>
@@ -149,7 +162,10 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_gaf_19_02_StoneFence_04.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_gafNW_001_VillageFance_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mle016_BoxesHowitzer.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mleAF_002_Radiolocator.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_mleSU_83_02_OpelBlitz_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_rw406_Indicators.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_shells_detonation_medium.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_smallpole.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_small.vfx</fn_effect_bin>
@@ -189,16 +205,16 @@
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_03.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_04.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_05.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/butterfly_red.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/butterfly_white.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/exterior/10_hills_shore_foam.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_fire_smoke.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_fire_smoke_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_water_foam.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_water_spray.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_water_spray_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_water_up.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_water_up_2.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/butterfly_red.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/butterfly_white.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/exterior/10_hills_shore_foam.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_fire_smoke.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_fire_smoke_2.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_water_foam.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_water_spray.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_water_spray_2.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_water_up.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_water_up_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env205_Boats01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_gaf_EU_018_StoneFence_Corner.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_mle_UNI_001_SdKfz.eff</fn_effect_bin>
@@ -252,6 +268,7 @@
 		<fn_effect_bin>particles/Environment/objects/inf_envSU_83_03_OldFurniture_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envSU_83_03_OldFurniture_8.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_env418_OldGMercedes2.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_fuel_env608_Sovbus.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_mle008_Canisters1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_gaf001_WoodFence.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_gaf002_WoodGates.eff</fn_effect_bin>
@@ -275,7 +292,10 @@
 		<fn_effect_bin>particles/Environment/objects/inf_gaf_19_02_StoneFence_04.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_gafNW_001_VillageFance_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mle016_BoxesHowitzer.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_mleAF_002_Radiolocator.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_mleSU_83_02_OpelBlitz_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_rw406_Indicators.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_medium.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_smallpole.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_small.eff</fn_effect_bin>
@@ -394,6 +414,14 @@
 			<shader>\data\shaders\ps_shimmer.fx</shader>
 			<texture>particles/content_deferred/PFX_textures/eff_tex_distortion.dds</texture>
 		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_env_UNI_031_EntryOFMine.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_env_UNI_031_EntryOFMine_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/inf_bld707_shed_01.vfx</fn_effect_bin>
@@ -473,6 +501,7 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envSU_83_03_OldFurniture_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envSU_83_03_OldFurniture_8.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_env418_OldGMercedes.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_env608_Sovbus.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_mle008_Canisters1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_gaf001_WoodFence.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_gaf002_WoodGates.vfx</fn_effect_bin>
@@ -496,7 +525,10 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_gaf_19_02_StoneFence_04.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_gafNW_001_VillageFance_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mle016_BoxesHowitzer.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mleAF_002_Radiolocator.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_mleSU_83_02_OpelBlitz_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_rw406_Indicators.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_shells_detonation_medium.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_smallpole.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_big.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Trees/Broadleaves/inf_tree_bush_dry_fall_small.vfx</fn_effect_bin>
@@ -536,16 +568,16 @@
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_03.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_04.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_05.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/butterfly_red.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/butterfly_white.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/exterior/10_hills_shore_foam.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_fire_smoke.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_fire_smoke_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_water_foam.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_water_spray.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_water_spray_2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_water_up.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/interior/10_hills_water_up_2.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/butterfly_red.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/butterfly_white.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/exterior/10_hills_shore_foam.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_fire_smoke.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_fire_smoke_2.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_water_foam.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_water_spray.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_water_spray_2.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_water_up.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/10_hills_water_up_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env205_Boats01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_gaf_EU_018_StoneFence_Corner.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_mle_UNI_001_SdKfz.eff</fn_effect_bin>
@@ -599,6 +631,7 @@
 		<fn_effect_bin>particles/Environment/objects/inf_envSU_83_03_OldFurniture_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envSU_83_03_OldFurniture_8.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_env418_OldGMercedes2.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_fuel_env608_Sovbus.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_mle008_Canisters1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_gaf001_WoodFence.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_gaf002_WoodGates.eff</fn_effect_bin>
@@ -622,7 +655,10 @@
 		<fn_effect_bin>particles/Environment/objects/inf_gaf_19_02_StoneFence_04.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_gafNW_001_VillageFance_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_mle016_BoxesHowitzer.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_mleAF_002_Radiolocator.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_mleSU_83_02_OpelBlitz_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_rw406_Indicators.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_shells_detonation_medium.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_smallpole.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_big.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/inf_tree_bush_dry_fall_small.eff</fn_effect_bin>

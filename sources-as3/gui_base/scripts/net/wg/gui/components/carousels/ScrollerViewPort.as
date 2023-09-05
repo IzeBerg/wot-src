@@ -25,8 +25,6 @@ package net.wg.gui.components.carousels
       private static const COLON:String = ":";
        
       
-      protected var asserter:IAssertable = null;
-      
       protected var typicalRendererWidth:int = 0;
       
       protected var typicalRendererHeight:int = 0;
@@ -34,6 +32,8 @@ package net.wg.gui.components.carousels
       protected var dataCount:int = 0;
       
       protected var leftVisibleIndex:int = 0;
+      
+      private var _asserter:IAssertable;
       
       private var _rendererWidth:int = 0;
       
@@ -81,10 +81,10 @@ package net.wg.gui.components.carousels
       
       public function ScrollerViewPort()
       {
+         this._asserter = App.utils.asserter;
          this._activeRenderers = new Vector.<IScrollerItemRenderer>(0);
          this._inactiveRenderers = new Vector.<IScrollerItemRenderer>(0);
          super();
-         this.asserter = App.utils.asserter;
          App.tutorialMgr.addListenersToCustomTutorialComponent(this);
       }
       
@@ -148,7 +148,7 @@ package net.wg.gui.components.carousels
          this._itemRendererFactory = null;
          this._owner = null;
          this._tooltipDecorator = null;
-         this.asserter = null;
+         this._asserter = null;
          this._layoutController = null;
          super.onDispose();
       }
@@ -203,7 +203,7 @@ package net.wg.gui.components.carousels
       protected function newRenderer() : IScrollerItemRenderer
       {
          var _loc1_:IScrollerItemRenderer = new this._itemRendererFactory() as IScrollerItemRenderer;
-         this.asserter.assertNotNull(_loc1_,"Invalid IScrollerItemRenderer factory = " + this._itemRendererFactory);
+         this._asserter.assertNotNull(_loc1_,"Invalid IScrollerItemRenderer factory = " + this._itemRendererFactory);
          return _loc1_;
       }
       
@@ -253,7 +253,7 @@ package net.wg.gui.components.carousels
             _loc4_.tooltipDecorator = this._tooltipDecorator;
             _loc4_.owner = this;
             this.addRendererListeners(_loc4_);
-            this.asserter.assert(_loc4_ is DisplayObject,"IScrollerItemRenderer must be DisplayObject");
+            this._asserter.assert(_loc4_ is DisplayObject,"IScrollerItemRenderer must be DisplayObject");
             addChild(DisplayObject(_loc4_));
          }
          else

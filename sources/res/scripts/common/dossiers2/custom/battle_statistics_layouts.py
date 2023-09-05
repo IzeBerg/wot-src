@@ -425,6 +425,8 @@ COMP7_BLOCK_LAYOUT = [
  'damageAssistedStun',
  'winSeries',
  'squadWinSeries',
+ 'superSquadBattlesCount',
+ 'superSquadWins',
  'comp7PrestigePoints',
  'roleSkillUsed',
  'healthRepair',

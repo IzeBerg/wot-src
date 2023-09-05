@@ -170,6 +170,13 @@
 				<showTimes>5</showTimes>
 			</preceding>
 		</filter>
+		<filter>
+			<id>only_dualAccuracy_first_5_times</id>
+			<vehProperty>hasDualAccuracy</vehProperty>
+			<preceding>
+				<showTimes>5</showTimes>
+			</preceding>
+		</filter>
 	</filters>
 	<tips>
 		<tip>
@@ -905,6 +912,12 @@
 			<filter>battlePass_on</filter>
 		</tip>
 		<tip>
+			<id>tip189</id>
+			<status>battlePassSeasonDescription</status>
+			<group>all</group>
+			<filter>battlePass_on</filter>
+		</tip>
+		<tip>
 			<id>tip191</id>
 			<status>payAttention</status>
 			<filter>from_2_to_10_levels</filter>
@@ -966,6 +979,11 @@
 		<tip>
 			<id>tip203</id>
 			<status>payAttention</status>
+		</tip>
+		<tip>
+			<id>tip204</id>
+			<status>tip204Status</status>
+			<filter>only_dualAccuracy_first_5_times</filter>
 		</tip>
 		<tip>
 			<id>epicTip1</id>
@@ -1314,6 +1332,10 @@
 		<tip>
 			<id>comp736</id>
 			<status>comp736Status</status>
+		</tip>
+		<tip>
+			<id>comp737</id>
+			<status>comp737Status</status>
 		</tip>
 		<tip>
 			<id>winback1</id>

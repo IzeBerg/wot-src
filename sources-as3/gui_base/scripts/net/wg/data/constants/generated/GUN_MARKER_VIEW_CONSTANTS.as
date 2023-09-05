@@ -25,11 +25,15 @@ package net.wg.data.constants.generated
       
       public static const SNIPER_GUN_MARKER_NAME:String = "sniperGunMarker";
       
+      public static const SPG_GUN_MARKER_NAME:String = "spgGunMarker";
+      
       public static const DUAL_GUN_ARCADE_MARKER_NAME:String = "arcadeDualGunMarker";
       
       public static const DUAL_GUN_SNIPER_MARKER_NAME:String = "sniperDualGunMarker";
       
-      public static const SPG_GUN_MARKER_NAME:String = "spgGunMarker";
+      public static const ARCADE_DUAL_ACC_GUN_MARKER_NAME:String = "arcadeDualAccGunMarker";
+      
+      public static const SNIPER_DUAL_ACC_GUN_MARKER_NAME:String = "sniperDualAccGunMarker";
       
       public static const VIDEO_GUN_MARKER_NAME:String = "videoGunMarker";
       

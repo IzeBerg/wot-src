@@ -230,3 +230,7 @@ class BaseSyncDataCache(object):
         if callback is not None:
             callback(resultID, self._itemsStorage.get(itemsType, None))
         return
+
+
+def isFullSyncDiff(diff):
+    return diff.get('prevRev', None) is None

@@ -124,6 +124,11 @@ package net.wg.gui.components.paginator
          return this._buttonGroup.selectedButton;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function setPageIndex(param1:int) : void
       {
          if(this._currentMissionIndex == param1 || !this._allowPageChange)
@@ -386,8 +391,7 @@ package net.wg.gui.components.paginator
       
       private function afterArrowClickCallback(param1:ISoundButtonEx) : void
       {
-         var _loc2_:Boolean = param1.hitTestPoint(App.stage.mouseX,App.stage.mouseY,true);
-         if(_loc2_)
+         if(param1.hitTestPoint(App.stage.mouseX,App.stage.mouseY,true))
          {
             this.onArrowRollOver(param1);
          }
@@ -396,15 +400,12 @@ package net.wg.gui.components.paginator
       private function onArrowRollOver(param1:ISoundButtonEx) : void
       {
          var _loc2_:int = 0;
-         if(this._allowPageChange)
+         if(this._allowPageChange && param1.enabled)
          {
-            if(param1.enabled)
+            _loc2_ = this._currentMissionIndex + (param1 == this._arrowLeftBtn ? -1 : 1);
+            if(_loc2_ >= 0 && _loc2_ < this._pagesData.length)
             {
-               _loc2_ = this._currentMissionIndex + (param1 == this._arrowLeftBtn ? -1 : 1);
-               if(_loc2_ >= 0 && _loc2_ < this._pagesData.length)
-               {
-                  this.showArrowTooltip(_loc2_);
-               }
+               this.showArrowTooltip(_loc2_);
             }
          }
       }
@@ -413,6 +414,17 @@ package net.wg.gui.components.paginator
       {
          this.updateControlsStates();
          dispatchEvent(new Event(Event.CHANGE));
+      }
+      
+      public function set allowPageChange(param1:Boolean) : void
+      {
+         if(param1 != this._allowPageChange)
+         {
+            this._allowPageChange = param1;
+            this._pageButtons.mouseEnabled = this._pageButtons.mouseChildren = param1;
+            this._arrowRightBtn.mouseEnabled = this._arrowRightBtn.mouseChildren = param1;
+            this._arrowLeftBtn.mouseEnabled = this._arrowLeftBtn.mouseChildren = param1;
+         }
       }
       
       private function onPageButtonsGroupChangedHandler(param1:PaginationGroupEvent) : void
@@ -466,22 +478,6 @@ package net.wg.gui.components.paginator
             this.setPageIndex(PaginationDetailsNumButton(this._buttonGroup.selectedButton).pageIndex);
             this.onMissionHasChanged();
          }
-      }
-      
-      public function set allowPageChange(param1:Boolean) : void
-      {
-         if(param1 != this._allowPageChange)
-         {
-            this._allowPageChange = param1;
-            this._pageButtons.mouseEnabled = this._pageButtons.mouseChildren = param1;
-            this._arrowRightBtn.mouseEnabled = this._arrowRightBtn.mouseChildren = param1;
-            this._arrowLeftBtn.mouseEnabled = this._arrowLeftBtn.mouseChildren = param1;
-         }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

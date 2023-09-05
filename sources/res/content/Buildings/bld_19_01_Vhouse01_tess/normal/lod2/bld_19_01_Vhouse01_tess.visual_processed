@@ -19,42 +19,136 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>s_nd_3_railing</identifier>
+					<identifier>s_nd_0_wall</identifier>
 					<collisionFlags>0</collisionFlags>
-					<materialKind>112</materialKind>
-					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<property>
-						alphaReference
-						<Int>9</Int>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_1024_AM.dds</Texture>
 					</property>
 					<property>
-						alphaTestEnable
-						<Bool>true</Bool>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_09_1024_AM.dds</Texture>
 					</property>
 					<property>
-						diffuseMap
-						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_01_Vhouse_01-06_railing_AM.dds</Texture>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Bricks_stone_05_1024_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/bld_19_01_Vhouse01_tess/bld_19_01_Vhouse01_tess_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_dirt_01_DM.dds</Texture>
 					</property>
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
 					</property>
 					<property>
-						metallicGlossMap
-						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_01_Vhouse_01-06_railing_GMM.dds</Texture>
+						g_fakeShadowsAndDetailParams
+						<Vector4>0.200000 0.200000 1.000000 0.000000</Vector4>
 					</property>
 					<property>
-						normalMap
-						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_01_Vhouse_01-06_railing_ANM.dds</Texture>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_09_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Bricks_stone_05_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_10_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Plaster_09_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Bricks_stone_05_1024_GBMT.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>1.582018 3.919982 0.200693</groupOrigin>
+				<groupOrigin>0.266066 3.233674 -0.490724</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				1
 				<material>
+					<identifier>s_nd_1_roof</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Roof_26_Tile_01_1024_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Roof_26_Tile_01_crashed_1024_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Roof_26_Tile_01_crashed_1024_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/bld_19_01_Vhouse01_tess/bld_19_01_Vhouse01_tess_roof_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_dirt_02_DM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Roof_26_Tile_01_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Roof_26_Tile_01_crashed_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Roof_26_Tile_01_crashed_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Roof_26_Tile_01_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Roof_26_Tile_01_crashed_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Roof_26_Tile_01_crashed_1024_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.026676 7.564646 -0.082547</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
 					<identifier>s_nd_2_details</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
 					<property>
@@ -89,84 +183,38 @@
 				<groupOrigin>0.279840 4.485975 -0.168620</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				2
-				<material>
-					<identifier>s_nd_1_roof</identifier>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>111</materialKind>
-					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
-					<property>
-						atlasAlbedoHeight
-						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_AM.dds</Texture>
-					</property>
-					<property>
-						atlasBlend
-						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_blend.png</Texture>
-					</property>
-					<property>
-						atlasMetallicAO
-						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_MAO.dds</Texture>
-					</property>
-					<property>
-						atlasNormalGlossSpec
-						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_GBMT.dds</Texture>
-					</property>
-					<property>
-						dirtMap
-						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_dirt_02_DM.dds</Texture>
-					</property>
-					<property>
-						g_atlasIndexes
-						<Vector4>9.000000 10.000000 10.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_enableTerrainBlending
-						<Bool>true</Bool>
-					</property>
-				</material>
-				<groupOrigin>-0.026676 7.564646 -0.082547</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
 				3
 				<material>
-					<identifier>s_nd_0_wall</identifier>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>111</materialKind>
-					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<identifier>s_nd_3_railing</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>112</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<property>
-						atlasAlbedoHeight
-						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_AM.dds</Texture>
+						alphaReference
+						<Int>9</Int>
 					</property>
 					<property>
-						atlasBlend
-						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_blend.png</Texture>
+						alphaTestEnable
+						<Bool>true</Bool>
 					</property>
 					<property>
-						atlasMetallicAO
-						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_MAO.dds</Texture>
-					</property>
-					<property>
-						atlasNormalGlossSpec
-						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_GBMT.dds</Texture>
-					</property>
-					<property>
-						dirtMap
-						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_dirt_01_DM.dds</Texture>
-					</property>
-					<property>
-						g_atlasIndexes
-						<Vector4>4.000000 3.000000 14.000000 20.000000</Vector4>
+						diffuseMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_01_Vhouse_01-06_railing_AM.dds</Texture>
 					</property>
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
 					</property>
 					<property>
-						g_fakeShadowsParams
-						<Vector4>0.200000 0.200000 1.000000 0.000000</Vector4>
+						metallicGlossMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_01_Vhouse_01-06_railing_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_01_Vhouse_01-06_railing_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>0.266066 3.233674 -0.490724</groupOrigin>
+				<groupOrigin>1.582018 3.919982 0.200693</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -174,6 +222,7 @@
 		<min>-7.102707 -1.832751 -6.184604</min>
 		<max>7.629076 9.150911 5.847364</max>
 	</boundingBox>
-	<geometrySize>123964</geometrySize>
-	<minUVDensity>0.000295</minUVDensity>
+	<customBsp>true</customBsp>
+	<geometrySize>123924</geometrySize>
+	<minUVDensity>0.000648</minUVDensity>
 </root>

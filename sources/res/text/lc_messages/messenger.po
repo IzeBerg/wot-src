@@ -253,8 +253,8 @@ msgstr "Request to add player %s to your Friends list saved."
 
 msgid "client/information/addToIgnored/message"
 msgstr ""
-"%s has been added to your Blacklist. Chat with the player is blocked; the "
-"player's messages are hidden."
+"The request to add player %s to your Blacklist has been saved. Chat with the"
+" player has been blocked and the player's messages have been hidden."
 
 msgid "client/information/addToTmpIgnored/message"
 msgstr "Chat with %s is blocked; the player's messages are hidden."
@@ -267,8 +267,8 @@ msgstr "Request to remove player %s from your Friends list saved."
 
 msgid "client/information/removeFromIgnored/message"
 msgstr ""
-"%s has been removed from your Blacklist; chat with the player is fully "
-"restored."
+"The request to remove player %s from your Blacklist has been saved. Chat "
+"with the player has been fully restored."
 
 msgid "client/information/removeFromTmpIgnored/message"
 msgstr "Chat with %s is available again."
@@ -1544,6 +1544,13 @@ msgstr "Victory"
 msgid "serviceChannelMessages/Financial/add"
 msgstr "Added"
 
+msgid "serviceChannelMessages/WotPlusIntroNotification/body"
+msgstr ""
+"The Attendance Rewards feature has been introduced for WoT Plus subscribers."
+
+msgid "serviceChannelMessages/WotPlusIntroNotification/header"
+msgstr "New WoT Plus Benefit Released"
+
 msgid "serviceChannelMessages/achievementReceived/message"
 msgstr "Service Record"
 
@@ -1718,13 +1725,14 @@ msgstr "Garage slots: %(count)s"
 msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body/vehicle"
 msgstr "Rental vehicles: %(vehName)s"
 
-msgid "serviceChannelMessages/battleMatters/paused"
-msgstr ""
-"Tank Academy missions cannot be completed at the moment. Your progress on "
-"completed missions will be saved."
+msgid "serviceChannelMessages/battleMatters/taskReminder/body"
+msgstr "Go back to training missions and receive useful rewards."
 
-msgid "serviceChannelMessages/battleMatters/started"
-msgstr "Tank Academy missions are available again."
+msgid "serviceChannelMessages/battleMatters/taskReminder/button"
+msgstr "To Current Mission"
+
+msgid "serviceChannelMessages/battleMatters/taskReminder/title"
+msgstr "TANK ACADEMY"
 
 msgid "serviceChannelMessages/battleMatters/token"
 msgstr "Academy Token"
@@ -2774,6 +2782,12 @@ msgstr "Blueprint fragments of %(nationName)s vehicles added"
 msgid "serviceChannelMessages/invoiceReceived/nationalBlueprintsDebited"
 msgstr "Blueprint fragments of %(nationName)s vehicles removed"
 
+msgid "serviceChannelMessages/invoiceReceived/offersAccrued"
+msgstr "Added"
+
+msgid "serviceChannelMessages/invoiceReceived/offersDebited"
+msgstr "Removed"
+
 msgid "serviceChannelMessages/invoiceReceived/pieces"
 msgstr "item(s)"
 
@@ -3654,15 +3668,53 @@ msgstr "Select"
 msgid "serviceChannelMessages/winbackSelectableRewardEntry/header"
 msgstr "Rewards Received!"
 
+msgid ""
+"serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/endText"
+msgstr "Continue logging in to the game to get more rewards!"
+
+msgid ""
+"serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/startText"
+msgstr "Special Attendance Reward Received!"
+
+msgid ""
+"serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/title"
+msgstr "Cycle Completed"
+
+msgid ""
+"serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleStarted/endText"
+msgstr "Log in to the game and get rewards."
+
+msgid ""
+"serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleStarted/startText"
+msgstr "New WoT Plus Benefit Released!"
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/title"
+msgstr "Attendance Reward"
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/endText"
+msgstr "Return another day for a new reward!"
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/title"
+msgstr "Attendance Noted!"
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendances/isDisabled/text"
+msgstr "The Attendance Rewards feature has been suspended."
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendances/isDisabled/title"
+msgstr "Attendance Rewards Unavailable"
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendances/isEnabled/title"
+msgstr "Attendance Rewards Available"
+
 msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/subscribed/text"
 msgstr ""
-"The exclusive <font color='#E9E2BF'>%(vehicleName)s</font> heavy tank is "
-"available."
+"The <font color='#E9E2BF'>%(vehicleName)s</font> %(vehicleType)s, exclusive "
+"to WoT Plus, is now available."
 
 msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/unsubscribed/text"
 msgstr ""
-"The <font color='#E9E2BF'>%(vehicleName)s</font> heavy tank, exclusive to "
-"WoT Plus, is currently not available."
+"The <font color='#E9E2BF'>%(vehicleName)s</font> %(vehicleType)s, exclusive "
+"to WoT Plus, is currently not available."
 
 msgid "serviceChannelMessages/wotPlus/expireFreeDemount/title"
 msgstr "Free equipment demounting is unavailable"
@@ -3672,15 +3724,6 @@ msgstr "Extend WoT Plus to get all the benefits."
 
 msgid "serviceChannelMessages/wotPlus/expireMessage/title"
 msgstr "WoT Plus expired on %(time)s"
-
-msgid "serviceChannelMessages/wotPlus/freeDirectives/isDisabled/title"
-msgstr "Receipt of free directives has been suspended"
-
-msgid "serviceChannelMessages/wotPlus/freeDirectives/isEnabled/title"
-msgstr "Receipt of free directives has been restored"
-
-msgid "serviceChannelMessages/wotPlus/freeDirectives/received/title"
-msgstr "Free directives received"
 
 msgid "serviceChannelMessages/wotPlus/goldReserve/isDisabled/text"
 msgstr "Gold accumulation has been suspended."

@@ -197,14 +197,6 @@ class CrosshairPanelContainerMeta(DAAPISimpleContainerMeta):
         if self._isDAAPIInited():
             return self.flashObject.as_blinkReloadTime(blinkType)
 
-    def as_setOverheatProgressS(self, value, isOverheated):
+    def as_setDualAccActiveS(self, value):
         if self._isDAAPIInited():
-            return self.flashObject.as_setOverheatProgress(value, isOverheated)
-
-    def as_addOverheatS(self, overheatMark):
-        if self._isDAAPIInited():
-            return self.flashObject.as_addOverheat(overheatMark)
-
-    def as_removeOverheatS(self):
-        if self._isDAAPIInited():
-            return self.flashObject.as_removeOverheat()
+            return self.flashObject.as_setDualAccActive(value)

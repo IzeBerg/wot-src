@@ -1,4 +1,4 @@
-import logging, typing
+import copy, logging, typing
 from gui import SystemMessages
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
 from gui.shared.events import MessengerEvent
@@ -95,6 +95,7 @@ class GFChannelController(IChannelController):
             if isinstance(message, (str, unicode)):
                 message = UnitMessageVO(0, -1, message, '')
             if doFormatting:
+                message = copy.copy(message)
                 message.text = self.__formatText(message.text)
             self.__channel.addMessage(message)
             return self.__addMessageToView(message, isHistoryMessage)

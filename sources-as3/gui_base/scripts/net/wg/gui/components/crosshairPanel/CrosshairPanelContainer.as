@@ -236,15 +236,6 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
-      public function as_addOverheat(param1:Number) : void
-      {
-         var _loc2_:ICrosshair = null;
-         for each(_loc2_ in this._crosshairs)
-         {
-            _loc2_.addOverheat(param1);
-         }
-      }
-      
       public function as_addSpeedometer(param1:int, param2:int) : void
       {
          if(this._speedometer == null)
@@ -384,15 +375,6 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
-      public function as_removeOverheat() : void
-      {
-         var _loc1_:ICrosshair = null;
-         for each(_loc1_ in this._crosshairs)
-         {
-            _loc1_.removeOverheat();
-         }
-      }
-      
       public function as_removeSpeedometer() : void
       {
          if(this._speedometer)
@@ -506,6 +488,11 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
+      public function as_setDualAccActive(param1:Boolean) : void
+      {
+         this._gunMarkersContainer.setDualAccActive(param1);
+      }
+      
       public function as_setEngineCrushError(param1:String) : void
       {
          this._engineCrush = param1;
@@ -565,15 +552,6 @@ package net.wg.gui.components.crosshairPanel
          if(this._currentCrosshair != null)
          {
             this._currentCrosshair.setVisibleNet(this._visibleNet);
-         }
-      }
-      
-      public function as_setOverheatProgress(param1:Number, param2:Boolean) : void
-      {
-         var _loc3_:ICrosshair = null;
-         for each(_loc3_ in this._crosshairs)
-         {
-            _loc3_.setOverheatProgress(param1,param2);
          }
       }
       

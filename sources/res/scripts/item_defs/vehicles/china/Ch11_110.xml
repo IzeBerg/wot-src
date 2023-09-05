@@ -79,7 +79,7 @@
 	<hull>
 		<armor>
 			<armor_1>120</armor_1>
-			<armor_2>110</armor_2>
+			<armor_2>125</armor_2>
 			<armor_3>90</armor_3>
 			<armor_4>60</armor_4>
 			<armor_5>100</armor_5>
@@ -7055,10 +7055,13 @@
 						<gun>40</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.36
+						0.35
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>10</reloadTime>
+					<reloadTime>
+						8.5
+						<!--BW_String-->
+					</reloadTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.1
@@ -7074,7 +7077,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						2.5
+						2.3
 						<!--BW_String-->
 					</aimingTime>
 					<invisibilityFactorAtShot>

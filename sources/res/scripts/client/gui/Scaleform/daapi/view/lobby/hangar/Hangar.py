@@ -55,7 +55,7 @@ from nation_change_helpers.client_nation_change_helper import getChangeNationToo
 from shared_utils import nextTick
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
-from skeletons.gui.game_control import IWotPlusController, IBattlePassController, IBattleRoyaleController, IBootcampController, IComp7Controller, IEpicBattleMetaGameController, IEventLootBoxesController, IFunRandomController, IIGRController, IMapboxController, IMarathonEventsController, IPromoController, IRankedBattlesController, IHangarGuiController, IWotAnniversaryController
+from skeletons.gui.game_control import IWotPlusController, IBattlePassController, IBattleRoyaleController, IBootcampController, IComp7Controller, IEpicBattleMetaGameController, IEventLootBoxesController, IFunRandomController, IIGRController, IMapboxController, IMarathonEventsController, IPromoController, IRankedBattlesController, IHangarGuiController
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersBannerController
@@ -64,7 +64,6 @@ from skeletons.gui.shared.utils import IHangarSpace
 from skeletons.helpers.statistics import IStatisticsCollector
 from sound_gui_manager import CommonSoundSpaceSettings
 from tutorial.control.context import GLOBAL_FLAG
-from wot_anniversary_common import WOT_ANNIVERSARY_CONFIG_NAME
 if typing.TYPE_CHECKING:
     from frameworks.wulf import Window
 _logger = logging.getLogger(__name__)
@@ -107,7 +106,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     _bootcamp = dependency.descriptor(IBootcampController)
     __eventLootBoxes = dependency.descriptor(IEventLootBoxesController)
     __hangarComponentsCtrl = dependency.descriptor(IHangarGuiController)
-    __wotAnniversaryCtrl = dependency.descriptor(IWotAnniversaryController)
     _COMMON_SOUND_SPACE = __SOUND_SETTINGS
 
     def __init__(self, _=None):
@@ -238,7 +236,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__funRandomCtrl.subscription.addSubModesWatcher(self.__onFunRandomUpdate, True)
         self.__funRandomCtrl.subscription.addSubModesWatcher(self.__updateAlertMessage, True, True)
         self.battleRoyaleController.onUpdated += self.__updateBattleRoyaleComponents
-        self.__wotAnniversaryCtrl.onSettingsChanged += self.__updateWotAnniversaryWidget
         self.epicController.onUpdated += self.__onEpicBattleUpdated
         self.epicController.onPrimeTimeStatusUpdated += self.__onEpicBattleUpdated
         self.epicController.onGameModeStatusTick += self.__updateAlertMessage
@@ -298,7 +295,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__funRandomCtrl.subscription.removeSubModesWatcher(self.__updateAlertMessage, True, True)
         self.__funRandomCtrl.subscription.removeSubModesWatcher(self.__onFunRandomUpdate, True)
         self.battleRoyaleController.onUpdated -= self.__updateBattleRoyaleComponents
-        self.__wotAnniversaryCtrl.onSettingsChanged -= self.__updateWotAnniversaryWidget
         self.epicController.onUpdated -= self.__onEpicBattleUpdated
         self.epicController.onPrimeTimeStatusUpdated -= self.__onEpicBattleUpdated
         self.epicController.onGameModeStatusTick -= self.__updateAlertMessage
@@ -414,26 +410,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
             return min(self.__comp7Controller.banDuration, ONE_MINUTE)
         else:
             return
-
-    def __updateWotAnniversaryWidget(self):
-        if self.wotAnniversaryWidget is not None:
-            suitableBattleMode = self.__isRandomBattleSelected() or self.__isWinbackBattleSelected()
-            showInHangar = not self.bootcampController.isInBootcamp() and suitableBattleMode
-            visible = self.__wotAnniversaryCtrl.isAvailableAndActivePhase()
-            self.as_setEventEntryPointVisibleS(showInHangar and visible)
-        return
-
-    def __isRandomBattleSelected(self):
-        if self.prbDispatcher is not None:
-            return self.prbDispatcher.getFunctionalState().isQueueSelected(QUEUE_TYPE.RANDOMS)
-        else:
-            return False
-
-    def __isWinbackBattleSelected(self):
-        if self.prbDispatcher is not None:
-            return self.prbDispatcher.getFunctionalState().isQueueSelected(QUEUE_TYPE.WINBACK)
-        else:
-            return False
 
     def __updateAlertMessage(self, *_):
         if self.prbDispatcher is not None:
@@ -560,10 +536,9 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__updateCrew()
         self.__updateAlertMessage()
         self.__updateBattleRoyaleComponents()
-        self.__updateWotAnniversaryWidget()
-        self.__updateComp7ModifiersWidget()
         self._updateCnSubscriptionMode()
         self.__hangarComponentsCtrl.updateComponentsVisibility()
+        self.__updateComp7ModifiersWidget()
         Waiting.hide('updateVehicle')
 
     def __onCurrentVehicleChanged(self):
@@ -582,7 +557,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     def __onSpaceRefresh(self):
         self.__isSpaceReadyForC11n = False
         self.__updateState()
-        self.__updateComp7ModifiersWidget()
 
     def __onSpaceCreate(self):
         self.__isSpaceReadyForC11n = True
@@ -603,10 +577,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__updateHeaderEpicWidget()
         self.__updateParams()
 
-    @property
-    def wotAnniversaryWidget(self):
-        return self.getComponent(HANGAR_ALIASES.EVENT_ENTRANCE_POINT)
-
     def __updateState(self, force=False):
         state = g_currentVehicle.getViewState()
         self.as_setCrewEnabledS(state.isCrewOpsEnabled())
@@ -618,7 +588,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
             customizationTooltip = makeTooltip(_ms(backport.text(R.strings.tooltips.hangar.tuning.disabled.header())), _ms(backport.text(R.strings.tooltips.hangar.tuning.disabled.body())))
         changeNationVisibility = g_currentVehicle.isPresent() and g_currentVehicle.item.hasNationGroup
         isNationChangeAvailable = g_currentVehicle.isPresent() and g_currentVehicle.item.isNationChangeAvailable
-        changeNationTooltip = getChangeNationTooltip()
+        changeNationTooltip = getChangeNationTooltip(g_currentVehicle.item)
         changeNationIsNew = not AccountSettings.getSettings(NATION_CHANGE_VIEWED)
         isMaintenanceEnabled = state.isMaintenanceEnabled()
         isEquipmentEnabled = g_currentVehicle.isPresent() and not g_currentVehicle.isEquipmentLocked()
@@ -649,7 +619,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__switchCarousels()
         self.__updateBattleRoyaleComponents()
         self.__hangarComponentsCtrl.updateComponentsVisibility()
-        self.__updateWotAnniversaryWidget()
+        self.__updateComp7ModifiersWidget()
 
     def __onFunRandomUpdate(self, *_):
         self.__onEntityChanged()
@@ -680,8 +650,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
             self.__updateDogTagsState()
         if RENEWABLE_SUBSCRIPTION_CONFIG in diff:
             self.__updateWotPlusState()
-        if WOT_ANNIVERSARY_CONFIG_NAME in diff:
-            self.__updateWotAnniversaryWidget()
+            self.__updateState()
 
     def __onSettingsChanged(self, diff):
         if SETTINGS_SECTIONS.UI_STORAGE in diff:

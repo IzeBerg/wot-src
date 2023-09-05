@@ -26,4 +26,3 @@ class COMMON(object):
     RELATIVEDATETIME_HOUR_PAST = '#common:relativeDateTime/hour_past'
     RELATIVEDATETIME_TODAY = '#common:relativeDateTime/today'
     RELATIVEDATETIME_YESTERDAY = '#common:relativeDateTime/yesterday'
-    DATE_LOC_DAYMONTH = '#common:date/loc/dayMonth'

@@ -3,6 +3,7 @@ from base64 import b64encode
 from datetime import datetime, timedelta, time as dt_time
 from client_request_lib import exceptions
 from client_request_lib.data_sources import base
+from debug_utils import LOG_ERROR
 EXAMPLES = {}
 DEFAULT_SINCE_DELAY = timedelta(days=1)
 SUCCESS_STATUSES = [
@@ -69,6 +70,7 @@ class GatewayDataAccessor(base.BaseDataAccessor):
 
                     data = json.loads(data)
                 except:
+                    LOG_ERROR('Can not process request response')
                     data = None
                     headers = None
 
