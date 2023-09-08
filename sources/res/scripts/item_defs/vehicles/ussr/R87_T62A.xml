@@ -11,16 +11,16 @@
 	<postProgressionTree>role_MT_universal</postProgressionTree>
 	<customRoleSlotOptions>3 5</customRoleSlotOptions>
 	<speedLimits>
-		<forward>50</forward>
+		<forward>57</forward>
 		<backward>20</backward>
 	</speedLimits>
 	<invisibility>
 		<moving>
-			0.201
+			0.236
 			<!--BW_String-->
 		</moving>
 		<still>
-			0.268
+			0.315
 			<!--BW_String-->
 		</still>
 		<camouflageBonus>
@@ -28,7 +28,7 @@
 			<!--BW_String-->
 		</camouflageBonus>
 		<firePenalty>
-			0.402
+			0.473
 			<!--BW_String-->
 		</firePenalty>
 	</invisibility>
@@ -2899,7 +2899,7 @@
 				</repairCost>
 			</surveyingDeviceHealth>
 			<guns>
-				<_100mm_D54_TS>
+				<_100mm_D54_VR>
 					shared
 					<maxAmmo>50</maxAmmo>
 					<pitchLimits>
@@ -2925,11 +2925,11 @@
 						<gun>40</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.34
+						0.32
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
-						6.6
+						7.01
 						<!--BW_String-->
 					</reloadTime>
 					<shotDispersionFactors>
@@ -3054,7 +3054,7 @@
 						</density>
 						<aoTextureSize>512 256</aoTextureSize>
 					</camouflage>
-				</_100mm_D54_TS>
+				</_100mm_D54_VR>
 			</guns>
 			<models>
 				<undamaged>vehicles/russian/R87_T62A/normal/lod0/Turret_01.model</undamaged>
@@ -4338,11 +4338,8 @@
 		<detailed>
 			<engines>
 				<V-55>
-					<smplEnginePower>
-						613.2231
-						<!--BW_String-->
-					</smplEnginePower>
-					<smplFwMaxSpeed>50</smplFwMaxSpeed>
+					<smplEnginePower>750</smplEnginePower>
+					<smplFwMaxSpeed>57</smplFwMaxSpeed>
 				</V-55>
 			</engines>
 			<chassis>

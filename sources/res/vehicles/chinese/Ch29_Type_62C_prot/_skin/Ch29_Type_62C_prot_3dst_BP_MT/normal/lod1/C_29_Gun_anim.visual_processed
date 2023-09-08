@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Gun_main_jt</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Giro_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.002367 -0.015118 2.168245</row3>
+				</transform>
+				<node>
+					<identifier>Giro_01_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.002367 0.015118 -2.168245</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Giro_02</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.003539 -0.012404 2.223835</row3>
+				</transform>
+				<node>
+					<identifier>Giro_02_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.003539 0.012404 -2.223835</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Giro_01_BlendBone</node>
+		<node>Giro_02_BlendBone</node>
+		<geometry>
+			<vertices>gun_01_anim_Shape.vertices</vertices>
+			<primitive>gun_01_anim_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_guns_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						colorIdMap
+						<Texture>vehicles/chinese/Ch29_Type_62C_prot/Type_62C_prot_guns_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/chinese/Ch29_Type_62C_prot/_skin/Ch29_Type_62C_prot_3dst_BP_MT/Type_62C_prot_3dst_BP_MT_guns_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/chinese/Ch29_Type_62C_prot/_skin/Ch29_Type_62C_prot_3dst_BP_MT/Type_62C_prot_3dst_BP_MT_guns_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/BP12_details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/chinese/Ch29_Type_62C_prot/_skin/Ch29_Type_62C_prot_3dst_BP_MT/Type_62C_prot_3dst_BP_MT_guns_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/chinese/Ch29_Type_62C_prot/_skin/Ch29_Type_62C_prot_3dst_BP_MT/Type_62C_prot_3dst_BP_MT_guns_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.004432 -0.013709 -2.233013</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-0.125162 -0.143723 2.149593</min>
+		<max>0.134027 0.116304 2.316434</max>
+	</boundingBox>
+	<geometrySize>4584</geometrySize>
+	<minUVDensity>0.049651</minUVDensity>
+</root>

@@ -220,6 +220,36 @@
 				</visionRadius>
 			</gameplayFactors>
 		</overturn>
+		<lift_over>
+			NoneExtra : LiftOver
+			<isOnboardShotAllowed>true</isOnboardShotAllowed>
+			<gameplayFactors>
+				<reloadTime>
+					2.0
+					<!--BW_String-->
+				</reloadTime>
+				<turretRotationSpeed>
+					0.5
+					<!--BW_String-->
+				</turretRotationSpeed>
+				<gunRotationSpeed>
+					0.5
+					<!--BW_String-->
+				</gunRotationSpeed>
+				<aimingTime>
+					2.0
+					<!--BW_String-->
+				</aimingTime>
+				<shotDispersion>
+					2.0
+					<!--BW_String-->
+				</shotDispersion>
+				<visionRadius>
+					0.5
+					<!--BW_String-->
+				</visionRadius>
+			</gameplayFactors>
+		</lift_over>
 		<drowning>NoneExtra : Drowning</drowning>
 		<burnout>NoneExtra : Burnout</burnout>
 		<afterburning>NoneExtra : Afterburning</afterburning>
@@ -403,7 +433,6 @@
 			</beamLength>
 			<bindNode>HP_gunFire</bindNode>
 		</laserSight>
-		<multiShoot>ShowShootingMultiGun : MultiShoot</multiShoot>
 	</extras>
 	<deviceExtras>
 		<devices>

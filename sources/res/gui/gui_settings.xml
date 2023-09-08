@@ -1180,6 +1180,11 @@
 				<name>showcase</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/sh_category/sh_category)
+				<name>shProducts</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1220,11 +1225,11 @@
 		</value>
 	</setting>
 	<setting>
-		<name>battlePass</name>
+		<name>battlePassUrls</name>
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/11BPContentPage/
+				/$LANGUAGE_CODE/promocontent/12BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1234,15 +1239,24 @@
 				<type>url</type>
 			</item>
 			<item>
+				/$LANGUAGE_CODE/promocontent/12BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
 			<item>
+				/$LANGUAGE_CODE/promocontent/11BPExtraChapter/
 				<name>extraIntroVideo</name>
 				<type>url</type>
 			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>battlePassChaptersOrder</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
 			<item>
-				<name>chaptersOrder</name>
+				<name>default</name>
 				<type>list</type>
 				<value>
 					<item>
@@ -1263,13 +1277,20 @@
 					</item>
 				</value>
 			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>battlePassIntroSlides</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
 			<item>
-				<name>introSlides</name>
+				<name>default</name>
 				<type>list</type>
 				<value>
 					<item>
 						<type>string</type>
-						<value>styles</value>
+						<value>seasonDescription</value>
 					</item>
 				</value>
 			</item>
@@ -1867,41 +1888,56 @@
 		</value>
 	</setting>
 	<setting>
+		https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/onslaught_wolf/
 		<name>infoPageComp7</name>
+		<type>url</type>
+	</setting>
+	<setting>
+		<name>infoPageStory_mode</name>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/stories-onboarding/
 				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
 				<name>EU</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/stories-onboarding/
 				<name>ASIA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/stories-onboarding/
 				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/stories-onboarding/
 				<name>default</name>
 				<type>url</type>
 			</item>
 		</value>
+	</setting>
+	<setting>
+		https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/onslaught_wolf_Intro/
+		<name>whatsNewPageComp7</name>
+		<type>url</type>
+	</setting>
+	<setting>
+		https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/polygon/
+		<name>infoPageVersusAI</name>
+		<type>url</type>
 	</setting>
 	<setting>
 		<name>vehicleDisclaimerURLs</name>

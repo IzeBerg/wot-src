@@ -1,6 +1,4 @@
 import logging, typing
-from account_helpers import AccountSettings
-from account_helpers.AccountSettings import BATTLEMATTERS_SEEN
 from frameworks.wulf import ViewFlags, ViewSettings
 from gui.Scaleform.locale.VEHICLE_PREVIEW import VEHICLE_PREVIEW
 from gui.impl.gen import R
@@ -56,13 +54,16 @@ class BattleMattersMainRewardView(ViewImpl):
         if findFirst(lambda v: v.getVehCD() == vehCD, self.viewModel.getVehicles()).getIsInHangar():
             selectVehicleInHangar(vehCD)
         else:
-            showVehiclePreviewWithoutBottomPanel(vehCD, backCallback=showBattleMattersMainReward, itemsPack=[
-             ItemPackEntry(type=ItemPackType.CREW_100, count=1, groupID=1)], backBtnLabel=VEHICLE_PREVIEW.HEADER_BACKBTN_DESCRLABEL_BATTLEMATTERSMAINREWARD)
 
-    @staticmethod
-    def onStart():
-        AccountSettings.setCounters(BATTLEMATTERS_SEEN, True)
-        showBattleMatters()
+            def subscriptionFunc():
+                controller = dependency.instance(IBattleMattersController)
+                if not controller.isEnabled() or controller.isPaused():
+                    showHangar()
+
+            showVehiclePreviewWithoutBottomPanel(vehCD, backCallback=showBattleMattersMainReward, itemsPack=[
+             ItemPackEntry(type=ItemPackType.CREW_100, count=1, groupID=1)], backBtnLabel=VEHICLE_PREVIEW.HEADER_BACKBTN_DESCRLABEL_BATTLEMATTERSMAINREWARD, subscriptions=[
+             [
+              self.__battleMattersController.onStateChanged, subscriptionFunc]])
 
     @staticmethod
     def onBack():
@@ -80,8 +81,6 @@ class BattleMattersMainRewardView(ViewImpl):
         return (
          (
           self.viewModel.onPreview, self.onPreview),
-         (
-          self.viewModel.onStart, self.onStart),
          (
           self.viewModel.onBack, self.onBack),
          (
@@ -106,7 +105,6 @@ class BattleMattersMainRewardView(ViewImpl):
         else:
             vehicleVMs = sorted(BattleMattersVehiclesBonusUIPacker.pack(vehiclesBonus), cmp=_vehiclesSortOrder)
             with self.viewModel.transaction() as (tx):
-                tx.setIsWelcomeScreen(not AccountSettings.getCounters(BATTLEMATTERS_SEEN))
                 vehicles = tx.getVehicles()
                 vehicles.clear()
                 for vehicle in vehicleVMs:

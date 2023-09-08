@@ -1,8 +1,8 @@
 package net.wg.gui.battle.eventBattle.views.battleHints
 {
    import flash.display.MovieClip;
+   import net.wg.gui.battle.components.animatedBattleHint.constants.HINT_LABELS;
    import net.wg.gui.battle.eventBattle.views.battleHints.data.HintInfoVO;
-   import net.wg.gui.bootcamp.battleTopHint.constants.HINT_LABELS;
    import net.wg.gui.components.controls.Image;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    import org.idmedia.as3commons.util.StringUtils;

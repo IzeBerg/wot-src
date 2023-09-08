@@ -27,7 +27,6 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel
    import scaleform.clik.controls.Button;
    import scaleform.clik.data.DataProvider;
    import scaleform.clik.events.ButtonEvent;
-   import scaleform.clik.events.IndexEvent;
    import scaleform.gfx.MouseEventEx;
    
    public class VPInfoPanel extends UIComponentEx implements IStageSizeDependComponent
@@ -147,7 +146,6 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel
          super.configUI();
          mouseEnabled = false;
          this.tabButtonBar.autoSize = TextFieldAutoSize.LEFT;
-         this.tabButtonBar.addEventListener(IndexEvent.INDEX_CHANGE,this.onTabIndexChangeHandler);
          this.vehicleLevelTF.mouseEnabled = this.vehicleLevelTF.mouseWheelEnabled = false;
          this.vehicleLevelTF.autoSize = TextFieldAutoSize.LEFT;
          this.vehicleLevelTF.wordWrap = false;
@@ -179,7 +177,6 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel
          this.viewStack.removeEventListener(ViewStackEvent.VIEW_CHANGED,this.onViewStackViewChangedHandler);
          this.viewStack.dispose();
          this.viewStack = null;
-         this.tabButtonBar.removeEventListener(IndexEvent.INDEX_CHANGE,this.onTabIndexChangeHandler);
          this.tabButtonBar.dispose();
          this.tabButtonBar = null;
          this.vehPostProgressionBtn.removeEventListener(ButtonEvent.CLICK,this.onVehPostProgressionBtnClickHandler);
@@ -322,16 +319,15 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel
       private function updateBulletVisibility() : void
       {
          var _loc1_:Button = this.tabButtonBar.getButtonAt(this._bulletTabIdx);
-         if(_loc1_ != null && this._isBulletVisible)
+         if(_loc1_ != null)
          {
-            if(this.tabButtonBar.selectedIndex != this._bulletTabIdx)
+            if(this._isBulletVisible)
             {
                this._counterManager.setCounter(_loc1_," ",null,new CounterProps(-10,-3));
             }
             else
             {
                this._counterManager.removeCounter(_loc1_);
-               this._isBulletVisible = false;
             }
          }
       }
@@ -373,11 +369,6 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel
       private function onIconChangeHandler(param1:Event) : void
       {
          invalidateSize();
-      }
-      
-      private function onTabIndexChangeHandler(param1:IndexEvent) : void
-      {
-         invalidate(BULLET_VISIBILITY_INVALID);
       }
       
       private function onRoleTFRollOverHandler(param1:MouseEvent) : void

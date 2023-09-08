@@ -1,4 +1,4 @@
-from script_component.ScriptComponent import ScriptComponent
+from script_component.DynamicScriptComponent import DynamicScriptComponent
 
-class VehicleComp7Component(ScriptComponent):
+class VehicleComp7Component(DynamicScriptComponent):
     pass

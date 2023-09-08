@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env_UNI_155_WoodDebris_burnt_02</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/custom/emissive.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						emissiveTexture
+						<Texture>content/Environment/hd_env_UNI_155_WoodDebris/hd_env_UNI_155_WoodDebris_Mask.dds</Texture>
+					</property>
+					<property>
+						g_coldColor
+						<Vector4>0.246000 0.000000 0.012300 1.000000</Vector4>
+					</property>
+					<property>
+						g_emissiveParams
+						<Vector4>6.000000 4.000000 0.200000 18.000000</Vector4>
+					</property>
+					<property>
+						g_hotColor
+						<Vector4>0.996000 0.132800 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_maskFromTex
+						<Bool>true</Bool>
+					</property>
+					<property>
+						phaseTexture
+						<Texture>content/Environment/hd_env_UNI_155_WoodDebris/noise.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.177486 0.168838 -0.048842</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_155_WoodDebris/hd_env_UNI_155_WoodDebris_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_UNI_155_WoodDebris/hd_env_UNI_155_WoodDebris_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_UNI_155_WoodDebris/hd_env_UNI_155_WoodDebris_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.174484 0.163930 -0.044669</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.380876 -0.029739 -1.701566</min>
+		<max>1.025904 0.364650 1.612221</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>68800</geometrySize>
+	<minUVDensity>0.026040</minUVDensity>
+</root>

@@ -138,6 +138,11 @@
 					<destroyed>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_3Dst/crash/lod0/Hull.model</destroyed>
 					<exploded>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_3Dst/crash/lod0/Hull.model</exploded>
 				</G72_JagdPz_E100_3Dst>
+				<G72_JagdPz_E100_BPXII_3DSt>
+					<undamaged>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/crash/lod0/Hull.model</exploded>
+				</G72_JagdPz_E100_BPXII_3DSt>
 			</sets>
 		</models>
 		<swinging>
@@ -175,14 +180,14 @@
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
 				<rayStart>
-					1.16793 0.824834 3.3015
+					1.08859 0.824835 3.3015
 					<!--BW_String-->
 				</rayStart>
 				<rayEnd>
-					1.16798 0.448985 3.16461
+					1.08864 0.448986 3.16461
 					<!--BW_String-->
 				</rayEnd>
-				<rayUp>0 0 -1</rayUp>
+				<rayUp>-0.000045 0.342224 -0.939618</rayUp>
 				<size>
 					0.32
 					<!--BW_String-->
@@ -2685,6 +2690,12 @@
 					<!--BW_String-->
 				</anchorShift>
 			</slot>
+			<slot>
+				<slotType>attachment</slotType>
+				<slotId>18000</slotId>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -2753,6 +2764,11 @@
 						<destroyed>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_3Dst/crash/lod0/Chassis.model</destroyed>
 						<exploded>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_3Dst/crash/lod0/Chassis.model</exploded>
 					</G72_JagdPz_E100_3Dst>
+					<G72_JagdPz_E100_BPXII_3DSt>
+						<undamaged>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/crash/lod0/Chassis.model</exploded>
+					</G72_JagdPz_E100_BPXII_3DSt>
 				</sets>
 			</models>
 			<traces>
@@ -2865,6 +2881,39 @@
 									<row3>-2.203479 1.166567 0.157961</row3>
 								</boxCollider>
 							</hullCollider>
+							<hullCollider>
+								<modelsSet>G72_JagdPz_E100_BPXII_3DSt</modelsSet>
+								<boxCollider>
+									<row0>2.086650 0.000000 0.000000</row0>
+									<row1>0.000000 2.975510 0.000000</row1>
+									<row2>0.000000 0.000000 8.698680</row2>
+									<row3>0.000000 1.954800 0.134084</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>4.535950 0.000000 0.000000</row0>
+									<row1>0.000000 0.847020 -0.026522</row1>
+									<row2>0.000000 0.244298 7.801890</row2>
+									<row3>0.000000 1.574590 -0.141748</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>4.535950 0.000000 0.000001</row0>
+									<row1>-0.000000 0.733915 0.423692</row1>
+									<row2>-0.000000 -0.575895 0.997559</row2>
+									<row3>0.000000 1.588210 4.101210</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>0.300000 0.000000 0.000000</row0>
+									<row1>0.000000 0.430946 0.000000</row1>
+									<row2>0.000000 0.000000 7.805540</row2>
+									<row3>-2.203480 1.166570 0.157961</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>0.300000 -0.000000 0.000000</row0>
+									<row1>0.000000 0.430946 -0.000000</row1>
+									<row2>-0.000000 0.000000 0.374629</row2>
+									<row3>-2.373896 0.840678 -3.656808</row3>
+								</boxCollider>
+							</hullCollider>
 						</physicalParams>
 					</trackDebris>
 					<trackDebris>
@@ -2956,6 +3005,33 @@
 									<row1>0.000000 0.430946 0.000000</row1>
 									<row2>0.000000 0.000000 7.805539</row2>
 									<row3>2.203479 1.166567 0.157961</row3>
+								</boxCollider>
+							</hullCollider>
+							<hullCollider>
+								<modelsSet>G72_JagdPz_E100_BPXII_3DSt</modelsSet>
+								<boxCollider>
+									<row0>2.086650 0.000000 0.000000</row0>
+									<row1>0.000000 2.975510 0.000000</row1>
+									<row2>0.000000 0.000000 8.698680</row2>
+									<row3>-0.000000 1.954800 0.134084</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>4.535950 0.000000 0.000000</row0>
+									<row1>0.000000 0.847020 -0.026522</row1>
+									<row2>0.000000 0.244298 7.801890</row2>
+									<row3>-0.000000 1.574590 -0.141748</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>4.535950 0.000000 0.000000</row0>
+									<row1>0.000000 0.733915 0.423692</row1>
+									<row2>0.000000 -0.575895 0.997559</row2>
+									<row3>-0.000000 1.588210 4.101210</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>0.300000 0.000000 0.000000</row0>
+									<row1>0.000000 0.430946 0.000000</row1>
+									<row2>0.000000 0.000000 7.805540</row2>
+									<row3>2.203480 1.166570 0.157961</row3>
 								</boxCollider>
 							</hullCollider>
 						</physicalParams>
@@ -4640,6 +4716,11 @@
 								<destroyed>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_3Dst/crash/lod0/Gun_01.model</destroyed>
 								<exploded>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_3Dst/crash/lod0/Gun_01.model</exploded>
 							</G72_JagdPz_E100_3Dst>
+							<G72_JagdPz_E100_BPXII_3DSt>
+								<undamaged>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/crash/lod0/Gun_01.model</exploded>
+							</G72_JagdPz_E100_BPXII_3DSt>
 						</sets>
 					</models>
 					<hitTester>
@@ -4731,6 +4812,11 @@
 						<destroyed>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_3Dst/crash/lod0/Turret_01.model</destroyed>
 						<exploded>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_3Dst/crash/lod0/Turret_01.model</exploded>
 					</G72_JagdPz_E100_3Dst>
+					<G72_JagdPz_E100_BPXII_3DSt>
+						<undamaged>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/crash/lod0/Turret_01.model</exploded>
+					</G72_JagdPz_E100_BPXII_3DSt>
 				</sets>
 			</models>
 			<hitTester>

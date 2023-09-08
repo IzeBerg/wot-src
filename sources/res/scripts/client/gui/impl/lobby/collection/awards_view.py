@@ -1,6 +1,8 @@
-import SoundGroups
+import logging, typing, SoundGroups
 from frameworks.wulf import ViewSettings, WindowFlags
+from gui.Scaleform.Waiting import Waiting
 from gui.collection.collections_helpers import composeBonuses
+from gui.collection.resources.cdn.models import Group, makeImageID
 from gui.collection.sounds import Sounds
 from gui.impl.auxiliary.collections_helper import getCollectionsBonusPacker
 from gui.impl.gen import R
@@ -15,9 +17,12 @@ from gui.impl.wrappers.function_helpers import replaceNoneKwargsModel
 from gui.shared.event_dispatcher import showCollectionWindow, showHangar
 from helpers import dependency
 from skeletons.gui.game_control import ICollectionsSystemController
+_logger = logging.getLogger(__name__)
+if typing.TYPE_CHECKING:
+    from typing import Dict
 
 class AwardsView(ViewImpl):
-    __slots__ = ('__collectionId', '__bonuses', '__isFinal', '__tooltips')
+    __slots__ = ('__collectionId', '__bonuses', '__isFinal', '__tooltips', '__content')
     __collectionsSystem = dependency.descriptor(ICollectionsSystemController)
 
     def __init__(self, collectionId, bonuses, isFinal):
@@ -27,6 +32,7 @@ class AwardsView(ViewImpl):
         self.__bonuses = bonuses
         self.__isFinal = isFinal
         self.__tooltips = {}
+        self.__content = {}
         super(AwardsView, self).__init__(settings)
 
     @property
@@ -56,6 +62,7 @@ class AwardsView(ViewImpl):
 
     def _onLoading(self, *args, **kwargs):
         super(AwardsView, self)._onLoading(*args, **kwargs)
+        self.__updateContentData()
         SoundGroups.g_instance.playSound2D(Sounds.REWARD_SCREEN.value)
         state = CollectionAwardState.COMPLETED if self.__isFinal else CollectionAwardState.ACTIVE
         with self.viewModel.transaction() as (model):
@@ -78,6 +85,24 @@ class AwardsView(ViewImpl):
          (
           self.__collectionsSystem.onServerSettingsChanged, self.__onSettingsChanged))
 
+    def __updateContentData(self):
+        Waiting.show('loadContent')
+        self.__collectionsSystem.cache.getImagesPaths(self.__generateContentData(), self.__onContentUpdated)
+
+    def __generateContentData(self):
+        collection = self.__collectionsSystem.getCollection(self.__collectionId)
+        return [makeImageID(Group.BG, collection.name, 'bgAwards')]
+
+    def __onContentUpdated(self, isOk, data):
+        if isOk:
+            self.__content = data
+            self.__fillBackground()
+        Waiting.hide('loadContent')
+
+    def __fillBackground(self):
+        collection = self.__collectionsSystem.getCollection(self.__collectionId)
+        self.viewModel.setBackground(self.__getContent(Group.BG, collection.name, 'bgAwards'))
+
     def __openCollection(self):
         showCollectionWindow(self.__collectionId)
         self.destroyWindow()
@@ -94,6 +119,12 @@ class AwardsView(ViewImpl):
     @replaceNoneKwargsModel
     def __setAvailability(self, model=None):
         model.setIsDisabled(not self.__collectionsSystem.isEnabled())
+
+    def __getContent(self, group, sub, name):
+        path = self.__content.get(group, {}).get(sub, {}).get(name, '')
+        if not path:
+            _logger.warning('Resource: %s not found', ('/').join((group, sub, name)))
+        return path
 
 
 class AwardsWindow(LobbyNotificationWindow):

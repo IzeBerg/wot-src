@@ -1,14 +1,16 @@
 import math, sys
 from math import ceil
-from gui.shared.utils import SHELLS_COUNT_PROP_NAME, RELOAD_TIME_PROP_NAME, RELOAD_MAGAZINE_TIME_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME, DISPERSION_RADIUS_PROP_NAME, AIMING_TIME_PROP_NAME, PIERCING_POWER_PROP_NAME, DAMAGE_PROP_NAME, SHELLS_PROP_NAME, STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, RELOAD_TIME_SECS_PROP_NAME, SHELLS_BURST_COUNT_PROP_NAME
+from gui.shared.utils import SHELLS_COUNT_PROP_NAME, RELOAD_TIME_PROP_NAME, RELOAD_MAGAZINE_TIME_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME, DISPERSION_RADIUS_PROP_NAME, AIMING_TIME_PROP_NAME, PIERCING_POWER_PROP_NAME, DAMAGE_PROP_NAME, SHELLS_PROP_NAME, STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, RELOAD_TIME_SECS_PROP_NAME, DUAL_ACCURACY_COOLING_DELAY, BURST_FIRE_RATE, SHELLS_BURST_COUNT_PROP_NAME
 from helpers import i18n, time_utils
 from items import vehicles, artefacts
+from items.components import component_constants
 RELATIVE_PARAMS = ('relativePower', 'relativeArmor', 'relativeMobility', 'relativeCamouflage',
                    'relativeVisibility')
 MAX_RELATIVE_VALUE = 1000
 NO_DATA = 'no data'
 _AUTO_RELOAD_TAG = 'autoreload'
 _DUAL_GUN_TAG = 'dualGun'
+_DUAL_ACCURACY_TAG = 'dualAccuracy'
 
 def _updateMinMaxValues(targetDict, key, value):
     targetDict[key] = (
@@ -46,9 +48,16 @@ def isDualGun(gun):
         return False
 
 
-def isAutoShootGun(gun):
+def isDualAccuracy(gun):
     if gun is not None:
-        return 'autoShoot' in gun.tags
+        return _DUAL_ACCURACY_TAG in gun.tags
+    else:
+        return False
+
+
+def isBurstGun(gunDescr):
+    if gunDescr is not None:
+        return gunDescr.burst != component_constants.DEFAULT_GUN_BURST
     else:
         return False
 
@@ -74,13 +83,14 @@ def calcGunParams(gunDescr, descriptors):
                                       sys.maxint, -1), 
        RELOAD_TIME_SECS_PROP_NAME: [], SHELL_RELOADING_TIME_PROP_NAME: (
                                       sys.maxint, -1), 
-       DISPERSION_RADIUS_PROP_NAME: (
+       BURST_FIRE_RATE: [], DISPERSION_RADIUS_PROP_NAME: (
                                    sys.maxint, -1), 
        AIMING_TIME_PROP_NAME: (
                              sys.maxint, -1), 
        PIERCING_POWER_PROP_NAME: [], DAMAGE_PROP_NAME: [], SHELLS_PROP_NAME: [], STUN_DURATION_PROP_NAME: [], AUTO_RELOAD_PROP_NAME: [], DUAL_GUN_RATE_TIME: (
                           sys.maxint, -1), 
-       DUAL_GUN_CHARGE_TIME: []}
+       DUAL_GUN_CHARGE_TIME: [], DUAL_ACCURACY_COOLING_DELAY: (
+                                   sys.maxint, -1)}
     for descr in descriptors:
         currShellsCount = descr.clip[0]
         currBurstShellsCount = descr.burst[0]
@@ -113,6 +123,9 @@ def calcGunParams(gunDescr, descriptors):
         _updateMinMaxValues(result, DUAL_GUN_RATE_TIME, rateTime)
         result[DUAL_GUN_CHARGE_TIME] = chargeTime
         result[RELOAD_TIME_SECS_PROP_NAME] = reloadTimeSecs
+        if isBurstGun(descr):
+            burstSize, burstInterval = descr.burst
+            result[BURST_FIRE_RATE].extend([burstInterval, burstSize])
 
     for shot in gunDescr.shots:
         shell = shot.shell
@@ -126,7 +139,8 @@ def calcGunParams(gunDescr, descriptors):
     for key in (PIERCING_POWER_PROP_NAME,
      DAMAGE_PROP_NAME,
      SHELLS_PROP_NAME,
-     STUN_DURATION_PROP_NAME):
+     STUN_DURATION_PROP_NAME,
+     BURST_FIRE_RATE):
         result[key] = tuple(result[key])
 
     if AUTO_RELOAD_PROP_NAME in result:

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<FeatureName>versus_ai</FeatureName>
+	<IsEnabled>True</IsEnabled>
+	<Personality>VersusAIPersonality</Personality>
+	<Components>
+		<StaticComponents>
+			<AccountVersusAIComponent/>
+		</StaticComponents>
+		<DynamicComponents/>
+	</Components>
+	<Entities>
+		<ServerOnlyEntities>
+			<VersusAIMgr/>
+			<VersusAIUnitMgr/>
+		</ServerOnlyEntities>
+	</Entities>
+	<ExternalComponents/>
+</root>

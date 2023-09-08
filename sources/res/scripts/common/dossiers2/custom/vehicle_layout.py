@@ -30,6 +30,9 @@ _a30x30BlockBuilder = StaticSizeBlockBuilder('a30x30', A30X30_BLOCK_LAYOUT, A30X
 _epicBattleBlockBuilder = StaticSizeBlockBuilder('epicBattle', EPIC_BATTLE_VEHICLE_BLOCK_LAYOUT, {}, [])
 _comp7Season1BlockBuilder = StaticSizeBlockBuilder('comp7Season1', COMP7_BLOCK_LAYOUT, {}, [])
 _comp7Season2BlockBuilder = StaticSizeBlockBuilder('comp7Season2', COMP7_BLOCK_LAYOUT, {}, [])
+_comp7Season3BlockBuilder = StaticSizeBlockBuilder('comp7Season3', COMP7_BLOCK_LAYOUT, {}, [])
+_comp7ArchiveGriffinBlockBuilder = StaticSizeBlockBuilder('comp7ArchiveGriffin', COMP7_BLOCK_LAYOUT, {}, [])
+_versusAIBlockBuilder = StaticSizeBlockBuilder('mt_versusAI', VERSUS_AI_BLOCK_LAYOUT, {}, [])
 _maxPopUps = [
  'maxXP', 'maxFrags', 'maxDamage']
 _maxFalloutPopUps = _maxPopUps + ['maxWinPoints', 'maxCoins']
@@ -47,6 +50,9 @@ _maxEpicBattleBlockBuilder = StaticSizeBlockBuilder('maxEpicBattle', MAX_BLOCK_L
 _maxRankedBlockBuilder_10x10 = StaticSizeBlockBuilder('maxRanked_10x10', MAX_BLOCK_LAYOUT, {}, _maxPopUps)
 _maxComp7Season1BlockBuilder = StaticSizeBlockBuilder('maxComp7Season1', MAX_COMP7_BLOCK_LAYOUT, {}, [])
 _maxComp7Season2BlockBuilder = StaticSizeBlockBuilder('maxComp7Season2', MAX_COMP7_BLOCK_LAYOUT, {}, [])
+_maxComp7Season3BlockBuilder = StaticSizeBlockBuilder('maxComp7Season3', MAX_COMP7_BLOCK_LAYOUT, {}, [])
+_maxComp7ArchiveGriffinBlockBuilder = StaticSizeBlockBuilder('maxComp7ArchiveGriffin', MAX_COMP7_BLOCK_LAYOUT, {}, [])
+_maxVersusAIBlockBuilder = StaticSizeBlockBuilder('mt_maxVersusAI', MAX_BLOCK_LAYOUT, {}, _maxPopUps)
 _vehTypeFragsBlockBuilder = DictBlockBuilder('vehTypeFrags', 'I', 'H', VEH_TYPE_FRAGS_DEPENDENCIES)
 _rankedSeasonsBlockBuilder = DictBlockBuilder('rankedSeasons', 'II', 'BB', {})
 _maxRankedSeason1BlockBuilder = StaticSizeBlockBuilder('maxRankedSeason1', MAX_BLOCK_LAYOUT, {}, _maxPopUps)
@@ -240,5 +246,8 @@ vehicleDossierLayout = (
  _maxRankedSeason1BlockBuilder, _maxRankedSeason2BlockBuilder, _maxRankedSeason3BlockBuilder,
  _rankedBlockBuilder_10x10, _maxRankedBlockBuilder_10x10,
  _comp7Season1BlockBuilder, _maxComp7Season1BlockBuilder,
- _comp7Season2BlockBuilder, _maxComp7Season2BlockBuilder)
+ _comp7Season2BlockBuilder, _maxComp7Season2BlockBuilder,
+ _comp7Season3BlockBuilder, _maxComp7Season3BlockBuilder,
+ _comp7ArchiveGriffinBlockBuilder, _maxComp7ArchiveGriffinBlockBuilder,
+ _versusAIBlockBuilder, _maxVersusAIBlockBuilder)
 VEHICLE_DOSSIER_BLOCKS = {b.name:b for b in vehicleDossierLayout}

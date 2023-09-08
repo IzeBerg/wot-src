@@ -3,6 +3,7 @@
 	<info>
 		<name>BootCamp/Lesson_5_client_10_hills</name>
 		<isMacro>false</isMacro>
+		<version>0</version>
 		<aspect>
 			<compatibles>CLIENT</compatibles>
 		</aspect>
@@ -11,44 +12,10 @@
 		</tags>
 		<blocks>
 			<block>
-				<class>ArenaPeriodStartEvent</class>
-				<id>ArenaPeriodStartEvent_1</id>
-				<params>
-					<param>
-						Battle
-						<name>Period</name>
-						<type>EArenaPeriodT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>FinishScript</class>
 				<id>FinishScript_1</id>
 				<params/>
 				<slots/>
-			</block>
-			<block>
-				<class>SetMusicSkipArenaChanges</class>
-				<id>SetMusicSkipArenaChanges_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>skip</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>PlayCombatMusic</class>
-				<id>PlayCombatMusic_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>music</name>
-						<const>\wwmusicRelaxed\</const>
-					</slot>
-				</slots>
 			</block>
 			<block>
 				<class>SetMusicSkipArenaChanges</class>
@@ -58,6 +25,17 @@
 					<slot>
 						<name>skip</name>
 						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>SetMusicSkipArenaChanges</class>
+				<id>SetMusicSkipArenaChanges_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>skip</name>
+						<const>\true\</const>
 					</slot>
 				</slots>
 			</block>
@@ -74,82 +52,37 @@
 				<slots/>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_1</id>
+				<class>ArenaPeriodStartEvent</class>
+				<id>ArenaPeriodStartEvent_1</id>
 				<params>
 					<param>
-						Client_OnFinishBattle
-						<name>Macro Name</name>
-						<type>StringT</type>
+						Battle
+						<name>Period</name>
+						<type>EArenaPeriodT</type>
 					</param>
 				</params>
-				<slots>
-					<slot>
-						<name>processMarkers</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
+				<slots/>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_18</id>
-				<params>
-					<param>
-						Bootcamp_SecondaryHints
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
+				<class>PlayCombatMusic</class>
+				<id>PlayCombatMusic_1</id>
+				<params/>
 				<slots>
 					<slot>
-						<name>noMoveEnabled</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>noMoveTurretEnabled</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>moveToMarkerEnabled</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>lowHPEnabled</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>exitGameAreaEnabled</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>aimEnabled</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>targetLockedEnabled</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>sniperEnabled</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>shootWhileMovingEnabled</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>waitForReloadEnabled</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>uselessConsumableEnabled</name>
-						<const>\true\</const>
+						<name>music</name>
+						<const>\wwmusicRelaxed\</const>
 					</slot>
 				</slots>
 			</block>
 			<block>
 				<class>PlaySound</class>
 				<id>PlaySound_2</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>PlaySound</class>
+				<id>PlaySound_3</id>
 				<params/>
 				<slots/>
 			</block>
@@ -176,18 +109,36 @@
 				</slots>
 			</block>
 			<block>
-				<class>PlaySound</class>
-				<id>PlaySound_3</id>
-				<params/>
+				<class>Macro</class>
+				<id>Macro_1</id>
+				<params>
+					<param>
+						Client_OnFinishBattle
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
 				<slots/>
 			</block>
 		</blocks>
 		<connections>
 			<connection>
+				<from>FinishScript_1</from>
+				<input>play</input>
+				<to>SetMusicSkipArenaChanges_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
 				<from>Sequence_2</from>
 				<input>play</input>
 				<to>SetMusicSkipArenaChanges_1</to>
 				<output>o0</output>
+			</connection>
+			<connection>
+				<from>ArenaPeriodStartEvent_1</from>
+				<input>input</input>
+				<to>Sequence_2</to>
+				<output>start</output>
 			</connection>
 			<connection>
 				<from>Sequence_2</from>
@@ -200,18 +151,6 @@
 				<input>stop</input>
 				<to>PlayCombatMusic_1</to>
 				<output>out</output>
-			</connection>
-			<connection>
-				<from>FinishScript_1</from>
-				<input>play</input>
-				<to>SetMusicSkipArenaChanges_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ArenaPeriodStartEvent_1</from>
-				<input>input</input>
-				<to>Sequence_2</to>
-				<output>start</output>
 			</connection>
 			<connection>
 				<from>PlaySound_3</from>

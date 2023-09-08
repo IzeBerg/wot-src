@@ -1,13 +1,16 @@
-import logging, typing
+import logging
+from collections import OrderedDict
+import typing
 from Event import Event, EventManager
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import COLLECTIONS_SECTION, COLLECTION_WAS_ENABLED
 from chat_shared import SYS_MESSAGE_TYPE
 from collections_common import CollectionsConfig, g_collectionsRelatedItems, makeCollectionItemEntitlementName, makeCollectionRewardEntitlementName
 from constants import Configs
+from gui.collection.account_settings import isItemNew
 from gui.collection.collections_constants import COLLECTION_ITEM_PREFIX_NAME
-from gui.collection.collections_helpers import isItemNew
 from gui.collection.entitlements_cache import EntitlementsCache
+from gui.collection.resources.common import makeCacheMgr
 from helpers import dependency
 from helpers.events_handler import EventsHandler
 from helpers.server_settings import serverSettingsChangeListener
@@ -15,42 +18,61 @@ from messenger.proto.events import g_messengerEvents
 from shared_utils import first
 from skeletons.gui.game_control import ICollectionsSystemController
 from skeletons.gui.lobby_context import ILobbyContext
+from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
     from typing import Dict
 _logger = logging.getLogger(__name__)
 
 class CollectionsSystemController(ICollectionsSystemController, EventsHandler):
+    __itemsCache = dependency.descriptor(IItemsCache)
     __lobbyContext = dependency.descriptor(ILobbyContext)
 
     def __init__(self):
+        self.__cdnCacheMgr = None
         self.__eventsManager = EventManager()
         self.__entitlementsCache = EntitlementsCache()
         self.onServerSettingsChanged = Event(self.__eventsManager)
         self.onBalanceUpdated = Event(self.__eventsManager)
         self.onAvailabilityChanged = Event(self.__eventsManager)
+        return
 
     def onLobbyInited(self, event):
         self.__updateAvailability()
+        self.__cdnCacheMgr = makeCacheMgr()
         if self.isEnabled():
             self.__entitlementsCache.updateAll(self.__onCacheUpdated)
             self.__updateRelatedItems()
+            self.__cdnCacheMgr.startSync()
         self._subscribe()
 
     def onDisconnected(self):
+        if self.__cdnCacheMgr is not None:
+            self.__cdnCacheMgr.stopSync()
         self.__entitlementsCache.clear()
         self.__stop()
+        return
 
     def fini(self):
+        if self.__cdnCacheMgr is not None:
+            self.__cdnCacheMgr.stopSync()
         self.__eventsManager.clear()
         self.__entitlementsCache.clear()
         self.__stop()
+        return
+
+    @property
+    def cache(self):
+        return self.__cdnCacheMgr
 
     def isEnabled(self):
-        return self.__getConfig().isEnabled
+        return self.__getConfig().isEnabled and not self.__itemsCache.items.stats.isEmergencyModeEnabled
+
+    def getCollections(self, reverseSort=False):
+        return OrderedDict(sorted(self.__getConfig().collections.items(), reverse=reverseSort))
 
     def getCollection(self, collectionId):
         collection = self.__getConfig().getCollection(collectionId)
-        if collection is None:
+        if collection is None and collectionId != 0:
             _logger.error('Collection with id <%s> does not exist!', collectionId)
         return collection
 
@@ -67,6 +89,9 @@ class CollectionsSystemController(ICollectionsSystemController, EventsHandler):
 
         return [
          collectionId]
+
+    def getCollectionIDs(self):
+        return self.__getConfig().collections.keys()
 
     def isRelatedEventActive(self, collectionId):
         collection = self.getCollection(collectionId)
@@ -119,6 +144,11 @@ class CollectionsSystemController(ICollectionsSystemController, EventsHandler):
     def isItemReceived(self, collectionId, itemId):
         return makeCollectionItemEntitlementName(collectionId, itemId) in self.__entitlementsCache.getBalance()
 
+    def _getCallbacks(self):
+        return (
+         (
+          'cache.isEmergencyModeEnabled', self.__onEmergencyModeChanged),)
+
     def _getEvents(self):
         return (
          (
@@ -138,6 +168,10 @@ class CollectionsSystemController(ICollectionsSystemController, EventsHandler):
     @serverSettingsChangeListener(Configs.COLLECTIONS_CONFIG.value)
     def __onServerSettingsChanged(self, diff):
         self.__updateRelatedItems()
+        self.__updateAvailability()
+        self.onServerSettingsChanged()
+
+    def __onEmergencyModeChanged(self, *_):
         self.__updateAvailability()
         self.onServerSettingsChanged()
 

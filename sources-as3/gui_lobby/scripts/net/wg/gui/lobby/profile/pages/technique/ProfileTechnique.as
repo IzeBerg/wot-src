@@ -125,7 +125,7 @@ package net.wg.gui.lobby.profile.pages.technique
             }
             _loc3_ = _loc2_.length > 0;
          }
-         this.stackComponent.enableAwardsButton(battlesType != PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_BATTLES && battlesType != PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_SORTIES && battlesType != PROFILE_DROPDOWN_KEYS.CLAN && battlesType != PROFILE_DROPDOWN_KEYS.STATICTEAM && battlesType != PROFILE_DROPDOWN_KEYS.STATICTEAM_SEASON);
+         this.stackComponent.enableAwardsButton(battlesType != PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_BATTLES && battlesType != PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_SORTIES && battlesType != PROFILE_DROPDOWN_KEYS.CLAN && battlesType != PROFILE_DROPDOWN_KEYS.STATICTEAM && battlesType != PROFILE_DROPDOWN_KEYS.STATICTEAM_SEASON && battlesType != PROFILE_DROPDOWN_KEYS.VERSUS_AI);
          this.listComponent.vehicles = _loc2_;
          this.emptyScreen.visible = !_loc3_;
          this.listComponent.visible = this.stackComponent.visible = _loc3_;

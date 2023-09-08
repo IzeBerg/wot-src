@@ -74,6 +74,7 @@ class BattleParams(object):
     INVISIBILITY_FACTOR_AT_SHOT = 63
     VEHICLE_AOI_RADIUS = 64
     SOUND_NOTIFICATIONS = 65
+    DIVING_DESTRUCTION_DELAY = 66
     ALL = None
     MAX = None
 

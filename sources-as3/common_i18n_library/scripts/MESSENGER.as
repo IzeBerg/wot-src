@@ -953,6 +953,10 @@ package
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_ENTITLEMENTSDEBITED:String = "#messenger:serviceChannelMessages/invoiceReceived/entitlementsDebited";
       
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_OFFERSACCRUED:String = "#messenger:serviceChannelMessages/invoiceReceived/offersAccrued";
+      
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_OFFERSDEBITED:String = "#messenger:serviceChannelMessages/invoiceReceived/offersDebited";
+      
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_RANKEDBONUSBATTLESACCRUED:String = "#messenger:serviceChannelMessages/invoiceReceived/rankedBonusBattlesAccrued";
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_RANKEDBONUSBATTLESDEBITED:String = "#messenger:serviceChannelMessages/invoiceReceived/rankedBonusBattlesDebited";
@@ -2131,11 +2135,27 @@ package
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISPENDING_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/tankRental/isPending/text";
       
-      public static const SERVICECHANNELMESSAGES_WOTPLUS_FREEDIRECTIVES_RECEIVED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/freeDirectives/received/title";
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCES_ISDISABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendances/isDisabled/title";
       
-      public static const SERVICECHANNELMESSAGES_WOTPLUS_FREEDIRECTIVES_ISDISABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/freeDirectives/isDisabled/title";
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCES_ISDISABLED_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendances/isDisabled/text";
       
-      public static const SERVICECHANNELMESSAGES_WOTPLUS_FREEDIRECTIVES_ISENABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/freeDirectives/isEnabled/title";
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCES_ISENABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendances/isEnabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCEREWARDED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendanceRewarded/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCEREWARDED_ENDTEXT:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendanceRewarded/endText";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCEREWARDED_BIG_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCEREWARDED_BIG_CYCLESTARTED_STARTTEXT:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleStarted/startText";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCEREWARDED_BIG_CYCLESTARTED_ENDTEXT:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleStarted/endText";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCEREWARDED_BIG_CYCLEENDED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCEREWARDED_BIG_CYCLEENDED_STARTTEXT:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/startText";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_DAILYATTENDANCEREWARDED_BIG_CYCLEENDED_ENDTEXT:String = "#messenger:serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/endText";
       
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/body";
       
@@ -2148,10 +2168,6 @@ package
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_PREBATTLESWITCHTOGGLED_ENABLED:String = "#messenger:serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/enabled";
       
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_PREBATTLESWITCHTOGGLED_DISABLED:String = "#messenger:serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/disabled";
-      
-      public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_STARTED:String = "#messenger:serviceChannelMessages/battleMatters/started";
-      
-      public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_PAUSED:String = "#messenger:serviceChannelMessages/battleMatters/paused";
       
       public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_TOKEN:String = "#messenger:serviceChannelMessages/battleMatters/token";
       
@@ -2180,6 +2196,12 @@ package
       public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_AWARDS_TOKENAWARD_BODY_SLOT:String = "#messenger:serviceChannelMessages/battleMatters/awards/tokenAward/body/slot";
       
       public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_AWARDS_RECEIVED:String = "#messenger:serviceChannelMessages/battleMatters/awards/received";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_TASKREMINDER_TITLE:String = "#messenger:serviceChannelMessages/battleMatters/taskReminder/title";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_TASKREMINDER_BODY:String = "#messenger:serviceChannelMessages/battleMatters/taskReminder/body";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_TASKREMINDER_BUTTON:String = "#messenger:serviceChannelMessages/battleMatters/taskReminder/button";
       
       public static const PLATFORMCURRENCYMSG_RECEIVED_SACOIN:String = "#messenger:platformCurrencyMsg/received/sacoin";
       
@@ -2318,6 +2340,10 @@ package
       public static const SERVICECHANNELMESSAGES_PERSONALRESERVESTITLE:String = "#messenger:serviceChannelMessages/personalReservesTitle";
       
       public static const SERVICECHANNELMESSAGES_PERSONALRESERVESCONVERTED:String = "#messenger:serviceChannelMessages/personalReservesConverted";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUSINTRONOTIFICATION_HEADER:String = "#messenger:serviceChannelMessages/WotPlusIntroNotification/header";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUSINTRONOTIFICATION_BODY:String = "#messenger:serviceChannelMessages/WotPlusIntroNotification/body";
       
       public static const SERVICECHANNELMESSAGES_WINBACKSELECTABLEREWARDENTRY_HEADER:String = "#messenger:serviceChannelMessages/winbackSelectableRewardEntry/header";
       

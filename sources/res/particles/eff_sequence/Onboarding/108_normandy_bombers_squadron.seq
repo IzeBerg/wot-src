@@ -1,0 +1,1351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>60.000004</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bombers_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>33.333332 0.000000 33.333332</inTangent>
+				<outTangent>33.333332 0.000000 33.333332</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>60.000004</startTime>
+				<value>2000.000000 0.000000 2000.000000</value>
+				<inTangent>33.333332 -0.000000 33.333332</inTangent>
+				<outTangent>33.333332 -0.000000 33.333332</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>60.000000</duration>
+				<value>particles/eff_sequence/Onboarding/108_normandy_bombers.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Turrel_01</name>
+		<type>particle</type>
+		<resource>particles/Environment/Onboarding/108_normandy_anti_aircraft_shells.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>345.691711 35.465378 884.413818</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-64.527077 221.293854 -178.105499</value>
+				<inTangent>-1.534238 -0.365465 2.136165</inTangent>
+				<outTangent>-1.534238 -0.365465 2.136165</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>15.200001</startTime>
+				<value>-87.847504 215.738785 -145.635788</value>
+				<inTangent>-1.534238 -0.365465 2.136165</inTangent>
+				<outTangent>4.371212 -61.616058 42.293610</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>21.128765</startTime>
+				<value>-61.931614 -149.568314 105.113060</value>
+				<inTangent>4.371212 -61.616058 42.293610</inTangent>
+				<outTangent>-10.952730 1435.400513 -1187.192017</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>21.366669</startTime>
+				<value>-64.537308 191.918640 -177.324158</value>
+				<inTangent>-10.952730 1435.400513 -1187.192017</inTangent>
+				<outTangent>0.001680 -2.575151 -0.126719</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>27.533335</startTime>
+				<value>-64.526947 176.038544 -178.105591</value>
+				<inTangent>0.001680 -2.575151 -0.126719</inTangent>
+				<outTangent>-0.484490 -3.043556 37.008698</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>37.933334</startTime>
+				<value>-69.565643 144.385559 206.784836</value>
+				<inTangent>-0.484490 -3.043556 37.008698</inTangent>
+				<outTangent>0.500532 5.982934 -38.234123</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>48.000008</startTime>
+				<value>-64.526947 204.613800 -178.105591</value>
+				<inTangent>0.500532 5.982934 -38.234123</inTangent>
+				<outTangent>-0.472378 1.576251 36.083488</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>58.666672</startTime>
+				<value>-69.565643 221.427139 206.784836</value>
+				<inTangent>-0.472378 1.576251 36.083488</inTangent>
+				<outTangent>1.069859 -78.935867 -81.725342</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.337079</inTangent>
+				<outTangent>0.337079</outTangent>
+				<tangentMode>512</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>1.000000</value>
+				<inTangent>0.163043</inTangent>
+				<outTangent>0.163043</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>15.166667</startTime>
+				<value>0.000000</value>
+				<inTangent>0.049378</inTangent>
+				<outTangent>0.049378</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+			<frame>
+				<startTime>20.700001</startTime>
+				<value>1.000000</value>
+				<inTangent>0.163043</inTangent>
+				<outTangent>0.163043</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>24.700001</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.033796</inTangent>
+				<outTangent>-0.033796</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>27.066668</startTime>
+				<value>1.000000</value>
+				<inTangent>0.045296</inTangent>
+				<outTangent>0.045296</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>37.766670</startTime>
+				<value>0.000000</value>
+				<inTangent>0.002776</inTangent>
+				<outTangent>0.002776</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>47.866669</startTime>
+				<value>1.000000</value>
+				<inTangent>0.003209</inTangent>
+				<outTangent>0.003209</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>58.666672</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.092593</inTangent>
+				<outTangent>-0.092593</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Turrel_02</name>
+		<type>particle</type>
+		<resource>particles/Environment/Onboarding/108_normandy_anti_aircraft_shells.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>851.965027 35.465378 415.036133</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-66.702232 -128.997452 54.979019</value>
+				<inTangent>0.086087 11.606049 -9.224980</inTangent>
+				<outTangent>0.085635 -0.237011 -0.053818</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>25.400002</startTime>
+				<value>-64.527100 -135.017532 53.612030</value>
+				<inTangent>0.085635 -0.237011 -0.053818</inTangent>
+				<outTangent>-0.497536 1.094562 10.984954</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>36.400002</startTime>
+				<value>-70.000000 -122.977356 174.446518</value>
+				<inTangent>-0.497536 1.094562 10.984954</inTangent>
+				<outTangent>1.152240 -72.537209 -7.180160</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>38.433334</startTime>
+				<value>-67.657112 -270.469635 159.846863</value>
+				<inTangent>1.152240 -72.537209 -7.180160</inTangent>
+				<outTangent>1.277938 0.000000 -7.963452</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>48.800003</startTime>
+				<value>-54.409149 -270.469635 77.292397</value>
+				<inTangent>1.277938 -0.000000 -7.963452</inTangent>
+				<outTangent>-0.594771 28.773359 7.587831</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>58.200005</startTime>
+				<value>-60.000000 0.000000 148.618027</value>
+				<inTangent>-0.594771 28.773359 7.587831</inTangent>
+				<outTangent>0.214209 0.000000 -2.732783</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.491803</inTangent>
+				<outTangent>0.491803</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.033334</startTime>
+				<value>1.000000</value>
+				<inTangent>0.491803</inTangent>
+				<outTangent>-0.054645</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>11.533334</startTime>
+				<value>0.000000</value>
+				<inTangent>0.163043</inTangent>
+				<outTangent>0.163043</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>16.900002</startTime>
+				<value>1.000000</value>
+				<inTangent>0.030325</inTangent>
+				<outTangent>0.030325</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>25.266668</startTime>
+				<value>1.000000</value>
+				<inTangent>0.163043</inTangent>
+				<outTangent>0.163043</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>28.533335</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.089770</inTangent>
+				<outTangent>-0.089770</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+			<frame>
+				<startTime>36.433334</startTime>
+				<value>1.000000</value>
+				<inTangent>0.163043</inTangent>
+				<outTangent>0.163043</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>50.433334</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.114251</inTangent>
+				<outTangent>-0.114251</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Turrel_03</name>
+		<type>particle</type>
+		<resource>particles/Environment/Onboarding/108_normandy_anti_aircraft_shells.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>775.336304 35.465378 744.851318</value>
+				<inTangent>-0.031375 0.000000 -0.499706</inTangent>
+				<outTangent>-0.031375 0.000000 -0.499706</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>4.300000</startTime>
+				<value>-64.527100 217.441330 -178.105499</value>
+				<inTangent>-0.271833 -0.067269 -0.085832</inTangent>
+				<outTangent>-0.271833 -0.067269 -0.085832</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>24.433334</startTime>
+				<value>-70.000000 216.086990 -179.833588</value>
+				<inTangent>-0.271833 -0.067269 -0.085832</inTangent>
+				<outTangent>1.332551 -7.041829 21.976578</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>36.133335</startTime>
+				<value>-54.409149 133.697586 77.292397</value>
+				<inTangent>1.332551 -7.041829 21.976578</inTangent>
+				<outTangent>-1.270993 6.716528 -20.961357</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>48.400002</startTime>
+				<value>-70.000000 216.086990 -179.833588</value>
+				<inTangent>-1.270993 6.716528 -20.961357</inTangent>
+				<outTangent>1.344039 -7.102534 22.166029</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>60.000004</startTime>
+				<value>-54.409149 133.697586 77.292397</value>
+				<inTangent>1.344039 -7.102534 22.166029</inTangent>
+				<outTangent>-0.559085 -13.369759 7.132563</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.163043</inTangent>
+				<outTangent>0.163043</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.300000</startTime>
+				<value>1.000000</value>
+				<inTangent>0.163043</inTangent>
+				<outTangent>0.163043</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>16.166668</startTime>
+				<value>0.000000</value>
+				<inTangent>0.018349</inTangent>
+				<outTangent>0.018349</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>24.433334</startTime>
+				<value>1.000000</value>
+				<inTangent>0.060484</inTangent>
+				<outTangent>0.060484</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>36.633335</startTime>
+				<value>0.000000</value>
+				<inTangent>0.163043</inTangent>
+				<outTangent>0.163043</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>48.466671</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.102389</inTangent>
+				<outTangent>-0.102389</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>60.000004</startTime>
+				<value>0.000000</value>
+				<inTangent>0.163043</inTangent>
+				<outTangent>0.163043</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Aerial_explosions</name>
+		<type>particle</type>
+		<resource>particles/Environment/Onboarding/108_normandy_aerial_explosion.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>526.676697 500.000000 1009.424622</value>
+				<inTangent>20.042223 0.000000 -42.046307</inTangent>
+				<outTangent>20.042223 0.000000 -42.046307</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>727.098938 500.000000 588.961548</value>
+				<inTangent>-6.272397 1.458827 -20.337959</inTangent>
+				<outTangent>-6.272397 1.458827 -20.337959</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>19.966667</startTime>
+				<value>402.315002 529.079285 602.619751</value>
+				<inTangent>-29.441193 1.962906 -16.782328</inTangent>
+				<outTangent>-29.441193 1.962906 -16.782328</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.366669</startTime>
+				<value>234.024628 535.531494 379.035431</value>
+				<inTangent>27.242146 -2.127542 -18.419550</inTangent>
+				<outTangent>27.242146 -2.127542 -18.419550</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>39.966667</startTime>
+				<value>1332.627808 463.951416 353.140289</value>
+				<inTangent>2.733475 10.742458 -11.157862</inTangent>
+				<outTangent>2.733475 10.742458 -11.157862</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>50.000004</startTime>
+				<value>576.990112 732.324707 148.343155</value>
+				<inTangent>-45.976379 1.757844 -4.567105</inTangent>
+				<outTangent>-45.976379 1.757844 -4.567105</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>60.000004</startTime>
+				<value>410.589569 500.000000 261.117737</value>
+				<inTangent>-16.640055 -23.232471 11.277458</inTangent>
+				<outTangent>-16.640055 -23.232471 11.277458</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.923077</inTangent>
+				<outTangent>0.923077</outTangent>
+				<tangentMode>512</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>0.400000</value>
+				<inTangent>-0.002815</inTangent>
+				<outTangent>-0.002815</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Aerial_explosions_02</name>
+		<type>particle</type>
+		<resource>particles/Environment/Onboarding/108_normandy_aerial_explosion.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1010.974670 500.000000 455.077728</value>
+				<inTangent>-130.651901 0.000000 -102.758606</inTangent>
+				<outTangent>-130.651901 0.000000 -102.758606</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.833333</startTime>
+				<value>248.838501 500.000000 -144.347519</value>
+				<inTangent>-53.912842 -0.402402 -35.179985</inTangent>
+				<outTangent>-53.912842 -0.402402 -35.179985</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>16.233334</startTime>
+				<value>486.231140 491.630035 192.598267</value>
+				<inTangent>29.381168 -0.096929 10.557873</inTangent>
+				<outTangent>29.381168 -0.096929 10.557873</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>29.933334</startTime>
+				<value>978.555969 500.000000 38.022648</value>
+				<inTangent>-13.568464 -1.490968 8.024410</inTangent>
+				<outTangent>-13.568464 -1.490968 8.024410</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>39.966667</startTime>
+				<value>345.723114 463.951416 312.250793</value>
+				<inTangent>-45.685970 -0.000001 -13.961674</inTangent>
+				<outTangent>-45.685970 -0.000001 -13.961674</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>50.000004</startTime>
+				<value>61.790771 500.000000 -242.141815</value>
+				<inTangent>33.309746 1.796440 7.233448</inTangent>
+				<outTangent>33.309746 1.796440 7.233448</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>60.000004</startTime>
+				<value>1010.974670 500.000000 455.077728</value>
+				<inTangent>94.918388 -0.000000 69.721954</inTangent>
+				<outTangent>94.918388 -0.000000 69.721954</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>1.000000</inTangent>
+				<outTangent>1.000000</outTangent>
+				<tangentMode>512</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.400000</startTime>
+				<value>0.400000</value>
+				<inTangent>1.000000</inTangent>
+				<outTangent>1.000000</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Destroyed_01_for_loop</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/108_normandy_nom/bc_108_normandy_plane_bombardment.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>60.000000</duration>
+				<value>Bombers_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-2605.734131 445.627014 -2372.855957</value>
+				<inTangent>-0.000008 -60.319992 -0.000004</inTangent>
+				<outTangent>-0.000008 -60.319992 -0.000004</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Destroyed_01</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/108_normandy_nom/bc_108_normandy_plane_bombardment.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>37.900002</duration>
+				<value>Bombers_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-605.734436 445.626709 -372.855591</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>768</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.133335</startTime>
+				<value>-605.734436 445.626709 -372.855591</value>
+				<inTangent>-0.000008 -1.078672 -0.000004</inTangent>
+				<outTangent>-0.000008 -1.078672 -0.000004</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>37.900002</startTime>
+				<value>-605.734558 -34.280029 -372.855652</value>
+				<inTangent>-0.000008 -60.319992 -0.000004</inTangent>
+				<outTangent>-0.000008 -60.319992 -0.000004</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.133335</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>0.034659 -0.170876 0.155199</inTangent>
+				<outTangent>-3.396221 -0.170876 0.266600</outTangent>
+				<tangentMode>66307</tangentMode>
+			</frame>
+			<frame>
+				<startTime>37.900002</startTime>
+				<value>-54.083164 -138.354111 4.862909</value>
+				<inTangent>-3.476982 -0.364570 0.292774</inTangent>
+				<outTangent>-3.476982 -0.364570 0.292774</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>37.900002</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Explosion_01</name>
+		<type>particle</type>
+		<resource>particles/environment/scenarios/105_germany_airplane_explosion.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>37.933334</duration>
+				<value>Destroyed_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.066668</startTime>
+				<value>1.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.500002</startTime>
+				<value>0.000000</value>
+				<inTangent>-2.307687</inTangent>
+				<outTangent>-2.307687</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Trail_01</name>
+		<type>particle</type>
+		<resource>particles/environment/scenarios/105_germany_airplane_fire_trail.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>37.933334</duration>
+				<value>Destroyed_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>26.066668</startTime>
+				<value>1.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>37.933334</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.084270</inTangent>
+				<outTangent>-0.084270</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Destroyed_02_for_loop</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/108_normandy_nom/bc_108_normandy_plane_bombardment.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>60.000004</duration>
+				<value>Bombers_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-1800.749634 630.466003 -2113.390625</value>
+				<inTangent>-0.000008 -60.319992 -0.000004</inTangent>
+				<outTangent>-0.000008 -60.319992 -0.000004</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Destroyed_02</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/108_normandy_nom/bc_108_normandy_plane_bombardment.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>20.900002</duration>
+				<value>Bombers_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>199.249924 630.465698 -113.391037</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>768</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.166667</startTime>
+				<value>199.249924 630.465698 -113.391037</value>
+				<inTangent>-0.000008 -1.078672 -0.000004</inTangent>
+				<outTangent>-0.000008 -1.078672 -0.000004</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>20.833334</startTime>
+				<value>199.249802 0.553543 -113.391098</value>
+				<inTangent>-0.000008 -60.319992 -0.000004</inTangent>
+				<outTangent>-0.000008 -60.319992 -0.000004</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.166667</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>0.034659 -0.170876 0.155199</inTangent>
+				<outTangent>-3.396221 -0.170876 0.266600</outTangent>
+				<tangentMode>66307</tangentMode>
+			</frame>
+			<frame>
+				<startTime>20.833334</startTime>
+				<value>-54.083164 -138.354111 4.862909</value>
+				<inTangent>-3.476982 -0.364570 0.292774</inTangent>
+				<outTangent>-3.476982 -0.364570 0.292774</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>20.833334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Explosion_02</name>
+		<type>particle</type>
+		<resource>particles/environment/scenarios/105_germany_airplane_explosion.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>20.833334</duration>
+				<value>Destroyed_02|</value>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.100000</startTime>
+				<value>1.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.533334</startTime>
+				<value>0.000000</value>
+				<inTangent>-2.307692</inTangent>
+				<outTangent>-2.307692</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Trail_02</name>
+		<type>particle</type>
+		<resource>particles/environment/scenarios/105_germany_airplane_fire_trail.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>20.833334</duration>
+				<value>Destroyed_02|</value>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.100000</startTime>
+				<value>1.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>20.833334</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.063559</inTangent>
+				<outTangent>-0.063559</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Destroyed_03_for_loop</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/108_normandy_nom/bc_108_normandy_plane_bombardment.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>60.000000</duration>
+				<value>Bombers_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-2006.383057 475.001007 -2388.708740</value>
+				<inTangent>-0.000004 -16.249666 -0.000014</inTangent>
+				<outTangent>-0.000004 -16.249666 -0.000014</outTangent>
+				<tangentMode>768</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>-1.831258 -0.181290 0.164658</inTangent>
+				<outTangent>-1.831258 -0.181290 0.164658</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Destroyed_03</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/108_normandy_nom/bc_108_normandy_plane_bombardment.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>29.533335</duration>
+				<value>Bombers_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-6.383485 475.000916 -388.709442</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>768</tangentMode>
+			</frame>
+			<frame>
+				<startTime>16.033335</startTime>
+				<value>-6.383485 475.000916 -388.709442</value>
+				<inTangent>-0.000008 -1.078672 -0.000004</inTangent>
+				<outTangent>-0.000008 -1.078672 -0.000004</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>29.533335</startTime>
+				<value>-6.383607 -4.905823 -388.709503</value>
+				<inTangent>-0.000008 -60.319992 -0.000004</inTangent>
+				<outTangent>-0.000008 -60.319992 -0.000004</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>16.033335</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>0.034659 -0.170876 0.155199</inTangent>
+				<outTangent>-3.396221 -0.170876 0.266600</outTangent>
+				<tangentMode>66307</tangentMode>
+			</frame>
+			<frame>
+				<startTime>29.533335</startTime>
+				<value>-54.083164 -138.354111 4.862909</value>
+				<inTangent>-3.476982 -0.364570 0.292774</inTangent>
+				<outTangent>-3.476982 -0.364570 0.292774</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>29.533335</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Explosion_03</name>
+		<type>particle</type>
+		<resource>particles/environment/scenarios/105_germany_airplane_explosion.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>29.533335</duration>
+				<value>Destroyed_03|</value>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>16.033335</startTime>
+				<value>1.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>16.433334</startTime>
+				<value>0.000000</value>
+				<inTangent>-1.250001</inTangent>
+				<outTangent>-1.250001</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+			<frame>
+				<startTime>17.366667</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Trail_03</name>
+		<type>particle</type>
+		<resource>particles/environment/scenarios/105_germany_airplane_fire_trail.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>29.533335</duration>
+				<value>Destroyed_03|</value>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>16.033335</startTime>
+				<value>1.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>29.533335</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.074074</inTangent>
+				<outTangent>-0.074074</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Destroyed_04_for_loop</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/108_normandy_nom/bc_108_normandy_plane_bombardment.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>60.000000</duration>
+				<value>Bombers_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-2946.554932 528.760254 -3660.840820</value>
+				<inTangent>-0.000004 -16.249666 -0.000014</inTangent>
+				<outTangent>-0.000004 -16.249666 -0.000014</outTangent>
+				<tangentMode>768</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>-1.831258 -0.181290 0.164658</inTangent>
+				<outTangent>-1.831258 -0.181290 0.164658</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Destroyed_04</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/108_normandy_nom/bc_108_normandy_plane_bombardment.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.966667</startTime>
+				<duration>56.033337</duration>
+				<value>Bombers_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>25.400002</startTime>
+				<value>-946.555542 528.760132 -1660.841553</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>768</tangentMode>
+			</frame>
+			<frame>
+				<startTime>43.900002</startTime>
+				<value>-946.555542 528.760132 -1660.841553</value>
+				<inTangent>-0.000008 -1.078672 -0.000004</inTangent>
+				<outTangent>-0.000008 -1.078672 -0.000004</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>57.000004</startTime>
+				<value>-946.555542 19.755768 -1660.841553</value>
+				<inTangent>-0.000008 -60.319992 -0.000004</inTangent>
+				<outTangent>-0.000008 -60.319992 -0.000004</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>25.400002</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>43.900002</startTime>
+				<value>0.000000 -133.000000 0.000000</value>
+				<inTangent>0.034659 -0.170876 0.155199</inTangent>
+				<outTangent>-3.396221 -0.170876 0.266600</outTangent>
+				<tangentMode>66307</tangentMode>
+			</frame>
+			<frame>
+				<startTime>57.000004</startTime>
+				<value>-54.083164 -138.354111 4.862909</value>
+				<inTangent>-3.476982 -0.364570 0.292774</inTangent>
+				<outTangent>-3.476982 -0.364570 0.292774</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>25.400002</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>57.000004</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Explosion_04</name>
+		<type>particle</type>
+		<resource>particles/environment/scenarios/105_germany_airplane_explosion.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>57.000004</duration>
+				<value>Destroyed_04|</value>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>25.400002</startTime>
+				<value>0.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>43.900002</startTime>
+				<value>1.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>44.300003</startTime>
+				<value>0.000000</value>
+				<inTangent>-1.249995</inTangent>
+				<outTangent>-1.249995</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+			<frame>
+				<startTime>45.233337</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Trail_04</name>
+		<type>particle</type>
+		<resource>particles/environment/scenarios/105_germany_airplane_fire_trail.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>57.000004</duration>
+				<value>Destroyed_04|</value>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>25.400002</startTime>
+				<value>0.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>43.900002</startTime>
+				<value>1.000000</value>
+				<inTangent>0.050505</inTangent>
+				<outTangent>0.050505</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>57.000004</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.076336</inTangent>
+				<outTangent>-0.076336</outTangent>
+				<tangentMode>2</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

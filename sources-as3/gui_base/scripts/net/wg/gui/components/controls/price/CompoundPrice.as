@@ -251,6 +251,7 @@ package net.wg.gui.components.controls.price
       private function updatePositions() : void
       {
          var _loc3_:Price = null;
+         var _loc4_:Boolean = false;
          var _loc19_:int = 0;
          var _loc1_:int = 0;
          var _loc2_:int = this._numVisibleItems;
@@ -258,7 +259,7 @@ package net.wg.gui.components.controls.price
          {
             return;
          }
-         var _loc4_:Boolean = this._itemsDirection == DIRECTION_LEFT;
+         _loc4_ = this._itemsDirection == DIRECTION_LEFT;
          var _loc5_:Boolean = this._itemsDirection == DIRECTION_RIGHT;
          var _loc6_:Boolean = this._itemsDirection == DIRECTION_UP;
          var _loc7_:Boolean = this._itemsDirection == DIRECTION_DOWN;

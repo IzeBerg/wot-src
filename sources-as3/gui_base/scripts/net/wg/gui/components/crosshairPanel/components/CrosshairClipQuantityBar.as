@@ -27,7 +27,7 @@ package net.wg.gui.components.crosshairPanel.components
       
       private var _currentQuantityInClip:Number = -1;
       
-      private var _initQuantityBarTotalFrames:int = -1;
+      private var _initQuantityBarTotalFrames:Number = -1;
       
       private var _initClipCapacity:Number = -1;
       
@@ -59,11 +59,6 @@ package net.wg.gui.components.crosshairPanel.components
          this.capacityBar.gotoAndStop(this._initQuantityBarTotalFrames);
       }
       
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
-      }
-      
       public function updateInfo(param1:Number, param2:String, param3:Boolean) : void
       {
          this._currentQuantityInClip = param1;
@@ -85,21 +80,30 @@ package net.wg.gui.components.crosshairPanel.components
          this.quantityInClipBar.gotoAndStop(this.calcCurrentFrame());
       }
       
-      private function calcCurrentFrame() : int
+      private function calcCurrentFrame() : Number
       {
+         var _loc1_:Number = this._initQuantityBarTotalFrames;
          if(this._initClipCapacity != this._currentQuantityInClip)
          {
             if(this._initMode == MODE_QUEUE)
             {
-               return Math.ceil(this._currentQuantityInClip / this._initBurst) + 1;
+               _loc1_ = Math.ceil(this._currentQuantityInClip / this._initBurst) + 1;
             }
-            if(this._initMode == MODE_AMMO)
+            else if(this._initMode == MODE_AMMO)
             {
-               return this._currentQuantityInClip + 1;
+               _loc1_ = this._currentQuantityInClip + 1;
             }
-            return Math.ceil(this._initQuantityBarTotalFrames * this._currentQuantityInClip / this._initClipCapacity);
+            else
+            {
+               _loc1_ = this._initQuantityBarTotalFrames * this._currentQuantityInClip / this._initClipCapacity ^ 0;
+            }
          }
-         return this._initQuantityBarTotalFrames;
+         return _loc1_;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -1,7 +1,7 @@
 import logging
 from functools import wraps
 from copy import copy
-from account_helpers.AccountSettings import MAPBOX_CAROUSEL_FILTER_1, MAPBOX_CAROUSEL_FILTER_2, FUN_RANDOM_CAROUSEL_FILTER_1, FUN_RANDOM_CAROUSEL_FILTER_2, COMP7_CAROUSEL_FILTER_1, COMP7_CAROUSEL_FILTER_2
+from account_helpers.AccountSettings import MAPBOX_CAROUSEL_FILTER_1, MAPBOX_CAROUSEL_FILTER_2, FUN_RANDOM_CAROUSEL_FILTER_1, FUN_RANDOM_CAROUSEL_FILTER_2, COMP7_CAROUSEL_FILTER_1, COMP7_CAROUSEL_FILTER_2, VERSUS_AI_CAROUSEL_FILTER_1, VERSUS_AI_CAROUSEL_FILTER_2
 import BigWorld, constants
 from adisp import adisp_async, adisp_process
 from debug_utils import LOG_ERROR
@@ -87,7 +87,9 @@ class IntSettingsRequester(object):
        'MARKERS_DEAD_2': 113, 
        'MARKERS_ALLY_2': 114, 
        'ONCE_ONLY_HINTS_3': 115, 
-       'ARMORY_YARD': 31001}
+       'ARMORY_YARD': 31001, 
+       VERSUS_AI_CAROUSEL_FILTER_1: 31002, 
+       VERSUS_AI_CAROUSEL_FILTER_2: 31003}
 
     def __init__(self):
         self.__isSynced = False

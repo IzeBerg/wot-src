@@ -1,7 +1,8 @@
 from enum import Enum
-import Event, GUI
+import Event, GUI, Math
 from gun_rotation_shared import getLocalAimPoint
 from vehicle_systems.tankStructure import TankNodeNames
+HIDDEN_VEHICLE_OFFSET = Math.Vector3(0, 5, 0)
 
 class ReplyStateForMarker(Enum):
     CREATE_STATE = 0
@@ -131,12 +132,15 @@ class VehicleMarker(Marker):
     def attach(self, vProxy):
         self.detach()
         self._vProxy = vProxy
-        self._vProxy.appearance.onModelChanged += self.__onModelChanged
+        if self._vProxy.appearance is not None:
+            self._vProxy.appearance.onModelChanged += self.__onModelChanged
+        return
 
     def detach(self):
-        if self._vProxy is not None and self._vProxy.appearance is not None:
-            self._vProxy.appearance.onModelChanged -= self.__onModelChanged
-            self._vProxy = None
+        if self._vProxy is not None and hasattr(self._vProxy, 'appearance'):
+            if self._vProxy.appearance is not None:
+                self._vProxy.appearance.onModelChanged -= self.__onModelChanged
+                self._vProxy = None
         return
 
     def destroy(self):
@@ -172,6 +176,10 @@ class VehicleMarker(Marker):
 
     @classmethod
     def fetchMatrixProvider(cls, vProxy):
+        if vProxy.isHidden:
+            matrix = Math.Matrix()
+            matrix.setTranslate(vProxy.position + HIDDEN_VEHICLE_OFFSET)
+            return matrix
         rootMP = vProxy.model.node(TankNodeNames.HULL_SWINGING)
         guiMP = vProxy.model.node(TankNodeNames.GUI)
         rootM = rootMP.localMatrix

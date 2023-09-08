@@ -33,6 +33,8 @@ package net.wg.data.constants.generated
       
       public static const OVERTURNED_ICON:String = "destroyTimerOverTurnedUI";
       
+      public static const WARNING_ICON:String = "warningTimerUI";
+      
       public static const OVERTURNED_GREEN_ICON:String = "destroyTimerOverTurnedGreenUI";
       
       public static const HALF_OVERTURNED_ICON:String = "HalfOverTurnedIconUI";

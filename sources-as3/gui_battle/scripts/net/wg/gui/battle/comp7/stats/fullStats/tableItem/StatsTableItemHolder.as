@@ -32,7 +32,7 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
             this._statsItem.setIsEnemy(isEnemy);
             this._statsItem.setRole(_loc1_.role);
             this._statsItem.setSkillLevel(_loc1_.skillLevel);
-            this._statsItem.setRank(_loc1_.rank,_loc1_.rankDivision);
+            this._statsItem.setRank(_loc1_.rank,_loc1_.rankDivision,_loc1_.isQualification);
             this._statsItem.setVoiceChatConnected(_loc1_.voiceChatConnected);
             if(data.isAnonymized && UserTags.isCurrentPlayer(data.userTags))
             {

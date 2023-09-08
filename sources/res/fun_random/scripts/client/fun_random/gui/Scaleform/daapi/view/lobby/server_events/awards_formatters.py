@@ -1,5 +1,5 @@
 from gui.Scaleform.daapi.view.lobby.missions.awards_formatters import CurtailingAwardsComposer, formatShortData
-from gui.server_events.awards_formatters import AWARDS_SIZES, AwardsPacker, getLootboxesFormatterMap
+from gui.server_events.awards_formatters import AWARDS_SIZES, AwardsPacker, getMissionsDefaultFormatterMap
 
 class FunCurtailingAwardsComposer(CurtailingAwardsComposer):
 
@@ -9,7 +9,7 @@ class FunCurtailingAwardsComposer(CurtailingAwardsComposer):
 
 
 def getFunFormatterMap():
-    return getLootboxesFormatterMap()
+    return getMissionsDefaultFormatterMap()
 
 
 def getFunAwardsPacker():

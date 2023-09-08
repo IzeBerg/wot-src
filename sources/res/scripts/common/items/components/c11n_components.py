@@ -204,12 +204,15 @@ class ProjectionDecalItem(BaseCustomizationItem):
 class CamouflageItem(BaseCustomizationItem):
     __metaclass__ = ReflectionMetaclass
     itemType = CustomizationType.CAMOUFLAGE
-    __slots__ = ('palettes', 'compatibleParts', 'componentsCovering', 'invisibilityFactor',
-                 'tiling', 'tilingSettings', 'scales', 'rotation', 'glossMetallicSettings',
-                 'styleId')
+    __slots__ = ('camoTypeIndex', 'palettes', 'compatibleParts', 'componentsCovering',
+                 'invisibilityFactor', 'tiling', 'tilingSettings', 'scales', 'rotation',
+                 'glossMetallicSettings', 'styleId')
     allSlots = BaseCustomizationItem.__slots__ + __slots__
+    CAMO_TYPES = {'Transparent': '#vehicle_customization:camouflage/transparent', 
+       'Opaque': '#vehicle_customization:camouflage/opaque'}
 
     def __init__(self, parentGroup=None):
+        self.camoTypeIndex = -1
         self.compatibleParts = ApplyArea.CAMOUFLAGE_REGIONS_VALUE
         self.componentsCovering = 0
         self.palettes = []
@@ -225,6 +228,7 @@ class CamouflageItem(BaseCustomizationItem):
 
     def __deepcopy__(self, memodict={}):
         newItem = type(self)()
+        newItem.camoTypeIndex = self.camoTypeIndex
         newItem.compatibleParts = self.compatibleParts
         newItem.componentsCovering = self.componentsCovering
         newItem.palettes = deepcopy(self.palettes)
@@ -235,6 +239,24 @@ class CamouflageItem(BaseCustomizationItem):
         newItem.scales = self.scales
         super(CamouflageItem, self)._copy(newItem)
         return newItem
+
+    if IS_EDITOR:
+
+        @staticmethod
+        def getCamoTypesNames():
+            return CamouflageItem.CAMO_TYPES.keys()
+
+        @staticmethod
+        def getCamoTypesTranslationKeys():
+            return CamouflageItem.CAMO_TYPES.values()
+
+        def getCamoType(self):
+            if self.camoTypeIndex == -1:
+                return ''
+            return CamouflageItem.getCamoTypesNames()[self.camoTypeIndex]
+
+        def setCamoType(self, value):
+            self.camoTypeIndex = CamouflageItem.getCamoTypesNames().index(value)
 
 
 class PersonalNumberItem(BaseCustomizationItem):
@@ -871,14 +893,7 @@ class CustomizationCache(object):
                 if not usedStyle.matchVehicleType(vehType):
                     raise SoftException(('style {} is incompatible with vehicle {}').format(styleID, vehDescr.name))
                 if usedStyle.isProgressive():
-                    if usedStyle.progression.defaultLvl > outfit.styleProgressionLevel > len(usedStyle.progression.levels):
-                        raise SoftException(('Progression style {} level out of limits').format(styleID))
-                    styleProgress = progressionStorage.get(CustomizationType.STYLE, {}).get(styleID, {})
-                    styleProgressVehDescr = vehType.compactDescr if usedStyle.progression.autobound else 0
-                    styleProgressLevel = styleProgress[styleProgressVehDescr][C11N_PROGRESS_LEVEL_IDX]
-                    outfitStyleLevel = outfit.styleProgressionLevel
-                    if not usedStyle.isProgressionRewindEnabled and styleProgressLevel > outfitStyleLevel:
-                        raise SoftException(('Progression style {} can not be applied. Outfit level={} < Progress level={}').format(styleID, outfitStyleLevel, styleProgressLevel))
+                    _validateStyleProgression(outfit, usedStyle, progressionStorage, vehType)
                 if usedStyle.isWithSerialNumber:
                     _validateSerialNumber(outfit, usedStyle, serialNumbersStorage)
             projectionDecalsCount = len(outfit.projection_decals)
@@ -1059,6 +1074,19 @@ def _validateProgression(component, item, progressionStorage, vehType):
     if not 0 <= level <= achievedLevel:
         raise SoftException(('wrong progression level: {}, achievedLevel: {} for component: {} at vehicle: {}, ').format(level, achievedLevel, component.id, vehTypeCD))
     return
+
+
+def _validateStyleProgression(outfit, usedStyle, progressionStorage, vehType):
+    styleID = outfit.styleId
+    if usedStyle.progression.defaultLvl > outfit.styleProgressionLevel > len(usedStyle.progression.levels):
+        raise SoftException(('Progression style {} level out of limits').format(styleID))
+    styleProgressVehDescr = vehType.compactDescr if usedStyle.progression.autobound else 0
+    styleProgress = progressionStorage.get(CustomizationType.STYLE, {}).get(styleID, {})
+    if styleProgressVehDescr in styleProgress:
+        styleProgressLevel = styleProgress[styleProgressVehDescr][C11N_PROGRESS_LEVEL_IDX]
+        outfitStyleLevel = outfit.styleProgressionLevel
+        if not usedStyle.isProgressionRewindEnabled and styleProgressLevel > outfitStyleLevel:
+            raise SoftException(('Progression style {} can not be applied. Outfit level={} < Progress level={}').format(styleID, outfitStyleLevel, styleProgressLevel))
 
 
 def _validateSerialNumber(outfit, item, serialNumberStorage):

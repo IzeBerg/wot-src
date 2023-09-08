@@ -13,6 +13,9 @@
 	<firstScreenDuration>5</firstScreenDuration>
 	<firstScreen>
 		<bg>
+			<minWidth>1920</minWidth>
+			<minHeight>1080</minHeight>
+			<objectFit>cover</objectFit>
 			<texture>gui/maps/loading/login_bg.png</texture>
 			<yOffset>60</yOffset>
 		</bg>
@@ -171,14 +174,14 @@
 						<text>#game_loading:player/status/enter</text>
 					</milestone>
 					<milestone>
-						<name>inventory</name>
+						<name>shop</name>
 						<percent>73</percent>
-						<text>#game_loading:player/status/download/inventory</text>
+						<text>#game_loading:player/status/download/shop</text>
 					</milestone>
 					<milestone>
-						<name>shop</name>
-						<percent>75</percent>
-						<text>#game_loading:player/status/download/shop</text>
+						<name>inventory</name>
+						<percent>74</percent>
+						<text>#game_loading:player/status/download/inventory</text>
 					</milestone>
 					<milestone>
 						<name>dossier</name>
@@ -227,6 +230,11 @@
 						<text>#game_loading:player/status/hangarReady</text>
 					</milestone>
 					<milestone>
+						<name>onboardingEnqueued</name>
+						<percent>95</percent>
+						<text>#game_loading:player/status/onboardingEnqueued</text>
+					</milestone>
+					<milestone>
 						<name>loadContent</name>
 						<percent>100</percent>
 						<forceApply>True</forceApply>
@@ -240,14 +248,14 @@
 						<text>#game_loading:player/status/synchronize</text>
 					</milestone>
 					<milestone>
-						<name>inventory</name>
+						<name>shop</name>
 						<percent>70</percent>
-						<text>#game_loading:player/status/download/inventory</text>
+						<text>#game_loading:player/status/download/shop</text>
 					</milestone>
 					<milestone>
-						<name>shop</name>
-						<percent>82</percent>
-						<text>#game_loading:player/status/download/shop</text>
+						<name>inventory</name>
+						<percent>71</percent>
+						<text>#game_loading:player/status/download/inventory</text>
 					</milestone>
 					<milestone>
 						<name>dossier</name>

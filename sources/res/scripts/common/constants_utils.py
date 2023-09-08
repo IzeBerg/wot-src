@@ -1,6 +1,5 @@
 import types
 from UnitBase import CMD_NAMES, ROSTER_TYPE, PREBATTLE_TYPE_BY_UNIT_MGR_ROSTER, PREBATTLE_TYPE_BY_UNIT_MGR_ROSTER_EXT, ROSTER_TYPE_TO_CLASS, UNIT_MGR_FLAGS_TO_PREBATTLE_TYPE, UNIT_MGR_FLAGS_TO_UNIT_MGR_ENTITY_NAME, UNIT_MGR_FLAGS_TO_INVITATION_TYPE, UNIT_MGR_FLAGS_TO_QUEUE_TYPE, QUEUE_TYPE_BY_UNIT_MGR_ROSTER, UNIT_ERROR, VEHICLE_TAGS_GROUP_BY_UNIT_MGR_FLAGS
-from chat_shared import SYS_MESSAGE_TYPE
 from constants import ARENA_GUI_TYPE, ARENA_GUI_TYPE_LABEL, ARENA_BONUS_TYPE, ARENA_BONUS_TYPE_NAMES, ARENA_BONUS_TYPE_IDS, ARENA_BONUS_MASK, QUEUE_TYPE, QUEUE_TYPE_NAMES, PREBATTLE_TYPE, PREBATTLE_TYPE_NAMES, INVITATION_TYPE, BATTLE_MODE_VEHICLE_TAGS, SEASON_TYPE_BY_NAME, SEASON_NAME_BY_TYPE, QUEUE_TYPE_IDS
 from BattleFeedbackCommon import BATTLE_EVENT_TYPE
 from debug_utils import LOG_DEBUG
@@ -216,11 +215,13 @@ class AbstractBattleMode(object):
     _ROSTER_TYPE = None
     _ROSTER_CLASS = None
     _GAME_PARAMS_KEY = None
+    _DEFAULT_QUEUE_TYPE_PRIORITY = None
     _REQUIRED_VEHICLE_TAGS = tuple()
     _FORBIDDEN_VEHICLE_TAGS = BATTLE_MODE_VEHICLE_TAGS
     _NEW_VEHICLES_TAGS = set()
     _BASE_CHAT_LOG_FLAGS = None
     _BASE_QUEUE_CONTROLLER_CLASS = None
+    _BASE_WINNER_PROCESSOR_CLASS = None
     _INVITATION_TYPE = None
     _CLIENT_BATTLE_PAGE = None
     _CLIENT_PRB_ACTION_NAME = None
@@ -287,6 +288,10 @@ class AbstractBattleMode(object):
         return
 
     @property
+    def _client_tipsCriteriaClass(self):
+        return
+
+    @property
     def _client_platoonViewClass(self):
         return
 
@@ -304,6 +309,10 @@ class AbstractBattleMode(object):
 
     @property
     def _client_battleControllersRepository(self):
+        return
+
+    @property
+    def _client_sharedControllersRepository(self):
         return
 
     @property
@@ -409,6 +418,8 @@ class AbstractBattleMode(object):
         scu.addSingletonsToStart(self._BATTLE_MGR_NAME, self._battleMgrConfig, self._personality)
         scu.addBattlesConfigToList(self._GAME_PARAMS_KEY, self._personality)
         scu.addPreBattleTypeToChatLogFlags(self._PREBATTLE_TYPE, self._BASE_CHAT_LOG_FLAGS, self._personality)
+        if self._BASE_WINNER_PROCESSOR_CLASS:
+            scu.addWinnerProcessor(self._ARENA_BONUS_TYPE, self._BASE_WINNER_PROCESSOR_CLASS, self._personality)
 
     def registerBaseUnit(self):
         import server_constants_utils as scu
@@ -474,6 +485,10 @@ class AbstractBattleMode(object):
         from gui.shared.system_factory import registerBattleControllerRepo
         registerBattleControllerRepo(self._ARENA_GUI_TYPE, self._client_battleControllersRepository)
 
+    def registerSharedControllersRepository(self):
+        from gui.shared.system_factory import registerSharedControllerRepo
+        registerSharedControllerRepo(self._ARENA_GUI_TYPE, self._client_sharedControllersRepository)
+
     def registerBattleResultsConfig(self):
         config = self._BATTLE_RESULTS_CONFIG
         if config is None:
@@ -525,10 +540,12 @@ class AbstractBattleMode(object):
             addBattleRequiredLibraries(self._client_battleRequiredLibraries, self._ARENA_GUI_TYPE, self._personality)
 
     def registerSystemMessagesTypes(self):
+        from chat_shared import SYS_MESSAGE_TYPE
         SYS_MESSAGE_TYPE.inject(self._SM_TYPES)
 
     def registerBattleResultSysMsgType(self):
         from battle_results import ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE
+        from chat_shared import SYS_MESSAGE_TYPE
         if self._ARENA_BONUS_TYPE in ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE:
             raise SoftException(('ARENA_BONUS_TYPE_TO_SYS_MESSAGE_TYPE already has ARENA_BONUS_TYPE:{t}. Personality: {p}').format(t=self._ARENA_BONUS_TYPE, p=self._personality))
         try:
@@ -574,3 +591,12 @@ class AbstractBattleMode(object):
         from gui.shared.system_factory import registerVehicleViewState
         for viewState in self._client_vehicleViewStates:
             registerVehicleViewState(viewState)
+
+    def registerDefaultQueueTypePriority(self):
+        from gui.prb_control import prb_utils
+        prb_utils.addDefaultQueueTypePriority(self._QUEUE_TYPE, self._DEFAULT_QUEUE_TYPE_PRIORITY, self._personality)
+
+    def registerBattleTipCriteria(self):
+        tipsCriteria = self._client_tipsCriteriaClass
+        from gui.shared.system_factory import registerBattleTipCriteria
+        registerBattleTipCriteria(self._ARENA_GUI_TYPE, tipsCriteria)

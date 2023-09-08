@@ -17,11 +17,17 @@ package
       
       public static const PAGE_HEADING_PROGRESSION:String = "#comp7:page/heading/progression";
       
+      public static const PAGE_HEADING_QUALIFICATION:String = "#comp7:page/heading/qualification";
+      
       public static const PAGE_HEADING_RANKREWARDS:String = "#comp7:page/heading/rankRewards";
       
       public static const PAGE_HEADING_WEEKLYQUESTS:String = "#comp7:page/heading/weeklyQuests";
       
       public static const PAGE_HEADING_LEADERBOARD:String = "#comp7:page/heading/leaderboard";
+      
+      public static const PAGE_HEADING_YEARLYREWARDS:String = "#comp7:page/heading/yearlyRewards";
+      
+      public static const PAGE_HEADING_YEARLYSTATISTICS:String = "#comp7:page/heading/yearlyStatistics";
       
       public static const COUNTDOWN_TEXT:String = "#comp7:countDown/text";
       
@@ -61,9 +67,11 @@ package
       
       public static const RANK_SIXTH:String = "#comp7:rank/sixth";
       
-      public static const RANK_SEVENTH:String = "#comp7:rank/seventh";
-      
       public static const RANK_CURRENT:String = "#comp7:rank/current";
+      
+      public static const RANK_ACHIEVED:String = "#comp7:rank/achieved";
+      
+      public static const RANK_QUALIFICATION:String = "#comp7:rank/qualification";
       
       public static const RANKUPPER_FIRST:String = "#comp7:rankUpper/first";
       
@@ -77,8 +85,6 @@ package
       
       public static const RANKUPPER_SIXTH:String = "#comp7:rankUpper/sixth";
       
-      public static const RANKUPPER_SEVENTH:String = "#comp7:rankUpper/seventh";
-      
       public static const DIVISION_NOTE:String = "#comp7:division/note";
       
       public static const DIVISION_TEXT:String = "#comp7:division/text";
@@ -90,6 +96,10 @@ package
       public static const DIVISION_C:String = "#comp7:division/C";
       
       public static const DIVISION_D:String = "#comp7:division/D";
+      
+      public static const DIVISION_E:String = "#comp7:division/E";
+      
+      public static const LISTSEPARATOR:String = "#comp7:listSeparator";
       
       public static const SIDEBAR_TABS_TOOLTIP_HEADER_PROGRESSION:String = "#comp7:sidebar/tabs/tooltip/header/progression";
       
@@ -106,6 +116,14 @@ package
       public static const SIDEBAR_TABS_TOOLTIP_HEADER_LEADERBOARD:String = "#comp7:sidebar/tabs/tooltip/header/leaderboard";
       
       public static const SIDEBAR_TABS_TOOLTIP_BODY_LEADERBOARD:String = "#comp7:sidebar/tabs/tooltip/body/leaderboard";
+      
+      public static const SIDEBAR_TABS_TOOLTIP_HEADER_YEARLYREWARDS:String = "#comp7:sidebar/tabs/tooltip/header/yearlyRewards";
+      
+      public static const SIDEBAR_TABS_TOOLTIP_BODY_YEARLYREWARDS:String = "#comp7:sidebar/tabs/tooltip/body/yearlyRewards";
+      
+      public static const SIDEBAR_TABS_TOOLTIP_HEADER_YEARLYSTATISTICS:String = "#comp7:sidebar/tabs/tooltip/header/yearlyStatistics";
+      
+      public static const SIDEBAR_TABS_TOOLTIP_BODY_YEARLYSTATISTICS:String = "#comp7:sidebar/tabs/tooltip/body/yearlyStatistics";
       
       public static const SYSTEM_MESSAGES_PRIMETIME_START_TITLE:String = "#comp7:system_messages/primeTime/start/title";
       
@@ -131,9 +149,41 @@ package
       
       public static const SYSTEM_MESSAGES_TOKENWEEKLYREWARD_BODY:String = "#comp7:system_messages/tokenWeeklyReward/body";
       
+      public static const SYSTEM_MESSAGES_QUALIFICATIONREWARD_TITLE:String = "#comp7:system_messages/qualificationReward/title";
+      
+      public static const SYSTEM_MESSAGES_QUALIFICATIONREWARD_BODY:String = "#comp7:system_messages/qualificationReward/body";
+      
+      public static const SYSTEM_MESSAGES_WEEKLYREWARD_TITLE:String = "#comp7:system_messages/weeklyReward/title";
+      
+      public static const SYSTEM_MESSAGES_WEEKLYREWARD_BODY:String = "#comp7:system_messages/weeklyReward/body";
+      
+      public static const SYSTEM_MESSAGES_WEEKLYREWARD_TOKENS:String = "#comp7:system_messages/weeklyReward/tokens";
+      
+      public static const QUALIFICATION_COUNTER:String = "#comp7:qualification/counter";
+      
+      public static const QUALIFICATION_COUNTERWITHDESCRIPTION:String = "#comp7:qualification/counterWithDescription";
+      
+      public static const QUALIFICATION_RATINGCALCULATIONDESCRIPTION:String = "#comp7:qualification/ratingCalculationDescription";
+      
+      public static const QUALIFICATION_RATINGCALCULATIONTOOLTIP:String = "#comp7:qualification/ratingCalculationTooltip";
+      
+      public static const QUALIFICATION_CONDITION:String = "#comp7:qualification/condition";
+      
+      public static const QUALIFICATION_CONDITIONTOOLTIP_HEADER:String = "#comp7:qualification/conditionTooltip/header";
+      
+      public static const QUALIFICATION_CONDITIONTOOLTIP_BODY:String = "#comp7:qualification/conditionTooltip/body";
+      
+      public static const QUALIFICATION_REWARDSDESCRIPTION:String = "#comp7:qualification/rewardsDescription";
+      
+      public static const QUALIFICATION_REWARDSBUTTON:String = "#comp7:qualification/rewardsButton";
+      
+      public static const QUALIFICATION_BATTLESCOUNTER:String = "#comp7:qualification/battlesCounter";
+      
       public static const MAINWIDGET_STATUS:String = "#comp7:mainWidget/status";
       
       public static const MAINWIDGET_WARNING:String = "#comp7:mainWidget/warning";
+      
+      public static const MAINWIDGET_RATINGCALCULATION:String = "#comp7:mainWidget/ratingCalculation";
       
       public static const MAINWIDGET_TOOLTIP_INACTIVE_HEADER:String = "#comp7:mainWidget/tooltip/inactive/header";
       
@@ -143,23 +193,31 @@ package
       
       public static const SEASONMODIFIER_TITLE:String = "#comp7:seasonModifier/title";
       
+      public static const REWARDSSCREEN_DESCRIPTION_SEASON:String = "#comp7:rewardsScreen/description/season";
+      
+      public static const REWARDSSCREEN_DESCRIPTION_QUALIFICATIONENDED:String = "#comp7:rewardsScreen/description/qualificationEnded";
+      
       public static const REWARDSSCREEN_TITLE_RANK:String = "#comp7:rewardsScreen/title/rank";
       
       public static const REWARDSSCREEN_TITLE_DIVISION:String = "#comp7:rewardsScreen/title/division";
-      
-      public static const REWARDSSCREEN_TITLE_FIRSTRANKREWARDS:String = "#comp7:rewardsScreen/title/firstRankRewards";
       
       public static const REWARDSSCREEN_TITLE_RANKREWARDS:String = "#comp7:rewardsScreen/title/rankRewards";
       
       public static const REWARDSSCREEN_TITLE_TOKENSREWARDS:String = "#comp7:rewardsScreen/title/tokensRewards";
       
-      public static const REWARDSSCREEN_SUBTITLE_DIVISION:String = "#comp7:rewardsScreen/subtitle/division";
+      public static const REWARDSSCREEN_TITLE_QUALIFICATIONREWARDS:String = "#comp7:rewardsScreen/title/qualificationRewards";
       
-      public static const REWARDSSCREEN_SUBTITLE_FIRSTRANKREWARDS:String = "#comp7:rewardsScreen/subtitle/firstRankRewards";
+      public static const REWARDSSCREEN_TITLE_QUALIFICATIONRANK:String = "#comp7:rewardsScreen/title/qualificationRank";
+      
+      public static const REWARDSSCREEN_SUBTITLE_DIVISION:String = "#comp7:rewardsScreen/subtitle/division";
       
       public static const REWARDSSCREEN_SUBTITLE_RANKREWARDS:String = "#comp7:rewardsScreen/subtitle/rankRewards";
       
       public static const REWARDSSCREEN_SUBTITLE_TOKENSREWARDS:String = "#comp7:rewardsScreen/subtitle/tokensRewards";
+      
+      public static const REWARDSSCREEN_SUBTITLE_QUALIFICATIONREWARDS:String = "#comp7:rewardsScreen/subtitle/qualificationRewards";
+      
+      public static const REWARDSSCREEN_SUBTITLE_QUALIFICATIONREWARDSSEPARATOR:String = "#comp7:rewardsScreen/subtitle/qualificationRewardsSeparator";
       
       public static const REWARDSSCREEN_ADDITIONALREWARDS:String = "#comp7:rewardsScreen/additionalRewards";
       
@@ -171,9 +229,11 @@ package
       
       public static const REWARDSSCREEN_NOTICE_SUBTITLE:String = "#comp7:rewardsScreen/notice/subTitle";
       
+      public static const RANKINFO_CURRENT_FIFTH:String = "#comp7:rankInfo/current/fifth";
+      
       public static const RANKINFO_CURRENT_SIXTH:String = "#comp7:rankInfo/current/sixth";
       
-      public static const RANKINFO_CURRENT_SEVENTH:String = "#comp7:rankInfo/current/seventh";
+      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_FIRST:String = "#comp7:rankItemStatus/future/description/first";
       
       public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_SECOND:String = "#comp7:rankItemStatus/future/description/second";
       
@@ -181,9 +241,13 @@ package
       
       public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_FOURTH:String = "#comp7:rankItemStatus/future/description/fourth";
       
-      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_FIFTH:String = "#comp7:rankItemStatus/future/description/fifth";
+      public static const RANKITEMSTATUS_PREVIOUS_DESCRIPTION_FIFTH:String = "#comp7:rankItemStatus/previous/description/fifth";
       
-      public static const RANKITEMSTATUS_PREVIOUS_DESCRIPTION_SIXTH:String = "#comp7:rankItemStatus/previous/description/sixth";
+      public static const RANKITEMSTATUS_CURRENT_DESCRIPTION_FIFTH:String = "#comp7:rankItemStatus/current/description/fifth";
+      
+      public static const RANKITEMSTATUS_CURRENT_EXTENDEDDESCRIPTION_FIFTH:String = "#comp7:rankItemStatus/current/extendedDescription/fifth";
+      
+      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_FIFTH:String = "#comp7:rankItemStatus/future/description/fifth";
       
       public static const RANKITEMSTATUS_CURRENT_DESCRIPTION_SIXTH:String = "#comp7:rankItemStatus/current/description/sixth";
       
@@ -191,13 +255,7 @@ package
       
       public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_SIXTH:String = "#comp7:rankItemStatus/future/description/sixth";
       
-      public static const RANKITEMSTATUS_CURRENT_DESCRIPTION_SEVENTH:String = "#comp7:rankItemStatus/current/description/seventh";
-      
-      public static const RANKITEMSTATUS_CURRENT_EXTENDEDDESCRIPTION_SEVENTH:String = "#comp7:rankItemStatus/current/extendedDescription/seventh";
-      
-      public static const RANKITEMSTATUS_FUTURE_DESCRIPTION_SEVENTH:String = "#comp7:rankItemStatus/future/description/seventh";
-      
-      public static const RANKITEMSTATUS_FUTURE_EXTENDEDDESCRIPTION_SEVENTH:String = "#comp7:rankItemStatus/future/extendedDescription/seventh";
+      public static const RANKITEMSTATUS_FUTURE_EXTENDEDDESCRIPTION_SIXTH:String = "#comp7:rankItemStatus/future/extendedDescription/sixth";
       
       public static const RATINGSCORE_TITLE:String = "#comp7:ratingScore/title";
       
@@ -225,6 +283,194 @@ package
       
       public static const WEEKLYQUESTS_TOKENPROGRESS_DESCRIPTION_DONE:String = "#comp7:weeklyQuests/tokenProgress/description/done";
       
+      public static const YEARLYREWARDS_VEHICLE:String = "#comp7:yearlyRewards/vehicle";
+      
+      public static const YEARLYREWARDS_VEHICLETOOLTIP_HEADER:String = "#comp7:yearlyRewards/vehicleTooltip/header";
+      
+      public static const YEARLYREWARDS_VEHICLETOOLTIP_BODY:String = "#comp7:yearlyRewards/vehicleTooltip/body";
+      
+      public static const YEARLYREWARDS_SUBTITLE_STYLEPROGRESS:String = "#comp7:yearlyRewards/subtitle/styleProgress";
+      
+      public static const YEARLYREWARDS_REWARDSSTATE_GUARANTEED:String = "#comp7:yearlyRewards/rewardsState/guaranteed";
+      
+      public static const YEARLYREWARDS_REWARDSSTATE_POSSIBLE:String = "#comp7:yearlyRewards/rewardsState/possible";
+      
+      public static const YEARLYREWARDS_REWARDSSTATE_NOTAVAILABLE:String = "#comp7:yearlyRewards/rewardsState/notAvailable";
+      
+      public static const YEARLYREWARDS_REWARDSSTATE_CLAIMED:String = "#comp7:yearlyRewards/rewardsState/claimed";
+      
+      public static const YEARLYREWARDS_REWARDSSTATE_TOOLTIP_GUARANTEED:String = "#comp7:yearlyRewards/rewardsState/tooltip/guaranteed";
+      
+      public static const YEARLYREWARDS_REWARDSSTATE_TOOLTIP_POSSIBLE:String = "#comp7:yearlyRewards/rewardsState/tooltip/possible";
+      
+      public static const YEARLYREWARDS_REWARDSSTATE_TOOLTIP_NOTAVAILABLE:String = "#comp7:yearlyRewards/rewardsState/tooltip/notAvailable";
+      
+      public static const YEARLYREWARDS_BANNER_WILLRECEIVED:String = "#comp7:yearlyRewards/banner/willReceived";
+      
+      public static const YEARLYREWARDS_RANK_CURRENT:String = "#comp7:yearlyRewards/rank/current";
+      
+      public static const YEARLYREWARDS_RANK_ACHIEVED:String = "#comp7:yearlyRewards/rank/achieved";
+      
+      public static const YEARLYREWARDS_DESCRIPTION:String = "#comp7:yearlyRewards/description";
+      
+      public static const YEARLYREWARDS_ERROR_TITLE:String = "#comp7:yearlyRewards/error/title";
+      
+      public static const YEARLYREWARDS_ERROR_DESCRIPTION:String = "#comp7:yearlyRewards/error/description";
+      
+      public static const YEARLYREWARDS_MAIN_FIRST:String = "#comp7:yearlyRewards/main/first";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_FIRST_HEADER:String = "#comp7:yearlyRewardsTooltip/main/first/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_FIRST_BODY:String = "#comp7:yearlyRewardsTooltip/main/first/body";
+      
+      public static const YEARLYREWARDS_MAIN_SECOND:String = "#comp7:yearlyRewards/main/second";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_SECOND_HEADER:String = "#comp7:yearlyRewardsTooltip/main/second/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_SECOND_BODY:String = "#comp7:yearlyRewardsTooltip/main/second/body";
+      
+      public static const YEARLYREWARDS_MAIN_THIRD:String = "#comp7:yearlyRewards/main/third";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_THIRD_HEADER:String = "#comp7:yearlyRewardsTooltip/main/third/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_THIRD_BODY:String = "#comp7:yearlyRewardsTooltip/main/third/body";
+      
+      public static const YEARLYREWARDS_MAIN_FOURTH:String = "#comp7:yearlyRewards/main/fourth";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_FOURTH_HEADER:String = "#comp7:yearlyRewardsTooltip/main/fourth/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_FOURTH_BODY:String = "#comp7:yearlyRewardsTooltip/main/fourth/body";
+      
+      public static const YEARLYREWARDS_MAIN_FIFTH:String = "#comp7:yearlyRewards/main/fifth";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_FIFTH_HEADER:String = "#comp7:yearlyRewardsTooltip/main/fifth/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_FIFTH_BODY:String = "#comp7:yearlyRewardsTooltip/main/fifth/body";
+      
+      public static const YEARLYREWARDS_MAIN_SIXTH:String = "#comp7:yearlyRewards/main/sixth";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_SIXTH_HEADER:String = "#comp7:yearlyRewardsTooltip/main/sixth/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_MAIN_SIXTH_BODY:String = "#comp7:yearlyRewardsTooltip/main/sixth/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIRST_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/first_1/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIRST_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/first_1/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIRST_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/first_2/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIRST_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/first_2/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/second_1/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/second_1/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/second_2/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/second_2/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_3_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/second_3/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_3_BODY:String = "#comp7:yearlyRewardsTooltip/additional/second_3/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/third_1/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/third_1/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/third_2/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/third_2/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_3_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/third_3/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_3_BODY:String = "#comp7:yearlyRewardsTooltip/additional/third_3/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fourth_1/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fourth_1/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fourth_2/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fourth_2/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_3_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fourth_3/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_3_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fourth_3/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fifth_1/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fifth_1/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fifth_2/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fifth_2/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_3_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fifth_3/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_3_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fifth_3/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_4_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fifth_4/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_4_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fifth_4/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/sixth_1/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/sixth_1/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/sixth_2/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/sixth_2/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_3_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/sixth_3/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_3_BODY:String = "#comp7:yearlyRewardsTooltip/additional/sixth_3/body";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_4_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/sixth_4/header";
+      
+      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_4_BODY:String = "#comp7:yearlyRewardsTooltip/additional/sixth_4/body";
+      
+      public static const YEARLYSTATISTICS_SEASONNAME_0:String = "#comp7:yearlyStatistics/seasonName/0";
+      
+      public static const YEARLYSTATISTICS_SEASONNAME_1:String = "#comp7:yearlyStatistics/seasonName/1";
+      
+      public static const YEARLYSTATISTICS_SEASONNAME_2:String = "#comp7:yearlyStatistics/seasonName/2";
+      
+      public static const YEARLYSTATISTICS_SEASONSTATUS_0:String = "#comp7:yearlyStatistics/seasonStatus/0";
+      
+      public static const YEARLYSTATISTICS_SEASONSTATUS_1:String = "#comp7:yearlyStatistics/seasonStatus/1";
+      
+      public static const YEARLYSTATISTICS_SEASONSTATUS_2:String = "#comp7:yearlyStatistics/seasonStatus/2";
+      
+      public static const YEARLYSTATISTICS_RANKSTATUS:String = "#comp7:yearlyStatistics/rankStatus";
+      
+      public static const YEARLYSTATISTICS_RATING:String = "#comp7:yearlyStatistics/rating";
+      
+      public static const YEARLYSTATISTICS_BATTLES:String = "#comp7:yearlyStatistics/battles";
+      
+      public static const YEARLYSTATISTICS_SUPERPLATOONBATTLES:String = "#comp7:yearlyStatistics/superPlatoonBattles";
+      
+      public static const YEARLYSTATISTICS_WINS:String = "#comp7:yearlyStatistics/wins";
+      
+      public static const YEARLYSTATISTICS_STATISTICSAVAILABILITY:String = "#comp7:yearlyStatistics/statisticsAvailability";
+      
+      public static const YEARLYSTATISTICS_GENERATIONOFSTATISTICS:String = "#comp7:yearlyStatistics/generationOfStatistics";
+      
+      public static const YEARLYSTATISTICS_DASH:String = "#comp7:yearlyStatistics/dash";
+      
+      public static const SEASONPOINTTOOLTIP_HEADER:String = "#comp7:seasonPointTooltip/header";
+      
+      public static const SEASONPOINTTOOLTIP_STATUS_ACHIEVED:String = "#comp7:seasonPointTooltip/status/achieved";
+      
+      public static const SEASONPOINTTOOLTIP_STATUS_POSSIBLE:String = "#comp7:seasonPointTooltip/status/possible";
+      
+      public static const SEASONPOINTTOOLTIP_STATUS_NOTACHIEVED:String = "#comp7:seasonPointTooltip/status/notAchieved";
+      
+      public static const SEASONPOINTTOOLTIP_TEXT_SEASON:String = "#comp7:seasonPointTooltip/text/season";
+      
+      public static const SEASONPOINTTOOLTIP_TEXT_YEAR:String = "#comp7:seasonPointTooltip/text/year";
+      
+      public static const SEASONPOINTTOOLTIP_TEXT_COMPENSATE:String = "#comp7:seasonPointTooltip/text/compensate";
+      
       public static const INTRO_TITLE_CRIMSONSEASON:String = "#comp7:intro/title/crimsonSeason";
       
       public static const INTRO_TITLE_VEHICLESONMAP:String = "#comp7:intro/title/vehiclesOnMap";
@@ -232,6 +478,8 @@ package
       public static const INTRO_TITLE_POINTSOFINTEREST:String = "#comp7:intro/title/pointsOfInterest";
       
       public static const INTRO_TITLE_ROLESKILLS:String = "#comp7:intro/title/roleSkills";
+      
+      public static const INTRO_TITLE_QUALIFICATION:String = "#comp7:intro/title/qualification";
       
       public static const INTRO_TITLE_RANKS:String = "#comp7:intro/title/ranks";
       
@@ -242,6 +490,8 @@ package
       public static const INTRO_DESCRIPTION_POINTSOFINTEREST:String = "#comp7:intro/description/pointsOfInterest";
       
       public static const INTRO_DESCRIPTION_ROLESKILLS:String = "#comp7:intro/description/roleSkills";
+      
+      public static const INTRO_DESCRIPTION_QUALIFICATION:String = "#comp7:intro/description/qualification";
       
       public static const INTRO_DESCRIPTION_RANKS:String = "#comp7:intro/description/ranks";
       
@@ -267,11 +517,9 @@ package
       
       public static const GENERALRANKTOOLTIP_BODY_FOURTH:String = "#comp7:generalRankTooltip/body/fourth";
       
-      public static const GENERALRANKTOOLTIP_BODY_FIFTH:String = "#comp7:generalRankTooltip/body/fifth";
+      public static const FIFTHRANKTOOLTIP_DESCRIPTION:String = "#comp7:fifthRankTooltip/description";
       
       public static const SIXTHRANKTOOLTIP_DESCRIPTION:String = "#comp7:sixthRankTooltip/description";
-      
-      public static const SEVENTHRANKTOOLTIP_DESCRIPTION:String = "#comp7:seventhRankTooltip/description";
       
       public static const DIVISIONTOOLTIP_HEADING:String = "#comp7:divisionTooltip/heading";
       
@@ -299,13 +547,19 @@ package
       
       public static const MAINWIDGETTOOLTIP_RATINGSCORE:String = "#comp7:mainWidgetTooltip/ratingScore";
       
-      public static const MAINWIDGETTOOLTIP_INFO_SIXTH:String = "#comp7:mainWidgetTooltip/info/sixth";
+      public static const MAINWIDGETTOOLTIP_INFO_FIFTH:String = "#comp7:mainWidgetTooltip/info/fifth";
       
-      public static const MAINWIDGETTOOLTIP_INFO_SEVENTH:String = "#comp7:mainWidgetTooltip/info/seventh";
+      public static const MAINWIDGETTOOLTIP_INFO_SIXTH:String = "#comp7:mainWidgetTooltip/info/sixth";
       
       public static const MAINWIDGETTOOLTIP_DIVISION:String = "#comp7:mainWidgetTooltip/division";
       
       public static const MAINWIDGETTOOLTIP_DIVISIONDESCRIPTION:String = "#comp7:mainWidgetTooltip/divisionDescription";
+      
+      public static const MAINWIDGETTOOLTIP_QUALIFICATIONNAME:String = "#comp7:mainWidgetTooltip/qualificationName";
+      
+      public static const MAINWIDGETTOOLTIP_QUALIFICATION_CONDITION:String = "#comp7:mainWidgetTooltip/qualification/condition";
+      
+      public static const MAINWIDGETTOOLTIP_BATTLESCOUNTER:String = "#comp7:mainWidgetTooltip/battlesCounter";
       
       public static const WAITINGSPINNER_MESSAGE:String = "#comp7:waitingSpinner/message";
       
@@ -361,12 +615,6 @@ package
       
       public static const REWARDS_STATUS_ACHIEVED:String = "#comp7:rewards/status/achieved";
       
-      public static const REWARDS_STATUS_FUTURE_FIRST:String = "#comp7:rewards/status/future/first";
-      
-      public static const REWARDS_STATUS_FUTURE_RANKSFORPOINTS:String = "#comp7:rewards/status/future/ranksForPoints";
-      
-      public static const REWARDS_STATUS_FUTURE_LAST:String = "#comp7:rewards/status/future/last";
-      
       public static const REWARDS_PREVIEW:String = "#comp7:rewards/preview";
       
       public static const REWARDS_BONUS_STYLE_PROGRESS:String = "#comp7:rewards/bonus/style_progress";
@@ -419,8 +667,6 @@ package
       
       public static const NOVEHICLES_HOWTO_RESERVES:String = "#comp7:noVehicles/howTo/reserves";
       
-      public static const NOVEHICLES_LISTSEPARATOR:String = "#comp7:noVehicles/listSeparator";
-      
       public static const ALERTMESSAGE_UNSUITABLEVEHICLES:String = "#comp7:alertMessage/unsuitableVehicles";
       
       public static const ALERTMESSAGE_UNDEFINED:String = "#comp7:alertMessage/undefined";
@@ -444,6 +690,8 @@ package
       public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND:String = "#comp7:alertMessage/standaloneNotAvailableEnd";
       
       public static const ALERTMESSAGE_AFTERSEASON:String = "#comp7:alertMessage/afterSeason";
+      
+      public static const ALERTMESSAGE_BETWEENSEASONS:String = "#comp7:alertMessage/betweenSeasons";
       
       public static const ALERTMESSAGE_BUTTON_CHANGESERVER:String = "#comp7:alertMessage/button/changeServer";
       
@@ -557,6 +805,12 @@ package
       
       public static const BATTLERESULT_PERSONAL_TOOLTIP_LOSEDESCR:String = "#comp7:battleResult/personal/tooltip/loseDescr";
       
+      public static const BATTLERESULT_QUALIFICATION_TITLE:String = "#comp7:battleResult/qualification/title";
+      
+      public static const BATTLERESULT_QUALIFICATION_DESCR_MAIN:String = "#comp7:battleResult/qualification/descr/main";
+      
+      public static const BATTLERESULT_QUALIFICATION_DESCR_STATS:String = "#comp7:battleResult/qualification/descr/stats";
+      
       public static const BATTLERESULT_SUBTASK_TITLE_NORAISE:String = "#comp7:battleResult/subTask/title/noRaise";
       
       public static const BATTLERESULT_SUBTASK_TITLE_RAISE:String = "#comp7:battleResult/subTask/title/raise";
@@ -583,9 +837,15 @@ package
       
       public static const BATTLERESULT_HEADER_DESERTER:String = "#comp7:battleResult/header/deserter";
       
+      public static const BATTLERESULT_HEADER_DESERTERQUALIFICATION:String = "#comp7:battleResult/header/deserterQualification";
+      
+      public static const BATTLERESULT_LABEL_DESERTER:String = "#comp7:battleResult/label/deserter";
+      
       public static const BATTLERESULT_MESSAGE_HEADER_DESERTER:String = "#comp7:battleResult/message/header/deserter";
       
       public static const BATTLERESULT_MESSAGE_DESERTER:String = "#comp7:battleResult/message/deserter";
+      
+      public static const BATTLERESULT_MESSAGE_DESERTERQUALIFICATION:String = "#comp7:battleResult/message/deserterQualification";
       
       public static const BANNER_TITLE:String = "#comp7:banner/title";
       
@@ -632,6 +892,46 @@ package
       public static const BATTLEMESSAGES_ENABLEVOIP:String = "#comp7:battleMessages/enableVOIP";
       
       public static const BATTLEMESSAGES_SPECIFYVOIP:String = "#comp7:battleMessages/specifyVOIP";
+      
+      public static const WHATSNEWVIEW_BANNER_TITLE_SMALL:String = "#comp7:whatsNewView/banner/title/small";
+      
+      public static const WHATSNEWVIEW_BANNER_TITLE_LARGE:String = "#comp7:whatsNewView/banner/title/large";
+      
+      public static const WHATSNEWVIEW_WATCHVIDEO:String = "#comp7:whatsNewView/watchVideo";
+      
+      public static const WHATSNEWVIEW_TAG_NEW:String = "#comp7:whatsNewView/tag/new";
+      
+      public static const WHATSNEWVIEW_TAG_CHANGED:String = "#comp7:whatsNewView/tag/changed";
+      
+      public static const WHATSNEWVIEW_TAG_SEASONUPDATE:String = "#comp7:whatsNewView/tag/seasonUpdate";
+      
+      public static const WHATSNEWVIEW_TAG_MAPREMOVED:String = "#comp7:whatsNewView/tag/mapRemoved";
+      
+      public static const WHATSNEWVIEW_YEAROFTHEPEGASUS_HEADING:String = "#comp7:whatsNewView/yearOfThePegasus/heading";
+      
+      public static const WHATSNEWVIEW_YEAROFTHEPEGASUS_DESCRIPTION:String = "#comp7:whatsNewView/yearOfThePegasus/description";
+      
+      public static const WHATSNEWVIEW_QUALIFICATION_HEADING:String = "#comp7:whatsNewView/qualification/heading";
+      
+      public static const WHATSNEWVIEW_QUALIFICATION_DESCRIPTION:String = "#comp7:whatsNewView/qualification/description";
+      
+      public static const WHATSNEWVIEW_RANKINGSYSTEM_HEADING:String = "#comp7:whatsNewView/rankingSystem/heading";
+      
+      public static const WHATSNEWVIEW_RANKINGSYSTEM_DESCRIPTION:String = "#comp7:whatsNewView/rankingSystem/description";
+      
+      public static const WHATSNEWVIEW_MAPCHANGES_HEADING:String = "#comp7:whatsNewView/mapChanges/heading";
+      
+      public static const WHATSNEWVIEW_MAPCHANGES_ADDEDMAPS:String = "#comp7:whatsNewView/mapChanges/addedMaps";
+      
+      public static const WHATSNEWVIEW_MAPCHANGES_REMOVEDMAPS:String = "#comp7:whatsNewView/mapChanges/removedMaps";
+      
+      public static const WHATSNEWVIEW_VEHICLELIMITATIONS_HEADING:String = "#comp7:whatsNewView/vehicleLimitations/heading";
+      
+      public static const WHATSNEWVIEW_VEHICLELIMITATIONS_DESCRIPTION:String = "#comp7:whatsNewView/vehicleLimitations/description";
+      
+      public static const WHATSNEWVIEW_VEHICLESFORRENT_HEADING:String = "#comp7:whatsNewView/vehiclesForRent/heading";
+      
+      public static const WHATSNEWVIEW_BUTTON_OK:String = "#comp7:whatsNewView/button/ok";
        
       
       public function COMP7()

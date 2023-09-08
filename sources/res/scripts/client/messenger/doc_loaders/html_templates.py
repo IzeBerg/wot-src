@@ -11,6 +11,10 @@ class _MessageTemplate(templates.Template):
         self.priority = priority
         self.groupID = groupID
 
+    @property
+    def lifeTime(self):
+        return self.data.get('lifeTime', 0)
+
     def format(self, ctx=None, data=None):
         vo = self.data.copy()
         if isinstance(data, types.DictionaryType):
@@ -51,6 +55,9 @@ class MessageTemplates(templates.XMLCollection):
     def groupID(self, key):
         return self[key].groupID
 
+    def lifeTime(self, key):
+        return self[key].lifeTime
+
     def __missing__(self, key):
         self[key] = value = _MessageTemplate(key, {}, NotificationPriorityLevel.MEDIUM, NotificationGroup.INFO)
         return value
@@ -65,7 +72,8 @@ class MessageTemplates(templates.XMLCollection):
            'bgIconSizeAuto': source.readBool('bgIconSizeAuto'), 
            'icon': source.readString('icon'), 
            'defaultIcon': source.readString('defaultIcon'), 
-           'filters': [], 'buttonsLayout': []}
+           'filters': [], 'buttonsLayout': [], 'buttonsAlign': source.readString('buttonsAlign', 'left'), 
+           'lifeTime': source.readInt('lifeTime')}
         priority = source.readString('priority', NotificationPriorityLevel.MEDIUM)
         if priority not in NotificationPriorityLevel.RANGE:
             LOG_WARNING('Priority is invalid', sourceID, priority)

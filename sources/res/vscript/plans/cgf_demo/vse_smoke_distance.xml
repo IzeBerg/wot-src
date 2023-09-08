@@ -3,27 +3,11 @@
 	<info>
 		<name>cgf_demo/vse_smoke_distance</name>
 		<isMacro>false</isMacro>
+		<version>0</version>
 		<aspect>
 			<compatibles>CLIENT</compatibles>
 		</aspect>
 		<blocks>
-			<block>
-				<class>ContextGetSelf</class>
-				<id>ContextGetSelf_1</id>
-				<params>
-					<param>
-						CGFGameObjectContext
-						<name>Context Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						getSelf
-						<name>Member Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
 			<block>
 				<class>StopPlan</class>
 				<id>StopPlan_1</id>
@@ -31,16 +15,30 @@
 				<slots/>
 			</block>
 			<block>
-				<class>Get Player Vehicle</class>
-				<id>Get Player Vehicle_1</id>
+				<class>FrameEvent</class>
+				<id>FrameEvent_1</id>
 				<params/>
-				<slots/>
+				<slots>
+					<slot>
+						<name>active</name>
+						<const>\true\</const>
+					</slot>
+					<slot>
+						<name>cooldown</name>
+						<const>\0.200000\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
-				<class>GetVehicleTransform</class>
-				<id>GetVehicleTransform_1</id>
+				<class>FlowGate</class>
+				<id>FlowGate_1</id>
 				<params/>
-				<slots/>
+				<slots>
+					<slot>
+						<name>openAtStart</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>SetParticleParameter</class>
@@ -49,6 +47,41 @@
 					<param>
 						tintColor
 						<name>Property</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>StartScript</class>
+				<id>StartScript_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SetParticleParameter</class>
+				<id>SetParticleParameter_2</id>
+				<params>
+					<param>
+						emissionRate
+						<name>Property</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>emissionRate</name>
+						<const>\3.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>GetComponentProperty</class>
+				<id>GetComponentProperty_1</id>
+				<params>
+					<param>
+						Transform.world
+						<name>Component Type</name>
 						<type>StringT</type>
 					</param>
 				</params>
@@ -74,21 +107,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>FrameEvent</class>
-				<id>FrameEvent_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>active</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>cooldown</name>
-						<const>\0.200000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>CurvePoint</class>
 				<id>CurvePoint_1</id>
 				<params/>
@@ -100,39 +118,10 @@
 				</slots>
 			</block>
 			<block>
-				<class>FloatToInt</class>
-				<id>FloatToInt_1</id>
+				<class>AbsoluteFloat</class>
+				<id>AbsoluteFloat_1</id>
 				<params/>
 				<slots/>
-			</block>
-			<block>
-				<class>StartScript</class>
-				<id>StartScript_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GetComponentProperty</class>
-				<id>GetComponentProperty_1</id>
-				<params>
-					<param>
-						Transform.world
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>FlowGate</class>
-				<id>FlowGate_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>openAtStart</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
 			</block>
 			<block>
 				<class>MatrixPosition</class>
@@ -141,8 +130,37 @@
 				<slots/>
 			</block>
 			<block>
+				<class>ContextGetSelf</class>
+				<id>ContextGetSelf_1</id>
+				<params>
+					<param>
+						CGFGameObjectContext
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						getSelf
+						<name>Member Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>Constant</class>
 				<id>Constant_1</id>
+				<params>
+					<param>
+						Vector3T
+						<name>Value Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>VectorLength</class>
+				<id>VectorLength_1</id>
 				<params>
 					<param>
 						Vector3T
@@ -165,39 +183,16 @@
 				<slots/>
 			</block>
 			<block>
-				<class>AbsoluteFloat</class>
-				<id>AbsoluteFloat_1</id>
+				<class>Get Player Vehicle</class>
+				<id>Get Player Vehicle_1</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>VectorLength</class>
-				<id>VectorLength_1</id>
-				<params>
-					<param>
-						Vector3T
-						<name>Value Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
+				<class>GetVehicleTransform</class>
+				<id>GetVehicleTransform_1</id>
+				<params/>
 				<slots/>
-			</block>
-			<block>
-				<class>SetParticleParameter</class>
-				<id>SetParticleParameter_2</id>
-				<params>
-					<param>
-						emissionRate
-						<name>Property</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>emissionRate</name>
-						<const>\3.000000\</const>
-					</slot>
-				</slots>
 			</block>
 		</blocks>
 		<connections>
@@ -220,10 +215,16 @@
 				<output>failure</output>
 			</connection>
 			<connection>
-				<from>Get Player Vehicle_1</from>
-				<input>vehicle</input>
-				<to>GetVehicleTransform_1</to>
-				<output>vehicle</output>
+				<from>FrameEvent_1</from>
+				<input>input</input>
+				<to>FlowGate_1</to>
+				<output>exec</output>
+			</connection>
+			<connection>
+				<from>SetParticleParameter_2</from>
+				<input>open</input>
+				<to>FlowGate_1</to>
+				<output>out</output>
 			</connection>
 			<connection>
 				<from>FlowGate_1</from>
@@ -244,22 +245,16 @@
 				<output>color</output>
 			</connection>
 			<connection>
-				<from>FloatToInt_1</from>
-				<input>a</input>
-				<to>CreateColor_1</to>
-				<output>res</output>
+				<from>GetComponentProperty_1</from>
+				<input>in</input>
+				<to>SetParticleParameter_2</to>
+				<output>out</output>
 			</connection>
 			<connection>
-				<from>AbsoluteFloat_1</from>
-				<input>x</input>
-				<to>CurvePoint_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>CurvePoint_1</from>
-				<input>a</input>
-				<to>FloatToInt_1</to>
-				<output>y</output>
+				<from>ContextGetSelf_1</from>
+				<input>object</input>
+				<to>SetParticleParameter_2</to>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>StartScript_1</from>
@@ -274,16 +269,22 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>FrameEvent_1</from>
-				<input>input</input>
-				<to>FlowGate_1</to>
-				<output>exec</output>
+				<from>CurvePoint_1</from>
+				<input>a</input>
+				<to>CreateColor_1</to>
+				<output>y</output>
 			</connection>
 			<connection>
-				<from>SetParticleParameter_2</from>
-				<input>open</input>
-				<to>FlowGate_1</to>
-				<output>out</output>
+				<from>AbsoluteFloat_1</from>
+				<input>x</input>
+				<to>CurvePoint_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>VectorLength_1</from>
+				<input>a</input>
+				<to>AbsoluteFloat_1</to>
+				<output>res</output>
 			</connection>
 			<connection>
 				<from>GetComponentProperty_1</from>
@@ -295,6 +296,12 @@
 				<from>MatrixPosition_1</from>
 				<input>value</input>
 				<to>Constant_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>SubtractVector_1</from>
+				<input>a</input>
+				<to>VectorLength_1</to>
 				<output>res</output>
 			</connection>
 			<connection>
@@ -310,28 +317,10 @@
 				<output>position</output>
 			</connection>
 			<connection>
-				<from>VectorLength_1</from>
-				<input>a</input>
-				<to>AbsoluteFloat_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>SubtractVector_1</from>
-				<input>a</input>
-				<to>VectorLength_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperty_1</from>
-				<input>in</input>
-				<to>SetParticleParameter_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>object</input>
-				<to>SetParticleParameter_2</to>
-				<output>value</output>
+				<from>Get Player Vehicle_1</from>
+				<input>vehicle</input>
+				<to>GetVehicleTransform_1</to>
+				<output>vehicle</output>
 			</connection>
 		</connections>
 		<macros/>

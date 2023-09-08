@@ -143,7 +143,6 @@ package net.wg.gui.components.tooltips.helpers
       {
          var _loc16_:IconText = null;
          var _loc17_:ToolTipBlockRightListItemVO = null;
-         var _loc18_:Boolean = false;
          var _loc21_:TextField = null;
          var _loc22_:Number = NaN;
          var _loc23_:Number = NaN;
@@ -200,7 +199,7 @@ package net.wg.gui.components.tooltips.helpers
          var _loc13_:Vector.<ToolTipBlockRightListItemVO> = param1.rightTextList;
          var _loc14_:uint = _loc13_.length;
          var _loc15_:Number = param1.leftTextLineHight != 0 ? Number(param1.leftTextLineHight) : Number(_loc10_.getLineMetrics(0).height);
-         _loc18_ = false;
+         var _loc18_:Boolean = false;
          _loc4_ = 0;
          while(_loc4_ < _loc14_)
          {

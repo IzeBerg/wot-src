@@ -63,6 +63,7 @@ package net.wg.gui.battle.views.destroyTimers
       
       private static const DESC_TEXT_COLORS:Object = {
          "orange":16689972,
+         "gray":15626240,
          "green":8442938,
          "yellow":16689972
       };
@@ -104,12 +105,6 @@ package net.wg.gui.battle.views.destroyTimers
          stop();
          init(true,true);
          this._scheduler = App.utils.scheduler;
-      }
-      
-      override protected function initialize() : void
-      {
-         super.initialize();
-         iconSpr = this.graphicsSpr.iconSpr;
       }
       
       override protected function invokeAdditionalActionOnIntervalUpdate() : void
@@ -226,6 +221,12 @@ package net.wg.gui.battle.views.destroyTimers
          super.pauseRadialTimer();
       }
       
+      override protected function initialize() : void
+      {
+         super.initialize();
+         iconSpr = this.graphicsSpr.iconSpr;
+      }
+      
       public function cropSize() : Boolean
       {
          return false;
@@ -257,6 +258,7 @@ package net.wg.gui.battle.views.destroyTimers
          this._typeId = param1.typeId;
          currentIconName = param1.iconName;
          currentIconOffsetY = param1.iconOffsetY;
+         name = param1.iconName;
          this.setStaticText(Values.EMPTY_STR,param1.text);
          var _loc2_:String = param1.color;
          if(StringUtils.isNotEmpty(_loc2_))
@@ -385,6 +387,7 @@ package net.wg.gui.battle.views.destroyTimers
       private function updateColor() : void
       {
          this.graphicsSpr.setColor(this._currentColor);
+         iconSpr = this.graphicsSpr.iconSpr;
          this.desc.textColor = DESC_TEXT_COLORS[this._currentColor];
          this.desc.textFilters = DESC_TEXT_FILTERS[this._currentColor];
       }

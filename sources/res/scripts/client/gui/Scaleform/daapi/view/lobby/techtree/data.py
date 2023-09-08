@@ -851,7 +851,8 @@ class NationTreeData(_ItemsData):
         if filtered:
             unlocked = [ (item, self._change2UnlockedByCD(item)) for item in filtered ]
             parents = map(g_techTreeDP.getTopLevel, filtered)
-            prevUnlocked = [ (item, self._changePreviouslyUnlockedByCD(item)) for item in chain(*parents) ]
+            prevUnlocked = [ (item, self._changePreviouslyUnlockedByCD(item)) for item in chain(*parents) if not self.__isInInventory(item)
+                           ]
         return (
          next2Unlock, unlocked, prevUnlocked)
 
@@ -1017,3 +1018,12 @@ class NationTreeData(_ItemsData):
             self._nodes[self._scrollIndex].addStateFlag(NODE_STATE_FLAGS.SELECTED)
         elif self._scrollIndex < 0:
             self._scrollIndex = 0
+
+    def __isInInventory(self, nodeCD):
+        try:
+            node = self._nodes[self._nodesIdx[nodeCD]]
+        except KeyError as e:
+            _logger.exception(e)
+            return False
+
+        return NODE_STATE.inInventory(node.getState())
