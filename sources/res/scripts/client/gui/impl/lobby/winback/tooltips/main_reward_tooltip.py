@@ -4,7 +4,7 @@ from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.winback.tooltips.main_reward_tooltip_model import MainRewardTooltipModel
 from gui.impl.lobby.winback.winback_bonus_packer import getWinbackBonusPacker
 from gui.impl.pub import ViewImpl
-from gui.shared.missions.packers.bonus import packBonusModelAndTooltipData
+from gui.shared.missions.packers.bonus import packMissionsBonusModelAndTooltipData
 if typing.TYPE_CHECKING:
     from typing import List
     from frameworks.wulf import Array
@@ -31,4 +31,4 @@ class MainRewardTooltip(ViewImpl):
 
     def __updateRewards(self, model, rewards):
         model.clear()
-        packBonusModelAndTooltipData(rewards, getWinbackBonusPacker(), model)
+        packMissionsBonusModelAndTooltipData(rewards, getWinbackBonusPacker(), model)

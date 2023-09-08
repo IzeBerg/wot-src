@@ -19,6 +19,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.staticMarkers.flag.constant.FlagMarkerState;
    import net.wg.gui.battle.views.staticMarkers.interestPoint.InterestPointMarker;
    import net.wg.gui.battle.views.staticMarkers.interestPoint.MarkerPoiProgressCircle;
+   import net.wg.gui.battle.views.staticMarkers.location.FlagLocationActionMarker;
    import net.wg.gui.battle.views.staticMarkers.location.LocationActionMarker;
    import net.wg.gui.battle.views.staticMarkers.location.LocationMarker;
    import net.wg.gui.battle.views.staticMarkers.repairPoint.RepairPointIcon;
@@ -112,6 +113,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_INTERESTPOINT_INTERESTPOINTMARKER:Class = InterestPointMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_INTERESTPOINT_MARKERPOIPROGRESSCIRCLE:Class = MarkerPoiProgressCircle;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_LOCATION_FLAGLOCATIONACTIONMARKER:Class = FlagLocationActionMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_LOCATION_LOCATIONACTIONMARKER:Class = LocationActionMarker;
       

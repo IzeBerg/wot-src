@@ -22,11 +22,10 @@ class _GroupCounter(object):
 
     def reset(self):
         self.__seenNotifications |= {entry for entry in self.__notifications if entry[_COUNT_ONLY_ONCE_INDEX] if entry[_COUNT_ONLY_ONCE_INDEX]}
-        self.__notifications.clear()
         self.resetUnreadCount()
 
     def resetUnreadCount(self):
-        pass
+        self.__notifications.clear()
 
     @classmethod
     def getGroupID(cls):
@@ -40,6 +39,7 @@ class _InfoGroupCounter(_GroupCounter):
         return
 
     def resetUnreadCount(self):
+        super(_InfoGroupCounter, self).resetUnreadCount()
         self.proto.serviceChannel.resetUnreadCount()
 
     @classmethod
@@ -54,6 +54,7 @@ class _InviteGroupCounter(_GroupCounter):
         return
 
     def resetUnreadCount(self):
+        super(_InviteGroupCounter, self).resetUnreadCount()
         if self.prbInvites is not None:
             self.prbInvites.resetUnreadCount()
         return

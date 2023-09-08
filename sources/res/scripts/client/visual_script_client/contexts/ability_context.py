@@ -1,9 +1,9 @@
-from visual_script_client.contexts.vehicle_context import VehicleContext
+from visual_script_client.contexts.vehicle_context import VehicleContextClient
 from visual_script.context import vse_event_out, vse_set_property, vse_get_property
 from visual_script.misc import ASPECT
 from visual_script.slot_types import SLOT_TYPE
 
-class AbilityContextClient(VehicleContext):
+class AbilityContextClient(VehicleContextClient):
 
     def __init__(self, vehicle, equipmentName=None):
         super(AbilityContextClient, self).__init__(vehicle)

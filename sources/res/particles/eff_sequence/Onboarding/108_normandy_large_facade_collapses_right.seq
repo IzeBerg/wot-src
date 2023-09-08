@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>45.366669</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Effect_right</name>
+		<type>particle</type>
+		<resource>particles/Environment/Onboarding/108_normandy_large_facade_collapses_right.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>14.161102 12.949923 -13.907898</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>0.000000</value>
+				<inTangent>29.999998</inTangent>
+				<outTangent>29.999998</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>1.000000</value>
+				<inTangent>29.999998</inTangent>
+				<outTangent>-0.731707</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>13.900001</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.731707</inTangent>
+				<outTangent>-0.731707</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Light_sphere_r</name>
+		<type>light</type>
+		<lightType>omnilight</lightType>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>14.161100 12.949900 -13.907900</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>outerRadius</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>34.950943</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>innerRadius</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>1.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>multiplier</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>31.353523</value>
+				<inTangent>131302.640625</inTangent>
+				<outTangent>131302.812500</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.366667</startTime>
+				<value>26291.917969</value>
+				<inTangent>131302.812500</inTangent>
+				<outTangent>-56272.632812</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>31.353523</value>
+				<inTangent>-56272.632812</inTangent>
+				<outTangent>-56272.632812</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>color</name>
+			<type>vector4</type>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>1.000000 0.317647 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>castShadow</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+		<track>
+			<name>lodShift</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>200.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Smoke_fog_01_r</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/108_normandy_nom/bc_108_normandy_smoke_fog.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>9.333334</startTime>
+				<value>-21.189392 -0.552193 2.531921</value>
+				<inTangent>-0.046191 -0.011830 -0.000000</inTangent>
+				<outTangent>-0.046191 -0.011830 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>45.266670</startTime>
+				<value>-21.189392 -7.094888 2.531921</value>
+				<inTangent>-0.000000 -0.182079 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.182079 -0.000000</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>-0.000005 -53.185349 -0.000000</value>
+				<inTangent>-0.000004 -43.763412 -0.000000</inTangent>
+				<outTangent>-0.000004 -43.763412 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>15.000000 18.000000 15.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>true</value>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert2_0_ncl1_1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>1.000000 0.925490 0.796078 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.124831</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.124831</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.400001</startTime>
+				<value>1.000000 0.925490 0.796078 0.803082</value>
+				<inTangent>0.000000 0.000000 0.000000 0.011624</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.011624</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>45.366669</startTime>
+				<value>1.000000 0.925490 0.796078 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.038587</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.038587</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Smoke_fog_04_r</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/108_normandy_nom/bc_108_normandy_smoke_fog.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>9.500001</startTime>
+				<value>12.219833 12.005362 -15.737183</value>
+				<inTangent>-0.000000 -3.654040 -0.000000</inTangent>
+				<outTangent>-0.000000 -3.654040 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>-0.000069 333.446533 -0.000045</value>
+				<inTangent>0.000000 0.577011 -0.000001</inTangent>
+				<outTangent>0.000000 0.577011 -0.000001</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.233333</startTime>
+				<value>6.000000 10.000000 6.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert2_0_ncl1_1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>1.000000 0.925490 0.796078 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.517241</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.517241</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.033334</startTime>
+				<value>1.000000 0.925490 0.796078 2.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.004048</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.004048</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>45.366669</startTime>
+				<value>1.000000 0.925490 0.796078 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.046370</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.046370</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Smoke_fog_02_copied_r</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/108_normandy_nom/bc_108_normandy_smoke_fog.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>9.333334</startTime>
+				<value>-22.145264 -0.552193 -19.438293</value>
+				<inTangent>-0.046191 -0.011830 -0.000000</inTangent>
+				<outTangent>-0.046191 -0.011830 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>45.266670</startTime>
+				<value>-22.145264 -7.094888 -19.438293</value>
+				<inTangent>-0.000000 -0.182079 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.182079 -0.000000</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>-0.000106 312.603516 -0.000027</value>
+				<inTangent>-0.000020 15.867948 -0.000009</inTangent>
+				<outTangent>-0.000020 15.867948 -0.000009</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>15.000000 12.000000 16.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>true</value>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert2_0_ncl1_1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>1.000000 0.925490 0.796078 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.126316</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.126316</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.300000</startTime>
+				<value>1.000000 0.925490 0.796078 0.800000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.012741</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.012741</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>45.366669</startTime>
+				<value>1.000000 0.925490 0.796078 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.031976</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.031976</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Effect_right_arty_explosion_01</name>
+		<type>particle</type>
+		<resource>particles/Environment/Onboarding/108_normandy_bomb_explosion.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>11.695297 13.590214 -16.098694</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>0.000000 60.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>0.000000</value>
+				<inTangent>29.999998</inTangent>
+				<outTangent>29.999998</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>1.000000</value>
+				<inTangent>29.999998</inTangent>
+				<outTangent>-0.731707</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.200001</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.731707</inTangent>
+				<outTangent>-0.731707</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Fre_after_explosion_right</name>
+		<type>particle</type>
+		<resource>particles/environment/Onboarding/108_normandy_fire_after_explosion.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>14.161102 12.949923 -13.907898</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>0.000000</value>
+				<inTangent>1.034483</inTangent>
+				<outTangent>1.034483</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.166667</startTime>
+				<value>1.000000</value>
+				<inTangent>1.034483</inTangent>
+				<outTangent>1.034483</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Window_trails_R</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>7.871231 14.026521 -18.989441</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>-0.872257 10.539468 -0.162277</value>
+				<inTangent>-3.270964 39.523003 -0.608540</inTangent>
+				<outTangent>-3.270964 39.523003 -0.608540</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>1.000000 1.000000 0.900000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<duration>1.133333</duration>
+				<value>particles/eff_sequence/Onboarding/108_normandy_windows_trails.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Roof_trails_R_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>7.046432 18.340809 -19.383270</value>
+				<inTangent>0.088614 -0.043071 -0.015820</inTangent>
+				<outTangent>0.088614 -0.043071 -0.015820</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>27.300001</startTime>
+				<value>9.465591 17.164970 -19.815155</value>
+				<inTangent>0.088614 -0.043071 -0.015820</inTangent>
+				<outTangent>0.088614 -0.043071 -0.015820</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.872072 10.539569 -29.260151</value>
+				<inTangent>0.000002 0.000002 -0.320546</inTangent>
+				<outTangent>0.000002 0.000002 -0.320546</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>27.300001</startTime>
+				<value>-0.872012 10.539623 -38.011066</value>
+				<inTangent>0.000002 0.000002 -0.320546</inTangent>
+				<outTangent>0.000002 0.000002 -0.320546</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>2.000000 2.000000 2.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<duration>1.100000</duration>
+				<value>particles/eff_sequence/Onboarding/108_normandy_roof_trails.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Roof_trails_R_02</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>7.046432 16.867607 -22.884033</value>
+				<inTangent>0.088614 0.010892 0.112413</inTangent>
+				<outTangent>0.088614 0.010892 0.112413</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>27.300001</startTime>
+				<value>9.465591 17.164970 -19.815155</value>
+				<inTangent>0.088614 0.010892 0.112413</inTangent>
+				<outTangent>0.088614 0.010892 0.112413</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>7.605800 117.418671 -136.368286</value>
+				<inTangent>-0.310543 -3.914983 3.602829</inTangent>
+				<outTangent>-0.310543 -3.914983 3.602829</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>27.300001</startTime>
+				<value>-0.872012 10.539623 -38.011066</value>
+				<inTangent>-0.310543 -3.914983 3.602829</inTangent>
+				<outTangent>-0.310543 -3.914983 3.602829</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>1.500000 1.500000 1.500000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<duration>1.100000</duration>
+				<value>particles/eff_sequence/Onboarding/108_normandy_roof_trails.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound_dstrct_right</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>15.300001</duration>
+				<value>Window_trails_R|</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>13.433334</duration>
+				<sequenceSound>dstrct_explosion_large</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.200000</startTime>
+				<duration>14.200001</duration>
+				<sequenceSound>dstrct_stone_large</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.666667</startTime>
+				<duration>3.966667</duration>
+				<sequenceSound>dstrct_glass_big</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

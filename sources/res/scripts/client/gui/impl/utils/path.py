@@ -1,6 +1,8 @@
-import typing, logging
+import logging, typing
 from constants import GF_RES_PROTOCOL
 from gui.shared.utils.functions import getAbsoluteUrl
+if typing.TYPE_CHECKING:
+    from typing import Optional
 _logger = logging.getLogger(__name__)
 
 def normalizeGfImagePath(imgPath):

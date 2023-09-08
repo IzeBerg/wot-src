@@ -2,10 +2,10 @@ package net.wg.gui.notification
 {
    import flash.display.DisplayObject;
    import flash.display.MovieClip;
-   import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.events.TextEvent;
+   import flash.geom.Rectangle;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import flash.text.TextFormatAlign;
@@ -53,6 +53,20 @@ package net.wg.gui.notification
       
       public var background:MovieClip;
       
+      protected var contentTopOffset:int = 0;
+      
+      protected var contentBottomOffset:int = 0;
+      
+      protected var contentLeftOffset:int = 0;
+      
+      protected var contentRightOffset:int = 0;
+      
+      protected var messageBottomOffset:int = 18;
+      
+      protected var messageTopOffset:int = 17;
+      
+      protected var buttonsAlign:String = "left";
+      
       private var _buttonsGroup:Group = null;
       
       private var _data:NotificationInfoVO = null;
@@ -65,16 +79,6 @@ package net.wg.gui.notification
       
       private var _bgDefHeight:uint = 0;
       
-      protected var contentTopOffset:int = 0;
-      
-      protected var contentBottomOffset:int = 0;
-      
-      protected var messageBottomOffset:int = 18;
-      
-      protected var messageTopOffset:int = 17;
-      
-      protected var buttonsAlign:String = "left";
-      
       public function ServiceMessageContent()
       {
          this._classFactory = App.utils.classFactory;
@@ -86,10 +90,6 @@ package net.wg.gui.notification
          super.configUI();
          this.icon.addEventListener(Event.CHANGE,this.onImageChangeHandler);
          this.bgIcon.addEventListener(Event.CHANGE,this.onImageChangeHandler);
-         var _loc1_:Sprite = new Sprite();
-         this.bgIcon.addChild(_loc1_);
-         this.bgIcon.hitArea = _loc1_;
-         this.bgIcon.mouseEnabled = this.bgIcon.mouseChildren = false;
          this._bgDefHeight = this.background.height;
          App.utils.styleSheetManager.setLinkStyle(this.textField);
          this.textField.autoSize = TextFieldAutoSize.LEFT;
@@ -139,27 +139,6 @@ package net.wg.gui.notification
          super.onDispose();
       }
       
-      public function get data() : NotificationInfoVO
-      {
-         return this._data;
-      }
-      
-      public function set data(param1:NotificationInfoVO) : void
-      {
-         this._data = param1;
-         invalidateData();
-      }
-      
-      override public function get width() : Number
-      {
-         return WIDTH;
-      }
-      
-      override public function get height() : Number
-      {
-         return this.background.height - this.contentOffset;
-      }
-      
       protected function processCustomData(param1:Object) : void
       {
       }
@@ -174,6 +153,7 @@ package net.wg.gui.notification
          this.icon.sourceAlt = this.messageInfo.defaultIcon;
          this.bgIcon.source = this.messageInfo.bgIcon;
          this.textField.htmlText = this.messageInfo.message;
+         this.buttonsAlign = this.messageInfo.buttonsAlign;
          this.setTimeComponent();
          this.setButtonsGroup();
          this.processCustomData(this.messageInfo.linkageData);
@@ -194,24 +174,13 @@ package net.wg.gui.notification
       
       protected function updateLayout() : void
       {
-         var _loc4_:int = 0;
+         var _loc3_:int = 0;
          if(this._timeComponent)
          {
             this._timeComponent.y = MessageMetrics.TIME_PADDING_Y;
             this._timeComponent.x = this.width - (this._timeComponent.width + MessageMetrics.TIME_PADDING_X) ^ 0;
          }
          App.utils.commons.updateTextFieldSize(this.textField,false,true);
-         var _loc1_:int = 0;
-         if(this.bgIcon.source && this._data.messageVO)
-         {
-            _loc1_ = !!this._data.messageVO.bgIconSizeAuto ? int(this.bgIcon.height) : int(this._data.messageVO.bgIconHeight);
-         }
-         var _loc2_:int = Math.max(this.contentHeight,_loc1_,this._bgDefHeight);
-         if(_loc2_ != this.background.height)
-         {
-            this.background.height = _loc2_;
-            dispatchEvent(new Event(Event.RESIZE));
-         }
          if(this._buttonsGroup != null)
          {
             if(this.buttonsAlign == TextFormatAlign.CENTER)
@@ -224,61 +193,62 @@ package net.wg.gui.notification
             }
             this._buttonsGroup.y = this.buttonsAnchorVertical.height + this.buttonsAnchorVertical.y + this.buttonsGroupPaddingTop ^ 0;
          }
-         if(this.bmpFill.visible)
-         {
-            _loc4_ = this.bmpFill.y << 1;
-            this.bmpFill.setSize(this.background.width - _loc4_ ^ 0,_loc2_ - _loc4_);
-         }
-         var _loc3_:int = MessageMetrics.ICON_DEFAULT_PADDING_X;
-         this.icon.x = _loc3_ + (this.textField.x - _loc3_ - this.icon.width >> 1);
+         var _loc1_:int = MessageMetrics.ICON_DEFAULT_PADDING_X;
+         this.icon.x = _loc1_ + (this.textField.x - _loc1_ - this.icon.width >> 1);
          if(this.textField.textHeight < this.icon.height)
          {
             this.icon.y = this.textField.y + (this.textField.textHeight - this.icon.height >> 1) + MessageMetrics.ICON_DEFAULT_PADDING_Y ^ 0;
          }
+         var _loc2_:Rectangle = this.updateBackgroundSize();
+         this.background.x = _loc2_.x;
+         this.background.y = _loc2_.y;
+         if(_loc2_.width != this.background.width || _loc2_.height != this.background.height)
+         {
+            this.background.width = _loc2_.width;
+            this.background.height = _loc2_.height;
+            dispatchEvent(new Event(Event.RESIZE));
+         }
+         if(this.bmpFill.visible)
+         {
+            _loc3_ = this.bmpFill.y << 1;
+            this.bmpFill.setSize(_loc2_.width - _loc3_ ^ 0,_loc2_.height - _loc3_);
+         }
       }
       
-      protected function get buttonsGroupPaddingTop() : int
+      protected function updateBackgroundSize() : Rectangle
       {
-         return BUTTONS_GROUP_OFFSET_Y;
-      }
-      
-      protected function get contentHeight() : int
-      {
-         var _loc1_:int = this.textField.height;
-         var _loc2_:int = this._buttonsGroup != null ? int(this._buttonsGroup.height + this.buttonsGroupPaddingTop) : int(0);
-         return _loc1_ + _loc2_ + this.messageBottomOffset + this.messageTopOffset;
-      }
-      
-      protected function get buttonsAnchorHorizontal() : DisplayObject
-      {
-         return this.textField;
-      }
-      
-      protected function get buttonsAnchorVertical() : DisplayObject
-      {
-         return this.textField;
-      }
-      
-      protected function get messageInfo() : MessageInfoVO
-      {
-         return Boolean(this._data) ? this._data.messageVO : null;
-      }
-      
-      protected function get timeComponent() : NotificationTimeComponent
-      {
-         return this._timeComponent;
-      }
-      
-      protected function get buttonsGroupLayout() : IBaseLayout
-      {
-         var _loc1_:HorizontalGroupLayout = new HorizontalGroupLayout();
-         _loc1_.gap = MessageMetrics.BUTTONS_PADDING;
-         return _loc1_;
-      }
-      
-      protected function get buttonsGroup() : Group
-      {
-         return this._buttonsGroup;
+         var _loc1_:DisplayObject = null;
+         var _loc2_:int = 0;
+         var _loc3_:int = 0;
+         var _loc4_:int = 0;
+         var _loc5_:int = this.numChildren;
+         var _loc6_:int = 0;
+         while(_loc6_ < _loc5_)
+         {
+            _loc1_ = this.getChildAt(_loc6_);
+            if(!(_loc1_ == this.background || _loc1_ == this.bmpFill))
+            {
+               if(_loc1_.x < _loc4_)
+               {
+                  _loc4_ = _loc1_.x;
+               }
+               _loc2_ = _loc1_.x + _loc1_.width;
+               if(_loc3_ < _loc2_)
+               {
+                  _loc3_ = _loc2_;
+               }
+            }
+            _loc6_++;
+         }
+         var _loc7_:int = 0;
+         if(this.bgIcon.source && this._data.messageVO)
+         {
+            _loc7_ = !!this._data.messageVO.bgIconSizeAuto ? int(this.bgIcon.height - this.invisibleTop) : int(this._data.messageVO.bgIconHeight);
+         }
+         var _loc8_:int = this.textField.height;
+         var _loc9_:int = this._buttonsGroup != null ? int(this._buttonsGroup.height + this.buttonsGroupPaddingTop) : int(0);
+         var _loc10_:int = _loc8_ + _loc9_ + this.messageBottomOffset + this.messageTopOffset;
+         return new Rectangle(_loc4_ + this.contentLeftOffset,this.background.y,Math.max(WIDTH,_loc3_ - _loc4_ - this.contentHorizontalOffset),Math.max(_loc10_,_loc7_,this._bgDefHeight));
       }
       
       private function setButtonsGroup() : void
@@ -326,12 +296,13 @@ package net.wg.gui.notification
       
       private function addButton(param1:ButtonVO) : void
       {
+         var _loc3_:SoundButtonEx = null;
          var _loc2_:String = ButtonType.getLinkageByType(param1.type);
          if(_loc2_ == null)
          {
             return;
          }
-         var _loc3_:SoundButtonEx = this._classFactory.getComponent(_loc2_,SoundButtonEx);
+         _loc3_ = this._classFactory.getComponent(_loc2_,SoundButtonEx);
          this._buttonsGroup.addChild(_loc3_);
          _loc3_.name = param1.type;
          _loc3_.data = param1.action;
@@ -371,6 +342,79 @@ package net.wg.gui.notification
          this._timeComponent = null;
       }
       
+      override public function get width() : Number
+      {
+         return this.background.width + this.contentRightOffset;
+      }
+      
+      override public function get height() : Number
+      {
+         return this.background.height - this.contentVerticalOffset;
+      }
+      
+      public function get data() : NotificationInfoVO
+      {
+         return this._data;
+      }
+      
+      public function set data(param1:NotificationInfoVO) : void
+      {
+         this._data = param1;
+         invalidateData();
+      }
+      
+      public function get contentVerticalOffset() : int
+      {
+         return this.contentTopOffset + this.contentBottomOffset;
+      }
+      
+      public function get contentHorizontalOffset() : int
+      {
+         return this.contentLeftOffset + this.contentRightOffset;
+      }
+      
+      protected function get buttonsGroupPaddingTop() : int
+      {
+         return BUTTONS_GROUP_OFFSET_Y;
+      }
+      
+      protected function get buttonsAnchorHorizontal() : DisplayObject
+      {
+         return this.textField;
+      }
+      
+      protected function get buttonsAnchorVertical() : DisplayObject
+      {
+         return this.textField;
+      }
+      
+      protected function get messageInfo() : MessageInfoVO
+      {
+         return Boolean(this._data) ? this._data.messageVO : null;
+      }
+      
+      protected function get timeComponent() : NotificationTimeComponent
+      {
+         return this._timeComponent;
+      }
+      
+      protected function get buttonsGroupLayout() : IBaseLayout
+      {
+         var _loc1_:HorizontalGroupLayout = new HorizontalGroupLayout();
+         _loc1_.gap = MessageMetrics.BUTTONS_PADDING;
+         return _loc1_;
+      }
+      
+      protected function get buttonsGroup() : Group
+      {
+         return this._buttonsGroup;
+      }
+      
+      protected function get invisibleTop() : int
+      {
+         return 0;
+      }
+      
       private function onButtonClickHandler(param1:ButtonEvent) : void
       {
          var _loc2_:SoundButtonEx = param1.target as SoundButtonEx;
@@ -401,11 +445,6 @@ package net.wg.gui.notification
       private function onImageChangeHandler(param1:Event) : void
       {
          invalidateLayout();
-      }
-      
-      public function get contentOffset() : int
-      {
-         return this.contentTopOffset + this.contentBottomOffset;
       }
    }
 }

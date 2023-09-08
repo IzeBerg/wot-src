@@ -528,12 +528,9 @@ package net.wg.gui.components.controls
       
       private function onAppMouseDownHandler(param1:MouseEvent) : void
       {
-         if(!this.hit.hitTestPoint(App.stage.mouseX,App.stage.mouseY))
+         if(this._onReleaseOutsideCallback != null && !this.hit.hitTestPoint(App.stage.mouseX,App.stage.mouseY))
          {
-            if(this._onReleaseOutsideCallback != null)
-            {
-               this._onReleaseOutsideCallback();
-            }
+            this._onReleaseOutsideCallback();
          }
       }
       

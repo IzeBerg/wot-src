@@ -307,6 +307,7 @@ package net.wg.gui.lobby.header
             _loc2_.wotPlusIcon = param1.wotPlusIcon;
             _loc2_.label = param1.label;
             _loc2_.state = param1.state;
+            _loc2_.showAsNew = param1.showAsNew;
             _loc2_.tooltip = param1.tooltip;
             _loc2_.tooltipType = param1.tooltipType;
             this._headerButtonsHelper.invalidateDataById(HeaderButtonsHelper.ITEM_ID_WOT_PLUS);

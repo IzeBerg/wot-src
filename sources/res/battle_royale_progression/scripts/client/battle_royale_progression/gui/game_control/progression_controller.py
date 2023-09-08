@@ -45,9 +45,12 @@ class ProgressionOnTokensController(IBRProgressionOnTokensController):
         return self.eventsCache.questsProgress.getTokenCount(self.progressionToken)
 
     def getProgessionPointsData(self):
-        return {'curPoints': self.getCurPoints(), 
-           'pointsForLevel': self._getPointsForLevel(), 
-           'prevPoints': self.getPrevPoints(), 
+        curPoings = self.getCurPoints()
+        prevPoint = self.getPrevPoints()
+        if curPoings < prevPoint:
+            prevPoint = 0
+        return {'curPoints': curPoings, 'pointsForLevel': self._getPointsForLevel(), 
+           'prevPoints': prevPoint, 
            'progressionLevels': self.getProgressionLevelsData()}
 
     def getProgressionData(self):

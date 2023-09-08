@@ -17,16 +17,19 @@ msgstr ""
 "(n%100<10 || n%100>=20) ? 1 : 2);"
 
 msgid "alertMessage/afterSeason"
-msgstr "Season of the Crimson Griffin has ended"
+msgstr "Season of the Azure Pegasus has ended"
 
 msgid "alertMessage/allNotAvailable"
 msgstr "Battles on servers will be available in %(primeDelta)s"
 
 msgid "alertMessage/allNotAvailableEnd"
-msgstr "Season of the Crimson Griffin has ended"
+msgstr "Season of the Azure Pegasus has ended"
 
 msgid "alertMessage/allNotSet"
 msgstr "This mode is unavailable on all servers"
+
+msgid "alertMessage/betweenSeasons"
+msgstr "Season of the Azure Pegasus has ended"
 
 msgid "alertMessage/button/changeServer"
 msgstr "Select Another Server"
@@ -50,7 +53,7 @@ msgid "alertMessage/standaloneNotAvailable"
 msgstr "Battles on this server will be available in %(primeDelta)s"
 
 msgid "alertMessage/standaloneNotAvailableEnd"
-msgstr "Season of the Crimson Griffin has ended"
+msgstr "Season of the Azure Pegasus has ended"
 
 msgid "alertMessage/standaloneNotSet"
 msgstr "This mode is not available on the %(serverName)s server"
@@ -93,7 +96,7 @@ msgid "banner/infoSmall/disabled"
 msgstr "Wait for Prime Time"
 
 msgid "banner/season"
-msgstr "Crimson Griffin"
+msgstr "Azure Pegasus"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(season)s, until %(month)s %(day)s"
@@ -194,10 +197,23 @@ msgstr "Vehicle characteristics improved"
 msgid "battleResult/header/deserter"
 msgstr "You have received a disciplinary penalty: Penalty to Rating Points"
 
+msgid "battleResult/header/deserterQualification"
+msgstr ""
+"You have received a disciplinary penalty: After completing Qualification, "
+"your rating will be reduced"
+
+msgid "battleResult/label/deserter"
+msgstr "Desertion"
+
 msgid "battleResult/message/deserter"
 msgstr ""
 "You have received a disciplinary penalty.\n"
 "Rating Points lost: %(penalty)s"
+
+msgid "battleResult/message/deserterQualification"
+msgstr ""
+"You have deserted the battlefield and received a disciplinary penalty.\n"
+"After completing Qualification, your rating will be reduced."
 
 msgid "battleResult/message/header/deserter"
 msgstr "Disciplinary Penalty"
@@ -221,6 +237,15 @@ msgstr "Rating Points are removed for:"
 
 msgid "battleResult/personal/tooltip/title"
 msgstr "Rating Points"
+
+msgid "battleResult/qualification/descr/main"
+msgstr "Qualification battle"
+
+msgid "battleResult/qualification/descr/stats"
+msgstr "%(battleNumber)s — %(battleResult)s"
+
+msgid "battleResult/qualification/title"
+msgstr "Qualification"
 
 msgid "battleResult/subTask/descr/getEliteRating"
 msgstr ""
@@ -276,9 +301,9 @@ msgstr "%(start)s–%(end)s"
 
 msgid "calendarDay/timeLeft"
 msgid_plural "plural/calendarDay/timeLeft"
-msgstr[0] "Season of the Crimson Griffin will last for %(days)d day"
-msgstr[1] "Season of the Crimson Griffin will last for %(days)d days"
-msgstr[2] "Season of the Crimson Griffin will last for %(days)d days"
+msgstr[0] "Season of the Azure Pegasus will last for %(days)d day"
+msgstr[1] "Season of the Azure Pegasus will last for %(days)d days"
+msgstr[2] "Season of the Azure Pegasus will last for %(days)d days"
 
 msgid "calendarDay/title"
 msgstr "Schedule"
@@ -319,7 +344,6 @@ msgstr "Role Skills"
 msgid "detailsHelp/rules"
 msgstr ""
 "The number of Prestige Points a player can earn is determined by their performance in battle. You can earn more Prestige Points by capturing Points of Interest, using skills, and performing actions that match the role of your selected vehicle.\n"
-"\n"
 "Check out the event regulations to learn more about the different ways you can earn Prestige Points."
 
 msgid "detailsHelp/rules/title"
@@ -327,11 +351,11 @@ msgstr "Prestige Points"
 
 msgid "detailsHelp/seasonModifiers"
 msgstr ""
-"This mode has a season modifier that increases the durability of all "
-"vehicles and decreases consumable cooldown time."
+"This mode has a modifier that changes the technical characteristics of "
+"vehicles."
 
 msgid "detailsHelp/seasonModifiers/title"
-msgstr "Season of the Crimson Griffin Modifier"
+msgstr "Season of the Azure Pegasus Modifier"
 
 msgid "division/A"
 msgstr "A"
@@ -344,6 +368,9 @@ msgstr "C"
 
 msgid "division/D"
 msgstr "D"
+
+msgid "division/E"
+msgstr "E"
 
 msgid "division/note"
 msgstr "Division"
@@ -366,33 +393,33 @@ msgstr "ONSLAUGHT"
 msgid "featureNameCapitalized"
 msgstr "ONSLAUGHT"
 
-msgid "generalRankTooltip/body/fifth"
+msgid "fifthRankTooltip/description"
 msgstr ""
-"The {whiteSpanish_Open}Gold{whiteSpanish_Close} rank is awarded to players "
-"who have earned {whiteSpanish_Open}%(fromScore) to "
-"%(toScore){whiteSpanish_Close} Rating Points."
+"The {whiteSpanish_Open}Champion{whiteSpanish_Close} rank is awarded to "
+"players who have earned at least "
+"{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating Points."
 
 msgid "generalRankTooltip/body/first"
-msgstr ""
-"The {whiteSpanish_Open}Debutant{whiteSpanish_Close} rank is awarded to "
-"players who have earned {whiteSpanish_Open}%(fromScore) to "
-"%(toScore){whiteSpanish_Close} Rating Points."
-
-msgid "generalRankTooltip/body/fourth"
-msgstr ""
-"The {whiteSpanish_Open}Silver{whiteSpanish_Close} rank is awarded to players"
-" who have earned {whiteSpanish_Open}%(fromScore) to "
-"%(toScore){whiteSpanish_Close} Rating Points."
-
-msgid "generalRankTooltip/body/second"
 msgstr ""
 "The {whiteSpanish_Open}Iron{whiteSpanish_Close} rank is awarded to players "
 "who have earned {whiteSpanish_Open}%(fromScore) to "
 "%(toScore){whiteSpanish_Close} Rating Points."
 
-msgid "generalRankTooltip/body/third"
+msgid "generalRankTooltip/body/fourth"
+msgstr ""
+"The {whiteSpanish_Open}Gold{whiteSpanish_Close} rank is awarded to players "
+"who have earned {whiteSpanish_Open}%(fromScore) to "
+"%(toScore){whiteSpanish_Close} Rating Points."
+
+msgid "generalRankTooltip/body/second"
 msgstr ""
 "The {whiteSpanish_Open}Bronze{whiteSpanish_Close} rank is awarded to players"
+" who have earned {whiteSpanish_Open}%(fromScore) to "
+"%(toScore){whiteSpanish_Close} Rating Points."
+
+msgid "generalRankTooltip/body/third"
+msgstr ""
+"The {whiteSpanish_Open}Silver{whiteSpanish_Close} rank is awarded to players"
 " who have earned {whiteSpanish_Open}%(fromScore) to "
 "%(toScore){whiteSpanish_Close} Rating Points."
 
@@ -407,9 +434,9 @@ msgstr "Affirmative!"
 
 msgid "intro/description/crimsonSeason"
 msgstr ""
-"Meet Season of the Crimson Griffin!\n"
+"Meet Season of the Azure Pegasus!\n"
 "\n"
-"This mode has a season modifier that increases the durability of all vehicles and decreases consumable cooldown time."
+"The Qualification stage and Annual Rewards have been added to the mode. It also has a modifier that changes the technical characteristics of vehicles."
 
 msgid "intro/description/pointsOfInterest"
 msgstr ""
@@ -419,10 +446,26 @@ msgstr ""
 "position, and the Comms Center will spot all enemy vehicles. Depending on "
 "the map, the presence and location of these Points of Interest can change."
 
+msgid "intro/description/qualification"
+msgid_plural "plural/intro/description/qualification"
+msgstr[0] ""
+"Fight %(count)s Qualification battle to determine your skill level and rank. Upon completion, you will receive rewards for the rank you achieved and all previous ranks.\n"
+"\n"
+"Desertion or a draw in Qualification will be considered as a defeat."
+msgstr[1] ""
+"Fight %(count)s Qualification battles to determine your skill level and rank. Upon completion, you will receive rewards for the rank you achieved and all previous ranks.\n"
+"\n"
+"Desertion or a draw in Qualification will be considered as a defeat."
+msgstr[2] ""
+"Fight %(count)s Qualification battles to determine your skill level and rank. Upon completion, you will receive rewards for the rank you achieved and all previous ranks.\n"
+"\n"
+"Desertion or a draw in Qualification will be considered as a defeat."
+
 msgid "intro/description/ranks"
 msgstr ""
-"A system that reflects the player's skill. The higher the rank, the better "
-"the reward."
+"A system that reflects the player's skill. Progress through the ranks from "
+"Iron to Legend and earn valuable prizes. Fight throughout the Year of the "
+"Pegasus to receive unique Annual Rewards."
 
 msgid "intro/description/roleSkills"
 msgstr ""
@@ -432,19 +475,23 @@ msgstr ""
 
 msgid "intro/description/vehiclesOnMap"
 msgstr ""
-"You can enter battle in Tier X Researchable or Collectors' vehicles. Prepare"
-" your vehicles in the Garage, then once you get into battle, choose the best"
-" one based on the features of the given map. When selecting your vehicle, "
-"consider which vehicles your allies have chosen as well."
+"You can enter battle in Tier X Researchable or Collectors' vehicles (except "
+"for SPGs). Prepare your vehicles in the Garage, then choose the best one "
+"based on the features of the given map once you get into battle. When "
+"selecting your vehicle, also consider which vehicles your allies have "
+"chosen."
 
 msgid "intro/title/crimsonSeason"
-msgstr "SEASON OF THE CRIMSON GRIFFIN"
+msgstr "SEASON OF THE AZURE PEGASUS"
 
 msgid "intro/title/pointsOfInterest"
 msgstr "POINTS OF INTEREST"
 
+msgid "intro/title/qualification"
+msgstr "QUALIFICATION"
+
 msgid "intro/title/ranks"
-msgstr "RANKS"
+msgstr "RANKED SYSTEM"
 
 msgid "intro/title/roleSkills"
 msgstr "ROLE SKILLS"
@@ -535,6 +582,14 @@ msgstr "The number of Rating Points earned in the current Season."
 msgid "leaderboard/table/tooltip/score/header"
 msgstr "Rating Points"
 
+msgid "listSeparator"
+msgstr ", "
+
+msgid "mainWidget/ratingCalculation"
+msgstr ""
+"Waiting for Qualification results\n"
+"to receive your rank %(timer)s"
+
 msgid "mainWidget/status"
 msgstr "%(score)s/%(scoreToNextDivision)s"
 
@@ -550,6 +605,11 @@ msgstr "Days before ratings drop: %(days)s"
 msgid "mainWidget/warning"
 msgstr "If you do not fight in battles, your rating will drop."
 
+msgid "mainWidgetTooltip/battlesCounter"
+msgstr ""
+"%(battleIcon)s{cream_Open}%(battlesCount)s{cream_Close} / "
+"%(maxBattlesCount)s"
+
 msgid "mainWidgetTooltip/division"
 msgstr "Division: %(divisionName)s"
 
@@ -558,15 +618,30 @@ msgstr ""
 "This Division is for the players with {whiteSpanish_Open}%(fromScore) to "
 "%(toScore){whiteSpanish_Close} Rating Points."
 
-msgid "mainWidgetTooltip/info/seventh"
+msgid "mainWidgetTooltip/info/fifth"
 msgstr ""
-"The Legend rank is awarded to the {whiteSpanish_Open}top "
+"To reach the Legend rank, be among the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard."
 
 msgid "mainWidgetTooltip/info/sixth"
 msgstr ""
-"To receive the Legend rank, be among the {whiteSpanish_Open}top "
+"The Legend rank is awarded to the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard."
+
+msgid "mainWidgetTooltip/qualification/condition"
+msgid_plural "plural/mainWidgetTooltip/qualification/condition"
+msgstr[0] ""
+"Fight %(maxBattlesCount)s battle in the mode to determine your skill level "
+"and rank."
+msgstr[1] ""
+"Fight %(maxBattlesCount)s battles in the mode to determine your skill level "
+"and rank."
+msgstr[2] ""
+"Fight %(maxBattlesCount)s battles in the mode to determine your skill level "
+"and rank."
+
+msgid "mainWidgetTooltip/qualificationName"
+msgstr "Qualification"
 
 msgid "mainWidgetTooltip/ratingScore"
 msgstr "Rating Points"
@@ -585,9 +660,6 @@ msgstr "Complete Missions"
 
 msgid "noVehicles/howTo/title"
 msgstr "What is the fastest way to get Tier %(levels)s vehicles?"
-
-msgid "noVehicles/listSeparator"
-msgstr ", "
 
 msgid "noVehicles/text/vehicleAvailableForBuy"
 msgstr ""
@@ -610,11 +682,20 @@ msgstr "LEADERBOARD"
 msgid "page/heading/progression"
 msgstr "RANKED SYSTEM"
 
+msgid "page/heading/qualification"
+msgstr "QUALIFICATION"
+
 msgid "page/heading/rankRewards"
 msgstr "REWARDS FOR RANKS"
 
 msgid "page/heading/weeklyQuests"
 msgstr "WEEKLY MISSIONS"
+
+msgid "page/heading/yearlyRewards"
+msgstr "ANNUAL REWARDS"
+
+msgid "page/heading/yearlyStatistics"
+msgstr "ANNUAL STATISTICS"
 
 msgid "pagination/dots"
 msgstr "…"
@@ -703,7 +784,7 @@ msgid "primeTimeView/status/primeWillBeAvailable"
 msgstr "Battles will start on the %(server)s server in %(time)s"
 
 msgid "primeTimeView/status/seasonDisabled"
-msgstr "Season of the Crimson Griffin has ended on the %(server)s server."
+msgstr "Season of the Azure Pegasus has ended on the %(server)s server."
 
 msgid "primeTimeView/status/untill"
 msgstr ""
@@ -712,32 +793,92 @@ msgstr ""
 msgid "primeTimeView/title"
 msgstr "ONSLAUGHT"
 
+msgid "qualification/battlesCounter"
+msgstr ""
+"%(battleIcon)s{cream_Open}%(battlesCount)s{cream_Close} / "
+"%(maxBattlesCount)s"
+
+msgid "qualification/condition"
+msgid_plural "plural/qualification/condition"
+msgstr[0] ""
+"Fight {white_Open}%(maxBattlesCount)s battle{white_Close} in the mode to "
+"determine your skill level and rank."
+msgstr[1] ""
+"Fight {white_Open}%(maxBattlesCount)s battles{white_Close} in the mode to "
+"determine your skill level and rank."
+msgstr[2] ""
+"Fight {white_Open}%(maxBattlesCount)s battles{white_Close} in the mode to "
+"determine your skill level and rank."
+
+msgid "qualification/conditionTooltip/body"
+msgid_plural "plural/qualification/conditionTooltip/body"
+msgstr[0] ""
+"To complete Qualification, fight %(maxBattlesCount)s battle and wait for the rating to be calculated. Your battle performance during Qualification affects the final rank you will receive.\n"
+"Desertion in Qualification will lead to a worse result than even the heaviest defeat."
+msgstr[1] ""
+"To complete Qualification, fight %(maxBattlesCount)s battles and wait for the rating to be calculated. Your battle performance during Qualification affects the final rank you will receive.\n"
+"Desertion in Qualification will lead to a worse result than even the heaviest defeat."
+msgstr[2] ""
+"To complete Qualification, fight %(maxBattlesCount)s battles and wait for the rating to be calculated. Your battle performance during Qualification affects the final rank you will receive.\n"
+"Desertion in Qualification will lead to a worse result than even the heaviest defeat."
+
+msgid "qualification/conditionTooltip/header"
+msgstr "Qualification Rules"
+
+msgid "qualification/counter"
+msgstr "%(battlesCount)s / %(maxBattlesCount)s"
+
+msgid "qualification/counterWithDescription"
+msgstr ""
+"%(counter)s\n"
+"Battles fought"
+
+msgid "qualification/ratingCalculationDescription"
+msgstr "Waiting for Qualification results to receive your rank %(timerIcon)s"
+
+msgid "qualification/ratingCalculationTooltip"
+msgstr ""
+"It may take up to five minutes to calculate your rating based on the "
+"Qualification results. After that, you will receive a rank and can continue "
+"to play in Onslaught."
+
+msgid "qualification/rewardsButton"
+msgstr "To Rewards"
+
+msgid "qualification/rewardsDescription"
+msgstr ""
+"Upon completing Qualification, you will receive rewards for the rank you "
+"achieved and all previous ranks."
+
+msgid "rank/achieved"
+msgstr "Achieved"
+
 msgid "rank/current"
 msgstr "Current"
 
 msgid "rank/fifth"
-msgstr "Gold"
+msgstr "Champion"
 
 msgid "rank/first"
-msgstr "Debutant"
-
-msgid "rank/fourth"
-msgstr "Silver"
-
-msgid "rank/second"
 msgstr "Iron"
 
-msgid "rank/seventh"
-msgstr "Legend"
+msgid "rank/fourth"
+msgstr "Gold"
+
+msgid "rank/qualification"
+msgstr "Qualification"
+
+msgid "rank/second"
+msgstr "Bronze"
 
 msgid "rank/sixth"
-msgstr "Champion"
+msgstr "Legend"
 
 msgid "rank/text"
 msgstr "%(rank)s Rank"
 
 msgid "rank/third"
-msgstr "Bronze"
+msgstr "Silver"
 
 msgid "rankInactivityTooltip/description"
 msgstr "If you do not play in the mode, you will lose Rating Points."
@@ -748,31 +889,31 @@ msgstr "Rank Inactivity"
 msgid "rankInactivityTooltip/timeLeft"
 msgstr "Days before your rating drops: %(count)s"
 
-msgid "rankInfo/current/seventh"
+msgid "rankInfo/current/fifth"
+msgstr ""
+"The Champion rank is awarded to players who earned at least "
+"{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating Points."
+
+msgid "rankInfo/current/sixth"
 msgstr ""
 "The Legend rank is awarded to the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard."
 
-msgid "rankInfo/current/sixth"
-msgstr ""
-"The Champion rank is awarded to players who have earned at least "
-"{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating Points."
-
-msgid "rankItemStatus/current/description/seventh"
-msgstr ""
-"To defend your Legend rank, stay in the {whiteSpanish_Open}top "
-"%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
-"Rating Points."
-
-msgid "rankItemStatus/current/description/sixth"
+msgid "rankItemStatus/current/description/fifth"
 msgstr ""
 "To reach the Legend rank, be among the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
 "Rating Points."
 
-msgid "rankItemStatus/current/extendedDescription/seventh"
+msgid "rankItemStatus/current/description/sixth"
 msgstr ""
 "To defend your Legend rank, stay in the {whiteSpanish_Open}top "
+"%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
+"Rating Points."
+
+msgid "rankItemStatus/current/extendedDescription/fifth"
+msgstr ""
+"To reach the Legend rank, be among the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
 "Rating Points. Rating Points earned by the bottom player in "
 "the&nbsp;Legend&nbsp;rank: "
@@ -780,7 +921,7 @@ msgstr ""
 
 msgid "rankItemStatus/current/extendedDescription/sixth"
 msgstr ""
-"To reach the Legend rank, be among the {whiteSpanish_Open}top "
+"To defend your Legend rank, stay in the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
 "Rating Points. Rating Points earned by the bottom player in "
 "the&nbsp;Legend&nbsp;rank: "
@@ -788,41 +929,41 @@ msgstr ""
 
 msgid "rankItemStatus/future/description/fifth"
 msgstr ""
-"The Gold rank is awarded to players who have earned "
-"{whiteSpanish_Open}%(fromScore) to&nbsp;%(toScore){whiteSpanish_Close} "
-"Rating Points."
+"The Champion rank is awarded to players who have earned at "
+"least&nbsp;{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating "
+"Points."
 
-msgid "rankItemStatus/future/description/fourth"
-msgstr ""
-"The Silver rank is awarded to players who have earned "
-"{whiteSpanish_Open}%(fromScore)&nbsp;to&nbsp;%(toScore){whiteSpanish_Close} "
-"Rating Points."
-
-msgid "rankItemStatus/future/description/second"
+msgid "rankItemStatus/future/description/first"
 msgstr ""
 "The Iron rank is awarded to players who have earned "
 "{whiteSpanish_Open}%(fromScore)&nbsp;to&nbsp;%(toScore){whiteSpanish_Close} "
 "Rating Points."
 
-msgid "rankItemStatus/future/description/seventh"
+msgid "rankItemStatus/future/description/fourth"
 msgstr ""
-"To reach the Legend rank, be among the {whiteSpanish_Open}top "
-"%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
+"The Gold rank is awarded to players who have earned "
+"{whiteSpanish_Open}%(fromScore)&nbsp;to&nbsp;%(toScore){whiteSpanish_Close} "
 "Rating Points."
 
-msgid "rankItemStatus/future/description/sixth"
-msgstr ""
-"The Champion rank is awarded to players who have earned at "
-"least&nbsp;{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating "
-"Points."
-
-msgid "rankItemStatus/future/description/third"
+msgid "rankItemStatus/future/description/second"
 msgstr ""
 "The Bronze rank is awarded to players who have earned "
 "{whiteSpanish_Open}%(fromScore)&nbsp;to&nbsp;%(toScore){whiteSpanish_Close} "
 "Rating Points."
 
-msgid "rankItemStatus/future/extendedDescription/seventh"
+msgid "rankItemStatus/future/description/sixth"
+msgstr ""
+"To reach the Legend rank, be among the {whiteSpanish_Open}top "
+"%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
+"Rating Points."
+
+msgid "rankItemStatus/future/description/third"
+msgstr ""
+"The Silver rank is awarded to players who have earned "
+"{whiteSpanish_Open}%(fromScore)&nbsp;to&nbsp;%(toScore){whiteSpanish_Close} "
+"Rating Points."
+
+msgid "rankItemStatus/future/extendedDescription/sixth"
 msgstr ""
 "To reach the Legend rank, be among the {whiteSpanish_Open}top "
 "%(topPercentage)%{whiteSpanish_Close} of players on the Leaderboard by "
@@ -830,32 +971,29 @@ msgstr ""
 "the&nbsp;Legend&nbsp;rank: "
 "{whiteSpanish_Open}%(pointsCount){whiteSpanish_Close}"
 
-msgid "rankItemStatus/previous/description/sixth"
+msgid "rankItemStatus/previous/description/fifth"
 msgstr ""
 "The Champion rank is awarded to players who have earned at "
 "least&nbsp;{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating "
 "Points."
 
 msgid "rankUpper/fifth"
-msgstr "GOLD"
-
-msgid "rankUpper/first"
-msgstr "DEBUTANT"
-
-msgid "rankUpper/fourth"
-msgstr "SILVER"
-
-msgid "rankUpper/second"
-msgstr "IRON"
-
-msgid "rankUpper/seventh"
-msgstr "LEGEND"
-
-msgid "rankUpper/sixth"
 msgstr "CHAMPION"
 
-msgid "rankUpper/third"
+msgid "rankUpper/first"
+msgstr "IRON"
+
+msgid "rankUpper/fourth"
+msgstr "GOLD"
+
+msgid "rankUpper/second"
 msgstr "BRONZE"
+
+msgid "rankUpper/sixth"
+msgstr "LEGEND"
+
+msgid "rankUpper/third"
+msgstr "SILVER"
 
 msgid "ratingScore/title"
 msgstr "Rating Points"
@@ -869,24 +1007,12 @@ msgstr "Preview"
 msgid "rewards/status/achieved"
 msgstr "Reward Received"
 
-msgid "rewards/status/future/first"
-msgstr ""
-"Fight {whiteSpanish_Open}1{whiteSpanish_Close} battle in Onslaught mode"
-
-msgid "rewards/status/future/last"
-msgstr ""
-"Be among the {whiteSpanish_Open}top %(topPercentage)s%{whiteSpanish_Close} "
-"of players on the Leaderboard"
-
-msgid "rewards/status/future/ranksForPoints"
-msgstr "Earn {whiteSpanish_Open}%(count)s{whiteSpanish_Close} Rating Points"
-
 msgid "rewards/subtitle/customizations"
 msgstr ""
 "{whiteSpanish_Open}For Tier %(vehicleLevel)s vehicles{whiteSpanish_Close}"
 
 msgid "rewards/subtitle/styleProgress"
-msgstr "{whiteSpanish_Open}For the Wing and Claw style{whiteSpanish_Close}"
+msgstr "{whiteSpanish_Open}For the Heavenly Horse style{whiteSpanish_Close}"
 
 msgid "rewards/subtitle/vehicles_rent"
 msgstr "Tier %(vehicleLevel)s"
@@ -900,6 +1026,12 @@ msgstr "Affirmative!"
 msgid "rewardsScreen/buttonToRewards"
 msgstr "To Rewards"
 
+msgid "rewardsScreen/description/qualificationEnded"
+msgstr "ONSLAUGHT. QUALIFICATION COMPLETED"
+
+msgid "rewardsScreen/description/season"
+msgstr "ONSLAUGHT. SEASON OF THE AZURE PEGASUS"
+
 msgid "rewardsScreen/notice/subTitle"
 msgstr ""
 "After achieving this rank, you can lose Rating Points if you stop playing "
@@ -911,8 +1043,13 @@ msgstr "Rank Inactivity"
 msgid "rewardsScreen/subtitle/division"
 msgstr "{cream_Open}%(rank)s Rank{cream_Close}"
 
-msgid "rewardsScreen/subtitle/firstRankRewards"
-msgstr "You have received rewards for your first battle in Onslaught mode"
+msgid "rewardsScreen/subtitle/qualificationRewards"
+msgstr ""
+"Based on the Qualification results, you have received rewards for the "
+"following ranks: {cream_Open}%(ranks)s{cream_Close}"
+
+msgid "rewardsScreen/subtitle/qualificationRewardsSeparator"
+msgstr ", "
 
 msgid "rewardsScreen/subtitle/rankRewards"
 msgstr ""
@@ -934,8 +1071,11 @@ msgstr[2] ""
 msgid "rewardsScreen/title/division"
 msgstr "DIVISION %(division)s REACHED"
 
-msgid "rewardsScreen/title/firstRankRewards"
-msgstr "CONGRATULATIONS!"
+msgid "rewardsScreen/title/qualificationRank"
+msgstr "{cream_Open}%(rankUpperName)s{cream_Close} RANK REACHED"
+
+msgid "rewardsScreen/title/qualificationRewards"
+msgstr "REWARD FOR ACHIEVED RANKS"
 
 msgid "rewardsScreen/title/rank"
 msgstr "{cream_Open}%(rankUpperName)s{cream_Close} RANK REACHED"
@@ -964,10 +1104,10 @@ msgid "season/minutesLeft"
 msgstr "Ends in %(minutes)s min"
 
 msgid "season/name"
-msgstr "Season of the Crimson Griffin"
+msgstr "Season of the Azure Pegasus"
 
 msgid "season/over"
-msgstr "Season of the Crimson Griffin has ended"
+msgstr "Season of the Azure Pegasus has ended"
 
 msgid "season/range"
 msgstr "%(startDate)s–%(endDate)s"
@@ -977,6 +1117,34 @@ msgstr "Ends in %(seconds)s s"
 
 msgid "seasonModifier/title"
 msgstr "Season Modifier"
+
+msgid "seasonPointTooltip/header"
+msgstr "Pegasus Colors"
+
+msgid "seasonPointTooltip/status/achieved"
+msgstr "Received"
+
+msgid "seasonPointTooltip/status/notAchieved"
+msgstr "Not received"
+
+msgid "seasonPointTooltip/status/possible"
+msgstr "You are a contender to receive Pegasus Colors"
+
+msgid "seasonPointTooltip/text/compensate"
+msgstr ""
+"All remaining Pegasus Colors are converted to bonds at this rate: "
+"{bond_Open}1%(seasonPointIcon)s{bond_Close} to "
+"{bond_Open}%(seasonPointExchangeRate)s%(bondsIcon)s{bond_Close}"
+
+msgid "seasonPointTooltip/text/season"
+msgstr ""
+"At the end of the Season, you will receive Pegasus Colors according to your "
+"rank."
+
+msgid "seasonPointTooltip/text/year"
+msgstr ""
+"Every 3 Pegasus Colors improve the reward you receive at the end of the "
+"year."
 
 msgid "seasonalBattleSelector/tillEnd"
 msgstr "Season ends in:"
@@ -1013,12 +1181,6 @@ msgstr "This mode is temporarily unavailable for technical reasons."
 msgid "selectorTooltip/unavailable/nextSeason"
 msgstr "This mode will become available on %(time)s"
 
-msgid "seventhRankTooltip/description"
-msgstr ""
-"The {whiteSpanish_Open}Legend{whiteSpanish_Close} rank is awarded to "
-"{whiteSpanish_Open}the top %(topPercentage)%{whiteSpanish_Close} of players "
-"on the Leaderboard by Rating Points."
-
 msgid "sidebar/tabs/tooltip/body/leaderboard"
 msgstr ""
 "This section contains information about the best players in the current "
@@ -1026,8 +1188,8 @@ msgstr ""
 
 msgid "sidebar/tabs/tooltip/body/progression"
 msgstr ""
-"This section contains information about your rank, Division, and Rating "
-"Points."
+"This section contains information about Qualification, as well as your rank,"
+" Division, and Rating Points after its completion."
 
 msgid "sidebar/tabs/tooltip/body/rankRewards"
 msgstr ""
@@ -1037,6 +1199,16 @@ msgstr ""
 msgid "sidebar/tabs/tooltip/body/weeklyQuests"
 msgstr ""
 "This section contains information about weekly missions in Onslaught mode."
+
+msgid "sidebar/tabs/tooltip/body/yearlyRewards"
+msgstr ""
+"This section contains information about Annual Rewards for Pegasus Colors "
+"received."
+
+msgid "sidebar/tabs/tooltip/body/yearlyStatistics"
+msgstr ""
+"This section contains information about your achievements in each of the "
+"Seasons of the current Onslaught year."
 
 msgid "sidebar/tabs/tooltip/header/leaderboard"
 msgstr "Leaderboard"
@@ -1050,11 +1222,17 @@ msgstr "Rewards for Ranks"
 msgid "sidebar/tabs/tooltip/header/weeklyQuests"
 msgstr "Weekly Missions"
 
+msgid "sidebar/tabs/tooltip/header/yearlyRewards"
+msgstr "Annual Rewards"
+
+msgid "sidebar/tabs/tooltip/header/yearlyStatistics"
+msgstr "Annual Statistics"
+
 msgid "sixthRankTooltip/description"
 msgstr ""
-"The {whiteSpanish_Open}Champion{whiteSpanish_Close} rank is awarded to "
-"players who have earned at least "
-"{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating Points."
+"The {whiteSpanish_Open}Legend{whiteSpanish_Close} rank is awarded to "
+"{whiteSpanish_Open}the top %(topPercentage)%{whiteSpanish_Close} of players "
+"on the Leaderboard by Rating Points."
 
 msgid "system_messages/periodicReward/body"
 msgstr ""
@@ -1075,6 +1253,15 @@ msgstr "Ceasefire over. Onslaught battles are available again."
 
 msgid "system_messages/primeTime/start/title"
 msgstr "Ceasefire"
+
+msgid "system_messages/qualificationReward/body"
+msgstr ""
+"Congratulations! You have reached the %(maxRank)s rank.\n"
+"You have received rewards for the following ranks: %(ranks)s:\n"
+"%(rewards)s"
+
+msgid "system_messages/qualificationReward/title"
+msgstr "Qualification Completed"
 
 msgid "system_messages/regularReward/body"
 msgstr ""
@@ -1098,6 +1285,17 @@ msgstr ""
 
 msgid "system_messages/tokenWeeklyReward/title"
 msgstr "Rewards for Collecting Lucky Chips"
+
+msgid "system_messages/weeklyReward/body"
+msgstr ""
+"Date: %(at)s\n"
+"%(rewards)s"
+
+msgid "system_messages/weeklyReward/title"
+msgstr "Reward for Weekly Mission"
+
+msgid "system_messages/weeklyReward/tokens"
+msgstr "Lucky Chip"
 
 msgid "unit/message/modeOffline"
 msgstr "Unable to join the battle: Database error."
@@ -1155,3 +1353,442 @@ msgstr "All rewards received"
 
 msgid "weeklyQuests/tokenProgress/description/normal"
 msgstr "Earn Lucky Chips to receive rewards"
+
+msgid "whatsNewView/banner/title/large"
+msgstr "SEASON OF THE AZURE PEGASUS"
+
+msgid "whatsNewView/banner/title/small"
+msgstr "ONSLAUGHT. WHAT'S NEW?"
+
+msgid "whatsNewView/button/ok"
+msgstr "I'm In!"
+
+msgid "whatsNewView/mapChanges/addedMaps"
+msgstr "Maps added:"
+
+msgid "whatsNewView/mapChanges/heading"
+msgstr "Maps"
+
+msgid "whatsNewView/mapChanges/removedMaps"
+msgstr "Maps excluded:"
+
+msgid "whatsNewView/qualification/description"
+msgstr ""
+"Complete a series of %(maxBattlesCount)s battles to reach a rank "
+"corresponding to your skill level."
+
+msgid "whatsNewView/qualification/heading"
+msgstr "Qualification"
+
+msgid "whatsNewView/rankingSystem/description"
+msgstr ""
+"Debutant rank removed. Division E for the Iron, Bronze, Silver, and Gold "
+"ranks added."
+
+msgid "whatsNewView/rankingSystem/heading"
+msgstr "Ranked System"
+
+msgid "whatsNewView/tag/changed"
+msgstr "Changed"
+
+msgid "whatsNewView/tag/mapRemoved"
+msgstr "REMOVED"
+
+msgid "whatsNewView/tag/new"
+msgstr "New"
+
+msgid "whatsNewView/tag/seasonUpdate"
+msgstr "Season update"
+
+msgid "whatsNewView/vehicleLimitations/description"
+msgstr ""
+"Starting from the Season of the Azure Pegasus, SPG vehicles are not "
+"available to play in the mode due to their extremely low performance in "
+"battle."
+
+msgid "whatsNewView/vehicleLimitations/heading"
+msgstr "Vehicle Restrictions"
+
+msgid "whatsNewView/vehiclesForRent/heading"
+msgstr "Rental Vehicles"
+
+msgid "whatsNewView/watchVideo"
+msgstr "Play Video"
+
+msgid "whatsNewView/yearOfThePegasus/description"
+msgstr "Fight in each of the three Seasons to earn valuable Annual Rewards."
+
+msgid "whatsNewView/yearOfThePegasus/heading"
+msgstr "Year of the Pegasus has started"
+
+msgid "yearlyRewards/banner/willReceived"
+msgstr "Rewards will be added at the end of the Ranked Year"
+
+msgid "yearlyRewards/description"
+msgstr ""
+"You will receive Pegasus Colors according to your rank at the end of the "
+"Season"
+
+msgid "yearlyRewards/error/description"
+msgstr ""
+"We apologize for the temporary inconvenience. Please try to update the page "
+"later."
+
+msgid "yearlyRewards/error/title"
+msgstr "Error Loading Data"
+
+msgid "yearlyRewards/main/fifth"
+msgstr "Champion Camouflage"
+
+msgid "yearlyRewards/main/first"
+msgstr "Iron Camouflage"
+
+msgid "yearlyRewards/main/fourth"
+msgstr "Gold Camouflage"
+
+msgid "yearlyRewards/main/second"
+msgstr "Bronze Camouflage"
+
+msgid "yearlyRewards/main/sixth"
+msgstr "Legend Camouflage"
+
+msgid "yearlyRewards/main/third"
+msgstr "Silver Camouflage"
+
+msgid "yearlyRewards/rank/achieved"
+msgstr "Rank reached: %(rank)s"
+
+msgid "yearlyRewards/rank/current"
+msgstr "Current rank: %(rank)s"
+
+msgid "yearlyRewards/rewardsState/claimed"
+msgstr "Reward received"
+
+msgid "yearlyRewards/rewardsState/guaranteed"
+msgstr "Reward guaranteed"
+
+msgid "yearlyRewards/rewardsState/notAvailable"
+msgstr "Reward not received"
+
+msgid "yearlyRewards/rewardsState/possible"
+msgstr "You are a contender to receive this reward"
+
+msgid "yearlyRewards/rewardsState/tooltip/guaranteed"
+msgstr "You are guaranteed to receive this reward at the end of the year."
+
+msgid "yearlyRewards/rewardsState/tooltip/notAvailable"
+msgstr ""
+"Earn the required number of Pegasus Colors to receive your reward at the end"
+" of the year."
+
+msgid "yearlyRewards/rewardsState/tooltip/possible"
+msgstr ""
+"You will receive this reward at the end of the year if you retain your "
+"current rank or increase it before the end of the Season."
+
+msgid "yearlyRewards/subtitle/styleProgress"
+msgstr "For the Heavenly Horse style"
+
+msgid "yearlyRewards/vehicle"
+msgstr "Hurricane"
+
+msgid "yearlyRewards/vehicleTooltip/body"
+msgstr ""
+"A unique vehicle awarded for achievements within the Year of the Pegasus."
+
+msgid "yearlyRewards/vehicleTooltip/header"
+msgstr "Hurricane"
+
+msgid "yearlyRewardsTooltip/additional/fifth_1/body"
+msgstr "A commemorative badge awarded for collecting 15 Pegasus Colors."
+
+msgid "yearlyRewardsTooltip/additional/fifth_1/header"
+msgstr "Onslaught 2023–2024: Champion"
+
+msgid "yearlyRewardsTooltip/additional/fifth_2/body"
+msgstr ""
+"You can select three pieces of improved equipment as a reward. Each item can be received only once:\n"
+" • Venting System\n"
+" • Stabilizing Equipment System\n"
+" • Innovative Loading System\n"
+" • Wear-Resistant Gun Laying Drive\n"
+" • Experimental Optics\n"
+" • Improved Configuration\n"
+" • Improved Compressor\n"
+" • Increased Shell Resistance\n"
+" • Improved Final Drive"
+
+msgid "yearlyRewardsTooltip/additional/fifth_2/header"
+msgstr "Improved Equipment"
+
+msgid "yearlyRewardsTooltip/additional/fifth_3/body"
+msgstr ""
+"A special 2D style awarded for achievements within the Year of the Pegasus."
+
+msgid "yearlyRewardsTooltip/additional/fifth_3/header"
+msgstr "Heavenly Horse Style"
+
+msgid "yearlyRewardsTooltip/additional/fifth_4/body"
+msgstr ""
+"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
+"\n"
+"3 – Iron Pegasus\n"
+"6 – Bronze Pegasus\n"
+"9 – Silver Pegasus\n"
+"12 – Gold Pegasus\n"
+"15 – Year of the Pegasus Champion\n"
+"18 – Year of the Pegasus Legend\n"
+"\n"
+"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
+
+msgid "yearlyRewardsTooltip/additional/fifth_4/header"
+msgstr "Year of the Pegasus Champion Medal"
+
+msgid "yearlyRewardsTooltip/additional/first_1/body"
+msgstr ""
+"A special 2D style awarded for achievements within the Year of the Pegasus."
+
+msgid "yearlyRewardsTooltip/additional/first_1/header"
+msgstr "Heavenly Horse Style"
+
+msgid "yearlyRewardsTooltip/additional/first_2/body"
+msgstr ""
+"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
+"\n"
+"3 – Iron Pegasus\n"
+"6 – Bronze Pegasus\n"
+"9 – Silver Pegasus\n"
+"12 – Gold Pegasus\n"
+"15 – Year of the Pegasus Champion\n"
+"18 – Year of the Pegasus Legend\n"
+"\n"
+"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
+
+msgid "yearlyRewardsTooltip/additional/first_2/header"
+msgstr "Iron Pegasus Medal"
+
+msgid "yearlyRewardsTooltip/additional/fourth_1/body"
+msgstr ""
+"Unique crew trained to 100% with the Brothers in Arms perk and enough XP to "
+"train two other perks."
+
+msgid "yearlyRewardsTooltip/additional/fourth_1/header"
+msgstr "Unique Crew"
+
+msgid "yearlyRewardsTooltip/additional/fourth_2/body"
+msgstr ""
+"A special 2D style awarded for achievements within the Year of the Pegasus."
+
+msgid "yearlyRewardsTooltip/additional/fourth_2/header"
+msgstr "Heavenly Horse Style"
+
+msgid "yearlyRewardsTooltip/additional/fourth_3/body"
+msgstr ""
+"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
+"\n"
+"3 – Iron Pegasus\n"
+"6 – Bronze Pegasus\n"
+"9 – Silver Pegasus\n"
+"12 – Gold Pegasus\n"
+"15 – Year of the Pegasus Champion\n"
+"18 – Year of the Pegasus Legend\n"
+"\n"
+"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
+
+msgid "yearlyRewardsTooltip/additional/fourth_3/header"
+msgstr "Gold Pegasus Medal"
+
+msgid "yearlyRewardsTooltip/additional/second_1/body"
+msgstr ""
+"You can select one piece of improved equipment as a reward. Each item can be received only once:\n"
+" • Venting System\n"
+" • Stabilizing Equipment System\n"
+" • Innovative Loading System\n"
+" • Wear-Resistant Gun Laying Drive\n"
+" • Experimental Optics\n"
+" • Improved Configuration\n"
+" • Improved Compressor\n"
+" • Increased Shell Resistance\n"
+" • Improved Final Drive"
+
+msgid "yearlyRewardsTooltip/additional/second_1/header"
+msgstr "Improved Equipment"
+
+msgid "yearlyRewardsTooltip/additional/second_2/body"
+msgstr ""
+"A special 2D style awarded for achievements within the Year of the Pegasus."
+
+msgid "yearlyRewardsTooltip/additional/second_2/header"
+msgstr "Heavenly Horse Style"
+
+msgid "yearlyRewardsTooltip/additional/second_3/body"
+msgstr ""
+"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
+"\n"
+"3 – Iron Pegasus\n"
+"6 – Bronze Pegasus\n"
+"9 – Silver Pegasus\n"
+"12 – Gold Pegasus\n"
+"15 – Year of the Pegasus Champion\n"
+"18 – Year of the Pegasus Legend\n"
+"\n"
+"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
+
+msgid "yearlyRewardsTooltip/additional/second_3/header"
+msgstr "Bronze Pegasus Medal"
+
+msgid "yearlyRewardsTooltip/additional/sixth_1/body"
+msgstr ""
+"A special nickname stripe awarded to the best players within the Year of the"
+" Pegasus in Onslaught."
+
+msgid "yearlyRewardsTooltip/additional/sixth_1/header"
+msgstr "Legend of the Pegasus"
+
+msgid "yearlyRewardsTooltip/additional/sixth_2/body"
+msgstr "A commemorative badge awarded for collecting 18 Pegasus Colors."
+
+msgid "yearlyRewardsTooltip/additional/sixth_2/header"
+msgstr "Onslaught 2023–2024: Legend"
+
+msgid "yearlyRewardsTooltip/additional/sixth_3/body"
+msgstr ""
+"A special 2D style awarded for achievements within the Year of the Pegasus."
+
+msgid "yearlyRewardsTooltip/additional/sixth_3/header"
+msgstr "Heavenly Horse Style"
+
+msgid "yearlyRewardsTooltip/additional/sixth_4/body"
+msgstr ""
+"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
+"\n"
+"3 – Iron Pegasus\n"
+"6 – Bronze Pegasus\n"
+"9 – Silver Pegasus\n"
+"12 – Gold Pegasus\n"
+"15 – Year of the Pegasus Champion\n"
+"18 – Year of the Pegasus Legend\n"
+"\n"
+"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
+
+msgid "yearlyRewardsTooltip/additional/sixth_4/header"
+msgstr "Year of the Pegasus Legend Medal"
+
+msgid "yearlyRewardsTooltip/additional/third_1/body"
+msgstr ""
+"You can select two pieces of improved equipment as a reward. Each item can be received only once:\n"
+" • Venting System\n"
+" • Stabilizing Equipment System\n"
+" • Innovative Loading System\n"
+" • Wear-Resistant Gun Laying Drive\n"
+" • Experimental Optics\n"
+" • Improved Configuration\n"
+" • Improved Compressor\n"
+" • Increased Shell Resistance\n"
+" • Improved Final Drive"
+
+msgid "yearlyRewardsTooltip/additional/third_1/header"
+msgstr "Improved Equipment"
+
+msgid "yearlyRewardsTooltip/additional/third_2/body"
+msgstr ""
+"A special 2D style awarded for achievements within the Year of the Pegasus."
+
+msgid "yearlyRewardsTooltip/additional/third_2/header"
+msgstr "Heavenly Horse Style"
+
+msgid "yearlyRewardsTooltip/additional/third_3/body"
+msgstr ""
+"Awarded in the Onslaught mode for collecting Pegasus Colors.\n"
+"\n"
+"3 – Iron Pegasus\n"
+"6 – Bronze Pegasus\n"
+"9 – Silver Pegasus\n"
+"12 – Gold Pegasus\n"
+"15 – Year of the Pegasus Champion\n"
+"18 – Year of the Pegasus Legend\n"
+"\n"
+"You will receive one of the medals depending on the number of Pegasus Colors you have collected."
+
+msgid "yearlyRewardsTooltip/additional/third_3/header"
+msgstr "Silver Pegasus Medal"
+
+msgid "yearlyRewardsTooltip/main/fifth/body"
+msgstr "A camouflage pattern awarded for collecting 15 Pegasus Colors."
+
+msgid "yearlyRewardsTooltip/main/fifth/header"
+msgstr "Champion Camouflage"
+
+msgid "yearlyRewardsTooltip/main/first/body"
+msgstr "A camouflage pattern awarded for collecting 3 Pegasus Colors."
+
+msgid "yearlyRewardsTooltip/main/first/header"
+msgstr "Iron Camouflage"
+
+msgid "yearlyRewardsTooltip/main/fourth/body"
+msgstr "A camouflage pattern awarded for collecting 12 Pegasus Colors."
+
+msgid "yearlyRewardsTooltip/main/fourth/header"
+msgstr "Gold Camouflage"
+
+msgid "yearlyRewardsTooltip/main/second/body"
+msgstr "A camouflage pattern awarded for collecting 6 Pegasus Colors."
+
+msgid "yearlyRewardsTooltip/main/second/header"
+msgstr "Bronze Camouflage"
+
+msgid "yearlyRewardsTooltip/main/sixth/body"
+msgstr "A camouflage pattern awarded for collecting 18 Pegasus Colors."
+
+msgid "yearlyRewardsTooltip/main/sixth/header"
+msgstr "Legend Camouflage"
+
+msgid "yearlyRewardsTooltip/main/third/body"
+msgstr "A camouflage pattern awarded for collecting 9 Pegasus Colors."
+
+msgid "yearlyRewardsTooltip/main/third/header"
+msgstr "Silver Camouflage"
+
+msgid "yearlyStatistics/battles"
+msgstr "Battles (solo/Platoon)"
+
+msgid "yearlyStatistics/dash"
+msgstr "—"
+
+msgid "yearlyStatistics/generationOfStatistics"
+msgstr "Calculating Season statistics..."
+
+msgid "yearlyStatistics/rankStatus"
+msgstr "No rank"
+
+msgid "yearlyStatistics/rating"
+msgstr "Rating Points"
+
+msgid "yearlyStatistics/seasonName/0"
+msgstr "Season I. Azure Pegasus"
+
+msgid "yearlyStatistics/seasonName/1"
+msgstr "Season II. Crimson Pegasus"
+
+msgid "yearlyStatistics/seasonName/2"
+msgstr "Season III. Jade Pegasus"
+
+msgid "yearlyStatistics/seasonStatus/0"
+msgstr "%(start)s–%(end)s"
+
+msgid "yearlyStatistics/seasonStatus/1"
+msgstr "Winter 2024"
+
+msgid "yearlyStatistics/seasonStatus/2"
+msgstr "Spring 2024"
+
+msgid "yearlyStatistics/statisticsAvailability"
+msgstr ""
+"Statistics will become available\n"
+"once the Season ends"
+
+msgid "yearlyStatistics/superPlatoonBattles"
+msgstr "Battles (Super Platoon)"
+
+msgid "yearlyStatistics/wins"
+msgstr "Victory Rate"

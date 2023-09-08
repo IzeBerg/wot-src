@@ -18,7 +18,7 @@ def ifComponentAvailable(componentType=None):
     return decorator
 
 
-def ifComponentInPreset(componentType=None):
+def ifComponentInPreset(componentType=None, defReturn=None):
 
     def decorator(method):
 
@@ -28,7 +28,7 @@ def ifComponentInPreset(componentType=None):
             if preset is not None and componentType in preset.visibleComponents:
                 return method(presetGetter, preset, *args, **kwargs)
             else:
-                return
+                return defReturn
 
         return wrapper
 

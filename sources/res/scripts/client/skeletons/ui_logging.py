@@ -1,4 +1,6 @@
-
+import typing
+if typing.TYPE_CHECKING:
+    from uilogging.types import FeatureType, GroupType, ActionType, LogLevelType
 
 class IUILoggingCore(object):
 
@@ -15,6 +17,12 @@ class IUILoggingCore(object):
         raise NotImplementedError
 
     def ensureSession(self):
+        raise NotImplementedError
+
+    def start(self, ensureSession=False):
+        raise NotImplementedError
+
+    def send(self):
         raise NotImplementedError
 
 

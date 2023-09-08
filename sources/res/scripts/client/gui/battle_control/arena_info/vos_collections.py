@@ -166,9 +166,14 @@ class Comp7SortKey(VehicleInfoSortKey):
         result = cmp(yvInfoVO.isAlive(), xvInfoVO.isAlive())
         if result:
             return result
+        xvIsQual = xvInfoVO.gameModeSpecific.getValue(Comp7Keys.IS_QUAL_ACTIVE, default=False)
+        yvIsQual = yvInfoVO.gameModeSpecific.getValue(Comp7Keys.IS_QUAL_ACTIVE, default=False)
+        result = cmp(xvIsQual, yvIsQual)
+        if result:
+            return result
         xvRank = xvInfoVO.gameModeSpecific.getValue(Comp7Keys.RANK, default=(0, 0))
         yvRank = yvInfoVO.gameModeSpecific.getValue(Comp7Keys.RANK, default=(0, 0))
-        result = cmp(yvRank, xvRank)
+        result = cmp(xvRank, yvRank)
         if result:
             return result
         return cmp(xvInfoVO.player, yvInfoVO.player)

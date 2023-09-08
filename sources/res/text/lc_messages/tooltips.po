@@ -37,6 +37,9 @@ msgstr "In WoWS client"
 msgid "Contact/status/inBattle/bootcamp"
 msgstr "In Bootcamp"
 
+msgid "Contact/status/inBattle/epic_random_training"
+msgstr "In Team Training Battle"
+
 msgid "Contact/status/inBattle/fortifications"
 msgstr "In a battle for Stronghold"
 
@@ -63,6 +66,9 @@ msgstr "In Team Training Battle"
 
 msgid "Contact/status/inBattle/unknown"
 msgstr "In Battle"
+
+msgid "Contact/status/offline"
+msgstr "Offline"
 
 msgid "Contact/status/online"
 msgstr "Online"
@@ -981,6 +987,12 @@ msgstr ""
 msgid "awardItem/abilityToken/header"
 msgstr "Combat Reserve Points"
 
+msgid "awardItem/attendance_reward/body"
+msgstr "Rewards for logging in to the game."
+
+msgid "awardItem/attendance_reward/header"
+msgstr "Attendance Rewards"
+
 msgid "awardItem/battleToken/description"
 msgstr "Unlocks several missions."
 
@@ -1020,10 +1032,12 @@ msgstr ""
 msgid "awardItem/brcoin/header"
 msgstr "Steel Seals"
 
-msgid "awardItem/comp7_2023_1_weekly_rewards_token/body"
-msgstr "A special currency awarded for completing the last weekly mission."
+msgid "awardItem/comp7TokenWeeklyReward/body"
+msgstr ""
+"A special currency awarded for completing the last weekly mission.\n"
+"Earn Lucky Chips to receive additional rewards."
 
-msgid "awardItem/comp7_2023_1_weekly_rewards_token/header"
+msgid "awardItem/comp7TokenWeeklyReward/header"
 msgstr "Lucky Chip"
 
 msgid "awardItem/completionTokens/body"
@@ -1288,8 +1302,9 @@ msgstr "Components"
 
 msgid "awardItem/eventCoin/body"
 msgstr ""
-"Awarded for completing Anniversary Missions during the "
-"World of Tanks Anniversary 2023 event."
+"Awarded for completing Anniversary Missions during the Active Phase and "
+"Breather of the 10th Anniversary event. Also granted for purchasing "
+"Anniversary bundles in the Store as well."
 
 msgid "awardItem/eventCoin/header"
 msgstr "Anniversary Coins"
@@ -1301,7 +1316,7 @@ msgid "awardItem/excluded_map/header"
 msgstr "Excluded Map"
 
 msgid "awardItem/exclusive_vehicle/body"
-msgstr "The TS-54 heavy tank, exclusive to WoT Plus."
+msgstr "The %(vehicleName)s %(vehicleType)s, exclusive to WoT Plus."
 
 msgid "awardItem/exclusive_vehicle/header"
 msgstr "Exclusive Vehicle"
@@ -1629,9 +1644,7 @@ msgid "battleBorderMapTypeButtonBar/info/header"
 msgstr "Hide Map Border"
 
 msgid "battleLoadingInfo/body"
-msgstr ""
-"Select how tips are displayed.\n"
-"Illustrated tips are the only option in the Proving Ground mode."
+msgstr "Select how tips are displayed."
 
 msgid "battleLoadingInfo/header"
 msgstr "Tips on the Battle Loading Screen"
@@ -5560,6 +5573,12 @@ msgstr "Select another vehicle."
 msgid "hangar/startBtn/battleRoyale/telecomRentalIsOver/header"
 msgstr "Vehicle Unavailable"
 
+msgid "hangar/startBtn/battleRoyale/wotPlusExclusiveUnavailable/body"
+msgstr "Select another vehicle."
+
+msgid "hangar/startBtn/battleRoyale/wotPlusExclusiveUnavailable/header"
+msgstr "Exclusive Vehicle Unavailable"
+
 msgid "hangar/startBtn/battleRoyaleSquadNotReady/notReady/body"
 msgstr ""
 "To join the battle, all Platoon members should confirm that they are ready."
@@ -6090,7 +6109,7 @@ msgstr ""
 " vehicles, or convert experience, etc."
 
 msgid "header/buttons/hangar/body"
-msgstr "Select vehicle and enter battle."
+msgstr "Select a vehicle and enter battle."
 
 msgid "header/buttons/hangar/header"
 msgstr "Garage"
@@ -8205,6 +8224,63 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankmen_bp11_4/label"
 msgstr "Battle Pass Season XI"
 
+msgid "notrecruitedtankman/tankmen_bp12_1/desc"
+msgstr ""
+"A German tankman. He is equally at home as a combat vehicle commander and an"
+" inquisitive scientist. Since high school, he has been drawn to the natural "
+"sciences and has an excellent understanding of chemistry, biology, and "
+"physics. He constantly keeps a journal in which he records everything in the"
+" form of indecipherable notes and rather visual illustrations."
+
+msgid "notrecruitedtankman/tankmen_bp12_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp12_1/label"
+msgstr "Battle Pass Season XII"
+
+msgid "notrecruitedtankman/tankmen_bp12_2/desc"
+msgstr ""
+"This young scout's deceptive appearance has proven fatal for many. She is a "
+"natural at collecting data on the enemy. Her specialty is radar "
+"reconnaissance, where she employs a systematic approach and analytical "
+"thinking to the maximum for decision-making. She is capable of taking risks "
+"to save her comrades."
+
+msgid "notrecruitedtankman/tankmen_bp12_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp12_2/label"
+msgstr "Battle Pass Season XII"
+
+msgid "notrecruitedtankman/tankmen_bp12_3/desc"
+msgstr ""
+"This American's formidable appearance hides a sharp mind and a subtle sense "
+"of humor. He is not afraid of anything and anybody, or at least so he "
+"thinks. For a long time, he fought under the command of McReed, with whom he"
+" initially struggled to find common ground due to his own sharp wit. "
+"Throughout his career, he successfully completed dozens of combat missions "
+"and developed a sense of discipline before becoming a competent commander. "
+"That said, he has not stopped making jokes, whether they land well or not."
+
+msgid "notrecruitedtankman/tankmen_bp12_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp12_3/label"
+msgstr "Battle Pass Season XII"
+
+msgid "notrecruitedtankman/tankmen_bp12_4/desc"
+msgstr ""
+"A leading researcher at the Research Institute (crossed out). Supervisor of "
+"the first and subsequent groups sent to Mirny-13. She approaches her work "
+"very meticulously, sometimes even obsessively. She does not accept "
+"compromises. If she sets a goal, she will stop at nothing to achieve it."
+
+msgid "notrecruitedtankman/tankmen_bp12_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp12_4/label"
+msgstr "Battle Pass Season XII"
+
 msgid "notrecruitedtankman/tankmen_bp2_1/desc"
 msgstr ""
 "People are always asking if I know Jack Reed. Before I answer, I usually "
@@ -9698,6 +9774,12 @@ msgstr "Awarded during Steel Hunter. Required to complete missions."
 msgid "quests/bonuses/token/body"
 msgstr "This token is a reward item used for completion of a certain mission."
 
+msgid "quests/bonuses/token/crew_bonus_x3/body"
+msgstr "Get a ×3 bonus to Crew XP earned in battle in any vehicle."
+
+msgid "quests/bonuses/token/crew_bonus_x3/header"
+msgstr "Mission for ×3 Crew XP Earned in Battle"
+
 msgid "quests/bonuses/token/header"
 msgstr "%(userName)s Token"
 
@@ -9805,10 +9887,6 @@ msgstr "To Battle Pass Chapter selection"
 
 msgid "quests/linkBtn/task"
 msgstr "Select this mission"
-
-msgid "quests/linkBtn/wotAnniversary"
-msgstr ""
-"Go to Anniversary Missions for the World of Tanks Anniversary 2023 event."
 
 msgid "quests/newLabel/action"
 msgstr "New special"
@@ -10559,7 +10637,7 @@ msgid "settings/sound/deviceAlert/header"
 msgstr "Sound System Mismatch"
 
 msgid "settings/sound/subtitles/body"
-msgstr "Duplication of voiceover with text in the Bootcamp mode."
+msgstr "Text duplication of voiceover."
 
 msgid "settings/sound/subtitles/header"
 msgstr "Subtitles"
@@ -10680,7 +10758,7 @@ msgstr "Wheel not penetrated"
 
 msgid "showDogTag/body"
 msgstr ""
-"When disabled, a random Dog Tag will be displayed to the enemy who destroyed your vehicle.\n"
+"When disabled, a standard Dog Tag will be displayed to the enemy who destroyed your vehicle.\n"
 "\n"
 "Changes will be applied in the next battle."
 
@@ -11086,7 +11164,8 @@ msgstr ""
 
 msgid "tank_params/desc/burstFireRate"
 msgstr ""
-"Loading time between shells in container. / Number of shells in a burst."
+"Loading time between shells in the container. / Number of containers in the "
+"magazine. / Number of shells in the container."
 
 msgid "tank_params/desc/chargeTime"
 msgstr ""
@@ -11115,11 +11194,16 @@ msgid "tank_params/desc/clipFireRate"
 msgstr ""
 "Time between firing the last shell in the magazine (or both guns) and "
 "loading the new magazine. / Time between firing a shell and loading the next"
-" shell in the magazine, gun, or container. / Number of shells or containers "
-"in the magazine (or guns)."
+" shell in the magazine, gun, or container. / Number of guns or shells in the"
+" magazine."
 
 msgid "tank_params/desc/damage"
 msgstr "Damage caused by a standard shell upon penetrating enemy armor."
+
+msgid "tank_params/desc/dualAccuracyCoolingDelay"
+msgstr ""
+"Shows how much time after shot it takes for the gun to cool down enough to "
+"improve accuracy."
 
 msgid "tank_params/desc/enginePower"
 msgstr ""
@@ -11230,6 +11314,12 @@ msgstr ""
 "Gun dispersion characterized by the maximum shell deviation from the aiming "
 "point at a distance of 100 m."
 
+msgid "tank_params/desc/shotDispersionAngle/withDualAccuracy"
+msgstr ""
+"Shows how much the shell can deviate from the aiming point in meters per 100"
+" meters to target. The standard value (the first one) is for a heated gun, "
+"the improved value (the second one) is for the cooled gun."
+
 msgid "tank_params/desc/speedLimits"
 msgstr "Vehicle speed as it is defined in its technical characteristics."
 
@@ -11270,8 +11360,8 @@ msgstr ""
 
 msgid "tank_params/desc/turboshaftBurstFireRate"
 msgstr ""
-"Loading time between shells in container. / Number of shells in a burst in "
-"the special mode."
+"Loading time between shells in the container. / Number of containers in the "
+"magazine. / Number of shells in the container."
 
 msgid "tank_params/desc/turboshaftEnginePower"
 msgstr ""
@@ -12068,6 +12158,12 @@ msgstr "Maximum Wheel Turning Angle (deg)"
 
 msgid "vehicleParams/penalties/title"
 msgstr "Current Penalties:"
+
+msgid "vehicleParams/penalty/crewDifferentVehicle"
+msgstr "Crew is not trained for this vehicle"
+
+msgid "vehicleParams/penalty/crewLevel"
+msgstr "Crew is trained to less than 100%"
 
 msgid "vehicleParams/penalty/crewNotFull/template"
 msgstr "Crew incomplete"

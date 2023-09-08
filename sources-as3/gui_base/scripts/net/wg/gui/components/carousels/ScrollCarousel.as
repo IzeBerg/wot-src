@@ -117,7 +117,7 @@ package net.wg.gui.components.carousels
          }
          if(this._roundCountRenderer)
          {
-            _loc3_ = (_loc3_ / this.scrollList.pageWidth >> 0) * this.scrollList.pageWidth - this.scrollList.horizontalGap >> 0;
+            _loc3_ = (_loc3_ / this.scrollList.pageWidth >> 0) * this.scrollList.pageWidth - this.scrollList.horizontalGap;
          }
          this.scrollList.width = _loc3_;
          this.scrollList.x = param2;
@@ -293,7 +293,7 @@ package net.wg.gui.components.carousels
          this.onScrollListScrollComplete();
       }
       
-      protected function onScrollListScrollStartHandler(param1:Event) : void
+      private function onScrollListScrollStartHandler(param1:Event) : void
       {
          this.updateAvailableScroll(this.scrollList.availableScrollLeft,this.scrollList.availableScrollRight);
       }

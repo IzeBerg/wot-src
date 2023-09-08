@@ -1,4 +1,5 @@
-import logging, GUI
+import logging, BigWorld, GUI
+from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from gui.Scaleform.daapi.view.battle.comp7.status_notifications import sn_items as comp7_sn_items
 from gui.Scaleform.daapi.view.battle.shared.status_notifications import components
 from gui.Scaleform.daapi.view.battle.shared.status_notifications import sn_items
@@ -19,11 +20,11 @@ class Comp7BattleHighPriorityGroup(components.StatusNotificationsGroup):
 
     def __init__(self, updateCallback):
         super(Comp7BattleHighPriorityGroup, self).__init__((
-         sn_items.UnderFireSN,
-         sn_items.FireSN,
          sn_items.DrownSN,
          sn_items.OverturnedSN,
-         sn_items.HalfOverturnedSN), updateCallback)
+         sn_items.HalfOverturnedSN,
+         sn_items.UnderFireSN,
+         sn_items.FireSN), updateCallback)
 
 
 class Comp7StatusNotificationTimerPanel(StatusNotificationTimerPanel):
@@ -74,9 +75,18 @@ class Comp7StatusNotificationTimerPanel(StatusNotificationTimerPanel):
         data = super(Comp7StatusNotificationTimerPanel, self)._generateNotificationTimerSettings()
         link = _LINKS.DESTROY_TIMER_UI
         self._addNotificationTimerSetting(data, _TYPES.DROWN, _LINKS.DROWN_ICON, link)
-        self._addNotificationTimerSetting(data, _TYPES.OVERTURNED, _LINKS.OVERTURNED_ICON, link)
+        liftOverEnabled = ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arenaBonusType, ARENA_BONUS_TYPE_CAPS.LIFT_OVER)
+        if liftOverEnabled:
+            overturnedIcon = _LINKS.OVERTURNED_GREEN_ICON
+            overturnedColor = _COLORS.GREEN
+            iconOffsetY = 1
+        else:
+            overturnedIcon = _LINKS.OVERTURNED_ICON
+            overturnedColor = _COLORS.ORANGE
+            iconOffsetY = 0
+        self._addNotificationTimerSetting(data, _TYPES.OVERTURNED, overturnedIcon, link, color=overturnedColor, iconOffsetY=iconOffsetY)
         self._addNotificationTimerSetting(data, _TYPES.FIRE, _LINKS.FIRE_ICON, link)
-        self._addNotificationTimerSetting(data, _TYPES.HALF_OVERTURNED, _LINKS.OVERTURNED_ICON, link)
+        self._addNotificationTimerSetting(data, _TYPES.HALF_OVERTURNED, overturnedIcon, link, color=overturnedColor, iconOffsetY=iconOffsetY)
         self._addNotificationTimerSetting(data, _TYPES.UNDER_FIRE, _LINKS.UNDER_FIRE_ICON, link)
         self.__genPoiTimersSettings(data)
         link = _LINKS.SECONDARY_TIMER_UI

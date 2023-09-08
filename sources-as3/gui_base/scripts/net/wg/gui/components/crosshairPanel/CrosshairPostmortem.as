@@ -20,10 +20,6 @@ package net.wg.gui.components.crosshairPanel
          super();
       }
       
-      public function addOverheat(param1:Number) : void
-      {
-      }
-      
       public function autoloaderBoostUpdate(param1:BoostIndicatorStateParamsVO, param2:Number, param3:Boolean = false) : void
       {
       }
@@ -57,10 +53,6 @@ package net.wg.gui.components.crosshairPanel
       public function isDisposed() : Boolean
       {
          return this._disposed;
-      }
-      
-      public function removeOverheat() : void
-      {
       }
       
       public function setAmmoStock(param1:Number, param2:String, param3:Boolean = false) : void
@@ -110,10 +102,6 @@ package net.wg.gui.components.crosshairPanel
       }
       
       public function setNetType(param1:Number) : void
-      {
-      }
-      
-      public function setOverheatProgress(param1:Number, param2:Boolean) : void
       {
       }
       

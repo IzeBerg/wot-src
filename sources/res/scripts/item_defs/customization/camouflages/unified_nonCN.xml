@@ -528,6 +528,10 @@
 					5.7 5.7 0.11 0.000000
 					<!--BW_String-->
 				</france:F64_AMX_50Fosh_B>
+				<france:F64_AMX_50Fosh_B_7x7>
+					5.7 5.7 0.11 0.000000
+					<!--BW_String-->
+				</france:F64_AMX_50Fosh_B_7x7>
 				<france:F65_FCM_50t>
 					5 5 0.000000 0.000000
 					<!--BW_String-->
@@ -1561,6 +1565,10 @@
 					3.4 3.4 0.000000 0.000000
 					<!--BW_String-->
 				</sweden:S28_UDES_15_16>
+				<sweden:S28_UDES_15_16_7x7>
+					3.4 3.4 0.000000 0.000000
+					<!--BW_String-->
+				</sweden:S28_UDES_15_16_7x7>
 				<sweden:S29_UDES_14_5>
 					2.47 2.47 0.000000 0.000000
 					<!--BW_String-->
@@ -3557,6 +3565,10 @@
 					3.38378 3.38378 4.17662 4.8961
 					<!--BW_String-->
 				</france:F64_AMX_50Fosh_B>
+				<france:F64_AMX_50Fosh_B_7x7>
+					3.38378 3.38378 4.17662 4.8961
+					<!--BW_String-->
+				</france:F64_AMX_50Fosh_B_7x7>
 				<france:F65_FCM_50t>
 					1.56757 1.56757 1.7987 1.75844
 					<!--BW_String-->
@@ -4574,6 +4586,10 @@
 					2.47838 2.47838 2.0987 4.16494
 					<!--BW_String-->
 				</sweden:S28_UDES_15_16>
+				<sweden:S28_UDES_15_16_7x7>
+					2.47838 2.47838 2.0987 4.16494
+					<!--BW_String-->
+				</sweden:S28_UDES_15_16_7x7>
 				<sweden:S29_UDES_14_5>
 					1.93 1.93 0.000000 0.000000
 					<!--BW_String-->
@@ -11528,6 +11544,62 @@
 				</factor>
 				<offset>
 					-0.15 -0.08
+					<!--BW_String-->
+				</offset>
+			</tilingSettings>
+		</camouflage>
+	</itemGroup>
+	<itemGroup>
+		<season>ALL</season>
+		<userString>#vehicle_customization:camouflage/opaque</userString>
+		<historical>1</historical>
+		<priceGroup>camouflages 50g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<camouflage>
+			<id>15963</id>
+			<texture>vehicles/russian/Camouflage/mexican_independence_2023.dds</texture>
+			<userString>#vehicle_customization:camouflage/mexican_independence_2023/label</userString>
+			<description>#vehicle_customization:camouflage/mexican_independence_2023/description</description>
+			<tags>fullRGB hiddenInUI</tags>
+			<invisibilityFactor>1</invisibilityFactor>
+			<scales>
+				1.2 1 0.7
+				<!--BW_String-->
+			</scales>
+			<palettes>
+				<palette>
+					<c0>255 0 0 255</c0>
+					<c1>0 255 0 255</c1>
+					<c2>0 0 255 255</c2>
+					<c3>0 0 0 255</c3>
+				</palette>
+			</palettes>
+			<rotation>
+				<HULL>
+					0.76585
+					<!--BW_String-->
+				</HULL>
+				<TURRET>
+					0.76585
+					<!--BW_String-->
+				</TURRET>
+				<GUN>
+					0.76585
+					<!--BW_String-->
+				</GUN>
+			</rotation>
+			<tilingSettings>
+				<type>relativewithfactor</type>
+				<factor>
+					3.84 3.84
+					<!--BW_String-->
+				</factor>
+				<offset>
+					2.97 3.65
 					<!--BW_String-->
 				</offset>
 			</tilingSettings>

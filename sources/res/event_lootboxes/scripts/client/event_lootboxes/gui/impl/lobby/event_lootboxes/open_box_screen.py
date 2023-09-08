@@ -44,6 +44,7 @@ class EventLootBoxesOpenBoxScreen(ViewImpl):
         self.__boxType = boxType
         self.__vehicle = None
         self.__bonuses = []
+        self.__notifier = None
         statistics = BigWorld.wg_getClientStatistics()
         self.__osBit = _OS_BIT_MAP[statistics.get('osBit', 3)] if statistics else OSBit.UNKNOWN
         super(EventLootBoxesOpenBoxScreen, self).__init__(settings)
@@ -90,6 +91,7 @@ class EventLootBoxesOpenBoxScreen(ViewImpl):
         if self.__notifier is not None:
             self.__notifier.stopNotification()
             self.__notifier.clear()
+            self.__notifier = None
         self.__onHideWaiting()
         super(EventLootBoxesOpenBoxScreen, self)._finalize()
         return

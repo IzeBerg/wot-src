@@ -22,6 +22,10 @@ package net.wg.data.constants.generated
       public static const STATE_ACTIVE:String = "active";
       
       public static const STATE_NOT_ACTIVE:String = "notActive";
+      
+      public static const SCENARIO_EVENT_EFFECT:String = "scenarioEventEffect";
+      
+      public static const SCENARIO_EVENT_ALERT:String = "scenarioEventAlert";
        
       
       public function BATTLE_MINIMAP_CONSTS()

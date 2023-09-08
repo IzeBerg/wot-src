@@ -294,10 +294,17 @@ package net.wg.gui.battle.components
       
       protected function hideTimer(param1:DestroyTimer) : void
       {
-         param1.resetTimer();
-         param1.removeEventListener(DestroyTimerEvent.TIMER_HIDDEN_EVENT,this.onCurrentTimerTimerHiddenEventHandler);
-         param1.isActive = false;
-         invalidate(INVALID_STATE);
+         if(param1)
+         {
+            param1.resetTimer();
+            param1.removeEventListener(DestroyTimerEvent.TIMER_HIDDEN_EVENT,this.onCurrentTimerTimerHiddenEventHandler);
+            param1.isActive = false;
+            invalidate(INVALID_STATE);
+         }
+         else
+         {
+            DebugUtils.LOG_WARNING("There is no timer");
+         }
       }
       
       protected function hideSecondaryTimer(param1:String) : void
@@ -328,17 +335,23 @@ package net.wg.gui.battle.components
       protected function showTimer(param1:String, param2:String, param3:Boolean) : void
       {
          var _loc4_:DestroyTimer = this._timers[param1];
-         _loc4_.addEventListener(DestroyTimerEvent.TIMER_HIDDEN_EVENT,this.onCurrentTimerTimerHiddenEventHandler);
-         _loc4_.isActive = true;
-         _loc4_.updateViewID(param2,param3);
-         _loc4_.visible = true;
-         invalidate(INVALID_STATE);
+         if(_loc4_)
+         {
+            _loc4_.addEventListener(DestroyTimerEvent.TIMER_HIDDEN_EVENT,this.onCurrentTimerTimerHiddenEventHandler);
+            _loc4_.isActive = true;
+            _loc4_.updateViewID(param2,param3);
+            _loc4_.visible = true;
+            invalidate(INVALID_STATE);
+         }
+         else
+         {
+            DebugUtils.LOG_WARNING("There is no timer, timerTypeID = " + param1);
+         }
       }
       
       protected function showSecondaryTimer(param1:String, param2:int, param3:Number, param4:Boolean = false) : void
       {
-         var _loc5_:SecondaryTimerBase = null;
-         _loc5_ = this.getSecondaryTimer(param1);
+         var _loc5_:SecondaryTimerBase = this.getSecondaryTimer(param1);
          if(!_loc5_)
          {
             return;

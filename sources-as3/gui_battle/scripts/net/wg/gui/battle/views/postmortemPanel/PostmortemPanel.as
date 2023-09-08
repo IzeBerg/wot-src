@@ -71,6 +71,8 @@ package net.wg.gui.battle.views.postmortemPanel
       
       private var _dogTagVictimMiniMapAnchor:int;
       
+      private var _isEnabledSpectatorPanel:Boolean = true;
+      
       public function PostmortemPanel()
       {
          super();
@@ -226,13 +228,21 @@ package net.wg.gui.battle.views.postmortemPanel
          }
       }
       
+      public function set isEnabledSpectatorPanel(param1:Boolean) : void
+      {
+         this._isEnabledSpectatorPanel = param1;
+      }
+      
       private function showSpectatorPanel(param1:Boolean) : void
       {
-         this.bg.visible = param1;
-         this.observerModeTitleTF.visible = param1;
-         this.observerModeDescTF.visible = param1;
-         this.exitToHangarTitleTF.visible = param1;
-         this.exitToHangarDescTF.visible = param1;
+         if(!param1 || this._isEnabledSpectatorPanel && param1)
+         {
+            this.bg.visible = param1;
+            this.observerModeTitleTF.visible = param1;
+            this.observerModeDescTF.visible = param1;
+            this.exitToHangarTitleTF.visible = param1;
+            this.exitToHangarDescTF.visible = param1;
+         }
       }
       
       private function showPanel() : void
