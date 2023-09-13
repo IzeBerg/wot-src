@@ -93,7 +93,7 @@ msgid "accountInfo/crystal"
 msgstr "战争债券:"
 
 msgid "accountInfo/eventCoin"
-msgstr "周年纪念币:"
+msgstr "周年纪念币："
 
 msgid "accountInfo/experience"
 msgstr "总经验:"
@@ -1234,6 +1234,9 @@ msgstr "调回兵营"
 msgid "contextMenu/tankmanUnloadAll"
 msgstr "调全体乘员到兵营"
 
+msgid "contextMenu/telecomRent"
+msgstr "显示租用坦克"
+
 msgid "contextMenu/unequip"
 msgstr "禁用"
 
@@ -1293,9 +1296,6 @@ msgstr "军团简介"
 
 msgid "contextMenu/withdrawInvitationToSquad"
 msgstr "撤回加入小队的邀请"
-
-msgid "contextMenu/wotPlusRent"
-msgstr "显示租用坦克"
 
 msgid "copy"
 msgstr "2009–2023 Wargaming.net. 保留所有权利。"
@@ -1660,6 +1660,9 @@ msgstr "需要另一名玩家"
 
 msgid "currentVehicleStatus/willBeUnlockedInBattle"
 msgstr "在战斗中解锁"
+
+msgid "currentVehicleStatus/wot_plus_exclusive_vehicle_disabled"
+msgstr "坦克世界Plus专属坦克暂时无法使用"
 
 msgid "customization/title"
 msgstr "个性化"
@@ -3001,6 +3004,12 @@ msgstr "模式暂不开放: 数据库错误。"
 msgid "headerButtons/fightBtn/tooltip/comp7Offline/header"
 msgstr "无法加入战斗"
 
+msgid "headerButtons/fightBtn/tooltip/comp7RatingCalculation/body"
+msgstr "根据资格赛结果计算您的评级可能最多需要5分钟。之后，您将获得一个段位，并可以继续参加天梯战。"
+
+msgid "headerButtons/fightBtn/tooltip/comp7RatingCalculation/header"
+msgstr "加入战斗失败"
+
 msgid "headerButtons/fightBtn/tooltip/crewNotFull/body"
 msgstr "缺少:<b>%(crewList)s</b>。"
 
@@ -3160,6 +3169,12 @@ msgstr "请先维修坦克。"
 
 msgid "headerButtons/fightBtn/tooltip/vehicleIsBroken/header"
 msgstr "坦克损坏"
+
+msgid "headerButtons/fightBtn/tooltip/wotPlusExclusiveUnavailable/body"
+msgstr "选择其它坦克。"
+
+msgid "headerButtons/fightBtn/tooltip/wotPlusExclusiveUnavailable/header"
+msgstr "专属坦克暂时无法使用"
 
 msgid "headerButtons/hangar"
 msgstr "车库"
@@ -4160,6 +4175,9 @@ msgstr "坦克火炮适应单发炮弹:"
 msgid "moduleInfo/compatible/vehicles"
 msgstr "适用的坦克型号:"
 
+msgid "moduleInfo/dualAccuracyGunLabel"
+msgstr "双重瞄准系统"
+
 msgid "moduleInfo/dualGunLabel"
 msgstr "双火炮系统"
 
@@ -4217,6 +4235,18 @@ msgstr "单发爆炸损伤"
 msgid "moduleInfo/params/bombsNumberRange"
 msgstr "投掷炸弹数量"
 
+msgid "moduleInfo/params/burstCount"
+msgstr "弹夹中的短弹夹数量"
+
+msgid "moduleInfo/params/burstFireRate"
+msgstr "短弹夹"
+
+msgid "moduleInfo/params/burstSize"
+msgstr "短弹夹中的炮弹数量"
+
+msgid "moduleInfo/params/burstTimeInterval"
+msgstr "短弹夹中两次射击之间的装填时间"
+
 msgid "moduleInfo/params/caliber"
 msgstr "口径"
 
@@ -4247,14 +4277,14 @@ msgstr "主要专业和乘员特长"
 msgid "moduleInfo/params/damage"
 msgstr "损伤"
 
-msgid "moduleInfo/params/damagePerSecond"
-msgstr "平均每秒损伤"
-
 msgid "moduleInfo/params/dispertionRadius"
 msgstr "100米精度"
 
 msgid "moduleInfo/params/drivingControl"
 msgstr "移动中操控"
+
+msgid "moduleInfo/params/dualAccuracyCoolingDelay"
+msgstr "射击后的火炮冷却时间"
 
 msgid "moduleInfo/params/duration"
 msgstr "持续时间"
@@ -4276,9 +4306,6 @@ msgstr "飞行时间"
 
 msgid "moduleInfo/params/forwardMaxSpeed"
 msgstr "最大速度"
-
-msgid "moduleInfo/params/guaranteedDamage/footnote"
-msgstr " 如果未击穿装甲，炮弹仅能造成较小比例的损伤。"
 
 msgid "moduleInfo/params/hullAndChassisWeight"
 msgstr "重量"
@@ -4310,17 +4337,23 @@ msgstr "最大载重量"
 msgid "moduleInfo/params/maxShotDistance"
 msgstr "射击范围"
 
+msgid "moduleInfo/params/maxShotDistance/footnote"
+msgstr "* 该火炮炮弹的最大飞行距离"
+
 msgid "moduleInfo/params/maxSteeringLockAngle"
 msgstr "最大车轮转向角度"
 
 msgid "moduleInfo/params/noPiercingDistance/footnote"
-msgstr " 这种炮弹的穿透力不受距离影响。"
+msgstr "* 这种炮弹的穿透力不受距离影响"
+
+msgid "moduleInfo/params/noPiercingDistance/footnote/maxDistance"
+msgstr ",最大飞行距离—400米"
 
 msgid "moduleInfo/params/piercingDistance"
 msgstr "%(dist)s 米"
 
 msgid "moduleInfo/params/piercingDistance/footnote"
-msgstr " 这种炮弹的穿透力受距离影响(%(minDist)s–%(maxDist)s米)。"
+msgstr "* 穿透力受距离影响: %(minDist)s–%(maxDist)s米"
 
 msgid "moduleInfo/params/piercingDistanceHeader"
 msgstr "平均穿透力(毫米)—距离"
@@ -4787,7 +4820,7 @@ msgid "profile/crystal"
 msgstr "战争债券:"
 
 msgid "profile/eventCoin"
-msgstr "周年纪念币:"
+msgstr "周年纪念币："
 
 msgid "profile/exchange"
 msgstr "确认"
@@ -5942,6 +5975,9 @@ msgstr "不适用于组队"
 msgid "tankCarousel/vehicleStates/willBeUnlockedInBattle"
 msgstr "?empty?"
 
+msgid "tankCarousel/vehicleStates/wot_plus_exclusive_vehicle_disabled"
+msgstr "暂停使用"
+
 msgid "tankCarousel/vehicleStates/xpMultReceived"
 msgstr "请先领取首胜x%(factor)s经验"
 
@@ -5976,7 +6012,7 @@ msgid "tank_params/burstFireRate"
 msgstr "短弹夹"
 
 msgid "tank_params/burstSec"
-msgstr "(炮弹/炮弹数量)"
+msgstr "(秒/个/发)"
 
 msgid "tank_params/chargeTime"
 msgstr "齐射准备"
@@ -6007,6 +6043,12 @@ msgstr "(个)"
 
 msgid "tank_params/damage"
 msgstr "标准炮弹损伤"
+
+msgid "tank_params/dualAccuracyCoolingDelay"
+msgstr "火炮冷却时间"
+
+msgid "tank_params/dualAccuracyCoolingDelay/extendedTitle"
+msgstr "射击后的火炮冷却时间"
 
 msgid "tank_params/enginePower"
 msgstr "发动机功率"
@@ -6265,9 +6307,6 @@ msgstr "重量/最大载重量"
 
 msgid "tank_params/vpm"
 msgstr "(HP/分钟)"
-
-msgid "tank_params/vps"
-msgstr "(HP/秒)"
 
 msgid "tank_params/wheeledSpeedModeSpeed"
 msgstr "最大速度/倒车速度(快速)"
@@ -6848,7 +6887,7 @@ msgid "vehicleInfo/params/avgPiercingPower"
 msgstr "标准炮弹的平均穿透力"
 
 msgid "vehicleInfo/params/burstFireRate"
-msgstr "短弹夹(炮弹/炮弹数量)"
+msgstr "短弹夹(秒/个/发)"
 
 msgid "vehicleInfo/params/chargeTime"
 msgstr "齐射准备（秒）"
@@ -6867,6 +6906,9 @@ msgstr "观察范围(米)"
 
 msgid "vehicleInfo/params/clipFireRate"
 msgstr "装填(弹夹/炮弹或短弹夹/炮弹数量)"
+
+msgid "vehicleInfo/params/dualAccuracyCoolingDelay"
+msgstr "射击后的火炮冷却时间(秒)"
 
 msgid "vehicleInfo/params/enginePower"
 msgstr "发动机功率(马力)"
@@ -6929,7 +6971,7 @@ msgid "vehicleInfo/params/shotSpeed"
 msgstr "飞行时间"
 
 msgid "vehicleInfo/params/speedLimits"
-msgstr "最大速度/倒车速度(km/h)"
+msgstr "最大速度/倒车速度(千米/小时)"
 
 msgid "vehicleInfo/params/stunMaxDuration"
 msgstr "最大弹震持续时间(秒)"
@@ -6947,7 +6989,7 @@ msgid "vehicleInfo/params/switchTime"
 msgstr "切换到攻城/行驶模式(秒)"
 
 msgid "vehicleInfo/params/turboshaftBurstFireRate"
-msgstr "短弹夹(涡轮)(炮弹/炮弹数量)"
+msgstr "短弹夹(涡轮)(秒/个/发)"
 
 msgid "vehicleInfo/params/turboshaftEnginePower"
 msgstr "发动机功(涡轮)(马力)"

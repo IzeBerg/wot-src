@@ -61,14 +61,15 @@ PROHIBITED_IF_DEAD = [BATTLE_CHAT_COMMAND_NAMES.GOING_THERE, BATTLE_CHAT_COMMAND
  BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY, BATTLE_CHAT_COMMAND_NAMES.ATTACKING_BASE,
  BATTLE_CHAT_COMMAND_NAMES.DEFENDING_BASE, BATTLE_CHAT_COMMAND_NAMES.SUPPORTING_ALLY,
  BATTLE_CHAT_COMMAND_NAMES.VEHICLE_SPOTPOINT, BATTLE_CHAT_COMMAND_NAMES.SHOOTING_POINT,
- BATTLE_CHAT_COMMAND_NAMES.NAVIGATION_POINT]
+ BATTLE_CHAT_COMMAND_NAMES.NAVIGATION_POINT, BATTLE_CHAT_COMMAND_NAMES.FLAG_POINT]
 PROHIBITED_IF_SPECTATOR = [BATTLE_CHAT_COMMAND_NAMES.GOING_THERE, BATTLE_CHAT_COMMAND_NAMES.SOS,
  BATTLE_CHAT_COMMAND_NAMES.HELPME, BATTLE_CHAT_COMMAND_NAMES.ATTACK_ENEMY,
  BATTLE_CHAT_COMMAND_NAMES.ATTACK_BASE, BATTLE_CHAT_COMMAND_NAMES.DEFEND_BASE,
  BATTLE_CHAT_COMMAND_NAMES.PREBATTLE_WAYPOINT, BATTLE_CHAT_COMMAND_NAMES.ATTACKING_BASE,
  BATTLE_CHAT_COMMAND_NAMES.DEFENDING_BASE, BATTLE_CHAT_COMMAND_NAMES.SUPPORTING_ALLY,
  BATTLE_CHAT_COMMAND_NAMES.VEHICLE_SPOTPOINT, BATTLE_CHAT_COMMAND_NAMES.SHOOTING_POINT,
- BATTLE_CHAT_COMMAND_NAMES.NAVIGATION_POINT, BATTLE_CHAT_COMMAND_NAMES.ATTENTION_TO_POSITION]
+ BATTLE_CHAT_COMMAND_NAMES.NAVIGATION_POINT, BATTLE_CHAT_COMMAND_NAMES.ATTENTION_TO_POSITION,
+ BATTLE_CHAT_COMMAND_NAMES.FLAG_POINT]
 
 def getAimedAtPositionWithinBorders(aimOffsetX, aimOffsetY):
     ray, _ = getWorldRayAndPoint(aimOffsetX, aimOffsetY)
@@ -85,7 +86,8 @@ def getAimedAtPositionWithinBorders(aimOffsetX, aimOffsetY):
 
 
 class ChatCommandsController(IBattleController):
-    __slots__ = ('__isEnabled', '__arenaDP', '__feedback', '__ammo', '__markersManager')
+    __slots__ = ('__isEnabled', '__arenaDP', '__feedback', '__ammo', '__markersManager',
+                 '__chatCommandsEnabled')
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
     settingsCore = dependency.descriptor(ISettingsCore)
     _aimOffset = aih_global_binding.bindRW(aih_global_binding.BINDING_ID.AIM_OFFSET)
@@ -126,7 +128,10 @@ class ChatCommandsController(IBattleController):
         else:
             targetID, targetMarkerType, markerSubType = self.__getAimedAtVehicleOrObject()
             if targetMarkerType == MarkerType.INVALID_MARKER_TYPE and self.__markersManager:
-                targetID, targetMarkerType, markerSubType = self.__markersManager.getCurrentlyAimedAtMarkerIDAndType()
+                tID, tMarkerType, tMarkerSubType = self.__markersManager.getCurrentlyAimedAtMarkerIDAndType()
+                needCorrectCheck = tMarkerType == MarkerType.VEHICLE_MARKER_TYPE
+                if not needCorrectCheck or self.__isTargetCorrect(BigWorld.player(), BigWorld.entities.get(tID)):
+                    targetID, targetMarkerType, markerSubType = tID, tMarkerType, tMarkerSubType
             if targetMarkerType == MarkerType.INVALID_MARKER_TYPE and getAimedAtPositionWithinBorders(self._aimOffset[0], self._aimOffset[1]) is not None:
                 targetMarkerType = MarkerType.LOCATION_MARKER_TYPE
                 markerSubType = INVALID_MARKER_SUBTYPE
@@ -303,7 +308,8 @@ class ChatCommandsController(IBattleController):
         if self.__isProhibitedToSendIfDeadOrObserver(cmdName) or self.__isEnabled is False or not self.__arenaDP.getVehicleInfo(targetID).isAlive():
             return
         if self.__isSPG() and cmdName == BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY or self.__isSPGAndInStrategicOrArtyMode() and cmdName == BATTLE_CHAT_COMMAND_NAMES.ATTACK_ENEMY and isInRadialMenu is False:
-            time = self.__getReloadTime() if self.__ammo.getShellsQuantityLeft() > 0 else -1
+            shellsLeft = self.__ammo.getAllShellsQuantityLeft()
+            time = self.__getReloadTime() if shellsLeft > 0 else -1
             command = self.proto.battleCmd.createSPGAimTargetCommand(targetID, time)
         else:
             command = self.proto.battleCmd.createByNameTarget(cmdName, targetID)

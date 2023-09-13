@@ -22,6 +22,7 @@ from gui.prb_control.settings import CTRL_ENTITY_TYPE as _CTRL_TYPE, ENTER_UNIT_
 from gui.prb_control.settings import IGNORED_UNIT_BROWSER_ERRORS
 from gui.prb_control.settings import IGNORED_UNIT_MGR_ERRORS
 from gui.prb_control.settings import PREBATTLE_RESTRICTION, FUNCTIONAL_FLAG
+from gui.prb_control.settings import UNIT_COMP7_ERRORS
 from gui.prb_control.settings import UNIT_NOTIFICATION_TO_DISPLAY
 from gui.prb_control.settings import REQUEST_TYPE as _RQ_TYPE
 from gui.prb_control.storages import PrbStorageDecorator
@@ -34,6 +35,8 @@ from skeletons.gui.game_control import IIGRController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.prb_control import IPrbControlLoader
 from skeletons.gui.server_events import IEventsCache
+if typing.TYPE_CHECKING:
+    from typing import Any
 _logger = logging.getLogger(__name__)
 
 class _PreBattleDispatcher(ListenersCollection):
@@ -164,7 +167,7 @@ class _PreBattleDispatcher(ListenersCollection):
         return
 
     @adisp_async
-    def leave(self, ctx, callback=None, ignoreConfirmation=False):
+    def leave(self, ctx, callback=None, ignoreConfirmation=False, parent=None):
         if ctx.getRequestType() != _RQ_TYPE.LEAVE:
             LOG_ERROR('Invalid context to leave prebattle/unit', ctx)
             if callback is not None:
@@ -179,7 +182,7 @@ class _PreBattleDispatcher(ListenersCollection):
         if not ignoreConfirmation:
             meta = entity.getConfirmDialogMeta(ctx)
             if meta:
-                entity.showDialog(meta, lambda result: self.__leaveCallback(result, ctx, callback))
+                entity.showDialog(meta, lambda result: self.__leaveCallback(result, ctx, callback), parent=parent)
                 return
         self.__leaveLogic(ctx, callback)
         return
@@ -282,18 +285,22 @@ class _PreBattleDispatcher(ListenersCollection):
                 result = yield self.select(selectResult.newEntry)
             if callback is not None:
                 callback(result)
+            g_eventDispatcher.dispatchSwitchResult(result)
             return
-        entry = self.__factories.createEntryByAction(action)
-        if entry is not None:
-            if hasattr(entry, 'configure'):
-                entry.configure(action)
-            result = yield self.select(entry)
+        else:
+            entry = self.__factories.createEntryByAction(action)
+            if entry is not None:
+                if hasattr(entry, 'configure'):
+                    entry.configure(action)
+                result = yield self.select(entry)
+                if callback is not None:
+                    callback(result)
+                g_eventDispatcher.dispatchSwitchResult(result)
+                return
             if callback is not None:
-                callback(result)
+                callback(False)
+            g_eventDispatcher.dispatchSwitchResult(False)
             return
-        if callback is not None:
-            callback(False)
-        return
 
     @adisp_async
     @adisp_process
@@ -303,22 +310,27 @@ class _PreBattleDispatcher(ListenersCollection):
             LOG_ERROR('Factory is not found', self.__entity)
             if callback is not None:
                 callback(True)
+            g_eventDispatcher.dispatchSwitchResult(True)
             return
-        flags = FUNCTIONAL_FLAG.UNDEFINED
-        if action.isExit:
-            flags = FUNCTIONAL_FLAG.EXIT
-        elif self.__entity.canKeepMode():
-            flags = self.__entity.getModeFlags()
-        ctx = factory.createLeaveCtx(flags, entityType=self.__entity.getEntityType())
-        if self.__entity.isInCoolDown(ctx.getRequestType()):
+        else:
+            flags = FUNCTIONAL_FLAG.UNDEFINED
+            if action.isExit:
+                flags = FUNCTIONAL_FLAG.EXIT
+            else:
+                if self.__entity.canKeepMode():
+                    flags = self.__entity.getModeFlags()
+                ctx = factory.createLeaveCtx(flags, entityType=self.__entity.getEntityType())
+                if self.__entity.isInCoolDown(ctx.getRequestType()):
+                    if callback is not None:
+                        callback(True)
+                    g_eventDispatcher.dispatchSwitchResult(True)
+                    return
+            self.__entity.setCoolDown(ctx.getRequestType(), ctx.getCooldown())
+            result = yield self.leave(ctx, ignoreConfirmation=action.ignoreConfirmation, parent=action.parent)
             if callback is not None:
-                callback(True)
+                callback(result)
+            g_eventDispatcher.dispatchSwitchResult(result)
             return
-        self.__entity.setCoolDown(ctx.getRequestType(), ctx.getCooldown())
-        result = yield self.leave(ctx, ignoreConfirmation=action.ignoreConfirmation)
-        if callback is not None:
-            callback(result)
-        return
 
     def getGUIPermissions(self):
         return self.__entity.getPermissions()
@@ -458,6 +470,9 @@ class _PreBattleDispatcher(ListenersCollection):
             self.__requestCtx.stopProcessing()
         if errorCode in ENTER_UNIT_MGR_ERRORS:
             self.restorePrevious()
+        elif errorCode in UNIT_COMP7_ERRORS:
+            if isinstance(self.__entity, NotSupportedEntity):
+                self.__setDefault()
 
     def unitMgr_onUnitNotifyReceived(self, unitMgrID, notifyCode, notifyString, argsList):
         if notifyCode in UNIT_NOTIFICATION_TO_DISPLAY:
@@ -639,8 +654,11 @@ class _PreBattleDispatcher(ListenersCollection):
             if created.getEntityFlags() & FUNCTIONAL_FLAG.SET_GLOBAL_LISTENERS > 0:
                 created.addMutualListeners(self)
             if self.__entity is not None and not isinstance(self.__entity, NotSupportedEntity):
-                _logger.info("__setEntity() new entity '%r' was created, previous entity '%r' was stopped", created, self.__entity)
-                self.__entity.fini()
+                factory = self.__factories.get(self.__entity.getCtrlType())
+                if factory is not None:
+                    _logger.info("__setEntity() new entity '%r' was created, previous entity '%r' was stopped", created, self.__entity)
+                    leaveCtx = factory.createLeaveCtx(flags=self.__entity.getModeFlags() | FUNCTIONAL_FLAG.EXIT, entityType=self.__entity.getEntityType())
+                    self.__entity.fini(ctx=leaveCtx)
             self.__entity = created
             if self.__prevEntity is not None and self.__prevEntity.isActive():
                 self.__prevEntity.fini()

@@ -7,6 +7,8 @@ package
       
       public static const BADGE:Class = BADGE;
       
+      public static const BATTLE_HINTS:Class = BATTLE_HINTS;
+      
       public static const BATTLE_MATTERS:Class = BATTLE_MATTERS;
       
       public static const BATTLE_RESULTS:Class = BATTLE_RESULTS;

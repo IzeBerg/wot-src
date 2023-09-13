@@ -35,7 +35,7 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       private var _curPercents:Number;
       
-      private var _lineWidth:int = 1;
+      private var _thickness:int = 1;
       
       private var _defaultStepsPoints:Vector.<GunMarkerMixingStepPoints> = null;
       
@@ -62,9 +62,9 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       {
       }
       
-      public function setReloadingAsPercent(param1:Number) : void
+      public function setReloadingAsPercent(param1:Number, param2:Boolean = false) : void
       {
-         if(this._curPercents != param1)
+         if(this._curPercents != param1 || param2)
          {
             this._curPercents = param1;
             this._circleShape.graphics.clear();
@@ -100,7 +100,7 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
             {
                return;
             }
-            this._circleShape.graphics.lineStyle(this._lineWidth,param1,param2,false,LINE_NO_SCALE);
+            this._circleShape.graphics.lineStyle(this._thickness,param1,param2,false,LINE_NO_SCALE);
             this._circleShape.graphics.moveTo(RADIUS,0);
             _loc5_ = 0;
             _loc6_ = 0;
@@ -133,6 +133,12 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
                this._circleShape.graphics.curveTo(_loc6_ * Math.cos(_loc8_ - _loc5_),_loc6_ * Math.sin(_loc8_ - _loc5_),RADIUS * Math.cos(_loc8_),RADIUS * Math.sin(_loc8_));
             }
          }
+      }
+      
+      public function set thickness(param1:int) : void
+      {
+         this._thickness = param1;
+         this.setReloadingAsPercent(this._curPercents,true);
       }
    }
 }

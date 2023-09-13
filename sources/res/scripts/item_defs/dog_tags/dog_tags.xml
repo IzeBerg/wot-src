@@ -553,12 +553,13 @@
 		<viewType>engraving</viewType>
 		<purpose>DEDICATION</purpose>
 		<isExternalUnlockOnly>true</isExternalUnlockOnly>
-		<progressKey>stats_api.comp7Season1Wins</progressKey>
+		<progressKey>stats_api.comp7DeprecatedProgress</progressKey>
 		<grades>0 60 70 80 90 110 130 150 175 200</grades>
 		<isDefault>false</isDefault>
 		<battleTypes>43</battleTypes>
 		<glossaryName>COMP7_SEASON1_WINS</glossaryName>
 		<isSecret>true</isSecret>
+		<isDeprecated>true</isDeprecated>
 	</component>
 	<component>
 		<componentId>602</componentId>
@@ -614,11 +615,13 @@
 		<viewType>engraving</viewType>
 		<purpose>DEDICATION</purpose>
 		<isExternalUnlockOnly>true</isExternalUnlockOnly>
-		<progressKey>stats_api.comp7Season2Wins</progressKey>
+		<progressKey>stats_api.comp7DeprecatedProgress</progressKey>
 		<grades>0 60 70 80 90 110 130 150 175 200</grades>
 		<isDefault>false</isDefault>
 		<battleTypes>43</battleTypes>
 		<glossaryName>COMP7_2023_1_WINS</glossaryName>
+		<isSecret>true</isSecret>
+		<isDeprecated>true</isDeprecated>
 	</component>
 	<component>
 		<componentId>609</componentId>
@@ -667,6 +670,60 @@
 		<purpose>BASE</purpose>
 		<glossaryName>COMP7_2023_1_ELITE</glossaryName>
 		<isSecret>true</isSecret>
+	</component>
+	<component>
+		<componentId>616</componentId>
+		<resourceRoot>#dogtags:component/engraving/dedication/616</resourceRoot>
+		<viewType>engraving</viewType>
+		<purpose>DEDICATION</purpose>
+		<isExternalUnlockOnly>true</isExternalUnlockOnly>
+		<progressKey>stats_api.comp7Season1Wins</progressKey>
+		<grades>0 60 70 80 90 110 130 150 175 200</grades>
+		<isDefault>false</isDefault>
+		<battleTypes>43</battleTypes>
+		<glossaryName>COMP7_3_1_WINS</glossaryName>
+	</component>
+	<component>
+		<componentId>617</componentId>
+		<resourceRoot>#dogtags:component/background/base/617</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_3_1_IRON</glossaryName>
+	</component>
+	<component>
+		<componentId>618</componentId>
+		<resourceRoot>#dogtags:component/background/base/618</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_3_1_BRONZE</glossaryName>
+	</component>
+	<component>
+		<componentId>619</componentId>
+		<resourceRoot>#dogtags:component/background/base/619</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_3_1_SILVER</glossaryName>
+	</component>
+	<component>
+		<componentId>620</componentId>
+		<resourceRoot>#dogtags:component/background/base/620</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_3_1_GOLD</glossaryName>
+	</component>
+	<component>
+		<componentId>621</componentId>
+		<resourceRoot>#dogtags:component/background/base/621</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_3_1_CHAMPION</glossaryName>
+	</component>
+	<component>
+		<componentId>622</componentId>
+		<resourceRoot>#dogtags:component/background/base/622</resourceRoot>
+		<viewType>background</viewType>
+		<purpose>BASE</purpose>
+		<glossaryName>COMP7_3_1_LEGEND</glossaryName>
 	</component>
 	<startingComponents>
 		<components>66 300</components>

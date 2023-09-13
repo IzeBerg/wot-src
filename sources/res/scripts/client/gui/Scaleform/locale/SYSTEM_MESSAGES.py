@@ -948,6 +948,7 @@ class SYSTEM_MESSAGES(object):
     UNIT_ERRORS_WRONG_VEHICLE = '#system_messages:unit/errors/WRONG_VEHICLE'
     UNIT_ERRORS_ACCOUNT_BANNED = '#system_messages:unit/errors/ACCOUNT_BANNED'
     UNIT_ERRORS_NO_ARENA_VEHICLES = '#system_messages:unit/errors/NO_ARENA_VEHICLES'
+    UNIT_ERRORS_COMP7_QUALIFICATION = '#system_messages:unit/errors/COMP7_QUALIFICATION'
     IGR_CUSTOMIZATION_BEGIN = '#system_messages:igr/customization/begin'
     IGR_CUSTOMIZATION_END = '#system_messages:igr/customization/end'
     INFO_NOAVAILABLE = '#system_messages:info/noAvailable'
@@ -1349,15 +1350,6 @@ class SYSTEM_MESSAGES(object):
     ACHIEVEMENTS_SERVER_ERROR = '#system_messages:achievements/server_error'
     LIMITEDUI_SWITCHON = '#system_messages:limitedUI/switchOn'
     LIMITEDUI_SWITCHOFF = '#system_messages:limitedUI/switchOff'
-    WOTANNIVERSARY_SWITCH_STARTED_TITLE = '#system_messages:wotAnniversary/switch_started/title'
-    WOTANNIVERSARY_SWITCH_STARTED_BODY = '#system_messages:wotAnniversary/switch_started/body'
-    WOTANNIVERSARY_SWITCH_PAUSE_BODY = '#system_messages:wotAnniversary/switch_pause/body'
-    WOTANNIVERSARY_SWITCH_ENABLED_BODY = '#system_messages:wotAnniversary/switch_enabled/body'
-    WOTANNIVERSARY_SWITCH_DISABLE_BODY = '#system_messages:wotAnniversary/switch_disable/body'
-    WOTANNIVERSARY_EVENTWILLENDSOON_HEADER = '#system_messages:wotAnniversary/eventWillEndSoon/header'
-    WOTANNIVERSARY_EVENTWILLENDSOON_BODY = '#system_messages:wotAnniversary/eventWillEndSoon/body'
-    WOTANNIVERSARY_EVENTFINISHED_BODY = '#system_messages:wotAnniversary/eventFinished/body'
-    WOTANNIVERSARY_AWARD_HEADER = '#system_messages:wotAnniversary/award/header'
     UNIT_NOTIFICATION_DIVISIONTYPE_ENUM = (
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -1418,7 +1410,8 @@ class SYSTEM_MESSAGES(object):
      UNIT_ERRORS_BAD_VEHICLES_SET,
      UNIT_ERRORS_WRONG_VEHICLE,
      UNIT_ERRORS_ACCOUNT_BANNED,
-     UNIT_ERRORS_NO_ARENA_VEHICLES)
+     UNIT_ERRORS_NO_ARENA_VEHICLES,
+     UNIT_ERRORS_COMP7_QUALIFICATION)
     UNIT_WARNINGS_ENUM = (
      UNIT_WARNINGS_NO_CLAN_MEMBERS,
      UNIT_WARNINGS_CANT_PICK_LEADER,
@@ -2441,6 +2434,7 @@ class SYSTEM_MESSAGES(object):
      UNIT_ERRORS_WRONG_VEHICLE,
      UNIT_ERRORS_ACCOUNT_BANNED,
      UNIT_ERRORS_NO_ARENA_VEHICLES,
+     UNIT_ERRORS_COMP7_QUALIFICATION,
      IGR_CUSTOMIZATION_BEGIN,
      IGR_CUSTOMIZATION_END,
      INFO_NOAVAILABLE,
@@ -2841,16 +2835,7 @@ class SYSTEM_MESSAGES(object):
      WINBACK_TURNOFFBATTLESERROR,
      ACHIEVEMENTS_SERVER_ERROR,
      LIMITEDUI_SWITCHON,
-     LIMITEDUI_SWITCHOFF,
-     WOTANNIVERSARY_SWITCH_STARTED_TITLE,
-     WOTANNIVERSARY_SWITCH_STARTED_BODY,
-     WOTANNIVERSARY_SWITCH_PAUSE_BODY,
-     WOTANNIVERSARY_SWITCH_ENABLED_BODY,
-     WOTANNIVERSARY_SWITCH_DISABLE_BODY,
-     WOTANNIVERSARY_EVENTWILLENDSOON_HEADER,
-     WOTANNIVERSARY_EVENTWILLENDSOON_BODY,
-     WOTANNIVERSARY_EVENTFINISHED_BODY,
-     WOTANNIVERSARY_AWARD_HEADER)
+     LIMITEDUI_SWITCHOFF)
 
     @classmethod
     def unit_notification_divisiontype(cls, key0):

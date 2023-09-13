@@ -60,9 +60,7 @@ def _loadLoot(typeID, radius, callback, desc):
     loot.prepareCompositeLoader(callback)
     spaceID = BigWorld.player().spaceID
     cachingManager = CGF.getManager(spaceID, SteelHunterDynamicObjectsCachingManager)
-    hasLoot = cachingManager.hasCachedLoot(typeID)
-    useForeground = cachingManager is not None and hasLoot
-    if useForeground:
+    if cachingManager is not None and cachingManager.hasCachedLoot(typeID):
         _loadLootForeground(loot, spaceID, desc)
     else:
         cachingManager.cacheForegroundLootLoading(loot)
@@ -122,7 +120,7 @@ class LootObject(TerrainAreaGameObject, ILootObject, CompositeLoaderMixin):
         return len(self.__children) + 1
 
 
-@bonusCapsManager(ARENA_BONUS_TYPE_CAPS.BATTLEROYALE)
+@bonusCapsManager(ARENA_BONUS_TYPE_CAPS.BATTLEROYALE, CGF.DomainOption.DomainClient)
 class SteelHunterDynamicObjectsCachingManager(CGF.ComponentManager):
     __dynamicObjectsCache = dependency.descriptor(IBattleDynamicObjectsCache)
 
@@ -181,7 +179,9 @@ class SteelHunterDynamicObjectsCachingManager(CGF.ComponentManager):
 
         self.__lootCache[lootType] = cachedResources
         for effectPath in effectsPaths:
-            resourceList[effectPath].halt()
+            effect = resourceList[effectPath]
+            if effect:
+                effect.halt()
 
         _logger.info('[Loot] Loot %d resources has been cached', lootType)
         toForegroundLoad = self.__cachingQueue[lootType]

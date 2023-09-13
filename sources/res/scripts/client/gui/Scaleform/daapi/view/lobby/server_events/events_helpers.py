@@ -23,7 +23,6 @@ from gui.server_events import conditions, formatters, settings as quest_settings
 from gui.server_events.events_helpers import EventInfoModel, MISSIONS_STATES, QuestInfoModel, isDailyQuest, getDataByC11nQuest
 from gui.server_events.personal_progress.formatters import PostBattleConditionsFormatter
 from gui.shared.formatters import icons, text_styles
-from gui.wot_anniversary.wot_anniversary_helpers import isWotAnniversaryQuest
 from helpers import dependency, i18n, int2roman, time_utils
 from helpers.i18n import makeString as _ms
 from nations import ALLIANCE_TO_NATIONS
@@ -207,7 +206,7 @@ class EventPostBattleInfo(EventInfoModel):
            'isSelectable': True, 
            'isNew': quest_settings.isNewCommonEvent(self.event), 
            'isAvailable': isAvailable, 
-           'linkTooltip': self._getTooltipLink()}
+           'linkTooltip': TOOLTIPS.QUESTS_LINKBTN_TASK}
 
     def getPostBattleInfo(self, svrEvents, pCur, pPrev, isProgressReset, isCompleted, progressData):
         progresses = []
@@ -246,10 +245,6 @@ class EventPostBattleInfo(EventInfoModel):
 
     def _getBonuses(self, svrEvents, pCur=None, bonuses=None):
         return []
-
-    def _getTooltipLink(self):
-        if isWotAnniversaryQuest(str(self.event.getID())):
-            return TOOLTIPS.QUESTS_LINKBTN_WOTANNIVERSARY
 
     def _getProgresses(self, pCur, pPrev):
         index = 0

@@ -113,9 +113,7 @@ def _formatVehicleOwnership(item):
             if event:
                 rentType = 'event'
             else:
-                if item.isWotPlusRent:
-                    rentType = 'wotPlus'
-                elif item.isTelecomRent:
+                if item.isTelecomRent:
                     rentType = 'telecom'
                 else:
                     rentType = None

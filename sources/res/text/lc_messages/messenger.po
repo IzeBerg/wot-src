@@ -199,7 +199,7 @@ msgid "client/dynSquad/inviteSent"
 msgstr "%(receiver)s已加入小队。"
 
 msgid "client/error/broadcastInCooldown"
-msgstr "你发送的消息被暂停%s 秒。"
+msgstr "%s秒内不能发送消息。"
 
 msgid "client/error/commandInCooldown/limited"
 msgstr "\"%s\" 消息已被暂停 %s 秒。"
@@ -208,13 +208,13 @@ msgid "client/error/commandInCooldown/unlimited"
 msgstr "%s 消息已被暂停。"
 
 msgid "client/errors/commandInCooldown/suspendedText"
-msgstr "消息暂停。请等待 %s 秒。"
+msgstr "暂时不能发送消息。请等待%s秒。"
 
 msgid "client/information/addToFriends/message"
 msgstr "将玩家%s加入好友列表的请求已保存。"
 
 msgid "client/information/addToIgnored/message"
-msgstr "玩家 %s 已被添加到您的黑名单，语音聊天被禁用且无法收到信息。"
+msgstr "已保存将玩家%s加入黑名单的请求。与该玩家聊天已被阻止，该玩家发送的信息已被隐藏。"
 
 msgid "client/information/addToTmpIgnored/message"
 msgstr "%s的聊天被屏蔽；玩该家的消息被隐藏。"
@@ -226,7 +226,7 @@ msgid "client/information/removeFromFriends/message"
 msgstr "将玩家%s从好友列表中移除的请求已保存。"
 
 msgid "client/information/removeFromIgnored/message"
-msgstr "玩家 %s 已从您的黑名单中移除，语音聊天可以使用。"
+msgstr "已保存将玩家%s移出黑名单的请求。与该玩家的聊天功能已完全恢复。"
 
 msgid "client/information/removeFromTmpIgnored/message"
 msgstr "%s的聊天恢复使用。"
@@ -1309,7 +1309,7 @@ msgid "server/errors/commandInCooldown/title"
 msgstr "聊天错误"
 
 msgid "server/errors/commandInTeamCooldown/message"
-msgstr "消息已被暂停。消息数量过多。"
+msgstr "暂时不能发送消息。消息数量过多。"
 
 msgid "server/errors/connectTimeout/message"
 msgstr "频道连接超时。"
@@ -1485,6 +1485,12 @@ msgstr "胜利"
 msgid "serviceChannelMessages/Financial/add"
 msgstr "已添加"
 
+msgid "serviceChannelMessages/WotPlusIntroNotification/body"
+msgstr "我们为坦克世界Plus订阅用户引入了签到奖励功能。"
+
+msgid "serviceChannelMessages/WotPlusIntroNotification/header"
+msgstr "新的坦克世界Plus福利已发布"
+
 msgid "serviceChannelMessages/achievementReceived/message"
 msgstr "服役记录"
 
@@ -1629,11 +1635,14 @@ msgstr "车位: %(count)s"
 msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body/vehicle"
 msgstr "租用坦克：%(vehName)s"
 
-msgid "serviceChannelMessages/battleMatters/paused"
-msgstr "您暂时无法完成新兵成长计划任务。您所完成任务的进度将被保存。"
+msgid "serviceChannelMessages/battleMatters/taskReminder/body"
+msgstr "返回训练任务，获取实用奖励。"
 
-msgid "serviceChannelMessages/battleMatters/started"
-msgstr "新兵成长计划任务已再次开放。"
+msgid "serviceChannelMessages/battleMatters/taskReminder/button"
+msgstr "前往当前任务"
+
+msgid "serviceChannelMessages/battleMatters/taskReminder/title"
+msgstr "新兵成长计划"
 
 msgid "serviceChannelMessages/battleMatters/token"
 msgstr "新兵令牌"
@@ -1898,7 +1907,7 @@ msgid "serviceChannelMessages/battleResults/quests/equipCoin"
 msgstr "已添加合金元件"
 
 msgid "serviceChannelMessages/battleResults/quests/eventCoin"
-msgstr "已添加周年纪念币"
+msgstr "已增加周年纪念币"
 
 msgid "serviceChannelMessages/battleResults/quests/freeXP"
 msgstr "收到全局经验"
@@ -2216,7 +2225,7 @@ msgid "serviceChannelMessages/demountKitEnabled"
 msgstr "与拆卸工具有关的操作现在可以进行了。非常抱歉为您带来不便。"
 
 msgid "serviceChannelMessages/dogTags/bonus/background"
-msgstr "军用识别牌基底已解锁：%(name)s"
+msgstr "军用识别牌基底已解锁: %(name)s"
 
 msgid "serviceChannelMessages/dogTags/bonus/engraving"
 msgstr "军用识别牌雕刻已解锁：%(name)s"
@@ -2276,7 +2285,7 @@ msgid "serviceChannelMessages/epicReward/recertificationForm_gift"
 msgstr "• 再训练命令"
 
 msgid "serviceChannelMessages/eventCoinReceivedAsGift"
-msgstr "您已获得周年纪念币: %(eventCoin)s。"
+msgstr "您已获得周年纪念币：%(eventCoin)s。"
 
 msgid "serviceChannelMessages/excludedMap/available/title"
 msgstr "已解锁额外的排除地图空位"
@@ -2505,7 +2514,7 @@ msgid "serviceChannelMessages/invoiceReceived/compensation/emblem"
 msgstr "徽章"
 
 msgid "serviceChannelMessages/invoiceReceived/compensation/eventCoin"
-msgstr "以周年纪念币的形式"
+msgstr "以周年纪念币形式"
 
 msgid "serviceChannelMessages/invoiceReceived/compensation/gold"
 msgstr "金币"
@@ -2598,7 +2607,7 @@ msgid "serviceChannelMessages/invoiceReceived/equipment"
 msgstr "给养"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinAccrued"
-msgstr "已添加周年纪念币"
+msgstr "已增加周年纪念币"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinDebited"
 msgstr "已移除周年纪念币"
@@ -2647,6 +2656,12 @@ msgstr "收到%(nationName)s坦克蓝图碎片"
 
 msgid "serviceChannelMessages/invoiceReceived/nationalBlueprintsDebited"
 msgstr "移除%(nationName)s坦克蓝图碎片"
+
+msgid "serviceChannelMessages/invoiceReceived/offersAccrued"
+msgstr "已添加"
+
+msgid "serviceChannelMessages/invoiceReceived/offersDebited"
+msgstr "已移除"
 
 msgid "serviceChannelMessages/invoiceReceived/pieces"
 msgstr "个"
@@ -3215,10 +3230,10 @@ msgid "serviceChannelMessages/sysMsg/converter/emblems"
 msgstr "徽章更改"
 
 msgid "serviceChannelMessages/sysMsg/converter/eventCoinReceived"
-msgstr "已添加周年纪念币: %(eventCoin)s"
+msgstr "已增加周年纪念币：%(eventCoin)s"
 
 msgid "serviceChannelMessages/sysMsg/converter/eventCoinWithdrawn"
-msgstr "已移除周年纪念币: %(eventCoin)s"
+msgstr "已移除周年纪念币：%(eventCoin)s"
 
 msgid "serviceChannelMessages/sysMsg/converter/freeXPReceived"
 msgstr "收到全局经验:%(freeXP)s"
@@ -3492,11 +3507,51 @@ msgstr "选择"
 msgid "serviceChannelMessages/winbackSelectableRewardEntry/header"
 msgstr "已获得奖励！"
 
+msgid ""
+"serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/endText"
+msgstr "持续登录游戏以获得更多奖励！"
+
+msgid ""
+"serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/startText"
+msgstr "已获得特殊签到奖励！"
+
+msgid ""
+"serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleEnded/title"
+msgstr "周期已完成"
+
+msgid ""
+"serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleStarted/endText"
+msgstr "登录游戏并领取奖励。"
+
+msgid ""
+"serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleStarted/startText"
+msgstr "新的坦克世界Plus福利已发放！"
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/title"
+msgstr "签到奖励"
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/endText"
+msgstr "改天再来领取新奖励！"
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/title"
+msgstr "您已签到！"
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendances/isDisabled/text"
+msgstr "签到奖励功能已暂停。"
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendances/isDisabled/title"
+msgstr "签到奖励不可用"
+
+msgid "serviceChannelMessages/wotPlus/dailyAttendances/isEnabled/title"
+msgstr "签到奖励可用"
+
 msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/subscribed/text"
-msgstr "专属重型坦克<font color='#E9E2BF'>%(vehicleName)s</font>已开放使用。"
+msgstr ""
+"坦克世界Plus专属<font color='#E9E2BF'>%(vehicleName)s</font>%(vehicleType)s现已开放使用。"
 
 msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/unsubscribed/text"
-msgstr "坦克世界Plus专属重型坦克<font color='#E9E2BF'>%(vehicleName)s</font>暂时无法使用。"
+msgstr ""
+"坦克世界Plus专属<font color='#E9E2BF'>%(vehicleName)s</font>%(vehicleType)s暂时无法使用。"
 
 msgid "serviceChannelMessages/wotPlus/expireFreeDemount/title"
 msgstr "免费拆卸配件不可用"
@@ -3506,15 +3561,6 @@ msgstr "续订坦克世界Plus即可获得所有专属福利。"
 
 msgid "serviceChannelMessages/wotPlus/expireMessage/title"
 msgstr "坦克世界Plus已于%(time)s到期"
-
-msgid "serviceChannelMessages/wotPlus/freeDirectives/isDisabled/title"
-msgstr "已暂停获取免费指令"
-
-msgid "serviceChannelMessages/wotPlus/freeDirectives/isEnabled/title"
-msgstr "恢复获取免费指令"
-
-msgid "serviceChannelMessages/wotPlus/freeDirectives/received/title"
-msgstr "已获取免费指令"
 
 msgid "serviceChannelMessages/wotPlus/goldReserve/isDisabled/text"
 msgstr "金币储备库已暂停。"

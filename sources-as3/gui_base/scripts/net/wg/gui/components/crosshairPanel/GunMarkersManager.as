@@ -2,18 +2,24 @@ package net.wg.gui.components.crosshairPanel
 {
    import flash.display.DisplayObject;
    import flash.display.DisplayObjectContainer;
+   import net.wg.data.constants.generated.GUN_MARKER_VIEW_CONSTANTS;
    import net.wg.gui.components.crosshairPanel.VO.CrosshairSettingsVO;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.DualGunMarker;
+   import net.wg.gui.components.crosshairPanel.components.gunMarker.GunMarker;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.IGunMarker;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    
    public class GunMarkersManager implements IDisposable
    {
+      
+      private static const DUAL_ACC_NAMES:Array = [GUN_MARKER_VIEW_CONSTANTS.ARCADE_DUAL_ACC_GUN_MARKER_NAME,GUN_MARKER_VIEW_CONSTANTS.SNIPER_DUAL_ACC_GUN_MARKER_NAME];
        
       
       private var _gunMarkers:Object = null;
       
       private var _dualGunMarkers:Vector.<DualGunMarker>;
+      
+      private var _dualAccGunMarkers:Vector.<GunMarker>;
       
       private var _scale:Number = 1;
       
@@ -32,6 +38,7 @@ package net.wg.gui.components.crosshairPanel
          super();
          this._gunMarkers = {};
          this._dualGunMarkers = new Vector.<DualGunMarker>(0);
+         this._dualAccGunMarkers = new Vector.<GunMarker>(0);
          this._container = param1;
       }
       
@@ -60,6 +67,12 @@ package net.wg.gui.components.crosshairPanel
          if(param1 is DualGunMarker)
          {
             this._dualGunMarkers.push(param1);
+         }
+         var _loc3_:Boolean = DUAL_ACC_NAMES.indexOf(param2) > -1;
+         if(_loc3_)
+         {
+            this._dualAccGunMarkers.push(param1);
+            param1.setIsSecondary(true);
          }
          if(this._markerSettings)
          {
@@ -108,6 +121,8 @@ package net.wg.gui.components.crosshairPanel
          this._gunMarkers = cleanupObject(this._gunMarkers);
          this._dualGunMarkers.length = 0;
          this._dualGunMarkers = null;
+         this._dualAccGunMarkers.length = 0;
+         this._dualAccGunMarkers = null;
          this._markerSettings = null;
          this._container = null;
       }
@@ -173,6 +188,15 @@ package net.wg.gui.components.crosshairPanel
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      public function setDualAccActive(param1:Boolean) : void
+      {
+         var _loc2_:IGunMarker = null;
+         for each(_loc2_ in this._gunMarkers)
+         {
+            _loc2_.setDualAccActive(param1);
+         }
       }
    }
 }

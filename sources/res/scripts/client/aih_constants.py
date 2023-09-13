@@ -1,5 +1,11 @@
 
 
+class CTRL_TYPE(object):
+    USUAL = 0
+    OPTIONAL = 1
+    DEVELOPMENT = 2
+
+
 class ShakeReason(object):
     OWN_SHOT = 0
     OWN_SHOT_DELAYED = 1
@@ -56,6 +62,7 @@ class GUN_MARKER_TYPE(int):
     UNDEFINED = 0
     CLIENT = 1
     SERVER = 2
+    DUAL_ACC = 3
 
 
 class GUN_MARKER_FLAG(int):

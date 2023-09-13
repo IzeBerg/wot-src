@@ -247,7 +247,8 @@ class _TipsValidator(object):
          _BattlePassValidator(),
          _RankedBattlesValidator(),
          _PostProgressionValidator(),
-         _ChassisTypeValidator())
+         _ChassisTypeValidator(),
+         _VehPropertyValidator())
 
     def validateRegularTip(self, tipFilter, ctx=None):
         if not tipFilter:
@@ -326,6 +327,14 @@ class _ChassisTypeValidator(object):
     def validate(tipFilter, ctx):
         chassisType = tipFilter['chassisType']
         return chassisType < 0 or ctx['vehicleType'].chassisType == chassisType
+
+
+class _VehPropertyValidator(object):
+
+    @staticmethod
+    def validate(tipFilter, ctx):
+        requiredProperty = tipFilter['vehProperty']
+        return not requiredProperty or getattr(ctx['vehicleType'], requiredProperty, False)
 
 
 class _BattlesValidator(object):

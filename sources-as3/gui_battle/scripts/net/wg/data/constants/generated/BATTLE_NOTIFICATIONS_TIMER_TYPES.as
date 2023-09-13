@@ -9,6 +9,10 @@ package net.wg.data.constants.generated
       
       public static const DANGER_ZONE:String = "dangerZone";
       
+      public static const WARNING_ZONE:String = "warningZone";
+      
+      public static const MAP_DEATH_ZONE:String = "mapDeathZone";
+      
       public static const OVERTURNED:String = "overturned";
       
       public static const FIRE:String = "fire";

@@ -5,6 +5,7 @@ from battle_royale.gui.constants import BattleRoyaleEquipments
 import BattleReplay, SoundGroups
 from AvatarInputHandler import AvatarInputHandler
 from ReplayEvents import g_replayEvents
+from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from gui.Scaleform.daapi.view.battle.shared import destroy_times_mapping as _mapping
 from gui.Scaleform.daapi.view.battle.shared.timers_common import TimerComponent, PythonTimer
 from gui.Scaleform.daapi.view.meta.TimersPanelMeta import TimersPanelMeta
@@ -24,15 +25,17 @@ from items import vehicles
 from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.lobby_context import ILobbyContext
 _logger = logging.getLogger(__name__)
-_TIMERS_PRIORITY = {(_TIMER_STATES.DANGER_ZONE, _TIMER_STATES.CRITICAL_VIEW): 1, 
-   (_TIMER_STATES.FIRE, _TIMER_STATES.WARNING_VIEW): 2, 
+_TIMERS_PRIORITY = {(_TIMER_STATES.OVERTURNED, _TIMER_STATES.CRITICAL_VIEW): 1, 
+   (_TIMER_STATES.OVERTURNED, _TIMER_STATES.WARNING_VIEW): 2, 
    (_TIMER_STATES.DROWN, _TIMER_STATES.CRITICAL_VIEW): 3, 
-   (_TIMER_STATES.OVERTURNED, _TIMER_STATES.CRITICAL_VIEW): 4, 
-   (_TIMER_STATES.OVERTURNED, _TIMER_STATES.WARNING_VIEW): 5, 
-   (_TIMER_STATES.DROWN, _TIMER_STATES.WARNING_VIEW): 6, 
-   (_TIMER_STATES.STUN, _TIMER_STATES.WARNING_VIEW): 7, 
-   (_TIMER_STATES.INSPIRE_SOURCE, _TIMER_STATES.WARNING_VIEW): 8, 
-   (_TIMER_STATES.INSPIRE_INACTIVATION_SOURCE, _TIMER_STATES.WARNING_VIEW): 8}
+   (_TIMER_STATES.DANGER_ZONE, _TIMER_STATES.CRITICAL_VIEW): 4, 
+   (_TIMER_STATES.MAP_DEATH_ZONE, _TIMER_STATES.WARNING_VIEW): 5, 
+   (_TIMER_STATES.WARNING_ZONE, _TIMER_STATES.WARNING_VIEW): 6, 
+   (_TIMER_STATES.DROWN, _TIMER_STATES.WARNING_VIEW): 7, 
+   (_TIMER_STATES.FIRE, _TIMER_STATES.WARNING_VIEW): 8, 
+   (_TIMER_STATES.STUN, _TIMER_STATES.WARNING_VIEW): 9, 
+   (_TIMER_STATES.INSPIRE_SOURCE, _TIMER_STATES.WARNING_VIEW): 10, 
+   (_TIMER_STATES.INSPIRE_INACTIVATION_SOURCE, _TIMER_STATES.WARNING_VIEW): 10}
 _SECONDARY_TIMERS = (
  _TIMER_STATES.STUN,
  _TIMER_STATES.CAPTURE_BLOCK,
@@ -193,12 +196,9 @@ class _StackTimersCollection(_BaseTimersCollection):
         if timerPriority == 0:
             timer.show()
         elif self._currentTimer is None:
-            npTimer = self.__findNextPriorityByPriorityMap()
-            if oldTimer and (npTimer is None or oldTimer.typeID != npTimer.typeID):
-                oldTimer.hide()
-            self._currentTimer = npTimer
+            self.__setNextPriorityTimer(oldTimer)
             if self._currentTimer is not None:
-                self._currentTimer.show(npTimer.typeID == timer.typeID)
+                self._currentTimer.show(self._currentTimer.typeID == timer.typeID)
         else:
             cmpResult = cmp(timerPriority, _TIMERS_PRIORITY[(self._currentTimer.typeID, self._currentTimer.viewID)])
             if cmpResult == -1 or cmpResult == 0 and self._currentTimer.finishTime >= timer.finishTime:
@@ -240,7 +240,7 @@ class _StackTimersCollection(_BaseTimersCollection):
             if self._currentTimer and self._currentTimer.typeID == typeID:
                 timer.hide()
                 self._currentTimer = None
-        self._currentTimer = self.__findNextPriorityByPriorityMap()
+        self.__setNextPriorityTimer()
         if self._currentTimer and self._currentTimer.typeID != typeID:
             self._currentTimer.show(False)
         return
@@ -264,6 +264,15 @@ class _StackTimersCollection(_BaseTimersCollection):
         self._currentTimer = None
         self._timers.clear()
         self._priorityMap.clear()
+        return
+
+    def __setNextPriorityTimer(self, oldTimer=None):
+        if oldTimer is None:
+            oldTimer = self._currentTimer
+        npTimer = self.__findNextPriorityByPriorityMap()
+        if oldTimer and (npTimer is None or oldTimer.typeID != npTimer.typeID):
+            oldTimer.hide()
+        self._currentTimer = npTimer
         return
 
     def __evaluateMultipleStatusStates(self, bubble=True):
@@ -402,20 +411,33 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
 
     def _generateMainTimersData(self):
         link = BATTLE_NOTIFICATIONS_TIMER_LINKAGES.DESTROY_TIMER_UI
+        liftOverEnabled = ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arenaBonusType, ARENA_BONUS_TYPE_CAPS.LIFT_OVER)
+        if liftOverEnabled:
+            overturnedIcon = BATTLE_NOTIFICATIONS_TIMER_LINKAGES.OVERTURNED_GREEN_ICON
+            overturnedColor = BATTLE_NOTIFICATIONS_TIMER_COLORS.GREEN
+            iconOffsetY = -11
+            overturnedText = backport.text(R.strings.ingame_gui.destroyTimer.liftOver())
+        else:
+            overturnedIcon = BATTLE_NOTIFICATIONS_TIMER_LINKAGES.OVERTURNED_ICON
+            overturnedColor = BATTLE_NOTIFICATIONS_TIMER_COLORS.ORANGE
+            iconOffsetY = 0
+            overturnedText = ''
         data = [
          self._getNotificationTimerData(_TIMER_STATES.DROWN, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.DROWN_ICON, link),
-         self._getNotificationTimerData(_TIMER_STATES.OVERTURNED, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.OVERTURNED_ICON, link),
+         self._getNotificationTimerData(_TIMER_STATES.OVERTURNED, overturnedIcon, link, text=overturnedText, color=overturnedColor, iconOffsetY=iconOffsetY),
          self._getNotificationTimerData(_TIMER_STATES.FIRE, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.FIRE_ICON, link),
-         self._getNotificationTimerData(_TIMER_STATES.DANGER_ZONE, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.DANGER_ICON, link, text=INGAME_GUI.DANGER_ZONE_INDICATOR, iconOffsetY=-20)]
+         self._getNotificationTimerData(_TIMER_STATES.DANGER_ZONE, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.DANGER_ICON, link, text=INGAME_GUI.DANGER_ZONE_INDICATOR, iconOffsetY=-10),
+         self._getNotificationTimerData(_TIMER_STATES.MAP_DEATH_ZONE, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.DANGER_ICON, link, color=BATTLE_NOTIFICATIONS_TIMER_COLORS.GRAY),
+         self._getNotificationTimerData(_TIMER_STATES.WARNING_ZONE, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.WARNING_ICON, link, color=BATTLE_NOTIFICATIONS_TIMER_COLORS.YELLOW, text=INGAME_GUI.WARNING_ZONE_INDICATOR)]
         return data
 
     def _generateSecondaryTimersData(self):
         link = BATTLE_NOTIFICATIONS_TIMER_LINKAGES.SECONDARY_TIMER_UI
         data = [
-         self._getNotificationTimerData(_TIMER_STATES.STUN, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.STUN_ICON, link, BATTLE_NOTIFICATIONS_TIMER_COLORS.ORANGE, noiseVisible=True, text=INGAME_GUI.STUN_INDICATOR)]
+         self._getNotificationTimerData(_TIMER_STATES.STUN, BATTLE_NOTIFICATIONS_TIMER_LINKAGES.STUN_ICON, link, noiseVisible=True, text=INGAME_GUI.STUN_INDICATOR)]
         return data
 
-    def _getNotificationTimerData(self, typeId, iconName, linkage, color='', noiseVisible=False, pulseVisible=False, text='', countdownVisible=True, isCanBeMainType=False, priority=10000, iconOffsetY=0):
+    def _getNotificationTimerData(self, typeId, iconName, linkage, color=BATTLE_NOTIFICATIONS_TIMER_COLORS.ORANGE, noiseVisible=False, pulseVisible=False, text='', countdownVisible=True, isCanBeMainType=False, priority=10000, iconOffsetY=0, description=''):
         return {'typeId': typeId, 
            'iconName': iconName, 
            'linkage': linkage, 
@@ -426,7 +448,8 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
            'countdownVisible': countdownVisible, 
            'isCanBeMainType': isCanBeMainType, 
            'priority': priority, 
-           'iconOffsetY': iconOffsetY}
+           'iconOffsetY': iconOffsetY, 
+           'description': description}
 
     def _dispose(self):
         ctrl = self.sessionProvider.shared.vehicleState
@@ -461,6 +484,20 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
             self._timers.addTimer(_TIMER_STATES.FIRE, _TIMER_STATES.WARNING_VIEW, 0, None)
         else:
             self._hideTimer(_TIMER_STATES.FIRE)
+        return
+
+    def __setVehicleInWaringZone(self, value):
+        if value.needToCloseTimer():
+            self._hideTimer(_TIMER_STATES.WARNING_ZONE)
+        else:
+            self._timers.addTimer(_TIMER_STATES.WARNING_ZONE, _TIMER_STATES.WARNING_VIEW, 0, None)
+        return
+
+    def __setVehicleInMapDeathZone(self, value):
+        if value.needToCloseTimer():
+            self._hideTimer(_TIMER_STATES.MAP_DEATH_ZONE)
+        else:
+            self._timers.addTimer(_TIMER_STATES.MAP_DEATH_ZONE, _TIMER_STATES.WARNING_VIEW, 0, None)
         return
 
     def _showTimer(self, typeID, totalTime, level, finishTime, startTime=None):
@@ -629,6 +666,8 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
          VEHICLE_VIEW_STATE.STUN,
          VEHICLE_VIEW_STATE.CAPTURE_BLOCKED,
          VEHICLE_VIEW_STATE.DANGER_ZONE,
+         VEHICLE_VIEW_STATE.WARNING_ZONE,
+         VEHICLE_VIEW_STATE.MAP_DEATH_ZONE,
          VEHICLE_VIEW_STATE.SMOKE,
          VEHICLE_VIEW_STATE.INSPIRE,
          VEHICLE_VIEW_STATE.DOT_EFFECT)
@@ -683,6 +722,10 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
             self.__updateRepairingTimer(**value)
         elif state == VEHICLE_VIEW_STATE.DANGER_ZONE:
             self.__updateDangerZoneWarningNotification(value)
+        elif state == VEHICLE_VIEW_STATE.WARNING_ZONE:
+            self.__setVehicleInWaringZone(value)
+        elif state == VEHICLE_VIEW_STATE.MAP_DEATH_ZONE:
+            self.__setVehicleInMapDeathZone(value)
         elif state in (VEHICLE_VIEW_STATE.DESTROYED, VEHICLE_VIEW_STATE.CREW_DEACTIVATED):
             self.__hideAll()
 

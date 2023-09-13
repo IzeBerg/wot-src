@@ -37,6 +37,9 @@ msgstr "在WOWS客户端"
 msgid "Contact/status/inBattle/bootcamp"
 msgstr "新兵训练营中"
 
+msgid "Contact/status/inBattle/epic_random_training"
+msgstr "在团队训练模式中"
+
 msgid "Contact/status/inBattle/fortifications"
 msgstr "在要塞的战斗中"
 
@@ -63,6 +66,9 @@ msgstr "在团队训练模式中"
 
 msgid "Contact/status/inBattle/unknown"
 msgstr "战斗中"
+
+msgid "Contact/status/offline"
+msgstr "离线"
 
 msgid "Contact/status/online"
 msgstr "在线"
@@ -828,6 +834,12 @@ msgstr "累积所需的积分并激活前线模式战斗储备。"
 msgid "awardItem/abilityToken/header"
 msgstr "战斗储备积分"
 
+msgid "awardItem/attendance_reward/body"
+msgstr "登录游戏所获得的奖励。"
+
+msgid "awardItem/attendance_reward/header"
+msgstr "签到奖励"
+
 msgid "awardItem/battleToken/description"
 msgstr "解锁多个任务。"
 
@@ -864,10 +876,12 @@ msgstr "良好的战斗表现、单人和小队战斗结果中获得较高的排
 msgid "awardItem/brcoin/header"
 msgstr "钢铁印章"
 
-msgid "awardItem/comp7_2023_1_weekly_rewards_token/body"
-msgstr "一种特殊货币，完成最后一项每周任务的奖励。"
+msgid "awardItem/comp7TokenWeeklyReward/body"
+msgstr ""
+"一种特殊货币，完成最后一项每周任务的奖励。\n"
+"获取幸运点数可为您带来额外奖励。"
 
-msgid "awardItem/comp7_2023_1_weekly_rewards_token/header"
+msgid "awardItem/comp7TokenWeeklyReward/header"
 msgstr "幸运点数"
 
 msgid "awardItem/completionTokens/body"
@@ -1095,7 +1109,7 @@ msgid "awardItem/equipCoin/header"
 msgstr "合金元件"
 
 msgid "awardItem/eventCoin/body"
-msgstr "在《坦克世界》2023周年纪念活动期间，完成周年纪念任务后获得。"
+msgstr "在10周年活动的活跃阶段和休息阶段期间，完成周年任务后获得。同时也能通过在军械库中购买周年礼包获取。"
 
 msgid "awardItem/eventCoin/header"
 msgstr "周年纪念币"
@@ -1107,7 +1121,7 @@ msgid "awardItem/excluded_map/header"
 msgstr "排除地图"
 
 msgid "awardItem/exclusive_vehicle/body"
-msgstr "重型坦克TS-54，坦克世界Plus专属。"
+msgstr "%(vehicleName)s%(vehicleType)s，坦克世界Plus专属。"
 
 msgid "awardItem/exclusive_vehicle/header"
 msgstr "专属坦克"
@@ -1234,7 +1248,7 @@ msgid "awardItem/ranked_202203_access/header"
 msgstr "购买权限"
 
 msgid "awardItem/slots/body"
-msgstr "车库中新坦克的免费车位。"
+msgstr "车库中新坦克免费附带的车位。"
 
 msgid "awardItem/slots/header"
 msgstr "扩充车库"
@@ -1405,9 +1419,7 @@ msgid "battleBorderMapTypeButtonBar/info/header"
 msgstr "隐藏地图边界"
 
 msgid "battleLoadingInfo/body"
-msgstr ""
-"选择一种有效的方式显示提示。\n"
-"图文提示在训练场模式中是唯一的显示方式。"
+msgstr "选择提示显示方式。"
 
 msgid "battleLoadingInfo/header"
 msgstr "战斗载入界面提示"
@@ -4960,6 +4972,12 @@ msgstr "选择其它坦克。"
 msgid "hangar/startBtn/battleRoyale/telecomRentalIsOver/header"
 msgstr "坦克暂不能使用"
 
+msgid "hangar/startBtn/battleRoyale/wotPlusExclusiveUnavailable/body"
+msgstr "选择其它坦克。"
+
+msgid "hangar/startBtn/battleRoyale/wotPlusExclusiveUnavailable/header"
+msgstr "专属坦克暂时无法使用"
+
 msgid "hangar/startBtn/battleRoyaleSquadNotReady/notReady/body"
 msgstr "若要加入战斗，所有小队成员都应该确认就绪。"
 
@@ -7139,6 +7157,46 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankmen_bp11_4/label"
 msgstr "战斗通行证赛季XI"
 
+msgid "notrecruitedtankman/tankmen_bp12_1/desc"
+msgstr ""
+"这名D系坦克手既是坦克指挥官，也是求知若渴的科学家。从高中起，他就对自然科学情有独钟，化学、生物和物理都样样精通。他有写日记的习惯，喜欢用难以辨认的笔迹加上一目了然的插图来记录一切。"
+
+msgid "notrecruitedtankman/tankmen_bp12_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp12_1/label"
+msgstr "战斗通行证赛季XII"
+
+msgid "notrecruitedtankman/tankmen_bp12_2/desc"
+msgstr ""
+"这名年轻的侦察兵擅长美人计，收集敌人情报对她来说易如反掌。其专长是雷达侦察，在这方面她最大限度地运用了系统方法和分析思维进行决策。为了拯救战友，她可以奋不顾身。"
+
+msgid "notrecruitedtankman/tankmen_bp12_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp12_2/label"
+msgstr "战斗通行证赛季XII"
+
+msgid "notrecruitedtankman/tankmen_bp12_3/desc"
+msgstr ""
+"这名M系军人威武的外表下藏着敏锐的头脑和机智的幽默感。他天不怕地不怕，至少他自己是这么认为的。他在麦克里德手下效力了很长一段时间，但由于自己机敏过人，最初他与其顶头上司很难合得来。在整个职业生涯中，他成功完成了数十次战斗任务，各方面严格要求自己，最终成为了一名称职的指挥官。尽管如此，他也总是喜欢开玩笑，不管这些玩笑开得好不好。"
+
+msgid "notrecruitedtankman/tankmen_bp12_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp12_3/label"
+msgstr "战斗通行证赛季XII"
+
+msgid "notrecruitedtankman/tankmen_bp12_4/desc"
+msgstr ""
+"研究所的一位主要研究员(此处已删除)。派往米尔内-13的第一个团队及后续团队的负责人。她对工作一丝不苟，甚至痴迷其中，从不接受折中方案。设定目标后，她就会不遗余力地去达成。"
+
+msgid "notrecruitedtankman/tankmen_bp12_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp12_4/label"
+msgstr "战斗通行证赛季XII"
+
 msgid "notrecruitedtankman/tankmen_bp2_1/desc"
 msgstr ""
 "很多人都问我认不认识杰克·里德。在回答之前，我常常会闭上眼睛，深呼吸，因为当他的指挥官可一点都不轻松。里德是个叛逆的家伙，他总能以自己的方式完成命令，还能不违反军队规定。虽然在现实中他困在一个闷热的坦克里。但在内心世界中，他正骑着摩托，沿着高速公路前行，享受着清风吹拂脸颊的感觉。"
@@ -8350,6 +8408,12 @@ msgstr "钢铁猎手期间获得。完成任务所必需。"
 msgid "quests/bonuses/token/body"
 msgstr "令牌是一种独特的奖励，可以解锁特定任务或用来完成任务。"
 
+msgid "quests/bonuses/token/crew_bonus_x3/body"
+msgstr "驾驶任意坦克在战斗中获得3倍乘员经验加成。"
+
+msgid "quests/bonuses/token/crew_bonus_x3/header"
+msgstr "3倍乘员经验任务"
+
 msgid "quests/bonuses/token/header"
 msgstr "%(userName)s令牌"
 
@@ -8452,9 +8516,6 @@ msgstr "前往战斗通行证章节选择"
 
 msgid "quests/linkBtn/task"
 msgstr "选择该任务"
-
-msgid "quests/linkBtn/wotAnniversary"
-msgstr "前往《坦克世界》2023周年纪念活动任务。"
 
 msgid "quests/newLabel/action"
 msgstr "新活动"
@@ -9135,7 +9196,7 @@ msgid "settings/sound/deviceAlert/header"
 msgstr "声音系统不匹配"
 
 msgid "settings/sound/subtitles/body"
-msgstr "在新兵训练营模式中显示语音文本。"
+msgstr "语音字幕"
 
 msgid "settings/sound/subtitles/header"
 msgstr "字幕"
@@ -9237,7 +9298,7 @@ msgstr "未击穿车轮"
 
 msgid "showDogTag/body"
 msgstr ""
-"禁用后，敌人在摧毁您的坦克后将看到一个随机军用识别牌。\n"
+"关闭后，敌人在击毁您的坦克后将看到一个标准军用识别牌。\n"
 "\n"
 "设置变更将在下一场战斗中生效。"
 
@@ -9601,7 +9662,7 @@ msgid "tank_params/desc/avgPiercingPower"
 msgstr "标准炮弹的平均穿透力，随着炮弹的变化而变化。"
 
 msgid "tank_params/desc/burstFireRate"
-msgstr "短弹夹炮弹的装填间隔时间。/一次点射射击的炮弹数量。"
+msgstr "短弹夹炮弹的装填间隔时间。/弹夹中的短弹夹数量。/短弹夹中的炮弹数量"
 
 msgid "tank_params/desc/chargeTime"
 msgstr "同时发射双管炮所需的准备时间。/齐射的装填停滞时间。"
@@ -9621,10 +9682,13 @@ msgstr ""
 
 msgid "tank_params/desc/clipFireRate"
 msgstr ""
-"射出弹夹(或两门火炮)中最后一发炮弹和重新装填完整弹夹的间隔时间。/弹夹中两枚炮弹、火炮、短弹夹之间的射击间隔时间。/弹夹(或火炮)中的炮弹或短弹夹数量。"
+"射出弹夹(或两门火炮)中最后一发炮弹和重新装填完整弹夹的间隔时间。/弹夹中两发炮弹、火炮、短弹夹之间的射击间隔时间。/火炮数量或弹夹中的炮弹数量。"
 
 msgid "tank_params/desc/damage"
 msgstr "标准炮弹击穿敌方装甲造成的损伤。"
+
+msgid "tank_params/desc/dualAccuracyCoolingDelay"
+msgstr "显示火炮射击后冷却到足以强化精度所需的时间。"
 
 msgid "tank_params/desc/enginePower"
 msgstr "该参数影响坦克的加速能力、最高速度以及转动速度。"
@@ -9696,6 +9760,9 @@ msgstr "激活火箭助推器后的坦克速度。"
 msgid "tank_params/desc/shotDispersionAngle"
 msgstr "当瞄准环缩小到最小时火炮在100米距离上的射击精度。"
 
+msgid "tank_params/desc/shotDispersionAngle/withDualAccuracy"
+msgstr "显示炮弹每100米可偏离瞄准点多少米。标准数值(第一个)适用于升温的火炮，强化数值(第二个)适用于冷却火炮。"
+
 msgid "tank_params/desc/speedLimits"
 msgstr "坦克速度由它的参数决定。"
 
@@ -9720,7 +9787,7 @@ msgstr ""
 "显示硬/普通/软地面的数值。"
 
 msgid "tank_params/desc/turboshaftBurstFireRate"
-msgstr "短弹夹炮弹的装填间隔时间。/处于特殊模式时一次点射射击的炮弹数量。"
+msgstr "短弹夹炮弹的装填间隔时间。/弹夹中的短弹夹数量。/短弹夹中的炮弹数量"
 
 msgid "tank_params/desc/turboshaftEnginePower"
 msgstr "该参数影响坦克在启用涡轮时的加速能力、最高速度以及车体转动速度。"
@@ -10462,6 +10529,12 @@ msgstr "最大车轮转向角(度)"
 
 msgid "vehicleParams/penalties/title"
 msgstr "当前处罚:"
+
+msgid "vehicleParams/penalty/crewDifferentVehicle"
+msgstr "乘员尚未接受过有关该坦克的训练"
+
+msgid "vehicleParams/penalty/crewLevel"
+msgstr "乘员的熟练度低于100%"
 
 msgid "vehicleParams/penalty/crewNotFull/template"
 msgstr "车组乘员不足"

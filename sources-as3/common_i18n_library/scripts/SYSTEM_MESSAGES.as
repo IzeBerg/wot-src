@@ -1897,6 +1897,8 @@ package
       
       public static const UNIT_ERRORS_NO_ARENA_VEHICLES:String = "#system_messages:unit/errors/NO_ARENA_VEHICLES";
       
+      public static const UNIT_ERRORS_COMP7_QUALIFICATION:String = "#system_messages:unit/errors/COMP7_QUALIFICATION";
+      
       public static const IGR_CUSTOMIZATION_BEGIN:String = "#system_messages:igr/customization/begin";
       
       public static const IGR_CUSTOMIZATION_END:String = "#system_messages:igr/customization/end";
@@ -2698,24 +2700,6 @@ package
       public static const LIMITEDUI_SWITCHON:String = "#system_messages:limitedUI/switchOn";
       
       public static const LIMITEDUI_SWITCHOFF:String = "#system_messages:limitedUI/switchOff";
-      
-      public static const WOTANNIVERSARY_SWITCH_STARTED_TITLE:String = "#system_messages:wotAnniversary/switch_started/title";
-      
-      public static const WOTANNIVERSARY_SWITCH_STARTED_BODY:String = "#system_messages:wotAnniversary/switch_started/body";
-      
-      public static const WOTANNIVERSARY_SWITCH_PAUSE_BODY:String = "#system_messages:wotAnniversary/switch_pause/body";
-      
-      public static const WOTANNIVERSARY_SWITCH_ENABLED_BODY:String = "#system_messages:wotAnniversary/switch_enabled/body";
-      
-      public static const WOTANNIVERSARY_SWITCH_DISABLE_BODY:String = "#system_messages:wotAnniversary/switch_disable/body";
-      
-      public static const WOTANNIVERSARY_EVENTWILLENDSOON_HEADER:String = "#system_messages:wotAnniversary/eventWillEndSoon/header";
-      
-      public static const WOTANNIVERSARY_EVENTWILLENDSOON_BODY:String = "#system_messages:wotAnniversary/eventWillEndSoon/body";
-      
-      public static const WOTANNIVERSARY_EVENTFINISHED_BODY:String = "#system_messages:wotAnniversary/eventFinished/body";
-      
-      public static const WOTANNIVERSARY_AWARD_HEADER:String = "#system_messages:wotAnniversary/award/header";
        
       
       public function SYSTEM_MESSAGES()

@@ -14,32 +14,26 @@ class ShellType(object):
 
 
 class ArmorPiercingType(ShellType):
-    __slots__ = ('normalizationAngle', 'ricochetAngleCos', 'protectFromDirectHits',
-                 'mechanics', 'guaranteedDamages')
+    __slots__ = ('normalizationAngle', 'ricochetAngleCos', 'protectFromDirectHits')
 
     def __init__(self, name):
         super(ArmorPiercingType, self).__init__(name)
         self.normalizationAngle = component_constants.ZERO_FLOAT
         self.ricochetAngleCos = component_constants.ZERO_FLOAT
         self.protectFromDirectHits = set()
-        self.mechanics = SHELL_MECHANICS_TYPE.LEGACY
-        self.guaranteedDamages = component_constants.EMPTY_TUPLE
 
     def __repr__(self):
         return ('ArmorPiercingType(normalizationAngle={}, ricochetAngleCos={}, protectFromDirectHits = {})').format(self.normalizationAngle, self.ricochetAngleCos, self.protectFromDirectHits)
 
 
 class HollowChargeType(ShellType):
-    __slots__ = ('piercingPowerLossFactorByDistance', 'ricochetAngleCos', 'protectFromDirectHits',
-                 'mechanics', 'guaranteedDamages')
+    __slots__ = ('piercingPowerLossFactorByDistance', 'ricochetAngleCos', 'protectFromDirectHits')
 
     def __init__(self, name):
         super(HollowChargeType, self).__init__(name)
         self.piercingPowerLossFactorByDistance = component_constants.ZERO_FLOAT
         self.ricochetAngleCos = component_constants.ZERO_FLOAT
         self.protectFromDirectHits = set()
-        self.mechanics = SHELL_MECHANICS_TYPE.LEGACY
-        self.guaranteedDamages = component_constants.EMPTY_TUPLE
 
     def __repr__(self):
         return ('HollowChargeType(piercingPowerLossFactorByDistance={}, ricochetAngleCos={}, protectFromDirectHits={})').format(self.piercingPowerLossFactorByDistance, self.ricochetAngleCos, self.protectFromDirectHits)

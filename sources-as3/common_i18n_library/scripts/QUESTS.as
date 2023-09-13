@@ -25,7 +25,7 @@ package
       
       public static const MISSIONS_TAB_BATTLEMATTERS:String = "#quests:missions/tab/battleMatters";
       
-      public static const MISSIONS_TAB_WOT_ANNIVERSARY:String = "#quests:missions/tab/wot_anniversary";
+      public static const MISSIONS_TAB_WINBACK:String = "#quests:missions/tab/winback";
       
       public static const MISSIONS_FILTERCOUNTER_CLOSEBUTTON:String = "#quests:missions/filterCounter/closeButton";
       
@@ -474,6 +474,10 @@ package
       public static const DETAILS_REQUIREMENTS_NOTPREMIUMACCOUNT:String = "#quests:details/requirements/notPremiumAccount";
       
       public static const DETAILS_REQUIREMENTS_PREMIUMPLUSACCOUNT:String = "#quests:details/requirements/premiumPlusAccount";
+      
+      public static const DETAILS_REQUIREMENTS_WOTPLUS:String = "#quests:details/requirements/wotPlus";
+      
+      public static const DETAILS_REQUIREMENTS_WITHOUTWOTPLUS:String = "#quests:details/requirements/withoutWotPlus";
       
       public static const DETAILS_REQUIREMENTS_INCLAN:String = "#quests:details/requirements/inClan";
       
@@ -2101,13 +2105,13 @@ package
       
       public static const MISSIONS_TAB_DAILY_BODY:String = "#quests:missions/tab/daily/body";
       
+      public static const MISSIONS_TAB_WINBACK_HEADER:String = "#quests:missions/tab/winback/header";
+      
+      public static const MISSIONS_TAB_WINBACK_BODY:String = "#quests:missions/tab/winback/body";
+      
       public static const MISSIONS_TAB_BATTLE_PASS_BODY:String = "#quests:missions/tab/battle_pass/body";
       
       public static const MISSIONS_TAB_BATTLE_PASS_HEADER:String = "#quests:missions/tab/battle_pass/header";
-      
-      public static const MISSIONS_TAB_WOT_ANNIVERSARY_BODY:String = "#quests:missions/tab/wot_anniversary/body";
-      
-      public static const MISSIONS_TAB_WOT_ANNIVERSARY_HEADER:String = "#quests:missions/tab/wot_anniversary/header";
       
       public static const MISSIONS_TAB_MAPBOX_HEADER:String = "#quests:missions/tab/mapbox/header";
       
@@ -2521,6 +2525,8 @@ package
       
       public static const BONUSNAME_BATTLE_BONUS_X5:String = "#quests:bonusName/battle_bonus_x5";
       
+      public static const BONUSNAME_CREW_BONUS_X3:String = "#quests:bonusName/crew_bonus_x3";
+      
       public static const BONUSNAME_BATTLEPASSPOINTS:String = "#quests:bonusName/battlePassPoints";
       
       public static const BONUSNAME_BATTLEPASSPOINTS_PREVIEW:String = "#quests:bonusName/battlePassPoints/preview";
@@ -2536,6 +2542,8 @@ package
       public static const BONUSNAME_FREE_EQUIPMENT_DEMOUNTING:String = "#quests:bonusName/free_equipment_demounting";
       
       public static const BONUSNAME_EXCLUSIVE_VEHICLE:String = "#quests:bonusName/exclusive_vehicle";
+      
+      public static const BONUSNAME_ATTENDANCE_REWARD:String = "#quests:bonusName/attendance_reward";
       
       public static const ACTION_AUTO_CALENDAR:String = "#quests:action/auto/calendar";
       

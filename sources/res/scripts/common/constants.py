@@ -91,6 +91,7 @@ ENABLE_TKILL_BANS = True
 HAS_DEV_RESOURCES = IS_DEVELOPMENT and not IS_CLIENT_BUILD
 IS_DEVELOPMENT_BUILD = IS_DEVELOPMENT and IS_CLIENT_BUILD
 MODULE_NAME_SEPARATOR = ', '
+MAX_LOG_EXT_INFO_LEN = 255
 
 class SPT_MATKIND:
     SOLID = 71
@@ -417,6 +418,7 @@ class FINISH_REASON:
     ALLY_KILLED = 8
     OWN_VEHICLE_DESTROYED = 9
     DESTROYED_OBJECTS = 10
+    OBJECTIVES_COMPLETED = 11
 
 
 FINISH_REASON_NAMES = dict([ (v, k) for k, v in FINISH_REASON.__dict__.iteritems() if not k.startswith('_') ])
@@ -695,6 +697,7 @@ class ACCOUNT_ATTR:
     IGR_BASE = 34359738368
     IGR_PREMIUM = 68719476736
     SUSPENDED = 137438953472
+    FORCE_ONBOARDING_DISABLED = 274877906944
 
 
 class PREMIUM_TYPE:
@@ -793,7 +796,8 @@ class Configs(enum.Enum):
     BATTLE_MATTERS_CONFIG = 'battle_matters_config'
     PERIPHERY_ROUTING_CONFIG = 'periphery_routing_config'
     COMP7_CONFIG = 'comp7_config'
-    COMP7_PRESTIGE_RANKS_CONFIG = 'comp7_prestige_ranks_config'
+    COMP7_RANKS_CONFIG = 'comp7_ranks_config'
+    COMP7_REWARDS_CONFIG = 'comp7_rewards_config'
     PERSONAL_RESERVES_CONFIG = 'personal_reserves_config'
     PLAY_LIMITS_CONFIG = 'play_limits_config'
     PRE_MODERATION_CONFIG = 'pre_moderation_config'
@@ -805,14 +809,14 @@ class Configs(enum.Enum):
     LIMITED_UI_CONFIG = 'limited_ui_config'
 
 
-INBATTLE_CONFIGS = (
+INBATTLE_CONFIGS = [
  'spgRedesignFeatures',
  'ranked_config',
  'battle_royale_config',
  'epic_config',
  'vehicle_post_progression_config',
  Configs.COMP7_CONFIG.value,
- Configs.FUN_RANDOM_CONFIG.value)
+ Configs.FUN_RANDOM_CONFIG.value]
 
 class RESTRICTION_TYPE:
     NONE = 0
@@ -1091,7 +1095,7 @@ class ATTACK_REASON(object):
     BRANDER_RAM = 'ram_brander'
     FORT_ARTILLERY_EQ = 'fort_artillery_eq'
     STATIC_DEATH_ZONE = 'static_deathzone'
-    AUTOSHOOT = 'autoshoot'
+    CGF_WORLD = 'cgf_world'
     NONE = 'none'
 
     @classmethod
@@ -1110,10 +1114,12 @@ ATTACK_REASONS = (
  ATTACK_REASON.CORRODING_SHOT, ATTACK_REASON.ADAPTATION_HEALTH_RESTORE,
  ATTACK_REASON.THUNDER_STRIKE, ATTACK_REASON.FIRE_CIRCLE, ATTACK_REASON.CLING_BRANDER,
  ATTACK_REASON.CLING_BRANDER_RAM, ATTACK_REASON.BRANDER_RAM,
- ATTACK_REASON.FORT_ARTILLERY_EQ, ATTACK_REASON.STATIC_DEATH_ZONE, ATTACK_REASON.AUTOSHOOT)
+ ATTACK_REASON.FORT_ARTILLERY_EQ, ATTACK_REASON.STATIC_DEATH_ZONE,
+ ATTACK_REASON.CGF_WORLD)
 ATTACK_REASON_INDICES = dict((value, index) for index, value in enumerate(ATTACK_REASONS))
 BOT_RAM_REASONS = (
  ATTACK_REASON.BRANDER_RAM, ATTACK_REASON.CLING_BRANDER_RAM)
+WORLD_ATTACK_REASONS = (ATTACK_REASON.WORLD_COLLISION, ATTACK_REASON.CGF_WORLD)
 DEATH_REASON_ALIVE = -1
 
 class REPAIR_TYPE:
@@ -1647,10 +1653,11 @@ class OVERTURN_WARNING_LEVEL:
     SAFE = 0
     CAUTION = 1
     DANGER = 2
+    BLOCKED = 3
 
     @classmethod
     def isOverturned(cls, warningLevel):
-        return warningLevel in (cls.CAUTION, cls.DANGER)
+        return warningLevel in (cls.CAUTION, cls.DANGER, cls.BLOCKED)
 
 
 class OVERTURN_CONDITION:
@@ -1805,10 +1812,9 @@ class USER_SERVER_SETTINGS:
     SESSION_STATS = 96
     CONTOUR = 106
     UI_STORAGE_2 = 109
-    WOT_ANNIVERSARY = 112
     _ALL = (
      HIDE_MARKS_ON_GUN, EULA_VERSION, GAME_EXTENDED, BATTLE_MATTERS_QUESTS, SESSION_STATS, DOG_TAGS,
-     GAME_EXTENDED_2, BATTLE_HUD, CONTOUR, UI_STORAGE_2, BATTLE_EVENTS, WOT_ANNIVERSARY)
+     GAME_EXTENDED_2, BATTLE_HUD, CONTOUR, UI_STORAGE_2, BATTLE_EVENTS)
 
     @classmethod
     def isBattleInvitesForbidden(cls, settings):
@@ -1923,8 +1929,7 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    108: 'Fun Random carousel filter 2', 
    USER_SERVER_SETTINGS.UI_STORAGE_2: 'ui storage 2, used for preserving first entry flags etc', 
    110: 'Competitive7x7 carousel filter 1', 
-   111: 'Competitive7x7 carousel filter 2', 
-   USER_SERVER_SETTINGS.WOT_ANNIVERSARY: 'wot anniversary settings'}
+   111: 'Competitive7x7 carousel filter 2'}
 
 class WG_GAMES:
     TANKS = 'wot'
@@ -2263,6 +2268,18 @@ class ROCKET_ACCELERATION_STATE:
            cls.EMPTY: 'empty'}.get(value)
 
 
+class DUAL_ACCURACY_STATE:
+    NONE = 0
+    ACTIVE = 1
+    NOT_ACTIVE = 2
+
+    @classmethod
+    def toString(cls, value):
+        return {cls.ACTIVE: 'active', 
+           cls.NOT_ACTIVE: 'not active', 
+           cls.NONE: 'none'}.get(value)
+
+
 class CONTENT_TYPE:
     DEFAULT = 0
     SD_TEXTURES = 1
@@ -2299,6 +2316,7 @@ class RESPAWN_TYPES:
     SHARED = 2
     LIMITED = 3
     EPIC = 4
+    SAFE = 5
 
 
 class VISIBILITY:
@@ -2334,7 +2352,6 @@ SHELL_TYPES_INDICES = dict((value, index) for index, value in enumerate(SHELL_TY
 class SHELL_MECHANICS_TYPE:
     LEGACY = 'LEGACY'
     MODERN = 'MODERN'
-    GUARANTEED_DAMAGE = 'GUARANTEED_DAMAGE'
 
 
 class BATTLE_LOG_SHELL_TYPES(enum.IntEnum):
@@ -3086,7 +3103,7 @@ class BATTLE_MODE_LOCK_MASKS(object):
 
 RESOURCE_WELL_FORBIDDEN_TOKEN = 'rws{}_forbidden'
 QUESTS_SUPPORTED_EXCLUDE_TAGS = {
- 'collectorVehicle'}
+ 'collectorVehicle', 'special', 'secret', 'testTank', 'premium', 'event_battles'}
 VEHICLE_HEALTH_DECIMALS = 1
 GUARANTEED_RANDOMIZED_DAMAGE = 1.0
 GUARANTEED_RANDOMIZED_PIERCING_POWER = 1.0
@@ -3170,6 +3187,13 @@ class WoTPlusBonusType(object):
     EXCLUDED_MAP = 'excluded_map'
     FREE_EQUIPMENT_DEMOUNTING = 'free_equipment_demounting'
     EXCLUSIVE_VEHICLE = 'exclusive_vehicle'
+    ATTENDANCE_REWARD = 'attendance_reward'
+
+
+class WoTPlusDailyAttendance(object):
+    INITIAL_CYCLE_STEP = 1
+    MAXIMUM_DISPLAYED_REWARDS = 3
+    CYCLE_STEPS = 5
 
 
 VEHICLE_NO_CREW_TRANSFER_PENALTY_TAG = 'noCrewTransferPenalty'
@@ -3181,7 +3205,7 @@ class InitialVehsAdditionStrategy(object):
     COUNTRY = 1
 
 
-class WINBACK_CALL_BATTLE_TOKEN_DRAW_REASON(enum.IntEnum):
+class WINBACK_BATTLE_TOKEN_DRAW_REASON(enum.IntEnum):
     REGULAR = 0
     MANUAL = 1
     SQUAD = 2
@@ -3215,3 +3239,9 @@ class ShootImpulseApplicationPoint(object):
     SHOOT_POINT = 'shootPoint'
     ALL = {
      VEHICLE_COM, SHOOT_POINT}
+
+
+class MinimapLayerType(object):
+    BASE = 'base'
+    ALERT = 'alert'
+    ALL = (BASE, ALERT)

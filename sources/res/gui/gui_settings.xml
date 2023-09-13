@@ -1104,11 +1104,11 @@
 		</value>
 	</setting>
 	<setting>
-		<name>battlePass</name>
+		<name>battlePassUrls</name>
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/11BPContentPage/
+				/$LANGUAGE_CODE/promocontent/12BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1118,7 +1118,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/11BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/12BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1127,8 +1127,15 @@
 				<name>extraIntroVideo</name>
 				<type>url</type>
 			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>battlePassChaptersOrder</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
 			<item>
-				<name>chaptersOrder</name>
+				<name>default</name>
 				<type>list</type>
 				<value>
 					<item>
@@ -1149,13 +1156,24 @@
 					</item>
 				</value>
 			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>battlePassIntroSlides</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
 			<item>
-				<name>introSlides</name>
+				<name>default</name>
 				<type>list</type>
 				<value>
 					<item>
 						<type>string</type>
 						<value>styles</value>
+					</item>
+					<item>
+						<type>string</type>
+						<value>seasonDescription</value>
 					</item>
 				</value>
 			</item>
@@ -1780,32 +1798,107 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
 				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
 				<name>EU</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
 				<name>ASIA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
 				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-griffin-reboot/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>infoPageStory_mode</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		--&gt;
+		<name>whatsNewPageComp7</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
 				<name>default</name>
 				<type>url</type>
 			</item>

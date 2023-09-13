@@ -3,115 +3,58 @@
 	<info>
 		<name>Client_OnFinishBattle</name>
 		<isMacro>true</isMacro>
+		<version>0</version>
 		<aspect>
 			<compatibles>CLIENT</compatibles>
 		</aspect>
 		<blocks>
 			<block>
-				<class>OnBattleRoundFinished</class>
-				<id>OnBattleRoundFinished_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>ArenaPeriodStartEvent</class>
-				<id>ArenaPeriodStartEvent_3</id>
+				<class>Variable</class>
+				<id>Variable_1</id>
 				<params>
 					<param>
-						Afterbattle
-						<name>Period</name>
-						<type>EArenaPeriodT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>MacroInput</class>
-				<id>MacroInput_1</id>
-				<params>
-					<param>
-						markers
-						<name>Input Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						MarkerPointArrayT
-						<name>Input Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						<name>Input Editor</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>IterateArray</class>
-				<id>IterateArray_1</id>
-				<params>
-					<param>
-						MarkerPointArrayT
-						<name>Array Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>forward</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>HideMarker</class>
-				<id>HideMarker_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>StopPlan</class>
-				<id>StopPlan_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>HideAllHints</class>
-				<id>HideAllHints_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>MacroInput</class>
-				<id>MacroInput_2</id>
-				<params>
-					<param>
-						processMarkers
-						<name>Input Name</name>
+						BattleGoalComplited
+						<name>Variable Name</name>
 						<type>StringT</type>
 					</param>
 					<param>
 						BoolT
-						<name>Input Type</name>
+						<name>Variable Type</name>
 						<type>TypeT</type>
 					</param>
 					<param>
-						<name>Input Editor</name>
-						<type>StringT</type>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Global</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Initial Value</name>
+						<type>BoolT</type>
 					</param>
 				</params>
 				<slots>
 					<slot>
-						<name>required</name>
-						<const>\true\</const>
+						<name>default</name>
+						<const>\false\</const>
 					</slot>
 				</slots>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_2</id>
+				<params/>
+				<slots/>
 			</block>
 			<block>
 				<class>PlaySound</class>
@@ -120,8 +63,56 @@
 				<slots/>
 			</block>
 			<block>
+				<class>OnBattleRoundFinished</class>
+				<id>OnBattleRoundFinished_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
 				<class>Create2DSound</class>
 				<id>Create2DSound_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>CompareIntegers</class>
+				<id>CompareIntegers_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>b</name>
+						<const>\1\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Or</class>
+				<id>Or_1</id>
+				<params>
+					<param>
+						2
+						<name>Input Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_1</id>
+				<buddy>Variable_1</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>Not</class>
+				<id>Not_1</id>
 				<params/>
 				<slots/>
 			</block>
@@ -177,51 +168,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>Variable</class>
-				<id>Variable_1</id>
-				<params>
-					<param>
-						BattleGoalComplited
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						BoolT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Initial Value</name>
-						<type>BoolT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_1</id>
-				<buddy>Variable_1</buddy>
-				<params>
-					<param>
-						BoolT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>SetVariable</class>
 				<id>SetVariable_1</id>
 				<buddy>Variable_1</buddy>
@@ -239,96 +185,19 @@
 					</slot>
 				</slots>
 			</block>
-			<block>
-				<class>CompareIntegers</class>
-				<id>CompareIntegers_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>b</name>
-						<const>\1\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Or</class>
-				<id>Or_1</id>
-				<params>
-					<param>
-						2
-						<name>Input Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Not</class>
-				<id>Not_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_2</id>
-				<params/>
-				<slots/>
-			</block>
 		</blocks>
 		<connections>
 			<connection>
-				<from>If_1</from>
+				<from>OnBattleRoundFinished_1</from>
 				<input>input</input>
-				<to>IterateArray_1</to>
-				<output>true</output>
+				<to>If_2</to>
+				<output>onFinished</output>
 			</connection>
 			<connection>
-				<from>MacroInput_1</from>
-				<input>array</input>
-				<to>IterateArray_1</to>
-				<output>markers</output>
-			</connection>
-			<connection>
-				<from>IterateArray_1</from>
-				<input>in</input>
-				<to>HideMarker_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>IterateArray_1</from>
-				<input>marker</input>
-				<to>HideMarker_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>IterateArray_1</from>
-				<input>input</input>
-				<to>StopPlan_1</to>
-				<output>complete</output>
-			</connection>
-			<connection>
-				<from>If_1</from>
-				<input>input</input>
-				<to>StopPlan_1</to>
-				<output>false</output>
-			</connection>
-			<connection>
-				<from>ArenaPeriodStartEvent_3</from>
-				<input>in</input>
-				<to>HideAllHints_2</to>
-				<output>start</output>
-			</connection>
-			<connection>
-				<from>HideAllHints_2</from>
-				<input>input</input>
-				<to>If_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>MacroInput_2</from>
+				<from>Or_1</from>
 				<input>value</input>
-				<to>If_1</to>
-				<output>processMarkers</output>
+				<to>If_2</to>
+				<output>res</output>
 			</connection>
 			<connection>
 				<from>If_2</from>
@@ -347,24 +216,6 @@
 				<input>soundName</input>
 				<to>Create2DSound_1</to>
 				<output>res</output>
-			</connection>
-			<connection>
-				<from>OnBattleRoundFinished_1</from>
-				<input>index</input>
-				<to>Select_1</to>
-				<output>winnerTeam</output>
-			</connection>
-			<connection>
-				<from>StartScript_1</from>
-				<input>subscribe</input>
-				<to>TriggerExternal_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>TriggerExternal_1</from>
-				<input>input</input>
-				<to>SetVariable_1</to>
-				<output>out</output>
 			</connection>
 			<connection>
 				<from>OnBattleRoundFinished_1</from>
@@ -392,15 +243,21 @@
 			</connection>
 			<connection>
 				<from>OnBattleRoundFinished_1</from>
-				<input>input</input>
-				<to>If_2</to>
-				<output>onFinished</output>
+				<input>index</input>
+				<to>Select_1</to>
+				<output>winnerTeam</output>
 			</connection>
 			<connection>
-				<from>Or_1</from>
-				<input>value</input>
-				<to>If_2</to>
-				<output>res</output>
+				<from>StartScript_1</from>
+				<input>subscribe</input>
+				<to>TriggerExternal_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>TriggerExternal_1</from>
+				<input>input</input>
+				<to>SetVariable_1</to>
+				<output>out</output>
 			</connection>
 		</connections>
 		<macros/>

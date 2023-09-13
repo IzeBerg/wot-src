@@ -118,6 +118,10 @@ class StatusNotificationsGroup(StatusNotificationItem):
         for item in self.__items:
             item.start()
 
+    def updateItems(self, updater):
+        for item in self.__items:
+            updater(item)
+
     def getItemID(self):
         return self.GROUP_ITEM_ID
 

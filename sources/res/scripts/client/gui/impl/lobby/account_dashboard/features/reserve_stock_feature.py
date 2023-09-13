@@ -9,6 +9,8 @@ from helpers import dependency
 from skeletons.gui.game_control import IGameSessionController, IWotPlusController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
+from uilogging.wot_plus.loggers import WotPlusAccountDashboardWidgetLogger
+from uilogging.wot_plus.logging_constants import AccountDashboardFeature
 if typing.TYPE_CHECKING:
     from typing import Dict
     from gui.impl.gen.view_models.views.lobby.account_dashboard.reserve_stock_model import ReserveStockModel
@@ -82,6 +84,7 @@ class ReserveStockFeature(FeatureItem):
         submodel.setOpeningTime(getOpenTimeHelper(config, data))
 
     def __onClick(self):
+        WotPlusAccountDashboardWidgetLogger().logWidgetClickEvent(AccountDashboardFeature.RESERVE_WIDGET)
         isEnabled = self._lobbyContext.getServerSettings().getPiggyBankConfig().get('enabled', False) or self._wotPlus.isWotPlusEnabled()
         if isEnabled:
             showPiggyBankView()

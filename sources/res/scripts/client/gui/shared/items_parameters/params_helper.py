@@ -7,16 +7,16 @@ from gui.shared.items_parameters import params, RELATIVE_PARAMS, MAX_RELATIVE_VA
 from gui.shared.items_parameters.comparator import VehiclesComparator, ItemsComparator, PARAM_STATE
 from gui.shared.items_parameters.functions import getBasicShell
 from gui.shared.items_parameters.params_cache import g_paramsCache
-from gui.shared.utils import AUTO_RELOAD_PROP_NAME, MAX_STEERING_LOCK_ANGLE, TURBOSHAFT_SPEED_MODE_SPEED, WHEELED_SPEED_MODE_SPEED, DUAL_GUN_CHARGE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_SWITCH_TIME, CHASSIS_REPAIR_TIME, ROCKET_ACCELERATION_ENGINE_POWER, ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION
+from gui.shared.utils import AUTO_RELOAD_PROP_NAME, MAX_STEERING_LOCK_ANGLE, TURBOSHAFT_SPEED_MODE_SPEED, WHEELED_SPEED_MODE_SPEED, DUAL_GUN_CHARGE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, SHOT_DISPERSION_ANGLE, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_SWITCH_TIME, CHASSIS_REPAIR_TIME, ROCKET_ACCELERATION_ENGINE_POWER, ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION, DUAL_ACCURACY_COOLING_DELAY, BURST_FIRE_RATE
 from helpers import dependency
 from items import vehicles, ITEM_TYPES
 from shared_utils import findFirst, first
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 RELATIVE_POWER_PARAMS = (
  'avgDamage', 'avgPiercingPower', 'stunMinDuration', 'stunMaxDuration', 'reloadTime', AUTO_RELOAD_PROP_NAME,
- 'reloadTimeSecs', 'clipFireRate', 'burstFireRate', 'turboshaftBurstFireRate', DUAL_GUN_CHARGE_TIME,
- 'turretRotationSpeed', 'turretYawLimits', 'pitchLimits', 'gunYawLimits', 'aimingTime', 'shotDispersionAngle',
- 'avgDamagePerMinute')
+ 'reloadTimeSecs', 'clipFireRate', BURST_FIRE_RATE, 'turboshaftBurstFireRate', DUAL_GUN_CHARGE_TIME,
+ 'turretRotationSpeed', 'turretYawLimits', 'pitchLimits', 'gunYawLimits', 'aimingTime', SHOT_DISPERSION_ANGLE,
+ DUAL_ACCURACY_COOLING_DELAY, 'avgDamagePerMinute')
 RELATIVE_ARMOR_PARAMS = (
  'maxHealth', 'hullArmor', 'turretArmor', CHASSIS_REPAIR_TIME)
 RELATIVE_MOBILITY_PARAMS = (
@@ -101,6 +101,15 @@ _STATE_TO_HIGHLIGHT = {PARAM_STATE.WORSE: HANGAR_ALIASES.VEH_PARAM_RENDERER_HIGH
    PARAM_STATE.BETTER: HANGAR_ALIASES.VEH_PARAM_RENDERER_HIGHLIGHT_POSITIVE, 
    PARAM_STATE.NOT_APPLICABLE: HANGAR_ALIASES.VEH_PARAM_RENDERER_HIGHLIGHT_NONE, 
    PARAM_STATE.NORMAL: HANGAR_ALIASES.VEH_PARAM_RENDERER_HIGHLIGHT_NONE}
+_PARAMS_WITH_AVAILABLE_ZERO_VALUES = {DUAL_ACCURACY_COOLING_DELAY: lambda v: v is not None}
+
+def isValidEmptyValue(paramName, paramValue):
+    func = _PARAMS_WITH_AVAILABLE_ZERO_VALUES.get(paramName)
+    if func is not None:
+        return func(paramValue)
+    else:
+        return False
+
 
 def _getParamsProvider(item, vehicleDescr=None):
     if vehicles.isVehicleDescr(item.descriptor):
@@ -330,7 +339,7 @@ class SimplifiedBarVO(dict):
 
 class VehParamsBaseGenerator(object):
 
-    def getFormattedParams(self, comparator, expandedGroups=None, vehIntCD=None, diffParams=None):
+    def getFormattedParams(self, comparator, expandedGroups=None, vehIntCD=None, diffParams=None, hasNormalization=False):
         result = []
         if not GUI_SETTINGS.technicalInfo:
             return result
@@ -346,7 +355,7 @@ class VehParamsBaseGenerator(object):
                     result.append(bottomVo)
                 if isOpened:
                     for paramName in PARAMS_GROUPS[groupName]:
-                        param = comparator.getExtendedData(paramName)
+                        param = comparator.getExtendedData(paramName, hasNormalization)
                         highlight = diffParams.get(paramName, HANGAR_ALIASES.VEH_PARAM_RENDERER_HIGHLIGHT_NONE)
                         formattedParam = self._makeAdvancedParamVO(param, groupName, highlight)
                         if formattedParam:

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>nodes_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_Fire_1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.220672 -1.500000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Fire_2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.047866 1.597346</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.844302 0.535868</row1>
+					<row2>0.000000 -0.535868 0.844302</row2>
+					<row3>-1.306431 0.072503 3.087034</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LFront_0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.978208 0.207626</row1>
+					<row2>0.000000 -0.207626 0.978208</row2>
+					<row3>-1.306431 0.010360 0.078135</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_LRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.810167 -0.586200</row1>
+					<row2>-0.000000 -0.586200 -0.810167</row2>
+					<row3>-1.306431 0.087795 -2.737403</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.832390 0.554190</row1>
+					<row2>0.000000 -0.554190 0.832390</row2>
+					<row3>1.306431 0.084239 3.073243</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RFront_0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.993427 0.114466</row1>
+					<row2>0.000000 -0.114466 0.993427</row2>
+					<row3>1.306431 0.006022 0.004740</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_TrackUp_RRear</identifier>
+				<transform>
+					<row0>-1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 0.810167 -0.586200</row1>
+					<row2>-0.000000 -0.586200 -0.810167</row2>
+					<row3>1.306431 0.088608 -2.738502</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_1</identifier>
+				<transform>
+					<row0>-0.306470 0.000000 0.951880</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>-0.951880 0.000000 -0.306470</row2>
+					<row3>-0.174969 0.641221 -1.437179</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_Track_Exhaus_2</identifier>
+				<transform>
+					<row0>-0.295903 0.000000 -0.955218</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.955218 0.000000 -0.295903</row2>
+					<row3>0.174992 0.641221 -1.437179</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>HP_turretJoint</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.727899 0.539560</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 7.013700 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_useDetailMetallic
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000292 0.145520 0.154860</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>tank_upgrade_1</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 7.013700 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.256705 0.515140 1.543050</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>tank_upgrade_2</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 7.013700 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.153643 0.373729 0.246749</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>tank_upgrade_3</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 7.013700 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.057005 0.291637 -0.276315</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>tank_upgrade_4</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>7.013700 7.013700 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/american/A143_M_V_Y/_skins/A143_M_V_Y_BPXII_3DSt/M_V_Y_BPXII_3DSt_equipment_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.009833 0.290534 -0.276315</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.730178 -0.470473 -3.360548</min>
+		<max>1.710512 0.761514 3.184371</max>
+	</boundingBox>
+	<geometrySize>834008</geometrySize>
+	<minUVDensity>0.002831</minUVDensity>
+</root>

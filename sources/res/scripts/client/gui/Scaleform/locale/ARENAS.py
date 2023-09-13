@@ -154,6 +154,10 @@ class ARENAS(object):
     C_252_BR_BATTLE_CITY4_DESCRIPTION = '#arenas:252_br_battle_city4/description'
     C_128_LAST_FRONTIER_V_NAME = '#arenas:128_last_frontier_v/name'
     C_128_LAST_FRONTIER_V_DESCRIPTION = '#arenas:128_last_frontier_v/description'
+    C_108_NORMANDY_NOM_NAME = '#arenas:108_normandy_nom/name'
+    C_108_NORMANDY_NOM_DESCRIPTION = '#arenas:108_normandy_nom/description'
+    C_14_SIEGFRIED_LINE_NOM_NAME = '#arenas:14_siegfried_line_nom/name'
+    C_14_SIEGFRIED_LINE_NOM_DESCRIPTION = '#arenas:14_siegfried_line_nom/description'
     C_121_LOST_PARADISE_V_NAME = '#arenas:121_lost_paradise_v/name'
     C_121_LOST_PARADISE_V_DESCRIPTION = '#arenas:121_lost_paradise_v/description'
     TYPE_WINBACK_NAME = '#arenas:type/winback/name'
@@ -314,6 +318,10 @@ class ARENAS(object):
      C_252_BR_BATTLE_CITY4_DESCRIPTION,
      C_128_LAST_FRONTIER_V_NAME,
      C_128_LAST_FRONTIER_V_DESCRIPTION,
+     C_108_NORMANDY_NOM_NAME,
+     C_108_NORMANDY_NOM_DESCRIPTION,
+     C_14_SIEGFRIED_LINE_NOM_NAME,
+     C_14_SIEGFRIED_LINE_NOM_DESCRIPTION,
      C_121_LOST_PARADISE_V_NAME,
      C_121_LOST_PARADISE_V_DESCRIPTION,
      TYPE_WINBACK_NAME,

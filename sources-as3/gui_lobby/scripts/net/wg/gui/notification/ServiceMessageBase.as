@@ -58,15 +58,32 @@ package net.wg.gui.notification
          super.onDispose();
       }
       
-      public function get data() : NotificationInfoVO
+      private function setupContent() : void
       {
-         return this._data;
+         if(this.contentLinkage != this._currentContentLinkage)
+         {
+            this.clearContent();
+            this._currentContentLinkage = this.contentLinkage;
+            this.content = this._classFactory.getComponent(this.contentLinkage,ServiceMessageContent);
+            this.content.addEventListener(Event.RESIZE,this.onContentResizeHandler);
+            this.content.name = CONTENT_CHILD_COMPONENT_NAME;
+            this.addChild(DisplayObject(this.content));
+            this.content.data = this._data;
+            this.content.validateNow();
+            invalidateState();
+         }
+         else
+         {
+            this.content.data = this._data;
+         }
       }
       
-      public function set data(param1:NotificationInfoVO) : void
+      private function clearContent() : void
       {
-         this._data = param1;
-         invalidateData();
+         this.content.removeEventListener(Event.RESIZE,this.onContentResizeHandler);
+         this.removeChild(DisplayObject(this.content));
+         this.content.dispose();
+         this.content = null;
       }
       
       override public function get width() : Number
@@ -79,10 +96,15 @@ package net.wg.gui.notification
          return this.content.height;
       }
       
-      override public function validateNow(param1:Event = null) : void
+      public function get data() : NotificationInfoVO
       {
-         super.validateNow(param1);
-         this.content.validateNow();
+         return this._data;
+      }
+      
+      public function set data(param1:NotificationInfoVO) : void
+      {
+         this._data = param1;
+         invalidateData();
       }
       
       protected function get contentLinkage() : String
@@ -94,27 +116,10 @@ package net.wg.gui.notification
          return DEFAULT_CONTENT_LINKAGE;
       }
       
-      private function setupContent() : void
+      override public function validateNow(param1:Event = null) : void
       {
-         if(this.contentLinkage != this._currentContentLinkage)
-         {
-            this.clearContent();
-            this.content = this._classFactory.getComponent(this.contentLinkage,ServiceMessageContent);
-            this.content.addEventListener(Event.RESIZE,this.onContentResizeHandler);
-            this.content.name = CONTENT_CHILD_COMPONENT_NAME;
-            this._currentContentLinkage = this.contentLinkage;
-            this.addChild(DisplayObject(this.content));
-            invalidateState();
-         }
-         this.content.data = this._data;
-      }
-      
-      private function clearContent() : void
-      {
-         this.content.removeEventListener(Event.RESIZE,this.onContentResizeHandler);
-         this.removeChild(DisplayObject(this.content));
-         this.content.dispose();
-         this.content = null;
+         super.validateNow(param1);
+         this.content.validateNow();
       }
       
       private function onContentResizeHandler(param1:Event) : void

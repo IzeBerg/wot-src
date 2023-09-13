@@ -493,7 +493,10 @@ msgid "damage_panel/devices/wheel/normal"
 msgstr "悬挂装置完好。"
 
 msgid "danger_zone/indicator"
-msgstr "坦克将被摧毁！快离开危险区域！"
+msgstr "您的坦克可能会被摧毁！快离开危险区域！"
+
+msgid "destroyTimer/liftOver"
+msgstr "正在恢复…"
 
 msgid "devices/ammo_bay"
 msgstr "弹药架"
@@ -894,9 +897,6 @@ msgstr "无法开炮:火炮损坏。"
 msgid "player_errors/cant_shoot/gun_locked"
 msgstr "无法开火"
 
-msgid "player_errors/cant_shoot/gun_overheated"
-msgstr "无法射击: 火炮过热"
-
 msgid "player_errors/cant_shoot/gun_reload"
 msgstr "正在装弹"
 
@@ -941,9 +941,6 @@ msgstr "[%(entity)s]完全正常，不需修理。"
 
 msgid "player_messages/ALLY_HIT"
 msgstr "你击中盟友[%(entity)s]！"
-
-msgid "player_messages/ALLY_MULTI_HIT"
-msgstr "您击中了盟友[%(entity)s]！"
 
 msgid "player_messages/COMBAT_BR_EQUIPMENT_READY"
 msgstr "[%(equipment)s] 已就位。"
@@ -2598,9 +2595,6 @@ msgstr "%(caliber)s毫米HEAT弹%(userString)s"
 msgid "shells_kinds/params/damage"
 msgstr "平均损伤: %(value)s 点"
 
-msgid "shells_kinds/params/damagePerSecond"
-msgstr "平均每秒损伤: %(value)s点"
-
 msgid "shells_kinds/params/explosionRadius"
 msgstr "损伤范围：%(value)s米"
 
@@ -3042,3 +3036,6 @@ msgstr "[%(device)s]由于碰撞受伤。"
 
 msgid "vehicle_messages/poi_equipment_used"
 msgstr "%(equipment)s战术能力已被激活！"
+
+msgid "warning_zone/indicator"
+msgstr "小心！您已接近危险区域。"

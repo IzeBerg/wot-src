@@ -57,7 +57,7 @@
 				0
 				<material>
 					<identifier>s_nd2</identifier>
-					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>112</materialKind>
 					<property>
@@ -73,28 +73,12 @@
 						<Vector4>3.000000 3.000000 4.000000 4.000000</Vector4>
 					</property>
 					<property>
-						g_atlasIndexes
-						<Vector4>0.000000 1.000000 4.000000 1.000000</Vector4>
-					</property>
-					<property>
 						dirtMap
 						<Texture>content/Buildings/00_Tiles/Dirt_Desert_01_DM.dds</Texture>
 					</property>
 					<property>
-						atlasNormalGlossSpec
-						<Texture>content/Buildings/00_Atlases/31_airfield_atlas_GBMT.atlas</Texture>
-					</property>
-					<property>
-						atlasMetallicAO
-						<Texture>content/Buildings/00_Atlases/31_airfield_atlas_MAO.atlas</Texture>
-					</property>
-					<property>
-						atlasBlend
-						<Texture>content/Buildings/00_Atlases/31_airfield_atlas_blend.png</Texture>
-					</property>
-					<property>
-						atlasAlbedoHeight
-						<Texture>content/Buildings/00_Atlases/31_airfield_atlas_AM.atlas</Texture>
+						blendMask
+						<Texture>content/Buildings/hd_bld_UNI_005_Hangar/31_airfield_01_blend.png</Texture>
 					</property>
 					<property>
 						g_tile2Tint
@@ -104,6 +88,46 @@
 						g_enableTerrainBlending
 						<Bool>true</Bool>
 					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_01_1024_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_01_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_01_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_02_1024_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_02_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Bare_02_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_1024_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
 				</material>
 				<groupOrigin>0.211073 3.072393 0.814673</groupOrigin>
 			</primitiveGroup>
@@ -111,7 +135,7 @@
 				1
 				<material>
 					<identifier>s_nd0</identifier>
-					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>112</materialKind>
 					<property>
@@ -127,7 +151,7 @@
 						<Vector4>0.910000 0.881031 0.864502 1.000000</Vector4>
 					</property>
 					<property>
-						g_fakeShadowsParams
+						g_fakeShadowsAndDetailParams
 						<Vector4>0.500000 0.500000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
@@ -135,32 +159,56 @@
 						<Vector4>3.000000 3.000000 4.000000 4.000000</Vector4>
 					</property>
 					<property>
-						g_atlasIndexes
-						<Vector4>2.000000 3.000000 4.000000 1.000000</Vector4>
-					</property>
-					<property>
 						dirtMap
 						<Texture>content/Buildings/00_Tiles/Dirt_Desert_01_DM.dds</Texture>
 					</property>
 					<property>
-						atlasNormalGlossSpec
-						<Texture>content/Buildings/00_Atlases/31_airfield_atlas_GBMT.atlas</Texture>
-					</property>
-					<property>
-						atlasMetallicAO
-						<Texture>content/Buildings/00_Atlases/31_airfield_atlas_MAO.atlas</Texture>
-					</property>
-					<property>
-						atlasBlend
-						<Texture>content/Buildings/00_Atlases/31_airfield_atlas_blend.png</Texture>
-					</property>
-					<property>
-						atlasAlbedoHeight
-						<Texture>content/Buildings/00_Atlases/31_airfield_atlas_AM.atlas</Texture>
+						blendMask
+						<Texture>content/Buildings/hd_bld_UNI_005_Hangar/31_airfield_01_blend.png</Texture>
 					</property>
 					<property>
 						g_enableTerrainBlending
 						<Bool>true</Bool>
+					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Corrugated_01_1024_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Corrugated_01_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Corrugated_01_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Corrugated_Damaged_01_1024_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Corrugated_Damaged_01_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Corrugated_Damaged_01_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_1024_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_1024_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_1024_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>0.318659 5.753788 -0.050144</groupOrigin>

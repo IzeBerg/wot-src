@@ -10,6 +10,7 @@ class _PlayerEvents(object):
         self.onAccountBecomePlayer = Event.Event()
         self.onAccountBecomeNonPlayer = Event.Event()
         self.onAccountShowGUI = Event.Event()
+        self.onAccountShowGUISkipped = Event.Event()
         self.onClientUpdated = Event.Event()
         self.onEnqueued = Event.Event()
         self.onDequeued = Event.Event()
@@ -76,6 +77,7 @@ class _PlayerEvents(object):
         self.onCollectPrebattleInvites = Event.Event()
         self.onUpdateSpecBattlesWindow = Event.Event()
         self.onLoadingMilestoneReached = Event.Event()
+        self.onConfigModelUpdated = Event.Event()
 
 
 g_playerEvents = _PlayerEvents()
