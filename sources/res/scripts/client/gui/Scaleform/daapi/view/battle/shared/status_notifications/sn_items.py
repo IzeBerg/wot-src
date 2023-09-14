@@ -1,5 +1,6 @@
 import typing, BigWorld
 from AvatarInputHandler import AvatarInputHandler
+from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from constants import VEHICLE_MISC_STATUS
 from gui.Scaleform.daapi.view.battle.shared.status_notifications.components import StatusNotificationItem
 from gui.Scaleform.genConsts.BATTLE_NOTIFICATIONS_TIMER_TYPES import BATTLE_NOTIFICATIONS_TIMER_TYPES
@@ -299,6 +300,9 @@ class _OverturnedBaseSN(LocalizationProvider, DestroyMiscTimerSN):
         return VEHICLE_MISC_STATUS.VEHICLE_IS_OVERTURNED
 
     def _getDescription(self, value=None):
+        liftOverEnabled = ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arenaBonusType, ARENA_BONUS_TYPE_CAPS.LIFT_OVER)
+        if liftOverEnabled:
+            return backport.text(R.strings.ingame_gui.destroyTimer.liftOver())
         return ''
 
 

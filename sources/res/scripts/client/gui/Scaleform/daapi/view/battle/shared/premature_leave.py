@@ -1,14 +1,20 @@
 from BWUtil import AsyncReturn
-from wg_async import wg_await, wg_async
+from gui.impl.dialogs.dialog_template_utils import closeDialogTemplate
 from gui.impl.gen import R
 from gui.impl.pub.dialog_window import DialogButtons
+from wg_async import wg_await, wg_async
 _DIMMER_ALPHA = 0.7
+_PREMATURE_LEAVE_DIALOG_ID = 'PREMATURE_LEAVE_DIALOG'
+
+def closeDialogWindow():
+    closeDialogTemplate(_PREMATURE_LEAVE_DIALOG_ID)
+
 
 @wg_async
-def showResDialogWindow(title, confirm=None, cancel=None, description=None, icon=None):
+def showDialogWindow(title, confirm=None, cancel=None, description=None, icon=None):
     from gui.impl.dialogs import dialogs
     from gui.impl.dialogs.gf_builders import ConfirmCancelDialogBuilder
-    builder = ConfirmCancelDialogBuilder()
+    builder = ConfirmCancelDialogBuilder(uniqueID=_PREMATURE_LEAVE_DIALOG_ID)
     builder.setBlur(False)
     builder.setDimmerAlpha(_DIMMER_ALPHA)
     builder.setTitle(title)
@@ -20,7 +26,19 @@ def showResDialogWindow(title, confirm=None, cancel=None, description=None, icon
     if icon:
         builder.setIcon(icon)
     result = yield wg_await(dialogs.show(builder.build()))
-    raise AsyncReturn(result.result == DialogButtons.SUBMIT)
+    raise AsyncReturn(result.result)
+
+
+@wg_async
+def showResDialogWindow(title, confirm=None, cancel=None, description=None, icon=None):
+    result = yield wg_await(showDialogWindow(title, confirm=confirm, cancel=cancel, description=description, icon=icon))
+    raise AsyncReturn(result == DialogButtons.SUBMIT)
+
+
+@wg_async
+def showCancellationDialogWindow(title, confirm=None, cancel=None, description=None, icon=None):
+    result = yield wg_await(showDialogWindow(title, confirm=confirm, cancel=cancel, description=description, icon=icon))
+    raise AsyncReturn(result == DialogButtons.CANCEL)
 
 
 @wg_async

@@ -30,6 +30,10 @@ _TOKENS_REWARDS_BONUSES_ORDER = (
  BonusTypes.ACHIEVEMENT, BonusTypes.DELUXE_DEVICE, BonusTypes.CREWBOOK, BonusTypes.PREMIUM,
  BonusTypes.CRYSTAL, BonusTypes.CREDITS, BonusTypes.OPTIONAL_DEVICE, BonusTypes.BOOSTER,
  BonusTypes.BATTLE_BOOSTER, BonusTypes.EQUIPMENT)
+_QUALIFICATION_REWARDS_BONUSES_ORDER = (
+ BonusTypes.STYLE_PROGRESS, BonusTypes.BADGE_SUFFIX, BonusTypes.BADGE,
+ BonusTypes.DOGTAG_BACKGROUND, BonusTypes.DOGTAG_ENGRAVING,
+ BonusTypes.CRYSTAL, BonusTypes.STYLE, BonusTypes.RENT_VEHICLE)
 
 def getComp7BonusPacker():
     mapping = getDefaultBonusPackersMap()
@@ -213,6 +217,15 @@ def packRanksRewardsQuestBonuses(quest, periodicQuest=None):
 def packTokensRewardsQuestBonuses(quest):
     bonuses = quest.getBonuses()
     return packQuestBonuses(bonuses, bonusPacker=getComp7BonusPacker(), order=_TOKENS_REWARDS_BONUSES_ORDER)
+
+
+def packQualificationRewardsQuestBonuses(quests):
+    bonuses = []
+    quests.sort(key=lambda q: q.getID())
+    for quest in quests:
+        bonuses.extend(quest.getBonuses())
+
+    return packQuestBonuses(bonuses, bonusPacker=getComp7BonusPacker(), order=_QUALIFICATION_REWARDS_BONUSES_ORDER)
 
 
 def _getSortKey(order):

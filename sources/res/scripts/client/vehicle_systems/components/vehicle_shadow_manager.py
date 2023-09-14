@@ -16,7 +16,7 @@ class VehicleShadowManager(Component):
 
     def changePlayerTarget(self, isStatic):
         vehicle = BigWorld.player().getVehicleAttached()
-        if vehicle is not None:
+        if vehicle is not None and vehicle.appearance is not None:
             self.updatePlayerTarget(vehicle.appearance.compoundModel)
         else:
             self.updatePlayerTarget(None)
@@ -28,7 +28,7 @@ class VehicleShadowManager(Component):
         isValidMode = cameraMode == CTRL_MODE_NAME.VIDEO or cameraMode == CTRL_MODE_NAME.CAT
         if isValidMode:
             self.updatePlayerTarget(None)
-        elif not isValidMode and vehicle is not None:
+        elif not isValidMode and vehicle is not None and vehicle.appearance is not None:
             self.updatePlayerTarget(vehicle.appearance.compoundModel)
         return
 

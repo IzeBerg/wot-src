@@ -19,7 +19,7 @@ from adisp import adisp_process
 from battle_pass_common import BattlePassRewardReason, get3DStyleProgressToken
 from chat_shared import SYS_MESSAGE_TYPE
 from collector_vehicle import CollectorVehicleConsts
-from comp7_common import Comp7QuestType
+from comp7_common import Comp7QuestType, COMP7_QUALIFICATION_QUEST_ID
 from constants import DOSSIER_TYPE, EVENT_TYPE, INVOICE_ASSET, PREMIUM_TYPE
 from dossiers2.custom.records import DB_ID_TO_RECORD
 from dossiers2.ui.achievements import BADGES_BLOCK
@@ -42,7 +42,7 @@ from gui.impl.auxiliary.rewards_helper import getProgressiveRewardBonuses, Bluep
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.loot_box_view.loot_congrats_types import LootCongratsTypes
 from gui.impl.lobby.awards.items_collection_provider import MultipleAwardRewardsMainPacker
-from gui.impl.lobby.comp7.comp7_quest_helpers import isComp7Quest, getComp7QuestType, parseComp7RanksQuestID, parseComp7TokensQuestID
+from gui.impl.lobby.comp7.comp7_quest_helpers import isComp7VisibleQuest, getComp7QuestType, parseComp7RanksQuestID, parseComp7TokensQuestID
 from gui.impl.lobby.mapbox.map_box_awards_view import MapBoxAwardsViewWindow
 from gui.impl.pub.notification_commands import WindowNotificationCommand
 from gui.limited_ui.lui_rules_storage import LuiRules
@@ -63,8 +63,6 @@ from gui.shared.system_factory import registerAwardControllerHandlers, collectAw
 from gui.shared.utils import isPopupsWindowsOpenDisabled
 from gui.shared.utils.requesters import REQ_CRITERIA
 from gui.sounds.sound_constants import SPEAKERS_CONFIG
-from gui.wot_anniversary import wot_anniversary_helpers
-from gui.wot_anniversary.wot_anniversary_helpers import showWotAnniversaryAwardWindow, showWotAnniversaryLoginAwardWindow
 from helpers import dependency, i18n
 from items import ITEM_TYPE_INDICES, vehicles as vehicles_core
 from items.components.crew_books_constants import CREW_BOOK_DISPLAYED_AWARDS_COUNT
@@ -76,10 +74,9 @@ from shared_utils import first, findFirst
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import IAwardController, IBattlePassController, IBootcampController, ILimitedUIController, IMapboxController, IRankedBattlesController, IWotPlusController, ISeniorityAwardsController, IWinbackController, IWotAnniversaryController
+from skeletons.gui.game_control import IAwardController, IBattlePassController, IBootcampController, ILimitedUIController, IMapboxController, IRankedBattlesController, IWotPlusController, ISeniorityAwardsController, IWinbackController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import IGuiLoader, INotificationWindowController
-from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.platform.catalog_service_controller import IPurchaseCache
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
@@ -87,6 +84,8 @@ from skeletons.gui.shared.utils import IHangarSpace
 from skeletons.gui.sounds import ISoundsController
 from skeletons.gui.system_messages import ISystemMessages
 if typing.TYPE_CHECKING:
+    from typing import Tuple, Union, Dict, Literal
+    from messenger.proto.bw.wrappers import _ServiceChannelData
     from comp7_ranks_common import Comp7Division
     from gui.platform.catalog_service.controller import _PurchaseDescriptor
     from gui.server_events.event_items import TokenQuest
@@ -607,12 +606,10 @@ class PiggyBankOpenHandler(ServiceChannelHandler):
 
     @staticmethod
     def _canShowWotPlusWindow(goldEarned):
-        lobbyContext = dependency.instance(ILobbyContext)
         wotPlusCtrl = dependency.instance(IWotPlusController)
         isWotPlusEnabled = wotPlusCtrl.isWotPlusEnabled()
-        isWotPlusNSEnabled = lobbyContext.getServerSettings().isWotPlusNewSubscriptionEnabled()
         hasWotPlusActive = wotPlusCtrl.isEnabled()
-        return isWotPlusEnabled and (hasWotPlusActive or isWotPlusNSEnabled or goldEarned)
+        return isWotPlusEnabled and (hasWotPlusActive or goldEarned)
 
     def __isPremiumEnable(self):
         return self.itemsCache.items.stats.isActivePremium(PREMIUM_TYPE.PLUS)
@@ -742,9 +739,7 @@ class CrewBooksQuestHandler(MultiTypeServiceChannelHandler):
             questIDs = message.data.get('completedQuestIDs', set())
             res = res and 'items' in message.data
             res = res and any(isCrewBook(intCD) for intCD in message.data['items'].iterkeys())
-            qid = next(ifilter(lambda x: x.endswith(QUEST_AWARD_POSTFIX.CREW_BOOKS), questIDs), None)
-            if qid is not None:
-                self._qId = next(ifilter(lambda x: x.endswith(QUEST_AWARD_POSTFIX.CREW_BOOKS), questIDs), None)
+            self._qId = next(ifilter(lambda x: x.endswith(QUEST_AWARD_POSTFIX.CREW_BOOKS), questIDs), None)
             res = res and self._qId is not None
         return res
 
@@ -1587,7 +1582,7 @@ class BattleMattersQuestsHandler(MultiTypeServiceChannelHandler):
         if not super(BattleMattersQuestsHandler, self)._needToShowAward(ctx):
             return False
         data = message.data
-        return [ qID for qID in data.get('completedQuestIDs', set()) if self.__battleMattersCtrl.isRegularBattleMattersQuestID(qID) or self.__battleMattersCtrl.isIntermediateBattleMattersQuestID(qID)
+        return [ qID for qID in data.get('completedQuestIDs', set()) if self.__battleMattersCtrl.isBattleMattersQuestID(qID)
                ]
 
 
@@ -1616,7 +1611,7 @@ class Comp7RewardHandler(MultiTypeServiceChannelHandler):
     def _showAward(self, ctx):
         _, message = ctx
         data = message.data
-        self.__completedQuestIDs.update(qID for qID in data.get('completedQuestIDs', set()) if isComp7Quest(qID))
+        self.__completedQuestIDs.update(qID for qID in data.get('completedQuestIDs', set()) if isComp7VisibleQuest(qID))
         if not self.__completedQuestIDs:
             return
         if self.eventsCache.waitForSync:
@@ -1625,22 +1620,26 @@ class Comp7RewardHandler(MultiTypeServiceChannelHandler):
             self.__showAward()
 
     def __showAward(self):
-        ranksQuests, tokensQuests, periodicQuests = self.__getComp7CompletedQuests()
+        ranksQuests, tokensQuests, periodicQuests, isQualification = self.__getComp7CompletedQuests()
         self.__completedQuestIDs.clear()
-        for quest in ranksQuests:
-            event_dispatcher.showComp7RanksRewardsScreen(quest=quest, periodicQuests=periodicQuests)
+        if isQualification:
+            event_dispatcher.showComp7QualificationRewardsScreen(quests=ranksQuests)
+        else:
+            for quest in ranksQuests:
+                event_dispatcher.showComp7RanksRewardsScreen(quest=quest, periodicQuests=periodicQuests)
 
-        for quest in tokensQuests:
-            event_dispatcher.showComp7TokensRewardsScreen(quest=quest)
+            for quest in tokensQuests:
+                event_dispatcher.showComp7TokensRewardsScreen(quest=quest)
 
     def __getComp7CompletedQuests(self):
         ranksQuests = []
         tokensQuests = []
         periodicQuests = []
+        isQualification = False
         if not self.__completedQuestIDs:
             return (ranksQuests, tokensQuests, periodicQuests)
         else:
-            allQuests = self.eventsCache.getAllQuests(lambda q: isComp7Quest(q.getID()))
+            allQuests = self.eventsCache.getAllQuests(lambda q: isComp7VisibleQuest(q.getID()))
             for qID in self.__completedQuestIDs:
                 quest = allQuests.get(qID)
                 if quest is None:
@@ -1653,11 +1652,13 @@ class Comp7RewardHandler(MultiTypeServiceChannelHandler):
                     tokensQuests.append(quest)
                 elif qType == Comp7QuestType.PERIODIC:
                     periodicQuests.append(quest)
+                if qID == COMP7_QUALIFICATION_QUEST_ID:
+                    isQualification = True
 
-            ranksQuests.sort(key=self.__getRanksQuestSortKey)
+            ranksQuests.sort(key=self.__getRanksQuestSortKey, reverse=True)
             tokensQuests.sort(key=self.__getTokensQuestSortKey)
             return (
-             ranksQuests, tokensQuests, periodicQuests)
+             ranksQuests, tokensQuests, periodicQuests, isQualification)
 
     def __onEventCacheSyncCompleted(self, *_):
         self.eventsCache.onSyncCompleted -= self.__onEventCacheSyncCompleted
@@ -1814,49 +1815,6 @@ class WinbackQuestHandler(MultiTypeServiceChannelHandler):
         return qIDs
 
 
-class WotAnniversaryQuestsHandler(MultiTypeServiceChannelHandler):
-    __wotAnniversaryCtrl = dependency.descriptor(IWotAnniversaryController)
-    __systemMessages = dependency.descriptor(ISystemMessages)
-
-    def __init__(self, awardCtrl):
-        super(WotAnniversaryQuestsHandler, self).__init__((
-         SYS_MESSAGE_TYPE.battleResults.index(), SYS_MESSAGE_TYPE.tokenQuests.index()), awardCtrl)
-
-    def _showAward(self, ctx):
-        _, message = ctx
-        data = message.data.copy()
-        rewardQuestIDs = []
-        loginRewardQuestIDs = []
-        battleQuests = False
-        for questID in data.get('completedQuestIDs', set()):
-            if wot_anniversary_helpers.isWotAnniversaryQuest(questID):
-                if wot_anniversary_helpers.isWotAnniversaryLoginQuest(questID):
-                    loginRewardQuestIDs.append(questID)
-                elif wot_anniversary_helpers.isWotAnniversaryBattleQuest(questID):
-                    battleQuests = True
-                    rewardQuestIDs.append(questID)
-                elif wot_anniversary_helpers.isSecretMessageReward(questID) or wot_anniversary_helpers.isFinalTokenQuest(questID):
-                    rewardQuestIDs.append(questID)
-
-        if set(self.__wotAnniversaryCtrl.getRewardScreenRequiredQuests()) & set(rewardQuestIDs):
-            rewards = []
-            for questID in rewardQuestIDs:
-                questData = data.get('detailedRewards', {}).get(questID, {})
-                rewards.append({key:val for key, val in questData.items()})
-
-            if rewards:
-                showWotAnniversaryAwardWindow(rewards, useQueue=True)
-        if battleQuests and message.type == SYS_MESSAGE_TYPE.battleResults.index():
-            self.showWotAnniversaryBattleAwardNotification(message)
-        for questID in loginRewardQuestIDs:
-            questData = data.get('detailedRewards', {}).get(questID, {})
-            filteredQuestData = {key:val for key, val in questData.items() if key != 'tokens' if key != 'tokens'}
-            showWotAnniversaryLoginAwardWindow(questID, filteredQuestData, useQueue=True)
-
-    def showWotAnniversaryBattleAwardNotification(self, message):
-        self.__systemMessages.proto.serviceChannel.pushClientMessage(message, SCH_CLIENT_MSG_TYPE.ANNIVERSARY_BATTLE_RESULTS_SM_TYPE)
-
-
 registerAwardControllerHandlers((
  BattleQuestsAutoWindowHandler,
  PunishWindowHandler,
@@ -1897,5 +1855,4 @@ registerAwardControllerHandlers((
  BattleMattersQuestsHandler,
  ResourceWellRewardHandler,
  Comp7RewardHandler,
- WinbackQuestHandler,
- WotAnniversaryQuestsHandler))
+ WinbackQuestHandler))

@@ -20,7 +20,7 @@ from gui.sounds.epic_sound_constants import EPIC_SOUND
 from helpers import i18n, dependency
 from items import vehicles, EQUIPMENT_TYPES, ITEM_TYPES
 from points_of_interest_shared import POI_EQUIPMENT_TAG
-from shared_utils import findFirst, forEach
+from shared_utils import findFirst, forEach, CONST_CONTAINER
 from skeletons.gui.battle_session import IBattleSessionProvider
 from soft_exception import SoftException
 if TYPE_CHECKING:
@@ -1208,6 +1208,12 @@ _EQUIPMENT_TAG_TO_ITEM = {('fuel',): _AutoItem,
    (ROLE_EQUIPMENT_TAG,): _comp7ItemFactory, 
    (POI_EQUIPMENT_TAG,): _poiItemFactory}
 
+class _DAMAGE_PANEL_EQUIPMENT(CONST_CONTAINER):
+    EXTINGUISHER = 'extinguisher'
+    MEDKIT = 'medkit'
+    REPAIRKIT = 'repairkit'
+
+
 def _getInitialTagsAndClass(descriptor, tagsToItems):
     descrTags = descriptor.tags
     tagsCandidate, clazzCandidate = tuple(), None
@@ -1448,7 +1454,7 @@ class EquipmentsController(MethodsRules, IBattleController):
         else:
             result, error = True, None
             for _, item in self._equipments.iteritems():
-                if tag in item.getTags() and item.isAvailableToUse:
+                if tag in item.getTags() and _DAMAGE_PANEL_EQUIPMENT.hasValue(tag):
                     result, error = self.__doChangeSetting(item, entityName, avatar)
                     break
 

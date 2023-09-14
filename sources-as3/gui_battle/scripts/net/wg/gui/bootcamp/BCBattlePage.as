@@ -4,7 +4,6 @@ package net.wg.gui.bootcamp
    import flash.geom.Rectangle;
    import net.wg.data.constants.generated.BATTLE_VIEW_ALIASES;
    import net.wg.gui.battle.views.minimap.events.MinimapEvent;
-   import net.wg.gui.bootcamp.battleTopHint.BCBattleTopHint;
    import net.wg.gui.bootcamp.controls.BCAppearMinimapHint;
    import net.wg.gui.bootcamp.events.AppearEvent;
    import net.wg.infrastructure.base.meta.IBCBattlePageMeta;
@@ -27,8 +26,6 @@ package net.wg.gui.bootcamp
       
       public var secondaryHint:BCSecondaryHint;
       
-      public var battleTopHint:BCBattleTopHint;
-      
       private var _appearMinimapHint:BCAppearMinimapHint = null;
       
       public function BCBattlePage()
@@ -39,7 +36,6 @@ package net.wg.gui.bootcamp
       override public function updateStage(param1:Number, param2:Number) : void
       {
          super.updateStage(param1,param2);
-         this.battleTopHint.updateStage(param1,param2);
          this.secondaryHint.y = ribbonsPanel.y - SEC_HINT_OFFSET_Y;
          this.secondaryHint.x = param1 >> 1;
          perksPanel.y = param2 - PERKS_PANEL_OFFSET_Y;
@@ -55,7 +51,6 @@ package net.wg.gui.bootcamp
       {
          super.onPopulate();
          registerFlashComponentS(this.secondaryHint,BATTLE_VIEW_ALIASES.BOOTCAMP_SECONDARY_HINT);
-         registerFlashComponentS(this.battleTopHint,BATTLE_VIEW_ALIASES.BOOTCAMP_BATTLE_TOP_HINT);
       }
       
       override protected function configUI() : void
@@ -70,7 +65,6 @@ package net.wg.gui.bootcamp
          App.stage.removeEventListener(AppearEvent.PREPARE,this.onStagePrepareHandler);
          minimap.removeEventListener(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE,this.onMinimapOnGraphicsRectanglesUpdateHandler);
          this.secondaryHint = null;
-         this.battleTopHint = null;
          this._appearMinimapHint = null;
          super.onDispose();
       }

@@ -195,6 +195,8 @@ package net.wg.data
       
       public static const PROFILE_HOF:String = "profileHof";
       
+      public static const PROFILE_COLLECTIONS_PAGE:String = "profileCollectionsPage";
+      
       public static const ITEM_SELECTOR_DEMONSTRATOR:String = "DemonstrationItem_UI";
       
       public static const BOOSTERS_PANEL:String = "boostersPanel";

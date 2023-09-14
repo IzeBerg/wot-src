@@ -22,7 +22,9 @@ class EventLootBoxesWelcomeScreen(ViewImpl):
         settings = ViewSettings(R.views.event_lootboxes.lobby.event_lootboxes.WelcomeScreen())
         settings.model = WelcomeScreenModel()
         self.__isClosed = False
+        self.__notifier = None
         super(EventLootBoxesWelcomeScreen, self).__init__(settings)
+        return
 
     @property
     def viewModel(self):
@@ -40,7 +42,9 @@ class EventLootBoxesWelcomeScreen(ViewImpl):
         if self.__notifier is not None:
             self.__notifier.stopNotification()
             self.__notifier.clear()
-        self.__onClose()
+            self.__notifier = None
+        if not self.__isClosed:
+            switchHangarOverlaySoundFilter(False)
         super(EventLootBoxesWelcomeScreen, self)._finalize()
         return
 

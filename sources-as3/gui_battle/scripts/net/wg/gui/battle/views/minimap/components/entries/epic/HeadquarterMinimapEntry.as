@@ -202,8 +202,7 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
       
       private function checkForColorBlindMode() : void
       {
-         var _loc1_:Boolean = false;
-         _loc1_ = this.hasColorBlindMode();
+         var _loc1_:Boolean = this.hasColorBlindMode();
          this._isColorBlindMode = App.colorSchemeMgr.getIsColorBlindS() && _loc1_;
          this.hqId.visible = !this._isColorBlindMode;
          animation.visible = !this._isColorBlindMode;

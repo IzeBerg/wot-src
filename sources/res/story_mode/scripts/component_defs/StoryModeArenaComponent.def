@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<BaseMethods>
+		<onAvatarKicked>
+			<Arg>OBJECT_ID</Arg>
+			<Arg>UINT8</Arg>
+		</onAvatarKicked>
+	</BaseMethods>
+	<CellMethods>
+		<setupArena>
+			<Args>
+				<config>PYTHON</config>
+			</Args>
+		</setupArena>
+	</CellMethods>
+	<ofEntity>
+		<Arena/>
+	</ofEntity>
+</root>

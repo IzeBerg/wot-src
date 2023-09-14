@@ -1,5 +1,5 @@
 import PlayerEvents
-from gui.shared.system_factory import collectBattleControllerRepo
+from gui.shared.system_factory import collectBattleControllerRepo, collectSharedControllerRepo
 from gui.battle_control.controllers.repositories import BattleSessionSetup
 from gui.battle_control.controllers.repositories import SharedControllersLocator
 from gui.battle_control.controllers.repositories import DynamicControllersLocator
@@ -10,7 +10,10 @@ __all__ = ('createShared', 'createDynamic', 'BattleSessionSetup', 'SharedControl
            'DynamicControllersLocator', '_ControllersRepository')
 
 def createShared(setup):
-    return SharedControllersLocator(SharedControllersRepository.create(setup))
+    repository, inited = collectSharedControllerRepo(setup.arenaVisitor.gui.guiType, setup)
+    if not inited:
+        repository = SharedControllersRepository.create(setup)
+    return SharedControllersLocator(repository=repository)
 
 
 def createDynamic(setup):

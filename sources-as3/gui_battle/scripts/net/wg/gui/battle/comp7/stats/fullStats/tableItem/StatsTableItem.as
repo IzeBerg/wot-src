@@ -2,7 +2,6 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
 {
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
-   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.battle.comp7.VO.daapi.Comp7InterestPointVO;
@@ -42,9 +41,11 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
       
       private var _squadIcon:BattleAtlasSprite = null;
       
-      private var _rank:int = 0;
+      private var _rank:String = null;
       
-      private var _rankDivision:int = -1;
+      private var _rankDivision:String = null;
+      
+      private var _isQualification:Boolean = false;
       
       private var _roleSkillLevel:RoleSkillLevel = null;
       
@@ -60,10 +61,9 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
       
       public function StatsTableItem(param1:MovieClip, param2:int, param3:int)
       {
-         var _loc4_:int = 0;
          this._tooltipMgr = App.toolTipMgr;
          super(param1,param2,param3);
-         _loc4_ = param2 * this.numRows + param3;
+         var _loc4_:int = param2 * this.numRows + param3;
          this._rankIcon = param1.rankIconsCollection[_loc4_];
          this._roleSkillLevel = param1.roleSkillLevelCollection[_loc4_];
          this._roleSkillLevel.visible = false;
@@ -105,11 +105,15 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
          }
          if(isInvalid(FullStatsValidationType.RANK))
          {
-            _loc1_ = this._rank > Values.DEFAULT_INT && this._rankDivision > Values.DEFAULT_INT;
-            this._rankIcon.visible = _loc1_;
+            _loc1_ = StringUtils.isNotEmpty(this._rank) && StringUtils.isNotEmpty(this._rankDivision);
+            this._rankIcon.visible = _loc1_ || this._isQualification;
             if(_loc1_)
             {
-               this._rankIcon.imageName = BATTLEATLAS.getRankIcon(this._rank.toString(),this._rankDivision.toString());
+               this._rankIcon.imageName = BATTLEATLAS.getRankIcon(this._rank,this._rankDivision);
+            }
+            else if(this._isQualification)
+            {
+               this._rankIcon.imageName = BATTLEATLAS.QUALIFICATION_22X22;
             }
          }
          if(isInvalid(SquadInvalidationType.SQUAD_INDEX))
@@ -177,14 +181,15 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
          this._roleSkillLevel.setIsDisabled(param1);
       }
       
-      public function setRank(param1:int, param2:int) : void
+      public function setRank(param1:String, param2:String, param3:Boolean) : void
       {
-         if(this._rank == param1 && this._rankDivision == param2)
+         if(this._rank == param1 && this._rankDivision == param2 && this._isQualification == param3)
          {
             return;
          }
          this._rank = param1;
          this._rankDivision = param2;
+         this._isQualification = param3;
          invalidate(FullStatsValidationType.RANK);
       }
       

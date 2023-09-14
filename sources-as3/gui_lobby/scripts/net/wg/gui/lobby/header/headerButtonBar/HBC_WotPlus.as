@@ -1,12 +1,19 @@
 package net.wg.gui.lobby.header.headerButtonBar
 {
+   import flash.display.MovieClip;
    import flash.text.TextField;
+   import net.wg.gui.lobby.header.vo.HBC_WotPlusDataVO;
    import net.wg.infrastructure.interfaces.IImage;
+   import net.wg.infrastructure.interfaces.ITween;
+   import net.wg.infrastructure.interfaces.ITweenHandler;
+   import net.wg.infrastructure.interfaces.ITweenPropertiesVO;
+   import net.wg.infrastructure.managers.ITweenManagerHelper;
    import net.wg.utils.ICommons;
    import net.wg.utils.IStageSizeDependComponent;
+   import net.wg.utils.ITweenManager;
    import net.wg.utils.StageSizeBoundaries;
    
-   public class HBC_WotPlus extends HeaderButtonContentItem implements IStageSizeDependComponent
+   public class HBC_WotPlus extends HeaderButtonContentItem implements IStageSizeDependComponent, ITweenHandler
    {
       
       private static const PADDING_RIGHT:int = 10;
@@ -17,6 +24,12 @@ package net.wg.gui.lobby.header.headerButtonBar
       public var label:TextField = null;
       
       public var state:TextField = null;
+      
+      public var noveltyIndicator:MovieClip = null;
+      
+      public var cross:MovieClip = null;
+      
+      private var fadeTween:ITween;
       
       private var _isCompact:Boolean = false;
       
@@ -40,9 +53,12 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       override protected function onDispose() : void
       {
+         this.disposeTween();
          App.stageSizeMgr.unregister(this);
          this.wotPlusIcon.dispose();
          this.wotPlusIcon = null;
+         this.noveltyIndicator = null;
+         this.cross = null;
          this.label = null;
          this.state = null;
          super.onDispose();
@@ -66,11 +82,21 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       override protected function updateData() : void
       {
+         var _loc1_:HBC_WotPlusDataVO = null;
          if(data)
          {
-            this.wotPlusIcon.source = data.wotPlusIcon;
-            this.label.htmlText = data.label;
-            this.state.htmlText = data.state;
+            _loc1_ = HBC_WotPlusDataVO(data);
+            this.wotPlusIcon.source = _loc1_.wotPlusIcon;
+            this.label.htmlText = _loc1_.label;
+            this.state.htmlText = _loc1_.state;
+            if(_loc1_.showAsNew)
+            {
+               this.showNoveltyIndicator();
+            }
+            else
+            {
+               this.hideNoveltyIndicator();
+            }
             this._commons.updateTextFieldSize(this.label,true,true);
             this._commons.updateTextFieldSize(this.state,true,true);
          }
@@ -90,6 +116,54 @@ package net.wg.gui.lobby.header.headerButtonBar
       override public function set data(param1:Object) : void
       {
          super.data = param1;
+      }
+      
+      public function onComplete(param1:ITween) : void
+      {
+         this.disposeTween();
+         this.noveltyIndicator.visible = false;
+      }
+      
+      public function onStart(param1:ITween) : void
+      {
+      }
+      
+      private function showNoveltyIndicator() : void
+      {
+         this.disposeTween();
+         this.cross.visible = true;
+         this.noveltyIndicator.visible = true;
+         this.noveltyIndicator.alpha = 1;
+         this.noveltyIndicator.gotoAndPlay(0);
+      }
+      
+      private function hideNoveltyIndicator() : void
+      {
+         this.cross.visible = false;
+         this.noveltyIndicator.stop();
+         var _loc1_:ITweenPropertiesVO = App.utils.tweenAnimator.createPropsForAlpha(this.noveltyIndicator,this.tweenMgrHelper.getFadeDurationSlow(),0,0);
+         _loc1_.setPaused(false);
+         this.fadeTween = this.tweenMgr.createNewTween(_loc1_);
+         this.fadeTween.setHandler(this);
+      }
+      
+      private function get tweenMgrHelper() : ITweenManagerHelper
+      {
+         return App.tweenMgr.getTweenManagerHelper();
+      }
+      
+      private function get tweenMgr() : ITweenManager
+      {
+         return App.tweenMgr;
+      }
+      
+      private function disposeTween() : void
+      {
+         if(this.fadeTween != null)
+         {
+            this.tweenMgr.disposeTweenS(this.fadeTween);
+            this.fadeTween = null;
+         }
       }
    }
 }

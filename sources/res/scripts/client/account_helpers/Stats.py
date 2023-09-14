@@ -30,7 +30,8 @@ _DICT_STATS = ('vehTypeXP', 'vehTypeLocks', 'restrictions', 'globalVehicleLocks'
 _GROWING_SET_STATS = ('unlocks', 'eliteVehicles', 'multipliedXPVehs', 'multipliedRankedBattlesVehs')
 _ACCOUNT_STATS = ('clanDBID', 'attrs', 'premiumExpiryTime', 'autoBanTime', 'globalRating')
 _CACHE_STATS = ('isFinPswdVerified', 'mayConsumeWalletResources', 'oldVehInvIDs', 'isSsrPlayEnabled',
-                'comp7')
+                'isEmergencyModeEnabled')
+_CACHE_DICT_STATS = ('SPA', 'entitlements', 'dynamicCurrencies', 'comp7')
 _PREFERRED_MAPS_KEY = 'preferredMaps'
 _ADDITIONAL_XP_CACHE_KEY = '_additionalXPCache'
 _LIMITED_UI = 'limitedUi'
@@ -135,15 +136,11 @@ class Stats(object):
                     LOG_DEBUG_DEV('CACHE stat change', stat, cacheDiff[stat])
                     cache[stat] = cacheDiff[stat]
 
-            spaDiff = cacheDiff.get('SPA', None)
-            if spaDiff:
-                synchronizeDicts(spaDiff, cache.setdefault('SPA', dict()))
-            entitlementsDiff = cacheDiff.get('entitlements', None)
-            if entitlementsDiff is not None:
-                synchronizeDicts(entitlementsDiff, cache.setdefault('entitlements', {}))
-            dynamicCurrenciesDiff = cacheDiff.get('dynamicCurrencies', None)
-            if dynamicCurrenciesDiff:
-                synchronizeDicts(dynamicCurrenciesDiff, cache.setdefault('dynamicCurrencies', dict()))
+            for stat in _CACHE_DICT_STATS:
+                statDiff = cacheDiff.get(stat, None)
+                if statDiff:
+                    synchronizeDicts(statDiff, cache.setdefault(stat, dict()))
+
         piggyBankDiff = diff.get(PIGGY_BANK_PDATA_KEY, None)
         if piggyBankDiff is not None:
             synchronizeDicts(piggyBankDiff, cache.setdefault(PIGGY_BANK_PDATA_KEY, dict()))
@@ -365,6 +362,18 @@ class Stats(object):
         else:
             proxy = None
         self.__account._doCmdIntArr(AccountCommands.CMD_COMPLETE_PERSONAL_MISSION, [questID, int(withAdditional)], proxy)
+        return
+
+    def completeQuests(self, questIDs, callback=None):
+        if self.__ignore:
+            if callback is not None:
+                callback(AccountCommands.RES_NON_PLAYER)
+            return
+        if callback is not None:
+            proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID)
+        else:
+            proxy = None
+        self.__account._doCmdStrArr(AccountCommands.CMD_COMPLETE_QUESTS_DEV, questIDs, proxy)
         return
 
     def rerollDailyQuest(self, token, callback=None):

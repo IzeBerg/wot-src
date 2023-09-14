@@ -17,6 +17,8 @@ package
       
       public static const COMMANDER_SIXTHSENSE_NAME:String = "#crew_perks:commander_sixthSense/name";
       
+      public static const COMMANDER_SIXTHSENSE_SHORTDESCRIPTION:String = "#crew_perks:commander_sixthSense/shortDescription";
+      
       public static const COMMANDER_SIXTHSENSE_CURRENTLVLDESCRIPTION:String = "#crew_perks:commander_sixthSense/currentLvlDescription";
       
       public static const COMMANDER_SIXTHSENSE_ALT_DESCRIPTION:String = "#crew_perks:commander_sixthSense/alt/description";

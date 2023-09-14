@@ -13,12 +13,12 @@ class _BattleRoyaleHighPriorityGroup(components.StatusNotificationsGroup):
 
     def __init__(self, updateCallback):
         super(_BattleRoyaleHighPriorityGroup, self).__init__((
-         br_sn_items.BRDeathZoneDamagingSN,
-         br_sn_items.BRDeathZoneDangerSN,
-         sn_items.FireSN,
          sn_items.OverturnedSN,
          br_sn_items.BRHalfOverturnedSN,
-         sn_items.DrownSN), updateCallback)
+         sn_items.DrownSN,
+         br_sn_items.BRDeathZoneDamagingSN,
+         br_sn_items.BRDeathZoneDangerSN,
+         sn_items.FireSN), updateCallback)
 
 
 class BRStatusNotificationTimerPanel(StatusNotificationTimerPanel):
@@ -56,9 +56,9 @@ class BRStatusNotificationTimerPanel(StatusNotificationTimerPanel):
             damaginDeathZoneIcon = _LINKS.DAMAGING_DEATHZONE_ICON
         self._addNotificationTimerSetting(data, _TYPES.DEATH_ZONE, deathZoneIcon, link)
         self._addNotificationTimerSetting(data, _TYPES.DAMAGING_ZONE, damaginDeathZoneIcon, _LINKS.BATTLE_ROYALE_TIMER_UI, _COLORS.RED, countdownVisible=False)
-        self._addNotificationTimerSetting(data, _TYPES.OVERTURNED, _LINKS.OVERTURNED_ICON, link)
+        self._addNotificationTimerSetting(data, _TYPES.OVERTURNED, _LINKS.OVERTURNED_GREEN_ICON, link, color=_COLORS.GREEN, iconOffsetY=1)
+        self._addNotificationTimerSetting(data, _TYPES.HALF_OVERTURNED, _LINKS.OVERTURNED_GREEN_ICON, link, noiseVisible=False, iconOffsetY=1, color=_COLORS.GREEN)
         self._addNotificationTimerSetting(data, _TYPES.FIRE, _LINKS.FIRE_ICON, link)
-        self._addNotificationTimerSetting(data, _TYPES.HALF_OVERTURNED, _LINKS.HALF_OVERTURNED_ICON, _LINKS.BATTLE_ROYALE_DESTROY_TIMER_UI, noiseVisible=False, iconOffsetY=-10)
         link = _LINKS.SECONDARY_TIMER_UI
         self._addNotificationTimerSetting(data, _TYPES.STUN, _LINKS.STUN_ICON, link, _COLORS.ORANGE, noiseVisible=True)
         self._addNotificationTimerSetting(data, _TYPES.CAPTURE_BLOCK, _LINKS.BLOCKED_ICON, link, _COLORS.ORANGE, noiseVisible=False)

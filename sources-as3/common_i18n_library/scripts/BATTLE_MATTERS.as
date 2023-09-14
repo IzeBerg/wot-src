@@ -35,6 +35,8 @@ package
       
       public static const REWARDS_SUBTITLE_FINAL:String = "#battle_matters:rewards/subTitle/final";
       
+      public static const REWARDS_PREVIOUSLYCOMPLETED:String = "#battle_matters:rewards/previouslyCompleted";
+      
       public static const REWARDS_RENT:String = "#battle_matters:rewards/rent";
       
       public static const REWARDS_TOKEN_TITLE:String = "#battle_matters:rewards/token/title";
@@ -116,8 +118,6 @@ package
       public static const MAINREWARDSSCREEN_PREVIEW:String = "#battle_matters:mainRewardsScreen/preview";
       
       public static const MAINREWARDSSCREEN_DONE:String = "#battle_matters:mainRewardsScreen/done";
-      
-      public static const MAINREWARDSSCREEN_BUTTONS_PRIMARY:String = "#battle_matters:mainRewardsScreen/buttons/primary";
       
       public static const MAINREWARDSSCREEN_BUTTONS_BACK:String = "#battle_matters:mainRewardsScreen/buttons/back";
       

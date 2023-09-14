@@ -1277,6 +1277,9 @@ msgstr "Send to Barracks"
 msgid "contextMenu/tankmanUnloadAll"
 msgstr "Send entire crew to Barracks"
 
+msgid "contextMenu/telecomRent"
+msgstr "Show rental vehicles"
+
 msgid "contextMenu/unequip"
 msgstr "Disable"
 
@@ -1336,9 +1339,6 @@ msgstr "Clan profile"
 
 msgid "contextMenu/withdrawInvitationToSquad"
 msgstr "Withdraw invitation to join Platoon"
-
-msgid "contextMenu/wotPlusRent"
-msgstr "Show rental vehicles"
 
 msgid "copy"
 msgstr "© 2009–2023 Wargaming.net. All rights reserved."
@@ -1710,6 +1710,9 @@ msgstr "One more player needed"
 
 msgid "currentVehicleStatus/willBeUnlockedInBattle"
 msgstr "Unlocked in battle"
+
+msgid "currentVehicleStatus/wot_plus_exclusive_vehicle_disabled"
+msgstr "WoT Plus Exclusive Vehicle Unavailable"
 
 msgid "customization/title"
 msgstr "Exterior"
@@ -3153,6 +3156,15 @@ msgstr "Mode unavailable: Database error."
 msgid "headerButtons/fightBtn/tooltip/comp7Offline/header"
 msgstr "Unable to Enter Battle"
 
+msgid "headerButtons/fightBtn/tooltip/comp7RatingCalculation/body"
+msgstr ""
+"It may take up to five minutes to calculate your rating based on the "
+"Qualification results. After that, you will receive a rank and can continue "
+"to play in Onslaught."
+
+msgid "headerButtons/fightBtn/tooltip/comp7RatingCalculation/header"
+msgstr "Unable to Enter Battle"
+
 msgid "headerButtons/fightBtn/tooltip/crewNotFull/body"
 msgstr "Absent: <b>%(crewList)s</b>."
 
@@ -3314,6 +3326,12 @@ msgstr "Repair your vehicle."
 
 msgid "headerButtons/fightBtn/tooltip/vehicleIsBroken/header"
 msgstr "Vehicle Damaged"
+
+msgid "headerButtons/fightBtn/tooltip/wotPlusExclusiveUnavailable/body"
+msgstr "Select another vehicle."
+
+msgid "headerButtons/fightBtn/tooltip/wotPlusExclusiveUnavailable/header"
+msgstr "Exclusive Vehicle Unavailable"
 
 msgid "headerButtons/hangar"
 msgstr "Garage"
@@ -4340,6 +4358,9 @@ msgstr "Used as single-shot gun on vehicles:"
 msgid "moduleInfo/compatible/vehicles"
 msgstr "Compatible Vehicles:"
 
+msgid "moduleInfo/dualAccuracyGunLabel"
+msgstr "Double Aiming System"
+
 msgid "moduleInfo/dualGunLabel"
 msgstr "Double Gun System"
 
@@ -4401,6 +4422,18 @@ msgstr "Single Bomb Damage"
 msgid "moduleInfo/params/bombsNumberRange"
 msgstr "Bombs Per Run"
 
+msgid "moduleInfo/params/burstCount"
+msgstr "Number of containers in the magazine"
+
+msgid "moduleInfo/params/burstFireRate"
+msgstr "Shell Container"
+
+msgid "moduleInfo/params/burstSize"
+msgstr "Number of shells in the container"
+
+msgid "moduleInfo/params/burstTimeInterval"
+msgstr "Loading time between shells in the container"
+
 msgid "moduleInfo/params/caliber"
 msgstr "Caliber"
 
@@ -4431,14 +4464,14 @@ msgstr "to major qualifications and crew perks"
 msgid "moduleInfo/params/damage"
 msgstr "Damage"
 
-msgid "moduleInfo/params/damagePerSecond"
-msgstr "Damage per second"
-
 msgid "moduleInfo/params/dispertionRadius"
 msgstr "Dispersion at 100 m"
 
 msgid "moduleInfo/params/drivingControl"
 msgstr "To Handling on the Move"
+
+msgid "moduleInfo/params/dualAccuracyCoolingDelay"
+msgstr "Gun cooling time after firing"
 
 msgid "moduleInfo/params/duration"
 msgstr "Duration"
@@ -4460,10 +4493,6 @@ msgstr "Flight Time"
 
 msgid "moduleInfo/params/forwardMaxSpeed"
 msgstr "Top Speed"
-
-msgid "moduleInfo/params/guaranteedDamage/footnote"
-msgstr ""
-" The shell deals a small percentage of damage if armor is not penetrated."
 
 msgid "moduleInfo/params/hullAndChassisWeight"
 msgstr "Weight"
@@ -4495,18 +4524,23 @@ msgstr "Load Limit"
 msgid "moduleInfo/params/maxShotDistance"
 msgstr "Firing Range"
 
+msgid "moduleInfo/params/maxShotDistance/footnote"
+msgstr "* maximum shell flying range for this gun"
+
 msgid "moduleInfo/params/maxSteeringLockAngle"
 msgstr "Maximum Wheel Turning Angle"
 
 msgid "moduleInfo/params/noPiercingDistance/footnote"
-msgstr " Does not depend on the distance for this type of shell."
+msgstr "* does not depend on the distance for this type of shell"
+
+msgid "moduleInfo/params/noPiercingDistance/footnote/maxDistance"
+msgstr ", maximum flying range—400 m"
 
 msgid "moduleInfo/params/piercingDistance"
 msgstr "%(dist)s m"
 
 msgid "moduleInfo/params/piercingDistance/footnote"
-msgstr ""
-" Depends on the distance for this type of shell (%(minDist)s–%(maxDist)s m)."
+msgstr "* depends on the distance: %(minDist)s–%(maxDist)s m"
 
 msgid "moduleInfo/params/piercingDistanceHeader"
 msgstr "Average Penetration (mm)—Distance"
@@ -6174,6 +6208,9 @@ msgstr "Not suitable for the Platoon"
 msgid "tankCarousel/vehicleStates/willBeUnlockedInBattle"
 msgstr "?empty?"
 
+msgid "tankCarousel/vehicleStates/wot_plus_exclusive_vehicle_disabled"
+msgstr "Suspended"
+
 msgid "tankCarousel/vehicleStates/xpMultReceived"
 msgstr "Claim x%(factor)s"
 
@@ -6208,7 +6245,7 @@ msgid "tank_params/burstFireRate"
 msgstr "Shell Container"
 
 msgid "tank_params/burstSec"
-msgstr "(shell/quantity)"
+msgstr "(s/quantity/quantity)"
 
 msgid "tank_params/chargeTime"
 msgstr "Salvo Preparation"
@@ -6239,6 +6276,12 @@ msgstr "(item(s))"
 
 msgid "tank_params/damage"
 msgstr "Standard Shell Damage"
+
+msgid "tank_params/dualAccuracyCoolingDelay"
+msgstr "Gun cooling time"
+
+msgid "tank_params/dualAccuracyCoolingDelay/extendedTitle"
+msgstr "Gun cooling time after firing"
 
 msgid "tank_params/enginePower"
 msgstr "Engine Power"
@@ -6497,9 +6540,6 @@ msgstr "Weight/Load Limit"
 
 msgid "tank_params/vpm"
 msgstr "(HP/min)"
-
-msgid "tank_params/vps"
-msgstr "(HP/s)"
 
 msgid "tank_params/wheeledSpeedModeSpeed"
 msgstr "Top Speed/Reverse Speed (Rapid)"
@@ -7090,7 +7130,7 @@ msgid "vehicleInfo/params/avgPiercingPower"
 msgstr "Average Penetration"
 
 msgid "vehicleInfo/params/burstFireRate"
-msgstr "Container (shell/quantity)"
+msgstr "Shell Container (s/quantity/quantity)"
 
 msgid "vehicleInfo/params/chargeTime"
 msgstr "Salvo Preparation (s)"
@@ -7109,6 +7149,9 @@ msgstr "View Range (m)"
 
 msgid "vehicleInfo/params/clipFireRate"
 msgstr "Reload (magazine/shell or container/quantity)"
+
+msgid "vehicleInfo/params/dualAccuracyCoolingDelay"
+msgstr "Gun cooling time after firing (s)"
 
 msgid "vehicleInfo/params/enginePower"
 msgstr "Engine Power (h.p.)"
@@ -7171,7 +7214,7 @@ msgid "vehicleInfo/params/shotSpeed"
 msgstr "Flight Speed"
 
 msgid "vehicleInfo/params/speedLimits"
-msgstr "Top Speed / Reverse Speed (km/h)"
+msgstr "Top Speed/Reverse Speed (km/h)"
 
 msgid "vehicleInfo/params/stunMaxDuration"
 msgstr "Maximum Stun Duration (s)"
@@ -7189,7 +7232,7 @@ msgid "vehicleInfo/params/switchTime"
 msgstr "Switching to Siege / Travel mode (s)"
 
 msgid "vehicleInfo/params/turboshaftBurstFireRate"
-msgstr "Container (Turbo) (shell/quantity)"
+msgstr "Shell Container (Turbo) (s/quantity/quantity)"
 
 msgid "vehicleInfo/params/turboshaftEnginePower"
 msgstr "Engine Power (Turbo) (h.p.)"

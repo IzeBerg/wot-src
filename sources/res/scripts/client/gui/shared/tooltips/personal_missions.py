@@ -607,7 +607,7 @@ class TankModuleTooltipData(BlocksTooltipData):
         blocks = [
          formatters.packImageTextBlockData(title=text_styles.highTitle(formattedBonus.userName), desc=text_styles.standard(_ms(PERSONAL_MISSIONS.OPERATIONTITLE_TITLE, title=operationTitle)), img=formattedBonus.getImage(AWARDS_SIZES.BIG), imgPadding=formatters.packPadding(right=20), txtPadding=formatters.packPadding(top=10)),
          formatters.packBuildUpBlockData([
-          formatters.packImageTextBlockData(title=text_styles.main(_ms((isAlliance or PERSONAL_MISSIONS).TANKMODULETOOLTIPDATA_INFO if 1 else PERSONAL_MISSIONS.TANKMODULETOOLTIPDATA_ALLIANCE_INFO, vehName=text_styles.neutral(operationTitle))), img=RES_ICONS.MAPS_ICONS_LIBRARY_ATTENTIONICONFILLED, imgPadding=formatters.packPadding(left=8, right=10, top=2))], linkage=BLOCKS_TOOLTIP_TYPES.TOOLTIP_BUILDUP_BLOCK_WHITE_BG_LINKAGE, padding=formatters.packPadding(top=-7, bottom=-3))]
+          formatters.packImageTextBlockData(title=text_styles.main(_ms((isAlliance or PERSONAL_MISSIONS).TANKMODULETOOLTIPDATA_INFO if 1 else PERSONAL_MISSIONS.TANKMODULETOOLTIPDATA_ALLIANCE_INFO, vehName=text_styles.neutral(operationTitle))), img=RES_ICONS.MAPS_ICONS_LIBRARY_ATTENTIONICONFILLED, imgPadding=formatters.packPadding(left=8, right=10, top=2))], linkage=BLOCKS_TOOLTIP_TYPES.TOOLTIP_BUILDUP_BLOCK_WHITE_BG_LINKAGE, padding=formatters.packPadding(bottom=-3))]
         if not finalQuest.isCompleted():
             if isAlliance:
                 allianceId = ALLIANCE_IDS[classifier]

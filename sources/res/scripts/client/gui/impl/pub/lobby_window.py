@@ -1,8 +1,7 @@
 import logging, typing
-from frameworks.wulf import Window, WindowFlags, WindowLayer, WindowStatus
+from frameworks.wulf import Window, WindowSettings, WindowFlags, WindowLayer, WindowStatus
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.framework.entities.View import ViewKey
-from gui.impl.pub import WindowImpl
 from helpers import dependency
 from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.impl import IGuiLoader
@@ -11,13 +10,19 @@ if typing.TYPE_CHECKING:
     from frameworks.wulf import View
     from typing import Optional
 
-class LobbyWindow(WindowImpl):
+class LobbyWindow(Window):
     __slots__ = ()
     __appLoader = dependency.descriptor(IAppLoader)
     __gui = dependency.descriptor(IGuiLoader)
 
     def __init__(self, wndFlags, decorator=None, content=None, parent=None, layer=WindowLayer.UNDEFINED):
-        super(LobbyWindow, self).__init__(wndFlags, layer=layer, decorator=decorator, content=content, parent=self._getParent(parent, content))
+        settings = WindowSettings()
+        settings.flags = wndFlags
+        settings.layer = layer
+        settings.decorator = decorator
+        settings.content = content
+        settings.parent = self._getParent(parent, content)
+        super(LobbyWindow, self).__init__(settings)
 
     @classmethod
     def getInstances(cls):

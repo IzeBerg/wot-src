@@ -21,7 +21,8 @@ def _readPreBattleTips():
            'tags': _readPossibleValues(filterSection, 'tags'), 
            'realms': _readPossibleValues(filterSection, 'realms'), 
            'preceding': _readPrecedingData(filterSection), 
-           'chassisType': filterSection.readInt('chassisType', -1)}
+           'chassisType': filterSection.readInt('chassisType', -1), 
+           'vehProperty': filterSection.readString('vehProperty', None)}
         for key in _OPTIONAL_FILTER_FLAGS:
             if filterSection.has_key(key):
                 filters[filterId][key] = filterSection.readBool(key)

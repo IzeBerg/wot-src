@@ -296,6 +296,8 @@ package
       public static const GFVIEWER_CONTROLS_SAVE:String = "#development:gfViewer/controls/save";
       
       public static const GFVIEWER_CONTROLS_SAVEASNEW:String = "#development:gfViewer/controls/saveAsNew";
+      
+      public static const SELECTABLEREWARDDEMOVIEW_SUBTITLE:String = "#development:selectableRewardDemoView/subTitle";
        
       
       public function DEVELOPMENT()
