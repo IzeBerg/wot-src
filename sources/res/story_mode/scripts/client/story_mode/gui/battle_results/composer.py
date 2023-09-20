@@ -1,6 +1,6 @@
 from logging import getLogger
 from gui.battle_results.composer import IStatsComposer
-from gui.battle_results.settings import PLAYER_TEAM_RESULT
+from gui.battle_results.br_constants import PlayerTeamResult
 from helpers import dependency
 from story_mode.gui.battle_results.templates import STORY_MODE_RESULTS_BLOCK
 from story_mode.gui.shared.event_dispatcher import showEpilogueWindow, showOnboardingBattleResultWindow, showPrebattleAndGoToQueue, showBattleResultWindow
@@ -28,7 +28,7 @@ class StoryModeStatsComposer(IStatsComposer):
         return
 
     @staticmethod
-    def onShowResults(arenaUniqueID):
+    def onShowResults(arenaUniqueID, isPostbattle20Enabled=False):
         pass
 
     def onResultsPosted(self, arenaUniqueID):
@@ -38,7 +38,7 @@ class StoryModeStatsComposer(IStatsComposer):
                 self._storyModeCtrl.skipOnboarding()
                 return
             missionId = resultVO['missionId']
-            if resultVO['finishResult'] == PLAYER_TEAM_RESULT.WIN:
+            if resultVO['finishResult'] == PlayerTeamResult.WIN:
                 nextMission = self._storyModeCtrl.getNextMission(missionId)
                 if missionId == self._storyModeCtrl.missions.onboardingLastMissionId or nextMission is None:
                     showEpilogueWindow()

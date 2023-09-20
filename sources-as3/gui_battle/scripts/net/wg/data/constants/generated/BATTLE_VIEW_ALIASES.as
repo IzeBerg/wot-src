@@ -180,6 +180,12 @@ package net.wg.data.constants.generated
       public static const COMP7_TANK_CAROUSEL:String = "comp7BattleTankCarousel";
       
       public static const COMP7_TANK_CAROUSEL_FILTER_POPOVER:String = "comp7TankCarouselFilterPopover";
+      
+      public static const EVENT_HUNTER_RESPAWN:String = "eventHunterRespawn";
+      
+      public static const EVENT_BOSS_TELEPORT:String = "eventBossTeleport";
+      
+      public static const EVENT_BOSS_WIDGET:String = "eventBossWidget";
        
       
       public function BATTLE_VIEW_ALIASES()

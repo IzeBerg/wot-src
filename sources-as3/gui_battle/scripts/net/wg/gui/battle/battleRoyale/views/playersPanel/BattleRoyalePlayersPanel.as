@@ -72,8 +72,9 @@ package net.wg.gui.battle.battleRoyale.views.playersPanel
       
       override protected function setPlayersData(param1:Vector.<PlayerDataVO>, param2:int) : void
       {
-         var _loc3_:PlayersPanelItemRenderer = null;
          var _loc4_:PlayerDataVO = null;
+         var _loc3_:PlayersPanelItemRenderer = null;
+         _loc4_ = null;
          var _loc5_:int = 0;
          var _loc6_:int = 0;
          var _loc7_:Sprite = null;

@@ -139,7 +139,8 @@ package net.wg.gui.components.tooltips
       
       private function setContent() : void
       {
-         var _loc1_:String = _data.toString();
+         var _loc1_:String = null;
+         _loc1_ = _data.toString();
          var _loc2_:TextFormat = new TextFormat();
          var _loc3_:Number = 10;
          var _loc4_:Number = this._minWidth == 0 ? Number(500) : Number(this._minWidth);

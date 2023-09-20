@@ -307,9 +307,14 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          return _loc2_;
       }
       
+      protected function getBarLinkage() : String
+      {
+         return Linkages.CAPTURE_BAR_LINKAGE;
+      }
+      
       private function createBar() : void
       {
-         var _loc1_:TeamCaptureBar = App.utils.classFactory.getComponent(Linkages.CAPTURE_BAR_LINKAGE,TeamCaptureBar);
+         var _loc1_:TeamCaptureBar = App.utils.classFactory.getComponent(this.getBarLinkage(),TeamCaptureBar);
          _loc1_.visible = false;
          _loc1_.x = 0;
          this._cachedBars.push(_loc1_);

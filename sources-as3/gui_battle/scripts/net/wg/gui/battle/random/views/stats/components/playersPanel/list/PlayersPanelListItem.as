@@ -8,7 +8,7 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.list
    public class PlayersPanelListItem extends BasePlayersPanelListItem implements IRandomPlayersPanelListItem
    {
       
-      private static const SQUAD_ITEMS_AREA_WIDTH:int = 25;
+      protected static const SQUAD_ITEMS_AREA_WIDTH:int = 25;
        
       
       private var _isSquadPersonal:Boolean = false;

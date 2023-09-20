@@ -9,7 +9,7 @@ VisualScriptEquipmentState = namedtuple('VisualScriptEquipmentState', ('quantity
                                                                        'endTime',
                                                                        'totalTime',
                                                                        'prevStage',
-                                                                       'stage'))
+                                                                       'stage', 'locked'))
 VisualScriptEquipmentPublicState = namedtuple('VisualScriptEquipmentPublicState', ('stage', ))
 if typing.TYPE_CHECKING:
     from enum import Enum
@@ -35,7 +35,7 @@ def getStateWithTimeInterval(fixedDict):
 
 
 def getVisualScriptEquipmentState(fixedDict):
-    state = VisualScriptEquipmentState(quantity=fixedDict['quantity'], endTime=fixedDict['endTime'], totalTime=fixedDict['totalTime'], prevStage=fixedDict['prevStage'], stage=fixedDict['stage'])
+    state = VisualScriptEquipmentState(quantity=fixedDict['quantity'], endTime=fixedDict['endTime'], totalTime=fixedDict['totalTime'], prevStage=fixedDict['prevStage'], stage=fixedDict['stage'], locked=fixedDict['locked'])
     return state
 
 

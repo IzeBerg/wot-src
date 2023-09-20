@@ -34,15 +34,6 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          this.glowContainer.setIconName(VMAtlasItemName.getStatusMarkerGlow(color));
       }
       
-      override public function updateEffectTimer(param1:int, param2:Boolean, param3:Boolean = false) : void
-      {
-         super.updateEffectTimer(param1,param2,param3);
-         if(this._hasTimer)
-         {
-            this.timer.timeLeft = param1;
-         }
-      }
-      
       override protected function updateColorSettings(param1:uint) : void
       {
          super.updateColorSettings(param1);

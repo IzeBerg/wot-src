@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params/>
+	<node>
+		<name>start</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/shield/Tank_Shield_start.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-365.000000 39.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>idle</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/shield/Tank_Shield_idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>4</loop>
+		<transition>
+			<to>end</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-104.000000 40.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>end</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/shield/Tank_Shield_end.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<uiPosition>165.000000 34.000000 0.000000</uiPosition>
+	</node>
+</root>

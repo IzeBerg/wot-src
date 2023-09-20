@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>0.500000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>turrert_idle</name>
+		<type>model</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/siege/Turret_idle.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-1.000000 1.000000 -1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>-1.000000 1.000000 -1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Glow_Active</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.200000 0.317647 1.000000 0.800000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.087399</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 0.087399</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.200000 0.317647 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.025991</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.025991</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lighting_down1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.623529 0.662745 1.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.125992</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.125992</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.623529 0.662745 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.215485</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.215485</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>wiresGlow</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.521569 0.427451 1.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.125992</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.125992</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.521569 0.427451 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.242994</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.242994</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

@@ -770,6 +770,12 @@ msgstr "展示特定的旋转速度、观察范围、装甲防护以及俯/仰�
 msgid "advanced/vehicleWheeledChassis"
 msgstr "影响坦克操纵性和承载能力的模块。轮式战车的悬挂装置无法在原地转向。"
 
+msgid "advanced/wt_largeMedkit"
+msgstr "迅速治疗所有受伤的乘员并消除弹震状态。"
+
+msgid "advanced/wt_largeRepairkit"
+msgstr "迅速修复所有受损模块。"
+
 msgid "ammo/auto/body"
 msgstr ""
 "如果有必要，当战车退出战斗后，\n"
@@ -4332,7 +4338,7 @@ msgid "equipment/restriction"
 msgstr "限制:"
 
 msgid "event/squad/disable/body"
-msgstr "若要加入活动，请选择%(tankName)s"
+msgstr "选择一辆猎犬坦克"
 
 msgid "event/squad/disable/header"
 msgstr "注意！"
@@ -5002,8 +5008,20 @@ msgstr "选择一个地图以进入战斗。"
 msgid "hangar/startBtn/mapsTraining/notReady/header"
 msgstr "不可用"
 
+msgid "hangar/startBtn/noTicket/body"
+msgstr "您需要一个钥匙才能驾驶E-110 BT加入战斗"
+
+msgid "hangar/startBtn/noTicket/header"
+msgstr "加入战斗失败"
+
 msgid "hangar/startBtn/preview/body"
 msgstr "返回车库选择一辆坦克，再加入一场战斗。"
+
+msgid "hangar/startBtn/primeNotAvailable/body"
+msgstr "该服务器正处于休战期。请选择其他服务器。"
+
+msgid "hangar/startBtn/primeNotAvailable/header"
+msgstr "加入战斗失败"
 
 msgid "hangar/startBtn/squadNotReady/body"
 msgstr "选择一辆坦克并确认您已准备就绪并加入战斗。"
@@ -7598,6 +7616,20 @@ msgstr ""
 msgid "notrecruitedtankman/wt22_hunter_commander/label"
 msgstr "最终兵器:传承"
 
+msgid "notrecruitedtankman/wt_2023_driver/desc"
+msgstr ""
+"这名指挥官刚从学院毕业，就迫不及待地想在战斗中证明自己的战斗技巧。她接受过骑兵式战场演习的训练，习惯于仔细勘察战场，以发挥自己的优势。虽然经验不足，但她精通数种新科技和战斗技巧，也许能教老兵们一些新花样。"
+
+msgid "notrecruitedtankman/wt_2023_driver/label"
+msgstr "最终兵器:海柏利昂计划"
+
+msgid "notrecruitedtankman/wt_2023_hannelore/desc"
+msgstr ""
+"尽管是亲姐妹，但汉内洛尔却与埃尔梅琳达截然相反。她是一位战略策划者，为了阻止邪恶的妹妹犯下弥天大错，她加入了猎犬小队。她依旧相信埃尔梅琳达并非无药可救，甚至愿意不惜一切代价让妹妹迷途知返。"
+
+msgid "notrecruitedtankman/wt_2023_hannelore/label"
+msgstr "最终兵器:海柏利昂计划"
+
 msgid "notrecruitedtankman/yandex_1/desc"
 msgstr "雅娜是一名全能的战斗专家，她能够胜任车组中的所有乘员专业。她的抗压能力强，学习能力也不错，是一名善于团队合作的乘员。"
 
@@ -9242,6 +9274,12 @@ msgstr ""
 "选中的文件通知声音\n"
 "损坏或丢失。"
 
+msgid "setttingsDisabledNotification/body"
+msgstr "部分设置在此模式中无法使用。请选择其他模式。"
+
+msgid "setttingsDisabledNotification/header"
+msgstr "不可用"
+
 msgid "shell/basic"
 msgstr "默认"
 
@@ -9828,6 +9866,9 @@ msgstr "车辆切换到最高速度模式所需的时间。"
 msgid "tank_params/desc/wheeledSwitchTime"
 msgstr "在模式之间切换所需的时间取决于发动机的状况。损坏的发动机增加了切换所需的时间。发动机损坏时切换不可用。"
 
+msgid "tankman/skillsTitle"
+msgstr "优势"
+
 msgid "tankman/status/inactiveSkills/header"
 msgstr "特长错误"
 
@@ -10224,6 +10265,9 @@ msgstr "折扣%(actionPrc)s，原价:%(oldPrice)s"
 msgid "vehicle/additional/header"
 msgstr "坦克附带:"
 
+msgid "vehicle/afterEventEnd/title"
+msgstr "所有战斗已结束，无法驾驶坦克。"
+
 msgid "vehicle/allModules/header"
 msgstr "已研发所有模块"
 
@@ -10320,6 +10364,16 @@ msgstr "租用自"
 msgid "vehicle/multiplied_xp"
 msgstr "经验"
 
+msgid "vehicle/overview/desc"
+msgstr ""
+"• 这辆坦克对任何敌人来说都是一场真正的噩梦，同时其指挥官拥有独特的专属语音。\n"
+"• 无法组队: 只有您和这头猛兽。\n"
+"• 该坦克仅限在标准模式中使用，截至10月15日。\n"
+"• 尽快驾驶它享受战斗！该坦克及其乘员将在租用期结束后被移除。"
+
+msgid "vehicle/overview/title"
+msgstr "概览:"
+
 msgid "vehicle/radioDistance"
 msgstr "<h1>信号范围</h1> <h2>(km)</h2>"
 
@@ -10330,10 +10384,10 @@ msgid "vehicle/rentAvailable"
 msgstr "可租用"
 
 msgid "vehicle/rentLeft/battles"
-msgstr "在战斗结束之前租用"
+msgstr "剩余的战斗场次"
 
 msgid "vehicle/rentLeft/days"
-msgstr "剩余天数"
+msgstr "坦克租用期至%(date)s"
 
 msgid "vehicle/rentLeft/epic/base"
 msgstr "前线模式中的租用坦克"
@@ -10348,7 +10402,10 @@ msgid "vehicle/rentLeft/epic/minsLeft"
 msgstr "%(timeNum)s分"
 
 msgid "vehicle/rentLeft/hours"
-msgstr "剩余小时"
+msgstr "坦克租用期至%(date)s"
+
+msgid "vehicle/rentLeft/noTimeLeft"
+msgstr "您已参加所有战斗场次，无法驾驶坦克。"
 
 msgid "vehicle/rentLeft/wins"
 msgstr "租用到期前剩余的胜利数"
@@ -10364,6 +10421,11 @@ msgstr "前线模式中的租用坦克"
 
 msgid "vehicle/rentLeftFuture/hours"
 msgstr "租用小时数"
+
+msgid "vehicle/rentLeftFuture/obtainedBy"
+msgstr ""
+"租用乘员！\n"
+"该乘员有固定的经验和特长，无法更改，将在租用期结束后与坦克一同被移除。"
 
 msgid "vehicle/rentLeftFuture/wins"
 msgstr "租用期内的胜利数"

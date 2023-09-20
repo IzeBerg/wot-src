@@ -88,6 +88,11 @@ package net.wg.gui.components.damageIndicator
          this._items[param1].setYaw(param2);
       }
       
+      public function as_setAlpha(param1:int, param2:Number) : void
+      {
+         this._items[param1].alpha = param2;
+      }
+      
       public function as_showExtended(param1:int, param2:String, param3:String, param4:int, param5:String, param6:String, param7:String, param8:Boolean) : void
       {
          var _loc9_:DamageIndicatorItem = this._items[param1];

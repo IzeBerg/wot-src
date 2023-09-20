@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>10.400001</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Beam</name>
+		<type>model</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/hyperion/Hyperion_Blast_Beam.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 191.364990 0.000000</value>
+				<inTangent>0.000000 -2870.474609 0.000000</inTangent>
+				<outTangent>0.000000 -2870.474609 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-0.000000 -2870.474609 -0.000000</inTangent>
+				<outTangent>-0.000000 -2870.474609 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>4.000000 1.000000 4.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>4.000000 1.000000 4.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>4.285714 0.000000 4.285714</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>8.000000 1.000000 8.000000</value>
+				<inTangent>0.374425 -0.000000 0.110969</inTangent>
+				<outTangent>0.374425 -0.000000 0.110969</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Beam</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.247059 0.431373 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.333333</startTime>
+				<value>0.247059 0.431373 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.057158</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.057158</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.247059 0.431373 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.008961</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 0.008961</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>BeamGlow</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.411765 0.682353 1.000000 0.800000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.333333</startTime>
+				<value>0.411765 0.682353 1.000000 0.800000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.259431</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.259431</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.411765 0.682353 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.023057</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 0.023057</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Dome</name>
+		<type>model</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/hyperion/Hyperion_Blast_Dome.model</resource>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>2.000000 2.000000 11.831743</inTangent>
+				<outTangent>5.093261 5.250675 4.920103</outTangent>
+				<tangentMode>66307</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>1.100000 1.100000 1.100000</value>
+				<inTangent>0.359960 0.329753 0.316475</inTangent>
+				<outTangent>0.359960 0.329753 0.316475</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property float</name>
+			<type>float</type>
+			<identifier>DomeDistortion</identifier>
+			<property>distortionAmount</property>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>1.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.167119</inTangent>
+				<outTangent>-0.167119</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.733333</startTime>
+				<value>0.215933</value>
+				<inTangent>-1.749200</inTangent>
+				<outTangent>-1.749200</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.031049</inTangent>
+				<outTangent>-0.031049</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Dome</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.498039 0.725490 0.815686 1.938530</value>
+				<inTangent>0.000000 0.000000 0.000000 0.135331</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.135331</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>0.498039 0.725490 0.815686 1.190405</value>
+				<inTangent>0.000000 0.000000 0.000000 -4.211034</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -4.211034</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>0.498039 0.725490 0.815686 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.092384</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.092384</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>DomeLower</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.458824 0.654902 0.737255 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.272727</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.272727</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>0.458824 0.654902 0.737255 0.900000</value>
+				<inTangent>0.000000 0.000000 0.000000 -1.174825</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.174825</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>0.458824 0.654902 0.737255 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.108204</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.108204</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Ring</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.207843 0.752941 0.976471 1.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>0.207843 0.752941 0.976471 1.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 -1.730769</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.730769</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>0.207843 0.752941 0.976471 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.408660</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.408660</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Impact</name>
+		<type>model</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/hyperion/Hyperion_Blast_Impact.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Impact</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.094118 0.666667 1.000000 0.477436</value>
+				<inTangent>0.000000 0.000000 0.000000 2.339356</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 2.339356</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>0.094118 0.666667 1.000000 0.800000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.037399</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.037399</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.094118 0.666667 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.006116</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.006116</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Impact</identifier>
+			<property>diffuseUVSpeedAlphaOffset</property>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.000000 0.000000 1.000000 0.000000</value>
+				<inTangent>0.739191 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.739191 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.466667</startTime>
+				<value>0.500000 0.000000 1.000000 0.000000</value>
+				<inTangent>0.035536 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.035536 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>0.500000 0.000000 1.000000 0.000000</value>
+				<inTangent>0.024765 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.024765 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>1.000000 0.000000 1.000000 0.000000</value>
+				<inTangent>1.558439 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>1.558439 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Light 0</name>
+		<type>light</type>
+		<lightType>omnilight</lightType>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 23.618629 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>outerRadius</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>90.000000</value>
+				<inTangent>148.000000</inTangent>
+				<outTangent>148.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>innerRadius</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>50.000000</value>
+				<inTangent>139.000000</inTangent>
+				<outTangent>139.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>multiplier</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>716664.000000</inTangent>
+				<outTangent>716664.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>47777.835938</value>
+				<inTangent>358332.000000</inTangent>
+				<outTangent>358332.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.400000</startTime>
+				<value>47777.835938</value>
+				<inTangent>-59722.289062</inTangent>
+				<outTangent>-59722.289062</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>0.000000</value>
+				<inTangent>-119444.578125</inTangent>
+				<outTangent>-119444.578125</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>color</name>
+			<type>vector4</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.588235 0.760784 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>castShadow</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+		<track>
+			<name>lodShift</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>300.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Blast_dust</name>
+		<type>particle</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/hyperion/hyperion_blast.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.000000 3.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>1.000000</value>
+				<inTangent>-29.999994</inTangent>
+				<outTangent>-29.999994</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.100000</startTime>
+				<value>0.000000</value>
+				<inTangent>-29.999994</inTangent>
+				<outTangent>-29.999994</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>5.000000</duration>
+				<value>Root|</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>10.366667</duration>
+				<sequenceSound>ev_wt_gameplay_hyperion_damage_impulse</sequenceSound>
+				<type>one_shot</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

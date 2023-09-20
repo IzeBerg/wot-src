@@ -34,7 +34,8 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
             "gold":"green",
             "blue":"green",
             "yellow":"green",
-            "purple":"purple"
+            "purple":"purple",
+            "hunter":"hunter"
          },
          "FROM_ALLY":{
             "green":"green",
@@ -42,7 +43,8 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
             "gold":"green",
             "blue":"green",
             "yellow":"green",
-            "purple":"purple"
+            "purple":"purple",
+            "hunter":"hunter"
          },
          "FROM_ENEMY":{
             "green":"green",
@@ -50,7 +52,8 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
             "gold":"green",
             "blue":"green",
             "yellow":"green",
-            "purple":"purple"
+            "purple":"purple",
+            "hunter":"hunter"
          },
          "FROM_SQUAD":{
             "green":"green",
@@ -58,7 +61,8 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
             "gold":"green",
             "blue":"green",
             "yellow":"green",
-            "purple":"yellow"
+            "purple":"yellow",
+            "hunter":"hunter"
          },
          "FROM_PLAYER":{
             "green":"green",
@@ -66,7 +70,8 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
             "gold":"green",
             "blue":"green",
             "yellow":"green",
-            "purple":"yellow"
+            "purple":"yellow",
+            "hunter":"hunter"
          }
       };
       

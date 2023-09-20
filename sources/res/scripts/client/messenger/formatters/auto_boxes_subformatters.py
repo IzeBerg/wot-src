@@ -81,7 +81,7 @@ class EventBoxesFormatter(AsyncAutoLootBoxSubFormatter):
 
     @staticmethod
     def _getMessageTemplate():
-        return 'EventLootBoxesAutoOpenMessage'
+        return 'WtEventLootBoxesAutoOpenMessage'
 
     @staticmethod
     def _getTextResPath():

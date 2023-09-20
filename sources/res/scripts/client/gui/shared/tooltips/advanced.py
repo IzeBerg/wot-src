@@ -318,7 +318,9 @@ MODULE_MOVIES = {'largeRepairkit': 'consumablesRepairKitBig',
    'improvedRotationMechanism': 'equipmentImprovedRotationMechanism', 
    'additionalInvisibilityDevice': 'equipmentLowNoiseExhaustSystem', 
    'improvedConfiguration': 'equipmentModifiedConfiguration', 
-   'turbocharger': 'equipmentTurbocharger'}
+   'turbocharger': 'equipmentTurbocharger', 
+   'wt_largeMedkit': 'consumablesFirstAidWt', 
+   'wt_largeRepairkit': 'consumablesRepairKitBig'}
 _TANKMAN_MOVIES = {'commander': 'crewCommander', 
    'driver': 'crewDriver', 
    'gunner': 'crewGunner', 
