@@ -275,6 +275,7 @@ class BATTLE_EVENTS(CONST_CONTAINER):
     ENEMY_ASSIST_STUN = 'battleEventsEnemyAssistStun'
     ENEMIES_STUN = 'battleEventsEnemyStun'
     CREW_PERKS = 'battleEventsCrewPerks'
+    HEALTH_ADDED = 'battleEventsHealthAdded'
 
 
 class BATTLE_BORDER_MAP(CONST_CONTAINER):
@@ -495,3 +496,6 @@ class ScorePanelStorageKeys(CONST_CONTAINER):
 
 
 COLOR_GRADING_TECHNIQUE_DEFAULT = 0
+
+class WTEventStorageKeys(CONST_CONTAINER):
+    WT_INTRO_SHOWN = 'wtIntroShown'

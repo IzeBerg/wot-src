@@ -123,6 +123,8 @@ package
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_EVENT:String = "#invites:invites/note/change_and_leave/PREBATTLE_EVENT";
       
+      public static const INVITES_NOTE_LEAVE_SQUAD_EVENT:String = "#invites:invites/note/leave/SQUAD_EVENT";
+      
       public static const INVITES_NOTE_LEAVE_PREBATTLE_EVENT:String = "#invites:invites/note/leave/PREBATTLE_EVENT";
       
       public static const INVITES_NOTE_LEAVE_PREBATTLE_SQUAD:String = "#invites:invites/note/leave/PREBATTLE_SQUAD";

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>HealingLaser</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaFadeAmountSoft
+						<Vector4>1.000000 1.000000 0.010000 0.000000</Vector4>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_heal_laser.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_noise_01.dds</Texture>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_useTime
+						<Bool>false</Bool>
+					</property>
+					<property>
+						gradientMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/wt_heal.dds</Texture>
+					</property>
+					<property>
+						gradientMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 0.010000 0.100000 0.000000</Vector4>
+					</property>
+					<property>
+						opacity_UV_Distortion_Amount
+						<Vector4>0.020000 0.020000 5.000000 5.000000</Vector4>
+					</property>
+					<property>
+						opacity_UV_Speed_Scale
+						<Vector4>0.000000 0.000000 10.000000 10.000000</Vector4>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_noise_01.dds</Texture>
+					</property>
+					<property>
+						opacityMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>0.000000 0.000000 5.000000 5.000000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/114_czech_vel_smoke_fire.dds</Texture>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector3>1.000000 1.000000 1.000000</Vector3>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.301961 1.000000 0.125490 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.007310 0.143337 2.239239</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.482116 -0.255177 -0.034212</min>
+		<max>0.467496 0.541850 4.512691</max>
+	</boundingBox>
+	<geometrySize>46416</geometrySize>
+	<minUVDensity>0.003334</minUVDensity>
+</root>

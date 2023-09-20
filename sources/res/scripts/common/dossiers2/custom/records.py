@@ -2372,7 +2372,7 @@ RECORDS = (
  (
   'singleAchievements', 'august23', 'p', 'B', 1),
  (
-  'singleAchievements', 'prime_gaming_reserved_13', 'p', 'B', 1),
+  'singleAchievements', 'september23', 'p', 'B', 1),
  (
   'singleAchievements', 'prime_gaming_reserved_14', 'p', 'B', 1),
  (
@@ -3268,7 +3268,13 @@ RECORDS = (
  (
   'maxComp7ArchiveGriffin', 'maxSquadWinSeries', 'p', 'H', 60001),
  (
-  'singleAchievements', 'comp7_3_1', 'p', 'B', 1))
+  'singleAchievements', 'comp7_3_1', 'p', 'B', 1),
+ (
+  'achievements', 'wt2023HunterWins', 'p', 'I', 4294967295),
+ (
+  'achievements', 'wt2023BossWins', 'p', 'I', 4294967295),
+ (
+  'achievements', 'wt2023MaxPlasma', 'p', 'I', 4294967295))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4786,7 +4792,7 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('max15x15', 'maxDamageBlockedByArmor'): 1790, 
    ('max15x15', 'maxDamageBlockedByArmorVehicle'): 1791, 
    ('singleAchievements', 'BattlePassCommonPr_11'): 1792, 
-   ('singleAchievements', 'prime_gaming_reserved_13'): 1793, 
+   ('singleAchievements', 'september23'): 1793, 
    ('singleAchievements', 'prime_gaming_reserved_14'): 1794, 
    ('singleAchievements', 'prime_gaming_reserved_15'): 1795, 
    ('singleAchievements', 'prime_gaming_reserved_16'): 1796, 
@@ -4904,7 +4910,10 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('maxComp7ArchiveGriffin', 'maxHealthRepair'): 1909, 
    ('maxComp7ArchiveGriffin', 'maxHealthRepairVehicle'): 1910, 
    ('maxComp7ArchiveGriffin', 'maxWinSeries'): 1911, 
-   ('maxComp7ArchiveGriffin', 'maxSquadWinSeries'): 1912}
+   ('maxComp7ArchiveGriffin', 'maxSquadWinSeries'): 1912, 
+   ('achievements', 'wt2023HunterWins'): 1914, 
+   ('achievements', 'wt2023BossWins'): 1915, 
+   ('achievements', 'wt2023MaxPlasma'): 1916}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

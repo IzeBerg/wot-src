@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>pasted__lambert12</identifier>
+					<fx>shaders/custom/vector_animation.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 3.000000 -0.200000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Ray_blue_01.dds</Texture>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>1.000000 0.100000 0.020000 0.050000</Vector4>
+					</property>
+					<property>
+						distortionFrames
+						<Vector4>0.100000 0.100000 0.000000 0.500000</Vector4>
+					</property>
+					<property>
+						distortionFrequency
+						<Float>10.000000</Float>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_IGR_dist.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						gradientMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_gradient_blue_02.dds</Texture>
+					</property>
+					<property>
+						gradientMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>20.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						opacity_UV_Speed_Scale
+						<Vector4>0.800000 0.100000 0.050000 0.200000</Vector4>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_mask.dds</Texture>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>0.600000 0.020000 3.000000 0.600000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_animation_04.dds</Texture>
+					</property>
+					<property>
+						softFactor
+						<Float>0.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-0.018483 0.540327 -1.545560</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.831232 -0.418912 -2.376286</min>
+		<max>1.794266 1.499566 -0.714835</max>
+	</boundingBox>
+	<geometrySize>25296</geometrySize>
+	<minUVDensity>0.007074</minUVDensity>
+</root>

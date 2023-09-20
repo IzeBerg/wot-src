@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>isDeferred</name>
+			<type>bool</type>
+		</param>
+		<param>
+			<name>isAlwaysVisible</name>
+			<type>bool</type>
+		</param>
+	</params>
+	<node>
+		<name>idle</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/enemies/Waffentrager_E100_idle/Waffentrager_E100_idle_turret.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>hit_received</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>isAlwaysVisible</name>
+					<checked>true</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-351.000000 133.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hit_received</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/enemies/Waffentrager_E100_idle/Waffentrager_E100_idle_turret_off.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>isAlwaysVisible</name>
+					<checked>false</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-362.000000 5.000000 0.000000</uiPosition>
+	</node>
+</root>

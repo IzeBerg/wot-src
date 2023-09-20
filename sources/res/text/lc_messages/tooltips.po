@@ -918,6 +918,13 @@ msgstr ""
 "The module that affects the vehicle's maneuverability and load capacity. The"
 " suspension of a wheeled vehicle does not allow it to turn on the spot."
 
+msgid "advanced/wt_largeMedkit"
+msgstr ""
+"Prompt treatment of all injured crew members and removes the stun effect."
+
+msgid "advanced/wt_largeRepairkit"
+msgstr "Prompt repair of all damaged modules."
+
 msgid "ammo/auto/body"
 msgstr ""
 "Ammunition will be resupplied automatically, if necessary,\n"
@@ -4852,7 +4859,7 @@ msgid "equipment/restriction"
 msgstr "Restriction:"
 
 msgid "event/squad/disable/body"
-msgstr "To join the event, select the %(tankName)s"
+msgstr "Select a Harriers' vehicle"
 
 msgid "event/squad/disable/header"
 msgstr "Attention!"
@@ -5605,8 +5612,20 @@ msgstr "Select a map to enter a battle."
 msgid "hangar/startBtn/mapsTraining/notReady/header"
 msgstr "Unavailable"
 
+msgid "hangar/startBtn/noTicket/body"
+msgstr "You need a Key to enter battle in the Blitzträger auf E 110"
+
+msgid "hangar/startBtn/noTicket/header"
+msgstr "Unable to Enter Battle"
+
 msgid "hangar/startBtn/preview/body"
 msgstr "Go back to the Garage to select a vehicle and enter a battle."
+
+msgid "hangar/startBtn/primeNotAvailable/body"
+msgstr "Curfew is in effect on this server. Please select another server."
+
+msgid "hangar/startBtn/primeNotAvailable/header"
+msgstr "Unable to Enter Battle"
 
 msgid "hangar/startBtn/squadNotReady/body"
 msgstr "To join the battle, select a vehicle and confirm that you are ready."
@@ -8861,6 +8880,27 @@ msgstr ""
 msgid "notrecruitedtankman/wt22_hunter_commander/label"
 msgstr "The Waffenträger: Legacy"
 
+msgid "notrecruitedtankman/wt_2023_driver/desc"
+msgstr ""
+"Fresh from the academy, this commander is eager to prove her skill in "
+"battle. She trained in cavalry-style battlefield maneuvers and is used to "
+"surveying the battlefield carefully to use it to her advantage. Although "
+"lacking experience, she is a master of several new technologies and battle "
+"techniques and might just teach the old dogs some new tricks."
+
+msgid "notrecruitedtankman/wt_2023_driver/label"
+msgstr "Waffenträger: Projekt Hyperion"
+
+msgid "notrecruitedtankman/wt_2023_hannelore/desc"
+msgstr ""
+"Despite being Ermelinda's sister, Hannelore is her exact opposite. A "
+"strategic mastermind, she joined the Harriers to prevent her evil sister "
+"from making irreparable mistakes. She still believes that Ermelinda can be "
+"saved and will do anything to put her on the right track."
+
+msgid "notrecruitedtankman/wt_2023_hannelore/label"
+msgstr "Waffenträger: Projekt Hyperion"
+
 msgid "notrecruitedtankman/yandex_1/desc"
 msgstr ""
 "Yana is a versatile tank combat specialist, who can perform any role in the "
@@ -10695,6 +10735,13 @@ msgstr ""
 "Files of the selected notification voice\n"
 "are damaged or missing."
 
+msgid "setttingsDisabledNotification/body"
+msgstr ""
+"Some settings are unavailable in this mode. Please select another mode."
+
+msgid "setttingsDisabledNotification/header"
+msgstr "Unavailable"
+
 msgid "shell/basic"
 msgstr "Default"
 
@@ -11428,6 +11475,9 @@ msgstr ""
 " damaged engine increases the time needed for switching. Switching is "
 "unavailable when the engine is destroyed."
 
+msgid "tankman/skillsTitle"
+msgstr "Advantages"
+
 msgid "tankman/status/inactiveSkills/header"
 msgstr "Wrong Perks"
 
@@ -11848,6 +11898,9 @@ msgstr "Discount %(actionPrc)s, previous cost: %(oldPrice)s"
 msgid "vehicle/additional/header"
 msgstr "Vehicle comes with:"
 
+msgid "vehicle/afterEventEnd/title"
+msgstr "All battles fought, vehicle unavailable."
+
 msgid "vehicle/allModules/header"
 msgstr "All Researched Modules"
 
@@ -11946,6 +11999,16 @@ msgstr "Rental From"
 msgid "vehicle/multiplied_xp"
 msgstr "Combat Experience"
 
+msgid "vehicle/overview/desc"
+msgstr ""
+"• This is a real nightmare for any enemy, featuring a commander with a unique voiceover.\n"
+"• No Platoons: just you and this wild beast.\n"
+"• This vehicle is only available for Random Battles until October 15.\n"
+"• Play it quickly! The vehicle and its crew will be removed after the rental period."
+
+msgid "vehicle/overview/title"
+msgstr "Overview:"
+
 msgid "vehicle/radioDistance"
 msgstr "<h1>Signal Range</h1> <h2>(km)</h2>"
 
@@ -11956,10 +12019,10 @@ msgid "vehicle/rentAvailable"
 msgstr "Vehicle rental available"
 
 msgid "vehicle/rentLeft/battles"
-msgstr "Number of battles before the end of the rental period"
+msgstr "Available battles"
 
 msgid "vehicle/rentLeft/days"
-msgstr "Days of rental left"
+msgstr "The vehicle will be available until %(date)s"
 
 msgid "vehicle/rentLeft/epic/base"
 msgstr "Rental for Frontline"
@@ -11974,7 +12037,10 @@ msgid "vehicle/rentLeft/epic/minsLeft"
 msgstr "%(timeNum)s min"
 
 msgid "vehicle/rentLeft/hours"
-msgstr "Hours of rental left"
+msgstr "The vehicle will be available until %(date)s"
+
+msgid "vehicle/rentLeft/noTimeLeft"
+msgstr "All battles fought, vehicle unavailable."
 
 msgid "vehicle/rentLeft/wins"
 msgstr "Victories left before the end of the rental period"
@@ -11990,6 +12056,11 @@ msgstr "Rental for Frontline"
 
 msgid "vehicle/rentLeftFuture/hours"
 msgstr "Hours of rent"
+
+msgid "vehicle/rentLeftFuture/obtainedBy"
+msgstr ""
+"Rented crew!\n"
+"The crew has fixed XP and perks and cannot be modified. It will be removed together with the vehicle after the rental period."
 
 msgid "vehicle/rentLeftFuture/wins"
 msgstr "victories within the rental period"

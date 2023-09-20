@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert1</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/particles/wg_particles.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/mesh_particles/tex/wt_raindrop_texture.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.132321 0.027631 0.005583</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.683366 -1.760197 -1.667522</min>
+		<max>1.418724 1.815459 1.678688</max>
+	</boundingBox>
+	<geometrySize>3240</geometrySize>
+	<minUVDensity>10.496958</minUVDensity>
+</root>

@@ -273,6 +273,7 @@ class REQ_CRITERIA(object):
         FULLY_ELITE = RequestCriteria(PredicateCondition(lambda item: item.isFullyElite))
         EVENT = RequestCriteria(PredicateCondition(lambda item: item.isEvent))
         EVENT_BATTLE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForEventBattles))
+        RANDOM_ONLY = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForRandomBattles))
         EPIC_BATTLE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForEpicBattles))
         BATTLE_ROYALE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForBattleRoyaleBattles))
         MAPS_TRAINING = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForMapsTrainingBattles))
@@ -293,6 +294,7 @@ class REQ_CRITERIA(object):
         DISCOUNT_RENT_OR_BUY = RequestCriteria(PredicateCondition(lambda item: (item.buyPrices.itemPrice.isActionPrice() or item.getRentPackageActionPrc() != 0) and not item.isRestoreAvailable()))
         HAS_TAGS = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: item.tags.issuperset(tags))))
         HAS_ANY_TAG = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: bool(item.tags & tags))))
+        HAS_NO_TAG = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: not bool(item.tags & tags))))
         FOR_ITEM = staticmethod(lambda style: RequestCriteria(PredicateCondition(style.mayInstall)))
 
     class TANKMAN(object):
@@ -411,6 +413,7 @@ class ItemsRequester(IItemsRequester):
         self.__brokenSyncAlreadyLoggedTypes = set()
         self.__fittingItemRequesters = {
          self.__inventory, self.__stats, self.__shop, self.__vehicleRotation, self.__recycleBin}
+        self.__ignoreFittingItemsSync = False
         self.__vehCustomStateCache = defaultdict(dict)
 
     @property
@@ -569,7 +572,7 @@ class ItemsRequester(IItemsRequester):
 
     def isSynced--- This code section failed: ---
 
- L. 945         0  LOAD_FAST             0  'self'
+ L. 951         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  '__blueprints'
                 6  LOAD_CONST               None
                 9  COMPARE_OP            9  is-not
@@ -718,6 +721,7 @@ Parse error at or near `None' instruction at offset -1
         self.__anonymizer.clear()
         self.__giftSystem.clear()
         self.__gameRestrictions.clear()
+        self.__ignoreFittingItemsSync = True
 
     def onDisconnected(self):
         self.__tokens.onDisconnected()
@@ -727,6 +731,7 @@ Parse error at or near `None' instruction at offset -1
 
     def invalidateCache(self, diff=None):
         invalidate = defaultdict(set)
+        self.__ignoreFittingItemsSync = False
         if diff is None:
             LOG_DEBUG('Gui items cache full invalidation')
             for itemTypeID, cache in self.__itemsCache.iteritems():
@@ -1287,6 +1292,8 @@ Parse error at or near `None' instruction at offset -1
             return set()
 
     def __checkFittingItemsSync(self, itemTypeID):
+        if self.__ignoreFittingItemsSync:
+            return
         unsyncedList = [ r.__class__.__name__ for r in self.__fittingItemRequesters if not r.isSynced() ]
         if not unsyncedList or itemTypeID in self.__brokenSyncAlreadyLoggedTypes:
             return

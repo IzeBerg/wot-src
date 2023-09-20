@@ -166,7 +166,8 @@ _ACHIEVEMENTS15X15_BLOCK_LAYOUT = [
  'whiteTiger2012', 'lunarNY2022Progression',
  'oowTankmanWins', 'oowStrategistWins', 'oowCompetetiveWin',
  'mapboxUniversal', 'wclTournamentParticipant', 'wclParticipant',
- 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat']
+ 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat',
+ 'wt2023HunterWins', 'wt2023BossWins', 'wt2023MaxPlasma']
 _achievements15x15PopUps = [
  'warrior', 'invader', 'sniper', 'defender', 'steelwall', 'supporter',
  'scout', 'medalKay', 'medalCarius', 'medalKnispel', 'medalPoppel', 'medalAbrams',
@@ -211,7 +212,8 @@ _achievements15x15PopUps = [
  'wtxHunterWins', 'wtxBossWins', 'wtxSpecBossDefeat', 'lunarNY2022Progression',
  'oowTankmanWins', 'oowStrategistWins', 'oowCompetetiveWin', 'mapboxUniversal',
  'wclTournamentParticipant', 'wclParticipant',
- 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat']
+ 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat',
+ 'wt2023HunterWins', 'wt2023BossWins', 'wt2023MaxPlasma']
 _achievements15x15BlockBuilder = StaticSizeBlockBuilder('achievements', _ACHIEVEMENTS15X15_BLOCK_LAYOUT, ACHIEVEMENT15X15_DEPENDENCIES, _achievements15x15PopUps)
 _STEAM_BLOCK_LAYOUT = [
  'steamBattleCredits', 'steamLittleSavingsMedal', 'steamMintedCoinMedal', 'steamKingMidasMedal',
@@ -336,7 +338,7 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'comp7Season1', 'hw2022Medal01', 'hw2022Medal02', '12YearsOfService',
  'NY23_AtmsphrLevel', 'NY23_CelebChallenge', 'BattlePassCommonPr_NY23',
  'BattlePassCommonPr_10', 'comp7_2023_1', 'Cosmic_MartianStalker', 'Cosmic_SpaceTrace',
- 'BattlePassCommonPr_11', 'prime_gaming_reserved_13', 'prime_gaming_reserved_14',
+ 'BattlePassCommonPr_11', 'september23', 'prime_gaming_reserved_14',
  'prime_gaming_reserved_15', 'prime_gaming_reserved_16', 'prime_gaming_reserved_17',
  'prime_gaming_reserved_18', 'prime_gaming_reserved_19', 'prime_gaming_reserved_20',
  'prime_gaming_reserved_21', 'prime_gaming_reserved_22', 'prime_gaming_reserved_23',
@@ -390,7 +392,7 @@ _singleAchievementsPopUps = [
  '12YearsOfService', 'NY23_AtmsphrLevel', 'NY23_CelebChallenge',
  'BattlePassCommonPr_NY23', 'BattlePassCommonPr_10', 'comp7_2023_1',
  'Cosmic_MartianStalker', 'Cosmic_SpaceTrace', 'BattlePassCommonPr_11',
- 'prime_gaming_reserved_13', 'prime_gaming_reserved_14', 'prime_gaming_reserved_15',
+ 'september23', 'prime_gaming_reserved_14', 'prime_gaming_reserved_15',
  'prime_gaming_reserved_16', 'prime_gaming_reserved_17', 'prime_gaming_reserved_18',
  'prime_gaming_reserved_19', 'prime_gaming_reserved_20', 'prime_gaming_reserved_21',
  'prime_gaming_reserved_22', 'prime_gaming_reserved_23', 'prime_gaming_reserved_24',

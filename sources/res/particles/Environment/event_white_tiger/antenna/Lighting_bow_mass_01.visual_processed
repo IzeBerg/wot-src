@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>Lightning1</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_line_lighting_07.dds</Texture>
+					</property>
+					<property>
+						rampFreshnelMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Gradient_transparentEdge.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						gradientMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/wt_lightning_01.dds</Texture>
+					</property>
+					<property>
+						gradientMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>6.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.100000 0.920000 0.100000 0.120000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Distortion02.dds</Texture>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/wt_animation.dds</Texture>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/TilingMask4x.dds</Texture>
+					</property>
+					<property>
+						opacity_UV_Distortion_Amount
+						<Vector4>0.100000 0.600000 0.250000 0.140000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>-0.220000 0.120000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortionFrames
+						<Vector4>0.120000 0.232300 0.056500 0.123210</Vector4>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>-0.300000 0.850000 0.700000 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountSoft
+						<Vector4>1.000000 1.000000 0.010000 0.050000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortionFrequency
+						<Float>1.500000</Float>
+					</property>
+					<property>
+						opacity_UV_Speed_Scale
+						<Vector4>0.000000 2.000000 0.250000 0.251000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.244258 21.805233 1.734977</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>Lightning</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_line_lighting_07.dds</Texture>
+					</property>
+					<property>
+						rampFreshnelMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Gradient_transparentEdge.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						gradientMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/wt_lightning_01.dds</Texture>
+					</property>
+					<property>
+						gradientMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>6.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.100000 1.520000 0.100000 0.120000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Distortion02.dds</Texture>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/wt_animation.dds</Texture>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/TilingMask4x.dds</Texture>
+					</property>
+					<property>
+						opacity_UV_Distortion_Amount
+						<Vector4>0.100000 0.600000 0.250000 0.140000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>-0.300000 0.300000 3.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortionFrames
+						<Vector4>0.120000 0.232300 0.056500 0.123210</Vector4>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>-0.300000 1.850000 0.700000 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountSoft
+						<Vector4>1.000000 1.000000 0.010000 0.050000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortionFrequency
+						<Float>1.500000</Float>
+					</property>
+					<property>
+						opacity_UV_Speed_Scale
+						<Vector4>0.000000 2.000000 0.250000 0.251000</Vector4>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+				</material>
+				<groupOrigin>-0.243062 21.630333 1.364439</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.732976 19.756262 -2.508901</min>
+		<max>3.246852 23.557085 5.237780</max>
+	</boundingBox>
+	<geometrySize>35272</geometrySize>
+	<minUVDensity>0.077825</minUVDensity>
+</root>

@@ -46,13 +46,13 @@ package net.wg.gui.battle.views.stats.fullStats
       
       protected var isTeamKiller:Boolean = false;
       
+      protected var vehicleTypeIcon:BattleAtlasSprite = null;
+      
       private var _playerNameTF:TextField = null;
       
       private var _fragsTF:TextField = null;
       
       private var _vehicleNameTF:TextField = null;
-      
-      private var _vehicleTypeIcon:BattleAtlasSprite = null;
       
       private var _icoIGR:BattleAtlasSprite = null;
       
@@ -100,7 +100,7 @@ package net.wg.gui.battle.views.stats.fullStats
          this._playerNameTF = param1.playerNameCollection[_loc4_];
          this._vehicleNameTF = param1.vehicleNameCollection[_loc4_];
          this._fragsTF = param1.fragsCollection[_loc4_];
-         this._vehicleTypeIcon = param1.vehicleTypeCollection[_loc4_];
+         this.vehicleTypeIcon = param1.vehicleTypeCollection[_loc4_];
          this.deadBg = param1.deadBgCollection[_loc4_];
          this._icoIGR = param1.icoIGRCollection[_loc4_];
          this._testerIcon = param1.icoTesterCollection[_loc4_];
@@ -114,7 +114,7 @@ package net.wg.gui.battle.views.stats.fullStats
          this._vehicleNameTF.autoSize = TextFieldAutoSize.LEFT;
          this._vehicleNameTF.visible = false;
          this._fragsTF.visible = false;
-         this._vehicleTypeIcon.visible = false;
+         this.vehicleTypeIcon.visible = false;
          this.deadBg.visible = false;
          this._icoIGR.visible = false;
          this._testerIcon.visible = false;
@@ -130,7 +130,7 @@ package net.wg.gui.battle.views.stats.fullStats
          this._badgeVO = null;
          this._playerNameTF = null;
          this._vehicleNameTF = null;
-         this._vehicleTypeIcon = null;
+         this.vehicleTypeIcon = null;
          this._fragsTF = null;
          this.deadBg = null;
          this._userProps = null;
@@ -252,12 +252,12 @@ package net.wg.gui.battle.views.stats.fullStats
          {
             if(this._vehicleType)
             {
-               this._vehicleTypeIcon.visible = true;
-               this._vehicleTypeIcon.imageName = this._vehicleType;
+               this.vehicleTypeIcon.visible = true;
+               this.vehicleTypeIcon.imageName = this._vehicleType;
             }
             else
             {
-               this._vehicleTypeIcon.visible = false;
+               this.vehicleTypeIcon.visible = false;
             }
          }
          if(isInvalid(FullStatsValidationType.IS_IGR))
@@ -477,6 +477,11 @@ package net.wg.gui.battle.views.stats.fullStats
       protected function get numRows() : uint
       {
          return NUM_ROWS;
+      }
+      
+      protected function get isEnemy() : Boolean
+      {
+         return this._isEnemy;
       }
    }
 }

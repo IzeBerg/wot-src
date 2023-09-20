@@ -22,6 +22,7 @@ from gui.server_events.events_helpers import getIdxFromQuestID
 from gui.server_events.recruit_helper import getSourceIdFromQuest
 from gui.shared.formatters import text_styles
 from gui.shared.money import Currency
+from gui.wt_event.wt_event_helpers import isWTEventProgressionQuest
 from helpers import dependency
 from helpers import time_utils
 from messenger import g_settings
@@ -211,7 +212,7 @@ class RankedSeasonTokenQuestFormatter(RankedTokenQuestFormatter):
         customizations = data.get('customizations', [])
         for customizationItem in customizations:
             customizationType = customizationItem['custType']
-            _, itemUserName = getCustomizationItemData(customizationItem['id'], customizationType)
+            _, itemUserName, _ = getCustomizationItemData(customizationItem['id'], customizationType)
             if customizationType == 'style':
                 result.append(itemUserName)
 
@@ -1054,3 +1055,10 @@ class CrewPerksFormatter(AsyncTokenQuestsSubFormatter):
     @classmethod
     def _isQuestOfThisGroup(cls, questID):
         return questID.startswith(cls.__QUEST_PREFIX)
+
+
+class WtEventProgressionQuestFormatter(WaitItemsSyncFormatter, TokenQuestsSubFormatter):
+
+    @classmethod
+    def _isQuestOfThisGroup(cls, questID):
+        return isWTEventProgressionQuest(questID)

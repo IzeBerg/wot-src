@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>0.500000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>ColiGlow</name>
+		<type>model</type>
+		<resource>particles/Environment/event_white_tiger/enemies/Waffentrager_E100_shoot/wt_Shoot.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 -3.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.000000 0.000000 -3.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Glow_Coil</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.572549 0.290196 0.996078 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.121715</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.121715</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.572549 0.290196 0.996078 0.694118</value>
+				<inTangent>0.004494 0.044666 0.005554 0.035393</inTangent>
+				<outTangent>0.004494 0.044666 0.005554 0.035393</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Glow_Active</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.184314 0.156863 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.041900</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.041900</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.184314 0.156863 1.000000 1.000000</value>
+				<inTangent>-0.146613 0.048986 0.136515 0.076283</inTangent>
+				<outTangent>-0.146613 0.048986 0.136515 0.076283</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Glow_Active</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>3.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>3.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>768</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>1.500000 0.000000 0.000000 0.000000</value>
+				<inTangent>-0.117666 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.117666 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Glow_Coil</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>3.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>3.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>1.500000 0.000000 0.000000 0.000000</value>
+				<inTangent>3.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>3.000000 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Lightning_01</name>
+		<type>model</type>
+		<resource>particles/Environment/event_white_tiger/enemies/Waffentrager_E100_shoot/wt_Shoot_lighting_idel.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 -3.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Lightning1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.247059 0.341176 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.015138</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.015138</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.247059 0.341176 1.000000 0.850000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.022363</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.022363</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

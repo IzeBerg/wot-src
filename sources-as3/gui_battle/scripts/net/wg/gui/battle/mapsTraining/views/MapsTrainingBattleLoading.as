@@ -135,11 +135,12 @@ package net.wg.gui.battle.mapsTraining.views
       
       private function updatePosition() : void
       {
+         var _loc1_:int = 0;
          this.setBackgroundPosition();
          this.setStepperPosition();
          this.setTextsPosition();
          this.setBackgroundSize();
-         var _loc1_:int = !!this._isMinResolution ? int(BTN_OFFSET_MIN) : int(BTN_OFFSET);
+         _loc1_ = !!this._isMinResolution ? int(BTN_OFFSET_MIN) : int(BTN_OFFSET);
          this.btnLeft.x = _loc1_;
          this.btnLeft.y = this._stageHeight - this.btnLeft.height >> 1;
          this.btnRight.x = this._stageWidth - _loc1_;
