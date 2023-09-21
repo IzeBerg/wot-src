@@ -785,6 +785,8 @@ package
       
       public static const ADD_TANKMAN_SKILL_VEHICLE_LOCKED:String = "#system_messages:add_tankman_skill/vehicle_locked";
       
+      public static const ADD_TANKMAN_SKILL_CREW_SKILLS_LOCKED:String = "#system_messages:add_tankman_skill/crew_skills_locked";
+      
       public static const LEARN_TANKMAN_FREE_SKILL_SUCCESS:String = "#system_messages:learn_tankman_free_skill/success";
       
       public static const LEARN_TANKMAN_FREE_SKILL_SERVER_ERROR:String = "#system_messages:learn_tankman_free_skill/server_error";

@@ -81,7 +81,9 @@ _BATTLE_EVENTS_SETTINGS_TO_BATTLE_EFFICIENCY_TYPES = {BATTLE_EVENTS.ENEMY_HP_DAM
    BATTLE_EVENTS.ENEMY_ASSIST_STUN: (
                                    _BET.ASSIST_STUN,), 
    BATTLE_EVENTS.CREW_PERKS: (
-                            _BET.PERK,)}
+                            _BET.PERK,), 
+   BATTLE_EVENTS.HEALTH_ADDED: (
+                              _BET.VEHICLE_HEALTH_ADDED,)}
 
 def _getVehicleData(arenaDP, vehArenaID):
     vTypeInfoVO = arenaDP.getVehicleInfo(vehArenaID).vehicleType
@@ -174,6 +176,11 @@ def _epicEventRibbonFormatter(ribbon, arenaDP, updater):
     updater(ribbonID=ribbon.getID(), ribbonType=ribbon.getType(), leftFieldStr=leftFieldStr)
 
 
+def _healthAddedFormatter(ribbon, arenaDP, updater):
+    vehicleName, vehicleClassTag = _getVehicleData(arenaDP, ribbon.getVehicleID())
+    updater(ribbonID=ribbon.getID(), ribbonType=ribbon.getType(), vehName=vehicleName, vehType=vehicleClassTag, leftFieldStr=backport.getIntegralFormat(ribbon.getExtraValue()))
+
+
 _RIBBONS_FMTS = {_BET.CAPTURE: _baseRibbonFormatter, 
    _BET.DEFENCE: _baseRibbonFormatter, 
    _BET.DETECTION: _enemyDetectionRibbonFormatter, 
@@ -222,6 +229,8 @@ _RIBBONS_FMTS = {_BET.CAPTURE: _baseRibbonFormatter,
    _BET.RECEIVED_BY_CLING_BRANDER: _singleVehRibbonFormatter, 
    _BET.DEALT_DMG_BY_THUNDER_STRIKE: _singleVehRibbonFormatter, 
    _BET.RECEIVED_BY_THUNDER_STRIKE: _singleVehRibbonFormatter, 
+   _BET.VEHICLE_HEALTH_ADDED: _healthAddedFormatter, 
+   _BET.RECEIVED_BY_CIRCUIT_OVERLOAD: _singleVehRibbonFormatter, 
    _BET.PERK: _perkRibbonFormatter}
 _DISPLAY_PRECONDITIONS = {_BET.DETECTION: lambda dp, ribbon: dp.getVehicleInfo(ribbon.getVehIDs()[0]).vehicleType.compactDescr > 0}
 
@@ -539,6 +548,12 @@ class BattleRibbonsPanel(RibbonsPanelMeta, IArenaVehiclesController):
          [
           _BET.RECEIVED_BY_THUNDER_STRIKE,
           backport.text(R.strings.ingame_gui.efficiencyRibbons.receivedByThunderStrike())],
+         [
+          _BET.VEHICLE_HEALTH_ADDED,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.healthAdded())],
+         [
+          _BET.RECEIVED_BY_CIRCUIT_OVERLOAD,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.wtReceivedCircuitOverload())],
          [
           _BET.PERK,
           '']], self.__isExtendedAnim, self.__enabled, self.__isWithRibbonName, self.__isWithVehName, [

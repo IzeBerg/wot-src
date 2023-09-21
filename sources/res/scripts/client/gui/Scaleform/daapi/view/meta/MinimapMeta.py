@@ -32,9 +32,9 @@ class MinimapMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_enableHintPanelWithData(isStrategicArtyView, isSPG)
 
-    def as_disableHintPanelS(self):
+    def as_disableHintPanelS(self, instantHide):
         if self._isDAAPIInited():
-            return self.flashObject.as_disableHintPanel()
+            return self.flashObject.as_disableHintPanel(instantHide)
 
     def as_updateHintPanelDataS(self, isStrategicArtyView, isSPG):
         if self._isDAAPIInited():

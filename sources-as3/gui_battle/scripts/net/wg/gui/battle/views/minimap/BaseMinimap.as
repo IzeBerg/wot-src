@@ -19,7 +19,7 @@ package net.wg.gui.battle.views.minimap
       {
       }
       
-      public function as_disableHintPanel() : void
+      public function as_disableHintPanel(param1:Boolean) : void
       {
       }
       

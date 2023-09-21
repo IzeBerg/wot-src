@@ -135,7 +135,6 @@ package net.wg.gui.battle.components.buttons
       
       private function makeStates(param1:Array, param2:Vector.<Sprite>, param3:String) : void
       {
-         var _loc4_:Boolean = false;
          var _loc5_:BattleStateBtnSettings = null;
          var _loc6_:Sprite = null;
          var _loc7_:Sprite = null;
@@ -148,7 +147,7 @@ package net.wg.gui.battle.components.buttons
             }
             param2.splice(0,param2.length);
          }
-         _loc4_ = _buttonState == param3;
+         var _loc4_:Boolean = _buttonState == param3;
          for each(_loc5_ in param1)
          {
             _loc7_ = new Sprite();

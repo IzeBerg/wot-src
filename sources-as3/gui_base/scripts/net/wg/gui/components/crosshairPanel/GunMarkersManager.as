@@ -155,6 +155,15 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
+      public function setExplosiveShotMarker(param1:Boolean) : void
+      {
+         var _loc2_:IGunMarker = null;
+         for each(_loc2_ in this._gunMarkers)
+         {
+            _loc2_.setExplosiveMarker(param1);
+         }
+      }
+      
       public function updateDualGunMarkerState(param1:int) : void
       {
          var _loc2_:DualGunMarker = null;

@@ -76,3 +76,11 @@ class HangarHeaderMeta(BaseDAAPIComponent):
     def as_removeComp7S(self):
         if self._isDAAPIInited():
             return self.flashObject.as_removeComp7()
+
+    def as_createEventWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_createEventWidget()
+
+    def as_removeEventWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_removeEventWidget()

@@ -17,9 +17,9 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.league
       
       private var _rewardsData:Vector.<RewardsLeagueRendererVO>;
       
-      private var _rendererWidth:int;
+      private var _rendererWidth:int = 320;
       
-      private var _styleIconWidth:int;
+      private var _styleIconWidth:int = 300;
       
       private var _renderersWidth:Number = 0;
       
@@ -27,8 +27,6 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.league
       
       public function RewardsLeagueContainer()
       {
-         this._rendererWidth = RewardsLeagueRenderer.RENDERER_WIDTH_NARROW;
-         this._styleIconWidth = RewardsLeagueRenderer.STYLE_ICON_WIDTH_WIDE;
          super();
       }
       

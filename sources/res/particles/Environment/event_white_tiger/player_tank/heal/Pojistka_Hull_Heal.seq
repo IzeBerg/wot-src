@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Hull</name>
+		<type>model</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/heal/Pojistka_Hull_Heal.model</resource>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>HealingLaser</identifier>
+			<property>diffuseUVSpeedAlphaOffset</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 1.000000 0.000000</value>
+				<inTangent>-1.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-1.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>-1.000000 0.000000 1.000000 0.000000</value>
+				<inTangent>-1.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-1.000000 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

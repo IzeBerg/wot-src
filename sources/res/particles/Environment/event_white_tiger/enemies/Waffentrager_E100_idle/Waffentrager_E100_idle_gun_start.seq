@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>idle</name>
+		<type>model</type>
+		<resource>particles/Environment/event_white_tiger/enemies/Waffentrager_E100_idle/Waffentrager_E100_idle_gun.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Glow_Active</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.200000 0.317647 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.276164</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.276164</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.200000 0.317647 1.000000 0.800000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.153457</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 0.153457</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Coil_Lightning</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.247059 0.341176 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.260272</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.260272</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.247059 0.341176 1.000000 0.750000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.076597</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 0.076597</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Lightning</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.247059 0.341176 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.244656</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.244656</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.247059 0.341176 1.000000 0.850000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.033006</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.033006</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Glow_Emitter</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.490196 0.400000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.244656</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.244656</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.490196 0.400000 1.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.052558</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.052558</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Corona_V2</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.260272</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.260272</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>1.000000 1.000000 1.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.065127</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.065127</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>
