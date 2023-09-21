@@ -416,6 +416,12 @@ package
       public static const COSM_GEORGE_LASTNAME:String = "#crew_skins:cosm_george/LastName";
       
       public static const COSM_GEORGE_DESCR:String = "#crew_skins:cosm_george/Descr";
+      
+      public static const ERMELINDA_NAME:String = "#crew_skins:ermelinda/Name";
+      
+      public static const ERMELINDA_LASTNAME:String = "#crew_skins:ermelinda/LastName";
+      
+      public static const ERMELINDA_DESCR:String = "#crew_skins:ermelinda/Descr";
        
       
       public function CREW_SKINS()

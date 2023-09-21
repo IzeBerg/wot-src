@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Tank_shiled</name>
+		<type>model</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/shield/Tank_Shield.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property float</name>
+			<type>float</type>
+			<identifier>Shield_distortion</identifier>
+			<property>distortionAmount</property>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.000000</value>
+				<inTangent>4.666667</inTangent>
+				<outTangent>4.666667</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.333333</startTime>
+				<value>1.400000</value>
+				<inTangent>-0.128331</inTangent>
+				<outTangent>-0.128331</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.600000</inTangent>
+				<outTangent>-0.600000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Shield</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.470588 0.470588 0.470588 0.000000</value>
+				<inTangent>1.764707 1.764707 1.764707 5.730661</inTangent>
+				<outTangent>1.764707 1.764707 1.764707 5.730661</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.333333</startTime>
+				<value>1.000000 1.000000 1.000000 1.719198</value>
+				<inTangent>-0.407871 -0.339561 -0.316755 0.175778</inTangent>
+				<outTangent>-0.407871 -0.339561 -0.316755 0.175778</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.566667</startTime>
+				<value>0.833975 0.840710 0.850065 1.142361</value>
+				<inTangent>-0.924480 -0.926700 -0.882924 -0.815718</inTangent>
+				<outTangent>-0.924480 -0.926700 -0.882924 -0.815718</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.470588 0.470588 0.470588 1.000000</value>
+				<inTangent>-0.439807 -0.439807 -0.573694 -0.000000</inTangent>
+				<outTangent>-0.439807 -0.439807 -0.573694 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>stun</name>
+			<type>bool</type>
+		</param>
+	</params>
+	<node>
+		<name>idle</name>
+		<type>sequence</type>
+		<resource>particles/Environment/event_white_tiger/player_tank/tank_idle/Object_140_Turret_idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>idle_stun</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>stun</name>
+					<checked>true</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-166.000000 97.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>idle_stun</name>
+		<type>sequence</type>
+		<resource>particles/eff_sequence/null_01s.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions/>
+		</transition>
+		<uiPosition>92.000000 95.000000 0.000000</uiPosition>
+	</node>
+</root>

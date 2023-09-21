@@ -103,6 +103,43 @@
 				</component>
 			</components>
 		</preset>
+		<preset>
+			<name>event</name>
+			<basePreset>default</basePreset>
+			<components>
+				<component>
+					<name>crew</name>
+					<visible>False</visible>
+					<isChangeable>True</isChangeable>
+				</component>
+				<component>
+					<name>ammunition</name>
+					<visible>False</visible>
+					<isChangeable>True</isChangeable>
+				</component>
+				<component>
+					<name>ammunitionInject</name>
+					<visible>False</visible>
+					<isChangeable>True</isChangeable>
+				</component>
+				<component>
+					<name>carousel</name>
+					<visible>False</visible>
+					<type>tankCarousel</type>
+					<layout>TankCarouselUI</layout>
+				</component>
+				<component>
+					<name>vehicleParameters</name>
+					<visible>False</visible>
+					<isChangeable>True</isChangeable>
+				</component>
+				<component>
+					<name>vehicleResearch</name>
+					<visible>False</visible>
+					<isChangeable>True</isChangeable>
+				</component>
+			</components>
+		</preset>
 	</presets>
 	<queueTypePresets>
 		<item>
@@ -116,6 +153,10 @@
 		<item>
 			<queueType>23</queueType>
 			<presetName>mapbox</presetName>
+		</item>
+		<item>
+			<queueType>7</queueType>
+			<presetName>event</presetName>
 		</item>
 	</queueTypePresets>
 </root>

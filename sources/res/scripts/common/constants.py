@@ -290,6 +290,7 @@ class ARENA_BONUS_TYPE:
     BATTLE_ROYALE_SQUAD_RANGE = (BATTLE_ROYALE_SQUAD, BATTLE_ROYALE_TRN_SQUAD)
     RTS_RANGE = (RTS, RTS_1x1, RTS_BOOTCAMP)
     RTS_BATTLES = (RTS, RTS_1x1)
+    EVENT_BATTLES_RANGE = (EVENT_BATTLES, EVENT_BATTLES_2)
     EXTERNAL_RANGE = (
      SORTIE_2, FORT_BATTLE_2, GLOBAL_MAP,
      TOURNAMENT, TOURNAMENT_CLAN, TOURNAMENT_REGULAR, TOURNAMENT_EVENT)
@@ -767,6 +768,7 @@ class PremiumConfigs(object):
     PREM_SQUAD = 'premSquad_config'
 
 
+POSTBATTLE20_CONFIG = 'postbattle20_config'
 DAILY_QUESTS_CONFIG = 'daily_quests_config'
 DOG_TAGS_CONFIG = 'dog_tags_config'
 RENEWABLE_SUBSCRIPTION_CONFIG = 'renewable_subscription_config'
@@ -807,6 +809,8 @@ class Configs(enum.Enum):
     ACHIEVEMENTS20_CONFIG = 'achievements20_config'
     AB_FEATURE_TEST = 'ab_feature_test'
     LIMITED_UI_CONFIG = 'limited_ui_config'
+    EVENT_BATTLES_CONFIG = 'event_battles_config'
+    LOOTBOX_CONFIG = 'lootBoxes_config'
 
 
 INBATTLE_CONFIGS = [
@@ -1096,6 +1100,7 @@ class ATTACK_REASON(object):
     FORT_ARTILLERY_EQ = 'fort_artillery_eq'
     STATIC_DEATH_ZONE = 'static_deathzone'
     CGF_WORLD = 'cgf_world'
+    CIRCUIT_OVERLOAD = 'circuitOverload'
     NONE = 'none'
 
     @classmethod
@@ -1114,7 +1119,7 @@ ATTACK_REASONS = (
  ATTACK_REASON.CORRODING_SHOT, ATTACK_REASON.ADAPTATION_HEALTH_RESTORE,
  ATTACK_REASON.THUNDER_STRIKE, ATTACK_REASON.FIRE_CIRCLE, ATTACK_REASON.CLING_BRANDER,
  ATTACK_REASON.CLING_BRANDER_RAM, ATTACK_REASON.BRANDER_RAM,
- ATTACK_REASON.FORT_ARTILLERY_EQ, ATTACK_REASON.STATIC_DEATH_ZONE,
+ ATTACK_REASON.FORT_ARTILLERY_EQ, ATTACK_REASON.STATIC_DEATH_ZONE, ATTACK_REASON.CIRCUIT_OVERLOAD,
  ATTACK_REASON.CGF_WORLD)
 ATTACK_REASON_INDICES = dict((value, index) for index, value in enumerate(ATTACK_REASONS))
 BOT_RAM_REASONS = (
@@ -1172,7 +1177,7 @@ class VEHICLE_HIT_FLAGS:
 
 VEHICLE_HIT_FLAGS_BY_NAME = dict([ (k, v) for k, v in VEHICLE_HIT_FLAGS.__dict__.iteritems() if not k.startswith('_') ])
 FIRE_NOTIFICATION_CODES = ('DEVICE_STARTED_FIRE_AT_SHOT', 'DEVICE_STARTED_FIRE_AT_RAMMING',
-                           'FIRE_STOPPED')
+                           'DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD', 'FIRE_STOPPED')
 FIRE_NOTIFICATION_INDICES = dict((x[1], x[0]) for x in enumerate(FIRE_NOTIFICATION_CODES))
 DAMAGE_INFO_CODES = ('DEVICE_CRITICAL', 'DEVICE_DESTROYED', 'TANKMAN_HIT', 'DEVICE_CRITICAL_AT_SHOT',
                      'DEVICE_DESTROYED_AT_SHOT', 'DEVICE_CRITICAL_AT_RAMMING', 'DEVICE_DESTROYED_AT_RAMMING',
@@ -1572,6 +1577,8 @@ class REQUEST_COOLDOWN:
     RUN_QUEST = 1.0
     PAWN_FREE_AWARD_LIST = 1.0
     LOOTBOX = 1.0
+    LOOTBOX_REROLL = 1.0
+    LOOTBOX_RECORDS = 1.0
     BADGES = 2.0
     CREW_SKINS = 0.3
     BPF_COMMAND = 1.0
@@ -1924,6 +1931,7 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    USER_SERVER_SETTINGS.GAME_EXTENDED_2: 'Game extended section settings 2', 
    103: 'Mapbox carousel filter 1', 
    104: 'Mapbox carousel filter 2', 
+   105: 'Event Storage', 
    USER_SERVER_SETTINGS.CONTOUR: 'Contour settings', 
    107: 'Fun Random carousel filter 1', 
    108: 'Fun Random carousel filter 2', 
@@ -2324,8 +2332,8 @@ class VISIBILITY:
     MIN_RADIUS = 50.0
 
 
-VEHICLE_ATTRS_TO_SYNC = frozenset(['circularVisionRadius', 'gun/piercing'])
-VEHICLE_ATTRS_TO_SYNC_ALIASES = {'gun/piercing': 'gunPiercing'}
+VEHICLE_ATTRS_TO_SYNC = frozenset(['circularVisionRadius', 'gun/piercing', 'gun/canShoot'])
+VEHICLE_ATTRS_TO_SYNC_ALIASES = {'gun/piercing': 'gunPiercing', 'gun/canShoot': 'gunCanShoot'}
 
 class OBSTACLE_KIND:
     CHUNK_DESTRUCTIBLE = 1
@@ -2568,10 +2576,12 @@ class BotNamingType(object):
     CREW_MEMBER = 1
     VEHICLE_MODEL = 2
     CUSTOM = 3
+    LABEL = 4
     DEFAULT = CREW_MEMBER
     _parseDict = {'crew': CREW_MEMBER, 
        'vehicle': VEHICLE_MODEL, 
        'custom': CUSTOM, 
+       'label': LABEL, 
        'default': DEFAULT}
 
     @classmethod
@@ -2929,11 +2939,13 @@ class DamageAbsorptionTypes(object):
     FRAGMENTS = 0
     BLAST = 1
     SPALLS = 2
+    NONE = 3
 
 
 DamageAbsorptionLabelToType = {'FRAGMENTS': DamageAbsorptionTypes.FRAGMENTS, 
    'BLAST': DamageAbsorptionTypes.BLAST, 
-   'SPALLS': DamageAbsorptionTypes.SPALLS}
+   'SPALLS': DamageAbsorptionTypes.SPALLS, 
+   'NONE': DamageAbsorptionTypes.NONE}
 DamageAbsorptionTypeToLabel = dict((type, label) for label, type in DamageAbsorptionLabelToType.items())
 EQUIPMENT_COOLDOWN_MOD_SUFFIX = 'CooldownMod'
 CHANCE_TO_HIT_SUFFIX_FACTOR = 'ChanceToHitDeviceMod'
@@ -3036,7 +3048,9 @@ BATTLE_MODE_VEHICLE_TAGS = {
  'battle_royale',
  'clanWarsBattles',
  'fun_random',
- 'comp7'}
+ 'comp7',
+ 'clanWarsBattles',
+ 'random_only'}
 BATTLE_MODE_VEH_TAGS_EXCEPT_EVENT = BATTLE_MODE_VEHICLE_TAGS - {'event_battles'}
 BATTLE_MODE_VEH_TAGS_EXCEPT_EPIC = BATTLE_MODE_VEHICLE_TAGS - {'epic_battles'}
 BATTLE_MODE_VEH_TAGS_EXCEPT_CLAN = BATTLE_MODE_VEHICLE_TAGS - {'clanWarsBattles'}
@@ -3154,6 +3168,7 @@ class BuffDisplayedState(enum.IntEnum):
 
 class EntityCaptured(object):
     POI_CAPTURABLE = 'poiCapturable'
+    WT_GENERATOR = 'captureGenerator'
 
 
 class VehicleSelectionPlayerStatus(object):
@@ -3217,6 +3232,8 @@ class MarkerItem(object):
     POLYGONAL_ZONE = 2
     STATIC_DEATH_ZONE = 3
     STATIC_DEATH_ZONE_PROXIMITY = 4
+    GEN_ON = 5
+    GEN_OFF = 6
 
 
 class DROP_SKILL_OPTIONS(object):
@@ -3245,3 +3262,37 @@ class MinimapLayerType(object):
     BASE = 'base'
     ALERT = 'alert'
     ALL = (BASE, ALERT)
+
+
+class WT_COMPONENT_NAMES(object):
+    SHIELD_DEBUFF_ARENA_TIMER = 'wtShieldDebuffDuration'
+    ACTIVATION_ARENA_TIMER = 'activationTimer'
+    GENERATORS_COUNTER = 'wtCapturesTillEndgame'
+    HYPERION_COUNTER = 'wtHyperionCharge'
+
+
+class WT_BATTLE_STAGE(object):
+    INVINCIBLE = 0
+    DEBUFF = 1
+    END_GAME = 2
+
+    @staticmethod
+    def getCurrent(arenaInfo):
+        if WT_COMPONENT_NAMES.SHIELD_DEBUFF_ARENA_TIMER in arenaInfo.dynamicComponents:
+            return WT_BATTLE_STAGE.DEBUFF
+        else:
+            generatorsCounterComponent = arenaInfo.dynamicComponents.get(WT_COMPONENT_NAMES.GENERATORS_COUNTER)
+            if generatorsCounterComponent is not None and generatorsCounterComponent.counter == 0:
+                return WT_BATTLE_STAGE.END_GAME
+            return WT_BATTLE_STAGE.INVINCIBLE
+
+
+class WT_TEAMS(object):
+    BOSS_TEAM = 1
+    HUNTERS_TEAM = 2
+
+
+class WT_TAGS(object):
+    BOSS = 'event_boss'
+    HUNTER = 'event_hunter'
+    PRIORITY_BOSS = 'special_event_boss'

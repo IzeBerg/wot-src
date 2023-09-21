@@ -11,7 +11,7 @@ from blueprints.BlueprintTypes import BlueprintTypes
 from blueprints.FragmentTypes import getFragmentType
 from cache import cached_property
 from chat_shared import MapRemovedFromBLReason, SYS_MESSAGE_TYPE, decompressSysMessage
-from constants import ARENA_BONUS_TYPE, ARENA_GUI_TYPE, AUTO_MAINTENANCE_RESULT, AUTO_MAINTENANCE_TYPE, FAIRPLAY_VIOLATIONS, FINISH_REASON, INVOICE_ASSET, KICK_REASON, KICK_REASON_NAMES, NC_MESSAGE_PRIORITY, NC_MESSAGE_TYPE, OFFER_TOKEN_PREFIX, PREBATTLE_TYPE, PREMIUM_ENTITLEMENTS, PREMIUM_TYPE, RESTRICTION_TYPE, SYS_MESSAGE_CLAN_EVENT, SYS_MESSAGE_CLAN_EVENT_NAMES, SYS_MESSAGE_FORT_EVENT_NAMES, SwitchState
+from constants import ARENA_BONUS_TYPE, ARENA_GUI_TYPE, AUTO_MAINTENANCE_RESULT, AUTO_MAINTENANCE_TYPE, FAIRPLAY_VIOLATIONS, FINISH_REASON, INVOICE_ASSET, KICK_REASON, KICK_REASON_NAMES, NC_MESSAGE_PRIORITY, NC_MESSAGE_TYPE, OFFER_TOKEN_PREFIX, PREBATTLE_TYPE, PREMIUM_ENTITLEMENTS, PREMIUM_TYPE, RESTRICTION_TYPE, SYS_MESSAGE_CLAN_EVENT, SYS_MESSAGE_CLAN_EVENT_NAMES, SYS_MESSAGE_FORT_EVENT_NAMES, SwitchState, WT_TEAMS, LOOTBOX_TOKEN_PREFIX
 from debug_utils import LOG_ERROR
 from dog_tags_common.components_config import componentConfigAdapter
 from dog_tags_common.config.common import ComponentViewType
@@ -23,7 +23,7 @@ from goodies.goodie_constants import GOODIE_VARIETY
 from gui import GUI_NATIONS, GUI_SETTINGS
 from gui.Scaleform.genConsts.CURRENCIES_CONSTANTS import CURRENCIES_CONSTANTS
 from gui.Scaleform.genConsts.RANKEDBATTLES_ALIASES import RANKEDBATTLES_ALIASES
-from gui.SystemMessages import SM_TYPE
+from gui.SystemMessages import SM_TYPE, pushMessage
 from gui.clans.formatters import getClanFullName
 from gui.collection.collections_constants import COLLECTION_ITEM_PREFIX_NAME
 from gui.dog_tag_composer import dogTagComposer
@@ -53,6 +53,7 @@ from gui.shared.gui_items.crew_skin import localizedFullName
 from gui.shared.gui_items.dossier.achievements.abstract.class_progress import ClassProgressAchievement
 from gui.shared.gui_items.dossier.factories import getAchievementFactory
 from gui.shared.gui_items.fitting_item import RentalInfoProvider
+from gui.shared.gui_items.loot_box import EventLootBoxes
 from gui.shared.money import Currency, MONEY_UNDEFINED, Money, ZERO_MONEY
 from gui.shared.notifications import NotificationGuiSettings, NotificationPriorityLevel
 from gui.shared.system_factory import collectTokenQuestsSubFormatters
@@ -74,7 +75,7 @@ from messenger.formatters.service_channel_helpers import EOL, MessageData, getCu
 from nations import NAMES
 from shared_utils import BoundMethodWeakref, first
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, ICollectionsSystemController, IEpicBattleMetaGameController, IFunRandomController, IMapboxController, IRankedBattlesController, IResourceWellController, IWinbackController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, ICollectionsSystemController, IEpicBattleMetaGameController, IFunRandomController, IMapboxController, IRankedBattlesController, IResourceWellController, IWinbackController, IEventBattlesController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersDataProvider
@@ -83,6 +84,7 @@ from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 from gui.impl.lobby.comp7.comp7_quest_helpers import isComp7Quest, getComp7QuestType
 from comp7_common import Comp7QuestType, COMP7_TOKEN_WEEKLY_REWARD_ID
+from soft_exception import SoftException
 if typing.TYPE_CHECKING:
     from typing import Any, Dict, List, Tuple, Callable, Optional
     from account_helpers.offers.events_data import OfferEventData, OfferGift
@@ -132,7 +134,9 @@ def _extendCustomizationData(newData, extendable, htmlTplPostfix):
             else:
                 operation = None
             if operation is not None:
-                guiItemType, itemUserName = getCustomizationItemData(customizationItem[b'id'], custType)
+                guiItemType, itemUserName, tags = getCustomizationItemData(customizationItem[b'id'], custType)
+                if b'hiddenInUI' in tags:
+                    continue
                 custValue = abs(custValue)
                 if custValue > 1:
                     extendable.append(backport.text(R.strings.system_messages.customization.dyn(operation).dyn((b'{}Value').format(guiItemType))(), itemUserName, custValue))
@@ -599,12 +603,17 @@ class Comp7BattleQuestsFormatter(object):
 class BattleResultsFormatter(WaitItemsSyncFormatter):
     __rankedController = dependency.descriptor(IRankedBattlesController)
     __battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
+    __gameEventController = dependency.descriptor(IEventBattlesController)
+    __eventsCache = dependency.descriptor(IEventsCache)
     _battleResultKeys = {-1: b'battleDefeatResult', 
        0: b'battleDrawGameResult', 
        1: b'battleVictoryResult'}
     __BRResultKeys = {-1: b'battleRoyaleDefeatResult', 
        0: b'battleRoyaleDefeatResult', 
        1: b'battleRoyaleVictoryResult'}
+    __WTEventResultKeys = {-1: b'WTEventBattleResult', 
+       0: b'WTEventBattleResult', 
+       1: b'WTEventBattleResult'}
     __MTResultKeys = {SCENARIO_RESULT.LOSE: b'mapsTrainingDefeatResult', 
        SCENARIO_RESULT.WIN: b'mapsTrainingVictoryResult'}
     __COMP7SeasonResultsKeys = {SCENARIO_RESULT.LOSE: b'comp7SeasonBattleDefeatResult', 
@@ -707,6 +716,7 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
         ctx[b'battlePassProgress'] = self.__makeBattlePassProgressionString(guiType, battleResults)
         ctx[b'lock'] = self.__makeVehicleLockString(vehicleNames, battleResults)
         ctx[b'quests'] = self.__makeQuestsAchieve(message)
+        self.__processSpecialTokens(battleResults)
         team = battleResults.get(b'team', 0)
         if guiType == ARENA_GUI_TYPE.FORT_BATTLE_2 or guiType == ARENA_GUI_TYPE.SORTIE_2:
             if battleResKey == 0:
@@ -727,6 +737,9 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
             else:
                 battleResultKeys = self.__COMP7SeasonResultsKeys
                 ctx = self.__makeComp7SeasonMsgCtx(battleResults, ctx)
+        elif guiType == ARENA_GUI_TYPE.EVENT_BATTLES:
+            self.__fillWTEventMsgCtx(battleResults, ctx)
+            battleResultKeys = self.__WTEventResultKeys
         else:
             battleResultKeys = self._battleResultKeys
         templateName = battleResultKeys[battleResKey]
@@ -743,6 +756,57 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
         ctx[b'mtRewards'] = self.__makeMapsTrainingRewardsMsg(battleResults)
         ctx[b'scenario'] = backport.text(R.strings.maps_training.scenarioTooltip.scenario.title()).format(num=SCENARIO_INDEXES[(team, vehicleClass)], vehicleType=vehTypeStr)
         return ctx
+
+    def __fillWTEventMsgCtx(self, battleResults, ctx):
+        strRes = R.strings.event.notifications.battleResults
+        mainResultName = b'victory' if battleResults.get(b'isWinner', -1) == 1 else b'defeat'
+        ctx[b'mainResultName'] = backport.text(strRes.dyn(mainResultName).header())
+        ctx[b'eventName'] = backport.text(strRes.eventName())
+        team = battleResults.get(b'team', -1)
+        if team == WT_TEAMS.BOSS_TEAM:
+            teamName = backport.text(strRes.team.boss())
+        else:
+            if team == WT_TEAMS.HUNTERS_TEAM:
+                teamName = backport.text(strRes.team.hunters())
+            else:
+                teamName = b''
+                _logger.warning(b'Unexpected team type: %r', team)
+            ctx[b'teamName'] = teamName
+            ctx[b'quests'] = b''
+            completedQuestIDs = battleResults.get(b'completedQuestIDs', ())
+            completedQuests = self.__eventsCache.getQuests(lambda q: q.getID() in completedQuestIDs)
+            if completedQuests:
+                ctx[b'quests'] = b'<br>%s' % text_styles.main(backport.text(strRes.questCompleted(), questsCompleted=str(len(completedQuests))))
+            ctx[b'stamps'] = b''
+            tokens = battleResults.get(b'tokens', {})
+            stampToken = self.__gameEventController.getConfig().stamp
+            if stampToken in tokens:
+                earnedCount = tokens[stampToken].get(b'count', 0)
+                if earnedCount > 0:
+                    ctx[b'stamps'] = b'<br>%s' % text_styles.main(backport.text(strRes.stamp(), count=text_styles.expText(earnedCount)))
+            ctx[b'lootboxes'] = b''
+            lootboxesStrs = []
+            for tID, tVal in tokens.items():
+                if tID.startswith(LOOTBOX_TOKEN_PREFIX):
+                    lootBox = self._itemsCache.items.tokens.getLootBoxByTokenID(tID)
+                    if lootBox is not None:
+                        lootboxesStrs.append(backport.text(strRes.lootboxes.dyn(lootBox.getType())(), count=text_styles.expText(tVal.get(b'count', 0))))
+
+        if lootboxesStrs:
+            ctx[b'lootboxes'] = b'<br>%s' % text_styles.main((b'<br>').join(lootboxesStrs))
+        return
+
+    def __processSpecialTokens(self, battleResults):
+        tokens = battleResults.get(b'tokens', {})
+        ticketToken = self.__gameEventController.getConfig().ticketToken
+        if ticketToken in tokens:
+            earnedCount = tokens[ticketToken].get(b'count', 0)
+            if earnedCount > 0:
+                self.__pushTicketsEarnedMessage()
+
+    def __pushTicketsEarnedMessage(self):
+        strRes = R.strings.event.notifications.ticketToken.received
+        pushMessage(text=backport.text(strRes.body(), ticketsCount=str(self.__gameEventController.getTicketCount())), messageData={b'header': backport.text(strRes.header())}, type=SM_TYPE.WarningHeader, priority=NotificationPriorityLevel.HIGH)
 
     def __makeMapsTrainingRewardsMsg(self, battleResults):
         if not battleResults.get(b'mtCanGetRewards'):
@@ -1135,6 +1199,35 @@ class CurrencyUpdateFormatter(ServiceChannelFormatter):
         return self._CURRENCY_TO_STYLE.get(currencyCode, getStyle(currencyCode))
 
 
+class WTEventTicketTokenWithdrawnFormatter(WaitItemsSyncFormatter):
+    __gameEventCtrl = dependency.descriptor(IEventBattlesController)
+
+    @adisp_async
+    @adisp_process
+    def format(self, message, callback):
+        data = message.data
+        isSynced = yield self._waitForSyncItems()
+        if isSynced and data:
+            token = data[b'token']
+            amountDelta = data[b'amount_delta']
+            if amountDelta >= 0:
+                raise SoftException(b'Unexpected ticket amount to withdraw')
+            strRes = R.strings.event.notifications
+            config = self.__gameEventCtrl.getConfig()
+            if token == config.ticketToken:
+                text = backport.text(strRes.ticketToken.withdrawn.body(), ticketsCount=str(self.__gameEventCtrl.getTicketCount()))
+            elif token == config.quickBossTicketToken:
+                text = backport.text(strRes.quickBossTicketToken.withdrawn.body())
+            else:
+                raise SoftException(b'Unexpected ticket token')
+            xmlKey = b'WTEventTicketTokenWithdrawn'
+            formatted = g_settings.msgTemplates.format(xmlKey, ctx={b'text': text})
+            callback([MessageData(formatted, self._getGuiSettings(message, xmlKey))])
+        else:
+            callback([MessageData(None, None)])
+        return
+
+
 class GiftReceivedFormatter(ServiceChannelFormatter):
     __handlers = {b'money': (
                 b'_GiftReceivedFormatter__formatMoneyGiftMsg',
@@ -1264,6 +1357,7 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
     __DESTROY_PAIR_MODIFICATIONS_MSG_TEMPLATE = b'DestroyAllPairsModifications'
     __goodiesCache = dependency.descriptor(IGoodiesCache)
     __eventsCache = dependency.descriptor(IEventsCache)
+    __gameEventCtrl = dependency.descriptor(IEventBattlesController)
 
     @adisp_async
     @adisp_process
@@ -1966,14 +2060,21 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
                 offerTokenResult = _processOfferToken(tokenName, count)
                 if offerTokenResult:
                     tokenStrings.append(offerTokenResult)
-            if tokenName == constants.PERSONAL_MISSION_FREE_TOKEN_NAME:
-                awardListcount += count
-            else:
-                quests = self.__eventsCache.getQuestsByTokenRequirement(tokenName)
-                for quest in quests:
-                    text = quest.getNotificationText().format(count=count)
-                    if text:
-                        tokenStrings.append(g_settings.htmlTemplates.format(b'questTokenInvoiceReceived', {b'text': text}))
+                if tokenName == constants.PERSONAL_MISSION_FREE_TOKEN_NAME:
+                    awardListcount += count
+                else:
+                    quests = self.__eventsCache.getQuestsByTokenRequirement(tokenName)
+                    for quest in quests:
+                        text = quest.getNotificationText().format(count=count)
+                        if text:
+                            tokenStrings.append(g_settings.htmlTemplates.format(b'questTokenInvoiceReceived', {b'text': text}))
+
+            if tokenName.startswith(LOOTBOX_TOKEN_PREFIX):
+                lootBox = self._itemsCache.items.tokens.getLootBoxByTokenID(tokenName)
+                if lootBox is not None and lootBox.getType() in EventLootBoxes.ALL() and tokenData.get(b'count', 0) > 0:
+                    tokenStrings.append(g_settings.htmlTemplates.format(b'lootboxesReceived', {b'amount': tokenData[b'count']}))
+            if tokenName == self.__gameEventCtrl.getConfig().ticketToken:
+                tokenStrings.append(g_settings.htmlTemplates.format(b'ticketsReceived', {b'amount': tokenData[b'count']}))
 
         if awardListcount != 0:
             template = b'awardListAccruedInvoiceReceived' if awardListcount > 0 else b'awardListDebitedInvoiceReceived'
@@ -4798,7 +4899,7 @@ class CustomizationProgressionChangedFormatter(WaitItemsSyncFormatter):
         isSynced = yield self._waitForSyncItems()
         if isSynced and message.data and self.REQUIRED_KEYS == set(message.data.keys()):
             data = message.data
-            guiItemType, itemUserName = getCustomizationItemData(data[b'id'], data[b'custType'])
+            guiItemType, itemUserName, _ = getCustomizationItemData(data[b'id'], data[b'custType'])
             prevLevel = data[b'prevLevel']
             actualLevel = data[b'actualLevel']
             if actualLevel == 0:

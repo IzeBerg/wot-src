@@ -392,6 +392,7 @@ class SYSTEM_MESSAGES(object):
     ADD_TANKMAN_SKILL_INVALID_VEHICLE = '#system_messages:add_tankman_skill/invalid_vehicle'
     ADD_TANKMAN_SKILL_VEHICLE_NEED_REPAIR = '#system_messages:add_tankman_skill/vehicle_need_repair'
     ADD_TANKMAN_SKILL_VEHICLE_LOCKED = '#system_messages:add_tankman_skill/vehicle_locked'
+    ADD_TANKMAN_SKILL_CREW_SKILLS_LOCKED = '#system_messages:add_tankman_skill/crew_skills_locked'
     LEARN_TANKMAN_FREE_SKILL_SUCCESS = '#system_messages:learn_tankman_free_skill/success'
     LEARN_TANKMAN_FREE_SKILL_SERVER_ERROR = '#system_messages:learn_tankman_free_skill/server_error'
     LEARN_TANKMAN_FREE_SKILL_INVALID_VEHICLE = '#system_messages:learn_tankman_free_skill/invalid_vehicle'
@@ -1878,6 +1879,7 @@ class SYSTEM_MESSAGES(object):
      ADD_TANKMAN_SKILL_INVALID_VEHICLE,
      ADD_TANKMAN_SKILL_VEHICLE_NEED_REPAIR,
      ADD_TANKMAN_SKILL_VEHICLE_LOCKED,
+     ADD_TANKMAN_SKILL_CREW_SKILLS_LOCKED,
      LEARN_TANKMAN_FREE_SKILL_SUCCESS,
      LEARN_TANKMAN_FREE_SKILL_SERVER_ERROR,
      LEARN_TANKMAN_FREE_SKILL_INVALID_VEHICLE,

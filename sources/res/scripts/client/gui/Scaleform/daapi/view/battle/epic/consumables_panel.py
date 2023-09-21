@@ -1,3 +1,4 @@
+from constants import EQUIPMENT_STAGES
 from ReservesEvents import randomReservesEvents
 from gui.Scaleform.daapi.view.battle.shared.consumables_panel import ConsumablesPanel
 from gui.Scaleform.genConsts.CONSUMABLES_PANEL_SETTINGS import CONSUMABLES_PANEL_SETTINGS
@@ -95,7 +96,8 @@ class EpicBattleConsumablesPanel(ConsumablesPanel):
             super(EpicBattleConsumablesPanel, self)._onEquipmentAdded(intCD, item)
 
     def __addEquipmentSlotS(self, index, bwKey, sfKey, quantity, timeRemaining, reloadingTime, iconPath, tooltipText, animation):
-        self.as_addEquipmentSlotS(idx=index, keyCode=bwKey, sfKeyCode=sfKey, quantity=quantity, timeRemaining=timeRemaining, reloadingTime=reloadingTime, iconPath=iconPath, tooltipText=tooltipText, animation=animation)
+        self.as_addEquipmentSlotS(idx=index, keyCode=bwKey, sfKeyCode=sfKey, tag=None, quantity=quantity, timeRemaining=timeRemaining, reloadingTime=reloadingTime, iconPath=iconPath, tooltipText=tooltipText, animation=animation, stage=EQUIPMENT_STAGES.READY)
+        return
 
     def _onSlotBlocked(self, slotId):
         index = self._getSlotIndex(slotId)

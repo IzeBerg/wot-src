@@ -166,5 +166,13 @@ package net.wg.gui.components.crosshairPanel
       public function set scaleWidgetEnabled(param1:Boolean) : void
       {
       }
+      
+      public function showPlasmaIndicator(param1:Number, param2:Boolean, param3:String) : void
+      {
+      }
+      
+      public function setExplosiveShotVisible(param1:Boolean) : void
+      {
+      }
    }
 }

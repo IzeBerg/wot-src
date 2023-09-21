@@ -48,9 +48,9 @@ package net.wg.gui.battle.views.postmortemPanel
       
       protected var _deadReason:String = "";
       
-      private var _playerInfo:String = "";
-      
       protected var _showVehiclePanel:Boolean = false;
+      
+      private var _playerInfo:String = "";
       
       private var _vehicleLevel:String = "";
       
@@ -157,6 +157,23 @@ package net.wg.gui.battle.views.postmortemPanel
          invalidate(INVALID_VEHICLE_PANEL);
       }
       
+      override protected function onDispose() : void
+      {
+         this.playerInfoTF = null;
+         this.deadReasonTF = null;
+         this.vehiclePanel.dispose();
+         this.vehiclePanel = null;
+         this.deadReasonBG = null;
+         this.nicknameKillerBG = null;
+         if(this._userName != null)
+         {
+            this._userName.removeEventListener(Event.CHANGE,this.updateDeadReason);
+            this._userName.dispose();
+            this._userName = null;
+         }
+         super.onDispose();
+      }
+      
       public function setPlayerInfo(param1:String) : void
       {
          this._playerInfo = param1;
@@ -213,23 +230,6 @@ package net.wg.gui.battle.views.postmortemPanel
       private function updateDeadReason(param1:Event) : void
       {
          this.updateElementsPosition();
-      }
-      
-      override protected function onDispose() : void
-      {
-         this.playerInfoTF = null;
-         this.deadReasonTF = null;
-         this.vehiclePanel.dispose();
-         this.vehiclePanel = null;
-         this.deadReasonBG = null;
-         this.nicknameKillerBG = null;
-         if(this._userName != null)
-         {
-            this._userName.removeEventListener(Event.CHANGE,this.updateDeadReason);
-            this._userName.dispose();
-            this._userName = null;
-         }
-         super.onDispose();
       }
    }
 }

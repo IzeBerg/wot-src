@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Properties>
+		<counter>
+			<Type>INT16</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</counter>
+		<max>
+			<Type>INT16</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</max>
+		<isBattleStage>
+			<Type>BOOL</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</isBattleStage>
+	</Properties>
+	<ofEntity>
+		<ArenaInfo/>
+	</ofEntity>
+	<DefaultKeyName>publicCounter</DefaultKeyName>
+</root>
