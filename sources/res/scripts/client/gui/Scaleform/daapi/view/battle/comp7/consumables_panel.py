@@ -83,7 +83,7 @@ class Comp7ConsumablesPanel(ConsumablesPanel):
 
     def _updateEquipmentGlow(self, idx, item):
         if self.__isRoleEquipment(item) or self.__isPoiEquipment(item):
-            if item.becomeReady:
+            if item.becomeAvailable:
                 self.as_setGlowS(idx, glowID=CONSUMABLES_PANEL_SETTINGS.GLOW_ID_GREEN)
         else:
             super(Comp7ConsumablesPanel, self)._updateEquipmentGlow(idx, item)
