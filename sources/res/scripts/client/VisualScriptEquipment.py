@@ -53,7 +53,7 @@ class VisualScriptEquipment(DynamicScriptComponent):
         else:
             self._context.onSetErrorState(self.errorState)
             state = getVisualScriptEquipmentState(self.equipmentState)
-            self.__update(state)
+            self.__update(state, force=True)
             return
 
     def set_equipmentState(self, _=None):
@@ -69,12 +69,13 @@ class VisualScriptEquipment(DynamicScriptComponent):
         state = getVisualScriptEquipmentState(self.equipmentState)
         self.__update(state)
 
-    def __update(self, state):
+    def __update(self, state, force=False):
         eqCtrl = self.entity.guiSessionProvider.shared.equipments
         if not eqCtrl.hasEquipment(self.compactDescr):
             return
         eq = eqCtrl.getEquipment(self.compactDescr)
         wasLocked = eq.isLocked()
-        if wasLocked != state.locked:
+        if wasLocked != state.locked or force:
             eq.setLocked(state.locked)
+            eq.setQuantity(state.quantity)
             eqCtrl.onEquipmentUpdated(self.compactDescr, eq)
