@@ -42,7 +42,7 @@ class Comp7PlayerMessages(PlayerMessages):
         if item.getStage() == EQUIPMENT_STAGES.ACTIVE and item.getPrevStage() != EQUIPMENT_STAGES.ACTIVE:
             equipment = item.getDescriptor()
             self.sessionProvider.shared.messages.showVehicleMessage(_ROLE_EQUIPMENT_APPLIED, {'name': equipment.userString})
-        if item.becomeReady and item.becomeAvailable:
+        if item.becomeAvailable:
             equipment = item.getDescriptor()
             self.sessionProvider.shared.messages.showVehicleMessage(_ROLE_EQUIPMENT_READY, {'equipment': equipment.userString})
 

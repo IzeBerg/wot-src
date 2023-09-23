@@ -292,6 +292,9 @@ class _EquipmentItem(object):
     def getDescriptor(self):
         return self._descriptor
 
+    def setQuantity(self, quantity):
+        self._quantity = quantity
+
     def getQuantity(self):
         if not self._isLocked:
             return self._quantity
