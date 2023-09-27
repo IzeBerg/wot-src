@@ -26,6 +26,7 @@ class VisualScriptEquipment(DynamicScriptComponent):
         self._vsPlan.setContext(self._context)
         self._vsPlan.start()
         self.set_equipmentState()
+        self.set_errorState()
 
     def canActivate(self):
         if self._context is not None:
