@@ -400,6 +400,10 @@
 					5 5 0.000000 0.000000
 					<!--BW_String-->
 				</france:F16_AMX_13_75>
+				<france:F16_AMX_13_75_FL>
+					5 5 0.000000 0.000000
+					<!--BW_String-->
+				</france:F16_AMX_13_75_FL>
 				<france:F17_AMX_13_90>
 					2.6 2.6 0.000000 0.000000
 					<!--BW_String-->
@@ -656,6 +660,10 @@
 					2.4 2.4 0.000000 0.000000
 					<!--BW_String-->
 				</germany:G04_PzVI_Tiger_I>
+				<germany:G04_PzVI_Tiger_I_FL>
+					2.4 2.4 0.000000 0.000000
+					<!--BW_String-->
+				</germany:G04_PzVI_Tiger_I_FL>
 				<germany:G04_PzVI_Tiger_IA>
 					5 5 0.000000 0.000000
 					<!--BW_String-->
@@ -2337,6 +2345,10 @@
 					5.5 5.5 0.000000 0.000000
 					<!--BW_String-->
 				</usa:A64_T25_AT>
+				<usa:A64_T25_AT_FL>
+					5.5 5.5 0.000000 0.000000
+					<!--BW_String-->
+				</usa:A64_T25_AT_FL>
 				<usa:A66_M103>
 					5 5 0.000000 0.000000
 					<!--BW_String-->
@@ -2829,6 +2841,10 @@
 					4.4 4.4 0.000000 0.000000
 					<!--BW_String-->
 				</ussr:R23_T-43>
+				<ussr:R23_T-43_FL>
+					4.4 4.4 0.000000 0.000000
+					<!--BW_String-->
+				</ussr:R23_T-43_FL>
 				<ussr:R24_SU-76>
 					5 5 0.000000 0.000000
 					<!--BW_String-->
@@ -3477,6 +3493,10 @@
 					2.06757 2.06757 1.3 2.34805
 					<!--BW_String-->
 				</france:F16_AMX_13_75>
+				<france:F16_AMX_13_75_FL>
+					2.06757 2.06757 1.3 2.34805
+					<!--BW_String-->
+				</france:F16_AMX_13_75_FL>
 				<france:F17_AMX_13_90>
 					1.3 1.3 4.60649 2.67922
 					<!--BW_String-->
@@ -3709,6 +3729,10 @@
 					3.8 3.8 0.7 0.000000
 					<!--BW_String-->
 				</germany:G04_PzVI_Tiger_I>
+				<germany:G04_PzVI_Tiger_I_FL>
+					3.8 3.8 0.7 0.000000
+					<!--BW_String-->
+				</germany:G04_PzVI_Tiger_I_FL>
 				<germany:G04_PzVI_Tiger_IA>
 					3.8 3.8 0.7 0.000000
 					<!--BW_String-->
@@ -5318,6 +5342,10 @@
 					5.10541 5.10541 5.00519 0.4
 					<!--BW_String-->
 				</usa:A64_T25_AT>
+				<usa:A64_T25_AT_FL>
+					5.10541 5.10541 5.00519 0.4
+					<!--BW_String-->
+				</usa:A64_T25_AT_FL>
 				<usa:A66_M103>
 					2.99189 2.99189 2.1987 2.1987
 					<!--BW_String-->
@@ -5818,6 +5846,10 @@
 					4.4 4.4 3.9 2.4
 					<!--BW_String-->
 				</ussr:R23_T-43>
+				<ussr:R23_T-43_FL>
+					4.4 4.4 3.9 2.4
+					<!--BW_String-->
+				</ussr:R23_T-43_FL>
 				<ussr:R24_SU-76>
 					2.73784 2.73784 2.94805 1.56623
 					<!--BW_String-->
@@ -11531,6 +11563,149 @@
 		</camouflage>
 	</itemGroup>
 	<itemGroup>
+		<userString>#vehicle_customization:camouflage/opaque</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>MT camouflages 50g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<camouflage>
+			<id>15951</id>
+			<texture>vehicles/russian/Camouflage/day_of_the_dead_2023_1.dds</texture>
+			<userString>#vehicle_customization:camouflage/day_of_the_dead_2023_1/label</userString>
+			<description>#vehicle_customization:camouflage/day_of_the_dead_2023_1/description</description>
+			<tags>hiddenInUI styleOnly fullRGB</tags>
+			<scales>
+				1.2 1 0.7
+				<!--BW_String-->
+			</scales>
+			<invisibilityFactor>1</invisibilityFactor>
+			<palettes>
+				<palette>
+					<c0>255 0 0 255</c0>
+					<c1>0 255 0 255</c1>
+					<c2>0 0 255 255</c2>
+					<c3>0 0 0 255</c3>
+				</palette>
+			</palettes>
+			<rotation>
+				<HULL>-0.401426</HULL>
+				<TURRET>-0.401426</TURRET>
+				<GUN>-0.401426</GUN>
+			</rotation>
+			<tilingSettings>
+				<type>relativewithfactor</type>
+				<factor>3 3</factor>
+				<offset>
+					0.05 -0.13
+					<!--BW_String-->
+				</offset>
+			</tilingSettings>
+		</camouflage>
+		<camouflage>
+			<id>15952</id>
+			<texture>vehicles/russian/Camouflage/day_of_the_dead_2023_2.dds</texture>
+			<userString>#vehicle_customization:camouflage/day_of_the_dead_2023_2/label</userString>
+			<description>#vehicle_customization:camouflage/day_of_the_dead_2023_2/description</description>
+			<tags>hiddenInUI styleOnly fullRGB</tags>
+			<scales>
+				1.2 1 0.7
+				<!--BW_String-->
+			</scales>
+			<invisibilityFactor>1</invisibilityFactor>
+			<palettes>
+				<palette>
+					<c0>255 0 0 255</c0>
+					<c1>0 255 0 255</c1>
+					<c2>0 0 255 255</c2>
+					<c3>0 0 0 255</c3>
+				</palette>
+			</palettes>
+			<rotation>
+				<HULL>-0.401426</HULL>
+				<TURRET>-0.401426</TURRET>
+				<GUN>-0.401426</GUN>
+			</rotation>
+			<tilingSettings>
+				<type>relativewithfactor</type>
+				<factor>3 3</factor>
+				<offset>
+					0.05 -0.13
+					<!--BW_String-->
+				</offset>
+			</tilingSettings>
+		</camouflage>
+		<camouflage>
+			<id>15953</id>
+			<texture>vehicles/russian/Camouflage/day_of_the_dead_2023_3.dds</texture>
+			<userString>#vehicle_customization:camouflage/day_of_the_dead_2023_3/label</userString>
+			<description>#vehicle_customization:camouflage/day_of_the_dead_2023_3/description</description>
+			<tags>hiddenInUI styleOnly fullRGB</tags>
+			<scales>
+				1.2 1 0.7
+				<!--BW_String-->
+			</scales>
+			<invisibilityFactor>1</invisibilityFactor>
+			<palettes>
+				<palette>
+					<c0>255 0 0 255</c0>
+					<c1>0 255 0 255</c1>
+					<c2>0 0 255 255</c2>
+					<c3>0 0 0 255</c3>
+				</palette>
+			</palettes>
+			<rotation>
+				<HULL>-0.401426</HULL>
+				<TURRET>-0.401426</TURRET>
+				<GUN>-0.401426</GUN>
+			</rotation>
+			<tilingSettings>
+				<type>relativewithfactor</type>
+				<factor>3 3</factor>
+				<offset>
+					0.05 -0.13
+					<!--BW_String-->
+				</offset>
+			</tilingSettings>
+		</camouflage>
+		<camouflage>
+			<id>15954</id>
+			<texture>vehicles/russian/Camouflage/day_of_the_dead_2023_4.dds</texture>
+			<userString>#vehicle_customization:camouflage/day_of_the_dead_2023_4/label</userString>
+			<description>#vehicle_customization:camouflage/day_of_the_dead_2023_4/description</description>
+			<tags>hiddenInUI styleOnly fullRGB</tags>
+			<scales>
+				1.2 1 0.7
+				<!--BW_String-->
+			</scales>
+			<invisibilityFactor>1</invisibilityFactor>
+			<palettes>
+				<palette>
+					<c0>255 0 0 255</c0>
+					<c1>0 255 0 255</c1>
+					<c2>0 0 255 255</c2>
+					<c3>0 0 0 255</c3>
+				</palette>
+			</palettes>
+			<rotation>
+				<HULL>-0.401426</HULL>
+				<TURRET>-0.401426</TURRET>
+				<GUN>-0.401426</GUN>
+			</rotation>
+			<tilingSettings>
+				<type>relativewithfactor</type>
+				<factor>3 3</factor>
+				<offset>
+					0.05 -0.13
+					<!--BW_String-->
+				</offset>
+			</tilingSettings>
+		</camouflage>
+	</itemGroup>
+	<itemGroup>
 		<season>ALL</season>
 		<userString>#vehicle_customization:camouflage/opaque</userString>
 		<historical>1</historical>
@@ -11628,6 +11803,53 @@
 				</factor>
 				<offset>
 					2.97 3.65
+					<!--BW_String-->
+				</offset>
+			</tilingSettings>
+		</camouflage>
+	</itemGroup>
+	<itemGroup>
+		<season>ALL</season>
+		<userString>#vehicle_customization:camouflage/opaque</userString>
+		<historical>1</historical>
+		<priceGroup>MT camouflages 50g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<camouflage>
+			<id>15991</id>
+			<texture>vehicles/russian/Camouflage/hound.dds</texture>
+			<userString>#vehicle_customization:camouflage/hound/label</userString>
+			<description>#vehicle_customization:camouflage/hound/description</description>
+			<tags>fullRGB hiddenInUI styleOnly</tags>
+			<invisibilityFactor>1</invisibilityFactor>
+			<scales>
+				1.2 1 0.7
+				<!--BW_String-->
+			</scales>
+			<palettes>
+				<palette>
+					<c0>255 0 0 255</c0>
+					<c1>0 255 0 255</c1>
+					<c2>0 0 255 255</c2>
+					<c3>0 0 0 255</c3>
+				</palette>
+			</palettes>
+			<rotation>
+				<HULL>-0.139626</HULL>
+				<TURRET>-0.139626</TURRET>
+				<GUN>-0.139626</GUN>
+			</rotation>
+			<tilingSettings>
+				<type>relativewithfactor</type>
+				<factor>
+					1.6 1.6
+					<!--BW_String-->
+				</factor>
+				<offset>
+					-0.48 -0.14
 					<!--BW_String-->
 				</offset>
 			</tilingSettings>

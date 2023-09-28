@@ -73,17 +73,20 @@ class RecruitSourceID(object):
     TWITCH_42 = 'twitch42'
     TWITCH_43 = 'twitch43'
     TWITCH_44 = 'twitch44'
+    TWITCH_45 = 'twitch45'
     BUFFON = 'buffon'
     LOOTBOX = 'lootbox'
     COMMANDER_MARINA = 'commander_marina'
     COMMANDER_PATRICK = 'commander_patrick'
+    TWITCH_GIRL = 'twitch_girl'
+    TWITCH_GUY = 'twitch_guy'
     EVENTS = (
      TWITCH_0, TWITCH_1, TWITCH_2, TWITCH_3, TWITCH_4, TWITCH_5, TWITCH_6, TWITCH_7, TWITCH_8, TWITCH_9,
      COMMANDER_MARINA, COMMANDER_PATRICK, TWITCH_10, TWITCH_11, TWITCH_12, TWITCH_13, TWITCH_14, TWITCH_15,
      TWITCH_16, TWITCH_17, TWITCH_18, TWITCH_19, TWITCH_20, TWITCH_21, TWITCH_22, TWITCH_23, TWITCH_24,
      TWITCH_25, TWITCH_26, TWITCH_27, TWITCH_28, TWITCH_29, TWITCH_30, TWITCH_31, TWITCH_32, TWITCH_33,
      TWITCH_34, TWITCH_35, TWITCH_36, TWITCH_37, TWITCH_38, TWITCH_39, TWITCH_40, TWITCH_41, TWITCH_42,
-     TWITCH_43, TWITCH_44)
+     TWITCH_43, TWITCH_44, TWITCH_45, TWITCH_GIRL, TWITCH_GUY)
 
 
 _NEW_SKILL = 'new_skill'
@@ -151,6 +154,9 @@ class _BaseRecruitInfo(object):
     def getRoleLevel(self):
         return self._roleLevel
 
+    def getFreeXP(self):
+        return self._freeXP
+
     def getEarnedSkills(self, multiplyNew=False):
         if self._hasNewSkill:
             if multiplyNew:
@@ -203,6 +209,10 @@ class _BaseRecruitInfo(object):
     def getRoles(self):
         return self._roles
 
+    @property
+    def defaultRole(self):
+        return self._roles[0]
+
     def getNations(self):
         return self._nations
 
@@ -229,9 +239,12 @@ class _BaseRecruitInfo(object):
     def isFemale(self):
         return self._isFemale
 
+    def getFakeTankman(self):
+        return Tankman.Tankman(self.__makeFakeDescriptor().makeCompactDescr())
+
     def getNewSkillCount(self, onlyFull=False):
         if self._hasNewSkill:
-            tankman = Tankman.Tankman(self.__makeFakeDescriptor().makeCompactDescr())
+            tankman = self.getFakeTankman()
             count, lastSkillLevel = tankman.newSkillCount
             if onlyFull and lastSkillLevel != MAX_SKILL_LEVEL:
                 count = max(count - 1, 0)
@@ -260,12 +273,36 @@ class _BaseRecruitInfo(object):
         tmanDescr.addXP(self._freeXP)
         return tmanDescr
 
+    def _getDefaultNation(self):
+        return INDICES.get(first(self._nations), NONE_INDEX)
+
+    @property
+    def defaultNation(self):
+        return self._getDefaultNation()
+
+    def _getNationGroup(self, nationID):
+        groups = tankmen.getNationGroups(nationID, self._isPremium)
+        group = findFirst(lambda g: g.name == self._group, groups.itervalues())
+        return group
+
+    def getSpecialVoiceTag(self):
+        nationID = self._getDefaultNation()
+        nationGroup = self._getNationGroup(nationID)
+        if nationGroup is None:
+            return
+        else:
+            for tag in nationGroup.tags:
+                if 'specialvoice' in tag.lower():
+                    return tag
+
+            return
+
 
 class _QuestRecruitInfo(_BaseRecruitInfo):
     __slots__ = ('__operationName', )
 
     def __init__(self, questID, operationName):
-        super(_QuestRecruitInfo, self).__init__(recruitID=questID, expiryTime=0, nations=NationNames, group=RecruitGroupID.WOMEN1, freeSkills=_TANKWOMAN_LEARNT_SKILLS, learntSkills=[], freeXP=0, roleLevel=_TANKWOMAN_ROLE_LEVEL, lastSkillLevel=0, firstName=_ms(QUESTS.BONUSES_ITEM_TANKWOMAN), lastName=EMPTY_STRING, roles=[], icon=_TANKWOMAN_ICON, sourceID=RecruitSourceID.TANKWOMAN, isPremium=True, isFemale=True, hasNewSkill=True)
+        super(_QuestRecruitInfo, self).__init__(recruitID=questID, expiryTime=0, nations=NationNames, group=RecruitGroupID.WOMEN1, freeSkills=_TANKWOMAN_LEARNT_SKILLS, learntSkills=[], freeXP=TankmanDescr.skillUpXpCost(1), roleLevel=_TANKWOMAN_ROLE_LEVEL, lastSkillLevel=0, firstName=_ms(QUESTS.BONUSES_ITEM_TANKWOMAN), lastName=EMPTY_STRING, roles=[], icon=_TANKWOMAN_ICON, sourceID=RecruitSourceID.TANKWOMAN, isPremium=True, isFemale=True, hasNewSkill=True)
         self.__operationName = operationName
 
     def getEventName(self):
@@ -284,6 +321,9 @@ class _QuestRecruitInfo(_BaseRecruitInfo):
         if self._hasNewSkill:
             return (1, 0)
         return (0, 0)
+
+    def _getFreeSkillsForDescr(self):
+        return _TANKWOMAN_LEARNT_SKILLS
 
 
 class _TokenRecruitInfo(_BaseRecruitInfo):
@@ -353,9 +393,6 @@ class _TokenRecruitInfo(_BaseRecruitInfo):
             self._isUnique = group is not None and group.isUnique
         return self._isUnique
 
-    def _getDefaultNation(self):
-        return INDICES.get(first(self._nations), NONE_INDEX)
-
     def _getSkillsForDescr(self):
         return [ skill for skill in self._learntSkills if skill not in self.__freeSkills ]
 
@@ -364,7 +401,7 @@ class _TokenRecruitInfo(_BaseRecruitInfo):
 
     def _getTankmanSkill(self):
         nationID = self._getDefaultNation()
-        nationGroup = self.__getNationGroup(nationID)
+        nationGroup = self._getNationGroup(nationID)
         if self.__hasTagInTankmenGroup(nationID, nationGroup, SPECIAL_CREW_TAG.SABATON):
             return Tankman.SabatonTankmanSkill
         if self.__hasTagInTankmenGroup(nationID, nationGroup, SPECIAL_CREW_TAG.OFFSPRING):
@@ -377,7 +414,7 @@ class _TokenRecruitInfo(_BaseRecruitInfo):
 
     def __parseTankmanData(self, nationID):
         empty = ([], EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, False)
-        nationGroup = self.__getNationGroup(nationID)
+        nationGroup = self._getNationGroup(nationID)
         if nationGroup is None:
             return empty
         else:
@@ -400,11 +437,6 @@ class _TokenRecruitInfo(_BaseRecruitInfo):
              nationGroup.rolesList, nationConfig.getFirstName(firstNameId),
              nationConfig.getLastName(lastNameId), nationConfig.getIcon(iconId),
              nationGroup.isFemales)
-
-    def __getNationGroup(self, nationID):
-        groups = tankmen.getNationGroups(nationID, self._isPremium)
-        group = findFirst(lambda g: g.name == self._group, groups.itervalues())
-        return group
 
     def __hasTagInTankmenGroup(self, nationID, group, tag):
         return tankmen.hasTagInTankmenGroup(nationID, group.groupID, self._isPremium, tag)

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<xmlns:xmlref>http://bwt/xmlref</xmlns:xmlref>
 	<R04_T-34>
 		<id>0</id>
 		<userString>#ussr_vehicles:T-34</userString>
@@ -2213,6 +2212,21 @@
 		<tags>heavyTank HD heavyTank1 role_HT_break sinai improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user</tags>
 		<level>8</level>
 	</R188_Object_259A_CN>
+	<R196_Object_452K>
+		<id>218</id>
+		<userString>#ussr_vehicles:R196_Object_452K</userString>
+		<description>#ussr_vehicles:R196_Object_452K_descr</description>
+		<shortUserString>#ussr_vehicles:R196_Object_452K_short</shortUserString>
+		<shortDescriptionSpecial>#ussr_vehicles:R196_Object_452K_short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#ussr_vehicles:R196_Object_452K_long_special</longDescriptionSpecial>
+		<price>
+			100
+			<gold/>
+		</price>
+		<notInShop>true</notInShop>
+		<tags>heavyTank role_HT_assault HD improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user special earn_crystals secret testTank</tags>
+		<level>10</level>
+	</R196_Object_452K>
 	<R159_SU_130PM_DR>
 		<id>109</id>
 		<userString>#ussr_vehicles:R159_SU_130PM_DR</userString>
@@ -2338,4 +2352,64 @@
 		<tags>mediumTank role_MT_sniper HD improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user earn_crystals secret testTank</tags>
 		<level>9</level>
 	</R173_K_91_2_122>
+	<R23_T-43_FL>
+		<id>116</id>
+		<userString>#ussr_vehicles:T-43_FL</userString>
+		<description>#ussr_vehicles:T-43_descr</description>
+		<shortDescriptionSpecial>#ussr_vehicles:T-43_FL_short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#ussr_vehicles:T-43_FL_long_special</longDescriptionSpecial>
+		<price>
+			100
+			<gold/>
+		</price>
+		<notInShop>true</notInShop>
+		<cannotBeBought>true</cannotBeBought>
+		<tags>mediumTank epic_battles role_MT_universal HD improvedVentilation_class2_user tankRammer_class2_user extraHealthReserve_class2_user antifragmentationLining_medium_user private</tags>
+		<level>7</level>
+	</R23_T-43_FL>
+	<R180_Object_274_A_MT_BF>
+		<id>127</id>
+		<userString>#ussr_vehicles:R180_Object_274_A_MT_BF</userString>
+		<description>#ussr_vehicles:R180_Object_274_A_MT_BF_descr</description>
+		<shortUserString>#ussr_vehicles:R180_Object_274_A_MT_BF_short</shortUserString>
+		<shortDescriptionSpecial>#ussr_vehicles:R180_Object_274_A_MT_BF_short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#ussr_vehicles:R180_Object_274_A_MT_BF_long_special</longDescriptionSpecial>
+		<price>
+			11000
+			<gold/>
+		</price>
+		<notInShop>true</notInShop>
+		<tags>mediumTank role_MT_universal HD mediumTank3 improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user lockOutfit</tags>
+		<level>8</level>
+	</R180_Object_274_A_MT_BF>
+	<R123_Kirovets_1_HW>
+		<id>146</id>
+		<userString>#ussr_vehicles:R123_Kirovets_1</userString>
+		<description>#ussr_vehicles:R123_Kirovets_1_descr</description>
+		<shortUserString>#ussr_vehicles:R123_Kirovets_1_short</shortUserString>
+		<shortDescriptionSpecial>#ussr_vehicles:R123_Kirovets_1_short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#ussr_vehicles:R123_Kirovets_1_long_special</longDescriptionSpecial>
+		<price>
+			11000
+			<gold/>
+		</price>
+		<notInShop>true</notInShop>
+		<tags>heavyTank role_HT_break HD sinai improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user event_battles cannot_be_sold lockOutfit lockCrew secret lockCrewSkills restoreWithStyle</tags>
+		<level>8</level>
+	</R123_Kirovets_1_HW>
+	<R159_SU_130PM_DR_HW>
+		<id>196</id>
+		<userString>#ussr_vehicles:R159_SU_130PM_DR</userString>
+		<description>#ussr_vehicles:R159_SU_130PM_DR_descr</description>
+		<shortUserString>#ussr_vehicles:R159_SU_130PM_DR_short</shortUserString>
+		<shortDescriptionSpecial>#ussr_vehicles:R159_SU_130PM_DR_short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#ussr_vehicles:R159_SU_130PM_DR_long_special</longDescriptionSpecial>
+		<price>
+			11000
+			<gold/>
+		</price>
+		<notInShop>true</notInShop>
+		<tags>AT-SPG role_ATSPG_sniper HD mediumAT-SPG AT-SPG1 tankRammer_class1_user extraHealthReserve_class1_user antifragmentationLining_medium_user event_battles cannot_be_sold lockOutfit lockCrew secret lockCrewSkills restoreWithStyle</tags>
+		<level>8</level>
+	</R159_SU_130PM_DR_HW>
 </root>

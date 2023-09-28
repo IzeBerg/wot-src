@@ -196,11 +196,6 @@
 			<filter>max_50_battles</filter>
 		</tip>
 		<tip>
-			<id>tip6</id>
-			<status>payAttention</status>
-			<filter>from_100_battles</filter>
-		</tip>
-		<tip>
 			<id>tip9</id>
 			<status>payAttention</status>
 			<filter>only_SPG</filter>
@@ -227,14 +222,14 @@
 			<filter>from_50_to_500_battles</filter>
 		</tip>
 		<tip>
+			<id>tip21</id>
+			<status>payAttention</status>
+			<group>economics</group>
+		</tip>
+		<tip>
 			<id>tip23</id>
 			<status>payAttention</status>
 			<filter>from_200_battles</filter>
-		</tip>
-		<tip>
-			<id>tip25</id>
-			<status>payAttention</status>
-			<filter>from_151_battles</filter>
 		</tip>
 		<tip>
 			<id>tip28</id>
@@ -472,12 +467,6 @@
 			<filter>max_500_battles</filter>
 		</tip>
 		<tip>
-			<id>tip91</id>
-			<status>payAttention</status>
-			<group>economics</group>
-			<filter>max_100_battles</filter>
-		</tip>
-		<tip>
 			<id>tip92</id>
 			<status>payAttention</status>
 			<group>crew</group>
@@ -507,18 +496,6 @@
 			<filter>from_200_battles</filter>
 		</tip>
 		<tip>
-			<id>tip100</id>
-			<status>payAttention</status>
-			<group>crew</group>
-			<filter>max_500_battles</filter>
-		</tip>
-		<tip>
-			<id>tip103</id>
-			<status>payAttention</status>
-			<group>crew</group>
-			<filter>max_500_battles</filter>
-		</tip>
-		<tip>
 			<id>tip106</id>
 			<status>payAttention</status>
 			<filter>from_100_battles</filter>
@@ -545,12 +522,6 @@
 			<group>security</group>
 		</tip>
 		<tip>
-			<id>tip115</id>
-			<status>followTheRules</status>
-			<group>rules</group>
-			<filter>from_100_battles</filter>
-		</tip>
-		<tip>
 			<id>tip116</id>
 			<status>security</status>
 			<group>security</group>
@@ -559,12 +530,6 @@
 			<id>tip117</id>
 			<status>security</status>
 			<group>security</group>
-		</tip>
-		<tip>
-			<id>tip118</id>
-			<status>followTheRules</status>
-			<group>rules</group>
-			<filter>from_100_battles</filter>
 		</tip>
 		<tip>
 			<id>tip119</id>
@@ -693,12 +658,6 @@
 			<filter>from_100_battles</filter>
 		</tip>
 		<tip>
-			<id>tip143</id>
-			<status>followTheRules</status>
-			<group>rules</group>
-			<filter>from_100_battles</filter>
-		</tip>
-		<tip>
 			<id>tip144</id>
 			<status>followTheRules</status>
 			<group>rules</group>
@@ -730,12 +689,6 @@
 		</tip>
 		<tip>
 			<id>tip150</id>
-			<status>technicalAdvice</status>
-			<group>techProblems</group>
-			<filter>from_100_battles</filter>
-		</tip>
-		<tip>
-			<id>tip151</id>
 			<status>technicalAdvice</status>
 			<group>techProblems</group>
 			<filter>from_100_battles</filter>
@@ -808,11 +761,6 @@
 			<group>security</group>
 		</tip>
 		<tip>
-			<id>tip164</id>
-			<status>payAttention</status>
-			<filter>only_SPG_from_500_battles</filter>
-		</tip>
-		<tip>
 			<id>tip165</id>
 			<status>payAttention</status>
 			<filter>from_100_to_500_battles</filter>
@@ -869,18 +817,6 @@
 			<id>tip176</id>
 			<status>payAttention</status>
 			<group>security</group>
-		</tip>
-		<tip>
-			<id>tip177</id>
-			<status>followTheRules</status>
-			<group>rules</group>
-			<filter>from_100_battles</filter>
-		</tip>
-		<tip>
-			<id>tip178</id>
-			<status>followTheRules</status>
-			<group>rules</group>
-			<filter>from_100_battles</filter>
 		</tip>
 		<tip>
 			<id>tip179</id>
@@ -968,11 +904,6 @@
 			<filter>veh_post_progression_6_10_levels</filter>
 		</tip>
 		<tip>
-			<id>tip200</id>
-			<status>tip200Status</status>
-			<filter>only_trackWithinTrack_first_5_times</filter>
-		</tip>
-		<tip>
 			<id>tip201</id>
 			<status>tip200Status</status>
 		</tip>
@@ -1006,6 +937,27 @@
 			<status>flamethrowerVehicles</status>
 			<group>flamethower</group>
 			<filter>only_flamethrower_first_5_times</filter>
+		</tip>
+		<tip>
+			<id>tip31004</id>
+			<status>payAttention</status>
+			<group>all</group>
+		</tip>
+		<tip>
+			<id>tip31005</id>
+			<status>technicalAdvice</status>
+			<group>techProblems</group>
+			<filter>from_100_battles</filter>
+		</tip>
+		<tip>
+			<id>tip31006</id>
+			<status>technicalAdvice</status>
+			<group>techProblems</group>
+		</tip>
+		<tip>
+			<id>tip31007</id>
+			<status>technicalAdvice</status>
+			<group>techProblems</group>
 		</tip>
 		<tip>
 			<id>epicTip1</id>
@@ -1131,52 +1083,12 @@
 			<status>rankedStatus1</status>
 		</tip>
 		<tip>
-			<id>ranked2</id>
-			<status>rankedStatus2</status>
-		</tip>
-		<tip>
 			<id>ranked3</id>
 			<status>rankedStatus3</status>
 		</tip>
 		<tip>
-			<id>ranked4</id>
-			<status>rankedStatus4</status>
-		</tip>
-		<tip>
-			<id>ranked6</id>
-			<status>rankedStatus6</status>
-		</tip>
-		<tip>
-			<id>ranked7</id>
-			<status>rankedStatus7</status>
-			<filter>rankedYearReward_on</filter>
-		</tip>
-		<tip>
-			<id>ranked8</id>
-			<status>rankedStatus8</status>
-			<filter>rankedLeagueReward_on</filter>
-		</tip>
-		<tip>
 			<id>ranked9</id>
 			<status>rankedStatus9</status>
-		</tip>
-		<tip>
-			<id>ranked10</id>
-			<status>rankedStatus10</status>
-			<filter>rankedShop_on</filter>
-		</tip>
-		<tip>
-			<id>ranked11</id>
-			<status>rankedStatus11</status>
-		</tip>
-		<tip>
-			<id>ranked12</id>
-			<status>rankedStatus12</status>
-			<filter>rankedLB_on</filter>
-		</tip>
-		<tip>
-			<id>ranked13</id>
-			<status>rankedStatus13</status>
 		</tip>
 		<tip>
 			<id>battleRoyale0</id>
@@ -1375,6 +1287,14 @@
 		<tip>
 			<id>mapbox3</id>
 			<status>mapbox3Status</status>
+		</tip>
+		<tip>
+			<id>devMaps0</id>
+			<status>devMaps0Status</status>
+		</tip>
+		<tip>
+			<id>devMaps1</id>
+			<status>devMaps1Status</status>
 		</tip>
 	</tips>
 </root>

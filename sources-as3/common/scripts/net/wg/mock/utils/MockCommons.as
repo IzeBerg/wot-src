@@ -120,7 +120,7 @@ package net.wg.mock.utils
          return false;
       }
       
-      public function truncateTextFieldText(param1:TextField, param2:String, param3:Boolean = true, param4:Boolean = false, param5:String = "..", param6:uint = 4) : String
+      public function truncateTextFieldText(param1:TextField, param2:String, param3:Boolean = true, param4:Boolean = false, param5:String = "..") : String
       {
          return "";
       }
@@ -149,11 +149,6 @@ package net.wg.mock.utils
       
       public function addEmptyHitArea(param1:Sprite) : void
       {
-      }
-      
-      public function formatNumberToStringWithSpaces(param1:int) : String
-      {
-         return "";
       }
    }
 }

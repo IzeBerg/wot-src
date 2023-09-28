@@ -16,7 +16,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private static const IMG_ICON_BOUNDS:Rectangle = new Rectangle(1,1,160,35);
       
-      private static const EXTRA_IMAGE_POS:Object = {"telecomRent":{
+      private static const EXTRA_IMAGE_POS:Object = {"wotPlus":{
          "x":5,
          "y":16
       }};
@@ -66,10 +66,10 @@ package net.wg.gui.lobby.hangar.tcarousel
       override protected function validateLayout() : void
       {
          super.validateLayout();
-         if(extraImage.visible)
+         if(isWotPlusSlot)
          {
-            extraImage.x = EXTRA_IMAGE_POS.telecomRent.x;
-            extraImage.y = EXTRA_IMAGE_POS.telecomRent.y;
+            extraImage.x = EXTRA_IMAGE_POS.wotPlus.x;
+            extraImage.y = EXTRA_IMAGE_POS.wotPlus.y;
          }
       }
       
@@ -104,10 +104,6 @@ package net.wg.gui.lobby.hangar.tcarousel
          else
          {
             txtInfo.visible = infoImg.visible;
-         }
-         if(txtInfo.visible)
-         {
-            statsBg.visible = statsTF.visible = false;
          }
          if(param1.hasSale && param1.buySlot)
          {

@@ -1,5 +1,5 @@
 import Keys
-from account_helpers.settings_core.settings_constants import CONTROLS, GRAPHICS
+from account_helpers.settings_core.settings_constants import CONTROLS
 from gui.Scaleform.daapi.view.meta.IngameDetailsHelpWindowMeta import IngameDetailsHelpWindowMeta
 from gui.Scaleform.daapi.view.meta.IngameHelpWindowMeta import IngameHelpWindowMeta
 from gui.Scaleform.genConsts.BATTLE_VIEW_ALIASES import BATTLE_VIEW_ALIASES
@@ -57,7 +57,6 @@ class IngameHelpWindow(IngameHelpWindowMeta, BattleGUIKeyHandler):
 
     def _populate(self):
         super(IngameHelpWindow, self)._populate()
-        self.as_setColorBlindS(self.settingsCore.getSetting(GRAPHICS.COLOR_BLIND))
         if self.app is not None:
             self.app.registerGuiKeyHandler(self)
         vo = dict((key, value) for key, value in getChangedKeysInfo(self.settingsCore))

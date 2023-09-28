@@ -2139,12 +2139,12 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>InformationIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#lootboxes:notification/header)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;%(text)s</message>
 		</LootBoxRewardsSysMessage>
-		<EventLootBoxesAutoOpenMessage>
+		<WtEventLootBoxesAutoOpenMessage>
 			<priority>high</priority>
 			<type>yellow</type>
 			<icon>WarningIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/lootBoxesAutoOpen/event/header)&lt;/font&gt;&lt;br/&gt;&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/lootBoxesAutoOpen/event/text)&lt;/font&gt;&lt;br/&gt;_(#messenger:serviceChannelMessages/lootBoxesAutoOpen/event/boxes)&lt;br/&gt;%(rewards)s</message>
-		</EventLootBoxesAutoOpenMessage>
+		</WtEventLootBoxesAutoOpenMessage>
 		<LunarBoxesAutoOpenMessage>
 			<priority>high</priority>
 			<type>yellow</type>
@@ -2997,11 +2997,11 @@ _(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
 				</button>
 			</buttonsLayout>
 		</IntegratedAuctionBelowCompetitiveRateSysMessage>
-		<IntegratedAuctionLostErrorSysMessage>
+		<IntegratedAuctionResultSysMessage>
 			<type>grey</type>
 			<icon>AuctionOperationIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
-		</IntegratedAuctionLostErrorSysMessage>
+		</IntegratedAuctionResultSysMessage>
 		<PersonalReservesHaveBeenConverted>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
@@ -3415,5 +3415,18 @@ _(#lootboxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</messag
 &lt;font color=&apos;#E9E2BF&apos; size=&quot;15&quot;&gt;&lt;b&gt;%(startText)s&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;
 </message>
 		</WotPlusAttendanceRewardsBig>
+		<NotEnoughBerthErrorSysMessage>
+			<type>red</type>
+			<icon>ErrorIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/sysMsg/titles/error)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#system_messages:unload/button)</label>
+					<action>openBarracks</action>
+					<width>107</width>
+				</button>
+			</buttonsLayout>
+		</NotEnoughBerthErrorSysMessage>
 	</htmlTemplates>
 </root>

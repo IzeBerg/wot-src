@@ -9,12 +9,6 @@
 		</aspect>
 		<blocks>
 			<block>
-				<class>StopPlan</class>
-				<id>StopPlan_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>FrameEvent</class>
 				<id>FrameEvent_1</id>
 				<params/>
@@ -41,20 +35,8 @@
 				</slots>
 			</block>
 			<block>
-				<class>SetParticleParameter</class>
-				<id>SetParticleParameter_1</id>
-				<params>
-					<param>
-						tintColor
-						<name>Property</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>StartScript</class>
-				<id>StartScript_1</id>
+				<class>StopPlan</class>
+				<id>StopPlan_1</id>
 				<params/>
 				<slots/>
 			</block>
@@ -76,12 +58,30 @@
 				</slots>
 			</block>
 			<block>
+				<class>StartScript</class>
+				<id>StartScript_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
 				<class>GetComponentProperty</class>
 				<id>GetComponentProperty_1</id>
 				<params>
 					<param>
 						Transform.world
 						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SetParticleParameter</class>
+				<id>SetParticleParameter_1</id>
+				<params>
+					<param>
+						tintColor
+						<name>Property</name>
 						<type>StringT</type>
 					</param>
 				</params>
@@ -105,29 +105,6 @@
 						<const>\0\</const>
 					</slot>
 				</slots>
-			</block>
-			<block>
-				<class>CurvePoint</class>
-				<id>CurvePoint_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>curve_id</name>
-						<const>\distance\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>AbsoluteFloat</class>
-				<id>AbsoluteFloat_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>MatrixPosition</class>
-				<id>MatrixPosition_1</id>
-				<params/>
-				<slots/>
 			</block>
 			<block>
 				<class>ContextGetSelf</class>
@@ -159,6 +136,23 @@
 				<slots/>
 			</block>
 			<block>
+				<class>MatrixPosition</class>
+				<id>MatrixPosition_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>CurvePoint</class>
+				<id>CurvePoint_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>curve_id</name>
+						<const>\distance\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>VectorLength</class>
 				<id>VectorLength_1</id>
 				<params>
@@ -168,6 +162,12 @@
 						<type>TypeT</type>
 					</param>
 				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>AbsoluteFloat</class>
+				<id>AbsoluteFloat_1</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -197,6 +197,18 @@
 		</blocks>
 		<connections>
 			<connection>
+				<from>FrameEvent_1</from>
+				<input>input</input>
+				<to>FlowGate_1</to>
+				<output>exec</output>
+			</connection>
+			<connection>
+				<from>SetParticleParameter_2</from>
+				<input>open</input>
+				<to>FlowGate_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
 				<from>SetParticleParameter_1</from>
 				<input>input</input>
 				<to>StopPlan_1</to>
@@ -213,36 +225,6 @@
 				<input>input</input>
 				<to>StopPlan_1</to>
 				<output>failure</output>
-			</connection>
-			<connection>
-				<from>FrameEvent_1</from>
-				<input>input</input>
-				<to>FlowGate_1</to>
-				<output>exec</output>
-			</connection>
-			<connection>
-				<from>SetParticleParameter_2</from>
-				<input>open</input>
-				<to>FlowGate_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>FlowGate_1</from>
-				<input>in</input>
-				<to>SetParticleParameter_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>object</input>
-				<to>SetParticleParameter_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>CreateColor_1</from>
-				<input>tintColor</input>
-				<to>SetParticleParameter_1</to>
-				<output>color</output>
 			</connection>
 			<connection>
 				<from>GetComponentProperty_1</from>
@@ -269,21 +251,33 @@
 				<output>value</output>
 			</connection>
 			<connection>
+				<from>FlowGate_1</from>
+				<input>in</input>
+				<to>SetParticleParameter_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>object</input>
+				<to>SetParticleParameter_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>CreateColor_1</from>
+				<input>tintColor</input>
+				<to>SetParticleParameter_1</to>
+				<output>color</output>
+			</connection>
+			<connection>
 				<from>CurvePoint_1</from>
 				<input>a</input>
 				<to>CreateColor_1</to>
 				<output>y</output>
 			</connection>
 			<connection>
-				<from>AbsoluteFloat_1</from>
-				<input>x</input>
-				<to>CurvePoint_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>VectorLength_1</from>
-				<input>a</input>
-				<to>AbsoluteFloat_1</to>
+				<from>MatrixPosition_1</from>
+				<input>value</input>
+				<to>Constant_1</to>
 				<output>res</output>
 			</connection>
 			<connection>
@@ -293,15 +287,21 @@
 				<output>world</output>
 			</connection>
 			<connection>
-				<from>MatrixPosition_1</from>
-				<input>value</input>
-				<to>Constant_1</to>
+				<from>AbsoluteFloat_1</from>
+				<input>x</input>
+				<to>CurvePoint_1</to>
 				<output>res</output>
 			</connection>
 			<connection>
 				<from>SubtractVector_1</from>
 				<input>a</input>
 				<to>VectorLength_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>VectorLength_1</from>
+				<input>a</input>
+				<to>AbsoluteFloat_1</to>
 				<output>res</output>
 			</connection>
 			<connection>

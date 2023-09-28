@@ -10,7 +10,7 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.interfaces
       
       function updatePointOfInterest(param1:uint, param2:Number) : void;
       
-      function setRank(param1:String, param2:String, param3:Boolean) : void;
+      function setRank(param1:int, param2:int) : void;
       
       function setSquad(param1:Boolean, param2:int) : void;
       

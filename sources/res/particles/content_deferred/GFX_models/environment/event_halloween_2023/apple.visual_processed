@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>apple</identifier>
+					<fx>shaders/custom/emissive_playground_vtxanim.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						angleFalloffParams
+						<Vector4>0.000000 0.400000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Noise05.dds</Texture>
+					</property>
+					<property>
+						g_chromaOffsetBlue
+						<Float>0.200000</Float>
+					</property>
+					<property>
+						g_chromaOffsetGreen
+						<Float>0.100000</Float>
+					</property>
+					<property>
+						g_contrast
+						<Float>4.000000</Float>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>47.160000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.920000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>0.000000 1.000000 0.533333 1.000000</Vector4>
+					</property>
+					<property>
+						g_zeroPhaseLum
+						<Float>0.750000</Float>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/br_area_wave.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>-0.750000</Float>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						useVersicolorMode
+						<Bool>true</Bool>
+					</property>
+					<property>
+						vtxAnimX
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimY
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimZ
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						waveLen
+						<Float>3.730000</Float>
+					</property>
+					<property>
+						srcBlend
+						<Int>3</Int>
+					</property>
+				</material>
+				<groupOrigin>0.000191 0.213506 -0.007885</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.934843 -1.066274 -0.942920</min>
+		<max>0.935226 1.493287 0.927150</max>
+	</boundingBox>
+	<geometrySize>34464</geometrySize>
+	<minUVDensity>0.002361</minUVDensity>
+</root>

@@ -293,9 +293,12 @@ package net.wg.gui.components.controls
       
       private function tryClosedDropDown() : void
       {
-         if(isOpen() && !_dropdownRef.hitTestPoint(stage.mouseX,stage.mouseY,true))
+         if(isOpen())
          {
-            this.close();
+            if(!_dropdownRef.hitTestPoint(stage.mouseX,stage.mouseY,true))
+            {
+               this.close();
+            }
          }
       }
       

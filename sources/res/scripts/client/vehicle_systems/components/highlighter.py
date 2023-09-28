@@ -35,9 +35,20 @@ class Highlighter(cgf_obsolete_script.py_component.Component):
         self.__collisions = collisions
         return
 
+    @property
+    def _isPlayersVehicle(self):
+        return self.__isPlayersVehicle
+
+    @_isPlayersVehicle.setter
+    def _isPlayersVehicle(self, value):
+        self.__isPlayersVehicle = value
+
     def setVehicle(self, vehicle):
         self.__vehicle = vehicle
         self.__isPlayersVehicle = vehicle.isPlayerVehicle
+
+    def getVehicle(self):
+        return self.__vehicle
 
     def setVehicleOwnership(self):
         if self.isDisabled:

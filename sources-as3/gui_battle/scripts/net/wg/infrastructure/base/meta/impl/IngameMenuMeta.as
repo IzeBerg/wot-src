@@ -19,11 +19,11 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onCounterNeedUpdate:Function;
       
+      public var bootcampClick:Function;
+      
       private var _vectorCountersVo:Vector.<CountersVo>;
       
       private var _vectorString:Vector.<String>;
-      
-      private var _vectorString1:Vector.<String>;
       
       public function IngameMenuMeta()
       {
@@ -46,11 +46,6 @@ package net.wg.infrastructure.base.meta.impl
          {
             this._vectorString.splice(0,this._vectorString.length);
             this._vectorString = null;
-         }
-         if(this._vectorString1)
-         {
-            this._vectorString1.splice(0,this._vectorString1.length);
-            this._vectorString1 = null;
          }
          super.onDispose();
       }
@@ -83,6 +78,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onCounterNeedUpdate,"onCounterNeedUpdate" + Errors.CANT_NULL);
          this.onCounterNeedUpdate();
+      }
+      
+      public function bootcampClickS() : void
+      {
+         App.utils.asserter.assertNotNull(this.bootcampClick,"bootcampClick" + Errors.CANT_NULL);
+         this.bootcampClick();
       }
       
       public final function as_setCounter(param1:Array) : void
@@ -126,24 +127,6 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      public final function as_setMenuButtons(param1:Array) : void
-      {
-         var _loc2_:Vector.<String> = this._vectorString1;
-         this._vectorString1 = new Vector.<String>(0);
-         var _loc3_:uint = param1.length;
-         var _loc4_:int = 0;
-         while(_loc4_ < _loc3_)
-         {
-            this._vectorString1[_loc4_] = param1[_loc4_];
-            _loc4_++;
-         }
-         this.setMenuButtons(this._vectorString1);
-         if(_loc2_)
-         {
-            _loc2_.splice(0,_loc2_.length);
-         }
-      }
-      
       protected function setCounter(param1:Vector.<CountersVo>) : void
       {
          var _loc2_:String = "as_setCounter" + Errors.ABSTRACT_INVOKE;
@@ -154,13 +137,6 @@ package net.wg.infrastructure.base.meta.impl
       protected function removeCounter(param1:Vector.<String>) : void
       {
          var _loc2_:String = "as_removeCounter" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc2_);
-         throw new AbstractException(_loc2_);
-      }
-      
-      protected function setMenuButtons(param1:Vector.<String>) : void
-      {
-         var _loc2_:String = "as_setMenuButtons" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
       }

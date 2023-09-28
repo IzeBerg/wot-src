@@ -358,16 +358,6 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
          return this.actionButton;
       }
       
-      public function getOffsetY() : int
-      {
-         return 0;
-      }
-      
-      public function getSmallScreenOffsetY() : int
-      {
-         return 0;
-      }
-      
       public function getTotalHeight() : Number
       {
          return TOTAL_H;
@@ -438,20 +428,17 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
                   this.compensation.setData(this._data.compensation);
                   this.compensation.validateNow();
                }
-               if(this._data.itemPrice)
-               {
-                  this.compoundPrice.setData(this._data.itemPrice);
-                  this.compoundPrice.setCouponDiscount(this._data.couponDiscount);
-                  _loc2_ = this._data.itemPrice.price.getPriceVO().name;
-                  this.compoundPrice.updateEnoughStatuses(new <PriceVO>[new PriceVO([_loc2_,int(this._data.isMoneyEnough)])]);
-                  this.compoundPrice.actionTooltip = this.compoundPrice.mouseEnabled = this.compoundPrice.mouseChildren = this._data.showAction;
-                  if(StringUtils.isNotEmpty(this._data.actionTooltip))
-                  {
-                     this.compoundPrice.customActionTooltip = this._data.actionTooltip;
-                  }
-                  this.compoundPrice.validateNow();
-               }
+               this.compoundPrice.setData(this._data.itemPrice);
+               this.compoundPrice.setCouponDiscount(this._data.couponDiscount);
+               _loc2_ = Boolean(this._data.itemPrice) ? this._data.itemPrice.price.getPriceVO().name : null;
+               this.compoundPrice.updateEnoughStatuses(new <PriceVO>[new PriceVO([_loc2_,int(this._data.isMoneyEnough)])]);
                this.compoundPrice.visible = true;
+               this.compoundPrice.actionTooltip = this.compoundPrice.mouseEnabled = this.compoundPrice.mouseChildren = this._data.showAction;
+               if(StringUtils.isNotEmpty(this._data.actionTooltip))
+               {
+                  this.compoundPrice.customActionTooltip = this._data.actionTooltip;
+               }
+               this.compoundPrice.validateNow();
             }
             else
             {
@@ -636,6 +623,11 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
       override public function get height() : Number
       {
          return this.actionButton.height;
+      }
+      
+      public function getOffsetY() : int
+      {
+         return 0;
       }
       
       private function onCouponViewSelectHandler(param1:Event) : void

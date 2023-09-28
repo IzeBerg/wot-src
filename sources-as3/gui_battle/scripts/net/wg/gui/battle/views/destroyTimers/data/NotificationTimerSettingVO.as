@@ -36,10 +36,6 @@ package net.wg.gui.battle.views.destroyTimers.data
       
       public var canBlink:Boolean = false;
       
-      public var descriptionFontSize:int = 14;
-      
-      public var descriptionOffsetY:int = 0;
-      
       public var description:String = "";
       
       public function NotificationTimerSettingVO(param1:Object)

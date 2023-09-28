@@ -4,7 +4,6 @@ package net.wg.gui.components.crosshairPanel
    import flash.display.BlendMode;
    import flash.display.DisplayObject;
    import flash.display.DisplayObjectContainer;
-   import flash.display.Sprite;
    import flash.display.StageAlign;
    import flash.display.StageScaleMode;
    import flash.utils.clearInterval;
@@ -123,6 +122,8 @@ package net.wg.gui.components.crosshairPanel
       
       private var _ammoQuantityInClip:Number = 0;
       
+      private var _isAmmoLow:Boolean = false;
+      
       private var _isAutoloader:Boolean = false;
       
       private var _isAutoloaderCritical:Boolean = false;
@@ -144,8 +145,6 @@ package net.wg.gui.components.crosshairPanel
       private var _netType:int = -1;
       
       private var _speedometer:Speedometer = null;
-      
-      private var _speedometerBg:Sprite = null;
       
       private var _speed:int = 0;
       
@@ -200,7 +199,6 @@ package net.wg.gui.components.crosshairPanel
             this._speedometer.dispose();
             this._speedometer = null;
          }
-         this._speedometerBg = null;
          this._currentCrosshair = null;
          this._settings = null;
          for each(_loc1_ in this._crosshairs)
@@ -247,13 +245,6 @@ package net.wg.gui.components.crosshairPanel
             this._speedometer.setMaxSpeedSpeedMode(param2);
             this._speedometer.blendMode = BlendMode.ADD;
          }
-         if(this._speedometerBg == null)
-         {
-            this._speedometerBg = Sprite(createComponent(Linkages.SPEEDOMETER_BG_UI));
-            this._speedometerBg.x = SPEEDOMETER_X_OFFSET;
-            this._speedometerBg.y = SPEEDOMETER_Y_OFFSET;
-         }
-         this._speedometerBg.visible = true;
          this._speedometer.visible = true;
          this.attachSpeedometer();
       }
@@ -381,10 +372,6 @@ package net.wg.gui.components.crosshairPanel
          {
             this._speedometer.visible = false;
          }
-         if(this._speedometerBg)
-         {
-            this._speedometerBg.visible = false;
-         }
       }
       
       public function as_runCameraTransitionFx(param1:int, param2:Number) : void
@@ -397,12 +384,13 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
-      public function as_setAmmoStock(param1:Number, param2:Number, param3:String, param4:Boolean) : void
+      public function as_setAmmoStock(param1:Number, param2:Number, param3:Boolean, param4:String, param5:Boolean) : void
       {
          this._ammoQuantity = param1;
          this._ammoQuantityInClip = param2;
-         this._ammoClipState = param3;
-         this._ammoClipReloaded = param4;
+         this._isAmmoLow = param3;
+         this._ammoClipState = param4;
+         this._ammoClipReloaded = param5;
          if(this._ammoQuantity == 0)
          {
             this._remainingTimeInSec = 0;
@@ -410,7 +398,7 @@ package net.wg.gui.components.crosshairPanel
          }
          if(this._currentCrosshair != null)
          {
-            this._currentCrosshair.setAmmoStock(this._ammoQuantityInClip,this._ammoClipState,this._ammoClipReloaded);
+            this._currentCrosshair.setAmmoStock(this._ammoQuantity,this._ammoQuantityInClip,this._isAmmoLow,this._ammoClipState,this._ammoClipReloaded);
          }
          this._ammoClipReloaded = false;
       }
@@ -486,11 +474,6 @@ package net.wg.gui.components.crosshairPanel
          {
             this._currentCrosshair.setDistance(this._distanceStr);
          }
-      }
-      
-      public function as_setDualAccActive(param1:Boolean) : void
-      {
-         this._gunMarkersContainer.setDualAccActive(param1);
       }
       
       public function as_setEngineCrushError(param1:String) : void
@@ -877,24 +860,14 @@ package net.wg.gui.components.crosshairPanel
       
       private function attachSpeedometer() : void
       {
-         var _loc1_:DisplayObjectContainer = null;
          if(this._currentCrosshair != null && this._speedometer != null)
          {
             if(this._speedometer.parent != null)
             {
                this._speedometer.parent.removeChild(this._speedometer);
             }
-            if(this._speedometerBg.parent != null)
-            {
-               this._speedometerBg.parent.removeChild(this._speedometer);
-            }
-            _loc1_ = this._currentCrosshair as DisplayObjectContainer;
-            if(this._currentCrosshair)
-            {
-               _loc1_.addChild(this._speedometer);
-               _loc1_.addChild(this._speedometerBg);
-               _loc1_.blendMode = BlendMode.LAYER;
-            }
+            DisplayObjectContainer(this._currentCrosshair).addChild(this._speedometer);
+            DisplayObject(this._currentCrosshair).blendMode = BlendMode.LAYER;
          }
       }
       
@@ -969,7 +942,7 @@ package net.wg.gui.components.crosshairPanel
       {
          if(this._currentCrosshair != null)
          {
-            this._currentCrosshair.setInfo(this._healthInPercents,this._zoomStr,this._currReloadingState,this._isReloadingTimeFieldShown,this._isDistanceShown,this._distanceStr,this._playerInfoStr,this._clipCapacity,this._burst,this._ammoState,this._ammoQuantityInClip,this._ammoClipState,this._ammoClipReloaded,this._isAutoloader,this._isAutoloaderCritical);
+            this._currentCrosshair.setInfo(this._healthInPercents,this._zoomStr,this._currReloadingState,this._isReloadingTimeFieldShown,this._isDistanceShown,this._distanceStr,this._playerInfoStr,this._clipCapacity,this._burst,this._ammoState,this._ammoQuantity,this._ammoQuantityInClip,this._isAmmoLow,this._ammoClipState,this._ammoClipReloaded,this._isAutoloader,this._isAutoloaderCritical);
             this._currentCrosshair.setQuickReloadingTime(this._isQuickReloadingActive,this._quickReloadingTime);
             if(this._speedometer != null)
             {

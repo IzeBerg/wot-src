@@ -14,6 +14,7 @@ package net.wg.gui.lobby.settings.feedback
    import net.wg.gui.lobby.settings.vo.SettingsTabNewCounterVo;
    import net.wg.gui.lobby.settings.vo.base.SettingsDataVo;
    import net.wg.gui.lobby.settings.vo.config.FeedbackSettingsDataVo;
+   import net.wg.infrastructure.managers.counter.CounterManager;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.data.DataProvider;
    import scaleform.clik.events.IndexEvent;
@@ -139,24 +140,30 @@ package net.wg.gui.lobby.settings.feedback
          this.updateNewCounterForCurrentView(FeedbackBaseForm(this.viewStack.currentView));
       }
       
-      override protected function getAvailableMarkVisitedCountersIds(param1:String, param2:Vector.<CountersVo>) : Array
+      override protected function getLineCountersIds(param1:String, param2:Vector.<CountersVo>) : Array
       {
+         var _loc4_:SettingsControlProp = null;
+         var _loc5_:CountersVo = null;
          var _loc3_:Array = [];
          if(StringUtils.isEmpty(param1))
          {
             return _loc3_;
          }
-         return super.getAvailableMarkVisitedCountersIds(param1,param2);
-      }
-      
-      override protected function isCounterCanMarkAsVisited(param1:String, param2:CountersVo) : Boolean
-      {
-         var _loc3_:SettingsControlProp = this._feedbackData[param1][param2.componentId];
-         if(_loc3_ && LINE_COUNTER_TYPES.indexOf(_loc3_.type) != Values.DEFAULT_INT)
+         for each(_loc5_ in param2)
          {
-            return true;
+            if(_loc5_.count == CounterManager.DEF_COUNTER_NO_VIEWED_VALUE)
+            {
+               _loc4_ = this._feedbackData[param1][_loc5_.componentId];
+               if(_loc4_)
+               {
+                  if(LINE_COUNTER_TYPES.indexOf(_loc4_.type) != Values.DEFAULT_INT)
+                  {
+                     _loc3_.push(_loc5_.componentId);
+                  }
+               }
+            }
          }
-         return super.isCounterCanMarkAsVisited(param1,param2);
+         return _loc3_;
       }
       
       public function setDataProvider(param1:DataProvider) : void

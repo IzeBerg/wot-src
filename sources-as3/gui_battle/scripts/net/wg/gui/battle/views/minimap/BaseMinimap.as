@@ -40,7 +40,7 @@ package net.wg.gui.battle.views.minimap
       {
       }
       
-      public function as_setScenarioEvent(param1:String, param2:String, param3:String) : void
+      public function as_setScenarioEvent(param1:String, param2:String) : void
       {
       }
       

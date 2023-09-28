@@ -57,7 +57,7 @@ class _IStatusAnimPlayer(object):
         self._statusId = statusId
         self._hasStatus = False
 
-    def showStatus(self, time, animated):
+    def showStatus(self, time, animated, startTimer=True):
         self._hasStatus = True
 
     def hideStatus(self, animated):
@@ -73,7 +73,7 @@ class _ActionScriptTimer(_IStatusAnimPlayer):
         super(_ActionScriptTimer, self).__init__(statusId=statusId)
         self._view = view
 
-    def showStatus(self, time, animated):
+    def showStatus(self, time, animated, startTimer=True):
         super(_ActionScriptTimer, self).showStatus(time, animated)
         if not self._view.isDisposed():
             self._view.as_showStatusS(self._statusId, time, animated)
@@ -91,13 +91,16 @@ class _PythonTimer(PythonTimer, _IStatusAnimPlayer):
         self._animated = False
         self.__hideAnimated = False
 
-    def showStatus(self, totalTime, animated):
+    def showStatus(self, totalTime, animated, startTimer=True):
         super(_PythonTimer, self).showStatus(totalTime, animated)
         self._animated = animated
         self._totalTime = totalTime
         self._startTime = BigWorld.serverTime()
         self._finishTime = self._startTime + totalTime if totalTime else 0
-        self.show()
+        if startTimer:
+            self.show()
+        else:
+            self._showView(isBubble=True)
 
     def hideStatus(self, animated):
         self.__hideAnimated = animated
@@ -176,7 +179,7 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         self._crewBuffManager = None
         self.__tankIndicator = None
         self.__isShow = True
-        self.__maxHealth = 0
+        self._maxHealth = 0
         self.__isAutoRotationOff = False
         self.__isAutoRotationShown = False
         self.__initialized = False
@@ -220,9 +223,9 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         for player in self._statusAnimPlayers.itervalues():
             player.hideStatus(False)
 
-    def updateVehicleParams(self, vehicle, _):
+    def updateVehicleParams(self, vehicle, *args):
         self.__updateMaxHealth()
-        self._updateHealth(self.__maxHealth)
+        self._updateHealth(self._maxHealth)
 
     def updateVehiclesInfo(self, updated, arenaDP):
         super(DamagePanel, self).updateVehiclesInfo(updated, arenaDP)
@@ -326,10 +329,15 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         self.hideStatusImmediate()
 
     def _updateHealth(self, health):
-        if health <= self.__maxHealth and self.__maxHealth > 0:
-            healthStr = formatHealthProgress(health, self.__maxHealth)
-            healthProgress = normalizeHealthPercent(health, self.__maxHealth)
+        ctrl = self.sessionProvider.shared.vehicleState
+        if ctrl is not None:
+            vehicle = ctrl.getControllingVehicle()
+            self._maxHealth = vehicle.maxHealth
+        if health <= self._maxHealth and self._maxHealth > 0:
+            healthStr = formatHealthProgress(health, self._maxHealth)
+            healthProgress = normalizeHealthPercent(health, self._maxHealth)
             self.as_updateHealthS(healthStr, healthProgress)
+        return
 
     def _updateHealthFromServer(self, health):
         if self.sessionProvider.shared.prebattleSetups.isSelectionStarted():
@@ -364,7 +372,7 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         animated = debuffInfo.animated
         stunDuration = self.__getStunDuration()
         if self.__debuffDuration > 0 and stunDuration == 0:
-            self._statusAnimPlayers[STATUS_ID.STUN].showStatus(self.__debuffDuration, animated)
+            self._statusAnimPlayers[STATUS_ID.STUN].showStatus(self.__debuffDuration, animated, startTimer=False)
         elif stunDuration > 0:
             self._statusAnimPlayers[STATUS_ID.STUN].showStatus(stunDuration, False)
         else:
@@ -413,11 +421,11 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         if prebattleCtrl is not None:
             prebattleVehicle = prebattleCtrl.getPrebattleSetupsVehicle()
             if prebattleVehicle is not None:
-                self.__maxHealth = prebattleVehicle.descriptor.maxHealth
+                self._maxHealth = prebattleVehicle.descriptor.maxHealth
                 return
             vehicle = self.__getControllingVehicle()
             if vehicle is not None:
-                self.__maxHealth = vehicle.maxHealth
+                self._maxHealth = vehicle.maxHealth
         return
 
     def __getControllingVehicle(self):
@@ -490,9 +498,9 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         self.__updateMaxHealth()
         prebattleCtrl = self.sessionProvider.shared.prebattleSetups
         prebattleVehicle = prebattleCtrl.getPrebattleSetupsVehicle() if prebattleCtrl is not None else None
-        health = self.__maxHealth if prebattleVehicle is not None else vehicle.health
-        healthStr = formatHealthProgress(health, self.__maxHealth)
-        healthProgress = normalizeHealthPercent(health, self.__maxHealth)
+        health = self._maxHealth if prebattleVehicle is not None else vehicle.health
+        healthStr = formatHealthProgress(health, self._maxHealth)
+        healthProgress = normalizeHealthPercent(health, self._maxHealth)
         self.as_setupS(healthStr, healthProgress, vehicle_getter.getVehicleIndicatorType(vTypeDesc), vehicle_getter.getCrewMainRolesWithIndexes(vType.crewRoles), inDegrees, vehicle_getter.hasTurretRotator(vTypeDesc), self.__isWheeledTech, not self.__isAutoRotationOff, self.__isTrackWithinVehicle)
         if self.__isWheeledTech:
             self.as_setupWheeledS(vTypeDesc.chassis.generalWheelsAnimatorConfig.getNonTrackWheelsCount())

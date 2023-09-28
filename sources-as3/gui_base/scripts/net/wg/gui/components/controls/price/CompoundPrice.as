@@ -251,7 +251,6 @@ package net.wg.gui.components.controls.price
       private function updatePositions() : void
       {
          var _loc3_:Price = null;
-         var _loc4_:Boolean = false;
          var _loc19_:int = 0;
          var _loc1_:int = 0;
          var _loc2_:int = this._numVisibleItems;
@@ -259,7 +258,7 @@ package net.wg.gui.components.controls.price
          {
             return;
          }
-         _loc4_ = this._itemsDirection == DIRECTION_LEFT;
+         var _loc4_:Boolean = this._itemsDirection == DIRECTION_LEFT;
          var _loc5_:Boolean = this._itemsDirection == DIRECTION_RIGHT;
          var _loc6_:Boolean = this._itemsDirection == DIRECTION_UP;
          var _loc7_:Boolean = this._itemsDirection == DIRECTION_DOWN;
@@ -279,54 +278,48 @@ package net.wg.gui.components.controls.price
          {
             _loc19_ = !!_loc11_ ? int(_loc2_ - 1 - _loc20_) : int(_loc20_);
             _loc3_ = this._items[_loc19_];
-            if(_loc3_)
+            _loc3_.validateNow();
+            _loc3_.x = _loc3_.y = 0;
+            if(_loc4_)
             {
-               _loc3_.validateNow();
-               _loc3_.x = _loc3_.y = 0;
-               if(_loc4_)
-               {
-                  _loc1_ += -_loc3_.contentWidth;
-                  _loc3_.x = _loc1_;
-               }
-               else if(_loc5_)
-               {
-                  _loc3_.x = _loc1_;
-                  _loc1_ += _loc3_.contentWidth;
-               }
-               else if(_loc6_)
-               {
-                  _loc1_ += -_loc3_.contentHeight;
-                  _loc3_.y = _loc1_;
-               }
-               else if(_loc7_)
-               {
-                  _loc3_.y = _loc1_;
-                  _loc1_ += _loc3_.contentHeight;
-               }
-               if(_loc6_ || _loc19_ != 0 && _loc19_ != _loc2_ - 1)
-               {
-                  _loc1_ += _loc10_ * _loc16_;
-               }
-               if(_loc9_ && this._itemsAnchor == ANCHOR_BOTTOM_RIGHT)
-               {
-                  _loc3_.x -= _loc3_.contentWidth;
-               }
-               _loc17_ = _loc3_.x + _loc3_.contentWidth;
-               _loc18_ = _loc3_.y + _loc3_.contentHeight;
-               _loc12_ = _loc3_.x < _loc12_ ? Number(_loc3_.x) : Number(_loc12_);
-               _loc14_ = _loc3_.y < _loc14_ ? Number(_loc3_.y) : Number(_loc14_);
-               _loc13_ = _loc17_ > _loc13_ ? Number(_loc17_) : Number(_loc13_);
-               _loc15_ = _loc18_ > _loc15_ ? Number(_loc18_) : Number(_loc15_);
+               _loc1_ += -_loc3_.contentWidth;
+               _loc3_.x = _loc1_;
             }
+            else if(_loc5_)
+            {
+               _loc3_.x = _loc1_;
+               _loc1_ += _loc3_.contentWidth;
+            }
+            else if(_loc6_)
+            {
+               _loc1_ += -_loc3_.contentHeight;
+               _loc3_.y = _loc1_;
+            }
+            else if(_loc7_)
+            {
+               _loc3_.y = _loc1_;
+               _loc1_ += _loc3_.contentHeight;
+            }
+            if(_loc6_ || _loc19_ != 0 && _loc19_ != _loc2_ - 1)
+            {
+               _loc1_ += _loc10_ * _loc16_;
+            }
+            if(_loc9_ && this._itemsAnchor == ANCHOR_BOTTOM_RIGHT)
+            {
+               _loc3_.x -= _loc3_.contentWidth;
+            }
+            _loc17_ = _loc3_.x + _loc3_.contentWidth;
+            _loc18_ = _loc3_.y + _loc3_.contentHeight;
+            _loc12_ = _loc3_.x < _loc12_ ? Number(_loc3_.x) : Number(_loc12_);
+            _loc14_ = _loc3_.y < _loc14_ ? Number(_loc3_.y) : Number(_loc14_);
+            _loc13_ = _loc17_ > _loc13_ ? Number(_loc17_) : Number(_loc13_);
+            _loc15_ = _loc18_ > _loc15_ ? Number(_loc18_) : Number(_loc15_);
             _loc20_++;
          }
-         if(this.hit)
-         {
-            this.hit.x = _loc12_;
-            this.hit.y = _loc14_;
-            this.hit.width = _loc13_ - _loc12_;
-            this.hit.height = _loc15_ - _loc14_;
-         }
+         this.hit.x = _loc12_;
+         this.hit.y = _loc14_;
+         this.hit.width = _loc13_ - _loc12_;
+         this.hit.height = _loc15_ - _loc14_;
       }
       
       public function get itemsDirection() : String

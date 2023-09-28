@@ -399,10 +399,6 @@ package
       
       public static const DENUNCIATION_SUCCESS:String = "#system_messages:denunciation/success";
       
-      public static const DENUNCIATION_HANGARCHATSUCCESS_TITLE:String = "#system_messages:denunciation/hangarChatSuccess/title";
-      
-      public static const DENUNCIATION_HANGARCHATSUCCESS_BODY:String = "#system_messages:denunciation/hangarChatSuccess/body";
-      
       public static const CUSTOMIZATION_UNAVAILABLE:String = "#system_messages:customization/unavailable";
       
       public static const CUSTOMIZATION_PROHIBITED:String = "#system_messages:customization/prohibited";
@@ -520,8 +516,6 @@ package
       public static const CUSTOMIZATION_PROGRESSION_UP_STYLE:String = "#system_messages:customization/progression/up/style";
       
       public static const CUSTOMIZATION_PROGRESSION_DOWN_STYLE:String = "#system_messages:customization/progression/down/style";
-      
-      public static const CUSTOMIZATION_CURRENCY_NOT_ENOUGH:String = "#system_messages:customization/currency_not_enough";
       
       public static const BONUSES_BOOSTER_VALUE:String = "#system_messages:bonuses/booster/value";
       
@@ -1901,8 +1895,6 @@ package
       
       public static const UNIT_ERRORS_NO_ARENA_VEHICLES:String = "#system_messages:unit/errors/NO_ARENA_VEHICLES";
       
-      public static const UNIT_ERRORS_COMP7_QUALIFICATION:String = "#system_messages:unit/errors/COMP7_QUALIFICATION";
-      
       public static const IGR_CUSTOMIZATION_BEGIN:String = "#system_messages:igr/customization/begin";
       
       public static const IGR_CUSTOMIZATION_END:String = "#system_messages:igr/customization/end";
@@ -2305,8 +2297,6 @@ package
       
       public static const EPICBATTLES_SEASONEND_REWARDS_EQUIPMENT:String = "#system_messages:epicBattles/seasonEnd/rewards/equipment";
       
-      public static const EPICBATTLES_SEASONEND_REWARDS_OPTIONALDEVICE:String = "#system_messages:epicBattles/seasonEnd/rewards/optionalDevice";
-      
       public static const EPICBATTLES_LEVELUP_TITLE:String = "#system_messages:epicBattles/levelUp/title";
       
       public static const EPICBATTLES_LEVELUP_BODY_LEVELCONGRATS:String = "#system_messages:epicBattles/levelUp/body/levelCongrats";
@@ -2698,22 +2688,6 @@ package
       public static const UNIT_WARNINGS_EXPIRED_PLAY_LIMITS_TO_COMMANDER:String = "#system_messages:unit/warnings/EXPIRED_PLAY_LIMITS_TO_COMMANDER";
       
       public static const WINBACK_TURNOFFBATTLESERROR:String = "#system_messages:winback/turnOffBattlesError";
-      
-      public static const ACHIEVEMENTS_SERVER_ERROR:String = "#system_messages:achievements/server_error";
-      
-      public static const LIMITEDUI_SWITCHON:String = "#system_messages:limitedUI/switchOn";
-      
-      public static const LIMITEDUI_SWITCHOFF:String = "#system_messages:limitedUI/switchOff";
-      
-      public static const REFERRAL_PROGRAM_DISABLED:String = "#system_messages:referral_program/disabled";
-      
-      public static const DEBUTBOXES_ENABLED_HEADER:String = "#system_messages:debutBoxes/enabled/header";
-      
-      public static const DEBUTBOXES_ENABLED_BODY:String = "#system_messages:debutBoxes/enabled/body";
-      
-      public static const DEBUTBOXES_DISABLED_HEADER:String = "#system_messages:debutBoxes/disabled/header";
-      
-      public static const DEBUTBOXES_DISABLED_BODY:String = "#system_messages:debutBoxes/disabled/body";
        
       
       public function SYSTEM_MESSAGES()

@@ -1163,7 +1163,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 self.__deviceStates = {'crew': 'destroyed'}
                 self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.CREW_DEACTIVATED, deathReasonID)
             elif not self.guiSessionProvider.getCtx().isObserver(self.playerVehicleID):
-                self.soundNotifications.play('vehicle_destroyed')
+                if self.arenaGuiType != ARENA_GUI_TYPE.HALLOWEEN_BATTLES or not self.guiSessionProvider.shared.vehicleState.isInPostmortem:
+                    self.soundNotifications.play('vehicle_destroyed')
                 self.__deviceStates = {'vehicle': 'destroyed'}
                 self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.DESTROYED, deathReasonID)
             if self.vehicle is not None:
@@ -1229,6 +1230,9 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         self.guiSessionProvider.shared.ammo.setDualGunQuickChangeReady(self.__canMakeDualShot)
         LOG_DEBUG_DEV('updateDualGunState', vehicleID, activeGun, gunStates, cooldownTimes)
         return
+
+    def stopSetupSelection(self):
+        self.guiSessionProvider.shared.prebattleSetups.stopSelection()
 
     def beforeSetupUpdate(self, vehicleID):
         vehicleDescriptor = self.__getDetailedVehicleDescriptor()
@@ -1904,7 +1908,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.__playOwnVehicleAutorotationSound(enable)
 
     def enableServerAim(self, enable):
-        self.base.setDevelopmentFeature(0, 'server_marker', enable, '')
+        self.cell.setServerMarker(enable)
 
     def autoAim(self, target=None, magnetic=False):
         if ARENA_BONUS_TYPE_CAPS.checkAny(self.arenaBonusType, ARENA_BONUS_TYPE_CAPS.DISABLE_AUTO_AIM):
@@ -2615,6 +2619,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         if soundType is not None and damageCode not in self.__damageInfoNoNotification:
             sound = extra.sounds.get(soundType)
             if sound is not None and not ignoreMessages:
+                if sound == 'track_destroyed' and damageCode.find('AT_SUPER_SHOT') != -1:
+                    sound = 'track_destroyed_at_super_shot'
                 self.playSoundIfNotMuted(sound, soundNotificationCheckFn)
         return
 
@@ -2643,7 +2649,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
      'DEVICE_DESTROYED', 'DEVICE_DESTROYED_AT_SHOT', 'DEVICE_DESTROYED_AT_RAMMING',
      'DEVICE_DESTROYED_AT_FIRE', 'DEVICE_DESTROYED_AT_WORLD_COLLISION', 'DEVICE_DESTROYED_AT_DROWNING',
      'TANKMAN_HIT', 'TANKMAN_HIT_AT_SHOT', 'TANKMAN_HIT_AT_WORLD_COLLISION', 'TANKMAN_HIT_AT_DROWNING',
-     'ENGINE_DESTROYED_AT_UNLIMITED_RPM', 'ENGINE_DESTROYED_AT_BURNOUT')
+     'ENGINE_DESTROYED_AT_UNLIMITED_RPM', 'ENGINE_DESTROYED_AT_BURNOUT',
+     'DEVICE_DESTROYED_AT_SUPER_SHOT', 'TANKMAN_HIT_AT_SUPER_SHOT')
     __damageInfoHealings = (
      'DEVICE_REPAIRED', 'TANKMAN_RESTORED', 'FIRE_STOPPED')
     __damageInfoNoNotification = (
@@ -2768,7 +2775,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.base.controlAnotherVehicle(vehicleID, 2)
             self.gunRotator.clientMode = False
             self.gunRotator.start()
-            self.base.setDevelopmentFeature(0, 'server_marker', True, '')
+            self.cell.setServerMarker(True)
             self.base.setDevelopmentFeature(0, 'heal', 0, '')
             self.base.setDevelopmentFeature(0, 'stop_bot', 0, '')
             self.inputHandler.setKillerVehicleID(None)
@@ -2812,7 +2819,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         msg += '\tarena: %s\n' % self.arena.arenaType.geometryName
         msg += '\tposition: ' + str(self.position)
         LOG_NOTE(msg)
-        self.base.setDevelopmentFeature(0, 'log_lag', True, '')
+        self.base.logLag()
 
     def __updateCruiseControlPanel(self):
         if self.__stopUntilFire or not self.__isVehicleAlive:

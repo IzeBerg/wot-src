@@ -423,10 +423,6 @@ package
       
       public static const GAME_CUSTOMIZATIONDISPLAYTYPE_ALL:String = "#settings:game/customizationDisplayType/all";
       
-      public static const LIMITEDUI_DESC:String = "#settings:limitedUI/desc";
-      
-      public static const LIMITEDUI_TURNOFFBTN:String = "#settings:limitedUI/turnOffBtn";
-      
       public static const MONITOR:String = "#settings:monitor";
       
       public static const MONITOR_DESCRIPTION:String = "#settings:monitor/description";

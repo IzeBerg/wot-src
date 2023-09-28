@@ -3,23 +3,68 @@
 	<info>
 		<name>cgf_demo/vse_smoke_tigger</name>
 		<isMacro>false</isMacro>
+		<version>0</version>
 		<aspect>
 			<compatibles>CLIENT</compatibles>
 		</aspect>
 		<blocks>
 			<block>
-				<class>ContextGetSelf</class>
-				<id>ContextGetSelf_1</id>
+				<class>ListenLocalEvent</class>
+				<id>ListenLocalEvent_1</id>
 				<params>
 					<param>
-						CGFGameObjectContext
-						<name>Context Name</name>
+						onExit
+						<name>Event Name</name>
 						<type>StringT</type>
 					</param>
 					<param>
-						getSelf
-						<name>Member Name</name>
+						GameObjectT
+						<name>who</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						GameObjectT
+						<name>where</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>RemoveGameObject</class>
+				<id>RemoveGameObject_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>FlowGate</class>
+				<id>FlowGate_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>openAtStart</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ListenLocalEvent</class>
+				<id>ListenLocalEvent_2</id>
+				<params>
+					<param>
+						onEnter
+						<name>Event Name</name>
 						<type>StringT</type>
+					</param>
+					<param>
+						GameObjectT
+						<name>who</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						GameObjectT
+						<name>where</name>
+						<type>TypeT</type>
 					</param>
 				</params>
 				<slots/>
@@ -31,17 +76,51 @@
 				<slots/>
 			</block>
 			<block>
+				<class>ComponentMethod</class>
+				<id>ComponentMethod_1</id>
+				<params>
+					<param>
+						Area Trigger.addEnterReaction
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>event</name>
+						<const>\ListenLocalEvent_2\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ComponentMethod</class>
+				<id>ComponentMethod_2</id>
+				<params>
+					<param>
+						Area Trigger.addExitReaction
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>event</name>
+						<const>\ListenLocalEvent_1\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>FinishScript</class>
 				<id>FinishScript_1</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>ComponentEvent</class>
-				<id>ComponentEvent_1</id>
+				<class>ComponentMethod</class>
+				<id>ComponentMethod_3</id>
 				<params>
 					<param>
-						Area Trigger.enterReaction
+						Area Trigger.removeEnterReaction
 						<name>Component Type</name>
 						<type>StringT</type>
 					</param>
@@ -49,39 +128,21 @@
 				<slots/>
 			</block>
 			<block>
-				<class>Sequence</class>
-				<id>Sequence_1</id>
+				<class>ComponentMethod</class>
+				<id>ComponentMethod_4</id>
 				<params>
 					<param>
-						2
-						<name>Output Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Sequence</class>
-				<id>Sequence_2</id>
-				<params>
-					<param>
-						2
-						<name>Output Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentEvent</class>
-				<id>ComponentEvent_2</id>
-				<params>
-					<param>
-						Area Trigger.exitReaction
+						Area Trigger.removeExitReaction
 						<name>Component Type</name>
 						<type>StringT</type>
 					</param>
 				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>StopPlan</class>
+				<id>StopPlan_1</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -122,6 +183,10 @@
 						<const>\true\</const>
 					</slot>
 					<slot>
+						<name>oneTimeEffect</name>
+						<const>\false\</const>
+					</slot>
+					<slot>
 						<name>translation</name>
 						<const>\0.000000, 0.000000, 0.000000\</const>
 					</slot>
@@ -136,108 +201,24 @@
 				</slots>
 			</block>
 			<block>
-				<class>StopPlan</class>
-				<id>StopPlan_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>FlowGate</class>
-				<id>FlowGate_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>openAtStart</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>RemoveGameObject</class>
-				<id>RemoveGameObject_1</id>
-				<params/>
+				<class>ContextGetSelf</class>
+				<id>ContextGetSelf_1</id>
+				<params>
+					<param>
+						CGFGameObjectContext
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						getSelf
+						<name>Member Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
 				<slots/>
 			</block>
 		</blocks>
 		<connections>
-			<connection>
-				<from>Sequence_1</from>
-				<input>activate</input>
-				<to>ComponentEvent_1</to>
-				<output>o0</output>
-			</connection>
-			<connection>
-				<from>Sequence_2</from>
-				<input>deactivate</input>
-				<to>ComponentEvent_1</to>
-				<output>o0</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>ComponentEvent_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>StartScript_1</from>
-				<input>input</input>
-				<to>Sequence_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>FinishScript_1</from>
-				<input>input</input>
-				<to>Sequence_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>Sequence_1</from>
-				<input>activate</input>
-				<to>ComponentEvent_2</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>Sequence_2</from>
-				<input>deactivate</input>
-				<to>ComponentEvent_2</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>ComponentEvent_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ComponentEvent_1</from>
-				<input>in</input>
-				<to>SpawnComponent_1</to>
-				<output>enterReaction</output>
-			</connection>
-			<connection>
-				<from>ComponentEvent_1</from>
-				<input>parent</input>
-				<to>SpawnComponent_1</to>
-				<output>arg#1</output>
-			</connection>
-			<connection>
-				<from>SpawnComponent_1</from>
-				<input>input</input>
-				<to>StopPlan_1</to>
-				<output>failure</output>
-			</connection>
-			<connection>
-				<from>ComponentEvent_2</from>
-				<input>input</input>
-				<to>FlowGate_1</to>
-				<output>exitReaction</output>
-			</connection>
-			<connection>
-				<from>SpawnComponent_1</from>
-				<input>open</input>
-				<to>FlowGate_1</to>
-				<output>out</output>
-			</connection>
 			<connection>
 				<from>FlowGate_1</from>
 				<input>in</input>
@@ -249,6 +230,96 @@
 				<input>gameObject</input>
 				<to>RemoveGameObject_1</to>
 				<output>object</output>
+			</connection>
+			<connection>
+				<from>ListenLocalEvent_1</from>
+				<input>input</input>
+				<to>FlowGate_1</to>
+				<output>exec</output>
+			</connection>
+			<connection>
+				<from>SpawnComponent_1</from>
+				<input>open</input>
+				<to>FlowGate_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>StartScript_1</from>
+				<input>in</input>
+				<to>ComponentMethod_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>ComponentMethod_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>ComponentMethod_1</from>
+				<input>in</input>
+				<to>ComponentMethod_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>ComponentMethod_2</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>FinishScript_1</from>
+				<input>in</input>
+				<to>ComponentMethod_3</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>ComponentMethod_3</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>ComponentMethod_1</from>
+				<input>arg#0</input>
+				<to>ComponentMethod_3</to>
+				<output>return</output>
+			</connection>
+			<connection>
+				<from>ComponentMethod_3</from>
+				<input>in</input>
+				<to>ComponentMethod_4</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>ComponentMethod_4</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>ComponentMethod_2</from>
+				<input>arg#0</input>
+				<to>ComponentMethod_4</to>
+				<output>return</output>
+			</connection>
+			<connection>
+				<from>SpawnComponent_1</from>
+				<input>input</input>
+				<to>StopPlan_1</to>
+				<output>failure</output>
+			</connection>
+			<connection>
+				<from>ListenLocalEvent_2</from>
+				<input>in</input>
+				<to>SpawnComponent_1</to>
+				<output>exec</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>parent</input>
+				<to>SpawnComponent_1</to>
+				<output>value</output>
 			</connection>
 		</connections>
 		<macros/>

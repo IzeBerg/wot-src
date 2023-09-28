@@ -17,7 +17,7 @@ class LootBoxesEntryPointWidget(ViewImpl, ICarouselEventEntry):
     __guiLootBoxes = dependency.descriptor(IGuiLootBoxesController)
 
     def __init__(self):
-        super(LootBoxesEntryPointWidget, self).__init__(ViewSettings(R.views.gui_lootboxes.lobby.gui_lootboxes.EntryPointView(), ViewFlags.COMPONENT, EntryPointViewModel()))
+        super(LootBoxesEntryPointWidget, self).__init__(ViewSettings(R.views.gui_lootboxes.lobby.gui_lootboxes.EntryPointView(), ViewFlags.VIEW, EntryPointViewModel()))
 
     @property
     def viewModel(self):

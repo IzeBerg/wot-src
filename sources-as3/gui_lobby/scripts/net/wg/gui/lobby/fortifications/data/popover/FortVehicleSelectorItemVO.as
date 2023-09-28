@@ -16,8 +16,6 @@ package net.wg.gui.lobby.fortifications.data.popover
       
       public var enabled:Boolean = true;
       
-      public var isFrozen:Boolean = false;
-      
       public function FortVehicleSelectorItemVO(param1:Object = null)
       {
          super(param1);

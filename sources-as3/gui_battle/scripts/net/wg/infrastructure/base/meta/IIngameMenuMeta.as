@@ -16,6 +16,8 @@ package net.wg.infrastructure.base.meta
       
       function onCounterNeedUpdateS() : void;
       
+      function bootcampClickS() : void;
+      
       function as_setServerSetting(param1:String, param2:String, param3:int) : void;
       
       function as_setServerStats(param1:String, param2:String) : void;
@@ -24,9 +26,13 @@ package net.wg.infrastructure.base.meta
       
       function as_removeCounter(param1:Array) : void;
       
-      function as_setMenuButtonsLabels(param1:String, param2:String, param3:String, param4:String) : void;
+      function as_setMenuButtonsLabels(param1:String, param2:String, param3:String, param4:String, param5:String, param6:String) : void;
       
-      function as_setMenuButtons(param1:Array) : void;
+      function as_showQuitButton(param1:Boolean) : void;
+      
+      function as_showBootcampButton(param1:Boolean) : void;
+      
+      function as_showHelpButton(param1:Boolean) : void;
       
       function as_setVisibility(param1:Boolean) : void;
    }

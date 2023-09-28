@@ -1,7 +1,6 @@
 package net.wg.gui.battle.views.destroyTimers
 {
    import flash.display.MovieClip;
-   import flash.filters.DropShadowFilter;
    import flash.text.TextField;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Time;
@@ -63,12 +62,8 @@ package net.wg.gui.battle.views.destroyTimers
       
       private static const DESC_TEXT_COLORS:Object = {
          "orange":16689972,
-         "gray":15626240,
-         "green":8442938,
-         "yellow":16689972
+         "green":8442938
       };
-      
-      private static const DESC_TEXT_FILTERS:Object = {"yellow":[new DropShadowFilter(0,0,12783619,1,8,8)]};
        
       
       public var graphicsSpr:TimerContainer = null;
@@ -97,14 +92,18 @@ package net.wg.gui.battle.views.destroyTimers
       
       private var _currentColor:String = "orange";
       
-      private var _fontSize:int = -1;
-      
       public function DestroyTimer()
       {
          super();
          stop();
          init(true,true);
          this._scheduler = App.utils.scheduler;
+      }
+      
+      override protected function initialize() : void
+      {
+         super.initialize();
+         iconSpr = this.graphicsSpr.iconSpr;
       }
       
       override protected function invokeAdditionalActionOnIntervalUpdate() : void
@@ -221,12 +220,6 @@ package net.wg.gui.battle.views.destroyTimers
          super.pauseRadialTimer();
       }
       
-      override protected function initialize() : void
-      {
-         super.initialize();
-         iconSpr = this.graphicsSpr.iconSpr;
-      }
-      
       public function cropSize() : Boolean
       {
          return false;
@@ -258,7 +251,6 @@ package net.wg.gui.battle.views.destroyTimers
          this._typeId = param1.typeId;
          currentIconName = param1.iconName;
          currentIconOffsetY = param1.iconOffsetY;
-         name = param1.iconName;
          this.setStaticText(Values.EMPTY_STR,param1.text);
          var _loc2_:String = param1.color;
          if(StringUtils.isNotEmpty(_loc2_))
@@ -266,8 +258,6 @@ package net.wg.gui.battle.views.destroyTimers
             this._currentColor = _loc2_;
             this.updateColor();
          }
-         this._fontSize = param1.descriptionFontSize;
-         this.desc.textOffsetY = param1.descriptionOffsetY;
          isReversedTimerDirection = param1.isReversedTimerDirection;
          updateIcon();
          this.setStaticText(Values.EMPTY_STR,param1.description);
@@ -276,7 +266,6 @@ package net.wg.gui.battle.views.destroyTimers
       public function setStaticText(param1:String, param2:String = "") : void
       {
          this.desc.label = param2;
-         this.desc.fontSize = this._fontSize;
       }
       
       public function setTimerFx(param1:ISecondaryTimerFX) : void
@@ -387,9 +376,7 @@ package net.wg.gui.battle.views.destroyTimers
       private function updateColor() : void
       {
          this.graphicsSpr.setColor(this._currentColor);
-         iconSpr = this.graphicsSpr.iconSpr;
          this.desc.textColor = DESC_TEXT_COLORS[this._currentColor];
-         this.desc.textFilters = DESC_TEXT_FILTERS[this._currentColor];
       }
       
       private function clearTweenX() : void

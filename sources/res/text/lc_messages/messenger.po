@@ -1,11 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: World Of Tanks\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-01 10:00+0300\n"
-"PO-Revision-Date: 2010-06-07 10:57+0200\n"
-"Last-Translator: WoT Translator <<noreply@wargaming.net>\n"
-"Language-Team: WoT Team <noreply@wargaming.net>\n"
+"Project-Id-Version: Mir tankov\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -875,7 +873,7 @@ msgid "dialogs/serviceChannel/title"
 msgstr "Служебный канал"
 
 msgid "dialogs/simpleSquad/epicBattle/VehicleRestriction"
-msgstr "Выберите машину VIII уровня"
+msgstr "Выберите машину %(level)s уровня"
 
 msgid "dialogs/squadChannel/headerMsg/battleRoyaleHint"
 msgstr "Основная задача — остаться последним выжившим взводом."
@@ -883,7 +881,7 @@ msgstr "Основная задача — остаться последним �
 msgid "dialogs/squadChannel/headerMsg/epicBattleFormationRestriction"
 msgstr ""
 "Режим «Линия фронта» доступен\n"
-"только для техники VIII уровня."
+"только для техники %(level)s уровня."
 
 msgid "dialogs/squadChannel/headerMsg/eventFormationRestriction"
 msgstr ""
@@ -2087,7 +2085,7 @@ msgstr ""
 msgid "serviceChannelMessages/battleResults/rankedState/leagueEarned"
 msgstr ""
 " \n"
-"Переход в лиги"
+"Вы прошли ранговый сезон"
 
 msgid "serviceChannelMessages/battleResults/rankedState/nothingChanged"
 msgstr ""
@@ -2590,6 +2588,10 @@ msgstr ""
 "Ставка, которую вы сделали, оказалась ниже ставок других игроков. Сумма "
 "ставки вернётся на ваш аккаунт в ближайшее время."
 
+msgid "serviceChannelMessages/integratedAuction/rateEqual/text"
+msgstr ""
+"Ставка, которую вы сделали, оказалась равна итоговой аукционной цене товара."
+
 msgid "serviceChannelMessages/integratedAuction/rateError/header"
 msgstr "Ошибка"
 
@@ -2609,6 +2611,14 @@ msgstr "Успейте сделать ставку. Количество тов�
 
 msgid "serviceChannelMessages/integratedAuction/stageStart/title"
 msgstr "Торги за новые лоты уже начались!"
+
+msgid "serviceChannelMessages/integratedAuction/winRate/header"
+msgstr "Ставка выиграла. К возврату:"
+
+msgid "serviceChannelMessages/integratedAuction/winRate/text"
+msgstr ""
+"Ставка, которую вы сделали, оказалась выше аукционной цены товара. Разница "
+"ставки и аукционной цены вернётся на ваш аккаунт в ближайшее время."
 
 msgid "serviceChannelMessages/invoiceReceived/berthsAccrued"
 msgstr "Добавлены койки в Казарму"

@@ -2,7 +2,6 @@ package net.wg.gui.battle.views.minimap
 {
    import flash.display.Sprite;
    import flash.utils.Dictionary;
-   import net.wg.data.constants.generated.BATTLE_MINIMAP_CONSTS;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.events.UILoaderEvent;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
@@ -19,18 +18,10 @@ package net.wg.gui.battle.views.minimap
       
       private var _images:Dictionary;
       
-      private var _effectLayer:Sprite;
-      
-      private var _alertLayer:Sprite;
-      
       public function ScenarioLayer()
       {
          this._images = new Dictionary();
-         this._effectLayer = new Sprite();
-         this._alertLayer = new Sprite();
          super();
-         addChild(this._effectLayer);
-         addChild(this._alertLayer);
       }
       
       public function clearScenarioEvent(param1:String) : void
@@ -52,8 +43,6 @@ package net.wg.gui.battle.views.minimap
          }
          App.utils.data.cleanupDynamicObject(this._images);
          this._images = null;
-         this._effectLayer = null;
-         this._alertLayer = null;
       }
       
       public function isDisposed() : Boolean
@@ -61,31 +50,23 @@ package net.wg.gui.battle.views.minimap
          return this._disposed;
       }
       
-      public function setScenarioEvent(param1:String, param2:String, param3:String) : void
+      public function setScenarioEvent(param1:String, param2:String) : void
       {
-         var _loc4_:UILoaderAlt = null;
+         var _loc3_:UILoaderAlt = null;
          if(this._images.hasOwnProperty(param1))
          {
-            _loc4_ = this._images[param1];
+            _loc3_ = this._images[param1];
          }
          else
          {
-            _loc4_ = new UILoaderAlt();
-            _loc4_.autoSize = false;
-            switch(param3)
-            {
-               case BATTLE_MINIMAP_CONSTS.SCENARIO_EVENT_ALERT:
-                  this._alertLayer.addChild(_loc4_);
-                  break;
-               case BATTLE_MINIMAP_CONSTS.SCENARIO_EVENT_EFFECT:
-               default:
-                  this._effectLayer.addChild(_loc4_);
-            }
-            this._images[param1] = _loc4_;
+            _loc3_ = new UILoaderAlt();
+            _loc3_.autoSize = false;
+            addChild(_loc3_);
+            this._images[param1] = _loc3_;
          }
-         _loc4_.addEventListener(UILoaderEvent.COMPLETE,this.onImageCompleteHandler);
-         _loc4_.visible = false;
-         _loc4_.source = param2;
+         _loc3_.addEventListener(UILoaderEvent.COMPLETE,this.onImageCompleteHandler);
+         _loc3_.visible = false;
+         _loc3_.source = param2;
       }
       
       public function setScenarioEventVisible(param1:String, param2:Boolean) : void
@@ -101,10 +82,10 @@ package net.wg.gui.battle.views.minimap
          var _loc3_:UILoaderAlt = null;
          this._w = param1;
          this._h = param2;
-         this.width = this._alertLayer.width = this._effectLayer.width = this._w;
-         this.height = this._alertLayer.height = this._effectLayer.height = this._h;
-         scaleX = this._alertLayer.scaleX = this._effectLayer.scaleX = 1;
-         scaleY = this._alertLayer.scaleY = this._effectLayer.scaleY = 1;
+         this.width = this._w;
+         this.height = this._h;
+         scaleX = 1;
+         scaleY = 1;
          for each(_loc3_ in this._images)
          {
             _loc3_.width = this._w;
@@ -115,7 +96,7 @@ package net.wg.gui.battle.views.minimap
       private function cleanImage(param1:UILoaderAlt) : void
       {
          param1.removeEventListener(UILoaderEvent.COMPLETE,this.onImageCompleteHandler);
-         param1.parent.removeChild(param1);
+         removeChild(param1);
          param1.dispose();
          param1 = null;
       }

@@ -21,8 +21,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       private static const COLOR_GREEN:String = "green";
       
       private static const COLOR_YELLOW:String = "yellow";
-      
-      private static const COLOR_ORANGE:String = "orange";
        
       
       public var marker:MovieClip = null;
@@ -30,8 +28,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       public var distanceFieldGreen:TextField = null;
       
       public var distanceFieldYellow:TextField = null;
-      
-      public var distanceFieldOrange:TextField = null;
       
       public var bgShadow:Sprite = null;
       
@@ -59,10 +55,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this._distanceTF = this.distanceFieldGreen;
          this.distanceFieldGreen.visible = false;
          this.distanceFieldYellow.visible = false;
-         this.distanceFieldOrange.visible = false;
          TextFieldEx.setNoTranslate(this.distanceFieldGreen,true);
          TextFieldEx.setNoTranslate(this.distanceFieldYellow,true);
-         TextFieldEx.setNoTranslate(this.distanceFieldOrange,true);
       }
       
       override protected function onDispose() : void
@@ -79,7 +73,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.marker = null;
          this.distanceFieldGreen = null;
          this.distanceFieldYellow = null;
-         this.distanceFieldOrange = null;
          this.bgShadow = null;
          this.clearTween();
          this._distanceTF = null;
@@ -120,20 +113,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this._minDistance = param2;
          this._alphaZone = param3 - param2;
          this._distance = !isNaN(param4) ? Number(Math.round(param4)) : Number(-1);
-         switch(param6)
-         {
-            case COLOR_GREEN:
-               this._distanceTF = this.distanceFieldGreen;
-               break;
-            case COLOR_YELLOW:
-               this._distanceTF = this.distanceFieldYellow;
-               break;
-            case COLOR_ORANGE:
-               this._distanceTF = this.distanceFieldOrange;
-               break;
-            default:
-               this._distanceTF = this.distanceFieldGreen;
-         }
+         this._distanceTF = param6 == COLOR_GREEN ? this.distanceFieldGreen : this.distanceFieldYellow;
          this._metersString = param5;
          this._distanceTF.visible = true;
          if(initialized)

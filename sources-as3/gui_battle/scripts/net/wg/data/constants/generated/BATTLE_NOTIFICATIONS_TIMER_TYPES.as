@@ -9,10 +9,6 @@ package net.wg.data.constants.generated
       
       public static const DANGER_ZONE:String = "dangerZone";
       
-      public static const WARNING_ZONE:String = "warningZone";
-      
-      public static const MAP_DEATH_ZONE:String = "mapDeathZone";
-      
       public static const OVERTURNED:String = "overturned";
       
       public static const FIRE:String = "fire";
@@ -88,8 +84,6 @@ package net.wg.data.constants.generated
       public static const POI_CAPTURING_INTERRUPTED:String = "PoICapturingInterrupted";
       
       public static const POI_BLOCKED_NOT_INVADER:String = "PoIBlockedNotInvader";
-      
-      public static const POI_BLOCKED_OVERTURNED:String = "PoIBlockedOverturned";
       
       public static const COMP7_RISKY_ATTACK:String = "riskyAttack";
       

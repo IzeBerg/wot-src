@@ -335,6 +335,10 @@ package net.wg.gui.components.windows
          {
             y = App.appHeight - this.bgForm.y;
          }
+         if(this.titleBtnEx != null)
+         {
+            this.titleBtnEx.checkHitTestPoint();
+         }
       }
       
       public function onStartDrag() : void

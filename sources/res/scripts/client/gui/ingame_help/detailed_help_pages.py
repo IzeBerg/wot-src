@@ -19,7 +19,7 @@ _logger = logging.getLogger(__name__)
 
 class HelpPagePriority(object):
     DEFAULT = 0
-    MAPBOX = 1
+    MAPS = 1
     TRACK_WITHIN_TRACK = 2
     ROCKET_ACCELERATION = 3
     TURBOSHAFT_ENGINE = 4
@@ -405,16 +405,16 @@ class MapboxPagesBuilder(DetailedHelpPagesBuilder):
 
     @classmethod
     def priority(cls):
-        return HelpPagePriority.MAPBOX
+        return HelpPagePriority.MAPS
 
     @classmethod
     def buildPages(cls, ctx):
         pages = []
         header = backport.text(cls._STR_PATH.headerTitle())
         hintCtx = HelpHintContext.MAPBOX
-        addPage(pages, header, backport.text(cls._STR_PATH.markers.title()), text_styles.mainBig(backport.text(cls._STR_PATH.markers.description())), [], [], backport.image(R.images.gui.maps.icons.battleHelp.mapbox.markers()), hintCtx)
-        addPage(pages, header, backport.text(cls._STR_PATH.environment.title()), text_styles.mainBig(backport.text(cls._STR_PATH.environment.description())), [], [], backport.image(R.images.gui.maps.icons.battleHelp.mapbox.environment()), hintCtx)
-        addPage(pages, header, backport.text(cls._STR_PATH.artefacts.title()), text_styles.mainBig(backport.text(cls._STR_PATH.artefacts.description())), [], [], backport.image(R.images.gui.maps.icons.battleHelp.mapbox.artefacts()), hintCtx)
+        addPage(pages, header, backport.text(cls._STR_PATH.markers.title()), text_styles.mainBig(backport.text(cls._STR_PATH.markers.description())), [], [], backport.image(R.images.gui.maps.icons.battleHelp.mapbox.markers()), hintCtx=hintCtx)
+        addPage(pages, header, backport.text(cls._STR_PATH.environment.title()), text_styles.mainBig(backport.text(cls._STR_PATH.environment.description())), [], [], backport.image(R.images.gui.maps.icons.battleHelp.mapbox.environment()), hintCtx=hintCtx)
+        addPage(pages, header, backport.text(cls._STR_PATH.artefacts.title()), text_styles.mainBig(backport.text(cls._STR_PATH.artefacts.description())), [], [], backport.image(R.images.gui.maps.icons.battleHelp.mapbox.artefacts()), hintCtx=hintCtx)
         return pages
 
     @classmethod
@@ -422,8 +422,30 @@ class MapboxPagesBuilder(DetailedHelpPagesBuilder):
         ctx['isMapbox'] = arenaVisitor.getArenaGuiType() == ARENA_GUI_TYPE.MAPBOX
 
 
+class DevMapsPagesBuilder(DetailedHelpPagesBuilder):
+    _SUITABLE_CTX_KEYS = ('isDevMaps', )
+    _STR_PATH = R.strings.ingame_help.detailsHelp.devMaps
+
+    @classmethod
+    def priority(cls):
+        return HelpPagePriority.MAPS
+
+    @classmethod
+    def buildPages(cls, ctx):
+        pages = []
+        header = backport.text(cls._STR_PATH.headerTitle())
+        hintCtx = HelpHintContext.DEV_MAPS
+        addPage(pages, header, backport.text(cls._STR_PATH.title()), text_styles.mainBig(backport.text(cls._STR_PATH.markers.description())), [], [], backport.image(R.images.gui.maps.icons.battleHelp.devMaps.markers()), hintCtx=hintCtx)
+        addPage(pages, header, backport.text(cls._STR_PATH.title()), text_styles.mainBig(backport.text(cls._STR_PATH.zone.description())), [], [], backport.image(R.images.gui.maps.icons.battleHelp.devMaps.zone()), hintCtx=hintCtx)
+        return pages
+
+    @classmethod
+    def _collectHelpCtx(cls, ctx, arenaVisitor, vehicle):
+        ctx['isDevMaps'] = arenaVisitor.extra.isMapsInDevelopmentEnabled()
+
+
 registerIngameHelpPagesBuilders((
  SiegeModePagesBuilder, BurnOutPagesBuilder, WheeledPagesBuilder, TrackWithinTrackPagesBuilder,
  DualGunPagesBuilder, BattleRoyalePagesBuilder, TurboshaftEnginePagesBuilder, RoleTypePagesBuilder,
- RocketAccelerationPagesBuilder, Comp7PagesBuilder, MapboxPagesBuilder, DualAccuracyPagesBuilder,
- FlameTankPagesBuilder))
+ RocketAccelerationPagesBuilder, Comp7PagesBuilder, MapboxPagesBuilder,
+ DualAccuracyPagesBuilder, DevMapsPagesBuilder, FlameTankPagesBuilder))

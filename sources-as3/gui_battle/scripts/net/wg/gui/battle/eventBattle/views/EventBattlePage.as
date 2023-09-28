@@ -6,7 +6,6 @@ package net.wg.gui.battle.eventBattle.views
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.data.constants.generated.BATTLE_VIEW_ALIASES;
    import net.wg.data.constants.generated.DAMAGE_INFO_PANEL_CONSTS;
-   import net.wg.gui.battle.components.StatusNotificationsPanel;
    import net.wg.gui.battle.eventBattle.views.battleHints.EventBattleHint;
    import net.wg.gui.battle.eventBattle.views.battleHints.EventObjectives;
    import net.wg.gui.battle.eventBattle.views.buffsPanel.BuffsPanel;
@@ -20,6 +19,7 @@ package net.wg.gui.battle.eventBattle.views
    import net.wg.gui.battle.views.consumablesPanel.events.ConsumablesPanelEvent;
    import net.wg.gui.battle.views.damageInfoPanel.DamageInfoPanel;
    import net.wg.gui.battle.views.debugPanel.DebugPanel;
+   import net.wg.gui.battle.views.destroyTimers.EventDestroyTimersPanel;
    import net.wg.gui.battle.views.radialMenu.RadialMenu;
    import net.wg.gui.battle.views.sixthSense.SixthSense;
    import net.wg.gui.components.battleDamagePanel.BattleDamageLogPanel;
@@ -55,7 +55,7 @@ package net.wg.gui.battle.eventBattle.views
       
       public var consumablesPanel:ConsumablesPanel = null;
       
-      public var statusNotificationsPanel:StatusNotificationsPanel = null;
+      public var destroyTimersPanel:EventDestroyTimersPanel = null;
       
       public var hintPanel:HintPanel = null;
       
@@ -106,7 +106,7 @@ package net.wg.gui.battle.eventBattle.views
          this.sixthSense.x = _loc3_;
          this.sixthSense.y = param2 >> 2;
          this.consumablesPanel.updateStage(param1,param2);
-         this.statusNotificationsPanel.updateStage(param1,param2);
+         this.destroyTimersPanel.updateStage(param1,param2);
          this.damageInfoPanel.y = (param2 >> 1) / scaleY + DAMAGE_INFO_PANEL_CONSTS.HEIGHT * scaleY | 0;
          this.damageInfoPanel.x = param1 - DAMAGE_INFO_PANEL_CONSTS.WIDTH >> 1;
          this.radialMenu.updateStage(param1,param2);
@@ -144,7 +144,7 @@ package net.wg.gui.battle.eventBattle.views
          registerComponent(this.sixthSense,BATTLE_VIEW_ALIASES.SIXTH_SENSE);
          registerComponent(this.battleMessenger,BATTLE_VIEW_ALIASES.BATTLE_MESSENGER);
          registerComponent(this.consumablesPanel,BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL);
-         registerComponent(this.statusNotificationsPanel,BATTLE_VIEW_ALIASES.STATUS_NOTIFICATIONS_PANEL);
+         registerComponent(this.destroyTimersPanel,BATTLE_VIEW_ALIASES.TIMERS_PANEL);
          registerComponent(this.hintPanel,BATTLE_VIEW_ALIASES.HINT_PANEL);
          registerComponent(this.damageInfoPanel,BATTLE_VIEW_ALIASES.DAMAGE_INFO_PANEL);
          registerComponent(this.fullStats,BATTLE_VIEW_ALIASES.EVENT_STATS);
@@ -173,7 +173,7 @@ package net.wg.gui.battle.eventBattle.views
          this.debugPanel = null;
          this.battleDamageLogPanel = null;
          this.sixthSense = null;
-         this.statusNotificationsPanel = null;
+         this.destroyTimersPanel = null;
          this.damageInfoPanel = null;
          this.fullStats = null;
          this.radialMenu = null;

@@ -17,10 +17,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       private var _scale:Number = 1;
       
-      private var _isSecondary:Boolean = false;
-      
-      private const SECONDARY_ALPHA_MULTIPLAYER:Number = 0.33;
-      
       public function GunMarker()
       {
          super();
@@ -35,7 +31,7 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          }
          if(isInvalid(GunMarkerConsts.GUN_MIXING_ALPHA_VALIDATION))
          {
-            this.radiusMC.alpha = !!this._isSecondary ? Number(this._mixingAlpha * this.SECONDARY_ALPHA_MULTIPLAYER) : Number(this._mixingAlpha);
+            this.radiusMC.alpha = this._mixingAlpha;
          }
          if(isInvalid(GunMarkerConsts.GUN_SCALE_VALIDATION))
          {
@@ -61,13 +57,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       public function setColor(param1:String) : void
       {
          this.gunTag.setColor(param1);
-      }
-      
-      public function setIsSecondary(param1:Boolean) : void
-      {
-         this._isSecondary = param1;
-         this.gunTag.visible = !param1;
-         invalidate(GunMarkerConsts.GUN_MIXING_ALPHA_VALIDATION);
       }
       
       public function setMixingScale(param1:Number) : void
@@ -100,18 +89,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          {
             this._mixingAlpha = param4;
             invalidate(GunMarkerConsts.GUN_MIXING_ALPHA_VALIDATION);
-         }
-      }
-      
-      public function setDualAccActive(param1:Boolean) : void
-      {
-         if(this._isSecondary)
-         {
-            this.radiusMC.visible = param1;
-         }
-         else
-         {
-            this.radiusMC.setThickness(!!param1 ? GunMarkerDispersionCircle.BOLD : GunMarkerDispersionCircle.THIN);
          }
       }
    }

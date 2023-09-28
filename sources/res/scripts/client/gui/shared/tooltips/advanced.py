@@ -89,7 +89,7 @@ class BaseAdvancedTooltip(BlocksTooltipData):
             items = [
              formatters.packTextBlockData(text=text_styles.highTitle(header), padding=formatters.packPadding(left=20, top=20)),
              formatters.packImageBlockData(BaseAdvancedTooltip.getMovieAnimationPath(movie), BLOCKS_TOOLTIP_TYPES.ALIGN_LEFT, padding=5, linkage=BLOCKS_TOOLTIP_TYPES.TOOLTIP_ADVANCED_CLIP_BLOCK_LINKAGE),
-             formatters.packTextBlockData(text=text_styles.main(descrText), padding=formatters.packPadding(left=20, top=10, bottom=20))]
+             formatters.packTextBlockData(text=text_styles.main(descrText), padding=formatters.packPadding(left=20, top=10, bottom=20, right=0))]
         return items
 
 
@@ -172,13 +172,7 @@ class HangarModuleAdvanced(BaseAdvancedTooltip):
 class TankmanPreviewTooltipAdvanced(BaseAdvancedTooltip):
 
     def _packBlocks(self, role, *args, **kwargs):
-        return self._packAdvancedBlocks(_TANKMAN_MOVIES[role], ITEM_TYPES.tankman_roles(role), role)
-
-
-class TankmanTooltipAdvanced(BaseAdvancedTooltip):
-
-    def _getBlocksList(self, *args, **kwargs):
-        return self._packAdvancedBlocks(_TANKMAN_MOVIES[self._item.role], self._item.roleUserName, self._item.role)
+        return self._packAdvancedBlocks(TANKMAN_MOVIES[role], ITEM_TYPES.tankman_roles(role), role)
 
 
 class VehicleParametersAdvanced(ToolTipBaseData):
@@ -311,7 +305,7 @@ MODULE_MOVIES = {'largeRepairkit': 'consumablesRepairKitBig',
    'additionalInvisibilityDevice': 'equipmentLowNoiseExhaustSystem', 
    'improvedConfiguration': 'equipmentModifiedConfiguration', 
    'turbocharger': 'equipmentTurbocharger'}
-_TANKMAN_MOVIES = {'commander': 'crewCommander', 
+TANKMAN_MOVIES = {'commander': 'crewCommander', 
    'driver': 'crewDriver', 
    'gunner': 'crewGunner', 
    'loader': 'crewLoader', 

@@ -25,8 +25,6 @@ package
       
       public static const MISSIONS_TAB_BATTLEMATTERS:String = "#quests:missions/tab/battleMatters";
       
-      public static const MISSIONS_TAB_WINBACK:String = "#quests:missions/tab/winback";
-      
       public static const MISSIONS_FILTERCOUNTER_CLOSEBUTTON:String = "#quests:missions/filterCounter/closeButton";
       
       public static const MISSIONS_FILTER_FILTERBUTTON:String = "#quests:missions/filter/filterButton";
@@ -108,8 +106,6 @@ package
       public static const BONUSES_ITEM_PREMIUMPLUS:String = "#quests:bonuses/item/premiumPlus";
       
       public static const BONUSES_ITEM_CREWSKIN:String = "#quests:bonuses/item/crewSkin";
-      
-      public static const BONUSES_ITEM_LOOTBOXES:String = "#quests:bonuses/item/lootBoxes";
       
       public static const BONUSNAME_BLUEPRINTS_ANY:String = "#quests:bonusName/blueprints/any";
       
@@ -476,10 +472,6 @@ package
       public static const DETAILS_REQUIREMENTS_NOTPREMIUMACCOUNT:String = "#quests:details/requirements/notPremiumAccount";
       
       public static const DETAILS_REQUIREMENTS_PREMIUMPLUSACCOUNT:String = "#quests:details/requirements/premiumPlusAccount";
-      
-      public static const DETAILS_REQUIREMENTS_WOTPLUS:String = "#quests:details/requirements/wotPlus";
-      
-      public static const DETAILS_REQUIREMENTS_WITHOUTWOTPLUS:String = "#quests:details/requirements/withoutWotPlus";
       
       public static const DETAILS_REQUIREMENTS_INCLAN:String = "#quests:details/requirements/inClan";
       
@@ -2107,10 +2099,6 @@ package
       
       public static const MISSIONS_TAB_DAILY_BODY:String = "#quests:missions/tab/daily/body";
       
-      public static const MISSIONS_TAB_WINBACK_HEADER:String = "#quests:missions/tab/winback/header";
-      
-      public static const MISSIONS_TAB_WINBACK_BODY:String = "#quests:missions/tab/winback/body";
-      
       public static const MISSIONS_TAB_BATTLE_PASS_BODY:String = "#quests:missions/tab/battle_pass/body";
       
       public static const MISSIONS_TAB_BATTLE_PASS_HEADER:String = "#quests:missions/tab/battle_pass/header";
@@ -2298,8 +2286,6 @@ package
       public static const MISSIONDETAILS_NEXTPAGEBTN_LABEL:String = "#quests:missionDetails/nextPageBtn/label";
       
       public static const MISSIONDETAILS_PREVPAGEBTN_LABEL:String = "#quests:missionDetails/prevPageBtn/label";
-      
-      public static const MISSIONS_TOKENPOPOVER_HEADER:String = "#quests:missions/tokenPopover/header";
       
       public static const MISSIONS_TOKENPOPOVER_DESCR:String = "#quests:missions/tokenPopover/descr";
       
@@ -2527,8 +2513,6 @@ package
       
       public static const BONUSNAME_BATTLE_BONUS_X5:String = "#quests:bonusName/battle_bonus_x5";
       
-      public static const BONUSNAME_CREW_BONUS_X3:String = "#quests:bonusName/crew_bonus_x3";
-      
       public static const BONUSNAME_BATTLEPASSPOINTS:String = "#quests:bonusName/battlePassPoints";
       
       public static const BONUSNAME_BATTLEPASSPOINTS_PREVIEW:String = "#quests:bonusName/battlePassPoints/preview";
@@ -2544,8 +2528,6 @@ package
       public static const BONUSNAME_FREE_EQUIPMENT_DEMOUNTING:String = "#quests:bonusName/free_equipment_demounting";
       
       public static const BONUSNAME_EXCLUSIVE_VEHICLE:String = "#quests:bonusName/exclusive_vehicle";
-      
-      public static const BONUSNAME_ATTENDANCE_REWARD:String = "#quests:bonusName/attendance_reward";
       
       public static const ACTION_AUTO_CALENDAR:String = "#quests:action/auto/calendar";
       
@@ -3424,16 +3406,6 @@ package
       public static const DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP:String = "#quests:details/conditions/cumulative/damagedHp";
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_COMP7PRESTIGEPOINTS:String = "#quests:details/conditions/cumulative/comp7PrestigePoints";
-      
-      public static const DEBUTBOXES_MISSIONS_HEADER_CAPTION1:String = "#quests:debutBoxes/missions/header/caption1";
-      
-      public static const DEBUTBOXES_MISSIONS_HEADER_CAPTION2:String = "#quests:debutBoxes/missions/header/caption2";
-      
-      public static const DEBUTBOXES_MISSIONS_HEADER_CAPTION3:String = "#quests:debutBoxes/missions/header/caption3";
-      
-      public static const DEBUTBOXES_MISSIONS_HEADER_DISABLED:String = "#quests:debutBoxes/missions/header/disabled";
-      
-      public static const DEBUTBOXES_MISSIONS_HEADER_INFO:String = "#quests:debutBoxes/missions/header/info";
       
       public static const BATTLECONDITION_STATE_ENUM:Array = [BATTLECONDITION_STATE_COMPLETED,BATTLECONDITION_STATE_COMPLETED_PERFECTLY,BATTLECONDITION_STATE_IN_PROGRESS,BATTLECONDITION_STATE_FAILED];
       

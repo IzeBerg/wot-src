@@ -54,7 +54,7 @@ package net.wg.gui.battle.views.actionMarkers
          }
          this.replyMarker.visible = false;
          this.replyMarker.setReplyElementPosition(this.getReplyPosition);
-         var _loc2_:Class = getDefinitionByName(this.stickyMarkerClassLinkage) as Class;
+         var _loc2_:Class = getDefinitionByName(Linkages.STICKY_MARKER_UI) as Class;
          this.stickyMarker = new _loc2_();
          if(this.stickyMarker)
          {
@@ -65,11 +65,6 @@ package net.wg.gui.battle.views.actionMarkers
          this.stickyMarker.setTextLabelPosition(this.getDistanceToMarkerPosition);
          this.stickyMarker.setArrowVisible(true);
          this.stickyMarker.setArrowPosition(this.getArrowPosition);
-      }
-      
-      protected function get stickyMarkerClassLinkage() : String
-      {
-         return Linkages.STICKY_MARKER_UI;
       }
       
       public function setTextLabelEnabled(param1:Boolean) : void

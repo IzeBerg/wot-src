@@ -63,7 +63,6 @@ package net.wg.gui.battle.epicBattle.views.stats
       override protected function configUI() : void
       {
          super.configUI();
-         this.statsTable.generalBonus.visible = false;
          this.statsTable.statsFilters.btnTabPlayerLane.selected = true;
          this.statsTable.statsFilters.addEventListener(EpicFullStatsEvent.FILTER_CHANGED,this.onFilterChangedHandler);
          this._tableCtrl.setupSquadElements();
@@ -106,28 +105,13 @@ package net.wg.gui.battle.epicBattle.views.stats
          this.applyInteractivity();
       }
       
-      public function resetFrags() : void
-      {
-      }
-      
-      public function as_setGeneralBonus(param1:Number) : void
-      {
-         var _loc2_:Boolean = false;
-         _loc2_ = param1 > 0;
-         this.statsTable.generalBonus.visible = _loc2_;
-         if(_loc2_)
-         {
-            this.statsTable.generalBonus.bonusValue = param1;
-         }
-      }
-      
       public function setArenaInfo(param1:IDAAPIDataClass) : void
       {
          var _loc2_:DAAPIArenaInfoVO = DAAPIArenaInfoVO(param1);
          this.header.updateMapName(_loc2_.mapName);
          this.header.setBattleTypeName(_loc2_.battleTypeLocaleStr);
          this.header.updateWinText(_loc2_.winText);
-         this.header.setBattleTypeIconPath(_loc2_.battleTypeIconPathBig);
+         this.header.setBattleTypeFrameName(_loc2_.battleTypeFrameLabel);
          this.statsTable.team1TF.text = _loc2_.allyTeamName;
          this.statsTable.team2TF.text = _loc2_.enemyTeamName;
       }
@@ -177,6 +161,10 @@ package net.wg.gui.battle.epicBattle.views.stats
          this._tableCtrl.setVehiclesData(_loc3_,_loc2_.rightVehiclesIDs,true);
       }
       
+      public function resetFrags() : void
+      {
+      }
+      
       public function updateEpicPlayerStats(param1:EpicPlayerStatsVO) : void
       {
          this._tableCtrl.currentLane = param1.lane;
@@ -216,23 +204,18 @@ package net.wg.gui.battle.epicBattle.views.stats
       
       public function updateStageSize(param1:Number, param2:Number) : void
       {
-         var _loc3_:Number = NaN;
-         _loc3_ = param1 >> 1;
-         var _loc4_:Number = param2 >> 1;
+         var _loc4_:Number = NaN;
+         var _loc3_:Number = param1 >> 1;
+         _loc4_ = param2 >> 1;
          this.header.modalBgSpr.width = param1;
          this.header.modalBgSpr.x = -_loc3_;
          this.statsTable.y = _loc4_ - TOP_TABLE_OFFSET * (param2 / MIN_HEIGHT);
-         this.statsTable.updateHeight(param2);
          this.modalBgSpr.width = param1;
          this.modalBgSpr.height = param2;
          this.modalBgSpr.x = -_loc3_;
          this.modalBgSpr.y = 0;
-         x = _loc3_;
-         y = 0;
-      }
-      
-      public function updateTriggeredChatCommands(param1:IDAAPIDataClass) : void
-      {
+         this.x = _loc3_;
+         this.y = 0;
       }
       
       public function updateUserTags(param1:IDAAPIDataClass) : void
@@ -256,6 +239,10 @@ package net.wg.gui.battle.epicBattle.views.stats
       }
       
       public function updateVehiclesStat(param1:IDAAPIDataClass) : void
+      {
+      }
+      
+      public function updateTriggeredChatCommands(param1:IDAAPIDataClass) : void
       {
       }
       

@@ -91,6 +91,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
     __battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
     __settingsCore = dependency.descriptor(ISettingsCore)
     activeGunIndex = property(lambda self: self.__activeGunIndex)
+    prevGunIndex = property(lambda self: self.__prevGunIndex)
 
     @property
     def speedInfo(self):
@@ -106,7 +107,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
 
     @property
     def isScout(self):
-        return 'scout' in self.typeDescriptor.type.tags
+        return self.typeDescriptor.type.isScout
 
     @property
     def isTrackWithinTrack(self):
@@ -193,6 +194,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.isUpgrading = False
         self.isForceReloading = False
         self.__activeGunIndex = None
+        self.__prevGunIndex = None
         self.refreshNationalVoice()
         self.__prevHealth = None
         self.__quickShellChangerIsActive = False
@@ -231,6 +233,8 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         result = g_stylesOverrider.overrideStyleForVehicle(self.typeDescriptor.name)
         if result is not None:
             outfitDescr = result
+        if forceReloading and oldTypeDescriptor is None:
+            oldTypeDescriptor = self.typeDescriptor
         if 'battle_royale' in self.typeDescriptor.type.tags:
             from InBattleUpgrades import onBattleRoyalePrerequisites
             if onBattleRoyalePrerequisites(self, oldTypeDescriptor):
@@ -885,6 +889,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             if self.typeDescriptor is not None and self.typeDescriptor.isDualgunVehicle:
                 if self.__activeGunIndex == activeGun:
                     return
+                self.__prevGunIndex = self.__activeGunIndex
                 self.__activeGunIndex = activeGun
                 swElapsedTime = switchTimes[2] - switchTimes[1]
                 afterShotDelay = self.typeDescriptor.gun.dualGun.afterShotDelay
@@ -1297,7 +1302,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.ownVehicle.update_remoteCamera(self.remoteCamera)
 
     def getVseContextInstance(self, contextName):
-        from visual_script_client.contexts.cgf_context import CGFGameObjectContext
+        from visual_script.contexts.cgf_context import CGFGameObjectContext
         if contextName == CGFGameObjectContext.__name__:
             if self.entityGameObject:
                 return CGFGameObjectContext(self.entityGameObject, ASPECT.CLIENT)

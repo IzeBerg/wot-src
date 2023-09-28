@@ -868,26 +868,6 @@ package
       public static const CLANLANDING_NOTIFICATION_ARCHIVED:String = "#clans:clanLanding/notification/archived";
       
       public static const CLANLANDING_NOTIFICATION_DELETED:String = "#clans:clanLanding/notification/deleted";
-      
-      public static const BANNER_TITLE:String = "#clans:banner/title";
-      
-      public static const BANNER_INFO_BATTLESEND:String = "#clans:banner/info/battlesEnd";
-      
-      public static const BANNER_INFO_BATTLESTODAY:String = "#clans:banner/info/battlesToday";
-      
-      public static const BANNER_INFO_BATTLESTOMORROW:String = "#clans:banner/info/battlesTomorrow";
-      
-      public static const BANNER_CHOOSETIME:String = "#clans:banner/chooseTime";
-      
-      public static const BANNER_SEASONDATE_SEASONNOTSTARTED:String = "#clans:banner/seasonDate/seasonNotStarted";
-      
-      public static const BANNER_SEASONDATE_SEASONLASTS:String = "#clans:banner/seasonDate/seasonLasts";
-      
-      public static const BANNER_TIMELEFT_HOURS:String = "#clans:banner/timeLeft/hours";
-      
-      public static const BANNER_TIMELEFT_MIN:String = "#clans:banner/timeLeft/min";
-      
-      public static const BANNER_PRIMETIME:String = "#clans:banner/primeTime";
        
       
       public function CLANS()

@@ -1,8 +1,9 @@
-import typing
+from typing import TYPE_CHECKING, Optional
 from skeletons.gui.shared.utils import requesters
-if typing.TYPE_CHECKING:
+if TYPE_CHECKING:
     from gui.shared.gui_items import ItemsCollection
     from gui.shared.gui_items.Tankman import Tankman
+    from gui.shared.gui_items.Vehicle import Vehicle
     from gui.veh_post_progression.models.progression import PostProgressionItem
     from items.vehicles import VehicleType
     from gui.shared.gui_items.dossier import AccountDossier
@@ -129,10 +130,19 @@ class IItemsRequester(requesters.IRequester):
     def getTankmen(self, criteria=None):
         raise NotImplementedError
 
+    def getInventoryTankmen(self, criteria=None):
+        raise NotImplementedError
+
     def getDismissedTankmen(self, criteria=None):
         raise NotImplementedError
 
     def removeUnsuitableTankmen(self, tankmen, criteria=None):
+        raise NotImplementedError
+
+    def tankmenInBarracksCount(self):
+        raise NotImplementedError
+
+    def freeTankmenBerthsCount(self):
         raise NotImplementedError
 
     def getItems(self, itemTypeID=None, criteria=None, nationID=None, onlyWithPrices=True):
@@ -241,6 +251,10 @@ class IHangarSpace(object):
         raise NotImplementedError
 
     @property
+    def isSelectionEnabled(self):
+        raise NotImplementedError
+
+    @property
     def isCursorOver3DScene(self):
         raise NotImplementedError
 
@@ -295,6 +309,9 @@ class IHangarSpace(object):
         raise NotImplementedError
 
     def getCentralPointForArea(self, areaID):
+        raise NotImplementedError
+
+    def setSelectionEnabled(self, enabled):
         raise NotImplementedError
 
     def getAnchorParams(self, slotId, areaId, regionId):

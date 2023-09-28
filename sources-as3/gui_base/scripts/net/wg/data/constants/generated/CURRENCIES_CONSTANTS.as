@@ -27,8 +27,6 @@ package net.wg.data.constants.generated
       
       public static const GOLD_COLOR:int = 16761699;
       
-      public static const GOLD_BIG_COLOR:int = 16768409;
-      
       public static const CREDITS_COLOR:int = 13556185;
       
       public static const CRYSTAL_COLOR:int = 13224374;

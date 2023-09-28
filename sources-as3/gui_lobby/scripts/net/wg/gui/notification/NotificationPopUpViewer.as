@@ -5,7 +5,6 @@ package net.wg.gui.notification
    import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.geom.Point;
-   import net.wg.data.Aliases;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.LAYER_NAMES;
    import net.wg.gui.notification.events.NotificationLayoutEvent;
@@ -26,11 +25,7 @@ package net.wg.gui.notification
       
       private static const DELAY:Number = 50;
       
-      private static const DEFAULT_PADDING:Point = new Point(5,40);
-      
-      private static const LAYERS_DEF_PADDING:Vector.<String> = new <String>[LAYER_NAMES.FULLSCREEN_WINDOWS,LAYER_NAMES.OVERLAY,LAYER_NAMES.TOP_SUB_VIEW];
-      
-      private static const EXCLUDED_VIEW_ALIASES:Vector.<String> = new <String>[Aliases.LOBBY_HANGAR,"customization","ammunitionSetupView"];
+      private static const DEFAULT_PADDING:Point = new Point(4,35);
        
       
       private var _pendingForDisplay:Vector.<PopUpNotificationInfoVO>;
@@ -60,8 +55,6 @@ package net.wg.gui.notification
       private var _containerMgr:IContainerManager = null;
       
       private var _countOverlayViews:int = 0;
-      
-      private var _countViewsWithExternalPadding:int = 0;
       
       public function NotificationPopUpViewer(param1:Class)
       {
@@ -120,7 +113,6 @@ package net.wg.gui.notification
                   _loc1_.addEventListener(ServiceMessageEvent.MESSAGE_BUTTON_CLICKED,this.onPopUpMessageButtonClickedHandler,false,0,true);
                   _loc1_.addEventListener(ServiceMessageEvent.MESSAGE_LINK_CLICKED,this.onPopUpMessageLinkClickedHandler,false,0,true);
                   _loc1_.addEventListener(ServiceMessagePopUp.EVENT_HIDED,this.onPopUpHidedHandler,false,0,true);
-                  _loc1_.addEventListener(Event.RESIZE,this.onPopUpResizeHandler);
                   _loc4_ += _loc2_;
                   this._displayingNowPopUps.splice(_loc7_,0,_loc1_);
                   _loc7_++;
@@ -335,7 +327,6 @@ package net.wg.gui.notification
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_AREA_CLICKED,this.onPopUpMessageAreaClickedHandler);
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_BUTTON_CLICKED,this.onPopUpMessageButtonClickedHandler);
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_LINK_CLICKED,this.onPopUpMessageLinkClickedHandler);
-         _loc4_.removeEventListener(Event.RESIZE,this.onPopUpResizeHandler);
          if(param3)
          {
             _loc5_ = PopUpNotificationInfoVO(_loc4_.data);
@@ -411,13 +402,6 @@ package net.wg.gui.notification
          }
       }
       
-      private function updatePadding() : void
-      {
-         var _loc1_:Boolean = this._countViewsWithExternalPadding > 0 && this._countOverlayViews == 0 && this._externalPadding;
-         var _loc2_:Point = !!_loc1_ ? this._externalPadding : DEFAULT_PADDING;
-         this.setPadding(_loc2_);
-      }
-      
       private function onSMContainerMouseOverHandler(param1:MouseEvent) : void
       {
          this.applyHiding(true);
@@ -447,12 +431,6 @@ package net.wg.gui.notification
          onClickActionS(param1.typeID,param1.entityID,param1.action);
       }
       
-      private function onPopUpResizeHandler(param1:Event) : void
-      {
-         this._arrangeLayout = true;
-         invalidate();
-      }
-      
       private function onPopUpHidedHandler(param1:Event) : void
       {
          var _loc2_:ServiceMessagePopUp = ServiceMessagePopUp(param1.target);
@@ -461,47 +439,36 @@ package net.wg.gui.notification
       
       private function onSmContainerUpdateLayoutHandler(param1:NotificationLayoutEvent) : void
       {
-         var _loc2_:Point = param1.padding;
-         if(this._externalPadding && _loc2_ && this._externalPadding.equals(_loc2_))
-         {
-            return;
-         }
-         this._externalPadding = _loc2_;
-         this.updatePadding();
+         this._externalPadding = param1.padding;
+         this.setPadding(param1.padding);
       }
       
       private function onContainerMgrViewLoadingHandler(param1:ContainerManagerEvent) : void
       {
-         var _loc2_:String = LAYER_NAMES.LAYER_ORDER[param1.layer];
-         var _loc3_:Boolean = EXCLUDED_VIEW_ALIASES.indexOf(param1.view.as_config.alias) != -1;
-         var _loc4_:Boolean = LAYERS_DEF_PADDING.indexOf(_loc2_) != -1 && !_loc3_;
-         if(!_loc3_ && !_loc4_)
+         var _loc2_:String = null;
+         var _loc3_:Boolean = false;
+         _loc2_ = LAYER_NAMES.LAYER_ORDER[param1.layer];
+         _loc3_ = _loc2_ == LAYER_NAMES.FULLSCREEN_WINDOWS || _loc2_ == LAYER_NAMES.DIALOGS;
+         var _loc4_:Boolean = _loc2_ == LAYER_NAMES.SUBVIEW || _loc3_;
+         if(_loc4_)
          {
-            return;
-         }
-         if(param1.type == ContainerManagerEvent.VIEW_ADDED)
-         {
-            if(_loc3_)
+            if(param1.type == ContainerManagerEvent.VIEW_ADDED)
             {
-               ++this._countViewsWithExternalPadding;
+               this.setPadding(DEFAULT_PADDING);
+               if(_loc3_)
+               {
+                  this._countOverlayViews += 1;
+               }
             }
-            if(_loc4_)
+            else if(param1.type == ContainerManagerEvent.VIEW_REMOVED && _loc3_)
             {
-               ++this._countOverlayViews;
-            }
-         }
-         else if(param1.type == ContainerManagerEvent.VIEW_REMOVED)
-         {
-            if(_loc3_)
-            {
-               --this._countViewsWithExternalPadding;
-            }
-            if(_loc4_)
-            {
-               --this._countOverlayViews;
+               this._countOverlayViews -= 1;
+               if(this._countOverlayViews == 0 && this._externalPadding)
+               {
+                  this.setPadding(this._externalPadding);
+               }
             }
          }
-         this.updatePadding();
       }
    }
 }

@@ -1,11 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: World Of Tanks\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-01 10:00+0300\n"
-"PO-Revision-Date: 2010-06-01 10:00+0300\n"
-"Last-Translator: WoT Translator <noreply@wargaming.net>\n"
-"Language-Team: WoT Team <noreply@wargaming.net>\n"
+"Project-Id-Version: Mir tankov\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,9 +62,6 @@ msgstr "?empty?"
 
 msgid "alertMessage/unsuitableVehicles"
 msgstr "В Ангаре нет подходящей техники"
-
-msgid "battleLoading/title"
-msgstr "Аркада: %(subModeName)s"
 
 msgid "battleResult/progressDescription"
 msgstr "1. %(triggerDescription)s."
@@ -193,7 +188,7 @@ msgid "modes/development/capsUserName"
 msgstr "?empty?"
 
 msgid "modes/development/detailedUserName"
-msgstr "?empty?"
+msgstr "%(modeName)s"
 
 msgid "modes/development/metaProgressionTooltip/header/active"
 msgstr "?empty?"
@@ -219,23 +214,23 @@ msgstr "?empty?"
 msgid "modes/development/mode_selector/progression/resettable"
 msgstr "?empty?"
 
-msgid "modes/development/notification/finishsub_modes/withProgression"
-msgstr "?empty?"
+msgid "modes/development/notification/finishSubModes/withProgression"
+msgstr "Dev notification finishSubModes withProgression"
 
-msgid "modes/development/notification/finishsub_modes/withoutProgression"
-msgstr "?empty?"
+msgid "modes/development/notification/finishSubModes/withoutProgression"
+msgstr "Dev notification finishSubModes withoutProgression"
 
-msgid "modes/development/notification/newsub_modes/withProgression"
-msgstr "?empty?"
+msgid "modes/development/notification/newSubModes/withProgression"
+msgstr "Dev notification newSubModes withProgression"
 
-msgid "modes/development/notification/newsub_modes/withoutProgression"
-msgstr "?empty?"
+msgid "modes/development/notification/newSubModes/withoutProgression"
+msgstr "Dev notification newSubModes withoutProgression"
 
-msgid "modes/development/notification/switchOffsub_modes"
-msgstr "?empty?"
+msgid "modes/development/notification/switchOffSubModes"
+msgstr "Dev notification switchOffSubModes"
 
-msgid "modes/development/notification/switchOnsub_modes"
-msgstr "?empty?"
+msgid "modes/development/notification/switchOnSubModes"
+msgstr "Dev notification switchOnSubModes"
 
 msgid "modes/development/progression/congratulation/descr"
 msgstr "?empty?"
@@ -303,22 +298,22 @@ msgstr "{parSecondary_open}I{parSecondary_close} %(levels)s&nbsp;уровни"
 msgid "modes/undefined/mode_selector/progression/resettable"
 msgstr "До новой задачи Аркады"
 
-msgid "modes/undefined/notification/finishsub_modes/withProgression"
+msgid "modes/undefined/notification/finishSubModes/withProgression"
 msgstr "Подрежим %(subModeName)s завершён: прогрессия сброшена."
 
-msgid "modes/undefined/notification/finishsub_modes/withoutProgression"
+msgid "modes/undefined/notification/finishSubModes/withoutProgression"
 msgstr "Подрежим %(subModeName)s завершён."
 
-msgid "modes/undefined/notification/newsub_modes/withProgression"
+msgid "modes/undefined/notification/newSubModes/withProgression"
 msgstr "Доступны новые награды и подрежим %(subModeName)s."
 
-msgid "modes/undefined/notification/newsub_modes/withoutProgression"
+msgid "modes/undefined/notification/newSubModes/withoutProgression"
 msgstr "Доступен новый подрежим — %(subModeName)s."
 
-msgid "modes/undefined/notification/switchOffsub_modes"
+msgid "modes/undefined/notification/switchOffSubModes"
 msgstr "Подрежим %(subModeName)s недоступен: ведутся технические работы."
 
-msgid "modes/undefined/notification/switchOnsub_modes"
+msgid "modes/undefined/notification/switchOnSubModes"
 msgstr "Подрежим %(subModeName)s снова доступен."
 
 msgid "modes/undefined/progression/congratulation/descr"
@@ -357,24 +352,24 @@ msgstr "Аркада"
 msgid "notification/congratulation"
 msgstr "Поздравляем!"
 
-msgid "notification/finishsub_modes"
+msgid "notification/finishSubModes"
 msgstr "Событие «%(modeName)s» завершено."
 
-msgid "notification/finishsub_modes/withProgression"
-msgstr "Подрежимы %(sub_modesNames)s завершены: прогрессия сброшена."
+msgid "notification/finishSubModes/withProgression"
+msgstr "Подрежимы %(subModesNames)s завершены: прогрессия сброшена."
 
-msgid "notification/finishsub_modes/withoutProgression"
-msgstr "Подрежимы %(sub_modesNames)s завершены."
+msgid "notification/finishSubModes/withoutProgression"
+msgstr "Подрежимы %(subModesNames)s завершены."
 
 msgid "notification/newProgression"
 msgstr "Прогрессия режима сброшена — вы можете снова получить награды!"
 
-msgid "notification/newsub_modes/withProgression"
+msgid "notification/newSubModes/withProgression"
 msgstr ""
-"Прогрессия режима сброшена. Доступны новые подрежимы: %(sub_modesNames)s."
+"Прогрессия режима сброшена. Доступны новые подрежимы: %(subModesNames)s."
 
-msgid "notification/newsub_modes/withoutProgression"
-msgstr "Доступны новые подрежимы: %(sub_modesNames)s."
+msgid "notification/newSubModes/withoutProgression"
+msgstr "Доступны новые подрежимы: %(subModesNames)s."
 
 msgid "notification/progressionComplete"
 msgstr "Вы выполнили все доступные задачи %(modeName)s. Получена награда:"
@@ -392,14 +387,14 @@ msgstr ""
 msgid "notification/progressionStageComplete"
 msgstr "Вы выполнили задач %(modeName)s: %(counter)s. Получена награда:"
 
-msgid "notification/sub_modesSeparator"
+msgid "notification/subModesSeparator"
 msgstr ", "
 
-msgid "notification/switchOffsub_modes"
-msgstr "Подрежимы %(sub_modesNames)s недоступны: ведутся технические работы."
+msgid "notification/switchOffSubModes"
+msgstr "Подрежимы %(subModesNames)s недоступны: ведутся технические работы."
 
-msgid "notification/switchOnsub_modes"
-msgstr "Подрежимы %(sub_modesNames)s снова доступны."
+msgid "notification/switchOnSubModes"
+msgstr "Подрежимы %(subModesNames)s снова доступны."
 
 msgid "platoonView/title"
 msgstr "Взвод: %(subModeName)s"
@@ -597,112 +592,6 @@ msgstr "?empty?"
 
 msgid "sub_modes/development/userName/quoted"
 msgstr "?empty?"
-
-msgid "sub_modes/effect122/capsUserName"
-msgstr "ЭФФЕКТ НЕОЖИДАННОСТИ"
-
-msgid "sub_modes/effect122/detailsHelp/page1/description"
-msgstr ""
-"Изучили все ТТХ своей машины, разброс урона, скорость, количество очков "
-"прочности? Тут всё иначе. «Вилка» урона расширена: теперь максимально "
-"возможный урон заметно выше, минимальный — меньше, а вероятность выпадения "
-"крайних значений увеличена. Кроме того, здесь повышены мощность двигателя и "
-"скорострельность, чтобы вы могли лучше «распробовать» своё новое орудие."
-
-msgid "sub_modes/effect122/detailsHelp/page1/title"
-msgstr "Эффект неожиданности"
-
-msgid "sub_modes/effect122/detailsHelpHint/description"
-msgstr "для знакомства с особенностями машины"
-
-msgid "sub_modes/effect122/detailsHelpHint/press"
-msgstr "Нажмите"
-
-msgid "sub_modes/effect122/detailsHelpTitle"
-msgstr "Аркада: Эффект неожиданности"
-
-msgid "sub_modes/effect122/subModeCard/battleCondition"
-msgstr "15x15"
-
-msgid "sub_modes/effect122/subModeCard/description"
-msgstr ""
-" Бои с изменёнными\n"
-"параметрами разброса урона"
-
-msgid "sub_modes/effect122/subModeCard/levelCondition"
-msgstr "{parSecondary_open}I{parSecondary_close} %(levels)s&nbsp;уровень"
-
-msgid "sub_modes/effect122/subModeCard/title"
-msgstr "Эффект неожиданности"
-
-msgid "sub_modes/effect122/tips/tip1/description"
-msgstr ""
-"В этом режиме всё иначе: максимальный урон заметно выше, минимальный — "
-"меньше, а вероятность выпадения крайних значений увеличена. Также увеличены "
-"скорострельность орудия и мощность двигателя, чтобы у вас было больше шансов"
-" раскрыть свой потенциал."
-
-msgid "sub_modes/effect122/tips/tip1/title"
-msgstr "Эффект неожиданности"
-
-msgid "sub_modes/effect122/userName"
-msgstr "Эффект неожиданности"
-
-msgid "sub_modes/effect122/userName/quoted"
-msgstr "«Эффект неожиданности»"
-
-msgid "sub_modes/railgun122/capsUserName"
-msgstr "РЕЛЬСОТРОН"
-
-msgid "sub_modes/railgun122/detailsHelp/page1/description"
-msgstr ""
-"Теперь у вас есть самый улучшенный из всех улучшенных прицелов! Повышенная "
-"точность поможет вам попадать через всю карту, однако о засадной тактике "
-"можно забыть — радиус гарантированного обнаружения (т.н. «рентген») теперь "
-"равен 445 метров. К счастью, повышенные подвижность и точность в движении не"
-" оставляют никакого смысла в охране кустов на красной линии."
-
-msgid "sub_modes/railgun122/detailsHelp/page1/title"
-msgstr "Рельсотрон"
-
-msgid "sub_modes/railgun122/detailsHelpHint/description"
-msgstr "для знакомства с особенностями машины"
-
-msgid "sub_modes/railgun122/detailsHelpHint/press"
-msgstr "Нажмите"
-
-msgid "sub_modes/railgun122/detailsHelpTitle"
-msgstr "Аркада: Рельсотрон"
-
-msgid "sub_modes/railgun122/subModeCard/battleCondition"
-msgstr "15x15"
-
-msgid "sub_modes/railgun122/subModeCard/description"
-msgstr ""
-"Бои с изменёнными\n"
-"параметрами разброса орудия"
-
-msgid "sub_modes/railgun122/subModeCard/levelCondition"
-msgstr "{parSecondary_open}I{parSecondary_close} %(levels)s&nbsp;уровень"
-
-msgid "sub_modes/railgun122/subModeCard/title"
-msgstr "Рельсотрон"
-
-msgid "sub_modes/railgun122/tips/tip1/description"
-msgstr ""
-"Повышенная точность поможет вам попадать через всю карту, однако о засадной "
-"тактике можно забыть — радиус гарантированного обнаружения (т.н. «рентген») "
-"теперь равен 445 метров. Также улучшена подвижность и точность стрельбы на "
-"ходу."
-
-msgid "sub_modes/railgun122/tips/tip1/title"
-msgstr "Рельсотрон"
-
-msgid "sub_modes/railgun122/userName"
-msgstr "Рельсотрон"
-
-msgid "sub_modes/railgun122/userName/quoted"
-msgstr "«Рельсотрон»"
 
 msgid "sub_modes/undefined/capsUserName"
 msgstr "UNKNOWN SUB MODE NAME"

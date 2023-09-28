@@ -1,6 +1,5 @@
 package net.wg.gui.components.crosshairPanel.components.gunMarker
 {
-   import flash.display.MovieClip;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.constants.GunMarkerConsts;
    import net.wg.infrastructure.base.SimpleContainer;
    
@@ -8,33 +7,24 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
    {
        
       
-      public var dotsMc:MovieClip;
-      
       public function GunMarkerMixing()
       {
          super();
-         this.setThickness(GunMarkerDispersionCircle.THIN);
       }
       
       override protected function onDispose() : void
       {
-         this.dotsMc = null;
          super.onDispose();
       }
       
-      public function setReloadingAsPercent(param1:Number, param2:Boolean = false) : void
+      public function setReloadingAsPercent(param1:Number) : void
       {
-         var _loc3_:int = GunMarkerConsts.MIXING_PROGRESS_TOTAL_FRAMES_COUNT * param1;
-         gotoAndStop(_loc3_);
+         var _loc2_:int = GunMarkerConsts.MIXING_PROGRESS_TOTAL_FRAMES_COUNT * param1;
+         gotoAndStop(_loc2_);
       }
       
       public function setReloadingState(param1:String) : void
       {
-      }
-      
-      public function setThickness(param1:String) : void
-      {
-         this.dotsMc.gotoAndStop(param1);
       }
    }
 }

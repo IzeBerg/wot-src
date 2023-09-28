@@ -58,7 +58,6 @@ package net.wg.gui.battle.epicBattle.views.components
       override public function updateLevelInformation(param1:int) : void
       {
          this._consumableLevel = param1;
-         (glow as EpicBattleEquipmentButtonGlow).setLevel(this._consumableLevel);
          invalidate(CONSUMABLE_LEVEL_INV);
       }
       
@@ -93,7 +92,7 @@ package net.wg.gui.battle.epicBattle.views.components
          var _loc3_:Boolean = isInvalid(CONSUMABLE_LEVEL_INV);
          if(_loc2_)
          {
-            this.ranksMc.visible = mouseChildren = _loc1_;
+            this.ranksMc.visible = _loc1_;
             if(_loc1_)
             {
                this.ranksMc.gotoAndStop(this._rankLevel);

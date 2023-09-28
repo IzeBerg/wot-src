@@ -4,7 +4,7 @@ from time import time as timestamp
 from collections import namedtuple
 from itertools import izip, chain
 from Math import Vector3
-from realm import CURRENT_REALM
+from realm import CURRENT_REALM, IS_CT
 try:
     import BigWorld
 except ImportError:
@@ -25,14 +25,13 @@ IS_DYNUPDATER = False
 IS_LOAD_GLOSSARY = False
 IS_CGF_DUMP = BigWorld.component == 'client_cgf_dump'
 IS_PROCESS_REPLAY = BigWorld.component.endswith('process_replay')
-DEFAULT_LANGUAGE = 'en'
-AUTH_REALM = 'EU'
+DEFAULT_LANGUAGE = 'ru'
+AUTH_REALM = 'RU'
 IS_DEVELOPMENT = CURRENT_REALM == 'DEV'
 IS_CHINA = CURRENT_REALM == 'CN'
 IS_KOREA = CURRENT_REALM == 'KR'
 IS_SINGAPORE = CURRENT_REALM == 'ASIA'
 IS_SANDBOX = CURRENT_REALM == 'SB'
-IS_CT = CURRENT_REALM == 'RU'
 REALMS = frozenset(['RU', 'EU', 'NA', 'ASIA', 'CN', 'KR', 'CT', 'ST', 'QA', 'DEV', 'SB'])
 OVERRIDE_CODES = frozenset(['RU', 'EU', 'NA', 'ASIA', 'CN', 'KR', 'CT', 'ST', 'QA', 'DEV', 'SB', 'PC'])
 REGIONAL_REALMS = frozenset(['RU', 'EU', 'NA', 'ASIA', 'CN', 'KR'])
@@ -63,7 +62,7 @@ elif CURRENT_REALM == 'CT':
     AUTH_REALM = 'CT'
 elif CURRENT_REALM == 'RU':
     DEFAULT_LANGUAGE = 'ru'
-    AUTH_REALM = 'CT'
+    AUTH_REALM = 'RU' if not IS_CT else 'CT'
 elif CURRENT_REALM in ('EU', 'ST', 'QA', 'DEV', 'SB'):
     pass
 SPECIAL_OL_FILTER = IS_KOREA or IS_SINGAPORE
@@ -422,6 +421,9 @@ class FINISH_REASON:
     OWN_VEHICLE_DESTROYED = 9
     DESTROYED_OBJECTS = 10
     OBJECTIVES_COMPLETED = 11
+    EVENT_DAMAGE_TIMEOUT = 12
+    EVENT_EXTERMINATION = 13
+    EVENT_2_BASES_CAPTURED = 14
 
 
 FINISH_REASON_NAMES = dict([ (v, k) for k, v in FINISH_REASON.__dict__.iteritems() if not k.startswith('_') ])
@@ -819,6 +821,8 @@ class Configs(enum.Enum):
     RESTORE_CONFIG = 'restore_config'
     DEBUT_BOXES_CONFIG = 'debut_boxes_config'
     VERSUS_AI_CONFIG = 'versus_ai_config'
+    MAPS_IN_DEVELOPMENT_CONFIG = 'maps_in_development'
+    TRIGGER_SYSTEM_CONFIG = 'trigger_system_config'
 
 
 INBATTLE_CONFIGS = [
@@ -1188,6 +1192,7 @@ FIRE_NOTIFICATION_INDICES = dict((x[1], x[0]) for x in enumerate(FIRE_NOTIFICATI
 DAMAGE_INFO_CODES = ('DEVICE_CRITICAL', 'DEVICE_DESTROYED', 'TANKMAN_HIT', 'DEVICE_CRITICAL_AT_SHOT',
                      'DEVICE_DESTROYED_AT_SHOT', 'DEVICE_CRITICAL_AT_RAMMING', 'DEVICE_DESTROYED_AT_RAMMING',
                      'TANKMAN_HIT_AT_SHOT', 'DEATH_FROM_DEVICE_EXPLOSION_AT_SHOT',
+                     'DEVICE_DESTROYED_AT_SUPER_SHOT', 'TANKMAN_HIT_AT_SUPER_SHOT',
                      'DEVICE_CRITICAL_AT_FIRE', 'DEVICE_DESTROYED_AT_FIRE', 'DEVICE_CRITICAL_AT_WORLD_COLLISION',
                      'DEVICE_DESTROYED_AT_WORLD_COLLISION', 'DEVICE_CRITICAL_AT_DROWNING',
                      'DEVICE_DESTROYED_AT_DROWNING', 'DEVICE_REPAIRED_TO_CRITICAL',
@@ -1550,6 +1555,7 @@ class AUTO_MAINTENANCE_TYPE:
     EQUIP = 3
     EQUIP_BOOSTER = 4
     CUSTOMIZATION = 5
+    EVENT_EQUIP = 6
 
 
 class AUTO_MAINTENANCE_RESULT:
@@ -1636,6 +1642,9 @@ class REQUEST_COOLDOWN:
     ARMORY_YARD_CLAIM_FINAL_REWARDS = 1.0
     DEV_ARMORY_YARD_ADD_TOKEN_S = 1.0
     SET_ACHIEVEMENTS20_LAYOUT = 1.0
+    COMPLEX_OPERATION = 10.0
+    CMD_EQUIP_TMAN = 0.5
+    CMD_TMAN_RESTORE = 1.0
     COLLECT_RP_PGB_POINTS = 1.0
     RP_INCREMENT_RECRUIT_DELTA = 1.0
     RP_RESET_RECRUIT_DELTA = 1.0
@@ -1855,6 +1864,12 @@ class USER_SERVER_SETTINGS:
             return not settings[cls.GAME_EXTENDED] >> 2 & 1
         return False
 
+    @classmethod
+    def isMapsInDevEnabled(cls, settings):
+        if settings and cls.GAME_EXTENDED_2 in settings:
+            return bool(settings[cls.GAME_EXTENDED_2] >> 5 & 1)
+        return False
+
 
 INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version', 
    1: 'Game section settings', 
@@ -1969,7 +1984,9 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    115: 'Once only hints', 
    31001: 'Armory Yard progression', 
    31002: 'Versus AI carousel filter 1', 
-   31003: 'Versus AI carousel filter 2'}
+   31003: 'Versus AI carousel filter 2', 
+   31004: 'HW22 carousel filter 1', 
+   31005: 'HW22 carousel filter 2'}
 
 class WG_GAMES:
     TANKS = 'wot'
@@ -2358,6 +2375,7 @@ class RESPAWN_TYPES:
     LIMITED = 3
     EPIC = 4
     SAFE = 5
+    EVENT_INFINITE = 6
 
 
 class VISIBILITY:
@@ -2532,6 +2550,7 @@ GAMEPLAY_NAMES_WITH_DISABLED_QUESTS = ('bootcamp', )
 class BASE_TYPE:
     TEAM_BASE = 1
     SECTOR_BASE = 2
+    TEAM_BASE_RECAPTURABLE = 3
 
 
 class SECTOR_STATE:
@@ -2677,6 +2696,10 @@ class LOOT_TYPE(object):
     ADVANCED = 2
     AIRDROP = 3
     CORPSE = 4
+    BUFF_SHOOTINGSPEED = 5
+    BUFF_DOUBLEDAMAGE = 6
+    BUFF_BREAKINGMODULES = 7
+    BUFF_FIRESHELLS = 8
 
 
 class AirdropType(object):
@@ -2696,6 +2719,18 @@ class BattleRoyaleMode(object):
     SQUAD = 'squad'
     ALL = (
      SOLO, SQUAD)
+
+
+class MarkerItem(object):
+    DEFAULT = 0
+    DEATHZONE = 1
+    COMP7_RECON = 2
+    HW_TEAM_BASE = 4
+    HW_PICKUP_PLACEMENT = 5
+    HW_PICKUP_SPAWNED = 6
+    POLYGONAL_ZONE = 7
+    STATIC_DEATH_ZONE = 8
+    STATIC_DEATH_ZONE_PROXIMITY = 9
 
 
 class CLIENT_COMMAND_SOURCES:
@@ -3276,14 +3311,6 @@ class WINBACK_BATTLE_TOKEN_DRAW_REASON(enum.IntEnum):
     SQUAD = 2
 
 
-class MarkerItem(object):
-    DEFAULT = 0
-    COMP7_RECON = 1
-    POLYGONAL_ZONE = 2
-    STATIC_DEATH_ZONE = 3
-    STATIC_DEATH_ZONE_PROXIMITY = 4
-
-
 class DROP_SKILL_OPTIONS(object):
     FREE_DROP_WITH_TOKEN_INDEX = 99
 
@@ -3322,3 +3349,8 @@ class MinimapLayerType(object):
     BASE = 'base'
     ALERT = 'alert'
     ALL = (BASE, ALERT)
+
+
+class RANDOM_FLAGS:
+    IS_ONLY_10_MODE_ENABLED = 1
+    IS_MAPS_IN_DEVELOPMENT_ENABLED = 2

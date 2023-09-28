@@ -8,7 +8,6 @@ package net.wg.gui.lobby.settings
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.gui.components.advanced.ButtonBarEx;
-   import net.wg.gui.components.common.Counter;
    import net.wg.gui.components.common.CounterBase;
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
    import net.wg.gui.lobby.settings.events.SettingViewEvent;
@@ -41,18 +40,6 @@ package net.wg.gui.lobby.settings
       private static const COUNTER_KEY_INPUT_OFFSET_X:Number = -37;
       
       private static const COUNTER_KEY_INPUT_OFFSET_Y:Number = -24;
-      
-      private static const COUNTER_BUTTON_OFFSET_X:Number = 3;
-      
-      private static const COUNTER_BUTTON_OFFSET_Y:Number = 2;
-      
-      private static const COUNTER_DROP_DOWN_OFFSET_X:Number = 2;
-      
-      private static const COUNTER_DROP_DOWN_OFFSET_Y:Number = 3;
-      
-      private static const COUNTER_DROP_DOWN_OFFSET_TF:Number = 15;
-      
-      private static const COUNTER_BUTTON_OFFSET_TF:Number = 15;
       
       private static const NEW_COUNTER_TAB_OFFSET_Y:int = 0;
       
@@ -165,7 +152,7 @@ package net.wg.gui.lobby.settings
          {
             if(StringUtils.isEmpty(_loc3_.subTabId))
             {
-               _loc2_ = this.getAvailableMarkVisitedCountersIds(null,_loc3_.counters);
+               _loc2_ = this.getLineCountersIds(null,_loc3_.counters);
                if(_loc2_.length)
                {
                   _loc1_.push(new VisitedCounters(this.viewId,null,_loc2_));
@@ -181,7 +168,7 @@ package net.wg.gui.lobby.settings
                return _loc1_;
             }
             _loc6_ = _loc5_.linkage;
-            _loc2_ = this.getAvailableTabCountersIds(_loc6_);
+            _loc2_ = this.getTabLineCountersIds(_loc6_);
             if(_loc2_ && _loc2_.length)
             {
                _loc1_.push(new VisitedCounters(this.viewId,_loc6_,_loc2_));
@@ -199,35 +186,22 @@ package net.wg.gui.lobby.settings
          var _loc5_:ICounterProps = null;
          for each(_loc6_ in param1)
          {
-            if(!this.updateNewCounter(_loc6_))
+            _loc2_ = _loc6_.componentId;
+            _loc4_ = this.getControlPropsByKey(_loc2_);
+            if(_loc4_)
             {
-               _loc2_ = _loc6_.componentId;
-               _loc4_ = this.getControlPropsByKey(_loc2_);
-               if(_loc4_)
+               _loc3_ = this.getControl(_loc2_,_loc4_.type);
+               if(_loc3_)
                {
-                  _loc3_ = this.getControl(_loc2_,_loc4_.type);
-                  if(_loc3_)
-                  {
-                     _loc5_ = this.getCounterProps(_loc4_.type);
-                     this.addNewCounterControl(_loc3_,_loc6_.count,_loc5_,true);
-                  }
-                  else
-                  {
-                     DebugUtils.LOG_WARNING(COUNTER_ERROR_MSG + _loc2_);
-                  }
+                  _loc5_ = this.getCounterProps(_loc4_.type);
+                  this.addNewCounterControl(_loc3_,_loc6_.count,_loc5_,true);
+               }
+               else
+               {
+                  DebugUtils.LOG_WARNING(COUNTER_ERROR_MSG + _loc2_);
                }
             }
          }
-      }
-      
-      protected function invalidateCounter() : void
-      {
-         invalidate(INV_NEW_COUNTERS,INVALIDATE_TABS_NEW_COUNTERS);
-      }
-      
-      protected function updateNewCounter(param1:CountersVo) : Boolean
-      {
-         return false;
       }
       
       protected function getButtonBarDP() : IDataProvider
@@ -277,14 +251,6 @@ package net.wg.gui.lobby.settings
          {
             return new CounterProps(COUNTER_STEP_SLIDER_OFFSET_X,COUNTER_STEP_SLIDER_OFFSET_Y,TextFormatAlign.LEFT,true,Linkages.COUNTER_LINE_UI);
          }
-         if(param1 == SettingsConfigHelper.TYPE_BUTTON)
-         {
-            return new CounterProps(COUNTER_BUTTON_OFFSET_X,COUNTER_BUTTON_OFFSET_Y,TextFormatAlign.LEFT,true,Linkages.COUNTER_UI,COUNTER_BUTTON_OFFSET_TF,true,Counter.EMPTY_STATE);
-         }
-         if(param1 == SettingsConfigHelper.TYPE_DROPDOWN)
-         {
-            return new CounterProps(COUNTER_DROP_DOWN_OFFSET_X,COUNTER_DROP_DOWN_OFFSET_Y,TextFormatAlign.LEFT,true,Linkages.COUNTER_UI,COUNTER_DROP_DOWN_OFFSET_TF,true,Counter.EMPTY_STATE);
-         }
          return new CounterProps(CounterProps.DEFAULT_OFFSET_X,NEW_COUNTER_TAB_OFFSET_Y);
       }
       
@@ -293,31 +259,26 @@ package net.wg.gui.lobby.settings
          return this[param1 + param2];
       }
       
-      protected function getAvailableMarkVisitedCountersIds(param1:String, param2:Vector.<CountersVo>) : Array
+      protected function getLineCountersIds(param1:String, param2:Vector.<CountersVo>) : Array
       {
-         var _loc4_:CountersVo = null;
+         var _loc4_:SettingsControlProp = null;
+         var _loc5_:CountersVo = null;
          var _loc3_:Array = [];
-         for each(_loc4_ in param2)
+         for each(_loc5_ in param2)
          {
-            if(_loc4_.count == CounterManager.DEF_COUNTER_NO_VIEWED_VALUE)
+            if(_loc5_.count == CounterManager.DEF_COUNTER_NO_VIEWED_VALUE)
             {
-               if(this.isCounterCanMarkAsVisited(param1,_loc4_))
+               _loc4_ = this.getControlPropsByKey(_loc5_.componentId);
+               if(_loc4_)
                {
-                  _loc3_.push(_loc4_.componentId);
+                  if(LINE_COUNTER_TYPES.indexOf(_loc4_.type) != Values.DEFAULT_INT)
+                  {
+                     _loc3_.push(_loc5_.componentId);
+                  }
                }
             }
          }
          return _loc3_;
-      }
-      
-      protected function isCounterCanMarkAsVisited(param1:String, param2:CountersVo) : Boolean
-      {
-         var _loc3_:SettingsControlProp = this.getControlPropsByKey(param2.componentId);
-         if(_loc3_ && LINE_COUNTER_TYPES.indexOf(_loc3_.type) != Values.DEFAULT_INT)
-         {
-            return true;
-         }
-         return false;
       }
       
       protected function addNewCounterControl(param1:DisplayObject, param2:String, param3:ICounterProps, param4:Boolean) : void
@@ -409,14 +370,14 @@ package net.wg.gui.lobby.settings
          }
       }
       
-      private function getAvailableTabCountersIds(param1:String) : Array
+      private function getTabLineCountersIds(param1:String) : Array
       {
          var _loc2_:SettingsTabNewCounterVo = null;
          for each(_loc2_ in this._settingsTabsNewCounters)
          {
             if(_loc2_.subTabId == param1)
             {
-               return this.getAvailableMarkVisitedCountersIds(param1,_loc2_.counters);
+               return this.getLineCountersIds(param1,_loc2_.counters);
             }
          }
          return null;
@@ -455,7 +416,7 @@ package net.wg.gui.lobby.settings
             {
                return;
             }
-            _loc5_ = this.getAvailableTabCountersIds(_loc3_);
+            _loc5_ = this.getTabLineCountersIds(_loc3_);
             if(_loc5_ && _loc5_.length > 0)
             {
                dispatchEvent(new SettingViewEvent(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.viewId,_loc3_,null,_loc5_));

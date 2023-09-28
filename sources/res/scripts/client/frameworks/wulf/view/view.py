@@ -5,10 +5,11 @@ from .view_event import ViewEvent
 from .view_model import ViewModel
 from ..py_object_binder import PyObjectEntity, getProxy, getObject
 from ..py_object_wrappers import PyObjectView, PyObjectViewSettings
-from ..gui_constants import ViewFlags, ViewStatus, ViewEventType, ChildFlags
+from ..gui_constants import ViewFlags, ViewStatus, ViewEventType, ChildFlags, ShowingStatus
 TViewModel = typing.TypeVar('TViewModel', bound=ViewModel)
 _logger = logging.getLogger(__name__)
 if typing.TYPE_CHECKING:
+    from .. import Window
     from sound_gui_manager import CommonSoundSpaceSettings
     from gui.sounds.ViewSoundManager import _ViewSoundsManager
 
@@ -62,8 +63,9 @@ class ViewSettings(typing.Generic[TViewModel]):
 
 
 class View(PyObjectEntity, typing.Generic[TViewModel]):
-    __slots__ = ('__viewStatus', '__viewModel', '__args', '__kwargs', 'onStatusChanged',
-                 '__soundExtension', '__weakref__')
+    __slots__ = ('__viewStatus', '__showingStatus', '__viewModel', '__args', '__kwargs',
+                 'onStatusChanged', '__isReady', 'onShowingStatusChanged', 'onFocusChanged',
+                 '__soundExtension', '__isShown', '__isFocused', '__weakref__')
     _COMMON_SOUND_SPACE = None
 
     def __init__(self, settings, wsFlags=ViewFlags.VIEW, viewModelClazz=ViewModel, *args, **kwargs):
@@ -81,6 +83,12 @@ class View(PyObjectEntity, typing.Generic[TViewModel]):
         super(View, self).__init__(PyObjectView(settings.proxy))
         self.onStatusChanged = Event.Event()
         self.__viewStatus = ViewStatus.UNDEFINED if self.proxy is None else self.proxy.viewStatus
+        self.__showingStatus = ShowingStatus.HIDDEN
+        self.__isShown = False
+        self.__isReady = False
+        self.onShowingStatusChanged = Event.Event()
+        self.__isFocused = False
+        self.onFocusChanged = Event.Event()
         self.__args = settings.args
         self.__kwargs = settings.kwargs
         return
@@ -104,6 +112,7 @@ class View(PyObjectEntity, typing.Generic[TViewModel]):
 
     @property
     def layer(self):
+        _logger.warning('Use window.layer() instead of view.layer(). Window %r. View %r', self.getWindow(), self)
         if self.proxy is not None:
             return ViewFlags.getViewType(self.proxy.viewFlags)
         else:
@@ -119,6 +128,14 @@ class View(PyObjectEntity, typing.Generic[TViewModel]):
     @property
     def viewStatus(self):
         return self.__viewStatus
+
+    @property
+    def showingStatus(self):
+        return self.__showingStatus
+
+    @property
+    def isFocused(self):
+        return self.__isFocused
 
     @property
     def soundManager(self):
@@ -139,21 +156,44 @@ class View(PyObjectEntity, typing.Generic[TViewModel]):
         else:
             return
 
+    def getWindow(self):
+        if self.proxy is not None:
+            return self.proxy.getWindow()
+        else:
+            return
+
     def getParentView(self):
         if self.proxy is not None:
             return self.proxy.getParent()
         else:
             return
 
+    def addChild(self, childId, view, loadImmediately=True):
+        if self.proxy is not None:
+            self.proxy.addChild(childId, getProxy(view), loadImmediately)
+        return
+
+    def getChild(self, childId):
+        if self.proxy is not None:
+            return self.proxy.getChild(childId)
+        else:
+            return
+
+    def removeChild(self, childId, destroy=True):
+        if self.proxy is not None:
+            return self.proxy.removeChild(childId, destroy)
+        else:
+            return
+
     def getChildView(self, resourceID):
         if self.proxy is not None:
-            return self.proxy.getChild(resourceID)
+            return self.proxy.getSubView(resourceID)
         else:
             return
 
     def setChildView(self, resourceID, view=None, chFlags=ChildFlags.AUTO_DESTROY):
         if self.proxy is not None:
-            if not self.proxy.setChild(resourceID, getProxy(view), chFlags):
+            if not self.proxy.setSubView(resourceID, getProxy(view), chFlags):
                 _logger.error('%r: child %r can not be added. May be child is already added to other view or window', self, view)
         else:
             _logger.error('%r: Parent view does not have proxy, child can not be added', self)
@@ -180,10 +220,10 @@ class View(PyObjectEntity, typing.Generic[TViewModel]):
         return
 
     def show(self):
-        self.proxy.show()
+        _logger.error('show() is not defined for View. Try window.show()')
 
     def hide(self):
-        self.proxy.hide()
+        _logger.error('hide() is not defined for View. Try window.hide()')
 
     def createToolTip(self, event):
         return
@@ -206,12 +246,38 @@ class View(PyObjectEntity, typing.Generic[TViewModel]):
     def _finalize(self):
         pass
 
+    def _onReady(self):
+        pass
+
+    def _onShown(self):
+        pass
+
+    def _onHidden(self):
+        pass
+
+    def _onFocus(self, focused):
+        pass
+
     def _swapStates(self, oldStatus, newStatus):
         if newStatus == ViewStatus.LOADING:
             self._onLoading(*self.__args, **self.__kwargs)
         elif newStatus == ViewStatus.LOADED:
             self.__soundExtension.startSoundSpace()
             self._onLoaded(*self.__args, **self.__kwargs)
+
+    def _swapShowingStates(self, oldStatus, newStatus):
+        if newStatus == ShowingStatus.SHOWN:
+            if not self.__isShown:
+                self.__isShown = True
+                self._onShown()
+        elif newStatus == ShowingStatus.HIDDEN:
+            if self.__isShown:
+                self.__isShown = False
+                self._onHidden()
+        elif newStatus == ShowingStatus.SHOWING:
+            pass
+        elif newStatus == ShowingStatus.HIDING:
+            pass
 
     def _cInit(self):
         self._initialize(*self.__args, **self.__kwargs)
@@ -224,6 +290,22 @@ class View(PyObjectEntity, typing.Generic[TViewModel]):
         self.__viewStatus = newStatus
         self._swapStates(oldStatus, newStatus)
         self.onStatusChanged(newStatus)
+
+    def _cShowingStatusChanged(self, oldStatus, newStatus):
+        oldStatus = ShowingStatus(oldStatus)
+        newStatus = ShowingStatus(newStatus)
+        self.__showingStatus = newStatus
+        self._swapShowingStates(oldStatus, newStatus)
+        self.onShowingStatusChanged(newStatus)
+
+    def _cReady(self):
+        self.__isReady = True
+        self._onReady()
+
+    def _cFocusChanged(self, focused):
+        self.__isFocused = focused
+        self._onFocus(focused)
+        self.onFocusChanged(focused)
 
     def _cOnViewEventReceived(self, cppObject):
         event = ViewEvent(cppObject)

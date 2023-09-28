@@ -11,5 +11,7 @@ package net.wg.infrastructure.base.meta
       function as_showBackgroundImg(param1:String, param2:Boolean) : void;
       
       function as_hideWaiting() : void;
+      
+      function as_showAwards(param1:Boolean) : void;
    }
 }

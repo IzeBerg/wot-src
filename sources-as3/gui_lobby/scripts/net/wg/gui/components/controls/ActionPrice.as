@@ -275,14 +275,8 @@ package net.wg.gui.components.controls
             case IconsTypes.GOLD:
                _loc2_ = CURRENCIES_CONSTANTS.GOLD_COLOR;
                break;
-            case IconsTypes.GOLD_BIG:
-               _loc2_ = CURRENCIES_CONSTANTS.GOLD_BIG_COLOR;
-               break;
             case IconsTypes.CREDITS:
                _loc2_ = CURRENCIES_CONSTANTS.CREDITS_COLOR;
-               break;
-            case IconsTypes.CREDITS_BIG:
-               _loc2_ = CURRENCIES_CONSTANTS.GOLD_BIG_COLOR;
                break;
             case IconsTypes.ELITE_XP:
                _loc2_ = COLOR_ELITE_XP;
@@ -526,7 +520,7 @@ package net.wg.gui.components.controls
          return this._state;
       }
       
-      [Inspectable(defaultValue="camouflage",name="state",type="list",enumeration="alignMiddle,alignTop,camouflage,alignMiddleSmall,alignBottom")]
+      [Inspectable(defaultValue="camouflage",name="state",type="list",enumeration="alignMiddle,alignTop,camouflage,alignMiddleSmall")]
       public function set state(param1:String) : void
       {
          if(this._state == param1)

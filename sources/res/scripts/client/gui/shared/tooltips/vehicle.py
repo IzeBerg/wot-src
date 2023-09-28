@@ -1,6 +1,6 @@
 import logging
 from itertools import chain
-import typing, constants
+import typing, BigWorld, constants
 from gui.impl.backport.backport_tooltip import DecoratedTooltipWindow
 from gui.Scaleform.daapi.view.lobby.techtree.settings import UnlockProps
 from gui.Scaleform.genConsts.BLOCKS_TOOLTIP_TYPES import BLOCKS_TOOLTIP_TYPES
@@ -63,6 +63,18 @@ def _makeModuleFitTooltipError(reason):
     return ('#tooltips:moduleFits/{}').format(reason)
 
 
+def _idealCrewComparator(vehicle):
+    from gui.prb_control.dispatcher import g_prbLoader
+    from constants import QUEUE_TYPE, PREBATTLE_TYPE
+    prbDispatcher = g_prbLoader.getDispatcher()
+    isEvent = prbDispatcher is not None and (prbDispatcher.getFunctionalState().isInPreQueue(QUEUE_TYPE.HALLOWEEN_BATTLES) or prbDispatcher.getFunctionalState().isInUnit(PREBATTLE_TYPE.HALLOWEEN_BATTLES) or prbDispatcher.getFunctionalState().isInPreQueue(QUEUE_TYPE.HALLOWEEN_BATTLES_WHEEL))
+    hwEqCtrl = BigWorld.player().components.get('HWAccountEquipmentController', None)
+    if not hwEqCtrl or not isEvent:
+        return params_helper.idealCrewComparator(vehicle)
+    else:
+        return hwEqCtrl.getVehicleIdealCrewParamsComparator(vehicle)
+
+
 _SHORTEN_TOOLTIP_CASES = (
  'shopVehicle',)
 
@@ -105,7 +117,8 @@ class VehicleInfoTooltipData(BlocksTooltipData):
         telecomBlock = TelecomBlockConstructor(vehicle, valueWidth, leftPadding, rightPadding).construct()
         if telecomBlock:
             headerBlockItems.append(formatters.packBuildUpBlockData(telecomBlock, padding=leftRightPadding))
-        self.__createStatusBlock(vehicle, headerBlockItems, statsConfig, paramsConfig, valueWidth)
+        if not vehicle.isEvent:
+            self.__createStatusBlock(vehicle, headerBlockItems, statsConfig, paramsConfig, valueWidth)
         items.append(formatters.packBuildUpBlockData(headerBlockItems, gap=-4, padding=formatters.packPadding(bottom=-12)))
         if vehicle.isWotPlus:
             wotPlusBlock, linkage = WotPlusBlockConstructor(vehicle, statsConfig, leftPadding, rightPadding).construct()
@@ -136,7 +149,7 @@ class VehicleInfoTooltipData(BlocksTooltipData):
         if statsBlockConstructor is not None:
             items.append(formatters.packBuildUpBlockData(statsBlockConstructor(vehicle, paramsConfig, self.context.getParams(), valueWidth, leftPadding, rightPadding).construct(), gap=textGap, padding=blockPadding))
         priceBlock, invalidWidth = PriceBlockConstructor(vehicle, statsConfig, self.context.getParams(), valueWidth, leftPadding, rightPadding).construct()
-        shouldBeCut = self.calledBy and self.calledBy in _SHORTEN_TOOLTIP_CASES or vehicle.isOnlyForEpicBattles or vehicle.isOnlyForClanWarsBattles
+        shouldBeCut = self.calledBy and self.calledBy in _SHORTEN_TOOLTIP_CASES or vehicle.isOnlyForEpicBattles or vehicle.isOnlyForClanWarsBattles or vehicle.isEvent
         if priceBlock and not shouldBeCut:
             self._setWidth(_TOOLTIP_MAX_WIDTH if invalidWidth else _TOOLTIP_MIN_WIDTH)
             items.append(formatters.packBuildUpBlockData(priceBlock, linkage=BLOCKS_TOOLTIP_TYPES.TOOLTIP_BUILDUP_BLOCK_WHITE_BG_LINKAGE, gap=5, padding=formatters.packPadding(left=98), layout=BLOCKS_TOOLTIP_TYPES.LAYOUT_HORIZONTAL))
@@ -441,6 +454,8 @@ class HeaderBlockConstructor(VehicleTooltipBlockConstructor):
         if self.vehicle.role != constants.ROLE_TYPE.NOT_DEFINED:
             roleLabel = self.vehicle.roleLabel
             headerBlocks.append(formatters.packTextBlockData(text_styles.main(backport.text(R.strings.menu.roleExp.roleLabel()) + ' ' + backport.text(R.strings.menu.roleExp.roleName.dyn(roleLabel)(), groupName=backport.text(R.strings.menu.roleExp.roleGroupName.dyn(roleLabel)()))), padding=formatters.packPadding(top=-9, left=leftOffset, bottom=9)))
+        if self.vehicle.isEvent:
+            headerBlocks.append(formatters.packTextBlockData(text_styles.main(backport.text(R.strings.hw_lobby.common.tooltips.eventBattlesVehicle())), padding=formatters.packPadding(top=9, left=99, bottom=0)))
         block.append(formatters.packBuildUpBlockData(headerBlocks, stretchBg=False, linkage=bgLinkage, padding=formatters.packPadding(left=-self.leftPadding)))
         return block
 
@@ -672,7 +687,7 @@ class CommonStatsBlockConstructor(VehicleTooltipBlockConstructor):
         paramsDict = params_helper.getParameters(self.vehicle)
         block = []
         highlightedParams = self.__getHighlightedParams()
-        comparator = params_helper.idealCrewComparator(self.vehicle)
+        comparator = _idealCrewComparator(self.vehicle)
         if self.configuration.params and not self.configuration.simplifiedOnly:
             for paramName in self.__getShownParameters(paramsDict):
                 paramInfo = comparator.getExtendedData(paramName)
@@ -735,7 +750,7 @@ class SimplifiedStatsBlockConstructor(VehicleTooltipBlockConstructor):
     def construct(self):
         block = []
         if self.configuration.params:
-            comparator = params_helper.idealCrewComparator(self.vehicle)
+            comparator = _idealCrewComparator(self.vehicle)
             stockParams = params_helper.getParameters(self.itemsCache.items.getStockVehicle(self.vehicle.intCD))
             for paramName in RELATIVE_PARAMS:
                 paramInfo = comparator.getExtendedData(paramName)

@@ -59,7 +59,7 @@ package net.wg.infrastructure.managers.utils.impl
       
       protected static const CUT_SYMBOLS_STR:String = "..";
       
-      protected static const TEXT_FIELD_BOUNDS_WIDTH:uint = 4;
+      protected static const TEXT_FIELD_BOUNDS_WIDTH:Number = 4;
       
       private static const TEXTFIELD_PADDING:Number = 5;
       
@@ -395,9 +395,9 @@ package net.wg.infrastructure.managers.utils.impl
          return this._textFieldUtils.truncateTextFieldMultiline(param1,param2,param3,param4);
       }
       
-      public function truncateTextFieldText(param1:TextField, param2:String, param3:Boolean = true, param4:Boolean = false, param5:String = "..", param6:uint = 4) : String
+      public function truncateTextFieldText(param1:TextField, param2:String, param3:Boolean = true, param4:Boolean = false, param5:String = "..") : String
       {
-         return this._textFieldUtils.truncateTextFieldText(param1,param2,param3,param4,param5,param6);
+         return this._textFieldUtils.truncateTextFieldText(param1,param2,param3,param4,param5);
       }
       
       public function updateChildrenMouseBehavior(param1:DisplayObjectContainer, param2:Boolean, param3:Boolean, param4:Vector.<DisplayObject> = null) : void
@@ -516,11 +516,6 @@ package net.wg.infrastructure.managers.utils.impl
          _loc2_.name = EMPTY_HIT_AREA_NAME;
          param1.parent.addChild(_loc2_);
          param1.hitArea = _loc2_;
-      }
-      
-      public function formatNumberToStringWithSpaces(param1:int) : String
-      {
-         return param1.toString().replace(/\B(?=(\d{3})+(?!\d))/g," ");
       }
    }
 }

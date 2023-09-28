@@ -187,10 +187,6 @@ package
       
       public static const DETAILSHELP_ROCKETACCELERATION_PAGE2:String = "#ingame_help:detailsHelp/rocketAcceleration/page2";
       
-      public static const DETAILSHELP_DUALACCURACY_MECHANICS_TITLE:String = "#ingame_help:detailsHelp/dualAccuracy/mechanics/title";
-      
-      public static const DETAILSHELP_DUALACCURACY_MECHANICS:String = "#ingame_help:detailsHelp/dualAccuracy/mechanics";
-      
       public static const DETAILSHELP_NOKEYSWARNING:String = "#ingame_help:detailsHelp/noKeysWarning";
       
       public static const DETAILSHELP_FLAMETANK_TITLE:String = "#ingame_help:detailsHelp/flameTank/title";

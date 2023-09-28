@@ -265,7 +265,9 @@ def vehicleAttributeFactors():
        'engineReduceFineFactor': 1.0, 
        'ammoBayReduceFineFactor': 1.0, 
        'moduleDamageFactor': 1.0, 
-       'engineAndFuelTanksDamageFactor': 1.0}
+       'engineAndFuelTanksDamageFactor': 1.0, 
+       'vehicle/canBeDamaged': True, 
+       'vehicle/canBeRammed': True}
     for ten in TANKMAN_EXTRA_NAMES:
         factors[ten + CHANCE_TO_HIT_SUFFIX_FACTOR] = 0.0
 
@@ -1793,7 +1795,7 @@ class VehicleType(object):
      'invisibility', 'invisibilityDeltas', 'crewRoles', 'extras', 'extrasDict', 'extrasProtection',
      'devices', 'tankmen', 'damageByStaticsChances', 'i18nInfo', 'balanceByClass',
      'balanceByComponentLevels', 'damageStickersLodDist', 'heavyCollisionEffectVelocities', 'effects', 'camouflage',
-     'emblemsLodDist', 'emblemsAlpha', '_prereqs', 'clientAdjustmentFactors',
+     'emblemsLodDist', 'emblemsAlpha', '_prereqs', 'clientAdjustmentFactors', 'isScout',
      'defaultPlayerEmblemID', '_defEmblem', '_defEmblems', 'unlocks', 'chassis', 'engines',
      'fuelTanks', 'radios', 'turrets', 'hulls', 'installableComponents', 'unlocksDescrs',
      'autounlockedItems', 'collisionEffectVelocities', 'isRotationStill', 'useHullZSize', 'useHullZOffset',
@@ -1821,6 +1823,7 @@ class VehicleType(object):
         self.hasHydraulicChassis = 'hydraulicChassis' in self.tags
         self.hasAutoSiegeMode = 'autoSiege' in self.tags
         self.isWheeledVehicle = 'wheeledVehicle' in self.tags
+        self.isScout = 'scout' in self.tags
         self.isFlamethrower = FLAMETHROWER in self.tags
         self.isDualgunVehicleType = 'dualgun' in self.tags
         self.hasTurboshaftEngine = 'turboshaftEngine' in self.tags
@@ -6970,8 +6973,8 @@ def _readBurnout(xmlCtx, section):
         return None
     else:
         burnoutCtx, burnoutSection = _xml.getSubSectionWithContext(xmlCtx, section, 'burnout')
-        burnout = {'preparationTime': _xml.readPositiveFloat(burnoutCtx, burnoutSection, 'preparationTime'), 
-           'activityTime': _xml.readPositiveFloat(burnoutCtx, burnoutSection, 'activityTime')}
+        burnout = {'preparationTime': _xml.readFloatOrNone(burnoutCtx, burnoutSection, 'preparationTime'), 
+           'activityTime': _xml.readFloatOrNone(burnoutCtx, burnoutSection, 'activityTime')}
         burnoutParams = ('engineDamageMin', 'engineDamageMax', 'warningMaxHealth',
                          'warningMaxHealthCritEngine', 'power', 'impulse')
         burnout.update(_parseFloatList(burnoutCtx, burnoutSection, burnoutParams))

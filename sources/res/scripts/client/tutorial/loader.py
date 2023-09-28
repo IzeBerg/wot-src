@@ -1,5 +1,6 @@
 import logging, weakref, typing, BigWorld, account_helpers
 from constants import BootcampVersion
+from CurrentVehicle import g_currentVehicle
 from skeletons.tutorial import ITutorialLoader
 from tutorial.gui.Scaleform.gui_impl import ScaleformGuiImpl
 from tutorial.gui.controller import GuiController
@@ -126,6 +127,8 @@ class TutorialLoader(ITutorialLoader):
         else:
             if state is None:
                 state = {}
+            else:
+                self.__updateConditionalState(state)
             reloadIfRun = state.pop('reloadIfRun', False)
             restoreIfRun = state.pop('restoreIfRun', False)
             isStopForced = state.pop('isStopForced', False)
@@ -294,3 +297,21 @@ class TutorialLoader(ITutorialLoader):
 
     def __onTutorialStopped(self):
         self.__doRestore()
+
+    def __updateConditionalState(self, state):
+        chaptersList = ('goldTankmanCost', 'goldTankmanCostMultiplier', 'creditsTankmanCost',
+                        'creditsTankmanCostMultiplier')
+        if state['initialChapter'] in chaptersList:
+            vehicle = g_currentVehicle.item
+            everyone100 = True
+            if vehicle:
+                for _i, tankman in vehicle.crew:
+                    if tankman is None or not tankman.isInNativeTank:
+                        everyone100 = False
+                        break
+
+            if everyone100:
+                state['initialChapter'] = 'retrainingCost'
+            else:
+                state['initialChapter'] = 'crewRetrainingCost'
+        return

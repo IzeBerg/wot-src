@@ -34,6 +34,16 @@ package net.wg.infrastructure.base.meta
       
       function changeAccountS() : void;
       
+      function onVideoLoadedS() : void;
+      
+      function musicFadeOutS() : void;
+      
+      function videoLoadingFailedS() : void;
+      
+      function switchBgModeS() : void;
+      
+      function setMuteS(param1:Boolean) : void;
+      
       function as_setDefaultValues(param1:Object) : void;
       
       function as_setErrorMessage(param1:String, param2:int) : void;
@@ -44,11 +54,19 @@ package net.wg.infrastructure.base.meta
       
       function as_setLoginWarning(param1:String) : void;
       
+      function as_showWallpaper(param1:Boolean, param2:String, param3:Boolean, param4:Boolean) : void;
+      
+      function as_showLoginVideo(param1:String, param2:Number, param3:Boolean) : void;
+      
       function as_setLoginWarningHide() : void;
       
       function as_setCapsLockState(param1:Boolean) : void;
       
       function as_setKeyboardLang(param1:String) : void;
+      
+      function as_pausePlayback() : void;
+      
+      function as_resumePlayback() : void;
       
       function as_doAutoLogin() : void;
       

@@ -520,10 +520,10 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         self.__isGUIVisible = True
         self.__killerVehicleID = None
         arena = avatar.arena
-        arena.onPeriodChange += self.__onArenaStarted
+        arena.onPeriodChange += self._onArenaStarted
         self.settingsCore.onSettingsChanged += self.__onSettingsChanged
         avatar.consistentMatrices.onVehicleMatrixBindingChanged += self.__onVehicleChanged
-        self.__onArenaStarted(arena.period)
+        self._onArenaStarted(arena.period)
         if not avatar.isObserver() and arena.hasObservers:
             self.__remoteCameraSender = RemoteCameraSender(self)
         self.onCameraChanged('arcade')
@@ -555,7 +555,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         self.__killerVehicleID = None
         if self.__onRecreateDevice in g_guiResetters:
             g_guiResetters.remove(self.__onRecreateDevice)
-        BigWorld.player().arena.onPeriodChange -= self.__onArenaStarted
+        BigWorld.player().arena.onPeriodChange -= self._onArenaStarted
         self.settingsCore.onSettingsChanged -= self.__onSettingsChanged
         BigWorld.player().consistentMatrices.onVehicleMatrixBindingChanged -= self.__onVehicleChanged
         ScriptGameObject.destroy(self)
@@ -911,7 +911,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
 
         return
 
-    def __onArenaStarted(self, period, *args):
+    def _onArenaStarted(self, period, *args):
         self.__isArenaStarted = period == ARENA_PERIOD.BATTLE
         self.__curCtrl.setGunMarkerFlag(self.__isArenaStarted, _GUN_MARKER_FLAG.CONTROL_ENABLED)
         self.showServerGunMarker(gun_marker_ctrl.useServerGunMarker())

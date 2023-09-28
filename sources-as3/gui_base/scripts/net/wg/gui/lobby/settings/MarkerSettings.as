@@ -1,5 +1,6 @@
 package net.wg.gui.lobby.settings
 {
+   import net.wg.data.VO.CountersVo;
    import net.wg.data.constants.MarkerState;
    import net.wg.data.constants.Values;
    import net.wg.gui.components.common.markers.VehicleMarker;
@@ -10,6 +11,8 @@ package net.wg.gui.lobby.settings
    import net.wg.gui.lobby.settings.vo.SettingsControlProp;
    import net.wg.gui.lobby.settings.vo.SettingsTabNewCounterVo;
    import net.wg.gui.lobby.settings.vo.base.SettingsDataVo;
+   import net.wg.infrastructure.managers.counter.CounterManager;
+   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.events.IndexEvent;
    import scaleform.clik.interfaces.IDataProvider;
    
@@ -124,6 +127,24 @@ package net.wg.gui.lobby.settings
          enemyForm.addEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
          allyForm.addEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
          deadForm.addEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
+      }
+      
+      override protected function getLineCountersIds(param1:String, param2:Vector.<CountersVo>) : Array
+      {
+         var _loc4_:CountersVo = null;
+         var _loc3_:Array = [];
+         if(StringUtils.isEmpty(param1))
+         {
+            return _loc3_;
+         }
+         for each(_loc4_ in param2)
+         {
+            if(_loc4_.count == CounterManager.DEF_COUNTER_NO_VIEWED_VALUE)
+            {
+               _loc3_.push(_loc4_.componentId);
+            }
+         }
+         return _loc3_;
       }
       
       override protected function setData(param1:SettingsDataVo) : void

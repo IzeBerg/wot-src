@@ -87,7 +87,7 @@ package net.wg.gui.battle.battleloading
          this.form.setBattleTypeName(_loc2_.battleTypeLocaleStr);
          this.updateWinText(_loc2_);
          this.form.updateTeamsHeaders(_loc2_.allyTeamName,_loc2_.enemyTeamName);
-         this.form.setBattleTypeIconPath(_loc2_.battleTypeIconPathBig);
+         this.form.setBattleTypeFrameName(_loc2_.battleTypeFrameLabel);
       }
       
       override public function setFrags(param1:IDAAPIDataClass) : void

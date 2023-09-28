@@ -8,65 +8,24 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
-		<node>
-			<identifier>SandDriftSmall06</identifier>
-			<transform>
-				<row0>1.000000 0.000000 0.000000</row0>
-				<row1>0.000000 1.000000 0.000000</row1>
-				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000000 -0.713927 1.121806</row3>
-			</transform>
-		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
-		<node>SandDriftSmall06</node>
+		<node>Scene Root</node>
 		<geometry>
-			<vertices>SandDriftSmall06Shape.vertices</vertices>
-			<stream>SandDriftSmall06Shape.colour</stream>
-			<primitive>SandDriftSmall06Shape.indices</primitive>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>SandDrift</identifier>
-					<collisionFlags>255</collisionFlags>
-					<materialKind>255</materialKind>
+					<identifier>s_nd0</identifier>
 					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
-					<property>
-						TintlColor
-						<Vector4>1.000000 0.992157 0.380392 1.000000</Vector4>
-					</property>
-					<property>
-						diffuseUVSpeedAlphaOffset
-						<Vector4>0.000000 0.350000 -1.000000 0.000000</Vector4>
-					</property>
-					<property>
-						distortion_UV_Speed_Amount
-						<Vector4>2.000000 0.200000 0.010000 0.000000</Vector4>
-					</property>
-					<property>
-						lightMultipliers
-						<Vector4>1.000000 0.200000 1.000000 0.000000</Vector4>
-					</property>
+					<materialKind>255</materialKind>
+					<collisionFlags>255</collisionFlags>
 					<property>
 						alphaFadeAmountFresnel
 						<Vector4>0.000000 0.010000 3.000000 0.500000</Vector4>
-					</property>
-					<property>
-						softFactor
-						<Float>0.500000</Float>
-					</property>
-					<property>
-						fadeMinDistance
-						<Float>0.200000</Float>
-					</property>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
-					<property>
-						enableLighting
-						<Bool>true</Bool>
 					</property>
 					<property>
 						alphaFreshnelEnable
@@ -77,19 +36,50 @@
 						<Texture>particles/content_deferred/GFX_models/GFX_textures/SulfurDrift_01.dds</Texture>
 					</property>
 					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.350000 -1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>2.000000 0.200000 0.010000 0.000000</Vector4>
+					</property>
+					<property>
 						distortionMap
 						<Texture>particles/content_deferred/GFX_models/GFX_textures/SandStorm_03_distortion.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						fadeMinDistance
+						<Float>0.200000</Float>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 0.200000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						softFactor
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1.000000 0.992157 0.380392 1.000000</Vector4>
 					</property>
 				</material>
 				<groupOrigin>0.974957 0.975768 2.123610</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
-	<constraints/>
 	<boundingBox>
-		<min>-6.791134 -0.557674 -1.653340</min>
-		<max>8.741047 1.081356 8.144172</max>
+		<min>-6.791134 0.156254 -2.775146</min>
+		<max>8.741047 1.795283 7.022366</max>
 	</boundingBox>
-	<geometrySize>7776</geometrySize>
+	<geometrySize>19620</geometrySize>
 	<minUVDensity>0.004292</minUVDensity>
 </root>

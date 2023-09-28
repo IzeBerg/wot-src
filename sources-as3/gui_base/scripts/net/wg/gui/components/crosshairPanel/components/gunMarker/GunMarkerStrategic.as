@@ -140,13 +140,5 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       public function setMixingScale(param1:Number) : void
       {
       }
-      
-      public function setDualAccActive(param1:Boolean) : void
-      {
-      }
-      
-      public function setIsSecondary(param1:Boolean) : void
-      {
-      }
    }
 }

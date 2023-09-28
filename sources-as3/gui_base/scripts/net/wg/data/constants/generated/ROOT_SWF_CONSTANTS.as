@@ -7,6 +7,8 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_CROSSHAIRS_REGISTER_CALLBACK:String = "registerCrosshairPanel";
       
+      public static const GAME_LOADING_REGISTER_CALLBACK:String = "registerGameLoading";
+      
       public static const WAITING_TRANSITION_CALLBACK:String = "registerWaitingTransition";
        
       

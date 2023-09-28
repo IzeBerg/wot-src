@@ -1,4 +1,5 @@
-import typing, BigWorld
+from typing import Optional
+import BigWorld
 from constants import CustomizationInvData
 from gui.SystemMessages import pushMessagesFromResult
 from items.components.c11n_constants import SeasonType

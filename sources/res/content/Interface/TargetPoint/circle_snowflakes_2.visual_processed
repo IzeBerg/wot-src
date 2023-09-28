@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>snowflakes</identifier>
+					<fx>shaders/controlPoint/wg_controlPointRadius.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Interface/TargetPoint/snowflake_atlas_AM.dds</Texture>
+					</property>
+					<property>
+						g_color
+						<Vector4>0.478431 0.992157 1.000000 2.000000</Vector4>
+					</property>
+					<property>
+						g_albedoConversions
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.050000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.889378 -0.000001 -7.874015</min>
+		<max>7.889378 0.100001 7.874015</max>
+	</boundingBox>
+	<geometrySize>5400</geometrySize>
+	<minUVDensity>0.258063</minUVDensity>
+</root>

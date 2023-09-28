@@ -1,8 +1,8 @@
 package net.wg.infrastructure.base.meta.impl
 {
-   import net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper.CommonEntryPoint;
+   import net.wg.gui.lobby.hangar.eventEntryPoint.EventEntryPointBase;
    
-   public class FunRandomEntryPointMeta extends CommonEntryPoint
+   public class FunRandomEntryPointMeta extends EventEntryPointBase
    {
        
       
