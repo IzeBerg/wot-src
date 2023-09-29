@@ -49,13 +49,7 @@ class VisualScriptEquipment(DynamicScriptComponent):
         return
 
     def set_errorState(self, _=None):
-        if self._context is None:
-            return
-        else:
-            self._context.onSetErrorState(self.errorState)
-            state = getVisualScriptEquipmentState(self.equipmentState)
-            self.__update(state, force=True)
-            return
+        self._refreshErrorState()
 
     def set_equipmentState(self, _=None):
         if self._context is None:
@@ -69,6 +63,15 @@ class VisualScriptEquipment(DynamicScriptComponent):
     def update(self):
         state = getVisualScriptEquipmentState(self.equipmentState)
         self.__update(state)
+
+    def _refreshErrorState(self):
+        if self._context is None:
+            return
+        else:
+            self._context.onSetErrorState(self.errorState)
+            state = getVisualScriptEquipmentState(self.equipmentState)
+            self.__update(state, force=True)
+            return
 
     def __update(self, state, force=False):
         eqCtrl = self.entity.guiSessionProvider.shared.equipments
