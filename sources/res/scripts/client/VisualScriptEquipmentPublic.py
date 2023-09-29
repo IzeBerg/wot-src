@@ -16,3 +16,10 @@ class VisualScriptEquipmentPublic(VisualScriptEquipment):
                 state = getVisualScriptEquipmentPublicState(self.equipmentStatePublic)
                 getattr(self._context, STAGES.toString(state.stage))()
             return
+
+    def _refreshErrorState(self):
+        if self._context is None:
+            return
+        else:
+            self._context.onSetErrorState(self.errorState)
+            return
