@@ -79,7 +79,11 @@ else:
         WHEELED_TECH = 1
 
 
-    FLAMETHROWER = 'flamethrower'
+    class VEHICLE_TAGS():
+        FLAMETHROWER = 'flamethrower'
+        ASSAULT_SPG = 'assaultSPG'
+
+
     VEHICLE_DEVICE_TYPE_NAMES = (
      'engine', 'ammoBay', 'fuelTank', 'radio', 'track', 'gun', 'turretRotator', 'surveyingDevice', 'STUN_PLACEHOLDER',
      'wheel')
@@ -416,6 +420,7 @@ class VehicleDescriptor(object):
     hasAutoSiegeMode = property(lambda self: self.type.hasAutoSiegeMode)
     isWheeledVehicle = property(lambda self: self.type.isWheeledVehicle)
     isFlamethrower = property(lambda self: self.type.isFlamethrower)
+    isAssaultSPG = property(lambda self: self.type.isAssaultSPG)
     hasSpeedometer = property(lambda self: self.type.hasSpeedometer)
     isDualgunVehicle = property(lambda self: 'dualGun' in self.gun.tags)
     hasDualAccuracy = property(lambda self: 'dualAccuracy' in self.gun.tags)
@@ -1789,7 +1794,8 @@ class VehicleType(object):
     __metaclass__ = ReflectionMetaclass
     __slots__ = (
      'name', 'id', 'compactDescr', 'mode', 'tags', 'level', 'hasSiegeMode', 'hasAutoSiegeMode', 'isWheeledVehicle',
-     'isFlamethrower', 'isDualgunVehicleType', 'hasCustomDefaultCamouflage', 'customizationNationID', 'baseColorID',
+     'isFlamethrower', 'isAssaultSPG', 'isDualgunVehicleType', 'hasCustomDefaultCamouflage',
+     'customizationNationID', 'baseColorID',
      'speedLimits', 'repairCost', 'crewXpFactor', 'premiumVehicleXPFactor', 'xpFactor',
      'creditsFactor', 'freeXpFactor', 'healthBurnPerSec', 'healthBurnPerSecLossFraction',
      'invisibility', 'invisibilityDeltas', 'crewRoles', 'extras', 'extrasDict', 'extrasProtection',
@@ -1824,7 +1830,8 @@ class VehicleType(object):
         self.hasAutoSiegeMode = 'autoSiege' in self.tags
         self.isWheeledVehicle = 'wheeledVehicle' in self.tags
         self.isScout = 'scout' in self.tags
-        self.isFlamethrower = FLAMETHROWER in self.tags
+        self.isFlamethrower = VEHICLE_TAGS.FLAMETHROWER in self.tags
+        self.isAssaultSPG = VEHICLE_TAGS.ASSAULT_SPG in self.tags
         self.isDualgunVehicleType = 'dualgun' in self.tags
         self.hasTurboshaftEngine = 'turboshaftEngine' in self.tags
         self.hasSpeedometer = 'speedometer' in self.tags
@@ -3138,7 +3145,7 @@ def hasAnyOfTags(vehTypeCD, tags=()):
 
 
 def isFlamethrower(vehTypeCD):
-    return hasAnyOfTags(vehTypeCD, (FLAMETHROWER,))
+    return hasAnyOfTags(vehTypeCD, (VEHICLE_TAGS.FLAMETHROWER,))
 
 
 def _readComponents(xmlPath, reader, nationID, itemTypeID):
@@ -4553,10 +4560,10 @@ def _readGun(xmlCtx, section, item, unlocksDescrs=None, _=None):
         tags = tags.difference(('dualAccuracy', ))
     else:
         tags = tags.union(('dualAccuracy', ))
-    if not section.has_key(FLAMETHROWER):
-        tags = tags.difference((FLAMETHROWER,))
+    if not section.has_key(VEHICLE_TAGS.FLAMETHROWER):
+        tags = tags.difference((VEHICLE_TAGS.FLAMETHROWER,))
     else:
-        tags = tags.union((FLAMETHROWER,))
+        tags = tags.union((VEHICLE_TAGS.FLAMETHROWER,))
     item.tags = tags
     nationID = parseIntCompactDescr(item.compactDescr)[1]
     v = []
@@ -4856,10 +4863,10 @@ def _readGunLocals(xmlCtx, section, sharedItem, unlocksDescrs, turretCompactDesc
             else:
                 tags = tags.union(('dualAccuracy', ))
             item.tags = tags
-        if not section.has_key(FLAMETHROWER):
-            item.tags = item.tags.difference((FLAMETHROWER,))
+        if not section.has_key(VEHICLE_TAGS.FLAMETHROWER):
+            item.tags = item.tags.difference((VEHICLE_TAGS.FLAMETHROWER,))
         else:
-            item.tags = item.tags.union((FLAMETHROWER,))
+            item.tags = item.tags.union((VEHICLE_TAGS.FLAMETHROWER,))
         if shootImpulses:
             item.shootImpulses = shootImpulses
         if IS_CLIENT or IS_UE_EDITOR:

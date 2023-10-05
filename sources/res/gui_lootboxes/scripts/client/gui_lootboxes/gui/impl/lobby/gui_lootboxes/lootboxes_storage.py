@@ -274,4 +274,4 @@ class LootBoxesStorageWindow(LobbyWindow):
     __slots__ = ()
 
     def __init__(self):
-        super(LootBoxesStorageWindow, self).__init__(WindowFlags.WINDOW | WindowFlags.WINDOW_FULLSCREEN, content=LootBoxesStorageView(R.views.gui_lootboxes.lobby.gui_lootboxes.StorageView()), layer=WindowLayer.OVERLAY)
+        super(LootBoxesStorageWindow, self).__init__(WindowFlags.WINDOW | WindowFlags.WINDOW_FULLSCREEN, content=LootBoxesStorageView(R.views.gui_lootboxes.lobby.gui_lootboxes.StorageView()), layer=WindowLayer.TOP_WINDOW)

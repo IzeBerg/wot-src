@@ -200,7 +200,7 @@ class HWConsumablesPanel(HWConsumablesPanelMeta):
         elif currStage in _ACTIVE_EQUIPMENT_STAGES and prevStage not in _ACTIVE_EQUIPMENT_STAGES:
             if prevStage == EQUIPMENT_STAGES.EXHAUSTED:
                 self._showHWEqupmentGlow(idx, glowID=CONSUMABLES_PANEL_SETTINGS.GLOW_ID_GREEN_SPECIAL)
-            elif prevStage == EQUIPMENT_STAGES.NOT_RUNNING:
+            elif prevStage == EQUIPMENT_STAGES.NOT_RUNNING or prevStage == EQUIPMENT_STAGES.UNAVAILABLE:
                 self._showHWEqupmentGlow(idx, glowID=CONSUMABLES_PANEL_SETTINGS.GLOW_ID_GREEN)
             self.as_setEquipmentActivatedS(idx, True)
         elif currStage not in _ACTIVE_EQUIPMENT_STAGES and prevStage in _ACTIVE_EQUIPMENT_STAGES:

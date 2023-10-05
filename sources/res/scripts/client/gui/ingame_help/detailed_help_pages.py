@@ -32,6 +32,7 @@ class HelpPagePriority(object):
     ROLE_TYPE = 11
     COMP7 = 12
     FLAMETHROWER = 11
+    ASSAULT_SPG = 11
 
 
 def addPage(datailedList, headerTitle, title, descr, vKeys, buttons, image, roleImage=None, roleActions=None, hintCtx=None):
@@ -190,6 +191,28 @@ class FlameTankPagesBuilder(DetailedHelpPagesBuilder):
     def _collectHelpCtx(cls, ctx, arenaVisitor, vehicle):
         ctx['isFlamethrower'] = isFlamethrower = vehicle is not None and vehicle.typeDescriptor.isFlamethrower
         ctx['hasUniqueVehicleHelpScreen'] = ctx.get('hasUniqueVehicleHelpScreen') or isFlamethrower
+        return
+
+
+class AssaultTankPagesBuilder(DetailedHelpPagesBuilder):
+    _SUITABLE_CTX_KEYS = ('isAssaultSPG', )
+
+    @classmethod
+    def priority(cls):
+        return HelpPagePriority.ASSAULT_SPG
+
+    @classmethod
+    def buildPages(cls, ctx):
+        headerTitle = buildTitle(ctx)
+        pages = []
+        addPage(pages, headerTitle, backport.text(R.strings.ingame_help.detailsHelp.assaultTank.title()), text_styles.mainBig(backport.text(R.strings.ingame_help.detailsHelp.assaultTank())), [], [], backport.image(R.images.gui.maps.icons.battleHelp.assaultSPGHelp.assault_tank()), hintCtx=HelpHintContext.MECHANICS)
+        addPage(pages, headerTitle, backport.text(R.strings.ingame_help.detailsHelp.assaultTank.prosCons.title()), text_styles.mainBig(backport.text(R.strings.ingame_help.detailsHelp.assaultTank.prosCons())), [], [], backport.image(R.images.gui.maps.icons.battleHelp.assaultSPGHelp.assault_tank_pros_cons()), hintCtx=HelpHintContext.MECHANICS)
+        return pages
+
+    @classmethod
+    def _collectHelpCtx(cls, ctx, arenaVisitor, vehicle):
+        ctx['isAssaultSPG'] = isAssaultSPG = vehicle is not None and vehicle.typeDescriptor.isAssaultSPG
+        ctx['hasUniqueVehicleHelpScreen'] = ctx.get('hasUniqueVehicleHelpScreen') or isAssaultSPG
         return
 
 
@@ -448,4 +471,4 @@ registerIngameHelpPagesBuilders((
  SiegeModePagesBuilder, BurnOutPagesBuilder, WheeledPagesBuilder, TrackWithinTrackPagesBuilder,
  DualGunPagesBuilder, BattleRoyalePagesBuilder, TurboshaftEnginePagesBuilder, RoleTypePagesBuilder,
  RocketAccelerationPagesBuilder, Comp7PagesBuilder, MapboxPagesBuilder,
- DualAccuracyPagesBuilder, DevMapsPagesBuilder, FlameTankPagesBuilder))
+ DualAccuracyPagesBuilder, DevMapsPagesBuilder, FlameTankPagesBuilder, AssaultTankPagesBuilder))

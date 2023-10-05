@@ -60,11 +60,12 @@ def _isHW23CrewCompleted(vehicleType, tankmenGroups, tag):
     nationID, _ = vehicleType.id
     requiredCrew = tankmen.getTankmenWithTag(nationID, isPremium, tag)
     actualCrew = [ tankmen.unpackCrewParams(tGroup)[0] for tGroup in tankmenGroups ]
-    if len(actualCrew) > len(requiredCrew):
-        notHwTankmens = len([ _id for _id in actualCrew if _id not in requiredCrew ])
-        hwTankmensLen = len(actualCrew) - notHwTankmens
-        if hwTankmensLen >= len(requiredCrew):
+    lenRequired = len(requiredCrew)
+    uniqueRequiredCount = len(requiredCrew & set(actualCrew))
+    if uniqueRequiredCount == lenRequired:
+        return True
+    lenActual = len(actualCrew)
+    if lenActual < lenRequired:
+        if uniqueRequiredCount == lenActual:
             return True
-    if len(actualCrew) <= len(requiredCrew):
-        return set(actualCrew) <= requiredCrew
-    return requiredCrew < set(actualCrew)
+    return False

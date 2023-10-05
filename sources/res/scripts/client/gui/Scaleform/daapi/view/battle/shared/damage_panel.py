@@ -224,12 +224,12 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
             player.hideStatus(False)
 
     def updateVehicleParams(self, vehicle, *args):
-        self.__updateMaxHealth()
+        self._updateMaxHealth()
         self._updateHealth(self._maxHealth)
 
     def updateVehiclesInfo(self, updated, arenaDP):
         super(DamagePanel, self).updateVehiclesInfo(updated, arenaDP)
-        myVehicle = self.__getControllingVehicle()
+        myVehicle = self._getControllingVehicle()
         if myVehicle is None:
             return
         else:
@@ -310,7 +310,7 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         self.as_setPlayerInfoS(result.playerName, result.clanAbbrev, result.regionCode, result.vehicleName)
 
     def _updateDeviceState(self, value):
-        if self.__getControllingVehicle() is None:
+        if self._getControllingVehicle() is None:
             return
         else:
             self.as_updateDeviceStateS(*value[:2])
@@ -342,7 +342,7 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
     def _updateHealthFromServer(self, health):
         if self.sessionProvider.shared.prebattleSetups.isSelectionStarted():
             return
-        self.__updateMaxHealth()
+        self._updateMaxHealth()
         self._updateHealth(health)
 
     def _updateRepairPoint(self, value):
@@ -416,19 +416,19 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         self.__updateStunSources(objID, stunInfo)
         self.__updateStunAnimations(stunInfo)
 
-    def __updateMaxHealth(self):
+    def _updateMaxHealth(self):
         prebattleCtrl = self.sessionProvider.shared.prebattleSetups
         if prebattleCtrl is not None:
             prebattleVehicle = prebattleCtrl.getPrebattleSetupsVehicle()
             if prebattleVehicle is not None:
                 self._maxHealth = prebattleVehicle.descriptor.maxHealth
                 return
-            vehicle = self.__getControllingVehicle()
+            vehicle = self._getControllingVehicle()
             if vehicle is not None:
                 self._maxHealth = vehicle.maxHealth
         return
 
-    def __getControllingVehicle(self):
+    def _getControllingVehicle(self):
         vehStateCtrl = self.sessionProvider.shared.vehicleState
         if vehStateCtrl is not None:
             return vehStateCtrl.getControllingVehicle()
@@ -495,7 +495,7 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
                 self.__isAutoRotationOff = False
         self.__isWheeledTech = vehicle.isWheeledTech
         self.__isTrackWithinVehicle = vehicle.isTrackWithinTrack
-        self.__updateMaxHealth()
+        self._updateMaxHealth()
         prebattleCtrl = self.sessionProvider.shared.prebattleSetups
         prebattleVehicle = prebattleCtrl.getPrebattleSetupsVehicle() if prebattleCtrl is not None else None
         health = self._maxHealth if prebattleVehicle is not None else vehicle.health

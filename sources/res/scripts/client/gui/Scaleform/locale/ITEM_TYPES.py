@@ -75,6 +75,7 @@ class ITEM_TYPES(object):
     TANKMAN_ROLES_FEMALE_POSSESSIVECASE_LOADER = '#item_types:tankman/roles/female/possessiveCase/loader'
     TANKMAN_ROLES_OBJECTIVECASE_COMMANDER = '#item_types:tankman/roles/objectiveCase/commander'
     TANKMAN_ROLES_OBJECTIVECASE_DRIVER = '#item_types:tankman/roles/objectiveCase/driver'
+    TANKMAN_ROLES_SMALLRESOLUTION_NORMALCASE_DRIVER = '#item_types:tankman/roles/smallResolution/normalCase/driver'
     TANKMAN_ROLES_OBJECTIVECASE_RADIOMAN = '#item_types:tankman/roles/objectiveCase/radioman'
     TANKMAN_ROLES_OBJECTIVECASE_GUNNER = '#item_types:tankman/roles/objectiveCase/gunner'
     TANKMAN_ROLES_OBJECTIVECASE_LOADER = '#item_types:tankman/roles/objectiveCase/loader'
@@ -85,6 +86,7 @@ class ITEM_TYPES(object):
     TANKMAN_ROLES_FEMALE_OBJECTIVECASE_LOADER = '#item_types:tankman/roles/female/objectiveCase/loader'
     TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_COMMANDER = '#item_types:tankman/roles/objectiveCase/upperCase/commander'
     TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_DRIVER = '#item_types:tankman/roles/objectiveCase/upperCase/driver'
+    TANKMAN_ROLES_SMALLRESOLUTION_UPPERCASE_DRIVER = '#item_types:tankman/roles/smallResolution/upperCase/driver'
     TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_RADIOMAN = '#item_types:tankman/roles/objectiveCase/upperCase/radioman'
     TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_GUNNER = '#item_types:tankman/roles/objectiveCase/upperCase/gunner'
     TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_LOADER = '#item_types:tankman/roles/objectiveCase/upperCase/loader'
@@ -182,6 +184,7 @@ class ITEM_TYPES(object):
      TANKMAN_ROLES_FEMALE_POSSESSIVECASE_LOADER,
      TANKMAN_ROLES_OBJECTIVECASE_COMMANDER,
      TANKMAN_ROLES_OBJECTIVECASE_DRIVER,
+     TANKMAN_ROLES_SMALLRESOLUTION_NORMALCASE_DRIVER,
      TANKMAN_ROLES_OBJECTIVECASE_RADIOMAN,
      TANKMAN_ROLES_OBJECTIVECASE_GUNNER,
      TANKMAN_ROLES_OBJECTIVECASE_LOADER,
@@ -192,6 +195,7 @@ class ITEM_TYPES(object):
      TANKMAN_ROLES_FEMALE_OBJECTIVECASE_LOADER,
      TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_COMMANDER,
      TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_DRIVER,
+     TANKMAN_ROLES_SMALLRESOLUTION_UPPERCASE_DRIVER,
      TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_RADIOMAN,
      TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_GUNNER,
      TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_LOADER,

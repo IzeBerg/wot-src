@@ -19,16 +19,27 @@ class HalloweenDamagePanel(DamagePanel):
             super(HalloweenDamagePanel, self).updateVehicleParams(vehicle, _, vehicleID)
         return
 
+    def _updateMaxHealth(self):
+        prebattleCtrl = self.sessionProvider.shared.prebattleSetups
+        if prebattleCtrl is not None:
+            prebattleMaxHealth = 0
+            vehicleMaxHealth = 0
+            prebattleVehicle = prebattleCtrl.getPrebattleSetupsVehicle()
+            if prebattleVehicle is not None:
+                prebattleMaxHealth = prebattleVehicle.descriptor.maxHealth
+            vehicle = self._getControllingVehicle()
+            if vehicle is not None:
+                vehicleMaxHealth = vehicle.maxHealth
+            return max(prebattleMaxHealth, vehicleMaxHealth)
+        else:
+            return 0
+
     def _updateHealth(self, health):
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
             vehicle = ctrl.getControllingVehicle()
             self._maxHealth = vehicle.maxHealth
-            arenaDP = self.sessionProvider.getArenaDP()
-            if arenaDP:
-                playerVehType = arenaDP.getVehicleInfo(vehicle.id).vehicleType
-                self._maxHealth = playerVehType.maxHealth
-        if health <= self._maxHealth and self._maxHealth > 0:
+        if self._maxHealth > 0:
             healthStr = formatHealthProgress(health, self._maxHealth)
             healthProgress = normalizeHealthPercent(health, self._maxHealth)
             self.as_updateHealthS(healthStr, healthProgress)

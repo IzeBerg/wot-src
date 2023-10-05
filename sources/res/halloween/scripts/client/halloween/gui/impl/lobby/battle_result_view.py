@@ -36,6 +36,7 @@ from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE
 from gui.sounds.ambients import BattleResultsEnv
 from halloween_common.halloween_constants import PREBATTLE_TYPE
 from halloween.gui.halloween_gui_constants import PREBATTLE_ACTION_NAME
+import SoundGroups
 _CHECK_FRIEND_TIMEOUT = 5.0
 _DEFAULT_CONTEXT_MENU_PLAYER_ID = -1
 
@@ -44,7 +45,7 @@ def _getRank(playerVO, players):
 
 
 class BattleResultView(BaseEventView, CallbackDelayer):
-    __slots__ = ('__arenaUniqueID', '__contextMenuWindow')
+    __slots__ = ('__arenaUniqueID', '__contextMenuWindow', '__music')
     eventsCache = dependency.descriptor(IEventsCache)
     battleResults = dependency.descriptor(IBattleResultsService)
     platoonCtrl = dependency.descriptor(IPlatoonController)
@@ -60,6 +61,7 @@ class BattleResultView(BaseEventView, CallbackDelayer):
         self.playerRank = 0
         self.currentPlayerID = 0
         self.__contextMenuWindow = None
+        self.__music = None
         return
 
     @property
@@ -119,6 +121,8 @@ class BattleResultView(BaseEventView, CallbackDelayer):
         self._removeEventListeners()
         self.__updateHeader(visibility=True)
         self.__contextMenuWindow = None
+        self.__stopAmbient()
+        self.__music = None
         super(BattleResultView, self)._finalize()
         return
 
@@ -251,6 +255,10 @@ class BattleResultView(BaseEventView, CallbackDelayer):
             self.__fillPlayerInfo(tx, vo)
             self.__fillBattleInfo(tx, vo['common'])
             self.__fillBaseCaptureInfo(tx, vo)
+        battleResultStr = vo.get('common', {}).get('resultShortStr')
+        if battleResultStr:
+            eventName = 'ev_shadowPlay_music_pbs_win' if battleResultStr == 'win' else 'ev_shadowPlay_music_pbs_defeat'
+            self.__playAmbient(eventName)
 
     def __fillCommonInfo(self, model, vo):
         model.setTitle(backport.text(R.strings.battle_results.hw_battle_result.status.dyn(vo['resultShortStr'])()))
@@ -464,3 +472,16 @@ class BattleResultView(BaseEventView, CallbackDelayer):
     def __updateHeader(self, visibility):
         state = HeaderMenuVisibilityState.ALL if visibility else HeaderMenuVisibilityState.NOTHING
         g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': state}), scope=EVENT_BUS_SCOPE.LOBBY)
+
+    def __playAmbient(self, eventName):
+        if self.__music is not None:
+            self.__music.stop()
+        self.__music = SoundGroups.g_instance.getSound2D(eventName)
+        if self.__music is not None:
+            self.__music.play()
+        return
+
+    def __stopAmbient(self):
+        if self.__music is not None:
+            self.__music.stop()
+        return

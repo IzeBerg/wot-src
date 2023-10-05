@@ -3,10 +3,10 @@ from gui.Scaleform.daapi.view.lobby.hangar.VehicleParameters import VehicleParam
 from gui.prb_control.entities.listener import IGlobalListener
 from gui.Scaleform.daapi.view.lobby.hangar.VehicleParameters import _VehParamsDataProvider, _VehParamsGenerator
 from constants import QUEUE_TYPE, PREBATTLE_TYPE
+from gui.shared import g_eventBus, EVENT_BUS_SCOPE
+from gui.shared.events import AmmunitionSetupViewEvent
 from gui.shared.items_parameters.comparator import VehiclesComparator
 from gui.shared.items_parameters.params_cache import g_paramsCache
-from skeletons.gui.shared import IItemsCache
-from helpers import dependency
 from buffs_helpers import makeBuffName, ModifiersDict, ValueSimpleModifier
 from buffs import ClientBuffsRepository
 from debug_utils import LOG_ERROR
@@ -80,23 +80,17 @@ class HWDataProvider(_VehParamsDataProvider, IGlobalListener):
 
 
 class HWVehicleParameters(VehicleParameters, IGlobalListener):
-    _itemsCache = dependency.descriptor(IItemsCache)
 
     def onPrbEntitySwitched(self):
         self.update()
 
     def _populate(self):
         super(HWVehicleParameters, self)._populate()
-        self.startGlobalListening()
-        self._itemsCache.onSyncCompleted += self._onSyncCompleted
+        g_eventBus.addListener(AmmunitionSetupViewEvent.UPDATE_TTC, self.update, EVENT_BUS_SCOPE.LOBBY)
 
     def _dispose(self):
-        self._itemsCache.onSyncCompleted -= self._onSyncCompleted
-        self.stopGlobalListening()
+        g_eventBus.removeListener(AmmunitionSetupViewEvent.UPDATE_TTC, self.update, EVENT_BUS_SCOPE.LOBBY)
         super(HWVehicleParameters, self)._dispose()
-
-    def _onSyncCompleted(self, _, diff):
-        self.update()
 
     def _createDataProvider(self):
         return HWDataProvider(_VehParamsGenerator())

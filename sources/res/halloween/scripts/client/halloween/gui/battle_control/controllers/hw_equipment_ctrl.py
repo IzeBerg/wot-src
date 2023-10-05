@@ -151,7 +151,7 @@ class _HWArrows(_TriggerItem):
             EventEquipmentSound.playActive(self)
 
 
-class _HWVehicleCurseArrow(_TriggerItem):
+class _HWVehicleCurseArrow(_HWArrows):
 
     def getAnimationType(self):
         return ANIMATION_TYPES.GREEN_GLOW_SHOW

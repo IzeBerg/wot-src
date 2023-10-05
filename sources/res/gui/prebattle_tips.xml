@@ -188,6 +188,13 @@
 				<showTimes>5</showTimes>
 			</preceding>
 		</filter>
+		<filter>
+			<id>only_assaultSPG_first_5_times</id>
+			<tags>assaultSPG</tags>
+			<preceding>
+				<showTimes>5</showTimes>
+			</preceding>
+		</filter>
 	</filters>
 	<tips>
 		<tip>
@@ -958,6 +965,12 @@
 			<id>tip31007</id>
 			<status>technicalAdvice</status>
 			<group>techProblems</group>
+		</tip>
+		<tip>
+			<id>tip31008</id>
+			<status>assaultSPGVehicles</status>
+			<group>assaultSPG</group>
+			<filter>only_assaultSPG_first_5_times</filter>
 		</tip>
 		<tip>
 			<id>epicTip1</id>

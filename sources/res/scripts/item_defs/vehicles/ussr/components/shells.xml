@@ -4964,6 +4964,47 @@
 			<protectFromIndirectHits>internal tankmen</protectFromIndirectHits>
 		</deviceDamagePossibility>
 	</_203mm_F-625D>
+	<_203mm_F-625DS>
+		<id>31006</id>
+		<userString>#ussr_vehicles:_203mm_F-625DS</userString>
+		<icon>he_spg</icon>
+		<price>2270</price>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<caliber>203</caliber>
+		<explosionRadius>17</explosionRadius>
+		<isTracer>true</isTracer>
+		<effects>hugeSH</effects>
+		<damage>
+			<armor>800</armor>
+			<devices>50</devices>
+		</damage>
+		<hitDeviceChanceMultiplier>
+			0.5
+			<!--BW_String-->
+		</hitDeviceChanceMultiplier>
+		<hitCrewChanceMultiplier>
+			0.5
+			<!--BW_String-->
+		</hitCrewChanceMultiplier>
+	</_203mm_F-625DS>
+	<_203mm_F-625DS_5>
+		<id>31014</id>
+		<userString>#ussr_vehicles:_203mm_F-625DS</userString>
+		<icon>hc</icon>
+		<price>2270</price>
+		<kind>HOLLOW_CHARGE</kind>
+		<caliber>203</caliber>
+		<isTracer>true</isTracer>
+		<effects>largeHollowCharge</effects>
+		<damage>
+			<armor>650</armor>
+			<devices>180</devices>
+		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.05
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
+	</_203mm_F-625DS_5>
 	<_203mm_G-620>
 		<id>71</id>
 		<userString>#ussr_vehicles:_203mm_G-620</userString>

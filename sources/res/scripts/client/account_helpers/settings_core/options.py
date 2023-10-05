@@ -23,7 +23,7 @@ from helpers import i18n
 from Event import Event
 from AvatarInputHandler import INPUT_HANDLER_CFG, AvatarInputHandler
 from AvatarInputHandler.DynamicCameras import ArcadeCamera, SniperCamera, StrategicCamera, ArtyCamera, DualGunCamera
-from AvatarInputHandler.control_modes import PostMortemControlMode, SniperControlMode, FlameArtyCamera
+from AvatarInputHandler.control_modes import PostMortemControlMode, SniperControlMode, OnlyArtyCamera
 from debug_utils import LOG_NOTE, LOG_DEBUG, LOG_ERROR, LOG_CURRENT_EXCEPTION, LOG_WARNING
 from gui.Scaleform.managers.windows_stored_data import g_windowsStoredData
 from messenger import g_settings as messenger_settings
@@ -1770,8 +1770,8 @@ class MouseSetting(ControlSetting):
                            ArtyCamera.getCameraAsSettingsHolder, 'artyMode/camera'), 
        CTRL_MODE_NAME.DUAL_GUN: (
                                DualGunCamera.getCameraAsSettingsHolder, 'dualGunMode/camera'), 
-       CTRL_MODE_NAME.FLAMETHROWER: (
-                                   FlameArtyCamera.getCameraAsSettingsHolder, 'flamethrowerMode/camera')}
+       CTRL_MODE_NAME.SPG_ONLY_ARTY_MODE: (
+                                         OnlyArtyCamera.getCameraAsSettingsHolder, 'flamethrowerMode/camera')}
 
     def __init__(self, mode, setting, default, isPreview=False, masterSwitch=''):
         super(MouseSetting, self).__init__(isPreview)

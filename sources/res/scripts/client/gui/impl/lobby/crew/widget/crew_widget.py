@@ -470,7 +470,7 @@ class CrewWidget(ViewImpl):
         isInteractive = True
         if tman is not None:
             rrl = tman.realRoleLevel
-            isUntrained = tman.isUntrained
+            isUntrained = tman.isUntrained if tman.isInTank else False
             hasWarning = isUntrained
             if self.__currentViewID == R.views.lobby.crew.QuickTrainingView():
                 isInteractive = not isUntrained

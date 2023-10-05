@@ -262,8 +262,8 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
             if entryID:
                 yield (
                  entryID, name, active)
-        if _CTRL_MODE.STRATEGIC in modes or _CTRL_MODE.ARTY in modes or _CTRL_MODE.FLAMETHROWER in modes:
-            if self._isInStrategicMode() or self._isInArtyMode() or self._isInFlamethrowerMode():
+        if _CTRL_MODE.STRATEGIC in modes or _CTRL_MODE.ARTY in modes or _CTRL_MODE.SPG_ONLY_ARTY_MODE in modes:
+            if self._isInStrategicMode() or self._isInArtyMode() or self._isInOnlyArtyMode():
                 matrix = matrix_factory.makeStrategicCameraMatrix()
                 active = True
             else:
@@ -290,7 +290,7 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
 
     def __updateCameraEntries(self):
         activateID = self.__cameraIDs[_S_NAME.ARCADE_CAMERA]
-        if self._isInStrategicMode() or self._isInArtyMode() or self._isInFlamethrowerMode():
+        if self._isInStrategicMode() or self._isInArtyMode() or self._isInOnlyArtyMode():
             activateID = self.__cameraIDs[_S_NAME.STRATEGIC_CAMERA]
             matrix = matrix_factory.makeStrategicCameraMatrix()
         else:

@@ -8,6 +8,7 @@ from gui.impl.gen.view_models.views.lobby.tank_setup.tank_setup_constants import
 from gui.impl.lobby.tank_setup.interactors.halloween import HWBuyAndInstallConsumables
 from ids_generators import SequenceIDGenerator
 from gui.Scaleform.daapi.view.lobby.storage.inventory.inventory_cm_handlers import EquipmentCMHandler
+from items import vehicles
 
 @consumableDecorator
 class HWConsumableItemContextMenu(ConsumableItemContextMenu):
@@ -134,6 +135,8 @@ class HWEquipmentCMHandler(EquipmentCMHandler):
 
     def _getOptionCustomData(self, label):
         optionData = super(HWEquipmentCMHandler, self)._getOptionCustomData(label)
-        if label in (CMLabel.BUY_MORE, CMLabel.SELL):
+        item = vehicles.getItemByCompactDescr(self._id)
+        isHalloween = 'halloween_equipment' in item.tags
+        if isHalloween and label in (CMLabel.BUY_MORE, CMLabel.SELL):
             optionData.visible = False
         return optionData

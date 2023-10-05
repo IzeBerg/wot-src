@@ -2761,11 +2761,13 @@ class ROLE_TYPE:
     LT_UNIVERSAL = 14
     LT_WHEELED = 15
     SPG_FLAME = 16
+    SPG_ASSAULT = 17
 
 
 ROLE_LABEL_TO_TYPE = {'NotDefined': ROLE_TYPE.NOT_DEFINED, 
    'role_SPG': ROLE_TYPE.SPG, 
    'role_SPG_flame': ROLE_TYPE.SPG_FLAME, 
+   'role_SPG_assault': ROLE_TYPE.SPG_ASSAULT, 
    'role_HT_assault': ROLE_TYPE.HT_ASSAULT, 
    'role_HT_break': ROLE_TYPE.HT_BREAK, 
    'role_HT_universal': ROLE_TYPE.HT_UNIVERSAL, 
