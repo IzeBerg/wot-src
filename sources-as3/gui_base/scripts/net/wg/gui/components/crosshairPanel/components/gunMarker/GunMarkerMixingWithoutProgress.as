@@ -36,20 +36,25 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          }
       }
       
-      public function setReloadingState(param1:String) : void
+      override protected function onDispose() : void
       {
-         this._isInProgress = !(param1 == CrosshairConsts.RELOADING_ENDED || param1 == CrosshairConsts.RELOADING_END);
-         invalidate(STATE_VALIDATION);
+         this.dotsMc = null;
+         super.onDispose();
+      }
+      
+      public function setAlpha(param1:Number) : void
+      {
+         alpha = param1;
       }
       
       public function setReloadingAsPercent(param1:Number, param2:Boolean = false) : void
       {
       }
       
-      override protected function onDispose() : void
+      public function setReloadingState(param1:String) : void
       {
-         super.onDispose();
-         this.dotsMc = null;
+         this._isInProgress = !(param1 == CrosshairConsts.RELOADING_ENDED || param1 == CrosshairConsts.RELOADING_END);
+         invalidate(STATE_VALIDATION);
       }
       
       public function setThickness(param1:String) : void

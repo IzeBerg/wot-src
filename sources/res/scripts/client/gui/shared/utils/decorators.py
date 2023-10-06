@@ -6,9 +6,10 @@ from gui.Scaleform.Waiting import Waiting
 
 class adisp_process(object):
 
-    def __init__(self, *kargs):
+    def __init__(self, *kargs, **kwargs):
         self.__currentMessage = None
         self.__messages = kargs
+        self.__kwargs = kwargs
         self.__messages2Show = list(self.__messages)
         return
 
@@ -22,13 +23,14 @@ class adisp_process(object):
         if self.__messages2Show:
             self.__hideWaiting()
             self.__currentMessage = self.__messages2Show.pop(0)
-            Waiting.show(self.__currentMessage)
+            Waiting.show(self.__currentMessage, **self.__kwargs)
 
     def __stepCallback(self, isStop):
         if not isStop:
             return self.__nextWaiting()
         self.__hideWaiting()
         self.__messages2Show = list(self.__messages)
+        self.__kwargs = {}
 
     def __call__(self, func):
 

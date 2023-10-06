@@ -168,7 +168,7 @@ package net.wg.gui.battle.epicBattle.views.stats.renderers
          this.icoIGR.visible = false;
          this.icoIGR.imageName = BATTLEATLAS.ICO_IGR;
          this.mute.visible = false;
-         this.mute.imageName = BATTLEATLAS.LEFT_STATS_MUTE;
+         this.mute.imageName = BATTLEATLAS.STATS_MUTE;
          this.disableCommunicationIcon.visible = false;
          this.deadBg.visible = false;
          this.deadBg.imageName = BATTLEATLAS.EPIC_STATS_DEAD_BG;
@@ -303,26 +303,17 @@ package net.wg.gui.battle.epicBattle.views.stats.renderers
             this.mute.visible = this._isMute;
             if(this._isMute)
             {
-               this.mute.imageName = BATTLEATLAS.LEFT_STATS_MUTE;
+               this.mute.imageName = BATTLEATLAS.STATS_MUTE;
             }
-            if(this._isSpeaking)
+            this.speakAnimation.mute = this._isMute;
+            if(!this._isMute && this._isSpeaking)
             {
-               if(this._isMute)
-               {
-                  this.speakAnimation.reset();
-               }
-               else
-               {
-                  this.speakAnimation.speaking = true;
-               }
+               this.speakAnimation.speaking = true;
             }
          }
          if(isInvalid(RandomFullStatsValidationType.SPEAKING))
          {
-            if(!this._isMute)
-            {
-               this.speakAnimation.speaking = this._isSpeaking;
-            }
+            this.speakAnimation.speaking = this._isSpeaking;
          }
          if(isInvalid(RandomFullStatsValidationType.DISABLE_COMMUNICATION))
          {

@@ -1573,7 +1573,8 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'wotPlusExcludedVehicleEnabled',
  'collectionsItems',
  'collectionsReward',
- 'collectionEntitlementReceived'])
+ 'collectionEntitlementReceived',
+ 'prestigeLevelChanged'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

@@ -695,9 +695,17 @@
 			<Arg>UINT8</Arg>
 			<Arg>INT32</Arg>
 		</vehicle_changeSetting>
+		<setServerMarker>
+			<Exposed>OWN_CLIENT</Exposed>
+			<Arg>BOOL</Arg>
+		</setServerMarker>
+		<logLag/>
 	</CellMethods>
 	<BaseMethods>
 		<onCreateCellSuccess/>
+		<logLag>
+			<Exposed/>
+		</logLag>
 		<kickSelf>
 			<Arg>STRING</Arg>
 			<Arg>UINT8</Arg>

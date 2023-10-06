@@ -92,11 +92,12 @@ class VEHICLE_STATS:
     COMP7_CUT_SEASON_2 = 'comp7CutSeason2'
     COMP7_CUT_SEASON_3 = 'comp7CutSeason3'
     COMP7_CUT_ARCHIVE_GRIFFIN = 'comp7CutArchiveGriffin'
+    PRESTIGE_SYSTEM = 'prestigeSystem'
     ALL = (
      FRAGS, A15x15_CUT, A30x30_CUT, A7x7_CUT, HISTORICAL_CUT, FORT_SORTIES_CUT, FORT_BATTLES_CUT, RANKED_CUT,
      RANKED_CUT_SEASON_1, RANKED_CUT_SEASON_2, RANKED_CUT_SEASON_3, RANKED_CUT_ARCHIVE, RANKED_CUT_10X10,
      RATED_7x7_CUT, GLOBAL_MAP_COMMON_CUT, FALLOUT_CUT, MARK_OF_MASTERY_CUT, EPIC_BATTLE_CUT,
-     COMP7_CUT_SEASON_1, COMP7_CUT_SEASON_2, COMP7_CUT_SEASON_3, COMP7_CUT_ARCHIVE_GRIFFIN)
+     COMP7_CUT_SEASON_1, COMP7_CUT_SEASON_2, COMP7_CUT_SEASON_3, COMP7_CUT_ARCHIVE_GRIFFIN, PRESTIGE_SYSTEM)
 
 
 _vehTypeFragsBlockBuilder = DictBlockBuilder(VEHICLE_STATS.FRAGS, 'I', 'H', VEH_TYPE_FRAGS_DEPENDENCIES)
@@ -166,7 +167,8 @@ _ACHIEVEMENTS15X15_BLOCK_LAYOUT = [
  'whiteTiger2012', 'lunarNY2022Progression',
  'oowTankmanWins', 'oowStrategistWins', 'oowCompetetiveWin',
  'mapboxUniversal', 'wclTournamentParticipant', 'wclParticipant',
- 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat']
+ 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat',
+ 'wt2023HunterWins', 'wt2023BossWins', 'wt2023MaxPlasma']
 _achievements15x15PopUps = [
  'warrior', 'invader', 'sniper', 'defender', 'steelwall', 'supporter',
  'scout', 'medalKay', 'medalCarius', 'medalKnispel', 'medalPoppel', 'medalAbrams',
@@ -211,7 +213,8 @@ _achievements15x15PopUps = [
  'wtxHunterWins', 'wtxBossWins', 'wtxSpecBossDefeat', 'lunarNY2022Progression',
  'oowTankmanWins', 'oowStrategistWins', 'oowCompetetiveWin', 'mapboxUniversal',
  'wclTournamentParticipant', 'wclParticipant',
- 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat']
+ 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat',
+ 'wt2023HunterWins', 'wt2023BossWins', 'wt2023MaxPlasma']
 _achievements15x15BlockBuilder = StaticSizeBlockBuilder('achievements', _ACHIEVEMENTS15X15_BLOCK_LAYOUT, ACHIEVEMENT15X15_DEPENDENCIES, _achievements15x15PopUps)
 _STEAM_BLOCK_LAYOUT = [
  'steamBattleCredits', 'steamLittleSavingsMedal', 'steamMintedCoinMedal', 'steamKingMidasMedal',
@@ -336,7 +339,7 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'comp7Season1', 'hw2022Medal01', 'hw2022Medal02', '12YearsOfService',
  'NY23_AtmsphrLevel', 'NY23_CelebChallenge', 'BattlePassCommonPr_NY23',
  'BattlePassCommonPr_10', 'comp7_2023_1', 'Cosmic_MartianStalker', 'Cosmic_SpaceTrace',
- 'BattlePassCommonPr_11', 'prime_gaming_reserved_13', 'prime_gaming_reserved_14',
+ 'BattlePassCommonPr_11', 'september23', 'prime_gaming_reserved_14',
  'prime_gaming_reserved_15', 'prime_gaming_reserved_16', 'prime_gaming_reserved_17',
  'prime_gaming_reserved_18', 'prime_gaming_reserved_19', 'prime_gaming_reserved_20',
  'prime_gaming_reserved_21', 'prime_gaming_reserved_22', 'prime_gaming_reserved_23',
@@ -390,7 +393,7 @@ _singleAchievementsPopUps = [
  '12YearsOfService', 'NY23_AtmsphrLevel', 'NY23_CelebChallenge',
  'BattlePassCommonPr_NY23', 'BattlePassCommonPr_10', 'comp7_2023_1',
  'Cosmic_MartianStalker', 'Cosmic_SpaceTrace', 'BattlePassCommonPr_11',
- 'prime_gaming_reserved_13', 'prime_gaming_reserved_14', 'prime_gaming_reserved_15',
+ 'september23', 'prime_gaming_reserved_14', 'prime_gaming_reserved_15',
  'prime_gaming_reserved_16', 'prime_gaming_reserved_17', 'prime_gaming_reserved_18',
  'prime_gaming_reserved_19', 'prime_gaming_reserved_20', 'prime_gaming_reserved_21',
  'prime_gaming_reserved_22', 'prime_gaming_reserved_23', 'prime_gaming_reserved_24',
@@ -439,6 +442,7 @@ _epicBattleAchievementsPopUps = ['frontlineMedal']
 _epicBattleAchievementsBlockBuilder = StaticSizeBlockBuilder('epicBattleAchievements', EPIC_BATTLE_ACHIEVEMENTS_BLOCK_LAYOUT, EPIC_BATTLE_STATS_DEPENDENCIES, _epicBattleAchievementsPopUps)
 _epicBattleSeasonsBlockBuilder = DictBlockBuilder('epicSeasons', 'II', 'HHBHH', {})
 _battleRoyaleSeasonsBlockBuilder = DictBlockBuilder('battleRoyaleSeasons', 'II', 'HHH', {})
+_prestigeSystemBlockBuilder = DictBlockBuilder(VEHICLE_STATS.PRESTIGE_SYSTEM, 'I', 'II', {})
 accountDossierLayout = (
  _a15x15BlockBuilder, _a15x15_2BlockBuilder, _clanBlockBuilder,
  _clan2BlockBuilder, _companyBlockBuilder, _company2BlockBuilder, _a7x7BlockBuilder,
@@ -478,7 +482,8 @@ accountDossierLayout = (
  _comp7Season2BlockBuilder, _maxComp7Season2BlockBuilder, _comp7CutSeason2BlockBuilder,
  _comp7Season3BlockBuilder, _maxComp7Season3BlockBuilder, _comp7CutSeason3BlockBuilder,
  _comp7ArchiveGriffinBlockBuilder, _maxComp7ArchiveGriffinBlockBuilder,
- _comp7CutArchiveGriffinBlockBuilder)
+ _comp7CutArchiveGriffinBlockBuilder,
+ _prestigeSystemBlockBuilder)
 ACCOUNT_DOSSIER_BLOCKS = {b.name:b for b in accountDossierLayout}
 ACCOUNT_DOSSIER_STATIC_BLOCKS = frozenset(b.name for b in accountDossierLayout if type(b) == StaticSizeBlockBuilder)
 ACCOUNT_DOSSIER_BINARY_SET_BLOCKS = [ b.name for b in accountDossierLayout if type(b) == BinarySetDossierBlockBuilder ]

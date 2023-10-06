@@ -334,6 +334,10 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             _logger.warning('Component "%s" has not been found', name)
         return
 
+    def removeTempGameObjectIfExists(self, name):
+        if name in self.__tmpGameObjects:
+            self.removeTempGameObject(name)
+
     def showStickers(self, show):
         if self.vehicleStickers is not None:
             self.vehicleStickers.show = show

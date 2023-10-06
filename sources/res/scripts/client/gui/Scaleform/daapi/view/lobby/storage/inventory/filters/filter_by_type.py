@@ -16,7 +16,7 @@ from gui.shared.utils.functions import makeTooltip
 from gui.shared.utils.requesters.ItemsRequester import REQ_CRITERIA
 from items import UNDEFINED_ITEM_CD
 from skeletons.gui.lobby_context import ILobbyContext
-from gui.shared.event_dispatcher import showConfirmInStorageDialog
+from gui.shared.event_dispatcher import showSellDialog
 if typing.TYPE_CHECKING:
     from typing import Dict, Union, Callable
 
@@ -45,7 +45,7 @@ class FiltrableInventoryCategoryByTypeTabView(ItemsWithTypeFilterTabViewMeta):
         if typeID == GUI_ITEM_TYPE.BATTLE_BOOSTER:
             showBattleBoosterSellDialog(dataCompactId)
         else:
-            showConfirmInStorageDialog(dataCompactId)
+            showSellDialog(dataCompactId)
 
     def onFiltersChange(self, filterMask):
         self._filterMask = filterMask

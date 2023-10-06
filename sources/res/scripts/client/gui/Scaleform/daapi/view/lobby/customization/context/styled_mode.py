@@ -162,7 +162,7 @@ class StyledMode(CustomizationMode):
                     self._removeHiddenFromOutfit(diffOutfit, g_currentVehicle.item.intCD)
                     diff = diffOutfit.pack().makeCompDescr()
                 outfit = style.getOutfit(season, vehicleCD=vehicleCD, diff=diff)
-                if self.__modifiedStyle and self.__modifiedStyle.isProgressionRewindEnabled:
+                if self.__modifiedStyle and styleOutfitData and self.__modifiedStyle.isProgression:
                     outfit = getStyleProgressionOutfit(outfit, styleProgressionLevel, season)
             self._originalOutfits[season] = outfit.copy()
             self._modifiedOutfits[season] = outfit.copy()
@@ -222,6 +222,8 @@ class StyledMode(CustomizationMode):
         for s in SeasonType.COMMON_SEASONS:
             diff = self._ctx.stylesDiffsCache.getDiff(item, s)
             outfit = item.getOutfit(s, vehicleCD=vehicleCD, diff=diff)
+            if self.__modifiedStyle and self.__modifiedStyle.isProgression:
+                outfit = getStyleProgressionOutfit(outfit, outfit.progressionLevel, s)
             self._modifiedOutfits[s] = outfit.copy()
 
         self._fitOutfits(modifiedOnly=True)

@@ -1131,6 +1131,8 @@ package
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_CLING_BRANDER:String = "#ingame_gui:postmortem_messages/DEATH_FROM_CLING_BRANDER";
       
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_BR_BOT:String = "#ingame_gui:postmortem_messages/DEATH_FROM_BR_BOT";
+      
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_OVERTURN_SELF_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_OVERTURN_SELF_SUICIDE";
@@ -2012,6 +2014,14 @@ package
       public static const WARNING_ZONE_INDICATOR:String = "#ingame_gui:warning_zone/indicator";
       
       public static const STATUSNOTIFICATIONTIMERS_STATICDEATHZONE:String = "#ingame_gui:statusNotificationTimers/staticDeathZone";
+      
+      public static const DEVMAPS_HINT_PRESS:String = "#ingame_gui:devMaps/hint/press";
+      
+      public static const DEVMAPS_HINT_DESCRIPTION:String = "#ingame_gui:devMaps/hint/description";
+      
+      public static const DEVMAPS_MAPINFO_TEXT:String = "#ingame_gui:devMaps/mapInfo/text";
+      
+      public static const DEVMAPS_MAPINFO_INFO:String = "#ingame_gui:devMaps/mapInfo/info";
        
       
       public function INGAME_GUI()

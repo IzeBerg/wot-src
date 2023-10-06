@@ -58,21 +58,24 @@ package net.wg.gui.battle.random.views.stats.components.fullStats.tableItem
       
       override protected function vehicleDataSync() : void
       {
-         var _loc1_:uint = 0;
+         var _loc1_:StatsTableItem = null;
+         var _loc2_:uint = 0;
          super.vehicleDataSync();
          if(data)
          {
-            this.getStatsItem.setVehicleLevel(data.vehicleLevel);
-            this.getStatsItem.setVehicleIcon(data.vehicleIconName);
-            this.getStatsItem.setIsSpeaking(data.isSpeaking);
-            _loc1_ = data.vehicleAction;
-            if(!_loc1_)
+            _loc1_ = this.getStatsItem;
+            _loc1_.setVehicleLevel(data.vehicleLevel);
+            _loc1_.setVehicleIcon(data.vehicleIconName);
+            _loc1_.setPrestige(data.prestigeMarkId,data.prestigeLevel);
+            _loc1_.setIsSpeaking(data.isSpeaking);
+            _loc2_ = data.vehicleAction;
+            if(!_loc2_)
             {
-               this.getStatsItem.clearVehicleAction();
+               _loc1_.clearVehicleAction();
             }
             else
             {
-               this.getStatsItem.setVehicleAction(VehicleActions.getActionName(data.vehicleAction));
+               _loc1_.setVehicleAction(VehicleActions.getActionName(data.vehicleAction));
             }
             this._squadItem.setIsEnemy(this._isEnemy);
             this._squadItem.sessionID = data.sessionID;

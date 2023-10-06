@@ -129,12 +129,6 @@ package net.wg.data.constants
       
       public static const INVITES_SEARCH:String = "SearchUsersFormUI";
       
-      public static const PERSONAL_CASE_TITLE_BLOCK:String = "titleBlockUI";
-      
-      public static const PERSONAL_CASE_BLOCK_ITEM:String = "blockItemsUI";
-      
-      public static const VERTICAL_SPLIT_LINE:String = "premSplitLine";
-      
       public static const TOOL_TIP_COMPLEX:String = "ToolTipComplexUI";
       
       public static const SERVICE_MESSAGES_POPUP:String = "ServiceMessagePopUp_UI";
@@ -471,12 +465,6 @@ package net.wg.data.constants
       
       public static const TASK_AWARD_RENDERER_LINKAGE:String = "TaskAwardItemRendererUI";
       
-      public static const CREW_DEFAULT_RENDERER_LINKAGE:String = "CrewItemRendererUI";
-      
-      public static const CREW_SMALL_RENDERER_LINKAGE:String = "CrewItemRendererSmallUI";
-      
-      public static const RETRAIN_CREW_ROLE_IR_UI:String = "RetrainCrewRoleIR_UI";
-      
       public static const CREW_OPERATIONS_IR_UI:String = "CrewOperationsIRenderer_UI";
       
       public static const SPARK_ANIM_LINKAGE:String = "SparkAnimUI";
@@ -793,6 +781,8 @@ package net.wg.data.constants
       
       public static const BATTLE_ABILITIES_BTN_AREA_UI:String = "BattleAbilitiesBtnAreaUI";
       
+      public static const PRESTIGE_HANGAR_WIDGET_UI:String = "PrestigeWidgetInjectUI";
+      
       public static const HANGAR_HEADER:String = "HangarHeaderUI";
       
       public static const ALERT_MESSAGE_BLOCK:String = "AlertMessageBlockUI";
@@ -993,8 +983,6 @@ package net.wg.data.constants
       
       public static const RANKED_BATTLES_QUALIFICATION_REWARD_HORIZONTAL_SEPARATOR:String = "RBRewardHorizontalSeparatorUI";
       
-      public static const PERSONAL_CASE_CREW_SKINS:String = "PersonalCaseCrewSkins";
-      
       public static const PROGRESSIVE_REWARD_GIFT_UI:String = "ProgressiveRewardGiftUI";
       
       public static const REPLIED_MARKER_UI:String = "RepliedMarkerUI";
@@ -1047,10 +1035,6 @@ package net.wg.data.constants
       
       public static const VEHICLE_BUTTON_UI:String = "CSVehicleButtonUI";
       
-      public static const RESOURCE_WELL_ENTRY_POINT:String = "ResourceWellEntryPointUI";
-      
-      public static const BATTLE_MATTERS_ENTRY_POINT:String = "BattleMattersEntryPointUI";
-      
       public static const BATTLE_MATTERS_ANIM_LOADER:String = "BattleMattersAnimLoaderUI";
       
       public static const PLAYERS_PANEL_POI_PROGRESS_BAR_UI:String = "PlayersPanelPoiProgressBarUI";
@@ -1060,6 +1044,8 @@ package net.wg.data.constants
       public static const COMP7_BATTLE_LOADING_TIPS_RENDERERS:String = "Comp7BattleTipRenderersUI";
       
       public static const BADGE_SUFFIX_ITEM:String = "SuffixItemUI";
+      
+      public static const VEH_CONF_CREW_SKILL_SLOT_UI:String = "VehConfCrewSkillSlotUI";
        
       
       public function Linkages()

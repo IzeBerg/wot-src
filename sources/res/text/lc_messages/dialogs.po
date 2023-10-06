@@ -25,7 +25,7 @@ msgstr "К вашему аккаунту уже была привязана по
 msgid "accountCompletion/activate/button"
 msgstr "Выслать код / сменить email"
 
-msgid "accountCompletion/activate/coundownText"
+msgid "accountCompletion/activate/countdownText"
 msgstr "Выслать код повторно или сменить email через %(timer) с"
 
 msgid "accountCompletion/activate/enterCredentialsAgain"
@@ -44,14 +44,18 @@ msgstr ""
 
 msgid "accountCompletion/activate/text"
 msgstr ""
-"На email %(email) отправлено письмо для активации аккаунта. Перейдите в свой"
-" почтовый ящик и в письме от Wargaming.net найдите 4-значный код активации."
+"На email {whiteSpanish_Open}%(email){whiteSpanish_Close} отправлено письмо "
+"от Wargaming.net с кодом подтверждения. Введите 4-значный код, чтобы "
+"подтвердить email и дополнить аккаунт."
 
 msgid "accountCompletion/activate/title"
-msgstr "Код активации"
+msgstr "Подтвердите email"
 
 msgid "accountCompletion/activate/tooManyIncorrectTries"
 msgstr "Вы слишком часто вводили неверный код."
+
+msgid "accountCompletion/add"
+msgstr "Добавить"
 
 msgid "accountCompletion/alreadyLinked/subTitle"
 msgstr "К вашему аккаунту уже привязан email."
@@ -102,11 +106,11 @@ msgstr "ПОЛУЧИТЕ ПОЛНЫЙ ДОСТУП К ИГРЕ"
 
 msgid "accountCompletion/email/subTitle"
 msgstr ""
-"Добавьте свой email, чтобы получить награду и новые возможности в игре! "
-"%(emailIcon)"
+"Добавьте и подтвердите email, чтобы получить награду и открыть новые "
+"возможности. %(emailIcon)"
 
 msgid "accountCompletion/email/title"
-msgstr "Добавьте email"
+msgstr "Дополните аккаунт"
 
 msgid "accountCompletion/emailAlreadyTaken"
 msgstr "На этот email уже зарегистрирован аккаунт."
@@ -171,6 +175,9 @@ msgid "accountCompletion/errorIsWrong"
 msgstr ""
 "Email может содержать только латинские буквы, цифры, символ @, точку и "
 "подчёркивание."
+
+msgid "accountCompletion/later"
+msgstr "Позже"
 
 msgid "accountCompletion/leaveSquad/cancel"
 msgstr "Отменить"
@@ -289,7 +296,7 @@ msgstr ""
 "Это может занять некоторое время."
 
 msgid "accountCompletion/warningServerUnavailable"
-msgstr "%(icon) Сервис временно недоступен.%(br) Попробуйте позже."
+msgstr "%(icon) Сервис временно недоступен. Попробуйте позже."
 
 msgid "accountCompletion/warningServerUnavailableTimed"
 msgstr ""
@@ -297,50 +304,6 @@ msgstr ""
 
 msgid "accountCompletion/warningSomethingWentWrong"
 msgstr "Что-то пошло не так."
-
-msgid "addFreeSkillWindow/label"
-msgstr "«Нулевые» навыки"
-
-msgid "addFreeSkillWindow/submit"
-msgstr "Выбрать навык"
-
-msgid "addSkillWindow/cancel"
-msgstr "Отменить"
-
-msgid "addSkillWindow/desc1"
-msgstr ""
-"Навыки начинают действовать с началом обучения. Эффект их действия "
-"постепенно возрастает до максимального."
-
-msgid "addSkillWindow/desc2"
-msgstr "Навыки начинают оказывать эффект только после изучения на 100%."
-
-msgid "addSkillWindow/label"
-msgstr "Навыки"
-
-msgid "addSkillWindow/label/commander"
-msgstr "командира"
-
-msgid "addSkillWindow/label/common"
-msgstr "групповые"
-
-msgid "addSkillWindow/label/driver"
-msgstr "механика-водителя"
-
-msgid "addSkillWindow/label/gunner"
-msgstr "наводчика"
-
-msgid "addSkillWindow/label/loader"
-msgstr "заряжающего"
-
-msgid "addSkillWindow/label/radioman"
-msgstr "радиста"
-
-msgid "addSkillWindow/submit"
-msgstr "Выбрать навык"
-
-msgid "addSkillWindow/title"
-msgstr "Просмотр навыков"
 
 msgid "barracksExpand/cancel"
 msgstr "Отменить"
@@ -1158,72 +1121,69 @@ msgstr "Подтвердить"
 msgid "createOrderConfirmation/title"
 msgstr "Подтверждение подготовки резерва"
 
-msgid "crewBooks/confirmation/button/cancel"
-msgstr "Отменить"
+msgid "crewBookPurchase/btnDisabledTooltip"
+msgstr "Недостаточно средств для покупки."
 
-msgid "crewBooks/confirmation/button/submit"
-msgstr "Изучить"
-
-msgid "crewBooks/confirmation/desc/crewBook"
+msgid "crewBookPurchase/description/crew"
 msgstr ""
-"Каждый член экипажа {vehicle_name} получит {exp} опыта, при этом учебный "
-"материал будет использован."
+"Применяется ко всему экипажу. После изучения %(book)s даёт %(exp)s опыта "
+"каждому члену экипажа."
 
-msgid "crewBooks/confirmation/desc/personalBook"
+msgid "crewBookPurchase/description/personal"
 msgstr ""
-"{name} получит {exp} опыта, при этом учебный материал будет использован."
+"Применяется к выбранному члену экипажа. После изучения %(book)s даёт ему "
+"%(exp)s опыта."
 
-msgid "crewBooks/confirmation/title"
-msgstr "Изучить учебный материал?"
+msgid "crewBookPurchase/purchase"
+msgstr "Купить"
 
-msgid "crewBooks/success/desc/crewBook"
-msgstr "{exp} опыта начислено каждому члену экипажа {vehicle_name}."
+msgid "crewBookPurchase/purchase/title"
+msgstr "Купить %(book)s?"
 
-msgid "crewBooks/success/desc/personalBook"
-msgstr "{name} получил {exp} опыта."
+msgid "crewMemberRoleChange/bullet"
+msgstr "•"
 
-msgid "crewBooks/success/title"
-msgstr "Поздравляем!"
+msgid "crewMemberRoleChange/change"
+msgstr "Сменить"
 
-msgid "crewRetraining/title"
-msgstr "Переобучение"
-
-msgid "crewSkins/skinWillBeDeleted/cancel"
-msgstr "Отменить"
-
-msgid "crewSkins/skinWillBeDeleted/message1"
+msgid "crewMemberRoleChange/desc/premium"
 msgstr ""
-"Облик не соответствует новой специальности и не может быть помещён "
-"на хранение — закончилось место. При смене специальности он будет удалён, "
-"а вам будет начислена компенсация."
+"Экипажи не нужно обучать на премиум технику. Вы можете пересаживать их на "
+"премиум машины того же типа без штрафов."
 
-msgid "crewSkins/skinWillBeDeleted/message2"
+msgid "crewMemberRoleChange/desc/simple"
 msgstr ""
-"Копии этих обликов не могут быть помещены на хранение — закончилось место. Копии обликов будут удалены при снятии, а вам будет начислена компенсация.\n"
-"\n"
-"Удалить облики?"
+"Специальность {whiteSpanish_Open}%(currentRole)s{whiteSpanish_Close} будет "
+"изменена на {whiteSpanish_Open}%(newRole)s{whiteSpanish_Close}. После смены "
+"специальности все навыки будут сброшены."
 
-msgid "crewSkins/skinWillBeDeleted/messagePrice"
-msgstr "Компенсация:"
-
-msgid "crewSkins/skinWillBeDeleted/submit"
-msgstr "Удалить"
-
-msgid "crewSkins/skinWillBeDeleted/title"
-msgstr "Подтверждение удаления"
-
-msgid "crewSkins/skinWillBeRemoved/cancel"
-msgstr "Отменить"
-
-msgid "crewSkins/skinWillBeRemoved/message"
+msgid "crewMemberRoleChange/desc/wrongSpecialization"
 msgstr ""
-"Облик не соответствует новой специальности и будет перемещён на хранение."
+"Текущая специализация: {whiteSpanish_Open}%(tankLevel)s %(icon)s "
+"%(tankName)s.{whiteSpanish_Close} Специализация члена экипажа будет изменена"
+" на {whiteSpanish_Open}%(newTankLevel)s %(newIcon)s "
+"%(newTankName)s.{whiteSpanish_Close}"
 
-msgid "crewSkins/skinWillBeRemoved/submit"
-msgstr "Снять"
+msgid "crewMemberRoleChange/price"
+msgstr "Стоимость:"
 
-msgid "crewSkins/skinWillBeRemoved/title"
-msgstr "Подтверждение снятия"
+msgid "crewMemberRoleChange/title/extended"
+msgstr "Пересадить на %(tankName)s и сменить специальность?"
+
+msgid "crewMemberRoleChange/title/simple"
+msgstr "Сменить текущую специальность?"
+
+msgid "crewMemberTankChange/desc"
+msgstr ""
+"Текущая машина: {whiteSpanish_Open}%(tankLevel)s %(icon)s "
+"%(tankName)s.{whiteSpanish_Close} Этот член экипажа покинет машину после "
+"пересадки."
+
+msgid "crewMemberTankChange/title"
+msgstr "Пересадить члена экипажа на %(tankName)s?"
+
+msgid "crewMemberTankChange/transfer"
+msgstr "Пересадить"
 
 msgid "customization/applyProjectionDecalToOtherSeasons/cancel"
 msgstr "Отменить"
@@ -1458,17 +1418,35 @@ msgstr ""
 msgid "disconnected/title"
 msgstr "Потеря соединения"
 
-msgid "dismissTankman/cancel"
-msgstr "Отменить"
+msgid "dismissTankman/buttons/dismiss"
+msgstr "Демобилизовать"
 
-msgid "dismissTankman/message"
-msgstr "Демобилизовать этого члена экипажа?"
+msgid "dismissTankman/description/perk"
+msgstr ""
+"Для совершения операции введите уровень навыка: "
+"{cream_Open}%(perk)s{cream_Close} "
+"({whiteOrange_Open}%(level)s{whiteOrange_Close})"
 
-msgid "dismissTankman/submit"
-msgstr "ОК"
+msgid "dismissTankman/description/qualification"
+msgstr ""
+"Для совершения операции введите уровень владения основной специальностью "
+"({whiteOrange_Open}%(level)s{whiteOrange_Close})"
 
-msgid "dismissTankman/title"
-msgstr "Подтверждение демобилизации"
+msgid "dismissTankman/description/time"
+msgstr ""
+"Выбранный член экипажа будет демобилизован. Вы можете вернуть его в строй в "
+"течение {whiteOrange_Open}%(time)s д{whiteOrange_Close}."
+
+msgid "dismissTankman/header"
+msgstr "Демобилизация члена экипажа"
+
+msgid "dismissTankman/limited"
+msgstr ""
+"Достигнут лимит демобилизованных. Демобилизуемый член экипажа заменит "
+"%(name)s (%(role)s, %(vehicle)s)."
+
+msgid "dismissTankman/noRecovery"
+msgstr "Без возможности восстановления"
 
 msgid "dismissedBufferOverFlaw/cancel"
 msgstr "Отменить"
@@ -1498,22 +1476,20 @@ msgstr "Подтвердить"
 msgid "dismissedBufferOverFlawMultiple/title"
 msgstr "Буфер демобилизованных заполнен"
 
+msgid "documentChangeDialog/button/submit"
+msgstr "Заменить"
+
+msgid "documentChangeDialog/dropdown/firstName"
+msgstr "Имя"
+
+msgid "documentChangeDialog/dropdown/lastName"
+msgstr "Фамилия"
+
+msgid "documentChangeDialog/title"
+msgstr "Сменить имя и внешность?"
+
 msgid "dropSkill/cancel"
 msgstr "Отменить"
-
-msgid "dropSkill/fullscreen/costFree"
-msgstr "Стоимость: {whiteSpanish_Open}бесплатно{whiteSpanish_Close}"
-
-msgid "dropSkill/fullscreen/description"
-msgstr ""
-"Член экипажа будет обучен до уровня: "
-"{whiteSpanish_Open}%(skillPercent)s%%{whiteSpanish_Close}"
-
-msgid "dropSkill/fullscreen/ok"
-msgstr "Сбросить"
-
-msgid "dropSkill/fullscreen/title"
-msgstr "Сбросить все навыки?"
 
 msgid "dropSkill/message"
 msgstr "Сбросить все навыки?"
@@ -1626,7 +1602,10 @@ msgid "equipmentUpgrade/confirmButton"
 msgstr "Наладить"
 
 msgid "equipmentUpgrade/getMoreCurrencyButton"
-msgstr "Продолжить"
+msgstr "Перейти к разбору"
+
+msgid "equipmentUpgrade/getMoreCurrencyButtonTooltip/body"
+msgstr "Нет доступного экспериментального оборудования для разбора."
 
 msgid "eula/p1"
 msgstr ""
@@ -1753,19 +1732,6 @@ msgstr "Подтвердить"
 
 msgid "fortificationFixedPlayers/title"
 msgstr "Закрепиться за строением"
-
-msgid "freeSkillsInfo/message"
-msgstr ""
-"«Нулевой» навык доступен члену экипажа по умолчанию. Он не требует затрат "
-"опыта экипажа и не может быть изменён игроком. «Нулевой» навык обеспечивает "
-"преимущество за счёт значительного уменьшения количества опыта, необходимого"
-" для дальнейшего обучения члена экипажа."
-
-msgid "freeSkillsInfo/submit"
-msgstr "Так точно!"
-
-msgid "freeSkillsInfo/title"
-msgstr "О «нулевых» навыках"
 
 msgid "freeSkillsLearning/message"
 msgstr ""
@@ -2379,6 +2345,55 @@ msgstr "Да"
 msgid "nextBattleOptionConfirmation/title"
 msgstr "Изменение настроек"
 
+msgid "perkLearnConfirm/desc"
+msgstr "Уровень навыка после изучения: {yellow_Open}%(level)s%%{yellow_Close}"
+
+msgid "perkLearnConfirm/learn"
+msgstr "Изучить"
+
+msgid "perkLearnConfirm/title"
+msgstr "Изучить навык «%(skillName)s»?"
+
+msgid "perksRest/after"
+msgstr "После сброса:"
+
+msgid "perksRest/before"
+msgstr "До сброса:"
+
+msgid "perksRest/cancel"
+msgstr "Отменить"
+
+msgid "perksRest/free/description"
+msgstr ""
+"Навыки, уровень изучения которых не превышает {yellow_Open}1%{yellow_Close},"
+" можно сбросить бесплатно."
+
+msgid "perksRest/noNewPerks"
+msgstr ""
+"Весь опыт с изученных навыков пойдёт на повышение уровня владения основной "
+"специальностью."
+
+msgid "perksRest/priceCard/credits/description"
+msgstr ""
+"Уровень владения основной специальностью этого члена экипажа будет снижен до"
+" %(value)s"
+
+msgid "perksRest/priceCard/free/description"
+msgstr ""
+"Уровень владения основной специальностью этого члена экипажа будет снижен до"
+" %(value)s"
+
+msgid "perksRest/priceCard/gold/description"
+msgstr ""
+"Уровень владения основной специальностью этого члена экипажа останется без "
+"изменений: %(value)s"
+
+msgid "perksRest/submit"
+msgstr "Сбросить"
+
+msgid "perksRest/title"
+msgstr "Сбросить %(tankmanRole)s?"
+
 msgid "postmortem/cancel"
 msgstr "Выйти"
 
@@ -2415,36 +2430,20 @@ msgstr "Продлить"
 msgid "premiumContinueConfirmation/title"
 msgstr "Подтверждение продления"
 
-msgid "protectedDismissTankman/additionalMessage"
-msgstr ""
-"Для совершения операции введите уровень %(skillType)s «%(skillName)s» "
-"(%(roleLevel)s)"
+msgid "priceCard/credits/title"
+msgstr "Полковая школа"
 
-msgid "protectedDismissTankman/additionalMessage/isPerk"
-msgstr "навыка"
+msgid "priceCard/free/title"
+msgstr "Ускоренные курсы"
 
-msgid "protectedDismissTankman/alert"
-msgstr "Без возможности восстановления"
+msgid "priceCard/gold/title"
+msgstr "Танковая академия"
 
-msgid "protectedDismissTankman/cancel"
-msgstr "Отменить"
+msgid "priceCard/price/free"
+msgstr "Бесплатно"
 
-msgid "protectedDismissTankman/errorMessage"
-msgstr "Вы ввели неправильную информацию!"
-
-msgid "protectedDismissTankman/mainMessage"
-msgstr ""
-"Для совершения операции введите уровень изучения основной специальности "
-"(%(roleLevel)s)"
-
-msgid "protectedDismissTankman/message"
-msgstr "ПОДТВЕРЖДЕНИЕ ДЕМОБИЛИЗАЦИИ"
-
-msgid "protectedDismissTankman/submit"
-msgstr "Демобилизовать"
-
-msgid "protectedDismissTankman/title"
-msgstr "Демобилизация члена экипажа"
+msgid "priceCard/recertification/title"
+msgstr "Переподготовка"
 
 msgid "punishmentWindow/cancel"
 msgstr "Ознакомлен"
@@ -2723,6 +2722,32 @@ msgstr "Да"
 msgid "rally/startBattle/title"
 msgstr "Поиск противника"
 
+msgid "recruit/cancel"
+msgstr "Отменить"
+
+msgid "recruit/priceCard/credits/description"
+msgstr ""
+"Владение основной специальностью после&nbsp;рекрутирования:&nbsp;%(value)s"
+
+msgid "recruit/priceCard/free/description"
+msgstr ""
+"Владение основной специальностью после&nbsp;рекрутирования:&nbsp;%(value)s"
+
+msgid "recruit/priceCard/gold/description"
+msgstr ""
+"Владение основной специальностью после&nbsp;рекрутирования:&nbsp;%(value)s"
+
+msgid "recruit/submit"
+msgstr "Рекрутировать"
+
+msgid "recruit/title"
+msgstr "Рекрутировать %(role)s на машину %(vehicleName)s?"
+
+msgid "recruit/warning/premiumVehicle"
+msgstr ""
+"Членов экипажа не нужно рекрутировать на премиум технику. Вы можете "
+"пересадить экипаж на премиум машину того же типа без штрафов."
+
 msgid "recruitDialog/name/title"
 msgstr "Рекрутировать новобранца (%(name)s)?"
 
@@ -2738,59 +2763,14 @@ msgstr "Не выбрано"
 msgid "recruitWindow/nation"
 msgstr "Нация"
 
-msgid "recruitWindow/nationDropdown/czech"
-msgstr "Чехословакия"
-
-msgid "recruitWindow/nationDropdown/germany"
-msgstr "Германия"
-
-msgid "recruitWindow/nationDropdown/italy"
-msgstr "Италия"
-
-msgid "recruitWindow/nationDropdown/poland"
-msgstr "Польша"
-
-msgid "recruitWindow/nationDropdown/sweden"
-msgstr "Швеция"
-
-msgid "recruitWindow/nationDropdown/usa"
-msgstr "США"
-
-msgid "recruitWindow/nationDropdown/ussr"
-msgstr "СССР"
-
-msgid "recruitWindow/nations/no_vehicle"
-msgstr "Нет вариантов"
-
 msgid "recruitWindow/specialization"
 msgstr "Специальность"
 
 msgid "recruitWindow/submit"
 msgstr "Рекрутировать"
 
-msgid "recruitWindow/title"
-msgstr "Рекрутирование члена экипажа"
-
 msgid "recruitWindow/vehicleClass"
 msgstr "Тип техники"
-
-msgid "recruitWindow/vehicleClassDropdown/AT-SPG"
-msgstr "ПТ-САУ"
-
-msgid "recruitWindow/vehicleClassDropdown/SPG"
-msgstr "САУ"
-
-msgid "recruitWindow/vehicleClassDropdown/all"
-msgstr "Вся техника"
-
-msgid "recruitWindow/vehicleClassDropdown/heavyTank"
-msgstr "Тяжёлые танки"
-
-msgid "recruitWindow/vehicleClassDropdown/lightTank"
-msgstr "Лёгкие танки"
-
-msgid "recruitWindow/vehicleClassDropdown/mediumTank"
-msgstr "Средние танки"
 
 msgid "recruitWindow/vehicleType"
 msgstr "Машина"
@@ -2949,38 +2929,20 @@ msgstr "Настройки"
 msgid "resetGraphics/title"
 msgstr "Изменение графических настроек"
 
-msgid "restoreTankman/cancel"
-msgstr "Отменить"
+msgid "restoreTankman/buttons/recover"
+msgstr "Восстановить"
 
-msgid "restoreTankman/disconnectedFromCenter"
-msgstr ""
-"Рекрутирование танкистов временно недоступно.\n"
-"Повторите попытку позже."
+msgid "restoreTankman/description"
+msgstr "%(name)s будет восстановлен (-а)."
 
-msgid "restoreTankman/forFree"
-msgstr "Бесплатно"
+msgid "restoreTankman/free"
+msgstr "Стоимость: бесплатно"
 
-msgid "restoreTankman/message"
+msgid "restoreTankman/header"
 msgstr "Восстановить данного члена экипажа?"
-
-msgid "restoreTankman/newPeriodWarning"
-msgstr ""
-"Внимание! Период бесплатного восстановления истек. Еще %(daysCount)s дней вы"
-" можете восстановить члена экипажа за золото."
 
 msgid "restoreTankman/price"
 msgstr "Стоимость:"
-
-msgid "restoreTankman/submit"
-msgstr "Восстановить"
-
-msgid "restoreTankman/title"
-msgstr "Восстановление члена экипажа"
-
-msgid "restoreTankman/warning"
-msgstr ""
-"Нажав «Восстановить», вы не сможете перевести приобретённое оборудование и "
-"снаряжение в золото. Пожалуйста, проверьте всё внимательно."
 
 msgid "restoreVehicleDialog/cancelBtn"
 msgstr "Отменить"
@@ -3002,8 +2964,60 @@ msgstr ""
 "Нажав «Восстановить», вы не сможете перевести приобретённое оборудование и "
 "снаряжение в золото. Пожалуйста, проверьте всё внимательно."
 
-msgid "retrainingWindow/submit"
+msgid "retrain/cancel"
+msgstr "Отменить"
+
+msgid "retrain/massive/tankmenCount"
+msgstr ""
+"Будет переобучено членов экипажа: "
+"{whiteSpanish_Open}%(count)s{whiteSpanish_Close}"
+
+msgid "retrain/price"
+msgstr "Стоимость:"
+
+msgid "retrain/priceCard/credits/description"
+msgstr ""
+"Владение основной специальностью после&nbsp;переобучения:&nbsp;%(value)s"
+
+msgid "retrain/priceCard/free/description"
+msgstr ""
+"Владение основной специальностью после&nbsp;переобучения:&nbsp;%(value)s"
+
+msgid "retrain/priceCard/gold/description"
+msgstr ""
+"Владение основной специальностью после&nbsp;переобучения:&nbsp;%(value)s"
+
+msgid "retrain/single/checkBoxLabel"
+msgstr "Разместить в этой машине"
+
+msgid "retrain/submit"
 msgstr "Переобучить"
+
+msgid "retrain/title/massive"
+msgstr "Переобучить экипаж на %(vehicleName)s?"
+
+msgid "retrain/title/singe"
+msgstr "Переобучить %(role)s на машину %(vehicleName)s?"
+
+msgid "retrain/warning/premiumVehicle"
+msgstr ""
+"Членов экипажа не нужно обучать на премиум технику. Вы можете пересадить "
+"экипаж на премиум машину того же типа без штрафов."
+
+msgid "rudyInfo/message"
+msgstr ""
+"Бессмертная классика уже в игре! «Четыре танкиста и собака» (польск. Czterej"
+" pancerni i pies) — польский чёрно-белый телевизионный сериал, снятый по "
+"одноимённой повести Януша Пшимановского. Кинолента повествует о боевых "
+"буднях экипажа танка Т-34-85 по прозвищу «Rudy» («Рыжий») и пса по кличке "
+"Шарик во время Второй мировой войны. Премьера картины состоялась 9 мая 1966 "
+"года."
+
+msgid "rudyInfo/submit"
+msgstr "Так точно!"
+
+msgid "rudyInfo/title"
+msgstr "Четыре танкиста и собака"
 
 msgid "sellConfirmation/cancel"
 msgstr "Отменить"
@@ -3050,19 +3064,8 @@ msgstr "Обновите клиент. В случае повторной оши
 msgid "shopSyncError/title"
 msgstr "Рассинхронизация"
 
-msgid "skillDropWindow/cancel"
-msgstr "Отменить"
-
-msgid "skillDropWindow/message"
-msgstr ""
-"После сброса дополнительной специальности %s основной специальностью члена "
-"экипажа будет %d%s. Продолжить?"
-
-msgid "skillDropWindow/submit"
-msgstr "Сбросить"
-
-msgid "skillDropWindow/title"
-msgstr "Сброс навыков"
+msgid "skinApplyDialog/button/submit"
+msgstr "Применить"
 
 msgid "soundModeInvalid/cancel"
 msgstr "Отменить"
@@ -3316,82 +3319,6 @@ msgstr "Перейти"
 
 msgid "switchPeripheryWindow/windowTitle"
 msgstr "Переход на другой сервер"
-
-msgid "tankmanChageRole/unknownVehicle/cancel"
-msgstr "Отменить"
-
-msgid "tankmanChageRole/unknownVehicle/message"
-msgstr ""
-"%(tankname)s отсутствует в Ангаре. Сменить специальность члена экипажа?"
-
-msgid "tankmanChageRole/unknownVehicle/submit"
-msgstr "Подтвердить"
-
-msgid "tankmanChageRole/unknownVehicle/title"
-msgstr "Подтверждение смены специальности "
-
-msgid "tankmanRetraining/knownVehicleByGold/cancel"
-msgstr "Отменить"
-
-msgid "tankmanRetraining/knownVehicleByGold/message"
-msgstr "Переобучить члена экипажа за %(price)s?"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/cancel"
-msgstr "Отменить"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/message"
-msgstr "Переобучить экипаж за %(price)s?"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/submit"
-msgstr "Переобучить"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/title"
-msgstr "Подтверждение переобучения"
-
-msgid "tankmanRetraining/knownVehicleByGold/submit"
-msgstr "Переобучить"
-
-msgid "tankmanRetraining/knownVehicleByGold/title"
-msgstr "Подтверждение переобучения"
-
-msgid "tankmanRetraining/undistributedExp/cancel"
-msgstr "Отменить"
-
-msgid "tankmanRetraining/undistributedExp/message"
-msgstr ""
-"При переобучении часть нераспределённого опыта члена экипажа будет "
-"использована для изучения основной специальности до достижения 100%"
-
-msgid "tankmanRetraining/undistributedExp/submit"
-msgstr "Переобучить"
-
-msgid "tankmanRetraining/undistributedExp/title"
-msgstr "Подтверждение переобучения"
-
-msgid "tankmanRetraining/unknownVehicle/cancel"
-msgstr "Отменить"
-
-msgid "tankmanRetraining/unknownVehicle/message"
-msgstr "%(tankname)s отсутствует в Ангаре. Переобучить члена экипажа?"
-
-msgid "tankmanRetraining/unknownVehicle/submit"
-msgstr "Переобучить"
-
-msgid "tankmanRetraining/unknownVehicle/title"
-msgstr "Подтверждение переобучения"
-
-msgid "tankmanRetraining/unknownVehicleByGold/cancel"
-msgstr "Отменить"
-
-msgid "tankmanRetraining/unknownVehicleByGold/message"
-msgstr ""
-"%(tankname)s отсутствует в Ангаре. Переобучить члена экипажа за %(price)s?"
-
-msgid "tankmanRetraining/unknownVehicleByGold/submit"
-msgstr "Переобучить"
-
-msgid "tankmanRetraining/unknownVehicleByGold/title"
-msgstr "Подтверждение переобучения"
 
 msgid "tradeInConfirmation/cancel"
 msgstr "Отменить"
@@ -3763,11 +3690,10 @@ msgstr "Отменить"
 msgid "xpToTmenCheckbox/message"
 msgstr ""
 "Использовать весь заработанный на этой машине опыт для обучения экипажа. "
-"Наименее опытный член экипажа будет обучаться в два раза быстрее. Чтобы "
-"снова начать накапливать опыт, отключите «Ускоренное обучение экипажа»."
+"Наименее опытный член экипажа будет обучаться в два раза быстрее."
 
 msgid "xpToTmenCheckbox/submit"
-msgstr "Включить"
+msgstr "Вкл."
 
 msgid "xpToTmenCheckbox/title"
-msgstr "Ускоренное обучение экипажа"
+msgstr "Ускорить обучение экипажа?"

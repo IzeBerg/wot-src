@@ -223,11 +223,13 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          invalidate(InvalidationType.SIZE);
       }
       
-      public function as_enableButton(param1:Boolean) : void
+      public function as_enableButton(param1:Boolean, param2:String) : void
       {
-         var _loc2_:Boolean = this.submitBtn.enabled;
+         var _loc3_:Boolean = this.submitBtn.enabled;
          this.submitBtn.enabled = param1;
-         if(this.submitBtn.enabled && !_loc2_)
+         this.submitBtn.mouseEnabledOnDisabled = true;
+         this.submitBtn.tooltip = param2;
+         if(this.submitBtn.enabled && !_loc3_)
          {
             App.utils.scheduler.scheduleOnNextFrame(setFocus,this.submitBtn);
          }
@@ -251,6 +253,12 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          this.controlQuestion.errorText = DIALOGS.VEHICLESELLDIALOG_CTRLQUESTION_ERRORMESSAGE;
          this.controlQuestion.questionText = param3;
          this.controlQuestion.invalidateData();
+      }
+      
+      public function as_setSellEnabled(param1:Boolean, param2:String) : void
+      {
+         this.controlQuestion.setSellDisabledText(param2);
+         this.controlQuestion.setSellEnabled(param1);
       }
       
       public function as_setTotal(param1:int, param2:Object) : void

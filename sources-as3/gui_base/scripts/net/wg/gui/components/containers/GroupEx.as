@@ -13,7 +13,7 @@ package net.wg.gui.components.containers
    {
        
       
-      protected var renderers:Vector.<DisplayObject>;
+      private var _renderers:Vector.<DisplayObject>;
       
       private var _dataProvider:IDataProvider;
       
@@ -22,7 +22,7 @@ package net.wg.gui.components.containers
       public function GroupEx()
       {
          super();
-         this.renderers = new Vector.<DisplayObject>();
+         this._renderers = new Vector.<DisplayObject>();
       }
       
       override protected function configUI() : void
@@ -46,8 +46,8 @@ package net.wg.gui.components.containers
             this._dataProvider = null;
          }
          this._itemRendererLinkage = null;
-         this.renderers.splice(0,this.renderers.length);
-         this.renderers = null;
+         this._renderers.splice(0,this._renderers.length);
+         this._renderers = null;
          super.onDispose();
       }
       
@@ -58,12 +58,12 @@ package net.wg.gui.components.containers
       
       protected function numRenderers() : uint
       {
-         return this.renderers.length;
+         return this._renderers.length;
       }
       
       protected function getRendererAt(param1:int) : DisplayObject
       {
-         return this.renderers[param1];
+         return this._renderers[param1];
       }
       
       protected function commitProperties() : void
@@ -79,7 +79,7 @@ package net.wg.gui.components.containers
             if(_loc1_)
             {
                _loc2_ = this.getProviderLength();
-               _loc3_ = this.renderers.length;
+               _loc3_ = this._renderers.length;
                if(_loc2_ < _loc3_)
                {
                   this.removeRedundantChildren();
@@ -91,7 +91,7 @@ package net.wg.gui.components.containers
                _loc5_ = 0;
                while(_loc5_ < _loc2_)
                {
-                  _loc4_ = this.renderers[_loc5_];
+                  _loc4_ = this._renderers[_loc5_];
                   if(_loc4_ is IListItemRenderer)
                   {
                      IListItemRenderer(_loc4_).index = _loc5_;
@@ -112,11 +112,11 @@ package net.wg.gui.components.containers
       {
          var _loc3_:DisplayObject = null;
          var _loc1_:int = this.getProviderLength();
-         var _loc2_:int = this.renderers.length;
+         var _loc2_:int = this._renderers.length;
          var _loc4_:int = _loc2_;
          while(_loc4_ > _loc1_)
          {
-            _loc3_ = this.renderers.pop();
+            _loc3_ = this._renderers.pop();
             removeChild(_loc3_);
             _loc4_--;
          }
@@ -126,12 +126,12 @@ package net.wg.gui.components.containers
       {
          var _loc3_:DisplayObject = null;
          var _loc1_:int = this.getProviderLength();
-         var _loc2_:int = this.renderers.length;
+         var _loc2_:int = this._renderers.length;
          var _loc4_:int = _loc2_;
          while(_loc4_ < _loc1_)
          {
             _loc3_ = App.utils.classFactory.getComponent(this._itemRendererLinkage,IUpdatable);
-            this.renderers.push(_loc3_);
+            this._renderers.push(_loc3_);
             addChild(_loc3_);
             _loc4_++;
          }
@@ -144,7 +144,7 @@ package net.wg.gui.components.containers
             return;
          }
          super.enabled = param1;
-         var _loc2_:int = this.renderers.length;
+         var _loc2_:int = this._renderers.length;
          var _loc3_:MovieClip = null;
          var _loc4_:int = 0;
          while(_loc4_ < _loc2_)
@@ -194,6 +194,11 @@ package net.wg.gui.components.containers
             this._itemRendererLinkage = param1;
             invalidateData();
          }
+      }
+      
+      public function get renderers() : Vector.<DisplayObject>
+      {
+         return this._renderers;
       }
       
       private function onDataProviderChangeHandler(param1:Event) : void

@@ -90,6 +90,8 @@ class UI_STORAGE_KEYS(CONST_CONTAINER):
     ACHIEVEMENT_EDIT_VIEW_VISITED = 'achievement_edit_view_visited'
     DUAL_ACCURACY_HIGHLIGHTS_COUNTER = 'dual_accuracy_highlights_count'
     DUAL_ACCURACY_MARK_IS_SHOWN = 'dual_accuracy_mark_shown'
+    STEAM_ADD_EMAIL_OVERLAY_SHOWN = 'steam_add_email_overlay_shown'
+    IS_CONFIRM_EMAIL_OVERLAY_ALLOWED = 'is_confirm_email_overlay_allowed'
 
 
 class BATTLE_MATTERS_KEYS(CONST_CONTAINER):
@@ -192,7 +194,8 @@ class ServerSettingsManager(object):
                                          GAME.SNIPER_ZOOM: Offset(27, 3 << 27)}), 
        SETTINGS_SECTIONS.GAME_EXTENDED_2: Section(masks={GAME.SHOW_ARTY_HIT_ON_MAP: 0, 
                                            GAME.GAMEPLAY_ONLY_10_MODE: 1, 
-                                           GAME.SCROLL_SMOOTHING: 4}, offsets={GAME.CUSTOMIZATION_DISPLAY_TYPE: Offset(2, 3 << 2)}), 
+                                           GAME.SCROLL_SMOOTHING: 4, 
+                                           GAME.GAMEPLAY_DEV_MAPS: 5}, offsets={GAME.CUSTOMIZATION_DISPLAY_TYPE: Offset(2, 3 << 2)}), 
        SETTINGS_SECTIONS.GAMEPLAY: Section(masks={}, offsets={GAME.GAMEPLAY_MASK: Offset(0, 65535)}), 
        SETTINGS_SECTIONS.GRAPHICS: Section(masks={GAME.LENS_EFFECT: 1}, offsets={}), 
        SETTINGS_SECTIONS.SOUND: Section(masks={}, offsets={SOUND.ALT_VOICES: Offset(0, 255)}), 
@@ -439,13 +442,16 @@ class ServerSettingsManager(object):
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_SHOWED: 1, 
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_STARTED: 2, 
                                               GuiSettingsBehavior.EPIC_RANDOM_CHECKBOX_CLICKED: 3, 
+                                              GuiSettingsBehavior.COMP7_SEASON_STATISTICS_SHOWN: 22, 
+                                              GuiSettingsBehavior.PRESTIGE_FIRST_ENTRY_NOTIFICATION_SHOWN: 23, 
                                               GuiSettingsBehavior.CREW_22_WELCOME_SHOWN: 24, 
                                               GuiSettingsBehavior.DISPLAY_PLATOON_MEMBER_CLICKED: 25, 
                                               GuiSettingsBehavior.VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW: 26, 
                                               GuiSettingsBehavior.BIRTHDAY_CALENDAR_INTRO_SHOWED: 27, 
                                               GuiSettingsBehavior.RESOURCE_WELL_INTRO_SHOWN: 28, 
                                               GuiSettingsBehavior.COMP7_WHATS_NEW_SHOWN: 29, 
-                                              GuiSettingsBehavior.COMP7_INTRO_SHOWN: 30}, offsets={}), 
+                                              GuiSettingsBehavior.COMP7_INTRO_SHOWN: 30, 
+                                              GuiSettingsBehavior.IS_PRESTIGE_ONBOARDING_VIEWED: 31}, offsets={}), 
        SETTINGS_SECTIONS.EULA_VERSION: Section(masks={}, offsets={'version': Offset(0, 4294967295)}), 
        SETTINGS_SECTIONS.MARKS_ON_GUN: Section(masks={}, offsets={GAME.SHOW_MARKS_ON_GUN: Offset(0, 4294967295)}), 
        SETTINGS_SECTIONS.CONTACTS: Section(masks={CONTACTS.SHOW_OFFLINE_USERS: 0, 
@@ -572,7 +578,9 @@ class ServerSettingsManager(object):
                                       UI_STORAGE_KEYS.TURBOSHAFT_HIGHLIGHTS_COUNTER: Offset(23, 58720256)}), 
        SETTINGS_SECTIONS.UI_STORAGE_2: Section(masks={UI_STORAGE_KEYS.ROCKET_ACCELERATION_MARK_IS_SHOWN: 0, 
                                         UI_STORAGE_KEYS.ACHIEVEMENT_EDIT_VIEW_VISITED: 4, 
-                                        UI_STORAGE_KEYS.DUAL_ACCURACY_MARK_IS_SHOWN: 8}, offsets={UI_STORAGE_KEYS.ROCKET_ACCELERATION_HIGHLIGHTS_COUNTER: Offset(1, 14), 
+                                        UI_STORAGE_KEYS.DUAL_ACCURACY_MARK_IS_SHOWN: 8, 
+                                        UI_STORAGE_KEYS.STEAM_ADD_EMAIL_OVERLAY_SHOWN: 9, 
+                                        UI_STORAGE_KEYS.IS_CONFIRM_EMAIL_OVERLAY_ALLOWED: 10}, offsets={UI_STORAGE_KEYS.ROCKET_ACCELERATION_HIGHLIGHTS_COUNTER: Offset(1, 14), 
                                         UI_STORAGE_KEYS.DUAL_ACCURACY_HIGHLIGHTS_COUNTER: Offset(5, 224)}), 
        SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS: Section(masks={}, offsets={BATTLE_MATTERS_KEYS.QUESTS_SHOWN: Offset(0, 255), 
                                                  BATTLE_MATTERS_KEYS.QUEST_PROGRESS: Offset(8, 4294967040)}), 

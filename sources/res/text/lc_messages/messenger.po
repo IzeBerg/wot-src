@@ -1524,6 +1524,9 @@ msgstr ""
 "Это специальная техника для режима «Стальной охотник». Перейдите в режим, "
 "чтобы узнать, на что она способна."
 
+msgid "serviceChannelMessages/BRbattleResults/BRProgressionTitle"
+msgstr "Получено очков прогрессии: %(value)s"
+
 msgid "serviceChannelMessages/BRbattleResults/battlePass"
 msgstr "Получено очков Боевого пропуска: %(pointsDiff)s"
 
@@ -1785,7 +1788,7 @@ msgstr "Продолжайте играть и зарабатывать очки
 
 msgid "serviceChannelMessages/battlePassReward/battle/final/text"
 msgstr ""
-"Вы завершили все главы Боевого пропуска %(season)s сезона!\n"
+"Вы завершили все главы Боевого пропуска %(season)s сезона.\n"
 "Получена награда:"
 
 msgid "serviceChannelMessages/battlePassReward/battle/newLevel/text"
@@ -1827,6 +1830,9 @@ msgid "serviceChannelMessages/battlePassReward/buyWithoutRewards/text"
 msgstr ""
 "Теперь вы будете получать награды из базовой и улучшенной линеек одновременно в рамках главы %(chapter)s.\n"
 "Данный Улучшенный пропуск действует только для главы %(chapter)s."
+
+msgid "serviceChannelMessages/battlePassReward/header/autoSelectReward"
+msgstr "Начислена награда"
 
 msgid "serviceChannelMessages/battlePassReward/header/buyBP"
 msgstr "Улучшенный пропуск куплен"
@@ -2798,6 +2804,17 @@ msgstr "Списано дней Общего премиум аккаунта"
 msgid "serviceChannelMessages/invoiceReceived/premium_account"
 msgstr "Общий премиум аккаунт"
 
+msgid "serviceChannelMessages/invoiceReceived/prestigeAdded"
+msgstr "Начислено %(xpCount)s очков элитности машине %(vehicleName)s."
+
+msgid "serviceChannelMessages/invoiceReceived/prestigeSet/full"
+msgstr ""
+"Машине %(vehicleName)s присвоен %(level)s-й уровень элитности и начислено "
+"%(xpCount)s очков элитности."
+
+msgid "serviceChannelMessages/invoiceReceived/prestigeSet/justLevel"
+msgstr "Машине %(vehicleName)s присвоен %(level)s-й уровень элитности."
+
 msgid "serviceChannelMessages/invoiceReceived/purchase/received_from"
 msgstr "Товары из"
 
@@ -3088,6 +3105,24 @@ msgstr ""
 msgid "serviceChannelMessages/premiumReceivedAsGift"
 msgstr "От администрации получен Общий премиум аккаунт на %(days)d д."
 
+msgid "serviceChannelMessages/prestige/firstEntry/button"
+msgstr "К элитности"
+
+msgid "serviceChannelMessages/prestige/firstEntry/text"
+msgstr "Технике присвоены уровни и знаки элитности."
+
+msgid "serviceChannelMessages/prestige/firstEntry/title"
+msgstr "Система элитности"
+
+msgid "serviceChannelMessages/prestige/lvlUp/button"
+msgstr "К технике"
+
+msgid "serviceChannelMessages/prestige/lvlUp/text"
+msgstr "%(vehName)s"
+
+msgid "serviceChannelMessages/prestige/lvlUp/title"
+msgstr "Достигнут уровень элитности"
+
 msgid "serviceChannelMessages/priorityMessageTitle"
 msgstr "Внимание!"
 
@@ -3325,9 +3360,6 @@ msgstr "Общего премиум аккаунта"
 msgid "serviceChannelMessages/serverDowntimeCompensation/premium_plus"
 msgstr "Танкового премиум аккаунта"
 
-msgid "serviceChannelMessages/serverDowntimeCompensation/premium_subs"
-msgstr "WoT Plus"
-
 msgid "serviceChannelMessages/serverDowntimeCompensation/rentals"
 msgstr "аренды"
 
@@ -3348,6 +3380,12 @@ msgstr "Специальная награда"
 
 msgid "serviceChannelMessages/specialReward/vehicleBlueprints"
 msgstr "Фрагмент чертежа для %(vehicleName)s (x%(fragmentsCount)s)"
+
+msgid "serviceChannelMessages/steamEmailCompletion/body"
+msgstr "За подтверждение почты получена награда:"
+
+msgid "serviceChannelMessages/steamEmailCompletion/header"
+msgstr "Поздравляем!"
 
 msgid "serviceChannelMessages/sysMsg/converter/blueprintsReceived"
 msgstr "Получена компенсация за чертежи исследованной техники:"

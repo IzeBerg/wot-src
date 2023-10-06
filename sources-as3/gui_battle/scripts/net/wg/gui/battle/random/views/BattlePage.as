@@ -25,6 +25,7 @@ package net.wg.gui.battle.random.views
    import net.wg.gui.battle.views.consumablesPanel.events.ConsumablesPanelEvent;
    import net.wg.gui.battle.views.damageInfoPanel.DamageInfoPanel;
    import net.wg.gui.battle.views.debugPanel.DebugPanel;
+   import net.wg.gui.battle.views.mapInfoTip.MapInfoTip;
    import net.wg.gui.battle.views.minimap.constants.MinimapSizeConst;
    import net.wg.gui.battle.views.questProgress.interfaces.IQuestProgressView;
    import net.wg.gui.battle.views.radialMenu.RadialMenu;
@@ -39,6 +40,8 @@ package net.wg.gui.battle.random.views
    
    public class BattlePage extends BattlePageQuestsProgress
    {
+      
+      private static const OFFSET_MAP_INFO_X:uint = 70;
       
       private static const BATTLE_DAMAGE_LOG_X_POSITION:int = 229;
       
@@ -93,6 +96,8 @@ package net.wg.gui.battle.random.views
       
       public var siegeModePanel:SiegeModePanel = null;
       
+      public var mapInfoTip:MapInfoTip = null;
+      
       private var _playersPanelState:int = -1;
       
       private var _playersPanelHasInvite:Boolean = false;
@@ -136,6 +141,7 @@ package net.wg.gui.battle.random.views
          this.updateBattleMessengerPosition();
          this.updateBattleMessengerSwapArea();
          this.updateHintPanelPosition();
+         this.updateMapInfoHintLayout();
       }
       
       override protected function initialize() : void
@@ -193,6 +199,10 @@ package net.wg.gui.battle.random.views
          registerComponent(this.endWarningPanel,BATTLE_VIEW_ALIASES.BATTLE_END_WARNING_PANEL);
          registerComponent(this.siegeModePanel,BATTLE_VIEW_ALIASES.SIEGE_MODE_INDICATOR);
          registerComponent(this.hintPanel,BATTLE_VIEW_ALIASES.HINT_PANEL);
+         if(this.mapInfoTip)
+         {
+            registerComponent(this.mapInfoTip,BATTLE_VIEW_ALIASES.MAP_INFO_TIP);
+         }
          if(this.destroyTimersPanel)
          {
             registerComponent(this.destroyTimersPanel,BATTLE_VIEW_ALIASES.TIMERS_PANEL);
@@ -253,6 +263,7 @@ package net.wg.gui.battle.random.views
          this.battleDamageLogPanel = null;
          this.siegeModePanel = null;
          this.battleNotifier = null;
+         this.mapInfoTip = null;
          super.onDispose();
       }
       
@@ -334,6 +345,15 @@ package net.wg.gui.battle.random.views
       {
          super.onPrebattleAmmunitionPanelHidden(false);
          this.updateConsumablePanel(param1);
+      }
+      
+      protected function updateMapInfoHintLayout() : void
+      {
+         if(this.mapInfoTip)
+         {
+            this.mapInfoTip.x = _originalWidth - OFFSET_MAP_INFO_X - this.mapInfoTip.width | 0;
+            this.mapInfoTip.updateLayout(_originalWidth);
+         }
       }
       
       protected function updateBattleMessengerSwapArea() : void

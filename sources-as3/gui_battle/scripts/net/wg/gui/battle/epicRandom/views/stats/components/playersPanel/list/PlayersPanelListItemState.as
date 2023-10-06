@@ -49,9 +49,9 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       
       private static const SPEAK_ANIMATION_X_OFFSET:uint = 82;
       
-      private static const MUTE_X_FULL_OFFSET:uint = 82;
+      private static const MUTE_X_FULL_OFFSET:uint = 111;
       
-      private static const MUTE_X_SHORT_OFFSET:uint = 13;
+      private static const MUTE_X_SHORT_OFFSET:uint = 42;
       
       private static const DISABLE_COMMUNICATION_X_FULL_OFFSET:uint = 111;
       

@@ -19,6 +19,8 @@ package
       
       public static const CURSOR_OVERLAPCONTOUR_TOOLTIP:String = "#settings:cursor/overlapContour/tooltip";
       
+      public static const MARKER_LEVEL_TOOLTIP:String = "#settings:marker/level/tooltip";
+      
       public static const LANGUAGE_CODE:String = "#settings:LANGUAGE_CODE";
       
       public static const WINDOWTITLE:String = "#settings:windowTitle";
@@ -401,8 +403,6 @@ package
       
       public static const GAME_DYNAMICCAMERA:String = "#settings:game/dynamicCamera";
       
-      public static const GAME_C11NHISTORICALLYACCURATE:String = "#settings:game/c11nHistoricallyAccurate";
-      
       public static const GAME_DISPLAYPLATOONMEMBERS:String = "#settings:game/displayPlatoonMembers";
       
       public static const GAME_LOGINSERVERSELECTION:String = "#settings:game/loginServerSelection";
@@ -783,6 +783,8 @@ package
       
       public static const GAMEPLAY_EPIC_STANDARD:String = "#settings:gameplay/epic_standard";
       
+      public static const GAMEPLAY_DEVMAPS:String = "#settings:gameplay/devMaps";
+      
       public static const GAMEPLAY_ONLY10MODE:String = "#settings:gameplay/only10Mode";
       
       public static const GAMEPLAY_EPIC_ENCOUNTER:String = "#settings:gameplay/epic_encounter";
@@ -1036,6 +1038,10 @@ package
       public static const MARKER_ICON:String = "#settings:marker/icon";
       
       public static const MARKER_LEVEL:String = "#settings:marker/level";
+      
+      public static const MARKER_LEVEL_TOOLTIP_HEADER:String = "#settings:marker/level/tooltip/header";
+      
+      public static const MARKER_LEVEL_TOOLTIP_BODY:String = "#settings:marker/level/tooltip/body";
       
       public static const MARKER_HPINDICATOR:String = "#settings:marker/hpIndicator";
       
@@ -1506,8 +1512,6 @@ package
       public static const COLORSETTINGS_VIEW_BEFORE:String = "#settings:colorSettings/view/before";
       
       public static const COLORSETTINGS_VIEW_AFTER:String = "#settings:colorSettings/view/after";
-      
-      public static const UNEQUIP_BUTTON:String = "#settings:unequip_button";
       
       public static const GAME_SHOWVEHICLEHPINPLAYERSPANEL:String = "#settings:game/showVehicleHPinPlayersPanel";
       

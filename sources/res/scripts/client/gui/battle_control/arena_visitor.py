@@ -410,6 +410,9 @@ class _ArenaExtraDataVisitor(IArenaVisitor):
     def isLowLevelBattle(self):
         return 0 < self._extra.get('battleLevel', 0) < 4
 
+    def isMapsInDevelopmentEnabled(self):
+        return self._extra.get('isRandomEventsAllowed', False)
+
     def getValue(self, key, default=None):
         return self._extra.get(key, default)
 

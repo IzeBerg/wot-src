@@ -65,6 +65,7 @@ def packStartEvent(rewards, data, packageRewards, eventMethod, battlePass=None):
         newLevel = data['newLevel']
         chapter = data['chapter']
         prevLevel = data['prevLevel']
+        data.update({'needVideo': needToShowLevelUpVideo(chapter, newLevel, battlePass=battlePass)})
         isFinalLevel = battlePass.isFinalLevel(chapter, newLevel)
         isRareLevel = False
         if newLevel is not None:
@@ -101,6 +102,11 @@ def defaultEventMethod(rewards, data, packageRewards, battlePass=None):
 
 def packToken(tokenID):
     return {'tokens': {tokenID: {'count': 1, 'expires': {'after': 1}}}}
+
+
+@dependency.replace_none_kwargs(battlePass=IBattlePassController)
+def needToShowLevelUpVideo(chapterID, level, battlePass=None):
+    return battlePass.isFinalLevel(chapterID, level) and battlePass.isExtraChapter(chapterID)
 
 
 @dependency.replace_none_kwargs(offers=IOffersDataProvider)

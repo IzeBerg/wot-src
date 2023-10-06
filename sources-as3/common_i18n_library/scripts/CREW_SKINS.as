@@ -3,29 +3,9 @@ package
    public class CREW_SKINS
    {
       
-      public static const FEATURE_HEADER:String = "#crew_skins:feature/Header";
-      
       public static const FEATURE_INUSE:String = "#crew_skins:feature/inUse";
       
       public static const FEATURE_INSTORAGE:String = "#crew_skins:feature/inStorage";
-      
-      public static const FEATURE_SKINSTABHEADER:String = "#crew_skins:feature/skinsTabHeader";
-      
-      public static const FEATURE_SOUND_HEADER:String = "#crew_skins:feature/sound/header";
-      
-      public static const FEATURE_TAB_RESTRICTIONS:String = "#crew_skins:feature/tab/restrictions";
-      
-      public static const FEATURE_TAB_ALLUSED:String = "#crew_skins:feature/tab/allUsed";
-      
-      public static const FEATURE_SOUND_NOSOUND:String = "#crew_skins:feature/sound/noSound";
-      
-      public static const FEATURE_NOCONTENT_HEADER:String = "#crew_skins:feature/noContent/header";
-      
-      public static const FEATURE_NOCONTENT_DESC1:String = "#crew_skins:feature/noContent/desc1";
-      
-      public static const FEATURE_NOCONTENT_DESC2:String = "#crew_skins:feature/noContent/desc2";
-      
-      public static const FEATURE_SKINUSEDWARNING:String = "#crew_skins:feature/skinUsedWarning";
       
       public static const RYBALKO_NAME:String = "#crew_skins:Rybalko/Name";
       
@@ -416,6 +396,12 @@ package
       public static const COSM_GEORGE_LASTNAME:String = "#crew_skins:cosm_george/LastName";
       
       public static const COSM_GEORGE_DESCR:String = "#crew_skins:cosm_george/Descr";
+      
+      public static const ERMELINDA_NAME:String = "#crew_skins:ermelinda/Name";
+      
+      public static const ERMELINDA_LASTNAME:String = "#crew_skins:ermelinda/LastName";
+      
+      public static const ERMELINDA_DESCR:String = "#crew_skins:ermelinda/Descr";
        
       
       public function CREW_SKINS()

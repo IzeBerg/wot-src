@@ -145,7 +145,10 @@ class AccountRequirementsFormatter(ConditionsFormatter):
     @staticmethod
     def _processRequirements(requirements):
         for item in requirements:
-            for key in ('isAvailable', 'isSeparator'):
+            styler = item.get('styler')
+            if styler:
+                item['text'] = styler(item['text'])
+            for key in ('isAvailable', 'isSeparator', 'styler'):
                 if key in item:
                     del item[key]
 
@@ -260,7 +263,10 @@ class RecursiveGroupFormatter(RecursiveFormatter):
             headerStyle = text_styles.standard
             reasonStyle = text_styles.standard
             header = '#quests:missionDetails/requirements/header/available'
-            reason = '#quests:missionDetails/requirements/conclusion/available'
+            if len(requirements) == 1:
+                reason = requirements[0]['text']
+            else:
+                reason = '#quests:missionDetails/requirements/conclusion/available'
             count = total
         else:
             icon = (
@@ -304,25 +310,24 @@ class RecursiveGroupFormatter(RecursiveFormatter):
                     branch = []
                 if branch:
                     total += 1
-                    if condition.isAvailable():
-                        passed += 1
-                if branch:
                     isAvailable = condition.isAvailable()
-                    result.extend(self._processNonGroupConidtions(branch, isNested, isAvailable, separator, topHasOrGroup))
+                    if isAvailable:
+                        passed += 1
+                    result.extend(self._processNonGroupConditions(branch, isNested, isAvailable, separator, topHasOrGroup))
 
         for fmt in gatheringFmts.itervalues():
             branch = fmt.format(self._styler)
             if branch:
                 total += 1
                 isAvailable = fmt.isAvailable()
-                result.extend(self._processNonGroupConidtions(branch, isNested, isAvailable, separator, topHasOrGroup))
+                result.extend(self._processNonGroupConditions(branch, isNested, isAvailable, separator, topHasOrGroup))
 
         if result and result[(-1)].get('isSeparator'):
             result.pop()
         return (result, passed, total)
 
     @classmethod
-    def _processNonGroupConidtions(cls, branch, isNested, isAvailable, separator, isInOrGroup):
+    def _processNonGroupConditions(cls, branch, isNested, isAvailable, separator, isInOrGroup):
         formattedBranch = []
         for item in branch:
             if not isNested or not isInOrGroup:
@@ -381,7 +386,7 @@ class PremiumAccountFormatter(ConditionFormatter):
         label = backport.text(R.strings.quests.details.requirements.dyn(labelKey)())
         style = styler(condition.isAvailable())
         return [
-         packText(style(label))]
+         packText(text=label, styler=style)]
 
 
 class PremiumPlusAccountFormatter(ConditionFormatter):
@@ -395,7 +400,7 @@ class PremiumPlusAccountFormatter(ConditionFormatter):
         label = backport.text(R.strings.quests.details.requirements.dyn(labelKey)())
         style = styler(condition.isAvailable())
         return [
-         packText(style(label))]
+         packText(text=label, styler=style)]
 
 
 class WotPlusFormatter(ConditionFormatter):
@@ -406,7 +411,7 @@ class WotPlusFormatter(ConditionFormatter):
         labelKey = 'wotPlus' if condition.isWotPlusNeeded() else 'withoutWotPlus'
         label = backport.text(R.strings.quests.details.requirements.dyn(labelKey)())
         return [
-         packText(style(label))]
+         packText(text=label, styler=style)]
 
 
 class InClanRequirementFormatter(ConditionFormatter):
@@ -436,7 +441,7 @@ class InClanRequirementFormatter(ConditionFormatter):
             label = backport.text(R.strings.quests.details.requirements.dyn(labelKey)())
             style = styler(condition.isAvailable())
             return [
-             packText(style(label))]
+             packText(text=label, styler=style)]
         else:
             return []
 
@@ -457,7 +462,7 @@ class IgrTypeRequirementFormatter(ConditionFormatter):
         label = backport.text(R.strings.quests.details.requirements.dyn(key)())
         style = styler(condition.isAvailable())
         return [
-         packText(makeHtmlString('html_templates:lobby/quests', 'playInIgr', {'label': style(label)}))]
+         packText(text=makeHtmlString('html_templates:lobby/quests', 'playInIgr', {'label': style(label)}))]
 
 
 class GlobalRatingRequirementFormatter(ConditionFormatter):
@@ -469,7 +474,7 @@ class GlobalRatingRequirementFormatter(ConditionFormatter):
         label = relate(relation, value, label)
         style = styler(condition.isAvailable())
         return [
-         packText(style(label))]
+         packText(text=label, styler=style)]
 
 
 class VehiclesRequirementFormatter(ConditionFormatter):
@@ -481,7 +486,7 @@ class VehiclesRequirementFormatter(ConditionFormatter):
         result = []
         if condition.isAnyVehicleAcceptable():
             label = ms(('{}/all').format(labelKey))
-            result.append(packText(style(label)))
+            result.append(packText(text=label, styler=style))
         elif 'types' not in condition.data:
             _, fnations, flevels, fclasses, _ = condition.parseFilters()
             keys, kwargs = [], {}
@@ -503,13 +508,13 @@ class VehiclesRequirementFormatter(ConditionFormatter):
                 labelKey = ('{}/not').format(labelKey)
             label = ms(labelKey, **kwargs)
             label = relate(condition.relation, condition.relationValue, label)
-            result.append(packText(style(label)))
+            result.append(packText(text=label, styler=style))
         else:
             if condition.isNegative():
                 labelKey = ('{}/not').format(labelKey)
             label = ms(labelKey)
             names = [ vehicle.userName for vehicle in condition.getVehiclesList() ]
-            result.append(packText(style(('{}: {}').format(label, (', ').join(names)))))
+            result.append(packText(text=('{}: {}').format(label, (', ').join(names)), styler=style))
         return result
 
 
@@ -523,7 +528,7 @@ class HasReceivedMultipliedXPFormatter(ConditionFormatter):
         key = R.strings.quests.details.requirements.vehicle.dyn(xpKey)()
         label = backport.text(key, mult=cls.itemsCache.items.shop.dailyXPFactor)
         return [
-         packText(style(label))]
+         packText(text=label, styler=style)]
 
 
 class AccountDossierRequirementFormatter(ConditionFormatter):
@@ -541,7 +546,7 @@ class AccountDossierRequirementFormatter(ConditionFormatter):
         label = backport.text(titleKey, label=backport.text(labelKey))
         label = relate(condition.relation, condition.relationValue, label)
         return [
-         packText(style(label))]
+         packText(text=label, styler=style)]
 
     @classmethod
     def _dossierBlock2BattleMode(cls, block):
@@ -573,7 +578,7 @@ class TokenGatheringRequirementFormatter(ConditionFormatter):
         style = styler(self._isAvailable)
         result = []
         if self._tokens:
-            result = [packText(style('#quests:details/requirements/token')),
+            result = [packText(text='#quests:details/requirements/token', styler=style),
              packTokens(self._tokens)]
         return result
 

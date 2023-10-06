@@ -429,6 +429,15 @@ class StaticOptionalDevice(OptionalDevice):
 
             return
 
+    def getFactorValue(self, vehicleDescr, attrPath, default=0.0):
+        splitted = tuple(attrPath.split('/'))
+        factor = self._factors.get(splitted, None)
+        if not factor:
+            return default
+        else:
+            level = self.defineActiveLevel(vehicleDescr)
+            return factor.getActiveValue(level)
+
 
 class StillVehicleOptionalDevice(StaticOptionalDevice):
     __slots__ = ('activateWhenStillSec', )

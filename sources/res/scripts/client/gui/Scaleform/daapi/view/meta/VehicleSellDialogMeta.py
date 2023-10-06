@@ -25,9 +25,13 @@ class VehicleSellDialogMeta(AbstractWindowView):
         if self._isDAAPIInited():
             return self.flashObject.as_visibleControlBlock(value)
 
-    def as_enableButtonS(self, value):
+    def as_enableButtonS(self, value, tooltip):
         if self._isDAAPIInited():
-            return self.flashObject.as_enableButton(value)
+            return self.flashObject.as_enableButton(value, tooltip)
+
+    def as_setSellEnabledS(self, value, message):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setSellEnabled(value, message)
 
     def as_setControlQuestionDataS(self, isGold, value, question):
         if self._isDAAPIInited():

@@ -83,6 +83,7 @@ def getGameControllersConfig(manager):
     from gui.limited_ui.lui_controller import LimitedUIController
     from gui.game_control.collections_controller import CollectionsSystemController
     from gui.hangar_presets.hangar_gui_controller import HangarGuiController
+    from gui.game_control.winback_call_controller import WinBackCallController as _WinBackCall
     tracker = GameStateTracker()
     tracker.init()
     manager.addInstance(_interface.IGameStateTracker, tracker, finalizer='fini')
@@ -118,6 +119,7 @@ def getGameControllersConfig(manager):
     _config(_interface.ITradeInController, _TradeIn())
     _config(_interface.IQuestsController, _Quests())
     _config(_interface.IHangarSpaceSwitchController, HangarSpaceSwitchController())
+    _config(_interface.IWinBackCallController, _WinBackCall())
     _config(_interface.IBootcampController, _Bootcamp())
     _config(_interface.IRankedBattlesController, _Ranked())
     _config(_interface.IEpicModeController, _Epic())

@@ -127,6 +127,20 @@ package net.wg.gui.components.crosshairPanel
          this._container = null;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
+      public function setDualAccActive(param1:Boolean) : void
+      {
+         var _loc2_:IGunMarker = null;
+         for each(_loc2_ in this._gunMarkers)
+         {
+            _loc2_.setDualAccActive(param1);
+         }
+      }
+      
       public function setGunMarkerColor(param1:String, param2:String) : void
       {
          var _loc3_:IGunMarker = this._gunMarkers[param1];
@@ -182,20 +196,6 @@ package net.wg.gui.components.crosshairPanel
          for each(_loc2_ in this._gunMarkers)
          {
             _loc2_.setSettings(param1.gunTagType,param1.mixingType,param1.gunTagAlpha,param1.mixingAlpha);
-         }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
-      }
-      
-      public function setDualAccActive(param1:Boolean) : void
-      {
-         var _loc2_:IGunMarker = null;
-         for each(_loc2_ in this._gunMarkers)
-         {
-            _loc2_.setDualAccActive(param1);
          }
       }
    }

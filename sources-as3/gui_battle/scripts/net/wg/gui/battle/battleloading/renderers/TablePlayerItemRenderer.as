@@ -13,6 +13,15 @@ package net.wg.gui.battle.battleloading.renderers
          super(param1,param2,param3);
       }
       
+      override public function get isExtendedLayout() : Boolean
+      {
+         return false;
+      }
+      
+      override public function set isExtendedLayout(param1:Boolean) : void
+      {
+      }
+      
       override protected function setSelfBG() : void
       {
          if(selfBg != null)

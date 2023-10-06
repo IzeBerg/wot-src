@@ -181,6 +181,11 @@
 		<BATTLE_ROYALE_TRN_SQUAD>
 			<runDelayDev>15</runDelayDev>
 		</BATTLE_ROYALE_TRN_SQUAD>
+		<TOURNAMENT_COMP7>
+			<runDelay>45</runDelay>
+			<runDelayDev>45</runDelayDev>
+			<maxPlayersInTeam>7</maxPlayersInTeam>
+		</TOURNAMENT_COMP7>
 	</bonusTypeOverrides>
 	<gameplayTypes>
 		<ctf>
@@ -314,7 +319,7 @@
 					<!--BW_String-->
 				</transitionFrontLineBoundForward>
 				<defenderMotivationFactors>
-					0.875 0.5625 0.425
+					0.875 0.5625 0.375
 					<!--BW_String-->
 				</defenderMotivationFactors>
 				<overtimeMaxFrontlineOffset>

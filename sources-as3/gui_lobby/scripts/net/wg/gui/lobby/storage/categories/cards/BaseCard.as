@@ -18,10 +18,10 @@ package net.wg.gui.lobby.storage.categories.cards
    import net.wg.gui.components.containers.GroupEx;
    import net.wg.gui.components.containers.HorizontalGroupLayout;
    import net.wg.gui.components.containers.VerticalGroupLayout;
+   import net.wg.gui.components.controls.BlackButton;
    import net.wg.gui.components.controls.ButtonIconNormal;
    import net.wg.gui.components.controls.IconText;
    import net.wg.gui.components.controls.Image;
-   import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.components.controls.VO.CompoundPriceVO;
    import net.wg.gui.components.controls.VO.PriceVO;
    import net.wg.gui.components.controls.scroller.IScrollerItemRenderer;
@@ -54,7 +54,7 @@ package net.wg.gui.lobby.storage.categories.cards
       
       protected static const ROLL_OVER_ANIMATION_DELAY:int = 300;
       
-      protected static const SELL_BUTTON_MIN_WIDTH:int = 90;
+      protected static const SELL_BUTTON_MIN_WIDTH:int = 84;
       
       protected static const BORDER_OFFSET:Number = 0.5;
       
@@ -80,7 +80,7 @@ package net.wg.gui.lobby.storage.categories.cards
       
       private static const FLAG_HOVER_ALPHA:Number = 0.7;
       
-      private static const UPGRADE_BUTTON_WIDTH:int = 30;
+      private static const SMALL_BUTTON_WIDTH:int = 45;
       
       private static const GAP_BUTTONS:int = -5;
       
@@ -125,7 +125,7 @@ package net.wg.gui.lobby.storage.categories.cards
       
       public var cannotSellIcon:MovieClip;
       
-      public var sellButton:SoundButtonEx;
+      public var sellButton:BlackButton;
       
       public var upgradeButton:ButtonIconNormal;
       
@@ -274,6 +274,10 @@ package net.wg.gui.lobby.storage.categories.cards
             this.flags.mouseEnabled = this.flags.mouseChildren = false;
             this.flags.addEventListener(Event.CHANGE,this.onFlagsChangeHandler);
          }
+         if(this.discountIcon)
+         {
+            this.discountIcon.mouseEnabled = this.discountIcon.mouseChildren = false;
+         }
          this.image.mouseEnabled = this.image.mouseChildren = false;
          this.image.addEventListener(Event.CHANGE,this.onImageChangeHandler);
          if(this.descriptionTF)
@@ -301,8 +305,7 @@ package net.wg.gui.lobby.storage.categories.cards
             this.extraParams.alpha = 0;
          }
          this.sellButton.alpha = 0;
-         this.sellButton.minWidth = SELL_BUTTON_MIN_WIDTH;
-         this.sellButton.autoSize = TextFieldAutoSize.RIGHT;
+         this.sellButton.dynamicSizeByText = true;
          addChild(this._container);
          addChildAt(this._overlay,0);
          addEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
@@ -317,9 +320,10 @@ package net.wg.gui.lobby.storage.categories.cards
       
       override protected function draw() : void
       {
-         var _loc1_:Graphics = null;
-         var _loc2_:Rectangle = null;
-         var _loc3_:uint = 0;
+         var _loc1_:Boolean = false;
+         var _loc2_:Graphics = null;
+         var _loc3_:Rectangle = null;
+         var _loc4_:uint = 0;
          super.draw();
          if(this._data && isInvalid(InvalidationType.DATA))
          {
@@ -378,7 +382,20 @@ package net.wg.gui.lobby.storage.categories.cards
                this.discountIcon.visible = this.hasAction && this._data.enabled;
             }
             this.sellButton.visible = this._data.enabled;
-            this.sellButton.label = Boolean(this._data.actionButtonLabel) ? this._data.actionButtonLabel : STORAGE.BUTTONLABEL_SELL;
+            this.sellButton.tooltip = this._data.actionButtonTooltip;
+            _loc1_ = Boolean(this._data.actionButtonIcon);
+            if(_loc1_)
+            {
+               this.sellButton.label = Values.EMPTY_STR;
+               this.sellButton.iconSource = this._data.actionButtonIcon;
+               this.sellButton.width = SMALL_BUTTON_WIDTH;
+            }
+            else
+            {
+               this.sellButton.minWidth = SELL_BUTTON_MIN_WIDTH;
+               this.sellButton.iconSource = Values.EMPTY_STR;
+               this.sellButton.label = STORAGE.BUTTONLABEL_SELL;
+            }
             this.createUpgradeButton();
             if(this._resetViewOnDataChange)
             {
@@ -407,64 +424,64 @@ package net.wg.gui.lobby.storage.categories.cards
             {
                this.specialization.alpha = 1;
             }
-            _loc1_ = graphics;
-            _loc1_.clear();
-            _loc1_.lineStyle(1,16777215,0.15);
-            _loc1_.beginFill(0,0.25);
-            _loc1_.drawRoundRect(BORDER_OFFSET,BORDER_OFFSET,width - BORDER_SIZE_CORRECTION,height - BORDER_SIZE_CORRECTION,BORDER_CORNER_RADIUS,BORDER_CORNER_RADIUS);
-            _loc1_.endFill();
-            _loc1_ = this._overlay.graphics;
-            _loc1_.clear();
-            _loc1_.beginFill(1973272);
-            _loc1_.drawRoundRect(1,1,width - OVERLAY_SIZE_CORRECTION,height - OVERLAY_SIZE_CORRECTION,BORDER_CORNER_RADIUS,BORDER_CORNER_RADIUS);
-            _loc1_.endFill();
+            _loc2_ = graphics;
+            _loc2_.clear();
+            _loc2_.lineStyle(1,16777215,0.15);
+            _loc2_.beginFill(0,0.25);
+            _loc2_.drawRoundRect(BORDER_OFFSET,BORDER_OFFSET,width - BORDER_SIZE_CORRECTION,height - BORDER_SIZE_CORRECTION,BORDER_CORNER_RADIUS,BORDER_CORNER_RADIUS);
+            _loc2_.endFill();
+            _loc2_ = this._overlay.graphics;
+            _loc2_.clear();
+            _loc2_.beginFill(1973272);
+            _loc2_.drawRoundRect(1,1,width - OVERLAY_SIZE_CORRECTION,height - OVERLAY_SIZE_CORRECTION,BORDER_CORNER_RADIUS,BORDER_CORNER_RADIUS);
+            _loc2_.endFill();
             if(this.flags)
             {
                this.flags.y = this._sizeVO.flagsOffset;
             }
-            _loc2_ = this._sizeVO.innerPadding;
+            _loc3_ = this._sizeVO.innerPadding;
             if(this.price)
             {
                if(this.discountIcon && this.discountIcon.visible)
                {
-                  this.discountIcon.x = _loc2_.left;
+                  this.discountIcon.x = _loc3_.left;
                   this.price.x = this.discountIcon.x + this.discountIcon.width + DISCOUNT_OFFSET >> 0;
-                  this.price.y = _loc2_.bottom - this.price.height >> 0;
+                  this.price.y = _loc3_.bottom - this.price.height >> 0;
                   this.discountIcon.y = this.price.y + (this.price.height - this.discountIcon.height >> 1);
                }
                else
                {
-                  this.price.x = _loc2_.left;
-                  this.price.y = _loc2_.bottom - this.price.height >> 0;
+                  this.price.x = _loc3_.left;
+                  this.price.y = _loc3_.bottom - this.price.height >> 0;
                }
             }
             if(this.cannotSellTF)
             {
-               this.cannotSellTF.x = _loc2_.left + this.cannotSellIcon.width + ININVENTORY_ICON_OFFSET;
-               this.cannotSellTF.y = _loc2_.bottom - this.cannotSellTF.height >> 0;
-               this.cannotSellIcon.x = _loc2_.left;
+               this.cannotSellTF.x = _loc3_.left + this.cannotSellIcon.width + ININVENTORY_ICON_OFFSET;
+               this.cannotSellTF.y = _loc3_.bottom - this.cannotSellTF.height >> 0;
+               this.cannotSellIcon.x = _loc3_.left;
                this.cannotSellIcon.y = this.cannotSellTF.y + (this.cannotSellTF.height - this.cannotSellIcon.height >> 1) + CANNOT_SELL_ICON_V_OFFSET;
             }
             if(this.inInventoryCountTF)
             {
-               this.inInventoryCountTF.x = _loc2_.right - this.inInventoryCountTF.width >> 0;
-               this.inInventoryCountTF.y = _loc2_.bottom - this.inInventoryCountTF.height >> 0;
+               this.inInventoryCountTF.x = _loc3_.right - this.inInventoryCountTF.width >> 0;
+               this.inInventoryCountTF.y = _loc3_.bottom - this.inInventoryCountTF.height >> 0;
                this.inInventoryIcon.x = this.inInventoryCountTF.x - this.inInventoryIcon.width - ININVENTORY_ICON_OFFSET;
                this.inInventoryIcon.y = this.inInventoryCountTF.y - ININVENTORY_ICON_OFFSET;
             }
-            this.titleTF.x = _loc2_.left;
-            this.titleTF.width = this.price && this.price.visible || !this.inInventoryIcon || !this.inInventoryIcon.visible ? Number(_loc2_.width) : Number(this.inInventoryIcon.x - this.titleTF.x);
+            this.titleTF.x = _loc3_.left;
+            this.titleTF.width = this.price && this.price.visible || !this.inInventoryIcon || !this.inInventoryIcon.visible ? Number(_loc3_.width) : Number(this.inInventoryIcon.x - this.titleTF.x);
             if(!this._isOver)
             {
                this._container.y = this.getContainerYRolloutPosition();
             }
             if(this.descriptionTF)
             {
-               this.descriptionTF.x = _loc2_.left;
+               this.descriptionTF.x = _loc3_.left;
                this.descriptionTF.y = this.titleTF.y + this.titleTF.height + this._sizeVO.descriptionOffset;
-               this.descriptionTF.width = _loc2_.width >> 0;
-               _loc3_ = this._sizeVO.size.width < CARD_SMALL_WIDTH ? uint(DESCRIPTION_SMALL_CARD_MAX_LINES) : uint(DESCRIPTION_BIG_CARD_MAX_LINES);
-               App.utils.commons.truncateHtmlTextMultiline(this.descriptionTF,this._data.description,_loc3_,DESCRIPTION_TRANCATION_SYMBOL);
+               this.descriptionTF.width = _loc3_.width >> 0;
+               _loc4_ = this._sizeVO.size.width < CARD_SMALL_WIDTH ? uint(DESCRIPTION_SMALL_CARD_MAX_LINES) : uint(DESCRIPTION_BIG_CARD_MAX_LINES);
+               App.utils.commons.truncateHtmlTextMultiline(this.descriptionTF,this._data.description,_loc4_,DESCRIPTION_TRANCATION_SYMBOL);
             }
             if(this.extraParams)
             {
@@ -477,9 +494,9 @@ package net.wg.gui.lobby.storage.categories.cards
                   this.extraParams.y = this.descriptionTF.y + this.descriptionTF.height + this._sizeVO.descriptionOffset;
                }
             }
-            this.sellButton.x = _loc2_.right - this.sellButton.width >> 0;
-            this.sellButton.y = _loc2_.bottom - this.sellButton.height >> 0;
             this.sellButton.validateNow();
+            this.sellButton.x = _loc3_.right - this.sellButton.width >> 0;
+            this.sellButton.y = _loc3_.bottom - this.sellButton.height >> 0;
             if(this._data.upgradable)
             {
                this.upgradeButton.x = this.sellButton.x - this.upgradeButton.width + GAP_BUTTONS;
@@ -792,7 +809,7 @@ package net.wg.gui.lobby.storage.categories.cards
          if(this.upgradeButton == null)
          {
             this.upgradeButton = App.utils.classFactory.getComponent(Linkages.BUTTON_ICON_NORMAL,ButtonIconNormal);
-            this.upgradeButton.width = UPGRADE_BUTTON_WIDTH;
+            this.upgradeButton.width = SMALL_BUTTON_WIDTH;
             this.upgradeButton.alpha = 0;
             _loc1_ = getChildIndex(this.sellButton);
             addChildAt(this.upgradeButton,_loc1_);

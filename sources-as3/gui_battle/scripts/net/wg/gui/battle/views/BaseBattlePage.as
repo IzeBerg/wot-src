@@ -1,5 +1,6 @@
 package net.wg.gui.battle.views
 {
+   import flash.display.InteractiveObject;
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.geom.Point;
@@ -356,6 +357,21 @@ package net.wg.gui.battle.views
          {
             this.showComponent(_loc3_,false);
          }
+      }
+      
+      override protected function onSetModalFocus(param1:InteractiveObject) : void
+      {
+         if(!this.isElementVisible(param1))
+         {
+            DebugUtils.LOG_DEBUG("Cannot set focus on the invisible element!");
+            setFocus(this);
+         }
+         super.onSetModalFocus(param1);
+      }
+      
+      private function isElementVisible(param1:InteractiveObject) : Boolean
+      {
+         return param1 && param1.visible && param1.parent != this && this.isElementVisible(param1.parent);
       }
       
       public function as_checkDAAPI() : void

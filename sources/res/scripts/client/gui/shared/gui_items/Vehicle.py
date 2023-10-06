@@ -22,7 +22,7 @@ from gui.prb_control.settings import PREBATTLE_SETTING_NAME
 from gui.shared.economics import calcRentPackages, getActionPrc, calcVehicleRestorePrice
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items import CLAN_LOCK, GUI_ITEM_TYPE, getItemIconName, GUI_ITEM_ECONOMY_CODE, checkForTags
-from gui.shared.gui_items.Tankman import Tankman, BROTHERHOOD_SKILL_NAME
+from gui.shared.gui_items.Tankman import Tankman, BROTHERHOOD_SKILL_NAME, NO_TANKMAN
 from gui.shared.gui_items.customization.slots import ProjectionDecalSlot, BaseCustomizationSlot, EmblemSlot
 from gui.shared.gui_items.fitting_item import FittingItem, RentalInfoProvider
 from gui.shared.gui_items.gui_item import HasStrCD
@@ -193,6 +193,7 @@ EliteStatusProgress = typing.NamedTuple('EliteStatusProgress', (
   'toUnlock', typing.Set[int]),
  (
   'total', typing.Set[int])))
+NO_VEHICLE_ID = -1
 
 class Vehicle(FittingItem):
     __slots__ = ('__customState', '_inventoryID', '_xp', '_dailyXPFactor', '_isElite',
@@ -525,6 +526,15 @@ class Vehicle(FittingItem):
         commanderEffRoleLevel += bonuses['brotherhood'] + bonuses['equipment'] + bonuses['optDevices']
         bonuses['commander'] += round(commanderEffRoleLevel / tankmen.COMMANDER_ADDITION_RATIO)
         return
+
+    def getTankmanIDBySlotIdx(self, slotIdx):
+        for slot, tman in self.crew:
+            if slot == slotIdx:
+                if tman:
+                    return tman.invID
+                return NO_TANKMAN
+
+        return NO_TANKMAN
 
     def _calcSellPrice(self, proxy):
         return self.__calcSellPrice(proxy, self.sellPrices.itemPrice.price)
@@ -1034,7 +1044,7 @@ class Vehicle(FittingItem):
 
     @property
     def isAmmoFull(self):
-        return sum(s.count for s in self.shells.installed.getItems()) >= self.ammoMinSize
+        return sum(s.count for s in self.shells.installed.getItems()) >= self.ammoMinSize or self.isOnlyForBattleRoyaleBattles
 
     @property
     def isAmmoNotFullInSetups(self):
@@ -1730,7 +1740,7 @@ class Vehicle(FittingItem):
 
         return (data[0], data[1], set(data[2:]))
 
-    def getPerfectCrew(self):
+    def __getCrewSkills(self):
         skillLevels = {}
         skills = {}
         usedTankmans = []
@@ -1744,7 +1754,51 @@ class Vehicle(FittingItem):
                     usedTankmans.append(tankmanIdx)
                     break
 
+        return (
+         skills, skillLevels)
+
+    def makeCrewMaxRolesLevel(self):
+        skills, skillLevels = self.__getCrewSkills()
+        levelsByIndexes = {}
+        for tankmanIdx, vehTankman in self.crew:
+            levelsByIndexes[tankmanIdx] = 100 if vehTankman else None
+
+        return self.getCrewBySkillLevels(100, skillsByIdxs=skills, skillLevelsByIdxs=skillLevels, activateBrotherhood=True, levelByIdxs=levelsByIndexes)
+
+    def getPerfectCrew(self):
+        skills, skillLevels = self.__getCrewSkills()
         return self.getCrewBySkillLevels(100, skillsByIdxs=skills, skillLevelsByIdxs=skillLevels, activateBrotherhood=True)
+
+    def getCrewWithSkill(self, skillName):
+        if skillName is None:
+            return self.crew
+        else:
+            crewItems = list()
+            crewRoles = self.descriptor.type.crewRoles
+            for slotIdx, tman in self.crew:
+                if tman is None:
+                    crewItems.append((slotIdx, tman))
+                    continue
+                skillAlreadyLearned = tman.skillAlreadyLearned(skillName)
+                skillIsInProgress = tman.skillIsInProgress(skillName)
+                cannotLearnSkill = skillName not in tman.getPossibleSkills()
+                if cannotLearnSkill or skillAlreadyLearned:
+                    crewItems.append((slotIdx, tman))
+                    continue
+                tmanDescr = tman.descriptor
+                skills = tmanDescr.skills[:]
+                if skillIsInProgress:
+                    lastSkillLevel = tankmen.MAX_SKILL_LEVEL
+                elif not skills:
+                    skills.append(skillName)
+                    lastSkillLevel = tankmen.MAX_SKILL_LEVEL
+                else:
+                    skills.insert(0, skillName)
+                    lastSkillLevel = tmanDescr.lastSkillLevel
+                skilledTman = self.itemsFactory.createTankman(tankmen.generateCompactDescr(tmanDescr.getPassport(), tmanDescr.vehicleTypeID, tmanDescr.role, tmanDescr.roleLevel, skills, lastSkillLevel), vehicle=self, vehicleSlotIdx=tman.vehicleSlotIdx)
+                crewItems.append((slotIdx, skilledTman))
+
+            return sortCrew(crewItems, crewRoles)
 
     def getCrewWithoutSkill(self, skillName):
         crewItems = list()
@@ -2022,6 +2076,10 @@ def getTypeUserName(vehType, isElite):
     return i18n.makeString('#menu:header/vehicleType/%s' % vehType)
 
 
+def getWotPlusExclusiveVehicleTypeUserName(vehType):
+    return i18n.makeString('#menu:header/wotPlusExclusiveVehicleType/%s' % vehType)
+
+
 def getTypeShortUserName(vehType):
     return i18n.makeString('#menu:classes/short/%s' % vehType)
 
@@ -2127,6 +2185,10 @@ def getShopVehicleIconPath(size, name):
 
 def getTypeBigIconResource(vehicleType, isElite=False):
     return R.images.gui.maps.icons.vehicleTypes.big.dyn(replaceHyphenToUnderscore(vehicleType + '_elite' if isElite else vehicleType))
+
+
+def getType44x44IconResource(vehicleType, isElite=False):
+    return R.images.gui.maps.icons.vehicleTypes.c_44x44.dyn(replaceHyphenToUnderscore(vehicleType + '_elite' if isElite else vehicleType))
 
 
 def getUserName(vehicleType, textPrefix=False):
@@ -2235,3 +2297,8 @@ def getBattlesLeft(vehicle):
     if vehicle.isInfiniteRotationGroup:
         return i18n.makeString('#menu:infinitySymbol')
     return str(vehicle.rotationBattlesLeft)
+
+
+def getRetrainTankmenIds(vehicle):
+    return [ tankman.invID for _, tankman in vehicle.crew if tankman is not None and (not tankman.isMaxRoleEfficiency or not tankman.isInNativeTank)
+           ]

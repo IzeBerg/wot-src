@@ -1,7 +1,9 @@
 package net.wg.gui.components.crosshairPanel.components.gunMarker
 {
+   import mx.effects.easing.Cubic;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.constants.GunMarkerConsts;
    import net.wg.infrastructure.base.SimpleContainer;
+   import scaleform.clik.motion.Tween;
    
    public class GunMarkerDispersionCircle extends SimpleContainer
    {
@@ -10,9 +12,9 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       public static const THIN:String = "thin";
       
-      public static const THICKNESS_BOLD:uint = 2;
+      private static const SECONDARY_ALPHA_MULTIPLAYER:Number = 0.2;
       
-      public static const THICKNESS_THIN:uint = 1;
+      private static const TWEEN_DURATION:int = 1000;
        
       
       public var currMixingMC:IGunMarkerMixing = null;
@@ -29,13 +31,19 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       public var mixingType5:GunMarkerMixingWithoutProgress = null;
       
+      public var invalidateCrosshair:Function = null;
+      
       private var _type:Number = -1;
+      
+      private var _alpha:Number = 1;
       
       private var _reloadingInPercent:Number = -1;
       
       private var _reloadingState:String = "";
       
-      public var invalidateCrosshair:Function = null;
+      private var _isSecondary:Boolean = false;
+      
+      private var _tween:Tween;
       
       private var _mixings:Object = null;
       
@@ -53,14 +61,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
             "type7":this.mixingType5
          };
          this.mixingType0.visible = this.mixingType1.visible = this.mixingType2.visible = this.mixingType3.visible = this.mixingType4.visible = this.mixingType5.visible = false;
-      }
-      
-      public function setThickness(param1:String) : void
-      {
-         this.mixingType0.setThickness(param1);
-         this.mixingType1.setThickness(param1);
-         this.mixingType2.setThickness(param1);
-         this.mixingType3.thickness = param1 == BOLD ? int(THICKNESS_BOLD) : int(THICKNESS_THIN);
       }
       
       override protected function draw() : void
@@ -83,6 +83,21 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
             }
             invalidate(GunMarkerConsts.GUN_RELOAD_VALIDATION);
          }
+         if(isInvalid(GunMarkerConsts.GUN_ALPHA_VALIDATION))
+         {
+            if(this._isSecondary)
+            {
+               this.clearTween();
+               this._tween = new Tween(TWEEN_DURATION,this.currMixingMC,{"alpha":this._alpha * SECONDARY_ALPHA_MULTIPLAYER},{
+                  "onComplete":this.onFadeComplete,
+                  "ease":Cubic.easeOut
+               });
+            }
+            else
+            {
+               this.updateAlpha();
+            }
+         }
          if(isInvalid(GunMarkerConsts.GUN_RELOAD_VALIDATION))
          {
             if(this._reloadingInPercent != -1)
@@ -98,7 +113,9 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       override protected function onDispose() : void
       {
+         this.clearTween();
          this.currMixingMC = null;
+         this.invalidateCrosshair = null;
          this.mixingType0.dispose();
          this.mixingType0 = null;
          this.mixingType1.dispose();
@@ -113,6 +130,17 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          this.mixingType5 = null;
          this._mixings = this.cleanupObject(this._mixings);
          super.onDispose();
+      }
+      
+      public function setAlpha(param1:Number, param2:Boolean) : void
+      {
+         this._isSecondary = param2;
+         this._alpha = param1;
+         if(this.currMixingMC)
+         {
+            this.currMixingMC.setAlpha(this._alpha);
+         }
+         invalidate(GunMarkerConsts.GUN_ALPHA_VALIDATION);
       }
       
       public function setReloadingParams(param1:Number, param2:String) : void
@@ -134,6 +162,14 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          }
       }
       
+      public function setThickness(param1:String) : void
+      {
+         this.mixingType0.setThickness(param1);
+         this.mixingType1.setThickness(param1);
+         this.mixingType2.setThickness(param1);
+         this.mixingType3.setThickness(param1);
+      }
+      
       public function setType(param1:Number) : void
       {
          if(this._type != param1)
@@ -141,6 +177,30 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
             this._type = param1;
             invalidate(GunMarkerConsts.GUN_MIXING_TYPE_VALIDATION);
          }
+      }
+      
+      private function clearTween() : void
+      {
+         if(this._tween)
+         {
+            this._tween.dispose();
+            this._tween = null;
+         }
+      }
+      
+      private function updateAlpha() : void
+      {
+         var _loc2_:SimpleContainer = null;
+         var _loc1_:Number = !!this._isSecondary ? Number(this._alpha * SECONDARY_ALPHA_MULTIPLAYER) : Number(this._alpha);
+         for each(_loc2_ in this._mixings)
+         {
+            _loc2_.alpha = _loc1_;
+         }
+      }
+      
+      private function onFadeComplete() : void
+      {
+         this.updateAlpha();
       }
       
       private function cleanupObject(param1:Object) : Object

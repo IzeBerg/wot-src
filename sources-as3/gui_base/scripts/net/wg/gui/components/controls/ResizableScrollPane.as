@@ -16,26 +16,6 @@ package net.wg.gui.components.controls
          this.contentPaddings = new Padding();
       }
       
-      override protected function applyTargetChanges() : void
-      {
-         if(target)
-         {
-            target.removeEventListener(Event.RESIZE,this.onTargetResizeHandler);
-            target.addEventListener(Event.RESIZE,this.onTargetResizeHandler,false,0,true);
-         }
-         super.applyTargetChanges();
-      }
-      
-      override protected function onDispose() : void
-      {
-         if(target)
-         {
-            target.removeEventListener(Event.RESIZE,this.onTargetResizeHandler);
-         }
-         this.contentPaddings = null;
-         super.onDispose();
-      }
-      
       override public function getContentHeight() : Number
       {
          var _loc1_:int = 0;
@@ -55,6 +35,26 @@ package net.wg.gui.components.controls
             return _loc1_ + this.contentPaddings.top + this.contentPaddings.bottom;
          }
          return 0;
+      }
+      
+      override protected function applyTargetChanges() : void
+      {
+         if(target)
+         {
+            target.removeEventListener(Event.RESIZE,this.onTargetResizeHandler);
+            target.addEventListener(Event.RESIZE,this.onTargetResizeHandler,false,0,true);
+         }
+         super.applyTargetChanges();
+      }
+      
+      override protected function onDispose() : void
+      {
+         if(target)
+         {
+            target.removeEventListener(Event.RESIZE,this.onTargetResizeHandler);
+         }
+         this.contentPaddings = null;
+         super.onDispose();
       }
       
       override protected function applyScrollBarUpdating() : void

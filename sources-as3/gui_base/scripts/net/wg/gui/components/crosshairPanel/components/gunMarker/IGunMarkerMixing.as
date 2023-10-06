@@ -10,5 +10,9 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       function setReloadingState(param1:String) : void;
       
       function setReloadingAsPercent(param1:Number, param2:Boolean = false) : void;
+      
+      function setAlpha(param1:Number) : void;
+      
+      function setThickness(param1:String) : void;
    }
 }

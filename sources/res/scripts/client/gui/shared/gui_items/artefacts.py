@@ -638,8 +638,7 @@ class OptionalDevice(RemovableDevice):
         return SLOT_HIGHLIGHT_TYPES.NO_HIGHLIGHT
 
     def getOverlayIconName(self):
-        type = self.getOverlayType()
-        return ('{}_overlay').format(('{}_{}').format(type, self.level) if self.isModernized else type)
+        return ('{}_overlay').format(self.getOverlayType())
 
     def getOverlayType(self, vehicle=None):
         if self.isDeluxe:

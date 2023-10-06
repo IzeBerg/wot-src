@@ -25,6 +25,11 @@ msgstr "Нажмите, чтобы посмотреть коллекцию Бо�
 msgid "awardsWidget/description/collectionCompleted"
 msgstr "Поздравляем! Вы собрали все элементы коллекции Боевого пропуска."
 
+msgid "awardsWidget/description/commander"
+msgstr ""
+"Нажмите, чтобы увидеть и прослушать голоса всех членов экипажа, которых "
+"можно получить или купить в рамках события."
+
 msgid "awardsWidget/description/point"
 msgstr ""
 "Нажмите, чтобы посмотреть товары прошлых сезонов за очки Боевого пропуска."
@@ -56,6 +61,9 @@ msgstr ""
 
 msgid "awardsWidget/title/collection"
 msgstr "КОЛЛЕКЦИЯ"
+
+msgid "awardsWidget/title/commander"
+msgstr "ЧЛЕНЫ ЭКИПАЖА"
 
 msgid "awardsWidget/title/point"
 msgstr ""
@@ -338,7 +346,7 @@ msgid "battlePassBuyView/reward/titleNowRewards"
 msgstr "Сейчас будут начислены следующие награды за этапы %(steps)s"
 
 msgid "battlePassBuyView/reward/titleNowRewardsSingle"
-msgstr "Сейчас будут начислены следующие награды за %(steps)s-й этап"
+msgstr "Сейчас будут начислены следующие награды за этап %(steps)s"
 
 msgid "battlePassBuyView/subTitle"
 msgstr ""
@@ -369,9 +377,6 @@ msgstr "Боевой пропуск"
 msgid "chapter/fullName/1"
 msgstr "Снова в туман"
 
-msgid "chapter/fullName/114"
-msgstr "Песнь о зубре"
-
 msgid "chapter/fullName/121"
 msgstr "На лезвии ножа"
 
@@ -380,6 +385,9 @@ msgstr "Полёт ласточки"
 
 msgid "chapter/fullName/123"
 msgstr "Миражи"
+
+msgid "chapter/fullName/124"
+msgstr "Песнь о зубре"
 
 msgid "chapter/fullName/2"
 msgstr "Работа для героев"
@@ -393,9 +401,6 @@ msgstr "Новая глава"
 msgid "chapter/fullName/74"
 msgstr "Новая глава"
 
-msgid "chapter/fullNameUppercased/114"
-msgstr "ПЕСНЬ О ЗУБРЕ"
-
 msgid "chapter/fullNameUppercased/121"
 msgstr "НА ЛЕЗВИИ НОЖА"
 
@@ -404,6 +409,9 @@ msgstr "ПОЛЁТ ЛАСТОЧКИ"
 
 msgid "chapter/fullNameUppercased/123"
 msgstr "МИРАЖИ"
+
+msgid "chapter/fullNameUppercased/124"
+msgstr "ПЕСНЬ О ЗУБРЕ"
 
 msgid "chapter/fullNameUppercased/74"
 msgstr "НОВАЯ ГЛАВА"
@@ -458,7 +466,7 @@ msgid "chapterChoice/confirmation/title/switch"
 msgstr "Переключиться на главу «%(chName)s»?"
 
 msgid "chapterChoice/extraChapter/reward"
-msgstr "Премиум машина"
+msgstr "Премиум техника"
 
 msgid "chapterChoice/freePoints/description"
 msgstr "Нераспределённые очки Боевого пропуска: "
@@ -669,7 +677,7 @@ msgid "howToEarnPoints/lose/27"
 msgstr "Поражение"
 
 msgid "howToEarnPoints/lose/43"
-msgstr "Поражение"
+msgstr "Поражение/Ничья"
 
 msgid "howToEarnPoints/rangeLevels/29"
 msgstr "Места %(startLevel)d–%(endLevel)d"
@@ -699,7 +707,7 @@ msgid "howToEarnPoints/squad/29"
 msgstr "Игра взводом"
 
 msgid "howToEarnPoints/text/1"
-msgstr "Играйте на технике %(startLevel)s – %(endLevel)s уровня"
+msgstr "Играйте на технике %(startLevel)s - %(endLevel)s уровней"
 
 msgid "howToEarnPoints/text/22"
 msgstr "Играйте на технике %(level)s уровня"
@@ -922,6 +930,18 @@ msgstr ""
 msgid "progression/errorBtn"
 msgstr "В Ангар"
 
+msgid "progression/extraChapterWidget/commander"
+msgstr "Член экипажа с озвучкой"
+
+msgid "progression/extraChapterWidget/commanderVoices"
+msgstr "Прослушать всех"
+
+msgid "progression/extraChapterWidget/labelWithBP"
+msgstr "С Улучшенным пропуском"
+
+msgid "progression/extraChapterWidget/styleName"
+msgstr "«%(styleName)s»"
+
 msgid "progression/extraChapterWidget/styleRemark"
 msgstr "С Улучшенным пропуском"
 
@@ -929,10 +949,22 @@ msgid "progression/extraChapterWidget/styleSubTitle"
 msgstr "и боевая задача для %(vehicleName)s"
 
 msgid "progression/extraChapterWidget/styleTitle"
-msgstr "Стиль «%(styleName)s»"
+msgstr "3D-стиль"
+
+msgid "progression/extraChapterWidget/tank"
+msgstr "Премиум техника"
+
+msgid "progression/extraChapterWidget/tankName"
+msgstr "%(vehicleName)s"
+
+msgid "progression/extraChapterWidget/tooltip"
+msgstr "Нажмите, чтобы прослушать голос члена экипажа."
 
 msgid "progression/extraChapterWidget/vehicleCaption"
 msgstr "Премиум машина"
+
+msgid "progression/extraChapterWidget/vehicleSubTitle"
+msgstr "и 3D-стиль «%(styleName)s»"
 
 msgid "progression/footer/freePointsDescr"
 msgstr "Нераспределённых очков Боевого пропуска: "
@@ -1127,6 +1159,57 @@ msgstr "Новый уровень стиля «%(styleName)s»"
 
 msgid "styleProgression/newStyle"
 msgstr "Первый уровень стиля «%(styleName)s»"
+
+msgid "tankmenVoiceover/availableInQuestChain"
+msgstr "Будет получен за выполнение задач"
+
+msgid "tankmenVoiceover/button"
+msgstr "Так точно!"
+
+msgid "tankmenVoiceover/close"
+msgstr "ЗАКРЫТЬ"
+
+msgid "tankmenVoiceover/description"
+msgstr ""
+"У всех членов экипажа изучен навык «Боевое братство» в качестве «нулевого», а также достаточно опыта\n"
+"для изучения ещё двух навыков на выбор."
+
+msgid "tankmenVoiceover/free"
+msgstr ""
+"В базовых наградах\n"
+"на этапе %(progressNumber)s"
+
+msgid "tankmenVoiceover/inShop"
+msgstr "В составе набора"
+
+msgid "tankmenVoiceover/notFull"
+msgstr "Доступно ещё %(availableCount)s из %(count)s"
+
+msgid "tankmenVoiceover/paid"
+msgstr ""
+"В улучшенных наградах\n"
+"на этапе %(progressNumber)s"
+
+msgid "tankmenVoiceover/questChain"
+msgstr "В цепочке боевых задач"
+
+msgid "tankmenVoiceover/received"
+msgstr "Получен"
+
+msgid "tankmenVoiceover/shopButton"
+msgstr "Смотреть в Магазине"
+
+msgid "tankmenVoiceover/soundOn"
+msgstr "Прослушать"
+
+msgid "tankmenVoiceover/subtitle"
+msgstr "ГЛАВА «ПЕСНЬ О ЗУБРЕ»"
+
+msgid "tankmenVoiceover/title"
+msgstr "ЧЛЕНЫ ЭКИПАЖА С ОЗВУЧКОЙ"
+
+msgid "tankmenVoiceover/unavailable"
+msgstr "Недоступен"
 
 msgid "tooltips/RandomQuestTooltip/condition"
 msgstr "Условие: %(condition)"
@@ -1332,7 +1415,7 @@ msgid "tooltips/inProgress/epic"
 msgstr "«Линия фронта»"
 
 msgid "tooltips/inProgress/getPointsFrom"
-msgstr "Начисление очков в режиме %(battleType)s."
+msgstr "Правила начисления очков в режиме %(battleType)s."
 
 msgid "tooltips/inProgress/hurryUp"
 msgstr ""

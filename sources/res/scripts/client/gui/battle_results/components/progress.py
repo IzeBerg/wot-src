@@ -20,6 +20,8 @@ from gui.dog_tag_composer import dogTagComposer
 from gui.impl import backport
 from gui.impl.auxiliary.rewards_helper import getProgressiveRewardVO
 from gui.impl.gen import R
+from gui.impl.lobby.crew.crew_helpers.skill_helpers import getLastSkillSequenceNum
+from gui.prestige.prestige_helpers import mapGradeIDToUI, getCurrentGrade, getCurrentProgress, prestigePointsToXP, hasVehiclePrestige, MAX_GRADE_ID
 from gui.server_events import formatters
 from gui.server_events.awards_formatters import QuestsBonusComposer
 from gui.server_events.events_constants import BATTLE_MATTERS_QUEST_ID
@@ -34,10 +36,12 @@ from gui.shared.money import Currency
 from helpers import dependency
 from helpers.i18n import makeString as _ms
 from items.components.crew_skins_constants import NO_CREW_SKIN_ID
+from shared_utils import first
 from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
+from items import tankmen
 if typing.TYPE_CHECKING:
     from typing import Dict, Tuple
     from gui.battle_results.reusable import _ReusableInfo
@@ -145,7 +149,12 @@ class VehicleProgressHelper(object):
                 showNewFreeSkill = False
                 showNewEarnedSkill = False
                 if tman.hasNewSkill(useCombinedRoles=True):
-                    if tmanBattleXp - tman.descriptor.freeXP > 0:
+                    tmanDescr = tman.descriptor
+                    lastSkillNumber = getLastSkillSequenceNum(tman)
+                    wallet = tmanDescr.freeXP + tankmen.TankmanDescr.getXpCostForSkillsLevels(tmanDescr.lastSkillLevel if lastSkillNumber else 0, lastSkillNumber)
+                    skillsCountBefore = tmanDescr.getSkillsCountFromXp(wallet - tmanBattleXp)
+                    skillsCount = tmanDescr.getSkillsCountFromXp(wallet)
+                    if skillsCount > skillsCountBefore:
                         showNewEarnedSkill = True
                 else:
                     tmanDossier = self.itemsCache.items.getTankmanDossier(tman.invID)
@@ -191,7 +200,7 @@ class VehicleProgressHelper(object):
         if showNewFreeSkill:
             data.update({'freeSkillsTitle': _ms(BATTLE_RESULTS.COMMON_CREWMEMBER_NEWFREESKILL), 
                'freeSkillsLinkEvent': PROGRESS_ACTION.NEW_FREE_SKILL_UNLOCK_TYPE})
-        if tman.skinID != NO_CREW_SKIN_ID and self.lobbyContext.getServerSettings().isCrewSkinsEnabled():
+        if tman.skinID != NO_CREW_SKIN_ID:
             skinItem = self.itemsCache.items.getCrewSkin(tman.skinID)
             data['tankmenIcon'] = getCrewSkinIconSmall(skinItem.getIconID())
             fullTankmanName = localizedFullName(skinItem)
@@ -681,3 +690,40 @@ class QuestProgressiveCustomizationVO(base.DirectStatsItem):
             self._value['linkBtnEnabled'] = linkBtnEnabled
             self._value['linkBtnTooltip'] = backport.text(linkBtnTooltip)
         return self._value
+
+
+class PrestigeProgressVO(base.StatsItem):
+    __slots__ = ()
+
+    def _convert(self, result, reusable):
+        prestigeResults = reusable.personal.getPrestigeResults()
+        data = first(prestigeResults.items())
+        if not data:
+            return None
+        else:
+            vehCD, prestigeData = data
+            if not hasVehiclePrestige(vehCD, checkElite=True):
+                return None
+            if not prestigeData or prestigeData['oldLevel'] <= 0 or prestigeData['newLevel'] <= 0:
+                return None
+            return self.createPrestigeInfo(vehCD, prestigeData)
+
+    @classmethod
+    def createPrestigeInfo(cls, vehCD, prestigeData):
+        oldLvl = prestigeData['oldLevel']
+        gainedPoints = prestigeData['gainedPoints']
+        if getCurrentGrade(oldLvl, vehCD) == MAX_GRADE_ID or gainedPoints == 0:
+            return None
+        newLvl = prestigeData['newLevel']
+        newPoints = prestigeData['newPoints']
+        gradeType, grade = mapGradeIDToUI(getCurrentGrade(newLvl, vehCD))
+        currentXP, nextLvlXP = getCurrentProgress(vehCD, newLvl, newPoints)
+        gainedXP = prestigePointsToXP(gainedPoints)
+        return {'vehCD': vehCD, 
+           'gradeType': gradeType.value, 
+           'grade': str(grade), 
+           'lvl': str(newLvl), 
+           'currentXP': currentXP, 
+           'nextLvlXP': nextLvlXP, 
+           'gainedXP': ('+ {}').format(backport.getIntegralFormat(gainedXP)), 
+           'isLvlUp': oldLvl < newLvl}

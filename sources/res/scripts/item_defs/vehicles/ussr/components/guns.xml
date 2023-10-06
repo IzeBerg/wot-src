@@ -195,6 +195,7 @@
 		<_76mm_ZiS_5_MZ>246</_76mm_ZiS_5_MZ>
 		<_107mm_ZiS-24_KTT>247</_107mm_ZiS-24_KTT>
 		<_130mm_M_65S_DR>248</_130mm_M_65S_DR>
+		<_130mm_M_65K>249</_130mm_M_65K>
 		<_122mm_cannon_M-30_1938_dualgun>250</_122mm_cannon_M-30_1938_dualgun>
 		<_100mm_D33>253</_100mm_D33>
 		<_85mm_H_3_457>255</_85mm_H_3_457>
@@ -19306,6 +19307,115 @@
 				</_130mm_53_VOF_482V>
 			</shots>
 		</_130mm_M_65>
+		<_130mm_M_65K>
+			<userString>#ussr_vehicles:_130mm_M_65K</userString>
+			<tags/>
+			<level>10</level>
+			<price>330000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.62
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.66
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>large</recoilEffect>
+			</recoil>
+			<effects>shot_largeext</effects>
+			<reloadEffect>reload115_152</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -17.0 1.0 -17.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 5.0 1.0 5.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>30</rotationSpeed>
+			<reloadTime>
+				4.04
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>40</maxAmmo>
+			<aimingTime>
+				4.04
+				<!--BW_String-->
+			</aimingTime>
+			<weight>4300</weight>
+			<maxHealth>190</maxHealth>
+			<maxRegenHealth>95</maxRegenHealth>
+			<repairCost>10</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.4
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.08
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_130mm_53_BR_482>
+					<defaultPortion>
+						0.9
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1000</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>260 240</piercingPower>
+				</_130mm_53_BR_482>
+				<_130mm_ZBK60M>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>950</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>320 320</piercingPower>
+				</_130mm_ZBK60M>
+				<_130mm_53_OF_482M>
+					<defaultPortion>
+						0.1
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>950</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>65 65</piercingPower>
+				</_130mm_53_OF_482M>
+			</shots>
+		</_130mm_M_65K>
 		<_130mm_M_65S>
 			<userString>#ussr_vehicles:_130mm_M_65S</userString>
 			<tags/>
@@ -23006,26 +23116,26 @@
 						0.2
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>600</speed>
+					<speed>800</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>105 105</piercingPower>
+					<piercingPower>115 92</piercingPower>
 				</_122mm_BP450SO_SH>
 				<_122mm_UBR_472PM_SH>
 					<defaultPortion>
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>900</speed>
+					<speed>1000</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>135 126</piercingPower>
+					<piercingPower>144 86</piercingPower>
 				</_122mm_UBR_472PM_SH>
 			</shots>
 		</_122mm_cannon_U-11_SH>
@@ -23105,26 +23215,26 @@
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>600</speed>
+					<speed>800</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>135 135</piercingPower>
+					<piercingPower>160 128</piercingPower>
 				</_100mm_3UBK4M_SH>
 				<_100mm_3VBM2_SH>
 					<defaultPortion>
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>900</speed>
+					<speed>1000</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>180 167</piercingPower>
+					<piercingPower>200 120</piercingPower>
 				</_100mm_3VBM2_SH>
 			</shots>
 		</_100mm_S34_dualgun_SH>
@@ -23198,26 +23308,26 @@
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>600</speed>
+					<speed>800</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>135 135</piercingPower>
+					<piercingPower>160 128</piercingPower>
 				</_122mm_BP450S_SH>
 				<_122mm_VBR472B_SH>
 					<defaultPortion>
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>900</speed>
+					<speed>1000</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>180 167</piercingPower>
+					<piercingPower>200 120</piercingPower>
 				</_122mm_VBR472B_SH>
 			</shots>
 		</_122mm_BL-9_SH>
@@ -23294,26 +23404,26 @@
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>900</speed>
+					<speed>800</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>240 240</piercingPower>
+					<piercingPower>205 164</piercingPower>
 				</_122mm_BR_471PM_SH>
 				<_122mm_UBR-472PBM_SH>
 					<defaultPortion>
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>900</speed>
+					<speed>1000</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>300 279</piercingPower>
+					<piercingPower>256 154</piercingPower>
 				</_122mm_UBR-472PBM_SH>
 			</shots>
 		</_122mm_M62-T2_SH>
@@ -23393,26 +23503,26 @@
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>600</speed>
+					<speed>800</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>240 240</piercingPower>
+					<piercingPower>205 164</piercingPower>
 				</_107mm_BP450M_SH>
 				<_107mm_UBR-420PM_SH>
 					<defaultPortion>
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>900</speed>
+					<speed>1000</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>300 279</piercingPower>
+					<piercingPower>256 154</piercingPower>
 				</_107mm_UBR-420PM_SH>
 			</shots>
 		</_107mm_ZiS-6_dualgun_SH>
@@ -23492,26 +23602,26 @@
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>500</speed>
-					<gravity>
-						9.81
-						<!--BW_String-->
-					</gravity>
-					<maxDistance>720</maxDistance>
-					<piercingPower>240 240</piercingPower>
-				</_130mm_3VBK_SH>
-				<_130mm_3VBM_SH>
-					<defaultPortion>
-						0.0
-						<!--BW_String-->
-					</defaultPortion>
 					<speed>800</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>300 279</piercingPower>
+					<piercingPower>205 164</piercingPower>
+				</_130mm_3VBK_SH>
+				<_130mm_3VBM_SH>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1000</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>256 154</piercingPower>
 				</_130mm_3VBM_SH>
 			</shots>
 		</_130mm_S-70_SH>

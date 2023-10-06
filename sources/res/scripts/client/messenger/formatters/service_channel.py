@@ -3,14 +3,16 @@ import logging, operator, time, types
 from Queue import Queue
 from collections import OrderedDict, defaultdict, deque
 from copy import copy, deepcopy
-from itertools import islice, chain
+from itertools import chain, islice
 import typing, ArenaType, BigWorld, constants, nations, personal_missions
 from adisp import adisp_async, adisp_process
 from battle_pass_common import BATTLE_PASS_CHOICE_REWARD_OFFER_GIFT_TOKENS, BATTLE_PASS_TOKEN_3D_STYLE, BattlePassRewardReason, FinalReward
+from battle_royale_progression.skeletons.game_controller import IBRProgressionOnTokensController
 from blueprints.BlueprintTypes import BlueprintTypes
 from blueprints.FragmentTypes import getFragmentType
 from cache import cached_property
 from chat_shared import MapRemovedFromBLReason, SYS_MESSAGE_TYPE, decompressSysMessage
+from comp7_common import COMP7_TOKEN_WEEKLY_REWARD_ID, Comp7QuestType
 from constants import ARENA_BONUS_TYPE, ARENA_GUI_TYPE, AUTO_MAINTENANCE_RESULT, AUTO_MAINTENANCE_TYPE, FAIRPLAY_VIOLATIONS, FINISH_REASON, INVOICE_ASSET, KICK_REASON, KICK_REASON_NAMES, NC_MESSAGE_PRIORITY, NC_MESSAGE_TYPE, OFFER_TOKEN_PREFIX, PREBATTLE_TYPE, PREMIUM_ENTITLEMENTS, PREMIUM_TYPE, RESTRICTION_TYPE, SYS_MESSAGE_CLAN_EVENT, SYS_MESSAGE_CLAN_EVENT_NAMES, SYS_MESSAGE_FORT_EVENT_NAMES, SwitchState
 from debug_utils import LOG_ERROR
 from dog_tags_common.components_config import componentConfigAdapter
@@ -24,6 +26,7 @@ from gui import GUI_NATIONS, GUI_SETTINGS
 from gui.Scaleform.genConsts.CURRENCIES_CONSTANTS import CURRENCIES_CONSTANTS
 from gui.Scaleform.genConsts.RANKEDBATTLES_ALIASES import RANKEDBATTLES_ALIASES
 from gui.SystemMessages import SM_TYPE
+from gui.achievements.achievements_constants import Achievements20SystemMessages
 from gui.clans.formatters import getClanFullName
 from gui.collection.collections_constants import COLLECTION_ITEM_PREFIX_NAME
 from gui.dog_tag_composer import dogTagComposer
@@ -31,16 +34,17 @@ from gui.game_control.blueprints_convert_sale_controller import BCSActionState
 from gui.impl import backport
 from gui.impl.backport import getNiceNumberFormat
 from gui.impl.gen import R
-from gui.impl.lobby.winback.winback_helpers import getLevelFromSelectableToken, getDiscountFromGoody, getDiscountFromBlueprint
+from gui.impl.lobby.comp7.comp7_quest_helpers import getComp7QuestType, isComp7Quest
+from gui.impl.lobby.winback.winback_helpers import getDiscountFromBlueprint, getDiscountFromGoody, getLevelFromSelectableToken
+from gui.prestige.prestige_helpers import prestigePointsToXP, needShowPrestigeRewardWindow, hasVehiclePrestige, getCurrentGrade, mapGradeIDToUI
 from gui.mapbox.mapbox_helpers import formatMapboxRewards
 from gui.prb_control.formatters import getPrebattleFullDescription
 from gui.ranked_battles.constants import YEAR_AWARD_SELECTABLE_OPT_DEVICE_PREFIX, YEAR_POINTS_TOKEN
 from gui.ranked_battles.ranked_helpers import getBonusBattlesIncome, getQualificationBattlesCountFromID, isQualificationQuestID
 from gui.ranked_battles.ranked_models import PostBattleRankInfo, RankChangeStates
 from gui.resource_well.resource_well_constants import ResourceType
-from gui.achievements.achievements_constants import Achievements20SystemMessages
-from gui.server_events.awards_formatters import BATTLE_BONUS_X5_TOKEN, CompletionTokensBonusFormatter, CREW_BONUS_X3_TOKEN
-from gui.server_events.bonuses import DEFAULT_CREW_LVL, EntitlementBonus, MetaBonus, VehiclesBonus, getMergedBonusesFromDicts, SelectableBonus
+from gui.server_events.awards_formatters import BATTLE_BONUS_X5_TOKEN, CREW_BONUS_X3_TOKEN, CompletionTokensBonusFormatter
+from gui.server_events.bonuses import DEFAULT_CREW_LVL, EntitlementBonus, MetaBonus, SelectableBonus, VehiclesBonus, getMergedBonusesFromDicts
 from gui.server_events.finders import PERSONAL_MISSION_TOKEN
 from gui.server_events.recruit_helper import getRecruitInfo
 from gui.shared import formatters as shared_fmts
@@ -48,7 +52,7 @@ from gui.shared.formatters import icons, text_styles
 from gui.shared.formatters.currency import applyAll, getBWFormatter, getStyle
 from gui.shared.formatters.time_formatters import RentDurationKeys, getTillTimeByResource, getTimeLeftInfo
 from gui.shared.gui_items.Tankman import Tankman
-from gui.shared.gui_items.Vehicle import getShortUserName, getUserName, getTypeUserName
+from gui.shared.gui_items.Vehicle import getShortUserName, getUserName, getWotPlusExclusiveVehicleTypeUserName
 from gui.shared.gui_items.crew_skin import localizedFullName
 from gui.shared.gui_items.dossier.achievements.abstract.class_progress import ClassProgressAchievement
 from gui.shared.gui_items.dossier.factories import getAchievementFactory
@@ -60,7 +64,7 @@ from gui.shared.utils.requesters.ShopRequester import _NamedGoodieData
 from gui.shared.utils.requesters.blueprints_requester import getFragmentNationID, getUniqueBlueprints
 from gui.shared.utils.transport import z_loads
 from helpers import dependency, getLocalizedData, html, i18n, int2roman, time_utils
-from items import ITEM_TYPES as I_T, getTypeInfoByIndex, getTypeInfoByName, tankmen, vehicles as vehicles_core, ITEM_TYPE_NAMES
+from items import ITEM_TYPES as I_T, ITEM_TYPE_NAMES, getTypeInfoByIndex, getTypeInfoByName, tankmen, vehicles as vehicles_core
 from items.components.c11n_constants import CustomizationType, CustomizationTypeNames, UNBOUND_VEH_KEY
 from items.components.crew_books_constants import CREW_BOOK_RARITY
 from items.components.crew_skins_constants import NO_CREW_SKIN_ID
@@ -70,7 +74,7 @@ from maps_training_common.maps_training_constants import SCENARIO_INDEXES, SCENA
 from messenger import g_settings
 from messenger.ext import passCensor
 from messenger.formatters import NCContextItemFormatter, TimeFormatter
-from messenger.formatters.service_channel_helpers import EOL, MessageData, getCustomizationItem, getCustomizationItemData, getRewardsForQuests, mergeRewards, popCollectionEntitlements
+from messenger.formatters.service_channel_helpers import EOL, MessageData, getCustomizationItem, getCustomizationItemData, getRewardsForQuests, mergeRewards, popCollectionEntitlements, parseTokenBonusCount
 from nations import NAMES
 from shared_utils import BoundMethodWeakref, first
 from skeletons.gui.battle_matters import IBattleMattersController
@@ -81,8 +85,6 @@ from skeletons.gui.offers import IOffersDataProvider
 from skeletons.gui.platform.catalog_service_controller import IPurchaseCache
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from gui.impl.lobby.comp7.comp7_quest_helpers import isComp7Quest, getComp7QuestType
-from comp7_common import Comp7QuestType, COMP7_TOKEN_WEEKLY_REWARD_ID
 if typing.TYPE_CHECKING:
     from typing import Any, Dict, List, Tuple, Callable, Optional
     from account_helpers.offers.events_data import OfferEventData, OfferGift
@@ -148,12 +150,12 @@ def _extendCustomizationData(newData, extendable, htmlTplPostfix):
 
 @dependency.replace_none_kwargs(lobbyContext=ILobbyContext, itemsCache=IItemsCache)
 def _extendCrewSkinsData(newData, extendable, lobbyContext=None, itemsCache=None):
-    if extendable is None or not lobbyContext.getServerSettings().isCrewSkinsEnabled():
-        return
-    crewSkinsData = newData.get(b'crewSkins', None)
-    if crewSkinsData is None:
+    if extendable is None:
         return
     else:
+        crewSkinsData = newData.get(b'crewSkins', None)
+        if crewSkinsData is None:
+            return
         totalCompensation = ZERO_MONEY
         accrued = []
         debited = []
@@ -398,7 +400,7 @@ class ExclusiveVehicleWotPlusFormatter(ServiceChannelFormatter):
         return getUserName(getVehicleType(vehTypeCD))
 
     def __getVehicleType(self, vehTypeCD):
-        return getTypeUserName(getVehicleType(vehTypeCD).getVehicleClass(), False)
+        return getWotPlusExclusiveVehicleTypeUserName(getVehicleType(vehTypeCD).getVehicleClass())
 
 
 class WaitItemsSyncFormatter(ServiceChannelFormatter):
@@ -491,8 +493,6 @@ class FormatSpecialReward(object):
 
     def __getCrewBookNames(self, items):
         result = []
-        if not self.__lobbyContext.getServerSettings().isCrewBooksEnabled():
-            return result
         for intCD, count in items.iteritems():
             itemTypeID, _, _ = vehicles_core.parseIntCompactDescr(intCD)
             if itemTypeID != I_T.crewBook:
@@ -599,6 +599,8 @@ class Comp7BattleQuestsFormatter(object):
 class BattleResultsFormatter(WaitItemsSyncFormatter):
     __rankedController = dependency.descriptor(IRankedBattlesController)
     __battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
+    __battleRoyaleProgressionCtrl = dependency.descriptor(IBRProgressionOnTokensController)
+    __eventsCache = dependency.descriptor(IEventsCache)
     _battleResultKeys = {-1: b'battleDefeatResult', 
        0: b'battleDrawGameResult', 
        1: b'battleVictoryResult'}
@@ -715,6 +717,7 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
                     battleResKey = 1 if winnerIfDraw == team else -1
         if guiType == ARENA_GUI_TYPE.BATTLE_ROYALE:
             ctx[b'brcoin'] = self.__makeBRCoinString(battleResults)
+            ctx[b'brAwardTokens'] = self.__makeBRProgressionTokenString(battleResults)
             battleResultKeys = self.__BRResultKeys
         elif guiType == ARENA_GUI_TYPE.MAPS_TRAINING:
             ctx = self.__makeMapsTrainingMsgCtx(battleResults, ctx)
@@ -727,6 +730,9 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
             else:
                 battleResultKeys = self.__COMP7SeasonResultsKeys
                 ctx = self.__makeComp7SeasonMsgCtx(battleResults, ctx)
+        elif guiType == ARENA_GUI_TYPE.TOURNAMENT_COMP7:
+            battleResultKeys = self.__COMP7SeasonResultsKeys
+            ctx = self.__makeTournamentComp7SeasonMsgCtx(battleResults, ctx)
         else:
             battleResultKeys = self._battleResultKeys
         templateName = battleResultKeys[battleResKey]
@@ -761,6 +767,10 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
 
     def __makeComp7SeasonMsgCtx(self, battleResults, ctx):
         ctx[b'ratingPointsStr'] = g_settings.htmlTemplates.format(b'battleResultRatingPoints', {b'ratingPoints': (b'{:+}').format(battleResults[b'comp7RatingDelta'])})
+        return ctx
+
+    def __makeTournamentComp7SeasonMsgCtx(self, battleResults, ctx):
+        ctx[b'ratingPointsStr'] = g_settings.htmlTemplates.format(b'battleResultRatingPoints', {b'ratingPoints': str(battleResults[b'comp7RatingDelta'])})
         return ctx
 
     def __makeQuestsAchieve(self, message):
@@ -932,11 +942,50 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
         return g_settings.htmlTemplates.format(b'piggyBank', ctx={b'credits': self.__makeCurrencyString(Currency.CREDITS, credits_)})
 
     def __makeBRCoinString(self, battleResults):
-        value = battleResults.get(b'brcoin', 0)
+        value = battleResults.get(b'brcoin', 0) + self.__getBrCoinsQuestBonus(battleResults)
         if value:
             text = backport.text(R.strings.messenger.serviceChannelMessages.BRbattleResults.battleRoyaleBrCoin(), value=text_styles.neutral(value))
             return g_settings.htmlTemplates.format(b'battleResultBrcoin', ctx={b'brcoin': text})
         return b''
+
+    def __getBrCoinsQuestBonus(self, battleResults):
+        questBonus = 0
+        allQuests = self.__eventsCache.getAllQuests()
+        for qID in battleResults.get(b'completedQuestIDs', []):
+            quest = allQuests.get(qID)
+            if quest is None:
+                continue
+            for bonus in quest.getBonuses(b'currencies'):
+                if bonus.getCode() == b'brcoin':
+                    questBonus += bonus.getCount()
+
+        return questBonus
+
+    def __makeBRProgressionTokenString(self, battleResults):
+        progressionTokenName = b''
+        if self.__battleRoyaleProgressionCtrl.isEnabled:
+            progressionTokenName = self.__battleRoyaleProgressionCtrl.progressionToken
+        value = battleResults.get(b'brAwardTokens', {}).get(progressionTokenName, {}).get(b'count', 0) + self.__getBrProgressionTokenQuestBonus(battleResults.get(b'completedQuestIDs', []))
+        if value:
+            text = b'<br/>' + backport.text(R.strings.messenger.serviceChannelMessages.BRbattleResults.BRProgressionTitle(), value=text_styles.brProgressionToken(value))
+            return text
+        return b''
+
+    def __getBrProgressionTokenQuestBonus(self, completedQuestIDs):
+        if not self.__battleRoyaleProgressionCtrl.isEnabled:
+            return 0
+        else:
+            progressionTokenName = self.__battleRoyaleProgressionCtrl.progressionToken
+            questBonus = 0
+            allQuests = self.__eventsCache.getAllQuests()
+            for qID in completedQuestIDs:
+                quest = allQuests.get(qID)
+                if quest is None:
+                    continue
+                for tokenBonus in quest.getBonuses(b'tokens'):
+                    questBonus += parseTokenBonusCount(tokenBonus, progressionTokenName)
+
+            return questBonus
 
 
 class AutoMaintenanceFormatter(WaitItemsSyncFormatter):
@@ -1503,101 +1552,102 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
         dataEx = data.get(b'data', {})
         if not dataEx:
             return
-        else:
-            operations = []
-            self._processCompensations(dataEx)
-            for currency, invAsset in self.__currencyToInvoiceAsset.iteritems():
-                if currency in dataEx:
-                    operations.append(self.__getFinOperationString(invAsset, dataEx[currency], formatter=getBWFormatter(currency)))
+        operations = []
+        self._processCompensations(dataEx)
+        for currency, invAsset in self.__currencyToInvoiceAsset.iteritems():
+            if currency in dataEx:
+                operations.append(self.__getFinOperationString(invAsset, dataEx[currency], formatter=getBWFormatter(currency)))
 
-            freeXp = dataEx.get(b'freeXP')
-            if freeXp is not None:
-                operations.append(self.__getFinOperationString(INVOICE_ASSET.FREE_XP, freeXp))
-            premium = dataEx.get(PREMIUM_ENTITLEMENTS.BASIC)
-            if premium is not None:
-                operations.append(self.__getFinOperationString(INVOICE_ASSET.PREMIUM, premium))
-            tankPremium = dataEx.get(PREMIUM_ENTITLEMENTS.PLUS)
-            if tankPremium is not None:
-                operations.append(self.__getTankPremiumString(tankPremium))
-            items = dataEx.get(b'items', {})
-            items = self.__composeItems(items)
-            if items:
-                operations.append(self.__getItemsString(items))
-            tmen = dataEx.get(b'tankmen', [])
-            tmenToRemove = dataEx.get(b'tmenToRemove', [])
-            vehicles = dataEx.get(b'vehicles', {})
-            vehicleItems = {}
-            if vehicles:
-                if isinstance(vehicles, dict):
-                    vehicles = [
-                     vehicles]
-                result = self.getVehiclesString(vehicles)
-                if result:
-                    operations.append(result)
-                comptnStr = self.getVehiclesCompensationString(vehicles)
-                if comptnStr:
-                    operations.append(comptnStr)
-                for vehicleDict in vehicles:
-                    for v in vehicleDict.itervalues():
-                        tmen.extend(v.get(b'tankmen', []))
-                        items = v.get(b'items', {})
-                        for intCD, count in items.iteritems():
-                            if intCD in vehicleItems:
-                                vehicleItems[intCD] += count
-                            else:
-                                vehicleItems[intCD] = count
+        freeXp = dataEx.get(b'freeXP')
+        if freeXp is not None:
+            operations.append(self.__getFinOperationString(INVOICE_ASSET.FREE_XP, freeXp))
+        premium = dataEx.get(PREMIUM_ENTITLEMENTS.BASIC)
+        if premium is not None:
+            operations.append(self.__getFinOperationString(INVOICE_ASSET.PREMIUM, premium))
+        tankPremium = dataEx.get(PREMIUM_ENTITLEMENTS.PLUS)
+        if tankPremium is not None:
+            operations.append(self.__getTankPremiumString(tankPremium))
+        items = dataEx.get(b'items', {})
+        if items:
+            operations.append(self.__getItemsString(items))
+        tmen = dataEx.get(b'tankmen', [])
+        tmenToRemove = dataEx.get(b'tmenToRemove', [])
+        vehicles = dataEx.get(b'vehicles', {})
+        vehicleItems = {}
+        if vehicles:
+            if isinstance(vehicles, dict):
+                vehicles = [
+                 vehicles]
+            result = self.getVehiclesString(vehicles)
+            if result:
+                operations.append(result)
+            comptnStr = self.getVehiclesCompensationString(vehicles)
+            if comptnStr:
+                operations.append(comptnStr)
+            for vehicleDict in vehicles:
+                for v in vehicleDict.itervalues():
+                    tmen.extend(v.get(b'tankmen', []))
+                    items = v.get(b'items', {})
+                    for intCD, count in items.iteritems():
+                        if intCD in vehicleItems:
+                            vehicleItems[intCD] += count
+                        else:
+                            vehicleItems[intCD] = count
 
-            if vehicleItems:
-                operations.append(self.__getItemsString(vehicleItems, installed=True))
-            if tmen:
-                operations.append(self.getTankmenString(tmen))
-            if tmenToRemove:
-                tankmanCache = self._itemsCache.items.getTankmen()
-                tmen = [ tankmanCache[tankman] for tankman in tmenToRemove.get(b'ids', []) ]
-                operations.append(self.getTankmenString(tmen, True))
-            blueprints = dataEx.get(b'blueprints')
-            if blueprints:
-                operations.append(self.getBlueprintString(blueprints))
-            slots = dataEx.get(b'slots')
-            if slots:
-                operations.append(self.__getSlotsString(slots))
-            berths = dataEx.get(b'berths')
-            if berths:
-                operations.append(self.__getBerthsString(berths))
-            goodies = dataEx.get(b'goodies', {})
-            if goodies:
-                strGoodies = self.getGoodiesString(goodies)
-                if strGoodies:
-                    operations.append(strGoodies)
-            enhancements = dataEx.get(b'enhancements', {})
-            if enhancements:
-                operations.append(self.getEnhancementsString(enhancements))
-            dossier = dataEx.get(b'dossier', {})
-            if dossier:
-                operations.append(self.__getDossierString())
-            _extendCustomizationData(dataEx, operations, htmlTplPostfix=b'InvoiceReceived')
-            _extendCrewSkinsData(dataEx, operations)
-            tankmenFreeXP = dataEx.get(b'tankmenFreeXP', {})
-            if tankmenFreeXP:
-                operations.append(self.__getTankmenFreeXPString(tankmenFreeXP))
-            tokensStr = self.__getTokensString(dataEx.get(b'tokens', {}))
-            if tokensStr:
-                operations.extend(tokensStr)
-            entitlementsStr = self.__getEntitlementsString(dataEx.get(b'entitlements', {}))
-            if entitlementsStr:
-                operations.append(entitlementsStr)
-            lootBoxStr = self.__getLootBoxString(dataEx.get(b'tokens', {}))
-            if lootBoxStr:
-                operations.append(lootBoxStr)
-            rankedDailyBattles = dataEx.get(b'rankedDailyBattles', 0)
-            rankedPersistentBattles = dataEx.get(b'rankedBonusBattles', 0)
-            rankedBonusBattlesStr = self.__getRankedBonusBattlesString(rankedPersistentBattles, rankedDailyBattles)
-            if rankedBonusBattlesStr:
-                operations.append(rankedBonusBattlesStr)
-            platformCurrenciesStr = self.__getPlatformCurrenciesString(dataEx.get(b'currencies', {}))
-            if platformCurrenciesStr:
-                operations.append(platformCurrenciesStr)
-            return operations
+        if vehicleItems:
+            operations.append(self.__getItemsString(vehicleItems, installed=True))
+        if tmen:
+            operations.append(self.getTankmenString(tmen))
+        if tmenToRemove:
+            tankmanCache = self._itemsCache.items.getTankmen()
+            tmen = [ tankmanCache[tankman] for tankman in tmenToRemove.get(b'ids', []) ]
+            operations.append(self.getTankmenString(tmen, True))
+        blueprints = dataEx.get(b'blueprints')
+        if blueprints:
+            operations.append(self.getBlueprintString(blueprints))
+        slots = dataEx.get(b'slots')
+        if slots:
+            operations.append(self.__getSlotsString(slots))
+        berths = dataEx.get(b'berths')
+        if berths:
+            operations.append(self.__getBerthsString(berths))
+        goodies = dataEx.get(b'goodies', {})
+        if goodies:
+            strGoodies = self.getGoodiesString(goodies)
+            if strGoodies:
+                operations.append(strGoodies)
+        enhancements = dataEx.get(b'enhancements', {})
+        if enhancements:
+            operations.append(self.getEnhancementsString(enhancements))
+        dossier = dataEx.get(b'dossier', {})
+        if dossier:
+            operations.append(self.__getDossierString())
+        prestigePoints = dataEx.get(b'prestigePoints', {})
+        if prestigePoints:
+            operations.extend(self.__getPrestigePointsString(prestigePoints))
+        _extendCustomizationData(dataEx, operations, htmlTplPostfix=b'InvoiceReceived')
+        _extendCrewSkinsData(dataEx, operations)
+        tankmenFreeXP = dataEx.get(b'tankmenFreeXP', {})
+        if tankmenFreeXP:
+            operations.append(self.__getTankmenFreeXPString(tankmenFreeXP))
+        tokensStr = self.__getTokensString(dataEx.get(b'tokens', {}))
+        if tokensStr:
+            operations.extend(tokensStr)
+        entitlementsStr = self.__getEntitlementsString(dataEx.get(b'entitlements', {}))
+        if entitlementsStr:
+            operations.append(entitlementsStr)
+        lootBoxStr = self.__getLootBoxString(dataEx.get(b'tokens', {}))
+        if lootBoxStr:
+            operations.append(lootBoxStr)
+        rankedDailyBattles = dataEx.get(b'rankedDailyBattles', 0)
+        rankedPersistentBattles = dataEx.get(b'rankedBonusBattles', 0)
+        rankedBonusBattlesStr = self.__getRankedBonusBattlesString(rankedPersistentBattles, rankedDailyBattles)
+        if rankedBonusBattlesStr:
+            operations.append(rankedBonusBattlesStr)
+        platformCurrenciesStr = self.__getPlatformCurrenciesString(dataEx.get(b'currencies', {}))
+        if platformCurrenciesStr:
+            operations.append(platformCurrenciesStr)
+        return operations
 
     def _formatData(self, assetType, data):
         operations = self._composeOperations(data)
@@ -1799,19 +1849,6 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
             ctx[b'amount'] = backport.getIntegralFormat(abs(amount))
         return g_settings.htmlTemplates.format(self.__operationTemplateKeys[templateKey], ctx=ctx)
 
-    def __composeItems(self, items):
-
-        def validateItem(item):
-            itemCompactDescr, _ = item
-            itemTypeID, _, _ = vehicles_core.parseIntCompactDescr(itemCompactDescr)
-            if itemTypeID == I_T.crewBook:
-                lobbyContext = dependency.instance(ILobbyContext)
-                if not lobbyContext.getServerSettings().isCrewBooksEnabled():
-                    return False
-            return True
-
-        return dict(filter(validateItem, items.iteritems()))
-
     def __getItemsString(self, items, installed=False):
         accrued = []
         debited = []
@@ -1870,6 +1907,32 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
         else:
             template = b'berthsDebitedInvoiceReceived'
         return g_settings.htmlTemplates.format(template, {b'amount': backport.getIntegralFormat(abs(berths))})
+
+    @classmethod
+    def __getPrestigePointsString(cls, prestigePoints):
+        result = []
+        operationType = prestigePoints.get(b'type')
+        if operationType not in ('add', 'set'):
+            return result
+        else:
+            isAddOperation = operationType == b'add'
+            vehicles = prestigePoints.get(b'vehicles', {})
+            for vehIntCD, prestige in vehicles.iteritems():
+                vehicle = cls._itemsCache.items.getItemByCD(vehIntCD)
+                if vehicle is None:
+                    continue
+                if isAddOperation:
+                    text = backport.text(R.strings.messenger.serviceChannelMessages.invoiceReceived.prestigeAdded(), vehicleName=vehicle.userName, xpCount=text_styles.prestige(prestigePointsToXP(prestige.get(b'count', 0))))
+                else:
+                    if prestige.get(b'newPrestigeLevel', 0) < prestige.get(b'oldPrestigeLevel', 0):
+                        return result
+                    if prestige.get(b'newPrestigePoints', 0) == 0:
+                        text = backport.text(R.strings.messenger.serviceChannelMessages.invoiceReceived.prestigeSet.justLevel(), vehicleName=vehicle.userName, level=text_styles.prestige(prestige.get(b'newPrestigeLevel', 0)))
+                    else:
+                        text = backport.text(R.strings.messenger.serviceChannelMessages.invoiceReceived.prestigeSet.full(), vehicleName=vehicle.userName, level=text_styles.prestige(prestige.get(b'newPrestigeLevel', 0)), xpCount=text_styles.prestige(prestigePointsToXP(prestige.get(b'newPrestigePoints', 0))))
+                result.append(g_settings.htmlTemplates.format(b'vehiclePrestigeInvoiceReceived', {b'text': text}))
+
+            return result
 
     @classmethod
     def __getTankmenFreeXPString(cls, data):
@@ -1971,9 +2034,10 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
             else:
                 quests = self.__eventsCache.getQuestsByTokenRequirement(tokenName)
                 for quest in quests:
-                    text = quest.getNotificationText().format(count=count)
-                    if text:
-                        tokenStrings.append(g_settings.htmlTemplates.format(b'questTokenInvoiceReceived', {b'text': text}))
+                    if not quest.getID().endswith(constants.NOTIFICATION_QUEST_POSTFIX):
+                        text = quest.getNotificationText().format(count=count)
+                        if text:
+                            tokenStrings.append(g_settings.htmlTemplates.format(b'questTokenInvoiceReceived', {b'text': text}))
 
         if awardListcount != 0:
             template = b'awardListAccruedInvoiceReceived' if awardListcount > 0 else b'awardListDebitedInvoiceReceived'
@@ -2813,7 +2877,7 @@ class QuestAchievesFormatter(object):
         for intCD, count in items.iteritems():
             itemTypeID, _, _ = vehicles_core.parseIntCompactDescr(intCD)
             if itemTypeID == I_T.crewBook:
-                if asBattleFormatter or not cls.__lobbyContext.getServerSettings().isCrewBooksEnabled():
+                if asBattleFormatter:
                     continue
                 itemDescr = tankmen.getItemByCompactDescr(intCD)
                 name = _getCrewBookUserString(itemDescr)
@@ -4358,14 +4422,13 @@ class BattlePassStyleReceivedFormatter(WaitItemsSyncFormatter):
         resultMessage = MessageData(None, None)
         if message.data and isSynced:
             data = message.data
-            rewardType = self.__battlePass.getRewardType(data.get(b'chapter'))
+            rewardTypes = self.__battlePass.getFreeFinalRewardTypes(data.get(b'chapter'))
             text = b''
-            if rewardType == FinalReward.STYLE:
+            noPaidRewards = not self.__battlePass.getPaidFinalRewardTypes(data.get(b'chapter'))
+            if FinalReward.PROGRESSIVE_STYLE in rewardTypes and noPaidRewards:
                 styleCD = data.get(b'styleCD')
                 if styleCD is not None:
                     text = backport.text(R.strings.messenger.serviceChannelMessages.battlePass.styleChosen.text(), name=self.__itemsCache.items.getItemByCD(styleCD).userName)
-            elif rewardType == FinalReward.TANKMAN:
-                text = backport.text(R.strings.messenger.serviceChannelMessages.battlePass.tankmanChosen.text())
             if text:
                 header = backport.text(R.strings.messenger.serviceChannelMessages.battlePass.styleChosen.header())
                 formatted = g_settings.msgTemplates.format(self.__template, {b'header': header, b'text': text})
@@ -5096,15 +5159,7 @@ class RecertificationResetUsedFormatter(ServiceChannelFormatter):
     __messageData = {b'blanks': {b'priority': NotificationPriorityLevel.LOW, 
                    b'header': R.strings.recertification_form.serviceChannelMessages.Reset.header(), 
                    b'currency': R.strings.recertification_form.serviceChannelMessages.currencyBlanks(), 
-                   b'icon': b'RecertificationIcon'}, 
-       b'gold': {b'priority': NotificationPriorityLevel.MEDIUM, 
-                 b'header': R.strings.messenger.serviceChannelMessages.currencyUpdate.financial_transaction(), 
-                 b'currency': R.strings.menu.price.gold(), 
-                 b'icon': b'GoldIcon'}, 
-       b'credits': {b'priority': NotificationPriorityLevel.LOW, 
-                    b'header': R.strings.messenger.serviceChannelMessages.currencyUpdate.financial_transaction(), 
-                    b'currency': R.strings.menu.price.credits(), 
-                    b'icon': b'CreditsIcon'}}
+                   b'icon': b'RecertificationIcon'}}
 
     def format(self, message, *args):
         if not message:
@@ -5587,3 +5642,30 @@ class AchievementsSMFormatter(ClientSysMessageFormatter):
 
     def __getLevel(self, rank=None, subRank=None):
         return backport.text(R.strings.achievements_page.tooltips.WTR.rating.levels.dyn((b'level_{}').format(rank))(), level=int2roman(subRank))
+
+
+class PrestigeFormatter(ServiceChannelFormatter):
+    __TEMPLATE = b'PrestigeLevelUpMessage'
+    __LVLUP_MESSAGES = R.strings.messenger.serviceChannelMessages.prestige.lvlUp
+    __itemsCache = dependency.descriptor(IItemsCache)
+
+    def format(self, message, *args):
+        data = first(message.data.items())
+        if not data:
+            return [MessageData(None, None)]
+        else:
+            vehCD, (oldLvl, newLvl) = data
+            hasPrestige = hasVehiclePrestige(vehCD)
+            if not hasPrestige:
+                return [MessageData(None, None)]
+            if needShowPrestigeRewardWindow(vehCD, oldLvl, newLvl):
+                return [MessageData(None, None)]
+            return [self.__makeMessageData(message, vehCD, newLvl)]
+
+    def __makeMessageData(self, message, vehCD, lvl):
+        vehicle = self.__itemsCache.items.getItemByCD(vehCD)
+        title = backport.text(self.__LVLUP_MESSAGES.title())
+        text = backport.text(self.__LVLUP_MESSAGES.text(), vehName=vehicle.userName)
+        gradeType, grade = mapGradeIDToUI(getCurrentGrade(lvl, vehCD))
+        formatted = g_settings.msgTemplates.format(self.__TEMPLATE, ctx={b'title': title, b'text': text}, data={b'savedData': {b'vehCD': vehCD}, b'linkageData': {b'type': gradeType.value, b'grade': grade, b'lvl': lvl}})
+        return MessageData(formatted, self._getGuiSettings(message, self.__TEMPLATE, messageType=message.type))

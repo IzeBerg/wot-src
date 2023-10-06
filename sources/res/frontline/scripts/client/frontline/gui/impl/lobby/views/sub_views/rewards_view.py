@@ -18,7 +18,7 @@ class RewardsView(ViewImpl):
     __epicController = dependency.descriptor(IEpicBattleMetaGameController)
     __battlePassController = dependency.descriptor(IBattlePassController)
     __slots__ = ('__tooltipItems', '__frontlineLevel', '__uiEpicBattleLogger', '__rewardsSelectionWindow',
-                 '__rewardSelectionLogged', '__parentView')
+                 '__parentView')
 
     def __init__(self, layoutID=R.views.frontline.lobby.RewardsView(), parentView=None, **kwargs):
         settings = ViewSettings(layoutID, ViewFlags.LOBBY_TOP_SUB_VIEW, RewardsViewModel())
@@ -27,7 +27,6 @@ class RewardsView(ViewImpl):
         self.__frontlineLevel, _ = self.__epicController.getPlayerLevelInfo()
         self.__uiEpicBattleLogger = EpicBattleLogger()
         self.__rewardsSelectionWindow = None
-        self.__rewardSelectionLogged = False
         self.__parentView = parentView
         super(RewardsView, self).__init__(settings)
         return
@@ -91,9 +90,7 @@ class RewardsView(ViewImpl):
         currentScreen = EpicBattleLogKeys.REWARDS_VIEW.value
 
         def _logRewardSelectionClosed():
-            if not self.__rewardSelectionLogged:
-                self.__rewardSelectionLogged = True
-                self.__uiEpicBattleLogger.stopAction(EpicBattleLogActions.VIEW_WATCHED.value, EpicBattleLogKeys.REWARDS_SELECTION_VIEW.value, currentScreen)
+            self.__uiEpicBattleLogger.stopAction(EpicBattleLogActions.VIEW_WATCHED.value, EpicBattleLogKeys.REWARDS_SELECTION_VIEW.value, currentScreen)
 
         def _onAwardsAnimationEnded():
             if self.__rewardsSelectionWindow:

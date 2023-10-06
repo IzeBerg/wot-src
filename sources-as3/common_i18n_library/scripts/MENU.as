@@ -131,14 +131,6 @@ package
       
       public static const HANGAR_CREW_RODY_DOG_MOREINFOLABEL:String = "#menu:hangar/crew/rody/dog/moreInfoLabel";
       
-      public static const HANGAR_CREW_RODY_DOG_WINDOW_TITLE:String = "#menu:hangar/crew/rody/dog/window/title";
-      
-      public static const HANGAR_CREW_RODY_DOG_WINDOW_HEADER:String = "#menu:hangar/crew/rody/dog/window/header";
-      
-      public static const HANGAR_CREW_RODY_DOG_WINDOW_DESCRIPTION:String = "#menu:hangar/crew/rody/dog/window/description";
-      
-      public static const HANGAR_CREW_RODY_DOG_WINDOW_CLOSEBTNLABEL:String = "#menu:hangar/crew/rody/dog/window/closeBtnLabel";
-      
       public static const HANGAR_CREW_TOOLTIP_NEW_SKILL:String = "#menu:hangar/crew/tooltip/new_skill";
       
       public static const HANGAR_CREW_TOOLTIP_DROP_SKILL:String = "#menu:hangar/crew/tooltip/drop_skill";
@@ -321,6 +313,10 @@ package
       
       public static const LOADING_BATTLETYPES_DESC_31:String = "#menu:loading/battleTypes/desc/31";
       
+      public static const LOADING_BATTLETYPES_33:String = "#menu:loading/battleTypes/33";
+      
+      public static const LOADING_BATTLETYPES_DESC_33:String = "#menu:loading/battleTypes/desc/33";
+      
       public static const LOADING_TEAM1:String = "#menu:loading/team1";
       
       public static const LOADING_TEAM2:String = "#menu:loading/team2";
@@ -378,98 +374,6 @@ package
       public static const TANKMEN_AT_SPG:String = "#menu:tankmen/AT-SPG";
       
       public static const TANKMEN_SPG:String = "#menu:tankmen/SPG";
-      
-      public static const TANKMANPERSONALCASE_TITLE:String = "#menu:tankmanPersonalCase/title";
-      
-      public static const TANKMANPERSONALCASE_RANK:String = "#menu:tankmanPersonalCase/rank";
-      
-      public static const TANKMANPERSONALCASE_NAME:String = "#menu:tankmanPersonalCase/name";
-      
-      public static const TANKMANPERSONALCASE_CREW:String = "#menu:tankmanPersonalCase/crew";
-      
-      public static const TANKMANPERSONALCASE_MAINSPECIALIZATION:String = "#menu:tankmanPersonalCase/mainSpecialization";
-      
-      public static const TANKMANPERSONALCASE_DOCS_INFO:String = "#menu:tankmanPersonalCase/docs/info";
-      
-      public static const TANKMANPERSONALCASE_PERSONALDOCS:String = "#menu:tankmanPersonalCase/personalDocs";
-      
-      public static const TANKMANPERSONALCASE_CHANGEDOCSBTN:String = "#menu:tankmanPersonalCase/changeDocsBtn";
-      
-      public static const TANKMANPERSONALCASE_USINGLEVEL:String = "#menu:tankmanPersonalCase/usingLevel";
-      
-      public static const TANKMANPERSONALCASE_COMMANDERFEATURE:String = "#menu:tankmanPersonalCase/commanderFeature";
-      
-      public static const TANKMANPERSONALCASE_MODIFIERS_FROMCOMMANDER:String = "#menu:tankmanPersonalCase/modifiers/fromCommander";
-      
-      public static const TANKMANPERSONALCASE_MODIFIERS_FROMEQUIPMENT:String = "#menu:tankmanPersonalCase/modifiers/fromEquipment";
-      
-      public static const TANKMANPERSONALCASE_MODIFIERS_CUSTOMIZATION:String = "#menu:tankmanPersonalCase/modifiers/customization";
-      
-      public static const TANKMANPERSONALCASE_MODIFIERS_FROMSKILLS:String = "#menu:tankmanPersonalCase/modifiers/fromSkills";
-      
-      public static const TANKMANPERSONALCASE_MODIFIERS_PENALTY:String = "#menu:tankmanPersonalCase/modifiers/penalty";
-      
-      public static const TANKMANPERSONALCASE_MODIFIERSHEADER:String = "#menu:tankmanPersonalCase/modifiersHeader";
-      
-      public static const TANKMANPERSONALCASE_MODIFIERSRESULT:String = "#menu:tankmanPersonalCase/modifiersResult";
-      
-      public static const TANKMANPERSONALCASE_SPECIALIZATION:String = "#menu:tankmanPersonalCase/specialization";
-      
-      public static const TANKMANPERSONALCASE_TRAININGBTN:String = "#menu:tankmanPersonalCase/trainingBtn";
-      
-      public static const TANKMANPERSONALCASE_BTNRESET:String = "#menu:tankmanPersonalCase/btnReset";
-      
-      public static const TANKMANPERSONALCASE_RETRAININGBTN:String = "#menu:tankmanPersonalCase/retrainingBtn";
-      
-      public static const TANKMANPERSONALCASE_VEHICLETYPE:String = "#menu:tankmanPersonalCase/vehicleType";
-      
-      public static const TANKMANPERSONALCASE_VEHICLE:String = "#menu:tankmanPersonalCase/vehicle";
-      
-      public static const TANKMANPERSONALCASE_CLOSEBTN:String = "#menu:tankmanPersonalCase/closeBtn";
-      
-      public static const TANKMANPERSONALCASE_CHANGEROLEBTN:String = "#menu:tankmanPersonalCase/changeRoleBtn";
-      
-      public static const TANKMANPERSONALCASE_TABBATTLEINFO:String = "#menu:tankmanPersonalCase/tabBattleInfo";
-      
-      public static const TANKMANPERSONALCASE_TABTRAINING:String = "#menu:tankmanPersonalCase/tabTraining";
-      
-      public static const TANKMANPERSONALCASE_BTNTRAINING:String = "#menu:tankmanPersonalCase/btnTraining";
-      
-      public static const TANKMANPERSONALCASE_BTNRETRAINING:String = "#menu:tankmanPersonalCase/btnRetraining";
-      
-      public static const TANKMANPERSONALCASE_VEHICLETYPEID:String = "#menu:tankmanPersonalCase/vehicleTypeID";
-      
-      public static const TANKMANPERSONALCASE_SKILLSBUTTON_MAINTEXT:String = "#menu:tankmanPersonalCase/skillsButton/mainText";
-      
-      public static const TANKMANPERSONALCASE_SKILLSBUTTON_ADDITIONTEXT:String = "#menu:tankmanPersonalCase/skillsButton/additionText";
-      
-      public static const TANKMANPERSONALCASE_RETRAININGWARNING:String = "#menu:tankmanPersonalCase/retrainingWarning";
-      
-      public static const TANKMANPERSONALCASE_RETRAININGWARNING2:String = "#menu:tankmanPersonalCase/retrainingWarning2";
-      
-      public static const TANKMANPERSONALCASE_NOMODIFIERS:String = "#menu:tankmanPersonalCase/noModifiers";
-      
-      public static const TANKMSNPERSONALCASE_LACKOFSKILLSFORLEARN:String = "#menu:tankmsnPersonalCase/lackOfSkillsForLearn";
-      
-      public static const TANKMSNPERSONALCASE_LOADINGINFO:String = "#menu:tankmsnPersonalCase/loadingInfo";
-      
-      public static const TANKMANPERSONALCASE_NOACHIVS:String = "#menu:tankmanPersonalCase/noAchivs";
-      
-      public static const TANKMANPERSONALCASE_ACHIVS:String = "#menu:tankmanPersonalCase/achivs";
-      
-      public static const TANKMANPERSONALCASE_TABDOCS:String = "#menu:tankmanPersonalCase/tabDocs";
-      
-      public static const TANKMANPERSONALCASE_TABFREESKILLS:String = "#menu:tankmanPersonalCase/tabFreeSkills";
-      
-      public static const TANKMANPERSONALCASE_TABSKILLS:String = "#menu:tankmanPersonalCase/tabSkills";
-      
-      public static const TANKMANPERSONALCASE_SITUATIONALDESC:String = "#menu:tankmanPersonalCase/situationalDesc";
-      
-      public static const TANKMANPERSONALCASE_SKILLSDESC:String = "#menu:tankmanPersonalCase/skillsDesc";
-      
-      public static const TANKMANPERSONALCASE_DROPSKILLSBUTTONLABEL:String = "#menu:tankmanPersonalCase/dropSkillsButtonLabel";
-      
-      public static const TANKMANPERSONALCASE_ACCELERATETEACHINGOFSKILL:String = "#menu:tankmanPersonalCase/accelerateTeachingOfSkill";
       
       public static const TANKMANTRAININGWINDOW_TITLE:String = "#menu:tankmanTrainingWindow/title";
       
@@ -1823,6 +1727,24 @@ package
       
       public static const HEADER_VEHICLETYPE_ALLIANCE_FRANCE:String = "#menu:header/vehicleType/Alliance-France";
       
+      public static const HEADER_WOTPLUSEXCLUSIVEVEHICLETYPE_LIGHTTANK:String = "#menu:header/wotPlusExclusiveVehicleType/lightTank";
+      
+      public static const HEADER_WOTPLUSEXCLUSIVEVEHICLETYPE_MEDIUMTANK:String = "#menu:header/wotPlusExclusiveVehicleType/mediumTank";
+      
+      public static const HEADER_WOTPLUSEXCLUSIVEVEHICLETYPE_HEAVYTANK:String = "#menu:header/wotPlusExclusiveVehicleType/heavyTank";
+      
+      public static const HEADER_WOTPLUSEXCLUSIVEVEHICLETYPE_AT_SPG:String = "#menu:header/wotPlusExclusiveVehicleType/AT-SPG";
+      
+      public static const HEADER_WOTPLUSEXCLUSIVEVEHICLETYPE_SPG:String = "#menu:header/wotPlusExclusiveVehicleType/SPG";
+      
+      public static const HEADER_WOTPLUSEXCLUSIVEVEHICLETYPE_ALLIANCE_USSR:String = "#menu:header/wotPlusExclusiveVehicleType/Alliance-USSR";
+      
+      public static const HEADER_WOTPLUSEXCLUSIVEVEHICLETYPE_ALLIANCE_GERMANY:String = "#menu:header/wotPlusExclusiveVehicleType/Alliance-Germany";
+      
+      public static const HEADER_WOTPLUSEXCLUSIVEVEHICLETYPE_ALLIANCE_USA:String = "#menu:header/wotPlusExclusiveVehicleType/Alliance-USA";
+      
+      public static const HEADER_WOTPLUSEXCLUSIVEVEHICLETYPE_ALLIANCE_FRANCE:String = "#menu:header/wotPlusExclusiveVehicleType/Alliance-France";
+      
       public static const HEADER_DEMONSTRATION_INFO:String = "#menu:header/demonstration/info";
       
       public static const HEADER_DEMONSTRATION_BTNLABEL:String = "#menu:header/demonstration/btnLabel";
@@ -1996,24 +1918,6 @@ package
       public static const EXCHANGEXP_AVAILABLE_FORFREE_LABEL:String = "#menu:exchangeXP/available/forFree/label";
       
       public static const EXCHANGEXP_AVAILABLE_FORFREE_VALUE:String = "#menu:exchangeXP/available/forFree/value";
-      
-      public static const TEACHINGSKILL_TITLE:String = "#menu:teachingSkill/title";
-      
-      public static const TEACHINGSKILL_BEFORE:String = "#menu:teachingSkill/before";
-      
-      public static const TEACHINGSKILL_COST:String = "#menu:teachingSkill/cost";
-      
-      public static const TEACHINGSKILL_AFTER:String = "#menu:teachingSkill/after";
-      
-      public static const TEACHINGSKILL_SUBMIT:String = "#menu:teachingSkill/submit";
-      
-      public static const TEACHINGSKILL_CANCEL:String = "#menu:teachingSkill/cancel";
-      
-      public static const TEACHINGSKILL_TEACHTOLEVEL:String = "#menu:teachingSkill/teachToLevel";
-      
-      public static const TEACHINGSKILL_TOTALPAY:String = "#menu:teachingSkill/totalPay";
-      
-      public static const TEACHINGSKILL_FREEXPISTIGHT:String = "#menu:teachingSkill/freeXpIsTight";
       
       public static const PROFILE_HEADER_REGISTRATIONDATETITLE:String = "#menu:profile/header/registrationDateTitle";
       
@@ -3331,19 +3235,7 @@ package
       
       public static const CONTEXTMENU_ASSIGNOFFICER:String = "#menu:contextMenu/assignOfficer";
       
-      public static const CONTEXTMENU_PERSONALCASE:String = "#menu:contextMenu/personalCase";
-      
       public static const CONTEXTMENU_PERSONALCASE_STATSBLOCKTITLE:String = "#menu:contextMenu/personalCase/statsBlockTitle";
-      
-      public static const CONTEXTMENU_PERSONALCASE_STATS_FIRSTINFO:String = "#menu:contextMenu/personalCase/stats/firstInfo";
-      
-      public static const CONTEXTMENU_PERSONALCASE_STATS_SECONDINFO:String = "#menu:contextMenu/personalCase/stats/secondInfo";
-      
-      public static const CONTEXTMENU_PERSONALCASE_STATS_WOTPLUS:String = "#menu:contextMenu/personalCase/stats/wotPlus";
-      
-      public static const CONTEXTMENU_TANKMANUNLOAD:String = "#menu:contextMenu/tankmanUnload";
-      
-      public static const CONTEXTMENU_TANKMANUNLOADALL:String = "#menu:contextMenu/tankmanUnloadAll";
       
       public static const CONTEXTMENU_DISMISS:String = "#menu:contextMenu/dismiss";
       
@@ -3393,6 +3285,8 @@ package
       
       public static const CONTEXTMENU_GOTOBLUEPRINT:String = "#menu:contextMenu/goToBlueprint";
       
+      public static const CONTEXTMENU_WINBACKCALLSENDINVITE:String = "#menu:contextMenu/winBackCallSendInvite";
+      
       public static const DENUNCIATION_1:String = "#menu:denunciation/1";
       
       public static const DENUNCIATION_2:String = "#menu:denunciation/2";
@@ -3410,38 +3304,6 @@ package
       public static const STEAM_SUBMIT:String = "#menu:steam/submit";
       
       public static const STEAM_CANCEL:String = "#menu:steam/cancel";
-      
-      public static const SKILLDROPWINDOW_TITLE:String = "#menu:skillDropWindow/title";
-      
-      public static const SKILLDROPWINDOW_BEFORE:String = "#menu:skillDropWindow/before";
-      
-      public static const SKILLDROPWINDOW_MULTIPLIER:String = "#menu:skillDropWindow/multiplier";
-      
-      public static const SKILLDROPWINDOW_INSTORAGE:String = "#menu:skillDropWindow/inStorage";
-      
-      public static const SKILLDROPWINDOW_NOTAVAILABLE:String = "#menu:skillDropWindow/notAvailable";
-      
-      public static const SKILLDROPWINDOW_DIRECTION:String = "#menu:skillDropWindow/direction";
-      
-      public static const SKILLDROPWINDOW_TRAINING:String = "#menu:skillDropWindow/training";
-      
-      public static const SKILLDROPWINDOW_AFTER:String = "#menu:skillDropWindow/after";
-      
-      public static const SKILLDROPWINDOW_STUDY_ACADEMY:String = "#menu:skillDropWindow/study/academy";
-      
-      public static const SKILLDROPWINDOW_STUDY_SCOOL:String = "#menu:skillDropWindow/study/scool";
-      
-      public static const SKILLDROPWINDOW_STUDY_FREE:String = "#menu:skillDropWindow/study/free";
-      
-      public static const SKILLDROPWINDOW_APPLYBTN:String = "#menu:skillDropWindow/applyBtn";
-      
-      public static const SKILLDROPWINDOW_CANCELBTN:String = "#menu:skillDropWindow/cancelBtn";
-      
-      public static const SKILLDROPWINDOW_FREEDROPLABEL:String = "#menu:skillDropWindow/freeDropLabel";
-      
-      public static const SKILLDROPWINDOW_FREEDROPPERCENT:String = "#menu:skillDropWindow/freeDropPercent";
-      
-      public static const SKILLDROPWINDOW_TOOLTIP_VISIBLEDISABLED:String = "#menu:skillDropWindow/tooltip/visibleDisabled";
       
       public static const SKILLDROPFORFREEWINDOW_ACTIONTIME_TITLE:String = "#menu:skillDropForFreeWindow/actionTime/title";
       
@@ -4611,7 +4473,21 @@ package
       
       public static const BADGE_CONFIRM:String = "#menu:badge/confirm";
       
-      public static const CONTEXTMENU_ENUM:Array = [CONTEXTMENU_EXCHANGE,CONTEXTMENU_VEHICLEINFO,CONTEXTMENU_VEHICLEINFOEX,CONTEXTMENU_GOTONATIONTREE,CONTEXTMENU_GOTONEXTVEHICLE,CONTEXTMENU_VEHICLESELL,CONTEXTMENU_NATIONCHANGE,CONTEXTMENU_GOTOCOLLECTION,CONTEXTMENU_VEHICLERESEARCH,CONTEXTMENU_VEHICLECHECK,CONTEXTMENU_VEHICLEUNCHECK,CONTEXTMENU_VEHICLEBUY,CONTEXTMENU_VEHICLERESTORE,CONTEXTMENU_VEHICLEREMOVE,CONTEXTMENU_USERINFO,CONTEXTMENU_CLANINFO,CONTEXTMENU_SENDCLANINVITE,CONTEXTMENU_MONEYTRANSFER,CONTEXTMENU_CREATEPRIVATECHANNEL,CONTEXTMENU_ADDTOFRIENDS,CONTEXTMENU_ADDTOFRIENDSAGAIN,CONTEXTMENU_REJECTFRIENDSHIP,CONTEXTMENU_REMOVEFROMFRIENDS,CONTEXTMENU_ADDTOIGNORED,CONTEXTMENU_REMOVEFROMIGNORED,CONTEXTMENU_ENABLECOMMUNICATIONS,CONTEXTMENU_DISABLECOMMUNICATIONS,CONTEXTMENU_COPYTOCLIPBOARD,CONTEXTMENU_SETMUTED,CONTEXTMENU_UNSETMUTED,CONTEXTMENU_MODULEINFO,CONTEXTMENU_SELL,CONTEXTMENU_SELLFROMINVENTORY,CONTEXTMENU_SELECTVEHICLEINHANGAR,CONTEXTMENU_SHOWVEHICLESTATISTICS,CONTEXTMENU_SHOWVEHICLEPREVIEW,CONTEXTMENU_VEHICLEPREVIEW,CONTEXTMENU_BUY,CONTEXTMENU_BUYORTRADEIN,CONTEXTMENU_RESTORE,CONTEXTMENU_UNLOAD,CONTEXTMENU_CANCELBUY,CONTEXTMENU_UNEQUIP,CONTEXTMENU_BUYANDEQUIP,CONTEXTMENU_EQUIP,CONTEXTMENU_UNLOCK,CONTEXTMENU_KICKPLAYERFROMPREBATTLE,CONTEXTMENU_KICKPLAYERFROMUNIT,CONTEXTMENU_GIVELEADERSHIP,CONTEXTMENU_TAKEARTILLERYEQUIPMENTCOMMANDER,CONTEXTMENU_GIVEARTILLERYEQUIPMENTCOMMANDER,CONTEXTMENU_TAKEINSPIREEQUIPMENTCOMMANDER,CONTEXTMENU_GIVEINSPIREEQUIPMENTCOMMANDER,CONTEXTMENU_TAKELEADERSHIP,CONTEXTMENU_CREATESQUAD,CONTEXTMENU_CREATEEVENTSQUAD,CONTEXTMENU_CREATEBATTLEROYALESQUAD,CONTEXTMENU_CREATEMAPBOXSQUAD,CONTEXTMENU_CREATECOMP7SQUAD,CONTEXTMENU_INVITE,CONTEXTMENU_APPEAL,CONTEXTMENU_INCORRECTBEHAVIOR,CONTEXTMENU_NOTFAIRPLAY,CONTEXTMENU_FORBIDDENNICK,CONTEXTMENU_BOT,CONTEXTMENU_ASSIGNPRIVATE,CONTEXTMENU_ASSIGNOFFICER,CONTEXTMENU_PERSONALCASE,CONTEXTMENU_PERSONALCASE_STATSBLOCKTITLE,CONTEXTMENU_PERSONALCASE_STATS_FIRSTINFO,CONTEXTMENU_PERSONALCASE_STATS_SECONDINFO,CONTEXTMENU_PERSONALCASE_STATS_WOTPLUS,CONTEXTMENU_TANKMANUNLOAD,CONTEXTMENU_TANKMANUNLOADALL,CONTEXTMENU_DISMISS,CONTEXTMENU_LOCKSLOT,CONTEXTMENU_UNLOCKSLOT,CONTEXTMENU_MESSENGER_MINIMIZEALL,CONTEXTMENU_MESSENGER_CLOSECURRENT,CONTEXTMENU_MESSENGER_CLOSEALLEXCEPTCURRENT,CONTEXTMENU_CREATECONTACTNOTE,CONTEXTMENU_EDITCONTACTNOTE,CONTEXTMENU_REMOVECONTACTNOTE,CONTEXTMENU_BOTNOACTIONS,CONTEXTMENU_VEHICLEPOSTPROGRESSION,CONTEXTMENU_COMPARE,CONTEXTMENU_USERVEHICLECOMPARE,CONTEXTMENU_PROFILEVEHICLECOMPARE,CONTEXTMENU_INSQUAD,CONTEXTMENU_LEAVESQUAD,CONTEXTMENU_EXCLUDEDFROMSQUAD,CONTEXTMENU_SENDINVITATIONTOSQUAD,CONTEXTMENU_WITHDRAWINVITATIONTOSQUAD,CONTEXTMENU_ACCEPTINVITATIONTOSQUAD,CONTEXTMENU_REJECTINVITATIONTOSQUAD,CONTEXTMENU_GOTOBLUEPRINT,CONTEXTMENU_VIEWCLANPROFILE,CONTEXTMENU_COPYCLANNAME,CONTEXTMENU_TELECOMRENT];
+      public static const CONTEXTMENU_CREWWIDGETPERSONALFILE:String = "#menu:contextMenu/crewWidgetPersonalFile";
+      
+      public static const CONTEXTMENU_CREWWIDGETRETRAIN:String = "#menu:contextMenu/crewWidgetRetrain";
+      
+      public static const CONTEXTMENU_CREWWIDGETCHANGECREWMEMBER:String = "#menu:contextMenu/crewWidgetChangeCrewMember";
+      
+      public static const CONTEXTMENU_CREWWIDGETSENDTOTOBARRACKS:String = "#menu:contextMenu/crewWidgetSendToToBarracks";
+      
+      public static const CONTEXTMENU_CREWWIDGETDISMISS:String = "#menu:contextMenu/crewWidgetDismiss";
+      
+      public static const CONTEXTMENU_CREWWIDGETQUICKTRAINING:String = "#menu:contextMenu/crewWidgetQuickTraining";
+      
+      public static const CONTEXTMENU_CREWWIDGETCHANGESPECIALIZATION:String = "#menu:contextMenu/crewWidgetChangeSpecialization";
+      
+      public static const CONTEXTMENU_ENUM:Array = [CONTEXTMENU_EXCHANGE,CONTEXTMENU_VEHICLEINFO,CONTEXTMENU_VEHICLEINFOEX,CONTEXTMENU_GOTONATIONTREE,CONTEXTMENU_GOTONEXTVEHICLE,CONTEXTMENU_VEHICLESELL,CONTEXTMENU_NATIONCHANGE,CONTEXTMENU_GOTOCOLLECTION,CONTEXTMENU_VEHICLERESEARCH,CONTEXTMENU_VEHICLECHECK,CONTEXTMENU_VEHICLEUNCHECK,CONTEXTMENU_VEHICLEBUY,CONTEXTMENU_VEHICLERESTORE,CONTEXTMENU_VEHICLEREMOVE,CONTEXTMENU_USERINFO,CONTEXTMENU_CLANINFO,CONTEXTMENU_SENDCLANINVITE,CONTEXTMENU_MONEYTRANSFER,CONTEXTMENU_CREATEPRIVATECHANNEL,CONTEXTMENU_ADDTOFRIENDS,CONTEXTMENU_ADDTOFRIENDSAGAIN,CONTEXTMENU_REJECTFRIENDSHIP,CONTEXTMENU_REMOVEFROMFRIENDS,CONTEXTMENU_ADDTOIGNORED,CONTEXTMENU_REMOVEFROMIGNORED,CONTEXTMENU_ENABLECOMMUNICATIONS,CONTEXTMENU_DISABLECOMMUNICATIONS,CONTEXTMENU_COPYTOCLIPBOARD,CONTEXTMENU_SETMUTED,CONTEXTMENU_UNSETMUTED,CONTEXTMENU_MODULEINFO,CONTEXTMENU_SELL,CONTEXTMENU_SELLFROMINVENTORY,CONTEXTMENU_SELECTVEHICLEINHANGAR,CONTEXTMENU_SHOWVEHICLESTATISTICS,CONTEXTMENU_SHOWVEHICLEPREVIEW,CONTEXTMENU_VEHICLEPREVIEW,CONTEXTMENU_BUY,CONTEXTMENU_BUYORTRADEIN,CONTEXTMENU_RESTORE,CONTEXTMENU_UNLOAD,CONTEXTMENU_CANCELBUY,CONTEXTMENU_UNEQUIP,CONTEXTMENU_BUYANDEQUIP,CONTEXTMENU_EQUIP,CONTEXTMENU_UNLOCK,CONTEXTMENU_KICKPLAYERFROMPREBATTLE,CONTEXTMENU_KICKPLAYERFROMUNIT,CONTEXTMENU_GIVELEADERSHIP,CONTEXTMENU_TAKEARTILLERYEQUIPMENTCOMMANDER,CONTEXTMENU_GIVEARTILLERYEQUIPMENTCOMMANDER,CONTEXTMENU_TAKEINSPIREEQUIPMENTCOMMANDER,CONTEXTMENU_GIVEINSPIREEQUIPMENTCOMMANDER,CONTEXTMENU_TAKELEADERSHIP,CONTEXTMENU_CREATESQUAD,CONTEXTMENU_CREATEEVENTSQUAD,CONTEXTMENU_CREATEBATTLEROYALESQUAD,CONTEXTMENU_CREATEMAPBOXSQUAD,CONTEXTMENU_CREATECOMP7SQUAD,CONTEXTMENU_INVITE,CONTEXTMENU_APPEAL,CONTEXTMENU_INCORRECTBEHAVIOR,CONTEXTMENU_NOTFAIRPLAY,CONTEXTMENU_FORBIDDENNICK,CONTEXTMENU_BOT,CONTEXTMENU_ASSIGNPRIVATE,CONTEXTMENU_ASSIGNOFFICER,CONTEXTMENU_PERSONALCASE_STATSBLOCKTITLE,CONTEXTMENU_DISMISS,CONTEXTMENU_LOCKSLOT,CONTEXTMENU_UNLOCKSLOT,CONTEXTMENU_MESSENGER_MINIMIZEALL,CONTEXTMENU_MESSENGER_CLOSECURRENT,CONTEXTMENU_MESSENGER_CLOSEALLEXCEPTCURRENT,CONTEXTMENU_CREATECONTACTNOTE,CONTEXTMENU_EDITCONTACTNOTE,CONTEXTMENU_REMOVECONTACTNOTE,CONTEXTMENU_BOTNOACTIONS,CONTEXTMENU_VEHICLEPOSTPROGRESSION,CONTEXTMENU_COMPARE,CONTEXTMENU_USERVEHICLECOMPARE,CONTEXTMENU_PROFILEVEHICLECOMPARE,CONTEXTMENU_INSQUAD,CONTEXTMENU_LEAVESQUAD,CONTEXTMENU_EXCLUDEDFROMSQUAD,CONTEXTMENU_SENDINVITATIONTOSQUAD,CONTEXTMENU_WITHDRAWINVITATIONTOSQUAD,CONTEXTMENU_ACCEPTINVITATIONTOSQUAD,CONTEXTMENU_REJECTINVITATIONTOSQUAD,CONTEXTMENU_GOTOBLUEPRINT,CONTEXTMENU_WINBACKCALLSENDINVITE,CONTEXTMENU_VIEWCLANPROFILE,CONTEXTMENU_COPYCLANNAME,CONTEXTMENU_TELECOMRENT,CONTEXTMENU_CREWWIDGETPERSONALFILE,CONTEXTMENU_CREWWIDGETRETRAIN,CONTEXTMENU_CREWWIDGETCHANGECREWMEMBER,CONTEXTMENU_CREWWIDGETSENDTOTOBARRACKS,CONTEXTMENU_CREWWIDGETDISMISS,CONTEXTMENU_CREWWIDGETQUICKTRAINING,CONTEXTMENU_CREWWIDGETCHANGESPECIALIZATION];
       
       public static const NATIONS_ENUM:Array = [NATIONS_TITLE,NATIONS_USSR,NATIONS_GERMANY,NATIONS_USA,NATIONS_FRANCE,NATIONS_CHINA,NATIONS_JAPAN,NATIONS_UK,NATIONS_CZECH,NATIONS_SWEDEN,NATIONS_POLAND,NATIONS_ITALY,NATIONS_ALL];
       
@@ -4643,15 +4519,11 @@ package
       
       public static const SHOP_TABLE_HEADER_COUNT_ENUM:Array = [SHOP_TABLE_HEADER_COUNT_VEHICLE,SHOP_TABLE_HEADER_COUNT_MODULE,SHOP_TABLE_HEADER_COUNT_SHELL,SHOP_TABLE_HEADER_COUNT_OPTIONALDEVICE,SHOP_TABLE_HEADER_COUNT_EQUIPMENT,SHOP_TABLE_HEADER_COUNT_BATTLEBOOSTER];
       
-      public static const SKILLDROPWINDOW_STUDY_ENUM:Array = [SKILLDROPWINDOW_STUDY_ACADEMY,SKILLDROPWINDOW_STUDY_SCOOL,SKILLDROPWINDOW_STUDY_FREE];
-      
       public static const TANKMANRECRUITRENDERER_ENUM:Array = [TANKMANRECRUITRENDERER_PERSONALCASE,TANKMANRECRUITRENDERER_COMMANDER,TANKMANRECRUITRENDERER_GUNNER,TANKMANRECRUITRENDERER_LOADER,TANKMANRECRUITRENDERER_DRIVER,TANKMANRECRUITRENDERER_RADIOMAN,TANKMANRECRUITRENDERER_DESCR,TANKMANRECRUITRENDERER_UNLOAD];
       
       public static const TANKMANTRAININGWINDOW_ENUM:Array = [TANKMANTRAININGWINDOW_TITLE,TANKMANTRAININGWINDOW_ACADEMY,TANKMANTRAININGWINDOW_SCOOL,TANKMANTRAININGWINDOW_FREE,TANKMANTRAININGWINDOW_BLANK,TANKMANTRAININGWINDOW_FREE_PRICE,TANKMANTRAININGWINDOW_TRAININGTO,TANKMANTRAININGWINDOW_CLOSEBTN];
       
       public static const VEHICLEINFO_PARAMS_ENUM:Array = [VEHICLEINFO_PARAMS_MAXHEALTH,VEHICLEINFO_PARAMS_VEHICLEWEIGHT,VEHICLEINFO_PARAMS_ENGINEPOWER,VEHICLEINFO_PARAMS_SPEEDLIMITS,VEHICLEINFO_PARAMS_CHASSISROTATIONSPEED,VEHICLEINFO_PARAMS_MAXSTEERINGLOCKANGLE,VEHICLEINFO_PARAMS_HULLARMOR,VEHICLEINFO_PARAMS_TURRETARMOR,VEHICLEINFO_PARAMS_RELOADTIME,VEHICLEINFO_PARAMS_AUTORELOADTIME,VEHICLEINFO_PARAMS_AUTORELOADTIMEBOOST,VEHICLEINFO_PARAMS_PIERCINGPOWER,VEHICLEINFO_PARAMS_AVGDAMAGE,VEHICLEINFO_PARAMS_SHOTSPEED,VEHICLEINFO_PARAMS_AVGPIERCINGPOWER,VEHICLEINFO_PARAMS_TURRETROTATIONSPEED,VEHICLEINFO_PARAMS_CIRCULARVISIONRADIUS,VEHICLEINFO_PARAMS_RADIODISTANCE,VEHICLEINFO_PARAMS_PITCHLIMITS,VEHICLEINFO_PARAMS_GUNYAWLIMITS,VEHICLEINFO_PARAMS_AIMINGTIME,VEHICLEINFO_PARAMS_SHOTDISPERSIONANGLE,VEHICLEINFO_PARAMS_DUALACCURACYCOOLINGDELAY,VEHICLEINFO_PARAMS_AVGDAMAGEPERMINUTE,VEHICLEINFO_PARAMS_ENGINEPOWERPERTON,VEHICLEINFO_PARAMS_CLIPFIRERATE,VEHICLEINFO_PARAMS_BURSTFIRERATE,VEHICLEINFO_PARAMS_TURBOSHAFTBURSTFIRERATE,VEHICLEINFO_PARAMS_TURRETYAWLIMITS,VEHICLEINFO_PARAMS_INVISIBILITY,VEHICLEINFO_PARAMS_INVISIBILITYSTILLFACTOR,VEHICLEINFO_PARAMS_INVISIBILITYMOVINGFACTOR,VEHICLEINFO_PARAMS_TURBOSHAFTINVISIBILITYSTILLFACTOR,VEHICLEINFO_PARAMS_TURBOSHAFTINVISIBILITYMOVINGFACTOR,VEHICLEINFO_PARAMS_RELOADTIMESECS,VEHICLEINFO_PARAMS_CHARGETIME,VEHICLEINFO_PARAMS_RATETIME,VEHICLEINFO_PARAMS_SWITCHONTIME,VEHICLEINFO_PARAMS_SWITCHOFFTIME,VEHICLEINFO_PARAMS_WHEELEDSWITCHONTIME,VEHICLEINFO_PARAMS_WHEELEDSWITCHOFFTIME,VEHICLEINFO_PARAMS_TURBOSHAFTSWITCHTIME,VEHICLEINFO_PARAMS_SWITCHTIME,VEHICLEINFO_PARAMS_WHEELEDSWITCHTIME,VEHICLEINFO_PARAMS_WHEELEDSPEEDMODESPEED,VEHICLEINFO_PARAMS_TURBOSHAFTSPEEDMODESPEED,VEHICLEINFO_PARAMS_ROCKETACCELERATIONSPEEDLIMITS,VEHICLEINFO_PARAMS_TURBOSHAFTENGINEPOWER,VEHICLEINFO_PARAMS_ROCKETACCELERATIONENGINEPOWER,VEHICLEINFO_PARAMS_ROCKETACCELERATIONREUSEANDDURATION,VEHICLEINFO_PARAMS_STUNMAXDURATION,VEHICLEINFO_PARAMS_STUNMINDURATION,VEHICLEINFO_PARAMS_CHASSISREPAIRTIME,VEHICLEINFO_PARAMS_CHASSISREPAIRTIMEYOH];
-      
-      public static const TANKMANPERSONALCASE_MODIFIERS_ENUM:Array = [TANKMANPERSONALCASE_MODIFIERS_FROMCOMMANDER,TANKMANPERSONALCASE_MODIFIERS_FROMEQUIPMENT,TANKMANPERSONALCASE_MODIFIERS_CUSTOMIZATION,TANKMANPERSONALCASE_MODIFIERS_FROMSKILLS,TANKMANPERSONALCASE_MODIFIERS_PENALTY];
       
       public static const NATION_TREE_TITLE_ENUM:Array = [NATION_TREE_TITLE_USSR,NATION_TREE_TITLE_GERMANY,NATION_TREE_TITLE_USA,NATION_TREE_TITLE_FRANCE,NATION_TREE_TITLE_UK,NATION_TREE_TITLE_CHINA,NATION_TREE_TITLE_JAPAN,NATION_TREE_TITLE_CZECH,NATION_TREE_TITLE_SWEDEN,NATION_TREE_TITLE_POLAND,NATION_TREE_TITLE_ITALY];
       
@@ -4855,18 +4727,6 @@ package
          return _loc2_;
       }
       
-      public static function skilldropwindow_study(param1:String) : String
-      {
-         var _loc2_:String = null;
-         _loc2_ = "#menu:" + "skillDropWindow/study/" + param1;
-         if(SKILLDROPWINDOW_STUDY_ENUM.indexOf(_loc2_) == -1)
-         {
-            DebugUtils.LOG_WARNING("[skilldropwindow_study]:locale key \"" + _loc2_ + "\" was not found");
-            return null;
-         }
-         return _loc2_;
-      }
-      
       public static function tankmanrecruitrenderer(param1:String) : String
       {
          var _loc2_:String = null;
@@ -4898,18 +4758,6 @@ package
          if(VEHICLEINFO_PARAMS_ENUM.indexOf(_loc2_) == -1)
          {
             DebugUtils.LOG_WARNING("[vehicleinfo_params]:locale key \"" + _loc2_ + "\" was not found");
-            return null;
-         }
-         return _loc2_;
-      }
-      
-      public static function tankmanpersonalcase_modifiers(param1:String) : String
-      {
-         var _loc2_:String = null;
-         _loc2_ = "#menu:" + "tankmanPersonalCase/modifiers/" + param1;
-         if(TANKMANPERSONALCASE_MODIFIERS_ENUM.indexOf(_loc2_) == -1)
-         {
-            DebugUtils.LOG_WARNING("[tankmanpersonalcase_modifiers]:locale key \"" + _loc2_ + "\" was not found");
             return null;
          }
          return _loc2_;

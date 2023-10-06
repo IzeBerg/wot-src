@@ -35,7 +35,7 @@ class PlatformWebApi(object):
         return self.__getApi().isInited()
 
     @w2c(W2CSchema, 'is_overlay_enabled')
-    def isOverlayEnabled(self):
+    def isOverlayEnabled(self, _):
         return getattr(self.__getApi(), 'isOverlayEnabled', lambda : False)()
 
     def __getApi(self):

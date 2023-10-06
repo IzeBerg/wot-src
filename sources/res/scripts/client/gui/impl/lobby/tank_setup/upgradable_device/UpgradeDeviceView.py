@@ -1,18 +1,19 @@
 import logging
 from frameworks.wulf import Array
 from gui.ClientUpdateManager import g_clientUpdateManager
+from gui.impl import backport
 from gui.impl.dialogs.dialog_template import DialogTemplateView
 from gui.impl.dialogs.dialog_template_button import CancelButton, ConfirmButton
 from gui.impl.gen import R
 from gui.impl.gen.view_models.constants.item_highlight_types import ItemHighlightTypes
 from gui.impl.gen.view_models.views.lobby.tank_setup.device_upgrade_dialog_model import DeviceUpgradeDialogModel
 from gui.impl.gen.view_models.views.lobby.tank_setup.dialogs.main_content.kpi_item_model import KpiItemModel
-from gui.impl.gen.view_models.views.lobby.tank_setup.dialogs.current_balance_model import CurrentBalanceModel
+from gui.impl.lobby.tank_setup.dialogs.dialog_helpers.balance import initBalance
 from gui.impl.pub.dialog_window import DialogButtons
 from gui.shared.event_dispatcher import showDeconstructionDeviceWindow
 from gui.shared.gui_items import getKpiValueString, GUI_ITEM_TYPE
 from gui.shared.money import Currency
-from gui.shared.items_cache import CACHE_SYNC_REASON
+from gui.shared.tooltips.common import getSimpleTooltipFactory
 from gui.shared.utils.requesters import REQ_CRITERIA
 from helpers import dependency
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
@@ -52,7 +53,7 @@ class UpgradableDeviceUpgradeConfirmView(DialogTemplateView):
         _fillDeviceInfo(modules, self.__currentModule, self.viewModel)
         canGetMoreCurrency = self.__canGetMoreCurrency()
         self.viewModel.setCanGetMoreCurrency(canGetMoreCurrency)
-        self.addButton(ConfirmButton(self.__getConfirmButtonTxtRes(), isDisabled=not (canGetMoreCurrency or self.__canPurchaseUpgrade())))
+        self.addButton(ConfirmButton(self.__getConfirmButtonTxtRes(), tooltipFactory=self.__getSubmitTooltipFactory(), isDisabled=self.__isSubmitDisabled(canGetMoreCurrency)))
         self.addButton(CancelButton(R.strings.dialogs.equipmentUpgrade.cancelButton()))
 
     def _finalize(self):
@@ -78,15 +79,7 @@ class UpgradableDeviceUpgradeConfirmView(DialogTemplateView):
         return any(item.intCD != self.__currentModule.intCD or item.inventoryCount > 1 for item in self.__itemsCache.items.getItems(GUI_ITEM_TYPE.OPTIONALDEVICE, REQ_CRITERIA.INVENTORY | REQ_CRITERIA.OPTIONAL_DEVICE.MODERNIZED).values())
 
     def __initBalance(self):
-        coinsOnAccount = self.__itemsCache.items.stats.actualMoney.get(Currency.EQUIP_COIN, 0)
-        with self.viewModel.transaction() as (model):
-            cur = CurrentBalanceModel()
-            cur.setCurrencyType(Currency.EQUIP_COIN)
-            cur.setCurrencyValue(int(coinsOnAccount))
-            balance = model.getBalance()
-            balance.clear()
-            balance.addViewModel(cur)
-            balance.invalidate()
+        initBalance(self.viewModel.getBalance(), (Currency.EQUIP_COIN,), self.__itemsCache)
 
     def __setUpgradeCost(self):
         upgradeCurrency = self.__upgradePrice.getCurrency()
@@ -105,19 +98,32 @@ class UpgradableDeviceUpgradeConfirmView(DialogTemplateView):
             return R.strings.dialogs.equipmentUpgrade.confirmButton()
         return R.strings.dialogs.equipmentUpgrade.getMoreCurrencyButton()
 
-    def __optDevicesUpdated(self, reason, diff):
-        if diff is None or GUI_ITEM_TYPE.OPTIONALDEVICE not in diff or reason != CACHE_SYNC_REASON.INVENTORY_RESYNC:
+    def __optDevicesUpdated(self, _, diff):
+        if diff is None or GUI_ITEM_TYPE.OPTIONALDEVICE not in diff:
             return
         self.__updateUpgradeStatus()
         return
 
     def __updateUpgradeStatus(self):
+        canGetMoreCurrency = self.__canGetMoreCurrency()
         button = self.getButton(DialogButtons.SUBMIT)
         if button is not None:
-            canGetMoreCurrency = self.__canGetMoreCurrency()
-            button.viewModel.setIsDisabled(not (canGetMoreCurrency or self.__canPurchaseUpgrade()))
-            self.viewModel.setCanGetMoreCurrency(canGetMoreCurrency)
+            button.isDisabled = self.__isSubmitDisabled(canGetMoreCurrency)
+            button.tooltipFactory = self.__getSubmitTooltipFactory()
+        self.viewModel.setCanGetMoreCurrency(canGetMoreCurrency)
         return
+
+    def __getSubmitTooltipFactory(self):
+        body = backport.text(R.strings.dialogs.equipmentUpgrade.getMoreCurrencyButtonTooltip.body())
+        if self.__isSubmitDisabled():
+            return getSimpleTooltipFactory(body=body)
+        else:
+            return
+
+    def __isSubmitDisabled(self, canGetMoreCurrency=None):
+        if canGetMoreCurrency is None:
+            canGetMoreCurrency = self.__canGetMoreCurrency()
+        return not (canGetMoreCurrency or self.__canPurchaseUpgrade())
 
 
 def _fillDeviceInfo(modules, currentModule, viewModel):

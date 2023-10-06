@@ -713,7 +713,7 @@ class RankedBattlesController(IRankedBattlesController, Notifiable, SeasonProvid
         isYearGap = self.isYearGap()
         isYearLBEnabled = self.isYearLBEnabled()
         hasCurSeason = self.getCurrentSeason() is not None
-        passedSeasons = self.getSeasonPassed()
+        passedSeasons = self.getSeasonsPassed()
         if isEnabled:
             if self.isFrozen() or not passedSeasons and not hasCurSeason:
                 self.__showPreSeason()

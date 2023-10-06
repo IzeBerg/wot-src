@@ -749,7 +749,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                             else:
                                 Cat.Tasks.ScreenInfo.ScreenInfoObject.setVisible(True)
                             return True
-                    if cmdMap.isFired(CommandMapping.CMD_INCREMENT_CRUISE_MODE, key) and isDown and self.__isVehicleAlive:
+                    if cmdMap.isFired(CommandMapping.CMD_INCREMENT_CRUISE_MODE, key) and isDown and self.__isVehicleAlive and not self.__isGuiCtrlModeMovingDisabled():
                         if self.__stopUntilFire:
                             self.__stopUntilFire = False
                             self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
@@ -766,7 +766,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                                 self.moveVehicle(self.makeVehicleMovementCommandByKeys(), isDown)
                         self.__updateCruiseControlPanel()
                         return True
-                    if cmdMap.isFired(CommandMapping.CMD_DECREMENT_CRUISE_MODE, key) and isDown and self.__isVehicleAlive:
+                    if cmdMap.isFired(CommandMapping.CMD_DECREMENT_CRUISE_MODE, key) and isDown and self.__isVehicleAlive and not self.__isGuiCtrlModeMovingDisabled():
                         if self.__stopUntilFire:
                             self.__stopUntilFire = False
                             self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
@@ -880,7 +880,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         if app is None:
             return False
         else:
-            if self.arenaGuiType == constants.ARENA_GUI_TYPE.COMP7 and self.arena.period <= ARENA_PERIOD.PREBATTLE:
+            if self.arenaGuiType in ARENA_GUI_TYPE.COMP7_RANGE and self.arena.period <= ARENA_PERIOD.PREBATTLE:
                 return not app.hasGuiControlModeConsumers(BATTLE_VIEW_ALIASES.COMP7_TANK_CAROUSEL_FILTER_POPOVER)
             return not self.isForcedGuiControlMode()
 
@@ -1151,6 +1151,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.HEALTH, health, vehicleID)
         if not wasAlive and isAlive:
             self.__disableRespawnMode = True
+            self.__isObserver = None
             self.guiSessionProvider.movingToRespawnBase(BigWorld.entities.get(self.playerVehicleID))
             self.inputHandler.movingToRespawnBase()
             if self.vehicle:
@@ -1229,6 +1230,9 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         self.guiSessionProvider.shared.ammo.setDualGunQuickChangeReady(self.__canMakeDualShot)
         LOG_DEBUG_DEV('updateDualGunState', vehicleID, activeGun, gunStates, cooldownTimes)
         return
+
+    def stopSetupSelection(self):
+        self.guiSessionProvider.shared.prebattleSetups.stopSelection()
 
     def beforeSetupUpdate(self, vehicleID):
         vehicleDescriptor = self.__getDetailedVehicleDescriptor()
@@ -1382,6 +1386,9 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             if ctrl is not None:
                 ctrl.onVehicleStatusChanged()
             return
+
+    def setVehicleOverturned(self, isOverturned):
+        self.__isVehicleOverturned = isOverturned
 
     def updateVehicleSettings(self, vehicleSettings):
         for vehicleSetting in vehicleSettings:
@@ -1904,7 +1911,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.__playOwnVehicleAutorotationSound(enable)
 
     def enableServerAim(self, enable):
-        self.base.setDevelopmentFeature(0, 'server_marker', enable, '')
+        self.cell.setServerMarker(enable)
 
     def autoAim(self, target=None, magnetic=False):
         if ARENA_BONUS_TYPE_CAPS.checkAny(self.arenaBonusType, ARENA_BONUS_TYPE_CAPS.DISABLE_AUTO_AIM):
@@ -2199,10 +2206,10 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         else:
             return self.__ownVehicleStabMProv
 
-    def getOwnVehicleSpeeds(self, getInstantaneous=False):
+    def getOwnVehicleSpeeds(self, getInstantaneous=False, isAttached=False):
         vehicle = BigWorld.entity(self.playerVehicleID)
         player = BigWorld.player()
-        if player.isObserver():
+        if player.isObserver() or isAttached:
             vehicle = player.getVehicleAttached()
         if vehicle is None or not vehicle.isStarted:
             return (0.0, 0.0)
@@ -2761,7 +2768,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.base.controlAnotherVehicle(vehicleID, 2)
             self.gunRotator.clientMode = False
             self.gunRotator.start()
-            self.base.setDevelopmentFeature(0, 'server_marker', True, '')
+            self.cell.setServerMarker(True)
             self.base.setDevelopmentFeature(0, 'heal', 0, '')
             self.base.setDevelopmentFeature(0, 'stop_bot', 0, '')
             self.inputHandler.setKillerVehicleID(None)
@@ -2805,7 +2812,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         msg += '\tarena: %s\n' % self.arena.arenaType.geometryName
         msg += '\tposition: ' + str(self.position)
         LOG_NOTE(msg)
-        self.base.setDevelopmentFeature(0, 'log_lag', True, '')
+        self.base.logLag()
 
     def __updateCruiseControlPanel(self):
         if self.__stopUntilFire or not self.__isVehicleAlive:
@@ -3027,6 +3034,9 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 return desc
             return vehicleAttached.typeDescriptor
             return
+
+    def __isGuiCtrlModeMovingDisabled(self):
+        return self.isForcedGuiControlMode() and self.getForcedGuiControlModeFlags() & GUI_CTRL_MODE_FLAG.MOVING_DISABLED > 0
 
     def muteSounds(self, newMuteSounds):
         self._muteSounds = newMuteSounds

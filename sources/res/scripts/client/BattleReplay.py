@@ -27,6 +27,7 @@ REPLAY_TIME_MARK_CLIENT_READY = 2147483648
 REPLAY_TIME_MARK_REPLAY_FINISHED = 2147483649
 REPLAY_TIME_MARK_CURRENT_TIME = 2147483650
 FAST_FORWARD_STEP = 20.0
+MIN_REPLAY_TIME = 1
 _POSTMORTEM_CTRL_MODES = (
  CTRL_MODE_NAME.POSTMORTEM, CTRL_MODE_NAME.DEATH_FREE_CAM, CTRL_MODE_NAME.RESPAWN_DEATH)
 _FORWARD_INPUT_CTRL_MODES = (
@@ -376,6 +377,13 @@ class BattleReplay(object):
         if self.__replayCtrl.startPlayback(fileName):
             self.__playbackSpeedIdx = self.__playbackSpeedModifiers.index(1.0)
             self.__savedPlaybackSpeedIdx = self.__playbackSpeedIdx
+            replayEndTime = self.__replayCtrl.getReplayEndTime()
+            totalReplayTime = self.__replayCtrl.getTimeMark(REPLAY_TIME_MARK_REPLAY_FINISHED)
+            replayStartTime = self.__replayCtrl.getReplayStartTime()
+            replayStartTime = min(replayStartTime, replayEndTime - MIN_REPLAY_TIME, totalReplayTime - MIN_REPLAY_TIME)
+            replayStartTime = max(replayStartTime, 0)
+            self.__replayStartTime = replayStartTime
+            self.__replayEndTime = replayEndTime
             g_replayEvents.onPlaying()
             return True
         else:
@@ -883,6 +891,12 @@ class BattleReplay(object):
             self.__replayCtrl.onBattleLoadingFinished()
 
     def onReplayFinished(self):
+        replayTimes = self.__replayCtrl.getReplayTimes() - 1
+        if replayTimes > 0:
+            self.__replayCtrl.setReplayTimes(replayTimes)
+            self.timeWarp(self.__replayStartTime - self.currentTime)
+            return
+        self.__replayCtrl.processFinish()
         if not self.scriptModalWindowsEnabled:
             self.stop()
             return
@@ -943,8 +957,13 @@ class BattleReplay(object):
         vehTeam = arenaVehicles[vehID]['team']
         return currTeam == vehTeam
 
-    def onPostTickCallback(self, currentTick, totalTicks):
+    def onPostTickCallback(self):
         self.__aoi.flush(self.getControlMode())
+        currentTime = self.currentTime
+        if currentTime < self.__replayStartTime:
+            self.timeWarp(self.__replayStartTime - currentTime)
+        elif currentTime > self.__replayEndTime:
+            self.onReplayFinished()
 
     def setAmmoSetting(self, idx):
         if not isPlayerAvatar():

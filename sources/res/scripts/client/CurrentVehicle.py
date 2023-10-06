@@ -1,3 +1,4 @@
+from typing import Optional
 import BigWorld
 from constants import CustomizationInvData
 from gui.SystemMessages import pushMessagesFromResult

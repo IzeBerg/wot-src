@@ -8,6 +8,8 @@ from PlayerEvents import g_playerEvents
 from aih_constants import CTRL_MODE_NAME
 from comp7_common import ROLE_EQUIPMENT_TAG
 from constants import VEHICLE_SETTING, EQUIPMENT_STAGES, ARENA_BONUS_TYPE
+from gui.impl import backport
+from gui.impl.gen import R
 from gui.shared.system_factory import collectEquipmentItem
 from gui.Scaleform.genConsts.ANIMATION_TYPES import ANIMATION_TYPES
 from gui.Scaleform.genConsts.BATTLE_MARKERS_CONSTS import BATTLE_MARKERS_CONSTS
@@ -19,7 +21,7 @@ from gui.shared.utils.decorators import ReprInjector
 from gui.sounds.epic_sound_constants import EPIC_SOUND
 from helpers import i18n, dependency
 from items import vehicles, EQUIPMENT_TYPES, ITEM_TYPES
-from points_of_interest_shared import POI_EQUIPMENT_TAG
+from points_of_interest_shared import POI_EQUIPMENT_TAG, PoiTypesByPoiEquipmentName
 from shared_utils import findFirst, forEach, CONST_CONTAINER
 from skeletons.gui.battle_session import IBattleSessionProvider
 from soft_exception import SoftException
@@ -53,11 +55,16 @@ class NotReadyError(_ActivationError):
 
 class PoiUnavailableError(_ActivationError):
 
+    @staticmethod
+    def _getPoiName(equipmentName):
+        poiType = PoiTypesByPoiEquipmentName.get(equipmentName)
+        return backport.text(R.strings.points_of_interest.type.dyn(poiType.name.lower())())
+
     def __new__(cls, name):
-        return super(PoiUnavailableError, cls).__new__(cls, 'equipmentPoiUnavailable', {'name': name})
+        return super(PoiUnavailableError, cls).__new__(cls, 'equipmentPoiUnavailable', {'name': cls._getPoiName(name)})
 
     def __init__(self, name):
-        super(PoiUnavailableError, self).__init__('equipmentPoiUnavailable', {'name': name})
+        super(PoiUnavailableError, self).__init__('equipmentPoiUnavailable', {'name': self._getPoiName(name)})
 
 
 class Comp7RoleSkillUnavailable(_ActivationError):
@@ -1006,7 +1013,7 @@ class _PoiEquipmentItemVS(_VisualScriptItem):
 
     def _getErrorMsg(self):
         if self._stage in (EQUIPMENT_STAGES.UNAVAILABLE, EQUIPMENT_STAGES.NOT_RUNNING, EQUIPMENT_STAGES.EXHAUSTED):
-            return PoiUnavailableError(self._descriptor.userString)
+            return PoiUnavailableError(self._descriptor.name)
         return super(_PoiEquipmentItemVS, self)._getErrorMsg()
 
 
@@ -1020,7 +1027,7 @@ class _PoiArtilleryItem(_ArtilleryItem):
 
     def _getErrorMsg(self):
         if self._stage in (EQUIPMENT_STAGES.UNAVAILABLE, EQUIPMENT_STAGES.NOT_RUNNING, EQUIPMENT_STAGES.EXHAUSTED):
-            return PoiUnavailableError(self._descriptor.userString)
+            return PoiUnavailableError(self._descriptor.name)
         return super(_PoiArtilleryItem, self)._getErrorMsg()
 
     def canActivate(self, entityName=None, avatar=None):

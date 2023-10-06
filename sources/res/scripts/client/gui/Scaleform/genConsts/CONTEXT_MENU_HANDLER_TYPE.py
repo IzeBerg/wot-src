@@ -1,7 +1,6 @@
 
 
 class CONTEXT_MENU_HANDLER_TYPE(object):
-    CREW = 'crew'
     CHANNEL_LIST = 'channelList'
     VEHICLE = 'vehicle'
     RESEARCH_ITEM = 'researchItem'
@@ -58,3 +57,6 @@ class CONTEXT_MENU_HANDLER_TYPE(object):
     TANK_SETUP_HANGAR_SHELL_SLOT = 'tankSetupHangarShellSlot'
     POST_PROGRESSION_VEHICLE = 'postProgressionVehicle'
     BR_BATTLE_RESULT_CONTEXT_MENU = 'brBattleResultContextMenu'
+    CREW_MEMBER = 'crewMember'
+    CREW_TANKMAN = 'crewTankman'
+    WIN_BACK_CALL_FRIEND_CONTEXT_MENU = 'winBackCallFriendContextMenu'

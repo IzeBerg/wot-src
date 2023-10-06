@@ -322,6 +322,8 @@ class Source(object):
              season, cycle)
         if eventType in EVENT_TYPE.QUESTS_WITH_SHOP_BUTTON:
             info['shopButton'] = questSection.readString('shopButton', 'hide')
+        if questSection.has_key('notificationTitleText'):
+            info['notificationTitleText'] = self.__readMetaSection(questSection['notificationTitleText'])
         if questSection.has_key('notificationText'):
             info['notificationText'] = self.__readMetaSection(questSection['notificationText'])
         if eventType == EVENT_TYPE.TOKEN_QUEST:

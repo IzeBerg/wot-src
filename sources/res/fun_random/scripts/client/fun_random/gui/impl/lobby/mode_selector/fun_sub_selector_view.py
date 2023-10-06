@@ -1,7 +1,7 @@
 import logging, typing
 from adisp import adisp_process
 from battle_modifiers_ext.constants_ext import ClientDomain
-from frameworks.wulf import ViewFlags, ViewSettings, ViewStatus, WindowFlags
+from frameworks.wulf import ViewFlags, ViewSettings, ViewStatus
 from fun_random.gui.feature.fun_constants import FunSubModesState
 from fun_random.gui.feature.models.common import FunSubModesStatus
 from fun_random.gui.feature.util.fun_mixins import FunAssetPacksMixin, FunProgressionWatcher, FunSubModesWatcher
@@ -19,9 +19,8 @@ from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.mode_selector.tooltips.mode_selector_tooltips_constants import ModeSelectorTooltipsConstants
 from gui.impl.lobby.tooltips.additional_rewards_tooltip import AdditionalRewardsTooltip
 from gui.impl.pub import ViewImpl
-from gui.impl.pub.lobby_window import LobbyWindow
 from gui.shared import events, g_eventBus
-from gui.shared.events import ModeSelectorLoadedEvent, ModeSubSelectorEvent, FullscreenModeSelectorEvent
+from gui.shared.events import ModeSubSelectorEvent, FullscreenModeSelectorEvent
 from helpers import dependency, time_utils
 from shared_utils import findFirst
 from skeletons.gui.lobby_context import ILobbyContext
@@ -42,10 +41,11 @@ class FunModeSubSelectorView(ViewImpl, FunAssetPacksMixin, FunSubModesWatcher, F
     __slots__ = ('__tooltips', )
     __lobbyContext = dependency.descriptor(ILobbyContext)
 
-    def __init__(self):
-        settings = ViewSettings(layoutID=R.views.fun_random.lobby.feature.FunRandomModeSubSelector(), flags=ViewFlags.LOBBY_TOP_SUB_VIEW, model=FunRandomSubSelectorModel())
+    def __init__(self, layoutID):
+        settings = ViewSettings(layoutID=layoutID, flags=ViewFlags.LOBBY_TOP_SUB_VIEW, model=FunRandomSubSelectorModel())
         self.__tooltips = {}
         super(FunModeSubSelectorView, self).__init__(settings)
+        g_eventBus.handleEvent(ModeSubSelectorEvent(ModeSubSelectorEvent.CHANGE_VISIBILITY, ctx={'visible': True}))
 
     @property
     def viewModel(self):
@@ -92,7 +92,6 @@ class FunModeSubSelectorView(ViewImpl, FunAssetPacksMixin, FunSubModesWatcher, F
     def closeSelection(self):
         self.__removeSelectorListeners()
         g_eventBus.handleEvent(events.DestroyGuiImplViewEvent(R.views.lobby.mode_selector.ModeSelectorView()))
-        self.destroyWindow()
 
     def setDisabledProgression(self, model=None):
         model = model or self.viewModel
@@ -101,7 +100,6 @@ class FunModeSubSelectorView(ViewImpl, FunAssetPacksMixin, FunSubModesWatcher, F
 
     def _onLoading(self, *args, **kwargs):
         super(FunModeSubSelectorView, self)._onLoading(*args, **kwargs)
-        g_eventBus.handleEvent(ModeSubSelectorEvent(ModeSubSelectorEvent.CHANGE_VISIBILITY, ctx={'visible': True}))
         self.__addListeners()
         self.__invalidate(self.getSubModesStatus())
 
@@ -127,7 +125,6 @@ class FunModeSubSelectorView(ViewImpl, FunAssetPacksMixin, FunSubModesWatcher, F
         self.startSubStatusListening(self.__invalidateAll, tickMethod=self.__invalidateSubModesTimer)
         self.startProgressionListening(self.__invalidateProgression, tickMethod=self.__invalidateProgressionTimer)
         g_eventBus.addListener(FullscreenModeSelectorEvent.NAME, self.__onModeSelectorClosed)
-        g_eventBus.addListener(ModeSelectorLoadedEvent.NAME, self.__onModeSelectorLoaded)
 
     def __removeListeners(self):
         self.stopSubSettingsListening(self.__invalidateAll)
@@ -137,7 +134,6 @@ class FunModeSubSelectorView(ViewImpl, FunAssetPacksMixin, FunSubModesWatcher, F
 
     def __removeSelectorListeners(self):
         g_eventBus.removeListener(FullscreenModeSelectorEvent.NAME, self.__onModeSelectorClosed)
-        g_eventBus.removeListener(ModeSelectorLoadedEvent.NAME, self.__onModeSelectorLoaded)
 
     def __getSubModeByEvent(self, event):
         assetsPointer = event.getArgument('modeName', DEFAULT_ASSETS_PACK)
@@ -198,12 +194,6 @@ class FunModeSubSelectorView(ViewImpl, FunAssetPacksMixin, FunSubModesWatcher, F
             self.abortSelection()
         return
 
-    def __onModeSelectorLoaded(self, *_):
-        parent = self.getParentWindow()
-        if parent is not None:
-            parent.bringToFront()
-        return
-
     def __onAbortSelection(self, *_):
         self.__removeSelectorListeners()
         g_eventBus.handleEvent(ModeSubSelectorEvent(ModeSubSelectorEvent.CHANGE_VISIBILITY, ctx={'visible': False}))
@@ -256,10 +246,3 @@ class FunModeSubSelectorView(ViewImpl, FunAssetPacksMixin, FunSubModesWatcher, F
     def __toggleSelectorClickProcessing(self, isClickProcessing):
         ctx = {'isClickProcessing': isClickProcessing}
         g_eventBus.handleEvent(ModeSubSelectorEvent(ModeSubSelectorEvent.CLICK_PROCESSING, ctx=ctx))
-
-
-class FunModeSubSelectorWindow(LobbyWindow):
-    __slots__ = ()
-
-    def __init__(self):
-        super(FunModeSubSelectorWindow, self).__init__(wndFlags=WindowFlags.WINDOW, content=FunModeSubSelectorView())

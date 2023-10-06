@@ -741,6 +741,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BATTLEROYALEBRCOIN:String = "#messenger:serviceChannelMessages/BRbattleResults/battleRoyaleBrCoin";
       
+      public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BRPROGRESSIONTITLE:String = "#messenger:serviceChannelMessages/BRbattleResults/BRProgressionTitle";
+      
       public static const SERVICECHANNELMESSAGES_BOOTCAMP_FINISHED:String = "#messenger:serviceChannelMessages/bootcamp/finished";
       
       public static const SERVICECHANNELMESSAGES_BOOTCAMP_AWARDS:String = "#messenger:serviceChannelMessages/bootcamp/awards";
@@ -960,6 +962,12 @@ package
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_PURCHASE_TITLE_STEAM_INVENTORY:String = "#messenger:serviceChannelMessages/invoiceReceived/purchase/title/steam_inventory";
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_PURCHASE_RECEIVED_FROM:String = "#messenger:serviceChannelMessages/invoiceReceived/purchase/received_from";
+      
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_PRESTIGEADDED:String = "#messenger:serviceChannelMessages/invoiceReceived/prestigeAdded";
+      
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_PRESTIGESET_FULL:String = "#messenger:serviceChannelMessages/invoiceReceived/prestigeSet/full";
+      
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_PRESTIGESET_JUSTLEVEL:String = "#messenger:serviceChannelMessages/invoiceReceived/prestigeSet/justLevel";
       
       public static const SERVICECHANNELMESSAGES_QUOTEDTEXTTEMPLATE:String = "#messenger:serviceChannelMessages/quotedTextTemplate";
       
@@ -1206,8 +1214,6 @@ package
       public static const SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_PLAYERINSCRIPTIONS:String = "#messenger:serviceChannelMessages/serverDowntimeCompensation/playerInscriptions";
       
       public static const SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_RENTALS:String = "#messenger:serviceChannelMessages/serverDowntimeCompensation/rentals";
-      
-      public static const SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_PREMIUM_SUBS:String = "#messenger:serviceChannelMessages/serverDowntimeCompensation/premium_subs";
       
       public static const SERVICECHANNELMESSAGES_ACTIONBEGIN:String = "#messenger:serviceChannelMessages/actionBegin";
       
@@ -1933,6 +1939,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_HEADER_VOTED:String = "#messenger:serviceChannelMessages/battlePassReward/header/voted";
       
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_HEADER_AUTOSELECTREWARD:String = "#messenger:serviceChannelMessages/battlePassReward/header/autoSelectReward";
+      
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BATTLE_NEWLEVEL_TEXT:String = "#messenger:serviceChannelMessages/battlePassReward/battle/newLevel/text";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BATTLE_FINAL_TEXT:String = "#messenger:serviceChannelMessages/battlePassReward/battle/final/text";
@@ -2364,6 +2372,22 @@ package
       public static const SERVICECHANNELMESSAGES_WINBACK_AWARDS_DISCOUNTHEADER:String = "#messenger:serviceChannelMessages/winback/awards/discountHeader";
       
       public static const SERVICECHANNELMESSAGES_FINANCIAL_ADD:String = "#messenger:serviceChannelMessages/Financial/add";
+      
+      public static const SERVICECHANNELMESSAGES_PRESTIGE_LVLUP_TITLE:String = "#messenger:serviceChannelMessages/prestige/lvlUp/title";
+      
+      public static const SERVICECHANNELMESSAGES_PRESTIGE_LVLUP_TEXT:String = "#messenger:serviceChannelMessages/prestige/lvlUp/text";
+      
+      public static const SERVICECHANNELMESSAGES_PRESTIGE_LVLUP_BUTTON:String = "#messenger:serviceChannelMessages/prestige/lvlUp/button";
+      
+      public static const SERVICECHANNELMESSAGES_PRESTIGE_FIRSTENTRY_TITLE:String = "#messenger:serviceChannelMessages/prestige/firstEntry/title";
+      
+      public static const SERVICECHANNELMESSAGES_PRESTIGE_FIRSTENTRY_TEXT:String = "#messenger:serviceChannelMessages/prestige/firstEntry/text";
+      
+      public static const SERVICECHANNELMESSAGES_PRESTIGE_FIRSTENTRY_BUTTON:String = "#messenger:serviceChannelMessages/prestige/firstEntry/button";
+      
+      public static const SERVICECHANNELMESSAGES_STEAMEMAILCOMPLETION_HEADER:String = "#messenger:serviceChannelMessages/steamEmailCompletion/header";
+      
+      public static const SERVICECHANNELMESSAGES_STEAMEMAILCOMPLETION_BODY:String = "#messenger:serviceChannelMessages/steamEmailCompletion/body";
       
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        

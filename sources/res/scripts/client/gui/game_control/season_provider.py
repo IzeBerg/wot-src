@@ -193,7 +193,7 @@ class SeasonProvider(ISeasonProvider):
             return self._PERIOD_INFO_CLASS(now, periodType, PeriodInfo.leftSeasonBorder(currSeason), PeriodInfo.rightSeasonBorder(currSeason), PeriodInfo.leftCycleBorder(currCycle), PeriodInfo.rightCycleBorder(currCycle), primeDelta)
 
     def getPreviousSeason(self, now=None):
-        seasonsPassed = self.getSeasonPassed(now)
+        seasonsPassed = self.getSeasonsPassed(now)
         if seasonsPassed:
             seasonID, _ = max(seasonsPassed, key=itemgetter(1))
             return self.getSeason(seasonID)
@@ -276,7 +276,7 @@ class SeasonProvider(ISeasonProvider):
         else:
             return
 
-    def getSeasonPassed(self, now=None):
+    def getSeasonsPassed(self, now=None):
         now = now or self.__getNow()
         settings = self.__getSeasonSettings()
         seasonsPassed = []
@@ -286,6 +286,9 @@ class SeasonProvider(ISeasonProvider):
                 seasonsPassed.append((seasonID, endSeason))
 
         return seasonsPassed
+
+    def getAllSeasons(self):
+        return sorted(list(self.getSeason(sID) for sID in self.__getSeasonSettings().seasons.keys()), key=lambda s: s.getNumber())
 
     def getTimer(self, now=None, peripheryID=None):
         now = now or self.__getNow()

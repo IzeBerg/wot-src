@@ -21,7 +21,7 @@ class CollectionsMainView(ViewImpl):
 
     def __init__(self):
         settings = ViewSettings(R.views.lobby.collection.CollectionsMainView())
-        settings.flags = ViewFlags.COMPONENT
+        settings.flags = ViewFlags.VIEW
         settings.model = CollectionsMainViewModel()
         self.__wasFirstActivation = False
         super(CollectionsMainView, self).__init__(settings)
@@ -107,9 +107,11 @@ class CollectionsMainView(ViewImpl):
         collectionModel.setIsActive(collection.isActive)
         collectionModel.setIsNew(isNewCollection(collectionID, collectionsSystem=self.__collectionsSystem) and not isIntroOpen)
         itemCount = self.__collectionsSystem.getReceivedProgressItemCount(collectionID)
-        collectionModel.setItemCount(itemCount if not isIntroOpen else getLastShownCollectionBalance(collectionID))
-        collectionModel.setMaxCount(self.__collectionsSystem.getMaxProgressItemCount(collectionID))
-        collectionModel.setCompletionWasShown(isCompletedCollectionShown(collectionID))
+        lastShownBalance = getLastShownCollectionBalance(collectionID)
+        collectionModel.setItemCount(itemCount if not isIntroOpen else min(lastShownBalance, itemCount))
+        maxCount = self.__collectionsSystem.getMaxProgressItemCount(collectionID)
+        collectionModel.setMaxCount(maxCount)
+        collectionModel.setCompletionWasShown(isCompletedCollectionShown(collectionID) and itemCount == maxCount)
         setLastShownCollectionBalance(collectionID, itemCount)
 
     def __onSettingsChanged(self):

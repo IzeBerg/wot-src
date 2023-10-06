@@ -13,9 +13,9 @@ package net.wg.gui.components.advanced
       
       public var mcLoader:ScalableIconWrapper;
       
-      private var _iconSource:String;
-      
       protected var isIconSourceChanged:Boolean;
+      
+      private var _iconSource:String;
       
       public function ScalableIconButton()
       {
@@ -41,22 +41,19 @@ package net.wg.gui.components.advanced
          this.loader.addEventListener(UILoaderEvent.COMPLETE,this.iconLoadingCompleteHandler);
       }
       
-      protected function iconLoadingCompleteHandler(param1:UILoaderEvent) : void
-      {
-         invalidate();
-         this.loader.x = Math.round((_width - this.loader.width) / 2);
-         this.loader.y = Math.round((_height - this.loader.height) / 2);
-      }
-      
       override protected function draw() : void
       {
-         if(this.isIconSourceChanged)
+         super.draw();
+         if(this.isIconSourceChanged && isInvalid(InvalidationType.DATA))
          {
             this.isIconSourceChanged = false;
             this.loader.source = this._iconSource;
-            invalidate(InvalidationType.SIZE);
          }
-         super.draw();
+         if(isInvalid(InvalidationType.SIZE))
+         {
+            this.loader.x = _width - this.loader.width >> 1;
+            this.loader.y = _height - this.loader.height >> 1;
+         }
       }
       
       [Inspectable(name="iconSource",type="String")]
@@ -71,8 +68,13 @@ package net.wg.gui.components.advanced
          {
             this._iconSource = param1;
             this.isIconSourceChanged = true;
-            invalidate();
+            invalidateData();
          }
+      }
+      
+      protected function iconLoadingCompleteHandler(param1:UILoaderEvent) : void
+      {
+         invalidateSize();
       }
    }
 }

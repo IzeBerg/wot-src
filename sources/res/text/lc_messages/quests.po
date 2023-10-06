@@ -319,8 +319,13 @@ msgstr "ВЫБЕРИТЕ КАМУФЛЯЖ"
 msgid "action/chain/hint/changeDocuments"
 msgstr "СКИДКА НА СМЕНУ ДОКУМЕНТОВ"
 
-msgid "action/chain/hint/changeRole"
-msgstr "НАЖМИТЕ, ЧТОБЫ ВЫБРАТЬ НОВУЮ СПЕЦИАЛЬНОСТЬ"
+msgid "action/chain/hint/changeRoleDiscountAvailable"
+msgstr ""
+"СМЕНА СПЕЦИАЛЬНОСТИ\n"
+"ДОСТУПНА СКИДКА"
+
+msgid "action/chain/hint/crewRetainingDiscountAvailable"
+msgstr "СКИДКА НА ПЕРЕОБУЧЕНИЕ ЭКИПАЖА"
 
 msgid "action/chain/hint/crewRetraining"
 msgstr "СКИДКА НА ОБУЧЕНИЕ И ПЕРЕОБУЧЕНИЕ ЭКИПАЖА"
@@ -329,29 +334,28 @@ msgid "action/chain/hint/customization"
 msgstr "ПЕРЕЙДИТЕ ВО ВНЕШНИЙ ВИД"
 
 msgid "action/chain/hint/dropSkills"
-msgstr "СБРОСИТЬ НАВЫКИ"
+msgstr "НАЖМИТЕ, ЧТОБЫ СБРОСИТЬ НАВЫКИ"
 
 msgid "action/chain/hint/emblems"
 msgstr "ВЫБЕРИТЕ ЭМБЛЕМЫ"
 
-msgid "action/chain/hint/freeXPToTMan"
-msgstr ""
-"БОНУС К ПЕРЕВОДУ СВОБОДНОГО\n"
-"ОПЫТА В ОПЫТ ЭКИПАЖА"
-
 msgid "action/chain/hint/inscriptions"
 msgstr "ВЫБЕРИТЕ НАДПИСИ"
 
+msgid "action/chain/hint/openCrewBooks"
+msgstr "НАЖМИТЕ, ЧТОБЫ ПЕРЕЙТИ К УСКОРЕННОМУ ОБУЧЕНИЮ"
+
 msgid "action/chain/hint/openPersonalCase"
-msgstr ""
-"НАЖМИТЕ, ЧТОБЫ ОТКРЫТЬ\n"
-"ЛИЧНОЕ ДЕЛО"
+msgstr "НАЖМИТЕ, ЧТОБЫ ОТКРЫТЬ ПРОФИЛИ"
 
 msgid "action/chain/hint/premDays"
 msgstr "СКИДКА НА ПРЕМИУМ АККАУНТ"
 
 msgid "action/chain/hint/removalCost"
 msgstr "СКИДКА НА ДЕМОНТАЖ"
+
+msgid "action/chain/hint/retrainingDiscountAvailable"
+msgstr "ДОСТУПНА СКИДКА НА ПЕРЕОБУЧЕНИЕ"
 
 msgid "action/chain/hint/shellsPrice"
 msgstr "ПЕРЕЙТИ К СНАРЯДАМ"
@@ -1296,6 +1300,9 @@ msgstr "Медаль: %(name)s"
 msgid "bonuses/dossier/badge"
 msgstr "Нашивка: %(name)s"
 
+msgid "bonuses/equipCoin/description"
+msgstr "%(value)s компонентов"
+
 msgid "bonuses/eventCoin/description"
 msgstr "%(value)s юбилейных монет"
 
@@ -1867,6 +1874,9 @@ msgstr "ОФ-попадания"
 
 msgid "details/conditions/cumulative/explosionHitsReceived"
 msgstr "Полученные ОФ-попадания"
+
+msgid "details/conditions/cumulative/factualXP"
+msgstr "Заработанный опыт (без учёта боевых задач)"
 
 msgid "details/conditions/cumulative/formation"
 msgstr "Параметр для формирования: %(param)s"

@@ -44,6 +44,7 @@ BATTLEPASS_CAROUSEL_FILTER_CLIENT_1 = 'BATTLEPASS_CAROUSEL_FILTER_CLIENT_1'
 ROYALE_CAROUSEL_FILTER_1 = 'ROYALE_CAROUSEL_FILTER_1'
 ROYALE_CAROUSEL_FILTER_2 = 'ROYALE_CAROUSEL_FILTER_2'
 ROYALE_CAROUSEL_FILTER_CLIENT_1 = 'ROYALE_CAROUSEL_FILTER_CLIENT_1'
+ROYALE_INTRO_VIDEO_SHOWN = 'ROYALE_INTRO_VIDEO_SHOWN'
 MAPBOX_CAROUSEL_FILTER_1 = 'MAPBOX_CAROUSEL_FILTER_1'
 MAPBOX_CAROUSEL_FILTER_2 = 'MAPBOX_CAROUSEL_FILTER_2'
 MAPBOX_CAROUSEL_FILTER_CLIENT_1 = 'MAPBOX_CAROUSEL_FILTER_CLIENT_1'
@@ -158,6 +159,7 @@ IBC_HINT_SECTION = 'battleCommunicationHint'
 RESERVES_HINT_SECTION = 'reservesHintSection'
 COMMANDER_CAM_HINT_SECTION = 'commanderCamHintSection'
 MINIMAP_IBC_HINT_SECTION = 'minimapHintSection'
+DEV_MAPS_HINT_SECTION = 'devMapsHintSection'
 WATCHED_PRE_BATTLE_TIPS_SECTION = 'watchedPreBattleTipsSection'
 LAST_DISPLAY_DAY = 'lastDisplayDay'
 HINTS_LEFT = 'hintsLeft'
@@ -267,6 +269,11 @@ class Winback(object):
     COMPLETED_STARTING_QUEST_COUNT = 'completedStartingQuestCount'
     INTRO_SHOWN = 'introShown'
     BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN = 'battleSelectorSettingsBulletShown'
+
+
+class WinBackCall(object):
+    WIN_BACK_CALL_UI_SECTION = 'winBackCall'
+    WIN_BACK_CALL_SHOWN_INTRO = 'winBackCallIntroShowed'
 
 
 KNOWN_SELECTOR_BATTLES = 'knownSelectorBattles'
@@ -704,6 +711,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                       'isDisplayPlatoonMembersClicked': False, 
                                       GuiSettingsBehavior.VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW: True, 
                                       GuiSettingsBehavior.RESOURCE_WELL_INTRO_SHOWN: False, 
+                                      GuiSettingsBehavior.IS_PRESTIGE_ONBOARDING_VIEWED: False, 
+                                      GuiSettingsBehavior.PRESTIGE_FIRST_ENTRY_NOTIFICATION_SHOWN: False, 
                                       'birthdayCalendarIntroShowed': False, 
                                       'isComp7IntroShown': False}, 
                  EULA_VERSION: {'version': 0}, FORT_MEMBER_TUTORIAL: {'wasShown': False}, IGR_PROMO: {'wasShown': False}, CONTACTS: {'showOfflineUsers': True, 'showOthersCategory': True}, GOLD_FISH_LAST_SHOW_TIME: 0, 
@@ -903,7 +912,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                           GAME.SHOW_ARTY_HIT_ON_MAP: True, 
                                                           GAME.SWITCH_SETUPS_IN_LOADING: True, 
                                                           GAME.SCROLL_SMOOTHING: True, 
-                                                          GAME.LIMITED_UI_ACTIVE: True}, 
+                                                          GAME.LIMITED_UI_ACTIVE: True, 
+                                                          GAME.GAMEPLAY_DEV_MAPS: True}, 
                                          'GraphicSettings': {'ScreenSettings': {'gammaSetting': True, 
                                                                                 'colorFilter': True}, 
                                                              'AdvancedGraphicSettings': {'HAVOK_ENABLED': True, 
@@ -958,7 +968,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                                           NUM_BATTLES: 0}, 
                                             HELP_SCREEN_HINT_SECTION: {}, IBC_HINT_SECTION: {HINTS_LEFT: 10}, 
                                             RESERVES_HINT_SECTION: {HINTS_LEFT: 10}}, 
-                  PRE_BATTLE_ROLE_HINT_SECTION: {}, FUN_RANDOM_HINT_SECTION: {}, MAPBOX_HINT_SECTION: {}, COMMANDER_CAM_HINT_SECTION: {HINTS_LEFT: 5}, 
+                  PRE_BATTLE_ROLE_HINT_SECTION: {}, FUN_RANDOM_HINT_SECTION: {}, MAPBOX_HINT_SECTION: {}, DEV_MAPS_HINT_SECTION: {}, COMMANDER_CAM_HINT_SECTION: {HINTS_LEFT: 5}, 
                   MINIMAP_IBC_HINT_SECTION: {HINTS_LEFT: 10}, 
                   WATCHED_PRE_BATTLE_TIPS_SECTION: {}, SIEGE_HINT_SECTION: {HINTS_LEFT: 3, 
                                        LAST_DISPLAY_DAY: 0, 
@@ -975,8 +985,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   RADAR_HINT_SECTION: {HINTS_LEFT: 3, 
                                        LAST_DISPLAY_DAY: 0, 
                                        NUM_BATTLES: 0}, 
-                  CREW_SKINS_VIEWED: set(), 
-                  CREW_BOOKS_VIEWED: {CREW_BOOK_RARITY.CREW_COMMON: {}, CREW_BOOK_RARITY.CREW_EPIC: {}, CREW_BOOK_RARITY.CREW_RARE: {}, CREW_BOOK_RARITY.PERSONAL: 0, 
+                  CREW_SKINS_VIEWED: {}, CREW_BOOKS_VIEWED: {CREW_BOOK_RARITY.CREW_COMMON: {}, CREW_BOOK_RARITY.CREW_EPIC: {}, CREW_BOOK_RARITY.CREW_RARE: {}, CREW_BOOK_RARITY.PERSONAL: 0, 
                                       CREW_BOOK_RARITY.UNIVERSAL: 0}, 
                   CREW_SKINS_HISTORICAL_VISIBLE: (
                                                 True, True), 
@@ -992,6 +1001,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   RANKED_YEAR_POSITION: None, 
                   TOP_OF_TREE_CONFIG: {}, BECOME_ELITE_VEHICLES_WATCHED: set(), 
                   GAME.GAMEPLAY_ONLY_10_MODE: False, 
+                  GAME.GAMEPLAY_DEV_MAPS: True, 
                   MAPBOX_PROGRESSION: {'previous_battles_played': 0, 
                                        'visited_maps': [], 'stored_rewards': {}, 'lastCycleId': None}, 
                   MAPBOX_SURVEYS: {}, UNLOCK_VEHICLES_IN_BATTLE_HINTS: 5, 
@@ -1008,6 +1018,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                           BattleMatters.LAST_QUEST_PROGRESS: 0, 
                                                           BattleMatters.REMINDER_LAST_DISPLAY_TIME: 0}, 
                   BR_PROGRESSION_POINTS_SEEN: 0, 
+                  ROYALE_INTRO_VIDEO_SHOWN: False, 
                   LOOT_BOXES: {EVENT_LOOT_BOXES: {LOOT_BOXES_WAS_STARTED: False, 
                                                   LOOT_BOXES_WAS_FINISHED: False, 
                                                   LOOT_BOXES_OPEN_ANIMATION_ENABLED: True, 
@@ -1185,7 +1196,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   'uiSpamVisited_PersonalReservesHangarHint': False, 
                   'uiSpamVisited_ModernizedSetupTabHint': False, 
                   'uiSpamVisited_OfferBannerWindow': False, 
-                  'uiSpamVisited_StrongholdView': False}}
+                  'uiSpamVisited_StrongholdView': False, 
+                  WinBackCall.WIN_BACK_CALL_UI_SECTION: {WinBackCall.WIN_BACK_CALL_SHOWN_INTRO: False}}}
 
 def _filterAccountSection(dataSec):
     for key, section in dataSec.items()[:]:
@@ -1225,7 +1237,7 @@ def _recursiveStep(defaultDict, savedDict, finalDict):
 
 class AccountSettings(object):
     onSettingsChanging = Event.Event()
-    version = 66
+    version = 67
     settingsCore = dependency.descriptor(ISettingsCore)
     __cache = {'login': None, 'section': None}
     __sessionSettings = {'login': None, 'section': None}
@@ -1865,6 +1877,12 @@ class AccountSettings(object):
                         bmSettings.update(bmAccSettings)
                         accSettings.write(bmKey, _pack(bmSettings))
 
+            if currVersion < 67:
+                for key, section in _filterAccountSection(ads):
+                    accSettings = AccountSettings._readSection(section, KEY_SETTINGS)
+                    if CREW_SKINS_VIEWED in accSettings.keys():
+                        accSettings.deleteSection(CREW_SKINS_VIEWED)
+
             ads.writeInt('version', AccountSettings.version)
         return
 
@@ -2022,6 +2040,20 @@ class AccountSettings(object):
             cls._setValue(BattleMatters.BATTLE_MATTERS_SETTINGS, bmSection, KEY_SETTINGS)
         else:
             _logger.error("Cann't set value in %s section for %s.", BattleMatters.BATTLE_MATTERS_SETTINGS, name)
+
+    @classmethod
+    def getWinBackCallSetting(cls, name, default):
+        settings = cls.getUIFlag(WinBackCall.WIN_BACK_CALL_UI_SECTION)
+        return settings.get(name, default)
+
+    @classmethod
+    def setWinBackCallSetting(cls, name, value):
+        settings = cls.getUIFlag(WinBackCall.WIN_BACK_CALL_UI_SECTION)
+        if name in settings:
+            settings[name] = value
+            cls.setUIFlag(WinBackCall.WIN_BACK_CALL_UI_SECTION, settings)
+        else:
+            _logger.error("Cann't set value in %s section.", WinBackCall.WIN_BACK_CALL_UI_SECTION)
 
     @staticmethod
     def _getValue(name, setting, force=False):

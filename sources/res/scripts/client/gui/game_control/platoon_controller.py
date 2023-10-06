@@ -610,6 +610,11 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
             self.__channelCtrl.addMessage(messages.getUnitPlayerNotification(settings.UNIT_NOTIFICATION_KEY.GIVE_LEADERSHIP, pInfo))
         self.onMembersUpdate()
 
+    def onUnitPlayerProfileVehicleChanged(self, accountDBID):
+        if self.getPrbEntityType() not in PREBATTLE_TYPE.SQUAD_PREBATTLES:
+            return
+        self.onMembersUpdate()
+
     def hasVehiclesForSearch(self, tierLevel=None):
         if tierLevel is None:
             return bool(self.__availableTiersForSearch)
@@ -1090,9 +1095,23 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
         self.__tankDisplayPosition[currentPlayer.accID] = currentPlayerIdx
 
     def __removeAccFromPositions(self, accID):
+        maxSlotCount = self.prbEntity.getRosterSettings().getMaxSlots()
         removedIdx = self.__tankDisplayPosition.pop(accID, None)
+        currPlayerIdx = self.__tankDisplayPosition[BigWorld.player().id]
         if removedIdx is not None:
-            self.__tankDisplayPosition = {k:(v if v < removedIdx else v - 1) for k, v in self.__tankDisplayPosition.items()}
+            if maxSlotCount == _MAX_SLOT_COUNT_FOR_PLAYER_RESORTING:
+                for playerID, slotIdx in self.__tankDisplayPosition.iteritems():
+                    if slotIdx > removedIdx:
+                        if slotIdx == currPlayerIdx + 1:
+                            self.__tankDisplayPosition[playerID] = slotIdx - 2
+                        elif slotIdx != currPlayerIdx:
+                            self.__tankDisplayPosition[playerID] = slotIdx - 1
+
+            else:
+                for playerID, slotIdx in self.__tankDisplayPosition.iteritems():
+                    if slotIdx > removedIdx:
+                        self.__tankDisplayPosition[playerID] = slotIdx - 1
+
         return
 
     def __onVehicleStateChanged(self, updateReason, _):

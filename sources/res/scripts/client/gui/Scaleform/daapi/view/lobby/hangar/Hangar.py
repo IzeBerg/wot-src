@@ -1,19 +1,15 @@
-import typing
-from account_helpers.AccountSettings import NATION_CHANGE_VIEWED
-from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
-from helpers.CallbackDelayer import CallbackDelayer
-from helpers.i18n import makeString as _ms
-from helpers.statistics import HANGAR_LOADING_STATE
-from helpers.time_utils import ONE_MINUTE
-import BigWorld, logging
+import logging
+from functools import partial
+import typing, BigWorld
 from CurrentVehicle import g_currentVehicle
 from HeroTank import HeroTank
 from PlayerEvents import g_playerEvents
 from account_helpers import AccountSettings
+from account_helpers.AccountSettings import NATION_CHANGE_VIEWED
+from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
 from battle_pass_common import BATTLE_PASS_CONFIG_NAME
 from constants import Configs, DOG_TAGS_CONFIG, PREBATTLE_TYPE, QUEUE_TYPE, RENEWABLE_SUBSCRIPTION_CONFIG
 from frameworks.wulf import WindowFlags, WindowLayer, WindowStatus
-from functools import partial
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -34,13 +30,13 @@ from gui.game_loading.resources.consts import Milestones
 from gui.hangar_cameras.hangar_camera_common import CameraMovementStates, CameraRelatedEvents
 from gui.hangar_presets.hangar_gui_helpers import ifComponentAvailable
 from gui.impl import backport
-from gui.impl.auxiliary.crew_books_helper import crewBooksViewedCache
 from gui.impl.gen import R
 from gui.marathon.marathon_event import MarathonEvent
 from gui.periodic_battles.models import PrimeTimeStatus
 from gui.prb_control import prb_getters
 from gui.prb_control.ctrl_events import g_prbCtrlEvents
 from gui.prb_control.entities.listener import IGlobalListener
+from gui.prestige.prestige_helpers import hasVehiclePrestige
 from gui.promo.hangar_teaser_widget import TeaserViewer
 from gui.resource_well.resource_well_helpers import isResourceWellRewardVehicle
 from gui.shared import EVENT_BUS_SCOPE, event_dispatcher as shared_events, events
@@ -52,6 +48,10 @@ from gui.shared.utils.functions import makeTooltip
 from gui.sounds.filters import States, StatesGroup
 from helpers import dependency
 from nation_change_helpers.client_nation_change_helper import getChangeNationTooltip
+from helpers.CallbackDelayer import CallbackDelayer
+from helpers.i18n import makeString as _ms
+from helpers.statistics import HANGAR_LOADING_STATE
+from helpers.time_utils import ONE_MINUTE
 from shared_utils import nextTick
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
@@ -120,7 +120,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__timer = None
         self.__banTimer = None
         self.__updateDogTagsState()
-        self.__updateWotPlusState()
         return
 
     @property
@@ -132,8 +131,8 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         return self.getComponent(HANGAR_ALIASES.VEHICLE_PARAMETERS)
 
     @property
-    def crewPanel(self):
-        return self.getComponent(HANGAR_ALIASES.CREW)
+    def crewWidget(self):
+        return self.getComponent(HANGAR_ALIASES.CREW_PANEL_INJECT)
 
     @property
     def researchPanel(self):
@@ -152,8 +151,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         return self.getComponent(HANGAR_ALIASES.EPIC_WIDGET)
 
     def onCacheResync(self, reason, diff):
-        if diff is not None and GUI_ITEM_TYPE.CREW_BOOKS in diff:
-            self.as_setNotificationEnabledS(crewBooksViewedCache().haveNewCrewBooks())
         if reason == CACHE_SYNC_REASON.SHOP_RESYNC:
             self.__updateAll()
             return
@@ -254,7 +251,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         g_clientUpdateManager.addCallbacks({'inventory': self.__updateAlertMessage})
         self.lobbyContext.getServerSettings().onServerSettingsChange += self.__onServerSettingChanged
         self._settingsCore.onSettingsChanged += self.__onSettingsChanged
-        self._wotPlusCtrl.onDataChanged += self.__onWotPlusDataChanged
         self.battlePassController.onSeasonStateChanged += self.__switchCarousels
         self.startGlobalListening()
         self.__updateAll()
@@ -263,10 +259,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.addListener(CameraRelatedEvents.CAMERA_ENTITY_UPDATED, self.__handleSelectedEntityUpdated)
         self.statsCollector.noteHangarLoadingState(HANGAR_LOADING_STATE.HANGAR_UI_READY)
         g_playerEvents.onLoadingMilestoneReached(Milestones.HANGAR_UI_READY)
-        lobbyContext = dependency.instance(ILobbyContext)
-        isCrewBooksEnabled = lobbyContext.getServerSettings().isCrewBooksEnabled()
-        getTutorialGlobalStorage().setValue(GLOBAL_FLAG.CREW_BOOKS_ENABLED, isCrewBooksEnabled)
-        self.as_setNotificationEnabledS(crewBooksViewedCache().haveNewCrewBooks())
         self._offersBannerController.showBanners()
         self.__updateCarouselEventEntryState()
         self.fireEvent(events.HangarCustomizationEvent(events.HangarCustomizationEvent.RESET_VEHICLE_MODEL_TRANSFORM), scope=EVENT_BUS_SCOPE.LOBBY)
@@ -315,7 +307,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         g_clientUpdateManager.removeObjectCallbacks(self)
         self._settingsCore.onSettingsChanged -= self.__onSettingsChanged
         self.lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingChanged
-        self._wotPlusCtrl.onDataChanged -= self.__onWotPlusDataChanged
         self.battlePassController.onSeasonStateChanged -= self.__switchCarousels
         self.__timer.clearCallbacks()
         self.__timer = None
@@ -328,16 +319,9 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         LobbySelectableView._dispose(self)
         return
 
-    @ifComponentAvailable(componentType=HANGAR_CONSTS.CREW_XP)
-    def _updateCnSubscriptionMode(self):
-        self.as_toggleCnSubscriptionS(self._wotPlusCtrl.isWotPlusEnabled())
-
     def __updateDogTagsState(self):
         isDogTagsEnabled = self.lobbyContext.getServerSettings().isDogTagEnabled()
         getTutorialGlobalStorage().setValue(GLOBAL_FLAG.DOGTAGS_ENABLED, isDogTagsEnabled)
-
-    def __updateWotPlusState(self):
-        self._updateCnSubscriptionMode()
 
     def __onWindowLoaded(self, uniqueID, newStatus):
         window = self.gui.windowsManager.getWindow(uniqueID)
@@ -400,8 +384,8 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         return
 
     def __updateCrew(self):
-        if self.crewPanel is not None:
-            self.crewPanel.updateTankmen()
+        if self.crewWidget is not None:
+            self.crewWidget.updateTankmen()
         return
 
     def __updateBan(self):
@@ -536,7 +520,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__updateCrew()
         self.__updateAlertMessage()
         self.__updateBattleRoyaleComponents()
-        self._updateCnSubscriptionMode()
         self.__hangarComponentsCtrl.updateComponentsVisibility()
         self.__updateComp7ModifiersWidget()
         Waiting.hide('updateVehicle')
@@ -550,8 +533,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__updateHeaderComponent()
         self.__updateHeaderEpicWidget()
         self.__updateCrew()
-        self.as_setNotificationEnabledS(crewBooksViewedCache().haveNewCrewBooks())
-        self._updateCnSubscriptionMode()
         Waiting.hide('updateVehicle')
 
     def __onSpaceRefresh(self):
@@ -579,7 +560,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
 
     def __updateState(self, force=False):
         state = g_currentVehicle.getViewState()
-        self.as_setCrewEnabledS(state.isCrewOpsEnabled())
         isBattleRoyaleMode = self.battleRoyaleController.isBattleRoyaleMode()
         isC11nEnabled = self.lobbyContext.getServerSettings().isCustomizationEnabled() and state.isCustomizationEnabled() and not state.isOnlyForEventBattles() and self.__isSpaceReadyForC11n and self.__isVehicleReadyForC11n and self.__isVehicleCameraReadyForC11n and not isBattleRoyaleMode
         if isC11nEnabled:
@@ -607,6 +587,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
            'changeNationTooltip': changeNationTooltip, 
            'changeNationIsNew': changeNationIsNew})
         self.__hangarComponentsCtrl.updateChangeableComponents(state.isUIShown(), force)
+        self.__updatePrestigeProgressWidget()
 
     def __onEntityChanged(self):
         self.__updateState(force=True)
@@ -649,17 +630,14 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         if DOG_TAGS_CONFIG in diff:
             self.__updateDogTagsState()
         if RENEWABLE_SUBSCRIPTION_CONFIG in diff:
-            self.__updateWotPlusState()
             self.__updateState()
+        if Configs.PRESTIGE_CONFIG.value in diff:
+            self.__updatePrestigeProgressWidget()
 
     def __onSettingsChanged(self, diff):
         if SETTINGS_SECTIONS.UI_STORAGE in diff:
             if self.ammoPanel:
                 self.ammoPanel.update()
-
-    def __onWotPlusDataChanged(self, diff):
-        if 'isEnabled' in diff:
-            self.__updateWotPlusState()
 
     def __checkVehicleCameraState(self):
         vehicleEntity = self.hangarSpace.getVehicleEntity()
@@ -702,3 +680,12 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     @ifComponentAvailable(HANGAR_CONSTS.COMP7_MODIFIERS)
     def __updateComp7ModifiersWidget(self):
         self.as_setComp7ModifiersVisibleS(self.__comp7Controller.isBattleModifiersAvailable())
+
+    def __updatePrestigeProgressWidget(self):
+        visible = not self.bootcampController.isInBootcamp()
+        if g_currentVehicle.intCD is not None:
+            visible &= hasVehiclePrestige(g_currentVehicle.intCD, checkElite=True, lobbyContext=self.lobbyContext, itemsCache=self.itemsCache)
+        else:
+            visible = False
+        self.as_setPrestigeWidgetVisibleS(visible)
+        return

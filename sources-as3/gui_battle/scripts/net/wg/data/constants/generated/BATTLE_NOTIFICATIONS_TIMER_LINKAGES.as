@@ -39,6 +39,10 @@ package net.wg.data.constants.generated
       
       public static const HALF_OVERTURNED_ICON:String = "HalfOverTurnedIconUI";
       
+      public static const DESTROY_TIMER_DANGER_ZONE:String = "destroyTimerDangerZoneUI";
+      
+      public static const DESTROY_TIMER_DANGER_ZONE_SMALL:String = "destroyTimerDangerZoneSmallUI";
+      
       public static const DEATHZONE_ICON:String = "destroyTimerDeathZoneUI";
       
       public static const DEATHZONE_ICON_CN:String = "destroyTimerDeathZoneCNUI";

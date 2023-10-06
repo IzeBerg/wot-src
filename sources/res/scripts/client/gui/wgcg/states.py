@@ -1,4 +1,5 @@
 from collections import namedtuple
+from functools import partial
 import BigWorld
 from adisp import adisp_process, adisp_async
 from client_request_lib.exceptions import ResponseCodes
@@ -241,9 +242,10 @@ class UnavailableState(_WebState):
     def _sendRequest(self, ctx, callback, allowDelay=True):
         if ctx.getRequestType() == WebRequestDataType.PING:
             result = yield super(UnavailableState, self)._sendRequest(ctx, allowDelay=allowDelay)
+            callback(result)
         else:
             result = WgcgRequestResponse(ResponseCodes.WGCG_ERROR, 'WGCG is not available.', None)
-        callback(result)
+            BigWorld.callback(0, partial(callback, result))
         return
 
     @adisp_process

@@ -2,6 +2,7 @@ package net.wg.gui.battle.comp7.battleloading.renderers
 {
    import flash.text.TextField;
    import net.wg.gui.battle.components.BattleAtlasSprite;
+   import net.wg.gui.battle.components.PrestigeLevel;
    import net.wg.gui.battle.random.battleloading.renderers.RandomRendererContainer;
    import net.wg.gui.components.controls.BadgeComponent;
    import net.wg.gui.components.icons.PlayerActionMarker;
@@ -112,6 +113,11 @@ package net.wg.gui.battle.comp7.battleloading.renderers
          return null;
       }
       
+      override protected function getPrestigeLevelsAlly() : Vector.<PrestigeLevel>
+      {
+         return null;
+      }
+      
       override protected function getIcoIGRsAlly() : Vector.<BattleAtlasSprite>
       {
          return null;
@@ -163,6 +169,11 @@ package net.wg.gui.battle.comp7.battleloading.renderers
       }
       
       override protected function getVehicleIconsEnemy() : Vector.<BattleAtlasSprite>
+      {
+         return null;
+      }
+      
+      override protected function getPrestigeLevelsEnemy() : Vector.<PrestigeLevel>
       {
          return null;
       }

@@ -23,7 +23,7 @@ _logger = logging.getLogger(__name__)
 class BaseAmmunitionPanelView(ViewImpl):
     _itemsCache = dependency.descriptor(IItemsCache)
     _hangarSpace = dependency.descriptor(IHangarSpace)
-    __slots__ = ('_ammunitionPanel', '_wasVehicleOnLoading', 'onSizeChanged', 'onPanelSectionResized',
+    __slots__ = ('_ammunitionPanel', '_wasVehicleOnLoading', 'onPanelSectionResized',
                  'onVehicleChanged')
 
     def __init__(self, flags=ViewFlags.VIEW):
@@ -33,7 +33,6 @@ class BaseAmmunitionPanelView(ViewImpl):
         super(BaseAmmunitionPanelView, self).__init__(settings)
         self._ammunitionPanel = None
         self._wasVehicleOnLoading = False
-        self.onSizeChanged = Event()
         self.onPanelSectionResized = Event()
         self.onVehicleChanged = Event()
         return
@@ -95,7 +94,6 @@ class BaseAmmunitionPanelView(ViewImpl):
         self._ammunitionPanel.update(self.vehItem, fullUpdate=fullUpdate)
 
     def destroy(self):
-        self.onSizeChanged.clear()
         self.onPanelSectionResized.clear()
         super(BaseAmmunitionPanelView, self).destroy()
 
@@ -125,7 +123,6 @@ class BaseAmmunitionPanelView(ViewImpl):
         return HangarAmmunitionPanel(self.viewModel.ammunitionPanel, self.vehItem)
 
     def _addListeners(self):
-        self.viewModel.onViewSizeInitialized += self.__onViewSizeInitialized
         self.viewModel.ammunitionPanel.onSectionSelect += self._onPanelSectionSelected
         self.viewModel.ammunitionPanel.onSectionResized += self._onPanelSectionResized
         g_currentVehicle.onChangeStarted += self.__onVehicleChangeStarted
@@ -133,7 +130,6 @@ class BaseAmmunitionPanelView(ViewImpl):
         self._itemsCache.onSyncCompleted += self.__itemCacheChanged
 
     def _removeListeners(self):
-        self.viewModel.onViewSizeInitialized -= self.__onViewSizeInitialized
         self.viewModel.ammunitionPanel.onSectionSelect -= self._onPanelSectionSelected
         self.viewModel.ammunitionPanel.onSectionResized -= self._onPanelSectionResized
         g_currentVehicle.onChangeStarted -= self.__onVehicleChangeStarted
@@ -167,9 +163,6 @@ class BaseAmmunitionPanelView(ViewImpl):
 
     def _getIsReady(self):
         return self.viewStatus == ViewStatus.LOADED
-
-    def __onViewSizeInitialized(self, args=None):
-        self.onSizeChanged(args.get('width', 0), args.get('height', 0), args.get('offsetY', 0))
 
     def __canChangeVehicle(self):
         if self.prbDispatcher is not None:

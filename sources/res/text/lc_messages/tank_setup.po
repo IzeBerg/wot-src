@@ -426,6 +426,11 @@ msgstr ""
 "Разобрать оборудование\n"
 "«%(name)s»?"
 
+msgid "dialogs/confirmActionsWithEquipmentDialog/warning"
+msgstr ""
+"Обратите внимание: разобрав оборудование, вы не сможете его восстановить или"
+" купить заново."
+
 msgid "dialogs/deconstructConfirm/button/cancel"
 msgstr "Отменить"
 
@@ -612,6 +617,28 @@ msgstr "Пополнить боекомплект?"
 msgid "dialogs/refillShells/title/saveSlotsContent"
 msgstr "Сохранить изменения боекомплекта?"
 
+msgid "dialogs/sell/alertText/equipment/improved"
+msgstr "Обратите внимание: вы продаёте усовершенствованное оборудование."
+
+msgid "dialogs/sell/alertText/equipment/trophy"
+msgstr ""
+"Обратите внимание: продав оборудование, вы не сможете его восстановить или "
+"купить заново."
+
+msgid "dialogs/sell/button/cancel"
+msgstr "Отменить"
+
+msgid "dialogs/sell/button/sell"
+msgstr "Продать"
+
+msgid "dialogs/sell/header"
+msgstr ""
+"Продать оборудование\n"
+" «%(equipmentName)s»?"
+
+msgid "dialogs/sell/text"
+msgstr "Стоимость продажи 1 ед.:"
+
 msgid "effects/name"
 msgstr "Эффект"
 
@@ -674,12 +701,11 @@ msgstr ""
 
 msgid "introduction/message/modernized"
 msgstr ""
-"Специализированный тип оборудования, который имеет три уровня наладки. "
-"Оборудование нельзя уничтожить, но можно разобрать и получить специальные "
-"детали — %(currencyName)s (%(currencyIcon)s). Полученные компоненты можно "
-"использовать для наладки любого экспериментального оборудования. "
-"Оборудование выдаётся за выполнение боевых задач и в награду за определённые"
-" события."
+"Специализированный тип оборудования с тремя уровнями наладки, который "
+"выдаётся за выполнение боевых задач или в награду за определённые события. "
+"Такое оборудование нельзя купить или продать, но можно разобрать и получить "
+"специальные детали — %(currencyName)s (%(currencyIcon)s). Компоненты "
+"необходимы для наладки и демонтажа любого экспериментального оборудования."
 
 msgid "introduction/message/trophy"
 msgstr ""

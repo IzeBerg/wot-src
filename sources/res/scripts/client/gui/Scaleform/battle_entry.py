@@ -85,9 +85,9 @@ class BattleEntry(AppEntry):
         else:
             return False
 
-    def enterGuiControlMode(self, consumerID, cursorVisible=True, enableAiming=True):
+    def enterGuiControlMode(self, consumerID, cursorVisible=True, enableAiming=True, stopVehicle=False):
         if self.__input is not None:
-            self.__input.enterGuiControlMode(consumerID, cursorVisible=cursorVisible, enableAiming=enableAiming)
+            self.__input.enterGuiControlMode(consumerID, cursorVisible=cursorVisible, enableAiming=enableAiming, stopVehicle=stopVehicle)
         return
 
     def leaveGuiControlMode(self, consumerID):

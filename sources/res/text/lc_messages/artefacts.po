@@ -10,6 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "#PluralForms"
+msgstr ""
+"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2);"
+
 msgid "actionStub/name"
 msgstr "Модификация"
 
@@ -361,6 +366,21 @@ msgid "br_minefield/shortDescr"
 msgstr ""
 "Размещает в указанной области минное поле, которое действует некоторое "
 "время. Мины можно уничтожать выстрелами."
+
+msgid "br_respawn/name"
+msgstr "Возрождение"
+
+msgid "br_respawn/platoon/descr"
+msgstr ""
+"Позволяет вернуться в бой после того, как ваша машина была уничтожена. Механика действует в течение первых %(duration)s мин сражения.\n"
+"\n"
+"Для возрождения союзника не вступайте в бой в течение %(timeToResurrect)s с. Для взвода заряд Возрождения общий."
+
+msgid "br_respawn/solo/descr"
+msgstr ""
+"Позволяет вернуться в бой после того, как ваша машина была уничтожена. Механика действует в течение первых %(duration)s мин сражения.\n"
+"\n"
+"Возрождение происходит автоматически после уничтожения техники."
 
 msgid "br_smoke/descr"
 msgstr "Добавляет бонус к маскировке всей технике, попавшей в зону действия."
@@ -1075,7 +1095,7 @@ msgid "fireFightingBattleBooster/action/boost"
 msgstr "Добавляет к текущему уровню навыка «Пожаротушение» дополнительные 50%"
 
 msgid "fireFightingBattleBooster/action/perk"
-msgstr "Даёт 100%-й навык «Пожаротушение»"
+msgstr "Даёт 100%-й навык «Пожаротушение» всему экипажу"
 
 msgid "fireFightingBattleBooster/long_special"
 msgstr ""
@@ -3098,7 +3118,7 @@ msgid "thunderStrike/longDescr"
 msgstr ""
 "Создаёт зону, в которую бьёт череда электрических разрядов с низкой "
 "задержкой. Каждый разряд наносит урон и накладывает эффект, снижающий "
-"подвижность техники в радиусе поражения."
+"подвижность техники."
 
 msgid "thunderStrike/name"
 msgstr "Электрический разряд"

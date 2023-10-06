@@ -13,6 +13,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var setSelectedTableColumn:Function;
       
+      public var setSeason:Function;
+      
       public var showVehiclesRating:Function;
       
       private var _profileVehicleDossierVO:ProfileVehicleDossierVO;
@@ -55,6 +57,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.setSelectedTableColumn,"setSelectedTableColumn" + Errors.CANT_NULL);
          this.setSelectedTableColumn(param1,param2);
+      }
+      
+      public function setSeasonS(param1:String) : void
+      {
+         App.utils.asserter.assertNotNull(this.setSeason,"setSeason" + Errors.CANT_NULL);
+         this.setSeason(param1);
       }
       
       public function showVehiclesRatingS() : void

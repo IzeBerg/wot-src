@@ -355,6 +355,8 @@ def _getSlotsData(unitMgrID, fullData, levelsRange=None, checkForVehicles=True, 
            'isLocked': isLocked, 
            'role': role, 
            'roleIcon': _ROLE_ICONS.get(role & equipmentCommanderRoles, '')}
+        if slotInfo.profileVehicle is not None and slotInfo.profileVehicle.prestigeLevel > 0:
+            slot['prestigeLevel'] = slotInfo.profileVehicle.prestigeLevel
         if withPrem:
             slot['hasPremiumAccount'] = player and player.hasPremium
         if unit.isSquad() or unit.getPrebattleType() == PREBATTLE_TYPE.FUN_RANDOM:

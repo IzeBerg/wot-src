@@ -19,10 +19,12 @@ package net.wg.gui.battle.battleloading
    import net.wg.gui.components.minimap.MinimapPresentation;
    import net.wg.infrastructure.events.ListDataProviderEvent;
    import net.wg.utils.IClassFactory;
+   import net.wg.utils.IStageSizeDependComponent;
+   import net.wg.utils.StageSizeBoundaries;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    
-   public class BattleLoadingForm extends BaseLoadingForm
+   public class BattleLoadingForm extends BaseLoadingForm implements IStageSizeDependComponent
    {
       
       private static const RENDERERS_COUNT:uint = 15;
@@ -39,11 +41,13 @@ package net.wg.gui.battle.battleloading
       
       private static const RENDERER_CONTAINER_TOP_OFFSET:int = 112;
       
-      private static const TANK_ICON_SHIFT:int = 187;
+      private static const TANK_ICON_SHIFT:int = 172;
       
       private static const SQUAD_ICON_SHIFT:int = 57;
       
       private static const RENDERERS_CONTAINER_NAME:String = "container";
+      
+      private static const EXTENDED_LAYOUT_OFFSET_X:int = 30;
        
       
       public var team1Text:TextField;
@@ -69,6 +73,10 @@ package net.wg.gui.battle.battleloading
       public var rightTank:BattleAtlasSprite = null;
       
       public var rightSquad:BattleAtlasSprite = null;
+      
+      private var _team1TextInitX:int;
+      
+      private var _team2TextInitX:int;
       
       private var _leftSquadInitX:int;
       
@@ -115,34 +123,16 @@ package net.wg.gui.battle.battleloading
       {
          if(param1.showTableBackground)
          {
-            this.leftSquad.x = this._leftSquadInitX;
-            this.rightSquad.x = this._rightSquadInitX;
             this.formBackgroundTable.imageName = BATTLEATLAS.BATTLE_LOADING_FORM_BG_TABLE;
-            if(this.leftTank)
-            {
-               this.leftTank.x = this._leftTankInitX;
-            }
-            if(this.rightTank)
-            {
-               this.rightTank.x = this._rightTankInitX;
-            }
+            this.team1Text.x = param1.leftTeamTitleLeft;
+            this.team2Text.x = param1.rightTeamTitleLeft;
          }
          if(param1.showTipsBackground)
          {
-            this.leftSquad.x = this._leftSquadInitX - SQUAD_ICON_SHIFT;
-            this.rightSquad.x = this._rightSquadInitX + SQUAD_ICON_SHIFT;
+            this._team1TextInitX = param1.leftTeamTitleLeft;
+            this._team2TextInitX = param1.rightTeamTitleLeft;
             this.formBackgroundTable.imageName = BATTLEATLAS.BATTLE_LOADING_FORM_BG_TIPS;
-            if(this.leftTank)
-            {
-               this.leftTank.x = this._leftTankInitX - TANK_ICON_SHIFT;
-            }
-            if(this.rightTank)
-            {
-               this.rightTank.x = this._rightTankInitX + TANK_ICON_SHIFT;
-            }
          }
-         this.team1Text.x = param1.leftTeamTitleLeft;
-         this.team2Text.x = param1.rightTeamTitleLeft;
          if(param1.showMinimap)
          {
             this.showMap(param1.arenaTypeID,param1.minimapTeam);
@@ -169,6 +159,10 @@ package net.wg.gui.battle.battleloading
             _loc4_++;
          }
          addChild(this._renderersContainer);
+         if(param1.showTipsBackground)
+         {
+            App.stageSizeMgr.register(this);
+         }
       }
       
       override public function setPlayerStatus(param1:Boolean, param2:Number, param3:uint) : void
@@ -231,9 +225,51 @@ package net.wg.gui.battle.battleloading
          }
       }
       
+      public function setStateSizeBoundaries(param1:int, param2:int) : void
+      {
+         var _loc4_:IBattleLoadingRenderer = null;
+         var _loc3_:Boolean = param1 >= StageSizeBoundaries.WIDTH_1366;
+         this.team1Text.x = this._team1TextInitX;
+         this.team2Text.x = this._team2TextInitX;
+         this.leftSquad.x = this._leftSquadInitX - SQUAD_ICON_SHIFT;
+         this.rightSquad.x = this._rightSquadInitX + SQUAD_ICON_SHIFT;
+         if(this.leftTank)
+         {
+            this.leftTank.x = this._leftTankInitX - TANK_ICON_SHIFT;
+         }
+         if(this.rightTank)
+         {
+            this.rightTank.x = this._rightTankInitX + TANK_ICON_SHIFT;
+         }
+         if(_loc3_)
+         {
+            this.team1Text.x -= EXTENDED_LAYOUT_OFFSET_X;
+            this.team2Text.x += EXTENDED_LAYOUT_OFFSET_X;
+            this.leftSquad.x -= EXTENDED_LAYOUT_OFFSET_X;
+            this.rightSquad.x += EXTENDED_LAYOUT_OFFSET_X;
+            if(this.leftTank)
+            {
+               this.leftTank.x -= EXTENDED_LAYOUT_OFFSET_X;
+            }
+            if(this.rightTank)
+            {
+               this.rightTank.x += EXTENDED_LAYOUT_OFFSET_X;
+            }
+         }
+         for each(_loc4_ in this._allyRenderers)
+         {
+            _loc4_.isExtendedLayout = _loc3_;
+         }
+         for each(_loc4_ in this._enemyRenderers)
+         {
+            _loc4_.isExtendedLayout = _loc3_;
+         }
+      }
+      
       override protected function onDispose() : void
       {
          var _loc1_:IBattleLoadingRenderer = null;
+         App.stageSizeMgr.unregister(this);
          this.leftSquad = null;
          this.leftTank = null;
          this.rightTank = null;
@@ -359,7 +395,8 @@ package net.wg.gui.battle.battleloading
       
       private function configureTip(param1:int, param2:int, param3:String = null) : void
       {
-         var _loc4_:Boolean = StringUtils.isNotEmpty(param3);
+         var _loc4_:Boolean = false;
+         _loc4_ = StringUtils.isNotEmpty(param3);
          this.tipBackground.visible = this.tipImage.visible = _loc4_;
          if(_loc4_)
          {

@@ -101,11 +101,26 @@ class Comp7Keys(Enum):
         return []
 
 
-GAMEMODE_SPECIFIC_KEYS = {ARENA_GUI_TYPE.EPIC_RANDOM: EPIC_RANDOM_KEYS, ARENA_GUI_TYPE.EPIC_RANDOM_TRAINING: EPIC_RANDOM_KEYS, 
+class TournamentComp7Keys(Enum):
+
+    @staticmethod
+    def getKeys(static=True):
+        if static:
+            return [(Comp7Keys.ROLE_SKILL_LEVEL, _DEFAULT_ROLE_SKILL_LEVEL), (Comp7Keys.VOIP_CONNECTED, False)]
+        return []
+
+    @staticmethod
+    def getSortingKeys(static=True):
+        return []
+
+
+GAMEMODE_SPECIFIC_KEYS = {ARENA_GUI_TYPE.EPIC_RANDOM: EPIC_RANDOM_KEYS, 
+   ARENA_GUI_TYPE.EPIC_RANDOM_TRAINING: EPIC_RANDOM_KEYS, 
    ARENA_GUI_TYPE.EPIC_BATTLE: EPIC_BATTLE_KEYS, 
    ARENA_GUI_TYPE.EPIC_TRAINING: EPIC_BATTLE_KEYS, 
    ARENA_GUI_TYPE.BATTLE_ROYALE: BattleRoyaleKeys, 
-   ARENA_GUI_TYPE.COMP7: Comp7Keys}
+   ARENA_GUI_TYPE.COMP7: Comp7Keys, 
+   ARENA_GUI_TYPE.TOURNAMENT_COMP7: TournamentComp7Keys}
 
 class GameModeDataVO(object):
     __slots__ = ('__internalData', '__sortingKeys')
@@ -312,9 +327,9 @@ class VehicleArenaInfoVO(object):
     __slots__ = ('vehicleID', 'team', 'player', 'playerStatus', 'vehicleType', 'vehicleStatus',
                  'prebattleID', 'events', 'squadIndex', 'invitationDeliveryStatus',
                  'ranked', 'gameModeSpecific', 'overriddenBadge', 'badges', '__prefixBadge',
-                 '__suffixBadge', 'dogTag')
+                 '__suffixBadge', 'dogTag', 'prestigeLevel', 'prestigeGradeMarkID')
 
-    def __init__(self, vehicleID, team=0, isAlive=None, isAvatarReady=None, isTeamKiller=None, prebattleID=None, events=None, forbidInBattleInvitations=False, ranked=None, badges=None, overriddenBadge=None, **kwargs):
+    def __init__(self, vehicleID, team=0, isAlive=None, isAvatarReady=None, isTeamKiller=None, prebattleID=None, events=None, forbidInBattleInvitations=False, ranked=None, badges=None, overriddenBadge=None, prestigeLevel=None, prestigeGradeMarkID=None, **kwargs):
         super(VehicleArenaInfoVO, self).__init__()
         self.vehicleID = vehicleID
         self.team = team
@@ -334,6 +349,8 @@ class VehicleArenaInfoVO(object):
         self.badges = badges or ((), ())
         self.__prefixBadge, self.__suffixBadge = getSelectedByLayout(self.badges[0])
         self.dogTag = None
+        self.prestigeLevel = prestigeLevel
+        self.prestigeGradeMarkID = prestigeGradeMarkID
         return
 
     def __repr__(self):
@@ -420,6 +437,13 @@ class VehicleArenaInfoVO(object):
             invalidate = _INVALIDATE_OP.addIfNot(invalidate, _INVALIDATE_OP.VEHICLE_INFO)
         return invalidate
 
+    def updatePrestige(self, invalidate=_INVALIDATE_OP.NONE, prestigeLevel=None, prestigeGradeMarkID=None, **kwargs):
+        if prestigeLevel is not None and prestigeGradeMarkID is not None:
+            self.prestigeLevel = prestigeLevel
+            self.prestigeGradeMarkID = prestigeGradeMarkID
+            invalidate = _INVALIDATE_OP.addIfNot(invalidate, _INVALIDATE_OP.VEHICLE_INFO)
+        return invalidate
+
     def updateGameModeSpecificStats(self, *args):
         return self.gameModeSpecific.update(*args)
 
@@ -442,6 +466,7 @@ class VehicleArenaInfoVO(object):
         invalidate = self.updateInvitationStatus(invalidate=invalidate, **kwargs)
         invalidate = self.updateRanked(invalidate=invalidate, **kwargs)
         invalidate = self.updateEvents(invalidate=invalidate, **kwargs)
+        invalidate = self.updatePrestige(invalidate=invalidate, **kwargs)
         return invalidate
 
     def getSquadID(self):
@@ -483,7 +508,7 @@ class VehicleArenaInfoVO(object):
         if self.vehicleType.isObserver:
             return True
         if self.vehicleID == avatar_getter.getPlayerVehicleID() and not self.isAlive():
-            return avatar_getter.isBecomeObserverAfterDeath()
+            return avatar_getter.isBecomeObserverAfterDeath() and avatar_getter.isObserverBothTeams()
         return False
 
     def isEnemy(self):

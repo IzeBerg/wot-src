@@ -405,6 +405,8 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_LOADING_SELF_TIPS_BACKGROUND:String = "battleLoadingSelfTipsBackground";
       
+      public static const BATTLE_LOADING_SELF_TIPS_EXTENDED_BACKGROUND:String = "battleLoadingSelfTipsExtendedBackground";
+      
       public static const BLUE_ATSPG_H:String = "blue_atspg_h";
       
       public static const BLUE_ATSPG_M:String = "blue_atspg_m";
@@ -420,6 +422,10 @@ package net.wg.data.constants.generated
       public static const BOMBER_ENTRY:String = "BomberEntry";
       
       public static const BOOTCAMP_ENTRY:String = "BootcampEntry";
+      
+      public static const BOT_VEHICLE:String = "botVehicle";
+      
+      public static const BOT_VEHICLE_BIG:String = "botVehicle_big";
       
       public static const BTN_DISABLE_CLAIM:String = "btn_disable_claim";
       
@@ -917,6 +923,8 @@ package net.wg.data.constants.generated
       
       public static const EPIC_RANDOM_BATTLE_LOADING_SELF_TIPS_BACKGROUND:String = "epicRandomBattleLoadingSelfTipsBackground";
       
+      public static const EPIC_RANDOM_BATTLE_LOADING_SELF_TIPS_EXTENDED_BACKGROUND:String = "epicRandomBattleLoadingSelfTipsExtendedBackground";
+      
       public static const EPIC_RANDOMBETA_ICON:String = "epicRandombeta_icon";
       
       public static const EPIC_RANDOMEPIC_LOADING_DEAD_BG:String = "epicRandomepicLoading_deadBg";
@@ -1235,6 +1243,8 @@ package net.wg.data.constants.generated
       
       public static const GERMANY_G04_PZ_VI_TIGER_I_MAPS_TRAINING_PLAYER_HT_2:String = "germany-G04_PzVI_Tiger_I_MapsTraining_Player_HT_2";
       
+      public static const GERMANY_G04_PZ_VI_TIGER_I_SHXXI_B:String = "germany-G04_PzVI_Tiger_I_SHXXI_B";
+      
       public static const GERMANY_G04_PZ_VI_TIGER_IA:String = "germany-G04_PzVI_Tiger_IA";
       
       public static const GERMANY_G05_STU_G_40_AUSF_G:String = "germany-G05_StuG_40_AusfG";
@@ -1413,6 +1423,8 @@ package net.wg.data.constants.generated
       
       public static const GERMANY_G25_PZ_II_LUCHS:String = "germany-G25_PzII_Luchs";
       
+      public static const GERMANY_G25_PZ_II_LUCHS_SHXXI_B:String = "germany-G25_PzII_Luchs_SHXXI_B";
+      
       public static const GERMANY_G26_VK1602:String = "germany-G26_VK1602";
       
       public static const GERMANY_G27_VK3001_P:String = "germany-G27_VK3001P";
@@ -1526,6 +1538,8 @@ package net.wg.data.constants.generated
       public static const GERMANY_G76_PZ_SFL_I_VC:String = "germany-G76_Pz_Sfl_IVc";
       
       public static const GERMANY_G77_PZ_IV_SCHMALTURM:String = "germany-G77_PzIV_Schmalturm";
+      
+      public static const GERMANY_G77_PZ_IV_SCHMALTURM_SHXXI_B:String = "germany-G77_PzIV_Schmalturm_SHXXI_B";
       
       public static const GERMANY_G78_PANTHER_M10:String = "germany-G78_Panther_M10";
       
@@ -1680,6 +1694,8 @@ package net.wg.data.constants.generated
       public static const HELP_WINDOW_BOTTOM_BG:String = "helpWindow_bottom_bg";
       
       public static const HELP_WINDOW_INFO:String = "helpWindow_info";
+      
+      public static const HELP_WINDOW_INFO_BLIND:String = "helpWindow_info_blind";
       
       public static const ICO_IGR:String = "icoIGR";
       
@@ -2005,8 +2021,6 @@ package net.wg.data.constants.generated
       
       public static const LASTLIT_TEAM_KILLER_BLUE:String = "lastlit_teamKiller_blue";
       
-      public static const LEFT_STATS_MUTE:String = "left_stats_mute";
-      
       public static const LEVEL1:String = "level1";
       
       public static const LEVEL10:String = "level10";
@@ -2175,6 +2189,8 @@ package net.wg.data.constants.generated
       
       public static const POLAND_PL08_50_TP_PROTOTYP:String = "poland-Pl08_50TP_prototyp";
       
+      public static const POLAND_PL08_50_TP_PROTOTYP_RESILIENT:String = "poland-Pl08_50TP_Prototyp_Resilient";
+      
       public static const POLAND_PL09_7_TP:String = "poland-Pl09_7TP";
       
       public static const POLAND_PL10_40_TP_HABICHA:String = "poland-Pl10_40TP_Habicha";
@@ -2224,6 +2240,132 @@ package net.wg.data.constants.generated
       public static const POSTMORTEM_PANEL_BG_LARGE:String = "postmortemPanel_bg_large";
       
       public static const POSTMORTEM_TIPS_BG:String = "postmortemTips_bg";
+      
+      public static const PRESTIGE_MARK_1_1:String = "prestigeMark_1_1";
+      
+      public static const PRESTIGE_MARK_1_2:String = "prestigeMark_1_2";
+      
+      public static const PRESTIGE_MARK_1_3:String = "prestigeMark_1_3";
+      
+      public static const PRESTIGE_MARK_10_1:String = "prestigeMark_10_1";
+      
+      public static const PRESTIGE_MARK_10_2:String = "prestigeMark_10_2";
+      
+      public static const PRESTIGE_MARK_10_3:String = "prestigeMark_10_3";
+      
+      public static const PRESTIGE_MARK_11_1:String = "prestigeMark_11_1";
+      
+      public static const PRESTIGE_MARK_11_2:String = "prestigeMark_11_2";
+      
+      public static const PRESTIGE_MARK_11_3:String = "prestigeMark_11_3";
+      
+      public static const PRESTIGE_MARK_12_1:String = "prestigeMark_12_1";
+      
+      public static const PRESTIGE_MARK_12_2:String = "prestigeMark_12_2";
+      
+      public static const PRESTIGE_MARK_12_3:String = "prestigeMark_12_3";
+      
+      public static const PRESTIGE_MARK_13_1:String = "prestigeMark_13_1";
+      
+      public static const PRESTIGE_MARK_13_2:String = "prestigeMark_13_2";
+      
+      public static const PRESTIGE_MARK_13_3:String = "prestigeMark_13_3";
+      
+      public static const PRESTIGE_MARK_14_1:String = "prestigeMark_14_1";
+      
+      public static const PRESTIGE_MARK_14_2:String = "prestigeMark_14_2";
+      
+      public static const PRESTIGE_MARK_14_3:String = "prestigeMark_14_3";
+      
+      public static const PRESTIGE_MARK_15_1:String = "prestigeMark_15_1";
+      
+      public static const PRESTIGE_MARK_15_2:String = "prestigeMark_15_2";
+      
+      public static const PRESTIGE_MARK_15_3:String = "prestigeMark_15_3";
+      
+      public static const PRESTIGE_MARK_16_1:String = "prestigeMark_16_1";
+      
+      public static const PRESTIGE_MARK_16_2:String = "prestigeMark_16_2";
+      
+      public static const PRESTIGE_MARK_16_3:String = "prestigeMark_16_3";
+      
+      public static const PRESTIGE_MARK_17_1:String = "prestigeMark_17_1";
+      
+      public static const PRESTIGE_MARK_17_2:String = "prestigeMark_17_2";
+      
+      public static const PRESTIGE_MARK_17_3:String = "prestigeMark_17_3";
+      
+      public static const PRESTIGE_MARK_18_1:String = "prestigeMark_18_1";
+      
+      public static const PRESTIGE_MARK_18_2:String = "prestigeMark_18_2";
+      
+      public static const PRESTIGE_MARK_18_3:String = "prestigeMark_18_3";
+      
+      public static const PRESTIGE_MARK_19_1:String = "prestigeMark_19_1";
+      
+      public static const PRESTIGE_MARK_19_2:String = "prestigeMark_19_2";
+      
+      public static const PRESTIGE_MARK_19_3:String = "prestigeMark_19_3";
+      
+      public static const PRESTIGE_MARK_2_1:String = "prestigeMark_2_1";
+      
+      public static const PRESTIGE_MARK_2_2:String = "prestigeMark_2_2";
+      
+      public static const PRESTIGE_MARK_2_3:String = "prestigeMark_2_3";
+      
+      public static const PRESTIGE_MARK_20_1:String = "prestigeMark_20_1";
+      
+      public static const PRESTIGE_MARK_20_2:String = "prestigeMark_20_2";
+      
+      public static const PRESTIGE_MARK_20_3:String = "prestigeMark_20_3";
+      
+      public static const PRESTIGE_MARK_21_1:String = "prestigeMark_21_1";
+      
+      public static const PRESTIGE_MARK_21_2:String = "prestigeMark_21_2";
+      
+      public static const PRESTIGE_MARK_21_3:String = "prestigeMark_21_3";
+      
+      public static const PRESTIGE_MARK_3_1:String = "prestigeMark_3_1";
+      
+      public static const PRESTIGE_MARK_3_2:String = "prestigeMark_3_2";
+      
+      public static const PRESTIGE_MARK_3_3:String = "prestigeMark_3_3";
+      
+      public static const PRESTIGE_MARK_4_1:String = "prestigeMark_4_1";
+      
+      public static const PRESTIGE_MARK_4_2:String = "prestigeMark_4_2";
+      
+      public static const PRESTIGE_MARK_4_3:String = "prestigeMark_4_3";
+      
+      public static const PRESTIGE_MARK_5_1:String = "prestigeMark_5_1";
+      
+      public static const PRESTIGE_MARK_5_2:String = "prestigeMark_5_2";
+      
+      public static const PRESTIGE_MARK_5_3:String = "prestigeMark_5_3";
+      
+      public static const PRESTIGE_MARK_6_1:String = "prestigeMark_6_1";
+      
+      public static const PRESTIGE_MARK_6_2:String = "prestigeMark_6_2";
+      
+      public static const PRESTIGE_MARK_6_3:String = "prestigeMark_6_3";
+      
+      public static const PRESTIGE_MARK_7_1:String = "prestigeMark_7_1";
+      
+      public static const PRESTIGE_MARK_7_2:String = "prestigeMark_7_2";
+      
+      public static const PRESTIGE_MARK_7_3:String = "prestigeMark_7_3";
+      
+      public static const PRESTIGE_MARK_8_1:String = "prestigeMark_8_1";
+      
+      public static const PRESTIGE_MARK_8_2:String = "prestigeMark_8_2";
+      
+      public static const PRESTIGE_MARK_8_3:String = "prestigeMark_8_3";
+      
+      public static const PRESTIGE_MARK_9_1:String = "prestigeMark_9_1";
+      
+      public static const PRESTIGE_MARK_9_2:String = "prestigeMark_9_2";
+      
+      public static const PRESTIGE_MARK_9_3:String = "prestigeMark_9_3";
       
       public static const PURE_ATSPG_H:String = "pure_atspg_h";
       
@@ -2514,8 +2656,6 @@ package net.wg.data.constants.generated
       public static const RIBBONS_SPOTTED:String = "ribbonsSpotted";
       
       public static const RIBBONS_STUN:String = "ribbonsStun";
-      
-      public static const RIGHT_STATS_MUTE:String = "right_stats_mute";
       
       public static const ROLE_ATSPG_ASSAULT_32X32:String = "role_ATSPG_assault_32x32";
       
@@ -3079,6 +3219,8 @@ package net.wg.data.constants.generated
       
       public static const USA_A106_M48_A2_120:String = "usa-A106_M48A2_120";
       
+      public static const USA_A106_M48_A2_120_CN:String = "usa-A106_M48A2_120_CN";
+      
       public static const USA_A107_T1_HMC:String = "usa-A107_T1_HMC";
       
       public static const USA_A108_T18_HMC:String = "usa-A108_T18_HMC";
@@ -3563,6 +3705,8 @@ package net.wg.data.constants.generated
       
       public static const USSR_R195_T34_M_54:String = "ussr-R195_T34M_54";
       
+      public static const USSR_R196_OBJECT_452_K:String = "ussr-R196_Object_452K";
+      
       public static const USSR_R197_KV_1_S_MZ:String = "ussr-R197_KV_1S_MZ";
       
       public static const USSR_R198_LTS_85:String = "ussr-R198_LTS_85";
@@ -3824,6 +3968,8 @@ package net.wg.data.constants.generated
       public static const ALL_32X32_ENUM:Array = [ROLE_ATSPG_ASSAULT_32X32,ROLE_ATSPG_SNIPER_32X32,ROLE_ATSPG_SUPPORT_32X32,ROLE_ATSPG_UNIVERSAL_32X32,ROLE_HT_ASSAULT_32X32,ROLE_HT_BREAK_32X32,ROLE_HT_SUPPORT_32X32,ROLE_HT_UNIVERSAL_32X32,ROLE_LT_UNIVERSAL_32X32,ROLE_LT_WHEELED_32X32,ROLE_MT_ASSAULT_32X32,ROLE_MT_SNIPER_32X32,ROLE_MT_SUPPORT_32X32,ROLE_MT_UNIVERSAL_32X32,ROLE_SPG_32X32];
       
       public static const RANK_ALL_ALL_22X22_ENUM:Array = [RANK_FIFTH_A_22X22,RANK_FIRST_A_22X22,RANK_FIRST_B_22X22,RANK_FIRST_C_22X22,RANK_FIRST_D_22X22,RANK_FIRST_E_22X22,RANK_FOURTH_A_22X22,RANK_FOURTH_B_22X22,RANK_FOURTH_C_22X22,RANK_FOURTH_D_22X22,RANK_FOURTH_E_22X22,RANK_SECOND_A_22X22,RANK_SECOND_B_22X22,RANK_SECOND_C_22X22,RANK_SECOND_D_22X22,RANK_SECOND_E_22X22,RANK_SIXTH_A_22X22,RANK_THIRD_A_22X22,RANK_THIRD_B_22X22,RANK_THIRD_C_22X22,RANK_THIRD_D_22X22,RANK_THIRD_E_22X22];
+      
+      public static const PRESTIGE_MARK_ALL_ENUM:Array = [PRESTIGE_MARK_1_1,PRESTIGE_MARK_1_2,PRESTIGE_MARK_1_3,PRESTIGE_MARK_10_1,PRESTIGE_MARK_10_2,PRESTIGE_MARK_10_3,PRESTIGE_MARK_11_1,PRESTIGE_MARK_11_2,PRESTIGE_MARK_11_3,PRESTIGE_MARK_12_1,PRESTIGE_MARK_12_2,PRESTIGE_MARK_12_3,PRESTIGE_MARK_13_1,PRESTIGE_MARK_13_2,PRESTIGE_MARK_13_3,PRESTIGE_MARK_14_1,PRESTIGE_MARK_14_2,PRESTIGE_MARK_14_3,PRESTIGE_MARK_15_1,PRESTIGE_MARK_15_2,PRESTIGE_MARK_15_3,PRESTIGE_MARK_16_1,PRESTIGE_MARK_16_2,PRESTIGE_MARK_16_3,PRESTIGE_MARK_17_1,PRESTIGE_MARK_17_2,PRESTIGE_MARK_17_3,PRESTIGE_MARK_18_1,PRESTIGE_MARK_18_2,PRESTIGE_MARK_18_3,PRESTIGE_MARK_19_1,PRESTIGE_MARK_19_2,PRESTIGE_MARK_19_3,PRESTIGE_MARK_2_1,PRESTIGE_MARK_2_2,PRESTIGE_MARK_2_3,PRESTIGE_MARK_20_1,PRESTIGE_MARK_20_2,PRESTIGE_MARK_20_3,PRESTIGE_MARK_21_1,PRESTIGE_MARK_21_2,PRESTIGE_MARK_21_3,PRESTIGE_MARK_3_1,PRESTIGE_MARK_3_2,PRESTIGE_MARK_3_3,PRESTIGE_MARK_4_1,PRESTIGE_MARK_4_2,PRESTIGE_MARK_4_3,PRESTIGE_MARK_5_1,PRESTIGE_MARK_5_2,PRESTIGE_MARK_5_3,PRESTIGE_MARK_6_1,PRESTIGE_MARK_6_2,PRESTIGE_MARK_6_3,PRESTIGE_MARK_7_1,PRESTIGE_MARK_7_2,PRESTIGE_MARK_7_3,PRESTIGE_MARK_8_1,PRESTIGE_MARK_8_2,PRESTIGE_MARK_8_3,PRESTIGE_MARK_9_1,PRESTIGE_MARK_9_2,PRESTIGE_MARK_9_3];
        
       
       public function BATTLEATLAS()
@@ -3958,6 +4104,18 @@ package net.wg.data.constants.generated
          if(RANK_ALL_ALL_22X22_ENUM.indexOf(_loc3_) == -1)
          {
             DebugUtils.LOG_WARNING("[getRankIcon]:atlas key \"" + _loc3_ + "\" was not found");
+            return null;
+         }
+         return _loc3_;
+      }
+      
+      public static function getPrestigeMark(param1:String, param2:String) : String
+      {
+         var _loc3_:String = null;
+         _loc3_ = "prestigeMark_" + param1 + "_" + param2;
+         if(PRESTIGE_MARK_ALL_ENUM.indexOf(_loc3_) == -1)
+         {
+            DebugUtils.LOG_WARNING("[getPrestigeMark]:atlas key \"" + _loc3_ + "\" was not found");
             return null;
          }
          return _loc3_;

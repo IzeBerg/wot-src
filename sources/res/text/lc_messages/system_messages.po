@@ -29,7 +29,7 @@ msgid "add_tankman_skill/server_error"
 msgstr "Новый навык не изучен. Попробуйте позже."
 
 msgid "add_tankman_skill/success"
-msgstr "Новый навык успешно изучен."
+msgstr "Изучен новый навык: %(skill)s."
 
 msgid "add_tankman_skill/vehicle_locked"
 msgstr "Ошибка изучения навыка. Машина заблокирована."
@@ -555,21 +555,13 @@ msgstr ""
 msgid "battlePass/switch_pause/body"
 msgstr "Боевой пропуск временно недоступен. Идут технические работы."
 
-msgid "battlePass/switch_started/style/body"
+msgid "battlePass/switch_started/body"
 msgstr ""
 "Бойцы! Время в очередной раз отправляться в погоню за уникальной наградой "
 "Боевого пропуска: прогрессионными стилями, жетонами, эксклюзивными "
 "персонажами и многим другим!"
 
-msgid "battlePass/switch_started/style/title"
-msgstr "Боевой пропуск, сезон %(seasonNum)d"
-
-msgid "battlePass/switch_started/tankman/body"
-msgstr ""
-"Бойцы! Время в очередной раз отправляться в погоню за уникальной наградой "
-"Боевого пропуска: жетонами, эксклюзивными персонажами и многим другим!"
-
-msgid "battlePass/switch_started/tankman/title"
+msgid "battlePass/switch_started/title"
 msgstr "Боевой пропуск, сезон %(seasonNum)d"
 
 msgid "battlePassLevels_buy/server_error"
@@ -706,11 +698,6 @@ msgstr ""
 "Невозможно рекрутировать и пересадить члена экипажа: у танка уникальный "
 "постоянный экипаж."
 
-msgid "buy_and_equip_tankman/financial_success"
-msgstr ""
-"Рекрутирование и пересадка члена экипажа выполнены успешно. Потрачено "
-"%(price)s."
-
 msgid "buy_and_equip_tankman/free_tankmen_limit"
 msgstr "Вы исчерпали лимит бесплатных членов экипажа на сегодняшний день."
 
@@ -731,9 +718,6 @@ msgid "buy_and_equip_tankman/server_error"
 msgstr ""
 "Рекрутирование и пересадка члена экипажа не выполнены. Попробуйте позже."
 
-msgid "buy_and_equip_tankman/success"
-msgstr "Рекрутирование и пересадка члена экипажа выполнены успешно."
-
 msgid "buy_and_equip_tankman/vehicle_locked"
 msgstr ""
 "Рекрутирование и пересадка члена экипажа не выполнены. Машина заблокирована."
@@ -747,11 +731,6 @@ msgid "buy_and_reequip_tankman/FORBIDDEN"
 msgstr ""
 "Невозможно рекрутировать и пересадить члена экипажа: у танка уникальный "
 "постоянный экипаж."
-
-msgid "buy_and_reequip_tankman/financial_success"
-msgstr ""
-"Рекрутирование и замена члена экипажа выполнены успешно. Потрачено "
-"%(price)s."
 
 msgid "buy_and_reequip_tankman/free_tankmen_limit"
 msgstr "Вы исчерпали лимит бесплатных членов экипажа на сегодняшний день."
@@ -777,9 +756,6 @@ msgstr ""
 msgid "buy_and_reequip_tankman/server_error"
 msgstr "Рекрутирование и замена члена экипажа не выполнены. Попробуйте позже."
 
-msgid "buy_and_reequip_tankman/success"
-msgstr "Рекрутирование и замена члена экипажа выполнены успешно."
-
 msgid "buy_and_reequip_tankman/vehicle_locked"
 msgstr ""
 "Рекрутирование и замена члена экипажа не выполнены. Машина заблокирована."
@@ -801,10 +777,12 @@ msgid "buy_tankmen_berths/not_enough_gold"
 msgstr "Ошибка расширения Казармы. Недостаточно золота."
 
 msgid "buy_tankmen_berths/server_error"
-msgstr "Ошибка расширения Казармы. Попробуйте позже."
+msgstr "Казарма не расширена. Попробуйте позже."
 
 msgid "buy_tankmen_berths/success"
-msgstr "Казарма расширена. Потрачено %(money)s."
+msgstr ""
+"Казарма расширена.\n"
+"Потрачено золота: %(money)s."
 
 msgid "buy_tankmen_berths/wallet_not_available"
 msgstr ""
@@ -826,8 +804,8 @@ msgstr ""
 "Невозможно сменить специальность члену экипажа: у танка уникальный "
 "постоянный экипаж."
 
-msgid "change_tankman_role/installed"
-msgstr "Переученный член экипажа посажен в %(vehicle)s"
+msgid "change_tankman_role/financial_success"
+msgstr "Потрачено золота: %(money)s."
 
 msgid "change_tankman_role/invalid_role"
 msgstr "Не удалось сменить специальность. Попробуйте позже."
@@ -853,8 +831,12 @@ msgstr ""
 "%(role)s уже в %(vehicle)s. Переученный член экипажа помещён в Казарму."
 
 msgid "change_tankman_role/success"
+msgstr "Специальность изменена. Все навыки сброшены."
+
+msgid "change_tankman_role/success_and_vehicle_retrained"
 msgstr ""
-"Смена специальности члена экипажа выполнена успешно. Потрачено %(money)s"
+"Специальность изменена. Все навыки сброшены. Член экипажа переобучен на "
+"машину %(vehName)s."
 
 msgid "change_tankman_role/wallet_not_available"
 msgstr "Не удалось сменить специальность. Попробуйте позже."
@@ -1143,10 +1125,24 @@ msgstr ""
 "восстановления работоспособности Единого кошелька."
 
 msgid "crewBooks/failed"
-msgstr "Возникла ошибка при изучении учебного материала."
+msgstr ""
+"Не удалось обучить экипаж.\n"
+"Попробуйте позже."
+
+msgid "crewBooks/server_error"
+msgstr ""
+"Серверная ошибка. Не удалось обучить члена (-ов) экипажа. Попробуйте позже."
 
 msgid "crewBooksNotification/bookUsed"
-msgstr "Использовано: %(name)s"
+msgstr "%(name)s."
+
+msgid "crewBooksNotification/booksUsed"
+msgstr "%(name)s (x%(count)s)"
+
+msgid "crewBooksNotification/success"
+msgstr ""
+"Экипаж обучен.\n"
+"Потрачено:"
 
 msgid "crewBooks_buy/server_error"
 msgstr ""
@@ -1154,7 +1150,9 @@ msgstr ""
 "позже."
 
 msgid "crewBooks_buy/success"
-msgstr "%(name)s (%(count)s шт.). Потрачено %(money)s."
+msgstr ""
+"%(name)s (%(count)s шт.).\n"
+"Потрачено кредитов: %(money)s."
 
 msgid "crewBooks_sell/server_error"
 msgstr ""
@@ -1162,12 +1160,9 @@ msgstr ""
 "позже."
 
 msgid "crewBooks_sell/success"
-msgstr "%(name)s (%(count)s шт.). Получено %(money)s."
-
-msgid "crewSkinsCompensation/success"
 msgstr ""
-"Копии обликов удалены.\n"
-"Получено кредитов: %(compensation)s"
+"%(name)s (%(count)s шт.).\n"
+"Получено кредитов: %(money)s."
 
 msgid "crewSkinsNotification/SkinChanged"
 msgstr "Изменён облик члена экипажа."
@@ -1432,10 +1427,12 @@ msgid "dismiss_tankman/invalid_vehicle"
 msgstr "Ошибка демобилизации члена экипажа. Неправильная машина."
 
 msgid "dismiss_tankman/server_error"
-msgstr "Не удалось демобилизовать члена экипажа. Попробуйте позже."
+msgstr ""
+"Не удалось демобилизовать члена экипажа.\n"
+"Попробуйте позже."
 
 msgid "dismiss_tankman/success"
-msgstr "Член экипажа демобилизован успешно."
+msgstr "Член экипажа демобилизован."
 
 msgid "dismiss_tankman/vehicle_locked"
 msgstr "Ошибка демобилизации члена экипажа. Машина заблокирована."
@@ -1460,6 +1457,16 @@ msgstr "Жетоны снова доступны."
 msgid "dossiers_unavailable"
 msgstr "Учётная запись не готова (DOSSIERS_UNAVAILABLE)"
 
+msgid "drop_tankman_skill/finance_success_credits"
+msgstr ""
+"Все навыки сброшены.\n"
+"Потрачено кредитов: %(money)s."
+
+msgid "drop_tankman_skill/finance_success_gold"
+msgstr ""
+"Все навыки сброшены.\n"
+"Потрачено золота: %(money)s."
+
 msgid "drop_tankman_skill/invalid_vehicle"
 msgstr "Ошибка сброса навыков. Неправильная машина."
 
@@ -1467,7 +1474,7 @@ msgid "drop_tankman_skill/server_error"
 msgstr "Не удалось сбросить навыки. Попробуйте позже."
 
 msgid "drop_tankman_skill/success"
-msgstr "Все навыки успешно сброшены. Потрачено %(money)s"
+msgstr "Все навыки сброшены."
 
 msgid "drop_tankman_skill/vehicle_locked"
 msgstr "Ошибка сброса навыков. Машина заблокирована."
@@ -1522,11 +1529,14 @@ msgstr ""
 msgid "equip_tankman/invalid_vehicle"
 msgstr "Ошибка перемещения члена экипажа на машину. Неправильная машина."
 
+msgid "equip_tankman/not_enough_space"
+msgstr "Для высаживаемого члена экипажа недостаточно места в Казарме."
+
 msgid "equip_tankman/server_error"
-msgstr "Член экипажа не перемещён. Попробуйте позже."
+msgstr "Член экипажа не пересажен. Попробуйте позже."
 
 msgid "equip_tankman/success"
-msgstr "Пересадка члена экипажа выполнена успешно."
+msgstr "Член экипажа пересажен на машину %(vehName)s."
 
 msgid "equip_tankman/vehicle_locked"
 msgstr "Ошибка перемещения члена экипажа на машину. Машина заблокирована."
@@ -1996,14 +2006,18 @@ msgstr ""
 msgid "free_xp_to_tman_skill/error/SHOP_DESYNC"
 msgstr "Ошибка при обучении члена экипажа. Попробуйте позже."
 
-msgid "free_xp_to_tman_skill/error/WRONG_ARGS_TYPE"
+msgid "free_xp_to_tman_skill/error/WRONG_ARGS_VALUE"
 msgstr "Ошибка при обучении члена экипажа. Попробуйте позже."
 
 msgid "free_xp_to_tman_skill/server_error"
-msgstr "Не удалось обучить члена экипажа. Попробуйте позже."
+msgstr ""
+"Не удалось обучить члена экипажа, используя свободный опыт.\n"
+"Попробуйте позже."
 
 msgid "free_xp_to_tman_skill/success"
-msgstr "Член экипажа успешно обучен. Потрачено свободного опыта: %(freeXP)s."
+msgstr ""
+"Член экипажа обучен.\n"
+"Потрачено свободного опыта: %(money)s."
 
 msgid "gameSessionControl/korea/midnightNotification"
 msgstr ""
@@ -2520,7 +2534,7 @@ msgstr "%(veh_name)s: Национальная комплектация изме
 
 msgid "notrecruit_window/success"
 msgstr ""
-"Член экипажа успешно рекрутирован.\n"
+"Член экипажа рекрутирован.\n"
 "%(colorTagOpen)s%(rank)s %(fullName)s\n"
 "(%(role)s, %(vehicleName)s, %(roleLevel)d%%)%(colorTagClose)s"
 
@@ -3163,7 +3177,19 @@ msgid "recruit_window/disconnected_from_center"
 msgstr "Ошибка рекрутирования члена экипажа. Сервис временно недоступен."
 
 msgid "recruit_window/financial_success"
-msgstr "Член экипажа успешно рекрутирован. Потрачено %(price)s."
+msgstr ""
+"Член экипажа рекрутирован на машину %(vehName)s. Потрачено кредитов: "
+"%(credits)s."
+
+msgid "recruit_window/financial_success_credits"
+msgstr ""
+"Член экипажа рекрутирован на машину %(vehName)s.\n"
+"Потрачено кредитов: %(price)s."
+
+msgid "recruit_window/financial_success_gold"
+msgstr ""
+"Член экипажа рекрутирован на машину %(vehName)s.\n"
+"Потрачено золота: %(price)s."
 
 msgid "recruit_window/free_tankmen_limit"
 msgstr "Вы исчерпали лимит бесплатных членов экипажа на сегодняшний день."
@@ -3182,10 +3208,10 @@ msgstr ""
 "Казарме."
 
 msgid "recruit_window/server_error"
-msgstr "Ошибка рекрутирования члена экипажа. Попробуйте позже."
+msgstr "Не удалось рекрутировать члена экипажа. Попробуйте позже."
 
 msgid "recruit_window/success"
-msgstr "Член экипажа успешно рекрутирован."
+msgstr "Член экипажа бесплатно рекрутирован на машину %(vehName)s."
 
 msgid "recruit_window/wallet_not_available"
 msgstr ""
@@ -3199,11 +3225,14 @@ msgstr ""
 msgid "reequip_tankman/invalid_vehicle"
 msgstr "Ошибка замены члена экипажа. Неправильная машина."
 
+msgid "reequip_tankman/not_enough_space"
+msgstr "Для высаживаемого члена экипажа недостаточно места в Казарме."
+
 msgid "reequip_tankman/server_error"
 msgstr "Замена члена экипажа не выполнена. Попробуйте позже."
 
 msgid "reequip_tankman/success"
-msgstr "Замена члена экипажа выполнена успешно."
+msgstr "Член экипажа заменён."
 
 msgid "reequip_tankman/vehicle_locked"
 msgstr "Ошибка замены члена экипажа. Машина заблокирована."
@@ -3246,7 +3275,7 @@ msgid "replace_tankman/server_error"
 msgstr "Смена документов члена экипажа не выполнена. Попробуйте позже."
 
 msgid "replace_tankman/success"
-msgstr "Выполнена смена документов члена экипажа."
+msgstr "Документы заменены."
 
 msgid "replace_tankman/vehicle_locked"
 msgstr "Ошибка смены документов члена экипажа. Машина заблокирована."
@@ -3277,9 +3306,6 @@ msgstr ""
 msgid "restore_tankman/INVALID_TMAN_ID"
 msgstr "Невозможно восстановить данного члена экипажа."
 
-msgid "restore_tankman/NO_BERTH"
-msgstr "Ошибка восстановления члена экипажа. Недостаточно места в Казарме."
-
 msgid "restore_tankman/NO_GOLD"
 msgstr "Недостаточно золота для восстановления данного члена экипажа."
 
@@ -3295,17 +3321,22 @@ msgstr ""
 "Ошибка восстановления члена экипажа. Сервис восстановления танкистов "
 "временно недоступен"
 
+msgid "restore_tankman/error"
+msgstr "%(tankman)s не может быть восстановлен."
+
 msgid "restore_tankman/financial_success"
-msgstr "Член экипажа успешно восстановлен. Потрачено %(money)s."
+msgstr ""
+"Член экипажа восстановлен.\n"
+"Потрачено кредитов: %(money)s."
 
 msgid "restore_tankman/not_enough_space"
 msgstr "Ошибка восстановления члена экипажа. Недостаточно места в Казарме."
 
 msgid "restore_tankman/server_error"
-msgstr "Ошибка восстановления члена экипажа. Попробуйте позже."
+msgstr "Не удалось восстановить члена экипажа. Попробуйте позже."
 
 msgid "restore_tankman/success"
-msgstr "Член экипажа успешно восстановлен."
+msgstr "Член экипажа восстановлен."
 
 msgid "retraining_crew/FORBIDDEN"
 msgstr "Невозможно переобучить экипаж: у танка уникальный постоянный экипаж."
@@ -3313,8 +3344,14 @@ msgstr "Невозможно переобучить экипаж: у танка 
 msgid "retraining_crew/empty_list"
 msgstr "Ошибка переобучения экипажа. Члены экипажа не выбраны."
 
-msgid "retraining_crew/financial_success"
-msgstr "Переобучение экипажа выполнено успешно. Потрачено %(price)s."
+msgid "retraining_crew/financial_success_credits"
+msgstr "Потрачено кредитов: %(money)s."
+
+msgid "retraining_crew/financial_success_free"
+msgstr "Экипаж бесплатно переобучен на машину %(vehName)s."
+
+msgid "retraining_crew/financial_success_gold"
+msgstr "Потрачено золота: %(money)s."
 
 msgid "retraining_crew/invalid_operation"
 msgstr "Ошибка переобучения экипажа. Операция недоступна."
@@ -3326,7 +3363,7 @@ msgid "retraining_crew/server_error"
 msgstr "Переобучение экипажа не выполнено. Попробуйте позже."
 
 msgid "retraining_crew/success"
-msgstr "Переобучение экипажа выполнено успешно."
+msgstr "Экипаж переобучен на машину %(vehName)s."
 
 msgid "retraining_crew/vehicle_locked"
 msgstr "Ошибка переобучения экипажа. Машина заблокирована."
@@ -3338,8 +3375,14 @@ msgid "retraining_tankman/FORBIDDEN"
 msgstr ""
 "Невозможно переобучить члена экипажа: у танка уникальный постоянный экипаж."
 
-msgid "retraining_tankman/financial_success"
-msgstr "Переобучение члена экипажа выполнено успешно. Потрачено %(price)s."
+msgid "retraining_tankman/financial_success_credits"
+msgstr "Потрачено кредитов: %(money)s."
+
+msgid "retraining_tankman/financial_success_free"
+msgstr "Член экипажа бесплатно переобучен на машину %(vehName)s."
+
+msgid "retraining_tankman/financial_success_gold"
+msgstr "Потрачено золота: %(money)s."
 
 msgid "retraining_tankman/invalid_operation"
 msgstr "Ошибка переобучения члена экипажа. Недоступная операция."
@@ -3348,10 +3391,10 @@ msgid "retraining_tankman/invalid_vehicle"
 msgstr "Ошибка переобучения члена экипажа. Неправильная машина."
 
 msgid "retraining_tankman/server_error"
-msgstr "Переобучение члена экипажа не выполнено. Попробуйте позже."
+msgstr "Не удалось переобучить члена экипажа. Попробуйте позже."
 
 msgid "retraining_tankman/success"
-msgstr "Переобучение члена экипажа выполнено успешно."
+msgstr "Член экипажа переобучен на машину %(vehName)s."
 
 msgid "retraining_tankman/vehicle_locked"
 msgstr "Ошибка переобучения члена экипажа. Машина заблокирована."
@@ -4132,6 +4175,9 @@ msgstr "Идёт присоединение игроков. Пожалуйста
 msgid "unitBrowser/errors/BAD_ACCEPT_CONTEXT"
 msgstr "Нет возможности подтвердить готовность присоединения к команде."
 
+msgid "unload/button"
+msgstr "В Казарму"
+
 msgid "unload_crew/FORBIDDEN"
 msgstr ""
 "Невозможно высадить экипаж в Казарму: у танка уникальный постоянный экипаж."
@@ -4140,13 +4186,13 @@ msgid "unload_crew/invalid_vehicle"
 msgstr "Ошибка высадки экипажа в Казарму. Неправильная машина."
 
 msgid "unload_crew/not_enough_space"
-msgstr "Ошибка высадки экипажа в Казарму. Недостаточно места в Казарме."
+msgstr "Для высаживаемого экипажа недостаточно места в Казарме."
 
 msgid "unload_crew/server_error"
 msgstr "Высадка экипажа в Казарму не выполнена. Попробуйте позже."
 
 msgid "unload_crew/success"
-msgstr "Высадка экипажа в Казарму выполнена успешно."
+msgstr "Экипаж высажен в Казарму."
 
 msgid "unload_crew/vehicle_locked"
 msgstr "Ошибка высадки экипажа в Казарму. Машина заблокирована."
@@ -4159,17 +4205,20 @@ msgstr ""
 "Невозможно высадить члена экипажа в Казарму: у танка уникальный постоянный "
 "экипаж."
 
+msgid "unload_tankman/button"
+msgstr "В Казарму"
+
 msgid "unload_tankman/invalid_vehicle"
 msgstr "Ошибка высадки члена экипажа в Казарму. Неправильная машина."
 
 msgid "unload_tankman/not_enough_space"
-msgstr "Ошибка высадки члена экипажа в Казарму. Недостаточно места в Казарме."
+msgstr "Для высаживаемого члена экипажа недостаточно места в Казарме."
 
 msgid "unload_tankman/server_error"
-msgstr "Высадка члена экипажа в Казарму не выполнена. Попробуйте позже."
+msgstr "Не удалось высадить члена экипажа в Казарму. Попробуйте позже."
 
 msgid "unload_tankman/success"
-msgstr "Высадка члена экипажа в Казарму выполнена успешно."
+msgstr "Член экипажа высажен в Казарму."
 
 msgid "unload_tankman/vehicle_locked"
 msgstr "Ошибка высадки члена экипажа в Казарму. Машина заблокирована."
@@ -4452,22 +4501,15 @@ msgstr ""
 "формировании, или попробуйте позже."
 
 msgid "vehicle_remove/success"
-msgstr "Машина %(vehName)s успешно удалена. Получено %(money)s."
-
-msgid "vehicle_remove/success/with_demount_kit"
 msgstr ""
-"Машина %(vehName)s успешно удалена. Получено %(money)s. Использован "
-"демонтажный набор (х%(countDK)s)."
+"Машина %(vehName)s успешно удалена.\n"
+" %(money)s."
 
 msgid "vehicle_remove/success_dismantling"
 msgstr ""
-"Машина %(vehName)s успешно удалена. Получено %(gainMoney)s. Потрачено "
+"Машина %(vehName)s успешно удалена.\n"
+"%(gainMoney)s.\n"
 "%(spendMoney)s."
-
-msgid "vehicle_remove/success_dismantling/with_demount_kit"
-msgstr ""
-"Машина %(vehName)s успешно удалена. Получено %(gainMoney)s. Использован "
-"демонтажный набор (х%(countDK)s). Потрачено %(spendMoney)s."
 
 msgid "vehicle_remove/vehicle_cannot_be_sold"
 msgstr ""
@@ -4569,6 +4611,9 @@ msgstr ""
 "Операция невозможна. Всё ваше золото станет доступно после автоматического "
 "восстановления работоспособности Единого кошелька."
 
+msgid "vehicle_sell/currencyUpdate/debited/demount_kit"
+msgstr "Использован демонтажный набор (х%(countDK)s)"
+
 msgid "vehicle_sell/demount_kit_disabled"
 msgstr "Продажа «%(vehName)s» не удалась. Попробуйте позже."
 
@@ -4599,22 +4644,17 @@ msgstr ""
 
 msgid "vehicle_sell/success"
 msgstr ""
-"Машина %(vehName)s успешно продана. Получено %(money)s. %(restoreInfo)s"
-
-msgid "vehicle_sell/success/with_demount_kit"
-msgstr ""
-"Машина %(vehName)s успешно продана. Получено %(money)s. Использован "
-"демонтажный набор (х%(countDK)s). %(restoreInfo)s"
+"Машина %(vehName)s успешно продана.\n"
+"%(money)s.\n"
+"\n"
+"%(restoreInfo)s"
 
 msgid "vehicle_sell/success_dismantling"
 msgstr ""
-"Машина %(vehName)s успешно продана. Получено %(gainMoney)s. Потрачено "
-"%(spendMoney)s. %(restoreInfo)s"
-
-msgid "vehicle_sell/success_dismantling/with_demount_kit"
-msgstr ""
-"Машина %(vehName)s успешно продана. Получено %(gainMoney)s. Использован "
-"демонтажный набор (х%(countDK)s). Потрачено %(spendMoney)s. %(restoreInfo)s"
+"Машина %(vehName)s успешно продана.\n"
+"%(gainMoney)s.\n"
+"%(spendMoney)s.\n"
+"%(restoreInfo)s"
 
 msgid "vehicle_sell/vehicle_cannot_be_sold"
 msgstr "Продажа «%(vehName)s» не удалась. Машина будет списана автоматически."
@@ -4659,14 +4699,14 @@ msgstr ""
 
 msgid "vehicle_tmenxp_accelerator/server_error"
 msgstr ""
-"Ошибка изменения ускоренного обучения экипажа «%(vehName)s». Попробуйте "
-"позже."
+"Не удалось изменить настройки ускоренного обучения экипажа машины "
+"%(vehName)s. Попробуйте позже."
 
 msgid "vehicle_tmenxp_accelerator/successFalse"
-msgstr "Ускоренное обучение экипажа «%(vehName)s» выключено."
+msgstr "Ускоренное обучение экипажа машины %(vehName)s отключено."
 
 msgid "vehicle_tmenxp_accelerator/successTrue"
-msgstr "Ускоренное обучение экипажа «%(vehName)s» включено."
+msgstr "Ускоренное обучение экипажа машины %(vehName)s включено."
 
 msgid "vehicle_tmenxp_accelerator/vehicle_locked"
 msgstr ""

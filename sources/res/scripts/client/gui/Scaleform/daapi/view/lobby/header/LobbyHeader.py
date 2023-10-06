@@ -56,7 +56,7 @@ from gui.server_events.events_helpers import isDailyQuest
 from gui.shared import event_dispatcher as shared_events, events, g_eventBus
 from gui.clans.clan_cache import g_clanCache
 from gui.shared.event_bus import EVENT_BUS_SCOPE
-from gui.shared.event_dispatcher import hideWebBrowserOverlay, showActiveTestConfirmDialog, showModeSelectorWindow, showShop, showStorage, showSubscriptionsPage, showWotPlusIntroView
+from gui.shared.event_dispatcher import hideWebBrowserOverlay, showActiveTestConfirmDialog, showModeSelectorWindow, showShop, showStorage, showSubscriptionsPage, showWotPlusIntroView, showBarracks
 from gui.shared.events import FullscreenModeSelectorEvent, PlatoonDropdownEvent
 from gui.shared.formatters import text_styles
 from gui.shared.formatters.currency import getBWFormatter
@@ -252,6 +252,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
     DESELECT_TAB_ALIASES = (
      VIEW_ALIAS.WIKI_VIEW,
      R.views.lobby.maps_training.MapsTrainingPage())
+    _WULF_TO_TAB = {R.views.lobby.crew.BarracksView(): TABS.BARRACKS}
     _TAB_ALIAS_TO_RULE_ID = {TABS.STORE: LuiRules.LOBBY_HEADER_COUNTERS_STORE, 
        TABS.MISSIONS: LuiRules.LOBBY_HEADER_COUNTERS_MISSIONS, 
        TABS.PROFILE: LuiRules.LOBBY_HEADER_COUNTERS_PROFILE, 
@@ -377,9 +378,12 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
     def onCrystalClick(self):
         shared_events.showCrystalWindow(self.__visibility)
 
+    @adisp_process
     def onPayment(self):
-        self.__closeWindowsWithTopSubViewLayer()
-        showShop(getBuyGoldUrl())
+        navigationPossible = yield self.lobbyContext.isHeaderNavigationPossible()
+        if navigationPossible:
+            self.__closeWindowsWithTopSubViewLayer()
+            showShop(getBuyGoldUrl())
 
     def showExchangeWindow(self):
         shared_events.showExchangeCurrencyWindow()
@@ -1035,6 +1039,8 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             showTournaments()
         elif alias == self.TABS.STORE:
             showIngameShop(getShopRootUrl(), Origin.HANGAR_TOP_MENU)
+        elif alias == self.TABS.BARRACKS:
+            showBarracks()
         else:
             event = g_entitiesFactories.makeLoadEvent(SFViewLoadParams(alias))
             if event is not None:
@@ -1062,9 +1068,10 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     def __onViewAddedToContainer(self, _, pyEntity):
         if pyEntity.layer is WindowLayer.SUB_VIEW:
-            if pyEntity.alias in self.TABS.ALL():
-                self.__setCurrentScreen(pyEntity.alias)
-            elif self.__currentScreen is not None and pyEntity.alias in self.DESELECT_TAB_ALIASES:
+            alias = self._WULF_TO_TAB.get(pyEntity.alias, pyEntity.alias)
+            if alias in self.TABS.ALL():
+                self.__setCurrentScreen(alias)
+            elif self.__currentScreen is not None and alias in self.DESELECT_TAB_ALIASES:
                 self.as_doDeselectHeaderButtonS(self.__currentScreen)
                 self.__currentScreen = None
         return

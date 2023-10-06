@@ -66,6 +66,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.data.BattleRoyaleEventHeaderVO;
    import net.wg.gui.battle.battleRoyale.data.BattleRoyaleFullStatsVO;
    import net.wg.gui.battle.battleRoyale.data.DescriptionBlockWithIconVO;
+   import net.wg.gui.battle.battleRoyale.data.RespawnMessageVO;
    import net.wg.gui.battle.battleRoyale.data.VehicleCounterVO;
    import net.wg.gui.battle.battleRoyale.ub.UnboundContainer;
    import net.wg.gui.battle.battleRoyale.views.BattleRoyaleLoading;
@@ -73,6 +74,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.views.BattleRoyaleScoreBar;
    import net.wg.gui.battle.battleRoyale.views.BattleRoyaleTeamPanel;
    import net.wg.gui.battle.battleRoyale.views.BattleRoyaleTeamPanelListItem;
+   import net.wg.gui.battle.battleRoyale.views.BattleRoyaleWinnerCongrats;
    import net.wg.gui.battle.battleRoyale.views.components.BRZoneDamageIconContent;
    import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleConsumableButton;
    import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleCounterTimer;
@@ -82,9 +84,12 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleTimer;
    import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleTimerContainer;
    import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleTimerCounterContainer;
+   import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleWinnerCongratsAnimation;
    import net.wg.gui.battle.battleRoyale.views.components.CorrodingShotIndicator;
    import net.wg.gui.battle.battleRoyale.views.components.DamageScreen;
    import net.wg.gui.battle.battleRoyale.views.components.EventViewHeader;
+   import net.wg.gui.battle.battleRoyale.views.components.RespawnButton.BattleRoyaleRespawnButton;
+   import net.wg.gui.battle.battleRoyale.views.components.RespawnButton.RespawnIcon;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.BattleRoyaleFullStats;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.DescriptionWithIconRenderer;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.DescriptionWithIconRendererSmall;
@@ -97,6 +102,15 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyaleNationsVehiclesCounterVO;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyaleNationsVehiclesVO;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyalePlatoonVO;
+   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.BaseRespawnMessage;
+   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.IRespawnMessage;
+   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.RespawnMessagePanel;
+   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.RespawnMessageTimer;
+   import net.wg.gui.battle.battleRoyale.views.components.respawnMessages.RespawnMessageWithDescription;
+   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.AirDropTimer;
+   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.BattleRoyaleTimersPanel;
+   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.RespawnTimer;
+   import net.wg.gui.battle.battleRoyale.views.components.timersPanel.TimerTextField;
    import net.wg.gui.battle.battleRoyale.views.configurator.BattleVehicleConfigurator;
    import net.wg.gui.battle.battleRoyale.views.configurator.ChoiceInfoPanel;
    import net.wg.gui.battle.battleRoyale.views.configurator.ConfiguratorRenderer;
@@ -208,6 +222,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.components.PlayerStatusView;
    import net.wg.gui.battle.components.PlayersPanelBase;
    import net.wg.gui.battle.components.PlayersPanelSwitchBase;
+   import net.wg.gui.battle.components.PrestigeLevel;
    import net.wg.gui.battle.components.StatusNotificationsPanel;
    import net.wg.gui.battle.components.TimersPanel;
    import net.wg.gui.battle.components.animatedBattleHint.AnimatedBattleHint;
@@ -658,6 +673,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.gameMessagesPanel.data.EndGameMessageVO;
    import net.wg.gui.battle.views.gameMessagesPanel.data.GameMessageVO;
    import net.wg.gui.battle.views.gameMessagesPanel.events.GameMessagesPanelEvent;
+   import net.wg.gui.battle.views.mapInfoTip.MapInfoTip;
    import net.wg.gui.battle.views.messages.FadedMessagesPool;
    import net.wg.gui.battle.views.messages.FadedTextMessage;
    import net.wg.gui.battle.views.messages.IMessage;
@@ -1155,6 +1171,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_DATA_DESCRIPTIONBLOCKWITHICONVO:Class = DescriptionBlockWithIconVO;
       
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_DATA_RESPAWNMESSAGEVO:Class = RespawnMessageVO;
+      
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_DATA_VEHICLECOUNTERVO:Class = VehicleCounterVO;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_UB_UNBOUNDCONTAINER:Class = UnboundContainer;
@@ -1168,6 +1186,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_BATTLEROYALETEAMPANEL:Class = BattleRoyaleTeamPanel;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_BATTLEROYALETEAMPANELLISTITEM:Class = BattleRoyaleTeamPanelListItem;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_BATTLEROYALEWINNERCONGRATS:Class = BattleRoyaleWinnerCongrats;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALECONSUMABLEBUTTON:Class = BattleRoyaleConsumableButton;
       
@@ -1184,6 +1204,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALETIMERCONTAINER:Class = BattleRoyaleTimerContainer;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALETIMERCOUNTERCONTAINER:Class = BattleRoyaleTimerCounterContainer;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALEWINNERCONGRATSANIMATION:Class = BattleRoyaleWinnerCongratsAnimation;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BRZONEDAMAGEICONCONTENT:Class = BRZoneDamageIconContent;
       
@@ -1216,6 +1238,28 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_FULLSTATS_NATIONSVEHICLESCOUNTER_DATA_BATTLEROYALENATIONSVEHICLESVO:Class = BattleRoyaleNationsVehiclesVO;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_FULLSTATS_NATIONSVEHICLESCOUNTER_DATA_BATTLEROYALEPLATOONVO:Class = BattleRoyalePlatoonVO;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNBUTTON_BATTLEROYALERESPAWNBUTTON:Class = BattleRoyaleRespawnButton;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNBUTTON_RESPAWNICON:Class = RespawnIcon;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_BASERESPAWNMESSAGE:Class = BaseRespawnMessage;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_IRESPAWNMESSAGE:Class = IRespawnMessage;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_RESPAWNMESSAGEPANEL:Class = RespawnMessagePanel;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_RESPAWNMESSAGETIMER:Class = RespawnMessageTimer;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_RESPAWNMESSAGES_RESPAWNMESSAGEWITHDESCRIPTION:Class = RespawnMessageWithDescription;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_AIRDROPTIMER:Class = AirDropTimer;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_BATTLEROYALETIMERSPANEL:Class = BattleRoyaleTimersPanel;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_RESPAWNTIMER:Class = RespawnTimer;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TIMERSPANEL_TIMERTEXTFIELD:Class = TimerTextField;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_CONFIGURATOR_BATTLEVEHICLECONFIGURATOR:Class = BattleVehicleConfigurator;
       
@@ -1388,6 +1432,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_COMPONENTS_PLAYERSPANELSWITCHBASE:Class = PlayersPanelSwitchBase;
       
       public static const NET_WG_GUI_BATTLE_COMPONENTS_PLAYERSTATUSVIEW:Class = PlayerStatusView;
+      
+      public static const NET_WG_GUI_BATTLE_COMPONENTS_PRESTIGELEVEL:Class = PrestigeLevel;
       
       public static const NET_WG_GUI_BATTLE_COMPONENTS_STATUSNOTIFICATIONSPANEL:Class = StatusNotificationsPanel;
       
@@ -2288,6 +2334,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_GAMEMESSAGESPANEL_DATA_GAMEMESSAGEVO:Class = GameMessageVO;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_GAMEMESSAGESPANEL_EVENTS_GAMEMESSAGESPANELEVENT:Class = GameMessagesPanelEvent;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_MAPINFOTIP_MAPINFOTIP:Class = MapInfoTip;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MESSAGES_FADEDMESSAGESPOOL:Class = FadedMessagesPool;
       

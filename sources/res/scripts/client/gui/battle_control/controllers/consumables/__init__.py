@@ -5,6 +5,7 @@ from gui.battle_control.controllers.consumables import opt_devices_ctrl
 from gui.battle_control.controllers.consumables import comp7_equipment_ctrl
 from gui.battle_control.controllers.consumables import epic_equipment_ctrl
 _EQUIPMENT_CONTROLLERS = {ARENA_BONUS_TYPE.COMP7: comp7_equipment_ctrl.Comp7EquipmentController, 
+   ARENA_BONUS_TYPE.TOURNAMENT_COMP7: comp7_equipment_ctrl.Comp7EquipmentController, 
    ARENA_BONUS_TYPE.EPIC_BATTLE: epic_equipment_ctrl.EpicEquipmentsController}
 _REPLAY_EQUIPMENT_CONTROLLERS = {ARENA_BONUS_TYPE.COMP7: comp7_equipment_ctrl.Comp7ReplayEquipmentController, 
    ARENA_BONUS_TYPE.EPIC_BATTLE: epic_equipment_ctrl.EpicReplayEquipmentController}

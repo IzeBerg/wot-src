@@ -19,6 +19,8 @@ class BATTLE_NOTIFICATIONS_TIMER_LINKAGES(object):
     WARNING_ICON = 'warningTimerUI'
     OVERTURNED_GREEN_ICON = 'destroyTimerOverTurnedGreenUI'
     HALF_OVERTURNED_ICON = 'HalfOverTurnedIconUI'
+    DESTROY_TIMER_DANGER_ZONE = 'destroyTimerDangerZoneUI'
+    DESTROY_TIMER_DANGER_ZONE_SMALL = 'destroyTimerDangerZoneSmallUI'
     DEATHZONE_ICON = 'destroyTimerDeathZoneUI'
     DEATHZONE_ICON_CN = 'destroyTimerDeathZoneCNUI'
     DANGER_ICON = 'dangerTimerDeathZoneUI'

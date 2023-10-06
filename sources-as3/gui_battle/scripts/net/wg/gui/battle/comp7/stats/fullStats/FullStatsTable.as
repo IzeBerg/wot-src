@@ -7,6 +7,7 @@ package net.wg.gui.battle.comp7.stats.fullStats
    import net.wg.gui.battle.comp7.stats.components.RoleSkillLevel;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.components.PlayerStatusView;
+   import net.wg.gui.battle.components.PrestigeLevel;
    import net.wg.gui.battle.views.stats.SpeakAnimation;
    import net.wg.gui.battle.views.stats.fullStats.FullStatsTableBase;
    import net.wg.gui.components.controls.BadgeComponent;
@@ -626,6 +627,34 @@ package net.wg.gui.battle.comp7.stats.fullStats
       
       public var squadIcon_c2r7:BattleAtlasSprite = null;
       
+      public var prestigeLevel_c1r1:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r2:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r3:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r4:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r5:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r6:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r7:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r1:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r2:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r3:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r4:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r5:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r6:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r7:PrestigeLevel = null;
+      
       public var rankIconsCollection:Vector.<BattleAtlasSprite> = null;
       
       public var deadBgCollection:Vector.<BattleAtlasSprite> = null;
@@ -664,6 +693,8 @@ package net.wg.gui.battle.comp7.stats.fullStats
       
       public var noSoundIconCollection:Vector.<BattleAtlasSprite> = null;
       
+      public var prestigeLevelCollection:Vector.<PrestigeLevel> = null;
+      
       public function FullStatsTable()
       {
          super();
@@ -689,6 +720,7 @@ package net.wg.gui.battle.comp7.stats.fullStats
          this.roleSkillLevelCollection = new <RoleSkillLevel>[this.roleSkillLevel_c1r1,this.roleSkillLevel_c1r2,this.roleSkillLevel_c1r3,this.roleSkillLevel_c1r4,this.roleSkillLevel_c1r5,this.roleSkillLevel_c1r6,this.roleSkillLevel_c1r7,this.roleSkillLevel_c2r1,this.roleSkillLevel_c2r2,this.roleSkillLevel_c2r3,this.roleSkillLevel_c2r4,this.roleSkillLevel_c2r5,this.roleSkillLevel_c2r6,this.roleSkillLevel_c2r7];
          this.squadIconCollection = new <BattleAtlasSprite>[this.squadIcon_c1r1,this.squadIcon_c1r2,this.squadIcon_c1r3,this.squadIcon_c1r4,this.squadIcon_c1r5,this.squadIcon_c1r6,this.squadIcon_c1r7,this.squadIcon_c2r1,this.squadIcon_c2r2,this.squadIcon_c2r3,this.squadIcon_c2r4,this.squadIcon_c2r5,this.squadIcon_c2r6,this.squadIcon_c2r7];
          this.noSoundIconCollection = new <BattleAtlasSprite>[this.noSoundIcon_1,this.noSoundIcon_2,this.noSoundIcon_3,this.noSoundIcon_4,this.noSoundIcon_5,this.noSoundIcon_6,this.noSoundIcon_7];
+         this.prestigeLevelCollection = new <PrestigeLevel>[this.prestigeLevel_c1r1,this.prestigeLevel_c1r2,this.prestigeLevel_c1r3,this.prestigeLevel_c1r4,this.prestigeLevel_c1r5,this.prestigeLevel_c1r6,this.prestigeLevel_c1r7,this.prestigeLevel_c2r1,this.prestigeLevel_c2r2,this.prestigeLevel_c2r3,this.prestigeLevel_c2r4,this.prestigeLevel_c2r5,this.prestigeLevel_c2r6,this.prestigeLevel_c2r7];
          this.leftFrag.imageName = BATTLEATLAS.STATS_TABLE_FRAGS;
          App.utils.commons.flipHorizontal(this.leftFrag);
          this.rightFrag.imageName = BATTLEATLAS.STATS_TABLE_FRAGS;
@@ -710,6 +742,10 @@ package net.wg.gui.battle.comp7.stats.fullStats
             _loc1_.dispose();
          }
          for each(_loc1_ in this.roleSkillLevelCollection)
+         {
+            _loc1_.dispose();
+         }
+         for each(_loc1_ in this.prestigeLevelCollection)
          {
             _loc1_.dispose();
          }
@@ -1011,6 +1047,20 @@ package net.wg.gui.battle.comp7.stats.fullStats
          this.squadIcon_c2r5 = null;
          this.squadIcon_c2r6 = null;
          this.squadIcon_c2r7 = null;
+         this.prestigeLevel_c1r1 = null;
+         this.prestigeLevel_c1r2 = null;
+         this.prestigeLevel_c1r3 = null;
+         this.prestigeLevel_c1r4 = null;
+         this.prestigeLevel_c1r5 = null;
+         this.prestigeLevel_c1r6 = null;
+         this.prestigeLevel_c1r7 = null;
+         this.prestigeLevel_c2r1 = null;
+         this.prestigeLevel_c2r2 = null;
+         this.prestigeLevel_c2r3 = null;
+         this.prestigeLevel_c2r4 = null;
+         this.prestigeLevel_c2r5 = null;
+         this.prestigeLevel_c2r6 = null;
+         this.prestigeLevel_c2r7 = null;
          this.rankIconsCollection.length = 0;
          this.deadBgCollection.length = 0;
          this.hitCollection.length = 0;
@@ -1028,6 +1078,7 @@ package net.wg.gui.battle.comp7.stats.fullStats
          this.roleSkillLevelCollection.length = 0;
          this.squadIconCollection.length = 0;
          this.noSoundIconCollection.length = 0;
+         this.prestigeLevelCollection.length = 0;
          this.rankIconsCollection = null;
          this.deadBgCollection = null;
          this.hitCollection = null;
@@ -1045,6 +1096,7 @@ package net.wg.gui.battle.comp7.stats.fullStats
          this.roleSkillLevelCollection = null;
          this.squadIconCollection = null;
          this.noSoundIconCollection = null;
+         this.prestigeLevelCollection = null;
          this.background = null;
          this.leftFrag = null;
          this.rightFrag = null;

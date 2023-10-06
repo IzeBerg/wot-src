@@ -9,10 +9,12 @@ package net.wg.gui.battle.epicBattle.battleloading
    import net.wg.gui.battle.epicBattle.battleloading.components.EpicBattleLoadingTankBalance;
    import net.wg.gui.battle.epicBattle.battleloading.components.EpicBattleStatsTable;
    import net.wg.gui.battle.epicBattle.battleloading.components.EpicBattleStatsTableCtrl;
+   import net.wg.utils.IStageSizeDependComponent;
+   import net.wg.utils.StageSizeBoundaries;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    
-   public class EpicBattleLoadingForm extends BaseLoadingForm
+   public class EpicBattleLoadingForm extends BaseLoadingForm implements IStageSizeDependComponent
    {
       
       private static const LOADING_BAR_MIN:int = 0;
@@ -20,6 +22,12 @@ package net.wg.gui.battle.epicBattle.battleloading
       private static const LOADING_BAR_MAX:int = 1;
       
       private static const LOADING_BAR_DEF_VALUE:int = 0;
+      
+      private static const EXTENDED_LAYOUT_OFFSET_X:int = 30;
+      
+      private static const SIMPLE_LAYOUT_TABLE_FRAME_LABEL:String = "simple";
+      
+      private static const EXTENDED_LAYOUT_TABLE_FRAME_LABEL:String = "extended";
        
       
       public var team1Text:TextField = null;
@@ -37,6 +45,14 @@ package net.wg.gui.battle.epicBattle.battleloading
       private var _leftTeamName:String = "";
       
       private var _rightTeamName:String = "";
+      
+      private var _defaultTeam1TextPositionX:int;
+      
+      private var _defaultTeam2TextPositionX:int;
+      
+      private var _defaultTeam1ScrollBarPositionX:int;
+      
+      private var _defaultTeam2ScrollBarPositionX:int;
       
       public function EpicBattleLoadingForm()
       {
@@ -104,8 +120,27 @@ package net.wg.gui.battle.epicBattle.battleloading
          this._tableCtrl.updateVehiclesInfo(param1,param2,param3);
       }
       
+      public function setStateSizeBoundaries(param1:int, param2:int) : void
+      {
+         var _loc3_:Boolean = false;
+         _loc3_ = param1 >= StageSizeBoundaries.WIDTH_1366;
+         this.team1Text.x = this._defaultTeam1TextPositionX;
+         this.team2Text.x = this._defaultTeam2TextPositionX;
+         this.table.team1ScrollBar.x = this._defaultTeam1ScrollBarPositionX;
+         this.table.team2ScrollBar.x = this._defaultTeam2ScrollBarPositionX;
+         if(_loc3_)
+         {
+            this.team1Text.x -= EXTENDED_LAYOUT_OFFSET_X;
+            this.team2Text.x += EXTENDED_LAYOUT_OFFSET_X;
+            this.table.team1ScrollBar.x -= EXTENDED_LAYOUT_OFFSET_X;
+            this.table.team2ScrollBar.x += EXTENDED_LAYOUT_OFFSET_X;
+         }
+         this.table.gotoAndStop(!!_loc3_ ? EXTENDED_LAYOUT_TABLE_FRAME_LABEL : SIMPLE_LAYOUT_TABLE_FRAME_LABEL);
+      }
+      
       override protected function onDispose() : void
       {
+         App.stageSizeMgr.unregister(this);
          if(this._tableCtrl)
          {
             this._tableCtrl.dispose();
@@ -139,6 +174,11 @@ package net.wg.gui.battle.epicBattle.battleloading
          loadingBar.minimum = LOADING_BAR_MIN;
          loadingBar.maximum = LOADING_BAR_MAX;
          loadingBar.value = LOADING_BAR_DEF_VALUE;
+         this._defaultTeam1TextPositionX = this.team1Text.x;
+         this._defaultTeam2TextPositionX = this.team2Text.x;
+         this._defaultTeam1ScrollBarPositionX = this.table.team1ScrollBar.x;
+         this._defaultTeam2ScrollBarPositionX = this.table.team2ScrollBar.x;
+         App.stageSizeMgr.register(this);
       }
       
       public function setEpicVehiclesStats(param1:EpicVehiclesStatsVO) : void

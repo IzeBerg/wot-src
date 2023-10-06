@@ -38,7 +38,7 @@ msgid "alertMessage/button/moreInfo"
 msgstr "Подробнее"
 
 msgid "alertMessage/modeOffline"
-msgstr "Режим недоступен: ошибка базы данных."
+msgstr "Ошибка базы данных. Режим недоступен."
 
 msgid "alertMessage/notAvailable"
 msgstr "Бои недоступны на сервере %(serverName)s"
@@ -315,6 +315,9 @@ msgid "countDown/text"
 msgstr ""
 "До начала события:\n"
 "%(timeLeft)s"
+
+msgid "dash"
+msgstr "—"
 
 msgid "detailsHelp/mainTitle"
 msgstr "Подсказки для режима «Натиск»"
@@ -705,6 +708,9 @@ msgstr "Вперёд"
 
 msgid "pagination/prev"
 msgstr "Назад"
+
+msgid "percentage"
+msgstr "%(percentageValue)s%"
 
 msgid "player_errors/equipment/fastRecharge/vehicleIsNotRecharged"
 msgstr "Недоступно: машина не на перезарядке."
@@ -1104,11 +1110,8 @@ msgstr "До завершения: %(hours)s ч"
 msgid "season/minutesLeft"
 msgstr "До завершения: %(minutes)s мин"
 
-msgid "season/name"
-msgstr "Сезон Лазурного пегаса"
-
 msgid "season/over"
-msgstr "Сезон Лазурного пегаса завершён"
+msgstr "%(seasonName)s завершён"
 
 msgid "season/range"
 msgstr "%(startDate)s – %(endDate)s"
@@ -1118,6 +1121,42 @@ msgstr "До завершения: %(seconds)s с"
 
 msgid "seasonModifier/title"
 msgstr "Модификатор сезона"
+
+msgid "seasonName/first"
+msgstr "Сезон Лазурного пегаса"
+
+msgid "seasonName/second"
+msgstr "Сезон Алого пегаса"
+
+msgid "seasonName/third"
+msgstr "Сезон Нефритового пегаса"
+
+msgid "seasonNameUpper/first"
+msgstr "СЕЗОН ЛАЗУРНОГО ПЕГАСА"
+
+msgid "seasonNameUpper/second"
+msgstr "СЕЗОН АЛОГО ПЕГАСА"
+
+msgid "seasonNameUpper/third"
+msgstr "СЕЗОН НЕФРИТОВОГО ПЕГАСА"
+
+msgid "seasonNameWithNumber/first"
+msgstr "Сезон I Лазурного пегаса"
+
+msgid "seasonNameWithNumber/second"
+msgstr "Сезон II Алого пегаса"
+
+msgid "seasonNameWithNumber/third"
+msgstr "Сезон III Нефритового пегаса"
+
+msgid "seasonNameWithNumberUpper/first"
+msgstr "СЕЗОН I ЛАЗУРНОГО ПЕГАСА"
+
+msgid "seasonNameWithNumberUpper/second"
+msgstr "СЕЗОН II АЛОГО ПЕГАСА"
+
+msgid "seasonNameWithNumberUpper/third"
+msgstr "СЕЗОН III НЕФРИТОВОГО ПЕГАСА"
 
 msgid "seasonPointTooltip/header"
 msgstr "Знамя Пегаса"
@@ -1143,6 +1182,109 @@ msgstr ""
 
 msgid "seasonPointTooltip/text/year"
 msgstr "Каждые 3 знамени улучшают награду, которую вы получите в конце года."
+
+msgid "seasonStatistics/button/fifth"
+msgstr "Где мой трофей!"
+
+msgid "seasonStatistics/button/first"
+msgstr "Это нормально"
+
+msgid "seasonStatistics/button/fourth"
+msgstr "Прелестно!"
+
+msgid "seasonStatistics/button/second"
+msgstr "Так точно!"
+
+msgid "seasonStatistics/button/sixth"
+msgstr "Это было легендарно!"
+
+msgid "seasonStatistics/button/third"
+msgstr "Ещё встретимся"
+
+msgid "seasonStatistics/description/finalScore"
+msgstr "Итоговый рейтинг сезона"
+
+msgid "seasonStatistics/description/leaderboardPosition"
+msgstr "Позиция в лидерборде: %(position)s"
+
+msgid "seasonStatistics/description/season"
+msgstr "НАТИСК. %(seasonNameUpper)s"
+
+msgid "seasonStatistics/description/seasonPoint"
+msgid_plural "plural/seasonStatistics/description/seasonPoint"
+msgstr[0] "Получено %(points)s знамя Пегаса"
+msgstr[1] "Получено %(points)s знамени Пегаса"
+msgstr[2] "Получено %(points)s знамён Пегаса"
+
+msgid "seasonStatistics/seasonNameUpper/first"
+msgstr "СЕЗОН I ЛАЗУРНОГО ПЕГАСА"
+
+msgid "seasonStatistics/seasonNameUpper/second"
+msgstr "СЕЗОН II АЛОГО ПЕГАСА"
+
+msgid "seasonStatistics/seasonNameUpper/third"
+msgstr "СЕЗОН III НЕФРИТОВОГО ПЕГАСА"
+
+msgid "seasonStatistics/section/statistics/battles/additional"
+msgstr "Побед: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/battles/main"
+msgstr ""
+"Боёв\n"
+"проведено"
+
+msgid "seasonStatistics/section/statistics/damage/additional"
+msgstr "В среднем: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/damage/main"
+msgstr ""
+"Рекордный\n"
+"урон"
+
+msgid "seasonStatistics/section/statistics/maxFrags/additional"
+msgstr "Коэф. уничтожения: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/maxFrags/main"
+msgstr ""
+"Максимум уничтожено\n"
+"за бой"
+
+msgid "seasonStatistics/section/statistics/maxPrestigePoints/additional"
+msgstr "В среднем: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/maxPrestigePoints/main"
+msgstr ""
+"Рекорд очков\n"
+"престижа"
+
+msgid "seasonStatistics/section/statistics/title"
+msgstr "СТАТИСТИКА СЕЗОНА"
+
+msgid "seasonStatistics/section/statistics/winSeries/additional"
+msgstr "Супервзводом: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/winSeries/main"
+msgstr ""
+"Серия побед\n"
+"(в одиночку / взводом)"
+
+msgid "seasonStatistics/section/vehicles/battles"
+msgstr "Боёв"
+
+msgid "seasonStatistics/section/vehicles/noData"
+msgstr "—"
+
+msgid "seasonStatistics/section/vehicles/noVehicles"
+msgstr "Нет техники"
+
+msgid "seasonStatistics/section/vehicles/title"
+msgstr "ОСНОВНАЯ ТЕХНИКА"
+
+msgid "seasonStatistics/section/vehicles/wins"
+msgstr "Побед"
+
+msgid "seasonStatistics/title"
+msgstr "СЕЗОННАЯ СТАТИСТИКА %(name)s"
 
 msgid "seasonalBattleSelector/tillEnd"
 msgstr "До конца сезона:"
@@ -1291,6 +1433,9 @@ msgstr "Награда за выполнение еженедельной зад
 msgid "system_messages/weeklyReward/tokens"
 msgstr "монета Натиска"
 
+msgid "tournament/battleResult/personal/tooltip/descr"
+msgstr "В турнире нельзя получить или потерять очки рейтинга."
+
 msgid "unit/message/modeOffline"
 msgstr "Невозможно выйти в бой: ошибка базы данных."
 
@@ -1318,14 +1463,17 @@ msgstr "Выполнено"
 msgid "weeklyQuests/card/status/locked"
 msgstr "Недоступно"
 
-msgid "weeklyQuests/card/statusLockedTooltip/body"
+msgid "weeklyQuests/card/statusLockedTooltip/body/lockedByInactiveSeason"
+msgstr "Выполнение недоступно: режим неактивен."
+
+msgid "weeklyQuests/card/statusLockedTooltip/body/lockedByNoXVehicles"
+msgstr "Для разблокировки исследуйте и купите машину Х уровня."
+
+msgid "weeklyQuests/card/statusLockedTooltip/body/lockedByPreviousQuest"
 msgstr "Для разблокировки выполните предыдущую задачу."
 
 msgid "weeklyQuests/card/statusLockedTooltip/header"
 msgstr "Задача недоступна"
-
-msgid "weeklyQuests/card/statusUnavailableTooltip/body"
-msgstr "Выполнение недоступно: режим неактивен."
 
 msgid "weeklyQuests/resetStatus/ended"
 msgstr "Все доступные задачи выполнены."
@@ -1735,17 +1883,32 @@ msgstr "Камуфляж «Серебро»"
 msgid "yearlyStatistics/battles"
 msgstr "Бои (один./взводн.)"
 
-msgid "yearlyStatistics/dash"
-msgstr "—"
-
 msgid "yearlyStatistics/generationOfStatistics"
 msgstr "Расчёт сезонной статистики..."
 
-msgid "yearlyStatistics/rankStatus"
+msgid "yearlyStatistics/goToSeasonStatistics"
+msgstr "%(icon)sК статистике сезона"
+
+msgid "yearlyStatistics/rankStatus/notReceived"
 msgstr "Нет ранга"
+
+msgid "yearlyStatistics/rankStatus/received"
+msgstr "Ранг «%(rank)s»"
 
 msgid "yearlyStatistics/rating"
 msgstr "Очки рейтинга"
+
+msgid "yearlyStatistics/seasonDate/0"
+msgstr "Осень 2023"
+
+msgid "yearlyStatistics/seasonDate/1"
+msgstr "Зима 2024"
+
+msgid "yearlyStatistics/seasonDate/2"
+msgstr "Весна 2024"
+
+msgid "yearlyStatistics/seasonDateInterval"
+msgstr "%(start)s–%(end)s"
 
 msgid "yearlyStatistics/seasonName/0"
 msgstr "Сезон I. Лазурный пегас"
@@ -1756,19 +1919,11 @@ msgstr "Сезон II. Алый пегас"
 msgid "yearlyStatistics/seasonName/2"
 msgstr "Сезон III. Нефритовый пегас"
 
-msgid "yearlyStatistics/seasonStatus/0"
-msgstr "%(start)s–%(end)s"
+msgid "yearlyStatistics/seasonStatus/active"
+msgstr "Текущий"
 
-msgid "yearlyStatistics/seasonStatus/1"
-msgstr "Зима 2024"
-
-msgid "yearlyStatistics/seasonStatus/2"
-msgstr "Весна 2024"
-
-msgid "yearlyStatistics/statisticsAvailability"
-msgstr ""
-"Статистика будет доступна\n"
-"после окончания сезона"
+msgid "yearlyStatistics/seasonStatus/end"
+msgstr "Завершён"
 
 msgid "yearlyStatistics/superPlatoonBattles"
 msgstr "Бои (супервзвод)"

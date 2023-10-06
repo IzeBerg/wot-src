@@ -1,32 +1,14 @@
 import weakref, BigWorld, logging
 from debug_utils import LOG_WARNING
-from visual_script.block import Block, Meta
+from visual_script.block import Block
 from visual_script.slot_types import SLOT_TYPE
 from visual_script.misc import ASPECT, errorVScript
 from visual_script.dependency import dependencyImporter
-from contexts.cgf_context import GameObjectWrapper
+from visual_script.contexts.cgf_context import GameObjectWrapper
 from constants import ROCKET_ACCELERATION_STATE
+from visual_script.cgf_blocks import CGFMeta
 Vehicle, CGF, tankStructure, RAC = dependencyImporter('Vehicle', 'CGF', 'vehicle_systems.tankStructure', 'cgf_components.rocket_acceleration_component')
 _logger = logging.getLogger(__name__)
-
-class CGFMeta(Meta):
-
-    @classmethod
-    def blockColor(cls):
-        return 16540163
-
-    @classmethod
-    def blockCategory(cls):
-        return 'CGF'
-
-    @classmethod
-    def blockIcon(cls):
-        return ':vse/blocks/cgf'
-
-    @classmethod
-    def blockAspects(cls):
-        return [ASPECT.CLIENT, ASPECT.HANGAR]
-
 
 class GetEntityGameObject(Block, CGFMeta):
 

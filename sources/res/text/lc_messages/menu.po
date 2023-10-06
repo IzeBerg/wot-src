@@ -534,7 +534,7 @@ msgid "barracks/btnUnload"
 msgstr "В Казарму"
 
 msgid "barracks/dismissedTankmenCount"
-msgstr "Демобилизованные члены экипажей: %(curValue)s из %(total)s"
+msgstr "Демобилизованные члены экипажа: %(curValue)s из %(total)s"
 
 msgid "barracks/menu/locationFilter/barracks"
 msgstr "В Казарме"
@@ -1106,6 +1106,27 @@ msgstr "Отправить сообщение"
 msgid "contextMenu/createSquad"
 msgstr "Создать взвод"
 
+msgid "contextMenu/crewWidgetChangeCrewMember"
+msgstr "Сменить члена экипажа"
+
+msgid "contextMenu/crewWidgetChangeSpecialization"
+msgstr "Обучение управлению машиной"
+
+msgid "contextMenu/crewWidgetDismiss"
+msgstr "Демобилизовать"
+
+msgid "contextMenu/crewWidgetPersonalFile"
+msgstr "Профиль"
+
+msgid "contextMenu/crewWidgetQuickTraining"
+msgstr "Ускоренное обучение"
+
+msgid "contextMenu/crewWidgetRetrain"
+msgstr "Переобучить"
+
+msgid "contextMenu/crewWidgetSendToToBarracks"
+msgstr "Высадить"
+
 msgid "contextMenu/disableCommunications"
 msgstr "Заблокировать на время боя"
 
@@ -1193,19 +1214,6 @@ msgstr "Сменить нацию"
 msgid "contextMenu/notFairPlay"
 msgstr "Неспортивное поведение"
 
-msgid "contextMenu/personalCase"
-msgstr "Личное дело"
-
-msgid "contextMenu/personalCase/stats/firstInfo"
-msgstr "При игре на премиум машине экипаж обучается в полтора раза быстрее."
-
-msgid "contextMenu/personalCase/stats/secondInfo"
-msgstr ""
-"Дополнительно для элитных машин можно включить ускоренное обучение экипажа."
-
-msgid "contextMenu/personalCase/stats/wotPlus"
-msgstr "Включите «Курс подготовки экипажа», чтобы обучать экипаж вне боя."
-
 msgid "contextMenu/personalCase/statsBlockTitle"
 msgstr "НА ПРЕМИУМ МАШИНЕ"
 
@@ -1262,12 +1270,6 @@ msgstr "Забрать Воодушевление"
 
 msgid "contextMenu/takeLeadership"
 msgstr "Забрать командование"
-
-msgid "contextMenu/tankmanUnload"
-msgstr "Высадить в Казарму"
-
-msgid "contextMenu/tankmanUnloadAll"
-msgstr "Высадить весь экипаж"
 
 msgid "contextMenu/telecomRent"
 msgstr "Показать арендную технику"
@@ -1328,6 +1330,9 @@ msgstr "Снять отметку «основной»"
 
 msgid "contextMenu/viewClanProfile"
 msgstr "Профиль клана"
+
+msgid "contextMenu/winBackCallSendInvite"
+msgstr "Отправить сообщение"
 
 msgid "contextMenu/withdrawInvitationToSquad"
 msgstr "Отозвать приглашение во взвод"
@@ -2494,23 +2499,6 @@ msgstr "Szarik"
 msgid "hangar/crew/rody/dog/ussr/name"
 msgstr "Шарик"
 
-msgid "hangar/crew/rody/dog/window/closeBtnLabel"
-msgstr "Закрыть"
-
-msgid "hangar/crew/rody/dog/window/description"
-msgstr ""
-"«Четыре танкиста и собака» (польск. Czterej pancerni i pies) — польский "
-"чёрно-белый телевизионный сериал, снятый по одноимённой повести Януша "
-"Пшимановского. Кинолента повествует о боевых буднях экипажа танка Т-34-85 по"
-" прозвищу «Rudy» («Рыжий») и пса по кличке Шарик во время Второй мировой "
-"войны. Премьера картины состоялась 9 мая 1966 года."
-
-msgid "hangar/crew/rody/dog/window/header"
-msgstr "Бессмертная классика уже в игре!"
-
-msgid "hangar/crew/rody/dog/window/title"
-msgstr "Четыре танкиста и собака"
-
 msgid "hangar/crew/tooltip/drop_skill"
 msgstr "Нажмите, чтобы удалить специальность."
 
@@ -2766,6 +2754,33 @@ msgid "header/vehicleType/lightTank"
 msgstr "Лёгкий танк"
 
 msgid "header/vehicleType/mediumTank"
+msgstr "Средний танк"
+
+msgid "header/wotPlusExclusiveVehicleType/AT-SPG"
+msgstr "ПТ-САУ"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-France"
+msgstr "Франция, Чехословакия, Швеция, Италия"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-Germany"
+msgstr "Германия, Япония"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-USA"
+msgstr "США, Великобритания, Польша"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-USSR"
+msgstr "СССР, Китай"
+
+msgid "header/wotPlusExclusiveVehicleType/SPG"
+msgstr "САУ"
+
+msgid "header/wotPlusExclusiveVehicleType/heavyTank"
+msgstr "Тяжёлый танк"
+
+msgid "header/wotPlusExclusiveVehicleType/lightTank"
+msgstr "Лёгкий танк"
+
+msgid "header/wotPlusExclusiveVehicleType/mediumTank"
 msgstr "Средний танк"
 
 msgid "headerButtons/account/accountRefill"
@@ -3801,6 +3816,9 @@ msgstr "Натиск"
 msgid "loading/battleTypes/31"
 msgstr "Разминка"
 
+msgid "loading/battleTypes/33"
+msgstr "Натиск"
+
 msgid "loading/battleTypes/4"
 msgstr "Боевое обучение"
 
@@ -3811,7 +3829,7 @@ msgid "loading/battleTypes/6"
 msgstr "Исторический бой"
 
 msgid "loading/battleTypes/7"
-msgstr "Специальный игровой режим"
+msgstr "ВАФФЕНТРАГЕР: ПРОЕКТ «ГИПЕРИОН»"
 
 msgid "loading/battleTypes/8"
 msgstr "Вылазки"
@@ -3890,6 +3908,9 @@ msgid "loading/battleTypes/desc/30"
 msgstr " "
 
 msgid "loading/battleTypes/desc/31"
+msgstr " "
+
+msgid "loading/battleTypes/desc/33"
 msgstr " "
 
 msgid "loading/battleTypes/desc/4"
@@ -5885,56 +5906,6 @@ msgid "skillDropForFreeWindow/timer/tooltip"
 msgstr ""
 "Сброс навыков без потери опыта бесплатен до завершения льготного периода."
 
-msgid "skillDropWindow/after"
-msgstr "После сброса"
-
-msgid "skillDropWindow/applyBtn"
-msgstr "Сбросить"
-
-msgid "skillDropWindow/before"
-msgstr "До сброса"
-
-msgid "skillDropWindow/cancelBtn"
-msgstr "Отменить"
-
-msgid "skillDropWindow/direction"
-msgstr "Бланки переподготовки"
-
-msgid "skillDropWindow/freeDropLabel"
-msgstr ""
-"Навыки, уровень владения которыми составляет %(percent)s, вы можете сбросить"
-" бесплатно."
-
-msgid "skillDropWindow/freeDropPercent"
-msgstr "до 1%"
-
-msgid "skillDropWindow/inStorage"
-msgstr "На Складе:"
-
-msgid "skillDropWindow/multiplier"
-msgstr "Обучение"
-
-msgid "skillDropWindow/notAvailable"
-msgstr "Нет в наличии"
-
-msgid "skillDropWindow/study/academy"
-msgstr "Максимальный"
-
-msgid "skillDropWindow/study/free"
-msgstr "Низкий"
-
-msgid "skillDropWindow/study/scool"
-msgstr "Высокий"
-
-msgid "skillDropWindow/title"
-msgstr "Сброс навыков"
-
-msgid "skillDropWindow/tooltip/visibleDisabled"
-msgstr "Временно недоступно по техническим причинам."
-
-msgid "skillDropWindow/training"
-msgstr "Обучение"
-
 msgid "specPrebetles/listTitle"
 msgstr "Список командных комнат"
 
@@ -6575,144 +6546,6 @@ msgstr "Время перехода в скоростной/обычный ре
 msgid "tank_params/yoh_s_s"
 msgstr "(осн./рез. в с)"
 
-msgid "tankmanPersonalCase/accelerateTeachingOfSkill"
-msgstr "Ускорить"
-
-msgid "tankmanPersonalCase/achivs"
-msgstr "Награды:"
-
-msgid "tankmanPersonalCase/btnReset"
-msgstr "Текущая машина"
-
-msgid "tankmanPersonalCase/btnRetraining"
-msgstr "Переобучить"
-
-msgid "tankmanPersonalCase/btnTraining"
-msgstr "Обучить"
-
-msgid "tankmanPersonalCase/changeDocsBtn"
-msgstr "Поменять документы"
-
-msgid "tankmanPersonalCase/changeRoleBtn"
-msgstr "Сменить"
-
-msgid "tankmanPersonalCase/closeBtn"
-msgstr "Закрыть"
-
-msgid "tankmanPersonalCase/commanderFeature"
-msgstr "Особенность командира:"
-
-msgid "tankmanPersonalCase/crew"
-msgstr "Экипаж:"
-
-msgid "tankmanPersonalCase/docs/info"
-msgstr "?empty?"
-
-msgid "tankmanPersonalCase/dropSkillsButtonLabel"
-msgstr "Сбросить"
-
-msgid "tankmanPersonalCase/mainSpecialization"
-msgstr ""
-"Основная\n"
-"специальность:"
-
-msgid "tankmanPersonalCase/modifiers/customization"
-msgstr "Изменение внешнего вида машины"
-
-msgid "tankmanPersonalCase/modifiers/fromCommander"
-msgstr "Бонус командира"
-
-msgid "tankmanPersonalCase/modifiers/fromEquipment"
-msgstr "Оборудование и снаряжение"
-
-msgid "tankmanPersonalCase/modifiers/fromSkills"
-msgstr "Навыки"
-
-msgid "tankmanPersonalCase/modifiers/penalty"
-msgstr "Неподходящая специализация"
-
-msgid "tankmanPersonalCase/modifiersHeader"
-msgstr "Модификаторы:"
-
-msgid "tankmanPersonalCase/modifiersResult"
-msgstr "Итоговое значение:"
-
-msgid "tankmanPersonalCase/name"
-msgstr "Имя:"
-
-msgid "tankmanPersonalCase/noAchivs"
-msgstr "В бою себя не проявил, наград не имеет."
-
-msgid "tankmanPersonalCase/noModifiers"
-msgstr ""
-"При основной специальности\n"
-"не имеются"
-
-msgid "tankmanPersonalCase/personalDocs"
-msgstr "Личные данные:"
-
-msgid "tankmanPersonalCase/rank"
-msgstr "Звание:"
-
-msgid "tankmanPersonalCase/retrainingBtn"
-msgstr "Переобучить"
-
-msgid "tankmanPersonalCase/retrainingWarning"
-msgstr "Обучение действует только на основную специальность."
-
-msgid "tankmanPersonalCase/retrainingWarning2"
-msgstr ""
-"При переучивании за золото уровень владения основной специальностью не "
-"падает."
-
-msgid "tankmanPersonalCase/situationalDesc"
-msgstr "Ситуативные навыки, срабатывают в определённых ситуациях в бою."
-
-msgid "tankmanPersonalCase/skillsButton/additionText"
-msgstr "(Обучение доступно при 100%-м владении основной специальностью)"
-
-msgid "tankmanPersonalCase/skillsButton/mainText"
-msgstr "Посмотреть полный список навыков"
-
-msgid "tankmanPersonalCase/skillsDesc"
-msgstr "(Обучение доступно при 100%-м владении основной специальностью)"
-
-msgid "tankmanPersonalCase/specialization"
-msgstr "Специализация:"
-
-msgid "tankmanPersonalCase/tabBattleInfo"
-msgstr "Послужной список"
-
-msgid "tankmanPersonalCase/tabDocs"
-msgstr "Документы"
-
-msgid "tankmanPersonalCase/tabFreeSkills"
-msgstr "«Нулевые» навыки"
-
-msgid "tankmanPersonalCase/tabSkills"
-msgstr "Навыки"
-
-msgid "tankmanPersonalCase/tabTraining"
-msgstr "Обучение"
-
-msgid "tankmanPersonalCase/title"
-msgstr "Личное дело"
-
-msgid "tankmanPersonalCase/trainingBtn"
-msgstr "Ускоренное обучение"
-
-msgid "tankmanPersonalCase/usingLevel"
-msgstr "Уровень владения:"
-
-msgid "tankmanPersonalCase/vehicle"
-msgstr "Машина:"
-
-msgid "tankmanPersonalCase/vehicleType"
-msgstr "Тип техники:"
-
-msgid "tankmanPersonalCase/vehicleTypeID"
-msgstr "Обучиться на технику:"
-
 msgid "tankmanRecruitRenderer/commander"
 msgstr "Рекрутировать командира"
 
@@ -6729,7 +6562,7 @@ msgid "tankmanRecruitRenderer/loader"
 msgstr "Рекрутировать заряжающего"
 
 msgid "tankmanRecruitRenderer/personalCase"
-msgstr "Открыть Личное дело"
+msgstr "Открыть профиль"
 
 msgid "tankmanRecruitRenderer/radioman"
 msgstr "Рекрутировать радиста"
@@ -6796,41 +6629,6 @@ msgstr "(Ожидает бой)"
 
 msgid "tankmen/mediumTank"
 msgstr "средний танк"
-
-msgid "tankmsnPersonalCase/lackOfSkillsForLearn"
-msgstr "Член экипажа изучил все дополнительные навыки для данной машины."
-
-msgid "tankmsnPersonalCase/loadingInfo"
-msgstr "Ожидайте, информация загружается..."
-
-msgid "teachingSkill/after"
-msgstr "После обучения"
-
-msgid "teachingSkill/before"
-msgstr "До обучения"
-
-msgid "teachingSkill/cancel"
-msgstr "Отменить"
-
-msgid "teachingSkill/cost"
-msgstr "Стоимость обучения"
-
-msgid "teachingSkill/freeXpIsTight"
-msgstr ""
-"Недостаточно свободного опыта для изучения навыка. Переведите боевой опыт в "
-"свободный."
-
-msgid "teachingSkill/submit"
-msgstr "Обучить"
-
-msgid "teachingSkill/teachToLevel"
-msgstr "Обучить до уровня:"
-
-msgid "teachingSkill/title"
-msgstr "Обучение за свободный опыт"
-
-msgid "teachingSkill/totalPay"
-msgstr "К оплате:"
 
 msgid "techtree/Announcement"
 msgstr "Скоро"
@@ -7069,7 +6867,7 @@ msgid "vehicle/igrRentLeft/hours"
 msgstr "часов: %(hours)s"
 
 msgid "vehicle/rentLeft/battles"
-msgstr "Боёв доступно: %(battles)s"
+msgstr "Ещё боёв: %(battles)s"
 
 msgid "vehicle/rentLeft/days"
 msgstr "Дней аренды: %(days)s"

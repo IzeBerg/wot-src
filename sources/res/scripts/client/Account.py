@@ -690,11 +690,11 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self._doCmdIntArrStrArr(AccountCommands.CMD_REQ_PLAYERS_GLOBAL_RATING, accountIDs, [], proxy)
         return
 
-    def enqueueRandom(self, vehInvID, gameplaysMask=ARENA_GAMEPLAY_MASK_DEFAULT, arenaTypeID=0, isOnly10ModeEnabled=False):
+    def enqueueRandom(self, vehInvID, gameplaysMask=ARENA_GAMEPLAY_MASK_DEFAULT, arenaTypeID=0, randomFlags=0):
         if events.isPlayerEntityChanging:
             return
         self.base.doCmdIntArr(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_ENQUEUE_IN_BATTLE_QUEUE, [
-         QUEUE_TYPE.RANDOMS, vehInvID, gameplaysMask, arenaTypeID, isOnly10ModeEnabled])
+         QUEUE_TYPE.RANDOMS, vehInvID, gameplaysMask, arenaTypeID, randomFlags])
 
     def dequeueRandom(self):
         if not events.isPlayerEntityChanging:
@@ -1444,7 +1444,7 @@ class _AccountRepository(object):
         self.serverSettings = copy.copy(initialServerSettings)
         self.syncData = AccountSyncData.AccountSyncData()
         self.inventory = Inventory.Inventory(self.syncData, self.commandProxy)
-        self.stats = Stats.Stats(self.syncData)
+        self.stats = Stats.Stats(self.syncData, self.commandProxy)
         self.questProgress = QuestProgress.QuestProgress(self.syncData)
         self.shop = Shop.Shop()
         self.dossierCache = DossierCache.DossierCache(name, className)

@@ -19,6 +19,8 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
       public function VPBottomPanelStyleBuying()
       {
          super();
+         setManageSize(true);
+         setSize(WIDTH,HEIGHT);
       }
       
       public function getBtn() : SoundButtonEx
@@ -37,16 +39,6 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
       }
       
       public function getTotalHeight() : Number
-      {
-         return HEIGHT;
-      }
-      
-      override public function get width() : Number
-      {
-         return WIDTH;
-      }
-      
-      override public function get height() : Number
       {
          return HEIGHT;
       }

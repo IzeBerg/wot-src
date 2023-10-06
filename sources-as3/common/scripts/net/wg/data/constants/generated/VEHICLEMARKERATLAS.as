@@ -425,6 +425,8 @@ package net.wg.data.constants.generated
       
       public static const GERMANY_G04_PZ_VI_TIGER_I_MAPS_TRAINING_PLAYER_HT_2:String = "germany-G04_PzVI_Tiger_I_MapsTraining_Player_HT_2";
       
+      public static const GERMANY_G04_PZ_VI_TIGER_I_SHXXI_B:String = "germany-G04_PzVI_Tiger_I_SHXXI_B";
+      
       public static const GERMANY_G04_PZ_VI_TIGER_IA:String = "germany-G04_PzVI_Tiger_IA";
       
       public static const GERMANY_G05_STU_G_40_AUSF_G:String = "germany-G05_StuG_40_AusfG";
@@ -603,6 +605,8 @@ package net.wg.data.constants.generated
       
       public static const GERMANY_G25_PZ_II_LUCHS:String = "germany-G25_PzII_Luchs";
       
+      public static const GERMANY_G25_PZ_II_LUCHS_SHXXI_B:String = "germany-G25_PzII_Luchs_SHXXI_B";
+      
       public static const GERMANY_G26_VK1602:String = "germany-G26_VK1602";
       
       public static const GERMANY_G27_VK3001_P:String = "germany-G27_VK3001P";
@@ -716,6 +720,8 @@ package net.wg.data.constants.generated
       public static const GERMANY_G76_PZ_SFL_I_VC:String = "germany-G76_Pz_Sfl_IVc";
       
       public static const GERMANY_G77_PZ_IV_SCHMALTURM:String = "germany-G77_PzIV_Schmalturm";
+      
+      public static const GERMANY_G77_PZ_IV_SCHMALTURM_SHXXI_B:String = "germany-G77_PzIV_Schmalturm_SHXXI_B";
       
       public static const GERMANY_G78_PANTHER_M10:String = "germany-G78_Panther_M10";
       
@@ -996,6 +1002,8 @@ package net.wg.data.constants.generated
       public static const POLAND_PL07_14_TP:String = "poland-Pl07_14TP";
       
       public static const POLAND_PL08_50_TP_PROTOTYP:String = "poland-Pl08_50TP_prototyp";
+      
+      public static const POLAND_PL08_50_TP_PROTOTYP_RESILIENT:String = "poland-Pl08_50TP_Prototyp_Resilient";
       
       public static const POLAND_PL09_7_TP:String = "poland-Pl09_7TP";
       
@@ -1685,6 +1693,8 @@ package net.wg.data.constants.generated
       
       public static const USA_A106_M48_A2_120:String = "usa-A106_M48A2_120";
       
+      public static const USA_A106_M48_A2_120_CN:String = "usa-A106_M48A2_120_CN";
+      
       public static const USA_A107_T1_HMC:String = "usa-A107_T1_HMC";
       
       public static const USA_A108_T18_HMC:String = "usa-A108_T18_HMC";
@@ -2168,6 +2178,8 @@ package net.wg.data.constants.generated
       public static const USSR_R194_ST_62_VAR_2:String = "ussr-R194_ST_62_var_2";
       
       public static const USSR_R195_T34_M_54:String = "ussr-R195_T34M_54";
+      
+      public static const USSR_R196_OBJECT_452_K:String = "ussr-R196_Object_452K";
       
       public static const USSR_R197_KV_1_S_MZ:String = "ussr-R197_KV_1S_MZ";
       
