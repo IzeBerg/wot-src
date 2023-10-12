@@ -1,6 +1,5 @@
 import BigWorld
 g_instance = None
-KEY_UPDATE_URL = 'updateUrl'
 KEY_CONTROL_MODE = 'controlMode'
 KEY_LOGIN_INFO = 'loginInfo'
 KEY_SCREEN_SIZE = 'screenSize'

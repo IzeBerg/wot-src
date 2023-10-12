@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>0.500000 0.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/br_area_wave.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.020000 0.500000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.000000 0.300000 0.000000 0.200000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/aurora_distortion.dds</Texture>
+					</property>
+					<property>
+						fadeMaxDistance
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1000.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						softFactor
+						<Float>0.700000</Float>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.545098 0.054902 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						texAddressMode
+						<Int>2</Int>
+					</property>
+				</material>
+				<groupOrigin>-0.002487 -0.037486 3.028615</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.118902 -0.150603 2.893956</min>
+		<max>0.113927 0.075631 3.163273</max>
+	</boundingBox>
+	<geometrySize>4176</geometrySize>
+	<minUVDensity>10.556841</minUVDensity>
+</root>

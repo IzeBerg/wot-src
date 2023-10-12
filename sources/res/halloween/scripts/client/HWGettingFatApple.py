@@ -1,4 +1,5 @@
 import BigWorld
+from gui.battle_control import avatar_getter
 from halloween.gui.shared import events as hw_events
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
 
@@ -6,6 +7,8 @@ class HWGettingFatApple(BigWorld.DynamicScriptComponent):
 
     def __init__(self):
         super(HWGettingFatApple, self).__init__()
+        if self.entity.id == BigWorld.player().playerVehicleID:
+            avatar_getter.getSoundNotifications().play('vo_shadowPlay_gp_buff')
         self.__updateBuffPanel(True)
 
     def onDestroy(self):

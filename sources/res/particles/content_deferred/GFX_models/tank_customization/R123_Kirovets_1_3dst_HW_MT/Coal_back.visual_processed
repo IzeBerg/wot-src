@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/gradient_mask_2.dds</Texture>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>100.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.047059 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.500000 0.000000 0.350000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.000000 0.200000 0.000000 0.100000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/clouds_2.dds</Texture>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 0.500000 0.050000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.921569 0.000000 0.035294 1.000000</Vector4>
+					</property>
+					<property>
+						g_useTime
+						<Bool>false</Bool>
+					</property>
+					<property>
+						texAddressMode
+						<Int>3</Int>
+					</property>
+				</material>
+				<groupOrigin>0.005021 0.416029 -0.759377</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 0.500000 0.050000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Coal_back.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 0.950000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.000000 0.200000 0.000000 0.020000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/aurora_distortion.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.921569 0.000000 0.035294 1.000000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>2000.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.545098 0.054902 0.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.050922 0.473352 -1.550613</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 0.500000 0.050000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/gradient_mask.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>1.000000 0.450000 0.950000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.000000 0.200000 0.000000 0.020000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/aurora_distortion.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.921569 0.000000 0.035294 1.000000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>2000.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.047059 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_useTime
+						<Bool>false</Bool>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector3>0.639216 0.243137 0.000000</Vector3>
+					</property>
+					<property>
+						texAddressMode
+						<Int>3</Int>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.457788 -1.497670</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.561386 0.227933 -2.830678</min>
+		<max>1.571428 0.687643 1.311925</max>
+	</boundingBox>
+	<geometrySize>91290</geometrySize>
+	<minUVDensity>0.020132</minUVDensity>
+</root>
