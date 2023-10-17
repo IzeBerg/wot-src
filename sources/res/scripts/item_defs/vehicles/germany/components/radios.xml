@@ -47,11 +47,15 @@
 		<FuG12_SH>316</FuG12_SH>
 		<G00_Bomber_SH_Radio>318</G00_Bomber_SH_Radio>
 		<_10WSc_7x7>401</_10WSc_7x7>
-		<R113_WT>402</R113_WT>
-		<FuG_WT>403</FuG_WT>
-		<AN-GRC-7_WT>404</AN-GRC-7_WT>
-		<FuG12_WT>405</FuG12_WT>
+		<FuG_Spr.1_SH>319</FuG_Spr.1_SH>
+		<FuG5A_SH_bot>320</FuG5A_SH_bot>
+		<FuG7A_SH_B>321</FuG7A_SH_B>
 		<FuG12_FL>501</FuG12_FL>
+		<G00_Bomber_SH_21_Radio>20001</G00_Bomber_SH_21_Radio>
+		<FuG12_Hall_minion>20002</FuG12_Hall_minion>
+		<_10WSc_Hall_minion>20003</_10WSc_Hall_minion>
+		<_10WSc_Hell_Boss>20004</_10WSc_Hell_Boss>
+		<G00_Bomber_Hell_Radio>20005</G00_Bomber_Hell_Radio>
 		<FuG7A_IGR>60001</FuG7A_IGR>
 		<FuG12_IGR>60002</FuG12_IGR>
 		<FuG7_IGR>60003</FuG7_IGR>
@@ -64,8 +68,29 @@
 		<FuG8_MapsTraining_Dummy_ATSPG_2>35</FuG8_MapsTraining_Dummy_ATSPG_2>
 		<FuG12_NewOnBoarding>64005</FuG12_NewOnBoarding>
 		<FuG5_NewOnBoarding>64008</FuG5_NewOnBoarding>
+		<FuG_Spr.1_HW_BOT>502</FuG_Spr.1_HW_BOT>
+		<FuG12_HW_BOT>503</FuG12_HW_BOT>
+		<AN-GRC-4_HW_BOT>504</AN-GRC-4_HW_BOT>
+		<FuG_Spr.A_HW_BOT>505</FuG_Spr.A_HW_BOT>
+		<FuG_FA_HW_BOT>506</FuG_FA_HW_BOT>
+		<AN_GRC_8_HW_BOT>507</AN_GRC_8_HW_BOT>
 	</ids>
 	<shared>
+		<G00_Bomber_Hell_Radio>
+			<userString>#germany_vehicles:G00_Bomber_Hell_Radio</userString>
+			<tags/>
+			<level>1</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<weight>100</weight>
+			<distance>50</distance>
+			<maxHealth>100</maxHealth>
+			<maxRegenHealth>49</maxRegenHealth>
+			<repairCost>
+				0.5
+				<!--BW_String-->
+			</repairCost>
+		</G00_Bomber_Hell_Radio>
 		<FuG2>
 			<userString>#germany_vehicles:FuG2</userString>
 			<tags/>
@@ -317,18 +342,6 @@
 			<maxRegenHealth>75</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</FuG12>
-		<FuG12_WT>
-			<userString>#germany_vehicles:FuG12</userString>
-			<tags/>
-			<level>9</level>
-			<price>43200</price>
-			<notInShop>true</notInShop>
-			<weight>150</weight>
-			<distance>710</distance>
-			<maxHealth>150</maxHealth>
-			<maxRegenHealth>75</maxRegenHealth>
-			<repairCost>3</repairCost>
-		</FuG12_WT>
 		<FuG12_FL>
 			<userString>#germany_vehicles:FuG12</userString>
 			<tags/>
@@ -341,6 +354,18 @@
 			<maxRegenHealth>75</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</FuG12_FL>
+		<FuG12_Hall_minion>
+			<userString>#germany_vehicles:FuG12_Hall_minion</userString>
+			<tags/>
+			<level>9</level>
+			<price>43200</price>
+			<notInShop>true</notInShop>
+			<weight>150</weight>
+			<distance>50</distance>
+			<maxHealth>150</maxHealth>
+			<maxRegenHealth>75</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</FuG12_Hall_minion>
 		<Radio_VK4502P>
 			<userString>#germany_vehicles:Radio_VK4502P</userString>
 			<tags/>
@@ -452,6 +477,36 @@
 				<!--BW_String-->
 			</repairCost>
 		</Fu_8_SE_30_M>
+		<_10WSc_Hell_Boss>
+			<userString>#germany_vehicles:_10WSc_Hell_Boss</userString>
+			<tags/>
+			<level>10</level>
+			<notInShop>true</notInShop>
+			<price>51600</price>
+			<weight>160</weight>
+			<distance>50</distance>
+			<maxHealth>250</maxHealth>
+			<maxRegenHealth>75</maxRegenHealth>
+			<repairCost>
+				3.5
+				<!--BW_String-->
+			</repairCost>
+		</_10WSc_Hell_Boss>
+		<_10WSc_Hall_minion>
+			<userString>#germany_vehicles:_10WSc_Hall_minion</userString>
+			<tags/>
+			<level>10</level>
+			<notInShop>true</notInShop>
+			<price>51600</price>
+			<weight>160</weight>
+			<distance>50</distance>
+			<maxHealth>250</maxHealth>
+			<maxRegenHealth>75</maxRegenHealth>
+			<repairCost>
+				3.5
+				<!--BW_String-->
+			</repairCost>
+		</_10WSc_Hall_minion>
 		<_10WSc_WT>
 			<userString>#germany_vehicles:_10WSc_WT</userString>
 			<tags/>
@@ -494,18 +549,6 @@
 			<maxRegenHealth>75</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</FuG12A>
-		<FuG_WT>
-			<userString>#germany_vehicles:FuG_WT</userString>
-			<notInShop>true</notInShop>
-			<tags/>
-			<level>9</level>
-			<price>7200</price>
-			<weight>150</weight>
-			<distance>710</distance>
-			<maxHealth>150</maxHealth>
-			<maxRegenHealth>75</maxRegenHealth>
-			<repairCost>3</repairCost>
-		</FuG_WT>
 		<SEM25>
 			<userString>#germany_vehicles:SEM25</userString>
 			<tags/>
@@ -554,18 +597,6 @@
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</AN-GRC-7>
-		<AN-GRC-7_WT>
-			<userString>#germany_vehicles:AN-GRC-7</userString>
-			<tags/>
-			<level>10</level>
-			<price>54500</price>
-			<notInShop>true</notInShop>
-			<weight>120</weight>
-			<distance>745</distance>
-			<maxHealth>200</maxHealth>
-			<maxRegenHealth>150</maxRegenHealth>
-			<repairCost>3</repairCost>
-		</AN-GRC-7_WT>
 		<AN_GRC_8>
 			<userString>#germany_vehicles:AN_GRC_8</userString>
 			<tags/>
@@ -709,18 +740,6 @@
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</R113>
-		<R113_WT>
-			<userString>#germany_vehicles:R113</userString>
-			<tags/>
-			<level>10</level>
-			<price>52200</price>
-			<notInShop>true</notInShop>
-			<weight>80</weight>
-			<distance>730</distance>
-			<maxHealth>200</maxHealth>
-			<maxRegenHealth>150</maxRegenHealth>
-			<repairCost>3</repairCost>
-		</R113_WT>
 		<FuG7A_IGR>
 			<userString>#igr_vehicles:FuG7A_IGR</userString>
 			<tags/>
@@ -815,6 +834,20 @@
 			<radarRadius>250</radarRadius>
 			<radarCooldown>20</radarCooldown>
 		</FuG7_SH>
+		<FuG7A_SH_B>
+			<userString>#germany_vehicles:FuG7_SH</userString>
+			<tags/>
+			<level>3</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<weight>100</weight>
+			<distance>2000</distance>
+			<maxHealth>120</maxHealth>
+			<maxRegenHealth>60</maxRegenHealth>
+			<repairCost>0</repairCost>
+			<radarRadius>370</radarRadius>
+			<radarCooldown>20</radarCooldown>
+		</FuG7A_SH_B>
 		<FuG12_SH>
 			<userString>#germany_vehicles:FuG12_SH</userString>
 			<tags/>
@@ -829,6 +862,36 @@
 			<radarRadius>450</radarRadius>
 			<radarCooldown>30</radarCooldown>
 		</FuG12_SH>
+		<FuG_Spr.1_SH>
+			<userString>#germany_vehicles:FuG_Spr.1</userString>
+			<tags/>
+			<level>1</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<weight>150</weight>
+			<distance>455</distance>
+			<maxHealth>150</maxHealth>
+			<maxRegenHealth>75</maxRegenHealth>
+			<repairCost>
+				1.5
+				<!--BW_String-->
+			</repairCost>
+		</FuG_Spr.1_SH>
+		<FuG5A_SH_bot>
+			<userString>#germany_vehicles:FuG5A</userString>
+			<tags/>
+			<level>1</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<weight>50</weight>
+			<distance>620</distance>
+			<maxHealth>120</maxHealth>
+			<maxRegenHealth>60</maxRegenHealth>
+			<repairCost>
+				1.5
+				<!--BW_String-->
+			</repairCost>
+		</FuG5A_SH_bot>
 		<G00_Bomber_SH_Radio>
 			<userString>#germany_vehicles:G00_Bomber_SH_Radio</userString>
 			<tags/>
@@ -844,6 +907,21 @@
 				<!--BW_String-->
 			</repairCost>
 		</G00_Bomber_SH_Radio>
+		<G00_Bomber_SH_21_Radio>
+			<userString>#germany_vehicles:G00_Bomber_SH_Radio</userString>
+			<tags/>
+			<level>1</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<weight>100</weight>
+			<distance>50</distance>
+			<maxHealth>100</maxHealth>
+			<maxRegenHealth>49</maxRegenHealth>
+			<repairCost>
+				0.5
+				<!--BW_String-->
+			</repairCost>
+		</G00_Bomber_SH_21_Radio>
 		<FuG12_MapsTraining_Dummy_HT_1>
 			<userString>#germany_vehicles:FuG12</userString>
 			<tags/>
@@ -926,5 +1004,86 @@
 			</repairCost>
 			<notInShop>True</notInShop>
 		</FuG5_NewOnBoarding>
+		<FuG_Spr.1_HW_BOT>
+			<userString>#germany_vehicles:FuG_Spr.1</userString>
+			<tags/>
+			<level>7</level>
+			<price>21600</price>
+			<notInShop>True</notInShop>
+			<weight>150</weight>
+			<distance>50</distance>
+			<maxHealth>150</maxHealth>
+			<maxRegenHealth>75</maxRegenHealth>
+			<repairCost>
+				1.5
+				<!--BW_String-->
+			</repairCost>
+		</FuG_Spr.1_HW_BOT>
+		<FuG12_HW_BOT>
+			<userString>#germany_vehicles:FuG12</userString>
+			<tags/>
+			<level>9</level>
+			<price>43200</price>
+			<notInShop>True</notInShop>
+			<weight>150</weight>
+			<distance>50</distance>
+			<maxHealth>150</maxHealth>
+			<maxRegenHealth>75</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</FuG12_HW_BOT>
+		<AN-GRC-4_HW_BOT>
+			<userString>#germany_vehicles:AN-GRC-4</userString>
+			<tags/>
+			<level>9</level>
+			<price>45500</price>
+			<notInShop>True</notInShop>
+			<weight>80</weight>
+			<distance>50</distance>
+			<maxHealth>160</maxHealth>
+			<maxRegenHealth>96</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</AN-GRC-4_HW_BOT>
+		<FuG_Spr.A_HW_BOT>
+			<userString>#germany_vehicles:FuG_Spr.A</userString>
+			<tags/>
+			<level>8</level>
+			<price>27000</price>
+			<notInShop>True</notInShop>
+			<weight>150</weight>
+			<distance>50</distance>
+			<maxHealth>150</maxHealth>
+			<maxRegenHealth>75</maxRegenHealth>
+			<repairCost>
+				2.5
+				<!--BW_String-->
+			</repairCost>
+		</FuG_Spr.A_HW_BOT>
+		<FuG_FA_HW_BOT>
+			<userString>#germany_vehicles:FuG_FA</userString>
+			<tags/>
+			<level>8</level>
+			<price>10000</price>
+			<notInShop>true</notInShop>
+			<weight>40</weight>
+			<distance>50</distance>
+			<maxHealth>100</maxHealth>
+			<maxRegenHealth>60</maxRegenHealth>
+			<repairCost>
+				0.5
+				<!--BW_String-->
+			</repairCost>
+		</FuG_FA_HW_BOT>
+		<AN_GRC_8_HW_BOT>
+			<userString>#germany_vehicles:AN_GRC_8</userString>
+			<tags/>
+			<level>10</level>
+			<price>54500</price>
+			<notInShop>true</notInShop>
+			<weight>105</weight>
+			<distance>50</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</AN_GRC_8_HW_BOT>
 	</shared>
 </root>

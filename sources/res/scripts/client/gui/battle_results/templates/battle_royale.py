@@ -1,5 +1,5 @@
 from gui.battle_results.components import base, battle_royale
-from gui.battle_results.br_constants import BattleResultsRecord as _RECORD
+from gui.battle_results.settings import BATTLE_RESULTS_RECORD as _RECORD
 from gui.impl.gen import R
 from gui.Scaleform.genConsts.BATTLEROYALE_ALIASES import BATTLEROYALE_ALIASES
 BR_TOTAL_VO_META = base.DictMeta({'tabInfo': [], 'personal': {}, 'common': {}, 'leaderboard': []})
@@ -86,7 +86,9 @@ _REWARDS_VO_META = base.PropertyMeta((
   'bonuses', [], 'bonuses'),
  ('completedQuestsCount', 0, 'completedQuestsCount'),
  (
-  'completedQuests', {}, 'completedQuests')))
+  'completedQuests', {}, 'completedQuests'),
+ (
+  'brAwardTokens', {}, 'brAwardTokens')))
 _REWARDS_VO_META.bind(battle_royale.BattleRoyaleRewardsBlock)
 BR_PERSONAL_STATS_BLOCK = base.StatsBlock(_PERSONAL_VO_META, 'personal')
 BR_PERSONAL_STATS_BLOCK.addNextComponent(battle_royale.BattleRoyaleFinancialBlock(_FINANCIAL_BLOCK_VO_META, 'financialBalance'))

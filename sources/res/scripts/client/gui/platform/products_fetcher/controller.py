@@ -111,6 +111,7 @@ class ProductsFetchController(IProductFetchController):
     platformFetchCtx = PlatformFetchProductListCtx
     defaultProductDescriptor = ProductDescriptor
     productIDToDescriptor = {}
+    dataGetKey = 'items'
 
     def __init__(self):
         self.__downloader = None
@@ -160,7 +161,7 @@ class ProductsFetchController(IProductFetchController):
         _logger.debug('Request products for params %s', params)
         response = yield self._webCtrl.sendRequest(ctx=ctx)
         data = response.getData()
-        items = data.get('items') if data else None
+        items = data.get(self.dataGetKey) if data else None
         callback((response.isSuccess(), items))
         return
 

@@ -30,6 +30,8 @@ package net.wg.gui.notification
    public class ServiceMessageContent extends UIComponentEx
    {
       
+      private static const BUTTONS_GROUP_NAME:String = "buttonsGroup";
+      
       private static const BUTTONS_GROUP_OFFSET_Y:int = 10;
       
       private static const MESSAGE_TYPE_ACTION:String = "action";
@@ -77,7 +79,7 @@ package net.wg.gui.notification
       
       private var _classFactory:IClassFactory;
       
-      private var _bgDefHeight:uint = 0;
+      protected var _bgDefHeight:uint = 0;
       
       public function ServiceMessageContent()
       {
@@ -265,6 +267,7 @@ package net.wg.gui.notification
             return;
          }
          this._buttonsGroup = new Group();
+         this._buttonsGroup.name = BUTTONS_GROUP_NAME;
          this._buttonsGroup.layout = this.buttonsGroupLayout;
          addChild(this._buttonsGroup);
          for each(_loc2_ in _loc1_)
@@ -296,13 +299,12 @@ package net.wg.gui.notification
       
       private function addButton(param1:ButtonVO) : void
       {
-         var _loc3_:SoundButtonEx = null;
          var _loc2_:String = ButtonType.getLinkageByType(param1.type);
          if(_loc2_ == null)
          {
             return;
          }
-         _loc3_ = this._classFactory.getComponent(_loc2_,SoundButtonEx);
+         var _loc3_:SoundButtonEx = this._classFactory.getComponent(_loc2_,SoundButtonEx);
          this._buttonsGroup.addChild(_loc3_);
          _loc3_.name = param1.type;
          _loc3_.data = param1.action;

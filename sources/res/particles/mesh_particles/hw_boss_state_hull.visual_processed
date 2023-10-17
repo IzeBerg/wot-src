@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert1</identifier>
+					<fx>shaders/custom/emissive_angle_falloff.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						g_angleFalloffParams
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_emissiveMap
+						<Texture>particles/mesh_particles/tex/E100_Hell_Boss_hull_heat.dds</Texture>
+					</property>
+					<property>
+						g_lightMultipliers
+						<Vector4>6.000000 0.970000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>1.000000 0.015686 0.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000021 0.042669 0.330668</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.348360 -1.397706 -8.373000</min>
+		<max>3.348402 1.483043 9.034336</max>
+	</boundingBox>
+	<geometrySize>6984</geometrySize>
+	<minUVDensity>0.002362</minUVDensity>
+</root>

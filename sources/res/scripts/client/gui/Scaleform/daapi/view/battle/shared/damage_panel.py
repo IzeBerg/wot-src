@@ -57,7 +57,7 @@ class _IStatusAnimPlayer(object):
         self._statusId = statusId
         self._hasStatus = False
 
-    def showStatus(self, time, animated):
+    def showStatus(self, time, animated, startTimer=True):
         self._hasStatus = True
 
     def hideStatus(self, animated):
@@ -73,7 +73,7 @@ class _ActionScriptTimer(_IStatusAnimPlayer):
         super(_ActionScriptTimer, self).__init__(statusId=statusId)
         self._view = view
 
-    def showStatus(self, time, animated):
+    def showStatus(self, time, animated, startTimer=True):
         super(_ActionScriptTimer, self).showStatus(time, animated)
         if not self._view.isDisposed():
             self._view.as_showStatusS(self._statusId, time, animated)
@@ -91,13 +91,16 @@ class _PythonTimer(PythonTimer, _IStatusAnimPlayer):
         self._animated = False
         self.__hideAnimated = False
 
-    def showStatus(self, totalTime, animated):
+    def showStatus(self, totalTime, animated, startTimer=True):
         super(_PythonTimer, self).showStatus(totalTime, animated)
         self._animated = animated
         self._totalTime = totalTime
         self._startTime = BigWorld.serverTime()
         self._finishTime = self._startTime + totalTime if totalTime else 0
-        self.show()
+        if startTimer:
+            self.show()
+        else:
+            self._showView(isBubble=True)
 
     def hideStatus(self, animated):
         self.__hideAnimated = animated
@@ -268,7 +271,7 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
             ctrl.onVehicleControlling -= self.__onVehicleControlling
-            ctrl.onVehicleStateUpdated -= self.__onVehicleStateUpdated
+            ctrl.onVehicleStateUpdated -= self._onVehicleStateUpdated
         feedbackCtrl = self.sessionProvider.shared.feedback
         if feedbackCtrl is not None:
             feedbackCtrl.onMinimapVehicleRemoved -= self.__onVehicleRemoved
@@ -364,7 +367,7 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         animated = debuffInfo.animated
         stunDuration = self.__getStunDuration()
         if self.__debuffDuration > 0 and stunDuration == 0:
-            self._statusAnimPlayers[STATUS_ID.STUN].showStatus(self.__debuffDuration, animated)
+            self._statusAnimPlayers[STATUS_ID.STUN].showStatus(self.__debuffDuration, animated, startTimer=False)
         elif stunDuration > 0:
             self._statusAnimPlayers[STATUS_ID.STUN].showStatus(stunDuration, False)
         else:
@@ -508,20 +511,20 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         if ctrl is None:
             return
         else:
-            ctrl.onVehicleStateUpdated += self.__onVehicleStateUpdated
+            ctrl.onVehicleStateUpdated += self._onVehicleStateUpdated
             for stateID in _STATE_HANDLERS.iterkeys():
                 value = ctrl.getStateValue(stateID)
                 if value is not None:
                     if stateID == VEHICLE_VIEW_STATE.DEVICES:
                         for v in value:
-                            self.__onVehicleStateUpdated(stateID, v)
+                            self._onVehicleStateUpdated(stateID, v)
 
                     else:
-                        self.__onVehicleStateUpdated(stateID, value)
+                        self._onVehicleStateUpdated(stateID, value)
 
             return
 
-    def __onVehicleStateUpdated(self, state, value):
+    def _onVehicleStateUpdated(self, state, value):
         if state not in _STATE_HANDLERS:
             return
         else:

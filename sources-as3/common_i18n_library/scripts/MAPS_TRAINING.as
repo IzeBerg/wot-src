@@ -993,9 +993,9 @@ package
       
       public static const C_37_CAUCASUS_B_MT_RAVINEPHRASE:String = "#maps_training:37_caucasus/b_mt_ravinePhrase";
       
-      public static const C_37_CAUCASUS_B_MT_SMALLLEDGE:String = "#maps_training:37_caucasus/b_mt_smallLedge";
+      public static const C_37_CAUCASUS_B_MT_BRIDGE:String = "#maps_training:37_caucasus/b_mt_bridge";
       
-      public static const C_37_CAUCASUS_B_MT_SMALLLEDGEPHRASE:String = "#maps_training:37_caucasus/b_mt_smallLedgePhrase";
+      public static const C_37_CAUCASUS_B_MT_BRIDGEPHRASE:String = "#maps_training:37_caucasus/b_mt_bridgePhrase";
       
       public static const C_37_CAUCASUS_B_MT_GORGE:String = "#maps_training:37_caucasus/b_mt_gorge";
       
@@ -1003,9 +1003,9 @@ package
       
       public static const C_37_CAUCASUS_B_MT_GORGEPHRASE2:String = "#maps_training:37_caucasus/b_mt_gorgePhrase2";
       
-      public static const C_37_CAUCASUS_B_MT_GLACIER:String = "#maps_training:37_caucasus/b_mt_glacier";
+      public static const C_37_CAUCASUS_B_MT_PLATEAUNORTH:String = "#maps_training:37_caucasus/b_mt_plateauNorth";
       
-      public static const C_37_CAUCASUS_B_MT_GLACIERPHRASE:String = "#maps_training:37_caucasus/b_mt_glacierPhrase";
+      public static const C_37_CAUCASUS_B_MT_PLATEAUNORTHPHRASE:String = "#maps_training:37_caucasus/b_mt_plateauNorthPhrase";
       
       public static const C_37_CAUCASUS_UPPERNAME:String = "#maps_training:37_caucasus/upperName";
       

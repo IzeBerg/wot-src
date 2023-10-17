@@ -5,6 +5,7 @@ package net.wg.mock
    import net.wg.infrastructure.interfaces.IView;
    import net.wg.infrastructure.managers.IContainerManager;
    import net.wg.infrastructure.managers.ILoaderManager;
+   import net.wg.infrastructure.wulf.IViewWrapper;
    
    public class MockContainerManager implements IContainerManager
    {
@@ -19,9 +20,27 @@ package net.wg.mock
       {
       }
       
+      public function dispose() : void
+      {
+      }
+      
+      public function focusWrapper(param1:IViewWrapper = null, param2:uint = 0) : void
+      {
+      }
+      
       public function getContainer(param1:uint) : ISimpleManagedContainer
       {
          return null;
+      }
+      
+      public function getContainerHeight(param1:uint = 0) : uint
+      {
+         return 0;
+      }
+      
+      public function getContainerWidth(param1:uint = 0) : uint
+      {
+         return 0;
       }
       
       public function getContainersFocusOrder() : Array
@@ -34,22 +53,29 @@ package net.wg.mock
          return 0;
       }
       
+      public function getManageSize(param1:uint = 0) : Boolean
+      {
+         return false;
+      }
+      
       public function hasEventListener(param1:String) : Boolean
       {
          return false;
       }
       
-      public function hide(param1:Array) : void
+      public function insertWrapper(param1:String, param2:uint, param3:uint = 0, param4:Boolean = false) : IViewWrapper
       {
+         return undefined;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
       }
       
       public function isModalViewsExisting() : Boolean
       {
          return false;
-      }
-      
-      public function isShown(param1:String) : void
-      {
       }
       
       public function registerContainer(param1:ISimpleManagedContainer) : void
@@ -60,7 +86,11 @@ package net.wg.mock
       {
       }
       
-      public function show(param1:Array) : void
+      public function removeWrapper(param1:IViewWrapper = null, param2:uint = 0) : void
+      {
+      }
+      
+      public function setWindowPosition(param1:IViewWrapper, param2:int, param3:int) : void
       {
       }
       

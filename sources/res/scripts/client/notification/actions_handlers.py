@@ -18,16 +18,16 @@ from gui.collection.collections_helpers import loadHangarFromCollections
 from gui.customization.constants import CustomizationModeSource, CustomizationModes
 from gui.impl import backport
 from gui.impl.gen import R
+from gui.prestige.prestige_helpers import showPrestigeOnboardingWindow, showPrestigeVehicleStats
 from gui.platform.base.statuses.constants import StatusTypes
-from gui.prb_control import prbDispatcherProperty, prbInvitesProperty, prbEntityProperty
+from gui.prb_control import prbDispatcherProperty, prbInvitesProperty
 from gui.ranked_battles import ranked_helpers
-from gui.server_events.events_dispatcher import showMissionsBattlePass, showMissionsMapboxProgression, showPersonalMission, showBattleMatters
+from gui.server_events.events_dispatcher import showMissionsBattlePass, showMissionsMapboxProgression, showPersonalMission
 from gui.shared import EVENT_BUS_SCOPE, actions, event_dispatcher as shared_events, events, g_eventBus
-from gui.shared.event_dispatcher import hideWebBrowserOverlay, showBlueprintsSalePage, showCollectionAwardsWindow, showCollectionWindow, showCollectionsMainPage, showDelayedReward, showEpicBattlesAfterBattleWindow, showPersonalReservesConversion, showProgressiveRewardWindow, showRankedYearAwardWindow, showResourceWellProgressionWindow, showShop, showSteamConfirmEmailOverlay, showWinbackSelectRewardView, showWotPlusIntroView, showEventProgressionWindow
+from gui.shared.event_dispatcher import hideWebBrowserOverlay, openWinBackCallEntry, showBlueprintsSalePage, showCollectionAwardsWindow, showCollectionWindow, showCollectionsMainPage, showDelayedReward, showEpicBattlesAfterBattleWindow, showProgressiveRewardWindow, showRankedYearAwardWindow, showResourceWellProgressionWindow, showShop, showSteamConfirmEmailOverlay, showPersonalReservesConversion, showWinbackCallRewardsView, showWinbackSelectRewardView, showWotPlusIntroView, showBarracks
 from gui.shared.notifications import NotificationPriorityLevel
 from gui.shared.system_factory import collectAllNotificationsActionsHandlers, registerNotificationsActionsHandlers
 from gui.shared.utils import decorators
-from gui.shop import showBuyLootboxOverlay
 from gui.wgcg.clan import contexts as clan_ctxs
 from gui.wgnc import g_wgncProvider
 from helpers import dependency
@@ -37,8 +37,9 @@ from notification.settings import NOTIFICATION_BUTTON_STATE, NOTIFICATION_TYPE
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController, IEventBattlesController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController
 from skeletons.gui.impl import INotificationWindowController
+from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.web import IWebController
 from soft_exception import SoftException
@@ -112,68 +113,6 @@ class _OpenEventBoardsHandler(ActionHandler):
     def handleAction(self, model, entityID, action):
         super(_OpenEventBoardsHandler, self).handleAction(model, entityID, action)
         g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_MISSIONS), ctx={'tab': QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS}), scope=EVENT_BUS_SCOPE.LOBBY)
-
-
-class _WTEventHandler(NavigationDisabledActionHandler):
-    _gameEventCtrl = dependency.descriptor(IEventBattlesController)
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.MESSAGE
-
-    def _canNavigate(self):
-        result = super(_WTEventHandler, self)._canNavigate()
-        return self._gameEventCtrl.isEnabled() and result
-
-
-class _OpenWTEventPortalsHandler(_WTEventHandler):
-
-    @classmethod
-    def getActions(cls):
-        return ('openWTEventPortals', )
-
-    def doAction(self, model, entityID, action):
-        self._gameEventCtrl.doSelectEventPrbAndCallback(shared_events.showEventStorageWindow)
-
-
-class _OpenWTEventCollectionHandler(_WTEventHandler):
-
-    @classmethod
-    def getActions(cls):
-        return ('openWTEventCollection', )
-
-    def doAction(self, model, entityID, action):
-        self._gameEventCtrl.doSelectEventPrbAndCallback(shared_events.showEventProgressionWindow)
-
-
-class _OpenWTEventHandler(_WTEventHandler):
-
-    @classmethod
-    def getActions(cls):
-        return ('openWTEvent', )
-
-    def doAction(self, model, entityID, action):
-        self._gameEventCtrl.doSelectEventPrb()
-
-
-class _OpenWTEventQuestsHandler(_WTEventHandler):
-
-    @classmethod
-    def getActions(cls):
-        return ('openWTEventQuests', )
-
-    def doAction(self, model, entityID, action):
-        self._gameEventCtrl.doSelectEventPrbAndCallback(showEventProgressionWindow)
-
-
-class _OpenWTEventTicketPurchasingHandler(_WTEventHandler):
-
-    @classmethod
-    def getActions(cls):
-        return ('openWTEventTicketPurchasing', )
-
-    def doAction(self, model, entityID, action):
-        self._gameEventCtrl.doSelectEventPrbAndCallback(showBuyLootboxOverlay)
 
 
 class _ShowArenaResultHandler(ActionHandler):
@@ -520,36 +459,6 @@ class ShowBattleResultsHandler(_ShowArenaResultHandler):
             self._updateNotification(notification)
 
 
-class ShowWTBattleResultsHandler(_ShowArenaResultHandler):
-    gameEventCtrl = dependency.descriptor(IEventBattlesController)
-    battleResults = dependency.descriptor(IBattleResultsService)
-
-    def _updateNotification(self, notification):
-        super(ShowWTBattleResultsHandler, self)._updateNotification(notification)
-        self._showI18nMessage('#battle_results:noData', SystemMessages.SM_TYPE.Warning)
-
-    @classmethod
-    def getActions(cls):
-        return ('showWTBattleResults', )
-
-    @prbEntityProperty
-    def prbEntity(self):
-        return
-
-    @decorators.adisp_process('loadStats')
-    def _showWindow(self, notification, arenaUniqueID):
-        uniqueID = long(arenaUniqueID)
-        if self.prbEntity.isInQueue():
-            self._showI18nMessage('#event:notifications/battleResults/disableInQueue', SystemMessages.SM_TYPE.Warning)
-            return
-        if not self.gameEventCtrl.isEventPrbActive():
-            self._showI18nMessage('#event:notifications/battleResults/disableNotInPrebattle', SystemMessages.SM_TYPE.Warning)
-            return
-        result = yield self.battleResults.requestResults(RequestResultsContext(uniqueID, showImmediately=False, showIfPosted=True, resetCache=False))
-        if not result:
-            self._updateNotification(notification)
-
-
 class ShowFortBattleResultsHandler(_ShowArenaResultHandler):
 
     @classmethod
@@ -872,7 +781,7 @@ class _OpenNotrecruitedHandler(NavigationDisabledActionHandler):
         return ('openNotrecruited', )
 
     def doAction(self, model, entityID, action):
-        g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_BARRACKS), ctx={'location': BARRACKS_CONSTANTS.LOCATION_FILTER_NOT_RECRUITED}), scope=EVENT_BUS_SCOPE.LOBBY)
+        showBarracks(location=BARRACKS_CONSTANTS.LOCATION_FILTER_NOT_RECRUITED)
 
 
 class _OpenNotrecruitedSysMessageHandler(_OpenNotrecruitedHandler):
@@ -880,6 +789,20 @@ class _OpenNotrecruitedSysMessageHandler(_OpenNotrecruitedHandler):
     @classmethod
     def getNotType(cls):
         return NOTIFICATION_TYPE.MESSAGE
+
+
+class _OpenBarracksHandler(NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('openBarracks', )
+
+    def doAction(self, model, entityID, action):
+        showBarracks()
 
 
 class _OpenConfirmEmailHandler(NavigationDisabledActionHandler):
@@ -1343,6 +1266,30 @@ class _OpenCollectionHandler(NavigationDisabledActionHandler):
             showCollectionsMainPage()
 
 
+class _OpenCollectionEntryHandler(_OpenCollectionHandler):
+    __collections = dependency.descriptor(ICollectionsSystemController)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.COLLECTIONS_ENTRY
+
+    @classmethod
+    def getActions(cls):
+        return ('openCollectionEntry', )
+
+
+class _OpenCollectionRenewHandler(_OpenCollectionHandler):
+    __collections = dependency.descriptor(ICollectionsSystemController)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.COLLECTIONS_RENEW
+
+    @classmethod
+    def getActions(cls):
+        return ('openCollectionRenew', )
+
+
 class _OpenCollectionRewardHandler(NavigationDisabledActionHandler):
     __collections = dependency.descriptor(ICollectionsSystemController)
 
@@ -1391,24 +1338,70 @@ class _OpenWotDailyRewardView(ActionHandler):
         showWotPlusIntroView()
 
 
-class _BattleMattersTaskReminder(NavigationDisabledActionHandler):
+class _OpenPrestigeVehicleStats(NavigationDisabledActionHandler):
+    __lobbyContext = dependency.descriptor(ILobbyContext)
 
     @classmethod
     def getNotType(cls):
-        return NOTIFICATION_TYPE.BATTLE_MATTERS_TASK_REMINDER
+        return NOTIFICATION_TYPE.MESSAGE
 
     @classmethod
     def getActions(cls):
-        return ('battleMattersTaskReminder', )
+        return ('openPrestige', )
 
     def doAction(self, model, entityID, action):
-        showBattleMatters()
+        savedData = model.getNotification(self.getNotType(), entityID).getSavedData()
+        showPrestigeVehicleStats(savedData['vehCD'])
+
+
+class _OpenPrestigeOnboardingWindow(NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.PRESTIGE_FIRST_ENTRY
+
+    @classmethod
+    def getActions(cls):
+        return ('openPrestige', )
+
+    def doAction(self, model, entityID, action):
+        showPrestigeOnboardingWindow()
+
+
+class _OpenWinBackCallEntry(NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.WIN_BACK_CALL_ENTRY
+
+    @classmethod
+    def getActions(cls):
+        return ('winBackCallEntry', )
+
+    def doAction(self, model, entityID, action):
+        openWinBackCallEntry()
+
+
+class _OpenWinBackCallInviteAwardsEntry(NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('winBackCallToInviteAwards', )
+
+    def doAction(self, model, entityID, action):
+        if model is not None:
+            model.removeNotification(self.getNotType(), entityID)
+        showWinbackCallRewardsView()
+        return
 
 
 _AVAILABLE_HANDLERS = (
  ShowBattleResultsHandler,
  ShowFortBattleResultsHandler,
- ShowWTBattleResultsHandler,
  OpenPollHandler,
  AcceptPrbInviteHandler,
  DeclinePrbInviteHandler,
@@ -1465,19 +1458,20 @@ _AVAILABLE_HANDLERS = (
  _OpenSeniorityAwards,
  _OpenMissingEventsHandler,
  _OpenEventLootBoxesShopHandler,
- _OpenWTEventPortalsHandler,
- _OpenWTEventCollectionHandler,
- _OpenWTEventHandler,
- _OpenWTEventQuestsHandler,
- _OpenWTEventTicketPurchasingHandler,
  _OpenCollectionHandler,
+ _OpenCollectionEntryHandler,
+ _OpenCollectionRenewHandler,
  _OpenCollectionRewardHandler,
  _OpenWinbackSelectableRewardView,
  _OpenWinbackSelectableRewardViewFromQuest,
  _OpenAchievementsScreen,
  _OpenWotPlusIntroView,
  _OpenWotDailyRewardView,
- _BattleMattersTaskReminder)
+ _OpenBarracksHandler,
+ _OpenPrestigeVehicleStats,
+ _OpenPrestigeOnboardingWindow,
+ _OpenWinBackCallEntry,
+ _OpenWinBackCallInviteAwardsEntry)
 registerNotificationsActionsHandlers(_AVAILABLE_HANDLERS)
 
 class NotificationsActionsHandlers(object):

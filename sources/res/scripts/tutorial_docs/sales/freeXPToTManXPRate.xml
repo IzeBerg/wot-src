@@ -5,47 +5,23 @@
 	<scenes>
 		<scene>
 			Hangar
-			<post-effects>
-				<inactivate>PersonalCaseFreeXPToTManButtonOnScene</inactivate>
-			</post-effects>
+			<post-effects/>
 			<runtime-effects>
 				<show-hint>
-					CrewHint
+					CrewBooksBtnHint
 					<condition>
-						<effect-not-triggered>CrewHint</effect-not-triggered>
-						<active>CrewPanelOnScene</active>
-					</condition>
-				</show-hint>
-				<show-hint>
-					PersonalCaseFreeXPToTManButtonHint
-					<condition>
-						<active>PersonalCaseFreeXPToTManButtonOnScene</active>
+						<active>CrewBooksBtnOnScene</active>
 					</condition>
 				</show-hint>
 			</runtime-effects>
 			<gui-items>
 				<gui-item>
-					CrewPanel
+					CrewBooksBtn
 					<on-scene-effects>
-						<activate>CrewPanelOnScene</activate>
+						<activate>CrewBooksBtnOnScene</activate>
 					</on-scene-effects>
 					<not-on-scene-effects>
-						&gt;
-						<refuse-training>
-							<condition>
-								<effect-triggered>CrewPanelOnScene</effect-triggered>
-							</condition>
-						</refuse-training>
-						<inactivate>CrewPanelOnScene</inactivate>
-					</not-on-scene-effects>
-				</gui-item>
-				<gui-item>
-					PersonalCaseFreeXPToTManButton
-					<on-scene-effects>
-						<activate>PersonalCaseFreeXPToTManButtonOnScene</activate>
-					</on-scene-effects>
-					<not-on-scene-effects>
-						<inactivate>PersonalCaseFreeXPToTManButtonOnScene</inactivate>
+						<inactivate>CrewBooksBtnOnScene</inactivate>
 					</not-on-scene-effects>
 				</gui-item>
 			</gui-items>
@@ -61,9 +37,9 @@
 	</scenes>
 	<has-id>
 		<hint>
-			CrewHint
-			<item-id>CrewPanel</item-id>
-			<text>#quests:action/chain/hint/openPersonalCase</text>
+			CrewBooksBtnHint
+			<item-id>CrewBooksBtn</item-id>
+			<text>#quests:action/chain/hint/openCrewBooks</text>
 			<arrow>
 				<direction>R</direction>
 				<loop>True</loop>
@@ -76,55 +52,19 @@
 			</padding>
 			<actions>
 				<click>
-					CrewPanel
-					<effects>
-						<run-trigger>PersonalCaseWaitTimer</run-trigger>
-						<close-hint>CrewHint</close-hint>
-					</effects>
-				</click>
-				<click-outside>
-					CrewPanel
-					<effects>
-						<refuse-training/>
-					</effects>
-				</click-outside>
-				<esc>
-					CrewPanel
-					<effects>
-						<refuse-training/>
-					</effects>
-				</esc>
-			</actions>
-		</hint>
-		<hint>
-			PersonalCaseFreeXPToTManButtonHint
-			<item-id>PersonalCaseFreeXPToTManButton</item-id>
-			<text>#quests:action/chain/hint/freeXPToTMan</text>
-			<arrow>
-				<direction>R</direction>
-				<loop>True</loop>
-			</arrow>
-			<padding>
-				<left>-5</left>
-				<top>-5</top>
-				<right>-5</right>
-				<bottom>-5</bottom>
-			</padding>
-			<actions>
-				<click>
-					PersonalCaseFreeXPToTManButton
+					CrewBooksBtn
 					<effects>
 						<refuse-training/>
 					</effects>
 				</click>
 				<click-outside>
-					PersonalCaseFreeXPToTManButton
+					CrewBooksBtn
 					<effects>
 						<refuse-training/>
 					</effects>
 				</click-outside>
 				<esc>
-					PersonalCaseFreeXPToTManButton
+					CrewBooksBtn
 					<effects>
 						<refuse-training/>
 					</effects>
@@ -132,24 +72,6 @@
 			</actions>
 		</hint>
 	</has-id>
-	<triggers>
-		<trigger>
-			PersonalCaseWaitTimer
-			<type>timer</type>
-			<validate-var>WaitTimer</validate-var>
-			<on-effects>
-				<refuse-training>
-					<condition>
-						<inactive>PersonalCaseFreeXPToTManButtonOnScene</inactive>
-					</condition>
-				</refuse-training>
-			</on-effects>
-		</trigger>
-	</triggers>
-	<vars>
-		<var-set>
-			WaitTimer
-			<asInt>5</asInt>
-		</var-set>
-	</vars>
+	<triggers/>
+	<vars/>
 </root>

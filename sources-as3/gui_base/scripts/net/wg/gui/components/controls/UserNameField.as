@@ -423,9 +423,12 @@ package net.wg.gui.components.controls
       
       public function set userVO(param1:UserVO) : void
       {
-         this._userVO = param1;
-         this._isFrozen = false;
-         invalidateData();
+         if(this._userVO != param1)
+         {
+            this._userVO = param1;
+            this._isFrozen = false;
+            invalidateData();
+         }
       }
       
       public function get useFakeName() : Boolean
@@ -435,8 +438,11 @@ package net.wg.gui.components.controls
       
       public function set useFakeName(param1:Boolean) : void
       {
-         this._useFakeName = param1;
-         invalidateData();
+         if(this._useFakeName != param1)
+         {
+            this._useFakeName = param1;
+            invalidateData();
+         }
       }
       
       public function get showAnonymizerIcon() : Boolean
@@ -446,8 +452,11 @@ package net.wg.gui.components.controls
       
       public function set showAnonymizerIcon(param1:Boolean) : void
       {
-         this._showAnonymizerIcon = param1;
-         invalidateData();
+         if(this._showAnonymizerIcon != param1)
+         {
+            this._showAnonymizerIcon = param1;
+            invalidateData();
+         }
       }
       
       public function get textWidth() : Number
@@ -481,8 +490,11 @@ package net.wg.gui.components.controls
       
       public function set verticalAlign(param1:String) : void
       {
-         this._verticalAlign = param1;
-         invalidateSize();
+         if(this._verticalAlign != param1)
+         {
+            this._verticalAlign = param1;
+            invalidateSize();
+         }
       }
       
       public function set isFrozen(param1:Boolean) : void

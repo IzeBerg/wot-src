@@ -5,8 +5,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
    
    public class GunMarker extends SimpleContainer implements IGunMarker
    {
-      
-      private static const WT_MARKER_TYPE:Number = 6;
        
       
       public var gunTag:GunMarkerTag = null;
@@ -20,10 +18,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       private var _scale:Number = 1;
       
       private var _isSecondary:Boolean = false;
-      
-      private var _mixinType:Number = 0;
-      
-      private const SECONDARY_ALPHA_MULTIPLAYER:Number = 0.33;
       
       public function GunMarker()
       {
@@ -39,7 +33,7 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          }
          if(isInvalid(GunMarkerConsts.GUN_MIXING_ALPHA_VALIDATION))
          {
-            this.radiusMC.alpha = !!this._isSecondary ? Number(this._mixingAlpha * this.SECONDARY_ALPHA_MULTIPLAYER) : Number(this._mixingAlpha);
+            this.radiusMC.setAlpha(this._mixingAlpha,this._isSecondary);
          }
          if(isInvalid(GunMarkerConsts.GUN_SCALE_VALIDATION))
          {
@@ -67,10 +61,27 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          this.gunTag.setColor(param1);
       }
       
+      public function setDualAccActive(param1:Boolean) : void
+      {
+         if(this._isSecondary)
+         {
+            this.radiusMC.setAlpha(this._mixingAlpha,this._isSecondary);
+            this.radiusMC.visible = param1;
+         }
+         else
+         {
+            this.radiusMC.setThickness(!!param1 ? GunMarkerDispersionCircle.BOLD : GunMarkerDispersionCircle.THIN);
+         }
+      }
+      
       public function setIsSecondary(param1:Boolean) : void
       {
          this._isSecondary = param1;
          this.gunTag.visible = !param1;
+         if(this._isSecondary)
+         {
+            this.radiusMC.setThickness(GunMarkerDispersionCircle.THIN);
+         }
          invalidate(GunMarkerConsts.GUN_MIXING_ALPHA_VALIDATION);
       }
       
@@ -93,7 +104,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       public function setSettings(param1:Number, param2:Number, param3:Number, param4:Number) : void
       {
-         this._mixinType = param2;
          this.gunTag.setType(param1);
          this.radiusMC.setType(param2);
          if(this._gunTagAlpha != param3)
@@ -105,31 +115,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          {
             this._mixingAlpha = param4;
             invalidate(GunMarkerConsts.GUN_MIXING_ALPHA_VALIDATION);
-         }
-      }
-      
-      public function setDualAccActive(param1:Boolean) : void
-      {
-         if(this._isSecondary)
-         {
-            this.radiusMC.visible = param1;
-         }
-         else
-         {
-            this.radiusMC.setThickness(!!param1 ? GunMarkerDispersionCircle.BOLD : GunMarkerDispersionCircle.THIN);
-         }
-      }
-      
-      public function setExplosiveMarker(param1:Boolean) : void
-      {
-         if(param1)
-         {
-            this.radiusMC.setReloadingParams(-1,"");
-            this.radiusMC.setType(WT_MARKER_TYPE);
-         }
-         else
-         {
-            this.radiusMC.setType(this._mixinType);
          }
       }
    }

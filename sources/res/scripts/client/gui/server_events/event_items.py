@@ -13,8 +13,7 @@ from gui.ranked_battles.ranked_helpers import getQualificationBattlesCountFromID
 from gui.server_events import events_helpers, finders
 from gui.server_events.events_constants import BATTLE_MATTERS_QUEST_ID, BATTLE_MATTERS_INTERMEDIATE_QUEST_ID, BATTLE_MATTERS_COMPENSATION_QUEST_ID
 from gui.server_events.bonuses import compareBonuses, getBonuses
-from gui.server_events.events_constants import WT_BOSS_GROUP_ID, WT_QUEST_UNAVAILABLE_NOT_ENOUGH_TICKETS_REASON
-from gui.server_events.events_helpers import isDailyQuest, isPremium, getIdxFromQuestID, isWtQuest
+from gui.server_events.events_helpers import isDailyQuest, isPremium, getIdxFromQuestID
 from gui.server_events.formatters import getLinkedActionID
 from gui.server_events.modifiers import compareModifiers, getModifierObj
 from gui.server_events.parsers import AccountRequirements, BonusConditions, PostBattleConditions, PreBattleConditions, TokenQuestAccountRequirements, VehicleRequirements
@@ -29,7 +28,6 @@ from personal_missions_config import getQuestConfig
 from personal_missions_constants import DISPLAY_TYPE
 from shared_utils import findFirst, first
 from skeletons.connection_mgr import IConnectionManager
-from skeletons.gui.game_control import IEventBattlesController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
@@ -146,6 +144,9 @@ class ServerEventAbstract(object):
 
     def getDescription(self):
         return getLocalizedData(self._data, 'description')
+
+    def getNotificationTitleText(self):
+        return getLocalizedData(self._data, 'notificationTitleText')
 
     def getNotificationText(self):
         return getLocalizedData(self._data, 'notificationText')
@@ -336,27 +337,6 @@ class Quest(ServerEventAbstract):
     @classmethod
     def showMissionAction(cls):
         return
-
-    def getArenaTypes(self):
-        arenaTypes = None
-        battleCond = self.preBattleCond.getConditions()
-        if battleCond:
-            bonusTypes = battleCond.find('bonusTypes')
-            if bonusTypes:
-                arenaTypes = bonusTypes.getValue()
-        return arenaTypes
-
-    def isEventBattlesQuest(self):
-        arenaTypes = self.getArenaTypes()
-        if arenaTypes:
-            return set(arenaTypes) == set(constants.ARENA_BONUS_TYPE.EVENT_BATTLES_RANGE)
-        return False
-
-    def isQuestForBattleRoyale(self):
-        arenaTypes = self.getArenaTypes()
-        if arenaTypes:
-            return set(arenaTypes) == set(constants.ARENA_BONUS_TYPE.BATTLE_ROYALE_REGULAR_RANGE)
-        return False
 
     def isCompensationPossible(self):
         return events_helpers.isMarathon(self.getGroupID()) and bool(self.getBonuses('tokens'))
@@ -1377,22 +1357,6 @@ class MotiveQuest(Quest):
         return getLocalizedData(self._data, 'requirements')
 
 
-class WtQuest(Quest):
-    gameEventController = dependency.descriptor(IEventBattlesController)
-
-    @property
-    def isBossQuest(self):
-        return self.getGroupID().startswith(WT_BOSS_GROUP_ID)
-
-    def isAvailable(self):
-        if self.isBossQuest and not self.gameEventController.hasEnoughTickets() and not self.gameEventController.hasSpecialBoss():
-            return ValidationResult(False, WT_QUEST_UNAVAILABLE_NOT_ENOUGH_TICKETS_REASON)
-        return super(WtQuest, self).isAvailable()
-
-    def isHidden(self):
-        return super(WtQuest, self).isHidden() or not self._checkConditions()
-
-
 def _getTileIconPath(tileIconID, prefix, state):
     return '../maps/icons/quests/tiles/%s_%s_%s.png' % (tileIconID, prefix, state)
 
@@ -1536,21 +1500,9 @@ class DailyQuestBuilder(IQuestBuilder):
         return DailyQuest(qID, data, progress)
 
 
-class WtQuestBuilder(IQuestBuilder):
-
-    @classmethod
-    def isSuitableQuest(cls, questType, qID):
-        return isWtQuest(qID)
-
-    @classmethod
-    def buildQuest(cls, questType, qID, data, progress=None, expiryTime=None):
-        return WtQuest(qID, data, progress)
-
-
 registerQuestBuilders((
  PersonalQuestBuilder, GroupQuestBuilder, MotiveQuestBuilder, RankedQuestBuilder, BattleMattersTokenQuestBuilder,
- DailyTokenQuestBuilder, TokenQuestBuilder, BattleMattersQuestBuilder, PremiumQuestBuilder, DailyQuestBuilder,
- WtQuestBuilder))
+ DailyTokenQuestBuilder, TokenQuestBuilder, BattleMattersQuestBuilder, PremiumQuestBuilder, DailyQuestBuilder))
 
 def createQuest(builders, questType, qID, data, progress=None, expiryTime=None):
     for builder in builders:

@@ -1,14 +1,15 @@
-import itertools, logging, weakref
+import itertools, logging
 from collections import namedtuple
 from functools import partial
 from typing import TYPE_CHECKING
 import BigWorld, Event, SoundGroups
 from AvatarInputHandler.AimingSystems import getShotTargetInfo
 from PlayerEvents import g_playerEvents
-from TeleportKeyPoint import TeleportKeyPoint
 from aih_constants import CTRL_MODE_NAME
 from comp7_common import ROLE_EQUIPMENT_TAG
 from constants import VEHICLE_SETTING, EQUIPMENT_STAGES, ARENA_BONUS_TYPE
+from gui.impl import backport
+from gui.impl.gen import R
 from gui.shared.system_factory import collectEquipmentItem
 from gui.Scaleform.genConsts.ANIMATION_TYPES import ANIMATION_TYPES
 from gui.Scaleform.genConsts.BATTLE_MARKERS_CONSTS import BATTLE_MARKERS_CONSTS
@@ -20,7 +21,7 @@ from gui.shared.utils.decorators import ReprInjector
 from gui.sounds.epic_sound_constants import EPIC_SOUND
 from helpers import i18n, dependency
 from items import vehicles, EQUIPMENT_TYPES, ITEM_TYPES
-from points_of_interest_shared import POI_EQUIPMENT_TAG
+from points_of_interest_shared import POI_EQUIPMENT_TAG, PoiTypesByPoiEquipmentName
 from shared_utils import findFirst, forEach, CONST_CONTAINER
 from skeletons.gui.battle_session import IBattleSessionProvider
 from soft_exception import SoftException
@@ -54,11 +55,16 @@ class NotReadyError(_ActivationError):
 
 class PoiUnavailableError(_ActivationError):
 
+    @staticmethod
+    def _getPoiName(equipmentName):
+        poiType = PoiTypesByPoiEquipmentName.get(equipmentName)
+        return backport.text(R.strings.points_of_interest.type.dyn(poiType.name.lower())())
+
     def __new__(cls, name):
-        return super(PoiUnavailableError, cls).__new__(cls, 'equipmentPoiUnavailable', {'name': name})
+        return super(PoiUnavailableError, cls).__new__(cls, 'equipmentPoiUnavailable', {'name': cls._getPoiName(name)})
 
     def __init__(self, name):
-        super(PoiUnavailableError, self).__init__('equipmentPoiUnavailable', {'name': name})
+        super(PoiUnavailableError, self).__init__('equipmentPoiUnavailable', {'name': self._getPoiName(name)})
 
 
 class Comp7RoleSkillUnavailable(_ActivationError):
@@ -86,15 +92,6 @@ class Comp7RoleSkillCooldown(_ActivationError):
 
     def __init__(self, name):
         super(Comp7RoleSkillCooldown, self).__init__('comp7RoleSkillCooldown', {'name': name})
-
-
-class WtHealthAtFullHP(_ActivationError):
-
-    def __new__(cls, name):
-        return super(WtHealthAtFullHP, cls).__new__(cls, 'wtEventTankIsAtFullHP', {'name': name})
-
-    def __init__(self, name):
-        super(WtHealthAtFullHP, self).__init__('wtEventTankIsAtFullHP', {'name': name})
 
 
 class NeedEntitySelection(_ActivationError):
@@ -132,24 +129,6 @@ class EquipmentSound(object):
                 avatar_getter.getSoundNotifications().play(equipment.soundNotification)
         return
 
-    @staticmethod
-    def playPressed(item, result):
-        equipment = vehicles.g_cache.equipments()[item.getEquipmentID()]
-        if equipment is not None:
-            sound = equipment.soundPressedReady if result else equipment.soundPressedNotReady
-            if sound is not None:
-                SoundGroups.g_instance.playSound2D(sound)
-        return
-
-    @staticmethod
-    def playCancel(item):
-        equipment = vehicles.g_cache.equipments()[item.getEquipmentID()]
-        if equipment is not None:
-            sound = equipment.soundPressedCancel
-            if sound is not None:
-                SoundGroups.g_instance.playSound2D(sound)
-        return
-
 
 @ReprInjector.simple((
  '_tags', 'tags'), (
@@ -162,7 +141,7 @@ class EquipmentSound(object):
 class _EquipmentItem(object):
     __slots__ = ('_tags', '_descriptor', '_quantity', '_stage', '_prevStage', '_timeRemaining',
                  '_prevQuantity', '_totalTime', '_animationType', '_serverPrevStage',
-                 '_index', '_isLocked')
+                 '_index')
 
     def __init__(self, descriptor, quantity, stage, timeRemaining, totalTime, tags):
         super(_EquipmentItem, self).__init__()
@@ -176,16 +155,12 @@ class _EquipmentItem(object):
         self._timeRemaining = 0
         self._index = 0
         self._totalTime = totalTime
-        self._isLocked = False
         self._animationType = ANIMATION_TYPES.MOVE_ORANGE_BAR_UP | ANIMATION_TYPES.SHOW_COUNTER_ORANGE | ANIMATION_TYPES.DARK_COLOR_TRANSFORM
         self.update(quantity, stage, timeRemaining, totalTime)
         return
 
     def getAnimationType(self):
         return self._animationType
-
-    def setAnimationType(self, animationType):
-        self._animationType = animationType
 
     def setServerPrevStage(self, prevStage):
         self._serverPrevStage = prevStage
@@ -292,13 +267,8 @@ class _EquipmentItem(object):
     def getDescriptor(self):
         return self._descriptor
 
-    def setQuantity(self, quantity):
-        self._quantity = quantity
-
     def getQuantity(self):
-        if not self._isLocked:
-            return self._quantity
-        return 0
+        return self._quantity
 
     def getPrevQuantity(self):
         return self._prevQuantity
@@ -313,9 +283,7 @@ class _EquipmentItem(object):
         return self._prevStage
 
     def getTimeRemaining(self):
-        if not self._isLocked:
-            return self._timeRemaining
-        return 0
+        return self._timeRemaining
 
     @property
     def index(self):
@@ -325,9 +293,7 @@ class _EquipmentItem(object):
         self._index = index
 
     def getTotalTime(self):
-        if not self._isLocked:
-            return self._totalTime
-        return 0
+        return self._totalTime
 
     def getMarker(self):
         return self._descriptor.name.split('_')[0]
@@ -357,12 +323,6 @@ class _EquipmentItem(object):
 
     def canDeactivate(self):
         return True
-
-    def setLocked(self, isLocked):
-        self._isLocked = isLocked
-
-    def isLocked(self):
-        return self._isLocked
 
 
 class _RefillEquipmentItem(object):
@@ -652,6 +612,15 @@ class _ArtilleryItem(_OrderItem):
         return BATTLE_MARKERS_CONSTS.COLOR_YELLOW
 
 
+class _EventArtilleryItem(_OrderItem):
+
+    def getMarker(self):
+        return 'EventDeathZoneUI'
+
+    def getMarkerColor(self):
+        return BATTLE_MARKERS_CONSTS.COLOR_RED
+
+
 class _ArtilleryAOEFort(_ArtilleryItem):
 
     def getMarker(self):
@@ -918,244 +887,6 @@ class _AfterburningItem(_TriggerItem):
         self.__playingSoundObj.play()
 
 
-class _WtAfterburningItem(_AfterburningItem):
-    __slots__ = ()
-    _FULL_CHARGE_DELAY_SOUND_TIME = 4.0
-
-    def __init__(self, descriptor, quantity, stage, timeRemaining, _, tags=None):
-        totalTime = descriptor.cooldownSeconds
-        super(_WtAfterburningItem, self).__init__(descriptor, quantity, stage, timeRemaining, totalTime, tags)
-
-    def canActivate(self, entityName=None, avatar=None):
-        if self._stage == EQUIPMENT_STAGES.ACTIVE:
-            return (False,
-             _ActivationError('equipmentAlreadyActivated', {'name': self._descriptor.userString}))
-        return super(_WtAfterburningItem, self).canActivate(entityName, avatar)
-
-    def getGuiIterator(self, avatar=None):
-        return []
-
-    def getTags(self):
-        return self._tags
-
-    def update(self, quantity, stage, timeRemaining, totalTime):
-        super(_WtAfterburningItem, self).update(quantity, stage, timeRemaining, totalTime)
-        if stage == EQUIPMENT_STAGES.ACTIVE:
-            self._totalTime = timeRemaining
-        if stage == EQUIPMENT_STAGES.COOLDOWN:
-            self._animationType = ANIMATION_TYPES.MOVE_ORANGE_BAR_UP | ANIMATION_TYPES.SHOW_COUNTER_ORANGE | ANIMATION_TYPES.DARK_COLOR_TRANSFORM
-
-
-class _EventItem(_TriggerItem):
-
-    def __init__(self, descriptor, quantity, stage, timeRemaining, _, tags=None):
-        totalTime = descriptor.cooldownSeconds
-        super(_EventItem, self).__init__(descriptor, quantity, stage, timeRemaining, totalTime, tags)
-
-    def getMarker(self):
-        return 'eventItem'
-
-    def getEntitiesIterator(self, avatar=None):
-        return []
-
-    def getGuiIterator(self, avatar=None):
-        return []
-
-    def canActivate(self, entityName=None, avatar=None):
-        if self._isLocked or self._timeRemaining > 0 and self._stage and self._stage in (
-         EQUIPMENT_STAGES.DEPLOYING,
-         EQUIPMENT_STAGES.COOLDOWN,
-         EQUIPMENT_STAGES.SHARED_COOLDOWN):
-            result = False
-            error = InCooldownError(self._descriptor.userString)
-            return (
-             result, error)
-        return super(_EventItem, self).canActivate(entityName, avatar)
-
-    def update(self, quantity, stage, timeRemaining, totalTime):
-        super(_EventItem, self).update(quantity, stage, timeRemaining, totalTime)
-        if stage in (EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.READY):
-            self._totalTime = totalTime
-        elif stage == EQUIPMENT_STAGES.ACTIVE:
-            self._totalTime = timeRemaining
-        elif stage == EQUIPMENT_STAGES.PREPARING:
-            self._totalTime = 0
-
-
-class _WtStunShootItem(_EventItem):
-
-    def activate(self, entityName=None, avatar=None):
-        BigWorld.player().forceShotInfoStatus()
-        super(_WtStunShootItem, self).activate(entityName, avatar)
-
-
-class _WtSelfRepairItem(_EventItem):
-
-    def canActivate(self, entityName=None, avatar=None):
-        if self._stage == EQUIPMENT_STAGES.COOLDOWN:
-            result = False
-            error = InCooldownError(self._descriptor.userString)
-            return (
-             result, error)
-        else:
-            if self._stage == EQUIPMENT_STAGES.READY:
-                vehicleID = avatar_getter.getPlayerVehicleID()
-                if vehicleID is not None:
-                    vehicle = BigWorld.entities.get(vehicleID)
-                    if vehicle and vehicle.health == vehicle.maxHealth:
-                        result = False
-                        error = WtHealthAtFullHP(self._descriptor.userString)
-                        return (
-                         result, error)
-            return super(_WtSelfRepairItem, self).canActivate(entityName, avatar)
-
-
-class _ComponentEquipment(_EventItem):
-
-    def canActivate(self, entityName=None, avatar=None):
-        result, error = super(_ComponentEquipment, self).canActivate(entityName, avatar)
-        if not result:
-            return (result, error)
-        else:
-            vehicleID = avatar_getter.getPlayerVehicleID()
-            if vehicleID is not None:
-                vehicle = BigWorld.entities.get(vehicleID)
-                if vehicle is not None:
-                    component = getattr(vehicle, self._descriptor.name, None)
-                    if component:
-                        res, keyError = component.canActivate()
-                        return (res, _ActivationError(keyError, {'name': self._descriptor.userString}) if keyError else None)
-            return (
-             True, None)
-
-
-class _ShellOverrideItem(_ComponentEquipment):
-
-    def update(self, quantity, stage, timeRemaining, totalTime):
-        super(_ShellOverrideItem, self).update(quantity, stage, timeRemaining, totalTime)
-        if stage == EQUIPMENT_STAGES.READY:
-            self._timeRemaining = 0
-            self._totalTime = 0
-        elif stage == EQUIPMENT_STAGES.ACTIVE:
-            self._timeRemaining = -1
-            self._totalTime = 0
-
-
-class _TeleportItem(_TriggerItem):
-    _sessionProvider = dependency.descriptor(IBattleSessionProvider)
-
-    def __init__(self, descriptor, quantity, stage, timeRemaining, _, tags=None):
-        totalTime = descriptor.cooldownSeconds
-        super(_TeleportItem, self).__init__(descriptor, quantity, stage, timeRemaining, totalTime, tags)
-
-    def update(self, quantity, stage, timeRemaining, totalTime):
-        super(_TeleportItem, self).update(quantity, stage, timeRemaining, totalTime)
-        if stage == EQUIPMENT_STAGES.DEPLOYING:
-            self._totalTime = self._descriptor.deploySeconds
-        elif stage == EQUIPMENT_STAGES.COOLDOWN:
-            self._totalTime = self._descriptor.cooldownSeconds
-        elif stage == EQUIPMENT_STAGES.ACTIVE:
-            self._totalTime = timeRemaining
-        elif stage == EQUIPMENT_STAGES.PREPARING:
-            self._totalTime = 0
-        teleport = self._sessionProvider.dynamic.teleport
-        if stage != EQUIPMENT_STAGES.PREPARING and teleport.isSpawnPointsVisible:
-            teleport.closeSpawnPoints()
-
-    def canActivate(self, entityName=None, avatar=None):
-        if self._isLocked or self._timeRemaining > 0 and self._stage and self._stage in (
-         EQUIPMENT_STAGES.DEPLOYING,
-         EQUIPMENT_STAGES.COOLDOWN,
-         EQUIPMENT_STAGES.SHARED_COOLDOWN):
-            result = False
-            error = InCooldownError(self._descriptor.userString)
-            return (
-             result, error)
-        return super(_TeleportItem, self).canActivate(entityName, avatar)
-
-    def activate(self, entityName=None, avatar=None):
-        teleport = self._sessionProvider.dynamic.teleport
-        if teleport is not None:
-            points = [ {'guid': udo.guid, 'position': (udo.position.x, udo.position.z), 'index': udo.positionNumber} for udo in BigWorld.userDataObjects.values() if isinstance(udo, TeleportKeyPoint)
-                     ]
-            teleport.setEquipment(weakref.proxy(self))
-            teleport.showSpawnPoints(points)
-            self._stage = EQUIPMENT_STAGES.PREPARING
-        return
-
-    def deactivate(self):
-        teleport = self._sessionProvider.dynamic.teleport
-        if teleport is not None:
-            teleport.closeSpawnPoints()
-            self._stage = EQUIPMENT_STAGES.READY
-        return
-
-    def getEntitiesIterator(self, avatar=None):
-        return []
-
-    def getGuiIterator(self, avatar=None):
-        return []
-
-    def apply(self, pointGuid):
-        avatar_getter.activateVehicleEquipment(self.getEquipmentID(), pointGuid)
-
-
-class _HyperionItem(_EventItem):
-    __sessionProvider = dependency.descriptor(IBattleSessionProvider)
-
-    def getMarker(self):
-        return 'artillery_yellow'
-
-    def getMarkerColor(self):
-        return BATTLE_MARKERS_CONSTS.COLOR_YELLOW
-
-    def getEntitiesIterator(self, avatar=None):
-        return []
-
-    def getGuiIterator(self, avatar=None):
-        return []
-
-    def activate(self, entityName=None, avatar=None):
-        from AvatarInputHandler import MapCaseMode
-        self._stage = EQUIPMENT_STAGES.PREPARING
-        MapCaseMode.activateMapCase(self.getEquipmentID(), partial(self.deactivate), self.getAimingControlMode())
-        self.__updateEquipmentState()
-
-    def deactivate(self):
-        self.__cancelAiming(True)
-        self._stage = EQUIPMENT_STAGES.READY
-        self.__updateEquipmentState()
-
-    def update(self, quantity, stage, timeRemaining, totalTime):
-        super(_HyperionItem, self).update(quantity, stage, timeRemaining, totalTime)
-        if self._stage in (EQUIPMENT_STAGES.EXHAUSTED, EQUIPMENT_STAGES.READY):
-            self.__cancelAiming()
-
-    def getStrikeSelector(self):
-        from AvatarInputHandler import MapCaseMode
-        return MapCaseMode.HyperionStrikeSelector
-
-    def getAimingControlMode(self):
-        from AvatarInputHandler.MapCaseMode import HyperionMapCaseControlMode
-        return HyperionMapCaseControlMode
-
-    def __cancelAiming(self, playCancelSound=False):
-        if playCancelSound:
-            EquipmentSound.playCancel(self)
-        from AvatarInputHandler import MapCaseMode
-        MapCaseMode.turnOffMapCase(self.getEquipmentID(), self.getAimingControlMode())
-
-    def __updateEquipmentState(self):
-        eqCtrl = self.__sessionProvider.shared.equipments
-        eq = eqCtrl.getEquipment(self._descriptor.compactDescr)
-        eqCtrl.onEquipmentUpdated(self._descriptor.compactDescr, eq)
-
-    def getTotalTime(self):
-        if not self._isLocked:
-            return self._descriptor.deploySeconds
-        return 0
-
-
 class _RegenerationKitItem(_EquipmentItem):
 
     def canActivate(self, entityName=None, avatar=None):
@@ -1186,6 +917,29 @@ class _RegenerationKitItem(_EquipmentItem):
         if self._stage == EQUIPMENT_STAGES.ACTIVE:
             return ANIMATION_TYPES.MOVE_GREEN_BAR_DOWN | ANIMATION_TYPES.SHOW_COUNTER_ORANGE | ANIMATION_TYPES.DARK_COLOR_TRANSFORM
         return super(_RegenerationKitItem, self).getAnimationType()
+
+
+class DynComponentsGroupItem(_TriggerItem):
+
+    def update(self, quantity, stage, timeRemaining, totalTime):
+        super(DynComponentsGroupItem, self).update(quantity, stage, timeRemaining, totalTime)
+        if stage in (EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.READY):
+            self._totalTime = self._descriptor.cooldownSeconds
+        elif stage == EQUIPMENT_STAGES.ACTIVE:
+            self._timeRemaining = min(self._timeRemaining, self._descriptor.durationSeconds)
+            self._totalTime = self._descriptor.durationSeconds
+
+    def getEntitiesIterator(self, avatar=None):
+        return []
+
+    def getGuiIterator(self, avatar=None):
+        return []
+
+
+class DynComponentsGroupPassiveItem(DynComponentsGroupItem):
+
+    def canActivate(self, entityName=None, avatar=None):
+        return (False, None)
 
 
 class _VisualScriptItem(_TriggerItem):
@@ -1291,7 +1045,7 @@ class _PoiEquipmentItemVS(_VisualScriptItem):
 
     def _getErrorMsg(self):
         if self._stage in (EQUIPMENT_STAGES.UNAVAILABLE, EQUIPMENT_STAGES.NOT_RUNNING, EQUIPMENT_STAGES.EXHAUSTED):
-            return PoiUnavailableError(self._descriptor.userString)
+            return PoiUnavailableError(self._descriptor.name)
         return super(_PoiEquipmentItemVS, self)._getErrorMsg()
 
 
@@ -1305,7 +1059,7 @@ class _PoiArtilleryItem(_ArtilleryItem):
 
     def _getErrorMsg(self):
         if self._stage in (EQUIPMENT_STAGES.UNAVAILABLE, EQUIPMENT_STAGES.NOT_RUNNING, EQUIPMENT_STAGES.EXHAUSTED):
-            return PoiUnavailableError(self._descriptor.userString)
+            return PoiUnavailableError(self._descriptor.name)
         return super(_PoiArtilleryItem, self)._getErrorMsg()
 
     def canActivate(self, entityName=None, avatar=None):
@@ -1409,31 +1163,6 @@ class _RepairPointItem(_TriggerItem):
         return []
 
 
-class _EventPassiveItem(_EventItem):
-
-    def getActivationCode(self, entityName=None, avatar=None):
-        return
-
-    def canActivate(self, entityName=None, avatar=None):
-        return (False, None)
-
-    def update(self, quantity, stage, timeRemaining, totalTime):
-        super(_EventPassiveItem, self).update(self._quantity, stage, timeRemaining, totalTime)
-
-    def activate(self, entityName=None, avatar=None):
-        self._quantity = 1
-        self._update(avatar)
-
-    def deactivate(self, avatar=None):
-        self._quantity = 0
-        self._update(avatar)
-
-    def _update(self, avatar):
-        if avatar is not None:
-            avatar.guiSessionProvider.shared.equipments.setEquipment(self._descriptor.compactDescr, 0, 0, 0, 0)
-        return
-
-
 def _isBattleRoyaleBattle():
     if BigWorld.player() is not None:
         return BigWorld.player().arena.bonusType in ARENA_BONUS_TYPE.BATTLE_ROYALE_RANGE
@@ -1442,6 +1171,8 @@ def _isBattleRoyaleBattle():
 
 
 def _triggerItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, tags=None):
+    if descriptor.name.startswith('artillery_deathzone'):
+        return _EventArtilleryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_artillery'):
         return _ArcadeArtilleryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_bomber'):
@@ -1493,26 +1224,6 @@ def _poiItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, tag=N
     return itemClass(descriptor, quantity, stage, timeRemaining, totalTime, tag)
 
 
-def _eventItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, tag=None):
-    if descriptor.name.lower().endswith('afterburning_wt'):
-        return _WtAfterburningItem(descriptor, quantity, stage, timeRemaining, totalTime, tag)
-    if descriptor.name.lower().endswith('selfrepair_wt'):
-        return _WtSelfRepairItem(descriptor, quantity, stage, timeRemaining, totalTime, tag)
-    if descriptor.name.lower().endswith('teleport_wt'):
-        return _TeleportItem(descriptor, quantity, stage, timeRemaining, totalTime, tag)
-    if 'eventShellOverride' in descriptor.tags:
-        return _ShellOverrideItem(descriptor, quantity, stage, timeRemaining, totalTime, tag)
-    if descriptor.name.lower().endswith('hyperion_wt'):
-        return _HyperionItem(descriptor, quantity, stage, timeRemaining, totalTime, tag)
-    if descriptor.name.lower().endswith('instantstunshoot_wt'):
-        return _WtStunShootItem(descriptor, quantity, stage, timeRemaining, totalTime, tag)
-    return _EventItem(descriptor, quantity, stage, timeRemaining, totalTime, tag)
-
-
-def _eventPassiveItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, tag=None):
-    return _EventPassiveItem(descriptor, 0, stage, timeRemaining, totalTime, tag)
-
-
 def _getBomberItem(descriptor, quantity, stage, timeRemaining, totalTime, tags=None):
     isBattleRoyaleMode = _isBattleRoyaleBattle()
     if isBattleRoyaleMode:
@@ -1535,10 +1246,10 @@ _EQUIPMENT_TAG_TO_ITEM = {('fuel',): _AutoItem,
    ('repairkit',): _RepairKitItem, 
    ('regenerationKit',): _RegenerationKitItem, 
    ('medkit', 'repairkit'): _RepairCrewAndModules, 
+   ('dynComponentsGroup',): DynComponentsGroupItem, 
+   ('dynComponentsGroup', 'passive'): DynComponentsGroupPassiveItem, 
    (ROLE_EQUIPMENT_TAG,): _comp7ItemFactory, 
-   (POI_EQUIPMENT_TAG,): _poiItemFactory, 
-   ('eventItem',): _eventItemFactory, 
-   ('eventPassiveItem',): _eventPassiveItemFactory}
+   (POI_EQUIPMENT_TAG,): _poiItemFactory}
 
 class _DAMAGE_PANEL_EQUIPMENT(CONST_CONTAINER):
     EXTINGUISHER = 'extinguisher'
@@ -1578,6 +1289,7 @@ class EquipmentsController(MethodsRules, IBattleController):
         self.onEquipmentReset = Event.Event(self._eManager)
         self.onEquipmentsCleared = Event.Event(self._eManager)
         self.onEquipmentMarkerShown = Event.Event(self._eManager)
+        self.onEquipmentMarkerHide = Event.Event(self._eManager)
         self.onEquipmentAreaCreated = Event.Event(self._eManager)
         self.onEquipmentCooldownInPercent = Event.Event(self._eManager)
         self.onEquipmentCooldownTime = Event.Event(self._eManager)
@@ -1701,15 +1413,12 @@ class EquipmentsController(MethodsRules, IBattleController):
             if len(self._order) < self.__equipmentCount:
                 self._order.append(0)
                 self.onEquipmentAdded(0, None)
+        elif intCD in self._equipments and index < 0 or equipmentItem:
+            item = equipmentItem if equipmentItem else self._equipments[intCD]
+            item.update(quantity, stage, timeRemaining, totalTime)
+            self.onEquipmentUpdated(intCD, item)
         else:
-            if intCD in self._equipments and index < 0 or equipmentItem:
-                item = equipmentItem if equipmentItem else self._equipments[intCD]
-                item.update(quantity, stage, timeRemaining, totalTime)
-                self.onEquipmentUpdated(intCD, item)
-            else:
-                descriptor = vehicles.getItemByCompactDescr(intCD)
-                if 'hidden' in descriptor.tags:
-                    return
+            descriptor = vehicles.getItemByCompactDescr(intCD)
             if descriptor.equipmentType in (EQUIPMENT_TYPES.regular, EQUIPMENT_TYPES.battleAbilities):
                 item = self.createItem(descriptor, quantity, stage, timeRemaining, totalTime)
                 if not item:
@@ -1801,7 +1510,10 @@ class EquipmentsController(MethodsRules, IBattleController):
         if item is None:
             item = self.createItem(eq, 0, -1, 0, 0)
         self.onEquipmentMarkerShown(item, pos, direction, time, team)
-        return
+        return item
+
+    def hideMarker(self, item):
+        self.onEquipmentMarkerHide(item)
 
     def consumePreferredPosition(self):
         value = self.__preferredPosition
@@ -1914,6 +1626,15 @@ class _ReplayArtilleryItem(_ReplayOrderItem):
 
     def getMarkerColor(self):
         return BATTLE_MARKERS_CONSTS.COLOR_YELLOW
+
+
+class _ReplayEventArtilleryItem(_ReplayOrderItem):
+
+    def getMarker(self):
+        return 'EventDeathZoneUI'
+
+    def getMarkerColor(self):
+        return BATTLE_MARKERS_CONSTS.COLOR_RED
 
 
 class _ReplayArtilleryAOEFort(_ReplayArtilleryItem):
@@ -2131,6 +1852,32 @@ class _ReplayRegenerationKitBattleRoyaleItem(_ReplayItem):
         self._totalTime = totalTime
 
 
+class DynComponentsGroupReplayItem(DynComponentsGroupItem):
+    __slots__ = ('__cooldownTime', )
+
+    def __init__(self, descriptor, quantity, stage, timeRemaining, totalTime, tags=None):
+        super(DynComponentsGroupReplayItem, self).__init__(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+        self.__cooldownTime = BigWorld.serverTime() + timeRemaining
+
+    def update(self, quantity, stage, timeRemaining, totalTime):
+        super(DynComponentsGroupReplayItem, self).update(quantity, stage, timeRemaining, totalTime)
+        self.__cooldownTime = BigWorld.serverTime() + timeRemaining
+
+    def getReplayTimeRemaining(self):
+        return max(0, self.__cooldownTime - BigWorld.serverTime())
+
+    def getCooldownPercents(self):
+        totalTime = self.getTotalTime()
+        timeRemaining = self.getReplayTimeRemaining()
+        if totalTime > 0:
+            return round(float(totalTime - timeRemaining) / totalTime * 100.0)
+        return 0.0
+
+
+class DynComponentsGroupPassiveReplayItem(_ReplayItem):
+    pass
+
+
 class _ReplayPoiEquipmentItemVS(_ReplayItem, _PoiEquipmentItemVS):
 
     def _getErrorMsg(self):
@@ -2191,6 +1938,8 @@ def _replayPoiItemFactory(descriptor, quantity, stage, timeRemaining, totalTime,
 
 
 def _replayTriggerItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, tags=None):
+    if descriptor.name.startswith('artillery_deathzone'):
+        return _ReplayEventArtilleryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_artillery'):
         return _ReplayArcadeArtilleryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('artillery_epic'):
@@ -2230,10 +1979,10 @@ _REPLAY_EQUIPMENT_TAG_TO_ITEM = {('fuel',): _ReplayItem,
    ('repairkit',): _ReplayRepairKitItem, 
    ('regenerationKit',): _replayTriggerItemFactory, 
    ('medkit', 'repairkit'): _replayTriggerItemFactory, 
+   ('dynComponentsGroup',): DynComponentsGroupReplayItem, 
+   ('dynComponentsGroup', 'passive'): DynComponentsGroupPassiveReplayItem, 
    (ROLE_EQUIPMENT_TAG,): _replayComp7ItemFactory, 
-   (POI_EQUIPMENT_TAG,): _replayPoiItemFactory, 
-   ('eventItem',): _ReplayItem, 
-   ('eventPassiveItem',): _ReplayItem}
+   (POI_EQUIPMENT_TAG,): _replayPoiItemFactory}
 
 class EquipmentsReplayPlayer(EquipmentsController):
     __slots__ = ('__callbackID', '__callbackTimeID', '__percentGetters', '__percents',
@@ -2343,11 +2092,6 @@ class EquipmentsReplayPlayer(EquipmentsController):
                     isBaseTime = self._equipments[intCD].getStage() == EQUIPMENT_STAGES.ACTIVE
                 self.__times[intCD] = time
                 self.onEquipmentCooldownTime(intCD, time, isBaseTime, time == 0)
-
-
-def isWtEventItem(item):
-    return isinstance(item, (_EventItem, _WtAfterburningItem, _WtSelfRepairItem, _TeleportItem, _HyperionItem,
-     _WtStunShootItem))
 
 
 __all__ = (

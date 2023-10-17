@@ -40,6 +40,9 @@
 		<N19Mk3_MapsTraining_Dummy_MT_2>3</N19Mk3_MapsTraining_Dummy_MT_2>
 		<N9_NewOnBoarding>64001</N9_NewOnBoarding>
 		<N19Mk3_NewOnBoarding>64002</N19Mk3_NewOnBoarding>
+		<C42_Halloween_event>20036</C42_Halloween_event>
+		<C45_HELL>20007</C45_HELL>
+		<C42_HW_BOT>503</C42_HW_BOT>
 	</ids>
 	<shared>
 		<N14>
@@ -313,6 +316,21 @@
 				<!--BW_String-->
 			</repairCost>
 		</C42_FL>
+		<C42_Halloween_event>
+			<userString>#gb_vehicles:C42_Halloween_event</userString>
+			<tags/>
+			<level>10</level>
+			<price>54000</price>
+			<notInShop>true</notInShop>
+			<weight>40</weight>
+			<distance>200</distance>
+			<maxHealth>180</maxHealth>
+			<maxRegenHealth>108</maxRegenHealth>
+			<repairCost>
+				3.5
+				<!--BW_String-->
+			</repairCost>
+		</C42_Halloween_event>
 		<C42_VHF>
 			<userString>#gb_vehicles:C42_VHF</userString>
 			<tags/>
@@ -590,5 +608,35 @@
 			<invulnerable>True</invulnerable>
 			<notInShop>True</notInShop>
 		</N19Mk3_NewOnBoarding>
+		<C45_HELL>
+			<userString>#gb_vehicles:C45</userString>
+			<tags/>
+			<level>10</level>
+			<price>45600</price>
+			<notInShop>true</notInShop>
+			<weight>40</weight>
+			<distance>50</distance>
+			<maxHealth>180</maxHealth>
+			<maxRegenHealth>108</maxRegenHealth>
+			<repairCost>
+				3.5
+				<!--BW_String-->
+			</repairCost>
+		</C45_HELL>
+		<C42_HW_BOT>
+			<userString>#gb_vehicles:C42</userString>
+			<tags/>
+			<level>10</level>
+			<price>54000</price>
+			<notInShop>true</notInShop>
+			<weight>40</weight>
+			<distance>50</distance>
+			<maxHealth>180</maxHealth>
+			<maxRegenHealth>108</maxRegenHealth>
+			<repairCost>
+				3.5
+				<!--BW_String-->
+			</repairCost>
+		</C42_HW_BOT>
 	</shared>
 </root>

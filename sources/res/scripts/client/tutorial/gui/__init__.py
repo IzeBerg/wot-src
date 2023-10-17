@@ -3,7 +3,7 @@ from enum import unique, IntEnum
 import Event
 from debug_utils import LOG_ERROR
 if typing.TYPE_CHECKING:
-    from skeletons.tutorial import ComponentID
+    from skeletons.tutorial import ComponentID, ITutorialLoader
 
 class GUI_EFFECT_NAME(object):
     SHOW_DIALOG = 'ShowDialog'

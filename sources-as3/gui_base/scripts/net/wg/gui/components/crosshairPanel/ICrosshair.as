@@ -72,9 +72,5 @@ package net.wg.gui.components.crosshairPanel
       function set isUseFrameAnimation(param1:Boolean) : void;
       
       function set scaleWidgetEnabled(param1:Boolean) : void;
-      
-      function showPlasmaIndicator(param1:Number, param2:Boolean, param3:String) : void;
-      
-      function setExplosiveShotVisible(param1:Boolean) : void;
    }
 }

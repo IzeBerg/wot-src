@@ -19,7 +19,8 @@ AUTOCOMMIT_COMMAND_NAMES = (
  BATTLE_CHAT_COMMAND_NAMES.DEFENDING_BASE, BATTLE_CHAT_COMMAND_NAMES.ATTACKING_BASE,
  BATTLE_CHAT_COMMAND_NAMES.GOING_THERE,
  BATTLE_CHAT_COMMAND_NAMES.DEFENDING_OBJECTIVE,
- BATTLE_CHAT_COMMAND_NAMES.ATTACKING_OBJECTIVE)
+ BATTLE_CHAT_COMMAND_NAMES.ATTACKING_OBJECTIVE,
+ BATTLE_CHAT_COMMAND_NAMES.MOVING_TO_TARGET_POINT)
 LOCATION_CMD_NAMES = (BATTLE_CHAT_COMMAND_NAMES.SPG_AIM_AREA, BATTLE_CHAT_COMMAND_NAMES.GOING_THERE,
  BATTLE_CHAT_COMMAND_NAMES.ATTENTION_TO_POSITION, BATTLE_CHAT_COMMAND_NAMES.PREBATTLE_WAYPOINT,
  BATTLE_CHAT_COMMAND_NAMES.VEHICLE_SPOTPOINT, BATTLE_CHAT_COMMAND_NAMES.SHOOTING_POINT,
@@ -41,6 +42,10 @@ TARGETED_VEHICLE_CMD_NAMES = (
  BATTLE_CHAT_COMMAND_NAMES.EVENT_CHAT_3_EX, BATTLE_CHAT_COMMAND_NAMES.EVENT_CHAT_4_EX,
  BATTLE_CHAT_COMMAND_NAMES.EVENT_CHAT_5_EX, BATTLE_CHAT_COMMAND_NAMES.EVENT_CHAT_6_EX,
  BATTLE_CHAT_COMMAND_NAMES.EVENT_CHAT_7_EX)
+TARGET_POINT_CMD_NAMES = (
+ BATTLE_CHAT_COMMAND_NAMES.MOVING_TO_TARGET_POINT,
+ BATTLE_CHAT_COMMAND_NAMES.MOVE_TO_TARGET_POINT)
+TARGET_CMD_NAMES = TARGETED_VEHICLE_CMD_NAMES + TARGET_POINT_CMD_NAMES
 BASE_CMD_NAMES = (
  BATTLE_CHAT_COMMAND_NAMES.DEFENDING_BASE, BATTLE_CHAT_COMMAND_NAMES.ATTACKING_BASE,
  BATTLE_CHAT_COMMAND_NAMES.DEFEND_BASE, BATTLE_CHAT_COMMAND_NAMES.ATTACK_BASE)
@@ -118,11 +123,12 @@ _LOCATION_COMMAND_IDS = []
 _VEHICLE_COMMAND_IDS = []
 _AUTOCOMMIT_COMMAND_IDS = []
 _MUTED_MESSAGE_IDS = []
+_TARGET_POINT_IDS = []
 _TEMPORARY_STICKY_IDS = []
 for cmd in BATTLE_CHAT_COMMANDS:
     cmdID = cmd.id
     cmdName = cmd.name
-    if cmdName in TARGETED_VEHICLE_CMD_NAMES:
+    if cmdName in TARGET_CMD_NAMES:
         _TARGETED_CMD_IDS.append(cmdID)
     if cmdName in _SHOW_MARKER_CMD_NAMES:
         _SHOW_MARKER_CMD_IDS.append(cmdID)
@@ -130,38 +136,41 @@ for cmd in BATTLE_CHAT_COMMANDS:
         _ENEMY_TARGET_CMD_IDS.append(cmdID)
     if cmdName in _PUBLIC_CMD_NAMES:
         _PUBLIC_CMD_IDS.append(cmdID)
-    elif cmdName in _PRIVATE_CMD_NAMES:
-        _PRIVATE_CMD_IDS.append(cmdID)
-    if cmdName in _MINIMAP_CMD_NAMES:
-        _MINIMAP_CMD_IDS.append(cmdID)
-    if cmdName in _SPG_AIM_CMD_NAMES:
-        _SPG_AIM_CMD_IDS.append(cmdID)
-    if cmdName in LOCATION_CMD_NAMES:
-        _LOCATION_COMMAND_IDS.append(cmdID)
-    if cmdName in BASE_CMD_NAMES:
-        _BASE_COMMAND_IDS.append(cmdID)
-    if cmdName in _VEHICLE_COMMAND_NAMES:
-        _VEHICLE_COMMAND_IDS.append(cmdID)
-    if cmdName in AUTOCOMMIT_COMMAND_NAMES:
-        _AUTOCOMMIT_COMMAND_IDS.append(cmdID)
-    if cmdName in _MUTE_MESSAGE_NAMES:
-        _MUTED_MESSAGE_IDS.append(cmdID)
-    if cmdName == BATTLE_CHAT_COMMAND_NAMES.REPLY:
-        _REPLY_ID = cmdID
-    if cmdName == BATTLE_CHAT_COMMAND_NAMES.CANCEL_REPLY:
-        _CANCEL_REPLY_ID = cmdID
-    if cmdName == BATTLE_CHAT_COMMAND_NAMES.CLEAR_CHAT_COMMANDS:
-        _CLEAR_CHAT_COMMANDS_ID = cmdID
-    if cmdName == BATTLE_CHAT_COMMAND_NAMES.SUPPORTING_ALLY:
-        _SUPPORTING_ALLY_ID = cmdID
-    if cmdName in OBJECTIVE_CMD_NAMES:
-        _OBJECTIVE_CMD_IDS.append(cmdID)
-    if cmdName in BASE_CMD_NAMES:
-        _BASE_CMD_IDS.append(cmdID)
-    if cmdName in EPIC_GLOBAL_CMD_NAMES:
-        _GLOBAL_MESSAGE_IDS.append(cmdID)
-    if cmdName in _TEMPORARY_STICKY_NAMES:
-        _TEMPORARY_STICKY_IDS.append(cmdID)
+    else:
+        if cmdName in _PRIVATE_CMD_NAMES:
+            _PRIVATE_CMD_IDS.append(cmdID)
+        if cmdName in _MINIMAP_CMD_NAMES:
+            _MINIMAP_CMD_IDS.append(cmdID)
+        if cmdName in _SPG_AIM_CMD_NAMES:
+            _SPG_AIM_CMD_IDS.append(cmdID)
+        if cmdName in LOCATION_CMD_NAMES:
+            _LOCATION_COMMAND_IDS.append(cmdID)
+        if cmdName in BASE_CMD_NAMES:
+            _BASE_COMMAND_IDS.append(cmdID)
+        if cmdName in _VEHICLE_COMMAND_NAMES:
+            _VEHICLE_COMMAND_IDS.append(cmdID)
+        if cmdName in AUTOCOMMIT_COMMAND_NAMES:
+            _AUTOCOMMIT_COMMAND_IDS.append(cmdID)
+        if cmdName in _MUTE_MESSAGE_NAMES:
+            _MUTED_MESSAGE_IDS.append(cmdID)
+        if cmdName == BATTLE_CHAT_COMMAND_NAMES.REPLY:
+            _REPLY_ID = cmdID
+        if cmdName == BATTLE_CHAT_COMMAND_NAMES.CANCEL_REPLY:
+            _CANCEL_REPLY_ID = cmdID
+        if cmdName == BATTLE_CHAT_COMMAND_NAMES.CLEAR_CHAT_COMMANDS:
+            _CLEAR_CHAT_COMMANDS_ID = cmdID
+        if cmdName == BATTLE_CHAT_COMMAND_NAMES.SUPPORTING_ALLY:
+            _SUPPORTING_ALLY_ID = cmdID
+        if cmdName in OBJECTIVE_CMD_NAMES:
+            _OBJECTIVE_CMD_IDS.append(cmdID)
+        if cmdName in BASE_CMD_NAMES:
+            _BASE_CMD_IDS.append(cmdID)
+        if cmdName in EPIC_GLOBAL_CMD_NAMES:
+            _GLOBAL_MESSAGE_IDS.append(cmdID)
+        if cmdName in _TEMPORARY_STICKY_NAMES:
+            _TEMPORARY_STICKY_IDS.append(cmdID)
+        for cmdName in TARGET_POINT_CMD_NAMES:
+            _TARGET_POINT_IDS.append(cmdID)
 
 class _OutCmdDecorator(OutChatCommand):
     __slots__ = ('_name', )
@@ -316,6 +325,9 @@ class _ReceivedCmdDecorator(ReceivedBattleChatCommand):
 
     def isVehicleRelatedCommand(self):
         return self._commandID in _VEHICLE_COMMAND_IDS
+
+    def isTargetPointCommand(self):
+        return self._commandID in _TARGET_POINT_IDS
 
     def hasNoChatMessage(self):
         if self._commandID == _SUPPORTING_ALLY_ID and (self.isSender() or self.isReceiver()):

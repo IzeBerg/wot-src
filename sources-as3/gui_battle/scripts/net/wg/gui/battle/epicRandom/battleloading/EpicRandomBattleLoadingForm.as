@@ -14,10 +14,12 @@ package net.wg.gui.battle.epicRandom.battleloading
    import net.wg.gui.battle.epicRandom.battleloading.components.EpicRandomStatsTableCtrl;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.components.minimap.MinimapPresentation;
+   import net.wg.utils.IStageSizeDependComponent;
+   import net.wg.utils.StageSizeBoundaries;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    
-   public class EpicRandomBattleLoadingForm extends BaseLoadingForm
+   public class EpicRandomBattleLoadingForm extends BaseLoadingForm implements IStageSizeDependComponent
    {
       
       private static const MAP_SIZE:int = 360;
@@ -32,9 +34,11 @@ package net.wg.gui.battle.epicRandom.battleloading
       
       private static const BETA_ICON_OFFSET_Y:int = -46;
       
-      private static const TANK_ICON_SHIFT:int = 187;
+      private static const TANK_ICON_SHIFT:int = 172;
       
       private static const SQUAD_ICON_SHIFT:int = 57;
+      
+      private static const EXTENDED_LAYOUT_OFFSET:int = 30;
        
       
       public var team1Text:TextField = null;
@@ -65,6 +69,10 @@ package net.wg.gui.battle.epicRandom.battleloading
       
       public var rightSquad:BattleAtlasSprite = null;
       
+      private var _team1TextInitX:int;
+      
+      private var _team2TextInitX:int;
+      
       private var _leftSquadInitX:int;
       
       private var _leftTankInitX:int;
@@ -72,6 +80,10 @@ package net.wg.gui.battle.epicRandom.battleloading
       private var _rightTankInitX:int;
       
       private var _rightSquadInitX:int;
+      
+      private var _team1ScrollBarInitX:int;
+      
+      private var _team2ScrollBarInitX:int;
       
       private var _tableCtrl:EpicRandomStatsTableCtrl = null;
       
@@ -99,22 +111,17 @@ package net.wg.gui.battle.epicRandom.battleloading
       {
          if(param1.showTableBackground)
          {
-            this.leftSquad.x = this._leftSquadInitX;
-            this.leftTank.x = this._leftTankInitX;
-            this.rightTank.x = this._rightTankInitX;
-            this.rightSquad.x = this._rightSquadInitX;
             this.formBackgroundTable.imageName = BATTLEATLAS.BATTLE_LOADING_FORM_BG_TABLE;
+            this.team1Text.x = param1.leftTeamTitleLeft;
+            this.team2Text.x = param1.rightTeamTitleLeft;
          }
          if(param1.showTipsBackground)
          {
-            this.leftSquad.x = this._leftSquadInitX - SQUAD_ICON_SHIFT;
-            this.leftTank.x = this._leftTankInitX - TANK_ICON_SHIFT;
-            this.rightTank.x = this._rightTankInitX + TANK_ICON_SHIFT;
-            this.rightSquad.x = this._rightSquadInitX + SQUAD_ICON_SHIFT;
+            this._team1TextInitX = param1.leftTeamTitleLeft;
+            this._team2TextInitX = param1.rightTeamTitleLeft;
             this.formBackgroundTable.imageName = BATTLEATLAS.BATTLE_LOADING_FORM_BG_TIPS;
+            App.stageSizeMgr.register(this);
          }
-         this.team1Text.x = param1.leftTeamTitleLeft;
-         this.team2Text.x = param1.rightTeamTitleLeft;
          if(param1.showMinimap)
          {
             this.showMap(param1.arenaTypeID,param1.minimapTeam);
@@ -133,6 +140,30 @@ package net.wg.gui.battle.epicRandom.battleloading
          {
             this.table.team1PlayerList.itemRendererName = Linkages.ER_TIP_LEFT_RENDERER_UI;
             this.table.team2PlayerList.itemRendererName = Linkages.ER_TIP_RIGHT_RENDERER_UI;
+         }
+      }
+      
+      public function setStateSizeBoundaries(param1:int, param2:int) : void
+      {
+         var _loc3_:Boolean = param1 >= StageSizeBoundaries.WIDTH_1366;
+         this.team1Text.x = this._team1TextInitX;
+         this.team2Text.x = this._team2TextInitX;
+         this.leftSquad.x = this._leftSquadInitX - SQUAD_ICON_SHIFT;
+         this.leftTank.x = this._leftTankInitX - TANK_ICON_SHIFT;
+         this.rightTank.x = this._rightTankInitX + TANK_ICON_SHIFT;
+         this.rightSquad.x = this._rightSquadInitX + SQUAD_ICON_SHIFT;
+         this.table.team1ScrollBar.x = this._team1ScrollBarInitX;
+         this.table.team2ScrollBar.x = this._team2ScrollBarInitX;
+         if(_loc3_)
+         {
+            this.team1Text.x -= EXTENDED_LAYOUT_OFFSET;
+            this.team2Text.x += EXTENDED_LAYOUT_OFFSET;
+            this.leftSquad.x -= EXTENDED_LAYOUT_OFFSET;
+            this.leftTank.x -= EXTENDED_LAYOUT_OFFSET;
+            this.rightTank.x += EXTENDED_LAYOUT_OFFSET;
+            this.rightSquad.x += EXTENDED_LAYOUT_OFFSET;
+            this.table.team1ScrollBar.x -= EXTENDED_LAYOUT_OFFSET;
+            this.table.team2ScrollBar.x += EXTENDED_LAYOUT_OFFSET;
          }
       }
       
@@ -175,6 +206,7 @@ package net.wg.gui.battle.epicRandom.battleloading
       
       override protected function onDispose() : void
       {
+         App.stageSizeMgr.unregister(this);
          if(this._tableCtrl)
          {
             this._tableCtrl.dispose();
@@ -221,6 +253,8 @@ package net.wg.gui.battle.epicRandom.battleloading
          this._leftTankInitX = this.leftTank.x;
          this._rightTankInitX = this.rightTank.x;
          this._rightSquadInitX = this.rightSquad.x;
+         this._team1ScrollBarInitX = this.table.team1ScrollBar.x;
+         this._team2ScrollBarInitX = this.table.team2ScrollBar.x;
          this.hideMap();
          this.map.size = MAP_SIZE;
          mapIcon.autoSize = false;

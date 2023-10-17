@@ -1135,22 +1135,22 @@
 						<item>
 							<name>left</name>
 							<type>float</type>
-							<value>-8</value>
+							<value>0</value>
 						</item>
 						<item>
 							<name>top</name>
 							<type>float</type>
-							<value>-3</value>
+							<value>-5</value>
 						</item>
 						<item>
 							<name>right</name>
 							<type>float</type>
-							<value>-8</value>
+							<value>0</value>
 						</item>
 						<item>
 							<name>bottom</name>
 							<type>float</type>
-							<value>10</value>
+							<value>-3</value>
 						</item>
 					</value>
 				</item>
@@ -1943,11 +1943,11 @@
 			<value>
 				<item>
 					<name>view</name>
-					<value>personalCase</value>
+					<value>R.views.lobby.crew.TankmanContainerView</value>
 				</item>
 				<item>
 					<name>path</name>
-					<value>dropSkillsButton</value>
+					<value>div[id=matrix_drop_skills_btn]</value>
 				</item>
 				<item>
 					<name>padding</name>
@@ -1978,16 +1978,16 @@
 			</value>
 		</item>
 		<item>
-			<name>PersonalCaseUnloadButton</name>
+			<name>CrewChangeFilterBtn</name>
 			<type>dict</type>
 			<value>
 				<item>
 					<name>view</name>
-					<value>personalCase</value>
+					<value>R.views.lobby.crew.MemberChangeView</value>
 				</item>
 				<item>
 					<name>path</name>
-					<value>unloadBtn</value>
+					<value>div[id=popup_btn]</value>
 				</item>
 				<item>
 					<name>padding</name>
@@ -2018,16 +2018,16 @@
 			</value>
 		</item>
 		<item>
-			<name>PersonalCaseDismissButton</name>
+			<name>RetrainingBtn</name>
 			<type>dict</type>
 			<value>
 				<item>
 					<name>view</name>
-					<value>personalCase</value>
+					<value>R.views.lobby.crew.TankmanContainerView</value>
 				</item>
 				<item>
 					<name>path</name>
-					<value>dismissBtn</value>
+					<value>div[id=retraining_btn]</value>
 				</item>
 				<item>
 					<name>padding</name>
@@ -2058,136 +2058,16 @@
 			</value>
 		</item>
 		<item>
-			<name>PersonalCaseHelpButton</name>
+			<name>VehiclesList</name>
 			<type>dict</type>
 			<value>
 				<item>
 					<name>view</name>
-					<value>personalCase</value>
+					<value>R.views.lobby.crew.TankChangeView</value>
 				</item>
 				<item>
 					<name>path</name>
-					<value>helpBtn</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>PersonalCaseChangeRoleBtn</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>personalCase</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>changeRoleBtn</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>PersonalCaseFreeXPToTManButton</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>personalCase</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>accTeachingOfSkillBtn</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>PersonalCaseDocumentsBtn</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>personalCase</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>tabs:TabButtonUI?index=3</value>
+					<value>div[id=vehicles_list]</value>
 				</item>
 				<item>
 					<name>padding</name>
@@ -2451,113 +2331,6 @@
 				<item>
 					<name>path</name>
 					<value>schoolCommanderBtn</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>PersonalCaseOption</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>hangar</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>crew.list:CrewItemRendererUI?slot=0.dropDownList:RecruitItemRendererUI?personalCase=true</value>
-				</item>
-				<item>
-					<name>bootcampHint</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>hideBorder</name>
-							<type>bool</type>
-							<value>False</value>
-						</item>
-						<item>
-							<name>padding</name>
-							<type>dict</type>
-							<value>
-								<item>
-									<name>left</name>
-									<type>float</type>
-									<value>0</value>
-								</item>
-								<item>
-									<name>top</name>
-									<type>float</type>
-									<value>0</value>
-								</item>
-								<item>
-									<name>right</name>
-									<type>float</type>
-									<value>0</value>
-								</item>
-								<item>
-									<name>bottom</name>
-									<type>float</type>
-									<value>0</value>
-								</item>
-							</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>PersonalCaseSkill</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>personalCase</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>view:PersonalCaseSkills.modifiers</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>PersonalCaseSkillSelect</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>personalCase</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>view:PersonalCaseSkills.selectBtn</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>PersonalCaseClose</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>personalCase</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>closeBtn</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>PersonalCaseAlertIcon</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>personalCase</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>alertIcon</value>
 				</item>
 			</value>
 		</item>
@@ -2978,11 +2751,11 @@
 			<value>
 				<item>
 					<name>view</name>
-					<value>hangar</value>
+					<value>R.views.lobby.crew.HangarCrewWidget</value>
 				</item>
 				<item>
 					<name>path</name>
-					<value>crew</value>
+					<value>div[id=crew_widget_slots_list]</value>
 				</item>
 				<item>
 					<name>padding</name>
@@ -3033,44 +2806,16 @@
 			</value>
 		</item>
 		<item>
-			<name>TmenXpPanel</name>
+			<name>PersonalFileCrewPanel</name>
 			<type>dict</type>
 			<value>
 				<item>
 					<name>view</name>
-					<value>hangar</value>
+					<value>R.views.lobby.crew.TankmanContainerView</value>
 				</item>
 				<item>
 					<name>path</name>
-					<value>tmenXpPanel</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>CrewBG</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>hangar</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>crewBG</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>FirstTankman</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>hangar</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>crew.list:CrewItemRendererUI?slot=0</value>
+					<value>div[id=crew_widget_slots_list]</value>
 				</item>
 				<item>
 					<name>padding</name>
@@ -3099,37 +2844,20 @@
 					</value>
 				</item>
 				<item>
-					<name>bootcampHint</name>
+					<name>anim</name>
 					<type>dict</type>
 					<value>
 						<item>
-							<name>hideBorder</name>
-							<type>bool</type>
-							<value>True</value>
-						</item>
-						<item>
-							<name>padding</name>
+							<name>tween</name>
 							<type>dict</type>
 							<value>
 								<item>
-									<name>left</name>
-									<type>float</type>
-									<value>0</value>
-								</item>
-								<item>
-									<name>top</name>
-									<type>float</type>
-									<value>0</value>
-								</item>
-								<item>
-									<name>right</name>
-									<type>float</type>
-									<value>0</value>
-								</item>
-								<item>
-									<name>bottom</name>
-									<type>float</type>
-									<value>0</value>
+									<name>flags</name>
+									<type>list</type>
+									<value>
+										<item>LEFT</item>
+										<item>ALPHA</item>
+									</value>
 								</item>
 							</value>
 						</item>
@@ -3162,46 +2890,6 @@
 				<item>
 					<name>path</name>
 					<value>tooltipInBlocks:Fake?label=0</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>CrewOperationBtn</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>hangar</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>crewOperationBtn</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-					</value>
 				</item>
 			</value>
 		</item>
@@ -5338,20 +5026,6 @@
 			</value>
 		</item>
 		<item>
-			<name>CrewXPPanelInject</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>hangar</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>crewXPPanelInject</value>
-				</item>
-			</value>
-		</item>
-		<item>
 			<name>PersonalReservesGroup</name>
 			<type>dict</type>
 			<value>
@@ -5504,6 +5178,86 @@
 				<item>
 					<name>path</name>
 					<value>div[id=summary-customization-button]</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>CrewOperationBtn</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.crew.HangarCrewWidget</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=crew_operations_button]</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>CrewBooksBtn</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.crew.HangarCrewWidget</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=crew_book_button]</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
 				</item>
 			</value>
 		</item>

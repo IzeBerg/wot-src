@@ -109,7 +109,3 @@ class SettingsWindowMeta(AbstractWindowView):
     def as_setDisabledTabsOverlayS(self, tabIndexes, text):
         if self._isDAAPIInited():
             return self.flashObject.as_setDisabledTabsOverlay(tabIndexes, text)
-
-    def as_setIsEventS(self, isInEvent):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setIsEvent(isInEvent)

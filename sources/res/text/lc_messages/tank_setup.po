@@ -422,6 +422,11 @@ msgstr ""
 "Disassemble\n"
 "%(name)s?"
 
+msgid "dialogs/confirmActionsWithEquipmentDialog/warning"
+msgstr ""
+"Please note: After disassembling, you will not be able to restore or "
+"purchase this equipment."
+
 msgid "dialogs/deconstructConfirm/button/cancel"
 msgstr "Cancel"
 
@@ -611,6 +616,28 @@ msgstr "Resupply ammunition?"
 msgid "dialogs/refillShells/title/saveSlotsContent"
 msgstr "Save changes to the ammunition?"
 
+msgid "dialogs/sell/alertText/equipment/improved"
+msgstr "Please note: You are selling Improved Equipment."
+
+msgid "dialogs/sell/alertText/equipment/trophy"
+msgstr ""
+"Please note: After selling, you will not be able to restore or purchase this"
+" equipment."
+
+msgid "dialogs/sell/button/cancel"
+msgstr "Cancel"
+
+msgid "dialogs/sell/button/sell"
+msgstr "Sell"
+
+msgid "dialogs/sell/header"
+msgstr ""
+"Sell the following equipment?\n"
+"%(equipmentName)s"
+
+msgid "dialogs/sell/text"
+msgstr "Sale price for 1 item:"
+
 msgid "effects/name"
 msgstr "Effect"
 
@@ -673,11 +700,11 @@ msgstr ""
 
 msgid "introduction/message/modernized"
 msgstr ""
-"A specialized type of equipment that has three Upgrade Levels. This "
-"equipment cannot be destroyed, but it can be disassembled to get special "
+"A specialized type of equipment with three Upgrade Levels that is rewarded "
+"for completing missions and during certain game events. This equipment "
+"cannot be purchased or sold, but it can be disassembled to get special "
 "parts—%(currencyName)s (%(currencyIcon)s). The received components can be "
-"used to upgrade any Experimental Equipment. It is rewarded for completing "
-"missions and during certain game events."
+"used to upgrade any Experimental Equipment."
 
 msgid "introduction/message/trophy"
 msgstr ""

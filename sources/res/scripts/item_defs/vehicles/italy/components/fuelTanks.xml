@@ -6,6 +6,9 @@
 		<Average>203</Average>
 		<Heavy>204</Heavy>
 		<Large>205</Large>
+		<Large_hw21>20001</Large_hw21>
+		<Average_HW_BOT>500</Average_HW_BOT>
+		<Heavy_HW_BOT>501</Heavy_HW_BOT>
 	</ids>
 	<shared>
 		<Small>
@@ -63,5 +66,41 @@
 				<!--BW_String-->
 			</repairCost>
 		</Large>
+		<Large_hw21>
+			<tags/>
+			<price>100</price>
+			<weight>300</weight>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>80</maxRegenHealth>
+			<repairCost>
+				1.0
+				<!--BW_String-->
+			</repairCost>
+			<notInShop>True</notInShop>
+		</Large_hw21>
+		<Average_HW_BOT>
+			<tags/>
+			<price>100</price>
+			<notInShop>true</notInShop>
+			<weight>250</weight>
+			<maxHealth>150</maxHealth>
+			<maxRegenHealth>60</maxRegenHealth>
+			<repairCost>
+				1.0
+				<!--BW_String-->
+			</repairCost>
+		</Average_HW_BOT>
+		<Heavy_HW_BOT>
+			<tags/>
+			<price>100</price>
+			<notInShop>true</notInShop>
+			<weight>275</weight>
+			<maxHealth>175</maxHealth>
+			<maxRegenHealth>70</maxRegenHealth>
+			<repairCost>
+				1.0
+				<!--BW_String-->
+			</repairCost>
+		</Heavy_HW_BOT>
 	</shared>
 </root>

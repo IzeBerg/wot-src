@@ -42,11 +42,11 @@ class VehicleInfoModel(ViewModel):
     def setVehicleLvl(self, value):
         self._setNumber(5, value)
 
-    def getIsPremiumIGR(self):
-        return self._getBool(6)
+    def getTags(self):
+        return self._getString(6)
 
-    def setIsPremiumIGR(self, value):
-        self._setBool(6, value)
+    def setTags(self, value):
+        self._setString(6, value)
 
     def _initialize(self):
         super(VehicleInfoModel, self)._initialize()
@@ -56,4 +56,4 @@ class VehicleInfoModel(ViewModel):
         self._addStringProperty('vehicleNation', '')
         self._addStringProperty('vehicleType', '')
         self._addNumberProperty('vehicleLvl', 0)
-        self._addBoolProperty('isPremiumIGR', False)
+        self._addStringProperty('tags', '')

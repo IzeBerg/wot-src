@@ -16,16 +16,8 @@ package net.wg.gui.lobby.vehicleCustomization.progressionStyles
       public function StageSwitcher()
       {
          super();
-      }
-      
-      override public function get width() : Number
-      {
-         return WIDTH;
-      }
-      
-      override public function get height() : Number
-      {
-         return HEIGHT;
+         setManageSize(true);
+         setSize(WIDTH,HEIGHT);
       }
    }
 }

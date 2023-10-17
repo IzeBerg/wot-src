@@ -6,6 +6,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehicleCompare.VehicleCompareConfiguratorBaseView;
    import net.wg.gui.lobby.vehicleCompare.data.VehConfSkillVO;
    import net.wg.infrastructure.exceptions.AbstractException;
+   import scaleform.clik.data.DataProvider;
    
    public class VehicleCompareConfiguratorViewMeta extends VehicleCompareConfiguratorBaseView
    {
@@ -29,7 +30,7 @@ package net.wg.infrastructure.base.meta.impl
       
       private var _vectorShellButtonVO:Vector.<ShellButtonVO>;
       
-      private var _vectorVehConfSkillVO:Vector.<VehConfSkillVO>;
+      private var _dataProviderVehConfSkillVO:DataProvider;
       
       public function VehicleCompareConfiguratorViewMeta()
       {
@@ -59,14 +60,14 @@ package net.wg.infrastructure.base.meta.impl
             this._vectorShellButtonVO.splice(0,this._vectorShellButtonVO.length);
             this._vectorShellButtonVO = null;
          }
-         if(this._vectorVehConfSkillVO)
+         if(this._dataProviderVehConfSkillVO)
          {
-            for each(_loc3_ in this._vectorVehConfSkillVO)
+            for each(_loc3_ in this._dataProviderVehConfSkillVO)
             {
                _loc3_.dispose();
             }
-            this._vectorVehConfSkillVO.splice(0,this._vectorVehConfSkillVO.length);
-            this._vectorVehConfSkillVO = null;
+            this._dataProviderVehConfSkillVO.cleanUp();
+            this._dataProviderVehConfSkillVO = null;
          }
          super.onDispose();
       }
@@ -162,23 +163,23 @@ package net.wg.infrastructure.base.meta.impl
       public final function as_setSkills(param1:Array) : void
       {
          var _loc5_:VehConfSkillVO = null;
-         var _loc2_:Vector.<VehConfSkillVO> = this._vectorVehConfSkillVO;
-         this._vectorVehConfSkillVO = new Vector.<VehConfSkillVO>(0);
+         var _loc2_:DataProvider = this._dataProviderVehConfSkillVO;
+         this._dataProviderVehConfSkillVO = new DataProvider();
          var _loc3_:uint = param1.length;
          var _loc4_:int = 0;
          while(_loc4_ < _loc3_)
          {
-            this._vectorVehConfSkillVO[_loc4_] = new VehConfSkillVO(param1[_loc4_]);
+            this._dataProviderVehConfSkillVO[_loc4_] = new VehConfSkillVO(param1[_loc4_]);
             _loc4_++;
          }
-         this.setSkills(this._vectorVehConfSkillVO);
+         this.setSkills(this._dataProviderVehConfSkillVO);
          if(_loc2_)
          {
             for each(_loc5_ in _loc2_)
             {
                _loc5_.dispose();
             }
-            _loc2_.splice(0,_loc2_.length);
+            _loc2_.cleanUp();
          }
       }
       
@@ -196,7 +197,7 @@ package net.wg.infrastructure.base.meta.impl
          throw new AbstractException(_loc2_);
       }
       
-      protected function setSkills(param1:Vector.<VehConfSkillVO>) : void
+      protected function setSkills(param1:DataProvider) : void
       {
          var _loc2_:String = "as_setSkills" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);

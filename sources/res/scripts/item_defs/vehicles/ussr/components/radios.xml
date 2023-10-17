@@ -48,7 +48,10 @@
 		<R113M_DR>217</R113M_DR>
 		<_71-TK-3_M>218</_71-TK-3_M>
 		<_10RT-26M>220</_10RT-26M>
-		<R113M_WT>1001</R113M_WT>
+		<R113K>223</R113K>
+		<_12RT_hw21>20001</_12RT_hw21>
+		<R113_Halloween_event>20002</R113_Halloween_event>
+		<R77_KV2_turret_2_Radio>20003</R77_KV2_turret_2_Radio>
 		<_10RK_IGR>60001</_10RK_IGR>
 		<_12RT_IGR>60002</_12RT_IGR>
 		<R113_IGR>60003</R113_IGR>
@@ -60,6 +63,7 @@
 		<R113_SH>316</R113_SH>
 		<_10RK-26_7x7>502</_10RK-26_7x7>
 		<Development_Radio>65000</Development_Radio>
+		<_12RT_Roz_Boss_HW23>1003</_12RT_Roz_Boss_HW23>
 		<_9RM_MapsTraining_Dummy_LT_1>12</_9RM_MapsTraining_Dummy_LT_1>
 		<_12LL_MapsTraining_Dummy_SPG_1>33</_12LL_MapsTraining_Dummy_SPG_1>
 		<_9RM_MapsTraining_Player_MT_1>37</_9RM_MapsTraining_Player_MT_1>
@@ -338,6 +342,18 @@
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</_12RT_Roz>
+		<_12RT_Roz_Boss_HW23>
+			<userString>#ussr_vehicles:_12RT_Roz_Boss_HW23</userString>
+			<tags/>
+			<level>8</level>
+			<price>33600</price>
+			<notInShop>true</notInShop>
+			<weight>110</weight>
+			<distance>50</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</_12RT_Roz_Boss_HW23>
 		<Mk19R>
 			<userString>#ussr_vehicles:Mk19R</userString>
 			<tags/>
@@ -421,6 +437,19 @@
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</R113>
+		<R113_Halloween_event>
+			<userString>#ussr_vehicles:R113_Halloween_event</userString>
+			<tags/>
+			<level>10</level>
+			<price>52200</price>
+			<notInShop>true</notInShop>
+			<weight>80</weight>
+			<distance>200</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+			<invulnerable>True</invulnerable>
+		</R113_Halloween_event>
 		<R113_FL>
 			<userString>#ussr_vehicles:R113</userString>
 			<tags/>
@@ -445,6 +474,18 @@
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</R113M>
+		<R113K>
+			<userString>#ussr_vehicles:R113K</userString>
+			<tags/>
+			<level>10</level>
+			<price>52200</price>
+			<notInShop>true</notInShop>
+			<weight>80</weight>
+			<distance>730</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</R113K>
 		<R113M_DR>
 			<userString>#ussr_vehicles:R113M_DR</userString>
 			<tags/>
@@ -797,18 +838,6 @@
 			<maxRegenHealth>75</maxRegenHealth>
 			<repairCost>0</repairCost>
 		</Development_Radio>
-		<R113M_WT>
-			<userString>#ussr_vehicles:R113M_WT</userString>
-			<tags/>
-			<level>10</level>
-			<price>52200</price>
-			<notInShop>true</notInShop>
-			<weight>80</weight>
-			<distance>930</distance>
-			<maxHealth>200</maxHealth>
-			<maxRegenHealth>150</maxRegenHealth>
-			<repairCost>3</repairCost>
-		</R113M_WT>
 		<_10RK_SH>
 			<userString>#ussr_vehicles:_10RK_SH</userString>
 			<tags/>
@@ -925,5 +954,32 @@
 			</repairCost>
 			<notInShop>True</notInShop>
 		</_10RK_MapsTraining_Dummy_HT_2>
+		<R77_KV2_turret_2_Radio>
+			<userString>#ussr_vehicles:_10RK</userString>
+			<tags/>
+			<level>7</level>
+			<price>18600</price>
+			<notInShop>true</notInShop>
+			<weight>100</weight>
+			<distance>440</distance>
+			<maxHealth>150</maxHealth>
+			<maxRegenHealth>125</maxRegenHealth>
+			<repairCost>
+				1.5
+				<!--BW_String-->
+			</repairCost>
+		</R77_KV2_turret_2_Radio>
+		<_12RT_hw21>
+			<userString>#ussr_vehicles:_12RT</userString>
+			<tags/>
+			<level>9</level>
+			<price>33600</price>
+			<weight>110</weight>
+			<distance>200</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+			<notInShop>True</notInShop>
+		</_12RT_hw21>
 	</shared>
 </root>

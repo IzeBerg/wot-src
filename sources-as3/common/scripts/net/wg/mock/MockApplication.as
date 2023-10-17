@@ -155,6 +155,10 @@ package net.wg.mock
       {
       }
       
+      public function setCursorMgrS(param1:ICursorManager) : void
+      {
+      }
+      
       public function setEventLogMgrS(param1:IEventLogManager) : void
       {
       }
@@ -195,15 +199,15 @@ package net.wg.mock
       {
       }
       
-      public function setUILoggerMgrS(param1:IUILoggerManager) : void
-      {
-      }
-      
       public function setTutorialMgrS(param1:ITutorialManager) : void
       {
       }
       
       public function setTweenMgrS(param1:ITweenManager) : void
+      {
+      }
+      
+      public function setUILoggerMgrS(param1:IUILoggerManager) : void
       {
       }
       
@@ -216,6 +220,10 @@ package net.wg.mock
       }
       
       public function setVoiceChatMgrS(param1:IVoiceChatManager) : void
+      {
+      }
+      
+      public function stageUpdated() : void
       {
       }
       
@@ -362,10 +370,6 @@ package net.wg.mock
       public function get stageSizeMgr() : IStageSizeManager
       {
          return null;
-      }
-      
-      public function setCursorMgrS(param1:ICursorManager) : void
-      {
       }
    }
 }

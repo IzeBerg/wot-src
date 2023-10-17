@@ -20,10 +20,18 @@ def showFunRandomInfoPage(infoPageUrl):
      WindowLayer.MARKER, WindowLayer.VIEW, WindowLayer.WINDOW))
 
 
-def showFunRandomSubSelector():
-    from fun_random.gui.impl.lobby.mode_selector.fun_sub_selector_view import FunModeSubSelectorWindow
-    window = FunModeSubSelectorWindow()
-    window.load()
+def showFunRandomSubSelector(parent=None):
+    from fun_random.gui.impl.lobby.mode_selector.fun_sub_selector_view import FunModeSubSelectorView
+    guiLoader = dependency.instance(IGuiLoader)
+    layoutID = R.views.fun_random.lobby.feature.FunRandomModeSubSelector()
+    if guiLoader.windowsManager.getViewByLayoutID(layoutID) is not None:
+        return
+    else:
+        if parent is None:
+            modeSelectorView = guiLoader.windowsManager.getViewByLayoutID(R.views.lobby.mode_selector.ModeSelectorView())
+            parent = modeSelectorView.getParentWindow()
+        g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(layoutID, FunModeSubSelectorView, ScopeTemplates.LOBBY_TOP_SUB_SCOPE, parent=parent)), scope=EVENT_BUS_SCOPE.LOBBY)
+        return
 
 
 @dependency.replace_none_kwargs(uiLoader=IGuiLoader)
@@ -40,7 +48,7 @@ def showFunRandomProgressionWindow(uiLoader=None):
 def showFunRandomModeSubSelectorWindow(uiLoader=None):
     contentResId = R.views.lobby.mode_selector.ModeSelectorView()
     if uiLoader.windowsManager.getViewByLayoutID(contentResId) is None:
-        showModeSelectorWindow(isEventEnabled=False, subSelectorCallback=showFunRandomSubSelector)
+        showModeSelectorWindow(subSelectorCallback=showFunRandomSubSelector)
     else:
         showFunRandomSubSelector()
     return

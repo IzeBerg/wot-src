@@ -7,6 +7,10 @@ package
       
       public static const BUTTONLABEL_SELL:String = "#storage:buttonLabel/sell";
       
+      public static const BUTTONSELL_TOOLTIP_HEADER:String = "#storage:buttonSell/tooltip/header";
+      
+      public static const BUTTONSELL_TOOLTIP_BODY:String = "#storage:buttonSell/tooltip/body";
+      
       public static const BUTTONLABEL_RESTORE:String = "#storage:buttonLabel/restore";
       
       public static const BUTTONLABEL_REMOVE:String = "#storage:buttonLabel/remove";
@@ -17,7 +21,9 @@ package
       
       public static const BUTTONLABEL_SELECT:String = "#storage:buttonLabel/select";
       
-      public static const BUTTONLABEL_DECONSTRUCT:String = "#storage:buttonLabel/deconstruct";
+      public static const BUTTONDECONSTRUCT_TOOLTIP_HEADER:String = "#storage:buttonDeconstruct/tooltip/header";
+      
+      public static const BUTTONDECONSTRUCT_TOOLTIP_BODY:String = "#storage:buttonDeconstruct/tooltip/body";
       
       public static const CARD_CANNOTSELLTITLE:String = "#storage:card/cannotSellTitle";
       

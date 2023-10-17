@@ -14,7 +14,7 @@ package net.wg.infrastructure.interfaces
       
       function stopEffect() : void;
       
-      function setView(param1:IView) : void;
+      function setView(param1:ITutorialView) : void;
       
       function set component(param1:DisplayObject) : void;
    }

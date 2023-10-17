@@ -12,7 +12,7 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       private static const NOTCH_SHIFT_Y:Number = RADIUS * Math.cos(SNIPER_MODE_GAP_ANGLE / 2);
       
-      private static const NOTCH_SIZE:Number = 30;
+      private static const NOTCH_SIZE:int = 30;
        
       
       public function GunMarkerMixingDualGunSniper()

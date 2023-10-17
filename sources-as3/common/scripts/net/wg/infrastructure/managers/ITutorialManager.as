@@ -5,7 +5,7 @@ package net.wg.infrastructure.managers
    import net.wg.infrastructure.base.meta.ITutorialManagerMeta;
    import net.wg.infrastructure.events.TutorialEvent;
    import net.wg.infrastructure.interfaces.ITutorialCustomComponent;
-   import net.wg.infrastructure.interfaces.IView;
+   import net.wg.infrastructure.interfaces.ITutorialView;
    
    public interface ITutorialManager extends ITutorialManagerMeta
    {
@@ -21,11 +21,11 @@ package net.wg.infrastructure.managers
       
       function dispatchEventForCustomComponent(param1:ITutorialCustomComponent) : void;
       
-      function setupEffectBuilder(param1:IView, param2:String, param3:TutorialBuilderVO, param4:DisplayObject) : void;
+      function setupEffectBuilder(param1:ITutorialView, param2:String, param3:TutorialBuilderVO, param4:DisplayObject) : void;
       
       function get isSystemEnabled() : Object;
       
-      function setViewForTutorialId(param1:IView, param2:String) : void;
+      function setViewForTutorialId(param1:ITutorialView, param2:String) : void;
       
       function onEffectComplete(param1:DisplayObject, param2:String) : void;
    }

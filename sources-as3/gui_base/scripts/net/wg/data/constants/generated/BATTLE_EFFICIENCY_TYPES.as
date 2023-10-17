@@ -49,8 +49,6 @@ package net.wg.data.constants.generated
       
       public static const STATIC_DEATH_ZONE:String = "staticDeathZone";
       
-      public static const VEHICLE_HEALTH_ADDED:String = "healthAdded";
-      
       public static const VEHICLE_RECOVERY:String = "vehicleRecovery";
       
       public static const ENEMY_SECTOR_CAPTURED:String = "enemySectorCaptured";
@@ -106,8 +104,6 @@ package net.wg.data.constants.generated
       public static const DEALT_DMG_BY_THUNDER_STRIKE:String = "dealtDamageByThunderStrike";
       
       public static const RECEIVED_BY_THUNDER_STRIKE:String = "receivedByThunderStrike";
-      
-      public static const RECEIVED_BY_CIRCUIT_OVERLOAD:String = "wtReceivedCircuitOverload";
        
       
       public function BATTLE_EFFICIENCY_TYPES()

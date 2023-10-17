@@ -43,11 +43,9 @@ class INGAME_GUI(object):
     PLAYER_ERRORS_EQUIPMENT_EXTINGUISHER_DOESNOTACTIVATED = '#ingame_gui:player_errors/equipment/extinguisher/doesNotActivated'
     PLAYER_ERRORS_EQUIPMENT_ORDER_NOTREADY = '#ingame_gui:player_errors/equipment/order/notReady'
     PLAYER_ERRORS_EQUIPMENT_POI_UNAVAILABLE = '#ingame_gui:player_errors/equipment/poi/unavailable'
-    PLAYER_MESSAGES_EQUIPMENT_WTEVENT_HEALTHATFULLHP = '#ingame_gui:player_messages/equipment/wtEvent/healthAtFullHP'
     PLAYER_MESSAGES_DEVICE_CRITICAL_AT_SHOT = '#ingame_gui:player_messages/DEVICE_CRITICAL_AT_SHOT'
     PLAYER_MESSAGES_DEVICE_DESTROYED_AT_SHOT = '#ingame_gui:player_messages/DEVICE_DESTROYED_AT_SHOT'
     PLAYER_MESSAGES_DEVICE_STARTED_FIRE_AT_SHOT = '#ingame_gui:player_messages/DEVICE_STARTED_FIRE_AT_SHOT'
-    PLAYER_MESSAGES_DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD = '#ingame_gui:player_messages/DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD'
     PLAYER_MESSAGES_TANKMAN_HIT_AT_SHOT = '#ingame_gui:player_messages/TANKMAN_HIT_AT_SHOT'
     PLAYER_MESSAGES_DEVICE_CRITICAL_AT_FIRE = '#ingame_gui:player_messages/DEVICE_CRITICAL_AT_FIRE'
     PLAYER_MESSAGES_ENGINE_CRITICAL_AT_UNLIMITED_RPM = '#ingame_gui:player_messages/ENGINE_CRITICAL_AT_UNLIMITED_RPM'
@@ -111,6 +109,8 @@ class INGAME_GUI(object):
     CHAT_SHORTCUTS_ATTACKING_BASE_NUMBERED = '#ingame_gui:chat_shortcuts/attacking_base_numbered'
     CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_ATK = '#ingame_gui:chat_shortcuts/attention_to_objective_atk'
     CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_ATK_AUTOCOMMIT = '#ingame_gui:chat_shortcuts/attention_to_objective_atk_autocommit'
+    CHAT_SHORTCUTS_MOVE_TO_TARGET = '#ingame_gui:chat_shortcuts/move_to_target'
+    CHAT_SHORTCUTS_MOVE_TO_TARGET_AUTOCOMMIT = '#ingame_gui:chat_shortcuts/move_to_target_autocommit'
     CHAT_SHORTCUTS_ATTENTION_TO_BASE_DEF = '#ingame_gui:chat_shortcuts/attention_to_base_def'
     CHAT_SHORTCUTS_ATTENTION_TO_BASE_DEF_NUMBERED = '#ingame_gui:chat_shortcuts/attention_to_base_def_numbered'
     CHAT_SHORTCUTS_DEFENDING_BASE = '#ingame_gui:chat_shortcuts/defending_base'
@@ -557,6 +557,7 @@ class INGAME_GUI(object):
     POSTMORTEM_MESSAGES_DEATH_FROM_THUNDER_STRIKE = '#ingame_gui:postmortem_messages/DEATH_FROM_THUNDER_STRIKE'
     POSTMORTEM_MESSAGES_DEATH_FROM_CORRODING_SHOT = '#ingame_gui:postmortem_messages/DEATH_FROM_CORRODING_SHOT'
     POSTMORTEM_MESSAGES_DEATH_FROM_CLING_BRANDER = '#ingame_gui:postmortem_messages/DEATH_FROM_CLING_BRANDER'
+    POSTMORTEM_MESSAGES_DEATH_FROM_BR_BOT = '#ingame_gui:postmortem_messages/DEATH_FROM_BR_BOT'
     POSTMORTEM_MESSAGES_DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE = '#ingame_gui:postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE'
     PLAYER_MESSAGES_DEATH_FROM_OVERTURN_SELF_SUICIDE = '#ingame_gui:player_messages/DEATH_FROM_OVERTURN_SELF_SUICIDE'
     PLAYER_MESSAGES_DEATH_FROM_OVERTURN_SELF_ALLY = '#ingame_gui:player_messages/DEATH_FROM_OVERTURN_SELF_ALLY'
@@ -620,8 +621,6 @@ class INGAME_GUI(object):
     EFFICIENCYRIBBONS_CANNONDMG = '#ingame_gui:efficiencyRibbons/CannonDmg'
     EFFICIENCYRIBBONS_AIRSTRIKEDMG = '#ingame_gui:efficiencyRibbons/AirstrikeDmg'
     EFFICIENCYRIBBONS_ARTILLERYDMG = '#ingame_gui:efficiencyRibbons/ArtilleryDmg'
-    EFFICIENCYRIBBONS_HEALTHADDED = '#ingame_gui:efficiencyRibbons/healthAdded'
-    EFFICIENCYRIBBONS_WTRECEIVEDCIRCUITOVERLOAD = '#ingame_gui:efficiencyRibbons/wtReceivedCircuitOverload'
     DAMAGELOG_SHELLTYPE_ARMOR_PIERCING = '#ingame_gui:damageLog/shellType/ARMOR_PIERCING'
     DAMAGELOG_SHELLTYPE_HIGH_EXPLOSIVE = '#ingame_gui:damageLog/shellType/HIGH_EXPLOSIVE'
     DAMAGELOG_SHELLTYPE_ARMOR_PIERCING_HE = '#ingame_gui:damageLog/shellType/ARMOR_PIERCING_HE'
@@ -1000,6 +999,10 @@ class INGAME_GUI(object):
     DANGER_ZONE_INDICATOR = '#ingame_gui:danger_zone/indicator'
     WARNING_ZONE_INDICATOR = '#ingame_gui:warning_zone/indicator'
     STATUSNOTIFICATIONTIMERS_STATICDEATHZONE = '#ingame_gui:statusNotificationTimers/staticDeathZone'
+    DEVMAPS_HINT_PRESS = '#ingame_gui:devMaps/hint/press'
+    DEVMAPS_HINT_DESCRIPTION = '#ingame_gui:devMaps/hint/description'
+    DEVMAPS_MAPINFO_TEXT = '#ingame_gui:devMaps/mapInfo/text'
+    DEVMAPS_MAPINFO_INFO = '#ingame_gui:devMaps/mapInfo/info'
     CHAT_SHORTCUTS_ENUM = (
      CHAT_SHORTCUTS_ATTENTION_TO_POSITION_GRIDINFO,
      CHAT_SHORTCUTS_ATTENTION_TO_POSITION,
@@ -1027,6 +1030,8 @@ class INGAME_GUI(object):
      CHAT_SHORTCUTS_ATTACKING_BASE_NUMBERED,
      CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_ATK,
      CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_ATK_AUTOCOMMIT,
+     CHAT_SHORTCUTS_MOVE_TO_TARGET,
+     CHAT_SHORTCUTS_MOVE_TO_TARGET_AUTOCOMMIT,
      CHAT_SHORTCUTS_ATTENTION_TO_BASE_DEF,
      CHAT_SHORTCUTS_ATTENTION_TO_BASE_DEF_NUMBERED,
      CHAT_SHORTCUTS_DEFENDING_BASE,
@@ -1122,8 +1127,6 @@ class INGAME_GUI(object):
      EFFICIENCYRIBBONS_CANNONDMG,
      EFFICIENCYRIBBONS_AIRSTRIKEDMG,
      EFFICIENCYRIBBONS_ARTILLERYDMG,
-     EFFICIENCYRIBBONS_HEALTHADDED,
-     EFFICIENCYRIBBONS_WTRECEIVEDCIRCUITOVERLOAD,
      EFFICIENCYRIBBONS_ENEMYSECTORCAPTURED,
      EFFICIENCYRIBBONS_DESTRUCTIBLEDAMAGED,
      EFFICIENCYRIBBONS_DESTRUCTIBLEDESTROYED,

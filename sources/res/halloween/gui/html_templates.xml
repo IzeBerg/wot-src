@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<lobby>
+		<prebattle>
+			<inviteTitle>
+				<HALLOWEEN>_(#halloween.invites.extend:invites/text/HALLOWEEN) %(sender)s</HALLOWEEN>
+			</inviteTitle>
+		</prebattle>
+	</lobby>
+	<battle>
+		<textStyle>
+			<boldTitle>&lt;font face=&quot;$TitleFont&quot; size=&quot;14&quot; color=&quot;#FFDD99&quot;&gt;%(text)s&lt;/font&gt;</boldTitle>
+			<hwBuffDescriptor>&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&quot;#FFDD99&quot;&gt;%(text)s&lt;/font&gt;</hwBuffDescriptor>
+		</textStyle>
+	</battle>
+	<battleHints>
+		<empty/>
+		<world1>&lt;font color=&quot;#FFFFFF&quot; size=&quot;76&quot;&gt;_(#halloween.halloween_battle:battleHint/world1)&lt;/font&gt;</world1>
+		<world2>&lt;font color=&quot;#000000&quot; size=&quot;76&quot;&gt;_(#halloween.halloween_battle:battleHint/world2)&lt;/font&gt;</world2>
+		<world3>&lt;font color=&quot;#000000&quot; size=&quot;76&quot;&gt;_(#halloween.halloween_battle:battleHint/world3)&lt;/font&gt;</world3>
+		<bossfight_phase_1>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/bossfight_phase_1)&lt;/font&gt;</bossfight_phase_1>
+		<bossfight_phase_2>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/bossfight_phase_2)&lt;/font&gt;</bossfight_phase_2>
+		<bossfight_phase_3>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/bossfight_phase_3)&lt;/font&gt;</bossfight_phase_3>
+		<hunter>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/hunter)&lt;/font&gt;</hunter>
+		<bomber>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/bomber)&lt;/font&gt;</bomber>
+		<turret>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/turret)&lt;/font&gt;</turret>
+		<missing_squad>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/missing_squad)&lt;/font&gt;</missing_squad>
+		<bomber_alpha>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/bomber_alpha)&lt;/font&gt;</bomber_alpha>
+		<trapper>&lt;font color=&quot;#FEFEFE&quot; size=&quot;52&quot;&gt;_(#halloween.halloween_battle:battleHint/trapper)&lt;/font&gt;</trapper>
+		<collectSouls>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/collectSouls)&lt;/font&gt;&lt;br/&gt;&lt;img src=&apos;img://halloween/gui/maps/icons/battleHints/iconSouls.png&apos; vspace=&apos;-2&apos;/&gt;</collectSouls>
+		<deliverSouls>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/deliverSouls)&lt;/font&gt;&lt;br/&gt;&lt;img src=&apos;img://halloween/gui/maps/icons/battleHints/iconCollector.png&apos; vspace=&apos;-2&apos;/&gt;</deliverSouls>
+		<getToCollector>&lt;font color=&quot;#FFFFFF&quot; size=&quot;32&quot;&gt;_(#halloween.halloween_battle:battleHint/getToCollector)&lt;/font&gt;&lt;br/&gt;&lt;img src=&apos;img://halloween/gui/maps/icons/battleHints/iconCollectorFull.png&apos; vspace=&apos;-2&apos;/&gt;</getToCollector>
+	</battleHints>
+</root>

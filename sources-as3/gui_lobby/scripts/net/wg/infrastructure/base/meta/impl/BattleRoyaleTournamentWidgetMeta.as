@@ -1,8 +1,8 @@
 package net.wg.infrastructure.base.meta.impl
 {
-   import net.wg.infrastructure.base.BaseDAAPIComponent;
+   import net.wg.gui.lobby.hangar.quests.HangarWidgetDAAPI;
    
-   public class BattleRoyaleTournamentWidgetMeta extends BaseDAAPIComponent
+   public class BattleRoyaleTournamentWidgetMeta extends HangarWidgetDAAPI
    {
        
       

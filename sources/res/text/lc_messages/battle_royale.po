@@ -9,6 +9,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "#PluralForms"
+msgstr "nplurals=2; plural=(n != 1);"
 
 msgid "alertMessage/allPeripheriesHalt"
 msgstr ""
@@ -40,19 +44,85 @@ msgid "banner/info/disabled"
 msgstr "Ceasefire"
 
 msgid "banner/info/seasonActive"
-msgstr "Heat of a battle royale"
+msgstr "Second chance and rewards"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "Until %(month)s %(day)s"
 
-msgid "banner/timeLeft/hours"
-msgstr "%(hour)s h %(min)s min"
+msgid "banner/subtitle"
+msgstr "EVOLUTION"
 
-msgid "banner/timeLeft/min"
-msgstr "%(min)s min"
+msgid "banner/timeLeft/hour"
+msgstr "%(hour)s h"
+
+msgid "banner/timeLeft/hours"
+msgstr "%(hours)s h %(minutes)s min"
+
+msgid "banner/timeLeft/minutes"
+msgstr "%(minutes)s min"
+
+msgid "banner/timer/lessOneMin"
+msgstr "<1"
 
 msgid "banner/title"
-msgstr "STEEL HUNTER"
+msgstr "STEEL HUNTER:"
+
+msgid "battle/respawnMessagePanel/respawnActivated/description"
+msgstr "The battle will continue from a new position."
+
+msgid "battle/respawnMessagePanel/respawnActivated/title"
+msgstr "You Will Respawn Soon"
+
+msgid "battle/respawnMessagePanel/respawnActivatedSquad/title"
+msgstr "Respawning"
+
+msgid "battle/respawnMessagePanel/respawnNotAvailable/description"
+msgstr "There will not be a second chance."
+
+msgid "battle/respawnMessagePanel/respawnNotAvailable/title"
+msgstr "Respawn Is No Longer Available"
+
+msgid "battle/respawnMessagePanel/respawnNotAvailableSoon/title"
+msgstr "Respawn Will Soon Become Unavailable!"
+
+msgid "battle/respawnMessagePanel/respawned/description"
+msgstr "Be more careful this time."
+
+msgid "battle/respawnMessagePanel/respawned/title"
+msgstr "Your Vehicle Is Ready for Battle!"
+
+msgid "battle/respawnMessagePanel/returnToBattle/title"
+msgstr "Returning to Battle"
+
+msgid "battle/respawnMessagePanel/squad/inBattle/description"
+msgstr "Active fighting is underway."
+
+msgid "battle/respawnMessagePanel/squad/inBattle/title"
+msgstr "Respawn Unavailable"
+
+msgid "battle/respawnMessagePanel/squad/pickUp/description"
+msgstr "Find a Respawn charge to return it to action."
+
+msgid "battle/respawnMessagePanel/squad/pickUp/title"
+msgstr "Allied Vehicle Destroyed"
+
+msgid "battle/respawnMessagePanel/squad/respawning/title"
+msgstr "Respawning"
+
+msgid "battle/respawnMessagePanel/squad/squadmanRespawned/description"
+msgstr "Two vehicles are better than one!"
+
+msgid "battle/respawnMessagePanel/squad/squadmanRespawned/title"
+msgstr "Allied Vehicle Respawned"
+
+msgid "battle/respawnMessagePanel/squad/stayInCover/description"
+msgstr "Stay out of combat!"
+
+msgid "battle/respawnMessagePanel/squad/stayInCover/title"
+msgstr "Respawning Ally"
+
+msgid "battle/winnerCongratulationsView/title"
+msgstr "VICTORY"
 
 msgid "battleResult/battlePassWidget/chapterNotChosen"
 msgstr "Chapter not selected. Unspent Battle Pass Points: %(points)s%(icon)s"
@@ -101,6 +171,9 @@ msgstr "Press %(esc) to skip animation"
 
 msgid "battleResult/playerVehicleStatus/alive"
 msgstr "Survived"
+
+msgid "battleResult/playerVehicleStatus/reason/deathByBot"
+msgstr "Vehicle destroyed by Marauder."
 
 msgid "battleResult/playerVehicleStatus/reason/deathByPlayer"
 msgstr "Vehicle destroyed by player"
@@ -188,8 +261,11 @@ msgstr "PLATOON DESTROYED"
 msgid "battleResult/title/vehicleDestroyed"
 msgstr "VEHICLE DESTROYED"
 
-msgid "battleResult/title/victory"
+msgid "battleResult/title/victoryFirst"
 msgstr "VICTORY"
+
+msgid "battleResult/title/victoryOther"
+msgstr "PLACE OF HONOR"
 
 msgid "battleRoyaleCarousel/hint"
 msgstr "CHOOSE A VEHICLE FOR A FREE TEST DRIVE"
@@ -201,7 +277,7 @@ msgid "battleRoyaleCarousel/lockedToolTip/header"
 msgstr "Incompatible Vehicle"
 
 msgid "button/modules"
-msgstr "MODULES"
+msgstr "TECH TREE"
 
 msgid "button/rent"
 msgstr "Rent for {days} days"
@@ -263,8 +339,13 @@ msgstr "Reginald Berly"
 msgid "commanderInfo/fullName/ussr"
 msgstr "Pyotr Lopakhin"
 
+msgid "commanderTooltip/specialty_skills"
+msgstr "Perks"
+
 msgid "commanderTooltip/vehicleDescription"
-msgstr "The special %(vehicle)s tank for Steel Hunter."
+msgstr ""
+"%(vehicle)s\n"
+"Special vehicle for Steel Hunter"
 
 msgid "fragPanel/squadsCount"
 msgstr "Platoons: %(squadsCount)s"
@@ -399,7 +480,7 @@ msgid "intro/slide4/title"
 msgstr "NEW MAP"
 
 msgid "intro/title"
-msgstr "STEEL HUNTER 2022"
+msgstr "STEEL HUNTER"
 
 msgid "levelUp/severalTitles"
 msgstr "RECEIVED LEVELS: %(firstLevel)s–%(lastLevel)s!"
@@ -450,6 +531,12 @@ msgstr "The vehicle is fully operational. Recovery is not required."
 
 msgid "player_messages/Ch00_ClingeBot_SH_DESTROYED"
 msgstr "Battlefield Robot destroyed"
+
+msgid "player_messages/DEATH_BY_BOT_ENEMY_ALLY"
+msgstr "%(attacker)s destroyed %(target)s."
+
+msgid "player_messages/DEATH_BY_BOT_ENEMY_ENEMY"
+msgstr "%(attacker)s destroyed enemy %(target)s."
 
 msgid "player_messages/G00_Bomber_SH_DESTROYED"
 msgstr "Fireball destroyed"
@@ -546,10 +633,16 @@ msgstr "Season %(cycleNo)s on the %(server)s server has finished"
 msgid "primeTime/tooltip/endOfCycleOnThisServer"
 msgstr "The Season on the %(server)s server has finished."
 
+msgid "proxyPanel/button"
+msgstr "Store"
+
 msgid "proxyPanel/label"
 msgstr ""
 "Steel\n"
 "Seals"
+
+msgid "proxyPanel/store"
+msgstr "STORE"
 
 msgid "questsTooltip/lessThanDay"
 msgstr "less than 1 d"
@@ -591,6 +684,14 @@ msgstr ""
 
 msgid "rewardCurrencyTooltip/battlePassPoints/header"
 msgstr "Battle Pass Points"
+
+msgid "rewardCurrencyTooltip/brProgressionToken/body"
+msgstr ""
+"Awarded for completing Steel Hunter missions and for good battle results. "
+"They allow you to advance through the Progression."
+
+msgid "rewardCurrencyTooltip/brProgressionToken/header"
+msgstr "Steel Hunter Progression Points"
 
 msgid "rewardCurrencyTooltip/brcoin/body"
 msgstr ""
@@ -666,7 +767,7 @@ msgid "status/timeLeft/days"
 msgstr "%(day)s d"
 
 msgid "status/timeLeft/hours"
-msgstr "%(hour)s h"
+msgstr "%(hour)s h %(min)s min"
 
 msgid "status/timeLeft/lessMin"
 msgstr "a minute"
@@ -791,6 +892,76 @@ msgstr "Hit Points"
 msgid "techtree/turret_rotation_speed"
 msgstr "Rotation Speed"
 
+msgid "tooltip/progression/leaderboardReward/battleTypesHeader/29"
+msgstr "Solo"
+
+msgid "tooltip/progression/leaderboardReward/battleTypesHeader/30"
+msgstr "In Platoon"
+
+msgid "tooltip/progression/leaderboardReward/header"
+msgstr "Rules for earning Points"
+
+msgid "tooltip/progression/leaderboardReward/text/place"
+msgstr "%(place)s place"
+
+msgid "tooltip/progression/leaderboardReward/text/places"
+msgstr "%(place)s places"
+
+msgid "tooltip/widget/hangar/battleSchedule/schedule"
+msgstr "%(start)s–%(end)s"
+
+msgid "tooltip/widget/hangar/description/header"
+msgstr "Main Progression Complete!"
+
+msgid "tooltip/widget/hangar/description/text/completed"
+msgstr "Daily missions are now available to you."
+
+msgid "tooltip/widget/hangar/description/text/inProgress"
+msgstr ""
+"Complete Steel Hunter missions to receive Progression Points. Your battle "
+"results also affect how many Points you receive."
+
+msgid "tooltip/widget/hangar/header/battleLeaveTime/today"
+msgstr "today"
+
+msgid "tooltip/widget/hangar/header/battleLeaveTime/tomorrow"
+msgstr "tomorrow"
+
+msgid "tooltip/widget/hangar/header/subTitle/text"
+msgstr "The event ends in %(value)s"
+
+msgid "tooltip/widget/hangar/header/title"
+msgstr "Steel Hunter"
+
+msgid "tooltip/widget/hangar/performance/description/high"
+msgstr ""
+"Your computer's performance is insufficient for this mode. You may "
+"experience issues with graphics and vehicle movement. Game client crashes "
+"are also likely."
+
+msgid "tooltip/widget/hangar/performance/description/low"
+msgstr ""
+"In case of insufficient performance, try a lower graphics quality in "
+"Settings."
+
+msgid "tooltip/widget/hangar/performance/description/medium"
+msgstr ""
+"This mode demands high computer performance. You may experience issues with "
+"map loading, graphics, and vehicle movement. In case of insufficient "
+"performance, try a lower graphics quality in Settings."
+
+msgid "tooltip/widget/hangar/performance/header/high"
+msgstr "Low Performance"
+
+msgid "tooltip/widget/hangar/performance/header/low"
+msgstr "This mode demands high computer performance."
+
+msgid "tooltip/widget/hangar/performance/header/medium"
+msgstr "Low Performance"
+
+msgid "tooltip/widget/hangar/timeTable/title"
+msgstr "Battle Schedule"
+
 msgid "tooltips/awards/achievement"
 msgstr "Medal"
 
@@ -837,6 +1008,44 @@ msgstr "Rent for {days} days"
 
 msgid "tooltips/rentIcon/testDrive/title"
 msgstr "Free Vehicle Test Drive for 1 Day"
+
+msgid "tooltips/respawnIcon/definition"
+msgstr "Respawn charges can be received from an Airdrop."
+
+msgid "tooltips/respawnIcon/description"
+msgstr ""
+"Allows you to get back to battle after your vehicle has been destroyed. When"
+" this happens, the vehicle's upgrade level is not lost. It can only be used "
+"a limited number of times per battle."
+
+msgid "tooltips/respawnIcon/min"
+msgstr "%(duration)s min"
+
+msgid "tooltips/respawnIcon/platoon/description"
+msgstr ""
+"To respawn an ally, stay out of combat during %(timeToResurrect)s. This "
+"mechanic works within the first %(duration)s of a battle. Respawn charges "
+"are shared between Platoon members."
+
+msgid "tooltips/respawnIcon/platoon/subtitle"
+msgstr "When Playing in a Platoon"
+
+msgid "tooltips/respawnIcon/sec"
+msgstr "%(duration)s s"
+
+msgid "tooltips/respawnIcon/solo/description"
+msgstr ""
+"Once destroyed, your vehicle respawns automatically. This mechanic works "
+"within the first %(duration)s of a battle."
+
+msgid "tooltips/respawnIcon/solo/subtitle"
+msgstr "When Playing Solo"
+
+msgid "tooltips/respawnIcon/subtitle"
+msgstr "Single-time use"
+
+msgid "tooltips/respawnIcon/title"
+msgstr "Respawn"
 
 msgid "tooltips/testDriveInfo/footer"
 msgstr ""

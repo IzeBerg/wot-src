@@ -4,13 +4,14 @@ from constants import PREBATTLE_TYPE
 from debug_utils import LOG_ERROR
 from CurrentVehicle import g_currentVehicle
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
+from gui.Scaleform.daapi.view.lobby.header.fight_btn_tooltips import getRandomTooltipData
 from gui.prb_control import prb_getters
 from gui.prb_control.entities.training.legacy.actions_validator import TrainingActionsValidator, TrainingIntroActionsValidator
 from gui.prb_control.events_dispatcher import g_eventDispatcher
 from gui.prb_control.entities.base import cooldown
 from gui.prb_control.entities.base.legacy.ctx import SetPlayerStateCtx
 from gui.prb_control.entities.base.legacy.entity import LegacyEntryPoint, LegacyIntroEntryPoint, LegacyIntroEntity, LegacyEntity
-from gui.prb_control.entities.base.pre_queue.vehicles_watcher import RandomRestrictedVehiclesWatcher
+from gui.prb_control.entities.base.pre_queue.vehicles_watcher import BaseVehiclesWatcher
 from gui.prb_control.entities.training.legacy.ctx import TrainingSettingsCtx, SetPlayerObserverStateCtx
 from gui.prb_control.entities.training.legacy.limits import TrainingLimits
 from gui.prb_control.entities.training.legacy.permissions import TrainingPermissions, TrainingIntroPermissions
@@ -73,7 +74,7 @@ class TrainingIntroEntity(LegacyIntroEntity):
         result = super(TrainingIntroEntity, self).init(clientPrb=clientPrb, ctx=ctx)
         g_eventDispatcher.loadTrainingList()
         result = FUNCTIONAL_FLAG.addIfNot(result, FUNCTIONAL_FLAG.LOAD_PAGE)
-        self.__watcher = RandomRestrictedVehiclesWatcher()
+        self.__watcher = BaseVehiclesWatcher()
         self.__watcher.start()
         return result
 
@@ -104,6 +105,11 @@ class TrainingIntroEntity(LegacyIntroEntity):
 
     def getPermissions(self, pID=None):
         return TrainingIntroPermissions()
+
+    def getFightBtnTooltipData(self, isStateDisabled):
+        if isStateDisabled:
+            return (getRandomTooltipData(self.canPlayerDoAction()), False)
+        return super(TrainingIntroEntity, self).getFightBtnTooltipData(isStateDisabled)
 
     def _createActionsValidator(self):
         return TrainingIntroActionsValidator(self)
@@ -146,7 +152,7 @@ class TrainingEntity(LegacyEntity):
         g_eventDispatcher.addTrainingToCarousel(False)
         result = FUNCTIONAL_FLAG.addIfNot(result, FUNCTIONAL_FLAG.LOAD_WINDOW)
         result = FUNCTIONAL_FLAG.addIfNot(result, FUNCTIONAL_FLAG.LOAD_PAGE)
-        self.__watcher = RandomRestrictedVehiclesWatcher()
+        self.__watcher = BaseVehiclesWatcher()
         self.__watcher.start()
         return result
 
@@ -327,6 +333,9 @@ class TrainingEntity(LegacyEntity):
             if callback is not None:
                 callback(False)
         return
+
+    def _goToHangar(self):
+        pass
 
     def _setPlayerReady(self, ctx, callback=None):
         if g_currentVehicle.isObserver():

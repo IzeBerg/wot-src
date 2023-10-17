@@ -51,11 +51,20 @@ package net.wg.infrastructure.base
       
       protected function updateCallerGlobalPosition() : void
       {
+         var _loc5_:Point = null;
          var _loc1_:DisplayObject = DisplayObject(App.popoverMgr.popoverCaller.getTargetButton());
          var _loc2_:int = _loc1_.width >> 1;
          var _loc3_:int = _loc1_.height >> 1;
-         var _loc4_:Point = _loc1_.parent.localToGlobal(new Point(_loc1_.x,_loc1_.y));
-         this.as_setPositionKeyPoint((_loc4_.x / App.appScale >> 0) + _loc2_,(_loc4_.y / App.appScale >> 0) + _loc3_);
+         var _loc4_:Point = new Point(_loc1_.x,_loc1_.y);
+         if(_loc1_ is BackportPopOverCaller)
+         {
+            _loc5_ = new Point(_loc4_.x * App.appScale,_loc4_.y * App.appScale);
+         }
+         else
+         {
+            _loc5_ = _loc1_.parent.localToGlobal(_loc4_);
+         }
+         this.as_setPositionKeyPoint((_loc5_.x / App.appScale >> 0) + _loc2_,(_loc5_.y / App.appScale >> 0) + _loc3_);
       }
       
       private function stageResizeHandler(param1:Event) : void

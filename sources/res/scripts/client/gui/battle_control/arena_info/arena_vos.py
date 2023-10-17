@@ -2,6 +2,7 @@ import operator
 from collections import defaultdict
 from enum import Enum
 import nations
+from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from constants import IGR_TYPE, FLAG_ACTION, ARENA_GUI_TYPE, ROLE_TYPE
 from debug_utils import LOG_ERROR
 from gui import makeHtmlString
@@ -12,7 +13,6 @@ from gui.battle_control.dog_tag_composer import layoutComposer
 from gui.doc_loaders.badges_loader import getSelectedByLayout
 from gui.shared.gui_items import Vehicle
 from gui.shared.gui_items.Vehicle import VEHICLE_TAGS, VEHICLE_CLASS_NAME
-from gui.Scaleform.locale.EVENT import EVENT
 from helpers import dependency, i18n
 from skeletons.gui.server_events import IEventsCache
 _INVALIDATE_OP = settings.INVALIDATE_OP
@@ -55,39 +55,6 @@ class BattleRoyaleKeys(Enum):
     def getSortingKeys(static=True):
         if not static:
             return [BattleRoyaleKeys.RANK.value]
-        return []
-
-
-class EventKeys(Enum):
-    LIVES_COUNT = 'livesCount'
-    CAMP = 'camp'
-    RESURRECT_TIME_LEFT = 'resurrectTimeLeft'
-    RESURRECT_TIME_TOTAL = 'resurrectTimeTotal'
-    SPEED = 'replaySpeed'
-    PLASMA_COUNT = 'plasmaCount'
-
-    @staticmethod
-    def getKeys(static=True):
-        if static:
-            return []
-        return [
-         (
-          EventKeys.LIVES_COUNT.value, 0),
-         (
-          EventKeys.CAMP.value, ''),
-         (
-          EventKeys.RESURRECT_TIME_LEFT.value, 0.0),
-         (
-          EventKeys.RESURRECT_TIME_TOTAL.value, 0.0),
-         (
-          EventKeys.SPEED.value, 1.0),
-         (
-          EventKeys.PLASMA_COUNT.value, 0)]
-
-    @staticmethod
-    def getSortingKeys(static=True):
-        if not static:
-            return [EventKeys.LIVES_COUNT.value]
         return []
 
 
@@ -135,12 +102,26 @@ class Comp7Keys(Enum):
         return []
 
 
-GAMEMODE_SPECIFIC_KEYS = {ARENA_GUI_TYPE.EPIC_RANDOM: EPIC_RANDOM_KEYS, ARENA_GUI_TYPE.EPIC_RANDOM_TRAINING: EPIC_RANDOM_KEYS, 
+class TournamentComp7Keys(Enum):
+
+    @staticmethod
+    def getKeys(static=True):
+        if static:
+            return [(Comp7Keys.ROLE_SKILL_LEVEL, _DEFAULT_ROLE_SKILL_LEVEL), (Comp7Keys.VOIP_CONNECTED, False)]
+        return []
+
+    @staticmethod
+    def getSortingKeys(static=True):
+        return []
+
+
+GAMEMODE_SPECIFIC_KEYS = {ARENA_GUI_TYPE.EPIC_RANDOM: EPIC_RANDOM_KEYS, 
+   ARENA_GUI_TYPE.EPIC_RANDOM_TRAINING: EPIC_RANDOM_KEYS, 
    ARENA_GUI_TYPE.EPIC_BATTLE: EPIC_BATTLE_KEYS, 
    ARENA_GUI_TYPE.EPIC_TRAINING: EPIC_BATTLE_KEYS, 
    ARENA_GUI_TYPE.BATTLE_ROYALE: BattleRoyaleKeys, 
    ARENA_GUI_TYPE.COMP7: Comp7Keys, 
-   ARENA_GUI_TYPE.EVENT_BATTLES: EventKeys}
+   ARENA_GUI_TYPE.TOURNAMENT_COMP7: TournamentComp7Keys}
 
 class GameModeDataVO(object):
     __slots__ = ('__internalData', '__sortingKeys')
@@ -189,17 +170,13 @@ def isBattleRoyaleTank(tags):
     return VEHICLE_TAGS.BATTLE_ROYALE in tags
 
 
-def isEventBotVeh(tags):
-    return VEHICLE_TAGS.EVENT_BOT in tags
-
-
 class PlayerInfoVO(object):
     __slots__ = ('accountDBID', 'avatarSessionID', 'name', 'fakeName', 'clanAbbrev',
                  'igrType', 'personaMissionIDs', 'personalMissionInfo', 'isPrebattleCreator',
-                 'forbidInBattleInvitations', 'isTeamKiller', 'isEventBot')
+                 'forbidInBattleInvitations', 'isTeamKiller')
     eventsCache = dependency.descriptor(IEventsCache)
 
-    def __init__(self, accountDBID=0, avatarSessionID='', name=None, clanAbbrev='', igrType=IGR_TYPE.NONE, personalMissionIDs=None, personalMissionInfo=None, isPrebattleCreator=False, forbidInBattleInvitations=False, fakeName='', isEventBot=False, **kwargs):
+    def __init__(self, accountDBID=0, avatarSessionID='', name=None, clanAbbrev='', igrType=IGR_TYPE.NONE, personalMissionIDs=None, personalMissionInfo=None, isPrebattleCreator=False, forbidInBattleInvitations=False, fakeName='', **kwargs):
         super(PlayerInfoVO, self).__init__()
         self.accountDBID = accountDBID
         self.avatarSessionID = avatarSessionID
@@ -212,7 +189,6 @@ class PlayerInfoVO(object):
         self.isPrebattleCreator = isPrebattleCreator
         self.forbidInBattleInvitations = forbidInBattleInvitations
         self.isTeamKiller = False
-        self.isEventBot = isEventBot
 
     def __cmp__(self, other):
         return cmp(self.name, other.name)
@@ -232,8 +208,6 @@ class PlayerInfoVO(object):
         return invalidate
 
     def getPlayerLabel(self):
-        if self.isEventBot:
-            return i18n.makeString(EVENT.PLAYERSPANEL_BOTNAME)
         if self.name:
             return self.name
         return i18n.makeString(settings.UNKNOWN_PLAYER_NAME)
@@ -258,7 +232,7 @@ class VehicleTypeInfoVO(object):
                  'isObserver', 'isPremiumIGR', 'isDualGunVehicle', 'hasDualAccuracy',
                  'guiName', 'shortNameWithPrefix', 'classTag', 'nationID', 'turretYawLimits',
                  'maxHealth', 'strCompactDescr', 'isOnlyForBattleRoyaleBattles',
-                 'tags', 'chassisType', 'role', 'isEventBot')
+                 'tags', 'chassisType', 'role')
 
     def __init__(self, vehicleType=None, maxHealth=None, **kwargs):
         super(VehicleTypeInfoVO, self).__init__()
@@ -310,7 +284,6 @@ class VehicleTypeInfoVO(object):
             self.level = vehicleType.level
             self.maxHealth = maxHealth
             self.isOnlyForBattleRoyaleBattles = isBattleRoyaleTank(tags)
-            self.isEventBot = isEventBotVeh(tags)
             vName = vehicleType.name
             self.iconName = settings.makeVehicleIconName(vName)
             self.iconPath = settings.makeContourIconSFPath(vName)
@@ -339,7 +312,6 @@ class VehicleTypeInfoVO(object):
             self.maxHealth = None
             self.isOnlyForBattleRoyaleBattles = False
             self.role = ROLE_TYPE.NOT_DEFINED
-            self.isEventBot = False
         return
 
     def getClassName(self):
@@ -356,9 +328,9 @@ class VehicleArenaInfoVO(object):
     __slots__ = ('vehicleID', 'team', 'player', 'playerStatus', 'vehicleType', 'vehicleStatus',
                  'prebattleID', 'events', 'squadIndex', 'invitationDeliveryStatus',
                  'ranked', 'gameModeSpecific', 'overriddenBadge', 'badges', '__prefixBadge',
-                 '__suffixBadge', 'dogTag')
+                 '__suffixBadge', 'dogTag', 'prestigeLevel', 'prestigeGradeMarkID')
 
-    def __init__(self, vehicleID, team=0, isAlive=None, isAvatarReady=None, isTeamKiller=None, prebattleID=None, events=None, forbidInBattleInvitations=False, ranked=None, badges=None, overriddenBadge=None, **kwargs):
+    def __init__(self, vehicleID, team=0, isAlive=None, isAvatarReady=None, isTeamKiller=None, prebattleID=None, events=None, forbidInBattleInvitations=False, ranked=None, badges=None, overriddenBadge=None, prestigeLevel=None, prestigeGradeMarkID=None, **kwargs):
         super(VehicleArenaInfoVO, self).__init__()
         self.vehicleID = vehicleID
         self.team = team
@@ -378,9 +350,8 @@ class VehicleArenaInfoVO(object):
         self.badges = badges or ((), ())
         self.__prefixBadge, self.__suffixBadge = getSelectedByLayout(self.badges[0])
         self.dogTag = None
-        if self.vehicleType.isEventBot:
-            self.player.isEventBot = True
-            self.gameModeSpecific.update({EventKeys.CAMP.value: self.player.name})
+        self.prestigeLevel = prestigeLevel
+        self.prestigeGradeMarkID = prestigeGradeMarkID
         return
 
     def __repr__(self):
@@ -467,6 +438,13 @@ class VehicleArenaInfoVO(object):
             invalidate = _INVALIDATE_OP.addIfNot(invalidate, _INVALIDATE_OP.VEHICLE_INFO)
         return invalidate
 
+    def updatePrestige(self, invalidate=_INVALIDATE_OP.NONE, prestigeLevel=None, prestigeGradeMarkID=None, **kwargs):
+        if prestigeLevel is not None and prestigeGradeMarkID is not None:
+            self.prestigeLevel = prestigeLevel
+            self.prestigeGradeMarkID = prestigeGradeMarkID
+            invalidate = _INVALIDATE_OP.addIfNot(invalidate, _INVALIDATE_OP.VEHICLE_INFO)
+        return invalidate
+
     def updateGameModeSpecificStats(self, *args):
         return self.gameModeSpecific.update(*args)
 
@@ -489,6 +467,7 @@ class VehicleArenaInfoVO(object):
         invalidate = self.updateInvitationStatus(invalidate=invalidate, **kwargs)
         invalidate = self.updateRanked(invalidate=invalidate, **kwargs)
         invalidate = self.updateEvents(invalidate=invalidate, **kwargs)
+        invalidate = self.updatePrestige(invalidate=invalidate, **kwargs)
         return invalidate
 
     def getSquadID(self):
@@ -530,7 +509,7 @@ class VehicleArenaInfoVO(object):
         if self.vehicleType.isObserver:
             return True
         if self.vehicleID == avatar_getter.getPlayerVehicleID() and not self.isAlive():
-            return avatar_getter.isBecomeObserverAfterDeath()
+            return avatar_getter.isBecomeObserverAfterDeath() and avatar_getter.isObserverBothTeams()
         return False
 
     def isEnemy(self):
@@ -553,8 +532,8 @@ class VehicleArenaInfoVO(object):
 
     def isChatCommandsDisabled(self, isAlly):
         arena = avatar_getter.getArena()
-        isEvent = arena.guiType == ARENA_GUI_TYPE.EVENT_BATTLES if arena else False
-        if not (self.player.avatarSessionID or isEvent):
+        ignore = ARENA_BONUS_TYPE_CAPS.checkAny(arena.bonusType, ARENA_BONUS_TYPE_CAPS.HIGHLIGHT_BOTS_AS_PLAYERS_IN_BC) if arena else False
+        if not (self.player.avatarSessionID or ignore):
             if isAlly:
                 return True
             if arena is None or arena.guiType not in (ARENA_GUI_TYPE.RANDOM, ARENA_GUI_TYPE.TRAINING,

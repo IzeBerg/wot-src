@@ -46,17 +46,19 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       
       private static const TOXIC_CHAT_ICON_WIDTH:int = 16;
       
-      private static const MUTE_ICON_WIDTH:int = 128;
+      private static const MUTE_ICON_WIDTH:int = 16;
       
       private static const DOG_TAG_ICON_OFFSET:int = 33;
       
       private static const SPOTTED_INDICATOR_VEH_ICON_Y_OFFSET:int = 3;
       
-      private static const SPOTTED_INDICATOR_VEH_ICON_X_OFFSET:int = -11;
+      private static const SPOTTED_INDICATOR_VEH_ICON_X_OFFSET:int = -19;
       
       private static const HP_BAR_HEIGHT_EPIC_RANDOM:int = 31;
       
       private static const HP_BAR_Y_OFFSET_EPIC_RANDOM:int = 1;
+      
+      private static const SPEAK_ANIMATION_WIDTH:int = 128;
        
       
       public var dynamicSquad:PlayersPanelDynamicSquad;
@@ -201,7 +203,7 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       {
          super.configUI();
          this.mute.visible = false;
-         this.mute.imageName = !!this._isRightAligned ? BATTLEATLAS.RIGHT_STATS_MUTE : BATTLEATLAS.LEFT_STATS_MUTE;
+         this.mute.imageName = BATTLEATLAS.STATS_MUTE;
          if(this.dogTagIcon)
          {
             this.dogTagIcon.visible = false;
@@ -238,17 +240,12 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          }
          if(isInvalid(PlayersPanelInvalidationType.MUTE))
          {
+            this.speakAnimation.visible = !this._isMute || this._isVisibleState;
             this.mute.visible = this._isMute && this._isVisibleState;
-            if(this._isSpeaking)
+            this.speakAnimation.mute = this._isMute;
+            if(!this._isMute && this._isSpeaking)
             {
-               if(this._isMute)
-               {
-                  this.speakAnimation.reset();
-               }
-               else
-               {
-                  this.speakAnimation.speaking = true;
-               }
+               this.speakAnimation.speaking = true;
             }
             if(this.disableCommunication)
             {
@@ -257,10 +254,7 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          }
          if(isInvalid(PlayersPanelInvalidationType.IS_SPEAKING))
          {
-            if(!this._isMute)
-            {
-               this.speakAnimation.speaking = this._isSpeaking;
-            }
+            this.speakAnimation.speaking = this._isSpeaking;
          }
          if(isInvalid(PlayersPanelInvalidationType.ALIVE))
          {
@@ -599,7 +593,6 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          this.hit.x = 0;
          this.vehicleIcon.y = this._rendererSettings.vehicleIconYOffset;
          this.vehicleIcon.scaleX = this.vehicleIcon.scaleY = this._rendererSettings.vehicleIconScale / 100;
-         this.speakAnimation.x = this._rendererSettings.speakAnimationX;
          this.speakAnimation.y = this._rendererSettings.speakAnimationY;
          this.deadBg.width = this._rendererSettings.deadBgWidth;
          this.hit.width = this._rendererSettings.hitWidth;
@@ -609,6 +602,7 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          {
             this.deadBg.x = -this._rendererSettings.deadBgX;
             this.mute.x = -MUTE_ICON_WIDTH - this._rendererSettings.muteX;
+            this.speakAnimation.x = -SPEAK_ANIMATION_WIDTH - this._rendererSettings.speakAnimationX;
             this.disableCommunication.x = -TOXIC_CHAT_ICON_WIDTH - this._rendererSettings.disableCommX;
             this.vehicleIcon.x = -this._rendererSettings.vehicleIconXOffset;
             this.chatCommandState.iconOffset(-this._rendererSettings.chatCommunicationIconXOffset);
@@ -619,6 +613,7 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          {
             this.deadBg.x = this._rendererSettings.deadBgX;
             this.mute.x = this._rendererSettings.muteX;
+            this.speakAnimation.x = this._rendererSettings.speakAnimationX;
             this.disableCommunication.x = this._rendererSettings.disableCommX;
             this.vehicleIcon.x = this._rendererSettings.vehicleIconXOffset;
             this.chatCommandState.iconOffset(this._rendererSettings.chatCommunicationIconXOffset);

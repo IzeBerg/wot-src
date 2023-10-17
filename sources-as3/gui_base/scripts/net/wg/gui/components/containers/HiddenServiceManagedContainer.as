@@ -13,7 +13,7 @@ package net.wg.gui.components.containers
          _manageFocus = false;
       }
       
-      public function getTopmostView() : IManagedContent
+      public function getTopmostView(param1:Boolean = false) : IManagedContent
       {
          return null;
       }

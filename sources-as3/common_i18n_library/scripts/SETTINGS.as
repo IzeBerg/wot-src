@@ -19,6 +19,8 @@ package
       
       public static const CURSOR_OVERLAPCONTOUR_TOOLTIP:String = "#settings:cursor/overlapContour/tooltip";
       
+      public static const MARKER_LEVEL_TOOLTIP:String = "#settings:marker/level/tooltip";
+      
       public static const LANGUAGE_CODE:String = "#settings:LANGUAGE_CODE";
       
       public static const WINDOWTITLE:String = "#settings:windowTitle";
@@ -401,8 +403,6 @@ package
       
       public static const GAME_DYNAMICCAMERA:String = "#settings:game/dynamicCamera";
       
-      public static const GAME_C11NHISTORICALLYACCURATE:String = "#settings:game/c11nHistoricallyAccurate";
-      
       public static const GAME_DISPLAYPLATOONMEMBERS:String = "#settings:game/displayPlatoonMembers";
       
       public static const GAME_LOGINSERVERSELECTION:String = "#settings:game/loginServerSelection";
@@ -783,6 +783,8 @@ package
       
       public static const GAMEPLAY_EPIC_STANDARD:String = "#settings:gameplay/epic_standard";
       
+      public static const GAMEPLAY_DEVMAPS:String = "#settings:gameplay/devMaps";
+      
       public static const GAMEPLAY_ONLY10MODE:String = "#settings:gameplay/only10Mode";
       
       public static const GAMEPLAY_EPIC_ENCOUNTER:String = "#settings:gameplay/epic_encounter";
@@ -1036,6 +1038,10 @@ package
       public static const MARKER_ICON:String = "#settings:marker/icon";
       
       public static const MARKER_LEVEL:String = "#settings:marker/level";
+      
+      public static const MARKER_LEVEL_TOOLTIP_HEADER:String = "#settings:marker/level/tooltip/header";
+      
+      public static const MARKER_LEVEL_TOOLTIP_BODY:String = "#settings:marker/level/tooltip/body";
       
       public static const MARKER_HPINDICATOR:String = "#settings:marker/hpIndicator";
       
@@ -1507,8 +1513,6 @@ package
       
       public static const COLORSETTINGS_VIEW_AFTER:String = "#settings:colorSettings/view/after";
       
-      public static const UNEQUIP_BUTTON:String = "#settings:unequip_button";
-      
       public static const GAME_SHOWVEHICLEHPINPLAYERSPANEL:String = "#settings:game/showVehicleHPinPlayersPanel";
       
       public static const GAME_SHOWVEHICLEHPINPLAYERSPANEL_NEVER:String = "#settings:game/showVehicleHPinPlayersPanel/never";
@@ -1524,8 +1528,6 @@ package
       public static const GAME_SHOWVEHICLEHPINMINIMAP_ALT:String = "#settings:game/showVehicleHPinMinimap/alt";
       
       public static const GAME_SHOWVEHICLEHPINMINIMAP_ALWAYS:String = "#settings:game/showVehicleHPinMinimap/always";
-      
-      public static const EVENTSETTINGDISABLED:String = "#settings:eventSettingDisabled";
       
       public static const AIM_ENUM:Array = [AIM_MIXING,AIM_MIXING_TYPE0,AIM_MIXING_TYPE1,AIM_MIXING_TYPE2,AIM_MIXING_TYPE3,AIM_MIXING_TYPE4,AIM_MIXING_TYPE5,AIM_MIXING_TYPE6,AIM_GUNTAG,AIM_GUNTAG_TYPE0,AIM_GUNTAG_TYPE1,AIM_GUNTAG_TYPE2,AIM_GUNTAG_TYPE3,AIM_GUNTAG_TYPE4,AIM_GUNTAG_TYPE5,AIM_GUNTAG_TYPE6,AIM_GUNTAG_TYPE7,AIM_GUNTAG_TYPE8,AIM_GUNTAG_TYPE9,AIM_GUNTAG_TYPE10,AIM_GUNTAG_TYPE11,AIM_GUNTAG_TYPE12,AIM_GUNTAG_TYPE13,AIM_GUNTAG_TYPE14,AIM_CENTRALTAG,AIM_CENTRALTAG_TYPE0,AIM_CENTRALTAG_TYPE1,AIM_CENTRALTAG_TYPE2,AIM_CENTRALTAG_TYPE3,AIM_CENTRALTAG_TYPE4,AIM_CENTRALTAG_TYPE5,AIM_CENTRALTAG_TYPE6,AIM_CENTRALTAG_TYPE7,AIM_CENTRALTAG_TYPE8,AIM_CENTRALTAG_TYPE9,AIM_CENTRALTAG_TYPE10,AIM_CENTRALTAG_TYPE11,AIM_CENTRALTAG_TYPE12,AIM_CENTRALTAG_TYPE13,AIM_NET,AIM_NET_TYPE0,AIM_NET_TYPE1,AIM_NET_TYPE2,AIM_NET_TYPE3,AIM_RELOADER,AIM_RELOADERTIMER,AIM_CONDITION,AIM_CASSETTE,AIM_ZOOMINDICATOR,AIM_X2,AIM_SPG_SHOTSRESULTINDICATOR,AIM_SPG_SHOTSRESULTINDICATOR_TOOLTIP_HEADER,AIM_SPG_SHOTSRESULTINDICATOR_TOOLTIP_BODY,AIM_SPG_SPGSCALEWIDGET,AIM_SPG_SPGSCALEWIDGET_TOOLTIP_HEADER,AIM_SPG_SPGSCALEWIDGET_TOOLTIP_BODY,AIM_SPG_SPGSTRATEGICCAMMODE,AIM_SPG_SPGSTRATEGICCAMMODE_TOOLTIP_HEADER,AIM_SPG_SPGSTRATEGICCAMMODE_TOOLTIP_BODY,AIM_SPG_SPGSTRATEGICCAMMODE_BASE,AIM_SPG_SPGSTRATEGICCAMMODE_ALT,AIM_SPG_AUTOCHANGEAIMMODE,AIM_SPG_AUTOCHANGEAIMMODE_TOOLTIP_HEADER,AIM_SPG_AUTOCHANGEAIMMODE_TOOLTIP_BODY,AIM_SPG_AIMENTRANCEMODE,AIM_SPG_AIMENTRANCEMODE_LAST,AIM_SPG_AIMENTRANCEMODE_STRATEGIC,AIM_SPG_AIMENTRANCEMODE_TRAJECTORY,AIM_SPG_SCROLLSMOOTHINGENABLED];
       

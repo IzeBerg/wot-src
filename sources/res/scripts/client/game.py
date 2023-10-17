@@ -2,7 +2,7 @@ import cPickle, functools, locale, sys, zlib, Account, AreaDestructibles, BigWor
 from MemoryCriticalController import g_critMemHandler
 from bootcamp.Bootcamp import g_bootcamp
 from debug_utils import LOG_CURRENT_EXCEPTION, LOG_DEBUG, LOG_ERROR, LOG_NOTE
-from gui import CLIENT_ENCODING, onRepeatKeyEvent, g_keyEventHandlers, g_mouseEventHandlers, InputHandler
+from gui import onRepeatKeyEvent, g_keyEventHandlers, g_mouseEventHandlers, InputHandler
 from gui.shared import personality as gui_personality
 from gui.game_loading import loading as gameLoading
 from helpers import RSSDownloader, OfflineMode, LightingGenerationMode
@@ -18,8 +18,6 @@ try:
     locale.setlocale(locale.LC_TIME, '')
 except locale.Error:
     LOG_CURRENT_EXCEPTION()
-
-sys.setrecursionlimit(sys.getrecursionlimit() + 1000)
 
 class ServiceLocator(object):
     connectionMgr = dependency.descriptor(IConnectionManager)
@@ -111,9 +109,13 @@ def init(scriptConfig, engineConfig, userPreferences):
         player_ranks.init()
         import destructible_entities
         destructible_entities.init()
+        from dyn_components_groups import DynComponentsGroupsRepo
+        DynComponentsGroupsRepo.init()
         from AvatarInputHandler.cameras import FovExtended
         FovExtended.instance().resetFov()
         BigWorld.pauseDRRAutoscaling(True)
+        from gui.shared.gui_items import marker_items
+        marker_items.init()
         if constants.HAS_DEV_RESOURCES:
             import development
             development.init()
@@ -217,8 +219,6 @@ def fini():
     ServiceLocator.connectionMgr.onConnected -= onConnected
     ServiceLocator.connectionMgr.onDisconnected -= onDisconnected
     MessengerEntry.g_instance.fini()
-    from helpers import ValueTracker
-    ValueTracker.ValueTracker.fini()
     from helpers import EdgeDetectColorController
     if EdgeDetectColorController.g_instance is not None:
         EdgeDetectColorController.g_instance.destroy()
@@ -317,18 +317,16 @@ def onCameraChange(oldCamera):
     pass
 
 
-def handleCharEvent(char, key, mods):
-    char = unicode(char.encode('iso8859'), CLIENT_ENCODING)
-    if GUI.handleCharEvent(char, key, mods):
-        return True
-    return False
-
-
 def handleAxisEvent(event):
     return False
 
 
 def handleKeyEvent(event):
+    guiHandled = False
+    if event.isMouseButton():
+        guiHandled = True
+        if GUI.handleKeyEvent(event):
+            return True
     if constants.HAS_DEV_RESOURCES:
         from development.dev_input_handler import g_devInputHandlerInstance
         g_devInputHandlerInstance.handleKeyEvent(event)
@@ -354,7 +352,7 @@ def handleKeyEvent(event):
                 return True
         if not isRepeat:
             InputHandler.g_instance.handleKeyEvent(event)
-            if GUI.handleKeyEvent(event):
+            if not guiHandled and GUI.handleKeyEvent(event):
                 return True
         if constants.IS_CAT_LOADED:
             import Cat
@@ -378,9 +376,11 @@ def handleKeyEvent(event):
 
 
 def handleMouseEvent(event):
-    if OfflineMode.handleMouseEvent(event):
+    if GUI.handleMouseEvent(event):
         return True
     else:
+        if OfflineMode.handleMouseEvent(event):
+            return True
         if LightingGenerationMode.handleMouseEvent(event):
             return True
         dx, dy, dz, _ = convertMouseEvent(event)
@@ -391,8 +391,6 @@ def handleMouseEvent(event):
         if g_replayCtrl.isPlaying:
             if g_replayCtrl.handleMouseEvent(dx, dy, dz):
                 return True
-        if GUI.handleMouseEvent(event):
-            return True
         inputHandler = getattr(BigWorld.player(), 'inputHandler', None)
         if inputHandler is not None:
             if inputHandler.handleMouseEvent(dx, dy, dz):

@@ -371,7 +371,7 @@ package net.wg.gui.battle.views.stats.fullStats
          return this.table.numRows;
       }
       
-      protected function onEnemyDataProviderValidateItemsHandler(param1:ListDataProviderEvent) : void
+      private function onEnemyDataProviderValidateItemsHandler(param1:ListDataProviderEvent) : void
       {
          var _loc4_:int = 0;
          var _loc5_:StatsTableItemHolderBase = null;
@@ -405,7 +405,7 @@ package net.wg.gui.battle.views.stats.fullStats
          this.updateDogTags();
       }
       
-      protected function onAllyDataProviderValidateItemsHandler(param1:ListDataProviderEvent) : void
+      private function onAllyDataProviderValidateItemsHandler(param1:ListDataProviderEvent) : void
       {
          var _loc4_:int = 0;
          var _loc5_:StatsTableItemHolderBase = null;

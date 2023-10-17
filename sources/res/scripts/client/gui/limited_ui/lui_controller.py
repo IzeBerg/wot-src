@@ -1,4 +1,4 @@
-import BigWorld, logging
+import logging
 from collections import defaultdict
 import enum, typing
 from future.utils import itervalues
@@ -36,7 +36,6 @@ class CallHandlerReason(enum.Enum):
 _ACC_SETTINGS_SWITCHER_FLAG = 'luiSwitcherState'
 _TUTORIAL_HINTS_CLASS_CONDITION = 'LimitedUIHintChecker'
 _UI_SPAM_OFF_VERSION = 1
-_POSTPONED_DELAY = 5.0
 
 class _LimitedUIConditionsService(object):
 
@@ -107,7 +106,6 @@ class LimitedUIController(ILimitedUIController):
         self.__skippedObserves = defaultdict(list)
         self.__postponedCompleteRules = None
         self.__serverSettings = None
-        self.__postponedCallbackID = None
         self.__isEnabled = False
         self.__em = EventManager()
         self.onStateChanged = Event(self.__em)
@@ -127,9 +125,6 @@ class LimitedUIController(ILimitedUIController):
         if self.__bootcampController.isInBootcamp():
             return
         self.__initialize()
-
-    def onAccountBecomeNonPlayer(self):
-        self.__clearPostponedCallback()
 
     @property
     def isEnabled(self):
@@ -171,8 +166,6 @@ class LimitedUIController(ILimitedUIController):
                 handler(ruleID, CallHandlerReason.COMPLETE_RULE)
 
     def completeAllRules(self):
-        self.__clearPostponedCallback()
-        self.__postponedCompleteRules.clear()
         count = len(self.__rules.getRulesIDs())
         lastStorageOffset = count % self._SERVER_SETTINGS_BLOCK_BITS
         self.__settingsCore.serverSettings.setLimitedUIFullComplete(lastStorageOffset)
@@ -351,26 +344,13 @@ class LimitedUIController(ILimitedUIController):
         return False
 
     def __isRuleCompleted(self, ruleID):
-        if ruleID in self.__postponedCompleteRules:
-            return True
         return self.__readSettings(ruleID)
 
     def __completeRule(self, ruleID):
-        self.__clearPostponedCallback()
-        self.__postponedCompleteRules.add(ruleID)
-        self.__postponedCallbackID = BigWorld.callback(_POSTPONED_DELAY, self.__storePostponedByDelay)
+        if not self.__storeSettings(ruleID):
+            self.__postponedCompleteRules.add(ruleID)
+            return
         self.__sendSysMessage(ruleID)
-
-    def __clearPostponedCallback(self):
-        if self.__postponedCallbackID is not None:
-            BigWorld.cancelCallback(self.__postponedCallbackID)
-            self.__postponedCallbackID = None
-        return
-
-    def __storePostponedByDelay(self):
-        self.__postponedCallbackID = None
-        self.__storePostponed()
-        return
 
     def __getServerSettingsID(self, ruleID):
         rule = self.__rules.getRule(ruleID)
@@ -397,21 +377,19 @@ class LimitedUIController(ILimitedUIController):
             return self.__settingsCore.serverSettings.setLimitedUIProgress(storage, offset)
 
     def __storePostponed(self):
-        if not self.__postponedCompleteRules:
-            return
-        else:
-            settings = defaultdict(list)
-            for ruleID in self.__postponedCompleteRules:
-                storage, offset = self.__getServerSettingsID(ruleID)
-                if storage is None:
-                    continue
-                settings[storage].append(offset)
+        settings = defaultdict(list)
+        for ruleID in self.__postponedCompleteRules:
+            storage, offset = self.__getServerSettingsID(ruleID)
+            if storage is None:
+                continue
+            settings[storage].append(offset)
 
-            if settings and self.__settingsCore.serverSettings.setLimitedUIGroupProgress(settings):
-                self.__postponedCompleteRules.clear()
-            else:
-                self.__postponedCallbackID = BigWorld.callback(_POSTPONED_DELAY, self.__storePostponedByDelay)
-            return
+        if settings and self.__settingsCore.serverSettings.setLimitedUIGroupProgress(settings):
+            for ruleID in self.__postponedCompleteRules:
+                self.__sendSysMessage(ruleID)
+
+            self.__postponedCompleteRules.clear()
+        return
 
     def __sendSysMessage(self, ruleID):
         sysMessageTemplate = self.__rules.getSysMessage(ruleID)

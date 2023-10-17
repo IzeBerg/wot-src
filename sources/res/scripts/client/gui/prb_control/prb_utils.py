@@ -1,4 +1,5 @@
 import logging
+from gui.battle_control.battle_constants import BATTLE_CTRL_NAMES
 from gui.Scaleform.daapi.view.lobby.header.battle_selector_items import BATTLES_SELECTOR_ITEMS, BATTLES_SELECTOR_SQUAD_ITEMS
 from gui.impl.lobby.mode_selector.items.items_constants import COLUMN_SETTINGS
 from gui.prb_control.prb_getters import _ARENA_GUI_TYPE_BY_QUEUE_TYPE
@@ -107,8 +108,8 @@ def addBattleSelectorSquadItem(prbActionName, prbActionConstructor, personality)
     logging.debug(msg)
 
 
-def addSquadFinder(arenaGuiType, squadFinderClass, personality):
-    registerSquadFinder(arenaGuiType, squadFinderClass)
+def addSquadFinder(arenaGuiType, squadFinderClass, rosterClass, personality):
+    registerSquadFinder(arenaGuiType, squadFinderClass, rosterClass)
     msg = ('arenaGuiType:{arenaGuiType} was added for squad finder. Personality: {p}').format(arenaGuiType=arenaGuiType, p=personality)
     logging.debug(msg)
 
@@ -133,7 +134,7 @@ def addQueueTypeToPrbType(queueType, prbType, personality):
 def addPrbTypeToQueueType(queueType, prbType, personality):
     if queueType in PREBATTLE_TYPE_TO_QUEUE_TYPE:
         raise SoftException(('PREBATTLE_TYPE_TO_QUEUE_TYPE already has pre battle type:{prbType}. Personality: {p}').format(prbType=prbType, p=personality))
-    PREBATTLE_TYPE_TO_QUEUE_TYPE.update({prbType: queueType})
+    PREBATTLE_TYPE_TO_QUEUE_TYPE.update({prbType: [queueType]})
     msg = ('prbType:{prbType} was added to PREBATTLE_TYPE_TO_QUEUE_TYPE. Personality: {p}').format(prbType=prbType, p=personality)
     logging.debug(msg)
 
@@ -157,3 +158,9 @@ def initRequestType(guiConstants, personality):
 
 def initScaleformGuiTypes(guiConstants, personality):
     guiConstants.VIEW_ALIAS.inject(personality)
+
+
+def initBattleCtrlIDs(guiConstants, personality):
+    extraAttrs = guiConstants.BATTLE_CTRL_ID.getExtraAttrs()
+    guiConstants.BATTLE_CTRL_ID.inject(personality)
+    BATTLE_CTRL_NAMES.update({value:attr for attr, value in extraAttrs.iteritems()})

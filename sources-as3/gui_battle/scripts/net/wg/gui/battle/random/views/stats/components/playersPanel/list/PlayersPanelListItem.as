@@ -8,7 +8,7 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.list
    public class PlayersPanelListItem extends BasePlayersPanelListItem implements IRandomPlayersPanelListItem
    {
       
-      protected static const SQUAD_ITEMS_AREA_WIDTH:int = 25;
+      private static const SQUAD_ITEMS_AREA_WIDTH:int = 25;
        
       
       private var _isSquadPersonal:Boolean = false;
@@ -48,12 +48,14 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.list
       
       override protected function updatePositionsRight() : void
       {
+         super.updatePositionsRight();
          x = -(fragsTF.x + fragsTF.width + SQUAD_ITEMS_AREA_WIDTH ^ 0);
          dynamicSquad.x = fragsTF.x + fragsTF.width + SQUAD_ITEMS_AREA_WIDTH ^ 0;
       }
       
       override protected function updatePositionsLeft() : void
       {
+         super.updatePositionsLeft();
          x = -(fragsTF.x - SQUAD_ITEMS_AREA_WIDTH ^ 0);
          dynamicSquad.x = fragsTF.x - SQUAD_ITEMS_AREA_WIDTH ^ 0;
       }

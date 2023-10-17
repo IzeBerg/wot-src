@@ -28,9 +28,13 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       private static const STANDARD_DISTANCE:Number = RADIUS / Math.sin(3 * PI8);
       
-      private static const DEFAULT_ROTATION_ANGLE:Number = -90;
+      private static const DEFAULT_ROTATION_ANGLE:int = -90;
       
       private static const ANGLE_DELTA_MULTIPLIER:Number = 0.5;
+      
+      private static const THICKNESS_BOLD:uint = 2;
+      
+      private static const THICKNESS_THIN:uint = 1;
        
       
       private var _curPercents:Number;
@@ -58,8 +62,20 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          this.setReloadingAsPercent(100);
       }
       
-      public function setReloadingState(param1:String) : void
+      override protected function onDispose() : void
       {
+         if(this._defaultStepsPoints)
+         {
+            this._defaultStepsPoints.splice(0,this._defaultStepsPoints.length);
+            this._defaultStepsPoints = null;
+         }
+         this._circleShape = null;
+         super.onDispose();
+      }
+      
+      public function setAlpha(param1:Number) : void
+      {
+         alpha = param1;
       }
       
       public function setReloadingAsPercent(param1:Number, param2:Boolean = false) : void
@@ -73,15 +89,14 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
          }
       }
       
-      override protected function onDispose() : void
+      public function setReloadingState(param1:String) : void
       {
-         if(this._defaultStepsPoints)
-         {
-            this._defaultStepsPoints.splice(0,this._defaultStepsPoints.length);
-            this._defaultStepsPoints = null;
-         }
-         this._circleShape = null;
-         super.onDispose();
+      }
+      
+      public function setThickness(param1:String) : void
+      {
+         this._thickness = param1 == GunMarkerDispersionCircle.BOLD ? int(THICKNESS_BOLD) : int(THICKNESS_THIN);
+         this.setReloadingAsPercent(this._curPercents,true);
       }
       
       private function drawCircle(param1:Number, param2:Number, param3:Number, param4:Number) : void
@@ -133,12 +148,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
                this._circleShape.graphics.curveTo(_loc6_ * Math.cos(_loc8_ - _loc5_),_loc6_ * Math.sin(_loc8_ - _loc5_),RADIUS * Math.cos(_loc8_),RADIUS * Math.sin(_loc8_));
             }
          }
-      }
-      
-      public function set thickness(param1:int) : void
-      {
-         this._thickness = param1;
-         this.setReloadingAsPercent(this._curPercents,true);
       }
    }
 }

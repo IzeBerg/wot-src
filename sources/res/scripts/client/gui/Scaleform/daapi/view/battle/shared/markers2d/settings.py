@@ -16,14 +16,13 @@ class MARKER_SYMBOL_NAME(object):
     FLAG_MARKER = 'FlagMarkerUI'
     SAFE_ZONE_MARKER = 'SafeZoneIndicatorUI'
     STATIC_OBJECT_MARKER = 'StaticObjectMarker'
+    TARGET_POINT_MARKER = 'TargetPointMarkerUI'
     STATIC_ARTY_MARKER = 'StaticArtyMarkerUI'
     SECTOR_BASE_TYPE = 'SectorBaseMarkerUI'
     HEADQUARTER_TYPE = 'HeadquarterMarkerUI'
     STEP_REPAIR_MARKER_TYPE = 'ResupplyMarkerUI'
     WAYPOINT_MARKER = 'SectorWaypointMarkerUI'
     SECTOR_WARNING_MARKER = 'SectorWarningMarkerUI'
-    EVENT_VEHICLE_MARKER = 'EventVehicleMarkerUI'
-    EVENT_GENERATOR_MARKER = 'GeneratorLocationMarkerUI'
 
 
 class DAMAGE_TYPE(object):
@@ -43,3 +42,4 @@ class CommonMarkerType(IntEnum):
     FRONTLINE_WARNING = 5
     LOCATION = 6
     VEHICLE = 7
+    TARGET_POINT = 8
