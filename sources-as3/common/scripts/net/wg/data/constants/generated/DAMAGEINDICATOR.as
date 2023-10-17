@@ -71,6 +71,22 @@ package net.wg.data.constants.generated
       
       public static const HEAVY_TANK:String = "heavyTank";
       
+      public static const HW_ALPHA:String = "hw_alpha";
+      
+      public static const HW_BOMBER:String = "hw_bomber";
+      
+      public static const HW_BOMBER_ALPHA:String = "hw_bomber_alpha";
+      
+      public static const HW_BOSS:String = "hw_boss";
+      
+      public static const HW_HUNTER:String = "hw_hunter";
+      
+      public static const HW_RUNNER:String = "hw_runner";
+      
+      public static const HW_SENTRY:String = "hw_sentry";
+      
+      public static const HW_TURRET:String = "hw_turret";
+      
       public static const LIGHT_TANK:String = "lightTank";
       
       public static const MEDIUM_TANK:String = "mediumTank";

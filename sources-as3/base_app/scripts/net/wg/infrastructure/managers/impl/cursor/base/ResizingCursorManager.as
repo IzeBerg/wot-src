@@ -7,7 +7,7 @@ package net.wg.infrastructure.managers.impl.cursor.base
    import net.wg.infrastructure.events.LifeCycleEvent;
    import net.wg.infrastructure.interfaces.IView;
    
-   public class ResizingCursorManager extends BaseCursorManager
+   public class ResizingCursorManager extends ExternalCursorManager
    {
       
       private static const WINDOW_IS_NULL:String = "window" + Errors.CANT_NULL;
@@ -22,7 +22,7 @@ package net.wg.infrastructure.managers.impl.cursor.base
       
       override protected function cursorIsFree() : Boolean
       {
-         return !this._isOnResizing;
+         return super.cursorIsFree() && !this._isOnResizing;
       }
       
       public function unUseResizeCursor(param1:InteractiveObject) : void

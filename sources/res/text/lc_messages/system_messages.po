@@ -22,17 +22,14 @@ msgstr "最佳录像"
 msgid "actionAchievements/title"
 msgstr "勋章的活动"
 
-msgid "add_tankman_skill/crew_skills_locked"
-msgstr "无法训练新特长。租用乘员无法更改。"
-
 msgid "add_tankman_skill/invalid_vehicle"
 msgstr "训练特长错误，坦克错误。"
 
 msgid "add_tankman_skill/server_error"
-msgstr "训练新乘员特长失败。请稍后再试。"
+msgstr "无法为乘员训练新特长。请稍后再试。"
 
 msgid "add_tankman_skill/success"
-msgstr "已成功训练新特长。"
+msgstr "已训练新特长: %(skill)s。"
 
 msgid "add_tankman_skill/vehicle_locked"
 msgstr "训练特长错误。坦克正处在锁定状态。"
@@ -92,7 +89,7 @@ msgid "arena_start_errors/join/WRONG_PERIPHERY_UNKNOWN"
 msgstr "连接失败，请选择其它服务器。"
 
 msgid "arena_start_errors/join/WRONG_VEHICLE"
-msgstr "加入战斗错误:当前的坦克未准备。"
+msgstr "加入战斗错误: 当前坦克未就绪。"
 
 msgid "arena_start_errors/join/WRONG_VEHICLE_LVL"
 msgstr "错误:这个等级的坦克不能在这种战斗模式下作战。"
@@ -474,17 +471,11 @@ msgstr "战斗通行证功能现已在排位赛中重新开放。我们对给您
 msgid "battlePass/switch_pause/body"
 msgstr "战斗通行证由于维护暂时不可用。"
 
-msgid "battlePass/switch_started/style/body"
+msgid "battlePass/switch_started/body"
 msgstr "各位指挥官！又到了为独特战斗通行证奖励而战的时候了，奖励包括:渐进风格、令牌、专属角色等！"
 
-msgid "battlePass/switch_started/style/title"
-msgstr "战斗通行证第%(seasonNum)d赛季"
-
-msgid "battlePass/switch_started/tankman/body"
-msgstr "各位指挥官！又到了为独特战斗通行证奖励而战的时候了，奖励包括:令牌、专属角色等！"
-
-msgid "battlePass/switch_started/tankman/title"
-msgstr "战斗通行证第%(seasonNum)d赛季"
+msgid "battlePass/switch_started/title"
+msgstr "战斗通行证赛季%(seasonNum)d"
 
 msgid "battlePassLevels_buy/server_error"
 msgstr "购买进度阶段时出错。请再试一次。"
@@ -594,9 +585,6 @@ msgstr "开始投票"
 msgid "buy_and_equip_tankman/FORBIDDEN"
 msgstr "无法招募与调动乘员:该坦克拥有独特的永久乘员。"
 
-msgid "buy_and_equip_tankman/financial_success"
-msgstr "乘员已成功招募并替换。花费 %(price)s。"
-
 msgid "buy_and_equip_tankman/free_tankmen_limit"
 msgstr "已经达到当日免费车组乘员招募数限制。"
 
@@ -612,9 +600,6 @@ msgstr "招募并替换乘员失败。金币不足。"
 msgid "buy_and_equip_tankman/server_error"
 msgstr "招募并替换乘员失败。请稍后尝试。"
 
-msgid "buy_and_equip_tankman/success"
-msgstr "乘员已成功招募并替换。"
-
 msgid "buy_and_equip_tankman/vehicle_locked"
 msgstr "招募并替换乘员失败。坦克已被锁定。"
 
@@ -623,9 +608,6 @@ msgstr "操作失败。您的所有金币将在资产同步完成后可用。"
 
 msgid "buy_and_reequip_tankman/FORBIDDEN"
 msgstr "无法招募与调动乘员:该坦克拥有独特的永久乘员。"
-
-msgid "buy_and_reequip_tankman/financial_success"
-msgstr "乘员已成功招募并替换。花费 %(price)s。"
 
 msgid "buy_and_reequip_tankman/free_tankmen_limit"
 msgstr "已经达到当日免费车组乘员招募数限制。"
@@ -645,9 +627,6 @@ msgstr "兵营已满，无法招募和更换乘员。招募一个乘员需要一
 msgid "buy_and_reequip_tankman/server_error"
 msgstr "招募并替换乘员失败。请稍后尝试。"
 
-msgid "buy_and_reequip_tankman/success"
-msgstr "乘员已成功招募并替换。"
-
 msgid "buy_and_reequip_tankman/vehicle_locked"
 msgstr "招募并替换乘员失败。坦克已被锁定。"
 
@@ -664,10 +643,12 @@ msgid "buy_tankmen_berths/not_enough_gold"
 msgstr "扩充兵营失败。金币不足。"
 
 msgid "buy_tankmen_berths/server_error"
-msgstr "扩充兵营错误，请稍后再试。"
+msgstr "无法扩充兵营。请稍后再试。"
 
 msgid "buy_tankmen_berths/success"
-msgstr "成功扩充兵营。花费金币%(money)s。"
+msgstr ""
+"已扩充兵营。\n"
+"花费金币: %(money)s。"
 
 msgid "buy_tankmen_berths/wallet_not_available"
 msgstr "操作失败。您的所有金币将在资产同步完成后可用。"
@@ -681,8 +662,8 @@ msgstr "购买坦克‘%s’失败。车库中无可用车位。请腾出一个�
 msgid "change_tankman_role/FORBIDDEN"
 msgstr "无法更改专业:该坦克拥有独特的永久乘员。"
 
-msgid "change_tankman_role/installed"
-msgstr "转职的乘员已在%(vehicle)s上"
+msgid "change_tankman_role/financial_success"
+msgstr "花费金币: %(money)s。"
 
 msgid "change_tankman_role/invalid_role"
 msgstr "转职失败。请稍后再试。"
@@ -700,13 +681,16 @@ msgid "change_tankman_role/not_enough_gold"
 msgstr "乘员转职失败。金币不足。"
 
 msgid "change_tankman_role/server_error"
-msgstr "转职失败。请稍后再试。"
+msgstr "无法更改专业。请稍后再试。"
 
 msgid "change_tankman_role/slot_is_taken"
 msgstr "%(vehicle)s上已有一个%(role)s。转职的乘员将送回兵营。"
 
 msgid "change_tankman_role/success"
-msgstr "乘员转职成功。花费%(money)s"
+msgstr "已更改乘员专业。所有特长已重置。"
+
+msgid "change_tankman_role/success_and_vehicle_retrained"
+msgstr "已更改乘员专业。所有特长已重置。已再训练为%(vehName)s的乘员。"
 
 msgid "change_tankman_role/wallet_not_available"
 msgstr "转职失败。请稍后再试。"
@@ -985,27 +969,39 @@ msgid "consumables_apply/wallet_not_available"
 msgstr "操作失败。您的金币将在战游钱包恢复后再次可用。"
 
 msgid "crewBooks/failed"
-msgstr "使用乘员手册时发生错误。"
+msgstr ""
+"无法训练此乘员。\n"
+"请稍后再试。"
+
+msgid "crewBooks/server_error"
+msgstr "服务器错误导致乘员训练失败。请稍后再试。"
 
 msgid "crewBooksNotification/bookUsed"
-msgstr "花费: %(name)s"
+msgstr "%(name)s"
+
+msgid "crewBooksNotification/booksUsed"
+msgstr "%(name)s(x%(count)s)"
+
+msgid "crewBooksNotification/success"
+msgstr ""
+"已训练乘员。\n"
+"花费:"
 
 msgid "crewBooks_buy/server_error"
 msgstr "由于服务器错误，无法购买乘员手册。稍后再试。"
 
 msgid "crewBooks_buy/success"
-msgstr "%(name)s (%(count)s item(s))。花费%(money)s。"
+msgstr ""
+"%(name)s(%(count)s本)。\n"
+"花费银币: %(money)s。"
 
 msgid "crewBooks_sell/server_error"
 msgstr "由于服务器错误，无法出售乘员手册。稍后再试。"
 
 msgid "crewBooks_sell/success"
-msgstr "%(name)s (%(count)s item(s))。获得%(money)s。"
-
-msgid "crewSkinsCompensation/success"
 msgstr ""
-"乘员皮肤被删除。\n"
-"收到银币:%(compensation)s"
+"%(name)s(%(count)s本)。\n"
+"获得银币: %(money)s。"
 
 msgid "crewSkinsNotification/SkinChanged"
 msgstr "变更乘员皮肤。"
@@ -1260,10 +1256,12 @@ msgid "dismiss_tankman/invalid_vehicle"
 msgstr "坦克乘员解雇失败，坦克不正确。"
 
 msgid "dismiss_tankman/server_error"
-msgstr "解雇坦克乘员失败。请稍后再试。"
+msgstr ""
+"无法解雇此乘员。\n"
+"请稍后再试。"
 
 msgid "dismiss_tankman/success"
-msgstr "坦克乘员成功解雇。"
+msgstr "已解雇乘员。"
 
 msgid "dismiss_tankman/vehicle_locked"
 msgstr "坦克乘员解雇失败，坦克正处于锁定状态。"
@@ -1286,16 +1284,26 @@ msgid "dog_tags/switch_on/title"
 msgstr "军用识别牌功能再次可用。"
 
 msgid "dossiers_unavailable"
-msgstr "账户没有准备好(数据不可用)"
+msgstr "账号未就绪(数据不可用)"
+
+msgid "drop_tankman_skill/finance_success_credits"
+msgstr ""
+"已重置所有特长。\n"
+"花费银币: %(money)s。"
+
+msgid "drop_tankman_skill/finance_success_gold"
+msgstr ""
+"已重置所有特长。\n"
+"花费金币: %(money)s。"
 
 msgid "drop_tankman_skill/invalid_vehicle"
 msgstr "特长重置错误。坦克不正确。"
 
 msgid "drop_tankman_skill/server_error"
-msgstr "未能重置该特长。请稍后重试。"
+msgstr "无法重置特长。请稍后再试。"
 
 msgid "drop_tankman_skill/success"
-msgstr "全部特长都已成功重置。您花费了%(money)s。"
+msgstr "已重置所有特长。"
 
 msgid "drop_tankman_skill/vehicle_locked"
 msgstr "特长重置错误。坦克正处于锁定状态。"
@@ -1345,11 +1353,14 @@ msgstr "无法调动乘员:该坦克拥有独特的永久乘员。"
 msgid "equip_tankman/invalid_vehicle"
 msgstr "乘员操作失败，坦克不正确。"
 
+msgid "equip_tankman/not_enough_space"
+msgstr "无法将乘员调回兵营。兵营床位不足。"
+
 msgid "equip_tankman/server_error"
-msgstr "乘员操作失败，请稍后再试。"
+msgstr "无法将乘员转移至坦克。请稍后再试。"
 
 msgid "equip_tankman/success"
-msgstr "乘员操作成功。"
+msgstr "乘员已转移至%(vehName)s。"
 
 msgid "equip_tankman/vehicle_locked"
 msgstr "乘员操作失败，坦克正处于锁定状态。"
@@ -1669,7 +1680,7 @@ msgid "fortification/errors/TRANSPORT_LIMIT_EXCEEDED"
 msgstr "操作失败。运输限制已过期。"
 
 msgid "fortification/errors/UNIT_NOT_READY"
-msgstr "操作不可用。玩家未准备好。"
+msgstr "操作不可用。玩家未就绪。"
 
 msgid "fortification/errors/WRONG_BUILDING"
 msgstr "操作失败。无法拆除指挥中心。"
@@ -1785,14 +1796,18 @@ msgstr "训练乘员错误。坦克乘员不存在。"
 msgid "free_xp_to_tman_skill/error/SHOP_DESYNC"
 msgstr "训练乘员错误，请稍后再试。"
 
-msgid "free_xp_to_tman_skill/error/WRONG_ARGS_TYPE"
+msgid "free_xp_to_tman_skill/error/WRONG_ARGS_VALUE"
 msgstr "训练乘员错误，请稍后再试。"
 
 msgid "free_xp_to_tman_skill/server_error"
-msgstr "乘员训练失败。请稍后再试。"
+msgstr ""
+"无法使用全局经验训练乘员。\n"
+"请稍后再试。"
 
 msgid "free_xp_to_tman_skill/success"
-msgstr "坦克乘员训练成功。花费全局经验%(freeXP)s。"
+msgstr ""
+"已训练乘员。\n"
+"花费全局经验: %(money)s。"
 
 msgid "gameSessionControl/korea/midnightNotification"
 msgstr "为防止青少年与儿童沉迷游戏，您已被禁止加入战斗。在%(blockTime)s时您将从服务器断开连接。"
@@ -2199,9 +2214,9 @@ msgstr "%(veh_name)s：系别配置已切换"
 
 msgid "notrecruit_window/success"
 msgstr ""
-"成功招募乘员。\n"
-"%(colorTagOpen)s%(rank)s %(fullName)s\n"
-"(%(role)s, %(vehicleName)s, %(roleLevel)d%%)%(colorTagClose)s"
+"已招募乘员。\n"
+"%(colorTagOpen)s%(rank)s%(fullName)s\n"
+"(%(vehicleName)s，%(role)s，%(roleLevel)d%%)%(colorTagClose)s"
 
 msgid "offers/server_error/COOLDOWN"
 msgstr "领取礼物时发生错误: 请等待上个操作完成。"
@@ -2573,7 +2588,7 @@ msgid "prebattle/vehicleInvalid/limits/vehicles"
 msgstr "坦克错误无法进入该战斗。"
 
 msgid "prebattle/vehicleInvalid/no_readyVehicle"
-msgstr "所选坦克还未准备好。"
+msgstr "所选坦克未就绪。"
 
 msgid "prebattle/vehicleInvalid/no_selectedVehicle"
 msgstr "操作失败。请选择一辆坦克。"
@@ -2781,7 +2796,17 @@ msgid "recruit_window/disconnected_from_center"
 msgstr "无法招募乘员。服务暂时不可用。"
 
 msgid "recruit_window/financial_success"
-msgstr "成功招募士兵。花费%(price)s。"
+msgstr "已为%(vehName)s招募乘员。花费银币: %(credits)s。"
+
+msgid "recruit_window/financial_success_credits"
+msgstr ""
+"已为%(vehName)s招募乘员。\n"
+"花费银币: %(price)s。"
+
+msgid "recruit_window/financial_success_gold"
+msgstr ""
+"已为%(vehName)s招募乘员。\n"
+"花费金币: %(price)s。"
 
 msgid "recruit_window/free_tankmen_limit"
 msgstr "已经达到当日免费车组乘员招募数限制。"
@@ -2796,10 +2821,10 @@ msgid "recruit_window/not_enough_space"
 msgstr "招募乘员错误，兵营里没有足够的空床位。"
 
 msgid "recruit_window/server_error"
-msgstr "招募乘员错误，请稍后再试。"
+msgstr "无法招募乘员。请稍后再试。"
 
 msgid "recruit_window/success"
-msgstr "成功招募乘员。"
+msgstr "已免费为%(vehName)s招募乘员。"
 
 msgid "recruit_window/wallet_not_available"
 msgstr "操作失败。您的所有金币将在资产同步完成后可用。"
@@ -2810,11 +2835,14 @@ msgstr "无法调动乘员:该坦克拥有独特的永久乘员。"
 msgid "reequip_tankman/invalid_vehicle"
 msgstr "替换车组乘员出错，错误坦克。"
 
+msgid "reequip_tankman/not_enough_space"
+msgstr "无法将乘员调回兵营。兵营床位不足。"
+
 msgid "reequip_tankman/server_error"
 msgstr "不能替换车组乘员，请稍后重试。"
 
 msgid "reequip_tankman/success"
-msgstr "车组乘员被成功替换。"
+msgstr "已替换乘员。"
 
 msgid "reequip_tankman/vehicle_locked"
 msgstr "替换车组乘员出错，坦克被锁定。"
@@ -2853,7 +2881,7 @@ msgid "replace_tankman/server_error"
 msgstr "未能成功更改证件信息，请稍后再试。"
 
 msgid "replace_tankman/success"
-msgstr "个人信息修改成功。"
+msgstr "已成功更改外观。"
 
 msgid "replace_tankman/vehicle_locked"
 msgstr "未能成功更改证件信息，坦克正处于锁定状态。"
@@ -2879,9 +2907,6 @@ msgstr "乘员的恢复暂时不可用。请稍后再试。"
 msgid "restore_tankman/INVALID_TMAN_ID"
 msgstr "恢复乘员失败。"
 
-msgid "restore_tankman/NO_BERTH"
-msgstr "恢复乘员失败。兵营没有足够的床位。"
-
 msgid "restore_tankman/NO_GOLD"
 msgstr "没有足够的金币恢复乘员。"
 
@@ -2894,17 +2919,22 @@ msgstr "恢复乘员失败。请稍后再试。"
 msgid "restore_tankman/disconnected_from_center"
 msgstr "恢复乘员失败。恢复乘员暂时不可用。"
 
+msgid "restore_tankman/error"
+msgstr "已无法恢复%(tankman)s。"
+
 msgid "restore_tankman/financial_success"
-msgstr "乘员已成功恢复。%(money)s已被扣除。"
+msgstr ""
+"已恢复乘员。\n"
+"花费银币: %(money)s。"
 
 msgid "restore_tankman/not_enough_space"
 msgstr "恢复乘员失败。兵营没有足够的床位。"
 
 msgid "restore_tankman/server_error"
-msgstr "恢复乘员失败。请稍后再试。"
+msgstr "无法恢复此乘员。请稍后再试。"
 
 msgid "restore_tankman/success"
-msgstr "乘员已成功恢复。"
+msgstr "已恢复乘员。"
 
 msgid "retraining_crew/FORBIDDEN"
 msgstr "无法再训练您的乘员:该坦克拥有独特的永久乘员。"
@@ -2912,8 +2942,14 @@ msgstr "无法再训练您的乘员:该坦克拥有独特的永久乘员。"
 msgid "retraining_crew/empty_list"
 msgstr "训练乘员出错，未选择任何乘员。"
 
-msgid "retraining_crew/financial_success"
-msgstr "训练乘员成功。您已花费 %(price)s。"
+msgid "retraining_crew/financial_success_credits"
+msgstr "花费银币: %(money)s。"
+
+msgid "retraining_crew/financial_success_free"
+msgstr "已免费再训练为%(vehName)s的乘员。"
+
+msgid "retraining_crew/financial_success_gold"
+msgstr "花费金币: %(money)s。"
 
 msgid "retraining_crew/invalid_operation"
 msgstr "训练乘员出错，操作不可用。"
@@ -2925,7 +2961,7 @@ msgid "retraining_crew/server_error"
 msgstr "无法训练乘员，请稍后再试。"
 
 msgid "retraining_crew/success"
-msgstr "成功训练乘员。"
+msgstr "已再训练为%(vehName)s的乘员。"
 
 msgid "retraining_crew/vehicle_locked"
 msgstr "乘员调回失败，坦克被锁定。"
@@ -2936,8 +2972,14 @@ msgstr "乘员调回失败，请维修你的坦克。"
 msgid "retraining_tankman/FORBIDDEN"
 msgstr "无法再训练您的车组乘员:该坦克拥有独特的永久乘员。"
 
-msgid "retraining_tankman/financial_success"
-msgstr "坦克乘员训练成功。花费%(price)s。"
+msgid "retraining_tankman/financial_success_credits"
+msgstr "花费银币: %(money)s。"
+
+msgid "retraining_tankman/financial_success_free"
+msgstr "已免费再训练为%(vehName)s的乘员。"
+
+msgid "retraining_tankman/financial_success_gold"
+msgstr "花费金币: %(money)s。"
 
 msgid "retraining_tankman/invalid_operation"
 msgstr "乘员再训练操作出错，操作不可用。"
@@ -2946,10 +2988,10 @@ msgid "retraining_tankman/invalid_vehicle"
 msgstr "再训练坦克乘员失败，坦克错误。"
 
 msgid "retraining_tankman/server_error"
-msgstr "再训练坦克乘员失败，请稍后再试。"
+msgstr "无法再训练乘员。请稍后再试。"
 
 msgid "retraining_tankman/success"
-msgstr "坦克乘员训练成功。"
+msgstr "已再训练为%(vehName)s的乘员。"
 
 msgid "retraining_tankman/vehicle_locked"
 msgstr "再训练坦克乘员失败，坦克正处在锁定状态。"
@@ -3155,7 +3197,7 @@ msgid "squad/memberLeave"
 msgstr "%s离开该小队。"
 
 msgid "squad/memberNotReady"
-msgstr "%s未准备。"
+msgstr "%s未就绪。"
 
 msgid "squad/memberOffline"
 msgstr "与%s的连接中断。"
@@ -3449,7 +3491,7 @@ msgid "unit/errors/NOT_IN_SEARCH"
 msgstr "队伍不在搜索结果中。"
 
 msgid "unit/errors/NOT_READY"
-msgstr "队伍未准备好。"
+msgstr "队伍未就绪。"
 
 msgid "unit/errors/NO_ARENA_VEHICLES"
 msgstr "组队错误:您没有符合所选游戏模式条件的坦克。"
@@ -3530,7 +3572,7 @@ msgid "unit/errors/WRONG_UNIT_REQUISITES"
 msgstr "队伍不存在。"
 
 msgid "unit/errors/WRONG_VEHICLE"
-msgstr "操作不可用。坦克未准备好或不符合要求。"
+msgstr "操作不可用。坦克未就绪或不符合要求。"
 
 msgid "unit/notification/PLAYER_BECOME_EQUIPMENT_COMMANDER"
 msgstr "您已被授予对战斗储备的控制权。"
@@ -3640,6 +3682,9 @@ msgstr "玩家正在加入。请稍等。"
 msgid "unitBrowser/errors/BAD_ACCEPT_CONTEXT"
 msgstr "无法确认战斗准备状态。"
 
+msgid "unload/button"
+msgstr "前往兵营"
+
 msgid "unload_crew/FORBIDDEN"
 msgstr "无法将乘员调回兵营:该坦克拥有独特的永久乘员。"
 
@@ -3647,13 +3692,13 @@ msgid "unload_crew/invalid_vehicle"
 msgstr "将车组乘员调回兵营失败。坦克错误。"
 
 msgid "unload_crew/not_enough_space"
-msgstr "车组乘员调回兵营出错，兵营没有足够的床位。"
+msgstr "无法将乘员调回兵营。兵营床位不足。"
 
 msgid "unload_crew/server_error"
 msgstr "车组乘员调回军营，请稍后再试。"
 
 msgid "unload_crew/success"
-msgstr "车组乘员被成功调回军营。"
+msgstr "乘员已调回兵营。"
 
 msgid "unload_crew/vehicle_locked"
 msgstr "调回车组乘员出错，坦克被锁定。"
@@ -3664,17 +3709,20 @@ msgstr "调回车组乘员出错，请修复您的坦克。"
 msgid "unload_tankman/FORBIDDEN"
 msgstr "无法将车组乘员调回兵营:该坦克拥有独特的永久乘员。"
 
+msgid "unload_tankman/button"
+msgstr "前往兵营"
+
 msgid "unload_tankman/invalid_vehicle"
 msgstr "将一个车组乘员调回兵营失败。坦克错误。"
 
 msgid "unload_tankman/not_enough_space"
-msgstr "调回车组乘员出错，兵营没有足够的床位。"
+msgstr "无法将乘员调回兵营。兵营床位不足。"
 
 msgid "unload_tankman/server_error"
-msgstr "调回车组乘员出错，请稍后再试。"
+msgstr "无法将乘员调回兵营，请稍后再试。"
 
 msgid "unload_tankman/success"
-msgstr "车组乘员被成功地调回兵营。"
+msgstr "乘员已调回兵营。"
 
 msgid "unload_tankman/vehicle_locked"
 msgstr "调车组乘员回军营出错，请修复你的坦克。"
@@ -3916,17 +3964,15 @@ msgid "vehicle_remove/server_error"
 msgstr "%(vehName)s'坦克出售失败。请稍后再试或确认该坦克未在任何队伍中。"
 
 msgid "vehicle_remove/success"
-msgstr "成功移除%(vehName)s。收到：%(money)s。"
-
-msgid "vehicle_remove/success/with_demount_kit"
-msgstr "%(vehName)s已被成功移除。您获得%(money)s。消耗拆卸工具（x%(countDK)s）。"
+msgstr ""
+"%(vehName)s移除成功。\n"
+"%(money)s。"
 
 msgid "vehicle_remove/success_dismantling"
-msgstr "成功移除%(vehName)s。收到：%(gainMoney)s。花费：%(spendMoney)s。"
-
-msgid "vehicle_remove/success_dismantling/with_demount_kit"
 msgstr ""
-"%(vehName)s已被成功移除。您获得%(gainMoney)s。消耗拆卸工具（x%(countDK)s）。消耗%(spendMoney)s。"
+"%(vehName)s移除成功。\n"
+"%(gainMoney)s。\n"
+"%(spendMoney)s。"
 
 msgid "vehicle_remove/vehicle_cannot_be_sold"
 msgstr "无法移除'%(vehName)s'。该坦克将被自动移除。"
@@ -4009,6 +4055,9 @@ msgstr "%(vehName)s已成功恢复。花费%(price)s。"
 msgid "vehicle_restore/wallet_not_available"
 msgstr "操作失败。您的所有金币将在资产同步完成后可用。"
 
+msgid "vehicle_sell/currencyUpdate/debited/demount_kit"
+msgstr "使用拆卸工具(x%(countDK)s)"
+
 msgid "vehicle_sell/demount_kit_disabled"
 msgstr "无法出售%(vehName)s。请稍后再试。"
 
@@ -4034,17 +4083,18 @@ msgid "vehicle_sell/server_error"
 msgstr "%(vehName)s'坦克出售失败。请稍后再试或确认该坦克未在任何队伍中。"
 
 msgid "vehicle_sell/success"
-msgstr "%(vehName)s出售成功。收到：%(money)s。%(restoreInfo)s"
-
-msgid "vehicle_sell/success/with_demount_kit"
-msgstr "%(vehName)s出售成功。您获得%(money)s。消耗拆卸工具（x%(countDK)s）。%(restoreInfo)s"
+msgstr ""
+"%(vehName)s出售成功。\n"
+"%(money)s。\n"
+"\n"
+"%(restoreInfo)s"
 
 msgid "vehicle_sell/success_dismantling"
-msgstr "%(vehName)s出售成功。收到：%(gainMoney)s。花费：%(spendMoney)s。%(restoreInfo)s"
-
-msgid "vehicle_sell/success_dismantling/with_demount_kit"
 msgstr ""
-"%(vehName)s出售成功。您获得%(gainMoney)s。消耗拆卸工具（x%(countDK)s）。消耗%(spendMoney)s。%(restoreInfo)s"
+"%(vehName)s出售成功。\n"
+"%(gainMoney)s。\n"
+"%(spendMoney)s。\n"
+"%(restoreInfo)s"
 
 msgid "vehicle_sell/vehicle_cannot_be_sold"
 msgstr "无法出售'%(vehName)s'。该坦克将被自动删除。"
@@ -4080,13 +4130,13 @@ msgid "vehicle_tmenxp_accelerator/invalid_vehicle"
 msgstr "坦克'%(vehName)s'乘员加速错误。坦克错误。"
 
 msgid "vehicle_tmenxp_accelerator/server_error"
-msgstr "'%(vehName)s'加速乘员训练失败。请稍后再试。"
+msgstr "无法更改%(vehName)s的加速乘员训练。请稍后再试。"
 
 msgid "vehicle_tmenxp_accelerator/successFalse"
-msgstr "已为'%(vehName)s'关闭加速乘员训练。"
+msgstr "已为%(vehName)s关闭加速乘员训练。"
 
 msgid "vehicle_tmenxp_accelerator/successTrue"
-msgstr "已为'%(vehName)s'开启加速乘员训练。"
+msgstr "已为%(vehName)s开启加速乘员训练。"
 
 msgid "vehicle_tmenxp_accelerator/vehicle_locked"
 msgstr "'%(vehName)s'加速乘员训练失败。坦克被锁定。"

@@ -13,17 +13,17 @@ package net.wg.gui.battle.views.postmortemPanel
    public class BasePostmortemPanel extends BasePostmortemPanelMeta
    {
       
-      private static const WHITE_TEXT_COLOR:uint = 16777215;
+      protected static const WHITE_TEXT_COLOR:uint = 16777215;
       
       protected static const INVALID_VEHICLE_PANEL:uint = 1 << 8;
       
       private static const EMPTY_STR:String = "";
       
-      private static const INVALID_PLAYER_INFO:uint = 1 << 7;
+      protected static const INVALID_PLAYER_INFO:uint = 1 << 7;
       
-      private static const INVALID_PLAYER_INFO_POSITION:uint = 1 << 9;
+      protected static const INVALID_PLAYER_INFO_POSITION:uint = 1 << 9;
       
-      private static const INVALID_DEAD_REASON_VISIBILITY:uint = 1 << 10;
+      protected static const INVALID_DEAD_REASON_VISIBILITY:uint = 1 << 10;
       
       public static const VEHICLE_PANEL_OFFSET_Y:int = 120;
       
@@ -48,17 +48,19 @@ package net.wg.gui.battle.views.postmortemPanel
       
       protected var _deadReason:String = "";
       
+      protected var _playerInfo:String = "";
+      
       protected var _showVehiclePanel:Boolean = false;
       
-      private var _playerInfo:String = "";
+      protected var _userVO:UserVO = null;
       
-      private var _vehicleLevel:String = "";
+      protected var _vehicleLevel:String = "";
       
-      private var _vehicleImg:String = "";
+      protected var _vehicleImg:String = "";
       
-      private var _vehicleType:String = "";
+      protected var _vehicleType:String = "";
       
-      private var _vehicleName:String = "";
+      protected var _vehicleName:String = "";
       
       public function BasePostmortemPanel()
       {
@@ -144,7 +146,8 @@ package net.wg.gui.battle.views.postmortemPanel
          this._vehicleImg = param4;
          this._vehicleName = param6;
          this._vehicleType = param5;
-         if(param7)
+         this._userVO = param7;
+         if(this._userVO)
          {
             if(this._userName == null)
             {
@@ -152,7 +155,11 @@ package net.wg.gui.battle.views.postmortemPanel
                this._userName.addEventListener(Event.CHANGE,this.updateDeadReason);
                addChild(this._userName);
             }
-            this._userName.userVO = param7;
+            this._userName.userVO = this._userVO;
+         }
+         else
+         {
+            this.updatePlayerInfoPosition();
          }
          invalidate(INVALID_VEHICLE_PANEL);
       }
@@ -165,6 +172,7 @@ package net.wg.gui.battle.views.postmortemPanel
          this.vehiclePanel = null;
          this.deadReasonBG = null;
          this.nicknameKillerBG = null;
+         this._userVO = null;
          if(this._userName != null)
          {
             this._userName.removeEventListener(Event.CHANGE,this.updateDeadReason);
@@ -194,7 +202,7 @@ package net.wg.gui.battle.views.postmortemPanel
       {
          this.playerInfoTF.y = -PLAYER_INFO_DELTA_Y - (App.appHeight >> 1);
          this.vehiclePanel.y = -(App.appHeight >> 1) + VEHICLE_PANEL_OFFSET_Y;
-         this.deadReasonTF.y = this.vehiclePanel.y - GAP_VEHICLE_PANEL_DEAD_REASON - this.deadReasonTF.height;
+         this.deadReasonTF.y = this.vehiclePanel.y - this.deadReasonGap - this.deadReasonTF.height;
          if(this._userName != null)
          {
             this._userName.y = this.deadReasonTF.y + this.deadReasonTF.textHeight + GAP_USER_NAME_DEAD_REASON;
@@ -225,6 +233,11 @@ package net.wg.gui.battle.views.postmortemPanel
          {
             this._userName.visible = param1;
          }
+      }
+      
+      protected function get deadReasonGap() : int
+      {
+         return GAP_VEHICLE_PANEL_DEAD_REASON;
       }
       
       private function updateDeadReason(param1:Event) : void

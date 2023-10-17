@@ -4,6 +4,7 @@ package net.wg.gui.battle.views.stats.fullStats
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.components.PlayerStatusView;
+   import net.wg.gui.battle.components.PrestigeLevel;
    import net.wg.gui.battle.random.views.stats.components.fullStats.constants.RandomFullStatsValidationType;
    import net.wg.gui.battle.views.stats.SpeakAnimation;
    import net.wg.gui.battle.views.stats.constants.FullStatsValidationType;
@@ -13,6 +14,10 @@ package net.wg.gui.battle.views.stats.fullStats
    
    public class StatsTableItemCommon extends StatsTableItemBase
    {
+      
+      private static const PRESTIGE_LEVEL_DEFAULT_ALPHA:Number = 1;
+      
+      private static const PRESTIGE_LEVEL_DEAD_ALPHA:Number = 0.5;
        
       
       private var _vehicleIcon:BattleAtlasSprite = null;
@@ -20,6 +25,8 @@ package net.wg.gui.battle.views.stats.fullStats
       private var _vehicleLevelIcon:BattleAtlasSprite = null;
       
       private var _vehicleActionIcon:BattleAtlasSprite = null;
+      
+      private var _prestigeLevel:PrestigeLevel = null;
       
       private var _playerStatus:PlayerStatusView = null;
       
@@ -50,6 +57,7 @@ package net.wg.gui.battle.views.stats.fullStats
          this._vehicleIcon = param1.vehicleIconCollection[_loc4_];
          this._vehicleLevelIcon = param1.vehicleLevelCollection[_loc4_];
          this._vehicleActionIcon = param1.vehicleActionMarkerCollection[_loc4_];
+         this._prestigeLevel = param1.prestigeLevelCollection[_loc4_];
          this._playerStatus = param1.playerStatusCollection[_loc4_];
          this._muteIcon = param1.muteCollection[_loc4_];
          this._disableCommunicationIcon = param1.disableCommunicationCollection[_loc4_];
@@ -144,6 +152,7 @@ package net.wg.gui.battle.views.stats.fullStats
             {
                this._vehicleIcon.transform.colorTransform = _loc2_.colorTransform;
             }
+            this._prestigeLevel.alpha = !!isDead ? Number(PRESTIGE_LEVEL_DEAD_ALPHA) : Number(PRESTIGE_LEVEL_DEFAULT_ALPHA);
          }
          if(isInvalid(RandomFullStatsValidationType.VEHICLE_LEVEL))
          {
@@ -186,18 +195,12 @@ package net.wg.gui.battle.views.stats.fullStats
             this._muteIcon.visible = this._isMute;
             if(this._isMute)
             {
-               this._muteIcon.imageName = BATTLEATLAS.LEFT_STATS_MUTE;
+               this._muteIcon.imageName = BATTLEATLAS.STATS_MUTE;
             }
-            if(this._isSpeaking)
+            this._speakAnimation.mute = this._isMute;
+            if(!this._isMute && this._isSpeaking)
             {
-               if(this._isMute)
-               {
-                  this._speakAnimation.reset();
-               }
-               else
-               {
-                  this._speakAnimation.speaking = true;
-               }
+               this._speakAnimation.speaking = true;
             }
          }
          if(isInvalid(RandomFullStatsValidationType.DISABLE_COMMUNICATION))
@@ -210,10 +213,7 @@ package net.wg.gui.battle.views.stats.fullStats
          }
          if(isInvalid(RandomFullStatsValidationType.SPEAKING))
          {
-            if(!this._isMute)
-            {
-               this._speakAnimation.speaking = this._isSpeaking;
-            }
+            this._speakAnimation.speaking = this._isSpeaking;
          }
       }
       
@@ -226,6 +226,7 @@ package net.wg.gui.battle.views.stats.fullStats
          this._disableCommunicationIcon = null;
          this._muteIcon = null;
          this._speakAnimation = null;
+         this._prestigeLevel = null;
          super.onDispose();
       }
       
@@ -297,6 +298,12 @@ package net.wg.gui.battle.views.stats.fullStats
          }
          this._vehicleLevel = param1;
          invalidate(RandomFullStatsValidationType.VEHICLE_LEVEL);
+      }
+      
+      public function setPrestige(param1:int, param2:int) : void
+      {
+         this._prestigeLevel.markId = param1;
+         this._prestigeLevel.level = param2;
       }
       
       protected function get vehicleIcon() : BattleAtlasSprite

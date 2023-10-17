@@ -23,7 +23,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const YELLOW_DROPSHADOW_FILTERS:Array = [new DropShadowFilter(0,45,13328640,1,4,4,3.7)];
       
-      private static const RED_DROPSHADOW_FILTERS:Array = [new DropShadowFilter(0,45,8992034,1,4,4,3.7)];
+      protected static const RED_DROPSHADOW_FILTERS:Array = [new DropShadowFilter(0,45,8992034,1,4,4,3.7)];
       
       private static const PURPLE_DROPSHADOW_FILTERS:Array = [new DropShadowFilter(0,45,4730494,1,4,4,3.7)];
       
@@ -44,7 +44,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private var _markerBitmap:Bitmap = null;
       
-      private var _vmManager:VehicleMarkersManager = null;
+      protected var _vmManager:VehicleMarkersManager = null;
       
       private var _markerType:String = "";
       
@@ -59,7 +59,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this._vmManager.addEventListener(VehicleMarkersManagerEvent.UPDATE_COLORS,this.onUpdateColorsHandler);
       }
       
-      private function getFilters() : Array
+      protected function getFilters() : Array
       {
          if(this._markerColor == BATTLE_MARKERS_CONSTS.COLOR_GREEN)
          {
@@ -146,7 +146,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
       }
       
-      private function createMarker() : void
+      protected function createMarker() : void
       {
          this.clearMarkerBitmap();
          var _loc1_:Class = getDefinitionByName(this.getMarkerClassName()) as Class;

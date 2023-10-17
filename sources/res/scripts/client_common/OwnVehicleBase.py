@@ -62,7 +62,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         if not avatar:
             return
         timeLeft, timeBase = self.__getTimeLeftBaseTime(prop)
-        avatar.updateVehicleGunReloadTime(self.entity.id, timeLeft, timeBase)
+        avatar.updateVehicleGunReloadTime(self.entity.id, timeLeft, timeBase, prop.clipTime)
 
     @noexcept
     def update_vehicleClipReloadTime(self, prop):
@@ -70,7 +70,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         if not avatar:
             return
         timeLeft, timeBase = self.__getTimeLeftBaseTime(prop)
-        avatar.updateVehicleClipReloadTime(self.entity.id, timeLeft, timeBase, prop.firstTime, prop.stunned, prop.isBoostApplicable)
+        avatar.updateVehicleClipReloadTime(self.entity.id, timeLeft, timeBase, prop.firstTime, prop.stunned, prop.isBoostApplicable, prop.clipTime)
 
     @noexcept
     def update_vehicleSettings(self, prop):
@@ -265,6 +265,12 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
             self._doLog(('onSectorShooting {}').format(sectorID))
         avatar.onSectorShooting(sectorID)
 
+    def stopSetupSelection(self):
+        avatar = self._avatar()
+        if not avatar:
+            return
+        avatar.stopSetupSelection()
+
     def beforeSetupUpdate(self):
         avatar = self._avatar()
         if not avatar:
@@ -445,3 +451,6 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
 
     def _avatar(self):
         raise NotImplementedError('_avatar must be overrided in ownVehicle')
+
+    def _entities(self):
+        raise NotImplementedError('_entities must be overrided in ownVehicle')

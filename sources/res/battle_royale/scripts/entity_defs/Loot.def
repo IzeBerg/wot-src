@@ -38,10 +38,22 @@
 			<Type>OBJECT_ID</Type>
 			<Flags>ALL_CLIENTS</Flags>
 		</pickedUpBy>
+		<pickupByType>
+			<Type>UINT8</Type>
+			<Flags>CELL_PRIVATE</Flags>
+		</pickupByType>
+		<applier>
+			<Type>OBJECT_ID</Type>
+			<Flags>CELL_PRIVATE</Flags>
+		</applier>
 		<typeID>
 			<Type>UINT8</Type>
 			<Flags>ALL_CLIENTS</Flags>
 		</typeID>
+		<useVisibility>
+			<Type>BOOL</Type>
+			<Flags>CELL_PRIVATE</Flags>
+		</useVisibility>
 	</Properties>
 	<ClientMethods/>
 	<BaseMethods/>

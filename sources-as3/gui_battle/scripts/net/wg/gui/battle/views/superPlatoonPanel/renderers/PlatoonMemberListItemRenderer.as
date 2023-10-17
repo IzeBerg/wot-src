@@ -142,7 +142,7 @@ package net.wg.gui.battle.views.superPlatoonPanel.renderers
          this.icoIGR.visible = false;
          this.icoIGR.imageName = BATTLEATLAS.ICO_IGR;
          this.mute.visible = false;
-         this.mute.imageName = BATTLEATLAS.LEFT_STATS_MUTE;
+         this.mute.imageName = BATTLEATLAS.STATS_MUTE;
          this.noSound.visible = false;
          this.noSound.imageName = BATTLEATLAS.SQUAD_NO_SOUND;
          if(this.disableCommunication)
@@ -170,16 +170,10 @@ package net.wg.gui.battle.views.superPlatoonPanel.renderers
          if(isInvalid(PlayersPanelInvalidationType.MUTE))
          {
             this.mute.visible = this._isMute;
-            if(this._isSpeaking)
+            this.speakAnimation.mute = this._isMute;
+            if(!this._isMute && this._isSpeaking)
             {
-               if(this._isMute)
-               {
-                  this.speakAnimation.reset();
-               }
-               else
-               {
-                  this.speakAnimation.speaking = true;
-               }
+               this.speakAnimation.speaking = true;
             }
             if(this.disableCommunication)
             {
@@ -188,10 +182,7 @@ package net.wg.gui.battle.views.superPlatoonPanel.renderers
          }
          if(isInvalid(PlayersPanelInvalidationType.IS_SPEAKING))
          {
-            if(!this._isMute)
-            {
-               this.speakAnimation.speaking = this._isSpeaking;
-            }
+            this.speakAnimation.speaking = this._isSpeaking;
          }
          if(isInvalid(PlayersPanelInvalidationType.SELECTED))
          {

@@ -190,6 +190,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this._listItem.setVehicleIcon(this.vehicleData.vehicleIconName);
          this._listItem.setVehicleName(this.vehicleData.vehicleName);
          this._listItem.setBadge(this.vehicleData.badgeVO,this.vehicleData.hasSelectedBadge);
+         this._listItem.setPrestige(this.vehicleData.prestigeMarkId,this.vehicleData.prestigeLevel);
          this.updateListItemVehicleDataValues();
          if(this.vehicleData.vehicleAction)
          {

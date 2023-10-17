@@ -9,12 +9,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "#PluralForms"
-msgstr ""
-"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2);"
+msgstr "nplurals=1; plural=0;"
 
 msgid "alertMessage/afterSeason"
 msgstr "苍蓝天马赛季已结束"
@@ -38,7 +36,7 @@ msgid "alertMessage/button/moreInfo"
 msgstr "详情"
 
 msgid "alertMessage/modeOffline"
-msgstr "模式暂不开放: 数据库错误。"
+msgstr "数据库错误。模式暂不开放。"
 
 msgid "alertMessage/notAvailable"
 msgstr "战斗在%(serverName)s服务器上不开放"
@@ -300,6 +298,9 @@ msgid "countDown/text"
 msgstr ""
 "距活动开始还有：\n"
 "%(timeLeft)s"
+
+msgid "dash"
+msgstr "—"
 
 msgid "detailsHelp/mainTitle"
 msgstr "天梯战模式提示"
@@ -644,6 +645,9 @@ msgstr "下一页"
 msgid "pagination/prev"
 msgstr "上一页"
 
+msgid "percentage"
+msgstr "%(percentageValue)s%"
+
 msgid "player_errors/equipment/fastRecharge/vehicleIsNotRecharged"
 msgstr "不可用:该坦克未在装填中。"
 
@@ -986,11 +990,8 @@ msgstr "距结束还有%(hours)s时"
 msgid "season/minutesLeft"
 msgstr "距结束还有%(minutes)s分"
 
-msgid "season/name"
-msgstr "苍蓝天马赛季"
-
 msgid "season/over"
-msgstr "苍蓝天马赛季已结束"
+msgstr "%(seasonName)s已结束"
 
 msgid "season/range"
 msgstr "%(startDate)s–%(endDate)s"
@@ -1000,6 +1001,42 @@ msgstr "距结束还有%(seconds)s秒"
 
 msgid "seasonModifier/title"
 msgstr "赛季修改器"
+
+msgid "seasonName/first"
+msgstr "苍蓝天马赛季"
+
+msgid "seasonName/second"
+msgstr "绯红天马赛季"
+
+msgid "seasonName/third"
+msgstr "翡翠天马赛季"
+
+msgid "seasonNameUpper/first"
+msgstr "苍蓝天马赛季"
+
+msgid "seasonNameUpper/second"
+msgstr "绯红天马赛季"
+
+msgid "seasonNameUpper/third"
+msgstr "翡翠天马赛季"
+
+msgid "seasonNameWithNumber/first"
+msgstr "赛季I: 苍蓝天马"
+
+msgid "seasonNameWithNumber/second"
+msgstr "赛季II: 绯红天马"
+
+msgid "seasonNameWithNumber/third"
+msgstr "赛季III: 翡翠天马"
+
+msgid "seasonNameWithNumberUpper/first"
+msgstr "赛季I: 苍蓝天马"
+
+msgid "seasonNameWithNumberUpper/second"
+msgstr "赛季II: 绯红天马"
+
+msgid "seasonNameWithNumberUpper/third"
+msgstr "赛季III: 翡翠天马"
 
 msgid "seasonPointTooltip/header"
 msgstr "天马彩旗"
@@ -1023,6 +1060,109 @@ msgstr "赛季结束时，您将根据自己的段位获得天马彩旗。"
 
 msgid "seasonPointTooltip/text/year"
 msgstr "每获得3面天马彩旗，您在天马赛年结束时获得的年度奖励就提高一个等级。"
+
+msgid "seasonStatistics/button/fifth"
+msgstr "我的奖杯呢？！"
+
+msgid "seasonStatistics/button/first"
+msgstr "还不错"
+
+msgid "seasonStatistics/button/fourth"
+msgstr "我的宝物！"
+
+msgid "seasonStatistics/button/second"
+msgstr "收到！"
+
+msgid "seasonStatistics/button/sixth"
+msgstr "传奇！"
+
+msgid "seasonStatistics/button/third"
+msgstr "我会回来的"
+
+msgid "seasonStatistics/description/finalScore"
+msgstr "最终赛季评级"
+
+msgid "seasonStatistics/description/leaderboardPosition"
+msgstr "排行榜名次: %(position)s"
+
+msgid "seasonStatistics/description/season"
+msgstr "天梯战: %(seasonNameUpper)s"
+
+msgid "seasonStatistics/description/seasonPoint"
+msgid_plural "plural/seasonStatistics/description/seasonPoint"
+msgstr[0] "已获得%(points)s面天马彩旗"
+msgstr[1] "已获得%(points)s面天马彩旗"
+msgstr[2] "已获得%(points)s面天马彩旗"
+
+msgid "seasonStatistics/seasonNameUpper/first"
+msgstr "赛季I: 苍蓝天马"
+
+msgid "seasonStatistics/seasonNameUpper/second"
+msgstr "赛季II: 绯红天马"
+
+msgid "seasonStatistics/seasonNameUpper/third"
+msgstr "赛季III: 翡翠天马"
+
+msgid "seasonStatistics/section/statistics/battles/additional"
+msgstr "胜率: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/battles/main"
+msgstr ""
+"参战\n"
+"场次"
+
+msgid "seasonStatistics/section/statistics/damage/additional"
+msgstr "场均: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/damage/main"
+msgstr ""
+"损伤\n"
+"纪录"
+
+msgid "seasonStatistics/section/statistics/maxFrags/additional"
+msgstr "战损比: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/maxFrags/main"
+msgstr ""
+"单场最大\n"
+"击毁数量"
+
+msgid "seasonStatistics/section/statistics/maxPrestigePoints/additional"
+msgstr "场均: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/maxPrestigePoints/main"
+msgstr ""
+"声望点数\n"
+"纪录"
+
+msgid "seasonStatistics/section/statistics/title"
+msgstr "赛季战绩统计"
+
+msgid "seasonStatistics/section/statistics/winSeries/additional"
+msgstr "在超级小队中: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/winSeries/main"
+msgstr ""
+"连胜\n"
+"(单人/组队)"
+
+msgid "seasonStatistics/section/vehicles/battles"
+msgstr "战斗场次"
+
+msgid "seasonStatistics/section/vehicles/noData"
+msgstr "—"
+
+msgid "seasonStatistics/section/vehicles/noVehicles"
+msgstr "无坦克"
+
+msgid "seasonStatistics/section/vehicles/title"
+msgstr "主力坦克"
+
+msgid "seasonStatistics/section/vehicles/wins"
+msgstr "胜率"
+
+msgid "seasonStatistics/title"
+msgstr "%(name)s赛季战绩统计"
 
 msgid "seasonalBattleSelector/tillEnd"
 msgstr "距赛季结束还有:"
@@ -1159,6 +1299,9 @@ msgstr "每周任务的奖励"
 msgid "system_messages/weeklyReward/tokens"
 msgstr "幸运点数"
 
+msgid "tournament/battleResult/personal/tooltip/descr"
+msgstr "在赛事中不会获取或失去评级点数。"
+
 msgid "unit/message/modeOffline"
 msgstr "无法加入战斗: 数据库错误。"
 
@@ -1186,14 +1329,17 @@ msgstr "已完成"
 msgid "weeklyQuests/card/status/locked"
 msgstr "未开放"
 
-msgid "weeklyQuests/card/statusLockedTooltip/body"
+msgid "weeklyQuests/card/statusLockedTooltip/body/lockedByInactiveSeason"
+msgstr "无法完成: 模式未开放。"
+
+msgid "weeklyQuests/card/statusLockedTooltip/body/lockedByNoXVehicles"
+msgstr "若要解锁，请研发并购买一辆X级坦克。"
+
+msgid "weeklyQuests/card/statusLockedTooltip/body/lockedByPreviousQuest"
 msgstr "完成前置任务以解锁这一个。"
 
 msgid "weeklyQuests/card/statusLockedTooltip/header"
 msgstr "任务未开放"
-
-msgid "weeklyQuests/card/statusUnavailableTooltip/body"
-msgstr "无法完成: 模式未开放。"
 
 msgid "weeklyQuests/resetStatus/ended"
 msgstr "已完成所有任务。"
@@ -1582,17 +1728,32 @@ msgstr "白银涂装"
 msgid "yearlyStatistics/battles"
 msgstr "战斗(单人/小队)"
 
-msgid "yearlyStatistics/dash"
-msgstr "—"
-
 msgid "yearlyStatistics/generationOfStatistics"
 msgstr "正在计算赛季战绩统计…"
 
-msgid "yearlyStatistics/rankStatus"
+msgid "yearlyStatistics/goToSeasonStatistics"
+msgstr "%(icon)s前往赛季战绩统计"
+
+msgid "yearlyStatistics/rankStatus/notReceived"
 msgstr "无段位"
+
+msgid "yearlyStatistics/rankStatus/received"
+msgstr "%(rank)s段位"
 
 msgid "yearlyStatistics/rating"
 msgstr "评级点数"
+
+msgid "yearlyStatistics/seasonDate/0"
+msgstr "2023年秋"
+
+msgid "yearlyStatistics/seasonDate/1"
+msgstr "2024年冬"
+
+msgid "yearlyStatistics/seasonDate/2"
+msgstr "2024年春"
+
+msgid "yearlyStatistics/seasonDateInterval"
+msgstr "%(start)s–%(end)s"
 
 msgid "yearlyStatistics/seasonName/0"
 msgstr "赛季I: 苍蓝天马"
@@ -1603,19 +1764,11 @@ msgstr "赛季II: 绯红天马"
 msgid "yearlyStatistics/seasonName/2"
 msgstr "赛季III: 翡翠天马"
 
-msgid "yearlyStatistics/seasonStatus/0"
-msgstr "%(start)s–%(end)s"
+msgid "yearlyStatistics/seasonStatus/active"
+msgstr "当前"
 
-msgid "yearlyStatistics/seasonStatus/1"
-msgstr "2024年冬"
-
-msgid "yearlyStatistics/seasonStatus/2"
-msgstr "2024年春"
-
-msgid "yearlyStatistics/statisticsAvailability"
-msgstr ""
-"赛季结束后\n"
-"战绩统计将开放查看"
+msgid "yearlyStatistics/seasonStatus/end"
+msgstr "已结束"
 
 msgid "yearlyStatistics/superPlatoonBattles"
 msgstr "战斗(超级小队)"

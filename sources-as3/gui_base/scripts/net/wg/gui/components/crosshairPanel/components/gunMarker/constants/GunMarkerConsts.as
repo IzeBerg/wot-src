@@ -19,6 +19,8 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker.constants
       
       public static const GUN_SCALE_VALIDATION:String = "scaleValidation";
       
+      public static const GUN_ALPHA_VALIDATION:String = "alphaValidation";
+      
       public static const GUN_TAG_PREFIX:String = "type";
       
       public static const GUN_MIXING_PREFIX:String = "type";

@@ -57,6 +57,8 @@ package
       
       public static const EDITOR_CONTEXTMENU_CLOSE_EDITOR:String = "#development:editor/contextMenu/close_editor";
       
+      public static const EDITOR_TITLE:String = "#development:editor/title";
+      
       public static const EDITOR_GOTO:String = "#development:editor/goto";
       
       public static const EDITOR_SEARCH:String = "#development:editor/search";
@@ -64,6 +66,16 @@ package
       public static const EDITOR_PAUSE:String = "#development:editor/Pause";
       
       public static const EDITOR_RESUME:String = "#development:editor/Resume";
+      
+      public static const WULF_DEBUGON:String = "#development:wulf/debugOn";
+      
+      public static const WULF_DEBUGOFF:String = "#development:wulf/debugOff";
+      
+      public static const EDITOR_FOCUS:String = "#development:editor/focus";
+      
+      public static const EDITOR_TRACKFOCUS_ON:String = "#development:editor/trackFocus/on";
+      
+      public static const EDITOR_TRACKFOCUS_OFF:String = "#development:editor/trackFocus/off";
       
       public static const WULF_CONTENT_PAGER:String = "#development:wulf/content/pager";
       

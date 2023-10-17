@@ -25,8 +25,6 @@ package net.wg.data.constants.generated
       
       public static const POI_SECONDARY_TIMER_UI:String = "poiSecondaryTimerUI";
       
-      public static const WT_TIMER_UI:String = "WtTimerUI";
-      
       public static const FIRE_ICON:String = "destroyTimerFireUI";
       
       public static const BERSERKER_ICON:String = "destroyTimerBerserkerUI";
@@ -40,6 +38,10 @@ package net.wg.data.constants.generated
       public static const OVERTURNED_GREEN_ICON:String = "destroyTimerOverTurnedGreenUI";
       
       public static const HALF_OVERTURNED_ICON:String = "HalfOverTurnedIconUI";
+      
+      public static const DESTROY_TIMER_DANGER_ZONE:String = "destroyTimerDangerZoneUI";
+      
+      public static const DESTROY_TIMER_DANGER_ZONE_SMALL:String = "destroyTimerDangerZoneSmallUI";
       
       public static const DEATHZONE_ICON:String = "destroyTimerDeathZoneUI";
       
@@ -62,8 +64,6 @@ package net.wg.data.constants.generated
       public static const GAS_DRAFT_ICON:String = "destroyTimerGazDraftUI";
       
       public static const STUN_ICON:String = "secondaryStunIconUI";
-      
-      public static const WT_STUN_ICON:String = "secondaryWTStunIconUI";
       
       public static const BLOCKED_ICON:String = "secondaryBlockedIconUI";
       
@@ -146,16 +146,6 @@ package net.wg.data.constants.generated
       public static const COMP7_MARCH_ICON:String = "Comp7MarchIconUI";
       
       public static const COMP7_AGGRESSIVE_DETECTION_ICON:String = "Comp7AggressiveDetectionIconUI";
-      
-      public static const WT_HYPERION_WARNING_ICON:String = "destroyTimerWtHyperionUI";
-      
-      public static const WT_BOMB_CAPTURE:String = "WtBombCaptureUI";
-      
-      public static const WT_BOMB_DEPLOY:String = "WtBombDeployUI";
-      
-      public static const WT_BOMB_ABSORB:String = "WtBombAbsorbUI";
-      
-      public static const WT_BOMB_CARRY:String = "WtBombCarryUI";
        
       
       public function BATTLE_NOTIFICATIONS_TIMER_LINKAGES()

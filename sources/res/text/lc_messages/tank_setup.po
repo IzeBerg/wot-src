@@ -387,6 +387,9 @@ msgstr ""
 "拆解\n"
 "%(name)s？"
 
+msgid "dialogs/confirmActionsWithEquipmentDialog/warning"
+msgstr "请注意: 拆解后，您将无法恢复或购买该配件。"
+
 msgid "dialogs/deconstructConfirm/button/cancel"
 msgstr "取消"
 
@@ -571,6 +574,26 @@ msgstr "补给弹药？"
 msgid "dialogs/refillShells/title/saveSlotsContent"
 msgstr "是否保存对弹药配置的改动？"
 
+msgid "dialogs/sell/alertText/equipment/improved"
+msgstr "请注意: 您出售的是改进型配件。"
+
+msgid "dialogs/sell/alertText/equipment/trophy"
+msgstr "请注意: 出售后，您将无法恢复或购买该配件。"
+
+msgid "dialogs/sell/button/cancel"
+msgstr "取消"
+
+msgid "dialogs/sell/button/sell"
+msgstr "出售"
+
+msgid "dialogs/sell/header"
+msgstr ""
+"出售以下配件？\n"
+"%(equipmentName)s"
+
+msgid "dialogs/sell/text"
+msgstr "出售单价:"
+
 msgid "effects/name"
 msgstr "效果"
 
@@ -631,7 +654,7 @@ msgstr ""
 
 msgid "introduction/message/modernized"
 msgstr ""
-"具有3个升级等级的特殊配件。无法摧毁这种配件，但可以将其拆解为特殊部件—%(currencyName)s(%(currencyIcon)s)。通过拆解获得的合金元件可以用来升级试验型配件。可以通过完成任务和在特定游戏活动中获得试验型配件作为奖励。"
+"具有3个升级等级的特殊配件，可通过完成任务和在特定游戏活动中获得。您无法购买或出售该配件，但可以将其拆解为特殊部件——%(currencyName)s(%(currencyIcon)s)。通过拆解获得的合金元件可以用来升级任意试验型配件。"
 
 msgid "introduction/message/trophy"
 msgstr ""
@@ -2029,7 +2052,7 @@ msgstr "无法购买赏金配件"
 
 msgid "tooltips/tabs/upgrade/body/modernized"
 msgstr ""
-"您可以使用%(whiteSpanish_Open)s合金元件%(whiteSpanish_Close)s来升级试验型配件的性能，可以通过拆解此类配件获得合金元件。"
+"您可以使用%(whiteSpanish_Open)s合金元件%(whiteSpanish_Close)s来升级试验型配件的参数。合金元件可通过拆解此类配件获得。"
 
 msgid "tooltips/tabs/upgrade/body/trophy"
 msgstr "您可以使用游戏内货币来升级赏金配件的性能。"

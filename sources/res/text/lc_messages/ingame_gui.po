@@ -267,6 +267,12 @@ msgstr "请求支援！"
 msgid "chat_shortcuts/help_me_ex"
 msgstr "%(target)s，请求支援！"
 
+msgid "chat_shortcuts/move_to_target"
+msgstr "Move to target: %(target)s"
+
+msgid "chat_shortcuts/move_to_target_autocommit"
+msgstr "I'm moving to target: %(target)s!"
+
 msgid "chat_shortcuts/negative"
 msgstr "拒绝！"
 
@@ -498,6 +504,18 @@ msgstr "您的坦克可能会被摧毁！快离开危险区域！"
 msgid "destroyTimer/liftOver"
 msgstr "正在恢复…"
 
+msgid "devMaps/hint/description"
+msgstr "查看地图特点"
+
+msgid "devMaps/hint/press"
+msgstr "按下"
+
+msgid "devMaps/mapInfo/info"
+msgstr "该地图正在测试随机事件的Beta版。此类地图可以在游戏设置中(\"游戏\"标签页中的标准模式类型版块)关闭。"
+
+msgid "devMaps/mapInfo/text"
+msgstr "测试地图"
+
 msgid "devices/ammo_bay"
 msgstr "弹药架"
 
@@ -684,9 +702,6 @@ msgstr "炮台已防御"
 msgid "efficiencyRibbons/enemySectorCaptured"
 msgstr "已占领区域"
 
-msgid "efficiencyRibbons/healthAdded"
-msgstr "坦克已修复"
-
 msgid "efficiencyRibbons/kill"
 msgstr "击毁坦克"
 
@@ -746,9 +761,6 @@ msgstr "放弃坦克"
 
 msgid "efficiencyRibbons/worldCollision"
 msgstr "撞击损伤"
-
-msgid "efficiencyRibbons/wtReceivedCircuitOverload"
-msgstr "短路造成的损伤"
 
 msgid "epic_players_panel/state/hidden/body"
 msgstr "隐藏队伍面板"
@@ -931,7 +943,7 @@ msgid "player_errors/equipment/medkit/tankmanIsSafe"
 msgstr "[%(entity)s]不需要医疗救护。"
 
 msgid "player_errors/equipment/order/notReady"
-msgstr "储备未准备好。"
+msgstr "储备未就绪。"
 
 msgid "player_errors/equipment/poi/unavailable"
 msgstr "占领%(name)s才可激活战术能力"
@@ -1426,9 +1438,6 @@ msgstr "装备 [%(device)s] 已经被修复。"
 msgid "player_messages/DEVICE_REPAIRED_TO_CRITICAL"
 msgstr "[%(device)s]正常。"
 
-msgid "player_messages/DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD"
-msgstr "短路对坦克造成了损伤！"
-
 msgid "player_messages/DEVICE_STARTED_FIRE_AT_SHOT"
 msgstr "%(entity)s 击中我的坦克%(device)s起火。"
 
@@ -1482,9 +1491,6 @@ msgstr "敌方%s基地已占领！"
 
 msgid "player_messages/enemy_team_name"
 msgstr "敌方"
-
-msgid "player_messages/equipment/wtEvent/healthAtFullHP"
-msgstr "[%(name)s] 无法修复。坦克完好无损。"
 
 msgid "player_messages/poi_equipment_used_by_ally"
 msgstr "您的盟友%(name)s使用了%(equipment)s战术能力"
@@ -1619,6 +1625,9 @@ msgstr "坦克被炮台击毁"
 
 msgid "postmortem_messages/DEATH_FROM_BOMBER"
 msgstr "坦克被空袭击毁"
+
+msgid "postmortem_messages/DEATH_FROM_BR_BOT"
+msgstr "坦克被游猎者击毁。"
 
 msgid "postmortem_messages/DEATH_FROM_CLING_BRANDER"
 msgstr "坦克被智械猎手击毁。"

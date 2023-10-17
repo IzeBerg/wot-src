@@ -70,5 +70,14 @@ package net.wg.gui.battle.comp7.battleloading.renderers
          this._rankIcon = null;
          super.onDispose();
       }
+      
+      override public function get isExtendedLayout() : Boolean
+      {
+         return false;
+      }
+      
+      override public function set isExtendedLayout(param1:Boolean) : void
+      {
+      }
    }
 }

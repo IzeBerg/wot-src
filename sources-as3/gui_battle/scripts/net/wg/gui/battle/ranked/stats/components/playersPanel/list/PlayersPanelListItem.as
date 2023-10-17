@@ -66,6 +66,7 @@ package net.wg.gui.battle.ranked.stats.components.playersPanel.list
       
       override protected function updatePositionsRight() : void
       {
+         super.updatePositionsRight();
          x = -(fragsTF.x + fragsTF.width + RANK_ICON_AREA_WIDTH + DOG_TAG_ICON_AREA_WIDTH ^ 0);
          this.rankIcon.x = fragsTF.x + fragsTF.width - RANK_ICON_OFFSET ^ 0;
          dogTag.x = this.rankIcon.x + RANK_ICON_AREA_WIDTH + DOG_TAG_OFFSET;
@@ -73,6 +74,7 @@ package net.wg.gui.battle.ranked.stats.components.playersPanel.list
       
       override protected function updatePositionsLeft() : void
       {
+         super.updatePositionsLeft();
          x = -(fragsTF.x - RANK_ICON_AREA_WIDTH - DOG_TAG_ICON_AREA_WIDTH ^ 0);
          this.rankIcon.x = fragsTF.x - RANK_ICON_AREA_WIDTH + RANK_ICON_OFFSET ^ 0;
       }

@@ -8,6 +8,10 @@ package net.wg.infrastructure.managers
    {
        
       
+      function set enabled(param1:Boolean) : void;
+      
+      function get enabled() : Boolean;
+      
       function hide() : void;
       
       function showSpecial(param1:String, param2:ITooltipProps, ... rest) : void;

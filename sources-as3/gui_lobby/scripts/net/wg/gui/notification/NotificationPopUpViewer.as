@@ -449,6 +449,10 @@ package net.wg.gui.notification
       
       private function onPopUpResizeHandler(param1:Event) : void
       {
+         if(_baseDisposed)
+         {
+            return;
+         }
          this._arrangeLayout = true;
          invalidate();
       }

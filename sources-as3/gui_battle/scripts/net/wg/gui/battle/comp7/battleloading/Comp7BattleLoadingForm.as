@@ -24,11 +24,17 @@ package net.wg.gui.battle.comp7.battleloading
       {
          super.setFormDisplayData(param1);
          formBackgroundTable.imageName = BATTLEATLAS.BATTLE_LOADING_FORM_BG_TIPS_7X7;
+         team1Text.x = param1.leftTeamTitleLeft;
+         team2Text.x = param1.rightTeamTitleLeft;
       }
       
       override public function toString() : String
       {
          return "[WG Comp7 BattleLoadingForm " + name + "]";
+      }
+      
+      override public function setStateSizeBoundaries(param1:int, param2:int) : void
+      {
       }
       
       override protected function getRendererClass(param1:VisualTipInfoVO) : Class

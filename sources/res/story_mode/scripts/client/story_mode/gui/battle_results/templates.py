@@ -1,6 +1,6 @@
 from gui.battle_results.components import base
 from gui.battle_results.components.common import ArenaDurationItem, ArenaDateTimeItem
-from gui.battle_results.br_constants import BattleResultsRecord as _RECORD
+from gui.battle_results.settings import BATTLE_RESULTS_RECORD as _RECORD
 from story_mode.gui.battle_results.components import FinishResultItem, FinishReasonItem, MissionIdItem, VehicleNameItem, VehicleBlock, IsForceOnboardingItem
 _STORY_MODE_VO_META = base.DictMeta({'finishResult': '', 
    'finishReason': None, 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>emissive_playground</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/mesh_particles/tex/weakzone_lum.dds</Texture>
+					</property>
+					<property>
+						g_chromaOffsetBlue
+						<Float>0.430000</Float>
+					</property>
+					<property>
+						g_chromaOffsetGreen
+						<Float>0.060000</Float>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>30.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.140000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>1.000000 0.325490 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/mesh_particles/tex/weakzone_ctrl.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.600000</Float>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						useVersicolorMode
+						<Bool>true</Bool>
+					</property>
+					<property>
+						waveLen
+						<Float>3.000000</Float>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>5.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.765610 -0.540983 -0.015966</min>
+		<max>0.765610 0.540983 0.015966</max>
+	</boundingBox>
+	<geometrySize>1608</geometrySize>
+	<minUVDensity>0.554609</minUVDensity>
+</root>

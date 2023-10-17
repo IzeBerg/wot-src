@@ -387,8 +387,7 @@ class Hull(BasicItem):
 class Shell(BasicItem):
     __slots__ = ('caliber', 'isTracer', 'isForceTracer', 'damage', 'damageRandomization',
                  'piercingPowerRandomization', 'icon', 'iconName', 'isGold', 'type',
-                 'stun', 'effectsIndex', 'tags', 'secondaryAttackReason', 'useAltDamageRandomization',
-                 'skipSelfDamage')
+                 'stun', 'effectsIndex', 'tags', 'secondaryAttackReason', 'useAltDamageRandomization')
 
     def __init__(self, typeID, componentID, componentName, compactDescr):
         super(Shell, self).__init__(typeID, componentID, componentName, compactDescr)
@@ -401,7 +400,6 @@ class Shell(BasicItem):
         self.stun = None
         self.type = None
         self.effectsIndex = component_constants.ZERO_INT
-        self.skipSelfDamage = False
         self.isGold = False
         self.icon = None
         self.iconName = None

@@ -13,34 +13,26 @@ package net.wg.gui.battle.views.stats
       
       public var waveAnimationMC:MovieClip = null;
       
-      private var _isSpeaking:Boolean = false;
+      public var muteIcon:MovieClip = null;
       
-      private var _totalFrames:int = 0;
+      private var _isMuted:Boolean = false;
+      
+      private var _isSpeaking:Boolean = false;
       
       private var _disposed:Boolean = false;
       
       public function SpeakAnimation()
       {
          super();
-         stop();
          this.waveAnimationMC.stop();
-         this._totalFrames = totalFrames;
-         addFrameScript(this._totalFrames - 1,this.reset);
-         visible = false;
+         this.muteIcon.visible = false;
       }
       
       public final function dispose() : void
       {
-         this._disposed = true;
-         addFrameScript(this._totalFrames - 1,null);
          this.waveAnimationMC = null;
-      }
-      
-      public function reset() : void
-      {
-         stop();
-         this.waveAnimationMC.stop();
-         visible = false;
+         this.muteIcon = null;
+         this._disposed = true;
       }
       
       public function get speaking() : Boolean
@@ -50,13 +42,13 @@ package net.wg.gui.battle.views.stats
       
       public function set speaking(param1:Boolean) : void
       {
-         if(param1 == this._isSpeaking)
+         if(this._isMuted || param1 == this._isSpeaking)
          {
             return;
          }
+         this._isSpeaking = param1;
          if(param1)
          {
-            visible = true;
             this.waveAnimationMC.play();
             gotoAndPlay(FRAME_SHOW);
          }
@@ -64,7 +56,22 @@ package net.wg.gui.battle.views.stats
          {
             gotoAndPlay(FRAME_HIDE);
          }
-         this._isSpeaking = param1;
+      }
+      
+      public function set mute(param1:Boolean) : void
+      {
+         if(param1 == this._isMuted)
+         {
+            return;
+         }
+         this._isMuted = param1;
+         this.muteIcon.visible = param1;
+         if(this._isMuted)
+         {
+            this._isSpeaking = false;
+            gotoAndStop(FRAME_SHOW);
+            this.waveAnimationMC.stop();
+         }
       }
       
       public function isDisposed() : Boolean

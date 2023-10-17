@@ -35,6 +35,8 @@ package net.wg.app
       
       function setUbPlayerProxy(param1:UbPlayerProxy) : void;
       
+      function stageUpdated() : void;
+      
       function get appWidth() : Number;
       
       function get appHeight() : Number;

@@ -27,6 +27,8 @@ package
       
       public static const CONTROLS:Class = CONTROLS;
       
+      public static const CREW_BOOKS:Class = CREW_BOOKS;
+      
       public static const CREW_OPERATIONS:Class = CREW_OPERATIONS;
       
       public static const CREW_PERKS:Class = CREW_PERKS;
@@ -93,8 +95,6 @@ package
       
       public static const RES_SHOP:Class = RES_SHOP;
       
-      public static const RETRAIN_CREW:Class = RETRAIN_CREW;
-      
       public static const SETTINGS:Class = SETTINGS;
       
       public static const STORAGE:Class = STORAGE;
@@ -116,6 +116,8 @@ package
       public static const VEH_POST_PROGRESSION:Class = VEH_POST_PROGRESSION;
       
       public static const WAITING:Class = WAITING;
+      
+      public static const WINBACK_CALL:Class = WINBACK_CALL;
        
       
       public function CommonI18NClassManagerMeta()

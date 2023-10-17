@@ -10,6 +10,7 @@ package net.wg.gui.components.containers
    import net.wg.data.constants.generated.LAYER_NAMES;
    import net.wg.data.daapi.ViewSettingsVO;
    import net.wg.infrastructure.events.LifeCycleEvent;
+   import net.wg.infrastructure.events.ManagedContainerEvent;
    import net.wg.infrastructure.exceptions.InfrastructureException;
    import net.wg.infrastructure.interfaces.IAbstractWrapperView;
    import net.wg.infrastructure.interfaces.IManagedContainer;
@@ -19,6 +20,8 @@ package net.wg.gui.components.containers
    import net.wg.infrastructure.interfaces.IWrapper;
    import net.wg.utils.IAssertable;
    import org.idmedia.as3commons.util.StringUtils;
+   import scaleform.clik.events.ComponentEvent;
+   import scaleform.clik.events.FocusHandlerEvent;
    import scaleform.clik.motion.Tween;
    
    public class ManagedContainer extends SimpleManagedContainer implements IManagedContainer
@@ -88,6 +91,8 @@ package net.wg.gui.components.containers
                if(manageFocus)
                {
                   _loc7_.addEventListener(MouseEvent.MOUSE_DOWN,this.onViewMouseDownHandler,false,0,true);
+                  _loc7_.addEventListener(FocusHandlerEvent.FOCUS_IN,this.onViewFocusInHandler,false,0,true);
+                  _loc7_.addEventListener(ComponentEvent.HIDE,this.onViewHideHandler,false,0,true);
                }
                _loc2_.sourceView.updateStage(width,height);
                return DisplayObject(_loc2_);
@@ -160,21 +165,26 @@ package net.wg.gui.components.containers
          initSize();
       }
       
-      public function getTopmostView() : IManagedContent
+      public function getTopmostView(param1:Boolean = false) : IManagedContent
       {
-         var _loc1_:BaseContainerWrapper = null;
-         if(numChildren)
+         var _loc3_:BaseContainerWrapper = null;
+         var _loc2_:int = numChildren - 1;
+         while(_loc2_ >= 0)
          {
-            _loc1_ = getChildAt(numChildren - 1) as BaseContainerWrapper;
-            if(_loc1_ != null)
+            _loc3_ = getChildAt(_loc2_) as BaseContainerWrapper;
+            if(!_loc3_)
             {
-               if(_loc1_.visible)
-               {
-                  return _loc1_;
-               }
+               return IManagedContent(getChildAt(_loc2_));
+            }
+            if(_loc3_.visible)
+            {
+               return _loc3_;
+            }
+            if(!param1)
+            {
                return null;
             }
-            return IManagedContent(getChildAt(numChildren - 1));
+            _loc2_--;
          }
          return null;
       }
@@ -211,7 +221,7 @@ package net.wg.gui.components.containers
          var _loc2_:IManagedContent = null;
          if(manageFocus)
          {
-            _loc2_ = this.getTopmostView();
+            _loc2_ = this.getTopmostView(true);
             if(_loc2_)
             {
                this.setFocusedView(_loc2_);
@@ -318,6 +328,7 @@ package net.wg.gui.components.containers
             setChildIndex(this._modalBg,numChildren - 2);
          }
          this.clearViewHandlers(param1);
+         dispatchEvent(new ManagedContainerEvent(ManagedContainerEvent.CONTENT_REMOVED,param1,layer));
       }
       
       private function clearViewHandlers(param1:IManagedContent) : void
@@ -325,6 +336,8 @@ package net.wg.gui.components.containers
          if(manageFocus)
          {
             param1.containerContent.removeEventListener(MouseEvent.MOUSE_DOWN,this.onViewMouseDownHandler,false);
+            param1.containerContent.removeEventListener(FocusHandlerEvent.FOCUS_IN,this.onViewFocusInHandler,false);
+            param1.containerContent.removeEventListener(ComponentEvent.HIDE,this.onViewHideHandler,false);
          }
          param1.removeEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onBeforeDisposeHandler);
          if(App.containerMgr && App.containerMgr.lastFocusedView == param1)
@@ -428,6 +441,25 @@ package net.wg.gui.components.containers
       
       private function onViewMouseDownHandler(param1:Event) : void
       {
+         this.updateModalFocus(param1);
+      }
+      
+      private function onViewFocusInHandler(param1:Event) : void
+      {
+         this.updateModalFocus(param1);
+      }
+      
+      private function onViewHideHandler(param1:Event) : void
+      {
+         var _loc2_:IManagedContent = IManagedContent(param1.currentTarget);
+         if(_loc2_ == App.containerMgr.lastFocusedView)
+         {
+            this.tryToSetFocus();
+         }
+      }
+      
+      private function updateModalFocus(param1:Event) : void
+      {
          var _loc2_:IManagedContent = null;
          var _loc3_:String = null;
          if(contains(DisplayObject(param1.currentTarget)) && this.isOwnedByMe(DisplayObject(param1.target)))
@@ -504,6 +536,11 @@ class GroupCounter implements IDisposable
       this.views.push(_loc2_);
    }
    
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
+   }
+   
    public function get xAdjust() : int
    {
       return this.views.length > 0 ? int(this.views[this.views.length - 1].xAdjust) : int(0);
@@ -512,11 +549,6 @@ class GroupCounter implements IDisposable
    public function get yAdjust() : int
    {
       return this.views.length > 0 ? int(this.views[this.views.length - 1].yAdjust) : int(0);
-   }
-   
-   public function isDisposed() : Boolean
-   {
-      return this._disposed;
    }
 }
 

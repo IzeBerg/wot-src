@@ -2,6 +2,7 @@ package net.wg.infrastructure.interfaces
 {
    import flash.display.InteractiveObject;
    import flash.display.Sprite;
+   import flash.events.IEventDispatcher;
    import net.wg.infrastructure.base.meta.ICursorManagerMeta;
    import net.wg.infrastructure.interfaces.entity.IDragDropHitArea;
    
@@ -28,5 +29,9 @@ package net.wg.infrastructure.interfaces
       function unlock() : void;
       
       function forceSetCursor(param1:String) : void;
+      
+      function registerExternalComponent(param1:IEventDispatcher, param2:String) : void;
+      
+      function unregisterExternalComponent(param1:IEventDispatcher) : void;
    }
 }

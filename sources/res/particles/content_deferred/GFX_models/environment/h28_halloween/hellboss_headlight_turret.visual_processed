@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>01_point_center</identifier>
+					<fx>shaders/environment/light_flare.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlight3.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlamp_03.dds</Texture>
+					</property>
+					<property>
+						g_glowColor
+						<Vector4>1.000000 0.125490 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_outterConeAngle
+						<Float>5.000000</Float>
+					</property>
+					<property>
+						g_emissionFactor
+						<Float>18.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.002057 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>02_grid_center</identifier>
+					<fx>shaders/environment/light_flare.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlight2.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlamp_02.dds</Texture>
+					</property>
+					<property>
+						g_emissionFactor
+						<Float>18.000000</Float>
+					</property>
+					<property>
+						g_glowColor
+						<Vector4>0.972549 0.156863 0.000000 0.200000</Vector4>
+					</property>
+					<property>
+						g_outterConeAngle
+						<Float>5.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-0.000000 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>03_halo_centerr</identifier>
+					<fx>shaders/environment/light_flare.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlight.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlamp_halo.dds</Texture>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>1.000000 0.098039 0.019608 0.694118</Vector4>
+					</property>
+					<property>
+						g_glowColor
+						<Vector4>1.000000 0.007843 0.000000 0.600000</Vector4>
+					</property>
+					<property>
+						g_outterConeAngle
+						<Float>5.000000</Float>
+					</property>
+					<property>
+						g_emissionFactor
+						<Float>6.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.006179 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>04_halo_main</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlamp_halo.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 0.030000 3.000000 0.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1.000000 0.176471 0.000000 0.200000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>0.000000 0.000000 0.100000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.858824 0.356863 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						fadeMaxDistance
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						fadeMinDistance
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						softFactor
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.010577 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>05_side</identifier>
+					<fx>shaders/environment/light_flare.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlight3.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlamp_01.dds</Texture>
+					</property>
+					<property>
+						g_emissionFactor
+						<Float>6.000000</Float>
+					</property>
+					<property>
+						g_glowColor
+						<Vector4>1.000000 0.313726 0.227451 0.298039</Vector4>
+					</property>
+					<property>
+						g_innerConeAngle
+						<Float>15.000000</Float>
+					</property>
+					<property>
+						g_outterConeAngle
+						<Float>80.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.001255 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.000000 -0.214914 -0.214914</min>
+		<max>0.010577 0.214914 0.214914</max>
+	</boundingBox>
+	<geometrySize>696</geometrySize>
+	<minUVDensity>5.412646</minUVDensity>
+</root>

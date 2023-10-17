@@ -25,6 +25,9 @@ msgstr "点击查看战斗通行证收藏。"
 msgid "awardsWidget/description/collectionCompleted"
 msgstr "恭喜！您已集齐了所有的战斗通行证收藏元素。"
 
+msgid "awardsWidget/description/commander"
+msgstr "点击查看和试听您在活动期间可获得或购买的全部乘员的专属语音。"
+
 msgid "awardsWidget/description/point"
 msgstr "点击查看战斗通行证点数可兑换的之前赛季物品。"
 
@@ -55,6 +58,9 @@ msgstr ""
 
 msgid "awardsWidget/title/collection"
 msgstr "收藏"
+
+msgid "awardsWidget/title/commander"
+msgstr "乘员"
 
 msgid "awardsWidget/title/point"
 msgstr ""
@@ -340,9 +346,6 @@ msgstr "战斗通行证"
 msgid "chapter/fullName/1"
 msgstr "回到阴霾"
 
-msgid "chapter/fullName/114"
-msgstr "猎牛之歌"
-
 msgid "chapter/fullName/121"
 msgstr "如履薄冰"
 
@@ -351,6 +354,9 @@ msgstr "轻盈飘渺"
 
 msgid "chapter/fullName/123"
 msgstr "亦真亦幻"
+
+msgid "chapter/fullName/124"
+msgstr "猎牛之歌"
 
 msgid "chapter/fullName/2"
 msgstr "英雄使命"
@@ -364,9 +370,6 @@ msgstr "全新章节"
 msgid "chapter/fullName/74"
 msgstr "全新章节"
 
-msgid "chapter/fullNameUppercased/114"
-msgstr "猎牛之歌"
-
 msgid "chapter/fullNameUppercased/121"
 msgstr "如履薄冰"
 
@@ -375,6 +378,9 @@ msgstr "轻盈飘渺"
 
 msgid "chapter/fullNameUppercased/123"
 msgstr "亦真亦幻"
+
+msgid "chapter/fullNameUppercased/124"
+msgstr "猎牛之歌"
 
 msgid "chapter/fullNameUppercased/74"
 msgstr "全新章节"
@@ -615,7 +621,7 @@ msgid "howToEarnPoints/lose/27"
 msgstr "失败"
 
 msgid "howToEarnPoints/lose/43"
-msgstr "失败"
+msgstr "失败/平局"
 
 msgid "howToEarnPoints/rangeLevels/29"
 msgstr "排名%(startLevel)d–%(endLevel)d"
@@ -645,7 +651,7 @@ msgid "howToEarnPoints/squad/29"
 msgstr "组队战斗"
 
 msgid "howToEarnPoints/text/1"
-msgstr "驾驶%(startLevel)s—%(endLevel)s级坦克参加战斗"
+msgstr "驾驶%(startLevel)s–%(endLevel)s级坦克参加战斗"
 
 msgid "howToEarnPoints/text/22"
 msgstr "驾驶%(level)s级坦克参加战斗"
@@ -851,6 +857,18 @@ msgstr ""
 msgid "progression/errorBtn"
 msgstr "前往车库"
 
+msgid "progression/extraChapterWidget/commander"
+msgstr "带有专属语音的乘员"
+
+msgid "progression/extraChapterWidget/commanderVoices"
+msgstr "试听全部"
+
+msgid "progression/extraChapterWidget/labelWithBP"
+msgstr "需要高级通行证"
+
+msgid "progression/extraChapterWidget/styleName"
+msgstr "%(styleName)s"
+
 msgid "progression/extraChapterWidget/styleRemark"
 msgstr "需要高级通行证"
 
@@ -858,10 +876,22 @@ msgid "progression/extraChapterWidget/styleSubTitle"
 msgstr "和%(vehicleName)s的任务"
 
 msgid "progression/extraChapterWidget/styleTitle"
-msgstr "%(styleName)s风格"
+msgstr "3D风格"
+
+msgid "progression/extraChapterWidget/tank"
+msgstr "金币坦克"
+
+msgid "progression/extraChapterWidget/tankName"
+msgstr "%(vehicleName)s"
+
+msgid "progression/extraChapterWidget/tooltip"
+msgstr "点击试听乘员的专属语音。"
 
 msgid "progression/extraChapterWidget/vehicleCaption"
 msgstr "金币坦克"
+
+msgid "progression/extraChapterWidget/vehicleSubTitle"
+msgstr "和%(styleName)s3D风格"
 
 msgid "progression/footer/freePointsDescr"
 msgstr "未分配的战斗通行证点数: "
@@ -1057,6 +1087,57 @@ msgstr "%(styleName)s风格的新等级"
 msgid "styleProgression/newStyle"
 msgstr "%(styleName)s风格的第一个等级"
 
+msgid "tankmenVoiceover/availableInQuestChain"
+msgstr "完成任务将获得"
+
+msgid "tankmenVoiceover/button"
+msgstr "收到！"
+
+msgid "tankmenVoiceover/close"
+msgstr "关闭"
+
+msgid "tankmenVoiceover/description"
+msgstr ""
+"所有乘员都拥有零历练兄弟连特长，以及足以将额外2项特长\n"
+"训练至100%的乘员经验。"
+
+msgid "tankmenVoiceover/free"
+msgstr ""
+"在阶段%(progressNumber)s的\n"
+"基础奖励中"
+
+msgid "tankmenVoiceover/inShop"
+msgstr "在特殊礼包中"
+
+msgid "tankmenVoiceover/notFull"
+msgstr "%(availableCount)s/%(count)s可用"
+
+msgid "tankmenVoiceover/paid"
+msgstr ""
+"在阶段%(progressNumber)s的\n"
+"高级奖励中"
+
+msgid "tankmenVoiceover/questChain"
+msgstr "在一系列任务中"
+
+msgid "tankmenVoiceover/received"
+msgstr "已获得"
+
+msgid "tankmenVoiceover/shopButton"
+msgstr "在军械库中查看"
+
+msgid "tankmenVoiceover/soundOn"
+msgstr "播放"
+
+msgid "tankmenVoiceover/subtitle"
+msgstr "猎牛之歌章节"
+
+msgid "tankmenVoiceover/title"
+msgstr "带有专属语音的乘员"
+
+msgid "tankmenVoiceover/unavailable"
+msgstr "不可用"
+
 msgid "tooltips/RandomQuestTooltip/condition"
 msgstr "条件: %(condition)"
 
@@ -1224,7 +1305,7 @@ msgid "tooltips/inProgress/epic"
 msgstr "前线模式"
 
 msgid "tooltips/inProgress/getPointsFrom"
-msgstr "在%(battleType)s中获取点数的规则。"
+msgstr "%(battleType)s中的点数获取规则。"
 
 msgid "tooltips/inProgress/hurryUp"
 msgstr "购买高级通行证就能获得已完成阶段的全部高级奖励！"

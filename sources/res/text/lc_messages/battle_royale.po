@@ -9,6 +9,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "#PluralForms"
+msgstr "nplurals=1; plural=0;"
 
 msgid "alertMessage/allPeripheriesHalt"
 msgstr "所有服务器已进入休战期。距战斗开放还有%(time)s"
@@ -38,19 +42,85 @@ msgid "banner/info/disabled"
 msgstr "休战"
 
 msgid "banner/info/seasonActive"
-msgstr "军事演习模式激战"
+msgstr "第二次机会和奖励"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(month)s%(day)s日结束"
 
-msgid "banner/timeLeft/hours"
-msgstr "%(hour)s时%(min)s分"
+msgid "banner/subtitle"
+msgstr "进化"
 
-msgid "banner/timeLeft/min"
-msgstr "%(min)s分"
+msgid "banner/timeLeft/hour"
+msgstr "%(hour)s时"
+
+msgid "banner/timeLeft/hours"
+msgstr "%(hours)s时%(minutes)s分"
+
+msgid "banner/timeLeft/minutes"
+msgstr "%(minutes)s分"
+
+msgid "banner/timer/lessOneMin"
+msgstr "<1"
 
 msgid "banner/title"
-msgstr "钢铁猎手"
+msgstr "钢铁猎手:"
+
+msgid "battle/respawnMessagePanel/respawnActivated/description"
+msgstr "战斗将从一处新位置开始。"
+
+msgid "battle/respawnMessagePanel/respawnActivated/title"
+msgstr "您即将重生"
+
+msgid "battle/respawnMessagePanel/respawnActivatedSquad/title"
+msgstr "正在重生"
+
+msgid "battle/respawnMessagePanel/respawnNotAvailable/description"
+msgstr "不会再有第二次机会。"
+
+msgid "battle/respawnMessagePanel/respawnNotAvailable/title"
+msgstr "现已无法重生"
+
+msgid "battle/respawnMessagePanel/respawnNotAvailableSoon/title"
+msgstr "即将无法重生！"
+
+msgid "battle/respawnMessagePanel/respawned/description"
+msgstr "这次请多加小心。"
+
+msgid "battle/respawnMessagePanel/respawned/title"
+msgstr "坦克已准备好加入战斗！"
+
+msgid "battle/respawnMessagePanel/returnToBattle/title"
+msgstr "重返战斗"
+
+msgid "battle/respawnMessagePanel/squad/inBattle/description"
+msgstr "战斗正在进行中。"
+
+msgid "battle/respawnMessagePanel/squad/inBattle/title"
+msgstr "无法重生"
+
+msgid "battle/respawnMessagePanel/squad/pickUp/description"
+msgstr "获取重生充能次数使其重返战斗。"
+
+msgid "battle/respawnMessagePanel/squad/pickUp/title"
+msgstr "盟友坦克被击毁"
+
+msgid "battle/respawnMessagePanel/squad/respawning/title"
+msgstr "正在重生"
+
+msgid "battle/respawnMessagePanel/squad/squadmanRespawned/description"
+msgstr "人多力量大！"
+
+msgid "battle/respawnMessagePanel/squad/squadmanRespawned/title"
+msgstr "盟友坦克已重生"
+
+msgid "battle/respawnMessagePanel/squad/stayInCover/description"
+msgstr "脱离战斗！"
+
+msgid "battle/respawnMessagePanel/squad/stayInCover/title"
+msgstr "正在使盟友重生"
+
+msgid "battle/winnerCongratulationsView/title"
+msgstr "胜利"
 
 msgid "battleResult/battlePassWidget/chapterNotChosen"
 msgstr "未选择章节。未分配的战斗通行证点数：%(points)s%(icon)s"
@@ -96,6 +166,9 @@ msgstr "按%(esc)跳过动画"
 
 msgid "battleResult/playerVehicleStatus/alive"
 msgstr "幸存"
+
+msgid "battleResult/playerVehicleStatus/reason/deathByBot"
+msgstr "坦克被游猎者击毁。"
 
 msgid "battleResult/playerVehicleStatus/reason/deathByPlayer"
 msgstr "坦克被玩家击毁"
@@ -181,8 +254,11 @@ msgstr "小队被摧毁"
 msgid "battleResult/title/vehicleDestroyed"
 msgstr "坦克被击毁"
 
-msgid "battleResult/title/victory"
+msgid "battleResult/title/victoryFirst"
 msgstr "胜利"
+
+msgid "battleResult/title/victoryOther"
+msgstr "荣誉名次"
 
 msgid "battleRoyaleCarousel/hint"
 msgstr "选择一辆坦克免费试玩"
@@ -194,7 +270,7 @@ msgid "battleRoyaleCarousel/lockedToolTip/header"
 msgstr "坦克不符"
 
 msgid "button/modules"
-msgstr "模块"
+msgstr "升级路线"
 
 msgid "button/rent"
 msgstr "租用{days}天"
@@ -256,8 +332,13 @@ msgstr "雷金纳德·伯利"
 msgid "commanderInfo/fullName/ussr"
 msgstr "彼得·洛帕钦"
 
+msgid "commanderTooltip/specialty_skills"
+msgstr "特长"
+
 msgid "commanderTooltip/vehicleDescription"
-msgstr "钢铁猎手特殊坦克%(vehicle)s。"
+msgstr ""
+"%(vehicle)s\n"
+"钢铁猎手特殊坦克"
 
 msgid "fragPanel/squadsCount"
 msgstr "小队数量: %(squadsCount)s"
@@ -367,7 +448,7 @@ msgid "intro/slide4/title"
 msgstr "全新地图"
 
 msgid "intro/title"
-msgstr "钢铁猎手2022"
+msgstr "钢铁猎手"
 
 msgid "levelUp/severalTitles"
 msgstr "获得升级: %(firstLevel)s升至%(lastLevel)s级！"
@@ -418,6 +499,12 @@ msgstr "坦克运转完全正常。无需恢复。"
 
 msgid "player_messages/Ch00_ClingeBot_SH_DESTROYED"
 msgstr "智械猎手被击毁"
+
+msgid "player_messages/DEATH_BY_BOT_ENEMY_ALLY"
+msgstr "%(attacker)s击毁%(target)s。"
+
+msgid "player_messages/DEATH_BY_BOT_ENEMY_ENEMY"
+msgstr "%(attacker)s击毁敌方%(target)s。"
 
 msgid "player_messages/G00_Bomber_SH_DESTROYED"
 msgstr "飞火流星已被摧毁"
@@ -514,10 +601,16 @@ msgstr "%(server)s服务器上的赛季%(cycleNo)s已结束"
 msgid "primeTime/tooltip/endOfCycleOnThisServer"
 msgstr "%(server)s服务器上的赛季已结束。"
 
+msgid "proxyPanel/button"
+msgstr "军械库"
+
 msgid "proxyPanel/label"
 msgstr ""
 "钢铁\n"
 "印章"
+
+msgid "proxyPanel/store"
+msgstr "军械库"
 
 msgid "questsTooltip/lessThanDay"
 msgstr "少于1天"
@@ -557,6 +650,12 @@ msgstr "参加战斗和完成特殊任务可获得点数。它们将被自动计
 
 msgid "rewardCurrencyTooltip/battlePassPoints/header"
 msgstr "战斗通行证点数"
+
+msgid "rewardCurrencyTooltip/brProgressionToken/body"
+msgstr "完成钢铁猎手任务和取得良好战绩的奖励。可用于推进进度。"
+
+msgid "rewardCurrencyTooltip/brProgressionToken/header"
+msgstr "钢铁猎手进度点数"
 
 msgid "rewardCurrencyTooltip/brcoin/body"
 msgstr "良好的战斗表现、在战斗结果中获得较高的排名以及完成特殊任务可获得钢铁印章。"
@@ -619,7 +718,7 @@ msgid "status/timeLeft/days"
 msgstr "%(day)s天"
 
 msgid "status/timeLeft/hours"
-msgstr "%(hour)s时"
+msgstr "%(hour)s时%(min)s分"
 
 msgid "status/timeLeft/lessMin"
 msgstr "1分钟"
@@ -744,6 +843,66 @@ msgstr "生命值"
 msgid "techtree/turret_rotation_speed"
 msgstr "炮塔旋转速度"
 
+msgid "tooltip/progression/leaderboardReward/battleTypesHeader/29"
+msgstr "单人"
+
+msgid "tooltip/progression/leaderboardReward/battleTypesHeader/30"
+msgstr "在小队中"
+
+msgid "tooltip/progression/leaderboardReward/header"
+msgstr "点数获取规则"
+
+msgid "tooltip/progression/leaderboardReward/text/place"
+msgstr "排名%(place)s"
+
+msgid "tooltip/progression/leaderboardReward/text/places"
+msgstr "排名%(place)s"
+
+msgid "tooltip/widget/hangar/battleSchedule/schedule"
+msgstr "%(start)s–%(end)s"
+
+msgid "tooltip/widget/hangar/description/header"
+msgstr "主要进度已完成！"
+
+msgid "tooltip/widget/hangar/description/text/completed"
+msgstr "每日任务现已对您开放。"
+
+msgid "tooltip/widget/hangar/description/text/inProgress"
+msgstr "完成钢铁猎手任务可获得进度点数。战斗结果也会影响您所获得的点数。"
+
+msgid "tooltip/widget/hangar/header/battleLeaveTime/today"
+msgstr "今天"
+
+msgid "tooltip/widget/hangar/header/battleLeaveTime/tomorrow"
+msgstr "明天"
+
+msgid "tooltip/widget/hangar/header/subTitle/text"
+msgstr "距活动结束还有%(value)s"
+
+msgid "tooltip/widget/hangar/header/title"
+msgstr "钢铁猎手"
+
+msgid "tooltip/widget/hangar/performance/description/high"
+msgstr "您的计算机在此模式下性能不足。您可能会遇到图形和坦克移动方面的问题。亦有可能造成游戏客户端崩溃。"
+
+msgid "tooltip/widget/hangar/performance/description/low"
+msgstr "如果计算机性能不足，请在设置中尝试降低图形质量。"
+
+msgid "tooltip/widget/hangar/performance/description/medium"
+msgstr "该模式需要较高的计算机性能。您可能会遇到地图加载、图形和坦克移动方面的问题。如果性能不足，请在设置中尝试较低的图形质量。"
+
+msgid "tooltip/widget/hangar/performance/header/high"
+msgstr "低性能"
+
+msgid "tooltip/widget/hangar/performance/header/low"
+msgstr "该模式对计算机性能要求较高。"
+
+msgid "tooltip/widget/hangar/performance/header/medium"
+msgstr "低性能"
+
+msgid "tooltip/widget/hangar/timeTable/title"
+msgstr "战斗时间表"
+
 msgid "tooltips/awards/achievement"
 msgstr "勋章"
 
@@ -788,6 +947,37 @@ msgstr "租用{days}天"
 
 msgid "tooltips/rentIcon/testDrive/title"
 msgstr "免费试玩坦克1天"
+
+msgid "tooltips/respawnIcon/definition"
+msgstr "重生充能次数可从空投中获取。"
+
+msgid "tooltips/respawnIcon/description"
+msgstr "让您可以在坦克被击毁后重返战斗。在这种情况下，坦克的升级等级不会丢失。每场战斗均有使用次数限制。"
+
+msgid "tooltips/respawnIcon/min"
+msgstr "%(duration)s分钟"
+
+msgid "tooltips/respawnIcon/platoon/description"
+msgstr ""
+"您需要脱离战斗%(timeToResurrect)s才能使盟友重生。该机制仅在战斗的前%(duration)s内生效。小队中的盟友共享重生充能次数。"
+
+msgid "tooltips/respawnIcon/platoon/subtitle"
+msgstr "组队战斗时"
+
+msgid "tooltips/respawnIcon/sec"
+msgstr "%(duration)s秒"
+
+msgid "tooltips/respawnIcon/solo/description"
+msgstr "坦克在击毁后自动重生。该机制在战斗的前%(duration)s内生效。"
+
+msgid "tooltips/respawnIcon/solo/subtitle"
+msgstr "单人战斗时"
+
+msgid "tooltips/respawnIcon/subtitle"
+msgstr "一次性使用"
+
+msgid "tooltips/respawnIcon/title"
+msgstr "重生"
 
 msgid "tooltips/testDriveInfo/footer"
 msgstr "参加战斗及完成特殊任务可获得%(brown_Open)s钢铁印章%(brown_Close)s。"

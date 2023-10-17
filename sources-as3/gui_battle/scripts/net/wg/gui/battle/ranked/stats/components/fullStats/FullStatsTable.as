@@ -5,6 +5,7 @@ package net.wg.gui.battle.ranked.stats.components.fullStats
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.components.PlayerStatusView;
+   import net.wg.gui.battle.components.PrestigeLevel;
    import net.wg.gui.battle.views.stats.SpeakAnimation;
    import net.wg.gui.battle.views.stats.fullStats.FullStatsTableBase;
    import net.wg.gui.components.controls.BadgeComponent;
@@ -790,6 +791,46 @@ package net.wg.gui.battle.ranked.stats.components.fullStats
       
       public var vehicleType_c2r10:BattleAtlasSprite = null;
       
+      public var prestigeLevel_c1r1:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r2:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r3:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r4:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r5:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r6:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r7:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r8:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r9:PrestigeLevel = null;
+      
+      public var prestigeLevel_c1r10:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r1:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r2:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r3:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r4:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r5:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r6:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r7:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r8:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r9:PrestigeLevel = null;
+      
+      public var prestigeLevel_c2r10:PrestigeLevel = null;
+      
       public var deadBgCollection:Vector.<BattleAtlasSprite> = null;
       
       public var hitCollection:Vector.<MovieClip> = null;
@@ -816,7 +857,9 @@ package net.wg.gui.battle.ranked.stats.components.fullStats
       
       public var vehicleTypeCollection:Vector.<BattleAtlasSprite> = null;
       
-      public var rankBadgesCollection:Vector.<BadgeComponent>;
+      public var rankBadgesCollection:Vector.<BadgeComponent> = null;
+      
+      public var prestigeLevelCollection:Vector.<PrestigeLevel> = null;
       
       public var testerBackCollection:Vector.<BattleAtlasSprite> = null;
       
@@ -844,6 +887,7 @@ package net.wg.gui.battle.ranked.stats.components.fullStats
          this.vehicleTypeCollection = new <BattleAtlasSprite>[this.vehicleType_c1r1,this.vehicleType_c1r2,this.vehicleType_c1r3,this.vehicleType_c1r4,this.vehicleType_c1r5,this.vehicleType_c1r6,this.vehicleType_c1r7,this.vehicleType_c1r8,this.vehicleType_c1r9,this.vehicleType_c1r10,this.vehicleType_c2r1,this.vehicleType_c2r2,this.vehicleType_c2r3,this.vehicleType_c2r4,this.vehicleType_c2r5,this.vehicleType_c2r6,this.vehicleType_c2r7,this.vehicleType_c2r8,this.vehicleType_c2r9,this.vehicleType_c2r10];
          this.testerBackCollection = new <BattleAtlasSprite>[this.testerBack_c1r1,this.testerBack_c1r2,this.testerBack_c1r3,this.testerBack_c1r4,this.testerBack_c1r5,this.testerBack_c1r6,this.testerBack_c1r7,this.testerBack_c1r8,this.testerBack_c1r9,this.testerBack_c1r10,this.testerBack_c2r1,this.testerBack_c2r2,this.testerBack_c2r3,this.testerBack_c2r4,this.testerBack_c2r5,this.testerBack_c2r6,this.testerBack_c2r7,this.testerBack_c2r8,this.testerBack_c2r9,this.testerBack_c2r10];
          this.icoTesterCollection = new <BattleAtlasSprite>[this.icoTester_c1r1,this.icoTester_c1r2,this.icoTester_c1r3,this.icoTester_c1r4,this.icoTester_c1r5,this.icoTester_c1r6,this.icoTester_c1r7,this.icoTester_c1r8,this.icoTester_c1r9,this.icoTester_c1r10,this.icoTester_c2r1,this.icoTester_c2r2,this.icoTester_c2r3,this.icoTester_c2r4,this.icoTester_c2r5,this.icoTester_c2r6,this.icoTester_c2r7,this.icoTester_c2r8,this.icoTester_c2r9,this.icoTester_c2r10];
+         this.prestigeLevelCollection = new <PrestigeLevel>[this.prestigeLevel_c1r1,this.prestigeLevel_c1r2,this.prestigeLevel_c1r3,this.prestigeLevel_c1r4,this.prestigeLevel_c1r5,this.prestigeLevel_c1r6,this.prestigeLevel_c1r7,this.prestigeLevel_c1r8,this.prestigeLevel_c1r9,this.prestigeLevel_c1r10,this.prestigeLevel_c2r1,this.prestigeLevel_c2r2,this.prestigeLevel_c2r3,this.prestigeLevel_c2r4,this.prestigeLevel_c2r5,this.prestigeLevel_c2r6,this.prestigeLevel_c2r7,this.prestigeLevel_c2r8,this.prestigeLevel_c2r9,this.prestigeLevel_c2r10];
          this.background.imageName = BATTLEATLAS.STATS_TABLE_BG;
          this.leftTank.imageName = BATTLEATLAS.STATS_TABLE_TANK;
          this.leftFrag.imageName = BATTLEATLAS.STATS_TABLE_FRAGS;
@@ -867,6 +911,10 @@ package net.wg.gui.battle.ranked.stats.components.fullStats
             _loc1_.dispose();
          }
          for each(_loc1_ in this.rankBadgesCollection)
+         {
+            _loc1_.dispose();
+         }
+         for each(_loc1_ in this.prestigeLevelCollection)
          {
             _loc1_.dispose();
          }
@@ -1214,6 +1262,26 @@ package net.wg.gui.battle.ranked.stats.components.fullStats
          this.vehicleType_c2r8 = null;
          this.vehicleType_c2r9 = null;
          this.vehicleType_c2r10 = null;
+         this.prestigeLevel_c1r1 = null;
+         this.prestigeLevel_c1r2 = null;
+         this.prestigeLevel_c1r3 = null;
+         this.prestigeLevel_c1r4 = null;
+         this.prestigeLevel_c1r5 = null;
+         this.prestigeLevel_c1r6 = null;
+         this.prestigeLevel_c1r7 = null;
+         this.prestigeLevel_c1r8 = null;
+         this.prestigeLevel_c1r9 = null;
+         this.prestigeLevel_c1r10 = null;
+         this.prestigeLevel_c2r1 = null;
+         this.prestigeLevel_c2r2 = null;
+         this.prestigeLevel_c2r3 = null;
+         this.prestigeLevel_c2r4 = null;
+         this.prestigeLevel_c2r5 = null;
+         this.prestigeLevel_c2r6 = null;
+         this.prestigeLevel_c2r7 = null;
+         this.prestigeLevel_c2r8 = null;
+         this.prestigeLevel_c2r9 = null;
+         this.prestigeLevel_c2r10 = null;
          this.deadBgCollection.length = 0;
          this.hitCollection.length = 0;
          this.icoIGRCollection.length = 0;
@@ -1228,6 +1296,7 @@ package net.wg.gui.battle.ranked.stats.components.fullStats
          this.vehicleIconCollection.length = 0;
          this.vehicleLevelCollection.length = 0;
          this.vehicleTypeCollection.length = 0;
+         this.prestigeLevelCollection.length = 0;
          this.deadBgCollection = null;
          this.hitCollection = null;
          this.icoIGRCollection = null;
@@ -1242,6 +1311,7 @@ package net.wg.gui.battle.ranked.stats.components.fullStats
          this.vehicleIconCollection = null;
          this.vehicleLevelCollection = null;
          this.vehicleTypeCollection = null;
+         this.prestigeLevelCollection = null;
          this.background = null;
          this.leftTank = null;
          this.leftFrag = null;

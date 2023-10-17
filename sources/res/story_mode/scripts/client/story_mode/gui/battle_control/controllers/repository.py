@@ -1,5 +1,4 @@
 from gui.battle_control.controllers import _ControllersRepository, debug_ctrl
-from gui.battle_control.controllers.sound_ctrls.vehicle_hit_sound_ctrl import VehicleHitSound
 from story_mode.gui.battle_control.controllers.appearance_cache_controller import AppearanceCacheController
 from story_mode.gui.battle_control.controllers.settings_contoller import OverrideSettingsController
 
@@ -12,5 +11,4 @@ class Repository(_ControllersRepository):
         repository.addArenaController(AppearanceCacheController(setup), setup)
         repository.addArenaController(OverrideSettingsController(), setup)
         repository.addViewController(debug_ctrl.DebugController(), setup)
-        repository.addController(VehicleHitSound())
         return repository

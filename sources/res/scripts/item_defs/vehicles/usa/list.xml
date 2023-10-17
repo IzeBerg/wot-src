@@ -1270,7 +1270,7 @@
 		<level>7</level>
 	</A102_T28_concept>
 	<A106_M48A2_120>
-		<id>222</id>
+		<id>197</id>
 		<userString>#usa_vehicles:A106_M48A2_120</userString>
 		<description>#usa_vehicles:A106_M48A2_120_descr</description>
 		<shortUserString>#usa_vehicles:A106_M48A2_120_short</shortUserString>
@@ -1281,9 +1281,24 @@
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
+		<tags>mediumTank role_MT_universal HD special secret testTank patton inGame improvedVentilation_class2_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_medium_user</tags>
+		<level>9</level>
+	</A106_M48A2_120>
+	<A106_M48A2_120_CN>
+		<id>222</id>
+		<userString>#usa_vehicles:A106_M48A2_120_CN</userString>
+		<description>#usa_vehicles:A106_M48A2_120_CN_descr</description>
+		<shortUserString>#usa_vehicles:A106_M48A2_120_CN_short</shortUserString>
+		<shortDescriptionSpecial>#usa_vehicles:A106_M48A2_120_CN_short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#usa_vehicles:A106_M48A2_120_CN_long_special</longDescriptionSpecial>
+		<price>
+			5
+			<gold/>
+		</price>
+		<notInShop>true</notInShop>
 		<tags>mediumTank role_MT_sniper HD special patton inGame improvedVentilation_class2_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_medium_user earn_crystals</tags>
 		<level>10</level>
-	</A106_M48A2_120>
+	</A106_M48A2_120_CN>
 	<A63_M46_Patton_KR>
 		<id>223</id>
 		<userString>#usa_vehicles:A63_M46_Patton_KR</userString>
@@ -1656,6 +1671,15 @@
 		<tags>heavyTank private HD epic_battles improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user</tags>
 		<level>8</level>
 	</A12_T32_FL>
+	<A100_T49_Halloween_event>
+		<id>248</id>
+		<userString>#usa_vehicles:T49_Halloween_event</userString>
+		<description>#usa_vehicles:T49_Halloween_event_descr</description>
+		<price>1</price>
+		<notInShop>true</notInShop>
+		<tags>lightTank improvedVentilation_class1_user scout secret event_battles cannot_be_sold lockOutfit HD lockCrew lockCrewSkills</tags>
+		<level>9</level>
+	</A100_T49_Halloween_event>
 	<A97_M41_Bulldog_FL>
 		<id>250</id>
 		<userString>#usa_vehicles:M41_Bulldog_FL</userString>
@@ -1716,15 +1740,74 @@
 		<tags>mediumTank role_MT_assault HD improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class2_user extraHealthReserve_class2_user antifragmentationLining_medium_user cannot_be_sold lockOutfit lockCrew secret private</tags>
 		<level>6</level>
 	</A1118_M4_Thunderbolt_NewOnBoarding>
-	<A120_M48A5_hound_TLXXL>
-		<id>254</id>
-		<userString>#usa_vehicles:A120_M48A5_hound_TLXXL</userString>
-		<description>#usa_vehicles:A120_M48A5_hound_TLXXL_descr</description>
-		<shortUserString>#usa_vehicles:A120_M48A5_hound_TLXXL_short</shortUserString>
-		<shortDescriptionSpecial>#usa_vehicles:A120_M48A5_hound_TLXXL_short_special</shortDescriptionSpecial>
+	<A66_M103_Boss_HW23>
+		<id>50</id>
+		<userString>#usa_vehicles:A66_M103_Boss_HW23</userString>
+		<shortUserString>#usa_vehicles:A66_M103_Boss_HW23_short</shortUserString>
+		<description>#usa_vehicles:A66_M103_Boss_HW23_descr</description>
+		<price>1</price>
+		<notInShop>true</notInShop>
+		<tags>heavyTank hwrole_boss HD secret private event_battles cannot_be_sold lockCrew lockOutfit</tags>
+		<level>9</level>
+	</A66_M103_Boss_HW23>
+	<A35_Pershing_HW_BOT>
+		<id>212</id>
+		<userString>#usa_vehicles:A35_Pershing_HW_BOT</userString>
+		<description>#usa_vehicles:Pershing_descr</description>
+		<shortUserString>#usa_vehicles:A35_Pershing_HW_BOT_short</shortUserString>
+		<price>2403000</price>
+		<notInShop>true</notInShop>
+		<tags>mediumTank hwrole_sentry role_MT_universal HD improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user event_battles secret cannot_be_sold lockOutfit lockCrew</tags>
+		<level>8</level>
+	</A35_Pershing_HW_BOT>
+	<A12_T32_HW_BOT>
+		<id>213</id>
+		<userString>#usa_vehicles:A12_T32_HW_BOT</userString>
+		<description>#usa_vehicles:T32_descr</description>
+		<shortUserString>#usa_vehicles:A12_T32_HW_BOT_short</shortUserString>
+		<price>2610000</price>
+		<notInShop>true</notInShop>
+		<tags>heavyTank hwrole_sentry role_HT_universal HD improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user event_battles secret cannot_be_sold lockOutfit lockCrew</tags>
+		<level>8</level>
+	</A12_T32_HW_BOT>
+	<A66_M103_HW_BOT>
+		<id>214</id>
+		<userString>#usa_vehicles:A66_M103_HW_BOT</userString>
+		<description>#usa_vehicles:M103_descr</description>
+		<shortUserString>#usa_vehicles:A66_M103_HW_BOT_short</shortUserString>
+		<price>3640000</price>
+		<notInShop>true</notInShop>
+		<tags>heavyTank hwrole_sentry role_HT_universal HD improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user event_battles secret cannot_be_sold lockOutfit lockCrew</tags>
+		<level>9</level>
+	</A66_M103_HW_BOT>
+	<A63_M46_Patton_HW_BOT>
+		<id>217</id>
+		<userString>#usa_vehicles:A63_M46_Patton_HW_BOT</userString>
+		<description>#usa_vehicles:M46_Patton_descr</description>
+		<shortUserString>#usa_vehicles:A63_M46_Patton_HW_BOT_short</shortUserString>
+		<price>3450000</price>
+		<notInShop>true</notInShop>
+		<tags>mediumTank hwrole_sentry role_MT_universal HD patton improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user event_battles secret cannot_be_sold lockOutfit lockCrew</tags>
+		<level>9</level>
+	</A63_M46_Patton_HW_BOT>
+	<A69_T110E5_HW_BOT>
+		<id>56</id>
+		<userString>#usa_vehicles:A69_T110E5_HW_BOT</userString>
+		<description>#usa_vehicles:T110_descr</description>
+		<shortUserString>#usa_vehicles:A69_T110E5_HW_BOT_short</shortUserString>
 		<price>6100000</price>
 		<notInShop>true</notInShop>
-		<tags>mediumTank role_MT_universal event_hunter event_battles special secret HD lockCrew lockCrewSkills lockOutfit lockShells lockDevices cannot_be_sold unrecoverable earn_crystals builtinRepairkit_wt_user builtinLargeMedkit_wt_user builtinSelfRepair_wt_user builtinStronghold_wt_user mode_hidden hideStorage hideCrew</tags>
+		<tags>heavyTank hwrole_sentry role_HT_universal HD improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user earn_crystals event_battles secret cannot_be_sold lockOutfit lockCrew</tags>
 		<level>10</level>
-	</A120_M48A5_hound_TLXXL>
+	</A69_T110E5_HW_BOT>
+	<A100_T49_HW_BOT>
+		<id>100</id>
+		<userString>#usa_vehicles:A100_T49_HW_BOT</userString>
+		<description>#usa_vehicles:T49_descr</description>
+		<shortUserString>#usa_vehicles:A100_T49_HW_BOT_short</shortUserString>
+		<price>1</price>
+		<notInShop>true</notInShop>
+		<tags>lightTank improvedVentilation_class1_user scout secret event_battles cannot_be_sold lockOutfit HD lockCrew</tags>
+		<level>9</level>
+	</A100_T49_HW_BOT>
 </root>

@@ -4,6 +4,7 @@ import BigWorld, account_helpers
 from client_request_lib.exceptions import ResponseCodes
 from constants import PREBATTLE_TYPE, QUEUE_TYPE
 from debug_utils import LOG_DEBUG, LOG_ERROR
+from gui.Scaleform.settings import TOOLTIP_TYPES
 from gui import SystemMessages
 from gui.Scaleform.daapi.view.lobby.clans.clan_helpers import getStrongholdEventBattleModeSettings, getStrongholdEventEnabled
 from gui.clans.clan_helpers import isStrongholdsEnabled, isLeaguesEnabled
@@ -34,6 +35,7 @@ from gui.Scaleform.locale.FORTIFICATIONS import FORTIFICATIONS
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.shared.notifications import NotificationPriorityLevel
 from gui.shared.utils.requesters.abstract import Response
+from gui.shared.utils.functions import makeTooltip
 from gui.wgcg.strongholds.contexts import StrongholdJoinBattleCtx, StrongholdUpdateCtx, StrongholdMatchmakingInfoCtx, StrongholdLeaveModeCtx, SlotVehicleFiltersUpdateCtx, StrongholdEventGetFrozenVehiclesCtx
 from helpers import time_utils, dependency
 from UnitBase import UNIT_ERROR, UNIT_ROLE
@@ -153,6 +155,20 @@ class StrongholdBrowserEntity(UnitBrowserEntity):
     def getPermissions(self, dbID=None, unitMgrID=None):
         return StrongholdBrowserPermissions(self.hasLockedState())
 
+    def leave(self, ctx, callback=None):
+        processor = StrongholdUnitRequestProcessor()
+        processor.doRequest(StrongholdLeaveModeCtx(ctx.getID()), 'leave_mode')
+        super(StrongholdBrowserEntity, self).leave(ctx, callback)
+
+    def getSquadBtnTooltipData(self):
+        if self.getPermissions().canCreateSquad():
+            header = backport.text(R.strings.platoon.headerButton.tooltips.squad.header())
+            body = backport.text(R.strings.platoon.headerButton.tooltips.squad.body())
+            return (
+             makeTooltip(header, body), TOOLTIP_TYPES.COMPLEX)
+        return (
+         '', TOOLTIP_TYPES.COMPLEX)
+
     def _loadUnit(self):
         g_eventDispatcher.loadStrongholds()
 
@@ -161,11 +177,6 @@ class StrongholdBrowserEntity(UnitBrowserEntity):
 
     def _showWindow(self):
         g_eventDispatcher.showStrongholdsWindow()
-
-    def leave(self, ctx, callback=None):
-        processor = StrongholdUnitRequestProcessor()
-        processor.doRequest(StrongholdLeaveModeCtx(ctx.getID()), 'leave_mode')
-        super(StrongholdBrowserEntity, self).leave(ctx, callback)
 
 
 class StrongholdEntity(UnitEntity):
@@ -393,6 +404,15 @@ class StrongholdEntity(UnitEntity):
         playerInfo = self.getPlayerInfo()
         self.__isInSlot = playerInfo.isInSlot
         super(StrongholdEntity, self).unit_onUnitMembersListChanged()
+
+    def getSquadBtnTooltipData(self):
+        if self.getPermissions().canCreateSquad():
+            header = backport.text(R.strings.platoon.headerButton.tooltips.squad.header())
+            body = backport.text(R.strings.platoon.headerButton.tooltips.squad.body())
+            return (
+             makeTooltip(header, body), TOOLTIP_TYPES.COMPLEX)
+        return (
+         '', TOOLTIP_TYPES.COMPLEX)
 
     def request(self, ctx, callback=None):
         self.__waitingManager.processRequest(ctx)

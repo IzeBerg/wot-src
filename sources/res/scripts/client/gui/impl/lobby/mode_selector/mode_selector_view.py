@@ -26,14 +26,11 @@ from gui.impl.lobby.mode_selector.popovers.random_battle_popover import RandomBa
 from gui.impl.lobby.mode_selector.sound_constants import MODE_SELECTOR_SOUND_SPACE
 from gui.impl.lobby.mode_selector.tooltips.simply_format_tooltip import SimplyFormatTooltipView
 from gui.impl.lobby.winback.popovers.winback_leave_mode_popover_view import WinbackLeaveModePopoverView
-from gui.impl.lobby.wt_event.tooltips.wt_event_header_widget_tooltip_view import WtEventHeaderWidgetTooltipView
-from gui.impl.lobby.wt_event.tooltips.wt_event_stamp_tooltip_view import WtEventStampTooltipView
-from gui.impl.lobby.wt_event.tooltips.wt_event_ticket_tooltip_view import WtEventTicketTooltipView
 from gui.impl.pub import ViewImpl
 from gui.impl.pub.tooltip_window import SimpleTooltipContent
 from gui.prb_control.settings import PREBATTLE_ACTION_NAME
 from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE
-from gui.shared.events import FullscreenModeSelectorEvent, ModeSelectorLoadedEvent, ModeSubSelectorEvent, LoadViewEvent
+from gui.shared.events import FullscreenModeSelectorEvent, ModeSubSelectorEvent, LoadViewEvent
 from gui.shared.system_factory import registerModeSelectorTooltips, collectModeSelectorTooltips
 from gui.shared.view_helpers.blur_manager import CachedBlur
 from helpers import dependency
@@ -66,26 +63,22 @@ _SIMPLE_TOOLTIP_IDS = [
  ModeSelectorTooltipsConstants.RANKED_BATTLES_BONUS_TOOLTIP,
  ModeSelectorTooltipsConstants.MAPBOX_CALENDAR_TOOLTIP,
  ModeSelectorTooltipsConstants.EPIC_BATTLE_CALENDAR_TOOLTIP,
- ModeSelectorTooltipsConstants.COMP7_CALENDAR_DAY_EXTENDED_INFO,
- ModeSelectorTooltipsConstants.EVENT_BATTLES_CALENDAR_TOOLTIP]
+ ModeSelectorTooltipsConstants.COMP7_CALENDAR_DAY_EXTENDED_INFO]
 
 def _getTooltipByContentIdMap():
     return {R.views.lobby.battle_pass.tooltips.BattlePassNotStartedTooltipView(): BattlePassNotStartedTooltipView, 
        R.views.lobby.battle_pass.tooltips.BattlePassCompletedTooltipView(): BattlePassCompletedTooltipView, 
        R.views.lobby.battle_pass.tooltips.BattlePassInProgressTooltipView(): partial(BattlePassInProgressTooltipView, battleType=QUEUE_TYPE.RANDOMS), 
        R.views.lobby.comp7.tooltips.MainWidgetTooltip(): MainWidgetTooltip, 
-       R.views.lobby.comp7.tooltips.RankInactivityTooltip(): RankInactivityTooltip, 
-       R.views.lobby.wt_event.tooltips.WtEventHeaderWidgetTooltipView(): WtEventHeaderWidgetTooltipView, 
-       R.views.lobby.wt_event.tooltips.WtEventTicketTooltipView(): WtEventTicketTooltipView, 
-       R.views.lobby.wt_event.tooltips.WtEventStampTooltipView(): WtEventStampTooltipView}
+       R.views.lobby.comp7.tooltips.RankInactivityTooltip(): RankInactivityTooltip}
 
 
 registerModeSelectorTooltips(_SIMPLE_TOOLTIP_IDS, _getTooltipByContentIdMap())
 
 class ModeSelectorView(ViewImpl):
-    __slots__ = ('__blur', '__dataProvider', '__prevAppBackgroundAlpha', '__isEventEnabled',
-                 '__isClickProcessing', '__prevOptimizationEnabled', '__isGraphicsRestored',
-                 '__tooltipConstants', '__subSelectorCallback', '__isContentVisible')
+    __slots__ = ('__blur', '__dataProvider', '__prevAppBackgroundAlpha', '__isClickProcessing',
+                 '__prevOptimizationEnabled', '__isGraphicsRestored', '__tooltipConstants',
+                 '__subSelectorCallback', '__isContentVisible')
     uiBootcampLogger = BootcampLogger(BC_LOG_KEYS.MS_WINDOW)
     _COMMON_SOUND_SPACE = MODE_SELECTOR_SOUND_SPACE
     __appLoader = dependency.descriptor(IAppLoader)
@@ -96,13 +89,12 @@ class ModeSelectorView(ViewImpl):
     layoutID = R.views.lobby.mode_selector.ModeSelectorView()
     _areWidgetsVisible = False
 
-    def __init__(self, layoutId, isEventEnabled=False, provider=None, subSelectorCallback=None):
+    def __init__(self, layoutId, provider=None, subSelectorCallback=None):
         super(ModeSelectorView, self).__init__(ViewSettings(layoutId, ViewFlags.LOBBY_TOP_SUB_VIEW, ModeSelectorModel()))
         self.__dataProvider = provider if provider else ModeSelectorDataProvider()
         self.__blur = None
         self.__prevOptimizationEnabled = False
         self.__prevAppBackgroundAlpha = 0.0
-        self.__isEventEnabled = isEventEnabled
         self.__isClickProcessing = False
         self.__isGraphicsRestored = False
         self.__subSelectorCallback = subSelectorCallback
@@ -201,18 +193,17 @@ class ModeSelectorView(ViewImpl):
         self.__prevOptimizationEnabled = app.graphicsOptimizationManager.getEnable()
         if self.__prevOptimizationEnabled:
             app.graphicsOptimizationManager.switchOptimizationEnabled(False)
-        if self.__subSelectorCallback is not None:
-            self.__subSelectorCallback()
-            self.__subSelectorCallback = None
-        return
 
     def _initialize(self):
         g_eventBus.handleEvent(FullscreenModeSelectorEvent(FullscreenModeSelectorEvent.NAME, ctx={'showing': True}))
 
     def _onLoaded(self):
-        g_eventBus.handleEvent(ModeSelectorLoadedEvent(ModeSelectorLoadedEvent.NAME))
+        if self.__subSelectorCallback is not None:
+            self.__subSelectorCallback(parent=self.getParentWindow())
+            self.__subSelectorCallback = None
         self.uiBootcampLogger.logOnlyFromBootcamp(BC_LOG_ACTIONS.OPENED)
         self.inputManager.removeEscapeListener(self.__handleEscape)
+        return
 
     def _finalize(self):
         self.uiBootcampLogger.logOnlyFromBootcamp(BC_LOG_ACTIONS.CLOSED)

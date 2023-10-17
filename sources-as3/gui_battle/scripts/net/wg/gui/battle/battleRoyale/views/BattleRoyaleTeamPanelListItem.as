@@ -1,5 +1,7 @@
 package net.wg.gui.battle.battleRoyale.views
 {
+   import flash.display.MovieClip;
+   import flash.events.Event;
    import flash.geom.ColorTransform;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
@@ -14,6 +16,10 @@ package net.wg.gui.battle.battleRoyale.views
    public class BattleRoyaleTeamPanelListItem extends BattleUIComponent
    {
       
+      public static const EVENT_TYPE_DEAD:String = "dead";
+      
+      public static const EVENT_TYPE_REVIVE:String = "revive";
+      
       private static const PROGRESS_BAR_MAX_VAL:uint = 100;
       
       private static const CLAN_NAME_TF_OFFSET:uint = 1;
@@ -23,6 +29,12 @@ package net.wg.gui.battle.battleRoyale.views
       private static const BR_SQUAD_DEAD_COLOR_SCHEME_NAME:String = "br_squad_dead";
       
       private static const NOT_READY_STATUS_ALPHA:Number = 0.5;
+      
+      private static const RESPAWN_FRAME_START:String = "start";
+      
+      private static const RESPAWN_FRAME_GLOW:String = "glow";
+      
+      private static const RESPAWN_FRAME_INIT:String = "init";
        
       
       public var fragsTF:TextField = null;
@@ -37,6 +49,8 @@ package net.wg.gui.battle.battleRoyale.views
       
       public var progressBar:StatusIndicator = null;
       
+      public var respawnAnimationMc:MovieClip = null;
+      
       private var _playerName:String = "";
       
       private var _clanName:String = "";
@@ -44,6 +58,8 @@ package net.wg.gui.battle.battleRoyale.views
       private var _isAlive:Boolean = true;
       
       private var _isReady:Boolean = true;
+      
+      private var _isRespawning:Boolean = false;
       
       public function BattleRoyaleTeamPanelListItem()
       {
@@ -88,6 +104,7 @@ package net.wg.gui.battle.battleRoyale.views
          this.clanNameTF = null;
          this.vehicleLevelTF = null;
          this.vehicleIcon = null;
+         this.respawnAnimationMc = null;
          this.progressBar.dispose();
          this.progressBar = null;
          super.onDispose();
@@ -101,6 +118,11 @@ package net.wg.gui.battle.battleRoyale.views
          }
          this._isAlive = param1;
          invalidateState();
+         dispatchEvent(new Event(!!this._isAlive ? EVENT_TYPE_REVIVE : EVENT_TYPE_DEAD));
+         if(this._isAlive)
+         {
+            this.respawnAnimationMc.gotoAndPlay(RESPAWN_FRAME_GLOW);
+         }
       }
       
       public function setClanName(param1:String) : void
@@ -117,6 +139,24 @@ package net.wg.gui.battle.battleRoyale.views
       public function setFrags(param1:String) : void
       {
          this.fragsTF.text = param1;
+      }
+      
+      public function setIsRespawning(param1:Boolean) : void
+      {
+         if(this._isRespawning == param1)
+         {
+            return;
+         }
+         this._isRespawning = param1;
+         invalidateState();
+         if(this._isRespawning)
+         {
+            this.respawnAnimationMc.gotoAndPlay(RESPAWN_FRAME_START);
+         }
+         else
+         {
+            this.respawnAnimationMc.gotoAndStop(RESPAWN_FRAME_INIT);
+         }
       }
       
       public function setPlayerName(param1:String) : void
@@ -159,7 +199,7 @@ package net.wg.gui.battle.battleRoyale.views
       {
          var _loc3_:IColorScheme = null;
          var _loc1_:ColorTransform = null;
-         if(!this._isAlive)
+         if(!this._isAlive && !this._isRespawning)
          {
             _loc3_ = App.colorSchemeMgr.getScheme(BR_SQUAD_DEAD_COLOR_SCHEME_NAME);
             if(_loc3_)
@@ -173,7 +213,7 @@ package net.wg.gui.battle.battleRoyale.views
          this.vehicleLevelTF.transform.colorTransform = _loc1_;
          this.vehicleIcon.transform.colorTransform = _loc1_;
          var _loc2_:Number = !this._isReady || !this._isAlive ? Number(NOT_READY_STATUS_ALPHA) : Number(Values.DEFAULT_ALPHA);
-         alpha = _loc2_;
+         this.fragsTF.alpha = this.playerNameTF.alpha = this.clanNameTF.alpha = this.vehicleLevelTF.alpha = this.vehicleIcon.alpha = this.progressBar.alpha = _loc2_;
       }
    }
 }

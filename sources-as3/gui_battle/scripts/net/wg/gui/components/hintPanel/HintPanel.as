@@ -5,6 +5,7 @@ package net.wg.gui.components.hintPanel
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.events.Event;
+   import flashx.textLayout.formats.TextAlign;
    import net.wg.data.constants.generated.BATTLE_SOUND;
    import net.wg.gui.battle.events.BattleSoundEvent;
    import net.wg.infrastructure.base.meta.IBattleHintPanelMeta;
@@ -79,6 +80,8 @@ package net.wg.gui.components.hintPanel
       
       private var _reducedPanning:Boolean = false;
       
+      private var _centeredMessage:Boolean = false;
+      
       private var _keySelected:Boolean = false;
       
       private var _width:int = 0;
@@ -87,10 +90,13 @@ package net.wg.gui.components.hintPanel
       
       private var _isShow:Boolean = false;
       
+      private var _initMessageRightY:int = 0;
+      
       public function HintPanel()
       {
          super();
          super.visible = false;
+         this._initMessageRightY = this.messageRightAnim.y;
          this._height = this.bg.height / this.bg.scaleY * FADE_IN_BG_SCALE_Y;
          this.keyAnim.addFrameScript(this.keyAnim.totalFrames - 1,this.onFadeOutComplete);
          this._fadeInBgTween = new Tween(FADE_IN_BG_DURATION,this.bg,{
@@ -142,7 +148,7 @@ package net.wg.gui.components.hintPanel
          super.onDispose();
       }
       
-      public function as_setData(param1:String, param2:String, param3:String, param4:String, param5:int, param6:int, param7:Boolean) : void
+      public function as_setData(param1:String, param2:String, param3:String, param4:String, param5:int, param6:int, param7:Boolean, param8:Boolean) : void
       {
          if(param2 != this._keyValue)
          {
@@ -168,6 +174,11 @@ package net.wg.gui.components.hintPanel
             this._messageRight = param4;
             this.messageRightAnim.setText(param4);
             this.messageRightAnim.setTextFieldWidth(this.messageRightAnim.textFieldContainer.textField.textWidth + TEXTFIELD_PADDING);
+            if(param8 != this._centeredMessage)
+            {
+               this._centeredMessage = param8;
+               this.messageRightAnim.setTextFieldAlign(!!this._centeredMessage ? TextAlign.CENTER : TextAlign.LEFT);
+            }
          }
          this._offsetX = param5;
          this._offsetY = param6;
@@ -220,6 +231,7 @@ package net.wg.gui.components.hintPanel
       
       private function update() : void
       {
+         var _loc2_:int = 0;
          var _loc3_:int = 0;
          this.messageLeftAnim.visible = this._keySelected;
          this.keyEffectAnim.visible = this._keySelected;
@@ -239,6 +251,7 @@ package net.wg.gui.components.hintPanel
          {
             this.messageRightAnim.x = BACKGROUND_INNER_PADDING;
          }
+         this.messageRightAnim.y = !!this._centeredMessage ? Number(this._height - this.messageRightAnim.height >> 1) : Number(this._initMessageRightY);
          var _loc1_:int = this.messageRightAnim.x + this.messageRightAnim.width;
          if(this._reducedPanning)
          {
@@ -253,7 +266,7 @@ package net.wg.gui.components.hintPanel
             this._width = _loc1_;
             dispatchEvent(new Event(Event.RESIZE));
          }
-         var _loc2_:int = this._width >> 1;
+         _loc2_ = this._width >> 1;
          this.bg.width = this._width;
          this.bg.x = _loc2_;
          this.appearanceEffectAnim.x = _loc2_;

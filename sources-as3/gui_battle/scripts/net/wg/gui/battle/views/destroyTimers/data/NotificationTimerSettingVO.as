@@ -42,8 +42,6 @@ package net.wg.gui.battle.views.destroyTimers.data
       
       public var description:String = "";
       
-      public var tipKeyCode:int = -1;
-      
       public function NotificationTimerSettingVO(param1:Object)
       {
          super(param1);

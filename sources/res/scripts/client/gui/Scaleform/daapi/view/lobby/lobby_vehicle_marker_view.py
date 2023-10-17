@@ -1,6 +1,7 @@
 import typing
 from collections import defaultdict
 import GUI, Math
+from gui.impl.gen import R
 from gui.Scaleform.daapi.view.meta.LobbyVehicleMarkerViewMeta import LobbyVehicleMarkerViewMeta
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.framework.entities.sf_window import SFWindow
@@ -38,6 +39,8 @@ class LobbyVehicleMarkerView(LobbyVehicleMarkerViewMeta):
         self.hangarSpace.onSpaceDestroy += self.__onSpaceDestroy
         self.addListener(events.HangarVehicleEvent.ON_PLATOON_TANK_LOADED, self._onPlatoonTankLoaded, EVENT_BUS_SCOPE.LOBBY)
         self.addListener(events.HangarVehicleEvent.ON_PLATOON_TANK_DESTROY, self._onHeroPlatoonTankDestroy, EVENT_BUS_SCOPE.LOBBY)
+        self.addListener(events.LobbyMarkerEvents.ADD_MARKER, self._onAddMarker, EVENT_BUS_SCOPE.LOBBY)
+        self.addListener(events.LobbyMarkerEvents.REMOVE_MARKER, self._onRemoveMarker, EVENT_BUS_SCOPE.LOBBY)
         self.guiLoader.windowsManager.onWindowStatusChanged += self.__onWindowStatusChanged
 
     def _dispose(self):
@@ -49,6 +52,8 @@ class LobbyVehicleMarkerView(LobbyVehicleMarkerViewMeta):
         self.__markersCache = None
         self.removeListener(events.HangarVehicleEvent.ON_PLATOON_TANK_LOADED, self._onPlatoonTankLoaded, EVENT_BUS_SCOPE.LOBBY)
         self.removeListener(events.HangarVehicleEvent.ON_PLATOON_TANK_DESTROY, self._onHeroPlatoonTankDestroy, EVENT_BUS_SCOPE.LOBBY)
+        self.removeListener(events.LobbyMarkerEvents.ADD_MARKER, self._onAddMarker, EVENT_BUS_SCOPE.LOBBY)
+        self.removeListener(events.LobbyMarkerEvents.REMOVE_MARKER, self._onRemoveMarker, EVENT_BUS_SCOPE.LOBBY)
         self.guiLoader.windowsManager.onWindowStatusChanged -= self.__onWindowStatusChanged
         return
 
@@ -69,6 +74,12 @@ class LobbyVehicleMarkerView(LobbyVehicleMarkerViewMeta):
         vehicle = event.ctx['entity']
         self.__destroyMarker(vehicle.id)
 
+    def _onAddMarker(self, event):
+        self.addCgfMarker(event.ctx['entityID'], event.ctx['markerComponent'], event.ctx['matrix'])
+
+    def _onRemoveMarker(self, event):
+        self.removeCgfMarker(event.ctx['entityID'])
+
     def addCgfMarker(self, entityId, markerComponent, matrix):
         flashMarker = self.as_createCustomMarkerS(entityId, markerComponent.icon.replace('gui', '..'), makeString(markerComponent.textKey))
         self.__markersCache[entityId] = GUI.WGHangarVehicleMarker()
@@ -77,6 +88,13 @@ class LobbyVehicleMarkerView(LobbyVehicleMarkerViewMeta):
 
     def removeCgfMarker(self, entityId):
         self.__destroyMarker(entityId)
+
+    def updateMarkerVisibility(self, markerId, value):
+        if self.__markersCache[markerId] is None and not self.__isMarkerDisabled:
+            return
+        else:
+            self.__markersCache[markerId].markerSetActive(value)
+            return
 
     def __onCameraEntityUpdated(self, event):
         entityId = event.ctx['entityId']
@@ -105,6 +123,10 @@ class LobbyVehicleMarkerView(LobbyVehicleMarkerViewMeta):
         windowsManager = self.guiLoader.windowsManager
         windows = windowsManager.findWindows(lambda w: w.layer in self.__LAYERS_WITHOUT_MARKERS)
         hangarIsExist = len(windowsManager.findWindows(lambda w: isinstance(w, SFWindow) and w.loadParams.viewKey.alias == VIEW_ALIAS.LOBBY_HANGAR)) > 0
+        if windowsManager.getViewsByLayout(R.views.halloween.lobby.StylePreview()):
+            return True
+        if windowsManager.getViewsByLayout(R.views.halloween.lobby.HangarView()):
+            hangarIsExist = True
         return len(windows) == 1 and hangarIsExist
 
     @staticmethod

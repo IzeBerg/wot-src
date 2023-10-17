@@ -238,7 +238,7 @@ class SessionStatsOverview(SessionStatsOverviewMeta):
          {'btnLabel': label, 
             'btnTooltip': moreBtnTooltip, 
             'btnEnabled': isHofBtnUnlocked},
-         {'btnLabel': backport.text(R.strings.menu.tankmanPersonalCase.dropSkillsButtonLabel()), 
+         {'btnLabel': backport.text(R.strings.session_stats.resetBtn.label()), 
             'btnTooltip': clearBtnTooltip, 
             'btnEnabled': clearBtnEnabled},
          {'btnIcon': RES_ICONS.MAPS_ICONS_MESSENGER_ICONSETTINGS, 

@@ -32,8 +32,6 @@ class EventBoardsController(IEventBoardController, IEventBoardsListener):
         self.__isLoggedIn = False
         self.__eventBoardsSettings = EventBoardsSettings()
         self.__hangarFlagData = HangarFlagData()
-        self.__requestCallbacks = []
-        self.__boardSettingsRequested = False
 
     def fini(self):
         self.__eventBoardsSettings.fini()
@@ -118,7 +116,7 @@ class EventBoardsController(IEventBoardController, IEventBoardsListener):
         eventsSettings = self.__eventBoardsSettings.getEventsSettings()
         playerData = self.__eventBoardsSettings.getPlayerEventsData()
         if not self.__isLoggedIn or self.__isLoggedIn and not onLogin:
-            edResponse = yield self.__requestEventsData(onlySettings)
+            edResponse = yield self.sendRequest(EventBoardsGetEventDataCtx(needShowErrorNotification=not onlySettings))
             if edResponse is not None:
                 statusCode = eventsSettings.setData(edResponse.getData(), prefetchKeyArtBig)
                 if statusCode == SET_DATA_STATUS_CODE.OK:
@@ -191,20 +189,6 @@ class EventBoardsController(IEventBoardController, IEventBoardsListener):
                     return
             callback(None)
             return
-
-    @adisp_async
-    @adisp_process
-    def __requestEventsData(self, onlySettings, callback):
-        self.__requestCallbacks.append(callback)
-        if self.__boardSettingsRequested:
-            return
-        self.__boardSettingsRequested = True
-        edResponse = yield self.sendRequest(EventBoardsGetEventDataCtx(needShowErrorNotification=not onlySettings))
-        self.__boardSettingsRequested = False
-        for clb in self.__requestCallbacks:
-            clb(edResponse)
-
-        self.__requestCallbacks = []
 
     def __checkStartedFinishedEvents(self, isTabVisited):
         eventsSettings = self.__eventBoardsSettings

@@ -35,9 +35,10 @@ from skeletons.gui.game_control import IIGRController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.prb_control import IPrbControlLoader
 from skeletons.gui.server_events import IEventsCache
-from skeletons.prebattle_vehicle import IPrebattleVehicle
 if typing.TYPE_CHECKING:
     from typing import Any
+    from gui.prb_control.entities.base.ctx import PrbAction
+    from gui.prb_control.entities.base.entity import BasePrbEntryPoint
 _logger = logging.getLogger(__name__)
 
 class _PreBattleDispatcher(ListenersCollection):
@@ -46,7 +47,6 @@ class _PreBattleDispatcher(ListenersCollection):
     igrCtrl = dependency.descriptor(IIGRController)
     eventsCache = dependency.descriptor(IEventsCache)
     winbackCtrl = dependency.descriptor(IWinbackController)
-    prebattleVehicle = dependency.descriptor(IPrebattleVehicle)
 
     def __init__(self):
         super(_PreBattleDispatcher, self).__init__()
@@ -89,10 +89,12 @@ class _PreBattleDispatcher(ListenersCollection):
         return self.__factories
 
     def getFunctionalState(self):
-        factory = self.__factories.get(self.__entity.getCtrlType())
-        if factory is not None:
-            return factory.createStateEntity(self.__entity)
+        if self.__factories is None:
+            return FunctionalState()
         else:
+            factory = self.__factories.get(self.__entity.getCtrlType())
+            if factory is not None:
+                return factory.createStateEntity(self.__entity)
             return FunctionalState()
 
     @adisp_async
@@ -238,7 +240,7 @@ class _PreBattleDispatcher(ListenersCollection):
 
     @adisp_async
     @adisp_process
-    def select(self, entry, callback=None):
+    def select(self, entry, callback=None, transition=None):
         ctx = entry.makeDefCtx()
         ctx.addFlags(entry.getModeFlags() & FUNCTIONAL_FLAG.LOAD_PAGE | FUNCTIONAL_FLAG.SWITCH)
         if not self.__validateJoinOp(ctx):
@@ -253,6 +255,8 @@ class _PreBattleDispatcher(ListenersCollection):
             if callback is not None:
                 callback(False)
             return
+        if transition is not None:
+            yield transition
         ctx.setForced(True)
         LOG_DEBUG('Request to select', ctx)
         self.__requestCtx = ctx
@@ -271,7 +275,7 @@ class _PreBattleDispatcher(ListenersCollection):
             return PlayerDecorator()
 
     def doAction(self, action=None):
-        if not (g_currentVehicle.isPresent() or g_currentPreviewVehicle.isPresent() or self.prebattleVehicle.isPresent()):
+        if not (g_currentVehicle.isPresent() or g_currentPreviewVehicle.isPresent()):
             SystemMessages.pushMessage(messages.getInvalidVehicleMessage(PREBATTLE_RESTRICTION.VEHICLE_NOT_PRESENT), type=SystemMessages.SM_TYPE.Error)
             return False
         LOG_DEBUG('Do GUI action', action)
@@ -279,12 +283,12 @@ class _PreBattleDispatcher(ListenersCollection):
 
     @adisp_async
     @adisp_process
-    def doSelectAction(self, action, callback=None):
+    def doSelectAction(self, action, callback=None, transition=None):
         selectResult = self.__entity.doSelectAction(action)
         if selectResult.isProcessed:
             result = True
             if selectResult.newEntry is not None:
-                result = yield self.select(selectResult.newEntry)
+                result = yield self.select(selectResult.newEntry, transition=transition)
             if callback is not None:
                 callback(result)
             g_eventDispatcher.dispatchSwitchResult(result)
@@ -294,7 +298,7 @@ class _PreBattleDispatcher(ListenersCollection):
             if entry is not None:
                 if hasattr(entry, 'configure'):
                     entry.configure(action)
-                result = yield self.select(entry)
+                result = yield self.select(entry, transition=transition)
                 if callback is not None:
                     callback(result)
                 g_eventDispatcher.dispatchSwitchResult(result)
@@ -675,7 +679,6 @@ class _PreBattleDispatcher(ListenersCollection):
         self.__requestCtx = PrbCtrlRequestCtx()
         currentCtx.stopProcessing(result=True)
         g_eventDispatcher.updateUI()
-        g_eventDispatcher.entityWasUpdated()
         return ctx.getFlags()
 
     @adisp_process

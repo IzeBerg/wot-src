@@ -1,13 +1,15 @@
 from collections import namedtuple
-import nations
-from personal_missions_constants import CONDITION_ICON
-from soft_exception import SoftException
+import typing
 from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.server_events.conditions import GROUP_TYPE
 from gui.server_events.formatters import RELATIONS_SCHEME, RELATIONS
 from gui.shared.formatters import text_styles
-from helpers import i18n, int2roman
+from helpers import i18n
+from personal_missions_constants import CONDITION_ICON
+from soft_exception import SoftException
+if typing.TYPE_CHECKING:
+    from gui.server_events.conditions import BattleResults
 MAX_CONDITIONS_IN_OR_SECTION_SUPPORED = 2
 TOP_RANGE_HIGHEST = 1
 TOP_RANGE_LOWEST = 15
@@ -51,6 +53,7 @@ BATTLE_RESULTS_KEYS = {'capturePoints': CONDITION_ICON.BASE_CAPTURE,
    'fortResource': CONDITION_ICON.FOLDER, 
    'freeXP': CONDITION_ICON.EXPERIENCE, 
    'subtotalXP': CONDITION_ICON.EXPERIENCE, 
+   'factualXP': CONDITION_ICON.EXPERIENCE, 
    'health': CONDITION_ICON.SAVE_HP, 
    'inBattleMaxPiercingSeries': CONDITION_ICON.HIT, 
    'inBattleMaxSniperSeries': CONDITION_ICON.HIT, 
@@ -97,12 +100,7 @@ BATTLE_RESULTS_KEYS = {'capturePoints': CONDITION_ICON.BASE_CAPTURE,
    'brPosInBattle': CONDITION_ICON.TOP, 
    'poiCapturedByOwnTeam': CONDITION_ICON.BASE_CAPTURE, 
    'comp7PrestigePoints': CONDITION_ICON.PRESTIGE_POINTS, 
-   'win': CONDITION_ICON.WIN, 
-   'wtBossVulnerableDamage': CONDITION_ICON.DAMAGE, 
-   'maxWtPlasmaBonus': CONDITION_ICON.IMPROVE, 
-   'wtGeneratorsCaptured': CONDITION_ICON.BASE_CAPTURE, 
-   'wtTotalGeneratorsCaptured': CONDITION_ICON.BASE_CAPTURE, 
-   'wtDeathCount': CONDITION_ICON.SURVIVE}
+   'win': CONDITION_ICON.WIN}
 BATTLE_RESULTS_AGGREGATED_KEYS = {tuple(sorted(['damagedVehicleCntAssistedTrack', 'damagedVehicleCntAssistedRadio'])): CONDITION_ICON.ASSIST, 
    tuple(sorted(['killsAssistedTrack', 'killsAssistedRadio'])): CONDITION_ICON.ASSIST, 
    tuple(sorted(['damageAssistedStun', 'damageAssistedTrack'])): CONDITION_ICON.ASSIST, 
@@ -139,8 +137,8 @@ def packSimpleTitle(title):
     return FormattableField(FORMATTER_IDS.SIMPLE_TITLE, (i18n.makeString(title),))
 
 
-def packText(label):
-    return {'text': label}
+def packText(text, styler=None):
+    return {'text': text, 'styler': styler}
 
 
 def intersperse(sequence, item):
@@ -163,7 +161,7 @@ def getSeparator(groupType=GROUP_TYPE.AND):
 def getSeparatorBlock(groupType=GROUP_TYPE.AND):
     label = getSeparator(groupType)
     if label:
-        item = packText(text_styles.standard(label))
+        item = packText(text=label, styler=text_styles.standard)
         item.update(isSeparator=True)
         return item
     else:

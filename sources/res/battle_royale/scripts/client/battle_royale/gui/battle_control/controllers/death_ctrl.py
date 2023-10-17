@@ -1,4 +1,6 @@
-import logging, BigWorld, Event
+import logging
+from functools import partial
+import BigWorld, Event
 from gui.battle_control.arena_info.interfaces import IArenaVehiclesController
 from gui.battle_control.battle_constants import BATTLE_CTRL_ID
 from helpers import dependency
@@ -14,6 +16,7 @@ class DeathScreenController(IArenaVehiclesController, Event.EventsSubscriber):
         super(DeathScreenController, self).__init__()
         self.onShowDeathScreen = Event.Event()
         self.onHideDeathScreen = Event.Event()
+        self.onWinnerScreen = Event.Event()
         self._isShown = False
         self.__delayedCB = None
         return
@@ -38,14 +41,17 @@ class DeathScreenController(IArenaVehiclesController, Event.EventsSubscriber):
         self.__clear()
 
     def __onPlayerRankUpdated(self, playerRank):
-        if not self._isShown and playerRank > 1:
+        if not self._isShown:
             self.__clear()
             self._isShown = True
-            self.__delayedCB = BigWorld.callback(self._SCREEN_SHOW_DELAY, self.__timeToShowHasCome)
+            if playerRank > 1:
+                self.__delayedCB = BigWorld.callback(self._SCREEN_SHOW_DELAY, partial(self.__timeToShowHasCome, self.onShowDeathScreen))
+            else:
+                self.__delayedCB = BigWorld.callback(self._SCREEN_SHOW_DELAY, partial(self.__timeToShowHasCome, self.onWinnerScreen))
 
-    def __timeToShowHasCome(self):
+    def __timeToShowHasCome(self, event):
         self.__delayedCB = None
-        self.onShowDeathScreen()
+        event()
         return
 
     def __clear(self):

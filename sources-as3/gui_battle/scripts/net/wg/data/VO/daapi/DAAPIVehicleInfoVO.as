@@ -66,6 +66,10 @@ package net.wg.data.VO.daapi
       
       public var teamColor:String = "";
       
+      public var prestigeLevel:int = -1;
+      
+      public var prestigeMarkId:int = -1;
+      
       public var badgeVO:BadgeVisualVO = null;
       
       public var hasSelectedBadge:Boolean = false;

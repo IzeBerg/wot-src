@@ -291,6 +291,11 @@ package net.wg.gui.components.battleDamagePanel
          }
       }
       
+      public function get detailsTopContainer() : Sprite
+      {
+         return this._detailsTopContainer;
+      }
+      
       private function initializeSummaryElements(param1:String, param2:TextField, param3:DefaultSummaryImages, param4:MovieClip) : void
       {
          var _loc5_:Boolean = param1 != null;

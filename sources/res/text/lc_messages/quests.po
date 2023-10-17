@@ -317,10 +317,15 @@ msgid "action/chain/hint/camouflages"
 msgstr "选择涂装"
 
 msgid "action/chain/hint/changeDocuments"
-msgstr "修改乘员个人资料折扣"
+msgstr "更换乘员外观折扣"
 
-msgid "action/chain/hint/changeRole"
-msgstr "点击选择新的专业"
+msgid "action/chain/hint/changeRoleDiscountAvailable"
+msgstr ""
+"更改专业\n"
+"折扣开放"
+
+msgid "action/chain/hint/crewRetainingDiscountAvailable"
+msgstr "乘员再训练折扣"
 
 msgid "action/chain/hint/crewRetraining"
 msgstr "乘员训练和再训练折扣"
@@ -329,27 +334,28 @@ msgid "action/chain/hint/customization"
 msgstr "前往个性化"
 
 msgid "action/chain/hint/dropSkills"
-msgstr "重置特长"
+msgstr "点击重置特长"
 
 msgid "action/chain/hint/emblems"
 msgstr "选择徽章"
 
-msgid "action/chain/hint/freeXPToTMan"
-msgstr "全局经验兑换乘员经验比率优惠"
-
 msgid "action/chain/hint/inscriptions"
 msgstr "选择签名"
 
+msgid "action/chain/hint/openCrewBooks"
+msgstr "点击进入快速训练界面"
+
 msgid "action/chain/hint/openPersonalCase"
-msgstr ""
-"点击打开\n"
-"个人档案"
+msgstr "点击开启档案"
 
 msgid "action/chain/hint/premDays"
 msgstr "高级账号折扣"
 
 msgid "action/chain/hint/removalCost"
 msgstr "拆卸折扣"
+
+msgid "action/chain/hint/retrainingDiscountAvailable"
+msgstr "再训练折扣开放"
 
 msgid "action/chain/hint/shellsPrice"
 msgstr "弹药"
@@ -1175,6 +1181,9 @@ msgstr "勋章：%(name)s"
 msgid "bonuses/dossier/badge"
 msgstr "奖章：%(name)s"
 
+msgid "bonuses/equipCoin/description"
+msgstr "%(value)s合金元件"
+
 msgid "bonuses/eventCoin/description"
 msgstr "%(value)s 枚周年纪念币"
 
@@ -1727,6 +1736,9 @@ msgstr "HE弹击中"
 msgid "details/conditions/cumulative/explosionHitsReceived"
 msgstr "被HE弹击中"
 
+msgid "details/conditions/cumulative/factualXP"
+msgstr "已获得经验（不包含任务）"
+
 msgid "details/conditions/cumulative/formation"
 msgstr "战队信息:%(param)s"
 
@@ -1805,9 +1817,6 @@ msgstr "获得炮管上的特级标识"
 msgid "details/conditions/cumulative/maxDamage"
 msgstr "最大的损伤"
 
-msgid "details/conditions/cumulative/maxWtPlasmaBonus"
-msgstr "在战斗中达到特定的等离子体能量水平"
-
 msgid "details/conditions/cumulative/mileage"
 msgstr "行驶一段距离，至少(米)"
 
@@ -1885,18 +1894,6 @@ msgstr "团队信息:%(param)s"
 
 msgid "details/conditions/cumulative/tkills"
 msgstr "盟友坦克被击毁"
-
-msgid "details/conditions/cumulative/wtBossVulnerableDamage"
-msgstr "在屏障失效时对BT坦克造成损伤"
-
-msgid "details/conditions/cumulative/wtDeathCount"
-msgstr "在1场战斗中，被击毁的次数不超过特定数值。"
-
-msgid "details/conditions/cumulative/wtGeneratorsCaptured"
-msgstr "参与过载特定数量的发电机"
-
-msgid "details/conditions/cumulative/wtTotalGeneratorsCaptured"
-msgstr "?empty?"
 
 msgid "details/conditions/cumulative/xp"
 msgstr "获得的经验"

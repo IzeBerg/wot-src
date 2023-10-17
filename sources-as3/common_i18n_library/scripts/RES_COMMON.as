@@ -49,6 +49,8 @@ package
       
       public static const MAPS_ICONS_MARATHON_REWARDWINDOW_BG:String = "../maps/icons/marathon/rewardWindow/bg.png";
       
+      public static const MAPS_ICONS_PRESTIGE_VEHICLESTATISTICSVIEW_BG:String = "../maps/icons/prestige/vehicleStatisticsView/bg.png";
+      
       public static const MAPS_ICONS_RANKEDBATTLES_AWARDS_BG:String = "../maps/icons/rankedBattles/awards/bg.png";
       
       public static const MAPS_ICONS_RESOURCEWELL_INTRO_BG:String = "../maps/icons/resourceWell/intro/bg.png";

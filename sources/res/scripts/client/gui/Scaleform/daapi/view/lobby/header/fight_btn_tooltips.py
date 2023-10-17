@@ -15,7 +15,8 @@ if typing.TYPE_CHECKING:
     from gui.prb_control.items import ValidationResult
 _STR_PATH = R.strings.menu.headerButtons.fightBtn.tooltip
 
-def getSquadFightBtnTooltipData(state):
+def getSquadFightBtnTooltipData(result):
+    state = result.restriction
     if state == UNIT_RESTRICTION.COMMANDER_VEHICLE_NOT_SELECTED:
         header = backport.text(R.strings.tooltips.hangar.startBtn.squadNotReady.header())
         body = backport.text(R.strings.tooltips.hangar.startBtn.squadNotReady.body())
@@ -107,6 +108,8 @@ def getEpicFightBtnTooltipData(result):
     return makeTooltip(header, body)
 
 
+getRoyaleFightBtnTooltipData = getEpicFightBtnTooltipData
+
 def getMapsTrainingTooltipData():
     header = backport.text(R.strings.tooltips.hangar.startBtn.mapsTraining.notReady.header())
     body = backport.text(R.strings.tooltips.hangar.startBtn.mapsTraining.notReady.body())
@@ -135,23 +138,10 @@ def getComp7BattlesOnlyVehicleTooltipData(result):
     return ''
 
 
-def getEventTooltipData(result):
-    state = result.restriction
-    rClass = R.strings.tooltips.hangar.startBtn
-    rSubClass = rClass.primeNotAvailable
-    if state == UNIT_RESTRICTION.COMMANDER_VEHICLE_NOT_SELECTED:
-        rSubClass = R.strings.event.hangar.startBtn.eventSquadNotReady.wrongVehicleCount
-    elif state == UNIT_RESTRICTION.EVENT_VEHICLE_NOT_SELECTED:
-        rSubClass = rClass.squadNotReady
-    elif state == PREBATTLE_RESTRICTION.TICKETS_SHORTAGE:
-        rSubClass = rClass.noTicket
-    elif state == PREBATTLE_RESTRICTION.VEHICLE_IN_BATTLE:
-        rSubClass = R.strings.tooltips.redButton.disabled.vehicle.inBattle
-    elif state == UNIT_RESTRICTION.VEHICLE_IS_IN_BATTLE:
-        rSubClass = R.strings.tooltips.redButton.disabled.vehicle.inBattle
-    elif state == UNIT_RESTRICTION.IS_IN_ARENA:
-        return makeTooltip(None, None)
-    return makeTooltip(backport.text(rSubClass.header()), backport.text(rSubClass.body()))
+def getEventTooltipData():
+    header = i18n.makeString(TOOLTIPS.EVENT_SQUAD_DISABLE_HEADER)
+    body = i18n.makeString(TOOLTIPS.EVENT_SQUAD_DISABLE_BODY, tankName='')
+    return makeTooltip(header, body)
 
 
 def getPreviewTooltipData():
@@ -229,7 +219,7 @@ def getFunRandomFightBtnTooltipData(result, isInSquad):
         body = backport.text(resShortCut.funRandomVehLimits.body())
     else:
         if isInSquad:
-            return getSquadFightBtnTooltipData(state)
+            return getSquadFightBtnTooltipData(result)
         else:
             return getRandomTooltipData(result)
 

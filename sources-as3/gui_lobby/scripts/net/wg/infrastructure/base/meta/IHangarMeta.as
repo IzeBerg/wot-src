@@ -16,11 +16,7 @@ package net.wg.infrastructure.base.meta
       
       function onTeaserClickS() : void;
       
-      function as_setCrewEnabled(param1:Boolean) : void;
-      
       function as_setCarouselEnabled(param1:Boolean) : void;
-      
-      function as_setCarouselVisible(param1:Boolean) : void;
       
       function as_setupAmmunitionPanel(param1:Object) : void;
       
@@ -48,24 +44,18 @@ package net.wg.infrastructure.base.meta
       
       function as_hideTeaserTimer() : void;
       
-      function as_setNotificationEnabled(param1:Boolean) : void;
-      
       function as_createDQWidget() : void;
       
       function as_destroyDQWidget() : void;
       
-      function as_showSwitchToAmmunition() : void;
+      function as_setPrestigeWidgetVisible(param1:Boolean) : void;
       
-      function as_toggleCnSubscription(param1:Boolean) : void;
+      function as_showSwitchToAmmunition() : void;
       
       function as_setDQWidgetLayout(param1:int) : void;
       
       function as_updateCarouselEventEntryState(param1:Boolean) : void;
       
       function as_updateHangarComponents(param1:Array, param2:Array) : void;
-      
-      function as_toggleEventMode(param1:Boolean) : void;
-      
-      function as_setLootboxesVisible(param1:Boolean) : void;
    }
 }

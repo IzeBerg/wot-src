@@ -85,7 +85,7 @@ package net.wg.mock
          return null;
       }
       
-      public function getTopmostView() : IManagedContent
+      public function getTopmostView(param1:Boolean = false) : IManagedContent
       {
          return null;
       }

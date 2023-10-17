@@ -1,9 +1,9 @@
 package net.wg.infrastructure.base.meta.impl
 {
    import net.wg.data.constants.Errors;
-   import net.wg.gui.components.containers.inject.GFInjectComponent;
+   import net.wg.gui.lobby.hangar.quests.HangarWidgetInject;
    
-   public class BattlePassEntryPointMeta extends GFInjectComponent
+   public class BattlePassEntryPointMeta extends HangarWidgetInject
    {
        
       

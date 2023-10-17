@@ -13,11 +13,7 @@ package net.wg.gui.lobby.hangar
       public function CarouselEventEntry()
       {
          super();
-      }
-      
-      override protected function configUI() : void
-      {
-         super.configUI();
+         setManageSize(true);
          setSize(WIDTH,HEIGHT);
       }
    }

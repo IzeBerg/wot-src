@@ -506,7 +506,7 @@ msgid "barracks/btnUnload"
 msgstr "调回兵营"
 
 msgid "barracks/dismissedTankmenCount"
-msgstr "已解雇乘员:%(curValue)s/%(total)s"
+msgstr "已解雇乘员: %(curValue)s/%(total)s"
 
 msgid "barracks/menu/locationFilter/barracks"
 msgstr "兵营中"
@@ -515,7 +515,7 @@ msgid "barracks/menu/locationFilter/barracksAndTanks"
 msgstr "在兵营与坦克中"
 
 msgid "barracks/menu/locationFilter/dismissed"
-msgstr "已解雇乘员"
+msgstr "已解雇"
 
 msgid "barracks/menu/locationFilter/notRecruited"
 msgstr "招募"
@@ -686,7 +686,7 @@ msgid "bonusType/8"
 msgstr "历史战"
 
 msgid "bonusType/9"
-msgstr "最终兵器:海柏利昂"
+msgstr "特殊游戏模式"
 
 msgid "booster/bonus/booster_credits"
 msgstr "在战斗中获得的银币加成%(effectValue)s%(effectHours)s"
@@ -1006,9 +1006,6 @@ msgstr "接受邀请加入小队"
 msgid "contextMenu/addToFriends"
 msgstr "添加为好友"
 
-msgid "contextMenu/addToFriendsAgain"
-msgstr "重新发送好友请求"
-
 msgid "contextMenu/addToIgnored"
 msgstr "添加至黑名单"
 
@@ -1061,7 +1058,7 @@ msgid "contextMenu/createContactNote"
 msgstr "创建文本"
 
 msgid "contextMenu/createEventSquad"
-msgstr "创建猎犬小队"
+msgstr "创建活动小队"
 
 msgid "contextMenu/createMapboxSquad"
 msgstr "侦察任务：创建小队"
@@ -1072,11 +1069,32 @@ msgstr "发送信息"
 msgid "contextMenu/createSquad"
 msgstr "创建组队"
 
+msgid "contextMenu/crewWidgetChangeCrewMember"
+msgstr "替换乘员"
+
+msgid "contextMenu/crewWidgetChangeSpecialization"
+msgstr "更改坦克专精"
+
+msgid "contextMenu/crewWidgetDismiss"
+msgstr "解雇"
+
+msgid "contextMenu/crewWidgetPersonalFile"
+msgstr "档案"
+
+msgid "contextMenu/crewWidgetQuickTraining"
+msgstr "快速训练"
+
+msgid "contextMenu/crewWidgetRetrain"
+msgstr "再训练"
+
+msgid "contextMenu/crewWidgetSendToToBarracks"
+msgstr "调回兵营"
+
 msgid "contextMenu/disableCommunications"
 msgstr "本场战斗屏蔽"
 
 msgid "contextMenu/dismiss"
-msgstr "解 雇"
+msgstr "解雇"
 
 msgid "contextMenu/editContactNote"
 msgstr "编辑文本"
@@ -1159,18 +1177,6 @@ msgstr "修改系别"
 msgid "contextMenu/notFairPlay"
 msgstr "使用外挂"
 
-msgid "contextMenu/personalCase"
-msgstr "个人档案"
-
-msgid "contextMenu/personalCase/stats/firstInfo"
-msgstr "当使用金币坦克时，乘员训练速度提升50%。"
-
-msgid "contextMenu/personalCase/stats/secondInfo"
-msgstr "除此之外，精英坦克的乘员训练可以加速。"
-
-msgid "contextMenu/personalCase/stats/wotPlus"
-msgstr "使用高强度乘员训练时，您无需将乘员投入战斗也可以训练乘员。"
-
 msgid "contextMenu/personalCase/statsBlockTitle"
 msgstr "金币坦克"
 
@@ -1191,6 +1197,9 @@ msgstr "从好友列表中删除"
 
 msgid "contextMenu/removeFromIgnored"
 msgstr "从黑名单中移除"
+
+msgid "contextMenu/requestFriendship"
+msgstr "重新发送好友请求"
 
 msgid "contextMenu/restore"
 msgstr "恢复"
@@ -1227,12 +1236,6 @@ msgstr "撤销鼓舞指派"
 
 msgid "contextMenu/takeLeadership"
 msgstr "队伍指挥官权限"
-
-msgid "contextMenu/tankmanUnload"
-msgstr "调回兵营"
-
-msgid "contextMenu/tankmanUnloadAll"
-msgstr "调全体乘员到兵营"
 
 msgid "contextMenu/telecomRent"
 msgstr "显示租用坦克"
@@ -1293,6 +1296,9 @@ msgstr "设为备用"
 
 msgid "contextMenu/viewClanProfile"
 msgstr "军团简介"
+
+msgid "contextMenu/winBackCallSendInvite"
+msgstr "发送信息"
 
 msgid "contextMenu/withdrawInvitationToSquad"
 msgstr "撤回加入小队的邀请"
@@ -1582,22 +1588,22 @@ msgid "currentVehicleStatus/exploded"
 msgstr "坦克损坏，需要修理"
 
 msgid "currentVehicleStatus/fallout_broken"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "currentVehicleStatus/fallout_max"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "currentVehicleStatus/fallout_min"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "currentVehicleStatus/fallout_only"
 msgstr "不匹配"
 
 msgid "currentVehicleStatus/fallout_required"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "currentVehicleStatus/group_is_not_ready"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "currentVehicleStatus/igrRentalIsOver"
 msgstr "特价已到期。"
@@ -1628,9 +1634,6 @@ msgstr "可租用"
 msgid "currentVehicleStatus/rentableAgain"
 msgstr "延长租用"
 
-msgid "currentVehicleStatus/rentalBattleIsOver"
-msgstr "没有剩余的战斗场次"
-
 msgid "currentVehicleStatus/rentalIsOver"
 msgstr "租用时间到期"
 
@@ -1645,9 +1648,6 @@ msgstr "服务器限制"
 
 msgid "currentVehicleStatus/subscription_suspended"
 msgstr "坦克世界Plus订阅已暂停"
-
-msgid "currentVehicleStatus/ticketsShortage"
-msgstr "没有钥匙"
 
 msgid "currentVehicleStatus/tooHeavy"
 msgstr "坦克超载"
@@ -2354,20 +2354,6 @@ msgstr "萨里克"
 msgid "hangar/crew/rody/dog/ussr/name"
 msgstr "全部"
 
-msgid "hangar/crew/rody/dog/window/closeBtnLabel"
-msgstr "关闭"
-
-msgid "hangar/crew/rody/dog/window/description"
-msgstr ""
-"“四个坦克兵与狗”（B系电视剧“四个坦克兵与狗”）是B系的黑白电视机连续剧贾努兹·卡明斯基同名小说改编而来。电视剧首播于1966年5月9日，描绘了二战期间一组T-34-85坦克车组与他们的狗"
-"--绰号鲁迪（姜）。"
-
-msgid "hangar/crew/rody/dog/window/header"
-msgstr "游戏中将重塑这不朽的经典传奇！"
-
-msgid "hangar/crew/rody/dog/window/title"
-msgstr "四个坦克兵与狗"
-
 msgid "hangar/crew/tooltip/drop_skill"
 msgstr "点击这里重置技能。"
 
@@ -2623,6 +2609,33 @@ msgstr "轻型坦克"
 msgid "header/vehicleType/mediumTank"
 msgstr "中型坦克"
 
+msgid "header/wotPlusExclusiveVehicleType/AT-SPG"
+msgstr "自行反坦克炮"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-France"
+msgstr "F系、J系、V系、I系"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-Germany"
+msgstr "D系、R系"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-USA"
+msgstr "M系、Y系、B系"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-USSR"
+msgstr "S系、C系"
+
+msgid "header/wotPlusExclusiveVehicleType/SPG"
+msgstr "自行火炮"
+
+msgid "header/wotPlusExclusiveVehicleType/heavyTank"
+msgstr "重型坦克"
+
+msgid "header/wotPlusExclusiveVehicleType/lightTank"
+msgstr "轻型坦克"
+
+msgid "header/wotPlusExclusiveVehicleType/mediumTank"
+msgstr "中型坦克"
+
 msgid "headerButtons/account/accountRefill"
 msgstr "充   值"
 
@@ -2757,9 +2770,6 @@ msgstr "训练模式"
 
 msgid "headerButtons/battle/types/epicTraining/descr"
 msgstr "前线模式"
-
-msgid "headerButtons/battle/types/event"
-msgstr "最终兵器:海柏利昂计划"
 
 msgid "headerButtons/battle/types/eventSquad"
 msgstr "活动小队"
@@ -3644,6 +3654,9 @@ msgstr "天梯战"
 msgid "loading/battleTypes/31"
 msgstr "热身模式"
 
+msgid "loading/battleTypes/33"
+msgstr "天梯战"
+
 msgid "loading/battleTypes/4"
 msgstr "新手教学"
 
@@ -3732,6 +3745,9 @@ msgid "loading/battleTypes/desc/30"
 msgstr " "
 
 msgid "loading/battleTypes/desc/31"
+msgstr " "
+
+msgid "loading/battleTypes/desc/33"
 msgstr " "
 
 msgid "loading/battleTypes/desc/4"
@@ -4007,7 +4023,7 @@ msgid "login/status/accessForbiddenToPeriphery"
 msgstr "您的账号无法加入所选服务器。开放服务器：%(peripheries)s。"
 
 msgid "login/status/accountNotReady"
-msgstr "账号未准备好。请再试一次。"
+msgstr "账号未就绪。请再试一次。"
 
 msgid "login/status/another_periphery"
 msgstr "您当前账号还登录在另外一个服务器上。"
@@ -5644,54 +5660,6 @@ msgstr "%(value)s秒"
 msgid "skillDropForFreeWindow/timer/tooltip"
 msgstr "过渡期结束前，您可以免费重置已训练的特长，且不会损失乘员经验。"
 
-msgid "skillDropWindow/after"
-msgstr "重置后"
-
-msgid "skillDropWindow/applyBtn"
-msgstr "重置"
-
-msgid "skillDropWindow/before"
-msgstr "重置前"
-
-msgid "skillDropWindow/cancelBtn"
-msgstr "取消"
-
-msgid "skillDropWindow/direction"
-msgstr "再训练命令"
-
-msgid "skillDropWindow/freeDropLabel"
-msgstr "熟练度低%(percent)s的特长可免费重置。"
-
-msgid "skillDropWindow/freeDropPercent"
-msgstr "于1%"
-
-msgid "skillDropWindow/inStorage"
-msgstr "在仓库中:"
-
-msgid "skillDropWindow/multiplier"
-msgstr "训练"
-
-msgid "skillDropWindow/notAvailable"
-msgstr "不可用"
-
-msgid "skillDropWindow/study/academy"
-msgstr "最大"
-
-msgid "skillDropWindow/study/free"
-msgstr "低"
-
-msgid "skillDropWindow/study/scool"
-msgstr "高"
-
-msgid "skillDropWindow/title"
-msgstr "重置特长"
-
-msgid "skillDropWindow/tooltip/visibleDisabled"
-msgstr "由于技术原因暂时无法使用。"
-
-msgid "skillDropWindow/training"
-msgstr "训练"
-
 msgid "specPrebetles/listTitle"
 msgstr "团队房间"
 
@@ -5770,22 +5738,22 @@ msgid "store/vehicleStates/exploded"
 msgstr "坦克损坏，需要修理"
 
 msgid "store/vehicleStates/fallout_broken"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "store/vehicleStates/fallout_max"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "store/vehicleStates/fallout_min"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "store/vehicleStates/fallout_only"
 msgstr " "
 
 msgid "store/vehicleStates/fallout_required"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "store/vehicleStates/group_is_not_ready"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "store/vehicleStates/igrRentalIsOver"
 msgstr "特价已到期。"
@@ -5895,22 +5863,22 @@ msgid "tankCarousel/vehicleStates/exploded"
 msgstr "坦克损坏，需要修理"
 
 msgid "tankCarousel/vehicleStates/fallout_broken"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "tankCarousel/vehicleStates/fallout_max"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "tankCarousel/vehicleStates/fallout_min"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "tankCarousel/vehicleStates/fallout_only"
 msgstr "不匹配"
 
 msgid "tankCarousel/vehicleStates/fallout_required"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "tankCarousel/vehicleStates/group_is_not_ready"
-msgstr "队伍未准备好"
+msgstr "队伍未就绪"
 
 msgid "tankCarousel/vehicleStates/igrRentalIsOver"
 msgstr "特价已到期。"
@@ -5945,9 +5913,6 @@ msgstr "延长租用"
 msgid "tankCarousel/vehicleStates/rentableAgain/ranked"
 msgstr "延长租用"
 
-msgid "tankCarousel/vehicleStates/rentalBattleIsOver"
-msgstr "没有剩余的战斗场次"
-
 msgid "tankCarousel/vehicleStates/rentalIsOver"
 msgstr "租用时间到期"
 
@@ -5968,9 +5933,6 @@ msgstr "服务器限制"
 
 msgid "tankCarousel/vehicleStates/subscription_suspended"
 msgstr "已暂停"
-
-msgid "tankCarousel/vehicleStates/ticketsShortage"
-msgstr "没有钥匙"
 
 msgid "tankCarousel/vehicleStates/tooHeavy"
 msgstr "坦克超载"
@@ -6338,140 +6300,6 @@ msgstr "切换到快速/巡航模式"
 msgid "tank_params/yoh_s_s"
 msgstr "（主要/应急 单位：秒）"
 
-msgid "tankmanPersonalCase/accelerateTeachingOfSkill"
-msgstr "提升"
-
-msgid "tankmanPersonalCase/achivs"
-msgstr "勋章:"
-
-msgid "tankmanPersonalCase/btnReset"
-msgstr "现役坦克"
-
-msgid "tankmanPersonalCase/btnRetraining"
-msgstr "再训练"
-
-msgid "tankmanPersonalCase/btnTraining"
-msgstr "训练"
-
-msgid "tankmanPersonalCase/changeDocsBtn"
-msgstr "修改个人资料"
-
-msgid "tankmanPersonalCase/changeRoleBtn"
-msgstr "转职"
-
-msgid "tankmanPersonalCase/closeBtn"
-msgstr "关闭"
-
-msgid "tankmanPersonalCase/commanderFeature"
-msgstr "车长特性:"
-
-msgid "tankmanPersonalCase/crew"
-msgstr "服役于:"
-
-msgid "tankmanPersonalCase/docs/info"
-msgstr "?empty?"
-
-msgid "tankmanPersonalCase/dropSkillsButtonLabel"
-msgstr "重置"
-
-msgid "tankmanPersonalCase/mainSpecialization"
-msgstr "主要专业:"
-
-msgid "tankmanPersonalCase/modifiers/customization"
-msgstr "坦克个性化"
-
-msgid "tankmanPersonalCase/modifiers/fromCommander"
-msgstr "车长加成"
-
-msgid "tankmanPersonalCase/modifiers/fromEquipment"
-msgstr "配件和给养"
-
-msgid "tankmanPersonalCase/modifiers/fromSkills"
-msgstr "特长"
-
-msgid "tankmanPersonalCase/modifiers/penalty"
-msgstr "不符合专精"
-
-msgid "tankmanPersonalCase/modifiersHeader"
-msgstr "加成:"
-
-msgid "tankmanPersonalCase/modifiersResult"
-msgstr "最终数值:"
-
-msgid "tankmanPersonalCase/name"
-msgstr "姓名:"
-
-msgid "tankmanPersonalCase/noAchivs"
-msgstr "未在战斗中获得战绩或勋章。"
-
-msgid "tankmanPersonalCase/noModifiers"
-msgstr ""
-"不适用于\n"
-"主要专业"
-
-msgid "tankmanPersonalCase/personalDocs"
-msgstr "个人资料:"
-
-msgid "tankmanPersonalCase/rank"
-msgstr "军衔:"
-
-msgid "tankmanPersonalCase/retrainingBtn"
-msgstr "再训练"
-
-msgid "tankmanPersonalCase/retrainingWarning"
-msgstr "训练只提高乘员的主要专业。"
-
-msgid "tankmanPersonalCase/retrainingWarning2"
-msgstr "使用金币进行再训练不会降低主要专业的等级。"
-
-msgid "tankmanPersonalCase/situationalDesc"
-msgstr "当满足战斗中的特定条件时，触发式特长便会激活。"
-
-msgid "tankmanPersonalCase/skillsButton/additionText"
-msgstr "(乘员的主要专业水平达到100%后可进行训练)"
-
-msgid "tankmanPersonalCase/skillsButton/mainText"
-msgstr "查看所有特长"
-
-msgid "tankmanPersonalCase/skillsDesc"
-msgstr "(乘员的主要专业水平达到100%后可进行训练)"
-
-msgid "tankmanPersonalCase/specialization"
-msgstr "专精:"
-
-msgid "tankmanPersonalCase/tabBattleInfo"
-msgstr "服役记录"
-
-msgid "tankmanPersonalCase/tabDocs"
-msgstr "证  件"
-
-msgid "tankmanPersonalCase/tabFreeSkills"
-msgstr "零历练特长"
-
-msgid "tankmanPersonalCase/tabSkills"
-msgstr "特长"
-
-msgid "tankmanPersonalCase/tabTraining"
-msgstr "训练"
-
-msgid "tankmanPersonalCase/title"
-msgstr "个人档案"
-
-msgid "tankmanPersonalCase/trainingBtn"
-msgstr "快速训练"
-
-msgid "tankmanPersonalCase/usingLevel"
-msgstr "训练水平:"
-
-msgid "tankmanPersonalCase/vehicle"
-msgstr "坦克:"
-
-msgid "tankmanPersonalCase/vehicleType"
-msgstr "坦克类型:"
-
-msgid "tankmanPersonalCase/vehicleTypeID"
-msgstr "按照坦克类型训练:"
-
 msgid "tankmanRecruitRenderer/commander"
 msgstr "招募车长"
 
@@ -6488,7 +6316,7 @@ msgid "tankmanRecruitRenderer/loader"
 msgstr "招募装填手"
 
 msgid "tankmanRecruitRenderer/personalCase"
-msgstr "打开个人档案"
+msgstr "打开档案"
 
 msgid "tankmanRecruitRenderer/radioman"
 msgstr "招募通信兵"
@@ -6555,39 +6383,6 @@ msgstr "(等待进入战斗)"
 
 msgid "tankmen/mediumTank"
 msgstr "中型坦克"
-
-msgid "tankmsnPersonalCase/lackOfSkillsForLearn"
-msgstr "乘员已为该坦克训练了所有的附加特长。"
-
-msgid "tankmsnPersonalCase/loadingInfo"
-msgstr "正加载信息中…请稍等..."
-
-msgid "teachingSkill/after"
-msgstr "训练后"
-
-msgid "teachingSkill/before"
-msgstr "训练前"
-
-msgid "teachingSkill/cancel"
-msgstr "取消"
-
-msgid "teachingSkill/cost"
-msgstr "训练花费"
-
-msgid "teachingSkill/freeXpIsTight"
-msgstr "全局经验不足，无法训练特长。请将战斗经验兑换成全局经验。"
-
-msgid "teachingSkill/submit"
-msgstr "训  练"
-
-msgid "teachingSkill/teachToLevel"
-msgstr "训练到:"
-
-msgid "teachingSkill/title"
-msgstr "用全局经验训练"
-
-msgid "teachingSkill/totalPay"
-msgstr "总计:"
 
 msgid "techtree/Announcement"
 msgstr "敬请期待"

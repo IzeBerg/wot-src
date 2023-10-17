@@ -25,17 +25,15 @@ class VisualScriptEquipment(DynamicScriptComponent):
         self._context = AbilityContextClient(self.entity, equipmentName=descriptor.name)
         self._vsPlan.setContext(self._context)
         self._vsPlan.start()
-        self.set_equipmentState()
         self.set_errorState()
+        self.set_equipmentState()
 
     def canActivate(self):
-        if self._context is not None:
-            self._context.canActive()
-            return (
-             self._context.canActivate, self._context.errorKey)
+        if self._context is None:
+            return (False, None)
         else:
-            return (
-             False, '')
+            self._context.canActive()
+            return (self._context.canActivate, self._context.errorKey)
 
     def onDestroy(self):
         if self._context is not None:
@@ -49,7 +47,13 @@ class VisualScriptEquipment(DynamicScriptComponent):
         return
 
     def set_errorState(self, _=None):
-        self._refreshErrorState()
+        if self._context is None:
+            return
+        else:
+            self._context.onSetErrorState(self.errorState)
+            state = getVisualScriptEquipmentState(self.equipmentState)
+            self.__update(state)
+            return
 
     def set_equipmentState(self, _=None):
         if self._context is None:
@@ -64,22 +68,6 @@ class VisualScriptEquipment(DynamicScriptComponent):
         state = getVisualScriptEquipmentState(self.equipmentState)
         self.__update(state)
 
-    def _refreshErrorState(self):
-        if self._context is None:
-            return
-        else:
-            self._context.onSetErrorState(self.errorState)
-            state = getVisualScriptEquipmentState(self.equipmentState)
-            self.__update(state, force=True)
-            return
-
-    def __update(self, state, force=False):
-        eqCtrl = self.entity.guiSessionProvider.shared.equipments
-        if not eqCtrl.hasEquipment(self.compactDescr):
-            return
-        eq = eqCtrl.getEquipment(self.compactDescr)
-        wasLocked = eq.isLocked()
-        if wasLocked != state.locked or force:
-            eq.setLocked(state.locked)
-            eq.setQuantity(state.quantity)
-            eqCtrl.onEquipmentUpdated(self.compactDescr, eq)
+    def __update(self, state):
+        timeRemaining = max(state.endTime - BigWorld.serverTime(), 0.0) if state.endTime > 0 else state.endTime
+        BigWorld.player().updateVehicleAmmo(self.entity.id, self.compactDescr, state.quantity, state.stage, state.prevStage, timeRemaining, state.totalTime)

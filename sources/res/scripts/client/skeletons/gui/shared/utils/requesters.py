@@ -413,6 +413,10 @@ class IStatsRequester(IRequester):
     def luiVersion(self):
         raise NotImplementedError
 
+    @property
+    def steamShadeGroup(self):
+        raise NotImplementedError
+
 
 class IDossierRequester(IRequester):
 
@@ -667,9 +671,6 @@ class IShopRequester(IShopCommonStats, IRequester):
         raise NotImplementedError
 
     def isActionOnPremium(self):
-        raise NotImplementedError
-
-    def getTankmanCostWithDefaults(self):
         raise NotImplementedError
 
     def getTankmanCostWithGoodyDiscount(self, vehLevel):

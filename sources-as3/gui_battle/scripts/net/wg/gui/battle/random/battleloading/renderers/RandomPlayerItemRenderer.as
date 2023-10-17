@@ -11,6 +11,8 @@ package net.wg.gui.battle.random.battleloading.renderers
       
       private var _squad:BattleAtlasSprite;
       
+      private var _defaultSquadPositionX:int;
+      
       public function RandomPlayerItemRenderer(param1:BaseRendererContainer, param2:int, param3:Boolean)
       {
          super(param1,param2,param3);
@@ -23,6 +25,7 @@ package net.wg.gui.battle.random.battleloading.renderers
          {
             this._squad = _loc4_.squadsAlly[param2];
          }
+         this._defaultSquadPositionX = this._squad.x;
       }
       
       override protected function onDispose() : void
@@ -49,6 +52,16 @@ package net.wg.gui.battle.random.battleloading.renderers
          else
          {
             this._squad.visible = false;
+         }
+      }
+      
+      override protected function updateLayout() : void
+      {
+         super.updateLayout();
+         this._squad.x = this._defaultSquadPositionX;
+         if(isExtendedLayout)
+         {
+            this._squad.x += !!isEnemy ? PRESTIGE_LEVEL_OFFSET : -PRESTIGE_LEVEL_OFFSET;
          }
       }
    }

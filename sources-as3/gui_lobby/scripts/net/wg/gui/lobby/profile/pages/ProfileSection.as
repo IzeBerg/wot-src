@@ -56,10 +56,6 @@ package net.wg.gui.lobby.profile.pages
       override protected function draw() : void
       {
          super.draw();
-         if(this.currentDimension && isInvalid(ResizableInvalidationTypes.CURRENT_DIMENSION_INVALID))
-         {
-            this.applyResizing();
-         }
          if(this.currentData && isInvalid(DOSSIER_DATA_INVALID))
          {
             if(!this._isDataInitialized)
@@ -72,6 +68,10 @@ package net.wg.gui.lobby.profile.pages
                this.battlesDropdown.addEventListener(Event.CHANGE,this.onDropDownChangeHandler);
             }
             this.applyData(this.currentData);
+         }
+         if(this.currentDimension && isInvalid(ResizableInvalidationTypes.CURRENT_DIMENSION_INVALID))
+         {
+            this.applyResizing();
          }
          if(this._isActive && this._isDataInitialized && this._animationManager && isInvalid(ANIMATION_INVALID))
          {

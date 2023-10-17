@@ -4,11 +4,14 @@ from helpers import dependency
 from PlayerEvents import g_playerEvents
 from skeletons.gui.battle_session import IBattleSessionProvider
 from debug_utils import LOG_DEBUG_DEV
-from gui.shared.gui_items.marker_items import MarkerItem
 from shared_utils import nextTick
+from constants import DEATH_ZONE_MASK_PATTERN
 _TIME_TO_STOP_FIRE_ON_LEAVE_ZONE = 5.0
 
 class StaticDeathZone(BigWorld.Entity):
+    onVehicleEntered = Event.Event()
+    onVehicleLeft = Event.Event()
+    onDamage = Event.Event()
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     def __init__(self):
@@ -18,11 +21,22 @@ class StaticDeathZone(BigWorld.Entity):
         self.__functionOnLeaveDeathZone = None
         self._marker = None
         self._onActiveChanged = Event.Event()
+        self.onMaskAdded = Event.Event()
         return
 
     @property
     def visual(self):
         return getattr(self, 'clientVisualComp', None)
+
+    @property
+    def masks(self):
+        masks = []
+        for idx in range(0, self.maskingPolygonsCount):
+            comp = self.dynamicComponents.get(DEATH_ZONE_MASK_PATTERN + str(idx))
+            if comp is not None:
+                masks.append(comp)
+
+        return masks
 
     @property
     def onActiveChanged(self):
@@ -38,28 +52,49 @@ class StaticDeathZone(BigWorld.Entity):
         else:
             g_playerEvents.onAvatarReady += self._onAvatarReady
 
+    def onDynamicComponentCreated(self, component):
+        if component.keyName.startswith(DEATH_ZONE_MASK_PATTERN):
+            self.onMaskAdded(component.udoGuid)
+
     def onLeaveWorld(self):
         self._removeMarker()
         if self.__callbackOnLeaveDeathZone is not None:
             BigWorld.cancelCallback(self.__callbackOnLeaveDeathZone)
             self.__callbackOnLeaveDeathZone = None
         g_playerEvents.onAvatarReady -= self._onAvatarReady
+        if BigWorld.player():
+            BigWorld.player().onAvatarVehicleChanged -= self._onAvatarVehicleChanged
         return
 
     def getClosestPoint(self, pos, searchRadius):
         if not self.visual:
             return self.position
-        return self.visual.getClosestPoint(pos, searchRadius)
+        else:
+            distances = [
+             self.visual.getClosestPoint(pos, searchRadius)]
+            distances.extend([ mask.getClosestPoint(pos, searchRadius) for mask in self.masks ])
+            distances = sorted([ value for value in distances if value is not None ], key=lambda value: value[1])
+            if distances:
+                return distances[0][0]
+            return
 
     def onEntityEnteredInZone(self, entityID):
-        self._marker.onVehicleEnteredZone(entityID)
+        if self._marker is not None:
+            self._marker.onVehicleEnteredZone(entityID)
+        if self.isActive:
+            StaticDeathZone.onVehicleEntered(self.zoneId, entityID)
+        return
 
     def onEntityLeftZone(self, entityID):
-        self._marker.onVehicleLeftZone(entityID)
+        if self._marker is not None:
+            self._marker.onVehicleLeftZone(entityID)
+        if self.isActive:
+            StaticDeathZone.onVehicleLeft(self.zoneId, entityID)
+        return
 
     def onDeathZoneNotification(self, show, entityID, timeToStrike, waveDuration):
         player = BigWorld.player()
-        if player.playerVehicleID == entityID:
+        if player.vehicle and player.vehicle.id == entityID:
             deathzonesCtrl = self.sessionProvider.shared.deathzones
             if deathzonesCtrl:
                 deathzonesCtrl.updateDeathZoneWarningNotification(self.zoneId, show, timeToStrike, waveDuration)
@@ -68,6 +103,7 @@ class StaticDeathZone(BigWorld.Entity):
 
     def onDeathZoneDamage(self, vehicleId, vfx):
         self._playDamageEffect(vehicleId, vfx)
+        StaticDeathZone.onDamage(self.zoneId, vehicleId)
 
     def _playDamageEffect(self, vehicleId, vfx):
         effects = vehicles.g_cache.getVehicleEffect(vfx)
@@ -88,25 +124,37 @@ class StaticDeathZone(BigWorld.Entity):
             self._removeMarker()
 
     def _onAvatarReady(self):
+        BigWorld.player().onAvatarVehicleChanged += self._onAvatarVehicleChanged
         if self.isActive:
             self._createMarker()
+            self._updateVehicleUnderFire()
+
+    def _onAvatarVehicleChanged(self):
+        self._updateVehicleUnderFire()
+
+    def _updateVehicleUnderFire(self):
+        deathzonesCtrl = self.sessionProvider.shared.deathzones
+        if not deathzonesCtrl:
+            return
+        else:
             vehicleUnderFire = self._getVehicleUnderFire()
-            if vehicleUnderFire is not None:
-                timeToStrike = vehicleUnderFire['nextStrikeTime']
-                if timeToStrike > 0:
-                    deathzonesCtrl = self.sessionProvider.shared.deathzones
-                    if deathzonesCtrl:
-                        deathzonesCtrl.updateDeathZoneWarningNotification(self.zoneId, True, timeToStrike, vehicleUnderFire['waveDuration'])
-                    self._warningIsVisible = True
-        return
+            timeToStrike = vehicleUnderFire['nextStrikeTime'] if vehicleUnderFire is not None else 0
+            visible = timeToStrike > 0
+            waveDuration = vehicleUnderFire['waveDuration'] if visible else 0
+            deathzonesCtrl.updateDeathZoneWarningNotification(self.zoneId, visible, timeToStrike, waveDuration)
+            self._warningIsVisible = visible
+            return
 
     def _getVehicleUnderFire(self):
-        playerVehicleId = BigWorld.player().playerVehicleID
-        for vehicleUnderFire in self.vehiclesUnderFire:
-            if vehicleUnderFire['vehicleId'] == playerVehicleId:
-                return vehicleUnderFire
+        vehicle = BigWorld.player().vehicle if BigWorld.player().vehicle else None
+        if not vehicle:
+            return
+        else:
+            for vehicleUnderFire in self.vehiclesUnderFire:
+                if vehicleUnderFire['vehicleId'] == vehicle.id:
+                    return vehicleUnderFire
 
-        return
+            return
 
     def _onLeaveDeathZone(self, callback):
         self.__callbackOnLeaveDeathZone = None
@@ -148,7 +196,7 @@ class _DeathZoneMarkerHandler(object):
         areaMarkerCtrl = self.sessionProvider.shared.areaMarker
         if areaMarkerCtrl:
             self._matrix = Math.Matrix()
-            marker = areaMarkerCtrl.createMarker(self._matrix, MarkerItem.STATIC_DEATH_ZONE_PROXIMITY)
+            marker = areaMarkerCtrl.createMarker(self._matrix, zone.proximityMarkerStyle)
             self._searchRadius = marker.disappearingRadius + self.SEARCH_RADIUS_EXTENSION
             self._markerId = areaMarkerCtrl.addMarker(marker)
             areaMarkerCtrl.onTickUpdate += self._tickUpdate

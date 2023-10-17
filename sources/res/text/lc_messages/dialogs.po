@@ -25,7 +25,7 @@ msgstr "这个邮箱已经和您的账号绑定。"
 msgid "accountCompletion/activate/button"
 msgstr "发送激活码/更换邮箱"
 
-msgid "accountCompletion/activate/coundownText"
+msgid "accountCompletion/activate/countdownText"
 msgstr "重新发送激活码或在%(timer)秒内更换邮箱"
 
 msgid "accountCompletion/activate/enterCredentialsAgain"
@@ -41,13 +41,17 @@ msgid "accountCompletion/activate/misspell"
 msgstr "如果您没有收到邮件，请仔细检查您输入的邮箱是否正确。"
 
 msgid "accountCompletion/activate/text"
-msgstr "%(email)已接收到您的账号激活邮件。 您可在来自360的邮件内找到4位数的激活码。"
+msgstr ""
+"包含360验证码的电子邮件已发送至以下邮箱{whiteSpanish_Open}%(email){whiteSpanish_Close}。输入4位验证码以确认您的邮箱并完成账号注册。"
 
 msgid "accountCompletion/activate/title"
-msgstr "激活码"
+msgstr "确认邮箱地址"
 
 msgid "accountCompletion/activate/tooManyIncorrectTries"
 msgstr "错误输入激活码次数过多。"
+
+msgid "accountCompletion/add"
+msgstr "添加"
 
 msgid "accountCompletion/alreadyLinked/subTitle"
 msgstr "这个邮箱已经和您的账号绑定。"
@@ -92,10 +96,10 @@ msgid "accountCompletion/email/fullAccess/title"
 msgstr "开通游戏的所有功能"
 
 msgid "accountCompletion/email/subTitle"
-msgstr "添加邮箱以获取奖励和更多游戏选项！%(emailIcon)"
+msgstr "添加并确认您的邮箱，以获得奖励和解锁新功能。%(emailIcon)"
 
 msgid "accountCompletion/email/title"
-msgstr "添加邮箱"
+msgstr "完成账号"
 
 msgid "accountCompletion/emailAlreadyTaken"
 msgstr "另一个账号已绑定这个邮箱。"
@@ -156,6 +160,9 @@ msgstr "在%(time)后重试"
 
 msgid "accountCompletion/errorIsWrong"
 msgstr "邮箱地址只能使用拉丁字母、数字、@符号、英文句号和下划线。"
+
+msgid "accountCompletion/later"
+msgstr "以后再说"
 
 msgid "accountCompletion/leaveSquad/cancel"
 msgstr "取消"
@@ -241,7 +248,7 @@ msgid "accountCompletion/renamingOverlay/title"
 msgstr "创建您在游戏中的昵称。"
 
 msgid "accountCompletion/rewardsTitle"
-msgstr "验证邮箱地址的奖励"
+msgstr "验证邮箱的奖励"
 
 msgid "accountCompletion/spa/passwordIsWeak"
 msgstr "该密码过于简单。请换一个密码。"
@@ -265,55 +272,13 @@ msgstr ""
 "该过程可能需要一些时间。"
 
 msgid "accountCompletion/warningServerUnavailable"
-msgstr "%(icon) 这项服务暂时不可用。%(br) 请稍后再试。"
+msgstr "%(icon) 这项服务暂不可用。请稍后再试。"
 
 msgid "accountCompletion/warningServerUnavailableTimed"
 msgstr "%(icon)这项服务暂时不可用。%(br) 请在%(time)s后再试。"
 
 msgid "accountCompletion/warningSomethingWentWrong"
 msgstr "出现了一些问题。"
-
-msgid "addFreeSkillWindow/label"
-msgstr "零历练特长"
-
-msgid "addFreeSkillWindow/submit"
-msgstr "选择特长"
-
-msgid "addSkillWindow/cancel"
-msgstr "取消"
-
-msgid "addSkillWindow/desc1"
-msgstr "特长在开始训练后立即生效，并逐渐提高至最高熟练度。"
-
-msgid "addSkillWindow/desc2"
-msgstr "只有当特长的熟练度到达100%时才发挥效用。"
-
-msgid "addSkillWindow/label"
-msgstr "特长"
-
-msgid "addSkillWindow/label/commander"
-msgstr "车长"
-
-msgid "addSkillWindow/label/common"
-msgstr "团体特长"
-
-msgid "addSkillWindow/label/driver"
-msgstr "驾驶员"
-
-msgid "addSkillWindow/label/gunner"
-msgstr "炮手"
-
-msgid "addSkillWindow/label/loader"
-msgstr "装填手"
-
-msgid "addSkillWindow/label/radioman"
-msgstr "通信兵"
-
-msgid "addSkillWindow/submit"
-msgstr "选择特长"
-
-msgid "addSkillWindow/title"
-msgstr "查看附加特长"
 
 msgid "barracksExpand/cancel"
 msgstr "取消"
@@ -367,7 +332,7 @@ msgid "battleRoyale/preBattle/cancel"
 msgstr "取消"
 
 msgid "battleRoyale/preBattle/message"
-msgstr "部分玩家未准备好，或所需人数不足。"
+msgstr "部分玩家未就绪，或人数不足。"
 
 msgid "battleRoyale/preBattle/submit"
 msgstr "开始战斗"
@@ -888,7 +853,7 @@ msgid "confirmBuyAndInstall/depotMessage"
 msgstr "其模块将被拆卸至仓库。"
 
 msgid "confirmBuyAndInstall/insufficientFundsTooltip/amount"
-msgstr "需要:"
+msgstr "若想购买，还需获取:"
 
 msgid "confirmBuyAndInstall/insufficientFundsTooltip/body"
 msgstr "您可以通过战斗获得银币，也可以在仓库中卖掉不需要的物品或使用金币兑换银币。"
@@ -1029,18 +994,6 @@ msgstr "总计"
 msgid "confirmModuleDialog/totalLabel"
 msgstr "总计:"
 
-msgid "confirmReward/cancel"
-msgstr "取消"
-
-msgid "confirmReward/message"
-msgstr "从次元之门领取您的奖励？"
-
-msgid "confirmReward/submit"
-msgstr "领取"
-
-msgid "confirmReward/title"
-msgstr "领取奖励"
-
 msgid "confirmUnlock/cancel"
 msgstr "取消"
 
@@ -1095,65 +1048,58 @@ msgstr "确认"
 msgid "createOrderConfirmation/title"
 msgstr "确认准备储备"
 
-msgid "crewBooks/confirmation/button/cancel"
-msgstr "取消"
+msgid "crewBookPurchase/btnDisabledTooltip"
+msgstr "资金不足，无法购买。"
 
-msgid "crewBooks/confirmation/button/submit"
-msgstr "学习"
+msgid "crewBookPurchase/description/crew"
+msgstr "对全体乘员生效。学习后，%(book)s为每名乘员提供%(exp)s。"
 
-msgid "crewBooks/confirmation/desc/crewBook"
-msgstr "每名{vehicle_name}车组乘员将获得{exp}经验，并将使用乘员手册。"
+msgid "crewBookPurchase/description/personal"
+msgstr "对所选乘员生效。学习后，%(book)s为该乘员提供%(exp)s。"
 
-msgid "crewBooks/confirmation/desc/personalBook"
-msgstr "{name}将获得{exp}经验，并将使用乘员手册。"
+msgid "crewBookPurchase/purchase"
+msgstr "购买"
 
-msgid "crewBooks/confirmation/title"
-msgstr "确定学习乘员手册？"
+msgid "crewBookPurchase/purchase/title"
+msgstr "购买%(book)s？"
 
-msgid "crewBooks/success/desc/crewBook"
-msgstr "每名{vehicle_name}车组乘员都获得了{exp}经验。"
+msgid "crewMemberRoleChange/bullet"
+msgstr "•"
 
-msgid "crewBooks/success/desc/personalBook"
-msgstr "{name}获得{exp}经验。"
+msgid "crewMemberRoleChange/change"
+msgstr "更改"
 
-msgid "crewBooks/success/title"
-msgstr "恭喜你！"
+msgid "crewMemberRoleChange/desc/premium"
+msgstr "乘员无需接受金币坦克的训练。因为您可以将乘员转移到相同类型的金币坦克上，没有处罚。"
 
-msgid "crewRetraining/title"
-msgstr "再训练"
-
-msgid "crewSkins/skinWillBeDeleted/cancel"
-msgstr "取消"
-
-msgid "crewSkins/skinWillBeDeleted/message1"
-msgstr "乘员皮肤不适合新的专业，无法放入仓库-无剩余空间。变更专业后将被删除，您将获得补偿。"
-
-msgid "crewSkins/skinWillBeDeleted/message2"
+msgid "crewMemberRoleChange/desc/simple"
 msgstr ""
-"这些乘员的皮肤不能放在仓库中-无剩余空间。它们将在删除后被删除，您将获得补偿。\n"
-"\n"
-"确认删除乘员皮肤么？"
+"{whiteSpanish_Open}%(currentRole)s{whiteSpanish_Close}专业将更改为{whiteSpanish_Open}%(newRole)s{whiteSpanish_Close}。专业更改后，所有特长都将被重置。"
 
-msgid "crewSkins/skinWillBeDeleted/messagePrice"
-msgstr "补偿:"
+msgid "crewMemberRoleChange/desc/wrongSpecialization"
+msgstr ""
+"当前专精: "
+"{whiteSpanish_Open}%(tankLevel)s%(icon)s%(tankName)s。{whiteSpanish_Close}该乘员的专精将更改为{whiteSpanish_Open}%(newTankLevel)s%(newIcon)s%(newTankName)s。{whiteSpanish_Close}"
 
-msgid "crewSkins/skinWillBeDeleted/submit"
-msgstr "删除"
+msgid "crewMemberRoleChange/price"
+msgstr "价格:"
 
-msgid "crewSkins/skinWillBeDeleted/title"
-msgstr "确认删除"
+msgid "crewMemberRoleChange/title/extended"
+msgstr "转移至%(tankName)s并更改专业？"
 
-msgid "crewSkins/skinWillBeRemoved/cancel"
-msgstr "取消"
+msgid "crewMemberRoleChange/title/simple"
+msgstr "更改当前专业？"
 
-msgid "crewSkins/skinWillBeRemoved/message"
-msgstr "乘员皮肤不适合新的专业，将被存储到仓库。"
+msgid "crewMemberTankChange/desc"
+msgstr ""
+"当前坦克: "
+"{whiteSpanish_Open}%(tankLevel)s%(icon)s%(tankName)s。{whiteSpanish_Close}乘员将在转移后离开该坦克。"
 
-msgid "crewSkins/skinWillBeRemoved/submit"
+msgid "crewMemberTankChange/title"
+msgstr "将乘员转移至%(tankName)s？"
+
+msgid "crewMemberTankChange/transfer"
 msgstr "确认"
-
-msgid "crewSkins/skinWillBeRemoved/title"
-msgstr "确认拆卸"
 
 msgid "customization/applyProjectionDecalToOtherSeasons/cancel"
 msgstr "取消"
@@ -1376,56 +1322,67 @@ msgstr ""
 msgid "disconnected/title"
 msgstr "连接中断"
 
-msgid "dismissTankman/cancel"
-msgstr "确认"
+msgid "dismissTankman/buttons/dismiss"
+msgstr "解雇"
 
-msgid "dismissTankman/message"
-msgstr "确认解雇这个坦克乘员么？"
+msgid "dismissTankman/description/perk"
+msgstr ""
+"该操作需要输入特长训练水平: "
+"{cream_Open}%(perk)s{cream_Close}({whiteOrange_Open}%(level)s{whiteOrange_Close})"
 
-msgid "dismissTankman/submit"
-msgstr "确认"
+msgid "dismissTankman/description/qualification"
+msgstr "该操作需要输入主要专业水平({whiteOrange_Open}%(level)s{whiteOrange_Close})。"
 
-msgid "dismissTankman/title"
-msgstr "确认解散"
+msgid "dismissTankman/description/time"
+msgstr "所选乘员将被解雇。您可以在{whiteOrange_Open}%(time)s天{whiteOrange_Close}内将其恢复。"
+
+msgid "dismissTankman/header"
+msgstr "解雇乘员"
+
+msgid "dismissTankman/limited"
+msgstr "已达到解雇上限。被解雇的乘员将替换%(name)s(%(role)s，%(vehicle)s)。"
+
+msgid "dismissTankman/noRecovery"
+msgstr "无法恢复"
 
 msgid "dismissedBufferOverFlaw/cancel"
 msgstr "取消"
 
 msgid "dismissedBufferOverFlaw/message"
-msgstr "注意！当您解雇%(dismissedName)s，它们将替代%(deletedStr)s。确认操作吗？"
+msgstr "注意！当您解雇%(dismissedName)s后，他将替换%(deletedStr)s。确认替换？"
 
 msgid "dismissedBufferOverFlaw/submit"
 msgstr "确认"
 
 msgid "dismissedBufferOverFlaw/title"
-msgstr "确认操作"
+msgstr "确认替换"
 
 msgid "dismissedBufferOverFlawMultiple/cancel"
 msgstr "取消"
 
 msgid "dismissedBufferOverFlawMultiple/message"
-msgstr "注意！当您解雇乘员，它将取代%(deletedStr)s与%(extraCount)s乘员。确定操作吗？"
+msgstr "注意！当您解雇乘员后，他们将替换%(deletedStr)s与另%(extraCount)s名乘员。确认替换？"
 
 msgid "dismissedBufferOverFlawMultiple/submit"
 msgstr "确认"
 
 msgid "dismissedBufferOverFlawMultiple/title"
-msgstr "解雇乘员区已达上限"
+msgstr "解雇缓冲区已达上限"
+
+msgid "documentChangeDialog/button/submit"
+msgstr "更改"
+
+msgid "documentChangeDialog/dropdown/firstName"
+msgstr "名字"
+
+msgid "documentChangeDialog/dropdown/lastName"
+msgstr "姓氏"
+
+msgid "documentChangeDialog/title"
+msgstr "更改姓名和外观？"
 
 msgid "dropSkill/cancel"
 msgstr "取消"
-
-msgid "dropSkill/fullscreen/costFree"
-msgstr "价格：{whiteSpanish_Open}免费{whiteSpanish_Close}"
-
-msgid "dropSkill/fullscreen/description"
-msgstr "乘员将被训练至{whiteSpanish_Open}%(skillPercent)s%%{whiteSpanish_Close}熟练度"
-
-msgid "dropSkill/fullscreen/ok"
-msgstr "重置"
-
-msgid "dropSkill/fullscreen/title"
-msgstr "重置所有特长？"
 
 msgid "dropSkill/message"
 msgstr "重置所有特长？"
@@ -1534,7 +1491,10 @@ msgid "equipmentUpgrade/confirmButton"
 msgstr "升级"
 
 msgid "equipmentUpgrade/getMoreCurrencyButton"
-msgstr "继续"
+msgstr "前往拆解"
+
+msgid "equipmentUpgrade/getMoreCurrencyButtonTooltip/body"
+msgstr "没有可拆解的试验型配件。"
 
 msgid "eula/p1"
 msgstr "请仔细阅读<BR/><A HREF='event:%(eulaURL)s'><U>最终用户许可协议</U></A>再继续下一步操作。"
@@ -1640,15 +1600,6 @@ msgstr "确认"
 
 msgid "fortificationFixedPlayers/title"
 msgstr "绑定在建筑物"
-
-msgid "freeSkillsInfo/message"
-msgstr "零历练特长是一名乘员默认拥有的特长。它无需花费经验训练，玩家也无法更换。零历练特长可显著减少进一步训练乘员所需的经验，并以此赋予玩家优势。"
-
-msgid "freeSkillsInfo/submit"
-msgstr "收到！"
-
-msgid "freeSkillsInfo/title"
-msgstr "关于零历练特长"
 
 msgid "freeSkillsLearning/message"
 msgstr ""
@@ -2223,6 +2174,45 @@ msgstr "确认"
 msgid "nextBattleOptionConfirmation/title"
 msgstr "修改设置"
 
+msgid "perkLearnConfirm/desc"
+msgstr "训练后的特长水平: {yellow_Open}%(level)s%%{yellow_Close}"
+
+msgid "perkLearnConfirm/learn"
+msgstr "训练"
+
+msgid "perkLearnConfirm/title"
+msgstr "训练%(skillName)s特长？"
+
+msgid "perksRest/after"
+msgstr "重置后:"
+
+msgid "perksRest/before"
+msgstr "重置前:"
+
+msgid "perksRest/cancel"
+msgstr "取消"
+
+msgid "perksRest/free/description"
+msgstr "熟练度低于{yellow_Open}1%{yellow_Close}的特长可免费重置。"
+
+msgid "perksRest/noNewPerks"
+msgstr "已训练特长的全部经验将添加至主要专业水平。"
+
+msgid "perksRest/priceCard/credits/description"
+msgstr "该乘员的主要专业水平会降低至%(value)s"
+
+msgid "perksRest/priceCard/free/description"
+msgstr "该乘员的主要专业水平会降低至%(value)s"
+
+msgid "perksRest/priceCard/gold/description"
+msgstr "该乘员的主要专业水平保持不变: %(value)s"
+
+msgid "perksRest/submit"
+msgstr "重置"
+
+msgid "perksRest/title"
+msgstr "重置%(tankmanRole)s？"
+
 msgid "postmortem/cancel"
 msgstr "取消"
 
@@ -2259,32 +2249,20 @@ msgstr "延期"
 msgid "premiumContinueConfirmation/title"
 msgstr "确认"
 
-msgid "protectedDismissTankman/additionalMessage"
-msgstr "要完成操作，请输入等级%(skillType)s \"%(skillName)s\" (%(roleLevel)s)"
+msgid "priceCard/credits/title"
+msgstr "军事学校"
 
-msgid "protectedDismissTankman/additionalMessage/isPerk"
-msgstr "特性"
+msgid "priceCard/free/title"
+msgstr "快速课程"
 
-msgid "protectedDismissTankman/alert"
-msgstr "恢复将不可用"
+msgid "priceCard/gold/title"
+msgstr "坦克学院"
 
-msgid "protectedDismissTankman/cancel"
-msgstr "取消"
+msgid "priceCard/price/free"
+msgstr "免费"
 
-msgid "protectedDismissTankman/errorMessage"
-msgstr "你输入了不正确的信息。"
-
-msgid "protectedDismissTankman/mainMessage"
-msgstr "该操作需要输入主要专业的训练水平(%(roleLevel)s)"
-
-msgid "protectedDismissTankman/message"
-msgstr "确认解雇"
-
-msgid "protectedDismissTankman/submit"
-msgstr "解 雇"
-
-msgid "protectedDismissTankman/title"
-msgstr "解雇乘员"
+msgid "priceCard/recertification/title"
+msgstr "再训练"
 
 msgid "punishmentWindow/cancel"
 msgstr "确认"
@@ -2551,11 +2529,32 @@ msgstr "确认"
 msgid "rally/startBattle/title"
 msgstr "搜索敌方"
 
+msgid "recruit/cancel"
+msgstr "取消"
+
+msgid "recruit/priceCard/credits/description"
+msgstr "招募后的主要专业水平: %(value)s"
+
+msgid "recruit/priceCard/free/description"
+msgstr "招募后的主要专业水平: %(value)s"
+
+msgid "recruit/priceCard/gold/description"
+msgstr "招募后的主要专业水平: %(value)s"
+
+msgid "recruit/submit"
+msgstr "招募"
+
+msgid "recruit/title"
+msgstr "为%(vehicleName)s招募%(role)s？"
+
+msgid "recruit/warning/premiumVehicle"
+msgstr "金币坦克无需招募乘员。您可以将乘员转移到相同类型的金币坦克上，没有处罚。"
+
 msgid "recruitDialog/name/title"
-msgstr "招募一名新乘员(%(name)s)？"
+msgstr "招募新乘员(%(name)s)？"
 
 msgid "recruitDialog/title"
-msgstr "招募一名新乘员?"
+msgstr "招募新乘员？"
 
 msgid "recruitWindow/cancel"
 msgstr "取消"
@@ -2566,59 +2565,14 @@ msgstr "未选择"
 msgid "recruitWindow/nation"
 msgstr "系别"
 
-msgid "recruitWindow/nationDropdown/czech"
-msgstr "J系"
-
-msgid "recruitWindow/nationDropdown/germany"
-msgstr "D系"
-
-msgid "recruitWindow/nationDropdown/italy"
-msgstr "I系"
-
-msgid "recruitWindow/nationDropdown/poland"
-msgstr "B系"
-
-msgid "recruitWindow/nationDropdown/sweden"
-msgstr "V系"
-
-msgid "recruitWindow/nationDropdown/usa"
-msgstr "M系"
-
-msgid "recruitWindow/nationDropdown/ussr"
-msgstr "S系"
-
-msgid "recruitWindow/nations/no_vehicle"
-msgstr "未选择"
-
 msgid "recruitWindow/specialization"
 msgstr "专业"
 
 msgid "recruitWindow/submit"
-msgstr "确认"
-
-msgid "recruitWindow/title"
-msgstr "招募乘员"
+msgstr "招募"
 
 msgid "recruitWindow/vehicleClass"
 msgstr "坦克类型"
-
-msgid "recruitWindow/vehicleClassDropdown/AT-SPG"
-msgstr "自行反坦克炮"
-
-msgid "recruitWindow/vehicleClassDropdown/SPG"
-msgstr "自行火炮"
-
-msgid "recruitWindow/vehicleClassDropdown/all"
-msgstr "全部"
-
-msgid "recruitWindow/vehicleClassDropdown/heavyTank"
-msgstr "重型坦克"
-
-msgid "recruitWindow/vehicleClassDropdown/lightTank"
-msgstr "轻型坦克"
-
-msgid "recruitWindow/vehicleClassDropdown/mediumTank"
-msgstr "中型坦克"
 
 msgid "recruitWindow/vehicleType"
 msgstr "坦克"
@@ -2752,18 +2706,6 @@ msgstr "继续"
 msgid "reportBug/title"
 msgstr "跳转到游戏论坛"
 
-msgid "rerollReward/cancel"
-msgstr "取消"
-
-msgid "rerollReward/confirm"
-msgstr "重置奖励"
-
-msgid "rerollReward/message"
-msgstr "您将花费:"
-
-msgid "rerollReward/title"
-msgstr "您确定要重置当前奖励吗？"
-
 msgid "resetGraphics/cancel"
 msgstr "取消"
 
@@ -2778,34 +2720,20 @@ msgstr "设置"
 msgid "resetGraphics/title"
 msgstr "改变图形设置"
 
-msgid "restoreTankman/cancel"
-msgstr "取消"
+msgid "restoreTankman/buttons/recover"
+msgstr "恢复"
 
-msgid "restoreTankman/disconnectedFromCenter"
-msgstr ""
-"目前无法招募乘员。\n"
-"稍后再试。"
+msgid "restoreTankman/description"
+msgstr "您将恢复%(name)s。"
 
-msgid "restoreTankman/forFree"
-msgstr "免费"
+msgid "restoreTankman/free"
+msgstr "价格: 免费"
 
-msgid "restoreTankman/message"
-msgstr "确认恢复该乘员吗？"
-
-msgid "restoreTankman/newPeriodWarning"
-msgstr "请注意！免费恢复已过期。您可以使用金币在%(daysCount)s天内恢复乘员。"
+msgid "restoreTankman/header"
+msgstr "确认恢复该乘员？"
 
 msgid "restoreTankman/price"
 msgstr "价格:"
-
-msgid "restoreTankman/submit"
-msgstr "恢复"
-
-msgid "restoreTankman/title"
-msgstr "恢复乘员"
-
-msgid "restoreTankman/warning"
-msgstr "点击恢复后，您将无法取消此操作。请仔细检查所有的操作。"
 
 msgid "restoreVehicleDialog/cancelBtn"
 msgstr "取消"
@@ -2825,8 +2753,48 @@ msgstr "恢复%(vehiclename)s"
 msgid "restoreVehicleDialog/warning"
 msgstr "点击恢复后，您将无法用金币兑换已购买的配件和给养。请仔细检查所有的操作。"
 
-msgid "retrainingWindow/submit"
+msgid "retrain/cancel"
+msgstr "取消"
+
+msgid "retrain/massive/tankmenCount"
+msgstr "需要再训练的乘员: {whiteSpanish_Open}%(count)s{whiteSpanish_Close}"
+
+msgid "retrain/price"
+msgstr "价格:"
+
+msgid "retrain/priceCard/credits/description"
+msgstr "再训练后的主要专业水平: %(value)s"
+
+msgid "retrain/priceCard/free/description"
+msgstr "再训练后的主要专业水平: %(value)s"
+
+msgid "retrain/priceCard/gold/description"
+msgstr "再训练后的主要专业水平: %(value)s"
+
+msgid "retrain/single/checkBoxLabel"
+msgstr "指派至该坦克"
+
+msgid "retrain/submit"
 msgstr "再训练"
+
+msgid "retrain/title/massive"
+msgstr "再训练为%(vehicleName)s的乘员？"
+
+msgid "retrain/title/singe"
+msgstr "再训练为%(vehicleName)s的%(role)s？"
+
+msgid "retrain/warning/premiumVehicle"
+msgstr "乘员无需接受金币坦克的训练。您可以将乘员转移到相同类型的金币坦克上，没有处罚。"
+
+msgid "rudyInfo/message"
+msgstr ""
+"游戏将重塑不朽的经典传奇！《四个坦克兵与狗》是B系黑白电视剧，改编自贾努兹·卡明斯基的同名小说。该剧首播于1966年5月9日，讲述了战时绰号鲁迪(姜)的T-34-85坦克的乘员与其爱犬萨里克的冒险故事。"
+
+msgid "rudyInfo/submit"
+msgstr "收到！"
+
+msgid "rudyInfo/title"
+msgstr "四个坦克兵与狗"
 
 msgid "sellConfirmation/cancel"
 msgstr "取消"
@@ -2873,17 +2841,8 @@ msgstr "升级应用程序。如果重复提示错误，需更新服务器。"
 msgid "shopSyncError/title"
 msgstr "非同步"
 
-msgid "skillDropWindow/cancel"
-msgstr "取消"
-
-msgid "skillDropWindow/message"
-msgstr "技能%s重置后，该乘员的主要专业将变为%d%s，继续么？"
-
-msgid "skillDropWindow/submit"
-msgstr "重置"
-
-msgid "skillDropWindow/title"
-msgstr "重置特长"
+msgid "skinApplyDialog/button/submit"
+msgstr "应用"
 
 msgid "soundModeInvalid/cancel"
 msgstr "取消"
@@ -2985,7 +2944,7 @@ msgid "squadHaveNoPlayerAuto/submit"
 msgstr "确认"
 
 msgid "squadHaveNoPlayerAuto/title"
-msgstr "小队未准备好"
+msgstr "小队未就绪"
 
 msgid "squadHaveNoPlayers/cancel"
 msgstr "取消"
@@ -2997,7 +2956,7 @@ msgid "squadHaveNoPlayers/submit"
 msgstr "确认"
 
 msgid "squadHaveNoPlayers/title"
-msgstr "小队未准备好"
+msgstr "小队未就绪"
 
 msgid "squadHaveNoPlayersAuto/cancel"
 msgstr "取消"
@@ -3009,19 +2968,19 @@ msgid "squadHaveNoPlayersAuto/submit"
 msgstr "确认"
 
 msgid "squadHaveNoPlayersAuto/title"
-msgstr "小队未准备好"
+msgstr "小队未就绪"
 
 msgid "squadHaveNotReadyPlayer/cancel"
 msgstr "取消"
 
 msgid "squadHaveNotReadyPlayer/message"
-msgstr "有一位组队的玩家还没准备好，要进入战斗吗？"
+msgstr "小队中的一名玩家未就绪，要进入战斗吗？"
 
 msgid "squadHaveNotReadyPlayer/submit"
 msgstr "确认"
 
 msgid "squadHaveNotReadyPlayer/title"
-msgstr "小队未准备好"
+msgstr "小队未就绪"
 
 msgid "squadHaveNotReadyPlayerAuto/cancel"
 msgstr "取消"
@@ -3033,19 +2992,19 @@ msgid "squadHaveNotReadyPlayerAuto/submit"
 msgstr "确认"
 
 msgid "squadHaveNotReadyPlayerAuto/title"
-msgstr "小队未准备好"
+msgstr "小队未就绪"
 
 msgid "squadHaveNotReadyPlayers/cancel"
 msgstr "取消"
 
 msgid "squadHaveNotReadyPlayers/message"
-msgstr "还有队员未准备好. 要进入战斗吗?"
+msgstr "还有队员未就绪。要进入战斗吗?"
 
 msgid "squadHaveNotReadyPlayers/submit"
 msgstr "确认"
 
 msgid "squadHaveNotReadyPlayers/title"
-msgstr "小队未准备好"
+msgstr "小队未就绪"
 
 msgid "squadHaveNotReadyPlayersAuto/cancel"
 msgstr "取消"
@@ -3057,7 +3016,7 @@ msgid "squadHaveNotReadyPlayersAuto/submit"
 msgstr "确认"
 
 msgid "squadHaveNotReadyPlayersAuto/title"
-msgstr "小队未准备好"
+msgstr "小队未就绪"
 
 msgid "squadHavePlayersInBattle/message"
 msgstr "无法参加新的战斗:有几个玩家还未退出战斗。请等待当前战斗结束。"
@@ -3066,7 +3025,7 @@ msgid "squadHavePlayersInBattle/submit"
 msgstr "收到！"
 
 msgid "squadHavePlayersInBattle/title"
-msgstr "小队未准备好"
+msgstr "小队未就绪"
 
 msgid "squadPremiumNeeded/cancel"
 msgstr "取消"
@@ -3117,78 +3076,6 @@ msgstr "确认"
 
 msgid "switchPeripheryWindow/windowTitle"
 msgstr "切换至其它服务器"
-
-msgid "tankmanChageRole/unknownVehicle/cancel"
-msgstr "取消"
-
-msgid "tankmanChageRole/unknownVehicle/message"
-msgstr "%(tankname)s不在车库中。是否继续修改乘员的专业？"
-
-msgid "tankmanChageRole/unknownVehicle/submit"
-msgstr "确认"
-
-msgid "tankmanChageRole/unknownVehicle/title"
-msgstr "确认转职 "
-
-msgid "tankmanRetraining/knownVehicleByGold/cancel"
-msgstr "取消"
-
-msgid "tankmanRetraining/knownVehicleByGold/message"
-msgstr "花费%(price)s再训练车组乘员？"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/cancel"
-msgstr "取消"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/message"
-msgstr "花费%(price)s再训练车组乘员？"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/submit"
-msgstr "再训练"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/title"
-msgstr "确认训练"
-
-msgid "tankmanRetraining/knownVehicleByGold/submit"
-msgstr "再训练"
-
-msgid "tankmanRetraining/knownVehicleByGold/title"
-msgstr "确认训练"
-
-msgid "tankmanRetraining/undistributedExp/cancel"
-msgstr "取消"
-
-msgid "tankmanRetraining/undistributedExp/message"
-msgstr "再训练乘员时，部分未分配的经验将用于将主要专业训练至100%"
-
-msgid "tankmanRetraining/undistributedExp/submit"
-msgstr "再训练"
-
-msgid "tankmanRetraining/undistributedExp/title"
-msgstr "确认再训练"
-
-msgid "tankmanRetraining/unknownVehicle/cancel"
-msgstr "取消"
-
-msgid "tankmanRetraining/unknownVehicle/message"
-msgstr "这里没有 %(tankname)s 在仓库中。确认重新训练乘员吗？"
-
-msgid "tankmanRetraining/unknownVehicle/submit"
-msgstr "确认"
-
-msgid "tankmanRetraining/unknownVehicle/title"
-msgstr "确认训练"
-
-msgid "tankmanRetraining/unknownVehicleByGold/cancel"
-msgstr "取消"
-
-msgid "tankmanRetraining/unknownVehicleByGold/message"
-msgstr "车库里没有%(tankname)s。花费%(price)s再训练车组乘员？"
-
-msgid "tankmanRetraining/unknownVehicleByGold/submit"
-msgstr "再训练"
-
-msgid "tankmanRetraining/unknownVehicleByGold/title"
-msgstr "确认训练"
 
 msgid "tradeInConfirmation/cancel"
 msgstr "取消"
@@ -3543,10 +3430,10 @@ msgid "xpToTmenCheckbox/cancel"
 msgstr "取消"
 
 msgid "xpToTmenCheckbox/message"
-msgstr "这辆坦克所获得经验将全部分配给坦克乘员。如果要积累经验，请关闭'加速乘员训练'。"
+msgstr "该坦克所获得的经验将全部用于乘员训练。经验最少的乘员的训练速度将加倍。"
 
 msgid "xpToTmenCheckbox/submit"
-msgstr "确认"
+msgstr "开"
 
 msgid "xpToTmenCheckbox/title"
-msgstr "加速乘员训练"
+msgstr "加速乘员训练？"

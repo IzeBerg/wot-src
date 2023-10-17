@@ -9,6 +9,7 @@ package net.wg.gui.battle.views.ammunitionPanel
       public function EpicRespawnAmmunitionPanelView()
       {
          super();
+         setManageSize(true);
       }
    }
 }
