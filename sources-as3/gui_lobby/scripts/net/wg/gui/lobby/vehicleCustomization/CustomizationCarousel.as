@@ -67,9 +67,9 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private static const BOOKMARK_START_OFFSET:int = 5;
       
-      private static const HIT_AREA_HEIGHT:int = 116;
+      private static const HIT_AREA_HEIGHT:int = 106;
       
-      private static const HIT_AREA_HEIGHT_MIN:int = 95;
+      private static const HIT_AREA_HEIGHT_MIN:int = 85;
       
       private static const SHOP_BTN_WIDTH_SMALL:int = 135;
       
@@ -211,11 +211,11 @@ package net.wg.gui.lobby.vehicleCustomization
          this.scrollBar.width = scrollList.width;
          this.scrollBar.x = scrollList.x;
          this.scrollBar.y = leftArrow.y + leftArrow.height + SCROLL_Y_OFFSET;
-         this.projectionDecalHint.x = this.editableStyleHint.x = this.progressionDecalHint.x = scrollList.x;
-         this.projectionDecalHint.y = this.editableStyleHint.y = this.progressionDecalHint.y = scrollList.y;
-         this.projectionDecalHint.width = this.editableStyleHint.width = this.progressionDecalHint.width = scrollList.width;
-         this.projectionDecalHint.height = this.editableStyleHint.height = this.progressionDecalHint.height = !!this._isMinResolution ? Number(HIT_AREA_HEIGHT_MIN) : Number(HIT_AREA_HEIGHT);
          this.carouselFilters.gapOffset = int(this._isMinResolution) * FILTERS_GAP_OFFSET;
+         this.projectionDecalHint.x = this.editableStyleHint.x = this.progressionDecalHint.x = scrollList.x + scrollList.maskOffsetLeft;
+         this.projectionDecalHint.width = this.editableStyleHint.width = this.progressionDecalHint.width = scrollList.width - scrollList.maskOffsetLeft - scrollList.maskOffsetRight;
+         this.projectionDecalHint.y = this.editableStyleHint.y = this.progressionDecalHint.y = scrollList.y;
+         this.projectionDecalHint.height = this.editableStyleHint.height = this.progressionDecalHint.height = !!this._isMinResolution ? Number(HIT_AREA_HEIGHT_MIN) : Number(HIT_AREA_HEIGHT);
       }
       
       override protected function updateAvailableScroll(param1:Boolean, param2:Boolean) : void

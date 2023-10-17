@@ -81,9 +81,10 @@ package net.wg.gui.components.questProgress
       
       override public function init(param1:IQPInitData) : void
       {
+         var _loc2_:Boolean = false;
          super.init(param1);
          this.descrTf.visible = StringUtils.isNotEmpty(param1.description);
-         var _loc2_:Boolean = StringUtils.isNotEmpty(param1.multiplier);
+         _loc2_ = StringUtils.isNotEmpty(param1.multiplier);
          this.multiplierTf.visible = _loc2_;
          this.multiplierIcon.visible = _loc2_;
          this.descrTf.htmlText = param1.description;

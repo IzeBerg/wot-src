@@ -7,6 +7,8 @@
 		<Heavy>204</Heavy>
 		<Large>205</Large>
 		<Large_SH>206</Large_SH>
+		<Large_HW_BOT>500</Large_HW_BOT>
+		<Heavy_HW_BOT>501</Heavy_HW_BOT>
 	</ids>
 	<shared>
 		<Small>
@@ -73,5 +75,29 @@
 			<maxRegenHealth>80</maxRegenHealth>
 			<repairCost>0</repairCost>
 		</Large_SH>
+		<Large_HW_BOT>
+			<tags/>
+			<price>100</price>
+			<notInShop>true</notInShop>
+			<weight>300</weight>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>80</maxRegenHealth>
+			<repairCost>
+				1.0
+				<!--BW_String-->
+			</repairCost>
+		</Large_HW_BOT>
+		<Heavy_HW_BOT>
+			<tags/>
+			<price>100</price>
+			<notInShop>true</notInShop>
+			<weight>275</weight>
+			<maxHealth>175</maxHealth>
+			<maxRegenHealth>70</maxRegenHealth>
+			<repairCost>
+				1.0
+				<!--BW_String-->
+			</repairCost>
+		</Heavy_HW_BOT>
 	</shared>
 </root>

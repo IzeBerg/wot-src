@@ -40,6 +40,10 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       
       public var markerAltRoleName:Boolean = false;
       
+      public var markerBaseAimMarker2D:Boolean = false;
+      
+      public var markerAltAimMarker2D:Boolean = false;
+      
       public function VehicleMarkerSettings()
       {
          super();

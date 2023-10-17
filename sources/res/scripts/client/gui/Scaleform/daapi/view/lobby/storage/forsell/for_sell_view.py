@@ -22,7 +22,7 @@ from gui.shared.money import Money
 from gui.shared.utils.requesters.ItemsRequester import REQ_CRITERIA
 from helpers.local_cache import FileLocalCache
 from items import parseIntCompactDescr
-from gui.shared.event_dispatcher import showConfirmInStorageDialog
+from gui.shared.event_dispatcher import showSellDialog
 VERSION = 1
 _FOR_SELL_SORT_ORDER = (GUI_ITEM_TYPE.TURRET, GUI_ITEM_TYPE.ENGINE, GUI_ITEM_TYPE.GUN,
  GUI_ITEM_TYPE.RADIO, GUI_ITEM_TYPE.CHASSIS, GUI_ITEM_TYPE.SHELL)
@@ -207,7 +207,7 @@ class _SelectableDataProvider(StorageDataProvider):
 class StorageCategoryForSellView(StorageCategoryForSellViewMeta):
 
     def sellItem(self, itemId):
-        showConfirmInStorageDialog(int(itemId))
+        showSellDialog(int(itemId))
 
     def sellAll(self):
         itemSellSpecs = []

@@ -1,10 +1,10 @@
 package net.wg.gui.battle.epicBattle.battleloading.components
 {
-   import flash.display.Sprite;
+   import flash.display.MovieClip;
    import net.wg.gui.components.controls.ScrollBar;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    
-   public class EpicBattleStatsTable extends Sprite implements IDisposable
+   public class EpicBattleStatsTable extends MovieClip implements IDisposable
    {
        
       

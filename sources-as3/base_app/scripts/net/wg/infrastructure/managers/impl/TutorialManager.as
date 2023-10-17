@@ -17,18 +17,18 @@ package net.wg.infrastructure.managers.impl
    import net.wg.infrastructure.base.meta.impl.TutorialManagerMeta;
    import net.wg.infrastructure.events.LifeCycleEvent;
    import net.wg.infrastructure.events.TutorialEvent;
-   import net.wg.infrastructure.interfaces.IContainerWrapper;
    import net.wg.infrastructure.interfaces.ICustomObjectFinder;
    import net.wg.infrastructure.interfaces.ITriggerWatcher;
    import net.wg.infrastructure.interfaces.ITutorialBuilder;
    import net.wg.infrastructure.interfaces.ITutorialCustomComponent;
-   import net.wg.infrastructure.interfaces.IView;
+   import net.wg.infrastructure.interfaces.ITutorialView;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    import net.wg.infrastructure.managers.ITutorialManager;
    import net.wg.infrastructure.managers.impl.tutorial.BuilderTypeMapping;
    import net.wg.infrastructure.managers.impl.tutorial.BuildersMap;
    import net.wg.infrastructure.managers.impl.tutorial.TriggerEvent;
    import net.wg.infrastructure.managers.impl.tutorial.TriggerWatcherFactory;
+   import net.wg.infrastructure.wulf.IViewWrapper;
    import org.idmedia.as3commons.util.StringUtils;
    
    public class TutorialManager extends TutorialManagerMeta implements ITutorialManager
@@ -127,10 +127,10 @@ package net.wg.infrastructure.managers.impl
       
       private static function updateExternalHintComponent(param1:DisplayObject, param2:TutorialComponentRect) : void
       {
-         param1.x = param2.x / App.appScale;
-         param1.y = param2.y / App.appScale;
-         param1.width = param2.width / App.appScale;
-         param1.height = param2.height / App.appScale;
+         param1.x = param2.x;
+         param1.y = param2.y;
+         param1.width = param2.width;
+         param1.height = param2.height;
       }
       
       private static function getTutorialHintZoneName(param1:String) : String
@@ -252,13 +252,13 @@ package net.wg.infrastructure.managers.impl
       
       override protected function externalComponentFound(param1:String, param2:String, param3:TutorialComponentData) : void
       {
-         var _loc5_:IContainerWrapper = null;
+         var _loc5_:IViewWrapper = null;
          var _loc6_:DisplayObject = null;
          DebugUtils.LOG_DEBUG("as_externalComponentFound",param1,param2);
          var _loc4_:TutorialComponentPathVO = this._idToVO[param1];
          if(_loc4_ && !_loc4_.foundComponent)
          {
-            _loc5_ = IContainerWrapper(this._idToView[param2]);
+            _loc5_ = IViewWrapper(this._idToView[param2]);
             App.utils.asserter.assertNotNull(_loc5_,"view id " + param2 + Errors.WASNT_FOUND);
             _loc6_ = _loc5_.getTutorialHintZone(getTutorialHintZoneName(param1));
             updateExternalHintComponent(_loc6_,param3.rect);
@@ -592,13 +592,13 @@ package net.wg.infrastructure.managers.impl
          param1.removeEventListener(TutorialEvent.VIEW_READY_FOR_TUTORIAL,this.onViewReadyForTutorialHandler);
       }
       
-      public function setViewForTutorialId(param1:IView, param2:String) : void
+      public function setViewForTutorialId(param1:ITutorialView, param2:String) : void
       {
          this._idToView[param2] = param1;
          param1.addEventListener(LifeCycleEvent.ON_DISPOSE,this.onViewOnDisposeHandler);
       }
       
-      public function setupEffectBuilder(param1:IView, param2:String, param3:TutorialBuilderVO, param4:DisplayObject) : void
+      public function setupEffectBuilder(param1:ITutorialView, param2:String, param3:TutorialBuilderVO, param4:DisplayObject) : void
       {
          var _loc5_:ITutorialBuilder = null;
          var _loc6_:String = null;
@@ -606,7 +606,7 @@ package net.wg.infrastructure.managers.impl
          var _loc8_:String = null;
          if(param1 != null)
          {
-            _loc6_ = param1.as_config.viewTutorialId;
+            _loc6_ = param1.tutorialId;
             _loc7_ = param4 != null ? this._componentToVO[param4].id : Values.EMPTY_STR;
             _loc8_ = BuilderTypeMapping.getLnk(param2,param3.builder);
             _loc5_ = this._buildersMap.getBuilder(_loc6_,_loc7_,_loc8_);
@@ -693,13 +693,13 @@ package net.wg.infrastructure.managers.impl
          var _loc6_:String = null;
          var _loc7_:TutorialComponentPathVO = null;
          var _loc8_:DisplayObject = null;
-         if(!this._idToView[param1])
+         var _loc5_:ITutorialView = this._idToView[param1];
+         if(!_loc5_)
          {
             _loc6_ = "view id " + param1 + Errors.WASNT_FOUND + " May be BotNet clicks too fast";
             DebugUtils.LOG_ERROR(_loc6_);
             return;
          }
-         var _loc5_:IView = this._idToView[param1];
          if(StringUtils.isNotEmpty(param2))
          {
             _loc7_ = this._idToVO[param2];
@@ -764,11 +764,11 @@ package net.wg.infrastructure.managers.impl
       
       private function unregisterExternalComponent(param1:TutorialComponentPathVO) : void
       {
-         var _loc2_:IContainerWrapper = null;
+         var _loc2_:IViewWrapper = null;
          var _loc3_:Vector.<ITriggerWatcher> = null;
          if(param1 && param1.foundComponent)
          {
-            _loc2_ = IContainerWrapper(this._idToView[param1.viewTutorialId]);
+            _loc2_ = IViewWrapper(this._idToView[param1.viewTutorialId]);
             if(_loc2_ != null)
             {
                _loc2_.removeTutorialHintZone(getTutorialHintZoneName(param1.id));
@@ -1184,9 +1184,9 @@ package net.wg.infrastructure.managers.impl
       
       private function onViewOnDisposeHandler(param1:Event) : void
       {
-         var _loc2_:IView = IView(param1.currentTarget);
+         var _loc2_:ITutorialView = ITutorialView(param1.currentTarget);
          _loc2_.removeEventListener(LifeCycleEvent.ON_DISPOSE,this.onViewOnDisposeHandler);
-         var _loc3_:String = _loc2_.as_config.viewTutorialId;
+         var _loc3_:String = _loc2_.tutorialId;
          this.clearCriteriaHash(CriteriaUtils.viewIdPredicate(_loc3_));
          this._buildersMap.removeBuildersForView(_loc3_);
          delete this._idToView[_loc3_];
@@ -1201,7 +1201,7 @@ package net.wg.infrastructure.managers.impl
          var _loc8_:TutorialComponentPathVO = null;
          var _loc2_:DisplayObject = DisplayObject(param1.currentTarget);
          _loc2_.removeEventListener(Event.ADDED_TO_STAGE,this.unboundViewAddedHandler);
-         var _loc3_:IView = _loc2_.parent as IView;
+         var _loc3_:ITutorialView = _loc2_.parent as ITutorialView;
          if(_loc3_)
          {
             _loc4_ = false;
@@ -1212,7 +1212,7 @@ package net.wg.infrastructure.managers.impl
                {
                   _loc4_ = true;
                   this._idToView[_loc5_] = _loc3_;
-                  _loc3_.as_config.viewTutorialId = _loc5_;
+                  _loc3_.tutorialId = _loc5_;
                   for each(_loc7_ in _loc6_.componentPaths)
                   {
                      _loc8_ = this._fullPathToVO[_loc7_];

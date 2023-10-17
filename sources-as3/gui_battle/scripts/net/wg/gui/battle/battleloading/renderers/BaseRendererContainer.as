@@ -3,6 +3,7 @@ package net.wg.gui.battle.battleloading.renderers
    import flash.display.Sprite;
    import flash.text.TextField;
    import net.wg.gui.battle.components.BattleAtlasSprite;
+   import net.wg.gui.battle.components.PrestigeLevel;
    import net.wg.gui.components.controls.BadgeComponent;
    import net.wg.gui.components.icons.PlayerActionMarker;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
@@ -491,6 +492,66 @@ package net.wg.gui.battle.battleloading.renderers
       
       public var vehicleIconEnemy14:BattleAtlasSprite;
       
+      public var prestigeLevelAlly0:PrestigeLevel;
+      
+      public var prestigeLevelAlly1:PrestigeLevel;
+      
+      public var prestigeLevelAlly2:PrestigeLevel;
+      
+      public var prestigeLevelAlly3:PrestigeLevel;
+      
+      public var prestigeLevelAlly4:PrestigeLevel;
+      
+      public var prestigeLevelAlly5:PrestigeLevel;
+      
+      public var prestigeLevelAlly6:PrestigeLevel;
+      
+      public var prestigeLevelAlly7:PrestigeLevel;
+      
+      public var prestigeLevelAlly8:PrestigeLevel;
+      
+      public var prestigeLevelAlly9:PrestigeLevel;
+      
+      public var prestigeLevelAlly10:PrestigeLevel;
+      
+      public var prestigeLevelAlly11:PrestigeLevel;
+      
+      public var prestigeLevelAlly12:PrestigeLevel;
+      
+      public var prestigeLevelAlly13:PrestigeLevel;
+      
+      public var prestigeLevelAlly14:PrestigeLevel;
+      
+      public var prestigeLevelEnemy0:PrestigeLevel;
+      
+      public var prestigeLevelEnemy1:PrestigeLevel;
+      
+      public var prestigeLevelEnemy2:PrestigeLevel;
+      
+      public var prestigeLevelEnemy3:PrestigeLevel;
+      
+      public var prestigeLevelEnemy4:PrestigeLevel;
+      
+      public var prestigeLevelEnemy5:PrestigeLevel;
+      
+      public var prestigeLevelEnemy6:PrestigeLevel;
+      
+      public var prestigeLevelEnemy7:PrestigeLevel;
+      
+      public var prestigeLevelEnemy8:PrestigeLevel;
+      
+      public var prestigeLevelEnemy9:PrestigeLevel;
+      
+      public var prestigeLevelEnemy10:PrestigeLevel;
+      
+      public var prestigeLevelEnemy11:PrestigeLevel;
+      
+      public var prestigeLevelEnemy12:PrestigeLevel;
+      
+      public var prestigeLevelEnemy13:PrestigeLevel;
+      
+      public var prestigeLevelEnemy14:PrestigeLevel;
+      
       public var icoIGRAlly0:BattleAtlasSprite;
       
       public var icoIGRAlly1:BattleAtlasSprite;
@@ -669,6 +730,10 @@ package net.wg.gui.battle.battleloading.renderers
       
       public var vehicleIconsEnemy:Vector.<BattleAtlasSprite>;
       
+      public var prestigeLevelsAlly:Vector.<PrestigeLevel>;
+      
+      public var prestigeLevelsEnemy:Vector.<PrestigeLevel>;
+      
       public var icoIGRsAlly:Vector.<BattleAtlasSprite>;
       
       public var icoIGRsEnemy:Vector.<BattleAtlasSprite>;
@@ -698,6 +763,7 @@ package net.wg.gui.battle.battleloading.renderers
          this.vehicleTypeIconsAlly = this.getVehicleTypeIconsAlly();
          this.vehicleLevelIconsAlly = this.getVehicleLevelIconsAlly();
          this.vehicleIconsAlly = this.getVehicleIconsAlly();
+         this.prestigeLevelsAlly = this.getPrestigeLevelsAlly();
          this.icoIGRsAlly = this.getIcoIGRsAlly();
          this.selfBgs = this.getSelfBgs();
          this.textFieldsEnemy = this.getTextFieldsEnemy();
@@ -706,6 +772,7 @@ package net.wg.gui.battle.battleloading.renderers
          this.vehicleTypeIconsEnemy = this.getVehicleTypeIconsEnemy();
          this.vehicleLevelIconsEnemy = this.getVehicleLevelIconsEnemy();
          this.vehicleIconsEnemy = this.getVehicleIconsEnemy();
+         this.prestigeLevelsEnemy = this.getPrestigeLevelsEnemy();
          this.icoIGRsEnemy = this.getIcoIGRsEnemy();
          this.badgesAlly = this.getBadgesAlly();
          this.badgesEnemy = this.getBadgesEnemy();
@@ -806,6 +873,24 @@ package net.wg.gui.battle.battleloading.renderers
          {
             this.vehicleIconsEnemy.length = 0;
             this.vehicleIconsEnemy = null;
+         }
+         if(this.prestigeLevelsAlly)
+         {
+            for each(_loc1_ in this.prestigeLevelsAlly)
+            {
+               _loc1_.dispose();
+            }
+            this.prestigeLevelsAlly.length = 0;
+            this.prestigeLevelsAlly = null;
+         }
+         if(this.prestigeLevelsEnemy)
+         {
+            for each(_loc1_ in this.prestigeLevelsEnemy)
+            {
+               _loc1_.dispose();
+            }
+            this.prestigeLevelsEnemy.length = 0;
+            this.prestigeLevelsEnemy = null;
          }
          if(this.icoIGRsAlly)
          {
@@ -1057,6 +1142,36 @@ package net.wg.gui.battle.battleloading.renderers
          this.vehicleIconEnemy12 = null;
          this.vehicleIconEnemy13 = null;
          this.vehicleIconEnemy14 = null;
+         this.prestigeLevelAlly0 = null;
+         this.prestigeLevelAlly1 = null;
+         this.prestigeLevelAlly2 = null;
+         this.prestigeLevelAlly3 = null;
+         this.prestigeLevelAlly4 = null;
+         this.prestigeLevelAlly5 = null;
+         this.prestigeLevelAlly6 = null;
+         this.prestigeLevelAlly7 = null;
+         this.prestigeLevelAlly8 = null;
+         this.prestigeLevelAlly9 = null;
+         this.prestigeLevelAlly10 = null;
+         this.prestigeLevelAlly11 = null;
+         this.prestigeLevelAlly12 = null;
+         this.prestigeLevelAlly13 = null;
+         this.prestigeLevelAlly14 = null;
+         this.prestigeLevelEnemy0 = null;
+         this.prestigeLevelEnemy1 = null;
+         this.prestigeLevelEnemy2 = null;
+         this.prestigeLevelEnemy3 = null;
+         this.prestigeLevelEnemy4 = null;
+         this.prestigeLevelEnemy5 = null;
+         this.prestigeLevelEnemy6 = null;
+         this.prestigeLevelEnemy7 = null;
+         this.prestigeLevelEnemy8 = null;
+         this.prestigeLevelEnemy9 = null;
+         this.prestigeLevelEnemy10 = null;
+         this.prestigeLevelEnemy11 = null;
+         this.prestigeLevelEnemy12 = null;
+         this.prestigeLevelEnemy13 = null;
+         this.prestigeLevelEnemy14 = null;
          this.icoIGRAlly0 = null;
          this.icoIGRAlly1 = null;
          this.icoIGRAlly2 = null;
@@ -1184,6 +1299,11 @@ package net.wg.gui.battle.battleloading.renderers
          return new <BattleAtlasSprite>[this.vehicleIconAlly0,this.vehicleIconAlly1,this.vehicleIconAlly2,this.vehicleIconAlly3,this.vehicleIconAlly4,this.vehicleIconAlly5,this.vehicleIconAlly6,this.vehicleIconAlly7,this.vehicleIconAlly8,this.vehicleIconAlly9,this.vehicleIconAlly10,this.vehicleIconAlly11,this.vehicleIconAlly12,this.vehicleIconAlly13,this.vehicleIconAlly14];
       }
       
+      protected function getPrestigeLevelsAlly() : Vector.<PrestigeLevel>
+      {
+         return new <PrestigeLevel>[this.prestigeLevelAlly0,this.prestigeLevelAlly1,this.prestigeLevelAlly2,this.prestigeLevelAlly3,this.prestigeLevelAlly4,this.prestigeLevelAlly5,this.prestigeLevelAlly6,this.prestigeLevelAlly7,this.prestigeLevelAlly8,this.prestigeLevelAlly9,this.prestigeLevelAlly10,this.prestigeLevelAlly11,this.prestigeLevelAlly12,this.prestigeLevelAlly13,this.prestigeLevelAlly14];
+      }
+      
       protected function getIcoIGRsAlly() : Vector.<BattleAtlasSprite>
       {
          return new <BattleAtlasSprite>[this.icoIGRAlly0,this.icoIGRAlly1,this.icoIGRAlly2,this.icoIGRAlly3,this.icoIGRAlly4,this.icoIGRAlly5,this.icoIGRAlly6,this.icoIGRAlly7,this.icoIGRAlly8,this.icoIGRAlly9,this.icoIGRAlly10,this.icoIGRAlly11,this.icoIGRAlly12,this.icoIGRAlly13,this.icoIGRAlly14];
@@ -1222,6 +1342,11 @@ package net.wg.gui.battle.battleloading.renderers
       protected function getVehicleIconsEnemy() : Vector.<BattleAtlasSprite>
       {
          return new <BattleAtlasSprite>[this.vehicleIconEnemy0,this.vehicleIconEnemy1,this.vehicleIconEnemy2,this.vehicleIconEnemy3,this.vehicleIconEnemy4,this.vehicleIconEnemy5,this.vehicleIconEnemy6,this.vehicleIconEnemy7,this.vehicleIconEnemy8,this.vehicleIconEnemy9,this.vehicleIconEnemy10,this.vehicleIconEnemy11,this.vehicleIconEnemy12,this.vehicleIconEnemy13,this.vehicleIconEnemy14];
+      }
+      
+      protected function getPrestigeLevelsEnemy() : Vector.<PrestigeLevel>
+      {
+         return new <PrestigeLevel>[this.prestigeLevelEnemy0,this.prestigeLevelEnemy1,this.prestigeLevelEnemy2,this.prestigeLevelEnemy3,this.prestigeLevelEnemy4,this.prestigeLevelEnemy5,this.prestigeLevelEnemy6,this.prestigeLevelEnemy7,this.prestigeLevelEnemy8,this.prestigeLevelEnemy9,this.prestigeLevelEnemy10,this.prestigeLevelEnemy11,this.prestigeLevelEnemy12,this.prestigeLevelEnemy13,this.prestigeLevelEnemy14];
       }
       
       protected function getIcoIGRsEnemy() : Vector.<BattleAtlasSprite>

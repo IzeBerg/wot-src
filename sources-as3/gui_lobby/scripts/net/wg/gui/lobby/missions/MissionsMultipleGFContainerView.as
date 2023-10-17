@@ -1,76 +1,54 @@
 package net.wg.gui.lobby.missions
 {
    import flash.display.DisplayObject;
-   import flash.events.Event;
    import flash.geom.ColorTransform;
+   import net.wg.data.constants.Errors;
    import net.wg.data.constants.Linkages;
    import net.wg.gui.components.advanced.interfaces.IDummy;
    import net.wg.gui.components.advanced.vo.DummyVO;
-   import net.wg.gui.components.containers.GFWrapper;
    import net.wg.gui.components.controls.UILoaderAlt;
+   import net.wg.gui.components.wulf.ChildViewProxy;
+   import net.wg.infrastructure.base.meta.IInjectComponentMeta;
    
-   public class MissionsMultipleGFContainerView extends MissionsViewBase
+   public class MissionsMultipleGFContainerView extends MissionsViewBase implements IInjectComponentMeta
    {
       
       private static const INV_DUMMY:String = "InvDummy";
        
       
-      private var _wrapper:GFWrapper = null;
+      private var _proxy:ChildViewProxy = null;
       
       public function MissionsMultipleGFContainerView()
       {
          super();
          alpha = 0;
+         this._proxy = new ChildViewProxy();
+         this._proxy.setManageSize(true);
+         addChild(this._proxy);
          bgLoader = new UILoaderAlt();
          bgLoader.transform.colorTransform = new ColorTransform(0.35,0.35,0.35,1,0,0,0,0);
-      }
-      
-      override public function addChild(param1:DisplayObject) : DisplayObject
-      {
-         if(param1.name == GFWrapper.GF_WRAPPER_NAME)
-         {
-            return this.addGFWrapper(param1);
-         }
-         return super.addChild(param1);
-      }
-      
-      override public function removeChild(param1:DisplayObject) : DisplayObject
-      {
-         if(param1.name == GFWrapper.GF_WRAPPER_NAME)
-         {
-            return this.removeGFWrapper(param1);
-         }
-         return super.removeChild(param1);
-      }
-      
-      override public function setSize(param1:Number, param2:Number) : void
-      {
-         super.setSize(param1,param2);
-         if(this._wrapper != null)
-         {
-            this._wrapper.setSize(param1,param2);
-            this._wrapper.dispatchEvent(new Event(Event.RESIZE));
-         }
       }
       
       override public function as_hideDummy() : void
       {
          var _loc1_:DisplayObject = null;
          super.as_hideDummy();
-         this.removeChild(bgLoader);
+         removeChild(bgLoader);
          if(dummy)
          {
             _loc1_ = dummy as DisplayObject;
             if(_loc1_.parent == this)
             {
-               this.removeChild(_loc1_);
+               removeChild(_loc1_);
             }
          }
       }
       
-      public function as_showView() : void
+      override public function setSize(param1:Number, param2:Number) : void
       {
-         super.handleShow();
+         App.utils.asserter.assert(!isDisposed(),Errors.CANT_NULL);
+         super.setSize(param1,param2);
+         this._proxy.setSize(param1,param2);
       }
       
       override protected function handleShow() : void
@@ -84,15 +62,14 @@ package net.wg.gui.lobby.missions
       override protected function setDummyVisible(param1:Boolean) : void
       {
          super.setDummyVisible(param1);
-         if(this._wrapper)
-         {
-            this._wrapper.visible = !param1;
-         }
+         this._proxy.visible = !param1;
       }
       
       override protected function onDispose() : void
       {
-         this._wrapper = null;
+         removeChild(this._proxy);
+         this._proxy.dispose();
+         this._proxy = null;
          super.onDispose();
       }
       
@@ -101,8 +78,8 @@ package net.wg.gui.lobby.missions
          super.draw();
          if(isInvalid(INV_DUMMY) && dummy)
          {
-            this.addChild(bgLoader);
-            this.addChild(dummy as DisplayObject);
+            addChild(bgLoader);
+            addChild(dummy as DisplayObject);
          }
       }
       
@@ -124,25 +101,14 @@ package net.wg.gui.lobby.missions
          bgLoader.y = 0;
       }
       
-      private function addGFWrapper(param1:DisplayObject) : DisplayObject
+      public function as_setPlaceId(param1:uint) : void
       {
-         if(this._wrapper == null)
-         {
-            this._wrapper = GFWrapper(param1);
-            this._wrapper.allowOnlyLMBClick = true;
-            this._wrapper.setSize(width,height);
-            this._wrapper.visible = !dummy || !dummy.visible;
-         }
-         return super.addChild(param1);
+         this._proxy.placeId = param1;
       }
       
-      private function removeGFWrapper(param1:DisplayObject) : DisplayObject
+      public function as_showView() : void
       {
-         if(this._wrapper != null)
-         {
-            this._wrapper = null;
-         }
-         return super.removeChild(param1);
+         super.handleShow();
       }
    }
 }

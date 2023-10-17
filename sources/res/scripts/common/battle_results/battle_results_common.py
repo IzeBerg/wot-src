@@ -153,6 +153,8 @@ BATTLE_RESULTS = [
  (
   'stunned', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_ALL),
  (
+  'marksOnGun', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_ALL),
+ (
   'repair', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
  (
   'freeXP', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
@@ -428,8 +430,6 @@ BATTLE_RESULTS = [
   'vehTypeLockTime', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
   'serviceProviderID', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
- (
-  'marksOnGun', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
   'movingAvgDamage', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
@@ -742,7 +742,9 @@ BATTLE_RESULTS = [
  (
   'eventBattlePassPointsList', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'eventBattlePassPoints', int, 0, None, 'sum', ENTRY_TYPE.ACCOUNT_SELF)]
+  'eventBattlePassPoints', int, 0, None, 'sum', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'prestigeResults', dict, {}, None, 'skip', ENTRY_TYPE.VEHICLE_SELF)]
 BATTLE_PASS_RESULTS = [
  (
   'bpChapter', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),

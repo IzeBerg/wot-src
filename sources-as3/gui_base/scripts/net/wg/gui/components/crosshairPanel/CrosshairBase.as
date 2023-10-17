@@ -10,7 +10,6 @@ package net.wg.gui.components.crosshairPanel
    import net.wg.gui.components.crosshairPanel.components.CrosshairClipQuantityBarContainer;
    import net.wg.gui.components.crosshairPanel.components.autoloader.AutoloaderIndicator;
    import net.wg.gui.components.crosshairPanel.components.autoloader.BoostIndicatorStateParamsVO;
-   import net.wg.gui.components.crosshairPanel.components.wt.PlasmaIndicator;
    import net.wg.gui.components.crosshairPanel.constants.CrosshairConsts;
    
    public class CrosshairBase extends MovieClip implements ICrosshair
@@ -21,8 +20,6 @@ package net.wg.gui.components.crosshairPanel
       private static const FRACTIONAL_FORMAT_CMD:String = "WG.getFractionalFormat";
       
       private static const TF_LEFT_MARGIN:int = 2;
-      
-      private static const PLASMA_DAMAGE_INDICATOR_X_OFFSET:Number = 125;
        
       
       public var timerProgressTextField:TextField = null;
@@ -50,10 +47,6 @@ package net.wg.gui.components.crosshairPanel
       public var distance:CrosshairDistanceContainer = null;
       
       public var autoloaderComponent:AutoloaderIndicator = null;
-      
-      public var plasmaIndicator:PlasmaIndicator = null;
-      
-      public var wtExplosiveShot:MovieClip = null;
       
       protected var health:Number = 0;
       
@@ -101,10 +94,6 @@ package net.wg.gui.components.crosshairPanel
       
       private var _disposed:Boolean = false;
       
-      private var _plasmaDamageIndicatorYPos:Array = null;
-      
-      private var _plasmaDamageIndicatorScale:Array = null;
-      
       public function CrosshairBase()
       {
          super();
@@ -114,10 +103,6 @@ package net.wg.gui.components.crosshairPanel
          this.updateQuickReloadingTimer();
          addEventListener(CrosshairPanelEvent.SOUND,this.onCrosshairPanelSoundHandler);
          this._reloadTimeBlinkYPos = this.getReloadTimeBlinkYPos();
-         this._plasmaDamageIndicatorYPos = this.getPlasmaDamageIndicatorYPos();
-         this._plasmaDamageIndicatorScale = this.getPlasmaDamageIndicatorScale();
-         this.updatePlasmaIndicatorSize(this.netType);
-         this.setExplosiveShotVisible(false);
       }
       
       public function autoloaderBoostUpdate(param1:BoostIndicatorStateParamsVO, param2:Number, param3:Boolean = false) : void
@@ -280,7 +265,6 @@ package net.wg.gui.components.crosshairPanel
             this.setReloadingBarFrame();
             this.updateNetSeparatorVisibility();
             this.updateQuickReloadingTimer();
-            this.updatePlasmaIndicatorSize(this.netType);
          }
       }
       
@@ -432,20 +416,6 @@ package net.wg.gui.components.crosshairPanel
          {
             this._reloadTimeBlinkYPos.length = 0;
             this._reloadTimeBlinkYPos = null;
-         }
-         if(this._plasmaDamageIndicatorYPos)
-         {
-            this._plasmaDamageIndicatorYPos.length = 0;
-            this._plasmaDamageIndicatorYPos = null;
-         }
-         if(this._plasmaDamageIndicatorScale)
-         {
-            this._plasmaDamageIndicatorScale.length = 0;
-            this._plasmaDamageIndicatorScale = null;
-         }
-         if(this.plasmaIndicator)
-         {
-            this.plasmaIndicator = null;
          }
       }
       
@@ -606,61 +576,6 @@ package net.wg.gui.components.crosshairPanel
          {
             param1.stopImmediatePropagation();
          }
-      }
-      
-      public function setExplosiveShotVisible(param1:Boolean) : void
-      {
-         if(this.wtExplosiveShot)
-         {
-            this.wtExplosiveShot.visible = param1;
-         }
-      }
-      
-      public function showPlasmaIndicator(param1:Number, param2:Boolean, param3:String) : void
-      {
-         if(this.plasmaIndicator)
-         {
-            this.plasmaIndicator.showPlasma(param1,param2,param3);
-         }
-      }
-      
-      protected function updatePlasmaIndicatorSize(param1:Number) : void
-      {
-         var plasmaIndicatorScale:Number = NaN;
-         var plasmaIndicatorXPos:Number = NaN;
-         var plasmaIndicatorYPos:Number = NaN;
-         var netType:Number = param1;
-         if(!this.plasmaIndicator)
-         {
-            return;
-         }
-         try
-         {
-            plasmaIndicatorScale = this._plasmaDamageIndicatorScale[netType];
-            this.plasmaIndicator.setPlasmaDamageIndicatorScale(plasmaIndicatorScale);
-         }
-         catch(error:Error)
-         {
-         }
-         try
-         {
-            plasmaIndicatorXPos = (this.plasmaIndicator.plasmaDamageIndicator.width >> 1) * -1 + PLASMA_DAMAGE_INDICATOR_X_OFFSET;
-            plasmaIndicatorYPos = this._plasmaDamageIndicatorYPos[netType];
-            this.plasmaIndicator.setPlasmaDamageIndicatorPosition(plasmaIndicatorXPos,plasmaIndicatorYPos);
-         }
-         catch(error:Error)
-         {
-         }
-      }
-      
-      protected function getPlasmaDamageIndicatorYPos() : Array
-      {
-         return [];
-      }
-      
-      protected function getPlasmaDamageIndicatorScale() : Array
-      {
-         return [];
       }
    }
 }

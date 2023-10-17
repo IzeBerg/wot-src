@@ -1,11 +1,13 @@
 package net.wg.gui.battle.views.battleTimer
 {
    import flash.text.TextField;
+   import net.wg.infrastructure.base.meta.IBattleTimerMeta;
+   import net.wg.infrastructure.base.meta.impl.BattleTimerMeta;
    import net.wg.infrastructure.events.ColorSchemeEvent;
    import net.wg.infrastructure.managers.IColorSchemeManager;
    import scaleform.gfx.TextFieldEx;
    
-   public class BattleTimer extends BaseBattleTimer
+   public class BattleTimer extends BattleTimerMeta implements IBattleTimerMeta
    {
       
       private static const TIMER_COLOR_WHITE:String = "timerNormal";
@@ -58,7 +60,22 @@ package net.wg.gui.battle.views.battleTimer
          super.onDispose();
       }
       
-      override public function as_setColor(param1:Boolean) : void
+      private function onColorSchemeChangeHandler(param1:ColorSchemeEvent) : void
+      {
+         this.updateColors();
+      }
+      
+      public function as_setTotalTime(param1:String, param2:String) : void
+      {
+         if(this._minutes != param1)
+         {
+            this._minutes = param1;
+            this.minutesTF.text = param1;
+         }
+         this.secondsTF.text = param2;
+      }
+      
+      public function as_setColor(param1:Boolean) : void
       {
          if(param1)
          {
@@ -71,16 +88,6 @@ package net.wg.gui.battle.views.battleTimer
          this.updateColors();
       }
       
-      override public function as_setTotalTime(param1:String, param2:String) : void
-      {
-         if(this._minutes != param1)
-         {
-            this._minutes = param1;
-            this.minutesTF.text = param1;
-         }
-         this.secondsTF.text = param2;
-      }
-      
       private function updateColors() : void
       {
          var _loc1_:uint = this._colorSchemeMgr.getRGB(this._criticalColorStr);
@@ -89,9 +96,12 @@ package net.wg.gui.battle.views.battleTimer
          this.dotsTF.textColor = _loc1_;
       }
       
-      private function onColorSchemeChangeHandler(param1:ColorSchemeEvent) : void
+      public function as_showBattleTimer(param1:Boolean) : void
       {
-         this.updateColors();
+         if(this.visible != param1)
+         {
+            this.visible = param1;
+         }
       }
    }
 }

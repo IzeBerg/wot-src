@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<DetailLevel>MY_VEHICLE</DetailLevel>
-	<ClientMethods>
-		<updateSelector/>
-	</ClientMethods>
 	<CellMethods>
 		<chooseSpawnGroup>
 			<Exposed/>
@@ -17,10 +13,12 @@
 				<of>SPAWNGROUP_INFO</of>
 			</Type>
 			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
 		</spawnGroups>
 		<groupName>
 			<Type>STRING</Type>
 			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
 		</groupName>
 		<delay>
 			<Type>FLOAT32</Type>

@@ -6,21 +6,11 @@ package net.wg.gui.battle.eventBattle.views
    
    public class EventBattleLoading extends BCIntroVideoPage
    {
-      
-      private static const TEXT_GROUP_OFFSET_LEFT:int = 125;
-      
-      private static const TEXT_GROUP_OFFSET_BOTTOM:int = 100;
-      
-      private static const LOADING_PROGRESS_OFFSET_BOTTOM:int = 40;
        
       
       public function EventBattleLoading()
       {
          super();
-         eventModeEnabled = true;
-         customTextPaddingLeft = TEXT_GROUP_OFFSET_LEFT;
-         customTextPaddingBottom = TEXT_GROUP_OFFSET_BOTTOM;
-         customLoadingProgressBottom = LOADING_PROGRESS_OFFSET_BOTTOM;
       }
       
       override protected function configUI() : void
@@ -28,7 +18,7 @@ package net.wg.gui.battle.eventBattle.views
          super.configUI();
          btnLeft.addEventListener(ButtonEvent.CLICK,this.onButtonsClickHandler);
          btnRight.addEventListener(ButtonEvent.CLICK,this.onButtonsClickHandler);
-         waitingTF.visible = btnSelect.visible = btnStart.visible = btnSkip.visible = btnSkipVideo.visible = false;
+         waitingTF.visible = btnSelect.visible = btnSkip.visible = btnSkipVideo.visible = closeBtn.visible = false;
       }
       
       override protected function onDispose() : void

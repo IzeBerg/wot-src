@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert1</identifier>
+					<fx>shaders/wg_particles/pbs_mesh_particles.fx</fx>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/mesh_particles/tex/bitum_AM.dds</Texture>
+					</property>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						g_lighting_params
+						<Vector4>0.050000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_meshParticlesZWriteEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_mul_color
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						pbsMap
+						<Texture>particles/mesh_particles/tex/oil_GMM.dds</Texture>
+					</property>
+					<property>
+						texAddressMode
+						<Int>1</Int>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.577674 -0.577674 -0.577674</min>
+		<max>0.577674 0.577674 0.577674</max>
+	</boundingBox>
+	<geometrySize>16768</geometrySize>
+	<minUVDensity>0.082382</minUVDensity>
+</root>

@@ -63,7 +63,9 @@ package net.wg.gui.battle.components.stats.playersPanel
          "defendingObjective":12,
          "attackObjective":13,
          "attackingObjective":13,
-         "attackObjectivePurple":14
+         "attackObjectivePurple":14,
+         "eventCamp":15,
+         "eventCollector":16
       };
       
       private static const TARGET_CHAT_CMD_FLAGS:uint = 1;
@@ -86,6 +88,8 @@ package net.wg.gui.battle.components.stats.playersPanel
       private var _shouldBeShown:Boolean = true;
       
       private var _disposed:Boolean = false;
+      
+      private var _isChatCommandAnimationVisible:Boolean = false;
       
       public function ChatCommandItemComponent()
       {
@@ -115,6 +119,14 @@ package net.wg.gui.battle.components.stats.playersPanel
       
       public function playCommandAnimation(param1:String) : void
       {
+         if(!this._isChatCommandAnimationVisible)
+         {
+            if(this.chatCommandAnimation.visible)
+            {
+               this.chatCommandAnimation.visible = false;
+            }
+            return;
+         }
          if(!this.chatCommandAnimation.visible)
          {
             this.chatCommandAnimation.visible = true;
@@ -168,6 +180,11 @@ package net.wg.gui.battle.components.stats.playersPanel
          {
             this.setChatCommandState(this._activeChatCommand,this._chatCommandFlags);
          }
+      }
+      
+      public function setAnimationVisibility(param1:Boolean) : void
+      {
+         this._isChatCommandAnimationVisible = param1;
       }
       
       private function setChatCommandState(param1:String, param2:uint) : void

@@ -1,4 +1,5 @@
-import BigWorld
+from typing import Optional
+import BigWorld, CGF
 from constants import CustomizationInvData
 from gui.SystemMessages import pushMessagesFromResult
 from items.components.c11n_constants import SeasonType
@@ -12,7 +13,7 @@ from gui.vehicle_view_states import createState4CurrentVehicle
 from helpers import dependency
 from items.vehicles import VehicleDescr
 from helpers import isPlayerAccount, i18n
-from account_helpers.AccountSettings import AccountSettings, BOOTCAMP_VEHICLE, CURRENT_VEHICLE, ROYALE_VEHICLE, EVENT_VEHICLE
+from account_helpers.AccountSettings import AccountSettings, BOOTCAMP_VEHICLE, CURRENT_VEHICLE, ROYALE_VEHICLE
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.shared.utils.requesters import REQ_CRITERIA
 from gui.shared.formatters import icons
@@ -23,7 +24,7 @@ from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.genConsts.VEHPREVIEW_CONSTANTS import VEHPREVIEW_CONSTANTS
 from shared_utils import first
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IIGRController, IRentalsController, IBootcampController, IBattleRoyaleController, IBattleRoyaleTournamentController, IFunRandomController, IEventBattlesController
+from skeletons.gui.game_control import IIGRController, IRentalsController, IBootcampController, IBattleRoyaleController, IBattleRoyaleTournamentController, IFunRandomController
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 from skeletons.gui.shared.utils import IHangarSpace
@@ -129,7 +130,6 @@ class _CurrentVehicle(_CachedVehicle):
     battleRoyaleTounamentController = dependency.descriptor(IBattleRoyaleTournamentController)
     bootcampController = dependency.descriptor(IBootcampController)
     funRandomController = dependency.descriptor(IFunRandomController)
-    __gameEvent = dependency.descriptor(IEventBattlesController)
 
     def __init__(self):
         super(_CurrentVehicle, self).__init__()
@@ -170,8 +170,6 @@ class _CurrentVehicle(_CachedVehicle):
             self.onChanged()
 
     def onLocksUpdate(self, locksDiff):
-        if self.__gameEvent.isEventPrbActive():
-            return
         if self.__vehInvID in locksDiff:
             self.refreshModel()
             self.onChanged()
@@ -280,9 +278,6 @@ class _CurrentVehicle(_CachedVehicle):
     def isOnlyForComp7Battles(self):
         return self.isPresent() and self.item.isOnlyForComp7Battles
 
-    def isOnlyForRandomBattles(self):
-        return self.isPresent() and self.item.isOnlyForRandomBattles
-
     def isOutfitLocked(self):
         return self.isPresent() and self.item.isOutfitLocked
 
@@ -308,7 +303,10 @@ class _CurrentVehicle(_CachedVehicle):
         return self.isPresent() and self.item.isReadyToFight
 
     def isUnsuitableToQueue(self):
-        return self.isPresent() and self.item.isUnsuitableToQueue
+        if self.isPresent():
+            state, _ = self.item.getState()
+            return state == Vehicle.VEHICLE_STATE.UNSUITABLE_TO_QUEUE
+        return False
 
     def isAutoLoadFull(self):
         return not self.isPresent() or self.item.isAutoLoadFull()
@@ -329,18 +327,13 @@ class _CurrentVehicle(_CachedVehicle):
         vehicle = self.itemsCache.items.getVehicle(vehInvID)
         vehicle = vehicle if self.__isVehicleSuitable(vehicle) else None
         if vehicle is None:
-            vehiclesCriteria = REQ_CRITERIA.INVENTORY | ~REQ_CRITERIA.VEHICLE.MODE_HIDDEN | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP | ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
+            vehiclesCriteria = REQ_CRITERIA.INVENTORY | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP
+            vehiclesCriteria |= ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
+            vehiclesCriteria |= ~REQ_CRITERIA.VEHICLE.MODE_HIDDEN
+            vehiclesCriteria |= ~REQ_CRITERIA.VEHICLE.EVENT_BATTLE
             invVehs = self.itemsCache.items.getVehicles(criteria=vehiclesCriteria)
-
-            def notEvent(x, y):
-                if x.isOnlyForEventBattles and not y.isOnlyForEventBattles:
-                    return 1
-                if not x.isOnlyForEventBattles and y.isOnlyForEventBattles:
-                    return -1
-                return cmp(x, y)
-
             if invVehs:
-                vehInvID = sorted(invVehs.itervalues(), cmp=notEvent)[0].invID
+                vehInvID = sorted(invVehs.itervalues())[0].invID
             else:
                 vehInvID = 0
         self._selectVehicle(vehInvID, callback, waitingOverlapsUI)
@@ -404,9 +397,7 @@ class _CurrentVehicle(_CachedVehicle):
             AccountSettings.setFavorites(ROYALE_VEHICLE, vehInvID)
         elif self.isInBootcamp():
             AccountSettings.setFavorites(BOOTCAMP_VEHICLE, vehInvID)
-        elif self.isEvent():
-            AccountSettings.setFavorites(EVENT_VEHICLE, vehInvID)
-        else:
+        elif not self.isOnlyForEventBattles():
             AccountSettings.setFavorites(CURRENT_VEHICLE, vehInvID)
         self.refreshModel()
         self._setChangeCallback(callback)
@@ -447,8 +438,6 @@ class _CurrentVehicle(_CachedVehicle):
             return False
         else:
             if vehicle.isModeHidden and vehicle.isOnlyForFunRandomBattles and not self.funRandomController.isEnabled():
-                return False
-            if vehicle.isModeHidden and vehicle.isOnlyForEventBattles:
                 return False
             return not REQ_CRITERIA.VEHICLE.BATTLE_ROYALE(vehicle) or self.battleRoyaleController.isBattleRoyaleMode()
 
@@ -669,6 +658,11 @@ class _CurrentPreviewVehicle(_CachedVehicle):
             self.hangarSpace.updateVehicleOutfit(outfit)
             self._applyCamouflageTTC()
             self.onChanged()
+
+    def isHalloweenStylePreviewActive(self):
+        from cgf_components.hangar_styles_components import StylePreviewManager
+        stylesManager = CGF.getManager(self.hangarSpace.spaceID, StylePreviewManager)
+        return stylesManager and hasattr(stylesManager, 'isPreviewActive') and stylesManager.isPreviewActive()
 
     def _applyCamouflageTTC(self):
         if self.isPresent():

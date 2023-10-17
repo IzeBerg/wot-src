@@ -1,6 +1,6 @@
 import BigWorld
 from PlayerEvents import g_playerEvents
-from frameworks.wulf import ViewSettings, ViewFlags, WindowFlags
+from frameworks.wulf import ViewSettings, WindowFlags
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.offers.offer_banner_model import OfferBannerModel
 from gui.impl.lobby.offers import getGfImagePath
@@ -17,7 +17,7 @@ class OfferBannerWindowView(ViewImpl):
     _offersProvider = dependency.descriptor(IOffersDataProvider)
 
     def __init__(self, offerID):
-        settings = ViewSettings(layoutID=R.views.lobby.offers.OfferBannerWindow(), flags=ViewFlags.WINDOW_DECORATOR, model=OfferBannerModel())
+        settings = ViewSettings(layoutID=R.views.lobby.offers.OfferBannerWindow(), model=OfferBannerModel())
         super(OfferBannerWindowView, self).__init__(settings)
         self._offerID = offerID
         self._langCode = getClientLanguage()

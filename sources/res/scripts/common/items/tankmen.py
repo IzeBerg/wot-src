@@ -1,13 +1,13 @@
-import typing, random, struct
+import random, struct
 from functools import partial
 from itertools import izip
-from typing import List, Dict, Any, Tuple, Optional, Callable
+from typing import TYPE_CHECKING, List, Dict, Any, Tuple, Optional, Set
 import nations
+from helpers_common import bisectLE
 from items import vehicles, ITEM_TYPES, parseIntCompactDescr
 from items.components import skills_components, crew_skins_constants, crew_books_constants
 from items.components import skills_constants
 from items.components import tankmen_components
-from items.components import component_constants
 from items.components.crew_skins_components import CrewSkinsCache
 from items.components.crew_books_components import CrewBooksCache
 from items.readers import skills_readers
@@ -18,20 +18,21 @@ from items.passports import PassportCache, passport_generator, maxAttempts, dist
 from vehicles import VEHICLE_CLASS_TAGS, EXTENDED_VEHICLE_TYPE_ID_FLAG
 from debug_utils import LOG_ERROR, LOG_WARNING, LOG_CURRENT_EXCEPTION, LOG_DEBUG_DEV
 from constants import ITEM_DEFS_PATH, VEHICLE_NO_CREW_TRANSFER_PENALTY_TAG, VEHICLE_WOT_PLUS_TAG
-from account_shared import AmmoIterator
 from soft_exception import SoftException
-if typing.TYPE_CHECKING:
+if TYPE_CHECKING:
     from items.vehicles import VehicleType
 SKILL_NAMES = skills_constants.SKILL_NAMES
 SKILL_INDICES = skills_constants.SKILL_INDICES
 ROLES = skills_constants.ROLES
 COMMON_SKILL_ROLE_TYPE = skills_constants.COMMON_SKILL_ROLE_TYPE
 COMMON_SKILLS = skills_constants.COMMON_SKILLS
+COMMON_SKILLS_ORDERED = skills_constants.COMMON_SKILLS_ORDERED
 SEPARATE_SKILLS = skills_constants.SEPARATE_SKILLS
 ROLES_AND_COMMON_SKILLS = skills_constants.ROLES_AND_COMMON_SKILLS
 LEARNABLE_ACTIVE_SKILLS = skills_constants.LEARNABLE_ACTIVE_SKILLS
 UNLEARNABLE_SKILLS = skills_constants.UNLEARNABLE_SKILLS
 SKILLS_BY_ROLES = skills_constants.SKILLS_BY_ROLES
+SKILLS_BY_ROLES_ORDERED = skills_constants.SKILLS_BY_ROLES_ORDERED
 MAX_FREE_SKILLS_SIZE = 16
 NO_SKILL = -1
 MAX_SKILL_LEVEL = 100
@@ -65,6 +66,13 @@ def getSkillsConfig():
     if _g_skillsConfig is None:
         _g_skillsConfig = skills_readers.readSkillsConfig(ITEM_DEFS_PATH + 'tankmen/tankmen.xml')
     return _g_skillsConfig
+
+
+def getLoreConfig():
+    global _g_loreConfig
+    if _g_loreConfig is None:
+        _g_loreConfig = tankmen_readers.readLoreConfig(ITEM_DEFS_PATH + 'tankmen/lore.xml')
+    return _g_loreConfig
 
 
 def getSkillsMask(skills):
@@ -266,32 +274,6 @@ def compareMastery(tankmanDescr1, tankmanDescr2):
     return cmp(tankmanDescr1.totalXP(), tankmanDescr2.totalXP())
 
 
-def commanderTutorXpBonusFactorForCrew(crew, ammo):
-    tutorLevel = component_constants.ZERO_FLOAT
-    brotherhoodSum = 0.0
-    for t in crew:
-        if t.role == 'commander':
-            tutorLevel = t.skillLevel('commander_tutor')
-            if not tutorLevel:
-                return component_constants.ZERO_FLOAT
-        tmanBrotherhoodLevel = t.skillLevel('brotherhood') or 0
-        brotherhoodSum += tmanBrotherhoodLevel
-
-    brotherhoodLevel = brotherhoodSum / (len(crew) * MAX_SKILL_LEVEL)
-    skillsConfig = getSkillsConfig()
-    brotherhoodBonus = brotherhoodLevel * skillsConfig.getSkill('brotherhood').crewLevelIncrease
-    tutorLevel += brotherhoodBonus
-    equipCrewLevelIncrease = component_constants.ZERO_FLOAT
-    cache = vehicles.g_cache
-    for compDescr, count in AmmoIterator(ammo):
-        itemTypeIdx, _, itemIdx = vehicles.parseIntCompactDescr(compDescr)
-        if itemTypeIdx == ITEM_TYPES.equipment:
-            equipCrewLevelIncrease += getattr(cache.equipments()[itemIdx], 'crewLevelIncrease', component_constants.ZERO_FLOAT)
-
-    tutorLevel += equipCrewLevelIncrease
-    return tutorLevel * skillsConfig.getSkill('commander_tutor').xpBonusFactorPerLevel
-
-
 def fixObsoleteNames(compactDescr):
     cd = compactDescr
     header = ord(cd[0])
@@ -412,6 +394,35 @@ class TankmanDescr(object):
         costs = _g_levelXpCosts
         return 2 ** skillSeqNum * (costs[(fromSkillLevel + 1)] - costs[fromSkillLevel])
 
+    @staticmethod
+    def skillUpXpCost(lastSkillSeqNum):
+        if not lastSkillSeqNum:
+            return 0
+        costs = _g_skillXpCosts
+        return costs[lastSkillSeqNum] - costs[(lastSkillSeqNum - 1)]
+
+    @staticmethod
+    def getXpCostForSkillsLevels(lastSkillLevel, lastSkillSeqNum):
+        if not lastSkillSeqNum:
+            return _g_levelXpCosts[lastSkillLevel]
+        if lastSkillLevel == MAX_SKILL_LEVEL:
+            return _g_skillXpCosts[lastSkillSeqNum]
+        return _g_skillXpCosts[(lastSkillSeqNum - 1)] + 2 ** lastSkillSeqNum * _g_levelXpCosts[lastSkillLevel]
+
+    @staticmethod
+    def getSkillsCountFromXp(availableXp):
+        if availableXp < 0:
+            return 0
+        return bisectLE(_g_skillXpCosts, availableXp) + 1
+
+    @staticmethod
+    def getSkillLevelFromXp(skillsNum, availableXp):
+        if skillsNum:
+            residualXp = int(float(availableXp - _g_skillXpCosts[(skillsNum - 1)]) / 2 ** skillsNum)
+            if residualXp > 0:
+                return bisectLE(_g_levelXpCosts, residualXp)
+        return 0
+
     def skillLevel(self, skillName):
         if skillName not in self.skills:
             return None
@@ -420,29 +431,31 @@ class TankmanDescr(object):
                 return MAX_SKILL_LEVEL
             return self.__lastSkillLevel
 
-    def totalXP(self):
-        levelCosts = _g_levelXpCosts
-        xp = self.freeXP + levelCosts[self.roleLevel]
+    def totalXP(self, freeSkillsAsCommon=False):
+        roleXP = _g_levelXpCosts[self.roleLevel]
+        xp = self.freeXP
         numSkills = self.lastSkillNumber - self.freeSkillsNumber
         if numSkills:
-            xp += levelCosts[self.__lastSkillLevel] * 2 ** numSkills
-            for idx in xrange(1, numSkills):
-                xp += levelCosts[MAX_SKILL_LEVEL] * 2 ** idx
-
+            xp += self.getXpCostForSkillsLevels(self.__lastSkillLevel, numSkills)
+        if freeSkillsAsCommon:
+            possiblyLearnedSkillsNumber = self.getSkillsCountFromXp(xp)
+            if self.__lastSkillLevel == MAX_SKILL_LEVEL:
+                possiblyLearnedSkillsNumber -= 1
+            possiblyLearnedSkillsNumber += self.freeSkillsNumber
+            xp = self.getXpCostForSkillsLevels(self.__lastSkillLevel, possiblyLearnedSkillsNumber)
+        xp += roleXP
         return xp
 
     def addXP(self, xp, truncateXP=True):
         self.freeXP = self.freeXP + xp
         if truncateXP:
             self.truncateXP()
-        while self.roleLevel < MAX_SKILL_LEVEL:
-            xpCost = self.levelUpXpCost(self.roleLevel, 0)
-            if xpCost > self.freeXP:
-                break
-            self.freeXP -= xpCost
-            self.roleLevel += 1
-            self.__updateRankAtSkillLevelUp()
-
+        if self.roleLevel < MAX_SKILL_LEVEL:
+            canLevelUp, newLevel, xpCost, levelsGained = self.__findAffordableLevel(self.roleLevel, 0)
+            if canLevelUp:
+                self.freeXP -= xpCost
+                self.roleLevel = newLevel
+                self.__updateRankAtSkillLevelUp(numLevels=levelsGained)
         if self.roleLevel == MAX_SKILL_LEVEL:
             self.__levelUpLastSkill()
 
@@ -500,7 +513,7 @@ class TankmanDescr(object):
         if xpReuseFraction != 0.0:
             self.addXP(int(xpReuseFraction * (prevTotalXP - self.totalXP())), truncateXP=truncateXP)
 
-    def dropSkill(self, skillName, xpReuseFraction=0.0):
+    def dropSkill(self, skillName, xpReuseFraction=0.0, truncateXP=True):
         idx = self.__skills.index(skillName)
         prevTotalXP = self.totalXP()
         numSkills = self.lastSkillNumber - self.freeSkillsNumber
@@ -515,7 +528,7 @@ class TankmanDescr(object):
         if self.numLevelsToNextRank != 0:
             self.numLevelsToNextRank += levelsDropped
         if xpReuseFraction != 0.0:
-            self.addXP(int(xpReuseFraction * (prevTotalXP - self.totalXP())))
+            self.addXP(int(xpReuseFraction * (prevTotalXP - self.totalXP())), truncateXP=truncateXP)
 
     def validateLearningFreeSkill(self, skillName):
         if 'any' not in self.freeSkills:
@@ -731,20 +744,32 @@ class TankmanDescr(object):
         numSkills = self.lastSkillNumber - self.freeSkillsNumber
         if numSkills <= 0:
             return
-        fullSkillXpCost = 2 ** numSkills * (_g_levelXpCosts[MAX_SKILL_LEVEL] - _g_levelXpCosts[self.__lastSkillLevel])
-        if self.freeXP >= fullSkillXpCost:
-            skillLevelsGained = MAX_SKILL_LEVEL - self.__lastSkillLevel
-            self.freeXP -= fullSkillXpCost
-            self.__lastSkillLevel = MAX_SKILL_LEVEL
-            self.__updateRankAtSkillLevelUp(numLevels=skillLevelsGained)
-            return
-        while self.__lastSkillLevel < MAX_SKILL_LEVEL:
-            xpCost = self.levelUpXpCost(self.__lastSkillLevel, numSkills)
-            if xpCost > self.freeXP:
-                break
+        canLevelUp, newLevel, xpCost, levelsGained = self.__findAffordableLevel(self.__lastSkillLevel, numSkills)
+        if canLevelUp:
             self.freeXP -= xpCost
-            self.__lastSkillLevel += 1
-            self.__updateRankAtSkillLevelUp()
+            self.__lastSkillLevel = newLevel
+            self.__updateRankAtSkillLevelUp(numLevels=levelsGained)
+
+    def __findAffordableLevel(self, currentLevel, skillNum):
+        canLevelUp = False
+        newLevel = currentLevel
+        xpCost = 0
+        levelsGained = 0
+        normXP = _g_levelXpCosts[currentLevel] + (self.freeXP >> skillNum)
+        if normXP >= _g_levelXpCosts[MAX_SKILL_LEVEL]:
+            canLevelUp = True
+            newLevel = MAX_SKILL_LEVEL
+            xpCost = _g_levelXpCosts[MAX_SKILL_LEVEL] - _g_levelXpCosts[currentLevel] << skillNum
+            levelsGained = MAX_SKILL_LEVEL - currentLevel
+        else:
+            foundLevel = bisectLE(_g_levelXpCosts, normXP, lo=currentLevel, hi=MAX_SKILL_LEVEL)
+            if foundLevel > currentLevel:
+                canLevelUp = True
+                newLevel = foundLevel
+                xpCost = _g_levelXpCosts[foundLevel] - _g_levelXpCosts[currentLevel] << skillNum
+                levelsGained = foundLevel - currentLevel
+        return (
+         canLevelUp, newLevel, xpCost, levelsGained)
 
 
 def makeTmanDescrByTmanData(tmanData):
@@ -885,6 +910,19 @@ def getTankmenWithTag(nationID, isPremium, tag):
     return set([ group.groupID for group in nationGroups.itervalues() if tag in group.tags ])
 
 
+def getSpecialVoiceTag(tankman, specialSoundCtrl):
+    nationGroups = getNationGroups(tankman.nationID, tankman.descriptor.isPremium)
+    nationGroup = nationGroups.get(tankman.descriptor.gid)
+    if nationGroup is None:
+        return
+    else:
+        for tag in nationGroup.tags:
+            if specialSoundCtrl.checkTagForSpecialVoice(tag):
+                return tag
+
+        return
+
+
 def tankmenGroupHasRole(nationID, groupID, isPremium, role):
     nationGroups = getNationGroups(nationID, isPremium)
     if groupID in nationGroups:
@@ -944,6 +982,7 @@ def __validateSkills(skills):
 
 
 _g_skillsConfig = None
+_g_loreConfig = None
 _g_crewSkinsConfig = None
 _g_nationsConfig = [ None for x in xrange(len(nations.NAMES)) ]
 _g_tankmenGroupNames = None
@@ -960,6 +999,17 @@ def _makeLevelXpCosts():
 
 
 _g_levelXpCosts = _makeLevelXpCosts()
+
+def _makeSkillXpCosts():
+    costs = [
+     0] * len(SKILL_NAMES)
+    for level in xrange(1, len(costs)):
+        costs[level] = 2 * (2 ** level - 1) * _g_levelXpCosts[MAX_SKILL_LEVEL]
+
+    return costs
+
+
+_g_skillXpCosts = _makeSkillXpCosts()
 
 def _calcFirstSkillXpCost():
     result = 0
@@ -1144,13 +1194,12 @@ def validateCrewToLearnCrewBook(crew, vehTypeCompDescr):
         resultMsg += 'Vehicle has not full crew; '
         resultMask = resultMask | crew_books_constants.CREW_BOOK_PROPERTIES_MASKS.FULL_CREW
     _, _, vehicleID = vehicles.parseIntCompactDescr(vehTypeCompDescr)
-    for slotID, tmanCompDescr in enumerate(crew):
-        if tmanCompDescr is None:
+    for slotID, tmanDescr in enumerate(crew):
+        if tmanDescr is None:
             if not resultMask & crew_books_constants.CREW_BOOK_PROPERTIES_MASKS.FULL_CREW:
                 resultMsg += 'Vehicle has not full crew; '
             resultMask = resultMask | crew_books_constants.CREW_BOOK_PROPERTIES_MASKS.FULL_CREW
             continue
-        tmanDescr = TankmanDescr(tmanCompDescr)
         if tmanDescr.roleLevel < MAX_SKILL_LEVEL:
             if not resultMask & crew_books_constants.CREW_BOOK_PROPERTIES_MASKS.ROLE_LEVEL:
                 resultMsg += 'One of crew members has not enough level of specialization; '

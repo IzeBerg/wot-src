@@ -1,6 +1,7 @@
 import logging, BigWorld
 from PlayerEvents import g_playerEvents
 from shared_utils import nextTick
+from vehicle_systems.stricted_loading import makeCallbackWeak
 _logger = logging.getLogger(__name__)
 
 class DynamicScriptComponent(BigWorld.DynamicScriptComponent):
@@ -8,7 +9,7 @@ class DynamicScriptComponent(BigWorld.DynamicScriptComponent):
     def __init__(self, *_, **__):
         BigWorld.DynamicScriptComponent.__init__(self)
         if self._isAvatarReady:
-            nextTick(self._onAvatarReady)()
+            nextTick(makeCallbackWeak(self.__onAvatarReady))()
         else:
             g_playerEvents.onAvatarReady += self.__onAvatarReady
         _logger.debug('%s.__init__. EntityID=%s', self.__class__.__name__, self.entity.id)
@@ -37,4 +38,9 @@ class DynamicScriptComponent(BigWorld.DynamicScriptComponent):
 
     def __onAvatarReady(self):
         g_playerEvents.onAvatarReady -= self.__onAvatarReady
-        nextTick(self._onAvatarReady)()
+        if self._isValid:
+            self._onAvatarReady()
+
+    @property
+    def _isValid(self):
+        return not self.entity.isDestroyed and self in self.entity.dynamicComponents.values()

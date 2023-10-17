@@ -22,9 +22,9 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setItemQuantityInSlot(idx, quantity)
 
-    def as_setItemTimeQuantityInSlotS(self, idx, quantity, timeRemaining, maxTime, animation, stage):
+    def as_setItemTimeQuantityInSlotS(self, idx, quantity, timeRemaining, maxTime, animation):
         if self._isDAAPIInited():
-            return self.flashObject.as_setItemTimeQuantityInSlot(idx, quantity, timeRemaining, maxTime, animation, stage)
+            return self.flashObject.as_setItemTimeQuantityInSlot(idx, quantity, timeRemaining, maxTime, animation)
 
     def as_setCoolDownTimeS(self, idx, duration, baseTime, startTime):
         if self._isDAAPIInited():
@@ -50,9 +50,9 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setCurrentShell(idx)
 
-    def as_addEquipmentSlotS(self, idx, keyCode, sfKeyCode, tag, quantity, timeRemaining, reloadingTime, iconPath, tooltipText, animation, stage):
+    def as_addEquipmentSlotS(self, idx, keyCode, sfKeyCode, quantity, timeRemaining, reloadingTime, iconPath, tooltipText, animation):
         if self._isDAAPIInited():
-            return self.flashObject.as_addEquipmentSlot(idx, keyCode, sfKeyCode, tag, quantity, timeRemaining, reloadingTime, iconPath, tooltipText, animation, stage)
+            return self.flashObject.as_addEquipmentSlot(idx, keyCode, sfKeyCode, quantity, timeRemaining, reloadingTime, iconPath, tooltipText, animation)
 
     def as_showEquipmentSlotsS(self, show):
         if self._isDAAPIInited():
@@ -145,3 +145,15 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
     def as_setRoleSkillSlotCounterS(self, idx, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setRoleSkillSlotCounter(idx, value)
+
+    def as_addRespawnSlotS(self, idx, keyCode, sfKeyCode, quantity, tooltipText, isTooltipSpecial, isAvailable):
+        if self._isDAAPIInited():
+            return self.flashObject.as_addRespawnSlot(idx, keyCode, sfKeyCode, quantity, tooltipText, isTooltipSpecial, isAvailable)
+
+    def as_setRespawnSlotQuantityS(self, idx, quantity):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setRespawnSlotQuantity(idx, quantity)
+
+    def as_setRespawnSlotStateS(self, idx, isAvailable):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setRespawnSlotState(idx, isAvailable)

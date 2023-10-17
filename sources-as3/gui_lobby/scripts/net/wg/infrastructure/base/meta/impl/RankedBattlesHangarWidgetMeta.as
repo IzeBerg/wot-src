@@ -1,11 +1,11 @@
 package net.wg.infrastructure.base.meta.impl
 {
    import net.wg.data.constants.Errors;
+   import net.wg.gui.lobby.hangar.quests.HangarWidgetDAAPI;
    import net.wg.gui.lobby.rankedBattles19.data.RankedBattlesHangarWidgetVO;
-   import net.wg.infrastructure.base.BaseDAAPIComponent;
    import net.wg.infrastructure.exceptions.AbstractException;
    
-   public class RankedBattlesHangarWidgetMeta extends BaseDAAPIComponent
+   public class RankedBattlesHangarWidgetMeta extends HangarWidgetDAAPI
    {
        
       

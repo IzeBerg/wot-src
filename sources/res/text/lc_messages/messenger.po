@@ -1523,6 +1523,9 @@ msgstr ""
 "These are special vehicles for Steel Hunter. Enter Steel Hunter to find out "
 "what these vehicles are capable of."
 
+msgid "serviceChannelMessages/BRbattleResults/BRProgressionTitle"
+msgstr "Progression Points received: %(value)s"
+
 msgid "serviceChannelMessages/BRbattleResults/battlePass"
 msgstr "Battle Pass Points received: %(pointsDiff)s"
 
@@ -1785,7 +1788,7 @@ msgstr "Continue fighting and earning Points!"
 
 msgid "serviceChannelMessages/battlePassReward/battle/final/text"
 msgstr ""
-"You completed all Battle Pass Season %(season)s Chapters!\n"
+"You completed all Battle Pass Season %(season)s Chapters.\n"
 "Reward received:"
 
 msgid "serviceChannelMessages/battlePassReward/battle/newLevel/text"
@@ -1826,6 +1829,9 @@ msgid "serviceChannelMessages/battlePassReward/buyWithoutRewards/text"
 msgstr ""
 "You will now receive rewards from both the Base and Improved Reward Tracks in the \"%(chapter)s\" Chapter.\n"
 "This Improved Pass works only for the \"%(chapter)s\" Chapter."
+
+msgid "serviceChannelMessages/battlePassReward/header/autoSelectReward"
+msgstr "Reward Granted"
 
 msgid "serviceChannelMessages/battlePassReward/header/buyBP"
 msgstr "Improved Pass Purchased"
@@ -2390,12 +2396,6 @@ msgstr "• Experimental Equipment to Select From"
 msgid "serviceChannelMessages/epicReward/recertificationForm_gift"
 msgstr "• Retraining Orders"
 
-msgid "serviceChannelMessages/event/lootboxes"
-msgstr "Starters received:"
-
-msgid "serviceChannelMessages/event/tickets"
-msgstr "Keys received:"
-
 msgid "serviceChannelMessages/eventCoinReceivedAsGift"
 msgstr "You have been granted Anniversary Coins: %(eventCoin)s."
 
@@ -2806,6 +2806,17 @@ msgstr "Days of Wargaming Premium Account deducted"
 msgid "serviceChannelMessages/invoiceReceived/premium_account"
 msgstr "Wargaming Premium Account"
 
+msgid "serviceChannelMessages/invoiceReceived/prestigeAdded"
+msgstr "The %(vehicleName)s received %(xpCount)s Elite Points."
+
+msgid "serviceChannelMessages/invoiceReceived/prestigeSet/full"
+msgstr ""
+"The %(vehicleName)s received Elite Level %(level)s and %(xpCount)s Elite "
+"Points."
+
+msgid "serviceChannelMessages/invoiceReceived/prestigeSet/justLevel"
+msgstr "The %(vehicleName)s received Elite Level %(level)s."
+
 msgid "serviceChannelMessages/invoiceReceived/purchase/received_from"
 msgstr "Items from"
 
@@ -3092,6 +3103,24 @@ msgstr "WoT Premium Account extended. Expires %(expiryTime)s."
 msgid "serviceChannelMessages/premiumReceivedAsGift"
 msgstr "You have been granted Wargaming Premium Account for %(days)d day(s)."
 
+msgid "serviceChannelMessages/prestige/firstEntry/button"
+msgstr "To Elite System"
+
+msgid "serviceChannelMessages/prestige/firstEntry/text"
+msgstr "Elite Levels and Elite Marks received."
+
+msgid "serviceChannelMessages/prestige/firstEntry/title"
+msgstr "Elite System"
+
+msgid "serviceChannelMessages/prestige/lvlUp/button"
+msgstr "To Vehicles"
+
+msgid "serviceChannelMessages/prestige/lvlUp/text"
+msgstr "%(vehName)s"
+
+msgid "serviceChannelMessages/prestige/lvlUp/title"
+msgstr "Elite Level Received"
+
 msgid "serviceChannelMessages/priorityMessageTitle"
 msgstr "Attention!"
 
@@ -3331,9 +3360,6 @@ msgstr "Wargaming Premium Account"
 msgid "serviceChannelMessages/serverDowntimeCompensation/premium_plus"
 msgstr "WoT Premium Account"
 
-msgid "serviceChannelMessages/serverDowntimeCompensation/premium_subs"
-msgstr "WoT Plus"
-
 msgid "serviceChannelMessages/serverDowntimeCompensation/rentals"
 msgstr "Rental"
 
@@ -3354,6 +3380,12 @@ msgstr "Special Reward"
 
 msgid "serviceChannelMessages/specialReward/vehicleBlueprints"
 msgstr "Blueprint fragment for %(vehicleName)s (x%(fragmentsCount)s)"
+
+msgid "serviceChannelMessages/steamEmailCompletion/body"
+msgstr "Reward received for confirming email:"
+
+msgid "serviceChannelMessages/steamEmailCompletion/header"
+msgstr "Congratulations!"
 
 msgid "serviceChannelMessages/sysMsg/converter/blueprintsReceived"
 msgstr ""

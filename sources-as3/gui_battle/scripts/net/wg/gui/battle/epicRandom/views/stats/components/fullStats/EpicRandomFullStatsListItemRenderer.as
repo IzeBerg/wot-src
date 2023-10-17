@@ -12,6 +12,7 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
    import net.wg.gui.battle.battleloading.BattleLoadingHelper;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.components.PlayerStatusView;
+   import net.wg.gui.battle.components.PrestigeLevel;
    import net.wg.gui.battle.components.buttons.BattleButton;
    import net.wg.gui.battle.epicRandom.views.stats.events.EpicRandomFullStatsListItemRendererEvent;
    import net.wg.gui.battle.random.views.stats.components.fullStats.constants.RandomFullStatsValidationType;
@@ -42,6 +43,10 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
       private static const RANKED_BADGE_OFFSET:int = 1;
       
       private static const FIELD_WIDTH_COMPENSATION:int = 2;
+      
+      private static const PRESTIGE_LEVEL_DEFAULT_ALPHA:Number = 1;
+      
+      private static const PRESTIGE_LEVEL_DEAD_ALPHA:Number = 0.5;
        
       
       public var noSound:BattleAtlasSprite = null;
@@ -67,6 +72,8 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
       public var icoIGR:BattleAtlasSprite = null;
       
       public var vehicleIcon:BattleAtlasSprite = null;
+      
+      public var prestigeLevel:PrestigeLevel = null;
       
       public var vehicleActionMarker:BattleAtlasSprite = null;
       
@@ -177,6 +184,8 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
          this.playerStatus = null;
          this.speakAnimation.dispose();
          this.speakAnimation = null;
+         this.prestigeLevel.dispose();
+         this.prestigeLevel = null;
          if(this._squadItem)
          {
             this._squadItem.dispose();
@@ -215,7 +224,7 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
          this.icoIGR.visible = false;
          this.icoIGR.imageName = BATTLEATLAS.ICO_IGR;
          this.mute.visible = false;
-         this.mute.imageName = BATTLEATLAS.LEFT_STATS_MUTE;
+         this.mute.imageName = BATTLEATLAS.STATS_MUTE;
          this.deadBg.visible = false;
          this.deadBg.imageName = BATTLEATLAS.EPIC_STATS_DEAD_BG;
          this.selfBg.visible = false;
@@ -293,6 +302,7 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
                this.vehicleIcon.transform.colorTransform = _loc4_.colorTransform;
                this.vehicleLevel.transform.colorTransform = _loc4_.colorTransform;
             }
+            this.prestigeLevel.alpha = !!this._isDead ? Number(PRESTIGE_LEVEL_DEAD_ALPHA) : Number(PRESTIGE_LEVEL_DEFAULT_ALPHA);
          }
          if(isInvalid(FullStatsValidationType.SELECTED))
          {
@@ -395,26 +405,17 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
             this.mute.visible = this._isMute;
             if(this._isMute)
             {
-               this.mute.imageName = BATTLEATLAS.LEFT_STATS_MUTE;
+               this.mute.imageName = BATTLEATLAS.STATS_MUTE;
             }
-            if(this._isSpeaking)
+            this.speakAnimation.mute = this._isMute;
+            if(!this._isMute && this._isSpeaking)
             {
-               if(this._isMute)
-               {
-                  this.speakAnimation.reset();
-               }
-               else
-               {
-                  this.speakAnimation.speaking = true;
-               }
+               this.speakAnimation.speaking = true;
             }
          }
          if(isInvalid(RandomFullStatsValidationType.SPEAKING))
          {
-            if(!this._isMute)
-            {
-               this.speakAnimation.speaking = this._isSpeaking;
-            }
+            this.speakAnimation.speaking = this._isSpeaking;
          }
          if(_loc1_ && this._data)
          {
@@ -588,6 +589,8 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
             this.applyPlayerStatus(this._data);
             this.applyUserTags(this._data);
             this.updateUserProps(this._data);
+            this.prestigeLevel.markId = this._data.prestigeMarkId;
+            this.prestigeLevel.level = this._data.prestigeLevel;
             this.selfBg.visible = Boolean(this._data) ? Boolean(PlayerStatus.isSelected(this._data.playerStatus)) : Boolean(false);
             if(this._squadItem)
             {

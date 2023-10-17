@@ -87,8 +87,8 @@ package net.wg.gui.lobby.vehicleCustomization
             return;
          }
          var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         var _loc3_:int = this._scrollList.horizontalGap;
+         var _loc2_:int = this._scrollList.horizontalGap;
+         var _loc3_:int = -_loc2_;
          var _loc4_:Rectangle = null;
          var _loc5_:Rectangle = null;
          var _loc6_:Point = null;
@@ -102,30 +102,30 @@ package net.wg.gui.lobby.vehicleCustomization
             _loc11_ = this.testForBookmark(_loc8_,_loc1_);
             if(_loc11_)
             {
-               _loc5_ = this.computeBookmarkItem(_loc2_,_loc4_.width,_loc9_);
+               _loc5_ = this.computeBookmarkItem(_loc3_,_loc4_.width,_loc9_);
                this._bookmarkLayouts.push(_loc5_);
                if(this._showSeparators && _loc9_)
                {
-                  _loc6_ = this.computeSeparatorItem(_loc2_);
+                  _loc6_ = this.computeSeparatorItem(_loc3_);
                   this._separatorsLayouts.push(_loc6_);
                }
-               _loc2_ += this.getBookmarkGap(_loc9_);
+               _loc3_ += this.getBookmarkGap(_loc9_);
                _loc1_++;
             }
-            _loc4_.offset(_loc2_,0);
+            _loc4_.offset(_loc3_,0);
             this._itemLayouts.push(_loc4_);
             _loc12_ = this.testForArrow(_loc8_);
             if(_loc12_)
             {
                _loc12_.position = this.computeArrowItem(_loc4_.right,_loc4_.height);
             }
-            _loc2_ = _loc4_.right + _loc3_;
+            _loc3_ = _loc4_.right + _loc2_;
             _loc8_++;
          }
-         _loc2_ -= _loc3_;
+         _loc3_ -= _loc2_;
          if(this._itemLayouts.length > 0)
          {
-            _loc13_ = _loc2_ - this._itemLayouts[0].x;
+            _loc13_ = _loc3_ - this._itemLayouts[0].x;
             if(_loc13_ < this._scrollList.width)
             {
                _loc14_ = (this._scrollList.width - _loc13_ >> 1) - this._itemLayouts[0].x;

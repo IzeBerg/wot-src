@@ -1,8 +1,8 @@
-import logging, typing
+import logging
 from functools import partial
 from BWUtil import AsyncReturn
+from enum import Enum
 import wg_async
-from adisp import adisp_process
 from gui.Scaleform.Waiting import Waiting
 from gui.platform.products_fetcher.controller import ProductsFetchController
 from gui.platform.products_fetcher.fetch_result import FetchResult
@@ -12,11 +12,9 @@ from gui.wgcg.utils.contexts import PlatformGetUserSubscriptionsCtx
 from helpers import dependency
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.platform.product_fetch_controller import IUserSubscriptionsFetchController
-if typing.TYPE_CHECKING:
-    from typing import List, Dict
 _logger = logging.getLogger(__name__)
 
-class SubscriptionStatus(object):
+class SubscriptionStatus(Enum):
     NEW = 'NEW'
     WAITING_FOR_PURCHASE = 'WAITING_FOR_PURCHASE'
     ACTIVE = 'ACTIVE'
@@ -25,24 +23,37 @@ class SubscriptionStatus(object):
     NEXT_PAYMENT_UNAVAILABLE = 'NEXT_PAYMENT_UNAVAILABLE'
 
 
+class SubscriptionRequestPlatform(Enum):
+    WG_PLATFORM = 'wg_platform'
+    STEAM = 'steam'
+
+
 class PlatformGetUserSubscriptionsParams(object):
     _lobbyContext = dependency.descriptor(ILobbyContext)
-    status = []
-    productCode = ''
 
-    def setFields(self):
+    def __init__(self):
         serverSettings = self._lobbyContext.getServerSettings()
-        self.status = [SubscriptionStatus.ACTIVE]
+        self.status = [SubscriptionStatus.ACTIVE.value]
         self.productCode = serverSettings.getWotPlusProductCode()
+        self.platform = SubscriptionRequestPlatform.WG_PLATFORM.value
 
     def __repr__(self):
-        return ('product_code: {product_code} status: {status}, ').format(product_code=self.productCode, status=self.status)
+        return ('product_code: {product_code} status: {status}, platform: {platform}').format(product_code=self.productCode, status=self.status, platform=self.platform)
+
+
+class SteamGetUserSubscriptionsParams(PlatformGetUserSubscriptionsParams):
+
+    def __init__(self):
+        super(SteamGetUserSubscriptionsParams, self).__init__()
+        self.platform = SubscriptionRequestPlatform.STEAM.value
 
 
 class UserSubscriptionsFetchController(ProductsFetchController, IUserSubscriptionsFetchController):
-    platformParams = PlatformGetUserSubscriptionsParams
+    requestParamsList = [
+     PlatformGetUserSubscriptionsParams, SteamGetUserSubscriptionsParams]
     platformFetchCtx = PlatformGetUserSubscriptionsCtx
-    subscriptionDescriptor = UserSubscriptionDescriptor
+    defaultProductDescriptor = UserSubscriptionDescriptor
+    dataGetKey = 'subscriptions'
 
     def init(self):
         self._fetchResult = UserSubscriptionFetchResult()
@@ -61,29 +72,19 @@ class UserSubscriptionsFetchController(ProductsFetchController, IUserSubscriptio
         if showWaiting:
             Waiting.show('loadingData')
         self._fetchResult.reset()
-        params = self.platformParams()
-        params.setFields()
-        requestSuccess, productsData = yield wg_async.await_callback(partial(self._requestProducts, params))()
-        if requestSuccess and productsData:
-            _logger.debug('Products request has been successfully processed.')
-            self._createDescriptors(productsData)
+        processed = False
+        for paramObj in self.requestParamsList:
+            params = paramObj()
+            requestSuccess, productsData = yield wg_async.await_callback(partial(self._requestProducts, params))()
+            if requestSuccess and productsData:
+                _logger.debug('Products request from %s has been successfully processed.', params.platform)
+                self._createDescriptors(productsData)
+                processed = True
+
+        if processed:
             self._fetchResult.setProcessed()
         else:
             self._fetchResult.setFailed()
         if showWaiting:
             Waiting.hide('loadingData')
         raise AsyncReturn(self._fetchResult)
-
-    def _createDescriptors(self, productsData):
-        for product in productsData:
-            self._fetchResult.products.append(self.subscriptionDescriptor(product))
-
-    @adisp_process
-    def _requestProducts(self, params, callback):
-        ctx = self.platformFetchCtx(params)
-        _logger.debug('Request products for params %s', params)
-        response = yield self._webCtrl.sendRequest(ctx=ctx)
-        data = response.getData()
-        items = data.get('subscriptions') if data else None
-        callback((response.isSuccess(), items))
-        return

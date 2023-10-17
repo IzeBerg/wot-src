@@ -78,7 +78,6 @@ package net.wg.gui.battle.random.views.teamBasesPanel
       
       public function as_add(param1:Number, param2:Number, param3:String, param4:String, param5:Number, param6:String, param7:String) : void
       {
-         var _loc8_:TeamCaptureBar = null;
          var _loc9_:TeamCaptureBar = null;
          if(this._fadeOutTweens[param1])
          {
@@ -95,7 +94,7 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          {
             this.createBar();
          }
-         _loc8_ = this._cachedBars.pop();
+         var _loc8_:TeamCaptureBar = this._cachedBars.pop();
          addChild(_loc8_);
          _loc8_.setData(param1,param2,param3,param4,param5,param6,param7);
          this._captureBars.push(_loc8_);
@@ -307,14 +306,9 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          return _loc2_;
       }
       
-      protected function getBarLinkage() : String
-      {
-         return Linkages.CAPTURE_BAR_LINKAGE;
-      }
-      
       private function createBar() : void
       {
-         var _loc1_:TeamCaptureBar = App.utils.classFactory.getComponent(this.getBarLinkage(),TeamCaptureBar);
+         var _loc1_:TeamCaptureBar = App.utils.classFactory.getComponent(Linkages.CAPTURE_BAR_LINKAGE,TeamCaptureBar);
          _loc1_.visible = false;
          _loc1_.x = 0;
          this._cachedBars.push(_loc1_);

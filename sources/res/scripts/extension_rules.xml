@@ -34,12 +34,20 @@
 			<type>merge</type>
 		</rule>
 		<rule>
+			<pattern>gui/component_marker_items\.xml$</pattern>
+			<type>include</type>
+		</rule>
+		<rule>
 			<pattern>gui/hangars\.xml$</pattern>
 			<type>merge</type>
 		</rule>
 		<rule>
 			<pattern>gui/avatar_input_handler\.xml$</pattern>
 			<type>merge</type>
+		</rule>
+		<rule>
+			<pattern>gui/battle_hints\.xml$</pattern>
+			<type>include</type>
 		</rule>
 		<rule>
 			<pattern>.*/development/test_xml/.*/.*\.xml$</pattern>
@@ -52,6 +60,14 @@
 		<rule>
 			<pattern>.*/server_xml/personal_reserves_config\.xml$</pattern>
 			<type>merge</type>
+		</rule>
+		<rule>
+			<pattern>.*/server_xml/deathzones_config\.xml$</pattern>
+			<type>include</type>
+		</rule>
+		<rule>
+			<pattern>gui/sound_notifications\.xml$</pattern>
+			<type>include</type>
 		</rule>
 	</xml_whitelist>
 </root>

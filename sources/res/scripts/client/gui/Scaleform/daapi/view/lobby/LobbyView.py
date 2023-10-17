@@ -1,4 +1,4 @@
-import constants, gui
+import BigWorld, constants, gui
 from PlayerEvents import g_playerEvents
 from frameworks.wulf import WindowLayer
 from gui import SystemMessages
@@ -52,7 +52,6 @@ class _LobbySubViewsLifecycleHandler(IViewLifecycleHandler):
      VIEW_ALIAS.LOBBY_TECHTREE,
      VIEW_ALIAS.BATTLE_QUEUE,
      VIEW_ALIAS.BATTLE_STRONGHOLDS_QUEUE,
-     VIEW_ALIAS.EVENT_BATTLE_QUEUE,
      RANKEDBATTLES_ALIASES.RANKED_BATTLES_VIEW_ALIAS)
 
     def __init__(self):
@@ -122,7 +121,14 @@ class LobbyView(LobbyPageMeta, IWaitingWidget):
             view = container.getView()
             if view and view.alias not in VEHICLE_PREVIEW_ALIASES:
                 return
+        component = getattr(BigWorld.player(), 'HalloweenAccountComponent', None)
+        if component and component.getHalloweenController() and component.getHalloweenController().isEventHangar():
+            container = self.app.containerManager.getContainer(WindowLayer.SUB_VIEW)
+            view = container.getView()
+            if view and view.alias not in VEHICLE_PREVIEW_ALIASES:
+                return
         self.fireEvent(events.LobbySimpleEvent(events.LobbySimpleEvent.NOTIFY_CURSOR_OVER_3DSCENE, ctx={'isOver3dScene': isOver3dScene}))
+        return
 
     def notifyCursorDragging(self, isDragging):
         self.fireEvent(events.LobbySimpleEvent(events.LobbySimpleEvent.NOTIFY_CURSOR_DRAGGING, ctx={'isDragging': isDragging}))

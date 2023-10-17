@@ -2,11 +2,9 @@ import typing, nations
 from items import _xml
 from constants import IS_CLIENT, ITEM_DEFS_PATH
 from soft_exception import SoftException
+from extension_utils import ResMgr
 if IS_CLIENT:
-    import ResMgr
     from helpers import i18n
-else:
-    from realm_utils import ResMgr
 _g_itemTypes = None
 UNDEFINED_ITEM_CD = 0
 ITEM_TYPE_NAMES = ('_reserved', 'vehicle', 'vehicleChassis', 'vehicleTurret', 'vehicleGun',
@@ -33,8 +31,7 @@ SIMPLE_ITEM_TYPE_INDICES = tuple(ITEM_TYPE_INDICES[x] for x in SIMPLE_ITEM_TYPE_
 VEHICLE_COMPONENT_TYPE_NAMES = ('vehicleChassis', 'vehicleTurret', 'vehicleGun', 'vehicleEngine',
                                 'vehicleFuelTank', 'vehicleRadio')
 VEHICLE_COMPONENT_TYPE_INDICES = tuple(ITEM_TYPE_INDICES[x] for x in VEHICLE_COMPONENT_TYPE_NAMES)
-EQUIPMENT_TYPE_NAMES = ('regular', 'battleBoosters', 'battleAbilities', 'abilities',
-                        'aux', 'passives')
+EQUIPMENT_TYPE_NAMES = ('regular', 'battleBoosters', 'battleAbilities')
 
 class EQUIPMENT_TYPES(dict):
 

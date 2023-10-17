@@ -1,134 +1,177 @@
 package net.wg.gui.battle.eventBattle.views.eventPlayersPanel
 {
-   import net.wg.data.constants.generated.PLAYERS_PANEL_STATE;
-   import net.wg.gui.battle.eventBattle.VO.DAAPIHunterVehiclesDataVO;
-   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.VO.DAAPIEventBossBotInfoVO;
-   import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelSwitchEvent;
+   import flash.display.Sprite;
+   import net.wg.data.constants.InvalidationType;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.VO.DAAPIPlayerPanelInfoVO;
    import net.wg.infrastructure.base.meta.IEventPlayersPanelMeta;
    import net.wg.infrastructure.base.meta.impl.EventPlayersPanelMeta;
-   import net.wg.infrastructure.interfaces.IDAAPIDataClass;
    
    public class EventPlayersPanel extends EventPlayersPanelMeta implements IEventPlayersPanelMeta
    {
+      
+      private static const LIST_PLAYERS_ITEM_LINKAGE:String = "EventPlayersPanelListItemUI";
+      
+      private static const LIST_ITEM_HEIGHT:int = 33;
+      
+      private static const INFO_OFFSET:int = 10;
        
       
-      public var bossPanelList:EventBossPanelList = null;
+      public var eventPlayersInfo:EventPlayersInfo = null;
       
-      private var _isBoss:Boolean = false;
+      private var _playersPanelListItems:Vector.<EventPlayersPanelListItem> = null;
+      
+      private var _playerRendererContainer:Sprite = null;
+      
+      private var _playersCount:int = 0;
+      
+      private var _pointsCount:uint = 0;
       
       public function EventPlayersPanel()
       {
          super();
+         mouseChildren = false;
+         mouseEnabled = false;
+         this._playersPanelListItems = new Vector.<EventPlayersPanelListItem>();
+         this._playerRendererContainer = new Sprite();
+         addChild(this._playerRendererContainer);
+         this.eventPlayersInfo.visible = false;
       }
       
-      override protected function configUI() : void
+      override protected function draw() : void
       {
-         super.configUI();
-         this.setListsState(PLAYERS_PANEL_STATE.MEDIUM_NO_BADGES);
+         super.draw();
+         if(isInvalid(InvalidationType.POSITION))
+         {
+            this.eventPlayersInfo.y = this._playersCount * LIST_ITEM_HEIGHT + INFO_OFFSET;
+         }
+         if(isInvalid(InvalidationType.DATA))
+         {
+            this.eventPlayersInfo.setCountPoints(this._pointsCount);
+         }
+      }
+      
+      public function as_setPlayerPanelCountPoints(param1:int, param2:int) : void
+      {
+         var _loc3_:int = this.getPlayerIndex(param1);
+         if(_loc3_ >= 0)
+         {
+            this._playersPanelListItems[_loc3_].setCountPoints(param2);
+         }
+         this.updateTotalPointsCount();
+      }
+      
+      public function as_setPlayerPanelHp(param1:int, param2:int, param3:int) : void
+      {
+         var _loc4_:int = this.getPlayerIndex(param1);
+         if(_loc4_ >= 0)
+         {
+            this._playersPanelListItems[_loc4_].setHp(param2,param3);
+         }
+      }
+      
+      public function as_setPlayerDead(param1:int) : void
+      {
+         var _loc2_:int = this.getPlayerIndex(param1);
+         if(_loc2_ >= 0)
+         {
+            this._playersPanelListItems[_loc2_].setEnable(false);
+         }
+      }
+      
+      public function as_setPlayerResurrect(param1:int, param2:Boolean) : void
+      {
+         var _loc3_:int = this.getPlayerIndex(param1);
+         if(_loc3_ >= 0)
+         {
+            this._playersPanelListItems[_loc3_].setResurrect(param2);
+         }
       }
       
       override protected function onDispose() : void
       {
-         this.bossPanelList.dispose();
-         this.bossPanelList = null;
+         this.eventPlayersInfo.dispose();
+         this.eventPlayersInfo = null;
+         this.clearPlayerRendererContainer();
+         this.clearPlayersPanelListItems();
          super.onDispose();
       }
       
-      override public function updateStageSize(param1:Number, param2:Number) : void
+      override protected function setPlayerPanelInfo(param1:DAAPIPlayerPanelInfoVO) : void
       {
-         super.updateStageSize(param1,param2);
-         if(!this._isBoss)
+         var _loc3_:EventPlayersPanelListItem = null;
+         var _loc2_:int = this.getPlayerIndex(param1.vehID);
+         if(_loc2_ >= 0)
          {
-            this.bossPanelList.x = listRight.x;
+            this._playersPanelListItems[_loc2_].setData(param1);
+         }
+         else
+         {
+            _loc3_ = App.utils.classFactory.getComponent(LIST_PLAYERS_ITEM_LINKAGE,EventPlayersPanelListItem);
+            _loc3_.y = this._playersCount * LIST_ITEM_HEIGHT;
+            _loc3_.setData(param1);
+            this._playerRendererContainer.addChild(_loc3_);
+            this._playersPanelListItems.push(_loc3_);
+            ++this._playersCount;
+         }
+         invalidatePosition();
+         this.updateTotalPointsCount();
+      }
+      
+      private function clearPlayerRendererContainer() : void
+      {
+         var _loc1_:int = 0;
+         if(this._playerRendererContainer)
+         {
+            _loc1_ = this._playerRendererContainer.numChildren;
+            while(--_loc1_ >= 0)
+            {
+               this._playerRendererContainer.removeChildAt(0);
+            }
+            removeChild(this._playerRendererContainer);
+            this._playerRendererContainer = null;
          }
       }
       
-      override public function updateVehiclesData(param1:IDAAPIDataClass) : void
+      private function clearPlayersPanelListItems() : void
       {
-         this.applyVehicleData(param1);
+         var _loc1_:EventPlayersPanelListItem = null;
+         if(this._playersPanelListItems)
+         {
+            for each(_loc1_ in this._playersPanelListItems)
+            {
+               _loc1_.dispose();
+            }
+            this._playersPanelListItems.splice(0,this._playersPanelListItems.length);
+            this._playersPanelListItems = null;
+         }
       }
       
-      override public function as_setPanelMode(param1:int) : void
+      private function getPlayerIndex(param1:int) : int
       {
+         var _loc2_:int = this._playersPanelListItems.length;
+         var _loc3_:int = 0;
+         while(_loc3_ < _loc2_)
+         {
+            if(this._playersPanelListItems[_loc3_].vehID == param1)
+            {
+               return _loc3_;
+            }
+            _loc3_++;
+         }
+         return -1;
       }
       
-      override public function as_setPlayerHP(param1:Boolean, param2:int, param3:int) : void
+      private function updateTotalPointsCount() : void
       {
-         super.as_setPlayerHP(param1,param2,param3);
-      }
-      
-      public function as_setIsBoss(param1:Boolean) : void
-      {
-         this._isBoss = param1;
-         listLeft.visible = !param1;
-         listRight.visible = param1;
-         this.bossPanelList.isAlly = param1;
-         this.bossPanelList.x = !!param1 ? Number(0) : Number(listRight.x);
-      }
-      
-      public function as_updateBossBotHp(param1:int, param2:int, param3:int) : void
-      {
-         this.bossPanelList.updateBotHp(param1,param2,param3);
-      }
-      
-      public function as_setBossBotSpotted(param1:int, param2:int) : void
-      {
-         this.bossPanelList.setBotSpotted(param1,param2);
-      }
-      
-      public function as_clearBossBotCamp(param1:int) : void
-      {
-         this.bossPanelList.clearCamp(param1);
-      }
-      
-      public function as_setAllBossBotCampsOffline() : void
-      {
-         this.bossPanelList.setAllCampsOffline();
-      }
-      
-      public function as_updateCampInfoStatus(param1:int) : void
-      {
-         this.bossPanelList.updateInfoStatus(param1);
-      }
-      
-      public function as_updateGeneratorCaptureTimer(param1:int, param2:Number, param3:Number, param4:Number, param5:Number) : void
-      {
-         this.bossPanelList.updateGeneratorCaptureTimer(param1,param2,param3,param4,param5);
-      }
-      
-      public function as_setIsDestroyed(param1:int, param2:Boolean) : void
-      {
-         this.bossPanelList.setIsDestroyed(param1,param2);
-      }
-      
-      public function as_resetGeneratorCaptureTimer(param1:int) : void
-      {
-         this.bossPanelList.resetGeneratorIconTimer(param1);
-      }
-      
-      public function as_updateGeneratorDownTime(param1:int, param2:Number, param3:Number, param4:String) : void
-      {
-         this.bossPanelList.updateGeneratorDownTime(param1,param2,param3,param4);
-      }
-      
-      override protected function applyVehicleData(param1:IDAAPIDataClass) : void
-      {
-         var _loc2_:DAAPIHunterVehiclesDataVO = DAAPIHunterVehiclesDataVO(param1);
-         listLeft.setVehicleData(_loc2_.leftVehicleInfos);
-         listLeft.updateOrder(_loc2_.leftVehiclesIDs);
-         listRight.setVehicleData(_loc2_.rightVehicleInfos);
-         listRight.updateOrder(_loc2_.rightVehiclesIDs);
-      }
-      
-      override protected function setBossBotInfo(param1:DAAPIEventBossBotInfoVO) : void
-      {
-         this.bossPanelList.setBotInfo(param1);
-      }
-      
-      override protected function setListsState(param1:int) : void
-      {
-         state = listLeft.state = listRight.state = param1;
-         dispatchEvent(new PlayersPanelSwitchEvent(PlayersPanelSwitchEvent.STATE_REQUESTED,param1));
+         this._pointsCount = 0;
+         var _loc1_:int = this._playersPanelListItems.length;
+         var _loc2_:int = 0;
+         while(_loc2_ < _loc1_)
+         {
+            this._pointsCount += this._playersPanelListItems[_loc2_].getCountPoints();
+            _loc2_++;
+         }
+         invalidateData();
       }
    }
 }

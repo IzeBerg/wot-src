@@ -1,7 +1,10 @@
+import typing
 from frameworks.wulf import ViewSettings
 from gui.impl.gen import R
-from gui.impl.gen.view_models.views.lobby.tank_setup.tooltips.warning_tooltip_view_model import WarningTooltipViewModel, WarningDescription
+from gui.impl.gen.view_models.views.lobby.tank_setup.tooltips.warning_tooltip_view_model import WarningTooltipViewModel
 from gui.impl.pub import ViewImpl
+if typing.TYPE_CHECKING:
+    from gui.impl.gen.view_models.views.lobby.tank_setup.tooltips.warning_tooltip_view_model import WarningDescription
 
 class WarningTooltipView(ViewImpl):
 
@@ -17,5 +20,5 @@ class WarningTooltipView(ViewImpl):
 
     def _onLoading(self, reason, isCritical, *args, **kwargs):
         super(WarningTooltipView, self)._onLoading(*args, **kwargs)
-        self.viewModel.setReason(WarningDescription(reason))
+        self.viewModel.setReason(reason)
         self.viewModel.setIsCritical(isCritical)

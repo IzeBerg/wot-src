@@ -1,7 +1,8 @@
 import operator
 from abc import ABCMeta, abstractmethod
 from collections import defaultdict, namedtuple
-import typing, BigWorld, constants, dossiers2, nations, wg_async as future_async
+from typing import TYPE_CHECKING, Optional
+import BigWorld, constants, dossiers2, nations, wg_async as future_async
 from PlayerEvents import g_playerEvents
 from account_shared import LayoutIterator
 from adisp import adisp_async, adisp_process
@@ -10,7 +11,8 @@ from constants import CustomizationInvData, SkinInvData
 from debug_utils import LOG_DEBUG, LOG_WARNING, LOG_NOTE
 from goodies.goodie_constants import GOODIE_STATE
 from gui.game_loading.resources.consts import Milestones
-from gui.shared.gui_items import GUI_ITEM_TYPE, GUI_ITEM_TYPE_NAMES, ItemsCollection, getVehicleSuitablesByType
+from gui.shared.gui_items import GUI_ITEM_TYPE, GUI_ITEM_TYPE_NAMES, ItemsCollection, getVehicleSuitablesByType, checkForTags
+from gui.shared.gui_items.Vehicle import VEHICLE_TAGS
 from gui.shared.gui_items.gui_item_economics import ITEM_PRICE_EMPTY
 from gui.shared.utils.requesters import vehicle_items_getter
 from helpers import dependency, isPlayerAvatar
@@ -22,9 +24,10 @@ from shared_utils.account_helpers.diff_utils import synchronizeDicts
 from skeletons.gui.game_control import IVehiclePostProgressionController
 from skeletons.gui.shared import IItemsCache, IItemsRequester
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
-if typing.TYPE_CHECKING:
+if TYPE_CHECKING:
     import skeletons.gui.shared.utils.requesters as requesters
     from gui.shared.gui_items.Tankman import Tankman
+    from gui.shared.gui_items.Vehicle import Vehicle
     from gui.veh_post_progression.models.progression import PostProgressionItem
     from items.vehicles import VehicleType
 DO_LOG_BROKEN_SYNC = False
@@ -215,7 +218,8 @@ class VehsMultiNationSuitableCriteria(VehsSuitableCriteria):
 
 class REQ_CRITERIA(object):
     EMPTY = RequestCriteria()
-    NONE = RequestCriteria(lambda i: False)
+    ALL = RequestCriteria(PredicateCondition(lambda i: True))
+    NONE = RequestCriteria(PredicateCondition(lambda i: False))
     CUSTOM = staticmethod(lambda predicate: RequestCriteria(PredicateCondition(predicate)))
     HIDDEN = RequestCriteria(PredicateCondition(operator.attrgetter('isHidden')))
     SECRET = RequestCriteria(PredicateCondition(operator.attrgetter('isSecret')))
@@ -273,7 +277,6 @@ class REQ_CRITERIA(object):
         FULLY_ELITE = RequestCriteria(PredicateCondition(lambda item: item.isFullyElite))
         EVENT = RequestCriteria(PredicateCondition(lambda item: item.isEvent))
         EVENT_BATTLE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForEventBattles))
-        RANDOM_ONLY = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForRandomBattles))
         EPIC_BATTLE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForEpicBattles))
         BATTLE_ROYALE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForBattleRoyaleBattles))
         MAPS_TRAINING = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForMapsTrainingBattles))
@@ -294,15 +297,58 @@ class REQ_CRITERIA(object):
         DISCOUNT_RENT_OR_BUY = RequestCriteria(PredicateCondition(lambda item: (item.buyPrices.itemPrice.isActionPrice() or item.getRentPackageActionPrc() != 0) and not item.isRestoreAvailable()))
         HAS_TAGS = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: item.tags.issuperset(tags))))
         HAS_ANY_TAG = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: bool(item.tags & tags))))
-        HAS_NO_TAG = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: not bool(item.tags & tags))))
         FOR_ITEM = staticmethod(lambda style: RequestCriteria(PredicateCondition(style.mayInstall)))
+        HAS_ROLE = staticmethod(lambda roleName: RequestCriteria(PredicateCondition(lambda item: roleName in {roles[0] for roles in item.descriptor.type.crewRoles})))
 
     class TANKMAN(object):
         IN_TANK = RequestCriteria(PredicateCondition(lambda item: item.isInTank))
         ROLES = staticmethod(lambda roles=tankmen.ROLES: RequestCriteria(PredicateCondition(lambda item: item.descriptor.role in roles)))
+        TANKMAN_HAS_ROLE = staticmethod(lambda role: RequestCriteria(PredicateCondition(lambda item: tankmen.tankmenGroupHasRole(item.descriptor.nationID, item.descriptor.gid, item.descriptor.isPremium, role))))
         NATIVE_TANKS = staticmethod(lambda vehiclesList=[]: RequestCriteria(PredicateCondition(lambda item: item.vehicleNativeDescr.type.compactDescr in vehiclesList)))
+        SPECIFIC_BY_NAME = staticmethod(lambda name: RequestCriteria(PredicateCondition(lambda item: item.isSearchableByName(name))))
+        SPECIFIC_BY_NAME_OR_SKIN = staticmethod(lambda name: RequestCriteria(PredicateCondition(lambda item: item.isSearchableByName(name) or item.isSearchableBySkinName(name))))
+        VEHICLE_BATTLE_ROYALE = RequestCriteria(PredicateCondition(lambda item: False if not item.vehicleDescr else checkForTags(item.vehicleDescr.type.tags, VEHICLE_TAGS.BATTLE_ROYALE)))
+        VEHICLE_EVENT_BATTLES = RequestCriteria(PredicateCondition(lambda item: False if not item.vehicleDescr else checkForTags(item.vehicleDescr.type.tags, VEHICLE_TAGS.EVENT)))
+        VEHICLE_HIDDEN_IN_HANGAR = RequestCriteria(PredicateCondition(lambda item: False if not item.vehicleDescr else checkForTags(item.vehicleDescr.type.tags, VEHICLE_TAGS.MODE_HIDDEN)))
+        VEHICLE_NATIVE_TYPE = staticmethod(lambda vehicleNativeType: RequestCriteria(PredicateCondition(lambda item: item.vehicleNativeType == vehicleNativeType)))
+        VEHICLE_NATIVE_TYPES = staticmethod(lambda vehicleNativeTypes: RequestCriteria(PredicateCondition(lambda item: item.vehicleNativeType in vehicleNativeTypes)))
+        VEHICLE_NATIVE_LEVELS = staticmethod(lambda levels: RequestCriteria(PredicateCondition(lambda item: item.vehicleNativeDescr.level in levels)))
+        NATION = staticmethod(lambda nationNames: RequestCriteria(PredicateCondition(lambda item: nations.NAMES[item.nationID] in nationNames)))
+        IS_LOCK_CREW = staticmethod(lambda isLockCrew=False: RequestCriteria(PredicateCondition(lambda item: item.isLockedByVehicle() in isLockCrew)))
         DISMISSED = RequestCriteria(PredicateCondition(lambda item: item.isDismissed))
         ACTIVE = ~DISMISSED
+
+    class RECRUIT(object):
+        ROLES = staticmethod(lambda roles=tankmen.ROLES: RequestCriteria(PredicateCondition(--- This code section failed: ---
+
+ L. 557         0  LOAD_FAST             0  'item'
+                3  LOAD_ATTR             0  'getRoles'
+                6  CALL_FUNCTION_0       0  None
+                9  POP_JUMP_IF_FALSE    53  'to 53'
+               12  LOAD_GLOBAL           1  'any'
+               15  BUILD_LIST_0          0 
+               18  LOAD_FAST             0  'item'
+               21  LOAD_ATTR             0  'getRoles'
+               24  CALL_FUNCTION_0       0  None
+               27  GET_ITER         
+               28  FOR_ITER             18  'to 49'
+               31  STORE_FAST            1  'role'
+               34  LOAD_FAST             1  'role'
+               37  LOAD_DEREF            0  'roles'
+               40  COMPARE_OP            6  in
+               43  LIST_APPEND           2  None
+               46  JUMP_BACK            28  'to 28'
+               49  CALL_FUNCTION_1       1  None
+               52  RETURN_VALUE_LAMBDA
+             53_0  COME_FROM             9  '9'
+               53  LOAD_GLOBAL           2  'True'
+               56  RETURN_VALUE_LAMBDA
+               -1  LAMBDA_MARKER    
+
+Parse error at or near `None' instruction at offset -1
+)))
+        NATION = staticmethod(lambda _nations=nations.NAMES: RequestCriteria(PredicateCondition(lambda item: any([ nation in _nations for nation in item.getNations() ]))))
+        SPECIFIC_BY_NAME = staticmethod(lambda name: RequestCriteria(PredicateCondition(lambda item: name.lower() in unicode(item.getFullUserName()).lower())))
 
     class CREW_ITEM(object):
         IN_ACCOUNT = RequestCriteria(PredicateCondition(lambda item: item.inAccount()))
@@ -376,9 +422,12 @@ class REQ_CRITERIA(object):
         FULL_INVENTORY = RequestCriteria(PredicateCondition(lambda item: item.fullInventoryCount() > 0))
         ON_ACCOUNT = RequestCriteria(PredicateCondition(lambda item: item.fullCount() > 0))
 
+    class CREW_SKINS(object):
+        NATIONS = staticmethod(lambda nationNames: RequestCriteria(PredicateCondition(lambda item: item.getNation() in nationNames or item.getNation() is None)))
+
 
 class RESEARCH_CRITERIA(object):
-    VEHICLE_TO_UNLOCK = ~REQ_CRITERIA.SECRET | ~REQ_CRITERIA.HIDDEN | ~REQ_CRITERIA.VEHICLE.PREMIUM | ~REQ_CRITERIA.VEHICLE.IS_PREMIUM_IGR | ~REQ_CRITERIA.VEHICLE.MAPS_TRAINING | ~REQ_CRITERIA.VEHICLE.HAS_ANY_TAG(constants.BATTLE_MODE_VEHICLE_TAGS)
+    VEHICLE_TO_UNLOCK = ~REQ_CRITERIA.SECRET | ~REQ_CRITERIA.HIDDEN | ~REQ_CRITERIA.VEHICLE.PREMIUM | ~REQ_CRITERIA.VEHICLE.IS_PREMIUM_IGR | ~REQ_CRITERIA.VEHICLE.MAPS_TRAINING | ~REQ_CRITERIA.VEHICLE.HAS_ANY_TAG(constants.BATTLE_MODE_VEHICLE_TAGS) | ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE | ~REQ_CRITERIA.VEHICLE.EVENT_BATTLE
 
 
 class ItemsRequester(IItemsRequester):
@@ -413,7 +462,6 @@ class ItemsRequester(IItemsRequester):
         self.__brokenSyncAlreadyLoggedTypes = set()
         self.__fittingItemRequesters = {
          self.__inventory, self.__stats, self.__shop, self.__vehicleRotation, self.__recycleBin}
-        self.__ignoreFittingItemsSync = False
         self.__vehCustomStateCache = defaultdict(dict)
 
     @property
@@ -572,7 +620,7 @@ class ItemsRequester(IItemsRequester):
 
     def isSynced--- This code section failed: ---
 
- L. 951         0  LOAD_FAST             0  'self'
+ L.1024         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  '__blueprints'
                 6  LOAD_CONST               None
                 9  COMPARE_OP            9  is-not
@@ -721,7 +769,6 @@ Parse error at or near `None' instruction at offset -1
         self.__anonymizer.clear()
         self.__giftSystem.clear()
         self.__gameRestrictions.clear()
-        self.__ignoreFittingItemsSync = True
 
     def onDisconnected(self):
         self.__tokens.onDisconnected()
@@ -731,7 +778,6 @@ Parse error at or near `None' instruction at offset -1
 
     def invalidateCache(self, diff=None):
         invalidate = defaultdict(set)
-        self.__ignoreFittingItemsSync = False
         if diff is None:
             LOG_DEBUG('Gui items cache full invalidation')
             for itemTypeID, cache in self.__itemsCache.iteritems():
@@ -989,6 +1035,11 @@ Parse error at or near `None' instruction at offset -1
         callback(result)
 
     def getTankmen(self, criteria=REQ_CRITERIA.TANKMAN.ACTIVE):
+        result = self.getInventoryTankmen(criteria)
+        result.update(self.getDismissedTankmen(criteria))
+        return result
+
+    def getInventoryTankmen(self, criteria=REQ_CRITERIA.TANKMAN.ACTIVE):
         result = ItemsCollection()
         activeTankmenInvData = self.__inventory.getItemsData(GUI_ITEM_TYPE.TANKMAN)
         for invID, tankmanInvData in activeTankmenInvData.iteritems():
@@ -996,7 +1047,6 @@ Parse error at or near `None' instruction at offset -1
             if criteria(item):
                 result[invID] = item
 
-        result.update(self.getDismissedTankmen(criteria))
         return result
 
     def getDismissedTankmen(self, criteria=REQ_CRITERIA.TANKMAN.DISMISSED):
@@ -1024,6 +1074,13 @@ Parse error at or near `None' instruction at offset -1
                 result.append(tankman)
 
             return result
+
+    def tankmenInBarracksCount(self):
+        tmen = self.getInventoryTankmen()
+        return sum(1 for tmn in tmen.itervalues() if not tmn.isInTank)
+
+    def freeTankmenBerthsCount(self):
+        return self.stats.tankmenBerthsCount - self.tankmenInBarracksCount()
 
     def getVehicles(self, criteria=REQ_CRITERIA.EMPTY):
         return self.getItems(GUI_ITEM_TYPE.VEHICLE, criteria=criteria)
@@ -1292,8 +1349,6 @@ Parse error at or near `None' instruction at offset -1
             return set()
 
     def __checkFittingItemsSync(self, itemTypeID):
-        if self.__ignoreFittingItemsSync:
-            return
         unsyncedList = [ r.__class__.__name__ for r in self.__fittingItemRequesters if not r.isSynced() ]
         if not unsyncedList or itemTypeID in self.__brokenSyncAlreadyLoggedTypes:
             return

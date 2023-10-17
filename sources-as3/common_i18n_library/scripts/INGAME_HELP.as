@@ -237,6 +237,14 @@ package
       
       public static const DETAILSHELP_MAPBOX_ARTEFACTS_DESCRIPTION:String = "#ingame_help:detailsHelp/mapbox/artefacts/description";
       
+      public static const DETAILSHELP_DEVMAPS_HEADERTITLE:String = "#ingame_help:detailsHelp/devMaps/headerTitle";
+      
+      public static const DETAILSHELP_DEVMAPS_TITLE:String = "#ingame_help:detailsHelp/devMaps/title";
+      
+      public static const DETAILSHELP_DEVMAPS_MARKERS_DESCRIPTION:String = "#ingame_help:detailsHelp/devMaps/markers/description";
+      
+      public static const DETAILSHELP_DEVMAPS_ZONE_DESCRIPTION:String = "#ingame_help:detailsHelp/devMaps/zone/description";
+      
       public static const RADIALMENU_ATTENTION_TO_POSITION:String = "#ingame_help:radialMenu/attention_to_position";
       
       public static const RADIALMENU_GOING_THERE:String = "#ingame_help:radialMenu/going_there";

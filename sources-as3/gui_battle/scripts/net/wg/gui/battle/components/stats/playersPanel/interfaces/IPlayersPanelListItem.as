@@ -80,5 +80,7 @@ package net.wg.gui.battle.components.stats.playersPanel.interfaces
       function setPanelHPBarVisibilityState(param1:uint) : void;
       
       function setSpottedStatus(param1:uint) : void;
+      
+      function setPrestige(param1:int, param2:int) : void;
    }
 }

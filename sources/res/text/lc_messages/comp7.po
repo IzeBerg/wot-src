@@ -9,12 +9,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "#PluralForms"
-msgstr ""
-"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2);"
+msgstr "nplurals=2; plural=(n != 1);"
 
 msgid "alertMessage/afterSeason"
 msgstr "Season of the Azure Pegasus has ended"
@@ -38,7 +36,7 @@ msgid "alertMessage/button/moreInfo"
 msgstr "Details"
 
 msgid "alertMessage/modeOffline"
-msgstr "Mode unavailable: Database error."
+msgstr "Database error. Game mode unavailable."
 
 msgid "alertMessage/notAvailable"
 msgstr "Battles are not available on the %(serverName)s server"
@@ -315,6 +313,9 @@ msgid "countDown/text"
 msgstr ""
 "Event starts in:\n"
 "%(timeLeft)s"
+
+msgid "dash"
+msgstr "—"
 
 msgid "detailsHelp/mainTitle"
 msgstr "Hints for Onslaught Mode"
@@ -705,6 +706,9 @@ msgstr "Forward"
 
 msgid "pagination/prev"
 msgstr "Back"
+
+msgid "percentage"
+msgstr "%(percentageValue)s%"
 
 msgid "player_errors/equipment/fastRecharge/vehicleIsNotRecharged"
 msgstr "Unavailable: This vehicle's gun is not reloading."
@@ -1103,11 +1107,8 @@ msgstr "Ends in %(hours)s h"
 msgid "season/minutesLeft"
 msgstr "Ends in %(minutes)s min"
 
-msgid "season/name"
-msgstr "Season of the Azure Pegasus"
-
 msgid "season/over"
-msgstr "Season of the Azure Pegasus has ended"
+msgstr "%(seasonName)s has finished"
 
 msgid "season/range"
 msgstr "%(startDate)s–%(endDate)s"
@@ -1117,6 +1118,42 @@ msgstr "Ends in %(seconds)s s"
 
 msgid "seasonModifier/title"
 msgstr "Season Modifier"
+
+msgid "seasonName/first"
+msgstr "Season of the Azure Pegasus"
+
+msgid "seasonName/second"
+msgstr "Season of the Crimson Pegasus"
+
+msgid "seasonName/third"
+msgstr "Season of the Jade Pegasus"
+
+msgid "seasonNameUpper/first"
+msgstr "SEASON OF THE AZURE PEGASUS"
+
+msgid "seasonNameUpper/second"
+msgstr "SEASON OF THE CRIMSON PEGASUS"
+
+msgid "seasonNameUpper/third"
+msgstr "SEASON OF THE JADE PEGASUS"
+
+msgid "seasonNameWithNumber/first"
+msgstr "Season I: Azure Pegasus"
+
+msgid "seasonNameWithNumber/second"
+msgstr "Season II: Crimson Pegasus"
+
+msgid "seasonNameWithNumber/third"
+msgstr "Season III: Jade Pegasus"
+
+msgid "seasonNameWithNumberUpper/first"
+msgstr "SEASON I: AZURE PEGASUS"
+
+msgid "seasonNameWithNumberUpper/second"
+msgstr "SEASON II: CRIMSON PEGASUS"
+
+msgid "seasonNameWithNumberUpper/third"
+msgstr "SEASON III: JADE PEGASUS"
 
 msgid "seasonPointTooltip/header"
 msgstr "Pegasus Colors"
@@ -1145,6 +1182,109 @@ msgid "seasonPointTooltip/text/year"
 msgstr ""
 "Every 3 Pegasus Colors improve the reward you receive at the end of the "
 "year."
+
+msgid "seasonStatistics/button/fifth"
+msgstr "Where is my trophy?!"
+
+msgid "seasonStatistics/button/first"
+msgstr "This is Fine"
+
+msgid "seasonStatistics/button/fourth"
+msgstr "My Precious!"
+
+msgid "seasonStatistics/button/second"
+msgstr "Affirmative!"
+
+msgid "seasonStatistics/button/sixth"
+msgstr "Legendary!"
+
+msgid "seasonStatistics/button/third"
+msgstr "I'll Be Back"
+
+msgid "seasonStatistics/description/finalScore"
+msgstr "Final season rating"
+
+msgid "seasonStatistics/description/leaderboardPosition"
+msgstr "Position on Leaderboard: %(position)s"
+
+msgid "seasonStatistics/description/season"
+msgstr "ONSLAUGHT. %(seasonNameUpper)s"
+
+msgid "seasonStatistics/description/seasonPoint"
+msgid_plural "plural/seasonStatistics/description/seasonPoint"
+msgstr[0] "Received %(points)s Pegasus Colors"
+msgstr[1] "Received %(points)s Pegasus Colors"
+msgstr[2] "Received %(points)s Pegasus Colors"
+
+msgid "seasonStatistics/seasonNameUpper/first"
+msgstr "SEASON I: AZURE PEGASUS"
+
+msgid "seasonStatistics/seasonNameUpper/second"
+msgstr "SEASON II: CRIMSON PEGASUS"
+
+msgid "seasonStatistics/seasonNameUpper/third"
+msgstr "SEASON III: JADE PEGASUS"
+
+msgid "seasonStatistics/section/statistics/battles/additional"
+msgstr "Victories: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/battles/main"
+msgstr ""
+"Battles\n"
+"fought"
+
+msgid "seasonStatistics/section/statistics/damage/additional"
+msgstr "Average: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/damage/main"
+msgstr ""
+"Damage\n"
+"record"
+
+msgid "seasonStatistics/section/statistics/maxFrags/additional"
+msgstr "Destruction Ratio: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/maxFrags/main"
+msgstr ""
+"Most vehicles destroyed\n"
+"in a battle"
+
+msgid "seasonStatistics/section/statistics/maxPrestigePoints/additional"
+msgstr "Average: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/maxPrestigePoints/main"
+msgstr ""
+"Prestige Points\n"
+"record"
+
+msgid "seasonStatistics/section/statistics/title"
+msgstr "SEASON STATISTICS"
+
+msgid "seasonStatistics/section/statistics/winSeries/additional"
+msgstr "In a Super Platoon: %(additional)s"
+
+msgid "seasonStatistics/section/statistics/winSeries/main"
+msgstr ""
+"Win streak\n"
+"(solo/Platoon)"
+
+msgid "seasonStatistics/section/vehicles/battles"
+msgstr "Battles"
+
+msgid "seasonStatistics/section/vehicles/noData"
+msgstr "—"
+
+msgid "seasonStatistics/section/vehicles/noVehicles"
+msgstr "No Vehicles"
+
+msgid "seasonStatistics/section/vehicles/title"
+msgstr "PRIMARY VEHICLES"
+
+msgid "seasonStatistics/section/vehicles/wins"
+msgstr "Victories"
+
+msgid "seasonStatistics/title"
+msgstr "%(name)s SEASON STATISTICS"
 
 msgid "seasonalBattleSelector/tillEnd"
 msgstr "Season ends in:"
@@ -1297,6 +1437,9 @@ msgstr "Reward for Weekly Mission"
 msgid "system_messages/weeklyReward/tokens"
 msgstr "Lucky Chip"
 
+msgid "tournament/battleResult/personal/tooltip/descr"
+msgstr "Rating Points cannot be earned or lost in a Tournament."
+
 msgid "unit/message/modeOffline"
 msgstr "Unable to join the battle: Database error."
 
@@ -1326,14 +1469,17 @@ msgstr "Completed"
 msgid "weeklyQuests/card/status/locked"
 msgstr "Unavailable"
 
-msgid "weeklyQuests/card/statusLockedTooltip/body"
+msgid "weeklyQuests/card/statusLockedTooltip/body/lockedByInactiveSeason"
+msgstr "Unavailable for completion: The mode is not active."
+
+msgid "weeklyQuests/card/statusLockedTooltip/body/lockedByNoXVehicles"
+msgstr "To unlock, research and purchase a Tier X vehicle."
+
+msgid "weeklyQuests/card/statusLockedTooltip/body/lockedByPreviousQuest"
 msgstr "Complete the previous mission to unlock this one."
 
 msgid "weeklyQuests/card/statusLockedTooltip/header"
 msgstr "Mission Unavailable"
-
-msgid "weeklyQuests/card/statusUnavailableTooltip/body"
-msgstr "Unavailable for completion: The mode is not active."
 
 msgid "weeklyQuests/resetStatus/ended"
 msgstr "All missions have been completed."
@@ -1752,17 +1898,32 @@ msgstr "Silver Camouflage"
 msgid "yearlyStatistics/battles"
 msgstr "Battles (solo/Platoon)"
 
-msgid "yearlyStatistics/dash"
-msgstr "—"
-
 msgid "yearlyStatistics/generationOfStatistics"
 msgstr "Calculating Season statistics..."
 
-msgid "yearlyStatistics/rankStatus"
+msgid "yearlyStatistics/goToSeasonStatistics"
+msgstr "%(icon)s To Season Statistics"
+
+msgid "yearlyStatistics/rankStatus/notReceived"
 msgstr "No rank"
+
+msgid "yearlyStatistics/rankStatus/received"
+msgstr "%(rank)s Rank"
 
 msgid "yearlyStatistics/rating"
 msgstr "Rating Points"
+
+msgid "yearlyStatistics/seasonDate/0"
+msgstr "Fall 2023"
+
+msgid "yearlyStatistics/seasonDate/1"
+msgstr "Winter 2024"
+
+msgid "yearlyStatistics/seasonDate/2"
+msgstr "Spring 2024"
+
+msgid "yearlyStatistics/seasonDateInterval"
+msgstr "%(start)s–%(end)s"
 
 msgid "yearlyStatistics/seasonName/0"
 msgstr "Season I. Azure Pegasus"
@@ -1773,19 +1934,11 @@ msgstr "Season II. Crimson Pegasus"
 msgid "yearlyStatistics/seasonName/2"
 msgstr "Season III. Jade Pegasus"
 
-msgid "yearlyStatistics/seasonStatus/0"
-msgstr "%(start)s–%(end)s"
+msgid "yearlyStatistics/seasonStatus/active"
+msgstr "Current"
 
-msgid "yearlyStatistics/seasonStatus/1"
-msgstr "Winter 2024"
-
-msgid "yearlyStatistics/seasonStatus/2"
-msgstr "Spring 2024"
-
-msgid "yearlyStatistics/statisticsAvailability"
-msgstr ""
-"Statistics will become available\n"
-"once the Season ends"
+msgid "yearlyStatistics/seasonStatus/end"
+msgstr "Finished"
 
 msgid "yearlyStatistics/superPlatoonBattles"
 msgstr "Battles (Super Platoon)"

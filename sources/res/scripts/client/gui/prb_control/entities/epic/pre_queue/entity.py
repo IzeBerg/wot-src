@@ -3,6 +3,7 @@ from CurrentVehicle import g_currentVehicle
 from constants import QUEUE_TYPE
 from debug_utils import LOG_DEBUG
 from gui import SystemMessages
+from gui.Scaleform.daapi.view.lobby.header.fight_btn_tooltips import getEpicFightBtnTooltipData
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
 from gui.prb_control.ctrl_events import g_prbCtrlEvents
 from gui.prb_control.entities.base import vehicleAmmoCheck
@@ -90,6 +91,11 @@ class EpicEntity(PreQueueEntity):
 
     def getPermissions(self, pID=None, **kwargs):
         return EpicPermissions(self.isInQueue())
+
+    def getFightBtnTooltipData(self, isStateDisabled):
+        if isStateDisabled:
+            return (getEpicFightBtnTooltipData(self.canPlayerDoAction()), False)
+        return super(EpicEntity, self).getFightBtnTooltipData(isStateDisabled)
 
     def _createActionsValidator(self):
         return EpicActionsValidator(self)

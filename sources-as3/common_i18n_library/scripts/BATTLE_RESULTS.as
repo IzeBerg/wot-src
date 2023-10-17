@@ -762,6 +762,12 @@ package
       public static const CUSTOMIZATIONPROGRESS_AWARD_RECEIVED:String = "#battle_results:customizationProgress/award/received";
       
       public static const CUSTOMIZATIONPROGRESS_AWARD_NEWLEVEL:String = "#battle_results:customizationProgress/award/newLevel";
+      
+      public static const PRESTIGE_TITLE:String = "#battle_results:prestige/title";
+      
+      public static const PRESTIGE_COMMON_DESCRIPTION:String = "#battle_results:prestige/common/description";
+      
+      public static const PRESTIGE_MAX_DESCRIPTION:String = "#battle_results:prestige/max/description";
        
       
       public function BATTLE_RESULTS()

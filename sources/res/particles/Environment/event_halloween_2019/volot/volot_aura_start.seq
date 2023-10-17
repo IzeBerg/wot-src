@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>aura</name>
+		<type>model</type>
+		<resource>particles/Environment/event_halloween_2019/volot/volot_aura.model</resource>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>prominence1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.470588 0.423529 1.000000 0.000000</value>
+				<inTangent>0.046689 0.015535 0.000000 0.000000</inTangent>
+				<outTangent>0.046689 0.015535 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.470588 0.423529 1.000000 1.000000</value>
+				<inTangent>0.021016 -0.013924 -0.000000 -0.000000</inTangent>
+				<outTangent>0.021016 -0.013924 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>prominence1</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>0.046628 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.046628 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>1.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-0.123837 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.123837 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>aura_glow</name>
+		<type>model</type>
+		<resource>particles/Environment/event_halloween_2019/volot/volot_aura_glow.model</resource>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert13</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.207843 1.000000 0.000000</value>
+				<inTangent>-0.074358 0.000000 -0.177515 0.001307</inTangent>
+				<outTangent>-0.074358 0.000000 -0.177515 0.001307</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000 0.207843 1.000000 0.294118</value>
+				<inTangent>-0.032042 -0.000000 0.145929 -0.001307</inTangent>
+				<outTangent>-0.032042 -0.000000 0.145929 -0.001307</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>lambert13</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>3.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-0.112185 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-0.112185 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>3.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-1.244457 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-1.244457 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

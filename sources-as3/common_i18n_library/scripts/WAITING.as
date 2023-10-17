@@ -13,6 +13,8 @@ package
       
       public static const LOADCONTENT:String = "#waiting:loadContent";
       
+      public static const LOADING:String = "#waiting:loading";
+      
       public static const LOGIN:String = "#waiting:login";
       
       public static const ENTER:String = "#waiting:enter";
@@ -59,7 +61,7 @@ package
       
       public static const EXCHANGEVEHICLESXP:String = "#waiting:exchangeVehiclesXP";
       
-      public static const RECRUTING:String = "#waiting:recruting";
+      public static const RECRUITING:String = "#waiting:recruiting";
       
       public static const EQUIPPING:String = "#waiting:equipping";
       
@@ -324,6 +326,10 @@ package
       public static const ACHIVEMENTS20:String = "#waiting:achivements20";
       
       public static const DOWNLOAD_ACHIEVEMENTS20:String = "#waiting:download/achievements20";
+      
+      public static const UPDATINGFRIENDLIST:String = "#waiting:updatingFriendList";
+      
+      public static const SENDINGINVITE:String = "#waiting:sendingInvite";
        
       
       public function WAITING()

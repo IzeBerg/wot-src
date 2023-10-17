@@ -54,7 +54,7 @@ package net.wg.gui.battle.views.radialMenu.components
       
       private var _currentState:String = "";
       
-      private var _iconsDictionary:Dictionary;
+      protected var _iconsDictionary:Dictionary;
       
       private var _disposed:Boolean = false;
       
@@ -105,6 +105,7 @@ package net.wg.gui.battle.views.radialMenu.components
       
       public final function dispose() : void
       {
+         this.onDispose();
          this._disposed = true;
          App.utils.data.cleanupDynamicObject(this._iconsDictionary);
          this._iconsDictionary = null;
@@ -127,7 +128,11 @@ package net.wg.gui.battle.views.radialMenu.components
          this.attackingBaseIcon = null;
       }
       
-      private function hideAll() : void
+      protected function onDispose() : void
+      {
+      }
+      
+      protected function hideAll() : void
       {
          this.supportingAllyIcon.visible = false;
          this.turnbackIcon.visible = false;

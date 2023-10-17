@@ -25,7 +25,7 @@ msgstr "This email address is already linked to your account."
 msgid "accountCompletion/activate/button"
 msgstr "Send Code/Change Email"
 
-msgid "accountCompletion/activate/coundownText"
+msgid "accountCompletion/activate/countdownText"
 msgstr "Resend code or change your email in %(timer) s"
 
 msgid "accountCompletion/activate/enterCredentialsAgain"
@@ -44,14 +44,18 @@ msgstr ""
 
 msgid "accountCompletion/activate/text"
 msgstr ""
-"An email has been sent to %(email) to activate your account. You can find a "
-"4-digit activation code in the email from Wargaming.net."
+"An email with the confirmation code from Wargaming.net was sent to the "
+"address {whiteSpanish_Open}%(email){whiteSpanish_Close}. Enter the 4-digit "
+"code to confirm your email and complete your account."
 
 msgid "accountCompletion/activate/title"
-msgstr "Activation Code"
+msgstr "Confirm email address"
 
 msgid "accountCompletion/activate/tooManyIncorrectTries"
 msgstr "You entered an incorrect code too many times."
+
+msgid "accountCompletion/add"
+msgstr "Add"
 
 msgid "accountCompletion/alreadyLinked/subTitle"
 msgstr "This email address is already linked to your account."
@@ -101,11 +105,11 @@ msgstr "GET FULL ACCESS TO THE GAME"
 
 msgid "accountCompletion/email/subTitle"
 msgstr ""
-"Add your email to receive the reward and new options in the game! "
-"%(emailIcon)"
+"Add and confirm your email address to receive a reward and unlock new "
+"features. %(emailIcon)"
 
 msgid "accountCompletion/email/title"
-msgstr "Add Email"
+msgstr "Complete Account"
 
 msgid "accountCompletion/emailAlreadyTaken"
 msgstr "An account is already registered with this email address."
@@ -170,6 +174,9 @@ msgid "accountCompletion/errorIsWrong"
 msgstr ""
 "Email can contain only Latin letters, digits, @ symbols, fullstops, and "
 "underscores."
+
+msgid "accountCompletion/later"
+msgstr "Later"
 
 msgid "accountCompletion/leaveSquad/cancel"
 msgstr "Cancel"
@@ -290,7 +297,7 @@ msgstr ""
 
 msgid "accountCompletion/warningServerUnavailable"
 msgstr ""
-"%(icon) The service is temporarily unavailable.%(br) Please try again later."
+"%(icon) The service is temporarily unavailable. Please try again later."
 
 msgid "accountCompletion/warningServerUnavailableTimed"
 msgstr ""
@@ -299,50 +306,6 @@ msgstr ""
 
 msgid "accountCompletion/warningSomethingWentWrong"
 msgstr "Something went wrong."
-
-msgid "addFreeSkillWindow/label"
-msgstr "Zero Perks"
-
-msgid "addFreeSkillWindow/submit"
-msgstr "Select Perk"
-
-msgid "addSkillWindow/cancel"
-msgstr "Cancel"
-
-msgid "addSkillWindow/desc1"
-msgstr ""
-"Perks take effect as soon as training starts, gradually increasing to their "
-"full potential."
-
-msgid "addSkillWindow/desc2"
-msgstr "Perks only come into effect after reaching 100%."
-
-msgid "addSkillWindow/label"
-msgstr "Perks"
-
-msgid "addSkillWindow/label/commander"
-msgstr "Commander"
-
-msgid "addSkillWindow/label/common"
-msgstr "group"
-
-msgid "addSkillWindow/label/driver"
-msgstr "Driver"
-
-msgid "addSkillWindow/label/gunner"
-msgstr "Gunner"
-
-msgid "addSkillWindow/label/loader"
-msgstr "Loader"
-
-msgid "addSkillWindow/label/radioman"
-msgstr "Radio Operator"
-
-msgid "addSkillWindow/submit"
-msgstr "Select Perk"
-
-msgid "addSkillWindow/title"
-msgstr "View Additional Perks"
 
 msgid "barracksExpand/cancel"
 msgstr "Cancel"
@@ -955,7 +918,7 @@ msgid "confirmBuyAndInstall/depotMessage"
 msgstr "The module will be sent to the Depot."
 
 msgid "confirmBuyAndInstall/insufficientFundsTooltip/amount"
-msgstr "Amount required:"
+msgstr "Amount required for purchase:"
 
 msgid "confirmBuyAndInstall/insufficientFundsTooltip/body"
 msgstr ""
@@ -1103,18 +1066,6 @@ msgstr "Total"
 msgid "confirmModuleDialog/totalLabel"
 msgstr "Total:"
 
-msgid "confirmReward/cancel"
-msgstr "Cancel"
-
-msgid "confirmReward/message"
-msgstr "Claim your rewards from the Gate?"
-
-msgid "confirmReward/submit"
-msgstr "Claim"
-
-msgid "confirmReward/title"
-msgstr "Receiving Reward"
-
 msgid "confirmUnlock/cancel"
 msgstr "No"
 
@@ -1171,73 +1122,69 @@ msgstr "Confirm"
 msgid "createOrderConfirmation/title"
 msgstr "Confirm Reserve Preparation"
 
-msgid "crewBooks/confirmation/button/cancel"
-msgstr "Cancel"
+msgid "crewBookPurchase/btnDisabledTooltip"
+msgstr "Insufficient funds to make the purchase."
 
-msgid "crewBooks/confirmation/button/submit"
-msgstr "Study"
-
-msgid "crewBooks/confirmation/desc/crewBook"
+msgid "crewBookPurchase/description/crew"
 msgstr ""
-"Each {vehicle_name} crew member will receive {exp} experience, and the Crew "
-"Book will be spent."
+"Applied to the whole crew. When studied, the %(book)s provides each crew "
+"member with %(exp)s."
 
-msgid "crewBooks/confirmation/desc/personalBook"
+msgid "crewBookPurchase/description/personal"
 msgstr ""
-"{name} will receive {exp} experience, and the Crew Book will be spent."
+"Applied to the selected crew member. When studied, the %(book)s provides "
+"this crew member with %(exp)s."
 
-msgid "crewBooks/confirmation/title"
-msgstr "Study the Crew Book?"
+msgid "crewBookPurchase/purchase"
+msgstr "Purchase"
 
-msgid "crewBooks/success/desc/crewBook"
-msgstr "Each {vehicle_name} crew member received {exp} experience."
+msgid "crewBookPurchase/purchase/title"
+msgstr "Purchase %(book)s?"
 
-msgid "crewBooks/success/desc/personalBook"
-msgstr "{name} received {exp} experience."
+msgid "crewMemberRoleChange/bullet"
+msgstr "•"
 
-msgid "crewBooks/success/title"
-msgstr "Congratulations!"
+msgid "crewMemberRoleChange/change"
+msgstr "Change"
 
-msgid "crewRetraining/title"
-msgstr "Retraining"
-
-msgid "crewSkins/skinWillBeDeleted/cancel"
-msgstr "Cancel"
-
-msgid "crewSkins/skinWillBeDeleted/message1"
+msgid "crewMemberRoleChange/desc/premium"
 msgstr ""
-"The crew skin does not correspond to a new qualification and cannot be put "
-"in storage—no space left. It will be deleted upon changing the "
-"qualification, and you will receive compensation."
+"You do not need to train crews for Premium vehicles, as you can transfer "
+"them to Premium vehicles of the same type without penalty."
 
-msgid "crewSkins/skinWillBeDeleted/message2"
+msgid "crewMemberRoleChange/desc/simple"
 msgstr ""
-"The copies of these crew skins cannot be put in storage—no space left. They will be deleted upon their removal, and you will receive compensation.\n"
-"\n"
-"Delete crew skins?"
+"The {whiteSpanish_Open}%(currentRole)s{whiteSpanish_Close} qualification "
+"will be changed to {whiteSpanish_Open}%(newRole)s{whiteSpanish_Close}. Upon "
+"qualification change, all perks will be reset."
 
-msgid "crewSkins/skinWillBeDeleted/messagePrice"
-msgstr "Compensation:"
-
-msgid "crewSkins/skinWillBeDeleted/submit"
-msgstr "Delete"
-
-msgid "crewSkins/skinWillBeDeleted/title"
-msgstr "Confirm Deletion"
-
-msgid "crewSkins/skinWillBeRemoved/cancel"
-msgstr "Cancel"
-
-msgid "crewSkins/skinWillBeRemoved/message"
+msgid "crewMemberRoleChange/desc/wrongSpecialization"
 msgstr ""
-"The crew skin does not correspond to a new qualification and will be put in "
-"storage."
+"Current specialization: {whiteSpanish_Open}%(tankLevel)s %(icon)s "
+"%(tankName)s.{whiteSpanish_Close} The crew member's specialization will be "
+"changed to {whiteSpanish_Open}%(newTankLevel)s %(newIcon)s "
+"%(newTankName)s.{whiteSpanish_Close}"
 
-msgid "crewSkins/skinWillBeRemoved/submit"
-msgstr "Remove"
+msgid "crewMemberRoleChange/price"
+msgstr "Price:"
 
-msgid "crewSkins/skinWillBeRemoved/title"
-msgstr "Confirm Demounting"
+msgid "crewMemberRoleChange/title/extended"
+msgstr "Transfer to the %(tankName)s and change qualification?"
+
+msgid "crewMemberRoleChange/title/simple"
+msgstr "Change the current qualification?"
+
+msgid "crewMemberTankChange/desc"
+msgstr ""
+"Current vehicle: {whiteSpanish_Open}%(tankLevel)s %(icon)s "
+"%(tankName)s.{whiteSpanish_Close} The crew member will leave this vehicle "
+"after transfer."
+
+msgid "crewMemberTankChange/title"
+msgstr "Transfer the crew member to the %(tankName)s?"
+
+msgid "crewMemberTankChange/transfer"
+msgstr "Transfer"
 
 msgid "customization/applyProjectionDecalToOtherSeasons/cancel"
 msgstr "Cancel"
@@ -1472,24 +1419,42 @@ msgstr ""
 msgid "disconnected/title"
 msgstr "Connection Interrupted"
 
-msgid "dismissTankman/cancel"
-msgstr "Cancel"
+msgid "dismissTankman/buttons/dismiss"
+msgstr "Retire"
 
-msgid "dismissTankman/message"
-msgstr "Dismiss this crew member?"
+msgid "dismissTankman/description/perk"
+msgstr ""
+"For this operation, enter the perk training level: "
+"{cream_Open}%(perk)s{cream_Close} "
+"({whiteOrange_Open}%(level)s{whiteOrange_Close})"
 
-msgid "dismissTankman/submit"
-msgstr "OK"
+msgid "dismissTankman/description/qualification"
+msgstr ""
+"For this operation, enter the major qualification level "
+"({whiteOrange_Open}%(level)s{whiteOrange_Close})"
 
-msgid "dismissTankman/title"
-msgstr "Confirm Dismissal"
+msgid "dismissTankman/description/time"
+msgstr ""
+"The selected crew members will be retired. You can recover them within "
+"{whiteOrange_Open}%(time)s d{whiteOrange_Close}."
+
+msgid "dismissTankman/header"
+msgstr "Crew Member Retirement"
+
+msgid "dismissTankman/limited"
+msgstr ""
+"The retirement limit has been reached. The retired crew member will replace "
+"%(name)s (%(role)s, %(vehicle)s)."
+
+msgid "dismissTankman/noRecovery"
+msgstr "Recovery will not be possible"
 
 msgid "dismissedBufferOverFlaw/cancel"
 msgstr "Cancel"
 
 msgid "dismissedBufferOverFlaw/message"
 msgstr ""
-"Attention! When you dismiss %(dismissedName)s, they will replace "
+"Attention! When you retire %(dismissedName)s, they will replace "
 "%(deletedStr)s. Confirm change?"
 
 msgid "dismissedBufferOverFlaw/submit"
@@ -1503,31 +1468,29 @@ msgstr "Cancel"
 
 msgid "dismissedBufferOverFlawMultiple/message"
 msgstr ""
-"Attention! When you dismiss the crew, it will replace %(deletedStr)s and "
+"Attention! When you retire the crew, it will replace %(deletedStr)s and "
 "%(extraCount)s crew members. Confirm change?"
 
 msgid "dismissedBufferOverFlawMultiple/submit"
 msgstr "Confirm"
 
 msgid "dismissedBufferOverFlawMultiple/title"
-msgstr "Dismissed Crew Member Buffer Full"
+msgstr "Retired Crew Member Buffer Full"
+
+msgid "documentChangeDialog/button/submit"
+msgstr "Replace"
+
+msgid "documentChangeDialog/dropdown/firstName"
+msgstr "Name"
+
+msgid "documentChangeDialog/dropdown/lastName"
+msgstr "Surname"
+
+msgid "documentChangeDialog/title"
+msgstr "Replace name and appearance?"
 
 msgid "dropSkill/cancel"
 msgstr "Cancel"
-
-msgid "dropSkill/fullscreen/costFree"
-msgstr "Cost: {whiteSpanish_Open}Free{whiteSpanish_Close}"
-
-msgid "dropSkill/fullscreen/description"
-msgstr ""
-"This crew member will be trained to "
-"{whiteSpanish_Open}%(skillPercent)s%%{whiteSpanish_Close}"
-
-msgid "dropSkill/fullscreen/ok"
-msgstr "Reset"
-
-msgid "dropSkill/fullscreen/title"
-msgstr "Reset all perks?"
 
 msgid "dropSkill/message"
 msgstr "Reset all perks?"
@@ -1640,7 +1603,10 @@ msgid "equipmentUpgrade/confirmButton"
 msgstr "Upgrade"
 
 msgid "equipmentUpgrade/getMoreCurrencyButton"
-msgstr "Continue"
+msgstr "To Disassemble"
+
+msgid "equipmentUpgrade/getMoreCurrencyButtonTooltip/body"
+msgstr "No available Experimental Equipmment to disassemble."
 
 msgid "eula/p1"
 msgstr ""
@@ -1766,19 +1732,6 @@ msgstr "Confirm"
 
 msgid "fortificationFixedPlayers/title"
 msgstr "Attach to Structure"
-
-msgid "freeSkillsInfo/message"
-msgstr ""
-"A zero perk is available to a crew member by default. It does not require "
-"spending experience and cannot be changed by a player. A zero perk provides "
-"an advantage by significantly reducing the amount of experience required for"
-" further training of the crew member."
-
-msgid "freeSkillsInfo/submit"
-msgstr "Affirmative!"
-
-msgid "freeSkillsInfo/title"
-msgstr "About Zero Perks"
 
 msgid "freeSkillsLearning/message"
 msgstr ""
@@ -2390,6 +2343,51 @@ msgstr "Yes"
 msgid "nextBattleOptionConfirmation/title"
 msgstr "Modify Settings"
 
+msgid "perkLearnConfirm/desc"
+msgstr "Perk level after training: {yellow_Open}%(level)s%%{yellow_Close}"
+
+msgid "perkLearnConfirm/learn"
+msgstr "Train"
+
+msgid "perkLearnConfirm/title"
+msgstr "Train the %(skillName)s perk?"
+
+msgid "perksRest/after"
+msgstr "After reset:"
+
+msgid "perksRest/before"
+msgstr "Before reset:"
+
+msgid "perksRest/cancel"
+msgstr "Cancel"
+
+msgid "perksRest/free/description"
+msgstr "Perks up to {yellow_Open}1%{yellow_Close} can be reset for free."
+
+msgid "perksRest/noNewPerks"
+msgstr ""
+"All experience from the trained perks will be added to the major "
+"qualification level."
+
+msgid "perksRest/priceCard/credits/description"
+msgstr ""
+"Reduces the major qualification level of this member&nbsp;to&nbsp;%(value)s"
+
+msgid "perksRest/priceCard/free/description"
+msgstr ""
+"Reduces the major qualification level of this member&nbsp;to&nbsp;%(value)s"
+
+msgid "perksRest/priceCard/gold/description"
+msgstr ""
+"Does not change the major qualification level of "
+"this&nbsp;member:&nbsp;%(value)s"
+
+msgid "perksRest/submit"
+msgstr "Reset"
+
+msgid "perksRest/title"
+msgstr "Reset %(tankmanRole)s?"
+
 msgid "postmortem/cancel"
 msgstr "Leave"
 
@@ -2427,36 +2425,20 @@ msgstr "Extend"
 msgid "premiumContinueConfirmation/title"
 msgstr "Confirm"
 
-msgid "protectedDismissTankman/additionalMessage"
-msgstr ""
-"For this operation, enter the level %(skillType)s \"%(skillName)s\" "
-"(%(roleLevel)s)"
+msgid "priceCard/credits/title"
+msgstr "Regimental School"
 
-msgid "protectedDismissTankman/additionalMessage/isPerk"
-msgstr "of a perk"
+msgid "priceCard/free/title"
+msgstr "Rapid Courses"
 
-msgid "protectedDismissTankman/alert"
-msgstr "Recovery will not be possible"
+msgid "priceCard/gold/title"
+msgstr "Tank Academy"
 
-msgid "protectedDismissTankman/cancel"
-msgstr "Cancel"
+msgid "priceCard/price/free"
+msgstr "Free"
 
-msgid "protectedDismissTankman/errorMessage"
-msgstr "You have entered incorrect information."
-
-msgid "protectedDismissTankman/mainMessage"
-msgstr ""
-"For this operation, enter the level of training for major qualification "
-"(%(roleLevel)s)"
-
-msgid "protectedDismissTankman/message"
-msgstr "CONFIRM DISMISSAL"
-
-msgid "protectedDismissTankman/submit"
-msgstr "Dismiss"
-
-msgid "protectedDismissTankman/title"
-msgstr "Crew Member's Dismissal"
+msgid "priceCard/recertification/title"
+msgstr "Retraining"
 
 msgid "punishmentWindow/cancel"
 msgstr "Acknowledged"
@@ -2740,11 +2722,34 @@ msgstr "Yes"
 msgid "rally/startBattle/title"
 msgstr "Search for Enemy"
 
+msgid "recruit/cancel"
+msgstr "Cancel"
+
+msgid "recruit/priceCard/credits/description"
+msgstr "Major qualification level after&nbsp;recruiting:&nbsp;%(value)s"
+
+msgid "recruit/priceCard/free/description"
+msgstr "Major qualification level after&nbsp;recruiting:&nbsp;%(value)s"
+
+msgid "recruit/priceCard/gold/description"
+msgstr "Major qualification level after&nbsp;recruiting:&nbsp;%(value)s"
+
+msgid "recruit/submit"
+msgstr "Recruit"
+
+msgid "recruit/title"
+msgstr "Recruit %(role)s for the %(vehicleName)s?"
+
+msgid "recruit/warning/premiumVehicle"
+msgstr ""
+"You do not need to recruit crew members for Premium vehicles. You can "
+"transfer crew to a Premium vehicle of the same type without penalty."
+
 msgid "recruitDialog/name/title"
-msgstr "Recruit a new crew member (%(name)s)?"
+msgstr "Recruit new crew member (%(name)s)?"
 
 msgid "recruitDialog/title"
-msgstr "Recruit a new crew member?"
+msgstr "Recruit new crew member?"
 
 msgid "recruitWindow/cancel"
 msgstr "Cancel"
@@ -2755,59 +2760,14 @@ msgstr "Not selected"
 msgid "recruitWindow/nation"
 msgstr "Nation"
 
-msgid "recruitWindow/nationDropdown/czech"
-msgstr "Czechoslovakia"
-
-msgid "recruitWindow/nationDropdown/germany"
-msgstr "Germany"
-
-msgid "recruitWindow/nationDropdown/italy"
-msgstr "Italy"
-
-msgid "recruitWindow/nationDropdown/poland"
-msgstr "Poland"
-
-msgid "recruitWindow/nationDropdown/sweden"
-msgstr "Sweden"
-
-msgid "recruitWindow/nationDropdown/usa"
-msgstr "U.S.A."
-
-msgid "recruitWindow/nationDropdown/ussr"
-msgstr "U.S.S.R."
-
-msgid "recruitWindow/nations/no_vehicle"
-msgstr "No options"
-
 msgid "recruitWindow/specialization"
 msgstr "Qualification"
 
 msgid "recruitWindow/submit"
 msgstr "Recruit"
 
-msgid "recruitWindow/title"
-msgstr "Recruit Crew Member"
-
 msgid "recruitWindow/vehicleClass"
 msgstr "Vehicle Type"
-
-msgid "recruitWindow/vehicleClassDropdown/AT-SPG"
-msgstr "Tank Destroyers"
-
-msgid "recruitWindow/vehicleClassDropdown/SPG"
-msgstr "SPGs"
-
-msgid "recruitWindow/vehicleClassDropdown/all"
-msgstr "All Vehicles"
-
-msgid "recruitWindow/vehicleClassDropdown/heavyTank"
-msgstr "Heavy Tanks"
-
-msgid "recruitWindow/vehicleClassDropdown/lightTank"
-msgstr "Light Tanks"
-
-msgid "recruitWindow/vehicleClassDropdown/mediumTank"
-msgstr "Medium Tanks"
 
 msgid "recruitWindow/vehicleType"
 msgstr "Vehicle"
@@ -2950,18 +2910,6 @@ msgstr "Continue"
 msgid "reportBug/title"
 msgstr "Go to Game Forum"
 
-msgid "rerollReward/cancel"
-msgstr "Cancel"
-
-msgid "rerollReward/confirm"
-msgstr "Re-Roll Reward"
-
-msgid "rerollReward/message"
-msgstr "It will cost:"
-
-msgid "rerollReward/title"
-msgstr "Are you sure you want to re-roll the current reward?"
-
 msgid "resetGraphics/cancel"
 msgstr "Continue"
 
@@ -2976,38 +2924,20 @@ msgstr "Settings"
 msgid "resetGraphics/title"
 msgstr "Change Graphics Settings"
 
-msgid "restoreTankman/cancel"
-msgstr "Cancel"
-
-msgid "restoreTankman/disconnectedFromCenter"
-msgstr ""
-"Currently unable to recruit crew members.\n"
-"Try again later."
-
-msgid "restoreTankman/forFree"
-msgstr "Free"
-
-msgid "restoreTankman/message"
-msgstr "Recover this crew member?"
-
-msgid "restoreTankman/newPeriodWarning"
-msgstr ""
-"Attention! The free recovery period has expired. You will be able to recover"
-" the crew member using gold for another %(daysCount)s days."
-
-msgid "restoreTankman/price"
-msgstr "Cost:"
-
-msgid "restoreTankman/submit"
+msgid "restoreTankman/buttons/recover"
 msgstr "Recover"
 
-msgid "restoreTankman/title"
-msgstr "Recover Crew Member"
+msgid "restoreTankman/description"
+msgstr "%(name)s will be recovered."
 
-msgid "restoreTankman/warning"
-msgstr ""
-"After you click Recover, you will not be able to refund this action. Please "
-"double-check all the details carefully."
+msgid "restoreTankman/free"
+msgstr "Price: Free"
+
+msgid "restoreTankman/header"
+msgstr "Recover this crew member?"
+
+msgid "restoreTankman/price"
+msgstr "Price:"
 
 msgid "restoreVehicleDialog/cancelBtn"
 msgstr "Cancel"
@@ -3030,8 +2960,56 @@ msgstr ""
 "Equipment and Consumables for gold. Please double-check all the details "
 "carefully."
 
-msgid "retrainingWindow/submit"
+msgid "retrain/cancel"
+msgstr "Cancel"
+
+msgid "retrain/massive/tankmenCount"
+msgstr ""
+"Crew members for retraining: "
+"{whiteSpanish_Open}%(count)s{whiteSpanish_Close}"
+
+msgid "retrain/price"
+msgstr "Price:"
+
+msgid "retrain/priceCard/credits/description"
+msgstr "Major qualification level after&nbsp;retraining:&nbsp;%(value)s"
+
+msgid "retrain/priceCard/free/description"
+msgstr "Major qualification level after&nbsp;retraining:&nbsp;%(value)s"
+
+msgid "retrain/priceCard/gold/description"
+msgstr "Major qualification level after&nbsp;retraining:&nbsp;%(value)s"
+
+msgid "retrain/single/checkBoxLabel"
+msgstr "Send to this vehicle"
+
+msgid "retrain/submit"
 msgstr "Retrain"
+
+msgid "retrain/title/massive"
+msgstr "Retrain crew for the %(vehicleName)s?"
+
+msgid "retrain/title/singe"
+msgstr "Retrain %(role)s for the %(vehicleName)s?"
+
+msgid "retrain/warning/premiumVehicle"
+msgstr ""
+"You do not need to train crew members for Premium vehicles. You can transfer"
+" crew to a Premium vehicle of the same type without penalty."
+
+msgid "rudyInfo/message"
+msgstr ""
+"Immortal Classics Already in the Game! “Four Tank-Men and a Dog” (Polish "
+"“Czterej pancerni i pies”) was a Polish black-and-white TV series based on "
+"the novel of the same name by Janusz Przymanowski. The TV series, which "
+"premiered May 9, 1966, depicts the adventures of the crew of a T-34-85 tank,"
+" nickname Rudy (Ginger), and their dog Szarik during WWII."
+
+msgid "rudyInfo/submit"
+msgstr "Affirmative!"
+
+msgid "rudyInfo/title"
+msgstr "Four Tank-Men and a Dog"
 
 msgid "sellConfirmation/cancel"
 msgstr "Cancel"
@@ -3078,19 +3056,8 @@ msgstr "Update the application. If the error repeats, update the server."
 msgid "shopSyncError/title"
 msgstr "Unsynchronization"
 
-msgid "skillDropWindow/cancel"
-msgstr "Cancel"
-
-msgid "skillDropWindow/message"
-msgstr ""
-"After additional qualification %s is reset, the crew member's major "
-"qualification will be %d%s. Continue?"
-
-msgid "skillDropWindow/submit"
-msgstr "Reset"
-
-msgid "skillDropWindow/title"
-msgstr "Perk Reset"
+msgid "skinApplyDialog/button/submit"
+msgstr "Apply"
 
 msgid "soundModeInvalid/cancel"
 msgstr "Cancel"
@@ -3344,84 +3311,6 @@ msgstr "Proceed"
 
 msgid "switchPeripheryWindow/windowTitle"
 msgstr "Transfer to Another Server"
-
-msgid "tankmanChageRole/unknownVehicle/cancel"
-msgstr "Cancel"
-
-msgid "tankmanChageRole/unknownVehicle/message"
-msgstr ""
-"%(tankname)s is not in the Garage. Change the qualification of the crew "
-"member?"
-
-msgid "tankmanChageRole/unknownVehicle/submit"
-msgstr "Confirm"
-
-msgid "tankmanChageRole/unknownVehicle/title"
-msgstr "Confirm Qualification Change "
-
-msgid "tankmanRetraining/knownVehicleByGold/cancel"
-msgstr "Cancel"
-
-msgid "tankmanRetraining/knownVehicleByGold/message"
-msgstr "Retrain the crew member for %(price)s?"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/cancel"
-msgstr "Cancel"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/message"
-msgstr "Retrain the crew for %(price)s?"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/submit"
-msgstr "Retrain"
-
-msgid "tankmanRetraining/knownVehicleByGold/pack/title"
-msgstr "Confirm Retraining"
-
-msgid "tankmanRetraining/knownVehicleByGold/submit"
-msgstr "Retrain"
-
-msgid "tankmanRetraining/knownVehicleByGold/title"
-msgstr "Confirm Retraining"
-
-msgid "tankmanRetraining/undistributedExp/cancel"
-msgstr "Cancel"
-
-msgid "tankmanRetraining/undistributedExp/message"
-msgstr ""
-"When retraining a crew member, some of the undistributed experience will be "
-"used for training the major qualification to 100%"
-
-msgid "tankmanRetraining/undistributedExp/submit"
-msgstr "Retrain"
-
-msgid "tankmanRetraining/undistributedExp/title"
-msgstr "Confirm Retraining"
-
-msgid "tankmanRetraining/unknownVehicle/cancel"
-msgstr "Cancel"
-
-msgid "tankmanRetraining/unknownVehicle/message"
-msgstr "There's no %(tankname)s in the Garage. Retrain the crew member?"
-
-msgid "tankmanRetraining/unknownVehicle/submit"
-msgstr "Retrain"
-
-msgid "tankmanRetraining/unknownVehicle/title"
-msgstr "Confirm Retraining"
-
-msgid "tankmanRetraining/unknownVehicleByGold/cancel"
-msgstr "Cancel"
-
-msgid "tankmanRetraining/unknownVehicleByGold/message"
-msgstr ""
-"There's no %(tankname)s in the Garage. Retrain the crew member for "
-"%(price)s?"
-
-msgid "tankmanRetraining/unknownVehicleByGold/submit"
-msgstr "Retrain"
-
-msgid "tankmanRetraining/unknownVehicleByGold/title"
-msgstr "Confirm Retraining"
 
 msgid "tradeInConfirmation/cancel"
 msgstr "Cancel"
@@ -3792,12 +3681,11 @@ msgstr "Cancel"
 
 msgid "xpToTmenCheckbox/message"
 msgstr ""
-"Spend all experience earned on this vehicle on crew training. The least "
-"experienced crew member is trained twice as fast. To resume accumulating "
-"experience, turn 'Accelerate crew training' off."
+"Spend all experience earned in this vehicle on crew training. The least "
+"experienced crew member is trained twice as fast."
 
 msgid "xpToTmenCheckbox/submit"
 msgstr "ON"
 
 msgid "xpToTmenCheckbox/title"
-msgstr "Accelerate Crew Training"
+msgstr "Accelerate Crew Training?"

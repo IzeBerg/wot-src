@@ -22,17 +22,14 @@ msgstr "Medal for Specials"
 msgid "actionAchievements/title"
 msgstr "Medals for Specials"
 
-msgid "add_tankman_skill/crew_skills_locked"
-msgstr "Unable to train new perk. Rented crews cannot be modified."
-
 msgid "add_tankman_skill/invalid_vehicle"
 msgstr "Error training for a perk. Wrong vehicle."
 
 msgid "add_tankman_skill/server_error"
-msgstr "Failed to train a crew member for a new perk. Try again later."
+msgstr "Unable to train a crew member for a new perk. Try again later."
 
 msgid "add_tankman_skill/success"
-msgstr "New perk successfully trained."
+msgstr "New perk trained: %(skill)s."
 
 msgid "add_tankman_skill/vehicle_locked"
 msgstr "Error training for a perk. The vehicle is locked."
@@ -555,20 +552,12 @@ msgstr ""
 msgid "battlePass/switch_pause/body"
 msgstr "Battle Pass is temporarily unavailable due to maintenance."
 
-msgid "battlePass/switch_started/style/body"
+msgid "battlePass/switch_started/body"
 msgstr ""
 "Commanders! It is time once again to fight for unique Battle Pass rewards, "
 "including progressive styles, Tokens, exclusive characters, and much more!"
 
-msgid "battlePass/switch_started/style/title"
-msgstr "Battle Pass Season %(seasonNum)d"
-
-msgid "battlePass/switch_started/tankman/body"
-msgstr ""
-"Commanders! It is time once again to fight for unique Battle Pass rewards, "
-"including Tokens, exclusive characters, and much more!"
-
-msgid "battlePass/switch_started/tankman/title"
+msgid "battlePass/switch_started/title"
 msgstr "Battle Pass Season %(seasonNum)d"
 
 msgid "battlePassLevels_buy/server_error"
@@ -696,9 +685,6 @@ msgstr ""
 "Unable to recruit and transfer the crew member: the tank has unique "
 "permanent crew."
 
-msgid "buy_and_equip_tankman/financial_success"
-msgstr "Crew member successfully recruited and transferred. Spent %(price)s."
-
 msgid "buy_and_equip_tankman/free_tankmen_limit"
 msgstr "You have reached the limit for free crew members for today."
 
@@ -714,9 +700,6 @@ msgstr "Unable to recruit and transfer a crew member. Not enough gold."
 msgid "buy_and_equip_tankman/server_error"
 msgstr "Unable to recruit and transfer a crew member. Try again later."
 
-msgid "buy_and_equip_tankman/success"
-msgstr "Crew member successfully recruited and transferred."
-
 msgid "buy_and_equip_tankman/vehicle_locked"
 msgstr "Unable to recruit and transfer a crew member. The vehicle is locked."
 
@@ -729,9 +712,6 @@ msgid "buy_and_reequip_tankman/FORBIDDEN"
 msgstr ""
 "Unable to recruit and transfer the crew member: the tank has unique "
 "permanent crew."
-
-msgid "buy_and_reequip_tankman/financial_success"
-msgstr "Crew member successfully recruited and replaced. Spent %(price)s."
 
 msgid "buy_and_reequip_tankman/free_tankmen_limit"
 msgstr "You have reached the limit for free crew members for today."
@@ -754,9 +734,6 @@ msgstr ""
 msgid "buy_and_reequip_tankman/server_error"
 msgstr "Unable to recruit and replace a crew member. Try again later."
 
-msgid "buy_and_reequip_tankman/success"
-msgstr "Crew member successfully recruited and replaced."
-
 msgid "buy_and_reequip_tankman/vehicle_locked"
 msgstr "Unable to recruit and replace a crew member. The vehicle is locked."
 
@@ -776,10 +753,12 @@ msgid "buy_tankmen_berths/not_enough_gold"
 msgstr "Error enlarging the Barracks. Not enough gold."
 
 msgid "buy_tankmen_berths/server_error"
-msgstr "Error enlarging the Barracks. Try again later."
+msgstr "Unable to enlarge the Barracks. Try again later."
 
 msgid "buy_tankmen_berths/success"
-msgstr "Barracks enlarged. Spent %(money)s."
+msgstr ""
+"Barracks enlarged.\n"
+"Gold spent: %(money)s."
 
 msgid "buy_tankmen_berths/wallet_not_available"
 msgstr ""
@@ -801,8 +780,8 @@ msgstr ""
 "Unable to change qualification of the crew member: the tank has unique "
 "permanent crew."
 
-msgid "change_tankman_role/installed"
-msgstr "Requalified crew member is in %(vehicle)s"
+msgid "change_tankman_role/financial_success"
+msgstr "Gold spent: %(money)s."
 
 msgid "change_tankman_role/invalid_role"
 msgstr "Unable to change qualification. Try again later."
@@ -830,7 +809,12 @@ msgstr ""
 " be send to the Barracks."
 
 msgid "change_tankman_role/success"
-msgstr "Crew member qualification successfully changed. Spent %(money)s"
+msgstr "Crew member qualification changed. All perks have been reset."
+
+msgid "change_tankman_role/success_and_vehicle_retrained"
+msgstr ""
+"Crew member qualification changed. All perks have been reset. Crew member "
+"retrained for the %(vehName)s."
 
 msgid "change_tankman_role/wallet_not_available"
 msgstr "Unable to change qualification. Try again later."
@@ -1119,28 +1103,41 @@ msgstr ""
 "operability is restored."
 
 msgid "crewBooks/failed"
-msgstr "Error studying the Crew Book."
+msgstr ""
+"Unable to train this crew.\n"
+"Try again later."
+
+msgid "crewBooks/server_error"
+msgstr ""
+"Crew member(s) training failed due to a server error. Try again later."
 
 msgid "crewBooksNotification/bookUsed"
-msgstr "Spent: %(name)s"
+msgstr "%(name)s."
+
+msgid "crewBooksNotification/booksUsed"
+msgstr "%(name)s (x%(count)s)"
+
+msgid "crewBooksNotification/success"
+msgstr ""
+"Crew trained.\n"
+"Spent:"
 
 msgid "crewBooks_buy/server_error"
 msgstr ""
 "Unable to purchase the Crew Book due to a server error. Try again later."
 
 msgid "crewBooks_buy/success"
-msgstr "%(name)s (%(count)s item(s)). Spent %(money)s."
+msgstr ""
+"%(name)s (%(count)s item(s)).\n"
+"Credits spent: %(money)s."
 
 msgid "crewBooks_sell/server_error"
 msgstr "Unable to sell the Crew Book due to a server error. Try again later."
 
 msgid "crewBooks_sell/success"
-msgstr "%(name)s (%(count)s item(s)). Received %(money)s."
-
-msgid "crewSkinsCompensation/success"
 msgstr ""
-"Crew skin copies deleted.\n"
-"Credits received: %(compensation)s"
+"%(name)s (%(count)s item(s)).\n"
+"Credits received: %(money)s."
 
 msgid "crewSkinsNotification/SkinChanged"
 msgstr "Crew skin changed."
@@ -1404,10 +1401,12 @@ msgid "dismiss_tankman/invalid_vehicle"
 msgstr "Error dismissing a crew member. Wrong vehicle."
 
 msgid "dismiss_tankman/server_error"
-msgstr "Failed to dismiss a crew member. Try again later."
+msgstr ""
+"Unable to retire this crew member.\n"
+"Try again later."
 
 msgid "dismiss_tankman/success"
-msgstr "Crew member successfully dismissed."
+msgstr "Crew member retired."
 
 msgid "dismiss_tankman/vehicle_locked"
 msgstr "Error dismissing a crew member. The vehicle is locked."
@@ -1433,6 +1432,16 @@ msgstr "Dog Tags are available again."
 msgid "dossiers_unavailable"
 msgstr "Account is not ready (DOSSIERS_UNAVAILABLE)"
 
+msgid "drop_tankman_skill/finance_success_credits"
+msgstr ""
+"All perks have been reset.\n"
+"Credits spent: %(money)s."
+
+msgid "drop_tankman_skill/finance_success_gold"
+msgstr ""
+"All perks have been reset.\n"
+"Gold spent: %(money)s."
+
 msgid "drop_tankman_skill/invalid_vehicle"
 msgstr "Error resetting perks. Wrong vehicle."
 
@@ -1440,7 +1449,7 @@ msgid "drop_tankman_skill/server_error"
 msgstr "Unable to reset perks. Try again later."
 
 msgid "drop_tankman_skill/success"
-msgstr "All perks have been successfully reset. You have spent %(money)s."
+msgstr "All perks have been reset."
 
 msgid "drop_tankman_skill/vehicle_locked"
 msgstr "Error resetting perks. The vehicle is locked."
@@ -1495,11 +1504,16 @@ msgstr ""
 msgid "equip_tankman/invalid_vehicle"
 msgstr "Error transferring a crew member to the vehicle. Wrong vehicle."
 
+msgid "equip_tankman/not_enough_space"
+msgstr ""
+"Unable to send crew member to the Barracks. Not enough bunks in the "
+"Barracks."
+
 msgid "equip_tankman/server_error"
-msgstr "Unable to transfer a crew member to the vehicle. Try again later."
+msgstr "Unable to transfer crew member to the vehicle. Try again later."
 
 msgid "equip_tankman/success"
-msgstr "Crew member successfully transferred."
+msgstr "Crew member transferred to the %(vehName)s."
 
 msgid "equip_tankman/vehicle_locked"
 msgstr ""
@@ -1964,14 +1978,18 @@ msgstr "Error training a crew member. This crew member does not exist."
 msgid "free_xp_to_tman_skill/error/SHOP_DESYNC"
 msgstr "Error training a crew member. Try again later."
 
-msgid "free_xp_to_tman_skill/error/WRONG_ARGS_TYPE"
+msgid "free_xp_to_tman_skill/error/WRONG_ARGS_VALUE"
 msgstr "Error training a crew member. Try again later."
 
 msgid "free_xp_to_tman_skill/server_error"
-msgstr "Unable to train a crew member. Try again later."
+msgstr ""
+"Unable to train a crew member with Free XP.\n"
+"Try again later."
 
 msgid "free_xp_to_tman_skill/success"
-msgstr "Crew member successfully trained. Free Experience spent: %(freeXP)s."
+msgstr ""
+"Crew member trained.\n"
+"Free XP spent: %(money)s."
 
 msgid "gameSessionControl/korea/midnightNotification"
 msgstr ""
@@ -2472,7 +2490,7 @@ msgstr "%(veh_name)s: national configuration switched"
 
 msgid "notrecruit_window/success"
 msgstr ""
-"Crew member successfully recruited.\n"
+"Crew member recruited.\n"
 "%(colorTagOpen)s%(rank)s %(fullName)s\n"
 "(%(role)s, %(vehicleName)s, %(roleLevel)d%%)%(colorTagClose)s"
 
@@ -3113,7 +3131,18 @@ msgstr ""
 "Unable to recruit a crew member. The service is temporarily unavailable."
 
 msgid "recruit_window/financial_success"
-msgstr "Crew member successfully recruited. Spent %(price)s."
+msgstr ""
+"Crew member recruited for the %(vehName)s. Credits spent: %(credits)s."
+
+msgid "recruit_window/financial_success_credits"
+msgstr ""
+"Crew member recruited for the %(vehName)s.\n"
+"Credits spent: %(price)s."
+
+msgid "recruit_window/financial_success_gold"
+msgstr ""
+"Crew member recruited for the %(vehName)s.\n"
+"Gold spent: %(price)s."
 
 msgid "recruit_window/free_tankmen_limit"
 msgstr "You have reached the limit for free crew members for today."
@@ -3131,10 +3160,10 @@ msgstr ""
 " the Barracks."
 
 msgid "recruit_window/server_error"
-msgstr "Error recruiting a crew member. Try again later."
+msgstr "Unable to recruit a crew member. Try again later."
 
 msgid "recruit_window/success"
-msgstr "Crew member successfully recruited."
+msgstr "Crew member recruited for the %(vehName)s for free."
 
 msgid "recruit_window/wallet_not_available"
 msgstr ""
@@ -3148,11 +3177,16 @@ msgstr ""
 msgid "reequip_tankman/invalid_vehicle"
 msgstr "Error replacing a crew member. Wrong vehicle."
 
+msgid "reequip_tankman/not_enough_space"
+msgstr ""
+"Unable to send crew member to the Barracks. Not enough bunks in the "
+"Barracks."
+
 msgid "reequip_tankman/server_error"
 msgstr "Unable to replace a crew member. Try again later."
 
 msgid "reequip_tankman/success"
-msgstr "Crew member successfully replaced."
+msgstr "Crew member replaced."
 
 msgid "reequip_tankman/vehicle_locked"
 msgstr "Error replacing a crew member. The vehicle is locked."
@@ -3195,7 +3229,7 @@ msgid "replace_tankman/server_error"
 msgstr "Error replacing Personal Data. Try again later."
 
 msgid "replace_tankman/success"
-msgstr "Personal Data successfully replaced."
+msgstr "Appearance successfully replaced."
 
 msgid "replace_tankman/vehicle_locked"
 msgstr "Error replacing Personal Data. The vehicle is locked."
@@ -3224,9 +3258,6 @@ msgstr ""
 msgid "restore_tankman/INVALID_TMAN_ID"
 msgstr "Unable to recover the crew member."
 
-msgid "restore_tankman/NO_BERTH"
-msgstr "Unable to recover the crew member. Not enough bunks in the Barracks."
-
 msgid "restore_tankman/NO_GOLD"
 msgstr "Not enough gold to recover the crew member."
 
@@ -3242,17 +3273,22 @@ msgstr ""
 "Unable to recover the crew member. Crew member recovery is temporarily "
 "unavailable."
 
+msgid "restore_tankman/error"
+msgstr "%(tankman)s can no longer be restored."
+
 msgid "restore_tankman/financial_success"
-msgstr "The crew member was successfully recovered. %(money)s spent."
+msgstr ""
+"Crew member recovered.\n"
+"Credits spent: %(money)s."
 
 msgid "restore_tankman/not_enough_space"
 msgstr "Unable to recover the crew member. Not enough bunks in the Barracks."
 
 msgid "restore_tankman/server_error"
-msgstr "Unable to recover the crew member. Try again later."
+msgstr "Unable to recover this crew member. Try again later."
 
 msgid "restore_tankman/success"
-msgstr "The crew member was successfully recovered."
+msgstr "Crew member recovered."
 
 msgid "retraining_crew/FORBIDDEN"
 msgstr "Unable to retrain your crew: the tank has unique permanent crew."
@@ -3260,8 +3296,14 @@ msgstr "Unable to retrain your crew: the tank has unique permanent crew."
 msgid "retraining_crew/empty_list"
 msgstr "Error retraining crew. Crew members are not selected."
 
-msgid "retraining_crew/financial_success"
-msgstr "Crew successfully retrained. You have spent %(price)s."
+msgid "retraining_crew/financial_success_credits"
+msgstr "Credits spent: %(money)s."
+
+msgid "retraining_crew/financial_success_free"
+msgstr "Crew retrained for the %(vehName)s for free."
+
+msgid "retraining_crew/financial_success_gold"
+msgstr "Gold spent: %(money)s."
 
 msgid "retraining_crew/invalid_operation"
 msgstr "Error retraining crew. Operation is unavailable."
@@ -3273,7 +3315,7 @@ msgid "retraining_crew/server_error"
 msgstr "Unable to retrain crew. Try again later."
 
 msgid "retraining_crew/success"
-msgstr "Crew successfully retrained."
+msgstr "Crew retrained for the %(vehName)s."
 
 msgid "retraining_crew/vehicle_locked"
 msgstr "Error retraining crew. The vehicle is locked."
@@ -3285,8 +3327,14 @@ msgid "retraining_tankman/FORBIDDEN"
 msgstr ""
 "Unable to retrain your crew member: the tank has unique permanent crew."
 
-msgid "retraining_tankman/financial_success"
-msgstr "Crew member was successfully retrained. Spent %(price)s."
+msgid "retraining_tankman/financial_success_credits"
+msgstr "Credits spent: %(money)s."
+
+msgid "retraining_tankman/financial_success_free"
+msgstr "Crew member retrained for the %(vehName)s for free."
+
+msgid "retraining_tankman/financial_success_gold"
+msgstr "Gold spent: %(money)s."
 
 msgid "retraining_tankman/invalid_operation"
 msgstr "Error retraining a crew member. Operation is unavailable."
@@ -3295,10 +3343,10 @@ msgid "retraining_tankman/invalid_vehicle"
 msgstr "Error retraining a crew member. Wrong vehicle."
 
 msgid "retraining_tankman/server_error"
-msgstr "Failed to retrain a crew member. Try again later."
+msgstr "Unable to retrain a crew member. Try again later."
 
 msgid "retraining_tankman/success"
-msgstr "Crew member successfully retrained."
+msgstr "Crew member retrained for the %(vehName)s."
 
 msgid "retraining_tankman/vehicle_locked"
 msgstr "Error retraining a crew member. The vehicle is locked."
@@ -4080,6 +4128,9 @@ msgstr "Joining of players is in progress. Please wait."
 msgid "unitBrowser/errors/BAD_ACCEPT_CONTEXT"
 msgstr "Unable to confirm readiness to join the team."
 
+msgid "unload/button"
+msgstr "Go to Barracks"
+
 msgid "unload_crew/FORBIDDEN"
 msgstr ""
 "Unable to send the crew to the Barracks: the tank has unique permanent crew."
@@ -4089,13 +4140,13 @@ msgstr "Error sending the crew to the Barracks. Wrong vehicle."
 
 msgid "unload_crew/not_enough_space"
 msgstr ""
-"Error sending the crew to the Barracks. Not enough bunks in the Barracks."
+"Unable to send this crew to the Barracks. Not enough bunks in the Barracks."
 
 msgid "unload_crew/server_error"
 msgstr "Unable to send the crew to the Barracks. Try again later."
 
 msgid "unload_crew/success"
-msgstr "The crew successfully sent to the Barracks."
+msgstr "Crew sent to the Barracks."
 
 msgid "unload_crew/vehicle_locked"
 msgstr "Error sending the crew to the Barracks. The vehicle is locked."
@@ -4108,19 +4159,22 @@ msgstr ""
 "Unable to send a crew member to the Barracks: the tank has unique permanent "
 "crew."
 
+msgid "unload_tankman/button"
+msgstr "Go to Barracks"
+
 msgid "unload_tankman/invalid_vehicle"
 msgstr "Error sending a crew member to the Barracks. Wrong vehicle."
 
 msgid "unload_tankman/not_enough_space"
 msgstr ""
-"Error sending a crew member to the Barracks. Not enough bunks in the "
+"Unable to send this crew member to the Barracks. Not enough bunks in the "
 "Barracks."
 
 msgid "unload_tankman/server_error"
 msgstr "Unable to send a crew member to the Barracks. Try again later."
 
 msgid "unload_tankman/success"
-msgstr "Crew member successfully sent to the Barracks."
+msgstr "Crew member sent to the Barracks."
 
 msgid "unload_tankman/vehicle_locked"
 msgstr "Error sending a crew member to the Barracks. The vehicle is locked."
@@ -4409,22 +4463,15 @@ msgstr ""
 "any tactical unit or try again later."
 
 msgid "vehicle_remove/success"
-msgstr "The %(vehName)s is successfully removed. Received %(money)s."
-
-msgid "vehicle_remove/success/with_demount_kit"
 msgstr ""
-"The %(vehName)s is successfully removed. Received %(money)s. You used a "
-"Demounting Kit (x%(countDK)s)."
+"The %(vehName)s has been successfully removed.\n"
+"%(money)s."
 
 msgid "vehicle_remove/success_dismantling"
 msgstr ""
-"The %(vehName)s has been successfully removed. Received: %(gainMoney)s. "
-"Spent: %(spendMoney)s."
-
-msgid "vehicle_remove/success_dismantling/with_demount_kit"
-msgstr ""
-"The %(vehName)s has been successfully removed. Received: %(gainMoney)s. You "
-"used a Demounting Kit (x%(countDK)s). Spent: %(spendMoney)s."
+"The %(vehName)s has been successfully removed.\n"
+"%(gainMoney)s.\n"
+"%(spendMoney)s."
 
 msgid "vehicle_remove/vehicle_cannot_be_sold"
 msgstr ""
@@ -4528,6 +4575,9 @@ msgstr ""
 "Operation unavailable. All your gold will be available after WG Wallet "
 "operability is restored automatically."
 
+msgid "vehicle_sell/currencyUpdate/debited/demount_kit"
+msgstr "Demounting Kit used (x%(countDK)s)"
+
 msgid "vehicle_sell/demount_kit_disabled"
 msgstr "Unable to sell the %(vehName)s. Try again later."
 
@@ -4557,23 +4607,17 @@ msgstr ""
 
 msgid "vehicle_sell/success"
 msgstr ""
-"The %(vehName)s has been successfully sold. Received: %(money)s. "
+"The %(vehName)s has been successfully sold.\n"
+"%(money)s.\n"
+"\n"
 "%(restoreInfo)s"
-
-msgid "vehicle_sell/success/with_demount_kit"
-msgstr ""
-"The %(vehName)s has been successfully sold. Received: %(money)s. You used a "
-"Demounting Kit (x%(countDK)s). %(restoreInfo)s"
 
 msgid "vehicle_sell/success_dismantling"
 msgstr ""
-"The %(vehName)s has been successfully sold. Received: %(gainMoney)s. Spent: "
-"%(spendMoney)s. %(restoreInfo)s"
-
-msgid "vehicle_sell/success_dismantling/with_demount_kit"
-msgstr ""
-"The %(vehName)s has been successfully sold. Received %(gainMoney)s. You used"
-" a Demounting Kit (x%(countDK)s). Spent: %(spendMoney)s. %(restoreInfo)s"
+"The %(vehName)s has been successfully sold.\n"
+"%(gainMoney)s.\n"
+"%(spendMoney)s.\n"
+"%(restoreInfo)s"
 
 msgid "vehicle_sell/vehicle_cannot_be_sold"
 msgstr ""
@@ -4618,7 +4662,7 @@ msgstr ""
 
 msgid "vehicle_tmenxp_accelerator/server_error"
 msgstr ""
-"Error changing accelerated crew training of the %(vehName)s. Try again "
+"Unable to change accelerated crew training of the %(vehName)s. Try again "
 "later."
 
 msgid "vehicle_tmenxp_accelerator/successFalse"

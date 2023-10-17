@@ -8,6 +8,8 @@ package net.wg.gui.lobby.profile.pages.technique
    {
       
       private static const TABLE_HEADER:String = "tableHeader";
+      
+      private static const PRESTIGE_KEY:String = "prestigeLevel";
        
       
       public var tableHeader:DataProvider = null;
@@ -15,6 +17,18 @@ package net.wg.gui.lobby.profile.pages.technique
       public var selectedColumn:int = 4;
       
       public var selectedColumnSorting:String = "descending";
+      
+      public var dropdownSeasonLabel:String = "";
+      
+      public var showSeasonDropdown:Boolean = false;
+      
+      public var seasonItems:Array = null;
+      
+      public var seasonIndex:int = -1;
+      
+      public var seasonEnabled:Boolean = false;
+      
+      private var _isPrestigeEnabled:Boolean = false;
       
       public function TechStatisticsInitVO(param1:Object)
       {
@@ -25,17 +39,24 @@ package net.wg.gui.lobby.profile.pages.technique
       {
          var _loc3_:Array = null;
          var _loc4_:int = 0;
-         var _loc5_:int = 0;
+         var _loc5_:NormalSortingBtnVO = null;
+         var _loc6_:int = 0;
          if(param1 == TABLE_HEADER)
          {
+            this._isPrestigeEnabled = false;
             this.tableHeader = new DataProvider();
             _loc3_ = param2 as Array;
             _loc4_ = _loc3_.length;
-            _loc5_ = 0;
-            while(_loc5_ < _loc4_)
+            _loc6_ = 0;
+            while(_loc6_ < _loc4_)
             {
-               this.tableHeader.push(new NormalSortingBtnVO(_loc3_[_loc5_]));
-               _loc5_++;
+               _loc5_ = new NormalSortingBtnVO(_loc3_[_loc6_]);
+               if(_loc5_.id == PRESTIGE_KEY)
+               {
+                  this._isPrestigeEnabled = true;
+               }
+               this.tableHeader.push(_loc5_);
+               _loc6_++;
             }
             return false;
          }
@@ -54,7 +75,17 @@ package net.wg.gui.lobby.profile.pages.technique
             this.tableHeader.cleanUp();
             this.tableHeader = null;
          }
+         if(this.seasonItems != null)
+         {
+            this.seasonItems.length = 0;
+            this.seasonItems = null;
+         }
          super.onDispose();
+      }
+      
+      public function get isPrestigeEnabled() : Boolean
+      {
+         return this._isPrestigeEnabled;
       }
    }
 }

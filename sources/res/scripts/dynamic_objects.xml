@@ -417,6 +417,28 @@
 			<id>4</id>
 		</item>
 	</lootTypes>
+	<lootTypesHalloween>
+		<item>
+			&gt;
+			<name>lootSoulsSmall</name>
+			<id>5</id>
+		</item>
+		<item>
+			&gt;
+			<name>lootSoulsMedium</name>
+			<id>6</id>
+		</item>
+		<item>
+			&gt;
+			<name>lootSoulsBig</name>
+			<id>7</id>
+		</item>
+		<item>
+			&gt;
+			<name>lootShells</name>
+			<id>8</id>
+		</item>
+	</lootTypesHalloween>
 	<lootBase>
 		<model>
 			<name>content/MilitaryEnvironment/hd_mle_UNI_500_Lootbox/normal/lod0/hd_mle_UNI_500_Lootbox01.model</name>
@@ -485,6 +507,74 @@
 			<path>particles/eff_sequence/br_loot_corpse_end.seq</path>
 		</pickupEffect>
 	</lootCorpse>
+	<lootSoulsSmall>
+		<model>
+			<border>content/Environment/env_null_model/null_model.model</border>
+			<overTerrainHeight>
+				3.00
+				<!--BW_String-->
+			</overTerrainHeight>
+		</model>
+		<effect>
+			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_small.seq</path_fwd>
+			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_small.seq</path>
+		</effect>
+		<pickupEffect>
+			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_small.seq</path_fwd>
+			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_small.seq</path>
+		</pickupEffect>
+	</lootSoulsSmall>
+	<lootSoulsMedium>
+		<model>
+			<border>content/Environment/env_null_model/null_model.model</border>
+			<overTerrainHeight>
+				3.00
+				<!--BW_String-->
+			</overTerrainHeight>
+		</model>
+		<effect>
+			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_medium.seq</path_fwd>
+			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_medium.seq</path>
+		</effect>
+		<pickupEffect>
+			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_medium.seq</path_fwd>
+			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_medium.seq</path>
+		</pickupEffect>
+	</lootSoulsMedium>
+	<lootSoulsBig>
+		<model>
+			<border>content/Environment/env_null_model/null_model.model</border>
+			<overTerrainHeight>
+				3.00
+				<!--BW_String-->
+			</overTerrainHeight>
+		</model>
+		<effect>
+			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_big.seq</path_fwd>
+			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_big.seq</path>
+		</effect>
+		<pickupEffect>
+			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_big.seq</path_fwd>
+			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_big.seq</path>
+		</pickupEffect>
+	</lootSoulsBig>
+	<lootShells>
+		<model>
+			<border>content/Environment/env_null_model/null_model.model</border>
+			<overTerrainHeight>
+				3.00
+				<!--BW_String-->
+			</overTerrainHeight>
+		</model>
+		<effect>
+			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/buff.seq</path_fwd>
+			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/buff.seq</path>
+		</effect>
+		<pickupEffect>
+			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/buff_catch.seq</path_fwd>
+			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/buff_catch.seq</path>
+		</pickupEffect>
+	</lootShells>
 	<TrapPoint>
 		<enemy>
 			<effect>
@@ -579,6 +669,9 @@
 			</offset>
 		</effect>
 	</VehicleUpgrade>
+	<VehicleRespawn>
+		<prefab>content/CGFPrefabs/steel_hunter/respawn_effect.prefab</prefab>
+	</VehicleRespawn>
 	<KamikazeActivated>
 		<effect>
 			<path>particles/content_deferred/GFX_models/gameplay/br_kamikadze/br_kamikadze_glow.ssm</path>
@@ -1083,66 +1176,11 @@
 			<!--BW_String-->
 		</overTerrainHeight>
 	</spawnPointsConfig>
-	<prefabs>
-		<path>content/WtPrefabs/Afterburning.prefab</path>
-		<path>content/WtPrefabs/AntennaTeleport.prefab</path>
-		<path>content/WtPrefabs/BossShield.prefab</path>
-		<path>content/WtPrefabs/BotAppear.prefab</path>
-		<path>content/WtPrefabs/Escape.prefab</path>
-		<path>content/WtPrefabs/Generator.prefab</path>
-		<path>content/WtPrefabs/GeneratorDisappearing.prefab</path>
-		<path>content/WtPrefabs/GeneratorModel.prefab</path>
-		<path>content/WtPrefabs/BossGeneratorCapture.prefab</path>
-		<path>content/WtPrefabs/Impulse.prefab</path>
-		<path>content/WtPrefabs/PlasmaHit.prefab</path>
-		<path>content/WtPrefabs/ShieldHit.prefab</path>
-		<path>content/WtPrefabs/TeleportSource.prefab</path>
-		<path>content/WtPrefabs/TeleportDestination.prefab</path>
-		<path>content/WtPrefabs/abilities/ExplosiveShot.prefab</path>
-		<path>content/WtPrefabs/abilities/ChargedShot.prefab</path>
-		<path>content/WtPrefabs/abilities/ShieldHitSmall.prefab</path>
-		<path>content/WtPrefabs/abilities/Shield.prefab</path>
-		<path>content/WtPrefabs/abilities/Stronghold.prefab</path>
-		<path>content/WtPrefabs/abilities/StrongholdEnd.prefab</path>
-		<path>content/WtPrefabs/abilities/HyperionShot.prefab</path>
-		<path>content/WtPrefabs/abilities/HyperionCharging.prefab</path>
-		<path>content/WtPrefabs/heal/A120_M48A5_hound_TLXXL.prefab</path>
-		<path>content/WtPrefabs/heal/Cz04_T50_51_Waf_Hound_3DSt.prefab</path>
-		<path>content/WtPrefabs/abilities/HyperionActive.prefab</path>
-		<path>content/WtPrefabs/abilities/HyperionAftermath.prefab</path>
-		<path>content/WtPrefabs/abilities/HyperionCanceled.prefab</path>
-		<path>content/WtPrefabs/abilities/HyperionReady.prefab</path>
-		<path>content/WtPrefabs/heal/WT_fullRepairActive.prefab</path>
-		<path>content/WtPrefabs/heal/WT_fullRepairComplete.prefab</path>
-		<path>content/WtPrefabs/heal/WT_fullRepairInterrupted.prefab</path>
-		<path>content/WtPrefabs/antenna/AntennaEnd.prefab</path>
-		<path>content/WtPrefabs/antenna/AntennaStage1.prefab</path>
-		<path>content/WtPrefabs/antenna/AntennaStage2.prefab</path>
-		<path>content/WtPrefabs/antenna/AntennaStage3.prefab</path>
-		<path>content/WtPrefabs/antenna/AntennaStage4.prefab</path>
-		<path>content/WtPrefabs/A120_M48A5_hound_TLXXL.prefab</path>
-		<path>content/WtPrefabs/F18_Bat_Chatillon25t_hound_TLXXL.prefab</path>
-		<path>content/WtPrefabs/R97_Object_140_hound_TLXXL.prefab</path>
-		<path>content/WtPrefabs/Cz04_T50_51_Waf_Hound_3DSt.prefab</path>
-		<path>content/WtPrefabs/plasma/A120_M48A5_hound_TLXXL0.prefab</path>
-		<path>content/WtPrefabs/plasma/A120_M48A5_hound_TLXXL1.prefab</path>
-		<path>content/WtPrefabs/plasma/A120_M48A5_hound_TLXXL2.prefab</path>
-		<path>content/WtPrefabs/plasma/A120_M48A5_hound_TLXXL3.prefab</path>
-		<path>content/WtPrefabs/plasma/A120_M48A5_hound_TLXXL4.prefab</path>
-		<path>content/WtPrefabs/plasma/Cz04_T50_51_Waf_Hound_3DSt0.prefab</path>
-		<path>content/WtPrefabs/plasma/Cz04_T50_51_Waf_Hound_3DSt1.prefab</path>
-		<path>content/WtPrefabs/plasma/Cz04_T50_51_Waf_Hound_3DSt2.prefab</path>
-		<path>content/WtPrefabs/plasma/Cz04_T50_51_Waf_Hound_3DSt3.prefab</path>
-		<path>content/WtPrefabs/plasma/Cz04_T50_51_Waf_Hound_3DSt4.prefab</path>
-		<path>content/WtPrefabs/plasma/F18_Bat_Chatillon25t_hound_TLXXL0.prefab</path>
-		<path>content/WtPrefabs/plasma/F18_Bat_Chatillon25t_hound_TLXXL1.prefab</path>
-		<path>content/WtPrefabs/plasma/F18_Bat_Chatillon25t_hound_TLXXL2.prefab</path>
-		<path>content/WtPrefabs/plasma/F18_Bat_Chatillon25t_hound_TLXXL3.prefab</path>
-		<path>content/WtPrefabs/plasma/F18_Bat_Chatillon25t_hound_TLXXL4.prefab</path>
-		<path>content/WtPrefabs/plasma/R97_Object_140_hound_TLXXL0.prefab</path>
-		<path>content/WtPrefabs/plasma/R97_Object_140_hound_TLXXL1.prefab</path>
-		<path>content/WtPrefabs/plasma/R97_Object_140_hound_TLXXL2.prefab</path>
-		<path>content/WtPrefabs/plasma/R97_Object_140_hound_TLXXL3.prefab</path>
-		<path>content/WtPrefabs/plasma/R97_Object_140_hound_TLXXL4.prefab</path>
-	</prefabs>
+	<hwSoulsCollector>
+		<prefab>content/CGFPrefabs/halloween/SoulCollector/SoulCollector.prefab</prefab>
+		<progressAnim>content/CGFPrefabs/halloween/SoulCollector/soul_collector_progress_section.ssm</progressAnim>
+	</hwSoulsCollector>
+	<hwPhaseSwitch>
+		<effect>halloween/gui/effects/phase_switch_effect.xml</effect>
+	</hwPhaseSwitch>
 </root>

@@ -7,6 +7,7 @@ package net.wg.gui.lobby.settings
    import net.wg.data.constants.Values;
    import net.wg.gui.components.controls.CheckBox;
    import net.wg.gui.components.controls.DropdownMenu;
+   import net.wg.gui.components.controls.InfoIcon;
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
    import net.wg.gui.lobby.settings.events.SettingsSubVewEvent;
    import net.wg.gui.lobby.settings.vo.SettingsControlProp;
@@ -175,6 +176,13 @@ package net.wg.gui.lobby.settings
             return this._data[param1];
          }
          return super.getControlPropsByKey(param1);
+      }
+      
+      override protected function configUI() : void
+      {
+         super.configUI();
+         this.markerBaseLevelCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
+         this.markerBaseLevelCheckbox.toolTip = SETTINGS.MARKER_LEVEL_TOOLTIP;
       }
       
       public function setData(param1:String, param2:SettingsDataVo) : void

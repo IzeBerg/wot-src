@@ -459,10 +459,10 @@ package net.wg.gui.components.crosshairPanel
       
       public function as_setBurnoutWarning(param1:String) : void
       {
-         this._burnoutWarning = param1;
-         this._isWarning = true;
          if(this._speedometer)
          {
+            this._burnoutWarning = param1;
+            this._isWarning = true;
             this._speedometer.setWarning(param1);
          }
       }
@@ -495,10 +495,10 @@ package net.wg.gui.components.crosshairPanel
       
       public function as_setEngineCrushError(param1:String) : void
       {
-         this._engineCrush = param1;
-         this._isEngineCrush = true;
          if(this._speedometer)
          {
+            this._engineCrush = param1;
+            this._isEngineCrush = true;
             this._speedometer.setEngineCrushError(param1);
          }
       }
@@ -687,9 +687,9 @@ package net.wg.gui.components.crosshairPanel
       
       public function as_setSpeedMode(param1:Boolean) : void
       {
-         this._speedMode = param1;
          if(this._speedometer)
          {
+            this._speedMode = param1;
             this._speedometer.changeState(param1);
          }
       }
@@ -770,26 +770,6 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
-      public function as_showPlasmaIndicator(param1:Number, param2:Boolean, param3:String) : void
-      {
-         if(this._currentCrosshair != null)
-         {
-            this._currentCrosshair.showPlasmaIndicator(param1,param2,param3);
-         }
-      }
-      
-      public function as_showExplosiveShotIndicator(param1:Boolean) : void
-      {
-         if(this._gunMarkersContainer != null)
-         {
-            this._gunMarkersContainer.setExplosiveShotMarker(param1);
-         }
-         if(this._currentCrosshair != null)
-         {
-            this._currentCrosshair.setExplosiveShotVisible(param1);
-         }
-      }
-      
       public function as_startDualGunCharging(param1:Number, param2:Number) : void
       {
          if(this._gunMarkersContainer != null)
@@ -800,18 +780,18 @@ package net.wg.gui.components.crosshairPanel
       
       public function as_stopBurnoutWarning() : void
       {
-         this._isWarning = false;
          if(this._speedometer)
          {
+            this._isWarning = false;
             this._speedometer.stopWarning();
          }
       }
       
       public function as_stopEngineCrushError() : void
       {
-         this._isEngineCrush = false;
          if(this._speedometer)
          {
+            this._isEngineCrush = false;
             this._speedometer.stopEngineCrushError();
          }
       }
@@ -827,9 +807,9 @@ package net.wg.gui.components.crosshairPanel
       
       public function as_updateBurnout(param1:Number) : void
       {
-         this._burnout = param1;
          if(this._speedometer)
          {
+            this._burnout = param1;
             this._speedometer.setBurnout(param1);
          }
       }
@@ -861,9 +841,9 @@ package net.wg.gui.components.crosshairPanel
       
       public function as_updateSpeed(param1:int) : void
       {
-         this._speed = param1;
          if(this._speedometer)
          {
+            this._speed = param1;
             this._speedometer.setSpeed(param1);
          }
       }

@@ -9,3 +9,7 @@ class ExchangeWindowMeta(BaseExchangeWindow):
     def as_setWalletStatusS(self, walletStatus):
         if self._isDAAPIInited():
             return self.flashObject.as_setWalletStatus(walletStatus)
+
+    def as_setDefaultPrimaryCurrencyValueS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setDefaultPrimaryCurrencyValue(value)

@@ -10,19 +10,67 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "confirmSkills/buttonApprove"
-msgstr "Exchange"
+msgid "barracks/action/enlarge"
+msgstr "Enlarge"
 
-msgid "confirmSkills/buttonDecline"
-msgstr "Cancel"
+msgid "barracks/bunks/title"
+msgstr "Bunks:"
 
-msgid "confirmSkills/desc"
+msgid "barracks/enlarge/contentLine"
 msgstr ""
-"%(name)s will train \"{whiteSpanish_Open}%(skill)s{whiteSpanish_Close}\" to "
-"{whiteSpanish_Open}%(level)s%{whiteSpanish_Close} for"
+"Specify the number of bunks for purchase. Bunks available in the Barracks: "
+"%(freeBunksCount)s / %(allBunksCount)s."
 
-msgid "confirmSkills/head"
-msgstr "Exchange Free Experience?"
+msgid "barracks/enlarge/discountTooltip/header"
+msgstr "Discount Cost"
+
+msgid "barracks/enlarge/discountTooltip/newCost"
+msgstr "New cost: %(currency)s per %(bunksCount)s bunks"
+
+msgid "barracks/enlarge/discountTooltip/previousCost"
+msgstr "Previous cost: %(currency)s per %(bunksCount)s bunks"
+
+msgid "barracks/enlarge/header"
+msgstr "Enlarge the Barracks?"
+
+msgid "barracks/title"
+msgstr "BARRACKS"
+
+msgid "barracks/tooltip/enlarge/body"
+msgstr "Click to enlarge the Barracks."
+
+msgid "barracks/tooltip/enlarge/header"
+msgstr "Enlarge Barracks"
+
+msgid "common/exclamationMark"
+msgstr "!"
+
+msgid "common/filter/location"
+msgstr "Location"
+
+msgid "common/imageNotAvailable"
+msgstr "Image Not Available"
+
+msgid "common/inBarracks"
+msgstr "In the Barracks"
+
+msgid "common/inBattle"
+msgstr "In Battle"
+
+msgid "common/inPrebattle"
+msgstr "In Tactical Unit"
+
+msgid "common/navigation/aboutCrew"
+msgstr "ABOUT CREW"
+
+msgid "common/navigation/toBarracks"
+msgstr "TO BARRACKS"
+
+msgid "common/navigation/toGarage"
+msgstr "TO GARAGE"
+
+msgid "common/navigation/toPersonalFile"
+msgstr "TO PROFILE"
 
 msgid "confirmSkills/percent"
 msgstr "%(value)s%"
@@ -80,6 +128,515 @@ msgstr "Choose new additional perks to increase crew performance."
 
 msgid "crew22Welcome/2/title"
 msgstr "STRENGTHEN YOUR CREW"
+
+msgid "filter/group/details/title"
+msgstr "Details"
+
+msgid "filter/group/nation/title"
+msgstr "Nation"
+
+msgid "filter/group/other/title"
+msgstr "Other"
+
+msgid "filter/group/special/title"
+msgstr "Special"
+
+msgid "filter/group/tankmanRole/title"
+msgstr "Qualification"
+
+msgid "filter/group/vehicleTier/longTitle"
+msgstr "Tier"
+
+msgid "filter/group/vehicleTier/shortTitle"
+msgstr "Tier"
+
+msgid "filter/group/vehicleType/barracks/title"
+msgstr "Specialization"
+
+msgid "filter/group/vehicleType/tankChange/title"
+msgstr "Vehicle Type"
+
+msgid "filter/popup/button/title"
+msgstr "Filter"
+
+msgid "filter/popup/default/title"
+msgstr "Filter"
+
+msgid "filter/popup/skinChange/title"
+msgstr "Filter by Nation"
+
+msgid "filter/popup/tankChange/title"
+msgstr "Filter by Vehicles"
+
+msgid "filter/reset"
+msgstr "Reset Filter"
+
+msgid "filter/search/placeholder"
+msgstr "Search by name"
+
+msgid "filter/search/tooltip/header"
+msgstr "Search by Name"
+
+msgid "filter/title"
+msgstr "Displayed:"
+
+msgid "filter/tooltip/crewMemberVehicleGrade/elite/body"
+msgstr ""
+"Show/hide crew members in vehicles with all available modules and technical "
+"branches researched."
+
+msgid "filter/tooltip/crewMemberVehicleGrade/elite/title"
+msgstr "Elite Vehicles"
+
+msgid "filter/tooltip/crewMemberVehicleGrade/premium/body"
+msgstr "Show/hide crew members trained for Premium vehicles."
+
+msgid "filter/tooltip/crewMemberVehicleGrade/premium/title"
+msgstr "Premium Vehicles"
+
+msgid "filter/tooltip/crewMemberVehicleGrade/primary/body"
+msgstr "Show/hide crew members in primary vehicles."
+
+msgid "filter/tooltip/crewMemberVehicleGrade/primary/title"
+msgstr "Primary Vehicles"
+
+msgid "filter/tooltip/crewMemberVehicleType/body"
+msgstr "Show/hide crew members for this type of vehicles."
+
+msgid "filter/tooltip/nation/crewMember/body"
+msgstr "Show/hide crew members of this nation."
+
+msgid "filter/tooltip/nation/skins/body"
+msgstr "Show/hide skins of this nation."
+
+msgid "filter/tooltip/nation/vehicles/body"
+msgstr "Show/hide vehicles of this nation."
+
+msgid "filter/tooltip/tankmanKind/dismissed/body"
+msgstr "Show/hide retired."
+
+msgid "filter/tooltip/tankmanKind/dismissed/title"
+msgstr "Retired"
+
+msgid "filter/tooltip/tankmanKind/recruit/body"
+msgstr "Show/hide recruits."
+
+msgid "filter/tooltip/tankmanKind/recruit/title"
+msgstr "Recruits"
+
+msgid "filter/tooltip/tankmanKind/tankman/body"
+msgstr "Show/hide crew members."
+
+msgid "filter/tooltip/tankmanKind/tankman/title"
+msgstr "Crew Members"
+
+msgid "filter/tooltip/tankmanRole/body"
+msgstr "Show/hide crew members of this qualification."
+
+msgid "filter/tooltip/vehicleGrade/premium/body"
+msgstr "Show/hide Premium vehicles."
+
+msgid "filter/tooltip/vehicleGrade/premium/title"
+msgstr "Premium Vehicles"
+
+msgid "filter/tooltip/vehicleType/body"
+msgstr "Show/hide vehicles of this type."
+
+msgid "filter/tooltip/vehicleType/header/AT-SPG"
+msgstr "Tank Destroyers"
+
+msgid "filter/tooltip/vehicleType/header/SPG"
+msgstr "SPGs"
+
+msgid "filter/tooltip/vehicleType/header/heavyTank"
+msgstr "Heavy Tanks"
+
+msgid "filter/tooltip/vehicleType/header/lightTank"
+msgstr "Light Tanks"
+
+msgid "filter/tooltip/vehicleType/header/mediumTank"
+msgstr "Medium Tanks"
+
+msgid "filter/vehicles/noVehicles"
+msgstr ""
+"No vehicles found that meet\n"
+"the search criteria"
+
+msgid "filter/vehicles/tooltip/name/body"
+msgstr "Sort by vehicle name."
+
+msgid "filter/vehicles/tooltip/name/header"
+msgstr "Name"
+
+msgid "filter/vehicles/tooltip/tier/body"
+msgstr "Sort by vehicle tier."
+
+msgid "filter/vehicles/tooltip/tier/header"
+msgstr "Tier"
+
+msgid "filter/vehicles/tooltip/type/body"
+msgstr "Sort by vehicle type."
+
+msgid "filter/vehicles/tooltip/type/header"
+msgstr "Type"
+
+msgid "filter/vehicles/vehicleName"
+msgstr "Name"
+
+msgid "filterPanel/counter/reset/body"
+msgstr "Click to reset filter settings."
+
+msgid "filterPanel/counter/reset/header"
+msgstr "Reset All Filters"
+
+msgid "matrix/increaseButton"
+msgstr "Increase"
+
+msgid "matrix/increaseTooltip/enable/body"
+msgstr "Increase perks using Free XP and Crew Books."
+
+msgid "matrix/increaseTooltip/enable/header"
+msgstr "Quick Training"
+
+msgid "matrix/irrelevantQualification/header"
+msgstr "Incompatible Qualification"
+
+msgid "matrix/qualification/1"
+msgstr "Major Qualification"
+
+msgid "matrix/qualification/2"
+msgstr "Second Qualification"
+
+msgid "matrix/qualification/3"
+msgstr "Third Qualification"
+
+msgid "matrix/qualification/4"
+msgstr "Fourth Qualification"
+
+msgid "matrix/qualification/lockByZeroPerks/2"
+msgstr "Zero perks unavailable for second qualification"
+
+msgid "matrix/qualification/lockByZeroPerks/3"
+msgstr "Zero perks unavailable for third qualification"
+
+msgid "matrix/qualification/lockByZeroPerks/4"
+msgstr "Zero perks unavailable for fourth qualification"
+
+msgid "matrix/resetButton"
+msgstr "Reset"
+
+msgid "matrix/resetTooltip/disable/body"
+msgstr "You have no trained perks."
+
+msgid "matrix/resetTooltip/disable/header"
+msgstr "Unable to Reset Perks"
+
+msgid "matrix/resetTooltip/enable/body"
+msgstr "Click to reset perks."
+
+msgid "matrix/resetTooltip/enable/header"
+msgstr "Reset Perks"
+
+msgid "matrix/skills/achieve"
+msgstr "Training available upon achieving major qualification level 100%"
+
+msgid "matrix/skills/allSkills"
+msgstr "All additional perks trained for this vehicle"
+
+msgid "matrix/skills/available"
+msgstr "Perks available for training:"
+
+msgid "matrix/skills/roles/commander"
+msgstr "Commander's Perks"
+
+msgid "matrix/skills/roles/driver"
+msgstr "Driver's Perks"
+
+msgid "matrix/skills/roles/female/commander"
+msgstr "Commander's Perks"
+
+msgid "matrix/skills/roles/female/driver"
+msgstr "Driver's Perks"
+
+msgid "matrix/skills/roles/female/gunner"
+msgstr "Gunner's Perks"
+
+msgid "matrix/skills/roles/female/loader"
+msgstr "Loader's Perks"
+
+msgid "matrix/skills/roles/female/radioman"
+msgstr "Radio Operator's Perks"
+
+msgid "matrix/skills/roles/gunner"
+msgstr "Gunner's Perks"
+
+msgid "matrix/skills/roles/loader"
+msgstr "Loader's Perks"
+
+msgid "matrix/skills/roles/radioman"
+msgstr "Radio Operator's Perks"
+
+msgid "matrix/skills/training"
+msgstr "Perk training"
+
+msgid "matrix/skills/zeroSkills"
+msgstr "Zero perks available for training:"
+
+msgid "memberChange/action/recruit"
+msgstr "Recruit {role}"
+
+msgid "memberChange/discount"
+msgstr "{discountAmount}% DISCOUNT ON QUALIFICATION CHANGE DISCOUNT"
+
+msgid "memberChange/title"
+msgstr "SELECT {role}: {vehicle} "
+
+msgid "personalData/card/remove"
+msgstr "Remove"
+
+msgid "personalData/card/restrictions"
+msgstr "Restrictions: {restrictions}"
+
+msgid "personalData/card/tooltip/document/body"
+msgstr "Click to replace a crew member's name and appearance."
+
+msgid "personalData/card/tooltip/document/title"
+msgstr "Appearance"
+
+msgid "personalData/card/tooltip/locked/body"
+msgstr "This crew member already has a unique name and appearance."
+
+msgid "personalData/card/tooltip/locked/title"
+msgstr "Unable to Replace Name and Appearance"
+
+msgid "personalData/emptyState/noFilteredItems"
+msgstr "Nothing found. Change settings or reset the filter."
+
+msgid "personalData/filter/tooltip/popoverButton/body"
+msgstr "Configure the display of skins by their nation."
+
+msgid "personalData/filter/tooltip/popoverButton/title"
+msgstr "Filter by Parameters"
+
+msgid "personalData/filter/tooltip/type/document/body"
+msgstr "Show/hide documents."
+
+msgid "personalData/filter/tooltip/type/document/title"
+msgstr "Documents"
+
+msgid "personalData/filter/tooltip/type/suitableSkin/body"
+msgstr "Show/hide suitable skins."
+
+msgid "personalData/filter/tooltip/type/suitableSkin/title"
+msgstr "Suitable Skins"
+
+msgid "personalData/filter/type/title"
+msgstr "Type"
+
+msgid "personalData/title"
+msgstr "REPLACE NAME AND APPEARANCE"
+
+msgid "personalFile/changeVehicle"
+msgstr "Change"
+
+msgid "personalFile/crewLockedTooltip/body"
+msgstr "Unable to train this crew member for a different vehicle."
+
+msgid "personalFile/crewLockedTooltip/header"
+msgstr "Operation Unavailable"
+
+msgid "personalFile/discount/full"
+msgstr "Discount on crew retraining available"
+
+msgid "personalFile/discount/short"
+msgstr "Discount available"
+
+msgid "personalFile/inVehicle"
+msgstr "In the vehicle: %(vehicle)s"
+
+msgid "personalFile/premiumVehicle"
+msgstr "Premium vehicle"
+
+msgid "personalFile/retrain"
+msgstr "Retrain"
+
+msgid "personalFile/retrainLevel"
+msgstr "Training level: "
+
+msgid "personalFile/specialization"
+msgstr "Specialization:"
+
+msgid "personalFile/vehicleTooltip/header"
+msgstr "Specialization"
+
+msgid "personalFile/voiceTooltip/body"
+msgstr "Click to listen to this Commander's voiceover sample."
+
+msgid "personalFile/voiceTooltip/header"
+msgstr "Unique Voiceover"
+
+msgid "premiumVehType/plural/lowerCase/AT-SPG"
+msgstr "Premium tanks destroyers"
+
+msgid "premiumVehType/plural/lowerCase/SPG"
+msgstr "Premium SPGs"
+
+msgid "premiumVehType/plural/lowerCase/heavyTank"
+msgstr "Premium heavy tanks"
+
+msgid "premiumVehType/plural/lowerCase/lightTank"
+msgstr "Premium light tanks"
+
+msgid "premiumVehType/plural/lowerCase/mediumTank"
+msgstr "Premium medium tanks"
+
+msgid "serviceRecord/achievementsList/title"
+msgstr "AWARDS"
+
+msgid "serviceRecord/averageXP"
+msgstr "Average Experience per Battle"
+
+msgid "serviceRecord/battlesCounter"
+msgstr "Battles Fought"
+
+msgid "serviceRecord/noAchievements"
+msgstr "No achievements or awards earned in battles."
+
+msgid "serviceRecord/tooltip/averageXP/body"
+msgstr ""
+"Ratio of total experience points earned to number of battles fought by this "
+"crew member in the current vehicle."
+
+msgid "serviceRecord/tooltip/averageXP/header"
+msgstr "Average Experience per Battle"
+
+msgid "serviceRecord/tooltip/rank/body"
+msgstr ""
+"A crew member's rank depends on their experience and number of trained "
+"perks."
+
+msgid "serviceRecord/tooltip/rank/header"
+msgstr "Rank"
+
+msgid "tankChange/title"
+msgstr "TRAIN FOR VEHICLE"
+
+msgid "tankChange/tooltip/location/body"
+msgstr "Show/hide only vehicles in the Garage."
+
+msgid "tankChange/tooltip/location/header"
+msgstr "In Garage"
+
+msgid "tankChange/tooltip/popover/body"
+msgstr "Configure the display of vehicles by their type and tier."
+
+msgid "tankChange/tooltip/popover/header"
+msgstr "Filter by Parameters"
+
+msgid "tankChange/tooltip/premium/body"
+msgstr ""
+"You do not need to train crew members for Premium vehicles. You can transfer"
+" crew to a Premium vehicle of the same type without penalty."
+
+msgid "tankChange/tooltip/premium/header"
+msgstr "Premium Vehicle"
+
+msgid "tankChange/tooltip/searchInput/body"
+msgstr "Vehicle name must contain up to %(maxLength)s characters."
+
+msgid "tankman/action/dismiss/title"
+msgstr "RETIRE"
+
+msgid "tankman/action/dismiss/tooltip/available/body"
+msgstr "Retire this crew member."
+
+msgid "tankman/action/dismiss/tooltip/unavailable/body"
+msgstr "Unable to retire this crew member."
+
+msgid "tankman/action/dismiss/tooltip/unavailable/title"
+msgstr "Operation Unavailable"
+
+msgid "tankman/action/recruit/title"
+msgstr "RECRUIT"
+
+msgid "tankman/action/restore/title"
+msgstr "RECOVER"
+
+msgid "tankman/action/restore/tooltip/body"
+msgstr "Recover this crew member."
+
+msgid "tankman/action/voiceover/tooltip/body"
+msgstr "Click to listen to this Commander's voiceover sample."
+
+msgid "tankman/action/voiceover/tooltip/title"
+msgstr "Unique Voiceover"
+
+msgid "tankman/recruit"
+msgstr "Recruit"
+
+msgid "tankmanContainer/tab/personalData"
+msgstr "Appearance"
+
+msgid "tankmanContainer/tab/personalFile"
+msgstr "Profile"
+
+msgid "tankmanContainer/tab/serviceRecord"
+msgstr "Service Record"
+
+msgid "tankmanList/emptyState/button/recruit"
+msgstr "Recruit"
+
+msgid "tankmanList/emptyState/button/resetFilers"
+msgstr "Reset Filter"
+
+msgid "tankmanList/emptyState/noFilteredItems"
+msgstr "Nothing found. Change settings or reset the filter."
+
+msgid "tankmanList/emptyState/noItems"
+msgstr "Nothing found. Recruit a crew member."
+
+msgid "tankmanList/filter/title"
+msgstr "Crew members:"
+
+msgid "tankmanList/tooltip/location/dismissed/body"
+msgstr "Show/hide only retired crew members."
+
+msgid "tankmanList/tooltip/location/dismissed/title"
+msgstr "Retired"
+
+msgid "tankmanList/tooltip/location/in_barracks/body"
+msgstr "Show/hide crew members in the Barracks."
+
+msgid "tankmanList/tooltip/location/in_barracks/title"
+msgstr "In Barracks"
+
+msgid "tankmanList/tooltip/location/in_tank/body"
+msgstr "Show/hide crew members in vehicles."
+
+msgid "tankmanList/tooltip/location/in_tank/title"
+msgstr "In Vehicles"
+
+msgid "tankmanList/tooltip/nation/body"
+msgstr "Show/hide skins of this nation."
+
+msgid "tankmanList/tooltip/popover/body"
+msgstr ""
+"Configure the display of crew members by their qualification, "
+"specialization, and other parameters."
+
+msgid "tankmanList/tooltip/popover/header"
+msgstr "Filter by Parameters"
+
+msgid "tankmanList/tooltip/recruit/body"
+msgstr "Recruit a crew member."
+
+msgid "tankmanList/tooltip/searchInput/body"
+msgstr "Name must contain up to %(maxLength)s characters."
+
+msgid "vehicleParamsDecorator/perkTip"
+msgstr ""
+"*Hovering over a perk shows how it affects the corresponding characteristics"
+" when trained to 100%."
 
 msgid "welcomeScreen/button/confirm"
 msgstr "Affirmative!"

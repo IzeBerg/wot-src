@@ -92,6 +92,7 @@ class LootObject(TerrainAreaGameObject, ILootObject, CompositeLoaderMixin):
             child.activate()
 
         if not self.__collected:
+            self.model.activate()
             self.markingSmoke.bindAndStart(self.model.compoundModel)
         self.pickupEffect.enable(False)
 
@@ -101,6 +102,10 @@ class LootObject(TerrainAreaGameObject, ILootObject, CompositeLoaderMixin):
         self.markingSmoke.unbind()
         for child in self.__children:
             child.deactivate()
+
+        if self.model is not None:
+            self.model.deactivate()
+        return
 
     def processPickup(self, entityID):
         self.__collected = True
@@ -120,7 +125,7 @@ class LootObject(TerrainAreaGameObject, ILootObject, CompositeLoaderMixin):
         return len(self.__children) + 1
 
 
-@bonusCapsManager(ARENA_BONUS_TYPE_CAPS.BATTLEROYALE, CGF.DomainOption.DomainClient)
+@bonusCapsManager(ARENA_BONUS_TYPE_CAPS.LOOT, CGF.DomainOption.DomainClient)
 class SteelHunterDynamicObjectsCachingManager(CGF.ComponentManager):
     __dynamicObjectsCache = dependency.descriptor(IBattleDynamicObjectsCache)
 

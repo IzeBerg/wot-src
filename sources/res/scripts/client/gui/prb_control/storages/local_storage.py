@@ -65,6 +65,9 @@ class RecentPrbStorage(LocalStorage):
         super(RecentPrbStorage, self).__init__()
         self._queueType = QUEUE_TYPE.UNKNOWN
 
+    def clear(self):
+        self._queueType = QUEUE_TYPE.UNKNOWN
+
     @property
     def queueType(self):
         return self._queueType
@@ -75,9 +78,6 @@ class RecentPrbStorage(LocalStorage):
 
     def isModeSelected(self):
         return collectCanSelectPrbEntity(self._queueType)()
-
-    def clear(self):
-        self._queueType = QUEUE_TYPE.UNKNOWN
 
     def onAvatarBecomePlayer(self):
         arenaVisitor = createByAvatar()

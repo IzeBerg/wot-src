@@ -175,7 +175,6 @@ package net.wg.gui.components.advanced
       private function onClearButtonClickHandler(param1:ButtonEvent) : void
       {
          this.clear();
-         App.utils.focusHandler.setFocus(textField);
       }
    }
 }

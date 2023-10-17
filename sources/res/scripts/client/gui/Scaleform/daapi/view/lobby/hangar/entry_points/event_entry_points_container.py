@@ -8,7 +8,6 @@ from gui.Scaleform.daapi.view.meta.EventEntryPointsContainerMeta import EventEnt
 from gui.impl.lobby.mapbox.mapbox_entry_point_view import isMapboxEntryPointAvailable
 from gui.impl.lobby.ranked.ranked_entry_point import isRankedEntryPointAvailable
 from gui.impl.lobby.marathon.marathon_entry_point import isMarathonEntryPointAvailable
-from gui.impl.lobby.wt_event.wt_event_entry_point import isWTEventEntryPointAvailable
 from gui.Scaleform.genConsts.HANGAR_ALIASES import HANGAR_ALIASES
 from gui.Scaleform.genConsts.RANKEDBATTLES_ALIASES import RANKEDBATTLES_ALIASES
 from gui.limited_ui.lui_rules_storage import LuiRules
@@ -34,7 +33,6 @@ registerBannerEntryPointValidator(HANGAR_ALIASES.MARATHON_ENTRY_POINT, isMaratho
 registerBannerEntryPointValidator(HANGAR_ALIASES.COMP7_ENTRY_POINT, isComp7EntryPointAvailable)
 registerBannerEntryPointValidator(HANGAR_ALIASES.STRONGHOLD_ENTRY_POINT, isStrongholdEntryPointAvailable)
 registerBannerEntryPointValidator(HANGAR_ALIASES.BR_ENTRY_POINT, isBattleRoyaleEntryPointAvailable)
-registerBannerEntryPointValidator(HANGAR_ALIASES.WT_EVENT_ENTRY_POINT, isWTEventEntryPointAvailable)
 registerBannerEntryPointLUIRule(HANGAR_ALIASES.COMP7_ENTRY_POINT, LuiRules.COMP7_ENTRY_POINT)
 registerBannerEntryPointLUIRule(HANGAR_ALIASES.CRAFT_MACHINE_ENTRY_POINT, LuiRules.CRAFT_MACHINE_ENTRY_POINT)
 registerBannerEntryPointLUIRule(HANGAR_ALIASES.MAPBOX_ENTRY_POINT, LuiRules.MAPBOX_ENTRY_POINT)
@@ -44,7 +42,7 @@ _logger = logging.getLogger(__name__)
 
 class _EntryPointData(object):
     __slots__ = [
-     'id', 'startDate', 'endDate', 'priority', 'data', '__isValidData']
+     'id', 'startDate', 'endDate', 'priority', 'data', 'extension', '__isValidData']
 
     def __init__(self, entryData):
         super(_EntryPointData, self).__init__()
@@ -54,6 +52,7 @@ class _EntryPointData(object):
         endDateStr = entryData.get('endDate')
         self.priority = entryData.get('priority')
         priorityIsInt = isinstance(self.priority, int)
+        self.extension = entryData.get('extension', '')
         self.__isValidData = priorityIsInt and self.id is not None and startDateStr is not None and endDateStr is not None
         if self.__isValidData:
             self.startDate = getTimestampByStrDate(startDateStr)
@@ -217,7 +216,8 @@ class EventEntryPointsContainer(EventEntryPointsContainerMeta, Notifiable, IGlob
                 if isValidCount and entry.getIsValidDateForCreation() and entry.getIsEnabledByValidator() and self.__luiController.isRuleCompleted(entry.getLUIRule()):
                     count += 1
                     data.append({'entryLinkage': entry.id, 
-                       'swfPath': _ADDITIONAL_SWFS_MAP.get(entry.id, '')})
+                       'swfPath': _ADDITIONAL_SWFS_MAP.get(entry.id, ''), 
+                       'extension': entry.extension})
 
         self.as_updateEntriesS(data)
 

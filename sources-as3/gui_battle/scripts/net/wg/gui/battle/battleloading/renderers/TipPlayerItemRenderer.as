@@ -15,12 +15,12 @@ package net.wg.gui.battle.battleloading.renderers
       
       override protected function setSelfBG() : void
       {
-         if(selfBg != null)
+         if(selfBg != null && model != null)
          {
             selfBg.visible = UserTags.isCurrentPlayer(model.userTags);
             if(selfBg.visible)
             {
-               selfBg.imageName = BATTLEATLAS.BATTLE_LOADING_SELF_TIPS_BACKGROUND;
+               selfBg.imageName = !!isExtendedLayout ? BATTLEATLAS.BATTLE_LOADING_SELF_TIPS_EXTENDED_BACKGROUND : BATTLEATLAS.BATTLE_LOADING_SELF_TIPS_BACKGROUND;
             }
          }
       }

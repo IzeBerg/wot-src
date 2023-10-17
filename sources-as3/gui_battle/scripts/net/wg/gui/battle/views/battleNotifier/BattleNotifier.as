@@ -24,6 +24,7 @@ package net.wg.gui.battle.views.battleNotifier
       public function BattleNotifier()
       {
          super();
+         setManageSize(true);
          this.setSize(WIDTH,HEIGHT);
       }
       

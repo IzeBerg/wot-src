@@ -11,6 +11,7 @@ package net.wg.mock
    import flash.display.Sprite;
    import flash.display.Stage;
    import flash.events.Event;
+   import flash.events.IEventDispatcher;
    import flash.geom.Point;
    import flash.geom.Rectangle;
    import flash.geom.Transform;
@@ -93,6 +94,10 @@ package net.wg.mock
       {
       }
       
+      public function forceSetCursor(param1:String) : void
+      {
+      }
+      
       public function getAttachedSprite() : Sprite
       {
          return null;
@@ -161,10 +166,6 @@ package net.wg.mock
          return false;
       }
       
-      public function forceSetCursor(param1:String) : void
-      {
-      }
-      
       public function invalidate(... rest) : void
       {
       }
@@ -213,6 +214,10 @@ package net.wg.mock
       }
       
       public function registerDragging(param1:IDragDropHitArea, param2:String = null) : void
+      {
+      }
+      
+      public function registerExternalComponent(param1:IEventDispatcher, param2:String) : void
       {
       }
       
@@ -280,6 +285,10 @@ package net.wg.mock
       }
       
       public function unlock() : void
+      {
+      }
+      
+      public function unregisterExternalComponent(param1:IEventDispatcher) : void
       {
       }
       

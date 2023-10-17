@@ -8,11 +8,9 @@ package net.wg.gui.lobby.vehicleCompare.data
       
       public var icon:String = "";
       
-      public var label:String = "";
-      
       public var skillType:String = "";
       
-      public var isCommon:Boolean = false;
+      public var skillRole:String = "";
       
       public var selected:Boolean = false;
       

@@ -270,6 +270,12 @@ msgstr "Help!"
 msgid "chat_shortcuts/help_me_ex"
 msgstr "%(target)s, help!"
 
+msgid "chat_shortcuts/move_to_target"
+msgstr "Move to target: %(target)s"
+
+msgid "chat_shortcuts/move_to_target_autocommit"
+msgstr "I'm moving to target: %(target)s!"
+
 msgid "chat_shortcuts/negative"
 msgstr "Negative!"
 
@@ -503,6 +509,21 @@ msgstr "Your vehicle may be destroyed—leave the danger zone!"
 msgid "destroyTimer/liftOver"
 msgstr "Back on track..."
 
+msgid "devMaps/hint/description"
+msgstr "to view the map features"
+
+msgid "devMaps/hint/press"
+msgstr "Press"
+
+msgid "devMaps/mapInfo/info"
+msgstr ""
+"Beta versions of random events are being tested on this map. Such maps can "
+"be disabled in the game settings (the Random Battle Types block in the Game "
+"tab)."
+
+msgid "devMaps/mapInfo/text"
+msgstr "Tested map"
+
 msgid "devices/ammo_bay"
 msgstr "Ammo Rack"
 
@@ -689,9 +710,6 @@ msgstr "Objective Defended"
 msgid "efficiencyRibbons/enemySectorCaptured"
 msgstr "Zone Captured"
 
-msgid "efficiencyRibbons/healthAdded"
-msgstr "Vehicle Repaired"
-
 msgid "efficiencyRibbons/kill"
 msgstr "Destroyed"
 
@@ -751,9 +769,6 @@ msgstr "Vehicle Abandoned"
 
 msgid "efficiencyRibbons/worldCollision"
 msgstr "Damage by Impact"
-
-msgid "efficiencyRibbons/wtReceivedCircuitOverload"
-msgstr "Damage by Short Circuit"
 
 msgid "epic_players_panel/state/hidden/body"
 msgstr "Hide team panels"
@@ -1435,9 +1450,6 @@ msgstr "Device [%(device)s] repaired."
 msgid "player_messages/DEVICE_REPAIRED_TO_CRITICAL"
 msgstr "Device [%(device)s] is operational."
 
-msgid "player_messages/DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD"
-msgstr "Vehicle was damaged by a short-circuit!"
-
 msgid "player_messages/DEVICE_STARTED_FIRE_AT_SHOT"
 msgstr "Device [%(device)s] was set on fire by a shot from %(entity)s."
 
@@ -1492,9 +1504,6 @@ msgstr "Enemy base%s captured!"
 
 msgid "player_messages/enemy_team_name"
 msgstr "Enemy Team"
-
-msgid "player_messages/equipment/wtEvent/healthAtFullHP"
-msgstr "[%(name)s] Unable to repair. The vehicle is intact."
 
 msgid "player_messages/poi_equipment_used_by_ally"
 msgstr "Your ally %(name)s used the %(equipment)s Tactical Skill"
@@ -1631,6 +1640,9 @@ msgstr "Vehicle destroyed by the main objective"
 
 msgid "postmortem_messages/DEATH_FROM_BOMBER"
 msgstr "Vehicle destroyed by Airstrike"
+
+msgid "postmortem_messages/DEATH_FROM_BR_BOT"
+msgstr "Vehicle destroyed by Marauder."
 
 msgid "postmortem_messages/DEATH_FROM_CLING_BRANDER"
 msgstr "Vehicle destroyed by Battlefield Robot."

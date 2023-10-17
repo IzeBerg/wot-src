@@ -2,6 +2,7 @@ import BigWorld, constants, BattleReplay
 from adisp import adisp_process
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.genConsts.INGAMEMENU_CONSTANTS import INGAMEMENU_CONSTANTS
+from gui.battle_control.battle_session import BattleExitResult
 from wg_async import wg_async, wg_await
 from gui import DialogsInterface, GUI_SETTINGS
 from gui import makeHtmlString
@@ -40,7 +41,7 @@ class IngameMenu(IngameMenuMeta, BattleGUIKeyHandler):
         if self.app.varsManager.isTutorialRunning(GLOBAL_VARS_MGR_CONSTS.BATTLE):
             self.__doLeaveTutorial()
         else:
-            self.__doLeaveArena()
+            self._doLeaveArena()
 
     def settingsClick(self):
         shared_event_dispatcher.showSettingsWindow(redefinedKeyMode=True, isBattleSettings=True)
@@ -78,6 +79,26 @@ class IngameMenu(IngameMenuMeta, BattleGUIKeyHandler):
         self.app.loaderManager.onViewLoaded -= self.__onViewLoaded
         super(IngameMenu, self)._dispose()
         return
+
+    @wg_async
+    def _doLeaveArena(self):
+        self.as_setVisibilityS(False)
+        exitResult = self._getExitResult()
+        if exitResult.isDeserter:
+            isPlayerIGR = self.__isPlayerIGR(exitResult.playerInfo)
+            result = yield wg_await(self._showLeaverAliveWindow(isPlayerIGR))
+        elif BattleReplay.isPlaying():
+            result = yield wg_await(showLeaverReplayWindow())
+        else:
+            result = yield wg_await(showExitWindow())
+        if result:
+            self._doExit()
+        else:
+            self.destroy()
+
+    def _doExit(self):
+        self.sessionProvider.exit()
+        self.destroy()
 
     def _setServerSettings(self):
         if BattleReplay.g_replayCtrl.isPlaying:
@@ -120,28 +141,11 @@ class IngameMenu(IngameMenuMeta, BattleGUIKeyHandler):
             self.fireEvent(events.TutorialEvent(events.TutorialEvent.STOP_TRAINING))
             self.destroy()
 
-    @wg_async
-    def __doLeaveArena(self):
-        self.as_setVisibilityS(False)
-        exitResult = self.sessionProvider.getExitResult()
-        if exitResult.isDeserter:
-            isPlayerIGR = self.__isPlayerIGR(exitResult.playerInfo)
-            result = yield wg_await(self.__showLeaverAliveWindow(isPlayerIGR))
-        elif BattleReplay.isPlaying():
-            result = yield wg_await(showLeaverReplayWindow())
-        else:
-            result = yield wg_await(showExitWindow())
-        if result:
-            self.__doExit()
-        else:
-            self.destroy()
-
-    def __doExit(self):
-        self.sessionProvider.exit()
-        self.destroy()
+    def _getExitResult(self):
+        return self.sessionProvider.getExitResult()
 
     @staticmethod
-    def __showLeaverAliveWindow(isPlayerIGR):
+    def _showLeaverAliveWindow(isPlayerIGR):
         if ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arenaBonusType, ARENA_BONUS_TYPE_CAPS.COMP7):
             return showComp7LeaverAliveWindow()
         return showLeaverAliveWindow(isPlayerIGR)

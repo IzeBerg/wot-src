@@ -79,6 +79,7 @@
 			1.6
 			<!--BW_String-->
 		</priceFactor>
+		<density>0.995698 0.995698</density>
 	</camouflage>
 	<hull>
 		<armor>
@@ -1208,7 +1209,7 @@
 				<!--BW_String-->
 			</tiling>
 			<density>
-				97.2711 97.3277
+				97.27459 97.324852
 				<!--BW_String-->
 			</density>
 			<aoTextureSize>1024 1024</aoTextureSize>
@@ -3285,15 +3286,43 @@
 							<camouflage>GUN</camouflage>
 						</customizableVehicleAreas>
 					</customization>
+					<drivenJoints>
+						<master>
+							<node>Gun</node>
+							<table>
+								<row>-20</row>
+								<row>-10</row>
+								<row>0</row>
+								<row>10</row>
+							</table>
+							<slaves>
+								<slave>
+									<node>Joint_01</node>
+									<table>
+										<row>
+											11.8
+											<!--BW_String-->
+										</row>
+										<row>
+											5.45
+											<!--BW_String-->
+										</row>
+										<row>0</row>
+										<row>
+											-5.09
+											<!--BW_String-->
+										</row>
+									</table>
+								</slave>
+							</slaves>
+						</master>
+					</drivenJoints>
 					<camouflage>
 						<tiling>
 							0.475 0.475 0.17 0.000000
 							<!--BW_String-->
 						</tiling>
-						<density>
-							114.387 119.809
-							<!--BW_String-->
-						</density>
+						<density>110.044319 120.489685</density>
 						<aoTextureSize>512 512</aoTextureSize>
 					</camouflage>
 				</_90mm_Gun_T15E1>
@@ -4021,7 +4050,7 @@
 					<!--BW_String-->
 				</tiling>
 				<density>
-					86.5352 86.6134
+					86.219368 86.2967
 					<!--BW_String-->
 				</density>
 				<aoTextureSize>512 512</aoTextureSize>

@@ -10,6 +10,7 @@ package net.wg.gui.lobby.profile.pages.technique
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.gui.components.advanced.ButtonBarEx;
+   import net.wg.gui.components.containers.inject.GFInjectComponent;
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.lobby.components.ResizableViewStack;
@@ -28,6 +29,16 @@ package net.wg.gui.lobby.profile.pages.technique
    
    public class TechniqueStackComponent extends UIComponentEx
    {
+      
+      private static const PRESTIGE_SIZE:uint = 48;
+      
+      private static const PRESTIGE_X:uint = 26;
+      
+      private static const PRESTIGE_Y:int = 1;
+      
+      private static const PRESTIGE_EMBLEM_WIDGET_NAME:String = "prestigeEmblemWidget";
+      
+      private static const INVALIDATE_PRESTIGE_VISIBILITY:String = "invPrestigeVisibility";
       
       private static const INVALIDATE_BTN_COUNTERS:String = "invBtnCounters";
        
@@ -54,6 +65,16 @@ package net.wg.gui.lobby.profile.pages.technique
       
       private var _isStatisticSection:Boolean = true;
       
+      private var _prestigeWidgetInject:GFInjectComponent = null;
+      
+      private var _showPrestigeEmblem:Boolean = false;
+      
+      private var _isOtherPlayerMode:Boolean = false;
+      
+      private var _nameDefaultX:int;
+      
+      private var _typeDefaultX:int;
+      
       private var _counterManager:ICounterManager;
       
       private var _countersToSet:Vector.<CountersVo> = null;
@@ -71,6 +92,8 @@ package net.wg.gui.lobby.profile.pages.technique
       override protected function initialize() : void
       {
          super.initialize();
+         this._nameDefaultX = this.vNameTF.x;
+         this._typeDefaultX = this.typeIcon.x;
          this.buttonBar.dataProvider = new DataProvider([{
             "label":PROFILE.SECTION_TECHNIQUE_TABBTN_STATISTIC,
             "linkage":Linkages.TECHNIQUE_STATISTIC_TAB,
@@ -98,12 +121,14 @@ package net.wg.gui.lobby.profile.pages.technique
       
       override protected function draw() : void
       {
-         var _loc1_:String = null;
-         var _loc2_:DisplayObject = null;
-         var _loc3_:ICounterProps = null;
-         var _loc4_:int = 0;
+         var _loc1_:TechniqueStatisticTab = null;
+         var _loc2_:String = null;
+         var _loc3_:DisplayObject = null;
+         var _loc4_:ICounterProps = null;
          var _loc5_:int = 0;
-         var _loc6_:CountersVo = null;
+         var _loc6_:int = 0;
+         var _loc7_:CountersVo = null;
+         var _loc8_:int = 0;
          super.draw();
          if(isInvalid(InvalidationType.DATA))
          {
@@ -121,24 +146,52 @@ package net.wg.gui.lobby.profile.pages.technique
                this.viewRatingBtn.enabled = this._enableRating;
             }
          }
+         if(isInvalid(INVALIDATE_PRESTIGE_VISIBILITY))
+         {
+            if(this._isOtherPlayerMode)
+            {
+               if(this._prestigeWidgetInject == null && this._showPrestigeEmblem)
+               {
+                  this.addPrestigeEmblem();
+               }
+               else if(this._prestigeWidgetInject && !this._showPrestigeEmblem)
+               {
+                  this.removePrestigeEmblem();
+               }
+            }
+            else if(this.viewStack && this.viewStack.currentView != null && this._isStatisticSection)
+            {
+               _loc1_ = this.viewStack.currentView as TechniqueStatisticTab;
+               if(_loc1_ && !_loc1_.isDisposed())
+               {
+                  _loc1_.updatePrestigeVisibility(this._showPrestigeEmblem);
+               }
+            }
+         }
          if(this._countersToSet && isInvalid(INVALIDATE_BTN_COUNTERS))
          {
-            _loc1_ = Values.EMPTY_STR;
-            _loc2_ = null;
-            _loc3_ = new CounterProps(CounterProps.DEFAULT_OFFSET_X,CounterProps.DEFAULT_OFFSET_Y);
+            _loc2_ = Values.EMPTY_STR;
+            _loc3_ = null;
+            _loc4_ = new CounterProps(CounterProps.DEFAULT_OFFSET_X,CounterProps.DEFAULT_OFFSET_Y);
             this.removeCounters();
-            _loc4_ = this._countersToSet.length;
-            _loc5_ = 0;
-            while(_loc5_ < _loc4_)
+            _loc5_ = this._countersToSet.length;
+            _loc6_ = 0;
+            while(_loc6_ < _loc5_)
             {
-               _loc6_ = this._countersToSet[_loc5_];
-               _loc1_ = _loc6_.componentId;
-               _loc2_ = getChildByName(_loc1_);
-               App.utils.asserter.assertNotNull(_loc2_,_loc1_ + " " + Errors.CANT_NULL);
-               this._counterManager.setCounter(_loc2_,_loc6_.count,null,_loc3_);
-               this._actualCounters.push(_loc2_);
-               _loc5_++;
+               _loc7_ = this._countersToSet[_loc6_];
+               _loc2_ = _loc7_.componentId;
+               _loc3_ = getChildByName(_loc2_);
+               App.utils.asserter.assertNotNull(_loc3_,_loc2_ + " " + Errors.CANT_NULL);
+               this._counterManager.setCounter(_loc3_,_loc7_.count,null,_loc4_);
+               this._actualCounters.push(_loc3_);
+               _loc6_++;
             }
+         }
+         if(isInvalid(InvalidationType.LAYOUT))
+         {
+            _loc8_ = this._prestigeWidgetInject != null ? int(PRESTIGE_SIZE) : int(0);
+            this.vNameTF.x = this._nameDefaultX + _loc8_;
+            this.typeIcon.x = this._typeDefaultX + _loc8_;
          }
       }
       
@@ -219,6 +272,17 @@ package net.wg.gui.lobby.profile.pages.technique
          }
       }
       
+      public function updatePrestigeVisibility(param1:Boolean, param2:Boolean) : void
+      {
+         if(this._showPrestigeEmblem == param1 && this._isOtherPlayerMode == param2)
+         {
+            return;
+         }
+         this._showPrestigeEmblem = param1;
+         this._isOtherPlayerMode = param2;
+         invalidate(INVALIDATE_PRESTIGE_VISIBILITY);
+      }
+      
       public function updateRatingButton(param1:RatingButtonVO) : void
       {
          this._enableRating = param1.enabled;
@@ -241,6 +305,34 @@ package net.wg.gui.lobby.profile.pages.technique
          this._scheduler.scheduleOnNextFrame(this._resizeTask);
       }
       
+      private function addPrestigeEmblem() : void
+      {
+         if(!this._prestigeWidgetInject)
+         {
+            this._prestigeWidgetInject = new GFInjectComponent();
+            this._prestigeWidgetInject.name = PRESTIGE_EMBLEM_WIDGET_NAME;
+            this._prestigeWidgetInject.setManageSize(true);
+            this._prestigeWidgetInject.width = PRESTIGE_SIZE;
+            this._prestigeWidgetInject.height = PRESTIGE_SIZE;
+            this._prestigeWidgetInject.x = PRESTIGE_X;
+            this._prestigeWidgetInject.y = PRESTIGE_Y;
+            addChild(this._prestigeWidgetInject);
+            dispatchEvent(new ProfileTechniqueEvent(ProfileTechniqueEvent.PRESTIGE_WIDGET_ENABLED,true));
+            invalidateLayout();
+         }
+      }
+      
+      private function removePrestigeEmblem() : void
+      {
+         if(this._prestigeWidgetInject)
+         {
+            removeChild(this._prestigeWidgetInject);
+            this._prestigeWidgetInject = null;
+            dispatchEvent(new ProfileTechniqueEvent(ProfileTechniqueEvent.PRESTIGE_WIDGET_DISABLED,true));
+            invalidateLayout();
+         }
+      }
+      
       private function removeCounters() : void
       {
          if(this._actualCounters)
@@ -261,6 +353,10 @@ package net.wg.gui.lobby.profile.pages.technique
       {
          this._isStatisticSection = param1.index == 0;
          invalidateData();
+         if(this._isStatisticSection)
+         {
+            invalidate(INVALIDATE_PRESTIGE_VISIBILITY);
+         }
       }
       
       private function onViewRatingBtnRollOverHandler(param1:MouseEvent) : void
@@ -274,6 +370,21 @@ package net.wg.gui.lobby.profile.pages.technique
       private function onViewRatingBtnRollOutHandler(param1:MouseEvent) : void
       {
          App.toolTipMgr.hide();
+      }
+      
+      public function get prestigeWidget() : GFInjectComponent
+      {
+         var _loc1_:TechniqueStatisticTab = null;
+         if(this._isOtherPlayerMode)
+         {
+            return this._prestigeWidgetInject;
+         }
+         _loc1_ = this.viewStack.currentView as TechniqueStatisticTab;
+         if(_loc1_)
+         {
+            return _loc1_.prestigeWidget;
+         }
+         return null;
       }
    }
 }

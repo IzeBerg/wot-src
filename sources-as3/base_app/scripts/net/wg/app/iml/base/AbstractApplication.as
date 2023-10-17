@@ -39,13 +39,12 @@ package net.wg.app.iml.base
    import net.wg.utils.ITextManager;
    import net.wg.utils.ITweenManager;
    import net.wg.utils.IUtils;
-   import scaleform.clik.core.CLIK;
    import scaleform.gfx.Extensions;
    
    public class AbstractApplication extends ApplicationMeta implements IApplication
    {
       
-      private static const POPUP_MGR_INIT_EVENT:String = "popUpManagerInited";
+      public static const ON_STAGE_INITED:String = "onStageInited";
        
       
       protected var containers:Vector.<DisplayObject> = null;
@@ -178,37 +177,24 @@ package net.wg.app.iml.base
       
       public function as_updateStage(param1:Number, param2:Number, param3:Number) : void
       {
-         var w:Number = param1;
-         var h:Number = param2;
+         var h:Number = NaN;
+         var w:Number = NaN;
+         var ow:Number = param1;
+         var oh:Number = param2;
          var scale:Number = param3;
          try
          {
+            h = Math.round(oh / scale);
+            w = Math.round(ow / scale);
             if(this.appWidth == w && this.appHeight == h && this.appScale == scale)
             {
                return;
             }
             this._appScale = scale;
-            h = Math.ceil(h / scale);
-            w = Math.ceil(w / scale);
             stage.scaleX = stage.scaleY = scale;
             this.appWidth = w;
             this.appHeight = h;
-            if(this._stageSizeManager)
-            {
-               this._stageSizeManager.updateStage(w,h);
-            }
-            if(this.containerMgr)
-            {
-               this.containerMgr.updateStage(w,h);
-            }
-            if(this.waiting)
-            {
-               IView(this.waiting).updateStage(w,h);
-            }
-            if(this.graphicsOptimizationMgr)
-            {
-               this.graphicsOptimizationMgr.updateStage(w,h);
-            }
+            stage.dispatchEvent(new StageResizeEvent(ow,oh,scale));
          }
          catch(e:Error)
          {
@@ -219,6 +205,28 @@ package net.wg.app.iml.base
       public function setUbPlayerProxy(param1:UbPlayerProxy) : void
       {
          this.ubPlayerProxy = param1;
+      }
+      
+      public function stageUpdated() : void
+      {
+         var _loc1_:Number = this.appWidth;
+         var _loc2_:Number = this.appHeight;
+         if(this._stageSizeManager)
+         {
+            this._stageSizeManager.updateStage(_loc1_,_loc2_);
+         }
+         if(this.containerMgr)
+         {
+            this.containerMgr.updateStage(_loc1_,_loc2_);
+         }
+         if(this.waiting)
+         {
+            IView(this.waiting).updateStage(_loc1_,_loc2_);
+         }
+         if(this.graphicsOptimizationMgr)
+         {
+            this.graphicsOptimizationMgr.updateStage(_loc1_,_loc2_);
+         }
       }
       
       protected function getNewUtils() : IUtils
@@ -679,17 +687,11 @@ package net.wg.app.iml.base
       
       protected function initStage(param1:Event = null) : void
       {
-         if(!CLIK.initialized)
-         {
-            stage.addEventListener(POPUP_MGR_INIT_EVENT,this.onPopUpManagerInitHandler,false,0,true);
-         }
-         else
-         {
-            this.onPopUpManagerInit();
-         }
+         this.onPopUpManagerInit();
          removeEventListener(Event.ADDED_TO_STAGE,this.initStage);
          stage.scaleMode = StageScaleMode.NO_SCALE;
          stage.align = StageAlign.TOP_LEFT;
+         dispatchEvent(new Event(ON_STAGE_INITED));
       }
       
       private function onLibraryLoadedHandler(param1:LibraryLoaderEvent) : void
@@ -710,12 +712,6 @@ package net.wg.app.iml.base
          removeEventListener(Event.ENTER_FRAME,this.onFirstFrame);
          this.onBeforeAppConfiguring();
          this._environmentMgr.checkEnvokeReady(this.onEnvokeReady);
-      }
-      
-      private function onPopUpManagerInitHandler(param1:Event) : void
-      {
-         stage.removeEventListener(POPUP_MGR_INIT_EVENT,this.onPopUpManagerInitHandler);
-         this.onPopUpManagerInit();
       }
    }
 }

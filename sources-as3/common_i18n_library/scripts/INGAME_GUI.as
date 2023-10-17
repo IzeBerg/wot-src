@@ -107,15 +107,11 @@ package
       
       public static const PLAYER_ERRORS_EQUIPMENT_POI_UNAVAILABLE:String = "#ingame_gui:player_errors/equipment/poi/unavailable";
       
-      public static const PLAYER_MESSAGES_EQUIPMENT_WTEVENT_HEALTHATFULLHP:String = "#ingame_gui:player_messages/equipment/wtEvent/healthAtFullHP";
-      
       public static const PLAYER_MESSAGES_DEVICE_CRITICAL_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_CRITICAL_AT_SHOT";
       
       public static const PLAYER_MESSAGES_DEVICE_DESTROYED_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_DESTROYED_AT_SHOT";
       
       public static const PLAYER_MESSAGES_DEVICE_STARTED_FIRE_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_STARTED_FIRE_AT_SHOT";
-      
-      public static const PLAYER_MESSAGES_DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD:String = "#ingame_gui:player_messages/DEVICE_STARTED_FIRE_AT_CIRCUIT_OVERLOAD";
       
       public static const PLAYER_MESSAGES_TANKMAN_HIT_AT_SHOT:String = "#ingame_gui:player_messages/TANKMAN_HIT_AT_SHOT";
       
@@ -242,6 +238,10 @@ package
       public static const CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_ATK:String = "#ingame_gui:chat_shortcuts/attention_to_objective_atk";
       
       public static const CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_ATK_AUTOCOMMIT:String = "#ingame_gui:chat_shortcuts/attention_to_objective_atk_autocommit";
+      
+      public static const CHAT_SHORTCUTS_MOVE_TO_TARGET:String = "#ingame_gui:chat_shortcuts/move_to_target";
+      
+      public static const CHAT_SHORTCUTS_MOVE_TO_TARGET_AUTOCOMMIT:String = "#ingame_gui:chat_shortcuts/move_to_target_autocommit";
       
       public static const CHAT_SHORTCUTS_ATTENTION_TO_BASE_DEF:String = "#ingame_gui:chat_shortcuts/attention_to_base_def";
       
@@ -1135,6 +1135,8 @@ package
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_CLING_BRANDER:String = "#ingame_gui:postmortem_messages/DEATH_FROM_CLING_BRANDER";
       
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_BR_BOT:String = "#ingame_gui:postmortem_messages/DEATH_FROM_BR_BOT";
+      
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_OVERTURN_SELF_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_OVERTURN_SELF_SUICIDE";
@@ -1260,10 +1262,6 @@ package
       public static const EFFICIENCYRIBBONS_AIRSTRIKEDMG:String = "#ingame_gui:efficiencyRibbons/AirstrikeDmg";
       
       public static const EFFICIENCYRIBBONS_ARTILLERYDMG:String = "#ingame_gui:efficiencyRibbons/ArtilleryDmg";
-      
-      public static const EFFICIENCYRIBBONS_HEALTHADDED:String = "#ingame_gui:efficiencyRibbons/healthAdded";
-      
-      public static const EFFICIENCYRIBBONS_WTRECEIVEDCIRCUITOVERLOAD:String = "#ingame_gui:efficiencyRibbons/wtReceivedCircuitOverload";
       
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING";
       
@@ -2020,6 +2018,14 @@ package
       public static const WARNING_ZONE_INDICATOR:String = "#ingame_gui:warning_zone/indicator";
       
       public static const STATUSNOTIFICATIONTIMERS_STATICDEATHZONE:String = "#ingame_gui:statusNotificationTimers/staticDeathZone";
+      
+      public static const DEVMAPS_HINT_PRESS:String = "#ingame_gui:devMaps/hint/press";
+      
+      public static const DEVMAPS_HINT_DESCRIPTION:String = "#ingame_gui:devMaps/hint/description";
+      
+      public static const DEVMAPS_MAPINFO_TEXT:String = "#ingame_gui:devMaps/mapInfo/text";
+      
+      public static const DEVMAPS_MAPINFO_INFO:String = "#ingame_gui:devMaps/mapInfo/info";
        
       
       public function INGAME_GUI()

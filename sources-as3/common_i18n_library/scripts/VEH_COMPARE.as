@@ -311,20 +311,6 @@ package
       
       public static const VEHCONF_TOOLTIPS_CAMOINFODISABLED_BODY:String = "#veh_compare:vehConf/tooltips/camoInfoDisabled/body";
       
-      public static const VEHCONF_TOOLTIPS_SKILLS_HEADER:String = "#veh_compare:vehConf/tooltips/skills/header";
-      
-      public static const VEHCONF_TOOLTIPS_SKILLS_DESCHEADER:String = "#veh_compare:vehConf/tooltips/skills/descHeader";
-      
-      public static const VEHCONF_TOOLTIPS_SKILLS_DESC1:String = "#veh_compare:vehConf/tooltips/skills/desc1";
-      
-      public static const VEHCONF_TOOLTIPS_SKILLS_DESC1_INFLUENCE:String = "#veh_compare:vehConf/tooltips/skills/desc1/influence";
-      
-      public static const VEHCONF_TOOLTIPS_SKILLS_DESC2:String = "#veh_compare:vehConf/tooltips/skills/desc2";
-      
-      public static const VEHCONF_TOOLTIPS_SKILLS_DESC2_PERC:String = "#veh_compare:vehConf/tooltips/skills/desc2/perc";
-      
-      public static const VEHCONF_TOOLTIPS_SKILLS_SKILLSLIST:String = "#veh_compare:vehConf/tooltips/skills/skillsList";
-      
       public static const VEHCONF_SKILLS_FADETEXT:String = "#veh_compare:vehConf/skills/fadeText";
       
       public static const VEHCONF_TOOLTIPS_TOPMODULESOFF_HEADER:String = "#veh_compare:vehConf/tooltips/topModulesOff/header";

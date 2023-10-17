@@ -32,6 +32,8 @@ package net.wg.gui.components.controls
       
       private var _isRowHeightFixed:Boolean = false;
       
+      private var _useAdditionalOptions:Boolean = false;
+      
       public function SortableScrollingList()
       {
          this._sortProps = [];
@@ -116,10 +118,27 @@ package net.wg.gui.components.controls
          super.onDispose();
       }
       
-      public function sortByField(param1:String, param2:Boolean = true) : void
+      public function sortByField(param1:String, param2:Boolean = true, param3:Boolean = false) : void
       {
-         this.setFieldOption(param1,param2);
-         this.invalidateSorting(param1);
+         var _loc4_:Array = null;
+         var _loc5_:int = 0;
+         this._useAdditionalOptions = param3;
+         if(param3)
+         {
+            _loc4_ = [param1].concat(this.additionalSortingFields);
+            _loc5_ = _loc4_.indexOf(param1,1);
+            if(_loc5_ > 0)
+            {
+               _loc4_.splice(_loc5_,1);
+            }
+            this.setFieldsOption(_loc4_,param2);
+            this.invalidateSorting(_loc4_);
+         }
+         else
+         {
+            this.setFieldOption(param1,param2);
+            this.invalidateSorting(param1);
+         }
       }
       
       protected function invalidateSorting(param1:Object) : void
@@ -157,7 +176,7 @@ package net.wg.gui.components.controls
             _loc2_ = [];
             for each(_loc3_ in param1)
             {
-               if(_loc2_.length == 0)
+               if(_loc2_.length == 0 || this._useAdditionalOptions)
                {
                   _loc2_.push(this._optionsDict[_loc3_]);
                }
@@ -191,11 +210,27 @@ package net.wg.gui.components.controls
          }
       }
       
-      private function setFieldOption(param1:String, param2:Boolean) : void
+      protected function setFieldOption(param1:String, param2:Boolean) : void
       {
          var _loc3_:uint = !!param2 ? uint(0) : uint(Array.DESCENDING);
          this._optionsDict = App.utils.data.cloneObject(this._sortingTypes);
          this._optionsDict[param1] = (!!this._sortingTypes.hasOwnProperty(param1) ? this._sortingTypes[param1] : 0) | _loc3_;
+      }
+      
+      protected function setFieldsOption(param1:Array, param2:Boolean) : void
+      {
+         var _loc4_:String = null;
+         var _loc3_:uint = !!param2 ? uint(0) : uint(Array.DESCENDING);
+         this._optionsDict = App.utils.data.cloneObject(this._sortingTypes);
+         for each(_loc4_ in param1)
+         {
+            this._optionsDict[_loc4_] = (!!this._sortingTypes.hasOwnProperty(_loc4_) ? this._sortingTypes[_loc4_] : 0) | _loc3_;
+         }
+      }
+      
+      protected function get additionalSortingFields() : Array
+      {
+         return [];
       }
       
       private function invalidateColumnsData() : void

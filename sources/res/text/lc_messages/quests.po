@@ -317,10 +317,15 @@ msgid "action/chain/hint/camouflages"
 msgstr "CHOOSE CAMOUFLAGE"
 
 msgid "action/chain/hint/changeDocuments"
-msgstr "DISCOUNT ON REPLACING CREW PERSONAL DATA"
+msgstr "DISCOUNT ON REPLACING CREW APPEARANCE"
 
-msgid "action/chain/hint/changeRole"
-msgstr "CLICK TO CHOOSE NEW QUALIFICATIONS"
+msgid "action/chain/hint/changeRoleDiscountAvailable"
+msgstr ""
+"QUALIFICATION CHANGE\n"
+"DISCOUNT AVAILABLE"
+
+msgid "action/chain/hint/crewRetainingDiscountAvailable"
+msgstr "DISCOUNT ON CREW RETRAINING"
 
 msgid "action/chain/hint/crewRetraining"
 msgstr "DISCOUNT ON CREW TRAINING AND RETRAINING"
@@ -329,29 +334,28 @@ msgid "action/chain/hint/customization"
 msgstr "GO TO EXTERIOR"
 
 msgid "action/chain/hint/dropSkills"
-msgstr "RESET PERKS"
+msgstr "CLICK TO RESET PERKS"
 
 msgid "action/chain/hint/emblems"
 msgstr "CHOOSE EMBLEMS"
 
-msgid "action/chain/hint/freeXPToTMan"
-msgstr ""
-"BONUS TO CONVERTING FREE EXPERIENCE\n"
-"TO CREW EXPERIENCE"
-
 msgid "action/chain/hint/inscriptions"
 msgstr "CHOOSE INSCRIPTIONS"
 
+msgid "action/chain/hint/openCrewBooks"
+msgstr "CLICK TO ENTER QUICK TRAINING"
+
 msgid "action/chain/hint/openPersonalCase"
-msgstr ""
-"CLICK TO OPEN\n"
-"PERSONAL FILE"
+msgstr "CLICK TO OPEN PROFILES"
 
 msgid "action/chain/hint/premDays"
 msgstr "DISCOUNT ON PREMIUM ACCOUNT"
 
 msgid "action/chain/hint/removalCost"
 msgstr "DISCOUNT ON DEMOUNTING"
+
+msgid "action/chain/hint/retrainingDiscountAvailable"
+msgstr "DISCOUNT ON RETRAINING AVAILABLE"
 
 msgid "action/chain/hint/shellsPrice"
 msgstr "GO TO SHELLS"
@@ -1300,6 +1304,9 @@ msgstr "Medal: %(name)s"
 msgid "bonuses/dossier/badge"
 msgstr "Badge: %(name)s"
 
+msgid "bonuses/equipCoin/description"
+msgstr "%(value)s components"
+
 msgid "bonuses/eventCoin/description"
 msgstr "%(value)s Anniversary Coins"
 
@@ -1872,6 +1879,9 @@ msgstr "HE-hits"
 msgid "details/conditions/cumulative/explosionHitsReceived"
 msgstr "HE-hits received"
 
+msgid "details/conditions/cumulative/factualXP"
+msgstr "Earned experience (not including missions)"
+
 msgid "details/conditions/cumulative/formation"
 msgstr "Parameter for tactical unit: %(param)s"
 
@@ -1956,9 +1966,6 @@ msgstr "Obtain a Mark of Excellence on the gun"
 msgid "details/conditions/cumulative/maxDamage"
 msgstr "Maximum damage"
 
-msgid "details/conditions/cumulative/maxWtPlasmaBonus"
-msgstr "Receive a certain number of Plasma Charges in one battle."
-
 msgid "details/conditions/cumulative/mileage"
 msgstr "Drive a distance of at least (m)"
 
@@ -2038,18 +2045,6 @@ msgstr "Parameter for team: %(param)s"
 
 msgid "details/conditions/cumulative/tkills"
 msgstr "Allied vehicles destroyed"
-
-msgid "details/conditions/cumulative/wtBossVulnerableDamage"
-msgstr "Cause damage to the Blitzträger while its shield is inactive."
-
-msgid "details/conditions/cumulative/wtDeathCount"
-msgstr "Do not get destroyed more than a given number of times in one battle."
-
-msgid "details/conditions/cumulative/wtGeneratorsCaptured"
-msgstr "Help overload a certain number of Generators."
-
-msgid "details/conditions/cumulative/wtTotalGeneratorsCaptured"
-msgstr "?empty?"
 
 msgid "details/conditions/cumulative/xp"
 msgstr "Experience earned"

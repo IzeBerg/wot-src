@@ -72,7 +72,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _isSelectedIndicatorVisible:Boolean = false;
       
-      protected var coolDownTimer:CoolDownTimer = null;
+      private var _coolDownTimer:CoolDownTimer = null;
       
       private var _consumablesVO:ConsumablesVO;
       
@@ -87,8 +87,8 @@ package net.wg.gui.battle.views.consumablesPanel
          this._consumablesVO = new ConsumablesVO();
          this._colorSchemeMgr = App.colorSchemeMgr;
          super();
-         this.coolDownTimer = new CoolDownTimer(this);
-         this.coolDownTimer.setFrames(START_FRAME,END_FRAME);
+         this._coolDownTimer = new CoolDownTimer(this);
+         this._coolDownTimer.setFrames(START_FRAME,END_FRAME);
          this._isColorBlindMode = this._colorSchemeMgr.getIsColorBlindS();
          this.spgShotResultIndicator.visible = false;
          isAllowedToShowToolTipOnDisabledState = true;
@@ -129,8 +129,8 @@ package net.wg.gui.battle.views.consumablesPanel
          this._colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
          this._colorSchemeMgr = null;
          addFrameScript(END_RELOADING_FRAME,null);
-         this.coolDownTimer.dispose();
-         this.coolDownTimer = null;
+         this._coolDownTimer.dispose();
+         this._coolDownTimer = null;
          this.iconLoader.dispose();
          this.iconLoader = null;
          this.glow.dispose();
@@ -151,7 +151,7 @@ package net.wg.gui.battle.views.consumablesPanel
       public function clearCoolDownTime() : void
       {
          this._isReloading = false;
-         this.coolDownTimer.end();
+         this._coolDownTimer.end();
          this.state = InteractiveStates.UP;
       }
       
@@ -178,7 +178,7 @@ package net.wg.gui.battle.views.consumablesPanel
          {
             this._isSelectedIndicatorVisible = false;
             invalidate(SELECTED_INDICATOR_VISIBILITY);
-            this.coolDownTimer.setPositionAsPercent(param1);
+            this._coolDownTimer.setPositionAsPercent(param1);
          }
          else
          {
@@ -200,12 +200,12 @@ package net.wg.gui.battle.views.consumablesPanel
             _loc5_ = param3 / param2;
             this.state = BATTLE_ITEM_STATES.COOLDOWN;
             this._isReloading = true;
-            this.coolDownTimer.start(param1,this,(END_FRAME - START_FRAME) * _loc5_,DEFAULT_TIME_COEF);
+            this._coolDownTimer.start(param1,this,(END_FRAME - START_FRAME) * _loc5_,DEFAULT_TIME_COEF);
          }
          else
          {
             this._isReloading = false;
-            this.coolDownTimer.end();
+            this._coolDownTimer.end();
             if(param1 == 0)
             {
                this.state = BATTLE_ITEM_STATES.RELOADED;
@@ -213,7 +213,7 @@ package net.wg.gui.battle.views.consumablesPanel
             }
             else
             {
-               this.coolDownTimer.moveToFrame(FIRST_FRAME);
+               this._coolDownTimer.moveToFrame(FIRST_FRAME);
             }
          }
       }
@@ -353,7 +353,7 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      private function reloadingEnd() : void
+      protected function reloadingEnd() : void
       {
          this._isSelectedIndicatorVisible = this._quantity > 0;
          invalidate(SELECTED_INDICATOR_VISIBILITY);
@@ -411,7 +411,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function get coolDownCurrentFrame() : int
       {
-         return this.coolDownTimer.currentFrame;
+         return this._coolDownTimer.currentFrame;
       }
       
       public function get empty() : Boolean
@@ -437,26 +437,30 @@ package net.wg.gui.battle.views.consumablesPanel
       {
       }
       
+      protected function getQuantity() : int
+      {
+         return this._quantity;
+      }
+      
+      protected function get isCurrent() : Boolean
+      {
+         return this._isCurrent;
+      }
+      
+      protected function get isSelectedIndicatorVisible() : Boolean
+      {
+         return this._isSelectedIndicatorVisible;
+      }
+      
+      protected function getCoolDownTimer() : CoolDownTimer
+      {
+         return this._coolDownTimer;
+      }
+      
       private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
       {
          this._isColorBlindMode = this._colorSchemeMgr.getIsColorBlindS();
          this.setSpgShotResult(this._spgShotResult);
-      }
-      
-      public function setStage(param1:int) : void
-      {
-      }
-      
-      public function setSelected(param1:Boolean) : void
-      {
-      }
-      
-      public function setHyperionProgress(param1:Number, param2:Boolean) : void
-      {
-      }
-      
-      public function setDebuffMode(param1:Boolean) : void
-      {
       }
    }
 }

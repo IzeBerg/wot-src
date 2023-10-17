@@ -129,12 +129,6 @@ package net.wg.data.constants
       
       public static const INVITES_SEARCH:String = "SearchUsersFormUI";
       
-      public static const PERSONAL_CASE_TITLE_BLOCK:String = "titleBlockUI";
-      
-      public static const PERSONAL_CASE_BLOCK_ITEM:String = "blockItemsUI";
-      
-      public static const VERTICAL_SPLIT_LINE:String = "premSplitLine";
-      
       public static const TOOL_TIP_COMPLEX:String = "ToolTipComplexUI";
       
       public static const SERVICE_MESSAGES_POPUP:String = "ServiceMessagePopUp_UI";
@@ -245,8 +239,6 @@ package net.wg.data.constants
       
       public static const STUN_ICON:String = "secondaryStunIconUI";
       
-      public static const WT_STUN_ICON:String = "secondaryWTStunIconUI";
-      
       public static const BLOCKED_ICON:String = "secondaryBlockedIconUI";
       
       public static const SMOKE_ICON:String = "secondarySmokeIconUI";
@@ -308,6 +300,14 @@ package net.wg.data.constants
       public static const EVENT_SHELL_BUTTON_BATTLE:String = "EventShellButtonBattleUI";
       
       public static const EVENT_EQUIPMENT_BUTTON:String = "EventEquipmentButtonUI";
+      
+      public static const HW_EQUIPMENT_BUTTON:String = "HWEquipmentButtonUI";
+      
+      public static const HW_ABILITY_BUTTON:String = "HWAbilityButtonUI";
+      
+      public static const HW_PASSIVE_ABILITY:String = "HWPassiveAbilityUI";
+      
+      public static const HW_SHELL_BUTTON_BATTLE:String = "HWShellButtonBattleUI";
       
       public static const OPTIONAL_DEVICE_BUTTON:String = "OptionalDeviceButtonUI";
       
@@ -473,12 +473,6 @@ package net.wg.data.constants
       
       public static const TASK_AWARD_RENDERER_LINKAGE:String = "TaskAwardItemRendererUI";
       
-      public static const CREW_DEFAULT_RENDERER_LINKAGE:String = "CrewItemRendererUI";
-      
-      public static const CREW_SMALL_RENDERER_LINKAGE:String = "CrewItemRendererSmallUI";
-      
-      public static const RETRAIN_CREW_ROLE_IR_UI:String = "RetrainCrewRoleIR_UI";
-      
       public static const CREW_OPERATIONS_IR_UI:String = "CrewOperationsIRenderer_UI";
       
       public static const SPARK_ANIM_LINKAGE:String = "SparkAnimUI";
@@ -572,8 +566,6 @@ package net.wg.data.constants
       public static const BATTLE_PROGRESS_TASK_SEPARATOR:String = "battleProgressTaskSeparatorUI";
       
       public static const CAPTURE_BAR_LINKAGE:String = "TeamCaptureBarUI";
-      
-      public static const EVENT_CAPTURE_BAR_LINKAGE:String = "EventTeamCaptureBarUI";
       
       public static const VEH_CMP_WINDOW_BG_UI:String = "WindowBgUI";
       
@@ -797,6 +789,8 @@ package net.wg.data.constants
       
       public static const BATTLE_ABILITIES_BTN_AREA_UI:String = "BattleAbilitiesBtnAreaUI";
       
+      public static const PRESTIGE_HANGAR_WIDGET_UI:String = "PrestigeWidgetInjectUI";
+      
       public static const HANGAR_HEADER:String = "HangarHeaderUI";
       
       public static const ALERT_MESSAGE_BLOCK:String = "AlertMessageBlockUI";
@@ -997,8 +991,6 @@ package net.wg.data.constants
       
       public static const RANKED_BATTLES_QUALIFICATION_REWARD_HORIZONTAL_SEPARATOR:String = "RBRewardHorizontalSeparatorUI";
       
-      public static const PERSONAL_CASE_CREW_SKINS:String = "PersonalCaseCrewSkins";
-      
       public static const PROGRESSIVE_REWARD_GIFT_UI:String = "ProgressiveRewardGiftUI";
       
       public static const REPLIED_MARKER_UI:String = "RepliedMarkerUI";
@@ -1051,10 +1043,6 @@ package net.wg.data.constants
       
       public static const VEHICLE_BUTTON_UI:String = "CSVehicleButtonUI";
       
-      public static const RESOURCE_WELL_ENTRY_POINT:String = "ResourceWellEntryPointUI";
-      
-      public static const BATTLE_MATTERS_ENTRY_POINT:String = "BattleMattersEntryPointUI";
-      
       public static const BATTLE_MATTERS_ANIM_LOADER:String = "BattleMattersAnimLoaderUI";
       
       public static const PLAYERS_PANEL_POI_PROGRESS_BAR_UI:String = "PlayersPanelPoiProgressBarUI";
@@ -1065,15 +1053,7 @@ package net.wg.data.constants
       
       public static const BADGE_SUFFIX_ITEM:String = "SuffixItemUI";
       
-      public static const WT_HYPERION_WARNING_ICON:String = "destroyTimerWtHyperionUI";
-      
-      public static const WT_EVENT_ENTRY_POINT_ANIM_UI:String = "WTEventEntryPointAnimUI";
-      
-      public static const WT_EVENT_ENTRY_POINT_STATIC_BG_UI:String = "WTEventEntryPointStaticUI";
-      
-      public static const WT_EVENT_ENTRY_TEXT_INFO_UI:String = "WTEventEntryTextInfoUI";
-      
-      public static const WT_ENERGY_SPAWN_ENTRY_UI:String = "WTEnergySpawnFlashEntry";
+      public static const VEH_CONF_CREW_SKILL_SLOT_UI:String = "VehConfCrewSkillSlotUI";
        
       
       public function Linkages()

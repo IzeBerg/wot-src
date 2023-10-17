@@ -7,6 +7,10 @@ from UnitBase import UNIT_SLOT, INV_ID_CLEAR_VEHICLE, UNIT_ROLE
 from constants import REQUEST_COOLDOWN, VEHICLE_CLASS_INDICES
 from debug_utils import LOG_ERROR, LOG_DEBUG
 from gui.Scaleform.daapi.view.dialogs import rally_dialog_meta
+from gui.Scaleform.daapi.view.lobby.header.fight_btn_tooltips import getSquadFightBtnTooltipData
+from gui.Scaleform.settings import TOOLTIP_TYPES
+from gui.impl import backport
+from gui.impl.gen import R
 from gui.prb_control import prb_getters, settings
 from gui.prb_control.ctrl_events import g_prbCtrlEvents
 from gui.prb_control.entities.base.actions_validator import NotSupportedActionsValidator
@@ -25,6 +29,7 @@ from gui.prb_control.items import unit_items, ValidationResult
 from gui.prb_control.items.unit_items import DynamicRosterSettings
 from gui.prb_control.settings import FUNCTIONAL_FLAG, CTRL_ENTITY_TYPE
 from gui.shared.utils.listeners_collection import ListenersCollection
+from gui.shared.utils.functions import makeTooltip
 from gui.shared.utils.requesters import REQ_CRITERIA
 from helpers import dependency
 from helpers import time_utils
@@ -120,6 +125,17 @@ class BaseUnitEntity(BasePrbEntity):
 
     def validateLevels(self):
         return ValidationResult()
+
+    def getFightBtnTooltipData(self, isStateDisabled):
+        if isStateDisabled:
+            return (getSquadFightBtnTooltipData(self.canPlayerDoAction()), False)
+        return (
+         '', False)
+
+    def getSquadBtnTooltipData(self):
+        header = backport.text(R.strings.platoon.headerButton.tooltips.inSquad.header())
+        body = backport.text(R.strings.platoon.headerButton.tooltips.inSquad.body())
+        return (makeTooltip(header, body), TOOLTIP_TYPES.COMPLEX)
 
 
 class _UnitIntroEntryPoint(BasePrbEntryPoint):
@@ -879,7 +895,7 @@ class UnitEntity(_UnitEntity):
         if isReady:
             vehInfos = self.getVehiclesInfo()
             if vehInfos:
-                self._selectVehicle(vehInfos[0].vehInvID)
+                g_currentVehicle.selectVehicle(vehInfos[0].vehInvID)
         if self._isInCoolDown(settings.REQUEST_TYPE.SET_PLAYER_STATE, coolDown=ctx.getCooldown()):
             return
         self._setReady(ctx, callback)
@@ -1051,7 +1067,7 @@ class UnitEntity(_UnitEntity):
                 return
             vehInfos = self.getVehiclesInfo()
             if vehInfos:
-                self._selectVehicle(vehInfos[0].vehInvID)
+                g_currentVehicle.selectVehicle(vehInfos[0].vehInvID)
             roster = self.getRosterSettings()
             stats = self.getStats()
             if stats.curTotalLevel > roster.getMaxTotalLevel():
@@ -1109,7 +1125,7 @@ class UnitEntity(_UnitEntity):
             waitingID = 'prebattle/player_not_ready'
         if launchChain:
             if notReady:
-                selVehCtx = SetVehicleUnitCtx(vTypeCD=self._getSelectedVehCD(), waitingID='prebattle/change_settings')
+                selVehCtx = SetVehicleUnitCtx(vTypeCD=g_currentVehicle.item.intCD, waitingID='prebattle/change_settings')
                 selVehCtx.setReady = True
                 self.setVehicle(selVehCtx)
             else:
@@ -1186,7 +1202,7 @@ class UnitEntity(_UnitEntity):
         if dbID == account_helpers.getAccountDatabaseID() and not vInfo.isEmpty():
             vehicle = self.itemsCache.items.getItemByCD(vInfo.vehTypeCD)
             if vehicle is not None:
-                self._selectVehicle(vehicle.invID)
+                g_currentVehicle.selectVehicle(vehicle.invID)
         self._invokeListeners('onUnitVehiclesChanged', dbID, (vInfo,))
         g_eventDispatcher.updateUI()
         return
@@ -1208,7 +1224,7 @@ class UnitEntity(_UnitEntity):
             if dbID == account_helpers.getAccountDatabaseID() and not vInfo.isEmpty():
                 vehicle = self.itemsCache.items.getItemByCD(vInfo.vehTypeCD)
                 if vehicle is not None and not isVehicleSelected:
-                    self._selectVehicle(vehicle.invID)
+                    g_currentVehicle.selectVehicle(vehicle.invID)
                     isVehicleSelected = True
             vInfos.append(vInfo)
 
@@ -1494,12 +1510,6 @@ class UnitEntity(_UnitEntity):
                 result = max(0, int(time.time() - time_utils.makeLocalServerTime(timestamp)))
         return result
 
-    def _getSelectedVehCD(self):
-        return g_currentVehicle.item.intCD
-
-    def _selectVehicle(self, vehID):
-        g_currentVehicle.selectVehicle(vehID)
-
     def _isInCoolDown(self, requestType, callback=None, coolDown=None):
         if self._cooldown.validate(requestType, coolDown):
             if callback:
@@ -1529,7 +1539,7 @@ class UnitEntity(_UnitEntity):
         self._cooldown.process(settings.REQUEST_TYPE.SET_PLAYER_STATE, coolDown=ctx.getCooldown())
 
     def _doStartBattleRequest(self, ctx, flags, callback):
-        self._requestsProcessor.doRequest(ctx, 'startBattle', vehInvID=ctx.selectVehInvID, gameplaysMask=ctx.getGamePlayMask(), arenaTypeID=ctx.getDemoArenaTypeID(), callback=callback, stopAutoSearch=flags.isInSearch(), isOnly10ModeEnabled=ctx.isOnly10ModeEnabled())
+        self._requestsProcessor.doRequest(ctx, 'startBattle', vehInvID=ctx.selectVehInvID, gameplaysMask=ctx.getGamePlayMask(), arenaTypeID=ctx.getDemoArenaTypeID(), callback=callback, stopAutoSearch=flags.isInSearch(), randomFlags=ctx.getRandomFlags())
 
     def _doStopBattleRequest(self, ctx, callback):
         self._requestsProcessor.doRequest(ctx, 'stopBattle', callback=callback)
