@@ -1,16 +1,12 @@
 package net.wg.infrastructure.managers.impl
 {
-   import flash.events.EventDispatcher;
    import flash.geom.Rectangle;
    import net.wg.infrastructure.events.LifeCycleEvent;
-   import net.wg.infrastructure.events.StageSizeMangerEvent;
    import net.wg.infrastructure.managers.IStageSizeManager;
    import net.wg.utils.IStageSizeDependComponent;
-   import net.wg.utils.StageBreakPoint;
-   import net.wg.utils.StageBreakPointList;
    import net.wg.utils.StageSizeBoundaries;
    
-   public class StageSizeManager extends EventDispatcher implements IStageSizeManager
+   public class StageSizeManager implements IStageSizeManager
    {
       
       private static const WIDTH_BOUNDARY_VALUES:Vector.<int> = new <int>[StageSizeBoundaries.WIDTH_2200,StageSizeBoundaries.WIDTH_1920,StageSizeBoundaries.WIDTH_1600,StageSizeBoundaries.WIDTH_1366,StageSizeBoundaries.WIDTH_1280,StageSizeBoundaries.WIDTH_1024];
@@ -23,8 +19,6 @@ package net.wg.infrastructure.managers.impl
       private var _currentBoundaries:Rectangle;
       
       private var _disposed:Boolean = false;
-      
-      private var _currentBreakPoint:StageBreakPoint;
       
       public function StageSizeManager()
       {
@@ -44,11 +38,6 @@ package net.wg.infrastructure.managers.impl
             }
          }
          return param2[param2.length - 1];
-      }
-      
-      public function get currentBreakPoint() : StageBreakPoint
-      {
-         return this._currentBreakPoint;
       }
       
       public function calcAllowSize(param1:int, param2:Array) : int
@@ -105,25 +94,16 @@ package net.wg.infrastructure.managers.impl
       
       public function updateStage(param1:Number, param2:Number) : void
       {
-         var _loc6_:IStageSizeDependComponent = null;
+         var _loc5_:IStageSizeDependComponent = null;
          var _loc3_:int = getBoundary(param1,WIDTH_BOUNDARY_VALUES);
          var _loc4_:int = getBoundary(param2,HEIGHT_BOUNDARY_VALUES);
          if(_loc3_ != this._currentBoundaries.width || _loc4_ != this._currentBoundaries.height)
          {
             this._currentBoundaries.width = _loc3_;
             this._currentBoundaries.height = _loc4_;
-            for each(_loc6_ in this._components)
+            for each(_loc5_ in this._components)
             {
-               _loc6_.setStateSizeBoundaries(_loc3_,_loc4_);
-            }
-         }
-         var _loc5_:StageBreakPoint = StageBreakPointList.deduceBreakPoint(param1,param2);
-         if(_loc5_ != this._currentBreakPoint)
-         {
-            this._currentBreakPoint = _loc5_;
-            if(hasEventListener(StageSizeMangerEvent.BREAK_POINT_CHANGED))
-            {
-               dispatchEvent(new StageSizeMangerEvent(StageSizeMangerEvent.BREAK_POINT_CHANGED,true));
+               _loc5_.setStateSizeBoundaries(_loc3_,_loc4_);
             }
          }
       }

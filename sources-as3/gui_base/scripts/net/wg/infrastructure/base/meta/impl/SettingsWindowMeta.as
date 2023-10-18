@@ -49,8 +49,6 @@ package net.wg.infrastructure.base.meta.impl
       
       private var _dataProviderTabsDataVo:DataProvider;
       
-      private var _vectorint:Vector.<int>;
-      
       public function SettingsWindowMeta()
       {
          super();
@@ -82,11 +80,6 @@ package net.wg.infrastructure.base.meta.impl
             }
             this._dataProviderTabsDataVo.cleanUp();
             this._dataProviderTabsDataVo = null;
-         }
-         if(this._vectorint)
-         {
-            this._vectorint.splice(0,this._vectorint.length);
-            this._vectorint = null;
          }
          super.onDispose();
       }
@@ -244,24 +237,6 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      public final function as_setDisabledTabsOverlay(param1:Array, param2:String) : void
-      {
-         var _loc3_:Vector.<int> = this._vectorint;
-         this._vectorint = new Vector.<int>(0);
-         var _loc4_:uint = param1.length;
-         var _loc5_:int = 0;
-         while(_loc5_ < _loc4_)
-         {
-            this._vectorint[_loc5_] = param1[_loc5_];
-            _loc5_++;
-         }
-         this.setDisabledTabsOverlay(this._vectorint,param2);
-         if(_loc3_)
-         {
-            _loc3_.splice(0,_loc3_.length);
-         }
-      }
-      
       protected function setCaptureDevices(param1:Number, param2:DataProvider) : void
       {
          var _loc3_:String = "as_setCaptureDevices" + Errors.ABSTRACT_INVOKE;
@@ -281,13 +256,6 @@ package net.wg.infrastructure.base.meta.impl
          var _loc2_:String = "as_setFeedbackDataProvider" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
-      }
-      
-      protected function setDisabledTabsOverlay(param1:Vector.<int>, param2:String) : void
-      {
-         var _loc3_:String = "as_setDisabledTabsOverlay" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc3_);
-         throw new AbstractException(_loc3_);
       }
    }
 }

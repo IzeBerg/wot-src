@@ -95,39 +95,32 @@ package net.wg.gui.components.vehicleStatus
          var _loc2_:Boolean = false;
          var _loc3_:String = null;
          var _loc4_:Boolean = false;
-         var _loc5_:String = null;
-         var _loc6_:Boolean = false;
-         var _loc7_:Boolean = false;
-         var _loc8_:int = 0;
-         var _loc9_:uint = 0;
-         var _loc10_:int = 0;
-         var _loc11_:int = 0;
+         var _loc5_:int = 0;
+         var _loc6_:int = 0;
+         var _loc7_:int = 0;
          super.draw();
          if(this._data)
          {
             if(isInvalid(InvalidationType.DATA))
             {
-               _loc1_ = this._data.vehicleLevel;
-               _loc2_ = StringUtils.isNotEmpty(_loc1_);
-               this.vehicleLevel.text = _loc1_;
-               this.vehicleLevel.visible = _loc2_;
+               this.vehicleLevel.text = this._data.vehicleLevel;
                this.vehicleName.htmlText = this._data.vehicleName;
                this.tankTypeIcon.type = this._data.tankType;
                this.tankTypeIcon.validateNow();
-               _loc3_ = this._data.message;
-               _loc4_ = StringUtils.isNotEmpty(_loc3_);
-               this.message.visible = _loc4_;
-               if(_loc4_)
+               _loc1_ = this._data.message;
+               _loc2_ = StringUtils.isNotEmpty(_loc1_);
+               this.message.visible = _loc2_;
+               if(_loc2_)
                {
-                  this.message.setMessage(_loc3_);
+                  this.message.setMessage(_loc1_);
                   this.message.validateNow();
                }
-               _loc5_ = this._data.roleMessage;
-               _loc6_ = StringUtils.isNotEmpty(_loc5_);
-               this.roleMessage.visible = _loc6_;
+               _loc3_ = this._data.roleMessage;
+               _loc4_ = StringUtils.isNotEmpty(_loc3_);
+               this.roleMessage.visible = _loc4_;
                if(this.roleMessage.visible)
                {
-                  this.roleMessage.setMessage(_loc5_);
+                  this.roleMessage.setMessage(_loc3_);
                   this.roleMessage.validateNow();
                }
                invalidateSize();
@@ -135,31 +128,26 @@ package net.wg.gui.components.vehicleStatus
             if(isInvalid(InvalidationType.SIZE))
             {
                this._commons.updateTextFieldSize(this.vehicleName,true,false);
-               _loc7_ = this.vehicleLevel.visible;
-               if(_loc7_)
-               {
-                  this._commons.updateTextFieldSize(this.vehicleLevel,true,false);
-                  this.vehicleLevel.x = 0;
-               }
-               _loc8_ = !!this._data.isElite ? int(ELITE_TYPE_GAP) : int(COMMON_TYPE_GAP);
-               _loc9_ = !!_loc7_ ? uint(this.vehicleLevel.x + this.vehicleLevel.width) : uint(0);
-               this.tankTypeIcon.x = _loc9_ + this.tankTypeIcon.width + _loc8_ ^ 0;
-               this.vehicleName.x = this.tankTypeIcon.x + this.tankTypeIcon.width + _loc8_ ^ 0;
-               _loc10_ = this.vehicleName.x + this.vehicleName.width >> 1;
-               this.vehicleLevel.x -= _loc10_;
-               this.tankTypeIcon.x -= _loc10_;
-               this.vehicleName.x -= _loc10_;
-               _loc11_ = MESSAGE_Y;
+               this._commons.updateTextFieldSize(this.vehicleLevel,true,false);
+               this.vehicleLevel.x = 0;
+               _loc5_ = !!this._data.isElite ? int(ELITE_TYPE_GAP) : int(COMMON_TYPE_GAP);
+               this.tankTypeIcon.x = this.vehicleLevel.x + this.vehicleLevel.width + this.tankTypeIcon.width + _loc5_ ^ 0;
+               this.vehicleName.x = this.tankTypeIcon.x + this.tankTypeIcon.width + _loc5_ ^ 0;
+               _loc6_ = this.vehicleName.x + this.vehicleName.width >> 1;
+               this.vehicleLevel.x -= _loc6_;
+               this.tankTypeIcon.x -= _loc6_;
+               this.vehicleName.x -= _loc6_;
+               _loc7_ = MESSAGE_Y;
                if(this.roleMessage.visible)
                {
                   this.roleMessage.x = -this.roleMessage.width >> 1;
-                  this.roleMessage.y = _loc11_;
-                  _loc11_ += MESSAGE_Y + MESSAGE_Y_OFFSET;
+                  this.roleMessage.y = _loc7_;
+                  _loc7_ += MESSAGE_Y + MESSAGE_Y_OFFSET;
                }
                if(this.message.visible)
                {
                   this.message.x = -this.message.width >> 1;
-                  this.message.y = _loc11_;
+                  this.message.y = _loc7_;
                }
                dispatchEvent(new VehicleStatusEvent(VehicleStatusEvent.RESIZE));
             }

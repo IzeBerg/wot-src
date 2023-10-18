@@ -1001,6 +1001,24 @@ def _migrateTo109(core, data, initialized):
     data[GUI_START_BEHAVIOR][GuiSettingsBehavior.COMP7_WHATS_NEW_SHOWN] = False
 
 
+def _migrateTo110(core, data, initialized):
+    data['gameExtData2'][GAME.GAMEPLAY_DEV_MAPS] = True
+
+
+def _migrateTo111(core, data, initialized):
+    from account_helpers import AccountSettings
+    from account_helpers.AccountSettings import CREW_SKINS_VIEWED
+    from skeletons.gui.shared import IItemsCache
+    itemsCache = dependency.instance(IItemsCache)
+    viewedSkinsMap = {}
+    viewedSkinsSet = AccountSettings.getSettings(CREW_SKINS_VIEWED)
+    for skinID in viewedSkinsSet:
+        item = itemsCache.items.getCrewSkin(skinID)
+        viewedSkinsMap[skinID] = item.getTotalCount()
+
+    AccountSettings.setSettings(CREW_SKINS_VIEWED, viewedSkinsMap)
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -1217,7 +1235,11 @@ _versions = (
  (
   108, _migrateTo108, False, False),
  (
-  109, _migrateTo109, False, False))
+  109, _migrateTo109, False, False),
+ (
+  110, _migrateTo110, False, False),
+ (
+  111, _migrateTo111, False, False))
 
 @adisp_async
 @adisp_process

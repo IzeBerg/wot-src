@@ -33,21 +33,6 @@ package net.wg.gui.lobby.tankman
          super();
       }
       
-      private static function formatValue(param1:Number) : String
-      {
-         var _loc3_:String = null;
-         var _loc2_:int = 4;
-         if(String(param1 % 1).length > _loc2_)
-         {
-            _loc3_ = param1.toFixed(2);
-         }
-         else
-         {
-            _loc3_ = param1.toString();
-         }
-         return _loc3_;
-      }
-      
       override protected function onDispose() : void
       {
          this.modifiersHeaders = null;
@@ -112,7 +97,7 @@ package net.wg.gui.lobby.tankman
             {
                this.modifiersHeaders.htmlText += "<font size=\"" + MODIFIER_HEADER_TEXT_SIZE + "\"> </font>" + _loc3_.makeString(MENU.TANKMANPERSONALCASE_MODIFIERSRESULT);
                _loc12_ = !!_loc10_ ? MODIFIER_COLOR_ALERT : MODIFIER_COLOR_NORMAL;
-               this.modifiersValues.htmlText += "<font color=\"" + _loc12_ + "\" size=\"" + MODIFIER_TEXT_SIZE + "\">" + formatValue(param2 + _loc4_) + "%</font>";
+               this.modifiersValues.htmlText += "<font color=\"" + _loc12_ + "\" size=\"" + MODIFIER_TEXT_SIZE + "\">" + (param2 + _loc4_).toString() + "%</font>";
             }
             else
             {

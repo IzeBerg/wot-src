@@ -47,8 +47,6 @@ package net.wg.data.constants.generated
       
       public static const PERK:String = "perk";
       
-      public static const STATIC_DEATH_ZONE:String = "staticDeathZone";
-      
       public static const VEHICLE_RECOVERY:String = "vehicleRecovery";
       
       public static const ENEMY_SECTOR_CAPTURED:String = "enemySectorCaptured";

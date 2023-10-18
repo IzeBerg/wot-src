@@ -318,6 +318,7 @@ package net.wg.app.impl
       {
          atlasMgr.registerAtlas(ATLAS_CONSTANTS.BATTLE_ATLAS);
          atlasMgr.registerAtlas(ATLAS_CONSTANTS.QUESTS_PROGRESS);
+         atlasMgr.registerAtlas(ATLAS_CONSTANTS.DIGITS);
       }
       
       override protected function onAfterAppConfiguring() : void

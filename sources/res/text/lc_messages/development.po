@@ -1,11 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: World Of Tanks\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-01 10:00+0300\n"
-"PO-Revision-Date: 2010-06-04 11:55+0200\n"
-"Last-Translator: WoT Translator <<noreply@wargaming.net>\n"
-"Language-Team: WoT Team <noreply@wargaming.net>\n"
+"Project-Id-Version: Mir tankov\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -146,10 +144,10 @@ msgid "dialogTemplates/warning/title"
 msgstr "Перевыбор задачи"
 
 msgid "editor/Pause"
-msgstr "Pause - (Ctrl+P)"
+msgstr "Pause (Ctrl+P)"
 
 msgid "editor/Resume"
-msgstr "Resume - (Ctrl+P)"
+msgstr "Resume (Ctrl+P)"
 
 msgid "editor/contextMenu/close_editor"
 msgstr "Close Editor"
@@ -178,11 +176,23 @@ msgstr "Save as"
 msgid "editor/contextMenu/undo"
 msgstr "Undo"
 
+msgid "editor/focus"
+msgstr "To focus (Ctrl+F): %(name)s"
+
 msgid "editor/goto"
 msgstr "goto"
 
 msgid "editor/search"
 msgstr "search"
+
+msgid "editor/title"
+msgstr "Inspector"
+
+msgid "editor/trackFocus/off"
+msgstr "Track focus OFF (ctrl+T)"
+
+msgid "editor/trackFocus/on"
+msgstr "Track focus ON (ctrl+T)"
 
 msgid "gfViewer/content/chainDescription"
 msgstr "Chains:"
@@ -295,6 +305,716 @@ msgstr "Нажмите, чтобы отменить изменения и вер
 msgid "messenger/contacts/settings/view/cancelBtn/header"
 msgstr "Отменить"
 
+msgid "mttv/AppearanceView/camouflage"
+msgstr "Камуфляж"
+
+msgid "mttv/AppearanceView/camouflageOptions/adAstra"
+msgstr "Ad Astra"
+
+msgid "mttv/AppearanceView/camouflageOptions/alfa"
+msgstr "Alfa"
+
+msgid "mttv/AppearanceView/camouflageOptions/amway921"
+msgstr "Amway921, наградной"
+
+msgid "mttv/AppearanceView/camouflageOptions/c_1918"
+msgstr "1918"
+
+msgid "mttv/AppearanceView/camouflageOptions/c_23"
+msgstr "23"
+
+msgid "mttv/AppearanceView/camouflageOptions/removeAll"
+msgstr "Удалить всё"
+
+msgid "mttv/AppearanceView/camouflageOptions/standard"
+msgstr "Стандарт"
+
+msgid "mttv/AppearanceView/camouflageOptions/tankolet"
+msgstr "#tankolet"
+
+msgid "mttv/AppearanceView/cleanFromDirt"
+msgstr "Очистить от грязи"
+
+msgid "mttv/AppearanceView/modulesHeader"
+msgstr "Модули танка"
+
+msgid "mttv/AppearanceView/resetModules"
+msgstr "Сбросить модули"
+
+msgid "mttv/AppearanceView/selectEngine"
+msgstr "Выбрать двигатель"
+
+msgid "mttv/AppearanceView/selectGun"
+msgstr "Выбрать орудие"
+
+msgid "mttv/AppearanceView/selectRadio"
+msgstr "Выбрать радиостанцию"
+
+msgid "mttv/AppearanceView/selectSuspension"
+msgstr "Выбрать ходовую"
+
+msgid "mttv/AppearanceView/selectTurret"
+msgstr "Выбрать башню"
+
+msgid "mttv/AppearanceView/showClan"
+msgstr "Показывать клановые иконки"
+
+msgid "mttv/AppearanceView/showDirt"
+msgstr "Показывать грязь"
+
+msgid "mttv/AppearanceView/showModel"
+msgstr "Показывать модель"
+
+msgid "mttv/AppearanceView/showStickers"
+msgstr "Показывать стикеры"
+
+msgid "mttv/CameraView/cameraCheckboxOverrideArrows"
+msgstr "Перехват стрелок (для поворота камеры в аркадном режиме)"
+
+msgid "mttv/CameraView/cameraCheckboxShaker"
+msgstr "Пошатывание камены в движении"
+
+msgid "mttv/CameraView/cameraCheckboxVerticalFixation"
+msgstr "Закрепить высоту камеры"
+
+msgid "mttv/CameraView/cameraCheckboxVerticalFixationCurrent"
+msgstr "текущее"
+
+msgid "mttv/CameraView/cameraCheckboxVerticalFixationTerrain"
+msgstr "Закрепить высоту камеры над землей"
+
+msgid "mttv/CameraView/cameraCheckboxVerticalFixationValue"
+msgstr "Высота камеры (в см)"
+
+msgid "mttv/CameraView/cameraDataProviderFov1"
+msgstr "Выбрать значение"
+
+msgid "mttv/CameraView/cameraDataProviderFov2"
+msgstr "3,6 mm - 81°"
+
+msgid "mttv/CameraView/cameraDataProviderFov3"
+msgstr "4,8 mm - 67°"
+
+msgid "mttv/CameraView/cameraDataProviderFov4"
+msgstr "6 mm - 56°"
+
+msgid "mttv/CameraView/cameraDataProviderFov5"
+msgstr "8 mm - 44°"
+
+msgid "mttv/CameraView/cameraDataProviderFov6"
+msgstr "12 mm - 30°"
+
+msgid "mttv/CameraView/cameraDataProviderFov7"
+msgstr "16 mm - 23°"
+
+msgid "mttv/CameraView/cameraDataProviderFov8"
+msgstr "24 mm - 11°"
+
+msgid "mttv/CameraView/cameraLabelCameraBoost"
+msgstr "Множитель ускорения камеры"
+
+msgid "mttv/CameraView/cameraLabelFovPreset"
+msgstr "Дискретные значения фокусного расстояния"
+
+msgid "mttv/CameraView/cameraLabelFovSensitivity"
+msgstr "Чувствительность зума"
+
+msgid "mttv/CameraView/cameraLabelMovementInertia"
+msgstr "Коэффициент движения в инертном режиме (множитель)"
+
+msgid "mttv/CameraView/cameraLabelRotationInertia"
+msgstr "Коэффициент поворота в инертном режиме (множитель)"
+
+msgid "mttv/CameraView/cameraLabelVerticalFov"
+msgstr "Вертикальный FOV (в градусах)"
+
+msgid "mttv/CameraView/cameraView"
+msgstr "Камера"
+
+msgid "mttv/CameraView/shakerAmplitude"
+msgstr "Амплитуда (в см)"
+
+msgid "mttv/CameraView/shakerFieldsetHorizontal"
+msgstr "Горизонтальное"
+
+msgid "mttv/CameraView/shakerFieldsetVertical"
+msgstr "Вертикальное"
+
+msgid "mttv/CameraView/shakerSpeed"
+msgstr "Скорость"
+
+msgid "mttv/Entity/applyToAll"
+msgstr "Применить ко всем"
+
+msgid "mttv/Entity/applyToTeam"
+msgstr "Применить к команде"
+
+msgid "mttv/EntityTabs/appearance"
+msgstr "Вид"
+
+msgid "mttv/EntityTabs/default"
+msgstr "Обычный"
+
+msgid "mttv/EntityTabs/destroyed"
+msgstr "Уничтожен"
+
+msgid "mttv/EntityTabs/marker"
+msgstr "Маркер"
+
+msgid "mttv/EntityTabs/vehicle"
+msgstr "Конфигурация"
+
+msgid "mttv/FrameEditView/addFrame"
+msgstr "Add Frame"
+
+msgid "mttv/FrameEditView/addInfo"
+msgstr "Add Info"
+
+msgid "mttv/FrameEditView/apply"
+msgstr "Apply"
+
+msgid "mttv/FrameEditView/cancel"
+msgstr "Cancel"
+
+msgid "mttv/FrameEditView/currentTime"
+msgstr "Current Time"
+
+msgid "mttv/FrameEditView/delete"
+msgstr "Delete"
+
+msgid "mttv/FrameEditView/fov"
+msgstr "FOV"
+
+msgid "mttv/FrameEditView/frameEdit"
+msgstr "Frame Edit"
+
+msgid "mttv/FrameEditView/play"
+msgstr "Play"
+
+msgid "mttv/FrameEditView/position"
+msgstr "Position"
+
+msgid "mttv/FrameEditView/rotation"
+msgstr "Rotation"
+
+msgid "mttv/FrameEditView/speed"
+msgstr "Speed"
+
+msgid "mttv/FrameEditView/time"
+msgstr "Time"
+
+msgid "mttv/InterfaceView/anotherStaff"
+msgstr "Отображать шестое чувство, осадный режим и остальное"
+
+msgid "mttv/InterfaceView/battleMessenger"
+msgstr "Отображать панель игрового чата"
+
+msgid "mttv/InterfaceView/calloutPanel"
+msgstr "Отображать панель подтверждения"
+
+msgid "mttv/InterfaceView/clanTags"
+msgstr "Отображать клан теги игроков"
+
+msgid "mttv/InterfaceView/consumablesPanel"
+msgstr "Отображать панель снарядов"
+
+msgid "mttv/InterfaceView/crosshair"
+msgstr "Отображать прицел"
+
+msgid "mttv/InterfaceView/damageIndicator"
+msgstr "Отображать индикатор обстрела"
+
+msgid "mttv/InterfaceView/damageLog"
+msgstr "Отображать лог и счётчики урона"
+
+msgid "mttv/InterfaceView/damagePanel"
+msgstr "Отображать панель урона"
+
+msgid "mttv/InterfaceView/debugPanel"
+msgstr "Отображать дебаг панель (FPS/ping)"
+
+msgid "mttv/InterfaceView/debugText"
+msgstr "Отображать дебаг информацию камеры"
+
+msgid "mttv/InterfaceView/dualGunPanel"
+msgstr "Отображать панель двустволок"
+
+msgid "mttv/InterfaceView/fragCorrelationBar"
+msgstr "Отображать панель команд"
+
+msgid "mttv/InterfaceView/gunMarker"
+msgstr "Отображать маркер орудия"
+
+msgid "mttv/InterfaceView/highlight"
+msgstr "Отображать контуры танков"
+
+msgid "mttv/InterfaceView/highlightFreeCam"
+msgstr "Отображать контуры танков при свободной камере"
+
+msgid "mttv/InterfaceView/interfaceView"
+msgstr "Интерфейс"
+
+msgid "mttv/InterfaceView/markers"
+msgstr "Отображать маркеры [все]"
+
+msgid "mttv/InterfaceView/markersHovering"
+msgstr "Ховеринг маркеров"
+
+msgid "mttv/InterfaceView/markersPluginArea"
+msgstr "Отображать маркеры [площадь]"
+
+msgid "mttv/InterfaceView/markersPluginTeamAndControlPoints"
+msgstr "Отображать маркеры [контрольные точки]"
+
+msgid "mttv/InterfaceView/markersPluginVehiclesTargets"
+msgstr "Отображать маркеры [автоприцел]"
+
+msgid "mttv/InterfaceView/markersVehicles"
+msgstr "Отображать маркеры [техника]"
+
+msgid "mttv/InterfaceView/messages"
+msgstr "Отображать боевые сообщения"
+
+msgid "mttv/InterfaceView/minimap"
+msgstr "Отображать миникарту"
+
+msgid "mttv/InterfaceView/playerMessageList"
+msgstr "Отображать сообщения об убийствах"
+
+msgid "mttv/InterfaceView/playersNames"
+msgstr "Отображать имена игроков"
+
+msgid "mttv/InterfaceView/playersPanel"
+msgstr "Отображать панели игроков"
+
+msgid "mttv/InterfaceView/questProgress"
+msgstr "Отображать прогресс ЛБЗ"
+
+msgid "mttv/InterfaceView/recordState"
+msgstr "Отображать индикатор записи камеры"
+
+msgid "mttv/InterfaceView/ribbons"
+msgstr "Отображать ленточки"
+
+msgid "mttv/InterfaceView/selectPreset"
+msgstr "Выбрать настройки"
+
+msgid "mttv/InterfaceView/switchAll"
+msgstr "Переключить все"
+
+msgid "mttv/InterfaceView/timeline"
+msgstr "Отображать таймлайн"
+
+msgid "mttv/InterfaceView/timers"
+msgstr "Отображать боевые таймеры"
+
+msgid "mttv/Interpolate/bezierControl"
+msgstr "Bezier Control"
+
+msgid "mttv/Interpolate/bezierHard"
+msgstr "Bezier Hard"
+
+msgid "mttv/Interpolate/clampedCubicSpline"
+msgstr "Clamped Cubic Spline"
+
+msgid "mttv/Interpolate/cubicSpline"
+msgstr "Cubic Spline"
+
+msgid "mttv/Interpolate/linear"
+msgstr "Linear"
+
+msgid "mttv/Interpolate/monotoneSpline"
+msgstr "Monotone Spline"
+
+msgid "mttv/Interpolate/placeholder"
+msgstr "Выбрать интерполяцию"
+
+msgid "mttv/Interpolate/source"
+msgstr "Source"
+
+msgid "mttv/MarkerView/healthIndicatorOption/dontShow"
+msgstr "Не показывать"
+
+msgid "mttv/MarkerView/healthIndicatorOption/hpLeft"
+msgstr "Осталось прочности"
+
+msgid "mttv/MarkerView/healthIndicatorOption/hpLeftAll"
+msgstr "Осталось прочности / всего"
+
+msgid "mttv/MarkerView/healthIndicatorOption/percents"
+msgstr "Осталось прочности в процентах"
+
+msgid "mttv/MarkerView/healthIndicatorType"
+msgstr "Тип индикатора прочности"
+
+msgid "mttv/MarkerView/markerType"
+msgstr "Тип маркера"
+
+msgid "mttv/MarkerView/markerTypeOptions/ally"
+msgstr "Союзник"
+
+msgid "mttv/MarkerView/markerTypeOptions/default"
+msgstr "Стандартный"
+
+msgid "mttv/MarkerView/markerTypeOptions/enemy"
+msgstr "Враг"
+
+msgid "mttv/MarkerView/markerTypeOptions/squadman"
+msgstr "Взвод"
+
+msgid "mttv/MarkerView/markerTypeOptions/teamkiller"
+msgstr "Тимкиллер"
+
+msgid "mttv/MarkerView/showActionMarker"
+msgstr "Показывать действия"
+
+msgid "mttv/MarkerView/showDamageType"
+msgstr "Показывать тип урона"
+
+msgid "mttv/MarkerView/showHealth"
+msgstr "Показывать полоску прочности"
+
+msgid "mttv/MarkerView/showMarker"
+msgstr "Показывать маркер"
+
+msgid "mttv/MarkerView/showPlayerName"
+msgstr "Показывать имя игрока"
+
+msgid "mttv/MarkerView/showReceivedDamage"
+msgstr "Показывать полученный урон"
+
+msgid "mttv/MarkerView/showStatusContainer"
+msgstr "Показывать статусы"
+
+msgid "mttv/MarkerView/showVehicleIcon"
+msgstr "Показывать иконку"
+
+msgid "mttv/MarkerView/showVehicleLevel"
+msgstr "Показывать уровень"
+
+msgid "mttv/MarkerView/showVehicleName"
+msgstr "Показывать название"
+
+msgid "mttv/MarkerView/showVehicleType"
+msgstr "Показывать иконку класса"
+
+msgid "mttv/OptionsView/hotkeysList"
+msgstr "Сохраненные настройки горячих клавиш"
+
+msgid "mttv/OptionsView/optionsView"
+msgstr "Настройки"
+
+msgid "mttv/OptionsView/timeWarpShift"
+msgstr "Перемотка при нажатом Shift (сек.)"
+
+msgid "mttv/RecordsView/bezierControlTension"
+msgstr "Жёсткость контрольных точек:"
+
+msgid "mttv/RecordsView/clear"
+msgstr "Очистить точки"
+
+msgid "mttv/RecordsView/dump"
+msgstr "Дамп"
+
+msgid "mttv/RecordsView/inertialFinish"
+msgstr "Инерция после завершения пути"
+
+msgid "mttv/RecordsView/play"
+msgstr "Запустить"
+
+msgid "mttv/RecordsView/preset"
+msgstr "Preset:"
+
+msgid "mttv/RecordsView/profile"
+msgstr "Profile:"
+
+msgid "mttv/RecordsView/rebuild"
+msgstr "Пересобрать отсюда"
+
+msgid "mttv/RecordsView/record"
+msgstr "Запись"
+
+msgid "mttv/RecordsView/recordInterval"
+msgstr "Интервал записи (мс):"
+
+msgid "mttv/RecordsView/recordsView"
+msgstr "Записи"
+
+msgid "mttv/RecordsView/showPath"
+msgstr "Отрисовка пути"
+
+msgid "mttv/RecordsView/showStatus"
+msgstr "Показывать окно обработчика"
+
+msgid "mttv/RecordsView/stop"
+msgstr "Остановить"
+
+msgid "mttv/RecordsView/tune"
+msgstr "Tune:"
+
+msgid "mttv/SnapshotsView/autoPause"
+msgstr "Автопауза при загрузке"
+
+msgid "mttv/SnapshotsView/create"
+msgstr "Создать"
+
+msgid "mttv/SnapshotsView/restore"
+msgstr "Загрузить"
+
+msgid "mttv/SnapshotsView/restoreFOV"
+msgstr "Восстанавливать FOV камеры"
+
+msgid "mttv/SnapshotsView/restorePosition"
+msgstr "Восстанавливать положение камеры"
+
+msgid "mttv/SnapshotsView/restoreTime"
+msgstr "Восстанавливать время реплея"
+
+msgid "mttv/SnapshotsView/restoreToCurrentBinding"
+msgstr "Восстанавливать к текущей привязке"
+
+msgid "mttv/SnapshotsView/snapshotsView"
+msgstr "Снепшоты"
+
+msgid "mttv/VehicleSelection/SPG"
+msgstr "САУ"
+
+msgid "mttv/VehicleSelection/allNations"
+msgstr "Все нации"
+
+msgid "mttv/VehicleSelection/allTiers"
+msgstr "Все уровни"
+
+msgid "mttv/VehicleSelection/allTypes"
+msgstr "Все классы"
+
+msgid "mttv/VehicleSelection/atSPG"
+msgstr "ПТ САУ"
+
+msgid "mttv/VehicleSelection/china"
+msgstr "Китай"
+
+msgid "mttv/VehicleSelection/czech"
+msgstr "Чехословакия"
+
+msgid "mttv/VehicleSelection/france"
+msgstr "Франция"
+
+msgid "mttv/VehicleSelection/germany"
+msgstr "Германия"
+
+msgid "mttv/VehicleSelection/heavyTank"
+msgstr "Тяжёлый танк"
+
+msgid "mttv/VehicleSelection/italy"
+msgstr "Италия"
+
+msgid "mttv/VehicleSelection/japan"
+msgstr "Япония"
+
+msgid "mttv/VehicleSelection/lightTank"
+msgstr "Лёгкий танк"
+
+msgid "mttv/VehicleSelection/mediumTank"
+msgstr "Средний танк"
+
+msgid "mttv/VehicleSelection/poland"
+msgstr "Польша"
+
+msgid "mttv/VehicleSelection/sweden"
+msgstr "Швеция"
+
+msgid "mttv/VehicleSelection/tier"
+msgstr "Уровень"
+
+msgid "mttv/VehicleSelection/uk"
+msgstr "Великобритания"
+
+msgid "mttv/VehicleSelection/usa"
+msgstr "США"
+
+msgid "mttv/VehicleSelection/ussr"
+msgstr "СССР"
+
+msgid "mttv/commonContextmenuClean"
+msgstr "Очистить"
+
+msgid "mttv/commonContextmenuDefault"
+msgstr "По умолчанию"
+
+msgid "mttv/commonEntityEditorTitle"
+msgstr "MTTV Entity Editor"
+
+msgid "mttv/commonWindowTitle"
+msgstr "MTTV - помощник"
+
+msgid "mttv/hotkeys/activateFreeCamera"
+msgstr "Свободная камера"
+
+msgid "mttv/hotkeys/camAngularVelocityDecrement"
+msgstr "Камера: Уменьшить угловую скорость"
+
+msgid "mttv/hotkeys/camAngularVelocityIncrement"
+msgstr "Камера: Увеличить угловую скорость"
+
+msgid "mttv/hotkeys/camBindToVehicle"
+msgstr "Камера: Прицепить к машине"
+
+msgid "mttv/hotkeys/camLinearVelocityDecrement"
+msgstr "Камера: Уменьшить линейную скорость"
+
+msgid "mttv/hotkeys/camLinearVelocityIncrement"
+msgstr "Камера: Увеличить линейную скорость"
+
+msgid "mttv/hotkeys/camLookAt"
+msgstr "Камера: Смотреть на машину или точку"
+
+msgid "mttv/hotkeys/camMoveBackward"
+msgstr "Камера: Двигаться назад"
+
+msgid "mttv/hotkeys/camMoveDown"
+msgstr "Камера: Двигаться вниз"
+
+msgid "mttv/hotkeys/camMoveForward"
+msgstr "Камера: Двигаться вперёд"
+
+msgid "mttv/hotkeys/camMoveLeft"
+msgstr "Камера: Двигаться влево"
+
+msgid "mttv/hotkeys/camMoveRight"
+msgstr "Камера: Двигаться вправо"
+
+msgid "mttv/hotkeys/camMoveUp"
+msgstr "Камера: Двигаться вверх"
+
+msgid "mttv/hotkeys/camRevertVerticalVelocity"
+msgstr "Камера: Вернуть вертикальную скорость"
+
+msgid "mttv/hotkeys/camRotateCClockwise"
+msgstr "Камера: Повернуть против часовой стрелки"
+
+msgid "mttv/hotkeys/camRotateClockwise"
+msgstr "Камера: Повернуть по часовой стрелке"
+
+msgid "mttv/hotkeys/camRotateDown"
+msgstr "Камера: Повернуть вниз"
+
+msgid "mttv/hotkeys/camRotateLeft"
+msgstr "Камера: Повернуть влево"
+
+msgid "mttv/hotkeys/camRotateRight"
+msgstr "Камера: Повернуть вправо"
+
+msgid "mttv/hotkeys/camRotateUp"
+msgstr "Камера: Повернуть вверх"
+
+msgid "mttv/hotkeys/camSetDefaultFov"
+msgstr "Камера: Установить стандартный FOV"
+
+msgid "mttv/hotkeys/camSetDefaultRoll"
+msgstr "Камера: Установить стандартный наклон"
+
+msgid "mttv/hotkeys/camShowGunMarker"
+msgstr "Камера: Показать маркер"
+
+msgid "mttv/hotkeys/camSwitchInertia"
+msgstr "Камера: Переключить инерцию"
+
+msgid "mttv/hotkeys/camSwitchLandCamera"
+msgstr "Камера: Переключить наземную камеру"
+
+msgid "mttv/hotkeys/camSwitchRotateAroundPoint"
+msgstr "Камера: Переключить поворот вокруг точки"
+
+msgid "mttv/hotkeys/camTargetRadiusDecrement"
+msgstr "Камера: Уменьшение целевого радиуса"
+
+msgid "mttv/hotkeys/camTargetRadiusIncrement"
+msgstr "Камера: Увеличение целевого радиуса"
+
+msgid "mttv/hotkeys/camZoomGrowDown"
+msgstr "Камера: Уменьшить зум"
+
+msgid "mttv/hotkeys/camZoomGrowUp"
+msgstr "Камера: Увеличить зум"
+
+msgid "mttv/hotkeys/camZoomVelocityDecrement"
+msgstr "Камера: Уменьшить скорость зума"
+
+msgid "mttv/hotkeys/camZoomVelocityIncrement"
+msgstr "Камера: Увеличить скорость зума"
+
+msgid "mttv/hotkeys/cleaningFromDirt"
+msgstr "Очистить машины от грязи"
+
+msgid "mttv/hotkeys/interfaceMarkers"
+msgstr "Отображать маркеры танков"
+
+msgid "mttv/hotkeys/interfaceTimers"
+msgstr "Отображать боевые таймеры"
+
+msgid "mttv/hotkeys/replayAddCircle"
+msgstr "Добавить сегмент круг"
+
+msgid "mttv/hotkeys/replayAddPoint"
+msgstr "Добавить точку"
+
+msgid "mttv/hotkeys/replayDebugToggle"
+msgstr "Включить/отключить отрисовку"
+
+msgid "mttv/hotkeys/replayDeleteAll"
+msgstr "Удалить все точки"
+
+msgid "mttv/hotkeys/replayDeleteLast"
+msgstr "Удалить последнюю точку"
+
+msgid "mttv/hotkeys/replayFillBezierControl"
+msgstr "Заполнить bezier control"
+
+msgid "mttv/hotkeys/replayFillBezierHard"
+msgstr "Заполнить bezier hard"
+
+msgid "mttv/hotkeys/replayFillCubicSpline"
+msgstr "Заполнить cubic spline"
+
+msgid "mttv/hotkeys/replayFillLinear"
+msgstr "Заполнить linear"
+
+msgid "mttv/hotkeys/replayFillSource"
+msgstr "Не заполнять"
+
+msgid "mttv/hotkeys/replayPlay"
+msgstr "Начать/остановить проигрывание"
+
+msgid "mttv/hotkeys/replayRecord"
+msgstr "Начать/остановить запись"
+
+msgid "mttv/hotkeys/showPlayerMarker"
+msgstr "Маркер над танком игрока"
+
+msgid "mttv/hotkeys/snapshotCreate"
+msgstr "Создать снапшот"
+
+msgid "mttv/hotkeys/snapshotRestore"
+msgstr "Загрузить снапшот"
+
+msgid "mttv/hotkeys/switchGui"
+msgstr "Показать/Скрыть меню"
+
+msgid "mttv/hotkeys/timelineSwitchVisibility"
+msgstr "Переключить видимость таймлайна"
+
+msgid "mttv/selectOption"
+msgstr "Выбрать значение"
+
+msgid "mttv/watchers/warning"
+msgstr ""
+"Опасная зона: изменения могут вызвать неожиданные эффекты, даже сбой! "
+"Доступно только на гибридном клиенте."
+
+msgid "mttv/watchersView"
+msgstr "Watchers"
+
 msgid "piercingDebugPanel/header/dispersion"
 msgstr "Разброс БП: "
 
@@ -366,6 +1086,12 @@ msgstr "Toggle"
 
 msgid "wulf/content/pager"
 msgstr "{current}/{total}"
+
+msgid "wulf/debugOff"
+msgstr "Hide GF zones (Ctrl+G)"
+
+msgid "wulf/debugOn"
+msgstr "Display GF zones (Ctrl+G)"
 
 msgid "wulf/demoWindow/title"
 msgstr "Demo Window"

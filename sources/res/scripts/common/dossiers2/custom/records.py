@@ -2118,6 +2118,8 @@ RECORDS = (
  (
   'singleAchievements', 'betaTester', 'p', 'B', 1),
  (
+  'singleAchievements', '13YearsOfService', 'p', 'B', 1),
+ (
   'singleAchievements', '12YearsOfService', 'p', 'B', 1),
  (
   'singleAchievements', '11YearsOfService', 'p', 'B', 1),
@@ -2372,7 +2374,7 @@ RECORDS = (
  (
   'singleAchievements', 'august23', 'p', 'B', 1),
  (
-  'singleAchievements', 'prime_gaming_reserved_13', 'p', 'B', 1),
+  'singleAchievements', 'september23', 'p', 'B', 1),
  (
   'singleAchievements', 'prime_gaming_reserved_14', 'p', 'B', 1),
  (
@@ -3344,7 +3346,11 @@ RECORDS = (
  (
   'mt_maxVersusAI', 'maxDamageVehicle', 'p', 'I', 4294967295),
  (
-  'singleAchievements', 'mt_comp_3_1', 'p', 'B', 1))
+  'singleAchievements', 'mt_comp_3_1', 'p', 'B', 1),
+ (
+  'singleAchievements', 'hw2023Medal01', 'p', 'B', 1),
+ (
+  'singleAchievements', 'hw2023Medal02', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4865,7 +4871,7 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('mtAchievements', 'rpBronzeMedal'): 1793, 
    ('mtAchievements', 'rpSilverMedal'): 1794, 
    ('mtAchievements', 'rpGoldMedal'): 1795, 
-   ('singleAchievements', 'prime_gaming_reserved_13'): 1796, 
+   ('singleAchievements', 'september23'): 1796, 
    ('singleAchievements', 'prime_gaming_reserved_14'): 1797, 
    ('singleAchievements', 'prime_gaming_reserved_15'): 1798, 
    ('singleAchievements', 'prime_gaming_reserved_16'): 1799, 
@@ -5018,7 +5024,10 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('mt_maxVersusAI', 'maxFragsVehicle'): 31031, 
    ('mt_maxVersusAI', 'maxDamage'): 31032, 
    ('mt_maxVersusAI', 'maxDamageVehicle'): 31033, 
-   ('singleAchievements', 'mt_comp_3_1'): 31034}
+   ('singleAchievements', 'mt_comp_3_1'): 31034, 
+   ('singleAchievements', '13YearsOfService'): 31035, 
+   ('singleAchievements', 'hw2023Medal01'): 31036, 
+   ('singleAchievements', 'hw2023Medal02'): 31037}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

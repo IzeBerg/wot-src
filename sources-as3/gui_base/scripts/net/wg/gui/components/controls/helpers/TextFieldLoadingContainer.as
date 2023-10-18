@@ -1,6 +1,5 @@
 package net.wg.gui.components.controls.helpers
 {
-   import flash.events.Event;
    import flash.text.TextField;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
@@ -137,7 +136,6 @@ package net.wg.gui.components.controls.helpers
                {
                   this._textField.x = this._loading.x;
                   this._textField.y = this._loading.y;
-                  this._textField.dispatchEvent(new Event(Event.CHANGE));
                }
             }
          }

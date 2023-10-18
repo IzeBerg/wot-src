@@ -11,6 +11,8 @@ def bonusCapsManager(bonusCap, domain=CGF.DomainOption.DomainAll):
     def predicate(spaceID):
         player = BigWorld.player()
         if spaceID != ClientArena.DEFAULT_ARENA_WORLD_ID and isinstance(player, PlayerAvatar):
+            if isinstance(bonusCap, tuple):
+                return ARENA_BONUS_TYPE_CAPS.checkAny(player.arenaBonusType, *bonusCap)
             return ARENA_BONUS_TYPE_CAPS.checkAny(player.arenaBonusType, bonusCap)
         return False
 

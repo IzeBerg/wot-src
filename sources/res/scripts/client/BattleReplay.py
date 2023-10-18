@@ -27,6 +27,7 @@ REPLAY_TIME_MARK_CLIENT_READY = 2147483648
 REPLAY_TIME_MARK_REPLAY_FINISHED = 2147483649
 REPLAY_TIME_MARK_CURRENT_TIME = 2147483650
 FAST_FORWARD_STEP = 20.0
+MIN_REPLAY_TIME = 1
 _POSTMORTEM_CTRL_MODES = (
  CTRL_MODE_NAME.POSTMORTEM, CTRL_MODE_NAME.DEATH_FREE_CAM, CTRL_MODE_NAME.RESPAWN_DEATH)
 _FORWARD_INPUT_CTRL_MODES = (
@@ -38,7 +39,7 @@ _IGNORED_SWITCHING_CTRL_MODES = (
  CTRL_MODE_NAME.SNIPER,
  CTRL_MODE_NAME.ARCADE,
  CTRL_MODE_NAME.ARTY,
- CTRL_MODE_NAME.FLAMETHROWER,
+ CTRL_MODE_NAME.SPG_ONLY_ARTY_MODE,
  CTRL_MODE_NAME.STRATEGIC,
  CTRL_MODE_NAME.DUAL_GUN,
  CTRL_MODE_NAME.MAP_CASE,
@@ -63,8 +64,6 @@ class CallbackDataNames(object):
     DYN_SQUAD_ACCEPT_ACTION_NAME = 'DynSquad.AcceptInvitationToSquad'
     DYN_SQUAD_REJECT_ACTION_NAME = 'DynSquad.RejectInvitationToSquad'
     GUN_DAMAGE_SOUND = 'gunDamagedSound'
-    SHOW_AUTO_AIM_MARKER = 'showAutoAimMarker'
-    HIDE_AUTO_AIM_MARKER = 'hideAutoAimMarker'
     ON_TARGET_VEHICLE_CHANGED = 'onTargetVehicleChanged'
     MT_CONFIG_CALLBACK = 'mapsTrainingConfigurationCallback'
 
@@ -240,12 +239,14 @@ class BattleReplay(object):
         self.__rewind = False
         self.replayTimeout = 0
         self.__arenaPeriod = -1
+        self.__handleInput = True
         self.__previousPeriod = -1
         self.enableAutoRecordingBattles(True)
         self.onCommandReceived = Event.Event()
         self.onAmmoSettingChanged = Event.Event()
         self.onServerAimChanged = Event.Event()
         self.onStopped = Event.Event()
+        self.onPlay = Event.Event()
         if hasattr(self.__replayCtrl, 'setupStreamExcludeFilter'):
             import streamIDs
             self.__replayCtrl.setupStreamExcludeFilter(streamIDs.STREAM_ID_CHAT_MIN, streamIDs.STREAM_ID_CHAT_MAX)
@@ -259,6 +260,12 @@ class BattleReplay(object):
 
         self.__originalPickleLoads = None
         return
+
+    def enableHandleInput(self):
+        self.__handleInput = True
+
+    def disableHandleInput(self):
+        self.__handleInput = False
 
     def subscribe(self):
         g_playerEvents.onBattleResultsReceived += self.__onBattleResultsReceived
@@ -377,10 +384,19 @@ class BattleReplay(object):
         if self.__replayCtrl.startPlayback(fileName):
             self.__playbackSpeedIdx = self.__playbackSpeedModifiers.index(1.0)
             self.__savedPlaybackSpeedIdx = self.__playbackSpeedIdx
+            replayEndTime = self.__replayCtrl.getReplayEndTime()
+            totalReplayTime = self.__replayCtrl.getTimeMark(REPLAY_TIME_MARK_REPLAY_FINISHED)
+            replayStartTime = self.__replayCtrl.getReplayStartTime()
+            replayStartTime = min(replayStartTime, replayEndTime - MIN_REPLAY_TIME, totalReplayTime - MIN_REPLAY_TIME)
+            replayStartTime = max(replayStartTime, 0)
+            self.__replayStartTime = replayStartTime
+            self.__replayEndTime = replayEndTime
             g_replayEvents.onPlaying()
+            self.onPlay(fileName, True)
             return True
         else:
             self.__fileName = None
+            self.onPlay(fileName, False)
             return False
 
     def stop(self, rewindToTime=None, delete=False, isDestroyed=False):
@@ -455,6 +471,8 @@ class BattleReplay(object):
             return False
         if self.isTimeWarpInProgress:
             return True
+        if not self.__handleInput:
+            return False
         if key == Keys.KEY_F1:
             if not isRepeat and not isDown:
                 self.__showInfoMessages()
@@ -884,6 +902,12 @@ class BattleReplay(object):
             self.__replayCtrl.onBattleLoadingFinished()
 
     def onReplayFinished(self):
+        replayTimes = self.__replayCtrl.getReplayTimes() - 1
+        if replayTimes > 0:
+            self.__replayCtrl.setReplayTimes(replayTimes)
+            self.timeWarp(self.__replayStartTime - self.currentTime)
+            return
+        self.__replayCtrl.processFinish()
         if not self.scriptModalWindowsEnabled:
             self.stop()
             return
@@ -944,8 +968,13 @@ class BattleReplay(object):
         vehTeam = arenaVehicles[vehID]['team']
         return currTeam == vehTeam
 
-    def onPostTickCallback(self, currentTick, totalTicks):
+    def onPostTickCallback(self):
         self.__aoi.flush(self.getControlMode())
+        currentTime = self.currentTime
+        if currentTime < self.__replayStartTime:
+            self.timeWarp(self.__replayStartTime - currentTime)
+        elif currentTime > self.__replayEndTime:
+            self.onReplayFinished()
 
     def setAmmoSetting(self, idx):
         if not isPlayerAvatar():

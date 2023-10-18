@@ -178,7 +178,7 @@ class CurtainWindow(LobbyWindow):
     def close(self):
         self.content.close()
 
-    def hide(self):
+    def hide(self, destroy=False):
         self.content.hide()
 
     def reveal(self):

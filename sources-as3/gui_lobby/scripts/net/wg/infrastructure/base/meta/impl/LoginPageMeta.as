@@ -41,6 +41,16 @@ package net.wg.infrastructure.base.meta.impl
       
       public var changeAccount:Function;
       
+      public var onVideoLoaded:Function;
+      
+      public var musicFadeOut:Function;
+      
+      public var videoLoadingFailed:Function;
+      
+      public var switchBgMode:Function;
+      
+      public var setMute:Function;
+      
       private var _simpleFormVo:SimpleFormVo;
       
       private var _dataProviderSocialIconVo:DataProvider;
@@ -166,6 +176,36 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.changeAccount,"changeAccount" + Errors.CANT_NULL);
          this.changeAccount();
+      }
+      
+      public function onVideoLoadedS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onVideoLoaded,"onVideoLoaded" + Errors.CANT_NULL);
+         this.onVideoLoaded();
+      }
+      
+      public function musicFadeOutS() : void
+      {
+         App.utils.asserter.assertNotNull(this.musicFadeOut,"musicFadeOut" + Errors.CANT_NULL);
+         this.musicFadeOut();
+      }
+      
+      public function videoLoadingFailedS() : void
+      {
+         App.utils.asserter.assertNotNull(this.videoLoadingFailed,"videoLoadingFailed" + Errors.CANT_NULL);
+         this.videoLoadingFailed();
+      }
+      
+      public function switchBgModeS() : void
+      {
+         App.utils.asserter.assertNotNull(this.switchBgMode,"switchBgMode" + Errors.CANT_NULL);
+         this.switchBgMode();
+      }
+      
+      public function setMuteS(param1:Boolean) : void
+      {
+         App.utils.asserter.assertNotNull(this.setMute,"setMute" + Errors.CANT_NULL);
+         this.setMute(param1);
       }
       
       public final function as_setDefaultValues(param1:Object) : void

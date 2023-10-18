@@ -163,6 +163,21 @@
 							<name>particles/Environment/scenarios/br_nitro_load.eff</name>
 						</selector>
 					</selector>
+					<selector>
+						<key>4</key>
+						<type>range</type>
+						<variable>engineLoad</variable>
+						<selector>
+							<key>1</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_idle_koshey.eff</name>
+						</selector>
+						<selector>
+							<key>2</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_work_load_koshey.eff</name>
+						</selector>
+					</selector>
 				</selector>
 				<selector>
 					<type>discrete</type>
@@ -390,6 +405,21 @@
 							<key>2</key>
 							<type>effect</type>
 							<name>particles/Environment/scenarios/br_nitro_load.eff</name>
+						</selector>
+					</selector>
+					<selector>
+						<key>4</key>
+						<type>range</type>
+						<variable>engineLoad</variable>
+						<selector>
+							<key>1</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_idle_koshey.eff</name>
+						</selector>
+						<selector>
+							<key>2</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_work_load_koshey.eff</name>
 						</selector>
 					</selector>
 				</selector>
@@ -621,6 +651,21 @@
 							<name>particles/Environment/scenarios/br_nitro_load.eff</name>
 						</selector>
 					</selector>
+					<selector>
+						<key>4</key>
+						<type>range</type>
+						<variable>engineLoad</variable>
+						<selector>
+							<key>1</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_idle_koshey.eff</name>
+						</selector>
+						<selector>
+							<key>2</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_work_load_koshey.eff</name>
+						</selector>
+					</selector>
 				</selector>
 				<selector>
 					<type>discrete</type>
@@ -848,6 +893,21 @@
 							<key>2</key>
 							<type>effect</type>
 							<name>particles/Environment/scenarios/br_nitro_load.eff</name>
+						</selector>
+					</selector>
+					<selector>
+						<key>4</key>
+						<type>range</type>
+						<variable>engineLoad</variable>
+						<selector>
+							<key>1</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_idle_koshey.eff</name>
+						</selector>
+						<selector>
+							<key>2</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_work_load_koshey.eff</name>
 						</selector>
 					</selector>
 				</selector>
@@ -1079,6 +1139,21 @@
 							<name>particles/Environment/scenarios/br_nitro_load.eff</name>
 						</selector>
 					</selector>
+					<selector>
+						<key>4</key>
+						<type>range</type>
+						<variable>engineLoad</variable>
+						<selector>
+							<key>1</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_idle_koshey.eff</name>
+						</selector>
+						<selector>
+							<key>2</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_work_load_koshey.eff</name>
+						</selector>
+					</selector>
 				</selector>
 				<selector>
 					<type>discrete</type>
@@ -1308,6 +1383,21 @@
 							<name>particles/Environment/scenarios/br_nitro_load.eff</name>
 						</selector>
 					</selector>
+					<selector>
+						<key>4</key>
+						<type>range</type>
+						<variable>engineLoad</variable>
+						<selector>
+							<key>1</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_idle_koshey.eff</name>
+						</selector>
+						<selector>
+							<key>2</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_work_load_koshey.eff</name>
+						</selector>
+					</selector>
 				</selector>
 				<selector>
 					<type>discrete</type>
@@ -1535,6 +1625,21 @@
 							<key>2</key>
 							<type>effect</type>
 							<name>particles/Environment/scenarios/br_nitro_load.eff</name>
+						</selector>
+					</selector>
+					<selector>
+						<key>4</key>
+						<type>range</type>
+						<variable>engineLoad</variable>
+						<selector>
+							<key>1</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_idle_koshey.eff</name>
+						</selector>
+						<selector>
+							<key>2</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_work_load_koshey.eff</name>
 						</selector>
 					</selector>
 				</selector>
@@ -1820,6 +1925,41 @@
 							<name>particles/Tank/exhaust/strv_engine_crit.eff</name>
 						</selector>
 					</selector>
+					<selector>
+						<key>4</key>
+						<type>range</type>
+						<variable>engineState</variable>
+						<selector>
+							<key>0</key>
+							<type>discrete</type>
+							<variable>siegeProgress</variable>
+							<selector>
+								<key>0</key>
+								<type>range</type>
+								<variable>engineLoad</variable>
+								<selector>
+									<key>1</key>
+									<type>effect</type>
+									<name>particles/Environment/event_halloween_2023/ability_forsage_idle_koshey.eff</name>
+								</selector>
+								<selector>
+									<key>2</key>
+									<type>effect</type>
+									<name>particles/Environment/event_halloween_2023/ability_forsage_work_load_koshey.eff</name>
+								</selector>
+							</selector>
+							<selector>
+								<key>1</key>
+								<type>effect</type>
+								<name>particles/Tank/exhaust/strv_change_exhaust.eff</name>
+							</selector>
+						</selector>
+						<selector>
+							<key>2</key>
+							<type>effect</type>
+							<name>particles/Tank/exhaust/strv_engine_crit.eff</name>
+						</selector>
+					</selector>
 				</selector>
 				<selector>
 					<type>discrete</type>
@@ -2047,6 +2187,21 @@
 							<key>2</key>
 							<type>effect</type>
 							<name>particles/Environment/scenarios/br_nitro_load.eff</name>
+						</selector>
+					</selector>
+					<selector>
+						<key>4</key>
+						<type>range</type>
+						<variable>engineLoad</variable>
+						<selector>
+							<key>1</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_idle_koshey.eff</name>
+						</selector>
+						<selector>
+							<key>2</key>
+							<type>effect</type>
+							<name>particles/Environment/event_halloween_2023/ability_forsage_work_load_koshey.eff</name>
 						</selector>
 					</selector>
 				</selector>

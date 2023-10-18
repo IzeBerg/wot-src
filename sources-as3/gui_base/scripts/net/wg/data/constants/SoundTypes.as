@@ -83,7 +83,7 @@ package net.wg.data.constants
       
       public static const CUSTOMIZATION_DEFAULT:String = "customizationDefault";
       
-      public static const CUSTOMIZATION_SELECT:String = "cust_select_double";
+      public static const CUSTOMIZATION_SELECT:String = "cust_select";
       
       public static const CUSTOMIZATION_REMOVE:String = "customizationRemove";
       

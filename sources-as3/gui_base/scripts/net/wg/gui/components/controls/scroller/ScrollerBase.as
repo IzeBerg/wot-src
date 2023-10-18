@@ -1101,12 +1101,10 @@ package net.wg.gui.components.controls.scroller
             }
             if(_loc3_)
             {
-               this._isDraggingHorizontally = false;
                this.throwHorizontallyWithVelocity(_loc5_ / _loc7_);
             }
             if(_loc4_)
             {
-               this._isDraggingVertically = false;
                this.throwVerticallyWithVelocity(_loc6_ / _loc7_);
             }
          }

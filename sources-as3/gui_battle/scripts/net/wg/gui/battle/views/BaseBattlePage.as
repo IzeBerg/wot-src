@@ -131,11 +131,9 @@ package net.wg.gui.battle.views
       
       override public function updateStage(param1:Number, param2:Number) : void
       {
-         var _loc5_:int = 0;
-         var _loc6_:Number = NaN;
-         var _loc7_:int = 0;
+         var _loc3_:int = 0;
          super.updateStage(param1,param2);
-         var _loc3_:int = param1 >> 1;
+         _loc3_ = param1 >> 1;
          var _loc4_:int = param2 >> 1;
          _originalWidth = param1;
          _originalHeight = param2;
@@ -144,11 +142,8 @@ package net.wg.gui.battle.views
          this.updatePrebattleTimerPosition(_loc3_);
          this.damagePanel.x = 0;
          this.damagePanel.y = param2 - this.damagePanel.initedHeight;
-         if(this.battleTimer)
-         {
-            this.battleTimer.x = param1 - this.battleTimer.initedWidth;
-            this.battleTimer.y = 0;
-         }
+         this.battleTimer.x = param1 - this.battleTimer.initedWidth;
+         this.battleTimer.y = 0;
          if(this.dualGunPanel)
          {
             this.dualGunPanel.updateStage(param1,param2);
@@ -158,15 +153,12 @@ package net.wg.gui.battle.views
             this.hitTestFix.width = param1;
             this.hitTestFix.height = param2;
          }
-         if(this.ribbonsPanel)
-         {
-            this.ribbonsPanel.x = _loc3_ + this.ribbonsPanel.offsetX;
-            _loc5_ = this.getRibbonsCenterOffset(param2);
-            _loc6_ = _loc4_ - _loc5_ - RIBBONS_MIN_BOTTOM_PADDING_Y;
-            this.ribbonsPanel.setFreeWorkingHeight(_loc6_);
-            _loc7_ = _loc4_ + (_loc6_ - this.ribbonsPanel.freeHeightForRenderers >> 1) + _loc5_;
-            this.ribbonsPanel.y = _loc7_;
-         }
+         this.ribbonsPanel.x = _loc3_ + this.ribbonsPanel.offsetX;
+         var _loc5_:int = this.getRibbonsCenterOffset(param2);
+         var _loc6_:Number = _loc4_ - _loc5_ - RIBBONS_MIN_BOTTOM_PADDING_Y;
+         this.ribbonsPanel.setFreeWorkingHeight(_loc6_);
+         var _loc7_:int = _loc4_ + (_loc6_ - this.ribbonsPanel.freeHeightForRenderers >> 1) + _loc5_;
+         this.ribbonsPanel.y = _loc7_;
          if(this.perksPanel)
          {
             this.perksPanel.x = _loc3_;
@@ -185,16 +177,10 @@ package net.wg.gui.battle.views
          this.playerMessageListPositionUpdate();
          this.vehicleMessageList.updateStage();
          this.vehicleMessageListPositionUpdate();
-         if(this.battleLoading)
-         {
-            this.battleLoading.updateStage(param1,param2);
-         }
+         this.battleLoading.updateStage(param1,param2);
          this.gameMessagesPanel.x = _loc3_;
-         if(this.calloutPanel)
-         {
-            this.calloutPanel.x = _loc3_ - CALLOUT_CENTER_SCREEN_OFFSET_X;
-            this.calloutPanel.y = _loc4_ + CALLOUT_CENTER_SCREEN_OFFSET_Y;
-         }
+         this.calloutPanel.x = _loc3_ - CALLOUT_CENTER_SCREEN_OFFSET_X;
+         this.calloutPanel.y = _loc4_ + CALLOUT_CENTER_SCREEN_OFFSET_Y;
          if(this.prebattleAmmunitionPanel)
          {
             this.prebattleAmmunitionPanel.x = _originalWidth - this.prebattleAmmunitionPanel.width >> 1;
@@ -231,21 +217,12 @@ package net.wg.gui.battle.views
       
       override protected function onPopulate() : void
       {
-         if(this.battleLoading)
-         {
-            this.registerComponent(this.battleLoading,BATTLE_VIEW_ALIASES.BATTLE_LOADING);
-         }
+         this.registerComponent(this.battleLoading,BATTLE_VIEW_ALIASES.BATTLE_LOADING);
          this.registerComponent(this.minimap,BATTLE_VIEW_ALIASES.MINIMAP);
          this.registerComponent(this.prebattleTimer,BATTLE_VIEW_ALIASES.PREBATTLE_TIMER);
          this.registerComponent(this.damagePanel,BATTLE_VIEW_ALIASES.DAMAGE_PANEL);
-         if(this.battleTimer)
-         {
-            this.registerComponent(this.battleTimer,BATTLE_VIEW_ALIASES.BATTLE_TIMER);
-         }
-         if(this.ribbonsPanel)
-         {
-            this.registerComponent(this.ribbonsPanel,BATTLE_VIEW_ALIASES.RIBBONS_PANEL);
-         }
+         this.registerComponent(this.battleTimer,BATTLE_VIEW_ALIASES.BATTLE_TIMER);
+         this.registerComponent(this.ribbonsPanel,BATTLE_VIEW_ALIASES.RIBBONS_PANEL);
          if(this.perksPanel)
          {
             this.registerComponent(this.perksPanel,BATTLE_VIEW_ALIASES.PERKS_PANEL);
@@ -254,10 +231,7 @@ package net.wg.gui.battle.views
          this.registerComponent(this.vehicleErrorMessageList,BATTLE_VIEW_ALIASES.VEHICLE_ERROR_MESSAGES);
          this.registerComponent(this.playerMessageList,BATTLE_VIEW_ALIASES.PLAYER_MESSAGES);
          this.registerComponent(this.gameMessagesPanel,BATTLE_VIEW_ALIASES.GAME_MESSAGES_PANEL);
-         if(this.calloutPanel)
-         {
-            this.registerComponent(this.calloutPanel,BATTLE_VIEW_ALIASES.CALLOUT_PANEL);
-         }
+         this.registerComponent(this.calloutPanel,BATTLE_VIEW_ALIASES.CALLOUT_PANEL);
          if(this.prebattleAmmunitionPanelAvailable && this.prebattleAmmunitionPanel)
          {
             this.registerComponent(this.prebattleAmmunitionPanel,BATTLE_VIEW_ALIASES.PREBATTLE_AMMUNITION_PANEL);
@@ -282,10 +256,7 @@ package net.wg.gui.battle.views
          this.postmortemTips.setCompVisible(false);
          this.updatePostmortemTipsPosition();
          addChild(this.postmortemTips);
-         if(this.ribbonsPanel)
-         {
-            this.ribbonsPanel.addEventListener(Event.CHANGE,this.onRibbonsPanelChangeHandler);
-         }
+         this.ribbonsPanel.addEventListener(Event.CHANGE,this.onRibbonsPanelChangeHandler);
          this.registerComponent(this.postmortemTips,BATTLE_VIEW_ALIASES.POSTMORTEM_PANEL);
          this.onRegisterStatisticController();
          super.onPopulate();
@@ -300,10 +271,7 @@ package net.wg.gui.battle.views
             this.prebattleAmmunitionPanel.removeEventListener(PrbAmmunitionPanelEvent.STATE_CHANGED,this.onPrebattleAmmunitionPanelStateChangedHandler);
             this.prebattleAmmunitionPanel = null;
          }
-         if(this.ribbonsPanel)
-         {
-            this.ribbonsPanel.removeEventListener(Event.CHANGE,this.onRibbonsPanelChangeHandler);
-         }
+         this.ribbonsPanel.removeEventListener(Event.CHANGE,this.onRibbonsPanelChangeHandler);
          this.gameMessagesPanel.removeEventListener(GameMessagesPanelEvent.MESSAGES_STARTED_PLAYING,this.onMessagesStartedPlayingHandler);
          this.gameMessagesPanel.removeEventListener(GameMessagesPanelEvent.MESSAGES_ENDED_PLAYING,this.onMessagesEndedPlayingHandler);
          this.gameMessagesPanel.removeEventListener(GameMessagesPanelEvent.ALL_MESSAGES_ENDED_PLAYING,this.onAllMessagesEndedPlayingHandler);
@@ -482,10 +450,7 @@ package net.wg.gui.battle.views
          this._messagesContainer.name = "messageListsContainer";
          this._messagesContainer.mouseEnabled = this._messagesContainer.mouseChildren = false;
          addChild(this._messagesContainer);
-         if(this.battleLoading)
-         {
-            swapChildren(this._messagesContainer,this.battleLoading);
-         }
+         swapChildren(this._messagesContainer,this.battleLoading);
          this.vehicleMessageList = new VehicleMessages(this._messagesContainer);
          this.vehicleErrorMessageList = new MessageListDAAPI(this._messagesContainer);
          this.playerMessageList = new MessageListDAAPI(this._messagesContainer);
@@ -576,7 +541,7 @@ package net.wg.gui.battle.views
       {
          if(this.prebattleAmmunitionPanel)
          {
-            this.prebattleAmmunitionPanel.setYPos(this.battleLoading && this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
+            this.prebattleAmmunitionPanel.setYPos(!!this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
          }
       }
       
@@ -653,10 +618,7 @@ package net.wg.gui.battle.views
       {
          if(this.prebattleAmmunitionPanel)
          {
-            if(this.battleLoading)
-            {
-               this.battleLoading.hasAmmunitionPanel(this.prebattleAmmunitionPanel.isInLoading);
-            }
+            this.battleLoading.hasAmmunitionPanel(this.prebattleAmmunitionPanel.isInLoading);
             this.updateAmmunitionPanelY();
          }
       }

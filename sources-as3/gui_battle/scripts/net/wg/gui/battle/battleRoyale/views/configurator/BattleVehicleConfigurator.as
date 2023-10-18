@@ -50,8 +50,6 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       private static const SEPARATOR_ALPHA:Number = 0.5;
       
       private static const VEH_TYPE_ICON_OFFSET_X:Number = -15;
-      
-      private static const VEHICLE_TYPE_ICON_HEIGHT:int = 74;
        
       
       public var vehModulesConfigurator:VehModuleConfiguratorCmp = null;
@@ -241,7 +239,7 @@ package net.wg.gui.battle.battleRoyale.views.configurator
             this._headerContainer.x = width - this._headerContainer.width >> 1;
             this._headerContainer.y = HEADER_OFFSET_Y + this._offsetDependsOnScreenHeight;
             this.separator.x = this.choiceInfoPanel.x = this.moduleInfoPanel.x = this.levelPanel.x = _loc2_;
-            this.levelPanel.y = this._headerContainer.y + VEHICLE_TYPE_ICON_HEIGHT + HEADER_OFFSET_Y | 0;
+            this.levelPanel.y = this._headerContainer.y + this._headerContainer.height + HEADER_OFFSET_Y | 0;
             this.vehModulesConfigurator.x = (width - _loc3_.width >> 1) - _loc3_.x;
             this.vehModulesConfigurator.y = this.levelPanel.y + LEVEL_BOTTOM_OFFSET + this._offsetDependsOnScreenHeight;
             this.separator.y = this.vehModulesConfigurator.y + VEHICLE_CONFIGURATOR_HEIGHT;

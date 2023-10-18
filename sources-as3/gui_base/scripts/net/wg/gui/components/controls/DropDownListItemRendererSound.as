@@ -22,23 +22,6 @@ package net.wg.gui.components.controls
          soundType = SoundTypes.DROPDN_ITEM_RNDR;
       }
       
-      override protected function onDispose() : void
-      {
-         this.focusElement = null;
-         super.onDispose();
-      }
-      
-      override public function setData(param1:Object) : void
-      {
-         if(_data == param1)
-         {
-            return;
-         }
-         App.toolTipMgr.hide();
-         this._tooltip = !!param1.hasOwnProperty(TOOLTIP_FIELD) ? param1[TOOLTIP_FIELD] : null;
-         this.data = param1;
-      }
-      
       override public function toString() : String
       {
          return "[WG DropDownListItemRendererSound " + name + "]";
@@ -55,14 +38,17 @@ package net.wg.gui.components.controls
       override protected function draw() : void
       {
          var _loc1_:Point = null;
-         if(enabled && isInvalid(InvalidationType.DATA))
+         if(isInvalid(InvalidationType.DATA))
          {
-            _loc1_ = new Point(mouseX,mouseY);
-            _loc1_ = this.localToGlobal(_loc1_);
-            if(this.hitTestPoint(_loc1_.x,_loc1_.y,true))
+            if(enabled)
             {
-               setState("over");
-               dispatchEvent(new MouseEvent(MouseEvent.ROLL_OVER));
+               _loc1_ = new Point(mouseX,mouseY);
+               _loc1_ = this.localToGlobal(_loc1_);
+               if(this.hitTestPoint(_loc1_.x,_loc1_.y,true))
+               {
+                  setState("over");
+                  dispatchEvent(new MouseEvent(MouseEvent.ROLL_OVER));
+               }
             }
          }
          super.draw();
@@ -78,20 +64,15 @@ package net.wg.gui.components.controls
          super.configUI();
       }
       
-      protected function hideTooltip() : void
+      override public function setData(param1:Object) : void
       {
-         if(this._tooltip)
+         if(_data == param1)
          {
-            App.toolTipMgr.hide();
+            return;
          }
-      }
-      
-      protected function showTooltip() : void
-      {
-         if(this._tooltip)
-         {
-            App.toolTipMgr.showComplex(this._tooltip);
-         }
+         App.toolTipMgr.hide();
+         this._tooltip = !!param1.hasOwnProperty(TOOLTIP_FIELD) ? param1[TOOLTIP_FIELD] : null;
+         this.data = param1;
       }
       
       override protected function handleMousePress(param1:MouseEvent) : void
@@ -110,6 +91,22 @@ package net.wg.gui.components.controls
       {
          this.hideTooltip();
          super.handleMouseRollOut(param1);
+      }
+      
+      protected function hideTooltip() : void
+      {
+         if(this._tooltip)
+         {
+            App.toolTipMgr.hide();
+         }
+      }
+      
+      protected function showTooltip() : void
+      {
+         if(this._tooltip)
+         {
+            App.toolTipMgr.showComplex(this._tooltip);
+         }
       }
    }
 }

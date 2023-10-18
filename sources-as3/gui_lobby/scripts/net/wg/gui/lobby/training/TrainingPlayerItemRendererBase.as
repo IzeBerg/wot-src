@@ -23,11 +23,11 @@ package net.wg.gui.lobby.training
    public class TrainingPlayerItemRendererBase extends ListItemRenderer implements IDropItem
    {
       
-      private static const GOLD_COLOR:int = 16761699;
+      private static const GOLD_COLOR:Number = 16761699;
       
-      private static const NAME_COLOR:int = 13224374;
+      private static const NAME_COLOR:Number = 13224374;
       
-      private static const VEHICLE_COLOR:int = 8092009;
+      private static const VEHICLE_COLOR:Number = 8092009;
        
       
       public var nameField:UserNameField;
@@ -50,8 +50,8 @@ package net.wg.gui.lobby.training
       
       public function TrainingPlayerItemRendererBase()
       {
-         this._tooltipMgr = App.toolTipMgr;
          super();
+         this._tooltipMgr = App.toolTipMgr;
          constraintsDisabled = true;
          preventAutosizing = true;
       }
@@ -77,10 +77,10 @@ package net.wg.gui.lobby.training
       
       override protected function onDispose() : void
       {
+         hitArea = null;
          removeEventListener(MouseEvent.MOUSE_DOWN,this.onMouseDownHandler,false);
          removeEventListener(MouseEvent.ROLL_OUT,this.onRollOutHandler,false);
          removeEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler,false);
-         hitArea = null;
          this._tooltipMgr = null;
          this.vehicleField = null;
          this.vehicleLevelField = null;
@@ -191,7 +191,7 @@ package net.wg.gui.lobby.training
       {
          var _loc1_:Point = new Point(mouseX,mouseY);
          _loc1_ = localToGlobal(_loc1_);
-         if(this._isMouseOver && hitTestPoint(_loc1_.x,_loc1_.y,true))
+         if(hitTestPoint(_loc1_.x,_loc1_.y,true) && this._isMouseOver)
          {
             this._tooltipMgr.show(TrainingRoomRendererVO(data).fullName);
             return true;

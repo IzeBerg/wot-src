@@ -28,8 +28,6 @@ package net.wg.gui.battle.comp7.stats.fullStats
       
       private var _tableCtrl:FullStatsTableCtrl = null;
       
-      private var _showVoiceChatControl:Boolean = false;
-      
       public function FullStats()
       {
          super();
@@ -119,7 +117,6 @@ package net.wg.gui.battle.comp7.stats.fullStats
          {
             this.setTitle();
          }
-         this.voiceChatActivation.visible = this._showVoiceChatControl && statsTable.visible;
       }
       
       public function as_setVoiceChatControlSelected(param1:Boolean) : void
@@ -129,8 +126,7 @@ package net.wg.gui.battle.comp7.stats.fullStats
       
       public function as_setVoiceChatControlVisible(param1:Boolean) : void
       {
-         this.voiceChatActivation.visible = param1 && statsTable.visible;
-         this._showVoiceChatControl = param1;
+         this.voiceChatActivation.visible = param1;
       }
       
       public function getReservesView() : IDAAPIModule

@@ -107,10 +107,6 @@ package
       
       public static const PROFILE_TABS_TOOLTIP_FORMATIONS_BODY:String = "#profile:profile/tabs/tooltip/formations/body";
       
-      public static const PROFILE_TABS_TOOLTIP_COLLECTIONS_HEADER:String = "#profile:profile/tabs/tooltip/collections/header";
-      
-      public static const PROFILE_TABS_TOOLTIP_COLLECTIONS_BODY:String = "#profile:profile/tabs/tooltip/collections/body";
-      
       public static const SECTION_SUMMARY_TITLE:String = "#profile:section/summary/title";
       
       public static const SECTION_SUMMARY_SCORES_TOTALBATTLES:String = "#profile:section/summary/scores/totalBattles";
@@ -226,8 +222,6 @@ package
       public static const SECTION_STATISTICS_HEADERTEXT_BATTLEROYALESOLO:String = "#profile:section/statistics/headerText/battleRoyaleSolo";
       
       public static const SECTION_STATISTICS_HEADERTEXT_BATTLEROYALESQUAD:String = "#profile:section/statistics/headerText/battleRoyaleSquad";
-      
-      public static const SECTION_STATISTICS_HEADERTEXT_VERSUSAI:String = "#profile:section/statistics/headerText/versusAI";
       
       public static const SECTION_STATISTICS_CHARTS_BYTYPELABEL:String = "#profile:section/statistics/charts/byTypeLabel";
       
@@ -432,8 +426,6 @@ package
       public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_BATTLEROYALESOLO:String = "#profile:section/technique/emptyScreenLabel/battleType/battleRoyaleSolo";
       
       public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_BATTLEROYALESQUAD:String = "#profile:section/technique/emptyScreenLabel/battleType/battleRoyaleSquad";
-      
-      public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_VERSUSAI:String = "#profile:section/technique/emptyScreenLabel/battleType/versusAI";
       
       public static const SECTION_TECHNIQUE_TITLE:String = "#profile:section/technique/title";
       
@@ -689,8 +681,6 @@ package
       
       public static const SECTION_FORMATIONS_HISTORY_DATESPATTERN:String = "#profile:section/formations/history/datesPattern";
       
-      public static const SECTION_COLLECTIONS_TITLE:String = "#profile:section/collections/title";
-      
       public static const PROFILE_DROPDOWN_BATTLESTYPE:String = "#profile:profile/dropdown/battlesType";
       
       public static const PROFILE_DROPDOWN_EXISTENCE:String = "#profile:profile/dropdown/existence";
@@ -726,8 +716,6 @@ package
       public static const PROFILE_DROPDOWN_LABELS_BATTLEROYALESOLO:String = "#profile:profile/dropdown/labels/battleRoyaleSolo";
       
       public static const PROFILE_DROPDOWN_LABELS_BATTLEROYALESQUAD:String = "#profile:profile/dropdown/labels/battleRoyaleSquad";
-      
-      public static const PROFILE_DROPDOWN_LABELS_VERSUSAI:String = "#profile:profile/dropdown/labels/versusAI";
       
       public static const PROFILE_SEASONSDROPDOWN_ALL:String = "#profile:profile/seasonsdropdown/all";
       
@@ -1095,13 +1083,13 @@ package
       
       public static const PROFILE_PARAMS_TOOLTIP_BRAVGDAMAGE_BODY:String = "#profile:profile/params/tooltip/brAvgDamage/body";
       
-      public static const PROFILE_DROPDOWN_LABELS_COMP7_ARCHIVE_GRIFFIN:String = "#profile:profile/dropdown/labels/comp7_archive_Griffin";
+      public static const PROFILE_DROPDOWN_LABELS_COMP7:String = "#profile:profile/dropdown/labels/comp7";
       
-      public static const PROFILE_DROPDOWN_LABELS_COMP7_SEASON_1:String = "#profile:profile/dropdown/labels/comp7_season_1";
+      public static const SECTION_STATISTICS_HEADERTEXT_COMP7:String = "#profile:section/statistics/headerText/comp7";
       
-      public static const SECTION_STATISTICS_HEADERTEXT_COMP7_ARCHIVE_GRIFFIN:String = "#profile:section/statistics/headerText/comp7_archive_Griffin";
+      public static const PROFILE_DROPDOWN_LABELS_COMP7_S2:String = "#profile:profile/dropdown/labels/comp7_s2";
       
-      public static const SECTION_STATISTICS_HEADERTEXT_COMP7_SEASON_1:String = "#profile:section/statistics/headerText/comp7_season_1";
+      public static const SECTION_STATISTICS_HEADERTEXT_COMP7_S2:String = "#profile:section/statistics/headerText/comp7_s2";
       
       public static const SECTION_STATISTICS_SCORES_AVGPRESTIGEPOINTS:String = "#profile:section/statistics/scores/avgPrestigePoints";
       
@@ -1182,6 +1170,8 @@ package
       public static const PROFILE_PARAMS_TOOLTIP_MAXHEALTHREPAIR_VEHICLE_BODY:String = "#profile:profile/params/tooltip/maxHealthRepair/vehicle/body";
       
       public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_COMP7:String = "#profile:section/technique/emptyScreenLabel/battleType/comp7";
+      
+      public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_COMP7_SEASON2:String = "#profile:section/technique/emptyScreenLabel/battleType/comp7_season2";
       
       public static const SECTION_TECHNIQUE_BUTTONBAR_PRESTIGEPOINTS:String = "#profile:section/technique/buttonBar/prestigePoints";
       

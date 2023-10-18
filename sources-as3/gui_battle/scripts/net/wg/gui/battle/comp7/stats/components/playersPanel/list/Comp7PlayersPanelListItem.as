@@ -1,5 +1,6 @@
 package net.wg.gui.battle.comp7.stats.components.playersPanel.list
 {
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.data.constants.generated.PLAYERS_PANEL_STATE;
    import net.wg.gui.battle.comp7.stats.PoiContainer;
@@ -9,7 +10,6 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.list
    import net.wg.gui.battle.components.stats.playersPanel.list.BasePlayersPanelListItem;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.constants.PlayersPanelInvalidationType;
    import net.wg.gui.battle.views.stats.constants.SquadInvalidationType;
-   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.motion.Tween;
    
    public class Comp7PlayersPanelListItem extends BasePlayersPanelListItem implements IComp7PlayersPanelListItem
@@ -48,11 +48,9 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.list
       
       private var _poi:PoiContainer = null;
       
-      private var _rank:String = null;
+      private var _rank:int = 0;
       
-      private var _rankDivision:String = null;
-      
-      private var _isQualification:Boolean = false;
+      private var _rankDivision:int = -1;
       
       private var _isSquadPersonal:Boolean = false;
       
@@ -107,15 +105,11 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.list
          super.draw();
          if(isInvalid(PlayersPanelInvalidationType.RANK_CHANGED))
          {
-            _loc1_ = StringUtils.isNotEmpty(this._rank) && StringUtils.isNotEmpty(this._rankDivision);
-            this.rankIcon.visible = _loc1_ || this._isQualification;
+            _loc1_ = this._rank > Values.DEFAULT_INT && this._rankDivision > Values.DEFAULT_INT;
+            this.rankIcon.visible = _loc1_;
             if(_loc1_)
             {
-               this.rankIcon.imageName = BATTLEATLAS.getRankIcon(this._rank,this._rankDivision);
-            }
-            else if(this._isQualification)
-            {
-               this.rankIcon.imageName = BATTLEATLAS.QUALIFICATION_22X22;
+               this.rankIcon.imageName = BATTLEATLAS.getRankIcon(this._rank.toString(),this._rankDivision.toString());
             }
          }
          if(isInvalid(SquadInvalidationType.SQUAD_INDEX))
@@ -191,15 +185,14 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.list
          }
       }
       
-      public function setRank(param1:String, param2:String, param3:Boolean) : void
+      public function setRank(param1:int, param2:int) : void
       {
-         if(this._rank == param1 && this._rankDivision == param2 && this._isQualification == param3)
+         if(this._rank == param1 && this._rankDivision == param2)
          {
             return;
          }
          this._rank = param1;
          this._rankDivision = param2;
-         this._isQualification = param3;
          invalidate(PlayersPanelInvalidationType.RANK_CHANGED);
       }
       

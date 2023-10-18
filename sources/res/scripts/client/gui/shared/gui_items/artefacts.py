@@ -1,4 +1,4 @@
-import typing
+import typing, BigWorld
 from constants import MIN_VEHICLE_LEVEL, MAX_VEHICLE_LEVEL
 from debug_utils import LOG_CURRENT_EXCEPTION
 from gui.Scaleform.genConsts.SLOT_HIGHLIGHT_TYPES import SLOT_HIGHLIGHT_TYPES
@@ -140,7 +140,13 @@ class Equipment(VehicleArtefact):
         return TAG_TRIGGER in self.tags
 
     def mayInstall(self, vehicle, slotIdx=None):
-        for idx, eq in enumerate(vehicle.consumables.installed):
+        installed = vehicle.consumables.installed
+        isHalloween = 'halloween_equipment' in self.tags
+        if isHalloween:
+            hwEqCtrl = BigWorld.player().HWAccountEquipmentController
+            vehicle = hwEqCtrl.makeVehicleHWAdapter(vehicle)
+            installed = vehicle.hwConsumables.installed
+        for idx, eq in enumerate(installed):
             if slotIdx is not None and idx == slotIdx or eq is None:
                 continue
             if eq.intCD != self.intCD:
@@ -148,7 +154,9 @@ class Equipment(VehicleArtefact):
                 if installPossible:
                     installPossible = self.descriptor.checkCompatibilityWithEquipment(eq.descriptor)
                 if not installPossible:
-                    return (False, 'not with installed equipment')
+                    reason = 'not with installed equipment' if not isHalloween else 'hw not with installed equipment'
+                    return (
+                     False, reason)
 
         return self.descriptor.checkCompatibilityWithVehicle(vehicle.descriptor)
 
@@ -170,6 +178,14 @@ class Equipment(VehicleArtefact):
                 compatibility = self.descriptor.checkCompatibilityWithEquipment(e.descriptor)
             if not compatibility:
                 conflictEqs.append(e)
+
+        if hasattr(vehicle, 'hwConsumables'):
+            for e in vehicle.hwConsumables.installed.getItems():
+                compatibility = e.descriptor.checkCompatibilityWithActiveEquipment(self.descriptor)
+                if compatibility:
+                    compatibility = self.descriptor.checkCompatibilityWithEquipment(e.descriptor)
+                if not compatibility:
+                    conflictEqs.append(e)
 
         return conflictEqs
 

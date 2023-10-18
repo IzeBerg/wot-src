@@ -14,6 +14,7 @@ package net.wg.gui.lobby.settings
    import net.wg.gui.lobby.settings.vo.config.aim.AimSettingsDataVo;
    import net.wg.infrastructure.events.ColorSchemeEvent;
    import net.wg.infrastructure.managers.IColorSchemeManager;
+   import net.wg.infrastructure.managers.counter.CounterManager;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.events.IndexEvent;
    import scaleform.clik.interfaces.IDataProvider;
@@ -221,25 +222,28 @@ package net.wg.gui.lobby.settings
          }
       }
       
-      override protected function getAvailableMarkVisitedCountersIds(param1:String, param2:Vector.<CountersVo>) : Array
+      override protected function getLineCountersIds(param1:String, param2:Vector.<CountersVo>) : Array
       {
+         var _loc6_:CountersVo = null;
          var _loc3_:Array = [];
          if(StringUtils.isEmpty(param1) || this._aimData == null)
          {
             return _loc3_;
          }
-         return super.getAvailableMarkVisitedCountersIds(param1,param2);
-      }
-      
-      override protected function isCounterCanMarkAsVisited(param1:String, param2:CountersVo) : Boolean
-      {
-         var _loc3_:SettingsDataVo = this._aimData[param1];
-         var _loc4_:SettingsControlProp = _loc3_[param2.componentId];
-         if(_loc4_ && LINE_COUNTER_TYPES.indexOf(_loc4_.type) != Values.DEFAULT_INT)
+         var _loc4_:SettingsControlProp = null;
+         var _loc5_:SettingsDataVo = this._aimData[param1];
+         for each(_loc6_ in param2)
          {
-            return true;
+            if(_loc6_.count == CounterManager.DEF_COUNTER_NO_VIEWED_VALUE)
+            {
+               _loc4_ = _loc5_[_loc6_.componentId];
+               if(_loc4_ && LINE_COUNTER_TYPES.indexOf(_loc4_.type) != Values.DEFAULT_INT)
+               {
+                  _loc3_.push(_loc6_.componentId);
+               }
+            }
          }
-         return super.isCounterCanMarkAsVisited(param1,param2);
+         return _loc3_;
       }
       
       private function updateShowContent() : void

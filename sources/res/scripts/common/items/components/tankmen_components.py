@@ -1,3 +1,4 @@
+from debug_utils import LOG_ERROR
 import weakref, itertools
 from constants import IS_CLIENT
 from items.components import component_constants
@@ -21,6 +22,7 @@ class SPECIAL_VOICE_TAG(object):
     QUICKY_BABY = 'quickyBabySpecialVoice'
     WITCHES_CREW = 'witchesSpecialVoice'
     HAND_OF_BLOOD = 'handOfBloodSpecialVoice'
+    HW_CREW = 'crewHWvoice'
     BATTLE_OF_BLOGGERS = ('ru1_LebwaSpecialVoice', 'ru2_YushaSpecialVoice', 'ru3_Amway921SpecialVoice',
                           'ru4_KorbenDallasSpecialVoice', 'eu1_MailandSpecialVoice',
                           'eu2_Skill4ltuSpecialVoice', 'eu3_DezgamezSpecialVoice',
@@ -45,8 +47,10 @@ class SPECIAL_VOICE_TAG(object):
     BPH_MT_2022 = ('IvanCarevichSpecialVoice', 'VasilisaSpecialVoice', 'KashcheiSpecialVoice',
                    'BabaYagaSpecialVoice')
     MOSFILM_2023 = ('TrusSpecialVoice', 'BalbesSpecialVoice', 'ByvalySpecialVoice')
+    HW_2023 = ('IvanCarevichHWSpecialVoice', 'VasilisaHWSpecialVoice', 'KashcheiHWSpecialVoice',
+               'BabaYagaHWSpecialVoice', 'KatrinaHWSpecialVoice')
     ALL = (
-     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, CELEBRITY_2022, DAY_OF_COSMONAUTICS_21, SABATON_2021, QUICKY_BABY, WITCHES_CREW, CELEBRITY_2023, HAND_OF_BLOOD) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021 + G_I_JOE_2022 + WHITE_TIGER_EVENT_2022 + BPH_2022 + BPH_MT_2022 + MOSFILM_2023
+     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, CELEBRITY_2022, DAY_OF_COSMONAUTICS_21, SABATON_2021, QUICKY_BABY, WITCHES_CREW, HW_CREW, CELEBRITY_2023, HAND_OF_BLOOD) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021 + G_I_JOE_2022 + WHITE_TIGER_EVENT_2022 + BPH_2022 + BPH_MT_2022 + MOSFILM_2023 + HW_2023
 
 
 class SPECIAL_CREW_TAG(object):
@@ -55,8 +59,9 @@ class SPECIAL_CREW_TAG(object):
     MIHO = 'mihoCrew'
     YHA = 'yhaCrew'
     WITCHES_CREW = 'witchesCrew'
+    HW_CREW = 'hwCrew'
     ALL = (
-     SABATON, OFFSPRING, MIHO, YHA, WITCHES_CREW)
+     SABATON, OFFSPRING, MIHO, YHA, WITCHES_CREW, HW_CREW)
 
 
 class GROUP_TAG(object):
@@ -346,22 +351,13 @@ class NationConfig(legacy_stuff.LegacyStuff):
             return
 
     def getFirstName(self, nameID):
-        if nameID in self.__firstNames:
-            return self.__firstNames[nameID]
-        else:
-            return component_constants.EMPTY_STRING
+        return self.__firstNames.get(nameID, component_constants.EMPTY_STRING)
 
     def getLastName(self, nameID):
-        if nameID in self.__lastNames:
-            return self.__lastNames[nameID]
-        else:
-            return component_constants.EMPTY_STRING
+        return self.__lastNames.get(nameID, component_constants.EMPTY_STRING)
 
     def getIcon(self, iconID):
-        if iconID in self.__icons:
-            return self.__icons[iconID]
-        else:
-            return component_constants.EMPTY_STRING
+        return self.__icons.get(iconID, component_constants.EMPTY_STRING)
 
     def getExtensionLessIcon(self, iconID):
         if iconID in self.__icons:
@@ -378,3 +374,51 @@ class NationConfig(legacy_stuff.LegacyStuff):
 
     def getGroupByLastName(self, nameID):
         return self.__lastNameIndex.get(nameID)
+
+
+class LoreGroupComponent(object):
+    __slots__ = 'descr_by_nation'
+    DEFAULT = 'default'
+
+    def __init__(self, descr):
+        self.descr_by_nation = {}
+        self.addDescrForNation(LoreGroupComponent.DEFAULT, descr)
+
+    def addDescrForNation(self, nation, descr):
+        if nation in self.descr_by_nation:
+            LOG_ERROR(('Lore description: {0} for nation: {1}, already exist ').format(descr, nation))
+        self.descr_by_nation[nation] = descr
+
+    def getDescrForNation(self, nation):
+        if nation in self.descr_by_nation:
+            return self.descr_by_nation[nation]
+        return self.descr_by_nation[LoreGroupComponent.DEFAULT]
+
+
+class LoreComponent(object):
+    __slots__ = ('descr_by_group', )
+    SECTION = 'descr_by_group'
+    NATION_SECTION = 'nations'
+    __DEFAULT = 'default'
+
+    def __init__(self):
+        self.descr_by_group = {}
+
+    def addDescrForGroup(self, group, descr):
+        if group in self.descr_by_group:
+            LOG_ERROR(('Description: {0} for group: {1}, already exist ').format(group, descr))
+        self.descr_by_group[group] = LoreGroupComponent(descr)
+
+    def addNationDescrForGroup(self, group, naiton, descr):
+        self.descr_by_group[group].addDescrForNation(naiton, descr)
+
+    def getLoreDescrForGroup(self, group, nation=LoreGroupComponent.DEFAULT, isDefault=False):
+        result = ''
+        if group in self.descr_by_group:
+            result = self.descr_by_group[group].getDescrForNation(nation)
+        elif isDefault:
+            result = self.descr_by_group[LoreComponent.__DEFAULT].getDescrForNation(LoreGroupComponent.DEFAULT)
+        return result
+
+    def __repr__(self):
+        return ('{}()').format(self.__class__.__name__)

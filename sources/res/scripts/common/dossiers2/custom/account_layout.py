@@ -340,12 +340,12 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'comp7Season1', 'hw2022Medal01', 'hw2022Medal02', '12YearsOfService',
  'NY23_AtmsphrLevel', 'NY23_CelebChallenge', 'BattlePassCommonPr_NY23',
  'BattlePassCommonPr_10', 'comp7_2023_1', 'Cosmic_MartianStalker', 'Cosmic_SpaceTrace',
- 'BattlePassCommonPr_11', 'prime_gaming_reserved_13', 'prime_gaming_reserved_14',
+ 'BattlePassCommonPr_11', 'september23', 'prime_gaming_reserved_14',
  'prime_gaming_reserved_15', 'prime_gaming_reserved_16', 'prime_gaming_reserved_17',
  'prime_gaming_reserved_18', 'prime_gaming_reserved_19', 'prime_gaming_reserved_20',
  'prime_gaming_reserved_21', 'prime_gaming_reserved_22', 'prime_gaming_reserved_23',
  'prime_gaming_reserved_24', 'onboardingMedal', 'BattlePassCommonPr_12', 'comp7_3_1',
- 'mt_comp_3_1']
+ 'mt_comp_3_1', '13YearsOfService', 'hw2023Medal01', 'hw2023Medal02']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -395,11 +395,12 @@ _singleAchievementsPopUps = [
  '12YearsOfService', 'NY23_AtmsphrLevel', 'NY23_CelebChallenge',
  'BattlePassCommonPr_NY23', 'BattlePassCommonPr_10', 'comp7_2023_1',
  'Cosmic_MartianStalker', 'Cosmic_SpaceTrace', 'BattlePassCommonPr_11',
- 'prime_gaming_reserved_13', 'prime_gaming_reserved_14', 'prime_gaming_reserved_15',
+ 'september23', 'prime_gaming_reserved_14', 'prime_gaming_reserved_15',
  'prime_gaming_reserved_16', 'prime_gaming_reserved_17', 'prime_gaming_reserved_18',
  'prime_gaming_reserved_19', 'prime_gaming_reserved_20', 'prime_gaming_reserved_21',
  'prime_gaming_reserved_22', 'prime_gaming_reserved_23', 'prime_gaming_reserved_24',
- 'onboardingMedal', 'BattlePassCommonPr_12', 'comp7_3_1', 'mt_comp_3_1']
+ 'onboardingMedal', 'BattlePassCommonPr_12', 'comp7_3_1', 'mt_comp_3_1',
+ '13YearsOfService', 'hw2023Medal01', 'hw2023Medal02']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']

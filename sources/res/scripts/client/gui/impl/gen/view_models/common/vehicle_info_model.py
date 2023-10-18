@@ -1,9 +1,10 @@
+from frameworks.wulf import Array
 from frameworks.wulf import ViewModel
 
 class VehicleInfoModel(ViewModel):
     __slots__ = ()
 
-    def __init__(self, properties=7, commands=0):
+    def __init__(self, properties=8, commands=0):
         super(VehicleInfoModel, self).__init__(properties=properties, commands=commands)
 
     def getIsElite(self):
@@ -48,6 +49,16 @@ class VehicleInfoModel(ViewModel):
     def setIsPremiumIGR(self, value):
         self._setBool(6, value)
 
+    def getTags(self):
+        return self._getArray(7)
+
+    def setTags(self, value):
+        self._setArray(7, value)
+
+    @staticmethod
+    def getTagsType():
+        return unicode
+
     def _initialize(self):
         super(VehicleInfoModel, self)._initialize()
         self._addBoolProperty('isElite', True)
@@ -57,3 +68,4 @@ class VehicleInfoModel(ViewModel):
         self._addStringProperty('vehicleType', '')
         self._addNumberProperty('vehicleLvl', 0)
         self._addBoolProperty('isPremiumIGR', False)
+        self._addArrayProperty('tags', Array())

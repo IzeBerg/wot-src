@@ -8,9 +8,11 @@ def getLootBoxViewModel(lootBox):
     lbModel.setBoxType(lootBox.getType())
     lbModel.setCount(lootBox.getInventoryCount())
     lbModel.setIsOpenEnabled(lootBox.isEnabled())
+    lbModel.setAutoOpenTime(lootBox.getAutoOpenTime())
     lbModel.setUserName(lootBox.getUserNameKey())
     lbModel.setIconName(lootBox.getIconName())
     lbModel.setDescriptionKey(lootBox.getDesrciption())
     lbModel.setVideoRes(lootBox.getVideoRes())
+    lbModel.setCategory(lootBox.getCategory())
     fillStringsArray(lootBox.getBonusGroups(), lbModel.getBonusGroups())
     return lbModel

@@ -120,8 +120,9 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
       
       public function set state(param1:String) : void
       {
+         var _loc2_:Boolean = false;
          this._state = param1;
-         var _loc2_:Boolean = this.state == BATTLE_ITEM_STATES.NORMAL;
+         _loc2_ = this.state == BATTLE_ITEM_STATES.NORMAL;
          this._normal.visible = _loc2_;
          this._critical.visible = !_loc2_;
       }

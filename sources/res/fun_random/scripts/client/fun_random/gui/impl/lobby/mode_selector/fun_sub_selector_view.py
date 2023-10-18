@@ -1,7 +1,7 @@
 import logging, typing
 from adisp import adisp_process
 from battle_modifiers_ext.constants_ext import ClientDomain
-from frameworks.wulf import ViewFlags, ViewSettings, ViewStatus, WindowFlags
+from frameworks.wulf import ViewFlags, ViewSettings, ViewStatus
 from fun_random.gui.feature.fun_constants import FunSubModesState
 from fun_random.gui.feature.models.common import FunSubModesStatus
 from fun_random.gui.feature.util.fun_mixins import FunAssetPacksMixin, FunProgressionWatcher, FunSubModesWatcher
@@ -19,7 +19,6 @@ from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.mode_selector.tooltips.mode_selector_tooltips_constants import ModeSelectorTooltipsConstants
 from gui.impl.lobby.tooltips.additional_rewards_tooltip import AdditionalRewardsTooltip
 from gui.impl.pub import ViewImpl
-from gui.impl.pub.lobby_window import LobbyWindow
 from gui.shared import events, g_eventBus
 from gui.shared.events import ModeSelectorLoadedEvent, ModeSubSelectorEvent, FullscreenModeSelectorEvent
 from helpers import dependency, time_utils
@@ -42,8 +41,8 @@ class FunModeSubSelectorView(ViewImpl, FunAssetPacksMixin, FunSubModesWatcher, F
     __slots__ = ('__tooltips', )
     __lobbyContext = dependency.descriptor(ILobbyContext)
 
-    def __init__(self):
-        settings = ViewSettings(layoutID=R.views.fun_random.lobby.feature.FunRandomModeSubSelector(), flags=ViewFlags.LOBBY_TOP_SUB_VIEW, model=FunRandomSubSelectorModel())
+    def __init__(self, layoutID):
+        settings = ViewSettings(layoutID=layoutID, flags=ViewFlags.LOBBY_TOP_SUB_VIEW, model=FunRandomSubSelectorModel())
         self.__tooltips = {}
         super(FunModeSubSelectorView, self).__init__(settings)
 
@@ -201,7 +200,7 @@ class FunModeSubSelectorView(ViewImpl, FunAssetPacksMixin, FunSubModesWatcher, F
     def __onModeSelectorLoaded(self, *_):
         parent = self.getParentWindow()
         if parent is not None:
-            parent.bringToFront()
+            parent.tryFocus()
         return
 
     def __onAbortSelection(self, *_):
@@ -256,10 +255,3 @@ class FunModeSubSelectorView(ViewImpl, FunAssetPacksMixin, FunSubModesWatcher, F
     def __toggleSelectorClickProcessing(self, isClickProcessing):
         ctx = {'isClickProcessing': isClickProcessing}
         g_eventBus.handleEvent(ModeSubSelectorEvent(ModeSubSelectorEvent.CLICK_PROCESSING, ctx=ctx))
-
-
-class FunModeSubSelectorWindow(LobbyWindow):
-    __slots__ = ()
-
-    def __init__(self):
-        super(FunModeSubSelectorWindow, self).__init__(wndFlags=WindowFlags.WINDOW, content=FunModeSubSelectorView())

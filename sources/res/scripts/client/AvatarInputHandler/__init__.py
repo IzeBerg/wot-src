@@ -4,7 +4,7 @@ import BigWorld, Keys, Math, ResMgr
 from AvatarInputHandler.AimingSystems import disableShotPointCache
 from AvatarInputHandler.vehicles_selection_mode import VehiclesSelectionControlMode
 from helpers.CallbackDelayer import CallbackDelayer
-import BattleReplay, CommandMapping, DynamicCameras.ArcadeCamera, DynamicCameras.ArtyCamera, DynamicCameras.FlameArtyCamera, DynamicCameras.DualGunCamera, DynamicCameras.SniperCamera, DynamicCameras.StrategicCamera, GenericComponents, MapCaseMode, RespawnDeathMode, aih_constants, cameras, constants, control_modes, epic_battle_death_mode
+import BattleReplay, CommandMapping, DynamicCameras.ArcadeCamera, DynamicCameras.ArtyCamera, DynamicCameras.OnlyArtyCamera, DynamicCameras.DualGunCamera, DynamicCameras.SniperCamera, DynamicCameras.StrategicCamera, GenericComponents, MapCaseMode, RespawnDeathMode, aih_constants, cameras, constants, control_modes, epic_battle_death_mode
 from AvatarInputHandler import AimingSystems, keys_handlers
 from AvatarInputHandler import aih_global_binding, gun_marker_ctrl
 from AvatarInputHandler import steel_hunter_control_modes
@@ -78,8 +78,8 @@ _CTRLS_DESC_MAP = {_CTRL_MODE.ARCADE: (
                        control_modes.DualGunControlMode, 'dualGunMode', _CTRL_TYPE.USUAL), 
    _CTRL_MODE.VEHICLES_SELECTION: (
                                  VehiclesSelectionControlMode, _CTRL_MODE.VEHICLES_SELECTION, _CTRL_TYPE.USUAL), 
-   _CTRL_MODE.FLAMETHROWER: (
-                           control_modes.FlamethrowerControlMode, 'flamethrowerMode', _CTRL_TYPE.USUAL)}
+   _CTRL_MODE.SPG_ONLY_ARTY_MODE: (
+                                 control_modes.OnlyArtyControlMode, 'flamethrowerMode', _CTRL_TYPE.USUAL)}
 OVERWRITE_CTRLS_DESC_MAP = {constants.ARENA_BONUS_TYPE.EPIC_BATTLE: {_CTRL_MODE.POSTMORTEM: (
                                                                   epic_battle_death_mode.DeathTankFollowMode, 'postMortemMode', _CTRL_TYPE.USUAL)}, 
    constants.ARENA_BONUS_TYPE.EPIC_BATTLE_TRAINING: {_CTRL_MODE.POSTMORTEM: (
@@ -94,7 +94,7 @@ _DYNAMIC_CAMERAS = (
  DynamicCameras.StrategicCamera.StrategicCamera,
  DynamicCameras.ArtyCamera.ArtyCamera,
  DynamicCameras.DualGunCamera.DualGunCamera,
- DynamicCameras.FlameArtyCamera.FlameArtyCamera)
+ DynamicCameras.OnlyArtyCamera.OnlyArtyCamera)
 _FREE_AND_CHAT_SHORTCUT_CMD = (
  CommandMapping.CMD_CM_FREE_CAMERA, CommandMapping.CMD_CHAT_SHORTCUT_CONTEXT_COMMAND)
 
@@ -157,6 +157,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
     isDualGun = property(lambda self: self.__isDualGun)
     isFlamethrower = property(lambda self: self.__isFlamethrower)
     isMagneticAimEnabled = property(lambda self: self.__isMagnetAimEnabled)
+    isOnlyArty = property(lambda self: self.__isOnlyArty)
     isFlashBangAllowed = property(lambda self: self.__ctrls['video'] != self.__curCtrl)
     isDetached = property(lambda self: self.__isDetached)
     isGuiVisible = property(lambda self: self.__isGUIVisible)
@@ -236,6 +237,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         self.__isDualGun = False
         self.__isFlamethrower = False
         self.__isMagnetAimEnabled = False
+        self.__isOnlyArty = False
         self.__setupCtrls(sec)
         self.__curCtrl = self.__ctrls[_CTRLS_FIRST]
         self.__ctrlModeName = _CTRLS_FIRST
@@ -520,10 +522,10 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         self.__isGUIVisible = True
         self.__killerVehicleID = None
         arena = avatar.arena
-        arena.onPeriodChange += self.__onArenaStarted
+        arena.onPeriodChange += self._onArenaStarted
         self.settingsCore.onSettingsChanged += self.__onSettingsChanged
         avatar.consistentMatrices.onVehicleMatrixBindingChanged += self.__onVehicleChanged
-        self.__onArenaStarted(arena.period)
+        self._onArenaStarted(arena.period)
         if not avatar.isObserver() and arena.hasObservers:
             self.__remoteCameraSender = RemoteCameraSender(self)
         self.onCameraChanged('arcade')
@@ -555,7 +557,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         self.__killerVehicleID = None
         if self.__onRecreateDevice in g_guiResetters:
             g_guiResetters.remove(self.__onRecreateDevice)
-        BigWorld.player().arena.onPeriodChange -= self.__onArenaStarted
+        BigWorld.player().arena.onPeriodChange -= self._onArenaStarted
         self.settingsCore.onSettingsChanged -= self.__onSettingsChanged
         BigWorld.player().consistentMatrices.onVehicleMatrixBindingChanged -= self.__onVehicleChanged
         ScriptGameObject.destroy(self)
@@ -856,6 +858,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
             self.__isDualGun = veh.typeDescriptor.isDualgunVehicle
             self.__isFlamethrower = veh.typeDescriptor.isFlamethrower
             self.__isMagnetAimEnabled = bool(magnetAimTags & vehTypeDesc.tags)
+            self.__isOnlyArty = 'spgOnlyArtyMode' in vehTypeDesc.tags
             return
 
     def reloadDynamicSettings(self):
@@ -911,7 +914,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
 
         return
 
-    def __onArenaStarted(self, period, *args):
+    def _onArenaStarted(self, period, *args):
         self.__isArenaStarted = period == ARENA_PERIOD.BATTLE
         self.__curCtrl.setGunMarkerFlag(self.__isArenaStarted, _GUN_MARKER_FLAG.CONTROL_ENABLED)
         self.showServerGunMarker(gun_marker_ctrl.useServerGunMarker())

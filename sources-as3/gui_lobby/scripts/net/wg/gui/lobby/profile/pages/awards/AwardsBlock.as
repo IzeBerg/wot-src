@@ -32,7 +32,7 @@ package net.wg.gui.lobby.profile.pages.awards
       
       override protected function applyLabel() : void
       {
-         textField.htmlText = labelText + "<font color=\'#8c8c7e\' size=\'14\'> (" + this._currentCount + "/" + this._totalCount + ")</font>";
+         textField.htmlText = !!this._showProgress ? labelText + "<font color=\'#7b7969\' size=\'14\'> (" + this._currentCount + "/" + this._totalCount + ")</font>" : labelText;
       }
       
       public function get showProgress() : Boolean

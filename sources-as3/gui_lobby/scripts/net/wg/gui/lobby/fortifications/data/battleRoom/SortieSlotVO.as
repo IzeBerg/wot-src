@@ -10,8 +10,6 @@ package net.wg.gui.lobby.fortifications.data.battleRoom
       
       public var isFiltersEnabled:Boolean = false;
       
-      public var hasFrozenVehicle:Boolean = false;
-      
       public var isRemoveAvailable:Boolean = true;
       
       public var filterState:int = -1;

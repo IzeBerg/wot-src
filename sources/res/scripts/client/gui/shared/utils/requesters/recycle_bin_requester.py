@@ -20,8 +20,8 @@ class VehicleRestoreInfo(_VehicleRestoreInfo):
             return max(self.restoreCooldown - self.__getTimeGone(), 0)
         return 0
 
-    def isLimited(self):
-        return self.restoreType == RESTORE_VEHICLE_TYPE.PREMIUM and self.changedAt != 0 and self.restoreDuration < float('inf')
+    def isFinite(self):
+        return self.restoreType == RESTORE_VEHICLE_TYPE.PREMIUM and 0 < self.getRestoreTimeLeft() < float('inf')
 
     def isInCooldown(self):
         if self.changedAt:
@@ -29,11 +29,11 @@ class VehicleRestoreInfo(_VehicleRestoreInfo):
         return False
 
     def isUnlimited(self):
-        return self.restoreType == RESTORE_VEHICLE_TYPE.ACTION and self.changedAt == 0 or self.restoreType == RESTORE_VEHICLE_TYPE.PREMIUM and self.changedAt != 0 and not self.restoreDuration < float('inf')
+        return self.restoreType == RESTORE_VEHICLE_TYPE.ACTION and self.getRestoreCooldownTimeLeft() == 0 or self.restoreType == RESTORE_VEHICLE_TYPE.PREMIUM and self.getRestoreTimeLeft() == float('inf')
 
     def isRestorePossible(self):
         if self.restoreType == RESTORE_VEHICLE_TYPE.PREMIUM:
-            return self.isUnlimited() or self.isLimited() and self.getRestoreTimeLeft() > 0
+            return self.isUnlimited() or self.isFinite() and self.getRestoreTimeLeft() > 0
         return True
 
     def __getTimeGone(self):

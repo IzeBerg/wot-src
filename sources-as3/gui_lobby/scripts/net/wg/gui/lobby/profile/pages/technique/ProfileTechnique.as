@@ -12,7 +12,6 @@ package net.wg.gui.lobby.profile.pages.technique
    import net.wg.gui.lobby.profile.pages.technique.data.TechniqueListVehicleVO;
    import net.wg.infrastructure.base.meta.IProfileTechniqueMeta;
    import net.wg.infrastructure.base.meta.impl.ProfileTechniqueMeta;
-   import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.data.DataProvider;
    
    public class ProfileTechnique extends ProfileTechniqueMeta implements IProfileTechniqueMeta
@@ -20,27 +19,11 @@ package net.wg.gui.lobby.profile.pages.technique
       
       private static const CURRENT_DIMENSION_INVALID:String = "cdInv";
       
+      private static const ADDITIONAL_LIST_HEIGHT:int = 3;
+      
       private static const MIN_HEIGHT:int = 525;
       
       private static const MAX_HEIGHT:int = 740;
-      
-      private static const LIST_OFFSET_X:int = 105;
-      
-      private static const ADDITIONAL_LIST_OFFSET:int = -35;
-      
-      private static const ADDITIONAL_LIST_OFFSET_SMALL:int = 200;
-      
-      private static const ADDITIONAL_STACK_OFFSET_SMALL:int = 100;
-      
-      private static const ADDITIONAL_LIST_HEIGHT:int = 103;
-      
-      private static const ADDITIONAL_STACK_HEIGHT:int = 93;
-      
-      private static const WINDOW_LIST_ADDITIONAL_SIZE:int = 10;
-      
-      private static const STACK_OFFSET_X:int = 578;
-      
-      private static const STACK_OFFSET_OFFSET_X_SMALL:int = 600;
       
       private static const DEFAULT_TECHNIQUE_RENDERER_LINKAGE:String = "TechniqueRenderer_UI";
       
@@ -111,10 +94,11 @@ package net.wg.gui.lobby.profile.pages.technique
       
       override protected function applyData(param1:Object) : void
       {
+         var _loc3_:Boolean = false;
          var _loc5_:TechniqueListVehicleVO = null;
          var _loc6_:Object = null;
          var _loc2_:DataProvider = new DataProvider();
-         var _loc3_:Boolean = false;
+         _loc3_ = false;
          var _loc4_:Array = param1 as Array;
          if(_loc4_)
          {
@@ -125,7 +109,7 @@ package net.wg.gui.lobby.profile.pages.technique
             }
             _loc3_ = _loc2_.length > 0;
          }
-         this.stackComponent.enableAwardsButton(battlesType != PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_BATTLES && battlesType != PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_SORTIES && battlesType != PROFILE_DROPDOWN_KEYS.CLAN && battlesType != PROFILE_DROPDOWN_KEYS.STATICTEAM && battlesType != PROFILE_DROPDOWN_KEYS.STATICTEAM_SEASON && battlesType != PROFILE_DROPDOWN_KEYS.VERSUS_AI);
+         this.stackComponent.enableAwardsButton(battlesType != PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_BATTLES && battlesType != PROFILE_DROPDOWN_KEYS.FORTIFICATIONS_SORTIES && battlesType != PROFILE_DROPDOWN_KEYS.CLAN && battlesType != PROFILE_DROPDOWN_KEYS.STATICTEAM && battlesType != PROFILE_DROPDOWN_KEYS.STATICTEAM_SEASON);
          this.listComponent.vehicles = _loc2_;
          this.emptyScreen.visible = !_loc3_;
          this.listComponent.visible = this.stackComponent.visible = _loc3_;
@@ -133,29 +117,15 @@ package net.wg.gui.lobby.profile.pages.technique
       
       override protected function applyResizing() : void
       {
-         var _loc7_:int = 0;
          if(layoutManager != null)
          {
             layoutManager.setDimension(currentDimension.x,currentDimension.y);
          }
          this.x = (currentDimension.x >> 1) - centerOffset;
          var _loc1_:int = Math.min(currentDimension.x,ProfileConstants.MIN_APP_WIDTH);
-         var _loc2_:Boolean = App.appWidth < StageSizeBoundaries.WIDTH_1280;
          this.emptyScreen.x = _loc1_ - this.emptyScreen.width >> 1;
-         var _loc3_:int = currentDimension.y - this.listComponent.y + ADDITIONAL_LIST_HEIGHT;
-         var _loc4_:int = currentDimension.y - this.stackComponent.y + ADDITIONAL_STACK_HEIGHT;
-         _loc3_ += !!isWindowed ? WINDOW_LIST_ADDITIONAL_SIZE : 0;
-         _loc3_ += !isWindowed && _loc2_ ? ADDITIONAL_LIST_OFFSET_SMALL : ADDITIONAL_LIST_OFFSET;
-         _loc4_ += !isWindowed && _loc2_ ? ADDITIONAL_STACK_OFFSET_SMALL : 0;
-         this.listComponent.setSize(currentDimension.x,_loc3_);
-         this.stackComponent.setViewSize(_loc1_ - this.stackComponent.x,_loc4_);
-         var _loc5_:Number = isWindowed || !_loc2_ ? Number(1) : Number(0.85);
-         var _loc6_:int = isWindowed || !_loc2_ ? int(0) : int(LIST_OFFSET_X);
-         _loc7_ = isWindowed || !_loc2_ ? int(STACK_OFFSET_X) : int(STACK_OFFSET_OFFSET_X_SMALL);
-         this.listComponent.scaleX = this.listComponent.scaleY = _loc5_;
-         this.stackComponent.scaleX = this.stackComponent.scaleY = _loc5_;
-         this.listComponent.x = _loc6_;
-         this.stackComponent.x = _loc7_;
+         this.listComponent.setSize(currentDimension.x,currentDimension.y - this.listComponent.y + ADDITIONAL_LIST_HEIGHT);
+         this.stackComponent.setViewSize(_loc1_ - this.stackComponent.x,currentDimension.y - this.stackComponent.y);
       }
       
       override protected function draw() : void
@@ -194,11 +164,6 @@ package net.wg.gui.lobby.profile.pages.technique
          this.techniqueInitVO.dispose();
          this.techniqueInitVO = null;
          super.onDispose();
-      }
-      
-      override public function set isWindowed(param1:Boolean) : void
-      {
-         super.isWindowed = param1;
       }
       
       override protected function responseVehicleDossier(param1:ProfileVehicleDossierVO) : void

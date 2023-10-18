@@ -242,22 +242,6 @@ package
       public static const BUYINGPANEL_STYLE_DESCRIPTION_TEXT:String = "#vehicle_preview:buyingPanel/style/description/text";
       
       public static const BUYINGPANEL_STYLE_DESCRIPTION_BUTTON_TEXT:String = "#vehicle_preview:buyingPanel/style/description/button/text";
-      
-      public static const SHOWCASESTYLEBUYING_ACTIONBTN_LABEL_BUY:String = "#vehicle_preview:showcaseStyleBuying/actionBtn/label/buy";
-      
-      public static const SHOWCASESTYLEBUYING_TIMEREMAINING_DESC:String = "#vehicle_preview:showcaseStyleBuying/timeRemaining/desc";
-      
-      public static const SHOWCASESTYLEBUYING_BOUGHTMSG:String = "#vehicle_preview:showcaseStyleBuying/boughtMsg";
-      
-      public static const SHOWCASESTYLEBUYING_NOVEHICLEMSG:String = "#vehicle_preview:showcaseStyleBuying/noVehicleMsg";
-      
-      public static const SHOWCASESTYLEBUYING_OUTOFTIMEMSG:String = "#vehicle_preview:showcaseStyleBuying/outOfTimeMsg";
-      
-      public static const SHOWCASESTYLEBUYING_ACTIONBTN_TOOLTIP_NOTENOUGHFUNDS:String = "#vehicle_preview:showcaseStyleBuying/actionBtn/tooltip/notEnoughFunds";
-      
-      public static const SHOWCASESTYLEBUYING_ACTIONBTN_TOOLTIP_UNAVAILABLE:String = "#vehicle_preview:showcaseStyleBuying/actionBtn/tooltip/unavailable";
-      
-      public static const SHOWCASESTYLEBUYING_ACTIONBTN_TOOLTIP_SERVICEUNAVAILABLE:String = "#vehicle_preview:showcaseStyleBuying/actionBtn/tooltip/serviceUnavailable";
        
       
       public function VEHICLE_PREVIEW()

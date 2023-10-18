@@ -4,6 +4,7 @@ from frameworks.wulf import ViewModel
 class State(Enum):
     ACTIVE = 'active'
     DISABLED = 'disabled'
+    ANNOUNCE = 'announce'
 
 
 class BattleRoyaleEntryPointModel(ViewModel):

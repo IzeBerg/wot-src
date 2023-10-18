@@ -29,7 +29,7 @@ class RosterSlot10(BaseUnitRosterSlot):
 
 
 class EpicSlot(BaseUnitRosterSlot):
-    DEFAULT_LEVELS = (8, 9)
+    DEFAULT_LEVELS = (7, 7)
 
 
 class Comp7Slot(BaseUnitRosterSlot):
@@ -109,4 +109,16 @@ class VersusAIRoster(BaseUnitRoster):
     MAX_EMPTY_SLOTS = 2
     SLOT_TYPE = RosterSlot10
     DEFAULT_SLOT_PACK = RosterSlot10().pack()
+    LIMITS_TYPE = BaseUnitRosterLimits
+
+
+class HWSlot(BaseUnitRosterSlot):
+    DEFAULT_LEVELS = (8, 8)
+
+
+class HalloweenRoster(BaseUnitRoster):
+    MAX_SLOTS = 3
+    MAX_EMPTY_SLOTS = 2
+    SLOT_TYPE = HWSlot
+    DEFAULT_SLOT_PACK = HWSlot().pack()
     LIMITS_TYPE = BaseUnitRosterLimits

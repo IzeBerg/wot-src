@@ -23,7 +23,7 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.list
          var _loc2_:Comp7DAAPIVehicleInfoVO = param1 as Comp7DAAPIVehicleInfoVO;
          if(_loc2_)
          {
-            this._listItem.setRank(_loc2_.rank,_loc2_.rankDivision,_loc2_.isQualification);
+            this._listItem.setRank(_loc2_.rank,_loc2_.rankDivision);
             this._listItem.setVoiceChatConnected(_loc2_.voiceChatConnected);
          }
       }

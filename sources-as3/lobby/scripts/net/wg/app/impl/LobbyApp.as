@@ -190,6 +190,7 @@ package net.wg.app.impl
       override protected function initializeAtlasManager() : void
       {
          atlasMgr.registerAtlas(ATLAS_CONSTANTS.QUESTS_PROGRESS);
+         atlasMgr.registerAtlas(ATLAS_CONSTANTS.DIGITS);
       }
       
       override protected function disposeContainers() : void

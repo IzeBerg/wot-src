@@ -36,6 +36,10 @@ package net.wg.gui.components.crosshairPanel
       
       public var healthBarMC:MovieClip = null;
       
+      public var ammoLowTextField:TextField = null;
+      
+      public var ammoNormalTextField:TextField = null;
+      
       public var cassetteMC:CrosshairClipQuantityBarContainer = null;
       
       public var centerMC:MovieClip = null;
@@ -78,6 +82,12 @@ package net.wg.gui.components.crosshairPanel
       
       private var _isReloadInProgress:Boolean = false;
       
+      private var _currentAmmoTextField:TextField = null;
+      
+      private var _count:Number = -1;
+      
+      private var _isLow:Boolean = false;
+      
       private var _isUseFrameAnimation:Boolean = true;
       
       private var _netSeparatorVisible:Boolean = true;
@@ -101,6 +111,7 @@ package net.wg.gui.components.crosshairPanel
          this.timerProgressTextField.visible = false;
          this.reloadTimeBlink.visible = false;
          this.updateQuickReloadingTimer();
+         this.ammoLowTextField.visible = false;
          addEventListener(CrosshairPanelEvent.SOUND,this.onCrosshairPanelSoundHandler);
          this._reloadTimeBlinkYPos = this.getReloadTimeBlinkYPos();
       }
@@ -156,15 +167,16 @@ package net.wg.gui.components.crosshairPanel
          return this._disposed;
       }
       
-      public function setAmmoStock(param1:Number, param2:String, param3:Boolean = false) : void
+      public function setAmmoStock(param1:Number, param2:Number, param3:Boolean, param4:String, param5:Boolean = false) : void
       {
+         this.setAmmoCount(param1,param3);
          if(this._isAutoloader)
          {
-            this.autoloaderComponent.updateCurrentAmmo(param1);
+            this.autoloaderComponent.updateCurrentAmmo(param2);
          }
          else
          {
-            this.cassetteMC.updateInfo(param1,param2,param3);
+            this.cassetteMC.updateInfo(param2,param4,param5);
          }
       }
       
@@ -189,6 +201,8 @@ package net.wg.gui.components.crosshairPanel
          if(this._isAutoloader)
          {
             this.autoloaderComponent.updateTotalAmmo(param1);
+            this.ammoNormalTextField.visible = false;
+            this.ammoLowTextField.visible = false;
          }
          else
          {
@@ -232,9 +246,9 @@ package net.wg.gui.components.crosshairPanel
          this.updateHealthBarMC();
       }
       
-      public function setInfo(param1:Number, param2:String, param3:String, param4:Boolean, param5:Boolean, param6:String, param7:String, param8:Number, param9:Number, param10:String, param11:Number, param12:String, param13:Boolean = false, param14:Boolean = false, param15:Boolean = false) : void
+      public function setInfo(param1:Number, param2:String, param3:String, param4:Boolean, param5:Boolean, param6:String, param7:String, param8:Number, param9:Number, param10:String, param11:Number, param12:Number, param13:Boolean, param14:String, param15:Boolean = false, param16:Boolean = false, param17:Boolean = false) : void
       {
-         this.setClipsParam(param8,param9,param14);
+         this.setClipsParam(param8,param9,param16);
          this.setHealth(param1);
          this.setZoom(param2);
          this.setReloadingState(param3);
@@ -242,15 +256,16 @@ package net.wg.gui.components.crosshairPanel
          this.setDistanceVisibility(param5);
          this.setDistance(param6);
          this.updatePlayerInfo(param7);
-         this.setAmmoStock(param11,param12,param13);
+         this.setAmmoStock(param11,param12,param13,param14,param15);
          this.updateAmmoState(param10);
-         this.updateAutoloaderState(param8,param11,param15);
+         this.updateAutoloaderState(param8,param12,param17);
       }
       
       public function setNetSeparatorVisible(param1:Boolean) : void
       {
          this._netSeparatorVisible = param1;
          this.updateNetSeparatorVisibility();
+         this.updateAmmoCountVisibility();
       }
       
       public function setNetType(param1:Number) : void
@@ -263,6 +278,7 @@ package net.wg.gui.components.crosshairPanel
             this.updateComponentsAlpha();
             this.updateHealthBarMC();
             this.setReloadingBarFrame();
+            this.updateAmmoCount();
             this.updateNetSeparatorVisibility();
             this.updateQuickReloadingTimer();
          }
@@ -331,11 +347,34 @@ package net.wg.gui.components.crosshairPanel
       {
          this._visibleNetMask = param1;
          this.updateNetVisibility();
+         this.updateAmmoCountVisibility();
          this.updateNetSeparatorVisibility();
       }
       
       public function setZoom(param1:String) : void
       {
+      }
+      
+      public function showAmmoCountField(param1:Boolean) : void
+      {
+         if(param1 && !this._isAutoloader)
+         {
+            if(this._currentAmmoTextField)
+            {
+               this.ammoNormalTextField.visible = this.ammoNormalTextField == this._currentAmmoTextField;
+               this.ammoLowTextField.visible = this.ammoLowTextField == this._currentAmmoTextField;
+            }
+            else
+            {
+               this.ammoNormalTextField.visible = true;
+               this.ammoLowTextField.visible = false;
+            }
+         }
+         else
+         {
+            this.ammoNormalTextField.visible = false;
+            this.ammoLowTextField.visible = false;
+         }
       }
       
       public function showReloadingTimeField(param1:Boolean) : void
@@ -400,6 +439,9 @@ package net.wg.gui.components.crosshairPanel
          this.timerCompleteTextField = null;
          this._currentTimerTextField = null;
          this.quickReloadingTimerTextField = null;
+         this.ammoLowTextField = null;
+         this.ammoNormalTextField = null;
+         this._currentAmmoTextField = null;
          this.reloadingBar = null;
          this.reloadingAnimationMC = null;
          this.healthBarMC = null;
@@ -485,6 +527,42 @@ package net.wg.gui.components.crosshairPanel
          this.netMC.visible = (this._visibleNetMask & CROSSHAIR_CONSTANTS.VISIBLE_NET) != 0;
       }
       
+      private function setAmmoCount(param1:Number, param2:Boolean) : void
+      {
+         var _loc3_:Boolean = this._isLow != param2 || this._count != param1;
+         if(!(this._isLow == param2 && this._currentAmmoTextField && (this._currentAmmoTextField == this.ammoLowTextField || this._currentAmmoTextField == this.ammoNormalTextField)))
+         {
+            this._isLow = param2;
+            if(this._currentAmmoTextField)
+            {
+               this.ammoLowTextField.visible = false;
+               this.ammoNormalTextField.visible = false;
+            }
+            this._currentAmmoTextField = !!this._isLow ? this.ammoLowTextField : this.ammoNormalTextField;
+            this.updateAmmoCountVisibility();
+         }
+         if(_loc3_)
+         {
+            this._count = param1;
+            this._currentAmmoTextField.text = this._count.toString();
+         }
+      }
+      
+      private function updateAmmoCount() : void
+      {
+         this.ammoLowTextField.visible = false;
+         this.ammoNormalTextField.visible = false;
+         this._currentAmmoTextField = !!this._isLow ? this.ammoLowTextField : this.ammoNormalTextField;
+         this._currentAmmoTextField.text = this._count.toString();
+         this.updateAmmoCountVisibility();
+      }
+      
+      private function updateAmmoCountVisibility() : void
+      {
+         var _loc1_:Boolean = this._netSeparatorVisible && (this._visibleNetMask & CROSSHAIR_CONSTANTS.VISIBLE_AMMO_COUNT) != 0;
+         this.showAmmoCountField(_loc1_);
+      }
+      
       private function setReloadingAlpha(param1:Number) : void
       {
          if(this.reloadingTimeFieldAlpha != param1)
@@ -508,9 +586,11 @@ package net.wg.gui.components.crosshairPanel
       
       private function applyReloadingData() : void
       {
+         var _loc1_:String = null;
          if(this._currentTimerTextField && this._currentReloadingTime != Values.DEFAULT_INT)
          {
-            this._currentTimerTextField.text = ExternalInterface.call.apply(this,[FRACTIONAL_FORMAT_CMD,Number(this._currentReloadingTime)]);
+            _loc1_ = ExternalInterface.call.apply(this,[FRACTIONAL_FORMAT_CMD,Number(this._currentReloadingTime)]);
+            this._currentTimerTextField.text = _loc1_;
          }
       }
       
@@ -521,18 +601,22 @@ package net.wg.gui.components.crosshairPanel
       
       private function updateHealthBarMC() : void
       {
+         var _loc1_:int = 0;
          if(this.healthBarMC)
          {
-            this.healthBarMC.gotoAndStop(CrosshairConsts.PROGRESS_TOTAL_FRAMES_COUNT * this.health);
+            _loc1_ = CrosshairConsts.PROGRESS_TOTAL_FRAMES_COUNT * this.health;
+            this.healthBarMC.gotoAndStop(_loc1_);
          }
       }
       
       private function setReloadingBarFrame() : void
       {
+         var _loc1_:int = 0;
          if(this.reloadingBar)
          {
             this.updateReloadingState();
-            this.reloadingBar.gotoAndStop(CrosshairConsts.PROGRESS_TOTAL_FRAMES_COUNT * this.reloadingTime);
+            _loc1_ = CrosshairConsts.PROGRESS_TOTAL_FRAMES_COUNT * this.reloadingTime;
+            this.reloadingBar.gotoAndStop(_loc1_);
          }
       }
       
@@ -549,6 +633,8 @@ package net.wg.gui.components.crosshairPanel
          this.reloadingAnimationMC.alpha = this.reloadingBarAlpha;
          this.cassetteMC.alpha = this.cassetteAlpha;
          this.autoloaderComponent.alpha = this.cassetteAlpha;
+         this.ammoLowTextField.alpha = this.netAlpha;
+         this.ammoNormalTextField.alpha = this.netAlpha;
       }
       
       public function get autoloaderBoostParams() : BoostIndicatorStateParamsVO

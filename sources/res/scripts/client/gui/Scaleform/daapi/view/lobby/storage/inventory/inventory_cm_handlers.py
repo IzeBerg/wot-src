@@ -1,7 +1,6 @@
 from adisp import adisp_process
-from gui import DialogsInterface, shop
+from gui import shop
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
-from gui.Scaleform.daapi.view.dialogs.ConfirmModuleMeta import SellModuleMeta
 from gui.Scaleform.daapi.view.lobby.shared.cm_handlers import ContextMenu, option, CMLabel
 from gui.Scaleform.framework.managers.context_menu import CM_BUY_COLOR
 from gui.shared import event_dispatcher as shared_events
@@ -13,7 +12,7 @@ from ids_generators import SequenceIDGenerator
 from items import UNDEFINED_ITEM_CD
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.lobby_context import ILobbyContext
-from gui.shared.event_dispatcher import showConfirmInStorageDialog
+from gui.shared.event_dispatcher import showSellDialog
 _SOURCE = shop.Source.EXTERNAL
 _ORIGIN = shop.Origin.STORAGE
 
@@ -27,7 +26,7 @@ class ModulesShellsCMHandler(ContextMenu):
 
     @option(__sqGen.next(), CMLabel.SELL)
     def sell(self):
-        showConfirmInStorageDialog(self._id)
+        showSellDialog(self._id)
 
     def _getOptionCustomData(self, label):
         optionData = super(ModulesShellsCMHandler, self)._getOptionCustomData(label)
@@ -60,9 +59,8 @@ class _ArmingCMHandler(ContextMenu):
         shared_events.showStorageModuleInfo(self._id)
 
     @option(_sqGen.next(), CMLabel.SELL)
-    @adisp_process
     def sell(self):
-        yield DialogsInterface.showDialog(SellModuleMeta(self._id))
+        showSellDialog(self._id)
 
     def buy(self):
         shared_events.showShop()

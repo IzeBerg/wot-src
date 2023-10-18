@@ -25,6 +25,8 @@ package net.wg.gui.components.carousels
       
       private var _lastFullRendererIndex:uint = 0;
       
+      private var _lastFullRendererX:uint = 0;
+      
       private var _indexSpecialData:Vector.<int> = null;
       
       private var _indexExtendedData:Vector.<int> = null;
@@ -95,7 +97,7 @@ package net.wg.gui.components.carousels
             {
                _loc5_ = this._indexRenderersCountToRenderer.indexOf(activeRenderers[0].index);
                _loc6_ = this._indexRenderersCountToRenderer.indexOf(activeRenderers[_loc4_ - 1].index);
-               if(_loc6_ == -1)
+               if(_loc6_ == -1 && rowCount == 1)
                {
                   _loc6_ = activeRenderers[_loc4_ - 1].index;
                }
@@ -161,7 +163,7 @@ package net.wg.gui.components.carousels
       override protected function resize() : void
       {
          var _loc3_:int = 0;
-         var _loc6_:IScrollerItemRenderer = null;
+         var _loc5_:IScrollerItemRenderer = null;
          super.resize();
          var _loc1_:Number = this._itemRendererIndexToRendererX[this._indexDataProviderToRenderer[this._indexDataProviderToRenderer.length - 1]] + typicalRendererWidth - horizontalGap;
          if(usesLayoutController())
@@ -169,21 +171,20 @@ package net.wg.gui.components.carousels
             _loc1_ = layoutController.getMaxExtents().x;
          }
          var _loc2_:IScrollerItemRendererData = null;
-         var _loc4_:uint = this._indexExtendedData.length;
-         var _loc5_:int = 0;
-         while(_loc5_ < _loc4_)
+         var _loc4_:int = 0;
+         while(_loc4_ < this._indexExtendedData.length)
          {
-            _loc3_ = this._itemRendererIndexToDataProviderIndex[this._indexExtendedData[_loc5_]];
+            _loc3_ = this._itemRendererIndexToDataProviderIndex[this._indexExtendedData[_loc4_]];
             _loc2_ = _loc3_ > EMPTY_SLOT_DP_INDEX ? getDataByIndex(_loc3_) as IScrollerItemRendererData : null;
             if(_loc2_ && _loc2_.isItemExtended)
             {
-               _loc6_ = this.getRendererByIndex(_loc3_);
-               if(_loc6_)
+               _loc5_ = this.getRendererByIndex(_loc3_);
+               if(_loc5_)
                {
-                  _loc6_.data = _loc2_;
+                  _loc5_.data = _loc2_;
                }
             }
-            _loc5_++;
+            _loc4_++;
          }
          if(_width !== _loc1_ || _height !== visibleHeight)
          {
@@ -306,6 +307,7 @@ package net.wg.gui.components.carousels
                _loc7_++;
             }
             this._lastFullRendererIndex = _loc4_;
+            this._lastFullRendererX = _loc6_;
             _loc10_ = visibleWidth + horizontalGap;
             if(_loc6_ < _loc10_)
             {
@@ -408,10 +410,9 @@ package net.wg.gui.components.carousels
          var _loc5_:Boolean = false;
          var _loc6_:int = 0;
          var _loc7_:int = 0;
-         var _loc8_:int = 0;
-         var _loc9_:uint = 0;
+         var _loc8_:uint = 0;
+         var _loc9_:int = 0;
          var _loc10_:int = 0;
-         var _loc11_:int = 0;
          if(dataProvider != null)
          {
             _loc2_ = null;
@@ -419,27 +420,26 @@ package net.wg.gui.components.carousels
             _loc5_ = false;
             _loc6_ = param1 > 0 ? int(this._itemRendererIndexToRendererX[param1]) : int(0);
             _loc7_ = this._indexRenderersCountToRenderer.indexOf(param1);
-            _loc8_ = dataProvider.length - 1;
-            _loc9_ = _loc7_;
-            while(_loc9_ < dataCount)
+            _loc8_ = _loc7_;
+            while(_loc8_ < dataCount)
             {
-               _loc3_ = this._indexRenderersCountToRenderer[_loc9_];
+               _loc3_ = this._indexRenderersCountToRenderer[_loc8_];
                _loc4_ = this._itemRendererIndexToDataProviderIndex[_loc3_];
                _loc2_ = _loc4_ > EMPTY_SLOT_DP_INDEX ? getDataByIndex(_loc4_) as IScrollerItemRendererData : null;
                _loc5_ = false;
                if(_loc2_ && _loc2_.hasExtendedInfo)
                {
                   _loc5_ = true;
-                  if(_loc9_ != _loc7_ && rowCount > 1 && _loc3_ > 0 && _loc4_ == EMPTY_SLOT_DP_INDEX)
+                  if(_loc8_ != _loc7_ && rowCount > 1 && _loc3_ > 0 && _loc4_ == EMPTY_SLOT_DP_INDEX)
                   {
                      _loc6_ += typicalRendererWidth;
                   }
-                  if(_loc9_ == _loc7_)
+                  if(_loc8_ == _loc7_)
                   {
-                     _loc11_ = this._indexExtendedData.indexOf(param1);
-                     if(_loc11_ > -1 && !_loc2_.isItemExtended)
+                     _loc10_ = this._indexExtendedData.indexOf(param1);
+                     if(_loc10_ > -1 && !_loc2_.isItemExtended)
                      {
-                        this._indexExtendedData.splice(_loc11_,1);
+                        this._indexExtendedData.splice(_loc10_,1);
                      }
                      else
                      {
@@ -448,13 +448,14 @@ package net.wg.gui.components.carousels
                   }
                }
                this._itemRendererIndexToRendererX[_loc3_] = _loc6_;
-               _loc10_ = !!_loc5_ ? int(this.getActualWidth(_loc2_)) : int(this.getRendererWidthByRendererIndex(_loc3_,true));
-               _loc6_ += _loc10_;
-               if(_loc9_ == _loc8_)
+               _loc9_ = !!_loc5_ ? int(this.getActualWidth(_loc2_)) : int(this.getRendererWidthByRendererIndex(_loc3_,true));
+               _loc6_ += _loc9_;
+               if(_loc8_ == dataProvider.length - 1)
                {
                   this._lastFullRendererIndex = _loc3_;
+                  this._lastFullRendererX = _loc6_;
                }
-               _loc9_++;
+               _loc8_++;
             }
          }
       }

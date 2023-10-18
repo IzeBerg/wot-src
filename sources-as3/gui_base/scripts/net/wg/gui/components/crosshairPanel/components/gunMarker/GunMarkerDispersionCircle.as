@@ -5,14 +5,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
    
    public class GunMarkerDispersionCircle extends SimpleContainer
    {
-      
-      public static const BOLD:String = "bold";
-      
-      public static const THIN:String = "thin";
-      
-      public static const THICKNESS_BOLD:uint = 2;
-      
-      public static const THICKNESS_THIN:uint = 1;
        
       
       public var currMixingMC:IGunMarkerMixing = null;
@@ -53,14 +45,6 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
             "type7":this.mixingType5
          };
          this.mixingType0.visible = this.mixingType1.visible = this.mixingType2.visible = this.mixingType3.visible = this.mixingType4.visible = this.mixingType5.visible = false;
-      }
-      
-      public function setThickness(param1:String) : void
-      {
-         this.mixingType0.setThickness(param1);
-         this.mixingType1.setThickness(param1);
-         this.mixingType2.setThickness(param1);
-         this.mixingType3.thickness = param1 == BOLD ? int(THICKNESS_BOLD) : int(THICKNESS_THIN);
       }
       
       override protected function draw() : void

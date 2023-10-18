@@ -186,6 +186,9 @@ class BattleResultsService(IBattleResultsService):
         else:
             return
 
+    def _isShowImmediately(self, arenaBonusType):
+        return True
+
     def __postStatistics(self, reusableInfo, result):
         playerAccount = BigWorld.player()
         if playerAccount is None or not isinstance(playerAccount, PlayerAccount):
@@ -283,7 +286,8 @@ class BattleResultsService(IBattleResultsService):
         arenaBonusType = battleCtx.lastArenaBonusType or ARENA_BONUS_TYPE.UNKNOWN
         if arenaUniqueID:
             try:
-                self.__showResults(context.RequestResultsContext(arenaUniqueID, arenaBonusType))
+                showImmediately = self._isShowImmediately(arenaBonusType)
+                self.__showResults(context.RequestResultsContext(arenaUniqueID, arenaBonusType, showImmediately=showImmediately))
             except Exception:
                 LOG_CURRENT_EXCEPTION()
 

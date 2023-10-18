@@ -51,7 +51,7 @@ package net.wg.gui.battle.battleloading
       
       private var _mapName:String = "";
       
-      private var _battleTypeIconPath:String = "";
+      private var _frameLabel:String = "";
       
       private var _tipTitleStr:String = null;
       
@@ -152,7 +152,7 @@ package net.wg.gui.battle.battleloading
             this.onBattleTextUpdated();
             this.mapText.htmlText = this._mapName;
             this.battleIcon.visible = true;
-            this.battleIcon.source = this._battleTypeIconPath;
+            this.battleIcon.source = RES_ICONS.maps_icons_battletypes_136x136_all_png(this._frameLabel);
          }
          if(isInvalid(PROGRESS))
          {
@@ -192,11 +192,11 @@ package net.wg.gui.battle.battleloading
          return this.mapIcon;
       }
       
-      public function setBattleTypeIconPath(param1:String) : void
+      public function setBattleTypeFrameName(param1:String) : void
       {
-         if(param1 != this._battleTypeIconPath)
+         if(param1 != this._frameLabel)
          {
-            this._battleTypeIconPath = param1;
+            this._frameLabel = param1;
             invalidateData();
          }
       }
@@ -238,15 +238,13 @@ package net.wg.gui.battle.battleloading
       
       public function updateWinText(param1:String) : void
       {
-         var _loc2_:int = 0;
          if(param1 != this._winStr)
          {
             this._winStr = param1;
             if(param1.length > 0)
             {
-               _loc2_ = this.winText.height >> 1;
-               this._winTextPosY = this.winText.y + _loc2_;
-               this._battleTextPosY = this.battleText.y + _loc2_;
+               this._winTextPosY = this.winText.y + (this.winText.height >> 1);
+               this._battleTextPosY = this.battleText.y + (this.winText.height >> 1);
             }
             invalidateData();
          }
@@ -258,9 +256,8 @@ package net.wg.gui.battle.battleloading
       
       protected function alignHeaderText() : void
       {
-         var _loc1_:Number = this.winText.textHeight >> 1;
-         this.winText.y = this._winTextPosY - _loc1_;
-         this.battleText.y = this._battleTextPosY - _loc1_;
+         this.winText.y = this._winTextPosY - (this.winText.textHeight >> 1);
+         this.battleText.y = this._battleTextPosY - (this.winText.textHeight >> 1);
       }
       
       protected function getBattleTypeName() : String

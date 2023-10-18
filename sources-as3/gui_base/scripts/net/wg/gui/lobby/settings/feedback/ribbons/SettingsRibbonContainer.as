@@ -53,11 +53,11 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          var _loc3_:RibbonItemData = null;
          var _loc5_:RibbonSettingsLobby = null;
          super();
+         this._colorMgr = App.colorSchemeMgr;
+         this._colorMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorMgrSchemasUpdateHandler);
          this._ribbonsContainer = new Sprite();
          this.addChild(this._ribbonsContainer);
          this._itemsData = new <RibbonItemData>[new RibbonItemData(BATTLE_EFFICIENCY_TYPES.RECEIVED_DAMAGE,SETTINGS.FEEDBACK_TAB_BATTLEEVENTS_RECEIVEDDAMAGE,SETTINGS.FEEDBACK_TAB_RIBBONS_DAMAGEVALUE,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.RECEIVED_CRITS,INGAME_GUI.EFFICIENCYRIBBONS_RECEIVEDCRITS,SETTINGS.FEEDBACK_TAB_RIBBONS_CRITVALUE,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.ARMOR,INGAME_GUI.EFFICIENCYRIBBONS_ARMOR,SETTINGS.FEEDBACK_TAB_RIBBONS_ARMORVALUE,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.DEFENCE,INGAME_GUI.EFFICIENCYRIBBONS_DEFENCE,SETTINGS.FEEDBACK_TAB_RIBBONS_DEFENCEVALUE),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.CAPTURE,INGAME_GUI.EFFICIENCYRIBBONS_CAPTURE,SETTINGS.FEEDBACK_TAB_RIBBONS_CAPTUREVALUE),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.DETECTION,INGAME_GUI.EFFICIENCYRIBBONS_SPOTTED,Values.EMPTY_STR),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.RAM,INGAME_GUI.EFFICIENCYRIBBONS_RAM,SETTINGS.FEEDBACK_TAB_RIBBONS_RAMVALUE,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.DESTRUCTION,INGAME_GUI.EFFICIENCYRIBBONS_KILL,Values.EMPTY_STR,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.ASSIST_TRACK,INGAME_GUI.EFFICIENCYRIBBONS_ASSISTTRACK,SETTINGS.FEEDBACK_TAB_RIBBONS_ASSISTTRACKVALUE,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.CRITS,INGAME_GUI.EFFICIENCYRIBBONS_CRITS,Values.EMPTY_STR,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.DAMAGE,INGAME_GUI.EFFICIENCYRIBBONS_DAMAGE,SETTINGS.FEEDBACK_TAB_RIBBONS_DAMAGEVALUE,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.WORLD_COLLISION,INGAME_GUI.EFFICIENCYRIBBONS_WORLDCOLLISION,SETTINGS.FEEDBACK_TAB_RIBBONS_DAMAGEVALUE,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.ASSIST_SPOT,INGAME_GUI.EFFICIENCYRIBBONS_ASSISTSPOT,SETTINGS.FEEDBACK_TAB_RIBBONS_ASSISTSPOTVALUE,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.ASSIST_STUN,INGAME_GUI.EFFICIENCYRIBBONS_ASSISTSTUN,SETTINGS.FEEDBACK_TAB_RIBBONS_ASSISTSTUN,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.BURN,INGAME_GUI.EFFICIENCYRIBBONS_BURN,SETTINGS.FEEDBACK_TAB_RIBBONS_BURNVALUE,E100,VehicleTypes.HEAVY_TANK),new RibbonItemData(BATTLE_EFFICIENCY_TYPES.STUN,INGAME_GUI.EFFICIENCYRIBBONS_STUN,SETTINGS.FEEDBACK_TAB_RIBBONS_STUN)];
-         this._colorMgr = App.colorSchemeMgr;
-         this._colorMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorMgrSchemasUpdateHandler);
          this._map = new Dictionary();
          var _loc1_:int = this._itemsData.length;
          var _loc4_:int = 0;
@@ -82,8 +82,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
       override protected function onDispose() : void
       {
          var _loc1_:IDisposable = null;
-         this._colorMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorMgrSchemasUpdateHandler);
-         this._colorMgr = null;
          this._itemsData.splice(0,this._itemsData.length);
          this._itemsData = null;
          for each(_loc1_ in this._map)
@@ -99,6 +97,22 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          this.alertIcon.dispose();
          this.alertIcon = null;
          super.onDispose();
+      }
+      
+      public function updateItemVisible(param1:String, param2:Boolean) : void
+      {
+         var _loc3_:SettingsRibbonItem = this._map[param1];
+         if(param2)
+         {
+            if(!_loc3_.parent)
+            {
+               this._ribbonsContainer.addChild(_loc3_);
+            }
+         }
+         else if(_loc3_.parent)
+         {
+            this._ribbonsContainer.removeChild(_loc3_);
+         }
       }
       
       public function redraw() : void
@@ -138,22 +152,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
          dispatchEvent(new Event(Event.RESIZE));
       }
       
-      public function updateItemVisible(param1:String, param2:Boolean) : void
-      {
-         var _loc3_:SettingsRibbonItem = this._map[param1];
-         if(param2)
-         {
-            if(!_loc3_.parent)
-            {
-               this._ribbonsContainer.addChild(_loc3_);
-            }
-         }
-         else if(_loc3_.parent)
-         {
-            this._ribbonsContainer.removeChild(_loc3_);
-         }
-      }
-      
       public function updateSettings(param1:Boolean, param2:Boolean) : void
       {
          var _loc4_:SettingsRibbonItem = null;
@@ -167,14 +165,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
             _loc4_.updateSettings(param1,param2);
             _loc6_++;
          }
-      }
-      
-      private function updateInfoBlockPosition() : void
-      {
-         var _loc1_:int = this.alertIcon.height + ALERT_ICON_PADDING_Y + this.info.textHeight >> 1;
-         this.alertIcon.y = Math.round(this.hintArea.y + this.hintArea.height / 2 - _loc1_);
-         this.info.y = this.alertIcon.y + this.alertIcon.height + ALERT_ICON_PADDING_Y;
-         this.infoBG.y = Math.round(this.info.y - (this.infoBG.height - this.info.height) / 2);
       }
       
       private function onColorMgrSchemasUpdateHandler(param1:ColorSchemeEvent) : void
@@ -193,6 +183,14 @@ package net.wg.gui.lobby.settings.feedback.ribbons
       private function onAlertIconCompleteHandler(param1:Event) : void
       {
          this.updateInfoBlockPosition();
+      }
+      
+      private function updateInfoBlockPosition() : void
+      {
+         var _loc1_:int = this.alertIcon.height + ALERT_ICON_PADDING_Y + this.info.textHeight >> 1;
+         this.alertIcon.y = Math.round(this.hintArea.y + this.hintArea.height / 2 - _loc1_);
+         this.info.y = this.alertIcon.y + this.alertIcon.height + ALERT_ICON_PADDING_Y;
+         this.infoBG.y = Math.round(this.info.y - (this.infoBG.height - this.info.height) / 2);
       }
    }
 }

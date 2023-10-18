@@ -40,6 +40,8 @@ package net.wg.infrastructure.base.meta
       
       function as_setCarousel(param1:String, param2:String) : void;
       
+      function as_setAlertMessageBlockVisible(param1:Boolean) : void;
+      
       function as_showTeaser(param1:Object) : void;
       
       function as_setTeaserTimer(param1:String) : void;
@@ -54,12 +56,12 @@ package net.wg.infrastructure.base.meta
       
       function as_showSwitchToAmmunition() : void;
       
+      function as_toggleBattleRoyale(param1:Boolean) : void;
+      
       function as_toggleCnSubscription(param1:Boolean) : void;
       
       function as_setDQWidgetLayout(param1:int) : void;
       
       function as_updateCarouselEventEntryState(param1:Boolean) : void;
-      
-      function as_updateHangarComponents(param1:Array, param2:Array) : void;
    }
 }

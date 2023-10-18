@@ -42,9 +42,9 @@ package net.wg.gui.components.controls
       
       public var textField:TextField;
       
-      protected var _toolTip:String = "";
-      
       private var _badge:BadgeComponent = null;
+      
+      protected var _toolTip:String = "";
       
       private var _userVO:UserVO;
       
@@ -105,7 +105,6 @@ package net.wg.gui.components.controls
          initSize();
          super.configUI();
          this._initialTFWidth = this.textField.width;
-         this.textField.addEventListener(Event.CHANGE,this.onTextFieldChangeHandler);
          addEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
          addEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
       }
@@ -115,7 +114,6 @@ package net.wg.gui.components.controls
          removeEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
          removeEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
          this.disposeBadge();
-         this.textField.removeEventListener(Event.CHANGE,this.onTextFieldChangeHandler);
          this.textField = null;
          this._toolTipMgr = null;
          this._textFormat = null;
@@ -139,7 +137,6 @@ package net.wg.gui.components.controls
          if(isInvalid(InvalidationType.SIZE))
          {
             constraints.update(_width,_height);
-            this.updateTFPosition();
             this.updateTFSize();
             invalidateData();
          }
@@ -160,7 +157,6 @@ package net.wg.gui.components.controls
             if(this.userVO)
             {
                this.updateBadge();
-               this.updateTFPosition();
                this.updateTFSize();
                this.textField.autoSize = TextFieldAutoSize.NONE;
                _loc2_ = false;
@@ -192,6 +188,11 @@ package net.wg.gui.components.controls
          }
       }
       
+      private function badgeLoaded(param1:Event) : void
+      {
+         invalidateSize();
+      }
+      
       private function updateBadge() : void
       {
          if(this._badge == null && this._userVO.badgeVisualVO != null)
@@ -218,6 +219,7 @@ package net.wg.gui.components.controls
       {
          if(this._badge != null && this._badge.visible)
          {
+            this.textField.x = this._badge.width;
             this.textField.width = this._initialTFWidth - this._badge.width;
             if(this._verticalAlign == VerticalAlign.TOP)
             {
@@ -234,19 +236,8 @@ package net.wg.gui.components.controls
          }
          else
          {
-            this.textField.width = this._initialTFWidth;
-         }
-      }
-      
-      private function updateTFPosition() : void
-      {
-         if(this._badge != null && this._badge.visible)
-         {
-            this.textField.x = this._badge.width;
-         }
-         else
-         {
             this.textField.x = 0;
+            this.textField.width = this._initialTFWidth;
          }
       }
       
@@ -273,29 +264,14 @@ package net.wg.gui.components.controls
          return _loc2_;
       }
       
-      private function disposeBadge() : void
+      private function get isCurrentPlayer() : Boolean
       {
-         if(this._badge != null)
-         {
-            this._badge.removeEventListener(Event.CHANGE,this.badgeLoaded);
-            removeChild(this._badge);
-            this._badge.dispose();
-            this._badge = null;
-         }
+         return this._userVO && this._userVO.userProps && UserTags.isCurrentPlayer(this.userVO.userProps.tags);
       }
       
-      private function updateBadgeVisibility() : void
+      private function get isAnonymized() : Boolean
       {
-         if(this._badge != null)
-         {
-            this._badge.visible = this._userVO && this._userVO.userName && this._badgeVisibility;
-         }
-      }
-      
-      override public function set width(param1:Number) : void
-      {
-         super.width = param1;
-         this._initialTFWidth = param1;
+         return this._userVO && this._userVO.isAnonymized;
       }
       
       public function get showToolTip() : Boolean
@@ -459,6 +435,30 @@ package net.wg.gui.components.controls
          return this.textField.textWidth;
       }
       
+      protected function onMouseRollOverHandler(param1:MouseEvent) : void
+      {
+         if(this._showToolTip)
+         {
+            if(this.isAnonymized)
+            {
+               this._toolTipMgr.showComplexWithParams(TOOLTIPS.ANONYMIZER_TEAMSTATS,this._tooltipParams);
+            }
+            else if(this._altToolTip)
+            {
+               this._toolTipMgr.show(this._altToolTip);
+            }
+            else if(this._toolTip)
+            {
+               this._toolTipMgr.show(this._toolTip);
+            }
+         }
+      }
+      
+      protected function onMouseRollOutHandler(param1:MouseEvent) : void
+      {
+         this._toolTipMgr.hide();
+      }
+      
       public function set badgeVisibility(param1:Boolean) : void
       {
          this._badgeVisibility = param1;
@@ -485,53 +485,34 @@ package net.wg.gui.components.controls
          invalidateSize();
       }
       
+      override public function set width(param1:Number) : void
+      {
+         super.width = param1;
+         this._initialTFWidth = param1;
+      }
+      
       public function set isFrozen(param1:Boolean) : void
       {
          this._isFrozen = param1;
       }
       
-      private function get isCurrentPlayer() : Boolean
+      private function disposeBadge() : void
       {
-         return this._userVO && this._userVO.userProps && UserTags.isCurrentPlayer(this.userVO.userProps.tags);
-      }
-      
-      private function get isAnonymized() : Boolean
-      {
-         return this._userVO && this._userVO.isAnonymized;
-      }
-      
-      protected function onMouseRollOverHandler(param1:MouseEvent) : void
-      {
-         if(this._showToolTip)
+         if(this._badge != null)
          {
-            if(this.isAnonymized)
-            {
-               this._toolTipMgr.showComplexWithParams(TOOLTIPS.ANONYMIZER_TEAMSTATS,this._tooltipParams);
-            }
-            else if(this._altToolTip)
-            {
-               this._toolTipMgr.show(this._altToolTip);
-            }
-            else if(this._toolTip)
-            {
-               this._toolTipMgr.show(this._toolTip);
-            }
+            this._badge.removeEventListener(Event.CHANGE,this.badgeLoaded);
+            removeChild(this._badge);
+            this._badge.dispose();
+            this._badge = null;
          }
       }
       
-      protected function onMouseRollOutHandler(param1:MouseEvent) : void
+      private function updateBadgeVisibility() : void
       {
-         this._toolTipMgr.hide();
-      }
-      
-      private function badgeLoaded(param1:Event) : void
-      {
-         invalidateSize();
-      }
-      
-      private function onTextFieldChangeHandler(param1:Event) : void
-      {
-         this.updateTFPosition();
+         if(this._badge != null)
+         {
+            this._badge.visible = this._userVO && this._userVO.userName && this._badgeVisibility;
+         }
       }
    }
 }

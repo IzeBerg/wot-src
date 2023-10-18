@@ -208,7 +208,6 @@ package net.wg.gui.components.controls
                   _loc16_.id = _loc19_.id;
                   _loc16_.label = _loc19_.label;
                   _loc16_.iconType = _loc16_.iconType || _loc19_.iconType;
-                  _loc16_.showCheckmark = _loc19_.initData.showCheckmark;
                   _loc16_.invalidWidth();
                   _loc12_ = Math.max(_loc12_,_loc16_.width);
                   _loc16_.x = _loc10_;
@@ -529,9 +528,12 @@ package net.wg.gui.components.controls
       
       private function onAppMouseDownHandler(param1:MouseEvent) : void
       {
-         if(this._onReleaseOutsideCallback != null && !this.hit.hitTestPoint(App.stage.mouseX,App.stage.mouseY))
+         if(!this.hit.hitTestPoint(App.stage.mouseX,App.stage.mouseY))
          {
-            this._onReleaseOutsideCallback();
+            if(this._onReleaseOutsideCallback != null)
+            {
+               this._onReleaseOutsideCallback();
+            }
          }
       }
       

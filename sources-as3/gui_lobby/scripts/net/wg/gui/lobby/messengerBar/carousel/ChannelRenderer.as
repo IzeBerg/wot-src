@@ -64,7 +64,7 @@ package net.wg.gui.lobby.messengerBar.carousel
          super.handleMouseRelease(param1);
          if(param1 is MouseEventEx && App.utils.commons.isRightButton(param1))
          {
-            App.contextMenuMgr.show(!!channelListData.isPrivate ? CONTEXT_MENU_HANDLER_TYPE.APPEAL_CHANNEL_LIST : CONTEXT_MENU_HANDLER_TYPE.CHANNEL_LIST,this,channelListData);
+            App.contextMenuMgr.show(CONTEXT_MENU_HANDLER_TYPE.CHANNEL_LIST,this,channelListData);
          }
       }
    }
