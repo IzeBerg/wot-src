@@ -7,10 +7,10 @@ from soft_exception import SoftException
 class CrewSkin(object):
     itemType = CrewSkinType.CREW_SKIN
     __slots__ = ('id', 'tags', 'priceGroup', 'firstNameID', 'lastNameID', 'iconID',
-                 'description', 'roleID', 'nation', 'sex', 'rarity', 'maxCount',
-                 'historical', 'soundSetID', 'priceGroupTags', 'realms')
+                 'description', 'nation', 'sex', 'rarity', 'historical', 'soundSetID',
+                 'priceGroupTags', 'realms')
 
-    def __init__(self, ID, priceGroup, firstNameID, lastNameID, iconID, description, rarity, maxCount, tags, historical, soundSetID, realms):
+    def __init__(self, ID, priceGroup, firstNameID, lastNameID, iconID, description, rarity, tags, historical, soundSetID, realms):
         self.id = ID
         self.priceGroup = priceGroup
         self.tags = tags
@@ -18,11 +18,9 @@ class CrewSkin(object):
         self.lastNameID = lastNameID
         self.iconID = iconID
         self.description = description
-        self.roleID = None
         self.sex = ''
         self.nation = None
         self.rarity = rarity
-        self.maxCount = maxCount
         self.historical = historical
         self.soundSetID = soundSetID if soundSetID else '-'
         self.priceGroupTags = frozenset()
@@ -68,22 +66,10 @@ class CrewSkinsCache(object):
         else:
             return self._validateItem(tmanDescr, item)
 
-    def confirmCrewSkinRole(self, role, itemId):
-        item = self.skins.get(itemId, None)
-        if item is None:
-            return False
-        else:
-            if item.roleID and item.roleID != role:
-                return False
-            return True
-
     @staticmethod
     def _validateItem(tmanDescr, item):
         resultMask = CREW_SKIN_PROPERTIES_MASKS.EMPTY_MASK
         resultMsg = ''
-        if item.roleID and item.roleID != tmanDescr.role:
-            resultMask = resultMask | CREW_SKIN_PROPERTIES_MASKS.ROLE
-            resultMsg += ('{} {} incompatible roles {};').format(item.roleID, item.id, tmanDescr.role)
         tmanSex = TANKMAN_SEX.getTankmanSex(tmanDescr)
         if item.sex and item.sex != tmanSex:
             resultMask = resultMask | CREW_SKIN_PROPERTIES_MASKS.SEX

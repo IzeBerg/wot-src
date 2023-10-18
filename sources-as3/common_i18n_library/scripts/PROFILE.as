@@ -595,6 +595,10 @@ package
       
       public static const SECTION_TECHNIQUE_SORT_TOOLTIP_CLASS_BODY:String = "#profile:section/technique/sort/tooltip/class/body";
       
+      public static const SECTION_TECHNIQUE_SORT_TOOLTIP_PRESTIGELEVEL_HEADER:String = "#profile:section/technique/sort/tooltip/prestigeLevel/header";
+      
+      public static const SECTION_TECHNIQUE_SORT_TOOLTIP_PRESTIGELEVEL_BODY:String = "#profile:section/technique/sort/tooltip/prestigeLevel/body";
+      
       public static const SECTION_FORMATIONS_TITLE:String = "#profile:section/formations/title";
       
       public static const SECTION_FORMATIONS_CLAN_TYPE:String = "#profile:section/formations/clan/type";
@@ -1089,13 +1093,17 @@ package
       
       public static const PROFILE_PARAMS_TOOLTIP_BRAVGDAMAGE_BODY:String = "#profile:profile/params/tooltip/brAvgDamage/body";
       
+      public static const PROFILE_DROPDOWN_LABELS_COMP7:String = "#profile:profile/dropdown/labels/comp7";
+      
       public static const PROFILE_DROPDOWN_LABELS_COMP7_ARCHIVE_GRIFFIN:String = "#profile:profile/dropdown/labels/comp7_archive_Griffin";
       
       public static const PROFILE_DROPDOWN_LABELS_COMP7_SEASON_1:String = "#profile:profile/dropdown/labels/comp7_season_1";
       
-      public static const SECTION_STATISTICS_HEADERTEXT_COMP7_ARCHIVE_GRIFFIN:String = "#profile:section/statistics/headerText/comp7_archive_Griffin";
+      public static const PROFILE_DROPDOWN_LABELS_COMP7_SEASON_2:String = "#profile:profile/dropdown/labels/comp7_season_2";
       
-      public static const SECTION_STATISTICS_HEADERTEXT_COMP7_SEASON_1:String = "#profile:section/statistics/headerText/comp7_season_1";
+      public static const PROFILE_DROPDOWN_LABELS_COMP7_SEASON_3:String = "#profile:profile/dropdown/labels/comp7_season_3";
+      
+      public static const SECTION_STATISTICS_HEADERTEXT_COMP7:String = "#profile:section/statistics/headerText/comp7";
       
       public static const SECTION_STATISTICS_SCORES_AVGPRESTIGEPOINTS:String = "#profile:section/statistics/scores/avgPrestigePoints";
       
@@ -1177,8 +1185,6 @@ package
       
       public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_COMP7:String = "#profile:section/technique/emptyScreenLabel/battleType/comp7";
       
-      public static const SECTION_TECHNIQUE_BUTTONBAR_PRESTIGEPOINTS:String = "#profile:section/technique/buttonBar/prestigePoints";
-      
       public static const SECTION_TECHNIQUE_SORT_TOOLTIP_PRESTIGEPOINTS_HEADER:String = "#profile:section/technique/sort/tooltip/prestigePoints/header";
       
       public static const SECTION_TECHNIQUE_SORT_TOOLTIP_PRESTIGEPOINTS_BODY:String = "#profile:section/technique/sort/tooltip/prestigePoints/body";
@@ -1196,6 +1202,8 @@ package
       public static const PROFILE_PARAMS_TOOLTIP_MAXHEALTHREPAIR_HEADER:String = "#profile:profile/params/tooltip/maxHealthRepair/header";
       
       public static const PROFILE_PARAMS_TOOLTIP_MAXHEALTHREPAIR_BODY:String = "#profile:profile/params/tooltip/maxHealthRepair/body";
+      
+      public static const SEASONS_DROPDOWN_LABEL:String = "#profile:seasons/dropdown_label";
        
       
       public function PROFILE()

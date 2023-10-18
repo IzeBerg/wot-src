@@ -7,14 +7,14 @@ package net.wg.infrastructure.tutorial.builders
    import net.wg.infrastructure.events.LifeCycleEvent;
    import net.wg.infrastructure.exceptions.AbstractException;
    import net.wg.infrastructure.interfaces.ITutorialBuilder;
-   import net.wg.infrastructure.interfaces.IView;
+   import net.wg.infrastructure.interfaces.ITutorialView;
    import net.wg.utils.IAssertable;
    
    public class TutorialBuilder extends EventDispatcher implements ITutorialBuilder
    {
        
       
-      private var _view:IView = null;
+      private var _view:ITutorialView = null;
       
       private var _asserter:IAssertable;
       
@@ -26,38 +26,39 @@ package net.wg.infrastructure.tutorial.builders
          this._asserter = App.utils.asserter;
       }
       
+      public final function dispose() : void
+      {
+         this._disposed = true;
+         this.onDispose();
+      }
+      
       public function externalUpdate() : void
       {
       }
       
-      public function setView(param1:IView) : void
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
+      public function setView(param1:ITutorialView) : void
       {
          this._asserter.assertNotNull(param1,"view for tutorial builder" + Errors.CANT_NULL);
          this._view = param1;
-         if(param1.as_config.configVO.isResizable)
+         if(param1.isResizable)
          {
             param1.addEventListener(Event.RESIZE,this.onViewResizeHandler);
          }
          param1.addEventListener(LifeCycleEvent.ON_DISPOSE,this.onViewDisposeHandler);
       }
       
-      public function set component(param1:DisplayObject) : void
+      public function stopEffect() : void
       {
       }
       
       public function updateData(param1:Object) : void
       {
          this._asserter.assertNotNull(param1,"data for tutorial builder" + Errors.CANT_NULL);
-      }
-      
-      public function stopEffect() : void
-      {
-      }
-      
-      public final function dispose() : void
-      {
-         this._disposed = true;
-         this.onDispose();
       }
       
       protected function onDispose() : void
@@ -78,7 +79,11 @@ package net.wg.infrastructure.tutorial.builders
          throw new AbstractException(_loc1_);
       }
       
-      public function get view() : IView
+      public function set component(param1:DisplayObject) : void
+      {
+      }
+      
+      public function get view() : ITutorialView
       {
          return this._view;
       }
@@ -91,11 +96,6 @@ package net.wg.infrastructure.tutorial.builders
       private function onViewDisposeHandler(param1:LifeCycleEvent) : void
       {
          this.dispose();
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

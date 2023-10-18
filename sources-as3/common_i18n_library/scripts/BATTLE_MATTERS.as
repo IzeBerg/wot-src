@@ -101,8 +101,6 @@ package
       
       public static const MAINSCREEN_QUEST_UNAVAILABLEDESCRIPTION:String = "#battle_matters:mainScreen/quest/unavailableDescription";
       
-      public static const ANIMATIONS_CREW_BOOKS:String = "#battle_matters:animations/crew_books";
-      
       public static const ANIMATIONS_CREW_CLOSE:String = "#battle_matters:animations/crew_close";
       
       public static const ANIMATIONS_BLUEPRINTS:String = "#battle_matters:animations/blueprints";

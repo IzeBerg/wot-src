@@ -1,5 +1,6 @@
 package net.wg.gui.battle.views
 {
+   import flash.display.InteractiveObject;
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.geom.Point;
@@ -10,7 +11,6 @@ package net.wg.gui.battle.views
    import net.wg.gui.battle.interfaces.IPrebattleTimerBase;
    import net.wg.gui.battle.views.ammunitionPanel.PrbAmmunitionPanelEvent;
    import net.wg.gui.battle.views.ammunitionPanel.PrebattleAmmunitionPanelView;
-   import net.wg.gui.battle.views.battleTimer.BaseBattleTimer;
    import net.wg.gui.battle.views.calloutPanel.CalloutPanel;
    import net.wg.gui.battle.views.damagePanel.DamagePanel;
    import net.wg.gui.battle.views.dualGunPanel.DualGunPanel;
@@ -30,6 +30,7 @@ package net.wg.gui.battle.views
    import net.wg.gui.lobby.settings.config.ControlsFactory;
    import net.wg.infrastructure.base.meta.IBattlePageMeta;
    import net.wg.infrastructure.base.meta.impl.BattlePageMeta;
+   import net.wg.infrastructure.base.meta.impl.BattleTimerMeta;
    import net.wg.infrastructure.events.LifeCycleEvent;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
@@ -75,7 +76,7 @@ package net.wg.gui.battle.views
       
       public var minimap:BaseMinimap = null;
       
-      public var battleTimer:BaseBattleTimer = null;
+      public var battleTimer:BattleTimerMeta = null;
       
       public var ribbonsPanel:RibbonsPanel = null;
       
@@ -146,7 +147,6 @@ package net.wg.gui.battle.views
          this.damagePanel.y = param2 - this.damagePanel.initedHeight;
          if(this.battleTimer)
          {
-            this.battleTimer.updateStage();
             this.battleTimer.x = param1 - this.battleTimer.initedWidth;
             this.battleTimer.y = 0;
          }
@@ -359,6 +359,21 @@ package net.wg.gui.battle.views
          }
       }
       
+      override protected function onSetModalFocus(param1:InteractiveObject) : void
+      {
+         if(!this.isElementVisible(param1))
+         {
+            DebugUtils.LOG_DEBUG("Cannot set focus on the invisible element!");
+            setFocus(this);
+         }
+         super.onSetModalFocus(param1);
+      }
+      
+      private function isElementVisible(param1:InteractiveObject) : Boolean
+      {
+         return param1 && param1.visible && param1.parent != this && this.isElementVisible(param1.parent);
+      }
+      
       public function as_checkDAAPI() : void
       {
       }
@@ -551,7 +566,7 @@ package net.wg.gui.battle.views
          return AMMUNITION_PANEL_Y_SHIFT;
       }
       
-      protected function showComponent(param1:String, param2:Boolean) : void
+      private function showComponent(param1:String, param2:Boolean) : void
       {
          var _loc3_:IDisplayableComponent = null;
          _loc3_ = this._componentsStorage[param1];
@@ -575,9 +590,11 @@ package net.wg.gui.battle.views
       
       protected function updateAmmunitionPanelY() : void
       {
+         var _loc1_:int = 0;
          if(this.prebattleAmmunitionPanel)
          {
-            this.prebattleAmmunitionPanel.setYPos(this.battleLoading && this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
+            _loc1_ = Boolean(this.battleLoading) ? int(this.battleLoading.getContentY()) : int(0);
+            this.prebattleAmmunitionPanel.setYPos(!!this.prebattleAmmunitionPanel.isInLoading ? int(_loc1_ + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
          }
       }
       

@@ -57,5 +57,14 @@ package net.wg.mock
       public function showWulfTooltip(param1:String, ... rest) : void
       {
       }
+      
+      public function set enabled(param1:Boolean) : void
+      {
+      }
+      
+      public function get enabled() : Boolean
+      {
+         return false;
+      }
    }
 }

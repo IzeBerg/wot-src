@@ -25,25 +25,25 @@ class PlayerMessages(fading_messages.FadingMessages):
         super(PlayerMessages, self)._addGameListeners()
         ctrl = self.sessionProvider.shared.messages
         if ctrl is not None:
-            ctrl.onShowPlayerMessageByCode += self.__onShowPlayerMessageByCode
+            ctrl.onShowPlayerMessageByCode += self._onShowPlayerMessageByCode
             ctrl.onShowPlayerMessageByKey += self.__onShowPlayerMessageByKey
             ctrl.onShowDestructibleEntityMessageByCode += self.__onShowDestructibleEntityMessageByCode
         ctrl = self.sessionProvider.shared.equipments
         if ctrl is not None:
             ctrl.onEquipmentUpdated += self.__onCombatEquipmentUpdated
-            ctrl.onCombatEquipmentUsed += self.__onCombatEquipmentUsed
+            ctrl.onCombatEquipmentUsed += self._onCombatEquipmentUsed
         return
 
     def _removeGameListeners(self):
         ctrl = self.sessionProvider.shared.messages
         if ctrl is not None:
-            ctrl.onShowPlayerMessageByCode -= self.__onShowPlayerMessageByCode
+            ctrl.onShowPlayerMessageByCode -= self._onShowPlayerMessageByCode
             ctrl.onShowPlayerMessageByKey -= self.__onShowPlayerMessageByKey
             ctrl.onShowDestructibleEntityMessageByCode -= self.__onShowDestructibleEntityMessageByCode
         ctrl = self.sessionProvider.shared.equipments
         if ctrl is not None:
             ctrl.onEquipmentUpdated -= self.__onCombatEquipmentUpdated
-            ctrl.onCombatEquipmentUsed -= self.__onCombatEquipmentUsed
+            ctrl.onCombatEquipmentUsed -= self._onCombatEquipmentUsed
         super(PlayerMessages, self)._removeGameListeners()
         return
 
@@ -53,7 +53,7 @@ class PlayerMessages(fading_messages.FadingMessages):
         self.showMessage(code, {'target': _ID_TO_DESTRUCTIBLE_ENTITY_NAME[entityID], 
            'attacker': getFullName(attackerID, showClan=False)})
 
-    def __onShowPlayerMessageByCode(self, code, postfix, targetID, attackerID, equipmentID, ignoreMessages):
+    def _onShowPlayerMessageByCode(self, code, postfix, targetID, attackerID, equipmentID, ignoreMessages):
         _logger.debug('onShowPlayerMessage %r %r %r %r %r', code, postfix, targetID, attackerID, equipmentID)
         if ignoreMessages:
             return
@@ -81,9 +81,9 @@ class PlayerMessages(fading_messages.FadingMessages):
                 return
             self.showMessage('COMBAT_BR_EQUIPMENT_READY', {'equipment': itemDescriptor.userString})
         else:
-            self.showMessage('COMBAT_EQUIPMENT_READY', {}, postfix=self.__getPostfixFromEquipment(itemDescriptor))
+            self.showMessage('COMBAT_EQUIPMENT_READY', {}, postfix=self._getPostfixFromEquipment(itemDescriptor))
 
-    def __onCombatEquipmentUsed(self, shooterID, eqID):
+    def _onCombatEquipmentUsed(self, shooterID, eqID):
         if self.sessionProvider.arenaVisitor.getArenaGuiType() in ARENA_GUI_TYPE.EPIC_RANGE:
             return
         else:
@@ -95,11 +95,11 @@ class PlayerMessages(fading_messages.FadingMessages):
                     return
                 self.showMessage('COMBAT_EQUIPMENT_USED', {'player': getFullName(shooterID, showClan=False)}, extra=(
                  (
-                  'player', shooterID),), postfix=self.__getPostfixFromEquipment(equipment))
+                  'player', shooterID),), postfix=self._getPostfixFromEquipment(equipment))
             return
 
     @staticmethod
-    def __getPostfixFromEquipment(equipment):
+    def _getPostfixFromEquipment(equipment):
         postfix = equipment.playerMessagesKey
         if postfix is None:
             postfix = equipment.name.split('_')[0].upper()

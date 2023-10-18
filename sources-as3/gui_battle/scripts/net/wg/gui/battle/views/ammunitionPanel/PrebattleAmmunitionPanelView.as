@@ -41,6 +41,8 @@ package net.wg.gui.battle.views.ammunitionPanel
       public function PrebattleAmmunitionPanelView()
       {
          super();
+         setManageSize(true);
+         setSize(WIDTH,HEIGHT);
       }
       
       override protected function onDispose() : void
@@ -100,12 +102,6 @@ package net.wg.gui.battle.views.ammunitionPanel
          invalidateState();
       }
       
-      public function as_showShadows(param1:Boolean) : void
-      {
-         this._showShadows = param1;
-         invalidateState();
-      }
-      
       public function as_show() : void
       {
          alpha = 1;
@@ -114,6 +110,12 @@ package net.wg.gui.battle.views.ammunitionPanel
          this.clearTween();
          this.updateVisibility();
          dispatchEvent(new PrbAmmunitionPanelEvent(PrbAmmunitionPanelEvent.VIEW_SHOWN));
+      }
+      
+      public function as_showShadows(param1:Boolean) : void
+      {
+         this._showShadows = param1;
+         invalidateState();
       }
       
       public function isCompVisible() : Boolean
@@ -155,16 +157,6 @@ package net.wg.gui.battle.views.ammunitionPanel
          this.clearTween();
          visible = false;
          onViewIsHiddenS();
-      }
-      
-      override public function get width() : Number
-      {
-         return WIDTH;
-      }
-      
-      override public function get height() : Number
-      {
-         return HEIGHT;
       }
       
       public function get isHidden() : Boolean

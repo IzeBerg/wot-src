@@ -163,9 +163,13 @@ package net.wg.data.constants.generated
       
       public static const BR_SELECT_RESPAWN:String = "BRSelectRespawn";
       
+      public static const BR_RESPAWN_MESSAGE_PANEL:String = "BRRespawnMessagePanel";
+      
       public static const FRAG_PANEL:String = "fragPanel";
       
       public static const BR_PLAYER_STATS_IN_BATTLE:String = "brPlayerStatsInBattle";
+      
+      public static const BR_TIMERS_PANEL:String = "brTimersPanel";
       
       public static const ROLE_DESCRIPTION:String = "roleDescription";
       
@@ -173,19 +177,17 @@ package net.wg.data.constants.generated
       
       public static const EPIC_RESPAWN_AMMUNITION_PANEL:String = "epicRespawnAmmunitionPanel";
       
+      public static const BATTLE_ROYALE_WINNER_CONGRATS:String = "battleRoyaleWinnerCongrats";
+      
       public static const MAPS_TRAINING_GOALS:String = "mapsTrainingGoals";
       
       public static const PIERCING_DEBUG_PANEL:String = "piercingDebugPanel";
       
+      public static const MAP_INFO_TIP:String = "mapInfoTip";
+      
       public static const COMP7_TANK_CAROUSEL:String = "comp7BattleTankCarousel";
       
       public static const COMP7_TANK_CAROUSEL_FILTER_POPOVER:String = "comp7TankCarouselFilterPopover";
-      
-      public static const EVENT_HUNTER_RESPAWN:String = "eventHunterRespawn";
-      
-      public static const EVENT_BOSS_TELEPORT:String = "eventBossTeleport";
-      
-      public static const EVENT_BOSS_WIDGET:String = "eventBossWidget";
        
       
       public function BATTLE_VIEW_ALIASES()

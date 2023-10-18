@@ -51,6 +51,13 @@ class CrewSkin(FittingItem):
     def getLastName(self):
         return self._skinData().lastNameID
 
+    def getLocalizedFullName(self):
+        if self.getFirstName():
+            fullName = '%s %s' % (i18n.makeString(self.getFirstName()), i18n.makeString(self.getLastName()))
+        else:
+            fullName = i18n.makeString(self.getLastName())
+        return fullName
+
     def getIconID(self):
         return self._skinData().iconID
 
@@ -60,9 +67,6 @@ class CrewSkin(FittingItem):
     def getDescription(self):
         return self._skinData().description
 
-    def getRoleID(self):
-        return self._skinData().roleID
-
     def getSex(self):
         return self._skinData().sex
 
@@ -71,9 +75,6 @@ class CrewSkin(FittingItem):
 
     def getRarity(self):
         return self._skinData().rarity
-
-    def getMaxCount(self):
-        return self._skinData().maxCount
 
     def getHistorical(self):
         return self._skinData().historical
@@ -88,10 +89,17 @@ class CrewSkin(FittingItem):
         return self.__tankmenIDs
 
     def isNew(self):
-        return int(self.__id) not in AccountSettings.getSettings(CREW_SKINS_VIEWED)
+        return self.getNewCount() > 0
 
-    def isStorageAvailable(self):
-        return self.__freeCount < self.getMaxCount()
+    def getTotalCount(self):
+        return self.__freeCount + len(self.__tankmenIDs)
+
+    def getNewCount(self):
+        totalCount = self.getTotalCount()
+        viewedCount = AccountSettings.getSettings(CREW_SKINS_VIEWED).get(self.__id, 0)
+        if viewedCount < totalCount:
+            return totalCount - viewedCount
+        return 0
 
     def _getDescriptor(self):
         return tankmen.getItemByCompactDescr(self.intCD)

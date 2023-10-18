@@ -15,6 +15,10 @@ package
       
       public static const INFOPAGEBUTTONLABEL:String = "#comp7:infoPageButtonLabel";
       
+      public static const DASH:String = "#comp7:dash";
+      
+      public static const PERCENTAGE:String = "#comp7:percentage";
+      
       public static const PAGE_HEADING_PROGRESSION:String = "#comp7:page/heading/progression";
       
       public static const PAGE_HEADING_QUALIFICATION:String = "#comp7:page/heading/qualification";
@@ -30,8 +34,6 @@ package
       public static const PAGE_HEADING_YEARLYSTATISTICS:String = "#comp7:page/heading/yearlyStatistics";
       
       public static const COUNTDOWN_TEXT:String = "#comp7:countDown/text";
-      
-      public static const SEASON_NAME:String = "#comp7:season/name";
       
       public static const SEASON_RANGE:String = "#comp7:season/range";
       
@@ -52,6 +54,30 @@ package
       public static const CALENDARDAY_TIME:String = "#comp7:calendarDay/time";
       
       public static const CALENDARDAY_TIMELEFT:String = "#comp7:calendarDay/timeLeft";
+      
+      public static const SEASONNAME_FIRST:String = "#comp7:seasonName/first";
+      
+      public static const SEASONNAME_SECOND:String = "#comp7:seasonName/second";
+      
+      public static const SEASONNAME_THIRD:String = "#comp7:seasonName/third";
+      
+      public static const SEASONNAMEWITHNUMBER_FIRST:String = "#comp7:seasonNameWithNumber/first";
+      
+      public static const SEASONNAMEWITHNUMBER_SECOND:String = "#comp7:seasonNameWithNumber/second";
+      
+      public static const SEASONNAMEWITHNUMBER_THIRD:String = "#comp7:seasonNameWithNumber/third";
+      
+      public static const SEASONNAMEUPPER_FIRST:String = "#comp7:seasonNameUpper/first";
+      
+      public static const SEASONNAMEUPPER_SECOND:String = "#comp7:seasonNameUpper/second";
+      
+      public static const SEASONNAMEUPPER_THIRD:String = "#comp7:seasonNameUpper/third";
+      
+      public static const SEASONNAMEWITHNUMBERUPPER_FIRST:String = "#comp7:seasonNameWithNumberUpper/first";
+      
+      public static const SEASONNAMEWITHNUMBERUPPER_SECOND:String = "#comp7:seasonNameWithNumberUpper/second";
+      
+      public static const SEASONNAMEWITHNUMBERUPPER_THIRD:String = "#comp7:seasonNameWithNumberUpper/third";
       
       public static const RANK_TEXT:String = "#comp7:rank/text";
       
@@ -275,9 +301,11 @@ package
       
       public static const WEEKLYQUESTS_CARD_STATUSLOCKEDTOOLTIP_HEADER:String = "#comp7:weeklyQuests/card/statusLockedTooltip/header";
       
-      public static const WEEKLYQUESTS_CARD_STATUSLOCKEDTOOLTIP_BODY:String = "#comp7:weeklyQuests/card/statusLockedTooltip/body";
+      public static const WEEKLYQUESTS_CARD_STATUSLOCKEDTOOLTIP_BODY_LOCKEDBYPREVIOUSQUEST:String = "#comp7:weeklyQuests/card/statusLockedTooltip/body/lockedByPreviousQuest";
       
-      public static const WEEKLYQUESTS_CARD_STATUSUNAVAILABLETOOLTIP_BODY:String = "#comp7:weeklyQuests/card/statusUnavailableTooltip/body";
+      public static const WEEKLYQUESTS_CARD_STATUSLOCKEDTOOLTIP_BODY_LOCKEDBYINACTIVESEASON:String = "#comp7:weeklyQuests/card/statusLockedTooltip/body/lockedByInactiveSeason";
+      
+      public static const WEEKLYQUESTS_CARD_STATUSLOCKEDTOOLTIP_BODY_LOCKEDBYNOXVEHICLES:String = "#comp7:weeklyQuests/card/statusLockedTooltip/body/lockedByNoXVehicles";
       
       public static const WEEKLYQUESTS_TOKENPROGRESS_DESCRIPTION_NORMAL:String = "#comp7:weeklyQuests/tokenProgress/description/normal";
       
@@ -435,13 +463,21 @@ package
       
       public static const YEARLYSTATISTICS_SEASONNAME_2:String = "#comp7:yearlyStatistics/seasonName/2";
       
-      public static const YEARLYSTATISTICS_SEASONSTATUS_0:String = "#comp7:yearlyStatistics/seasonStatus/0";
+      public static const YEARLYSTATISTICS_SEASONDATEINTERVAL:String = "#comp7:yearlyStatistics/seasonDateInterval";
       
-      public static const YEARLYSTATISTICS_SEASONSTATUS_1:String = "#comp7:yearlyStatistics/seasonStatus/1";
+      public static const YEARLYSTATISTICS_SEASONDATE_0:String = "#comp7:yearlyStatistics/seasonDate/0";
       
-      public static const YEARLYSTATISTICS_SEASONSTATUS_2:String = "#comp7:yearlyStatistics/seasonStatus/2";
+      public static const YEARLYSTATISTICS_SEASONDATE_1:String = "#comp7:yearlyStatistics/seasonDate/1";
       
-      public static const YEARLYSTATISTICS_RANKSTATUS:String = "#comp7:yearlyStatistics/rankStatus";
+      public static const YEARLYSTATISTICS_SEASONDATE_2:String = "#comp7:yearlyStatistics/seasonDate/2";
+      
+      public static const YEARLYSTATISTICS_SEASONSTATUS_ACTIVE:String = "#comp7:yearlyStatistics/seasonStatus/active";
+      
+      public static const YEARLYSTATISTICS_SEASONSTATUS_END:String = "#comp7:yearlyStatistics/seasonStatus/end";
+      
+      public static const YEARLYSTATISTICS_RANKSTATUS_NOTRECEIVED:String = "#comp7:yearlyStatistics/rankStatus/notReceived";
+      
+      public static const YEARLYSTATISTICS_RANKSTATUS_RECEIVED:String = "#comp7:yearlyStatistics/rankStatus/received";
       
       public static const YEARLYSTATISTICS_RATING:String = "#comp7:yearlyStatistics/rating";
       
@@ -451,11 +487,9 @@ package
       
       public static const YEARLYSTATISTICS_WINS:String = "#comp7:yearlyStatistics/wins";
       
-      public static const YEARLYSTATISTICS_STATISTICSAVAILABILITY:String = "#comp7:yearlyStatistics/statisticsAvailability";
-      
       public static const YEARLYSTATISTICS_GENERATIONOFSTATISTICS:String = "#comp7:yearlyStatistics/generationOfStatistics";
       
-      public static const YEARLYSTATISTICS_DASH:String = "#comp7:yearlyStatistics/dash";
+      public static const YEARLYSTATISTICS_GOTOSEASONSTATISTICS:String = "#comp7:yearlyStatistics/goToSeasonStatistics";
       
       public static const SEASONPOINTTOOLTIP_HEADER:String = "#comp7:seasonPointTooltip/header";
       
@@ -653,6 +687,66 @@ package
       
       public static const SEASONALBATTLESELECTOR_TILLEND:String = "#comp7:seasonalBattleSelector/tillEnd";
       
+      public static const SEASONSTATISTICS_SEASONNAMEUPPER_FIRST:String = "#comp7:seasonStatistics/seasonNameUpper/first";
+      
+      public static const SEASONSTATISTICS_SEASONNAMEUPPER_SECOND:String = "#comp7:seasonStatistics/seasonNameUpper/second";
+      
+      public static const SEASONSTATISTICS_SEASONNAMEUPPER_THIRD:String = "#comp7:seasonStatistics/seasonNameUpper/third";
+      
+      public static const SEASONSTATISTICS_DESCRIPTION_SEASON:String = "#comp7:seasonStatistics/description/season";
+      
+      public static const SEASONSTATISTICS_TITLE:String = "#comp7:seasonStatistics/title";
+      
+      public static const SEASONSTATISTICS_DESCRIPTION_LEADERBOARDPOSITION:String = "#comp7:seasonStatistics/description/leaderboardPosition";
+      
+      public static const SEASONSTATISTICS_DESCRIPTION_FINALSCORE:String = "#comp7:seasonStatistics/description/finalScore";
+      
+      public static const SEASONSTATISTICS_DESCRIPTION_SEASONPOINT:String = "#comp7:seasonStatistics/description/seasonPoint";
+      
+      public static const SEASONSTATISTICS_SECTION_STATISTICS_TITLE:String = "#comp7:seasonStatistics/section/statistics/title";
+      
+      public static const SEASONSTATISTICS_SECTION_STATISTICS_BATTLES_MAIN:String = "#comp7:seasonStatistics/section/statistics/battles/main";
+      
+      public static const SEASONSTATISTICS_SECTION_STATISTICS_BATTLES_ADDITIONAL:String = "#comp7:seasonStatistics/section/statistics/battles/additional";
+      
+      public static const SEASONSTATISTICS_SECTION_STATISTICS_DAMAGE_MAIN:String = "#comp7:seasonStatistics/section/statistics/damage/main";
+      
+      public static const SEASONSTATISTICS_SECTION_STATISTICS_DAMAGE_ADDITIONAL:String = "#comp7:seasonStatistics/section/statistics/damage/additional";
+      
+      public static const SEASONSTATISTICS_SECTION_STATISTICS_MAXPRESTIGEPOINTS_MAIN:String = "#comp7:seasonStatistics/section/statistics/maxPrestigePoints/main";
+      
+      public static const SEASONSTATISTICS_SECTION_STATISTICS_MAXPRESTIGEPOINTS_ADDITIONAL:String = "#comp7:seasonStatistics/section/statistics/maxPrestigePoints/additional";
+      
+      public static const SEASONSTATISTICS_SECTION_STATISTICS_MAXFRAGS_MAIN:String = "#comp7:seasonStatistics/section/statistics/maxFrags/main";
+      
+      public static const SEASONSTATISTICS_SECTION_STATISTICS_MAXFRAGS_ADDITIONAL:String = "#comp7:seasonStatistics/section/statistics/maxFrags/additional";
+      
+      public static const SEASONSTATISTICS_SECTION_STATISTICS_WINSERIES_MAIN:String = "#comp7:seasonStatistics/section/statistics/winSeries/main";
+      
+      public static const SEASONSTATISTICS_SECTION_STATISTICS_WINSERIES_ADDITIONAL:String = "#comp7:seasonStatistics/section/statistics/winSeries/additional";
+      
+      public static const SEASONSTATISTICS_SECTION_VEHICLES_TITLE:String = "#comp7:seasonStatistics/section/vehicles/title";
+      
+      public static const SEASONSTATISTICS_SECTION_VEHICLES_NOVEHICLES:String = "#comp7:seasonStatistics/section/vehicles/noVehicles";
+      
+      public static const SEASONSTATISTICS_SECTION_VEHICLES_BATTLES:String = "#comp7:seasonStatistics/section/vehicles/battles";
+      
+      public static const SEASONSTATISTICS_SECTION_VEHICLES_WINS:String = "#comp7:seasonStatistics/section/vehicles/wins";
+      
+      public static const SEASONSTATISTICS_SECTION_VEHICLES_NODATA:String = "#comp7:seasonStatistics/section/vehicles/noData";
+      
+      public static const SEASONSTATISTICS_BUTTON_FIRST:String = "#comp7:seasonStatistics/button/first";
+      
+      public static const SEASONSTATISTICS_BUTTON_SECOND:String = "#comp7:seasonStatistics/button/second";
+      
+      public static const SEASONSTATISTICS_BUTTON_THIRD:String = "#comp7:seasonStatistics/button/third";
+      
+      public static const SEASONSTATISTICS_BUTTON_FOURTH:String = "#comp7:seasonStatistics/button/fourth";
+      
+      public static const SEASONSTATISTICS_BUTTON_FIFTH:String = "#comp7:seasonStatistics/button/fifth";
+      
+      public static const SEASONSTATISTICS_BUTTON_SIXTH:String = "#comp7:seasonStatistics/button/sixth";
+      
       public static const NOVEHICLES_TEXT_VEHICLEUNAVAILABLE:String = "#comp7:noVehicles/text/vehicleUnavailable";
       
       public static const NOVEHICLES_TEXT_VEHICLEAVAILABLEFORBUY:String = "#comp7:noVehicles/text/vehicleAvailableForBuy";
@@ -800,6 +894,8 @@ package
       public static const BATTLERESULT_PERSONAL_TOOLTIP_TITLE:String = "#comp7:battleResult/personal/tooltip/title";
       
       public static const BATTLERESULT_PERSONAL_TOOLTIP_DESCR:String = "#comp7:battleResult/personal/tooltip/descr";
+      
+      public static const TOURNAMENT_BATTLERESULT_PERSONAL_TOOLTIP_DESCR:String = "#comp7:tournament/battleResult/personal/tooltip/descr";
       
       public static const BATTLERESULT_PERSONAL_TOOLTIP_LOSETITLE:String = "#comp7:battleResult/personal/tooltip/loseTitle";
       

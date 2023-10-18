@@ -28,10 +28,23 @@ class ReferralProgramController(GameWindowController, IReferralProgramController
     def __init__(self):
         super(ReferralProgramController, self).__init__()
         self.__referralDisabled = False
+        self.__isReferralHardDisabled = False
         self.onReferralProgramEnabled = Event()
         self.onReferralProgramDisabled = Event()
         self.onReferralProgramUpdated = Event()
         CustomActionsKeeper.registerAction('id_action', self.__processButtonPress)
+
+    def isEnabled(self):
+        return not self.__referralDisabled and not self.__isReferralHardDisabled
+
+    def setReferralHardDisabled(self, isDisabled=True):
+        self.__isReferralHardDisabled = isDisabled
+        if isDisabled:
+            self.hideWindow()
+            if not self.__referralDisabled:
+                self.onReferralProgramDisabled()
+        elif not self.__referralDisabled:
+            self.onReferralProgramEnabled()
 
     def showWindow(self, url=None, invokedFrom=None):
         self._showWindow(url, invokedFrom)
@@ -116,12 +129,14 @@ class ReferralProgramController(GameWindowController, IReferralProgramController
 
     def __onReferralProgramEnabled(self):
         self.__referralDisabled = False
-        self.onReferralProgramEnabled()
+        if not self.__isReferralHardDisabled:
+            self.onReferralProgramEnabled()
 
     def __onReferralProgramDisabled(self):
         self.__referralDisabled = True
         self.hideWindow()
-        self.onReferralProgramDisabled()
+        if not self.__isReferralHardDisabled:
+            self.onReferralProgramDisabled()
 
     def __setButtonCirclesShown(self):
         if isCurrentUserRecruit():

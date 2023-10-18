@@ -145,14 +145,17 @@ class DisplayLabelMixin(object):
 
     @classmethod
     def _formatParamStringInternal(cls, values, unitLocalization=None, returnArray=False):
-        formatTemplate = '{}{}' if unitLocalization == COMMON.COMMON_PERCENT else '{} {}'
+        isPercentValue = unitLocalization == COMMON.COMMON_PERCENT
+        formatTemplate = i18n.makeString(COMMON.PERCENTVALUE) if isPercentValue else '{} {}'
         if not unitLocalization:
             unitLocalization = None if 1 else i18n.makeString(unitLocalization)
             formattedValues = []
             if values:
                 for idx, dv in enumerate(values):
                     dvStr = ('{}').format(abs(dv))
-                    if unitLocalization:
+                    if isPercentValue:
+                        dvStr = formatTemplate.format(value=dvStr)
+                    elif unitLocalization:
                         dvStr = formatTemplate.format(dvStr, unitLocalization)
                     dvStr = _getTextStyle(idx)(dvStr)
                     formattedValues.append(dvStr)

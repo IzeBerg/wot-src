@@ -9,159 +9,6 @@
 		</aspect>
 		<blocks>
 			<block>
-				<class>ContextGetSelf</class>
-				<id>ContextGetSelf_1</id>
-				<params>
-					<param>
-						CGFGameObjectContext
-						<name>Context Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						getSelf
-						<name>Member Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>FinishScript</class>
-				<id>FinishScript_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>ListenLocalEvent</class>
-				<id>ListenLocalEvent_1</id>
-				<params>
-					<param>
-						stop
-						<name>Event Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>ListenLocalEvent</class>
-				<id>ListenLocalEvent_3</id>
-				<params>
-					<param>
-						cleanup
-						<name>Event Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_6</id>
-				<buddy>ListenLocalEvent_3</buddy>
-				<params>
-					<param>
-						ListenLocalEvent_3
-						<name>Event Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Timer</class>
-				<id>Timer_1</id>
-				<params>
-					<param>
-						4
-						<name>Timer Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>time0</name>
-						<const>\5.000000\</const>
-					</slot>
-					<slot>
-						<name>time1</name>
-						<const>\10.000000\</const>
-					</slot>
-					<slot>
-						<name>time2</name>
-						<const>\15.000000\</const>
-					</slot>
-					<slot>
-						<name>time3</name>
-						<const>\16.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_11</id>
-				<buddy>ListenLocalEvent_3</buddy>
-				<params>
-					<param>
-						ListenLocalEvent_3
-						<name>Event Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>DeactivateGameObject</class>
-				<id>DeactivateGameObject_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>IterateArray</class>
-				<id>IterateArray_1</id>
-				<params>
-					<param>
-						GameObjectArrayT
-						<name>Array Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>forward</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>DeactivateGameObject</class>
-				<id>DeactivateGameObject_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>FindFirstNode</class>
-				<id>FindFirstNode_3</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>name</name>
-						<const>\capture_zone\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>FindFirstNode</class>
-				<id>FindFirstNode_6</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>name</name>
-						<const>\visual_area\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>Variable</class>
 				<id>Variable_1</id>
 				<params>
@@ -186,25 +33,6 @@
 						<type>BoolT</type>
 					</param>
 				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_1</id>
-				<buddy>Variable_1</buddy>
-				<params>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>StartScript</class>
-				<id>StartScript_1</id>
-				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -244,120 +72,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_2</id>
-				<buddy>Variable_2</buddy>
-				<params>
-					<param>
-						GameObjectArrayT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>FindNodeByType</class>
-				<id>FindNodeByType_3</id>
-				<params>
-					<param>
-						Particle
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>IsValid</class>
-				<id>IsValid_6</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_10</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>IsArrayEmpty</class>
-				<id>IsArrayEmpty_3</id>
-				<params>
-					<param>
-						GameObjectArrayT
-						<name>Array Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_11</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>Sequence</class>
-				<id>Sequence_5</id>
-				<params>
-					<param>
-						5
-						<name>Output Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>FindNodeByType</class>
-				<id>FindNodeByType_4</id>
-				<params>
-					<param>
-						Dynamic Model
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>IsArrayEmpty</class>
-				<id>IsArrayEmpty_4</id>
-				<params>
-					<param>
-						GameObjectArrayT
-						<name>Array Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_12</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GetFromArray</class>
-				<id>GetFromArray_3</id>
-				<params>
-					<param>
-						GameObjectArrayT
-						<name>Array Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>index</name>
-						<const>\0\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>Variable</class>
 				<id>Variable_3</id>
 				<params>
@@ -385,6 +99,204 @@
 				<slots/>
 			</block>
 			<block>
+				<class>Variable</class>
+				<id>Variable_4</id>
+				<params>
+					<param>
+						shot
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						GameObjectT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>FinishScript</class>
+				<id>FinishScript_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_3</id>
+				<buddy>ListenLocalEvent_4</buddy>
+				<params>
+					<param>
+						ListenLocalEvent_4
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>Sequence</class>
+				<id>Sequence_2</id>
+				<params>
+					<param>
+						3
+						<name>Output Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_4</id>
+				<buddy>ListenLocalEvent_5</buddy>
+				<params>
+					<param>
+						ListenLocalEvent_5
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_6</id>
+				<buddy>ListenLocalEvent_3</buddy>
+				<params>
+					<param>
+						ListenLocalEvent_3
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_1</id>
+				<buddy>Variable_1</buddy>
+				<params>
+					<param>
+						GameObjectT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_10</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>StopPlan</class>
+				<id>StopPlan_3</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>IsValid</class>
+				<id>IsValid_6</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>FindFirstNode</class>
+				<id>FindFirstNode_3</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>name</name>
+						<const>\capture_zone\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>StopPlan</class>
+				<id>StopPlan_4</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_11</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_2</id>
+				<buddy>Variable_2</buddy>
+				<params>
+					<param>
+						GameObjectArrayT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>FindNodeByType</class>
+				<id>FindNodeByType_3</id>
+				<params>
+					<param>
+						Particle
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>IsArrayEmpty</class>
+				<id>IsArrayEmpty_3</id>
+				<params>
+					<param>
+						GameObjectArrayT
+						<name>Array Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>FindFirstNode</class>
+				<id>FindFirstNode_6</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>name</name>
+						<const>\visual_area\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>StopPlan</class>
+				<id>StopPlan_5</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_12</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
 				<class>SetVariable</class>
 				<id>SetVariable_3</id>
 				<buddy>Variable_3</buddy>
@@ -398,55 +310,137 @@
 				<slots/>
 			</block>
 			<block>
+				<class>IsArrayEmpty</class>
+				<id>IsArrayEmpty_4</id>
+				<params>
+					<param>
+						GameObjectArrayT
+						<name>Array Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>FindNodeByType</class>
+				<id>FindNodeByType_4</id>
+				<params>
+					<param>
+						Dynamic Model
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetFromArray</class>
+				<id>GetFromArray_3</id>
+				<params>
+					<param>
+						GameObjectArrayT
+						<name>Array Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>index</name>
+						<const>\0\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>StopPlan</class>
-				<id>StopPlan_3</id>
+				<id>StopPlan_1</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>StopPlan</class>
-				<id>StopPlan_4</id>
+				<class>If</class>
+				<id>If_2</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>StopPlan</class>
-				<id>StopPlan_5</id>
+				<class>SetVariable</class>
+				<id>SetVariable_4</id>
+				<buddy>Variable_4</buddy>
+				<params>
+					<param>
+						GameObjectT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>FindNodeByType</class>
+				<id>FindNodeByType_1</id>
+				<params>
+					<param>
+						Particle
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>IsArrayEmpty</class>
+				<id>IsArrayEmpty_1</id>
+				<params>
+					<param>
+						GameObjectArrayT
+						<name>Array Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>FindFirstNode</class>
+				<id>FindFirstNode_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>name</name>
+						<const>\turret\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>GetFromArray</class>
+				<id>GetFromArray_1</id>
+				<params>
+					<param>
+						GameObjectArrayT
+						<name>Array Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>index</name>
+						<const>\0\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>StartScript</class>
+				<id>StartScript_1</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
 				<class>Sequence</class>
-				<id>Sequence_6</id>
+				<id>Sequence_5</id>
 				<params>
 					<param>
-						2
+						5
 						<name>Output Count</name>
 						<type>IntT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentEvent</class>
-				<id>ComponentEvent_3</id>
-				<params>
-					<param>
-						Area Trigger.enterReaction
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>ComponentEvent</class>
-				<id>ComponentEvent_4</id>
-				<params>
-					<param>
-						Area Trigger.exitReaction
-						<name>Component Type</name>
-						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -465,42 +459,70 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_2</id>
-				<buddy>Variable_1</buddy>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_8</id>
+				<buddy>ListenLocalEvent_4</buddy>
 				<params>
 					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						ListenLocalEvent_4
+						<name>Event Name</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
 			</block>
 			<block>
-				<class>Sequence</class>
-				<id>Sequence_7</id>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_10</id>
+				<buddy>ListenLocalEvent_3</buddy>
 				<params>
 					<param>
-						2
-						<name>Output Count</name>
-						<type>IntT</type>
+						ListenLocalEvent_3
+						<name>Event Name</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
 			</block>
 			<block>
 				<class>ListenLocalEvent</class>
-				<id>ListenLocalEvent_2</id>
+				<id>ListenLocalEvent_7</id>
 				<params>
 					<param>
-						activateFire
+						onEnter
 						<name>Event Name</name>
 						<type>StringT</type>
 					</param>
 					<param>
-						IntT
-						<name>index</name>
+						GameObjectT
+						<name>who</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						GameObjectT
+						<name>where</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>ListenLocalEvent</class>
+				<id>ListenLocalEvent_8</id>
+				<params>
+					<param>
+						onExit
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						GameObjectT
+						<name>who</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						GameObjectT
+						<name>where</name>
 						<type>TypeT</type>
 					</param>
 				</params>
@@ -521,6 +543,69 @@
 					<slot>
 						<name>index</name>
 						<const>\0\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Timer</class>
+				<id>Timer_1</id>
+				<params>
+					<param>
+						4
+						<name>Timer Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>time0</name>
+						<const>\5.000000\</const>
+					</slot>
+					<slot>
+						<name>time1</name>
+						<const>\10.000000\</const>
+					</slot>
+					<slot>
+						<name>time2</name>
+						<const>\15.000000\</const>
+					</slot>
+					<slot>
+						<name>time3</name>
+						<const>\16.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ComponentMethod</class>
+				<id>ComponentMethod_1</id>
+				<params>
+					<param>
+						Area Trigger.addEnterReaction
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>event</name>
+						<const>\ListenLocalEvent_7\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ComponentMethod</class>
+				<id>ComponentMethod_2</id>
+				<params>
+					<param>
+						Area Trigger.addExitReaction
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>event</name>
+						<const>\ListenLocalEvent_8\</const>
 					</slot>
 				</slots>
 			</block>
@@ -561,6 +646,42 @@
 				</slots>
 			</block>
 			<block>
+				<class>ListenLocalEvent</class>
+				<id>ListenLocalEvent_5</id>
+				<params>
+					<param>
+						deactivateTriggers
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>ComponentMethod</class>
+				<id>ComponentMethod_3</id>
+				<params>
+					<param>
+						Area Trigger.removeEnterReaction
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>ComponentMethod</class>
+				<id>ComponentMethod_4</id>
+				<params>
+					<param>
+						Area Trigger.removeExitReaction
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>SendLocalEvent</class>
 				<id>SendLocalEvent_17</id>
 				<buddy>ListenLocalEvent_2</buddy>
@@ -579,13 +700,14 @@
 				</slots>
 			</block>
 			<block>
-				<class>GetFromArray</class>
-				<id>GetFromArray_2</id>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_18</id>
+				<buddy>ListenLocalEvent_6</buddy>
 				<params>
 					<param>
-						GameObjectArrayT
-						<name>Array Type</name>
-						<type>TypeT</type>
+						ListenLocalEvent_6
+						<name>Event Name</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -597,9 +719,20 @@
 				<slots/>
 			</block>
 			<block>
-				<class>IsValid</class>
-				<id>IsValid_1</id>
-				<params/>
+				<class>ListenLocalEvent</class>
+				<id>ListenLocalEvent_2</id>
+				<params>
+					<param>
+						activateFire
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						IntT
+						<name>index</name>
+						<type>TypeT</type>
+					</param>
+				</params>
 				<slots/>
 			</block>
 			<block>
@@ -632,6 +765,50 @@
 				<slots/>
 			</block>
 			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_6</id>
+				<buddy>Variable_2</buddy>
+				<params>
+					<param>
+						GameObjectArrayT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>IsValid</class>
+				<id>IsValid_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>GetFromArray</class>
+				<id>GetFromArray_2</id>
+				<params>
+					<param>
+						GameObjectArrayT
+						<name>Array Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_9</id>
+				<buddy>ListenLocalEvent_1</buddy>
+				<params>
+					<param>
+						ListenLocalEvent_1
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>RandomInteger</class>
 				<id>RandomInteger_2</id>
 				<params/>
@@ -658,25 +835,17 @@
 				</slots>
 			</block>
 			<block>
-				<class>ListenLocalEvent</class>
-				<id>ListenLocalEvent_5</id>
+				<class>ContextGetSelf</class>
+				<id>ContextGetSelf_1</id>
 				<params>
 					<param>
-						deactivateTriggers
-						<name>Event Name</name>
+						CGFGameObjectContext
+						<name>Context Name</name>
 						<type>StringT</type>
 					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_9</id>
-				<buddy>ListenLocalEvent_1</buddy>
-				<params>
 					<param>
-						ListenLocalEvent_1
-						<name>Event Name</name>
+						getSelf
+						<name>Member Name</name>
 						<type>StringT</type>
 					</param>
 				</params>
@@ -695,23 +864,21 @@
 				<slots/>
 			</block>
 			<block>
-				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_18</id>
-				<buddy>ListenLocalEvent_6</buddy>
-				<params>
-					<param>
-						ListenLocalEvent_6
-						<name>Event Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>ActivateGameObject</class>
 				<id>ActivateGameObject_1</id>
 				<params/>
 				<slots/>
+			</block>
+			<block>
+				<class>SetHidden</class>
+				<id>SetHidden_2</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>isHidden</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>GetComponentProperty</class>
@@ -720,6 +887,88 @@
 					<param>
 						Transform.world
 						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>ListenLocalEvent</class>
+				<id>ListenLocalEvent_4</id>
+				<params>
+					<param>
+						stopRotation
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>Restart</class>
+				<id>Restart_2</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_1</id>
+				<buddy>ListenLocalEvent_1</buddy>
+				<params>
+					<param>
+						ListenLocalEvent_1
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_8</id>
+				<buddy>Variable_4</buddy>
+				<params>
+					<param>
+						GameObjectT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_21</id>
+				<buddy>ListenLocalEvent_1</buddy>
+				<params>
+					<param>
+						ListenLocalEvent_1
+						<name>Event Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>Sequence</class>
+				<id>Sequence_8</id>
+				<params>
+					<param>
+						2
+						<name>Output Count</name>
+						<type>IntT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SendLocalEvent</class>
+				<id>SendLocalEvent_19</id>
+				<buddy>ListenLocalEvent_1</buddy>
+				<params>
+					<param>
+						ListenLocalEvent_1
+						<name>Event Name</name>
 						<type>StringT</type>
 					</param>
 				</params>
@@ -739,26 +988,17 @@
 				<slots/>
 			</block>
 			<block>
-				<class>FindFirstNode</class>
-				<id>FindFirstNode_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>name</name>
-						<const>\shot\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>SetHidden</class>
-				<id>SetHidden_2</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>isHidden</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
+				<class>GetVariable</class>
+				<id>GetVariable_9</id>
+				<buddy>Variable_4</buddy>
+				<params>
+					<param>
+						GameObjectT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
 			</block>
 			<block>
 				<class>CurvePointPerFrame</class>
@@ -776,24 +1016,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>Sequence</class>
-				<id>Sequence_8</id>
-				<params>
-					<param>
-						2
-						<name>Output Count</name>
-						<type>IntT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Restart</class>
-				<id>Restart_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>SetComponentProperty</class>
 				<id>SetComponentProperty_3</id>
 				<params>
@@ -807,7 +1029,7 @@
 			</block>
 			<block>
 				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_19</id>
+				<id>SendLocalEvent_7</id>
 				<buddy>ListenLocalEvent_1</buddy>
 				<params>
 					<param>
@@ -816,6 +1038,25 @@
 						<type>StringT</type>
 					</param>
 				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_7</id>
+				<buddy>Variable_3</buddy>
+				<params>
+					<param>
+						GameObjectT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>MatrixPosition</class>
+				<id>MatrixPosition_2</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -846,24 +1087,17 @@
 				</slots>
 			</block>
 			<block>
-				<class>MatrixPosition</class>
-				<id>MatrixPosition_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>MatrixScale</class>
 				<id>MatrixScale_2</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_21</id>
-				<buddy>ListenLocalEvent_1</buddy>
+				<class>ListenLocalEvent</class>
+				<id>ListenLocalEvent_1</id>
 				<params>
 					<param>
-						ListenLocalEvent_1
+						stop
 						<name>Event Name</name>
 						<type>StringT</type>
 					</param>
@@ -872,23 +1106,29 @@
 			</block>
 			<block>
 				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_1</id>
-				<buddy>ListenLocalEvent_1</buddy>
+				<id>SendLocalEvent_11</id>
+				<buddy>ListenLocalEvent_3</buddy>
 				<params>
 					<param>
-						ListenLocalEvent_1
+						ListenLocalEvent_3
 						<name>Event Name</name>
 						<type>StringT</type>
 					</param>
 				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>StopPlan</class>
+				<id>StopPlan_2</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
 				<class>ListenLocalEvent</class>
-				<id>ListenLocalEvent_4</id>
+				<id>ListenLocalEvent_3</id>
 				<params>
 					<param>
-						stopRotation
+						cleanup
 						<name>Event Name</name>
 						<type>StringT</type>
 					</param>
@@ -896,42 +1136,33 @@
 				<slots/>
 			</block>
 			<block>
-				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_3</id>
-				<buddy>ListenLocalEvent_4</buddy>
-				<params>
-					<param>
-						ListenLocalEvent_4
-						<name>Event Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
+				<class>DeactivateGameObject</class>
+				<id>DeactivateGameObject_1</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_4</id>
-				<buddy>ListenLocalEvent_5</buddy>
-				<params>
-					<param>
-						ListenLocalEvent_5
-						<name>Event Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
+				<class>DeactivateGameObject</class>
+				<id>DeactivateGameObject_2</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>Sequence</class>
-				<id>Sequence_2</id>
+				<class>IterateArray</class>
+				<id>IterateArray_1</id>
 				<params>
 					<param>
-						3
-						<name>Output Count</name>
-						<type>IntT</type>
+						GameObjectArrayT
+						<name>Array Type</name>
+						<type>TypeT</type>
 					</param>
 				</params>
-				<slots/>
+				<slots>
+					<slot>
+						<name>forward</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>GetVariable</class>
@@ -959,240 +1190,49 @@
 				</params>
 				<slots/>
 			</block>
-			<block>
-				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_7</id>
-				<buddy>ListenLocalEvent_1</buddy>
-				<params>
-					<param>
-						ListenLocalEvent_1
-						<name>Event Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_8</id>
-				<buddy>ListenLocalEvent_4</buddy>
-				<params>
-					<param>
-						ListenLocalEvent_4
-						<name>Event Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_6</id>
-				<buddy>Variable_2</buddy>
-				<params>
-					<param>
-						GameObjectArrayT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_7</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>StopPlan</class>
-				<id>StopPlan_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>SendLocalEvent</class>
-				<id>SendLocalEvent_10</id>
-				<buddy>ListenLocalEvent_3</buddy>
-				<params>
-					<param>
-						ListenLocalEvent_3
-						<name>Event Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_4</id>
-				<params>
-					<param>
-						shot
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>IsValid</class>
-				<id>IsValid_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_4</id>
-				<buddy>Variable_4</buddy>
-				<params>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>StopPlan</class>
-				<id>StopPlan_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_8</id>
-				<buddy>Variable_4</buddy>
-				<params>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_9</id>
-				<buddy>Variable_4</buddy>
-				<params>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
 		</blocks>
 		<connections>
-			<connection>
-				<from>Sequence_2</from>
-				<input>input</input>
-				<to>SendLocalEvent_6</to>
-				<output>o2</output>
-			</connection>
-			<connection>
-				<from>ComponentEvent_3</from>
-				<input>windup</input>
-				<to>Timer_1</to>
-				<output>enterReaction</output>
-			</connection>
-			<connection>
-				<from>ComponentEvent_4</from>
-				<input>cancel</input>
-				<to>Timer_1</to>
-				<output>exitReaction</output>
-			</connection>
-			<connection>
-				<from>ListenLocalEvent_1</from>
-				<input>input</input>
-				<to>SendLocalEvent_11</to>
-				<output>exec</output>
-			</connection>
-			<connection>
-				<from>DeactivateGameObject_2</from>
-				<input>in</input>
-				<to>DeactivateGameObject_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_5</from>
-				<input>gameObject</input>
-				<to>DeactivateGameObject_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ListenLocalEvent_3</from>
-				<input>input</input>
-				<to>IterateArray_1</to>
-				<output>exec</output>
-			</connection>
-			<connection>
-				<from>GetVariable_4</from>
-				<input>array</input>
-				<to>IterateArray_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>IterateArray_1</from>
-				<input>in</input>
-				<to>DeactivateGameObject_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>IterateArray_1</from>
-				<input>gameObject</input>
-				<to>DeactivateGameObject_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>FindFirstNode_3</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>FindFirstNode_6</to>
-				<output>value</output>
-			</connection>
 			<connection>
 				<from>ContextGetSelf_1</from>
 				<input>default</input>
 				<to>Variable_1</to>
 				<output>value</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>default</input>
+				<to>Variable_3</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>default</input>
+				<to>Variable_4</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>Sequence_2</from>
+				<input>input</input>
+				<to>SendLocalEvent_3</to>
+				<output>o0</output>
+			</connection>
+			<connection>
+				<from>FinishScript_1</from>
+				<input>input</input>
+				<to>Sequence_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>Sequence_2</from>
+				<input>input</input>
+				<to>SendLocalEvent_4</to>
+				<output>o1</output>
+			</connection>
+			<connection>
+				<from>Sequence_2</from>
+				<input>input</input>
+				<to>SendLocalEvent_6</to>
+				<output>o2</output>
 			</connection>
 			<connection>
 				<from>If_10</from>
@@ -1205,6 +1245,54 @@
 				<input>value</input>
 				<to>SetVariable_1</to>
 				<output>node</output>
+			</connection>
+			<connection>
+				<from>Sequence_5</from>
+				<input>input</input>
+				<to>If_10</to>
+				<output>o0</output>
+			</connection>
+			<connection>
+				<from>IsValid_6</from>
+				<input>value</input>
+				<to>If_10</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>If_10</from>
+				<input>input</input>
+				<to>StopPlan_3</to>
+				<output>false</output>
+			</connection>
+			<connection>
+				<from>FindFirstNode_3</from>
+				<input>gameObject</input>
+				<to>IsValid_6</to>
+				<output>node</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>FindFirstNode_3</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>If_11</from>
+				<input>input</input>
+				<to>StopPlan_4</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>Sequence_5</from>
+				<input>input</input>
+				<to>If_11</to>
+				<output>o1</output>
+			</connection>
+			<connection>
+				<from>IsArrayEmpty_3</from>
+				<input>value</input>
+				<to>If_11</to>
+				<output>res</output>
 			</connection>
 			<connection>
 				<from>If_11</from>
@@ -1225,58 +1313,22 @@
 				<output>node</output>
 			</connection>
 			<connection>
-				<from>FindFirstNode_3</from>
-				<input>gameObject</input>
-				<to>IsValid_6</to>
-				<output>node</output>
-			</connection>
-			<connection>
-				<from>Sequence_5</from>
-				<input>input</input>
-				<to>If_10</to>
-				<output>o0</output>
-			</connection>
-			<connection>
-				<from>IsValid_6</from>
-				<input>value</input>
-				<to>If_10</to>
-				<output>res</output>
-			</connection>
-			<connection>
 				<from>FindNodeByType_3</from>
 				<input>array</input>
 				<to>IsArrayEmpty_3</to>
 				<output>nodes</output>
 			</connection>
 			<connection>
-				<from>Sequence_5</from>
-				<input>input</input>
-				<to>If_11</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>IsArrayEmpty_3</from>
-				<input>value</input>
-				<to>If_11</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>StartScript_1</from>
-				<input>input</input>
-				<to>Sequence_5</to>
-				<output>out</output>
-			</connection>
-			<connection>
 				<from>ContextGetSelf_1</from>
 				<input>gameObject</input>
-				<to>FindNodeByType_4</to>
+				<to>FindFirstNode_6</to>
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>FindNodeByType_4</from>
-				<input>array</input>
-				<to>IsArrayEmpty_4</to>
-				<output>nodes</output>
+				<from>If_12</from>
+				<input>input</input>
+				<to>StopPlan_5</to>
+				<output>true</output>
 			</connection>
 			<connection>
 				<from>Sequence_5</from>
@@ -1291,18 +1343,6 @@
 				<output>res</output>
 			</connection>
 			<connection>
-				<from>FindNodeByType_4</from>
-				<input>array</input>
-				<to>GetFromArray_3</to>
-				<output>nodes</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>default</input>
-				<to>Variable_3</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>If_12</from>
 				<input>input</input>
 				<to>SetVariable_3</to>
@@ -1315,76 +1355,136 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>If_10</from>
-				<input>input</input>
-				<to>StopPlan_3</to>
-				<output>false</output>
+				<from>FindNodeByType_4</from>
+				<input>array</input>
+				<to>IsArrayEmpty_4</to>
+				<output>nodes</output>
 			</connection>
 			<connection>
-				<from>If_11</from>
-				<input>input</input>
-				<to>StopPlan_4</to>
-				<output>true</output>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>FindNodeByType_4</to>
+				<output>value</output>
 			</connection>
 			<connection>
-				<from>If_12</from>
+				<from>FindNodeByType_4</from>
+				<input>array</input>
+				<to>GetFromArray_3</to>
+				<output>nodes</output>
+			</connection>
+			<connection>
+				<from>If_2</from>
 				<input>input</input>
-				<to>StopPlan_5</to>
+				<to>StopPlan_1</to>
 				<output>true</output>
 			</connection>
 			<connection>
 				<from>Sequence_5</from>
 				<input>input</input>
-				<to>Sequence_6</to>
-				<output>o4</output>
+				<to>If_2</to>
+				<output>o3</output>
 			</connection>
 			<connection>
-				<from>Sequence_6</from>
-				<input>activate</input>
-				<to>ComponentEvent_3</to>
-				<output>o0</output>
+				<from>IsArrayEmpty_1</from>
+				<input>value</input>
+				<to>If_2</to>
+				<output>res</output>
 			</connection>
 			<connection>
-				<from>Sequence_7</from>
-				<input>deactivate</input>
-				<to>ComponentEvent_3</to>
-				<output>o0</output>
-			</connection>
-			<connection>
-				<from>GetVariable_1</from>
-				<input>gameObject</input>
-				<to>ComponentEvent_3</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>Sequence_6</from>
-				<input>activate</input>
-				<to>ComponentEvent_4</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>Sequence_7</from>
-				<input>deactivate</input>
-				<to>ComponentEvent_4</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>GetVariable_2</from>
-				<input>gameObject</input>
-				<to>ComponentEvent_4</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ListenLocalEvent_5</from>
+				<from>If_2</from>
 				<input>input</input>
-				<to>Sequence_7</to>
-				<output>exec</output>
+				<to>SetVariable_4</to>
+				<output>false</output>
+			</connection>
+			<connection>
+				<from>GetFromArray_1</from>
+				<input>value</input>
+				<to>SetVariable_4</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>FindFirstNode_1</from>
+				<input>gameObject</input>
+				<to>FindNodeByType_1</to>
+				<output>node</output>
+			</connection>
+			<connection>
+				<from>FindNodeByType_1</from>
+				<input>array</input>
+				<to>IsArrayEmpty_1</to>
+				<output>nodes</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>FindFirstNode_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>FindNodeByType_1</from>
+				<input>array</input>
+				<to>GetFromArray_1</to>
+				<output>nodes</output>
+			</connection>
+			<connection>
+				<from>StartScript_1</from>
+				<input>input</input>
+				<to>Sequence_5</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>Timer_1</from>
+				<input>input</input>
+				<to>SendLocalEvent_8</to>
+				<output>cancelOut</output>
+			</connection>
+			<connection>
+				<from>SendLocalEvent_8</from>
+				<input>input</input>
+				<to>SendLocalEvent_10</to>
+				<output>out</output>
 			</connection>
 			<connection>
 				<from>Timer_1</from>
 				<input>input</input>
 				<to>SendLocalEvent_2</to>
 				<output>windupOut</output>
+			</connection>
+			<connection>
+				<from>ListenLocalEvent_7</from>
+				<input>windup</input>
+				<to>Timer_1</to>
+				<output>exec</output>
+			</connection>
+			<connection>
+				<from>ListenLocalEvent_8</from>
+				<input>cancel</input>
+				<to>Timer_1</to>
+				<output>exec</output>
+			</connection>
+			<connection>
+				<from>Sequence_5</from>
+				<input>in</input>
+				<to>ComponentMethod_1</to>
+				<output>o4</output>
+			</connection>
+			<connection>
+				<from>GetVariable_1</from>
+				<input>gameObject</input>
+				<to>ComponentMethod_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>ComponentMethod_1</from>
+				<input>in</input>
+				<to>ComponentMethod_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetVariable_1</from>
+				<input>gameObject</input>
+				<to>ComponentMethod_2</to>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>Timer_1</from>
@@ -1399,22 +1499,52 @@
 				<output>event1</output>
 			</connection>
 			<connection>
+				<from>ListenLocalEvent_5</from>
+				<input>in</input>
+				<to>ComponentMethod_3</to>
+				<output>exec</output>
+			</connection>
+			<connection>
+				<from>GetVariable_1</from>
+				<input>gameObject</input>
+				<to>ComponentMethod_3</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>ComponentMethod_1</from>
+				<input>arg#0</input>
+				<to>ComponentMethod_3</to>
+				<output>return</output>
+			</connection>
+			<connection>
+				<from>ComponentMethod_3</from>
+				<input>in</input>
+				<to>ComponentMethod_4</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetVariable_1</from>
+				<input>gameObject</input>
+				<to>ComponentMethod_4</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>ComponentMethod_2</from>
+				<input>arg#0</input>
+				<to>ComponentMethod_4</to>
+				<output>return</output>
+			</connection>
+			<connection>
 				<from>Timer_1</from>
 				<input>input</input>
 				<to>SendLocalEvent_17</to>
 				<output>event2</output>
 			</connection>
 			<connection>
-				<from>GetVariable_6</from>
-				<input>array</input>
-				<to>GetFromArray_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ListenLocalEvent_2</from>
-				<input>index</input>
-				<to>GetFromArray_2</to>
-				<output>index</output>
+				<from>Timer_1</from>
+				<input>input</input>
+				<to>SendLocalEvent_18</to>
+				<output>event3</output>
 			</connection>
 			<connection>
 				<from>ListenLocalEvent_2</from>
@@ -1427,12 +1557,6 @@
 				<input>value</input>
 				<to>If_1</to>
 				<output>res</output>
-			</connection>
-			<connection>
-				<from>GetFromArray_2</from>
-				<input>gameObject</input>
-				<to>IsValid_1</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>If_1</from>
@@ -1477,6 +1601,30 @@
 				<output>color</output>
 			</connection>
 			<connection>
+				<from>GetFromArray_2</from>
+				<input>gameObject</input>
+				<to>IsValid_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetVariable_6</from>
+				<input>array</input>
+				<to>GetFromArray_2</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>ListenLocalEvent_2</from>
+				<input>index</input>
+				<to>GetFromArray_2</to>
+				<output>index</output>
+			</connection>
+			<connection>
+				<from>If_1</from>
+				<input>input</input>
+				<to>SendLocalEvent_9</to>
+				<output>false</output>
+			</connection>
+			<connection>
 				<from>RandomInteger_2</from>
 				<input>r</input>
 				<to>CreateColor_2</to>
@@ -1495,18 +1643,6 @@
 				<output>res</output>
 			</connection>
 			<connection>
-				<from>If_1</from>
-				<input>input</input>
-				<to>SendLocalEvent_9</to>
-				<output>false</output>
-			</connection>
-			<connection>
-				<from>Timer_1</from>
-				<input>input</input>
-				<to>SendLocalEvent_18</to>
-				<output>event3</output>
-			</connection>
-			<connection>
 				<from>ListenLocalEvent_6</from>
 				<input>in</input>
 				<to>ActivateGameObject_1</to>
@@ -1516,24 +1652,6 @@
 				<from>GetVariable_3</from>
 				<input>gameObject</input>
 				<to>ActivateGameObject_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ActivateGameObject_1</from>
-				<input>in</input>
-				<to>GetComponentProperty_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ActivateGameObject_1</from>
-				<input>gameObject</input>
-				<to>GetComponentProperty_2</to>
-				<output>object</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>FindFirstNode_1</to>
 				<output>value</output>
 			</connection>
 			<connection>
@@ -1549,22 +1667,16 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>SetHidden_2</from>
-				<input>input</input>
-				<to>CurvePointPerFrame_2</to>
+				<from>ActivateGameObject_1</from>
+				<input>in</input>
+				<to>GetComponentProperty_2</to>
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>ListenLocalEvent_4</from>
-				<input>stop</input>
-				<to>CurvePointPerFrame_2</to>
-				<output>exec</output>
-			</connection>
-			<connection>
-				<from>CurvePointPerFrame_2</from>
-				<input>input</input>
-				<to>Sequence_8</to>
-				<output>out</output>
+				<from>ActivateGameObject_1</from>
+				<input>gameObject</input>
+				<to>GetComponentProperty_2</to>
+				<output>object</output>
 			</connection>
 			<connection>
 				<from>Sequence_8</from>
@@ -1577,6 +1689,42 @@
 				<input>object</input>
 				<to>Restart_2</to>
 				<output>value</output>
+			</connection>
+			<connection>
+				<from>SetHidden_2</from>
+				<input>input</input>
+				<to>SendLocalEvent_1</to>
+				<output>failure</output>
+			</connection>
+			<connection>
+				<from>GetComponentProperty_2</from>
+				<input>input</input>
+				<to>SendLocalEvent_21</to>
+				<output>failure</output>
+			</connection>
+			<connection>
+				<from>CurvePointPerFrame_2</from>
+				<input>input</input>
+				<to>Sequence_8</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>Restart_2</from>
+				<input>input</input>
+				<to>SendLocalEvent_19</to>
+				<output>failure</output>
+			</connection>
+			<connection>
+				<from>SetHidden_2</from>
+				<input>input</input>
+				<to>CurvePointPerFrame_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ListenLocalEvent_4</from>
+				<input>stop</input>
+				<to>CurvePointPerFrame_2</to>
+				<output>exec</output>
 			</connection>
 			<connection>
 				<from>Sequence_8</from>
@@ -1597,10 +1745,16 @@
 				<output>res</output>
 			</connection>
 			<connection>
-				<from>Restart_2</from>
+				<from>SetComponentProperty_3</from>
 				<input>input</input>
-				<to>SendLocalEvent_19</to>
+				<to>SendLocalEvent_7</to>
 				<output>failure</output>
+			</connection>
+			<connection>
+				<from>GetComponentProperty_2</from>
+				<input>a</input>
+				<to>MatrixPosition_2</to>
+				<output>world</output>
 			</connection>
 			<connection>
 				<from>MatrixPosition_2</from>
@@ -1629,56 +1783,14 @@
 			<connection>
 				<from>GetComponentProperty_2</from>
 				<input>a</input>
-				<to>MatrixPosition_2</to>
-				<output>world</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperty_2</from>
-				<input>a</input>
 				<to>MatrixScale_2</to>
 				<output>world</output>
 			</connection>
 			<connection>
-				<from>GetComponentProperty_2</from>
+				<from>ListenLocalEvent_1</from>
 				<input>input</input>
-				<to>SendLocalEvent_21</to>
-				<output>failure</output>
-			</connection>
-			<connection>
-				<from>SetHidden_2</from>
-				<input>input</input>
-				<to>SendLocalEvent_1</to>
-				<output>failure</output>
-			</connection>
-			<connection>
-				<from>Sequence_2</from>
-				<input>input</input>
-				<to>SendLocalEvent_3</to>
-				<output>o0</output>
-			</connection>
-			<connection>
-				<from>Sequence_2</from>
-				<input>input</input>
-				<to>SendLocalEvent_4</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>FinishScript_1</from>
-				<input>input</input>
-				<to>Sequence_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>SetComponentProperty_3</from>
-				<input>input</input>
-				<to>SendLocalEvent_7</to>
-				<output>failure</output>
-			</connection>
-			<connection>
-				<from>Timer_1</from>
-				<input>input</input>
-				<to>SendLocalEvent_8</to>
-				<output>cancelOut</output>
+				<to>SendLocalEvent_11</to>
+				<output>exec</output>
 			</connection>
 			<connection>
 				<from>SendLocalEvent_11</from>
@@ -1687,52 +1799,40 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>SendLocalEvent_8</from>
-				<input>input</input>
-				<to>SendLocalEvent_10</to>
+				<from>DeactivateGameObject_2</from>
+				<input>in</input>
+				<to>DeactivateGameObject_1</to>
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>default</input>
-				<to>Variable_4</to>
+				<from>GetVariable_5</from>
+				<input>gameObject</input>
+				<to>DeactivateGameObject_1</to>
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>FindFirstNode_1</from>
+				<from>IterateArray_1</from>
+				<input>in</input>
+				<to>DeactivateGameObject_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>IterateArray_1</from>
 				<input>gameObject</input>
-				<to>IsValid_2</to>
-				<output>node</output>
+				<to>DeactivateGameObject_2</to>
+				<output>value</output>
 			</connection>
 			<connection>
-				<from>Sequence_5</from>
+				<from>ListenLocalEvent_3</from>
 				<input>input</input>
-				<to>If_2</to>
-				<output>o3</output>
+				<to>IterateArray_1</to>
+				<output>exec</output>
 			</connection>
 			<connection>
-				<from>IsValid_2</from>
-				<input>value</input>
-				<to>If_2</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>If_2</from>
-				<input>input</input>
-				<to>SetVariable_4</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>FindFirstNode_1</from>
-				<input>value</input>
-				<to>SetVariable_4</to>
-				<output>node</output>
-			</connection>
-			<connection>
-				<from>If_2</from>
-				<input>input</input>
-				<to>StopPlan_1</to>
-				<output>false</output>
+				<from>GetVariable_4</from>
+				<input>array</input>
+				<to>IterateArray_1</to>
+				<output>value</output>
 			</connection>
 		</connections>
 		<macros/>

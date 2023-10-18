@@ -141,6 +141,8 @@ package
       
       public static const BONUSES_FREEXP_DESCRIPTION:String = "#quests:bonuses/freeXP/description";
       
+      public static const BONUSES_EQUIPCOIN_DESCRIPTION:String = "#quests:bonuses/equipCoin/description";
+      
       public static const BONUSES_PREMIUM_PLUS_DESCRIPTION:String = "#quests:bonuses/premium_plus/description";
       
       public static const BONUSES_TANKMEN_DESCRIPTION:String = "#quests:bonuses/tankmen/description";
@@ -1387,6 +1389,8 @@ package
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_SUBTOTALXP:String = "#quests:details/conditions/cumulative/subtotalXP";
       
+      public static const DETAILS_CONDITIONS_CUMULATIVE_FACTUALXP:String = "#quests:details/conditions/cumulative/factualXP";
+      
       public static const DETAILS_CONDITIONS_CUMULATIVE_POTENTIALDAMAGEDEALT:String = "#quests:details/conditions/cumulative/potentialDamageDealt";
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_SOLOHITSASSISTED:String = "#quests:details/conditions/cumulative/soloHitsAssisted";
@@ -1478,16 +1482,6 @@ package
       public static const DETAILS_CONDITIONS_CUMULATIVE_RANKCHANGE:String = "#quests:details/conditions/cumulative/rankChange";
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_XP_OTHER:String = "#quests:details/conditions/cumulative/xp/other";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_WTBOSSVULNERABLEDAMAGE:String = "#quests:details/conditions/cumulative/wtBossVulnerableDamage";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_MAXWTPLASMABONUS:String = "#quests:details/conditions/cumulative/maxWtPlasmaBonus";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_WTGENERATORSCAPTURED:String = "#quests:details/conditions/cumulative/wtGeneratorsCaptured";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_WTTOTALGENERATORSCAPTURED:String = "#quests:details/conditions/cumulative/wtTotalGeneratorsCaptured";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_WTDEATHCOUNT:String = "#quests:details/conditions/cumulative/wtDeathCount";
       
       public static const DETAILS_DOSSIER_SNIPERSERIES:String = "#quests:details/dossier/sniperSeries";
       
@@ -3009,7 +3003,13 @@ package
       
       public static const ACTION_CHAIN_HINT_OPENPERSONALCASE:String = "#quests:action/chain/hint/openPersonalCase";
       
-      public static const ACTION_CHAIN_HINT_CHANGEROLE:String = "#quests:action/chain/hint/changeRole";
+      public static const ACTION_CHAIN_HINT_CHANGEROLEDISCOUNTAVAILABLE:String = "#quests:action/chain/hint/changeRoleDiscountAvailable";
+      
+      public static const ACTION_CHAIN_HINT_RETRAININGDISCOUNTAVAILABLE:String = "#quests:action/chain/hint/retrainingDiscountAvailable";
+      
+      public static const ACTION_CHAIN_HINT_OPENCREWBOOKS:String = "#quests:action/chain/hint/openCrewBooks";
+      
+      public static const ACTION_CHAIN_HINT_CREWRETAININGDISCOUNTAVAILABLE:String = "#quests:action/chain/hint/crewRetainingDiscountAvailable";
       
       public static const ACTION_CHAIN_HINT_DROPSKILLS:String = "#quests:action/chain/hint/dropSkills";
       
@@ -3018,8 +3018,6 @@ package
       public static const ACTION_CHAIN_HINT_CREWRETRAINING:String = "#quests:action/chain/hint/crewRetraining";
       
       public static const ACTION_CHAIN_HINT_WINXPFACTORMODE:String = "#quests:action/chain/hint/winXPFactorMode";
-      
-      public static const ACTION_CHAIN_HINT_FREEXPTOTMAN:String = "#quests:action/chain/hint/freeXPToTMan";
       
       public static const ACTION_CHAIN_HINT_PREMDAYS:String = "#quests:action/chain/hint/premDays";
       

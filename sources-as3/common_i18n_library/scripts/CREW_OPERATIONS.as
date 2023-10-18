@@ -65,15 +65,9 @@ package
       
       public static const DROPINBARRACK_WARNING_INBATTLE_TOOLTIP_BODY:String = "#crew_operations:dropInBarrack/warning/inBattle/tooltip/body";
       
-      public static const ROLECHANGE_WINDOWTITLE:String = "#crew_operations:roleChange/windowTitle";
+      public static const DROPINBARRACK_WARNING_CREWISLOCKED_TOOLTIP_HEADER:String = "#crew_operations:dropInBarrack/warning/crewIsLocked/tooltip/header";
       
-      public static const ROLECHANGE_ACCEPTBUTTON:String = "#crew_operations:roleChange/acceptButton";
-      
-      public static const ROLECHANGE_VEHICLESELECTLABEL:String = "#crew_operations:roleChange/vehicleSelectlabel";
-      
-      public static const ROLECHANGE_ROLESELECTLABEL:String = "#crew_operations:roleChange/roleSelectLabel";
-      
-      public static const ROLECHANGE_FOOTERINFO:String = "#crew_operations:roleChange/footerInfo";
+      public static const DROPINBARRACK_WARNING_CREWISLOCKED_TOOLTIP_BODY:String = "#crew_operations:dropInBarrack/warning/crewIsLocked/tooltip/body";
       
       public static const CREWBOOKS_TITLE:String = "#crew_operations:crewBooks/title";
       

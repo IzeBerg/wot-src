@@ -9,3 +9,7 @@ class BattleMattersViewMeta(MissionsViewBaseMeta):
     def as_hideViewS(self):
         if self._isDAAPIInited():
             return self.flashObject.as_hideView()
+
+    def as_setPlaceIdS(self, placeId):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setPlaceId(placeId)

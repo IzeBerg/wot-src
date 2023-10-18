@@ -239,6 +239,8 @@ package net.wg.gui.lobby.settings.config
       
       public static const GAMEPLAY_ONLY_10_MODE:String = "gameplay_only10Mode";
       
+      public static const GAMEPLAY_DEVMAPS:String = "gameplay_devMaps";
+      
       public static const INTERFACE_SCALE_DISABLED:String = "interfaceScaleDisabled";
       
       public static const CAROUSEL_TYPE:String = "carouselType";

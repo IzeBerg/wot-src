@@ -6,7 +6,6 @@ from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.customization.shared import getItemInstalledCount
 from gui.Scaleform.daapi.view.lobby.customization.sound_constants import SOUNDS
-from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import currentHangarIsBattleRoyale
 from gui.customization.shared import isVehicleCanBeCustomized
 from gui.impl import backport
 from gui.impl.gen import R
@@ -22,9 +21,9 @@ from gui.shared.gui_items.processors.common import OutfitApplier
 from gui.shared.image_helper import getTextureLinkByID
 from helpers import dependency, int2roman
 from items.components.c11n_constants import SeasonType, UNBOUND_VEH_KEY
+from gui.shared.system_factory import collectCustomizationHangarDecorator
 from skeletons.gui.customization import ICustomizationService
 from skeletons.gui.shared import IItemsCache
-from skeletons.gui.game_control import IEventBattlesController
 from soft_exception import SoftException
 from gui.impl.lobby.progressive_reward.progressive_award_sounds import ProgressiveRewardSoundEvents
 
@@ -32,7 +31,6 @@ class ProgressiveItemsUpgradeView(ViewImpl):
     __slots__ = ('__item', '__vehicle', '__level', '__itemsInNeedToUpgrade')
     __c11nService = dependency.descriptor(ICustomizationService)
     __itemsCache = dependency.descriptor(IItemsCache)
-    __gameEventCtrl = dependency.descriptor(IEventBattlesController)
 
     def __init__(self, *args, **kwargs):
         settings = ViewSettings(R.views.lobby.customization.progressive_items_reward.ProgressiveItemsUpgradeView())
@@ -144,10 +142,9 @@ class ProgressiveItemsUpgradeView(ViewImpl):
     @replaceNoneKwargsModel
     def __updateButtons(self, lock=False, model=None):
         okEnabled = True
-        isEventHangar = self.__gameEventCtrl.isEventPrbActive()
-        isBRHangar = currentHangarIsBattleRoyale()
-        vehCustomizationEbabled = self.__vehicle.isCustomizationEnabled()
-        c11nEnabled = not lock and vehCustomizationEbabled and not isEventHangar and not isBRHangar
+        c11nEnabled = not lock and self.__vehicle.isCustomizationEnabled()
+        if any(handler() for handler in collectCustomizationHangarDecorator()):
+            c11nEnabled = False
         if self.__itemsInNeedToUpgrade:
             okEnabled = c11nEnabled
             if okEnabled:

@@ -7,6 +7,7 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.gui.battle.battleloading.BattleLoadingHelper;
    import net.wg.gui.battle.components.BattleAtlasSprite;
+   import net.wg.gui.battle.components.PrestigeLevel;
    import net.wg.gui.battle.views.stats.constants.PlayerStatusSchemeName;
    import net.wg.gui.components.controls.BadgeComponent;
    import net.wg.gui.components.icons.PlayerActionMarker;
@@ -14,6 +15,7 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
    import net.wg.infrastructure.interfaces.IColorScheme;
    import net.wg.infrastructure.managers.IColorSchemeManager;
    import org.idmedia.as3commons.util.StringUtils;
+   import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.core.UIComponent;
    import scaleform.clik.data.ListData;
    import scaleform.gfx.TextFieldEx;
@@ -38,6 +40,10 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
       private static const ALPHA_FULL:Number = 1;
       
       private static const ALPHA_DISABLED:Number = 0.7;
+      
+      private static const PRESTIGE_LEVEL_DEFAULT_ALPHA:Number = 1;
+      
+      private static const PRESTIGE_LEVEL_DEAD_ALPHA:Number = 0.5;
        
       
       public var textField:TextField = null;
@@ -63,6 +69,8 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
       public var testerIcon:BattleAtlasSprite = null;
       
       public var testerBG:BattleAtlasSprite = null;
+      
+      public var prestigeLevel:PrestigeLevel = null;
       
       protected var model:DAAPIVehicleInfoVO;
       
@@ -113,6 +121,8 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
          this.squad = null;
          this.playerActionMarker.dispose();
          this.playerActionMarker = null;
+         this.prestigeLevel.dispose();
+         this.prestigeLevel = null;
          this.icoIGR = null;
          this._colorMgr = null;
          if(this.model)
@@ -127,62 +137,48 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
       override protected function draw() : void
       {
          super.draw();
-         if(this.model != null)
+         if(isInvalid(InvalidationType.DATA))
          {
-            this.setSelfBG();
-            this.setBadge();
-            this.textField.visible = true;
-            App.utils.commons.formatPlayerName(this.textField,App.utils.commons.getUserProps(this.model.playerName,this.model.clanAbbrev,this.model.region,0,this.model.userTags));
-            this.vehicleField.visible = true;
-            this.vehicleField.text = this.model.vehicleName;
-            this.icoIGR.visible = this.model.isIGR;
-            if(this.icoIGR.visible)
+            if(this.model != null)
             {
-               this.icoIGR.imageName = BATTLEATLAS.ICO_IGR;
-               if(this._isEnemy)
-               {
-                  this.icoIGR.x = this._defaultVehicleFieldXPosition;
-                  this.vehicleField.x = this.icoIGR.x + this.icoIGR.width + FIELD_WIDTH_COMPENSATION >> 0;
-               }
-               else
-               {
-                  this.icoIGR.x = this._defaultVehicleFieldXPosition + this._defaultVehicleFieldWidth - this.icoIGR.width >> 0;
-                  this.vehicleField.x = this.icoIGR.x - this.vehicleField.width - FIELD_WIDTH_COMPENSATION >> 0;
-               }
-            }
-            else if(this._isEnemy)
-            {
-               this.vehicleField.x = this._defaultVehicleFieldXPosition;
+               this.setBadge();
+               this.textField.visible = true;
+               this.vehicleField.visible = true;
+               this.vehicleField.text = this.model.vehicleName;
+               this.icoIGR.visible = this.model.isIGR;
+               this.setVehicleIcon();
+               this.setVehicleType();
+               this.setVehicleLevel();
+               this.setPrestigeLevel();
+               this.setPlayerActionMarkerState();
+               this.updateState();
+               this.setSquadState();
+               this.setSuffixBadge(this.model.suffixBadgeType,this.model.suffixBadgeStripType);
+               invalidateLayout();
             }
             else
             {
-               this.vehicleField.x = this._defaultVehicleFieldXPosition + this._defaultVehicleFieldWidth - this.vehicleField.width >> 0;
+               if(this.selfBg != null)
+               {
+                  this.selfBg.visible = false;
+               }
+               this.icoIGR.visible = false;
+               this.squad.visible = false;
+               this.textField.visible = false;
+               this.vehicleField.visible = false;
+               this.vehicleIcon.visible = false;
+               this.vehicleTypeIcon.visible = false;
+               this.vehicleLevelIcon.visible = false;
+               if(this.playerActionMarker != null)
+               {
+                  this.playerActionMarker.action = DEF_PLAYER_ACTION;
+               }
             }
-            this.setVehicleIcon();
-            this.setVehicleType();
-            this.setVehicleLevel();
-            this.setPlayerActionMarkerState();
-            this.updateState();
-            this.setSquadState();
-            this.setSuffixBadge(this.model.suffixBadgeType,this.model.suffixBadgeStripType);
          }
-         else
+         if(isInvalid(InvalidationType.LAYOUT))
          {
-            if(this.selfBg != null)
-            {
-               this.selfBg.visible = false;
-            }
-            this.icoIGR.visible = false;
-            this.squad.visible = false;
-            this.textField.visible = false;
-            this.vehicleField.visible = false;
-            this.vehicleIcon.visible = false;
-            this.vehicleTypeIcon.visible = false;
-            this.vehicleLevelIcon.visible = false;
-            if(this.playerActionMarker != null)
-            {
-               this.playerActionMarker.action = DEF_PLAYER_ACTION;
-            }
+            this.setSelfBG();
+            this.updateLayout();
          }
       }
       
@@ -194,7 +190,7 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
       public function setData(param1:Object) : void
       {
          this.model = DAAPIVehicleInfoVO(param1);
-         invalidate();
+         invalidateData();
       }
       
       public function setListData(param1:ListData) : void
@@ -203,7 +199,64 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
       
       protected function setSelfBG() : void
       {
-         this.selfBg.visible = PlayerStatus.isSelected(this.model.playerStatus);
+         if(this.selfBg != null && this.model != null)
+         {
+            this.selfBg.visible = PlayerStatus.isSelected(this.model.playerStatus);
+         }
+      }
+      
+      protected function updateLayout() : void
+      {
+         if(this.rankBadge.visible)
+         {
+            if(this._isEnemy)
+            {
+               this.textField.x = this.rankBadge.x - (this._defaultUsernameTFWidth - this.rankBadge.width);
+            }
+            else
+            {
+               this.textField.x = this.rankBadge.x + (this.rankBadge.width + RANKED_BADGE_OFFSET);
+            }
+            this.textField.width = this._defaultUsernameTFWidth - (this.rankBadge.width + RANKED_BADGE_OFFSET);
+         }
+         else
+         {
+            this.textField.x = this._defaultUsernameTFXPosition;
+            this.textField.width = this._defaultUsernameTFWidth;
+         }
+         this.updatePlayerName();
+         if(this.icoIGR.visible)
+         {
+            this.icoIGR.imageName = BATTLEATLAS.ICO_IGR;
+            if(this._isEnemy)
+            {
+               this.icoIGR.x = this._defaultVehicleFieldXPosition;
+               this.vehicleField.x = this.icoIGR.x + this.icoIGR.width + FIELD_WIDTH_COMPENSATION >> 0;
+            }
+            else
+            {
+               this.icoIGR.x = this._defaultVehicleFieldXPosition + this._defaultVehicleFieldWidth - this.icoIGR.width >> 0;
+               this.vehicleField.x = this.icoIGR.x - this.vehicleField.width - FIELD_WIDTH_COMPENSATION >> 0;
+            }
+         }
+         else if(this._isEnemy)
+         {
+            this.vehicleField.x = this._defaultVehicleFieldXPosition;
+         }
+         else
+         {
+            this.vehicleField.x = this._defaultVehicleFieldXPosition + this._defaultVehicleFieldWidth - this.vehicleField.width >> 0;
+         }
+         if(this._isEnemy)
+         {
+            this.testerIcon.x = -RANKED_BADGE_OFFSET - FIELD_WIDTH_COMPENSATION - this.testerIcon.width + (this.textField.x + (this.textField.width - this.textField.textWidth)) >> 0;
+            this.testerBG.x = (this.testerIcon.width >> 1) + this.testerIcon.x + this.testerBG.width >> 0;
+         }
+         else
+         {
+            this.testerIcon.x = this.textField.x + this.textField.textWidth + FIELD_WIDTH_COMPENSATION >> 0;
+            this.testerBG.x = (this.testerIcon.width >> 1) + this.testerIcon.x - this.testerBG.width >> 0;
+         }
       }
       
       private function setSuffixBadge(param1:String, param2:String) : void
@@ -214,16 +267,6 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
          {
             this.testerIcon.imageName = param1;
             this.testerBG.imageName = param2;
-            if(this._isEnemy)
-            {
-               this.testerIcon.x = -RANKED_BADGE_OFFSET - FIELD_WIDTH_COMPENSATION - this.testerIcon.width + (this.textField.x + (this.textField.width - this.textField.textWidth)) >> 0;
-               this.testerBG.x = (this.testerIcon.width >> 1) + this.testerIcon.x + this.testerBG.width >> 0;
-            }
-            else
-            {
-               this.testerIcon.x = this.textField.x + this.textField.textWidth + FIELD_WIDTH_COMPENSATION >> 0;
-               this.testerBG.x = (this.testerIcon.width >> 1) + this.testerIcon.x - this.testerBG.width >> 0;
-            }
          }
       }
       
@@ -287,6 +330,7 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
          {
             this.vehicleIcon.transform.colorTransform = _loc4_.colorTransform;
          }
+         this.prestigeLevel.alpha = !!_loc1_ ? Number(PRESTIGE_LEVEL_DEFAULT_ALPHA) : Number(PRESTIGE_LEVEL_DEAD_ALPHA);
          _loc3_ = PlayerStatusSchemeName.getSchemeForVehicleLevel(!_loc1_);
          _loc4_ = this._colorMgr.getScheme(_loc3_);
          if(_loc4_)
@@ -344,23 +388,21 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
          {
             this.rankBadge.setData(this.model.badgeVO);
          }
-         if(this.rankBadge.visible)
+      }
+      
+      private function setPrestigeLevel() : void
+      {
+         this.prestigeLevel.markId = this.model.prestigeMarkId;
+         this.prestigeLevel.level = this.model.prestigeLevel;
+      }
+      
+      private function updatePlayerName() : void
+      {
+         if(!this.model)
          {
-            if(this._isEnemy)
-            {
-               this.textField.x = this.rankBadge.x - (this._defaultUsernameTFWidth - this.rankBadge.width);
-            }
-            else
-            {
-               this.textField.x = this.rankBadge.x + (this.rankBadge.width + RANKED_BADGE_OFFSET);
-            }
-            this.textField.width = this._defaultUsernameTFWidth - (this.rankBadge.width + RANKED_BADGE_OFFSET);
+            return;
          }
-         else
-         {
-            this.textField.x = this._defaultUsernameTFXPosition;
-            this.textField.width = this._defaultUsernameTFWidth;
-         }
+         App.utils.commons.formatPlayerName(this.textField,App.utils.commons.getUserProps(this.model.playerName,this.model.clanAbbrev,this.model.region,0,this.model.userTags));
       }
       
       public function get index() : uint
@@ -406,6 +448,12 @@ package net.wg.gui.battle.epicRandom.battleloading.renderers
             return;
          }
          this._isEnemy = param1;
+         invalidateLayout();
+      }
+      
+      public function get isEnemy() : Boolean
+      {
+         return this._isEnemy;
       }
    }
 }

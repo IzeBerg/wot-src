@@ -1,5 +1,6 @@
 package net.wg.gui.battle.windows
 {
+   import flash.geom.ColorTransform;
    import flash.text.TextField;
    import flash.utils.Dictionary;
    import net.wg.data.constants.generated.BATTLEATLAS;
@@ -10,6 +11,8 @@ package net.wg.gui.battle.windows
    import net.wg.infrastructure.base.meta.IIngameHelpWindowMeta;
    import net.wg.infrastructure.base.meta.impl.IngameHelpWindowMeta;
    import net.wg.infrastructure.constants.WindowViewInvalidationType;
+   import net.wg.infrastructure.events.ColorSchemeEvent;
+   import net.wg.infrastructure.managers.IColorSchemeManager;
    import net.wg.utils.IAssertable;
    import net.wg.utils.ICommons;
    import scaleform.clik.events.ButtonEvent;
@@ -18,6 +21,8 @@ package net.wg.gui.battle.windows
    {
       
       private static const CROSSHAIRCONTROLS_TIMELEFT:Number = 7.42;
+      
+      private static const SCHEME_NAME:String = "vm_enemy";
        
       
       public var closeBtn:CloseButtonText = null;
@@ -210,6 +215,8 @@ package net.wg.gui.battle.windows
       
       private var _keysDictionary:Dictionary;
       
+      private var _colorMgr:IColorSchemeManager = null;
+      
       public function IngameHelpWindow()
       {
          this._keysDictionary = new Dictionary();
@@ -236,13 +243,14 @@ package net.wg.gui.battle.windows
          this._keysDictionary[KEYBOARD_KEYS.SHOW_RADIAL_MENU] = this.showRadialMenuTF;
          this._keysDictionary[KEYBOARD_KEYS.HIGHLIGHT_LOCATION] = this.highlightLocationTF;
          this._keysDictionary[KEYBOARD_KEYS.HIGHLIGHT_TARGET] = this.highlightActiveTargetTF;
+         this._colorMgr = App.colorSchemeMgr;
+         this._colorMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
       }
       
       override protected function configUI() : void
       {
          super.configUI();
          this.background.imageName = BATTLEATLAS.HELP_WINDOW_BG;
-         this.bgInfo.imageName = BATTLEATLAS.HELP_WINDOW_INFO;
          this.closeBtn.label = INGAME_HELP.BATTLECONTROLS_CLOSEBTNLABEL;
          this.closeBtn.addEventListener(ButtonEvent.CLICK,this.onBtnCloseClickHandler);
          updateStage(App.appWidth,App.appHeight);
@@ -251,6 +259,7 @@ package net.wg.gui.battle.windows
          this.setDescriptionTexts();
          this.setCrossHairTexts();
          this.setkeysTexts();
+         this.updateColorDependencies(this._colorMgr.getIsColorBlindS());
       }
       
       override protected function draw() : void
@@ -265,6 +274,8 @@ package net.wg.gui.battle.windows
       
       override protected function onDispose() : void
       {
+         this._colorMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
+         this._colorMgr = null;
          this.closeBtn.removeEventListener(ButtonEvent.CLICK,this.onBtnCloseClickHandler);
          window.removeEventListener(WindowEvent.SCALE_Y_CHANGED,this.onWindowScaleYChangedHandler);
          this.closeBtn.dispose();
@@ -470,6 +481,21 @@ package net.wg.gui.battle.windows
          this.enter2TF.text = CONTROLS.KEYBOARD_KEY_ENTER;
          this.escapeTF.text = CONTROLS.KEYBOARD_KEY_ESCAPE;
          this.showCursorTF.text = CONTROLS.KEYBOARD_KEY_CTRL_WO_REFERRAL;
+      }
+      
+      private function updateColorDependencies(param1:Boolean) : void
+      {
+         this.bgInfo.imageName = !!param1 ? BATTLEATLAS.HELP_WINDOW_INFO_BLIND : BATTLEATLAS.HELP_WINDOW_INFO;
+         var _loc2_:uint = this._colorMgr.getRGB(SCHEME_NAME);
+         var _loc3_:ColorTransform = this._colorMgr.getTransform(SCHEME_NAME);
+         this.exampleName.textColor = _loc2_;
+         this.exampleHit.textColor = _loc2_;
+         this.exampleHit.transform.colorTransform = _loc3_;
+      }
+      
+      private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
+      {
+         this.updateColorDependencies(this._colorMgr.getIsColorBlindS());
       }
       
       private function onWindowScaleYChangedHandler(param1:WindowEvent) : void

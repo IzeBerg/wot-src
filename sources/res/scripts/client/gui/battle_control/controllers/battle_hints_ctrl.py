@@ -1,48 +1,48 @@
 import time, logging
 from collections import namedtuple
-import BigWorld, SoundGroups, constants
+import BigWorld, SoundGroups, constants, BattleReplay
 from gui.battle_control.view_components import ViewComponentsController
 from gui.battle_control.battle_constants import BATTLE_CTRL_ID
 from gui.shared import battle_hints
-from gui.shared.utils.MethodsRules import MethodsRules
 from shared_utils import findFirst
 _logger = logging.getLogger(__name__)
-HintRequest = namedtuple('HintRequest', ('hint', 'data', 'requestTime'))
+HintRequest = namedtuple('HintRequest', ('hint', 'data', 'requestTime', 'component'))
 
-class IBattleHintView(object):
+class BattleHintsQueue(object):
 
-    def showHint(self, hint, data):
-        pass
-
-    def hideHint(self, hint=None):
-        pass
-
-
-class BattleHintComponent(IBattleHintView):
-    _HINT_MIN_SHOW_TIME = 2.0
-
-    def __init__(self):
-        super(BattleHintComponent, self).__init__()
+    def __init__(self, hintMinShowTime=0.0):
+        super(BattleHintsQueue, self).__init__()
         self.__currentHint = None
+        self.__currentHintComponent = None
+        self.__hintStartTime = 0
+        self.__hintRequests = []
+        self.__hideCallback = None
+        self.__hintMinShowTime = hintMinShowTime
+        return
+
+    def clear(self):
+        self.__cancelHintCallback()
+        self.__currentHint = None
+        self.__currentHintComponent = None
         self.__hintStartTime = 0
         self.__hintRequests = []
         self.__hideCallback = None
         return
 
-    def showHint(self, hint, data):
+    def showHint(self, hint, data, component):
         currentHint = self.__currentHint
         if currentHint:
             requestTime = time.time()
-            self.__hintRequests.append(HintRequest(hint, data, requestTime))
+            self.__hintRequests.append(HintRequest(hint, data, requestTime, component))
             if hint.priority > currentHint.priority:
-                showTimeLeft = self._HINT_MIN_SHOW_TIME - (time.time() - self.__hintStartTime)
+                showTimeLeft = self.__hintMinShowTime - (time.time() - self.__hintStartTime)
                 if showTimeLeft <= 0:
                     self.__hideCurrentHint()
                 else:
-                    self.__hideHintCallback()
+                    self.__cancelHintCallback()
                     self.__hideCallback = BigWorld.callback(showTimeLeft, self.__hideCurrentHint)
         else:
-            self.__showHint(hint, data)
+            self.__showHint(hint, data, component)
 
     def hideHint(self, hint=None):
         if hint is None or self.__currentHint == hint:
@@ -51,46 +51,34 @@ class BattleHintComponent(IBattleHintView):
             _logger.debug('Failed to hide hint name=%s', hint.name)
         return
 
-    def _showHint(self, hintData):
-        raise NotImplementedError
+    def removeHintFromQueue(self, hint):
+        if not self.__hintRequests:
+            return
+        self.__hintRequests = [ hr for hr in self.__hintRequests if hr.hint != hint ]
 
-    def _hideHint(self):
-        raise NotImplementedError
-
-    def _getSoundNotification(self, hint, data):
-        if hint.soundNotification and data:
-            if 'isSilent' in data.values():
-                return None
-        return hint.soundNotification
-
-    def __showHint(self, hint, data):
-        if hint.soundFx is not None:
-            SoundGroups.g_instance.playSound2D(hint.soundFx)
-        sound = self._getSoundNotification(hint, data)
-        if sound is not None:
-            player = BigWorld.player()
-            if hasattr(player, 'soundNotifications'):
-                soundNotifications = player.soundNotifications
-                if soundNotifications is not None:
-                    soundNotifications.play(sound)
+    def __showHint(self, hint, data, component):
         _logger.debug('Show battle hint hintName=%s, priority=%d', hint.name, hint.priority)
-        self._showHint(hint.makeVO(data))
+        component.playSoundFx(hint)
+        component.playSoundNotifications(hint, data)
+        component.showHint(hint, data)
+        self.__currentHintComponent = component
         self.__currentHint = hint
         self.__hintStartTime = time.time()
         duration = hint.duration
         if duration is not None:
-            self.__hideHintCallback()
+            self.__cancelHintCallback()
             self.__hideCallback = BigWorld.callback(duration, self.__hideCurrentHint)
         return
 
     def __hideCurrentHint(self):
-        self.__hideHintCallback()
-        self._hideHint()
+        self.__cancelHintCallback()
+        self.__currentHintComponent.hideHint()
+        self.__currentHintComponent = None
         self.__currentHint = None
         self.__showDelayedHint()
         return
 
-    def __hideHintCallback(self):
+    def __cancelHintCallback(self):
         if self.__hideCallback is not None:
             BigWorld.cancelCallback(self.__hideCallback)
             self.__hideCallback = None
@@ -104,16 +92,56 @@ class BattleHintComponent(IBattleHintView):
             return
         maxPriorityHint = max(delayedHints, key=lambda r: r.hint.priority)
         delayedHints.remove(maxPriorityHint)
-        hint, data, _ = maxPriorityHint
-        self.__showHint(hint, data)
+        self.__showHint(maxPriorityHint.hint, maxPriorityHint.data, maxPriorityHint.component)
 
 
-class BattleHintsController(ViewComponentsController, MethodsRules):
+class BattleHintComponent(object):
+
+    def showHint(self, hint, data):
+        self._showHint(hint, data)
+
+    def hideHint(self):
+        self._hideHint()
+
+    def playSoundFx(self, hint):
+        soundFX = self._getSoundFx(hint)
+        if soundFX is not None:
+            SoundGroups.g_instance.playSound2D(soundFX)
+        return
+
+    def playSoundNotifications(self, hint, data):
+        sound = self._getSoundNotification(hint, data)
+        if sound is None:
+            return
+        else:
+            player = BigWorld.player()
+            if player is None:
+                return
+            if hasattr(player, 'soundNotifications') and player.soundNotifications is not None:
+                player.soundNotifications.play(sound)
+            return
+
+    def _getSoundNotification(self, hint, data):
+        return hint.soundNotification
+
+    def _getSoundFx(self, hint):
+        return hint.soundFx
+
+    def _showHint(self, hint, data):
+        raise NotImplementedError
+
+    def _hideHint(self):
+        raise NotImplementedError
+
+
+class BattleHintsController(ViewComponentsController):
     _DEFAULT_HINT_NAME = 'default'
+    _HINT_MIN_SHOW_TIME = 2.0
 
     def __init__(self, hintsData):
         super(BattleHintsController, self).__init__()
         self.__hintsData = {hint.name:hint for hint in hintsData}
+        self._hintsQueue = BattleHintsQueue(self._HINT_MIN_SHOW_TIME)
 
     def getControllerID(self):
         return BATTLE_CTRL_ID.BATTLE_HINTS
@@ -122,42 +150,46 @@ class BattleHintsController(ViewComponentsController, MethodsRules):
         pass
 
     def stopControl(self):
-        pass
+        self._hintsQueue.clear()
 
-    @MethodsRules.delayable()
-    def setViewComponents(self, *components):
-        super(BattleHintsController, self).setViewComponents(*components)
-
-    @MethodsRules.delayable('setViewComponents')
     def showHint(self, hintName, data=None):
-        hint = self.__getHint(hintName)
-        if hint:
-            for view in self.__iterComponentsByAlias(hint.componentAlias):
-                view.showHint(hint, data)
+        if BattleReplay.g_replayCtrl.isTimeWarpInProgress:
+            return
+        component, hint = self.__getComponentAndHint(hintName)
+        if hint and component:
+            _logger.debug('Request battle hint hintName=%s, priority=%d', hint.name, hint.priority)
+            self._hintsQueue.showHint(hint, data, component)
+        else:
+            _logger.error('Failed to show hint name=%s', hintName)
 
-    @MethodsRules.delayable('setViewComponents')
     def hideHint(self, hintName):
-        hint = self.__getHint(hintName)
-        if hint:
-            for view in self.__iterComponentsByAlias(hint.componentAlias):
-                view.hideHint(hint)
+        component, hint = self.__getComponentAndHint(hintName)
+        if hint and component:
+            self._hintsQueue.hideHint(hint)
+        else:
+            _logger.error('Failed to hide hint name=%s', hintName)
 
-    def __getHint(self, hintName):
+    def removeHintFromQueue(self, hintName):
+        component, hint = self.__getComponentAndHint(hintName)
+        if hint and component:
+            self._hintsQueue.removeHintFromQueue(hint)
+        else:
+            _logger.error('Failed to remove hint from queue=%s', hintName)
+
+    def __getComponentAndHint(self, hintName):
+        component = None
         hint = self.__hintsData.get(hintName)
         if hint is None and constants.IS_DEVELOPMENT:
             hint = self.__hintsData.get(self._DEFAULT_HINT_NAME)
             hint = hint._replace(rawMessage=hintName)
-        if not hint:
-            _logger.warning('Unknown hint name=%s', hintName)
-        return hint
-
-    def __iterComponentsByAlias(self, componentAliases):
-        for alias in componentAliases:
-            component = findFirst(lambda comp, cAlias=alias: comp.getAlias() == cAlias, self._viewComponents)
-            if component:
-                yield component
-            else:
+        if hint:
+            alias = hint.componentAlias
+            component = findFirst(lambda comp: comp.getAlias() == alias, self._viewComponents)
+            if not component:
                 _logger.error('Unknown component alias=%s', alias)
+        else:
+            _logger.error('Unknown hint name=%s', hintName)
+        return (component, hint)
 
 
 def createBattleHintsController():

@@ -2,8 +2,6 @@ from collections import namedtuple
 
 class CgfTankNodes(object):
     TANK_ROOT = 'Tank.Root'
-    TURRET_ROOT = 'Turret Object'
-    GUN_ROOT = 'Gun Object'
 
 
 class ModelStates(object):

@@ -639,6 +639,12 @@ CHAT_COMMANDS = Enumeration('chatCommands', [
   {'battleCmd': 1}),
  (
   BATTLE_CHAT_COMMAND_NAMES.FLAG_POINT,
+  {'battleCmd': 1}),
+ (
+  BATTLE_CHAT_COMMAND_NAMES.MOVE_TO_TARGET_POINT,
+  {'battleCmd': 1}),
+ (
+  BATTLE_CHAT_COMMAND_NAMES.MOVING_TO_TARGET_POINT,
   {'battleCmd': 1})], instance=AttributeEnumItem)
 CHAT_MEMBER_STATUSES = Enumeration('chatMemberStatuses', [
  'available',
@@ -1574,7 +1580,7 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'collectionsItems',
  'collectionsReward',
  'collectionEntitlementReceived',
- 'wtEventTicketTokenWithdrawn'])
+ 'prestigeLevelChanged'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

@@ -6,7 +6,6 @@ from AvatarInputHandler import gun_marker_ctrl, aih_global_binding
 from AvatarInputHandler.spg_marker_helpers.spg_marker_helpers import SPGShotResultEnum
 from PlayerEvents import g_playerEvents
 from ReplayEvents import g_replayEvents
-from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from account_helpers.settings_core.settings_constants import GRAPHICS, AIM, GAME, SPGAim
 from aih_constants import CHARGE_MARKER_STATE, CTRL_MODE_NAME
 from constants import VEHICLE_SIEGE_STATE as _SIEGE_STATE, DUALGUN_CHARGER_STATUS, SERVER_TICK_LENGTH
@@ -165,10 +164,7 @@ class CrosshairPlugin(IPlugin):
 
     def _isHideAmmo(self):
         arenaGuiTypeVisitor = self.sessionProvider.arenaVisitor.gui
-        isAmmoInfinite = ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arena.bonusType, ARENA_BONUS_TYPE_CAPS.INFINITE_AMMO)
-        isBootcamp = arenaGuiTypeVisitor.isBootcampBattle()
-        isMapsTraining = arenaGuiTypeVisitor.isMapsTraining()
-        return isAmmoInfinite or isBootcamp or isMapsTraining
+        return arenaGuiTypeVisitor.isBootcampBattle() or arenaGuiTypeVisitor.isMapsTraining()
 
 
 class CorePlugin(CrosshairPlugin):
@@ -531,6 +527,9 @@ class AmmoPlugin(CrosshairPlugin):
             self.__notifyAutoLoader(state)
 
     def __notifyAutoLoader(self, state):
+        if not state.isReloading() and self.__autoReloadCallbackID is not None:
+            BigWorld.cancelCallback(self.__autoReloadCallbackID)
+            self.__autoReloadCallbackID = None
         actualTime = state.getActualValue()
         baseTime = state.getBaseValue()
         if self.__shellsInClip <= 0 and state.isReloading():
@@ -641,7 +640,7 @@ class VehicleStatePlugin(CrosshairPlugin):
         if vehicle is not None:
             self.__setPlayerInfo(vehicle.id)
             self.__onVehicleControlling(vehicle)
-        ctrl.onVehicleStateUpdated += self.__onVehicleStateUpdated
+        ctrl.onVehicleStateUpdated += self._onVehicleStateUpdated
         ctrl.onVehicleControlling += self.__onVehicleControlling
         ctrl.onPostMortemSwitched += self.__onPostMortemSwitched
         ctrl = self.sessionProvider.shared.feedback
@@ -653,13 +652,16 @@ class VehicleStatePlugin(CrosshairPlugin):
     def stop(self):
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
-            ctrl.onVehicleStateUpdated -= self.__onVehicleStateUpdated
+            ctrl.onVehicleStateUpdated -= self._onVehicleStateUpdated
             ctrl.onVehicleControlling -= self.__onVehicleControlling
             ctrl.onPostMortemSwitched -= self.__onPostMortemSwitched
         ctrl = self.sessionProvider.shared.feedback
         if ctrl is not None:
             ctrl.onVehicleFeedbackReceived -= self.__onVehicleFeedbackReceived
         return
+
+    def _setMaxHealth(self, value):
+        self.__maxHealth = value
 
     def __setHealth(self, health):
         if self.__maxHealth != 0 and self.__maxHealth >= health:
@@ -691,7 +693,7 @@ class VehicleStatePlugin(CrosshairPlugin):
         self.__setHealth(vehicle.health)
         self.__updateVehicleInfo()
 
-    def __onVehicleStateUpdated(self, state, value):
+    def _onVehicleStateUpdated(self, state, value):
         if state == VEHICLE_VIEW_STATE.HEALTH:
             self.__setHealth(value)
             self.__updateVehicleInfo()

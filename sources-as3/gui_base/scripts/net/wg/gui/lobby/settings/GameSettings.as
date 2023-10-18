@@ -19,6 +19,7 @@ package net.wg.gui.lobby.settings
    import net.wg.gui.lobby.settings.events.SettingViewEvent;
    import net.wg.gui.lobby.settings.vo.AnonymizerExtraVO;
    import net.wg.gui.lobby.settings.vo.CheckboxVo;
+   import net.wg.gui.lobby.settings.vo.DevMapsVO;
    import net.wg.gui.lobby.settings.vo.RandomXLvlVO;
    import net.wg.gui.lobby.settings.vo.SettingsControlProp;
    import net.wg.gui.lobby.settings.vo.SimpleExtraVO;
@@ -59,9 +60,7 @@ package net.wg.gui.lobby.settings
       
       private static const COUNTER_CHECKBOX_OFFSET_X:Number = -11;
       
-      private static const BATTLE_TYPES_HEIGHT_EXTRA:int = 180;
-      
-      private static const BATTLE_TYPES_HEIGHT:int = 160;
+      private static const BATTLE_TYPES_HEIGHT_EXTRA:int = 212;
       
       private static const LIMITED_UI_SETTING_BLOCK_X:uint = 400;
       
@@ -117,22 +116,25 @@ package net.wg.gui.lobby.settings
          var _loc8_:String = null;
          var _loc9_:CheckBox = null;
          var _loc10_:Boolean = false;
-         var _loc12_:CheckboxVo = null;
-         var _loc13_:AnonymizerExtraVO = null;
-         var _loc14_:SimpleExtraVO = null;
-         var _loc15_:RandomXLvlVO = null;
-         var _loc16_:String = null;
+         var _loc14_:CheckboxVo = null;
+         var _loc15_:AnonymizerExtraVO = null;
+         var _loc16_:SimpleExtraVO = null;
+         var _loc17_:RandomXLvlVO = null;
+         var _loc18_:DevMapsVO = null;
+         var _loc19_:String = null;
          var _loc2_:Vector.<String> = param1.keys;
          var _loc3_:Vector.<Object> = param1.values;
          var _loc4_:int = _loc2_.length;
          var _loc5_:String = Values.EMPTY_STR;
          var _loc6_:SettingsControlProp = null;
          var _loc7_:GameSettingsContent = this.getContent();
-         var _loc11_:int = 0;
-         while(_loc11_ < _loc4_)
+         var _loc11_:Boolean = false;
+         var _loc12_:Boolean = false;
+         var _loc13_:int = 0;
+         while(_loc13_ < _loc4_)
          {
-            _loc5_ = _loc2_[_loc11_];
-            _loc6_ = _loc3_[_loc11_] as SettingsControlProp;
+            _loc5_ = _loc2_[_loc13_];
+            _loc6_ = _loc3_[_loc13_] as SettingsControlProp;
             App.utils.asserter.assertNotNull(_loc6_,Errors.CANT_NULL);
             _loc8_ = _loc5_ + _loc6_.type;
             if(_loc7_[_loc8_])
@@ -153,31 +155,36 @@ package net.wg.gui.lobby.settings
                      }
                      else if(_loc5_ == SHOW_DAMAGE_ICON_LBL || _loc5_ == INCREASED_ZOOM_LBL)
                      {
-                        _loc12_ = new CheckboxVo(_loc6_.extraData);
-                        _loc9_.toolTip = _loc12_.tooltip;
-                        _loc9_.label = _loc12_.checkBoxLabel;
-                        _loc12_.dispose();
+                        _loc14_ = new CheckboxVo(_loc6_.extraData);
+                        _loc9_.toolTip = _loc14_.tooltip;
+                        _loc9_.label = _loc14_.checkBoxLabel;
+                        _loc14_.dispose();
                      }
                      else if(_loc5_ == ANONYMIZER)
                      {
-                        _loc13_ = new AnonymizerExtraVO(_loc6_.extraData);
-                        _loc9_.label = _loc13_.checkBoxLabel;
-                        _loc9_.toolTip = _loc13_.tooltip;
-                        _loc9_.visible = _loc13_.visible;
-                        _loc9_.enabled = _loc13_.enabled;
-                        _loc13_.dispose();
+                        _loc15_ = new AnonymizerExtraVO(_loc6_.extraData);
+                        _loc9_.label = _loc15_.checkBoxLabel;
+                        _loc9_.toolTip = _loc15_.tooltip;
+                        _loc9_.visible = _loc15_.visible;
+                        _loc9_.enabled = _loc15_.enabled;
+                        _loc15_.dispose();
                      }
                      else if(_loc5_ == SHOW_VEHICLE_HP_IN_MINIMAP || _loc5_ == SWITCH_EQUIPMENT)
                      {
-                        _loc14_ = new SimpleExtraVO(_loc6_.extraData);
-                        _loc9_.enabled = _loc14_.enabled;
+                        _loc16_ = new SimpleExtraVO(_loc6_.extraData);
+                        _loc9_.enabled = _loc16_.enabled;
                      }
                      else if(_loc5_ == SettingsConfigHelper.GAMEPLAY_ONLY_10_MODE)
                      {
-                        _loc15_ = new RandomXLvlVO(_loc6_.extraData);
-                        _loc9_.visible = _loc15_.enabled;
-                        _loc7_.fieldSetBattleTypes.height = !!_loc15_.enabled ? Number(BATTLE_TYPES_HEIGHT_EXTRA) : Number(BATTLE_TYPES_HEIGHT);
-                        _loc7_.updateOnly10ModeDependentControls(_loc15_.enabled);
+                        _loc17_ = new RandomXLvlVO(_loc6_.extraData);
+                        _loc9_.visible = _loc17_.enabled;
+                        _loc11_ = _loc17_.enabled;
+                     }
+                     else if(_loc5_ == SettingsConfigHelper.GAMEPLAY_DEVMAPS)
+                     {
+                        _loc18_ = new DevMapsVO(_loc6_.extraData);
+                        _loc9_.visible = _loc18_.enabled;
+                        _loc12_ = _loc18_.enabled;
                      }
                      break;
                   case SettingsConfigHelper.TYPE_DROPDOWN:
@@ -194,8 +201,8 @@ package net.wg.gui.lobby.settings
                      this.setupButtonBar(ButtonBarEx(_loc7_[_loc8_]),_loc6_,_loc10_);
                      if(_loc5_ == SettingsConfigHelper.CAROUSEL_TYPE)
                      {
-                        _loc16_ = SettingsConfigHelper.CAROUSEL_TYPE_ID[_loc6_.current];
-                        _loc7_.doubleCarouselTypeDropDown.enabled = _loc16_ == SettingsConfigHelper.CAROUSEL_DOUBLE;
+                        _loc19_ = SettingsConfigHelper.CAROUSEL_TYPE_ID[_loc6_.current];
+                        _loc7_.doubleCarouselTypeDropDown.enabled = _loc19_ == SettingsConfigHelper.CAROUSEL_DOUBLE;
                      }
                }
             }
@@ -203,8 +210,9 @@ package net.wg.gui.lobby.settings
             {
                DebugUtils.LOG_WARNING(_loc8_ + Errors.CANT_NULL);
             }
-            _loc11_++;
+            _loc13_++;
          }
+         _loc7_.updateDependentVisibleControls(_loc11_,_loc12_,BATTLE_TYPES_HEIGHT_EXTRA);
       }
       
       override protected function onDispose() : void
@@ -383,13 +391,6 @@ package net.wg.gui.lobby.settings
          dispatchEvent(new SettingViewEvent(SettingViewEvent.ON_CONTROL_CHANGED,viewId,null,_loc3_,_loc2_.value));
       }
       
-      private function onCheckBoxSelectHandler(param1:Event) : void
-      {
-         var _loc2_:String = SettingsConfigHelper.instance.getControlIdByControlNameAndType(CheckBox(param1.target).name,SettingsConfigHelper.TYPE_CHECKBOX);
-         var _loc3_:Boolean = CheckBox(param1.target).selected;
-         dispatchEvent(new SettingViewEvent(SettingViewEvent.ON_CONTROL_CHANGED,viewId,null,_loc2_,_loc3_));
-      }
-      
       private function onDropdownIndexChangeHandler(param1:ListEvent) : void
       {
          var _loc2_:DropdownMenu = DropdownMenu(param1.target);
@@ -409,6 +410,13 @@ package net.wg.gui.lobby.settings
             _loc4_.doubleCarouselTypeDropDown.enabled = _loc5_ == SettingsConfigHelper.CAROUSEL_DOUBLE;
          }
          dispatchEvent(new SettingViewEvent(SettingViewEvent.ON_CONTROL_CHANGED,viewId,null,_loc3_,_loc2_.selectedIndex));
+      }
+      
+      private function onCheckBoxSelectHandler(param1:Event) : void
+      {
+         var _loc2_:String = SettingsConfigHelper.instance.getControlIdByControlNameAndType(CheckBox(param1.target).name,SettingsConfigHelper.TYPE_CHECKBOX);
+         var _loc3_:Boolean = CheckBox(param1.target).selected;
+         dispatchEvent(new SettingViewEvent(SettingViewEvent.ON_CONTROL_CHANGED,viewId,null,_loc2_,_loc3_));
       }
    }
 }

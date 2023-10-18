@@ -301,8 +301,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       private function updateElementsVisibility() : void
       {
-         var _loc1_:Boolean = false;
-         _loc1_ = this._showRepairTimer && this._isRepairing;
+         var _loc1_:Boolean = this._showRepairTimer && this._isRepairing;
          var _loc2_:Boolean = _loc1_ && !this._needsShowWarning;
          this.highlightRepairTimeTF.visible = _loc2_ && this._needsHighlightText;
          this.repairTimeTF.visible = _loc2_ && !this._needsHighlightText;

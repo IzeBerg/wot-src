@@ -1730,6 +1730,9 @@ class AccountDossierStats(_DossierStats):
             return AccountComp7StatsBlock(self._getDossierItem(), ('Season{}').format(season))
         _logger.warning('comp7 season or archive number must be specified!')
 
+    def getPrestigeStats(self):
+        return AccountPrestigeStatsBlock(self._getDossierItem())
+
 
 class VehicleDossierStats(_DossierStats):
     __itemsCache = dependency.descriptor(IItemsCache)
@@ -2073,7 +2076,7 @@ class TotalAccountRanked10x10StatsBlock(TotalAccountRankedStatsBlock):
         if season:
             seasonID = season.getSeasonID()
         else:
-            passedSeasons = self.__rankedController.getSeasonPassed()
+            passedSeasons = self.__rankedController.getSeasonsPassed()
             firstSeason = passedSeasons[0] if passedSeasons else None
             seasonID = firstSeason[0] if firstSeason else None
         return seasonID
@@ -2140,6 +2143,12 @@ class Comp7StatsBlock(_BattleStatsBlock, _Battle2StatsBlock, _MaxStatsBlock):
 
     def getRoleSkillUsed(self):
         return self._getStat('roleSkillUsed')
+
+    def getSuperSquadBattlesCount(self):
+        return self._getStat('superSquadBattlesCount')
+
+    def getSuperSquadWins(self):
+        return self._getStat('superSquadWins')
 
     def getMaxPrestigePoints(self):
         return self._getStatMax('maxComp7PrestigePoints')
@@ -2238,3 +2247,15 @@ class AccountComp7StatsBlock(Comp7StatsBlock, _VehiclesStatsBlock, _MaxVehicleSt
 
     def _packVehicle(self, battlesCount=0, wins=0, xp=0, prestigePoints=0):
         return Comp7VehiclesDossiersCut(battlesCount, wins, xp, prestigePoints)
+
+
+class AccountPrestigeStatsBlock(_VehiclesStatsBlock):
+    _PrestigeVehiclesDossiersCut = namedtuple('PrestigeVehiclesDossiersCut', [
+     'currentLevel',
+     'remainingPoints'])
+
+    def _getVehDossiersCut(self, dossier):
+        return dossier.getDossierDescr()[VEHICLE_STATS.PRESTIGE_SYSTEM]
+
+    def _packVehicle(self, currentLevel=0, remainingPoints=0):
+        return self._PrestigeVehiclesDossiersCut(currentLevel, remainingPoints)

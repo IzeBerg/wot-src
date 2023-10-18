@@ -7,5 +7,7 @@ package net.wg.gui.battle.battleloading.renderers
        
       
       function setData(param1:Object) : void;
+      
+      function set isExtendedLayout(param1:Boolean) : void;
    }
 }

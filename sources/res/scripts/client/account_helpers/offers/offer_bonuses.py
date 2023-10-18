@@ -266,14 +266,6 @@ class CustomizationsOfferBonus(OfferBonusMixin, CustomizationsBonus):
 class CrewSkinsOfferBonus(OfferBonusMixin, CrewSkinsBonus):
     CAN_BE_SHOWN = False
 
-    def isMaxCountExceeded(self):
-        crewSkinID = self.getValue().get('id', 0)
-        count = self.getValue().get('count', 0)
-        crewSkinItem = self.itemsCache.items.getCrewSkin(crewSkinID)
-        if crewSkinItem.getFreeCount() + count > crewSkinItem.getMaxCount():
-            return True
-        return False
-
 
 class NationalBlueprintOfferBonus(OfferBonusMixin, NationalBlueprintBonus):
 

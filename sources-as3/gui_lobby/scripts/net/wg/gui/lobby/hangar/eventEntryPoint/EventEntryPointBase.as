@@ -16,6 +16,7 @@ package net.wg.gui.lobby.hangar.eventEntryPoint
       {
          this._size = EntryPointSize.SMALL;
          super();
+         setManageSize(true);
       }
       
       override protected function draw() : void

@@ -77,7 +77,7 @@ class ListenersCollection(IListenersCollection):
         if self._isSuspended:
             return
         LOG_DEBUG(event, args, kwargs)
-        for listener in self.getListenersIterator():
+        for listener in list(self.getListenersIterator()):
             notifier = getattr(listener, event)
             if notifier and callable(notifier):
                 notifier(*args, **kwargs)

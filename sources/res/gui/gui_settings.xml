@@ -370,6 +370,11 @@
 		</value>
 	</setting>
 	<setting>
+		https://store.steampowered.com/account/subscriptions/
+		<name>steamSubscriptionManagementURL</name>
+		<type>url</type>
+	</setting>
+	<setting>
 		<name>wotPlusShopURL</name>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -1166,11 +1171,6 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/white-tiger-overlay/wt2021_category)
-				<name>buyLootboxes</name>
-				<type>url</type>
-			</item>
-			<item>
 				$PARAMS(/auction/auction)
 				<name>integratedAuction</name>
 				<type>url</type>
@@ -1178,6 +1178,36 @@
 			<item>
 				$PARAMS(/event_lootboxes)
 				<name>eventLootboxes</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/hw2022_category/hw2022_category_tab_all/)
+				<name>hw23ShopAll</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/hw2022_category/hw2022_category_tab_vehicles/)
+				<name>hw23ShopVehicle</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/hw2022_category/hw2022_category_tab_keys/)
+				<name>hw23ShopKey</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/hw2022_category/hw2022_category_tab_styles/)
+				<name>hw23ShopStyles</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/hw2022_category/hw2022_category_tab_skill/)
+				<name>hw23ShopEquipment</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/sh_category/sh_category)
+				<name>shProducts</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1234,7 +1264,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/11BPContentPage/#bp11extrachapter
+				/$LANGUAGE_CODE/promocontent/specialchapter
 				<name>extraInfoPage</name>
 				<type>url</type>
 			</item>
@@ -1244,7 +1274,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/11BPExtraChapter/
+				/$LANGUAGE_CODE/promocontent/specialchapterVideo/
 				<name>extraIntroVideo</name>
 				<type>url</type>
 			</item>
@@ -1777,7 +1807,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2022IntroVideo/
+				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2023IntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1790,38 +1820,6 @@
 			<item>
 				{webShopRootURL}/supplyboxes/?force_login=1
 				<name>categoryURL</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>infoPageEvent</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/WhiteTiger2023/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2023/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/WhiteTiger2023/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/WhiteTiger2023/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2023/
-				<name>default</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1877,22 +1875,22 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/subscriptions/
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/wot-plus-september/
 				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/subscriptions/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/wot-plus-september/
 				<name>EU</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/subscriptions/
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/wot-plus-september/
 				<name>ASIA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/subscriptions/
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/wot-plus-september/
 				<name>CN</name>
 				<type>url</type>
 			</item>
@@ -1902,7 +1900,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/subscriptions/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/wot-plus-september/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -2020,7 +2018,38 @@
 		</value>
 	</setting>
 	<setting>
-		--&gt;
+		<name>infoPageHalloween</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/halloween23/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/halloween23/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/halloween23/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/halloween23/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/halloween23/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
 		<name>whatsNewPageComp7</name>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -2210,17 +2239,33 @@
 		</value>
 	</setting>
 	<setting>
-		<name>wtEvent</name>
-		<type>dict</type>
+		<name>hwIntroVideo</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2023/
-				<name>introVideo</name>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/hw23IntroVideo/
+				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/WhiteTiger2023/
-				<name>infoPage</name>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/hw23IntroVideo/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/hw23IntroVideo/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/hw23IntroVideo/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/hw23IntroVideo/
+				<name>default</name>
 				<type>url</type>
 			</item>
 		</value>

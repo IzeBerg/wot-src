@@ -30,9 +30,9 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
       
       private static const MAX_CHARGE_LINE_THICKNESS:uint = 4;
       
-      private static const TOTAL_DASHES_PER_HALF:Number = 6;
+      private static const TOTAL_DASHES_PER_HALF:uint = 6;
       
-      private static const DASH_SPACING_RATIO:Number = 1;
+      private static const DASH_SPACING_RATIO:uint = 1;
       
       private static const DASH_LENGTH:Number = DASH_SPACING_RATIO * CIRCLE_HALF_LENGTH_RAD / (TOTAL_DASHES_PER_HALF * (DASH_SPACING_RATIO + 1) - 1);
       

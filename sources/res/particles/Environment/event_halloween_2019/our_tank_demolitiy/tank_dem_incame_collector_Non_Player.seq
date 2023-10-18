@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Glow</name>
+		<type>model</type>
+		<resource>particles/Environment/event_halloween_2019/our_tank_demolitiy/tank_dem_glow.model</resource>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Glow</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>0.043137 0.000000 1.000000 0.000000</value>
+				<inTangent>0.053249 0.075931 0.000000 -0.123694</inTangent>
+				<outTangent>0.053249 0.075931 0.000000 -0.123694</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.000000 1.000000 1.000000 1.000000</value>
+				<inTangent>0.159011 0.151565 0.000000 -0.338688</inTangent>
+				<outTangent>0.159011 0.151565 0.000000 -0.338688</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.850000</startTime>
+				<value>0.486275 0.541176 1.000000 1.000000</value>
+				<inTangent>-2.648367 -2.669282 0.000000 -3.333334</inTangent>
+				<outTangent>-2.648367 -2.669282 0.000000 -3.333334</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000 0.015686 1.000000 0.000000</value>
+				<inTangent>-3.241834 -3.503268 -0.000000 -6.666668</inTangent>
+				<outTangent>-3.241834 -3.503268 -0.000000 -6.666668</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>Glow</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>1.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-0.666037 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-0.666037 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>3.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-1.227602 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-1.227602 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>1.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-0.629931 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.629931 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

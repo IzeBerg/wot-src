@@ -35,6 +35,7 @@ package net.wg.gui.battle.views.stats.fullStats
             _loc1_ = this.getStatsItem;
             _loc1_.setVehicleLevel(data.vehicleLevel);
             _loc1_.setVehicleIcon(data.vehicleIconName);
+            _loc1_.setPrestige(data.prestigeMarkId,data.prestigeLevel);
             _loc1_.setIsSpeaking(data.isSpeaking);
             _loc2_ = data.vehicleAction;
             if(_loc2_)

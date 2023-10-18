@@ -17,17 +17,9 @@ class HangarMeta(View):
     def onTeaserClick(self):
         self._printOverrideError('onTeaserClick')
 
-    def as_setCrewEnabledS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setCrewEnabled(value)
-
     def as_setCarouselEnabledS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setCarouselEnabled(value)
-
-    def as_setCarouselVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setCarouselVisible(value)
 
     def as_setupAmmunitionPanelS(self, data):
         if self._isDAAPIInited():
@@ -81,10 +73,6 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_hideTeaserTimer()
 
-    def as_setNotificationEnabledS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setNotificationEnabled(value)
-
     def as_createDQWidgetS(self):
         if self._isDAAPIInited():
             return self.flashObject.as_createDQWidget()
@@ -93,13 +81,13 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_destroyDQWidget()
 
+    def as_setPrestigeWidgetVisibleS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setPrestigeWidgetVisible(value)
+
     def as_showSwitchToAmmunitionS(self):
         if self._isDAAPIInited():
             return self.flashObject.as_showSwitchToAmmunition()
-
-    def as_toggleCnSubscriptionS(self, isCnSubscription):
-        if self._isDAAPIInited():
-            return self.flashObject.as_toggleCnSubscription(isCnSubscription)
 
     def as_setDQWidgetLayoutS(self, layout):
         if self._isDAAPIInited():
@@ -112,11 +100,3 @@ class HangarMeta(View):
     def as_updateHangarComponentsS(self, showComponents=None, hideComponents=None):
         if self._isDAAPIInited():
             return self.flashObject.as_updateHangarComponents(showComponents, hideComponents)
-
-    def as_toggleEventModeS(self, isEventMode):
-        if self._isDAAPIInited():
-            return self.flashObject.as_toggleEventMode(isEventMode)
-
-    def as_setLootboxesVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setLootboxesVisible(value)

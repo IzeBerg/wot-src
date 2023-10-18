@@ -12,6 +12,8 @@ BATTLE_RESULTS = [
  (
   'achivedLevel', int, 1, None, 'skip', ENTRY_TYPE.VEHICLE_ALL),
  (
+  'brAwardTokens', dict, {}, None, 'joinDicts', ENTRY_TYPE.ACCOUNT_SELF),
+ (
   'currencies', dict, {},
   MergeDictPacker((
    'brcoin', dict, {},

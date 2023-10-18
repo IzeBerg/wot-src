@@ -533,7 +533,7 @@ msgid "barracks/btnUnload"
 msgstr "Send to Barracks"
 
 msgid "barracks/dismissedTankmenCount"
-msgstr "Dismissed crew members: %(curValue)s of %(total)s"
+msgstr "Retired crew members: %(curValue)s of %(total)s"
 
 msgid "barracks/menu/locationFilter/barracks"
 msgstr "In Barracks"
@@ -542,7 +542,7 @@ msgid "barracks/menu/locationFilter/barracksAndTanks"
 msgstr "In Barracks and in vehicles"
 
 msgid "barracks/menu/locationFilter/dismissed"
-msgstr "Dismissed"
+msgstr "Retired"
 
 msgid "barracks/menu/locationFilter/notRecruited"
 msgstr "Recruits"
@@ -715,7 +715,7 @@ msgid "bonusType/8"
 msgstr "Historical Battle"
 
 msgid "bonusType/9"
-msgstr "The Waffenträger: Hyperion"
+msgstr "Special game mode"
 
 msgid "booster/bonus/booster_credits"
 msgstr "%(effectValue)s bonus for %(effectHours)s to credits earned in battle"
@@ -1047,9 +1047,6 @@ msgstr "Accept invitation to join Platoon"
 msgid "contextMenu/addToFriends"
 msgstr "Add to your Friends list"
 
-msgid "contextMenu/addToFriendsAgain"
-msgstr "Send friend request again"
-
 msgid "contextMenu/addToIgnored"
 msgstr "Add to your Blacklist"
 
@@ -1102,7 +1099,7 @@ msgid "contextMenu/createContactNote"
 msgstr "Create note"
 
 msgid "contextMenu/createEventSquad"
-msgstr "Create Harriers' Platoon"
+msgstr "Create Event Platoon"
 
 msgid "contextMenu/createMapboxSquad"
 msgstr "Recon Mission: Create Platoon"
@@ -1113,11 +1110,32 @@ msgstr "Send message"
 msgid "contextMenu/createSquad"
 msgstr "Create Platoon"
 
+msgid "contextMenu/crewWidgetChangeCrewMember"
+msgstr "Replace Crew Member"
+
+msgid "contextMenu/crewWidgetChangeSpecialization"
+msgstr "Train for Vehicle"
+
+msgid "contextMenu/crewWidgetDismiss"
+msgstr "Retire"
+
+msgid "contextMenu/crewWidgetPersonalFile"
+msgstr "Profile"
+
+msgid "contextMenu/crewWidgetQuickTraining"
+msgstr "Quick Training"
+
+msgid "contextMenu/crewWidgetRetrain"
+msgstr "Retrain"
+
+msgid "contextMenu/crewWidgetSendToToBarracks"
+msgstr "Send to Barracks"
+
 msgid "contextMenu/disableCommunications"
 msgstr "Block for this battle"
 
 msgid "contextMenu/dismiss"
-msgstr "Dismiss"
+msgstr "Retire"
 
 msgid "contextMenu/editContactNote"
 msgstr "Edit note"
@@ -1200,20 +1218,6 @@ msgstr "Change Nation"
 msgid "contextMenu/notFairPlay"
 msgstr "Unsportsmanlike conduct"
 
-msgid "contextMenu/personalCase"
-msgstr "Personal File"
-
-msgid "contextMenu/personalCase/stats/firstInfo"
-msgstr "When driving a Premium vehicle, the crew is trained 50% faster."
-
-msgid "contextMenu/personalCase/stats/secondInfo"
-msgstr "Additionally, crew training for Elite vehicles can be accelerated."
-
-msgid "contextMenu/personalCase/stats/wotPlus"
-msgstr ""
-"Intensive Crew Regimen can be used to train crew members without sending "
-"them into battle."
-
 msgid "contextMenu/personalCase/statsBlockTitle"
 msgstr "IN PREMIUM VEHICLE"
 
@@ -1234,6 +1238,9 @@ msgstr "Remove from your Friends list"
 
 msgid "contextMenu/removeFromIgnored"
 msgstr "Remove from your Blacklist"
+
+msgid "contextMenu/requestFriendship"
+msgstr "Send friend request again"
 
 msgid "contextMenu/restore"
 msgstr "Recover"
@@ -1270,12 +1277,6 @@ msgstr "Take Inspire"
 
 msgid "contextMenu/takeLeadership"
 msgstr "Take Commander's permissions"
-
-msgid "contextMenu/tankmanUnload"
-msgstr "Send to Barracks"
-
-msgid "contextMenu/tankmanUnloadAll"
-msgstr "Send entire crew to Barracks"
 
 msgid "contextMenu/telecomRent"
 msgstr "Show rental vehicles"
@@ -1336,6 +1337,9 @@ msgstr "Uncheck Primary label"
 
 msgid "contextMenu/viewClanProfile"
 msgstr "Clan profile"
+
+msgid "contextMenu/winBackCallSendInvite"
+msgstr "Send Message"
 
 msgid "contextMenu/withdrawInvitationToSquad"
 msgstr "Withdraw invitation to join Platoon"
@@ -1678,9 +1682,6 @@ msgstr "Vehicle rental available"
 msgid "currentVehicleStatus/rentableAgain"
 msgstr "Extend Rental"
 
-msgid "currentVehicleStatus/rentalBattleIsOver"
-msgstr "No battles left"
-
 msgid "currentVehicleStatus/rentalIsOver"
 msgstr "Rental period ended"
 
@@ -1695,9 +1696,6 @@ msgstr "Server limit"
 
 msgid "currentVehicleStatus/subscription_suspended"
 msgstr "WoT Plus subscription suspended"
-
-msgid "currentVehicleStatus/ticketsShortage"
-msgstr "No Key"
 
 msgid "currentVehicleStatus/tooHeavy"
 msgstr "Vehicle overloaded"
@@ -2497,23 +2495,6 @@ msgstr "Szarik"
 msgid "hangar/crew/rody/dog/ussr/name"
 msgstr "Szarik"
 
-msgid "hangar/crew/rody/dog/window/closeBtnLabel"
-msgstr "Close"
-
-msgid "hangar/crew/rody/dog/window/description"
-msgstr ""
-"\"Four Tank-Men and a Dog\" (Polish \"Czterej pancerni i pies\") was a "
-"Polish black-and-white TV series based on the novel of the same name by "
-"Janusz Przymanowski. The TV series, which premiered May 9, 1966, depicts the"
-" adventures of the crew of a T-34-85 tank, nicknamed Rudy (Ginger), and "
-"their dog Szarik during WWII."
-
-msgid "hangar/crew/rody/dog/window/header"
-msgstr "Immortal Classics Already in the Game!"
-
-msgid "hangar/crew/rody/dog/window/title"
-msgstr "Four Tank-Men and a Dog"
-
 msgid "hangar/crew/tooltip/drop_skill"
 msgstr "Click to delete a qualification."
 
@@ -2771,6 +2752,33 @@ msgstr "Light Tank"
 msgid "header/vehicleType/mediumTank"
 msgstr "Medium Tank"
 
+msgid "header/wotPlusExclusiveVehicleType/AT-SPG"
+msgstr "Tank Destroyer"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-France"
+msgstr "France, Czechoslovakia, Sweden, Italy"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-Germany"
+msgstr "Germany, Japan"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-USA"
+msgstr "U.S.A., U.K., Poland"
+
+msgid "header/wotPlusExclusiveVehicleType/Alliance-USSR"
+msgstr "U.S.S.R., China"
+
+msgid "header/wotPlusExclusiveVehicleType/SPG"
+msgstr "SPG"
+
+msgid "header/wotPlusExclusiveVehicleType/heavyTank"
+msgstr "Heavy Tank"
+
+msgid "header/wotPlusExclusiveVehicleType/lightTank"
+msgstr "Light Tank"
+
+msgid "header/wotPlusExclusiveVehicleType/mediumTank"
+msgstr "Medium tank"
+
 msgid "headerButtons/account/accountRefill"
 msgstr "Get Gold"
 
@@ -2907,9 +2915,6 @@ msgstr "Team Training"
 
 msgid "headerButtons/battle/types/epicTraining/descr"
 msgstr "Frontline"
-
-msgid "headerButtons/battle/types/event"
-msgstr "Waffenträger: Projekt Hyperion"
 
 msgid "headerButtons/battle/types/eventSquad"
 msgstr "Event Platoon"
@@ -3801,6 +3806,9 @@ msgstr "Onslaught"
 msgid "loading/battleTypes/31"
 msgstr "Warm-Up"
 
+msgid "loading/battleTypes/33"
+msgstr "Onslaught"
+
 msgid "loading/battleTypes/4"
 msgstr "Battle Training"
 
@@ -3889,6 +3897,9 @@ msgid "loading/battleTypes/desc/30"
 msgstr " "
 
 msgid "loading/battleTypes/desc/31"
+msgstr " "
+
+msgid "loading/battleTypes/desc/33"
 msgstr " "
 
 msgid "loading/battleTypes/desc/4"
@@ -5877,54 +5888,6 @@ msgstr ""
 "Resetting trained perks without losing Crew XP is free until the end of the "
 "grace period."
 
-msgid "skillDropWindow/after"
-msgstr "After reset"
-
-msgid "skillDropWindow/applyBtn"
-msgstr "Reset"
-
-msgid "skillDropWindow/before"
-msgstr "Before reset"
-
-msgid "skillDropWindow/cancelBtn"
-msgstr "Cancel"
-
-msgid "skillDropWindow/direction"
-msgstr "Retraining Orders"
-
-msgid "skillDropWindow/freeDropLabel"
-msgstr "Perks up %(percent)s can be reset for free."
-
-msgid "skillDropWindow/freeDropPercent"
-msgstr "to 1%"
-
-msgid "skillDropWindow/inStorage"
-msgstr "In Depot:"
-
-msgid "skillDropWindow/multiplier"
-msgstr "Training"
-
-msgid "skillDropWindow/notAvailable"
-msgstr "Not available"
-
-msgid "skillDropWindow/study/academy"
-msgstr "Maximum"
-
-msgid "skillDropWindow/study/free"
-msgstr "Low"
-
-msgid "skillDropWindow/study/scool"
-msgstr "High"
-
-msgid "skillDropWindow/title"
-msgstr "Perk Reset"
-
-msgid "skillDropWindow/tooltip/visibleDisabled"
-msgstr "Temporarily unavailable for technical reasons."
-
-msgid "skillDropWindow/training"
-msgstr "Training"
-
 msgid "specPrebetles/listTitle"
 msgstr "Team Rooms"
 
@@ -6178,9 +6141,6 @@ msgstr "Extend Rental"
 msgid "tankCarousel/vehicleStates/rentableAgain/ranked"
 msgstr "Extend Rental"
 
-msgid "tankCarousel/vehicleStates/rentalBattleIsOver"
-msgstr "No battles left"
-
 msgid "tankCarousel/vehicleStates/rentalIsOver"
 msgstr "Rental period ended"
 
@@ -6201,9 +6161,6 @@ msgstr "Server limit"
 
 msgid "tankCarousel/vehicleStates/subscription_suspended"
 msgstr "Suspended"
-
-msgid "tankCarousel/vehicleStates/ticketsShortage"
-msgstr "No Key"
 
 msgid "tankCarousel/vehicleStates/tooHeavy"
 msgstr "Vehicle overloaded"
@@ -6571,144 +6528,6 @@ msgstr "Switching to Rapid/Cruise mode"
 msgid "tank_params/yoh_s_s"
 msgstr "(main/res. in s)"
 
-msgid "tankmanPersonalCase/accelerateTeachingOfSkill"
-msgstr "Increase"
-
-msgid "tankmanPersonalCase/achivs"
-msgstr "Awards:"
-
-msgid "tankmanPersonalCase/btnReset"
-msgstr "Current Vehicle"
-
-msgid "tankmanPersonalCase/btnRetraining"
-msgstr "Retrain"
-
-msgid "tankmanPersonalCase/btnTraining"
-msgstr "Train"
-
-msgid "tankmanPersonalCase/changeDocsBtn"
-msgstr "Replace Personal Data"
-
-msgid "tankmanPersonalCase/changeRoleBtn"
-msgstr "Change"
-
-msgid "tankmanPersonalCase/closeBtn"
-msgstr "Close"
-
-msgid "tankmanPersonalCase/commanderFeature"
-msgstr "Commander Feature:"
-
-msgid "tankmanPersonalCase/crew"
-msgstr "Crew:"
-
-msgid "tankmanPersonalCase/docs/info"
-msgstr "?empty?"
-
-msgid "tankmanPersonalCase/dropSkillsButtonLabel"
-msgstr "Reset"
-
-msgid "tankmanPersonalCase/mainSpecialization"
-msgstr ""
-"Major\n"
-"Qualification:"
-
-msgid "tankmanPersonalCase/modifiers/customization"
-msgstr "Vehicle Customization"
-
-msgid "tankmanPersonalCase/modifiers/fromCommander"
-msgstr "Commander's bonus"
-
-msgid "tankmanPersonalCase/modifiers/fromEquipment"
-msgstr "Equipment and consumables"
-
-msgid "tankmanPersonalCase/modifiers/fromSkills"
-msgstr "Perks"
-
-msgid "tankmanPersonalCase/modifiers/penalty"
-msgstr "Unsuitable specialization"
-
-msgid "tankmanPersonalCase/modifiersHeader"
-msgstr "Modifiers:"
-
-msgid "tankmanPersonalCase/modifiersResult"
-msgstr "Final Value:"
-
-msgid "tankmanPersonalCase/name"
-msgstr "Name:"
-
-msgid "tankmanPersonalCase/noAchivs"
-msgstr "No achievements or awards earned in battles."
-
-msgid "tankmanPersonalCase/noModifiers"
-msgstr ""
-"Not available with\n"
-"major qualification"
-
-msgid "tankmanPersonalCase/personalDocs"
-msgstr "Personal Data:"
-
-msgid "tankmanPersonalCase/rank"
-msgstr "Rank:"
-
-msgid "tankmanPersonalCase/retrainingBtn"
-msgstr "Retrain"
-
-msgid "tankmanPersonalCase/retrainingWarning"
-msgstr "Training is effective for major qualification only."
-
-msgid "tankmanPersonalCase/retrainingWarning2"
-msgstr ""
-"Retraining for gold does not decrease the level of major qualification."
-
-msgid "tankmanPersonalCase/situationalDesc"
-msgstr ""
-"Situational perks that activate when certain conditions are met in battle."
-
-msgid "tankmanPersonalCase/skillsButton/additionText"
-msgstr "(Training is available upon achieving major qualification level 100%)"
-
-msgid "tankmanPersonalCase/skillsButton/mainText"
-msgstr "View All Perks"
-
-msgid "tankmanPersonalCase/skillsDesc"
-msgstr "(Training is available upon achieving major qualification level 100%)"
-
-msgid "tankmanPersonalCase/specialization"
-msgstr "Specialization:"
-
-msgid "tankmanPersonalCase/tabBattleInfo"
-msgstr "Service Record"
-
-msgid "tankmanPersonalCase/tabDocs"
-msgstr "Personal Data"
-
-msgid "tankmanPersonalCase/tabFreeSkills"
-msgstr "Zero Perks"
-
-msgid "tankmanPersonalCase/tabSkills"
-msgstr "Perks"
-
-msgid "tankmanPersonalCase/tabTraining"
-msgstr "Training"
-
-msgid "tankmanPersonalCase/title"
-msgstr "Personal File"
-
-msgid "tankmanPersonalCase/trainingBtn"
-msgstr "Accelerate training"
-
-msgid "tankmanPersonalCase/usingLevel"
-msgstr "Training Level:"
-
-msgid "tankmanPersonalCase/vehicle"
-msgstr "Vehicle:"
-
-msgid "tankmanPersonalCase/vehicleType"
-msgstr "Vehicle Type:"
-
-msgid "tankmanPersonalCase/vehicleTypeID"
-msgstr "Train for vehicle:"
-
 msgid "tankmanRecruitRenderer/commander"
 msgstr "Recruit Commander"
 
@@ -6725,7 +6544,7 @@ msgid "tankmanRecruitRenderer/loader"
 msgstr "Recruit Loader"
 
 msgid "tankmanRecruitRenderer/personalCase"
-msgstr "Open Personal File"
+msgstr "Open Profile"
 
 msgid "tankmanRecruitRenderer/radioman"
 msgstr "Recruit Radio Operator"
@@ -6792,41 +6611,6 @@ msgstr "(Awaiting battle)"
 
 msgid "tankmen/mediumTank"
 msgstr "Medium Tank"
-
-msgid "tankmsnPersonalCase/lackOfSkillsForLearn"
-msgstr "The crew member has trained all additional perks for this vehicle."
-
-msgid "tankmsnPersonalCase/loadingInfo"
-msgstr "Loading information... Please wait..."
-
-msgid "teachingSkill/after"
-msgstr "After training"
-
-msgid "teachingSkill/before"
-msgstr "Before training"
-
-msgid "teachingSkill/cancel"
-msgstr "Cancel"
-
-msgid "teachingSkill/cost"
-msgstr "Training cost"
-
-msgid "teachingSkill/freeXpIsTight"
-msgstr ""
-"Not enough Free Experience to train the perk. Convert Combat Experience to "
-"Free Experience."
-
-msgid "teachingSkill/submit"
-msgstr "Train"
-
-msgid "teachingSkill/teachToLevel"
-msgstr "Train to level:"
-
-msgid "teachingSkill/title"
-msgstr "Training for Free Experience"
-
-msgid "teachingSkill/totalPay"
-msgstr "Total:"
 
 msgid "techtree/Announcement"
 msgstr "Coming soon"

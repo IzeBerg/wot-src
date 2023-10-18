@@ -105,9 +105,5 @@ package net.wg.infrastructure.base.meta
       function as_blinkReloadTime(param1:int) : void;
       
       function as_setDualAccActive(param1:Boolean) : void;
-      
-      function as_showPlasmaIndicator(param1:Number, param2:Boolean, param3:String) : void;
-      
-      function as_showExplosiveShotIndicator(param1:Boolean) : void;
    }
 }

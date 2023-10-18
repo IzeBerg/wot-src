@@ -119,7 +119,7 @@ package net.wg.gui.components.controls
             _loc1_ = textField.textWidth + (!!this.image.visible ? this.image.width : _paddingHorizontal + textFieldPaddingHorizontal << 1);
             if(this.canChangeSize(_loc1_))
             {
-               this.width = _loc1_;
+               this.width = Math.max(minWidth,_loc1_);
                dispatchEvent(new Event(Event.RESIZE,true));
             }
          }

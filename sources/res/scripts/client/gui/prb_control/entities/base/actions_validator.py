@@ -39,7 +39,7 @@ class BaseActionsValidator(IActionsValidator):
 class CurrentVehicleActionsValidator(BaseActionsValidator):
 
     def _validate(self):
-        if g_currentPreviewVehicle.isPresent():
+        if g_currentPreviewVehicle.isPresent() or g_currentPreviewVehicle.isHalloweenStylePreviewActive():
             return ValidationResult(False, PREBATTLE_RESTRICTION.PREVIEW_VEHICLE_IS_PRESENT)
         if not g_currentVehicle.isReadyToFight():
             if not g_currentVehicle.isPresent():

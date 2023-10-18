@@ -1,6 +1,6 @@
 from helpers import i18n
 from abstract import ClassProgressAchievement
-from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK as _AB, MARK_OF_MASTERY
+from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK as _AB
 from shared_utils import CONST_CONTAINER
 MASTERY_IS_NOT_ACHIEVED = 0
 
@@ -18,7 +18,7 @@ class MarkOfMasteryAchievement(ClassProgressAchievement):
         STEP_3 = 1
 
     def __init__(self, dossier, value=None):
-        super(MarkOfMasteryAchievement, self).__init__(MARK_OF_MASTERY, _AB.TOTAL, dossier, value)
+        super(MarkOfMasteryAchievement, self).__init__('markOfMastery', _AB.TOTAL, dossier, value)
         self.__prevMarkOfMastery = self.MIN_LVL
         self.__compDescr = None
         return
@@ -38,10 +38,10 @@ class MarkOfMasteryAchievement(ClassProgressAchievement):
     def setCompDescr(self, compDescr):
         self.__compDescr = compDescr
 
-    def getIconName(self):
+    def _getUserNameCtx(self):
+        return {'name': i18n.makeString('#achievements:achievement/master%d' % (self._value or self.MIN_LVL))}
+
+    def _getIconName(self):
         if self.__prevMarkOfMastery < self._value:
             return 'markOfMastery%drecord' % (self._value or self.MIN_LVL)
         return 'markOfMastery%d' % (self._value or self.MIN_LVL)
-
-    def _getUserNameCtx(self):
-        return {'name': i18n.makeString('#achievements:achievement/master%d' % (self._value or self.MIN_LVL))}

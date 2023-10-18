@@ -2,6 +2,7 @@ package net.wg.gui.lobby.battleResults.data
 {
    import net.wg.data.constants.Errors;
    import net.wg.data.daapi.base.DAAPIDataClass;
+   import net.wg.gui.lobby.prestige.data.PrestigeProgressVO;
    import net.wg.gui.lobby.progressiveReward.data.ProgressiveRewardVO;
    import net.wg.utils.IAssertable;
    import scaleform.clik.data.DataProvider;
@@ -23,6 +24,8 @@ package net.wg.gui.lobby.battleResults.data
       
       private static const PROGRESSIVE_REWARD:String = "progressiveReward";
       
+      private static const PRESTIGE:String = "prestige";
+      
       private static const MANDATORY_FIELDS:Array = [COMMON,PERSONAL,TEXT_DATA,TEAM1,TEAM2,TAB_INFO];
       
       private static const ARRAY_FIELDS:Array = [TEAM1,TEAM2,TAB_INFO];
@@ -37,6 +40,8 @@ package net.wg.gui.lobby.battleResults.data
       public var personal:PersonalDataVO = null;
       
       public var progressiveReward:ProgressiveRewardVO = null;
+      
+      public var prestige:PrestigeProgressVO = null;
       
       public var dog_tags:Array = null;
       
@@ -125,6 +130,9 @@ package net.wg.gui.lobby.battleResults.data
             case PROGRESSIVE_REWARD:
                this.progressiveReward = new ProgressiveRewardVO(param2);
                return false;
+            case PRESTIGE:
+               this.prestige = Boolean(param2) ? new PrestigeProgressVO(param2) : null;
+               return false;
             default:
                return super.onDataWrite(param1,param2);
          }
@@ -191,6 +199,11 @@ package net.wg.gui.lobby.battleResults.data
          {
             this.progressiveReward.dispose();
             this.progressiveReward = null;
+         }
+         if(this.prestige)
+         {
+            this.prestige.dispose();
+            this.prestige = null;
          }
          this.common.dispose();
          this.common = null;

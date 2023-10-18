@@ -150,6 +150,8 @@ class ARENAS(object):
     C_251_BR_BATTLE_CITY3_NAME = '#arenas:251_br_battle_city3/name'
     C_127_JAPORT_NAME = '#arenas:127_japort/name'
     C_127_JAPORT_DESCRIPTION = '#arenas:127_japort/description'
+    C_95_LOST_CITY_CTF_H23_NAME = '#arenas:95_lost_city_ctf_h23/name'
+    C_95_LOST_CITY_CTF_H23_DESCRIPTION = '#arenas:95_lost_city_ctf_h23/description'
     C_252_BR_BATTLE_CITY4_NAME = '#arenas:252_br_battle_city4/name'
     C_252_BR_BATTLE_CITY4_DESCRIPTION = '#arenas:252_br_battle_city4/description'
     C_128_LAST_FRONTIER_V_NAME = '#arenas:128_last_frontier_v/name'
@@ -164,10 +166,6 @@ class ARENAS(object):
     TYPE_WINBACK_DESCRIPTION = '#arenas:type/winback/description'
     C_210_BF_EPIC_DESERT_NAME = '#arenas:210_bf_epic_desert/name'
     C_210_BF_EPIC_DESERT_DESCRIPTION = '#arenas:210_bf_epic_desert/description'
-    C_11_MUROVANKA_WT_NAME = '#arenas:11_murovanka_wt/name'
-    C_14_SIEGFRIED_LINE_WT_NAME = '#arenas:14_siegfried_line_wt/name'
-    C_34_REDSHIRE_WT_NAME = '#arenas:34_redshire_wt/name'
-    C_35_STEPPES_WT_NAME = '#arenas:35_steppes_wt/name'
     ALL_ENUM = (
      TYPE_CTF_NAME,
      TYPE_CTF_DESCRIPTION,
@@ -318,6 +316,8 @@ class ARENAS(object):
      C_251_BR_BATTLE_CITY3_NAME,
      C_127_JAPORT_NAME,
      C_127_JAPORT_DESCRIPTION,
+     C_95_LOST_CITY_CTF_H23_NAME,
+     C_95_LOST_CITY_CTF_H23_DESCRIPTION,
      C_252_BR_BATTLE_CITY4_NAME,
      C_252_BR_BATTLE_CITY4_DESCRIPTION,
      C_128_LAST_FRONTIER_V_NAME,
@@ -331,11 +331,7 @@ class ARENAS(object):
      TYPE_WINBACK_NAME,
      TYPE_WINBACK_DESCRIPTION,
      C_210_BF_EPIC_DESERT_NAME,
-     C_210_BF_EPIC_DESERT_DESCRIPTION,
-     C_11_MUROVANKA_WT_NAME,
-     C_14_SIEGFRIED_LINE_WT_NAME,
-     C_34_REDSHIRE_WT_NAME,
-     C_35_STEPPES_WT_NAME)
+     C_210_BF_EPIC_DESERT_DESCRIPTION)
 
     @classmethod
     def all(cls, key0):

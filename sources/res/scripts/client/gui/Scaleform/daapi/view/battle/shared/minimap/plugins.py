@@ -297,10 +297,7 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
             if self._isInArcadeMode():
                 matrix = matrix_factory.makeArcadeCameraMatrix()
             elif self._isInPostmortemMode():
-                if self.__killerVehicleID:
-                    matrix = matrix_factory.getEntityMatrix(self.__killerVehicleID)
-                else:
-                    matrix = matrix_factory.makePostmortemCameraMatrix()
+                matrix = matrix_factory.getEntityMatrix(self.__killerVehicleID) or matrix_factory.makePostmortemCameraMatrix()
             elif self._isInVideoMode():
                 activateID = self.__cameraIDs[_S_NAME.VIDEO_CAMERA]
                 matrix = matrix_factory.makeDefaultCameraMatrix()
@@ -319,10 +316,7 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
 
     def __updateViewPointEntry(self, vehicleID=0):
         isActive = self._isInPostmortemMode() and vehicleID and vehicleID != self.__playerVehicleID or self._isInVideoMode() and self.__isAlive or not (self._isInPostmortemMode() or self._isInVideoMode() or self.__isObserver)
-        if self.__killerVehicleID:
-            ownMatrix = matrix_factory.getEntityMatrix(self.__killerVehicleID)
-        else:
-            ownMatrix = matrix_factory.makeAttachedVehicleMatrix()
+        ownMatrix = matrix_factory.getEntityMatrix(self.__killerVehicleID) or matrix_factory.makeAttachedVehicleMatrix()
         if self.__viewPointID:
             self._setActive(self.__viewPointID, active=isActive)
             self._setMatrix(self.__viewPointID, ownMatrix)
@@ -483,6 +477,7 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
             self.__removeAllCircles()
 
     def __onRespawnBaseMoving(self):
+        self.__isAlive = True
         self.__isAlive = True
         self._invalidateMarkup(True)
 
@@ -795,12 +790,16 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
     def _getPlayerVehicleID(self):
         return self.__playerVehicleID
 
+    def _getVehicleClassTag(self, vInfo):
+        vehicleType = vInfo.vehicleType
+        return vehicleType.classTag
+
     def _getDisplayedName(self, vInfo):
         vehicleType = vInfo.vehicleType
         return vehicleType.shortNameWithPrefix
 
     def _setVehicleInfo(self, vehicleID, entry, vInfo, guiProps, isSpotted=False):
-        classTag = vInfo.vehicleType.classTag
+        classTag = self._getVehicleClassTag(vInfo)
         name = self._getDisplayedName(vInfo)
         if classTag is not None:
             entry.setVehicleInfo(not guiProps.isFriend, guiProps.name(), classTag, vInfo.isAlive())
@@ -1044,9 +1043,6 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
     def __onTeamChanged(self, teamID):
         self.invalidateArenaInfo()
 
-    def hideMinimapHP(self):
-        self.__showMinimapHP(False)
-
     def __handleShowExtendedInfo(self, event):
         if self._parentObj.isModalViewShown():
             return
@@ -1278,10 +1274,6 @@ class MinimapPingPlugin(SimpleMinimapPingPlugin):
          Math.Vector2(0, 0), Math.Vector2(0, 0))
         AccountSettings.setSettings(MINIMAP_IBC_HINT_SECTION, self.__minimapSettings)
 
-    def hideHintPanel(self, instantHide=False):
-        self.__isHintPanelEnabled = False
-        self.parentObj.as_disableHintPanelS(instantHide)
-
     def __handleKeyDownEvent(self, event):
         if event.key not in (Keys.KEY_LCONTROL, Keys.KEY_RCONTROL):
             return
@@ -1296,9 +1288,10 @@ class MinimapPingPlugin(SimpleMinimapPingPlugin):
     def __handleKeyUpEvent(self, event):
         if event.key not in (Keys.KEY_LCONTROL, Keys.KEY_RCONTROL):
             return
-        if not self.__isHintPanelEnabled or self._parentObj.isModalViewShown():
+        if not self.__isHintPanelEnabled:
             return
-        self.hideHintPanel()
+        self.__isHintPanelEnabled = False
+        self.parentObj.as_disableHintPanelS()
 
     def updateControlMode(self, crtlMode, vehicleID):
         super(MinimapPingPlugin, self).updateControlMode(crtlMode, vehicleID)
