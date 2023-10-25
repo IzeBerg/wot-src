@@ -66,7 +66,7 @@ _SERVICE_RECORDS_LIMITS = {'common_battles_count': 10.0,
    'medals_count': 100.0}
 _SERVICE_DEPENDENCY_PRC = {'common_wins_count': 'common_battles_count', 
    'wins_count': 'battles_count'}
-_DEF_QUEST_ID = 'winback_call_invite_reward'
+_DEF_QUEST_ID = 'winbackcall_invite_reward'
 
 class _ServiceRecords(object):
     __slots__ = ('__records', )
@@ -127,12 +127,12 @@ class _Friend(object):
     @property
     def inviteStatus(self):
         status = str(self.__data.get('invite_status', ''))
-        if not self.hasEmail:
-            return WinBackCallFriendState.HAS_NOT_EMAIL.value
         if status == WinBackCallFriendState.ACCEPTED.value and self.isAwarded:
             return WinBackCallFriendState.ROLLED_BACK.value
         if status == WinBackCallFriendState.NOT_SENT.value and self.wasNotifiedByEmail:
             return WinBackCallFriendState.ACCEPT_BY_ANOTHER.value
+        if not self.hasEmail and status == WinBackCallFriendState.NOT_SENT.value:
+            return WinBackCallFriendState.HAS_NOT_EMAIL.value
         return status
 
     @property

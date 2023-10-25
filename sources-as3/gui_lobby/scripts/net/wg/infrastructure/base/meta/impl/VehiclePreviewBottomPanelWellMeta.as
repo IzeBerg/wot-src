@@ -8,7 +8,3 @@ package net.wg.infrastructure.base.meta.impl
       
       public function VehiclePreviewBottomPanelWellMeta()
       {
-         super();
-      }
-   }
-}
