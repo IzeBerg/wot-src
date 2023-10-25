@@ -290,29 +290,29 @@ class WotPlusController(IWotPlusController):
 
     @wg_async
     def _resolveState(self):
-        if not self.isEnabled():
-            self._state = WotPlusState.INACTIVE
+        self._state = WotPlusState.ACTIVE if self.isEnabled() else WotPlusState.INACTIVE
+        if not self.isEnabled() or IS_CHINA:
             return
-        if IS_CHINA:
-            self._state = WotPlusState.ACTIVE
+        fetchResult = yield wg_await(self._userSubscriptionFetchCtrl.getProducts(False))
+        userSubscriptions = fetchResult.products
+        if not fetchResult.isProductsReady:
             return
-        subscriptions = yield wg_await(self._userSubscriptionFetchCtrl.getProducts(False))
-        activeSubsCount = len(subscriptions.products) if subscriptions.isProcessed and subscriptions.products else 0
-        if activeSubsCount:
-            self._state = WotPlusState.ACTIVE
-        else:
-            self._state = WotPlusState.CANCELLED
+        activeSubscriptions = [ subscription for subscription in userSubscriptions if subscription.status == SubscriptionStatus.ACTIVE.value and subscription.hasNextBillingTime
+                              ]
+        if not activeSubscriptions:
+            hasCancelled = any(subscription.status in {SubscriptionStatus.INACTIVE.value, SubscriptionStatus.GDPR_SUSPENDED.value, SubscriptionStatus.NEXT_PAYMENT_UNAVAILABLE.value} for subscription in userSubscriptions if subscription.hasNextBillingTime)
+            if hasCancelled:
+                self._state = WotPlusState.CANCELLED
 
     @wg_async
     def _resolveHasSteamSubscription(self):
-        if not self.isEnabled():
-            self._hasSteamSubscription = False
+        self._hasSteamSubscription = False
+        if not self.isEnabled() or IS_CHINA:
             return
         subscriptions = yield wg_await(self._userSubscriptionFetchCtrl.getProducts(False))
-        if not (subscriptions.isProcessed and subscriptions.products):
-            self._hasSteamSubscription = False
+        if not subscriptions.isProductsReady:
             return
-        self._hasSteamSubscription = any(product.status == SubscriptionStatus.ACTIVE.value and product.platform == SubscriptionRequestPlatform.STEAM.value for product in subscriptions.products)
+        self._hasSteamSubscription = any(subscription.platform == SubscriptionRequestPlatform.STEAM.value for subscription in subscriptions.products if subscription.hasNextBillingTime)
 
     @wg_async
     def _onClientUpdate(self, diff, _):
