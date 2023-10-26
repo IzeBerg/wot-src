@@ -33,7 +33,7 @@ class PlatformGetUserSubscriptionsParams(object):
 
     def __init__(self):
         serverSettings = self._lobbyContext.getServerSettings()
-        self.status = [SubscriptionStatus.ACTIVE.value]
+        self.status = [SubscriptionStatus.ACTIVE.value, SubscriptionStatus.INACTIVE.value]
         self.productCode = serverSettings.getWotPlusProductCode()
         self.platform = SubscriptionRequestPlatform.WG_PLATFORM.value
 
