@@ -39,6 +39,8 @@ def buildCache():
                     continue
                 elif 'maps_training' in vehDescr.tags:
                     continue
+                elif 'event_battles' in vehDescr.tags:
+                    continue
                 vehiclesNameToDescr[vehDescr.name] = vehDescr.compactDescr
                 vehicleEliteStatusXp[vehDescr.compactDescr] = __getVehicleEliteStatusXp(vehDescr.compactDescr)
                 vehiclesByLevel.setdefault(vehDescr.level, set()).add(vehDescr.compactDescr)
