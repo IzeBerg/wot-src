@@ -60,6 +60,7 @@
 		<_8V135_M>63</_8V135_M>
 		<_MT_50_T>66</_MT_50_T>
 		<V_2_54SCH>67</V_2_54SCH>
+		<Armstrong_Siddeley_B>68</Armstrong_Siddeley_B>
 		<V_2_54SC_QL>252</V_2_54SC_QL>
 		<V_2_54SC_113>253</V_2_54SC_113>
 		<_Type_102S_T>254</_Type_102S_T>
@@ -72,6 +73,7 @@
 		<Type_165>262</Type_165>
 		<_12150LZM>263</_12150LZM>
 		<_12150L7B_MK>264</_12150L7B_MK>
+		<V_2_54SCT>265</V_2_54SCT>
 		<V_2_54SCR>266</V_2_54SCR>
 		<_12150LT_FL>501</_12150LT_FL>
 		<_8V135_FL>502</_8V135_FL>
@@ -631,6 +633,26 @@
 			<rpm_min>384</rpm_min>
 			<rpm_max>2369</rpm_max>
 		</Armstrong_Siddeley>
+		<Armstrong_Siddeley_B>
+			<userString>#china_vehicles:Armstrong_Siddeley_B</userString>
+			<tags>gasoline</tags>
+			<level>1</level>
+			<price>770</price>
+			<notInShop>true</notInShop>
+			<wwsoundPC>eng_gaz_aa_pc</wwsoundPC>
+			<wwsoundNPC>eng_gaz_aa_npc</wwsoundNPC>
+			<power>92</power>
+			<weight>545</weight>
+			<maxHealth>40</maxHealth>
+			<maxRegenHealth>20</maxRegenHealth>
+			<repairCost>2</repairCost>
+			<fireStartingChance>
+				0.2
+				<!--BW_String-->
+			</fireStartingChance>
+			<rpm_min>384</rpm_min>
+			<rpm_max>2369</rpm_max>
+		</Armstrong_Siddeley_B>
 		<Franklin>
 			<userString>#china_vehicles:Franklin</userString>
 			<tags>gasoline</tags>
@@ -1416,6 +1438,26 @@
 			<rpm_min>293</rpm_min>
 			<rpm_max>2320</rpm_max>
 		</V_2_54SC>
+		<V_2_54SCT>
+			<userString>#china_vehicles:V_2_54SCT</userString>
+			<tags>diesel</tags>
+			<level>10</level>
+			<notInShop>true</notInShop>
+			<price>120000</price>
+			<wwsoundPC>eng_v55_pc</wwsoundPC>
+			<wwsoundNPC>eng_v55_npc</wwsoundNPC>
+			<power>900</power>
+			<weight>1023</weight>
+			<maxHealth>360</maxHealth>
+			<maxRegenHealth>180</maxRegenHealth>
+			<repairCost>10</repairCost>
+			<fireStartingChance>
+				0.12
+				<!--BW_String-->
+			</fireStartingChance>
+			<rpm_min>280</rpm_min>
+			<rpm_max>2360</rpm_max>
+		</V_2_54SCT>
 		<HS_110F>
 			<userString>#china_vehicles:HS_110F</userString>
 			<tags>diesel</tags>
@@ -1706,8 +1748,8 @@
 				0.0
 				<!--BW_String-->
 			</fireStartingChance>
-			<rpm_min>282</rpm_min>
-			<rpm_max>2352</rpm_max>
+			<rpm_min>266</rpm_min>
+			<rpm_max>2400</rpm_max>
 		</_12150L-3_V-12_SH>
 		<_12150L1_SH>
 			<userString>#china_vehicles:_12150L1_SH</userString>

@@ -16,13 +16,12 @@ from gui.impl.gen.view_models.views.lobby.battle_royale.battle_result_view.place
 from gui.impl.gen.view_models.views.lobby.battle_royale.battle_result_view.row_model import RowModel
 from gui.impl.gen.view_models.views.lobby.battle_royale.battle_result_view.battle_pass_progress import BattlePassProgress
 from gui.impl.pub import ViewImpl
-from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE, event_dispatcher
-from gui.shared.events import LobbyHeaderMenuEvent
+from gui.impl.lobby.common.view_mixins import LobbyHeaderVisibility
+from gui.shared import event_dispatcher
 from gui.shared.lock_overlays import lockNotificationManager
 from gui.server_events.battle_royale_formatters import BRSections
 from gui.Scaleform.genConsts.HANGAR_HEADER_QUESTS import HANGAR_HEADER_QUESTS
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
-from gui.Scaleform.daapi.view.lobby.header.LobbyHeader import HeaderMenuVisibilityState
 from helpers import dependency
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.game_control import IBattleRoyaleController, IBattlePassController
@@ -70,7 +69,7 @@ _BATTLE_REWARD_TYPES = [
 _HIDDEN_BONUSES_WITH_ZERO_VALUES = frozenset([
  BattleRewardItemModel.CRYSTALS, BattleRewardItemModel.BATTLE_PASS_POINTS])
 
-class BrBattleResultsViewInLobby(ViewImpl):
+class BrBattleResultsViewInLobby(ViewImpl, LobbyHeaderVisibility):
     __slots__ = ('__arenaUniqueID', '__tooltipsData', '__tooltipParametersCreator',
                  '__data', '__isObserverResult', '__arenaBonusType')
     __battleResults = dependency.descriptor(IBattleResultsService)
@@ -153,7 +152,7 @@ class BrBattleResultsViewInLobby(ViewImpl):
         self.viewModel.personalResults.battlePassProgress.onSubmitClick += self.__onBattlePassClick
         self.__brController.onUpdated += self.__updateBattlePass
         BREvents.playSound(BREvents.BATTLE_SUMMARY_SHOW)
-        g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': HeaderMenuVisibilityState.NOTHING}), scope=EVENT_BUS_SCOPE.LOBBY)
+        self.suspendLobbyHeader(self.uniqueID)
         event_dispatcher.hideSquadWindow()
 
     def _finalize(self):
@@ -165,7 +164,7 @@ class BrBattleResultsViewInLobby(ViewImpl):
         self.__data = None
         self.__brController.onUpdated -= self.__updateBattlePass
         self.viewModel.personalResults.battlePassProgress.onSubmitClick -= self.__onBattlePassClick
-        g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': HeaderMenuVisibilityState.ALL}), scope=EVENT_BUS_SCOPE.LOBBY)
+        self.resumeLobbyHeader(self.uniqueID)
         super(BrBattleResultsViewInLobby, self)._finalize()
         return
 

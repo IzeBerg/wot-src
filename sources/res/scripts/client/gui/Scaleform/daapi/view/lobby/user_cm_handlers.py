@@ -555,12 +555,6 @@ class Comp7LeaderboardCMHandler(BaseUserCMHandler):
         return options
 
 
-class WinBackCallFriendCMHandler(BaseUserCMHandler):
-
-    def _generateOptions(self, ctx=None):
-        return [self._makeItem(USER.INFO, MENU.contextmenu(USER.INFO))]
-
-
 class UserContextMenuInfo(object):
     lobbyContext = dependency.descriptor(ILobbyContext)
 

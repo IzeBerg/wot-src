@@ -386,15 +386,6 @@ class UILoggingAccessor(BaseAccessor):
         return self._data_source.get_uilogging_session(callback)
 
 
-class WinBackCallAccessor(BaseAccessor):
-
-    def get_win_back_call_friend_list(self, callback):
-        return self._data_source.get_win_back_call_friend_list(callback)
-
-    def win_back_call_send_invite_code(self, callback, spaId):
-        return self._data_source.win_back_call_send_invite_code(callback, spaId)
-
-
 class Requester(object):
     available_data_sources = {'stagings': StagingDataAccessor, 
        'fake': FakeDataAccessor, 
@@ -416,7 +407,6 @@ class Requester(object):
     mapbox = RequestDescriptor(MapboxAccessor)
     gifts = RequestDescriptor(GiftSystemAccessor)
     uilogging = RequestDescriptor(UILoggingAccessor)
-    win_back_call = RequestDescriptor(WinBackCallAccessor)
 
     @classmethod
     def create_requester(cls, url_fetcher, config, client_lang=None, user_agent=None):

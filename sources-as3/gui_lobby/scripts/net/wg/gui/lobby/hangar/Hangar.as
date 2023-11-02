@@ -602,26 +602,6 @@ package net.wg.gui.lobby.hangar
          this._helpLayout.hide();
       }
       
-      public function as_createDQWidget() : void
-      {
-         if(!this.dqWidget)
-         {
-            this.dqWidget = new DailyQuestWidget();
-            addChild(this.dqWidget);
-            registerFlashComponentS(this.dqWidget,Aliases.DAILY_QUEST_WIDGET);
-            this.repositionWidget();
-         }
-      }
-      
-      public function as_destroyDQWidget() : void
-      {
-         if(this.dqWidget)
-         {
-            this.dqWidget.dispose();
-         }
-         this.dqWidget = null;
-      }
-      
       public function as_hide3DSceneTooltip() : void
       {
          this.hideTooltip();

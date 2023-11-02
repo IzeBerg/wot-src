@@ -18,17 +18,13 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>Material #144</identifier>
+					<identifier>Material_144</identifier>
 					<fx>shaders/wg_particles/pbs_mesh_particles.fx</fx>
-					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
 						diffuseMap
 						<Texture>particles/mesh_particles/tex/stone_am.dds</Texture>
-					</property>
-					<property>
-						pbsMap
-						<Texture>particles/mesh_particles/tex/stone_gmm.dds</Texture>
 					</property>
 					<property>
 						g_lighting_params
@@ -37,6 +33,10 @@
 					<property>
 						g_meshParticlesZWriteEnable
 						<Bool>true</Bool>
+					</property>
+					<property>
+						pbsMap
+						<Texture>particles/mesh_particles/tex/stone_gmm.dds</Texture>
 					</property>
 				</material>
 				<groupOrigin>0.000000 0.000000 0.000000</groupOrigin>
@@ -47,6 +47,7 @@
 		<min>-0.090989 -0.032835 -0.104678</min>
 		<max>0.090989 0.032835 0.104678</max>
 	</boundingBox>
-	<geometrySize>2892</geometrySize>
-	<minUVDensity>0.187589</minUVDensity>
+	<customBsp>true</customBsp>
+	<geometrySize>10164</geometrySize>
+	<minUVDensity>0.187578</minUVDensity>
 </root>

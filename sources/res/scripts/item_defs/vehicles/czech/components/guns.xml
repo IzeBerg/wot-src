@@ -37,6 +37,7 @@
 		<_105mm_vz_38N_auto>34</_105mm_vz_38N_auto>
 		<_100mm_BS_3>35</_100mm_BS_3>
 		<_130mm_vz_54_2A_CN>36</_130mm_vz_54_2A_CN>
+		<_24_mm_Panzerwagen_Kanone_1938>39</_24_mm_Panzerwagen_Kanone_1938>
 	</ids>
 	<shared>
 		<_37mm_Pechotni_delo_Skoda_L_27>
@@ -465,6 +466,118 @@
 				</_37mm_Narazovy_vz_34>
 			</shots>
 		</_37mm_Skoda_A7>
+		<_24_mm_Panzerwagen_Kanone_1938>
+			<userString>#czech_vehicles:_24_mm_Panzerwagen_Kanone_1938</userString>
+			<tags/>
+			<level>3</level>
+			<notInShop>true</notInShop>
+			<price>8350</price>
+			<impulse>
+				0.06
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.15
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>small</recoilEffect>
+			</recoil>
+			<effects>shot_small</effects>
+			<reloadEffect>reload20_45</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -30.0 1.0 -30.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 10.0 1.0 10.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				43.75
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				2.2
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>50</maxAmmo>
+			<aimingTime>
+				1.7
+				<!--BW_String-->
+			</aimingTime>
+			<weight>80</weight>
+			<maxHealth>66</maxHealth>
+			<maxRegenHealth>33</maxRegenHealth>
+			<repairCost>2</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.4
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.10
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_24_mm_Pz_G_V_Panzer_Granate_Vollgeschoss>
+					<defaultPortion>
+						0.90
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>700</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>45 40</piercingPower>
+				</_24_mm_Pz_G_V_Panzer_Granate_Vollgeschoss>
+				<_24_mm_Pz_G_V_Panzer_Granate_Vollgeschoss_41>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>900</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>60 55</piercingPower>
+				</_24_mm_Pz_G_V_Panzer_Granate_Vollgeschoss_41>
+				<_24_mm_St_G_Stahlgranate>
+					<defaultPortion>
+						0.10
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>600</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>30 30</piercingPower>
+				</_24_mm_St_G_Stahlgranate>
+			</shots>
+		</_24_mm_Panzerwagen_Kanone_1938>
 		<_37mm_Skoda_A23>
 			<userString>#czech_vehicles:_37mm_Skoda_A23</userString>
 			<tags/>

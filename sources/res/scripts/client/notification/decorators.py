@@ -32,7 +32,7 @@ from messenger.proto import proto_getter
 from messenger.proto.xmpp.xmpp_constants import XMPP_ITEM_TYPE
 from notification.settings import NOTIFICATION_BUTTON_STATE, NOTIFICATION_TYPE, makePathToIcon
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import IBattlePassController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IResourceWellController, ISeniorityAwardsController, IWinBackCallController
+from skeletons.gui.game_control import IBattlePassController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IResourceWellController, ISeniorityAwardsController
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
@@ -1441,94 +1441,3 @@ class PrestigeLvlUpDecorator(LockButtonMessageDecorator):
         config = self.__lobbyContext.getServerSettings().prestigeConfig
         if not config.isEnabled and self._model:
             self._updateButtonsState(lock=True)
-
-
-class WinBackCallEntryDecorator(MessageDecorator):
-    __winBackCallCtrl = dependency.descriptor(IWinBackCallController)
-
-    def __init__(self, entityID, entity=None, settings=None, model=None):
-        super(WinBackCallEntryDecorator, self).__init__(entityID, entity=entity, settings=settings, model=model)
-        self._subscribe()
-
-    def clear(self):
-        self._unsubscribe()
-
-    def getType(self):
-        return NOTIFICATION_TYPE.WIN_BACK_CALL_ENTRY
-
-    def getGroup(self):
-        return NotificationGroup.OFFER
-
-    @staticmethod
-    def isPinned():
-        return True
-
-    def decrementCounterOnHidden(self):
-        return False
-
-    def _subscribe(self):
-        g_clientUpdateManager.addCallbacks(dict(self._getCallbacks()))
-        events = self._getEvents()
-        for event, handler in events:
-            event += handler
-
-    def _unsubscribe(self):
-        events = self._getEvents()
-        for event, handler in events:
-            event -= handler
-
-        g_clientUpdateManager.removeObjectCallbacks(self)
-
-    def _getEvents(self):
-        return (
-         (
-          self.__winBackCallCtrl.onStateChanged, self.__onStateChanged),)
-
-    def _getCallbacks(self):
-        return (
-         (
-          'tokens', self.__onTokensUpdate),)
-
-    def __onStateChanged(self):
-        self.__update()
-
-    def __onTokensUpdate(self, _):
-        self.__update()
-
-    def __update(self):
-        if not self.__winBackCallCtrl.isEnabled and self._model is not None:
-            self._model.removeNotification(self.getType(), self._entityID)
-            return
-        else:
-            self.__updateEntityButtons()
-            if self._model is not None:
-                self._model.updateNotification(self.getType(), self._entityID, self._entity, False)
-            return
-
-    def _make(self, entity=None, settings=None):
-        self.__updateEntityButtons()
-        super(WinBackCallEntryDecorator, self)._make(entity, settings)
-
-    def __updateEntityButtons(self):
-        if self._entity is None:
-            return
-        else:
-            buttonsLayout = self._entity.get('buttonsLayout')
-            if not buttonsLayout:
-                return
-            buttonsStates = self._entity.get('buttonsStates', {})
-            if buttonsStates is None:
-                return
-            state, tooltip = self._getButtonState()
-            buttonsStates['submit'] = state
-            buttonsLayout[0]['tooltip'] = tooltip
-            return
-
-    def _getButtonState(self):
-        state = NOTIFICATION_BUTTON_STATE.VISIBLE
-        tooltip = ''
-        if self.__winBackCallCtrl.isEnabled:
-            state |= NOTIFICATION_BUTTON_STATE.ENABLED
-            rClass = R.strings.winback_call.serviceChannelMessages.entryPoint.button.tooltip
-            tooltip = makeTooltip(body=backport.text(rClass()))
-        return (state, tooltip)

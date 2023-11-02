@@ -239,6 +239,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         self.__isVehicleMoving = False
         self.__deadOnLoading = False
         self.arena = None
+        self.__randomEvents = []
         return
 
     @property
@@ -496,6 +497,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.prebattleInvitations.setProxy(None)
         self.__initProgress = 0
         self.__vehicles = set()
+        self.__randomEvents = []
         self.__gunDamagedShootSound = None
         if self.__vehiclesWaitedInfo:
             self.__vehiclesWaitedInfo.clear()
@@ -543,15 +545,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             if self.__dualGunHelper is not None:
                 self.__dualGunHelper.reset()
             if self.vehicle.typeDescriptor.hasSiegeMode:
-                siegeState = self.vehicle.siegeState
-                siegeModeParams = self.vehicle.typeDescriptor.type.siegeModeParams
-                if siegeState == VEHICLE_SIEGE_STATE.ENABLED:
-                    switchingTime = siegeModeParams.get('switchOffTime', 0.0)
-                elif siegeState == VEHICLE_SIEGE_STATE.DISABLED:
-                    switchingTime = siegeModeParams.get('switchOnTime', 0.0)
-                else:
-                    switchingTime = self.vehicle.getSiegeSwitchTimeLeft()
-                self.updateSiegeStateStatus(self.vehicle.id, siegeState, switchingTime)
+                self.updateSiegeStateStatus(self.vehicle.id, self.vehicle.siegeState, self.vehicle.getSiegeSwitchTimeLeft())
             self.guiSessionProvider.shared.viewPoints.updateAttachedVehicle(self.vehicle.id)
             ctrl = self.guiSessionProvider.dynamic.vehicleCount
             if ctrl is not None:
@@ -1113,6 +1107,10 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     def setUpdatedGoodiesSnapshot(self, updatedSnapshot):
         self.goodiesSnapshot = updatedSnapshot
         self.onGoodiesSnapshotUpdated()
+
+    def onRandomEvent(self, eventName):
+        _logger.info('onRandomEvent happened, event name: %s', eventName)
+        self.__randomEvents.append(eventName)
 
     def onSwitchViewpoint(self, vehicleID, position):
         LOG_DEBUG('onSwitchViewpoint', vehicleID, position)
@@ -2093,7 +2091,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     def leaveArena(self):
         _logger.info('Avatar.leaveArena')
         from helpers import statistics
-        self.statsCollector.noteLastArenaData(self.arenaTypeID, self.arenaUniqueID, self.team)
+        self.statsCollector.noteLastArenaData(self.arenaTypeID, self.arenaUniqueID, self.team, self.__randomEvents)
         self.statsCollector.needCollectSessionData(True)
         self.statsCollector.noteHangarLoadingState(statistics.HANGAR_LOADING_STATE.CONNECTED, True)
         try:

@@ -470,7 +470,10 @@ class EpicBattleMetaGameController(Notifiable, SeasonProvider, IEpicBattleMetaGa
         self.__addSkillPointsBonus(startBonuses, startLvl)
         bonusesByLvl = {startLvl: startBonuses}
         currentLevel, _ = self.getPlayerLevelInfo()
-        result = [[startLvl, startLvl, startBonuses]]
+        mergeSelectable(currentLevel, startLvl, startLvl, startBonuses, bonusesByLvl)
+        result = [
+         [
+          startLvl, startLvl, startBonuses]]
         for level in levels:
             endBonus = rewardsData[level].getBonuses()
             self.__addSkillPointsBonus(endBonus, level)
@@ -479,7 +482,7 @@ class EpicBattleMetaGameController(Notifiable, SeasonProvider, IEpicBattleMetaGa
             if isBonusesEqual(prevBonus, endBonus):
                 result[(-1)][1] = level
             else:
-                mergeSelectable(currentLevel, prevStartLvl, prevEndLvl, prevBonus, bonusesByLvl)
+                mergeSelectable(currentLevel, prevStartLvl, prevEndLvl, endBonus, bonusesByLvl)
                 result.append([level, level, endBonus])
 
         return result

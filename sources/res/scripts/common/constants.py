@@ -744,6 +744,8 @@ class PREMIUM_ENTITLEMENTS:
 
 
 SUBSCRIPTION_ENTITLEMENT = 'premium_subs'
+WOT_PLUS_SUBSCRIPTION_PRODUCT = 'subscription'
+PRIME_GAMING_SUBSCRIPTION_PRODUCT = 'prime_subscription'
 ENTITLEMENT_TO_PREM_TYPE = {PREMIUM_ENTITLEMENTS.BASIC: PREMIUM_TYPE.BASIC, 
    PREMIUM_ENTITLEMENTS.PLUS: PREMIUM_TYPE.PLUS, 
    PREMIUM_ENTITLEMENTS.VIP: PREMIUM_TYPE.VIP}
@@ -821,7 +823,6 @@ class Configs(enum.Enum):
     TRIGGER_SYSTEM_CONFIG = 'trigger_system_config'
     PRESTIGE_CONFIG = 'prestige_config'
     STEAM_SHADE_CONFIG = 'steam_shade_config'
-    WINBACK_CALL_CONFIG = 'winback_call_config'
 
 
 INBATTLE_CONFIGS = [
@@ -1327,7 +1328,6 @@ HAS_PM2_COMPLETED_TOKEN = 'has_completed_pm2'
 LINKED_SET_UNFINISHED_TOKEN = 'linkedset_unfinished'
 FREE_PREMIUM_CREW_LOG_EXT_PREFIX = 'free_premium_crew:level:'
 FREE_DROP_SKILL_TOKEN = 'drop_skill:free'
-NOTIFICATION_QUEST_POSTFIX = '_unc'
 
 def personalMissionFreeTokenName(branch):
     if branch <= 1:

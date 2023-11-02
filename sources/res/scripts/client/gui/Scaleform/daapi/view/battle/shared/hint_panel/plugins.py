@@ -1,6 +1,7 @@
 import logging, BigWorld, typing
 from battle_royale.gui.battle_control.controllers.radar_ctrl import IRadarListener
 import CommandMapping
+from Event import EventsSubscriber
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import TRAJECTORY_VIEW_HINT_SECTION, PRE_BATTLE_HINT_SECTION, QUEST_PROGRESS_HINT_SECTION, HELP_SCREEN_HINT_SECTION, SIEGE_HINT_SECTION, WHEELED_MODE_HINT_SECTION, HINTS_LEFT, NUM_BATTLES, LAST_DISPLAY_DAY, IBC_HINT_SECTION, DEV_MAPS_HINT_SECTION, RADAR_HINT_SECTION, TURBO_SHAFT_ENGINE_MODE_HINT_SECTION, PRE_BATTLE_ROLE_HINT_SECTION, COMMANDER_CAM_HINT_SECTION, ROCKET_ACCELERATION_MODE_HINT_SECTION, RESERVES_HINT_SECTION, MAPBOX_HINT_SECTION
 from account_helpers.settings_core.settings_constants import BattleCommStorageKeys
@@ -468,6 +469,7 @@ class RadarHintPlugin(HintPanelPlugin, CallbackDelayer, IRadarListener):
         self._isUnderFire = False
         self.__cbOnRadarCooldown = None
         self.__radarInProgress = False
+        self.__es = EventsSubscriber()
         return
 
     def start(self):
@@ -478,12 +480,14 @@ class RadarHintPlugin(HintPanelPlugin, CallbackDelayer, IRadarListener):
         arena = BigWorld.player().arena
         if arena is not None:
             self.__isEnabled = ARENA_BONUS_TYPE_CAPS.checkAny(arena.bonusType, ARENA_BONUS_TYPE_CAPS.RADAR)
-        if self._sessionProvider.dynamic.radar:
-            self._sessionProvider.dynamic.radar.addRuntimeView(self)
+        radarCtrl = self._sessionProvider.dynamic.radar
+        if radarCtrl:
+            radarCtrl.addRuntimeView(self)
+            self.__es.addCallbackOnUnsubscribe(lambda : radarCtrl.removeRuntimeView(self))
         vStateCtrl = self._sessionProvider.shared.vehicleState
         if vStateCtrl:
-            vStateCtrl.onPostMortemSwitched += self.__onPostMortemSwitched
-            vStateCtrl.onVehicleStateUpdated += self.__onVehicleStateUpdated
+            self.__es.subscribeToEvent(vStateCtrl.onPostMortemSwitched, self.__onPostMortemSwitched)
+            self.__es.subscribeToEvent(vStateCtrl.onVehicleStateUpdated, self.__onVehicleStateUpdated)
         return
 
     @classmethod
@@ -491,15 +495,10 @@ class RadarHintPlugin(HintPanelPlugin, CallbackDelayer, IRadarListener):
         return cls._sessionProvider.arenaVisitor.getArenaGuiType() == ARENA_GUI_TYPE.BATTLE_ROYALE
 
     def stop(self):
-        if self._sessionProvider.dynamic.radar:
-            self._sessionProvider.dynamic.radar.removeRuntimeView(self)
-        vStateCtrl = self._sessionProvider.shared.vehicleState
         if self.__cbOnRadarCooldown is not None:
             BigWorld.cancelCallback(self.__cbOnRadarCooldown)
             self.__cbOnRadarCooldown = None
-        if vStateCtrl:
-            vStateCtrl.onPostMortemSwitched -= self.__onPostMortemSwitched
-            vStateCtrl.onVehicleStateUpdated -= self.__onVehicleStateUpdated
+        self.__es.unsubscribeFromAllEvents()
         AccountSettings.setSettings(RADAR_HINT_SECTION, self.__settings)
         self.destroy()
         return

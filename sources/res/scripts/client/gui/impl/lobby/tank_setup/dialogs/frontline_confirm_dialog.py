@@ -73,7 +73,7 @@ class FrontlineReserveConfirmDialog(DialogTemplateView):
 
     @staticmethod
     def _getAdditionalData():
-        return {'rollBack': True}
+        return {'rollBack': False}
 
     def _closeClickHandler(self, _=None):
         self.__isCloseButtonClicked = True

@@ -2360,6 +2360,9 @@ class IWotPlusController(IGameController):
     def getFormattedDailyAttendanceBonuses(self, bonuses):
         raise NotImplementedError
 
+    def getNextBillingTime(self):
+        raise NotImplementedError
+
 
 class IEntitlementsConsumer(object):
 
@@ -3277,31 +3280,4 @@ class IHangarGuiController(IGameController):
         raise NotImplementedError
 
     def updateComponentsVisibility(self, preset=None):
-        raise NotImplementedError
-
-
-class IWinBackCallController(IGameController):
-    onConfigChanged = None
-    onStateChanged = None
-    onFriendStatusUpdated = None
-    onFriendsUpdated = None
-
-    @property
-    def isEnabled(self):
-        raise NotImplementedError
-
-    @property
-    def inviteTokenQuestID(self):
-        raise NotImplementedError
-
-    def eventPeriod(self):
-        raise NotImplementedError
-
-    def getFriendsList(self):
-        raise NotImplementedError
-
-    def sendInviteCode(self, spaID):
-        raise NotImplementedError
-
-    def canSendInviteToFriend(self, spaID):
         raise NotImplementedError

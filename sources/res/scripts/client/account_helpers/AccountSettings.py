@@ -271,11 +271,6 @@ class Winback(object):
     BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN = 'battleSelectorSettingsBulletShown'
 
 
-class WinBackCall(object):
-    WIN_BACK_CALL_UI_SECTION = 'winBackCall'
-    WIN_BACK_CALL_SHOWN_INTRO = 'winBackCallIntroShowed'
-
-
 KNOWN_SELECTOR_BATTLES = 'knownSelectorBattles'
 MODE_SELECTOR_BATTLE_PASS_SHOWN = 'modeSelectorBattlePassShown'
 RANKED_LAST_CYCLE_ID = 'rankedLastCycleID'
@@ -1196,8 +1191,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   'uiSpamVisited_PersonalReservesHangarHint': False, 
                   'uiSpamVisited_ModernizedSetupTabHint': False, 
                   'uiSpamVisited_OfferBannerWindow': False, 
-                  'uiSpamVisited_StrongholdView': False, 
-                  WinBackCall.WIN_BACK_CALL_UI_SECTION: {WinBackCall.WIN_BACK_CALL_SHOWN_INTRO: False}}}
+                  'uiSpamVisited_StrongholdView': False}}
 
 def _filterAccountSection(dataSec):
     for key, section in dataSec.items()[:]:
@@ -2040,20 +2034,6 @@ class AccountSettings(object):
             cls._setValue(BattleMatters.BATTLE_MATTERS_SETTINGS, bmSection, KEY_SETTINGS)
         else:
             _logger.error("Cann't set value in %s section for %s.", BattleMatters.BATTLE_MATTERS_SETTINGS, name)
-
-    @classmethod
-    def getWinBackCallSetting(cls, name, default):
-        settings = cls.getUIFlag(WinBackCall.WIN_BACK_CALL_UI_SECTION)
-        return settings.get(name, default)
-
-    @classmethod
-    def setWinBackCallSetting(cls, name, value):
-        settings = cls.getUIFlag(WinBackCall.WIN_BACK_CALL_UI_SECTION)
-        if name in settings:
-            settings[name] = value
-            cls.setUIFlag(WinBackCall.WIN_BACK_CALL_UI_SECTION, settings)
-        else:
-            _logger.error("Cann't set value in %s section.", WinBackCall.WIN_BACK_CALL_UI_SECTION)
 
     @staticmethod
     def _getValue(name, setting, force=False):

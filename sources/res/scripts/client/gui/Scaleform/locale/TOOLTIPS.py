@@ -842,6 +842,7 @@ class TOOLTIPS(object):
     MODULEFITS_DUPLICATED_HEADER = '#tooltips:moduleFits/duplicated/header'
     MODULEFITS_DUPLICATED_NOTE = '#tooltips:moduleFits/duplicated/note'
     MODULEFITS_NOT_REMOVABLE_DISMANTLING_PRICE = '#tooltips:moduleFits/not_removable/dismantling/price'
+    MODULEFITS_NOT_REMOVABLE_DISMANTLING_LEVEL_PRICE = '#tooltips:moduleFits/not_removable/dismantling/level/price'
     MODULEFITS_UPGRADABLE_PRICE = '#tooltips:moduleFits/upgradable/price'
     MODULEFITS_UPGRADABLE_MODERNIZED_PRICE = '#tooltips:moduleFits/upgradable/modernized/price'
     MODULEFITS_DECONSTRUCT_PRICE = '#tooltips:moduleFits/deconstruct/price'
@@ -1844,6 +1845,7 @@ class TOOLTIPS(object):
     AWARDITEM_STEELHUNTERPOINT_BODY = '#tooltips:awardItem/steelHunterPoint/body'
     AWARDITEM_FREEXP_HEADER = '#tooltips:awardItem/freeXP/header'
     AWARDITEM_FREEXP_BODY = '#tooltips:awardItem/freeXP/body'
+    AWARDITEM_CUSTOMFREEXP_HEADER = '#tooltips:awardItem/customFreeXP/header'
     AWARDITEM_PREMIUM_HEADER = '#tooltips:awardItem/premium/header'
     AWARDITEM_PREMIUM_BODY = '#tooltips:awardItem/premium/body'
     AWARDITEM_PREMIUM_PLUS_HEADER = '#tooltips:awardItem/premium_plus/header'
@@ -3057,6 +3059,10 @@ class TOOLTIPS(object):
     NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_DESC = '#tooltips:notrecruitedtankman/commander_tolmeron/desc'
     NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_LABEL = '#tooltips:notrecruitedtankman/commander_whiskers/label'
     NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_DESC = '#tooltips:notrecruitedtankman/commander_whiskers/desc'
+    NOTRECRUITEDTANKMAN_TC2023_COMMANDER_1_LABEL = '#tooltips:notrecruitedtankman/tc2023_commander_1/label'
+    NOTRECRUITEDTANKMAN_TC2023_COMMANDER_1_DESC = '#tooltips:notrecruitedtankman/tc2023_commander_1/desc'
+    NOTRECRUITEDTANKMAN_TC2023_COMMANDER_2_LABEL = '#tooltips:notrecruitedtankman/tc2023_commander_2/label'
+    NOTRECRUITEDTANKMAN_TC2023_COMMANDER_2_DESC = '#tooltips:notrecruitedtankman/tc2023_commander_2/desc'
     NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL = '#tooltips:notrecruitedtankman/yha_commander/label'
     NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC = '#tooltips:notrecruitedtankman/yha_commander/desc'
     NOTRECRUITEDTANKMAN_YHA_DRIVER_LABEL = '#tooltips:notrecruitedtankman/yha_driver/label'
@@ -3791,6 +3797,7 @@ class TOOLTIPS(object):
      AWARDITEM_EQUIPCOIN_HEADER,
      AWARDITEM_STEELHUNTERPOINT_HEADER,
      AWARDITEM_FREEXP_HEADER,
+     AWARDITEM_CUSTOMFREEXP_HEADER,
      AWARDITEM_PREMIUM_HEADER,
      AWARDITEM_PREMIUM_PLUS_HEADER,
      AWARDITEM_BATTLETOKEN_ONE_HEADER,
@@ -4279,6 +4286,8 @@ class TOOLTIPS(object):
      NOTRECRUITEDTANKMAN_COMMANDER_HOB_LABEL,
      NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_LABEL,
      NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_LABEL,
+     NOTRECRUITEDTANKMAN_TC2023_COMMANDER_1_LABEL,
+     NOTRECRUITEDTANKMAN_TC2023_COMMANDER_2_LABEL,
      NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL,
      NOTRECRUITEDTANKMAN_YHA_DRIVER_LABEL,
      NOTRECRUITEDTANKMAN_YHA_GUNNER_LABEL,
@@ -4451,6 +4460,8 @@ class TOOLTIPS(object):
      NOTRECRUITEDTANKMAN_COMMANDER_HOB_DESC,
      NOTRECRUITEDTANKMAN_COMMANDER_TOLMERON_DESC,
      NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_DESC,
+     NOTRECRUITEDTANKMAN_TC2023_COMMANDER_1_DESC,
+     NOTRECRUITEDTANKMAN_TC2023_COMMANDER_2_DESC,
      NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC,
      NOTRECRUITEDTANKMAN_YHA_DRIVER_DESC,
      NOTRECRUITEDTANKMAN_YHA_GUNNER_DESC,

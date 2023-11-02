@@ -352,6 +352,65 @@
 			<devices>54</devices>
 		</damage>
 	</_2pdr_APCNR_Mk.1>
+	<_2pdr_AP_Mk.1TA>
+		<id>240</id>
+		<userString>#gb_vehicles:_2pdr_AP_Mk.1TA</userString>
+		<icon>ap</icon>
+		<price>30</price>
+		<kind>ARMOR_PIERCING</kind>
+		<caliber>40</caliber>
+		<isTracer>true</isTracer>
+		<effects>smallArmorPiercing</effects>
+		<damage>
+			<armor>50</armor>
+			<devices>54</devices>
+		</damage>
+	</_2pdr_AP_Mk.1TA>
+	<_2pdr_APCNR_Mk.1A>
+		<id>241</id>
+		<userString>#gb_vehicles:_2pdr_APCNR_Mk.1A</userString>
+		<icon>ap_cr_premium</icon>
+		<price>1200</price>
+		<improved>true</improved>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<caliber>40</caliber>
+		<isTracer>true</isTracer>
+		<effects>smallAPCR</effects>
+		<damage>
+			<armor>50</armor>
+			<devices>54</devices>
+		</damage>
+	</_2pdr_APCNR_Mk.1A>
+	<_2pdr_HE_Mk.2A>
+		<id>242</id>
+		<userString>#gb_vehicles:_2pdr_HE_Mk.2A</userString>
+		<icon>he_modern</icon>
+		<price>15</price>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<mechanics>MODERN</mechanics>
+		<caliber>40</caliber>
+		<explosionRadius>
+			0.35
+			<!--BW_String-->
+		</explosionRadius>
+		<isTracer>true</isTracer>
+		<effects>smallHighExplosive</effects>
+		<damage>
+			<armor>60</armor>
+			<devices>54</devices>
+		</damage>
+		<armorSpalls>
+			<impactRadius>
+				0.35
+				<!--BW_String-->
+			</impactRadius>
+			<coneAngle>90</coneAngle>
+			<damage>
+				<armor>30</armor>
+				<devices>25</devices>
+			</damage>
+		</armorSpalls>
+	</_2pdr_HE_Mk.2A>
 	<_2pdr_APCNR_Mk.2>
 		<id>75</id>
 		<userString>#gb_vehicles:_2pdr_APCNR_Mk.2</userString>

@@ -116,6 +116,7 @@
 		<_2pdr_Gun_Mk_XB>124</_2pdr_Gun_Mk_XB>
 		<_75mm_Gun_Mk_VB>125</_75mm_Gun_Mk_VB>
 		<QF_6_pounder_Mk_VM>126</QF_6_pounder_Mk_VM>
+		<_2pdr_Gun_Mk_IX_A>128</_2pdr_Gun_Mk_IX_A>
 		<_123mm_OQF_Mk_1_7x7>502</_123mm_OQF_Mk_1_7x7>
 		<_20pdr_Gun_Type_A_IGR>60001</_20pdr_Gun_Type_A_IGR>
 		<_20pdr_Gun_Type_B_IGR>60002</_20pdr_Gun_Type_B_IGR>
@@ -637,6 +638,118 @@
 				</_2pdr_HE_Mk.2>
 			</shots>
 		</_2pdr_Gun_Mk_IX>
+		<_2pdr_Gun_Mk_IX_A>
+			<userString>#gb_vehicles:_2pdr_Gun_Mk_IX_A</userString>
+			<tags/>
+			<level>3</level>
+			<price>6000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.26
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.3
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>medium</recoilEffect>
+			</recoil>
+			<effects>shot_small</effects>
+			<reloadEffect>reload20_45</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -25.0 1.0 -25.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 10.0 1.0 10.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				43.75
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				2.05714285714286
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>100</maxAmmo>
+			<aimingTime>
+				1.14285714285714
+				<!--BW_String-->
+			</aimingTime>
+			<weight>130</weight>
+			<maxHealth>66</maxHealth>
+			<maxRegenHealth>33</maxRegenHealth>
+			<repairCost>2</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.377142857142857
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.08
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_2pdr_AP_Mk.1TA>
+					<defaultPortion>
+						0.95
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>792</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>78 66</piercingPower>
+				</_2pdr_AP_Mk.1TA>
+				<_2pdr_APCNR_Mk.1A>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>990</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>121 104</piercingPower>
+				</_2pdr_APCNR_Mk.1A>
+				<_2pdr_HE_Mk.2A>
+					<defaultPortion>
+						0.05
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>792</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>23 23</piercingPower>
+				</_2pdr_HE_Mk.2A>
+			</shots>
+		</_2pdr_Gun_Mk_IX_A>
 		<_2pdr_Gun_Mk_IX_prot>
 			<userString>#gb_vehicles:_2pdr_Gun_Mk_IX_prot</userString>
 			<tags/>

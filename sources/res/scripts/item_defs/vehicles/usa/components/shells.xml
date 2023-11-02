@@ -2743,6 +2743,65 @@
 			<!--BW_String-->
 		</piercingPowerLossFactorByDistance>
 	</_120mm_HEAT-T_M469C>
+	<_76mm_AP_M80>
+		<id>210</id>
+		<userString>#usa_vehicles:_76mm_AP_M80</userString>
+		<icon>ap</icon>
+		<price>56</price>
+		<kind>ARMOR_PIERCING</kind>
+		<caliber>76</caliber>
+		<isTracer>true</isTracer>
+		<effects>mediumArmorPiercing</effects>
+		<damage>
+			<armor>115</armor>
+			<devices>105</devices>
+		</damage>
+	</_76mm_AP_M80>
+	<_76mm_HVAP_M94>
+		<id>211</id>
+		<userString>#usa_vehicles:_76mm_HVAP_M94</userString>
+		<icon>ap_cr_premium</icon>
+		<price>2800</price>
+		<improved>true</improved>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<caliber>76</caliber>
+		<isTracer>true</isTracer>
+		<effects>mediumAPCR</effects>
+		<damage>
+			<armor>115</armor>
+			<devices>105</devices>
+		</damage>
+	</_76mm_HVAP_M94>
+	<_76mm_HE_M1A1-AR>
+		<id>212</id>
+		<userString>#usa_vehicles:_76mm_HE_M1A1-AR</userString>
+		<icon>he_modern</icon>
+		<price>56</price>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<mechanics>MODERN</mechanics>
+		<caliber>76</caliber>
+		<explosionRadius>
+			1.09
+			<!--BW_String-->
+		</explosionRadius>
+		<isTracer>true</isTracer>
+		<effects>mediumHighExplosive</effects>
+		<damage>
+			<armor>185</armor>
+			<devices>105</devices>
+		</damage>
+		<armorSpalls>
+			<impactRadius>
+				1.09
+				<!--BW_String-->
+			</impactRadius>
+			<coneAngle>90</coneAngle>
+			<damage>
+				<armor>85</armor>
+				<devices>55</devices>
+			</damage>
+		</armorSpalls>
+	</_76mm_HE_M1A1-AR>
 	<_120mm_AP-T_XM66F>
 		<id>195</id>
 		<userString>#usa_vehicles:_120mm_AP-T_XM66F</userString>

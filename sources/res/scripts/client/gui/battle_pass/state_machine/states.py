@@ -276,5 +276,8 @@ class RewardAnyState(State):
         if machine is not None:
             machine.clearSelf()
             machine.post(StateEvent())
-        showBattlePassBuyWindow()
+        callBack = None
+        if not self.__battlePass.getCurrentChapterID():
+            callBack = partial(showMissionsBattlePass, R.views.lobby.battle_pass.ChapterChoiceView())
+        showBattlePassBuyWindow({'backCallback': callBack})
         return

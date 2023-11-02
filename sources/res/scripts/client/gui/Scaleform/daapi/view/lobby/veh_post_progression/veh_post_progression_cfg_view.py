@@ -127,4 +127,4 @@ class VehiclePostProgressionCfgView(VehiclePostProgressionViewMeta):
 
     def __goToHeroTank(self):
         ctx = self._exitEvent.ctx
-        shared_events.goToHeroTankOnScene(vehTypeCompDescr=ctx.get('itemCD'), previewAlias=ctx.get('previewAlias'), previewBackCb=ctx.get('previewBackCb'), previousBackAlias=ctx.get('previousBackAlias'), hangarVehicleCD=ctx.get('hangarVehicleCD'))
+        shared_events.goToHeroTankOnScene(vehTypeCompDescr=ctx.get('itemCD'), previewAlias=ctx.get('previewAlias'), previewBackCb=ctx.get('previewBackCb'), previousBackAlias=ctx.get('previousBackAlias'), hangarVehicleCD=ctx.get('hangarVehicleCD'), instantly=True)

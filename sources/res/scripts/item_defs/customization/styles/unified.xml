@@ -18510,4 +18510,101 @@
 			</exclude>
 		</vehicleFilter>
 	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:styles/special_styles</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>styles 1500g notInShop</priceGroup>
+		<style>
+			<id>31013</id>
+			<userString>#vehicle_customization:special_style/wci_t</userString>
+			<description>#vehicle_customization:special_style/wci_t_desc</description>
+			<texture>gui/maps/vehicles/styles/wci_t.png</texture>
+			<tags>progression_required</tags>
+			<itemFilters>
+				<projection_decal>
+					<include>
+						<itemGroupName>Progression Decals</itemGroupName>
+					</include>
+				</projection_decal>
+			</itemFilters>
+			<outfits>
+				<outfit>
+					<season>all</season>
+					<camouflages>
+						<item>
+							<id>15997</id>
+							<patternSize>1</patternSize>
+							<appliedTo>4368</appliedTo>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+					<decals>
+						<item>
+							<id>15980</id>
+							<appliedTo>13104</appliedTo>
+						</item>
+					</decals>
+				</outfit>
+			</outfits>
+		</style>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:styles/special_styles</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>styles 750g notInShop</priceGroup>
+		<style>
+			<id>31022</id>
+			<userString>#vehicle_customization:special_style/bear</userString>
+			<longDescriptionSpecial>#vehicle_customization:special_style/bear_desc/long</longDescriptionSpecial>
+			<texture>gui/maps/vehicles/styles/bear.png</texture>
+			<tags>progression_required</tags>
+			<itemFilters>
+				<projection_decal>
+					<include>
+						<itemGroupName>Progression Decals</itemGroupName>
+					</include>
+				</projection_decal>
+			</itemFilters>
+			<outfits>
+				<outfit>
+					<season>all</season>
+					<camouflages>
+						<item>
+							<id>16006</id>
+							<patternSize>1</patternSize>
+							<appliedTo>4368</appliedTo>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+					<paints>
+						<item>
+							<id>440</id>
+							<appliedTo>30583</appliedTo>
+						</item>
+					</paints>
+					<decals>
+						<item>
+							<id>599</id>
+							<appliedTo>13104</appliedTo>
+						</item>
+					</decals>
+				</outfit>
+			</outfits>
+		</style>
+		<vehicleFilter>
+			<include>
+				<levels>8 9 10</levels>
+			</include>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+	</itemGroup>
 </root>

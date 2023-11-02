@@ -6937,6 +6937,32 @@
 				</effects>
 			</variant1>
 		</hd_env_AS_005_WoodDryer_end>
+		<hd_env_UNI_110_KeelBlock_03>
+			<variant1>
+				<stages>
+					<base>
+						4.0
+						<!--BW_String-->
+					</base>
+				</stages>
+				<effects>
+					<pixie>
+						<startKey>base</startKey>
+						<file>particles/environment/objects/hd_env_uni_110_keelblock_03.eff</file>
+						<force>1</force>
+					</pixie>
+					<destructionSound>
+						<startKey>base</startKey>
+						<wwsound>obj_generative</wwsound>
+						<params>
+							<wood_2>24</wood_2>
+							<debrisAmount>8</debrisAmount>
+							<weight>4800</weight>
+						</params>
+					</destructionSound>
+				</effects>
+			</variant1>
+		</hd_env_UNI_110_KeelBlock_03>
 		<hd_env_AS_005_WoodDryer_end_hit>
 			<variant1>
 				<stages>

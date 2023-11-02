@@ -139,7 +139,9 @@
 		<_105mm_L7A3_P>284</_105mm_L7A3_P>
 		<_105mm_Gun_T5E1_M>285</_105mm_Gun_T5E1_M>
 		<_120mm_Gun_T123E6_66>286</_120mm_Gun_T123E6_66>
+		<_76mm_Gun_M1A1_RMT>289</_76mm_Gun_M1A1_RMT>
 		<_120mm_Gun_T123E6C>290</_120mm_Gun_T123E6C>
+		<_75mm_Gun_T13E1>291</_75mm_Gun_T13E1>
 		<_76mm_Gun_T185E_IGR>60001</_76mm_Gun_T185E_IGR>
 		<_90mm_Gun_T178_IGR>60002</_90mm_Gun_T178_IGR>
 		<_120mm_Gun_T53A1_IGR>60003</_120mm_Gun_T53A1_IGR>
@@ -3392,6 +3394,118 @@
 				</_75mm_M48>
 			</shots>
 		</_75mm_Gun_M6>
+		<_75mm_Gun_T13E1>
+			<userString>#usa_vehicles:_75mm_Gun_T13E1</userString>
+			<tags/>
+			<level>5</level>
+			<price>33350</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.48
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.36
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>medium</recoilEffect>
+			</recoil>
+			<effects>shot_medium</effects>
+			<reloadEffect>reload50_75</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -15.0 1.0 -15.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 10.0 1.0 10.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				40.25
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				4.0
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>46</maxAmmo>
+			<aimingTime>
+				2.
+				<!--BW_String-->
+			</aimingTime>
+			<weight>186</weight>
+			<maxHealth>120</maxHealth>
+			<maxRegenHealth>60</maxRegenHealth>
+			<repairCost>5</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.4
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.1
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					3.5
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_75mm_M61>
+					<defaultPortion>
+						0.95
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>619</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>96 88</piercingPower>
+				</_75mm_M61>
+				<_75mm_M72>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>869</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>143 98</piercingPower>
+				</_75mm_M72>
+				<_75mm_M48>
+					<defaultPortion>
+						0.05
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>604</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>38 38</piercingPower>
+				</_75mm_M48>
+			</shots>
+		</_75mm_Gun_T13E1>
 		<_75mm_Gun_M17>
 			<userString>#usa_vehicles:_75mm_Gun_M17</userString>
 			<tags/>
@@ -3725,6 +3839,112 @@
 				</_76mm_HE_M42A1>
 			</shots>
 		</_76mm_Gun_M1A1>
+		<_76mm_Gun_M1A1_RMT>
+			<userString>#usa_vehicles:_76mm_Gun_M1A1_RMT</userString>
+			<tags/>
+			<level>5</level>
+			<price>50000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.48
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.36
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>medium</recoilEffect>
+			</recoil>
+			<effects>shot_medium_mb</effects>
+			<reloadEffect>reload_automat_reloading_50_75</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -60.0 1.0 -60.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 15.0 1.0 15.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				40.25
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>4</reloadTime>
+			<maxAmmo>100</maxAmmo>
+			<aimingTime>2</aimingTime>
+			<weight>1400</weight>
+			<maxHealth>120</maxHealth>
+			<maxRegenHealth>60</maxRegenHealth>
+			<repairCost>5</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.41
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.16
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_76mm_AP_M80>
+					<defaultPortion>
+						0.90
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>900</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>128 110</piercingPower>
+				</_76mm_AP_M80>
+				<_76mm_HVAP_M94>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1000</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>177 158</piercingPower>
+				</_76mm_HVAP_M94>
+				<_76mm_HE_M1A1-AR>
+					<defaultPortion>
+						0.10
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>800</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>38 38</piercingPower>
+				</_76mm_HE_M1A1-AR>
+			</shots>
+		</_76mm_Gun_M1A1_RMT>
 		<_76mm_Gun_M1A1L>
 			<userString>#usa_vehicles:_76mm_Gun_M1A1L</userString>
 			<tags/>

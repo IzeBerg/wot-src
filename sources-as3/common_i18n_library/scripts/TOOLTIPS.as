@@ -1667,6 +1667,8 @@ package
       
       public static const MODULEFITS_NOT_REMOVABLE_DISMANTLING_PRICE:String = "#tooltips:moduleFits/not_removable/dismantling/price";
       
+      public static const MODULEFITS_NOT_REMOVABLE_DISMANTLING_LEVEL_PRICE:String = "#tooltips:moduleFits/not_removable/dismantling/level/price";
+      
       public static const MODULEFITS_UPGRADABLE_PRICE:String = "#tooltips:moduleFits/upgradable/price";
       
       public static const MODULEFITS_UPGRADABLE_MODERNIZED_PRICE:String = "#tooltips:moduleFits/upgradable/modernized/price";
@@ -3670,6 +3672,8 @@ package
       public static const AWARDITEM_FREEXP_HEADER:String = "#tooltips:awardItem/freeXP/header";
       
       public static const AWARDITEM_FREEXP_BODY:String = "#tooltips:awardItem/freeXP/body";
+      
+      public static const AWARDITEM_CUSTOMFREEXP_HEADER:String = "#tooltips:awardItem/customFreeXP/header";
       
       public static const AWARDITEM_PREMIUM_HEADER:String = "#tooltips:awardItem/premium/header";
       
@@ -6096,6 +6100,14 @@ package
       public static const NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_LABEL:String = "#tooltips:notrecruitedtankman/commander_whiskers/label";
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_DESC:String = "#tooltips:notrecruitedtankman/commander_whiskers/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TC2023_COMMANDER_1_LABEL:String = "#tooltips:notrecruitedtankman/tc2023_commander_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TC2023_COMMANDER_1_DESC:String = "#tooltips:notrecruitedtankman/tc2023_commander_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TC2023_COMMANDER_2_LABEL:String = "#tooltips:notrecruitedtankman/tc2023_commander_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TC2023_COMMANDER_2_DESC:String = "#tooltips:notrecruitedtankman/tc2023_commander_2/desc";
       
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/yha_commander/label";
       

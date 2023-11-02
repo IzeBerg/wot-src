@@ -18515,6 +18515,103 @@
 		<userString>#vehicle_customization:styles/special_styles</userString>
 		<season>ALL</season>
 		<historical>1</historical>
+		<priceGroup>styles 1500g notInShop</priceGroup>
+		<style>
+			<id>31013</id>
+			<userString>#vehicle_customization:special_style/wci_t</userString>
+			<description>#vehicle_customization:special_style/wci_t_desc</description>
+			<texture>gui/maps/vehicles/styles/wci_t.png</texture>
+			<tags>progression_required</tags>
+			<itemFilters>
+				<projection_decal>
+					<include>
+						<itemGroupName>Progression Decals</itemGroupName>
+					</include>
+				</projection_decal>
+			</itemFilters>
+			<outfits>
+				<outfit>
+					<season>all</season>
+					<camouflages>
+						<item>
+							<id>15997</id>
+							<patternSize>1</patternSize>
+							<appliedTo>4368</appliedTo>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+					<decals>
+						<item>
+							<id>15980</id>
+							<appliedTo>13104</appliedTo>
+						</item>
+					</decals>
+				</outfit>
+			</outfits>
+		</style>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:styles/special_styles</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>styles 750g notInShop</priceGroup>
+		<style>
+			<id>31022</id>
+			<userString>#vehicle_customization:special_style/bear</userString>
+			<longDescriptionSpecial>#vehicle_customization:special_style/bear_desc/long</longDescriptionSpecial>
+			<texture>gui/maps/vehicles/styles/bear.png</texture>
+			<tags>progression_required</tags>
+			<itemFilters>
+				<projection_decal>
+					<include>
+						<itemGroupName>Progression Decals</itemGroupName>
+					</include>
+				</projection_decal>
+			</itemFilters>
+			<outfits>
+				<outfit>
+					<season>all</season>
+					<camouflages>
+						<item>
+							<id>16006</id>
+							<patternSize>1</patternSize>
+							<appliedTo>4368</appliedTo>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+					<paints>
+						<item>
+							<id>440</id>
+							<appliedTo>30583</appliedTo>
+						</item>
+					</paints>
+					<decals>
+						<item>
+							<id>599</id>
+							<appliedTo>13104</appliedTo>
+						</item>
+					</decals>
+				</outfit>
+			</outfits>
+		</style>
+		<vehicleFilter>
+			<include>
+				<levels>8 9 10</levels>
+			</include>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:styles/special_styles</userString>
+		<season>ALL</season>
+		<historical>1</historical>
 		<priceGroup>styles 750g notInShop</priceGroup>
 		<vehicleFilter>
 			<include>
@@ -25934,6 +26031,47 @@
 		</style>
 	</itemGroup>
 	<itemGroup>
+		<userString>#vehicle_customization:styles/special_styles</userString>
+		<season>ALL</season>
+		<historical>2</historical>
+		<priceGroup>styles 3500g notInShop</priceGroup>
+		<vehicleFilter>
+			<include>
+				<vehicles>france:F110_Lynx_6x6</vehicles>
+			</include>
+		</vehicleFilter>
+		<style>
+			<id>816</id>
+			<texture>gui/maps/vehicles/styles/F110_Lynx_6x6_3Dst_HW23.png</texture>
+			<modelsSet>F110_Lynx_6x6_3Dst_HW23</modelsSet>
+			<maxNumber>1</maxNumber>
+			<userString>#vehicle_customization:special_style/F110_Lynx_6x6_3Dst_HW23</userString>
+			<description>#vehicle_customization:special_style/F110_Lynx_6x6_3Dst_HW23_desc</description>
+			<longDescriptionSpecial>#vehicle_customization:special_style/F110_Lynx_6x6_3Dst_HW23_desc/long</longDescriptionSpecial>
+			<tags>progression_required</tags>
+			<outfits>
+				<outfit>
+					<season>ALL</season>
+					<camouflages>
+						<item>
+							<id>1</id>
+							<appliedTo>4368</appliedTo>
+							<patternSize>1</patternSize>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+				</outfit>
+			</outfits>
+			<itemFilters>
+				<projection_decal>
+					<include>
+						<itemGroupName>Progression Decals</itemGroupName>
+					</include>
+				</projection_decal>
+			</itemFilters>
+		</style>
+	</itemGroup>
+	<itemGroup>
 		<userString>#vehicle_customization:styles/rented_styles</userString>
 		<season>ALL</season>
 		<historical>0</historical>
@@ -30596,6 +30734,47 @@
 		</style>
 	</itemGroup>
 	<itemGroup>
+		<userString>#vehicle_customization:styles/special_styles</userString>
+		<season>ALL</season>
+		<historical>2</historical>
+		<priceGroup>styles 3500g notInShop</priceGroup>
+		<vehicleFilter>
+			<include>
+				<vehicles>sweden:S32_Bofors_Tornvagn</vehicles>
+			</include>
+		</vehicleFilter>
+		<style>
+			<id>810</id>
+			<texture>gui/maps/vehicles/styles/S32_Bofors_Tornvagn_SumS_3DSt.png</texture>
+			<modelsSet>S32_Bofors_Tornvagn_SumS_3DSt</modelsSet>
+			<maxNumber>1</maxNumber>
+			<userString>#vehicle_customization:special_style/S32_Bofors_Tornvagn_SumS_3DSt</userString>
+			<description>#vehicle_customization:special_style/S32_Bofors_Tornvagn_SumS_3DSt_desc</description>
+			<longDescriptionSpecial>#vehicle_customization:special_style/S32_Bofors_Tornvagn_SumS_3DSt_desc/long</longDescriptionSpecial>
+			<tags>progression_required</tags>
+			<outfits>
+				<outfit>
+					<season>ALL</season>
+					<camouflages>
+						<item>
+							<id>1</id>
+							<appliedTo>4368</appliedTo>
+							<patternSize>1</patternSize>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+				</outfit>
+			</outfits>
+			<itemFilters>
+				<projection_decal>
+					<include>
+						<itemGroupName>Progression Decals</itemGroupName>
+					</include>
+				</projection_decal>
+			</itemFilters>
+		</style>
+	</itemGroup>
+	<itemGroup>
 		<userString>#vehicle_customization:styles/rented_styles</userString>
 		<season>ALL</season>
 		<historical>0</historical>
@@ -32326,6 +32505,47 @@
 					<season>event</season>
 				</outfit>
 			</outfits>
+		</style>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:styles/special_styles</userString>
+		<season>ALL</season>
+		<historical>2</historical>
+		<priceGroup>styles 4500g notInShop</priceGroup>
+		<vehicleFilter>
+			<include>
+				<vehicles>uk:GB86_Centurion_Action_X</vehicles>
+			</include>
+		</vehicleFilter>
+		<style>
+			<id>803</id>
+			<texture>gui/maps/vehicles/styles/GB86_Centurion_Action_X_3DSt_HW23.png</texture>
+			<modelsSet>GB86_Centurion_Action_X_3DSt_HW23</modelsSet>
+			<maxNumber>1</maxNumber>
+			<userString>#vehicle_customization:special_style/GB86_Centurion_Action_X_3DSt_HW23</userString>
+			<description>#vehicle_customization:special_style/GB86_Centurion_Action_X_3DSt_HW23_desc</description>
+			<longDescriptionSpecial>#vehicle_customization:special_style/GB86_Centurion_Action_X_3DSt_HW23_desc/long</longDescriptionSpecial>
+			<tags>progression_required</tags>
+			<outfits>
+				<outfit>
+					<season>ALL</season>
+					<camouflages>
+						<item>
+							<id>1</id>
+							<appliedTo>4368</appliedTo>
+							<patternSize>1</patternSize>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+				</outfit>
+			</outfits>
+			<itemFilters>
+				<projection_decal>
+					<include>
+						<itemGroupName>Progression Decals</itemGroupName>
+					</include>
+				</projection_decal>
+			</itemFilters>
 		</style>
 	</itemGroup>
 	<itemGroup>
@@ -38362,6 +38582,45 @@
 							<tags>formfactor_rect1x2 cover direction_right_to_left</tags>
 						</item>
 					</projection_decals>
+				</outfit>
+			</outfits>
+		</style>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:styles/special_styles</userString>
+		<season>ALL</season>
+		<historical>2</historical>
+		<priceGroup>styles 100g notInShop</priceGroup>
+		<vehicleFilter>
+			<include>
+				<vehicles>ussr:R205_Tank_Rozanova_Obsidian</vehicles>
+			</include>
+		</vehicleFilter>
+		<style>
+			<id>807</id>
+			<texture>gui/maps/vehicles/styles/R205_Tank_Rozanova_3Dst_HW23.png</texture>
+			<longDescriptionSpecial>#vehicle_customization:special_style/R205_Tank_Rozanova_3Dst_HW23_desc/long</longDescriptionSpecial>
+			<modelsSet>R205_Tank_Rozanova_3Dst_HW23</modelsSet>
+			<maxNumber>1</maxNumber>
+			<userString>#vehicle_customization:special_style/R205_Tank_Rozanova_3Dst_HW23</userString>
+			<tags>lockedOnVehicle</tags>
+			<outfits>
+				<outfit>
+					<season>ALL</season>
+					<camouflages>
+						<item>
+							<id>743</id>
+							<appliedTo>272</appliedTo>
+							<patternSize>1</patternSize>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+					<paints>
+						<item>
+							<id>423</id>
+							<appliedTo>30583</appliedTo>
+						</item>
+					</paints>
 				</outfit>
 			</outfits>
 		</style>
