@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>isDeferred</name>
+			<type>bool</type>
+		</param>
+		<param>
+			<name>Hit</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/G164_Kpz_Pr_68_P_N23_3Dst/G164_Kpz_Pr_68_P_N23_3Dst_empty_sequence.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>hull_hit</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Hit</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-264.500000 -184.500000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hull_hit</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/G164_Kpz_Pr_68_P_N23_3Dst/G164_Kpz_Pr_68_P_N23_3Dst_hull_hit_shield.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>idle</to>
+			<blendDuration>2.666670</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-264.500000 -262.500000 0.000000</uiPosition>
+	</node>
+</root>

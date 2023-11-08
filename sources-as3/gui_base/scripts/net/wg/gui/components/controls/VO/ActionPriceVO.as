@@ -45,7 +45,7 @@ package net.wg.gui.components.controls.VO
       
       private var _rentPackage:int = -1;
       
-      private var _ico:String;
+      private var _ico:String = "credits";
       
       private var _useSign:Boolean = false;
       
@@ -55,7 +55,6 @@ package net.wg.gui.components.controls.VO
       
       public function ActionPriceVO(param1:Object = null)
       {
-         this._ico = IconsTypes.CREDITS;
          super(param1);
       }
       
