@@ -1,6 +1,6 @@
 import logging, typing
 from battle_pass_common import BATTLE_PASS_OFFER_TOKEN_PREFIX, BATTLE_PASS_TOKEN_3D_STYLE, BattlePassConsts, BattlePassRewardReason, BattlePassState, getBattlePassPassEntitlementName, getBattlePassShopEntitlementName
-from gui.battle_pass.battle_pass_helpers import getOfferTokenByGift, getStyleInfoForChapter
+from gui.battle_pass.battle_pass_helpers import makeChapterMediaName, getOfferTokenByGift, getStyleInfoForChapter
 from gui.impl.gen import R
 from gui.impl.pub.notification_commands import EventNotificationCommand, NotificationEvent
 from gui.server_events.events_dispatcher import showMissionsBattlePass
@@ -106,7 +106,7 @@ def packToken(tokenID):
 
 @dependency.replace_none_kwargs(battlePass=IBattlePassController)
 def needToShowLevelUpVideo(chapterID, level, battlePass=None):
-    return battlePass.isFinalLevel(chapterID, level) and battlePass.isExtraChapter(chapterID)
+    return battlePass.isFinalLevel(chapterID, level) and battlePass.isExtraChapter(chapterID) and R.videos.battle_pass.dyn(makeChapterMediaName(chapterID)).exists()
 
 
 @dependency.replace_none_kwargs(offers=IOffersDataProvider)

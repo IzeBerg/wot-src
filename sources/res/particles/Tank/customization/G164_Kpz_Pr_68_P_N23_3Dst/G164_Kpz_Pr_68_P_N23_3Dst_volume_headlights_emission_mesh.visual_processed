@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_turret_01_0_ncl1_1</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Noise03.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>1400.000000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>1.000000 0.517647 0.031373 1.000000</Vector4>
+					</property>
+					<property>
+						waveLen
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>3.500000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.000000 1.260380 -2.183170</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.160881 1.168310 -2.198158</min>
+		<max>0.160881 1.352449 -2.168183</max>
+	</boundingBox>
+	<geometrySize>1080</geometrySize>
+	<minUVDensity>0.109360</minUVDensity>
+</root>

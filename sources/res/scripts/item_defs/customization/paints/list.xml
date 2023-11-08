@@ -6573,6 +6573,54 @@
 		</usages>
 	</itemGroup>
 	<itemGroup>
+		<name>dune</name>
+		<userString>#vehicle_customization:repaint/color_group_04</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<paint>
+			<id>439</id>
+			<texture>gui/maps/vehicles/repaints/china_color_02.png</texture>
+			<color>112 102 83 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.23
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/wormrider</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>438</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_36.png</texture>
+			<color>15 15 18 255</color>
+			<gloss>
+				0.63
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.235
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/withoutmercy</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<usages>
+			<item>
+				<componentType>ALL</componentType>
+				<cost>1</cost>
+			</item>
+		</usages>
+	</itemGroup>
+	<itemGroup>
 		<name>chinese colors</name>
 		<userString>#vehicle_customization:repaint/color_group_02</userString>
 		<season>ALL</season>
