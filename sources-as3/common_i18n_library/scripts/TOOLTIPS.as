@@ -6719,6 +6719,30 @@ package
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_4_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp12_4/howToGetInfo";
       
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_5_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp12_5/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_5_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp12_5/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_5_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp12_5/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_8_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp12_8/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_8_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp12_8/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_8_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp12_8/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_9_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp12_9/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_9_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp12_9/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_9_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp12_9/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_10_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp12_10/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_10_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp12_10/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP12_10_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp12_10/howToGetInfo";
+      
       public static const NOTRECRUITEDTANKMAN_TANKMEN_AUC_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_auc_1/label";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_AUC_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_auc_1/desc";
