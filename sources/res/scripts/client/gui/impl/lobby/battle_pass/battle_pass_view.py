@@ -41,7 +41,7 @@ class _IntroVideoManager(object):
 
     @property
     def isExtraVideoShown(self):
-        return _hasTrueInBPStorage(_EXTRA_VIDEO_SHOWN)
+        return True
 
     def init(self):
         g_eventBus.addListener(events.BattlePassEvent.VIDEO_SHOWN, self.showIntroVideoIfNeeded, EVENT_BUS_SCOPE.LOBBY)

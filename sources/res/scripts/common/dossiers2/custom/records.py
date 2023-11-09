@@ -3276,7 +3276,9 @@ RECORDS = (
  (
   'achievements', 'wt2023MaxPlasma', 'p', 'I', 4294967295),
  (
-  'singleAchievements', 'hw2023Medal', 'p', 'B', 1))
+  'singleAchievements', 'hw2023Medal', 'p', 'B', 1),
+ (
+  'singleAchievements', 'BattlePassCommonPr_12extra', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4916,7 +4918,8 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('achievements', 'wt2023HunterWins'): 1914, 
    ('achievements', 'wt2023BossWins'): 1915, 
    ('achievements', 'wt2023MaxPlasma'): 1916, 
-   ('singleAchievements', 'hw2023Medal'): 1917}
+   ('singleAchievements', 'hw2023Medal'): 1917, 
+   ('singleAchievements', 'BattlePassCommonPr_12extra'): 1918}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 
