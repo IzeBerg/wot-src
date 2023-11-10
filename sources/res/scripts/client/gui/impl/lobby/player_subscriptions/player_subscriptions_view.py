@@ -181,7 +181,7 @@ class PlayerSubscriptionsView(ViewImpl):
         if self.__subscriptions[id_] == SubscriptionTypeEnum.WOTSUBSCRIPTION:
             self._wotPlusUILogger.logClickEvent(SubscriptionPageKeys.CTA_BUTTON)
             if self._wotPlusCtrl.isEnabled():
-                if self._wotPlusCtrl.hasSteamSubscription():
+                if self._wotPlusCtrl.shouldRedirectToSteam():
                     showWotPlusSteamSubscriptionManagementPage()
                 else:
                     showWotPlusProductPage()

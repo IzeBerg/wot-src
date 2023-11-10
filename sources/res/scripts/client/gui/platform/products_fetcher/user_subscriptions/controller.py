@@ -5,8 +5,8 @@ from BWUtil import AsyncReturn
 import wg_async
 from adisp import adisp_process
 from gui.platform.products_fetcher.fetch_result import FetchResult
-from gui.platform.products_fetcher.user_subscriptions.user_subscription import UserSubscription, SubscriptionStatus, SubscriptionRequestPlatform
 from gui.platform.products_fetcher.user_subscriptions.fetch_result import UserSubscriptionFetchResult
+from gui.platform.products_fetcher.user_subscriptions.user_subscription import UserSubscription, SubscriptionStatus
 from gui.wgcg.utils.contexts import PlatformGetUserSubscriptionsCtx
 from helpers import dependency
 from skeletons.connection_mgr import IConnectionManager
@@ -15,7 +15,6 @@ from skeletons.gui.platform.product_fetch_controller import IUserSubscriptionsFe
 from skeletons.gui.web import IWebController
 _logger = logging.getLogger(__name__)
 if typing.TYPE_CHECKING:
-    from typing import Union
     from gui.wgcg.web_controller import WebController
 __doc__ = '\nModule takes care of player subscriptions from platform.\n\nUsers can buy two types types of subscriptions. One from Steam, one from platform.\n\nOur workflow with this subscriptions is:\n1. if player has payed wot+, we will download from platform list of his subscriptions.\n2. we will create a list of his subscriptions as list of UserSubscriptions\n   in UserSubscriptionsFetchController._fetchResult.products.\n2. we will set the state of subscription - active, cancelled.\n\nSubscriptions are updated during lobby/hangar load. Cache is set to 5 minutes.\n'
 
@@ -26,24 +25,14 @@ class PlatformGetUserSubscriptionsParams(object):
         serverSettings = self._lobbyContext.getServerSettings()
         self.status = [SubscriptionStatus.ACTIVE.value, SubscriptionStatus.INACTIVE.value]
         self.productCode = serverSettings.getWotPlusProductCode()
-        self.platform = SubscriptionRequestPlatform.WG_PLATFORM.value
 
-    def __repr__(self):
-        return ('product_code: {product_code} status: {status}, platform: {platform}').format(product_code=self.productCode, status=self.status, platform=self.platform)
-
-
-class SteamGetUserSubscriptionsParams(PlatformGetUserSubscriptionsParams):
-
-    def __init__(self):
-        super(SteamGetUserSubscriptionsParams, self).__init__()
-        self.platform = SubscriptionRequestPlatform.STEAM.value
+    def __str__(self):
+        return ('product_code: {product_code}, status: {status}').format(product_code=self.productCode, status=self.status)
 
 
 class UserSubscriptionsFetchController(IUserSubscriptionsFetchController):
     _webCtrl = dependency.descriptor(IWebController)
     _connectionMgr = dependency.descriptor(IConnectionManager)
-    requestParamsList = [
-     PlatformGetUserSubscriptionsParams, SteamGetUserSubscriptionsParams]
     platformFetchCtx = PlatformGetUserSubscriptionsCtx
 
     def __init__(self):
@@ -57,28 +46,24 @@ class UserSubscriptionsFetchController(IUserSubscriptionsFetchController):
         self._connectionMgr.onDisconnected -= self._fetchResult.stop
 
     @wg_async.wg_async
-    def getSubscriptions(self):
+    def getSubscriptions(self, clearCache=False):
         _logger.debug('Trying to fetch subscriptions')
-        if self._fetchResult.isProductsReady:
+        if self._fetchResult.isProcessed and not clearCache:
             _logger.debug('Return subscriptions from cache')
             raise AsyncReturn(self._fetchResult)
         self._fetchResult.reset()
-        processed = False
-        for paramsClass in self.requestParamsList:
-            param = paramsClass()
-            requestSuccess, subscriptionsData = yield wg_async.await_callback(partial(self._requestSubscriptions, param))()
-            if requestSuccess and subscriptionsData:
-                _logger.debug('Subscriptions request from %s has been successfully processed.', param.platform)
-                for subscriptionData in subscriptionsData:
-                    userSubscription = UserSubscription(subscriptionData)
-                    hasSubscription = any([ subscription.subscriptionId == userSubscription.subscriptionId for subscription in self._fetchResult.products
-                                          ])
-                    if not hasSubscription:
-                        self._fetchResult.products.append(userSubscription)
+        subscriptionParams = PlatformGetUserSubscriptionsParams()
+        requestSuccess, subscriptionsData = yield wg_async.await_callback(partial(self._requestSubscriptions, subscriptionParams))()
+        if requestSuccess and subscriptionsData:
+            _logger.debug('Subscriptions request from %s has been successfully processed.', str(subscriptionParams))
+            for subscriptionData in subscriptionsData:
+                userSubscription = UserSubscription(subscriptionData)
+                hasSubscription = any([ subscription.subscriptionId == userSubscription.subscriptionId for subscription in self._fetchResult.products
+                                      ])
+                if not hasSubscription:
+                    self._fetchResult.products.append(userSubscription)
 
-                processed = True
-
-        if processed:
+        if requestSuccess:
             self._fetchResult.setProcessed()
         else:
             self._fetchResult.setFailed()
@@ -86,7 +71,7 @@ class UserSubscriptionsFetchController(IUserSubscriptionsFetchController):
 
     @adisp_process
     def _requestSubscriptions(self, params, callback):
-        ctx = self.platformFetchCtx(params)
+        ctx = PlatformGetUserSubscriptionsCtx(params)
         _logger.debug('Request subscriptions for params %s', params)
         response = yield self._webCtrl.sendRequest(ctx=ctx)
         data = response.getData()

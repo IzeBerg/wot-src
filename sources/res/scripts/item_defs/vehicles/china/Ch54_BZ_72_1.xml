@@ -3,15 +3,15 @@
 	<xmlns:xmlref>http://bwt/xmlref</xmlns:xmlref>
 	<crew>
 		<commander>radioman</commander>
-		<driver/>
 		<gunner/>
+		<driver/>
 		<loader/>
 	</crew>
 	<supplySlots>5 1 1 6 6 6 7 8 8 8</supplySlots>
 	<postProgressionTree>role_HT_break</postProgressionTree>
 	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
-		<forward>40</forward>
+		<forward>30</forward>
 		<backward>15</backward>
 	</speedLimits>
 	<invisibility>
@@ -1390,8 +1390,8 @@
 				1 1.1 1.9
 				<!--BW_String-->
 			</terrainResistance>
-			<brakeForce>39500</brakeForce>
-			<rotationIsAroundCenter>false</rotationIsAroundCenter>
+			<brakeForce>54000</brakeForce>
+			<rotationIsAroundCenter>True</rotationIsAroundCenter>
 			<rotationSpeed>34</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
@@ -2988,7 +2988,7 @@
 			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 			<weight>13000</weight>
 			<maxHealth>440</maxHealth>
-			<rotationSpeed>27</rotationSpeed>
+			<rotationSpeed>24</rotationSpeed>
 			<turretRotatorHealth>
 				<maxHealth>170</maxHealth>
 				<maxRegenHealth>85</maxRegenHealth>
@@ -3009,7 +3009,7 @@
 			<guns>
 				<_130_mm_62-130T>
 					shared
-					<maxAmmo>35</maxAmmo>
+					<maxAmmo>40</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -4128,7 +4128,7 @@
 			<engines>
 				<V_2_54SCT>
 					<smplEnginePower>900</smplEnginePower>
-					<smplFwMaxSpeed>40</smplFwMaxSpeed>
+					<smplFwMaxSpeed>30</smplFwMaxSpeed>
 				</V_2_54SCT>
 			</engines>
 			<chassis>

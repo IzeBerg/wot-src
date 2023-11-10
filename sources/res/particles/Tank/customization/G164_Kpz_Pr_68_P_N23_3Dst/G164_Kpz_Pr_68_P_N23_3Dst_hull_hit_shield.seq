@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>2.666667</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>shield</name>
+		<type>model</type>
+		<resource>particles/Tank/customization/G164_Kpz_Pr_68_P_N23_3Dst/G164_Kpz_Pr_68_P_N23_3Dst_hull_shield_mesh.model</resource>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>tank_hull_01</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 1.235294 14.999999 0.000000</inTangent>
+				<outTangent>3.215690 5.607839 9.999999 9.999999</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.100000</startTime>
+				<value>0.321569 0.560784 1.000000 1.000000</value>
+				<inTangent>3.215690 5.607839 9.999999 9.999999</inTangent>
+				<outTangent>-1.205884 -2.102940 -3.750000 -3.750000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.366667</startTime>
+				<value>0.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-1.205884 -2.102940 -3.750000 -3.750000</inTangent>
+				<outTangent>-0.000000 -0.352941 -4.285714 -0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>tank_hull_01</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>29.999998 74.999992 299.999969 0.000000</inTangent>
+				<outTangent>9.999999 0.000000 49.999996 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.100000</startTime>
+				<value>1.000000 0.000000 5.000000 0.000000</value>
+				<inTangent>9.999999 -0.000000 49.999996 -0.000000</inTangent>
+				<outTangent>-3.750000 0.000000 -18.750002 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.366667</startTime>
+				<value>0.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-3.750000 -0.000000 -18.750002 -0.000000</inTangent>
+				<outTangent>-8.571428 -21.428570 -85.714279 -0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>imp_G164_hull_hit_shield</name>
+		<type>sound</type>
+		<track>
+			<name>imp_G164_hull_hit_shield</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>2.633334</duration>
+				<sequenceSound>imp_G164_hull_hit_shield</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

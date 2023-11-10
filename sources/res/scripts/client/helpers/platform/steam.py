@@ -1,6 +1,9 @@
 from __future__ import absolute_import
 import logging, Steam
 from helpers.platform.base import BasePublishPlatform
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from typing import Literal
 _logger = logging.getLogger(__name__)
 
 class SteamPublishPlatform(BasePublishPlatform):
@@ -26,7 +29,7 @@ class SteamPublishPlatform(BasePublishPlatform):
         return Steam.isInited()
 
     def __onMicroTxnAuthorizationResponse(self, _, orderID, authorized):
-        self.onPayment(orderID, bool(authorized))
+        self.onPayment(orderID, authorized == 'true')
 
     def __onGameOverlayActivated(self, active):
         self.onOverlay(bool(active))

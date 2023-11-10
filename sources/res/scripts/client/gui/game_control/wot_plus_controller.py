@@ -7,8 +7,8 @@ from gui import SystemMessages
 from gui.Scaleform.daapi.view.lobby.missions.awards_formatters import CurtailingAwardsComposer
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.platform.products_fetcher.user_subscriptions.controller import SubscriptionRequestPlatform, SubscriptionStatus
-from gui.platform.products_fetcher.user_subscriptions.user_subscription import UserSubscription, SUBSCRIPTION_CANCEL_STATUSES
+from gui.platform.products_fetcher.user_subscriptions.controller import SubscriptionStatus
+from gui.platform.products_fetcher.user_subscriptions.user_subscription import UserSubscription, SUBSCRIPTION_CANCEL_STATUSES, SubscriptionRequestPlatform
 from gui.server_events import settings
 from gui.server_events.awards_formatters import AWARDS_SIZES
 from gui.server_events.bonuses import GoldBank, IdleCrewXP, ExcludedMap, FreeEquipmentDemounting, WoTPlusExclusiveVehicle, AttendanceReward, SimpleBonus
@@ -19,7 +19,7 @@ from items.vehicles import getItemByCompactDescr
 from messenger.m_constants import SCH_CLIENT_MSG_TYPE
 from messenger.proto.bw.wrappers import ServiceChannelMessage
 from piggy_bank_common.settings_constants import PIGGY_BANK_PDATA_KEY
-from renewable_subscription_common.settings_constants import RS_PDATA_KEY, IDLE_CREW_XP_PDATA_KEY, SUBSCRIPTION_DURATION_LENGTH, IDLE_CREW_VEH_INV_ID, RS_EXPIRATION_TIME, WotPlusState
+from renewable_subscription_common.settings_constants import RS_PDATA_KEY, IDLE_CREW_XP_PDATA_KEY, SUBSCRIPTION_DURATION_LENGTH, IDLE_CREW_VEH_INV_ID, RS_EXPIRATION_TIME, WotPlusState, RS_ENABLED
 from shared_utils.account_helpers.diff_utils import synchronizeDicts
 from skeletons.gui.game_control import IWotPlusController, ISteamCompletionController
 from skeletons.gui.lobby_context import ILobbyContext
@@ -103,8 +103,7 @@ class WotPlusController(IWotPlusController):
         self._lobbyContext.getServerSettings().onServerSettingsChange += self._onServerSettingsChange
         self.processSwitchNotifications()
         self._validSessionStarted = False if g_bootcamp.isRunning() else True
-        self._resolveState()
-        self._resolveHasSteamSubscription()
+        self._resolveSubscriptionAndSteamState()
 
     def onAccountBecomePlayer(self):
         self._account = BigWorld.player()
@@ -302,11 +301,12 @@ class WotPlusController(IWotPlusController):
             dt.setDailyAttendancesState(isDailyAttendancesEnabled)
 
     @wg_async
-    def _resolveState(self):
+    def _resolveSubscriptionAndSteamState(self, clearCache=False):
         self._state = WotPlusState.ACTIVE if self.isEnabled() else WotPlusState.INACTIVE
+        self._hasSteamSubscription = False
         if not self.isEnabled() or constants.IS_CHINA:
             return
-        fetchResult = yield wg_await(self._userSubscriptionsFetchController.getSubscriptions())
+        fetchResult = yield wg_await(self._userSubscriptionsFetchController.getSubscriptions(clearCache))
         userSubscriptions = fetchResult.products
         if not fetchResult.isProductsReady:
             return
@@ -316,17 +316,12 @@ class WotPlusController(IWotPlusController):
             hasCancelled = any(subscription.status in SUBSCRIPTION_CANCEL_STATUSES for subscription in userSubscriptions)
             if hasCancelled:
                 self._state = WotPlusState.CANCELLED
-
-    @wg_async
-    def _resolveHasSteamSubscription(self):
-        self._hasSteamSubscription = False
-        if not self.isEnabled():
-            return
-        fetchResult = yield wg_await(self._userSubscriptionsFetchController.getSubscriptions())
-        userSubscriptions = fetchResult.products
-        if not fetchResult.isProductsReady:
-            return
         self._hasSteamSubscription = any(userSubscription.platform == SubscriptionRequestPlatform.STEAM for userSubscription in userSubscriptions)
+
+    def shouldRedirectToSteam(self):
+        if not self._userSubscriptionsFetchController._fetchResult.isProductsReady:
+            return self._steamCompletionCtrl.isSteamAccount
+        return self.hasSteamSubscription()
 
     @wg_async
     def _onClientUpdate(self, diff, _):
@@ -337,8 +332,7 @@ class WotPlusController(IWotPlusController):
             itemDiff[PIGGY_BANK_PDATA_KEY] = diff[PIGGY_BANK_PDATA_KEY]
         if itemDiff:
             synchronizeDicts(itemDiff, self._cache)
-            yield wg_await(self._resolveState())
-            yield wg_await(self._resolveHasSteamSubscription())
+            yield wg_await(self._resolveSubscriptionAndSteamState(clearCache=RS_ENABLED in itemDiff))
             self.onDataChanged(itemDiff)
 
     def _getStrategy(self):
