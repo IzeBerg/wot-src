@@ -26,7 +26,6 @@ class HelpHintContext(object):
     DEV_MAPS = 'devMaps'
     BATTLE_ROYALE = 'battleRoyale'
     COMMANDER_CAMERA = 'commanderCamera'
-    EVENT_BATTLE = 'eventBattle'
 
 
 HintData = namedtuple('HintData', ('vKey', 'key', 'messageLeft', 'messageRight', 'offsetX',

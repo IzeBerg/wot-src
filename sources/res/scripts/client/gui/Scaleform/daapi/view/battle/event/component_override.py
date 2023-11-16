@@ -12,7 +12,6 @@ class EventComponentOverride(object):
     def __call__(self):
         arena = avatar_getter.getArena()
         isEvent = arena.guiType == ARENA_GUI_TYPE.EVENT_BATTLES if arena else False
-        isHalloween = arena.guiType == ARENA_GUI_TYPE.HALLOWEEN_BATTLES if arena else False
-        if isEvent or isHalloween:
+        if isEvent:
             return self.__eventObject
         return self.__usualObject

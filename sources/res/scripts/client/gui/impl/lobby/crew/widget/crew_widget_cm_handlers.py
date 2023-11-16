@@ -80,9 +80,9 @@ class CrewContextMenuHandler(AbstractContextMenuHandler, EventSystemEntity):
                     break
 
         return [
-         self._makeItem(CREW.PERSONAL_FILE, MENU.contextmenu('crewWidgetPersonalFile'), {'enabled': isNotLocked}),
+         self._makeItem(CREW.PERSONAL_FILE, MENU.contextmenu('crewWidgetPersonalFile')),
          self._makeItem(CREW.RETRAIN, MENU.contextmenu('crewWidgetRetrain'), {'visible': isRetrainAvailable, 'textColor': CM_RETRAIN_COLOR}),
-         self._makeItem(CREW.QUICK_TRAINING, MENU.contextmenu('crewWidgetQuickTraining'), {'enabled': isNotLocked}),
+         self._makeItem(CREW.QUICK_TRAINING, MENU.contextmenu('crewWidgetQuickTraining')),
          self._makeItem(CREW.CHANGE_CREW_MEMBER, MENU.contextmenu('crewWidgetChangeCrewMember'), {'enabled': self._vehicle and isNotLocked}),
          self._makeItem(CREW.CHANGE_SPECIALIZATION, MENU.contextmenu('crewWidgetChangeSpecialization'), {'enabled': isNotLocked}),
          self._makeItem(CREW.SEND_TO_BARRACKS, MENU.contextmenu('crewWidgetSendToToBarracks'), {'enabled': self._vehicle and isNotLocked}),

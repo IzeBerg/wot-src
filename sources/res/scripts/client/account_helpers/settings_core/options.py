@@ -1310,8 +1310,8 @@ class VideoModeSettings(PreferencesSetting):
         return self._storage.windowMode
 
     def _set(self, value):
-        self._storage.windowMode = value
-        self.__videoMode = value
+        self._storage.windowMode = int(value)
+        self.__videoMode = int(value)
 
     def _savePrefsCallback(self, prefsRoot):
         prefsRoot['devicePreferences'].writeInt('windowMode', self.__videoMode)

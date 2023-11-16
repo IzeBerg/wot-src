@@ -3,6 +3,7 @@ from typing import Union, TYPE_CHECKING
 import blueprints, dossiers2
 from dynamic_currencies import g_dynamicCurrenciesData
 import items, calendar
+from math_common import isAlmostEqual
 from account_shared import validateCustomizationItem
 from battle_pass_common import NON_VEH_CD
 from blueprints.BlueprintTypes import BlueprintTypes
@@ -938,6 +939,7 @@ def __readBonus_oneof(config, bonusReaders, bonus, section, eventType):
     useBonusProbability = config.get('useBonusProbability', False)
     probabilityStageCount = config.get('probabilityStageCount', 1)
     equalProbabilityValues = [0.0] * probabilityStageCount
+    nullProbabilityCompensations = [False] * probabilityStageCount
     equalBonusProbabilityValue = 0.0
     for name, subsection in section.items():
         if name != 'optional':
@@ -948,6 +950,10 @@ def __readBonus_oneof(config, bonusReaders, bonus, section, eventType):
         else:
             for i in xrange(probabilityStageCount):
                 equalProbabilityValues[i] += probabilitiesList[i]
+                if isAlmostEqual(probabilitiesList[i], 0.0) and subBonus.get('properties', {}).get('compensation', False):
+                    if nullProbabilityCompensations[i]:
+                        raise SoftException("Compensation with 0.0 probability already exists inside 'oneof'")
+                    nullProbabilityCompensations[i] = True
 
         if useBonusProbability:
             if bonusProbability is None:
@@ -983,9 +989,9 @@ def __readBonus_oneof(config, bonusReaders, bonus, section, eventType):
                 maximumBonusProbability += equalBonusProbabilityValue
             else:
                 maximumBonusProbability += bonusProbability
-        values = maximumProbabilities if probabilities != [0.0] * probabilityStageCount else probabilities
-        bonusValue = maximumBonusProbability if bonusProbability != 0.0 and useBonusProbability else bonusProbability
-        oneOfTemp.append(([ min(1.0, value) for value in values ], min(1.0, bonusValue), limitIDs, subBonus))
+        bonusValue = maximumBonusProbability if useBonusProbability else bonusProbability
+        oneOfTemp.append(([ min(1.0, value) for value in maximumProbabilities ],
+         min(1.0, bonusValue), limitIDs, subBonus))
 
     for maximumProbability in maximumProbabilities:
         if abs(1.0 - maximumProbability) >= 1e-06:

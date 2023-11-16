@@ -12,8 +12,7 @@ __all__ = ('ArgsEvent', 'ComponentEvent', 'LoadViewEvent', 'LoadGuiImplViewEvent
            'HangarCustomizationEvent', 'GameEvent', 'BootcampEvent', 'ViewEventType',
            'OpenLinkEvent', 'ChannelManagementEvent', 'PreBattleChannelEvent', 'AmmunitionSetupViewEvent',
            'HasCtxEvent', 'DogTagsEvent', 'FullscreenModeSelectorEvent', 'MarkersManagerEvent',
-           'ModeSelectorPopoverEvent', 'ModeSelectorLoadedEvent', 'ModeSubSelectorEvent',
-           'ArmoryYardEvent')
+           'ModeSelectorPopoverEvent', 'ModeSubSelectorEvent', 'ArmoryYardEvent')
 _logger = logging.getLogger(__name__)
 
 class HasCtxEvent(SharedEvent):
@@ -681,11 +680,6 @@ class AirDropEvent(HasCtxEvent):
     AIR_DROP_LOOP_LEFT = 'onAirDropLootLeft'
 
 
-class LootEvent(HasCtxEvent):
-    LOOT_SPAWNED = 'onLootSpawned'
-    LOOT_PICKED_UP = 'onLootPickedUp'
-
-
 class ProfilePageEvent(HasCtxEvent):
     SELECT_PROFILE_ALIAS = 'onProfileSelectAlias'
 
@@ -785,10 +779,6 @@ class FullscreenModeSelectorEvent(HasCtxEvent):
 
 class ModeSelectorPopoverEvent(HasCtxEvent):
     NAME = 'ModeSelectorPopoverEvent'
-
-
-class ModeSelectorLoadedEvent(SharedEvent):
-    NAME = 'ModeSelectorLoadedEvent'
 
 
 class ModeSubSelectorEvent(HasCtxEvent):

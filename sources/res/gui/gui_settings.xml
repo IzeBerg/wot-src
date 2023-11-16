@@ -1302,7 +1302,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/featured/featured/items/platform_bp2023_12ep/preview/)
+				$PARAMS(/featured)
 				<name>buyBattlePass</name>
 				<type>url</type>
 			</item>
@@ -1354,11 +1354,6 @@
 			<item>
 				$PARAMS(/sh_category/sh_category)
 				<name>shProducts</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/mthw2023_category/mthw2023_category)
-				<name>hw23Shop</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1810,6 +1805,11 @@
 				<name>default</name>
 				<type>url</type>
 			</item>
+			<item>
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/polygon/
+				<name>CT</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1908,15 +1908,5 @@
 				<type>url</type>
 			</item>
 		</value>
-	</setting>
-	<setting>
-		https://webbrg.tanki.su/ru/promocontent/hw23About/
-		<name>infoPageHalloween</name>
-		<type>url</type>
-	</setting>
-	<setting>
-		https://webbrg.tanki.su/ru/promocontent/hw23Intro/
-		<name>aboutCoven</name>
-		<type>url</type>
 	</setting>
 </root>

@@ -41,9 +41,6 @@ STORAGE_VEHICLES_CAROUSEL_FILTER_1 = 'STORAGE_CAROUSEL_FILTER_1'
 STORAGE_BLUEPRINTS_CAROUSEL_FILTER = 'STORAGE_BLUEPRINTS_CAROUSEL_FILTER'
 BATTLEPASS_CAROUSEL_FILTER_1 = 'BATTLEPASS_CAROUSEL_FILTER_1'
 BATTLEPASS_CAROUSEL_FILTER_CLIENT_1 = 'BATTLEPASS_CAROUSEL_FILTER_CLIENT_1'
-HW22_CAROUSEL_FILTER_1 = 'HW22_CAROUSEL_FILTER_1'
-HW22_CAROUSEL_FILTER_2 = 'HW22_CAROUSEL_FILTER_2'
-HW22_CAROUSEL_FILTER_CLIENT_1 = 'HW22_CAROUSEL_FILTER_CLIENT_1'
 ROYALE_CAROUSEL_FILTER_1 = 'ROYALE_CAROUSEL_FILTER_1'
 ROYALE_CAROUSEL_FILTER_2 = 'ROYALE_CAROUSEL_FILTER_2'
 ROYALE_CAROUSEL_FILTER_CLIENT_1 = 'ROYALE_CAROUSEL_FILTER_CLIENT_1'
@@ -117,7 +114,6 @@ STORE_TAB = 'store_tab'
 STATS_REGULAR_SORTING = 'statsSorting'
 STATS_SORTIE_SORTING = 'statsSortingSortie'
 STATS_COMP7_SORTING = 'statsSortingComp7'
-STATS_EVENT_SORTING = 'statsEventSorting'
 MISSIONS_PAGE = 'missions_page'
 DEFAULT_VEHICLE_TYPES_FILTER = [
  False] * len(VEHICLE_CLASSES)
@@ -296,7 +292,6 @@ MODE_SELECTOR_BATTLE_PASS_SHOWN = 'modeSelectorBattlePassShown'
 RANKED_LAST_CYCLE_ID = 'rankedLastCycleID'
 EPIC_LAST_CYCLE_ID = 'epicLastCycleID'
 FUN_RANDOM_LAST_PRESET = 'funRandomLastPreset'
-HALLOWEEN_PROGRESSION = 'halloweenProgression'
 DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0, 
                  'shop_current': (
                                 -1, STORE_CONSTANTS.VEHICLE, False), 
@@ -772,57 +767,6 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                'role_SPG': False}, 
                  VERSUS_AI_CAROUSEL_FILTER_CLIENT_1: {'searchNameVehicle': '', 
                                                       'clanRented': False}, 
-                 HW22_CAROUSEL_FILTER_1: {'ussr': False, 
-                                          'germany': False, 
-                                          'usa': False, 
-                                          'china': False, 
-                                          'france': False, 
-                                          'uk': False, 
-                                          'japan': False, 
-                                          'czech': False, 
-                                          'sweden': False, 
-                                          'poland': False, 
-                                          'italy': False, 
-                                          'lightTank': False, 
-                                          'mediumTank': False, 
-                                          'heavyTank': False, 
-                                          'SPG': False, 
-                                          'AT-SPG': False, 
-                                          'level_1': False, 
-                                          'level_2': False, 
-                                          'level_3': False, 
-                                          'level_4': False, 
-                                          'level_5': False, 
-                                          'level_6': False, 
-                                          'level_7': False, 
-                                          'level_8': False, 
-                                          'level_9': False, 
-                                          'level_10': False}, 
-                 HW22_CAROUSEL_FILTER_2: {'premium': False, 
-                                          'elite': False, 
-                                          'igr': False, 
-                                          'rented': True, 
-                                          'event': True, 
-                                          'favorite': False, 
-                                          'bonus': False, 
-                                          'crystals': False, 
-                                          'role_HT_assault': False, 
-                                          'role_HT_break': False, 
-                                          'role_HT_support': False, 
-                                          'role_HT_universal': False, 
-                                          'role_MT_universal': False, 
-                                          'role_MT_sniper': False, 
-                                          'role_MT_assault': False, 
-                                          'role_MT_support': False, 
-                                          'role_ATSPG_assault': False, 
-                                          'role_ATSPG_universal': False, 
-                                          'role_ATSPG_sniper': False, 
-                                          'role_ATSPG_support': False, 
-                                          'role_LT_universal': False, 
-                                          'role_LT_wheeled': False, 
-                                          'role_SPG': False}, 
-                 HW22_CAROUSEL_FILTER_CLIENT_1: {'searchNameVehicle': '', 
-                                                 'clanRented': False}, 
                  MISSION_SELECTOR_FILTER: {'inventory': False}, 
                  PM_SELECTOR_FILTER: {'inventory': False}, 
                  BARRACKS_FILTER: {'nation': -1, 'role': 'None', 'tankType': 'None', 'location': 3, 'nationID': None}, ORDERS_FILTER: {'isSelected': False}, GUI_START_BEHAVIOR: {'isFreeXPInfoDialogShowed': False, 'isRankedWelcomeViewShowed': False, 
@@ -960,8 +904,6 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   'statsSortingSortie': {'iconType': 'tank', 
                                          'sortDirection': 'descending'}, 
                   'statsSortingComp7': {'iconType': 'prestigePoints', 
-                                        'sortDirection': 'descending'}, 
-                  'statsEventSorting': {'iconType': 'hwXP', 
                                         'sortDirection': 'descending'}, 
                   'backDraftInvert': False, 
                   QUESTS: {'lastVisitTime': -1, 
@@ -1148,7 +1090,6 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                           BattleMatters.LAST_QUEST_PROGRESS: 0, 
                                                           BattleMatters.REMINDER_LAST_DISPLAY_TIME: 0}, 
                   BR_PROGRESSION_POINTS_SEEN: 0, 
-                  HALLOWEEN_PROGRESSION: {'previous_phase': 0}, 
                   Winback.WINBACK_SETTINGS: {Winback.COMPLETED_STARTING_QUEST_COUNT: 0, 
                                              Winback.INTRO_SHOWN: False, 
                                              Winback.BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN: False}, 
@@ -1424,7 +1365,6 @@ class AccountSettings(object):
     @staticmethod
     def overrideDefaultSettings(name, value):
         if name not in DEFAULT_VALUES:
-            _logger.warning('account setting %s not in DEFAULT_VALUES', name)
             return
         DEFAULT_VALUES[name].update(value)
 
@@ -1865,7 +1805,7 @@ class AccountSettings(object):
                      CAROUSEL_FILTER_CLIENT_1, BATTLEPASS_CAROUSEL_FILTER_CLIENT_1, RANKED_CAROUSEL_FILTER_CLIENT_1,
                      MAPBOX_CAROUSEL_FILTER_CLIENT_1, EPICBATTLE_CAROUSEL_FILTER_CLIENT_1,
                      ROYALE_CAROUSEL_FILTER_CLIENT_1, STORAGE_BLUEPRINTS_CAROUSEL_FILTER,
-                     STORAGE_VEHICLES_CAROUSEL_FILTER_1, HW22_CAROUSEL_FILTER_CLIENT_1))
+                     STORAGE_VEHICLES_CAROUSEL_FILTER_1))
                     for filterSection in existingSections:
                         savedFilters = _unpack(filtersSection[filterSection].asString)
                         defaults = AccountSettings.getFilterDefault(filterSection)
@@ -1885,8 +1825,7 @@ class AccountSettings(object):
                      EPICBATTLE_CAROUSEL_FILTER_CLIENT_2,
                      MAPBOX_CAROUSEL_FILTER_CLIENT_1,
                      STORAGE_VEHICLES_CAROUSEL_FILTER_1,
-                     STORAGE_BLUEPRINTS_CAROUSEL_FILTER,
-                     HW22_CAROUSEL_FILTER_CLIENT_1))
+                     STORAGE_BLUEPRINTS_CAROUSEL_FILTER))
                     for filterSection in existingSections:
                         savedFilters = _unpack(filtersSection[filterSection].asString)
                         if 'clanRented' in savedFilters:

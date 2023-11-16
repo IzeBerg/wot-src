@@ -173,7 +173,6 @@ class VEHICLE_TAGS(CONST_CONTAINER):
     DEBUT_BOXES = 'debutBoxes'
     WOT_PLUS = constants.VEHICLE_WOT_PLUS_TAG
     NO_CREW_TRANSFER_PENALTY_TAG = constants.VEHICLE_NO_CREW_TRANSFER_PENALTY_TAG
-    HALLOWEEN = 'halloween'
 
 
 DISCLAIMER_TAGS = frozenset((VEHICLE_TAGS.T34_DISCLAIMER,))
@@ -1091,7 +1090,7 @@ class Vehicle(FittingItem):
 
     @property
     def isScout(self):
-        return self._descriptor.type.isScout
+        return checkForTags(self.tags, 'scout')
 
     @property
     def isTrackWithinTrack(self):

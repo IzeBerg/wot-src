@@ -1019,6 +1019,14 @@ def _migrateTo111(core, data, initialized):
     AccountSettings.setSettings(CREW_SKINS_VIEWED, viewedSkinsMap)
 
 
+def _migrateTo112(core, data, initialized):
+    from account_helpers import AccountSettings
+    from account_helpers.AccountSettings import CREW_SKINS_VIEWED
+    crewSkinsViewed = AccountSettings.getSettings(CREW_SKINS_VIEWED)
+    if not isinstance(crewSkinsViewed, dict):
+        AccountSettings.setSettings(CREW_SKINS_VIEWED, {})
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -1239,7 +1247,9 @@ _versions = (
  (
   110, _migrateTo110, False, False),
  (
-  111, _migrateTo111, False, False))
+  111, _migrateTo111, False, False),
+ (
+  112, _migrateTo112, False, False))
 
 @adisp_async
 @adisp_process

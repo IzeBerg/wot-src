@@ -1,5 +1,4 @@
 from typing import TYPE_CHECKING
-import BigWorld, constants
 from gui.impl.common.ammunition_panel.ammunition_blocks_controller import AmmunitionBlocksController
 from gui.impl.gen.view_models.views.battle.battle_page.prebattle_shell_ammunition_slot import PrebattleShellAmmunitionSlot, ShellBattleState
 from gui.impl.gen.view_models.views.lobby.tank_setup.tank_setup_constants import TankSetupConstants
@@ -24,14 +23,6 @@ class PrebattleShellsBlock(ShellsBlock):
     def _updateSlotWithItem(self, model, idx, slotItem):
         super(PrebattleShellsBlock, self)._updateSlotWithItem(model, idx, slotItem)
         model.setShellState(self.__getShellState(slotItem))
-
-    def _getKeySettings(self):
-        player = BigWorld.player()
-        arena = getattr(player, 'arena', None) if player is not None else None
-        if arena is not None and arena.guiType == constants.ARENA_GUI_TYPE.HALLOWEEN_BATTLES:
-            return ('CMD_AMMO_CHOICE_7', 'CMD_AMMO_CHOICE_8', 'CMD_AMMO_CHOICE_9')
-        else:
-            return super(PrebattleShellsBlock, self)._getKeySettings()
 
     def __getShellState(self, slotItem):
         if slotItem.count > 0:

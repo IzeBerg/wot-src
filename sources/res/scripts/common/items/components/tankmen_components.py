@@ -46,9 +46,9 @@ class SPECIAL_VOICE_TAG(object):
                 'commander_bph_2022_4')
     BPH_MT_2022 = ('IvanCarevichSpecialVoice', 'VasilisaSpecialVoice', 'KashcheiSpecialVoice',
                    'BabaYagaSpecialVoice')
-    MOSFILM_2023 = ('TrusSpecialVoice', 'BalbesSpecialVoice', 'ByvalySpecialVoice')
     HW_2023 = ('IvanCarevichHWSpecialVoice', 'VasilisaHWSpecialVoice', 'KashcheiHWSpecialVoice',
                'BabaYagaHWSpecialVoice', 'KatrinaHWSpecialVoice')
+    MOSFILM_2023 = ('TrusSpecialVoice', 'BalbesSpecialVoice', 'ByvalySpecialVoice')
     ALL = (
      BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, CELEBRITY_2022, DAY_OF_COSMONAUTICS_21, SABATON_2021, QUICKY_BABY, WITCHES_CREW, HW_CREW, CELEBRITY_2023, HAND_OF_BLOOD) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021 + G_I_JOE_2022 + WHITE_TIGER_EVENT_2022 + BPH_2022 + BPH_MT_2022 + MOSFILM_2023 + HW_2023
 
