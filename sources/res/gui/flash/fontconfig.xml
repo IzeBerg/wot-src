@@ -1,28 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<root>
+
+<fontconfig>
+
 	<gameface>
+		<!-- Default font family that will be used by all Elements in the Views. Default value is Warhelios. -->
 		<deffontfamily>Warhelios</deffontfamily>
+		<additional>Pacifico</additional>
+		<additional>DINRoundPro</additional>
+		<!-- SDF character size (from 50 to 300 px). Default value is 150px. -->
+		<!-- <sdfsize> 150 </sdfsize> -->
+
+		<!-- indicates hieroglyphical language. Default value is false -->
+		<!-- *it should be defined only in overrides and only for specific languages -->
+		<!-- <hieroglyphical> true </hieroglyphical> -->
+
+		<!-- Font family fallback -->
+		<!-- Used for fallback for charcters are not existed in 'deffontfamily' -->
+		<!-- By default empty -->
+		<!-- <fontfamilyfallback> Warhelios </fontfamilyfallback> -->
 	</gameface>
+
+	<!--
+		Current policy: one global font configuration.
+		If you need a specific configuration, it is the launcher task.
+
+		<config>
+			<name> name of configuration </name>
+
+			<fontlib> relative path to font library  </fontlib>
+
+			<alias>
+				<embedded> name of the font which is to be mapped </embedded>
+				<runtime> font to which the mapping is done (in fontlib file) </runtime>
+
+				<flags> flag_01 flag_02 ... </flags> - optional.
+
+				The list of possible values ​​for tag flags:
+					Regular
+					Normal
+					Italic
+					Bold
+					Bold Italic
+
+				<scaleFactor> scale factor of the font </scaleFactor> - optional.
+			</alias>
+
+		</config>
+
+		...
+		<config>
+			...
+		</config>
+	-->
 	<config>
-		<name>All</name>
-		<fontlib>fonts_sd.swf</fontlib>
+		<name> All </name>
+		<fontlib> fonts_sd.swf </fontlib>
+
 		<map>
 			<alias>
-				<embedded>$TitleFont</embedded>
-				<runtime>ZurichCondBold</runtime>
+				<embedded> $TitleFont </embedded>
+				<runtime> ZurichCondBold </runtime>
 			</alias>
 			<alias>
-				<embedded>$FieldFont</embedded>
-				<runtime>ZurichCond</runtime>
+				<embedded> $FieldFont </embedded>
+				<runtime> ZurichCond </runtime>
 			</alias>
 			<alias>
-				<embedded>$TextFont</embedded>
-				<runtime>Tahoma</runtime>
+				<embedded> $TextFont </embedded>
+				<runtime> Tahoma </runtime>
 			</alias>
 			<alias>
-				<embedded>$UniversCondC</embedded>
-				<runtime>UniversCondC</runtime>
+				<embedded> $UniversCondC </embedded>
+				<runtime> UniversCondC </runtime>
 			</alias>
+
 		</map>
 	</config>
-</root>
+
+</fontconfig>

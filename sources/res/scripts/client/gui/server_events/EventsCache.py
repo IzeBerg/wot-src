@@ -1,6 +1,6 @@
 import math, sys
 from collections import defaultdict, namedtuple
-import typing, BigWorld, motivation_quests, customization_quests, nations
+import typing, BigWorld, motivation_quests, customization_quests, static_quests, nations
 from Event import Event, EventManager
 from PlayerEvents import g_playerEvents
 from adisp import adisp_async, adisp_process
@@ -828,6 +828,8 @@ class EventsCache(IEventsCache):
                 return self._makeQuest(questID, motivation_quests.g_cache.getQuestByID(questID).questData, maker=_motiveQuestMaker)
             if questID in customization_quests.g_cust_cache:
                 return self._makeQuest(questID, customization_quests.g_cust_cache[questID].questClientData)
+            if questID in static_quests.g_static_quest_cache:
+                return self._makeQuest(questID, static_quests.g_static_quest_cache[questID])
             return
 
     def __getCommonQuestsIterator(self):
@@ -835,6 +837,7 @@ class EventsCache(IEventsCache):
         questsData.update(self.__getPersonalQuestsData())
         questsData.update(self.__getPersonalMissionsHiddenQuests())
         questsData.update(self.__getDailyQuestsData())
+        questsData.update(static_quests.g_static_quest_cache)
         for qID, qData in questsData.iteritems():
             yield (qID, self._makeQuest(qID, qData))
 
@@ -877,7 +880,7 @@ class EventsCache(IEventsCache):
     def __getPersonalMissionsHiddenQuests(self):
         if not self.__personalMissionsHidden:
             xmlPath = PERSONAL_MISSIONS_XML_PATH + '/tiles.xml'
-            for quest in readQuestsFromFile(xmlPath, EVENT_TYPE.TOKEN_QUEST):
+            for quest in readQuestsFromFile(xmlPath, (EVENT_TYPE.TOKEN_QUEST,)):
                 self.__personalMissionsHidden[quest[0]] = quest[3]
 
         return self.__personalMissionsHidden.copy()

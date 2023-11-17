@@ -813,7 +813,7 @@ def __readBonus_blueprint(bonus, _name, section, eventType, checkLimit):
     if not isUniversalFragment(compDescr):
         vehicle = vehicles.getVehicleType(compDescr)
         if compDescr not in cache['vehiclesInTrees']:
-            raise SoftException('Invalid vehicle type %s. Vehicle is not in research tree.' % section)
+            raise SoftException('Invalid vehicle type %s. Vehicle is not in research tree.' % compDescr)
     count = section.readInt('count', 0)
     if checkLimit and count > INVOICE_LIMITS.BLUEPRINTS_MAX:
         raise SoftException('Invalid count of blueprint id %s with amount %d when limit is %d.' % (
