@@ -1018,9 +1018,6 @@ class AutoMaintenanceFormatter(WaitItemsSyncFormatter):
                                                    AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleErrorNoWallet()}, 
        AUTO_MAINTENANCE_RESULT.RENT_IS_OVER: {AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleRentIsOver.text()}, 
        AUTO_MAINTENANCE_RESULT.RENT_IS_ALMOST_OVER: {AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleRentIsAlmostOverAutoprolongationOFF.text()}}
-    __HWMessages = {AUTO_MAINTENANCE_RESULT.NOT_ENOUGH_ASSETS: {AUTO_MAINTENANCE_TYPE.EQUIP: R.strings.halloween_system_messages.serviceChannelMessages.autoEquipError()}, 
-       AUTO_MAINTENANCE_RESULT.OK: {AUTO_MAINTENANCE_TYPE.EQUIP: R.strings.halloween_system_messages.serviceChannelMessages.autoEquipSuccess()}, 
-       AUTO_MAINTENANCE_RESULT.DISABLED_OPTION: {AUTO_MAINTENANCE_TYPE.EQUIP: R.strings.halloween_system_messages.serviceChannelMessages.autoEquipDisabledOption()}}
     __currencyTemplates = {Currency.CREDITS: b'PurchaseForCreditsSysMessage', 
        Currency.GOLD: b'PurchaseForGoldSysMessage', 
        Currency.CRYSTAL: b'PurchaseForCrystalSysMessage', 
@@ -1046,10 +1043,7 @@ class AutoMaintenanceFormatter(WaitItemsSyncFormatter):
                     formatMsgType = b'RepairSysMessage'
                 else:
                     formatMsgType = self._getTemplateByCurrency(cost.getCurrency(byWeight=False))
-                if vehicle.isEvent:
-                    msgTmplKey = self.__HWMessages[result].get(typeID) or self.__messages[result].get(typeID)
-                else:
-                    msgTmplKey = self.__messages[result].get(typeID)
+                msgTmplKey = self.__messages[result].get(typeID, None)
                 msgArgs = None
                 data = None
                 if result in (AUTO_MAINTENANCE_RESULT.RENT_IS_OVER, AUTO_MAINTENANCE_RESULT.RENT_IS_ALMOST_OVER):
@@ -2040,10 +2034,9 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
             else:
                 quests = self.__eventsCache.getQuestsByTokenRequirement(tokenName)
                 for quest in quests:
-                    if not quest.getID().endswith(constants.NOTIFICATION_QUEST_POSTFIX):
-                        text = quest.getNotificationText().format(count=count)
-                        if text:
-                            tokenStrings.append(g_settings.htmlTemplates.format(b'questTokenInvoiceReceived', {b'text': text}))
+                    text = quest.getNotificationText().format(count=count)
+                    if text:
+                        tokenStrings.append(g_settings.htmlTemplates.format(b'questTokenInvoiceReceived', {b'text': text}))
 
         if awardListcount != 0:
             template = b'awardListAccruedInvoiceReceived' if awardListcount > 0 else b'awardListDebitedInvoiceReceived'

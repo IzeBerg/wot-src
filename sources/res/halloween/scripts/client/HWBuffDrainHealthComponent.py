@@ -1,4 +1,0 @@
-from HWBuffShowCannotBeDamagedMarker import HWBuffShowCannotBeDamagedMarker
-
-class HWBuffDrainHealthComponent(HWBuffShowCannotBeDamagedMarker):
-    pass

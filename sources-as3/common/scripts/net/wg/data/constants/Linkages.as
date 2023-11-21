@@ -301,14 +301,6 @@ package net.wg.data.constants
       
       public static const EVENT_EQUIPMENT_BUTTON:String = "EventEquipmentButtonUI";
       
-      public static const HW_EQUIPMENT_BUTTON:String = "HWEquipmentButtonUI";
-      
-      public static const HW_ABILITY_BUTTON:String = "HWAbilityButtonUI";
-      
-      public static const HW_PASSIVE_ABILITY:String = "HWPassiveAbilityUI";
-      
-      public static const HW_SHELL_BUTTON_BATTLE:String = "HWShellButtonBattleUI";
-      
       public static const OPTIONAL_DEVICE_BUTTON:String = "OptionalDeviceButtonUI";
       
       public static const VEHICLE_SEASON_AWARD:String = "VehicleSeasonAwardUI";

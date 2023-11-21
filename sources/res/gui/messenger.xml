@@ -3410,40 +3410,5 @@ _(#lootboxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</messag
 				</button>
 			</buttonsLayout>
 		</PrestigeLevelUpMessage>
-		<WinBackCallEntry>
-			<priority>medium</priority>
-			<groupID>offer</groupID>
-			<bgIconSizeAuto>true</bgIconSizeAuto>
-			<linkage>WinBackCallbackEntry</linkage>
-			<lifeTime>15000</lifeTime>
-			<message>&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;16&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#winback_call:serviceChannelMessages/entryPoint/title)&lt;/font&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#winback_call:serviceChannelMessages/entryPoint/body)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;</message>
-			<bgIcon>winBackCallBgIcon</bgIcon>
-			<buttonsLayout>
-				<button>
-					<type>submit</type>
-					<label>_(#winback_call:serviceChannelMessages/entryPoint/button)</label>
-					<action>winBackCallEntry</action>
-				</button>
-			</buttonsLayout>
-			<buttonsAlign>center</buttonsAlign>
-		</WinBackCallEntry>
-		<winbackCallInviteAward>
-			<type>battleResult</type>
-			<icon>InformationIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#winback_call:serviceChannelMessages/winBackCallInviteAward/header)&lt;/font&gt;&lt;br/&gt;&lt;font color=&quot;#8C8C7E&quot;&gt;_(#winback_call:serviceChannelMessages/winBackCallInviteAward/title):&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
-			<buttonsLayout>
-				<button>
-					<type>submit</type>
-					<label>_(#winback_call:serviceChannelMessages/winBackCallInviteAward/button)</label>
-					<action>winBackCallToInviteAwards</action>
-				</button>
-			</buttonsLayout>
-		</winbackCallInviteAward>
-		<notificationQuest>
-			<type>grey</type>
-			<priority>medium</priority>
-			<icon>InformationIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&quot;#8C8C7E&quot;&gt;%(body)s&lt;/font&gt;</message>
-		</notificationQuest>
 	</htmlTemplates>
 </root>

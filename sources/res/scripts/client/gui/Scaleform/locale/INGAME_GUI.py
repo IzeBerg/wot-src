@@ -109,8 +109,6 @@ class INGAME_GUI(object):
     CHAT_SHORTCUTS_ATTACKING_BASE_NUMBERED = '#ingame_gui:chat_shortcuts/attacking_base_numbered'
     CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_ATK = '#ingame_gui:chat_shortcuts/attention_to_objective_atk'
     CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_ATK_AUTOCOMMIT = '#ingame_gui:chat_shortcuts/attention_to_objective_atk_autocommit'
-    CHAT_SHORTCUTS_MOVE_TO_TARGET = '#ingame_gui:chat_shortcuts/move_to_target'
-    CHAT_SHORTCUTS_MOVE_TO_TARGET_AUTOCOMMIT = '#ingame_gui:chat_shortcuts/move_to_target_autocommit'
     CHAT_SHORTCUTS_ATTENTION_TO_BASE_DEF = '#ingame_gui:chat_shortcuts/attention_to_base_def'
     CHAT_SHORTCUTS_ATTENTION_TO_BASE_DEF_NUMBERED = '#ingame_gui:chat_shortcuts/attention_to_base_def_numbered'
     CHAT_SHORTCUTS_DEFENDING_BASE = '#ingame_gui:chat_shortcuts/defending_base'
@@ -1030,8 +1028,6 @@ class INGAME_GUI(object):
      CHAT_SHORTCUTS_ATTACKING_BASE_NUMBERED,
      CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_ATK,
      CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_ATK_AUTOCOMMIT,
-     CHAT_SHORTCUTS_MOVE_TO_TARGET,
-     CHAT_SHORTCUTS_MOVE_TO_TARGET_AUTOCOMMIT,
      CHAT_SHORTCUTS_ATTENTION_TO_BASE_DEF,
      CHAT_SHORTCUTS_ATTENTION_TO_BASE_DEF_NUMBERED,
      CHAT_SHORTCUTS_DEFENDING_BASE,

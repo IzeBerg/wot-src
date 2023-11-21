@@ -13,8 +13,6 @@
 		<hc_premium>HOLLOW_CHARGE_PREMIUM.png 0 0</hc_premium>
 		<he_spg>HIGH_EXPLOSIVE_SPG.png 0 0</he_spg>
 		<he_spg_stun>HIGH_EXPLOSIVE_SPG_STUN.png 0 0</he_spg_stun>
-		<he_2021_hep>HIGH_EXPLOSIVE_PREMIUM_HW.png 0 0</he_2021_hep>
-		<he_2021_hcp>HOLLOW_CHARGE_PREMIUM_HW.png 0 0</he_2021_hcp>
 	</icons>
 	<_12.7mm_AP_M2>
 		<id>0</id>
@@ -2745,72 +2743,65 @@
 			<!--BW_String-->
 		</piercingPowerLossFactorByDistance>
 	</_120mm_HEAT-T_M469C>
-	<_120mm_AP-T_M358_HW23>
-		<id>207</id>
-		<userString>#usa_vehicles:_120mm_AP-T_M358_HW23</userString>
+	<_76mm_AP_M80>
+		<id>210</id>
+		<userString>#usa_vehicles:_76mm_AP_M80</userString>
 		<icon>ap</icon>
-		<price>1060</price>
-		<notInShop>true</notInShop>
+		<price>56</price>
 		<kind>ARMOR_PIERCING</kind>
-		<caliber>120</caliber>
+		<caliber>76</caliber>
 		<isTracer>true</isTracer>
-		<effects>largeArmorPiercing</effects>
+		<effects>mediumArmorPiercing</effects>
 		<damage>
-			<armor>350</armor>
-			<devices>165</devices>
+			<armor>115</armor>
+			<devices>105</devices>
 		</damage>
-	</_120mm_AP-T_M358_HW23>
-	<_120mm_HEAT-T_M469_HW23>
-		<id>208</id>
-		<userString>#usa_vehicles:_120mm_HEAT-T_M469_HW23</userString>
-		<icon>hc_premium</icon>
-		<price>4400</price>
+	</_76mm_AP_M80>
+	<_76mm_HVAP_M94>
+		<id>211</id>
+		<userString>#usa_vehicles:_76mm_HVAP_M94</userString>
+		<icon>ap_cr_premium</icon>
+		<price>2800</price>
 		<improved>true</improved>
-		<notInShop>true</notInShop>
-		<kind>HOLLOW_CHARGE</kind>
-		<caliber>120</caliber>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<caliber>76</caliber>
 		<isTracer>true</isTracer>
-		<effects>largeHollowCharge</effects>
+		<effects>mediumAPCR</effects>
 		<damage>
-			<armor>400</armor>
-			<devices>165</devices>
+			<armor>115</armor>
+			<devices>105</devices>
 		</damage>
-		<piercingPowerLossFactorByDistance>
-			0.05
-			<!--BW_String-->
-		</piercingPowerLossFactorByDistance>
-	</_120mm_HEAT-T_M469_HW23>
-	<_120mm_HE_Shot_HW23>
-		<id>209</id>
-		<userString>#usa_vehicles:_120mm_HE_Shot_HW23</userString>
+	</_76mm_HVAP_M94>
+	<_76mm_HE_M1A1-AR>
+		<id>212</id>
+		<userString>#usa_vehicles:_76mm_HE_M1A1-AR</userString>
 		<icon>he_modern</icon>
-		<price>900</price>
-		<notInShop>true</notInShop>
+		<price>56</price>
 		<kind>HIGH_EXPLOSIVE</kind>
 		<mechanics>MODERN</mechanics>
-		<caliber>120</caliber>
+		<caliber>76</caliber>
 		<explosionRadius>
-			2.42
+			1.09
 			<!--BW_String-->
 		</explosionRadius>
 		<isTracer>true</isTracer>
-		<effects>largeHighExplosive</effects>
+		<effects>mediumHighExplosive</effects>
 		<damage>
-			<armor>350</armor>
-			<devices>180</devices>
+			<armor>185</armor>
+			<devices>105</devices>
 		</damage>
 		<armorSpalls>
 			<impactRadius>
-				2.42
+				1.09
 				<!--BW_String-->
 			</impactRadius>
 			<coneAngle>90</coneAngle>
 			<damage>
-				<armor>260</armor>
-				<devices>85</devices>
+				<armor>95</armor>
+				<devices>55</devices>
 			</damage>
 		</armorSpalls>
-	</_120mm_HE_Shot_HW23>
+	</_76mm_HE_M1A1-AR>
 	<_120mm_AP-T_XM66F>
 		<id>195</id>
 		<userString>#usa_vehicles:_120mm_AP-T_XM66F</userString>
@@ -3032,57 +3023,6 @@
 			<!--BW_String-->
 		</piercingPowerLossFactorByDistance>
 	</_152mm_HEAT_XM409>
-	<_152mm_HE_XM657E2_Halloween_event_1>
-		<id>30167</id>
-		<userString>#usa_vehicles:_152mm_HE_XM657E2_Halloween_event</userString>
-		<icon>he_2021_hep</icon>
-		<price>0</price>
-		<notInShop>true</notInShop>
-		<kind>HIGH_EXPLOSIVE</kind>
-		<mechanics>MODERN</mechanics>
-		<caliber>152</caliber>
-		<explosionRadius>
-			3.66
-			<!--BW_String-->
-		</explosionRadius>
-		<isTracer>true</isTracer>
-		<effects>hugeHighExplosive</effects>
-		<damage>
-			<armor>910</armor>
-			<devices>203</devices>
-		</damage>
-		<armorSpalls>
-			<impactRadius>
-				3.66
-				<!--BW_String-->
-			</impactRadius>
-			<coneAngle>90</coneAngle>
-			<damage>
-				<armor>455</armor>
-				<devices>100</devices>
-			</damage>
-		</armorSpalls>
-	</_152mm_HE_XM657E2_Halloween_event_1>
-	<_152mm_HEAT_XM409_Halloween_event>
-		<id>30169</id>
-		<userString>#usa_vehicles:_152mm_HEAT_XM409_Halloween_event</userString>
-		<icon>he_2021_hcp</icon>
-		<price>0</price>
-		<notInShop>true</notInShop>
-		<kind>HOLLOW_CHARGE</kind>
-		<caliber>152</caliber>
-		<isTracer>true</isTracer>
-		<effects>largeHollowCharge</effects>
-		<tags>forceFinite</tags>
-		<damage>
-			<armor>550</armor>
-			<devices>203</devices>
-		</damage>
-		<piercingPowerLossFactorByDistance>
-			0.05
-			<!--BW_String-->
-		</piercingPowerLossFactorByDistance>
-	</_152mm_HEAT_XM409_Halloween_event>
 	<_155mm_AP_M111>
 		<id>33</id>
 		<userString>#usa_vehicles:_155mm_AP_M111</userString>
@@ -3508,6 +3448,24 @@
 			<devices>160</devices>
 		</damage>
 	</_240mm_M114_M78>
+	<Development_Shell>
+		<id>65000</id>
+		<userString>Development_Shell</userString>
+		<icon>ap</icon>
+		<price>1</price>
+		<notInShop>true</notInShop>
+		<kind>ARMOR_PIERCING</kind>
+		<caliber>
+			12.7
+			<!--BW_String-->
+		</caliber>
+		<isTracer>true</isTracer>
+		<effects>autoArmorPiercing</effects>
+		<damage>
+			<armor>8</armor>
+			<devices>17</devices>
+		</damage>
+	</Development_Shell>
 	<_105mm_HEAT_M67_SH>
 		<id>327</id>
 		<userString>#usa_vehicles:_105mm_HEAT_M67_SH</userString>
@@ -3807,209 +3765,4 @@
 		</damage>
 		<notInShop>True</notInShop>
 	</_76mm_AP_M79_NewOnBoarding>
-	<_90mm_AP_M77_HW_BOT>
-		<id>500</id>
-		<userString>#usa_vehicles:_90mm_AP_M77</userString>
-		<icon>ap</icon>
-		<price>255</price>
-		<notInShop>true</notInShop>
-		<kind>ARMOR_PIERCING</kind>
-		<caliber>90</caliber>
-		<isTracer>true</isTracer>
-		<effects>mainArmorPiercing</effects>
-		<damage>
-			<armor>200</armor>
-			<devices>122</devices>
-		</damage>
-	</_90mm_AP_M77_HW_BOT>
-	<_90mm_HVAP_M304_HW_BOT>
-		<id>501</id>
-		<userString>#usa_vehicles:_90mm_HVAP_M304</userString>
-		<icon>ap_cr_premium</icon>
-		<price>4400</price>
-		<notInShop>true</notInShop>
-		<improved>true</improved>
-		<kind>ARMOR_PIERCING_CR</kind>
-		<caliber>90</caliber>
-		<isTracer>true</isTracer>
-		<effects>mainAPCR</effects>
-		<damage>
-			<armor>240</armor>
-			<devices>122</devices>
-		</damage>
-	</_90mm_HVAP_M304_HW_BOT>
-	<_90mm_HE_M71_HW_BOT>
-		<id>502</id>
-		<userString>#usa_vehicles:_90mm_HE_M71</userString>
-		<icon>he_modern</icon>
-		<price>255</price>
-		<notInShop>true</notInShop>
-		<kind>HIGH_EXPLOSIVE</kind>
-		<mechanics>MODERN</mechanics>
-		<caliber>90</caliber>
-		<explosionRadius>
-			1.46
-			<!--BW_String-->
-		</explosionRadius>
-		<isTracer>true</isTracer>
-		<effects>mainHighExplosive</effects>
-		<damage>
-			<armor>320</armor>
-			<devices>122</devices>
-		</damage>
-		<armorSpalls>
-			<impactRadius>
-				1.46
-				<!--BW_String-->
-			</impactRadius>
-			<coneAngle>90</coneAngle>
-			<damage>
-				<armor>160</armor>
-				<devices>60</devices>
-			</damage>
-		</armorSpalls>
-	</_90mm_HE_M71_HW_BOT>
-	<_105mm_AP_T32_HW_BOT>
-		<id>503</id>
-		<userString>#usa_vehicles:_105mm_AP_T32</userString>
-		<icon>ap</icon>
-		<price>1000</price>
-		<notInShop>true</notInShop>
-		<kind>ARMOR_PIERCING</kind>
-		<caliber>105</caliber>
-		<isTracer>true</isTracer>
-		<effects>mainArmorPiercing</effects>
-		<damage>
-			<armor>220</armor>
-			<devices>150</devices>
-		</damage>
-	</_105mm_AP_T32_HW_BOT>
-	<_105mm_APCR_T29E3_HW_BOT>
-		<id>504</id>
-		<userString>#usa_vehicles:_105mm_APCR_T29E3</userString>
-		<icon>ap_cr_premium</icon>
-		<price>4800</price>
-		<notInShop>true</notInShop>
-		<improved>true</improved>
-		<kind>ARMOR_PIERCING_CR</kind>
-		<caliber>105</caliber>
-		<isTracer>true</isTracer>
-		<effects>mainAPCR</effects>
-		<damage>
-			<armor>320</armor>
-			<devices>150</devices>
-		</damage>
-	</_105mm_APCR_T29E3_HW_BOT>
-	<_105mm_HE_M11_HW_BOT>
-		<id>505</id>
-		<userString>#usa_vehicles:_105mm_HE_M11</userString>
-		<icon>he_modern</icon>
-		<price>680</price>
-		<notInShop>true</notInShop>
-		<kind>HIGH_EXPLOSIVE</kind>
-		<mechanics>MODERN</mechanics>
-		<caliber>105</caliber>
-		<explosionRadius>
-			1.91
-			<!--BW_String-->
-		</explosionRadius>
-		<isTracer>true</isTracer>
-		<effects>mainHighExplosive</effects>
-		<damage>
-			<armor>420</armor>
-			<devices>150</devices>
-		</damage>
-		<armorSpalls>
-			<impactRadius>
-				1.91
-				<!--BW_String-->
-			</impactRadius>
-			<coneAngle>90</coneAngle>
-			<damage>
-				<armor>210</armor>
-				<devices>75</devices>
-			</damage>
-		</armorSpalls>
-	</_105mm_HE_M11_HW_BOT>
-	<_120mm_AP-T_M358_HW_BOT>
-		<id>506</id>
-		<userString>#usa_vehicles:_120mm_AP-T_M358</userString>
-		<icon>ap</icon>
-		<price>1060</price>
-		<notInShop>true</notInShop>
-		<kind>ARMOR_PIERCING</kind>
-		<caliber>120</caliber>
-		<isTracer>true</isTracer>
-		<effects>largeArmorPiercing</effects>
-		<damage>
-			<armor>250</armor>
-			<devices>165</devices>
-		</damage>
-	</_120mm_AP-T_M358_HW_BOT>
-	<_120mm_HEAT-T_M469_HW_BOT>
-		<id>507</id>
-		<userString>#usa_vehicles:_120mm_HEAT-T_M469</userString>
-		<icon>hc_premium</icon>
-		<price>4400</price>
-		<notInShop>true</notInShop>
-		<improved>true</improved>
-		<kind>HOLLOW_CHARGE</kind>
-		<caliber>120</caliber>
-		<isTracer>true</isTracer>
-		<effects>largeHollowCharge</effects>
-		<damage>
-			<armor>400</armor>
-			<devices>165</devices>
-		</damage>
-		<piercingPowerLossFactorByDistance>
-			0.05
-			<!--BW_String-->
-		</piercingPowerLossFactorByDistance>
-	</_120mm_HEAT-T_M469_HW_BOT>
-	<_120mm_HE_Shot_HW_BOT>
-		<id>508</id>
-		<userString>#usa_vehicles:_120mm_HE_Shot</userString>
-		<icon>he_modern</icon>
-		<price>900</price>
-		<notInShop>true</notInShop>
-		<kind>HIGH_EXPLOSIVE</kind>
-		<mechanics>MODERN</mechanics>
-		<caliber>120</caliber>
-		<explosionRadius>
-			2.42
-			<!--BW_String-->
-		</explosionRadius>
-		<isTracer>true</isTracer>
-		<effects>largeHighExplosive</effects>
-		<damage>
-			<armor>515</armor>
-			<devices>165</devices>
-		</damage>
-		<armorSpalls>
-			<impactRadius>
-				2.42
-				<!--BW_String-->
-			</impactRadius>
-			<coneAngle>90</coneAngle>
-			<damage>
-				<armor>260</armor>
-				<devices>85</devices>
-			</damage>
-		</armorSpalls>
-	</_120mm_HE_Shot_HW_BOT>
-	<_90mm_AP_M77_HW_BOT_2>
-		<id>601</id>
-		<userString>#usa_vehicles:_90mm_AP_M77</userString>
-		<icon>ap</icon>
-		<price>255</price>
-		<notInShop>true</notInShop>
-		<kind>ARMOR_PIERCING</kind>
-		<caliber>90</caliber>
-		<isTracer>true</isTracer>
-		<effects>mainArmorPiercing</effects>
-		<damage>
-			<armor>220</armor>
-			<devices>122</devices>
-		</damage>
-	</_90mm_AP_M77_HW_BOT_2>
 </root>

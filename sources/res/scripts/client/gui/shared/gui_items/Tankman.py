@@ -696,7 +696,7 @@ class Tankman(GUIItem):
 class TankmanSkill(GUIItem):
     __slots__ = ('_name', '_level', '_roleType', '_isEnable', '_isFemale', '_isPermanent',
                  '_customName', '_isAlreadyEarned', '_packer', '_typeName')
-    _CUSTOM_NAME_EXT = ''
+    CUSTOM_NAME_EXT = ''
 
     def __init__(self, skillName, tankman=None, proxy=None, skillLevel=0):
         super(TankmanSkill, self).__init__(proxy)
@@ -723,8 +723,8 @@ class TankmanSkill(GUIItem):
             self._isEnable = False
         self._packer = g_skillPackers.get(self._name, packBase)
         self._customName = ''
-        if self._CUSTOM_NAME_EXT:
-            customName = ('_').join((self._CUSTOM_NAME_EXT, BROTHERHOOD_SKILL_NAME))
+        if self.CUSTOM_NAME_EXT:
+            customName = ('_').join((self.CUSTOM_NAME_EXT, BROTHERHOOD_SKILL_NAME))
             if skillName in (BROTHERHOOD_SKILL_NAME, customName):
                 self._customName = customName
                 self._name = BROTHERHOOD_SKILL_NAME
@@ -781,7 +781,7 @@ class TankmanSkill(GUIItem):
     @property
     def userName(self):
         if self._customName:
-            resStr = ('_').join((self._name, self._CUSTOM_NAME_EXT))
+            resStr = ('_').join((self._name, self.CUSTOM_NAME_EXT))
             return backport.text(R.strings.crew_perks.dyn(resStr).name())
         return getSkillUserName(self.name)
 
@@ -822,7 +822,7 @@ class TankmanSkill(GUIItem):
         else:
             iconName = getSkillIconName(self.name)
         if self._customName:
-            iconName = ('{}_{}').format(self._CUSTOM_NAME_EXT, iconName)
+            iconName = ('{}_{}').format(self.CUSTOM_NAME_EXT, iconName)
         return iconName
 
     @property
@@ -849,6 +849,10 @@ class TankmanSkill(GUIItem):
     def isMaxLevel(self):
         return self._level >= tankmen.MAX_SKILL_LEVEL
 
+    @property
+    def customName(self):
+        return self.CUSTOM_NAME_EXT
+
     def getMaxLvlDescription(self):
         skillDescArgs = getSkillDescrArgs(self.name)
         skillParams = self._packer(skillDescArgs, tankmen.MAX_SKILL_LEVEL)
@@ -864,25 +868,25 @@ class TankmanSkill(GUIItem):
 
 class SabatonTankmanSkill(TankmanSkill):
     __slots__ = ()
-    _CUSTOM_NAME_EXT = 'sabaton'
+    CUSTOM_NAME_EXT = 'sabaton'
 
 
 class OffspringTankmanSkill(TankmanSkill):
     __slots__ = ()
-    _CUSTOM_NAME_EXT = 'offspring'
+    CUSTOM_NAME_EXT = 'offspring'
 
 
 class YhaTankmanSkill(TankmanSkill):
     __slots__ = ()
-    _CUSTOM_NAME_EXT = 'yha'
+    CUSTOM_NAME_EXT = 'yha'
 
 
 class WitchesTankmanSkill(TankmanSkill):
     __slots__ = ()
-    _CUSTOM_NAME_EXT = 'witches'
+    CUSTOM_NAME_EXT = 'witches'
 
 
-def getTankmanSkill(skillName, tankman=None, proxy=None):
+def getTankmanSkill(skillName, tankman=None, proxy=None, skillCustomisation=None):
     if tankman is not None:
         descriptor = tankman.descriptor
         if special_crew.isSabatonCrew(descriptor):
@@ -892,6 +896,15 @@ def getTankmanSkill(skillName, tankman=None, proxy=None):
         if special_crew.isYhaCrew(descriptor):
             return YhaTankmanSkill(skillName, tankman, proxy)
         if special_crew.isWitchesCrew(descriptor):
+            return WitchesTankmanSkill(skillName, tankman, proxy)
+    if skillCustomisation is not None:
+        if skillCustomisation == SabatonTankmanSkill.CUSTOM_NAME_EXT:
+            return SabatonTankmanSkill(skillName, tankman, proxy)
+        if skillCustomisation == OffspringTankmanSkill.CUSTOM_NAME_EXT:
+            return OffspringTankmanSkill(skillName, tankman, proxy)
+        if skillCustomisation == YhaTankmanSkill.CUSTOM_NAME_EXT:
+            return YhaTankmanSkill(skillName, tankman, proxy)
+        if skillCustomisation == WitchesTankmanSkill.CUSTOM_NAME_EXT:
             return WitchesTankmanSkill(skillName, tankman, proxy)
     return TankmanSkill(skillName, tankman, proxy)
 

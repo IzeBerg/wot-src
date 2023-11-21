@@ -38,6 +38,8 @@
 		<SCR_528_M>76</SCR_528_M>
 		<AN_VRC_12>77</AN_VRC_12>
 		<AN_GRC_7A>80</AN_GRC_7A>
+		<AN-GRC-3RMT>81</AN-GRC-3RMT>
+		<SCR_508_M24>82</SCR_508_M24>
 		<AN-ARC-27_IGR>60001</AN-ARC-27_IGR>
 		<SCR_619_IGR>60002</SCR_619_IGR>
 		<SCR_528A1_IGR>60003</SCR_528A1_IGR>
@@ -52,17 +54,12 @@
 		<AN_VRC-3_7x7>503</AN_VRC-3_7x7>
 		<SCR_508_bootcamp>64002</SCR_508_bootcamp>
 		<Development_Radio>65535</Development_Radio>
-		<AN-ARC-27_HW23>1002</AN-ARC-27_HW23>
 		<SCR_506_MapsTraining_Dummy_MT_1>6</SCR_506_MapsTraining_Dummy_MT_1>
 		<SCR_508_1_MapsTraining_Player_HT_1>20</SCR_508_1_MapsTraining_Player_HT_1>
 		<SCR_528_MapsTraining_Dummy_LT_2>22</SCR_528_MapsTraining_Dummy_LT_2>
 		<SCR_619_NewOnBoarding>64005</SCR_619_NewOnBoarding>
 		<SCR_506_NewOnBoarding>64006</SCR_506_NewOnBoarding>
 		<SCR_508_1_NewOnBoarding>64007</SCR_508_1_NewOnBoarding>
-		<AN-ARC-27_Halloween_event_02>20076</AN-ARC-27_Halloween_event_02>
-		<SCR_528_HW_BOT>504</SCR_528_HW_BOT>
-		<AN-ARC-27_HW_BOT>505</AN-ARC-27_HW_BOT>
-		<AN_VRC-3_HW_BOT>506</AN_VRC-3_HW_BOT>
 	</ids>
 	<shared>
 		<SCR_200>
@@ -106,6 +103,18 @@
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</SCR_508_1>
+		<SCR_508_M24>
+			<userString>#usa_vehicles:SCR_508_M24</userString>
+			<tags/>
+			<notInShop>true</notInShop>
+			<level>8</level>
+			<price>21600</price>
+			<weight>100</weight>
+			<distance>570</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</SCR_508_M24>
 		<SCR_210>
 			<userString>#usa_vehicles:SCR_210</userString>
 			<tags/>
@@ -391,6 +400,21 @@
 				<!--BW_String-->
 			</repairCost>
 		</AN-GRC-3>
+		<AN-GRC-3RMT>
+			<userString>#usa_vehicles:AN-GRC-3RMT</userString>
+			<tags/>
+			<level>6</level>
+			<price>21600</price>
+			<notInShop>true</notInShop>
+			<weight>120</weight>
+			<distance>410</distance>
+			<maxHealth>120</maxHealth>
+			<maxRegenHealth>60</maxRegenHealth>
+			<repairCost>
+				1.2
+				<!--BW_String-->
+			</repairCost>
+		</AN-GRC-3RMT>
 		<AN_GRC_8>
 			<userString>#usa_vehicles:AN_GRC_8</userString>
 			<tags/>
@@ -426,18 +450,6 @@
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</AN-ARC-27>
-		<AN-ARC-27_HW23>
-			<userString>#usa_vehicles:AN-ARC-27_HW23</userString>
-			<tags/>
-			<level>10</level>
-			<price>54000</price>
-			<notInShop>true</notInShop>
-			<weight>120</weight>
-			<distance>50</distance>
-			<maxHealth>200</maxHealth>
-			<maxRegenHealth>150</maxRegenHealth>
-			<repairCost>3</repairCost>
-		</AN-ARC-27_HW23>
 		<AN_GRC_7A>
 			<userString>#usa_vehicles:AN_GRC_7A</userString>
 			<tags/>
@@ -450,18 +462,6 @@
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</AN_GRC_7A>
-		<AN-ARC-27_Halloween_event_02>
-			<userString>#usa_vehicles:AN-ARC-27_Halloween_event_02</userString>
-			<tags/>
-			<level>10</level>
-			<price>54000</price>
-			<notInShop>true</notInShop>
-			<weight>120</weight>
-			<distance>200</distance>
-			<maxHealth>200</maxHealth>
-			<maxRegenHealth>150</maxRegenHealth>
-			<repairCost>3</repairCost>
-		</AN-ARC-27_Halloween_event_02>
 		<AN-ARC-27_FL>
 			<userString>#usa_vehicles:AN-ARC-27</userString>
 			<tags/>
@@ -830,44 +830,5 @@
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</SCR_508_1_NewOnBoarding>
-		<SCR_528_HW_BOT>
-			<userString>#usa_vehicles:SCR_528</userString>
-			<tags/>
-			<level>10</level>
-			<price>54000</price>
-			<notInShop>true</notInShop>
-			<weight>80</weight>
-			<distance>50</distance>
-			<maxHealth>200</maxHealth>
-			<maxRegenHealth>150</maxRegenHealth>
-			<repairCost>3</repairCost>
-		</SCR_528_HW_BOT>
-		<AN-ARC-27_HW_BOT>
-			<userString>#usa_vehicles:AN-ARC-27</userString>
-			<tags/>
-			<level>10</level>
-			<price>54000</price>
-			<notInShop>true</notInShop>
-			<weight>120</weight>
-			<distance>50</distance>
-			<maxHealth>200</maxHealth>
-			<maxRegenHealth>150</maxRegenHealth>
-			<repairCost>3</repairCost>
-		</AN-ARC-27_HW_BOT>
-		<AN_VRC-3_HW_BOT>
-			<userString>#usa_vehicles:AN_VRC-3</userString>
-			<tags/>
-			<level>10</level>
-			<notInShop>true</notInShop>
-			<price>51600</price>
-			<weight>160</weight>
-			<distance>50</distance>
-			<maxHealth>250</maxHealth>
-			<maxRegenHealth>75</maxRegenHealth>
-			<repairCost>
-				3.5
-				<!--BW_String-->
-			</repairCost>
-		</AN_VRC-3_HW_BOT>
 	</shared>
 </root>

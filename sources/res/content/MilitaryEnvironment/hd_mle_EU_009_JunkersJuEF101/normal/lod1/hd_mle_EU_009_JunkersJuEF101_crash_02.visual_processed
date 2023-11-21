@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_mle_EU_009_JunkersJuEF101_crash_02</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>-16.239393 -3.917236 -0.214766</row3>
+			</transform>
+			<node>
+				<identifier>lod1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 -0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000001 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 -0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000001 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s4</identifier>
+					<transform>
+						<row0>1.000000 0.000000 -0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000001 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s4_2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 -0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000001 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s5</identifier>
+					<transform>
+						<row0>1.000000 0.000000 -0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000001 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s6</identifier>
+					<transform>
+						<row0>1.000000 0.000000 -0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000001 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd6</identifier>
+					<fx>shaders/decals/PBS_mesh_decal.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Decals_AM.dds</Texture>
+					</property>
+					<property>
+						g_alphaMulAlbedo
+						<Float>0.100000</Float>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_type
+						<Int>1</Int>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Decals_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Decals_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>1.320179 -0.656016 1.392294</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd5</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaReference
+						<Int>170</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Detailset_2_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Detailset_2_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Detailset_2_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-7.876920 -0.628546 -0.431554</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd4</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile4_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Tile5_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Tile6_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Soot_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile4_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Tile5_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Tile6_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile4_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Tile5_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_Tile6_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-7.775212 -0.148858 -0.986410</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_DetailSet_AM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_GCM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_DetailSet_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_DetailSet_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-6.374453 -0.048211 6.004951</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				4
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						albedoHeightTile0
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile1_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile2_AM.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile3_AM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_blend.png</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_crash_GCM.dds</Texture>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Soot_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.100000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile1_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile2_MAO.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile3_MAO.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile1_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile2_GBMT.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/MilitaryEnvironment/hd_mle_EU_009_JunkersJuEF101/hd_mle_EU_009_JunkersJuEF101_tile3_GBMT.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>4.507531 -0.443832 1.037322</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-9.859680 -1.627748 -3.938607</min>
+		<max>18.832195 1.048940 7.001142</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>146930</geometrySize>
+	<minUVDensity>0.006182</minUVDensity>
+</root>

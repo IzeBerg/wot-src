@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_stone_0</identifier>
+					<fx>shaders/std_effects/normalmap_specmap.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						specularMap
+						<Texture>content/Environment/envF_005_FactoryCharcoal/envF_005_FactoryCharcoal_SM_1.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/envF_005_FactoryCharcoal/envF_005_FactoryCharcoal_NM_1.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/envF_005_FactoryCharcoal/envF_005_FactoryCharcoal_1.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.346574 2.144471 -0.228246</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-8.786777 -0.412125 -10.065884</min>
+		<max>9.479925 4.701068 9.609392</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>9022</geometrySize>
+	<minUVDensity>0.020826</minUVDensity>
+</root>

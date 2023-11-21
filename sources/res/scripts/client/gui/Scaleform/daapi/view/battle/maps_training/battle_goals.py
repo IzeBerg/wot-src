@@ -79,8 +79,7 @@ class MapsTrainingBattleGoals(BattleHintComponent, MapsTrainingGoalsMeta, IArena
         else:
             return hint.soundNotification
 
-    def _showHint(self, hint, data):
-        hintData = hint.makeVO(data)
+    def _showHint(self, hintData):
         hintType = hintData['hintType']
         descr = hintData.get('description1')
         if descr is None:

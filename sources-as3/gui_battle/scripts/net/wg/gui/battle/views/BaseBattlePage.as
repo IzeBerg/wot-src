@@ -590,11 +590,9 @@ package net.wg.gui.battle.views
       
       protected function updateAmmunitionPanelY() : void
       {
-         var _loc1_:int = 0;
          if(this.prebattleAmmunitionPanel)
          {
-            _loc1_ = Boolean(this.battleLoading) ? int(this.battleLoading.getContentY()) : int(0);
-            this.prebattleAmmunitionPanel.setYPos(!!this.prebattleAmmunitionPanel.isInLoading ? int(_loc1_ + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
+            this.prebattleAmmunitionPanel.setYPos(this.battleLoading && this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
          }
       }
       

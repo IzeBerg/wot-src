@@ -38,10 +38,9 @@ class AutoloaderBoostSoundEvents(object):
 
 class CrosshairPanelContainer(ExternalFlashComponent, CrosshairPanelContainerMeta):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
-    EXTERNAL_FLASH_SETTINGS = ExternalFlashSettings(BATTLE_VIEW_ALIASES.CROSSHAIR_PANEL, settings.CROSSHAIR_CONTAINER_SWF, settings.CROSSHAIR_ROOT_PATH, settings.CROSSHAIR_INIT_CALLBACK)
 
     def __init__(self):
-        super(CrosshairPanelContainer, self).__init__(self.EXTERNAL_FLASH_SETTINGS)
+        super(CrosshairPanelContainer, self).__init__(ExternalFlashSettings(BATTLE_VIEW_ALIASES.CROSSHAIR_PANEL, settings.CROSSHAIR_CONTAINER_SWF, settings.CROSSHAIR_ROOT_PATH, settings.CROSSHAIR_INIT_CALLBACK))
         self.__plugins = PluginsCollection(self)
         self.__plugins.addPlugins(self._getPlugins())
         self.__gunMarkers = None

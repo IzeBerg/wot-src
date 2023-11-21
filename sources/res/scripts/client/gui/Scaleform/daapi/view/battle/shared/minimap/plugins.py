@@ -4,6 +4,7 @@ from functools import partial
 from enum import Enum
 import BattleReplay, BigWorld, Keys, Math, aih_constants
 from AvatarInputHandler import AvatarInputHandler
+from Event import EventsSubscriber
 from PlayerEvents import g_playerEvents
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import MINIMAP_IBC_HINT_SECTION, HINTS_LEFT
@@ -178,21 +179,20 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
             return
 
     def updateSettings(self, diff):
-        if not self.__isAlive:
-            return
-        if settings_constants.GAME.SHOW_VECTOR_ON_MAP in diff and GUI_SETTINGS.showDirectionLine:
-            value = diff[settings_constants.GAME.SHOW_VECTOR_ON_MAP]
-            if value:
-                self.__showDirectionLine()
-            else:
-                self.__hideDirectionLine()
-        if settings_constants.GAME.SHOW_SECTOR_ON_MAP in diff and GUI_SETTINGS.showSectorLines:
-            value = diff[settings_constants.GAME.SHOW_SECTOR_ON_MAP]
-            if value:
-                self.__setupYawLimit()
-            else:
-                self.__clearYawLimit()
-        if not self.__isObserver:
+        vInfo = self._arenaDP.getVehicleInfo(self._arenaDP.getAttachedVehicleID())
+        if self.__isAlive or self.__isObserver and vInfo and vInfo.isAlive():
+            if settings_constants.GAME.SHOW_VECTOR_ON_MAP in diff and GUI_SETTINGS.showDirectionLine:
+                value = diff[settings_constants.GAME.SHOW_VECTOR_ON_MAP]
+                if value:
+                    self.__showDirectionLine()
+                else:
+                    self.__hideDirectionLine()
+            if settings_constants.GAME.SHOW_SECTOR_ON_MAP in diff and GUI_SETTINGS.showSectorLines:
+                value = diff[settings_constants.GAME.SHOW_SECTOR_ON_MAP]
+                if value:
+                    self.__setupYawLimit()
+                else:
+                    self.__clearYawLimit()
             if settings_constants.GAME.MINIMAP_DRAW_RANGE in diff:
                 if self._canShowDrawRangeCircle():
                     self.__addDrawRangeCircle()
@@ -297,7 +297,10 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
             if self._isInArcadeMode():
                 matrix = matrix_factory.makeArcadeCameraMatrix()
             elif self._isInPostmortemMode():
-                matrix = matrix_factory.getEntityMatrix(self.__killerVehicleID) or matrix_factory.makePostmortemCameraMatrix()
+                if self.__killerVehicleID:
+                    matrix = matrix_factory.getEntityMatrix(self.__killerVehicleID)
+                else:
+                    matrix = matrix_factory.makePostmortemCameraMatrix()
             elif self._isInVideoMode():
                 activateID = self.__cameraIDs[_S_NAME.VIDEO_CAMERA]
                 matrix = matrix_factory.makeDefaultCameraMatrix()
@@ -316,7 +319,10 @@ class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
 
     def __updateViewPointEntry(self, vehicleID=0):
         isActive = self._isInPostmortemMode() and vehicleID and vehicleID != self.__playerVehicleID or self._isInVideoMode() and self.__isAlive or not (self._isInPostmortemMode() or self._isInVideoMode() or self.__isObserver)
-        ownMatrix = matrix_factory.getEntityMatrix(self.__killerVehicleID) or matrix_factory.makeAttachedVehicleMatrix()
+        if self.__killerVehicleID:
+            ownMatrix = matrix_factory.getEntityMatrix(self.__killerVehicleID)
+        else:
+            ownMatrix = matrix_factory.makeAttachedVehicleMatrix()
         if self.__viewPointID:
             self._setActive(self.__viewPointID, active=isActive)
             self._setMatrix(self.__viewPointID, ownMatrix)
@@ -790,16 +796,12 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
     def _getPlayerVehicleID(self):
         return self.__playerVehicleID
 
-    def _getVehicleClassTag(self, vInfo):
-        vehicleType = vInfo.vehicleType
-        return vehicleType.classTag
-
     def _getDisplayedName(self, vInfo):
         vehicleType = vInfo.vehicleType
         return vehicleType.shortNameWithPrefix
 
     def _setVehicleInfo(self, vehicleID, entry, vInfo, guiProps, isSpotted=False):
-        classTag = self._getVehicleClassTag(vInfo)
+        classTag = vInfo.vehicleType.classTag
         name = self._getDisplayedName(vInfo)
         if classTag is not None:
             entry.setVehicleInfo(not guiProps.isFriend, guiProps.name(), classTag, vInfo.isAlive())
@@ -1460,16 +1462,18 @@ class RadarPlugin(common.SimplePlugin, IRadarListener):
         super(RadarPlugin, self).__init__(parent)
         self._vehicleEntries = {}
         self._lootEntries = []
+        self.__es = EventsSubscriber()
         self._params = RadarPluginParams(fadeIn=0.0, fadeOut=0.0, lifetime=0.0, vehicleEntryParams=RadarEntryParams(container='', symbol=''), lootEntryParams=RadarEntryParams(container='', symbol=''))
 
     def init(self, arenaVisitor, arenaDP):
         super(RadarPlugin, self).init(arenaVisitor, arenaDP)
-        if self.sessionProvider.dynamic.radar:
-            self.sessionProvider.dynamic.radar.addRuntimeView(self)
+        radarCtrl = self.sessionProvider.dynamic.radar
+        if radarCtrl:
+            radarCtrl.addRuntimeView(self)
+            self.__es.addCallbackOnUnsubscribe(lambda : radarCtrl.removeRuntimeView(self))
 
     def fini(self):
-        if self.sessionProvider.dynamic.radar:
-            self.sessionProvider.dynamic.radar.removeRuntimeView(self)
+        self.__es.unsubscribeFromAllEvents()
         for lootData in self._lootEntries:
             lootData.destroy()
 

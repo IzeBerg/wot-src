@@ -1,6 +1,5 @@
 package net.wg.gui.lobby.storage.categories.storage
 {
-   import flash.events.Event;
    import flash.events.MouseEvent;
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.generated.ICON_TEXT_FRAMES;
@@ -48,7 +47,6 @@ package net.wg.gui.lobby.storage.categories.storage
          this.balance.icon = ICON_TEXT_FRAMES.EQUIP_COIN_BIG;
          this.balance.addEventListener(MouseEvent.MOUSE_OVER,this.onBalanceValueRollOverHandler);
          this.balance.addEventListener(MouseEvent.ROLL_OUT,this.onBalanceValueRollOutHandler);
-         noItemsView.addEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
          this._currentFiltersBlock.addEventListener(FiltersEvent.MODULES_FILTER_CHANGED,this.onModulesIndexChangeHandler);
          this._stageSizeMgr.register(this);
       }
@@ -80,7 +78,6 @@ package net.wg.gui.lobby.storage.categories.storage
       
       override protected function onDispose() : void
       {
-         noItemsView.removeEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
          this.balance.removeEventListener(MouseEvent.ROLL_OVER,this.onBalanceValueRollOverHandler);
          this.balance.removeEventListener(MouseEvent.ROLL_OUT,this.onBalanceValueRollOutHandler);
          this.balance.dispose();
@@ -116,11 +113,6 @@ package net.wg.gui.lobby.storage.categories.storage
       private function onModulesIndexChangeHandler(param1:FiltersEvent) : void
       {
          onFiltersChangeS(param1.filtersValue);
-      }
-      
-      private function onNoItemViewCloseHandler(param1:Event) : void
-      {
-         navigateToStoreS();
       }
       
       private function onBalanceValueRollOverHandler(param1:MouseEvent) : void

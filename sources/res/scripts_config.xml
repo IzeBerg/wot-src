@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<login>
-		<host>
-			<name>频道1</name>
-			<short_name>频道1</short_name>
-			<url>login.wotcnq1.wotgame.cn:20013</url>
-			<url_token>login2.wotcnq1.wotgame.cn:20013</url_token>
-			<public_key_path>loginapp_wot.pubkey</public_key_path>
-			<periphery_id>401</periphery_id>
-		</host>
-		<host>
-			<name>频道2</name>
-			<short_name>频道2</short_name>
-			<url>login.wotcnq2.wotgame.cn:20013</url>
-			<url_token>login2.wotcnq2.wotgame.cn:20013</url_token>
-			<public_key_path>loginapp_wot.pubkey</public_key_path>
-			<periphery_id>402</periphery_id>
-		</host>
-	</login>
+	<xmlns:xmlref>http://bwt/xmlref</xmlns:xmlref>
 	<updateUrl/>
-	<csisUrl>http://csis.wggames.cn/csis/wotcnq/</csisUrl>
 	<silhouetteColors>
 		<common>
 			<self>
@@ -263,4 +245,23 @@
 			<item>*equipment</item>
 		</excludeMaterials>
 	</camouflage>
+	<login>
+		<host>
+			<name>频道1</name>
+			<short_name>频道1</short_name>
+			<url>login.wotcnq1.wotgame.cn:20013</url>
+			<url_token>login2.wotcnq1.wotgame.cn:20013</url_token>
+			<public_key_path>loginapp_wot.pubkey</public_key_path>
+			<periphery_id>401</periphery_id>
+		</host>
+		<host>
+			<name>频道2</name>
+			<short_name>频道2</short_name>
+			<url>login.wotcnq2.wotgame.cn:20013</url>
+			<url_token>login2.wotcnq2.wotgame.cn:20013</url_token>
+			<public_key_path>loginapp_wot.pubkey</public_key_path>
+			<periphery_id>402</periphery_id>
+		</host>
+	</login>
+	<csisUrl>http://csis.wggames.cn/csis/wotcnq/</csisUrl>
 </root>

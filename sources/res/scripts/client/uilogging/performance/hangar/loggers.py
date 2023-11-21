@@ -66,9 +66,10 @@ class HangarMetricsLogger(object):
     @noexcept
     def log(self):
         _logger.debug('Hangar performance metrics requested.')
+        if not self._defaultLogger.disabled or BigWorld.wg_debugLogging():
+            data = BigWorld.wg_getHangarStatistics()
         if self._defaultLogger.disabled:
             return
-        data = BigWorld.wg_getHangarStatistics()
         if not data:
             _logger.debug('Hangar performance metrics are empty.')
             return

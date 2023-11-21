@@ -271,7 +271,7 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
             ctrl.onVehicleControlling -= self.__onVehicleControlling
-            ctrl.onVehicleStateUpdated -= self._onVehicleStateUpdated
+            ctrl.onVehicleStateUpdated -= self.__onVehicleStateUpdated
         feedbackCtrl = self.sessionProvider.shared.feedback
         if feedbackCtrl is not None:
             feedbackCtrl.onMinimapVehicleRemoved -= self.__onVehicleRemoved
@@ -511,20 +511,20 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener, IArenaVehiclesContr
         if ctrl is None:
             return
         else:
-            ctrl.onVehicleStateUpdated += self._onVehicleStateUpdated
+            ctrl.onVehicleStateUpdated += self.__onVehicleStateUpdated
             for stateID in _STATE_HANDLERS.iterkeys():
                 value = ctrl.getStateValue(stateID)
                 if value is not None:
                     if stateID == VEHICLE_VIEW_STATE.DEVICES:
                         for v in value:
-                            self._onVehicleStateUpdated(stateID, v)
+                            self.__onVehicleStateUpdated(stateID, v)
 
                     else:
-                        self._onVehicleStateUpdated(stateID, value)
+                        self.__onVehicleStateUpdated(stateID, value)
 
             return
 
-    def _onVehicleStateUpdated(self, state, value):
+    def __onVehicleStateUpdated(self, state, value):
         if state not in _STATE_HANDLERS:
             return
         else:

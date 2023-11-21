@@ -27,6 +27,7 @@
 		<WS_No.19_HH>38</WS_No.19_HH>
 		<C13B47>39</C13B47>
 		<C13B42>40</C13B42>
+		<N9B>42</N9B>
 		<C42_FL>501</C42_FL>
 		<C45_7x7>502</C45_7x7>
 		<C42_IGR>60001</C42_IGR>
@@ -40,9 +41,6 @@
 		<N19Mk3_MapsTraining_Dummy_MT_2>3</N19Mk3_MapsTraining_Dummy_MT_2>
 		<N9_NewOnBoarding>64001</N9_NewOnBoarding>
 		<N19Mk3_NewOnBoarding>64002</N19Mk3_NewOnBoarding>
-		<C42_Halloween_event>20036</C42_Halloween_event>
-		<C45_HELL>20007</C45_HELL>
-		<C42_HW_BOT>503</C42_HW_BOT>
 	</ids>
 	<shared>
 		<N14>
@@ -259,6 +257,21 @@
 				<!--BW_String-->
 			</repairCost>
 		</N9A>
+		<N9B>
+			<userString>#gb_vehicles:N9B</userString>
+			<tags/>
+			<level>5</level>
+			<price>3600</price>
+			<notInShop>true</notInShop>
+			<weight>40</weight>
+			<distance>375</distance>
+			<maxHealth>80</maxHealth>
+			<maxRegenHealth>48</maxRegenHealth>
+			<repairCost>
+				0.5
+				<!--BW_String-->
+			</repairCost>
+		</N9B>
 		<N11>
 			<userString>#gb_vehicles:N11</userString>
 			<tags/>
@@ -316,21 +329,6 @@
 				<!--BW_String-->
 			</repairCost>
 		</C42_FL>
-		<C42_Halloween_event>
-			<userString>#gb_vehicles:C42_Halloween_event</userString>
-			<tags/>
-			<level>10</level>
-			<price>54000</price>
-			<notInShop>true</notInShop>
-			<weight>40</weight>
-			<distance>200</distance>
-			<maxHealth>180</maxHealth>
-			<maxRegenHealth>108</maxRegenHealth>
-			<repairCost>
-				3.5
-				<!--BW_String-->
-			</repairCost>
-		</C42_Halloween_event>
 		<C42_VHF>
 			<userString>#gb_vehicles:C42_VHF</userString>
 			<tags/>
@@ -608,35 +606,5 @@
 			<invulnerable>True</invulnerable>
 			<notInShop>True</notInShop>
 		</N19Mk3_NewOnBoarding>
-		<C45_HELL>
-			<userString>#gb_vehicles:C45</userString>
-			<tags/>
-			<level>10</level>
-			<price>45600</price>
-			<notInShop>true</notInShop>
-			<weight>40</weight>
-			<distance>50</distance>
-			<maxHealth>180</maxHealth>
-			<maxRegenHealth>108</maxRegenHealth>
-			<repairCost>
-				3.5
-				<!--BW_String-->
-			</repairCost>
-		</C45_HELL>
-		<C42_HW_BOT>
-			<userString>#gb_vehicles:C42</userString>
-			<tags/>
-			<level>10</level>
-			<price>54000</price>
-			<notInShop>true</notInShop>
-			<weight>40</weight>
-			<distance>50</distance>
-			<maxHealth>180</maxHealth>
-			<maxRegenHealth>108</maxRegenHealth>
-			<repairCost>
-				3.5
-				<!--BW_String-->
-			</repairCost>
-		</C42_HW_BOT>
 	</shared>
 </root>

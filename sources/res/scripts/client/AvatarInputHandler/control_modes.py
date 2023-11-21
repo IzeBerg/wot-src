@@ -50,9 +50,6 @@ class IControlMode(object):
     def handleKeyEvent(self, isDown, key, mods, event=None):
         pass
 
-    def hasHWKeyEvent(self, isDown, key):
-        pass
-
     def alwaysReceiveKeyEvents(self, isDown=True):
         return False
 
@@ -219,14 +216,6 @@ class _GunControlMode(IControlMode):
 
     def updateShootingStatus(self, canShot):
         self._canShot = canShot
-
-    def hasHWKeyEvent(self, isDown, key):
-        cmdMap = CommandMapping.g_instance
-        if cmdMap.isFired(CommandMapping.CMD_CM_VEHICLE_SWITCH_AUTOROTATION, key) and isDown:
-            arena = avatar_getter.getArena()
-            if arena and hasattr(constants.ARENA_GUI_TYPE, 'HALLOWEEN') and arena.guiType == constants.ARENA_GUI_TYPE.HALLOWEEN:
-                return True
-        return False
 
 
 class CameraLocationPoint(object):

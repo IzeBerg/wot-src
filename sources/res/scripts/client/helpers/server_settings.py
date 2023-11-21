@@ -1265,31 +1265,6 @@ class _ABFeatureTestConfig(namedtuple('_ABFeatureTestConfig', ('steamShade',))):
         return cls()
 
 
-class _WinBackCallConfig(namedtuple('_WinBackCallConfig', ('isEnabled',
- 'accessToken',
- 'inviteTokenQuest',
- 'startTime',
- 'endTime'))):
-    __slots__ = ()
-
-    def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, accessToken='', inviteTokenQuest='', startTime=0, endTime=0)
-        defaults.update(kwargs)
-        return super(_WinBackCallConfig, cls).__new__(cls, **defaults)
-
-    def asDict(self):
-        return self._asdict()
-
-    def replace(self, data):
-        allowedFields = self._fields
-        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
-        return self._replace(**dataToUpdate)
-
-    @classmethod
-    def defaults(cls):
-        return cls()
-
-
 class ServerSettings(object):
 
     def __init__(self, serverSettings):
@@ -1341,7 +1316,6 @@ class ServerSettings(object):
         self.__prestigeConfig = PrestigeConfig({})
         self.__steamShadeConfig = _SteamShadeConfig()
         self.__abFeatureTestConfig = _ABFeatureTestConfig()
-        self.__winBackCallConfig = _WinBackCallConfig()
         self.__schemaManager = getSchemaManager()
         self.set(serverSettings)
 
@@ -1485,10 +1459,6 @@ class ServerSettings(object):
             self.__winbackConfig = makeTupleByDict(WinbackConfig, self.__serverSettings[Configs.WINBACK_CONFIG.value])
         else:
             self.__winbackConfig = WinbackConfig.defaults()
-        if Configs.WINBACK_CALL_CONFIG.value in self.__serverSettings:
-            self.__winBackCallConfig = makeTupleByDict(_WinBackCallConfig, self.__serverSettings[Configs.WINBACK_CALL_CONFIG.value])
-        else:
-            self.__winBackCallConfig = _WinBackCallConfig.defaults()
         if Configs.LIMITED_UI_CONFIG.value in self.__serverSettings:
             self.__limitedUIConfig = makeTupleByDict(_LimitedUIConfig, self.__serverSettings[Configs.LIMITED_UI_CONFIG.value])
         else:
@@ -1618,7 +1588,6 @@ class ServerSettings(object):
         self.__schemaManager.update(serverSettingsDiff)
         self.__updateSteamShadeConfig(serverSettingsDiff)
         self.__updateABFeatureTestConfig(serverSettingsDiff)
-        self.__updateWinBackCallConfig(serverSettingsDiff)
         self.onServerSettingsChange(serverSettingsDiff)
 
     def clear(self):
@@ -1801,10 +1770,6 @@ class ServerSettings(object):
     @property
     def abFeatureTestConfig(self):
         return self.__abFeatureTestConfig
-
-    @property
-    def winBackCallConfig(self):
-        return self.__winBackCallConfig
 
     def isEpicBattleEnabled(self):
         return self.epicBattles.isEnabled
@@ -2287,10 +2252,6 @@ class ServerSettings(object):
 
     def __updateCollectionsConfig(self, diff):
         self.__collectionsConfig = self.__collectionsConfig.replace(diff[Configs.COLLECTIONS_CONFIG.value])
-
-    def __updateWinBackCallConfig(self, serverSettingsDiff):
-        if Configs.WINBACK_CALL_CONFIG.value in serverSettingsDiff:
-            self.__winBackCallConfig = self.__winBackCallConfig.replace(serverSettingsDiff[Configs.WINBACK_CALL_CONFIG.value])
 
     def __updateWinbackConfig(self, diff):
         self.__winbackConfig = self.__winbackConfig.replace(diff[Configs.WINBACK_CONFIG.value])

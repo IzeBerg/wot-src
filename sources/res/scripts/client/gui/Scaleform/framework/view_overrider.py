@@ -18,13 +18,11 @@ class ViewOverrider(object):
         alias = loadParams.viewKey.alias
         for delegate in self.__delegates.get(alias, ()):
             overrideData = delegate(loadParams, *args, **kwargs)
-            if overrideData and overrideData.checkCondition(*args, **kwargs):
-                overrideData.prepareAdditionalParams(loadParams, *args, **kwargs)
+            if overrideData:
                 self.__lastOverrides[alias] = overrideData.loadParams.viewKey.alias
                 self.onViewOverriden(alias, overrideData)
                 return overrideData
 
-        self.__lastOverrides.pop(alias, None)
         return
 
     def addOverride(self, alias, delegate):
@@ -57,9 +55,3 @@ class OverrideData(object):
     @property
     def kwargs(self):
         return self.__kwargs
-
-    def checkCondition(self, *args, **kwargs):
-        raise NotImplementedError
-
-    def prepareAdditionalParams(self, params, *args, **kwargs):
-        pass

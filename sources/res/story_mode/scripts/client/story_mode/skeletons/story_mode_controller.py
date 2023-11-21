@@ -27,9 +27,6 @@ class IStoryModeController(IGameController):
     def isEnabled(self):
         raise NotImplementedError
 
-    def isInPrb(self):
-        raise NotImplementedError
-
     @property
     def settings(self):
         raise NotImplementedError

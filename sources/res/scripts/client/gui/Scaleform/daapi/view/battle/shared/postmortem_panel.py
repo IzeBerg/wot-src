@@ -291,7 +291,7 @@ class PostmortemPanel(_SummaryPostmortemPanel):
 
     def __onVehicleStateUpdated(self, state, value):
         if state == VEHICLE_VIEW_STATE.HEALTH:
-            if self.__maxHealth != 0 and self.__maxHealth >= value:
+            if self.__maxHealth != 0 and self.__maxHealth > value:
                 self.__setHealthPercent(value)
                 self._updateVehicleInfo()
         elif state == VEHICLE_VIEW_STATE.PLAYER_INFO:
@@ -346,17 +346,14 @@ class PostmortemPanel(_SummaryPostmortemPanel):
                     killerUserVO = self._makeKillerVO(vInfoVO)
                 else:
                     showVehicle = False
-                    vInfoVO = vehLvl = vehImg = vehClass = vehName = None
+                    vehLvl = vehImg = vehClass = vehName = None
                     killerUserVO = {}
                 reason = self._makeReasonInfo(deathInfo)
-                self._setDeadReasonInfo(vInfoVO, reason, showVehicle, vehLvl, vehImg, vehClass, vehName, killerUserVO)
+                self.as_setDeadReasonInfoS(reason, showVehicle, vehLvl, vehImg, vehClass, vehName, killerUserVO)
                 self._deathAlreadySet = True
             else:
                 self.as_setDeadReasonInfoS('', False, None, None, None, None, None)
         return
-
-    def _setDeadReasonInfo(self, vInfoVO, reason, showVehicle, vehLvl, vehImg, vehClass, vehName, killerUserVO):
-        self.as_setDeadReasonInfoS(reason, showVehicle, vehLvl, vehImg, vehClass, vehName, killerUserVO)
 
     def _makeKillerVO(self, vInfoVO):
         fullName = self.sessionProvider.getCtx().getPlayerFullNameParts(vInfoVO.vehicleID, showVehShortName=False)

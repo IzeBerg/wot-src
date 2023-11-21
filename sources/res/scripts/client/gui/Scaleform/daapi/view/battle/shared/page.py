@@ -1,5 +1,6 @@
 import logging, typing, BattleReplay, aih_constants
 from AvatarInputHandler import aih_global_binding
+from Event import EventsSubscriber
 from account_helpers.settings_core.settings_constants import SPGAim
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -111,6 +112,7 @@ class SharedPage(BattlePageMeta):
             components += _SHARED_COMPONENTS_CONFIG
         components = self._addDefaultHitDirectionController(components)
         self.__componentsConfig = components
+        self._battleSessionES = EventsSubscriber()
         return
 
     def __del__(self):
@@ -222,36 +224,26 @@ class SharedPage(BattlePageMeta):
             if ctrl.isInPostmortem:
                 self._onPostMortemSwitched(noRespawnPossible=False, respawnAvailable=False)
             self._isInPostmortem = ctrl.isInPostmortem
-            ctrl.onPostMortemSwitched += self._onPostMortemSwitched
-            ctrl.onRespawnBaseMoving += self._onRespawnBaseMoving
+            self._battleSessionES.subscribeToEvent(ctrl.onPostMortemSwitched, self._onPostMortemSwitched)
+            self._battleSessionES.subscribeToEvent(ctrl.onRespawnBaseMoving, self._onRespawnBaseMoving)
         crosshairCtrl = self.sessionProvider.shared.crosshair
         if crosshairCtrl is not None:
-            crosshairCtrl.onCrosshairViewChanged += self.__onCrosshairViewChanged
+            self._battleSessionES.subscribeToEvent(crosshairCtrl.onCrosshairViewChanged, self.__onCrosshairViewChanged)
             self.__onCrosshairViewChanged(crosshairCtrl.getViewID())
-        self.__settingsCore.onSettingsChanged += self.__onSettingsChanged
+        self._battleSessionES.subscribeToEvent(self.__settingsCore.onSettingsChanged, self.__onSettingsChanged)
         if not self.__settingsCore.isReady:
-            self.__settingsCore.onSettingsReady += self.__onSettingsReady
+            self._battleSessionES.subscribeToEvent(self.__settingsCore.onSettingsReady, self.__onSettingsReady)
         aih_global_binding.subscribe(aih_global_binding.BINDING_ID.CTRL_MODE_NAME, self._onAvatarCtrlModeChanged)
         return
 
     def _stopBattleSession(self):
-        self.__settingsCore.onSettingsReady -= self.__onSettingsReady
-        self.__settingsCore.onSettingsChanged -= self.__onSettingsChanged
-        crosshairCtrl = self.sessionProvider.shared.crosshair
-        if crosshairCtrl is not None:
-            crosshairCtrl.onCrosshairViewChanged -= self.__onCrosshairViewChanged
-        ctrl = self.sessionProvider.shared.vehicleState
-        if ctrl is not None:
-            ctrl.onPostMortemSwitched -= self._onPostMortemSwitched
-            ctrl.onRespawnBaseMoving -= self._onRespawnBaseMoving
+        self._battleSessionES.unsubscribeFromAllEvents()
         aih_global_binding.unsubscribe(aih_global_binding.BINDING_ID.CTRL_MODE_NAME, self._onAvatarCtrlModeChanged)
         for alias, _ in self.__componentsConfig.getViewsConfig():
             self.sessionProvider.removeViewComponent(alias)
 
         for component in self._external:
             component.stopPlugins()
-
-        return
 
     def _handleRadialMenuCmd(self, event):
         raise NotImplementedError

@@ -5,6 +5,7 @@ from frameworks.wulf import WindowLayer
 from PlayerEvents import g_playerEvents
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
+from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import currentHangarIsBattleRoyale
 from gui.Scaleform.framework.managers.loaders import g_viewOverrider
 from gui.Scaleform.locale.INVITES import INVITES
 from gui.clans.formatters import ClanAppActionHtmlTextFormatter, ClanMultiNotificationsHtmlTextFormatter, ClanSingleNotificationHtmlTextFormatter
@@ -20,7 +21,6 @@ from gui.shared.formatters import icons, text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.notifications import NotificationGroup, NotificationGuiSettings, NotificationPriorityLevel
 from gui.shared.utils.functions import makeTooltip
-from gui.shared.system_factory import collectCustomizationHangarDecorator
 from gui.wgnc.settings import WGNC_DEFAULT_ICON, WGNC_POP_UP_BUTTON_WIDTH
 from helpers import dependency, time_utils
 from items import makeIntCompactDescrByID
@@ -32,7 +32,7 @@ from messenger.proto import proto_getter
 from messenger.proto.xmpp.xmpp_constants import XMPP_ITEM_TYPE
 from notification.settings import NOTIFICATION_BUTTON_STATE, NOTIFICATION_TYPE, makePathToIcon
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import IBattlePassController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IResourceWellController, ISeniorityAwardsController, IWinBackCallController
+from skeletons.gui.game_control import IBattlePassController, ICollectionsSystemController, IEventLootBoxesController, IMapboxController, IResourceWellController, ISeniorityAwardsController
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
@@ -302,7 +302,7 @@ class LockButtonMessageDecorator(MessageDecorator):
     def _viewLoaded(self, event):
         if event.alias in self._getLockAliases():
             self._updateButtonsState(lock=True)
-        elif VIEW_ALIAS.LOBBY_HANGAR == event.alias or g_viewOverrider.isViewOverriden(VIEW_ALIAS.LOBBY_HANGAR):
+        elif VIEW_ALIAS.LOBBY_HANGAR == event.alias:
             self._updateButtons(event)
 
     def _onViewOverriden(self, alias, *_):
@@ -346,13 +346,10 @@ class C11nMessageDecorator(LockButtonMessageDecorator):
 
     def _getIsLocked(self):
         isLocked = True
-        if any(handler() for handler in collectCustomizationHangarDecorator()):
-            return isLocked
-        else:
-            vehicle = self._getVehicle()
-            if vehicle is not None and vehicle.isCustomizationEnabled():
-                isLocked = self._entity.get('savedData', {}).get('toStyle', False) and not isVehicleCanBeCustomized(vehicle, GUI_ITEM_TYPE.STYLE)
-            return isLocked
+        vehicle = self._getVehicle()
+        if not currentHangarIsBattleRoyale() and vehicle is not None and vehicle.isCustomizationEnabled():
+            isLocked = self._entity.get('savedData', {}).get('toStyle', False) and not isVehicleCanBeCustomized(vehicle, GUI_ITEM_TYPE.STYLE)
+        return isLocked
 
     def _getVehicle(self):
         vehicle = None
@@ -1444,94 +1441,3 @@ class PrestigeLvlUpDecorator(LockButtonMessageDecorator):
         config = self.__lobbyContext.getServerSettings().prestigeConfig
         if not config.isEnabled and self._model:
             self._updateButtonsState(lock=True)
-
-
-class WinBackCallEntryDecorator(MessageDecorator):
-    __winBackCallCtrl = dependency.descriptor(IWinBackCallController)
-
-    def __init__(self, entityID, entity=None, settings=None, model=None):
-        super(WinBackCallEntryDecorator, self).__init__(entityID, entity=entity, settings=settings, model=model)
-        self._subscribe()
-
-    def clear(self):
-        self._unsubscribe()
-
-    def getType(self):
-        return NOTIFICATION_TYPE.WIN_BACK_CALL_ENTRY
-
-    def getGroup(self):
-        return NotificationGroup.OFFER
-
-    @staticmethod
-    def isPinned():
-        return True
-
-    def decrementCounterOnHidden(self):
-        return False
-
-    def _subscribe(self):
-        g_clientUpdateManager.addCallbacks(dict(self._getCallbacks()))
-        events = self._getEvents()
-        for event, handler in events:
-            event += handler
-
-    def _unsubscribe(self):
-        events = self._getEvents()
-        for event, handler in events:
-            event -= handler
-
-        g_clientUpdateManager.removeObjectCallbacks(self)
-
-    def _getEvents(self):
-        return (
-         (
-          self.__winBackCallCtrl.onStateChanged, self.__onStateChanged),)
-
-    def _getCallbacks(self):
-        return (
-         (
-          'tokens', self.__onTokensUpdate),)
-
-    def __onStateChanged(self):
-        self.__update()
-
-    def __onTokensUpdate(self, _):
-        self.__update()
-
-    def __update(self):
-        if not self.__winBackCallCtrl.isEnabled and self._model is not None:
-            self._model.removeNotification(self.getType(), self._entityID)
-            return
-        else:
-            self.__updateEntityButtons()
-            if self._model is not None:
-                self._model.updateNotification(self.getType(), self._entityID, self._entity, False)
-            return
-
-    def _make(self, entity=None, settings=None):
-        self.__updateEntityButtons()
-        super(WinBackCallEntryDecorator, self)._make(entity, settings)
-
-    def __updateEntityButtons(self):
-        if self._entity is None:
-            return
-        else:
-            buttonsLayout = self._entity.get('buttonsLayout')
-            if not buttonsLayout:
-                return
-            buttonsStates = self._entity.get('buttonsStates', {})
-            if buttonsStates is None:
-                return
-            state, tooltip = self._getButtonState()
-            buttonsStates['submit'] = state
-            buttonsLayout[0]['tooltip'] = tooltip
-            return
-
-    def _getButtonState(self):
-        state = NOTIFICATION_BUTTON_STATE.VISIBLE
-        tooltip = ''
-        if self.__winBackCallCtrl.isEnabled:
-            state |= NOTIFICATION_BUTTON_STATE.ENABLED
-            rClass = R.strings.winback_call.serviceChannelMessages.entryPoint.button.tooltip
-            tooltip = makeTooltip(body=backport.text(rClass()))
-        return (state, tooltip)

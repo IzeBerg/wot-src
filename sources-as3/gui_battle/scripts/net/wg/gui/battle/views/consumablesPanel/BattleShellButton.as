@@ -353,7 +353,7 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      protected function reloadingEnd() : void
+      private function reloadingEnd() : void
       {
          this._isSelectedIndicatorVisible = this._quantity > 0;
          invalidate(SELECTED_INDICATOR_VISIBILITY);
@@ -435,26 +435,6 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function set isReplay(param1:Boolean) : void
       {
-      }
-      
-      protected function getQuantity() : int
-      {
-         return this._quantity;
-      }
-      
-      protected function get isCurrent() : Boolean
-      {
-         return this._isCurrent;
-      }
-      
-      protected function get isSelectedIndicatorVisible() : Boolean
-      {
-         return this._isSelectedIndicatorVisible;
-      }
-      
-      protected function getCoolDownTimer() : CoolDownTimer
-      {
-         return this._coolDownTimer;
       }
       
       private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void

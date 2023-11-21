@@ -142,6 +142,7 @@ class EventsSubscriber(object):
         super(EventsSubscriber, self).__init__()
         self.__subscribeList = []
         self.__contextSubscribeList = []
+        self.__callbacksOnUnsubscribe = []
 
     def subscribeToContextEvent(self, event, delegate, *contextIDs):
         event.subscribe(delegate, *contextIDs)
@@ -151,6 +152,9 @@ class EventsSubscriber(object):
         event += delegate
         self.__subscribeList.append((event, delegate))
 
+    def addCallbackOnUnsubscribe(self, callback):
+        self.__callbacksOnUnsubscribe.append(callback)
+
     def unsubscribeFromAllEvents(self):
         for event, delegate in self.__subscribeList:
             event -= delegate
@@ -158,7 +162,12 @@ class EventsSubscriber(object):
         for event, delegate in self.__contextSubscribeList:
             event.unsubscribe(delegate)
 
+        while self.__callbacksOnUnsubscribe:
+            callback = self.__callbacksOnUnsubscribe.pop(0)
+            callback()
+
         self.__subscribeList = []
+        self.__callbacksOnUnsubscribe = []
 
 
 class ContextEvent(object):

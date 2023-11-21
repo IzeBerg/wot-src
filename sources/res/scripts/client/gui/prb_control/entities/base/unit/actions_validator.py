@@ -33,7 +33,7 @@ class UnitVehiclesValidator(BaseActionsValidator):
     _BATTLE_MODE_VEHICLE_TAGS = BATTLE_MODE_VEHICLE_TAGS
 
     def _validate(self):
-        if g_currentPreviewVehicle.isPresent() or g_currentPreviewVehicle.isHalloweenStylePreviewActive():
+        if g_currentPreviewVehicle.isPresent():
             return ValidationResult(False, UNIT_RESTRICTION.PREVIEW_VEHICLE_IS_PRESENT)
         else:
             vInfos = self._getVehiclesInfo()

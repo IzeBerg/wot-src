@@ -400,7 +400,7 @@ class VehicleGunRotator(object):
             shotTurretYaw, shotGunPitch = getShotAngles(descr, vehicleMatrix, (
              prevTurretYaw, self.__gunPitch), targetPoint, overrideGunPosition=self.__gunPosition)
             estimatedTurretYaw = self.getNextTurretYaw(prevTurretYaw, shotTurretYaw, maxTurretRotationSpeed * timeDiff, turretYawLimits)
-            if replayCtrl.isRecording:
+            if not replayCtrl.isPlaying:
                 self.__turretYaw = turretYaw = self.__syncWithServerTurretYaw(estimatedTurretYaw)
             else:
                 self.__turretYaw = turretYaw = estimatedTurretYaw

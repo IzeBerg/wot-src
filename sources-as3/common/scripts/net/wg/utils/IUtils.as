@@ -1,5 +1,6 @@
 package net.wg.utils
 {
+   import flash.display.DisplayObjectContainer;
    import net.wg.infrastructure.base.meta.IUtilsManagerMeta;
    import net.wg.infrastructure.interfaces.IImageUrlProperties;
    import net.wg.infrastructure.interfaces.IStrCaseProperties;
@@ -23,6 +24,8 @@ package net.wg.utils
       function getImageUrlProperties(param1:String, param2:int, param3:int, param4:int = -4, param5:int = 0) : IImageUrlProperties;
       
       function getTransformedUBCoordinate(param1:Function, param2:Number, param3:Number) : Object;
+      
+      function getObjectsUnderPoint(param1:DisplayObjectContainer, param2:Number, param3:Number) : Array;
       
       function get asserter() : IAssertable;
       

@@ -346,24 +346,23 @@ package net.wg.gui.lobby.header
          }
       }
       
-      override protected function updateSquad(param1:Boolean, param2:String, param3:String, param4:Boolean, param5:String, param6:Boolean, param7:String, param8:ExtendedSquadInfoVo) : void
+      override protected function updateSquad(param1:Boolean, param2:String, param3:String, param4:Boolean, param5:String, param6:Boolean, param7:ExtendedSquadInfoVo) : void
       {
-         var _loc9_:HBC_SquadDataVo = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_SQUAD));
-         _loc9_.isInSquad = param1;
-         _loc9_.tooltip = param2;
-         _loc9_.tooltipType = param3;
-         _loc9_.isEvent = param4;
-         _loc9_.icon = param5;
-         _loc9_.hasPopover = param6;
-         _loc9_.eventBgLinkage = param7;
-         if(_loc9_.squadExtendInfoVo != null)
+         var _loc8_:HBC_SquadDataVo = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_SQUAD));
+         _loc8_.isInSquad = param1;
+         _loc8_.tooltip = param2;
+         _loc8_.tooltipType = param3;
+         _loc8_.isEvent = param4;
+         _loc8_.icon = param5;
+         _loc8_.hasPopover = param6;
+         if(_loc8_.squadExtendInfoVo != null)
          {
-            _loc9_.squadExtendInfoVo.dispose();
+            _loc8_.squadExtendInfoVo.dispose();
          }
-         _loc9_.squadExtendInfoVo = new ExtendedSquadInfoVo({
-            "platoonState":param8.platoonState,
-            "squadManStates":param8.squadManStates,
-            "commanderIndex":param8.commanderIndex
+         _loc8_.squadExtendInfoVo = new ExtendedSquadInfoVo({
+            "platoonState":param7.platoonState,
+            "squadManStates":param7.squadManStates,
+            "commanderIndex":param7.commanderIndex
          });
          this._headerButtonsHelper.invalidateDataById(HeaderButtonsHelper.ITEM_ID_SQUAD);
       }
@@ -459,11 +458,6 @@ package net.wg.gui.lobby.header
             this.fightBtn.removeEventListener(MouseEvent.MOUSE_OVER,this.onFightBtnMouseOverHandler);
             this.fightBtn.removeEventListener(MouseEvent.MOUSE_OUT,this.onFightBtnMouseOutHandler);
          }
-      }
-      
-      public function as_setFightButtonHighlight(param1:String) : void
-      {
-         this.fightBtn.setHighlight(param1);
       }
       
       public function as_setFightButton(param1:String) : void
@@ -590,7 +584,7 @@ package net.wg.gui.lobby.header
          }
       }
       
-      public function as_updateBattleType(param1:String, param2:String, param3:Boolean, param4:String, param5:String, param6:String, param7:Boolean, param8:String, param9:Boolean, param10:Boolean) : void
+      public function as_updateBattleType(param1:String, param2:String, param3:Boolean, param4:String, param5:String, param6:String, param7:Boolean, param8:Boolean, param9:Boolean, param10:Boolean) : void
       {
          var _loc11_:HBC_BattleTypeVo = HBC_BattleTypeVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR));
          if(_loc11_)
@@ -600,10 +594,10 @@ package net.wg.gui.lobby.header
             _loc11_.battleTypeID = param6;
             _loc11_.tooltip = param4;
             _loc11_.tooltipType = param5;
+            _loc11_.eventBgEnabled = param7;
             _loc11_.showLegacySelector = param9;
             _loc11_.hasNew = param10;
-            _loc11_.eventBgLinkage = param8;
-            if(param7)
+            if(param8)
             {
                this.sparks.play();
             }
@@ -611,7 +605,7 @@ package net.wg.gui.lobby.header
             {
                this.sparks.stop();
             }
-            this.sparks.visible = param7;
+            this.sparks.visible = param8;
             this._headerButtonsHelper.invalidateDataById(HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR);
             this.as_doDisableHeaderButton(HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR,param3);
          }

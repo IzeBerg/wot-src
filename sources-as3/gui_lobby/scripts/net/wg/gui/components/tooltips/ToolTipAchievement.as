@@ -202,6 +202,7 @@ package net.wg.gui.components.tooltips
       override protected function redraw() : void
       {
          var _loc4_:Number = NaN;
+         var _loc6_:Number = NaN;
          var _loc10_:String = null;
          var _loc11_:String = null;
          var _loc12_:Array = null;
@@ -219,7 +220,7 @@ package net.wg.gui.components.tooltips
          blockResults = new Vector.<ToolTipBlockResultVO>();
          this._flagsBlocks = new Vector.<AchievementsCustomBlockItem>();
          topPosition = bgShadowMargin.top + contentMargin.top;
-         var _loc6_:Number = bgShadowMargin.left + contentMargin.left;
+         _loc6_ = bgShadowMargin.left + contentMargin.left;
          var _loc7_:Separator = null;
          separators = new Vector.<Separator>();
          this._headerTF.autoSize = TextFieldAutoSize.LEFT;

@@ -5,7 +5,6 @@ package net.wg.gui.battle.components
    import flash.utils.Dictionary;
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.InvalidationType;
-   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLE_NOTIFICATIONS_TIMER_TYPES;
    import net.wg.gui.battle.components.interfaces.IStatusNotification;
    import net.wg.gui.battle.components.interfaces.IStatusNotificationCallback;
@@ -21,7 +20,7 @@ package net.wg.gui.battle.components
    public class StatusNotificationsPanel extends StatusNotificationsPanelMeta implements IStatusNotificationsPanelMeta
    {
       
-      protected static const INVALID_STATE:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
+      private static const INVALID_STATE:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
       
       private static const NOTIFICATION_TIMERS_OFFSET_X:uint = 25;
       
@@ -56,13 +55,10 @@ package net.wg.gui.battle.components
       
       private var _callbacksByType:Dictionary;
       
-      private var _additionalNotificationsOffset:int = 0;
-      
       public function StatusNotificationsPanel()
       {
          this._callbacksByType = new Dictionary();
          super();
-         this._additionalNotificationsOffset = this.getNotificationsOffset();
          this._notificationTimers = {};
          this._data = new Vector.<StatusNotificationVO>(0);
       }
@@ -229,14 +225,7 @@ package net.wg.gui.battle.components
          {
             _loc7_ = _loc2_[0];
             _loc7_.fullSize();
-            if(_loc3_.indexOf(_loc7_) == -1)
-            {
-               _loc7_.tweenToX(0);
-            }
-            else
-            {
-               _loc7_.x = 0;
-            }
+            _loc7_.tweenToX(0);
             return;
          }
          var _loc8_:Boolean = false;
@@ -262,7 +251,8 @@ package net.wg.gui.battle.components
                }
                else
                {
-                  _loc9_ = this.handleFirstTimer(_loc7_);
+                  _loc7_.cropSize();
+                  _loc9_ = true;
                }
                _loc11_++;
                if(_loc3_.indexOf(_loc7_) == -1)
@@ -276,16 +266,10 @@ package net.wg.gui.battle.components
                {
                   _loc7_.x = _loc10_;
                }
-               _loc10_ += _loc7_.actualWidth + this._additionalNotificationsOffset;
+               _loc10_ += _loc7_.actualWidth;
             }
          }
          this.updtateNotificationsVisible();
-      }
-      
-      protected function handleFirstTimer(param1:IStatusNotification) : Boolean
-      {
-         param1.cropSize();
-         return true;
       }
       
       private function updtateNotificationsVisible() : void
@@ -357,16 +341,6 @@ package net.wg.gui.battle.components
                _loc3_.invoke(param1);
             }
          }
-      }
-      
-      protected function getNotificationsOffset() : int
-      {
-         return Values.ZERO;
-      }
-      
-      protected function getNotifications() : Object
-      {
-         return this._notificationTimers;
       }
    }
 }

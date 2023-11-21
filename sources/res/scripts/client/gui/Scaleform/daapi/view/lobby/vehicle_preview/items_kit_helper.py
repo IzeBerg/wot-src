@@ -313,7 +313,7 @@ def getItemTitle(rawItem, item, forBox=False, additionalInfo=False):
     elif rawItem.type == ItemPackType.CREW_BOOK_RANDOM:
         title = backport.text(R.strings.tooltips.awardItem.randomBooklet.header())
     elif rawItem.type == ItemPackType.CUSTOM_FREE_XP:
-        title = backport.text(R.strings.tooltips.awardItem.freeXP.header())
+        title = backport.text(R.strings.tooltips.awardItem.customFreeXP.header(), value=backport.getIntegralFormat(rawItem.count))
     else:
         title = rawItem.title or ''
     return title

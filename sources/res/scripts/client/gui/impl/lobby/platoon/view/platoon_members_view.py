@@ -547,25 +547,19 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
         if not self._platoonCtrl.isInPlatoon():
             return
         isInQueue = self._platoonCtrl.isInQueue()
-        isEnabled, onlyReadinessText, simpleState, toolTipData = self._getActionButtonStateInfo()
+        actionButtonStateVO = self.__getActionButtonStateVO()
+        simpleState = actionButtonStateVO.getSimpleState()
+        onlyReadinessText = actionButtonStateVO.isReadinessTooltip()
         with self.viewModel.transaction() as (model):
             if not self._platoonCtrl.isInCoolDown(REQUEST_TYPE.SET_PLAYER_STATE):
-                model.btnSwitchReady.setIsEnabled(isEnabled and not isInQueue)
+                model.btnSwitchReady.setIsEnabled(actionButtonStateVO['isEnabled'] and not isInQueue)
             if self._platoonCtrl.getPlayerInfo().isReady:
                 model.btnSwitchReady.setCaption(backport.text(_strButtons.notReady.caption()))
             else:
                 model.btnSwitchReady.setCaption(backport.text(_strButtons.ready.caption()))
-            model.btnSwitchReady.setDescription(toolTipData)
+            model.btnSwitchReady.setDescription(i18n.makeString(actionButtonStateVO['toolTipData'] + '/body'))
             model.setFooterMessage(simpleState)
-            model.setIsFooterMessageGrey(isEnabled or onlyReadinessText or isInQueue)
-
-    def _getActionButtonStateInfo(self):
-        actionButtonStateVO = self.__getActionButtonStateVO()
-        isEnabled = actionButtonStateVO['isEnabled']
-        onlyReadinessText = actionButtonStateVO.isReadinessTooltip()
-        simpleState = actionButtonStateVO.getSimpleState()
-        toolTipData = i18n.makeString(actionButtonStateVO['toolTipData'] + '/body')
-        return (isEnabled, onlyReadinessText, simpleState, toolTipData)
+            model.setIsFooterMessageGrey(actionButtonStateVO['isEnabled'] or onlyReadinessText or isInQueue)
 
     def _onFindPlayers(self):
         platoonCtrl = self._platoonCtrl

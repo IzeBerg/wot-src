@@ -294,7 +294,7 @@ class DataRequestsByIDProcessor(RequestsByIDProcessor):
 
 _Response = namedtuple('_Response', [
  'code', 'txtStr', 'data', 'extraCode', 'headers'])
-_Response.__new__.__defaults__ = (0, '', None, 0, None)
+_Response.__new__.__defaults__ = (0, '', None, 0)
 
 class Response(_Response):
 

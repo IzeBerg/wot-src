@@ -36,7 +36,6 @@ from gui.impl.lobby.account_completion.utils.common import AccountCompletionType
 from gui.impl.lobby.account_completion.utils.decorators import waitShowOverlay
 from gui.impl.lobby.battle_royale import BATTLE_ROYALE_LOCK_SOURCE_NAME
 from gui.impl.lobby.common.congrats.common_congrats_view import CongratsWindow
-from gui.impl.lobby.maps_training.maps_training_queue_view import MapsTrainingQueueView
 from gui.impl.lobby.tank_setup.dialogs.confirm_dialog import TankSetupConfirmDialog, TankSetupExitConfirmDialog
 from gui.impl.lobby.tank_setup.dialogs.refill_shells import ExitFromShellsConfirm, RefillShells
 from gui.impl.pub.lobby_window import LobbyNotificationWindow, LobbyWindow
@@ -76,7 +75,6 @@ if typing.TYPE_CHECKING:
     from enum import EnumMeta
     from uilogging.wot_plus.logging_constants import WotPlusInfoPageSource
     from gui.impl.lobby.crew.widget.crew_widget import BuildedMessage
-    from gui.game_control.winback_call_controller import _FriendsCache
 _logger = logging.getLogger(__name__)
 
 class SettingsTabIndex(object):
@@ -545,7 +543,7 @@ def showVehiclePreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, v
     heroTankCD = heroTankController.getCurrentTankCD()
     isHeroTank = heroTankCD and heroTankCD == vehTypeCompDescr
     if isHeroTank and not (itemsPack or offers or vehParams):
-        goToHeroTankOnScene(vehTypeCompDescr, previewAlias, previewBackCb=previewBackCb)
+        goToHeroTankOnScene(vehTypeCompDescr, previewAlias, previewBackCb=previewBackCb, instantly=True)
     else:
         vehicle = dependency.instance(IItemsCache).items.getItemByCD(vehTypeCompDescr)
         if not (itemsPack or offers or vehParams) and vehicle.canTradeIn:
@@ -594,7 +592,7 @@ def showDelayedReward():
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_MISSIONS), ctx=kwargs), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
-def goToHeroTankOnScene(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, previewBackCb=None, previousBackAlias=None, hangarVehicleCD=None):
+def goToHeroTankOnScene(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, previewBackCb=None, previousBackAlias=None, hangarVehicleCD=None, instantly=False):
     import BigWorld
     from HeroTank import HeroTank
     from ClientSelectableCameraObject import ClientSelectableCameraObject
@@ -612,21 +610,20 @@ def goToHeroTankOnScene(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, 
                     showResourceWellHeroPreview(descriptor.type.compactDescr, previewAlias=previewAlias, previousBackAlias=previousBackAlias)
                 else:
                     showHeroTankPreview(vehTypeCompDescr, previewAlias=previewAlias, previewBackCb=previewBackCb, previousBackAlias=previousBackAlias, hangarVehicleCD=hangarVehicleCD)
-            ClientSelectableCameraObject.switchCamera(entity, 'HeroTank')
+            ClientSelectableCameraObject.switchCamera(entity, 'HeroTank', instantly)
             break
 
     return
 
 
-def showHeroTankPreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, previousBackAlias=None, previewBackCb=None, hangarVehicleCD=None, backOutfit=None):
+def showHeroTankPreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, previousBackAlias=None, previewBackCb=None, hangarVehicleCD=None):
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.HERO_VEHICLE_PREVIEW), ctx={'itemCD': vehTypeCompDescr, 
        'previewAlias': previewAlias, 
        'previewAppearance': HeroTankPreviewAppearance(), 
        'isHeroTank': True, 
        'previousBackAlias': previousBackAlias, 
        'previewBackCb': previewBackCb, 
-       'hangarVehicleCD': hangarVehicleCD, 
-       'backOutfit': backOutfit}), scope=EVENT_BUS_SCOPE.LOBBY)
+       'hangarVehicleCD': hangarVehicleCD}), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
 def hideVehiclePreview(back=True, close=False):
@@ -844,12 +841,12 @@ def showVehicleCompare():
 
 
 @pointcutable
-def showCrystalWindow(visibility):
+def showCrystalWindow():
     from gui.impl.lobby.crystals_promo.crystals_promo_view import CrystalsPromoView
     uiLoader = dependency.instance(IGuiLoader)
     contentResId = R.views.lobby.crystalsPromo.CrystalsPromoView()
     if uiLoader.windowsManager.getViewByLayoutID(contentResId) is None:
-        g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(contentResId, CrystalsPromoView, ScopeTemplates.LOBBY_SUB_SCOPE), visibility=visibility), scope=EVENT_BUS_SCOPE.LOBBY)
+        g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(contentResId, CrystalsPromoView, ScopeTemplates.LOBBY_SUB_SCOPE)), scope=EVENT_BUS_SCOPE.LOBBY)
     return
 
 
@@ -1693,13 +1690,13 @@ def showContactSupportOverlay(message, isCloseVisible=True, onClose=None):
     wnd.setSubView(ContactSupportOverlayView, message=message, isCloseVisible=isCloseVisible, onClose=onClose)
 
 
-def showModeSelectorWindow(provider=None, subSelectorCallback=None):
+def showModeSelectorWindow(isEventEnabled, provider=None, subSelectorCallback=None):
     from gui.impl.lobby.mode_selector.mode_selector_view import ModeSelectorView
     guiLoader = dependency.instance(IGuiLoader)
     if guiLoader.windowsManager.getViewByLayoutID(R.views.lobby.mode_selector.ModeSelectorView()) is not None:
         return
     else:
-        g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(ModeSelectorView.layoutID, ModeSelectorView, ScopeTemplates.VIEW_SCOPE), provider=provider, subSelectorCallback=subSelectorCallback), scope=EVENT_BUS_SCOPE.LOBBY)
+        g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(ModeSelectorView.layoutID, ModeSelectorView, ScopeTemplates.VIEW_SCOPE), isEventEnabled=isEventEnabled, provider=provider, subSelectorCallback=subSelectorCallback), scope=EVENT_BUS_SCOPE.LOBBY)
         return
 
 
@@ -1728,6 +1725,7 @@ def showMapsTrainingPage(ctx):
 
 
 def showMapsTrainingQueue():
+    from gui.impl.lobby.maps_training.maps_training_queue_view import MapsTrainingQueueView
     _killOldView(R.views.lobby.maps_training.MapsTrainingQueue())
     g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.maps_training.MapsTrainingQueue(), MapsTrainingQueueView, ScopeTemplates.DEFAULT_SCOPE)), scope=EVENT_BUS_SCOPE.LOBBY)
 
@@ -2227,55 +2225,3 @@ def showBattlePassTankmenVoiceover():
     from gui.impl.lobby.battle_pass.tankmen_voiceover_view import TankmenVoiceoverWindow
     window = TankmenVoiceoverWindow()
     window.load()
-
-
-@dependency.replace_none_kwargs(uiLoader=IGuiLoader)
-def openWinBackCallMainView(uiLoader=None):
-    from gui.impl.lobby.winback_call.winback_call_main_view import WinbackCallMainViewWindow
-    if uiLoader.windowsManager.getViewByLayoutID(R.views.lobby.winback_call.WinbackCallMainView()) is None:
-        WinbackCallMainViewWindow().load()
-    return
-
-
-@dependency.replace_none_kwargs(uiLoader=IGuiLoader)
-def showWinbackCallIntroView(uiLoader=None):
-    from gui.impl.lobby.winback_call.winback_call_intro_view import WinbackCallIntroViewWindow
-    if uiLoader.windowsManager.getViewByLayoutID(R.views.lobby.winback_call.WinbackCallIntroView()) is None:
-        WinbackCallIntroViewWindow().load()
-    return
-
-
-def openWinBackCallEntry():
-    from account_helpers.AccountSettings import AccountSettings, WinBackCall
-    isShown = AccountSettings.getWinBackCallSetting(WinBackCall.WIN_BACK_CALL_SHOWN_INTRO, False)
-    if not isShown:
-        showWinbackCallIntroView()
-    else:
-        openWinBackCallMainView()
-
-
-@dependency.replace_none_kwargs(uiLoader=IGuiLoader)
-def openWinBackCallFriendListView(friends, parent=None, uiLoader=None):
-    from gui.impl.lobby.winback_call.winback_call_invitation_view import WinbackCallInvitationViewWindow
-    if uiLoader.windowsManager.getViewByLayoutID(R.views.lobby.winback_call.WinbackCallMainView()) is not None:
-        WinbackCallInvitationViewWindow(friends, parent).load()
-    return
-
-
-@dependency.replace_none_kwargs(uiLoader=IGuiLoader)
-def openWinBackCallErrorView(parent=None, uiLoader=None):
-    from gui.impl.lobby.winback_call.winback_call_error_view import WinbackCallErrorViewWindow
-    if uiLoader.windowsManager.getViewByLayoutID(R.views.lobby.winback_call.WinbackCallMainView()) is not None:
-        WinbackCallErrorViewWindow(parent).load()
-    return
-
-
-@dependency.replace_none_kwargs(notificationMgr=INotificationWindowController, uiLoader=IGuiLoader)
-def showWinbackCallRewardsView(rewards=None, notificationMgr=None, uiLoader=None):
-    from gui.impl.lobby.winback_call.winback_call_rewards_view import WinbackCallRewardsViewWindow
-    if uiLoader.windowsManager.getViewByLayoutID(R.views.lobby.winback_call.WinbackCallRewardsView()) is not None:
-        return
-    else:
-        window = WinbackCallRewardsViewWindow(rewards)
-        notificationMgr.append(WindowNotificationCommand(window))
-        return

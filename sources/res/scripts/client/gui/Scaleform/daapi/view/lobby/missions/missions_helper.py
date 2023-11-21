@@ -667,9 +667,7 @@ class _DetailedMissionInfo(_MissionInfo):
         if xpMultCond:
             extraConditions.append(xpMultCond)
         criteria = criteria | ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE | ~REQ_CRITERIA.VEHICLE.MAPS_TRAINING
-        criteria |= ~REQ_CRITERIA.VEHICLE.EVENT_BATTLE
-        return (
-         criteria, extraConditions, isQuestForBattleRoyale)
+        return (criteria, extraConditions, isQuestForBattleRoyale)
 
     def _getUIDecoration(self):
         decoration = self.eventsCache.prefetcher.getMissionDecoration(self.event.getIconID(), DECORATION_SIZES.DETAILS)

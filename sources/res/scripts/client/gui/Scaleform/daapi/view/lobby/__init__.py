@@ -28,9 +28,7 @@ def getContextMenuHandlers():
      (
       CONTEXT_MENU_HANDLER_TYPE.CUSTOM_USER, user_cm_handlers.CustomUserCMHandler),
      (
-      CONTEXT_MENU_HANDLER_TYPE.COMP_LEADERBOARD_USER, user_cm_handlers.Comp7LeaderboardCMHandler),
-     (
-      CONTEXT_MENU_HANDLER_TYPE.WIN_BACK_CALL_FRIEND_CONTEXT_MENU, user_cm_handlers.WinBackCallFriendCMHandler))
+      CONTEXT_MENU_HANDLER_TYPE.COMP_LEADERBOARD_USER, user_cm_handlers.Comp7LeaderboardCMHandler))
 
 
 def getViewSettings():

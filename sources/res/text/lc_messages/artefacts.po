@@ -41,22 +41,22 @@ msgid "additInvisibilityDeviceBattleBooster/gain/simple"
 msgstr "+2%"
 
 msgid "additInvisibilityDeviceBattleBooster/long_special"
-msgstr "在战斗中提升消音排气系统或赏金排气系统的效果。您必须安装相应的配件该指令才会生效。"
+msgstr "在一场战斗中，提升消音排气系统或赏金排气系统的效果。该指令仅在安装有相应配件时才会生效。"
 
 msgid "additInvisibilityDeviceBattleBooster/name"
 msgstr "排气隔热"
 
 msgid "additInvisibilityDeviceBattleBooster/short_special"
-msgstr "提升坦克在静止和移动时的隐蔽性"
+msgstr "提高坦克在静止和移动时的隐蔽性"
 
 msgid "additionalInvisibilityDevice/long_special"
-msgstr "效果取决于坦克类型。它能增加坦克在静止和移动时的隐蔽系数。对主动侦察，以及在高风险位置的被动侦察都有帮助。"
+msgstr "效果取决于坦克类型。它能提高坦克在静止和移动时的隐蔽性。对主动侦察以及高风险位置的被动侦察都有帮助。"
 
 msgid "additionalInvisibilityDevice/name"
 msgstr "消音排气系统"
 
 msgid "additionalInvisibilityDevice/short_special"
-msgstr "提高坦克在静止和移动状态下的隐蔽系数。"
+msgstr "提高坦克在静止和移动时的隐蔽性。"
 
 msgid "additionalInvisibilityDevice_tier1/name"
 msgstr "1级消音排气系统"
@@ -82,8 +82,7 @@ msgid "afterburning/name"
 msgstr "涡轮增压器"
 
 msgid "aimingStabilizer/long_special"
-msgstr ""
-"降低炮弹散布至关重要: 初始散布越小，瞄准圈越小，火炮可以更快地完全瞄准。此外，毫无准备的射击(没有完全瞄准或在移动中射击)将有更好的机会击中目标。"
+msgstr "降低炮弹散布至关重要: 初始散布越小，瞄准圈越小，完成瞄准越快。此外，仓促地射击(没有完全瞄准或在移动中射击)也能有更高的几率命中。"
 
 msgid "aimingStabilizer/name"
 msgstr "火炮垂直稳定器"
@@ -92,19 +91,19 @@ msgid "aimingStabilizerBattleBooster/descr"
 msgstr "%s安装火炮垂直稳定器、稳定设备系统、赏金垂直稳定器时，射击后、移动和炮塔旋转时的散布范围。"
 
 msgid "aimingStabilizerBattleBooster/gain/deluxe"
-msgstr "提高5%"
+msgstr "-5%"
 
 msgid "aimingStabilizerBattleBooster/gain/simple"
-msgstr "提高5%"
+msgstr "-5%"
 
 msgid "aimingStabilizerBattleBooster/long_special"
-msgstr "提升火炮垂直稳定器(任意等级)、稳定设备系统和赏金垂直稳定器的效果，整场战斗有效。您的坦克上安装有上述配件时该指令才会生效。"
+msgstr "在一场战斗中，提升火炮垂直稳定器(任意等级)、稳定设备系统和赏金垂直稳定器的效果。该指令仅在安装有相应配件时才会生效。"
 
 msgid "aimingStabilizerBattleBooster/name"
 msgstr "稳定器润滑"
 
 msgid "aimingStabilizerBattleBooster/short_special"
-msgstr "增强稳定器的效果"
+msgstr "提升稳定器的效果"
 
 msgid "aimingStabilizer_Mk1/name"
 msgstr "1级火炮垂直稳定器"
@@ -119,13 +118,14 @@ msgid "aimingStabilizer_tier2/name"
 msgstr "2级火炮垂直稳定器"
 
 msgid "antifragmentationLining/long_special"
-msgstr "防崩落内衬吸收损伤；这意味着它们可以减少撞击和HE炮弹的损伤。防崩落内衬在近战中为重型坦克带来了可靠的装甲和巨大的撞击潜力。"
+msgstr ""
+"防崩落内衬能够吸收损伤；这意味着它们可以减少撞击和HE炮弹带来的损伤。对于拥有可靠装甲和巨大撞击潜力的重型坦克而言，防崩落内衬能为它们在近战中带来优势。"
 
 msgid "antifragmentationLining/name"
 msgstr "防崩落内衬"
 
 msgid "antifragmentationLining/short_special"
-msgstr "降低HE炮弹和撞击对坦克和乘员的损伤、降低乘员受伤几率、降低弹震时间"
+msgstr "降低HE炮弹和撞击对坦克和乘员造成的损伤、降低乘员受伤几率、减少受弹震影响时长"
 
 msgid "antifragmentationLining_tier1/name"
 msgstr "防崩落内衬(超重型)"
@@ -216,10 +216,10 @@ msgid "autoExtinguishers/always"
 msgstr "%(vehicleFireChance)s发动机起火概率"
 
 msgid "autoExtinguishers/descr"
-msgstr "自动灭火。"
+msgstr "自动扑灭坦克上的火焰。"
 
 msgid "autoExtinguishers/long_special"
-msgstr "自动灭火并减少坦克起火的可能性。该给养适用于任意系别的所有类型。"
+msgstr "自动灭火并降低坦克起火的概率。该给养适用于任意系别的所有类型坦克。"
 
 msgid "autoExtinguishers/name"
 msgstr "自动灭火器"
@@ -234,22 +234,22 @@ msgid "autoExtinguishers/short_special"
 msgstr "自动灭火"
 
 msgid "berserker/descr"
-msgstr "在一段时间内极大地强化坦克属性和穿透力，但是会扣除坦克生命值。"
+msgstr "在一段时间内显著提升坦克参数和穿透力，但会扣除坦克生命值。"
 
 msgid "berserker/longDescr"
-msgstr "在%(duration)s秒内极大地强化坦克属性和穿透力，但是会扣除坦克生命值。"
+msgstr "在%(duration)s秒内显著提升坦克参数和穿透力，但会扣除坦克生命值。"
 
 msgid "berserker/name"
 msgstr "狂战士"
 
 msgid "berserker/shortDescr"
-msgstr "在%(duration)s秒内极大地强化坦克属性和穿透力，但是会扣除坦克生命值。"
+msgstr "在%(duration)s秒内显著提升坦克参数和穿透力，但会扣除坦克生命值。"
 
 msgid "blackout_headlights_1/name"
-msgstr "车头灯变暗(类型 1)"
+msgstr "车头灯调暗(类型 1)"
 
 msgid "bomber/longDescr"
-msgstr "命令对地攻击机向指定区域投掷炸弹，弹震并对敌方坦克造成损伤。落点区域中心的坦克将受到最多损伤。对轻型和中型装甲的坦克特别有效。"
+msgstr "命令对地攻击机向指定区域投掷炸弹，弹震敌方坦克并造成损伤。落点区域中心的坦克将受到最多损伤。对拥有轻装甲和中等装甲的坦克特别有效。"
 
 msgid "bomber/name"
 msgstr "空袭"
@@ -282,55 +282,55 @@ msgid "brRepairkit/short_special"
 msgstr "修复坦克上所有受损的模块，并移除负面效果。"
 
 msgid "br_bomber/descr"
-msgstr "轰炸指定区域内的敌方坦克，造成损伤并产生弹震效果。"
+msgstr "轰炸指定区域内的敌方坦克，弹震并造成损伤。"
 
 msgid "br_bomber/longDescr"
-msgstr "轰炸指定区域内的敌方坦克，造成损伤并产生弹震效果。"
+msgstr "轰炸指定区域内的敌方坦克，弹震并造成损伤。"
 
 msgid "br_bomber/name"
 msgstr "空袭"
 
 msgid "br_bomber/shortDescr"
-msgstr "轰炸指定区域内的敌方坦克，造成损伤并产生弹震效果。"
+msgstr "轰炸指定区域内的敌方坦克，弹震并造成损伤。"
 
 msgid "br_minefield/descr"
-msgstr "在指定区域内埋下激活的地雷，持续一段时间。敌人可以射击您的地雷将其摧毁。"
+msgstr "在指定区域部署激活的地雷，雷区将持续生效一段时间。敌人可以通过射击摧毁您的地雷。"
 
 msgid "br_minefield/longDescr"
-msgstr "在指定区域内埋下激活的地雷，持续%(duration)s秒。敌人可以射击您的地雷将其摧毁。"
+msgstr "在指定区域部署激活的地雷，雷区将持续生效%(duration)s秒。敌人可以通过射击摧毁您的地雷。"
 
 msgid "br_minefield/name"
 msgstr "雷区"
 
 msgid "br_minefield/shortDescr"
-msgstr "在指定区域内埋下激活的地雷，持续一段时间。敌人可以射击您的地雷将其摧毁。"
+msgstr "在指定区域部署激活的地雷，雷区将持续生效一段时间。敌人可以通过射击摧毁您的地雷。"
 
 msgid "br_respawn/name"
 msgstr "重生"
 
 msgid "br_respawn/platoon/descr"
 msgstr ""
-"让您可以在坦克被击毁后重返战斗。该机制在战斗的前%(duration)s分钟内生效。\n"
+"您可在坦克被击毁后重返战斗。该机制在战斗的前%(duration)s分钟内生效。\n"
 "\n"
 "您需要脱离战斗%(timeToResurrect)s秒才能使盟友重生。小队中的盟友共享重生充能次数。"
 
 msgid "br_respawn/solo/descr"
 msgstr ""
-"让您可以在坦克被击毁后重返战斗。该机制在战斗的前%(duration)s分钟内生效。\n"
+"您可在坦克被击毁后重返战斗。该机制在战斗的前%(duration)s分钟内生效。\n"
 "\n"
 "坦克在击毁后自动重生。"
 
 msgid "br_smoke/descr"
-msgstr "增强该给养范围内所有坦克的隐蔽性能。"
+msgstr "提高该给养作用范围内所有坦克的隐蔽性。"
 
 msgid "br_smoke/longDescr"
-msgstr "增强该给养范围内所有坦克的隐蔽性能，隐蔽增强效果持续%(duration)s秒。"
+msgstr "提高该给养作用范围内所有坦克的隐蔽性，效果持续%(duration)s秒。"
 
 msgid "br_smoke/name"
 msgstr "烟幕"
 
 msgid "br_smoke/shortDescr"
-msgstr "增强该给养范围内所有坦克的隐蔽性能。"
+msgstr "提高该给养作用范围内所有坦克的隐蔽性。"
 
 msgid "br_smoke_with_damage/descr"
 msgstr "对气雾中的所有坦克造成损伤并降低其观察范围。隐藏气雾中及气雾后方的所有坦克。"
@@ -348,14 +348,14 @@ msgid "builtinRepairkit/always"
 msgstr "%(vehicleRepairSpeed)s模块维修速度"
 
 msgid "builtinRepairkit/long_special"
-msgstr "激活后一次修复所有损坏的模块。 被动效应提高了修复速度。 该给养适用于某些坦克。"
+msgstr "激活后修复所有受损模块。被动效果为加快修理速度。该给养适用于特定坦克。"
 
 msgid "builtinRepairkit/name"
 msgstr "标准大修理箱"
 
 msgid "builtinRepairkit/onUse"
 msgstr ""
-"修理所有损坏的模块。 在战斗中可以多次使用。不会被消耗。\n"
+"修理所有受损模块。在战斗中可以多次使用。不会被消耗。\n"
 "该给养无法移除，但可以移动到另一个栏位。"
 
 msgid "builtinRepairkit/restriction"
@@ -365,24 +365,24 @@ msgid "camouflageBattleBooster/action/boost"
 msgstr "提升10%的坦克隐蔽性"
 
 msgid "camouflageBattleBooster/action/perk"
-msgstr "把全体乘员的隐蔽特长训练至100%"
+msgstr "为所有乘员提供100%熟练度的隐蔽特长"
 
 msgid "camouflageBattleBooster/long_special"
 msgstr ""
-"隐蔽特长提高坦克静止和移动时的隐蔽系数，整场战斗有效。如果该特长已训练至100%，安装指令会增强其效果；否则该指令为坦克提供100%熟练度的特长。"
+"在一场战斗中，隐蔽特长提高坦克静止和移动时的隐蔽系数。如果该特长已训练至100%，安装指令会提升其效果；否则该指令会为坦克提供100%熟练度的特长。"
 
 msgid "camouflageBattleBooster/name"
 msgstr "天然屏障"
 
 msgid "camouflageBattleBooster/short_special"
-msgstr "提供100%熟练度的隐蔽特长或增强其效果"
+msgstr "提供100%熟练度的隐蔽特长，或提升其效果"
 
 msgid "camouflageNet/battle_descr"
-msgstr "增加坦克静止3秒后的隐蔽系数"
+msgstr "坦克静止3秒后提高其隐蔽性"
 
 msgid "camouflageNet/long_special"
 msgstr ""
-"效果取决于坦克类型。伪装网主要对车身低矮的自行火炮和自行反坦克炮等隐蔽型坦克有利，它可以增强隐蔽特长的效果。两者结合可以给坦克提供相当高的加成。该配件在坦克停止移动3秒后激活。"
+"效果取决于坦克类型。伪装网对自行火炮和车身低矮的自行反坦克炮等隐蔽型坦克增益最大，它可以提升隐蔽特长的效果。两者结合可以给坦克提供相当高的加成。该配件在坦克停止移动3秒后激活。"
 
 msgid "camouflageNet/name"
 msgstr "伪装网"
@@ -418,10 +418,10 @@ msgid "chocolate/short_special"
 msgstr "提高D系乘员的效率"
 
 msgid "clingBrander/descr"
-msgstr "呼叫无人驾驶的坦克，它会追踪并攻击距离最近的敌人。"
+msgstr "召唤一辆无人驾驶坦克，它会追踪并攻击距离最近的敌人。"
 
 msgid "clingBrander/longDescr"
-msgstr "呼叫无人驾驶的坦克，该坦克配备了能够辨别盟友或敌方的系统，能够追踪并攻击距离最近的敌人。该坦克可以被击毁。"
+msgstr "召唤一辆无人驾驶坦克，该坦克配备了敌我识别系统，能够追踪并攻击距离最近的敌人。该坦克可以被击毁。"
 
 msgid "clingBrander/name"
 msgstr "智械猎手"
@@ -437,7 +437,7 @@ msgstr "摩擦联轴器替换(类型 2)"
 
 msgid "coatedOptics/long_special"
 msgstr ""
-"与炮队镜不同，高级光学观察镜(任意种类)提供较小且不会随着坦克移动而消失的加成。因此，高级光学观察镜对于高机动性的轻型坦克和中型坦克非常有益。"
+"与炮队镜不同，高级光学观察镜(任意种类)所提供的加成相对较少，但不会随着坦克移动而失效。因此，高级光学观察镜对于高机动的轻型坦克和中型坦克非常有益。"
 
 msgid "coatedOptics/name"
 msgstr "高级光学观察镜"
@@ -452,13 +452,13 @@ msgid "coatedOpticsBattleBooster/gain/simple"
 msgstr "+2.5%"
 
 msgid "coatedOpticsBattleBooster/long_special"
-msgstr "在战斗中提升高级光学观察镜、试验型观察镜或赏金观察镜的效果。您的坦克上安装有这些配件时才能安装并激活该指令。"
+msgstr "在一场战斗中，提升高级光学观察镜、试验型观察镜或赏金观察镜的效果。该指令仅在安装有相应配件时才会生效。"
 
 msgid "coatedOpticsBattleBooster/name"
 msgstr "光学校准"
 
 msgid "coatedOpticsBattleBooster/short_special"
-msgstr "增强观察镜的效果"
+msgstr "提升观察镜的效果"
 
 msgid "coatedOptics_tier1/name"
 msgstr "1级高级光学观察镜"
@@ -737,7 +737,7 @@ msgstr "维修后恢复悬挂装置的生命值。"
 
 msgid "deluxeExtraHealthReserve/long_special"
 msgstr ""
-"改进耐久的改进型版本：{colorTagOpen}+12.5%{colorTagClose}坦克生命值，{colorTagOpen}+75%{colorTagClose}悬挂装置耐久度，{colorTagOpen}+30%{colorTagClose}悬挂装置维修速度，{colorTagOpen}+10%{colorTagClose}承载能力，{colorTagOpen}–75%{colorTagClose}悬挂装置受冲击时对车体造成的损伤。修复后完全恢复悬挂装置生命值。降低受到损伤时履带损坏的几率，使您的坦克尽量不失去移动能力。此装备适用于所有系别和类型的坦克（自行火炮除外）。只能使用战争债券进行拆卸。"
+"改进耐久的改进型版本：{colorTagOpen}+12.5%{colorTagClose}坦克生命值，{colorTagOpen}+75%{colorTagClose}悬挂装置耐久度，{colorTagOpen}+30%{colorTagClose}悬挂装置维修速度，{colorTagOpen}+10%{colorTagClose}承载能力，{colorTagOpen}–75%{colorTagClose}悬挂装置受冲击时对车体造成的损伤。修复后完全恢复悬挂装置生命值。降低受到损伤时履带损坏的几率，使您的坦克尽量保持机动状态。此配件适用于所有系别和类型的坦克(自行火炮除外)。只能使用战争债券进行拆卸。"
 
 msgid "deluxeExtraHealthReserve/name"
 msgstr "炮弹抗性加强"
@@ -821,13 +821,13 @@ msgid "enhancedAimDrivesBattleBooster/gain/simple"
 msgstr "+2.5%"
 
 msgid "enhancedAimDrivesBattleBooster/long_special"
-msgstr "在战斗中提升赏金炮控系统、改进型炮控系统或耐磨型炮控系统的效果。您的坦克上安装有这些配件时才能安装并激活该指令。"
+msgstr "在一场战斗中，提升赏金炮控系统、改进型炮控系统或耐磨型炮控系统的效果。该指令仅在安装有相应配件时才会生效。"
 
 msgid "enhancedAimDrivesBattleBooster/name"
 msgstr "百发百中"
 
 msgid "enhancedAimDrivesBattleBooster/short_special"
-msgstr "增强炮控系统的效果"
+msgstr "提升炮控系统的效果"
 
 msgid "enhancedAimDrives_tier1/name"
 msgstr "1级改进型炮控系统"
@@ -912,16 +912,16 @@ msgid "fireFightingBattleBooster/action/boost"
 msgstr "灭火特长提高50%"
 
 msgid "fireFightingBattleBooster/action/perk"
-msgstr "将乘员的灭火特长训练至100%"
+msgstr "为所有乘员提供100%熟练度的灭火特长"
 
 msgid "fireFightingBattleBooster/long_special"
-msgstr "灭火特长提高坦克的灭火能力，整场战斗有效。如果该特长已训练至100%，安装指令会增强其效果；否则该指令会为坦克提供100%熟练度的特长。"
+msgstr "在一场战斗中，灭火特长提高坦克的灭火能力。如果该特长已训练至100%，安装指令会提升其效果；否则该指令会为坦克提供100%熟练度的特长。"
 
 msgid "fireFightingBattleBooster/name"
 msgstr "炉火纯青"
 
 msgid "fireFightingBattleBooster/short_special"
-msgstr "提供100%熟练度的灭火特长或增强其效果"
+msgstr "提供100%熟练度的灭火特长，或提升其效果"
 
 msgid "fort_aoe_artillery/longDescr"
 msgstr "命令火炮向指定区域开火，对区域内的所有坦克造成损伤。"
@@ -1110,13 +1110,13 @@ msgid "improvedConfigurationBattleBooster/gain/simple"
 msgstr "+10%"
 
 msgid "improvedConfigurationBattleBooster/long_special"
-msgstr "在战斗中提升结构调整、结构改进、赏金防护技术的效果。您的坦克上安装有这些配件时才能安装并激活该指令。"
+msgstr "在一场战斗中，提升结构调整、结构改进、赏金防护技术的效果。该指令仅在安装有相应配件时才会生效。"
 
 msgid "improvedConfigurationBattleBooster/name"
 msgstr "战前保养"
 
 msgid "improvedConfigurationBattleBooster/short_special"
-msgstr "强化结构调整的效果"
+msgstr "提升结构调整的效果"
 
 msgid "improvedConfiguration_tier1/name"
 msgstr "1级结构调整"
@@ -1168,13 +1168,13 @@ msgid "improvedSightsBattleBooster/gain/simple"
 msgstr "–2%"
 
 msgid "improvedSightsBattleBooster/long_special"
-msgstr "在战斗中提升改进型瞄具或赏金瞄具的效果。您必须安装相应的配件该指令才会生效。"
+msgstr "在一场战斗中，提升改进型瞄具或赏金瞄具的效果。该指令仅在安装有相应配件时才会生效。"
 
 msgid "improvedSightsBattleBooster/name"
 msgstr "镜片抛光"
 
 msgid "improvedSightsBattleBooster/short_special"
-msgstr "降低瞄准圈的大小"
+msgstr "缩小瞄准圈的大小"
 
 msgid "improvedSights_tier1/name"
 msgstr "1级改进型瞄具"
@@ -1201,13 +1201,13 @@ msgid "improvedVentilationBattleBooster/gain/simple"
 msgstr "+2.5%"
 
 msgid "improvedVentilationBattleBooster/long_special"
-msgstr "在战斗中提升改进型通风系统(任意等级)、赏金通风系统或通风系统的效果。您的坦克上安装有这些配件时才能安装并激活该指令。"
+msgstr "在一场战斗中，提升改进型通风系统(任意等级)、赏金通风系统或通风系统的效果。该指令仅在安装有相应配件时才会生效。"
 
 msgid "improvedVentilationBattleBooster/name"
 msgstr "净化通风"
 
 msgid "improvedVentilationBattleBooster/short_special"
-msgstr "提升通风效果"
+msgstr "提升通风的效果"
 
 msgid "improvedVentilation_class1/name"
 msgstr "1级改进型通风系统"
@@ -1284,13 +1284,13 @@ msgid "largeRepairkit/descr"
 msgstr "修复所有受损模块。"
 
 msgid "largeRepairkit/long_special"
-msgstr "激活后一次修复所有损坏的模块。 被动效应提高了修复速度。 该给养适用于任意系别的所有类型。"
+msgstr "激活后，立即修复所有受损模块。被动效果为加快修理速度。该给养适用于任意系别的所有类型坦克。"
 
 msgid "largeRepairkit/name"
 msgstr "大修理箱"
 
 msgid "largeRepairkit/onUse"
-msgstr "修复所有损坏的模块。可以在一场战斗中多次使用。如果使用过一次以上，该给养在战斗结束后会被移除。"
+msgstr "修复所有受损模块。可以在一场战斗中多次使用。如果使用过一次以上，该给养在战斗结束后会被移除。"
 
 msgid "largeRepairkit/restriction"
 msgstr "?empty?"
@@ -1302,17 +1302,17 @@ msgid "lastEffortBattleBooster/action/boost"
 msgstr "最后的电波特长提高50%"
 
 msgid "lastEffortBattleBooster/action/perk"
-msgstr "把特长最后的电波训练到100%"
+msgstr "为乘员提供100%熟练度的最后的电波特长"
 
 msgid "lastEffortBattleBooster/long_special"
 msgstr ""
-"最后的电波使坦克在战斗过程中被击毁后能够继续报告敌人的位置，持续2秒钟。如果特长训练至100%，则安装的指令会使持续时间增加1秒(总计3秒)；否则，该指令为您的坦克提供100%熟练度的特长(常规的2秒)。"
+"在一场战斗中，最后的电波特长使坦克被击毁后仍能够继续报告敌人的位置，持续2秒。如果特长训练至100%，安装指令会使持续时间额外增加1秒(总计3秒)；否则该指令会为坦克提供100%熟练度的特长(常规的2秒)。"
 
 msgid "lastEffortBattleBooster/name"
 msgstr "责任至上"
 
 msgid "lastEffortBattleBooster/short_special"
-msgstr "提供100%训练的复仇召唤或增加其效果"
+msgstr "提供100%熟练度的最后的电波特长，或提升其效果"
 
 msgid "lendLeaseOil/always"
 msgstr "%(vehicleEnginePower)s发动机功率，整场战斗有效。"
@@ -1456,17 +1456,16 @@ msgid "pedantBattleBooster/action/boost"
 msgstr "规整弹药特长提高300%"
 
 msgid "pedantBattleBooster/action/perk"
-msgstr "将规整弹药特长训练至100%"
+msgstr "为乘员提供100%熟练度的规整弹药特长"
 
 msgid "pedantBattleBooster/long_special"
-msgstr ""
-"规整弹药特长可在战斗期间提高弹药架的稳定性。如果特长训练至100%，则装备指令会增强其效果；如果没有，该指令为您的坦克提供100%熟练度的特长。"
+msgstr "在一场战斗中，规整弹药特长提高弹药架的耐久度。如果特长训练至100%，安装指令会提升其效果；否则该指令会为坦克提供100%熟练度的特长。"
 
 msgid "pedantBattleBooster/name"
 msgstr "规整炮弹"
 
 msgid "pedantBattleBooster/short_special"
-msgstr "提供100%熟练度的规整弹药特长，或者增强它的效果"
+msgstr "提供100%熟练度的规整弹药特长，或提升其效果"
 
 msgid "poi_artillery_aoe/descr"
 msgstr ""
@@ -1521,30 +1520,29 @@ msgid "rammerBattleBooster/gain/simple"
 msgstr "-2.5%"
 
 msgid "rammerBattleBooster/long_special"
-msgstr "在战斗中提升输弹机(任意火炮类型和口径)、赏金输弹机或改进型装填系统的效果。您的坦克上安装有这些配件时才能安装并激活该指令。"
+msgstr "在一场战斗中，提升输弹机(任意火炮类型和口径)、赏金输弹机或改进型装填系统的效果。该指令仅在安装有相应配件时才会生效。"
 
 msgid "rammerBattleBooster/name"
 msgstr "规整弹药架"
 
 msgid "rammerBattleBooster/short_special"
-msgstr "增强输弹机的效果"
+msgstr "提升输弹机的效果"
 
 msgid "rancorousBattleBooster/action/boost"
 msgstr "复仇女神特长的效果加倍"
 
 msgid "rancorousBattleBooster/action/perk"
-msgstr "将复仇女神特长训练至100%"
+msgstr "为乘员提供100%熟练度的复仇女神特长"
 
 msgid "rancorousBattleBooster/long_special"
 msgstr ""
-"复仇女神特长可以使得目标敌方坦克可见时间延长两秒钟。如果特长训练至 100%，则装备该指令会增强其效果；如果没有，该指令则为您的坦克提供 100% "
-"熟练度的特长。"
+"在一场战斗中，复仇女神特长可以使得目标敌方坦克可见时间延长2秒。如果特长训练至100%，安装指令会提升其效果；否则该指令会为坦克提供100%熟练度的特长。"
 
 msgid "rancorousBattleBooster/name"
 msgstr "专注目标"
 
 msgid "rancorousBattleBooster/short_special"
-msgstr "提供100%熟练度的复仇女神特长，或者增强其效果"
+msgstr "提供100%熟练度的复仇女神特长，或提升其效果"
 
 msgid "ration/always"
 msgstr "%(crewLevel)s所有乘员特长在整场战斗中的熟练度。"
@@ -2248,12 +2246,12 @@ msgstr ""
 "调整"
 
 msgid "role_SPG_pair_1_2/name"
-msgstr "发动机调整"
+msgstr "发动机调校"
 
 msgid "role_SPG_pair_1_2/splitName"
 msgstr ""
 "发动机\n"
-"调整"
+"调校"
 
 msgid "role_SPG_pair_2_1/name"
 msgstr "猎手S套件"
@@ -2288,19 +2286,19 @@ msgstr ""
 "调整(设置2)"
 
 msgid "role_SPG_pair_4_1/name"
-msgstr "装填装置调整"
+msgstr "装填机构调整"
 
 msgid "role_SPG_pair_4_1/splitName"
 msgstr ""
-"装填装置\n"
+"装填机构\n"
 "调整"
 
 msgid "role_SPG_pair_4_2/name"
-msgstr "瞄准装置调整"
+msgstr "瞄准机构调整"
 
 msgid "role_SPG_pair_4_2/splitName"
 msgstr ""
-"瞄准装置\n"
+"瞄准机构\n"
 "调整"
 
 msgid "role_SPG_pair_5_1/name"
@@ -2492,7 +2490,7 @@ msgid "sixthSenseBattleBooster/description/builtinPerkBooster"
 msgstr "战场直觉能够让车长识别坦克是否被敌方点亮。在您的坦克被点亮3秒后激活。"
 
 msgid "sixthSenseBattleBooster/long_special"
-msgstr "战场直觉车长特性能够让车长识别坦克是否被敌方点亮，整场战斗有效。安装指令可增强其效果。"
+msgstr "在一场战斗中，战场直觉车长特性能够让车长识别坦克是否被敌方点亮。安装指令会提升其效果。"
 
 msgid "sixthSenseBattleBooster/name"
 msgstr "全神贯注"
@@ -2535,19 +2533,19 @@ msgstr "修复受损的模块或任意类型的悬挂装置。"
 
 msgid "smallRepairkit/long_special"
 msgstr ""
-"激活时，修复一个损坏的模块(例如火炮或发动机)或任意类型的悬挂装置。适用于任何系别的所有类型坦克。如果使用过一次以上，该给养在战斗结束后会被移除。"
+"激活后，修复某一受损模块(如火炮或发动机)或任意类型悬挂装置。适用于任何系别的所有类型坦克。如果使用过一次以上，该给养在战斗结束后会被移除。"
 
 msgid "smallRepairkit/name"
 msgstr "小修理箱"
 
 msgid "smallRepairkit/onUse"
-msgstr "修复某一损坏的模块或者所有履带。可以在一场战斗中多次使用。如果使用过一次或以上，该给养在战斗结束后会被移除。"
+msgstr "修复某一受损模块或全部受损履带。可以在一场战斗中多次使用。如果使用过一次或以上，该给养在战斗结束后会被移除。"
 
 msgid "smallRepairkit/restriction"
 msgstr "?empty?"
 
 msgid "smallRepairkit/short_special"
-msgstr "修理一个损坏的模块"
+msgstr "修理一个受损模块"
 
 msgid "smoke/longDescr"
 msgstr "放置烟幕可以隐藏烟幕中及烟幕后方的所有坦克。烟幕中敌方坦克的观察范围及乘员表现会下降。"
@@ -2562,33 +2560,33 @@ msgid "smoothDrivingBattleBooster/action/boost"
 msgstr "平稳驾驶特长的效果加倍"
 
 msgid "smoothDrivingBattleBooster/action/perk"
-msgstr "把平稳驾驶特长训练至100%"
+msgstr "为乘员提供100%熟练度的平稳驾驶特长"
 
 msgid "smoothDrivingBattleBooster/long_special"
 msgstr ""
-"平稳驾驶特长增强坦克的移动射击精度，整场战斗有效。如果该特长已训练至100%，安装指令会增强其效果；否则该指令会为坦克提供100%熟练度的特长。"
+"在一场战斗中，平稳驾驶特长增强坦克的移动射击精度。如果该特长已训练至100%，安装指令会提升其效果；否则该指令会为坦克提供100%熟练度的特长。"
 
 msgid "smoothDrivingBattleBooster/name"
 msgstr "变速之钥"
 
 msgid "smoothDrivingBattleBooster/short_special"
-msgstr "将平稳驾驶特长熟练度训练至100%或增强其效果"
+msgstr "提供100%熟练度的平稳驾驶特长，或提升其效果"
 
 msgid "smoothTurretBattleBooster/action/boost"
 msgstr "将人工稳定特长的效果加倍"
 
 msgid "smoothTurretBattleBooster/action/perk"
-msgstr "将人工稳定特长熟练度训练至100%"
+msgstr "为乘员提供100%熟练度的人工稳定特长"
 
 msgid "smoothTurretBattleBooster/long_special"
 msgstr ""
-"人工稳定特长增强炮塔旋转时的射击精度，整场战斗有效。如果该特长已训练至100%，安装指令会增强其效果；否则该指令会为坦克提供100%熟练度的特长。"
+"在一场战斗中，人工稳定特长增强炮塔旋转时的射击精度。如果该特长已训练至100%，安装指令会提升其效果；否则该指令会为坦克提供100%熟练度的特长。"
 
 msgid "smoothTurretBattleBooster/name"
 msgstr "稳若泰山"
 
 msgid "smoothTurretBattleBooster/short_special"
-msgstr "提供100%熟练度的人工稳定特长或增强其效果"
+msgstr "提供100%熟练度的人工稳定特长，或提升其效果"
 
 msgid "spawn_kamikaze/descr"
 msgstr "部署一个自走式地雷，地雷会追逐最近的敌人，并在爆炸时造成损伤。敌人可以射击您的飞火流星，将其摧毁。"
@@ -2640,7 +2638,7 @@ msgid "suspension_elements_replace_2/name"
 msgstr "悬挂装置模块替换(类型 2)"
 
 msgid "swing_mechanisms_lapping_1/name"
-msgstr "转动装置抛光(类型 1)"
+msgstr "旋转机构抛光(类型 1)"
 
 msgid "tankRammer/name"
 msgstr "输弹机"
@@ -2652,10 +2650,10 @@ msgid "tankRammer_tier2/name"
 msgstr "2级输弹机"
 
 msgid "thunderStrike/descr"
-msgstr "制造一个会产生电击的区域，电击会损伤能力效果范围内的敌方坦克，并降低其机动性。"
+msgstr "制造一片电击区域，对能力效果范围内的敌方坦克造成损伤，并降低其机动性。"
 
 msgid "thunderStrike/longDescr"
-msgstr "制造一个会产生一系列高频率电击的区域。每个电击会损伤敌方坦克并降低其机动性。"
+msgstr "制造一片会产生一系列高频电击的区域。每次电击都会对敌方坦克造成损伤，并降低其机动性。"
 
 msgid "thunderStrike/name"
 msgstr "脉冲电场"
@@ -2706,7 +2704,7 @@ msgid "trophyBasicExtraHealthReserve/additional_descr"
 msgstr "修理后完全恢复悬挂装置的耐久度。"
 
 msgid "trophyBasicExtraHealthReserve/effect/chassisRestoration"
-msgstr "维修后恢复悬挂装置"
+msgstr "维修后恢复悬挂装置耐久度"
 
 msgid "trophyBasicExtraHealthReserve/long_special"
 msgstr ""
@@ -2725,7 +2723,7 @@ msgid "trophyBasicImprovedRotationMechanism/name"
 msgstr "赏金旋转装置"
 
 msgid "trophyBasicImprovedSights/long_special"
-msgstr "减小瞄准圈的大小以增加正在瞄准或是完全瞄准火炮的精度，使您的火炮更容易命中目标。"
+msgstr "缩小瞄准中或已完成瞄准的火炮瞄准圈大小，从而提升精度，使您有更大概率命中目标。"
 
 msgid "trophyBasicImprovedSights/name"
 msgstr "赏金瞄具"
@@ -2746,7 +2744,7 @@ msgid "trophyBasicTankRammer/short_special"
 msgstr "加快火炮装填速度。无等级限制。"
 
 msgid "trophyBasicTurbocharger/long_special"
-msgstr "增加发动机功率，使坦克的加速能力、操控性、爬坡能力更加优秀。增加坦克的最大前进和倒车速度，使您能更快抵达战略要点或是躲避敌方回击。"
+msgstr "增加发动机功率，使坦克的加速能力、操控性、爬坡能力更加优秀。增加坦克的最大前进和倒车速度，使您能更快抵达点位或躲避敌方回击。"
 
 msgid "trophyBasicTurbocharger/name"
 msgstr "赏金涡轮增压器"
@@ -2800,7 +2798,7 @@ msgid "trophyUpgradedTurbocharger/name"
 msgstr "赏金涡轮增压器"
 
 msgid "turbocharger/long_special"
-msgstr "增加发动机功率，使坦克的加速能力、操控性、爬坡能力更加优秀。增加坦克的最大前进和倒车速度，使您能更快抵达战略要点或是躲避敌方回击。"
+msgstr "增加发动机功率，使坦克的加速能力、操控性、爬坡能力更加优秀。增加坦克的最大前进和倒车速度，使您能更快抵达点位或躲避敌方回击。"
 
 msgid "turbocharger/name"
 msgstr "涡轮增压器"
@@ -2818,7 +2816,7 @@ msgid "turbochargerBattleBooster/gain/simple"
 msgstr "+4%"
 
 msgid "turbochargerBattleBooster/long_special"
-msgstr "在战斗过程中提升涡轮增压器、赏金涡轮增压器或改进型压缩机的效果。您必须安装相应的配件该指令才会生效。"
+msgstr "在一场战斗中，提升涡轮增压器、赏金涡轮增压器或改进型压缩机的效果。该指令仅在安装有相应配件时才会生效。"
 
 msgid "turbochargerBattleBooster/name"
 msgstr "更换燃料过滤器"
@@ -2839,14 +2837,14 @@ msgid "virtuosoBattleBooster/action/boost"
 msgstr "快速转弯特长的效果加倍"
 
 msgid "virtuosoBattleBooster/action/perk"
-msgstr "将快速转弯特长熟练度训练至100%"
+msgstr "为乘员提供100%熟练度的快速转弯特长"
 
 msgid "virtuosoBattleBooster/long_special"
 msgstr ""
-"快速转弯特长将在战斗过程中同时提升原地和移动中的转向速度。如果特长熟练度已训练至100%，该指令将提升特长效果。如果没有，装备该指令可将特长熟练度提升至100%。"
+"在一场战斗中，快速转弯特长提高原地和移动中的转向速度。如果特长熟练度已训练至100%，安装指令会提升其效果；否则该指令会为坦克提供100%熟练度的特长。"
 
 msgid "virtuosoBattleBooster/name"
 msgstr "战斗培训"
 
 msgid "virtuosoBattleBooster/short_special"
-msgstr "将快速转弯特长熟练度训练至100%，或提升特长效果"
+msgstr "提供100%熟练度的快速转弯特长，或提升其效果"
