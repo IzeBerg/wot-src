@@ -1,6 +1,6 @@
 import itertools
 from copy import deepcopy
-import BigWorld, CGF, SoundGroups
+import BigWorld, SoundGroups
 from CurrentVehicle import g_currentPreviewVehicle, g_currentVehicle
 from HeroTank import HeroTank
 from account_helpers import AccountSettings
@@ -16,7 +16,6 @@ from gui.Scaleform.daapi.view.lobby.vehicle_compare.formatters import resolveSta
 from gui.Scaleform.daapi.view.lobby.vehicle_preview.hero_tank_preview_constants import getHeroTankPreviewParams
 from gui.Scaleform.daapi.view.lobby.vehicle_preview.info.crew_tab import getUniqueMembers
 from gui.Scaleform.daapi.view.lobby.vehicle_preview.items_kit_helper import OFFER_CHANGED_EVENT, addBuiltInEquipment, getActiveOffer
-from gui.Scaleform.daapi.view.lobby.header.LobbyHeader import HeaderMenuVisibilityState
 from gui.Scaleform.daapi.view.lobby.vehicle_preview.sound_constants import RESEARCH_PREVIEW_SOUND_SPACE, VEHICLE_PREVIEW_SOUND_SPACE
 from gui.Scaleform.daapi.view.meta.VehiclePreviewMeta import VehiclePreviewMeta
 from gui.Scaleform.framework import g_entitiesFactories
@@ -51,7 +50,6 @@ from tutorial.control.context import GLOBAL_FLAG
 from uilogging.shop.loggers import getPreviewUILoggers
 from uilogging.shop.logging_constants import ShopCloseItemStates
 from web.web_client_api.common import ItemPackEntry, ItemPackType, ItemPackTypeGroup
-from cgf_components.hangar_styles_components import StylePreviewManager
 VEHICLE_PREVIEW_ALIASES = (
  VIEW_ALIAS.VEHICLE_PREVIEW, VIEW_ALIAS.HERO_VEHICLE_PREVIEW, VIEW_ALIAS.OFFER_GIFT_VEHICLE_PREVIEW,
  VIEW_ALIAS.TRADE_IN_VEHICLE_PREVIEW, VIEW_ALIAS.MARATHON_VEHICLE_PREVIEW, VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW,
@@ -146,7 +144,6 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         self._previewBackCb = ctx.get('previewBackCb')
         self._backBtnLabel = ctx.get('backBtnLabel')
         self.__isHeroTank = ctx.get('isHeroTank', False)
-        self.__isHiddenMenu = ctx.get('isHiddenMenu', False)
         self.__customizationCD = (ctx.get('vehParams') or {}).get('styleCD')
         self.__offers = ctx.get('offers')
         self._price = ctx.get('price', MONEY_UNDEFINED)
@@ -157,7 +154,6 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         self.__buyParams = ctx.get('buyParams')
         self.__topPanelData = ctx.get('topPanelData') or {}
         self.__style = ctx.get('style')
-        self.__outfit = ctx.get('outfit')
         self.__subscriptions = ctx.get('subscriptions') or ()
         self.__unmodifiedItemsPack = deepcopy(self._itemsPack)
         addBuiltInEquipment(self._itemsPack, self._itemsCache, self._vehicleCD)
@@ -200,7 +196,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         else:
             if g_currentPreviewVehicle.intCD == self._vehicleCD:
                 g_currentPreviewVehicle.selectNoVehicle()
-            g_currentPreviewVehicle.selectVehicle(self._vehicleCD, self.__vehicleStrCD, style=self.__style, outfit=self.__outfit)
+            g_currentPreviewVehicle.selectVehicle(self._vehicleCD, self.__vehicleStrCD, style=self.__style)
             super(VehiclePreview, self)._populate()
             g_currentPreviewVehicle.onChanged += self.__onVehicleChanged
             g_currentPreviewVehicle.onVehicleInventoryChanged += self._onInventoryChanged
@@ -226,13 +222,6 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             for event, callback in self.__subscriptions:
                 event += callback
 
-        stylesManager = CGF.getManager(self.__hangarSpace.spaceID, StylePreviewManager)
-        if stylesManager:
-            if not self.__isHeroTank:
-                stylesManager.deactivateSelection()
-            else:
-                stylesManager.showAllMArkers()
-        self._updateTopMenu(HeaderMenuVisibilityState.NOTHING)
         return
 
     def _dispose(self):
@@ -249,15 +238,9 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         self.__hangarSpace.onSpaceRefresh -= self.closeView
         self.__hangarSpace.setVehicleSelectable(self.__keepVehicleSelectionEnabled)
         self.removeListener(CameraRelatedEvents.CAMERA_ENTITY_UPDATED, self.handleSelectedEntityUpdated)
-        if not self.__isHeroTank and self.__hangarSpace.spaceID:
-            stylesManager = CGF.getManager(self.__hangarSpace.spaceID, StylePreviewManager)
-            if stylesManager:
-                stylesManager.activateSelection()
         isMapsTrainingViewOpened = self.__guiLoader.windowsManager.getViewByLayoutID(R.views.lobby.maps_training.MapsTrainingPage()) is not None
-        isHwStyleViewOpened = self.__guiLoader.windowsManager.getViewByLayoutID(R.views.halloween.lobby.StylePreview()) is not None
         if self._needToResetAppearance and not isMapsTrainingViewOpened:
-            if not isHwStyleViewOpened:
-                g_currentPreviewVehicle.selectNoVehicle()
+            g_currentPreviewVehicle.selectNoVehicle()
             g_currentPreviewVehicle.resetAppearance()
         g_eventBus.handleEvent(events.LobbySimpleEvent(events.LobbySimpleEvent.VEHICLE_PREVIEW_HIDDEN), scope=EVENT_BUS_SCOPE.LOBBY)
         if self._backAlias == VIEW_ALIAS.VEHICLE_PREVIEW:
@@ -269,7 +252,6 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             self.__heroTanksControl.setInteractive(True)
         if self.__vehAppearanceChanged and not isMapsTrainingViewOpened:
             g_currentPreviewVehicle.resetAppearance()
-        self._updateTopMenu(HeaderMenuVisibilityState.ALL)
         g_eventBus.removeListener(OFFER_CHANGED_EVENT, self.__onOfferChanged)
         for event, callback in self.__subscriptions:
             event -= callback
@@ -312,7 +294,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
                     if isResourceWellRewardVehicle(vehicleCD=vehicleCD):
                         event_dispatcher.showResourceWellHeroPreview(vehicleCD=vehicleCD, previewAlias=VIEW_ALIAS.VEHICLE_PREVIEW, previousBackAlias=self._backAlias, backCallback=self._previewBackCb)
                     else:
-                        event_dispatcher.showHeroTankPreview(vehicleCD, previewAlias=VIEW_ALIAS.VEHICLE_PREVIEW, previousBackAlias=self._backAlias, backOutfit=self.__outfit)
+                        event_dispatcher.showHeroTankPreview(vehicleCD, previewAlias=VIEW_ALIAS.VEHICLE_PREVIEW, previousBackAlias=self._backAlias)
             elif entity.id == self.__hangarSpace.space.vehicleEntityId:
                 self._processBackClick({'entity': entity})
         return
@@ -327,10 +309,6 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
 
     def _createSelectableLogic(self):
         return PreviewSelectableLogic()
-
-    def _updateTopMenu(self, state):
-        if self.__isHiddenMenu:
-            g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': state}), EVENT_BUS_SCOPE.LOBBY)
 
     def _onRegisterFlashComponent(self, viewPy, alias):
         if alias == VEHPREVIEW_CONSTANTS.TOP_PANEL_TABS_PY_ALIAS:
@@ -429,8 +407,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
            'isHeroTank': self.__isHeroTank, 
            'hangarVehicleCD': hangarVehicleCD, 
            'topPanelData': self.__topPanelData, 
-           'style': self.__ctx.get('style'), 
-           'outfit': self.__ctx.get('outfit')})
+           'style': self.__ctx.get('style')})
 
     def __onVehicleLoading(self, ctxEvent):
         if self.__customizationCD is not None and not ctxEvent.ctx.get('started'):
@@ -541,7 +518,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
                 if self._itemsCache.items.inventory.getItemData(compactDescr) is not None:
                     event_dispatcher.showHangar()
                 else:
-                    event_dispatcher.showVehiclePreview(compactDescr, previewAlias=self._previousBackAlias, outfit=self.__ctx.get('backOutfit'))
+                    event_dispatcher.showVehiclePreview(compactDescr, previewAlias=self._previousBackAlias)
             else:
                 event_dispatcher.showHangar()
         elif self._backAlias == VIEW_ALIAS.LOBBY_STORE:

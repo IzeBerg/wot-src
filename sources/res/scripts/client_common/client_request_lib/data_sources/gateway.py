@@ -142,10 +142,9 @@ class GatewayDataAccessor(base.BaseDataAccessor):
             default_headers['User-Agent'] = self.user_agent
         headers = tuple(('{}: {}').format(k, v) for k, v in default_headers.iteritems() if v)
         args = [headers, 30.0, method]
-        if post_data is not None:
+        if post_data:
             args.append(json.dumps(post_data))
         self.url_fetcher(url, self._preprocess_callback(callback, converters=converters), *args)
-        return
 
     def advent_calendar_fetch_hero_tank_info(self, callback):
         url = '/advc/herotank/'
@@ -642,16 +641,6 @@ class GatewayDataAccessor(base.BaseDataAccessor):
     def get_inventory_entitlements_v5(self, callback, entitlementsFilter):
         url = '/agate/api/v5/inventory/getInventoryEntitlements/'
         return self._request_data(callback, url, method='POST', post_data=entitlementsFilter)
-
-    def get_win_back_call_friend_list(self, callback):
-        url = '/winbackcall/call/wot.winback-get-joint-statistics-list.v1'
-        data = {}
-        return self._request_data(callback, url, method='POST', post_data=data)
-
-    def win_back_call_send_invite_code(self, callback, spa_id):
-        url = '/winbackcall/call/wot.winback-send-invite-code.v1'
-        data = {'winback_spa_id': int(spa_id)}
-        return self._request_data(callback, url, method='POST', post_data=data)
 
     def _get_formatted_language_code(self):
         return self.client_lang.replace('_', '-')

@@ -5,6 +5,7 @@ from frameworks.wulf import WindowLayer
 from gui import makeHtmlString
 from gui import SystemMessages
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
+from gui.Scaleform.daapi.view.lobby.referral_program.referral_program_helpers import isReferralProgramEnabled
 from gui.Scaleform.daapi.view.lobby.session_stats.session_stats_settings_controller import SessionStatsSettingsController
 from gui.Scaleform.daapi.view.meta.MessengerBarMeta import MessengerBarMeta
 from gui.Scaleform.framework import g_entitiesFactories
@@ -141,7 +142,7 @@ class MessengerBar(MessengerBarMeta, IGlobalListener):
         self.addListener(events.FightButtonEvent.FIGHT_BUTTON_UPDATE, self.__handleFightButtonUpdated, scope=EVENT_BUS_SCOPE.LOBBY)
         self.startGlobalListening()
         self.as_setInitDataS({'channelsHtmlIcon': _formatIcon('iconChannels'), 
-           'isReferralEnabled': self._referralCtrl.isEnabled(), 
+           'isReferralEnabled': isReferralProgramEnabled(), 
            'referralCounter': self._referralCtrl.getBubbleCount(), 
            'isReferralFirstIndication': self._referralCtrl.isFirstIndication(), 
            'referralHtmlIcon': _formatIcon('iconReferral', width=38, height=29, path='html_templates:lobby/referralButton'), 

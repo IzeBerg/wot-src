@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<login>
-		<host>
-			<name>US Central</name>
-			<short_name>USC</short_name>
-			<url>wotna3.login.wargaming.net:20016</url>
-			<url_token>wotna3-2.login.wargaming.net:20016</url_token>
-			<public_key_path>loginapp_wot.pubkey</public_key_path>
-			<periphery_id>303</periphery_id>
-		</host>
-		<host>
-			<name>South America</name>
-			<short_name>SA</short_name>
-			<url>wotna4.login.wargaming.net:20016</url>
-			<url_token>wotna4-2.login.wargaming.net:20016</url_token>
-			<public_key_path>loginapp_wot.pubkey</public_key_path>
-			<periphery_id>304</periphery_id>
-		</host>
-	</login>
+	<xmlns:xmlref>http://bwt/xmlref</xmlns:xmlref>
 	<updateUrl>http://worldoftanks.com/update</updateUrl>
-	<csisUrl>http://csis.worldoftanks.com/csis/wotna/</csisUrl>
 	<silhouetteColors>
 		<common>
 			<self>
@@ -263,4 +245,23 @@
 			<item>*equipment</item>
 		</excludeMaterials>
 	</camouflage>
+	<login>
+		<host>
+			<name>US Central</name>
+			<short_name>USC</short_name>
+			<url>wotna3.login.wargaming.net:20016</url>
+			<url_token>wotna3-2.login.wargaming.net:20016</url_token>
+			<public_key_path>loginapp_wot.pubkey</public_key_path>
+			<periphery_id>303</periphery_id>
+		</host>
+		<host>
+			<name>South America</name>
+			<short_name>SA</short_name>
+			<url>wotna4.login.wargaming.net:20016</url>
+			<url_token>wotna4-2.login.wargaming.net:20016</url_token>
+			<public_key_path>loginapp_wot.pubkey</public_key_path>
+			<periphery_id>304</periphery_id>
+		</host>
+	</login>
+	<csisUrl>http://csis.worldoftanks.com/csis/wotna/</csisUrl>
 </root>

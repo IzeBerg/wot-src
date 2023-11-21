@@ -592,8 +592,12 @@ class _LeaderboardDataProvider(object):
         if self.__nextUpdateTimestamp and self.__nextUpdateTimestamp <= getServerUTCTime():
             self.__clearCache()
         if not self.__eventsController.hasEvents():
-            _logger.debug('Empty events on controller while requesting pages. Reloading.')
+            _logger.warn('Empty events on controller while requesting pages. Reloading.')
             yield self.__eventsController.getEvents(onlySettings=True)
+            if not self.__eventsController.hasEvents():
+                _logger.error('Leaderboard pages request failed. Pages ids: %s', pageIDs)
+                callback(False)
+                return
         for pageID in self.__getPagesToLoad(pageIDs):
             page = yield self.__eventsController.getLeaderboard(self.__EVENT_ID, self.__LEADERBOARD_ID, pageID + 1, leaderBoardClass=Comp7LeaderBoard, showNotification=False)
             if page is None:

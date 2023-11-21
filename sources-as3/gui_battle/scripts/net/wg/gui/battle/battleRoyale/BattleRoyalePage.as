@@ -1,16 +1,10 @@
 package net.wg.gui.battle.battleRoyale
 {
    import flash.display.DisplayObject;
-   import flash.display.Loader;
    import flash.events.Event;
-   import flash.events.IOErrorEvent;
    import flash.events.MouseEvent;
    import flash.geom.Point;
    import flash.geom.Rectangle;
-   import flash.net.URLRequest;
-   import flash.system.ApplicationDomain;
-   import flash.system.LoaderContext;
-   import net.wg.data.constants.Errors;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
@@ -32,7 +26,6 @@ package net.wg.gui.battle.battleRoyale
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.components.StatusNotificationsPanel;
    import net.wg.gui.battle.eventBattle.views.battleHints.EventBattleHint;
-   import net.wg.gui.battle.random.views.teamBasesPanel.TeamBasesPanel;
    import net.wg.gui.battle.views.battleEndWarning.BattleEndWarningPanel;
    import net.wg.gui.battle.views.battleLevelPanel.BattleLevelPanel;
    import net.wg.gui.battle.views.battleMessenger.BattleMessage;
@@ -87,8 +80,6 @@ package net.wg.gui.battle.battleRoyale
       
       private static const MESSANGER_SWAP_AREA_TOP_OFFSET:Number = -27;
       
-      private static const UB_COMPONENTS:String = "ub_components.swf";
-      
       private static const MESSENGER_RESPAWN_X_OFFSET:int = 36;
       
       private static const MESSENGER_RESPAWN_Y_OFFSET:int = 30;
@@ -138,8 +129,6 @@ package net.wg.gui.battle.battleRoyale
       
       public var battleDamageLogPanel:BattleDamageLogPanel = null;
       
-      public var teamBasesPanelUI:TeamBasesPanel = null;
-      
       public var sixthSense:SixthSense = null;
       
       public var consumablesPanel:ConsumablesPanel = null;
@@ -184,8 +173,6 @@ package net.wg.gui.battle.battleRoyale
       
       private var _respawnVisible:Boolean = true;
       
-      private var _ubComponentsLoader:Loader = null;
-      
       public function BattleRoyalePage()
       {
          this._atlasHolder = {};
@@ -201,7 +188,6 @@ package net.wg.gui.battle.battleRoyale
       {
          super.updateStage(param1,param2);
          var _loc3_:Number = param1 >> 1;
-         this.teamBasesPanelUI.x = _loc3_;
          this.sixthSense.x = _loc3_;
          this.sixthSense.y = param2 >> 2;
          this.upgradePanel.x = _loc3_;
@@ -277,11 +263,6 @@ package net.wg.gui.battle.battleRoyale
          this.grid.visible = false;
          this._selectRespawn = new UnboundContainer();
          addChildAt(this._selectRespawn,0);
-         this._ubComponentsLoader = new Loader();
-         this._ubComponentsLoader.contentLoaderInfo.addEventListener(Event.COMPLETE,this.onUbComponentsLoaderCompleteHandler);
-         this._ubComponentsLoader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,this.onUbComponentsLoaderIoErrorHandler);
-         var _loc1_:LoaderContext = new LoaderContext(false,ApplicationDomain.currentDomain);
-         this._ubComponentsLoader.load(new URLRequest(UB_COMPONENTS),_loc1_);
          this.playerStats.setCompVisible(false);
       }
       
@@ -299,7 +280,7 @@ package net.wg.gui.battle.battleRoyale
       override protected function onPopulate() : void
       {
          super.onPopulate();
-         registerComponent(this.teamBasesPanelUI,BATTLE_VIEW_ALIASES.TEAM_BASES_PANEL);
+         registerComponent(this._selectRespawn,BATTLE_VIEW_ALIASES.BR_SELECT_RESPAWN);
          registerComponent(this.sixthSense,BATTLE_VIEW_ALIASES.SIXTH_SENSE);
          registerComponent(this.damageInfoPanel,BATTLE_VIEW_ALIASES.DAMAGE_INFO_PANEL);
          registerComponent(this.battleDamageLogPanel,BATTLE_VIEW_ALIASES.BATTLE_DAMAGE_LOG_PANEL);
@@ -335,8 +316,6 @@ package net.wg.gui.battle.battleRoyale
          this.battleMessenger.removeEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.removeEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
          this.upgradePanel.removeEventListener(ComponentEvent.STATE_CHANGE,this.onUpgradePanelStateChangeHandler);
-         this._ubComponentsLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE,this.onUbComponentsLoaderCompleteHandler);
-         this._ubComponentsLoader.contentLoaderInfo.removeEventListener(IOErrorEvent.IO_ERROR,this.onUbComponentsLoaderIoErrorHandler);
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
          this.hintPanel.removeEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
          this.fullStats.removeEventListener(Event.OPEN,this.onFullStatsOpenHandler);
@@ -348,8 +327,6 @@ package net.wg.gui.battle.battleRoyale
       {
          App.atlasMgr.unregisterAtlas(ATLAS_CONSTANTS.COMMON_BATTLE_LOBBY,this._atlasHolder);
          this._atlasHolder = null;
-         this._ubComponentsLoader.unload();
-         this._ubComponentsLoader = null;
          this.damageScreen.dispose();
          this.damageScreen = null;
          this.fragPanel = null;
@@ -358,7 +335,6 @@ package net.wg.gui.battle.battleRoyale
          this.battleMessenger = null;
          this.debugPanel = null;
          this.battleDamageLogPanel = null;
-         this.teamBasesPanelUI = null;
          this.sixthSense = null;
          this.consumablesPanel = null;
          this.statusNotificationsPanel = null;
@@ -515,8 +491,7 @@ package net.wg.gui.battle.battleRoyale
       
       private function updateBattleMessengerPosition() : void
       {
-         var _loc1_:int = 0;
-         _loc1_ = this.teamPanel.y + this.teamPanel.height;
+         var _loc1_:int = this.teamPanel.y + this.teamPanel.height;
          if(this._respawnVisible)
          {
             this.battleMessenger.x = damagePanel.x + MESSENGER_RESPAWN_X_OFFSET;
@@ -583,16 +558,6 @@ package net.wg.gui.battle.battleRoyale
             this.playerMessageListPositionUpdate();
             this.updateRadarBtnPosition();
          }
-      }
-      
-      private function onUbComponentsLoaderIoErrorHandler(param1:IOErrorEvent) : void
-      {
-         App.utils.asserter.assert(false,this._ubComponentsLoader.contentLoaderInfo.url + Errors.WASNT_FOUND);
-      }
-      
-      private function onUbComponentsLoaderCompleteHandler(param1:Event) : void
-      {
-         registerComponent(this._selectRespawn,BATTLE_VIEW_ALIASES.BR_SELECT_RESPAWN);
       }
       
       private function onHintPanelResizeHandler(param1:Event) : void

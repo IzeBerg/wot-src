@@ -62,12 +62,6 @@ class _BattleRoyaleComponentsConfig(ComponentsConfig):
          (
           BATTLE_CTRL_ID.PERKS, (BATTLE_VIEW_ALIASES.PERKS_PANEL,)),
          (
-          BATTLE_CTRL_ID.TEAM_BASES,
-          (
-           BATTLE_VIEW_ALIASES.TEAM_BASES_PANEL,
-           DynamicAliases.DRONE_MUSIC_PLAYER,
-           BATTLE_VIEW_ALIASES.PLAYERS_PANEL)),
-         (
           BATTLE_CTRL_ID.BATTLE_HINTS, (BATTLE_VIEW_ALIASES.BATTLE_HINT,)),
          (
           BATTLE_CTRL_ID.DEBUG, (BATTLE_VIEW_ALIASES.DEBUG_PANEL,)),
@@ -260,21 +254,12 @@ class BattleRoyalePage(BattleRoyalePageMeta, ISpawnListener):
         if progressionWindowCtrl:
             self.__es.subscribeToEvent(progressionWindowCtrl.onTriggered, self.__onConfWindowTriggered)
         self.sessionProvider.getCtx().setPlayerFullNameFormatter(BattleRoyalePlayerFullNameFormatter())
-        spawnCtrl = self.sessionProvider.dynamic.spawn
-        if spawnCtrl and self not in spawnCtrl.viewComponents:
-            spawnCtrl.addRuntimeView(self)
         if avatar_getter.isObserverSeesAll():
             self.__es.subscribeToEvent(avatar_getter.getInputHandler().onCameraChanged, self.__onCameraChanged)
         if self.sessionProvider.isReplayPlaying:
             self.__es.subscribeToEvent(g_replayEvents.onTimeWarpStart, self.__onTimeWarpStart)
         self.__brSoundControl = BRBattleSoundController()
         self.__brSoundControl.init()
-
-    def reload(self):
-        super(BattleRoyalePage, self).reload()
-        spawnCtrl = self.sessionProvider.dynamic.spawn
-        if spawnCtrl and self not in spawnCtrl.viewComponents:
-            spawnCtrl.addRuntimeView(self)
 
     def _onWinScreenReload(self):
         alias = BATTLE_VIEW_ALIASES.BATTLE_ROYALE_WINNER_CONGRATS
@@ -289,37 +274,21 @@ class BattleRoyalePage(BattleRoyalePageMeta, ISpawnListener):
         super(BattleRoyalePage, self)._startBattleSession()
         vehStateCtrl = self.sessionProvider.shared.vehicleState
         if vehStateCtrl is not None:
-            vehStateCtrl.onVehicleStateUpdated += self.__onVehicleStateUpdated
+            self._battleSessionES.subscribeToEvent(vehStateCtrl.onVehicleStateUpdated, self.__onVehicleStateUpdated)
         ammoCtrl = self.sessionProvider.shared.ammo
         if ammoCtrl is not None:
-            ammoCtrl.onGunSettingsSet += self.__onGunSettingsSet
+            self._battleSessionES.subscribeToEvent(ammoCtrl.onGunSettingsSet, self.__onGunSettingsSet)
         componentSystem = self.sessionProvider.arenaVisitor.getComponentSystem()
         if componentSystem and componentSystem.battleRoyaleComponent:
-            componentSystem.battleRoyaleComponent.onBattleRoyaleDefeatedTeamsUpdate += self._onDefeatedTeamsUpdated
+            self._battleSessionES.subscribeToEvent(componentSystem.battleRoyaleComponent.onBattleRoyaleDefeatedTeamsUpdate, self._onDefeatedTeamsUpdated)
         deathScreenCtrl = self.sessionProvider.dynamic.deathScreen
         if deathScreenCtrl:
-            deathScreenCtrl.onShowDeathScreen += self.__onShowDeathScreen
-            deathScreenCtrl.onWinnerScreen += self.__onWinnerScreen
-        return
-
-    def _stopBattleSession(self):
-        super(BattleRoyalePage, self)._stopBattleSession()
-        vehStateCtrl = self.sessionProvider.shared.vehicleState
-        if vehStateCtrl is not None:
-            vehStateCtrl.onVehicleStateUpdated -= self.__onVehicleStateUpdated
-        ammoCtrl = self.sessionProvider.shared.ammo
-        if ammoCtrl is not None:
-            ammoCtrl.onGunSettingsSet -= self.__onGunSettingsSet
-        componentSystem = self.sessionProvider.arenaVisitor.getComponentSystem()
-        if componentSystem and componentSystem.battleRoyaleComponent:
-            componentSystem.battleRoyaleComponent.onBattleRoyaleDefeatedTeamsUpdate -= self._onDefeatedTeamsUpdated
-        deathScreenCtrl = self.sessionProvider.dynamic.deathScreen
-        if deathScreenCtrl:
-            deathScreenCtrl.onShowDeathScreen -= self.__onShowDeathScreen
-            deathScreenCtrl.onWinnerScreen -= self.__onWinnerScreen
+            self._battleSessionES.subscribeToEvent(deathScreenCtrl.onShowDeathScreen, self.__onShowDeathScreen)
+            self._battleSessionES.subscribeToEvent(deathScreenCtrl.onWinnerScreen, self.__onWinnerScreen)
         spawnCtrl = self.sessionProvider.dynamic.spawn
-        if spawnCtrl:
-            spawnCtrl.removeRuntimeView(self)
+        if spawnCtrl and self not in spawnCtrl.viewComponents:
+            spawnCtrl.addRuntimeView(self)
+            self._battleSessionES.addCallbackOnUnsubscribe(lambda : spawnCtrl.removeRuntimeView(self))
         return
 
     def _onRegisterFlashComponent(self, viewPy, alias):
@@ -437,7 +406,7 @@ class BattleRoyalePage(BattleRoyalePageMeta, ISpawnListener):
 
     def __onWinnerScreen(self, *_):
         if not BigWorld.player().userSeesWorld():
-            self.__es.subscribeToEvent(PlayerEvents.g_playerEvents.onAvatarReady, self.__onWinnerScreen)
+            self.__es.subscribeToEvent(PlayerEvents.g_playerEvents.onRoundFinished, self.__onWinnerScreen)
             return
         hideSet = set(self.as_getComponentsVisibilityS())
         hideSet.difference_update([BATTLE_VIEW_ALIASES.BATTLE_ROYALE_WINNER_CONGRATS])

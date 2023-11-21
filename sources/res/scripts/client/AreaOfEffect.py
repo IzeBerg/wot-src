@@ -14,7 +14,6 @@ from skeletons.gui.battle_session import IBattleSessionProvider
 
 class EffectRunner(object):
     SHOT_HEIGHT = 100.0
-    RAY_CAST_HEIGHT = 2.0
     MAX_SHOTS = 1000
     GRAVITY = 9.8
     SHELL_VELOCITY = (0, -500, 0)
@@ -70,20 +69,19 @@ class EffectRunner(object):
 
     def _play(self, playID, effect, targetPosition):
         self._callbacks.pop(playID)
+        altitude = Math.Vector3(0, self.SHOT_HEIGHT, 0)
         if effect['offsetDeviation']:
             radius = random.uniform(0, effect['offsetDeviation'])
             angle = random.uniform(0, 2 * math.pi)
             offset = Math.Vector3(radius * math.cos(angle), 0, radius * math.sin(angle))
             targetPosition = targetPosition + offset
         if effect['groundRaycast']:
-            altitude = Math.Vector3(0, self.RAY_CAST_HEIGHT, 0)
             startPoint = targetPosition + altitude
             endPoint = targetPosition - altitude
-            collisionPoint = collideDynamicAndStatic(startPoint, endPoint, (BigWorld.player().playerVehicleID,))
+            collisionPoint = collideDynamicAndStatic(startPoint, endPoint, ())
             if collisionPoint:
                 targetPosition = collisionPoint[0]
         if effect['shotEffects']:
-            altitude = Math.Vector3(0, self.SHOT_HEIGHT, 0)
             shotEffect = random.choice(effect['shotEffects'])
             effectsIndex = vehicles.g_cache.shotEffectsIndexes[shotEffect]
             effectsDescr = vehicles.g_cache.shotEffects[effectsIndex]

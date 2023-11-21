@@ -79,7 +79,7 @@
 				5.0
 				<!--BW_String-->
 			</spacing>
-			<color>0x65643200</color>
+			<color>0x65005244</color>
 		</modelSetting>
 		<modelSetting>
 			<edgeState>danger</edgeState>
@@ -91,7 +91,7 @@
 				5.0
 				<!--BW_String-->
 			</spacing>
-			<color>0x64fa0700</color>
+			<color>0x72ff0000</color>
 		</modelSetting>
 	</SectorBorderVisual>
 	<SmokeScreenEffect_lev1>
@@ -417,28 +417,6 @@
 			<id>4</id>
 		</item>
 	</lootTypes>
-	<lootTypesHalloween>
-		<item>
-			&gt;
-			<name>lootSoulsSmall</name>
-			<id>5</id>
-		</item>
-		<item>
-			&gt;
-			<name>lootSoulsMedium</name>
-			<id>6</id>
-		</item>
-		<item>
-			&gt;
-			<name>lootSoulsBig</name>
-			<id>7</id>
-		</item>
-		<item>
-			&gt;
-			<name>lootShells</name>
-			<id>8</id>
-		</item>
-	</lootTypesHalloween>
 	<lootBase>
 		<model>
 			<name>content/MilitaryEnvironment/hd_mle_UNI_500_Lootbox/normal/lod0/hd_mle_UNI_500_Lootbox01.model</name>
@@ -507,74 +485,6 @@
 			<path>particles/eff_sequence/br_loot_corpse_end.seq</path>
 		</pickupEffect>
 	</lootCorpse>
-	<lootSoulsSmall>
-		<model>
-			<border>content/Environment/env_null_model/null_model.model</border>
-			<overTerrainHeight>
-				3.00
-				<!--BW_String-->
-			</overTerrainHeight>
-		</model>
-		<effect>
-			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_small.seq</path_fwd>
-			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_small.seq</path>
-		</effect>
-		<pickupEffect>
-			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_small.seq</path_fwd>
-			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_small.seq</path>
-		</pickupEffect>
-	</lootSoulsSmall>
-	<lootSoulsMedium>
-		<model>
-			<border>content/Environment/env_null_model/null_model.model</border>
-			<overTerrainHeight>
-				3.00
-				<!--BW_String-->
-			</overTerrainHeight>
-		</model>
-		<effect>
-			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_medium.seq</path_fwd>
-			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_medium.seq</path>
-		</effect>
-		<pickupEffect>
-			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_medium.seq</path_fwd>
-			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_medium.seq</path>
-		</pickupEffect>
-	</lootSoulsMedium>
-	<lootSoulsBig>
-		<model>
-			<border>content/Environment/env_null_model/null_model.model</border>
-			<overTerrainHeight>
-				3.00
-				<!--BW_String-->
-			</overTerrainHeight>
-		</model>
-		<effect>
-			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_big.seq</path_fwd>
-			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_big.seq</path>
-		</effect>
-		<pickupEffect>
-			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_big.seq</path_fwd>
-			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/demolitiy_catch_big.seq</path>
-		</pickupEffect>
-	</lootSoulsBig>
-	<lootShells>
-		<model>
-			<border>content/Environment/env_null_model/null_model.model</border>
-			<overTerrainHeight>
-				3.00
-				<!--BW_String-->
-			</overTerrainHeight>
-		</model>
-		<effect>
-			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/buff.seq</path_fwd>
-			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/buff.seq</path>
-		</effect>
-		<pickupEffect>
-			<path_fwd>particles/Environment/event_halloween_2019/our_tank_demolitiy/buff_catch.seq</path_fwd>
-			<path>particles/Environment/event_halloween_2019/our_tank_demolitiy/buff_catch.seq</path>
-		</pickupEffect>
-	</lootShells>
 	<TrapPoint>
 		<enemy>
 			<effect>
@@ -1176,11 +1086,4 @@
 			<!--BW_String-->
 		</overTerrainHeight>
 	</spawnPointsConfig>
-	<hwSoulsCollector>
-		<prefab>content/CGFPrefabs/halloween/SoulCollector/SoulCollector.prefab</prefab>
-		<progressAnim>content/CGFPrefabs/halloween/SoulCollector/soul_collector_progress_section.ssm</progressAnim>
-	</hwSoulsCollector>
-	<hwPhaseSwitch>
-		<effect>halloween/gui/effects/phase_switch_effect.xml</effect>
-	</hwPhaseSwitch>
 </root>

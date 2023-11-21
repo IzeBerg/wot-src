@@ -1685,12 +1685,6 @@ class IReferralProgramController(IGameController):
     def updateBubble(self):
         raise NotImplementedError
 
-    def setReferralHardDisabled(self, isDisabled):
-        raise NotImplementedError
-
-    def isEnabled(self):
-        raise NotImplementedError
-
 
 class IClanNotificationController(IGameController):
 
@@ -2364,6 +2358,9 @@ class IWotPlusController(IGameController):
         raise NotImplementedError
 
     def getFormattedDailyAttendanceBonuses(self, bonuses):
+        raise NotImplementedError
+
+    def getNextBillingTime(self):
         raise NotImplementedError
 
 
@@ -3283,31 +3280,4 @@ class IHangarGuiController(IGameController):
         raise NotImplementedError
 
     def updateComponentsVisibility(self, preset=None):
-        raise NotImplementedError
-
-
-class IWinBackCallController(IGameController):
-    onConfigChanged = None
-    onStateChanged = None
-    onFriendStatusUpdated = None
-    onFriendsUpdated = None
-
-    @property
-    def isEnabled(self):
-        raise NotImplementedError
-
-    @property
-    def inviteTokenQuestID(self):
-        raise NotImplementedError
-
-    def eventPeriod(self):
-        raise NotImplementedError
-
-    def getFriendsList(self):
-        raise NotImplementedError
-
-    def sendInviteCode(self, spaID):
-        raise NotImplementedError
-
-    def canSendInviteToFriend(self, spaID):
         raise NotImplementedError

@@ -824,8 +824,3 @@ class PrebattleEvent(HasCtxEvent):
 
 class HangarCrewWidgetViewEvent(HasCtxEvent):
     GF_RESIZED = 'hangarCrewWidgetViewEvent/gfResized'
-
-
-class LobbyMarkerEvents(HasCtxEvent):
-    ADD_MARKER = 'addMarker'
-    REMOVE_MARKER = 'removeMarker'

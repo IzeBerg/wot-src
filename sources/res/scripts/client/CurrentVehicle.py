@@ -1,5 +1,5 @@
 from typing import Optional
-import BigWorld, CGF
+import BigWorld
 from constants import CustomizationInvData
 from gui.SystemMessages import pushMessagesFromResult
 from items.components.c11n_constants import SeasonType
@@ -327,13 +327,18 @@ class _CurrentVehicle(_CachedVehicle):
         vehicle = self.itemsCache.items.getVehicle(vehInvID)
         vehicle = vehicle if self.__isVehicleSuitable(vehicle) else None
         if vehicle is None:
-            vehiclesCriteria = REQ_CRITERIA.INVENTORY | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP
-            vehiclesCriteria |= ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
-            vehiclesCriteria |= ~REQ_CRITERIA.VEHICLE.MODE_HIDDEN
-            vehiclesCriteria |= ~REQ_CRITERIA.VEHICLE.EVENT_BATTLE
+            vehiclesCriteria = REQ_CRITERIA.INVENTORY | ~REQ_CRITERIA.VEHICLE.MODE_HIDDEN | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP | ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
             invVehs = self.itemsCache.items.getVehicles(criteria=vehiclesCriteria)
+
+            def notEvent(x, y):
+                if x.isOnlyForEventBattles and not y.isOnlyForEventBattles:
+                    return 1
+                if not x.isOnlyForEventBattles and y.isOnlyForEventBattles:
+                    return -1
+                return cmp(x, y)
+
             if invVehs:
-                vehInvID = sorted(invVehs.itervalues())[0].invID
+                vehInvID = sorted(invVehs.itervalues(), cmp=notEvent)[0].invID
             else:
                 vehInvID = 0
         self._selectVehicle(vehInvID, callback, waitingOverlapsUI)
@@ -397,7 +402,7 @@ class _CurrentVehicle(_CachedVehicle):
             AccountSettings.setFavorites(ROYALE_VEHICLE, vehInvID)
         elif self.isInBootcamp():
             AccountSettings.setFavorites(BOOTCAMP_VEHICLE, vehInvID)
-        elif not self.isOnlyForEventBattles():
+        else:
             AccountSettings.setFavorites(CURRENT_VEHICLE, vehInvID)
         self.refreshModel()
         self._setChangeCallback(callback)
@@ -658,11 +663,6 @@ class _CurrentPreviewVehicle(_CachedVehicle):
             self.hangarSpace.updateVehicleOutfit(outfit)
             self._applyCamouflageTTC()
             self.onChanged()
-
-    def isHalloweenStylePreviewActive(self):
-        from cgf_components.hangar_styles_components import StylePreviewManager
-        stylesManager = CGF.getManager(self.hangarSpace.spaceID, StylePreviewManager)
-        return stylesManager and hasattr(stylesManager, 'isPreviewActive') and stylesManager.isPreviewActive()
 
     def _applyCamouflageTTC(self):
         if self.isPresent():

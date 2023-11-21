@@ -68,7 +68,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _stageHeight:int = 0;
       
-      protected var _renderers:Vector.<IConsumablesButton>;
+      private var _renderers:Vector.<IConsumablesButton>;
       
       private var _shellCurrentIdx:int = -1;
       
@@ -108,7 +108,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function ConsumablesPanel()
       {
-         this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
+         this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null];
          this._settings = new Vector.<ConsumablesPanelSettings>();
          this._customIndexGap = new Vector.<uint>(0);
          this._classFactory = App.utils.classFactory;
@@ -221,7 +221,7 @@ package net.wg.gui.battle.views.consumablesPanel
                }
             }
             this._renderers.splice(0,this._renderers.length);
-            this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
+            this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null];
          }
          else
          {
@@ -325,6 +325,7 @@ package net.wg.gui.battle.views.consumablesPanel
       public function as_addShellSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:String, param7:String, param8:String) : void
       {
          var _loc9_:IBattleShellButton = null;
+         var _loc10_:ConsumablesVO = null;
          if(this._renderers[param1] == null)
          {
             _loc9_ = this.createShellButton();
@@ -333,17 +334,20 @@ package net.wg.gui.battle.views.consumablesPanel
          }
          else
          {
-            _loc9_ = IBattleShellButton(this.getRendererBySlotIdx(param1));
+            _loc9_ = this.getRendererBySlotIdx(param1) as IBattleShellButton;
          }
-         var _loc10_:ConsumablesVO = _loc9_.consumablesVO;
-         _loc10_.shellIconPath = param6;
-         _loc10_.noShellIconPath = param7;
-         _loc10_.keyCode = param2;
-         _loc10_.idx = param1;
-         _loc9_.tooltipStr = param8;
-         _loc9_.setQuantity(param4,true);
-         _loc9_.key = param3;
-         _loc9_.addClickCallBack(this);
+         if(_loc9_)
+         {
+            _loc10_ = _loc9_.consumablesVO;
+            _loc10_.shellIconPath = param6;
+            _loc10_.noShellIconPath = param7;
+            _loc10_.keyCode = param2;
+            _loc10_.idx = param1;
+            _loc9_.tooltipStr = param8;
+            _loc9_.setQuantity(param4,true);
+            _loc9_.key = param3;
+            _loc9_.addClickCallBack(this);
+         }
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }
       
@@ -352,14 +356,14 @@ package net.wg.gui.battle.views.consumablesPanel
          this.collapsePopup();
       }
       
-      public function as_handleAsReplay() : void
-      {
-         this._isReplay = true;
-      }
-      
       public function as_handleAsObserver() : void
       {
          this._isObserver = true;
+      }
+      
+      public function as_handleAsReplay() : void
+      {
+         this._isReplay = true;
       }
       
       public function as_hideGlow(param1:int) : void
@@ -673,7 +677,10 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function onButtonClick(param1:Object) : void
       {
-         onClickedToSlotS(param1.consumablesVO.keyCode,param1.consumablesVO.idx);
+         if(!this._isObserver)
+         {
+            onClickedToSlotS(param1.consumablesVO.keyCode,param1.consumablesVO.idx);
+         }
       }
       
       public function setStateSizeBoundaries(param1:int, param2:int) : void
@@ -903,16 +910,6 @@ package net.wg.gui.battle.views.consumablesPanel
       public function get panelWidth() : Number
       {
          return this.x + this._basePanelWidth;
-      }
-      
-      protected function get itemsPadding() : int
-      {
-         return this._itemsPadding;
-      }
-      
-      protected function set basePanelWidth(param1:Number) : void
-      {
-         this._basePanelWidth = param1;
       }
       
       private function onStageMouseDownHandler(param1:MouseEvent) : void

@@ -18,10 +18,10 @@
 			<primitiveGroup>
 				0
 				<material>
-					<identifier>Material #145</identifier>
+					<identifier>Material_145</identifier>
 					<fx>shaders/wg_particles/pbs_mesh_particles.fx</fx>
-					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
 						diffuseMap
 						<Texture>particles/mesh_particles/tex/stone_am.dds</Texture>
@@ -39,7 +39,7 @@
 						<Texture>particles/mesh_particles/tex/stone_gmm.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>0.000000 0.000000 -0.000000</groupOrigin>
+				<groupOrigin>0.000000 0.000000 0.000000</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
@@ -47,6 +47,7 @@
 		<min>-0.080170 -0.045884 -0.081604</min>
 		<max>0.080170 0.045884 0.081604</max>
 	</boundingBox>
-	<geometrySize>2352</geometrySize>
+	<customBsp>true</customBsp>
+	<geometrySize>9664</geometrySize>
 	<minUVDensity>0.145546</minUVDensity>
 </root>

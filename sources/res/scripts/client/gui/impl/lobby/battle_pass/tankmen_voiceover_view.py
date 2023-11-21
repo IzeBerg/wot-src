@@ -118,7 +118,7 @@ class TankmenVoiceoverView(ViewImpl):
             model.setProgressionLevel(level)
 
     def __getStateForShopTankmanModel(self, count, availableCount):
-        if availableCount == 0:
+        if availableCount <= 0:
             return TankmanModel.RECEIVED
         if availableCount == count:
             return TankmanModel.IN_SHOP
@@ -127,7 +127,7 @@ class TankmenVoiceoverView(ViewImpl):
     def __getStateForQuestChainTankmanModel(self, groupName, count):
         receivedQuestCount = self.__receivedTankmenCount(groupName + _TANKMAN_QUEST_CHAIN_ENTITLEMENT_POSTFIX)
         questChainsLeftToBuy = count - receivedQuestCount
-        if questChainsLeftToBuy == 0:
+        if questChainsLeftToBuy <= 0:
             state = TankmanModel.AVAILABLE_IN_QUEST_CHAIN
         elif questChainsLeftToBuy == count:
             state = TankmanModel.QUEST_CHAIN

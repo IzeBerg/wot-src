@@ -75,10 +75,11 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       public function setRotation(param1:Number) : void
       {
+         var _loc2_:Number = NaN;
          var _loc4_:Number = NaN;
          this.commandContainer.rotation = param1;
          this.chatContainer.rotation = param1;
-         var _loc2_:Number = -param1 * DEG_TO_RAD;
+         _loc2_ = -param1 * DEG_TO_RAD;
          var _loc3_:Number = TITLE_ANGLE_OFFSET * DEG_TO_RAD;
          if(_loc2_ > 0 && _loc2_ < Math.PI)
          {

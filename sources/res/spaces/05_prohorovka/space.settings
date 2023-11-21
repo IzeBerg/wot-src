@@ -17,7 +17,7 @@
 				<name>GBufferDecals</name>
 				<atlas>
 					<width>4096</width>
-					<height>2048</height>
+					<height>4096</height>
 					<format>DXT5</format>
 					<constrains>
 						<minWidth>256</minWidth>
@@ -29,7 +29,7 @@
 				</atlas>
 				<atlas>
 					<width>4096</width>
-					<height>2048</height>
+					<height>4096</height>
 					<format>DXT5</format>
 					<constrains>
 						<minWidth>256</minWidth>
@@ -41,7 +41,7 @@
 				</atlas>
 				<atlas>
 					<width>4096</width>
-					<height>2048</height>
+					<height>4096</height>
 					<format>DXT5</format>
 					<constrains>
 						<minWidth>256</minWidth>
@@ -132,4 +132,8 @@
 		<simRadius>100.000000</simRadius>
 	</havok>
 	<NonChunkUDO>true</NonChunkUDO>
+	<navmeshGenerator>navgen</navmeshGenerator>
+	<enableClusteredShading>false</enableClusteredShading>
+	<isSHGridQualityOverridden>false</isSHGridQualityOverridden>
+	<overrideSHGridQuality>0</overrideSHGridQuality>
 </root>

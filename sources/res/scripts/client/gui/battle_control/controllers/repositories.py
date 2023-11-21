@@ -198,9 +198,6 @@ class SharedControllersLocator(_ControllersLocator, ISharedControllersLocator):
 class DynamicControllersLocator(_ControllersLocator, IDynamicControllersLocator):
     __slots__ = ()
 
-    def getControllerByID(self, ctrlID):
-        return self._repository.getController(ctrlID)
-
     @property
     def debug(self):
         return self._repository.getController(BATTLE_CTRL_ID.DEBUG)
@@ -427,12 +424,12 @@ class SharedControllersRepository(_ControllersRepository):
         return repository
 
 
-class ControllersRepositoryByBonuses(_ControllersRepository):
+class _ControllersRepositoryByBonuses(_ControllersRepository):
     __slots__ = ()
 
     @classmethod
     def create(cls, setup):
-        repository = super(ControllersRepositoryByBonuses, cls).create(setup)
+        repository = super(_ControllersRepositoryByBonuses, cls).create(setup)
         arenaVisitor = setup.arenaVisitor
         if arenaVisitor.hasRespawns():
             repository.addViewController(respawn_ctrl.RespawnsController(setup), setup)
@@ -449,7 +446,7 @@ class ControllersRepositoryByBonuses(_ControllersRepository):
         return repository
 
 
-class ClassicControllersRepository(ControllersRepositoryByBonuses):
+class ClassicControllersRepository(_ControllersRepositoryByBonuses):
     __slots__ = ()
 
     @classmethod
@@ -490,7 +487,7 @@ class EpicControllersRepository(_ControllersRepository):
         return repository
 
 
-class EventControllerRepository(ControllersRepositoryByBonuses):
+class EventControllerRepository(_ControllersRepositoryByBonuses):
     __slots__ = ()
 
     @classmethod
@@ -506,7 +503,7 @@ class EventControllerRepository(ControllersRepositoryByBonuses):
         return repository
 
 
-class MapsTrainingControllerRepository(ControllersRepositoryByBonuses):
+class MapsTrainingControllerRepository(_ControllersRepositoryByBonuses):
     __slots__ = ()
 
     @classmethod

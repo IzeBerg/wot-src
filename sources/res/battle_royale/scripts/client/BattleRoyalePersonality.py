@@ -1,5 +1,5 @@
 from battle_royale.gui.battle_control.controllers.repository import registerBRBattleRepo
-from battle_royale.gui.Scaleform import registerBRBattlePackages, registerBRLobbyPackages, registerBRTooltipsBuilders
+from battle_royale.gui.Scaleform import registerBRBattlePackages, registerBRLobbyPackages, registerBRTooltipsBuilders, registerCustomSwf
 from battle_royale.gui.battle_control.controllers.equipment_items import registerBREquipmentsItems
 from battle_royale.gui.hangar_presets import registerBattleRoyaleHangarPresets
 from battle_royale.gui.prb_control import registerBRPrebattles
@@ -15,6 +15,7 @@ def preInit():
     registerBREquipmentsItems()
     registerBRPrebattles()
     registerBattleRoyaleHangarPresets()
+    registerCustomSwf()
 
 
 def init():

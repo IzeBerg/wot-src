@@ -76,8 +76,8 @@ def prepareFashions(isDamaged):
          None, None, None, None]
     else:
         fashions = [
-         BigWorld.WGVehicleFashion(), BigWorld.WGVehicleFashion(),
-         BigWorld.WGVehicleFashion(), BigWorld.WGVehicleFashion()]
+         BigWorld.WGVehicleFashion(), BigWorld.WGBaseFashion(),
+         BigWorld.WGBaseFashion(), BigWorld.WGBaseFashion()]
     return VehiclePartsTuple(*fashions)
 
 
@@ -532,6 +532,9 @@ def getAttachmentsAnimators(attachments, spaceId, loadedAnimators, compoundModel
             continue
         animWrapper = AnimationSequence.PartWrapperContainer(compoundModel, spaceId, attachment.partNodeAlias)
         node = compoundModel.node(attachment.attachNode)
+        if IS_EDITOR and node is None:
+            _logger.error('Cannot find attach node "%s" of the attachment in the model', attachment.attachNode)
+            continue
         animator = __prepareAnimator(loadedAnimators, sequenceItem.sequenceName, animWrapper, node, attachment.partNodeAlias)
         if animator is None:
             continue

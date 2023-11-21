@@ -1,0 +1,3668 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>25.000002</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_01_01_01</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-82.720001 -26.794001 3.807020</inTangent>
+				<outTangent>-82.720001 -26.794001 3.807020</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.033334</startTime>
+				<value>-512.020020 -540.284973 25.607901</value>
+				<inTangent>-82.753799 -110.959999 3.513970</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000824 0.014153 14.902400</inTangent>
+				<outTangent>0.000824 0.014153 14.902400</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.033334</startTime>
+				<value>0.000000 181.485001 -53.982201</value>
+				<inTangent>0.000000 0.211136 5.179250</inTangent>
+				<outTangent>0.000000 0.211136 5.179250</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.033334</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>25.000002</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_01_01_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.033334</startTime>
+				<value>-512.020020 -540.284973 25.607901</value>
+				<inTangent>-82.753799 -110.959999 3.513970</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.033334</startTime>
+				<value>0.000000 392.000000 0.000000</value>
+				<inTangent>-0.000000 0.211205 -4.691940</inTangent>
+				<outTangent>-0.000000 0.211205 -4.691940</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>7.033334</startTime>
+				<duration>13.233333</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_03.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_01_01_02</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>-73.599998 0.000000 0.000006</value>
+				<inTangent>-82.720001 -26.794001 2.643150</inTangent>
+				<outTangent>-82.720001 -26.794001 2.643150</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.833334</startTime>
+				<value>-615.890015 -540.284973 19.376801</value>
+				<inTangent>-82.753799 -110.959999 2.540980</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.001201 0.014153 12.844700</inTangent>
+				<outTangent>0.001201 0.014153 12.844700</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.833334</startTime>
+				<value>0.000000 181.485001 -52.859699</value>
+				<inTangent>0.000000 0.207208 3.959150</inTangent>
+				<outTangent>0.000000 0.207208 3.959150</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.833334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_01_01_02</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.833334</startTime>
+				<value>-615.890015 -540.284973 19.376801</value>
+				<inTangent>-82.753799 -110.959999 2.540980</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.833334</startTime>
+				<value>0.000000 516.000000 0.000000</value>
+				<inTangent>-0.000000 0.211205 -4.691940</inTangent>
+				<outTangent>-0.000000 0.211205 -4.691940</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>7.833334</startTime>
+				<duration>11.200001</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_01_01_03</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>-146.729996 0.000000 0.000013</value>
+				<inTangent>-82.720001 -26.794001 5.242310</inTangent>
+				<outTangent>-82.720001 -26.794001 5.242310</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>-654.919983 -540.284973 37.123501</value>
+				<inTangent>-82.753799 -110.959999 5.481950</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>-0.000339 0.014153 12.282300</inTangent>
+				<outTangent>-0.000339 0.014153 12.282300</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>0.000000 181.485001 -53.203300</value>
+				<inTangent>0.000000 0.211136 2.276110</inTangent>
+				<outTangent>0.000000 0.211136 2.276110</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_01_01_03</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>-654.919983 -540.284973 37.123501</value>
+				<inTangent>-82.753799 -110.959999 5.481950</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>0.000000 360.000000 0.000000</value>
+				<inTangent>-0.000000 0.211205 -4.691940</inTangent>
+				<outTangent>-0.000000 0.211205 -4.691940</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>8.633334</startTime>
+				<duration>11.200002</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_01_01_01</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>7.033334</duration>
+				<value>Bomb_01_01_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202065 -0.068649 0.000000</inTangent>
+				<outTangent>0.202065 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202065 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202065 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.170616 0.028436 0.028436</inTangent>
+				<outTangent>0.170616 0.028436 0.028436</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.033334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.033334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_01_01_02</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.800000</startTime>
+				<duration>7.033334</duration>
+				<value>Bomb_01_01_02|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202065 -0.068649 0.000000</inTangent>
+				<outTangent>0.202065 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.800000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202065 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202065 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.170616 0.028436 0.028436</inTangent>
+				<outTangent>0.170616 0.028436 0.028436</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.833334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.833334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_01_01_03</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>1.600000</startTime>
+				<duration>7.033334</duration>
+				<value>Bomb_01_01_03|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202065 -0.068649 0.000000</inTangent>
+				<outTangent>0.202065 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.600000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202065 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202065 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.170616 0.028436 0.028436</inTangent>
+				<outTangent>0.170616 0.028436 0.028436</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.633333</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.633334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_01_02_01</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>7.800000</duration>
+				<value>Bomb_01_02_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202064 -0.068649 0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.766667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202064 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.170616 0.028436 0.028436</inTangent>
+				<outTangent>0.170616 0.028436 0.028436</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.800000</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.800000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_01_02_04</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>10.000001</duration>
+				<value>Bomb_01_02_04|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202064 -0.068649 0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.966667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202064 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.170616 0.028436 0.028436</inTangent>
+				<outTangent>0.170616 0.028436 0.028436</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_01_02_01</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>-34.259998 -5.000000 -42.047501</value>
+				<inTangent>-82.720001 -26.794001 5.039470</inTangent>
+				<outTangent>-82.720001 -26.794001 5.039470</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.800000</startTime>
+				<value>-639.200012 -540.284973 -8.915470</value>
+				<inTangent>-82.753799 -110.959999 5.094470</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000701 0.014153 9.983090</inTangent>
+				<outTangent>0.000701 0.014153 9.983090</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.800000</startTime>
+				<value>0.000000 181.485001 -53.611401</value>
+				<inTangent>0.000000 0.211136 3.235810</inTangent>
+				<outTangent>0.000000 0.211136 3.235810</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.800000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_01_02_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.800000</startTime>
+				<value>-639.200012 -540.284973 -8.915470</value>
+				<inTangent>-82.753799 -110.959999 5.094470</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.800000</startTime>
+				<value>0.000000 383.000000 0.000000</value>
+				<inTangent>-0.000000 0.211205 -4.691940</inTangent>
+				<outTangent>-0.000000 0.211205 -4.691940</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>7.800000</startTime>
+				<duration>11.200000</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_01_02_04</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>-236.270004 -5.000000 -42.047501</value>
+				<inTangent>-82.720001 -26.794001 -1.128590</inTangent>
+				<outTangent>-82.720001 -26.794001 -1.128590</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>-776.039978 -534.215027 -31.645700</value>
+				<inTangent>-82.753799 -110.959999 -1.033200</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000075 0.014153 8.239290</inTangent>
+				<outTangent>0.000075 0.014153 8.239290</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.066668</startTime>
+				<value>0.000000 181.485001 -53.990799</value>
+				<inTangent>0.000000 0.209154 3.780400</inTangent>
+				<outTangent>0.000000 0.209154 3.780400</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>2.966667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_01_02_04</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>-776.039978 -534.215027 -31.645700</value>
+				<inTangent>-82.753799 -110.959999 -1.033200</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>10.000001</startTime>
+				<value>0.000000 370.000000 0.000000</value>
+				<inTangent>-0.000000 0.211205 -4.691940</inTangent>
+				<outTangent>-0.000000 0.211205 -4.691940</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>10.000001</startTime>
+				<duration>13.233333</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_03.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_03_02_01</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>37.790001 -40.000000 76.607903</value>
+				<inTangent>-77.313004 -26.794001 0.152988</inTangent>
+				<outTangent>-77.313004 -26.794001 0.152988</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.733334</startTime>
+				<value>-519.289978 -542.887024 78.170700</value>
+				<inTangent>-77.173599 -110.959999 0.126788</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.001554 0.014153 9.420110</inTangent>
+				<outTangent>0.001554 0.014153 9.420110</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.900001</startTime>
+				<value>0.000000 181.485001 -54.215500</value>
+				<inTangent>0.000000 0.208176 4.594890</inTangent>
+				<outTangent>0.000000 0.208176 4.594890</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.733334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_03_02_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.733334</startTime>
+				<value>-519.289978 -542.887024 78.170700</value>
+				<inTangent>-77.173599 -110.959999 0.126788</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.733334</startTime>
+				<value>0.000000 591.000000 0.000000</value>
+				<inTangent>-0.000000 0.213226 -4.736840</inTangent>
+				<outTangent>-0.000000 0.213226 -4.736840</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>7.733334</startTime>
+				<duration>13.233334</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_03.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_03_02_02</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>-34.910000 -40.000000 76.608002</value>
+				<inTangent>-77.313004 -26.794001 2.632330</inTangent>
+				<outTangent>-77.313004 -26.794001 2.632330</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.533334</startTime>
+				<value>-593.919983 -531.395996 94.682198</value>
+				<inTangent>-77.173599 -110.959999 2.598760</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000847 0.014153 10.029300</inTangent>
+				<outTangent>0.000847 0.014153 10.029300</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.533334</startTime>
+				<value>0.000000 181.485001 -54.569901</value>
+				<inTangent>0.000000 0.213156 4.972480</inTangent>
+				<outTangent>0.000000 0.213156 4.972480</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.533334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_03_02_02</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.533334</startTime>
+				<value>-593.919983 -531.395996 94.682198</value>
+				<inTangent>-77.173599 -110.959999 2.598760</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.533334</startTime>
+				<value>0.000000 550.000000 0.000000</value>
+				<inTangent>-0.000000 0.213226 -4.736840</inTangent>
+				<outTangent>-0.000000 0.213226 -4.736840</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>8.533334</startTime>
+				<duration>10.433333</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_02.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_03_02_03</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>-108.180000 -40.000000 76.607903</value>
+				<inTangent>-77.313004 -26.794001 4.532120</inTangent>
+				<outTangent>-77.313004 -26.794001 4.532120</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.333334</startTime>
+				<value>-683.320007 -540.284973 108.569000</value>
+				<inTangent>-77.173599 -110.959999 4.441040</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.002511 0.014153 10.993000</inTangent>
+				<outTangent>0.002511 0.014153 10.993000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.300000</startTime>
+				<value>0.000000 181.485001 -53.807499</value>
+				<inTangent>0.000000 0.214181 4.089280</inTangent>
+				<outTangent>0.000000 0.214181 4.089280</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>9.333334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_03_02_03</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>9.333334</startTime>
+				<value>-683.320007 -540.284973 108.569000</value>
+				<inTangent>-77.173599 -110.959999 4.441040</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>9.333334</startTime>
+				<value>0.000000 630.000000 0.000000</value>
+				<inTangent>-0.000000 0.213226 -4.736840</inTangent>
+				<outTangent>-0.000000 0.213226 -4.736840</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>9.333334</startTime>
+				<duration>11.200001</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_03_02_01</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>7.733334</duration>
+				<value>Bomb_03_02_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202064 -0.068649 0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.766667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202064 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.172249 0.028708 0.028708</inTangent>
+				<outTangent>0.172249 0.028708 0.028708</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.733334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.733334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_03_02_02</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>8.533334</duration>
+				<value>Bomb_01_01_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202064 -0.068649 0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.566667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202064 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.172249 0.028708 0.028708</inTangent>
+				<outTangent>0.172249 0.028708 0.028708</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.533334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.533334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_03_02_03</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>9.333334</duration>
+				<value>Bomb_03_02_03|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.200395 -0.068082 0.000000</inTangent>
+				<outTangent>0.200395 -0.068082 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.400001</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.200395 -0.068082 -0.000000</inTangent>
+				<outTangent>0.200395 -0.068082 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.172249 0.028708 0.028708</inTangent>
+				<outTangent>0.172249 0.028708 0.028708</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.333334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>9.333334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_02_01_03</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>-60.279999 13.000000 -142.309998</value>
+				<inTangent>-77.313103 -26.794001 2.448920</inTangent>
+				<outTangent>-77.313103 -26.794001 2.448920</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.800000</startTime>
+				<value>-638.909973 -540.284973 -124.863998</value>
+				<inTangent>-77.173599 -110.959999 2.424560</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000310 0.014153 3.711510</inTangent>
+				<outTangent>0.000310 0.014153 3.711510</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.800000</startTime>
+				<value>0.000000 181.485001 -53.748100</value>
+				<inTangent>-0.000000 0.206250 -7.465014</inTangent>
+				<outTangent>-0.000000 0.206250 -7.465014</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.800000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_02_01_03</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.800000</startTime>
+				<value>-638.909973 -540.284973 -124.863998</value>
+				<inTangent>-77.173599 -110.959999 2.424560</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.800000</startTime>
+				<value>0.000000 471.000000 0.000000</value>
+				<inTangent>-0.000000 0.206316 -4.583330</inTangent>
+				<outTangent>-0.000000 0.206316 -4.583330</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>8.800000</startTime>
+				<duration>13.233333</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_03.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_02_01_04</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>10.780000 13.000000 -142.309998</value>
+				<inTangent>-77.313004 -26.794001 0.787006</inTangent>
+				<outTangent>-77.313004 -26.794001 0.787006</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.033334</startTime>
+				<value>-575.919983 -540.284973 -136.134995</value>
+				<inTangent>-77.173599 -110.959999 0.752937</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.001904 0.014153 8.366770</inTangent>
+				<outTangent>0.001904 0.014153 8.366770</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.033334</startTime>
+				<value>0.000000 181.485001 -52.157902</value>
+				<inTangent>0.000001 0.206249 5.947180</inTangent>
+				<outTangent>0.000001 0.206249 5.947180</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.033334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_02_01_04</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.033334</startTime>
+				<value>-575.919983 -540.284973 -136.134995</value>
+				<inTangent>-77.173599 -110.959999 0.752937</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.033334</startTime>
+				<value>0.000000 537.000000 0.000000</value>
+				<inTangent>-0.000000 0.206316 -4.583330</inTangent>
+				<outTangent>-0.000000 0.206316 -4.583330</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>8.033334</startTime>
+				<duration>11.200000</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_02_01_03</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>8.800000</duration>
+				<value>Bomb_02_01_03|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.192442 -0.065380 0.000000</inTangent>
+				<outTangent>0.192442 -0.065380 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.800000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.192442 -0.065380 -0.000000</inTangent>
+				<outTangent>0.192442 -0.065380 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.166667 0.027778 0.027778</inTangent>
+				<outTangent>0.166667 0.027778 0.027778</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.800000</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.600000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.800000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_02_01_04</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>8.033334</duration>
+				<value>Bomb_02_01_04|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202064 -0.068649 0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.833333</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202064 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.166667 0.027778 0.027778</inTangent>
+				<outTangent>0.166667 0.027778 0.027778</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.033334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.033334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_02_02_01</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>60.250000 30.000000 -186.550003</value>
+				<inTangent>-77.313103 -26.794001 0.894306</inTangent>
+				<outTangent>-77.313103 -26.794001 0.894306</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.966667</startTime>
+				<value>-503.179993 -542.289978 -180.951996</value>
+				<inTangent>-77.173599 -110.959999 0.877620</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.001734 0.014153 3.711510</inTangent>
+				<outTangent>0.001734 0.014153 3.711510</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.966667</startTime>
+				<value>0.000000 181.485001 -51.259300</value>
+				<inTangent>0.000001 0.206249 7.119340</inTangent>
+				<outTangent>0.000001 0.206249 7.119340</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.966667</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_02_02_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.966667</startTime>
+				<value>-503.179993 -542.289978 -180.951996</value>
+				<inTangent>-77.173599 -110.959999 0.877620</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.966667</startTime>
+				<value>0.000000 565.000000 0.000000</value>
+				<inTangent>-0.000000 0.206316 -4.583330</inTangent>
+				<outTangent>-0.000000 0.206316 -4.583330</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>7.966667</startTime>
+				<duration>11.200001</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_02_02_02</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>-12.860000 30.000000 -186.550003</value>
+				<inTangent>-77.313103 -26.794001 2.510780</inTangent>
+				<outTangent>-77.313103 -26.794001 2.510780</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.766667</startTime>
+				<value>-548.400024 -539.018005 -162.565002</value>
+				<inTangent>-77.173599 -110.959999 2.476980</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.001655 0.014153 10.628500</inTangent>
+				<outTangent>0.001655 0.014153 10.628500</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.766667</startTime>
+				<value>0.000000 181.485001 -52.795399</value>
+				<inTangent>0.000000 0.208176 4.376250</inTangent>
+				<outTangent>0.000000 0.208176 4.376250</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.766667</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_02_02_02</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.766667</startTime>
+				<value>-548.400024 -539.018005 -162.565002</value>
+				<inTangent>-77.173599 -110.959999 2.476980</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.766667</startTime>
+				<value>0.000000 504.000000 -33.000000</value>
+				<inTangent>-0.000000 0.206316 -4.583330</inTangent>
+				<outTangent>-0.000000 0.206316 -4.583330</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>8.766667</startTime>
+				<duration>10.433333</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_02.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_02_02_03</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>-86.349998 30.000000 -186.550003</value>
+				<inTangent>-77.313103 -26.794001 2.075740</inTangent>
+				<outTangent>-77.313103 -26.794001 2.075740</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.566668</startTime>
+				<value>-625.130005 -542.359009 -171.960999</value>
+				<inTangent>-77.173599 -110.959999 1.631170</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>-0.000401 0.014153 9.527040</inTangent>
+				<outTangent>-0.000401 0.014153 9.527040</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.566668</startTime>
+				<value>0.000000 181.485001 -54.676601</value>
+				<inTangent>0.000000 0.198883 5.601440</inTangent>
+				<outTangent>0.000000 0.198883 5.601440</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>9.566668</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_02_02_03</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>9.566668</startTime>
+				<value>-625.130005 -542.359009 -171.960999</value>
+				<inTangent>-77.173599 -110.959999 1.631170</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>9.566668</startTime>
+				<value>0.000000 403.000000 -33.000000</value>
+				<inTangent>-0.000000 0.206316 -4.583330</inTangent>
+				<outTangent>-0.000000 0.206316 -4.583330</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>9.566668</startTime>
+				<duration>11.200001</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_02_02_04</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>3.166667</startTime>
+				<value>-152.570007 30.000000 -186.550003</value>
+				<inTangent>-77.313004 -26.794001 4.863630</inTangent>
+				<outTangent>-77.313004 -26.794001 4.863630</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.366667</startTime>
+				<value>-660.580017 -539.645020 -152.546997</value>
+				<inTangent>-77.173599 -110.959999 4.731210</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>3.166667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.001268 0.014153 9.334740</inTangent>
+				<outTangent>0.001268 0.014153 9.334740</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.366667</startTime>
+				<value>0.000000 181.485001 -54.582600</value>
+				<inTangent>0.000001 0.205298 6.382890</inTangent>
+				<outTangent>0.000001 0.205298 6.382890</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>3.166667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>10.366667</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_02_02_04</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>10.366667</startTime>
+				<value>-660.580017 -539.645020 -152.546997</value>
+				<inTangent>-77.173599 -110.959999 4.731210</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>10.366667</startTime>
+				<value>0.000000 181.485001 -33.000000</value>
+				<inTangent>-0.000000 0.206316 -4.583330</inTangent>
+				<outTangent>-0.000000 0.206316 -4.583330</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>10.366667</startTime>
+				<duration>13.233334</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_03.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_02_02_01</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>7.966667</duration>
+				<value>Bomb_02_02_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202064 -0.068649 0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.766667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202064 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.166667 0.027778 0.027778</inTangent>
+				<outTangent>0.166667 0.027778 0.027778</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.966667</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.966667</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_02_02_02</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>8.766667</duration>
+				<value>Bomb_02_02_02|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202064 -0.068649 0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.566667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202064 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.166667 0.027778 0.027778</inTangent>
+				<outTangent>0.166667 0.027778 0.027778</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.766667</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.766667</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_02_02_03</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>9.566668</duration>
+				<value>Bomb_02_02_03|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202064 -0.068649 0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.366667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202064 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.166667 0.027778 0.027778</inTangent>
+				<outTangent>0.166667 0.027778 0.027778</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.566668</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>9.566668</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_02_02_04</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>10.366667</duration>
+				<value>Bomb_02_02_04|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>3.166667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202064 -0.068649 0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.166667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202064 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>3.166667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>3.166667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.166667 0.027778 0.027778</inTangent>
+				<outTangent>0.166667 0.027778 0.027778</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.366667</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>3.166667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>10.366667</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_02_03_01</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>58.430099 30.000000 -97.561798</value>
+				<inTangent>-77.313004 -26.794001 0.914020</inTangent>
+				<outTangent>-77.313004 -26.794001 0.914020</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.333334</startTime>
+				<value>-539.039978 -542.117004 -93.140900</value>
+				<inTangent>-77.173599 -110.959999 0.914306</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.004938 0.014153 9.961310</inTangent>
+				<outTangent>0.004938 0.014153 9.961310</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.333334</startTime>
+				<value>0.000000 181.485001 -52.678699</value>
+				<inTangent>0.000000 0.198883 4.523810</inTangent>
+				<outTangent>0.000000 0.198883 4.523810</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.333334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_02_03_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.333334</startTime>
+				<value>-539.039978 -542.117004 -93.140900</value>
+				<inTangent>-77.173599 -110.959999 0.914306</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.333334</startTime>
+				<value>0.000000 710.000000 0.000000</value>
+				<inTangent>-0.000000 0.198947 -4.419640</inTangent>
+				<outTangent>-0.000000 0.198947 -4.419640</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>8.333334</startTime>
+				<duration>10.433334</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_02.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_02_03_02</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.666667</startTime>
+				<value>-14.860000 30.000000 -97.561798</value>
+				<inTangent>-77.313004 -26.794001 0.914020</inTangent>
+				<outTangent>-77.313004 -26.794001 0.914020</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.133334</startTime>
+				<value>-611.119995 -540.284973 -95.569504</value>
+				<inTangent>-77.173599 -110.959999 0.914306</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.666667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>-0.000128 0.014153 10.568800</inTangent>
+				<outTangent>-0.000128 0.014153 10.568800</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.133334</startTime>
+				<value>0.000000 181.485001 -54.228100</value>
+				<inTangent>0.000000 0.198883 5.387820</inTangent>
+				<outTangent>0.000000 0.198883 5.387820</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.666667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>9.133334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_02_03_02</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>9.133334</startTime>
+				<value>-611.119995 -540.284973 -95.569504</value>
+				<inTangent>-77.173599 -110.959999 0.914306</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>9.166667</startTime>
+				<value>0.000000 552.000000 0.000000</value>
+				<inTangent>-0.000000 0.198947 -4.419640</inTangent>
+				<outTangent>-0.000000 0.198947 -4.419640</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>9.133334</startTime>
+				<duration>11.200002</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_02_03_01</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>8.333334</duration>
+				<value>Bomb_02_03_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.207246 -0.070409 0.000000</inTangent>
+				<outTangent>0.207246 -0.070409 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.766667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.207246 -0.070409 -0.000000</inTangent>
+				<outTangent>0.207246 -0.070409 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.160714 0.026786 0.026786</inTangent>
+				<outTangent>0.160714 0.026786 0.026786</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.333334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.333334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_02_03_02</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>9.133334</duration>
+				<value>Bomb_02_03_02|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.666667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.260728 -0.088580 0.000000</inTangent>
+				<outTangent>0.260728 -0.088580 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.766667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.260728 -0.088580 -0.000000</inTangent>
+				<outTangent>0.260728 -0.088580 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.666667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.666667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.160714 0.026786 0.026786</inTangent>
+				<outTangent>0.160714 0.026786 0.026786</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.133334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.666667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>9.133334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_03_01_01</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>13.680100 -40.000000 122.704002</value>
+				<inTangent>-77.313004 -26.794001 4.532120</inTangent>
+				<outTangent>-77.313004 -26.794001 4.532120</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.633334</startTime>
+				<value>-573.099976 -537.844971 152.061005</value>
+				<inTangent>-77.173599 -110.959999 4.441040</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.006613 0.014153 10.099000</inTangent>
+				<outTangent>0.006613 0.014153 10.099000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.633334</startTime>
+				<value>0.000000 181.485001 -55.294201</value>
+				<inTangent>0.000001 0.213156 6.422810</inTangent>
+				<outTangent>0.000001 0.213156 6.422810</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.633334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_03_01_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.633334</startTime>
+				<value>-573.099976 -537.844971 152.061005</value>
+				<inTangent>-77.173599 -110.959999 4.441040</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>7.633334</startTime>
+				<value>0.000000 660.000000 0.000000</value>
+				<inTangent>-0.000000 0.213226 -4.736840</inTangent>
+				<outTangent>-0.000000 0.213226 -4.736840</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>7.633334</startTime>
+				<duration>11.200002</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_03_01_02</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.466667</startTime>
+				<value>-60.049999 -40.000000 122.704002</value>
+				<inTangent>-77.313004 -26.794001 1.326160</inTangent>
+				<outTangent>-77.313004 -26.794001 1.326160</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.433333</startTime>
+				<value>-649.520020 -540.284973 125.642998</value>
+				<inTangent>-77.173599 -110.959999 1.269090</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.466667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000670 0.014153 8.110140</inTangent>
+				<outTangent>0.000670 0.014153 8.110140</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.433333</startTime>
+				<value>0.000000 181.485001 -54.156502</value>
+				<inTangent>0.000001 0.213156 8.884430</inTangent>
+				<outTangent>0.000001 0.213156 8.884430</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.466667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.433333</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_03_01_02</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.433333</startTime>
+				<value>-649.520020 -540.284973 125.642998</value>
+				<inTangent>-77.173599 -110.959999 1.269090</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.433333</startTime>
+				<value>0.000000 509.000000 0.000000</value>
+				<inTangent>-0.000000 0.213226 -4.736840</inTangent>
+				<outTangent>-0.000000 0.213226 -4.736840</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>8.433333</startTime>
+				<duration>13.233335</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_03.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_03_01_01</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>7.633334</duration>
+				<value>Bomb_03_01_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.197136 -0.066975 0.000000</inTangent>
+				<outTangent>0.197136 -0.066975 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.766667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.197136 -0.066975 -0.000000</inTangent>
+				<outTangent>0.197136 -0.066975 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.172249 0.028708 0.028708</inTangent>
+				<outTangent>0.172249 0.028708 0.028708</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.633334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>7.633334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_03_01_02</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>8.433333</duration>
+				<value>Bomb_03_01_02|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.466667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.244927 -0.083211 0.000000</inTangent>
+				<outTangent>0.244927 -0.083211 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.766667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.244927 -0.083211 -0.000000</inTangent>
+				<outTangent>0.244927 -0.083211 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.466667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.466667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.172249 0.028708 0.028708</inTangent>
+				<outTangent>0.172249 0.028708 0.028708</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.433333</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>1.466667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.433333</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_04_01_01</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.666667</startTime>
+				<value>-62.029999 -60.000000 0.000005</value>
+				<inTangent>-91.065201 -26.794001 5.726260</inTangent>
+				<outTangent>-91.065201 -26.794001 5.726260</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.233334</startTime>
+				<value>-572.150024 -542.411011 31.847799</value>
+				<inTangent>-91.580299 -110.959999 5.699440</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.666667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.095486 0.014153 9.361550</inTangent>
+				<outTangent>0.095486 0.014153 9.361550</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.233334</startTime>
+				<value>0.000000 181.485001 -51.377300</value>
+				<inTangent>0.000001 0.266765 9.229450</inTangent>
+				<outTangent>0.000001 0.266765 9.229450</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>2.666667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.233334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_04_01_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.233334</startTime>
+				<value>-572.150024 -542.411011 31.847799</value>
+				<inTangent>-91.580299 -110.959999 5.699440</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>8.233334</startTime>
+				<value>0.000000 376.000000 0.000000</value>
+				<inTangent>-0.000001 0.266852 -5.928140</inTangent>
+				<outTangent>-0.000001 0.266852 -5.928140</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>8.233334</startTime>
+				<duration>10.433334</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_02.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_04_01_02</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>3.466667</startTime>
+				<value>-135.500000 -60.000000 0.000012</value>
+				<inTangent>-91.065201 -26.794001 2.671750</inTangent>
+				<outTangent>-91.065201 -26.794001 2.671750</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.033334</startTime>
+				<value>-638.929993 -540.284973 11.989400</value>
+				<inTangent>-91.580299 -110.959999 2.458670</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>3.466667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>-0.001303 0.014153 12.504700</inTangent>
+				<outTangent>-0.001303 0.014153 12.504700</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.033334</startTime>
+				<value>0.000000 181.485001 -51.082401</value>
+				<inTangent>0.000001 0.268372 7.283430</inTangent>
+				<outTangent>0.000001 0.268372 7.283430</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>3.466667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>9.033334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_04_01_02</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>9.033334</startTime>
+				<value>-638.929993 -540.284973 11.989400</value>
+				<inTangent>-91.580299 -110.959999 2.458670</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>9.033334</startTime>
+				<value>0.000000 499.000000 0.000000</value>
+				<inTangent>-0.000001 0.266852 -5.928140</inTangent>
+				<outTangent>-0.000001 0.266852 -5.928140</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>9.033334</startTime>
+				<duration>11.200000</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_04_01_04</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>5.066667</startTime>
+				<value>-282.649994 -60.000000 0.000025</value>
+				<inTangent>-89.935501 -26.794001 -3.487620</inTangent>
+				<outTangent>-89.935501 -26.794001 -3.487620</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.633334</startTime>
+				<value>-756.330017 -540.284973 -19.464300</value>
+				<inTangent>-89.677902 -110.959999 -3.187550</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>5.066667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.001363 0.014153 11.534900</inTangent>
+				<outTangent>0.001363 0.014153 11.534900</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.633334</startTime>
+				<value>0.000000 181.485001 -51.377399</value>
+				<inTangent>0.000001 0.263608 8.072080</inTangent>
+				<outTangent>0.000001 0.263608 8.072080</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>5.066667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>10.633334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>EffSfx_Explosion_04_01_04</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>10.633334</startTime>
+				<value>-756.330017 -540.284973 -19.464300</value>
+				<inTangent>-89.677902 -110.959999 -3.187550</inTangent>
+				<outTangent>-127.459999 -1.312390 3.973570</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>10.633334</startTime>
+				<value>0.000000 667.000000 0.000000</value>
+				<inTangent>-0.000001 0.266852 -5.928140</inTangent>
+				<outTangent>-0.000001 0.266852 -5.928140</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>10.633334</startTime>
+				<duration>11.200002</duration>
+				<value>particles/eff_sequence/random_events/08_ruinberg/08_ruinberg_bomb_explosion_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_04_01_01</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>8.233334</duration>
+				<value>Bomb_04_01_01|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.666667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.244927 -0.083211 0.000000</inTangent>
+				<outTangent>0.244927 -0.083211 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.966667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.244927 -0.083211 -0.000000</inTangent>
+				<outTangent>0.244927 -0.083211 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.666667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.666667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.215569 0.035928 0.035928</inTangent>
+				<outTangent>0.215569 0.035928 0.035928</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.233334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>2.666667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>8.233334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_04_01_02</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>9.033334</duration>
+				<value>Bomb_04_01_02|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>3.466667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.244927 -0.083211 0.000000</inTangent>
+				<outTangent>0.244927 -0.083211 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>6.766667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.244927 -0.083211 -0.000000</inTangent>
+				<outTangent>0.244927 -0.083211 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>3.466667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>3.466667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.215569 0.035928 0.035928</inTangent>
+				<outTangent>0.215569 0.035928 0.035928</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>9.033334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>3.466667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>9.033334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb_04_01_04</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>10.633334</duration>
+				<value>Bomb_04_01_04|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>5.066667</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.244927 -0.083211 0.000000</inTangent>
+				<outTangent>0.244927 -0.083211 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.366667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.244927 -0.083211 -0.000000</inTangent>
+				<outTangent>0.244927 -0.083211 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>5.066667</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>5.066667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.215569 0.035928 0.035928</inTangent>
+				<outTangent>0.215569 0.035928 0.035928</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.633334</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>5.066667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>10.633334</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

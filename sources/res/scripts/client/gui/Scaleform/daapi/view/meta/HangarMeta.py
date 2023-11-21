@@ -73,14 +73,6 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_hideTeaserTimer()
 
-    def as_createDQWidgetS(self):
-        if self._isDAAPIInited():
-            return self.flashObject.as_createDQWidget()
-
-    def as_destroyDQWidgetS(self):
-        if self._isDAAPIInited():
-            return self.flashObject.as_destroyDQWidget()
-
     def as_setPrestigeWidgetVisibleS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setPrestigeWidgetVisible(value)

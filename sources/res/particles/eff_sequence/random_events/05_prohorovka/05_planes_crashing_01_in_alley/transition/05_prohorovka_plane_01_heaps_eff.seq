@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>22.300001</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>SoilHeaps_01_Body</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.533334</startTime>
+				<value>-415.725220 3.270314 -7.172279</value>
+				<inTangent>-7.267663 1.310556 -13.784959</inTangent>
+				<outTangent>-7.267663 1.310556 -13.784959</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<value>-419.116791 3.881906 -13.605250</value>
+				<inTangent>-6.135970 1.603836 -11.067465</inTangent>
+				<outTangent>-6.135970 1.603836 -11.067465</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.433333</startTime>
+				<value>-421.285309 4.703989 -17.223568</value>
+				<inTangent>-4.221079 1.905194 -6.974434</inTangent>
+				<outTangent>-4.221079 1.905194 -6.974434</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.833333</startTime>
+				<value>-422.660461 5.469298 -19.463127</value>
+				<inTangent>-4.278098 2.093101 -6.180737</inTangent>
+				<outTangent>-4.278098 2.093101 -6.180737</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.300000</startTime>
+				<value>-425.049011 6.530000 -22.618999</value>
+				<inTangent>-5.118315 2.272931 -6.762576</inTangent>
+				<outTangent>-12.742879 0.832994 -15.554524</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>3.333333</startTime>
+				<value>5.141583 -1.082505 -3.230331</value>
+				<inTangent>-1.101110 1.688170 -0.429220</inTangent>
+				<outTangent>-1.101110 1.688170 -0.429220</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.833333</startTime>
+				<value>4.591028 -0.238420 -3.444941</value>
+				<inTangent>-6.289339 1.142110 4.091566</inTangent>
+				<outTangent>-6.289339 1.142110 4.091566</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.233334</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-11.477569 0.596050 8.612351</inTangent>
+				<outTangent>-11.477569 0.596050 8.612351</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Soilheap_body_01_VFX</name>
+		<type>particle</type>
+		<resource>particles/Environment/random_events/05_prohorovka_soil_heap_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>22.300001</duration>
+				<value>SoilHeaps_01_Body|root</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.984589 1.541574 -10.260895</value>
+				<inTangent>11.384059 -0.000000 -9.511765</inTangent>
+				<outTangent>11.384059 -0.000000 -9.511765</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.000000 46.794617 -0.000000</value>
+				<inTangent>0.000000 11.020254 0.000000</inTangent>
+				<outTangent>0.000000 11.020254 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>1.666667</startTime>
+				<value>0.000000</value>
+				<inTangent>5.454544</inTangent>
+				<outTangent>2.727272</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.033334</startTime>
+				<value>1.000000</value>
+				<inTangent>2.727272</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-2.727272</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.366667</startTime>
+				<value>0.000000</value>
+				<inTangent>-2.727272</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emissionSize</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>9.000000 1.000000 6.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>startSpeed</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-1.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>SoilHeaps_01_R_wing</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.800000</startTime>
+				<value>-402.338043 3.055993 37.190804</value>
+				<inTangent>-11.414495 -0.209296 -7.964271</inTangent>
+				<outTangent>-11.414495 -0.209296 -7.964271</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>-404.620941 3.014134 35.597950</value>
+				<inTangent>-15.152922 2.922399 -7.839044</inTangent>
+				<outTangent>-15.152922 2.922399 -7.839044</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.166667</startTime>
+				<value>-407.769501 4.023150 34.312313</value>
+				<inTangent>-16.273600 4.582874 -6.509372</inTangent>
+				<outTangent>-16.273600 4.582874 -6.509372</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.366667</startTime>
+				<value>-410.500671 4.645481 33.251328</value>
+				<inTangent>-12.161785 2.544114 -5.564833</inTangent>
+				<outTangent>-12.161785 2.544114 -5.564833</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.733334</startTime>
+				<value>-414.412170 5.370225 31.115589</value>
+				<inTangent>-8.086590 1.630269 -4.014219</inTangent>
+				<outTangent>-8.086590 1.630269 -4.014219</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.433333</startTime>
+				<value>-418.265991 6.269000 29.573000</value>
+				<inTangent>-5.505460 1.283965 -2.203699</inTangent>
+				<outTangent>-5.505460 1.283965 -2.203699</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.900000</startTime>
+				<value>8.269531 -0.000007 -4.009103</value>
+				<inTangent>-3.369316 0.523193 -0.077727</inTangent>
+				<outTangent>-3.369316 0.523193 -0.077727</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.166667</startTime>
+				<value>7.371047 0.139511 -4.029830</value>
+				<inTangent>-1.684658 0.261596 -0.038863</inTangent>
+				<outTangent>-1.684658 0.261596 -0.038863</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.433333</startTime>
+				<value>7.371047 0.139511 -4.029830</value>
+				<inTangent>-5.836449 -0.176446 7.543386</inTangent>
+				<outTangent>-5.836449 -0.176446 7.543386</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.833333</startTime>
+				<value>2.701887 -0.001646 2.004880</value>
+				<inTangent>-8.088021 -0.175075 5.872653</inTangent>
+				<outTangent>-8.088021 -0.175075 5.872653</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.433333</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-4.503146 0.002743 -3.341467</inTangent>
+				<outTangent>-4.503146 0.002743 -3.341467</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Soilheap_R_wing_01_VFX</name>
+		<type>particle</type>
+		<resource>particles/Environment/random_events/05_prohorovka_soil_heap_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>22.300001</duration>
+				<value>SoilHeaps_01_R_wing|root</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.613403 -1.278782 -2.436539</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>4.263419 -4.276206 -0.939227</value>
+				<inTangent>0.045246 -2.538928 -0.613143</inTangent>
+				<outTangent>0.045246 -2.538928 -0.613143</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>1.266667</startTime>
+				<value>0.000000</value>
+				<inTangent>5.454544</inTangent>
+				<outTangent>3.333334</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.566667</startTime>
+				<value>1.000000</value>
+				<inTangent>3.333334</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.500000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-3.749997</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.766667</startTime>
+				<value>0.000000</value>
+				<inTangent>-3.749997</inTangent>
+				<outTangent>-0.576923</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emissionSize</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>7.000000 1.000000 3.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>startSpeed</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-1.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>SoilHeaps_01_L_wing</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.066667</startTime>
+				<value>-374.453186 3.129034 -4.135131</value>
+				<inTangent>-9.281239 5.694790 -12.515922</inTangent>
+				<outTangent>-9.281239 5.694790 -12.515922</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.466667</startTime>
+				<value>-378.165680 5.406949 -9.141498</value>
+				<inTangent>-13.429371 4.053654 -11.414012</inTangent>
+				<outTangent>-13.429371 4.053654 -11.414012</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.766667</startTime>
+				<value>-383.438934 6.130705 -12.235130</value>
+				<inTangent>-13.770262 0.958745 -9.903938</inTangent>
+				<outTangent>-13.770262 0.958745 -9.903938</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.133333</startTime>
+				<value>-387.092041 5.949195 -15.716913</value>
+				<inTangent>-9.070213 0.183988 -8.201140</inTangent>
+				<outTangent>-9.070213 0.183988 -8.201140</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.500000</startTime>
+				<value>-390.090424 6.265630 -18.249300</value>
+				<inTangent>-6.442675 0.764928 -6.612504</inTangent>
+				<outTangent>-6.442675 0.764928 -6.612504</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.700000</startTime>
+				<value>-391.032013 6.399000 -19.513000</value>
+				<inTangent>-4.707946 0.666852 -6.318501</inTangent>
+				<outTangent>-4.707946 0.666852 -6.318501</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.766667</startTime>
+				<value>6.047043 2.587534 2.090553</value>
+				<inTangent>-10.997010 -6.244765 -8.785810</inTangent>
+				<outTangent>-10.997010 -6.244765 -8.785810</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.866667</startTime>
+				<value>4.947343 1.963058 1.211973</value>
+				<inTangent>-5.500852 -6.417341 -9.015877</inTangent>
+				<outTangent>-5.500852 -6.417341 -9.015877</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.166667</startTime>
+				<value>4.945935 -0.013917 -1.561810</value>
+				<inTangent>-4.639159 -3.281912 -3.158776</inTangent>
+				<outTangent>-4.639159 -3.281912 -3.158776</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.700000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-9.273624 0.026094 2.928393</inTangent>
+				<outTangent>-9.273624 0.026094 2.928393</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Soilheap_L_wing_01_VFX</name>
+		<type>particle</type>
+		<resource>particles/Environment/random_events/05_prohorovka_soil_heap_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>22.300001</duration>
+				<value>SoilHeaps_01_L_wing|root</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.211395 -0.444483 -1.627205</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.212590 -7.506202 -2.460134</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>1.366667</startTime>
+				<value>0.000000</value>
+				<inTangent>5.454544</inTangent>
+				<outTangent>2.500000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.766667</startTime>
+				<value>1.000000</value>
+				<inTangent>2.500000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.700000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-3.749997</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.966667</startTime>
+				<value>0.000000</value>
+				<inTangent>-3.749997</inTangent>
+				<outTangent>-0.576923</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emissionSize</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>5.000000 0.000000 2.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>startSpeed</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-1.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>SoilHeaps_01_Tail</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>-385.891937 4.219306 23.392599</value>
+				<inTangent>-10.981612 3.034041 -7.181399</inTangent>
+				<outTangent>-10.981612 3.034041 -7.181399</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.666667</startTime>
+				<value>-393.213013 6.242000 18.605000</value>
+				<inTangent>-10.981612 3.034041 -7.181399</inTangent>
+				<outTangent>-10.981612 3.034041 -7.181399</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>3.442169 -0.000001 -2.749663</value>
+				<inTangent>-5.163253 0.000001 4.124495</inTangent>
+				<outTangent>-5.163253 0.000001 4.124495</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.666667</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-5.163253 0.000001 4.124495</inTangent>
+				<outTangent>-5.163253 0.000001 4.124495</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Soilheap_Tail_01_VFX</name>
+		<type>particle</type>
+		<resource>particles/Environment/random_events/05_prohorovka_soil_heap_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>22.300001</duration>
+				<value>SoilHeaps_01_Tail|root</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-2.675629 -0.547239 -0.122070</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>6.649621 18.382431 1.138936</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>1.233333</startTime>
+				<value>0.000000</value>
+				<inTangent>5.454544</inTangent>
+				<outTangent>3.333333</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.533333</startTime>
+				<value>1.000000</value>
+				<inTangent>3.333333</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.800000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-3.749994</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.066667</startTime>
+				<value>0.000000</value>
+				<inTangent>-3.749994</inTangent>
+				<outTangent>-0.576923</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emissionSize</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 10.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>startSpeed</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-1.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

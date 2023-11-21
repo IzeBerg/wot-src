@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>69.500000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>material property float</name>
+			<type>float</type>
+			<identifier>s_nd0_skinned</identifier>
+			<property>g_ditherCoeff</property>
+			<frame>
+				<startTime>68.033340</startTime>
+				<value>100.000000</value>
+				<inTangent>-161.269211</inTangent>
+				<outTangent>-161.269211</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>69.500000</startTime>
+				<value>0.000000</value>
+				<inTangent>-2.380012</inTangent>
+				<outTangent>-2.380012</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Smoke_dust</name>
+		<type>particle</type>
+		<resource>particles/environment/random_events/04_himmelsdorf_locomotive_ground_plowing.eff</resource>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>62.700005</startTime>
+				<value>0.000000</value>
+				<inTangent>0.406686</inTangent>
+				<outTangent>0.406686</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>63.700005</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.014537</inTangent>
+				<outTangent>-0.014537</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>64.233337</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.461539</inTangent>
+				<outTangent>-0.461539</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sparks</name>
+		<type>particle</type>
+		<resource>particles/Environment/random_events/04_himmelsdorf_friction_sparks.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>62.933338</startTime>
+				<value>0.806396 0.101135 2.554512</value>
+				<inTangent>-0.021028 -0.193849 0.095237</inTangent>
+				<outTangent>-0.021028 -0.193849 0.095237</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>62.933338</startTime>
+				<value>-91.715439 -79.187653 90.367577</value>
+				<inTangent>-1.612815 -1.392514 1.589113</inTangent>
+				<outTangent>-1.612815 -1.392514 1.589113</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>62.766670</startTime>
+				<value>0.000000</value>
+				<inTangent>0.406686</inTangent>
+				<outTangent>0.406686</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>62.833336</startTime>
+				<value>1.000000</value>
+				<inTangent>7.142972</inTangent>
+				<outTangent>7.142972</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>64.233337</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.461539</inTangent>
+				<outTangent>-0.461539</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

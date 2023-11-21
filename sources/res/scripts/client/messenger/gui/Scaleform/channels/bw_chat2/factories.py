@@ -1,4 +1,4 @@
-from constants import PREBATTLE_TYPE, ARENA_GUI_TYPE
+from constants import PREBATTLE_TYPE
 from messenger.gui.gameface.channels.GFChannelController import GFChannelController
 from messenger.gui.Scaleform.channels.bw_chat2 import battle_controllers
 from messenger.gui.Scaleform.channels.bw_chat2 import lobby_controllers
@@ -7,7 +7,6 @@ from messenger.m_constants import BATTLE_CHANNEL
 from messenger.proto.bw_chat2 import find_criteria
 from messenger.proto.bw_chat2.wrappers import CHAT_TYPE
 from messenger.storage import storage_getter
-from gui.shared.system_factory import registerBattleChanelController, collectBattleChanelController
 from helpers import dependency
 from skeletons.gui.battle_session import IBattleSessionProvider
 
@@ -43,9 +42,6 @@ class LobbyControllersFactory(IControllerFactory):
         return controller
 
 
-for guiType in ARENA_GUI_TYPE.EPIC_RANGE:
-    registerBattleChanelController(BATTLE_CHANNEL.TEAM, guiType, battle_controllers.EpicTeamChannelController)
-
 class BattleControllersFactory(IControllerFactory):
 
     @storage_getter('channels')
@@ -68,12 +64,12 @@ class BattleControllersFactory(IControllerFactory):
         sessionProvider = dependency.instance(IBattleSessionProvider)
         arenaVisitor = sessionProvider.arenaVisitor
         if settings == BATTLE_CHANNEL.TEAM:
-            controllerClass = collectBattleChanelController(BATTLE_CHANNEL.TEAM, arenaVisitor.gui.guiType)
-            controller = controllerClass(channel) if controllerClass else battle_controllers.TeamChannelController(channel)
+            if arenaVisitor.gui.isInEpicRange():
+                controller = battle_controllers.EpicTeamChannelController(channel)
+            else:
+                controller = battle_controllers.TeamChannelController(channel)
         elif settings == BATTLE_CHANNEL.COMMON:
-            controllerClass = collectBattleChanelController(BATTLE_CHANNEL.COMMON, arenaVisitor.gui.guiType)
-            controller = controllerClass(channel) if controllerClass else battle_controllers.CommonChannelController(channel)
+            controller = battle_controllers.CommonChannelController(channel)
         elif settings == BATTLE_CHANNEL.SQUAD:
-            controllerClass = collectBattleChanelController(BATTLE_CHANNEL.SQUAD, arenaVisitor.gui.guiType)
-            controller = controllerClass(channel) if controllerClass else battle_controllers.SquadChannelController(channel)
+            controller = battle_controllers.SquadChannelController(channel)
         return controller

@@ -150,8 +150,6 @@ class ARENAS(object):
     C_251_BR_BATTLE_CITY3_NAME = '#arenas:251_br_battle_city3/name'
     C_127_JAPORT_NAME = '#arenas:127_japort/name'
     C_127_JAPORT_DESCRIPTION = '#arenas:127_japort/description'
-    C_95_LOST_CITY_CTF_H23_NAME = '#arenas:95_lost_city_ctf_h23/name'
-    C_95_LOST_CITY_CTF_H23_DESCRIPTION = '#arenas:95_lost_city_ctf_h23/description'
     C_252_BR_BATTLE_CITY4_NAME = '#arenas:252_br_battle_city4/name'
     C_252_BR_BATTLE_CITY4_DESCRIPTION = '#arenas:252_br_battle_city4/description'
     C_128_LAST_FRONTIER_V_NAME = '#arenas:128_last_frontier_v/name'
@@ -316,8 +314,6 @@ class ARENAS(object):
      C_251_BR_BATTLE_CITY3_NAME,
      C_127_JAPORT_NAME,
      C_127_JAPORT_DESCRIPTION,
-     C_95_LOST_CITY_CTF_H23_NAME,
-     C_95_LOST_CITY_CTF_H23_DESCRIPTION,
      C_252_BR_BATTLE_CITY4_NAME,
      C_252_BR_BATTLE_CITY4_DESCRIPTION,
      C_128_LAST_FRONTIER_V_NAME,

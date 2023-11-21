@@ -1,4 +1,0 @@
-from HWBuffShowCannotBeDamagedMarker import HWBuffShowCannotBeDamagedMarker
-
-class HWBuffIgniteVehicleComponent(HWBuffShowCannotBeDamagedMarker):
-    pass

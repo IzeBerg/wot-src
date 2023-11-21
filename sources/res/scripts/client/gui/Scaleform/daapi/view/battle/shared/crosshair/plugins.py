@@ -527,9 +527,6 @@ class AmmoPlugin(CrosshairPlugin):
             self.__notifyAutoLoader(state)
 
     def __notifyAutoLoader(self, state):
-        if not state.isReloading() and self.__autoReloadCallbackID is not None:
-            BigWorld.cancelCallback(self.__autoReloadCallbackID)
-            self.__autoReloadCallbackID = None
         actualTime = state.getActualValue()
         baseTime = state.getBaseValue()
         if self.__shellsInClip <= 0 and state.isReloading():
@@ -640,7 +637,7 @@ class VehicleStatePlugin(CrosshairPlugin):
         if vehicle is not None:
             self.__setPlayerInfo(vehicle.id)
             self.__onVehicleControlling(vehicle)
-        ctrl.onVehicleStateUpdated += self._onVehicleStateUpdated
+        ctrl.onVehicleStateUpdated += self.__onVehicleStateUpdated
         ctrl.onVehicleControlling += self.__onVehicleControlling
         ctrl.onPostMortemSwitched += self.__onPostMortemSwitched
         ctrl = self.sessionProvider.shared.feedback
@@ -652,16 +649,13 @@ class VehicleStatePlugin(CrosshairPlugin):
     def stop(self):
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
-            ctrl.onVehicleStateUpdated -= self._onVehicleStateUpdated
+            ctrl.onVehicleStateUpdated -= self.__onVehicleStateUpdated
             ctrl.onVehicleControlling -= self.__onVehicleControlling
             ctrl.onPostMortemSwitched -= self.__onPostMortemSwitched
         ctrl = self.sessionProvider.shared.feedback
         if ctrl is not None:
             ctrl.onVehicleFeedbackReceived -= self.__onVehicleFeedbackReceived
         return
-
-    def _setMaxHealth(self, value):
-        self.__maxHealth = value
 
     def __setHealth(self, health):
         if self.__maxHealth != 0 and self.__maxHealth >= health:
@@ -693,7 +687,7 @@ class VehicleStatePlugin(CrosshairPlugin):
         self.__setHealth(vehicle.health)
         self.__updateVehicleInfo()
 
-    def _onVehicleStateUpdated(self, state, value):
+    def __onVehicleStateUpdated(self, state, value):
         if state == VEHICLE_VIEW_STATE.HEALTH:
             self.__setHealth(value)
             self.__updateVehicleInfo()

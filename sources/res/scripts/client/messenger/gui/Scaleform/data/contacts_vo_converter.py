@@ -2,9 +2,8 @@ from constants import WG_GAMES
 from gui import makeHtmlString
 from gui.Scaleform.genConsts.CONTACTS_ALIASES import CONTACTS_ALIASES
 from gui.Scaleform.locale.MESSENGER import MESSENGER as I18N_MESSENGER
+from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
-from gui.impl import backport
-from gui.impl.gen import R
 from helpers import dependency
 from helpers import i18n
 from helpers.html import escape
@@ -48,17 +47,18 @@ def makeContactStatusDescription(isOnline, tags, clientInfo=None):
             item = g_preDefinedHosts.byUrl(gameHost)
             name = item.shortName or item.name
         if USER_TAG.PRESENCE_DND in tags:
-            descRes = R.strings.tooltips.Contact.status.inBattle.dyn(arenaLabel)
-            if descRes.exists():
-                description = backport.text(descRes())
-            else:
-                description = backport.text(R.strings.tooltips.Contact.status.inBattle.unknown())
+            key = None
+            if arenaLabel:
+                key = TOOLTIPS.contact_status_inbattle(arenaLabel)
+            if not key:
+                key = TOOLTIPS.CONTACT_STATUS_INBATTLE_UNKNOWN
+            description = i18n.makeString(key)
         else:
-            description = backport.text(R.strings.tooltips.Contact.status.online())
+            description = i18n.makeString(TOOLTIPS.CONTACT_STATUS_ONLINE)
         if name:
             description = ('{0}, {1}').format(description, name)
     else:
-        description = backport.text(R.strings.tooltips.Contact.status.offline())
+        description = i18n.makeString(TOOLTIPS.CONTACT_STATUS_OFFLINE)
     return description
 
 

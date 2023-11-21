@@ -10,7 +10,7 @@ package net.wg.gui.lobby.header.vo
       
       public var battleTypeID:String = "";
       
-      public var eventBgLinkage:String = "";
+      public var eventBgEnabled:Boolean = false;
       
       public var showLegacySelector:Boolean = false;
       

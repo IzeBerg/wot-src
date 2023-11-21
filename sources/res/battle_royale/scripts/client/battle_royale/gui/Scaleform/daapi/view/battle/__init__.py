@@ -1,9 +1,9 @@
-from frameworks.wulf import WindowLayer
-from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from battle_royale.gui.Scaleform.daapi.view.battle.page import BattleRoyalePage
+from battle_royale.gui.Scaleform.daapi.view.battle.player_stats_in_battle import BattleRoyalePlayerStats
 from battle_royale.gui.Scaleform.daapi.view.battle.radar import RadarButton
 from battle_royale.gui.Scaleform.daapi.view.battle.status_notifications.panel import BRStatusNotificationTimerPanel
-from battle_royale.gui.Scaleform.daapi.view.battle.player_stats_in_battle import BattleRoyalePlayerStats
+from frameworks.wulf import WindowLayer
+from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.battle.shared.page import BattlePageBusinessHandler
 from gui.Scaleform.framework import ViewSettings, ScopeTemplates, ComponentSettings
 from gui.Scaleform.framework.package_layout import PackageBusinessHandler
@@ -17,7 +17,6 @@ def getContextMenuHandlers():
 
 def getViewSettings():
     from gui.Scaleform.daapi.view.battle.classic import stats_exchange
-    from gui.Scaleform.daapi.view.battle.classic import team_bases_panel
     from battle_royale.gui.Scaleform.daapi.view.battle.minimap.component import BattleRoyaleMinimapComponent
     from battle_royale.gui.Scaleform.daapi.view.battle.consumables_panel import BattleRoyaleConsumablesPanel
     from gui.Scaleform.daapi.view.battle.classic import battle_end_warning_panel
@@ -47,7 +46,6 @@ def getViewSettings():
      ViewSettings(VIEW_ALIAS.BATTLE_ROYALE_PAGE, BattleRoyalePage, 'battleRoyalePage.swf', WindowLayer.VIEW, None, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(BATTLE_VIEW_ALIASES.BATTLE_LOADING, battle_loading.BattleLoading, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(BATTLE_VIEW_ALIASES.BATTLE_STATISTIC_DATA_CONTROLLER, stats_exchange.ClassicStatisticsDataController, ScopeTemplates.DEFAULT_SCOPE),
-     ComponentSettings(BATTLE_VIEW_ALIASES.TEAM_BASES_PANEL, team_bases_panel.TeamBasesPanel, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(BATTLE_VIEW_ALIASES.FULL_STATS, FullStatsComponent, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(BATTLE_VIEW_ALIASES.MINIMAP, BattleRoyaleMinimapComponent, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(BATTLE_VIEW_ALIASES.DAMAGE_PANEL, damage_panel.DamagePanel, ScopeTemplates.DEFAULT_SCOPE),

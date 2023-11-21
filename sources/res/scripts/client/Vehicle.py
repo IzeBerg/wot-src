@@ -198,7 +198,6 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.__isInDebuff = False
         self.__cameraTargetMatrix = Math.WGAdaptiveMatrixProvider()
         self.set_postmortemViewPointName()
-        self.onShowDamageFromShot = Event()
         return
 
     def reload(self):
@@ -357,7 +356,6 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         if not self.isStarted:
             return
         else:
-            self.onShowDamageFromShot(attackerID, points, effectsIndex, damageFactor, lastMaterialIsShield)
             hitsReceived = self.appearance.findComponentByType(Projectiles.ProjectileHitsReceivedComponent)
             if hitsReceived is None:
                 self.appearance.createComponent(Projectiles.ProjectileHitsReceivedComponent)
@@ -1201,9 +1199,6 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             highlighter.highlight(True)
 
     def delModel(self, model):
-        if self.isDestroyed or not hasattr(self, 'appearance'):
-            _logger.warning('Vehicle::delModel called by %d after destroy', type(model))
-            return
         highlighter = self.appearance.highlighter
         hlOn = highlighter.isOn
         hlSimpleEdge = highlighter.isSimpleEdge

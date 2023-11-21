@@ -871,7 +871,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.staticMarkers.safeZone.SafeZoneMarker;
    import net.wg.gui.battle.views.staticMarkers.scenario.ScenarioMarker;
    import net.wg.gui.battle.views.staticMarkers.scenario.ScenarioMarkerProgressCircle;
-   import net.wg.gui.battle.views.staticMarkers.targetPoint.TargetPointMarker;
    import net.wg.gui.battle.views.stats.SpeakAnimation;
    import net.wg.gui.battle.views.stats.SquadTooltip;
    import net.wg.gui.battle.views.stats.StatsUserProps;
@@ -2731,8 +2730,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_SCENARIO_SCENARIOMARKER:Class = ScenarioMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_SCENARIO_SCENARIOMARKERPROGRESSCIRCLE:Class = ScenarioMarkerProgressCircle;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_TARGETPOINT_TARGETPOINTMARKER:Class = TargetPointMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATS_SPEAKANIMATION:Class = SpeakAnimation;
       

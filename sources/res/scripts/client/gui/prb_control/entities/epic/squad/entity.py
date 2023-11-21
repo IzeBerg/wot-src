@@ -1,6 +1,5 @@
 import account_helpers
 from constants import PREBATTLE_TYPE, QUEUE_TYPE, VEHICLE_CLASS_INDICES
-from gui.Scaleform.daapi.view.lobby.header.fight_btn_tooltips import getEpicFightBtnTooltipData
 from gui.prb_control.entities.epic.squad.actions_validator import EpicSquadActionsValidator
 from gui.prb_control.entities.base.squad.entity import SquadEntryPoint, SquadEntity
 from gui.prb_control.settings import PREBATTLE_ACTION_NAME, FUNCTIONAL_FLAG
@@ -68,11 +67,6 @@ class EpicSquadEntity(SquadEntity):
 
     def getQueueType(self):
         return QUEUE_TYPE.EPIC
-
-    def getFightBtnTooltipData(self, isStateDisabled):
-        if isStateDisabled:
-            return (getEpicFightBtnTooltipData(self.canPlayerDoAction()), False)
-        return super(EpicSquadEntity, self).getFightBtnTooltipData(isStateDisabled)
 
     @property
     def _showUnitActionNames(self):

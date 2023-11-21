@@ -108,7 +108,6 @@ BLUEPRINTS_CONVERT_SALE_STARTED_SEEN = 'bcsStartedSeen'
 IS_SHOP_VISITED = 'isShopVisited'
 LAST_SHOP_ACTION_COUNTER_MODIFICATION = 'lastShopActionCounterModification'
 OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES = 'overridenHeaderCounterActionAliases'
-HW23_ARTEFACT_VOICEOVER_MUTED = 'HW23_ARTEFACT_VOICEOVER_MUTED'
 STORE_TAB = 'store_tab'
 STATS_REGULAR_SORTING = 'statsSorting'
 STATS_SORTIE_SORTING = 'statsSortingSortie'
@@ -270,11 +269,6 @@ class Winback(object):
     COMPLETED_STARTING_QUEST_COUNT = 'completedStartingQuestCount'
     INTRO_SHOWN = 'introShown'
     BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN = 'battleSelectorSettingsBulletShown'
-
-
-class WinBackCall(object):
-    WIN_BACK_CALL_UI_SECTION = 'winBackCall'
-    WIN_BACK_CALL_SHOWN_INTRO = 'winBackCallIntroShowed'
 
 
 KNOWN_SELECTOR_BATTLES = 'knownSelectorBattles'
@@ -1169,8 +1163,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                           ACTIVE_TEST_PARTICIPATION_CONFIRMED: False, 
                           IS_SHOP_VISITED: False, 
                           LAST_SHOP_ACTION_COUNTER_MODIFICATION: None, 
-                          OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES: set(), 
-                          HW23_ARTEFACT_VOICEOVER_MUTED: False}, 
+                          OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES: set()}, 
    KEY_UI_FLAGS: {COMP7_UI_SECTION: {COMP7_WEEKLY_QUESTS_PAGE_TOKENS_COUNT: 0}, 
                   COLLECTIONS_SECTION: {COLLECTION_SHOWN_NEW_REWARDS: {}, COLLECTION_SHOWN_NEW_ITEMS: {}, COLLECTION_SHOWN_NEW_ITEMS_COUNT: {}, COLLECTION_TUTORIAL_COMPLETED: set(), 
                                         COLLECTION_WAS_ENABLED: True, 
@@ -1198,8 +1191,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   'uiSpamVisited_PersonalReservesHangarHint': False, 
                   'uiSpamVisited_ModernizedSetupTabHint': False, 
                   'uiSpamVisited_OfferBannerWindow': False, 
-                  'uiSpamVisited_StrongholdView': False, 
-                  WinBackCall.WIN_BACK_CALL_UI_SECTION: {WinBackCall.WIN_BACK_CALL_SHOWN_INTRO: False}}}
+                  'uiSpamVisited_StrongholdView': False}}
 
 def _filterAccountSection(dataSec):
     for key, section in dataSec.items()[:]:
@@ -2042,20 +2034,6 @@ class AccountSettings(object):
             cls._setValue(BattleMatters.BATTLE_MATTERS_SETTINGS, bmSection, KEY_SETTINGS)
         else:
             _logger.error("Cann't set value in %s section for %s.", BattleMatters.BATTLE_MATTERS_SETTINGS, name)
-
-    @classmethod
-    def getWinBackCallSetting(cls, name, default):
-        settings = cls.getUIFlag(WinBackCall.WIN_BACK_CALL_UI_SECTION)
-        return settings.get(name, default)
-
-    @classmethod
-    def setWinBackCallSetting(cls, name, value):
-        settings = cls.getUIFlag(WinBackCall.WIN_BACK_CALL_UI_SECTION)
-        if name in settings:
-            settings[name] = value
-            cls.setUIFlag(WinBackCall.WIN_BACK_CALL_UI_SECTION, settings)
-        else:
-            _logger.error("Cann't set value in %s section.", WinBackCall.WIN_BACK_CALL_UI_SECTION)
 
     @staticmethod
     def _getValue(name, setting, force=False):

@@ -31,7 +31,7 @@ class PlayerMessages(fading_messages.FadingMessages):
         ctrl = self.sessionProvider.shared.equipments
         if ctrl is not None:
             ctrl.onEquipmentUpdated += self.__onCombatEquipmentUpdated
-            ctrl.onCombatEquipmentUsed += self._onCombatEquipmentUsed
+            ctrl.onCombatEquipmentUsed += self.__onCombatEquipmentUsed
         return
 
     def _removeGameListeners(self):
@@ -43,7 +43,7 @@ class PlayerMessages(fading_messages.FadingMessages):
         ctrl = self.sessionProvider.shared.equipments
         if ctrl is not None:
             ctrl.onEquipmentUpdated -= self.__onCombatEquipmentUpdated
-            ctrl.onCombatEquipmentUsed -= self._onCombatEquipmentUsed
+            ctrl.onCombatEquipmentUsed -= self.__onCombatEquipmentUsed
         super(PlayerMessages, self)._removeGameListeners()
         return
 
@@ -81,9 +81,9 @@ class PlayerMessages(fading_messages.FadingMessages):
                 return
             self.showMessage('COMBAT_BR_EQUIPMENT_READY', {'equipment': itemDescriptor.userString})
         else:
-            self.showMessage('COMBAT_EQUIPMENT_READY', {}, postfix=self._getPostfixFromEquipment(itemDescriptor))
+            self.showMessage('COMBAT_EQUIPMENT_READY', {}, postfix=self.__getPostfixFromEquipment(itemDescriptor))
 
-    def _onCombatEquipmentUsed(self, shooterID, eqID):
+    def __onCombatEquipmentUsed(self, shooterID, eqID):
         if self.sessionProvider.arenaVisitor.getArenaGuiType() in ARENA_GUI_TYPE.EPIC_RANGE:
             return
         else:
@@ -95,11 +95,11 @@ class PlayerMessages(fading_messages.FadingMessages):
                     return
                 self.showMessage('COMBAT_EQUIPMENT_USED', {'player': getFullName(shooterID, showClan=False)}, extra=(
                  (
-                  'player', shooterID),), postfix=self._getPostfixFromEquipment(equipment))
+                  'player', shooterID),), postfix=self.__getPostfixFromEquipment(equipment))
             return
 
     @staticmethod
-    def _getPostfixFromEquipment(equipment):
+    def __getPostfixFromEquipment(equipment):
         postfix = equipment.playerMessagesKey
         if postfix is None:
             postfix = equipment.name.split('_')[0].upper()
