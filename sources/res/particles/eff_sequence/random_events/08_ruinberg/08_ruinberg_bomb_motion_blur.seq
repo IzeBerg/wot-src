@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>7.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Motion_Blur_Bomb</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/random_events/bombs_motionblur.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.808258 0.274597 0.000000</value>
+				<inTangent>0.202064 -0.068649 0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.202064 -0.068649 -0.000000</inTangent>
+				<outTangent>0.202064 -0.068649 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.171429 0.028571 0.028571</inTangent>
+				<outTangent>0.171429 0.028571 0.028571</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>7.000000</startTime>
+				<value>2.200000 1.200000 1.200000</value>
+				<inTangent>-0.003405 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.003405 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

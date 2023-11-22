@@ -20,8 +20,8 @@
 				<material>
 					<identifier>m_dirt</identifier>
 					<fx>shaders/wg_particles/pbs_mesh_particles.fx</fx>
-					<collisionFlags>0</collisionFlags>
 					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
 						diffuseMap
 						<Texture>particles/mesh_particles/tex/stone_am.dds</Texture>
@@ -47,6 +47,7 @@
 		<min>-0.105232 -0.054673 -0.120920</min>
 		<max>0.105232 0.054673 0.120920</max>
 	</boundingBox>
-	<geometrySize>3036</geometrySize>
-	<minUVDensity>0.181466</minUVDensity>
+	<customBsp>true</customBsp>
+	<geometrySize>11684</geometrySize>
+	<minUVDensity>0.181461</minUVDensity>
 </root>

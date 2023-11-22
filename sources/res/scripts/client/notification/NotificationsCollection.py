@@ -24,15 +24,6 @@ class NotificationsCollection(object):
         for typeID in NOTIFICATION_TYPE.RANGE:
             self.__received[typeID] = []
 
-    def getOverloaded(self, item):
-        typeID = item.getType()
-        if typeID in self.__received:
-            notifications = self.__received[typeID]
-            count = len(notifications) - ITEMS_MAX_LENGTHS[typeID]
-            if count:
-                return notifications[0:count]
-        return
-
     def addItem(self, item):
         result = True
         typeID, itemID = item.getType(), item.getID()
@@ -40,6 +31,8 @@ class NotificationsCollection(object):
             notifications = self.__received[typeID]
             if item not in notifications:
                 notifications.append(item)
+                if len(notifications) > ITEMS_MAX_LENGTHS[typeID]:
+                    self.__removeNotification(notifications.pop(0))
             else:
                 result = False
                 LOG_WARNING('Notification already exists', typeID, itemID, item)

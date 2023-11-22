@@ -326,10 +326,6 @@ package
       public static const ACHIVEMENTS20:String = "#waiting:achivements20";
       
       public static const DOWNLOAD_ACHIEVEMENTS20:String = "#waiting:download/achievements20";
-      
-      public static const UPDATINGFRIENDLIST:String = "#waiting:updatingFriendList";
-      
-      public static const SENDINGINVITE:String = "#waiting:sendingInvite";
        
       
       public function WAITING()

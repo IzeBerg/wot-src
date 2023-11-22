@@ -24,7 +24,7 @@ from gui.prb_control import prbDispatcherProperty, prbInvitesProperty
 from gui.ranked_battles import ranked_helpers
 from gui.server_events.events_dispatcher import showMissionsBattlePass, showMissionsMapboxProgression, showPersonalMission
 from gui.shared import EVENT_BUS_SCOPE, actions, event_dispatcher as shared_events, events, g_eventBus
-from gui.shared.event_dispatcher import hideWebBrowserOverlay, openWinBackCallEntry, showBlueprintsSalePage, showCollectionAwardsWindow, showCollectionWindow, showCollectionsMainPage, showDelayedReward, showEpicBattlesAfterBattleWindow, showProgressiveRewardWindow, showRankedYearAwardWindow, showResourceWellProgressionWindow, showShop, showSteamConfirmEmailOverlay, showPersonalReservesConversion, showWinbackCallRewardsView, showWinbackSelectRewardView, showWotPlusIntroView, showBarracks
+from gui.shared.event_dispatcher import hideWebBrowserOverlay, showBlueprintsSalePage, showCollectionAwardsWindow, showCollectionWindow, showCollectionsMainPage, showDelayedReward, showEpicBattlesAfterBattleWindow, showProgressiveRewardWindow, showRankedYearAwardWindow, showResourceWellProgressionWindow, showShop, showSteamConfirmEmailOverlay, showPersonalReservesConversion, showWinbackSelectRewardView, showWotPlusIntroView, showBarracks
 from gui.shared.notifications import NotificationPriorityLevel
 from gui.shared.system_factory import collectAllNotificationsActionsHandlers, registerNotificationsActionsHandlers
 from gui.shared.utils import decorators
@@ -1368,37 +1368,6 @@ class _OpenPrestigeOnboardingWindow(NavigationDisabledActionHandler):
         showPrestigeOnboardingWindow()
 
 
-class _OpenWinBackCallEntry(NavigationDisabledActionHandler):
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.WIN_BACK_CALL_ENTRY
-
-    @classmethod
-    def getActions(cls):
-        return ('winBackCallEntry', )
-
-    def doAction(self, model, entityID, action):
-        openWinBackCallEntry()
-
-
-class _OpenWinBackCallInviteAwardsEntry(NavigationDisabledActionHandler):
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.MESSAGE
-
-    @classmethod
-    def getActions(cls):
-        return ('winBackCallToInviteAwards', )
-
-    def doAction(self, model, entityID, action):
-        if model is not None:
-            model.removeNotification(self.getNotType(), entityID)
-        showWinbackCallRewardsView()
-        return
-
-
 _AVAILABLE_HANDLERS = (
  ShowBattleResultsHandler,
  ShowFortBattleResultsHandler,
@@ -1469,9 +1438,7 @@ _AVAILABLE_HANDLERS = (
  _OpenWotDailyRewardView,
  _OpenBarracksHandler,
  _OpenPrestigeVehicleStats,
- _OpenPrestigeOnboardingWindow,
- _OpenWinBackCallEntry,
- _OpenWinBackCallInviteAwardsEntry)
+ _OpenPrestigeOnboardingWindow)
 registerNotificationsActionsHandlers(_AVAILABLE_HANDLERS)
 
 class NotificationsActionsHandlers(object):

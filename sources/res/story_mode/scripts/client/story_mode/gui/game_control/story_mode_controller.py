@@ -43,13 +43,6 @@ if typing.TYPE_CHECKING:
     from gui.Scaleform.battle_entry import BattleEntry
 _logger = getLogger(LOGGER_NAME)
 
-class StoryModeOverrideData(OverrideData):
-    _storyModeCtrl = dependency.descriptor(IStoryModeController)
-
-    def checkCondition(self, *args, **kwargs):
-        return self._storyModeCtrl.isInPrb()
-
-
 class StoryModeController(IStoryModeController, IGlobalListener):
     _lobbyContext = dependency.descriptor(ILobbyContext)
     _sessionProvider = dependency.descriptor(IBattleSessionProvider)
@@ -142,11 +135,11 @@ class StoryModeController(IStoryModeController, IGlobalListener):
         self.__syncData = {}
         self.__onExitPrb()
 
+    def onAccountBecomeNonPlayer(self):
+        g_eventBus.removeListener(events.ViewEventType.LOAD_GUI_IMPL_VIEW, self.__guiImplViewLoaded, EVENT_BUS_SCOPE.LOBBY)
+
     def isEnabled(self):
         return self.settings.enabled
-
-    def isInPrb(self):
-        return self.prbEntity is not None and self.prbEntity.getEntityType() == QUEUE_TYPE.STORY_MODE and not self.prbEntity.isInQueue()
 
     def isMissionCompleted(self, missionId):
         return missionId in self.__syncData.get(PROGRESS_PDATA_KEY, ())
@@ -220,17 +213,17 @@ class StoryModeController(IStoryModeController, IGlobalListener):
 
     @adisp_process
     def onLobbyInited(self, *_):
-        if (self.__selectRandomBattle or not self.isEnabled()) and self.isInPrb():
+        if (self.__selectRandomBattle or not self.isEnabled()) and self.__isInPrb():
             yield self.prbDispatcher.doSelectAction(PrbAction(PREBATTLE_ACTION_NAME.RANDOM))
         self.__selectRandomBattle = False
         self.__isOnboarding = False
 
     def onPrbEntitySwitching(self):
-        if self.isInPrb():
+        if self.__isInPrb():
             self.__onExitPrb()
 
     def onPrbEntitySwitched(self):
-        if not self.__selectRandomBattle and self.isEnabled() and self.isInPrb():
+        if not self.__selectRandomBattle and self.isEnabled() and self.__isInPrb():
             self.__onEnterPrb()
             if self.__selectedMissionId == UNDEFINED_MISSION_ID:
                 self.__selectedMissionId = next((mission.missionId for mission in self.missions.missions if not self.isMissionCompleted(mission.missionId)), FIRST_MISSION_ID)
@@ -248,7 +241,7 @@ class StoryModeController(IStoryModeController, IGlobalListener):
 
     @adisp_process
     def onKickedFromQueue(self, queueType, *args):
-        if queueType == QUEUE_TYPE.STORY_MODE and self.isInPrb() and not self.isEnabled() and not self.__isOnboarding:
+        if queueType == QUEUE_TYPE.STORY_MODE and self.__isInPrb() and not self.isEnabled() and not self.__isOnboarding:
             yield self.prbDispatcher.doSelectAction(PrbAction(PREBATTLE_ACTION_NAME.RANDOM))
 
     def __onAvatarBecomeNonPlayer(self):
@@ -310,6 +303,9 @@ class StoryModeController(IStoryModeController, IGlobalListener):
     def __requestBattleResults(self, lastArenaUniqueId):
         yield self._battleResults.requestResults(RequestResultsContext(arenaUniqueID=lastArenaUniqueId, arenaBonusType=ARENA_BONUS_TYPE.STORY_MODE))
 
+    def __isInPrb(self):
+        return self.prbEntity is not None and self.prbEntity.getEntityType() == QUEUE_TYPE.STORY_MODE and not self.prbEntity.isInQueue()
+
     def __onEnterPrb(self):
         self.stopOnboardingMusic()
         WWISE.activateRemapping(SOUND_REMAPPING)
@@ -328,7 +324,7 @@ class StoryModeController(IStoryModeController, IGlobalListener):
 
     def __guiImplViewLoaded(self, event):
         if issubclass(event.loadParams.viewClass, BasePrbView):
-            self.__lobbyViewOverrideData = StoryModeOverrideData(event.loadParams, *event.args, **event.kwargs)
+            self.__lobbyViewOverrideData = OverrideData(event.loadParams, *event.args, **event.kwargs)
 
     def __handleChatMessage(self, _, message):
         if message.type == SYS_MESSAGE_TYPE.lookup(SM_CONGRATULATIONS_MESSAGE).index():

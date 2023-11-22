@@ -110,11 +110,6 @@ def getTimestampByStrDate(dateStr):
     return calendar.timegm(time.strptime(dateStr, timeFormat))
 
 
-def getTimestampByStrDateISO8601(dateStr):
-    timeFormat = '%Y-%m-%d %H:%M:%S'
-    return calendar.timegm(time.strptime(dateStr, timeFormat))
-
-
 def getServerRegionalWeekDay():
     return datetime.datetime.utcfromtimestamp(_g_instance.serverRegionalTime).isoweekday()
 

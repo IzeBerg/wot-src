@@ -18,10 +18,11 @@ class MemoryCriticalLogger(Logger):
     @noexcept
     def log(self, sessionStartedAt=0):
         _logger.debug('Critical memory metrics requested.')
+        if not self.disabled or BigWorld.wg_debugLogging():
+            data = BigWorld.collectLastMemoryCriticalEvent()
         if self.disabled:
             return
         self.ensureSession()
-        data = BigWorld.collectLastMemoryCriticalEvent()
         sessionID = getClientSessionID()
         if data:
             self._logImmediately(LogActions.MEMORY_CRITICAL_EVENT, session_id=sessionID, started_at=sessionStartedAt, **data)

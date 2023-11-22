@@ -1,7 +1,6 @@
 from account_helpers.AccountSettings import AccountSettings, CRYSTALS_INFO_SHOWN
 from constants import ARENA_BONUS_TYPE, IS_CHINA
 from frameworks.wulf import ViewFlags, ViewSettings
-from gui.Scaleform.daapi.view.lobby.header.LobbyHeader import HeaderMenuVisibilityState
 from gui.Scaleform.daapi.view.lobby.store.browser.shop_helpers import getBonsDevicesUrl, getBonsVehiclesUrl, getBonsInstructionsUrl
 from gui.impl.auxiliary.layer_monitor import LayerMonitor
 from gui.impl.backport.backport_system_locale import getIntegralFormat
@@ -9,8 +8,8 @@ from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.crystals_promo.battle_type_model import BattleTypeModel
 from gui.impl.gen.view_models.views.lobby.crystals_promo.condition_model import ConditionModel
 from gui.impl.gen.view_models.views.lobby.crystals_promo.crystals_promo_view_model import CrystalsPromoViewModel
+from gui.impl.lobby.common.view_mixins import LobbyHeaderVisibility
 from gui.impl.pub import ViewImpl
-from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE
 from gui.shop import showIngameShop, Origin
 from gui.sounds.filters import switchHangarOverlaySoundFilter
 from helpers import dependency, server_settings
@@ -31,15 +30,14 @@ _shopUrlsMap = {CrystalsPromoViewModel.TANKS_TAB: getBonsVehiclesUrl(),
    CrystalsPromoViewModel.EQUIPMENT_TAB: getBonsDevicesUrl(), 
    CrystalsPromoViewModel.INSTRUCTIONS_TAB: getBonsInstructionsUrl()}
 
-class CrystalsPromoView(ViewImpl):
-    __slots__ = ('__visibility', '__destroyViewObject')
+class CrystalsPromoView(ViewImpl, LobbyHeaderVisibility):
+    __slots__ = ('__destroyViewObject', )
     __lobbyContext = dependency.descriptor(ILobbyContext)
     __appLoader = dependency.descriptor(IAppLoader)
 
-    def __init__(self, layoutID, visibility=HeaderMenuVisibilityState.ALL):
+    def __init__(self, layoutID):
         settings = ViewSettings(layoutID, flags=ViewFlags.LOBBY_TOP_SUB_VIEW, model=CrystalsPromoViewModel())
         super(CrystalsPromoView, self).__init__(settings)
-        self.__visibility = visibility
         self.__destroyViewObject = LayerMonitor()
 
     @property
@@ -68,14 +66,14 @@ class CrystalsPromoView(ViewImpl):
 
     def _onLoaded(self, *args, **kwargs):
         super(CrystalsPromoView, self)._onLoaded(*args, **kwargs)
-        g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': HeaderMenuVisibilityState.NOTHING}), EVENT_BUS_SCOPE.LOBBY)
+        self.suspendLobbyHeader(self.uniqueID)
 
     def _finalize(self):
         switchHangarOverlaySoundFilter(on=False)
         self.__destroyViewObject.fini()
         self.viewModel.goToShop -= self.__goToShopHandler
         self.__lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingsChanged
-        g_eventBus.handleEvent(events.LobbyHeaderMenuEvent(events.LobbyHeaderMenuEvent.TOGGLE_VISIBILITY, ctx={'state': self.__visibility}), EVENT_BUS_SCOPE.LOBBY)
+        self.resumeLobbyHeader(self.uniqueID)
         super(CrystalsPromoView, self)._finalize()
 
     def __updateCondition(self, model):

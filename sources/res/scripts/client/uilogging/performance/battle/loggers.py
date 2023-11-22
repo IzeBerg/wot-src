@@ -1,4 +1,4 @@
-import logging, typing
+import BigWorld, logging, typing
 from helpers import dependency
 from skeletons.helpers.statistics import IStatisticsCollector
 from uilogging.base.logger import _BaseLogger as Logger
@@ -56,9 +56,10 @@ class BattleMetricsLogger(object):
     @noexcept
     def log(self):
         _logger.debug('Battle metrics requested.')
+        if not self._defaultLogger.disabled or BigWorld.wg_debugLogging():
+            data = self.statsCollector.getStatistics()
         if self._defaultLogger.disabled:
             return
-        data = self.statsCollector.getStatistics()
         if not data:
             _logger.error('Battle stats are empty.')
             return

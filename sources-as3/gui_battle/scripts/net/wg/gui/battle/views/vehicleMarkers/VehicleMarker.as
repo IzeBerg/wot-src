@@ -25,25 +25,25 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const SHADOW_POSITIONS:Array = [null,new Point(-94,-59),new Point(-94,-85),new Point(-94,-42),new Point(-94,-72),new Point(-94,-77)];
       
-      protected static const ICON:String = "Icon";
+      private static const ICON:String = "Icon";
       
-      protected static const LEVEL:String = "Level";
+      private static const LEVEL:String = "Level";
       
-      protected static const HEALTH_LBL:String = "Hp";
+      private static const HEALTH_LBL:String = "Hp";
       
-      protected static const HEALTH_BAR:String = "HpIndicator";
+      private static const HEALTH_BAR:String = "HpIndicator";
       
-      protected static const P_NAME_LBL:String = "PlayerName";
+      private static const P_NAME_LBL:String = "PlayerName";
       
-      protected static const V_NAME_LBL:String = "VehicleName";
+      private static const V_NAME_LBL:String = "VehicleName";
       
       private static const DAMAGE_PANEL:String = "Damage";
       
-      protected static const MARKER:String = "marker";
+      private static const MARKER:String = "marker";
       
-      protected static const ALT:String = "Alt";
+      private static const ALT:String = "Alt";
       
-      protected static const BASE:String = "Base";
+      private static const BASE:String = "Base";
       
       private static const DEAD:String = "Dead";
       
@@ -73,7 +73,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const VM_STUN_POSTFIX:String = "_schema";
       
-      protected static const MAX_HEALTH_PERCENT:int = 100;
+      private static const MAX_HEALTH_PERCENT:int = 100;
       
       private static const VEHICLE_DESTROY_COLOR:Number = 6710886;
       
@@ -713,7 +713,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
          if(_loc8_ > 0)
          {
-            _loc9_ = this.getShadowPosition(_loc8_);
+            _loc9_ = SHADOW_POSITIONS[_loc8_];
             this.vmManager.drawGraphics(VMAtlasItemName.getShadowName(_loc8_),this.bgShadow.graphics,_loc9_);
             this.bgShadow.visible = true;
          }
@@ -722,11 +722,6 @@ package net.wg.gui.battle.views.vehicleMarkers
             this.bgShadow.visible = false;
          }
          return new <Boolean>[_loc5_ || _loc6_,_loc3_,_loc4_,_loc2_,_loc1_,this.model.squadIndex != 0,this._isFlagShown,this.statusContainer.isVisible(),this.actionMarker.isVisible(),this.vehicleMarkerHoverMC.visible];
-      }
-      
-      protected function getShadowPosition(param1:int) : Point
-      {
-         return SHADOW_POSITIONS[param1];
       }
       
       protected function getIsPartVisible(param1:String) : Boolean
@@ -783,15 +778,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.hitLabel.playShowTween();
       }
       
-      protected function layoutExtended(param1:int) : void
-      {
-      }
-      
-      protected function set maxHealthMult(param1:Number) : void
-      {
-         this._maxHealthMult = param1;
-      }
-      
       private function layoutParts(param1:Vector.<Boolean>) : void
       {
          var _loc4_:VehicleMarkerPart = null;
@@ -827,7 +813,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
          this.healthBar.y = this.hpField.y + HP_FIELD_TO_HP_BAR_OFFSET;
          this._canUseCachedVisibility = true;
-         this.layoutExtended(_loc2_ - _loc6_);
       }
       
       private function showAltActionMarker(param1:Boolean) : void
@@ -861,7 +846,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this._stunSchemeName = VM_STUN_PREFIX + this._entityName + VM_STUN_POSTFIX;
       }
       
-      protected function updateMarkerSettings() : void
+      private function updateMarkerSettings() : void
       {
          this.layoutParts(this.updatePartsVisibility());
          this.redrawParts();
@@ -884,7 +869,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.updateIconColor();
       }
       
-      protected function applyColor() : void
+      private function applyColor() : void
       {
          var _loc1_:ColorTransform = null;
          this.healthBar.color = this._markerColor;
@@ -1140,11 +1125,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       protected function get damageType() : String
       {
          return this._damageType;
-      }
-      
-      protected function get markerColor() : String
-      {
-         return this._markerColor;
       }
       
       private function get isObserver() : Boolean

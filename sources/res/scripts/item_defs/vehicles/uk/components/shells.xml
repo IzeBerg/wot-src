@@ -13,8 +13,6 @@
 		<hc_premium>HOLLOW_CHARGE_PREMIUM.png 0 0</hc_premium>
 		<he_spg>HIGH_EXPLOSIVE_SPG.png 0 0</he_spg>
 		<he_spg_stun>HIGH_EXPLOSIVE_SPG_STUN.png 0 0</he_spg_stun>
-		<he_2021_ap>ARMOR_PIERCING_PREMIUM_HW.png 0 0</he_2021_ap>
-		<he_2021_hep>HIGH_EXPLOSIVE_PREMIUM_HW.png 0 0</he_2021_hep>
 	</icons>
 	<_12.7mm_AP_M2>
 		<id>15</id>
@@ -354,6 +352,65 @@
 			<devices>54</devices>
 		</damage>
 	</_2pdr_APCNR_Mk.1>
+	<_2pdr_AP_Mk.1TA>
+		<id>240</id>
+		<userString>#gb_vehicles:_2pdr_AP_Mk.1TA</userString>
+		<icon>ap</icon>
+		<price>30</price>
+		<kind>ARMOR_PIERCING</kind>
+		<caliber>40</caliber>
+		<isTracer>true</isTracer>
+		<effects>smallArmorPiercing</effects>
+		<damage>
+			<armor>50</armor>
+			<devices>54</devices>
+		</damage>
+	</_2pdr_AP_Mk.1TA>
+	<_2pdr_APCNR_Mk.1A>
+		<id>241</id>
+		<userString>#gb_vehicles:_2pdr_APCNR_Mk.1A</userString>
+		<icon>ap_cr_premium</icon>
+		<price>1200</price>
+		<improved>true</improved>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<caliber>40</caliber>
+		<isTracer>true</isTracer>
+		<effects>smallAPCR</effects>
+		<damage>
+			<armor>50</armor>
+			<devices>54</devices>
+		</damage>
+	</_2pdr_APCNR_Mk.1A>
+	<_2pdr_HE_Mk.2A>
+		<id>242</id>
+		<userString>#gb_vehicles:_2pdr_HE_Mk.2A</userString>
+		<icon>he_modern</icon>
+		<price>15</price>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<mechanics>MODERN</mechanics>
+		<caliber>40</caliber>
+		<explosionRadius>
+			0.35
+			<!--BW_String-->
+		</explosionRadius>
+		<isTracer>true</isTracer>
+		<effects>smallHighExplosive</effects>
+		<damage>
+			<armor>60</armor>
+			<devices>54</devices>
+		</damage>
+		<armorSpalls>
+			<impactRadius>
+				0.35
+				<!--BW_String-->
+			</impactRadius>
+			<coneAngle>90</coneAngle>
+			<damage>
+				<armor>30</armor>
+				<devices>25</devices>
+			</damage>
+		</armorSpalls>
+	</_2pdr_HE_Mk.2A>
 	<_2pdr_APCNR_Mk.2>
 		<id>75</id>
 		<userString>#gb_vehicles:_2pdr_APCNR_Mk.2</userString>
@@ -2053,59 +2110,6 @@
 			</damage>
 		</armorSpalls>
 	</_QF_20pdr_HE_Mk3>
-	<_20pdr_AP_Mk1_Halloween_event_1>
-		<id>30178</id>
-		<userString>#gb_vehicles:_20pdr_AP_Mk1_Halloween_event</userString>
-		<icon>he_2021_ap</icon>
-		<price>0</price>
-		<notInShop>true</notInShop>
-		<kind>ARMOR_PIERCING</kind>
-		<caliber>
-			83.4
-			<!--BW_String-->
-		</caliber>
-		<isTracer>true</isTracer>
-		<effects>mainArmorPiercing</effects>
-		<damage>
-			<armor>230</armor>
-			<devices>200</devices>
-		</damage>
-	</_20pdr_AP_Mk1_Halloween_event_1>
-	<_20pdr_HE_Mk3_Halloween_event>
-		<id>30211</id>
-		<userString>#gb_vehicles:_20pdr_HE_Mk3_Halloween_event</userString>
-		<icon>he_2021_hep</icon>
-		<price>0</price>
-		<notInShop>true</notInShop>
-		<kind>HIGH_EXPLOSIVE</kind>
-		<mechanics>MODERN</mechanics>
-		<caliber>
-			83.4
-			<!--BW_String-->
-		</caliber>
-		<explosionRadius>
-			1.28
-			<!--BW_String-->
-		</explosionRadius>
-		<isTracer>true</isTracer>
-		<effects>mainHighExplosive</effects>
-		<tags>forceFinite</tags>
-		<damage>
-			<armor>320</armor>
-			<devices>200</devices>
-		</damage>
-		<armorSpalls>
-			<impactRadius>
-				1.28
-				<!--BW_String-->
-			</impactRadius>
-			<coneAngle>90</coneAngle>
-			<damage>
-				<armor>140</armor>
-				<devices>60</devices>
-			</damage>
-		</armorSpalls>
-	</_20pdr_HE_Mk3_Halloween_event>
 	<_18pdr_HE_Mk_1C>
 		<id>92</id>
 		<userString>#gb_vehicles:_18pdr_HE_Mk_1C</userString>
@@ -4581,109 +4585,4 @@
 		</damage>
 		<notInShop>True</notInShop>
 	</_17pdr_AP_Mk3T_NewOnBoarding>
-	<_183mm_AP_Mk1_HELL>
-		<id>20013</id>
-		<userString>#gb_vehicles:_183mm_AP_Mk1</userString>
-		<icon>ap</icon>
-		<price>2250</price>
-		<kind>ARMOR_PIERCING</kind>
-		<caliber>
-			182.9
-			<!--BW_String-->
-		</caliber>
-		<isTracer>true</isTracer>
-		<effects>hugeArmorPiercing</effects>
-		<damage>
-			<armor>600</armor>
-			<devices>244</devices>
-		</damage>
-		<notInShop>True</notInShop>
-	</_183mm_AP_Mk1_HELL>
-	<_5_5inch_AP_Mk_1_HW_BOT>
-		<id>500</id>
-		<userString>#gb_vehicles:_5_5inch_AP_Mk_1</userString>
-		<icon>ap</icon>
-		<price>1250</price>
-		<notInShop>true</notInShop>
-		<kind>ARMOR_PIERCING</kind>
-		<caliber>
-			139.7
-			<!--BW_String-->
-		</caliber>
-		<isTracer>true</isTracer>
-		<effects>largeArmorPiercing_hw19</effects>
-		<damage>
-			<armor>400</armor>
-			<devices>191</devices>
-		</damage>
-	</_5_5inch_AP_Mk_1_HW_BOT>
-	<_5_5inch_HESH_Mk_1_HW_BOT>
-		<id>501</id>
-		<userString>#gb_vehicles:_5_5inch_HESH_Mk_1</userString>
-		<icon>he_modern_premium</icon>
-		<price>7200</price>
-		<notInShop>true</notInShop>
-		<improved>true</improved>
-		<kind>HIGH_EXPLOSIVE</kind>
-		<mechanics>MODERN</mechanics>
-		<caliber>
-			139.7
-			<!--BW_String-->
-		</caliber>
-		<explosionRadius>
-			3.17
-			<!--BW_String-->
-		</explosionRadius>
-		<isTracer>true</isTracer>
-		<effects>largeHighExplosive</effects>
-		<damage>
-			<armor>770</armor>
-			<devices>191</devices>
-		</damage>
-		<armorSpalls>
-			<impactRadius>
-				3.17
-				<!--BW_String-->
-			</impactRadius>
-			<coneAngle>90</coneAngle>
-			<damage>
-				<armor>385</armor>
-				<devices>95</devices>
-			</damage>
-		</armorSpalls>
-	</_5_5inch_HESH_Mk_1_HW_BOT>
-	<_5_5inch_HE_Mk_1T_HW_BOT>
-		<id>502</id>
-		<userString>#gb_vehicles:_5_5inch_HE_Mk_1T</userString>
-		<icon>he_modern</icon>
-		<price>890</price>
-		<notInShop>true</notInShop>
-		<kind>HIGH_EXPLOSIVE</kind>
-		<mechanics>MODERN</mechanics>
-		<caliber>
-			139.7
-			<!--BW_String-->
-		</caliber>
-		<explosionRadius>
-			3.17
-			<!--BW_String-->
-		</explosionRadius>
-		<isTracer>true</isTracer>
-		<effects>largeHighExplosive</effects>
-		<damage>
-			<armor>770</armor>
-			<devices>191</devices>
-		</damage>
-		<armorSpalls>
-			<impactRadius>
-				3.17
-				<!--BW_String-->
-			</impactRadius>
-			<coneAngle>90</coneAngle>
-			<damage>
-				<armor>385</armor>
-				<devices>95</devices>
-			</damage>
-		</armorSpalls>
-	</_5_5inch_HE_Mk_1T_HW_BOT>
 </root>

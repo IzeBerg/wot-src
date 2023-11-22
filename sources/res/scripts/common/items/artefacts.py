@@ -2784,15 +2784,6 @@ class Comp7MarchEquipment(VisualScriptEquipment):
         self._exportSlotsToVSE()
 
 
-class DynComponentsGroupEquipment(Equipment):
-    __slots__ = ('durationSeconds', 'dynComponentsGroups')
-
-    def _readConfig(self, xmlCtx, section):
-        super(DynComponentsGroupEquipment, self)._readConfig(xmlCtx, section)
-        self.durationSeconds = _xml.readFloat(xmlCtx, section, 'durationSeconds')
-        self.dynComponentsGroups = frozenset(_xml.readString(xmlCtx, section, 'dynComponentsGroups').split())
-
-
 class PoiRadarEquipment(VisualScriptEquipment):
     __slots__ = ('duration', )
 

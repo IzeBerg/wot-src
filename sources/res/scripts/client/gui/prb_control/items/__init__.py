@@ -69,10 +69,7 @@ class FunctionalState(object):
             return prbType != self.entityTypeID
         if self.isInLegacy() or self.isInUnit():
             return True
-        queueTypes = self.__getQueueTypeByPrbType(prbType)
-        if isinstance(queueTypes, (list, tuple, dict)):
-            return self.entityTypeID not in queueTypes
-        return self.entityTypeID != queueTypes
+        return self.entityTypeID != self.__getQueueTypeByPrbType(prbType)
 
     def isReadyActionSupported(self):
         return self.hasModalEntity and not self.isIntroMode and (self.isInLegacy() or self.isInUnit())

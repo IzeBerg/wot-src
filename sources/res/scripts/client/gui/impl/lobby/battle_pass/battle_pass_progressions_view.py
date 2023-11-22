@@ -103,8 +103,7 @@ class BattlePassProgressionsView(ViewImpl):
         self.__startExtraSounds()
 
     def deactivate(self):
-        if not self.__exitSoundsIsPlayed:
-            self.__stopSounds()
+        self.__stopSounds()
         self._unsubscribe()
 
     def setChapter(self, chapterID):
@@ -206,6 +205,7 @@ class BattlePassProgressionsView(ViewImpl):
         self.__updateProgressData()
         self.__updateBuyButtonState()
         self.__startExtraSounds()
+        self.__exitSoundsIsPlayed = False
 
     def _onLoaded(self, *args, **kwargs):
         super(BattlePassProgressionsView, self)._onLoaded(*args, **kwargs)
@@ -309,7 +309,7 @@ class BattlePassProgressionsView(ViewImpl):
             character = getTankmanInfo(characterBonus)
             if character is None:
                 return
-            iconName, characterName, skills, groupName = getDataByTankman(character)
+            iconName, characterName, skills = getDataByTankman(character)
             skillsArray = Array()
             for skill in skills:
                 skillsArray.addString(skill)
@@ -318,7 +318,6 @@ class BattlePassProgressionsView(ViewImpl):
             model.setTankman(characterName)
             model.setSkills(skillsArray)
             model.setTooltipId(TOOLTIPS_CONSTANTS.TANKMAN_NOT_RECRUITED)
-            model.setGroupName(groupName)
             packSpecialTooltipData(TOOLTIPS_CONSTANTS.TANKMAN_NOT_RECRUITED, self.__specialTooltipItems, character.getRecruitID())
             return
 
@@ -780,7 +779,6 @@ class BattlePassProgressionsView(ViewImpl):
     def __startExtraSounds(self):
         if self.__battlePass.isExtraChapter(self.__chapterID):
             self.soundManager.playInstantSound(CUSTOM_TASKS_SOUND_SPACE.enterEvent)
-            self.__exitSoundsIsPlayed = False
 
     def __stopExtraSounds(self):
         if self.__battlePass.isExtraChapter(self.__chapterID):

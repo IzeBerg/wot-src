@@ -3119,28 +3119,6 @@ def hasAnyOfTags(vehTypeCD, tags=()):
     return bool(vehicleType.tags.intersection(tags))
 
 
-def makeOutfitCD(outfitData):
-    from items import customizations
-    outfit = ''
-    if outfitData:
-        camouflages = None
-        camouflageID = outfitData.get('camouflage')
-        if camouflageID:
-            camouflages = [customizations.CamouflageComponent(camouflageID, appliedTo=ApplyArea.HULL | ApplyArea.TURRET | ApplyArea.GUN)]
-        decals = []
-        decalID = outfitData.get('decal')
-        if decalID:
-            decals.append(customizations.DecalComponent(decalID, ApplyArea.ALL))
-        paints = []
-        paintID = outfitData.get('paint')
-        if paintID:
-            flag = ApplyArea.CHASSIS | ApplyArea.HULL | ApplyArea.TURRET
-            paints.append(customizations.PaintComponent(paintID, flag))
-        styleId = outfitData.get('style', 0)
-        outfit = customizations.CustomizationOutfit(camouflages=camouflages, decals=decals, paints=paints, styleId=styleId).makeCompDescr()
-    return outfit
-
-
 def _readComponents(xmlPath, reader, nationID, itemTypeID):
     section = ResMgr.openSection(xmlPath)
     if section is None:

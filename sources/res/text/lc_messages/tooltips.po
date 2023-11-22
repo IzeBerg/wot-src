@@ -553,9 +553,9 @@ msgstr ""
 msgid "advanced/camouflageNet"
 msgstr ""
 "Reduces vehicle visibility for a short time after the vehicle stops moving. "
-"The effect is disabled if vehicle moves forwards or backwards, or when the "
-"hull is turned. The effect is not disabled when turning the hull of high-"
-"tier Swedish tank destroyers."
+"The effect is disabled if vehicle moves forwards or backwards, and when the "
+"hull is turned (except for vehicles with hydropneumatic suspension in Siege "
+"mode)."
 
 msgid "advanced/coatedOptics"
 msgstr ""
@@ -809,8 +809,8 @@ msgid "advanced/stereoscope"
 msgstr ""
 "Increases vehicle view range for a short time after the vehicle stops "
 "moving. The effect is disabled if the vehicle moves forwards or backwards, "
-"or when the hull is turned. The effect is not disabled when turning the hull"
-" of high-tier Swedish tank destroyers."
+"and when the hull is turned. (except for vehicles with hydropneumatic "
+"suspension in Siege mode)."
 
 msgid "advanced/turbocharger"
 msgstr ""
@@ -1238,6 +1238,9 @@ msgstr ""
 
 msgid "awardItem/crystal/header"
 msgstr "Bonds"
+
+msgid "awardItem/customFreeXP/header"
+msgstr "%(value)s Free Experience"
 
 msgid "awardItem/equipCoin/body"
 msgstr ""
@@ -6826,8 +6829,11 @@ msgstr "Unable to fit the current gun into this turret."
 msgid "moduleFits/not_for_this_vehicle_type/text"
 msgstr "Consider mounting compatible gun."
 
+msgid "moduleFits/not_removable/dismantling/level/price"
+msgstr "Demounting Level %(level)s"
+
 msgid "moduleFits/not_removable/dismantling/price"
-msgstr "Demounting cost"
+msgstr "Demounting"
 
 msgid "moduleFits/not_with_installed_equipment/header"
 msgstr "Unable to mount"
@@ -8715,6 +8721,26 @@ msgstr ""
 
 msgid "notrecruitedtankman/tankwoman/label"
 msgstr "A unique crew member"
+
+msgid "notrecruitedtankman/tc2023_commander_1/desc"
+msgstr ""
+"TalkToMeGoose, an illustrious commander with a passion for tanks, is now "
+"your wingman in World of Tanks! Known for his dedication, friendliness, and "
+"enthusiasm, TalkToMeGoose is a World of Tanks veteran ready to lead your "
+"crew to a phenomenal victory!"
+
+msgid "notrecruitedtankman/tc2023_commander_1/label"
+msgstr "Unique Commander"
+
+msgid "notrecruitedtankman/tc2023_commander_2/desc"
+msgstr ""
+"Skieeeel AKA Skill4ltu, the baboon king, the legend, the master of bananas, "
+"and a masterful World of Tanks commander, steps onto the battlefield to "
+"stand by your side. With a rich history in the game, the king baboon himself"
+" is ready to lead your crew to triumph."
+
+msgid "notrecruitedtankman/tc2023_commander_2/label"
+msgstr "Unique Commander"
 
 msgid "notrecruitedtankman/twitch1/desc"
 msgstr "An effective commander who can raise the morale of the entire crew."

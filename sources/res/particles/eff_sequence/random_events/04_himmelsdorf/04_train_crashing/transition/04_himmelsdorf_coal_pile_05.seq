@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.133333</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Coal_Pile</name>
+		<type>model</type>
+		<resource>content/Environment/envF_005_FactoryCharcoal/normal/lod0/envF_005_FactoryCharcoal_01.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.657623 -0.953732 0.542229</value>
+				<inTangent>-2.241015 1.950209 -0.825417</inTangent>
+				<outTangent>-2.241015 1.950209 -0.825417</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-0.156847 0.218158 -0.108092</inTangent>
+				<outTangent>-0.156847 0.218158 -0.108092</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.500000 1.000000 0.500000</value>
+				<inTangent>1.023545 0.000000 1.016470</inTangent>
+				<outTangent>1.023545 0.000000 1.016470</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.248501 -0.000000 0.224226</inTangent>
+				<outTangent>0.248501 -0.000000 0.224226</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Eff</name>
+		<type>particle</type>
+		<resource>particles/Environment/random_events/04_himmelsdorf_wagon_spilled_coal.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>1.000000</duration>
+				<value>Coal_Pile|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.233887 3.866547 -0.000008</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>-0.233887 3.866547 -0.000008</value>
+				<inTangent>-1.534765 -2.347390 -1.917283</inTangent>
+				<outTangent>-1.534765 -2.347390 -1.917283</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.133333</startTime>
+				<value>-0.643158 3.240576 -0.511284</value>
+				<inTangent>-3.069530 -4.694781 -3.834566</inTangent>
+				<outTangent>-3.069530 -4.694781 -3.834566</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-2.118472 148.013855 -85.407066</value>
+				<inTangent>-63.553917 -388.676117 -2562.211914</inTangent>
+				<outTangent>-63.553917 -388.676117 -2562.211914</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>29.999998</inTangent>
+				<outTangent>29.999998</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.000000</value>
+				<inTangent>14.999999</inTangent>
+				<outTangent>14.999999</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.966667</startTime>
+				<value>1.000000</value>
+				<inTangent>-15.000014</inTangent>
+				<outTangent>-15.000014</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>-30.000029</inTangent>
+				<outTangent>-30.000029</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

@@ -159,6 +159,7 @@ class BattlePassBuyView(ViewImpl):
             self.__showBuy()
         elif self.__backCallback is not None:
             self.__backCallback()
+            self.destroyWindow()
         else:
             self.destroyWindow()
         return

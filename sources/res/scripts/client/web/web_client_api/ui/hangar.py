@@ -2,7 +2,6 @@ import logging, adisp
 from wg_async import wg_async, wg_await
 from gui import DialogsInterface
 from gui.Scaleform.daapi.view.dialogs.ExchangeDialogMeta import ExchangeCreditsWebProductMeta
-from gui.Scaleform.daapi.view.lobby.header.LobbyHeader import HeaderMenuVisibilityState
 from gui.impl.dialogs.dialogs import showExchangeToBuyItemsDialog
 from gui.shared import event_dispatcher as shared_events
 from gui.shared.event_dispatcher import showCrystalWindow
@@ -73,7 +72,7 @@ class HangarWindowsWebApiMixin(object):
 
     @w2c(W2CSchema, 'show_crystal_info_window')
     def openCrystalInfoWindow(self, _):
-        showCrystalWindow(HeaderMenuVisibilityState.ALL)
+        showCrystalWindow()
 
     def validateItems(self, itemCD):
         item = self.itemsCache.items.getItemByCD(itemCD)

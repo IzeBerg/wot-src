@@ -1,5 +1,6 @@
 package net.wg.infrastructure.managers.utils.impl
 {
+   import flash.display.DisplayObjectContainer;
    import flash.geom.Point;
    import net.wg.data.ImageUrlProperties;
    import net.wg.data.StrCaseProperties;
@@ -223,6 +224,11 @@ package net.wg.infrastructure.managers.utils.impl
             };
          }
          return _loc4_;
+      }
+      
+      public function getObjectsUnderPoint(param1:DisplayObjectContainer, param2:Number, param3:Number) : Array
+      {
+         return param1.getObjectsUnderPoint(new Point(param2,param3));
       }
       
       public function setNations(param1:INations) : void

@@ -1,7 +1,7 @@
 from debug_utils import LOG_ERROR
 
 class PlanHolder(object):
-    __slots__ = ('plan', 'loadState', 'autoStart', '__inputParamCache', 'params', '__planName')
+    __slots__ = ('plan', 'loadState', 'autoStart', '__inputParamCache', 'params')
     INACTIVE = 0
     LOADING = 1
     LOADED = 2
@@ -14,7 +14,6 @@ class PlanHolder(object):
         self.autoStart = auto
         self.__inputParamCache = {}
         self.params = {}
-        self.__planName = ''
 
     @property
     def isLoaded(self):
@@ -41,30 +40,6 @@ class PlanHolder(object):
                 self._fetchInputParams()
             if self.autoStart:
                 self.start()
-
-    def loadOverTime(self, planName, aspect, tags):
-        if self.loadState is PlanHolder.LOADING:
-            self.__planName = planName
-            events = []
-            if not self.plan.load(planName, aspect, tags, events, self.onLoad):
-                if self.plan.isLoadCanceled():
-                    self.loadState = PlanHolder.LOAD_CANCELED
-                else:
-                    LOG_ERROR('[VScript] PlanHolder: Can not load plan - %s' % planName)
-                    self.loadState = PlanHolder.ERROR
-
-    def onLoad(self, status):
-        if status:
-            self.loadState = PlanHolder.LOADED
-        elif self.plan.isLoadCanceled():
-            self.loadState = PlanHolder.LOAD_CANCELED
-        else:
-            LOG_ERROR('[VScript] PlanHolder: Can not load plan - %s' % self.__planName)
-            self.loadState = PlanHolder.ERROR
-        if self.isLoaded:
-            self._fetchInputParams()
-        if self.autoStart:
-            self.start()
 
     def start(self):
         if self.isLoaded:

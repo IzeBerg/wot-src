@@ -30,7 +30,7 @@ from messenger.formatters.service_channel import WaitItemsSyncFormatter, QuestAc
 from messenger.formatters.service_channel_helpers import getRewardsForQuests, EOL, MessageData, getCustomizationItemData, getDefaultMessage, DEFAULT_MESSAGE, popCollectionEntitlements
 from messenger.proto.bw.wrappers import ServiceChannelMessage
 from skeletons.gui.battle_matters import IBattleMattersController
-from skeletons.gui.game_control import ICollectionsSystemController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController, IWotPlusController, IWinBackCallController
+from skeletons.gui.game_control import ICollectionsSystemController, IRankedBattlesController, ISeniorityAwardsController, IWinbackController, IWotPlusController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.system_messages import ISystemMessages
@@ -1130,79 +1130,3 @@ class SteamCompletionFormatter(AsyncTokenQuestsSubFormatter):
             return MessageData(formatted, settings)
         else:
             return
-
-
-class WinBackCallInviteRewardsFormatter(AsyncTokenQuestsSubFormatter):
-    __winBackCallCtrl = dependency.descriptor(IWinBackCallController)
-    __MESSAGE_TEMPLATE = 'winbackCallInviteAward'
-
-    @adisp_async
-    @adisp_process
-    def format(self, message, callback):
-        isSynced = yield self._waitForSyncItems()
-        messageDataList = []
-        if isSynced:
-            messageData = self.__buildMessage(message, {self.__winBackCallCtrl.inviteTokenQuestID})
-            if messageData is not None:
-                messageDataList.append(messageData)
-        if messageDataList:
-            callback(messageDataList)
-        else:
-            callback([MessageData(None, None)])
-        return
-
-    @classmethod
-    def _isQuestOfThisGroup(cls, questID):
-        return questID == cls.__winBackCallCtrl.inviteTokenQuestID
-
-    def __buildMessage(self, message, questIDs):
-        rewards = getRewardsForQuests(message, questIDs)
-        fmt = self._achievesFormatter.formatQuestAchieves(rewards, asBattleFormatter=False, processCustomizations=True)
-        if fmt is not None:
-            templateParams = {'achieves': fmt}
-            settings = self._getGuiSettings(message, self.__MESSAGE_TEMPLATE)
-            formatted = g_settings.msgTemplates.format(self.__MESSAGE_TEMPLATE, templateParams)
-            return MessageData(formatted, settings)
-        else:
-            return
-
-
-class NotificationQuestFormatter(AsyncTokenQuestsSubFormatter):
-    __eventsCache = dependency.descriptor(IEventsCache)
-    __MESSAGE_TEMPLATE = 'notificationQuest'
-
-    @adisp_async
-    @adisp_process
-    def format(self, message, callback):
-        isSynced = yield self._waitForSyncItems()
-        messageDataList = []
-        if isSynced:
-            settings = self._getGuiSettings(message, self.__MESSAGE_TEMPLATE)
-            completedIDs = sorted(self.getQuestOfThisGroup(message.data.get('completedQuestIDs', set())))
-            for questID in completedIDs:
-                formatted = self.__buildMessage(questID)
-                if formatted is not None:
-                    messageDataList.append(MessageData(formatted, settings))
-
-        if messageDataList:
-            callback(messageDataList)
-        else:
-            callback([MessageData(None, None)])
-        return
-
-    @classmethod
-    def _isQuestOfThisGroup(cls, questID):
-        return questID.endswith(constants.NOTIFICATION_QUEST_POSTFIX)
-
-    def __buildMessage(self, questID):
-        quest = first(self.__eventsCache.getHiddenQuests(lambda q: q.getID() == questID).values())
-        if quest is None:
-            return
-        else:
-            title = quest.getNotificationTitleText()
-            body = quest.getNotificationText()
-            if not title or not body:
-                return
-            templateParams = {'title': title, 'body': body}
-            formatted = g_settings.msgTemplates.format(self.__MESSAGE_TEMPLATE, templateParams)
-            return formatted

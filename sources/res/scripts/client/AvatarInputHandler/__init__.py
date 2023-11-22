@@ -358,7 +358,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                 if self.isControlModeChangeAllowed():
                     player.switchObserverFPV()
                     return True
-            if not self.isObserverFPV and not self.__curCtrl.hasHWKeyEvent(isDown, key) and self.__curCtrl.handleKeyEvent(isDown, key, mods, event):
+            if not self.isObserverFPV and self.__curCtrl.handleKeyEvent(isDown, key, mods, event):
                 return True
             return player.handleKey(isDown, key, mods)
 

@@ -453,7 +453,11 @@ class PriceBlockConstructor(ModuleTooltipBlockConstructor):
                 isFreeToDemount = self.wotPlusController.isFreeToDemount(module)
                 if needValue <= 0 or self.configuration.isStaticInfoOnly or isFreeToDemount:
                     needValue = None
-                block.append(makeRemovalPriceBlock(value, CURRENCY_SETTINGS.getRemovalSetting(removalPriceCurrency), needValue, defValue if defValue > 0 else None, removalActionPercent, valueWidth=119, gap=13, leftPadding=self._priceLeftPadding, isDeluxe=module.isDeluxe, canUseDemountKit=module.canUseDemountKit, wotPlusStatus=wotPlusStatus, isFreeToDemount=isFreeToDemount, isFreeDeluxeEnabled=isFreeDeluxeEnabled, isFreeDemountEnabled=isFreeDemountEnabled))
+                forcedText = ''
+                if module.isModernized:
+                    levelText = backport.text(R.strings.tooltips.level.num(module.level)())
+                    forcedText = backport.text(R.strings.tooltips.moduleFits.not_removable.dismantling.level.price(), level=levelText)
+                block.append(makeRemovalPriceBlock(value, CURRENCY_SETTINGS.getRemovalSetting(removalPriceCurrency), needValue, defValue if defValue > 0 else None, removalActionPercent, valueWidth=119, gap=13, leftPadding=self._priceLeftPadding, isDeluxe=module.isDeluxe, canUseDemountKit=module.canUseDemountKit, wotPlusStatus=wotPlusStatus, isFreeToDemount=isFreeToDemount, isFreeDeluxeEnabled=isFreeDeluxeEnabled, isFreeDemountEnabled=isFreeDemountEnabled, forcedText=forcedText))
                 isModernized = module.itemTypeID == GUI_ITEM_TYPE.OPTIONALDEVICE and module.isModernized
                 if isModernized:
                     itemPrice = module.getDeconstructPrice(self.itemsCache.items)

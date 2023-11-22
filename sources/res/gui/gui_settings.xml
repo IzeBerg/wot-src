@@ -103,81 +103,7 @@
 				</value>
 			</item>
 			<item>
-				<name>NA</name>
-				<type>macros</type>
-				<macros>LANGUAGE_CODE</macros>
-				<value>
-					<item>
-						https://legal.na.wargaming.net/en/clan-rules/
-						<name>en</name>
-						<type>url</type>
-					</item>
-					<item>
-						https://legal.na.wargaming.net/es-ar/creacion-de-clanes/
-						<name>es-ar</name>
-						<type>url</type>
-					</item>
-					<item>
-						https://legal.na.wargaming.net/pt-br/regras-criacao-cla/
-						<name>pt-br</name>
-						<type>url</type>
-					</item>
-					<item>
-						https://legal.na.wargaming.net/en/clan-rules/
-						<name>default</name>
-						<type>url</type>
-					</item>
-				</value>
-			</item>
-			<item>
-				<name>ASIA</name>
-				<type>macros</type>
-				<macros>LANGUAGE_CODE</macros>
-				<value>
-					<item>
-						https://legal.asia.wargaming.net/en/clan-rules/
-						<name>en</name>
-						<type>url</type>
-					</item>
-					<item>
-						https://legal.asia.wargaming.net/ja/clan-rules-japanese/
-						<name>ja</name>
-						<type>url</type>
-					</item>
-					<item>
-						https://legal.asia.wargaming.net/th/clan-rules-thai/
-						<name>th</name>
-						<type>url</type>
-					</item>
-					<item>
-						https://legal.asia.wargaming.net/zh-tw/clan-rules-zh/
-						<name>zh-tw</name>
-						<type>url</type>
-					</item>
-					<item>
-						https://legal.asia.wargaming.net/ko/clan-rules-ko/
-						<name>ko</name>
-						<type>url</type>
-					</item>
-					<item>
-						https://legal.asia.wargaming.net/zh-sg/clan-rules
-						<name>zh-sg</name>
-						<type>url</type>
-					</item>
-					<item>
-						https://legal.asia.wargaming.net/en/clan-rules/
-						<name>default</name>
-						<type>url</type>
-					</item>
-				</value>
-			</item>
-			<item>
-				https://wgn.wggames.cn/clan-rules
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://wgn.wggames.cn/clan-rules
+				https://legal.eu.wargaming.net/en/clan-rules/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -343,23 +269,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://worldoftanks.com/$LANGUAGE_CODE/news/general-news/1-20-1-subscription-wotplus
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://worldoftanks.eu/$LANGUAGE_CODE/news/general-news/1-20-1-subscription-wotplus
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.asia/$LANGUAGE_CODE/news/general-news/1-20-1-subscription-wotplus/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://wotgame.cn/$LANGUAGE_CODE/news/news/1-20-1-subscription-wotplus/
-				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -380,28 +291,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://na.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://na.wargaming.net/shop/subscriptions?language=$LANGUAGE_CODE)
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/shop/subscriptions?language=$LANGUAGE_CODE)
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://asia.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://asia.wargaming.net/shop/subscriptions?language=$LANGUAGE_CODE)
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://shop.wot.360.cn/detail.html?goods_id=subscription&amp;type=wotsubscriptions&amp;wg_id=$DB_ID
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/shop/subscriptions?language=$LANGUAGE_CODE)
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1181,31 +1072,6 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/hw2022_category/hw2022_category_tab_all/)
-				<name>hw23ShopAll</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/hw2022_category/hw2022_category_tab_vehicles/)
-				<name>hw23ShopVehicle</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/hw2022_category/hw2022_category_tab_keys/)
-				<name>hw23ShopKey</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/hw2022_category/hw2022_category_tab_styles/)
-				<name>hw23ShopStyles</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/hw2022_category/hw2022_category_tab_skill/)
-				<name>hw23ShopEquipment</name>
-				<type>url</type>
-			</item>
-			<item>
 				$PARAMS(/sh_category/sh_category)
 				<name>shProducts</name>
 				<type>url</type>
@@ -1358,28 +1224,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/dogtag/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtag/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/dogtag/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/dogtag/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtag/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1395,28 +1241,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/dogtagVideo1/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtagVideo1/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/dogtagVideo1/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/dogtagVideo1/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtagVideo1/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1432,28 +1258,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/dogtagVideo2/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtagVideo2/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/dogtagVideo2/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/dogtagVideo2/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtagVideo2/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1469,10 +1275,6 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				<name>CN</name>
-				<type>string</type>
-			</item>
-			<item>
 				Utilizes Vivox, © 2018 Vivox, Inc. All rights reserved. See www.vivox.com for details.\n
 				<name>default</name>
 				<type>string</type>
@@ -1485,23 +1287,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://worldoftanks.com/$LANGUAGE_CODE/tournaments/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://worldoftanks.eu/$LANGUAGE_CODE/tournaments/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.asia/$LANGUAGE_CODE/tournaments/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://wotgame.cn/$LANGUAGE_CODE/tournaments/
-				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1517,23 +1304,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://na.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://na.wargaming.net/globalmap/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://eu.wargaming.net/globalmap/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://asia.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://asia.wargaming.net/globalmap/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://wgn.wggames.cn/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://wgn.wggames.cn/globalmap/
-				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1549,28 +1321,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/RandomBattles/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/RandomBattles/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/RandomBattles/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/RandomBattles/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/RandomBattles/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1586,28 +1338,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/Bootcamp/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Bootcamp/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/Bootcamp/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/Bootcamp/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Bootcamp/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1623,28 +1355,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/Strongholds/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Strongholds/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/Strongholds/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/Strongholds/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Strongholds/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1660,28 +1372,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/SpecialBattles/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/SpecialBattles/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/SpecialBattles/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/SpecialBattles/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/SpecialBattles/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1697,28 +1389,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/TrainingRooms/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/TrainingRooms/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/TrainingRooms/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/TrainingRooms/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/TrainingRooms/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1734,28 +1406,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/RankedBattles/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/RankedBattles/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/RankedBattles/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/RankedBattles/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/RankedBattles/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1771,28 +1423,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://steelhunter.worldoftanks.com/$LANGUAGE_CODE/?fullscreenMode=true
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://steelhunter.worldoftanks.eu/$LANGUAGE_CODE/?fullscreenMode=true
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://steelhunter.worldoftanks.asia/$LANGUAGE_CODE/?fullscreenMode=true
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://steelhunter.wotgame.cn/$LANGUAGE_CODE/?fullscreenMode=true
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://steelhunter-ct.worldoftanks.eu/$LANGUAGE_CODE/?fullscreenMode=true
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1838,28 +1470,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1875,28 +1487,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/wot-plus-september/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/wot-plus-september/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/wot-plus-september/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/wot-plus-september/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/wot_plus/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1912,28 +1504,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/cartography/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/cartography/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/cartography/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/cartography/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/cartography/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1949,28 +1521,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1986,64 +1538,12 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/stories-onboarding/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
 				<name>EU</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/stories-onboarding/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/stories-onboarding/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
-				<name>CT</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/stories-onboarding/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>infoPageHalloween</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/halloween23/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/halloween23/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/halloween23/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/halloween23/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/halloween23/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -2055,28 +1555,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
-				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -2104,23 +1584,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://na.wargaming.net/support/$LANGUAGE_CODE/help/login/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://eu.wargaming.net/support/$LANGUAGE_CODE/help/login/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://asia.wargaming.net/support/$LANGUAGE_CODE/help/login/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://asia.wargaming.net/support/$LANGUAGE_CODE/help/login/
-				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -2137,27 +1602,7 @@
 		<value>
 			<item>
 				https://worldoftanks.eu/en/content/guide/age-protection-update/
-				<name>CT</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.eu/en/content/guide/age-protection-update/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.com/en/content/guide/general/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.asia/en/content/guide/general/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://wotgame.cn/zh-cn/content/guide/
-				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -2185,23 +1630,8 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/assembly-shop-2023-august/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/assembly-shop-2023-august/
 				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/assembly-shop-2023-august/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/assembly-shop-2023-august/
-				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -2222,49 +1652,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/player-subscriptions/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/player-subscriptions/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/player-subscriptions/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>hwIntroVideo</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/hw23IntroVideo/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/hw23IntroVideo/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/hw23IntroVideo/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/hw23IntroVideo/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/hw23IntroVideo/
 				<name>default</name>
 				<type>url</type>
 			</item>

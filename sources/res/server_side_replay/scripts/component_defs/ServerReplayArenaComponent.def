@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<Properties/>
-	<BaseMethods>
-		<onRecorderCellReady/>
-		<onCellRecordingStarted/>
-		<onCellRecordingStopped/>
-		<onRecordingFinalized/>
-	</BaseMethods>
+	<BaseMethods/>
 	<CellMethods>
-		<storeInitialRecordingData>
+		<storeInitialState>
 			<Arg>PYTHON</Arg>
-		</storeInitialRecordingData>
+		</storeInitialState>
 		<recordReplayAvatarMethod>
 			<Arg>STRING</Arg>
 			<Arg>PYTHON</Arg>

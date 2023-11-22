@@ -1,4 +1,0 @@
-from script_component.DynamicScriptComponent import DynamicScriptComponent
-
-class HWBuffInterruptOnGunReloadedComponent(DynamicScriptComponent):
-    pass

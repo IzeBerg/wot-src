@@ -54,7 +54,7 @@ package net.wg.gui.battle.views.destroyTimers
       
       private var _alpha:Number = 1;
       
-      protected var _secString:String = "";
+      private var _secString:String = "";
       
       private var _isShowing:Boolean = false;
       

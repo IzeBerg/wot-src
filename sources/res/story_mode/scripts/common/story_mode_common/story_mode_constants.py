@@ -1,4 +1,4 @@
-import enum, arena_bonus_type_caps, constants
+import enum, constants
 from constants_utils import ConstInjector
 EXTENSION_NAME = 'story_mode'
 LOGGER_NAME = 'story_mode'
@@ -16,10 +16,6 @@ class ARENA_GUI_TYPE(constants.ARENA_GUI_TYPE, ConstInjector):
 
 class ARENA_BONUS_TYPE(constants.ARENA_BONUS_TYPE, ConstInjector):
     STORY_MODE = 100
-
-
-class ARENA_BONUS_TYPE_CAPS(arena_bonus_type_caps.ARENA_BONUS_TYPE_CAPS, ConstInjector):
-    pass
 
 
 class QUEUE_TYPE(constants.QUEUE_TYPE, ConstInjector):
