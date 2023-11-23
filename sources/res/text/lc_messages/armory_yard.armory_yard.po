@@ -14,6 +14,127 @@ msgstr ""
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);"
 
+msgid "bundles/backCaption"
+msgstr "НАЗАД"
+
+msgid "bundles/backGoto"
+msgstr "В ЦЕХ"
+
+msgid "bundles/building"
+msgstr "СТРОИТЕЛЬСТВА"
+
+msgid "bundles/bundleTitle"
+msgid_plural "plural/bundles/bundleTitle"
+msgstr[0] "%(levelCount) ЖЕТОН"
+msgstr[1] "%(levelCount) ЖЕТОНА"
+msgstr[2] "%(levelCount) ЖЕТОНОВ"
+
+msgid "bundles/bundlesAvailable"
+msgstr "Наборы будут доступны ещё"
+
+msgid "bundles/buyBundle"
+msgstr "Купить"
+
+msgid "bundles/buyToken"
+msgstr "Любое количество жетонов строительства"
+
+msgid "bundles/buyTokenCaption"
+msgstr "Перейти"
+
+msgid "bundles/buyTokenShort"
+msgstr "Жетоны строительства"
+
+msgid "bundles/buyTokenTooltip"
+msgstr "Перейти к покупке любого количества жетонов строительства"
+
+msgid "bundles/countdown/days"
+msgstr "%(day)s д"
+
+msgid "bundles/countdown/daysWithHours"
+msgstr "%(day)s д  %(hour)s ч"
+
+msgid "bundles/countdown/hours"
+msgstr "%(hour)s ч"
+
+msgid "bundles/countdown/hoursWithMinutes"
+msgstr "%(hour)s ч %(min)s мин"
+
+msgid "bundles/countdown/min"
+msgstr "%(min)s мин"
+
+msgid "bundles/countdown/sec"
+msgstr "< 1 мин"
+
+msgid "bundles/discount"
+msgstr "-%(discount)s%"
+
+msgid "bundles/subtitleOne"
+msgstr ""
+"Завершайте этапы строительства за золото и сразу получайте заполнение шкалы "
+"прогрессии и награды за эти этапы."
+
+msgid "bundles/subtitleOptions"
+msgstr "%(firstSubtitle)s %(secondSubtitle)s %(thirdSubtitle)s"
+
+msgid "bundles/subtitleThree"
+msgstr "Текущий этап прогрессии:"
+
+msgid "bundles/subtitleTwo"
+msgstr "Купить можно только один набор жетонов!"
+
+msgid "bundles/title"
+msgstr "Наборы жетонов строительства"
+
+msgid "bundles/tokenPrice"
+msgstr "По фиксированной стоимости:"
+
+msgid "bundles/upperTitle"
+msgstr "СБОРОЧНЫЙ ЦЕХ"
+
+msgid "buyBundle/alert"
+msgstr ""
+"Купить можно только один набор жетонов! Поэтапная покупка доступна в течение"
+" всего события."
+
+msgid "buyBundle/backCaption"
+msgstr "НАЗАД"
+
+msgid "buyBundle/backGoto"
+msgstr "К ВЫБОРУ НАБОРОВ"
+
+msgid "buyBundle/controlBack"
+msgstr "Назад"
+
+msgid "buyBundle/controlBuy"
+msgstr "Купить"
+
+msgid "buyBundle/description"
+msgstr "Вам сразу будут начислены награды за этапы строительства: "
+
+msgid "buyBundle/descriptionLevels"
+msgstr "%(startLevel)d - %(endLevel)d"
+
+msgid "buyBundle/price"
+msgstr "%(label) %(price)"
+
+msgid "buyBundle/priceLabel"
+msgstr "Стоимость покупки:"
+
+msgid "buyBundle/subtitle"
+msgstr "ПОКУПКА НАБОРА"
+
+msgid "buyBundle/title"
+msgstr "ЖЕТОНЫ СТРОИТЕЛЬСТВА"
+
+msgid "buyBundle/titleLargeBundle"
+msgstr "17 ЖЕТОНОВ СТРОИТЕЛЬСТВА"
+
+msgid "buyBundle/titleMediumBundle"
+msgstr "10 ЖЕТОНОВ СТРОИТЕЛЬСТВА"
+
+msgid "buyBundle/titleSmallBundle"
+msgstr "3 ЖЕТОНА СТРОИТЕЛЬСТВА"
+
 msgid "buyView/backButton/mainView"
 msgstr "В ЦЕХ"
 
@@ -55,7 +176,7 @@ msgid "buyView/title/h1"
 msgstr "СБОРОЧНЫЙ ЦЕХ"
 
 msgid "buyView/title/h2"
-msgstr "ПОКУПКА ЖЕТОНОВ СБОРОЧНОГО ЦЕХА"
+msgstr "ПОКУПКА ЖЕТОНОВ СТРОИТЕЛЬСТВА"
 
 msgid "buyView/title/h3"
 msgstr ""
@@ -111,7 +232,7 @@ msgstr[1] "Выполните %(questsCount)s задачи предыдущей 
 msgstr[2] "Выполните %(questsCount)s задач предыдущей главы"
 
 msgid "entryPoint/tooltips/active/questsCompleted"
-msgstr "Все задачи главы выполнены"
+msgstr "Все задачи главы выполнены."
 
 msgid "entryPoint/tooltips/active/questsDone"
 msgstr "Выполнено задач:"
@@ -131,7 +252,7 @@ msgstr ""
 
 msgid "entryPoint/tooltips/beforeProgression/body"
 msgstr ""
-"Здесь находятся все задачи события, разбитые на четыре главы. Блоки задач "
+"Здесь находятся все задачи события, разбитые на пять глав. Блоки задач "
 "открываются последовательно каждые семь дней."
 
 msgid "entryPoint/tooltips/beforeProgression/header"
@@ -156,6 +277,17 @@ msgstr "Задачи события «Сборочный цех» более н�
 msgid "entryPoint/tooltips/postProgression/header"
 msgstr "Задачи завершены"
 
+msgid "entryPoint/widget/tooltips/disabled/body"
+msgstr ""
+"В настоящий момент событие недоступно по техническим причинам. Весь прогресс"
+" будет сохранён."
+
+msgid "entryPoint/widget/tooltips/disabled/header"
+msgstr "Сборочный цех"
+
+msgid "entryPoint/widget/tooltips/disabled/warning"
+msgstr "Временно недоступно"
+
 msgid "featureName"
 msgstr "СБОРОЧНЫЙ ЦЕХ"
 
@@ -166,19 +298,19 @@ msgid "introView/continueButton"
 msgstr "Продолжить"
 
 msgid "introView/progress/descr"
-msgstr "Собирайте машину и следите, как ваш зверь обрастает бронёй."
+msgstr "Стройте машину и следите, как ваш зверь обрастает деталями."
 
 msgid "introView/quests/descr"
 msgstr "Получайте жетоны двумя разными способами."
 
 msgid "introView/season"
-msgstr "%(from)s - %(to)s"
+msgstr "С %(from)s по %(to)s"
 
 msgid "introView/vehicle/descr"
-msgstr "Заберите огнемётный танк и поддайте огоньку!"
+msgstr "Забирайте свой танк — и вперёд в бой!"
 
 msgid "mainView/banner/button"
-msgstr "Докупить жетоны"
+msgstr "Докупить этапы"
 
 msgid "mainView/banner/description"
 msgstr "Докупив этапы, вы мгновенно получите награды за них."
@@ -188,7 +320,7 @@ msgstr "Этапы строительства"
 
 msgid "mainView/banner/tooltip/body"
 msgstr ""
-"Докупив этапы, вы мгновенно получите награды за них и продвинитесь по "
+"Докупив этапы, вы мгновенно получите награды за них и продвинетесь по "
 "прогрессии события."
 
 msgid "mainView/banner/tooltip/header"
@@ -198,12 +330,15 @@ msgid "mainView/chapter/index/1"
 msgstr "Проектирование"
 
 msgid "mainView/chapter/index/2"
-msgstr "Силовые агрегаты"
-
-msgid "mainView/chapter/index/3"
 msgstr "Основные системы"
 
+msgid "mainView/chapter/index/3"
+msgstr "Башня и орудие"
+
 msgid "mainView/chapter/index/4"
+msgstr "Дополнительное оснащение"
+
+msgid "mainView/chapter/index/5"
 msgstr "Ходовая и экстерьер"
 
 msgid "mainView/chapter/quests/label"
@@ -230,7 +365,7 @@ msgid "mainView/infoLink/info"
 msgstr "О СОБЫТИИ"
 
 msgid "mainView/mainReward/completed"
-msgstr "Награда получена."
+msgstr "Награда получена"
 
 msgid "mainView/playerLink/animate/start"
 msgstr "ПОВТОР АНИМАЦИИ"
@@ -271,10 +406,10 @@ msgid "mainView/quest/currencyToken/label"
 msgstr "Бонусная награда:"
 
 msgid "mainView/quest/currencyToken/rewardReceived"
-msgstr "Награда получена"
-
-msgid "mainView/quest/currencyToken/rewardsReceived"
-msgstr "Награды получены"
+msgid_plural "rewardReceived"
+msgstr[0] "Награда получена"
+msgstr[1] "Награды получены"
+msgstr[2] "Награды получены"
 
 msgid "mainView/quest/progress"
 msgstr "%(current)s %(par_open)s/ %(total)s%(par_close)s"
@@ -289,19 +424,25 @@ msgid "mainView/quest/vehicleType/any"
 msgstr "любой технике VI-X уровней"
 
 msgid "mainView/quest/vehicleType/heavyTank"
-msgstr "Тяжёлых танках VI-X уровней"
+msgstr "тяжёлых танках VI-X уровней"
 
 msgid "mainView/quest/vehicleType/label"
 msgstr "Выполняется на"
 
 msgid "mainView/quest/vehicleType/lightTank"
-msgstr "Лёгких танках VI-X уровней"
+msgstr "лёгких танках VI-X уровней"
 
 msgid "mainView/quest/vehicleType/mediumTank"
-msgstr "Средних танках VI-X уровней"
+msgstr "средних танках VI-X уровней"
 
 msgid "mainView/quests/title"
 msgstr "ЗАДАЧИ СБОРОЧНОГО ЦЕХА"
+
+msgid "mainView/state/postProgression"
+msgstr "ЭТАП ДОКУПКИ"
+
+msgid "mainView/state/progression"
+msgstr "ЭТАП ВЫПОЛНЕНИЯ ЗАДАЧ"
 
 msgid "mainView/subtitle"
 msgstr "%(step)s ЭТАП СТРОИТЕЛЬСТВА"
@@ -316,94 +457,124 @@ msgid "mainView/takeRewards/tooltip/header"
 msgstr "Забрать награды"
 
 msgid "mainView/title/step/0"
-msgstr "Обработка ТЗ"
+msgstr "Составление ТЗ"
 
 msgid "mainView/title/step/1"
-msgstr "Обработка ТЗ"
+msgstr "Составление ТЗ"
 
 msgid "mainView/title/step/10"
-msgstr "Протяжка магистралей"
+msgstr "Постановка корпуса"
 
 msgid "mainView/title/step/11"
-msgstr "Установка трансмиссии"
+msgstr "Монтаж магистралей"
 
 msgid "mainView/title/step/12"
-msgstr "Монтаж двигателя"
+msgstr "Монтаж трансмиссии"
 
 msgid "mainView/title/step/13"
-msgstr "Монтаж вентиляции"
+msgstr "Монтаж двигателя"
 
 msgid "mainView/title/step/14"
-msgstr "Установка системы питания"
+msgstr "Монтаж вентиляции"
 
 msgid "mainView/title/step/15"
-msgstr "Размещение баков огнесмеси"
+msgstr "Монтаж топливных баков"
 
 msgid "mainView/title/step/16"
-msgstr "Установка огнемёта"
+msgstr "Установка пневмобаллонов"
 
 msgid "mainView/title/step/17"
-msgstr "Монтаж пневмобаллонов"
+msgstr "Формирование боевого отделения"
 
 msgid "mainView/title/step/18"
-msgstr "Оборудование места мехвода"
+msgstr "Монтаж боеукладки"
 
 msgid "mainView/title/step/19"
-msgstr "Оборудование места наводчика"
+msgstr "Установка крыши корпуса"
 
 msgid "mainView/title/step/2"
 msgstr "Габариты машины"
 
 msgid "mainView/title/step/20"
-msgstr "Оборудование места командира"
+msgstr "Монтаж ведущих мостов"
 
 msgid "mainView/title/step/21"
-msgstr "Установка радиостанции"
+msgstr "Монтаж балансиров"
 
 msgid "mainView/title/step/22"
-msgstr "Обшивка"
+msgstr "Установка орудия"
 
 msgid "mainView/title/step/23"
-msgstr "Монтаж ведущих катков"
+msgstr "Доработка боевого отделения"
 
 msgid "mainView/title/step/24"
-msgstr "Установка балансиров"
+msgstr "Оборудование места наводчика"
 
 msgid "mainView/title/step/25"
-msgstr "Монтаж ленивцев"
+msgstr "Оборудование места командира"
 
 msgid "mainView/title/step/26"
-msgstr "Установка вооружения"
+msgstr "Оборудование места заряжающего"
 
 msgid "mainView/title/step/27"
-msgstr "Размещение обвеса"
+msgstr "Загрузка ММГ снарядов"
 
 msgid "mainView/title/step/28"
-msgstr "Покрасочные работы"
+msgstr "Монтаж люков"
+
+msgid "mainView/title/step/29"
+msgstr "Установка башни"
 
 msgid "mainView/title/step/3"
-msgstr "Проработка бронирования"
+msgstr "Проработка бронирования корпуса"
+
+msgid "mainView/title/step/30"
+msgstr "Монтаж ленивцев"
+
+msgid "mainView/title/step/31"
+msgstr "Укладка ЗИП"
+
+msgid "mainView/title/step/32"
+msgstr "Установка гусениц"
+
+msgid "mainView/title/step/33"
+msgstr "Покраска"
+
+msgid "mainView/title/step/34"
+msgstr "Монтаж экранов корпуса"
+
+msgid "mainView/title/step/35"
+msgstr "Монтаж экранов башни"
+
+msgid "mainView/title/step/36"
+msgstr "Установка элементов корпуса"
+
+msgid "mainView/title/step/37"
+msgstr "Установка элементов башни"
+
+msgid "mainView/title/step/38"
+msgstr "Обкатка машины"
 
 msgid "mainView/title/step/4"
-msgstr "Компоновочная схема силовой установки"
-
-msgid "mainView/title/step/5"
 msgstr "Схема вооружения"
 
+msgid "mainView/title/step/5"
+msgstr "Компоновочная схема силовой установки"
+
 msgid "mainView/title/step/6"
-msgstr "Компоновочная схема корпуса"
+msgstr "Схема боевого отделения"
 
 msgid "mainView/title/step/7"
-msgstr "Экстерьер"
+msgstr "Схема дополнительной защиты"
 
 msgid "mainView/title/step/8"
-msgstr "Закалка брони"
+msgstr "Экстерьер"
 
 msgid "mainView/title/step/9"
-msgstr "Монтаж корпуса"
+msgstr "Закалка брони"
 
 msgid "mainView/title/step/final"
-msgstr "Строительство завершено!"
+msgstr "Строительство завершено"
 
 msgid "notifications/active"
 msgstr ""
@@ -416,23 +587,34 @@ msgstr "Глава %(count)d: %(chapter_name)s станет доступна %(s
 
 msgid "notifications/announcement/event"
 msgstr ""
-"Бойцы! У вас есть возможность построить уникальную машину нового типа — "
-"огнемётный танк. Событие начинается %(startDate)s."
+"Бойцы! У вас есть возможность построить уникальную машину — новый "
+"чехословацкий тяжёлый танк. Событие начинается %(startDate)s."
+
+msgid "notifications/bundleOutTime"
+msgstr ""
+"Произошла ошибка при начислении жетонов строительства. Не волнуйтесь, они в "
+"ближайшее время поступят на ваш аккаунт."
 
 msgid "notifications/collectRewards"
 msgstr ""
-"Не забудьте забрать награды за пройденные этапы прогрессии Сборочного цеха."
-
-msgid "notifications/payed"
-msgstr "Жетоны Сборочного цеха (%(count)d шт.) приобретены."
+"Не забудьте забрать награды за пройденные этапы прогрессии Сборочного цеха!"
 
 msgid "notifications/payed/error"
 msgstr "Произошла ошибка при покупке этапов. Пожалуйста, попробуйте ещё раз."
 
+msgid "notifications/payed/multiple"
+msgstr "Жетоны строительства (%(count)d шт.) успешно приобретены."
+
+msgid "notifications/payed/priceGold"
+msgstr "Списано золота: %(price)s"
+
+msgid "notifications/payed/single"
+msgstr "Жетон строительства (%(count)d шт.) успешно приобретён."
+
 msgid "notifications/postProgression"
 msgstr ""
-"Задачи события более не доступны. Недостающие этапы можно докупить на экране"
-" события."
+"Задачи события больше не доступны. Недостающие этапы можно докупить на "
+"экране события."
 
 msgid "notifications/rewards/title"
 msgstr "Этапы пройдены"
@@ -440,11 +622,6 @@ msgstr "Этапы пройдены"
 msgid "notifications/started/chapter"
 msgstr ""
 "Доступна глава %(count)d: %(chapter_name)s с новыми задачами и наградами."
-
-msgid "notifications/styleQuest"
-msgstr ""
-"Боевая задача на получение стиля «Горыныч» заканчивается %(endDate)s. "
-"Поторопитесь!"
 
 msgid "notifications/switcher/disabled"
 msgstr "Сборочный цех временно недоступен. Идёт уборка и инвентаризация."
@@ -533,7 +710,7 @@ msgstr ""
 
 msgid "tooltip/currency/gain/currency"
 msgstr ""
-"%(yellow_open)sЖетон Сборочного цеха %(yellow_close)s "
+"%(yellow_open)sЖетон строительства %(yellow_close)s "
 "%(whiteSpanish_open)sх1%(whiteSpanish_close)s."
 
 msgid "tooltip/currency/gain/description"
@@ -546,7 +723,7 @@ msgid "tooltip/currency/gain/title"
 msgstr "Как получить"
 
 msgid "tooltip/currency/info"
-msgstr "Автоматически добавляeтся в шкалу прогрессии."
+msgstr "Автоматически продвигает вас по шкале прогрессии."
 
 msgid "tooltip/currency/progress"
 msgstr "%(cream_open)s%(received)s%(cream_close)s / %(total)s"
@@ -555,7 +732,7 @@ msgid "tooltip/currency/progressLabel"
 msgstr "Получено"
 
 msgid "tooltip/currency/title"
-msgstr "Жетоны Сборочного цеха"
+msgstr "Жетоны строительства"
 
 msgid "tooltip/tab/progression/body"
 msgstr "Просмотр достигнутого прогресса в событии «Сборочный цех»."
@@ -588,22 +765,19 @@ msgid "videoRewardView/toHangar"
 msgstr "Посмотреть в Ангаре"
 
 msgid "widget/active"
-msgstr "%(cream_open)sДо %(date)s%(cream_close)s"
-
-msgid "widget/activeLastHours"
-msgstr "%(cream_open)sДо конца события: %(countdown)s.%(cream_close)s"
+msgstr "До %(date)s"
 
 msgid "widget/beforeProgression"
-msgstr "%(cream_open)sДо открытия: %(countdown)s%(cream_close)s"
+msgstr "%(countdown)s"
 
 msgid "widget/completed"
-msgstr "%(greenBright_open)sГлавная награда получена%(greenBright_close)s"
+msgstr "До %(date)s"
 
 msgid "widget/countdown/days"
 msgid_plural "widget/countdown/days"
-msgstr[0] "{value} день"
-msgstr[1] "{value} дня"
-msgstr[2] "{value} дней"
+msgstr[0] "%(value)s день"
+msgstr[1] "%(value)s дня"
+msgstr[2] "%(value)s дней"
 
 msgid "widget/countdown/hours"
 msgstr "%(hour)s ч %(min)s мин"
@@ -614,14 +788,23 @@ msgstr "%(min)s мин"
 msgid "widget/countdown/sec"
 msgstr "< 1 мин"
 
-msgid "widget/disabled"
-msgstr "%(cream_open)sСобытие временно недоступно%(cream_close)s"
-
 msgid "widget/postProgression"
-msgstr "%(cream_open)sПокупка доступна ещё: %(countdown)s%(cream_close)s"
+msgstr "Покупка доступна ещё: %(countdown)s"
 
-msgid "widget/progress"
-msgstr "%(par_open)s%(current)s / %(total)s%(par_close)s"
+msgid "widget/postProgressionShort"
+msgstr "Доступно ещё: %(countdown)s"
 
 msgid "widget/title"
 msgstr "СБОРОЧНЫЙ ЦЕХ"
+
+msgid "widget/underTitle/disabled"
+msgstr "Cкоро возобновится"
+
+msgid "widget/underTitle/openSoon"
+msgstr "Скоро откроется"
+
+msgid "widget/underTitle/progressionCompleted"
+msgstr "Все награды получены"
+
+msgid "widget/underTitle/takeRewards"
+msgstr "Заберите награду"

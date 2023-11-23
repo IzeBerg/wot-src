@@ -1168,6 +1168,9 @@ msgstr "Декаль"
 msgid "bonusName/emblem"
 msgstr "Эмблемa"
 
+msgid "bonusName/entitlements/ny24_marketplace_unlock"
+msgstr "Открыт доступ к покупке стилей прошлых лет!"
+
 msgid "bonusName/entitlements/ranked_2020_discount"
 msgstr "Увеличение скидки"
 
@@ -1216,6 +1219,12 @@ msgstr "Надпись"
 msgid "bonusName/modification"
 msgstr "Эффект"
 
+msgid "bonusName/newYearSlot"
+msgstr "Новогодний слот"
+
+msgid "bonusName/ny22Fillers"
+msgstr "Антиповторитель"
+
 msgid "bonusName/paint"
 msgstr "Краска"
 
@@ -1238,7 +1247,7 @@ msgid "bonusName/rankedDailyBattles"
 msgstr "Ежедневный призовой бой."
 
 msgid "bonusName/slots"
-msgstr "Слотов в Ангаре"
+msgstr "Слот в Ангаре"
 
 msgid "bonusName/style"
 msgstr "Стиль"
@@ -1370,6 +1379,12 @@ msgstr "Дней Танкового премиум аккаунта: %(value)s"
 
 msgid "bonuses/tankmen/description"
 msgstr "%(value)s"
+
+msgid "bonuses/variadicDiscount/buttonLabel"
+msgstr "Выбрать"
+
+msgid "bonuses/variadicDiscount/discountAmount"
+msgstr "-{amount}%"
 
 msgid "bonuses/vehicles/crewLvl"
 msgstr "%d%%-й экипаж"
@@ -1517,6 +1532,37 @@ msgstr "ЕЖЕДНЕВНЫЕ ЗАДАЧИ"
 msgid "dailyQuests/header/winback"
 msgstr "СНОВА В СТРОЙ"
 
+msgid "dailyQuests/info/NYDailyMissions"
+msgstr ""
+"Стандартные задачи состоят из случайных условий, а выполнять их можно "
+"ежедневно. Как и в Личных боевых задачах, прогресс выполнения стандартных "
+"задач обновляется после каждого боя. Эти задачи предпочтительно выполнять в "
+"день их выдачи, иначе они перенесутся на следующий день, а следующая задача "
+"не будет выдана до выполнения текущей. В период Новогоднего наступления в "
+"задачу обязательно добавляются малые новогодние коробки и праздничные марки "
+"в дополнение к награде."
+
+msgid "dailyQuests/info/battlePassDailyMissions"
+msgstr ""
+"Стандартные задачи состоят из случайных условий, а выполнять их можно "
+"ежедневно. Как и в личных боевых задачах, прогресс выполнения стандартных "
+"задач обновляется после каждого боя. Эти задачи предпочтительно выполнять в "
+"день их выдачи, иначе они перенесутся на следующий день, а следующая задача "
+"выдана не будет до выполнения текущей. Во время действия Боевого пропуска к "
+"награде за каждую задачу добавляются очки Боевого пропуска."
+
+msgid "dailyQuests/info/dailyMissionTitle"
+msgstr "Стандартные задачи"
+
+msgid "dailyQuests/info/giftSystemDisabledDailyMissions"
+msgstr ""
+"Стандартные задачи состоят из случайных условий, а выполнять их можно "
+"ежедневно. Как и в Личных боевых задачах, прогресс выполнения стандартных "
+"задач обновляется после каждого боя. Эти задачи предпочтительно выполнять в "
+"день их выдачи, иначе они перенесутся на следующий день, а следующая задача "
+"не будет выдана до выполнения текущей. На период Новогоднего наступления в "
+"каждую задачу обязательно добавляются малые коробки в дополнение к награде."
+
 msgid "dailyQuests/missionSwitch/tooltip/body/available"
 msgstr "Доступно через:"
 
@@ -1588,7 +1634,7 @@ msgstr "Забирайте награду"
 
 msgid "debutBoxes/missions/header/disabled"
 msgstr ""
-"Особая поддержка временно недоступна.\n"
+"Задачи временно недоступны.\n"
 "Ждём новые поставки."
 
 msgid "debutBoxes/missions/header/info"
@@ -4428,15 +4474,6 @@ msgstr "Условия"
 msgid "infoPage/dailyMissionTitle"
 msgstr "Стандартные задачи"
 
-msgid "infoPage/dailyMissions/battlePassDailyMissions/default"
-msgstr ""
-"Стандартные задачи состоят из случайных условий, а выполнять их можно "
-"ежедневно. Как и в личных боевых задачах, прогресс выполнения стандартных "
-"задач обновляется после каждого боя. Эти задачи предпочтительно выполнять в "
-"день их выдачи, иначе они перенесутся на следующий день, а следующая задача "
-"выдана не будет до выполнения текущей. Во время действия Боевого пропуска к "
-"награде за каждую задачу добавляются очки Боевого пропуска."
-
 msgid "infoPage/dailyMissions/battlePassDailyMissions/winback"
 msgstr ""
 "Стандартные задачи со случайными условиями можно выполнять ежедневно. "
@@ -4448,10 +4485,12 @@ msgstr ""
 
 msgid "infoPage/dailyMissions/default"
 msgstr ""
-"Стандартные задачи состоят из случайных условий, которые можно выполнять "
-"ежедневно. Как и в личных боевых задачах, прогресс выполнения стандартных "
-"задач обновляется после каждого боя. Эти задачи не имеют ограничений по "
-"времени и могут быть выполнены в любой момент."
+"Состоят из случайных условий, а выполнять их можно ежедневно. Как и в Личных"
+" боевых задачах, прогресс выполнения стандартных задач обновляется после "
+"каждого боя. Эти задачи предпочтительно выполнять в день их выдачи, иначе "
+"они перенесутся на следующий день, а следующая задача выдана не будет до "
+"выполнения текущей. На период события «Наш Новый год» в каждую задачу "
+"дополнительно к награде добавляются контейнеры с ёлочными украшениями."
 
 msgid "infoPage/dailyMissions/winback"
 msgstr ""
@@ -4502,6 +4541,18 @@ msgstr "О ежедневных задачах"
 
 msgid "infoPage/infoButtonTooltip/header/winback"
 msgstr "О задачах"
+
+msgid "infoPage/lootboxConditions/button"
+msgstr "Так точно!"
+
+msgid "infoPage/lootboxConditions/default"
+msgstr ""
+"В течение всего праздничного события к наградам за выполнение ежедневных "
+"задач будут дополнительно выданы контейнеры с ёлочными украшениями как за "
+"стандартные задачи, так и за бонусную."
+
+msgid "infoPage/lootboxConditionsTitle"
+msgstr "Контейнеры «Ёлочные украшения» в ежедневных задачах"
 
 msgid "infoPage/missionSwitch/winback"
 msgstr ""
@@ -4871,7 +4922,7 @@ msgid "missions/filter/popover/title"
 msgstr "Фильтр задач"
 
 msgid "missions/filterCounter/closeButton/body"
-msgstr "Нажмите, чтобы сбросить настройки фильтра на стандартные."
+msgstr "Нажмите, чтобы сбросить настройки фильтра на состояние по умолчанию."
 
 msgid "missions/filterCounter/closeButton/header"
 msgstr "Установить по умолчанию"
@@ -5257,6 +5308,13 @@ msgstr "ПРЕМИУМ ЗАДАЧИ"
 
 msgid "premiumQuests/header/winback"
 msgstr "СНОВА В СТРОЙ"
+
+msgid "premiumQuests/info/premiumMissions"
+msgstr ""
+"Premium Account gives the access to the set of 3 Premium Missions that must "
+"be completed sequentially. All missions can be completed in Random Battles. "
+"The progress on Premium Missions is updated only after the end of each "
+"battle."
 
 msgid "premiumQuests/notPremiumAccount/button"
 msgstr "Купить премиум"

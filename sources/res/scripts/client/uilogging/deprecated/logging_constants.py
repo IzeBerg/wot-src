@@ -3,8 +3,9 @@ __all__ = ('FEATURES', 'KEYS_MAPPING')
 class FEATURES:
     BOOTCAMP = 'bootcamp'
     IN_BATTLE_COMMUNICATION = 'ibc'
+    NEW_YEAR = 'ny'
     ALL = [
-     BOOTCAMP, IN_BATTLE_COMMUNICATION]
+     BOOTCAMP, IN_BATTLE_COMMUNICATION, NEW_YEAR]
 
 
 KEYS_MAPPING = {0: 'Left Mouse Button', 

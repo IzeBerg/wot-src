@@ -3,9 +3,10 @@ from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.impl import backport
 from gui.impl.gen import R
 from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_rewards_vehicle_model import ArmoryYardRewardsVehicleModel
-from armory_yard_constants import isArmoryYardCurrencyToken, FEATURE_NAME_BASE
+from armory_yard_constants import isArmoryYardBattleToken, FEATURE_NAME_BASE
 from gui.impl.backport import createTooltipData, TooltipData
 from gui.impl.gen.view_models.common.missions.bonuses.bonus_model import BonusModel
+from gui.battle_pass.battle_pass_bonuses_packers import TmanTemplateBonusPacker
 from gui.shared.gui_items.Vehicle import getNationLessName
 from gui.shared.missions.packers.bonus import getDefaultBonusPackersMap, BaseBonusUIPacker, BonusUIPacker, BACKPORT_TOOLTIP_CONTENT_ID, TokenBonusUIPacker, SimpleBonusUIPacker, VehiclesBonusUIPacker
 from items.vehicles import getVehicleClassFromVehicleType
@@ -31,7 +32,7 @@ class ArmoryYardTokenBonusUIPacker(TokenBonusUIPacker):
 
     @classmethod
     def _getTokenBonusType(cls, tokenID, complexToken):
-        if isArmoryYardCurrencyToken(tokenID):
+        if isArmoryYardBattleToken(tokenID):
             return FEATURE_NAME_BASE
         return super(ArmoryYardTokenBonusUIPacker, cls)._getTokenBonusType(tokenID, complexToken)
 
@@ -92,6 +93,7 @@ def getArmoryYardBonusPackersMap():
     packersMap = getDefaultBonusPackersMap()
     packersMap.update({'vehicles': ArmoryYardMainVehiclesBonusUIPacker, 
        'battleToken': ArmoryYardTokenBonusUIPacker, 
+       'tmanToken': TmanTemplateBonusPacker, 
        PREMIUM_ENTITLEMENTS.PLUS: ArmoryYardPremiumDaysPacker})
     return packersMap
 

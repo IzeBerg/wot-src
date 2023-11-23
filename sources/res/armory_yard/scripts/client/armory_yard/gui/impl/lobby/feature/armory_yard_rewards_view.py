@@ -17,10 +17,12 @@ from gui.shared.gui_items import GUI_ITEM_TYPE
 from helpers import dependency
 from skeletons.gui.game_control import IArmoryYardController
 from skeletons.gui.shared import IItemsCache
+from gui.shared import g_eventBus, EVENT_BUS_SCOPE
+from gui.shared.events import LobbySimpleEvent
 
 class ArmoryYardRewardsView(ViewImpl):
     __itemsCache = dependency.descriptor(IItemsCache)
-    __armoryYard = dependency.descriptor(IArmoryYardController)
+    __armoryYardCtrl = dependency.descriptor(IArmoryYardController)
     __slots__ = ('__tooltipData', '__rawBonuses', '__mainBonuses', '__vehicles', '__state',
                  '__closeCallback', '__stages', '__bonuses')
 
@@ -70,9 +72,10 @@ class ArmoryYardRewardsView(ViewImpl):
         return self.__tooltipData.get(index, None)
 
     def onClose(self):
-        self.destroyWindow()
+        g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.NOTIFY_CURSOR_OVER_3DSCENE, ctx={'isOver3dScene': True}), EVENT_BUS_SCOPE.GLOBAL)
         if self.__closeCallback is not None:
             self.__closeCallback()
+        self.destroyWindow()
         return
 
     def onShowVehicle(self):
@@ -91,6 +94,7 @@ class ArmoryYardRewardsView(ViewImpl):
 
     def _onLoading(self, *args, **kwargs):
         super(ArmoryYardRewardsView, self)._onLoading(*args, **kwargs)
+        g_eventBus.handleEvent(LobbySimpleEvent(LobbySimpleEvent.NOTIFY_CURSOR_OVER_3DSCENE, ctx={'isOver3dScene': False}), EVENT_BUS_SCOPE.GLOBAL)
         with self.viewModel.transaction() as (vm):
             vm.setState(self.__state)
             vm.setStages(self.__stages)
@@ -105,8 +109,8 @@ class ArmoryYardRewardsView(ViewImpl):
           self.viewModel.onClose, self.onClose),
          (
           self.viewModel.onShowVehicle, self.onShowVehicle)]
-        if self.__armoryYard.isActive():
-            events.append((self.__armoryYard.onProgressUpdated, self.__onProgressUpdated))
+        if self.__armoryYardCtrl.isActive():
+            events.append((self.__armoryYardCtrl.onProgressUpdated, self.__onProgressUpdated))
         return tuple(events)
 
     def _finalize(self):
@@ -137,9 +141,9 @@ class ArmoryYardRewardsView(ViewImpl):
         self.getViewModel().setHasAllRewards(self.__hasAllRewards())
 
     def __hasAllRewards(self):
-        hasAllSimpleReward = self.__armoryYard.getProgressionLevel() >= self.__armoryYard.getTotalSteps() - 1
-        hasAllToken = self.__armoryYard.getCurrencyTokenCount() == self.__armoryYard.getTotalSteps()
-        return self.__armoryYard.isActive() and hasAllSimpleReward and hasAllToken
+        hasAllSimpleReward = self.__armoryYardCtrl.getProgressionLevel() >= self.__armoryYardCtrl.getTotalSteps() - 1
+        hasAllToken = self.__armoryYardCtrl.getCurrencyTokenCount() == self.__armoryYardCtrl.getTotalSteps()
+        return self.__armoryYardCtrl.isActive() and hasAllSimpleReward and hasAllToken
 
 
 class ArmoryYardRewardsWindow(LobbyWindow):

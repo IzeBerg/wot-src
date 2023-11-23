@@ -101,6 +101,7 @@ class HangarCameraManager(CGF.ComponentManager):
         self.__mouseMoveParams = _MouseMoveParams()
         self.__flightParams = _FlightParams()
         self.__minDist = None
+        self.__allowedSetMinDist = True
         self.__prevHorizontalFov = None
         self.__currentHorizontalFov = None
         self.__customFov = False
@@ -273,11 +274,16 @@ class HangarCameraManager(CGF.ComponentManager):
             self.__customizationHelper.setDOFparams(*dofParams)
         self.__customizationHelper.setDOFenabled(enabled)
 
+    def allowSetMinDist(self, enable):
+        self.__allowedSetMinDist = enable
+
     def setMinDist(self, value):
-        if not self.__isActive or self.__cameraName is None:
-            self.__minDist = value
+        if not self.__allowedSetMinDist:
             return
         else:
+            if not self.__isActive or self.__cameraName is None:
+                self.__minDist = value
+                return
             self.__mouseMoveParams.distConstraints[0] = min(value, self.__mouseMoveParams.distConstraints[1])
             self.__mouseMoveParams.updateLength()
             dist = math_utils.clamp(self.__mouseMoveParams.distConstraints[0], self.__mouseMoveParams.distConstraints[1], self.__cam.pivotMaxDist)

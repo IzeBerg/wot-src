@@ -112,7 +112,8 @@ class View(PyObjectEntity, typing.Generic[TViewModel]):
 
     @property
     def layer(self):
-        _logger.warning('Use window.layer() instead of view.layer(). Window %r. View %r', self.getWindow(), self)
+        if self.getWindow() is not None:
+            _logger.warning('Use window.layer() instead of view.layer(). Window %r. View %r', self.getWindow(), self)
         if self.proxy is not None:
             return ViewFlags.getViewType(self.proxy.viewFlags)
         else:

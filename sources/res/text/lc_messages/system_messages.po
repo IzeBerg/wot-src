@@ -1407,16 +1407,18 @@ msgid "daily_xp_bonus/switch_on/title"
 msgstr "Управляемый бонус к опыту снова доступен"
 
 msgid "debutBoxes/disabled/body"
-msgstr "Особая поддержка временно недоступна. Ждём новых поставок."
+msgstr ""
+"Задачи временно недоступны.\n"
+"Ждём новые поставки."
 
 msgid "debutBoxes/disabled/header"
-msgstr "Особая поддержка"
+msgstr "«Наши победы»"
 
 msgid "debutBoxes/enabled/body"
 msgstr "Событие снова работает. Приносим извинения за причинённые неудобства."
 
 msgid "debutBoxes/enabled/header"
-msgstr "Особая поддержка"
+msgstr "«Наши победы»"
 
 msgid "demountKit_failed/switchedOff"
 msgstr ""
@@ -2288,13 +2290,13 @@ msgstr ""
 " в Мир&nbsp;кораблей"
 
 msgid "lootboxes/open/server_error"
-msgstr "Ошибка получения подарка: серверный сбой."
+msgstr "Ошибка открытия контейнера: серверный сбой."
 
 msgid "lootboxes/open/server_error/COOLDOWN"
-msgstr "Ошибка получения подарка: дождитесь завершения предыдущей операции."
+msgstr "Ошибка открытия контейнера: дождитесь завершения предыдущей операции."
 
 msgid "lootboxes/open/server_error/DISABLED"
-msgstr "Операция временно недоступна. Попробуйте позже."
+msgstr "Ошибка открытия контейнера: серверный сбой."
 
 msgid "mapbox/notification/primeTime"
 msgstr ""
@@ -2546,17 +2548,61 @@ msgstr "Ошибка смены комплектации"
 msgid "nation_change/success"
 msgstr "%(veh_name)s: Национальная комплектация изменена"
 
+msgid "newYear/applyVehicleDiscount/server_error"
+msgstr "Ошибка активации скидки на технику: серверный сбой."
+
+msgid "newYear/applyVehicleDiscount/server_error/alreadyActive"
+msgstr "Ошибка активации скидки: скидка на данную машину уже активирована."
+
+msgid "newYear/applyVehicleDiscount/server_error/alreadyBought"
+msgstr "Ошибка активации скидки на технику: машина уже куплена."
+
+msgid "newYear/applyVehicleDiscount/server_error/noDiscountForVehicle"
+msgstr "Ошибка активации скидки: скидка на данную машину не найдена."
+
+msgid "newYear/applyVehicleDiscount/server_error/noDiscounts"
+msgstr "Ошибка активации скидки на технику: скидок не найдено."
+
+msgid "newYear/applyVehicleDiscount/success"
+msgstr "Вы активировали %(discount)s%% скидку на %(vehName)s"
+
+msgid "newYear/breakToys/server_error"
+msgstr "Ошибка разбития украшений: серверный сбой."
+
+msgid "newYear/buyCollection/server_error"
+msgstr "Ошибка покупки коллекции: серверный сбой."
+
+msgid "newYear/buyMegaToy/server_error"
+msgstr "Ошибка покупки большого украшения: серверный сбой."
+
+msgid "newYear/buyToy/server_error"
+msgstr "Ошибка покупки украшения: серверный сбой."
+
+msgid "newYear/craftToy/server_error"
+msgstr "Ошибка создания украшения: серверный сбой."
+
+msgid "newYear/hangToy/server_error"
+msgstr "Ошибка размещения украшения: серверный сбой."
+
+msgid "newYear/resetLootboxStatistics/server_error"
+msgstr ""
+"Сбросить статистику не удалось, попробуйте ещё раз сейчас или немного позже."
+" Мы постараемся устранить проблему."
+
+msgid "newYear/resetLootboxStatistics/server_error/header"
+msgstr "Не сработало..."
+
+msgid "newYear/setVehicleBranch/server_error"
+msgstr "Ошибка установки в слот: серверный сбой."
+
+msgid "newYear/setVehicleBranchSlotBonus/server_error"
+msgstr "Ошибка изменения бонуса: серверный сбой."
+
 msgid "notrecruit_window/success"
 msgstr ""
 "Член экипажа рекрутирован.\n"
 "%(colorTagOpen)s%(rank)s %(fullName)s\n"
 "(%(role)s, %(vehicleName)s, %(roleLevel)d%%)%(colorTagClose)s"
-
-msgid "offers/server_error/COOLDOWN"
-msgstr "Ошибка получения подарка: дождитесь завершения предыдущей операции."
-
-msgid "offers/server_error/DISABLED"
-msgstr "Операция временно недоступна. Попробуйте позже."
 
 msgid "offers/server_error/EXCEPTION"
 msgstr "Ошибка получения подарка: серверный сбой"
