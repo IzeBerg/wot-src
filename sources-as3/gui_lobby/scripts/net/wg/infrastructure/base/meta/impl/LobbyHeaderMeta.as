@@ -226,14 +226,14 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      public final function as_updateSquad(param1:Boolean, param2:String, param3:String, param4:Boolean, param5:String, param6:Boolean, param7:String, param8:Object) : void
+      public final function as_updateSquad(param1:Boolean, param2:String, param3:String, param4:Boolean, param5:String, param6:Boolean, param7:Object) : void
       {
-         var _loc9_:ExtendedSquadInfoVo = this._extendedSquadInfoVo;
-         this._extendedSquadInfoVo = new ExtendedSquadInfoVo(param8);
-         this.updateSquad(param1,param2,param3,param4,param5,param6,param7,this._extendedSquadInfoVo);
-         if(_loc9_)
+         var _loc8_:ExtendedSquadInfoVo = this._extendedSquadInfoVo;
+         this._extendedSquadInfoVo = new ExtendedSquadInfoVo(param7);
+         this.updateSquad(param1,param2,param3,param4,param5,param6,this._extendedSquadInfoVo);
+         if(_loc8_)
          {
-            _loc9_.dispose();
+            _loc8_.dispose();
          }
       }
       
@@ -329,11 +329,11 @@ package net.wg.infrastructure.base.meta.impl
          throw new AbstractException(_loc3_);
       }
       
-      protected function updateSquad(param1:Boolean, param2:String, param3:String, param4:Boolean, param5:String, param6:Boolean, param7:String, param8:ExtendedSquadInfoVo) : void
+      protected function updateSquad(param1:Boolean, param2:String, param3:String, param4:Boolean, param5:String, param6:Boolean, param7:ExtendedSquadInfoVo) : void
       {
-         var _loc9_:String = "as_updateSquad" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc9_);
-         throw new AbstractException(_loc9_);
+         var _loc8_:String = "as_updateSquad" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc8_);
+         throw new AbstractException(_loc8_);
       }
       
       protected function nameResponse(param1:AccountDataVo) : void

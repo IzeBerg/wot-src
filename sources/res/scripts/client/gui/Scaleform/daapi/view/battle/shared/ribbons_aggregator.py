@@ -30,9 +30,6 @@ class _Ribbon(object):
     def createFromFeedbackEvent(cls, ribbonID, event):
         raise NotImplementedError
 
-    def getFormatter(self):
-        return
-
     def getType(self):
         raise NotImplementedError
 
@@ -983,14 +980,14 @@ def _isRoleBonus(event):
     return getattr(event.getExtra(), 'isRoleAction', lambda : False)()
 
 
-def _createRibbonFromPlayerFeedbackEvent(aggregator, ribbonID, event):
+def _createRibbonFromPlayerFeedbackEvent(ribbonID, event):
     etype = event.getType()
-    if etype in aggregator.FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY:
-        factory = aggregator.FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY[etype]
+    if etype in _FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY:
+        factory = _FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY[etype]
         ribbonCls = factory.getRibbonClass(event)
         if ribbonCls is not None:
             return ribbonCls.createFromFeedbackEvent(ribbonID, event)
-    if etype not in aggregator.FEEDBACK_EVENTS_TO_IGNORE:
+    if etype not in _FEEDBACK_EVENTS_TO_IGNORE:
         _logger.error('Could not find a proper ribbon class associated with the given feedback event %s', event)
     return
 
@@ -1058,9 +1055,6 @@ class _RibbonsCache(object):
 
 class RibbonsAggregator(object):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
-    FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY = _FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY
-    FEEDBACK_EVENTS_TO_IGNORE = _FEEDBACK_EVENTS_TO_IGNORE
-    RIBBON_TYPES_AGGREGATED_WITH_KILL_RIBBON = _RIBBON_TYPES_AGGREGATED_WITH_KILL_RIBBON
 
     def __init__(self):
         super(RibbonsAggregator, self).__init__()
@@ -1142,7 +1136,7 @@ class RibbonsAggregator(object):
         self._aggregateRibbons([_PerkRibbon.createFromFeedbackEvent(self.__idGenerator.next(), perkData)])
 
     def _onPlayerFeedbackReceived(self, events):
-        self._aggregateRibbons(list(_createRibbonFromPlayerFeedbackEvent(self, self.__idGenerator.next(), e) for e in events))
+        self._aggregateRibbons(list(_createRibbonFromPlayerFeedbackEvent(self.__idGenerator.next(), e) for e in events))
 
     def _aggregateRibbons(self, ribbons):
         aggregatedRibbons = {}
@@ -1212,7 +1206,7 @@ class RibbonsAggregator(object):
 
         if BATTLE_EFFICIENCY_TYPES.DESTRUCTION in ribbons:
             killRibbons = dict((r.getVehicleID(), r) for r in ribbons[BATTLE_EFFICIENCY_TYPES.DESTRUCTION])
-            damageRibbons = dict((t, ribbons[t]) for t in self.RIBBON_TYPES_AGGREGATED_WITH_KILL_RIBBON if t in ribbons)
+            damageRibbons = dict((t, ribbons[t]) for t in _RIBBON_TYPES_AGGREGATED_WITH_KILL_RIBBON if t in ribbons)
             for rType, tmpRibbons in damageRibbons.iteritems():
                 filteredRibbons = []
                 for tmpRibbon in tmpRibbons:

@@ -380,19 +380,28 @@ class GiftSystemAccessor(BaseAccessor):
         return self._data_source.post_gift_system_gift(callback, entitlementCode, receiverID, metaInfo)
 
 
+class FriendsAccessor(BaseAccessor):
+
+    def get_friend_balance(self, callback, spaId):
+        return self._data_source.get_friend_balance(callback, spaId)
+
+    def get_friend_list(self, callback):
+        return self._data_source.get_friend_list(callback)
+
+    def put_best_friend(self, callback, spaId):
+        return self._data_source.put_best_friend(callback, spaId)
+
+    def delete_best_friend(self, callback, spaId):
+        return self._data_source.delete_best_friend(callback, spaId)
+
+    def post_gather_friend_ny_resources(self, callback, spaId):
+        return self._data_source.post_gather_friend_ny_resources(callback, spaId)
+
+
 class UILoggingAccessor(BaseAccessor):
 
     def get_uilogging_session(self, callback):
         return self._data_source.get_uilogging_session(callback)
-
-
-class WinBackCallAccessor(BaseAccessor):
-
-    def get_win_back_call_friend_list(self, callback):
-        return self._data_source.get_win_back_call_friend_list(callback)
-
-    def win_back_call_send_invite_code(self, callback, spaId):
-        return self._data_source.win_back_call_send_invite_code(callback, spaId)
 
 
 class Requester(object):
@@ -415,8 +424,8 @@ class Requester(object):
     craftmachine = RequestDescriptor(CrafmachineAccessor)
     mapbox = RequestDescriptor(MapboxAccessor)
     gifts = RequestDescriptor(GiftSystemAccessor)
+    friends = RequestDescriptor(FriendsAccessor)
     uilogging = RequestDescriptor(UILoggingAccessor)
-    win_back_call = RequestDescriptor(WinBackCallAccessor)
 
     @classmethod
     def create_requester(cls, url_fetcher, config, client_lang=None, user_agent=None):

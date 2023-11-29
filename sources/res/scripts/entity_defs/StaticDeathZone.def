@@ -11,6 +11,10 @@
 			<Type>BOOL</Type>
 			<Flags>ALL_CLIENTS</Flags>
 		</isActive>
+		<deathzone_size>
+			<Type>VECTOR3</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</deathzone_size>
 		<vehiclesUnderFire>
 			<Type>
 				ARRAY
@@ -18,16 +22,6 @@
 			</Type>
 			<Flags>ALL_CLIENTS</Flags>
 		</vehiclesUnderFire>
-		<maskingPolygonsCount>
-			<Type>UINT8</Type>
-			<Flags>ALL_CLIENTS</Flags>
-		</maskingPolygonsCount>
-		<proximityMarkerStyle>
-			<Type>STRING</Type>
-			<Flags>ALL_CLIENTS</Flags>
-			<Editable>True</Editable>
-			<Default>STATIC_DEATH_ZONE_PROXIMITY</Default>
-		</proximityMarkerStyle>
 	</Properties>
 	<ClientMethods>
 		<onDeathZoneDamage>

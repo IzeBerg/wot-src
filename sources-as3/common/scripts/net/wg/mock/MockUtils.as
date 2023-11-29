@@ -1,5 +1,6 @@
 package net.wg.mock
 {
+   import flash.display.DisplayObjectContainer;
    import flash.events.Event;
    import net.wg.infrastructure.interfaces.IImageUrlProperties;
    import net.wg.infrastructure.interfaces.IStrCaseProperties;
@@ -189,6 +190,11 @@ package net.wg.mock
             "x":0,
             "y":0
          };
+      }
+      
+      public function getObjectsUnderPoint(param1:DisplayObjectContainer, param2:Number, param3:Number) : Array
+      {
+         return [];
       }
       
       public function getWeekDayNamesS(param1:Boolean = true, param2:Boolean = false, param3:Boolean = false) : Array

@@ -104,7 +104,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          {
             return;
          }
-         var _loc3_:String = this.getActionRendererLinkage(param1);
+         var _loc3_:String = ACTION_RENDERER_MAP[param1];
          if(_loc3_ != Values.EMPTY_STR)
          {
             this._isVisible = true;
@@ -162,11 +162,6 @@ package net.wg.gui.battle.views.vehicleMarkers
             this._actionIconStateMarker.gotoAndStop(ActionMarkerStates.STATE_INT_TO_STRING[param1]);
             this._lastState = param1;
          }
-      }
-      
-      protected function getActionRendererLinkage(param1:String) : String
-      {
-         return ACTION_RENDERER_MAP[param1];
       }
       
       private function removeActionRenderer() : void

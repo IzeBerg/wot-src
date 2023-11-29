@@ -90,7 +90,7 @@ package net.wg.mock
       {
       }
       
-      public function setWindowPosition(param1:IViewWrapper, param2:int, param3:int) : void
+      public function setWindowPosition(param1:IViewWrapper, param2:Number, param3:Number) : void
       {
       }
       

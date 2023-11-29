@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>carousel_02_boat_01_jnt</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>carousel_02_boat_01_seat_01_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.796285 -5.200740 0.762208</row3>
+				</transform>
+				<node>
+					<identifier>carousel_02_boat_01_seat_01_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.796285 5.200740 -0.762208</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>carousel_02_boat_01_seat_02_jnt</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>-0.600851 -5.200740 0.757477</row3>
+				</transform>
+				<node>
+					<identifier>carousel_02_boat_01_seat_02_jnt_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>0.600851 5.200740 -0.757477</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>carousel_02_boat_01_jnt_BlendBone</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 -1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>carousel_02_boat_01_jnt_BlendBone</node>
+		<node>carousel_02_boat_01_seat_01_jnt_BlendBone</node>
+		<node>carousel_02_boat_01_seat_02_jnt_BlendBone</node>
+		<geometry>
+			<vertices>s0_01Shape.vertices</vertices>
+			<primitive>s0_01Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd12_skinned</identifier>
+					<fx>shaders/std_effects/PBS_ext_skinned.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Attraction/NY22_Attraction_02_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Attraction/NY22_Attraction_02_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Attraction/NY22_Attraction_02_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.003057 -2.859014 -0.756227</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-5.766910 -5.807332 -0.053803</min>
+		<max>5.766365 0.094658 1.574963</max>
+	</boundingBox>
+	<geometrySize>21556</geometrySize>
+	<minUVDensity>0.001242</minUVDensity>
+</root>

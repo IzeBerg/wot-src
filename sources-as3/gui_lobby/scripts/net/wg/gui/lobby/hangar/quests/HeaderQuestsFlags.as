@@ -87,6 +87,8 @@ package net.wg.gui.lobby.hangar.quests
       
       private var _offsetRightSideX:Number = 0;
       
+      private var _offsetLeftSideX:Number = 0;
+      
       private var _disableItem:DisplayObject = null;
       
       private var _isMoveContainerInProgress:Boolean = false;
@@ -527,7 +529,7 @@ package net.wg.gui.lobby.hangar.quests
          var _loc5_:IHeaderQuestsContainer = null;
          var _loc1_:int = this.entryPointWidth + this.entryPointMarginRight + this.entryPointMarginLeft;
          var _loc2_:int = _loc1_ + 2 * QUESTS_GROUP_OFFSET;
-         var _loc3_:int = Boolean(this._entryPoint) ? int(-(_loc1_ >> 1)) : int(0);
+         var _loc3_:int = Boolean(this._entryPoint) ? int(-(_loc1_ >> 1)) : (this._questsGroupsContainers && this._questsGroupsContainers.length > 0 ? int(this._questsGroupsContainers[0].x) : int(0));
          var _loc4_:Point = null;
          for each(_loc5_ in this._questsGroupsContainers)
          {
@@ -718,7 +720,7 @@ package net.wg.gui.lobby.hangar.quests
             _loc3_ = !!this._isSmall ? int(SECONDARY_MARGIN_LEFT_SMALL) : int(SECONDARY_MARGIN_LEFT);
             return this._secondaryEntryPointLeft.position.x - (param1 >> 1) - _loc3_ | 0;
          }
-         var _loc2_:int = QUESTS_GROUP_OFFSET + (!!this._isSmall ? LEFT_SIDE_GROUP_X_OFFSET_SMALL : LEFT_SIDE_GROUP_X_OFFSET);
+         var _loc2_:int = QUESTS_GROUP_OFFSET - this._offsetLeftSideX + (!!this._isSmall ? LEFT_SIDE_GROUP_X_OFFSET_SMALL : LEFT_SIDE_GROUP_X_OFFSET);
          return -((this.entryPointWidth >> 1) + (param1 >> 1) + this.entryPointMarginLeft + _loc2_);
       }
       
@@ -744,6 +746,12 @@ package net.wg.gui.lobby.hangar.quests
       public function set offsetRightSideX(param1:Number) : void
       {
          this._offsetRightSideX = param1;
+         invalidateSize();
+      }
+      
+      public function set offsetLeftSideX(param1:Number) : void
+      {
+         this._offsetLeftSideX = param1;
          invalidateSize();
       }
       

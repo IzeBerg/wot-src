@@ -1,4 +1,4 @@
-import BattleReplay
+import logging, BattleReplay
 from account_helpers.settings_core import settings_constants
 from account_helpers.settings_core.options import BattleLoadingTipSetting
 from helpers import dependency
@@ -13,6 +13,7 @@ from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 _bBattleReplayLoadingShowed = False
+_logger = logging.getLogger(__name__)
 
 def _setBattleLoading(value):
     global _bBattleReplayLoadingShowed

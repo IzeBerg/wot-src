@@ -39,22 +39,6 @@ class MarkersManager(ExternalFlashComponent, VehicleMarkersManagerMeta, plugins.
         return
 
     @property
-    def markerIds(self):
-        return self.__ids
-
-    @property
-    def canvas(self):
-        return self.__canvas
-
-    @property
-    def isIBCEnabled(self):
-        return self.__isIBCEnabled
-
-    @property
-    def isStickyEnabled(self):
-        return self.__isStickyEnabled
-
-    @property
     def _isMarkerHoveringEnabled(self):
         sessionProvider = dependency.instance(IBattleSessionProvider)
         arenaVisitor = sessionProvider.arenaVisitor
@@ -180,7 +164,7 @@ class MarkersManager(ExternalFlashComponent, VehicleMarkersManagerMeta, plugins.
                     continue
                 targetID = plugin.getTargetIDFromMarkerID(aimedAtMarkerID)
                 if targetID > -1:
-                    return (targetID, plugin.getMarkerType(aimedAtMarkerID), plugin.getMarkerSubtype(targetID))
+                    return (targetID, plugin.getMarkerType(), plugin.getMarkerSubtype(targetID))
 
             return (
              INVALID_MARKER_ID, MarkerType.INVALID_MARKER_TYPE, INVALID_MARKER_SUBTYPE)
@@ -231,11 +215,6 @@ class MarkersManager(ExternalFlashComponent, VehicleMarkersManagerMeta, plugins.
         setup['map_zones'] = MapZonesPlugin
         return setup
 
-    def _updateMarkerStickyState(self, isSticky):
-        if not isSticky:
-            for markerId in self.__ids:
-                self.__canvas.markerSetSticky(markerId, False)
-
     def __addCanvas(self, sessionProvider, arenaVisitor):
         self.__canvas = self._createCanvas(arenaVisitor)
         self.__canvas.script = self
@@ -285,7 +264,10 @@ class MarkersManager(ExternalFlashComponent, VehicleMarkersManagerMeta, plugins.
         if newIBCEnabled != self.__isIBCEnabled:
             self.__isIBCEnabled = newIBCEnabled
             self.__canvas.enableMarkerHovering = self._isMarkerHoveringEnabled
-        self._updateMarkerStickyState(newIsSticky)
+        if not newIsSticky:
+            for markerId in self.__ids:
+                self.__canvas.markerSetSticky(markerId, False)
+
         if newShowBaseMarkers != self.__showBaseMarkers:
             self.__setPlugin(pluginName='teamAndControlPoints', startPlugin=newShowBaseMarkers)
             self.__showBaseMarkers = newShowBaseMarkers

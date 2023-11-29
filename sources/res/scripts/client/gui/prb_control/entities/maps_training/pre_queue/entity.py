@@ -1,7 +1,6 @@
 import BigWorld
 from constants import QUEUE_TYPE
 from debug_utils import LOG_DEBUG
-from gui.Scaleform.daapi.view.lobby.header.fight_btn_tooltips import getMapsTrainingTooltipData
 from gui.prb_control.entities.base.pre_queue.entity import PreQueueEntity, PreQueueEntryPoint, PreQueueSubscriber
 from gui.prb_control.entities.maps_training.pre_queue.actions_validator import MapsTrainingActionsValidator
 from gui.prb_control.entities.maps_training.pre_queue.ctx import MapsTrainingQueueCtx
@@ -52,11 +51,6 @@ class MapsTrainingEntity(PreQueueEntity):
 
     def getPermissions(self, pID=None, **kwargs):
         return MapsTrainingPermissions(self.isInQueue())
-
-    def getFightBtnTooltipData(self, isStateDisabled):
-        if isStateDisabled:
-            return (getMapsTrainingTooltipData(), False)
-        return super(MapsTrainingEntity, self).getFightBtnTooltipData(isStateDisabled)
 
     def _doQueue(self, ctx):
         BigWorld.player().enqueueMapsTraininig(ctx.getSelectedMap(), ctx.getSelectedVehicle(), ctx.getSelectedTeam())

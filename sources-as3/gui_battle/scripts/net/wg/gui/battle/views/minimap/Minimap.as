@@ -166,7 +166,7 @@ package net.wg.gui.battle.views.minimap
       
       override public function getMessageCoordinate() : Number
       {
-         return initedHeight - this.currentTopLeftPoint.y + messageCoordinateOffset;
+         return initedHeight - this.currentTopLeftPoint.y;
       }
       
       override public function getMinimapRectBySizeIndex(param1:int) : Rectangle

@@ -318,7 +318,9 @@ class BattlePassEntryPointView(ViewImpl, BaseBattlePassEntryPointView):
             tx.setAnimState(self.__getAnimationState())
             tx.setIsFirstShow(_g_entryLastState.isFirstShow)
             if not self.__battlePass.isGameModeEnabled(self._getCurrentArenaBonusType()):
-                tx.setBattleType(getPreQueueName(self._getQueueType(), True))
+                queueType = self._getQueueType()
+                if queueType:
+                    tx.setBattleType(getPreQueueName(queueType, True))
         self._saveLastState(isNotChosenRewardCount)
 
     def __getAnimationState(self):

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Coal_Pile</name>
+		<type>model</type>
+		<resource>content/Environment/envF_005_FactoryCharcoal/normal/lod0/envF_005_FactoryCharcoal_01.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>2.400757 -1.672083 1.535278</value>
+				<inTangent>-1.464005 1.223631 -2.451904</inTangent>
+				<outTangent>-2.400757 1.672083 -1.535278</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>-0.556525 0.414660 -0.572193</inTangent>
+				<outTangent>-0.556525 0.414660 -0.572193</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.500000 1.000000 0.500000</value>
+				<inTangent>1.110329 0.000000 1.179037</inTangent>
+				<outTangent>1.110329 0.000000 1.179037</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.199997 -0.000000 0.192506</inTangent>
+				<outTangent>0.199997 -0.000000 0.192506</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Eff</name>
+		<type>particle</type>
+		<resource>particles/Environment/random_events/04_himmelsdorf_wagon_spilled_coal.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>1.000000</duration>
+				<value>Coal_Pile|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.767105 3.744027 1.378311</value>
+				<inTangent>-0.361648 -0.346756 -2.216736</inTangent>
+				<outTangent>-0.361648 -0.346756 -2.216736</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.405457 3.397271 -0.838425</value>
+				<inTangent>-0.361648 -0.346756 -2.216736</inTangent>
+				<outTangent>-0.361648 -0.346756 -2.216736</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>12.282507 94.301910 -89.260544</value>
+				<inTangent>368.474335 -1108.375732 -2677.815674</inTangent>
+				<outTangent>368.474335 -1108.375732 -2677.815674</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>29.999998</inTangent>
+				<outTangent>29.999998</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.000000</value>
+				<inTangent>14.999999</inTangent>
+				<outTangent>14.999999</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.966667</startTime>
+				<value>1.000000</value>
+				<inTangent>-15.000014</inTangent>
+				<outTangent>-15.000014</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>-30.000029</inTangent>
+				<outTangent>-30.000029</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

@@ -16,9 +16,9 @@ from gui.battle_results import RequestEmblemContext, EMBLEM_TYPE
 from gui.battle_results.settings import PROGRESS_ACTION
 from gui.prb_control.dispatcher import g_prbLoader
 from gui.prestige.prestige_helpers import showPrestigeVehicleStats
-from gui.prb_control.entities.listener import IGlobalListener
 from gui.server_events import events_dispatcher as quests_events
 from gui.server_events.events_helpers import isC11nQuest
+from gui.server_events.events_helpers import isCelebrityQuest
 from gui.shared import event_bus_handlers, events, EVENT_BUS_SCOPE, g_eventBus
 from gui.shared import event_dispatcher
 from gui.shared.event_dispatcher import showProgressiveRewardWindow, showShop
@@ -30,6 +30,7 @@ from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.game_control import IGameSessionController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
+from skeletons.new_year import INewYearController
 from soft_exception import SoftException
 _logger = logging.getLogger(__name__)
 
@@ -37,7 +38,7 @@ def _wrapEmblemUrl(emblemUrl):
     return makeHtmlString('html_templates:lobby/battleResult', 'emblemUrl', {'url': emblemUrl})
 
 
-class BattleResultsWindow(BattleResultsMeta, IGlobalListener):
+class BattleResultsWindow(BattleResultsMeta):
     __battleResults = dependency.descriptor(IBattleResultsService)
     __lobbyContext = dependency.descriptor(ILobbyContext)
     __gameSession = dependency.descriptor(IGameSessionController)
@@ -82,6 +83,11 @@ class BattleResultsWindow(BattleResultsMeta, IGlobalListener):
                 lobbyHeaderNavigationPossible = yield self.__lobbyContext.isHeaderNavigationPossible()
                 if not lobbyHeaderNavigationPossible:
                     return
+            if isCelebrityQuest(eID):
+                _nyController = dependency.instance(INewYearController)
+                if not _nyController.isEnabled():
+                    _nyController.showStateMessage()
+                    return
             quests_events.showMission(eID, eventType)
             self.destroy()
         return
@@ -123,10 +129,6 @@ class BattleResultsWindow(BattleResultsMeta, IGlobalListener):
     def onAppliedPremiumBonus(self):
         self.__battleResults.applyAdditionalBonus(self.__arenaUniqueID)
 
-    def onPrbEntitySwitched(self):
-        super(BattleResultsWindow, self).onPrbEntitySwitched()
-        self.__updateVO()
-
     def onShowDetailsPremium(self):
         if self.__canNavigate():
             url = getBuyPremiumUrl()
@@ -144,7 +146,6 @@ class BattleResultsWindow(BattleResultsMeta, IGlobalListener):
            'cache.vehsLock': self.__updateVO})
         self.__gameSession.onPremiumTypeChanged += self.__onPremiumStateChanged
         self.__lobbyContext.getServerSettings().onServerSettingsChange += self.__onServerSettingsChange
-        self.startGlobalListening()
         if self.__battleResults.areResultsPosted(self.__arenaUniqueID):
             self.__setBattleResults()
 
@@ -155,8 +156,6 @@ class BattleResultsWindow(BattleResultsMeta, IGlobalListener):
         g_clientUpdateManager.removeObjectCallbacks(self)
         self.__gameSession.onPremiumTypeChanged -= self.__onPremiumStateChanged
         self.__lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingsChange
-        self.stopGlobalListening()
-        super(BattleResultsWindow, self)._dispose()
 
     def __loadViewHandler(self, event):
         if event.alias == VIEW_ALIAS.BATTLE_QUEUE:

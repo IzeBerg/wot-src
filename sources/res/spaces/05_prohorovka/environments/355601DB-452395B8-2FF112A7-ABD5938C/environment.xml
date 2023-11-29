@@ -165,7 +165,11 @@
 	</cloudsShadow>
 	<PBS>
 		<ForwardSHMultiplier>1.000000</ForwardSHMultiplier>
+		<flakesEnabled>false</flakesEnabled>
 		<flakesDensityThreshold>0.800000</flakesDensityThreshold>
+		<flakesUvScale>0.800000</flakesUvScale>
+		<flakesGloss>0.890000</flakesGloss>
+		<flakesSurfNormalNoiseWeight>0.100000</flakesSurfNormalNoiseWeight>
 	</PBS>
 	<Weather>
 		<wind>
@@ -176,11 +180,13 @@
 	<overlayMaterial>
 		<enable>false</enable>
 		<applyOnVehicles>false</applyOnVehicles>
+		<colorTintMap/>
 	</overlayMaterial>
 	<day_night_cycle>
 		<forward>
 			<angle>43.259998</angle>
 			<angleZ>253.940002</angleZ>
+			<angleShadow>43.259998</angleShadow>
 		</forward>
 		<deferred>
 			<angle>46.259998</angle>
@@ -202,10 +208,7 @@
 	<dirt>
 		<normal>vehicles/russian/Tank_detail/Dirt3NM.dds</normal>
 		<configFile>maps/dirt_presets/dirt_preset_drymud.xml</configFile>
-		<color>
-			0.510000 0.430000 0.330000 0.05000
-			<!--BW_String-->
-		</color>
+		<color>0.510000 0.430000 0.330000 0.050000</color>
 		<enabled>true</enabled>
 	</dirt>
 	<SkyDome>
@@ -235,4 +238,12 @@
 		<waveMaskUVScale>0.250000</waveMaskUVScale>
 		<waveMaskSpeed>0.140000</waveMaskSpeed>
 	</Wetness>
+	<DOF>
+		<enable>false</enable>
+		<nearStart>2.000000</nearStart>
+		<nearDist>3.000000</nearDist>
+		<farStart>50.000000</farStart>
+		<farDist>20.000000</farDist>
+		<blurRadius>0.006000</blurRadius>
+	</DOF>
 </root>

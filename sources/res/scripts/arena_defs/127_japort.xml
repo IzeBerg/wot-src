@@ -4,7 +4,7 @@
 	<description>#arenas:127_japort/description</description>
 	<geometry>spaces/127_japort</geometry>
 	<estimatedLoad>
-		0.3
+		0.55
 		<!--BW_String-->
 	</estimatedLoad>
 	<boundingBox>
@@ -19,6 +19,13 @@
 	</boundingBox>
 	<roundLength>900</roundLength>
 	<minimap>spaces/127_japort/mmap.dds</minimap>
+	<minimapLayers>
+		<layer>
+			<layerId>layer1</layerId>
+			<layerType>base</layerType>
+			<path>spaces/127_japort/mmap_bunker_crash01_destroyed.dds</path>
+		</layer>
+	</minimapLayers>
 	<vehicleCamouflageKind>summer</vehicleCamouflageKind>
 	<maxPlayersInTeam>15</maxPlayersInTeam>
 	<wwmusicSetup>
@@ -32,6 +39,16 @@
 		<wwmusicResultDefeat>music_japort_result_defeat</wwmusicResultDefeat>
 	</wwmusicSetup>
 	<wwambientSound>ambient_wind_spring_01</wwambientSound>
+	<soundRemapping>
+		<loadBanks>
+			<bank>
+				<name>destructible_objects.bnk</name>
+			</bank>
+			<bank>
+				<name>destructible_objects.pck</name>
+			</bank>
+		</loadBanks>
+	</soundRemapping>
 	<water>
 		<texScale>0</texScale>
 		<freqX>0</freqX>

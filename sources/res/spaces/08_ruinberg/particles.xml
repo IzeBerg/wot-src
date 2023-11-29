@@ -1,6 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<forward>
+		<name>default</name>
+		<preload>
+			<shader>\data\shaders\ps_solid.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_leaves.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex_long.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/env_housesmoke_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_anti_aircraft_explosions.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_bomb_explosion.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_debris_meshes.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_hd_bld_EU_088_CrashWall_01_Destruction_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_hd_bld_eu_089_crashwall_01_destruction_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_hd_bld_eu_090_crashwall_01_destruction_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_hd_bld_eu_090_crashwall_01_destruction_02.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_plane_explosion.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_plane_fire_trail.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_plane_machinegun_shells.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_plane_smoke_trail.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_anti_aircraft_explosions_se.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/08_ruinberg_walls_dust_smoke.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/random_events/re_flare_red.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Scenarios/105_air_smoke_trail_dense.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/env_housesmoke_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_anti_aircraft_explosions.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_bomb_explosion.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_debris_meshes.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_hd_bld_EU_088_CrashWall_01_Destruction_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_hd_bld_eu_089_crashwall_01_destruction_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_hd_bld_eu_090_crashwall_01_destruction_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_hd_bld_eu_090_crashwall_01_destruction_02.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_plane_explosion.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_plane_fire_trail.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_plane_machinegun_shells.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_plane_smoke_trail.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_walls_dust_smoke.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/notification/re_flare_red.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/scenarios/105_air_smoke_trail_dense.eff</fn_effect_bin>
+		<preloadVisual>particles/mesh_particles/metal_plate_02.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/metal_plate_03.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/metal_stick.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_brick_01.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_brick_02.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_brick_03.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_concrete_02.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_concrete_03.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_light.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wood_board_03.visual</preloadVisual>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/hd_bld_UNI_006_KitCrashFactory_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/hd_bld_UNI_006_KitCrashFactory_Roof_03.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/inf_bld4502_fountainsmall.vfx</fn_effect_bin>
@@ -9,10 +111,11 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/inf_bld_UNI_000_Base_03.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/inf_bld_UNI_000_Base_04.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Buildings/inf_bld_UNI_000_Base_05.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/env_housesmoke_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/env_housesmoke_02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/08_ruinberg_fires_small.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/08_ruinberg_firesmoke.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/08_ruinberg_firesmoke_transparent.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/interior/99_poland_smoke_FireGrass_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_bld_UNI_006_KitCrashFactory_02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_112_11_AdvertisingCloset_03.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_015_AdvertisingPosters_02.vfx</fn_effect_bin>
@@ -21,6 +124,12 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_AM_015_AdvertisingPosters_05.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_EU_040_StreetLamp_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_EU_426_VeneraStatue.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_UNI_155_WoodDebris_02.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_UNI_155_WoodDebris_03.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_UNI_158_FurnitureCrush_02.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_UNI_158_FurnitureCrush_04.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_UNI_158_FurnitureCrush_05.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/hd_env_UNI_158_FurnitureCrush_06.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env005_Tun.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env029_Crypt_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env029_PolCross1.vfx</fn_effect_bin>
@@ -50,6 +159,7 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env_19_28_Fountain.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env_EU_040_StreetLamp_03.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env_EU_461_Umbrella.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env_UNI_622_FieldJunk_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_005_sign_fracture.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAM_005_sign_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envEU_009_TownEnv_flowerpot_01.vfx</fn_effect_bin>
@@ -131,10 +241,11 @@
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_03.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_04.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_05.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/env_housesmoke_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/env_housesmoke_02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/interior/08_ruinberg_fires_small.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/interior/08_ruinberg_firesmoke.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/08_ruinberg_firesmoke_transparent.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/99_poland_smoke_firegrass_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_bld_UNI_006_KitCrashFactory_02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env_112_11_AdvertisingCloset_03.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env_AM_015_AdvertisingPosters_02.eff</fn_effect_bin>
@@ -143,6 +254,12 @@
 		<fn_effect_bin>particles/Environment/objects/hd_env_AM_015_AdvertisingPosters_05.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env_EU_040_StreetLamp_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env_EU_426_VeneraStatue.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_155_wooddebris_02.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_155_wooddebris_03.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_158_furniturecrush_02.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_158_furniturecrush_04.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_158_furniturecrush_05.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_158_furniturecrush_06.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env005_Tun.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env029_Crypt_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env029_PolCross1.eff</fn_effect_bin>
@@ -171,6 +288,7 @@
 		<fn_effect_bin>particles/Environment/objects/inf_env_19_28_Fountain.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env_EU_040_StreetLamp_03.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env_EU_461_Umbrella.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_env_UNI_622_FieldJunk_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAM_005_sign_fracture.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAM_005_sign_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envEU_009_TownEnv_flowerpot_01.eff</fn_effect_bin>
@@ -241,13 +359,8 @@
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Maple_9m_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Poplar_3m_fall.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Poplar_3m_touchdown.eff</fn_effect_bin>
-		<preloadVisual>particles/mesh_particles/metal_stick.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/metal_tube_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_03.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_concrete_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_concrete_03.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_ground.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/tree_twig_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/tree_twig_02.visual</preloadVisual>
@@ -261,6 +374,122 @@
 		<preloadVisual>particles/mesh_particles/wood_stick_03.visual</preloadVisual>
 	</forward>
 	<deferred>
+		<name>default</name>
+		<preload>
+			<shader>\data\shaders\ps_solid.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water_displacement.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_water.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_foam.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_water.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_under_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_leaves.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_long.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_dirt.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/tracers.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_force_fields.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_force_field.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_shimmer.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_tex_distortion.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_long.fx</shader>
+			<texture>particles/content_deferred/PFX_textures/eff_rocket_accelerator.dds</texture>
+		</preload>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/env_housesmoke_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_anti_aircraft_explosions.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_bomb_explosion.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_debris_meshes.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_hd_bld_EU_088_CrashWall_01_Destruction_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_hd_bld_eu_089_crashwall_01_destruction_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_hd_bld_eu_090_crashwall_01_destruction_01.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_hd_bld_eu_090_crashwall_01_destruction_02.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_plane_explosion.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_plane_fire_trail.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_plane_machinegun_shells.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_plane_smoke_trail.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_anti_aircraft_explosions_se.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_bomb_explosion_tracers.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/08_ruinberg_walls_dust_smoke.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/random_events/re_flare_red.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Scenarios/105_air_smoke_trail_dense.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/env_housesmoke_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_anti_aircraft_explosions.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_bomb_explosion.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_debris_meshes.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_hd_bld_EU_088_CrashWall_01_Destruction_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_hd_bld_eu_089_crashwall_01_destruction_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_hd_bld_eu_090_crashwall_01_destruction_01.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_hd_bld_eu_090_crashwall_01_destruction_02.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_plane_explosion.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_plane_fire_trail.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_plane_machinegun_shells.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_plane_smoke_trail.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/08_ruinberg_walls_dust_smoke.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/random_events/notification/re_flare_red.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/scenarios/105_air_smoke_trail_dense.eff</fn_effect_bin>
+		<preloadVisual>particles/mesh_particles/metal_plate_02.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/metal_plate_03.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/metal_stick.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_brick_01.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_brick_02.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_brick_03.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_concrete_02.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_concrete_03.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/stone_light.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wood_board_03.visual</preloadVisual>
+		<preloadVisual>particles/mesh_particles/wood_stick_03.visual</preloadVisual>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_bld_UNI_006_KitCrashFactory_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/hd_bld_UNI_006_KitCrashFactory_Roof_03.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Buildings/inf_bld4502_fountainsmall.vfx</fn_effect_bin>
@@ -275,10 +504,11 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/CameraEffects/nature_yellow_leaves_large_wind_P.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/CameraEffects/nature_yellow_leaves_wind.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/CameraEffects/nature_yellow_leaves_wind_P.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/env_housesmoke_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/env_housesmoke_02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/08_ruinberg_fires_small.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/08_ruinberg_firesmoke.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/08_ruinberg_firesmoke_transparent.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/interior/99_poland_smoke_FireGrass_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_bld_UNI_006_KitCrashFactory_02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_112_11_AdvertisingCloset_03.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_015_AdvertisingPosters_02.vfx</fn_effect_bin>
@@ -287,6 +517,12 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_AM_015_AdvertisingPosters_05.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_EU_040_StreetLamp_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_EU_426_VeneraStatue.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_UNI_155_WoodDebris_02.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_UNI_155_WoodDebris_03.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_UNI_158_FurnitureCrush_02.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_UNI_158_FurnitureCrush_04.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_UNI_158_FurnitureCrush_05.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/hd_env_UNI_158_FurnitureCrush_06.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env005_Tun.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env029_Crypt_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env029_PolCross1.vfx</fn_effect_bin>
@@ -316,6 +552,7 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env_19_28_Fountain.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env_EU_040_StreetLamp_03.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env_EU_461_Umbrella.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env_UNI_622_FieldJunk_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_005_sign_fracture.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAM_005_sign_touchdown.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envEU_009_TownEnv_flowerpot_01.vfx</fn_effect_bin>
@@ -397,10 +634,11 @@
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_03.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_04.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/buildings/inf_bld_UNI_000_Base_05.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/env_housesmoke_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/env_housesmoke_02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/interior/08_ruinberg_fires_small.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/interior/08_ruinberg_firesmoke.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/08_ruinberg_firesmoke_transparent.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/interior/99_poland_smoke_firegrass_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_bld_UNI_006_KitCrashFactory_02.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env_112_11_AdvertisingCloset_03.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env_AM_015_AdvertisingPosters_02.eff</fn_effect_bin>
@@ -409,6 +647,12 @@
 		<fn_effect_bin>particles/Environment/objects/hd_env_AM_015_AdvertisingPosters_05.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env_EU_040_StreetLamp_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/hd_env_EU_426_VeneraStatue.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_155_wooddebris_02.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_155_wooddebris_03.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_158_furniturecrush_02.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_158_furniturecrush_04.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_158_furniturecrush_05.eff</fn_effect_bin>
+		<fn_effect_bin>particles/environment/objects/hd_env_uni_158_furniturecrush_06.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env005_Tun.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env029_Crypt_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env029_PolCross1.eff</fn_effect_bin>
@@ -437,6 +681,7 @@
 		<fn_effect_bin>particles/Environment/objects/inf_env_19_28_Fountain.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env_EU_040_StreetLamp_03.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env_EU_461_Umbrella.eff</fn_effect_bin>
+		<fn_effect_bin>particles/Environment/objects/inf_env_UNI_622_FieldJunk_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAM_005_sign_fracture.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAM_005_sign_touchdown.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envEU_009_TownEnv_flowerpot_01.eff</fn_effect_bin>
@@ -509,13 +754,8 @@
 		<fn_effect_bin>particles/Environment/trees/Broadleaves/tree_Poplar_3m_touchdown.eff</fn_effect_bin>
 		<preloadVisual>particles/mesh_particles/environment/vfx_m_newspapers_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/environment/vfx_m_newspapers_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/metal_stick.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/metal_tube_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_02.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_brick_03.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_concrete_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/stone_concrete_03.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/stone_ground.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/tree_twig_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/tree_twig_02.visual</preloadVisual>
@@ -525,6 +765,5 @@
 		<preloadVisual>particles/mesh_particles/wood_broken_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/wood_log_01.visual</preloadVisual>
 		<preloadVisual>particles/mesh_particles/wood_stick_01.visual</preloadVisual>
-		<preloadVisual>particles/mesh_particles/wood_stick_03.visual</preloadVisual>
 	</deferred>
 </root>

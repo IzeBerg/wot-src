@@ -1,6 +1,6 @@
 import logging, weakref, BigWorld
 from battle_royale.gui.battle_control.controllers.notification_manager import INotificationManagerListener
-from debug_utils import LOG_ERROR, LOG_WARNING
+from debug_utils import LOG_ERROR
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.app_loader.decorators import sf_battle
 from gui.battle_control import avatar_getter
@@ -157,8 +157,6 @@ class SpawnController(ViewComponentsController, ISpawnController):
     def removeRuntimeView(self, view):
         if view in self._viewComponents:
             self._viewComponents.remove(view)
-        else:
-            LOG_WARNING(('View has not been found! {}').format(view))
 
     @property
     def viewComponents(self):

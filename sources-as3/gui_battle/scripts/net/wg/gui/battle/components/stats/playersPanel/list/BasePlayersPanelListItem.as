@@ -149,11 +149,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private var _frags:int = 0;
       
-      protected var _isMute:Boolean = false;
+      private var _isMute:Boolean = false;
       
       private var _isSpeaking:Boolean = false;
       
-      protected var _isAlive:Boolean = true;
+      private var _isAlive:Boolean = true;
       
       private var _isOffline:Boolean = false;
       
@@ -165,21 +165,21 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private var _vehicleLevel:int = 0;
       
-      protected var _isSelected:Boolean = false;
+      private var _isSelected:Boolean = false;
       
       private var _isCurrentPlayer:Boolean = false;
       
       private var _isRightAligned:Boolean = false;
       
-      protected var _isIgnoredTmp:Boolean = false;
+      private var _isIgnoredTmp:Boolean = false;
       
       private var _badgeVO:BadgeVisualVO = null;
       
-      protected var _hasBadge:Boolean = false;
+      private var _hasBadge:Boolean = false;
       
       private var _showDogTag:Boolean = false;
       
-      protected var _userProps:IUserProps = null;
+      private var _userProps:IUserProps = null;
       
       private var _commons:ICommons = null;
       
@@ -678,7 +678,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.actionMarker.x = this.vehicleIcon.x + ACTION_MARKER_RIGHT_OFFSET;
       }
       
-      protected function updatePositions() : void
+      private function updatePositions() : void
       {
          var _loc1_:int = 0;
          var _loc3_:int = 0;
@@ -860,7 +860,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          invalidate();
       }
       
-      protected function updateColors() : void
+      private function updateColors() : void
       {
          var _loc4_:uint = 0;
          var _loc1_:String = PlayerStatusSchemeName.getSchemeNameForVehicle(this._isCurrentPlayer,this.isSquadPersonal(),this._isTeamKiller,!this._isAlive,this._isOffline);
@@ -901,11 +901,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       public function get state() : int
       {
          return this._state;
-      }
-      
-      protected function get isOffline() : Boolean
-      {
-         return this._isOffline;
       }
       
       protected function onMouseOver(param1:MouseEvent) : void

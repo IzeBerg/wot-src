@@ -23,10 +23,7 @@ package net.wg.gui.battle.views.destroyTimers.components
       public function TimerContainer()
       {
          super();
-         if(this.textField)
-         {
-            TextFieldEx.setNoTranslate(this.textField,true);
-         }
+         TextFieldEx.setNoTranslate(this.textField,true);
       }
       
       public final function dispose() : void

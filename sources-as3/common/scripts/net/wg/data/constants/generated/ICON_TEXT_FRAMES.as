@@ -15,6 +15,8 @@ package net.wg.data.constants.generated
       
       public static const GOLD_DISCOUNT:String = "goldDiscount";
       
+      public static const WDR_COIN:String = "wdrcoin";
+      
       public static const XP:String = "xp";
       
       public static const ELITE_XP:String = "eliteXp";
@@ -78,8 +80,6 @@ package net.wg.data.constants.generated
       public static const RANKED_POINTS:String = "rankedPoints";
       
       public static const BONUS_BATTLE:String = "bonusBattle";
-      
-      public static const EVENT_KEY:String = "eventKey";
        
       
       public function ICON_TEXT_FRAMES()

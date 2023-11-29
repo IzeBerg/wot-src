@@ -78,9 +78,9 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setGoldFishEnabled(isEnabled, playAnimation, tooltip, tooltipType)
 
-    def as_updateSquadS(self, isInSquad, tooltip, tooltipType, isEvent, icon, hasPopover, eventBgLinkage, data):
+    def as_updateSquadS(self, isInSquad, tooltip, tooltipType, isEvent, icon, hasPopover, data):
         if self._isDAAPIInited():
-            return self.flashObject.as_updateSquad(isInSquad, tooltip, tooltipType, isEvent, icon, hasPopover, eventBgLinkage, data)
+            return self.flashObject.as_updateSquad(isInSquad, tooltip, tooltipType, isEvent, icon, hasPopover, data)
 
     def as_nameResponseS(self, data):
         if self._isDAAPIInited():
@@ -102,9 +102,9 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setPremShopData(iconSrc, premShopText, tooltip, tooltipType)
 
-    def as_updateBattleTypeS(self, battleTypeName, battleTypeIcon, isEnabled, tooltip, tooltipType, battleTypeID, eventAnimEnabled, eventBgLinkage, showLegacySelector, hasNew):
+    def as_updateBattleTypeS(self, battleTypeName, battleTypeIcon, isEnabled, tooltip, tooltipType, battleTypeID, eventBgEnabled, eventAnimEnabled, showLegacySelector, hasNew):
         if self._isDAAPIInited():
-            return self.flashObject.as_updateBattleType(battleTypeName, battleTypeIcon, isEnabled, tooltip, tooltipType, battleTypeID, eventAnimEnabled, eventBgLinkage, showLegacySelector, hasNew)
+            return self.flashObject.as_updateBattleType(battleTypeName, battleTypeIcon, isEnabled, tooltip, tooltipType, battleTypeID, eventBgEnabled, eventAnimEnabled, showLegacySelector, hasNew)
 
     def as_setServerS(self, name, tooltip, tooltipType):
         if self._isDAAPIInited():
@@ -129,10 +129,6 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
     def as_setFightButtonS(self, label):
         if self._isDAAPIInited():
             return self.flashObject.as_setFightButton(label)
-
-    def as_setFightButtonHighlightS(self, linkage):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setFightButtonHighlight(linkage)
 
     def as_setCoolDownForReadyS(self, value):
         if self._isDAAPIInited():
@@ -178,6 +174,10 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_hideMenu(value)
 
+    def as_hideHeaderS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_hideHeader(value)
+
     def as_toggleVisibilityMenuS(self, state):
         if self._isDAAPIInited():
             return self.flashObject.as_toggleVisibilityMenu(state)
@@ -193,3 +193,7 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
     def as_setButtonHighlightS(self, btnAlias, isHighlighted):
         if self._isDAAPIInited():
             return self.flashObject.as_setButtonHighlight(btnAlias, isHighlighted)
+
+    def as_updateNYVisibilityS(self, isShowBattleBtnGlow):
+        if self._isDAAPIInited():
+            return self.flashObject.as_updateNYVisibility(isShowBattleBtnGlow)

@@ -9,6 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
 
 msgid "multiOpenView/applyLabel"
 msgstr "Acknowledged!"
@@ -42,6 +43,12 @@ msgstr "Claim Rewards"
 msgid "notifications/quest/title"
 msgstr "Rewards for your years of service are awaiting you!"
 
+msgid "notifications/selectVehicles/button"
+msgstr "Select"
+
+msgid "notifications/selectVehicles/title"
+msgstr "Vehicle Available For Years of Service"
+
 msgid "notifications/tokens/button"
 msgstr "To Store"
 
@@ -61,7 +68,12 @@ msgid "notifications/tokens/timer"
 msgstr "Tokens will be removed in %(timeLeft)s"
 
 msgid "notifications/tokens/title"
-msgstr "Exchange your Tokens for years of service for rewards!"
+msgstr ""
+"Exchange Your Tokens for Years\n"
+"of Service for Rewards!"
+
+msgid "notifications/vehicleSelectionAvailable/title"
+msgstr "Select the Vehicle You Want!"
 
 msgid "openBoxView/autoOpenTooltip/body"
 msgstr ""
@@ -94,8 +106,14 @@ msgstr "Acknowledged!"
 msgid "rewardsView/exchangeCoins"
 msgstr "Exchange your Tokens for rewards in the Store."
 
+msgid "rewardsView/gotoHangarBtn"
+msgstr "View in Garage"
+
 msgid "rewardsView/gotoRewardsBtn"
 msgstr "To Store"
+
+msgid "rewardsView/info"
+msgstr "More about Titles"
 
 msgid "rewardsView/lootBox/descr"
 msgstr "Open and claim your reward!"
@@ -118,91 +136,35 @@ msgstr "Next Reward (%(count)s)"
 msgid "rewardsView/openBtn"
 msgstr "Open"
 
-msgid "rewardsView/sacoin/counter"
-msgstr "×%(count)s"
+msgid "rewardsView/selection/available"
+msgstr "%(count)s vehicle available for years of service"
 
-msgid "rewardsView/subTitle/AT"
-msgstr ""
-"REWARD FOR PARTICIPATION IN THE %(gradientStart)sALPHA TEST%(gradientEnd)s"
+msgid "rewardsView/selection/received"
+msgstr "Reward Received"
 
-msgid "rewardsView/subTitle/BT"
-msgstr ""
-"REWARD FOR PARTICIPATION IN THE %(gradientStart)sBETA TEST%(gradientEnd)s"
+msgid "rewardsView/subTitle/at"
+msgstr "TITLE %(gradientStart)VETERAN%(gradientEnd) ACHIEVED"
 
-msgid "rewardsView/subTitle/Y0"
-msgstr "REWARD FOR COMBAT SERVICE"
+msgid "rewardsView/subTitle/bt"
+msgstr "TITLE %(gradientStart)VETERAN%(gradientEnd) ACHIEVED"
 
-msgid "rewardsView/subTitle/Y1"
-msgstr "REWARD FOR %(gradientStart)s1 YEAR%(gradientEnd)s OF SERVICE"
+msgid "rewardsView/subTitle/ctg1"
+msgstr "TITLE %(gradientStart)RECRUIT%(gradientEnd) ACHIEVED"
 
-msgid "rewardsView/subTitle/Y10"
-msgstr "REWARD FOR %(gradientStart)s10 YEARS%(gradientEnd)s OF SERVICE"
+msgid "rewardsView/subTitle/ctg2"
+msgstr "TITLE %(gradientStart)WARRIOR%(gradientEnd) ACHIEVED"
 
-msgid "rewardsView/subTitle/Y10_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 10 YEARS OF SERVICE"
+msgid "rewardsView/subTitle/ctg3"
+msgstr "TITLE %(gradientStart)COMMANDER%(gradientEnd) ACHIEVED"
 
-msgid "rewardsView/subTitle/Y11"
-msgstr "REWARD FOR %(gradientStart)s11 YEARS%(gradientEnd)s OF SERVICE"
+msgid "rewardsView/subTitle/ctg4"
+msgstr "TITLE %(gradientStart)OFFICER%(gradientEnd) ACHIEVED"
 
-msgid "rewardsView/subTitle/Y11_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 11 YEARS OF SERVICE"
+msgid "rewardsView/subTitle/ctg5"
+msgstr "TITLE %(gradientStart)VETERAN%(gradientEnd) ACHIEVED"
 
-msgid "rewardsView/subTitle/Y12"
-msgstr "REWARD FOR %(gradientStart)s12 YEARS%(gradientEnd)s OF SERVICE"
-
-msgid "rewardsView/subTitle/Y12_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 12 YEARS OF SERVICE"
-
-msgid "rewardsView/subTitle/Y1_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 1 YEAR OF SERVICE"
-
-msgid "rewardsView/subTitle/Y2"
-msgstr "REWARD FOR %(gradientStart)s2 YEARS%(gradientEnd)s OF SERVICE"
-
-msgid "rewardsView/subTitle/Y2_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 2 YEARS OF SERVICE"
-
-msgid "rewardsView/subTitle/Y3"
-msgstr "REWARD FOR %(gradientStart)s3 YEARS%(gradientEnd)s OF SERVICE"
-
-msgid "rewardsView/subTitle/Y3_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 3 YEARS OF SERVICE"
-
-msgid "rewardsView/subTitle/Y4"
-msgstr "REWARD FOR %(gradientStart)s4 YEARS%(gradientEnd)s OF SERVICE"
-
-msgid "rewardsView/subTitle/Y4_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 4 YEARS OF SERVICE"
-
-msgid "rewardsView/subTitle/Y5"
-msgstr "REWARD FOR %(gradientStart)s5 YEARS%(gradientEnd)s OF SERVICE"
-
-msgid "rewardsView/subTitle/Y5_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 5 YEARS OF SERVICE"
-
-msgid "rewardsView/subTitle/Y6"
-msgstr "REWARD FOR %(gradientStart)s6 YEARS%(gradientEnd)s OF SERVICE"
-
-msgid "rewardsView/subTitle/Y6_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 6 YEARS OF SERVICE"
-
-msgid "rewardsView/subTitle/Y7"
-msgstr "REWARD FOR %(gradientStart)s7 YEARS%(gradientEnd)s OF SERVICE"
-
-msgid "rewardsView/subTitle/Y7_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 7 YEARS OF SERVICE"
-
-msgid "rewardsView/subTitle/Y8"
-msgstr "REWARD FOR %(gradientStart)s8 YEARS%(gradientEnd)s OF SERVICE"
-
-msgid "rewardsView/subTitle/Y8_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 8 YEARS OF SERVICE"
-
-msgid "rewardsView/subTitle/Y9"
-msgstr "REWARD FOR %(gradientStart)s9 YEARS%(gradientEnd)s OF SERVICE"
-
-msgid "rewardsView/subTitle/Y9_BT"
-msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 9 YEARS OF SERVICE"
+msgid "rewardsView/subTitle/ctg6"
+msgstr "TITLE %(gradientStart)LEGEND%(gradientEnd) ACHIEVED"
 
 msgid "rewardsView/subTitle/otherRewards"
 msgstr "You also received:"
@@ -216,8 +178,14 @@ msgstr "CLOSE"
 msgid "rewardsView/textButton/goto"
 msgstr "TO VEHICLES"
 
+msgid "rewardsView/textButton/select"
+msgstr "Select"
+
 msgid "rewardsView/title"
 msgstr "CONGRATULATIONS!"
+
+msgid "rewardsView/wdrcoin/counter"
+msgstr "×%(count)s"
 
 msgid "specialItem/body"
 msgstr ""
@@ -225,7 +193,111 @@ msgstr ""
 "removed."
 
 msgid "specialItem/header"
-msgstr "%(count)s Token(s) for years of service"
+msgstr "Tokens for Years of Service: %(count)s"
+
+msgid "tooltip/congratulation/at"
+msgstr "Congratulations on achieving the Veteran Title"
+
+msgid "tooltip/congratulation/bt"
+msgstr "Congratulations on achieving the Veteran Title"
+
+msgid "tooltip/congratulation/ctg1"
+msgstr "Congratulations on achieving the Recruit Title"
+
+msgid "tooltip/congratulation/ctg2"
+msgstr "Congratulations on achieving the Warrior Title"
+
+msgid "tooltip/congratulation/ctg3"
+msgstr "Congratulations on achieving the Commander Title"
+
+msgid "tooltip/congratulation/ctg4"
+msgstr "Congratulations on achieving the Officer Title"
+
+msgid "tooltip/congratulation/ctg5"
+msgstr "Congratulations on achieving the Veteran Title"
+
+msgid "tooltip/congratulation/ctg6"
+msgstr "Congratulations on achieving the Legend Title"
+
+msgid "tooltip/medalBlock/label/and"
+msgstr " and "
+
+msgid "tooltip/medalBlock/label/ca"
+msgstr "For participation in the Alpha Test"
+
+msgid "tooltip/medalBlock/label/cb"
+msgstr "For participation in the Beta Test"
+
+msgid "tooltip/medalBlock/label/cbcn"
+msgstr "For participation in the Beta Test"
+
+msgid "tooltip/medalBlock/label/duration"
+msgid_plural "plural/tooltip/medalBlock/label/duration"
+msgstr[0] "year of service"
+msgstr[1] "%(years)s years of service"
+msgstr[2] "%(years)s years of service"
+
+msgid "tooltip/rank/ctg1"
+msgstr "Recruit"
+
+msgid "tooltip/rank/ctg2"
+msgstr "Warrior"
+
+msgid "tooltip/rank/ctg3"
+msgstr "Commander"
+
+msgid "tooltip/rank/ctg4"
+msgstr "Officer"
+
+msgid "tooltip/rank/ctg5"
+msgstr "Veteran"
+
+msgid "tooltip/rank/ctg6"
+msgstr "Legend"
 
 msgid "tooltip/restrictedMode"
 msgstr "Action is temporarily unavailable. Try again later."
+
+msgid "tooltip/segment/ctg1"
+msgstr "Below one year"
+
+msgid "tooltip/segment/ctg2"
+msgstr "1–3 years"
+
+msgid "tooltip/segment/ctg3"
+msgstr "4–6 years"
+
+msgid "tooltip/segment/ctg4"
+msgstr "7–9 years"
+
+msgid "tooltip/segment/ctg5"
+msgstr "10–14 years"
+
+msgid "tooltip/segment/ctg6"
+msgstr "15 years"
+
+msgid "vehicle/A134_M24E2_SuperChaffee"
+msgstr ""
+"A legendary light tank that features great maneuverability. The vehicle "
+"causes a decent amount of damage per minute and has good depression and "
+"elevation angles, which allows it to use terrain irregularities to its "
+"advantage in battle."
+
+msgid "vehicle/G158_VK2801_105_SPXXI"
+msgstr ""
+"This vehicle is armed with a high-caliber gun and features nice armoring, "
+"although this affects its dynamics and maneuverability. The tank is somewhat"
+" clunky, which makes it extremely effective when ramming light-armored "
+"vehicles."
+
+msgid "vehicle/R160_T_50_2"
+msgstr ""
+"A light tank that is perfect for active reconnaissance at all stages of "
+"battle. Its small silhouette and high speed allow it to avoid being hit, "
+"which is extremely important given its modest firepower."
+
+msgid "vehicle/R197_KV_1S_MZ"
+msgstr ""
+"This is the only vehicle at its tier featuring an inverse autoreloader. It "
+"is at its best when causing burst damage to enemy vehicles or providing "
+"support fire to allies."

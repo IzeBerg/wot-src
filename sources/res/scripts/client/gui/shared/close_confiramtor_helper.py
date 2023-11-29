@@ -26,23 +26,26 @@ class CloseConfirmatorsHelper(object):
          events.PrbActionEvent.LEAVE,
          events.TrainingEvent.RETURN_TO_TRAINING_ROOM,
          events.TrainingEvent.SHOW_TRAINING_LIST,
-         events.CustomizationEvent.SHOW]
+         events.CustomizationEvent.SHOW,
+         events.LobbySimpleEvent.SWITCH_NEW_YEAR_VIEW,
+         events.LobbySimpleEvent.SHOW_LOOT_BOX_VIEW]
 
     def getRestrictedSfViews(self):
         return [
          VIEW_ALIAS.VEHICLE_COMPARE,
          VIEW_ALIAS.LOBBY_STORE,
          VIEW_ALIAS.LOBBY_PROFILE,
-         VIEW_ALIAS.LOBBY_BARRACKS,
          VIEW_ALIAS.LOBBY_MISSIONS,
          VIEW_ALIAS.LOBBY_RESEARCH,
          VIEW_ALIAS.WIKI_VIEW,
          VIEW_ALIAS.BROWSER_VIEW,
-         VIEW_ALIAS.VEHICLE_PREVIEW]
+         VIEW_ALIAS.VEHICLE_PREVIEW,
+         VIEW_ALIAS.STYLE_PREVIEW]
 
     def getRestrictedGuiImplViews(self):
         return [
-         R.views.lobby.dog_tags.DogTagsView()]
+         R.views.lobby.dog_tags.DogTagsView(),
+         R.views.lobby.crew.BarracksView()]
 
     def start(self, closeConfirmator):
         self.__closeConfirmator = closeConfirmator

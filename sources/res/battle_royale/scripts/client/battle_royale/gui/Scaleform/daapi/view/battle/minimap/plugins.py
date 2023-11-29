@@ -28,6 +28,8 @@ _S_NAME = settings.ENTRY_SYMBOL_NAME
 _FIRTS_CELL_INDEX = 0
 _ARENA_SIZE_DEATH_ZONE_MULTIPLIER = 0.5
 _MARKER_SIZE_INDEX_BREAKPOINT = 3
+RADAR_PLUGIN = 'radar'
+VEHICLES_PLUGIN = 'vehicles'
 _logger = logging.getLogger(__name__)
 
 class BattleRoyalePersonalEntriesPlugin(CenteredPersonalEntriesPlugin):
@@ -507,13 +509,18 @@ class BattleRoyaleVehiclePlugin(ArenaVehiclesPlugin):
         self.__radarSpottedVehiclesPlugin = None
         return
 
+    def init(self, arenaVisitor, arenaDP):
+        super(BattleRoyaleVehiclePlugin, self).init(arenaVisitor, arenaDP)
+        radarPlugin = self.parentObj.getPlugin(RADAR_PLUGIN)
+        if radarPlugin:
+            self.__radarSpottedVehiclesPlugin = radarPlugin
+        else:
+            _logger.error('Radar plugin has not been found!')
+
     def fini(self):
         self.__radarSpottedVehiclesPlugin = None
         super(BattleRoyaleVehiclePlugin, self).fini()
         return
-
-    def setRadarPlugin(self, plugin):
-        self.__radarSpottedVehiclesPlugin = plugin
 
     def setSettings(self):
         isColorBlind = self.settingsCore.getSetting(settings_constants.GRAPHICS.COLOR_BLIND)

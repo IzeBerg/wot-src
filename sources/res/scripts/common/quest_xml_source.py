@@ -1,4 +1,5 @@
 import time, ArenaType, ResMgr, nations
+from items.components.ny_constants import CurrentNYConstants, PREV_NY_TOYS_BONUSES
 from soft_exception import SoftException
 from copy import deepcopy
 from pprint import pformat
@@ -322,8 +323,6 @@ class Source(object):
              season, cycle)
         if eventType in EVENT_TYPE.QUESTS_WITH_SHOP_BUTTON:
             info['shopButton'] = questSection.readString('shopButton', 'hide')
-        if questSection.has_key('notificationTitleText'):
-            info['notificationTitleText'] = self.__readMetaSection(questSection['notificationTitleText'])
         if questSection.has_key('notificationText'):
             info['notificationText'] = self.__readMetaSection(questSection['notificationText'])
         if eventType == EVENT_TYPE.TOKEN_QUEST:
@@ -511,7 +510,8 @@ class Source(object):
          'customizations', 'vehicleChoice', 'crewSkin', 'blueprint', 'blueprintAny', 'enhancement',
          'eventCoin', 'bpcoin', 'entitlement', 'rankedDailyBattles', 'rankedBonusBattles', 'equipCoin',
          'dogTagComponent', 'battlePassPoints', 'currency', 'freePremiumCrew', 'entitlementList',
-         'dailyQuestReroll', 'noviceReset'}
+         'dailyQuestReroll', 'noviceReset', CurrentNYConstants.TOY_BONUS}
+        bonusTypes.update(PREV_NY_TOYS_BONUSES)
         if eventType in (EVENT_TYPE.BATTLE_QUEST, EVENT_TYPE.PERSONAL_QUEST, EVENT_TYPE.NT_QUEST):
             bonusTypes.update(('xp', 'tankmenXP', 'xpFactor', 'creditsFactor', 'freeXPFactor',
                                'tankmenXPFactor'))

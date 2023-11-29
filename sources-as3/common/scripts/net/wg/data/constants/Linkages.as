@@ -29,6 +29,8 @@ package net.wg.data.constants
       
       public static const CURRENCY_CONTEXT_MENU_ITEM:String = "CurrencyContextMenuItem";
       
+      public static const NY_CONTEXT_MENU_ITEM:String = "NYContextMenuItemUI";
+      
       public static const CONTEXT_MENU_SEPARATE:String = "ContextMenuItemSeparate";
       
       public static const MINIMAP_ENTRY:String = "MinimapEntry";
@@ -300,14 +302,6 @@ package net.wg.data.constants
       public static const EVENT_SHELL_BUTTON_BATTLE:String = "EventShellButtonBattleUI";
       
       public static const EVENT_EQUIPMENT_BUTTON:String = "EventEquipmentButtonUI";
-      
-      public static const HW_EQUIPMENT_BUTTON:String = "HWEquipmentButtonUI";
-      
-      public static const HW_ABILITY_BUTTON:String = "HWAbilityButtonUI";
-      
-      public static const HW_PASSIVE_ABILITY:String = "HWPassiveAbilityUI";
-      
-      public static const HW_SHELL_BUTTON_BATTLE:String = "HWShellButtonBattleUI";
       
       public static const OPTIONAL_DEVICE_BUTTON:String = "OptionalDeviceButtonUI";
       
@@ -1024,6 +1018,12 @@ package net.wg.data.constants
       public static const NATION_TREE_PREMIUM_DOTS_PATTERN:String = "PremiumDotUI";
       
       public static const TIER_GROUPING_UI:String = "TierGroupingUI";
+      
+      public static const NY_COUNTER_VIEW_UI:String = "NYCounterViewUI";
+      
+      public static const NY_LB_NOTIFICATION_BG_UI:String = "NYLBNotificationBg_UI";
+      
+      public static const NY_LB_NO_BORDER_NOTIFICATION_BG_UI:String = "NYLBNoBorderNotificationBg_UI";
       
       public static const YELLOW_HP_BAR:String = "yellow_hp_bar";
       

@@ -44,9 +44,9 @@ package net.wg.infrastructure.base.meta
       
       function as_hideTeaserTimer() : void;
       
-      function as_createDQWidget() : void;
+      function as_setRewardKitsVisible(param1:Boolean) : void;
       
-      function as_destroyDQWidget() : void;
+      function as_setGiftEntryVisible(param1:Boolean) : void;
       
       function as_setPrestigeWidgetVisible(param1:Boolean) : void;
       

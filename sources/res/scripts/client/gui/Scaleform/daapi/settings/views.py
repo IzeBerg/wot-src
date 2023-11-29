@@ -133,6 +133,9 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     BATTLE_TYPE_SELECT_POPOVER = 'battleTypeSelectPopover'
     SQUAD_TYPE_SELECT_POPOVER = 'squadTypeSelectPopover'
     TRADEIN_POPOVER = 'TradeInPopover'
+    NY_SELECT_VEHICLE_POPOVER = 'NYSelectVehiclePopover'
+    NY_SELECT_VEHICLE_FOR_DISCOUNT_POPOVER = 'NYSelectVehicleForDiscountPopover'
+    NY_BROWSER_VIEW = 'NyBrowserView'
     ACOUSTIC_POPOVER = 'acousticPopover'
     ADVENT_CALENDAR = 'adventCalendar'
     AWARD_WINDOW = 'awardWindow'
@@ -237,6 +240,7 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     FEEDBACK_DAMAGE_INDICATOR = 'feedbackDamageIndicator'
     FEEDBACK_BATTLE_BORDER_MAP = 'feedbackBattleBorderMap'
     FEEDBACK_QUESTS_PROGRESS = 'feedbackQuestsProgress'
+    LOOT_BOX_SHOP_OVERLAY = 'overlayBrowserLootBoxShop'
     BATTLE_PAGES = (
      CLASSIC_BATTLE_PAGE, DEV_BATTLE_PAGE, EVENT_BATTLE_PAGE, RANKED_BATTLE_PAGE, BOOTCAMP_BATTLE_PAGE,
      EPIC_BATTLE_PAGE, BATTLE_ROYALE_PAGE, WINBACK_BATTLE_PAGE)

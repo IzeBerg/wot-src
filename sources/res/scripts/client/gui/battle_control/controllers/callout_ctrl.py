@@ -22,7 +22,6 @@ from messenger_common_chat2 import MESSENGER_ACTION_IDS as _ACTIONS
 from skeletons.account_helpers.settings_core import ISettingsCore, ISettingsCache
 from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.battle_session import IBattleSessionProvider
-from skeletons.gui.impl import IGuiLoader
 _logger = logging.getLogger(__name__)
 _CALLOUT_MESSAGES_BLOCK_DURATION = 15
 _HINT_TIMEOUT = 10
@@ -42,7 +41,6 @@ class CalloutController(CallbackDelayer, IViewComponentsController):
     __settingsCore = dependency.descriptor(ISettingsCore)
     __settingsCache = dependency.descriptor(ISettingsCache)
     __appLoader = dependency.descriptor(IAppLoader)
-    __guiLoader = dependency.descriptor(IGuiLoader)
     __slots__ = ('__isActive', '__isCalloutEnabled', '__isIBCEnabled', '__commandReceivedData',
                  '__lastPersonalMsgTimestamp', '__lastCalloutTimestamp', '__ui',
                  '__radialKeyDown', '__radialMenuIsOpen', '__previousForcedGuiControlModeFlags')
@@ -121,8 +119,6 @@ class CalloutController(CallbackDelayer, IViewComponentsController):
             if not containerManager.isContainerShown(WindowLayer.VIEW):
                 return False
             if containerManager.isModalViewsIsExists() or self.__appLoader.getApp().hasGuiControlModeConsumers(*_CONSUMERS_LOCKS):
-                return False
-            if self.__guiLoader.windowsManager.findWindows(lambda w: w.isModal()):
                 return False
             isPlayerObserver = self.sessionProvider.getCtx().isPlayerObserver()
             if self.__radialKeyDown is None and isDown:

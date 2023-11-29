@@ -52,7 +52,7 @@ package net.wg.infrastructure.base.meta
       
       function as_setGoldFishEnabled(param1:Boolean, param2:Boolean, param3:String, param4:String) : void;
       
-      function as_updateSquad(param1:Boolean, param2:String, param3:String, param4:Boolean, param5:String, param6:Boolean, param7:String, param8:Object) : void;
+      function as_updateSquad(param1:Boolean, param2:String, param3:String, param4:Boolean, param5:String, param6:Boolean, param7:Object) : void;
       
       function as_nameResponse(param1:Object) : void;
       
@@ -64,7 +64,7 @@ package net.wg.infrastructure.base.meta
       
       function as_setPremShopData(param1:String, param2:String, param3:String, param4:String) : void;
       
-      function as_updateBattleType(param1:String, param2:String, param3:Boolean, param4:String, param5:String, param6:String, param7:Boolean, param8:String, param9:Boolean, param10:Boolean) : void;
+      function as_updateBattleType(param1:String, param2:String, param3:Boolean, param4:String, param5:String, param6:String, param7:Boolean, param8:Boolean, param9:Boolean, param10:Boolean) : void;
       
       function as_setServer(param1:String, param2:String, param3:String) : void;
       
@@ -77,8 +77,6 @@ package net.wg.infrastructure.base.meta
       function as_disableFightButton(param1:Boolean) : void;
       
       function as_setFightButton(param1:String) : void;
-      
-      function as_setFightButtonHighlight(param1:String) : void;
       
       function as_setCoolDownForReady(param1:uint) : void;
       
@@ -102,6 +100,8 @@ package net.wg.infrastructure.base.meta
       
       function as_hideMenu(param1:Boolean) : void;
       
+      function as_hideHeader(param1:Boolean) : void;
+      
       function as_toggleVisibilityMenu(param1:uint) : void;
       
       function as_setIsPlatoonDropdownShowing(param1:Boolean) : void;
@@ -109,5 +109,7 @@ package net.wg.infrastructure.base.meta
       function as_setIsFullscreenBattleSelectorShowing(param1:Boolean) : void;
       
       function as_setButtonHighlight(param1:String, param2:Boolean) : void;
+      
+      function as_updateNYVisibility(param1:Boolean) : void;
    }
 }

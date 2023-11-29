@@ -252,6 +252,9 @@ class MENU(object):
     TANKCAROUSEL_VEHICLESTATES_INPREMIUMIGRONLY = '#menu:tankCarousel/vehicleStates/inPremiumIgrOnly'
     TANKCAROUSEL_VEHICLESTATES_BUYTANK = '#menu:tankCarousel/vehicleStates/buyTank'
     TANKCAROUSEL_VEHICLESTATES_BUYTANKEMPTYCOUNT = '#menu:tankCarousel/vehicleStates/buyTankEmptyCount'
+    TANKCAROUSEL_VEHICLESTATES_NYTANK = '#menu:tankCarousel/vehicleStates/nyTank'
+    TANKCAROUSEL_VEHICLESTATES_NYTANKEMPTYCOUNT = '#menu:tankCarousel/vehicleStates/nyTankEmptyCount'
+    TANKCAROUSEL_VEHICLESTATES_NYTANKSLOTSFULL = '#menu:tankCarousel/vehicleStates/nyTankSlotsFull'
     TANKCAROUSEL_VEHICLESTATES_BUYSLOT = '#menu:tankCarousel/vehicleStates/buySlot'
     TANKCAROUSEL_VEHICLESTATES_RESTORETANK = '#menu:tankCarousel/vehicleStates/restoreTank'
     TANKCAROUSEL_VEHICLESTATES_RESTORETANKCOUNT = '#menu:tankCarousel/vehicleStates/restoreTankCount'
@@ -1580,7 +1583,7 @@ class MENU(object):
     CONTEXTMENU_MONEYTRANSFER = '#menu:contextMenu/moneyTransfer'
     CONTEXTMENU_CREATEPRIVATECHANNEL = '#menu:contextMenu/createPrivateChannel'
     CONTEXTMENU_ADDTOFRIENDS = '#menu:contextMenu/addToFriends'
-    CONTEXTMENU_REQUESTFRIENDSHIP = '#menu:contextMenu/requestFriendship'
+    CONTEXTMENU_ADDTOFRIENDSAGAIN = '#menu:contextMenu/addToFriendsAgain'
     CONTEXTMENU_REJECTFRIENDSHIP = '#menu:contextMenu/rejectFriendship'
     CONTEXTMENU_REMOVEFROMFRIENDS = '#menu:contextMenu/removeFromFriends'
     CONTEXTMENU_ADDTOIGNORED = '#menu:contextMenu/addToIgnored'
@@ -1652,7 +1655,6 @@ class MENU(object):
     CONTEXTMENU_ACCEPTINVITATIONTOSQUAD = '#menu:contextMenu/acceptInvitationToSquad'
     CONTEXTMENU_REJECTINVITATIONTOSQUAD = '#menu:contextMenu/rejectInvitationToSquad'
     CONTEXTMENU_GOTOBLUEPRINT = '#menu:contextMenu/goToBlueprint'
-    CONTEXTMENU_WINBACKCALLSENDINVITE = '#menu:contextMenu/winBackCallSendInvite'
     DENUNCIATION_1 = '#menu:denunciation/1'
     DENUNCIATION_2 = '#menu:denunciation/2'
     DENUNCIATION_3 = '#menu:denunciation/3'
@@ -1809,6 +1811,7 @@ class MENU(object):
     DATETIME_MONTHS_SHORT_11 = '#menu:dateTime/months/short/11'
     DATETIME_MONTHS_SHORT_12 = '#menu:dateTime/months/short/12'
     DATETIME_SHORTDATEFORMATWITHOUTYEAR = '#menu:dateTime/shortDateFormatWithoutYear'
+    DATETIME_DATEMONTH = '#menu:dateTime/dateMonth'
     VALIDATION_PUBLICINFO_ABBREV_INVALID = '#menu:validation/publicInfo/abbrev/invalid'
     VALIDATION_PUBLICINFO_ABBREV_INVALID_CN = '#menu:validation/publicInfo/abbrev/invalid/CN'
     VALIDATION_PUBLICINFO_ABBREV_INVALID_KR = '#menu:validation/publicInfo/abbrev/invalid/KR'
@@ -2274,7 +2277,7 @@ class MENU(object):
      CONTEXTMENU_MONEYTRANSFER,
      CONTEXTMENU_CREATEPRIVATECHANNEL,
      CONTEXTMENU_ADDTOFRIENDS,
-     CONTEXTMENU_REQUESTFRIENDSHIP,
+     CONTEXTMENU_ADDTOFRIENDSAGAIN,
      CONTEXTMENU_REJECTFRIENDSHIP,
      CONTEXTMENU_REMOVEFROMFRIENDS,
      CONTEXTMENU_ADDTOIGNORED,
@@ -2344,7 +2347,6 @@ class MENU(object):
      CONTEXTMENU_ACCEPTINVITATIONTOSQUAD,
      CONTEXTMENU_REJECTINVITATIONTOSQUAD,
      CONTEXTMENU_GOTOBLUEPRINT,
-     CONTEXTMENU_WINBACKCALLSENDINVITE,
      CONTEXTMENU_VIEWCLANPROFILE,
      CONTEXTMENU_COPYCLANNAME,
      CONTEXTMENU_TELECOMRENT,
@@ -2410,6 +2412,9 @@ class MENU(object):
      TANKCAROUSEL_VEHICLESTATES_INPREMIUMIGRONLY,
      TANKCAROUSEL_VEHICLESTATES_BUYTANK,
      TANKCAROUSEL_VEHICLESTATES_BUYTANKEMPTYCOUNT,
+     TANKCAROUSEL_VEHICLESTATES_NYTANK,
+     TANKCAROUSEL_VEHICLESTATES_NYTANKEMPTYCOUNT,
+     TANKCAROUSEL_VEHICLESTATES_NYTANKSLOTSFULL,
      TANKCAROUSEL_VEHICLESTATES_BUYSLOT,
      TANKCAROUSEL_VEHICLESTATES_RESTORETANK,
      TANKCAROUSEL_VEHICLESTATES_RESTORETANKCOUNT,

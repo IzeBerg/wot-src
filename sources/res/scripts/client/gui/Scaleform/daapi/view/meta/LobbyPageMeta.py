@@ -22,9 +22,13 @@ class LobbyPageMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_closeHelpLayout()
 
-    def as_showWaitingS(self, message):
+    def as_switchLobbyDraggingS(self, value):
         if self._isDAAPIInited():
-            return self.flashObject.as_showWaiting(message)
+            return self.flashObject.as_switchLobbyDragging(value)
+
+    def as_showWaitingS(self, message, softStart, showBg):
+        if self._isDAAPIInited():
+            return self.flashObject.as_showWaiting(message, softStart, showBg)
 
     def as_hideWaitingS(self):
         if self._isDAAPIInited():
@@ -33,3 +37,11 @@ class LobbyPageMeta(View):
     def as_setSubContainerItemsVisibilityS(self, isVisible):
         if self._isDAAPIInited():
             return self.flashObject.as_setSubContainerItemsVisibility(isVisible)
+
+    def as_hideMessengerBarS(self, isVisible):
+        if self._isDAAPIInited():
+            return self.flashObject.as_hideMessengerBar(isVisible)
+
+    def as_updateNYVisibilityS(self, nyWidgetVisible):
+        if self._isDAAPIInited():
+            return self.flashObject.as_updateNYVisibility(nyWidgetVisible)

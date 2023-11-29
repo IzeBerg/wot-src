@@ -19,6 +19,8 @@ try:
 except locale.Error:
     LOG_CURRENT_EXCEPTION()
 
+sys.setrecursionlimit(sys.getrecursionlimit() + 100)
+
 class ServiceLocator(object):
     connectionMgr = dependency.descriptor(IConnectionManager)
     gameplay = dependency.descriptor(IGameplayLogic)
@@ -109,13 +111,9 @@ def init(scriptConfig, engineConfig, userPreferences):
         player_ranks.init()
         import destructible_entities
         destructible_entities.init()
-        from dyn_components_groups import DynComponentsGroupsRepo
-        DynComponentsGroupsRepo.init()
         from AvatarInputHandler.cameras import FovExtended
         FovExtended.instance().resetFov()
         BigWorld.pauseDRRAutoscaling(True)
-        from gui.shared.gui_items import marker_items
-        marker_items.init()
         if constants.HAS_DEV_RESOURCES:
             import development
             development.init()

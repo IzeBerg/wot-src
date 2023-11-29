@@ -5,17 +5,26 @@ from helpers import dependency
 from skeletons.gui.battle_session import IBattleSessionProvider
 from gui.Scaleform.locale.EPIC_BATTLE import EPIC_BATTLE
 from gui.battle_control import avatar_getter
-from gui.battle_control.controllers.battle_hints_ctrl import BattleHintComponent
 from gui.Scaleform.genConsts.GAME_MESSAGES_CONSTS import GAME_MESSAGES_CONSTS
 from gui.Scaleform.daapi.view.battle.shared.game_messages_panel import PlayerMessageData
 from gui.battle_results.components.common import makeEpicBattleFinishResultLabel
 
-class EpicMessagePanel(BattleHintComponent, GameMessagesPanelMeta):
+class EpicMessagePanel(GameMessagesPanelMeta):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     def __init__(self):
         super(EpicMessagePanel, self).__init__()
         self.__blockNewMessages = False
+
+    def showHint(self, hint, data):
+        if hint.name == 'CaptureBase':
+            ctrl = self.sessionProvider.dynamic.missions
+            if ctrl is not None:
+                ctrl.onSectorBaseCaptured(int(data.get('param1', 0)), data.get('param2', 'false') == 'true')
+        return
+
+    def hideHint(self, hint):
+        pass
 
     def sendEndGameMessage(self, winningTeam, reason, extraData):
         isWinner = avatar_getter.getPlayerTeam() == winningTeam
@@ -75,16 +84,6 @@ class EpicMessagePanel(BattleHintComponent, GameMessagesPanelMeta):
         if ctrl is not None:
             ctrl.onIngameMessageReady -= self.__onIngameMessageReady
         return
-
-    def _showHint(self, hint, data):
-        if hint.name == 'CaptureBase':
-            ctrl = self.sessionProvider.dynamic.missions
-            if ctrl is not None:
-                ctrl.onSectorBaseCaptured(int(data.get('param1', 0)), data.get('param2', 'false') == 'true')
-        return
-
-    def _hideHint(self):
-        pass
 
     def __onIngameMessageReady(self, msg):
         if not self.__blockNewMessages:

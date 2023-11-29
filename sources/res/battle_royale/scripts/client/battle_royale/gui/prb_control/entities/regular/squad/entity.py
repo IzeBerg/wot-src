@@ -1,11 +1,8 @@
-from CurrentVehicle import g_currentVehicle
 from constants import PREBATTLE_TYPE, QUEUE_TYPE
 from battle_royale.gui.prb_control.entities.regular.pre_queue.vehicles_watcher import BattleRoyaleVehiclesWatcher
 from battle_royale.gui.prb_control.entities.regular.scheduler import RoyaleScheduler
 from battle_royale.gui.prb_control.entities.regular.squad.actions_validator import BattleRoyaleSquadActionsValidator
 from battle_royale.gui.prb_control.entities.regular.squad.action_handler import BattleRoyaleSquadActionsHandler
-from gui.Scaleform.daapi.view.lobby.header.fight_btn_tooltips import getRoyaleFightBtnTooltipData
-from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.prb_control.entities.base.squad.ctx import SquadSettingsCtx
 from gui.prb_control.entities.base.squad.entity import SquadEntryPoint, SquadEntity
 from gui.prb_control.events_dispatcher import g_eventDispatcher
@@ -65,13 +62,6 @@ class BattleRoyaleSquadEntity(SquadEntity):
             return None
         else:
             return super(BattleRoyaleSquadEntity, self).getConfirmDialogMeta(ctx)
-
-    def getFightBtnTooltipData(self, isStateDisabled):
-        if isStateDisabled:
-            return (getRoyaleFightBtnTooltipData(self.canPlayerDoAction()), False)
-        if g_currentVehicle.isOnlyForBattleRoyaleBattles():
-            return (TOOLTIPS_CONSTANTS.BATTLE_ROYALE_PERF_ADVANCED, True)
-        return super(BattleRoyaleSquadEntity, self).getFightBtnTooltipData(isStateDisabled)
 
     def isVehiclesReadyToBattle(self):
         result = self._actionsValidator.getVehiclesValidator().canPlayerDoAction()

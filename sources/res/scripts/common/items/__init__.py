@@ -2,9 +2,11 @@ import typing, nations
 from items import _xml
 from constants import IS_CLIENT, ITEM_DEFS_PATH
 from soft_exception import SoftException
-from extension_utils import ResMgr
 if IS_CLIENT:
+    import ResMgr
     from helpers import i18n
+else:
+    from realm_utils import ResMgr
 _g_itemTypes = None
 UNDEFINED_ITEM_CD = 0
 ITEM_TYPE_NAMES = ('_reserved', 'vehicle', 'vehicleChassis', 'vehicleTurret', 'vehicleGun',
@@ -193,6 +195,9 @@ def init(preloadEverything, pricesToCollect=None, step=None):
     tankmen.init(preloadEverything, pricesToCollect)
     from items import perks
     perks.init(preloadEverything)
+    from items import new_year, collectibles
+    collectibles.init()
+    new_year.init()
     return
 
 

@@ -48,18 +48,17 @@ class TankSetupCloseConfirmatorsHelper(CloseConfirmatorsHelper):
 
 class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
     _lobbyContext = dependency.descriptor(ILobbyContext)
-    _VIEW_FLAG = ViewFlags.VIEW
-    __slots__ = ('__blur', '_isClosed', '__closeConfirmatorHelper', 'onClose', 'onAnimationEnd',
+    __slots__ = ('__blur', '__isClosed', '__closeConfirmatorHelper', 'onClose', 'onAnimationEnd',
                  '__moneyCache', '_previousSectionName')
 
     def __init__(self, layoutID=R.views.lobby.tanksetup.HangarAmmunitionSetup(), **kwargs):
         settings = ViewSettings(layoutID)
         settings.model = AmmunitionSetupViewModel()
-        settings.flags = self._VIEW_FLAG
+        settings.flags = ViewFlags.VIEW
         settings.kwargs = kwargs
         super(BaseHangarAmmunitionSetupView, self).__init__(settings)
         self.__blur = CachedBlur()
-        self._isClosed = False
+        self.__isClosed = False
         self.__closeConfirmatorHelper = TankSetupCloseConfirmatorsHelper()
         self.__moneyCache = self._itemsCache.items.stats.money
         self._previousSectionName = kwargs.get('selectedSection')
@@ -178,9 +177,9 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
 
     def _addListeners(self):
         super(BaseHangarAmmunitionSetupView, self)._addListeners()
-        self.__closeConfirmatorHelper.start(self._closeConfirmator)
-        self._vehItem.onAcceptComplete += self._onAcceptComplete
-        self._itemsCache.onSyncCompleted += self._onSyncCompleted
+        self.__closeConfirmatorHelper.start(self.__closeConfirmator)
+        self._vehItem.onAcceptComplete += self.__onAcceptComplete
+        self._itemsCache.onSyncCompleted += self.__onSyncCompleted
         self.viewModel.onResized += self.__onResized
         self.viewModel.onViewRendered += self.__onViewRendered
         self.viewModel.onAnimationEnd += self.__onAnimationEnd
@@ -191,8 +190,8 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
     def _removeListeners(self):
         super(BaseHangarAmmunitionSetupView, self)._removeListeners()
         self.__closeConfirmatorHelper.stop()
-        self._vehItem.onAcceptComplete -= self._onAcceptComplete
-        self._itemsCache.onSyncCompleted -= self._onSyncCompleted
+        self._vehItem.onAcceptComplete -= self.__onAcceptComplete
+        self._itemsCache.onSyncCompleted -= self.__onSyncCompleted
         self.viewModel.onResized -= self.__onResized
         self.viewModel.onViewRendered -= self.__onViewRendered
         self.viewModel.onAnimationEnd -= self.__onAnimationEnd
@@ -204,77 +203,7 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
     def _onClose(self):
         quitResult = yield wg_await(self._tankSetup.canQuit())
         if quitResult:
-            self._closeWindow()
-
-    def _updateAmmunitionPanel(self, sectionName=None):
-        super(BaseHangarAmmunitionSetupView, self)._updateAmmunitionPanel(sectionName)
-        if self._previousSectionName != sectionName or sectionName not in (
-         TankSetupConstants.SHELLS, TankSetupConstants.BATTLE_ABILITIES):
-            self.__updateTTC(sectionName)
-        self._previousSectionName = sectionName
-
-    def _onAcceptComplete(self):
-        self._closeWindow()
-
-    def _onSyncCompleted(self, _, diff):
-        if not diff and self._itemsCache.items.stats.money == self.__moneyCache:
-            return
-        else:
-            self.__moneyCache = self._itemsCache.items.stats.money
-            if g_currentVehicle.isLocked() or not g_currentVehicle.isPresent():
-                self._closeWindow()
-                return
-            isRentalChange = self._vehItem.getItem().rentalIsOver != g_currentVehicle.isDisabledInRent()
-            if self._vehItem.getItem().setupLayouts != g_currentVehicle.item.setupLayouts or isRentalChange:
-                needRecreateVehicle = isRentalChange
-                if not isRentalChange:
-                    changedGroupID = None
-                    oldLayouts = self._vehItem.getItem().setupLayouts
-                    newLayouts = g_currentVehicle.item.setupLayouts
-                    for groupID in TANK_SETUP_GROUPS.iterkeys():
-                        if oldLayouts.getLayoutIndex(groupID) != newLayouts.getLayoutIndex(groupID):
-                            changedGroupID = groupID
-                            break
-
-                    selectedSetup = self._tankSetup.getSelectedSetup()
-                    selectedSetupGroup = self._ammunitionPanel.getGroupIdBySection(selectedSetup)
-                    needRecreateVehicle = changedGroupID == selectedSetupGroup
-                if needRecreateVehicle:
-                    self._resetVehicleItem()
-                    self._vehItem.getItem().settings = g_currentVehicle.item.settings
-                    self._tankSetup.resetVehicle(self._vehItem)
-                    self._tankSetup.update(fullUpdate=True)
-                else:
-                    self._resetVehicleSetups()
-                    self._vehItem.getItem().settings = g_currentVehicle.item.settings
-                self._ammunitionPanel.updateVehicle(self._vehItem.getItem())
-            else:
-                self._vehItem.getItem().settings = g_currentVehicle.item.settings
-                self._vehItem.getItem().optDevices.dynSlotType = g_currentVehicle.item.optDevices.dynSlotType
-                self._tankSetup.update(fullUpdate=True)
-            self._tankSetup.currentVehicleUpdated(g_currentVehicle.item)
-            self._updateAmmunitionPanel()
-            return
-
-    def _closeWindow(self):
-        if not self._isClosed:
-            if self.__blur is not None:
-                self.__blur.fini()
-                self.__blur = None
-            self._isClosed = True
-            self.onClose()
-            self.viewModel.setShow(False)
-            playExitTankSetupView()
-        return
-
-    @wg_async
-    def _closeConfirmator(self):
-        if self._isClosed:
-            raise AsyncReturn(True)
-        result = yield wg_await(self._tankSetup.canQuit())
-        if result:
-            self._closeWindow()
-        raise AsyncReturn(result)
+            self.__closeWindow()
 
     @adisp.adisp_process
     def __onSpecializationSelect(self, args=None):
@@ -282,6 +211,13 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
         if action is not None:
             yield action.doAction()
         return
+
+    def _updateAmmunitionPanel(self, sectionName=None):
+        super(BaseHangarAmmunitionSetupView, self)._updateAmmunitionPanel(sectionName)
+        if self._previousSectionName != sectionName or sectionName not in (
+         TankSetupConstants.SHELLS, TankSetupConstants.BATTLE_ABILITIES):
+            self.__updateTTC(sectionName)
+        self._previousSectionName = sectionName
 
     def __updateTTC(self, sectionName=None):
         currentSubView = self._tankSetup.getCurrentSubView()
@@ -320,6 +256,9 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
         self.onAnimationEnd()
         return
 
+    def __onAcceptComplete(self):
+        self.__closeWindow()
+
     def __onDragDropSwap(self, args):
         actionArgs = {'actionType': BaseSetupModel.DRAG_AND_DROP_SLOT_ACTION}
         dragId = args['dragId']
@@ -330,3 +269,64 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
             actionArgs['installedSlotId'] = dragId
             actionArgs['currentSlotId'] = dropId
         self.sendSlotAction(actionArgs)
+
+    def __onSyncCompleted(self, _, diff):
+        if not diff and self._itemsCache.items.stats.money == self.__moneyCache:
+            return
+        else:
+            self.__moneyCache = self._itemsCache.items.stats.money
+            if g_currentVehicle.isLocked() or not g_currentVehicle.isPresent():
+                self.__closeWindow()
+                return
+            isRentalChange = self._vehItem.getItem().rentalIsOver != g_currentVehicle.isDisabledInRent()
+            if self._vehItem.getItem().setupLayouts != g_currentVehicle.item.setupLayouts or isRentalChange:
+                needRecreateVehicle = isRentalChange
+                if not isRentalChange:
+                    changedGroupID = None
+                    oldLayouts = self._vehItem.getItem().setupLayouts
+                    newLayouts = g_currentVehicle.item.setupLayouts
+                    for groupID in TANK_SETUP_GROUPS.iterkeys():
+                        if oldLayouts.getLayoutIndex(groupID) != newLayouts.getLayoutIndex(groupID):
+                            changedGroupID = groupID
+                            break
+
+                    selectedSetup = self._tankSetup.getSelectedSetup()
+                    selectedSetupGroup = self._ammunitionPanel.getGroupIdBySection(selectedSetup)
+                    needRecreateVehicle = changedGroupID == selectedSetupGroup
+                if needRecreateVehicle:
+                    self._resetVehicleItem()
+                    self._vehItem.getItem().settings = g_currentVehicle.item.settings
+                    self._tankSetup.resetVehicle(self._vehItem)
+                    self._tankSetup.update(fullUpdate=True)
+                else:
+                    self._resetVehicleSetups()
+                    self._vehItem.getItem().settings = g_currentVehicle.item.settings
+                self._ammunitionPanel.updateVehicle(self._vehItem.getItem())
+            else:
+                self._vehItem.getItem().settings = g_currentVehicle.item.settings
+                self._vehItem.getItem().optDevices.dynSlotType = g_currentVehicle.item.optDevices.dynSlotType
+                self._tankSetup.update(fullUpdate=True)
+            self._tankSetup.currentVehicleUpdated(g_currentVehicle.item)
+            self._vehItem.getItem().setOutfits(g_currentVehicle.item)
+            self._updateAmmunitionPanel()
+            return
+
+    def __closeWindow(self):
+        if not self.__isClosed:
+            if self.__blur is not None:
+                self.__blur.fini()
+                self.__blur = None
+            self.__isClosed = True
+            self.onClose()
+            self.viewModel.setShow(False)
+            playExitTankSetupView()
+        return
+
+    @wg_async
+    def __closeConfirmator(self):
+        if self.__isClosed:
+            raise AsyncReturn(True)
+        result = yield wg_await(self._tankSetup.canQuit())
+        if result:
+            self.__closeWindow()
+        raise AsyncReturn(result)

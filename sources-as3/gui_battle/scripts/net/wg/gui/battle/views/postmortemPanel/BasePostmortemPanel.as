@@ -13,17 +13,17 @@ package net.wg.gui.battle.views.postmortemPanel
    public class BasePostmortemPanel extends BasePostmortemPanelMeta
    {
       
-      protected static const WHITE_TEXT_COLOR:uint = 16777215;
+      private static const WHITE_TEXT_COLOR:uint = 16777215;
       
       protected static const INVALID_VEHICLE_PANEL:uint = 1 << 8;
       
       private static const EMPTY_STR:String = "";
       
-      protected static const INVALID_PLAYER_INFO:uint = 1 << 7;
+      private static const INVALID_PLAYER_INFO:uint = 1 << 7;
       
       protected static const INVALID_PLAYER_INFO_POSITION:uint = 1 << 9;
       
-      protected static const INVALID_DEAD_REASON_VISIBILITY:uint = 1 << 10;
+      private static const INVALID_DEAD_REASON_VISIBILITY:uint = 1 << 10;
       
       public static const VEHICLE_PANEL_OFFSET_Y:int = 120;
       
@@ -54,13 +54,13 @@ package net.wg.gui.battle.views.postmortemPanel
       
       protected var _userVO:UserVO = null;
       
-      protected var _vehicleLevel:String = "";
+      private var _vehicleLevel:String = "";
       
-      protected var _vehicleImg:String = "";
+      private var _vehicleImg:String = "";
       
-      protected var _vehicleType:String = "";
+      private var _vehicleType:String = "";
       
-      protected var _vehicleName:String = "";
+      private var _vehicleName:String = "";
       
       public function BasePostmortemPanel()
       {

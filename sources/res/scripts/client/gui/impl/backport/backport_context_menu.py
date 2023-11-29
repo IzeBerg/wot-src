@@ -25,8 +25,8 @@ class BackportContextMenuWindow(Window):
         super(BackportContextMenuWindow, self)._initialize()
         contextMenuMgr = self.__appLoader.getApp().contextMenuManager
         if contextMenuMgr is not None:
-            contextMenuMgr.onContextMenuHide += self.__contextMenuHideHandler
             contextMenuMgr.show(self.__contextMenuData.type, self.__contextMenuData.args)
+            contextMenuMgr.onContextMenuHide += self.__contextMenuHideHandler
         else:
             _logger.error("contextMenuMgr doesn't exist.")
         return

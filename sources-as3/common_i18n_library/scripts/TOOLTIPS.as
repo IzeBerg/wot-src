@@ -1667,6 +1667,8 @@ package
       
       public static const MODULEFITS_NOT_REMOVABLE_DISMANTLING_PRICE:String = "#tooltips:moduleFits/not_removable/dismantling/price";
       
+      public static const MODULEFITS_NOT_REMOVABLE_DISMANTLING_LEVEL_PRICE:String = "#tooltips:moduleFits/not_removable/dismantling/level/price";
+      
       public static const MODULEFITS_UPGRADABLE_PRICE:String = "#tooltips:moduleFits/upgradable/price";
       
       public static const MODULEFITS_UPGRADABLE_MODERNIZED_PRICE:String = "#tooltips:moduleFits/upgradable/modernized/price";
@@ -1804,6 +1806,10 @@ package
       public static const TANKCARUSEL_LOCK_TOURNAMENT:String = "#tooltips:tankCarusel/lock/TOURNAMENT";
       
       public static const TANKCARUSEL_LOCK_ROTATION:String = "#tooltips:tankCarusel/lock/rotation";
+      
+      public static const TANKCARUSEL_NEWYEARSLOT_HEADER:String = "#tooltips:tankCarusel/newYearSlot/header";
+      
+      public static const TANKCARUSEL_NEWYEARSLOT_BODY:String = "#tooltips:tankCarusel/newYearSlot/body";
       
       public static const TANKCARUSEL_LOCK_ROAMING:String = "#tooltips:tankCarusel/lock/ROAMING";
       
@@ -3670,6 +3676,8 @@ package
       public static const AWARDITEM_FREEXP_HEADER:String = "#tooltips:awardItem/freeXP/header";
       
       public static const AWARDITEM_FREEXP_BODY:String = "#tooltips:awardItem/freeXP/body";
+      
+      public static const AWARDITEM_CUSTOMFREEXP_HEADER:String = "#tooltips:awardItem/customFreeXP/header";
       
       public static const AWARDITEM_PREMIUM_HEADER:String = "#tooltips:awardItem/premium/header";
       
@@ -6097,6 +6105,14 @@ package
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_WHISKERS_DESC:String = "#tooltips:notrecruitedtankman/commander_whiskers/desc";
       
+      public static const NOTRECRUITEDTANKMAN_TC2023_COMMANDER_1_LABEL:String = "#tooltips:notrecruitedtankman/tc2023_commander_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TC2023_COMMANDER_1_DESC:String = "#tooltips:notrecruitedtankman/tc2023_commander_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TC2023_COMMANDER_2_LABEL:String = "#tooltips:notrecruitedtankman/tc2023_commander_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TC2023_COMMANDER_2_DESC:String = "#tooltips:notrecruitedtankman/tc2023_commander_2/desc";
+      
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/yha_commander/label";
       
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/yha_commander/desc";
@@ -7051,6 +7067,32 @@ package
       
       public static const NOTRECRUITEDTANKMAN_NY23_GIRL_4_DESC:String = "#tooltips:notrecruitedtankman/ny23_girl_4/desc";
       
+      public static const NOTRECRUITEDTANKMAN_NY24DEFAULTGIRL_LABEL:String = "#tooltips:notrecruitedtankman/ny24defaultGirl/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24DEFAULTGIRL_DESC:String = "#tooltips:notrecruitedtankman/ny24defaultGirl/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24DEFAULTGIRL_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/ny24defaultGirl/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_MEN_LABEL:String = "#tooltips:notrecruitedtankman/ny24_men/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_MEN_DESC:String = "#tooltips:notrecruitedtankman/ny24_men/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_1_LABEL:String = "#tooltips:notrecruitedtankman/ny24_girl_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_1_DESC:String = "#tooltips:notrecruitedtankman/ny24_girl_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_2_LABEL:String = "#tooltips:notrecruitedtankman/ny24_girl_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_2_DESC:String = "#tooltips:notrecruitedtankman/ny24_girl_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_3_LABEL:String = "#tooltips:notrecruitedtankman/ny24_girl_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_3_DESC:String = "#tooltips:notrecruitedtankman/ny24_girl_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_4_LABEL:String = "#tooltips:notrecruitedtankman/ny24_girl_4/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_4_DESC:String = "#tooltips:notrecruitedtankman/ny24_girl_4/desc";
+      
       public static const ADDITIONALREWARDS_LEVELHEADER:String = "#tooltips:additionalRewards/levelHeader";
       
       public static const ADDITIONALREWARDS_GOLD:String = "#tooltips:additionalRewards/gold";
@@ -7228,6 +7270,22 @@ package
       public static const VEHCMPSKILLSTOOLTIP_INFO_HEADER:String = "#tooltips:vehCmpSkillsTooltip/info/header";
       
       public static const VEHCMPSKILLSTOOLTIP_INFO_TEXT:String = "#tooltips:vehCmpSkillsTooltip/info/text";
+      
+      public static const AWARDITEM_RANDOMNYINSTRUCTION_HEADER:String = "#tooltips:awardItem/randomNyInstruction/header";
+      
+      public static const AWARDITEM_RANDOMNYINSTRUCTION_BODY:String = "#tooltips:awardItem/randomNyInstruction/body";
+      
+      public static const AWARDITEM_RANDOMNYBOOKLET_HEADER:String = "#tooltips:awardItem/randomNyBooklet/header";
+      
+      public static const AWARDITEM_RANDOMNYBOOKLET_BODY:String = "#tooltips:awardItem/randomNyBooklet/body";
+      
+      public static const AWARDITEM_RANDOMNYGUIDE_HEADER:String = "#tooltips:awardItem/randomNyGuide/header";
+      
+      public static const AWARDITEM_RANDOMNYGUIDE_BODY:String = "#tooltips:awardItem/randomNyGuide/body";
+      
+      public static const AWARDITEM_RANDOMNY24TOY_HEADER:String = "#tooltips:awardItem/randomNy24Toy/header";
+      
+      public static const AWARDITEM_RANDOMNY24TOY_BODY:String = "#tooltips:awardItem/randomNy24Toy/body";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

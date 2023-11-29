@@ -116,8 +116,6 @@ package
       public static const VEH_POST_PROGRESSION:Class = VEH_POST_PROGRESSION;
       
       public static const WAITING:Class = WAITING;
-      
-      public static const WINBACK_CALL:Class = WINBACK_CALL;
        
       
       public function CommonI18NClassManagerMeta()

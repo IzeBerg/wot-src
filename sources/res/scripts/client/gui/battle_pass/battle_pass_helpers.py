@@ -281,10 +281,9 @@ def getDataByTankman(tankman):
     tankmanName = tankman.getFullUserNameByNation(nation)
     skills = tankman.getAllKnownSkills()
     newSkillCount, _ = tankman.getNewSkillCount(onlyFull=True)
-    groupName = tankman.getGroupName()
     if newSkillCount > 0:
         skills += [SKILLS.TYPE_NEW_SKILL] * (newSkillCount - skills.count(SKILLS.TYPE_NEW_SKILL))
-    return (iconName, tankmanName, skills, groupName)
+    return (iconName, tankmanName, skills)
 
 
 def getOfferTokenByGift(tokenID):

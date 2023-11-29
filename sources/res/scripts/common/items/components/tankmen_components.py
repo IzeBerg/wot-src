@@ -14,6 +14,7 @@ class SPECIAL_VOICE_TAG(object):
     CELEBRITY_2021 = 'celebrity21SpecialVoice'
     CELEBRITY_2022 = 'celebrity22SpecialVoice'
     CELEBRITY_2023 = 'celebrity23SpecialVoice'
+    CELEBRITY_2024 = 'celebrity24SpecialVoice'
     DAY_OF_COSMONAUTICS_21 = 'gagarin21_specialVoice'
     MIHO = 'mihoSpecialVoice'
     YHA = 'yhaSpecialVoice'
@@ -22,6 +23,8 @@ class SPECIAL_VOICE_TAG(object):
     HAND_OF_BLOOD = 'handOfBloodSpecialVoice'
     NAMELESS = 'japan:J29_Nameless'
     EDELWEISS = 'japan:J30_Edelweiss'
+    TALKTOME_GOOSE = 'talktomeGooseSpecialVoice'
+    SKILL_4_LTU = 'skill4ltuSpecialVoice'
     BATTLE_OF_BLOGGERS = ('ru1_LebwaSpecialVoice', 'ru2_YushaSpecialVoice', 'ru3_Amway921SpecialVoice',
                           'ru4_KorbenDallasSpecialVoice', 'eu1_MailandSpecialVoice',
                           'eu2_Skill4ltuSpecialVoice', 'eu3_DezgamezSpecialVoice',
@@ -46,7 +49,7 @@ class SPECIAL_VOICE_TAG(object):
                 'commander_bph_2022_4')
     BP_12_M = ('tankman_bp_12_m_5', 'tankman_bp_12_m_8', 'tankman_bp_12_m_9', 'tankman_bp_12_m_10')
     ALL = (
-     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, CELEBRITY_2022, DAY_OF_COSMONAUTICS_21, SABATON_2021, QUICKY_BABY, WITCHES_CREW, CELEBRITY_2023, HAND_OF_BLOOD, NAMELESS, EDELWEISS) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021 + G_I_JOE_2022 + WHITE_TIGER_EVENT_2022 + BPH_2022 + WHITE_TIGER_EVENT_2023 + BP_12_M
+     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, CELEBRITY_2022, DAY_OF_COSMONAUTICS_21, SABATON_2021, QUICKY_BABY, WITCHES_CREW, CELEBRITY_2023, HAND_OF_BLOOD, NAMELESS, EDELWEISS, SKILL_4_LTU, TALKTOME_GOOSE, CELEBRITY_2024) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021 + G_I_JOE_2022 + WHITE_TIGER_EVENT_2022 + BPH_2022 + WHITE_TIGER_EVENT_2023 + BP_12_M
 
 
 class SPECIAL_CREW_TAG(object):

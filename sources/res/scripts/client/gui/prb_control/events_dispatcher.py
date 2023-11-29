@@ -390,14 +390,14 @@ class EventDispatcher(object):
             LOG_DEBUG('View already is loaded', eventName)
             return
         else:
-            if self.__loadingEvent and self.__loadingEvent == eventName:
+            if self.__loadingEvent:
                 LOG_DEBUG('View is still loading. It is ignored', self.__loadingEvent, eventName)
-                return
-            self.__loadingEvent = eventName
-            if arg is None:
-                self.__fireEvent(events.LoadViewEvent(SFViewLoadParams(eventName)))
             else:
-                self.__fireEvent(events.LoadViewEvent(SFViewLoadParams(eventName), ctx=arg))
+                self.__loadingEvent = eventName
+                if arg is None:
+                    self.__fireEvent(events.LoadViewEvent(SFViewLoadParams(eventName)))
+                else:
+                    self.__fireEvent(events.LoadViewEvent(SFViewLoadParams(eventName), ctx=arg))
             return
 
     def __handleRemoveRequest(self, clientID, closeWindow=True):

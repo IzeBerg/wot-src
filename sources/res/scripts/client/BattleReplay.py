@@ -660,7 +660,7 @@ class BattleReplay(object):
     def getGunPitch(self):
         return self.__replayCtrl.gunPitch
 
-    def setGunReloadTime(self, startTime, duration, clipTime=None):
+    def setGunReloadTime(self, startTime, duration):
         self.__replayCtrl.setGunReloadTime(startTime, duration)
 
     def resetArenaPeriod(self):

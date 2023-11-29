@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>110</materialKind>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>content/Hangars/h_newyear/customization/Fir/Garland/NY24_Garland_04_AM.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>110.000000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>0.541176 0.050980 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						speed
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>80.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.168474 10.051625 0.235196</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						angleFalloffParams
+						<Vector4>1.000000 0.180000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>content/Hangars/h_newyear/customization/Fir/Garland/NY24_Garland_04_AM.dds</Texture>
+					</property>
+					<property>
+						g_contrast
+						<Float>4.000000</Float>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>10000.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.150000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>0.431373 0.039216 0.800000 1.000000</Vector4>
+					</property>
+					<property>
+						pattern
+						<Texture>content/Hangars/h_newyear/customization/Fir/Garland/NY24_Garland_04_CM.dds</Texture>
+					</property>
+					<property>
+						phaseMap
+						<Texture>content/Hangars/h_newyear/customization/Fir/Garland/NY24_Garland_04_CM.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						waveLen
+						<Float>4.000000</Float>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>10000.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.168474 10.051625 0.235196</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/lightonly.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>110</materialKind>
+					<property>
+						alphaReference
+						<Int>60</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Fir/Garland/NY24_Garland_04_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.168458 10.051625 0.235198</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-4.239636 -0.579801 -4.530850</min>
+		<max>4.576584 20.683052 5.001243</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>71748</geometrySize>
+	<minUVDensity>0.210558</minUVDensity>
+</root>

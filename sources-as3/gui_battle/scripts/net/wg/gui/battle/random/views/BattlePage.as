@@ -125,14 +125,8 @@ package net.wg.gui.battle.random.views
          {
             this.destroyTimersPanel.updateStage(param1,param2);
          }
-         if(this.fullStats)
-         {
-            this.fullStats.updateStageSize(param1,param2);
-         }
-         if(this.playersPanel != null)
-         {
-            this.playersPanel.updateStageSize(param1,param2);
-         }
+         this.fullStats.updateStageSize(param1,param2);
+         this.playersPanel.updateStageSize(param1,param2);
          this.consumablesPanel.updateStage(param1,param2);
          this.battleDamageLogPanel.x = BATTLE_DAMAGE_LOG_X_POSITION;
          this.battleDamageLogPanel.y = damagePanel.y + BATTLE_DAMAGE_LOG_Y_PADDING;
@@ -154,10 +148,7 @@ package net.wg.gui.battle.random.views
       {
          super.initialize();
          this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
-         if(this.playersPanel != null)
-         {
-            this.playersPanel.addEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);
-         }
+         this.playersPanel.addEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);
          this.teamBasesPanelUI.addEventListener(Event.CHANGE,this.onTeamBasesPanelUIChangeHandler);
          this.endWarningPanel.addEventListener(EndWarningPanelEvent.VISIBILITY_CHANGED,this.onEndWarningPanelVisibilityChangedHandler);
       }
@@ -169,19 +160,10 @@ package net.wg.gui.battle.random.views
       
       override protected function initializeStatisticsController(param1:BattleStatisticDataController) : void
       {
-         if(battleLoading)
-         {
-            param1.registerComponentController(battleLoading);
-         }
+         param1.registerComponentController(battleLoading);
          param1.registerComponentController(this.fragCorrelationBar);
-         if(this.fullStats)
-         {
-            param1.registerComponentController(this.fullStats);
-         }
-         if(this.playersPanel != null)
-         {
-            param1.registerComponentController(this.playersPanel);
-         }
+         param1.registerComponentController(this.fullStats);
+         param1.registerComponentController(this.playersPanel);
          super.initializeStatisticsController(param1);
       }
       
@@ -194,11 +176,8 @@ package net.wg.gui.battle.random.views
          this.consumablesPanel.addEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
          this.battleMessenger.addEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.addEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
-         if(this.playersPanel != null)
-         {
-            this.playersPanel.addEventListener(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE,this.onPlayersPanelOnItemsCountChangeHandler);
-            this.playersPanel.addEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPlayersPanelStateRequestedHandler);
-         }
+         this.playersPanel.addEventListener(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE,this.onPlayersPanelOnItemsCountChangeHandler);
+         this.playersPanel.addEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPlayersPanelStateRequestedHandler);
          this.hintPanel.addEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
          super.configUI();
       }
@@ -210,15 +189,9 @@ package net.wg.gui.battle.random.views
          registerComponent(this.sixthSense,BATTLE_VIEW_ALIASES.SIXTH_SENSE);
          registerComponent(this.damageInfoPanel,BATTLE_VIEW_ALIASES.DAMAGE_INFO_PANEL);
          registerComponent(this.battleDamageLogPanel,BATTLE_VIEW_ALIASES.BATTLE_DAMAGE_LOG_PANEL);
-         if(this.fullStats)
-         {
-            registerComponent(this.fullStats,BATTLE_VIEW_ALIASES.FULL_STATS);
-         }
+         registerComponent(this.fullStats,BATTLE_VIEW_ALIASES.FULL_STATS);
          registerComponent(this.debugPanel,BATTLE_VIEW_ALIASES.DEBUG_PANEL);
-         if(this.playersPanel != null)
-         {
-            registerComponent(this.playersPanel,BATTLE_VIEW_ALIASES.PLAYERS_PANEL);
-         }
+         registerComponent(this.playersPanel,BATTLE_VIEW_ALIASES.PLAYERS_PANEL);
          registerComponent(this.battleMessenger,BATTLE_VIEW_ALIASES.BATTLE_MESSENGER);
          registerComponent(this.fragCorrelationBar,BATTLE_VIEW_ALIASES.FRAG_CORRELATION_BAR);
          registerComponent(this.consumablesPanel,BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL);
@@ -259,12 +232,8 @@ package net.wg.gui.battle.random.views
       {
          this.battleMessenger.removeEventListener(MouseEvent.ROLL_OVER,this.onBattleMessengerRollOverHandler);
          this.battleMessenger.removeEventListener(MouseEvent.ROLL_OUT,this.onBattleMessengerRollOutHandler);
-         if(this.playersPanel != null)
-         {
-            this.playersPanel.removeEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);
-            this.playersPanel.removeEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPlayersPanelStateRequestedHandler);
-            this.playersPanel.removeEventListener(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE,this.onPlayersPanelOnItemsCountChangeHandler);
-         }
+         this.playersPanel.removeEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);
+         this.playersPanel.removeEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPlayersPanelStateRequestedHandler);
          this.teamBasesPanelUI.removeEventListener(Event.CHANGE,this.onTeamBasesPanelUIChangeHandler);
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
@@ -273,6 +242,7 @@ package net.wg.gui.battle.random.views
          this.battleMessenger = null;
          this.endWarningPanel.removeEventListener(EndWarningPanelEvent.VISIBILITY_CHANGED,this.onEndWarningPanelVisibilityChangedHandler);
          this.hintPanel.removeEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
+         this.playersPanel.removeEventListener(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE,this.onPlayersPanelOnItemsCountChangeHandler);
          super.onBeforeDispose();
       }
       
@@ -308,14 +278,13 @@ package net.wg.gui.battle.random.views
       
       override protected function getAllowedMinimapSizeIndex(param1:Number) : Number
       {
-         var _loc2_:Number = Boolean(this.playersPanel) ? Number(this.playersPanel.panelHeight) : Number(0);
-         var _loc3_:Number = App.appHeight - _loc2_ - MINIMAP_MARGIN_HEIGHT;
-         var _loc4_:Number = App.appWidth - this.consumablesPanel.panelWidth - MINIMAP_MARGIN_WIDTH;
-         var _loc5_:Rectangle = null;
+         var _loc2_:Number = App.appHeight - this.playersPanel.panelHeight - MINIMAP_MARGIN_HEIGHT;
+         var _loc3_:Number = App.appWidth - this.consumablesPanel.panelWidth - MINIMAP_MARGIN_WIDTH;
+         var _loc4_:Rectangle = null;
          while(param1 > MinimapSizeConst.MIN_SIZE_INDEX)
          {
-            _loc5_ = minimap.getMinimapRectBySizeIndex(param1);
-            if(_loc3_ - _loc5_.height >= 0 && _loc4_ - _loc5_.width >= 0)
+            _loc4_ = minimap.getMinimapRectBySizeIndex(param1);
+            if(_loc2_ - _loc4_.height >= 0 && _loc3_ - _loc4_.width >= 0)
             {
                break;
             }
@@ -389,8 +358,7 @@ package net.wg.gui.battle.random.views
       
       protected function updateBattleMessengerSwapArea() : void
       {
-         var _loc1_:Number = Boolean(this.playersPanel) ? Number(this.playersPanel.y + this.playersPanel.height) : Number(0);
-         this.battleMessenger.updateSwapAreaHeight(damagePanel.y - _loc1_ + MESSANGER_SWAP_AREA_TOP_OFFSET);
+         this.battleMessenger.updateSwapAreaHeight(damagePanel.y - (this.playersPanel.y + this.playersPanel.height) + MESSANGER_SWAP_AREA_TOP_OFFSET);
       }
       
       protected function updateHintPanelPosition() : void
@@ -439,7 +407,7 @@ package net.wg.gui.battle.random.views
          return this.getChildIndex(param1) > this.getChildIndex(param2);
       }
       
-      protected function updateBattleDamageLogPanelPosition() : void
+      private function updateBattleDamageLogPanelPosition() : void
       {
          var _loc1_:int = BattleDamageLogConstants.MAX_VIEW_RENDER_COUNT;
          if(this.battleDamageLogPanel.x + BattleDamageLogConstants.MAX_DAMAGE_LOG_VIEW_WIDTH >= this.consumablesPanel.x)
@@ -457,9 +425,9 @@ package net.wg.gui.battle.random.views
          }
       }
       
-      protected function updateDamageLogPosition() : void
+      private function updateDamageLogPosition() : void
       {
-         if(this.playersPanel && (this._playersPanelHasInvite || this._playersPanelState > PLAYERS_PANEL_STATE.HIDDEN))
+         if(this._playersPanelHasInvite || this._playersPanelState > PLAYERS_PANEL_STATE.HIDDEN)
          {
             this.battleDamageLogPanel.updateTopContainerPosition(this.playersPanel.listLeft.getRenderersVisibleWidth() + BattleDamageLogPanel.PLAYERS_PANEL_OFFSET);
          }
@@ -510,7 +478,7 @@ package net.wg.gui.battle.random.views
       
       private function onBattleMessengerRollOutHandler(param1:MouseEvent) : void
       {
-         if(!this.battleMessenger.isEnterButtonPressed && this.playersPanel)
+         if(!this.battleMessenger.isEnterButtonPressed)
          {
             this.swapElementsByMouseInteraction(this.battleMessenger,this.playersPanel);
          }
@@ -518,35 +486,26 @@ package net.wg.gui.battle.random.views
       
       private function onBattleMessengerRollOverHandler(param1:MouseEvent) : void
       {
-         if(this.playersPanel != null)
-         {
-            this.swapElementsByMouseInteraction(this.playersPanel,this.battleMessenger);
-         }
+         this.swapElementsByMouseInteraction(this.playersPanel,this.battleMessenger);
       }
       
       private function onBattleMessengerRequestFocusHandler(param1:FocusRequestEvent) : void
       {
          setFocus(param1.focusContainer.getComponentForFocus());
-         if(this.playersPanel != null)
+         if(this.battleMessenger.isEnterButtonPressed)
          {
-            if(this.battleMessenger.isEnterButtonPressed)
-            {
-               this.swapElementsByMouseInteraction(this.playersPanel,this.battleMessenger);
-            }
-            else
-            {
-               this.swapElementsByMouseInteraction(this.battleMessenger,this.playersPanel);
-            }
+            this.swapElementsByMouseInteraction(this.playersPanel,this.battleMessenger);
+         }
+         else
+         {
+            this.swapElementsByMouseInteraction(this.battleMessenger,this.playersPanel);
          }
       }
       
       private function onBattleMessengerRemoveFocusHandler(param1:Event) : void
       {
          setFocus(this);
-         if(this.playersPanel != null)
-         {
-            this.swapElementsByMouseInteraction(this.playersPanel,this.battleMessenger);
-         }
+         this.swapElementsByMouseInteraction(this.playersPanel,this.battleMessenger);
       }
       
       private function onPlayersPanelOnItemsCountChangeHandler(param1:PlayersPanelEvent) : void
@@ -557,8 +516,16 @@ package net.wg.gui.battle.random.views
       
       private function onConsumablesPanelUpdatePositionHandler(param1:ConsumablesPanelEvent) : void
       {
+         if(isPostMortem)
+         {
+            this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
+            this.updateBattleDamageLogPosInPostmortem();
+         }
+         else
+         {
+            this.updateBattleDamageLogPanelPosition();
+         }
          minimap.updateSizeIndex(false);
-         this.сonsumablesPanelUpdatePosition();
       }
       
       private function onConsumablesPanelSwitchPopupHandler(param1:ConsumablesPanelEvent) : void
@@ -568,19 +535,6 @@ package net.wg.gui.battle.random.views
          {
             _loc2_ = !!this.consumablesPanel.isExpand ? int(CONSUMABLES_POPUP_OFFSET) : int(0);
             vehicleMessageList.setLocation(_originalWidth - VEHICLE_MESSAGES_LIST_OFFSET.x >> 1,_originalHeight - VEHICLE_MESSAGES_LIST_OFFSET.y - _loc2_ | 0);
-         }
-      }
-      
-      protected function сonsumablesPanelUpdatePosition() : void
-      {
-         if(isPostMortem)
-         {
-            this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
-            this.updateBattleDamageLogPosInPostmortem();
-         }
-         else
-         {
-            this.updateBattleDamageLogPanelPosition();
          }
       }
    }

@@ -257,10 +257,18 @@ package net.wg.gui.components.controls
       
       override public function set selectedIndex(param1:int) : void
       {
-         var _loc2_:IListItemRenderer = getRendererAt(param1,_scrollPosition);
-         if(_loc2_ && _loc2_.selectable)
+         var _loc2_:IListItemRenderer = null;
+         if(param1 < 0)
          {
-            super.selectedIndex = !!this._isSelectable ? int(param1) : int(-1);
+            super.selectedIndex = -1;
+         }
+         else
+         {
+            _loc2_ = getRendererAt(param1,_scrollPosition);
+            if(_loc2_ && _loc2_.selectable)
+            {
+               super.selectedIndex = !!this._isSelectable ? int(param1) : int(-1);
+            }
          }
       }
       

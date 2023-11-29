@@ -18,6 +18,7 @@ from gui.battle_control.controllers.quest_progress import quest_progress_ctrl
 from gui.battle_control.controllers.sound_ctrls.comp7_battle_sounds import Comp7BattleSoundController
 from gui.battle_control.controllers.sound_ctrls.stronghold_battle_sounds import StrongholdBattleSoundController
 from gui.shared.system_factory import registerBattleControllerRepo
+from gui.battle_control.controllers.sound_ctrls.new_year_battle_sounds import NewYearSoundController
 from skeletons.gui.battle_session import ISharedControllersLocator, IDynamicControllersLocator
 if TYPE_CHECKING:
     from gui.battle_control.controllers.consumables.equipment_ctrl import EquipmentsController
@@ -197,9 +198,6 @@ class SharedControllersLocator(_ControllersLocator, ISharedControllersLocator):
 
 class DynamicControllersLocator(_ControllersLocator, IDynamicControllersLocator):
     __slots__ = ()
-
-    def getControllerByID(self, ctrlID):
-        return self._repository.getController(ctrlID)
 
     @property
     def debug(self):
@@ -427,12 +425,12 @@ class SharedControllersRepository(_ControllersRepository):
         return repository
 
 
-class ControllersRepositoryByBonuses(_ControllersRepository):
+class _ControllersRepositoryByBonuses(_ControllersRepository):
     __slots__ = ()
 
     @classmethod
     def create(cls, setup):
-        repository = super(ControllersRepositoryByBonuses, cls).create(setup)
+        repository = super(_ControllersRepositoryByBonuses, cls).create(setup)
         arenaVisitor = setup.arenaVisitor
         if arenaVisitor.hasRespawns():
             repository.addViewController(respawn_ctrl.RespawnsController(setup), setup)
@@ -449,7 +447,7 @@ class ControllersRepositoryByBonuses(_ControllersRepository):
         return repository
 
 
-class ClassicControllersRepository(ControllersRepositoryByBonuses):
+class ClassicControllersRepository(_ControllersRepositoryByBonuses):
     __slots__ = ()
 
     @classmethod
@@ -461,6 +459,9 @@ class ClassicControllersRepository(ControllersRepositoryByBonuses):
         repository.addViewController(default_maps_ctrl.DefaultMapsController(setup), setup)
         repository.addArenaViewController(battle_field_ctrl.BattleFieldCtrl(), setup)
         repository.addArenaController(cls._getAppearanceCacheController(setup), setup)
+        guiVisitor = setup.arenaVisitor.gui
+        if not (guiVisitor.isStrongholdRange() or guiVisitor.isComp7Battle() or guiVisitor.isFunRandom()):
+            repository.addController(NewYearSoundController())
         return repository
 
     @staticmethod
@@ -490,7 +491,7 @@ class EpicControllersRepository(_ControllersRepository):
         return repository
 
 
-class EventControllerRepository(ControllersRepositoryByBonuses):
+class EventControllerRepository(_ControllersRepositoryByBonuses):
     __slots__ = ()
 
     @classmethod
@@ -506,7 +507,7 @@ class EventControllerRepository(ControllersRepositoryByBonuses):
         return repository
 
 
-class MapsTrainingControllerRepository(ControllersRepositoryByBonuses):
+class MapsTrainingControllerRepository(_ControllersRepositoryByBonuses):
     __slots__ = ()
 
     @classmethod

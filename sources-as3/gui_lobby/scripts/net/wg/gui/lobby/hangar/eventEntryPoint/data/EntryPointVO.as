@@ -10,8 +10,6 @@ package net.wg.gui.lobby.hangar.eventEntryPoint.data
       
       public var swfPath:String = "";
       
-      public var extension:String = "";
-      
       public function EntryPointVO(param1:Object = null)
       {
          super(param1);

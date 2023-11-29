@@ -553,9 +553,9 @@ msgstr ""
 msgid "advanced/camouflageNet"
 msgstr ""
 "Reduces vehicle visibility for a short time after the vehicle stops moving. "
-"The effect is disabled if vehicle moves forwards or backwards, or when the "
-"hull is turned. The effect is not disabled when turning the hull of high-"
-"tier Swedish tank destroyers."
+"The effect is disabled if vehicle moves forwards or backwards, and when the "
+"hull is turned (except for vehicles with hydropneumatic suspension in Siege "
+"mode)."
 
 msgid "advanced/coatedOptics"
 msgstr ""
@@ -809,8 +809,8 @@ msgid "advanced/stereoscope"
 msgstr ""
 "Increases vehicle view range for a short time after the vehicle stops "
 "moving. The effect is disabled if the vehicle moves forwards or backwards, "
-"or when the hull is turned. The effect is not disabled when turning the hull"
-" of high-tier Swedish tank destroyers."
+"and when the hull is turned. (except for vehicles with hydropneumatic "
+"suspension in Siege mode)."
 
 msgid "advanced/turbocharger"
 msgstr ""
@@ -1239,6 +1239,9 @@ msgstr ""
 msgid "awardItem/crystal/header"
 msgstr "Bonds"
 
+msgid "awardItem/customFreeXP/header"
+msgstr "%(value)s Free Experience"
+
 msgid "awardItem/equipCoin/body"
 msgstr ""
 "Components are needed for upgrading and demounting Experimental Equipment."
@@ -1369,6 +1372,40 @@ msgstr ""
 
 msgid "awardItem/randomBooklet/header"
 msgstr "Random Training Booklet"
+
+msgid "awardItem/randomNy24Toy/body"
+msgstr ""
+"Decorations do not affect the Festive Atmosphere Level. They will stay with "
+"you until the event is over and make your Village nice and cozy."
+
+msgid "awardItem/randomNy24Toy/header"
+msgstr "Random Decoration"
+
+msgid "awardItem/randomNyBooklet/body"
+msgstr ""
+"Applied to the whole crew. When studied, the Crew Book provides each crew "
+"member with 20,000 experience. Can be received for completing missions and "
+"participating in game events."
+
+msgid "awardItem/randomNyBooklet/header"
+msgstr "Random Training Booklet"
+
+msgid "awardItem/randomNyGuide/body"
+msgstr ""
+"Applied to the whole crew. When studied, the Crew Book provides each crew "
+"member with 100,000 experience. Can be obtained for participating in game "
+"events."
+
+msgid "awardItem/randomNyGuide/header"
+msgstr "Random Training Guide"
+
+msgid "awardItem/randomNyInstruction/body"
+msgstr ""
+"Directives are effective during one battle. They improve trained perks or "
+"activate those not yet trained. You can purchase directives with credits."
+
+msgid "awardItem/randomNyInstruction/header"
+msgstr "Random Directives for Crew"
 
 msgid "awardItem/rankedBonusBattles/body"
 msgstr ""
@@ -6826,8 +6863,11 @@ msgstr "Unable to fit the current gun into this turret."
 msgid "moduleFits/not_for_this_vehicle_type/text"
 msgstr "Consider mounting compatible gun."
 
+msgid "moduleFits/not_removable/dismantling/level/price"
+msgstr "Demounting Level %(level)s"
+
 msgid "moduleFits/not_removable/dismantling/price"
-msgstr "Demounting cost"
+msgstr "Demounting"
 
 msgid "moduleFits/not_with_installed_equipment/header"
 msgstr "Unable to mount"
@@ -7859,18 +7899,72 @@ msgid "notrecruitedtankman/ny23defaultGirl/label"
 msgstr "Holiday Ops 2023"
 
 msgid "notrecruitedtankman/ny23ruby_girl_1/desc"
-msgstr ""
-"Her dashing beauty, undeniable talent, and unique, contagious laugh are "
-"Milla's unwavering companions on her victory marches down the red carpet. "
-"And the next time you catch her on the silver screen, you will likely "
-"remember the words of the scientist from Milla's most beloved movie: \"I "
-"told you ... perfect!\""
+msgstr "?empty?"
 
 msgid "notrecruitedtankman/ny23ruby_girl_1/event"
-msgstr "Holiday Ops 2023"
+msgstr "?empty?"
 
 msgid "notrecruitedtankman/ny23ruby_girl_1/label"
-msgstr "Holiday Ops 2023"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/ny24_girl_1/desc"
+msgstr ""
+"Awarded for reaching a certain Festive Atmosphere Level during Holiday Ops "
+"2024. The female crew member has the Brothers in Arms perk trained to 100% "
+"and enough experience to train one additional perk to 100%."
+
+msgid "notrecruitedtankman/ny24_girl_1/label"
+msgstr "Holiday Ops 2024"
+
+msgid "notrecruitedtankman/ny24_girl_2/desc"
+msgstr ""
+"Awarded for reaching a certain Festive Atmosphere Level during Holiday Ops "
+"2024. The female crew member has the Brothers in Arms perk trained to 100% "
+"and enough experience to train one additional perk to 100%."
+
+msgid "notrecruitedtankman/ny24_girl_2/label"
+msgstr "Holiday Ops 2024"
+
+msgid "notrecruitedtankman/ny24_girl_3/desc"
+msgstr ""
+"Awarded for reaching a certain Festive Atmosphere Level during Holiday Ops "
+"2024. The female crew member has the Brothers in Arms perk trained to 100% "
+"and enough experience to train one additional perk to 100%."
+
+msgid "notrecruitedtankman/ny24_girl_3/label"
+msgstr "Holiday Ops 2024"
+
+msgid "notrecruitedtankman/ny24_girl_4/desc"
+msgstr ""
+"Awarded for reaching a certain Festive Atmosphere Level during Holiday Ops "
+"2024. The female crew member has the Brothers in Arms perk trained to 100% "
+"and enough experience to train one additional perk to 100%."
+
+msgid "notrecruitedtankman/ny24_girl_4/label"
+msgstr "Holiday Ops 2024"
+
+msgid "notrecruitedtankman/ny24_men/desc"
+msgstr ""
+"Vinnie worked for Santa for decades, handling the naughty list. But times "
+"have changed. Now, he has settled in World of Tanks, where he has everything"
+" he likes: high-caliber guns, sturdy vehicles, and stunning explosions. But "
+"don't get too comfortable, as he might just come by on Christmas Eve and "
+"check whether you've been nice this year. So just...be nice."
+
+msgid "notrecruitedtankman/ny24_men/label"
+msgstr "Holiday Ops 2024"
+
+msgid "notrecruitedtankman/ny24defaultGirl/desc"
+msgstr ""
+"A female crew member is awarded for reaching a specific Festive Atmosphere "
+"Level. The female crew member has the Brothers in Arms perk trained to 100% "
+"and enough experience to train one perk to 100%."
+
+msgid "notrecruitedtankman/ny24defaultGirl/howToGetInfo"
+msgstr "Reach a specific Festive Atmosphere Level."
+
+msgid "notrecruitedtankman/ny24defaultGirl/label"
+msgstr "Holiday Ops 2024"
 
 msgid "notrecruitedtankman/offspring_commander/desc"
 msgstr ""
@@ -8715,6 +8809,26 @@ msgstr ""
 
 msgid "notrecruitedtankman/tankwoman/label"
 msgstr "A unique crew member"
+
+msgid "notrecruitedtankman/tc2023_commander_1/desc"
+msgstr ""
+"TalkToMeGoose, an illustrious commander with a passion for tanks, is now "
+"your wingman in World of Tanks! Known for his dedication, friendliness, and "
+"enthusiasm, TalkToMeGoose is a World of Tanks veteran ready to lead your "
+"crew to a phenomenal victory!"
+
+msgid "notrecruitedtankman/tc2023_commander_1/label"
+msgstr "Unique Commander"
+
+msgid "notrecruitedtankman/tc2023_commander_2/desc"
+msgstr ""
+"Skieeeel AKA Skill4ltu, the baboon king, the legend, the master of bananas, "
+"and a masterful World of Tanks commander, steps onto the battlefield to "
+"stand by your side. With a rich history in the game, the king baboon himself"
+" is ready to lead your crew to triumph."
+
+msgid "notrecruitedtankman/tc2023_commander_2/label"
+msgstr "Unique Commander"
 
 msgid "notrecruitedtankman/twitch1/desc"
 msgstr "An effective commander who can raise the morale of the entire crew."
@@ -11048,6 +11162,12 @@ msgstr ""
 
 msgid "tankCarusel/lock/rotation/header"
 msgstr "Vehicle of Group %(groupNum)s is Unavailable"
+
+msgid "tankCarusel/newYearSlot/body"
+msgstr "Click to go to the Holiday Ops vehicles screen."
+
+msgid "tankCarusel/newYearSlot/header"
+msgstr "Holiday Ops Vehicles"
 
 msgid "tankCaruselTooltip/vehicleType/elite/AT-SPG"
 msgstr "Elite Tank Destroyer"
