@@ -1224,6 +1224,7 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/360x270/R187_Object_590.png', 'gui/maps/shop/vehicles/360x270/R188_Object_259A.png',
                           'gui/maps/shop/vehicles/360x270/R188_Object_259A_CN.png',
                           'gui/maps/shop/vehicles/360x270/R18_SU-152.png', 'gui/maps/shop/vehicles/360x270/R191_Object_283.png',
+                          'gui/maps/shop/vehicles/360x270/R191_Object_283_pixelated.png',
                           'gui/maps/shop/vehicles/360x270/R192_K_2.png', 'gui/maps/shop/vehicles/360x270/R193_M4A2_T_34.png',
                           'gui/maps/shop/vehicles/360x270/R194_ST_62_var_2.png',
                           'gui/maps/shop/vehicles/360x270/R195_T34M_54.png', 'gui/maps/shop/vehicles/360x270/R196_Object_452K.png',

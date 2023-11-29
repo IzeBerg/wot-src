@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>garland</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ny_megazone_garland_castle_FWD.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1.000000 0.427451 0.000000 5.000000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>4.000000 4.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-1.899469 18.910919 12.635295</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-39.480064 -27.736769 -11.949465</min>
+		<max>35.681126 65.297241 37.220055</max>
+	</boundingBox>
+	<geometrySize>49004</geometrySize>
+	<minUVDensity>0.002347</minUVDensity>
+</root>

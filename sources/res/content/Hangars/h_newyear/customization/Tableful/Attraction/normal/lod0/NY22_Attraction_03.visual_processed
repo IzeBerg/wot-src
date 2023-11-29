@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>NY22_Attraction_03_FIN</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s6</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd6</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>110</materialKind>
+					<property>
+						alphaReference
+						<Int>108</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Attraction/NY22_Attraction_01_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Attraction/NY22_Attraction_01_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Attraction/NY22_Attraction_01_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>6.519998 0.953860 -3.981686</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaReference
+						<Int>60</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Attraction/NY22_Attraction_03_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Attraction/NY22_Attraction_03_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Attraction/NY22_Attraction_03_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.088497 2.438746 0.629224</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Tent/NY19_Table_base_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Tent/NY19_Table_base_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Tent/NY19_Table_base_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>1.663702 2.474577 0.620663</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						emissionMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Attraction/NY22_Attraction_03_Garland_AM.dds</Texture>
+					</property>
+					<property>
+						g_contrast
+						<Float>3.000000</Float>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>50.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.130000</Float>
+					</property>
+					<property>
+						g_zeroPhaseLum
+						<Float>0.530000</Float>
+					</property>
+					<property>
+						patternNumber
+						<Int>0</Int>
+					</property>
+					<property>
+						phaseMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Attraction/NY22_Attraction_03_Garland_CM.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						waveLen
+						<Float>3.000000</Float>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>1.800000</Float>
+					</property>
+					<property>
+						g_offsetBlackFwd
+						<Float>0.550000</Float>
+					</property>
+				</material>
+				<groupOrigin>-0.535472 2.699671 0.615387</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.926313 -0.062304 -7.494445</min>
+		<max>8.060805 5.011457 8.735771</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>348504</geometrySize>
+	<minUVDensity>0.003429</minUVDensity>
+</root>

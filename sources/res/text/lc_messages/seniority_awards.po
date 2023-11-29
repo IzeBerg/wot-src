@@ -9,6 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
 
 msgid "multiOpenView/applyLabel"
 msgstr "了解！"
@@ -42,6 +43,12 @@ msgstr ""
 "您的服役资历奖励\n"
 "在等待着您！"
 
+msgid "notifications/selectVehicles/button"
+msgstr "选择"
+
+msgid "notifications/selectVehicles/title"
+msgstr "服役资历奖励坦克"
+
 msgid "notifications/tokens/button"
 msgstr "前往军械库"
 
@@ -63,7 +70,10 @@ msgstr "距令牌被移除还有%(timeLeft)s"
 msgid "notifications/tokens/title"
 msgstr ""
 "使用服役资历令牌\n"
-"兑换您想要的奖励！"
+"兑换奖励！"
+
+msgid "notifications/vehicleSelectionAvailable/title"
+msgstr "选择您想要的坦克！"
 
 msgid "openBoxView/autoOpenTooltip/body"
 msgstr "我们会在{date}为您打开这个专属奖励箱子并赠予你对应的奖励。"
@@ -92,8 +102,14 @@ msgstr "了解！"
 msgid "rewardsView/exchangeCoins"
 msgstr "使用您的令牌在军械库中兑换奖励。"
 
+msgid "rewardsView/gotoHangarBtn"
+msgstr "车库中查看"
+
 msgid "rewardsView/gotoRewardsBtn"
 msgstr "前往军械库"
+
+msgid "rewardsView/info"
+msgstr "关于头衔的更多信息"
 
 msgid "rewardsView/lootBox/descr"
 msgstr "打开箱子领取奖励吧！"
@@ -116,113 +132,35 @@ msgstr "下一个奖励(%(count)s)"
 msgid "rewardsView/openBtn"
 msgstr "打开"
 
-msgid "rewardsView/sacoin/counter"
-msgstr "×%(count)s"
+msgid "rewardsView/selection/available"
+msgstr "%(count)s辆服役资历奖励坦克"
 
-msgid "rewardsView/subTitle/AT"
-msgstr "参与%(gradientStart)sAlpha测试%(gradientEnd)s的奖励"
+msgid "rewardsView/selection/received"
+msgstr "已获得奖励"
 
-msgid "rewardsView/subTitle/BT"
-msgstr "参与%(gradientStart)sBeta测试%(gradientEnd)s的奖励"
+msgid "rewardsView/subTitle/at"
+msgstr "已达成%(gradientStart)老兵%(gradientEnd)头衔"
 
-msgid "rewardsView/subTitle/Y0"
-msgstr "战斗奖励"
+msgid "rewardsView/subTitle/bt"
+msgstr "已达成%(gradientStart)老兵%(gradientEnd)头衔"
 
-msgid "rewardsView/subTitle/Y1"
-msgstr "服役%(gradientStart)s1年%(gradientEnd)s的奖励"
+msgid "rewardsView/subTitle/ctg1"
+msgstr "已达成%(gradientStart)新兵%(gradientEnd)头衔"
 
-msgid "rewardsView/subTitle/Y10"
-msgstr "服役%(gradientStart)s10年%(gradientEnd)s的奖励"
+msgid "rewardsView/subTitle/ctg2"
+msgstr "已达成%(gradientStart)勇士%(gradientEnd)头衔"
 
-msgid "rewardsView/subTitle/Y10_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役10年的奖励"
+msgid "rewardsView/subTitle/ctg3"
+msgstr "已达成%(gradientStart)指挥官%(gradientEnd)头衔"
 
-msgid "rewardsView/subTitle/Y11"
-msgstr "服役%(gradientStart)s11年%(gradientEnd)s的奖励"
+msgid "rewardsView/subTitle/ctg4"
+msgstr "已达成%(gradientStart)军官%(gradientEnd)头衔"
 
-msgid "rewardsView/subTitle/Y11_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役11年的奖励"
+msgid "rewardsView/subTitle/ctg5"
+msgstr "已达成%(gradientStart)老兵%(gradientEnd)头衔"
 
-msgid "rewardsView/subTitle/Y12"
-msgstr "服役%(gradientStart)s12年%(gradientEnd)s的奖励"
-
-msgid "rewardsView/subTitle/Y12_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役12年的奖励"
-
-msgid "rewardsView/subTitle/Y1_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役1年的奖励"
-
-msgid "rewardsView/subTitle/Y2"
-msgstr "服役%(gradientStart)s2年%(gradientEnd)s的奖励"
-
-msgid "rewardsView/subTitle/Y2_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役2年的奖励"
-
-msgid "rewardsView/subTitle/Y3"
-msgstr "服役%(gradientStart)s3年%(gradientEnd)s的奖励"
-
-msgid "rewardsView/subTitle/Y3_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役3年的奖励"
-
-msgid "rewardsView/subTitle/Y4"
-msgstr "服役%(gradientStart)s4年%(gradientEnd)s的奖励"
-
-msgid "rewardsView/subTitle/Y4_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役4年的奖励"
-
-msgid "rewardsView/subTitle/Y5"
-msgstr "服役%(gradientStart)s5年%(gradientEnd)s的奖励"
-
-msgid "rewardsView/subTitle/Y5_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役5年的奖励"
-
-msgid "rewardsView/subTitle/Y6"
-msgstr "服役%(gradientStart)s6年%(gradientEnd)s的奖励"
-
-msgid "rewardsView/subTitle/Y6_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役6年的奖励"
-
-msgid "rewardsView/subTitle/Y7"
-msgstr "服役%(gradientStart)s7年%(gradientEnd)s的奖励"
-
-msgid "rewardsView/subTitle/Y7_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役7年的奖励"
-
-msgid "rewardsView/subTitle/Y8"
-msgstr "服役%(gradientStart)s8年%(gradientEnd)s的奖励"
-
-msgid "rewardsView/subTitle/Y8_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役8年的奖励"
-
-msgid "rewardsView/subTitle/Y9"
-msgstr "服役%(gradientStart)s9年%(gradientEnd)s的奖励"
-
-msgid "rewardsView/subTitle/Y9_BT"
-msgstr ""
-"参与Beta测试和\n"
-"服役9年的奖励"
+msgid "rewardsView/subTitle/ctg6"
+msgstr "已达成%(gradientStart)传说%(gradientEnd)头衔"
 
 msgid "rewardsView/subTitle/otherRewards"
 msgstr "您同时获得:"
@@ -236,14 +174,110 @@ msgstr "关闭"
 msgid "rewardsView/textButton/goto"
 msgstr "前往坦克"
 
+msgid "rewardsView/textButton/select"
+msgstr "选择"
+
 msgid "rewardsView/title"
 msgstr "恭喜！"
+
+msgid "rewardsView/wdrcoin/counter"
+msgstr "×%(count)s"
 
 msgid "specialItem/body"
 msgstr "因战斗资历而获奖。活动结束后，所有剩余的令牌将被移除。"
 
 msgid "specialItem/header"
-msgstr "%(count)s个服役资历令牌"
+msgstr "服役资历令牌: %(count)s"
+
+msgid "tooltip/congratulation/at"
+msgstr "恭喜您达成老兵头衔"
+
+msgid "tooltip/congratulation/bt"
+msgstr "恭喜您达成老兵头衔"
+
+msgid "tooltip/congratulation/ctg1"
+msgstr "恭喜您达成新兵头衔"
+
+msgid "tooltip/congratulation/ctg2"
+msgstr "恭喜您达成勇士头衔"
+
+msgid "tooltip/congratulation/ctg3"
+msgstr "恭喜您达成指挥官头衔"
+
+msgid "tooltip/congratulation/ctg4"
+msgstr "恭喜您达成军官头衔"
+
+msgid "tooltip/congratulation/ctg5"
+msgstr "恭喜您达成老兵头衔"
+
+msgid "tooltip/congratulation/ctg6"
+msgstr "恭喜您达成传说头衔"
+
+msgid "tooltip/medalBlock/label/and"
+msgstr "和"
+
+msgid "tooltip/medalBlock/label/ca"
+msgstr "参加Alpha测试"
+
+msgid "tooltip/medalBlock/label/cb"
+msgstr "参加Beta测试"
+
+msgid "tooltip/medalBlock/label/cbcn"
+msgstr "参加Beta测试"
+
+msgid "tooltip/medalBlock/label/duration"
+msgid_plural "plural/tooltip/medalBlock/label/duration"
+msgstr[0] "服役1年"
+msgstr[1] "服役%(years)s年"
+msgstr[2] "服役%(years)s年"
+
+msgid "tooltip/rank/ctg1"
+msgstr "新兵"
+
+msgid "tooltip/rank/ctg2"
+msgstr "勇士"
+
+msgid "tooltip/rank/ctg3"
+msgstr "指挥官"
+
+msgid "tooltip/rank/ctg4"
+msgstr "军官"
+
+msgid "tooltip/rank/ctg5"
+msgstr "老兵"
+
+msgid "tooltip/rank/ctg6"
+msgstr "传说"
 
 msgid "tooltip/restrictedMode"
 msgstr "操作暂时无法使用。稍后再试。"
+
+msgid "tooltip/segment/ctg1"
+msgstr "未满1年"
+
+msgid "tooltip/segment/ctg2"
+msgstr "1–3年"
+
+msgid "tooltip/segment/ctg3"
+msgstr "4–6年"
+
+msgid "tooltip/segment/ctg4"
+msgstr "7–9年"
+
+msgid "tooltip/segment/ctg5"
+msgstr "10–14年"
+
+msgid "tooltip/segment/ctg6"
+msgstr "15年"
+
+msgid "vehicle/A134_M24E2_SuperChaffee"
+msgstr "一辆拥有出色操控性的传奇轻型坦克。该坦克拥有不俗的平均每分钟损伤和良好的火炮俯仰角，能在战斗中利用不规则地形发挥优势。"
+
+msgid "vehicle/G158_VK2801_105_SPXXI"
+msgstr "该坦克装备了一门大口径火炮，并且装甲防护良好，这对其机动性和操控性造成了一定影响。虽然灵活性欠佳，但它在撞击轻装甲坦克时非常高效。"
+
+msgid "vehicle/R160_T_50_2"
+msgstr "这辆轻型坦克非常适合在战斗的各个阶段进行主动侦察。较小的尺寸和较高的速度使其能避开敌方的射击，这对火力欠佳的它来说极为重要。"
+
+msgid "vehicle/R197_KV_1S_MZ"
+msgstr "该坦克装备V级坦克中唯一的逆向自动装填火炮，非常适合用来对敌方坦克造成爆发损伤，或者为盟友提供火力支援。"
