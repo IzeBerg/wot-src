@@ -149,6 +149,13 @@
 			<undamaged>vehicles/american/A125_AEP_1/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/american/A125_AEP_1/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/american/A125_AEP_1/crash/lod0/Hull.model</exploded>
+			<sets>
+				<A125_AEP_1_MDXXIII4_3DSt>
+					<undamaged>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/crash/lod0/Hull.model</exploded>
+				</A125_AEP_1_MDXXIII4_3DSt>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -182,14 +189,17 @@
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
 				<rayStart>
-					-0.043764 0.154802 3.2941
+					0 0.154802 3.2941
 					<!--BW_String-->
 				</rayStart>
 				<rayEnd>
-					-0.043764 -0.02763 3.21213
+					-0 -0.02763 3.21213
 					<!--BW_String-->
 				</rayEnd>
-				<rayUp>0 0 -1</rayUp>
+				<rayUp>
+					-0 0.409848 -0.912154
+					<!--BW_String-->
+				</rayUp>
 				<size>
 					0.383
 					<!--BW_String-->
@@ -1836,6 +1846,12 @@
 					<!--BW_String-->
 				</anchorShift>
 			</slot>
+			<slot>
+				<slotType>attachment</slotType>
+				<slotId>18000</slotId>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -1895,6 +1911,13 @@
 				<undamaged>vehicles/american/A125_AEP_1/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/american/A125_AEP_1/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/american/A125_AEP_1/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<A125_AEP_1_MDXXIII4_3DSt>
+						<undamaged>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/crash/lod0/Chassis.model</exploded>
+					</A125_AEP_1_MDXXIII4_3DSt>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>MEDIUM</lodDist>
@@ -1976,12 +1999,6 @@
 									<groupInnerOffset>0.386926</groupInnerOffset>
 									<groupOuterOffset>-0.286926</groupOuterOffset>
 								</wheelGroup>
-								<wheelGroup>
-									<wheelName>WD_L0</wheelName>
-									<groupRadius>0.435215</groupRadius>
-									<groupInnerOffset>0.386926</groupInnerOffset>
-									<groupOuterOffset>-0.286926</groupOuterOffset>
-								</wheelGroup>
 							</wheelGroups>
 							<hullCollider>
 								<boxCollider>
@@ -2001,6 +2018,45 @@
 									<row1>0.000000 0.291335 0.071581</row1>
 									<row2>0.000000 -0.128981 0.524950</row2>
 									<row3>0.000000 1.379547 3.449043</row3>
+								</boxCollider>
+							</hullCollider>
+							<hullCollider>
+								<modelsSet>A125_AEP_1_MDXXIII4_3DSt</modelsSet>
+								<boxCollider>
+									<row0>2.320000 0.000000 -0.000000</row0>
+									<row1>0.000000 1.205000 0.000000</row1>
+									<row2>0.000000 0.000000 7.748000</row2>
+									<row3>-0.000000 1.018000 -0.193000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.799000 0.000000 0.000000</row0>
+									<row1>0.000000 0.322000 -0.000000</row1>
+									<row2>-0.000000 0.000000 2.551000</row2>
+									<row3>0.000000 1.421000 2.407000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.799000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.322000 -0.000000</row1>
+									<row2>0.000000 0.000000 3.016000</row2>
+									<row3>0.000000 1.421000 -2.584000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.160000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.396602 -0.000000</row1>
+									<row2>0.000000 0.000000 2.322282</row2>
+									<row3>-0.000000 1.389095 0.037146</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>2.724000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.300000 -0.000000</row1>
+									<row2>0.000000 0.000000 0.882000</row2>
+									<row3>-0.000000 1.111000 0.013000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>2.674000 -0.000000 -0.000001</row0>
+									<row1>0.000000 0.291037 -0.072782</row1>
+									<row2>0.000000 0.131493 0.525808</row2>
+									<row3>-0.000000 1.273000 -3.902000</row3>
 								</boxCollider>
 							</hullCollider>
 						</physicalParams>
@@ -2066,12 +2122,6 @@
 									<groupInnerOffset>-0.386926</groupInnerOffset>
 									<groupOuterOffset>0.286926</groupOuterOffset>
 								</wheelGroup>
-								<wheelGroup>
-									<wheelName>WD_R0</wheelName>
-									<groupRadius>0.416283</groupRadius>
-									<groupInnerOffset>-0.386926</groupInnerOffset>
-									<groupOuterOffset>0.286926</groupOuterOffset>
-								</wheelGroup>
 							</wheelGroups>
 							<hullCollider>
 								<boxCollider>
@@ -2091,6 +2141,45 @@
 									<row1>0.000000 0.291340 0.071560</row1>
 									<row2>0.000000 -0.128942 0.524959</row2>
 									<row3>0.000000 1.379550 3.449040</row3>
+								</boxCollider>
+							</hullCollider>
+							<hullCollider>
+								<modelsSet>A125_AEP_1_MDXXIII4_3DSt</modelsSet>
+								<boxCollider>
+									<row0>2.320000 0.000000 -0.000000</row0>
+									<row1>0.000000 1.205000 0.000000</row1>
+									<row2>0.000000 0.000000 7.748000</row2>
+									<row3>-0.000000 1.018000 -0.193000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.799000 0.000000 0.000000</row0>
+									<row1>0.000000 0.322000 -0.000000</row1>
+									<row2>-0.000000 0.000000 2.551000</row2>
+									<row3>0.000000 1.421000 2.407000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.799000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.322000 -0.000000</row1>
+									<row2>0.000000 0.000000 3.016000</row2>
+									<row3>0.000000 1.421000 -2.584000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.160000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.396602 -0.000000</row1>
+									<row2>0.000000 0.000000 2.322280</row2>
+									<row3>-0.000000 1.389090 0.037146</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>2.724000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.300000 -0.000000</row1>
+									<row2>0.000000 0.000000 0.882000</row2>
+									<row3>-0.000000 1.111000 0.013000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>2.674000 -0.000000 -0.000001</row0>
+									<row1>0.000000 0.291037 -0.072782</row1>
+									<row2>0.000000 0.131493 0.525808</row2>
+									<row3>-0.000000 1.273000 -3.902000</row3>
 								</boxCollider>
 							</hullCollider>
 						</physicalParams>
@@ -2115,15 +2204,6 @@
 							</hingeJointStiffness>
 							<torsionStiffnessStep>8</torsionStiffnessStep>
 							<wheelGroups>
-								<wheelGroup>
-									<wheelName>WD_L3</wheelName>
-									<groupRadius>
-										0.42989
-										<!--BW_String-->
-									</groupRadius>
-									<groupInnerOffset>0.386926</groupInnerOffset>
-									<groupOuterOffset>-0.286926</groupOuterOffset>
-								</wheelGroup>
 								<wheelGroup>
 									<wheelName>W_L5</wheelName>
 									<wheelName>W_L4</wheelName>
@@ -2195,6 +2275,39 @@
 									<row3>0.000000 1.379547 3.449043</row3>
 								</boxCollider>
 							</hullCollider>
+							<hullCollider>
+								<modelsSet>A125_AEP_1_MDXXIII4_3DSt</modelsSet>
+								<boxCollider>
+									<row0>2.320000 0.000000 -0.000000</row0>
+									<row1>0.000000 1.205000 0.000000</row1>
+									<row2>0.000000 0.000000 7.748000</row2>
+									<row3>-0.000000 1.018000 -0.193000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.799000 0.000000 0.000000</row0>
+									<row1>0.000000 0.322000 -0.000000</row1>
+									<row2>-0.000000 0.000000 2.551000</row2>
+									<row3>0.000000 1.421000 2.407000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.799000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.322000 -0.000000</row1>
+									<row2>0.000000 0.000000 3.016000</row2>
+									<row3>0.000000 1.421000 -2.584000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.160000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.396602 -0.000000</row1>
+									<row2>0.000000 0.000000 2.322282</row2>
+									<row3>-0.000000 1.389095 0.037146</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>2.724000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.300000 -0.000000</row1>
+									<row2>0.000000 0.000000 0.882000</row2>
+									<row3>-0.000000 1.111000 0.013000</row3>
+								</boxCollider>
+							</hullCollider>
 						</physicalParams>
 					</trackDebris>
 					<trackDebris>
@@ -2208,12 +2321,6 @@
 							<hingeJointStiffness>48926.886719</hingeJointStiffness>
 							<torsionStiffnessStep>8</torsionStiffnessStep>
 							<wheelGroups>
-								<wheelGroup>
-									<wheelName>WD_R3</wheelName>
-									<groupRadius>0.410958</groupRadius>
-									<groupInnerOffset>-0.386926</groupInnerOffset>
-									<groupOuterOffset>0.286926</groupOuterOffset>
-								</wheelGroup>
 								<wheelGroup>
 									<wheelName>W_R5</wheelName>
 									<wheelName>W_R4</wheelName>
@@ -2283,6 +2390,39 @@
 									<row1>0.000000 0.291340 0.071560</row1>
 									<row2>0.000000 -0.128942 0.524959</row2>
 									<row3>0.000000 1.379550 3.449040</row3>
+								</boxCollider>
+							</hullCollider>
+							<hullCollider>
+								<modelsSet>A125_AEP_1_MDXXIII4_3DSt</modelsSet>
+								<boxCollider>
+									<row0>2.320000 0.000000 -0.000000</row0>
+									<row1>0.000000 1.205000 0.000000</row1>
+									<row2>0.000000 0.000000 7.748000</row2>
+									<row3>-0.000000 1.018000 -0.193000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.799000 0.000000 0.000000</row0>
+									<row1>0.000000 0.322000 -0.000000</row1>
+									<row2>-0.000000 0.000000 2.551000</row2>
+									<row3>0.000000 1.421000 2.407000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.799000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.322000 -0.000000</row1>
+									<row2>0.000000 0.000000 3.016000</row2>
+									<row3>0.000000 1.421000 -2.584000</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.160000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.396602 -0.000000</row1>
+									<row2>0.000000 0.000000 2.322280</row2>
+									<row3>-0.000000 1.389090 0.037146</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>2.724000 0.000000 -0.000000</row0>
+									<row1>-0.000000 0.300000 -0.000000</row1>
+									<row2>0.000000 0.000000 0.882000</row2>
+									<row3>-0.000000 1.111000 0.013000</row3>
 								</boxCollider>
 							</hullCollider>
 						</physicalParams>
@@ -2684,6 +2824,14 @@
 						<UTiles>1</UTiles>
 						<VTiles>1</VTiles>
 					</atlas>
+					<modelSets>
+						<A125_AEP_1_MDXXIII4_3DSt>
+							<segmentModelLeft>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_1.model</segmentModelLeft>
+							<segmentModelRight>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_1.model</segmentModelRight>
+							<segment2ModelLeft>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_2.model</segment2ModelLeft>
+							<segment2ModelRight>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_2.model</segment2ModelRight>
+						</A125_AEP_1_MDXXIII4_3DSt>
+					</modelSets>
 				</trackPair>
 				<trackPair>
 					<trackPairIdx>1</trackPairIdx>
@@ -2709,6 +2857,14 @@
 						<UTiles>1</UTiles>
 						<VTiles>1</VTiles>
 					</atlas>
+					<modelSets>
+						<A125_AEP_1_MDXXIII4_3DSt>
+							<segmentModelLeft>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_1.model</segmentModelLeft>
+							<segmentModelRight>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_1.model</segmentModelRight>
+							<segment2ModelLeft>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_2.model</segment2ModelLeft>
+							<segment2ModelRight>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_2.model</segment2ModelRight>
+						</A125_AEP_1_MDXXIII4_3DSt>
+					</modelSets>
 				</trackPair>
 				<lodDist>SPLINE_TRACK</lodDist>
 			</splineDesc>
@@ -2743,6 +2899,12 @@
 						<model>vehicles/american/A125_AEP_1/track/segment_2.model</model>
 						<length>0.075028</length>
 					</secSegment>
+					<modelSets>
+						<A125_AEP_1_MDXXIII4_3DSt>
+							<mainSegmentModel>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_1.model</mainSegmentModel>
+							<secSegmentModel>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_2.model</secSegmentModel>
+						</A125_AEP_1_MDXXIII4_3DSt>
+					</modelSets>
 					<collisionHull>
 						<top>
 							<part>
@@ -3472,6 +3634,12 @@
 						<model>vehicles/american/A125_AEP_1/track/segment_2.model</model>
 						<length>0.075028</length>
 					</secSegment>
+					<modelSets>
+						<A125_AEP_1_MDXXIII4_3DSt>
+							<mainSegmentModel>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_1.model</mainSegmentModel>
+							<secSegmentModel>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_2.model</secSegmentModel>
+						</A125_AEP_1_MDXXIII4_3DSt>
+					</modelSets>
 					<collisionHull>
 						<top>
 							<part>
@@ -4192,6 +4360,12 @@
 						<model>vehicles/american/A125_AEP_1/track/segment_2.model</model>
 						<length>0.075026</length>
 					</secSegment>
+					<modelSets>
+						<A125_AEP_1_MDXXIII4_3DSt>
+							<mainSegmentModel>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_1.model</mainSegmentModel>
+							<secSegmentModel>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_2.model</secSegmentModel>
+						</A125_AEP_1_MDXXIII4_3DSt>
+					</modelSets>
 					<collisionHull>
 						<top>
 							<part>
@@ -4921,6 +5095,12 @@
 						<model>vehicles/american/A125_AEP_1/track/segment_2.model</model>
 						<length>0.075026</length>
 					</secSegment>
+					<modelSets>
+						<A125_AEP_1_MDXXIII4_3DSt>
+							<mainSegmentModel>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_1.model</mainSegmentModel>
+							<secSegmentModel>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/track/segment_2.model</secSegmentModel>
+						</A125_AEP_1_MDXXIII4_3DSt>
+					</modelSets>
 					<collisionHull>
 						<top>
 							<part>
@@ -5800,6 +5980,13 @@
 						<undamaged>vehicles/american/A125_AEP_1/normal/lod0/Gun_02.model</undamaged>
 						<destroyed>vehicles/american/A125_AEP_1/crash/lod0/Gun_02.model</destroyed>
 						<exploded>vehicles/american/A125_AEP_1/crash/lod0/Gun_02.model</exploded>
+						<sets>
+							<A125_AEP_1_MDXXIII4_3DSt>
+								<undamaged>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/normal/lod0/Gun_02.model</undamaged>
+								<destroyed>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/crash/lod0/Gun_02.model</destroyed>
+								<exploded>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/crash/lod0/Gun_02.model</exploded>
+							</A125_AEP_1_MDXXIII4_3DSt>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/american/A125_AEP_1/collision/Gun_02.model</collisionModelServer>
@@ -5861,6 +6048,27 @@
 								<!--BW_String-->
 							</size>
 						</slot>
+						<slot>
+							<slotType>insigniaOnGun</slotType>
+							<slotId>49001</slotId>
+							<rayStart>
+								0 -0 3.44245
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								0 -0 3.99245
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.102 0 0
+								<!--BW_String-->
+							</rayUp>
+							<compatibleModels>A125_AEP_1_MDXXIII4_3DSt</compatibleModels>
+							<size>
+								0.55
+								<!--BW_String-->
+							</size>
+						</slot>
 					</customizationSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -5886,6 +6094,13 @@
 				<undamaged>vehicles/american/A125_AEP_1/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/american/A125_AEP_1/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/american/A125_AEP_1/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<A125_AEP_1_MDXXIII4_3DSt>
+						<undamaged>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/american/A125_AEP_1/_skins/A125_AEP_1_MDXXIII4_3DSt/crash/lod0/Turret_01.model</exploded>
+					</A125_AEP_1_MDXXIII4_3DSt>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/american/A125_AEP_1/collision/Turret_01.model</collisionModelServer>

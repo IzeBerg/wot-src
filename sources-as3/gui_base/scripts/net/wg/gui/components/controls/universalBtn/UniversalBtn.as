@@ -10,7 +10,6 @@ package net.wg.gui.components.controls.universalBtn
    import flash.text.TextFormat;
    import flash.text.TextFormatAlign;
    import flash.utils.Dictionary;
-   import net.wg.data.constants.Fonts;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.gui.components.controls.BitmapFill;
@@ -97,6 +96,14 @@ package net.wg.gui.components.controls.universalBtn
       
       private var _alertIndicatorVisible:Boolean;
       
+      private var _dispatchResizeEvent:Boolean = true;
+      
+      private var _placeIconFromBorder:Boolean = false;
+      
+      private var _iconOffsetX:int = 0;
+      
+      private var _currentFont:String = "$TitleFont";
+      
       public function UniversalBtn()
       {
          super();
@@ -121,7 +128,7 @@ package net.wg.gui.components.controls.universalBtn
          textField.name = TEXT_FIELD_DISPLAY_NAME;
          textField.selectable = false;
          this._tFormat = textField.defaultTextFormat;
-         this._tFormat.font = Fonts.TITLE_FONT;
+         this._tFormat.font = this._currentFont;
          this._tFormat.align = TextFormatAlign.CENTER;
          textField.defaultTextFormat = this._tFormat;
          this.addChildAt(textField,TEXT_FIELD_LAYOUT_INDEX);
@@ -203,7 +210,10 @@ package net.wg.gui.components.controls.universalBtn
          if(this.canChangeSize(_loc1_))
          {
             this.width = _loc1_;
-            dispatchEvent(new Event(Event.RESIZE,true));
+            if(this._dispatchResizeEvent)
+            {
+               dispatchEvent(new Event(Event.RESIZE,true));
+            }
             if(this._needRestoreVisibilityAfterCreate)
             {
                this.visible = this._visibilityBeforeInitialized;
@@ -391,7 +401,18 @@ package net.wg.gui.components.controls.universalBtn
             _loc4_ = _loc3_ - (textField.width >> 1);
             if(_loc6_)
             {
-               if(this._iconAlign == TextFieldAutoSize.RIGHT)
+               if(this._placeIconFromBorder)
+               {
+                  if(this._iconAlign == TextFieldAutoSize.RIGHT)
+                  {
+                     _loc4_ = hitMc.width - this._iconOffsetX - this.image.width;
+                  }
+                  else
+                  {
+                     _loc4_ = this._iconOffsetX;
+                  }
+               }
+               else if(this._iconAlign == TextFieldAutoSize.RIGHT)
                {
                   _loc4_ += textField.width + (this._iconOffsetText - this.image.width >> 1);
                }
@@ -400,6 +421,7 @@ package net.wg.gui.components.controls.universalBtn
                   _loc4_ -= this.image.width + this._iconOffsetText >> 1;
                }
             }
+            textField.y = this.height - textField.height >> 1;
          }
          else if(_loc6_)
          {
@@ -556,6 +578,31 @@ package net.wg.gui.components.controls.universalBtn
       public function get styleID() : String
       {
          return this._styleID;
+      }
+      
+      public function set dispatchResizeEvent(param1:Boolean) : void
+      {
+         this._dispatchResizeEvent = param1;
+      }
+      
+      public function set placeIconFromBorder(param1:Boolean) : void
+      {
+         this._placeIconFromBorder = param1;
+      }
+      
+      public function set iconOffsetX(param1:int) : void
+      {
+         this._iconOffsetX = param1;
+      }
+      
+      public function set currentFont(param1:String) : void
+      {
+         if(this._currentFont != param1)
+         {
+            this._currentFont = param1;
+            this._tFormat.font = param1;
+            textField.defaultTextFormat = this._tFormat;
+         }
       }
       
       private function onIconChangeHandler(param1:Event) : void

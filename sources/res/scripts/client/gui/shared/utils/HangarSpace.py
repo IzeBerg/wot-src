@@ -373,11 +373,11 @@ class HangarSpace(IHangarSpace):
                 self.onMouseUp()
 
     @g_execute_after_hangar_space_inited
-    def updatePreviewVehicle(self, vehicle, outfit=None):
+    def updatePreviewVehicle(self, vehicle, outfit=None, waitingSoftStart=False, showWaitingBg=True):
         if self.__inited:
             self.__isModelLoaded = False
             self.onVehicleChangeStarted()
-            Waiting.show('loadHangarSpaceVehicle', isSingle=True)
+            Waiting.show('loadHangarSpaceVehicle', isSingle=True, softStart=waitingSoftStart, showBg=showWaitingBg)
             self.__space.recreateVehicle(vehicle.descriptor, vehicle.modelState, outfit=outfit)
             self.__lastUpdatedVehicle = vehicle
 
@@ -402,11 +402,11 @@ class HangarSpace(IHangarSpace):
         return Math.Vector3(0.0)
 
     @g_execute_after_hangar_space_inited
-    def removeVehicle(self):
+    def removeVehicle(self, waitingSoftStart=False, showWaitingBg=True):
         if self.__inited:
             self.__isModelLoaded = False
             self.onVehicleChangeStarted()
-            Waiting.show('loadHangarSpaceVehicle', isSingle=True)
+            Waiting.show('loadHangarSpaceVehicle', isSingle=True, softStart=waitingSoftStart, showBg=showWaitingBg)
             if self.__space is not None:
                 self.__space.removeVehicle()
             Waiting.hide('loadHangarSpaceVehicle')

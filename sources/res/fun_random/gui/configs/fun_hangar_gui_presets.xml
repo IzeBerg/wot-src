@@ -13,12 +13,33 @@
 				</component>
 			</components>
 		</preset>
+		<preset>
+			<name>new_year</name>
+			<basePreset>default</basePreset>
+			<components>
+				<component>
+					<name>carousel</name>
+					<visible>True</visible>
+					<type>funRandomTankCarousel</type>
+					<layout>TankCarouselUI</layout>
+				</component>
+				<component>
+					<name>fepNewYearWidget</name>
+					<visible>True</visible>
+				</component>
+			</components>
+		</preset>
 	</presets>
 	<queueTypePresets>
 		<item>
 			<queueType>28</queueType>
 			<subTypes>0 1</subTypes>
 			<presetName>standard</presetName>
+		</item>
+		<item>
+			<queueType>28</queueType>
+			<subTypes>2</subTypes>
+			<presetName>new_year</presetName>
 		</item>
 	</queueTypePresets>
 </root>

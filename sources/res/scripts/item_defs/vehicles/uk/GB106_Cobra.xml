@@ -110,6 +110,13 @@
 			<undamaged>vehicles/british/GB106_Cobra/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/british/GB106_Cobra/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/british/GB106_Cobra/crash/lod0/Hull.model</exploded>
+			<sets>
+				<GB106_Cobra_MDXXIII4_3DSt>
+					<undamaged>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/crash/lod0/Hull.model</exploded>
+				</GB106_Cobra_MDXXIII4_3DSt>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -145,14 +152,8 @@
 			<slot>
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
-				<rayStart>
-					-0.011847 0.226844 2.84752
-					<!--BW_String-->
-				</rayStart>
-				<rayEnd>
-					-0.011847 0.019008 2.72753
-					<!--BW_String-->
-				</rayEnd>
+				<rayStart>0.000136 0.293622 2.228325</rayStart>
+				<rayEnd>0.000137 0.093622 2.228325</rayEnd>
 				<rayUp>0 0 -1</rayUp>
 				<size>
 					0.28
@@ -1634,6 +1635,13 @@
 				<undamaged>vehicles/british/GB106_Cobra/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/british/GB106_Cobra/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/british/GB106_Cobra/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<GB106_Cobra_MDXXIII4_3DSt>
+						<undamaged>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/crash/lod0/Chassis.model</exploded>
+					</GB106_Cobra_MDXXIII4_3DSt>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>FAR</lodDist>
@@ -2140,6 +2148,12 @@
 						<UTiles>1</UTiles>
 						<VTiles>1</VTiles>
 					</atlas>
+					<modelSets>
+						<GB106_Cobra_MDXXIII4_3DSt>
+							<segmentModelLeft>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/track/segment_01.model</segmentModelLeft>
+							<segmentModelRight>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/track/segment_01.model</segmentModelRight>
+						</GB106_Cobra_MDXXIII4_3DSt>
+					</modelSets>
 				</trackPair>
 				<lodDist>SPLINE_TRACK</lodDist>
 			</splineDesc>
@@ -2173,6 +2187,11 @@
 						<model>vehicles/british/GB106_Cobra/track/segment_01.model</model>
 						<length>0.119715</length>
 					</mainSegment>
+					<modelSets>
+						<GB106_Cobra_MDXXIII4_3DSt>
+							<mainSegmentModel>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/track/segment_01.model</mainSegmentModel>
+						</GB106_Cobra_MDXXIII4_3DSt>
+					</modelSets>
 					<collisionHull>
 						<bottom/>
 						<top>
@@ -2750,6 +2769,11 @@
 						<model>vehicles/british/GB106_Cobra/track/segment_01.model</model>
 						<length>0.119715</length>
 					</mainSegment>
+					<modelSets>
+						<GB106_Cobra_MDXXIII4_3DSt>
+							<mainSegmentModel>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/track/segment_01.model</mainSegmentModel>
+						</GB106_Cobra_MDXXIII4_3DSt>
+					</modelSets>
 					<collisionHull>
 						<bottom/>
 						<top>
@@ -3411,6 +3435,13 @@
 						<undamaged>vehicles/british/GB106_Cobra/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/british/GB106_Cobra/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/british/GB106_Cobra/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<GB106_Cobra_MDXXIII4_3DSt>
+								<undamaged>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/crash/lod0/Gun_01.model</exploded>
+							</GB106_Cobra_MDXXIII4_3DSt>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/british/GB106_Cobra/collision/Gun_01.model</collisionModelServer>
@@ -4328,6 +4359,10 @@
 						</customizableVehicleAreas>
 					</customization>
 					<edgeByVisualModel>false</edgeByVisualModel>
+					<shotOffset>
+						0.003176 -0.12553 0
+						<!--BW_String-->
+					</shotOffset>
 					<camouflage>
 						<density>
 							117.22 117.336
@@ -4345,6 +4380,13 @@
 				<undamaged>vehicles/british/GB106_Cobra/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/british/GB106_Cobra/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/british/GB106_Cobra/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<GB106_Cobra_MDXXIII4_3DSt>
+						<undamaged>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/british/GB106_Cobra/_skins/GB106_Cobra_MDXXIII4_3DSt/crash/lod0/Turret_01.model</exploded>
+					</GB106_Cobra_MDXXIII4_3DSt>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/british/GB106_Cobra/collision/Turret_01.model</collisionModelServer>

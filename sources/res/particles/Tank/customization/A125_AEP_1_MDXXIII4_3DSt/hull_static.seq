@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>2.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Engine_Thr_L</name>
+		<type>particle</type>
+		<resource>particles/Tank/customization/A125_AEP_1_MDXXIII4_3DSt/engine_idle.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.433952 0.394190 -3.084867</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Engine_Thr_R</name>
+		<type>particle</type>
+		<resource>particles/Tank/customization/A125_AEP_1_MDXXIII4_3DSt/engine_idle.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.433382 0.394190 -3.084870</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>jetback_left</name>
+		<type>model</type>
+		<resource>particles/Tank/customization/A125_AEP_1_MDXXIII4_3DSt/disc_plain.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.433952 0.394190 -3.028790</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.800000 0.800000 0.800000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>m_enginejet</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 0.462745 0.407843 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -8.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.054581</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>1.000000 0.462745 0.407843 0.789084</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -1.054581</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 1.094946</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>1.000000 0.462745 0.407843 1.044571</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 1.094946</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.641687</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.000000 0.462745 0.407843 0.937623</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.641687</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.374262</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>1.000000 0.462745 0.407843 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.374262</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.779970</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.166667</startTime>
+				<value>1.000000 0.462745 0.407843 0.288013</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -1.779970</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 2.171372</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.533333</startTime>
+				<value>1.000000 0.462745 0.407843 1.084181</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 2.171372</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.378438</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.700000</startTime>
+				<value>1.000000 0.462745 0.407843 0.854441</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -1.378438</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.485196</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>1.000000 0.462745 0.407843 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.485196</inTangent>
+				<outTangent>-0.000000 0.000001 -0.000000 -0.843749</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>m_enginejet</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>20.000000 2.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>jetback_right</name>
+		<type>model</type>
+		<resource>particles/Tank/customization/A125_AEP_1_MDXXIII4_3DSt/disc_plain.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.433382 0.394190 -3.028793</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.800000 0.800000 0.800000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>m_enginejet</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 0.462745 0.407843 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -8.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.054581</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>1.000000 0.462745 0.407843 0.789084</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -1.054581</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 1.094946</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>1.000000 0.462745 0.407843 1.044571</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 1.094946</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.641687</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.000000 0.462745 0.407843 0.937623</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.641687</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.374262</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>1.000000 0.462745 0.407843 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.374262</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.779970</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.166667</startTime>
+				<value>1.000000 0.462745 0.407843 0.288013</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -1.779970</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 2.171372</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.533333</startTime>
+				<value>1.000000 0.462745 0.407843 1.084181</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 2.171372</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -1.378438</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.700000</startTime>
+				<value>1.000000 0.462745 0.407843 0.854441</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -1.378438</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.485196</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>1.000000 0.462745 0.407843 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.485196</inTangent>
+				<outTangent>-0.000000 0.000001 -0.000000 -0.843749</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>m_enginejet</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>20.000000 2.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>20.000000 2.000000 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

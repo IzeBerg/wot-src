@@ -115,6 +115,9 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
                break;
             case IconsTypes.CRYSTAL:
                _loc2_ = IconsTypes.CRYSTAL_COLOR;
+               break;
+            case IconsTypes.WDR_COIN:
+               _loc2_ = IconsTypes.WDR_COIN_COLOR;
          }
          return _loc2_;
       }
@@ -189,11 +192,12 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
                   else
                   {
                      this.strikeline.visible = this.oldPriceTf.visible = this.actionPrice.visible = false;
-                     this.priceIcon.visible = true;
+                     this.priceIcon.visible = this._data.priceType;
                   }
                   this.currentPriceTf.textColor = getCurrentPriceTextColor(this._data.priceType);
                   this.currentPriceTf.text = App.utils.commons.formatNumberToStringWithSpaces(this._data.price);
                   this.actionButton.enabled = this._data.actionBtnEnabled;
+                  this.actionButton.label = this._data.actionBtnLabel;
                   this.divider.visible = this.timeRemainingDescTf.visible = this.timeIcon.visible = this.timeRemainingTf.visible = _loc2_;
                   if(this.infoMsgTf.visible)
                   {

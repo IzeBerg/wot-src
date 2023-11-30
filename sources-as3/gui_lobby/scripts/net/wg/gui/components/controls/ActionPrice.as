@@ -292,6 +292,9 @@ package net.wg.gui.components.controls
                break;
             case IconsTypes.CRYSTAL:
                _loc2_ = CURRENCIES_CONSTANTS.CRYSTAL_COLOR;
+               break;
+            case IconsTypes.WDR_COIN:
+               _loc2_ = CURRENCIES_CONSTANTS.WDR_COIN_COLOR;
          }
          return _loc2_;
       }

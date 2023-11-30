@@ -16,10 +16,12 @@ from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
+from skeletons.new_year import INewYearController
 from skeletons.tutorial import ITutorialLoader
 
 class BattleMattersHintsHelper(object):
     __settingsCache = dependency.descriptor(ISettingsCache)
+    __nyController = dependency.descriptor(INewYearController)
     __slots__ = ('__hints', '__hasHintListeners', '__battleMattersController')
 
     def __init__(self, controller):
@@ -45,12 +47,14 @@ class BattleMattersHintsHelper(object):
         self.__hasHintListeners = True
         g_playerEvents.onAccountBecomeNonPlayer += self.__onAccountBecomeNonPlayer
         g_playerEvents.onAccountBecomePlayer += self.__onAccountBecomePlayer
+        self.__nyController.onNyViewVisibilityChange += self.__onNyViewVisibilityChange
 
     def __removeHintsListeners(self):
         g_playerEvents.onAccountBecomeNonPlayer -= self.__onAccountBecomeNonPlayer
         g_playerEvents.onAccountBecomePlayer -= self.__onAccountBecomePlayer
         self.__battleMattersController.onStateChanged -= self.__onStateChanged
         self.__settingsCache.onSyncCompleted -= self.__onSettingsSyncCompleted
+        self.__nyController.onNyViewVisibilityChange -= self.__onNyViewVisibilityChange
         self.__hasHintListeners = False
 
     def __onAccountBecomePlayer(self):
@@ -71,6 +75,9 @@ class BattleMattersHintsHelper(object):
     def __onSettingsSyncCompleted(self):
         self.__checkHints()
 
+    def __onNyViewVisibilityChange(self, _):
+        self.__onStateChanged()
+
     def __checkHints(self):
         availableHints = []
         for hint in self.__hints:
@@ -86,7 +93,7 @@ class BattleMattersHintsHelper(object):
             self.__removeHintsListeners()
 
     def __startHints(self):
-        if self.__battleMattersController.isActive():
+        if self.__battleMattersController.isActive() and not self.__nyController.isNyViewShown():
             for hint in self.__hints:
                 hint.start()
 
@@ -95,7 +102,7 @@ class BattleMattersHintsHelper(object):
             hint.stop()
 
     def __onStateChanged(self):
-        if self.__battleMattersController.isActive():
+        if self.__battleMattersController.isActive() and not self.__nyController.isNyViewShown():
             self.__startHints()
         else:
             self.__stopHints()

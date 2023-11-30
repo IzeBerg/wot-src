@@ -2,10 +2,10 @@ import logging, typing
 from collections import namedtuple
 from functools import partial
 import wg_async as future_async
+from constants import IS_EDITOR
 from account_helpers import isLongDisconnectedFromCenter
 from account_helpers.AccountSettings import AccountSettings
 from adisp import adisp_async, adisp_process
-from constants import IS_EDITOR
 from gui import DialogsInterface, makeHtmlString
 from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.daapi.view import dialogs

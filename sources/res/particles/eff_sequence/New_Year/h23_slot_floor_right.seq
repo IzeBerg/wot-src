@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>2.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>magic_glow</name>
+		<type>particle</type>
+		<resource>particles/Environment/hangar/h23_slot_glow_point3.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>2.000000</duration>
+				<value>null|root</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.000014 -0.000012 0.946437</value>
+				<inTangent>2.179074 1.214758 -0.164303</inTangent>
+				<outTangent>2.179074 1.214758 -0.164303</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.506601</startTime>
+				<value>1.103900 0.309977 -0.029024</value>
+				<inTangent>-0.107292 0.233014 -3.153763</inTangent>
+				<outTangent>-0.107292 0.233014 -3.153763</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.967789</startTime>
+				<value>-0.000020 0.474708 -0.787180</value>
+				<inTangent>-2.140492 0.921288 -0.005577</inTangent>
+				<outTangent>-2.140492 0.921288 -0.005577</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.473861</startTime>
+				<value>-1.145899 0.315187 0.057133</value>
+				<inTangent>-0.146565 -2.733650 3.938321</inTangent>
+				<outTangent>-0.146565 -2.733650 3.938321</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>-0.000014 -0.000012 0.946437</value>
+				<inTangent>2.052176 -0.521827 0.278361</inTangent>
+				<outTangent>2.052176 -0.521827 0.278361</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>null</name>
+		<type>model</type>
+		<resource>content/environment/env_null_model/null_model.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>3.379000 1.088000 -7.420000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -47.160000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.701000 1.701000 1.701000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

@@ -758,6 +758,7 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 				<battlePassPoints>_(#quests:bonusName/battlePassPoints/preview) &lt;font color=&apos;#95907F&apos;&gt;%(value)s &lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/battlePassPoints.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos; /&gt;</battlePassPoints>
 				<battle_bonus_x5>&lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/bonus_x5.png&apos; width=&apos;46&apos; height=&apos;18&apos; vspace=&apos;-4&apos; /&gt;&lt;font color=&apos;#95907F&apos;&gt;(x%(value)s) &lt;/font&gt;</battle_bonus_x5>
 				<crew_bonus_x3>&lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/bonus_x3.png&apos; width=&apos;46&apos; height=&apos;18&apos; vspace=&apos;-4&apos; /&gt;&lt;font color=&apos;#95907F&apos;&gt;(x%(value)s) &lt;/font&gt;</crew_bonus_x3>
+				<ny23RandomResources>&lt;font color=&apos;#CED9D9&apos;&gt;%(value)s&lt;/font&gt; _(#quests:bonuses/item/ny23RandomResources)</ny23RandomResources>
 			</bonuses>
 			<carouselBonuses>
 				<credits>&lt;font face=&apos;$FieldFont&apos; size=&apos;22&apos; color=&apos;#CED9D9&apos;&gt;&lt;b&gt;%(value)s &lt;/b&gt;&lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/CreditsIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; /&gt;</credits>
@@ -1017,6 +1018,8 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<bpcoinBig>&lt;img src=&apos;img://gui/maps/icons/library/BpcoinIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</bpcoinBig>
 			<bpbit>&lt;img src=&apos;img://gui/maps/icons/library/battlePassPoints.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</bpbit>
 			<bpbitBig>&lt;img src=&apos;img://gui/maps/icons/library/battlePassPoints.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</bpbitBig>
+			<wdrcoin>&lt;img src=&apos;img://gui/maps/icons/library/wdrcoinIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</wdrcoin>
+			<wdrcoinBig>&lt;img src=&apos;img://gui/maps/icons/library/wdrcoinIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</wdrcoinBig>
 			<xpCost>&lt;img src=&apos;img://gui/maps/icons/library/XpCostIcon-2.png&apos; width=&apos;18&apos; height=&apos;18&apos; vspace=&apos;-4&apos;/&gt;</xpCost>
 			<xpCostBig>&lt;img src=&apos;img://gui/maps/icons/library/XpCostIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</xpCostBig>
 			<xp>&lt;img src=&apos;img://gui/maps/icons/library/XpIcon-1.png&apos; width=&apos;16&apos; height=&apos;15&apos; vspace=&apos;-3&apos;/&gt;</xp>
@@ -1116,6 +1119,10 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<statsText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#E9E2BF&apos;&gt;%(message)s&lt;/font&gt;</statsText>
 			<rewardsText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#D6D7D4&apos;&gt;%(message)s&lt;/font&gt;</rewardsText>
 			<h15ParSecondary>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#595950&apos;&gt;%(message)s&lt;/font&gt;</h15ParSecondary>
+			<nyIron>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#E2E2CC&apos;&gt;%(message)s&lt;/font&gt;</nyIron>
+			<nyEmerald>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#8ADA80&apos;&gt;%(message)s&lt;/font&gt;</nyEmerald>
+			<nyCrystal>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#CCDAF3&apos;&gt;%(message)s&lt;/font&gt;</nyCrystal>
+			<nyAmber>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#EEAF6E&apos;&gt;%(message)s&lt;/font&gt;</nyAmber>
 			<playerOnline>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#C9C9B6&apos;&gt;%(message)s&lt;/font&gt;</playerOnline>
 			<playerOffline>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#505050&apos;&gt;%(message)s&lt;/font&gt;</playerOffline>
 			<counterText>&lt;font face=&apos;$FieldFont&apos; size=&apos;12&apos; color=&apos;#8C8C7C&apos;&gt;%(message)s&lt;/font&gt;</counterText>
@@ -1123,6 +1130,7 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<counterLabelText>&lt;font face=&apos;$FieldFont&apos; size=&apos;11&apos; color=&apos;#FFF5E2&apos;&gt;%(message)s&lt;/font&gt;</counterLabelText>
 			<titleFont>&lt;font face=&apos;$TitleFont&apos;&gt;%(message)s&lt;/font&gt;</titleFont>
 			<tutorialText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#ffdd99&apos;&gt;%(message)s&lt;/font&gt;</tutorialText>
+			<tutorialTextBig>&lt;font face=&apos;$FieldFont&apos; size=&apos;16&apos; color=&apos;#ffdd99&apos;&gt;%(message)s&lt;/font&gt;</tutorialTextBig>
 			<alignText>&lt;p align=&apos;%(align)s&apos;&gt;%(message)s&lt;/p&gt;</alignText>
 			<leadingText>&lt;textformat leading=&apos;%(leading)s&apos;&gt;%(message)s&lt;/textformat&gt;</leadingText>
 			<bonusLocalText>&lt;font face=&apos;$FieldFont&apos; size=&apos;20&apos; color=&apos;#FEFEEC&apos;&gt;%(message)s&lt;/font&gt;</bonusLocalText>
@@ -1145,6 +1153,11 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<poiCapturedBoldText>&lt;font size=&apos;18&apos; face=&apos;$TitleFont&apos;&gt;&lt;b&gt;%(message)s&lt;/b&gt;&lt;/font&gt;</poiCapturedBoldText>
 			<poiCapturedRegularText>&lt;font size=&apos;16&apos; face=&apos;$TitleFont&apos;&gt;%(message)s&lt;/font&gt;</poiCapturedRegularText>
 			<prestigeText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#CED9D9&apos;&gt;%(message)s&lt;/font&gt;</prestigeText>
+			<cream>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#FFDD99&apos;&gt;%(message)s&lt;/font&gt;</cream>
+			<creamBold>&lt;font face=&apos;$TitleFont&apos; size=&apos;14&apos; color=&apos;#FFDD99&apos;&gt;&lt;b&gt;%(message)s&lt;/b&gt;&lt;/font&gt;</creamBold>
+			<creamTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#FFDD99&apos;&gt;%(message)s&lt;/font&gt;</creamTitle>
+			<lightGray>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#F2F2F7&apos;&gt;%(message)s&lt;/font&gt;</lightGray>
+			<lightBlue>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#BDD4FF&apos;&gt;%(message)s&lt;/font&gt;</lightBlue>
 		</textStyle>
 		<profileStatistics>
 			<marksOfMasteryText>%(marksOfMastery)s&lt;font size=&apos;14&apos; color=&apos;#939188&apos;&gt;/%(totalVehicles)s&lt;/font&gt;</marksOfMasteryText>
@@ -1342,4 +1355,23 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			</roleSkill>
 		</tooltips>
 	</comp7>
+	<newYear>
+		<dialogs>
+			<confirmVehDiscount>
+				<context>
+					<discount_tag_open>&lt;font color=&quot;#FFF0B6&quot;&gt;</discount_tag_open>
+					<vehicle_tag_open>&lt;font color=&quot;#CED9D9&quot;&gt;</vehicle_tag_open>
+					<tag_close>&lt;/font&gt;</tag_close>
+					<veh_type_tag_open>&lt;img src=&apos;img://gui/maps/icons/vehicleTypes/</veh_type_tag_open>
+					<veh_type_tag_close>.png&apos; width=&apos;18&apos; height=&apos;18&apos; vspace=&apos;-4&apos; /&gt;</veh_type_tag_close>
+				</context>
+				<text>_(#dialogs:confirmApplyVehicleDiscount/message)</text>
+			</confirmVehDiscount>
+		</dialogs>
+		<system_messages>
+			<guestQuestRewards>
+				<rewards>&lt;br/&gt;&lt;font color=&quot;#595950&quot;&gt;%(message)s&lt;/font&gt;</rewards>
+			</guestQuestRewards>
+		</system_messages>
+	</newYear>
 </root>
