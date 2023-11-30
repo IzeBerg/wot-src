@@ -120,6 +120,7 @@ package net.wg.gui.components.carousels.filters
             this.paramsFilter.iconSource = this._initVO.mainBtn.value;
             this.paramsFilter.tooltip = this._initVO.mainBtn.tooltip;
             this.listHotFilter.dataProvider = this._initVO.hotFilters;
+            invalidateSize();
          }
          if(isInvalid(InvalidationType.SIZE) && _loc3_ && _loc2_)
          {

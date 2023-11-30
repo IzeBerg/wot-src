@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/lightonly.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Fir/Garland/NY21_Garland_05_03_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.664283 10.882613 0.552397</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>110</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Fir/Garland/NY21_Garland_05_03_AM.dds</Texture>
+					</property>
+					<property>
+						destBlend
+						<Int>3</Int>
+					</property>
+					<property>
+						selfIllumination
+						<Float>8.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>1.042144 10.373068 0.694359</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>110</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Fir/Garland/NY21_Garland_05_03_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h_newyear/customization/Fir/Garland/NY21_Garland_05_03_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h_newyear/customization/Fir/Garland/NY21_Garland_05_03_ANM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>1.041991 10.375455 0.692245</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-6.149383 0.000000 -5.169499</min>
+		<max>8.233670 20.607319 6.558218</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>314332</geometrySize>
+	<minUVDensity>1.276762</minUVDensity>
+</root>

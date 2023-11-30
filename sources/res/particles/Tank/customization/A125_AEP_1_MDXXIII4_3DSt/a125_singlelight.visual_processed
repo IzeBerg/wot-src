@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>mt_frontlights</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/rearlights_solid.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						fadeMaxDistance
+						<Float>0.100000</Float>
+					</property>
+					<property>
+						fogAdjustBlend
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						g_useTime
+						<Bool>false</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>5.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						softFactor
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1.000000 0.007843 0.000000 2.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000008 0.436222 -0.051799</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.053065 0.380213 -0.102627</min>
+		<max>0.053288 0.491817 0.001799</max>
+	</boundingBox>
+	<geometrySize>13500</geometrySize>
+	<minUVDensity>5.166079</minUVDensity>
+</root>

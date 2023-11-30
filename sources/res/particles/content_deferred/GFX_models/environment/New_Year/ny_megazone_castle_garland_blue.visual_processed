@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>garland</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ny_megazone_garland_castle.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>40.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.320000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>0.972549 0.066667 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						pattern
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/ls_phase_step.dds</Texture>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ny_megazone_garland_castle_CM.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						useVersicolorMode
+						<Bool>true</Bool>
+					</property>
+					<property>
+						animationMode
+						<Int>1</Int>
+					</property>
+					<property>
+						g_zeroPhaseLum
+						<Float>0.170000</Float>
+					</property>
+					<property>
+						patternFilteringMode
+						<Int>1</Int>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						waveLen
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>20.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-1.899469 18.910919 12.635295</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-39.480064 -27.736769 -11.949465</min>
+		<max>35.681126 65.297241 37.220055</max>
+	</boundingBox>
+	<geometrySize>42780</geometrySize>
+	<minUVDensity>0.002347</minUVDensity>
+</root>

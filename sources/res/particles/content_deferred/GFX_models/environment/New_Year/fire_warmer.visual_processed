@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>pPlane9</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>pPlane9</node>
+		<geometry>
+			<vertices>pPlane9Shape.vertices</vertices>
+			<stream>pPlane9Shape.colour</stream>
+			<primitive>pPlane9Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert3</identifier>
+					<fx>shaders/custom/vector_animation.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 1.000000 1.000000 0.200000</Vector4>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Fire_small_03.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 -0.500000 6.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.010000 0.400000 0.015000 0.020000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Distortion_fire_01.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>55.000000 0.000000 0.800000 0.000000</Vector4>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Fire_small_03.dds</Texture>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector3>1.000000 0.788235 0.431373</Vector3>
+					</property>
+					<property>
+						softFactor
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1.000000 0.643137 0.474510 0.694118</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.014130 0.130193 -0.002696</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-0.102835 0.049197 -0.160299</min>
+		<max>0.074575 0.211190 0.154906</max>
+	</boundingBox>
+	<geometrySize>20628</geometrySize>
+	<minUVDensity>3.906200</minUVDensity>
+</root>

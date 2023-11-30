@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>NY22_Sculpture_03</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_sculpture</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>110</materialKind>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY22_Sculpture_02_Garland_AM.dds</Texture>
+					</property>
+					<property>
+						g_chromaOffsetBlue
+						<Float>-0.230000</Float>
+					</property>
+					<property>
+						g_chromaOffsetGreen
+						<Float>0.240000</Float>
+					</property>
+					<property>
+						g_contrast
+						<Float>2.500000</Float>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>10.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.250000</Float>
+					</property>
+					<property>
+						g_zeroPhaseLum
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						pattern
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY22_Sculpture_02_Garland_CM.dds</Texture>
+					</property>
+					<property>
+						phaseMap
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY22_Sculpture_02_Garland_CM.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						waveLen
+						<Float>10.000000</Float>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>7.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-0.760069 3.117282 0.109564</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>110</materialKind>
+					<property>
+						alphaReference
+						<Int>60</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY21_Sculpture_05_05_Garland_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						selfIllumination
+						<Float>60.400002</Float>
+					</property>
+					<property>
+						srcBlend
+						<Int>2</Int>
+					</property>
+				</material>
+				<groupOrigin>1.434147 3.367450 -0.309526</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY22_Sculpture_03_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY22_Sculpture_03_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY22_Sculpture_03_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.483313 2.930390 -0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-6.086507 -0.094590 -2.993370</min>
+		<max>4.951415 6.101986 2.993370</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>390330</geometrySize>
+	<minUVDensity>0.003046</minUVDensity>
+</root>

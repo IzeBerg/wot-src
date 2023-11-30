@@ -23,10 +23,17 @@ package net.wg.gui.lobby.questsWindow.data
       
       public var complexTooltip:String = "";
       
+      public var specialTooltip:String = "";
+      
       public var linesLimit:int = -1;
+      
+      public var tooltipSpecialArgs:Array;
+      
+      public var isWulfTooltip:Boolean = false;
       
       public function TextBlockVO(param1:Object)
       {
+         this.tooltipSpecialArgs = [];
          super(param1);
       }
       
@@ -54,6 +61,11 @@ package net.wg.gui.lobby.questsWindow.data
       
       override protected function onDispose() : void
       {
+         if(this.tooltipSpecialArgs != null)
+         {
+            this.tooltipSpecialArgs.splice(0,this.tooltipSpecialArgs.length);
+            this.tooltipSpecialArgs = null;
+         }
          if(this.items != null)
          {
             this.items.fixed = false;

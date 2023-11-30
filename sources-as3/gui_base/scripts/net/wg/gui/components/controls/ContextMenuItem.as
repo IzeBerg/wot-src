@@ -33,8 +33,6 @@ package net.wg.gui.components.controls
       private static const BOTTOM_DASH:String = "_";
        
       
-      public var id:String = "";
-      
       public var subItems:Array;
       
       public var arrowMc:MovieClip;
@@ -46,6 +44,8 @@ package net.wg.gui.components.controls
       public var iconsMc:MovieClip;
       
       public var isNew:Boolean;
+      
+      private var _id:String = "";
       
       private var _type:String = "";
       
@@ -97,12 +97,7 @@ package net.wg.gui.components.controls
             switch(this.type)
             {
                case CONTEXT_MENU_ITEM_MAIN:
-                  visible = true;
-                  this.arrowMc.visible = false;
-                  this.circleMc.visible = false;
-                  textField.visible = true;
-                  this.textFieldSub.visible = false;
-                  this.iconsMc.visible = Boolean(this._iconType);
+                  this.setMainState();
                   break;
                case this.CONTEXT_MENU_ITEM_GROUP:
                   visible = true;
@@ -127,7 +122,7 @@ package net.wg.gui.components.controls
                      this._checkDynamic.y = CHECK_Y;
                      addChild(this._checkDynamic);
                   }
-                  this.circleMc.visible = this._checkDynamic && !enabled ? Boolean(false) : Boolean(true);
+                  this.circleMc.visible = !this._checkDynamic || enabled;
                   textField.visible = false;
                   this.textFieldSub.visible = true;
             }
@@ -173,7 +168,7 @@ package net.wg.gui.components.controls
             return;
          }
          super.updateAfterStateChange();
-         if(constraints != null && !constraintsDisabled && this.textFieldSub != null)
+         if(!constraintsDisabled && constraints != null && this.textFieldSub != null)
          {
             constraints.updateElement(LINKAGE_TEXTFIELDSUB,this.textFieldSub);
          }
@@ -201,6 +196,16 @@ package net.wg.gui.components.controls
          {
             this.updateItemWidth(textField);
          }
+      }
+      
+      protected function setMainState() : void
+      {
+         visible = true;
+         this.arrowMc.visible = false;
+         this.circleMc.visible = false;
+         textField.visible = true;
+         this.textFieldSub.visible = false;
+         this.iconsMc.visible = Boolean(this._iconType);
       }
       
       private function updateItemWidth(param1:TextField) : void
@@ -326,6 +331,16 @@ package net.wg.gui.components.controls
          }
          this._textColor = param1;
          this.updateText();
+      }
+      
+      public function get id() : String
+      {
+         return this._id;
+      }
+      
+      public function set id(param1:String) : void
+      {
+         this._id = param1;
       }
       
       override protected function callLogEvent(param1:Event) : void

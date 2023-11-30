@@ -271,10 +271,11 @@ package net.wg.gui.lobby.colorSettings
       
       private function updateBeforeAfter() : void
       {
+         var _loc1_:int = 0;
          var _loc2_:int = 0;
          var _loc4_:int = 0;
          var _loc5_:int = 0;
-         var _loc1_:int = _originalHeight - (this._smallPanelHeight << 1);
+         _loc1_ = _originalHeight - (this._smallPanelHeight << 1);
          _loc2_ = _originalWidth - this._panelWidth;
          var _loc3_:Graphics = graphics;
          this.onePxWhite.visible = this.beforeAfterPxBg.visible = this.afterTF.visible = this.beforeTF.visible = this._isManualSelected;

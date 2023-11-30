@@ -9,6 +9,7 @@ package net.wg.gui.notification
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.LAYER_NAMES;
    import net.wg.gui.notification.events.NotificationLayoutEvent;
+   import net.wg.gui.notification.events.NotificationRegisteringEvent;
    import net.wg.gui.notification.events.ServiceMessageEvent;
    import net.wg.gui.notification.vo.PopUpNotificationInfoVO;
    import net.wg.gui.utils.ExcludeTweenManager;
@@ -81,6 +82,8 @@ package net.wg.gui.notification
          this._smContainer.addEventListener(MouseEvent.MOUSE_OVER,this.onSMContainerMouseOverHandler);
          this._smContainer.addEventListener(MouseEvent.MOUSE_OUT,this.onSMContainerMouseOutHandler);
          this._smContainer.addEventListener(NotificationLayoutEvent.UPDATE_LAYOUT,this.onSmContainerUpdateLayoutHandler);
+         this._smContainer.addEventListener(NotificationRegisteringEvent.REGISTER_POP_UP,this.onRegisterComponentHandler,false,0,true);
+         App.stage.addEventListener(NotificationRegisteringEvent.UNREGISTER_POP_UP,this.onUnregisterComponentHandler,false,0,true);
          this._containerMgr.addEventListener(ContainerManagerEvent.VIEW_ADDED,this.onContainerMgrViewLoadingHandler);
          this._containerMgr.addEventListener(ContainerManagerEvent.VIEW_REMOVED,this.onContainerMgrViewLoadingHandler);
       }
@@ -206,6 +209,8 @@ package net.wg.gui.notification
          this._smContainer.removeEventListener(MouseEvent.MOUSE_OVER,this.onSMContainerMouseOverHandler);
          this._smContainer.removeEventListener(MouseEvent.MOUSE_OUT,this.onSMContainerMouseOutHandler);
          this._smContainer.removeEventListener(NotificationLayoutEvent.UPDATE_LAYOUT,this.onSmContainerUpdateLayoutHandler);
+         this._smContainer.removeEventListener(NotificationRegisteringEvent.REGISTER_POP_UP,this.onRegisterComponentHandler);
+         App.stage.removeEventListener(NotificationRegisteringEvent.UNREGISTER_POP_UP,this.onUnregisterComponentHandler);
          this._smContainer = null;
          this._containerMgr.removeEventListener(ContainerManagerEvent.VIEW_ADDED,this.onContainerMgrViewLoadingHandler);
          this._containerMgr.removeEventListener(ContainerManagerEvent.VIEW_REMOVED,this.onContainerMgrViewLoadingHandler);
@@ -432,6 +437,21 @@ package net.wg.gui.notification
       {
          param1.stopImmediatePropagation();
          App.utils.scheduler.scheduleTask(this.postponedPopupRemoving,DELAY,param1.typeID,param1.entityID,false,true);
+      }
+      
+      private function onRegisterComponentHandler(param1:NotificationRegisteringEvent) : void
+      {
+         param1.stopImmediatePropagation();
+         registerGFNotificationS(param1.injectInstance,param1.alias,param1.gfViewName,true,param1.linkageData);
+      }
+      
+      private function onUnregisterComponentHandler(param1:NotificationRegisteringEvent) : void
+      {
+         param1.stopImmediatePropagation();
+         if(isFlashComponentRegisteredS(param1.alias))
+         {
+            unregisterFlashComponentS(param1.alias);
+         }
       }
       
       private function onPopUpMessageButtonClickedHandler(param1:ServiceMessageEvent) : void

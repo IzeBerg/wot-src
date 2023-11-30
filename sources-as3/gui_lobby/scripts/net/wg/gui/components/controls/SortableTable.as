@@ -393,6 +393,14 @@ package net.wg.gui.components.controls
          invalidate(INV_SORTING,INV_SORT_FIELD);
       }
       
+      public function resetListSelectedItem() : void
+      {
+         if(this._list)
+         {
+            this._list.resetSelectedItem();
+         }
+      }
+      
       private function updateAdditionalOptions(param1:IDataProvider) : void
       {
          var _loc3_:NormalSortingBtnVO = null;

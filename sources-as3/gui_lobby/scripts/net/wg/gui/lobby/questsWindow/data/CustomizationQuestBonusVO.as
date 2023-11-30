@@ -14,6 +14,8 @@ package net.wg.gui.lobby.questsWindow.data
       
       public var vehicleIntCD:int = -1;
       
+      public var itemTypeID:int = -1;
+      
       public var boundToCurrentVehicle:Boolean = false;
       
       public var boundVehicle:String = "";

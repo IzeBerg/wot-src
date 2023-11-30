@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>engine_start_trigger</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>engine_stoped</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/F108_Panhard_EBR_105_MDXXIII4_3DSt/engine_stopped.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>engine_start</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>engine_start_trigger</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-404.000000 -171.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>engine_start</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/F108_Panhard_EBR_105_MDXXIII4_3DSt/engine_start.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<uiPosition>-50.000000 -250.000000 0.000000</uiPosition>
+	</node>
+</root>
