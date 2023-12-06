@@ -462,8 +462,10 @@ class Comp7Controller(Notifiable, SeasonProvider, IComp7Controller, IGlobalListe
         return
 
     def __updateQualificationState(self):
+        lastQualificationState = self.__qualificationState
         self.__qualificationState = self.__itemsCache.items.stats.comp7.get('qualification', {}).get('state', Comp7QualificationState.NOT_STARTED)
-        self.onQualificationStateUpdated()
+        if lastQualificationState != self.__qualificationState:
+            self.onQualificationStateUpdated()
 
 
 class _LeaderboardDataProvider(object):

@@ -9,9 +9,11 @@
 		<loader/>
 	</crew>
 	<supplySlots>5 1 1 6 6 6 7 8 8 8</supplySlots>
+	<postProgressionTree>role_HT_break</postProgressionTree>
+	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
-		<forward>38</forward>
-		<backward>15</backward>
+		<forward>46</forward>
+		<backward>16</backward>
 	</speedLimits>
 	<invisibility>
 		<moving>
@@ -3205,7 +3207,7 @@
 			<guns>
 				<_100mm_S34_P_dualgun>
 					shared
-					<maxAmmo>50</maxAmmo>
+					<maxAmmo>64</maxAmmo>
 					<armor>
 						<armor_1>
 							230
@@ -3311,7 +3313,7 @@
 						2.5
 						<!--BW_String-->
 					</aimingTime>
-					<multiGunEffects>shot_dualgun1_mainext_mb_L shot_dualgun1_mainext_mb_R</multiGunEffects>
+					<multiGunEffects>shot_dualgun1_mainext_L shot_dualgun1_mainext_R</multiGunEffects>
 					<dualGun>
 						<chargeTime>
 							2.5
@@ -3319,7 +3321,7 @@
 						</chargeTime>
 						<shootImpulse>200</shootImpulse>
 						<reloadLockTime>
-							6.0
+							1.5
 							<!--BW_String-->
 						</reloadLockTime>
 						<reloadTimes>
@@ -3338,13 +3340,13 @@
 						</preChargeIndication>
 					</dualGun>
 					<models>
-						<undamaged>vehicles/russian/R165_Object_703_II/normal/lod0/Gun_01.model</undamaged>
-						<destroyed>vehicles/russian/R165_Object_703_II/crash/lod0/Gun_01.model</destroyed>
-						<exploded>vehicles/russian/R165_Object_703_II/crash/lod0/Gun_01.model</exploded>
+						<undamaged>vehicles/russian/R165_Object_703_II/normal/lod0/Gun_02.model</undamaged>
+						<destroyed>vehicles/russian/R165_Object_703_II/crash/lod0/Gun_02.model</destroyed>
+						<exploded>vehicles/russian/R165_Object_703_II/crash/lod0/Gun_02.model</exploded>
 					</models>
 					<hitTester>
-						<collisionModelServer>vehicles/russian/R165_Object_703_II/collision/Gun_01.model</collisionModelServer>
-						<collisionModelClient>vehicles/russian/R165_Object_703_II/collision_client/Gun_01.model</collisionModelClient>
+						<collisionModelServer>vehicles/russian/R165_Object_703_II/collision/Gun_02.model</collisionModelServer>
+						<collisionModelClient>vehicles/russian/R165_Object_703_II/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
 					<drivenJoints>
 						<master>
@@ -3464,7 +3466,7 @@
 								<!--BW_String-->
 							</rayEnd>
 							<rayUp>
-								0.109458 0 0
+								0.13 0 0
 								<!--BW_String-->
 							</rayUp>
 							<size>
@@ -3484,7 +3486,7 @@
 								<!--BW_String-->
 							</rayEnd>
 							<rayUp>
-								0.109458 0 0
+								0.13 0 0
 								<!--BW_String-->
 							</rayUp>
 							<size>
@@ -3499,6 +3501,7 @@
 							<camouflage>GUN</camouflage>
 						</customizableVehicleAreas>
 					</customization>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<reloadEffect>dualgun_reload85_107</reloadEffect>
 					<camouflage>
 						<density>
@@ -4980,7 +4983,7 @@
 		</Turret_1_R165_Object_703_II_2>
 	</turrets0>
 	<engines>
-		<V_11_Kirovets_1>shared</V_11_Kirovets_1>
+		<V_11_Kirovets_1_703_II_2>shared</V_11_Kirovets_1_703_II_2>
 	</engines>
 	<fuelTanks>
 		<Heavy>shared</Heavy>
@@ -4992,10 +4995,13 @@
 	<physics>
 		<detailed>
 			<engines>
-				<V_11_Kirovets_1>
-					<smplEnginePower>900</smplEnginePower>
-					<smplFwMaxSpeed>38</smplFwMaxSpeed>
-				</V_11_Kirovets_1>
+				<V_11_Kirovets_1_703_II_2>
+					<smplEnginePower>
+						1014.99
+						<!--BW_String-->
+					</smplEnginePower>
+					<smplFwMaxSpeed>46</smplFwMaxSpeed>
+				</V_11_Kirovets_1_703_II_2>
 			</engines>
 			<chassis>
 				<Chassis_R165_Object_703_II_2>

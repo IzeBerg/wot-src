@@ -17,12 +17,16 @@ def isSubscriptionEnabled(itemsCache=None):
     return itemsCache.items.stats.isSubscriptionEnabled
 
 
-def getShopURL(url=None):
-    return _getUrl(urlName=url)
+def getShopURL():
+    return _getUrl()
 
 
 def getShopRootUrl():
     return _getUrl('shopRootUrl')
+
+
+def newYearOldCollectionRewardUrl():
+    return _getUrl('newYearOldCollectionRewardUrl')
 
 
 def getBuyMoreGoldUrl():
@@ -149,7 +153,3 @@ def getClientControlledCloseCtx():
 
 def getSteelHunterProductsUrl():
     return _getUrl('shProducts')
-
-
-def getHalloween2023ShopUrl():
-    return _getUrl(urlName='hw23Shop')

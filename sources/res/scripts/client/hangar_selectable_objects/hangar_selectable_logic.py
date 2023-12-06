@@ -13,7 +13,6 @@ class HangarSelectableLogic(BaseSelectableLogic):
         super(HangarSelectableLogic, self).__init__()
         self.__selected3DEntity = None
         self.__selected3DEntityUnderMouseDown = None
-        self._hangarSpace.setSelectionEnabled(True)
         return
 
     def init(self, callback=None):
@@ -31,7 +30,6 @@ class HangarSelectableLogic(BaseSelectableLogic):
         return
 
     def _onNotifyCursorOver3dScene(self, isCursorOver3dScene):
-        self._hangarSpace.setSelectionEnabled(isCursorOver3dScene)
         if self.__selected3DEntity:
             if isCursorOver3dScene:
                 self.__highlight3DEntity(self.__selected3DEntity)

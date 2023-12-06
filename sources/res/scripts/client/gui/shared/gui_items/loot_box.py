@@ -1,30 +1,45 @@
-import typing, logging
+import itertools, typing, logging
 from enum import Enum
 from constants import LootBoxTiers, LOOTBOX_LIMIT_ITEM_PREFIX
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.gen.view_models.constants.loot_box_bonus_group import LootBoxBonusGroup as BonusGroup
-from gui.impl.lobby.loot_box.loot_box_helper import parseAllOfBonusInfoSection
+from gui.impl.lobby.loot_box.loot_box_bonus_parsers.default_parser import parseAllOfBonusInfoSection
+from gui.impl.lobby.loot_box.loot_box_bonus_parsers.rotation_parser import parseBonusSection
 from gui.shared.gui_items.gui_item import GUIItem
 from shared_utils import CONST_CONTAINER
 from web.web_client_api.common import ItemPackType as ipType, ItemPackTypeGroup as ipTypeGroup
 if typing.TYPE_CHECKING:
-    from typing import Dict, Tuple, Optional
+    from typing import Dict, Optional
     from gui.server_events.bonuses import SimpleBonus
 _logger = logging.getLogger(__name__)
 
 class NewYearLootBoxes(CONST_CONTAINER):
-    PREMIUM = 'newYear_premium'
-    SPECIAL = 'newYear_special'
+    PREMIUM_OLD = 'newYear_premium'
+    SPECIAL_OLD = 'newYear_special'
     SPECIAL_AUTO = 'newYear_special_auto'
-    COMMON = 'newYear_usual'
+    COMMON_OLD = 'newYear_usual'
+    NY_24_STANDARD = 'ny_2024_VI'
+    NY_24_NEW_YEAR = 'ny_2024_newyear'
+    NY_24_XMAS = 'ny_2024_christmas'
+    NY_24_EASTERN = 'ny_2024_eastern'
+    NY_24_MAGIC = 'ny_2024_magic'
+    PREMIUM = (
+     PREMIUM_OLD, NY_24_NEW_YEAR, NY_24_XMAS, NY_24_EASTERN, NY_24_MAGIC)
+    COMMON = (COMMON_OLD, NY_24_STANDARD)
+    SPECIAL = (SPECIAL_OLD, SPECIAL_AUTO)
+
+    @classmethod
+    def getIterator(cls):
+        return itertools.chain(cls.PREMIUM, cls.COMMON, cls.SPECIAL)
+
+    @classmethod
+    def ALL(cls):
+        return tuple(cls.getIterator())
 
 
 class NewYearCategories(CONST_CONTAINER):
-    NEWYEAR = 'NewYear'
-    CHRISTMAS = 'Christmas'
-    ORIENTAL = 'Oriental'
-    FAIRYTALE = 'Fairytale'
+    NEWYEAR_24 = 'ny_2024'
 
 
 class EventCategories(CONST_CONTAINER):
@@ -59,14 +74,6 @@ LUNAR_NY_LOOT_BOXES_CATEGORIES = 'LunarNY'
 SENIORITY_AWARDS_LOOT_BOXES_TYPE = 'seniorityAwards'
 EVENT_LOOT_BOXES_CATEGORY = 'eventLootBoxes'
 REFERRAL_PROGRAM_CATEGORY = 'referralProgram'
-GUI_ORDER_NY = (
- NewYearLootBoxes.COMMON,
- NewYearLootBoxes.PREMIUM)
-CATEGORIES_GUI_ORDER_NY = (
- NewYearCategories.NEWYEAR,
- NewYearCategories.CHRISTMAS,
- NewYearCategories.ORIENTAL,
- NewYearCategories.FAIRYTALE)
 _BONUS_GROUPS = {BonusGroup.VEHICLE: ipTypeGroup.VEHICLE, 
    BonusGroup.PREMIUM: (
                       ipType.CUSTOM_PREMIUM_PLUS,), 
@@ -83,9 +90,9 @@ _BONUS_GROUPS = {BonusGroup.VEHICLE: ipTypeGroup.VEHICLE,
    BonusGroup.FEATUREITEMS: (
                            ipType.CUSTOM_COLLECTION_ENTITLEMENT, ipType.CUSTOM_ANY_COLLECTION_ITEM)}
 _GROUP_PRIORITIES = [
- BonusGroup.VEHICLE, BonusGroup.PREMIUM, BonusGroup.CURRENCY, BonusGroup.VEHICLECUSTOMIZATIONS,
- BonusGroup.CREW, BonusGroup.BOOSTERS, BonusGroup.EQUIPMENTS, BonusGroup.ACCOUNTCUSTOMIZATIONS,
- BonusGroup.FEATUREITEMS]
+ BonusGroup.LOOTBOX_STAGE_ROTATION, BonusGroup.VEHICLE, BonusGroup.PREMIUM, BonusGroup.CURRENCY,
+ BonusGroup.VEHICLECUSTOMIZATIONS, BonusGroup.CREW, BonusGroup.BOOSTERS, BonusGroup.EQUIPMENTS,
+ BonusGroup.ACCOUNTCUSTOMIZATIONS, BonusGroup.FEATUREITEMS]
 
 def addBonusesToGroup(bonusGroup, bonuses):
     _BONUS_GROUPS[bonusGroup] += bonuses
@@ -95,12 +102,14 @@ class LootBox(GUIItem):
     __slots__ = ('__id', '__invCount', '__type', '__category', '__historyName', '__guaranteedFrequency',
                  '__slotBonuses', '__guaranteedFrequencyName', '__tier', '__isEnabled',
                  '__userNameKey', '__iconName', '__description', '__videoKey', '__weight',
-                 '__bonusGroups', '__autoOpenTime')
+                 '__bonusGroups', '__autoOpenTime', '__rotationLists', '__config',
+                 '__rotationStage')
 
     def __init__(self, lootBoxID, lootBoxConfig, invCount):
         super(LootBox, self).__init__()
         self.__id = lootBoxID
         self.__invCount = invCount
+        self.__rotationStage = 0
         self.__updateByConfig(lootBoxConfig)
 
     def __repr__(self):
@@ -116,6 +125,9 @@ class LootBox(GUIItem):
 
     def updateCount(self, invCount):
         self.__invCount = invCount
+
+    def updateRotationStage(self, rotationStage):
+        self.__rotationStage = rotationStage
 
     def update(self, lootBoxConfig):
         self.__updateByConfig(lootBoxConfig)
@@ -134,6 +146,9 @@ class LootBox(GUIItem):
 
     def getDesrciption(self):
         return self.__description
+
+    def getDescriptionText(self):
+        return backport.text(R.strings.lootboxes.desctiptions.dyn(self.__description)())
 
     def getIconName(self):
         return self.__iconName
@@ -168,7 +183,7 @@ class LootBox(GUIItem):
         return self.__weight
 
     def isFree(self):
-        return self.__type == NewYearLootBoxes.COMMON
+        return self.__type in NewYearLootBoxes.COMMON
 
     def isEnabled(self):
         return self.__isEnabled
@@ -179,12 +194,25 @@ class LootBox(GUIItem):
     def getGuaranteedFrequencyName(self):
         return self.__guaranteedFrequencyName
 
+    def getGuaranteedVehicleLevelsRange(self):
+        levels = set()
+        for slot in self.__iterateAllSlots():
+            guaranteedRewards = slot['limitIDsMap'].get(self.getGuaranteedFrequencyName(), [])
+            for reward in guaranteedRewards:
+                if reward.getName() == 'vehicles':
+                    for vehicle, _ in reward.getVehicles():
+                        levels.add(vehicle.level)
+
+        if levels:
+            return [min(levels), max(levels)]
+        return []
+
     def getHistoryName(self):
         return self.__historyName
 
     def getBonusGroups(self):
         if self.__bonusGroups is None:
-            self.__bonusGroups = self.__formBonusGroups(self.__slotBonuses)
+            self.__bonusGroups = self.__formBonusGroups()
         return sorted(self.__bonusGroups.keys(), key=_GROUP_PRIORITIES.index)
 
     def getBonusesByGroup(self, group):
@@ -193,13 +221,14 @@ class LootBox(GUIItem):
     def getBonusSlots(self):
         return self.__slotBonuses
 
-    def getBoxInfo(self, historyData=None):
-        return {'id': self.getID(), 
-           'limit': self.getGuaranteedFrequency(), 
-           'slots': self.__slotBonuses, 
-           'history': historyData.get(self.getHistoryName(), (0, None, 0)) if historyData is not None else (0,
-                                                                                      None,
-                                                                                      0)}
+    def hasLootLists(self):
+        return self.__config.get('showProbabilitiesInfo', False) and self.__config.get('showBonusInfo', False) and self.__config.get('probabilityStageCount', 1) > 1
+
+    def getLootLists(self):
+        return self.__rotationLists
+
+    def getRotationStage(self):
+        return self.__rotationStage
 
     def __updateByConfig(self, lootBoxConfig):
         self.__autoOpenTime = lootBoxConfig.get('autoOpenTime', None)
@@ -207,7 +236,12 @@ class LootBox(GUIItem):
         self.__category = lootBoxConfig.get('category', '')
         self.__tier = LootBoxTiers(lootBoxConfig.get('tier', 1))
         self.__historyName = lootBoxConfig.get('historyName', '')
-        self.__slotBonuses = parseAllOfBonusInfoSection(lootBoxConfig.get('bonus', {}).get('allof', {}))
+        self.__config = lootBoxConfig.get('config', {})
+        self.__rotationLists = []
+        if self.hasLootLists():
+            self.__rotationLists, self.__slotBonuses = parseBonusSection(lootBoxConfig['bonus'], self.__config['probabilityStageCount'])
+        else:
+            self.__slotBonuses = parseAllOfBonusInfoSection(lootBoxConfig.get('bonus', {}).get('allof', {}))
         self.__bonusGroups = None
         self.__guaranteedFrequencyName, self.__guaranteedFrequency = self.__readLimits(lootBoxConfig.get('limits', {}))
         self.__isEnabled = lootBoxConfig.get('enabled', False)
@@ -219,6 +253,16 @@ class LootBox(GUIItem):
         self.__description = assetsConfig.get('description', self.__type)
         self.__videoKey = assetsConfig.get('video', '')
         return
+
+    def __iterateAllSlots(self):
+        return itertools.chain(self.__slotBonuses.itervalues(), *(rotationList.itervalues() for rotationList in self.__rotationLists))
+
+    def __itearateSlotsWithoutRotationDependence(self):
+        rotationGenerators = [ rotationList.itervalues() for rotationList in self.__rotationLists ]
+        for generator in rotationGenerators:
+            next(generator)
+
+        return itertools.chain(self.__slotBonuses.itervalues(), *rotationGenerators)
 
     def __getConfig(self):
         config = {'type': self.__type, 
@@ -239,12 +283,14 @@ class LootBox(GUIItem):
         for limitName, limit in limitsCfg.iteritems():
             if 'useBonusProbabilityAfter' in limit:
                 return (limitName, limit['useBonusProbabilityAfter'] + 1)
+            if 'guaranteedFrequency' in limit:
+                return (limitName, limit['guaranteedFrequency'])
 
         return (None, 0)
 
-    def __formBonusGroups(self, slots):
+    def __formBonusGroups(self):
         bonusGroups = dict()
-        for _, slot in slots.items():
+        for slot in self.__itearateSlotsWithoutRotationDependence():
             for bonus in slot.get('bonuses', {}):
                 bonusGroup = self.__findGroupForBonus(bonus)
                 if bonusGroup is None:
@@ -253,6 +299,8 @@ class LootBox(GUIItem):
                     continue
                 bonusGroups.setdefault(bonusGroup, []).append(bonus)
 
+        if self.hasLootLists():
+            bonusGroups[BonusGroup.LOOTBOX_STAGE_ROTATION] = []
         return bonusGroups
 
     @staticmethod

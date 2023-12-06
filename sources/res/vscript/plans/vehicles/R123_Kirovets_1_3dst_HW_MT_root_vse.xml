@@ -9,6 +9,104 @@
 		</aspect>
 		<blocks>
 			<block>
+				<class>Variable</class>
+				<id>Variable_1</id>
+				<params>
+					<param>
+						game_object
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						GameObjectT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>Variable</class>
+				<id>Variable_2</id>
+				<params>
+					<param>
+						game_object_loaded
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Initial Value</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_1</id>
+				<params>
+					<param>
+						create_VSE_plan_once
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>ResourceSelector</class>
+				<id>ResourceSelector_1</id>
+				<params>
+					<param>
+						wot
+						<name>root</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						xml
+						<name>ext</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>res</name>
+						<const>\vscript/plans/vehicles/R123_Kirovets_1_3dst_HW_MT_battle_vse.xml\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>StartScript</class>
 				<id>StartScript_1</id>
 				<params/>
@@ -21,49 +119,36 @@
 				<slots/>
 			</block>
 			<block>
-				<class>SpawnComponent</class>
-				<id>SpawnComponent_1</id>
+				<class>Macro</class>
+				<id>Macro_2</id>
 				<params>
 					<param>
-						VSE Plan
-						<name>Component Type</name>
+						create_VSE_plan_once
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>ResourceSelector</class>
+				<id>ResourceSelector_2</id>
+				<params>
+					<param>
+						wot
+						<name>root</name>
 						<type>StringT</type>
 					</param>
 					<param>
-						false
-						<name>Use transform matrix</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						true
-						<name>Spawn with parent</name>
-						<type>BoolT</type>
+						xml
+						<name>ext</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots>
 					<slot>
-						<name>autoActivate</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>Path</name>
-						<const>\vscript/plans/vehicles/R123_Kirovets_1_3dst_HW_MT_battle_vse.xml\</const>
-					</slot>
-					<slot>
-						<name>AutoStart</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>translation</name>
-						<const>\0.000000, 0.000000, 0.000000\</const>
-					</slot>
-					<slot>
-						<name>scale</name>
-						<const>\1.000000, 1.000000, 1.000000\</const>
-					</slot>
-					<slot>
-						<name>rotation</name>
-						<const>\0.000000, 0.000000, 0.000000\</const>
+						<name>res</name>
+						<const>\vscript/plans/vehicles/R123_Kirovets_1_3dst_HW_MT_hangar_vse.xml\</const>
 					</slot>
 				</slots>
 			</block>
@@ -84,55 +169,32 @@
 				</params>
 				<slots/>
 			</block>
-			<block>
-				<class>SpawnComponent</class>
-				<id>SpawnComponent_2</id>
-				<params>
-					<param>
-						VSE Plan
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						false
-						<name>Use transform matrix</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						true
-						<name>Spawn with parent</name>
-						<type>BoolT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>autoActivate</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>Path</name>
-						<const>\vscript/plans/vehicles/R123_Kirovets_1_3dst_HW_MT_hangar_vse.xml\</const>
-					</slot>
-					<slot>
-						<name>AutoStart</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>translation</name>
-						<const>\0.000000, 0.000000, 0.000000\</const>
-					</slot>
-					<slot>
-						<name>scale</name>
-						<const>\1.000000, 1.000000, 1.000000\</const>
-					</slot>
-					<slot>
-						<name>rotation</name>
-						<const>\0.000000, 0.000000, 0.000000\</const>
-					</slot>
-				</slots>
-			</block>
 		</blocks>
 		<connections>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>default</input>
+				<to>Variable_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>ChoiceByAspect_1</from>
+				<input>input</input>
+				<to>Macro_1</to>
+				<output>CLIENT</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>Macro_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>ResourceSelector_1</from>
+				<input>Path</input>
+				<to>Macro_1</to>
+				<output>out</output>
+			</connection>
 			<connection>
 				<from>StartScript_1</from>
 				<input>input</input>
@@ -141,30 +203,538 @@
 			</connection>
 			<connection>
 				<from>ChoiceByAspect_1</from>
-				<input>in</input>
-				<to>SpawnComponent_1</to>
-				<output>CLIENT</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>parent</input>
-				<to>SpawnComponent_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>ChoiceByAspect_1</from>
-				<input>in</input>
-				<to>SpawnComponent_2</to>
+				<input>input</input>
+				<to>Macro_2</to>
 				<output>HANGAR</output>
 			</connection>
 			<connection>
 				<from>ContextGetSelf_1</from>
-				<input>parent</input>
-				<to>SpawnComponent_2</to>
+				<input>gameObject</input>
+				<to>Macro_2</to>
 				<output>value</output>
 			</connection>
+			<connection>
+				<from>ResourceSelector_2</from>
+				<input>Path</input>
+				<to>Macro_2</to>
+				<output>out</output>
+			</connection>
 		</connections>
-		<macros/>
+		<macros>
+			<macro>
+				<name>PLAN_ASSERT</name>
+				<blocks>
+					<block>
+						<class>ContextGetSelf</class>
+						<id>ContextGetSelf_2</id>
+						<params>
+							<param>
+								CGFGameObjectContext
+								<name>Context Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								getSelf
+								<name>Member Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>MacroInput</class>
+						<id>MacroInput_1</id>
+						<params>
+							<param>
+								input
+								<name>Input Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								EventT
+								<name>Input Type</name>
+								<type>TypeT</type>
+							</param>
+							<param>
+								<name>Input Editor</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>MacroOutput</class>
+						<id>MacroOutput_1</id>
+						<params>
+							<param>
+								true
+								<name>Output Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								EventT
+								<name>Output Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>If</class>
+						<id>If_1</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>StopPlan</class>
+						<id>StopPlan_1</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>MacroInput</class>
+						<id>MacroInput_2</id>
+						<params>
+							<param>
+								expr_value
+								<name>Input Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								BoolT
+								<name>Input Type</name>
+								<type>TypeT</type>
+							</param>
+							<param>
+								Default
+								<name>Input Editor</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>required</name>
+								<const>\false\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>PrintToGameLogs</class>
+						<id>PrintToGameLogs_1</id>
+						<params>
+							<param>
+								ERROR
+								<name>Log Level</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>MacroInput</class>
+						<id>MacroInput_3</id>
+						<params>
+							<param>
+								name
+								<name>Input Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								StringT
+								<name>Input Type</name>
+								<type>TypeT</type>
+							</param>
+							<param>
+								Default
+								<name>Input Editor</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>required</name>
+								<const>\false\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>Concatenate</class>
+						<id>Concatenate_2</id>
+						<params>
+							<param>
+								3
+								<name>Input Count</name>
+								<type>IntT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>i1</name>
+								<const>\: \</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>MacroInput</class>
+						<id>MacroInput_4</id>
+						<params>
+							<param>
+								message
+								<name>Input Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								StringT
+								<name>Input Type</name>
+								<type>TypeT</type>
+							</param>
+							<param>
+								Default
+								<name>Input Editor</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>required</name>
+								<const>\false\</const>
+							</slot>
+						</slots>
+					</block>
+				</blocks>
+				<connections>
+					<connection>
+						<from>If_1</from>
+						<input>true</input>
+						<to>MacroOutput_1</to>
+						<output>true</output>
+					</connection>
+					<connection>
+						<from>MacroInput_1</from>
+						<input>input</input>
+						<to>If_1</to>
+						<output>input</output>
+					</connection>
+					<connection>
+						<from>MacroInput_2</from>
+						<input>value</input>
+						<to>If_1</to>
+						<output>expr_value</output>
+					</connection>
+					<connection>
+						<from>PrintToGameLogs_1</from>
+						<input>input</input>
+						<to>StopPlan_1</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>If_1</from>
+						<input>input</input>
+						<to>PrintToGameLogs_1</to>
+						<output>false</output>
+					</connection>
+					<connection>
+						<from>Concatenate_2</from>
+						<input>value</input>
+						<to>PrintToGameLogs_1</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>MacroInput_3</from>
+						<input>i0</input>
+						<to>Concatenate_2</to>
+						<output>name</output>
+					</connection>
+					<connection>
+						<from>MacroInput_4</from>
+						<input>i2</input>
+						<to>Concatenate_2</to>
+						<output>message</output>
+					</connection>
+				</connections>
+			</macro>
+			<macro>
+				<name>create_VSE_plan_once</name>
+				<blocks>
+					<block>
+						<class>MacroInput</class>
+						<id>MacroInput_2</id>
+						<params>
+							<param>
+								gameObject
+								<name>Input Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								GameObjectT
+								<name>Input Type</name>
+								<type>TypeT</type>
+							</param>
+							<param>
+								<name>Input Editor</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>HasComponent</class>
+						<id>HasComponent_1</id>
+						<params>
+							<param>
+								VSE Plan
+								<name>Component Type</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>FindFirstNode</class>
+						<id>FindFirstNode_1</id>
+						<params/>
+						<slots>
+							<slot>
+								<name>includingInactive</name>
+								<const>\true\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>Constant</class>
+						<id>Constant_1</id>
+						<params>
+							<param>
+								StringT
+								<name>Value Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>value</name>
+								<const>\VSE_plan_container\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>If</class>
+						<id>If_2</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>IsValid</class>
+						<id>IsValid_1</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>Macro</class>
+						<id>Macro_3</id>
+						<params>
+							<param>
+								PLAN_ASSERT
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>GetGameObjectName</class>
+						<id>GetGameObjectName_1</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>MacroInput</class>
+						<id>MacroInput_1</id>
+						<params>
+							<param>
+								input
+								<name>Input Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								EventT
+								<name>Input Type</name>
+								<type>TypeT</type>
+							</param>
+							<param>
+								<name>Input Editor</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>MacroInput</class>
+						<id>MacroInput_3</id>
+						<params>
+							<param>
+								Path
+								<name>Input Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								ResourceRefT
+								<name>Input Type</name>
+								<type>TypeT</type>
+							</param>
+							<param>
+								<name>Input Editor</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>Concatenate</class>
+						<id>Concatenate_1</id>
+						<params>
+							<param>
+								2
+								<name>Input Count</name>
+								<type>IntT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>i1</name>
+								<const>\ GO is not valid\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>CreateComponent</class>
+						<id>CreateComponent_1</id>
+						<params>
+							<param>
+								VSE Plan
+								<name>Component Type</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>AutoStart</name>
+								<const>\true\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>ContextGetSelf</class>
+						<id>ContextGetSelf_2</id>
+						<params>
+							<param>
+								CGFGameObjectContext
+								<name>Context Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								getSelf
+								<name>Member Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+				</blocks>
+				<connections>
+					<connection>
+						<from>FindFirstNode_1</from>
+						<input>gameObject</input>
+						<to>HasComponent_1</to>
+						<output>node</output>
+					</connection>
+					<connection>
+						<from>MacroInput_2</from>
+						<input>gameObject</input>
+						<to>FindFirstNode_1</to>
+						<output>gameObject</output>
+					</connection>
+					<connection>
+						<from>Constant_1</from>
+						<input>name</input>
+						<to>FindFirstNode_1</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>Macro_3</from>
+						<input>input</input>
+						<to>If_2</to>
+						<output>true</output>
+					</connection>
+					<connection>
+						<from>HasComponent_1</from>
+						<input>value</input>
+						<to>If_2</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>FindFirstNode_1</from>
+						<input>gameObject</input>
+						<to>IsValid_1</to>
+						<output>node</output>
+					</connection>
+					<connection>
+						<from>MacroInput_1</from>
+						<input>input</input>
+						<to>Macro_3</to>
+						<output>input</output>
+					</connection>
+					<connection>
+						<from>IsValid_1</from>
+						<input>expr_value</input>
+						<to>Macro_3</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>GetGameObjectName_1</from>
+						<input>name</input>
+						<to>Macro_3</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>Concatenate_1</from>
+						<input>message</input>
+						<to>Macro_3</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>ContextGetSelf_2</from>
+						<input>gameObject</input>
+						<to>GetGameObjectName_1</to>
+						<output>value</output>
+					</connection>
+					<connection>
+						<from>Constant_1</from>
+						<input>i0</input>
+						<to>Concatenate_1</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>If_2</from>
+						<input>in</input>
+						<to>CreateComponent_1</to>
+						<output>false</output>
+					</connection>
+					<connection>
+						<from>FindFirstNode_1</from>
+						<input>gameObject</input>
+						<to>CreateComponent_1</to>
+						<output>node</output>
+					</connection>
+					<connection>
+						<from>MacroInput_3</from>
+						<input>Path</input>
+						<to>CreateComponent_1</to>
+						<output>Path</output>
+					</connection>
+				</connections>
+			</macro>
+		</macros>
 		<curves/>
 	</info>
 </root>

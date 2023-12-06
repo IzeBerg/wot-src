@@ -97,6 +97,10 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_updateHangarComponents(showComponents, hideComponents)
 
-    def as_toggleEventModeS(self, isEventMode):
+    def as_createFunRandomNYWidgetS(self):
         if self._isDAAPIInited():
-            return self.flashObject.as_toggleEventMode(isEventMode)
+            return self.flashObject.as_createFunRandomNYWidget()
+
+    def as_removeFunRandomNYWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_removeFunRandomNYWidget()

@@ -4,9 +4,12 @@ if TYPE_CHECKING:
     from gui.shared.gui_items import ItemsCollection
     from gui.shared.gui_items.Tankman import Tankman
     from gui.shared.gui_items.Vehicle import Vehicle
+    from Event import Event
+    from gui.shared.utils.requesters import battle_pass_requester
     from gui.veh_post_progression.models.progression import PostProgressionItem
     from items.vehicles import VehicleType
     from gui.shared.gui_items.dossier import AccountDossier
+    from new_year import ny_requester
 
 class IItemsRequester(requesters.IRequester):
 
@@ -92,6 +95,10 @@ class IItemsRequester(requesters.IRequester):
 
     @property
     def refProgram(self):
+        raise NotImplementedError
+
+    @property
+    def festivity(self):
         raise NotImplementedError
 
     def requestUserDossier(self, databaseID, callback):
@@ -211,6 +218,9 @@ class IItemsRequester(requesters.IRequester):
     def getLayoutState(self, databaseID=None):
         raise NotImplementedError
 
+    def resetBattleAbilitiesUnlock(self):
+        raise NotImplementedError
+
 
 class IHangarSpace(object):
     onStatsReceived = None
@@ -235,6 +245,10 @@ class IHangarSpace(object):
         raise NotImplementedError
 
     @property
+    def spaceID(self):
+        raise NotImplementedError
+
+    @property
     def inited(self):
         raise NotImplementedError
 
@@ -248,10 +262,6 @@ class IHangarSpace(object):
 
     @property
     def isModelLoaded(self):
-        raise NotImplementedError
-
-    @property
-    def isSelectionEnabled(self):
         raise NotImplementedError
 
     @property
@@ -311,13 +321,13 @@ class IHangarSpace(object):
     def getCentralPointForArea(self, areaID):
         raise NotImplementedError
 
-    def setSelectionEnabled(self, enabled):
-        raise NotImplementedError
-
     def getAnchorParams(self, slotId, areaId, regionId):
         raise NotImplementedError
 
     def updateAnchorsParams(self, *args):
+        raise NotImplementedError
+
+    def resetLastUpdatedVehicle(self):
         raise NotImplementedError
 
 

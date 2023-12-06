@@ -260,6 +260,12 @@ class Window(PyObjectEntity):
     def isHidden(self):
         return self.proxy.isHidden()
 
+    def canBeClosed(self):
+        if self.content is not None:
+            return self.content.canBeClosed()
+        else:
+            return True
+
     def _getDecoratorViewModel(self):
         decorator = self.decorator
         if decorator is not None:

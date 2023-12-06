@@ -2,7 +2,7 @@ import logging, math, weakref
 from collections import defaultdict
 import BigWorld
 from battle_royale.gui.constants import BattleRoyaleEquipments
-import BattleReplay, SoundGroups, Windowing
+import BattleReplay, SoundGroups
 from AvatarInputHandler import AvatarInputHandler
 from constants import StunTypes
 from ReplayEvents import g_replayEvents
@@ -410,7 +410,6 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
         if crosshairCtrl is not None:
             crosshairCtrl.onCrosshairViewChanged += self.__onCrosshairViewChanged
         self.__equipmentCtrl = self.sessionProvider.shared.equipments
-        Windowing.addWindowAccessibilitynHandler(self.__onWindowAccessibilityChanged)
         self.__initData()
         return
 
@@ -469,7 +468,6 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
         if handler is not None:
             if isinstance(handler, AvatarInputHandler):
                 handler.onCameraChanged -= self.__onCameraChanged
-        Windowing.removeWindowAccessibilityHandler(self.__onWindowAccessibilityChanged)
         self.__hideAll()
         self._timers.clear()
         self._mapping.clear()
@@ -748,11 +746,3 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
     def __onCameraChanged(self, ctrlMode, vehicleID=None):
         if ctrlMode == 'video':
             self.__hideAll()
-
-    def __onWindowAccessibilityChanged(self, isAccessible):
-        ctrl = self.sessionProvider.shared.vehicleState
-        if isAccessible and ctrl:
-            vehicle = ctrl.getControllingVehicle()
-            if vehicle is not None:
-                self.__onVehicleControlling(vehicle)
-        return

@@ -1,4 +1,4 @@
-from items import _xml
+from items._xml import raiseWrongXml
 from typing import Dict, Tuple, Iterable, List, TYPE_CHECKING
 if TYPE_CHECKING:
     import ResMgr
@@ -119,19 +119,24 @@ def readModifiers(xmlCtx, section):
      xmlCtx, section.name)
     modifiers = []
     for opType, data in section.items():
-        if opType not in (MODIFIER_TYPE.MUL, MODIFIER_TYPE.ADD):
-            _xml.raiseWrongXml(xmlCtx, opType, 'Unknown operation type')
         name = data.readString('name')
-        attrType, attrName = _parseAttrName(name)
-        names = ALLOWED_ATTRS.get(attrType)
-        if names is None:
-            _xml.raiseWrongXml(xmlCtx, name, 'Unknown attribute type')
-        if attrName not in names:
-            _xml.raiseWrongXml(xmlCtx, name, 'Unknown attribute name')
         value = data.readFloat('value')
-        modifiers.append((opType, attrType, attrName, value))
+        modifier = createModifier(xmlCtx, opType, name, value)
+        if modifier:
+            modifiers.append(modifier)
 
     return modifiers
+
+
+def createModifier(ctx, opType, name, value):
+    if opType not in (MODIFIER_TYPE.MUL, MODIFIER_TYPE.ADD):
+        return raiseWrongXml(ctx, opType, 'Unknown operation type')
+    attrType, attrName = _parseAttrName(name)
+    if attrType not in ALLOWED_ATTRS:
+        return raiseWrongXml(ctx, name, 'Unknown attribute type')
+    if attrName not in ALLOWED_ATTRS.get(attrType):
+        return raiseWrongXml(ctx, name, 'Unknown attribute name')
+    return (opType, attrType, attrName, value)
 
 
 def isclose(a, b, rel_tol=1e-09, abs_tol=0.0):

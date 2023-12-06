@@ -139,6 +139,7 @@
 		<_105mm_L7A3_P>284</_105mm_L7A3_P>
 		<_105mm_Gun_T5E1_M>285</_105mm_Gun_T5E1_M>
 		<_120mm_Gun_T123E6_66>286</_120mm_Gun_T123E6_66>
+		<_37mm_Browning_Semi_Automatic_E2>287</_37mm_Browning_Semi_Automatic_E2>
 		<_76mm_Gun_T185E_IGR>60001</_76mm_Gun_T185E_IGR>
 		<_90mm_Gun_T178_IGR>60002</_90mm_Gun_T178_IGR>
 		<_120mm_Gun_T53A1_IGR>60003</_120mm_Gun_T53A1_IGR>
@@ -166,6 +167,7 @@
 		<_75mm_Gun_M3_L37A_MapsTraining_Player_HT_1>26</_75mm_Gun_M3_L37A_MapsTraining_Player_HT_1>
 		<_76mm_Gun_M1A2L_MapsTraining_Dummy_LT_2>53</_76mm_Gun_M1A2L_MapsTraining_Dummy_LT_2>
 		<_120mm_Gun_M58_7x7>31001</_120mm_Gun_M58_7x7>
+		<_75mm_Gun_M6_594>31003</_75mm_Gun_M6_594>
 	</ids>
 	<shared>
 		<_12.7mm_MG_HB_M2>
@@ -1672,6 +1674,118 @@
 				</_37mm_HE_M63>
 			</shots>
 		</_37mm_Browning_Semi_Automatic>
+		<_37mm_Browning_Semi_Automatic_E2>
+			<userString>#usa_vehicles:_37mm_Browning_Semi_Automatic_E2</userString>
+			<tags/>
+			<level>3</level>
+			<price>5400</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.24
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.26
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>small</recoilEffect>
+			</recoil>
+			<effects>shot_small</effects>
+			<reloadEffect>reload20_45</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -25.0 1.0 -25.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 8.0 1.0 8.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				43.75
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				6.85714285714286
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>90</maxAmmo>
+			<aimingTime>
+				2.05714285714286
+				<!--BW_String-->
+			</aimingTime>
+			<weight>84</weight>
+			<maxHealth>100</maxHealth>
+			<maxRegenHealth>50</maxRegenHealth>
+			<repairCost>5</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.514285714285714
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.16
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_37mm_AP_M74_E2>
+					<defaultPortion>
+						1.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>730</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>65 58</piercingPower>
+				</_37mm_AP_M74_E2>
+				<_37mm_APC_M51_E2>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>920</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>86 74</piercingPower>
+				</_37mm_APC_M51_E2>
+				<_37mm_HE_M63_E2>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>480</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>19 19</piercingPower>
+				</_37mm_HE_M63_E2>
+			</shots>
+		</_37mm_Browning_Semi_Automatic_E2>
 		<_37mm_semiautomatic_gun_M1924A1>
 			<userString>#usa_vehicles:_37mm_semiautomatic_gun_M1924A1</userString>
 			<shortUserString>#usa_vehicles:_37mm_semiautomatic_gun_M1924A1_short</shortUserString>
@@ -3390,6 +3504,118 @@
 				</_75mm_M48>
 			</shots>
 		</_75mm_Gun_M6>
+		<_75mm_Gun_M6_594>
+			<userString>#usa_vehicles:_75mm_Gun_M6_594</userString>
+			<tags/>
+			<level>5</level>
+			<price>33350</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.48
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.36
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>medium</recoilEffect>
+			</recoil>
+			<effects>shot_medium</effects>
+			<reloadEffect>reload50_75</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -15.0 1.0 -15.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 10.0 1.0 10.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				40.25
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				4.0
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>46</maxAmmo>
+			<aimingTime>
+				2.05714285714286
+				<!--BW_String-->
+			</aimingTime>
+			<weight>186</weight>
+			<maxHealth>120</maxHealth>
+			<maxRegenHealth>60</maxRegenHealth>
+			<repairCost>5</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.4
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.1
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					3.5
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_75mm_M61_594>
+					<defaultPortion>
+						0.95
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>792</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>116 98</piercingPower>
+				</_75mm_M61_594>
+				<_75mm_M72_594>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>990</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>153 118</piercingPower>
+				</_75mm_M72_594>
+				<_75mm_M48_594>
+					<defaultPortion>
+						0.05
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>792</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>38 38</piercingPower>
+				</_75mm_M48_594>
+			</shots>
+		</_75mm_Gun_M6_594>
 		<_75mm_Gun_M17>
 			<userString>#usa_vehicles:_75mm_Gun_M17</userString>
 			<tags/>

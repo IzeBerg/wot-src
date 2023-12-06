@@ -165,6 +165,7 @@ class TOOLTIPS(object):
     STORAGE_FILTER_NORESULTSBTN = '#tooltips:storage/filter/noResultsBtn'
     HANGAR_CREW_RUDY_DOG = '#tooltips:hangar/crew/rudy/dog/'
     TANKS_CAROUSEL_WOT_PLUS_SLOT = '#tooltips:tanks_carousel/wot_plus_slot'
+    TANKCARUSEL_NEWYEARSLOT = '#tooltips:tankCarusel/newYearSlot'
     BADGEINFO_TITLE = '#tooltips:badgeinfo/title'
     BADGEINFO_TEXT = '#tooltips:badgeinfo/text'
     BADGEPAGE_RANKED_SUFFIXITEM_POSITION = '#tooltips:badgepage/ranked/suffixItem/position'
@@ -1450,9 +1451,6 @@ class TOOLTIPS(object):
     VEHICLESELLDIALOG_RENDERER_ALERTICONSELL_BODY = '#tooltips:vehicleSellDialog/renderer/alertIconSell/body'
     VEHICLESELLDIALOG_RENDERER_ALERTICONDECONSTRUCT_HEADER = '#tooltips:vehicleSellDialog/renderer/alertIconDeconstruct/header'
     VEHICLESELLDIALOG_RENDERER_ALERTICONDECONSTRUCT_BODY = '#tooltips:vehicleSellDialog/renderer/alertIconDeconstruct/body'
-    VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN_HEADER = '#tooltips:vehicleSellDialog/renderer/alertIconEquipCoin/header'
-    VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN_BODY = '#tooltips:vehicleSellDialog/renderer/alertIconEquipCoin/body'
-    VEHICLESELLDIALOG_RENDERER_SBSCR_DELUXE_NONSUB_DEMOUNTNOTENABLED_HEADER = '#tooltips:vehicleSellDialog/renderer/sbscr/Deluxe/nonsub/demountNotEnabled/header'
     VEHICLESELLDIALOG_ACCEPTBUTTONTOOLTIP_CONTROLNUMBERVALID_HEADER = '#tooltips:vehicleSellDialog/acceptButtonTooltip/controlNumberValid/header'
     VEHICLESELLDIALOG_ACCEPTBUTTONTOOLTIP_CONTROLNUMBERVALID_BODY = '#tooltips:vehicleSellDialog/acceptButtonTooltip/controlNumberValid/body'
     VEHICLESELLDIALOG_ACCEPTBUTTONTOOLTIP_NOTENABLE_HEADER = '#tooltips:vehicleSellDialog/acceptButtonTooltip/notEnable/header'
@@ -1718,7 +1716,6 @@ class TOOLTIPS(object):
     CONTACT_STATUS_INBATTLE_HISTORICAL = '#tooltips:Contact/status/inBattle/historical'
     CONTACT_STATUS_INBATTLE_FORTIFICATIONS = '#tooltips:Contact/status/inBattle/fortifications'
     CONTACT_STATUS_INBATTLE_SPECIAL = '#tooltips:Contact/status/inBattle/special'
-    CONTACT_STATUS_INBATTLE_EVENT = '#tooltips:Contact/status/inBattle/event'
     CONTACT_STATUS_ONLINE = '#tooltips:Contact/status/online'
     CONTACT_STATUS_OFFLINE = '#tooltips:Contact/status/offline'
     CONTACT_RESOURCE_WOWP = '#tooltips:Contact/resource/wowp'
@@ -3705,6 +3702,18 @@ class TOOLTIPS(object):
     NOTRECRUITEDTANKMAN_TANKMEN_HW_BABAYAGA_LABEL = '#tooltips:notrecruitedtankman/tankmen_hw_BabaYaga/label'
     NOTRECRUITEDTANKMAN_TANKMEN_HW_KATRINA_DESC = '#tooltips:notrecruitedtankman/tankmen_hw_Katrina/desc'
     NOTRECRUITEDTANKMAN_TANKMEN_HW_KATRINA_LABEL = '#tooltips:notrecruitedtankman/tankmen_hw_Katrina/label'
+    TANKCARUSEL_NEWYEARSLOT_HEADER = '#tooltips:tankCarusel/newYearSlot/header'
+    TANKCARUSEL_NEWYEARSLOT_BODY = '#tooltips:tankCarusel/newYearSlot/body'
+    NOTRECRUITEDTANKMAN_NY24_TANKMEN_PROCYON_LABEL = '#tooltips:notrecruitedtankman/ny24_tankmen_procyon/label'
+    NOTRECRUITEDTANKMAN_NY24_TANKMEN_PROCYON_DESC = '#tooltips:notrecruitedtankman/ny24_tankmen_procyon/desc'
+    NOTRECRUITEDTANKMAN_NY24_TANKMEN_1_LABEL = '#tooltips:notrecruitedtankman/ny24_tankmen_1/label'
+    NOTRECRUITEDTANKMAN_NY24_TANKMEN_1_DESC = '#tooltips:notrecruitedtankman/ny24_tankmen_1/desc'
+    NOTRECRUITEDTANKMAN_NY24_TANKMEN_2_LABEL = '#tooltips:notrecruitedtankman/ny24_tankmen_2/label'
+    NOTRECRUITEDTANKMAN_NY24_TANKMEN_2_DESC = '#tooltips:notrecruitedtankman/ny24_tankmen_2/desc'
+    NOTRECRUITEDTANKMAN_NY24_TANKMEN_3_LABEL = '#tooltips:notrecruitedtankman/ny24_tankmen_3/label'
+    NOTRECRUITEDTANKMAN_NY24_TANKMEN_3_DESC = '#tooltips:notrecruitedtankman/ny24_tankmen_3/desc'
+    NOTRECRUITEDTANKMAN_NY24_TANKMEN_4_LABEL = '#tooltips:notrecruitedtankman/ny24_tankmen_4/label'
+    NOTRECRUITEDTANKMAN_NY24_TANKMEN_4_DESC = '#tooltips:notrecruitedtankman/ny24_tankmen_4/desc'
     ELEN_SUMMARY_RANK_ENUM = (
      ELEN_SUMMARY_RANK_1,
      ELEN_SUMMARY_RANK_2,
@@ -3800,8 +3809,7 @@ class TOOLTIPS(object):
      CONTACT_STATUS_INBATTLE_RANKED,
      CONTACT_STATUS_INBATTLE_HISTORICAL,
      CONTACT_STATUS_INBATTLE_FORTIFICATIONS,
-     CONTACT_STATUS_INBATTLE_SPECIAL,
-     CONTACT_STATUS_INBATTLE_EVENT)
+     CONTACT_STATUS_INBATTLE_SPECIAL)
     TANK_PARAMS_DESC_ENUM = (
      TANK_PARAMS_DESC_MAXHEALTH,
      TANK_PARAMS_DESC_VEHICLEWEIGHT,
@@ -4486,7 +4494,12 @@ class TOOLTIPS(object):
      NOTRECRUITEDTANKMAN_TANKMEN_HW_VASILISA_LABEL,
      NOTRECRUITEDTANKMAN_TANKMEN_HW_KASHCHEI_LABEL,
      NOTRECRUITEDTANKMAN_TANKMEN_HW_BABAYAGA_LABEL,
-     NOTRECRUITEDTANKMAN_TANKMEN_HW_KATRINA_LABEL)
+     NOTRECRUITEDTANKMAN_TANKMEN_HW_KATRINA_LABEL,
+     NOTRECRUITEDTANKMAN_NY24_TANKMEN_PROCYON_LABEL,
+     NOTRECRUITEDTANKMAN_NY24_TANKMEN_1_LABEL,
+     NOTRECRUITEDTANKMAN_NY24_TANKMEN_2_LABEL,
+     NOTRECRUITEDTANKMAN_NY24_TANKMEN_3_LABEL,
+     NOTRECRUITEDTANKMAN_NY24_TANKMEN_4_LABEL)
     NOTRECRUITEDTANKMAN_ALL_DESC_ENUM = (
      NOTRECRUITEDTANKMAN_BASE_DESC,
      NOTRECRUITEDTANKMAN_BUFFON_DESC,
@@ -4673,7 +4686,12 @@ class TOOLTIPS(object):
      NOTRECRUITEDTANKMAN_TANKMEN_HW_VASILISA_DESC,
      NOTRECRUITEDTANKMAN_TANKMEN_HW_KASHCHEI_DESC,
      NOTRECRUITEDTANKMAN_TANKMEN_HW_BABAYAGA_DESC,
-     NOTRECRUITEDTANKMAN_TANKMEN_HW_KATRINA_DESC)
+     NOTRECRUITEDTANKMAN_TANKMEN_HW_KATRINA_DESC,
+     NOTRECRUITEDTANKMAN_NY24_TANKMEN_PROCYON_DESC,
+     NOTRECRUITEDTANKMAN_NY24_TANKMEN_1_DESC,
+     NOTRECRUITEDTANKMAN_NY24_TANKMEN_2_DESC,
+     NOTRECRUITEDTANKMAN_NY24_TANKMEN_3_DESC,
+     NOTRECRUITEDTANKMAN_NY24_TANKMEN_4_DESC)
     NOTRECRUITEDTANKMAN_ALL_HOWTOGETINFO_ENUM = (
      NOTRECRUITEDTANKMAN_TANKMAN_HOWTOGETINFO,
      NOTRECRUITEDTANKMAN_TANKMEN_HOWTOGETINFO,

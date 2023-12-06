@@ -1,6 +1,6 @@
 import BigWorld, constants
 from account_helpers.AccountSettings import NEW_SETTINGS_COUNTER
-from account_helpers.settings_core.settings_constants import GAME, CONTROLS, VERSION, DAMAGE_INDICATOR, DAMAGE_LOG, BATTLE_EVENTS, SESSION_STATS, BattlePassStorageKeys, BattleCommStorageKeys, OnceOnlyHints, ScorePanelStorageKeys, SPGAim, GuiSettingsBehavior
+from account_helpers.settings_core.settings_constants import GAME, CONTROLS, VERSION, DAMAGE_INDICATOR, DAMAGE_LOG, BATTLE_EVENTS, SESSION_STATS, BattlePassStorageKeys, BattleCommStorageKeys, OnceOnlyHints, ScorePanelStorageKeys, SPGAim, GuiSettingsBehavior, NewYearStorageKeys
 from adisp import adisp_process, adisp_async
 from debug_utils import LOG_DEBUG
 from gui.server_events.pm_constants import PM_TUTOR_FIELDS
@@ -1027,6 +1027,24 @@ def _migrateTo112(core, data, initialized):
         AccountSettings.setSettings(CREW_SKINS_VIEWED, {})
 
 
+def _migrateTo113(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import GUI_START_BEHAVIOR
+    data[GUI_START_BEHAVIOR][GuiSettingsBehavior.COMP7_WHATS_NEW_SHOWN] = False
+
+
+def _migrateTo114(core, data, initialized):
+    nyStorageData = data['nyStorage']
+    for key in NewYearStorageKeys.BOOL_FLAGS:
+        nyStorageData[key] = False
+
+
+def _migrateTo115(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS, ARMORY_YARD_KEYS
+    from account_helpers import AccountSettings
+    data[SETTINGS_SECTIONS.ARMORY_YARD][ARMORY_YARD_KEYS.BUILD_PROGRESS] = 0
+    AccountSettings.clearArmoryYard()
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -1249,7 +1267,13 @@ _versions = (
  (
   111, _migrateTo111, False, False),
  (
-  112, _migrateTo112, False, False))
+  112, _migrateTo112, False, False),
+ (
+  113, _migrateTo113, False, False),
+ (
+  114, _migrateTo114, False, False),
+ (
+  115, _migrateTo115, False, False))
 
 @adisp_async
 @adisp_process

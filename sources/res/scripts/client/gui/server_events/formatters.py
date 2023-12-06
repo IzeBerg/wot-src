@@ -1,18 +1,20 @@
-import re, types
+import logging, re, types
 from collections import namedtuple
-import logging, ArenaType
+import typing, ArenaType
 from constants import ARENA_BONUS_TYPE, GAMEPLAY_NAMES_WITH_DISABLED_QUESTS
 from gui import makeHtmlString
+from gui.Scaleform.genConsts.QUEST_AWARD_BLOCK_ALIASES import QUEST_AWARD_BLOCK_ALIASES
 from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.settings import ICONS_SIZES
 from gui.impl import backport
-from gui.Scaleform.genConsts.QUEST_AWARD_BLOCK_ALIASES import QUEST_AWARD_BLOCK_ALIASES
-from gui.shared.formatters import text_styles, icons as gui_icons
+from gui.shared.formatters import icons as gui_icons, text_styles
 from gui.shared.money import Currency
 from gui.shared.system_factory import collectModeNameKwargsByBonusType, collectPrebattleConditionIcon
 from helpers import i18n
 from shared_utils import CONST_CONTAINER
+if typing.TYPE_CHECKING:
+    from gui.server_events.cond_formatters import FormattableField
 COMPLEX_TOKEN = 'complex_token'
 COMPLEX_TOKEN_TEMPLATE = 'img:(?P<styleID>.+):(?P<webID>.+)'
 TokenComplex = namedtuple('TokenComplex', 'isDisplayable styleID webID')
@@ -286,6 +288,28 @@ def packLongBonusesBlock(bonusesList, endlineSymbol='', complexTooltip='', lines
     return UiElement(data)
 
 
+def packSingleLineBonusesBlock(bonusesList, endlineSymbol='', complexTooltip='', specialTooltip=''):
+    data = {'linkage': 'QuestSingleLineTextAwardBlockUI', 
+       'items': bonusesList, 
+       'separator': ', ', 
+       'ellipsis': '..', 
+       'endline': endlineSymbol, 
+       'complexTooltip': complexTooltip, 
+       'specialTooltip': specialTooltip}
+    return UiElement(data)
+
+
+def packWulfTooltipSingleLineBonusesBlock(bonusesList, endlineSymbol='', wulfTooltip='', wulfTooltipArg=''):
+    data = {'linkage': 'QuestSingleLineTextAwardBlockUI', 
+       'items': bonusesList, 
+       'separator': ', ', 
+       'ellipsis': '..', 
+       'endline': endlineSymbol, 
+       'wulfTooltip': wulfTooltip, 
+       'wulfTooltipArg': wulfTooltipArg}
+    return UiElement(data)
+
+
 def packNewStyleBonusesBlock(bonusesList, endlineSymbol=''):
     data = {'linkage': QUEST_AWARD_BLOCK_ALIASES.QUEST_BIG_ICON_AWARD_BLOCK, 
        'items': bonusesList, 
@@ -296,10 +320,12 @@ def packNewStyleBonusesBlock(bonusesList, endlineSymbol=''):
     return UiElement(data)
 
 
-def packVehiclesBonusBlock(label, questID):
+def packVehiclesBonusBlock(label, questID, isOneOf=False):
     blockData = {'linkage': 'VehiclesBonusTextElement_UI', 
        'label': label, 
        'questID': questID}
+    if isOneOf:
+        blockData['tooltip'] = label
     return UiElement(blockData, 'label')
 
 
@@ -326,7 +352,7 @@ def packProgressData(rendererLinkage, progressList):
     return ProgressData(rendererLinkage, progressList)
 
 
-PreFormattedCondition = namedtuple('PreForamttedCondition', 'titleData, descrData, iconKey, current, total, earned, progressData, conditionData,progressType, sortKey, progressID')
+PreFormattedCondition = namedtuple('PreFormattedCondition', 'titleData, descrData, iconKey, current, total, earned, progressData, conditionData,progressType, sortKey, progressID')
 
 def packMissionIconCondition(titleData, progressType, descrData, iconKey, current=None, total=None, earned=None, progressData=None, conditionData=None, sortKey='', progressID=None):
     return PreFormattedCondition(titleData, descrData, iconKey, current, total, earned, progressData, conditionData, progressType, sortKey, progressID)
@@ -366,8 +392,6 @@ def getUniqueBonusTypes(bonusTypes):
             bonusType = ARENA_BONUS_TYPE.BATTLE_ROYALE_SOLO
         if bonusType == ARENA_BONUS_TYPE.WINBACK:
             bonusType = getQuestsFormatterBonusType()
-        if bonusType in (ARENA_BONUS_TYPE.HALLOWEEN_BATTLES_WHEEL,):
-            bonusType = ARENA_BONUS_TYPE.HALLOWEEN_BATTLES
         uniqueTypes.add(bonusType)
 
     return uniqueTypes

@@ -1,7 +1,9 @@
 import operator, time
 from abc import ABCMeta
 from collections import namedtuple
-import typing, constants, nations
+import logging, typing
+from typing import Union
+import constants, nations
 from debug_utils import LOG_ERROR
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK
 from gui.Scaleform.locale.PERSONAL_MISSIONS import PERSONAL_MISSIONS
@@ -22,8 +24,9 @@ from gui.shared.gui_items.Vehicle import VEHICLE_TYPES_ORDER
 from gui.shared.system_factory import registerQuestBuilders
 from gui.shared.utils import ValidationResult
 from gui.shared.utils.requesters.QuestsProgressRequester import PersonalMissionsProgressRequester
-from helpers import dependency, getLocalizedData, i18n, time_utils
-from personal_missions import PM_BRANCH, PM_BRANCH_TO_FINAL_PAWN_COST, PM_FLAG, PM_STATE as _PMS
+from helpers import dependency
+from helpers import getLocalizedData, i18n, time_utils
+from personal_missions import PM_STATE as _PMS, PM_FLAG, PM_BRANCH, PM_BRANCH_TO_FINAL_PAWN_COST
 from personal_missions_config import getQuestConfig
 from personal_missions_constants import DISPLAY_TYPE
 from shared_utils import findFirst, first
@@ -33,9 +36,10 @@ from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 from gui.server_events.bonuses import SimpleBonus
 if typing.TYPE_CHECKING:
-    from typing import Dict, List, Union
+    from typing import Dict, List
     from gui.Scaleform.daapi.view.lobby.server_events.events_helpers import EventPostBattleInfo
     import potapov_quests
+_logger = logging.getLogger()
 
 class DEFAULTS_GROUPS(object):
     FOR_CURRENT_VEHICLE = 'currentlyAvailable'
@@ -138,9 +142,6 @@ class ServerEventAbstract(object):
         if 'finishTime' in self._data:
             return time_utils.makeLocalServerTime(self._data['finishTime'])
         return time.time()
-
-    def noSkip(self):
-        return self._data.get('noSkip', False)
 
     def getUserName(self):
         return getLocalizedData(self._data, 'name')
@@ -254,6 +255,7 @@ class ServerEventAbstract(object):
 
 
 class Group(ServerEventAbstract):
+    __slots__ = ServerEventAbstract.__slots__
 
     def getGroupEvents(self):
         return self._data.get('groupContent', [])
@@ -719,7 +721,7 @@ class Action(ServerEventAbstract):
 
             return result
 
-    def getModifiers(self):
+    def getModifiersDict(self):
         result = {}
         for stepData in self._data.get('steps'):
             mName = stepData.get('name')
@@ -731,7 +733,10 @@ class Action(ServerEventAbstract):
             else:
                 result[mName] = m
 
-        return sorted(result.itervalues(), key=operator.methodcaller('getName'), cmp=compareModifiers)
+        return result
+
+    def getModifiers(self):
+        return sorted(self.getModifiersDict().itervalues(), key=operator.methodcaller('getName'), cmp=compareModifiers)
 
 
 class PMCampaign(object):
@@ -1407,7 +1412,8 @@ class GroupQuestBuilder(IQuestBuilder):
 
     @classmethod
     def buildQuest(cls, questType, qID, data, progress=None, expiryTime=None):
-        return Group(qID, data)
+        groupClass = Group
+        return groupClass(qID, data)
 
 
 class MotiveQuestBuilder(IQuestBuilder):

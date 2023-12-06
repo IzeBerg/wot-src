@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enum, IntEnum
 from frameworks.wulf import Array
 from frameworks.wulf import ViewModel
 from gui_lootboxes.gui.impl.gen.view_models.views.lobby.gui_lootboxes.lootbox_view_model import LootboxViewModel
@@ -12,11 +12,17 @@ class States(Enum):
     REWARDING = 'REWARDING'
 
 
+class ReturnPlace(IntEnum):
+    TO_HANGAR = 0
+    TO_SHOP = 1
+    TO_CUSTOM = 2
+
+
 class LootboxesStorageViewModel(ViewModel):
     __slots__ = ('openLootBoxes', 'onClose', 'buyBox', 'openningFinished', 'onLootboxSelected',
                  'changeAnimationEnabledSetting', 'showBonusProbabilities')
 
-    def __init__(self, properties=5, commands=7):
+    def __init__(self, properties=6, commands=7):
         super(LootboxesStorageViewModel, self).__init__(properties=properties, commands=commands)
 
     def getLootboxes(self):
@@ -53,6 +59,12 @@ class LootboxesStorageViewModel(ViewModel):
     def setIsBuyAvailable(self, value):
         self._setBool(4, value)
 
+    def getReturnPlace(self):
+        return ReturnPlace(self._getNumber(5))
+
+    def setReturnPlace(self, value):
+        self._setNumber(5, value.value)
+
     def _initialize(self):
         super(LootboxesStorageViewModel, self)._initialize()
         self._addArrayProperty('lootboxes', Array())
@@ -60,6 +72,7 @@ class LootboxesStorageViewModel(ViewModel):
         self._addNumberProperty('currentLootboxID', 0)
         self._addBoolProperty('isAnimationEnabled', True)
         self._addBoolProperty('isBuyAvailable', True)
+        self._addNumberProperty('returnPlace')
         self.openLootBoxes = self._addCommand('openLootBoxes')
         self.onClose = self._addCommand('onClose')
         self.buyBox = self._addCommand('buyBox')

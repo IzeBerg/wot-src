@@ -41,9 +41,6 @@ STORAGE_VEHICLES_CAROUSEL_FILTER_1 = 'STORAGE_CAROUSEL_FILTER_1'
 STORAGE_BLUEPRINTS_CAROUSEL_FILTER = 'STORAGE_BLUEPRINTS_CAROUSEL_FILTER'
 BATTLEPASS_CAROUSEL_FILTER_1 = 'BATTLEPASS_CAROUSEL_FILTER_1'
 BATTLEPASS_CAROUSEL_FILTER_CLIENT_1 = 'BATTLEPASS_CAROUSEL_FILTER_CLIENT_1'
-HW22_CAROUSEL_FILTER_1 = 'HW22_CAROUSEL_FILTER_1'
-HW22_CAROUSEL_FILTER_2 = 'HW22_CAROUSEL_FILTER_2'
-HW22_CAROUSEL_FILTER_CLIENT_1 = 'HW22_CAROUSEL_FILTER_CLIENT_1'
 ROYALE_CAROUSEL_FILTER_1 = 'ROYALE_CAROUSEL_FILTER_1'
 ROYALE_CAROUSEL_FILTER_2 = 'ROYALE_CAROUSEL_FILTER_2'
 ROYALE_CAROUSEL_FILTER_CLIENT_1 = 'ROYALE_CAROUSEL_FILTER_CLIENT_1'
@@ -117,7 +114,6 @@ STORE_TAB = 'store_tab'
 STATS_REGULAR_SORTING = 'statsSorting'
 STATS_SORTIE_SORTING = 'statsSortingSortie'
 STATS_COMP7_SORTING = 'statsSortingComp7'
-STATS_EVENT_SORTING = 'statsEventSorting'
 MISSIONS_PAGE = 'missions_page'
 DEFAULT_VEHICLE_TYPES_FILTER = [
  False] * len(VEHICLE_CLASSES)
@@ -263,6 +259,14 @@ ACHIEVEMENTS_EDITING_ENABLED_STATUS = 'achievementsEditingEnabledStatus'
 ACHIEVEMENTS_MEDAL_ADDED_STATUS = 'achievementsMedalAddedStatus'
 ACHIEVEMENTS_RATING_CHANGED_STATUS = 'achievementsRatingChangedStatus'
 ACHIEVEMENTS_MEDAL_COUNT_INFO = 'achievementsMedalCountInfo'
+NEW_YEAR = 'newYear'
+NY_DAILY_QUESTS_VISITED = 'NYDailyQuestsVisited'
+NY_BONUS_DAILY_QUEST_VISITED = 'NYBonusDailyQuestVisited'
+NY_OLD_COLLECTIONS_BY_YEAR_VISITED = 'NYOldCollectionsByYearVisited'
+NY_OLD_REWARDS_BY_YEAR_VISITED = 'NYOldRewardsByYearVisited'
+NY_LAST_SEEN_LEVEL_INFO = 'NYLastSeenLevelInfo'
+NY_LAST_SEEN_TOTAL_BONUS = 'NYLastSeenTotalBonus'
+NY_INTRO_SEEN = 'NYIntroSeen'
 
 class BattleMatters(object):
     BATTLE_MATTERS_SETTINGS = 'battleMattersSettings'
@@ -296,7 +300,6 @@ MODE_SELECTOR_BATTLE_PASS_SHOWN = 'modeSelectorBattlePassShown'
 RANKED_LAST_CYCLE_ID = 'rankedLastCycleID'
 EPIC_LAST_CYCLE_ID = 'epicLastCycleID'
 FUN_RANDOM_LAST_PRESET = 'funRandomLastPreset'
-HALLOWEEN_PROGRESSION = 'halloweenProgression'
 DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0, 
                  'shop_current': (
                                 -1, STORE_CONSTANTS.VEHICLE, False), 
@@ -772,57 +775,6 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                'role_SPG': False}, 
                  VERSUS_AI_CAROUSEL_FILTER_CLIENT_1: {'searchNameVehicle': '', 
                                                       'clanRented': False}, 
-                 HW22_CAROUSEL_FILTER_1: {'ussr': False, 
-                                          'germany': False, 
-                                          'usa': False, 
-                                          'china': False, 
-                                          'france': False, 
-                                          'uk': False, 
-                                          'japan': False, 
-                                          'czech': False, 
-                                          'sweden': False, 
-                                          'poland': False, 
-                                          'italy': False, 
-                                          'lightTank': False, 
-                                          'mediumTank': False, 
-                                          'heavyTank': False, 
-                                          'SPG': False, 
-                                          'AT-SPG': False, 
-                                          'level_1': False, 
-                                          'level_2': False, 
-                                          'level_3': False, 
-                                          'level_4': False, 
-                                          'level_5': False, 
-                                          'level_6': False, 
-                                          'level_7': False, 
-                                          'level_8': False, 
-                                          'level_9': False, 
-                                          'level_10': False}, 
-                 HW22_CAROUSEL_FILTER_2: {'premium': False, 
-                                          'elite': False, 
-                                          'igr': False, 
-                                          'rented': True, 
-                                          'event': True, 
-                                          'favorite': False, 
-                                          'bonus': False, 
-                                          'crystals': False, 
-                                          'role_HT_assault': False, 
-                                          'role_HT_break': False, 
-                                          'role_HT_support': False, 
-                                          'role_HT_universal': False, 
-                                          'role_MT_universal': False, 
-                                          'role_MT_sniper': False, 
-                                          'role_MT_assault': False, 
-                                          'role_MT_support': False, 
-                                          'role_ATSPG_assault': False, 
-                                          'role_ATSPG_universal': False, 
-                                          'role_ATSPG_sniper': False, 
-                                          'role_ATSPG_support': False, 
-                                          'role_LT_universal': False, 
-                                          'role_LT_wheeled': False, 
-                                          'role_SPG': False}, 
-                 HW22_CAROUSEL_FILTER_CLIENT_1: {'searchNameVehicle': '', 
-                                                 'clanRented': False}, 
                  MISSION_SELECTOR_FILTER: {'inventory': False}, 
                  PM_SELECTOR_FILTER: {'inventory': False}, 
                  BARRACKS_FILTER: {'nation': -1, 'role': 'None', 'tankType': 'None', 'location': 3, 'nationID': None}, ORDERS_FILTER: {'isSelected': False}, GUI_START_BEHAVIOR: {'isFreeXPInfoDialogShowed': False, 'isRankedWelcomeViewShowed': False, 
@@ -960,8 +912,6 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   'statsSortingSortie': {'iconType': 'tank', 
                                          'sortDirection': 'descending'}, 
                   'statsSortingComp7': {'iconType': 'prestigePoints', 
-                                        'sortDirection': 'descending'}, 
-                  'statsEventSorting': {'iconType': 'hwXP', 
                                         'sortDirection': 'descending'}, 
                   'backDraftInvert': False, 
                   QUESTS: {'lastVisitTime': -1, 
@@ -1148,7 +1098,6 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                           BattleMatters.LAST_QUEST_PROGRESS: 0, 
                                                           BattleMatters.REMINDER_LAST_DISPLAY_TIME: 0}, 
                   BR_PROGRESSION_POINTS_SEEN: 0, 
-                  HALLOWEEN_PROGRESSION: {'previous_phase': 0}, 
                   Winback.WINBACK_SETTINGS: {Winback.COMPLETED_STARTING_QUEST_COUNT: 0, 
                                              Winback.INTRO_SHOWN: False, 
                                              Winback.BATTLE_SELECTOR_SETTINGS_BULLET_SHOWN: False}, 
@@ -1171,7 +1120,27 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                    LOOT_BOXES_OPEN_ANIMATION_ENABLED: True, 
                                    LOOT_BOXES_VIEWED_COUNT: 0, 
                                    LOOT_BOXES_COUNT: {}, LOOT_BOXES_LAST_ADDED_ID: 0}, 
-                  BIRTHDAY_2023_INTRO_SHOWN: False}, 
+                  BIRTHDAY_2023_INTRO_SHOWN: False, 
+                  NEW_YEAR: {NY_DAILY_QUESTS_VISITED: False, 
+                             NY_BONUS_DAILY_QUEST_VISITED: False, 
+                             NY_OLD_COLLECTIONS_BY_YEAR_VISITED: {18: False, 
+                                                                  19: False, 
+                                                                  20: False, 
+                                                                  21: False, 
+                                                                  22: False, 
+                                                                  23: False, 
+                                                                  24: False}, 
+                             NY_OLD_REWARDS_BY_YEAR_VISITED: {18: False, 
+                                                              19: False, 
+                                                              20: False, 
+                                                              21: False, 
+                                                              22: False, 
+                                                              23: False, 
+                                                              24: False}, 
+                             NY_LAST_SEEN_LEVEL_INFO: {'level': 1, 
+                                                       'points': 0}, 
+                             NY_INTRO_SEEN: False, 
+                             NY_LAST_SEEN_TOTAL_BONUS: 0}}, 
    KEY_COUNTERS: {NEW_HOF_COUNTER: {PROFILE_CONSTANTS.HOF_ACHIEVEMENTS_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VEHICLES_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VIEW_RATING_BUTTON: True}, 
@@ -1374,7 +1343,7 @@ def _recursiveStep(defaultDict, savedDict, finalDict):
 
 class AccountSettings(object):
     onSettingsChanging = Event.Event()
-    version = 66
+    version = 67
     settingsCore = dependency.descriptor(ISettingsCore)
     __cache = {'login': None, 'section': None}
     __sessionSettings = {'login': None, 'section': None}
@@ -1424,7 +1393,6 @@ class AccountSettings(object):
     @staticmethod
     def overrideDefaultSettings(name, value):
         if name not in DEFAULT_VALUES:
-            _logger.warning('account setting %s not in DEFAULT_VALUES', name)
             return
         DEFAULT_VALUES[name].update(value)
 
@@ -1865,7 +1833,7 @@ class AccountSettings(object):
                      CAROUSEL_FILTER_CLIENT_1, BATTLEPASS_CAROUSEL_FILTER_CLIENT_1, RANKED_CAROUSEL_FILTER_CLIENT_1,
                      MAPBOX_CAROUSEL_FILTER_CLIENT_1, EPICBATTLE_CAROUSEL_FILTER_CLIENT_1,
                      ROYALE_CAROUSEL_FILTER_CLIENT_1, STORAGE_BLUEPRINTS_CAROUSEL_FILTER,
-                     STORAGE_VEHICLES_CAROUSEL_FILTER_1, HW22_CAROUSEL_FILTER_CLIENT_1))
+                     STORAGE_VEHICLES_CAROUSEL_FILTER_1))
                     for filterSection in existingSections:
                         savedFilters = _unpack(filtersSection[filterSection].asString)
                         defaults = AccountSettings.getFilterDefault(filterSection)
@@ -1885,8 +1853,7 @@ class AccountSettings(object):
                      EPICBATTLE_CAROUSEL_FILTER_CLIENT_2,
                      MAPBOX_CAROUSEL_FILTER_CLIENT_1,
                      STORAGE_VEHICLES_CAROUSEL_FILTER_1,
-                     STORAGE_BLUEPRINTS_CAROUSEL_FILTER,
-                     HW22_CAROUSEL_FILTER_CLIENT_1))
+                     STORAGE_BLUEPRINTS_CAROUSEL_FILTER))
                     for filterSection in existingSections:
                         savedFilters = _unpack(filtersSection[filterSection].asString)
                         if 'clanRented' in savedFilters:
@@ -2015,6 +1982,27 @@ class AccountSettings(object):
                         bmAccSettings = _unpack(accSettings[bmKey].asString)
                         bmSettings.update(bmAccSettings)
                         accSettings.write(bmKey, _pack(bmSettings))
+
+            if currVersion < 67:
+                for key, section in _filterAccountSection(ads):
+                    accSettings = AccountSettings._readSection(section, KEY_SETTINGS)
+                    if NEW_YEAR in accSettings.keys():
+                        accSettings.deleteSection(NEW_YEAR)
+                    accUiFlags = AccountSettings._readSection(section, KEY_UI_FLAGS)
+                    for uiKey in {NY_DAILY_QUESTS_VISITED,
+                     NY_BONUS_DAILY_QUEST_VISITED,
+                     NY_OLD_COLLECTIONS_BY_YEAR_VISITED,
+                     NY_OLD_REWARDS_BY_YEAR_VISITED,
+                     NY_LAST_SEEN_LEVEL_INFO,
+                     'NYCelebrityQuestsCompletedMask',
+                     'NYCelebrityQuestsVisitedMask',
+                     'NYCelebrityCompletedQuestsAnimationShownMask'}.intersection(accUiFlags.keys()):
+                        accUiFlags.deleteSection(uiKey)
+
+                    if GUI_LOOT_BOXES in accSettings.keys():
+                        lootBoxesSettings = _unpack(accSettings[GUI_LOOT_BOXES].asString)
+                        lootBoxesSettings[LOOT_BOXES_INTRO_SHOWN] = False
+                        accSettings.write(GUI_LOOT_BOXES, _pack(lootBoxesSettings))
 
             ads.writeInt('version', AccountSettings.version)
         return
@@ -2181,6 +2169,22 @@ class AccountSettings(object):
     @staticmethod
     def setArmoryYard(name, value):
         AccountSettings._setValue(name, value, ArmoryYard.ARMORY_YARD_SETTINGS, True)
+
+    @classmethod
+    def getNewYear(cls, name):
+        return cls.getSettings(NEW_YEAR).get(name)
+
+    @classmethod
+    def setNewYear(cls, name, value):
+        section = cls.getSettings(NEW_YEAR)
+        section[name] = value
+        cls._setValue(NEW_YEAR, section, KEY_SETTINGS, True)
+
+    @staticmethod
+    def clearArmoryYard():
+        fds = AccountSettings._readSection(AccountSettings._readUserSection(), ArmoryYard.ARMORY_YARD_SETTINGS)
+        for name in fds.keys():
+            fds.deleteSection(name)
 
     @staticmethod
     def _getValue(name, setting, force=False):

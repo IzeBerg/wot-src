@@ -135,6 +135,33 @@
 			</directory>
 		</directory>
 		<directory>
+			<path>Hangars</path>
+			<directory>
+				<path>h30_newyear_2021</path>
+				<directory>
+					<path>environment</path>
+					<directory>
+						<path>00_Tiles</path>
+						<rule>
+							<format>DXT5</format>
+							<paddingMode>DOWNSCALED_CENTERED_TILED</paddingMode>
+							<pattern>.*\_AM.png$</pattern>
+						</rule>
+						<rule>
+							<format>DXT5</format>
+							<paddingMode>DOWNSCALED_CENTERED_TILED</paddingMode>
+							<pattern>.*\_GBMT.png$</pattern>
+						</rule>
+						<rule>
+							<format>DXT1</format>
+							<paddingMode>DOWNSCALED_CENTERED_TILED</paddingMode>
+							<pattern>.*\_MAO.png$</pattern>
+						</rule>
+					</directory>
+				</directory>
+			</directory>
+		</directory>
+		<directory>
 			<path>MilitaryEnvironment</path>
 			<directory>
 				<path>00_Tiles</path>

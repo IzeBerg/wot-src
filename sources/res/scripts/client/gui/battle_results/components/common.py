@@ -20,9 +20,6 @@ def makeArenaFullName(arenaTypeName, i18nKey):
 
 
 def makeRegularFinishResultLabel(finishReason, teamResult):
-    if finishReason in (FINISH_REASON.EXTERMINATION, FINISH_REASON.EVENT_DAMAGE_TIMEOUT,
-     FINISH_REASON.EVENT_EXTERMINATION):
-        return backport.text(R.strings.battle_results.finish.reason.dyn(('c_{}{}').format(finishReason, teamResult))())
     return backport.text(getRegularFinishResultResource(finishReason, teamResult))
 
 

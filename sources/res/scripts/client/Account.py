@@ -96,6 +96,8 @@ class _ClientCommandProxy(object):
      (
       'doCmdIntArr', lambda args: len(args) == 1 and _isIntList(args[0])),
      (
+      'doCmdIntArrStr', lambda args: len(args) == 2 and _isIntList(args[0]) and _isStr(args[1])),
+     (
       'doCmdIntStrArr', lambda args: len(args) == 2 and _isInt(args[0]) and _isStrList(args[1])),
      (
       'doCmdStrArr', lambda args: len(args) == 1 and _isStrList(args[0])),
@@ -458,6 +460,10 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         LOG_DEBUG('onDequeued', queueType)
         self.battleQueueType = QUEUE_TYPE.UNKNOWN
         events.onDequeued(queueType)
+
+    @property
+    def selectedEntity(self):
+        return self.__selectedEntity
 
     def targetFocus(self, entity):
         if self.__objectsSelectionEnabled:
@@ -1206,6 +1212,9 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
     def _doCmdIntArr(self, cmd, arr, callback):
         return self.__doCmd('doCmdIntArr', cmd, callback, arr)
 
+    def _doCmdIntArrStr(self, cmd, arr, s, callback):
+        return self.__doCmd('doCmdIntArrStr', cmd, callback, arr, s)
+
     def _doCmdIntStrArr(self, cmd, int1, strArr, callback):
         return self.__doCmd('doCmdIntStrArr', cmd, callback, int1, strArr)
 
@@ -1262,7 +1271,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
             self._synchronizeCacheSimpleValue('globalRating', diff.get('account', None), 'globalRating', events.onAccountGlobalRatingChanged)
             self._synchronizeCacheDict(self.platformBlueprintsConvertSaleLimits, diff, 'platformBlueprintsConvertSaleLimits', 'replace', events.onPlatformBlueprintsConvertSaleLimits)
             synchronizeDicts(diff.get('freePremiumCrew', {}), self.freePremiumCrew)
-            events.onClientSynchronize(isFullSync, diff)
             events.onClientUpdated(diff, not triggerEvents)
             if triggerEvents and not isFullSync:
                 for vehTypeCompDescr in diff.get('stats', {}).get('eliteVehicles', ()):

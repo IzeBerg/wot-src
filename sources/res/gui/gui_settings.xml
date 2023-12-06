@@ -1207,6 +1207,11 @@
 				<type>url</type>
 			</item>
 			<item>
+				$PARAMS(/ny24_category/ny24_category)
+				<name>newYearOldCollectionRewardUrl</name>
+				<type>url</type>
+			</item>
+			<item>
 				$PARAMS(/recommended-packs)
 				<name>buyMoreGoldUrl</name>
 				<type>url</type>
@@ -1302,7 +1307,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/featured/featured/items/platform_bp2023_12ep/preview/)
+				$PARAMS(/featured)
 				<name>buyBattlePass</name>
 				<type>url</type>
 			</item>
@@ -1319,6 +1324,16 @@
 			<item>
 				$PARAMS(/open)
 				<name>splitUrl</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/featured/featured/items/platform_subscription/preview)
+				<name>buyRenewableSubscription</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/psa2021/psa2021)
+				<name>psaProducts</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1354,11 +1369,6 @@
 			<item>
 				$PARAMS(/sh_category/sh_category)
 				<name>shProducts</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/mthw2023_category/mthw2023_category)
-				<name>hw23Shop</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1532,6 +1542,17 @@
 				Utilizes Vivox, © 2018 Vivox, Inc. All rights reserved. See www.vivox.com for details.\n
 				<name>default</name>
 				<type>string</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>newYearInfo</name>
+		<type>dict</type>
+		<value>
+			<item>
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/ny24video/
+				<name>baseURL</name>
+				<type>url</type>
 			</item>
 		</value>
 	</setting>
@@ -1810,6 +1831,11 @@
 				<name>default</name>
 				<type>url</type>
 			</item>
+			<item>
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/polygon/
+				<name>CT</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1908,15 +1934,5 @@
 				<type>url</type>
 			</item>
 		</value>
-	</setting>
-	<setting>
-		https://webbrg.tanki.su/ru/promocontent/hw23About/
-		<name>infoPageHalloween</name>
-		<type>url</type>
-	</setting>
-	<setting>
-		https://webbrg.tanki.su/ru/promocontent/hw23Intro/
-		<name>aboutCoven</name>
-		<type>url</type>
 	</setting>
 </root>

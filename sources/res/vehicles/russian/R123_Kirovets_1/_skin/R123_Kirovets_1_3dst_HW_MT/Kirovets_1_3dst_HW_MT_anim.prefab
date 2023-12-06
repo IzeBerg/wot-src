@@ -22,6 +22,11 @@
 			<UUID>71df0b00-eddb-4a59-848c-6acde2bbb903</UUID>
 			<flags>0</flags>
 		</GameObject>
+		<GameObject>
+			<name>VSE_plan_container</name>
+			<UUID>7150aee0-b2be-4ab4-a215-6da03c8d67d9</UUID>
+			<flags>0</flags>
+		</GameObject>
 	</GameObjects>
 	<components>
 		<ComponentPool>
@@ -49,6 +54,16 @@
 			</component>
 			<component>
 				<objectIndex>3</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>31a94f47-6d93-4231-be22-f0407df4096f</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>4</objectIndex>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -130,6 +145,60 @@
 					<property>
 						<name>Rotation</name>
 						<value>0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>ComponentsVisibilityController</type>
+			<version>1</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Visible in ARCADE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in SNIPER MODE</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Visible in STRATEGIC MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in ARTY MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in POSTMORTEM MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE_ARCADE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in RESPAWN_DEATH MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in DEATH_FREE_CAM MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in DUAL_GUN MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE_ARCADE_EPIC_MINEFIELD MODE</name>
+						<value>1</value>
 					</property>
 				</config>
 			</component>
@@ -475,7 +544,7 @@
 									</property>
 									<property>
 										<name>Auto Start</name>
-										<value>1</value>
+										<value>0</value>
 									</property>
 									<property>
 										<name>Graphics preset</name>
@@ -583,7 +652,7 @@
 									</property>
 									<property>
 										<name>Auto Start</name>
-										<value>1</value>
+										<value>0</value>
 									</property>
 									<property>
 										<name>Graphics preset</name>

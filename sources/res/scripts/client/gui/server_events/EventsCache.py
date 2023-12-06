@@ -1,6 +1,6 @@
 import math, sys
 from collections import defaultdict, namedtuple
-import typing, BigWorld, motivation_quests, customization_quests, nations
+import typing, BigWorld, motivation_quests, customization_quests, static_quests, nations
 from Event import Event, EventManager
 from PlayerEvents import g_playerEvents
 from adisp import adisp_async, adisp_process
@@ -102,6 +102,7 @@ class EventsCache(IEventsCache):
         self.onSyncCompleted = Event(self.__em)
         self.onProgressUpdated = Event(self.__em)
         self.onMissionVisited = Event(self.__em)
+        self.onQuestConditionUpdated = Event(self.__em)
         self.onEventsVisited = Event(self.__em)
         self.onProfileVisited = Event(self.__em)
         self.onPersonalQuestsVisited = Event(self.__em)
@@ -203,6 +204,7 @@ class EventsCache(IEventsCache):
             isNeedToInvalidate = True
             isNeedToClearItemsCaches = False
             isQPUpdated = False
+            isQuestConditionUpdated = False
 
             def _cbWrapper(*args):
                 callback(*args)
@@ -232,6 +234,8 @@ class EventsCache(IEventsCache):
             else:
                 if isNeedToClearItemsCaches:
                     self.__clearQuestsItemsCache()
+                if isQuestConditionUpdated:
+                    self.onQuestConditionUpdated()
                 if isQPUpdated:
                     _cbWrapper(True)
                 else:
@@ -268,27 +272,34 @@ class EventsCache(IEventsCache):
 
         def userFilterFunc(q):
             qGroup = q.getGroupID()
-            qIsValid = q.isAvailable().isValid
+            qIsValid = None
             qID = q.getID()
-            if q.getType() == EVENT_TYPE.MOTIVE_QUEST and not qIsValid:
-                return False
+            if q.getType() == EVENT_TYPE.MOTIVE_QUEST:
+                if qIsValid is None:
+                    qIsValid = q.isAvailable().isValid
+                if not qIsValid:
+                    return False
             if q.getType() == EVENT_TYPE.TOKEN_QUEST and isMarathon(qID):
                 return False
-            if isBattleMattersQuestID(qID) or isPremium(qGroup) and not qIsValid:
-                return False
-            if not isEpicBattleEnabled and isDailyEpic(qGroup):
-                return False
-            if isBattleRoyale(qGroup):
-                quests = self.__battleRoyaleController.getQuests()
-                if qID not in quests:
+            else:
+                if isBattleMattersQuestID(qID) or isPremium(qGroup):
+                    if qIsValid is None:
+                        qIsValid = q.isAvailable().isValid
+                    if not qIsValid:
+                        return False
+                if not isEpicBattleEnabled and isDailyEpic(qGroup):
                     return False
-            if isMapsTraining(qGroup):
-                return q.shouldBeShown()
-            if isRankedSeasonOff and (isRankedDaily(qGroup) or isRankedPlatform(qGroup)):
-                return False
-            if isFunRandomOff and isFunRandomQuest(qID):
-                return False
-            return filterFunc(q)
+                if isBattleRoyale(qGroup):
+                    quests = self.__battleRoyaleController.getQuests()
+                    if qID not in quests:
+                        return False
+                if isMapsTraining(qGroup):
+                    return q.shouldBeShown()
+                if isRankedSeasonOff and (isRankedDaily(qGroup) or isRankedPlatform(qGroup)):
+                    return False
+                if isFunRandomOff and isFunRandomQuest(qID):
+                    return False
+                return filterFunc(q)
 
         return self.getActiveQuests(userFilterFunc)
 
@@ -337,13 +348,13 @@ class EventsCache(IEventsCache):
         svrGroups.update(self._getActionsGroups(filterFunc))
         return svrGroups
 
-    def getHiddenQuests(self, filterFunc=None, noSkip=False):
+    def getHiddenQuests(self, filterFunc=None):
         filterFunc = filterFunc or (lambda a: True)
 
         def hiddenFilterFunc(q):
             return q.isHidden() and filterFunc(q)
 
-        return self._getQuests(hiddenFilterFunc, noSkip=noSkip)
+        return self._getQuests(hiddenFilterFunc)
 
     def getRankedQuests(self, filterFunc=None):
         filterFunc = filterFunc or (lambda a: True)
@@ -353,8 +364,8 @@ class EventsCache(IEventsCache):
 
         return self._getQuests(rankedFilterFunc)
 
-    def getAllQuests(self, filterFunc=None, includePersonalMissions=False, noSkip=False):
-        return self._getQuests(filterFunc, includePersonalMissions, noSkip)
+    def getAllQuests(self, filterFunc=None, includePersonalMissions=False):
+        return self._getQuests(filterFunc, includePersonalMissions)
 
     def getActions(self, filterFunc=None):
         filterFunc = filterFunc or (lambda a: True)
@@ -369,6 +380,34 @@ class EventsCache(IEventsCache):
 
     def getAnnouncedActions(self):
         return self.__getAnnouncedActions()
+
+    def getCachedQuestByID(self, qID):
+        quest = self._getCachedQuest(qID)
+        if quest is not None:
+            return quest
+        else:
+            return self.getQuestByID(qID)
+
+    def getQuestsByIDs(self, qIDs):
+        result = {}
+        data = {}
+        for qID in qIDs:
+            quest = self._getCachedQuest(qID)
+            if quest is not None:
+                result[qID] = quest
+            else:
+                if not data:
+                    data = self.__getQuestsData()
+                    data.update(self.__getPersonalQuestsData())
+                    data.update(self.__getPersonalMissionsHiddenQuests())
+                    data.update(self.__getDailyQuestsData())
+                    data.update(static_quests.g_static_quest_cache)
+                if qID in data:
+                    result[qID] = self._makeQuest(qID, data[qID])
+                else:
+                    result[qID] = None
+
+        return result
 
     def getEvents(self, filterFunc=None):
         svrEvents = self.getQuests(filterFunc)
@@ -547,7 +586,7 @@ class EventsCache(IEventsCache):
             alias = first(m.getAlias() for m in action.getModifiers())
         return (alias, counterValue)
 
-    def _getQuests(self, filterFunc=None, includePersonalMissions=False, noSkip=False):
+    def _getQuests(self, filterFunc=None, includePersonalMissions=False):
         result = {}
         groups = {}
         filterFunc = filterFunc or (lambda a: True)
@@ -557,8 +596,7 @@ class EventsCache(IEventsCache):
             if q.getType() == EVENT_TYPE.GROUP:
                 groups[qID] = q
                 continue
-            noSkipResult = noSkip and q.noSkip()
-            if q.getFinishTimeLeft() <= 0 and not noSkipResult:
+            if q.getFinishTimeLeft() <= 0:
                 continue
             if not filterFunc(q):
                 continue
@@ -636,6 +674,13 @@ class EventsCache(IEventsCache):
                 result[a.getID()] = a
 
         return result
+
+    def _getCachedQuest(self, qID):
+        storage = self.__cache['quests']
+        if qID in storage:
+            return storage[qID]
+        else:
+            return
 
     def _makeQuest(self, qID, qData, maker=DefaultQuestMaker(), **kwargs):
         storage = self.__cache['quests']
@@ -829,6 +874,8 @@ class EventsCache(IEventsCache):
                 return self._makeQuest(questID, motivation_quests.g_cache.getQuestByID(questID).questData, maker=_motiveQuestMaker)
             if questID in customization_quests.g_cust_cache:
                 return self._makeQuest(questID, customization_quests.g_cust_cache[questID].questClientData)
+            if questID in static_quests.g_static_quest_cache:
+                return self._makeQuest(questID, static_quests.g_static_quest_cache[questID])
             return
 
     def __getCommonQuestsIterator(self):
@@ -836,6 +883,7 @@ class EventsCache(IEventsCache):
         questsData.update(self.__getPersonalQuestsData())
         questsData.update(self.__getPersonalMissionsHiddenQuests())
         questsData.update(self.__getDailyQuestsData())
+        questsData.update(static_quests.g_static_quest_cache)
         for qID, qData in questsData.iteritems():
             yield (qID, self._makeQuest(qID, qData))
 
@@ -878,7 +926,7 @@ class EventsCache(IEventsCache):
     def __getPersonalMissionsHiddenQuests(self):
         if not self.__personalMissionsHidden:
             xmlPath = PERSONAL_MISSIONS_XML_PATH + '/tiles.xml'
-            for quest in readQuestsFromFile(xmlPath, EVENT_TYPE.TOKEN_QUEST):
+            for quest in readQuestsFromFile(xmlPath, (EVENT_TYPE.TOKEN_QUEST,)):
                 self.__personalMissionsHidden[quest[0]] = quest[3]
 
         return self.__personalMissionsHidden.copy()

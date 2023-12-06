@@ -194,6 +194,12 @@ class FunRandomController(IFunRandomController):
             return R.strings.fun_random.modes.undefined
         return R.invalid
 
+    def hasDailyQuestsEntry(self):
+        return False
+
+    def hasHangarHeaderEntry(self):
+        return False
+
     def getSettings(self):
         return _FUN_CONFIG_STUB
 

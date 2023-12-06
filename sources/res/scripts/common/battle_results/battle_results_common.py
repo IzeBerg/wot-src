@@ -297,7 +297,7 @@ BATTLE_RESULTS = [
  (
   'eventEquipCoinList', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
-  'eventCreditsFactor100List', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+  'eventCreditsFactor1000List', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
   'eventXPFactor100List', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
@@ -477,7 +477,7 @@ BATTLE_RESULTS = [
  (
   'winnerIfDraw', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'isPrematureLeave', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
+  'isPrematureLeave', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
   'watchedBattleToTheEnd', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (

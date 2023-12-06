@@ -1,19 +1,23 @@
-import time
+import calendar, time
+from functools import partial
 from typing import Union, TYPE_CHECKING
 import blueprints, dossiers2
 from dynamic_currencies import g_dynamicCurrenciesData
-import items, calendar
+import items
+from math_common import isAlmostEqual
 from account_shared import validateCustomizationItem
 from battle_pass_common import NON_VEH_CD
 from blueprints.BlueprintTypes import BlueprintTypes
 from blueprints.FragmentTypes import isUniversalFragment
 from dossiers2.custom.account_layout import ACCOUNT_DOSSIER_DICT_BLOCKS
+from constants import DOSSIER_TYPE, IS_DEVELOPMENT, SEASON_TYPE_BY_NAME, EVENT_TYPE, INVOICE_LIMITS
 from dossiers2.custom.cache import getCache
 from invoices_helpers import checkAccountDossierOperation
-from items import vehicles, tankmen, utils
+from items import vehicles, tankmen, utils, new_year, collectibles
 from items.components.c11n_constants import SeasonType
 from items.components.crew_skins_constants import NO_CREW_SKIN_ID
 from constants import DOSSIER_TYPE, IS_DEVELOPMENT, SEASON_TYPE_BY_NAME, EVENT_TYPE, INVOICE_LIMITS, ENTITLEMENT_OPS, DailyQuestsLevels, MAX_LOG_EXT_INFO_LEN
+from items.components.ny_constants import YEARS_INFO, TOY_TYPE_IDS_BY_NAME, CurrentNYConstants, YEARS
 from soft_exception import SoftException
 from customization_quests_common import validateCustomizationQuestToken
 if TYPE_CHECKING:
@@ -812,7 +816,7 @@ def __readBonus_blueprint(bonus, _name, section, eventType, checkLimit):
     if not isUniversalFragment(compDescr):
         vehicle = vehicles.getVehicleType(compDescr)
         if compDescr not in cache['vehiclesInTrees']:
-            raise SoftException('Invalid vehicle type %s. Vehicle is not in research tree.' % section)
+            raise SoftException('Invalid vehicle type %s. Vehicle is not in research tree.' % compDescr)
     count = section.readInt('count', 0)
     if checkLimit and count > INVOICE_LIMITS.BLUEPRINTS_MAX:
         raise SoftException('Invalid count of blueprint id %s with amount %d when limit is %d.' % (
@@ -864,6 +868,44 @@ def __readMetaSection(bonus, _name, section, eventType, checkLimit):
         return
 
 
+def __readBonus_nyToy(bonus, _name, section, eventType, year, checkLimit):
+    if section.has_key('id'):
+        tid = section['id'].asInt
+        cache = collectibles.g_cache[YEARS.getYearStrFromYearNum(year)].toys
+        if tid not in cache:
+            raise SoftException(('Unknown NY{} toyID: {}').format(year, tid))
+        count = section['count'].asInt if section.has_key('count') else 0
+        toysCollectionKey = YEARS_INFO.getCollectionKeyForYear(year)
+        nyToys = bonus.setdefault(toysCollectionKey, {})
+        nyToys[tid] = count
+
+
+def __readBonus_nyToyFragments(bonus, _name, section, eventType, checkLimit):
+    count = section.asInt
+    bonus[CurrentNYConstants.TOY_FRAGMENTS] = bonus.get(CurrentNYConstants.TOY_FRAGMENTS, 0) + count
+
+
+def __readBonus_nyAnyOf(bonus, _name, section, eventType, checkLimit):
+    if section.has_key('setting'):
+        settingID = YEARS_INFO.CURRENT_SETTING_IDS_BY_NAME[section.readString('setting')]
+    else:
+        settingID = -1
+    if section.has_key('type'):
+        typeID = TOY_TYPE_IDS_BY_NAME[section.readString('type')]
+    else:
+        typeID = -1
+    if section.has_key('rank'):
+        rank = section['rank'].asInt
+    else:
+        rank = -1
+    bonus.setdefault(CurrentNYConstants.ANY_OF, []).append((typeID, settingID, rank))
+
+
+def __readBonus_nyFillers(bonus, _name, section, eventType, checkLimit):
+    count = section.asInt
+    bonus[CurrentNYConstants.FILLERS] = bonus.get(CurrentNYConstants.FILLERS, 0) + count
+
+
 def __readBonus_optionalData(config, bonusReaders, section, eventType):
     limitIDs, bonus = __readBonusSubSection(config, bonusReaders, section, eventType)
     probabilityStageCount = config.get('probabilityStageCount', 1)
@@ -892,6 +934,8 @@ def __readBonus_optionalData(config, bonusReaders, section, eventType):
         properties['compensation'] = section['compensation'].asBool
     if section.has_key('shouldCompensated'):
         properties['shouldCompensated'] = section['shouldCompensated'].asBool
+    if section.has_key('surprise'):
+        properties['surprise'] = section['surprise'].asBool
     if IS_DEVELOPMENT:
         if section.has_key('name'):
             properties['name'] = section['name'].asString
@@ -938,6 +982,7 @@ def __readBonus_oneof(config, bonusReaders, bonus, section, eventType):
     useBonusProbability = config.get('useBonusProbability', False)
     probabilityStageCount = config.get('probabilityStageCount', 1)
     equalProbabilityValues = [0.0] * probabilityStageCount
+    nullProbabilityCompensations = [False] * probabilityStageCount
     equalBonusProbabilityValue = 0.0
     for name, subsection in section.items():
         if name != 'optional':
@@ -948,6 +993,10 @@ def __readBonus_oneof(config, bonusReaders, bonus, section, eventType):
         else:
             for i in xrange(probabilityStageCount):
                 equalProbabilityValues[i] += probabilitiesList[i]
+                if isAlmostEqual(probabilitiesList[i], 0.0) and subBonus.get('properties', {}).get('compensation', False):
+                    if nullProbabilityCompensations[i]:
+                        raise SoftException("Compensation with 0.0 probability already exists inside 'oneof'")
+                    nullProbabilityCompensations[i] = True
 
         if useBonusProbability:
             if bonusProbability is None:
@@ -983,9 +1032,9 @@ def __readBonus_oneof(config, bonusReaders, bonus, section, eventType):
                 maximumBonusProbability += equalBonusProbabilityValue
             else:
                 maximumBonusProbability += bonusProbability
-        values = maximumProbabilities if probabilities != [0.0] * probabilityStageCount else probabilities
-        bonusValue = maximumBonusProbability if bonusProbability != 0.0 and useBonusProbability else bonusProbability
-        oneOfTemp.append(([ min(1.0, value) for value in values ], min(1.0, bonusValue), limitIDs, subBonus))
+        bonusValue = maximumBonusProbability if useBonusProbability else bonusProbability
+        oneOfTemp.append(([ min(1.0, value) for value in maximumProbabilities ],
+         min(1.0, bonusValue), limitIDs, subBonus))
 
     for maximumProbability in maximumProbabilities:
         if abs(1.0 - maximumProbability) >= 1e-06:
@@ -1106,11 +1155,15 @@ __BONUS_READERS = {'meta': __readMetaSection,
    'blueprint': __readBonus_blueprint, 
    'blueprintAny': __readBonus_blueprintAny, 
    'currency': __readBonus_currency, 
-   'freePremiumCrew': __readBonus_freePremiumCrew}
+   'freePremiumCrew': __readBonus_freePremiumCrew, 
+   CurrentNYConstants.TOY_FRAGMENTS: __readBonus_nyToyFragments, 
+   CurrentNYConstants.ANY_OF: __readBonus_nyAnyOf, 
+   CurrentNYConstants.FILLERS: __readBonus_nyFillers}
+__BONUS_READERS.update({('ny{}Toy').format(year):partial(__readBonus_nyToy, year=year) for year in YEARS.ALL})
 __PROBABILITY_READERS = {'optional': __readBonus_optional, 
    'oneof': __readBonus_oneof, 
    'group': __readBonus_group}
-_RESERVED_NAMES = frozenset(['config', 'properties', 'limitID', 'probability', 'compensation', 'name',
+_RESERVED_NAMES = frozenset(['config', 'properties', 'limitID', 'probability', 'compensation', 'name', 'surprise',
  'shouldCompensated', 'probabilityStageDependence', 'bonusProbability', 'depthLevel'])
 SUPPORTED_BONUSES = frozenset(__BONUS_READERS.iterkeys())
 __SORTED_BONUSES = sorted(SUPPORTED_BONUSES)
@@ -1195,7 +1248,7 @@ def __readBonusSubSection(config, bonusReaders, section, eventType=None, checkLi
             if limitIDs:
                 resultLimitIDs.update(limitIDs)
         elif name in bonusReaders:
-            bonusReaders[name](bonus, name, subSection, eventType, checkLimit)
+            bonusReaders[name](bonus, name, subSection, eventType, checkLimit=checkLimit)
         elif name in _RESERVED_NAMES:
             pass
         else:

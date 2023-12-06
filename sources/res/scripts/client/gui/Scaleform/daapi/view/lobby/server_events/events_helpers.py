@@ -1,4 +1,4 @@
-import operator
+import operator, logging
 from collections import defaultdict
 import typing
 from gui.Scaleform.daapi.view.lobby.customization.progression_helpers import getC11n2dProgressionLinkBtnParams
@@ -33,9 +33,10 @@ from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
-    from typing import Iterable, Union
+    from typing import Iterable, Union, List, Dict
     from gui.server_events.bonuses import BattlePassStyleProgressTokenBonus, TokensBonus
     from gui.server_events.event_items import Quest
+_logger = logging.getLogger(__name__)
 FINISH_TIME_LEFT_TO_SHOW = time_utils.ONE_DAY
 START_TIME_LIMIT = 5 * time_utils.ONE_DAY
 _AWARDS_PER_PAGE = 3
@@ -324,6 +325,9 @@ class QuestPostBattleInfo(EventPostBattleInfo, QuestInfoModel):
             if bonusTracks:
                 trackReplay = TrackVisitor(bonusTracks[(-1)], 1, None)
                 trackReplay.walkBonuses(bonusData, trackResult)
+        vehicles = trackResult.get('vehicles')
+        if vehicles:
+            trackResult['vehicles'] = self.__mergeOneofVehicles(vehicles)
         return trackResult
 
     def _getBonuses(self, svrEvents, pCur=None, bonuses=None):
@@ -401,6 +405,20 @@ class QuestPostBattleInfo(EventPostBattleInfo, QuestInfoModel):
                        'body': makeHtmlString('html_templates:lobby/quests/tooltips/progress', 'body', {'name': name}), 
                        'note': note}
             return (current, total, progressType, tooltip)
+
+    def __mergeOneofVehicles(self, vehiclesBonus):
+        if isinstance(vehiclesBonus, list):
+            result = {}
+            for vehicle in vehiclesBonus:
+                for vehicleID in vehicle:
+                    vehicleData = vehicle[vehicleID]
+                    vehicleData['oneof'] = True
+                    result[vehicleID] = vehicleData
+
+        else:
+            result = vehiclesBonus
+            _logger.error('Unexpected bonus data for vehicles')
+        return result
 
 
 class PersonalMissionPostBattleInfo(EventPostBattleInfo):
