@@ -15331,11 +15331,19 @@ package
       
       public static const MAPS_ICONS_LIBRARY_NY_AMBER_1:String = "../maps/icons/library/ny_amber-1.png";
       
+      public static const MAPS_ICONS_LIBRARY_NY_AMBERICON_1:String = "../maps/icons/library/ny_AmberIcon-1.png";
+      
       public static const MAPS_ICONS_LIBRARY_NY_CRYSTAL_1:String = "../maps/icons/library/ny_crystal-1.png";
+      
+      public static const MAPS_ICONS_LIBRARY_NY_CRYSTALICON_1:String = "../maps/icons/library/ny_CrystalIcon-1.png";
       
       public static const MAPS_ICONS_LIBRARY_NY_EMERALD_1:String = "../maps/icons/library/ny_emerald-1.png";
       
+      public static const MAPS_ICONS_LIBRARY_NY_EMERALDICON_1:String = "../maps/icons/library/ny_EmeraldIcon-1.png";
+      
       public static const MAPS_ICONS_LIBRARY_NY_IRON_1:String = "../maps/icons/library/ny_iron-1.png";
+      
+      public static const MAPS_ICONS_LIBRARY_NY_IRONICON_1:String = "../maps/icons/library/ny_IronIcon-1.png";
       
       public static const MAPS_ICONS_LIBRARY_OFFERICON_1:String = "../maps/icons/library/OfferIcon-1.png";
       

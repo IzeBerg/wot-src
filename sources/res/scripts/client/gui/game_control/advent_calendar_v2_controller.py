@@ -156,7 +156,7 @@ class AdventCalendarV2Controller(IAdventCalendarV2Controller):
 
     @property
     def getCurrentTime(self):
-        return time_utils.getServerRegionalTime()
+        return time_utils.getServerUTCTime()
 
     def progressionQuestMayBeCompleted(self, openedDoorsAmount=None):
         if self.isInActivePhase():
