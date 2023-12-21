@@ -58,20 +58,21 @@ class NyResourcesReminder(NyNotification):
             if self.viewModel.getViewType() == reminderType.FINDFRIENDS:
                 if viewName != ViewAliases.FRIENDS_VIEW:
                     self._navigateToNy(None, ViewAliases.FRIENDS_VIEW)
-            elif self.viewModel.getViewType() == reminderType.PERSONAL:
+            else:
                 if self.__friendsService.isInFriendHangar:
                     self.__friendsService.leaveFriendHangar()
-                if viewObj != NYObjects.RESOURCES or viewName != ViewAliases.GLADE_VIEW:
-                    self._navigateToNy(NYObjects.RESOURCES, ViewAliases.GLADE_VIEW)
-            else:
-                self.__friendSpaId = self.linkageData.friendID
-                isSuccess = yield self.__friendsService.updateFriendList()
-                if isSuccess and self.__friendSpaId in self.__friendsService.bestFriendList:
-                    if not (self.__friendsService.isInFriendHangar and self.__friendsService.friendHangarSpaId == self.__friendSpaId and viewObj == NYObjects.RESOURCES and viewName == ViewAliases.FRIEND_GLADE_VIEW):
-                        self._navigateToNy(NYObjects.RESOURCES, ViewAliases.FRIEND_GLADE_VIEW, executeBeforeSwitch=self.__enterFriendHangar)
-                elif self.viewStatus == ViewStatus.LOADED:
-                    self.viewModel.setIsButtonDisabled(True)
-                    return
+                if self.viewModel.getViewType() == reminderType.PERSONAL:
+                    if viewObj != NYObjects.RESOURCES or viewName != ViewAliases.GLADE_VIEW:
+                        self._navigateToNy(NYObjects.RESOURCES, ViewAliases.GLADE_VIEW)
+                else:
+                    self.__friendSpaId = self.linkageData.friendID
+                    isSuccess = yield self.__friendsService.updateFriendList()
+                    if isSuccess and self.__friendSpaId in self.__friendsService.bestFriendList:
+                        if not (self.__friendsService.isInFriendHangar and self.__friendsService.friendHangarSpaId == self.__friendSpaId and viewObj == NYObjects.RESOURCES and viewName == ViewAliases.FRIEND_GLADE_VIEW):
+                            self._navigateToNy(NYObjects.RESOURCES, ViewAliases.FRIEND_GLADE_VIEW, executeBeforeSwitch=self.__enterFriendHangar)
+                    elif self.viewStatus == ViewStatus.LOADED:
+                        self.viewModel.setIsButtonDisabled(True)
+                        return
             if self.viewStatus == ViewStatus.LOADED:
                 self.viewModel.setIsButtonDisabled(False)
         return
