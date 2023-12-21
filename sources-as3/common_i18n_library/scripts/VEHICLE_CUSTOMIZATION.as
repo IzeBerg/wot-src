@@ -3523,6 +3523,10 @@ package
       
       public static const CAMOUFLAGE_MANNERS_DESCRIPTION:String = "#vehicle_customization:camouflage/manners/description";
       
+      public static const CAMOUFLAGE_ROLL_INTO_CHRISTMAS_LABEL:String = "#vehicle_customization:camouflage/roll_into_christmas/label";
+      
+      public static const CAMOUFLAGE_ROLL_INTO_CHRISTMAS_DESCRIPTION:String = "#vehicle_customization:camouflage/roll_into_christmas/description";
+      
       public static const CAMOUFLAGE_UA_CHARITY_1_LABEL:String = "#vehicle_customization:camouflage/ua_charity_1/label";
       
       public static const CAMOUFLAGE_UA_CHARITY_1_DESCRIPTION:String = "#vehicle_customization:camouflage/ua_charity_1/description";
@@ -9139,6 +9143,8 @@ package
       
       public static const REPAINT_WDR_PAINT_1:String = "#vehicle_customization:repaint/wdr_paint_1";
       
+      public static const REPAINT_ROLL_INTO_CHRISTMAS:String = "#vehicle_customization:repaint/roll_into_christmas";
+      
       public static const MODIFICATIONS_AGE_EFFECT_01:String = "#vehicle_customization:modifications/age_effect_01";
       
       public static const MODIFICATIONS_AGE_EFFECT_01_DESCRIPTION:String = "#vehicle_customization:modifications/age_effect_01/description";
@@ -12506,6 +12512,12 @@ package
       public static const SPECIAL_STYLE_WDR_DESC:String = "#vehicle_customization:special_style/wdr_desc";
       
       public static const SPECIAL_STYLE_WDR_DESC_LONG:String = "#vehicle_customization:special_style/wdr_desc/long";
+      
+      public static const SPECIAL_STYLE_ROLL_INTO_CHRISTMAS:String = "#vehicle_customization:special_style/roll_into_christmas";
+      
+      public static const SPECIAL_STYLE_ROLL_INTO_CHRISTMAS_DESC:String = "#vehicle_customization:special_style/roll_into_christmas_desc";
+      
+      public static const SPECIAL_STYLE_ROLL_INTO_CHRISTMAS_DESC_LONG:String = "#vehicle_customization:special_style/roll_into_christmas_desc/long";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       
