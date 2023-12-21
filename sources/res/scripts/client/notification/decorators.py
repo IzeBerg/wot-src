@@ -1130,11 +1130,11 @@ class IntegratedAuctionStageFinishDecorator(IntegratedAuctionDecorator):
 class SeniorityAwardsDecorator(MessageDecorator):
     __seniorityAwardCtrl = dependency.descriptor(ISeniorityAwardsController)
 
-    def __init__(self, entityID, notificationType, savedData, model, template, priority, useCounterOnce=True):
+    def __init__(self, entityID, notificationType, savedData, model, template, priority, useCounterOnce=True, isNotify=True):
         self.__notificationType = notificationType
         self.__useCounterOnce = useCounterOnce
         entity = g_settings.msgTemplates.format(template, data={'linkageData': savedData})
-        settings = NotificationGuiSettings(isNotify=True, priorityLevel=priority, groupID=self.getGroup())
+        settings = NotificationGuiSettings(isNotify=isNotify, priorityLevel=priority, groupID=self.getGroup())
         super(SeniorityAwardsDecorator, self).__init__(entityID, entity=entity, settings=settings, model=model)
 
     def getType(self):

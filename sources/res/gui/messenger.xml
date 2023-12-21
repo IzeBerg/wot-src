@@ -1458,18 +1458,37 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/quests):&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
 		</tokenQuests>
 		<SeniorityAwardsQuest>
-			<priority>low</priority>
-			<type>battleResult</type>
+			<priority>medium</priority>
+			<type>grey</type>
 			<icon>InformationIcon</icon>
+			<bgIcon>bg_seniority_awards</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/seniorityRewardHeader)&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/seniorityRewardBody):&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/seniorityRewardBody).&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
 		</SeniorityAwardsQuest>
+		<SeniorityAwardsQuestWithSelection>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<bgIcon>bg_seniority_awards</bgIcon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#seniority_awards:notifications/selectVehicles/button)</label>
+					<action>seniorityAwardsVehicleSelection</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/seniorityRewardHeader)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/seniorityRewardBody).&lt;/font&gt;&lt;br/&gt;%(achieves)s
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#seniority_awards:notifications/vehicleSelectionAvailable/title)&lt;/font&gt;</message>
+		</SeniorityAwardsQuestWithSelection>
 		<seniorityAwardsTokens>
 			<priority>medium</priority>
 			<groupID>offer</groupID>
 			<bgIconSizeAuto>true</bgIconSizeAuto>
 			<linkage>SeniorityAwardsTokens</linkage>
-			<message>&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;18&quot; color=&quot;#E9E2BF&quot;&gt;_(#seniority_awards:notifications/tokens/title)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;</message>
+			<message>&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#seniority_awards:notifications/tokens/title)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;</message>
 			<buttonsLayout>
 				<button>
 					<type>submit</type>
@@ -1479,12 +1498,27 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			</buttonsLayout>
 			<buttonsAlign>center</buttonsAlign>
 		</seniorityAwardsTokens>
+		<seniorityAwardsVehicleSelection>
+			<priority>low</priority>
+			<groupID>offer</groupID>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<linkage>SeniorityAwardsVehicleSelection</linkage>
+			<message>&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#seniority_awards:notifications/selectVehicles/title)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#seniority_awards:notifications/selectVehicles/button)</label>
+					<action>seniorityAwardsVehicleSelection</action>
+				</button>
+			</buttonsLayout>
+			<buttonsAlign>center</buttonsAlign>
+		</seniorityAwardsVehicleSelection>
 		<seniorityAwardsQuest22>
 			<priority>medium</priority>
 			<groupID>offer</groupID>
 			<bgIconSizeAuto>true</bgIconSizeAuto>
 			<linkage>SeniorityAwardsQuest</linkage>
-			<message>&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;18&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#seniority_awards:notifications/quest/title)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;</message>
+			<message>&lt;textformat leading=&quot;-1&quot;&gt;&lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#seniority_awards:notifications/quest/title)&lt;/font&gt;&lt;/p&gt;&lt;/textformat&gt;</message>
 			<buttonsLayout>
 				<button>
 					<type>submit</type>
@@ -2273,11 +2307,11 @@ _(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
 			<icon>equipCoin</icon>
 			<message>&lt;font  face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/sysMsg/titles/upgrade)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</UpgradeForEquipCoinsSysMessage>
-		<BattlePassInfoSysMessage>
+		<BattlePassDefaultSysMessage>
 			<type>grey</type>
-			<icon>InformationIcon</icon>
+			<icon>BattlePassIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;&lt;br/&gt;&lt;font size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
-		</BattlePassInfoSysMessage>
+		</BattlePassDefaultSysMessage>
 		<BattlePassReachedCapMessage>
 			<type>grey</type>
 			<priority>low</priority>
@@ -2373,6 +2407,19 @@ _(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
 				</button>
 			</buttonsLayout>
 		</BattlePassSwitchChapterReminder>
+		<Comp7ShopItemsAvailableForRankSysMessage>
+			<type>yellow</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#comp7:system_messages/shop/offer/button)</label>
+					<action>openComp7Shop</action>
+					<width>120</width>
+				</button>
+			</buttonsLayout>
+		</Comp7ShopItemsAvailableForRankSysMessage>
 		<EnhancementRemovedMessage>
 			<type>grey</type>
 			<priority>medium</priority>

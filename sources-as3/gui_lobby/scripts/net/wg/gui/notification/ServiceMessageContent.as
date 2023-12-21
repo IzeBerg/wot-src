@@ -109,7 +109,7 @@ package net.wg.gui.notification
          {
             this.updateData();
          }
-         if(isInvalid(InvalidationType.LAYOUT))
+         if(this._data && isInvalid(InvalidationType.LAYOUT))
          {
             this.updateLayout();
          }

@@ -547,28 +547,6 @@
 			<ignore-outside-click>True</ignore-outside-click>
 		</hint>
 		<hint>
-			CustomizationProgressionViewHint
-			<item-id>ProgressionEntryPoint</item-id>
-			<text>_(#tutorial:customization/progression)</text>
-			<arrow>
-				<direction>R</direction>
-				<loop>True</loop>
-				<position-value>
-					0.7
-					<!--BW_String-->
-				</position-value>
-			</arrow>
-			<has-box>False</has-box>
-			<checked-ui-state>
-				<simple-state>
-					<state>visible</state>
-					<value>True</value>
-				</simple-state>
-			</checked-ui-state>
-			<update-runtime>True</update-runtime>
-			<ignore-outside-click>True</ignore-outside-click>
-		</hint>
-		<hint>
 			PlatoonBtnHint
 			<item-id>CreatePlatoonButton</item-id>
 			<text>_(#tutorial:platoon/openBtn)</text>
@@ -589,50 +567,6 @@
 			CustomizationCarouselHint
 			<item-id>CustomizationCarousel</item-id>
 			<text>_(#tutorial:customization/decal)</text>
-			<arrow>
-				<direction>T</direction>
-				<loop>True</loop>
-				<position-value>
-					0.25
-					<!--BW_String-->
-				</position-value>
-			</arrow>
-			<checked-ui-state>
-				<simple-state>
-					<state>visible</state>
-					<value>True</value>
-				</simple-state>
-			</checked-ui-state>
-			<update-runtime>True</update-runtime>
-			<hide-immediately>True</hide-immediately>
-			<ignore-outside-click>True</ignore-outside-click>
-		</hint>
-		<hint>
-			CustomizationCarouselEditableStyleHint
-			<item-id>CustomizationCarouselEditableStyle</item-id>
-			<text>_(#tutorial:customization/carousel/editableStyle)</text>
-			<arrow>
-				<direction>T</direction>
-				<loop>True</loop>
-				<position-value>
-					0.25
-					<!--BW_String-->
-				</position-value>
-			</arrow>
-			<checked-ui-state>
-				<simple-state>
-					<state>visible</state>
-					<value>True</value>
-				</simple-state>
-			</checked-ui-state>
-			<update-runtime>True</update-runtime>
-			<hide-immediately>True</hide-immediately>
-			<ignore-outside-click>True</ignore-outside-click>
-		</hint>
-		<hint>
-			CustomizationCarouselProgressionDecalHint
-			<item-id>CustomizationCarouselProgressionDecal</item-id>
-			<text>_(#tutorial:customization/carousel/progressionDecal)</text>
 			<arrow>
 				<direction>T</direction>
 				<loop>True</loop>
@@ -709,25 +643,6 @@
 			<condition>
 				<global-active>_CollectibleVehiclePreviewEnabled</global-active>
 			</condition>
-		</hint>
-		<hint>
-			AmmunitionPanelHintZoneHint
-			<item-id>AmmunitionPanelTutorialHintZone</item-id>
-			<text>_(#tank_setup:hints/ammunitionPanel/specialization)</text>
-			<arrow>
-				<direction>T</direction>
-				<loop>True</loop>
-			</arrow>
-			<condition>
-				<class-condition>
-					LimitedUIHintChecker
-					<path>gui.limited_ui.lui_tutorial_hints</path>
-					<arguments>AmmunitionPanelHintZoneHint</arguments>
-				</class-condition>
-			</condition>
-			<update-runtime>True</update-runtime>
-			<hide-immediately>True</hide-immediately>
-			<ignore-outside-click>True</ignore-outside-click>
 		</hint>
 		<hint>
 			AmmunitionPanelBattleAbilitiesHint
@@ -1051,6 +966,42 @@
 			<update-runtime>True</update-runtime>
 			<hide-immediately>True</hide-immediately>
 			<ignore-outside-click>True</ignore-outside-click>
+		</hint>
+		<hint>
+			FrontlineScenariosHint
+			<item-id>FrontlineScenariosInfoBtn</item-id>
+			<text>_(#epic_battle:ammunitionSetup/btn/info/hint)</text>
+			<arrow>
+				<direction>B</direction>
+				<loop>True</loop>
+			</arrow>
+			<update-runtime>True</update-runtime>
+			<ignore-outside-click>True</ignore-outside-click>
+			<condition>
+				<class-condition>
+					FLScenarioInfoBtnHintChecker
+					<path>gui.impl.lobby.tank_setup.sub_views.frontline_setup</path>
+					<arguments>FrontlineScenariosHintSmallSizes</arguments>
+				</class-condition>
+			</condition>
+		</hint>
+		<hint>
+			FrontlineScenariosHintSmallSizes
+			<item-id>FrontlineScenariosInfoBtnSmall</item-id>
+			<text>_(#epic_battle:ammunitionSetup/btn/info/hint)</text>
+			<arrow>
+				<direction>R</direction>
+				<loop>True</loop>
+			</arrow>
+			<update-runtime>True</update-runtime>
+			<ignore-outside-click>True</ignore-outside-click>
+			<condition>
+				<class-condition>
+					FLScenarioInfoBtnHintChecker
+					<path>gui.impl.lobby.tank_setup.sub_views.frontline_setup</path>
+					<arguments>FrontlineScenariosHint</arguments>
+				</class-condition>
+			</condition>
 		</hint>
 	</hints>
 </root>

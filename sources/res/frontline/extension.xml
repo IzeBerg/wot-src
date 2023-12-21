@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<FeatureName>FrontLine</FeatureName>
+	<FeatureName>frontline</FeatureName>
 	<Components>
 		<StaticComponents>
-			<ArenaFrontLineComponent/>
+			<FLArenaComponent/>
+			<FLAccountComponent/>
+			<FLAccountPrebattleComponent/>
+			<FLAccountBattleResultComponent/>
+			<FLArenaBattleResultComponent/>
 		</StaticComponents>
 		<DynamicComponents>
 			<FLReservesComponent/>
+			<FLAvatarComponent/>
 			<FLBattleUpgradeReserves/>
-			<ArenaFLMinefieldComponent/>
-			<VehicleFLRegenerationKitComponent/>
-			<StealthRadarComponent/>
-			<ArenaFLBattleModifiersComponent/>
+			<FLArenaMinefieldComponent/>
+			<FLVehicleRegenerationKitComponent/>
+			<FLStealthRadarComponent/>
+			<FLArenaBattleModifiersComponent/>
 		</DynamicComponents>
 	</Components>
 	<IsEnabled>True</IsEnabled>

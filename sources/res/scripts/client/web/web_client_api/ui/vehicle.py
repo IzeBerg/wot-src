@@ -12,6 +12,7 @@ from gui import SystemMessages
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.vehicle_preview.configurable_vehicle_preview import OptionalBlocks
 from gui.Scaleform.daapi.view.lobby.vehicle_preview.items_kit_helper import canInstallStyle, getCDFromId
+from gui.Scaleform.daapi.view.lobby.vehicle_preview.preview_bottom_panel_constants import ObtainingMethods
 from gui.Scaleform.locale.VEHICLE_PREVIEW import VEHICLE_PREVIEW
 from gui.customization.constants import CustomizationModes
 from gui.impl import backport
@@ -79,6 +80,12 @@ def _doesVehicleCDExist(vehicleCD):
 
 def _validateVehiclesCDList(vehiclesCDs):
     return all(_doesVehicleCDExist(vehicleCD) for vehicleCD in vehiclesCDs)
+
+
+def _isValidObtainingMethod(obtainingMethod, _):
+    if ObtainingMethods.hasValue(obtainingMethod):
+        return True
+    raise SoftException(('obtaining_method: "{}" is not supported').format(obtainingMethod))
 
 
 def _validateItemsPack(items, *_):
@@ -323,6 +330,7 @@ class _VehiclePackPreviewSchema(W2CSchema):
     items = Field(required=True, type=(list, NoneType), validator=_validateItemsPack)
     back_url = Field(required=False, type=basestring)
     buy_params = Field(required=False, type=dict)
+    obtaining_method = Field(required=False, type=basestring, validator=_isValidObtainingMethod, default=ObtainingMethods.BUY.value)
 
 
 class _MarathonVehiclePackPreviewSchema(W2CSchema):
@@ -354,6 +362,7 @@ class _ShowcaseVehicleStylePreviewSchema(W2CSchema):
     original_price = Field(required=False, type=dict)
     discount_percent = Field(required=False, type=(int, float))
     end_date = Field(required=False, type=basestring)
+    obtaining_method = Field(required=False, type=basestring, validator=_isValidObtainingMethod, default=ObtainingMethods.BUY.value)
 
 
 class _VehicleMarathonStylePreviewSchema(W2CSchema):
@@ -458,7 +467,7 @@ class VehiclePreviewWebApiMixin(object):
             localEndTime = None
             if cmd.end_date:
                 localEndTime = self.__getLocalEndTime(cmd.end_date)
-            event_dispatcher.showVehiclePreview(vehTypeCompDescr=vehiclesIDs[0], itemsPack=items, price=price, oldPrice=oldPrice, title=cmd.title, endTime=localEndTime, previewAlias=self._getVehiclePreviewReturnAlias(cmd), previewBackCb=self._getVehiclePreviewReturnCallback(cmd), buyParams=cmd.buy_params)
+            event_dispatcher.showVehiclePreview(vehTypeCompDescr=vehiclesIDs[0], itemsPack=items, price=price, oldPrice=oldPrice, title=cmd.title, endTime=localEndTime, previewAlias=self._getVehiclePreviewReturnAlias(cmd), previewBackCb=self._getVehiclePreviewReturnCallback(cmd), buyParams=cmd.buy_params, obtainingMethod=cmd.obtaining_method)
         else:
             _pushInvalidPreviewMessage()
         return
@@ -469,7 +478,7 @@ class VehiclePreviewWebApiMixin(object):
 
     @w2c(_ShowcaseVehicleStylePreviewSchema, 'showcase_vehicle_style_preview')
     def openShowcaseVehicleStylePreview(self, cmd):
-        return self._openVehicleStylePreview(cmd, event_dispatcher.showShowcaseStyleBuyingPreview, originalPrice=cmd.original_price, discountPercent=cmd.discount_percent, endTime=self.__getLocalEndTime(cmd.end_date) if cmd.end_date else None)
+        return self._openVehicleStylePreview(cmd, event_dispatcher.showShowcaseStyleBuyingPreview, originalPrice=cmd.original_price, discountPercent=cmd.discount_percent, endTime=self.__getLocalEndTime(cmd.end_date) if cmd.end_date else None, obtainingMethod=cmd.obtaining_method)
 
     @w2c(_VehicleMarathonStylePreviewSchema, 'marathon_vehicle_style_preview')
     def openMarathonVehicleStylePreview(self, cmd):

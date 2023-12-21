@@ -19,6 +19,8 @@ from gui.Scaleform.daapi.view.lobby.profile.sound_constants import ACHIEVEMENTS_
 from gui.Scaleform.daapi.view.lobby.hof.web_handlers import createHofWebHandlers
 from gui.Scaleform.daapi.view.lobby.hof.hof_helpers import getHofDisabledKeys, onServerSettingsChange
 from gui.shared.events import ProfilePageEvent, CollectionsEvent
+_LUI_RULES = (
+ LuiRules.PROFILE_HOF, VIEW_ALIAS.PROFILE_TECHNIQUE_PAGE)
 _logger = logging.getLogger(__name__)
 
 class ProfilePage(LobbySubView, ProfileMeta):
@@ -72,6 +74,7 @@ class ProfilePage(LobbySubView, ProfileMeta):
         self.__collectionsSystem.onServerSettingsChanged += self.__onCollectionsSettingsChanged
         self.__achievements20Controller.onUpdate += self.__onProfileVisited
         g_eventBus.addListener(CollectionsEvent.TAB_COUNTER_UPDATED, self.__onCollectionTabUpdated, EVENT_BUS_SCOPE.LOBBY)
+        self._limitedUIController.startObserves(_LUI_RULES, self.__isLuiRuleProfileCompleted)
         if self.__ctx and self.__ctx.get('hofPageUrl'):
             self.__loadHofUrl(self.__ctx.get('hofPageUrl'))
 
@@ -86,9 +89,13 @@ class ProfilePage(LobbySubView, ProfileMeta):
         self.__collectionsSystem.onServerSettingsChanged -= self.__onCollectionsSettingsChanged
         self.__achievements20Controller.onUpdate -= self.__onProfileVisited
         g_eventBus.removeListener(CollectionsEvent.TAB_COUNTER_UPDATED, self.__onCollectionTabUpdated, EVENT_BUS_SCOPE.LOBBY)
+        self._limitedUIController.stopObserves(_LUI_RULES, self.__isLuiRuleProfileCompleted)
         self.__tabNavigator = None
         super(ProfilePage, self)._dispose()
         return
+
+    def __isLuiRuleProfileCompleted(self, *_):
+        self.__updateTabCounters()
 
     def __dossierUpdateCallBack(self, _):
         self.__tabNavigator.invokeUpdate()

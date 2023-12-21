@@ -49,6 +49,12 @@ class ResourceWellNumberRequester(object):
         self.onUpdated()
         return
 
+    def getValuesLeft(self):
+        if self.__remainingValues is not None and self.__reactiveCommunication.isChannelSubscriptionAvailable:
+            return self.__remainingValues
+        else:
+            return
+
     def getRemainingValues(self):
         if self.__remainingValues is not None and self.__reactiveCommunication.isChannelSubscriptionAvailable and self.__initialValues != _NO_VEHICLES_VALUE:
             return self.__remainingValues

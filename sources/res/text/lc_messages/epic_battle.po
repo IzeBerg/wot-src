@@ -157,6 +157,9 @@ msgstr "Продвигайтесь на фронт"
 msgid "advance_mission_txt"
 msgstr "Продвигайтесь на фронт"
 
+msgid "ammunitionSetup/btn/info/hint"
+msgstr "ПОДРОБНЕЕ О СЦЕНАРИЯХ"
+
 msgid "awards/acceptButton"
 msgstr "Так точно!"
 
@@ -515,6 +518,9 @@ msgstr "Доступно использование техники IX уровн
 msgid "overtime/label"
 msgstr "ОВЕРТАЙМ"
 
+msgid "player_errors/equipment/isWorking"
+msgstr "Невозможно использовать два одинаковых резерва"
+
 msgid "player_errors/minefieldIsIntersected"
 msgstr "Размещение невозможно. Минные поля пересекаются."
 
@@ -705,6 +711,18 @@ msgstr "Подкрепления нет"
 
 msgid "reinforcementsPanel/inText"
 msgstr " "
+
+msgid "reserve/level/1"
+msgstr "I"
+
+msgid "reserve/level/2"
+msgstr "II"
+
+msgid "reserve/level/3"
+msgstr "III"
+
+msgid "reserve/level/4"
+msgstr "IV"
 
 msgid "respawn/auto_timer_txt"
 msgstr "%(seconds)s с до выхода в бой."
@@ -1006,7 +1024,7 @@ msgid "tooltips/slotSetupInfo/upgrade/title"
 msgstr "Улучшение: %(desc)s"
 
 msgid "tooltips/slotUnlocked/message"
-msgstr "Слот откроется при достижении звания «%(rank)s»."
+msgstr "Слот откроется по достижении звания «%(rank)s»"
 
 msgid "tooltips/timeToEnd"
 msgstr "Режим доступен: %(timeLeft)s"
@@ -1035,8 +1053,14 @@ msgstr "Бои скоро начнутся"
 msgid "widgetAlertMessageBlock/button"
 msgstr "Сменить сервер"
 
-msgid "widgetAlertMessageBlock/noCycleMessage"
-msgstr "Бои завершены"
+msgid "widgetAlertMessageBlock/details"
+msgstr "Подробнее"
+
+msgid "widgetAlertMessageBlock/finished"
+msgstr "Режим «Линия фронта» завершён!"
+
+msgid "widgetAlertMessageBlock/modification"
+msgstr "Сценарии Линии фронта"
 
 msgid "widgetAlertMessageBlock/singleModeHalt"
 msgstr "Режим прекращения огня на сервере. Бои начнутся через %(time)s"
@@ -1046,6 +1070,11 @@ msgstr "Режим прекращения огня на %(serverName)s"
 
 msgid "widgetAlertMessageBlock/startIn"
 msgstr "Бои начнутся через: %(time)s"
+
+msgid "widgetAlertMessageBlock/tooltip/body"
+msgstr ""
+"Нажмите, чтобы узнать больше о возможных\n"
+"сценариях и отличиях между ними."
 
 msgid "zone/arrived_text"
 msgstr "прибыло!"

@@ -3,6 +3,8 @@ from frontline.gui.impl.gen.view_models.views.lobby.views.frontline_const import
 from frontline.gui.impl.gen.view_models.views.lobby.views.frontline_container_tab_model import TabType
 import CommandMapping
 from gui.Scaleform.daapi.view.common.keybord_helpers import getHotKeyVkList, getHotKeyList
+from gui.impl import backport
+from gui.impl.gen import R
 from gui.periodic_battles.models import PrimeTimeStatus
 from helpers import time_utils, dependency
 from skeletons.gui.game_control import IEpicBattleMetaGameController
@@ -61,3 +63,40 @@ def getHotKeyVkListByIndex(index):
 def isHangarAvailable():
     frontlineState, _, _ = geFrontlineState()
     return frontlineState not in getStatesUnavailableForHangar()
+
+
+class FLBattleTypeDescription(object):
+    __epicMetaCtrl = dependency.descriptor(IEpicBattleMetaGameController)
+
+    def getDescription(self):
+        return self.__getDescription('description')
+
+    def getShortDescription(self):
+        return self.__getDescription('shortDescription')
+
+    def getTitle(self):
+        return self.__getDescription('title')
+
+    def getBattleTypeIconPath(self, sizeFolder='c_136x136'):
+        iconRes = self.__getRI().dyn(sizeFolder).dyn(self.__epicMetaCtrl.getEpicBattlesReservesModifier())
+        if iconRes.exists():
+            return backport.image(iconRes())
+        return ''
+
+    def __getDescription(self, descriptionType):
+        modifier = self.__epicMetaCtrl.getEpicBattlesReservesModifier()
+        if modifier is None:
+            return ''
+        else:
+            descriptionRes = self.__getRS().dyn(descriptionType).dyn(modifier)
+            if descriptionRes.exists():
+                return backport.text(descriptionRes())
+            return ''
+
+    @staticmethod
+    def __getRS():
+        return R.strings.fl_common.battleType
+
+    @staticmethod
+    def __getRI():
+        return R.images.frontline.gui.maps.icons.battleTypes

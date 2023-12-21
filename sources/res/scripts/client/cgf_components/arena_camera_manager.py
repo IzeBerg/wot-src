@@ -19,4 +19,5 @@ class ArenaCameraManager(CGF.ComponentManager):
 
     @onRemovedQuery(CameraComponent)
     def onCameraRemoved(self, cameraComponent):
-        self.__cameras.pop(cameraComponent.name)
+        self.__cameras.pop(cameraComponent.name, None)
+        return

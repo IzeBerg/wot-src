@@ -23,6 +23,7 @@ class VEHICLE_PREVIEW(object):
     HEADER_BACKBTN_DESCRLABEL_BATTLEMATTERS = '#vehicle_preview:header/backBtn/descrLabel/battleMatters'
     HEADER_BACKBTN_DESCRLABEL_BATTLEMATTERSMAINREWARD = '#vehicle_preview:header/backBtn/descrLabel/battleMattersMainReward'
     HEADER_BACKBTN_DESCRLABEL_COLLECTIONS = '#vehicle_preview:header/backBtn/descrLabel/collections'
+    HEADER_BACKBTN_DESCRLABEL_COMP7 = '#vehicle_preview:header/backBtn/descrLabel/comp7'
     HEADER_TITLE = '#vehicle_preview:header/title'
     HEADER_CLOSEBTN_LABEL = '#vehicle_preview:header/closeBtn/label'
     HERO_HEADER_TITLE = '#vehicle_preview:hero/header/title'
@@ -63,6 +64,8 @@ class VEHICLE_PREVIEW(object):
     BUYINGPANEL_BUYBTN_LABEL_BUY = '#vehicle_preview:buyingPanel/buyBtn/label/buy'
     BUYINGPANEL_BUYBTN_LABEL_EXCHANGE = '#vehicle_preview:buyingPanel/buyBtn/label/exchange'
     BUYINGPANEL_BUYBTN_LABEL_BUYITEMPACK = '#vehicle_preview:buyingPanel/buyBtn/label/buyItemPack'
+    BUYINGPANEL_BUYBTN_LABEL_FORCOINSOBTAIN = '#vehicle_preview:buyingPanel/buyBtn/label/forCoinsObtain'
+    BUYINGPANEL_BUYBTN_LABEL_FREEOBTAIN = '#vehicle_preview:buyingPanel/buyBtn/label/freeObtain'
     BUYINGPANEL_BUYBTN_LABEL_RENT = '#vehicle_preview:buyingPanel/buyBtn/label/rent'
     BUYINGPANEL_BUYBTN_LABEL_RESTORE = '#vehicle_preview:buyingPanel/buyBtn/label/restore'
     BUYINGPANEL_BUYBTN_LABEL_RESEARCH = '#vehicle_preview:buyingPanel/buyBtn/label/research'
@@ -150,7 +153,8 @@ class VEHICLE_PREVIEW(object):
      HEADER_BACKBTN_DESCRLABEL_RESOURCEWELL,
      HEADER_BACKBTN_DESCRLABEL_BATTLEMATTERS,
      HEADER_BACKBTN_DESCRLABEL_BATTLEMATTERSMAINREWARD,
-     HEADER_BACKBTN_DESCRLABEL_COLLECTIONS)
+     HEADER_BACKBTN_DESCRLABEL_COLLECTIONS,
+     HEADER_BACKBTN_DESCRLABEL_COMP7)
     BUYINGPANEL_OFFER_RENT_NAME_ENUM = (
      BUYINGPANEL_OFFER_RENT_NAME_CYCLE,
      BUYINGPANEL_OFFER_RENT_NAME_CYCLES,

@@ -663,6 +663,8 @@ package net.wg.data.constants
       
       public static const COUNTER_LINE_KEY_UI:String = "newCounterLineKeyUI";
       
+      public static const COUNTER_VEHICLE_RESEARCHABLE_UI:String = "VehResearchCounterUI";
+      
       public static const SERVICE_MESSAGE_IR_UI:String = "ServiceMessageIR_UI";
       
       public static const FEEDBACK_DAMAGE_LOG:String = "feedbackDamageLog";

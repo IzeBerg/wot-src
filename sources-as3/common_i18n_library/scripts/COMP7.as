@@ -15,9 +15,15 @@ package
       
       public static const INFOPAGEBUTTONLABEL:String = "#comp7:infoPageButtonLabel";
       
+      public static const WHATSNEWBUTTONLABEL:String = "#comp7:whatsNewButtonLabel";
+      
       public static const DASH:String = "#comp7:dash";
       
       public static const PERCENTAGE:String = "#comp7:percentage";
+      
+      public static const FORVEHICLE:String = "#comp7:forVehicle";
+      
+      public static const QUOTESWRAPPER:String = "#comp7:quotesWrapper";
       
       public static const PAGE_HEADING_PROGRESSION:String = "#comp7:page/heading/progression";
       
@@ -29,9 +35,15 @@ package
       
       public static const PAGE_HEADING_LEADERBOARD:String = "#comp7:page/heading/leaderboard";
       
+      public static const PAGE_HEADING_SHOP:String = "#comp7:page/heading/shop";
+      
       public static const PAGE_HEADING_YEARLYREWARDS:String = "#comp7:page/heading/yearlyRewards";
       
       public static const PAGE_HEADING_YEARLYSTATISTICS:String = "#comp7:page/heading/yearlyStatistics";
+      
+      public static const CONTROLS_PREVIEW:String = "#comp7:controls/preview";
+      
+      public static const CONTROLS_COMPARE:String = "#comp7:controls/compare";
       
       public static const COUNTDOWN_TEXT:String = "#comp7:countDown/text";
       
@@ -127,6 +139,10 @@ package
       
       public static const LISTSEPARATOR:String = "#comp7:listSeparator";
       
+      public static const DATAERROR_TITLE:String = "#comp7:dataError/title";
+      
+      public static const DATAERROR_DESCRIPTION:String = "#comp7:dataError/description";
+      
       public static const SIDEBAR_TABS_TOOLTIP_HEADER_PROGRESSION:String = "#comp7:sidebar/tabs/tooltip/header/progression";
       
       public static const SIDEBAR_TABS_TOOLTIP_BODY_PROGRESSION:String = "#comp7:sidebar/tabs/tooltip/body/progression";
@@ -146,6 +162,10 @@ package
       public static const SIDEBAR_TABS_TOOLTIP_HEADER_YEARLYREWARDS:String = "#comp7:sidebar/tabs/tooltip/header/yearlyRewards";
       
       public static const SIDEBAR_TABS_TOOLTIP_BODY_YEARLYREWARDS:String = "#comp7:sidebar/tabs/tooltip/body/yearlyRewards";
+      
+      public static const SIDEBAR_TABS_TOOLTIP_HEADER_SHOP:String = "#comp7:sidebar/tabs/tooltip/header/shop";
+      
+      public static const SIDEBAR_TABS_TOOLTIP_BODY_SHOP:String = "#comp7:sidebar/tabs/tooltip/body/shop";
       
       public static const SIDEBAR_TABS_TOOLTIP_HEADER_YEARLYSTATISTICS:String = "#comp7:sidebar/tabs/tooltip/header/yearlyStatistics";
       
@@ -184,6 +204,18 @@ package
       public static const SYSTEM_MESSAGES_WEEKLYREWARD_BODY:String = "#comp7:system_messages/weeklyReward/body";
       
       public static const SYSTEM_MESSAGES_WEEKLYREWARD_TOKENS:String = "#comp7:system_messages/weeklyReward/tokens";
+      
+      public static const SYSTEM_MESSAGES_SHOP_PURCHASE_ERROR:String = "#comp7:system_messages/shop/purchase/error";
+      
+      public static const SYSTEM_MESSAGES_SHOP_OFFER_NEWITEMS_TITLE:String = "#comp7:system_messages/shop/offer/newItems/title";
+      
+      public static const SYSTEM_MESSAGES_SHOP_OFFER_NEWITEMS_BODY:String = "#comp7:system_messages/shop/offer/newItems/body";
+      
+      public static const SYSTEM_MESSAGES_SHOP_OFFER_NEWDISCOUNTS_TITLE:String = "#comp7:system_messages/shop/offer/newDiscounts/title";
+      
+      public static const SYSTEM_MESSAGES_SHOP_OFFER_NEWDISCOUNTS_BODY:String = "#comp7:system_messages/shop/offer/newDiscounts/body";
+      
+      public static const SYSTEM_MESSAGES_SHOP_OFFER_BUTTON:String = "#comp7:system_messages/shop/offer/button";
       
       public static const QUALIFICATION_COUNTER:String = "#comp7:qualification/counter";
       
@@ -247,9 +279,19 @@ package
       
       public static const REWARDSSCREEN_ADDITIONALREWARDS:String = "#comp7:rewardsScreen/additionalRewards";
       
+      public static const REWARDSSCREEN_SHOPINFO_HEADER_OPEN:String = "#comp7:rewardsScreen/shopInfo/header/open";
+      
+      public static const REWARDSSCREEN_SHOPINFO_TEXT_OPEN:String = "#comp7:rewardsScreen/shopInfo/text/open";
+      
+      public static const REWARDSSCREEN_SHOPINFO_HEADER_DISCOUNT:String = "#comp7:rewardsScreen/shopInfo/header/discount";
+      
+      public static const REWARDSSCREEN_SHOPINFO_TEXT_DISCOUNT:String = "#comp7:rewardsScreen/shopInfo/text/discount";
+      
       public static const REWARDSSCREEN_BUTTON:String = "#comp7:rewardsScreen/button";
       
       public static const REWARDSSCREEN_BUTTONTOREWARDS:String = "#comp7:rewardsScreen/buttonToRewards";
+      
+      public static const REWARDSSCREEN_BUTTONTOSHOP:String = "#comp7:rewardsScreen/buttonToShop";
       
       public static const REWARDSSCREEN_NOTICE_TITLE:String = "#comp7:rewardsScreen/notice/title";
       
@@ -285,6 +327,30 @@ package
       
       public static const RATINGSCORE_TITLE:String = "#comp7:ratingScore/title";
       
+      public static const PURCHASE_TITLE_VEHICLE:String = "#comp7:purchase/title/vehicle";
+      
+      public static const PURCHASE_TITLE_STYLE3D:String = "#comp7:purchase/title/style3d";
+      
+      public static const PURCHASE_NOSUITABLEVEHICLE:String = "#comp7:purchase/noSuitableVehicle";
+      
+      public static const PURCHASE_PRICE:String = "#comp7:purchase/price";
+      
+      public static const PURCHASE_CONFIRMBUTTON:String = "#comp7:purchase/confirmButton";
+      
+      public static const PURCHASE_CANCELBUTTON:String = "#comp7:purchase/cancelButton";
+      
+      public static const PURCHASE_SUCCESS_HEADING:String = "#comp7:purchase/success/heading";
+      
+      public static const PURCHASE_SUCCESS_STYLE3D:String = "#comp7:purchase/success/style3d";
+      
+      public static const PURCHASE_SUCCESS_RECEIVING:String = "#comp7:purchase/success/receiving";
+      
+      public static const PURCHASE_AFFIRMATIVE:String = "#comp7:purchase/affirmative";
+      
+      public static const PURCHASE_ERROR_TITLE:String = "#comp7:purchase/error/title";
+      
+      public static const PURCHASE_ERROR_DESCRIPTION:String = "#comp7:purchase/error/description";
+      
       public static const WEEKLYQUESTS_RESETSTATUS_LASTWEEK:String = "#comp7:weeklyQuests/resetStatus/lastWeek";
       
       public static const WEEKLYQUESTS_RESETSTATUS_TIMER:String = "#comp7:weeklyQuests/resetStatus/timer";
@@ -317,6 +383,8 @@ package
       
       public static const YEARLYREWARDS_VEHICLETOOLTIP_BODY:String = "#comp7:yearlyRewards/vehicleTooltip/body";
       
+      public static const YEARLYREWARDS_TITLE_WITHVEHICLE:String = "#comp7:yearlyRewards/title/withVehicle";
+      
       public static const YEARLYREWARDS_SUBTITLE_STYLEPROGRESS:String = "#comp7:yearlyRewards/subtitle/styleProgress";
       
       public static const YEARLYREWARDS_REWARDSSTATE_GUARANTEED:String = "#comp7:yearlyRewards/rewardsState/guaranteed";
@@ -339,11 +407,9 @@ package
       
       public static const YEARLYREWARDS_RANK_ACHIEVED:String = "#comp7:yearlyRewards/rank/achieved";
       
-      public static const YEARLYREWARDS_DESCRIPTION:String = "#comp7:yearlyRewards/description";
+      public static const YEARLYREWARDS_DESCRIPTION_CURRENT:String = "#comp7:yearlyRewards/description/current";
       
-      public static const YEARLYREWARDS_ERROR_TITLE:String = "#comp7:yearlyRewards/error/title";
-      
-      public static const YEARLYREWARDS_ERROR_DESCRIPTION:String = "#comp7:yearlyRewards/error/description";
+      public static const YEARLYREWARDS_DESCRIPTION_ACHIEVED:String = "#comp7:yearlyRewards/description/achieved";
       
       public static const YEARLYREWARDS_MAIN_FIRST:String = "#comp7:yearlyRewards/main/first";
       
@@ -491,6 +557,48 @@ package
       
       public static const YEARLYSTATISTICS_GOTOSEASONSTATISTICS:String = "#comp7:yearlyStatistics/goToSeasonStatistics";
       
+      public static const PRODUCTS_RANKACCESS:String = "#comp7:products/rankAccess";
+      
+      public static const PRODUCTS_STYLE3D:String = "#comp7:products/style3d";
+      
+      public static const PRODUCTS_READYTORESTORE:String = "#comp7:products/readyToRestore";
+      
+      public static const PRODUCTS_PURCHASED:String = "#comp7:products/purchased";
+      
+      public static const PRODUCTS_INPROGRESS:String = "#comp7:products/inProgress";
+      
+      public static const PRODUCTS_NEWLABEL:String = "#comp7:products/newLabel";
+      
+      public static const PRODUCTS_DISCOUNTSECTIONNAME:String = "#comp7:products/discountSectionName";
+      
+      public static const PRODUCTS_PRICESECTIONNAME:String = "#comp7:products/priceSectionName";
+      
+      public static const PRODUCTS_DISCOUNTDESCRIPTION:String = "#comp7:products/discountDescription";
+      
+      public static const PRODUCTS_READYTORESTOREDESCRIPTION:String = "#comp7:products/readyToRestoreDescription";
+      
+      public static const PRODUCTS_PRODUCTACCESS:String = "#comp7:products/productAccess";
+      
+      public static const PRODUCTS_DISCOUNT:String = "#comp7:products/discount";
+      
+      public static const PRODUCTS_ACTIONS_BUY:String = "#comp7:products/actions/buy";
+      
+      public static const PRODUCTS_ACTIONS_RESTORE:String = "#comp7:products/actions/restore";
+      
+      public static const PRODUCTS_MESSAGE_NOTENOUGH:String = "#comp7:products/message/notEnough";
+      
+      public static const PRODUCTS_MESSAGE_RANKACCESS:String = "#comp7:products/message/rankAccess";
+      
+      public static const PRODUCTS_ACTIONS_TOHANGAR:String = "#comp7:products/actions/toHangar";
+      
+      public static const PRODUCTS_ACTIONS_TOCUSTOMIZATION:String = "#comp7:products/actions/toCustomization";
+      
+      public static const PRODUCTS_LIMITEDQUANTITYSEASON:String = "#comp7:products/limitedQuantitySeason";
+      
+      public static const PRODUCTS_CUSTOMIZATIONUNAVAILABLE_TITLE:String = "#comp7:products/customizationUnavailable/title";
+      
+      public static const PRODUCTS_CUSTOMIZATIONUNAVAILABLE_BODY:String = "#comp7:products/customizationUnavailable/body";
+      
       public static const SEASONPOINTTOOLTIP_HEADER:String = "#comp7:seasonPointTooltip/header";
       
       public static const SEASONPOINTTOOLTIP_STATUS_ACHIEVED:String = "#comp7:seasonPointTooltip/status/achieved";
@@ -505,7 +613,7 @@ package
       
       public static const SEASONPOINTTOOLTIP_TEXT_COMPENSATE:String = "#comp7:seasonPointTooltip/text/compensate";
       
-      public static const INTRO_TITLE_CRIMSONSEASON:String = "#comp7:intro/title/crimsonSeason";
+      public static const INTRO_TITLE_ONSLAUGHTMODIFIERS:String = "#comp7:intro/title/onslaughtModifiers";
       
       public static const INTRO_TITLE_VEHICLESONMAP:String = "#comp7:intro/title/vehiclesOnMap";
       
@@ -517,7 +625,7 @@ package
       
       public static const INTRO_TITLE_RANKS:String = "#comp7:intro/title/ranks";
       
-      public static const INTRO_DESCRIPTION_CRIMSONSEASON:String = "#comp7:intro/description/crimsonSeason";
+      public static const INTRO_DESCRIPTION_ONSLAUGHTMODIFIERS:String = "#comp7:intro/description/onslaughtModifiers";
       
       public static const INTRO_DESCRIPTION_VEHICLESONMAP:String = "#comp7:intro/description/vehiclesOnMap";
       
@@ -1001,29 +1109,49 @@ package
       
       public static const WHATSNEWVIEW_TAG_SEASONUPDATE:String = "#comp7:whatsNewView/tag/seasonUpdate";
       
-      public static const WHATSNEWVIEW_TAG_MAPREMOVED:String = "#comp7:whatsNewView/tag/mapRemoved";
+      public static const WHATSNEWVIEW_TAG_REMOVED:String = "#comp7:whatsNewView/tag/removed";
       
-      public static const WHATSNEWVIEW_YEAROFTHEPEGASUS_HEADING:String = "#comp7:whatsNewView/yearOfThePegasus/heading";
+      public static const WHATSNEWVIEW_TAG_UNDERDEVELOPMENT:String = "#comp7:whatsNewView/tag/underDevelopment";
       
-      public static const WHATSNEWVIEW_YEAROFTHEPEGASUS_DESCRIPTION:String = "#comp7:whatsNewView/yearOfThePegasus/description";
+      public static const WHATSNEWVIEW_INTRO_HEADING:String = "#comp7:whatsNewView/intro/heading";
       
-      public static const WHATSNEWVIEW_QUALIFICATION_HEADING:String = "#comp7:whatsNewView/qualification/heading";
+      public static const WHATSNEWVIEW_INTRO_DESCRIPTION:String = "#comp7:whatsNewView/intro/description";
       
-      public static const WHATSNEWVIEW_QUALIFICATION_DESCRIPTION:String = "#comp7:whatsNewView/qualification/description";
+      public static const WHATSNEWVIEW_MODIFIERS_HEADING:String = "#comp7:whatsNewView/modifiers/heading";
       
-      public static const WHATSNEWVIEW_RANKINGSYSTEM_HEADING:String = "#comp7:whatsNewView/rankingSystem/heading";
+      public static const WHATSNEWVIEW_MODIFIERS_DESCRIPTION:String = "#comp7:whatsNewView/modifiers/description";
       
-      public static const WHATSNEWVIEW_RANKINGSYSTEM_DESCRIPTION:String = "#comp7:whatsNewView/rankingSystem/description";
+      public static const WHATSNEWVIEW_MODIFIERS_UNCHANGED:String = "#comp7:whatsNewView/modifiers/unchanged";
+      
+      public static const MODIFIER_NAME_VEHICLEHEALTH:String = "#comp7:modifier/name/vehicleHealth";
+      
+      public static const MODIFIER_NAME_EQUIPMENTCOOLDOWN:String = "#comp7:modifier/name/equipmentCooldown";
+      
+      public static const WHATSNEWVIEW_MODIFIERS_ADDED:String = "#comp7:whatsNewView/modifiers/added";
+      
+      public static const MODIFIER_NAME_SHOTDISPERSIONRADIUS:String = "#comp7:modifier/name/shotDispersionRadius";
+      
+      public static const MODIFIER_NAME_VISIONTIME:String = "#comp7:modifier/name/visionTime";
+      
+      public static const MODIFIER_NAME_VISIONMINRADIUS:String = "#comp7:modifier/name/visionMinRadius";
+      
+      public static const MODIFIER_VALUETYPE_PERCENTAGE:String = "#comp7:modifier/valueType/percentage";
+      
+      public static const MODIFIER_VALUETYPE_SECONDS:String = "#comp7:modifier/valueType/seconds";
+      
+      public static const MODIFIER_VALUETYPE_DEVIATION:String = "#comp7:modifier/valueType/deviation";
+      
+      public static const MODIFIER_FORMATTEDVALUETYPE_NULLISHDEVIATION:String = "#comp7:modifier/formattedValueType/nullishDeviation";
+      
+      public static const MODIFIER_FORMATTEDVALUETYPE_NULLISHDISPERSION:String = "#comp7:modifier/formattedValueType/nullishDispersion";
+      
+      public static const MODIFIER_VALUETYPE_METERS:String = "#comp7:modifier/valueType/meters";
       
       public static const WHATSNEWVIEW_MAPCHANGES_HEADING:String = "#comp7:whatsNewView/mapChanges/heading";
       
       public static const WHATSNEWVIEW_MAPCHANGES_ADDEDMAPS:String = "#comp7:whatsNewView/mapChanges/addedMaps";
       
       public static const WHATSNEWVIEW_MAPCHANGES_REMOVEDMAPS:String = "#comp7:whatsNewView/mapChanges/removedMaps";
-      
-      public static const WHATSNEWVIEW_VEHICLELIMITATIONS_HEADING:String = "#comp7:whatsNewView/vehicleLimitations/heading";
-      
-      public static const WHATSNEWVIEW_VEHICLELIMITATIONS_DESCRIPTION:String = "#comp7:whatsNewView/vehicleLimitations/description";
       
       public static const WHATSNEWVIEW_VEHICLESFORRENT_HEADING:String = "#comp7:whatsNewView/vehiclesForRent/heading";
       

@@ -417,6 +417,10 @@ class IStatsRequester(IRequester):
     def steamShadeGroup(self):
         raise NotImplementedError
 
+    @property
+    def defaultSettingsGroup(self):
+        raise NotImplementedError
+
 
 class IDossierRequester(IRequester):
 

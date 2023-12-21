@@ -24,6 +24,7 @@ from gui.Scaleform.locale.BATTLE_PASS import BATTLE_PASS
 from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.battle_pass.battle_pass_helpers import isBattlePassDailyQuestsIntroShown
+from gui.battle_pass.sounds import HOLIDAY_TASKS_SOUND_SPACE
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.marathon.marathon_event_controller import getMarathons
@@ -110,6 +111,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         self.__currentTabAlias = None
         self.__subTab = None
         self.__ctx = ctx or {}
+        self.__soundSpace = self._COMMON_SOUND_SPACE
+        self.__changeSoundSpace()
         self._initialize(ctx)
         return
 
@@ -371,6 +374,13 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
 
     def __updateBattlePassTab(self, *_):
         self.__updateHeader()
+        self.__changeSoundSpace()
+
+    def __changeSoundSpace(self):
+        newSoundSpace = HOLIDAY_TASKS_SOUND_SPACE if self.battlePass.isHoliday() and self.battlePass.isActive() else TASKS_SOUND_SPACE
+        if self.__soundSpace != newSoundSpace:
+            self.__soundSpace = newSoundSpace
+            self.initSoundManager(self.__soundSpace)
 
     def __updateHeader(self, updateTabsDataProvider=True):
         data = []

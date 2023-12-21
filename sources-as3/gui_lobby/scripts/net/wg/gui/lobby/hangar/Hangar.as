@@ -149,6 +149,8 @@ package net.wg.gui.lobby.hangar
       private static const CAROUSEL_EVENT_ENTRY_X_OFFSET:int = -65;
       
       private static const CAROUSEL_EVENT_ENTRY_Y_OFFSET:int = 127;
+      
+      private static const HELP_LAYOUT_ADDITIONAL_WIDTH:int = -30;
        
       
       public var vehResearchPanel:ResearchPanel;
@@ -256,12 +258,17 @@ package net.wg.gui.lobby.hangar
          this._eventsEntryContainer.addEventListener(Event.RESIZE,this.onEventsEntryContainerResizeHandler);
          this._eventsEntryContainer.visible = false;
          addChildAt(this._eventsEntryContainer,getChildIndex(this.carouselContainer) + 1);
-         this._header = this._utils.classFactory.getComponent(Linkages.HANGAR_HEADER,HangarHeader);
-         this._header.name = HANGAR_ALIASES.HEADER;
-         addChildAt(this._header,getChildIndex(this.vehResearchPanel as DisplayObject) + 1);
          this._carouselEventEntryContainer = new Sprite();
          addChild(this._carouselEventEntryContainer);
          this._carouselEventEntryContainer.name = CAROUSEL_EVENT_ENTRY_NAME;
+         this._header = this._utils.classFactory.getComponent(Linkages.HANGAR_HEADER,HangarHeader);
+         this._header.name = HANGAR_ALIASES.HEADER;
+         addChildAt(this._header,numChildren);
+      }
+      
+      public static function getAdditionalHelpLayoutOffset() : int
+      {
+         return Math.min(HELP_LAYOUT_ADDITIONAL_WIDTH + (App.appWidth - StageSizeBoundaries.WIDTH_1024 >> 1),0);
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
@@ -672,7 +679,7 @@ package net.wg.gui.lobby.hangar
          {
             this.prestigeProgressInject = PrestigeProgressInject(this._utils.classFactory.getComponent(Linkages.PRESTIGE_HANGAR_WIDGET_UI,PrestigeProgressInject));
             this.prestigeProgressInject.name = PrestigeProgressInject.PRESTIGE_WIDGET_NAME;
-            addChild(this.prestigeProgressInject);
+            addChildAt(this.prestigeProgressInject,getChildIndex(this.params as DisplayObject) + 1);
             registerFlashComponentS(this.prestigeProgressInject,HANGAR_ALIASES.PRESTIGE_PROGRESS_WIDGET);
             invalidate(INVALIDATE_PRESTIGE_WIDGET_VISIBILITY);
          }
@@ -1161,39 +1168,6 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      private function onAmmunitionPanelRequestFocusHandler(param1:FocusRequestEvent) : void
-      {
-         setFocus(param1.focusContainer.getComponentForFocus());
-      }
-      
-      private function handleEscapeHandler(param1:InputEvent) : void
-      {
-         if(!this._helpLayout.isShown())
-         {
-            onEscapeS();
-         }
-      }
-      
-      private function showLayoutHandler(param1:InputEvent) : void
-      {
-         var _loc2_:InputDetails = param1.details;
-         if(_loc2_.altKey || _loc2_.ctrlKey || _loc2_.shiftKey)
-         {
-            return;
-         }
-         showHelpLayoutS();
-      }
-      
-      private function onSwitchModePanelShowHandler(param1:ComponentEvent) : void
-      {
-         this.updateElementsPosition();
-      }
-      
-      private function onSwitchModePanelHideHandler(param1:ComponentEvent) : void
-      {
-         this.updateElementsPosition();
-      }
-      
       override public function set visible(param1:Boolean) : void
       {
          this._isVisible = param1;
@@ -1229,6 +1203,39 @@ package net.wg.gui.lobby.hangar
       public function get isControlsVisible() : Boolean
       {
          return this._isControlsVisible;
+      }
+      
+      private function onAmmunitionPanelRequestFocusHandler(param1:FocusRequestEvent) : void
+      {
+         setFocus(param1.focusContainer.getComponentForFocus());
+      }
+      
+      private function handleEscapeHandler(param1:InputEvent) : void
+      {
+         if(!this._helpLayout.isShown())
+         {
+            onEscapeS();
+         }
+      }
+      
+      private function showLayoutHandler(param1:InputEvent) : void
+      {
+         var _loc2_:InputDetails = param1.details;
+         if(_loc2_.altKey || _loc2_.ctrlKey || _loc2_.shiftKey)
+         {
+            return;
+         }
+         showHelpLayoutS();
+      }
+      
+      private function onSwitchModePanelShowHandler(param1:ComponentEvent) : void
+      {
+         this.updateElementsPosition();
+      }
+      
+      private function onSwitchModePanelHideHandler(param1:ComponentEvent) : void
+      {
+         this.updateElementsPosition();
       }
       
       private function onAmmunitionViewHideAnimCompleteHandler(param1:Event) : void

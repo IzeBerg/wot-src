@@ -16,6 +16,7 @@ if IS_CLIENT:
     from gui.hangar_cameras.hangar_camera_yaw_filter import HangarCameraYawFilter
     from gui.hangar_cameras.hangar_camera_parallax import HangarCameraParallax
     from gui.hangar_cameras.hangar_camera_idle import HangarCameraIdle
+    from gui.hangar_cameras.hangar_camera_flyby import HangarCameraFlyby
 _EASE_SQUARE_INOUT = 3
 _MIN_DURATION_ = 2.0
 _MAX_DURATION_ = 3.0
@@ -98,6 +99,7 @@ class HangarCameraManager(CGF.ComponentManager):
         self.__yawCameraFilter = None
         self.__cameraIdle = None
         self.__cameraParallax = None
+        self.__cameraFlyby = None
         self.__mouseMoveParams = _MouseMoveParams()
         self.__flightParams = _FlightParams()
         self.__minDist = None
@@ -111,6 +113,7 @@ class HangarCameraManager(CGF.ComponentManager):
         self.__cameraMode = CameraMode.DEFAULT
         self.__cameraName = None
         self.__isActive = False
+        self.__flybyCallback = None
         return
 
     def activate(self):
@@ -125,6 +128,7 @@ class HangarCameraManager(CGF.ComponentManager):
         BigWorld.camera(self.__cam)
         self.__cameraParallax = HangarCameraParallax(self.__cam)
         self.__cameraIdle = HangarCameraIdle(self.__cam)
+        self.__cameraFlyby = HangarCameraFlyby(self.__cam)
         self.__customizationHelper = BigWorld.PyCustomizationHelper(None, 0, False, None)
         g_eventBus.addListener(CameraRelatedEvents.LOBBY_VIEW_MOUSE_MOVE, self.__handleLobbyViewMouseEvent)
         FovExtended.instance().onSetFovSettingEvent += self.__onSetFovSetting
@@ -158,7 +162,10 @@ class HangarCameraManager(CGF.ComponentManager):
             self.__cameraParallax = None
             self.__cameraIdle.destroy()
             self.__cameraIdle = None
+            self.__cameraFlyby.fini()
+            self.__cameraFlyby = None
             self.__isActive = False
+            self.__flybyCallback = None
             return
 
     @onAddedQuery(CGF.GameObject, CameraComponent, TransformComponent, tickGroup='postHierarchyUpdate')
@@ -253,6 +260,7 @@ class HangarCameraManager(CGF.ComponentManager):
                 pitch = self.__normaliseAngle(orbitComponent.currentPitch + worldPitch) if resetRotation else None
                 distance = orbitComponent.currentDist if resetRotation else None
                 distConstraints = orbitComponent.distLimits
+                self.__setCameraShift(gameObject.findComponentByType(ShiftComponent))
 
             self.moveCamera(targetPos, yaw=yaw, pitch=pitch, distance=distance, duration=duration, distConstraints=distConstraints)
             return
@@ -307,6 +315,32 @@ class HangarCameraManager(CGF.ComponentManager):
             pivotMaxDist = math_utils.clamp(self.__mouseMoveParams.distConstraints[0], self.__mouseMoveParams.distConstraints[1], distance)
         sourceMatrix.setRotateYPR(Math.Vector3(cameraYaw, cameraPitch, 0.0))
         self.__cam.moveTo(targetMatrix, sourceMatrix, pivotMaxDist, duration)
+        return
+
+    def activateCameraFlyby(self, callback=None):
+        if self.__cameraFlyby is not None:
+            self.enableMovementByMouse(False, False)
+            self.__cameraFlyby.activate(self.__onFlybyFinished)
+            self.__flybyCallback = callback
+        else:
+            _logger.warning('Could not start camera fly-by, camera manager is not activated')
+        return
+
+    def deactivateCameraFlyby(self):
+        if self.__cameraFlyby is not None:
+            self.__cameraFlyby.deactivate()
+            if self.__flybyCallback is not None:
+                self.__flybyCallback()
+                self.__flybyCallback = None
+        else:
+            _logger.warning('Could not interact camera fly-by, camera manager is not activated')
+        return
+
+    def __onFlybyFinished(self):
+        self.enableMovementByMouse(True, True)
+        if self.__flybyCallback is not None:
+            self.__flybyCallback()
+            self.__flybyCallback = None
         return
 
     def __startFlight(self, prevMatrix, targetMatrix):
@@ -392,18 +426,7 @@ class HangarCameraManager(CGF.ComponentManager):
         distConstraints = orbitComponent.distLimits
         self.__mouseMoveParams = _MouseMoveParams(cameraComponent.rotationSensitivity, cameraComponent.zoomSensitivity, yawConstraints, pitchConstraints, distConstraints)
         self.__yawCameraFilter = HangarCameraYawFilter(yawConstraints[0], orbitComponent.yawLimits.y - orbitComponent.yawLimits.x, cameraComponent.rotationSensitivity)
-        shiftComponent = gameObject.findComponentByType(ShiftComponent)
-        if shiftComponent:
-            shiftPivotDistances = shiftComponent.shiftPivotDistances
-            shiftPivotLows = shiftComponent.shiftPivotLows
-            movementHalfLifeMultiplier = shiftComponent.pivotHalfTimeMultiplier
-        else:
-            shiftPivotDistances = Math.Vector3(0.0, 0.0, 0.0)
-            shiftPivotLows = Math.Vector3(0.0, 0.0, 0.0)
-            movementHalfLifeMultiplier = 2.0
-        self.__cam.movementHalfLifeMultiplier = movementHalfLifeMultiplier
-        self.__cam.pivotPosition = shiftPivotLows + shiftPivotDistances
-        self.__mouseMoveParams.setPivotShifts(shiftPivotLows, shiftPivotDistances)
+        self.__setCameraShift(gameObject.findComponentByType(ShiftComponent))
         if resetTransform:
             targetPos = parentTransformComponent.worldTransform.translation
             yaw = self.__normaliseAngle(orbitComponent.currentYaw + worldYaw + math.pi)
@@ -469,6 +492,19 @@ class HangarCameraManager(CGF.ComponentManager):
         self.enableMovementByMouse()
         return
 
+    def __setCameraShift(self, shiftComponent):
+        if shiftComponent:
+            shiftPivotDistances = shiftComponent.shiftPivotDistances
+            shiftPivotLows = shiftComponent.shiftPivotLows
+            movementHalfLifeMultiplier = shiftComponent.pivotHalfTimeMultiplier
+        else:
+            shiftPivotDistances = Math.Vector3(0.0, 0.0, 0.0)
+            shiftPivotLows = Math.Vector3(0.0, 0.0, 0.0)
+            movementHalfLifeMultiplier = 2.0
+        self.__cam.movementHalfLifeMultiplier = movementHalfLifeMultiplier
+        self.__cam.pivotPosition = shiftPivotLows + shiftPivotDistances
+        self.__mouseMoveParams.setPivotShifts(shiftPivotLows, shiftPivotDistances)
+
     def __setupFlightParams(self, gameObject, prevCameraName):
         self.__flightParams = _FlightParams()
         if not prevCameraName:
@@ -512,6 +548,8 @@ class HangarCameraManager(CGF.ComponentManager):
             self.__cameraIdle.deactivate()
         if self.__cameraParallax.isActive():
             self.__cameraParallax.deactivate()
+        if self.__cameraFlyby.isActive:
+            self.__cameraFlyby.deactivate()
 
     def __activateDOF(self):
         self.__customizationHelper.setDOFenabled(self.__currentDOFParams.active)

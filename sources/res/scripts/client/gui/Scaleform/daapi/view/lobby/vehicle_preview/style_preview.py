@@ -85,8 +85,6 @@ class VehicleStylePreview(LobbySelectableView, VehicleBasePreviewMeta):
         g_clientUpdateManager.removeObjectCallbacks(self)
         self.__hangarSpace.onSpaceCreate -= self.__onHangarCreateOrRefresh
         self.__heroTanksControl.setInteractive(True)
-        g_currentPreviewVehicle.selectNoVehicle()
-        g_currentPreviewVehicle.resetAppearance()
         g_eventBus.handleEvent(events.LobbySimpleEvent(events.LobbySimpleEvent.VEHICLE_PREVIEW_HIDDEN), scope=EVENT_BUS_SCOPE.LOBBY)
         super(VehicleStylePreview, self)._dispose()
         return

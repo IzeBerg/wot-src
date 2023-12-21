@@ -1059,7 +1059,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/wdr2022/wdr2022_optional_devices)
+				$PARAMS(/wdr2023/wdr2023_optional_devices)
 				<name>seniorityAwardsProducts</name>
 				<type>url</type>
 			</item>
@@ -1127,7 +1127,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/12BPContentPage/
+				/$LANGUAGE_CODE/promocontent/bp-special-chapter-2/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1137,7 +1137,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/12BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/bp-special-chapter-2-Video/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1145,35 +1145,6 @@
 				/$LANGUAGE_CODE/promocontent/specialchapterVideo/
 				<name>extraIntroVideo</name>
 				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>battlePassChaptersOrder</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				<name>default</name>
-				<type>list</type>
-				<value>
-					<item>
-						<type>int</type>
-						<value>1</value>
-					</item>
-					<item>
-						<type>int</type>
-						<value>2</value>
-					</item>
-					<item>
-						<type>int</type>
-						<value>3</value>
-					</item>
-					<item>
-						<type>int</type>
-						<value>4</value>
-					</item>
-				</value>
 			</item>
 		</value>
 	</setting>
@@ -1189,6 +1160,10 @@
 					<item>
 						<type>string</type>
 						<value>styles</value>
+					</item>
+					<item>
+						<type>string</type>
+						<value>rewards</value>
 					</item>
 					<item>
 						<type>string</type>
@@ -1448,7 +1423,7 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
+				 https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode2/ 
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1472,7 +1447,7 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
+				 https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode2Video/ 
 				<name>CT</name>
 				<type>url</type>
 			</item>

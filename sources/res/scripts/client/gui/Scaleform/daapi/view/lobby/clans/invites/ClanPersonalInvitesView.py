@@ -1,6 +1,7 @@
 from gui.clans import formatters
 from gui.clans.clan_helpers import ClanPersonalInvitesPaginator, ClanListener
-from gui.clans.items import ClanCommonData, formatField, isValueAvailable
+from gui.clans.items import ClanCommonData
+from gui.clans.data_wrapper.utils import formatField, isValueAvailable
 from gui.clans.settings import CLAN_INVITE_STATES
 from gui.impl import backport
 from gui.wgcg.settings import WebRequestDataType

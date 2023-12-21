@@ -1,7 +1,9 @@
 import logging
 from functools import partial
-import typing, BigWorld
-from CurrentVehicle import g_currentVehicle
+import BigWorld, typing
+from shared_utils import nextTick
+from ClientSelectableCameraObject import ClientSelectableCameraObject
+from CurrentVehicle import g_currentVehicle, g_currentPreviewVehicle
 from HeroTank import HeroTank
 from PlayerEvents import g_playerEvents
 from account_helpers import AccountSettings
@@ -40,6 +42,7 @@ from gui.prestige.prestige_helpers import hasVehiclePrestige
 from gui.promo.hangar_teaser_widget import TeaserViewer
 from gui.resource_well.resource_well_helpers import isResourceWellRewardVehicle
 from gui.shared import EVENT_BUS_SCOPE, event_dispatcher as shared_events, events
+from gui.shared.event_dispatcher import showFrontlineInfoWindow
 from gui.shared.events import AmmunitionPanelViewEvent, LobbySimpleEvent
 from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.items_cache import CACHE_SYNC_REASON
@@ -47,12 +50,11 @@ from gui.shared.tutorial_helper import getTutorialGlobalStorage
 from gui.shared.utils.functions import makeTooltip
 from gui.sounds.filters import States, StatesGroup
 from helpers import dependency
-from nation_change_helpers.client_nation_change_helper import getChangeNationTooltip
 from helpers.CallbackDelayer import CallbackDelayer
 from helpers.i18n import makeString as _ms
 from helpers.statistics import HANGAR_LOADING_STATE
 from helpers.time_utils import ONE_MINUTE
-from shared_utils import nextTick
+from nation_change_helpers.client_nation_change_helper import getChangeNationTooltip
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.game_control import IWotPlusController, IBattlePassController, IBattleRoyaleController, IBootcampController, IComp7Controller, IEpicBattleMetaGameController, IEventLootBoxesController, IFunRandomController, IIGRController, IMapboxController, IMarathonEventsController, IPromoController, IRankedBattlesController, IHangarGuiController
@@ -64,6 +66,8 @@ from skeletons.gui.shared.utils import IHangarSpace
 from skeletons.helpers.statistics import IStatisticsCollector
 from sound_gui_manager import CommonSoundSpaceSettings
 from tutorial.control.context import GLOBAL_FLAG
+from uilogging.epic_battle.constants import EpicBattleLogKeys, EpicBattleLogActions, EpicBattleLogButtons
+from uilogging.epic_battle.loggers import EpicBattleLogger
 if typing.TYPE_CHECKING:
     from frameworks.wulf import Window
 _logger = logging.getLogger(__name__)
@@ -120,6 +124,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__timer = None
         self.__banTimer = None
         self.__updateDogTagsState()
+        nextTick(ClientSelectableCameraObject.switchCamera)()
         return
 
     @property
@@ -262,6 +267,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self._offersBannerController.showBanners()
         self.__updateCarouselEventEntryState()
         self.fireEvent(events.HangarCustomizationEvent(events.HangarCustomizationEvent.RESET_VEHICLE_MODEL_TRANSFORM), scope=EVENT_BUS_SCOPE.LOBBY)
+        g_currentPreviewVehicle.selectNoVehicle()
         if g_currentVehicle.isPresent():
             g_currentVehicle.refreshModel()
         if self.bootcampController.isInBootcamp():
@@ -421,9 +427,17 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         return
 
     def __updateEpicBattleAlertMsg(self):
-        visible = not self.epicController.isInPrimeTime() and self.epicController.isEnabled()
+
+        def showFLInfoWindow():
+            from frontline.gui.impl.gen.view_models.views.lobby.views.info_page_scroll_to_section import InfoPageScrollToSection
+            EpicBattleLogger().log(EpicBattleLogActions.CLICK, item=EpicBattleLogButtons.INFO_PAGE, parentScreen=EpicBattleLogKeys.HANGAR)
+            showFrontlineInfoWindow(autoscrollSection=InfoPageScrollToSection.BATTLE_SCENARIOS)
+
+        visible = self.epicController.isEnabled()
         data = epic_helpers.getAlertStatusVO()
-        self.__updateAlertBlock(shared_events.showEpicBattlesPrimeTimeWindow, data, visible)
+        callback = showFLInfoWindow if self.epicController.isInPrimeTime() else None
+        self.__updateAlertBlock(shared_events.showEpicBattlesPrimeTimeWindow, data, visible, callback)
+        return
 
     def __updateMapboxAlertMsg(self):
         status, _, _ = self.__mapboxCtrl.getPrimeTimeStatus()
@@ -431,7 +445,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         data = mapbox_helpers.getPrimeTimeStatusVO()
         self.__updateAlertBlock(shared_events.showMapboxPrimeTimeWindow, data, isBlockedStatus)
 
-    def __updateAlertBlock(self, callback, data, visible):
+    def __updateAlertBlock(self, callback, data, visible, blockClickCallback=None):
         visibleComponents, hiddenComponents = [], []
         if visible:
             visibleComponents.append(HANGAR_CONSTS.ALERT_MESSAGE)
@@ -439,7 +453,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
             hiddenComponents.append(HANGAR_CONSTS.ALERT_MESSAGE)
         self.as_updateHangarComponentsS(visibleComponents, hiddenComponents)
         if visible and self.alertMessage is not None:
-            self.alertMessage.update(data.asDict(), onBtnClickCallback=callback)
+            self.alertMessage.update(data.asDict(), onBtnClickCallback=callback, onBlockClickCallback=blockClickCallback)
         return
 
     def __onWaitingShown(self, _):

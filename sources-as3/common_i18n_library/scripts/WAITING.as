@@ -101,6 +101,8 @@ package
       
       public static const CLAIMSENIORITYAWARDS:String = "#waiting:claimSeniorityAwards";
       
+      public static const SELECTSENIORITYAWARDS:String = "#waiting:selectSeniorityAwards";
+      
       public static const TECHMAINTENANCEEQUIPMENTS:String = "#waiting:techMaintenanceEquipments";
       
       public static const TECHMAINTENANCE:String = "#waiting:techMaintenance";
@@ -326,6 +328,8 @@ package
       public static const ACHIVEMENTS20:String = "#waiting:achivements20";
       
       public static const DOWNLOAD_ACHIEVEMENTS20:String = "#waiting:download/achievements20";
+      
+      public static const WOTSHOPPRODUCTPURCHASE:String = "#waiting:wotShopProductPurchase";
        
       
       public function WAITING()

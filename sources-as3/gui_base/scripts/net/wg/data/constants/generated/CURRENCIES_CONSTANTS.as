@@ -23,6 +23,8 @@ package net.wg.data.constants.generated
       
       public static const ERROR:String = "error";
       
+      public static const WDR_COIN:String = "wdrcoin";
+      
       public static const SINGAPORE_ALTERNATIVE_CURRENCIES_SET:Array = [GOLD,CREDITS];
       
       public static const GOLD_COLOR:int = 16761699;
@@ -34,6 +36,8 @@ package net.wg.data.constants.generated
       public static const CRYSTAL_COLOR:int = 13224374;
       
       public static const EVENT_COIN_COLOR:int = 13224374;
+      
+      public static const WDR_COIN_COLOR:int = 13224374;
       
       public static const BPCOIN_COLOR:int = 15327935;
       

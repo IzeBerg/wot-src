@@ -278,6 +278,10 @@ def onStreamComplete(streamID, desc, data):
     return
 
 
+def onLoginToCellFailed():
+    BigWorld.player().onLoginToCellFailed()
+
+
 def onConnected():
     gui_personality.onConnected()
     VOIP.getVOIPManager().onConnected()

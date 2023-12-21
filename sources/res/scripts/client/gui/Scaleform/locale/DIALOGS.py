@@ -128,6 +128,14 @@ class DIALOGS(object):
     BUYCONFIRMATION_MESSAGE = '#dialogs:buyConfirmation/message'
     BUYCONFIRMATION_SUBMIT = '#dialogs:buyConfirmation/submit'
     BUYCONFIRMATION_CANCEL = '#dialogs:buyConfirmation/cancel'
+    FORCOINSOBTAINCONFIRMATION_TITLE = '#dialogs:forCoinsObtainConfirmation/title'
+    FORCOINSOBTAINCONFIRMATION_MESSAGE = '#dialogs:forCoinsObtainConfirmation/message'
+    FORCOINSOBTAINCONFIRMATION_SUBMIT = '#dialogs:forCoinsObtainConfirmation/submit'
+    FORCOINSOBTAINCONFIRMATION_CANCEL = '#dialogs:forCoinsObtainConfirmation/cancel'
+    FREEOBTAINCONFIRMATION_TITLE = '#dialogs:freeObtainConfirmation/title'
+    FREEOBTAINCONFIRMATION_MESSAGE = '#dialogs:freeObtainConfirmation/message'
+    FREEOBTAINCONFIRMATION_SUBMIT = '#dialogs:freeObtainConfirmation/submit'
+    FREEOBTAINCONFIRMATION_CANCEL = '#dialogs:freeObtainConfirmation/cancel'
     XPTOTMENCHECKBOX_TITLE = '#dialogs:xpToTmenCheckbox/title'
     XPTOTMENCHECKBOX_MESSAGE = '#dialogs:xpToTmenCheckbox/message'
     XPTOTMENCHECKBOX_SUBMIT = '#dialogs:xpToTmenCheckbox/submit'
@@ -1071,6 +1079,7 @@ class DIALOGS(object):
     RECRUIT_PRICECARD_GOLD_DESCRIPTION = '#dialogs:recruit/priceCard/gold/description'
     RECRUIT_SUBMIT = '#dialogs:recruit/submit'
     RECRUIT_CANCEL = '#dialogs:recruit/cancel'
+    RECRUIT_VOICEOVERTEXT = '#dialogs:recruit/voiceoverText'
     CREWMEMBERTANKCHANGE_TITLE = '#dialogs:crewMemberTankChange/title'
     CREWMEMBERTANKCHANGE_DESC = '#dialogs:crewMemberTankChange/desc'
     CREWMEMBERTANKCHANGE_TRANSFER = '#dialogs:crewMemberTankChange/transfer'
@@ -1228,6 +1237,14 @@ class DIALOGS(object):
      BUYCONFIRMATION_MESSAGE,
      BUYCONFIRMATION_SUBMIT,
      BUYCONFIRMATION_CANCEL,
+     FORCOINSOBTAINCONFIRMATION_TITLE,
+     FORCOINSOBTAINCONFIRMATION_MESSAGE,
+     FORCOINSOBTAINCONFIRMATION_SUBMIT,
+     FORCOINSOBTAINCONFIRMATION_CANCEL,
+     FREEOBTAINCONFIRMATION_TITLE,
+     FREEOBTAINCONFIRMATION_MESSAGE,
+     FREEOBTAINCONFIRMATION_SUBMIT,
+     FREEOBTAINCONFIRMATION_CANCEL,
      XPTOTMENCHECKBOX_TITLE,
      XPTOTMENCHECKBOX_MESSAGE,
      XPTOTMENCHECKBOX_SUBMIT,
@@ -2171,6 +2188,7 @@ class DIALOGS(object):
      RECRUIT_PRICECARD_GOLD_DESCRIPTION,
      RECRUIT_SUBMIT,
      RECRUIT_CANCEL,
+     RECRUIT_VOICEOVERTEXT,
      CREWMEMBERTANKCHANGE_TITLE,
      CREWMEMBERTANKCHANGE_DESC,
      CREWMEMBERTANKCHANGE_TRANSFER,

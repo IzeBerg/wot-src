@@ -16,6 +16,7 @@ from gifts.gifts_common import ClientReqStrategy, GiftEventID, GiftEventState
 from gui import GUI_SETTINGS, SystemMessages
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
 from gui.SystemMessages import SM_TYPE
+from gui.limited_ui.lui_rules_storage import LuiRuleTypes
 from gui.shared.utils.decorators import ReprInjector
 from helpers import time_utils
 from personal_missions import PM_BRANCH
@@ -411,11 +412,12 @@ _EpicMetaGameConfig.__new__.__defaults__ = (
 
 class EpicGameConfig(namedtuple('EpicGameConfig', ('isEnabled', 'enableWelcomeScreen', 'validVehicleLevels', 'battlePassDataEnabled',
  'levelsToUpgrateAllReserves', 'seasons', 'cycleTimes', 'unlockableInBattleVehLevels',
- 'inBattleModifiers', 'peripheryIDs', 'primeTimes', 'rentVehicles', 'tooltips'))):
+ 'inBattleModifiers', 'peripheryIDs', 'primeTimes', 'rentVehicles', 'tooltips',
+ 'reservesModifiers'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, enableWelcomeScreen=True, validVehicleLevels=[], battlePassDataEnabled=True, levelsToUpgrateAllReserves=[], unlockableInBattleVehLevels=[], inBattleModifiers={}, seasons={}, cycleTimes=(), peripheryIDs={}, primeTimes={}, rentVehicles=[], tooltips={})
+        defaults = dict(isEnabled=False, enableWelcomeScreen=True, validVehicleLevels=[], battlePassDataEnabled=True, levelsToUpgrateAllReserves=[], unlockableInBattleVehLevels=[], inBattleModifiers={}, seasons={}, cycleTimes=(), peripheryIDs={}, primeTimes={}, rentVehicles=[], tooltips={}, reservesModifiers=[])
         defaults.update(kwargs)
         return super(EpicGameConfig, cls).__new__(cls, **defaults)
 
@@ -602,6 +604,8 @@ class SeniorityAwardsConfig(typing.NamedTuple('SeniorityAwardsConfig', (
  (
   'enabled', bool),
  (
+  'active', bool),
+ (
   'endTime', int),
  (
   'reminders', list),
@@ -612,15 +616,23 @@ class SeniorityAwardsConfig(typing.NamedTuple('SeniorityAwardsConfig', (
  (
   'receivedRewardsToken', str),
  (
+  'claimVehicleRewardTokenPattern', str),
+ (
   'rewardEligibilityToken', str),
  (
   'claimRewardToken', str),
  (
-  'rewardQuestsPrefix', str)))):
+  'vehicleSelectionTokenPattern', str),
+ (
+  'rewardQuestsPrefix', str),
+ (
+  'categories', dict),
+ (
+  'vehicleSelectionQuestPattern', str)))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(enabled=False, endTime=0, reminders=[], clockOnNotification=0, showRewardNotification=False, receivedRewardsToken='', rewardEligibilityToken='', claimRewardToken='', rewardQuestsPrefix='')
+        defaults = dict(enabled=False, active=False, endTime=0, reminders=[], clockOnNotification=0, showRewardNotification=False, receivedRewardsToken='', rewardEligibilityToken='', claimRewardToken='', claimVehicleRewardTokenPattern='', vehicleSelectionTokenPattern='', rewardQuestsPrefix='', categories={}, vehicleSelectionQuestPattern='')
         defaults.update(kwargs)
         return super(SeniorityAwardsConfig, cls).__new__(cls, **defaults)
 
@@ -1023,6 +1035,7 @@ class _Comp7QualificationConfig(settingsBlock('_Comp7QualificationConfig', ('bat
 
 class Comp7Config(settingsBlock('Comp7Config', (
  'isEnabled',
+ 'isShopEnabled',
  'peripheryIDs',
  'primeTimes',
  'seasons',
@@ -1041,7 +1054,7 @@ class Comp7Config(settingsBlock('Comp7Config', (
 
     @classmethod
     def defaults(cls):
-        return dict(isEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False, qualification=makeTupleByDict(_Comp7QualificationConfig, {}))
+        return dict(isEnabled=False, isShopEnabled=False, peripheryIDs={}, primeTimes={}, seasons={}, battleModifiersDescr=(), cycleTimes={}, roleEquipments={}, numPlayers=7, levels=[], forbiddenClassTags=set(), forbiddenVehTypes=set(), squadRatingRestriction={}, squadSizes=[], createVivoxTeamChannels=False, qualification=makeTupleByDict(_Comp7QualificationConfig, {}))
 
     @classmethod
     def _preprocessData(cls, data):
@@ -1195,12 +1208,12 @@ class _LimitedUIConfig(namedtuple('_LimitedUIConfig', ('enabled', 'rules', 'vers
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(enabled=False, rules=[], version=0)
+        defaults = dict(enabled=False, rules={ruleType:[] for ruleType in LuiRuleTypes.ALL()}, version=0)
         defaults.update(kwargs)
         return super(_LimitedUIConfig, cls).__new__(cls, **defaults)
 
     def hasRules(self):
-        return bool(self.rules)
+        return any(self.rules.values())
 
     def asDict(self):
         return self._asdict()
@@ -1427,17 +1440,17 @@ class ServerSettings(object):
             LOG_DEBUG(Configs.COMP7_CONFIG.value, self.__serverSettings[Configs.COMP7_CONFIG.value])
             self.__comp7Config = makeTupleByDict(Comp7Config, self.__serverSettings[Configs.COMP7_CONFIG.value])
         else:
-            self.__comp7Config = Comp7Config.defaults()
+            self.__comp7Config = Comp7Config()
         if Configs.COMP7_RANKS_CONFIG.value in self.__serverSettings:
             LOG_DEBUG(Configs.COMP7_RANKS_CONFIG.value, self.__serverSettings[Configs.COMP7_RANKS_CONFIG.value])
             self.__comp7RanksConfig = makeTupleByDict(Comp7RanksConfig, self.__serverSettings[Configs.COMP7_RANKS_CONFIG.value])
         else:
-            self.__comp7RanksConfig = Comp7RanksConfig.defaults()
+            self.__comp7RanksConfig = Comp7RanksConfig()
         if Configs.COMP7_REWARDS_CONFIG.value in self.__serverSettings:
             LOG_DEBUG(Configs.COMP7_REWARDS_CONFIG.value, self.__serverSettings[Configs.COMP7_REWARDS_CONFIG.value])
             self.__comp7RewardsConfig = makeTupleByDict(Comp7RewardsConfig, self.__serverSettings[Configs.COMP7_REWARDS_CONFIG.value])
         else:
-            self.__comp7RewardsConfig = Comp7RewardsConfig.defaults()
+            self.__comp7RewardsConfig = Comp7RewardsConfig()
         if Configs.PERSONAL_RESERVES_CONFIG.value in self.__serverSettings:
             self.__personalReservesConfig = makeTupleByDict(PersonalReservesConfig, self.__serverSettings[Configs.PERSONAL_RESERVES_CONFIG.value])
         else:
@@ -1502,6 +1515,10 @@ class ServerSettings(object):
         if 'epic_config' in serverSettingsDiff:
             self.__updateEpic(serverSettingsDiff)
             self.__serverSettings['epic_config'] = serverSettingsDiff['epic_config']
+        if 'epicMetaGame' in serverSettingsDiff:
+            self.__updateEpic(serverSettingsDiff)
+            epicSettings = self.__serverSettings.setdefault('epic_config', {})
+            epicSettings['epicMetaGame'] = serverSettingsDiff['epicMetaGame']
         if Configs.BATTLE_ROYALE_CONFIG.value in serverSettingsDiff:
             self.__updateBattleRoyale(serverSettingsDiff)
         if Configs.MAPBOX_CONFIG.value in serverSettingsDiff:

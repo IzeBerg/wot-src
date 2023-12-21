@@ -1,3 +1,4 @@
+from functools import wraps
 from client_request_lib.data_sources.staging import StagingDataAccessor
 from client_request_lib.data_sources.fake import FakeDataAccessor
 from client_request_lib.data_sources.gateway import GatewayDataAccessor
@@ -37,6 +38,7 @@ def _in_bigworld(func):
 
 def bigworld_callback_wrapper(func):
 
+    @wraps(func)
     def wrapped(*args, **kwargs):
         new_args = [ _in_bigworld(arg) for arg in args ]
         new_kwargs = {k:_in_bigworld(v) for k, v in kwargs.items()}
@@ -386,6 +388,15 @@ class UILoggingAccessor(BaseAccessor):
         return self._data_source.get_uilogging_session(callback)
 
 
+class WotShopAccessor(BaseAccessor):
+
+    def get_storefront_products(self, callback, storefront):
+        return self._data_source.get_storefront_products(callback, storefront)
+
+    def buy_storefront_product(self, callback, ctx):
+        return self._data_source.buy_storefront_product(callback, ctx)
+
+
 class Requester(object):
     available_data_sources = {'stagings': StagingDataAccessor, 
        'fake': FakeDataAccessor, 
@@ -407,6 +418,7 @@ class Requester(object):
     mapbox = RequestDescriptor(MapboxAccessor)
     gifts = RequestDescriptor(GiftSystemAccessor)
     uilogging = RequestDescriptor(UILoggingAccessor)
+    wot_shop = RequestDescriptor(WotShopAccessor)
 
     @classmethod
     def create_requester(cls, url_fetcher, config, client_lang=None, user_agent=None):

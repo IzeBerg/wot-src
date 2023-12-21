@@ -1641,6 +1641,10 @@ package
       
       public static const SENIORITY_AWARDS_CLAIM_REWARD_FAILED:String = "#system_messages:seniority_awards/claim_reward_failed";
       
+      public static const SENIORITY_AWARDS_SELECTION_MULTIPLE_TOKENS:String = "#system_messages:seniority_awards/selection_multiple_tokens";
+      
+      public static const SENIORITY_AWARDS_SELECTION_TIMEOUT:String = "#system_messages:seniority_awards/selection_timeout";
+      
       public static const PERSONALMISSIONS_SELECT_SUCCESS:String = "#system_messages:personalMissions/select/success";
       
       public static const PERSONALMISSIONS_SELECT_SERVER_ERROR:String = "#system_messages:personalMissions/select/server_error";
@@ -2541,6 +2545,20 @@ package
       
       public static const BATTLEPASS_ACTIVATECHAPTER_SUCCESS:String = "#system_messages:battlePass/activateChapter/success";
       
+      public static const BATTLEPASSH_SWITCH_STARTED_TITLE:String = "#system_messages:battlePassH/switch_started/title";
+      
+      public static const BATTLEPASSH_SWITCH_STARTED_BODY:String = "#system_messages:battlePassH/switch_started/body";
+      
+      public static const BATTLEPASSH_SWITCH_DISABLE_TITLE:String = "#system_messages:battlePassH/switch_disable/title";
+      
+      public static const BATTLEPASSH_SWITCH_DISABLE_BODY:String = "#system_messages:battlePassH/switch_disable/body";
+      
+      public static const BATTLEPASSH_SWITCH_ENABLED_BODY:String = "#system_messages:battlePassH/switch_enabled/body";
+      
+      public static const BATTLEPASSH_GAMEMODEENABLED_HEADER:String = "#system_messages:battlePassH/gameModeEnabled/header";
+      
+      public static const BATTLEPASSH_SEASONEND_TEXT:String = "#system_messages:battlePassH/seasonEnd/text";
+      
       public static const COLLECTORVEHICLE_SWITCH_OFF_TITLE:String = "#system_messages:collectorVehicle/switch_off/title";
       
       public static const COLLECTORVEHICLE_SWITCH_OFF_BODY:String = "#system_messages:collectorVehicle/switch_off/body";
@@ -2712,6 +2730,10 @@ package
       public static const LIMITEDUI_SWITCHON:String = "#system_messages:limitedUI/switchOn";
       
       public static const LIMITEDUI_SWITCHOFF:String = "#system_messages:limitedUI/switchOff";
+      
+      public static const SENIORITYAWARDS_SWITCH_PAUSE_ON_BODY:String = "#system_messages:seniorityAwards/switch_pause_on/body";
+      
+      public static const SENIORITYAWARDS_SWITCH_PAUSE_OFF_BODY:String = "#system_messages:seniorityAwards/switch_pause_off/body";
        
       
       public function SYSTEM_MESSAGES()

@@ -56,6 +56,8 @@ class IntSettingsRequester(object):
        'CAROUSEL_FILTER_1': 73, 
        'CAROUSEL_FILTER_2': 74, 
        'UNIT_FILTER': 77, 
+       'LIMITED_UI_PERMANENT_1': 78, 
+       'LIMITED_UI_PERMANENT_2': 79, 
        'RANKED_CAROUSEL_FILTER_1': 80, 
        'RANKED_CAROUSEL_FILTER_2': 81, 
        'FEEDBACK_DAMAGE_INDICATOR': 82, 
@@ -82,7 +84,8 @@ class IntSettingsRequester(object):
        FUN_RANDOM_CAROUSEL_FILTER_2: 108, 
        'UI_STORAGE_2': constants.USER_SERVER_SETTINGS.UI_STORAGE_2, 
        COMP7_CAROUSEL_FILTER_1: 110, 
-       COMP7_CAROUSEL_FILTER_2: 111}
+       COMP7_CAROUSEL_FILTER_2: 111, 
+       'SENIORITY_AWARDS_STORAGE': constants.USER_SERVER_SETTINGS.SENIORITY_AWARDS}
 
     def __init__(self):
         self.__isSynced = False

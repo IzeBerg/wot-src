@@ -143,8 +143,8 @@ class EpicBattlePlayerDataComponent(PlayerDataComponent):
             try:
                 return timesToAdd[(idInPlayerGroup - 1)]
             except (TypeError, IndexError, KeyError):
-                LOG_CURRENT_EXCEPTION([
-                 ("Failed to get 'gameTimeToAddPerCapture' from arena sector sync data for zone '{}'!").format(idInPlayerGroup), timesToAdd])
+                LOG_CURRENT_EXCEPTION(tags=(
+                 ("Failed to get 'gameTimeToAddPerCapture' from arena sector sync data for zone '{}'!").format(idInPlayerGroup), timesToAdd))
 
         return 0.0
 

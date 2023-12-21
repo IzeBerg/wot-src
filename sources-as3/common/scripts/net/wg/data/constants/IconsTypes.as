@@ -15,6 +15,8 @@ package net.wg.data.constants
       
       public static const GOLD_BIG:String = ICON_TEXT_FRAMES.GOLD_BIG;
       
+      public static const WDR_COIN:String = ICON_TEXT_FRAMES.WDR_COIN;
+      
       public static const GOLD_DISCOUNT:String = ICON_TEXT_FRAMES.GOLD_DISCOUNT;
       
       public static const XP:String = ICON_TEXT_FRAMES.XP;
@@ -74,6 +76,8 @@ package net.wg.data.constants
       public static const EQUIP_COIN_COLOR:int = 13224374;
       
       public static const MONEY_COLOR:int = 13347959;
+      
+      public static const WDR_COIN_COLOR:int = 13224374;
       
       public static const ALLOW_ICONS:Array = [EMPTY,CREDITS,GOLD,GOLD_DISCOUNT,XP,ELITE_XP,ELITE,ARROW_DOWN,ARROW_UP,ARROW_DOWN_DISABLED,ELITE_TANK_XP,FREE_XP,TANK_DAILYXPFACTOR,TANK_UNLOCK_PRICE,DOUBLE_XP_FACTOR,ACTION_XP_FACTOR,CLASS1,CLASS2,CLASS3,CLASS4,XP_PRICE,DEFRES,RENTALS,REWARD_SHEET,CRYSTAL,EQUIP_COIN];
        

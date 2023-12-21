@@ -142,6 +142,14 @@ class SettingsCore(ISettingsCore):
           GAME.SHOW_DAMAGE_ICON,
           options.ShowDamageIconSetting(GAME.SHOW_DAMAGE_ICON, storage=GAME_SETTINGS_STORAGE)),
          (
+          GAME.MINIMAP_SIZE, options.MinimapSizeSetting(GAME.MINIMAP_SIZE, GAME.MINIMAP_SIZE)),
+         (
+          GAME.TRAINING_MINIMAP_SIZE,
+          options.MinimapSizeSetting(GAME.TRAINING_MINIMAP_SIZE, GAME.TRAINING_MINIMAP_SIZE)),
+         (
+          GAME.COMP7_MINIMAP_SIZE,
+          options.AccountDumpSetting(GAME.COMP7_MINIMAP_SIZE, GAME.COMP7_MINIMAP_SIZE)),
+         (
           GAME.MINIMAP_ALPHA,
           options.StorageAccountSetting(GAME.MINIMAP_ALPHA, storage=GAME_SETTINGS_STORAGE)),
          (
@@ -167,6 +175,9 @@ class SettingsCore(ISettingsCore):
          (
           GAME.SHOW_DOGTAG_TO_KILLER,
           options.DogtagsSetting(GAME.SHOW_DOGTAG_TO_KILLER, storage=DOG_TAGS_SETTINGS_STORAGE)),
+         (
+          GAME.SHOW_KILLERS_DOGTAG,
+          options.DogtagsSetting(GAME.SHOW_KILLERS_DOGTAG, storage=DOG_TAGS_SETTINGS_STORAGE)),
          (
           GAME.DYNAMIC_CAMERA,
           options.DynamicCamera(GAME.DYNAMIC_CAMERA, storage=GAME_SETTINGS_STORAGE)),
@@ -229,7 +240,7 @@ class SettingsCore(ISettingsCore):
           options.AccountDumpSetting(GAME.PLAYERS_PANELS_SHOW_TYPES, 'players_panel', 'showTypes')),
          (
           GAME.PLAYERS_PANELS_STATE,
-          options.AccountDumpSetting(GAME.PLAYERS_PANELS_STATE, 'players_panel', 'state')),
+          options.PlayersPanelStateSetting(GAME.PLAYERS_PANELS_STATE, 'players_panel', 'state')),
          (
           GAME.EPIC_RANDOM_PLAYERS_PANELS_STATE,
           options.AccountDumpSetting(GAME.EPIC_RANDOM_PLAYERS_PANELS_STATE, 'epic_random_players_panel', 'state')),

@@ -823,6 +823,7 @@ class Configs(enum.Enum):
     TRIGGER_SYSTEM_CONFIG = 'trigger_system_config'
     PRESTIGE_CONFIG = 'prestige_config'
     STEAM_SHADE_CONFIG = 'steam_shade_config'
+    SYSTEM_CHANNELS = 'system_channels'
 
 
 INBATTLE_CONFIGS = [
@@ -832,6 +833,7 @@ INBATTLE_CONFIGS = [
  'epic_config',
  'vehicle_post_progression_config',
  Configs.COMP7_CONFIG.value,
+ Configs.COMP7_RANKS_CONFIG.value,
  Configs.FUN_RANDOM_CONFIG.value]
 
 class RESTRICTION_TYPE:
@@ -1870,9 +1872,10 @@ class USER_SERVER_SETTINGS:
     SESSION_STATS = 96
     CONTOUR = 106
     UI_STORAGE_2 = 109
+    SENIORITY_AWARDS = 113
     _ALL = (
      HIDE_MARKS_ON_GUN, EULA_VERSION, GAME_EXTENDED, BATTLE_MATTERS_QUESTS, SESSION_STATS, DOG_TAGS,
-     GAME_EXTENDED_2, BATTLE_HUD, CONTOUR, UI_STORAGE_2, BATTLE_EVENTS)
+     GAME_EXTENDED_2, BATTLE_HUD, CONTOUR, UI_STORAGE_2, BATTLE_EVENTS, SENIORITY_AWARDS)
 
     @classmethod
     def isBattleInvitesForbidden(cls, settings):
@@ -1993,7 +1996,8 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    108: 'Fun Random carousel filter 2', 
    USER_SERVER_SETTINGS.UI_STORAGE_2: 'ui storage 2, used for preserving first entry flags etc', 
    110: 'Competitive7x7 carousel filter 1', 
-   111: 'Competitive7x7 carousel filter 2'}
+   111: 'Competitive7x7 carousel filter 2', 
+   USER_SERVER_SETTINGS.SENIORITY_AWARDS: 'seniority awards settings'}
 
 class WG_GAMES:
     TANKS = 'wot'
@@ -2024,6 +2028,8 @@ class TOKEN_TYPE:
        WOTB: 'REQUEST_TOKEN', 
        WGNI_JWT: 'REQUEST_TOKEN'}
 
+
+AUTH_TOKEN_REQUEST_TIMEOUT = 35.0
 
 class NC_MESSAGE_TYPE:
     INFO = 1
@@ -2063,6 +2069,7 @@ class WIN_XP_FACTOR_MODE:
 
 
 OBSERVER_VEH_INVENTORY_ID = -5000
+OBSERVER_VEH_NAME = 'ussr:Observer'
 
 class PREBATTLE_INVITE_STATUS:
     OK = 0
@@ -2971,6 +2978,7 @@ class UpgradeProhibitionReason(object):
     DROWNING = 2
     OVERTURNED = 3
     SETTLING = 4
+    NOT_DROWN = 5
 
 
 class AreaTriggerActionType(enum.IntEnum):

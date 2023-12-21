@@ -23,5 +23,7 @@ package net.wg.infrastructure.base.meta
       function as_actionIGRDaysLeft(param1:Boolean, param2:String) : void;
       
       function as_setNavigationEnabled(param1:Boolean) : void;
+      
+      function as_setModuleUpdateAvailable(param1:String) : void;
    }
 }

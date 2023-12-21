@@ -1489,6 +1489,8 @@ package
       
       public static const HANGAR_UNLOCKBUTTON_BODY:String = "#tooltips:hangar/unlockButton/body";
       
+      public static const HANGAR_UNLOCKBUTTON_FOOTER:String = "#tooltips:hangar/unlockButton/footer";
+      
       public static const HANGAR_MAINTENANCE_HEADER:String = "#tooltips:hangar/maintenance/header";
       
       public static const HANGAR_MAINTENANCE_BODY:String = "#tooltips:hangar/maintenance/body";
@@ -7062,6 +7064,32 @@ package
       public static const NOTRECRUITEDTANKMAN_NY23_GIRL_4_LABEL:String = "#tooltips:notrecruitedtankman/ny23_girl_4/label";
       
       public static const NOTRECRUITEDTANKMAN_NY23_GIRL_4_DESC:String = "#tooltips:notrecruitedtankman/ny23_girl_4/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24DEFAULTGIRL_LABEL:String = "#tooltips:notrecruitedtankman/ny24defaultGirl/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24DEFAULTGIRL_DESC:String = "#tooltips:notrecruitedtankman/ny24defaultGirl/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24DEFAULTGIRL_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/ny24defaultGirl/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_MEN_LABEL:String = "#tooltips:notrecruitedtankman/ny24_men/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_MEN_DESC:String = "#tooltips:notrecruitedtankman/ny24_men/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_1_LABEL:String = "#tooltips:notrecruitedtankman/ny24_girl_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_1_DESC:String = "#tooltips:notrecruitedtankman/ny24_girl_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_2_LABEL:String = "#tooltips:notrecruitedtankman/ny24_girl_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_2_DESC:String = "#tooltips:notrecruitedtankman/ny24_girl_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_3_LABEL:String = "#tooltips:notrecruitedtankman/ny24_girl_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_3_DESC:String = "#tooltips:notrecruitedtankman/ny24_girl_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_4_LABEL:String = "#tooltips:notrecruitedtankman/ny24_girl_4/label";
+      
+      public static const NOTRECRUITEDTANKMAN_NY24_GIRL_4_DESC:String = "#tooltips:notrecruitedtankman/ny24_girl_4/desc";
       
       public static const ADDITIONALREWARDS_LEVELHEADER:String = "#tooltips:additionalRewards/levelHeader";
       

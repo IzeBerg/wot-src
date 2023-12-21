@@ -23,6 +23,16 @@ class MonitorSettings(object):
         return self.__suitableVideoModes[self.activeMonitor]
 
     @property
+    def screenResolution(self):
+        windowMode = BigWorld.getWindowMode()
+        resolutionContainer = self.currentWindowSize
+        if windowMode == BigWorld.WindowModeExclusiveFullscreen:
+            resolutionContainer = self.currentVideoMode
+        elif windowMode == BigWorld.WindowModeBorderless:
+            resolutionContainer = self.currentBorderlessSize
+        return resolutionContainer
+
+    @property
     def currentBorderlessSize(self):
         if self.windowMode == BigWorld.WindowModeBorderless:
             return BorderlessSize(*map(int, BigWorld.getBorderlessParameters()))

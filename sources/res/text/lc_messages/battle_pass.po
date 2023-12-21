@@ -28,7 +28,7 @@ msgstr "Поздравляем! Вы собрали все элементы ко
 msgid "awardsWidget/description/commander"
 msgstr ""
 "Нажмите, чтобы увидеть и прослушать голоса всех членов экипажа, которых "
-"можно получить или купить в рамках события."
+"можно заработать или купить в рамках события."
 
 msgid "awardsWidget/description/point"
 msgstr ""
@@ -377,6 +377,9 @@ msgstr "Боевой пропуск"
 msgid "chapter/fullName/1"
 msgstr "Снова в туман"
 
+msgid "chapter/fullName/10021"
+msgstr "Песнь о зубре"
+
 msgid "chapter/fullName/121"
 msgstr "На лезвии ножа"
 
@@ -385,9 +388,6 @@ msgstr "Полёт ласточки"
 
 msgid "chapter/fullName/123"
 msgstr "Миражи"
-
-msgid "chapter/fullName/124"
-msgstr "Песнь о зубре"
 
 msgid "chapter/fullName/2"
 msgstr "Работа для героев"
@@ -401,6 +401,9 @@ msgstr "Новая глава"
 msgid "chapter/fullName/74"
 msgstr "Новая глава"
 
+msgid "chapter/fullNameUppercased/10021"
+msgstr "ПЕСНЬ О ЗУБРЕ"
+
 msgid "chapter/fullNameUppercased/121"
 msgstr "НА ЛЕЗВИИ НОЖА"
 
@@ -409,9 +412,6 @@ msgstr "ПОЛЁТ ЛАСТОЧКИ"
 
 msgid "chapter/fullNameUppercased/123"
 msgstr "МИРАЖИ"
-
-msgid "chapter/fullNameUppercased/124"
-msgstr "ПЕСНЬ О ЗУБРЕ"
 
 msgid "chapter/fullNameUppercased/74"
 msgstr "НОВАЯ ГЛАВА"
@@ -664,8 +664,8 @@ msgid "howToEarnPoints/description"
 msgstr ""
 "Очки Боевого пропуска нужны для последовательного прохождения этапов. Их "
 "можно заработать в Случайных боях и большинстве других режимов, которые "
-"активны во время Боевого пропуска, за выполнение боевых и ежедневных задач, "
-"а также единоразово за достижение лимита очков на конкретной машине."
+"активны во время события, за выполнение боевых и ежедневных задач, а также "
+"единоразово за достижение лимита очков на конкретной машине."
 
 msgid "howToEarnPoints/lose/1"
 msgstr "Поражение/Ничья"
@@ -742,26 +742,32 @@ msgstr "О БОЕВОМ ПРОПУСКЕ"
 msgid "intro/button"
 msgstr "Так точно!"
 
+msgid "intro/rewards/text"
+msgstr ""
+"В качестве награды вы сможете получить уникальные элементы внешнего вида, "
+"членов экипажа с озвучкой и многое другое."
+
+msgid "intro/rewards/title"
+msgstr "НОВЫЕ НАГРАДЫ"
+
 msgid "intro/seasonDescription/text"
 msgstr ""
-"XII сезон посвящён предыстории события «Мирный-13». Вас ждёт множество "
-"тематических наград и элементов внешнего вида. Собирая коллекцию, вы сможете"
-" узнать, что послужило причиной для начала событий в Мирном-13, и раскрыть "
-"секреты загадочной Надежды."
+"Этот Боевой пропуск состоит только из одной главы. Это короткое, но яркое "
+"приключение — получите всё, что мы для вас приготовили!"
 
 msgid "intro/seasonDescription/title"
-msgstr "ТЕМАТИЧЕСКИЙ СЕЗОН"
+msgstr "ОСОБЫЙ СЕЗОН"
 
 msgid "intro/styles/text"
 msgstr ""
-"В двенадцатом сезоне Боевого пропуска представлены три стиля для ключевой "
-"техники: M-V-Y, Jagdpanzer&nbsp;E&nbsp;100 и Объект&nbsp;140."
+"Этот Боевой пропуск состоит только из одной главы. Это короткое, но яркое "
+"приключение — получите всё, что мы для вас приготовили!"
 
 msgid "intro/styles/title"
-msgstr "НОВЫЕ ПРОГРЕССИОННЫЕ СТИЛИ"
+msgstr "МИНИ-СЕЗОН"
 
 msgid "intro/title"
-msgstr "БОЕВОЙ ПРОПУСК 2023"
+msgstr "ПЕСНЬ О ЗУБРЕ"
 
 msgid "offSeason/alertTooltip"
 msgstr "Результаты голосования временно недоступны. Попробуйте зайти позже."
@@ -813,6 +819,49 @@ msgstr "%(vehicle): %(bonus) за попадание в %(top) по опыту."
 
 msgid "points/topCount"
 msgstr "топ-%(top)s"
+
+msgid "postProgression/buyState/buyButton"
+msgstr "Купить Улучшенный пропуск"
+
+msgid "postProgression/buyState/description"
+msgstr ""
+"Купив Улучшенный пропуск, вы мгновенно получите премиум танк с уникальным "
+"3D-стилем и все награды из улучшенной линейки."
+
+msgid "postProgression/buyState/moreRewards"
+msgstr "Ещё наград: %(count)s"
+
+msgid "postProgression/buyState/title"
+msgstr "Получите награды Улучшенного пропуска"
+
+msgid "postProgression/chapter"
+msgstr "«%(chapterName)s»"
+
+msgid "postProgression/completed"
+msgstr "ГЛАВА ПРОЙДЕНА"
+
+msgid "postProgression/finalState/button"
+msgstr "Посмотреть танк в Ангаре"
+
+msgid "postProgression/finalState/label"
+msgstr "Все награды события получены"
+
+msgid "postProgression/selectableRewardsState/button"
+msgstr "Забрать награды"
+
+msgid "postProgression/selectableRewardsState/label"
+msgstr "У вас ещё есть награды на выбор"
+
+msgid "postProgression/tankmenState/description"
+msgstr ""
+"В рамках текущего события в Магазине доступны наборы с уникальными членами "
+"экипажа."
+
+msgid "postProgression/tankmenState/tankmenButton"
+msgstr "Прослушать членов экипажа"
+
+msgid "postProgression/tankmenState/title"
+msgstr "Соберите всех членов экипажа!"
 
 msgid "prestige/top"
 msgstr "%(vehicle): %(bonus) за попадание в %(top) по очкам престижа."
@@ -934,7 +983,7 @@ msgid "progression/extraChapterWidget/commander"
 msgstr "Член экипажа с озвучкой"
 
 msgid "progression/extraChapterWidget/commanderVoices"
-msgstr "Прослушать всех"
+msgstr "К остальным"
 
 msgid "progression/extraChapterWidget/labelWithBP"
 msgstr "С Улучшенным пропуском"
@@ -956,6 +1005,9 @@ msgstr "Премиум техника"
 
 msgid "progression/extraChapterWidget/tankName"
 msgstr "%(vehicleName)s"
+
+msgid "progression/extraChapterWidget/timer"
+msgstr "Осталось времени до окончания главы Боевого пропуска"
 
 msgid "progression/extraChapterWidget/tooltip"
 msgstr "Нажмите, чтобы прослушать голос члена экипажа."
@@ -1007,11 +1059,11 @@ msgstr "ГЛАВЕ {chapter}"
 msgid "progression/progressionChapterGoTo"
 msgstr "ПЕРЕЙТИ К"
 
-msgid "progression/season/end/extra"
-msgstr "Событие завершится %(endDay)s %(endMonth)s в %(endTime)s"
-
 msgid "progression/season/end/normal"
 msgstr "Сезон %(seasonNum)s продлится до %(endDay)s %(endMonth)s"
+
+msgid "progression/season/end/special"
+msgstr "Продлится до %(endDay)s %(endMonth)s %(endTime)s"
 
 msgid "progression/seasonEndingDescr"
 msgstr "До окончания сезона осталось "
@@ -1118,6 +1170,12 @@ msgstr "БОЕВОЙ ПРОПУСК. ГЛАВА «%(chapter)s»"
 msgid "rewardChoice/titleChapterLevel"
 msgstr "БОЕВОЙ ПРОПУСК. ГЛАВА «%(chapter)s», ЭТАП %(level)s"
 
+msgid "season/fullName/1002"
+msgstr "Песнь о зубре"
+
+msgid "season/fullNameUppercased/1002"
+msgstr "ПЕСНЬ О ЗУБРЕ"
+
 msgid "selectBonus/blueprint_gift"
 msgstr "Фрагменты чертежей на выбор"
 
@@ -1206,7 +1264,7 @@ msgid "tankmenVoiceover/subtitle"
 msgstr "ГЛАВА «ПЕСНЬ О ЗУБРЕ»"
 
 msgid "tankmenVoiceover/title"
-msgstr "ЧЛЕНЫ ЭКИПАЖА С ОЗВУЧКОЙ"
+msgstr "УНИКАЛЬНЫЕ ЧЛЕНЫ ЭКИПАЖА"
 
 msgid "tankmenVoiceover/unavailable"
 msgstr "Недоступен"
@@ -1319,11 +1377,17 @@ msgstr ""
 "Теперь вы можете использовать накопленные очки Боевого пропуска в разделе "
 "«Товары за очки» внутриигрового Магазина."
 
+msgid "tooltips/completed/oneChapterSubTitle"
+msgstr "ГЛАВА ПРОЙДЕНА"
+
 msgid "tooltips/completed/rewardsObtained"
 msgstr "Основные награды получены"
 
 msgid "tooltips/completed/subTitle"
 msgstr "ВСЕ ГЛАВЫ ПРОЙДЕНЫ"
+
+msgid "tooltips/completed/tankmenNotRecieved"
+msgstr "В Магазине доступны наборы, содержащие уникальных членов экипажа."
 
 msgid "tooltips/completed/title"
 msgstr "Боевой пропуск"

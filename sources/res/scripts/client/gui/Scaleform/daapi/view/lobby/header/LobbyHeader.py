@@ -57,7 +57,7 @@ from gui.server_events.events_helpers import isDailyQuest
 from gui.shared import event_dispatcher as shared_events, events, g_eventBus
 from gui.clans.clan_cache import g_clanCache
 from gui.shared.event_bus import EVENT_BUS_SCOPE
-from gui.shared.event_dispatcher import hideWebBrowserOverlay, showActiveTestConfirmDialog, showModeSelectorWindow, showShop, showStorage, showSubscriptionsPage, showWotPlusIntroView, showBarracks
+from gui.shared.event_dispatcher import hideWebBrowserOverlay, showActiveTestConfirmDialog, showModeSelectorWindow, showShop, showStorage, showSubscriptionsPage, showWotPlusIntroView, showBarracks, showHangar
 from gui.shared.events import FullscreenModeSelectorEvent, PlatoonDropdownEvent
 from gui.shared.formatters import text_styles
 from gui.shared.formatters.currency import getBWFormatter
@@ -309,7 +309,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
     _wotPlusCtrl = dependency.descriptor(IWotPlusController)
     __winbackController = dependency.descriptor(IWinbackController)
     __achievements20Controller = dependency.descriptor(IAchievements20Controller)
-    __limitedUIController = dependency.descriptor(ILimitedUIController)
+    __limitedUICtrl = dependency.descriptor(ILimitedUIController)
     __SELECTOR_TOOLTIP_TYPE = TOOLTIPS.HEADER_BATTLETYPE
 
     def __init__(self):
@@ -324,6 +324,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__menuVisibilityHelper = _LobbyHeaderVisibilityHelper()
         self._pr20UILogger = PersonalReservesActivationScreenFlowLogger()
         self._wotPlusUILogger = WotPlusHeaderLogger()
+        self.__luiRulesUpdaters = self.__getLuiRulesUpdaters()
         return
 
     @property
@@ -382,9 +383,12 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         else:
             self.as_doDeselectHeaderButtonS(alias)
 
+    @adisp_process
     def onReservesClick(self):
-        self._pr20UILogger.logOpenFromWidgetClick()
-        shared_events.showPersonalReservesPage()
+        navigationPossible = yield self.lobbyContext.isHeaderNavigationPossible()
+        if navigationPossible:
+            self._pr20UILogger.logOpenFromWidgetClick()
+            shared_events.showPersonalReservesPage()
 
     def onCrystalClick(self):
         shared_events.showCrystalWindow()
@@ -518,7 +522,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
                 buttonsToExclude.append(self.BUTTONS.PREMSHOP)
             if not self._canShowWotPlus():
                 buttonsToExclude.append(self.BUTTONS.WOT_PLUS)
-            if not self.__limitedUIController.isRuleCompleted(LuiRules.PR_HANGAR_BUTTON):
+            if not self.__limitedUICtrl.isRuleCompleted(LuiRules.PR_HANGAR_BUTTON):
                 buttonsToExclude.append(self.BUTTONS.PERSONAL_RESERVES_WIDGET)
             self.as_setHeaderButtonsS(self._getAvailableButtons(buttonsToExclude))
             return
@@ -552,6 +556,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.__viewLifecycleWatcher.stop()
         self._removeListeners()
         self.__clearMenuVisibiliby()
+        self.__luiRulesUpdaters.clear()
         super(LobbyHeader, self)._dispose()
 
     def _canShowWotPlus(self):
@@ -670,10 +675,23 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             self._addWGNPListeners()
         self.addListener(events.Comp7Event.OPEN_META, self.__onComp7MetaOpened, scope=EVENT_BUS_SCOPE.LOBBY)
         g_prbCtrlEvents.onVehicleClientStateChanged += self.__onVehicleClientStateChanged
-        self.__limitedUIController.startObserve(LuiRules.PR_HANGAR_BUTTON, self.__updatePersonalReservesVisibility)
+        rulesIDs = list(self.__luiRulesUpdaters.keys())
+        self.__limitedUICtrl.startObserves(rulesIDs, self.__onLuiRuleCompleted)
 
-    def __updatePersonalReservesVisibility(self, *_):
-        self._populateButtons()
+    def __getLuiRulesUpdaters(self):
+        return {LuiRules.PR_HANGAR_BUTTON: self._populateButtons, 
+           LuiRules.MODE_SELECTOR_WIDGET_BTN_HINT: self._updatePrebattleControls, 
+           LuiRules.LOBBY_HEADER_COUNTERS_STORE: self.__updateShopTabCounter, 
+           LuiRules.LOBBY_HEADER_COUNTERS_MISSIONS: self.__onEventsVisited, 
+           LuiRules.LOBBY_HEADER_COUNTERS_PROFILE: self.__updateProfileTabCounter, 
+           LuiRules.LOBBY_HEADER_COUNTERS_PM_OPERATIONS: self.__updateMissionsTabCounter, 
+           LuiRules.LOBBY_HEADER_COUNTERS_STORAGE: self.__updateStorageTabCounter}
+
+    def __onLuiRuleCompleted(self, ruleID, *_):
+        updater = self.__luiRulesUpdaters.get(ruleID)
+        if updater is not None:
+            updater()
+        return
 
     def _removeListeners(self):
         g_clientUpdateManager.removeObjectCallbacks(self)
@@ -747,7 +765,8 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self._removeWGNPListeners()
         self.removeListener(events.Comp7Event.OPEN_META, self.__onComp7MetaOpened, scope=EVENT_BUS_SCOPE.LOBBY)
         g_prbCtrlEvents.onVehicleClientStateChanged -= self.__onVehicleClientStateChanged
-        self.__limitedUIController.stopObserve(LuiRules.PR_HANGAR_BUTTON, self.__updatePersonalReservesVisibility)
+        rulesIDs = list(self.__luiRulesUpdaters.keys())
+        self.__limitedUICtrl.stopObserves(rulesIDs, self.__onLuiRuleCompleted)
 
     def _addWGNPListeners(self):
         self.wgnpSteamAccCtrl.statusEvents.subscribe(StatusTypes.CONFIRMED, self.__onEmailConfirmed)
@@ -1055,6 +1074,8 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             showIngameShop(getShopRootUrl(), Origin.HANGAR_TOP_MENU)
         elif alias == self.TABS.BARRACKS:
             showBarracks()
+        elif alias == self.TABS.HANGAR:
+            showHangar()
         else:
             event = g_entitiesFactories.makeLoadEvent(SFViewLoadParams(alias))
             if event is not None:
@@ -1165,7 +1186,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             state = self.prbDispatcher.getFunctionalState()
             selected = items.update(state)
             squadSelected = squadItems.update(state)
-            isNewbie = not self.__limitedUIController.isRuleCompleted(LuiRules.MODE_SELECTOR_WIDGET_BTN_HINT)
+            isNewbie = not self.__limitedUICtrl.isRuleCompleted(LuiRules.MODE_SELECTOR_WIDGET_BTN_HINT)
             hasNew = not self.bootcampController.isInBootcamp() and items.hasNew() and not isNewbie
             result = self.prbEntity.canPlayerDoAction()
             canDo, canDoMsg = result.isValid, result.restriction
@@ -1239,7 +1260,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
                     tooltipData = getFunRandomFightBtnTooltipData(result, isInSquad)
                 elif isInSquad:
                     tooltipData = getSquadFightBtnTooltipData(canDoMsg)
-                elif g_currentPreviewVehicle.isPresent():
+                elif g_currentPreviewVehicle.isPresent() or not g_currentVehicle.isPresent():
                     tooltipData = getPreviewTooltipData()
                 elif isRanked:
                     tooltipData = getRankedFightBtnTooltipData(result)
@@ -1366,7 +1387,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     def __onMissionVisited(self, counter):
         if counter:
-            if not self.__limitedUIController.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_MISSIONS):
+            if not self.__limitedUICtrl.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_MISSIONS):
                 return
             self.__setCounter(self.TABS.MISSIONS, counter)
         else:
@@ -1573,7 +1594,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             self.__updateDemoAccountRenamingStatus()
 
     def __updateProfileTabCounter(self):
-        if self.__limitedUIController.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_PROFILE):
+        if self.__limitedUICtrl.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_PROFILE):
             hofCounters = 0
             ach20Counters = self.__achievements20Controller.getAchievementsTabCounter()
             if self.lobbyContext.getServerSettings().isHofEnabled():
@@ -1591,7 +1612,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         if alias not in counters:
             counters[alias] = True
             AccountSettings.setCounters(NEW_LOBBY_TAB_COUNTER, counters)
-        isShowPMCounters = self.__limitedUIController.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_PM_OPERATIONS)
+        isShowPMCounters = self.__limitedUICtrl.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_PM_OPERATIONS)
         if counters[alias] and isShowPMCounters:
             self.__setCounter(alias, 1)
         else:
@@ -1605,7 +1626,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             self.__hideCounter(alias)
 
     def __updateShopTabCounter(self):
-        if not self.__limitedUIController.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_STORE):
+        if not self.__limitedUICtrl.isRuleCompleted(LuiRules.LOBBY_HEADER_COUNTERS_STORE):
             return
         actionCounterAlias, actionCounterValue = self.eventsCache.getLobbyHeaderTabCounter()
         lastActionValue = AccountSettings.getSessionSettings(LAST_SHOP_ACTION_COUNTER_MODIFICATION)
@@ -1630,7 +1651,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             return
         else:
             ruleID = self._TAB_ALIAS_TO_RULE_ID.get(alias)
-            if ruleID is not None and not self.__limitedUIController.isRuleCompleted(ruleID):
+            if ruleID is not None and not self.__limitedUICtrl.isRuleCompleted(ruleID):
                 return
             if alias in self.ACCOUNT_SETTINGS_COUNTERS:
                 counters = AccountSettings.getCounters(NEW_LOBBY_TAB_COUNTER)

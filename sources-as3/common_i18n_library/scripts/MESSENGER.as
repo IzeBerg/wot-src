@@ -1931,6 +1931,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_EPICREWARD_RECERTIFICATIONFORM_GIFT:String = "#messenger:serviceChannelMessages/epicReward/recertificationForm_gift";
       
+      public static const SERVICECHANNELMESSAGES_EPICBATTLERESULTS_SCENARIO:String = "#messenger:serviceChannelMessages/epicBattleResults/scenario";
+      
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_HEADER_DEFAULT:String = "#messenger:serviceChannelMessages/battlePassReward/header/default";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_HEADER_BUYBP:String = "#messenger:serviceChannelMessages/battlePassReward/header/buyBP";
@@ -1990,6 +1992,18 @@ package
       public static const SERVICECHANNELMESSAGES_BATTLEPASS_FREEPOINTSUSED_HEADER:String = "#messenger:serviceChannelMessages/battlePass/freePointsUsed/header";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASS_FREEPOINTSUSED_TEXT:String = "#messenger:serviceChannelMessages/battlePass/freePointsUsed/text";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSHREWARD_BATTLE_NEWLEVEL_TEXT:String = "#messenger:serviceChannelMessages/battlePassHReward/battle/newLevel/text";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSHREWARD_BATTLE_FINAL_TEXT:String = "#messenger:serviceChannelMessages/battlePassHReward/battle/final/text";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSHREWARD_BATTLE_CHAPTERFINAL_TEXT:String = "#messenger:serviceChannelMessages/battlePassHReward/battle/chapterFinal/text";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSHREWARD_BUYWITHOUTREWARDS_TEXT:String = "#messenger:serviceChannelMessages/battlePassHReward/buyWithoutRewards/text";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSHREWARD_BUYWITHREWARDS_TEXT:String = "#messenger:serviceChannelMessages/battlePassHReward/buyWithRewards/text";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSHREWARD_BUYPROGRESS_TEXT:String = "#messenger:serviceChannelMessages/battlePassHReward/buyProgress/text";
       
       public static const SERVICECHANNELMESSAGES_SYSMSG_TITLES_UPGRADE:String = "#messenger:serviceChannelMessages/sysMsg/titles/upgrade";
       
@@ -2205,9 +2219,9 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_TASKREMINDER_BUTTON:String = "#messenger:serviceChannelMessages/battleMatters/taskReminder/button";
       
-      public static const PLATFORMCURRENCYMSG_RECEIVED_SACOIN:String = "#messenger:platformCurrencyMsg/received/sacoin";
+      public static const PLATFORMCURRENCYMSG_RECEIVED_WDRCOIN:String = "#messenger:platformCurrencyMsg/received/wdrcoin";
       
-      public static const PLATFORMCURRENCYMSG_DEBITED_SACOIN:String = "#messenger:platformCurrencyMsg/debited/sacoin";
+      public static const PLATFORMCURRENCYMSG_DEBITED_WDRCOIN:String = "#messenger:platformCurrencyMsg/debited/wdrcoin";
       
       public static const PLATFORMCURRENCYMSG_RECEIVED_BPBIT:String = "#messenger:platformCurrencyMsg/received/bpbit";
       

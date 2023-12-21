@@ -126,7 +126,6 @@ class GLOBAL_FLAG(object):
     HANGAR_VEH_POST_PROGRESSION_PURCHASABLE = '_HangarVehPostProgressionPurchasable'
     RESEARCH_VEH_POST_PROGRESSION_PURCHASABLE = '_ResearchVehPostProgressionPurchasable'
     PERSONAL_RESERVES_AVAILABLE = '_Personal_reserves_available'
-    IS_NEED_TO_SHOW_SPECIALIZATION_SLOT = 'isNeedToShowSpecializationSlot'
     ALL = (
      MAY_PAWN_PERSONAL_MISSION,
      HAVE_NEW_BADGE, HAVE_NEW_SUFFIX_BADGE, BADGE_PAGE_HAS_NEW_SUFFIX_BADGE,

@@ -18,6 +18,7 @@ registerTokenQuestsSubFormatters((
  token_quest_subformatters.RankedFinalTokenQuestFormatter(),
  token_quest_subformatters.RankedYearLeaderFormatter(),
  token_quest_subformatters.SeniorityAwardsFormatter(),
+ token_quest_subformatters.SeniorityAwardsVehicleSelectedFormatter(),
  token_quest_subformatters.PersonalMissionsTokenQuestsFormatter(),
  token_quest_subformatters.BattlePassDefaultAwardsFormatter(),
  token_quest_subformatters.BattlePassAutoSelectRewardsFormatter(),

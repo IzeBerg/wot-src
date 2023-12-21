@@ -642,5 +642,19 @@ class GatewayDataAccessor(base.BaseDataAccessor):
         url = '/agate/api/v5/inventory/getInventoryEntitlements/'
         return self._request_data(callback, url, method='POST', post_data=entitlementsFilter)
 
+    def get_storefront_products(self, callback, ctx):
+        url = ('/shop/api/external/v2/{storefront}/products_with_categories/').format(storefront=ctx.getStorefront())
+        return self._request_data(callback, url, method='GET')
+
+    def buy_storefront_product(self, callback, ctx):
+        url = ('/shop/api/external/v2/{storefront}/products/{product_code}/buy/').format(storefront=ctx.getStorefront(), product_code=ctx.getProductCode())
+        price = ctx.getExpectedPrice()
+        postData = {'amount': 1, 
+           'prices': [
+                    {'amount': price.value, 
+                       'code': price.currency, 
+                       'item_type': 'currency'}]}
+        return self._request_data(callback, url, method='POST', post_data=postData)
+
     def _get_formatted_language_code(self):
         return self.client_lang.replace('_', '-')

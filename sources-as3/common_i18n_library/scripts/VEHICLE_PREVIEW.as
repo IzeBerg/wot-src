@@ -45,6 +45,8 @@ package
       
       public static const HEADER_BACKBTN_DESCRLABEL_COLLECTIONS:String = "#vehicle_preview:header/backBtn/descrLabel/collections";
       
+      public static const HEADER_BACKBTN_DESCRLABEL_COMP7:String = "#vehicle_preview:header/backBtn/descrLabel/comp7";
+      
       public static const HEADER_TITLE:String = "#vehicle_preview:header/title";
       
       public static const HEADER_CLOSEBTN_LABEL:String = "#vehicle_preview:header/closeBtn/label";
@@ -124,6 +126,10 @@ package
       public static const BUYINGPANEL_BUYBTN_LABEL_EXCHANGE:String = "#vehicle_preview:buyingPanel/buyBtn/label/exchange";
       
       public static const BUYINGPANEL_BUYBTN_LABEL_BUYITEMPACK:String = "#vehicle_preview:buyingPanel/buyBtn/label/buyItemPack";
+      
+      public static const BUYINGPANEL_BUYBTN_LABEL_FORCOINSOBTAIN:String = "#vehicle_preview:buyingPanel/buyBtn/label/forCoinsObtain";
+      
+      public static const BUYINGPANEL_BUYBTN_LABEL_FREEOBTAIN:String = "#vehicle_preview:buyingPanel/buyBtn/label/freeObtain";
       
       public static const BUYINGPANEL_BUYBTN_LABEL_RENT:String = "#vehicle_preview:buyingPanel/buyBtn/label/rent";
       

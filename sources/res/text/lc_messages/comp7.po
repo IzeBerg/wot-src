@@ -83,10 +83,10 @@ msgid "banner/info/disabled"
 msgstr "Режим прекращения огня"
 
 msgid "banner/info/seasonEnd"
-msgstr "%(season)s завершён"
+msgstr "Сезон %(season)s завершён"
 
 msgid "banner/info/seasonEndSoon"
-msgstr "Последняя возможность показать своё мастерство!"
+msgstr "Последний шанс продемонстрировать свои навыки!"
 
 msgid "banner/info/seasonJustStarted"
 msgstr "Покажите, на что способны!"
@@ -95,7 +95,7 @@ msgid "banner/infoSmall/disabled"
 msgstr "Ожидайте прайм-тайма"
 
 msgid "banner/season"
-msgstr "Лазурный пегас"
+msgstr "Алого пегаса"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(season)s, до %(day)s %(month)s"
@@ -110,10 +110,10 @@ msgid "banner/seasonDateSmall/seasonNotStarted"
 msgstr "С %(day)s %(month)s"
 
 msgid "banner/timeLeft/hours"
-msgstr "%(hour)s ч %(min)s мин"
+msgstr "Прайм-тайм: %(hour)s ч %(min)s мин"
 
 msgid "banner/timeLeft/min"
-msgstr "%(min)s мин"
+msgstr "Прайм-тайм: %(min)s мин"
 
 msgid "banner/title"
 msgstr "НАТИСК"
@@ -311,6 +311,12 @@ msgstr "Расписание"
 msgid "closeButtonLabel"
 msgstr "ЗАКРЫТЬ"
 
+msgid "controls/compare"
+msgstr "Добавить к сравнению"
+
+msgid "controls/preview"
+msgstr "Предпросмотр"
+
 msgid "countDown/text"
 msgstr ""
 "До начала события:\n"
@@ -318,6 +324,14 @@ msgstr ""
 
 msgid "dash"
 msgstr "—"
+
+msgid "dataError/description"
+msgstr ""
+"Приносим извинения за временные неудобства, попробуйте обновить страницу "
+"позже."
+
+msgid "dataError/title"
+msgstr "Ошибка загрузки данных"
 
 msgid "detailsHelp/mainTitle"
 msgstr "Подсказки для режима «Натиск»"
@@ -353,10 +367,13 @@ msgid "detailsHelp/rules/title"
 msgstr "Очки престижа"
 
 msgid "detailsHelp/seasonModifiers"
-msgstr "В режиме действует модификатор, изменяющий параметры техники."
+msgstr ""
+"В режиме действуют модификаторы, меняющие параметры техники, такие как "
+"прочность, время подготовки снаряжения, длительность обнаружения и многое "
+"другое."
 
 msgid "detailsHelp/seasonModifiers/title"
-msgstr "Модификатор сезона Лазурного пегаса"
+msgstr "МОДИФИКАТОРЫ «НАТИСКА»"
 
 msgid "division/A"
 msgstr "A"
@@ -400,6 +417,9 @@ msgstr ""
 " набравшим минимум {whiteSpanish_Open}%(fromScore){whiteSpanish_Close} очков"
 " рейтинга."
 
+msgid "forVehicle"
+msgstr "Для: %(vehicleName)s"
+
 msgid "generalRankTooltip/body/first"
 msgstr ""
 "Ранг {whiteSpanish_Open}«Железо»{whiteSpanish_Close} присваивается игрокам, "
@@ -433,11 +453,11 @@ msgstr "О СОБЫТИИ"
 msgid "intro/confirmButton"
 msgstr "Так точно!"
 
-msgid "intro/description/crimsonSeason"
+msgid "intro/description/onslaughtModifiers"
 msgstr ""
-"Встречайте сезон Лазурного пегаса!\n"
-"\n"
-"В режим добавлены стадия квалификации и годовые награды. Также действует модификатор, изменяющий параметры техники."
+"В режиме действуют модификаторы, меняющие параметры техники, такие как "
+"прочность, время подготовки снаряжения, длительность обнаружения и многое "
+"другое."
 
 msgid "intro/description/pointsOfInterest"
 msgstr ""
@@ -481,8 +501,8 @@ msgstr ""
 " особенности игровой карты. Старайтесь подстраиваться под выбор техники "
 "союзников."
 
-msgid "intro/title/crimsonSeason"
-msgstr "СЕЗОН ЛАЗУРНОГО ПЕГАСА"
+msgid "intro/title/onslaughtModifiers"
+msgstr "МОДИФИКАТОРЫ «НАТИСКА»"
 
 msgid "intro/title/pointsOfInterest"
 msgstr "КЛЮЧЕВЫЕ ПОЗИЦИИ"
@@ -652,6 +672,39 @@ msgstr "Очки рейтинга"
 msgid "membersWindow/memberCountDropdown/description"
 msgstr "Игроков во взводе"
 
+msgid "modifier/formattedValueType/nullishDeviation"
+msgstr "0%"
+
+msgid "modifier/formattedValueType/nullishDispersion"
+msgstr "–"
+
+msgid "modifier/name/equipmentCooldown"
+msgstr "Время подготовки снаряжения"
+
+msgid "modifier/name/shotDispersionRadius"
+msgstr "Бонус к разбросу на 100 м"
+
+msgid "modifier/name/vehicleHealth"
+msgstr "Прочность машины"
+
+msgid "modifier/name/visionMinRadius"
+msgstr "Радиус гарантированного обнаружения"
+
+msgid "modifier/name/visionTime"
+msgstr "Длительность обнаружения"
+
+msgid "modifier/valueType/deviation"
+msgstr "+/–%(deviation)s%"
+
+msgid "modifier/valueType/meters"
+msgstr "%(meters)s м"
+
+msgid "modifier/valueType/percentage"
+msgstr "%(percentage)s%"
+
+msgid "modifier/valueType/seconds"
+msgstr "%(seconds)s с"
+
 msgid "noVehicles/howTo/premium"
 msgstr "Используйте Танковый премиум аккаунт"
 
@@ -690,6 +743,9 @@ msgstr "КВАЛИФИКАЦИЯ"
 
 msgid "page/heading/rankRewards"
 msgstr "НАГРАДЫ ЗА РАНГИ"
+
+msgid "page/heading/shop"
+msgstr "МАГАЗИН «НАТИСКА»"
 
 msgid "page/heading/weeklyQuests"
 msgstr "ЕЖЕНЕДЕЛЬНЫЕ ЗАДАЧИ"
@@ -799,6 +855,115 @@ msgstr "Бои недоступны до %(startTime)s на сервере %(ser
 msgid "primeTimeView/title"
 msgstr "НАТИСК"
 
+msgid "products/actions/buy"
+msgstr "Приобрести"
+
+msgid "products/actions/restore"
+msgstr "На Склад"
+
+msgid "products/actions/toCustomization"
+msgstr "К стилю"
+
+msgid "products/actions/toHangar"
+msgstr "Показать в Ангаре"
+
+msgid "products/customizationUnavailable/body"
+msgstr ""
+"Невозможно перейти к стилю. У вас нет этой машины либо она состоит в "
+"формировании, находится в бою или ей необходим ремонт."
+
+msgid "products/customizationUnavailable/title"
+msgstr "Недоступно"
+
+msgid "products/discount"
+msgstr "–%(discountPercentage)s%"
+
+msgid "products/discountDescription"
+msgstr ""
+"До начала следующего сезона вам будут доступны товары и скидка за "
+"{fff_Open}максимально{fff_Close} {fff_Open}достигнутый{fff_Close} "
+"{fff_Open}ранг{fff_Close}."
+
+msgid "products/discountSectionName"
+msgstr "УСЛОВИЯ ДОСТУПА И СКИДКИ"
+
+msgid "products/inProgress"
+msgstr "Подождите, покупка обрабатывается..."
+
+msgid "products/limitedQuantitySeason"
+msgstr "Доступно раз для покупки за сезон: %(count)s"
+
+msgid "products/message/notEnough"
+msgstr "Недостаточно средств для покупки."
+
+msgid "products/message/rankAccess"
+msgstr ""
+"Для покупки необходим\n"
+"«%(rank)s»"
+
+msgid "products/newLabel"
+msgstr "НОВОЕ"
+
+msgid "products/priceSectionName"
+msgstr "СТОИМОСТЬ"
+
+msgid "products/productAccess"
+msgstr ""
+"Ранг\n"
+"доступа"
+
+msgid "products/purchased"
+msgstr "Куплено"
+
+msgid "products/rankAccess"
+msgstr "Ранг доступа: %(rank)s"
+
+msgid "products/readyToRestore"
+msgstr "Доступно восстановление"
+
+msgid "products/readyToRestoreDescription"
+msgstr "Доступно для восстановления на Складе"
+
+msgid "products/style3d"
+msgstr "3D-cтиль %(name)s"
+
+msgid "purchase/affirmative"
+msgstr "Так точно!"
+
+msgid "purchase/cancelButton"
+msgstr "Вернуться"
+
+msgid "purchase/confirmButton"
+msgstr "Приобрести"
+
+msgid "purchase/error/description"
+msgstr "Не удалось совершить покупку. Повторите попытку позже."
+
+msgid "purchase/error/title"
+msgstr "Ошибка"
+
+msgid "purchase/noSuitableVehicle"
+msgstr ""
+"%(alertIcon)sВ Ангаре нет машины, на которую можно нанести выбранный стиль"
+
+msgid "purchase/price"
+msgstr "Стоимость покупки:"
+
+msgid "purchase/success/heading"
+msgstr "Спасибо за покупку!"
+
+msgid "purchase/success/receiving"
+msgstr "%(icon)sПокупка поступит на ваш игровой аккаунт в ближайшее время"
+
+msgid "purchase/success/style3d"
+msgstr "3D-стиль %(name)s для %(vehicleName)s"
+
+msgid "purchase/title/style3d"
+msgstr "Купить 3D-стиль %(name)s?"
+
+msgid "purchase/title/vehicle"
+msgstr "Купить машину %(name)s?"
+
 msgid "qualification/battlesCounter"
 msgstr ""
 "%(battleIcon)s{cream_Open}%(battlesCount)s{cream_Close} / "
@@ -855,6 +1020,9 @@ msgstr ""
 "По завершении квалификации вы получите награды за уже достигнутый и все "
 "предыдущие ранги."
 
+msgid "quotesWrapper"
+msgstr "«%(name)s»"
+
 msgid "rank/achieved"
 msgstr "Достигнут"
 
@@ -880,7 +1048,7 @@ msgid "rank/sixth"
 msgstr "Легенда"
 
 msgid "rank/text"
-msgstr "Ранг %(rank)s"
+msgstr "Ранг «%(rank)s»"
 
 msgid "rank/third"
 msgstr "Серебро"
@@ -1033,11 +1201,14 @@ msgstr "Так точно!"
 msgid "rewardsScreen/buttonToRewards"
 msgstr "К наградам"
 
+msgid "rewardsScreen/buttonToShop"
+msgstr "К покупке"
+
 msgid "rewardsScreen/description/qualificationEnded"
 msgstr "НАТИСК. КВАЛИФИКАЦИЯ ЗАВЕРШЕНА"
 
 msgid "rewardsScreen/description/season"
-msgstr "НАТИСК. СЕЗОН ЛАЗУРНОГО ПЕГАСА"
+msgstr "НАТИСК. СЕЗОН АЛОГО ПЕГАСА"
 
 msgid "rewardsScreen/notice/subTitle"
 msgstr ""
@@ -1046,6 +1217,22 @@ msgstr ""
 
 msgid "rewardsScreen/notice/title"
 msgstr "Ранговая неактивность"
+
+msgid "rewardsScreen/shopInfo/header/discount"
+msgstr "В магазине «Натиска» доступны новые скидки!"
+
+msgid "rewardsScreen/shopInfo/header/open"
+msgstr "В магазине «Натиска» доступны новые товары!"
+
+msgid "rewardsScreen/shopInfo/text/discount"
+msgstr ""
+"До начала следующего сезона вам будут доступны товары и скидка за "
+"максимально достигнутый ранг."
+
+msgid "rewardsScreen/shopInfo/text/open"
+msgstr ""
+"До начала следующего сезона вам будут доступны товары и скидка за "
+"максимально достигнутый ранг."
 
 msgid "rewardsScreen/subtitle/division"
 msgstr "{cream_Open}Ранг «%(rank)s»{cream_Close}"
@@ -1120,7 +1307,7 @@ msgid "season/secondsLeft"
 msgstr "До завершения: %(seconds)s с"
 
 msgid "seasonModifier/title"
-msgstr "Модификатор сезона"
+msgstr "Модификаторы «Натиска»"
 
 msgid "seasonName/first"
 msgstr "Сезон Лазурного пегаса"
@@ -1172,16 +1359,19 @@ msgstr "Вы претендуете на знамя"
 
 msgid "seasonPointTooltip/text/compensate"
 msgstr ""
-"Оставшиеся знамёна компенсируются бонами по курсу "
-"{bond_Open}1%(seasonPointIcon)s{bond_Close} к "
+"Оставшиеся знамёна компенсируются бонами по курсу {bond_Open}1 знамя "
+"Пегаса{bond_Close} к "
 "{bond_Open}%(seasonPointExchangeRate)s%(bondsIcon)s{bond_Close}"
 
 msgid "seasonPointTooltip/text/season"
 msgstr ""
-"По окончании сезона вы получите знамёна в соответствии с вашим рангом."
+"По окончании каждого сезона вы получите знамёна в соответствии с вашим "
+"рангом."
 
 msgid "seasonPointTooltip/text/year"
-msgstr "Каждые 3 знамени улучшают награду, которую вы получите в конце года."
+msgstr ""
+"Каждые 3 знамени улучшают качество награды, которую вы получите в конце "
+"года."
 
 msgid "seasonStatistics/button/fifth"
 msgstr "Где мой трофей!"
@@ -1334,6 +1524,9 @@ msgid "sidebar/tabs/tooltip/body/rankRewards"
 msgstr ""
 "Раздел содержит информацию о наградах за получение рангов в режиме «Натиск»."
 
+msgid "sidebar/tabs/tooltip/body/shop"
+msgstr "Раздел содержит информацию о товарах, доступных в магазине «Натиска»."
+
 msgid "sidebar/tabs/tooltip/body/weeklyQuests"
 msgstr "Раздел содержит информацию о еженедельных задачах режима «Натиск»."
 
@@ -1354,6 +1547,9 @@ msgstr "Ранговая система"
 
 msgid "sidebar/tabs/tooltip/header/rankRewards"
 msgstr "Награды за ранги"
+
+msgid "sidebar/tabs/tooltip/header/shop"
+msgstr "Магазин «Натиска»"
 
 msgid "sidebar/tabs/tooltip/header/weeklyQuests"
 msgstr "Еженедельные задачи"
@@ -1407,6 +1603,24 @@ msgstr ""
 
 msgid "system_messages/regularReward/title"
 msgstr "Квитанция"
+
+msgid "system_messages/shop/offer/button"
+msgstr "Перейти в Магазин"
+
+msgid "system_messages/shop/offer/newDiscounts/body"
+msgstr "В магазине «Натиска» доступны новые скидки!"
+
+msgid "system_messages/shop/offer/newDiscounts/title"
+msgstr "Скидки увеличены"
+
+msgid "system_messages/shop/offer/newItems/body"
+msgstr "В магазине «Натиска» доступны новые товары!"
+
+msgid "system_messages/shop/offer/newItems/title"
+msgstr "Доступны новые товары"
+
+msgid "system_messages/shop/purchase/error"
+msgstr "Ошибка оплаты. Повторите попытку позже."
 
 msgid "system_messages/temporaryBan/end/body"
 msgstr "Временная блокировка снята. Вы снова можете играть в режиме «Натиск»."
@@ -1493,17 +1707,28 @@ msgstr "Все награды получены"
 msgid "weeklyQuests/tokenProgress/description/normal"
 msgstr "Зарабатывайте монеты Натиска для получения наград"
 
+msgid "whatsNewButtonLabel"
+msgstr "СЕЗОННЫЕ ОБНОВЛЕНИЯ"
+
 msgid "whatsNewView/banner/title/large"
-msgstr "СЕЗОН ЛАЗУРНОГО ПЕГАСА"
+msgstr "СЕЗОН АЛОГО ПЕГАСА"
 
 msgid "whatsNewView/banner/title/small"
 msgstr "НАТИСК. ЧТО НОВОГО?"
 
 msgid "whatsNewView/button/ok"
-msgstr "Я в деле!"
+msgstr "Так точно!"
+
+msgid "whatsNewView/intro/description"
+msgstr ""
+"Повышайте свой ранг, чтобы получить доступ к уникальным товарам за боны и "
+"большим скидкам."
+
+msgid "whatsNewView/intro/heading"
+msgstr "Магазин «Натиска»"
 
 msgid "whatsNewView/mapChanges/addedMaps"
-msgstr "Добавленные карты:"
+msgstr "Новые карты:"
 
 msgid "whatsNewView/mapChanges/heading"
 msgstr "Карты"
@@ -1511,41 +1736,32 @@ msgstr "Карты"
 msgid "whatsNewView/mapChanges/removedMaps"
 msgstr "Исключённые карты:"
 
-msgid "whatsNewView/qualification/description"
-msgstr ""
-"Завершите серию из %(maxBattlesCount)s боёв, чтобы достичь ранга, "
-"соответствующего вашему уровню мастерства."
+msgid "whatsNewView/modifiers/added"
+msgstr "Новые модификаторы"
 
-msgid "whatsNewView/qualification/heading"
-msgstr "Квалификация"
+msgid "whatsNewView/modifiers/description"
+msgstr "Для режима добавлены новые модификаторы, меняющие параметры техники."
 
-msgid "whatsNewView/rankingSystem/description"
-msgstr ""
-"Убран ранг «Дебютант», добавлен дивизион Е для рангов «Железо», «Бронза», "
-"«Серебро» и «Золото»."
+msgid "whatsNewView/modifiers/heading"
+msgstr "Модификаторы «Натиска»"
 
-msgid "whatsNewView/rankingSystem/heading"
-msgstr "Ранговая система"
+msgid "whatsNewView/modifiers/unchanged"
+msgstr "Модификаторы без изменений"
 
 msgid "whatsNewView/tag/changed"
 msgstr "Изменено"
 
-msgid "whatsNewView/tag/mapRemoved"
-msgstr "УБРАНА"
-
 msgid "whatsNewView/tag/new"
 msgstr "Новое"
+
+msgid "whatsNewView/tag/removed"
+msgstr "УДАЛЁН"
 
 msgid "whatsNewView/tag/seasonUpdate"
 msgstr "Сезонное обновление"
 
-msgid "whatsNewView/vehicleLimitations/description"
-msgstr ""
-"Начиная с сезона Лазурного пегаса машины роли САУ недоступны для игры в "
-"режиме из-за крайне низкой эффективности в бою."
-
-msgid "whatsNewView/vehicleLimitations/heading"
-msgstr "Ограничения по технике"
+msgid "whatsNewView/tag/underDevelopment"
+msgstr "В ПЕРЕРАБОТКЕ"
 
 msgid "whatsNewView/vehiclesForRent/heading"
 msgstr "Арендная техника"
@@ -1553,27 +1769,18 @@ msgstr "Арендная техника"
 msgid "whatsNewView/watchVideo"
 msgstr "Смотреть видео"
 
-msgid "whatsNewView/yearOfThePegasus/description"
-msgstr ""
-"Сражайтесь в каждом из трёх сезонов, чтобы получить ценные годовые награды."
-
-msgid "whatsNewView/yearOfThePegasus/heading"
-msgstr "Год Пегаса начался"
-
 msgid "yearlyRewards/banner/willReceived"
 msgstr "Награды будут начислены по окончании рангового года"
 
-msgid "yearlyRewards/description"
+msgid "yearlyRewards/description/achieved"
 msgstr ""
-"По окончании сезона вы получите знамёна Пегаса в соответствии с вашим рангом"
+"Вы получили по 1%(seasonPointIcon)s за каждый достигнутый ранг на момент "
+"окончания сезона."
 
-msgid "yearlyRewards/error/description"
+msgid "yearlyRewards/description/current"
 msgstr ""
-"Приносим извинения за временные неудобства, попробуйте обновить страницу "
-"позже."
-
-msgid "yearlyRewards/error/title"
-msgstr "Ошибка загрузки данных"
+"По окончании сезона вы получите 1%(seasonPointIcon)s за каждый достигнутый "
+"ранг."
 
 msgid "yearlyRewards/main/fifth"
 msgstr "Камуфляж «Чемпион»"
@@ -1626,6 +1833,11 @@ msgstr ""
 
 msgid "yearlyRewards/subtitle/styleProgress"
 msgstr "Для стиля «Небесный скакун»"
+
+msgid "yearlyRewards/title/withVehicle"
+msgstr ""
+"%(vehicle)s и\n"
+"%(camouflageName)s"
 
 msgid "yearlyRewards/vehicle"
 msgstr "Харрикейн"

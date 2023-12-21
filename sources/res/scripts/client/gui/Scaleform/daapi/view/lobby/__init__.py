@@ -7,6 +7,7 @@ from gui.Scaleform.daapi.view.lobby.goodie_info_window import GoodieInfoWindow
 from gui.Scaleform.daapi.view.lobby.hangar.BrowserView import BrowserView
 from gui.Scaleform.daapi.view.lobby.image_view.image_view import ImageView
 from gui.Scaleform.daapi.view.lobby.wot_plus.wot_plus_browser_pages import WotPlusInfoView
+from gui.Scaleform.daapi.view.login.LegalInfoWindow import LegalInfoWindow
 from gui.Scaleform.framework import ComponentSettings, ConditionalViewSettings, ContainerSettings, GroupedViewSettings, ScopeTemplates, ViewSettings
 from gui.Scaleform.framework.managers import containers
 from gui.Scaleform.framework.package_layout import PackageBusinessHandler
@@ -140,6 +141,7 @@ def getViewSettings():
      GroupedViewSettings(VIEW_ALIAS.DEMONSTRATOR_WINDOW, DemonstratorWindow, 'demonstratorWindow.swf', WindowLayer.WINDOW, '', None, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.GOLD_FISH_WINDOW, GoldFishWindow, 'goldFishWindow.swf', WindowLayer.WINDOW, '', None, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.LOBBY_MENU, LobbyMenu, 'lobbyMenu.swf', WindowLayer.TOP_WINDOW, '', None, ScopeTemplates.LOBBY_SUB_SCOPE, isModal=True, canClose=False, canDrag=False),
+     GroupedViewSettings(VIEW_ALIAS.LEGAL_INFO_TOP_WINDOW, LegalInfoWindow, 'legalInfoWindow.swf', WindowLayer.TOP_WINDOW, 'legalInfoWindow', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True, canDrag=False),
      GroupedViewSettings(VIEW_ALIAS.MODULE_INFO_WINDOW, ModuleInfoWindow, 'moduleInfo.swf', WindowLayer.WINDOW, VIEW_ALIAS.MODULE_INFO_WINDOW, None, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.BOOSTER_INFO_WINDOW, BoosterInfoWindow, 'boosterInfo.swf', WindowLayer.WINDOW, VIEW_ALIAS.BOOSTER_INFO_WINDOW, None, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.GOODIE_INFO_WINDOW, GoodieInfoWindow, 'goodieInfo.swf', WindowLayer.WINDOW, VIEW_ALIAS.GOODIE_INFO_WINDOW, None, ScopeTemplates.DEFAULT_SCOPE),
@@ -283,7 +285,9 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
          (
           VIEW_ALIAS.BATTLE_PASS_BADGES_DEMO, self.loadViewByCtxEvent),
          (
-          VIEW_ALIAS.RESOURCE_WELL_BROWSER_VIEW, self.loadViewByCtxEvent))
+          VIEW_ALIAS.RESOURCE_WELL_BROWSER_VIEW, self.loadViewByCtxEvent),
+         (
+          VIEW_ALIAS.LEGAL_INFO_TOP_WINDOW, self.loadViewByCtxEvent))
         super(LobbyPackageBusinessHandler, self).__init__(listeners, app_settings.APP_NAME_SPACE.SF_LOBBY, EVENT_BUS_SCOPE.LOBBY)
 
     def __moduleWindowHandler(self, event):

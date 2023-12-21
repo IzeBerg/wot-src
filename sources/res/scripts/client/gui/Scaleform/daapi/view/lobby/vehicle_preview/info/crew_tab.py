@@ -21,8 +21,9 @@ from shared_utils import first
 from soft_exception import SoftException
 from web.web_client_api.common import ItemPackType, ItemPackTypeGroup
 NEW_SKILL_ICON = '../maps/icons/tankmen/skills/big/preview_new_skill.png'
-_SimpleSkill = namedtuple('_SimpleSkill', ('name', 'userName', 'bigIconPath', 'isPerk'))
-_SimpleSkill.__new__.__defaults__ = ('new', 'new', NEW_SKILL_ICON, False)
+_SimpleSkill = namedtuple('_SimpleSkill', ('name', 'customName', 'userName', 'bigIconPath',
+                                           'isPerk'))
+_SimpleSkill.__new__.__defaults__ = ('new', '', 'new', NEW_SKILL_ICON, False)
 
 def _createPreviewTankman(tmanData=None):
     if tmanData:

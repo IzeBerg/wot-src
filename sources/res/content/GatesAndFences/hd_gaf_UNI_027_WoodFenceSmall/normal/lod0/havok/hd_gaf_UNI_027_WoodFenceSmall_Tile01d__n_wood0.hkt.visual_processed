@@ -264,25 +264,16 @@
 						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_AM.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<materialKind>0</materialKind>
-					<property>
 						normalMap
 						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_ANM.dds</Texture>
 					</property>
 					<property>
 						metallicGlossMap
 						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_GMM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>false</Bool>
 					</property>
 				</material>
 				<fade_material>
@@ -294,11 +285,15 @@
 						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_AM.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_ANM.dds</Texture>
 					</property>
 					<property>
-						doubleSided
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_GMM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
 						<Bool>false</Bool>
 					</property>
 					<property>
@@ -335,25 +330,16 @@
 						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_AM.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<materialKind>0</materialKind>
-					<property>
 						normalMap
 						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_ANM.dds</Texture>
 					</property>
 					<property>
 						metallicGlossMap
 						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_GMM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>false</Bool>
 					</property>
 				</material>
 				<fade_material>
@@ -365,11 +351,15 @@
 						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_AM.dds</Texture>
 					</property>
 					<property>
-						g_useNormalPackDXT1
-						<Bool>false</Bool>
+						normalMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_ANM.dds</Texture>
 					</property>
 					<property>
-						doubleSided
+						metallicGlossMap
+						<Texture>content/GatesAndFences/hd_gaf_UNI_027_WoodFenceSmall/hd_gaf_UNI_027_WoodFenceSmall_GMM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
 						<Bool>false</Bool>
 					</property>
 					<property>
@@ -393,6 +383,6 @@
 		<min>-0.132289 -0.114933 -6.159388</min>
 		<max>0.159202 1.295965 -0.020782</max>
 	</boundingBox>
-	<geometrySize>111996</geometrySize>
+	<geometrySize>112176</geometrySize>
 	<minUVDensity>0.122062</minUVDensity>
 </root>

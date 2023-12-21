@@ -57,6 +57,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.MINIMAPENTRIES_CONSTANTS;
    import net.wg.data.constants.generated.MISSIONS_STATES;
    import net.wg.data.constants.generated.QUEST_PROGRESS_BASE;
+   import net.wg.data.constants.generated.RESEARCH_COUNTER_STATES;
    import net.wg.data.constants.generated.ROOT_SWF_CONSTANTS;
    import net.wg.data.constants.generated.SEASONS_CONSTANTS;
    import net.wg.data.constants.generated.SETTINGS_DIALOGS;
@@ -194,10 +195,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.carousels.interfaces.IScrollerViewPort;
    import net.wg.gui.components.carousels.interfaces.IScrollerViewPortBase;
    import net.wg.gui.components.common.AlphaPropertyWrapper;
-   import net.wg.gui.components.common.Counter;
-   import net.wg.gui.components.common.CounterBase;
-   import net.wg.gui.components.common.CounterLabel;
-   import net.wg.gui.components.common.CounterView;
    import net.wg.gui.components.common.FrameStateCmpnt;
    import net.wg.gui.components.common.FrameStatesContainer;
    import net.wg.gui.components.common.Spark;
@@ -205,6 +202,11 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.common.VehicleMarkerAlly;
    import net.wg.gui.components.common.VehicleMarkerEnemy;
    import net.wg.gui.components.common.bugreport.ReportBugPanel;
+   import net.wg.gui.components.common.counters.Counter;
+   import net.wg.gui.components.common.counters.CounterBase;
+   import net.wg.gui.components.common.counters.CounterLabel;
+   import net.wg.gui.components.common.counters.CounterVehResearch;
+   import net.wg.gui.components.common.counters.CounterView;
    import net.wg.gui.components.common.lobbyVehicleMarkers.CustomMarker;
    import net.wg.gui.components.common.lobbyVehicleMarkers.CustomMarkerVO;
    import net.wg.gui.components.common.lobbyVehicleMarkers.LobbyVehicleMarkers;
@@ -982,6 +984,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_QUEST_PROGRESS_BASE:Class = QUEST_PROGRESS_BASE;
       
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_RESEARCH_COUNTER_STATES:Class = RESEARCH_COUNTER_STATES;
+      
       public static const NET_WG_DATA_CONSTANTS_GENERATED_ROOT_SWF_CONSTANTS:Class = ROOT_SWF_CONSTANTS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_SEASONS_CONSTANTS:Class = SEASONS_CONSTANTS;
@@ -1290,14 +1294,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_ALPHAPROPERTYWRAPPER:Class = AlphaPropertyWrapper;
       
-      public static const NET_WG_GUI_COMPONENTS_COMMON_COUNTER:Class = Counter;
-      
-      public static const NET_WG_GUI_COMPONENTS_COMMON_COUNTERBASE:Class = CounterBase;
-      
-      public static const NET_WG_GUI_COMPONENTS_COMMON_COUNTERLABEL:Class = CounterLabel;
-      
-      public static const NET_WG_GUI_COMPONENTS_COMMON_COUNTERVIEW:Class = CounterView;
-      
       public static const NET_WG_GUI_COMPONENTS_COMMON_FRAMESTATECMPNT:Class = FrameStateCmpnt;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_FRAMESTATESCONTAINER:Class = FrameStatesContainer;
@@ -1311,6 +1307,16 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_COMMON_VEHICLEMARKERENEMY:Class = VehicleMarkerEnemy;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_BUGREPORT_REPORTBUGPANEL:Class = ReportBugPanel;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_COUNTERS_COUNTER:Class = Counter;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_COUNTERS_COUNTERBASE:Class = CounterBase;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_COUNTERS_COUNTERLABEL:Class = CounterLabel;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_COUNTERS_COUNTERVEHRESEARCH:Class = CounterVehResearch;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_COUNTERS_COUNTERVIEW:Class = CounterView;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_LOBBYVEHICLEMARKERS_CUSTOMMARKER:Class = CustomMarker;
       

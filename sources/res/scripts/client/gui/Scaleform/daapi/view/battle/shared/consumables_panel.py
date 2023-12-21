@@ -670,6 +670,12 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, BattleGUIKeyHandler,
             self._extraKeys = extraKeys
             return
 
+    def _getEquipmentIdxByKey(self, key):
+        if key in self._cds:
+            return self._cds.index(key)
+        else:
+            return
+
     def __onDebuffStarted(self, debuffTime=None):
         self.delayedReload = debuffTime
 
@@ -701,13 +707,19 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, BattleGUIKeyHandler,
         else:
             _logger.error('Equipment with cd=%d is not found in panel=%s', intCD, str(self._cds))
 
-    def __onEquipmentCooldownInPercent(self, intCD, percent):
-        if intCD in self._cds:
-            self.as_setCoolDownPosAsPercentS(self._cds.index(intCD), percent)
+    def __onEquipmentCooldownInPercent(self, key, percent):
+        index = self._getEquipmentIdxByKey(key)
+        if index is None:
+            _logger.error('Equipment with cd, idx is not found in panel, %s', str(key))
+        self.as_setCoolDownPosAsPercentS(index, percent)
+        return
 
-    def __onEquipmentCooldownTime(self, intCD, timeLeft, isBaseTime, isFlash):
-        if intCD in self._cds:
-            self.as_setCoolDownTimeSnapshotS(self._cds.index(intCD), timeLeft, isBaseTime, isFlash)
+    def __onEquipmentCooldownTime(self, key, timeLeft, isBaseTime, isFlash):
+        index = self._getEquipmentIdxByKey(key)
+        if index is None:
+            _logger.error('Equipment with cd, idx is not found in panel, %s', str(key))
+        self.as_setCoolDownTimeSnapshotS(index, timeLeft, isBaseTime, isFlash)
+        return
 
     def __onOptionalDeviceAdded(self, optDeviceInBattle):
         if optDeviceInBattle.getIntCD() not in self._cds:

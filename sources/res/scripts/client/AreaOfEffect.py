@@ -2,6 +2,7 @@ from functools import partial
 import math, random, BigWorld, AnimationSequence, CGF, GenericComponents, Math, math_utils, CombatSelectedArea
 from ProjectileMover import collideDynamicAndStatic
 from account_helpers.settings_core.settings_constants import GRAPHICS
+from gui.battle_control import avatar_getter
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
 from gui.shared.events import MarkersManagerEvent
 from helpers import dependency
@@ -187,7 +188,7 @@ class AreaOfEffect(BigWorld.Entity, EffectRunner):
         return Math.Matrix(self.matrix).applyToAxis(2)
 
     def _showArea(self):
-        if not self._equipment.areaVisibleToEnemies and self._isAttackerEnemy():
+        if not self._isAreaVisible():
             return
         else:
             areaTimeout = self._adjustedDelay
@@ -210,7 +211,7 @@ class AreaOfEffect(BigWorld.Entity, EffectRunner):
             return
 
     def _showMarker(self):
-        if not self._equipment.areaVisibleToEnemies and self._isAttackerEnemy():
+        if not self._isAreaVisible():
             return
         delay = self._adjustedDelay
         if self._equipment.areaShow == AreaShow.ALWAYS:
@@ -221,6 +222,12 @@ class AreaOfEffect(BigWorld.Entity, EffectRunner):
 
     def _isAttackerEnemy(self):
         return self.sessionProvider.getArenaDP().getVehicleInfo(self.vehicleID).team != BigWorld.player().team
+
+    def _isAreaVisible(self):
+        if self._equipment.areaVisibleToEnemies:
+            return True
+        vInfo = self.sessionProvider.getArenaDP().getVehicleInfo(self.vehicleID)
+        return vInfo.team == avatar_getter.getObserverTeam()
 
     def __onAreaGOLoaded(self, gameObject):
         if self.isDestroyed:

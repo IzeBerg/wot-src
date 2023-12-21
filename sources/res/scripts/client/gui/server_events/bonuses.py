@@ -7,7 +7,7 @@ from adisp import adisp_process
 from battle_pass_common import BATTLE_PASS_OFFER_TOKEN_PREFIX, BATTLE_PASS_Q_CHAIN_BONUS_NAME, BATTLE_PASS_Q_CHAIN_TOKEN_PREFIX, BATTLE_PASS_RANDOM_QUEST_BONUS_NAME, BATTLE_PASS_RANDOM_QUEST_TOKEN_PREFIX, BATTLE_PASS_SELECT_BONUS_NAME, BATTLE_PASS_STYLE_PROGRESS_BONUS_NAME, BATTLE_PASS_TOKEN_3D_STYLE, BATTLE_PASS_TOKEN_PREFIX
 from blueprints.BlueprintTypes import BlueprintTypes
 from blueprints.FragmentTypes import getFragmentType
-from comp7_common import COMP7_TOKEN_WEEKLY_REWARD_NAME, COMP7_TOKEN_WEEKLY_REWARD_ID
+from comp7_common import COMP7_WEEKLY_REWARD_TOKEN_REGEXP
 from constants import CURRENCY_TOKEN_PREFIX, DOSSIER_TYPE, EVENT_TYPE as _ET, LOOTBOX_TOKEN_PREFIX, PREMIUM_ENTITLEMENTS, RESOURCE_TOKEN_PREFIX, RentType, CUSTOMIZATION_PROGRESS_PREFIX, WoTPlusBonusType
 from debug_utils import LOG_CURRENT_EXCEPTION, LOG_ERROR
 from dossiers2.custom.records import RECORD_DB_IDS
@@ -84,6 +84,7 @@ _CUSTOMIZATION_BONUSES = frozenset([
  'camouflage', 'style', 'paint', 'modification', 'projection_decal', 'personal_number'])
 _META_BONUS_BROWSER_VIEW_TYPE = {'internal': VIEW_ALIAS.BROWSER_LOBBY_TOP_SUB, 
    'overlay': VIEW_ALIAS.WEB_VIEW_TRANSPARENT}
+COMP7_TOKEN_WEEKLY_REWARD_NAME = 'comp7TokenWeeklyReward'
 _logger = logging.getLogger(__name__)
 
 def _getAchievement(block, record, value):
@@ -1151,7 +1152,7 @@ def tokensFactory(name, value, isCompensation=False, ctx=None):
             result.append(ResourceBonus(name, {tID: tValue}, RESOURCE_TOKEN_PREFIX, isCompensation, ctx))
         elif tID.startswith(CUSTOMIZATION_PROGRESS_PREFIX):
             result.append(C11nProgressTokenBonus({tID: tValue}, isCompensation, ctx))
-        elif tID.startswith(COMP7_TOKEN_WEEKLY_REWARD_ID):
+        elif COMP7_WEEKLY_REWARD_TOKEN_REGEXP.match(tID):
             result.append(Comp7TokenWeeklyRewardBonus(name, {tID: tValue}, isCompensation, ctx))
         else:
             result.append(BattleTokensBonus(name, {tID: tValue}, isCompensation, ctx))

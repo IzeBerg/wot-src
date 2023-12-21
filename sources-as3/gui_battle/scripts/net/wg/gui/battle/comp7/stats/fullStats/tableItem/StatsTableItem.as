@@ -55,15 +55,18 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
       
       private var _voiceChatConnected:Boolean = true;
       
+      private var _isSuperSquad:Boolean = false;
+      
       private var _noSoundIconOriginalY:int = -1;
       
       private var _noSoundIconSquadY:int = -1;
       
       public function StatsTableItem(param1:MovieClip, param2:int, param3:int)
       {
+         var _loc4_:int = 0;
          this._tooltipMgr = App.toolTipMgr;
          super(param1,param2,param3);
-         var _loc4_:int = param2 * this.numRows + param3;
+         _loc4_ = param2 * this.numRows + param3;
          this._rankIcon = param1.rankIconsCollection[_loc4_];
          this._roleSkillLevel = param1.roleSkillLevelCollection[_loc4_];
          this._roleSkillLevel.visible = false;
@@ -118,12 +121,19 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
          }
          if(isInvalid(SquadInvalidationType.SQUAD_INDEX))
          {
-            _loc2_ = this._squadIndex > 0;
+            _loc2_ = this._squadIndex > 0 || this._isSuperSquad;
             this._squadIcon.visible = _loc2_;
             if(_loc2_)
             {
-               _loc3_ = !!isSquadPersonal ? BATTLEATLAS.squad_gold : BATTLEATLAS.squad_silver;
-               this._squadIcon.imageName = _loc3_(this._squadIndex.toString());
+               if(this._isSuperSquad)
+               {
+                  this._squadIcon.imageName = !!isSquadPersonal ? BATTLEATLAS.SUPER_SQUAD_GOLD : BATTLEATLAS.SUPER_SQUAD_SILVER;
+               }
+               else
+               {
+                  _loc3_ = !!isSquadPersonal ? BATTLEATLAS.squad_gold : BATTLEATLAS.squad_silver;
+                  this._squadIcon.imageName = _loc3_(this._squadIndex.toString());
+               }
             }
             this.updateNoSoundIconY();
          }
@@ -211,6 +221,16 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
             return;
          }
          this._squadIndex = param1;
+         invalidate(SquadInvalidationType.SQUAD_INDEX);
+      }
+      
+      public function set isSuperSquad(param1:Boolean) : void
+      {
+         if(param1 == this._isSuperSquad)
+         {
+            return;
+         }
+         this._isSuperSquad = param1;
          invalidate(SquadInvalidationType.SQUAD_INDEX);
       }
       

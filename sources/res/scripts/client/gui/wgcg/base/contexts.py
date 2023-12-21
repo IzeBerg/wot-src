@@ -29,6 +29,12 @@ class CommonWebRequestCtx(RequestCtx):
     def isClanSyncRequired(self):
         return True
 
+    def getDataObj(self, incomeData):
+        return incomeData
+
+    def getDefDataObj(self):
+        return
+
     def _getOwnClanDbID(self):
         return self.itemsCache.items.stats.clanDBID
 
@@ -99,12 +105,6 @@ class PingCtx(CommonWebRequestCtx):
 
     def getRequestType(self):
         return WebRequestDataType.PING
-
-    def getDataObj(self, incomeData):
-        return incomeData
-
-    def getDefDataObj(self):
-        return
 
     def isCaching(self):
         return False

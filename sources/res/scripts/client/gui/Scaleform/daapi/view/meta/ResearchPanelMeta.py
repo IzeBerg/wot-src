@@ -34,3 +34,7 @@ class ResearchPanelMeta(BaseDAAPIComponent):
     def as_setNavigationEnabledS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setNavigationEnabled(value)
+
+    def as_setModuleUpdateAvailableS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setModuleUpdateAvailable(value)

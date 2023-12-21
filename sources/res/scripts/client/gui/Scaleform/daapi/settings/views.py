@@ -87,6 +87,7 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     BATTLE_STRONGHOLDS_QUEUE = 'battleStrongholdsQueue'
     BATTLE_LOADING = 'battleLoading'
     LEGAL_INFO_WINDOW = 'legalInfoWindow'
+    LEGAL_INFO_TOP_WINDOW = 'legalInfoTopWindow'
     VEHICLE_INFO_WINDOW = 'vehicleInfoWindow'
     MODULE_INFO_WINDOW = 'moduleInfoWindow'
     BOOSTER_INFO_WINDOW = 'boosterInfoWindow'

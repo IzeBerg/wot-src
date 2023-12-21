@@ -1,7 +1,8 @@
-import logging, typing
+import logging
 from operator import attrgetter
+import Steam, adisp, typing
 from BWUtil import AsyncReturn
-import Steam, adisp
+from shared_utils import first
 from CurrentVehicle import HeroTankPreviewAppearance
 from constants import GameSeasonType, RentType
 from debug_utils import LOG_WARNING
@@ -27,6 +28,7 @@ from gui.Scaleform.genConsts.PERSONAL_MISSIONS_ALIASES import PERSONAL_MISSIONS_
 from gui.Scaleform.genConsts.QUESTS_ALIASES import QUESTS_ALIASES
 from gui.Scaleform.genConsts.RANKEDBATTLES_ALIASES import RANKEDBATTLES_ALIASES
 from gui.Scaleform.genConsts.STORAGE_CONSTANTS import STORAGE_CONSTANTS
+from gui.clans.clan_cache import g_clanCache
 from gui.game_control.links import URLMacros
 from gui.impl import backport
 from gui.impl.gen import R
@@ -44,7 +46,6 @@ from gui.prb_control.settings import CTRL_ENTITY_TYPE
 from gui.resource_well.resource import Resource
 from gui.resource_well.resource_well_helpers import isResourceWellRewardVehicle
 from gui.shared import events, g_eventBus
-from gui.clans.clan_cache import g_clanCache
 from gui.shared.event_bus import EVENT_BUS_SCOPE
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items.Tankman import NO_TANKMAN
@@ -60,7 +61,6 @@ from helpers import dependency
 from helpers.aop import pointcutable
 from items import ITEM_TYPES, parseIntCompactDescr, vehicles as vehicles_core
 from nations import NAMES
-from shared_utils import first
 from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.game_control import IBrowserController, IClanNotificationController, ICollectionsSystemController, IHeroTankController, IMarathonEventsController, IReferralProgramController, IResourceWellController, IBoostersController, IComp7Controller
 from skeletons.gui.goodies import IGoodiesCache
@@ -72,7 +72,7 @@ from wg_async import wg_async, wg_await
 if typing.TYPE_CHECKING:
     from typing import Callable, Dict, Generator, Iterable, List, Union, Tuple, Optional
     from gui.marathon.marathon_event import MarathonEvent
-    from enum import EnumMeta
+    from enum import Enum
     from uilogging.wot_plus.logging_constants import WotPlusInfoPageSource
     from gui.impl.lobby.crew.widget.crew_widget import BuildedMessage
 _logger = logging.getLogger(__name__)
@@ -145,9 +145,9 @@ def showFrontlineWelcomeWindow():
     WelcomeViewWindow().load()
 
 
-def showFrontlineInfoWindow():
+def showFrontlineInfoWindow(autoscrollSection=''):
     from frontline.gui.impl.lobby.views.sub_views.info_view import InfoViewWindow
-    InfoViewWindow().load()
+    InfoViewWindow(autoscrollSection=autoscrollSection).load()
 
 
 def showBattleRoyaleLevelUpWindow(reusableInfo, parent=None):
@@ -538,13 +538,15 @@ def showConfigurableVehiclePreview(vehTypeCompDescr, previewAlias, previewBackCb
        'itemsPack': itemPack}), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
-def showVehiclePreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, vehStrCD=None, previewBackCb=None, itemsPack=None, offers=None, price=MONEY_UNDEFINED, oldPrice=None, title='', description=None, endTime=None, buyParams=None, vehParams=None, **kwargs):
+def showVehiclePreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, vehStrCD=None, previewBackCb=None, itemsPack=None, offers=None, price=MONEY_UNDEFINED, oldPrice=None, title='', description=None, endTime=None, buyParams=None, obtainingMethod=None, vehParams=None, **kwargs):
     heroTankController = dependency.instance(IHeroTankController)
     heroTankCD = heroTankController.getCurrentTankCD()
     isHeroTank = heroTankCD and heroTankCD == vehTypeCompDescr
     if isHeroTank and not (itemsPack or offers or vehParams):
         goToHeroTankOnScene(vehTypeCompDescr, previewAlias, previewBackCb=previewBackCb, instantly=True)
     else:
+        from ClientSelectableCameraObject import ClientSelectableCameraObject
+        ClientSelectableCameraObject.switchCamera()
         vehicle = dependency.instance(IItemsCache).items.getItemByCD(vehTypeCompDescr)
         if not (itemsPack or offers or vehParams) and vehicle.canTradeIn:
             viewAlias = VIEW_ALIAS.TRADE_IN_VEHICLE_PREVIEW
@@ -568,6 +570,7 @@ def showVehiclePreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, v
            'description': description, 
            'endTime': endTime, 
            'buyParams': buyParams, 
+           'obtainingMethod': obtainingMethod, 
            'vehParams': vehParams})
         g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(viewAlias), ctx=kwargs), EVENT_BUS_SCOPE.LOBBY)
     return
@@ -575,16 +578,12 @@ def showVehiclePreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, v
 
 def showVehiclePreviewWithoutBottomPanel(vehCD, backCallback=None, **kwargs):
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.configurable_vehicle_preview import OptionalBlocks
-    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW), ctx={'itemCD': vehCD, 
+    kwargs.update({'itemCD': vehCD, 
        'previewBackCb': backCallback, 
-       'style': kwargs.get('style'), 
-       'topPanelData': kwargs.get('topPanelData'), 
        'hiddenBlocks': (
                       OptionalBlocks.CLOSE_BUTTON, OptionalBlocks.BUYING_PANEL), 
-       'previewAlias': VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW, 
-       'itemsPack': kwargs.get('itemsPack'), 
-       'backBtnLabel': kwargs.get('backBtnLabel'), 
-       'subscriptions': kwargs.get('subscriptions')}), EVENT_BUS_SCOPE.LOBBY)
+       'previewAlias': VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW})
+    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW), ctx=kwargs), EVENT_BUS_SCOPE.LOBBY)
 
 
 def showDelayedReward():
@@ -937,10 +936,29 @@ def showProgressiveRewardAwardWindow(bonuses, specialRewardType, currentStep, no
 
 
 @dependency.replace_none_kwargs(notificationMgr=INotificationWindowController)
-def showSeniorityRewardAwardWindow(completedQuests, data, notificationMgr=None):
+def showSeniorityRewardVehiclesWindow(vehicles=None, fromEntryPoint=True, notificationMgr=None):
+    from gui.impl.lobby.seniority_awards.seniority_awards_vehicles_view import SeniorityRewardVehiclesWindow
+    viewID = R.views.lobby.seniority_awards.SeniorityVehiclesAwardsView()
+    uiLoader = dependency.instance(IGuiLoader)
+    if uiLoader.windowsManager.getViewByLayoutID(viewID) is None:
+        window = SeniorityRewardVehiclesWindow(viewID, vehicles, fromEntryPoint)
+        notificationMgr.append(WindowNotificationCommand(window))
+    else:
+        _logger.error('SeniorityRewardVehiclesWindow already exists')
+    return
+
+
+@dependency.replace_none_kwargs(notificationMgr=INotificationWindowController)
+def showSeniorityRewardAwardWindow(data, notificationMgr=None):
     from gui.impl.lobby.seniority_awards.seniority_reward_award_view import SeniorityRewardAwardWindow
-    window = SeniorityRewardAwardWindow(completedQuests, data, R.views.lobby.seniority_awards.SeniorityAwardsView())
-    notificationMgr.append(WindowNotificationCommand(window))
+    viewID = R.views.lobby.seniority_awards.SeniorityAwardsView()
+    uiLoader = dependency.instance(IGuiLoader)
+    if uiLoader.windowsManager.getViewByLayoutID(viewID) is None:
+        window = SeniorityRewardAwardWindow(data, viewID)
+        notificationMgr.append(WindowNotificationCommand(window))
+    else:
+        _logger.error('SeniorityRewardAwardWindow already exists')
+    return
 
 
 def showBattlePassAwardsWindow(bonuses, data, useQueue=False, needNotifyClosing=True, packageRewards=None):
@@ -1022,6 +1040,7 @@ def showShowcaseStyleBuyingPreview(vehCD, style, descr, backCallback, backBtnDes
        'price': kwargs.get('price'), 
        'originalPrice': kwargs.get('originalPrice'), 
        'buyParams': kwargs.get('buyParams'), 
+       'obtainingMethod': kwargs.get('obtainingMethod'), 
        'endTime': kwargs.get('endTime'), 
        'discountPercent': kwargs.get('discountPercent')}), scope=EVENT_BUS_SCOPE.LOBBY)
 
@@ -1425,15 +1444,15 @@ def showEpicRewardsSelectionWindow(onRewardsReceivedCallback=None, onCloseCallba
 
 
 def showFrontlineAwards(bonuses, onCloseCallback=None, onAnimationEndedCallback=None, useQueue=False):
-    from gui.impl.lobby.frontline.awards_view import AwardsWindow
+    from frontline.gui.impl.lobby.views.awards_view import AwardsWindow
     findAndLoadWindow(useQueue, AwardsWindow, bonuses, onCloseCallback=onCloseCallback, onAnimationEndedCallback=onAnimationEndedCallback)
 
 
 @wg_async
 def showFrontlineConfirmDialog(skillIds, vehicleType='', applyForAllOfType=False, isBuy=True):
-    from gui.impl.lobby.tank_setup.dialogs.frontline_confirm_dialog import FrontlineReserveConfirmDialog
+    from frontline.gui.impl.lobby.dialogs.reserves_confirm_dialog import ReservesConfirmDialog
     from gui.impl.dialogs import dialogs
-    result = yield wg_await(dialogs.showSingleDialogWithResultData(skillIds=skillIds, vehicleType=vehicleType, applyForAllOfType=applyForAllOfType, isBuy=isBuy, layoutID=FrontlineReserveConfirmDialog.LAYOUT_ID, wrappedViewClass=FrontlineReserveConfirmDialog))
+    result = yield wg_await(dialogs.showSingleDialogWithResultData(wrappedViewClass=ReservesConfirmDialog, layoutID=ReservesConfirmDialog.LAYOUT_ID, skillIds=skillIds, vehicleType=vehicleType, applyForAllOfType=applyForAllOfType, isBuy=isBuy))
     raise AsyncReturn(result)
 
 
@@ -1981,9 +2000,7 @@ def showResourceWellAwardWindow(serialNumber='', notificationMgr=None):
     return
 
 
-def showResourceWellVehiclePreview(vehicleCD, style=None, backCallback=None, topPanelData=None, isHeroTank=False, previewAlias=None, previousBackAlias=None):
-    if previewAlias is None:
-        previewAlias = VIEW_ALIAS.LOBBY_HANGAR if isHeroTank else VIEW_ALIAS.RESOURCE_WELL_VEHICLE_PREVIEW
+def showResourceWellVehiclePreview(vehicleCD, style=None, backCallback=None, topPanelData=None):
     if topPanelData is not None and topPanelData.get('currentTabID') == TabID.PERSONAL_NUMBER_VEHICLE:
         previewStyle = style
     else:
@@ -1993,10 +2010,7 @@ def showResourceWellVehiclePreview(vehicleCD, style=None, backCallback=None, top
        'numberStyle': style, 
        'style': previewStyle, 
        'topPanelData': topPanelData, 
-       'previewAlias': previewAlias, 
-       'previewAppearance': HeroTankPreviewAppearance() if isHeroTank else None, 
-       'isHeroTank': isHeroTank, 
-       'previousBackAlias': previousBackAlias}), EVENT_BUS_SCOPE.LOBBY)
+       'previewAlias': VIEW_ALIAS.RESOURCE_WELL_VEHICLE_PREVIEW}), EVENT_BUS_SCOPE.LOBBY)
     return
 
 
@@ -2076,11 +2090,18 @@ def showPersonalReservesConversion():
     return
 
 
-def showComp7MetaRootView(tabId=None, *args):
+def showComp7MetaRootView(tabId=None, *args, **kwargs):
     from gui.impl.lobby.comp7.meta_view.meta_root_view import MetaRootView
-    g_eventBus.handleEvent(events.Comp7Event(events.Comp7Event.OPEN_META), scope=EVENT_BUS_SCOPE.LOBBY)
-    event = events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.comp7.MetaRootView(), MetaRootView, ScopeTemplates.LOBBY_SUB_SCOPE), tabId=tabId, *args)
-    g_eventBus.handleEvent(event, scope=EVENT_BUS_SCOPE.LOBBY)
+    uiLoader = dependency.instance(IGuiLoader)
+    contentResId = R.views.lobby.comp7.MetaRootView()
+    metaView = uiLoader.windowsManager.getViewByLayoutID(contentResId)
+    if metaView is None:
+        g_eventBus.handleEvent(events.Comp7Event(events.Comp7Event.OPEN_META), scope=EVENT_BUS_SCOPE.LOBBY)
+        event = events.LoadGuiImplViewEvent(GuiImplViewLoadParams(contentResId, MetaRootView, ScopeTemplates.LOBBY_SUB_SCOPE), tabId=tabId, *args, **kwargs)
+        g_eventBus.handleEvent(event, scope=EVENT_BUS_SCOPE.LOBBY)
+    elif tabId is not None:
+        metaView.switchPage(tabId)
+    return
 
 
 def showComp7NoVehiclesScreen():
@@ -2136,6 +2157,12 @@ def showComp7SeasonStatisticsScreen(seasonNumber=None, force=False, notification
         window.load()
     else:
         notificationMgr.append(WindowNotificationCommand(window))
+
+
+def showComp7PurchaseDialog(productCode):
+    from gui.impl.lobby.comp7.dialogs.purchase_dialog import PurchaseDialogWindow
+    if not PurchaseDialogWindow.getInstances():
+        PurchaseDialogWindow(productCode).load()
 
 
 @dependency.replace_none_kwargs(guiLoader=IGuiLoader, collections=ICollectionsSystemController)

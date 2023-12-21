@@ -88,6 +88,7 @@
 			<armor_7>8</armor_7>
 			<armor_8>0</armor_8>
 			<armor_9>40</armor_9>
+			<armor_10>50</armor_10>
 			<armor_16>13</armor_16>
 		</armor>
 		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
@@ -132,8 +133,8 @@
 			</turret>
 		</turretPositions>
 		<hitTester>
-			<collisionModelServer>vehicles/german/G09_Hetzer_MapsTraining_Dummy_ATSPG_1/collision/Hull.model</collisionModelServer>
-			<collisionModelClient>vehicles/german/G09_Hetzer_MapsTraining_Dummy_ATSPG_1/collision_client/Hull.model</collisionModelClient>
+			<collisionModelServer>vehicles/german/G09_Hetzer/collision/Hull.model</collisionModelServer>
+			<collisionModelClient>vehicles/german/G09_Hetzer/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
 		<hangarShadowTexture>vehicles/german/G09_Hetzer/Hetzer_HangarShadowMap.dds</hangarShadowTexture>
 		<customizationSlots>
@@ -1730,8 +1731,8 @@
 			<wwsoundNPC>trds_chf_npc</wwsoundNPC>
 			<hullPosition>0.000000 0.980976 0.000000</hullPosition>
 			<hitTester>
-				<collisionModelServer>vehicles/german/G09_Hetzer_MapsTraining_Dummy_ATSPG_1/collision/Chassis.model</collisionModelServer>
-				<collisionModelClient>vehicles/german/G09_Hetzer_MapsTraining_Dummy_ATSPG_1/collision_client/Chassis.model</collisionModelClient>
+				<collisionModelServer>vehicles/german/G09_Hetzer/collision/Chassis.model</collisionModelServer>
+				<collisionModelClient>vehicles/german/G09_Hetzer/collision_client/Chassis.model</collisionModelClient>
 			</hitTester>
 			<topRightCarryingPoint>
 				1.09528 1.47148
@@ -1858,8 +1859,8 @@
 						<exploded>vehicles/german/G09_Hetzer_MapsTraining_Dummy_ATSPG_1/crash/lod0/Gun_02.model</exploded>
 					</models>
 					<hitTester>
-						<collisionModelServer>vehicles/german/G09_Hetzer_MapsTraining_Dummy_ATSPG_1/collision/Gun_02.model</collisionModelServer>
-						<collisionModelClient>vehicles/german/G09_Hetzer_MapsTraining_Dummy_ATSPG_1/collision_client/Gun_02.model</collisionModelClient>
+						<collisionModelServer>vehicles/german/G09_Hetzer/collision/Gun_02.model</collisionModelServer>
+						<collisionModelClient>vehicles/german/G09_Hetzer/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
 					<customizationSlots>
 						<slot>
@@ -1940,8 +1941,8 @@
 				<exploded>vehicles/german/G09_Hetzer_MapsTraining_Dummy_ATSPG_1/crash/lod0/turret_01.model</exploded>
 			</models>
 			<hitTester>
-				<collisionModelServer>vehicles/german/G09_Hetzer_MapsTraining_Dummy_ATSPG_1/collision/Turret_01.model</collisionModelServer>
-				<collisionModelClient>vehicles/german/G09_Hetzer_MapsTraining_Dummy_ATSPG_1/collision_client/Turret_01.model</collisionModelClient>
+				<collisionModelServer>vehicles/german/G09_Hetzer/collision/Turret_01.model</collisionModelServer>
+				<collisionModelClient>vehicles/german/G09_Hetzer/collision_client/Turret_01.model</collisionModelClient>
 			</hitTester>
 			<gunPosition>-0.000000 0.000000 -0.000000</gunPosition>
 			<physicsShape>

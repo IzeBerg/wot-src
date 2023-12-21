@@ -820,6 +820,8 @@ class SYSTEM_MESSAGES(object):
     WALLET_NOT_AVAILABLE_GOLD = '#system_messages:wallet/not_available_gold'
     WALLET_NOT_AVAILABLE_FREEXP = '#system_messages:wallet/not_available_freexp'
     SENIORITY_AWARDS_CLAIM_REWARD_FAILED = '#system_messages:seniority_awards/claim_reward_failed'
+    SENIORITY_AWARDS_SELECTION_MULTIPLE_TOKENS = '#system_messages:seniority_awards/selection_multiple_tokens'
+    SENIORITY_AWARDS_SELECTION_TIMEOUT = '#system_messages:seniority_awards/selection_timeout'
     PERSONALMISSIONS_SELECT_SUCCESS = '#system_messages:personalMissions/select/success'
     PERSONALMISSIONS_SELECT_SERVER_ERROR = '#system_messages:personalMissions/select/server_error'
     PERSONALMISSIONS_SELECT_SERVER_ERROR_WRONG_ARGS_TYPE = '#system_messages:personalMissions/select/server_error/WRONG_ARGS_TYPE'
@@ -1270,6 +1272,13 @@ class SYSTEM_MESSAGES(object):
     BATTLEPASS_SWITCHCHAPTER_SUCCESS = '#system_messages:battlePass/switchChapter/success'
     BATTLEPASS_SWITCHCHAPTER_REMINDER = '#system_messages:battlePass/switchChapter/reminder'
     BATTLEPASS_ACTIVATECHAPTER_SUCCESS = '#system_messages:battlePass/activateChapter/success'
+    BATTLEPASSH_SWITCH_STARTED_TITLE = '#system_messages:battlePassH/switch_started/title'
+    BATTLEPASSH_SWITCH_STARTED_BODY = '#system_messages:battlePassH/switch_started/body'
+    BATTLEPASSH_SWITCH_DISABLE_TITLE = '#system_messages:battlePassH/switch_disable/title'
+    BATTLEPASSH_SWITCH_DISABLE_BODY = '#system_messages:battlePassH/switch_disable/body'
+    BATTLEPASSH_SWITCH_ENABLED_BODY = '#system_messages:battlePassH/switch_enabled/body'
+    BATTLEPASSH_GAMEMODEENABLED_HEADER = '#system_messages:battlePassH/gameModeEnabled/header'
+    BATTLEPASSH_SEASONEND_TEXT = '#system_messages:battlePassH/seasonEnd/text'
     COLLECTORVEHICLE_SWITCH_OFF_TITLE = '#system_messages:collectorVehicle/switch_off/title'
     COLLECTORVEHICLE_SWITCH_OFF_BODY = '#system_messages:collectorVehicle/switch_off/body'
     COLLECTORVEHICLE_SWITCH_ON_TITLE = '#system_messages:collectorVehicle/switch_on/title'
@@ -1356,6 +1365,8 @@ class SYSTEM_MESSAGES(object):
     ACHIEVEMENTS_SERVER_ERROR = '#system_messages:achievements/server_error'
     LIMITEDUI_SWITCHON = '#system_messages:limitedUI/switchOn'
     LIMITEDUI_SWITCHOFF = '#system_messages:limitedUI/switchOff'
+    SENIORITYAWARDS_SWITCH_PAUSE_ON_BODY = '#system_messages:seniorityAwards/switch_pause_on/body'
+    SENIORITYAWARDS_SWITCH_PAUSE_OFF_BODY = '#system_messages:seniorityAwards/switch_pause_off/body'
     UNIT_NOTIFICATION_DIVISIONTYPE_ENUM = (
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -2312,6 +2323,8 @@ class SYSTEM_MESSAGES(object):
      WALLET_NOT_AVAILABLE_GOLD,
      WALLET_NOT_AVAILABLE_FREEXP,
      SENIORITY_AWARDS_CLAIM_REWARD_FAILED,
+     SENIORITY_AWARDS_SELECTION_MULTIPLE_TOKENS,
+     SENIORITY_AWARDS_SELECTION_TIMEOUT,
      PERSONALMISSIONS_SELECT_SUCCESS,
      PERSONALMISSIONS_SELECT_SERVER_ERROR,
      PERSONALMISSIONS_SELECT_SERVER_ERROR_WRONG_ARGS_TYPE,
@@ -2762,6 +2775,13 @@ class SYSTEM_MESSAGES(object):
      BATTLEPASS_SWITCHCHAPTER_SUCCESS,
      BATTLEPASS_SWITCHCHAPTER_REMINDER,
      BATTLEPASS_ACTIVATECHAPTER_SUCCESS,
+     BATTLEPASSH_SWITCH_STARTED_TITLE,
+     BATTLEPASSH_SWITCH_STARTED_BODY,
+     BATTLEPASSH_SWITCH_DISABLE_TITLE,
+     BATTLEPASSH_SWITCH_DISABLE_BODY,
+     BATTLEPASSH_SWITCH_ENABLED_BODY,
+     BATTLEPASSH_GAMEMODEENABLED_HEADER,
+     BATTLEPASSH_SEASONEND_TEXT,
      COLLECTORVEHICLE_SWITCH_OFF_TITLE,
      COLLECTORVEHICLE_SWITCH_OFF_BODY,
      COLLECTORVEHICLE_SWITCH_ON_TITLE,
@@ -2847,7 +2867,9 @@ class SYSTEM_MESSAGES(object):
      WINBACK_TURNOFFBATTLESERROR,
      ACHIEVEMENTS_SERVER_ERROR,
      LIMITEDUI_SWITCHON,
-     LIMITEDUI_SWITCHOFF)
+     LIMITEDUI_SWITCHOFF,
+     SENIORITYAWARDS_SWITCH_PAUSE_ON_BODY,
+     SENIORITYAWARDS_SWITCH_PAUSE_OFF_BODY)
 
     @classmethod
     def unit_notification_divisiontype(cls, key0):

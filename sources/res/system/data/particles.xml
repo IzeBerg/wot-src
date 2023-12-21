@@ -8,6 +8,10 @@
 		</preload>
 		<preload>
 			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex_water.dds</texture>
+		</preload>
+		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
 			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
 		</preload>
 		<preload>
@@ -93,6 +97,12 @@
 		<fn_effect_bin>particles/content_forward/pfx/tank/rocket_accelerator/start_smoke.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_brazier.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/A125_AEP_1_MDXXIII4_3DSt/engine_load.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/A125_AEP_1_MDXXIII4_3DSt/engine_idle.eff</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/A125_AEP_1_MDXXIII4_3DSt/engine_load.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/A125_AEP_1_MDXXIII4_3DSt/engine_idle.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/F108_Panhard_EBR_105_MDXXIII4_3DSt/engine_throttle.eff</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/F108_Panhard_EBR_105_MDXXIII4_3DSt/engine_throttle.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Fail.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Trace.vfx</fn_effect_bin>
@@ -2287,6 +2297,12 @@
 		<fn_effect_bin>particles/content_deferred/pfx/tank/rocket_accelerator/start_smoke.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_brazier.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/A125_AEP_1_MDXXIII4_3DSt/engine_load.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/A125_AEP_1_MDXXIII4_3DSt/engine_idle.eff</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/A125_AEP_1_MDXXIII4_3DSt/engine_load.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/A125_AEP_1_MDXXIII4_3DSt/engine_idle.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/F108_Panhard_EBR_105_MDXXIII4_3DSt/engine_throttle.eff</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/F108_Panhard_EBR_105_MDXXIII4_3DSt/engine_throttle.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_royal/CorrodedHit/CorrodedHit.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_royal/CorrodedHit/CorrodedHit_Fail.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_royal/CorrodedHit/CorrodedHit_Trace.vfx</fn_effect_bin>

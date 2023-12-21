@@ -25,19 +25,19 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const SHADOW_POSITIONS:Array = [null,new Point(-94,-59),new Point(-94,-85),new Point(-94,-42),new Point(-94,-72),new Point(-94,-77)];
       
-      private static const ICON:String = "Icon";
+      protected static const ICON:String = "Icon";
       
-      private static const LEVEL:String = "Level";
+      protected static const LEVEL:String = "Level";
       
-      private static const HEALTH_LBL:String = "Hp";
+      protected static const HEALTH_LBL:String = "Hp";
       
-      private static const HEALTH_BAR:String = "HpIndicator";
+      protected static const HEALTH_BAR:String = "HpIndicator";
       
-      private static const P_NAME_LBL:String = "PlayerName";
+      protected static const P_NAME_LBL:String = "PlayerName";
       
-      private static const V_NAME_LBL:String = "VehicleName";
+      protected static const V_NAME_LBL:String = "VehicleName";
       
-      private static const DAMAGE_PANEL:String = "Damage";
+      protected static const DAMAGE_PANEL:String = "Damage";
       
       private static const MARKER:String = "marker";
       

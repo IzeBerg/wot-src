@@ -1,7 +1,5 @@
 import logging
 from CurrentVehicle import g_currentVehicle
-from account_helpers.settings_core.settings_constants import OnceOnlyHints
-from gui.limited_ui.lui_rules_storage import LuiRules
 from skeletons.gui.game_control import ILimitedUIController
 from wg_async import wg_async
 from frameworks.wulf import ViewStatus
@@ -13,10 +11,6 @@ from gui.shared.gui_items.Vehicle import Vehicle
 from helpers import dependency
 from skeletons.account_helpers.settings_core import ISettingsCore
 _logger = logging.getLogger(__name__)
-_AMMUNITION_PANEL_HINTS = (
- OnceOnlyHints.AMMUNITION_PANEL_HINT, OnceOnlyHints.AMUNNITION_PANEL_EPIC_BATTLE_ABILITIES_HINT)
-_HINT_TO_RULE_ID = {OnceOnlyHints.AMMUNITION_PANEL_HINT: LuiRules.AP_ZONE_HINT, 
-   OnceOnlyHints.AMUNNITION_PANEL_EPIC_BATTLE_ABILITIES_HINT: LuiRules.AP_BATTLE_ABILITIES_HINT}
 
 class HangarAmmunitionPanelView(BaseAmmunitionPanelView):
     _settingsCore = dependency.descriptor(ISettingsCore)
@@ -41,17 +35,6 @@ class HangarAmmunitionPanelView(BaseAmmunitionPanelView):
         super(HangarAmmunitionPanelView, self)._removeListeners()
         self.viewModel.ammunitionPanel.onChangeSetupIndex -= self._onChangeSetupIndex
         self.viewModel.onEscKeyDown -= self.__onEscKeyDown
-
-    def _onLoading(self, *args, **kwargs):
-        super(HangarAmmunitionPanelView, self)._onLoading(*args, **kwargs)
-        serverSettings = self._settingsCore.serverSettings
-        for hintName in _AMMUNITION_PANEL_HINTS:
-            showHint = not serverSettings.getOnceOnlyHintsSetting(hintName, default=False)
-            ruleID = _HINT_TO_RULE_ID.get(hintName)
-            if showHint and (ruleID is None or self._limitedUIController.isRuleCompleted(ruleID)):
-                serverSettings.setOnceOnlyHintsSettings({hintName: True})
-
-        return
 
     @wg_async
     def _onPanelSectionSelected(self, args):

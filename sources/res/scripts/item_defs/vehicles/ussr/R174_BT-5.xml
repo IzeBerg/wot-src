@@ -2056,7 +2056,7 @@
 				<rightTrack>10</rightTrack>
 			</armor>
 			<weight>3300</weight>
-			<maxLoad>10720</maxLoad>
+			<maxLoad>10800</maxLoad>
 			<terrainResistance>
 				0.9 1.1 2.7
 				<!--BW_String-->
@@ -2066,11 +2066,11 @@
 			<rotationSpeed>40</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
-					0.28
+					0.22
 					<!--BW_String-->
 				</vehicleMovement>
 				<vehicleRotation>
-					0.28
+					0.22
 					<!--BW_String-->
 				</vehicleRotation>
 			</shotDispersionFactors>
@@ -3240,11 +3240,11 @@
 			<rotationSpeed>50</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
-					0.26
+					0.2
 					<!--BW_String-->
 				</vehicleMovement>
 				<vehicleRotation>
-					0.26
+					0.2
 					<!--BW_String-->
 				</vehicleRotation>
 			</shotDispersionFactors>
@@ -4550,19 +4550,13 @@
 				<_37mm_automatic_OKB2>
 					shared
 					<maxAmmo>165</maxAmmo>
-					<reloadTime>
-						5.2
-						<!--BW_String-->
-					</reloadTime>
-					<aimingTime>
-						2.7
-						<!--BW_String-->
-					</aimingTime>
+					<reloadTime>7</reloadTime>
+					<aimingTime>2</aimingTime>
 					<armor>
 						<gun>10</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.46
+						0.42
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<pitchLimits>
@@ -4576,6 +4570,29 @@
 						0.255
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
+					<shotDispersionFactors>
+						<whileGunDamaged>
+							2.0
+							<!--BW_String-->
+						</whileGunDamaged>
+						<turretRotation>
+							0.12
+							<!--BW_String-->
+						</turretRotation>
+						<afterShot>
+							1.5
+							<!--BW_String-->
+						</afterShot>
+					</shotDispersionFactors>
+					<clip>
+						<rate>180</rate>
+						<count>6</count>
+					</clip>
+					<burst>
+						<rate>180</rate>
+						<count>3</count>
+					</burst>
+					<turretYawLimits>-180 180</turretYawLimits>
 					<models>
 						<undamaged>vehicles/russian/R174_BT-5/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/russian/R174_BT-5/crash/lod0/Gun_01.model</destroyed>
@@ -5560,7 +5577,7 @@
 							<!--BW_String-->
 						</turretRotation>
 						<afterShot>
-							3.5
+							1.5
 							<!--BW_String-->
 						</afterShot>
 						<whileGunDamaged>
@@ -5572,12 +5589,15 @@
 						<gun>10</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.45
+						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>5</reloadTime>
+					<reloadTime>
+						6.5
+						<!--BW_String-->
+					</reloadTime>
 					<aimingTime>
-						2.5
+						1.9
 						<!--BW_String-->
 					</aimingTime>
 					<pitchLimits>
@@ -5591,6 +5611,15 @@
 						0.3
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
+					<clip>
+						<rate>180</rate>
+						<count>6</count>
+					</clip>
+					<burst>
+						<rate>180</rate>
+						<count>3</count>
+					</burst>
+					<turretYawLimits>-180 180</turretYawLimits>
 					<models>
 						<undamaged>vehicles/russian/R174_BT-5/normal/lod0/Gun_04.model</undamaged>
 						<destroyed>vehicles/russian/R174_BT-5/crash/lod0/Gun_04.model</destroyed>
@@ -5664,10 +5693,7 @@
 							0.1
 							<!--BW_String-->
 						</turretRotation>
-						<afterShot>
-							3.5
-							<!--BW_String-->
-						</afterShot>
+						<afterShot>3</afterShot>
 						<whileGunDamaged>
 							2.0
 							<!--BW_String-->
@@ -5677,17 +5703,14 @@
 						<gun>10</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.39
+						0.38
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
 						2.3
 						<!--BW_String-->
 					</reloadTime>
-					<aimingTime>
-						2.4
-						<!--BW_String-->
-					</aimingTime>
+					<aimingTime>2</aimingTime>
 					<pitchLimits>
 						<minPitch>0 -25 1 -25</minPitch>
 						<maxPitch>
@@ -6578,12 +6601,12 @@
 			shared
 			<unlocks>
 				<radio>
-					_12LL
-					<cost>5600</cost>
+					_10R
+					<cost>610</cost>
 				</radio>
 			</unlocks>
 		</_71-TK-3>
-		<_12LL>shared</_12LL>
+		<_10R>shared</_10R>
 	</radios>
 	<clientAdjustmentFactors/>
 	<physics>

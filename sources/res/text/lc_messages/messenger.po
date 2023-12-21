@@ -1264,7 +1264,7 @@ msgstr "Списано личных очков славы"
 msgid "platformCurrencyMsg/debited/freeXP"
 msgstr "Списано свободного опыта"
 
-msgid "platformCurrencyMsg/debited/sacoin"
+msgid "platformCurrencyMsg/debited/wdrcoin"
 msgstr "Списано жетонов за выслугу лет"
 
 msgid "platformCurrencyMsg/received/bpbit"
@@ -1282,7 +1282,7 @@ msgstr "Начислено личных очков славы"
 msgid "platformCurrencyMsg/received/freeXP"
 msgstr "Получено свободного опыта"
 
-msgid "platformCurrencyMsg/received/sacoin"
+msgid "platformCurrencyMsg/received/wdrcoin"
 msgstr "Добавлено жетонов за выслугу лет"
 
 msgid "prebattle/addAllBtn/tooltip/body"
@@ -1775,6 +1775,37 @@ msgstr "Подробнее"
 msgid "serviceChannelMessages/battlePassExtraWillEndSoon/button"
 msgstr "Подробнее"
 
+msgid "serviceChannelMessages/battlePassHReward/battle/chapterFinal/text"
+msgstr ""
+"Вы завершили главу «%(chapter)s» Боевого пропуска.\n"
+"Получены награды:"
+
+msgid "serviceChannelMessages/battlePassHReward/battle/final/text"
+msgstr ""
+"Вы завершили главу «%(chapter)s» Боевого пропуска.\n"
+"Получены награды:"
+
+msgid "serviceChannelMessages/battlePassHReward/battle/newLevel/text"
+msgstr ""
+"Вы завершили %(newLevel)s этап прогрессии Боевого пропуска.\n"
+"\n"
+"Получена награда:"
+
+msgid "serviceChannelMessages/battlePassHReward/buyProgress/text"
+msgstr ""
+"Добавлено этапов в главе «%(chapter)s»: %(levelCount)s\n"
+"Вы достигли %(currentLevel)s этапа.\n"
+"Получены награды:"
+
+msgid "serviceChannelMessages/battlePassHReward/buyWithRewards/text"
+msgstr ""
+"Получены улучшенные награды за ранее пройденные этапы Боевого пропуска:"
+
+msgid "serviceChannelMessages/battlePassHReward/buyWithoutRewards/text"
+msgstr ""
+"Теперь вы будете получать награды из базовой и улучшенной линеек "
+"одновременно."
+
 msgid "serviceChannelMessages/battlePassReward/activateChapter/text"
 msgstr "Получена награда за пройденные этапы за счёт накопленных очков:"
 
@@ -1832,7 +1863,7 @@ msgstr ""
 "Данный Улучшенный пропуск действует только для главы %(chapter)s."
 
 msgid "serviceChannelMessages/battlePassReward/header/autoSelectReward"
-msgstr "Начислена награда"
+msgstr "Начислена награда по умолчанию:"
 
 msgid "serviceChannelMessages/battlePassReward/header/buyBP"
 msgstr "Улучшенный пропуск куплен"
@@ -2374,6 +2405,9 @@ msgstr "Все экспериментальные модули списаны"
 msgid "serviceChannelMessages/enhancements/wipedOnVehicles"
 msgstr "Демонтированы экспериментальные модули со следующих машин"
 
+msgid "serviceChannelMessages/epicBattleResults/scenario"
+msgstr "Сценарий"
+
 msgid "serviceChannelMessages/epicReward/battleBooster_gift"
 msgstr "• Инструкции к оборудованию на выбор"
 
@@ -2893,7 +2927,7 @@ msgid "serviceChannelMessages/lootBoxes/header"
 msgstr "Вам посылка:"
 
 msgid "serviceChannelMessages/lootBoxes/item/name"
-msgstr "«%(name)s» %(colorTagOpen)sx%(count)s%(colorTagClose)s"
+msgstr "«%(name)s» %(colorTagOpen)s×%(count)s%(colorTagClose)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/button"
 msgstr "Посмотреть"

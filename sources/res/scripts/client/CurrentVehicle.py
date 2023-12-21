@@ -180,8 +180,7 @@ class _CurrentVehicle(_CachedVehicle):
         else:
             if self.isPresent() and self.isInHangar() and self.item.modelState:
                 if self.isInBootcamp():
-                    bootcampOutfit = self.bootcampController.getBootcampOutfit(self.item.descriptor)
-                    outfit = bootcampOutfit if bootcampOutfit else outfit
+                    outfit = self.bootcampController.getBootcampOutfit(self.item.descriptor) or outfit
                 self.hangarSpace.startToUpdateVehicle(self.item, outfit)
             else:
                 self.hangarSpace.removeVehicle()
@@ -414,7 +413,7 @@ class _CurrentVehicle(_CachedVehicle):
         if 'compDescr' in vehsDiff and self.__vehInvID in vehsDiff['compDescr']:
             isVehicleSold = vehsDiff['compDescr'][self.__vehInvID] is None
             isVehicleDescrChanged = not isVehicleSold
-        if isVehicleSold or self.__vehInvID == 0:
+        if (isVehicleSold or self.__vehInvID == 0) and vehsDiff:
             self.selectVehicle()
         else:
             isRepaired = 'repair' in vehsDiff and self.__vehInvID in vehsDiff['repair']
@@ -540,6 +539,7 @@ class _CurrentPreviewVehicle(_CachedVehicle):
         self.onVehicleInventoryChanged = Event(self._eManager)
         self.onSelected = Event(self._eManager)
         self.onChanged = Event(self._eManager)
+        self.onHeroStateUpdated = Event(self._eManager)
         return
 
     def destroy(self):
@@ -572,7 +572,9 @@ class _CurrentPreviewVehicle(_CachedVehicle):
         self.__vehAppearance = appearance or _RegularPreviewAppearance()
 
     def selectHeroTank(self, value):
-        self.__isHeroTank = value
+        if self.__isHeroTank != value:
+            self.__isHeroTank = value
+            self.onHeroStateUpdated()
 
     @property
     def isHeroTank(self):
@@ -677,7 +679,7 @@ class _CurrentPreviewVehicle(_CachedVehicle):
         g_clientUpdateManager.addCallbacks({'stats.unlocks': self._onUpdateUnlocks})
 
     def _selectVehicle(self, vehicleCD, vehicleStrCD=None, style=None, outfit=None):
-        if self.isPresent() and self.item.intCD == vehicleCD:
+        if not self.__isNeedToRefreshVehicle(vehicleCD, style, outfit):
             return
         else:
             Waiting.show('updateCurrentVehicle', isSingle=True, overlapsUI=False)
@@ -709,6 +711,16 @@ class _CurrentPreviewVehicle(_CachedVehicle):
         if self.isPresent() and self.item.intCD in list(unlocks):
             self.item.isUnlocked = True
             self.onVehicleUnlocked()
+
+    def __isNeedToRefreshVehicle(self, vehicleCD, style, outfit):
+        if not self.isPresent():
+            return bool(vehicleCD)
+        else:
+            if self.item.intCD != vehicleCD:
+                return True
+            if style is not None and outfit is None:
+                outfit = self.__getPreviewOutfitByStyle(style)
+            return outfit is not None
 
     def __getPreviewVehicle(self, vehicleCD):
         if vehicleCD is not None:

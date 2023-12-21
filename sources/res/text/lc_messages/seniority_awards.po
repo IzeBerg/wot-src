@@ -9,6 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "#PluralForms"
+msgstr ""
+"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2);"
 
 msgid "multiOpenView/applyLabel"
 msgstr "Так точно!"
@@ -44,6 +50,12 @@ msgstr ""
 "Награды за выслугу лет\n"
 "ждут вас!"
 
+msgid "notifications/selectVehicles/button"
+msgstr "Выбрать"
+
+msgid "notifications/selectVehicles/title"
+msgstr "Доступна машина за выслугу лет"
+
 msgid "notifications/tokens/button"
 msgstr "В Магазин"
 
@@ -65,7 +77,10 @@ msgstr "До списания жетонов: %(timeLeft)s"
 msgid "notifications/tokens/title"
 msgstr ""
 "Меняйте жетоны за выслугу\n"
-"лет на желаемую награду!"
+"лет на награды!"
+
+msgid "notifications/vehicleSelectionAvailable/title"
+msgstr "Вас ожидает одна из машин на выбор!"
 
 msgid "openBoxView/autoOpenTooltip/body"
 msgstr ""
@@ -94,10 +109,16 @@ msgid "rewardsView/applyBtn"
 msgstr "Так точно!"
 
 msgid "rewardsView/exchangeCoins"
-msgstr "Обменяйте жетоны на награды в Магазине."
+msgstr "Обменивайте жетоны на награды в Магазине."
+
+msgid "rewardsView/gotoHangarBtn"
+msgstr "Посмотреть в ангаре"
 
 msgid "rewardsView/gotoRewardsBtn"
 msgstr "В Магазин"
+
+msgid "rewardsView/info"
+msgstr "Подробнее о званиях"
 
 msgid "rewardsView/lootBox/descr"
 msgstr "Откройте и заберите содержимое!"
@@ -120,113 +141,35 @@ msgstr "К следующей награде (%(count)s)"
 msgid "rewardsView/openBtn"
 msgstr "Открыть"
 
-msgid "rewardsView/sacoin/counter"
-msgstr "×%(count)s"
+msgid "rewardsView/selection/available"
+msgstr "Доступна %(count)s машина на выбор за выслугу лет"
 
-msgid "rewardsView/subTitle/AT"
-msgstr "НАГРАДА ЗА УЧАСТИЕ В %(gradientStart)sАЛЬФА-ТЕСТЕ%(gradientEnd)s"
+msgid "rewardsView/selection/received"
+msgstr "Награда получена"
 
-msgid "rewardsView/subTitle/BT"
-msgstr "НАГРАДА ЗА УЧАСТИЕ В %(gradientStart)sБЕТА-ТЕСТЕ%(gradientEnd)s"
+msgid "rewardsView/subTitle/at"
+msgstr "СО ЗВАНИЕМ %(gradientStart)«ВЕТЕРАН»%(gradientEnd)"
 
-msgid "rewardsView/subTitle/Y0"
-msgstr "НАГРАДА ЗА БОЕВЫЕ ЗАСЛУГИ"
+msgid "rewardsView/subTitle/bt"
+msgstr "СО ЗВАНИЕМ %(gradientStart)«ВЕТЕРАН»%(gradientEnd)"
 
-msgid "rewardsView/subTitle/Y1"
-msgstr "НАГРАДА ЗА %(gradientStart)s1 ГОД%(gradientEnd)s В СТРОЮ"
+msgid "rewardsView/subTitle/ctg1"
+msgstr "СО ЗВАНИЕМ %(gradientStart)«РЕКРУТ»%(gradientEnd)"
 
-msgid "rewardsView/subTitle/Y10"
-msgstr "НАГРАДА ЗА %(gradientStart)s10 ЛЕТ%(gradientEnd)s В СТРОЮ"
+msgid "rewardsView/subTitle/ctg2"
+msgstr "СО ЗВАНИЕМ %(gradientStart)«БОЕЦ»%(gradientEnd)"
 
-msgid "rewardsView/subTitle/Y10_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"10 ЛЕТ В СТРОЮ"
+msgid "rewardsView/subTitle/ctg3"
+msgstr "СО ЗВАНИЕМ %(gradientStart)«КОМАНДИР»%(gradientEnd)"
 
-msgid "rewardsView/subTitle/Y11"
-msgstr "НАГРАДА ЗА %(gradientStart)s11 ЛЕТ%(gradientEnd)s В СТРОЮ"
+msgid "rewardsView/subTitle/ctg4"
+msgstr "СО ЗВАНИЕМ %(gradientStart)«ОФИЦЕР»%(gradientEnd)"
 
-msgid "rewardsView/subTitle/Y11_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"11 ЛЕТ В СТРОЮ"
+msgid "rewardsView/subTitle/ctg5"
+msgstr "СО ЗВАНИЕМ %(gradientStart)«ВЕТЕРАН»%(gradientEnd)"
 
-msgid "rewardsView/subTitle/Y12"
-msgstr "НАГРАДА ЗА %(gradientStart)s12 ЛЕТ%(gradientEnd)s В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y12_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"12 ЛЕТ В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y1_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"1 ГОД В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y2"
-msgstr "НАГРАДА ЗА %(gradientStart)s2 ГОДА%(gradientEnd)s В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y2_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"2 ГОДА В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y3"
-msgstr "НАГРАДА ЗА %(gradientStart)s3 ГОДА%(gradientEnd)s В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y3_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"3 ГОДА В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y4"
-msgstr "НАГРАДА ЗА %(gradientStart)s4 ГОДА%(gradientEnd)s В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y4_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"4 ГОДА В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y5"
-msgstr "НАГРАДА ЗА %(gradientStart)s5 ЛЕТ%(gradientEnd)s В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y5_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"5 ЛЕТ В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y6"
-msgstr "НАГРАДА ЗА %(gradientStart)s6 ЛЕТ%(gradientEnd)s В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y6_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"6 ЛЕТ В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y7"
-msgstr "НАГРАДА ЗА %(gradientStart)s7 ЛЕТ%(gradientEnd)s В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y7_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"7 ЛЕТ В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y8"
-msgstr "НАГРАДА ЗА %(gradientStart)s8 ЛЕТ%(gradientEnd)s В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y8_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"8 ЛЕТ В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y9"
-msgstr "НАГРАДА ЗА %(gradientStart)s9 ЛЕТ%(gradientEnd)s В СТРОЮ"
-
-msgid "rewardsView/subTitle/Y9_BT"
-msgstr ""
-"НАГРАДА ЗА УЧАСТИЕ В БЕТА-ТЕСТЕ И\n"
-"9 ЛЕТ В СТРОЮ"
+msgid "rewardsView/subTitle/ctg6"
+msgstr "СО ЗВАНИЕМ %(gradientStart)«ЛЕГЕНДА»%(gradientEnd)"
 
 msgid "rewardsView/subTitle/otherRewards"
 msgstr "Также получено:"
@@ -240,8 +183,14 @@ msgstr "ЗАКРЫТЬ"
 msgid "rewardsView/textButton/goto"
 msgstr "К ТЕХНИКЕ"
 
+msgid "rewardsView/textButton/select"
+msgstr "Выбрать"
+
 msgid "rewardsView/title"
 msgstr "ПОЗДРАВЛЯЕМ!"
+
+msgid "rewardsView/wdrcoin/counter"
+msgstr "×%(count)s"
 
 msgid "specialItem/body"
 msgstr ""
@@ -249,7 +198,109 @@ msgstr ""
 " списаны."
 
 msgid "specialItem/header"
-msgstr "%(count)s шт. жетонов за выслугу лет"
+msgstr "Жетонов за выслугу лет: %(count)s"
+
+msgid "tooltip/congratulation/at"
+msgstr "Поздравляем со званием «Ветеран»"
+
+msgid "tooltip/congratulation/bt"
+msgstr "Поздравляем со званием «Ветеран»"
+
+msgid "tooltip/congratulation/ctg1"
+msgstr "Поздравляем со званием «Рекрут»"
+
+msgid "tooltip/congratulation/ctg2"
+msgstr "Поздравляем со званием «Боец»"
+
+msgid "tooltip/congratulation/ctg3"
+msgstr "Поздравляем со званием «Командир»"
+
+msgid "tooltip/congratulation/ctg4"
+msgstr "Поздравляем со званием «Офицер»"
+
+msgid "tooltip/congratulation/ctg5"
+msgstr "Поздравляем со званием «Ветеран»"
+
+msgid "tooltip/congratulation/ctg6"
+msgstr "Поздравляем со званием «Легенда»"
+
+msgid "tooltip/medalBlock/label/and"
+msgstr " и "
+
+msgid "tooltip/medalBlock/label/ca"
+msgstr "За участие в Альфа-тесте"
+
+msgid "tooltip/medalBlock/label/cb"
+msgstr "За участие в Бета-тесте"
+
+msgid "tooltip/medalBlock/label/cbcn"
+msgstr "За участие в Бета-тесте"
+
+msgid "tooltip/medalBlock/label/duration"
+msgid_plural "plural/tooltip/medalBlock/label/duration"
+msgstr[0] "год в строю"
+msgstr[1] "%(years)s года в строю"
+msgstr[2] "%(years)s лет в строю"
+
+msgid "tooltip/rank/ctg1"
+msgstr "Рекрут"
+
+msgid "tooltip/rank/ctg2"
+msgstr "Боец"
+
+msgid "tooltip/rank/ctg3"
+msgstr "Командир"
+
+msgid "tooltip/rank/ctg4"
+msgstr "Офицер"
+
+msgid "tooltip/rank/ctg5"
+msgstr "Ветеран"
+
+msgid "tooltip/rank/ctg6"
+msgstr "Легенда"
 
 msgid "tooltip/restrictedMode"
 msgstr "Операция временно недоступна. Попробуйте позже."
+
+msgid "tooltip/segment/ctg1"
+msgstr "До года"
+
+msgid "tooltip/segment/ctg2"
+msgstr "1–3 года"
+
+msgid "tooltip/segment/ctg3"
+msgstr "4–6 лет"
+
+msgid "tooltip/segment/ctg4"
+msgstr "7–9 лет"
+
+msgid "tooltip/segment/ctg5"
+msgstr "10–14 лет"
+
+msgid "tooltip/segment/ctg6"
+msgstr "15 лет"
+
+msgid "vehicle/A134_M24E2_SuperChaffee"
+msgstr ""
+"Легендарный и очень удобный в управлении лёгкий танк. У него достойный урон "
+"в минуту и комфортные углы вертикального наведения, позволяющие эффективно "
+"использовать рельеф при игре."
+
+msgid "vehicle/G158_VK2801_105_SPXXI"
+msgstr ""
+"Обладает крупнокалиберным орудием и неплохим бронированием, что сказывается "
+"на динамике и манёвренности. Машина тяжёлая и очень эффективна при таране "
+"легкобронированных целей."
+
+msgid "vehicle/R160_T_50_2"
+msgstr ""
+"Лёгкий танк для активной разведки на всех стадиях боя. Компактность и "
+"высокая скорость позволяют избегать огня, что очень важно при достаточно "
+"скромных ТТХ орудия, диктующих осторожную игру."
+
+msgid "vehicle/R197_KV_1S_MZ"
+msgstr ""
+"Единственная на уровне машина с механизмом обратной дозарядки. Эта "
+"особенность обеспечивает невероятную эффективность, когда необходимо быстро "
+"нанести урон или поддержать огнём союзников."

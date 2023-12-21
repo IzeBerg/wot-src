@@ -203,7 +203,7 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
     def _onClose(self):
         quitResult = yield wg_await(self._tankSetup.canQuit())
         if quitResult:
-            self.__closeWindow()
+            self._closeWindow()
 
     @adisp.adisp_process
     def __onSpecializationSelect(self, args=None):
@@ -257,7 +257,7 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
         return
 
     def __onAcceptComplete(self):
-        self.__closeWindow()
+        self._closeWindow()
 
     def __onDragDropSwap(self, args):
         actionArgs = {'actionType': BaseSetupModel.DRAG_AND_DROP_SLOT_ACTION}
@@ -276,7 +276,7 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
         else:
             self.__moneyCache = self._itemsCache.items.stats.money
             if g_currentVehicle.isLocked() or not g_currentVehicle.isPresent():
-                self.__closeWindow()
+                self._closeWindow()
                 return
             isRentalChange = self._vehItem.getItem().rentalIsOver != g_currentVehicle.isDisabledInRent()
             if self._vehItem.getItem().setupLayouts != g_currentVehicle.item.setupLayouts or isRentalChange:
@@ -310,7 +310,7 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
             self._updateAmmunitionPanel()
             return
 
-    def __closeWindow(self):
+    def _closeWindow(self):
         if not self.__isClosed:
             if self.__blur is not None:
                 self.__blur.fini()
@@ -327,5 +327,5 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
             raise AsyncReturn(True)
         result = yield wg_await(self._tankSetup.canQuit())
         if result:
-            self.__closeWindow()
+            self._closeWindow()
         raise AsyncReturn(result)

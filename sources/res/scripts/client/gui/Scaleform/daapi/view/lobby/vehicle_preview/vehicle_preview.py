@@ -50,6 +50,7 @@ from tutorial.control.context import GLOBAL_FLAG
 from uilogging.shop.loggers import getPreviewUILoggers
 from uilogging.shop.logging_constants import ShopCloseItemStates
 from web.web_client_api.common import ItemPackEntry, ItemPackType, ItemPackTypeGroup
+from gui.shared.events import ViewEventType
 VEHICLE_PREVIEW_ALIASES = (
  VIEW_ALIAS.VEHICLE_PREVIEW, VIEW_ALIAS.HERO_VEHICLE_PREVIEW, VIEW_ALIAS.OFFER_GIFT_VEHICLE_PREVIEW,
  VIEW_ALIAS.TRADE_IN_VEHICLE_PREVIEW, VIEW_ALIAS.MARATHON_VEHICLE_PREVIEW, VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW,
@@ -160,8 +161,9 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         notInteractive = (
          VIEW_ALIAS.LOBBY_STORE, VIEW_ALIAS.RANKED_BATTLE_PAGE, VIEW_ALIAS.VEH_POST_PROGRESSION,
          VIEW_ALIAS.RESOURCE_WELL_VEHICLE_PREVIEW, VIEW_ALIAS.RESOURCE_WELL_HERO_VEHICLE_PREVIEW)
-        self._heroInteractive = not (self._itemsPack or self.__offers or ctx.get('offerID', 0) or self.__topPanelData or self._backAlias in notInteractive)
+        self._heroInteractive = not (self._itemsPack or self.__offers or ctx.get('offerID', 0) or self.__topPanelData or self._backAlias in notInteractive) and ctx.get('heroInteractive', True)
         self.__haveCustomCrew = any(item.type == ItemPackType.CREW_CUSTOM for item in self._itemsPack) if self._itemsPack else False
+        self.__obtainingMethod = ctx.get('obtainingMethod')
         self.__hangarVehicleCD = ctx.get('hangarVehicleCD')
         self.__previewAppearance = ctx.get('previewAppearance')
         if self.__previewAppearance:
@@ -170,7 +172,6 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         else:
             self.__vehAppearanceChanged = False
         self.__keepVehicleSelectionEnabled = False
-        self._needToResetAppearance = True
         if not self.__isHeroTank:
             self.__hangarSpace.removeVehicle()
         g_currentPreviewVehicle.selectHeroTank(self.__isHeroTank)
@@ -194,7 +195,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             g_currentPreviewVehicle.selectVehicle(self.__hangarVehicleCD, style=self.__style)
             g_currentPreviewVehicle.resetAppearance(self.__previewAppearance)
         else:
-            if g_currentPreviewVehicle.intCD == self._vehicleCD:
+            if g_currentPreviewVehicle.intCD == self._vehicleCD and not self.__isHeroTank:
                 g_currentPreviewVehicle.selectNoVehicle()
             g_currentPreviewVehicle.selectVehicle(self._vehicleCD, self.__vehicleStrCD, style=self.__style)
             super(VehiclePreview, self)._populate()
@@ -217,6 +218,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             if specialData is not None and specialData.enterEvent:
                 SoundGroups.g_instance.playSound2D(specialData.enterEvent)
             g_eventBus.addListener(OFFER_CHANGED_EVENT, self.__onOfferChanged)
+            g_eventBus.addListener(ViewEventType.LOAD_VIEW, self.__onViewLoaded, scope=EVENT_BUS_SCOPE.LOBBY)
             _updateCollectorHintParameters()
             _updatePostProgressionParameters()
             for event, callback in self.__subscriptions:
@@ -239,9 +241,6 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         self.__hangarSpace.setVehicleSelectable(self.__keepVehicleSelectionEnabled)
         self.removeListener(CameraRelatedEvents.CAMERA_ENTITY_UPDATED, self.handleSelectedEntityUpdated)
         isMapsTrainingViewOpened = self.__guiLoader.windowsManager.getViewByLayoutID(R.views.lobby.maps_training.MapsTrainingPage()) is not None
-        if self._needToResetAppearance and not isMapsTrainingViewOpened:
-            g_currentPreviewVehicle.selectNoVehicle()
-            g_currentPreviewVehicle.resetAppearance()
         g_eventBus.handleEvent(events.LobbySimpleEvent(events.LobbySimpleEvent.VEHICLE_PREVIEW_HIDDEN), scope=EVENT_BUS_SCOPE.LOBBY)
         if self._backAlias == VIEW_ALIAS.VEHICLE_PREVIEW:
             g_currentVehicle.refreshModel()
@@ -252,7 +251,10 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             self.__heroTanksControl.setInteractive(True)
         if self.__vehAppearanceChanged and not isMapsTrainingViewOpened:
             g_currentPreviewVehicle.resetAppearance()
+            if self.__isHeroTank:
+                g_currentPreviewVehicle.selectHeroTank(False)
         g_eventBus.removeListener(OFFER_CHANGED_EVENT, self.__onOfferChanged)
+        g_eventBus.removeListener(ViewEventType.LOAD_VIEW, self.__onViewLoaded, scope=EVENT_BUS_SCOPE.LOBBY)
         for event, callback in self.__subscriptions:
             event -= callback
 
@@ -289,7 +291,6 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             if isinstance(entity, HeroTank):
                 descriptor = entity.typeDescriptor
                 if descriptor:
-                    self._needToResetAppearance = False
                     vehicleCD = descriptor.type.compactDescr
                     if isResourceWellRewardVehicle(vehicleCD=vehicleCD):
                         event_dispatcher.showResourceWellHeroPreview(vehicleCD=vehicleCD, previewAlias=VIEW_ALIAS.VEHICLE_PREVIEW, previousBackAlias=self._backAlias, backCallback=self._previewBackCb)
@@ -319,6 +320,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             viewPy.setBackAlias(self._backAlias)
             viewPy.setBackCallback(self._previewBackCb)
             if self._itemsPack:
+                viewPy.setObtainingInfo(self.__obtainingMethod)
                 viewPy.setPackItems(self._itemsPack, self._price, self._oldPrice, self._title)
                 viewPy.setTimerData(self.__endTime)
                 viewPy.setBuyParams(self.__buyParams)
@@ -407,7 +409,12 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
            'isHeroTank': self.__isHeroTank, 
            'hangarVehicleCD': hangarVehicleCD, 
            'topPanelData': self.__topPanelData, 
-           'style': self.__ctx.get('style')})
+           'style': self.__ctx.get('style'), 
+           'heroInteractive': self.__ctx.get('heroInteractive', True)})
+
+    def __onViewLoaded(self, event):
+        if event.alias == VIEW_ALIAS.LOBBY_HANGAR:
+            self.removeListener(CameraRelatedEvents.CAMERA_ENTITY_UPDATED, self.handleSelectedEntityUpdated)
 
     def __onVehicleLoading(self, ctxEvent):
         if self.__customizationCD is not None and not ctxEvent.ctx.get('started'):

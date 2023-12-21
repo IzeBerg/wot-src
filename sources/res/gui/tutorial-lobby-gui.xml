@@ -1077,46 +1077,6 @@
 			</value>
 		</item>
 		<item>
-			<name>ProgressionEntryPoint</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>customization</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>progressionEntryPoint</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>5</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>-15</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>130</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>100</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
 			<name>CustomizationCarousel</name>
 			<type>dict</type>
 			<value>
@@ -1151,86 +1111,6 @@
 							<name>bottom</name>
 							<type>float</type>
 							<value>-3</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>CustomizationCarouselEditableStyle</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>customization</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>bottomPanel.carousel.editableStyleHint</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>-8</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>-3</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>-8</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>10</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>CustomizationCarouselProgressionDecal</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>customization</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>bottomPanel.carousel.progressionDecalHint</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>-8</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>-3</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>-8</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>10</value>
 						</item>
 					</value>
 				</item>
@@ -4306,46 +4186,6 @@
 			</value>
 		</item>
 		<item>
-			<name>AmmunitionPanelTutorialHintZone</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>R.views.lobby.tanksetup.AmmunitionPanel</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>div[class^=OptDeviceSlot][class*=specializationsSlot]</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
 			<name>AmmunitionPanelBattleAbilities</name>
 			<type>dict</type>
 			<value>
@@ -5258,6 +5098,34 @@
 							<value>0</value>
 						</item>
 					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>FrontlineScenariosInfoBtn</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.tanksetup.HangarAmmunitionSetup</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=scenarios_btn]</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>FrontlineScenariosInfoBtnSmall</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.tanksetup.HangarAmmunitionSetup</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=scenarios_btn_small]</value>
 				</item>
 			</value>
 		</item>
