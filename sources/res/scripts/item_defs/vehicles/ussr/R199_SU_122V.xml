@@ -3087,10 +3087,7 @@
 						0.36
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>
-						9.2
-						<!--BW_String-->
-					</reloadTime>
+					<reloadTime>40</reloadTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.1
@@ -3105,6 +3102,10 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<clip>
+						<count>4</count>
+						<rate>30</rate>
+					</clip>
 					<aimingTime>
 						2.5
 						<!--BW_String-->
@@ -3294,8 +3295,8 @@
 		</detailed>
 	</physics>
 	<siege_mode>
-		<switchOnTime>1</switchOnTime>
-		<switchOffTime>1</switchOffTime>
+		<switchOnTime>2</switchOnTime>
+		<switchOffTime>2</switchOffTime>
 		<engineDamageCoeff>2</engineDamageCoeff>
 		<soundStateChange>
 			<on>strv_siege_mode_on_PC</on>

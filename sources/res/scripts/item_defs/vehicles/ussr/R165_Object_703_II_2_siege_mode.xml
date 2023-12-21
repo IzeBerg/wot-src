@@ -12,7 +12,7 @@
 	<postProgressionTree>role_HT_break</postProgressionTree>
 	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
-		<forward>46</forward>
+		<forward>41</forward>
 		<backward>16</backward>
 	</speedLimits>
 	<invisibility>
@@ -3278,7 +3278,7 @@
 					<pitchLimits>
 						<minPitch>0 -18 1 -18</minPitch>
 						<maxPitch>
-							0 7 0.425 7 0.433333 3.5 0.486111 1 0.513889 1 0.566667 3.5 0.575 7 1 7
+							0 5 0.425 5 0.433333 3.5 0.486111 1 0.513889 1 0.566667 3.5 0.575 5 1 5
 							<!--BW_String-->
 						</maxPitch>
 					</pitchLimits>
@@ -3287,7 +3287,7 @@
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<shotDispersionRadius>
-						0.38
+						0.4
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
@@ -3309,7 +3309,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						2.5
+						2.8
 						<!--BW_String-->
 					</aimingTime>
 					<multiGunEffects>shot_dualgun_mainext_L shot_dualgun_mainext_R</multiGunEffects>
@@ -3319,15 +3319,12 @@
 							<!--BW_String-->
 						</chargeTime>
 						<shootImpulse>200</shootImpulse>
-						<reloadLockTime>
-							1.5
-							<!--BW_String-->
-						</reloadLockTime>
+						<reloadLockTime>3</reloadLockTime>
 						<reloadTimes>
-							8.5 8.5
+							9.5 9.5
 							<!--BW_String-->
 						</reloadTimes>
-						<rateTime>3</rateTime>
+						<rateTime>4</rateTime>
 						<chargeThreshold>
 							0.5
 							<!--BW_String-->
@@ -4995,11 +4992,8 @@
 		<detailed>
 			<engines>
 				<V_11_Kirovets_1_703_II_2>
-					<smplEnginePower>
-						1014.99
-						<!--BW_String-->
-					</smplEnginePower>
-					<smplFwMaxSpeed>46</smplFwMaxSpeed>
+					<smplEnginePower>900</smplEnginePower>
+					<smplFwMaxSpeed>41</smplFwMaxSpeed>
 				</V_11_Kirovets_1_703_II_2>
 			</engines>
 			<chassis>
