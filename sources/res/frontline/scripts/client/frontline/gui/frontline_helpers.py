@@ -25,6 +25,8 @@ def geFrontlineState(withPrimeTime=False, epicController=None):
         if withPrimeTime:
             return (FrontlineState.FROZEN, int(now + timeLeft), timeLeft)
         return (FrontlineState.FROZEN, endDate, int(endDate - now))
+    if not epicController.isEnabled():
+        return (FrontlineState.FINISHED, 0, 0)
     return (FrontlineState.ACTIVE, endDate, int(endDate - now))
 
 

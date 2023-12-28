@@ -65,7 +65,11 @@ package
       
       public static const CALENDARDAY_TIME:String = "#comp7:calendarDay/time";
       
-      public static const CALENDARDAY_TIMELEFT:String = "#comp7:calendarDay/timeLeft";
+      public static const CALENDARDAY_TIMELEFT_FIRST:String = "#comp7:calendarDay/timeLeft/first";
+      
+      public static const CALENDARDAY_TIMELEFT_SECOND:String = "#comp7:calendarDay/timeLeft/second";
+      
+      public static const CALENDARDAY_TIMELEFT_THIRD:String = "#comp7:calendarDay/timeLeft/third";
       
       public static const SEASONNAME_FIRST:String = "#comp7:seasonName/first";
       
@@ -887,13 +891,29 @@ package
       
       public static const ALERTMESSAGE_NOTAVAILABLEEND:String = "#comp7:alertMessage/notAvailableEnd";
       
-      public static const ALERTMESSAGE_ALLNOTAVAILABLEEND:String = "#comp7:alertMessage/allNotAvailableEnd";
+      public static const ALERTMESSAGE_ALLNOTAVAILABLEEND_FIRST:String = "#comp7:alertMessage/allNotAvailableEnd/first";
       
-      public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND:String = "#comp7:alertMessage/standaloneNotAvailableEnd";
+      public static const ALERTMESSAGE_ALLNOTAVAILABLEEND_SECOND:String = "#comp7:alertMessage/allNotAvailableEnd/second";
       
-      public static const ALERTMESSAGE_AFTERSEASON:String = "#comp7:alertMessage/afterSeason";
+      public static const ALERTMESSAGE_ALLNOTAVAILABLEEND_THIRD:String = "#comp7:alertMessage/allNotAvailableEnd/third";
       
-      public static const ALERTMESSAGE_BETWEENSEASONS:String = "#comp7:alertMessage/betweenSeasons";
+      public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND_FIRST:String = "#comp7:alertMessage/standaloneNotAvailableEnd/first";
+      
+      public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND_SECOND:String = "#comp7:alertMessage/standaloneNotAvailableEnd/second";
+      
+      public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND_THIRD:String = "#comp7:alertMessage/standaloneNotAvailableEnd/third";
+      
+      public static const ALERTMESSAGE_AFTERSEASON_FIRST:String = "#comp7:alertMessage/afterSeason/first";
+      
+      public static const ALERTMESSAGE_AFTERSEASON_SECOND:String = "#comp7:alertMessage/afterSeason/second";
+      
+      public static const ALERTMESSAGE_AFTERSEASON_THIRD:String = "#comp7:alertMessage/afterSeason/third";
+      
+      public static const ALERTMESSAGE_BETWEENSEASONS_FIRST:String = "#comp7:alertMessage/betweenSeasons/first";
+      
+      public static const ALERTMESSAGE_BETWEENSEASONS_SECOND:String = "#comp7:alertMessage/betweenSeasons/second";
+      
+      public static const ALERTMESSAGE_BETWEENSEASONS_THIRD:String = "#comp7:alertMessage/betweenSeasons/third";
       
       public static const ALERTMESSAGE_BUTTON_CHANGESERVER:String = "#comp7:alertMessage/button/changeServer";
       
@@ -975,7 +995,11 @@ package
       
       public static const PRIMETIMEVIEW_TITLE:String = "#comp7:primeTimeView/title";
       
-      public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED:String = "#comp7:primeTimeView/status/seasonDisabled";
+      public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED_FIRST:String = "#comp7:primeTimeView/status/seasonDisabled/first";
+      
+      public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED_SECOND:String = "#comp7:primeTimeView/status/seasonDisabled/second";
+      
+      public static const PRIMETIMEVIEW_STATUS_SEASONDISABLED_THIRD:String = "#comp7:primeTimeView/status/seasonDisabled/third";
       
       public static const PRIMETIMEVIEW_STATUS_ALLSERVERSDISABLED:String = "#comp7:primeTimeView/status/allServersDisabled";
       

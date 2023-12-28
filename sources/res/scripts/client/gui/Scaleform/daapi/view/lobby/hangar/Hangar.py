@@ -11,7 +11,7 @@ from account_helpers.AccountSettings import NATION_CHANGE_VIEWED
 from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
 from battle_pass_common import BATTLE_PASS_CONFIG_NAME
 from constants import Configs, DOG_TAGS_CONFIG, PREBATTLE_TYPE, QUEUE_TYPE, RENEWABLE_SUBSCRIPTION_CONFIG
-from frameworks.wulf import WindowFlags, WindowLayer, WindowStatus
+from frameworks.wulf import WindowFlags, WindowLayer, WindowStatus, ViewStatus
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -69,7 +69,7 @@ from tutorial.control.context import GLOBAL_FLAG
 from uilogging.epic_battle.constants import EpicBattleLogKeys, EpicBattleLogActions, EpicBattleLogButtons
 from uilogging.epic_battle.loggers import EpicBattleLogger
 if typing.TYPE_CHECKING:
-    from frameworks.wulf import Window
+    from frameworks.wulf import Window, View
 _logger = logging.getLogger(__name__)
 _HELP_LAYOUT_RESTRICTED_LAYERS = (
  WindowLayer.TOP_SUB_VIEW,
@@ -78,8 +78,12 @@ _HELP_LAYOUT_RESTRICTED_LAYERS = (
  WindowLayer.OVERLAY,
  WindowLayer.TOP_WINDOW)
 
-def predicateHelpLayoutAllowedWindow(window):
+def _predicateHelpLayoutRestrictedWindow(window):
     return window.typeFlag != WindowFlags.TOOLTIP and window.typeFlag != WindowFlags.CONTEXT_MENU and window.layer in _HELP_LAYOUT_RESTRICTED_LAYERS and window.windowStatus in (WindowStatus.LOADING, WindowStatus.LOADED) and not window.isHidden()
+
+
+def _predicateHelpLayoutRestrictedView(view):
+    return view.layoutID in (R.views.lobby.tanksetup.HangarAmmunitionSetup(),) and view.viewStatus in (ViewStatus.LOADED, ViewStatus.LOADING)
 
 
 class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
@@ -206,8 +210,10 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self._promoController.showLastTeaserPromo()
 
     def showHelpLayout(self):
-        windows = self.gui.windowsManager.findWindows(predicateHelpLayoutAllowedWindow)
-        if not windows:
+        windowsManager = self.gui.windowsManager
+        windows = windowsManager.findWindows(_predicateHelpLayoutRestrictedWindow)
+        views = windowsManager.findViews(_predicateHelpLayoutRestrictedView)
+        if not windows and not views:
             self.gui.windowsManager.onWindowStatusChanged += self.__onWindowLoaded
             self.fireEvent(LobbySimpleEvent(LobbySimpleEvent.SHOW_HELPLAYOUT), scope=EVENT_BUS_SCOPE.LOBBY)
             self.as_showHelpLayoutS()

@@ -16,20 +16,38 @@ msgstr ""
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);"
 
-msgid "alertMessage/afterSeason"
+msgid "alertMessage/afterSeason/first"
 msgstr "Сезон Лазурного пегаса завершён"
+
+msgid "alertMessage/afterSeason/second"
+msgstr "Сезон Алого пегаса завершён"
+
+msgid "alertMessage/afterSeason/third"
+msgstr "Сезон Нефритового пегаса завершён"
 
 msgid "alertMessage/allNotAvailable"
 msgstr "Бои на серверах начнутся через %(primeDelta)s"
 
-msgid "alertMessage/allNotAvailableEnd"
+msgid "alertMessage/allNotAvailableEnd/first"
 msgstr "Сезон Лазурного пегаса завершён"
+
+msgid "alertMessage/allNotAvailableEnd/second"
+msgstr "Сезон Алого пегаса завершён"
+
+msgid "alertMessage/allNotAvailableEnd/third"
+msgstr "Сезон Нефритового пегаса завершён"
 
 msgid "alertMessage/allNotSet"
 msgstr "Режим недоступен на всех серверах"
 
-msgid "alertMessage/betweenSeasons"
+msgid "alertMessage/betweenSeasons/first"
 msgstr "Сезон Лазурного пегаса завершён"
+
+msgid "alertMessage/betweenSeasons/second"
+msgstr "Сезон Алого пегаса завершён"
+
+msgid "alertMessage/betweenSeasons/third"
+msgstr "Сезон Нефритового пегаса завершён"
 
 msgid "alertMessage/button/changeServer"
 msgstr "Сменить сервер"
@@ -52,8 +70,14 @@ msgstr "Режим недоступен на сервере %(serverName)s"
 msgid "alertMessage/standaloneNotAvailable"
 msgstr "Бои на сервере начнутся через %(primeDelta)s"
 
-msgid "alertMessage/standaloneNotAvailableEnd"
+msgid "alertMessage/standaloneNotAvailableEnd/first"
 msgstr "Сезон Лазурного пегаса завершён"
+
+msgid "alertMessage/standaloneNotAvailableEnd/second"
+msgstr "Сезон Алого пегаса завершён"
+
+msgid "alertMessage/standaloneNotAvailableEnd/third"
+msgstr "Сезон Нефритового пегаса завершён"
 
 msgid "alertMessage/standaloneNotSet"
 msgstr "Режим недоступен на сервере %(serverName)s"
@@ -95,7 +119,7 @@ msgid "banner/infoSmall/disabled"
 msgstr "Ожидайте прайм-тайма"
 
 msgid "banner/season"
-msgstr "Алого пегаса"
+msgstr "Алый пегас"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(season)s, до %(day)s %(month)s"
@@ -299,11 +323,23 @@ msgstr "%(server)s"
 msgid "calendarDay/time"
 msgstr "%(start)s – %(end)s"
 
-msgid "calendarDay/timeLeft"
-msgid_plural "plural/calendarDay/timeLeft"
+msgid "calendarDay/timeLeft/first"
+msgid_plural "plural/calendarDay/timeLeft/first"
 msgstr[0] "Сезон Лазурного пегаса продлится %(days)d день"
 msgstr[1] "Сезон Лазурного пегаса продлится %(days)d дня"
 msgstr[2] "Сезон Лазурного пегаса продлится %(days)d дней"
+
+msgid "calendarDay/timeLeft/second"
+msgid_plural "plural/calendarDay/timeLeft/second"
+msgstr[0] "Сезон Алого пегаса продлится %(days)d день"
+msgstr[1] "Сезон Алого пегаса продлится %(days)d дня"
+msgstr[2] "Сезон Алого пегаса продлится %(days)d дней"
+
+msgid "calendarDay/timeLeft/third"
+msgid_plural "plural/calendarDay/timeLeft/third"
+msgstr[0] "Сезон Нефритового пегаса продлится %(days)d день"
+msgstr[1] "Сезон Нефритового пегаса продлится %(days)d дня"
+msgstr[2] "Сезон Нефритового пегаса продлится %(days)d дней"
 
 msgid "calendarDay/title"
 msgstr "Расписание"
@@ -846,8 +882,14 @@ msgstr "Бои на сервере %(server)s будут доступны ещё
 msgid "primeTimeView/status/primeWillBeAvailable"
 msgstr "Начало боёв на сервере %(server)s через %(time)s"
 
-msgid "primeTimeView/status/seasonDisabled"
+msgid "primeTimeView/status/seasonDisabled/first"
 msgstr "Сезон Лазурного пегаса на сервере %(server)s завершился."
+
+msgid "primeTimeView/status/seasonDisabled/second"
+msgstr "Сезон Алого пегаса на сервере %(server)s завершился."
+
+msgid "primeTimeView/status/seasonDisabled/third"
+msgstr "Сезон Нефритового пегаса на сервере %(server)s завершился."
 
 msgid "primeTimeView/status/untill"
 msgstr "Бои недоступны до %(startTime)s на сервере %(server)s"
@@ -899,7 +941,7 @@ msgstr "Недостаточно средств для покупки."
 msgid "products/message/rankAccess"
 msgstr ""
 "Для покупки необходим\n"
-"«%(rank)s»"
+"%(rank)s"
 
 msgid "products/newLabel"
 msgstr "НОВОЕ"

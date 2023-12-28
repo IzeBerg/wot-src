@@ -22,13 +22,13 @@ package net.wg.gui.components.carousels
          var _loc1_:Number = NaN;
          if(this.availableScrollLeft)
          {
-            if(!scrollToBegin)
+            if(scrollToBegin)
             {
-               this._expectTargetPosition = horizontalScrollPosition - pageWidth;
+               this._expectTargetPosition -= pageWidth;
             }
             else
             {
-               this._expectTargetPosition -= pageWidth;
+               this._expectTargetPosition = horizontalScrollPosition - pageWidth;
             }
             _loc1_ = horizontalScrollPosition / pageWidth;
             throwToHorizontalPosition(minHorizontalScrollPosition,pageThrowDuration * _loc1_);
@@ -41,13 +41,13 @@ package net.wg.gui.components.carousels
          var _loc1_:Number = NaN;
          if(this.availableScrollRight)
          {
-            if(!scrollToEnd)
+            if(scrollToEnd)
             {
-               this._expectTargetPosition = horizontalScrollPosition + pageWidth;
+               this._expectTargetPosition += pageWidth;
             }
             else
             {
-               this._expectTargetPosition += pageWidth;
+               this._expectTargetPosition = horizontalScrollPosition + pageWidth;
             }
             _loc1_ = (maxHorizontalScrollPosition - horizontalScrollPosition) / pageWidth;
             throwToHorizontalPosition(maxHorizontalScrollPosition,pageThrowDuration * _loc1_);
@@ -150,7 +150,7 @@ package net.wg.gui.components.carousels
       {
          var _loc1_:Boolean = false;
          super.draw();
-         if(isInvalid(InvalidationType.SIZE,InvalidationType.DATA,INVALIDATION_TYPE_LAYOUT,INVALIDATION_TYPE_PENDING_SCROLL) && dataProvider != null)
+         if(dataProvider != null && isInvalid(InvalidationType.SIZE,InvalidationType.DATA,INVALIDATION_TYPE_LAYOUT,INVALIDATION_TYPE_PENDING_SCROLL))
          {
             _loc1_ = maxHorizontalScrollPosition != minHorizontalScrollPosition && dataProvider.length;
             cursorManager.enable = _loc1_;

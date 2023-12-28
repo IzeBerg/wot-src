@@ -581,10 +581,7 @@ class CustomizationBottomPanel(CustomizationBottomPanelMeta):
         self.__updateTabs()
         self.__setBottomPanelBillData()
         self.__rebuildCarousel()
-        if slotId == self.__ctx.mode.selectedSlot and (season is None or season == self.__ctx.season):
-            self.__scrollToItem(item.intCD, self._selectedItem.id == item.id)
         self.__updateSetSwitcherData()
-        return
 
     def __onTabChanged(self, tabIndex, itemCD=None):
         self.__updateTabs()
@@ -602,12 +599,8 @@ class CustomizationBottomPanel(CustomizationBottomPanelMeta):
     def __onItemsRemoved(self, *_, **__):
         self.__updateTabs()
         self.__setBottomPanelBillData()
-        selectedItem = self._selectedItem
         self.__rebuildCarousel()
-        if selectedItem is not None:
-            self.__scrollToItem(selectedItem.intCD, immediately=True)
         self.__updateSetSwitcherData()
-        return
 
     def __onModeChanged(self, modeId, prevModeId):
         self._carouselDP.onModeChanged(modeId, prevModeId)
@@ -666,8 +659,6 @@ class CustomizationBottomPanel(CustomizationBottomPanelMeta):
         else:
             self._selectedItem = None
         self._carouselDP.selectItem(self._selectedItem)
-        if self._selectedItem is not None and scroll:
-            self.__scrollToItem(self._selectedItem.intCD, True)
         self.__updateStageSwitcherVisibility()
         self.__updatePopoverBtnIcon()
         return

@@ -15,3 +15,41 @@ package net.wg.infrastructure.base.meta.impl
       
       public function BattleRoyaleVehicleInfoMeta()
       {
+         super();
+      }
+      
+      override protected function onDispose() : void
+      {
+         if(this._vehicleInfoViewVO)
+         {
+            this._vehicleInfoViewVO.dispose();
+            this._vehicleInfoViewVO = null;
+         }
+         super.onDispose();
+      }
+      
+      public function onCloseS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onClose,"onClose" + Errors.CANT_NULL);
+         this.onClose();
+      }
+      
+      public final function as_setData(param1:Object) : void
+      {
+         var _loc2_:VehicleInfoViewVO = this._vehicleInfoViewVO;
+         this._vehicleInfoViewVO = new VehicleInfoViewVO(param1);
+         this.setData(this._vehicleInfoViewVO);
+         if(_loc2_)
+         {
+            _loc2_.dispose();
+         }
+      }
+      
+      protected function setData(param1:VehicleInfoViewVO) : void
+      {
+         var _loc2_:String = "as_setData" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc2_);
+         throw new AbstractException(_loc2_);
+      }
+   }
+}
