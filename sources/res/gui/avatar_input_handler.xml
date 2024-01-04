@@ -2147,6 +2147,63 @@
 			</dynamics>
 		</camera>
 	</flamethrowerMode>
+	<assaultMode>
+		<aim>arty</aim>
+		<camera>
+			<keySensitivity>
+				0.5
+				<!--BW_String-->
+			</keySensitivity>
+			<sensitivity>
+				0.05
+				<!--BW_String-->
+			</sensitivity>
+			<rMinInterpolationSpeed>
+				5.0
+				<!--BW_String-->
+			</rMinInterpolationSpeed>
+			<rDefaultInterpolationSpeed>
+				2.0
+				<!--BW_String-->
+			</rDefaultInterpolationSpeed>
+			<rMaxInterpolationSpeed>
+				3.0
+				<!--BW_String-->
+			</rMaxInterpolationSpeed>
+			<angleInterpolationSpeed>
+				1.5
+				<!--BW_String-->
+			</angleInterpolationSpeed>
+			<collisionSphereRadius>
+				2.0
+				<!--BW_String-->
+			</collisionSphereRadius>
+			<states>
+				<count>5</count>
+				<initialStateIndex>2</initialStateIndex>
+				<state_0>
+					<distRange>5 15</distRange>
+					<angle>15</angle>
+				</state_0>
+				<state_1>
+					<distRange>6 25</distRange>
+					<angle>30</angle>
+				</state_1>
+				<state_2>
+					<distRange>6 40</distRange>
+					<angle>45</angle>
+				</state_2>
+				<state_3>
+					<distRange>6 60</distRange>
+					<angle>60</angle>
+				</state_3>
+				<state_4>
+					<distRange>6 80</distRange>
+					<angle>80</angle>
+				</state_4>
+			</states>
+		</camera>
+	</assaultMode>
 	<vehiclesSelection>
 		<camera>
 			<pitchLimits>

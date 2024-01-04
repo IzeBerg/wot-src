@@ -165,16 +165,16 @@
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
 				<rayStart>
-					-0.781981 0.971796 1.46047
+					0.91692 1.04106 1.342793
 					<!--BW_String-->
 				</rayStart>
-				<rayEnd>
-					-0.781378 0.627381 1.25706
+				<rayEnd>0.916317 0.696645 1.139383</rayEnd>
+				<rayUp>
+					-0.002553 0.508531 -0.86104
 					<!--BW_String-->
-				</rayEnd>
-				<rayUp>0 0 -1</rayUp>
+				</rayUp>
 				<size>
-					0.32
+					0.35
 					<!--BW_String-->
 				</size>
 				<hideIfDamaged>true</hideIfDamaged>
@@ -1658,6 +1658,88 @@
 					<!--BW_String-->
 				</anchorShift>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15062</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R199_SU_122V_KL_3Dst</compatibleModels>
+				<position>0.721919 1.326068 1.556645</position>
+				<rotation>
+					0.255241 -0.000002 3.14098
+					<!--BW_String-->
+				</rotation>
+				<scale>
+					0.8 0.184797 0.8
+					<!--BW_String-->
+				</scale>
+				<showOn>16</showOn>
+				<clipAngle>0.339988</clipAngle>
+				<anchorShift>
+					0.05
+					<!--BW_String-->
+				</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15063</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R199_SU_122V_KL_3Dst</compatibleModels>
+				<position>
+					0.000015 1.668201 -3.06407
+					<!--BW_String-->
+				</position>
+				<rotation>
+					2.084501 -0.000019 -0.00002
+					<!--BW_String-->
+				</rotation>
+				<scale>
+					0.5 0.128941 0.5
+					<!--BW_String-->
+				</scale>
+				<showOn>16</showOn>
+				<clipAngle>0.545939</clipAngle>
+				<anchorShift>
+					0.01
+					<!--BW_String-->
+				</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15064</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R199_SU_122V_KL_3Dst</compatibleModels>
+				<position>
+					0.7601 1.941943 -2.577391
+					<!--BW_String-->
+				</position>
+				<rotation>
+					3.14194 -0.000001 -0.00001
+					<!--BW_String-->
+				</rotation>
+				<scale>
+					0.7 0.248988 0.7
+					<!--BW_String-->
+				</scale>
+				<showOn>16</showOn>
+				<clipAngle>1.422618</clipAngle>
+				<verticalMirror>true</verticalMirror>
+				<anchorShift>
+					-0.03
+					<!--BW_String-->
+				</anchorShift>
+			</slot>
+			<slot>
+				<slotType>attachment</slotType>
+				<slotId>18000</slotId>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+			</slot>
+			<slot>
+				<slotType>attachment</slotType>
+				<slotId>18001</slotId>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -1717,11 +1799,13 @@
 				<undamaged>vehicles/russian/R199_SU_122V/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/russian/R199_SU_122V/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/russian/R199_SU_122V/crash/lod0/Chassis.model</exploded>
-				<R199_SU_122V_KL_3Dst>
-					<undamaged>vehicles/russian/R199_SU_122V/_skin/R199_SU_122V_KL_3Dst/normal/lod0/Chassis.model</undamaged>
-					<destroyed>vehicles/russian/R199_SU_122V/_skin/R199_SU_122V_KL_3Dst/crash/lod0/Chassis.model</destroyed>
-					<exploded>vehicles/russian/R199_SU_122V/_skin/R199_SU_122V_KL_3Dst/crash/lod0/Chassis.model</exploded>
-				</R199_SU_122V_KL_3Dst>
+				<sets>
+					<R199_SU_122V_KL_3Dst>
+						<undamaged>vehicles/russian/R199_SU_122V/_skin/R199_SU_122V_KL_3Dst/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/russian/R199_SU_122V/_skin/R199_SU_122V_KL_3Dst/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/russian/R199_SU_122V/_skin/R199_SU_122V_KL_3Dst/crash/lod0/Chassis.model</exploded>
+					</R199_SU_122V_KL_3Dst>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>MEDIUM</lodDist>
@@ -3087,10 +3171,7 @@
 						0.36
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>
-						9.2
-						<!--BW_String-->
-					</reloadTime>
+					<reloadTime>40</reloadTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.1
@@ -3105,6 +3186,10 @@
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
+					<clip>
+						<count>4</count>
+						<rate>30</rate>
+					</clip>
 					<aimingTime>
 						2.5
 						<!--BW_String-->
@@ -3156,15 +3241,38 @@
 								<!--BW_String-->
 							</rayStart>
 							<rayEnd>
-								0 0 3.15
+								0 0 3.2
 								<!--BW_String-->
 							</rayEnd>
 							<rayUp>
-								0.14 0 0
+								0.1 0 0
 								<!--BW_String-->
 							</rayUp>
+							<applyToFabric>false</applyToFabric>
 							<size>
-								0.51
+								0.56
+								<!--BW_String-->
+							</size>
+						</slot>
+						<slot>
+							<slotType>insigniaOnGun</slotType>
+							<slotId>49001</slotId>
+							<rayStart>
+								0 0 2.57
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								0 0 3.06
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.1 0 0
+								<!--BW_String-->
+							</rayUp>
+							<applyToFabric>false</applyToFabric>
+							<compatibleModels>R199_SU_122V_KL_3Dst</compatibleModels>
+							<size>
+								0.49
 								<!--BW_String-->
 							</size>
 						</slot>
@@ -3294,8 +3402,8 @@
 		</detailed>
 	</physics>
 	<siege_mode>
-		<switchOnTime>1</switchOnTime>
-		<switchOffTime>1</switchOffTime>
+		<switchOnTime>2</switchOnTime>
+		<switchOffTime>2</switchOffTime>
 		<engineDamageCoeff>2</engineDamageCoeff>
 		<soundStateChange>
 			<on>strv_siege_mode_on_PC</on>

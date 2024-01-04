@@ -130,7 +130,7 @@
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
-		<tags>heavyTank role_HT_break HD special improvedVentilation_class2_user tankRammer_class2_user extraHealthReserve_class2_user antifragmentationLining_medium_user secret testTank</tags>
+		<tags>heavyTank role_HT_break HD special improvedVentilation_class2_user tankRammer_class2_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
 		<level>6</level>
 	</G15_VK3601H_C>
 	<G13_VK3001H>
@@ -646,9 +646,14 @@
 		<userString>#germany_vehicles:Waffentrager_E100</userString>
 		<description>#germany_vehicles:Waffentrager_E100_descr</description>
 		<shortUserString>#germany_vehicles:Waffentrager_E100_short</shortUserString>
-		<price>6100000</price>
+		<shortDescriptionSpecial>#germany_vehicles:G98_Waffentrager_E100_short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#germany_vehicles:G98_Waffentrager_E100_long_special</longDescriptionSpecial>
+		<price>
+			25000
+			<gold/>
+		</price>
 		<notInShop>true</notInShop>
-		<tags>AT-SPG role_ATSPG_support private HD secret unrecoverable heavyAT-SPG AT-SPG2 extraHealthReserve_class1_user antifragmentationLining_superheavy_user earn_crystals</tags>
+		<tags>AT-SPG role_ATSPG_support HD heavyAT-SPG AT-SPG2 extraHealthReserve_class1_user antifragmentationLining_superheavy_user earn_crystals special</tags>
 		<level>10</level>
 	</G98_Waffentrager_E100>
 	<G83_Pz_IV_AusfA>
@@ -868,11 +873,11 @@
 		<shortDescriptionSpecial>#germany_vehicles:G164_Kpz_Pr_68_P_short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#germany_vehicles:G164_Kpz_Pr_68_P_long_special</longDescriptionSpecial>
 		<price>
-			100
+			11000
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
-		<tags>mediumTank role_MT_sniper HD siegeMode autoSiege improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user secret testTank</tags>
+		<tags>mediumTank role_MT_sniper HD siegeMode autoSiege improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
 		<level>8</level>
 	</G164_Kpz_Pr_68_P>
 	<G65_JagdTiger_SdKfz_185_IGR>
@@ -1277,7 +1282,7 @@
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
-		<tags>AT-SPG role_ATSPG_assault private HD secret heavyAT-SPG improvedVentilation_class1_user tankRammer_class1_user extraHealthReserve_class1_user antifragmentationLining_superheavy_user</tags>
+		<tags>AT-SPG role_ATSPG_assault HD heavyAT-SPG improvedVentilation_class1_user tankRammer_class1_user extraHealthReserve_class1_user antifragmentationLining_superheavy_user</tags>
 		<level>8</level>
 	</G44_JagdTigerH>
 	<G16_PzVIB_Tiger_II_F>
@@ -2034,6 +2039,21 @@
 		<tags>heavyTank role_HT_assault HD heavyTank1 siegeMode turboshaftEngine improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_superheavy_user earn_crystals testTank</tags>
 		<level>9</level>
 	</G167_Tiger_Maus_120t>
+	<G165_Erich_Konzept_I>
+		<id>104</id>
+		<userString>#germany_vehicles:G165_Erich_Konzept_I</userString>
+		<shortUserString>#germany_vehicles:G165_Erich_Konzept_I_short</shortUserString>
+		<description>#germany_vehicles:G165_Erich_Konzept_I_descr</description>
+		<shortDescriptionSpecial>#germany_vehicles:G165_Erich_Konzept_I_short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#germany_vehicles:G165_Erich_Konzept_I_long_special</longDescriptionSpecial>
+		<price>
+			100
+			<gold/>
+		</price>
+		<notInShop>true</notInShop>
+		<tags>mediumTank role_MT_sniper HD special earn_crystals improvedVentilation_class2_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user secret testTank</tags>
+		<level>10</level>
+	</G165_Erich_Konzept_I>
 	<Env_Artillery>
 		<id>254</id>
 		<userString>#germany_vehicles:Env_Artillery</userString>

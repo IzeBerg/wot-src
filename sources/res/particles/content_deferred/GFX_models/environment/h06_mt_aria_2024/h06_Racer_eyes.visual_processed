@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<materialKind>112</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/null.dds</Texture>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.533333 0.419608 0.129412 0.721569</Vector4>
+					</property>
+					<property>
+						selfIllumination
+						<Float>54.700001</Float>
+					</property>
+				</material>
+				<groupOrigin>-0.000001 9.591420 3.564610</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.782751 9.506854 3.480531</min>
+		<max>0.782750 9.675986 3.648688</max>
+	</boundingBox>
+	<geometrySize>2112</geometrySize>
+	<minUVDensity>10000.000000</minUVDensity>
+</root>

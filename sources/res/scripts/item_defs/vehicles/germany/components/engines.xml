@@ -152,6 +152,7 @@
 		<Daimler-Benz_MB_880_Ea-500B>157</Daimler-Benz_MB_880_Ea-500B>
 		<MTU803>158</MTU803>
 		<Mercedes_Benz_MB_507>263</Mercedes_Benz_MB_507>
+		<_2x_Hanomag_Boxer>264</_2x_Hanomag_Boxer>
 		<Maybach_HL_210_TRM_P30_SH>324</Maybach_HL_210_TRM_P30_SH>
 		<Maybach_HL_230_TRM_P30_SH>325</Maybach_HL_230_TRM_P30_SH>
 		<Maybach_HL_230_TRM_P35_SH>326</Maybach_HL_230_TRM_P35_SH>
@@ -163,6 +164,7 @@
 		<Maybach_HL_230_TRM_P45_FL>505</Maybach_HL_230_TRM_P45_FL>
 		<MB517P_7x7>31002</MB517P_7x7>
 		<Maybach_HL_174_C>31001</Maybach_HL_174_C>
+		<Engine_VK4502P_G>31003</Engine_VK4502P_G>
 		<Maybach_HL_210P30_Ausf_A_IGR>60001</Maybach_HL_210P30_Ausf_A_IGR>
 		<Maybach_HL_230_TRM_P30_IGR>60002</Maybach_HL_230_TRM_P30_IGR>
 		<Maybach_HL_230_TRM_P45_IGR>60003</Maybach_HL_230_TRM_P45_IGR>
@@ -1577,6 +1579,26 @@
 			<rpm_min>200</rpm_min>
 			<rpm_max>2600</rpm_max>
 		</Porsche_16_Cyl_Y2>
+		<_2x_Hanomag_Boxer>
+			<userString>#germany_vehicles:_2x_Hanomag_Boxer</userString>
+			<tags>diesel</tags>
+			<level>9</level>
+			<price>90000</price>
+			<notInShop>true</notInShop>
+			<wwsoundPC>eng_v55_pc</wwsoundPC>
+			<wwsoundNPC>eng_v55_npc</wwsoundNPC>
+			<power>1470</power>
+			<weight>2050</weight>
+			<maxHealth>255</maxHealth>
+			<maxRegenHealth>127</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<fireStartingChance>
+				0.15
+				<!--BW_String-->
+			</fireStartingChance>
+			<rpm_min>200</rpm_min>
+			<rpm_max>2600</rpm_max>
+		</_2x_Hanomag_Boxer>
 		<Porsche_Typ_205_2>
 			<userString>#germany_vehicles:Porsche_Typ_205_2</userString>
 			<tags>diesel</tags>
@@ -1637,6 +1659,26 @@
 			<rpm_min>296</rpm_min>
 			<rpm_max>2312</rpm_max>
 		</Engine_VK4502P>
+		<Engine_VK4502P_G>
+			<userString>#germany_vehicles:Engine_VK4502P_G</userString>
+			<tags>diesel</tags>
+			<level>8</level>
+			<price>45300</price>
+			<notInShop>true</notInShop>
+			<wwsoundPC>eng_v55_pc</wwsoundPC>
+			<wwsoundNPC>eng_v55_npc</wwsoundNPC>
+			<power>1268</power>
+			<weight>720</weight>
+			<maxHealth>255</maxHealth>
+			<maxRegenHealth>127</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<fireStartingChance>
+				0.15
+				<!--BW_String-->
+			</fireStartingChance>
+			<rpm_min>296</rpm_min>
+			<rpm_max>2312</rpm_max>
+		</Engine_VK4502P_G>
 		<Hotchkiss>
 			<userString>#germany_vehicles:Hotchkiss</userString>
 			<tags>gasoline</tags>
@@ -2068,8 +2110,8 @@
 				0.12
 				<!--BW_String-->
 			</fireStartingChance>
-			<rpm_min>360</rpm_min>
-			<rpm_max>2120</rpm_max>
+			<rpm_min>344</rpm_min>
+			<rpm_max>2168</rpm_max>
 		</MB-837-Ba-600>
 		<MB-837-Ea-600>
 			<userString>#germany_vehicles:MB-837-Ea-600</userString>

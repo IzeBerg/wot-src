@@ -8,25 +8,32 @@ from items.components.supply_slot_categories import SlotCategories
 from shared_utils import first
 
 class BonusesSortWeights(IntEnum):
-    UNSORTABLE = 0
-    DEMOUNT_KIT = 1
+    DEMOUNT_KIT = 0
+    UNSORTABLE = 1
     BOOSTER_GOODIE = 2
-    BATTLE_BOOSTER = 3
-    CREDITS = 4
-    FREE_XP = 5
-    CRYSTALS = 6
-    RECERTIFICATION_FORM = 7
-    SLOTS = 8
-    PREMUIM_PLUS = 9
-    OPTIONAL_DEVICE = 10
-    VEHICLE = 11
+    CREW_BATTLE_BOOSTER = 3
+    BATTLE_BOOSTER = 4
+    RECERTIFICATION_FORM = 5
+    CREDITS = 6
+    BOOSTER_CREDITS = 7
+    CREW_BOOK = 8
+    TMAN = 9
+    FREE_XP = 10
+    CRYSTALS = 11
+    SLOTS = 12
+    PREMUIM_PLUS = 13
+    STYLE = 14
+    OPTIONAL_DEVICE = 15
+    VEHICLE = 16
 
 
 def _itemsBonusKeyFunc(bonus):
     item = first(bonus.getItems().keys())
-    itemTypeID = item.itemTypeID
-    if itemTypeID == GUI_ITEM_TYPE.BATTLE_BOOSTER:
-        return (-BonusesSortWeights.BATTLE_BOOSTER, item)
+    if item.itemTypeID == GUI_ITEM_TYPE.BATTLE_BOOSTER:
+        if 'crewSkillBattleBooster' in item.tags:
+            return (-BonusesSortWeights.CREW_BATTLE_BOOSTER, item.shortUserName)
+        return (
+         -BonusesSortWeights.BATTLE_BOOSTER, item.shortUserName)
     if item.itemTypeID == GUI_ITEM_TYPE.OPTIONALDEVICE:
         return (
          -BonusesSortWeights.OPTIONAL_DEVICE,
@@ -41,7 +48,10 @@ def _itemsBonusKeyFunc(bonus):
 def _goodieBonusKeyFunc(bonus):
     booster = first(bonus.getBoosters().keys())
     if booster is not None:
-        return (-BonusesSortWeights.BOOSTER_GOODIE,
+        if booster.boosterGuiType == 'booster_credits':
+            return (-BonusesSortWeights.BOOSTER_CREDITS, 0)
+        return (
+         -BonusesSortWeights.BOOSTER_GOODIE,
          (
           -BOOSTERS_ORDERS.get(booster.boosterType, 0), not booster.getIsPremium()))
     else:
@@ -76,7 +86,13 @@ _BONUSES_KEYS_FUNC = {VehiclesBonus.VEHICLES_BONUS: _vehiclesBonusKeyFunc,
                     -BonusesSortWeights.CRYSTALS, 0), 
    'freeXP': lambda b: (
             -BonusesSortWeights.FREE_XP, 0), 
-   'goodies': _goodieBonusKeyFunc}
+   'goodies': _goodieBonusKeyFunc, 
+   'tmanToken': lambda b: (
+               -BonusesSortWeights.TMAN, 0), 
+   'crewBooks': lambda b: (
+               -BonusesSortWeights.CREW_BOOK, 0), 
+   'customizations': lambda b: (
+                    -BonusesSortWeights.STYLE, 0)}
 
 def bonusesSortKeyFunc(bonus):
     return _BONUSES_KEYS_FUNC.get(bonus.getName(), lambda b: (BonusesSortWeights.UNSORTABLE, bonus.getName()))(bonus)

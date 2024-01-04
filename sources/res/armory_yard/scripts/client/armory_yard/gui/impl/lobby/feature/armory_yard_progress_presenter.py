@@ -83,6 +83,7 @@ class _ProgressionTabPresenter(object):
          self.__viewModel.onCollectReward, self.__onCollectReward), (
          self.__viewModel.onPlayAnimation, self.__onPlayAnimation), (
          self.__armoryYardCtrl.onProgressUpdated, self.__onProgressUpdate), (
+         self.__armoryYardCtrl.onCollectFinalReward, self._checkAndShowFinalRewardWindow), (
          self.__viewModel.onAboutEvent, self.__onAboutEvent), (
          self.__viewModel.onClose, self.__closeView), (
          self.__viewModel.onSkipAnimation, self.__onSkipAnimation), (
@@ -342,10 +343,10 @@ class _ProgressionTabPresenter(object):
         self._checkAndShowFinalRewardWindow()
 
     def _checkAndShowFinalRewardWindow(self):
-        if self.__lastPlayedStageID == self.__armoryYardCtrl.getTotalSteps():
-            if not self.__armoryYardCtrl.isClaimedFinalReward():
-                self._showVideoRewardWindow()
-                BigWorld.player().AccountArmoryYardComponent.claimFinalReward()
+        if self.__lastPlayedStageID != self.__armoryYardCtrl.getTotalSteps() or self.__armoryYardCtrl.isClaimedFinalReward() or not self.__armoryYardCtrl.isFinalQuestCompleted:
+            return
+        self._showVideoRewardWindow()
+        BigWorld.player().AccountArmoryYardComponent.claimFinalReward()
 
     def __updateCollectRewardsButton(self):
         if self.__armoryYardCtrl.hasCurrentRewards():

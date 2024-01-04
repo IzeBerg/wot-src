@@ -413,6 +413,7 @@ class HangarSpace(IHangarSpace):
 
     def setVehicleSelectable(self, flag):
         self.__space.setVehicleSelectable(flag)
+        self.setSelectionEnabled(flag)
 
     def isSceneBlocked(self):
         return self.armoryYardCtrl.isSceneLoaded()

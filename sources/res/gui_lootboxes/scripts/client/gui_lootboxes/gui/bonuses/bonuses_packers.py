@@ -253,6 +253,8 @@ class LootBoxCustomizationBonusUIPacker(CustomizationBonusUIPacker):
 
     @classmethod
     def _getIcon(cls, bonus, c11Item):
+        if c11Item.itemTypeID == GUI_ITEM_TYPE.STYLE and c11Item.is3D:
+            return str(c11Item.itemTypeName) + '_3d'
         return str(c11Item.itemTypeName)
 
     @classmethod

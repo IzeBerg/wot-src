@@ -2061,7 +2061,7 @@
 			</terrainResistance>
 			<brakeForce>8000</brakeForce>
 			<rotationIsAroundCenter>true</rotationIsAroundCenter>
-			<rotationSpeed>28</rotationSpeed>
+			<rotationSpeed>56</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
 					0.14
@@ -2344,7 +2344,7 @@
 			<drivingWheels>WD_L0 WD_L1</drivingWheels>
 			<effects>
 				<lodDist>MEDIUM</lodDist>
-				<mud>medium4WheelsMud</mud>
+				<mud>medium4WheelsMudSoft</mud>
 			</effects>
 			<wwsoundPC>wheels_suspension_pc</wwsoundPC>
 			<wwsoundNPC>wheels_suspension_npc</wwsoundNPC>
@@ -2479,7 +2479,7 @@
 			</terrainResistance>
 			<brakeForce>10000</brakeForce>
 			<rotationIsAroundCenter>true</rotationIsAroundCenter>
-			<rotationSpeed>30</rotationSpeed>
+			<rotationSpeed>60</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
 					0.16
@@ -2762,7 +2762,7 @@
 			<drivingWheels>WD_L0 WD_L1</drivingWheels>
 			<effects>
 				<lodDist>MEDIUM</lodDist>
-				<mud>medium4WheelsMud</mud>
+				<mud>medium4WheelsMudSoft</mud>
 			</effects>
 			<wwsoundPC>wheels_suspension_pc</wwsoundPC>
 			<wwsoundNPC>wheels_suspension_npc</wwsoundNPC>
@@ -4546,19 +4546,19 @@
 					<grounds>
 						<soft>
 							<rollingFriction>
-								0.161
+								0.01
 								<!--BW_String-->
 							</rollingFriction>
 						</soft>
 						<medium>
 							<rollingFriction>
-								0.0966
+								0.01
 								<!--BW_String-->
 							</rollingFriction>
 						</medium>
 						<firm>
 							<rollingFriction>
-								0.0805
+								0.01
 								<!--BW_String-->
 							</rollingFriction>
 						</firm>
@@ -4571,19 +4571,19 @@
 					<grounds>
 						<soft>
 							<rollingFriction>
-								0.1449
+								0.01
 								<!--BW_String-->
 							</rollingFriction>
 						</soft>
 						<medium>
 							<rollingFriction>
-								0.0805
+								0.01
 								<!--BW_String-->
 							</rollingFriction>
 						</medium>
 						<firm>
 							<rollingFriction>
-								0.07245
+								0.01
 								<!--BW_String-->
 							</rollingFriction>
 						</firm>

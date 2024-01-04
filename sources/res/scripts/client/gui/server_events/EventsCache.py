@@ -102,7 +102,6 @@ class EventsCache(IEventsCache):
         self.onSyncCompleted = Event(self.__em)
         self.onProgressUpdated = Event(self.__em)
         self.onMissionVisited = Event(self.__em)
-        self.onQuestConditionUpdated = Event(self.__em)
         self.onEventsVisited = Event(self.__em)
         self.onProfileVisited = Event(self.__em)
         self.onPersonalQuestsVisited = Event(self.__em)
@@ -204,7 +203,6 @@ class EventsCache(IEventsCache):
             isNeedToInvalidate = True
             isNeedToClearItemsCaches = False
             isQPUpdated = False
-            isQuestConditionUpdated = False
 
             def _cbWrapper(*args):
                 callback(*args)
@@ -234,8 +232,6 @@ class EventsCache(IEventsCache):
             else:
                 if isNeedToClearItemsCaches:
                     self.__clearQuestsItemsCache()
-                if isQuestConditionUpdated:
-                    self.onQuestConditionUpdated()
                 if isQPUpdated:
                     _cbWrapper(True)
                 else:
@@ -272,27 +268,34 @@ class EventsCache(IEventsCache):
 
         def userFilterFunc(q):
             qGroup = q.getGroupID()
-            qIsValid = q.isAvailable().isValid
+            qIsValid = None
             qID = q.getID()
-            if q.getType() == EVENT_TYPE.MOTIVE_QUEST and not qIsValid:
-                return False
+            if q.getType() == EVENT_TYPE.MOTIVE_QUEST:
+                if qIsValid is None:
+                    qIsValid = q.isAvailable().isValid
+                if not qIsValid:
+                    return False
             if q.getType() == EVENT_TYPE.TOKEN_QUEST and isMarathon(qID):
                 return False
-            if isBattleMattersQuestID(qID) or isPremium(qGroup) and not qIsValid:
-                return False
-            if not isEpicBattleEnabled and isDailyEpic(qGroup):
-                return False
-            if isBattleRoyale(qGroup):
-                quests = self.__battleRoyaleController.getQuests()
-                if qID not in quests:
+            else:
+                if isBattleMattersQuestID(qID) or isPremium(qGroup):
+                    if qIsValid is None:
+                        qIsValid = q.isAvailable().isValid
+                    if not qIsValid:
+                        return False
+                if not isEpicBattleEnabled and isDailyEpic(qGroup):
                     return False
-            if isMapsTraining(qGroup):
-                return q.shouldBeShown()
-            if isRankedSeasonOff and (isRankedDaily(qGroup) or isRankedPlatform(qGroup)):
-                return False
-            if isFunRandomOff and isFunRandomQuest(qID):
-                return False
-            return filterFunc(q)
+                if isBattleRoyale(qGroup):
+                    quests = self.__battleRoyaleController.getQuests()
+                    if qID not in quests:
+                        return False
+                if isMapsTraining(qGroup):
+                    return q.shouldBeShown()
+                if isRankedSeasonOff and (isRankedDaily(qGroup) or isRankedPlatform(qGroup)):
+                    return False
+                if isFunRandomOff and isFunRandomQuest(qID):
+                    return False
+                return filterFunc(q)
 
         return self.getActiveQuests(userFilterFunc)
 
@@ -373,34 +376,6 @@ class EventsCache(IEventsCache):
 
     def getAnnouncedActions(self):
         return self.__getAnnouncedActions()
-
-    def getCachedQuestByID(self, qID):
-        quest = self._getCachedQuest(qID)
-        if quest is not None:
-            return quest
-        else:
-            return self.getQuestByID(qID)
-
-    def getQuestsByIDs(self, qIDs):
-        result = {}
-        data = {}
-        for qID in qIDs:
-            quest = self._getCachedQuest(qID)
-            if quest is not None:
-                result[qID] = quest
-            else:
-                if not data:
-                    data = self.__getQuestsData()
-                    data.update(self.__getPersonalQuestsData())
-                    data.update(self.__getPersonalMissionsHiddenQuests())
-                    data.update(self.__getDailyQuestsData())
-                    data.update(static_quests.g_static_quest_cache)
-                if qID in data:
-                    result[qID] = self._makeQuest(qID, data[qID])
-                else:
-                    result[qID] = None
-
-        return result
 
     def getEvents(self, filterFunc=None):
         svrEvents = self.getQuests(filterFunc)
@@ -667,13 +642,6 @@ class EventsCache(IEventsCache):
                 result[a.getID()] = a
 
         return result
-
-    def _getCachedQuest(self, qID):
-        storage = self.__cache['quests']
-        if qID in storage:
-            return storage[qID]
-        else:
-            return
 
     def _makeQuest(self, qID, qData, maker=DefaultQuestMaker(), **kwargs):
         storage = self.__cache['quests']

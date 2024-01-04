@@ -5,4 +5,4 @@ from skeletons.gui.game_control import IGuiLootBoxesController
 def registerGuiLootBoxesGameControllers():
     registerGameControllers([
      (
-      IGuiLootBoxesController, GuiLootBoxesController, False)])
+      IGuiLootBoxesController, GuiLootBoxesController, True)])

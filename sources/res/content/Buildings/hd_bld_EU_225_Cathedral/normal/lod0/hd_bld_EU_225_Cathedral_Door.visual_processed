@@ -19,41 +19,173 @@
 			<primitiveGroup>
 				0
 				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.300000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.230000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>3 3 3 2</Vector4>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Cathedral_01_Tile_DM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_EU_225_Cathedral/hd_bld_EU_225_Cathedral_05_blend.png</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.207647 3.707325 0.000187</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_tiled.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						g_dirtColorParams
+						<Vector4>0.700000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_dirtColor
+						<Vector4>0.470000 0.430000 0.380000 0.220000</Vector4>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>3 3 3 2</Vector4>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/00_Tiles/Dirt_Cathedral_01_Tile_DM.dds</Texture>
+					</property>
+					<property>
+						blendMask
+						<Texture>content/Buildings/hd_bld_EU_225_Cathedral/hd_bld_EU_225_Cathedral_05_blend.png</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+					<property>
+						albedoHeightTile0
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile0
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile0
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile1
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile1
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile1
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_MAO.dds</Texture>
+					</property>
+					<property>
+						albedoHeightTile2
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_AM.dds</Texture>
+					</property>
+					<property>
+						normalGlossSpecTile2
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_GBMT.dds</Texture>
+					</property>
+					<property>
+						metallicAOTile2
+						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_MAO.dds</Texture>
+					</property>
+					<property>
+						colorTex
+						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.549350 3.729656 0.000159</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
 					<identifier>s_nd3</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<collisionFlags>0</collisionFlags>
 					<materialKind>112</materialKind>
 					<property>
 						g_tile2Tint
-						<Vector4>
-							0.95 0.948671 0.916749 1
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.950000 0.948671 0.916749 1.000000</Vector4>
 					</property>
 					<property>
 						g_tile1Tint
-						<Vector4>
-							0.98 0.98 0.98 1
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.980000 0.980000 0.980000 1.000000</Vector4>
 					</property>
 					<property>
 						g_fakeShadowsAndDetailParams
-						<Vector4>
-							0.5 0.5 0.000000 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						g_dirtColorParams
-						<Vector4>0.100000 0.000000 0.000000 0.000000</Vector4>
+						<Vector4>0.500000 0.500000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						g_dirtColor
-						<Vector4>
-							0.72 0.658722 0.582129 0.2
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.720000 0.658722 0.582129 0.200000</Vector4>
 					</property>
 					<property>
 						g_atlasSizes
@@ -119,174 +251,6 @@
 				<groupOrigin>-0.702411 8.463874 -0.000000</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				1
-				<material>
-					<identifier>s_nd2</identifier>
-					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>111</materialKind>
-					<property>
-						g_fakeShadowsAndDetailParams
-						<Vector4>
-							0.5 0.5 1 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						g_dirtColorParams
-						<Vector4>0.700000 0.000000 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_dirtColor
-						<Vector4>
-							0.47 0.43 0.38 0.22
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						g_atlasSizes
-						<Vector4>3 3 3 2</Vector4>
-					</property>
-					<property>
-						dirtMap
-						<Texture>content/Buildings/00_Tiles/Dirt_Cathedral_01_Tile_DM.dds</Texture>
-					</property>
-					<property>
-						blendMask
-						<Texture>content/Buildings/hd_bld_EU_225_Cathedral/hd_bld_EU_225_Cathedral_05_blend.png</Texture>
-					</property>
-					<property>
-						g_enableTerrainBlending
-						<Bool>true</Bool>
-					</property>
-					<property>
-						albedoHeightTile0
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_AM.dds</Texture>
-					</property>
-					<property>
-						normalGlossSpecTile0
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_GBMT.dds</Texture>
-					</property>
-					<property>
-						metallicAOTile0
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_MAO.dds</Texture>
-					</property>
-					<property>
-						albedoHeightTile1
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_AM.dds</Texture>
-					</property>
-					<property>
-						normalGlossSpecTile1
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_GBMT.dds</Texture>
-					</property>
-					<property>
-						metallicAOTile1
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_MAO.dds</Texture>
-					</property>
-					<property>
-						albedoHeightTile2
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_AM.dds</Texture>
-					</property>
-					<property>
-						normalGlossSpecTile2
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_GBMT.dds</Texture>
-					</property>
-					<property>
-						metallicAOTile2
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_MAO.dds</Texture>
-					</property>
-					<property>
-						colorTex
-						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>-0.549350 3.729656 0.000159</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				2
-				<material>
-					<identifier>s_nd1</identifier>
-					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>111</materialKind>
-					<property>
-						g_fakeShadowsAndDetailParams
-						<Vector4>
-							0.5 0.5 1 0.000000
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						g_dirtColorParams
-						<Vector4>0.300000 0.000000 0.000000 0.000000</Vector4>
-					</property>
-					<property>
-						g_dirtColor
-						<Vector4>
-							0.47 0.43 0.38 0.23
-							<!--BW_String-->
-						</Vector4>
-					</property>
-					<property>
-						g_atlasSizes
-						<Vector4>3 3 3 2</Vector4>
-					</property>
-					<property>
-						dirtMap
-						<Texture>content/Buildings/00_Tiles/Dirt_Cathedral_01_Tile_DM.dds</Texture>
-					</property>
-					<property>
-						blendMask
-						<Texture>content/Buildings/hd_bld_EU_225_Cathedral/hd_bld_EU_225_Cathedral_05_blend.png</Texture>
-					</property>
-					<property>
-						g_enableTerrainBlending
-						<Bool>true</Bool>
-					</property>
-					<property>
-						albedoHeightTile0
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_AM.dds</Texture>
-					</property>
-					<property>
-						normalGlossSpecTile0
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_GBMT.dds</Texture>
-					</property>
-					<property>
-						metallicAOTile0
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_03_Tile_MAO.dds</Texture>
-					</property>
-					<property>
-						albedoHeightTile1
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_AM.dds</Texture>
-					</property>
-					<property>
-						normalGlossSpecTile1
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_GBMT.dds</Texture>
-					</property>
-					<property>
-						metallicAOTile1
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_02_Tile_MAO.dds</Texture>
-					</property>
-					<property>
-						albedoHeightTile2
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_AM.dds</Texture>
-					</property>
-					<property>
-						normalGlossSpecTile2
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_GBMT.dds</Texture>
-					</property>
-					<property>
-						metallicAOTile2
-						<Texture>content/Buildings/00_Tiles/dds/Brick_limestone_01_crash_Tile_MAO.dds</Texture>
-					</property>
-					<property>
-						colorTex
-						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
-					</property>
-				</material>
-				<groupOrigin>-1.207647 3.707325 0.000187</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
 				3
 				<material>
 					<identifier>s_nd0</identifier>
@@ -323,6 +287,6 @@
 		<max>0.821963 9.293980 4.812942</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>135142</geometrySize>
+	<geometrySize>134742</geometrySize>
 	<minUVDensity>0.013060</minUVDensity>
 </root>

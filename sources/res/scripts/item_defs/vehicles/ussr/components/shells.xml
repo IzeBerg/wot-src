@@ -5158,9 +5158,9 @@
 		<caliber>203</caliber>
 		<explosionRadius>17</explosionRadius>
 		<isTracer>true</isTracer>
-		<effects>hugeSH</effects>
+		<effects>HugeSFA</effects>
 		<damage>
-			<armor>800</armor>
+			<armor>900</armor>
 			<devices>50</devices>
 		</damage>
 		<hitDeviceChanceMultiplier>
@@ -5174,13 +5174,13 @@
 	</_203mm_F-625DS>
 	<_203mm_F-625DS_5>
 		<id>31014</id>
-		<userString>#ussr_vehicles:_203mm_F-625DS</userString>
+		<userString>#ussr_vehicles:_203mm_F-625DS_5</userString>
 		<icon>hc</icon>
 		<price>2270</price>
 		<kind>HOLLOW_CHARGE</kind>
 		<caliber>203</caliber>
 		<isTracer>true</isTracer>
-		<effects>largeHollowCharge</effects>
+		<effects>HugeSCA</effects>
 		<damage>
 			<armor>650</armor>
 			<devices>180</devices>
@@ -5736,4 +5736,63 @@
 			</damage>
 		</armorSpalls>
 	</_100mm_UOF-412-DG_703_II_2>
+	<_128mm_PzGr39_GW_R>
+		<id>31021</id>
+		<userString>#ussr_vehicles:_128mm_PzGr39_GW_R</userString>
+		<icon>ap</icon>
+		<price>1270</price>
+		<kind>ARMOR_PIERCING</kind>
+		<caliber>128</caliber>
+		<isTracer>true</isTracer>
+		<effects>largeArmorPiercing</effects>
+		<damage>
+			<armor>560</armor>
+			<devices>180</devices>
+		</damage>
+	</_128mm_PzGr39_GW_R>
+	<_128mm_PzGr40_GW_R>
+		<id>31022</id>
+		<userString>#ussr_vehicles:_128mm_PzGr40_GW_R</userString>
+		<icon>ap_cr_premium</icon>
+		<price>5200</price>
+		<improved>true</improved>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<caliber>128</caliber>
+		<isTracer>true</isTracer>
+		<effects>largeAPCR</effects>
+		<damage>
+			<armor>560</armor>
+			<devices>180</devices>
+		</damage>
+	</_128mm_PzGr40_GW_R>
+	<_128mm_SprG18_GW_R>
+		<id>31023</id>
+		<userString>#ussr_vehicles:_128mm_SprG18_GW_R</userString>
+		<icon>he_modern</icon>
+		<price>1055</price>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<mechanics>MODERN</mechanics>
+		<caliber>128</caliber>
+		<explosionRadius>
+			2.71
+			<!--BW_String-->
+		</explosionRadius>
+		<isTracer>true</isTracer>
+		<effects>largeHighExplosive</effects>
+		<damage>
+			<armor>700</armor>
+			<devices>180</devices>
+		</damage>
+		<armorSpalls>
+			<impactRadius>
+				2.71
+				<!--BW_String-->
+			</impactRadius>
+			<coneAngle>90</coneAngle>
+			<damage>
+				<armor>350</armor>
+				<devices>90</devices>
+			</damage>
+		</armorSpalls>
+	</_128mm_SprG18_GW_R>
 </root>

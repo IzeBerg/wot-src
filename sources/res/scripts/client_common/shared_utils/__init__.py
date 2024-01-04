@@ -1,5 +1,5 @@
 import collections, time, itertools, logging, types, weakref
-from functools import partial
+from functools import partial, wraps
 import typing, BigWorld
 from adisp import adisp_async
 if typing.TYPE_CHECKING:
@@ -7,11 +7,8 @@ if typing.TYPE_CHECKING:
     T = TypeVar('T')
     R = TypeVar('R')
 _logger = logging.getLogger(__name__)
-if typing.TYPE_CHECKING:
-    from typing import Callable, Iterable, List, Optional, Tuple, TypeVar, Union
-    T = TypeVar('T')
-    R = TypeVar('R')
-ScalarTypes = (types.IntType, types.LongType, types.FloatType,
+ScalarTypes = (
+ types.IntType, types.LongType, types.FloatType,
  types.BooleanType) + types.StringTypes
 IntegralTypes = (types.IntType, types.LongType)
 

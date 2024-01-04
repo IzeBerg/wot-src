@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params/>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>5.000000 5.000000</time>
+		<transition>
+			<to>Prebattle_effects</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-108.000000 -102.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Prebattle_effects</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/R165_Object_703_II_2_3dst/R165_Object_703_II_2_3dst_fire_burst_exhaust_pre_battle_PC.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Sleep Node0</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-290.500000 6.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sleep Node0</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<uiPosition>-112.000000 128.500000 0.000000</uiPosition>
+	</node>
+</root>

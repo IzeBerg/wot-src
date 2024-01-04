@@ -8,6 +8,7 @@ from items.components import skills_constants
 from soft_exception import SoftException
 
 class SPECIAL_VOICE_TAG(object):
+    ARIA_2023 = 'AriaZhorikSpecialVoice'
     BUFFON = 'buffonSpecialVoice'
     SABATON = 'sabatonSpecialVoice'
     OFFSPRING = 'offspringSpecialVoice'
@@ -23,6 +24,7 @@ class SPECIAL_VOICE_TAG(object):
     WITCHES_CREW = 'witchesSpecialVoice'
     HAND_OF_BLOOD = 'handOfBloodSpecialVoice'
     HW_CREW = 'crewHWvoice'
+    ARIA_CREW = 'ariaCrew'
     BATTLE_OF_BLOGGERS = ('ru1_LebwaSpecialVoice', 'ru2_YushaSpecialVoice', 'ru3_Amway921SpecialVoice',
                           'ru4_KorbenDallasSpecialVoice', 'eu1_MailandSpecialVoice',
                           'eu2_Skill4ltuSpecialVoice', 'eu3_DezgamezSpecialVoice',
@@ -50,7 +52,7 @@ class SPECIAL_VOICE_TAG(object):
                'BabaYagaHWSpecialVoice', 'KatrinaHWSpecialVoice')
     MOSFILM_2023 = ('TrusSpecialVoice', 'BalbesSpecialVoice', 'ByvalySpecialVoice')
     ALL = (
-     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, CELEBRITY_2022, DAY_OF_COSMONAUTICS_21, SABATON_2021, QUICKY_BABY, WITCHES_CREW, HW_CREW, CELEBRITY_2023, HAND_OF_BLOOD) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021 + G_I_JOE_2022 + WHITE_TIGER_EVENT_2022 + BPH_2022 + BPH_MT_2022 + MOSFILM_2023 + HW_2023
+     ARIA_2023, BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, CELEBRITY_2022, DAY_OF_COSMONAUTICS_21, SABATON_2021, QUICKY_BABY, WITCHES_CREW, HW_CREW, CELEBRITY_2023, HAND_OF_BLOOD) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021 + G_I_JOE_2022 + WHITE_TIGER_EVENT_2022 + BPH_2022 + BPH_MT_2022 + MOSFILM_2023 + HW_2023
 
 
 class SPECIAL_CREW_TAG(object):
@@ -60,8 +62,9 @@ class SPECIAL_CREW_TAG(object):
     YHA = 'yhaCrew'
     WITCHES_CREW = 'witchesCrew'
     HW_CREW = 'hwCrew'
+    ARIA_CREW = 'ariaCrew'
     ALL = (
-     SABATON, OFFSPRING, MIHO, YHA, WITCHES_CREW, HW_CREW)
+     SABATON, OFFSPRING, MIHO, YHA, WITCHES_CREW, HW_CREW, ARIA_CREW)
 
 
 class GROUP_TAG(object):

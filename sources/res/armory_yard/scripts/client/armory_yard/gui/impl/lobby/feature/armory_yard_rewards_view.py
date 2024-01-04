@@ -14,6 +14,7 @@ from gui.impl.pub.lobby_window import LobbyWindow
 from gui.server_events.bonuses import getNonQuestBonuses, mergeBonuses, splitBonuses
 from gui.shared.event_dispatcher import showHangar
 from gui.shared.gui_items import GUI_ITEM_TYPE
+from gui.shared.money import Currency
 from helpers import dependency
 from skeletons.gui.game_control import IArmoryYardController
 from skeletons.gui.shared import IItemsCache
@@ -38,8 +39,6 @@ class ArmoryYardRewardsView(ViewImpl):
         self.__stages = stage
         self.__state = state or ArmoryYardRewardState.STAGE
         self.__closeCallback = closeCallback
-        if 'premium_plus' in self.__rawBonuses:
-            self.__mainBonuses['premium_plus'] = self.__rawBonuses.pop('premium_plus')
         if 'items' in self.__rawBonuses:
             devices = {}
             items = self.__rawBonuses['items']
@@ -49,8 +48,18 @@ class ArmoryYardRewardsView(ViewImpl):
 
             if devices:
                 self.__mainBonuses['items'] = devices
-        if 'customizations' in self.__rawBonuses:
-            self.__mainBonuses['customizations'] = self.__rawBonuses.pop('customizations')
+        if len(self.__mainBonuses) < 3:
+            if 'customizations' in self.__rawBonuses:
+                self.__mainBonuses['customizations'] = self.__rawBonuses.pop('customizations')
+        if len(self.__mainBonuses) < 3:
+            if 'premium_plus' in self.__rawBonuses:
+                self.__mainBonuses['premium_plus'] = self.__rawBonuses.pop('premium_plus')
+        if len(self.__mainBonuses) < 3:
+            if Currency.CRYSTAL in self.__rawBonuses:
+                self.__mainBonuses[Currency.CRYSTAL] = self.__rawBonuses.pop(Currency.CRYSTAL)
+        if len(self.__mainBonuses) < 3:
+            if 'freeXP' in self.__rawBonuses:
+                self.__mainBonuses['freeXP'] = self.__rawBonuses.pop('freeXP')
         super(ArmoryYardRewardsView, self).__init__(settings)
 
     @property
@@ -127,6 +136,10 @@ class ArmoryYardRewardsView(ViewImpl):
 
         rewards = splitBonuses(mergeBonuses(rewards))
         rewards.sort(key=bonusesSortKeyFunc)
+        for idx, value in enumerate(rewards):
+            if value.getName() == 'battleToken' and value.getValue().get('ny24_yaga') is not None:
+                rewards.pop(idx)
+
         packBonusModelAndTooltipData(rewards, rewardsList, self.__tooltipData, getArmoryYardBonusPacker())
         rewardsList.invalidate()
         return rewards

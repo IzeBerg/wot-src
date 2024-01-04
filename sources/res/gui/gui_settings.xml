@@ -1207,11 +1207,6 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/ny24_category/ny24_category)
-				<name>newYearOldCollectionRewardUrl</name>
-				<type>url</type>
-			</item>
-			<item>
 				$PARAMS(/recommended-packs)
 				<name>buyMoreGoldUrl</name>
 				<type>url</type>
@@ -1324,16 +1319,6 @@
 			<item>
 				$PARAMS(/open)
 				<name>splitUrl</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/featured/featured/items/platform_subscription/preview)
-				<name>buyRenewableSubscription</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/psa2021/psa2021)
-				<name>psaProducts</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1546,17 +1531,6 @@
 		</value>
 	</setting>
 	<setting>
-		<name>newYearInfo</name>
-		<type>dict</type>
-		<value>
-			<item>
-				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/ny24video/
-				<name>baseURL</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
 		<name>tournamentsURL</name>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -1671,12 +1645,12 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/RankedBattles2023/
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/RankedBattles2024/
 				<name>default</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/RankedBattles2023/
+				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/RankedBattles2024/
 				<name>CT</name>
 				<type>url</type>
 			</item>

@@ -2537,7 +2537,7 @@
 			<guns>
 				<_203mm_U_3BM>
 					shared
-					<maxAmmo>25</maxAmmo>
+					<maxAmmo>30</maxAmmo>
 					<armor>
 						<armor_1>
 							320
@@ -2594,7 +2594,7 @@
 						<gun>55</gun>
 					</armor>
 					<shotDispersionRadius>
-						3.0
+						1.0
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
@@ -2608,21 +2608,21 @@
 					</invisibilityFactorAtShot>
 					<shotDispersionFactors>
 						<turretRotation>
-							0.08
+							0.5
 							<!--BW_String-->
 						</turretRotation>
 						<afterShot>
-							4.0
+							5.0
 							<!--BW_String-->
 						</afterShot>
 						<whileGunDamaged>
-							2.0
+							3.0
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<turretYawLimits>-10 10</turretYawLimits>
 					<pitchLimits>
-						<minPitch>0 -25 1 -25</minPitch>
+						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>0 5 1 5</maxPitch>
 					</pitchLimits>
 					<customizationSlots>

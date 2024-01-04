@@ -1,4 +1,4 @@
-import typing
+import logging, typing
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import ACHIEVEMENTS_VISITED
 from achievements20.WTRStageChecker import WTRStageChecker
@@ -44,6 +44,7 @@ _STATISTIC_LIST_ORDER = (KPITypes.DAMAGE,
  KPITypes.DESTROYED,
  KPITypes.ASSISTANCE,
  KPITypes.BLOCKED)
+_logger = logging.getLogger(__name__)
 
 class SummaryView(SubModelPresenter):
     __slots__ = ('__dossier', '__uniqueAwardsCount', '__prevRatingRank', '__prevRatingSubRank',
@@ -113,10 +114,16 @@ class SummaryView(SubModelPresenter):
         super(SummaryView, self).finalize()
         return
 
+    def onError(self, args):
+        errorFilePath = str(args.get('errorFilePath', ''))
+        _logger.error('Rating animation error: %s', errorFilePath)
+
     def _getEvents(self):
         return (
          (
           self.viewModel.onAchievementsSettings, self.__onAchievementsSettings),
+         (
+          self.viewModel.onError, self.onError),
          (
           self.viewModel.otherPlayerInfo.onOpenProfile, self.__openClanStatistic),
          (

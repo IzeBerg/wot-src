@@ -2,8 +2,8 @@ from enum import Enum
 from functools import partial
 import adisp, BigWorld
 from account_helpers.AccountSettings import ArmoryYard, AccountSettings
-from armory_yard_constants import getCurrencyToken, getGroupName, getStageToken, getEndToken, getEndQuestID, getBundleBlockToken, PROGRESSION_LEVEL_PDATA_KEY, State, CLAIMED_FINAL_REWARD, PDATA_KEY_ARMORY_YARD, INTO_VIDEO, isArmoryYardStyleQuest, DAY_BEFORE_END_STYLE_QUEST, AY_VIDEOS, VEHICLE_NAME
-from armory_yard.gui.window_events import showArmoryYardIntroWindow, showArmoryYardVehiclePreview, showArmoryYardWaiting, hideArmoryYardWaiting
+from armory_yard_constants import getCurrencyToken, getGroupName, getStageToken, getEndToken, getEndQuestID, getBundleBlockToken, getFinalEndQuestID, PROGRESSION_LEVEL_PDATA_KEY, State, CLAIMED_FINAL_REWARD, PDATA_KEY_ARMORY_YARD, INTO_VIDEO, isArmoryYardStyleQuest, DAY_BEFORE_END_STYLE_QUEST, AY_VIDEOS, VEHICLE_NAME
+from armory_yard.gui.window_events import showArmoryYardIntroWindow, showArmoryYardWaiting, hideArmoryYardWaiting
 from armory_yard.gui.impl.lobby.feature.armory_yard_main_view import ArmoryYardMainView
 from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_main_view_model import TabId
 from armory_yard.managers.sound_manager import ArmorySoundManager
@@ -67,6 +67,7 @@ class ArmoryYardController(IArmoryYardController):
         self.onPayedError = Event(self.__eventManager)
         self.onBundleOutTime = Event(self.__eventManager)
         self.onTabIdChanged = Event(self.__eventManager)
+        self.onCollectFinalReward = Event(self.__eventManager)
         self.__serverSettings = _ServerSettings()
         self.__soundManager = ArmorySoundManager()
         self.__cameraManager = CameraManager()
@@ -78,6 +79,7 @@ class ArmoryYardController(IArmoryYardController):
         self.__isVisiting = False
         self.__bundlesProducts = []
         self.__bundlesState = BundleState.EMPTY
+        self.__isFinalQuestCompleted = False
         nationID, vehID = vehicles.g_list.getIDsByName(VEHICLE_NAME)
         self.__vehicleCD = vehicles.makeIntCompactDescrByID('vehicle', nationID, vehID)
         self.__isVehiclePreview = False
@@ -116,6 +118,10 @@ class ArmoryYardController(IArmoryYardController):
     def bundlesProducts(self):
         return self.__bundlesProducts
 
+    @property
+    def isFinalQuestCompleted(self):
+        return self.__isFinalQuestCompleted
+
     def onLobbyInited(self, event):
         self.__serverSettings.start()
         g_clientUpdateManager.addCallbacks({'tokens': self.__onTokensUpdate, 
@@ -126,7 +132,7 @@ class ArmoryYardController(IArmoryYardController):
         self.__checkStyleQuest()
         if self.isEnabled():
             self.onCheckNotify()
-            self.__checkAnnouncement()
+            self.checkAnnouncement()
             if self.__bundlesState == BundleState.EMPTY:
                 self.__fillBundlesProducts()
             self.__isPaused = self.serverSettings.isPaused
@@ -134,6 +140,8 @@ class ArmoryYardController(IArmoryYardController):
                 self.onCollectReward()
         self.__connectionMgr.onDisconnected += self.__onDisconnected
         self.__isStarted = True
+        if self.getTotalSteps() == self.getCurrencyTokenCount():
+            self.__isFinalQuestCompleted = True
 
     def onAccountBecomeNonPlayer(self):
         self.__serverSettings.stop()
@@ -427,13 +435,13 @@ class ArmoryYardController(IArmoryYardController):
             self.goToArmoryYard(TabId.QUESTS)
 
     def unloadScene(self, isReload=True):
-        self.__sceneLoadingManager.unloadScene(isReload=isReload)
         self.__soundManager.onSoundModeChanged(False)
+        self.__sceneLoadingManager.unloadScene(isReload=isReload)
         self.__isVisiting = False
 
     def onLoadingHangar(self):
-        self.__sceneLoadingManager.unloadScene()
         self.__soundManager.onSoundModeChanged(False)
+        self.__sceneLoadingManager.unloadScene()
         self.__cameraManager.goToHangar()
         self.__cameraManager.destroy()
         self.__isVisiting = False
@@ -452,23 +460,17 @@ class ArmoryYardController(IArmoryYardController):
 
         return False
 
-    def showHeroTankVehiclePreview(self):
-        reward = self.getFinalRewardVehicle()
-        if reward is not None:
-            showArmoryYardVehiclePreview(self.getFinalRewardVehicle().intCD, True, True, True)
-        return
-
     def update(self):
         if self.isEnabled():
             self.onCheckNotify()
-            self.__checkAnnouncement()
+            self.checkAnnouncement()
             self.__fillBundlesProducts()
             if self.__isPaused != self.serverSettings.isPaused:
                 self.__isPaused = self.serverSettings.isPaused
                 self.onServerSwitchChange()
         self.onUpdated()
 
-    def __checkAnnouncement(self):
+    def checkAnnouncement(self):
         if self.getState() == State.BEFOREPROGRESSION:
             startTime, _ = self.getProgressionTimes()
             self.onAnnouncement(startTime)
@@ -506,6 +508,11 @@ class ArmoryYardController(IArmoryYardController):
     def __onQuestsUpdated(self, diff):
         if set([ quest.getID() for _, quest in self.iterProgressionQuests() ]) & set(diff):
             self.onQuestsUpdated()
+        currentSeason = self.serverSettings.getCurrentSeason()
+        if currentSeason and getFinalEndQuestID(currentSeason.getSeasonID()) in diff:
+            self.__isFinalQuestCompleted = True
+            self.onProgressUpdated()
+            self.onCollectFinalReward()
 
     def __getTimeToStatusChange(self):
         if self.isEnabled():
@@ -540,7 +547,7 @@ class ArmoryYardController(IArmoryYardController):
         self.onStatusChange()
         self.onUpdated()
         self.onCheckNotify()
-        self.__checkAnnouncement()
+        self.checkAnnouncement()
         self.__fillBundlesProducts()
 
     def __stopNotification(self):

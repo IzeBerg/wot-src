@@ -1,0 +1,10 @@
+from gui.shared.system_factory import registerNotificationsListeners, registerNotificationsActionsHandlers
+from gui_lootboxes.notification.lootbox_listener import EventLootBoxesListener, LootBoxesBuyAvailableListener
+from gui_lootboxes.notification.lootbox_action_handler import _OpenEventLootBoxesShopHandler
+
+def registerClientNotificationListener():
+    registerNotificationsListeners((EventLootBoxesListener, LootBoxesBuyAvailableListener))
+
+
+def registerClientNotificationHandler():
+    registerNotificationsActionsHandlers((_OpenEventLootBoxesShopHandler,))

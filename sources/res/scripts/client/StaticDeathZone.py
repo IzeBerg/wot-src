@@ -18,6 +18,7 @@ class StaticDeathZone(BigWorld.Entity):
         self.__functionOnLeaveDeathZone = None
         self._marker = None
         self._onActiveChanged = Event.Event()
+        self._vehiclesInZone = set()
         return
 
     @property
@@ -52,10 +53,13 @@ class StaticDeathZone(BigWorld.Entity):
         return self.visual.getClosestPoint(pos, searchRadius)
 
     def onEntityEnteredInZone(self, entityID):
-        self._marker.onVehicleEnteredZone(entityID)
+        self._vehiclesInZone.add(entityID)
 
     def onEntityLeftZone(self, entityID):
-        self._marker.onVehicleLeftZone(entityID)
+        self._vehiclesInZone.discard(entityID)
+
+    def hasVehicle(self, vehicleID):
+        return vehicleID in self._vehiclesInZone
 
     def onDeathZoneNotification(self, show, entityID, timeToStrike, waveDuration):
         player = BigWorld.player()
@@ -144,7 +148,6 @@ class _DeathZoneMarkerHandler(object):
         self._matrix = None
         self._markerId = None
         self._searchRadius = 0.0
-        self._vehiclesInZone = set()
         areaMarkerCtrl = self.sessionProvider.shared.areaMarker
         if areaMarkerCtrl:
             self._matrix = Math.Matrix()
@@ -173,18 +176,12 @@ class _DeathZoneMarkerHandler(object):
                 areaMarkerCtrl.hideMarkersById(self._markerId)
         return
 
-    def onVehicleEnteredZone(self, vehID):
-        self._vehiclesInZone.add(vehID)
-
-    def onVehicleLeftZone(self, vehID):
-        self._vehiclesInZone.discard(vehID)
-
     def _tickUpdate(self):
         player = BigWorld.player()
         if not player or self._matrix is None:
             return
         vehicle = player.getVehicleAttached()
-        isVisible = vehicle is not None and vehicle.id not in self._vehiclesInZone and vehicle.health > 0
+        isVisible = vehicle is not None and not self._zone.hasVehicle(vehicle.id) and vehicle.health > 0
         self.setVisible(isVisible)
         if not isVisible:
             return

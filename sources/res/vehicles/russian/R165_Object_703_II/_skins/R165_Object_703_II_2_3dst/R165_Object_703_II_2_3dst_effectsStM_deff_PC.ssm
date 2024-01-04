@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>Move</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>Prebattle</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>0.100000 1.000000</time>
+		<transition>
+			<to>Moving_effects</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>Prebattle_effects</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Prebattle</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-108.000000 -102.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Moving_effects</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/R165_Object_703_II_2_3dst/R165_Object_703_II_2_3dst_fire_burst_exhaust_idle_PC.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Sleep Node0</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-319.000000 -3.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Prebattle_effects</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/R165_Object_703_II_2_3dst/R165_Object_703_II_2_3dst_fire_burst_exhaust_pre_battle_PC.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Sleep Node</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>121.000000 9.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sleep Node0</name>
+		<type>sleep</type>
+		<time>5.000000 10.000000</time>
+		<transition>
+			<to>Sleep Node</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-107.000000 134.000000 0.000000</uiPosition>
+	</node>
+</root>

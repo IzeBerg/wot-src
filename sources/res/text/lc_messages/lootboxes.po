@@ -8,8 +8,17 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "autoOpenView/bottomLabel"
+msgstr "Мы открыли все ваши новогодние контейнеры"
+
+msgid "autoOpenView/congratsLabel"
+msgstr "Поздравляем!"
+
 msgid "autoOpenView/dateOpen"
 msgstr "Набор откроется автоматически %(date)s"
+
+msgid "autoOpenView/okBtnLabel"
+msgstr "Так точно!"
 
 msgid "buttonLabel/back"
 msgstr "Вернуться в Ангар"
@@ -55,14 +64,21 @@ msgstr "Компенсация за машину, которая уже есть
 
 msgid "desctiptions/hw_2023_silver"
 msgstr ""
-"В каждом контейнере с определённой вероятностью вы можете найти премиум технику VIII уровня, сказочных персонажей и другое ценное имущество, среди которого: 2D-стили, декали, личные резервы, бланки переобучения, Танковый премиум аккаунт, свободный опыт, кредиты, снаряжение. \n"
+"В каждом контейнере с определённой вероятностью вы можете найти премиум технику VIII уровня, сказочных персонажей и другое ценное имущество, среди которого: 2D-стили, декали, личные резервы, бланки переобучения, Танковый премиум аккаунт, свободный опыт и кредиты. \n"
 " \n"
-"Если после открытия 99 контейнеров так и не выпала премиум техника, будьте уверены — из 100-го контейнера вы гарантированно получите случайную премиум машину VIII уровня из списка, которой у вас ещё нет."
+"Если после открытия 69 контейнеров так и не выпала премиум техника, будьте уверены — из 70-го контейнера вы гарантированно получите случайную премиум машину VIII уровня из списка, которой у вас ещё нет."
 
 msgid "desctiptions/hw_2023_standart"
 msgstr ""
 "В каждом контейнере с определённой вероятностью вы можете найти имущество: "
 "Танковый премиум аккаунт, кредиты, снаряжение или предбоевые инструкции."
+
+msgid "desctiptions/mtl_1_24"
+msgstr ""
+"Контейнер с имуществом, которое всегда придётся ко двору как опытным "
+"игрокам, так и новичкам. Содержимое контейнера может включать Танковый "
+"премиум аккаунт, кредиты, личные резервы, снаряжение, различные элементы "
+"внешнего вида, а также премиум технику VIII уровня на любой вкус."
 
 msgid "desctiptions/ny_2024_VI"
 msgstr ""
@@ -104,15 +120,6 @@ msgstr ""
 "которой премиум и акционная техника III-X уровней, уже знакомые вам "
 "3D-стили, а может и кое-что необычное и совершенно неожиданное. Пусть удача "
 "будет на вашей стороне!"
-
-msgid "desctiptions/ny_2024_test"
-msgstr ""
-"Это тестовый контейнер, который нужен, чтобы проверить корректную механику "
-"работы. При запуске события состав содержимого будет существенно расширен. "
-"Здесь вы гарантированно найдёте одно украшение V уровня и одно случайного "
-"уровня из Отечественного альбома, а также полезное игровое имущество. Кроме "
-"того, у вас есть шанс получить заветную награду, среди которой премиум "
-"техника разных уровней. Пусть удача будет на вашей стороне!"
 
 msgid "desctiptions/tanks_birthday_2023_IX"
 msgstr ""
@@ -246,11 +253,11 @@ msgid "notification/lootBoxesAutoOpen/boxes"
 msgstr "Открыто: %(boxes)s"
 
 msgid "notification/lootBoxesAutoOpen/counter"
-msgstr "Контейнер %(boxName)s (x%(count)d)"
+msgstr "%(boxName)s (x%(count)d)"
 
 msgid "notification/lootBoxesAutoOpen/rewards"
 msgstr ""
-"Получено имущество:\n"
+"Получено:\n"
 "%(rewards)s"
 
 msgid "notification/lootBoxesAutoOpen/text"
@@ -258,6 +265,15 @@ msgstr "Мы открыли за вас контейнеры и начислил
 
 msgid "notification/lootBoxesAutoOpen/title"
 msgstr "Открытие ящиков"
+
+msgid "notification/lootBoxesBuy/resume/body"
+msgstr "Продажа контейнеров возобновлена на всех площадках."
+
+msgid "notification/lootBoxesBuy/suspend/body"
+msgstr "Операции с контейнерами временно доступны только в Премиум магазине."
+
+msgid "notification/lootBoxesBuy/suspend/header"
+msgstr "Внимание:"
 
 msgid "notification/lootBoxesIsDisabled/text"
 msgstr "Операции с ящиками временно недоступны: ведутся технические работы."
@@ -331,6 +347,18 @@ msgstr "Переоткрыть"
 msgid "rewardView/zeroBoxes"
 msgstr "Коробки закончились"
 
+msgid "specialReward/continueBtn"
+msgstr "Продолжить"
+
+msgid "specialReward/style/goToBtn"
+msgstr "Рассмотреть стиль"
+
+msgid "specialReward/style/title"
+msgstr "Стиль для"
+
+msgid "specialReward/vehicle/goToBtn"
+msgstr "Посмотреть в Ангаре"
+
 msgid "tooltip/category/header/Christmas"
 msgstr "Рождественские коробки"
 
@@ -383,10 +411,13 @@ msgid "userName/event_premium"
 msgstr "Командирский ящик"
 
 msgid "userName/hw_2023_silver"
-msgstr "Контейнер Царства теней: серебряный"
+msgstr "Царство теней: сокровища"
 
 msgid "userName/hw_2023_standart"
-msgstr "Контейнер Царства теней: обычный"
+msgstr "Царство теней: припасы"
+
+msgid "userName/mtl_1_24"
+msgstr "Путь воина"
 
 msgid "userName/newYear_premium"
 msgstr "БОЛЬШИЕ КОРОБКИ"
@@ -407,9 +438,6 @@ msgid "userName/ny_2024_magic"
 msgstr "Сказочный Новый год"
 
 msgid "userName/ny_2024_newyear"
-msgstr "Отечественный Новый год"
-
-msgid "userName/ny_2024_test"
 msgstr "Отечественный Новый год"
 
 msgid "userName/small_referral"

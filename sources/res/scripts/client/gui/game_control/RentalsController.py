@@ -3,7 +3,6 @@ from sys import maxint
 import copy, typing, BigWorld, Event
 from constants import RentType, SEASON_NAME_BY_TYPE, IS_RENTALS_ENABLED
 from gui.shared.gui_items import GUI_ITEM_TYPE
-from gui.shared.utils.requesters.ItemsRequester import REQ_CRITERIA
 from gui.shared.money import Money
 from helpers import dependency
 from helpers import time_utils
@@ -153,7 +152,12 @@ class RentalsController(IRentalsController):
         if not self.itemsCache.isSynced():
             return
         self.__vehiclesForUpdate = []
-        rentedVehicles = self.itemsCache.items.getVehicles(REQ_CRITERIA.VEHICLE.RENT ^ REQ_CRITERIA.VEHICLE.RENT_PROMOTION).values()
+        rentedVehicles = []
+        for itemCD in set(self.itemsCache.items.inventory.getIventoryVehiclesCDs()).union(self.itemsCache.items.shop.getVehicleRentPrices().keys()):
+            item = self.itemsCache.items.getItemByCD(itemCD)
+            if item.isRented or item.isRentPromotion:
+                rentedVehicles.append(item)
+
         notificationList = []
         for vehicle in rentedVehicles:
             delta = vehicle.rentLeftTime

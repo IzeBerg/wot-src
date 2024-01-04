@@ -542,24 +542,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>OnPlayerVehicleDetectEnemy</class>
-				<id>OnPlayerVehicleDetectEnemy_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>HasComponent</class>
-				<id>HasComponent_4</id>
-				<params>
-					<param>
-						Debris Spawner
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>GetVehicleGameObject</class>
 				<id>GetVehicleGameObject_1</id>
 				<params/>
@@ -874,16 +856,10 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>OnPlayerVehicleDetectEnemy_1</from>
+				<from>RemoveGameObject_1</from>
 				<input>cancel</input>
 				<to>Timer_1</to>
-				<output>onLost</output>
-			</connection>
-			<connection>
-				<from>Timer_1</from>
-				<input>in</input>
-				<to>ComponentMethod_5</to>
-				<output>cancelOut</output>
+				<output>out</output>
 			</connection>
 			<connection>
 				<from>Timer_1</from>
@@ -892,21 +868,15 @@
 				<output>event0</output>
 			</connection>
 			<connection>
+				<from>Timer_1</from>
+				<input>in</input>
+				<to>ComponentMethod_5</to>
+				<output>cancelOut</output>
+			</connection>
+			<connection>
 				<from>FindFirstNode_3</from>
 				<input>gameObject</input>
 				<to>ComponentMethod_5</to>
-				<output>node</output>
-			</connection>
-			<connection>
-				<from>HasComponent_4</from>
-				<input>active</input>
-				<to>OnPlayerVehicleDetectEnemy_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>FindFirstNode_3</from>
-				<input>gameObject</input>
-				<to>HasComponent_4</to>
 				<output>node</output>
 			</connection>
 			<connection>

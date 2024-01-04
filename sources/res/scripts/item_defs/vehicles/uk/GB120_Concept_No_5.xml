@@ -666,7 +666,7 @@
 			</terrainResistance>
 			<brakeForce>15000</brakeForce>
 			<rotationIsAroundCenter>true</rotationIsAroundCenter>
-			<rotationSpeed>40</rotationSpeed>
+			<rotationSpeed>80</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
 					0.1
@@ -2418,14 +2418,20 @@
 					<axleSteeringAngles>0 0 6</axleSteeringAngles>
 					<grounds>
 						<soft>
-							<rollingFriction>0.156975</rollingFriction>
+							<rollingFriction>
+								0.01
+								<!--BW_String-->
+							</rollingFriction>
 						</soft>
 						<medium>
-							<rollingFriction>0.108675</rollingFriction>
+							<rollingFriction>
+								0.01
+								<!--BW_String-->
+							</rollingFriction>
 						</medium>
 						<firm>
 							<rollingFriction>
-								0.0805
+								0.01
 								<!--BW_String-->
 							</rollingFriction>
 						</firm>

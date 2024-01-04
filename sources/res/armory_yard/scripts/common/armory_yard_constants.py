@@ -22,7 +22,7 @@ INTO_VIDEO = 'ay_ep2_intro'
 STYLE_QUEST_POSTFIX = 'style'
 VEHICLE_NAME = 'czech:Cz21_TST'
 AY_VIDEOS = [
- 'ay_ep2_armour.usm', 'ay_ep2_intro.usm', 'ay_ep2_reward.usm', 'ay_ep2_tracks.usm']
+ 'ay_ep2_armour.usm', 'ay_ep2_intro.usm', 'ay_ep2_tracks.usm', 'ay_ep2_gun.usm', 'ay_ep2_turret.usm']
 
 class State(Enum):
     BEFOREPROGRESSION = 'beforeProgression'
@@ -61,6 +61,10 @@ def getEndQuestID(cycleID):
 
 def getBundleBlockToken(seasonID):
     return ('{}_starter_pack:season_{}').format(FEATURE_NAME_BASE, seasonID)
+
+
+def getFinalEndQuestID(seasonID):
+    return ('_').join((FEATURE_NAME_BASE, ('season_{}').format(seasonID), END_QUEST_POSTFIX))
 
 
 def isArmoryYardBattleToken(tokenID):

@@ -71,6 +71,8 @@ class ArmoryYardBuyBundleView(ViewImpl):
         return self.__tooltipData.get(event.getArgument('tooltipId'), None)
 
     def destroyWindow(self, isScene=False):
+        if self.__isBuying or self.__timeoutCallback is not None and not self.__isTokenDelivered():
+            return
         if isScene:
             if self.__onClosedCallback is not None:
                 self.__onClosedCallback(True)
@@ -103,6 +105,9 @@ class ArmoryYardBuyBundleView(ViewImpl):
                 if not Waiting.isOpened('buyBundleArmoryYard'):
                     Waiting.show('buyBundleArmoryYard', isAlwaysOnTop=True, isSingle=True)
                 self.__stepAfterBuy = self.__armoryYardCtrl.getCurrencyTokenCount() + product['tokens']
+                maxTokensCount = self.__armoryYardCtrl.getTotalSteps()
+                if self.__stepAfterBuy > maxTokensCount:
+                    self.__stepAfterBuy = maxTokensCount
                 result = yield self.__webCtrl.sendRequest(ctx=ShopBuyStorefrontProductCtx(storefront=self.__armoryYardCtrl.getStarterPackSettings()['storefrontName'], productCode=product['productCode'], amount=1, prices=[{'code': currency, 'amount': price.get(currency), 'item_type': 'currency'}]))
                 if result.isSuccess():
                     self.__armoryYardCtrl.refreshBundle()
@@ -166,7 +171,7 @@ class ArmoryYardBuyBundleView(ViewImpl):
          (
           self.__lobbyContext.getServerSettings().onServerSettingsChange, self.__onServerSettingsChange),
          (
-          self.__armoryYardCtrl.onUpdated, self.__onEventUpdated),
+          self.__armoryYardCtrl.onUpdated, self.__onProgressUpdated),
          (
           self.__armoryYardCtrl.onProgressUpdated, self.__onProgressUpdated),
          (
@@ -175,6 +180,7 @@ class ArmoryYardBuyBundleView(ViewImpl):
     def __setMainData(self):
         with self.viewModel.transaction() as (model):
             currentTokens = self.__armoryYardCtrl.getCurrencyTokenCount()
+            maxTokens = self.__armoryYardCtrl.getTotalSteps()
             for bundle in self.__armoryYardCtrl.bundlesProducts:
                 if self.__bundleId == bundle['id']:
                     product = bundle
@@ -185,14 +191,15 @@ class ArmoryYardBuyBundleView(ViewImpl):
                     bundleType = BUNDLE_TYPES[tag]
                     break
 
+            endLevel = currentTokens + product['tokens']
             model.setIsWalletAvailable(self.__wallet.isAvailable)
             model.setStartLevel(currentTokens + 1)
-            model.setEndLevel(currentTokens + product['tokens'])
+            model.setEndLevel(endLevel if maxTokens >= endLevel else maxTokens)
             model.setType(bundleType)
             PriceModelBuilder.fillPriceModel(model.price, product['price'], checkBalanceAvailability=True)
 
     def __onServerSettingsChange(self, _):
-        self.__onEventUpdated()
+        self.__onProgressUpdated()
 
     def __fullUpdate(self):
         self.__setMainData()
@@ -213,12 +220,6 @@ class ArmoryYardBuyBundleView(ViewImpl):
             self.__fullUpdate()
             return
 
-    def __onEventUpdated(self):
-        if not self.__armoryYardCtrl.isActive() or self.__armoryYardCtrl.isCompleted() or not self.__armoryYardCtrl.isStarterPackAvailable():
-            self.destroyWindow(isScene=True)
-            return
-        self.__fullUpdate()
-
     def __fillRewards(self):
         with self.viewModel.transaction() as (model):
             rewards = model.getRewards()
@@ -232,12 +233,17 @@ class ArmoryYardBuyBundleView(ViewImpl):
 
             rewardsList = splitBonuses(mergeBonuses(rewardsList))
             rewardsList.sort(key=bonusesSortKeyFunc)
+            for idx, value in enumerate(rewardsList):
+                if value.getName() == 'battleToken' and value.getValue().get('ny24_yaga') is not None:
+                    rewardsList.pop(idx)
+
             if len(rewardsList) > ArmoryYardBuyBundleViewModel.MAX_VISIBLE_REWARDS:
                 packBonusModelAndTooltipData(rewardsList[:ArmoryYardBuyBundleViewModel.MAX_VISIBLE_REWARDS - 1], rewards, self.__tooltipData, packer=getArmoryYardBuyViewPacker())
                 packRestModel(rewardsList[ArmoryYardBuyBundleViewModel.MAX_VISIBLE_REWARDS - 1:], rewards, self.__tooltipData, ArmoryYardBuyBundleViewModel.MAX_VISIBLE_REWARDS - 1)
             else:
                 packBonusModelAndTooltipData(rewardsList, rewards, self.__tooltipData, packer=getArmoryYardBuyViewPacker())
             rewards.invalidate()
+        return
 
     def __onWalletStatusChanged(self, *_):
         with self.viewModel.transaction() as (vm):

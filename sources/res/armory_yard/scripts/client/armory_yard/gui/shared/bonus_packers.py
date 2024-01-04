@@ -1,3 +1,4 @@
+import logging
 from constants import PREMIUM_ENTITLEMENTS
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.impl import backport
@@ -6,10 +7,11 @@ from armory_yard.gui.impl.gen.view_models.views.lobby.feature.armory_yard_reward
 from armory_yard_constants import isArmoryYardBattleToken, FEATURE_NAME_BASE
 from gui.impl.backport import createTooltipData, TooltipData
 from gui.impl.gen.view_models.common.missions.bonuses.bonus_model import BonusModel
-from gui.battle_pass.battle_pass_bonuses_packers import TmanTemplateBonusPacker
 from gui.shared.gui_items.Vehicle import getNationLessName
 from gui.shared.missions.packers.bonus import getDefaultBonusPackersMap, BaseBonusUIPacker, BonusUIPacker, BACKPORT_TOOLTIP_CONTENT_ID, TokenBonusUIPacker, SimpleBonusUIPacker, VehiclesBonusUIPacker
 from items.vehicles import getVehicleClassFromVehicleType
+from gui.battle_pass.battle_pass_bonuses_packers import TmanTemplateBonusPacker
+_logger = logging.getLogger(__name__)
 _ARMORY_YARD_REST_ICON_NAME = 'default'
 
 class ArmoryYardTokenBonusUIPacker(TokenBonusUIPacker):
@@ -34,6 +36,8 @@ class ArmoryYardTokenBonusUIPacker(TokenBonusUIPacker):
     def _getTokenBonusType(cls, tokenID, complexToken):
         if isArmoryYardBattleToken(tokenID):
             return FEATURE_NAME_BASE
+        if tokenID == 'ny24_yaga':
+            return ''
         return super(ArmoryYardTokenBonusUIPacker, cls)._getTokenBonusType(tokenID, complexToken)
 
     @classmethod
@@ -80,6 +84,17 @@ class ArmoryYardVehiclesBonusUIPacker(VehiclesBonusUIPacker):
          vehicle.intCD, tmanRoleLevel, rentExpiryTime, rentBattles, rentWins, rentSeason, rentCycle])
 
 
+class ArmoryYardTmanTemplateBonusPacker(TmanTemplateBonusPacker):
+
+    @classmethod
+    def _packTmanTemplateToken(cls, tokenID, bonus):
+        model = super(ArmoryYardTmanTemplateBonusPacker, cls)._packTmanTemplateToken(tokenID, bonus)
+        tokenRecord = bonus.getTokens()[tokenID]
+        if tokenRecord.count > 1:
+            model.setValue(str(tokenRecord.count))
+        return model
+
+
 class ArmoryYardPremiumDaysPacker(SimpleBonusUIPacker):
 
     @classmethod
@@ -93,7 +108,7 @@ def getArmoryYardBonusPackersMap():
     packersMap = getDefaultBonusPackersMap()
     packersMap.update({'vehicles': ArmoryYardMainVehiclesBonusUIPacker, 
        'battleToken': ArmoryYardTokenBonusUIPacker, 
-       'tmanToken': TmanTemplateBonusPacker, 
+       'tmanToken': ArmoryYardTmanTemplateBonusPacker, 
        PREMIUM_ENTITLEMENTS.PLUS: ArmoryYardPremiumDaysPacker})
     return packersMap
 

@@ -1,5 +1,4 @@
 from helpers import dependency
-from shared_utils import findFirst
 from skeletons.gui.shared import IItemsCache
 from web.web_client_api import Field, W2CSchema, w2c, w2capi
 from web.web_client_api.common import ItemPackType, sanitizeResPath, ItemPackTypeGroup
