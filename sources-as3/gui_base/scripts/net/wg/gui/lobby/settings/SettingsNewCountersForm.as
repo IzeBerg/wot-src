@@ -8,8 +8,8 @@ package net.wg.gui.lobby.settings
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.gui.components.advanced.ButtonBarEx;
-   import net.wg.gui.components.common.Counter;
-   import net.wg.gui.components.common.CounterBase;
+   import net.wg.gui.components.common.counters.Counter;
+   import net.wg.gui.components.common.counters.CounterBase;
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
    import net.wg.gui.lobby.settings.events.SettingViewEvent;
    import net.wg.gui.lobby.settings.vo.SettingsControlProp;

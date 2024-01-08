@@ -20,4 +20,8 @@ BATTLE_RESULTS = [
  (
   'boosterFlXPFactor100', int, 0, None, 'any', ENTRY_TYPE.ACCOUNT_ALL),
  (
-  'flXPReplay', str, '', ValueReplayPacker(), 'skip', ENTRY_TYPE.ACCOUNT_ALL)]
+  'flXPReplay', str, '', ValueReplayPacker(), 'skip', ENTRY_TYPE.ACCOUNT_ALL),
+ (
+  'reservesModifier', int, 0, None, 'skip', ENTRY_TYPE.SERVER),
+ (
+  'avatarReserves', list, [], None, 'skip', ENTRY_TYPE.SERVER)]

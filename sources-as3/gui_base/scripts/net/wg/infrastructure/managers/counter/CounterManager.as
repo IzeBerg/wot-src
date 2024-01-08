@@ -56,6 +56,11 @@ package net.wg.infrastructure.managers.counter
          param1.updatePosition(param2);
       }
       
+      private static function updateCounterViewState(param1:INewCounter, param2:String) : void
+      {
+         param1.updateViewState(param2);
+      }
+      
       private static function updateCounterHorizontalAlign(param1:INewCounter, param2:String) : void
       {
          param1.updateHorizontalAlign(param2);
@@ -159,6 +164,7 @@ package net.wg.infrastructure.managers.counter
          updateCounterOffset(_loc7_,_loc5_);
          updateCounterHorizontalAlign(_loc7_,param4.horizontalAlign);
          updateCounterValue(_loc7_,param2);
+         updateCounterViewState(_loc7_,param4.viewState);
          return COUNTER_UPDATED;
       }
       

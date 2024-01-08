@@ -25,14 +25,20 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.list
       
       public function removePointOfInterest(param1:uint, param2:uint) : void
       {
-         var _loc3_:Comp7PlayersPanelListItemHolder = Comp7PlayersPanelListItemHolder(getHolderByVehicleID(param1));
-         _loc3_.removePointOfInterest(param2);
+         var _loc3_:Comp7PlayersPanelListItemHolder = getHolderByVehicleID(param1) as Comp7PlayersPanelListItemHolder;
+         if(_loc3_ != null)
+         {
+            _loc3_.removePointOfInterest(param2);
+         }
       }
       
       public function updatePointOfInterest(param1:Comp7InterestPointVO) : void
       {
-         var _loc2_:Comp7PlayersPanelListItemHolder = Comp7PlayersPanelListItemHolder(getHolderByVehicleID(param1.vehicleID));
-         _loc2_.updatePointOfInterest(param1.type,param1.progress);
+         var _loc2_:Comp7PlayersPanelListItemHolder = getHolderByVehicleID(param1.vehicleID) as Comp7PlayersPanelListItemHolder;
+         if(_loc2_ != null)
+         {
+            _loc2_.updatePointOfInterest(param1.type,param1.progress);
+         }
       }
       
       override protected function onPlayersListItemRightClick(param1:PlayersPanelItemEvent) : void

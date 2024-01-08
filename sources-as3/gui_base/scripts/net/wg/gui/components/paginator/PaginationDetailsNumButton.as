@@ -9,7 +9,7 @@ package net.wg.gui.components.paginator
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.SoundTypes;
    import net.wg.data.constants.generated.MISSIONS_STATES;
-   import net.wg.gui.components.common.Counter;
+   import net.wg.gui.components.common.counters.Counter;
    import net.wg.gui.components.controls.SoundListItemRenderer;
    import net.wg.gui.components.paginator.vo.PaginatorPageNumVO;
    import net.wg.infrastructure.interfaces.entity.IUpdatable;

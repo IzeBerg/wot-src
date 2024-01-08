@@ -16,7 +16,7 @@ package net.wg.gui.lobby.settings
    import net.wg.data.managers.impl.TooltipProps;
    import net.wg.gui.components.advanced.ButtonBarEx;
    import net.wg.gui.components.advanced.ViewStack;
-   import net.wg.gui.components.common.CounterBase;
+   import net.wg.gui.components.common.counters.CounterBase;
    import net.wg.gui.components.controls.DropdownMenu;
    import net.wg.gui.components.controls.IconTextButton;
    import net.wg.gui.components.controls.SoundButtonEx;

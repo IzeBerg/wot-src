@@ -235,15 +235,14 @@ class _EquipmentItem(object):
             avatar_getter.changeVehicleSetting(VEHICLE_SETTING.ACTIVATE_EQUIPMENT, self.getActivationCode(entityName, avatar), avatar=avatar)
 
     def deactivate(self):
-        if not self.canDeactivate():
+        if not self.canDeactivate() or self._descriptor is None:
             return
+        index = self._index if hasattr(self, '_index') and self._index > 0 else 0
+        if 'avatar' in self._descriptor.tags:
+            avatar_getter.activateAvatarEquipment(self.getEquipmentID(), None, index)
         else:
-            index = self._index if hasattr(self, '_index') and self._index > 0 else 0
-            if 'avatar' in self._descriptor.tags:
-                avatar_getter.activateAvatarEquipment(self.getEquipmentID(), None, index)
-            else:
-                avatar_getter.changeVehicleSetting(VEHICLE_SETTING.ACTIVATE_EQUIPMENT, self.getEquipmentID())
-            return
+            avatar_getter.changeVehicleSetting(VEHICLE_SETTING.ACTIVATE_EQUIPMENT, self.getEquipmentID())
+        return
 
     @property
     def isReusable(self):
@@ -1167,8 +1166,6 @@ def _triggerItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, t
         return _AfterburningItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('stealth_radar'):
         return _StealthRadarItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
-    if descriptor.name.startswith('fl_regenerationKit'):
-        return _RegenerationKitItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     return _TriggerItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
 
 
@@ -1336,19 +1333,17 @@ class EquipmentsController(MethodsRules, IBattleController):
         try:
             item = self._equipments[intCD]
         except KeyError:
-            _logger.error('Equipment is not found. %d', intCD)
+            _logger.error('Equipment is not found by CD. %d', intCD)
             item = None
 
         return item
 
     def getEquipmentByIDx(self, idx):
-        try:
-            item = self._equipmentsIdxSlot[idx][0]
-        except KeyError:
-            _logger.error('Equipment is not found. %d', idx)
-            item = None
-
-        return item
+        item = self._equipmentsIdxSlot.get(idx)
+        if item:
+            return item[0]
+        else:
+            return
 
     def getOrderedEquipmentsLayout(self):
         return [ (intCD, self._equipments[intCD]) for intCD in self._order if intCD ]
@@ -1421,9 +1416,11 @@ class EquipmentsController(MethodsRules, IBattleController):
             self.onEquipmentReset(oldIntCD, newIntCD, item)
             return
 
-    def setServerPrevStage(self, prevStage, intCD):
-        if intCD in self._equipments:
-            self._equipments[intCD].setServerPrevStage(prevStage)
+    def setServerPrevStage(self, **kwargs):
+        compactDescr = kwargs.get('compactDescr')
+        prevStage = kwargs.get('previousStage')
+        if compactDescr in self._equipments:
+            self._equipments[compactDescr].setServerPrevStage(prevStage)
 
     def getEquipments(self):
         return self._equipments
@@ -1977,7 +1974,7 @@ class EquipmentsReplayPlayer(EquipmentsController):
     def canActivate(self, intCD, entityName=None, avatar=None):
         return (False, None)
 
-    def changeSetting(self, intCD, entityName=None, avatar=None):
+    def changeSetting(self, intCD, entityName=None, avatar=None, idx=None):
         return (False, None)
 
     def changeSettingByTag(self, tag, entityName=None, avatar=None):

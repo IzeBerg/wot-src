@@ -11,7 +11,6 @@ from dossiers2.custom.dependencies import RANKED_STATS_DEPENDENCIES
 from dossiers2.custom.dependencies import A30X30_STATS_DEPENDENCIES
 from dossiers2.custom.dependencies import EPIC_BATTLE_STATS_DEPENDENCIES
 from dossiers2.custom.dependencies import STEAM_ACHIEVEMENT_DEPENDENCIES
-from dossiers2.custom.dependencies import PLAYER_BADGES_DEPENDENCIES
 from battle_statistics_layouts import *
 TOTAL_BLOCK_LAYOUT = [
  'creationTime', 'lastBattleTime', 'battleLifeTime', 'treesCut', 'mileage']
@@ -341,12 +340,12 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'NY23_AtmsphrLevel', 'NY23_CelebChallenge', 'BattlePassCommonPr_NY23',
  'BattlePassCommonPr_10', 'comp7_2023_1', 'Cosmic_MartianStalker', 'Cosmic_SpaceTrace',
  'BattlePassCommonPr_11', 'september23', 'december23',
- 'prime_gaming_reserved_15', 'prime_gaming_reserved_16', 'prime_gaming_reserved_17',
+ 'january24', 'prime_gaming_reserved_16', 'prime_gaming_reserved_17',
  'prime_gaming_reserved_18', 'prime_gaming_reserved_19', 'prime_gaming_reserved_20',
  'prime_gaming_reserved_21', 'prime_gaming_reserved_22', 'prime_gaming_reserved_23',
  'prime_gaming_reserved_24', 'onboardingMedal', 'BattlePassCommonPr_12', 'comp7_3_1',
  'hw2023Medal', 'BattlePassCommonPr_12extra', '13YearsOfService', 'NY24_CelebChallenge',
- 'NY24_AtmsphrLevel']
+ 'NY24_AtmsphrLevel', 'comp7_3_2', 'BattlePassCommonPr_NY24']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -396,13 +395,13 @@ _singleAchievementsPopUps = [
  '12YearsOfService', 'NY23_AtmsphrLevel', 'NY23_CelebChallenge',
  'BattlePassCommonPr_NY23', 'BattlePassCommonPr_10', 'comp7_2023_1',
  'Cosmic_MartianStalker', 'Cosmic_SpaceTrace', 'BattlePassCommonPr_11',
- 'september23', 'december23', 'prime_gaming_reserved_15',
+ 'september23', 'december23', 'january24',
  'prime_gaming_reserved_16', 'prime_gaming_reserved_17', 'prime_gaming_reserved_18',
  'prime_gaming_reserved_19', 'prime_gaming_reserved_20', 'prime_gaming_reserved_21',
  'prime_gaming_reserved_22', 'prime_gaming_reserved_23', 'prime_gaming_reserved_24',
  'onboardingMedal', 'BattlePassCommonPr_12', 'comp7_3_1', 'hw2023Medal',
  'BattlePassCommonPr_12extra', '13YearsOfService', 'NY24_CelebChallenge',
- 'NY24_AtmsphrLevel']
+ 'NY24_AtmsphrLevel', 'comp7_3_2', 'BattlePassCommonPr_NY24']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']
@@ -415,7 +414,7 @@ _clanAchievementsPopUps = ['medalRotmistrov']
 _clanAchievementsBlockBuilder = StaticSizeBlockBuilder('clanAchievements', CLAN_ACHIEVEMENTS_BLOCK_LAYOUT, {}, _clanAchievementsPopUps)
 RANKED_BADGES_BLOCK_LAYOUT = [
  '1', '2', '3', '4', '5', '6', '7', '8', '9']
-_playerBadgesBlockBuilder = DictBlockBuilder('playerBadges', 'I', 'I', PLAYER_BADGES_DEPENDENCIES)
+_playerBadgesBlockBuilder = DictBlockBuilder('playerBadges', 'I', 'I', {})
 _rankedSeasonsBlockBuilder = DictBlockBuilder('rankedSeasons', 'II', 'BHHHH', {})
 _rareAchievementsBlockBuilder = ListBlockBuilder('rareAchievements', 'I', {})
 UNIQUE_ACHIEVEMENT_VALUES = [

@@ -175,12 +175,6 @@ package net.wg.app.iml.base
          this._utils.blurAdapter.unblurElements();
       }
       
-      public function as_setMouseEventsEnabled(param1:Boolean) : void
-      {
-         mouseEnabled = param1;
-         mouseChildren = param1;
-      }
-      
       public function as_updateStage(param1:Number, param2:Number, param3:Number) : void
       {
          var h:Number = NaN;

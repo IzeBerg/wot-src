@@ -428,7 +428,7 @@ class MusicController(object):
         soundEvent = self._getSoundEventById(soundEventID)
         return soundEvent.getEventId() == soundEventID and not soundEvent.isPlaying()
 
-    def __reloadSounds(self):
+    def reloadSounds(self):
         self.__loadConfig()
         self.play(self.__music.getEventId())
         self.play(self.__ambient.getEventId())
@@ -461,7 +461,7 @@ class MusicController(object):
                 hasChanges = True
 
         if hasChanges:
-            self.__reloadSounds()
+            self.reloadSounds()
         return
 
     def changeHangarSound(self, notificationsDiff):

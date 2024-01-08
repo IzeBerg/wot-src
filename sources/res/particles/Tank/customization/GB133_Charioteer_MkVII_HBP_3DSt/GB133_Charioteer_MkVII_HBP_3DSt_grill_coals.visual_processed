@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>Fat_sausage1</identifier>
+					<fx>shaders/custom/vector_animation_2.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/wt_sparks_01.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>-0.020000 -0.000100 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						rampFreshnelMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Gradient_linear.dds</Texture>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>-0.005000 0.000000 0.050000 0.050000</Vector4>
+					</property>
+					<property>
+						distortionFrequency
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke_1.dds</Texture>
+					</property>
+					<property>
+						compensationValue
+						<Vector4>1.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.623529 0.298039 0.109804 0.100000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						opacity_UV_Distortion_Amount
+						<Vector4>0.000000 0.000000 1.500000 2.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountSoft
+						<Vector4>0.000000 0.500000 0.100000 0.001000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>1.300603 0.593782 -2.040824</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>Grilled_coals</identifier>
+					<fx>shaders/custom/emissive.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						emissiveTexture
+						<Texture>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/Charioteer_MkVII_HBP_3DSt_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_coldColor
+						<Vector4>0.250980 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_emissiveParams
+						<Vector4>36.000000 1.700000 0.200000 100.000000</Vector4>
+					</property>
+					<property>
+						g_hotColor
+						<Vector4>1.000000 0.105882 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_maskFromTex
+						<Bool>true</Bool>
+					</property>
+					<property>
+						phaseTexture
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/wt_animation.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>1.273862 0.510381 -2.022837</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>1.109175 0.466678 -2.329529</min>
+		<max>1.438549 0.621432 -1.716144</max>
+	</boundingBox>
+	<geometrySize>98786</geometrySize>
+	<minUVDensity>2.109264</minUVDensity>
+</root>

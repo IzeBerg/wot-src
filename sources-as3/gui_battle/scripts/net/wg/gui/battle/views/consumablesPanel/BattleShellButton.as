@@ -325,22 +325,6 @@ package net.wg.gui.battle.views.consumablesPanel
          this.glow.showGlow(param1);
       }
       
-      public function updateLevelInformation(param1:int) : void
-      {
-      }
-      
-      public function updateLockedInformation(param1:int, param2:String) : void
-      {
-      }
-      
-      public function showPossibleStacks(param1:int) : void
-      {
-      }
-      
-      public function updateStacks(param1:int) : void
-      {
-      }
-      
       protected function setBindKeyText() : void
       {
          if(this._bindSfKeyCode == KeyProps.KEY_NONE)

@@ -95,10 +95,9 @@ package net.wg.gui.lobby.storage.categories.storage
       
       private function updateLayout() : void
       {
-         var _loc1_:int = 0;
          var _loc2_:int = 0;
          var _loc5_:ExtraParamsRenderer = null;
-         _loc1_ = 0;
+         var _loc1_:int = 0;
          var _loc3_:int = numRenderers();
          var _loc4_:int = GroupLayout(layout).gap;
          _loc2_ = 0;

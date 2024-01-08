@@ -12,6 +12,8 @@ package net.wg.gui.battle.views.postmortemPanel
    import net.wg.gui.components.dogtag.VO.DogTagVO;
    import net.wg.infrastructure.base.meta.IPostmortemPanelMeta;
    import net.wg.infrastructure.base.meta.impl.PostmortemPanelMeta;
+   import net.wg.infrastructure.events.ColorSchemeEvent;
+   import net.wg.infrastructure.managers.IColorSchemeManager;
    import scaleform.clik.motion.Tween;
    import scaleform.gfx.TextFieldEx;
    
@@ -69,10 +71,13 @@ package net.wg.gui.battle.views.postmortemPanel
       
       private var _dogTagVictimMiniMapAnchor:int;
       
+      private var _colorSchemeMgr:IColorSchemeManager;
+      
       private var _isEnabledSpectatorPanel:Boolean = true;
       
       public function PostmortemPanel()
       {
+         this._colorSchemeMgr = App.colorSchemeMgr;
          super();
          mouseChildren = false;
          mouseEnabled = false;
@@ -101,8 +106,7 @@ package net.wg.gui.battle.views.postmortemPanel
       {
          super.configUI();
          this.bg.imageName = BATTLEATLAS.POSTMORTEM_TIPS_BG;
-         nicknameKillerBG.imageName = BATTLEATLAS.POSTMORTEM_NICKNAME_BG;
-         deadReasonBG.imageName = BATTLEATLAS.POSTMORTEM_DEAD_REASON_BG;
+         this.updateKillerBackground();
          this.observerModeTitleTF.text = INGAME_GUI.POSTMORTEM_TIPS_OBSERVERMODE_LABEL;
          this.observerModeDescTF.text = INGAME_GUI.POSTMORTEM_TIPS_OBSERVERMODE_TEXT;
          this.exitToHangarTitleTF.text = INGAME_GUI.POSTMORTEM_TIPS_EXITHANGAR_LABEL;
@@ -112,6 +116,7 @@ package net.wg.gui.battle.views.postmortemPanel
          setComponentsVisibility(false);
          this.updatePlayerInfoPosition();
          this.initDogTagVictim();
+         this._colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
       }
       
       override protected function updatePlayerInfoPosition() : void
@@ -171,6 +176,8 @@ package net.wg.gui.battle.views.postmortemPanel
       
       override protected function onDispose() : void
       {
+         this._colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
+         this._colorSchemeMgr = null;
          this.bg = null;
          this.observerModeTitleTF = null;
          this.observerModeDescTF = null;
@@ -263,11 +270,6 @@ package net.wg.gui.battle.views.postmortemPanel
             "delay":VICTIM_DOGTAG_LINGERING_TIME,
             "paused":false
          });
-      }
-      
-      public function set isEnabledSpectatorPanel(param1:Boolean) : void
-      {
-         this._isEnabledSpectatorPanel = param1;
       }
       
       private function showSpectatorPanel(param1:Boolean) : void
@@ -381,6 +383,26 @@ package net.wg.gui.battle.views.postmortemPanel
          }
       }
       
+      private function updateKillerBackground() : void
+      {
+         var _loc1_:Boolean = this._colorSchemeMgr.getIsColorBlindS();
+         if(_loc1_)
+         {
+            nicknameKillerBG.imageName = BATTLEATLAS.POSTMORTEM_NICKNAME_BG_PURPLE;
+            deadReasonBG.imageName = BATTLEATLAS.POSTMORTEM_DEAD_REASON_BG_PURPLE;
+         }
+         else
+         {
+            nicknameKillerBG.imageName = BATTLEATLAS.POSTMORTEM_NICKNAME_BG;
+            deadReasonBG.imageName = BATTLEATLAS.POSTMORTEM_DEAD_REASON_BG;
+         }
+      }
+      
+      public function set isEnabledSpectatorPanel(param1:Boolean) : void
+      {
+         this._isEnabledSpectatorPanel = param1;
+      }
+      
       public function get deadReasonOpacity() : Number
       {
          return deadReasonTF.alpha;
@@ -396,6 +418,11 @@ package net.wg.gui.battle.views.postmortemPanel
       {
          onDogTagKillerOutPlaySoundS();
          this.tweenReasonAndName(false);
+      }
+      
+      private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
+      {
+         this.updateKillerBackground();
       }
    }
 }

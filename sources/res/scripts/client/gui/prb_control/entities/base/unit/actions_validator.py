@@ -1,5 +1,5 @@
 from constants import BATTLE_MODE_VEHICLE_TAGS
-from CurrentVehicle import g_currentPreviewVehicle
+from CurrentVehicle import g_currentPreviewVehicle, g_currentVehicle
 from gui.prb_control.entities.base.actions_validator import BaseActionsValidator, ActionsValidatorComposite
 from gui.prb_control.items import ValidationResult
 from gui.prb_control.settings import UNIT_RESTRICTION
@@ -36,6 +36,8 @@ class UnitVehiclesValidator(BaseActionsValidator):
         if g_currentPreviewVehicle.isPresent():
             return ValidationResult(False, UNIT_RESTRICTION.PREVIEW_VEHICLE_IS_PRESENT)
         else:
+            if not g_currentVehicle.isPresent():
+                return ValidationResult(False, UNIT_RESTRICTION.VEHICLE_NOT_SELECTED)
             vInfos = self._getVehiclesInfo()
             if not findFirst(lambda v: not v.isEmpty(), vInfos, False):
                 return ValidationResult(False, UNIT_RESTRICTION.VEHICLE_NOT_SELECTED)

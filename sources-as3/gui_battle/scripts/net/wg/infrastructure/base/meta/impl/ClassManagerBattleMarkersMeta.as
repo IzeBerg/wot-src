@@ -29,6 +29,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.staticMarkers.scenario.ScenarioMarkerProgressCircle;
    import net.wg.gui.battle.views.vehicleMarkers.ActionIconStateMarker;
    import net.wg.gui.battle.views.vehicleMarkers.AnimateExplosion;
+   import net.wg.gui.battle.views.vehicleMarkers.BRBotVehicleMarker;
    import net.wg.gui.battle.views.vehicleMarkers.BranderVehicle2dMarker;
    import net.wg.gui.battle.views.vehicleMarkers.Comp7VehicleMarker;
    import net.wg.gui.battle.views.vehicleMarkers.DamageLabel;
@@ -135,6 +136,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_ANIMATEEXPLOSION:Class = AnimateExplosion;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_BRANDERVEHICLE2DMARKER:Class = BranderVehicle2dMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_BRBOTVEHICLEMARKER:Class = BRBotVehicleMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_COMP7VEHICLEMARKER:Class = Comp7VehicleMarker;
       

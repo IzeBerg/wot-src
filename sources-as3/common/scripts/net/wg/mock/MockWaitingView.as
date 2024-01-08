@@ -69,7 +69,7 @@ package net.wg.mock
       {
       }
       
-      public function as_showWaiting(param1:String, param2:Boolean, param3:Boolean) : void
+      public function as_showWaiting(param1:String, param2:Boolean) : void
       {
       }
       

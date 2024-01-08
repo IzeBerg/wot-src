@@ -3,7 +3,7 @@ from InterfaceScaleManager import InterfaceScaleManager
 from PlayerEvents import g_playerEvents
 from account_helpers.AccountSettings import AccountSettings
 from account_helpers.settings_core.ServerSettingsManager import ServerSettingsManager, SETTINGS_SECTIONS
-from account_helpers.settings_core.settings_constants import SPGAim, CONTOUR, NewYearStorageKeys
+from account_helpers.settings_core.settings_constants import SPGAim, CONTOUR
 from adisp import adisp_process
 from debug_utils import LOG_DEBUG, LOG_ERROR
 from gui.Scaleform.locale.SETTINGS import SETTINGS
@@ -78,7 +78,6 @@ class SettingsCore(ISettingsCore):
         BATTLE_HUD_SETTINGS_STORAGE = settings_storages.ServerSettingsStorage(self.serverSettings, self, SETTINGS_SECTIONS.BATTLE_HUD)
         SPG_AIM_SETTINGS_STORAGE = settings_storages.ServerSettingsStorage(self.serverSettings, self, SETTINGS_SECTIONS.SPG_AIM)
         CONTOUR_SETTINGS_STORAGE = settings_storages.ServerSettingsStorage(self.serverSettings, self, SETTINGS_SECTIONS.CONTOUR)
-        NEW_YEAR_SETTINGS_STORAGE = settings_storages.ServerSettingsStorage(self.serverSettings, self, SETTINGS_SECTIONS.NEW_YEAR)
         MESSENGER_SETTINGS_STORAGE = settings_storages.MessengerSettingsStorage(GAME_SETTINGS_STORAGE)
         EXTENDED_MESSENGER_SETTINGS_STORAGE = settings_storages.MessengerSettingsStorage(EXTENDED_GAME_SETTINGS_STORAGE)
         self.__storages = {'game': GAME_SETTINGS_STORAGE, 
@@ -104,8 +103,7 @@ class SettingsCore(ISettingsCore):
            'battleHud': BATTLE_HUD_SETTINGS_STORAGE, 
            'dogTags': DOG_TAGS_SETTINGS_STORAGE, 
            'spgAim': SPG_AIM_SETTINGS_STORAGE, 
-           'contour': CONTOUR_SETTINGS_STORAGE, 
-           'newYear': NEW_YEAR_SETTINGS_STORAGE}
+           'contour': CONTOUR_SETTINGS_STORAGE}
         self.isDeviseRecreated = False
         self.isChangesConfirmed = True
         graphicSettings = tuple((settingName, options.GraphicSetting(settingName)) for settingName in BigWorld.generateGfxSettings() if settingName != GRAPHICS.COLOR_GRADING_TECHNIQUE)
@@ -144,6 +142,14 @@ class SettingsCore(ISettingsCore):
           GAME.SHOW_DAMAGE_ICON,
           options.ShowDamageIconSetting(GAME.SHOW_DAMAGE_ICON, storage=GAME_SETTINGS_STORAGE)),
          (
+          GAME.MINIMAP_SIZE, options.MinimapSizeSetting(GAME.MINIMAP_SIZE, GAME.MINIMAP_SIZE)),
+         (
+          GAME.TRAINING_MINIMAP_SIZE,
+          options.MinimapSizeSetting(GAME.TRAINING_MINIMAP_SIZE, GAME.TRAINING_MINIMAP_SIZE)),
+         (
+          GAME.COMP7_MINIMAP_SIZE,
+          options.AccountDumpSetting(GAME.COMP7_MINIMAP_SIZE, GAME.COMP7_MINIMAP_SIZE)),
+         (
           GAME.MINIMAP_ALPHA,
           options.StorageAccountSetting(GAME.MINIMAP_ALPHA, storage=GAME_SETTINGS_STORAGE)),
          (
@@ -169,6 +175,9 @@ class SettingsCore(ISettingsCore):
          (
           GAME.SHOW_DOGTAG_TO_KILLER,
           options.DogtagsSetting(GAME.SHOW_DOGTAG_TO_KILLER, storage=DOG_TAGS_SETTINGS_STORAGE)),
+         (
+          GAME.SHOW_KILLERS_DOGTAG,
+          options.DogtagsSetting(GAME.SHOW_KILLERS_DOGTAG, storage=DOG_TAGS_SETTINGS_STORAGE)),
          (
           GAME.DYNAMIC_CAMERA,
           options.DynamicCamera(GAME.DYNAMIC_CAMERA, storage=GAME_SETTINGS_STORAGE)),
@@ -231,7 +240,7 @@ class SettingsCore(ISettingsCore):
           options.AccountDumpSetting(GAME.PLAYERS_PANELS_SHOW_TYPES, 'players_panel', 'showTypes')),
          (
           GAME.PLAYERS_PANELS_STATE,
-          options.AccountDumpSetting(GAME.PLAYERS_PANELS_STATE, 'players_panel', 'state')),
+          options.PlayersPanelStateSetting(GAME.PLAYERS_PANELS_STATE, 'players_panel', 'state')),
          (
           GAME.EPIC_RANDOM_PLAYERS_PANELS_STATE,
           options.AccountDumpSetting(GAME.EPIC_RANDOM_PLAYERS_PANELS_STATE, 'epic_random_players_panel', 'state')),
@@ -655,10 +664,7 @@ class SettingsCore(ISettingsCore):
           options.SettingFalseByDefault(SCORE_PANEL.ENABLE_TIER_GROUPING, storage=BATTLE_HUD_SETTINGS_STORAGE)),
          (
           SCORE_PANEL.SHOW_HP_BAR,
-          options.SettingTrueByDefault(SCORE_PANEL.SHOW_HP_BAR, storage=BATTLE_HUD_SETTINGS_STORAGE)),
-         (
-          NewYearStorageKeys.LOOT_BOX_VIDEO_OFF,
-          options.SettingFalseByDefault(NewYearStorageKeys.LOOT_BOX_VIDEO_OFF, storage=NEW_YEAR_SETTINGS_STORAGE))))
+          options.SettingTrueByDefault(SCORE_PANEL.SHOW_HP_BAR, storage=BATTLE_HUD_SETTINGS_STORAGE))))
         self.__options.init()
         AccountSettings.onSettingsChanging += self.__onAccountSettingsChanging
         g_playerEvents.onDisconnected += self.revertSettings
@@ -724,8 +730,6 @@ class SettingsCore(ISettingsCore):
             from account_helpers.settings_core import settings_constants
             if key in settings_constants.GRAPHICS.ALL():
                 LOG_DEBUG('Apply graphic settings: ', {key: value})
-                self.onSettingsChanged({key: value})
-            if key in NewYearStorageKeys.LOOT_BOX_VIDEO_OFF:
                 self.onSettingsChanged({key: value})
             return result
         return

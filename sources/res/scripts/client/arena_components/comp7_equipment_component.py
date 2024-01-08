@@ -95,12 +95,13 @@ class _Effect(object):
         self.__destroyed = True
         return
 
-    @staticmethod
-    def isVisible(vehicle, value, checkTeam=True):
+    @classmethod
+    def isVisible(cls, vehicle, value, checkTeam=True):
         if value.get('finishing', False):
             return False
         if checkTeam and vehicle.publicInfo['team'] != avatar_getter.getPlayerTeam():
-            return False
+            vInfo = cls.__sessionProvider.getArenaDP().getVehicleInfo(avatar_getter.getPlayerVehicleID())
+            return vInfo.isObserver()
         return value.get('isSourceVehicle', False)
 
     def _load(self):

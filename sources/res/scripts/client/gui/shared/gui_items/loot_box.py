@@ -6,7 +6,9 @@ from shared_utils import CONST_CONTAINER
 
 class NewYearLootBoxes(CONST_CONTAINER):
     PREMIUM = 'newYear_premium'
+    SPECIAL = 'newYear_special'
     SPECIAL_AUTO = 'newYear_special_auto'
+    COMMON = 'newYear_usual'
 
 
 class NewYearCategories(CONST_CONTAINER):
@@ -14,8 +16,6 @@ class NewYearCategories(CONST_CONTAINER):
     CHRISTMAS = 'Christmas'
     ORIENTAL = 'Oriental'
     FAIRYTALE = 'Fairytale'
-    SETTINGS = (
-     NEWYEAR, CHRISTMAS, ORIENTAL, FAIRYTALE)
 
 
 class EventCategories(CONST_CONTAINER):
@@ -44,7 +44,8 @@ LUNAR_NY_LOOT_BOXES_CATEGORIES = 'LunarNY'
 SENIORITY_AWARDS_LOOT_BOXES_TYPE = 'seniorityAwards'
 EVENT_LOOT_BOXES_CATEGORY = 'eventLootBoxes'
 GUI_ORDER_NY = (
- NewYearLootBoxes.PREMIUM,)
+ NewYearLootBoxes.COMMON,
+ NewYearLootBoxes.PREMIUM)
 CATEGORIES_GUI_ORDER_NY = (
  NewYearCategories.NEWYEAR,
  NewYearCategories.CHRISTMAS,
@@ -53,7 +54,7 @@ CATEGORIES_GUI_ORDER_NY = (
 
 class LootBox(GUIItem):
     __slots__ = ('__id', '__invCount', '__type', '__category', '__historyName', '__guaranteedFrequency',
-                 '__guaranteedFrequencyName', '__bonuses')
+                 '__guaranteedFrequencyName')
 
     def __init__(self, lootBoxID, lootBoxConfig, invCount):
         super(LootBox, self).__init__()
@@ -90,7 +91,7 @@ class LootBox(GUIItem):
         return self.__category
 
     def isFree(self):
-        return self.__type != NewYearLootBoxes.PREMIUM
+        return self.__type == NewYearLootBoxes.COMMON
 
     def getGuaranteedFrequency(self):
         return self.__guaranteedFrequency
@@ -101,22 +102,16 @@ class LootBox(GUIItem):
     def getHistoryName(self):
         return self.__historyName
 
-    def getBonuses(self):
-        return self.__bonuses
-
     def __updateByConfig(self, lootBoxConfig):
         self.__type = lootBoxConfig.get('type')
         self.__category = lootBoxConfig.get('category')
         self.__historyName = lootBoxConfig.get('historyName')
         self.__guaranteedFrequencyName, self.__guaranteedFrequency = self.__readLimits(lootBoxConfig.get('limits', {}))
-        self.__bonuses = lootBoxConfig.get('bonus', {})
 
     @staticmethod
     def __readLimits(limitsCfg):
         for limitName, limit in limitsCfg.iteritems():
             if 'useBonusProbabilityAfter' in limit:
                 return (limitName, limit['useBonusProbabilityAfter'] + 1)
-            if 'guaranteedFrequency' in limit:
-                return (limitName, limit['guaranteedFrequency'])
 
         return (None, 0)

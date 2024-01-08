@@ -84,13 +84,12 @@ package net.wg.gui.components.common.waiting
          this.waitingComponent.setBackgroundImg(param1);
       }
       
-      public function as_showWaiting(param1:String, param2:Boolean, param3:Boolean) : void
+      public function as_showWaiting(param1:String, param2:Boolean) : void
       {
          this._frameOnShow = this.waitingComponent.waitingMc.currentFrame;
          App.utils.scheduler.cancelTask(this.performHide);
          App.stage.addEventListener(InputEvent.INPUT,this.handleInput,false,int.MAX_VALUE,true);
          assertNotNull(this.waitingComponent,WAITING_COMPONENT_NAME);
-         this.waitingComponent.backgroundVisibility = param3;
          this.waitingComponent.setMessage(param1);
          this.setAnimationStatus(true);
          if(param2)

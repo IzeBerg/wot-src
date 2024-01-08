@@ -293,10 +293,16 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.epicBattle.battleloading.renderers.EpicBattleLoadingPlayerItemRenderer;
    import net.wg.gui.battle.epicBattle.views.EpicBattlePage;
    import net.wg.gui.battle.epicBattle.views.EpicCarouselFilterPopoverView;
-   import net.wg.gui.battle.epicBattle.views.components.EpicBattleConsumableButton;
-   import net.wg.gui.battle.epicBattle.views.components.EpicBattleEquipmentButtonGlow;
+   import net.wg.gui.battle.epicBattle.views.consumablesPanel.EpicBattleConsumableButton;
+   import net.wg.gui.battle.epicBattle.views.consumablesPanel.EpicBattleConsumablesPanel;
+   import net.wg.gui.battle.epicBattle.views.consumablesPanel.components.EpicBattleEquipmentButtonGlow;
+   import net.wg.gui.battle.epicBattle.views.consumablesPanel.interfaces.IEpicBattleConsumableButton;
    import net.wg.gui.battle.epicBattle.views.data.EpicStatsDataProviderBaseCtrl;
    import net.wg.gui.battle.epicBattle.views.data.EpicVehicleDataProvider;
+   import net.wg.gui.battle.epicBattle.views.modificationPanel.EpicModificationPanel;
+   import net.wg.gui.battle.epicBattle.views.modificationPanel.components.EpicModificationIcon;
+   import net.wg.gui.battle.epicBattle.views.modificationPanel.components.EpicModificationInfo;
+   import net.wg.gui.battle.epicBattle.views.modificationPanel.data.EpicModificationPanelVO;
    import net.wg.gui.battle.epicBattle.views.stats.EpicFullStats;
    import net.wg.gui.battle.epicBattle.views.stats.components.EpicFullStatsTable;
    import net.wg.gui.battle.epicBattle.views.stats.components.EpicFullStatsTableCtrl;
@@ -904,6 +910,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.upgradePanel.data.UpgradePanelVO;
    import net.wg.gui.battle.views.vehicleMarkers.ActionIconStateMarker;
    import net.wg.gui.battle.views.vehicleMarkers.AnimateExplosion;
+   import net.wg.gui.battle.views.vehicleMarkers.BRBotVehicleMarker;
    import net.wg.gui.battle.views.vehicleMarkers.BranderVehicle2dMarker;
    import net.wg.gui.battle.views.vehicleMarkers.Comp7VehicleMarker;
    import net.wg.gui.battle.views.vehicleMarkers.DamageLabel;
@@ -1569,13 +1576,25 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_EPICCAROUSELFILTERPOPOVERVIEW:Class = EpicCarouselFilterPopoverView;
       
-      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_COMPONENTS_EPICBATTLECONSUMABLEBUTTON:Class = EpicBattleConsumableButton;
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_CONSUMABLESPANEL_EPICBATTLECONSUMABLEBUTTON:Class = EpicBattleConsumableButton;
       
-      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_COMPONENTS_EPICBATTLEEQUIPMENTBUTTONGLOW:Class = EpicBattleEquipmentButtonGlow;
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_CONSUMABLESPANEL_EPICBATTLECONSUMABLESPANEL:Class = EpicBattleConsumablesPanel;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_CONSUMABLESPANEL_COMPONENTS_EPICBATTLEEQUIPMENTBUTTONGLOW:Class = EpicBattleEquipmentButtonGlow;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_CONSUMABLESPANEL_INTERFACES_IEPICBATTLECONSUMABLEBUTTON:Class = IEpicBattleConsumableButton;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_DATA_EPICSTATSDATAPROVIDERBASECTRL:Class = EpicStatsDataProviderBaseCtrl;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_DATA_EPICVEHICLEDATAPROVIDER:Class = EpicVehicleDataProvider;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_MODIFICATIONPANEL_EPICMODIFICATIONPANEL:Class = EpicModificationPanel;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_MODIFICATIONPANEL_COMPONENTS_EPICMODIFICATIONICON:Class = EpicModificationIcon;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_MODIFICATIONPANEL_COMPONENTS_EPICMODIFICATIONINFO:Class = EpicModificationInfo;
+      
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_MODIFICATIONPANEL_DATA_EPICMODIFICATIONPANELVO:Class = EpicModificationPanelVO;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_STATS_EPICFULLSTATS:Class = EpicFullStats;
       
@@ -2798,6 +2817,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_ANIMATEEXPLOSION:Class = AnimateExplosion;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_BRANDERVEHICLE2DMARKER:Class = BranderVehicle2dMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_BRBOTVEHICLEMARKER:Class = BRBotVehicleMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_COMP7VEHICLEMARKER:Class = Comp7VehicleMarker;
       

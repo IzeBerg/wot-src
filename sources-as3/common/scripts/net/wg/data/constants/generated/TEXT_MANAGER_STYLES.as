@@ -67,8 +67,6 @@ package net.wg.data.constants.generated
       
       public static const TUTORIAL_TEXT:String = "tutorialText";
       
-      public static const TUTORIAL_TEXT_BIG:String = "tutorialTextBig";
-      
       public static const VEHICLE_STATUS_INFO_TEXT:String = "vehicleStatusInfoText";
       
       public static const VEHICLE_STATUS_CRITICAL_TEXT:String = "vehicleStatusCriticalText";

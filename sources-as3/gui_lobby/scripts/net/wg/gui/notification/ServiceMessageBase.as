@@ -15,7 +15,7 @@ package net.wg.gui.notification
       private static const CONTENT_CHILD_COMPONENT_NAME:String = "content";
        
       
-      public var content:ServiceMessageContentBase = null;
+      public var content:ServiceMessageContent = null;
       
       private var _data:NotificationInfoVO = null;
       
@@ -60,14 +60,13 @@ package net.wg.gui.notification
       
       private function setupContent() : void
       {
-         if(this.contentLinkage != this._currentContentLinkage || this.isGFMessage)
+         if(this.contentLinkage != this._currentContentLinkage)
          {
             this.clearContent();
             this._currentContentLinkage = this.contentLinkage;
-            this.content = this._classFactory.getComponent(this.contentLinkage,ServiceMessageContentBase);
+            this.content = this._classFactory.getComponent(this.contentLinkage,ServiceMessageContent);
             this.content.addEventListener(Event.RESIZE,this.onContentResizeHandler);
             this.content.name = CONTENT_CHILD_COMPONENT_NAME;
-            this.content.isPopUp = this.isPopUp;
             this.addChild(DisplayObject(this.content));
             this.content.data = this._data;
             this.content.validateNow();
@@ -121,16 +120,6 @@ package net.wg.gui.notification
       {
          super.validateNow(param1);
          this.content.validateNow();
-      }
-      
-      protected function get isGFMessage() : Boolean
-      {
-         return this._data && this._data.messageVO && this._data.messageVO.gfViewName;
-      }
-      
-      protected function get isPopUp() : Boolean
-      {
-         return false;
       }
       
       private function onContentResizeHandler(param1:Event) : void

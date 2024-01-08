@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "awardsWidget/description/award"
-msgstr "Click to select and claim your rewards."
+msgstr "You still have rewards to choose from."
 
 msgid "awardsWidget/description/awardDisabled"
 msgstr ""
@@ -29,8 +29,8 @@ msgstr ""
 
 msgid "awardsWidget/description/commander"
 msgstr ""
-"Click to view and listen to the voiceovers of all the crew members that you "
-"can earn or purchase during the event."
+"Click to view crew members that can be earned or purchased during the event "
+"and listen to special voiceovers for two of them."
 
 msgid "awardsWidget/description/point"
 msgstr "Click to view items from the previous Seasons for Battle Pass Points."
@@ -169,7 +169,9 @@ msgstr ""
 "Chapter."
 
 msgid "battlePassAwardsView/mainReward/commander"
-msgstr "Crew member: %(name)s"
+msgstr ""
+"Crew member\n"
+"%(name)s"
 
 msgid "battlePassAwardsView/mainReward/newDeviceGiftToken/buttonText"
 msgstr "Go to Select"
@@ -382,6 +384,9 @@ msgstr "Battle Pass"
 msgid "chapter/fullName/1"
 msgstr "Back to Haze"
 
+msgid "chapter/fullName/10021"
+msgstr "Snatch the Diamond"
+
 msgid "chapter/fullName/121"
 msgstr "On a Knife-Edge"
 
@@ -390,9 +395,6 @@ msgstr "Flight of the Swallow"
 
 msgid "chapter/fullName/123"
 msgstr "Mirages"
-
-msgid "chapter/fullName/124"
-msgstr "Carmen de Bisonte"
 
 msgid "chapter/fullName/2"
 msgstr "Job for Heroes"
@@ -406,6 +408,9 @@ msgstr "New Chapter"
 msgid "chapter/fullName/74"
 msgstr "New Chapter"
 
+msgid "chapter/fullNameUppercased/10021"
+msgstr "SNATCH THE DIAMOND"
+
 msgid "chapter/fullNameUppercased/121"
 msgstr "ON A KNIFE-EDGE"
 
@@ -414,9 +419,6 @@ msgstr "FLIGHT OF THE SWALLOW"
 
 msgid "chapter/fullNameUppercased/123"
 msgstr "MIRAGES"
-
-msgid "chapter/fullNameUppercased/124"
-msgstr "CARMEN DE BISONTE"
 
 msgid "chapter/fullNameUppercased/74"
 msgstr "NEW CHAPTER"
@@ -744,27 +746,32 @@ msgstr "ABOUT BATTLE PASS"
 msgid "intro/button"
 msgstr "Affirmative!"
 
+msgid "intro/rewards/text"
+msgstr ""
+"As a reward, you can earn characters from the movie as crew members. And "
+"yes, you know them all very well."
+
+msgid "intro/rewards/title"
+msgstr "NEW REWARDS"
+
 msgid "intro/seasonDescription/text"
 msgstr ""
-"Season XII is dedicated to the backstory of the Mirny-13 event. It will "
-"bring you a variety of themed rewards and customization elements. Complete "
-"the Collection, find out what triggered the events in Mirny-13, and uncover "
-"the mysterious Hope's secrets."
+"This Battle Pass has just one Chapter. It is a short, but memorable "
+"adventure. Get everything we have prepared for you!"
 
 msgid "intro/seasonDescription/title"
-msgstr "THEMED SEASON"
+msgstr "SPECIAL SEASON"
 
 msgid "intro/styles/text"
 msgstr ""
-"During Season XII of Battle Pass, three styles will be available for the "
-"following Core Vehicles: M-V-Y, Jagdpanzer&nbsp;E&nbsp;100, and the "
-"Object&nbsp;140."
+"This Battle Pass is inspired by a movie and characters we all know, and "
+"truly memorable, unique rewards await you for completing it."
 
 msgid "intro/styles/title"
-msgstr "NEW PROGRESSIVE STYLES"
+msgstr "HEAVY IS RELIABLE"
 
 msgid "intro/title"
-msgstr "BATTLE PASS 2023"
+msgstr "SNATCH THE DIAMOND"
 
 msgid "offSeason/alertTooltip"
 msgstr "Voting results are currently unavailable. Try checking back later."
@@ -817,6 +824,49 @@ msgstr "%(vehicle): %(bonus) for %(top) by XP."
 msgid "points/topCount"
 msgstr "top %(top)s"
 
+msgid "postProgression/buyState/buyButton"
+msgstr "Purchase Improved Pass"
+
+msgid "postProgression/buyState/description"
+msgstr ""
+"By purchasing the Improved Pass, you will immediately receive a Premium "
+"vehicle with a unique 3D style and all Improved Pass Rewards."
+
+msgid "postProgression/buyState/moreRewards"
+msgstr "Other Rewards: %(count)s"
+
+msgid "postProgression/buyState/title"
+msgstr "Get Improved Pass Rewards"
+
+msgid "postProgression/chapter"
+msgstr "%(chapterName)s"
+
+msgid "postProgression/completed"
+msgstr "CHAPTER COMPLETED"
+
+msgid "postProgression/finalState/button"
+msgstr "View in Garage"
+
+msgid "postProgression/finalState/label"
+msgstr "All event rewards received"
+
+msgid "postProgression/selectableRewardsState/button"
+msgstr "Claim Rewards"
+
+msgid "postProgression/selectableRewardsState/label"
+msgstr "You still have rewards to choose from."
+
+msgid "postProgression/tankmenState/description"
+msgstr ""
+"During this event, bundles containing unique crew members are available in "
+"the Store."
+
+msgid "postProgression/tankmenState/tankmenButton"
+msgstr "Listen to Voiceovers"
+
+msgid "postProgression/tankmenState/title"
+msgstr "Collect All Crew Members!"
+
 msgid "prestige/top"
 msgstr ""
 "%(vehicle): %(bonus) for being among the %(top) players by Prestige Points "
@@ -859,9 +909,7 @@ msgid "progression/battlePassBuyBtn"
 msgstr "Purchase Improved Pass"
 
 msgid "progression/battlePassBuyDescr"
-msgstr ""
-"The Improved Pass unlocks the Improved Rewards Track for the current "
-"Chapter."
+msgstr "The Improved Pass unlocks the Improved Rewards Track."
 
 msgid "progression/battlePassNextChapterBuyDescr"
 msgstr ""
@@ -941,7 +989,7 @@ msgid "progression/extraChapterWidget/commander"
 msgstr "Crew member with a voiceover"
 
 msgid "progression/extraChapterWidget/commanderVoices"
-msgstr "Listen to All"
+msgstr "To Others"
 
 msgid "progression/extraChapterWidget/labelWithBP"
 msgstr "With the Improved Pass"
@@ -963,6 +1011,9 @@ msgstr "Premium Vehicle"
 
 msgid "progression/extraChapterWidget/tankName"
 msgstr "%(vehicleName)s"
+
+msgid "progression/extraChapterWidget/timer"
+msgstr "Time left before the end of the Battle Pass Chapter"
 
 msgid "progression/extraChapterWidget/tooltip"
 msgstr "Click to listen to the crew member voiceover."
@@ -986,7 +1037,7 @@ msgid "progression/footer/status/paused"
 msgstr "Chapter paused."
 
 msgid "progression/header/chapter/status"
-msgstr "\"%(chapterName)s\" Chapter"
+msgstr "%(chapterName)s"
 
 msgid "progression/header/inactive"
 msgstr "inactive"
@@ -1014,14 +1065,14 @@ msgstr "CHAPTER {chapter}"
 msgid "progression/progressionChapterGoTo"
 msgstr "GO TO"
 
-msgid "progression/season/end/extra"
-msgstr "Event ends on %(endMonth)s %(endDay)s at %(endTime)s"
-
 msgid "progression/season/end/normal"
 msgstr "Season %(seasonNum)s will last until %(endMonth)s %(endDay)s"
 
+msgid "progression/season/end/special"
+msgstr "Will last until: %(endDay)s %(endMonth)s %(endTime)s"
+
 msgid "progression/seasonEndingDescr"
-msgstr "Season ends in: "
+msgstr "Event ends in "
 
 msgid "progression/seasonEndingTooltip"
 msgstr "{day} until the end"
@@ -1126,6 +1177,12 @@ msgstr "BATTLE PASS: \"%(chapter)s\" CHAPTER"
 msgid "rewardChoice/titleChapterLevel"
 msgstr "BATTLE PASS: \"%(chapter)s\" CHAPTER, STAGE %(level)s"
 
+msgid "season/fullName/1002"
+msgstr "Snatch the Diamond"
+
+msgid "season/fullNameUppercased/1002"
+msgstr "SNATCH THE DIAMOND"
+
 msgid "selectBonus/blueprint_gift"
 msgstr "Blueprint Fragments to Select From"
 
@@ -1211,10 +1268,10 @@ msgid "tankmenVoiceover/soundOn"
 msgstr "Play"
 
 msgid "tankmenVoiceover/subtitle"
-msgstr "CARMEN DE BISONTE CHAPTER"
+msgstr "SNATCH THE DIAMOND CHAPTER"
 
 msgid "tankmenVoiceover/title"
-msgstr "CREW MEMBERS WITH A VOICEOVER"
+msgstr "UNIQUE CREW MEMBERS"
 
 msgid "tankmenVoiceover/unavailable"
 msgstr "Unavailable"
@@ -1326,11 +1383,17 @@ msgstr ""
 "Now you can spend accumulated Battle Pass Points in the Items for Points "
 "section of the in-game Store."
 
+msgid "tooltips/completed/oneChapterSubTitle"
+msgstr "CHAPTER COMPLETED"
+
 msgid "tooltips/completed/rewardsObtained"
 msgstr "Base Rewards received"
 
 msgid "tooltips/completed/subTitle"
 msgstr "ALL CHAPTERS COMPLETED"
+
+msgid "tooltips/completed/tankmenNotRecieved"
+msgstr "Bundles containing unique crew members are available in the Store"
 
 msgid "tooltips/completed/title"
 msgstr "Battle Pass"
@@ -1364,7 +1427,7 @@ msgstr ""
 "You can purchase the Improved Pass at any time. It will instantly grant you "
 "all Improved Rewards of the current Chapter for already completed Stages. "
 "You will also receive both Base and Improved Rewards for completing each "
-"subsequent Stage until the end of the Chapter."
+"subsequent Stage."
 
 msgid "tooltips/footerBuyBtn/battlePass/nextChapter"
 msgstr "Complete the previous Chapter to purchase Stages in this Chapter."
@@ -1372,7 +1435,7 @@ msgstr "Complete the previous Chapter to purchase Stages in this Chapter."
 msgid "tooltips/footerBuyBtn/episode/descr"
 msgstr ""
 "By purchasing Stages, you will instantly receive their Base and Improved "
-"Rewards. Stages are purchased separately for each Chapter."
+"Rewards."
 
 msgid "tooltips/goldMission/description"
 msgstr "%(highlight)s You will not receive gold for the days you miss."
@@ -1394,19 +1457,18 @@ msgstr "Daily Gold"
 msgid "tooltips/iconLock/descr1"
 msgstr ""
 "You can increase the list of Stage rewards by purchasing the Improved Pass. "
-"It is purchased separately for each Chapter and works within the "
-"corresponding Chapter. With the Improved Pass, you will receive both Base "
-"and Improved Rewards for completing each subsequent Stage."
+"With the Improved Pass, you will receive both Base and Improved Rewards for "
+"completing each subsequent Stage."
 
 msgid "tooltips/iconLock/descr2"
 msgstr ""
-"You can purchase the Improved Pass at any time. It will instantly grant all "
-"Improved Rewards for the completed Stages of the Chapter for which you have "
-"purchased it. You can improve your rewards on the Battle Pass main screen by"
-" clicking the Purchase Improved Pass button."
+"You can purchase the Improved Pass at any time. It will instantly grant you "
+"all Improved Rewards for already completed Stages. You can improve your "
+"rewards on the Battle Pass main screen by clicking the Purchase Improved "
+"Pass button."
 
 msgid "tooltips/iconLock/title"
-msgstr "Improved Reward of Battle Pass"
+msgstr "Battle Pass Improved Rewards"
 
 msgid "tooltips/inProgress/baseReward"
 msgstr "Base Reward"
@@ -1690,4 +1752,4 @@ msgid "trophyDeviceUpgradeConfim/title/template"
 msgstr "{deviceName}"
 
 msgid "universalTankmanBonus"
-msgstr "Universal crew member: %(name)s"
+msgstr "Crew member: %(name)s"

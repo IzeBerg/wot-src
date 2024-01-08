@@ -105,6 +105,8 @@ package net.wg.data.constants.generated
       
       public static const EPIC_REINFORCEMENT_PANEL:String = "epicReinforcementPanel";
       
+      public static const EPIC_MODIFICATION_PANEL:String = "epicModificationPanel";
+      
       public static const RECOVERY_PANEL:String = "recoveryPanel";
       
       public static const EPIC_INGAME_RANK:String = "epicInGameRank";

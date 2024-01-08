@@ -1,203 +1,16 @@
 from collections import namedtuple
 from datetime import datetime
-from gui.impl import backport
-from helpers import time_utils, int2roman
-from messenger.ext import passCensor
-from shared_utils import makeTupleByDict
-from predefined_hosts import g_preDefinedHosts
 from debug_utils import LOG_WARNING
 from gui.clans import formatters as clans_fmts
+from gui.clans.data_wrapper.utils import getTimestamp, toPercents, getEfficiency, isValueAvailable, FieldsCheckerMixin, fmtUnavailableValue, fmtZeroDivisionValue, formatString, fmtDelegat, conditionFormatter, simpleFormatter
 from gui.clans.settings import MAX_CLAN_MEMBERS_COUNT, CLAN_INVITE_STATES_SORT_RULES, CLAN_INVITE_STATES
-from debug_utils import LOG_ERROR
+from gui.impl import backport
+from helpers import time_utils, int2roman
 from helpers.time_utils import getTimeDeltaTillNow, ONE_DAY
-
-def _getTimestamp(datetimeValue):
-    return time_utils.getTimestampFromUTC(datetimeValue.timetuple())
-
-
-def _toPercents(value):
-    if value:
-        return 100 * value
-    return value
-
-
-def _getEfficiency(dividend, delimiter):
-    return float(dividend) / delimiter
-
-
+from messenger.ext import passCensor
+from predefined_hosts import g_preDefinedHosts
+from shared_utils import makeTupleByDict
 _defDateTime = datetime.fromtimestamp(0)
-
-def formatField(getter, dummy=None, formatter=None):
-    return str(getter(doFmt=True, dummy=dummy, formatter=formatter))
-
-
-def isValueAvailable(getter):
-    return getter(checkAvailability=True)
-
-
-class FieldsCheckerMixin(object):
-
-    def __init__(self, *args, **kwargs):
-        super(FieldsCheckerMixin, self).__init__()
-        self.__class = self.__class__
-        if hasattr(self, '_fields'):
-            self._invalidFields = set(arg for arg in self._fields if arg not in kwargs)
-        else:
-            self._invalidFields = set()
-
-    def isFieldValid(self, fieldName):
-        return fieldName not in self._invalidFields
-
-    def isValid(self):
-        return not set(self._getCriticalFields()) & self._invalidFields
-
-    def update(self, *args, **kwargs):
-        obj = self._replace(**kwargs)
-        obj._invalidFields = self._invalidFields
-        return obj
-
-    def _getCriticalFields(self):
-        LOG_ERROR('Method must be override!', '_getCriticalFields', self.__class__)
-        return tuple()
-
-
-def fmtUnavailableValue(fields=tuple(), dummy=clans_fmts.DUMMY_UNAVAILABLE_DATA):
-
-    def decorator(func):
-
-        def wrapper(self, *args, **kwargs):
-
-            def _isAvailable(fields):
-                for field in fields:
-                    if not self.isFieldValid(field):
-                        return False
-
-                return True
-
-            checkAvailability = kwargs.pop('checkAvailability', False)
-            if checkAvailability:
-                return _isAvailable(fields)
-            else:
-                doFmt = kwargs.get('doFmt', False)
-                placeholder = kwargs.get('dummy', dummy) or dummy
-                f = kwargs.get('formatter', None)
-                if doFmt and not _isAvailable(fields):
-                    return placeholder
-                try:
-                    value = func(self)
-                except ValueError:
-                    value = None
-
-                if value is None:
-                    return placeholder
-                if f is not None:
-                    return f(value)
-                return value
-
-        return wrapper
-
-    return decorator
-
-
-def fmtNullValue(nullValue=0, dummy=clans_fmts.DUMMY_NULL_DATA):
-
-    def decorator(func):
-
-        def wrapper(*args, **kwargs):
-            checkAvailability = kwargs.get('checkAvailability', False)
-            doFmt = kwargs.get('doFmt', False)
-            value = func(*args, **kwargs)
-            if not checkAvailability and doFmt and value == nullValue:
-                value = dummy
-            return value
-
-        return wrapper
-
-    return decorator
-
-
-def fmtZeroDivisionValue(defValue=0, dummy=clans_fmts.DUMMY_NULL_DATA):
-
-    def decorator(func):
-
-        def wrapper(*args, **kwargs):
-            try:
-                value = func(*args, **kwargs)
-            except ZeroDivisionError:
-                if kwargs.get('doFmt', False):
-                    return kwargs.get('dummy', dummy) or dummy
-                return defValue
-
-            return value
-
-        return wrapper
-
-    return decorator
-
-
-def _formatString(value):
-    if not value:
-        return clans_fmts.DUMMY_UNAVAILABLE_DATA
-    return passCensor(value)
-
-
-def fmtDelegat(path, dummy=clans_fmts.DUMMY_UNAVAILABLE_DATA):
-
-    def decorator(func):
-
-        def wrapper(self, *args, **kwargs):
-
-            def _getGetter(path):
-                return reduce(getattr, path.split('.'), self)
-
-            checkAvailability = kwargs.pop('checkAvailability', False)
-            doFmt = kwargs.pop('doFmt', False)
-            placeholder = kwargs.pop('dummy', dummy) or dummy
-            f = kwargs.pop('formatter', None)
-            if checkAvailability:
-                return _getGetter(path)(checkAvailability=checkAvailability)
-            else:
-                if doFmt:
-                    return _getGetter(path)(doFmt=doFmt, dummy=placeholder, formatter=f)
-                return func(self, *args, **kwargs)
-
-        return wrapper
-
-    return decorator
-
-
-def formatter(formatter=None):
-
-    def decorator(func):
-
-        def wrapper(self, *args, **kwargs):
-            doFmt = kwargs.get('doFmt', False)
-            fmt = kwargs.get('formatter', None) or formatter
-            value = func(self)
-            if doFmt and fmt:
-                value = fmt(value)
-            return value
-
-        return wrapper
-
-    return decorator
-
-
-def simpleFormatter(formatter=None):
-
-    def decorator(func):
-
-        def wrapper(self):
-            value = func(self)
-            if formatter and value is not None:
-                value = formatter(value)
-            return value
-
-        return wrapper
-
-    return decorator
-
-
 _ClanExtInfoData = namedtuple('ClanExtInfoData', [
  'name', 'tag', 'motto', 'members_count', 'created_at',
  'leader_id', 'treasury', 'accepts_join_requests', 'clan_id'])
@@ -254,7 +67,7 @@ class ClanExtInfoData(_ClanExtInfoData, FieldsCheckerMixin):
     @fmtUnavailableValue(fields=('created_at', ))
     def getCreatedAt(self):
         if self.created_at:
-            return _getTimestamp(self.created_at)
+            return getTimestamp(self.created_at)
         return 0
 
     def _getCriticalFields(self):
@@ -383,7 +196,7 @@ class ClanGlobalMapStatsData(_ClanGlobalMapStatsData, FieldsCheckerMixin):
     @fmtZeroDivisionValue()
     @fmtUnavailableValue(fields=('battles_won', 'battles_played'))
     def getWinsEfficiency(self):
-        return _getEfficiency(self.battles_won, self.battles_played)
+        return getEfficiency(self.battles_won, self.battles_played)
 
     @fmtUnavailableValue(fields=('battles_lost', ))
     def getLoosesCount(self):
@@ -412,7 +225,7 @@ class ClanGlobalMapStatsData(_ClanGlobalMapStatsData, FieldsCheckerMixin):
     @fmtZeroDivisionValue()
     @fmtUnavailableValue(fields=('battles_won_on_6_level', 'battles_played_on_6_level'))
     def getWins6LevelEfficiency(self):
-        return _getEfficiency(self.battles_won_on_6_level, self.battles_played_on_6_level)
+        return getEfficiency(self.battles_won_on_6_level, self.battles_played_on_6_level)
 
     @fmtUnavailableValue(fields=('battles_played_on_8_level', ))
     def getBattles8LevelCount(self):
@@ -425,7 +238,7 @@ class ClanGlobalMapStatsData(_ClanGlobalMapStatsData, FieldsCheckerMixin):
     @fmtZeroDivisionValue()
     @fmtUnavailableValue(fields=('battles_won_on_8_level', 'battles_played_on_8_level'))
     def getWins8LevelEfficiency(self):
-        return _getEfficiency(self.battles_won_on_8_level, self.battles_played_on_8_level)
+        return getEfficiency(self.battles_won_on_8_level, self.battles_played_on_8_level)
 
     @fmtUnavailableValue(fields=('battles_played_on_10_level', ))
     def getBattles10LevelCount(self):
@@ -438,7 +251,7 @@ class ClanGlobalMapStatsData(_ClanGlobalMapStatsData, FieldsCheckerMixin):
     @fmtZeroDivisionValue()
     @fmtUnavailableValue(fields=('battles_won_on_10_level', 'battles_played_on_10_level'))
     def getWins10LevelEfficiency(self):
-        return _getEfficiency(self.battles_won_on_10_level, self.battles_played_on_10_level)
+        return getEfficiency(self.battles_won_on_10_level, self.battles_played_on_10_level)
 
 
 Building = namedtuple('Building', 'type direction level position')
@@ -715,7 +528,7 @@ class AccountClanRatingsData(_AccountClanRatingsData, FieldsCheckerMixin):
     @fmtUnavailableValue(fields=('battle_avg_performance', 'battles_count'))
     def getBattlesPerformanceAvg(self):
         if self.battles_count > 0:
-            return _toPercents(self.battle_avg_performance)
+            return toPercents(self.battle_avg_performance)
         raise ZeroDivisionError()
 
     @fmtUnavailableValue(fields=('xp_amount', ))
@@ -788,7 +601,7 @@ class ClanProvinceData(_ClanProvinceData, FieldsCheckerMixin):
     @fmtUnavailableValue(fields=('pillage_end_datetime', ))
     def getPillageEndDatetime(self):
         if self.pillage_end_datetime:
-            return _getTimestamp(self.pillage_end_datetime)
+            return getTimestamp(self.pillage_end_datetime)
         return 0
 
 
@@ -986,56 +799,6 @@ class ClanADInviteData(_ClanADInviteData, FieldsCheckerMixin):
         return self.account_id
 
 
-_StrongholdEventClanInfoData = namedtuple('_StrongholdEventClanInfoData', [
- 'primetime_start', 'primetime_end'])
-_StrongholdEventClanInfoData.__new__.__defaults__ = (0, 0)
-
-class StrongholdEventClanInfoData(_StrongholdEventClanInfoData, FieldsCheckerMixin):
-
-    @fmtUnavailableValue(fields=('primetime_start', ))
-    def getPrimeTimeStart(self):
-        return self.primetime_start
-
-    @fmtUnavailableValue(fields=('primetime_end', ))
-    def getPrimeTimeEnd(self):
-        return self.primetime_end
-
-
-_StrongholdEventConfig = namedtuple('_StrongholdEventConfig', [
- 'name', 'vehicle_levels', 'primetimes', 'set_primetimes_roles', 'reset_authority_role',
- 'min_destroy_vehicle_for_victory', 'min_destroy_vehicle_for_defeat', 'visible_start_date',
- 'event_start_date', 'visible_end_date', 'event_end_date', 'show_top_medal'])
-_StrongholdEventConfig.__new__.__defaults__ = (
- '', [], [], '', '', 0, 0, 0, 0, 0, 0, False)
-
-class StrongholdEventConfig(_StrongholdEventConfig, FieldsCheckerMixin):
-
-    @fmtUnavailableValue(fields=('event_start_date', ))
-    def getStartDate(self):
-        return self.event_start_date
-
-    @fmtUnavailableValue(fields=('event_end_date', ))
-    def getEndDate(self):
-        return self.event_end_date
-
-
-_StrongholdEventSettingsData = namedtuple('_StrongholdEventClanInfoData', [
- 'event_config'])
-_StrongholdEventSettingsData.__new__.__defaults__ = (None, )
-
-class StrongholdEventSettingsData(_StrongholdEventSettingsData, FieldsCheckerMixin):
-
-    @fmtUnavailableValue(fields=('event_config', ))
-    def getEventConfig(self):
-        return makeTupleByDict(StrongholdEventConfig, self.event_config)
-
-    def getVisibleStartDate(self):
-        return self.getEventConfig().getStartDate()
-
-    def getVisibleEndDate(self):
-        return self.getEventConfig().getEndDate()
-
-
 class ClanInviteWrapper(object):
 
     def __init__(self, invite, account, accountName, sender, senderName, changerName):
@@ -1132,15 +895,15 @@ class ClanInviteWrapper(object):
     def getChangerDbID(self):
         return self.__invite.getChangerDbID()
 
-    @formatter(formatter=_formatString)
+    @conditionFormatter(formatter=formatString)
     def getAccountName(self):
         return self.__accountName
 
-    @formatter(formatter=_formatString)
+    @conditionFormatter(formatter=formatString)
     def getSenderName(self):
         return self.__senderName
 
-    @formatter(formatter=_formatString)
+    @conditionFormatter(formatter=formatString)
     def getChangerName(self):
         return self.__changerName
 
@@ -1320,7 +1083,7 @@ class ClanPersonalInviteWrapper(object):
     def getLeaderDbID(self):
         return self.__clanInfo.getLeaderDbID()
 
-    @formatter(formatter=_formatString)
+    @conditionFormatter(formatter=formatString)
     def getSenderName(self):
         return self.__senderName
 

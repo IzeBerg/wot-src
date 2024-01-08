@@ -100,6 +100,85 @@
 				<slots/>
 			</block>
 			<block>
+				<class>Variable</class>
+				<id>Variable_2</id>
+				<params>
+					<param>
+						isBreak
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Initial Value</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_2</id>
+				<buddy>Variable_3</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>value</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>OnPlayerSnipeMode</class>
+				<id>OnPlayerSnipeMode_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_3</id>
+				<buddy>Variable_3</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>value</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>ComponentMethod</class>
 				<id>ComponentMethod_6</id>
 				<params>
@@ -270,49 +349,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>FrameEvent</class>
-				<id>FrameEvent_2</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>active</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>cooldown</name>
-						<const>\0.010000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>FlowGate</class>
-				<id>FlowGate_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>openAtStart</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>ContextGetSelf</class>
-				<id>ContextGetSelf_1</id>
-				<params>
-					<param>
-						CGFGameObjectContext
-						<name>Context Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						getSelf
-						<name>Member Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_2</id>
 				<buddy>Variable_3</buddy>
@@ -338,6 +374,55 @@
 				<slots/>
 			</block>
 			<block>
+				<class>ContextGetSelf</class>
+				<id>ContextGetSelf_1</id>
+				<params>
+					<param>
+						CGFGameObjectContext
+						<name>Context Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						getSelf
+						<name>Member Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_5</id>
+				<buddy>Variable_2</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>OnPlayerMoveVehicle</class>
+				<id>OnPlayerMoveVehicle_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_4</id>
+				<buddy>Variable_2</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>And</class>
 				<id>And_1</id>
 				<params>
@@ -352,12 +437,6 @@
 			<block>
 				<class>IsPlayerVehicle</class>
 				<id>IsPlayerVehicle_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>OnPlayerMoveVehicle</class>
-				<id>OnPlayerMoveVehicle_1</id>
 				<params/>
 				<slots/>
 			</block>
@@ -441,48 +520,6 @@
 					</slot>
 				</slots>
 			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_2</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						BoolT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>value</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>OnPlayerSnipeMode</class>
-				<id>OnPlayerSnipeMode_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_3</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						BoolT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>value</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
-			</block>
 		</blocks>
 		<connections>
 			<connection>
@@ -496,6 +533,18 @@
 				<input>default</input>
 				<to>Variable_4</to>
 				<output>value</output>
+			</connection>
+			<connection>
+				<from>OnPlayerSnipeMode_1</from>
+				<input>input</input>
+				<to>SetVariable_2</to>
+				<output>onEnter</output>
+			</connection>
+			<connection>
+				<from>OnPlayerSnipeMode_1</from>
+				<input>input</input>
+				<to>SetVariable_3</to>
+				<output>onExit</output>
 			</connection>
 			<connection>
 				<from>ComponentMethod_5</from>
@@ -522,7 +571,13 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>FlowGate_1</from>
+				<from>SetVariable_2</from>
+				<input>input</input>
+				<to>If_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>SetVariable_3</from>
 				<input>input</input>
 				<to>If_2</to>
 				<output>out</output>
@@ -582,7 +637,7 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>ComponentMethod_8</from>
+				<from>SetVariable_5</from>
 				<input>input</input>
 				<to>If_1</to>
 				<output>out</output>
@@ -618,12 +673,6 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>FrameEvent_2</from>
-				<input>input</input>
-				<to>FlowGate_1</to>
-				<output>exec</output>
-			</connection>
-			<connection>
 				<from>GetVariable_2</from>
 				<input>i1</input>
 				<to>And_2</to>
@@ -637,9 +686,21 @@
 			</connection>
 			<connection>
 				<from>OnPlayerMoveVehicle_1</from>
+				<input>input</input>
+				<to>SetVariable_5</to>
+				<output>onMove</output>
+			</connection>
+			<connection>
+				<from>OnPlayerMoveVehicle_1</from>
+				<input>value</input>
+				<to>SetVariable_5</to>
+				<output>break</output>
+			</connection>
+			<connection>
+				<from>GetVariable_4</from>
 				<input>i1</input>
 				<to>And_1</to>
-				<output>break</output>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>IsPlayerVehicle_1</from>
@@ -706,18 +767,6 @@
 				<input>gameObject</input>
 				<to>FindFirstNode_2</to>
 				<output>vehicleObject</output>
-			</connection>
-			<connection>
-				<from>OnPlayerSnipeMode_1</from>
-				<input>input</input>
-				<to>SetVariable_2</to>
-				<output>onEnter</output>
-			</connection>
-			<connection>
-				<from>OnPlayerSnipeMode_1</from>
-				<input>input</input>
-				<to>SetVariable_3</to>
-				<output>onExit</output>
 			</connection>
 		</connections>
 		<macros/>

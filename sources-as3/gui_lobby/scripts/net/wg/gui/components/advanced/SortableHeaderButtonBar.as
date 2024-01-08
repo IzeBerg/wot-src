@@ -43,24 +43,6 @@ package net.wg.gui.components.advanced
          super.onDispose();
       }
       
-      public function enableButtonAt(param1:Boolean, param2:int) : void
-      {
-         if(this._lastChangedButton != null)
-         {
-            if(this._lastChangedButton.index != param2 || this._lastChangedButton.enabled != param1)
-            {
-               this._lastChangedButton.index = param2;
-               this._lastChangedButton.enabled = param1;
-               invalidate(BTN_ENABLING_CHANGED);
-            }
-         }
-         else
-         {
-            this._lastChangedButton = new BtnEnablingData(param2,param1);
-            invalidate(BTN_ENABLING_CHANGED);
-         }
-      }
-      
       public function hasEnabledRenderers() : Boolean
       {
          var _loc1_:int = this.renderersCount;

@@ -15,5 +15,7 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.interfaces
       function setSquad(param1:Boolean, param2:int) : void;
       
       function setVoiceChatConnected(param1:Boolean) : void;
+      
+      function set isSuperSquad(param1:Boolean) : void;
    }
 }

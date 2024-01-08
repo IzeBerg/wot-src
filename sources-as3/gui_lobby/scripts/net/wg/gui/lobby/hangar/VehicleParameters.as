@@ -65,7 +65,7 @@ package net.wg.gui.lobby.hangar
       
       public var bottomShadow:Sprite = null;
       
-      protected var _dataProvider:IDataProvider = null;
+      protected var dataProvider:IDataProvider = null;
       
       private var _snapHeightToRenderers:Boolean = true;
       
@@ -103,7 +103,7 @@ package net.wg.gui.lobby.hangar
          this.paramsList.addEventListener(ListEventEx.ITEM_CLICK,this.onParamsListItemClickHandler);
          this.paramsList.addEventListener(ListEventEx.ITEM_ROLL_OVER,this.onParamsListItemRollOverHandler);
          this.paramsList.addEventListener(MouseEvent.ROLL_OUT,this.onParamsListRollOutHandler);
-         this.paramsList.addEventListener(Event.RESIZE,this.onParamsListResizedHandler);
+         this.paramsList.addEventListener(Event.RESIZE,this.onParamsListResizeHandler);
          mouseEnabled = this.paramsList.mouseEnabled = this.bg.mouseEnabled = this.bg.mouseChildren = false;
          this.hideRendererBG();
          this.topShadow.mouseEnabled = this.topShadow.mouseChildren = false;
@@ -122,7 +122,7 @@ package net.wg.gui.lobby.hangar
       
       override protected function onBeforeDispose() : void
       {
-         this._dataProvider.removeEventListener(Event.CHANGE,this.onDataProviderChangeHandler);
+         this.dataProvider.removeEventListener(Event.CHANGE,this.onDataProviderChangeHandler);
          if(this._hasListeners)
          {
             this.paramsList.scrollBar.removeEventListener(MouseEvent.MOUSE_DOWN,this.onParamsListScrollBarMouseDownHandler);
@@ -132,7 +132,7 @@ package net.wg.gui.lobby.hangar
          this.paramsList.removeEventListener(MouseEvent.MOUSE_WHEEL,this.onParamsListMouseWheelHandler);
          this.paramsList.removeEventListener(ListEventEx.ITEM_ROLL_OVER,this.onParamsListItemRollOverHandler);
          this.paramsList.removeEventListener(MouseEvent.ROLL_OUT,this.onParamsListRollOutHandler);
-         this.paramsList.removeEventListener(Event.RESIZE,this.onParamsListResizedHandler);
+         this.paramsList.removeEventListener(Event.RESIZE,this.onParamsListResizeHandler);
          super.onBeforeDispose();
       }
       
@@ -146,17 +146,17 @@ package net.wg.gui.lobby.hangar
          this.paramsList.dispose();
          this.paramsList = null;
          this._listMask = null;
-         this._dataProvider.cleanUp();
-         this._dataProvider = null;
+         this.dataProvider.cleanUp();
+         this.dataProvider = null;
          super.onDispose();
       }
       
       override protected function onPopulate() : void
       {
          super.onPopulate();
-         this._dataProvider = new ListDAAPIDataProvider(VehParamVO);
-         this._dataProvider.addEventListener(Event.CHANGE,this.onDataProviderChangeHandler);
-         this.paramsList.dataProvider = this._dataProvider;
+         this.dataProvider = new ListDAAPIDataProvider(VehParamVO);
+         this.dataProvider.addEventListener(Event.CHANGE,this.onDataProviderChangeHandler);
+         this.paramsList.dataProvider = this.dataProvider;
       }
       
       override protected function draw() : void
@@ -166,7 +166,7 @@ package net.wg.gui.lobby.hangar
          super.draw();
          if(isInvalid(InvalidationType.SIZE))
          {
-            _loc1_ = RENDERER_HEIGHT * this._dataProvider.length;
+            _loc1_ = RENDERER_HEIGHT * this.dataProvider.length;
             if(_loc1_ > height - BG_MARGIN)
             {
                _loc1_ = !!this._snapHeightToRenderers ? int(RENDERER_HEIGHT * ((height - BG_MARGIN) / RENDERER_HEIGHT ^ 0)) : int(height);
@@ -212,7 +212,7 @@ package net.wg.gui.lobby.hangar
       
       public function as_getDP() : Object
       {
-         return this._dataProvider;
+         return this.dataProvider;
       }
       
       public function as_setIsParamsAnimated(param1:Boolean) : void
@@ -231,16 +231,17 @@ package net.wg.gui.lobby.hangar
          {
             this._helpLayoutId = name + CHAR_UNDERSCORE + Math.random();
          }
-         var _loc1_:HelpLayoutVO = new HelpLayoutVO();
-         _loc1_.x = HELP_LAYOUT_X_CORRECTION;
-         _loc1_.y = 0;
-         _loc1_.width = this._helpLayoutW - HELP_LAYOUT_W_CORRECTION;
-         _loc1_.height = this.bg.height;
-         _loc1_.extensibilityDirection = Directions.RIGHT;
-         _loc1_.message = LOBBY_HELP.HANGAR_VEHICLE_PARAMETERS;
-         _loc1_.id = this._helpLayoutId;
-         _loc1_.scope = this;
-         return new <HelpLayoutVO>[_loc1_];
+         var _loc1_:int = Hangar.getAdditionalHelpLayoutOffset();
+         var _loc2_:HelpLayoutVO = new HelpLayoutVO();
+         _loc2_.x = HELP_LAYOUT_X_CORRECTION - _loc1_;
+         _loc2_.y = 0;
+         _loc2_.width = this._helpLayoutW - HELP_LAYOUT_W_CORRECTION + _loc1_;
+         _loc2_.height = this.bg.height;
+         _loc2_.extensibilityDirection = Directions.RIGHT;
+         _loc2_.message = LOBBY_HELP.HANGAR_VEHICLE_PARAMETERS;
+         _loc2_.id = this._helpLayoutId;
+         _loc2_.scope = this;
+         return new <HelpLayoutVO>[_loc2_];
       }
       
       public function hideBg() : void
@@ -360,7 +361,7 @@ package net.wg.gui.lobby.hangar
          this.hideRendererBG();
       }
       
-      private function onParamsListResizedHandler(param1:Event) : void
+      private function onParamsListResizeHandler(param1:Event) : void
       {
          invalidate(INV_SEND_RESIZE);
       }
@@ -398,7 +399,7 @@ package net.wg.gui.lobby.hangar
       
       private function onDataProviderChangeHandler(param1:Event) : void
       {
-         if(this._dataProvider.length > 0 && (this.paramsList.renderersCount > 0 || this._forceInvalidateOnDataChange))
+         if(this.dataProvider.length > 0 && (this.paramsList.renderersCount > 0 || this._forceInvalidateOnDataChange))
          {
             invalidateSize();
          }

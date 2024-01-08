@@ -1,3 +1,4 @@
+import time
 from typing import Dict, Optional, Any, List
 from collections import namedtuple
 
@@ -169,6 +170,20 @@ def getSeason(config, now):
         return (False, None)
 
 
+def getLastActiveSeasonID(config):
+    if not config or not config.get('cycleTimes', []):
+        return
+    currentTime = time.time()
+    prevSeasonID = None
+    for cycleInfo in config['cycleTimes']:
+        cycleStartTime, _, seasonID, __ = cycleInfo
+        if cycleStartTime > currentTime:
+            return prevSeasonID
+        prevSeasonID = seasonID
+
+    return prevSeasonID
+
+
 def getAllSeasonCycleInfos(config, inSeasonID):
     cycleInfoList = []
     for cycleInfo in config['cycleTimes']:
@@ -247,3 +262,11 @@ def getSeasonNumber(config, seasonID):
     else:
         seasonData = seasons.get(seasonID, {})
         return seasonData.get('number', None)
+
+
+def getCurrentSeasonNumber(config, currentTime=None):
+    seasonFound, seasonInfo = getSeason(config, currentTime or time.time())
+    if not seasonFound:
+        return None
+    else:
+        return getSeasonNumber(config, seasonInfo[2])

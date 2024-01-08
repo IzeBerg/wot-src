@@ -5738,12 +5738,6 @@
 			<tags/>
 			<level>2</level>
 			<price>840</price>
-			<unlocks>
-				<vehicle>
-					Ch09_M5
-					<cost>3200</cost>
-				</vehicle>
-			</unlocks>
 			<armor>
 				<armor_1>35</armor_1>
 				<armor_2>25</armor_2>
@@ -5825,7 +5819,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						2.3
+						1.9
 						<!--BW_String-->
 					</aimingTime>
 					<invisibilityFactorAtShot>
@@ -5912,7 +5906,7 @@
 						<gun>10</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.46
+						0.43
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
@@ -6831,7 +6825,7 @@
 					</shotDispersionRadius>
 					<reloadTime>3</reloadTime>
 					<aimingTime>
-						2.3
+						1.8
 						<!--BW_String-->
 					</aimingTime>
 					<invisibilityFactorAtShot>
@@ -6918,7 +6912,7 @@
 						<gun>10</gun>
 					</armor>
 					<shotDispersionRadius>
-						0.46
+						0.42
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
@@ -7008,6 +7002,10 @@
 						<vehicle>
 							Ch32_SU-76G_FT
 							<cost>3100</cost>
+						</vehicle>
+						<vehicle>
+							Ch09_M5
+							<cost>3200</cost>
 						</vehicle>
 					</unlocks>
 					<maxAmmo>180</maxAmmo>
@@ -7951,7 +7949,7 @@
 			<unlocks>
 				<engine>
 					_Type100_W
-					<cost>700</cost>
+					<cost>350</cost>
 				</engine>
 			</unlocks>
 		</_Type97>
@@ -7960,7 +7958,7 @@
 			<unlocks>
 				<engine>
 					_Type100_A
-					<cost>850</cost>
+					<cost>500</cost>
 				</engine>
 			</unlocks>
 		</_Type100_W>
@@ -7979,16 +7977,7 @@
 				</radio>
 			</unlocks>
 		</_Type94_Hei>
-		<_Type96_Bo>
-			shared
-			<unlocks>
-				<radio>
-					_Type3_Otsu
-					<cost>4000</cost>
-				</radio>
-			</unlocks>
-		</_Type96_Bo>
-		<_Type3_Otsu>shared</_Type3_Otsu>
+		<_Type96_Bo>shared</_Type96_Bo>
 	</radios>
 	<physics>
 		<detailed>

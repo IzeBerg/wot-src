@@ -27,7 +27,11 @@ package net.wg.gui.battle.epicBattle.views.stats
    public class EpicFullStats extends EpicFullStatsMeta implements IEpicFullStatsMeta, IBattleComponentDataController, IEpicBattleStatisticDataController
    {
       
-      private static const TOP_TABLE_OFFSET:int = 139;
+      private static const TOP_TABLE_OFFSET:int = 94;
+      
+      private static const TOP_MIN_TABLE_OFFSET:int = 130;
+      
+      private static const ADAPTIVE_HEIGHT:int = 880;
       
       private static const MIN_HEIGHT:int = 768;
        
@@ -121,6 +125,7 @@ package net.wg.gui.battle.epicBattle.views.stats
          this.header.setBattleTypeName(_loc2_.battleTypeLocaleStr);
          this.header.updateWinText(_loc2_.winText);
          this.header.setBattleTypeIconPath(_loc2_.battleTypeIconPathBig);
+         this.header.setBattleTypeIconPathSmall(_loc2_.battleTypeIconPathSmall);
          this.statsTable.team1TF.text = _loc2_.allyTeamName;
          this.statsTable.team2TF.text = _loc2_.enemyTeamName;
       }
@@ -212,10 +217,11 @@ package net.wg.gui.battle.epicBattle.views.stats
          var _loc3_:Number = NaN;
          _loc3_ = param1 >> 1;
          var _loc4_:Number = param2 >> 1;
-         this.header.modalBgSpr.width = param1;
-         this.header.modalBgSpr.x = -_loc3_;
-         this.statsTable.y = _loc4_ - TOP_TABLE_OFFSET * (param2 / MIN_HEIGHT);
-         this.statsTable.updateHeight(param2);
+         var _loc5_:Boolean = param2 <= ADAPTIVE_HEIGHT;
+         var _loc6_:int = !!_loc5_ ? int(TOP_MIN_TABLE_OFFSET) : int(TOP_TABLE_OFFSET);
+         this.header.updateSize(param1,_loc5_);
+         this.statsTable.y = _loc4_ - _loc6_ * (param2 / MIN_HEIGHT) >> 0;
+         this.statsTable.updateSize(_loc5_);
          this.modalBgSpr.width = param1;
          this.modalBgSpr.height = param2;
          this.modalBgSpr.x = -_loc3_;
