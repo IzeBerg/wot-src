@@ -11,6 +11,7 @@ from gui.impl.gen import R
 from gui.impl.lobby.battle_pass.battle_pass_progressions_view import BattlePassProgressionsView
 from gui.impl.lobby.battle_pass.chapter_choice_view import ChapterChoiceView
 from gui.impl.lobby.battle_pass.intro_view import IntroView
+from gui.impl.lobby.battle_pass.post_progression_view import PostProgressionView
 from gui.server_events.events_dispatcher import showMissionsBattlePass
 from gui.shared import EVENT_BUS_SCOPE, events, g_eventBus
 from gui.shared.event_dispatcher import showBrowserOverlayView, showHangar
@@ -23,7 +24,8 @@ from skeletons.gui.impl import IGuiLoader
 _R_VIEWS = R.views.lobby.battle_pass
 _VIEWS = {_R_VIEWS.BattlePassIntroView(): IntroView, 
    _R_VIEWS.ChapterChoiceView(): ChapterChoiceView, 
-   _R_VIEWS.BattlePassProgressionsView(): BattlePassProgressionsView}
+   _R_VIEWS.BattlePassProgressionsView(): BattlePassProgressionsView, 
+   _R_VIEWS.PostProgressionView(): PostProgressionView}
 _INTRO_VIDEO_SHOWN = BattlePassStorageKeys.INTRO_VIDEO_SHOWN
 _EXTRA_VIDEO_SHOWN = BattlePassStorageKeys.EXTRA_CHAPTER_VIDEO_SHOWN
 _INTRO_SHOWN = BattlePassStorageKeys.INTRO_SHOWN
@@ -173,6 +175,8 @@ class BattlePassViewsHolderComponent(InjectComponentAdaptor, MissionsBattlePassV
             return _R_VIEWS.BattlePassIntroView()
         if not isExtraActiveFirstTime() and (ctrl.hasActiveChapter() or ctrl.isChapterExists(chapterID)):
             return _R_VIEWS.BattlePassProgressionsView()
+        if ctrl.isHoliday() and self.__battlePass.isCompleted():
+            return _R_VIEWS.PostProgressionView()
         return _R_VIEWS.ChapterChoiceView()
 
     def __setDummyVisible(self, isVisible):

@@ -123,7 +123,7 @@ class TechTree(TechTreeMeta):
     def onCloseTechTree(self):
         if self._canBeClosed:
             self.__stopTopOfTheTreeSounds()
-            self.fireEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_HANGAR)), scope=EVENT_BUS_SCOPE.LOBBY)
+            shared_events.showHangar()
 
     def onBlueprintModeSwitch(self, enabled):
         if self.__blueprintMode == enabled:

@@ -45,8 +45,6 @@ package net.wg.gui.lobby.missions.components
       private static const CONDITIONS_MARGIN:int = 15;
       
       private static const INVALID_DATA:String = "invalidData";
-      
-      private static const AWARDS_GROUP_PADDING_Y:int = 4;
        
       
       public var titleTFHit:Sprite;
@@ -221,7 +219,7 @@ package net.wg.gui.lobby.missions.components
          this.awardsGroup.dataProvider = this._rendererData.awards;
          UIComponent(this.awardsGroup).setSize(width - (DEFAULT_OFFSET << 1),SMALL_AWARDS_HEIGHT);
          this.awardsGroup.x = width - this.awardsGroup.width >> 1;
-         this.awardsGroup.y = this.awardsBg.y + (this.awardsBg.height - this.awardsGroup.height >> 1) - AWARDS_GROUP_PADDING_Y;
+         this.awardsGroup.y = this.awardsBg.y + (this.awardsBg.height - this.awardsGroup.height >> 1);
          this.awardsGroup.visible = true;
       }
       

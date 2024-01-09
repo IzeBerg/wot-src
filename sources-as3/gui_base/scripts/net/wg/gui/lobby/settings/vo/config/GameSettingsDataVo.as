@@ -78,6 +78,8 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var showVictimsDogTag:SettingsControlProp = null;
       
+      public var showKillersDogTag:SettingsControlProp = null;
+      
       public var showDogTagToKiller:SettingsControlProp = null;
       
       public var displayPlatoonMembers:SettingsControlProp = null;
@@ -186,6 +188,7 @@ package net.wg.gui.lobby.settings.vo.config
             "showMarksOnGun":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "anonymizer":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "showVictimsDogTag":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
+            "showKillersDogTag":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "showDogTagToKiller":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "minimapViewRange":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "minimapMaxViewRange":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
@@ -287,6 +290,8 @@ package net.wg.gui.lobby.settings.vo.config
          this.anonymizer = null;
          this.showVictimsDogTag.dispose();
          this.showVictimsDogTag = null;
+         this.showKillersDogTag.dispose();
+         this.showKillersDogTag = null;
          this.showDogTagToKiller.dispose();
          this.showDogTagToKiller = null;
          this.loginServerSelection.dispose();

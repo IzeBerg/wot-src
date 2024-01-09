@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>isDeferred</name>
+			<type>bool</type>
+		</param>
+		<param>
+			<name>Stop</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>Move</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>hull_idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_idle_coals.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>hull_idle_fadeIn</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-265.000000 -149.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hull_move</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_moving_coals.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>hull_move</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>hull_idle_fadeout</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Stop</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-256.000000 113.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hull_idle_fadeout</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_FadeOut_coals.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Sleep Node0</to>
+			<blendDuration>2.500000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-106.000000 14.500000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hull_idle_fadeIn</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_FadeIn_coals.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Sleep Node</to>
+			<blendDuration>1.000000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-433.500000 -24.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>0.001000 0.001000</time>
+		<transition>
+			<to>hull_move</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-362.000000 35.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sleep Node0</name>
+		<type>sleep</type>
+		<time>0.001000 0.001000</time>
+		<transition>
+			<to>hull_idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-155.500000 -46.500000 0.000000</uiPosition>
+	</node>
+</root>

@@ -25,6 +25,7 @@ package net.wg.gui.battle.comp7.stats.components.playersPanel.list
          {
             this._listItem.setRank(_loc2_.rank,_loc2_.rankDivision,_loc2_.isQualification);
             this._listItem.setVoiceChatConnected(_loc2_.voiceChatConnected);
+            this._listItem.isSuperSquad = _loc2_.isSuperSquad;
          }
       }
       

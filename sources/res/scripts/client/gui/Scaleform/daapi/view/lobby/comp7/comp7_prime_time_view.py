@@ -7,6 +7,7 @@ from gui.periodic_battles.models import PrimeTimeStatus
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.shared.formatters import text_styles, time_formatters
+from gui.impl.lobby.comp7 import comp7_model_helpers
 
 class Comp7ServerPresenter(ServerListItemPresenter):
     _periodsController = dependency.descriptor(IComp7Controller)
@@ -28,6 +29,7 @@ class Comp7ServerPresenter(ServerListItemPresenter):
 
 
 class Comp7PrimeTimeView(Comp7PrimeTimeMeta):
+    _RES_STATUS_ROOT = R.strings.comp7.primeTimeView.status
     _serverPresenterClass = Comp7ServerPresenter
     __comp7Ctrl = dependency.descriptor(IComp7Controller)
 
@@ -73,7 +75,7 @@ class Comp7PrimeTimeView(Comp7PrimeTimeMeta):
             return text_styles.grandTitle(backport.text(R.strings.comp7.primeTimeView.status.allServersDisabled()))
         if status == PrimeTimeStatus.NOT_AVAILABLE:
             if not timeLeft:
-                return text_styles.grandTitle(backport.text(R.strings.comp7.primeTimeView.status.seasonDisabled(), server=currServerName))
+                return text_styles.grandTitle(backport.text(self._RES_STATUS_ROOT.seasonDisabled.dyn(comp7_model_helpers.getSeasonNameEnum().value)(), server=currServerName))
             if timeLeft < time_utils.ONE_DAY:
                 startTime = time_formatters.formatDate('%H:%M', time_utils.getCurrentLocalServerTimestamp() + timeLeft)
             else:
@@ -93,7 +95,7 @@ class Comp7PrimeTimeView(Comp7PrimeTimeMeta):
             serverName = serverInfo.getShortName()
             currentSeason = controller.getCurrentSeason()
             if currentSeason and not timeLeft:
-                return backport.text(R.strings.comp7.primeTimeView.status.seasonDisabled(), server=serverName)
+                return backport.text(self._RES_STATUS_ROOT.seasonDisabled.dyn(comp7_model_helpers.getSeasonNameEnum().value)(), server=serverName)
             timeLeftStr = backport.getTillTimeStringByRClass(timeLeft, R.strings.menu.Time.timeValueShort.noLeadingZeroes)
             if isAvailable:
                 resId = R.strings.comp7.primeTimeView.status.primeIsAvailable()

@@ -6,6 +6,7 @@ package net.wg.gui.battle.views.consumablesPanel
    import flash.geom.ColorTransform;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Linkages;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CONSUMABLES_PANEL_SETTINGS;
    import net.wg.gui.battle.battleRoyale.views.components.RespawnButton.BattleRoyaleRespawnButton;
    import net.wg.gui.battle.comp7.views.consumablesPanel.Comp7ConsumableButton;
@@ -385,7 +386,7 @@ package net.wg.gui.battle.views.consumablesPanel
          var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
          if(_loc3_)
          {
-            if(this._shellCurrentIdx >= 0 && this._shellCurrentIdx == param1)
+            if(this.getRenderer(param1) !== Linkages.SHELL_BUTTON_BATTLE || this._shellCurrentIdx >= 0 && this._shellCurrentIdx == param1)
             {
                _loc3_.setCoolDownPosAsPercent(param2);
             }
@@ -601,42 +602,6 @@ package net.wg.gui.battle.views.consumablesPanel
          return _loc3_;
       }
       
-      public function as_updateLevelInformation(param1:int, param2:int) : void
-      {
-         var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
-         if(_loc3_)
-         {
-            _loc3_.updateLevelInformation(param2);
-         }
-      }
-      
-      public function as_updateStacks(param1:int, param2:int) : void
-      {
-         var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
-         if(_loc3_)
-         {
-            _loc3_.updateStacks(param2);
-         }
-      }
-      
-      public function as_showPossibleStacks(param1:int, param2:int) : void
-      {
-         var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
-         if(_loc3_)
-         {
-            _loc3_.showPossibleStacks(param2);
-         }
-      }
-      
-      public function as_updateLockedInformation(param1:int, param2:int, param3:String) : void
-      {
-         var _loc4_:IConsumablesButton = this.getRendererBySlotIdx(param1);
-         if(_loc4_)
-         {
-            _loc4_.updateLockedInformation(param2,param3);
-         }
-      }
-      
       public function as_updateTooltip(param1:int, param2:String) : void
       {
          var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
@@ -685,7 +650,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function setStateSizeBoundaries(param1:int, param2:int) : void
       {
-         if(this._settingsId == CONSUMABLES_PANEL_SETTINGS.DEFAULT_SETTINGS_ID)
+         if(this._settingsId !== Values.DEFAULT_INT)
          {
             this._itemsPadding = getItemWidthPadding(param1);
             this._settings[this._settingsId].itemPadding = this._itemsPadding;
@@ -905,6 +870,11 @@ package net.wg.gui.battle.views.consumablesPanel
       public function get isExpand() : Boolean
       {
          return this._isExpand;
+      }
+      
+      public function get isReplay() : Boolean
+      {
+         return this._isReplay;
       }
       
       public function get panelWidth() : Number

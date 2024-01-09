@@ -1,13 +1,14 @@
-import enum, typing
+import copy, enum, typing
 from constants import PREMIUM_ENTITLEMENTS
 from dog_tags_common.components_config import componentConfigAdapter
 from dog_tags_common.config.common import ComponentViewType
-from gui.server_events.bonuses import C11nProgressTokenBonus
+from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK, BADGES_BLOCK
+from gui.server_events.bonuses import C11nProgressTokenBonus, DossierBonus
 from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.money import Currency
 from shared_utils import first
 if typing.TYPE_CHECKING:
-    from gui.server_events.bonuses import SimpleBonus, ItemsBonus, CustomizationsBonus, GoodiesBonus, CrewBooksBonus, PlusPremiumDaysBonus, CreditsBonus, CrystalBonus, DogTagComponentBonus, VehiclesBonus, DossierBonus
+    from gui.server_events.bonuses import SimpleBonus, ItemsBonus, CustomizationsBonus, GoodiesBonus, CrewBooksBonus, PlusPremiumDaysBonus, CreditsBonus, CrystalBonus, DogTagComponentBonus, VehiclesBonus
 
 class BonusTypes(enum.IntEnum):
     NONE = 0
@@ -32,6 +33,17 @@ class BonusTypes(enum.IntEnum):
 
 def getBonusType(bonus):
     return _BONUS_HELPERS_MAP.get(bonus.getName(), _BaseBonusHelper).getBonusType(bonus)
+
+
+def splitDossierBonuses(bonuses):
+    result = []
+    for bonus in bonuses:
+        if isinstance(bonus, DossierBonus):
+            result.extend(_splitDossierBonus(bonus))
+        else:
+            result.append(bonus)
+
+    return result
 
 
 class _BaseBonusHelper(object):
@@ -159,3 +171,27 @@ _BONUS_HELPERS_MAP = {'items': _ItemsBonusHelper,
    Currency.CREDITS: _CreditsBonusHelper, 
    Currency.CRYSTAL: _CrystalBonusHelper, 
    C11nProgressTokenBonus.BONUS_NAME: _StyleProgressBonusHelper}
+
+def _splitDossierBonus(dossier):
+    dossierValue = dossier.getValue()
+    badgeSuffixIds = [ badge.badgeID for badge in dossier.getBadges() if badge.isSuffixLayout() ]
+    achievements, badges, badgeSuffixes = {}, {}, {}
+    extra = {}
+    for dossierType, records in dossierValue.iteritems():
+        for (block, record), value in records.iteritems():
+            component = extra
+            if block in ACHIEVEMENT_BLOCK.ALL:
+                component = achievements
+            elif block == BADGES_BLOCK:
+                component = badgeSuffixes if record in badgeSuffixIds else badges
+            component.setdefault(dossierType, {})[(block, record)] = value
+
+    bonuses = []
+    for componentData in (achievements, badges, badgeSuffixes, extra):
+        if not componentData:
+            continue
+        subDossier = copy.deepcopy(dossier)
+        subDossier.setValue(componentData)
+        bonuses.append(subDossier)
+
+    return bonuses

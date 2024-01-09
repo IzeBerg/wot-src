@@ -15,8 +15,6 @@ package net.wg.gui.battle.epicBattle.views.stats.components
       private static const GENERAL_BONUS_Y:int = -88;
       
       private static const GENERAL_BONUS_Y_SMALL:int = -75;
-      
-      private static const ADAPTIVE_HEIGHT:int = 860;
        
       
       public var team1TF:TextField = null;
@@ -67,17 +65,17 @@ package net.wg.gui.battle.epicBattle.views.stats.components
          super.onDispose();
       }
       
-      public function updateHeight(param1:Number) : void
+      public function updateSize(param1:Boolean) : void
       {
-         if(param1 > ADAPTIVE_HEIGHT)
-         {
-            this.statsFilters.y = STATS_FILTER_Y;
-            this.generalBonus.y = GENERAL_BONUS_Y;
-         }
-         else
+         if(param1)
          {
             this.statsFilters.y = STATS_FILTER_Y_SMALL;
             this.generalBonus.y = GENERAL_BONUS_Y_SMALL;
+         }
+         else
+         {
+            this.statsFilters.y = STATS_FILTER_Y;
+            this.generalBonus.y = GENERAL_BONUS_Y;
          }
       }
    }

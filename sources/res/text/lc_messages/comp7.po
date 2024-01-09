@@ -14,20 +14,38 @@ msgstr ""
 msgid "#PluralForms"
 msgstr "nplurals=2; plural=(n != 1);"
 
-msgid "alertMessage/afterSeason"
+msgid "alertMessage/afterSeason/first"
 msgstr "Season of the Azure Pegasus has ended"
+
+msgid "alertMessage/afterSeason/second"
+msgstr "Season of the Crimson Pegasus has ended"
+
+msgid "alertMessage/afterSeason/third"
+msgstr "Season of the Jade Pegasus has ended"
 
 msgid "alertMessage/allNotAvailable"
 msgstr "Battles on servers will be available in %(primeDelta)s"
 
-msgid "alertMessage/allNotAvailableEnd"
+msgid "alertMessage/allNotAvailableEnd/first"
 msgstr "Season of the Azure Pegasus has ended"
+
+msgid "alertMessage/allNotAvailableEnd/second"
+msgstr "Season of the Crimson Pegasus has ended"
+
+msgid "alertMessage/allNotAvailableEnd/third"
+msgstr "Season of the Jade Pegasus has ended"
 
 msgid "alertMessage/allNotSet"
 msgstr "This mode is unavailable on all servers"
 
-msgid "alertMessage/betweenSeasons"
+msgid "alertMessage/betweenSeasons/first"
 msgstr "Season of the Azure Pegasus has ended"
+
+msgid "alertMessage/betweenSeasons/second"
+msgstr "Season of the Crimson Pegasus has ended"
+
+msgid "alertMessage/betweenSeasons/third"
+msgstr "Season of the Jade Pegasus has ended"
 
 msgid "alertMessage/button/changeServer"
 msgstr "Select Another Server"
@@ -50,8 +68,14 @@ msgstr "This mode is not available on the %(serverName)s server"
 msgid "alertMessage/standaloneNotAvailable"
 msgstr "Battles on this server will be available in %(primeDelta)s"
 
-msgid "alertMessage/standaloneNotAvailableEnd"
+msgid "alertMessage/standaloneNotAvailableEnd/first"
 msgstr "Season of the Azure Pegasus has ended"
+
+msgid "alertMessage/standaloneNotAvailableEnd/second"
+msgstr "Season of the Crimson Pegasus has ended"
+
+msgid "alertMessage/standaloneNotAvailableEnd/third"
+msgstr "Season of the Jade Pegasus has ended"
 
 msgid "alertMessage/standaloneNotSet"
 msgstr "This mode is not available on the %(serverName)s server"
@@ -81,20 +105,26 @@ msgstr "No suitable Tier %(levels)s vehicles in the Garage"
 msgid "banner/info/disabled"
 msgstr "Ceasefire"
 
-msgid "banner/info/seasonEnd"
-msgstr "%(season)s has finished"
+msgid "banner/info/seasonEnd/first"
+msgstr "The Season of the Azure Pegasus has ended"
+
+msgid "banner/info/seasonEnd/second"
+msgstr "The Season of the Crimson Pegasus has ended"
+
+msgid "banner/info/seasonEnd/third"
+msgstr "The Season of the Jade Pegasus has ended"
 
 msgid "banner/info/seasonEndSoon"
-msgstr "This is your last chance to prove your skills!"
+msgstr "Last chance to show off your skills!"
 
 msgid "banner/info/seasonJustStarted"
-msgstr "Show them what you can do!"
+msgstr "Show what you can do!"
 
 msgid "banner/infoSmall/disabled"
 msgstr "Wait for Prime Time"
 
 msgid "banner/season"
-msgstr "Azure Pegasus"
+msgstr "Crimson Pegasus"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(season)s, until %(month)s %(day)s"
@@ -109,10 +139,10 @@ msgid "banner/seasonDateSmall/seasonNotStarted"
 msgstr "From %(month)s %(day)s"
 
 msgid "banner/timeLeft/hours"
-msgstr "%(hour)s h %(min)s min"
+msgstr "Prime Time: %(hour)s h %(min)s min"
 
 msgid "banner/timeLeft/min"
-msgstr "%(min)s min"
+msgstr "Prime Time: %(min)s min"
 
 msgid "banner/title"
 msgstr "ONSLAUGHT"
@@ -297,17 +327,35 @@ msgstr "%(server)s"
 msgid "calendarDay/time"
 msgstr "%(start)s–%(end)s"
 
-msgid "calendarDay/timeLeft"
-msgid_plural "plural/calendarDay/timeLeft"
+msgid "calendarDay/timeLeft/first"
+msgid_plural "plural/calendarDay/timeLeft/first"
 msgstr[0] "Season of the Azure Pegasus will last for %(days)d day"
 msgstr[1] "Season of the Azure Pegasus will last for %(days)d days"
 msgstr[2] "Season of the Azure Pegasus will last for %(days)d days"
+
+msgid "calendarDay/timeLeft/second"
+msgid_plural "plural/calendarDay/timeLeft/second"
+msgstr[0] "Season of the Crimson Pegasus will last for %(days)d day"
+msgstr[1] "Season of the Crimson Pegasus will last for %(days)d days"
+msgstr[2] "Season of the Crimson Pegasus will last for %(days)d days"
+
+msgid "calendarDay/timeLeft/third"
+msgid_plural "plural/calendarDay/timeLeft/third"
+msgstr[0] "Season of the Jade Pegasus will last for %(days)d day"
+msgstr[1] "Season of the Jade Pegasus will last for %(days)d days"
+msgstr[2] "Season of the Jade Pegasus will last for %(days)d days"
 
 msgid "calendarDay/title"
 msgstr "Schedule"
 
 msgid "closeButtonLabel"
 msgstr "CLOSE"
+
+msgid "controls/compare"
+msgstr "Add to Comparison"
+
+msgid "controls/preview"
+msgstr "Preview"
 
 msgid "countDown/text"
 msgstr ""
@@ -316,6 +364,14 @@ msgstr ""
 
 msgid "dash"
 msgstr "—"
+
+msgid "dataError/description"
+msgstr ""
+"We apologize for the temporary inconvenience. Please try to update the page "
+"later."
+
+msgid "dataError/title"
+msgstr "Error Loading Data"
 
 msgid "detailsHelp/mainTitle"
 msgstr "Hints for Onslaught Mode"
@@ -352,11 +408,12 @@ msgstr "Prestige Points"
 
 msgid "detailsHelp/seasonModifiers"
 msgstr ""
-"This mode has a modifier that changes the technical characteristics of "
-"vehicles."
+"The mode has modifiers that change certain parameters of the vehicle, such "
+"as vehicle durability, consumable cooldown time, time remaining visible, and"
+" more."
 
 msgid "detailsHelp/seasonModifiers/title"
-msgstr "Season of the Azure Pegasus Modifier"
+msgstr "ONSLAUGHT MODIFIERS"
 
 msgid "division/A"
 msgstr "A"
@@ -400,6 +457,9 @@ msgstr ""
 "players who have earned at least "
 "{whiteSpanish_Open}%(fromScore){whiteSpanish_Close} Rating Points."
 
+msgid "forVehicle"
+msgstr "For: %(vehicleName)s"
+
 msgid "generalRankTooltip/body/first"
 msgstr ""
 "The {whiteSpanish_Open}Iron{whiteSpanish_Close} rank is awarded to players "
@@ -433,11 +493,11 @@ msgstr "ABOUT THE EVENT"
 msgid "intro/confirmButton"
 msgstr "Affirmative!"
 
-msgid "intro/description/crimsonSeason"
+msgid "intro/description/onslaughtModifiers"
 msgstr ""
-"Meet Season of the Azure Pegasus!\n"
-"\n"
-"The Qualification stage and Annual Rewards have been added to the mode. It also has a modifier that changes the technical characteristics of vehicles."
+"The mode has modifiers that change certain parameters of the vehicle, such "
+"as vehicle durability, consumable cooldown time, time remaining visible, and"
+" more."
 
 msgid "intro/description/pointsOfInterest"
 msgstr ""
@@ -482,8 +542,8 @@ msgstr ""
 "selecting your vehicle, also consider which vehicles your allies have "
 "chosen."
 
-msgid "intro/title/crimsonSeason"
-msgstr "SEASON OF THE AZURE PEGASUS"
+msgid "intro/title/onslaughtModifiers"
+msgstr "ONSLAUGHT MODIFIERS"
 
 msgid "intro/title/pointsOfInterest"
 msgstr "POINTS OF INTEREST"
@@ -650,6 +710,39 @@ msgstr "Rating Points"
 msgid "membersWindow/memberCountDropdown/description"
 msgstr "Players in the Platoon"
 
+msgid "modifier/formattedValueType/nullishDeviation"
+msgstr "0%"
+
+msgid "modifier/formattedValueType/nullishDispersion"
+msgstr "–"
+
+msgid "modifier/name/equipmentCooldown"
+msgstr "Consumable cooldown time"
+
+msgid "modifier/name/shotDispersionRadius"
+msgstr "Bonus to dispersion at 100 m"
+
+msgid "modifier/name/vehicleHealth"
+msgstr "Vehicle durability"
+
+msgid "modifier/name/visionMinRadius"
+msgstr "Proximity spotting radius"
+
+msgid "modifier/name/visionTime"
+msgstr "Time remaining visible"
+
+msgid "modifier/valueType/deviation"
+msgstr "+/-%(deviation)s%"
+
+msgid "modifier/valueType/meters"
+msgstr "%(meters)s m"
+
+msgid "modifier/valueType/percentage"
+msgstr "%(percentage)s%"
+
+msgid "modifier/valueType/seconds"
+msgstr "%(seconds)s s"
+
 msgid "noVehicles/howTo/premium"
 msgstr "Use WoT Premium Account"
 
@@ -688,6 +781,9 @@ msgstr "QUALIFICATION"
 
 msgid "page/heading/rankRewards"
 msgstr "REWARDS FOR RANKS"
+
+msgid "page/heading/shop"
+msgstr "ONSLAUGHT SHOP"
 
 msgid "page/heading/weeklyQuests"
 msgstr "WEEKLY MISSIONS"
@@ -787,8 +883,14 @@ msgstr ""
 msgid "primeTimeView/status/primeWillBeAvailable"
 msgstr "Battles will start on the %(server)s server in %(time)s"
 
-msgid "primeTimeView/status/seasonDisabled"
+msgid "primeTimeView/status/seasonDisabled/first"
 msgstr "Season of the Azure Pegasus has ended on the %(server)s server."
+
+msgid "primeTimeView/status/seasonDisabled/second"
+msgstr "Season of the Crimson Pegasus has ended on the %(server)s server."
+
+msgid "primeTimeView/status/seasonDisabled/third"
+msgstr "Season of the Jade Pegasus has ended on the %(server)s server."
 
 msgid "primeTimeView/status/untill"
 msgstr ""
@@ -796,6 +898,117 @@ msgstr ""
 
 msgid "primeTimeView/title"
 msgstr "ONSLAUGHT"
+
+msgid "products/actions/buy"
+msgstr "Purchase"
+
+msgid "products/actions/restore"
+msgstr "To Depot"
+
+msgid "products/actions/toCustomization"
+msgstr "To Style"
+
+msgid "products/actions/toHangar"
+msgstr "View in Garage"
+
+msgid "products/customizationUnavailable/body"
+msgstr ""
+"Unable to go to style. This may be because: you do not yet own this vehicle,"
+" vehicle is in formation, vehicle is in battle, or repairs are required."
+
+msgid "products/customizationUnavailable/title"
+msgstr "Unavailable"
+
+msgid "products/discount"
+msgstr "-%(discountPercentage)s%"
+
+msgid "products/discountDescription"
+msgstr ""
+"Until the start of the next Season, you will have access to items and a "
+"discount depending on your {fff_Open}highest{fff_Close} "
+"{fff_Open}achieved{fff_Close} {fff_Open}rank{fff_Close}."
+
+msgid "products/discountSectionName"
+msgstr "ACCESS CONDITIONS AND DISCOUNTS"
+
+msgid "products/inProgress"
+msgstr "Please wait, your purchase is being processed..."
+
+msgid "products/limitedQuantitySeason"
+msgstr "Available for purchase per Season: %(count)s"
+
+msgid "products/message/notEnough"
+msgstr "Insufficient funds for purchase."
+
+msgid "products/message/rankAccess"
+msgstr ""
+"Purchase requirement\n"
+"%(rank)s"
+
+msgid "products/newLabel"
+msgstr "NEW"
+
+msgid "products/priceSectionName"
+msgstr "PRICE"
+
+msgid "products/productAccess"
+msgstr ""
+"Access\n"
+"Rank"
+
+msgid "products/purchased"
+msgstr "Purchased"
+
+msgid "products/rankAccess"
+msgstr "Access Rank %(rank)s"
+
+msgid "products/readyToRestore"
+msgstr "Recovery available"
+
+msgid "products/readyToRestoreDescription"
+msgstr "Available for recovery in the Depot"
+
+msgid "products/style3d"
+msgstr "%(name)s 3D Style"
+
+msgid "purchase/affirmative"
+msgstr "Affirmative!"
+
+msgid "purchase/cancelButton"
+msgstr "Back"
+
+msgid "purchase/confirmButton"
+msgstr "Purchase"
+
+msgid "purchase/error/description"
+msgstr "Unable to complete the purchase. Please try again later."
+
+msgid "purchase/error/title"
+msgstr "Error"
+
+msgid "purchase/noSuitableVehicle"
+msgstr ""
+"%(alertIcon)sYou do not have a suitable vehicle for this style in the Garage"
+
+msgid "purchase/price"
+msgstr "Purchase price:"
+
+msgid "purchase/success/heading"
+msgstr "Thank you for your purchase!"
+
+msgid "purchase/success/receiving"
+msgstr ""
+"%(icon)sThe purchase will be credited to your game account in the near "
+"future"
+
+msgid "purchase/success/style3d"
+msgstr "%(name)s 3D style for %(vehicleName)s"
+
+msgid "purchase/title/style3d"
+msgstr "Purchase %(name)s 3D style?"
+
+msgid "purchase/title/vehicle"
+msgstr "Purchase %(name)s?"
 
 msgid "qualification/battlesCounter"
 msgstr ""
@@ -853,6 +1066,9 @@ msgid "qualification/rewardsDescription"
 msgstr ""
 "Upon completing Qualification, you will receive rewards for the rank you "
 "achieved and all previous ranks."
+
+msgid "quotesWrapper"
+msgstr "%(name)s"
 
 msgid "rank/achieved"
 msgstr "Achieved"
@@ -1030,11 +1246,14 @@ msgstr "Affirmative!"
 msgid "rewardsScreen/buttonToRewards"
 msgstr "To Rewards"
 
+msgid "rewardsScreen/buttonToShop"
+msgstr "Go to Purchase"
+
 msgid "rewardsScreen/description/qualificationEnded"
 msgstr "ONSLAUGHT. QUALIFICATION COMPLETED"
 
 msgid "rewardsScreen/description/season"
-msgstr "ONSLAUGHT. SEASON OF THE AZURE PEGASUS"
+msgstr "ONSLAUGHT SEASON OF THE CRIMSON PEGASUS"
 
 msgid "rewardsScreen/notice/subTitle"
 msgstr ""
@@ -1043,6 +1262,22 @@ msgstr ""
 
 msgid "rewardsScreen/notice/title"
 msgstr "Rank Inactivity"
+
+msgid "rewardsScreen/shopInfo/header/discount"
+msgstr "New discounts available in the Onslaught Shop!"
+
+msgid "rewardsScreen/shopInfo/header/open"
+msgstr "New items available in the Onslaught Shop!"
+
+msgid "rewardsScreen/shopInfo/text/discount"
+msgstr ""
+"Until the start of the next Season, you will have access to items and a "
+"discount depending on your highest achieved rank."
+
+msgid "rewardsScreen/shopInfo/text/open"
+msgstr ""
+"Until the start of the next Season, you will have access to items and a "
+"discount depending on your highest achieved rank."
 
 msgid "rewardsScreen/subtitle/division"
 msgstr "{cream_Open}%(rank)s Rank{cream_Close}"
@@ -1117,7 +1352,7 @@ msgid "season/secondsLeft"
 msgstr "Ends in %(seconds)s s"
 
 msgid "seasonModifier/title"
-msgstr "Season Modifier"
+msgstr "Onslaught Modifiers"
 
 msgid "seasonName/first"
 msgstr "Season of the Azure Pegasus"
@@ -1169,19 +1404,19 @@ msgstr "You are a contender to receive Pegasus Colors"
 
 msgid "seasonPointTooltip/text/compensate"
 msgstr ""
-"All remaining Pegasus Colors are converted to bonds at this rate: "
-"{bond_Open}1%(seasonPointIcon)s{bond_Close} to "
+"Unused Pegasus Colors are converted to bonds at this rate: {bond_Open}1 "
+"Pegasus Colors{bond_Close} to "
 "{bond_Open}%(seasonPointExchangeRate)s%(bondsIcon)s{bond_Close}"
 
 msgid "seasonPointTooltip/text/season"
 msgstr ""
-"At the end of the Season, you will receive Pegasus Colors according to your "
-"rank."
+"At the end of each Season, you will receive Pegasus Colors according to your"
+" achieved rank."
 
 msgid "seasonPointTooltip/text/year"
 msgstr ""
-"Every 3 Pegasus Colors improve the reward you receive at the end of the "
-"year."
+"Every 3 Pegasus Colors will improve the quality of the reward you receive at"
+" the end of the year."
 
 msgid "seasonStatistics/button/fifth"
 msgstr "Where is my trophy?!"
@@ -1336,6 +1571,10 @@ msgstr ""
 "This section contains information about the available rewards for achieving "
 "higher ranks in Onslaught mode."
 
+msgid "sidebar/tabs/tooltip/body/shop"
+msgstr ""
+"This section contains information on items available in the Onslaught Shop"
+
 msgid "sidebar/tabs/tooltip/body/weeklyQuests"
 msgstr ""
 "This section contains information about weekly missions in Onslaught mode."
@@ -1358,6 +1597,9 @@ msgstr "Ranked System"
 
 msgid "sidebar/tabs/tooltip/header/rankRewards"
 msgstr "Rewards for Ranks"
+
+msgid "sidebar/tabs/tooltip/header/shop"
+msgstr "Onslaught Shop"
 
 msgid "sidebar/tabs/tooltip/header/weeklyQuests"
 msgstr "Weekly Missions"
@@ -1410,6 +1652,24 @@ msgstr ""
 
 msgid "system_messages/regularReward/title"
 msgstr "Receipt"
+
+msgid "system_messages/shop/offer/button"
+msgstr "Go to Shop"
+
+msgid "system_messages/shop/offer/newDiscounts/body"
+msgstr "New discounts available in the Onslaught Shop!"
+
+msgid "system_messages/shop/offer/newDiscounts/title"
+msgstr "Discounts increased"
+
+msgid "system_messages/shop/offer/newItems/body"
+msgstr "New items now available in the Onslaught Shop!"
+
+msgid "system_messages/shop/offer/newItems/title"
+msgstr "New items available"
+
+msgid "system_messages/shop/purchase/error"
+msgstr "Payment error. Please try again later."
 
 msgid "system_messages/temporaryBan/end/body"
 msgstr ""
@@ -1500,88 +1760,80 @@ msgstr "All rewards received"
 msgid "weeklyQuests/tokenProgress/description/normal"
 msgstr "Earn Lucky Chips to receive rewards"
 
+msgid "whatsNewButtonLabel"
+msgstr "SEASON UPDATES"
+
 msgid "whatsNewView/banner/title/large"
-msgstr "SEASON OF THE AZURE PEGASUS"
+msgstr "SEASON OF THE CRIMSON PEGASUS"
 
 msgid "whatsNewView/banner/title/small"
 msgstr "ONSLAUGHT. WHAT'S NEW?"
 
 msgid "whatsNewView/button/ok"
-msgstr "I'm In!"
+msgstr "Sir, Yes, Sir!"
+
+msgid "whatsNewView/intro/description"
+msgstr ""
+"Rise through the ranks to get access to unique items for bonds and increased"
+" discounts."
+
+msgid "whatsNewView/intro/heading"
+msgstr "Onslaught Shop"
 
 msgid "whatsNewView/mapChanges/addedMaps"
-msgstr "Maps added:"
+msgstr "New Maps:"
 
 msgid "whatsNewView/mapChanges/heading"
 msgstr "Maps"
 
 msgid "whatsNewView/mapChanges/removedMaps"
-msgstr "Maps excluded:"
+msgstr "Excluded maps:"
 
-msgid "whatsNewView/qualification/description"
+msgid "whatsNewView/modifiers/added"
+msgstr "Added Modifiers"
+
+msgid "whatsNewView/modifiers/description"
 msgstr ""
-"Complete a series of %(maxBattlesCount)s battles to reach a rank "
-"corresponding to your skill level."
+"More mode-specific modifiers that change the parameters of the vehicle have "
+"been added."
 
-msgid "whatsNewView/qualification/heading"
-msgstr "Qualification"
+msgid "whatsNewView/modifiers/heading"
+msgstr "Onslaught Modifiers"
 
-msgid "whatsNewView/rankingSystem/description"
-msgstr ""
-"Debutant rank removed. Division E for the Iron, Bronze, Silver, and Gold "
-"ranks added."
-
-msgid "whatsNewView/rankingSystem/heading"
-msgstr "Ranked System"
+msgid "whatsNewView/modifiers/unchanged"
+msgstr "Unchanged Modifiers"
 
 msgid "whatsNewView/tag/changed"
 msgstr "Changed"
 
-msgid "whatsNewView/tag/mapRemoved"
-msgstr "REMOVED"
-
 msgid "whatsNewView/tag/new"
 msgstr "New"
 
+msgid "whatsNewView/tag/removed"
+msgstr "REMOVED"
+
 msgid "whatsNewView/tag/seasonUpdate"
-msgstr "Season update"
+msgstr "Seasonal Update"
 
-msgid "whatsNewView/vehicleLimitations/description"
-msgstr ""
-"Starting from the Season of the Azure Pegasus, SPG vehicles are not "
-"available to play in the mode due to their extremely low performance in "
-"battle."
-
-msgid "whatsNewView/vehicleLimitations/heading"
-msgstr "Vehicle Restrictions"
+msgid "whatsNewView/tag/underDevelopment"
+msgstr "UNDER REDEVELOPMENT"
 
 msgid "whatsNewView/vehiclesForRent/heading"
 msgstr "Rental Vehicles"
 
 msgid "whatsNewView/watchVideo"
-msgstr "Play Video"
-
-msgid "whatsNewView/yearOfThePegasus/description"
-msgstr "Fight in each of the three Seasons to earn valuable Annual Rewards."
-
-msgid "whatsNewView/yearOfThePegasus/heading"
-msgstr "Year of the Pegasus has started"
+msgstr "Watch Video"
 
 msgid "yearlyRewards/banner/willReceived"
 msgstr "Rewards will be added at the end of the Ranked Year"
 
-msgid "yearlyRewards/description"
+msgid "yearlyRewards/description/achieved"
 msgstr ""
-"You will receive Pegasus Colors according to your rank at the end of the "
-"Season"
+"You received 1%(seasonPointIcon)s for each rank at the end of the Season"
 
-msgid "yearlyRewards/error/description"
+msgid "yearlyRewards/description/current"
 msgstr ""
-"We apologize for the temporary inconvenience. Please try to update the page "
-"later."
-
-msgid "yearlyRewards/error/title"
-msgstr "Error Loading Data"
+"You will receive 1%(seasonPointIcon)s for each rank at the end of the Season"
 
 msgid "yearlyRewards/main/fifth"
 msgstr "Champion Camouflage"
@@ -1602,7 +1854,7 @@ msgid "yearlyRewards/main/third"
 msgstr "Silver Camouflage"
 
 msgid "yearlyRewards/rank/achieved"
-msgstr "Rank reached: %(rank)s"
+msgstr "Rank achieved: %(rank)s"
 
 msgid "yearlyRewards/rank/current"
 msgstr "Current rank: %(rank)s"
@@ -1634,6 +1886,11 @@ msgstr ""
 
 msgid "yearlyRewards/subtitle/styleProgress"
 msgstr "For the Heavenly Horse style"
+
+msgid "yearlyRewards/title/withVehicle"
+msgstr ""
+"%(vehicle)s and\n"
+"%(camouflageName)s"
 
 msgid "yearlyRewards/vehicle"
 msgstr "Hurricane"

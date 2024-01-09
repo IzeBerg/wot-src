@@ -399,6 +399,8 @@ package
       
       public static const PLAYER_ERRORS_MINEFIELDISINTERSECTED:String = "#epic_battle:player_errors/minefieldIsIntersected";
       
+      public static const PLAYER_ERRORS_EQUIPMENT_ISWORKING:String = "#epic_battle:player_errors/equipment/isWorking";
+      
       public static const DEPLOYMENTMAP_SPGLIMITREACHED:String = "#epic_battle:deploymentMap/spgLimitReached";
       
       public static const DEPLOYMENTMAP_LANEPLAYERLIMITREACHED:String = "#epic_battle:deploymentMap/lanePlayerLimitReached";
@@ -465,8 +467,6 @@ package
       
       public static const QUESTSTOOLTIP_EPICBATTLE_RESTRICT_LEVEL:String = "#epic_battle:questsTooltip/epicBattle/restrict/level";
       
-      public static const WIDGETALERTMESSAGEBLOCK_NOCYCLEMESSAGE:String = "#epic_battle:widgetAlertMessageBlock/noCycleMessage";
-      
       public static const WIDGETALERTMESSAGEBLOCK_ALLPERIPHERIESHALT:String = "#epic_battle:widgetAlertMessageBlock/allPeripheriesHalt";
       
       public static const WIDGETALERTMESSAGEBLOCK_SOMEPERIPHERIESHALT:String = "#epic_battle:widgetAlertMessageBlock/somePeripheriesHalt";
@@ -478,6 +478,14 @@ package
       public static const WIDGETALERTMESSAGEBLOCK_STARTIN:String = "#epic_battle:widgetAlertMessageBlock/startIn";
       
       public static const WIDGETALERTMESSAGEBLOCK_ANNOUNCEMENT:String = "#epic_battle:widgetAlertMessageBlock/announcement";
+      
+      public static const WIDGETALERTMESSAGEBLOCK_FINISHED:String = "#epic_battle:widgetAlertMessageBlock/finished";
+      
+      public static const WIDGETALERTMESSAGEBLOCK_MODIFICATION:String = "#epic_battle:widgetAlertMessageBlock/modification";
+      
+      public static const WIDGETALERTMESSAGEBLOCK_DETAILS:String = "#epic_battle:widgetAlertMessageBlock/details";
+      
+      public static const WIDGETALERTMESSAGEBLOCK_TOOLTIP_BODY:String = "#epic_battle:widgetAlertMessageBlock/tooltip/body";
       
       public static const STATUS_TIMELEFT_DAYS:String = "#epic_battle:status/timeLeft/days";
       
@@ -682,6 +690,16 @@ package
       public static const SKILL_CATEGORY_RECONNAISSANCE:String = "#epic_battle:skill/category/reconnaissance";
       
       public static const SKILL_CATEGORY_TACTICS:String = "#epic_battle:skill/category/tactics";
+      
+      public static const AMMUNITIONSETUP_BTN_INFO_HINT:String = "#epic_battle:ammunitionSetup/btn/info/hint";
+      
+      public static const RESERVE_LEVEL_1:String = "#epic_battle:reserve/level/1";
+      
+      public static const RESERVE_LEVEL_2:String = "#epic_battle:reserve/level/2";
+      
+      public static const RESERVE_LEVEL_3:String = "#epic_battle:reserve/level/3";
+      
+      public static const RESERVE_LEVEL_4:String = "#epic_battle:reserve/level/4";
        
       
       public function EPIC_BATTLE()

@@ -1,7 +1,7 @@
 package net.wg.gui.components.advanced
 {
    import flash.display.DisplayObject;
-   import flash.display.MovieClip;
+   import flash.display.Sprite;
    import flash.geom.Point;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import scaleform.clik.constants.InvalidationType;
@@ -14,15 +14,15 @@ package net.wg.gui.components.advanced
       private static const INVALID_SEPARATOR_VISIBLE:String = "invalidSeparatorVisible";
        
       
-      public var selectionBg:MovieClip;
+      public var selectionBg:Sprite;
       
-      public var selectionArrow:MovieClip;
+      public var selectionArrow:Sprite;
       
-      public var lineMC:MovieClip;
+      public var lineMC:Sprite;
       
-      private var _textPadding:Number = 20;
+      private var _textPadding:uint = 20;
       
-      private var _minRendererWidth:Number = 40;
+      private var _minRendererWidth:uint = 40;
       
       private var _showSeparator:Boolean = false;
       
@@ -41,6 +41,10 @@ package net.wg.gui.components.advanced
          super.configUI();
          this.selectionBg.mouseChildren = this.selectionBg.mouseEnabled = false;
          this.selectionArrow.mouseChildren = this.selectionArrow.mouseEnabled = false;
+         var _loc1_:Sprite = new Sprite();
+         addChild(_loc1_);
+         this.selectionBg.hitArea = _loc1_;
+         this.selectionArrow.hitArea = _loc1_;
          if(selectedIndex == -1)
          {
             this.selectedIndex = 0;

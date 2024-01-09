@@ -20,12 +20,6 @@ class TankCarouselMeta(CarouselEnvironment):
     def getCarouselAlias(self):
         self._printOverrideError('getCarouselAlias')
 
-    def newYearVehicles(self):
-        self._printOverrideError('newYearVehicles')
-
-    def setIsSmall(self, value):
-        self._printOverrideError('setIsSmall')
-
     def setFilter(self, id):
         self._printOverrideError('setFilter')
 

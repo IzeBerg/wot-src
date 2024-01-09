@@ -34,6 +34,7 @@ package net.wg.gui.battle.comp7.stats.fullStats.tableItem
             this._statsItem.setSkillLevel(_loc1_.skillLevel);
             this._statsItem.setRank(_loc1_.rank,_loc1_.rankDivision,_loc1_.isQualification);
             this._statsItem.setVoiceChatConnected(_loc1_.voiceChatConnected);
+            this._statsItem.isSuperSquad = _loc1_.isSuperSquad;
             if(data.isAnonymized && UserTags.isCurrentPlayer(data.userTags))
             {
                this._anonymizerCtrl.setIsPlayerInClan(StringUtils.isNotEmpty(data.clanAbbrev));

@@ -422,7 +422,14 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             this._lastBrokenChassisDevice = Values.EMPTY_STR;
             if(this._lastDestroyedChassisDevice == param2)
             {
-               this._lastDestroyedChassisDevice = Values.EMPTY_STR;
+               if(this._destroyedChassis.length > 0)
+               {
+                  this._lastDestroyedChassisDevice = this._destroyedChassis[this._destroyedChassis.length - 1];
+               }
+               else
+               {
+                  this._lastDestroyedChassisDevice = Values.EMPTY_STR;
+               }
             }
          }
          var _loc4_:String = this.checkWheelChassisDestroyed();

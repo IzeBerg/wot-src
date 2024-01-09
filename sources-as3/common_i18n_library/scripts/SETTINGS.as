@@ -767,6 +767,8 @@ package
       
       public static const GAME_SHOWVICTIMSDOGTAG:String = "#settings:game/showVictimsDogTag";
       
+      public static const GAME_SHOWKILLERSDOGTAG:String = "#settings:game/showKillersDogTag";
+      
       public static const GAME_SHOWDOGTAGTOKILLER:String = "#settings:game/showDogTagToKiller";
       
       public static const GAME_FIELDSET_HEADERCHAT:String = "#settings:game/fieldset/headerChat";

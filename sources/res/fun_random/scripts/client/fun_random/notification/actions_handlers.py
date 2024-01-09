@@ -22,7 +22,7 @@ class SelectFunRandomMode(NavigationDisabledActionHandler, FunSubModesWatcher):
         return False
 
     @adisp_process
-    def doAction(self, model, entityID, action, *args, **kwargs):
+    def doAction(self, model, entityID, action):
         navigationPossible = True
         if self.checkHeaderNavigation():
             navigationPossible = yield self.__lobbyContext.isHeaderNavigationPossible()
@@ -40,5 +40,5 @@ class ShowFunRandomProgression(NavigationDisabledActionHandler, FunProgressionWa
     def getActions(cls):
         return ('showFunRandomProgression', )
 
-    def doAction(self, model, entityID, action, *args, **kwargs):
+    def doAction(self, model, entityID, action):
         self.showActiveProgressionPage()

@@ -1,4 +1,0 @@
-from BaseAccountExtensionComponent import BaseAccountExtensionComponent
-
-class AccountAbcTesterComponent(BaseAccountExtensionComponent):
-    pass

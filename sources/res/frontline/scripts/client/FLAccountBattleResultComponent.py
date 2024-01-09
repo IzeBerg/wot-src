@@ -1,0 +1,4 @@
+from BaseAccountExtensionComponent import BaseAccountExtensionComponent
+
+class FLAccountBattleResultComponent(BaseAccountExtensionComponent):
+    pass

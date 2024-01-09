@@ -1,5 +1,5 @@
 import typing
-from gui.Scaleform.daapi.view.lobby.comp7.comp7_profile_helper import getDropdownKeyBySeason, getSeasonName, COMP7_ARCHIVE_NAMES, getDropdownKeyByArchiveName, isComp7Archive, getArchiveName
+from gui.Scaleform.daapi.view.lobby.comp7.comp7_profile_helper import getDropdownKeyBySeason, getSeasonName, COMP7_ARCHIVE_NAMES, COMP7_SEASON_NUMBERS, getDropdownKeyByArchiveName, isComp7Archive, getArchiveName
 from gui.Scaleform.daapi.view.lobby.profile.ProfileSection import BattleTypesDropDownItems
 from gui.Scaleform.genConsts.PROFILE_DROPDOWN_KEYS import PROFILE_DROPDOWN_KEYS
 from gui.impl import backport
@@ -178,7 +178,9 @@ class _Comp7SeasonsManager(_BaseSeasonManager):
         for archive in COMP7_ARCHIVE_NAMES:
             itemsList.addByKey(getDropdownKeyByArchiveName(archive))
 
-        itemsList.extend(super(_Comp7SeasonsManager, self)._makeSeasonsDropDown())
+        for season in COMP7_SEASON_NUMBERS:
+            itemsList.addByKey(getDropdownKeyBySeason(season))
+
         return itemsList
 
     def _showSeasonsDropDown(self):

@@ -21,4 +21,10 @@ BATTLE_RESULTS = [
  (
   'comp7QualActive', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'comp7QualBattleIndex', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF)]
+  'comp7QualBattleIndex', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'comp7QualRating', int, 0, None, 'skip', ENTRY_TYPE.SERVER),
+ (
+  'comp7QualRank', tuple, (0, 0), None, 'skip', ENTRY_TYPE.SERVER),
+ (
+  'isSuperSquad', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL)]

@@ -41,7 +41,6 @@ if typing.TYPE_CHECKING:
     from gui.Scaleform.daapi.view.lobby.customization.shared import CustomizationModes, CustomizationTabs
     from gui.shared.gui_items.customization.c11n_items import Style
 _logger = logging.getLogger(__name__)
-CUSTOMIZATION_CAMERA_NAME = 'Customization'
 
 class _ServiceItemShopMixin(object):
     itemsCache = dependency.descriptor(IItemsCache)
@@ -292,7 +291,7 @@ class CustomizationService(_ServiceItemShopMixin, _ServiceHelpersMixin, ICustomi
         if self.__showCustomizationCallbackId is None:
             cameraManager = CGF.getManager(self.hangarSpace.spaceID, HangarCameraManager)
             if cameraManager:
-                cameraManager.switchByCameraName(CUSTOMIZATION_CAMERA_NAME)
+                cameraManager.switchByCameraName('Customization')
             ClientSelectableCameraObject.deselectAll()
             self.hangarSpace.space.getVehicleEntity().onSelect()
             self.__moveHangarVehicleToCustomizationRoom()
@@ -305,10 +304,8 @@ class CustomizationService(_ServiceItemShopMixin, _ServiceHelpersMixin, ICustomi
             self.hangarSpace.space.turretAndGunAngles.reset()
             cameraManager = CGF.getManager(self.hangarSpace.spaceID, HangarCameraManager)
             if cameraManager:
-                if cameraManager.getCurrentCameraName() == CUSTOMIZATION_CAMERA_NAME:
-                    cameraManager.switchToTank()
+                cameraManager.switchToTank()
         self.__destroyCtx()
-        g_eventBus.handleEvent(events.HangarCustomizationEvent(events.HangarCustomizationEvent.RESET_VEHICLE_MODEL_TRANSFORM), scope=EVENT_BUS_SCOPE.LOBBY)
         self.onVisibilityChanged(False)
         return
 

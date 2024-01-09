@@ -24,6 +24,12 @@ class ButtonStates(Enum):
     ACTIVATE = 'activate'
 
 
+class ChapterType(Enum):
+    COMMON = 'common'
+    EXTRA = 'extra'
+    HOLIDAY = 'holiday'
+
+
 class BattlePassProgressionsViewModel(CommonViewModel):
     __slots__ = ('onClose', 'onActionClick', 'onTakeClick', 'onTakeAllClick', 'onOpenShopClick',
                  'onAboutClick', 'onPointsInfoClick', 'onBpbitClick', 'onBpcoinClick',
@@ -289,11 +295,11 @@ class BattlePassProgressionsViewModel(CommonViewModel):
     def setIsSeasonEndingSoon(self, value):
         self._setBool(42, value)
 
-    def getIsExtra(self):
-        return self._getBool(43)
+    def getChapterType(self):
+        return ChapterType(self._getString(43))
 
-    def setIsExtra(self, value):
-        self._setBool(43, value)
+    def setChapterType(self, value):
+        self._setString(43, value.value)
 
     def getHasExtra(self):
         return self._getBool(44)
@@ -360,7 +366,7 @@ class BattlePassProgressionsViewModel(CommonViewModel):
         self._addStringProperty('buttonState')
         self._addBoolProperty('isStyleTaken', False)
         self._addBoolProperty('isSeasonEndingSoon', False)
-        self._addBoolProperty('isExtra', False)
+        self._addStringProperty('chapterType')
         self._addBoolProperty('hasExtra', False)
         self._addNumberProperty('expireTime', 0)
         self._addNumberProperty('specialVoiceTankmenCount', 0)

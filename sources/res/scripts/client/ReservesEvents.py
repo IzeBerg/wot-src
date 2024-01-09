@@ -9,6 +9,7 @@ class ReservesEvents(object):
         self.onShownPanel = Event.Event()
         self.hidePanel = Event.Event()
         self.showPanel = Event.Event()
+        self.onChangedReservesModifier = Event.Event()
 
 
 randomReservesEvents = ReservesEvents()

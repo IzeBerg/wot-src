@@ -29,8 +29,6 @@ package net.wg.data.constants
       
       public static const CURRENCY_CONTEXT_MENU_ITEM:String = "CurrencyContextMenuItem";
       
-      public static const NY_CONTEXT_MENU_ITEM:String = "NYContextMenuItemUI";
-      
       public static const CONTEXT_MENU_SEPARATE:String = "ContextMenuItemSeparate";
       
       public static const MINIMAP_ENTRY:String = "MinimapEntry";
@@ -665,6 +663,8 @@ package net.wg.data.constants
       
       public static const COUNTER_LINE_KEY_UI:String = "newCounterLineKeyUI";
       
+      public static const COUNTER_VEHICLE_RESEARCHABLE_UI:String = "VehResearchCounterUI";
+      
       public static const SERVICE_MESSAGE_IR_UI:String = "ServiceMessageIR_UI";
       
       public static const FEEDBACK_DAMAGE_LOG:String = "feedbackDamageLog";
@@ -1018,12 +1018,6 @@ package net.wg.data.constants
       public static const NATION_TREE_PREMIUM_DOTS_PATTERN:String = "PremiumDotUI";
       
       public static const TIER_GROUPING_UI:String = "TierGroupingUI";
-      
-      public static const NY_COUNTER_VIEW_UI:String = "NYCounterViewUI";
-      
-      public static const NY_LB_NOTIFICATION_BG_UI:String = "NYLBNotificationBg_UI";
-      
-      public static const NY_LB_NO_BORDER_NOTIFICATION_BG_UI:String = "NYLBNoBorderNotificationBg_UI";
       
       public static const YELLOW_HP_BAR:String = "yellow_hp_bar";
       

@@ -12,6 +12,8 @@ package net.wg.gui.components.icons
       private static const ICO_TYPE_GOLD:String = "Gold";
       
       private static const ICO_TYPE_SILVER:String = "Silver";
+      
+      private static const ICO_SUPER_SQUAD_START_NAME:String = "superSquad";
        
       
       public var icoFeelPlace:BitmapFill = null;
@@ -21,12 +23,6 @@ package net.wg.gui.components.icons
       public function SquadIcon()
       {
          super();
-      }
-      
-      private static function getBitmapName(param1:Boolean, param2:uint) : String
-      {
-         var _loc3_:String = !!param1 ? ICO_TYPE_GOLD : ICO_TYPE_SILVER;
-         return ICO_START_NAME + _loc3_ + param2.toString();
       }
       
       override public function toString() : String
@@ -46,10 +42,25 @@ package net.wg.gui.components.icons
          visible = false;
       }
       
-      public function show(param1:Boolean, param2:uint) : void
+      public function show(param1:Boolean, param2:uint, param3:Boolean = false) : void
       {
-         this.icoFeelPlace.source = getBitmapName(param1,param2);
+         var _loc4_:String = null;
+         if(param3)
+         {
+            _loc4_ = ICO_SUPER_SQUAD_START_NAME + (!!param1 ? ICO_TYPE_GOLD : ICO_TYPE_SILVER);
+         }
+         else
+         {
+            _loc4_ = this.getBitmapName(param1,param2);
+         }
+         this.icoFeelPlace.source = _loc4_;
          visible = true;
+      }
+      
+      private function getBitmapName(param1:Boolean, param2:uint) : String
+      {
+         var _loc3_:String = !!param1 ? ICO_TYPE_GOLD : ICO_TYPE_SILVER;
+         return ICO_START_NAME + _loc3_ + param2.toString();
       }
       
       public function isDisposed() : Boolean

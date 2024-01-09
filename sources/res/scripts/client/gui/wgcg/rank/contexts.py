@@ -15,14 +15,6 @@ class RankedPositionCtx(CommonWebRequestCtx):
     def isCaching(self):
         return False
 
-    @staticmethod
-    def getDataObj(incomeData):
-        return incomeData
-
-    @staticmethod
-    def getDefDataObj():
-        return
-
 
 class RankedYearPositionCtx(CommonWebRequestCtx):
 
@@ -37,11 +29,3 @@ class RankedYearPositionCtx(CommonWebRequestCtx):
 
     def isCaching(self):
         return False
-
-    @staticmethod
-    def getDataObj(incomeData):
-        return incomeData
-
-    @staticmethod
-    def getDefDataObj():
-        return

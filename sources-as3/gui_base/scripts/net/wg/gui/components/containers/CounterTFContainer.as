@@ -38,5 +38,10 @@ package net.wg.gui.components.containers
       {
          return this._disposed;
       }
+      
+      public function setTextAutoSize(param1:String) : void
+      {
+         this.textFieldMc.setTextAutoSize(param1);
+      }
    }
 }

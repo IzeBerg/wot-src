@@ -29,6 +29,7 @@ class _LastEntryState(object):
         self.isFirstShow = True
         self.isBought = False
         self.hasExtra = False
+        self.isHoliday = False
         self.chapterID = 0
         self.level = 0
         self.progress = 0
@@ -36,10 +37,11 @@ class _LastEntryState(object):
         self.rewardsCount = 0
         return
 
-    def update(self, isFirstShow=True, isBought=False, hasExtra=False, chapterID=0, level=0, progress=0, state=None, rewardsCount=0):
+    def update(self, isFirstShow=True, isBought=False, hasExtra=False, isHoliday=False, chapterID=0, level=0, progress=0, state=None, rewardsCount=0):
         self.isFirstShow = isFirstShow
         self.isBought = isBought
         self.hasExtra = hasExtra
+        self.isHoliday = isHoliday
         self.chapterID = chapterID
         self.level = level
         self.progress = progress
@@ -126,6 +128,10 @@ class BaseBattlePassEntryPointView(IGlobalListener, EventsHandler):
         return self.__battlePass.hasExtra()
 
     @property
+    def isHoliday(self):
+        return self.__battlePass.isHoliday()
+
+    @property
     def battlePassState(self):
         return self.__battlePass.getState()
 
@@ -157,7 +163,7 @@ class BaseBattlePassEntryPointView(IGlobalListener, EventsHandler):
         pass
 
     def _saveLastState(self, isNotChosenRewardCount):
-        _g_entryLastState.update(False, self.isBought, self.hasExtra, self.chapterID, self.level, self.progress, self.battlePassState, isNotChosenRewardCount)
+        _g_entryLastState.update(False, self.isBought, self.hasExtra, self.isHoliday, self.chapterID, self.level, self.progress, self.battlePassState, isNotChosenRewardCount)
 
     @staticmethod
     def _onClick():
@@ -196,7 +202,7 @@ class BaseBattlePassEntryPointView(IGlobalListener, EventsHandler):
             return R.invalid()
         if self.isCompleted:
             return R.views.lobby.battle_pass.tooltips.BattlePassCompletedTooltipView()
-        if not self.chapterID:
+        if not self.chapterID and not self.isHoliday:
             return R.views.lobby.battle_pass.tooltips.BattlePassNoChapterTooltipView()
         return R.views.lobby.battle_pass.tooltips.BattlePassInProgressTooltipView()
 
@@ -239,10 +245,11 @@ class BattlePassEntryPointView(ViewImpl, BaseBattlePassEntryPointView):
         return super(BattlePassEntryPointView, self).getViewModel()
 
     def createToolTipContent(self, event, contentID):
-        if contentID == R.views.lobby.battle_pass.tooltips.BattlePassNotStartedTooltipView():
-            return BattlePassNotStartedTooltipView()
-        if contentID == R.views.lobby.battle_pass.tooltips.BattlePassNoChapterTooltipView():
-            return BattlePassNoChapterTooltipView()
+        if not self.isHoliday:
+            if contentID == R.views.lobby.battle_pass.tooltips.BattlePassNotStartedTooltipView():
+                return BattlePassNotStartedTooltipView()
+            if contentID == R.views.lobby.battle_pass.tooltips.BattlePassNoChapterTooltipView():
+                return BattlePassNoChapterTooltipView()
         if contentID == R.views.lobby.battle_pass.tooltips.BattlePassCompletedTooltipView():
             return BattlePassCompletedTooltipView()
         return BattlePassInProgressTooltipView()
@@ -302,6 +309,7 @@ class BattlePassEntryPointView(ViewImpl, BaseBattlePassEntryPointView):
             tx.setTooltipID(self._getTooltip())
             tx.setPrevHasExtra(_g_entryLastState.hasExtra)
             tx.setHasExtra(self.hasExtra)
+            tx.setIsHoliday(self.isHoliday)
             tx.setPrevLevel(getPresentLevel(_g_entryLastState.level))
             tx.setLevel(getPresentLevel(self.level))
             tx.setChapterID(self.chapterID)
@@ -328,9 +336,9 @@ class BattlePassEntryPointView(ViewImpl, BaseBattlePassEntryPointView):
         lastState = _g_entryLastState
         if self.battlePassState == BattlePassState.COMPLETED and lastState.state != BattlePassState.COMPLETED:
             animState = AnimationState.PROGRESSION_COMPLETED
-        elif self.chapterID and self.chapterID != lastState.chapterID:
+        elif self.chapterID and self.chapterID != lastState.chapterID and not self.isHoliday:
             animState = AnimationState.NEW_CHAPTER
-        elif not self.chapterID:
+        elif not self.chapterID and not self.isHoliday:
             animState = AnimationState.CHAPTER_NOT_CHOSEN
         elif self.level and self.level != lastState.level:
             animState = AnimationState.NEW_LEVEL

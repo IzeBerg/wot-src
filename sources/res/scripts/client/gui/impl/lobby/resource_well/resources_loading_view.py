@@ -79,7 +79,6 @@ class ResourcesLoadingView(ViewImpl):
 
     def _finalize(self):
         g_eventBus.handleEvent(events.ResourceWellLoadingViewEvent(events.ResourceWellLoadingViewEvent.DESTROY), EVENT_BUS_SCOPE.LOBBY)
-        self.__resourceWell.stopNumberRequesters()
         super(ResourcesLoadingView, self)._finalize()
 
     def _getCallbacks(self):
@@ -194,6 +193,7 @@ class ResourcesLoadingView(ViewImpl):
         model.setIsLoadingError(isError)
 
     def __showHangar(self):
+        self.__resourceWell.stopNumberRequesters()
         self.destroy()
         showHangar()
 
@@ -209,6 +209,7 @@ class ResourcesLoadingView(ViewImpl):
 
     def __onEventStateUpdated(self):
         if not self.__resourceWell.isActive():
+            self.__resourceWell.stopNumberRequesters()
             self.destroy()
             showHangar()
 

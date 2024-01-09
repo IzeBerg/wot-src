@@ -24,6 +24,7 @@ package net.wg.gui.battle.views.stats
       public function SpeakAnimation()
       {
          super();
+         stop();
          this.waveAnimationMC.stop();
          this.muteIcon.visible = false;
       }
