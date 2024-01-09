@@ -468,22 +468,6 @@ package net.wg.gui.battle.battleRoyale.views.components
          invalidate(ACTIVATED_VALIDATION_FLAG);
       }
       
-      public function updateLockedInformation(param1:int, param2:String) : void
-      {
-      }
-      
-      public function updateLevelInformation(param1:int) : void
-      {
-      }
-      
-      public function showPossibleStacks(param1:int) : void
-      {
-      }
-      
-      public function updateStacks(param1:int) : void
-      {
-      }
-      
       private function get status() : uint
       {
          return this._statusMask;

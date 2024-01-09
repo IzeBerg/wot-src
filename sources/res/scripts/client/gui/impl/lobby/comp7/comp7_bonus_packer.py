@@ -1,5 +1,4 @@
 import logging, typing
-from comp7_common import COMP7_TOKEN_WEEKLY_REWARD_NAME
 from dog_tags_common.components_config import componentConfigAdapter
 from dog_tags_common.config.common import ComponentViewType
 from gui.impl import backport
@@ -7,9 +6,9 @@ from gui.impl.backport import TooltipData, createTooltipData
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.comp7.comp7_bonus_model import Comp7BonusModel, DogTagType
 from gui.impl.gen.view_models.views.lobby.comp7.comp7_style_bonus_model import Comp7StyleBonusModel
-from gui.impl.lobby.comp7.comp7_bonus_helpers import BonusTypes, getBonusType
+from gui.impl.lobby.comp7.comp7_bonus_helpers import BonusTypes, getBonusType, splitDossierBonuses
 from gui.impl.lobby.comp7.comp7_c11n_helpers import getComp7ProgressionStyleCamouflage
-from gui.server_events.bonuses import mergeBonuses, splitBonuses, C11nProgressTokenBonus
+from gui.server_events.bonuses import getNonQuestBonuses, mergeBonuses, splitBonuses, C11nProgressTokenBonus, COMP7_TOKEN_WEEKLY_REWARD_NAME
 from gui.shared.gui_items.customization import CustomizationTooltipContext
 from gui.shared.missions.packers.bonus import DossierBonusUIPacker, DogTagComponentsUIPacker, BonusUIPacker, BaseBonusUIPacker, BACKPORT_TOOLTIP_CONTENT_ID, SimpleBonusUIPacker, CustomizationBonusUIPacker, VehiclesBonusUIPacker, TokenBonusUIPacker
 from gui.shared.missions.packers.bonus import getDefaultBonusPackersMap
@@ -34,6 +33,8 @@ _QUALIFICATION_REWARDS_BONUSES_ORDER = (
  BonusTypes.STYLE_PROGRESS, BonusTypes.BADGE_SUFFIX, BonusTypes.BADGE,
  BonusTypes.DOGTAG_BACKGROUND, BonusTypes.DOGTAG_ENGRAVING,
  BonusTypes.CRYSTAL, BonusTypes.STYLE, BonusTypes.RENT_VEHICLE)
+_YEARLY_REWARDS_BONUSES_ORDER = (
+ BonusTypes.STYLE_PROGRESS, BonusTypes.BADGE_SUFFIX, BonusTypes.BADGE, BonusTypes.STYLE, BonusTypes.ACHIEVEMENT)
 
 def getComp7BonusPacker():
     mapping = getDefaultBonusPackersMap()
@@ -192,6 +193,7 @@ def packQuestBonuses(bonuses, bonusPacker, order=None):
     packedToolTips = []
     bonuses = mergeBonuses(bonuses)
     bonuses = splitBonuses(bonuses)
+    bonuses = splitDossierBonuses(bonuses)
     if order is not None:
         bonuses.sort(key=_getSortKey(order))
     for bonus in bonuses:
@@ -226,6 +228,14 @@ def packQualificationRewardsQuestBonuses(quests):
         bonuses.extend(quest.getBonuses())
 
     return packQuestBonuses(bonuses, bonusPacker=getComp7BonusPacker(), order=_QUALIFICATION_REWARDS_BONUSES_ORDER)
+
+
+def packYearlyRewardsBonuses(bonuses):
+    bonusObjects = []
+    for key, value in bonuses.iteritems():
+        bonusObjects.extend(getNonQuestBonuses(key, value))
+
+    return packQuestBonuses(bonusObjects, bonusPacker=getComp7BonusPacker(), order=_YEARLY_REWARDS_BONUSES_ORDER)
 
 
 def _getSortKey(order):

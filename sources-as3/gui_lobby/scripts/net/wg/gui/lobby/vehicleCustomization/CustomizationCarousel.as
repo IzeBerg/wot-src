@@ -100,10 +100,6 @@ package net.wg.gui.lobby.vehicleCustomization
       
       public var projectionDecalHint:UIComponentEx = null;
       
-      public var editableStyleHint:UIComponentEx = null;
-      
-      public var progressionDecalHint:UIComponentEx = null;
-      
       private var _layoutController:CustomizationCarouselLayoutController = null;
       
       private var _layoutRenderer:CustomizationCarouselLayoutRenderer = null;
@@ -170,10 +166,6 @@ package net.wg.gui.lobby.vehicleCustomization
          this.filterCounter = null;
          this.projectionDecalHint.dispose();
          this.projectionDecalHint = null;
-         this.editableStyleHint.dispose();
-         this.editableStyleHint = null;
-         this.progressionDecalHint.dispose();
-         this.progressionDecalHint = null;
          this._dataProvider.cleanUp();
          this._dataProvider = null;
          this._layoutController.dispose();
@@ -187,8 +179,9 @@ package net.wg.gui.lobby.vehicleCustomization
       
       override protected function updateLayout(param1:int, param2:int = 0) : void
       {
+         var _loc3_:int = 0;
          var _loc6_:Rectangle = null;
-         var _loc3_:int = param2 + OFFSET_ARROW + EXTRA_OFFSET + this.leftOffset;
+         _loc3_ = param2 + OFFSET_ARROW + EXTRA_OFFSET + this.leftOffset;
          var _loc4_:int = param1 - _loc3_ - OFFSET_ARROW;
          var _loc5_:int = _loc4_ + leftArrowOffset - rightArrowOffset;
          if(this.shopEntryPointBtn)
@@ -212,10 +205,10 @@ package net.wg.gui.lobby.vehicleCustomization
          this.scrollBar.x = scrollList.x;
          this.scrollBar.y = leftArrow.y + leftArrow.height + SCROLL_Y_OFFSET;
          this.carouselFilters.gapOffset = int(this._isMinResolution) * FILTERS_GAP_OFFSET;
-         this.projectionDecalHint.x = this.editableStyleHint.x = this.progressionDecalHint.x = scrollList.x + scrollList.maskOffsetLeft;
-         this.projectionDecalHint.width = this.editableStyleHint.width = this.progressionDecalHint.width = scrollList.width - scrollList.maskOffsetLeft - scrollList.maskOffsetRight;
-         this.projectionDecalHint.y = this.editableStyleHint.y = this.progressionDecalHint.y = scrollList.y;
-         this.projectionDecalHint.height = this.editableStyleHint.height = this.progressionDecalHint.height = !!this._isMinResolution ? Number(HIT_AREA_HEIGHT_MIN) : Number(HIT_AREA_HEIGHT);
+         this.projectionDecalHint.x = scrollList.x + scrollList.maskOffsetLeft;
+         this.projectionDecalHint.width = scrollList.width - scrollList.maskOffsetLeft - scrollList.maskOffsetRight;
+         this.projectionDecalHint.y = scrollList.y;
+         this.projectionDecalHint.height = !!this._isMinResolution ? Number(HIT_AREA_HEIGHT_MIN) : Number(HIT_AREA_HEIGHT);
       }
       
       override protected function updateAvailableScroll(param1:Boolean, param2:Boolean) : void
@@ -448,9 +441,8 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private function addBookmarkItem(param1:Rectangle, param2:CustomizationCarouselBookmarkVO, param3:Boolean) : void
       {
-         var _loc5_:CustomizationCarouselBookmark = null;
          var _loc4_:Class = App.instance.utils.classFactory.getClass(BOOK_MARK_BACK_MOVIE);
-         _loc5_ = new _loc4_() as CustomizationCarouselBookmark;
+         var _loc5_:CustomizationCarouselBookmark = new _loc4_() as CustomizationCarouselBookmark;
          if(_loc5_ != null)
          {
             _loc5_.visible = true;

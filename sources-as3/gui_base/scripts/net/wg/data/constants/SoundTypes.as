@@ -112,6 +112,10 @@ package net.wg.data.constants
       public static const PREMIUM_PANEL:String = "premiumPanel";
       
       public static const POST_PROGRESSION_MODULES:String = "postProgressionModules";
+      
+      public static const COMP7_VOICE_CHAT_ACTIVATION:String = "comp7VoiceChatActivation";
+      
+      public static const COMP7_VOICE_CHAT_DEACTIVATION:String = "comp7VoiceChatDeactivation";
        
       
       public function SoundTypes()

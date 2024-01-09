@@ -15,9 +15,6 @@ class _BaseHofRequestCtx(CommonWebRequestCtx):
         incomeData = incomeData or {}
         return makeTupleByDict(items.HofAttrs, incomeData)
 
-    def getDefDataObj(self):
-        return
-
     def isCaching(self):
         return False
 

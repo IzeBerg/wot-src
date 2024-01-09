@@ -6,6 +6,8 @@ package net.wg.infrastructure.interfaces
    {
        
       
+      function setTextAutoSize(param1:String) : void;
+      
       function get text() : String;
       
       function set text(param1:String) : void;

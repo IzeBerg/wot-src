@@ -9,6 +9,8 @@ package net.wg.infrastructure.base.meta.impl
    {
        
       
+      public var onBlockClick:Function;
+      
       public var onButtonClick:Function;
       
       private var _alertMessageBlockVO:AlertMessageBlockVO;
@@ -26,6 +28,12 @@ package net.wg.infrastructure.base.meta.impl
             this._alertMessageBlockVO = null;
          }
          super.onDispose();
+      }
+      
+      public function onBlockClickS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onBlockClick,"onBlockClick" + Errors.CANT_NULL);
+         this.onBlockClick();
       }
       
       public function onButtonClickS() : void

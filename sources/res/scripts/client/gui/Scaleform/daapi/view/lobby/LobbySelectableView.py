@@ -8,9 +8,6 @@ class LobbySelectableView(LobbySubView, ISelectableLogicCallback):
         self.__selectableLogic = None
         return
 
-    def _autoCreateSelectableLogic(self):
-        return True
-
     def onHighlight3DEntity(self, entity):
         self._highlight3DEntityAndShowTT(entity)
 
@@ -32,11 +29,12 @@ class LobbySelectableView(LobbySubView, ISelectableLogicCallback):
         pass
 
     def _activateSelectableLogic(self):
-        if self.__selectableLogic is not None or not self._autoCreateSelectableLogic():
+        if self.__selectableLogic is not None:
             return
-        self.__selectableLogic = self._createSelectableLogic()
-        self.__selectableLogic.init(self)
-        return
+        else:
+            self.__selectableLogic = self._createSelectableLogic()
+            self.__selectableLogic.init(self)
+            return
 
     def _deactivateSelectableLogic(self):
         if self.__selectableLogic is not None:

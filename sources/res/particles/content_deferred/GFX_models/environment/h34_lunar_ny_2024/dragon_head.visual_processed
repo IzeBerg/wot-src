@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>M_04</identifier>
+					<fx>shaders/custom/emissive_playground_vtxanim.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						angleFalloffParams
+						<Vector4>0.480000 2.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/environment/h34_lunar_ny_2024/dragon_lights.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>90.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>1.000000 0.035294 0.035294 1.000000</Vector4>
+					</property>
+					<property>
+						speed
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						vtxAnimX
+						<Vector4>0.050000 1.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimY
+						<Vector4>0.130000 1.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimZ
+						<Vector4>0.520000 1.000000 2.050000 1.000000</Vector4>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>80.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.059218 1.376394 0.016247</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>M_05</identifier>
+					<fx>shaders/custom/emissive_playground_vtxanim.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/environment/h34_lunar_ny_2024/dragon_lights.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>75.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>0.996078 0.298039 0.023529 1.000000</Vector4>
+					</property>
+					<property>
+						speed
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						vtxAnimY
+						<Vector4>0.180000 1.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>17.410000</Float>
+					</property>
+					<property>
+						angleFalloffParams
+						<Vector4>1.000000 2.000000 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.273186 2.999608 0.016248</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>M_06</identifier>
+					<fx>shaders/custom/emissive_playground_vtxanim.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/environment/h34_lunar_ny_2024/dragon_lights.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>150.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>0.000000 0.596078 0.952941 1.000000</Vector4>
+					</property>
+					<property>
+						speed
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						vtxAnimX
+						<Vector4>0.050000 1.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimY
+						<Vector4>0.070000 1.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimZ
+						<Vector4>0.070000 1.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>30.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.021144 0.094718 0.016248</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-2.248462 -2.251760 -2.058213</min>
+		<max>2.366899 5.006073 2.090709</max>
+	</boundingBox>
+	<missingBspMaterial>
+		<material>
+			<identifier>M_02</identifier>
+		</material>
+	</missingBspMaterial>
+	<missingBspMaterial>
+		<material>
+			<identifier>M_03</identifier>
+		</material>
+	</missingBspMaterial>
+	<geometrySize>131376</geometrySize>
+	<minUVDensity>2.907025</minUVDensity>
+</root>

@@ -6,6 +6,8 @@ package net.wg.infrastructure.base.meta
    {
        
       
+      function onBlockClickS() : void;
+      
       function onButtonClickS() : void;
       
       function as_setData(param1:Object) : void;

@@ -947,7 +947,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/12BPContentPage/
+				/$LANGUAGE_CODE/promocontent/bp-special-chapter-2/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -957,7 +957,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/12BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/bp-special-chapter-2-Video/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -965,35 +965,6 @@
 				/$LANGUAGE_CODE/promocontent/specialchapterVideo/
 				<name>extraIntroVideo</name>
 				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>battlePassChaptersOrder</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				<name>default</name>
-				<type>list</type>
-				<value>
-					<item>
-						<type>int</type>
-						<value>1</value>
-					</item>
-					<item>
-						<type>int</type>
-						<value>2</value>
-					</item>
-					<item>
-						<type>int</type>
-						<value>3</value>
-					</item>
-					<item>
-						<type>int</type>
-						<value>4</value>
-					</item>
-				</value>
 			</item>
 		</value>
 	</setting>
@@ -1009,6 +980,10 @@
 					<item>
 						<type>string</type>
 						<value>styles</value>
+					</item>
+					<item>
+						<type>string</type>
+						<value>rewards</value>
 					</item>
 					<item>
 						<type>string</type>
@@ -1100,22 +1075,6 @@
 			<item>
 				https://wotgame.cn/$LANGUAGE_CODE/tournaments/
 				<name>CN</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>newYearInfo</name>
-		<type>dict</type>
-		<value>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HO2024Video/
-				<name>baseURL</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://wotgame.cn/zh-cn/news/news/holiday-ops-2024-regulations/
-				<name>aboutEventURL</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1288,7 +1247,7 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode1/
+				 https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode2/ 
 				<name>CN</name>
 				<type>url</type>
 			</item>
@@ -1312,7 +1271,7 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/season-of-the-pegasus-episode1Video/
+				 https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode2Video/ 
 				<name>CN</name>
 				<type>url</type>
 			</item>

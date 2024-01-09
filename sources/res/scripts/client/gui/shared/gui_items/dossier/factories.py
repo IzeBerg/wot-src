@@ -341,6 +341,7 @@ _ACHIEVEMENTS_BY_NAME = {(_AB.TOTAL, 'warrior'): _CustomAchieveFactory.get(_as.r
    (_AB.SINGLE, 'august23'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
    (_AB.SINGLE, 'september23'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
    (_AB.SINGLE, 'december23'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
+   (_AB.SINGLE, 'january24'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
    (_AB.SINGLE, 'NY20A1'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
    (_AB.SINGLE, 'NY20A2'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
    (_AB.SINGLE, 'NY20A3'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
@@ -371,6 +372,7 @@ _ACHIEVEMENTS_BY_NAME = {(_AB.TOTAL, 'warrior'): _CustomAchieveFactory.get(_as.r
    (_AB.SINGLE, 'BattlePassCommonPr_11'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
    (_AB.SINGLE, 'BattlePassCommonPr_12'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
    (_AB.SINGLE, 'BattlePassCommonPr_12extra'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
+   (_AB.SINGLE, 'BattlePassCommonPr_NY24'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
    (_AB.TOTAL, 'collectorVehicle'): _NationAchieveFactory.get(_as.nation_specific.VehicleCollectorAchievement), 
    (_AB.SINGLE, 'dedicationMedal1'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
    (_AB.SINGLE, 'dedicationMedal2'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
@@ -445,7 +447,8 @@ _ACHIEVEMENTS_BY_NAME = {(_AB.TOTAL, 'warrior'): _CustomAchieveFactory.get(_as.r
    (_AB.TOTAL, 'wt2023HunterWins'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
    (_AB.TOTAL, 'wt2023BossWins'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
    (_AB.TOTAL, 'wt2023MaxPlasma'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
-   (_AB.SINGLE, 'hw2023Medal'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement)}
+   (_AB.SINGLE, 'hw2023Medal'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement), 
+   (_AB.SINGLE, 'comp7_3_2'): _AchieveFactory.get(_abstract_achievements.DeprecatedAchievement)}
 for _nID, _ in enumerate(nations.NAMES):
     _ACHIEVEMENTS_BY_NAME[(_AB.TOTAL, 'tankExpert%d' % _nID)] = _NationAchieveFactory.get(_as.nation_specific.TankExpertAchievement, _nID)
     _ACHIEVEMENTS_BY_NAME[(_AB.TOTAL, 'mechanicEngineer%d' % _nID)] = _NationAchieveFactory.get(_as.nation_specific.MechEngineerAchievement, _nID)

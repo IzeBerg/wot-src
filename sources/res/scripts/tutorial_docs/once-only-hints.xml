@@ -3,15 +3,6 @@
 	<gui>gui/tutorial-lobby-gui.xml</gui>
 	<hints>
 		<hint>
-			FalloutQuestsTab
-			<item-id>FalloutQuestsTabButton</item-id>
-			<text>_(#tutorial:onceOnlyHints/falloutQuestsTab)</text>
-			<arrow>
-				<direction>B</direction>
-				<loop>True</loop>
-			</arrow>
-		</hint>
-		<hint>
 			CustomizationSlotsHint
 			<item-id>CustomizationSlots</item-id>
 			<text>_(#tutorial:customization/slots)</text>
@@ -94,16 +85,14 @@
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
-				<global-active>_NY_navigation_disabled</global-active>
-				<global-active>_HaveNewBadge</global-active>
 				<condition-and>
 					<condition-hint-showed>
 						<hint-id>DogTagProfileHint</hint-id>
 						<value>False</value>
 					</condition-hint-showed>
+					<global-active>_HaveNewBadge</global-active>
 				</condition-and>
 			</condition>
-			<hide-immediately>True</hide-immediately>
 		</hint>
 		<hint>
 			HangarHaveNewSuffixBadgeHint
@@ -121,9 +110,7 @@
 			</checked-ui-state>
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
-			<hide-immediately>True</hide-immediately>
 			<condition>
-				<global-active>_NY_navigation_disabled</global-active>
 				<condition-and>
 					<condition-hint-showed>
 						<hint-id>DogTagProfileHint</hint-id>
@@ -365,9 +352,7 @@
 			</checked-ui-state>
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
-			<hide-immediately>True</hide-immediately>
 			<condition>
-				<global-active>_NY_navigation_disabled</global-active>
 				<condition-and>
 					<condition-hint-showed>
 						<hint-id>DogTagProfileHint</hint-id>
@@ -399,7 +384,6 @@
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
-				<global-active>_NY_navigation_disabled</global-active>
 				<global-active>_Personal_reserves_available</global-active>
 				<class-condition>
 					LimitedUIHintChecker
@@ -407,7 +391,6 @@
 					<arguments>PersonalReservesHangarHint</arguments>
 				</class-condition>
 			</condition>
-			<hide-immediately>True</hide-immediately>
 		</hint>
 		<hint>
 			PersonalReservesActivationHint
@@ -444,7 +427,6 @@
 			</arrow>
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
-				<global-active>_NY_navigation_disabled</global-active>
 				<condition-and>
 					<condition-hint-showed>
 						<hint-id>DogTagHangarHint</hint-id>
@@ -459,7 +441,6 @@
 				</simple-state>
 			</checked-ui-state>
 			<update-runtime>True</update-runtime>
-			<hide-immediately>True</hide-immediately>
 		</hint>
 		<hint>
 			LobbyMenuManualHint
@@ -532,7 +513,6 @@
 				</simple-state>
 			</checked-ui-state>
 			<condition>
-				<global-active>_MessengerBarVisible</global-active>
 				<condition-and>
 					<condition-hint-showed>
 						<hint-id>SessionStatsSettingsBtnHint</hint-id>
@@ -546,7 +526,6 @@
 				</condition-and>
 			</condition>
 			<update-runtime>True</update-runtime>
-			<hide-immediately>True</hide-immediately>
 			<ignore-outside-click>True</ignore-outside-click>
 		</hint>
 		<hint>
@@ -568,28 +547,6 @@
 			<ignore-outside-click>True</ignore-outside-click>
 		</hint>
 		<hint>
-			CustomizationProgressionViewHint
-			<item-id>ProgressionEntryPoint</item-id>
-			<text>_(#tutorial:customization/progression)</text>
-			<arrow>
-				<direction>R</direction>
-				<loop>True</loop>
-				<position-value>
-					0.7
-					<!--BW_String-->
-				</position-value>
-			</arrow>
-			<has-box>False</has-box>
-			<checked-ui-state>
-				<simple-state>
-					<state>visible</state>
-					<value>True</value>
-				</simple-state>
-			</checked-ui-state>
-			<update-runtime>True</update-runtime>
-			<ignore-outside-click>True</ignore-outside-click>
-		</hint>
-		<hint>
 			PlatoonBtnHint
 			<item-id>CreatePlatoonButton</item-id>
 			<text>_(#tutorial:platoon/openBtn)</text>
@@ -605,59 +562,11 @@
 			</checked-ui-state>
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
-			<condition>
-				<global-active>_NY_navigation_disabled</global-active>
-			</condition>
-			<hide-immediately>True</hide-immediately>
 		</hint>
 		<hint>
 			CustomizationCarouselHint
 			<item-id>CustomizationCarousel</item-id>
 			<text>_(#tutorial:customization/decal)</text>
-			<arrow>
-				<direction>T</direction>
-				<loop>True</loop>
-				<position-value>
-					0.25
-					<!--BW_String-->
-				</position-value>
-			</arrow>
-			<checked-ui-state>
-				<simple-state>
-					<state>visible</state>
-					<value>True</value>
-				</simple-state>
-			</checked-ui-state>
-			<update-runtime>True</update-runtime>
-			<hide-immediately>True</hide-immediately>
-			<ignore-outside-click>True</ignore-outside-click>
-		</hint>
-		<hint>
-			CustomizationCarouselEditableStyleHint
-			<item-id>CustomizationCarouselEditableStyle</item-id>
-			<text>_(#tutorial:customization/carousel/editableStyle)</text>
-			<arrow>
-				<direction>T</direction>
-				<loop>True</loop>
-				<position-value>
-					0.25
-					<!--BW_String-->
-				</position-value>
-			</arrow>
-			<checked-ui-state>
-				<simple-state>
-					<state>visible</state>
-					<value>True</value>
-				</simple-state>
-			</checked-ui-state>
-			<update-runtime>True</update-runtime>
-			<hide-immediately>True</hide-immediately>
-			<ignore-outside-click>True</ignore-outside-click>
-		</hint>
-		<hint>
-			CustomizationCarouselProgressionDecalHint
-			<item-id>CustomizationCarouselProgressionDecal</item-id>
-			<text>_(#tutorial:customization/carousel/progressionDecal)</text>
 			<arrow>
 				<direction>T</direction>
 				<loop>True</loop>
@@ -734,25 +643,6 @@
 			<condition>
 				<global-active>_CollectibleVehiclePreviewEnabled</global-active>
 			</condition>
-		</hint>
-		<hint>
-			AmmunitionPanelHintZoneHint
-			<item-id>AmmunitionPanelTutorialHintZone</item-id>
-			<text>_(#tank_setup:hints/ammunitionPanel/specialization)</text>
-			<arrow>
-				<direction>T</direction>
-				<loop>True</loop>
-			</arrow>
-			<condition>
-				<class-condition>
-					LimitedUIHintChecker
-					<path>gui.limited_ui.lui_tutorial_hints</path>
-					<arguments>AmmunitionPanelHintZoneHint</arguments>
-				</class-condition>
-			</condition>
-			<update-runtime>True</update-runtime>
-			<hide-immediately>True</hide-immediately>
-			<ignore-outside-click>True</ignore-outside-click>
 		</hint>
 		<hint>
 			AmmunitionPanelBattleAbilitiesHint
@@ -1078,17 +968,39 @@
 			<ignore-outside-click>True</ignore-outside-click>
 		</hint>
 		<hint>
-			BattleMattersEntryPointHint
-			<item-id>BattleMattersEntryPoint</item-id>
-			<ignore-outside-click>True</ignore-outside-click>
-			<hide-immediately>True</hide-immediately>
-			<text>_(#battle_matters:entryPoint/hint)</text>
+			FrontlineScenariosHint
+			<item-id>FrontlineScenariosInfoBtn</item-id>
+			<text>_(#epic_battle:ammunitionSetup/btn/info/hint)</text>
 			<arrow>
 				<direction>B</direction>
 				<loop>True</loop>
 			</arrow>
+			<update-runtime>True</update-runtime>
+			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
-				<global-active>_BattleMattersEntryPoint</global-active>
+				<class-condition>
+					FLScenarioInfoBtnHintChecker
+					<path>gui.impl.lobby.tank_setup.sub_views.frontline_setup</path>
+					<arguments>FrontlineScenariosHintSmallSizes</arguments>
+				</class-condition>
+			</condition>
+		</hint>
+		<hint>
+			FrontlineScenariosHintSmallSizes
+			<item-id>FrontlineScenariosInfoBtnSmall</item-id>
+			<text>_(#epic_battle:ammunitionSetup/btn/info/hint)</text>
+			<arrow>
+				<direction>R</direction>
+				<loop>True</loop>
+			</arrow>
+			<update-runtime>True</update-runtime>
+			<ignore-outside-click>True</ignore-outside-click>
+			<condition>
+				<class-condition>
+					FLScenarioInfoBtnHintChecker
+					<path>gui.impl.lobby.tank_setup.sub_views.frontline_setup</path>
+					<arguments>FrontlineScenariosHint</arguments>
+				</class-condition>
 			</condition>
 		</hint>
 	</hints>

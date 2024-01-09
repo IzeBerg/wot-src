@@ -269,7 +269,7 @@ package net.wg.gui.battle.views
          }
          else
          {
-            DebugUtils.LOG_WARNING("dualGunPanel component doesn\'t configured for this Battle Page");
+            DebugUtils.LOG_DEBUG("dualGunPanel component doesn\'t configured for this Battle Page");
          }
          if(this.rocketAcceleratorPanel)
          {
@@ -277,7 +277,7 @@ package net.wg.gui.battle.views
          }
          else
          {
-            DebugUtils.LOG_WARNING("rocketAcceleratorPanel component doesn\'t configured for this Battle Page");
+            DebugUtils.LOG_DEBUG("rocketAcceleratorPanel component doesn\'t configured for this Battle Page");
          }
          this.createPostmortemTipsComponent();
          this.postmortemTips.setCompVisible(false);
@@ -367,11 +367,6 @@ package net.wg.gui.battle.views
             setFocus(this);
          }
          super.onSetModalFocus(param1);
-      }
-      
-      private function isElementVisible(param1:InteractiveObject) : Boolean
-      {
-         return param1 && param1.visible && param1.parent != this && this.isElementVisible(param1.parent);
       }
       
       public function as_checkDAAPI() : void
@@ -566,6 +561,32 @@ package net.wg.gui.battle.views
          return AMMUNITION_PANEL_Y_SHIFT;
       }
       
+      protected function updateAmmunitionPanelY() : void
+      {
+         if(this.prebattleAmmunitionPanel)
+         {
+            this.prebattleAmmunitionPanel.setYPos(this.battleLoading && this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
+         }
+      }
+      
+      protected function anchorVictimDogTag() : void
+      {
+         if(this.postmortemTips)
+         {
+            PostmortemPanel(this.postmortemTips).anchorVictimDogTag(this.minimap.currentTopLeftPoint.y);
+         }
+      }
+      
+      protected function getLoadedPrebattleAmmoPanelYShift() : int
+      {
+         return 0;
+      }
+      
+      private function isElementVisible(param1:InteractiveObject) : Boolean
+      {
+         return param1 && param1.visible && param1.parent != this && this.isElementVisible(param1.parent);
+      }
+      
       private function showComponent(param1:String, param2:Boolean) : void
       {
          var _loc3_:IDisplayableComponent = null;
@@ -586,27 +607,6 @@ package net.wg.gui.battle.views
          this.postmortemTips.y = height;
          this.postmortemTips.updateElementsPosition();
          this.anchorVictimDogTag();
-      }
-      
-      protected function updateAmmunitionPanelY() : void
-      {
-         if(this.prebattleAmmunitionPanel)
-         {
-            this.prebattleAmmunitionPanel.setYPos(this.battleLoading && this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
-         }
-      }
-      
-      protected function anchorVictimDogTag() : void
-      {
-         if(this.postmortemTips)
-         {
-            PostmortemPanel(this.postmortemTips).anchorVictimDogTag(this.minimap.currentTopLeftPoint.y);
-         }
-      }
-      
-      protected function getLoadedPrebattleAmmoPanelYShift() : int
-      {
-         return 0;
       }
       
       protected function get prebattleAmmunitionPanelShown() : Boolean

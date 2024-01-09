@@ -627,10 +627,6 @@ package
       
       public static const DETAILS_CALCULATIONS_SQUADBONUS:String = "#battle_results:details/calculations/squadBonus";
       
-      public static const DETAILS_CALCULATIONS_NEWYEAR:String = "#battle_results:details/calculations/newYear";
-      
-      public static const DETAILS_CALCULATIONS_VEHICLEBRANCH:String = "#battle_results:details/calculations/vehicleBranch";
-      
       public static const DETAILS_CALCULATIONS_NOPENALTY:String = "#battle_results:details/calculations/noPenalty";
       
       public static const DETAILS_CALCULATIONS_EVENT:String = "#battle_results:details/calculations/event";

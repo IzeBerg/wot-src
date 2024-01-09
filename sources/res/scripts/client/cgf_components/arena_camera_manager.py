@@ -1,8 +1,7 @@
-import logging, CGF
+import CGF
 from GenericComponents import TransformComponent
 from cgf_script.managers_registrator import onAddedQuery, onRemovedQuery, autoregister
 from CameraComponents import CameraComponent
-_logger = logging.getLogger(__name__)
 
 @autoregister(presentInAllWorlds=True, domain=CGF.DomainOption.DomainClient)
 class ArenaCameraManager(CGF.ComponentManager):
@@ -16,14 +15,9 @@ class ArenaCameraManager(CGF.ComponentManager):
 
     @onAddedQuery(CameraComponent, TransformComponent, tickGroup='PostHierarchy')
     def onCameraAdded(self, cameraComponent, transformComponent):
-        if cameraComponent.name in self.__cameras:
-            _logger.warning('Camera with the same name was already added: %s', cameraComponent.name)
-            return
         self.__cameras[cameraComponent.name] = transformComponent.worldTransform
 
     @onRemovedQuery(CameraComponent)
     def onCameraRemoved(self, cameraComponent):
-        if cameraComponent.name not in self.__cameras:
-            _logger.warning('Camera with the same name already removed: %s', cameraComponent.name)
-            return
-        self.__cameras.pop(cameraComponent.name)
+        self.__cameras.pop(cameraComponent.name, None)
+        return

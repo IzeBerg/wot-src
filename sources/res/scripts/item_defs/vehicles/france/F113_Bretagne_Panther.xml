@@ -138,6 +138,12 @@
 			<collisionModelClient>vehicles/french/F113_Bretagne_Panther/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
 		<hangarShadowTexture>vehicles/french/F113_Bretagne_Panther/Bretagne_Panther_HangarShadowMap.dds</hangarShadowTexture>
+		<customization>
+			<customizableVehicleAreas>
+				<paint/>
+				<camouflage/>
+			</customizableVehicleAreas>
+		</customization>
 		<customizationSlots>
 			<slot>
 				<slotType>clan</slotType>
@@ -196,43 +202,7 @@
 				<showOn>16</showOn>
 				<anchorShift>0.000932</anchorShift>
 			</slot>
-			<slot>
-				<slotType>fixedInscription</slotType>
-				<slotId>17000</slotId>
-				<rayStart>
-					1.61597 0.449204 -1.76211
-					<!--BW_String-->
-				</rayStart>
-				<rayEnd>
-					1.46276 0.320646 -1.76211
-					<!--BW_String-->
-				</rayEnd>
-				<rayUp>0 1 0</rayUp>
-				<emblemId>14901</emblemId>
-				<size>0.703226</size>
-			</slot>
-			<slot>
-				<slotType>fixedInscription</slotType>
-				<slotId>17001</slotId>
-				<rayStart>
-					-1.61597 0.449204 -1.76211
-					<!--BW_String-->
-				</rayStart>
-				<rayEnd>
-					-1.46276 0.320646 -1.76211
-					<!--BW_String-->
-				</rayEnd>
-				<rayUp>0 1 0</rayUp>
-				<emblemId>14901</emblemId>
-				<size>0.703226</size>
-			</slot>
 		</customizationSlots>
-		<customization>
-			<customizableVehicleAreas>
-				<paint/>
-				<camouflage/>
-			</customizableVehicleAreas>
-		</customization>
 	</hull>
 	<chassis>
 		<Chassis_F113_Bretagne_Panther>

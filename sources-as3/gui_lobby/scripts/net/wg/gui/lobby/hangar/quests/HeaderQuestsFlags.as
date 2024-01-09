@@ -36,31 +36,17 @@ package net.wg.gui.lobby.hangar.quests
       
       private static const COLLAPSE_ANIM_DELAY:int = 100;
       
-      private static const QUESTS_GROUP_OFFSET:int = 34;
-      
-      private static const LEFT_SIDE_GROUP_X_OFFSET_SMALL:int = -3;
-      
-      private static const LEFT_SIDE_GROUP_X_OFFSET:int = -1;
-      
-      private static const RIGHT_SIDE_GROUP_X_OFFSET:int = -11;
-      
       public static const DEFAULT_FLAGS_OFFSET_Y:int = Values.ZERO;
       
-      private static const SECONDARY_OFFSET_LEFT_X:int = 17;
+      private static const SECONDARY_MARGIN:int = 20;
       
-      private static const SECONDARY_OFFSET_LEFT_X_SMALL:int = 15;
+      private static const SECONDARY_MARGIN_SMALL:int = 10;
       
-      private static const SECONDARY_OFFSET_RIGHT_X:int = 16;
+      private static const SECONDARY_OFFSET_X:int = 16;
       
-      private static const SECONDARY_OFFSET_RIGHT_X_SMALL:int = 14;
+      private static const SECONDARY_OFFSET_X_SMALL:int = 14;
       
-      private static const SECONDARY_MARGIN_LEFT:int = 27;
-      
-      private static const SECONDARY_MARGIN_RIGHT:int = 18;
-      
-      private static const SECONDARY_MARGIN_LEFT_SMALL:int = 23;
-      
-      private static const SECONDARY_MARGIN_RIGHT_SMALL:int = 14;
+      private static const QUESTS_FLAGS_OFFSET_X:int = 15;
       
       private static const INV_SECONDARY_ENTRY_POINT:String = "invSecondaryEntryPoint";
       
@@ -87,8 +73,6 @@ package net.wg.gui.lobby.hangar.quests
       
       private var _offsetRightSideX:Number = 0;
       
-      private var _offsetLeftSideX:Number = 0;
-      
       private var _disableItem:DisplayObject = null;
       
       private var _isMoveContainerInProgress:Boolean = false;
@@ -112,6 +96,12 @@ package net.wg.gui.lobby.hangar.quests
       private var _secondaryEntryPointLeft:IHeaderSecondaryWidget = null;
       
       private var _secondaryEntryPointRight:IHeaderSecondaryWidget = null;
+      
+      private var _secondaryMargin:int = 20;
+      
+      private var _secondaryOffsetX:int = 16;
+      
+      private var _helpLayoutHeight:int = 0;
       
       public function HeaderQuestsFlags()
       {
@@ -228,7 +218,7 @@ package net.wg.gui.lobby.hangar.quests
       
       public function getHitRect() : Rectangle
       {
-         return new Rectangle(this.questsHitArea.x,this.questsHitArea.y,this.questsHitArea.width,this.questsHitArea.height);
+         return new Rectangle(this.questsHitArea.x,this.questsHitArea.y,this.questsHitArea.width,this._helpLayoutHeight);
       }
       
       public function getQuestBtnByType(param1:String) : IQuestInformerButton
@@ -418,18 +408,15 @@ package net.wg.gui.lobby.hangar.quests
       {
          var _loc1_:int = 0;
          var _loc2_:int = 0;
-         var _loc3_:int = 0;
          if(this._secondaryEntryPointRight)
          {
-            _loc3_ = !!this._isSmall ? int(SECONDARY_OFFSET_RIGHT_X_SMALL) : int(SECONDARY_OFFSET_RIGHT_X);
-            _loc1_ = (this.entryPointWidth >> 1) + this.entryPointMarginRight + _loc3_;
+            _loc1_ = (this.entryPointWidth >> 1) + this.entryPointMarginRight + this._secondaryOffsetX;
             _loc2_ = this.entryPointMarginTop;
             this._secondaryEntryPointRight.position = new Point(_loc1_,_loc2_);
          }
          if(this._secondaryEntryPointLeft)
          {
-            _loc3_ = !!this._isSmall ? int(SECONDARY_OFFSET_LEFT_X_SMALL) : int(SECONDARY_OFFSET_LEFT_X);
-            _loc1_ = -((this.entryPointWidth >> 1) + this._secondaryEntryPointLeft.width + this.entryPointMarginLeft + _loc3_) | 0;
+            _loc1_ = -((this.entryPointWidth >> 1) + this.entryPointMarginLeft + this._secondaryEntryPointLeft.width + this._secondaryOffsetX) | 0;
             _loc2_ = this.entryPointMarginTop | 0;
             this._secondaryEntryPointLeft.position = new Point(_loc1_,_loc2_);
          }
@@ -456,17 +443,19 @@ package net.wg.gui.lobby.hangar.quests
             _loc2_ = this._containersMap[_loc3_.groupID];
             if(_loc3_.isRightSide)
             {
+               _loc4_ += _loc2_.cmptLeftShift;
                _loc2_.position = new Point(_loc4_,_loc6_);
-               _loc4_ += _loc2_.cmptWidth;
+               _loc4_ += _loc2_.cmptWidth + HEADER_QUESTS_CONSTANTS.QUESTS_BUTTON_GAP;
             }
             else
             {
                if(_loc5_ == -1)
                {
-                  _loc5_ = this.getInitialLeftSideX(_loc2_.cmptWidth);
+                  _loc5_ = this.getInitialLeftSideX();
                }
-               _loc2_.position = new Point(_loc5_,_loc6_);
                _loc5_ -= _loc2_.cmptWidth;
+               _loc2_.position = new Point(_loc5_,_loc6_);
+               _loc5_ -= HEADER_QUESTS_CONSTANTS.QUESTS_BUTTON_GAP;
             }
             _loc7_++;
          }
@@ -526,23 +515,63 @@ package net.wg.gui.lobby.hangar.quests
       
       private function updateHitArea() : void
       {
-         var _loc5_:IHeaderQuestsContainer = null;
-         var _loc1_:int = this.entryPointWidth + this.entryPointMarginRight + this.entryPointMarginLeft;
-         var _loc2_:int = _loc1_ + 2 * QUESTS_GROUP_OFFSET;
-         var _loc3_:int = Boolean(this._entryPoint) ? int(-(_loc1_ >> 1)) : (this._questsGroupsContainers && this._questsGroupsContainers.length > 0 ? int(this._questsGroupsContainers[0].x) : int(0));
-         var _loc4_:Point = null;
-         for each(_loc5_ in this._questsGroupsContainers)
+         var _loc7_:IHeaderQuestsContainer = null;
+         var _loc1_:Point = null;
+         var _loc2_:int = -(this.entryPointWidth >> 1) - this.entryPointMarginLeft;
+         var _loc3_:int = (this.entryPointWidth >> 1) + this.entryPointMarginLeft + this._offsetRightSideX;
+         var _loc4_:int = this.questsHitArea.height;
+         var _loc5_:uint = Values.ZERO;
+         var _loc6_:uint = Values.ZERO;
+         for each(_loc7_ in this._questsGroupsContainers)
          {
-            _loc4_ = _loc5_.position;
-            if(_loc4_.x < _loc3_)
+            _loc1_ = _loc7_.position;
+            _loc2_ = Math.min(_loc2_,_loc1_.x);
+            _loc3_ += _loc7_.cmptCollapsedWidth;
+            if(_loc7_.isRightSide)
             {
-               _loc3_ = _loc4_.x;
+               _loc5_ += 1;
             }
-            _loc2_ += _loc5_.cmptWidth;
+            else
+            {
+               _loc6_ += 1;
+            }
          }
-         this.questsHitArea.x = _loc3_;
+         _loc3_ += _loc5_ > 1 ? (_loc5_ - 1) * HEADER_QUESTS_CONSTANTS.QUESTS_BUTTON_GAP : Values.ZERO;
+         _loc3_ += _loc6_ > 1 ? (_loc6_ - 1) * HEADER_QUESTS_CONSTANTS.QUESTS_BUTTON_GAP : Values.ZERO;
+         if(this._secondaryEntryPointLeft)
+         {
+            _loc3_ += this._secondaryEntryPointLeft.width + this._secondaryOffsetX;
+            if(_loc6_ > 0)
+            {
+               _loc3_ += this._secondaryMargin;
+            }
+            else
+            {
+               _loc2_ = Math.min(_loc2_,this._secondaryEntryPointLeft.position.x);
+            }
+            _loc4_ = Math.max(_loc4_,this._secondaryEntryPointLeft.height);
+         }
+         else
+         {
+            _loc3_ += QUESTS_FLAGS_OFFSET_X;
+         }
+         if(this._secondaryEntryPointRight)
+         {
+            _loc3_ += this._secondaryEntryPointRight.width + this._secondaryOffsetX;
+            if(_loc5_ > 0)
+            {
+               _loc3_ += this._secondaryMargin;
+            }
+            _loc4_ = Math.max(_loc4_,this._secondaryEntryPointRight.height);
+         }
+         else
+         {
+            _loc3_ += QUESTS_FLAGS_OFFSET_X;
+         }
+         this.questsHitArea.x = _loc2_;
          this.questsHitArea.y = this.flagsOffsetY;
-         this.questsHitArea.width = _loc2_;
+         this.questsHitArea.width = _loc3_;
+         this._helpLayoutHeight = _loc4_;
       }
       
       private function addListenersToQuestsContainer(param1:IHeaderQuestsContainer) : void
@@ -654,22 +683,24 @@ package net.wg.gui.lobby.hangar.quests
                   if(_loc5_.x != _loc2_)
                   {
                      _loc7_ = true;
+                     _loc2_ += _loc5_.cmptLeftShift;
                      this.moveContainerToX(_loc5_,_loc2_,_loc6_ == _loc8_);
                   }
-                  _loc2_ += _loc5_.cmptWidth;
+                  _loc2_ += _loc5_.cmptWidth + HEADER_QUESTS_CONSTANTS.QUESTS_BUTTON_GAP;
                }
                else
                {
                   if(_loc3_ == -1)
                   {
-                     _loc3_ = this.getInitialLeftSideX(_loc5_.cmptWidth);
+                     _loc3_ = this.getInitialLeftSideX();
                   }
+                  _loc3_ -= _loc5_.cmptWidth;
                   if(_loc5_.x != _loc3_)
                   {
                      _loc7_ = true;
                      this.moveContainerToX(_loc5_,_loc3_,_loc6_ == _loc8_);
                   }
-                  _loc3_ -= _loc5_.cmptWidth;
+                  _loc3_ -= HEADER_QUESTS_CONSTANTS.QUESTS_BUTTON_GAP;
                }
                _loc8_++;
             }
@@ -702,26 +733,20 @@ package net.wg.gui.lobby.hangar.quests
       
       private function getInitialRightSideX() : int
       {
-         var _loc2_:int = 0;
          if(this._secondaryEntryPointRight)
          {
-            _loc2_ = !!this._isSmall ? int(SECONDARY_MARGIN_RIGHT_SMALL) : int(SECONDARY_MARGIN_RIGHT);
-            return this._secondaryEntryPointRight.position.x + this._secondaryEntryPointRight.width + _loc2_ | 0;
+            return this._secondaryEntryPointRight.position.x + this._secondaryEntryPointRight.width + this._secondaryMargin | 0;
          }
-         var _loc1_:int = QUESTS_GROUP_OFFSET + RIGHT_SIDE_GROUP_X_OFFSET + this._offsetRightSideX;
-         return (this.entryPointWidth >> 1) + this.entryPointMarginRight + _loc1_;
+         return this._offsetRightSideX + QUESTS_FLAGS_OFFSET_X;
       }
       
-      private function getInitialLeftSideX(param1:int) : int
+      private function getInitialLeftSideX() : int
       {
-         var _loc3_:int = 0;
          if(this._secondaryEntryPointLeft)
          {
-            _loc3_ = !!this._isSmall ? int(SECONDARY_MARGIN_LEFT_SMALL) : int(SECONDARY_MARGIN_LEFT);
-            return this._secondaryEntryPointLeft.position.x - (param1 >> 1) - _loc3_ | 0;
+            return this._secondaryEntryPointLeft.position.x - this._secondaryMargin | 0;
          }
-         var _loc2_:int = QUESTS_GROUP_OFFSET - this._offsetLeftSideX + (!!this._isSmall ? LEFT_SIDE_GROUP_X_OFFSET_SMALL : LEFT_SIDE_GROUP_X_OFFSET);
-         return -((this.entryPointWidth >> 1) + (param1 >> 1) + this.entryPointMarginLeft + _loc2_);
+         return -((this.entryPointWidth >> 1) + this.entryPointMarginLeft + QUESTS_FLAGS_OFFSET_X);
       }
       
       private function onMoveContainerCompleted() : void
@@ -739,6 +764,8 @@ package net.wg.gui.lobby.hangar.quests
          if(param1 != this._isSmall)
          {
             this._isSmall = param1;
+            this._secondaryMargin = !!this._isSmall ? int(SECONDARY_MARGIN_SMALL) : int(SECONDARY_MARGIN);
+            this._secondaryOffsetX = !!this._isSmall ? int(SECONDARY_OFFSET_X_SMALL) : int(SECONDARY_OFFSET_X);
             invalidateSize();
          }
       }
@@ -746,12 +773,6 @@ package net.wg.gui.lobby.hangar.quests
       public function set offsetRightSideX(param1:Number) : void
       {
          this._offsetRightSideX = param1;
-         invalidateSize();
-      }
-      
-      public function set offsetLeftSideX(param1:Number) : void
-      {
-         this._offsetLeftSideX = param1;
          invalidateSize();
       }
       

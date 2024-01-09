@@ -402,6 +402,12 @@ package
       public static const ERMELINDA_LASTNAME:String = "#crew_skins:ermelinda/LastName";
       
       public static const ERMELINDA_DESCR:String = "#crew_skins:ermelinda/Descr";
+      
+      public static const THAT_DOG_NAME:String = "#crew_skins:that_dog/Name";
+      
+      public static const THAT_DOG_LASTNAME:String = "#crew_skins:that_dog/LastName";
+      
+      public static const THAT_DOG_DESCR:String = "#crew_skins:that_dog/Descr";
        
       
       public function CREW_SKINS()

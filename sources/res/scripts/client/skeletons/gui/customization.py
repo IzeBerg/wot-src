@@ -1,9 +1,4 @@
-import typing
 from Event import Event
-if typing.TYPE_CHECKING:
-    from gui.Scaleform.daapi.view.lobby.customization.shared import CustomizationTabs
-    from gui.customization.constants import CustomizationModes
-    from items.components.c11n_constants import SeasonType
 
 class ICustomizationService(object):
     onRegionHighlighted = None
@@ -21,7 +16,7 @@ class ICustomizationService(object):
     def fini(self):
         raise NotImplementedError
 
-    def showCustomization(self, vehInvId=None, callback=None, season=None, modeId=None, tabId=None):
+    def showCustomization(self, vehInvId=None, callback=None):
         raise NotImplementedError
 
     def closeCustomization(self):

@@ -127,10 +127,6 @@ package net.wg.mock
       {
       }
       
-      public function as_setMouseEventsEnabled(param1:Boolean) : void
-      {
-      }
-      
       public function as_updateStage(param1:Number, param2:Number, param3:Number) : void
       {
       }

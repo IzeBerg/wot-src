@@ -129,22 +129,6 @@ package net.wg.gui.battle.battleRoyale.views.components.RespawnButton
          invalidate(GLOW_VALIDATION_FLAG);
       }
       
-      public function updateLevelInformation(param1:int) : void
-      {
-      }
-      
-      public function updateLockedInformation(param1:int, param2:String) : void
-      {
-      }
-      
-      public function showPossibleStacks(param1:int) : void
-      {
-      }
-      
-      public function updateStacks(param1:int) : void
-      {
-      }
-      
       public function get consumablesVO() : ConsumablesVO
       {
          return this._consumablesVo;

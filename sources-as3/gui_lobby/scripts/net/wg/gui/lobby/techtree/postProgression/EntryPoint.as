@@ -13,7 +13,7 @@ package net.wg.gui.lobby.techtree.postProgression
    import net.wg.data.constants.SoundTypes;
    import net.wg.data.constants.generated.POSTPROGRESSION_CONSTS;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
-   import net.wg.gui.components.common.Counter;
+   import net.wg.gui.components.common.counters.Counter;
    import net.wg.gui.lobby.components.vehPostProgression.EntryPointButton;
    import net.wg.gui.lobby.techtree.TechTreeEvent;
    import net.wg.gui.lobby.techtree.data.vo.ResearchPostProgressionDataVO;

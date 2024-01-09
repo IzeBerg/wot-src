@@ -14,7 +14,7 @@ def registerContext():
 
 def registerForGeneral():
     registerContext()
-    import arena_blocks, vehicle_blocks, scene_blocks, event_platform_blocks, triggers_blocks, animated_hints_blocks, player_blocks, sound_blocks, game_settings_blocks, camera_blocks, battle_hud_block, bitmask_blocks, cgf_blocks, new_year_blocks
+    import arena_blocks, vehicle_blocks, scene_blocks, event_platform_blocks, triggers_blocks, animated_hints_blocks, player_blocks, sound_blocks, game_settings_blocks, camera_blocks, battle_hud_block, bitmask_blocks, cgf_blocks
     g_blockRegistrar.regBlocksFromModule(event_platform_blocks)
     g_blockRegistrar.regBlocksFromModule(arena_blocks)
     g_blockRegistrar.regBlocksFromModule(vehicle_blocks)
@@ -28,8 +28,6 @@ def registerForGeneral():
     g_blockRegistrar.regBlocksFromModule(cgf_blocks)
     g_blockRegistrar.regBlocksFromModule(camera_blocks)
     animated_hints_blocks.regBlocks(g_blockRegistrar)
-    g_blockRegistrar.regBlocksFromModule(new_year_blocks)
-    g_blockRegistrar.regContext(AbilityContextClient)
     g_blockRegistrar.regContext(EntityContextClient)
     g_blockRegistrar.regContext(VehicleContextClient)
 

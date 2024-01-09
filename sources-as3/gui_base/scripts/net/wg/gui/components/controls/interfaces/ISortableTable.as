@@ -13,8 +13,6 @@ package net.wg.gui.components.controls.interfaces
       
       function sortByField(param1:String, param2:String) : void;
       
-      function resetListSelectedItem() : void;
-      
       function setSelectedField(param1:String, param2:String) : void;
       
       function get listSelectedIndex() : int;

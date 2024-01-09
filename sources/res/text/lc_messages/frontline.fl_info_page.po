@@ -87,11 +87,11 @@ msgstr "前线模式"
 
 msgid "main/cellFrontline/text_8"
 msgstr ""
-"驾驶%(vehiclesLevel)级坦克在诺曼底、发电厂和海市蜃楼地图上进行的30对30大规模战斗。进攻方必须摧毁5座炮台防御工事中的3座，而防守方则需要保护它们。"
+"驾驶%(vehiclesLevel)级坦克在诺曼底、发电厂和海市蜃楼地图上进行的30对30大规模战斗。进攻方必须摧毁5座炮台中的3座，而防守方则需要保护它们。"
 
 msgid "main/cellFrontline/text_9"
 msgstr ""
-"驾驶%(vehiclesLevelFrom)–%(vehiclesLevelTo)级坦克在诺曼底、发电厂和海市蜃楼地图上进行的30对30大规模战斗。进攻方必须摧毁5座炮台防御工事中的3座，而防守方则需要保护它们。"
+"驾驶%(vehiclesLevelFrom)-%(vehiclesLevelTo)级坦克在诺曼底、发电厂和海市蜃楼地图上进行的30对30大规模战斗。进攻方必须摧毁5座炮台中的3座，而防守方则需要保护它们。"
 
 msgid "main/cellLevel9/header"
 msgstr "%(vehiclesLevel)级坦克"
@@ -114,14 +114,6 @@ msgstr "战斗通行证"
 msgid "main/cellPass/text"
 msgstr "前线模式是获取战斗通行证点数的大好机会，您可以通过参加战斗以及提升前线模式等级来获取通行证点数。"
 
-msgid "main/cellRandomReserves/header"
-msgstr "扭转乾坤"
-
-msgid "main/cellRandomReserves/text"
-msgstr ""
-"在该场景中，您可在战斗中\n"
-"选择{whiteSpanish_Start}随机{whiteSpanish_End}出现的战斗储备。"
-
 msgid "main/cellReserves/header"
 msgstr "战斗储备类别"
 
@@ -129,6 +121,14 @@ msgid "main/cellReserves/text"
 msgstr ""
 "共有3个战斗储备类别，每个类别对应一个特定的栏位。\n"
 "它们解锁与强化的顺序取决于您坦克的类型。"
+
+msgid "main/cellScenarios/header"
+msgstr "战斗场景"
+
+msgid "main/cellScenarios/text"
+msgstr ""
+"前线模式战斗使用以下场景之一: "
+"{whiteSpanish_Start}标准战斗{whiteSpanish_End}、{whiteSpanish_Start}作战支援{whiteSpanish_End}或{whiteSpanish_Start}扭转乾坤{whiteSpanish_End}。当前战斗场景的信息会在载入界面中、战前倒计时期间或按下Tab键时显示。"
 
 msgid "main/sectionHeader"
 msgstr "综合信息"
@@ -197,22 +197,6 @@ msgstr "前线模式进度"
 msgid "progression/text"
 msgstr "在此模式中，您将能提升军阶、推进前线模式进度并获得奖励。"
 
-msgid "randomReserves/sectionHeader"
-msgstr "扭转乾坤"
-
-msgid "randomReserves/text"
-msgstr ""
-"在战斗中解锁新栏位时，您将能从储备中二选一。储备会随机出现，不分类别。所选储备可放入对应栏位，并在战斗中激活。\n"
-"\n"
-"在条件允许的情况下，您将能多次选择最喜欢的储备。如果储备有主动效果(如空袭)，它将被放入不同栏位，并可以连续多次激活。如果储备有被动效果(如工程学)，其参数将获得大幅提高。\n"
-"\n"
-"加入战斗前把最喜欢的储备放入其中一个栏位，其出现的几率将提高{whiteSpanish_Start}10%{whiteSpanish_End}。\n"
-"\n"
-"在{whiteSpanish_Start}扭转乾坤{whiteSpanish_End}场景中，战斗储备的最高等级将升至等级{whiteSpanish_Start}IV{whiteSpanish_End}。使用前线模式积分购买战斗储备\n"
-"可将该储备提高一个等级，并有机会将其加强至等级{whiteSpanish_Start}IV{whiteSpanish_End}。\n"
-"\n"
-"祝您好运！"
-
 msgid "reserveCategories/categories/additional"
 msgstr "次要"
 
@@ -231,15 +215,15 @@ msgstr "主要"
 msgid "reserveCategories/categories/support"
 msgstr "辅助"
 
+msgid "reserveCategories/config/footerText"
+msgstr "在{whiteSpanish_Start}扭转乾坤{whiteSpanish_End}场景中，战斗储备的解锁顺序并不取决于坦克类型。"
+
 msgid "reserveCategories/config/header"
 msgstr "储备配置"
 
 msgid "reserveCategories/config/text"
-msgstr "所有坦克类型都具有3个战斗储备栏位，但每种坦克类型的栏位解锁顺序各不相同。您可以在车库中提前准备好所需的储备，请务必谨慎选择。"
-
-msgid "reserveCategories/config/textWithRandomReserves"
 msgstr ""
-"在{whiteSpanish_Start}扭转乾坤{whiteSpanish_End}场景中，战斗储备的解锁顺序并不取决于储备类别或坦克类型。加入战斗前将战斗储备放入对应栏位，其出现的几率可提高{whiteSpanish_Start}10%{whiteSpanish_End}。"
+"在{whiteSpanish_Start}标准战斗{whiteSpanish_End}和{whiteSpanish_Start}作战支援{whiteSpanish_End}场景中，所有3个战斗储备栏位均会对全部坦克类型开放。不过，其解锁顺序取决于坦克类型。"
 
 msgid "reserveCategories/config/vehicles/destroyer"
 msgstr "自行反坦克炮"
@@ -256,6 +240,10 @@ msgstr "中型坦克"
 msgid "reserveCategories/config/vehicles/selfPropelled"
 msgstr "自行火炮"
 
+msgid "reserveCategories/levelUpNote"
+msgstr ""
+"*只有在{whiteSpanish_Start}扭转乾坤{whiteSpanish_End}场景中{whiteSpanish_Start}购买{whiteSpanish_End}的战斗储备才能加强至这个等级。"
+
 msgid "reserveCategories/levels/header"
 msgstr "如何解锁栏位和强化战斗储备"
 
@@ -265,10 +253,6 @@ msgstr "战斗开始时，对您开放的只有一个战斗储备。其他储备
 msgid "reserveCategories/progression/tableCell"
 msgstr ""
 "等级{whiteSpanish_Start}%(level){whiteSpanish_End}或{whiteSpanish_Start}%(levelNext)*{whiteSpanish_End}"
-
-msgid "reserveCategories/randomReserves/note"
-msgstr ""
-"*只有在{whiteSpanish_Start}扭转乾坤{whiteSpanish_End}场景中{whiteSpanish_Start}购买{whiteSpanish_End}的战斗储备才能加强至这个等级。"
 
 msgid "reserveCategories/ranks/captain"
 msgstr "上尉"
@@ -287,6 +271,39 @@ msgstr "中士"
 
 msgid "reserveCategories/ranks/soldier"
 msgstr "列兵"
+
+msgid "reserveCategories/scenarios/random/header"
+msgstr "扭转乾坤"
+
+msgid "reserveCategories/scenarios/random/text"
+msgstr ""
+"在战斗中，玩家可从对所有坦克类型开放的随机储备中二选一。战前将储备放入栏位，其出现几率可提高{whiteSpanish_Start}10%{whiteSpanish_End}。购买储备可将其提高至等级{whiteSpanish_Start}II{whiteSpanish_End}，并有机会加强至等级{whiteSpanish_Start}IV{whiteSpanish_End}。"
+
+msgid "reserveCategories/scenarios/sectionHeader"
+msgstr "前线模式战斗场景"
+
+msgid "reserveCategories/scenarios/standard/header"
+msgstr "标准战斗"
+
+msgid "reserveCategories/scenarios/standard/text"
+msgstr "遵循常规前线模式规则。使用战斗储备的条件保持不变。"
+
+msgid "reserveCategories/scenarios/support/header"
+msgstr "作战支援"
+
+msgid "reserveCategories/scenarios/support/list/reserveOpen"
+msgstr "解锁储备后: {whiteSpanish_Start}-50%{whiteSpanish_End}"
+
+msgid "reserveCategories/scenarios/support/list/respawn"
+msgstr "重返战斗后: {whiteSpanish_Start}-70%{whiteSpanish_End}"
+
+msgid "reserveCategories/scenarios/support/text"
+msgstr "战斗储备的冷却时间缩短且节奏更快的战斗场景:"
+
+msgid "reserveCategories/scenarios/text"
+msgstr ""
+"前线模式战斗使用以下场景之一: "
+"{whiteSpanish_Start}标准战斗{whiteSpanish_End}、{whiteSpanish_Start}作战支援{whiteSpanish_End}或{whiteSpanish_Start}扭转乾坤{whiteSpanish_End}。战斗场景会改变在战斗中使用战斗储备的条件。当前战斗场景的信息会在载入界面中、战前倒计时期间或按下Tab键时显示。"
 
 msgid "reserveCategories/sectionHeader"
 msgstr "战斗储备类别"

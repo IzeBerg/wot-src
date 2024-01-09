@@ -9,12 +9,13 @@ package net.wg.gui.battle.epicBattle.views
    import net.wg.gui.battle.components.StatusNotificationsPanel;
    import net.wg.gui.battle.epicBattle.battleloading.EpicBattleLoading;
    import net.wg.gui.battle.epicBattle.battleloading.events.EpicBattleLoadingEvent;
+   import net.wg.gui.battle.epicBattle.views.consumablesPanel.EpicBattleConsumablesPanel;
+   import net.wg.gui.battle.epicBattle.views.modificationPanel.EpicModificationPanel;
    import net.wg.gui.battle.epicBattle.views.stats.EpicFullStats;
    import net.wg.gui.battle.epicBattle.views.upgradePanel.EpicBattleUpgradePanel;
    import net.wg.gui.battle.random.views.teamBasesPanel.TeamBasesPanel;
    import net.wg.gui.battle.views.battleEndWarning.BattleEndWarningPanel;
    import net.wg.gui.battle.views.battleMessenger.BattleMessenger;
-   import net.wg.gui.battle.views.consumablesPanel.ConsumablesPanel;
    import net.wg.gui.battle.views.consumablesPanel.events.ConsumablesPanelEvent;
    import net.wg.gui.battle.views.damageInfoPanel.DamageInfoPanel;
    import net.wg.gui.battle.views.debugPanel.DebugPanel;
@@ -67,6 +68,14 @@ package net.wg.gui.battle.epicBattle.views
       
       private static const PREBATTLE_TIMER_FINAL_Y_OFFSET:int = 30;
       
+      private static const MODIFICATION_PANEL_Y_OFFSET:int = 258;
+      
+      private static const MODIFICATION_PANEL_Y_SHIFT_SMALL:int = 80;
+      
+      private static const MODIFICATION_PANEL_Y_SHIFT_BIG:int = 130;
+      
+      private static const MODIFICATION_PANEL_Y_BREAKPOINT:int = 768;
+      
       private static const TEAM_BASES_PANEL_OFFSETS:Vector.<int> = new <int>[62,102,102];
       
       private static const TEAM_BASES_PANEL_TOP_OFFSET:int = 12;
@@ -116,7 +125,7 @@ package net.wg.gui.battle.epicBattle.views
       
       public var battleMessenger:BattleMessenger = null;
       
-      public var consumablesPanel:ConsumablesPanel = null;
+      public var consumablesPanel:EpicBattleConsumablesPanel = null;
       
       public var battleDamageLogPanel:BattleDamageLogPanel = null;
       
@@ -152,6 +161,8 @@ package net.wg.gui.battle.epicBattle.views
       
       public var upgradePanel:EpicBattleUpgradePanel = null;
       
+      public var modificationPanel:EpicModificationPanel = null;
+      
       private var _scorePanelState:int = 0;
       
       private var _messagePlaying:Boolean = false;
@@ -174,9 +185,8 @@ package net.wg.gui.battle.epicBattle.views
       
       override public function updateStage(param1:Number, param2:Number) : void
       {
-         var _loc3_:Number = NaN;
          super.updateStage(param1,param2);
-         _loc3_ = param1 >> 1;
+         var _loc3_:Number = param1 >> 1;
          _originalWidth = param1;
          _originalHeight = param2;
          this.upgradePanel.x = _loc3_;
@@ -244,6 +254,7 @@ package net.wg.gui.battle.epicBattle.views
          this.recoveryPanel.updateStage(param1,param2);
          this.statusNotificationsPanel.updateStage(param1,param2);
          this.updateHintPanelPosition();
+         this.updateModificationPanelPosition();
       }
       
       override protected function updatePrebattleTimerPosition(param1:int) : void
@@ -308,6 +319,7 @@ package net.wg.gui.battle.epicBattle.views
          registerComponent(this.hintPanel,BATTLE_VIEW_ALIASES.HINT_PANEL);
          registerComponent(this.statusNotificationsPanel,BATTLE_VIEW_ALIASES.STATUS_NOTIFICATIONS_PANEL);
          registerComponent(this.upgradePanel,BATTLE_VIEW_ALIASES.UPGRADE_PANEL);
+         registerComponent(this.modificationPanel,BATTLE_VIEW_ALIASES.EPIC_MODIFICATION_PANEL);
          super.onPopulate();
          this.endWarningPanel.alpha = 0;
       }
@@ -317,6 +329,7 @@ package net.wg.gui.battle.epicBattle.views
          super.onPrebattleAmmunitionPanelShown();
          this.updateConsumablePanel();
          this.updateHintPanelPosition();
+         this.updateModificationPanelPosition();
       }
       
       override protected function onPrebattleAmmunitionPanelHidden(param1:Boolean) : void
@@ -361,6 +374,7 @@ package net.wg.gui.battle.epicBattle.views
          this.epicSpectatorViewUI = null;
          this.epicDeploymentMap = null;
          this.epicOverviewMapScreen = null;
+         this.modificationPanel = null;
          this.recoveryPanel = null;
          this.endWarningPanel = null;
          this.epicMissionsPanel = null;
@@ -518,6 +532,18 @@ package net.wg.gui.battle.epicBattle.views
          if(prebattleAmmunitionPanelShown)
          {
             this.hintPanel.y += HINT_PANEL_AMMUNITION_OFFSET_Y;
+         }
+      }
+      
+      private function updateModificationPanelPosition() : void
+      {
+         var _loc1_:int = 0;
+         this.modificationPanel.x = _originalWidth >> 1;
+         this.modificationPanel.y = _originalHeight - MODIFICATION_PANEL_Y_OFFSET;
+         if(prebattleAmmunitionPanelShown)
+         {
+            _loc1_ = _originalHeight <= MODIFICATION_PANEL_Y_BREAKPOINT ? int(MODIFICATION_PANEL_Y_SHIFT_SMALL) : int(MODIFICATION_PANEL_Y_SHIFT_BIG);
+            this.modificationPanel.y -= _loc1_;
          }
       }
       

@@ -7,7 +7,7 @@ package net.wg.gui.lobby.settings.feedback.ribbons
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLE_EFFICIENCY_TYPES;
-   import net.wg.gui.components.common.CounterBase;
+   import net.wg.gui.components.common.counters.CounterBase;
    import net.wg.gui.components.controls.CheckBox;
    import net.wg.gui.components.controls.ResizableScrollPane;
    import net.wg.gui.components.controls.ScrollBar;

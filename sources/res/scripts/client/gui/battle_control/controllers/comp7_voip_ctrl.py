@@ -1,4 +1,4 @@
-import logging, typing, BigWorld, CommandMapping, Keys, VOIP
+import logging, typing, BigWorld, CommandMapping, Keys, VOIP, SoundGroups
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import COMP7_IS_VOIP_IN_BATTLE_ACTIVATED
 from constants import ARENA_PERIOD, IS_CHINA, REQUEST_COOLDOWN, ARENA_BONUS_TYPE
@@ -17,6 +17,8 @@ from skeletons.gui.game_control import IComp7Controller
 if typing.TYPE_CHECKING:
     from VOIP.VOIPManager import VOIPManager
 _logger = logging.getLogger(__name__)
+_VOICE_CHAT_ENTER_SOUND_EVENT = 'comp_7_voicechat_enter'
+_VOICE_CHAT_EXIT_SOUND_EVENT = 'comp_7_voicechat_exit'
 
 class Comp7VOIPController(IComp7VOIPController):
     __slots__ = ('__messageShown', '__cooldownCallback')
@@ -139,6 +141,8 @@ class Comp7VOIPController(IComp7VOIPController):
             return
         if event.key == getKey(CommandMapping.CMD_VOICECHAT_ENABLE):
             if event.isKeyDown() and not event.isRepeatedEvent():
+                soundEvent = _VOICE_CHAT_ENTER_SOUND_EVENT if not self.isJoined else _VOICE_CHAT_EXIT_SOUND_EVENT
+                SoundGroups.g_instance.playSound2D(soundEvent)
                 self.toggleChannelConnection()
 
     def __clearCooldown(self):

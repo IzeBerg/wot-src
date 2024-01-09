@@ -4,7 +4,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls.seasonBar
    import flash.events.MouseEvent;
    import flash.geom.Rectangle;
    import net.wg.data.constants.generated.CUSTOMIZATION_ALIASES;
-   import net.wg.gui.components.common.CounterView;
+   import net.wg.gui.components.common.counters.CounterView;
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.lobby.components.ImageWrapper;
    import net.wg.gui.lobby.components.TextWrapper;

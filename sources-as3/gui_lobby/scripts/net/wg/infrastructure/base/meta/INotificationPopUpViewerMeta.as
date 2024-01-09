@@ -1,15 +1,12 @@
 package net.wg.infrastructure.base.meta
 {
    import flash.events.IEventDispatcher;
-   import net.wg.infrastructure.interfaces.IDAAPIModule;
    
    public interface INotificationPopUpViewerMeta extends IEventDispatcher
    {
        
       
       function setListClearS() : void;
-      
-      function registerGFNotificationS(param1:IDAAPIModule, param2:String, param3:String, param4:Boolean, param5:Object) : void;
       
       function onMessageHiddenS(param1:Boolean, param2:Boolean, param3:int, param4:Number) : void;
       

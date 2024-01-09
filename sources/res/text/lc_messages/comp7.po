@@ -14,20 +14,38 @@ msgstr ""
 msgid "#PluralForms"
 msgstr "nplurals=1; plural=0;"
 
-msgid "alertMessage/afterSeason"
+msgid "alertMessage/afterSeason/first"
 msgstr "苍蓝天马赛季已结束"
+
+msgid "alertMessage/afterSeason/second"
+msgstr "绯红天马赛季已结束"
+
+msgid "alertMessage/afterSeason/third"
+msgstr "翡翠天马赛季已结束"
 
 msgid "alertMessage/allNotAvailable"
 msgstr "距服务器上的战斗开放还有%(primeDelta)s"
 
-msgid "alertMessage/allNotAvailableEnd"
+msgid "alertMessage/allNotAvailableEnd/first"
 msgstr "苍蓝天马赛季已结束"
+
+msgid "alertMessage/allNotAvailableEnd/second"
+msgstr "绯红天马赛季已结束"
+
+msgid "alertMessage/allNotAvailableEnd/third"
+msgstr "翡翠天马赛季已结束"
 
 msgid "alertMessage/allNotSet"
 msgstr "此模式在所有服务器上不开放"
 
-msgid "alertMessage/betweenSeasons"
+msgid "alertMessage/betweenSeasons/first"
 msgstr "苍蓝天马赛季已结束"
+
+msgid "alertMessage/betweenSeasons/second"
+msgstr "绯红天马赛季已结束"
+
+msgid "alertMessage/betweenSeasons/third"
+msgstr "翡翠天马赛季已结束"
 
 msgid "alertMessage/button/changeServer"
 msgstr "选择其他服务器"
@@ -50,8 +68,14 @@ msgstr "此模式在%(serverName)s服务器上不开放"
 msgid "alertMessage/standaloneNotAvailable"
 msgstr "距此服务器上的战斗开放还有%(primeDelta)s"
 
-msgid "alertMessage/standaloneNotAvailableEnd"
+msgid "alertMessage/standaloneNotAvailableEnd/first"
 msgstr "苍蓝天马赛季已结束"
+
+msgid "alertMessage/standaloneNotAvailableEnd/second"
+msgstr "绯红天马赛季已结束"
+
+msgid "alertMessage/standaloneNotAvailableEnd/third"
+msgstr "翡翠天马赛季已结束"
 
 msgid "alertMessage/standaloneNotSet"
 msgstr "此模式在%(serverName)s服务器上不开放"
@@ -80,11 +104,17 @@ msgstr "车库中没有满足要求的%(levels)s级坦克"
 msgid "banner/info/disabled"
 msgstr "休战"
 
-msgid "banner/info/seasonEnd"
-msgstr "%(season)s已结束"
+msgid "banner/info/seasonEnd/first"
+msgstr "苍蓝天马赛季已结束"
+
+msgid "banner/info/seasonEnd/second"
+msgstr "绯红天马赛季已结束"
+
+msgid "banner/info/seasonEnd/third"
+msgstr "翡翠天马赛季已结束"
 
 msgid "banner/info/seasonEndSoon"
-msgstr "这是证明您战斗技巧的最后机会！"
+msgstr "展示您战斗技巧的最后机会！"
 
 msgid "banner/info/seasonJustStarted"
 msgstr "同场竞技，一显身手！"
@@ -93,7 +123,7 @@ msgid "banner/infoSmall/disabled"
 msgstr "等待黄金时间开启"
 
 msgid "banner/season"
-msgstr "苍蓝天马"
+msgstr "绯红天马"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(season)s，%(month)s%(day)s日结束"
@@ -108,10 +138,10 @@ msgid "banner/seasonDateSmall/seasonNotStarted"
 msgstr "%(month)s%(day)s日开始"
 
 msgid "banner/timeLeft/hours"
-msgstr "%(hour)s时%(min)s分"
+msgstr "黄金时间: %(hour)s时%(min)s分"
 
 msgid "banner/timeLeft/min"
-msgstr "%(min)s分"
+msgstr "黄金时间: %(min)s分"
 
 msgid "banner/title"
 msgstr "天梯战"
@@ -282,17 +312,35 @@ msgstr "%(server)s"
 msgid "calendarDay/time"
 msgstr "%(start)s–%(end)s"
 
-msgid "calendarDay/timeLeft"
-msgid_plural "plural/calendarDay/timeLeft"
+msgid "calendarDay/timeLeft/first"
+msgid_plural "plural/calendarDay/timeLeft/first"
 msgstr[0] "苍蓝天马赛季将持续%(days)d天"
 msgstr[1] "苍蓝天马赛季将持续%(days)d天"
 msgstr[2] "苍蓝天马赛季将持续%(days)d天"
+
+msgid "calendarDay/timeLeft/second"
+msgid_plural "plural/calendarDay/timeLeft/second"
+msgstr[0] "绯红天马赛季将持续%(days)d天"
+msgstr[1] "绯红天马赛季将持续%(days)d天"
+msgstr[2] "绯红天马赛季将持续%(days)d天"
+
+msgid "calendarDay/timeLeft/third"
+msgid_plural "plural/calendarDay/timeLeft/third"
+msgstr[0] "翡翠天马赛季将持续%(days)d天"
+msgstr[1] "翡翠天马赛季将持续%(days)d天"
+msgstr[2] "翡翠天马赛季将持续%(days)d天"
 
 msgid "calendarDay/title"
 msgstr "时间表"
 
 msgid "closeButtonLabel"
 msgstr "关闭"
+
+msgid "controls/compare"
+msgstr "添加到对比"
+
+msgid "controls/preview"
+msgstr "预览"
 
 msgid "countDown/text"
 msgstr ""
@@ -301,6 +349,12 @@ msgstr ""
 
 msgid "dash"
 msgstr "—"
+
+msgid "dataError/description"
+msgstr "我们对暂时的不便表示歉意。请稍后尝试更新该页面。"
+
+msgid "dataError/title"
+msgstr "加载数据时出错"
 
 msgid "detailsHelp/mainTitle"
 msgstr "天梯战模式提示"
@@ -328,10 +382,10 @@ msgid "detailsHelp/rules/title"
 msgstr "声望点数"
 
 msgid "detailsHelp/seasonModifiers"
-msgstr "该模式具有修改器，可改变坦克的技术参数。"
+msgstr "该模式的修改器可改变坦克的某些参数，如: 生命值、给养冷却时间、可见时长等。"
 
 msgid "detailsHelp/seasonModifiers/title"
-msgstr "苍蓝天马赛季修改器"
+msgstr "天梯战修改器"
 
 msgid "division/A"
 msgstr "A"
@@ -371,6 +425,9 @@ msgid "fifthRankTooltip/description"
 msgstr ""
 "拥有至少{whiteSpanish_Open}%(fromScore){whiteSpanish_Close}评级点数的玩家将被授予{whiteSpanish_Open}勇士{whiteSpanish_Close}段位。"
 
+msgid "forVehicle"
+msgstr "适用于: %(vehicleName)s"
+
 msgid "generalRankTooltip/body/first"
 msgstr ""
 "拥有{whiteSpanish_Open}%(fromScore)至%(toScore){whiteSpanish_Close}评级点数的玩家将被授予{whiteSpanish_Open}黑铁{whiteSpanish_Close}段位。"
@@ -396,11 +453,8 @@ msgstr "活动详情"
 msgid "intro/confirmButton"
 msgstr "收到！"
 
-msgid "intro/description/crimsonSeason"
-msgstr ""
-"迎接苍蓝天马赛季！\n"
-"\n"
-"该模式中已添加了资格赛阶段和年度奖励，同时还拥有可调整坦克技术参数的修改器。"
+msgid "intro/description/onslaughtModifiers"
+msgstr "该模式的修改器可改变坦克的某些参数，如: 生命值、给养冷却时间、可见时长等。"
 
 msgid "intro/description/pointsOfInterest"
 msgstr ""
@@ -438,8 +492,8 @@ msgid "intro/description/vehiclesOnMap"
 msgstr ""
 "您可以驾驶X级可研发或收藏坦克(自行火炮除外)参加战斗。在车库中准备好坦克，进入战场后再根据指定地图的特点选择最佳坦克。选择坦克时，您还要考虑盟友选择了哪些坦克。"
 
-msgid "intro/title/crimsonSeason"
-msgstr "苍蓝天马赛季"
+msgid "intro/title/onslaughtModifiers"
+msgstr "天梯战修改器"
 
 msgid "intro/title/pointsOfInterest"
 msgstr "焦点位置"
@@ -590,6 +644,39 @@ msgstr "评级点数"
 msgid "membersWindow/memberCountDropdown/description"
 msgstr "组队玩家"
 
+msgid "modifier/formattedValueType/nullishDeviation"
+msgstr "0%"
+
+msgid "modifier/formattedValueType/nullishDispersion"
+msgstr "–"
+
+msgid "modifier/name/equipmentCooldown"
+msgstr "给养冷却时间"
+
+msgid "modifier/name/shotDispersionRadius"
+msgstr "100米精度加成"
+
+msgid "modifier/name/vehicleHealth"
+msgstr "坦克生命值"
+
+msgid "modifier/name/visionMinRadius"
+msgstr "强制点亮范围"
+
+msgid "modifier/name/visionTime"
+msgstr "可见时长"
+
+msgid "modifier/valueType/deviation"
+msgstr "+/-%(deviation)s%"
+
+msgid "modifier/valueType/meters"
+msgstr "%(meters)s米"
+
+msgid "modifier/valueType/percentage"
+msgstr "%(percentage)s%"
+
+msgid "modifier/valueType/seconds"
+msgstr "%(seconds)s秒"
+
 msgid "noVehicles/howTo/premium"
 msgstr "使用《坦克世界》高级账号"
 
@@ -626,6 +713,9 @@ msgstr "资格赛"
 
 msgid "page/heading/rankRewards"
 msgstr "段位奖励"
+
+msgid "page/heading/shop"
+msgstr "天梯战商店"
 
 msgid "page/heading/weeklyQuests"
 msgstr "每周任务"
@@ -724,14 +814,124 @@ msgstr "%(server)s服务器上的战斗还将开放%(time)s"
 msgid "primeTimeView/status/primeWillBeAvailable"
 msgstr "距%(server)s服务器上的战斗开放还有%(time)s"
 
-msgid "primeTimeView/status/seasonDisabled"
+msgid "primeTimeView/status/seasonDisabled/first"
 msgstr "%(server)s服务器上的苍蓝天马赛季已结束。"
+
+msgid "primeTimeView/status/seasonDisabled/second"
+msgstr "%(server)s服务器上的绯红天马赛季已结束。"
+
+msgid "primeTimeView/status/seasonDisabled/third"
+msgstr "%(server)s服务器上的翡翠天马赛季已结束。"
 
 msgid "primeTimeView/status/untill"
 msgstr "%(server)s服务器上的战斗将于%(startTime)s开放"
 
 msgid "primeTimeView/title"
 msgstr "天梯战"
+
+msgid "products/actions/buy"
+msgstr "购买"
+
+msgid "products/actions/restore"
+msgstr "前往仓库"
+
+msgid "products/actions/toCustomization"
+msgstr "前往风格"
+
+msgid "products/actions/toHangar"
+msgstr "车库中查看"
+
+msgid "products/customizationUnavailable/body"
+msgstr "无法前往风格。可能是因为: 您尚未拥有这辆坦克、坦克正在组队中、坦克正在战斗中、坦克需要修复。"
+
+msgid "products/customizationUnavailable/title"
+msgstr "不可用"
+
+msgid "products/discount"
+msgstr "-%(discountPercentage)s%"
+
+msgid "products/discountDescription"
+msgstr ""
+"在下个赛季开始前，您可根据自己{fff_Open}所达到的{fff_Close}{fff_Open}最高{fff_Close}{fff_Open}段位{fff_Close}解锁物品和折扣。"
+
+msgid "products/discountSectionName"
+msgstr "物品和折扣的解锁条件"
+
+msgid "products/inProgress"
+msgstr "请稍候，订单正在处理中…"
+
+msgid "products/limitedQuantitySeason"
+msgstr "每个赛季可购买: %(count)s"
+
+msgid "products/message/notEnough"
+msgstr "余额不足，无法购买。"
+
+msgid "products/message/rankAccess"
+msgstr ""
+"购买要求\n"
+"%(rank)s"
+
+msgid "products/newLabel"
+msgstr "新"
+
+msgid "products/priceSectionName"
+msgstr "价格"
+
+msgid "products/productAccess"
+msgstr ""
+"达到此段位\n"
+"可解锁该物品"
+
+msgid "products/purchased"
+msgstr "已购买"
+
+msgid "products/rankAccess"
+msgstr "达到%(rank)s段位可解锁"
+
+msgid "products/readyToRestore"
+msgstr "恢复可用"
+
+msgid "products/readyToRestoreDescription"
+msgstr "可在仓库中进行恢复"
+
+msgid "products/style3d"
+msgstr "%(name)s3D风格"
+
+msgid "purchase/affirmative"
+msgstr "收到！"
+
+msgid "purchase/cancelButton"
+msgstr "返回"
+
+msgid "purchase/confirmButton"
+msgstr "购买"
+
+msgid "purchase/error/description"
+msgstr "无法完成购买。请稍后再试。"
+
+msgid "purchase/error/title"
+msgstr "错误"
+
+msgid "purchase/noSuitableVehicle"
+msgstr "%(alertIcon)s您车库中没有适合该风格的坦克"
+
+msgid "purchase/price"
+msgstr "价格:"
+
+msgid "purchase/success/heading"
+msgstr "谢谢惠顾！"
+
+msgid "purchase/success/receiving"
+msgstr "%(icon)s购买的物品会尽快发送至您的游戏账号"
+
+msgid "purchase/success/style3d"
+msgstr "%(vehicleName)s的%(name)s3D风格"
+
+msgid "purchase/title/style3d"
+msgstr "购买%(name)s3D风格？"
+
+msgid "purchase/title/vehicle"
+msgstr "购买%(name)s？"
 
 msgid "qualification/battlesCounter"
 msgstr ""
@@ -780,6 +980,9 @@ msgstr "前往奖励"
 
 msgid "qualification/rewardsDescription"
 msgstr "完成资格赛后，您将获得已达到段位和所有之前段位的奖励。"
+
+msgid "quotesWrapper"
+msgstr "%(name)s"
 
 msgid "rank/achieved"
 msgstr "已达到"
@@ -927,17 +1130,32 @@ msgstr "收到！"
 msgid "rewardsScreen/buttonToRewards"
 msgstr "前往奖励"
 
+msgid "rewardsScreen/buttonToShop"
+msgstr "前往购买"
+
 msgid "rewardsScreen/description/qualificationEnded"
 msgstr "已完成天梯战资格赛"
 
 msgid "rewardsScreen/description/season"
-msgstr "天梯战: 苍蓝天马赛季"
+msgstr "天梯战绯红天马赛季"
 
 msgid "rewardsScreen/notice/subTitle"
 msgstr "达到此段位后，如果停止参加天梯战模式战斗，您会失去一定的评级点数。"
 
 msgid "rewardsScreen/notice/title"
 msgstr "评级不活跃"
+
+msgid "rewardsScreen/shopInfo/header/discount"
+msgstr "天梯战商店中现已开放新折扣！"
+
+msgid "rewardsScreen/shopInfo/header/open"
+msgstr "天梯战商店中现有新品开放购买！"
+
+msgid "rewardsScreen/shopInfo/text/discount"
+msgstr "在下个赛季开始前，您可根据自己所达到的最高段位解锁物品和折扣。"
+
+msgid "rewardsScreen/shopInfo/text/open"
+msgstr "在下个赛季开始前，您可根据自己所达到的最高段位解锁物品和折扣。"
 
 msgid "rewardsScreen/subtitle/division"
 msgstr "{cream_Open}%(rank)s段位{cream_Close}"
@@ -1000,7 +1218,7 @@ msgid "season/secondsLeft"
 msgstr "距结束还有%(seconds)s秒"
 
 msgid "seasonModifier/title"
-msgstr "赛季修改器"
+msgstr "天梯战修改器"
 
 msgid "seasonName/first"
 msgstr "苍蓝天马赛季"
@@ -1052,14 +1270,14 @@ msgstr "您是天马彩旗的有力竞争者"
 
 msgid "seasonPointTooltip/text/compensate"
 msgstr ""
-"所有剩余的天马彩旗将按该比率兑换成战争债券: "
-"{bond_Open}1%(seasonPointIcon)s{bond_Close}:{bond_Open}%(seasonPointExchangeRate)s%(bondsIcon)s{bond_Close}"
+"未使用的天马彩旗将兑换成战争债券，比率为: "
+"{bond_Open}1天马彩旗{bond_Close}:{bond_Open}%(seasonPointExchangeRate)s%(bondsIcon)s{bond_Close}"
 
 msgid "seasonPointTooltip/text/season"
-msgstr "赛季结束时，您将根据自己的段位获得天马彩旗。"
+msgstr "每个赛季结束时，您将根据自己所达到的段位获得天马彩旗。"
 
 msgid "seasonPointTooltip/text/year"
-msgstr "每获得3面天马彩旗，您在天马赛年结束时获得的年度奖励就提高一个等级。"
+msgstr "每获得3面天马彩旗，您在天马赛年结束时所获得的年度奖励就提高一个等级。"
 
 msgid "seasonStatistics/button/fifth"
 msgstr "我的奖杯呢？！"
@@ -1183,7 +1401,7 @@ msgid "seasonalBattleSelector/timeTable/tomorrow"
 msgstr "明天"
 
 msgid "selectorTooltip/desc"
-msgstr "竞技模式。7v7 | X级"
+msgstr "竞技模式。7对7 | X级"
 
 msgid "selectorTooltip/title"
 msgstr "天梯战"
@@ -1206,6 +1424,9 @@ msgstr "该版块包含资格赛，以及您完成资格赛后的段位、梯队
 msgid "sidebar/tabs/tooltip/body/rankRewards"
 msgstr "此版块包含在天梯战模式中达到更高段位所能获得的奖励信息。"
 
+msgid "sidebar/tabs/tooltip/body/shop"
+msgstr "该版块包含天梯战商店所售物品的信息。"
+
 msgid "sidebar/tabs/tooltip/body/weeklyQuests"
 msgstr "该版块包含关于天梯战每周任务的信息。"
 
@@ -1223,6 +1444,9 @@ msgstr "段位系统"
 
 msgid "sidebar/tabs/tooltip/header/rankRewards"
 msgstr "段位奖励"
+
+msgid "sidebar/tabs/tooltip/header/shop"
+msgstr "天梯战商店"
 
 msgid "sidebar/tabs/tooltip/header/weeklyQuests"
 msgstr "每周任务"
@@ -1273,6 +1497,24 @@ msgstr ""
 
 msgid "system_messages/regularReward/title"
 msgstr "收到"
+
+msgid "system_messages/shop/offer/button"
+msgstr "前往商店"
+
+msgid "system_messages/shop/offer/newDiscounts/body"
+msgstr "天梯战商店中现已开放新折扣！"
+
+msgid "system_messages/shop/offer/newDiscounts/title"
+msgstr "更大折扣力度"
+
+msgid "system_messages/shop/offer/newItems/body"
+msgstr "天梯战商店中现有新品开放购买！"
+
+msgid "system_messages/shop/offer/newItems/title"
+msgstr "新品开放购买"
+
+msgid "system_messages/shop/purchase/error"
+msgstr "支付出错。请稍后再试。"
 
 msgid "system_messages/temporaryBan/end/body"
 msgstr "您的临时封禁已解除。您可以再次参加天梯战模式了。"
@@ -1356,17 +1598,26 @@ msgstr "已获得所有奖励"
 msgid "weeklyQuests/tokenProgress/description/normal"
 msgstr "收集幸运点数以获得奖励"
 
+msgid "whatsNewButtonLabel"
+msgstr "赛季更新"
+
 msgid "whatsNewView/banner/title/large"
-msgstr "苍蓝天马赛季"
+msgstr "绯红天马赛季"
 
 msgid "whatsNewView/banner/title/small"
 msgstr "天梯战有什么新内容？"
 
 msgid "whatsNewView/button/ok"
-msgstr "我明白了！"
+msgstr "遵命，指挥官！"
+
+msgid "whatsNewView/intro/description"
+msgstr "晋升段位可解锁独特的战争债券物品并获得更多折扣。"
+
+msgid "whatsNewView/intro/heading"
+msgstr "天梯战商店"
 
 msgid "whatsNewView/mapChanges/addedMaps"
-msgstr "已添加地图:"
+msgstr "新地图:"
 
 msgid "whatsNewView/mapChanges/heading"
 msgstr "地图"
@@ -1374,59 +1625,47 @@ msgstr "地图"
 msgid "whatsNewView/mapChanges/removedMaps"
 msgstr "已排除地图:"
 
-msgid "whatsNewView/qualification/description"
-msgstr "完成一系列%(maxBattlesCount)s场战斗，达到与您战斗技巧相符的段位。"
+msgid "whatsNewView/modifiers/added"
+msgstr "新增修改器"
 
-msgid "whatsNewView/qualification/heading"
-msgstr "资格赛"
+msgid "whatsNewView/modifiers/description"
+msgstr "添加了更多可改变坦克参数的模式专属修改器。"
 
-msgid "whatsNewView/rankingSystem/description"
-msgstr "移除了新秀段位。黑铁、青铜、白银和黄金段位中添加了梯队E。"
+msgid "whatsNewView/modifiers/heading"
+msgstr "天梯战修改器"
 
-msgid "whatsNewView/rankingSystem/heading"
-msgstr "段位系统"
+msgid "whatsNewView/modifiers/unchanged"
+msgstr "未作改动的修改器"
 
 msgid "whatsNewView/tag/changed"
 msgstr "已更改"
 
-msgid "whatsNewView/tag/mapRemoved"
-msgstr "已移除"
-
 msgid "whatsNewView/tag/new"
 msgstr "新"
 
+msgid "whatsNewView/tag/removed"
+msgstr "已移除"
+
 msgid "whatsNewView/tag/seasonUpdate"
-msgstr "赛季更新"
+msgstr "季节性更新"
 
-msgid "whatsNewView/vehicleLimitations/description"
-msgstr "由于自行火炮极低的战斗表现，从苍蓝天马赛季开始，您将无法在该模式中使用它们。"
-
-msgid "whatsNewView/vehicleLimitations/heading"
-msgstr "坦克限制"
+msgid "whatsNewView/tag/underDevelopment"
+msgstr "正在重新开发中"
 
 msgid "whatsNewView/vehiclesForRent/heading"
 msgstr "租用坦克"
 
 msgid "whatsNewView/watchVideo"
-msgstr "播放视频"
-
-msgid "whatsNewView/yearOfThePegasus/description"
-msgstr "参加全部3个赛季，获取珍贵年度奖励。"
-
-msgid "whatsNewView/yearOfThePegasus/heading"
-msgstr "天马赛年已开启"
+msgstr "观看视频"
 
 msgid "yearlyRewards/banner/willReceived"
 msgstr "奖励将会在赛年结束时发放"
 
-msgid "yearlyRewards/description"
-msgstr "赛季结束时，您将根据自己的段位获得天马彩旗"
+msgid "yearlyRewards/description/achieved"
+msgstr "赛季结束时，每晋升一个段位获得了1面%(seasonPointIcon)s"
 
-msgid "yearlyRewards/error/description"
-msgstr "我们对暂时的不便表示歉意。请稍后尝试更新该页面。"
-
-msgid "yearlyRewards/error/title"
-msgstr "加载数据时出错"
+msgid "yearlyRewards/description/current"
+msgstr "赛季结束时，每晋升一个段位将获得1面%(seasonPointIcon)s"
 
 msgid "yearlyRewards/main/fifth"
 msgstr "勇士涂装"
@@ -1475,6 +1714,11 @@ msgstr "如果在赛季结束前保持或晋升当前等级，您将在赛年尾
 
 msgid "yearlyRewards/subtitle/styleProgress"
 msgstr "适用于天马风格"
+
+msgid "yearlyRewards/title/withVehicle"
+msgstr ""
+"%(vehicle)s和\n"
+"%(camouflageName)s"
 
 msgid "yearlyRewards/vehicle"
 msgstr "\"飓风\""

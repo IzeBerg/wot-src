@@ -42,6 +42,10 @@ package net.wg.gui.components.carousels
          this._dataProvider.removeEventListener(Event.CHANGE,this.onDataProviderChangeHandler);
          this.filterCounter.dispose();
          this.filterCounter = null;
+         if(scrollList.dataProvider == this._dataProvider)
+         {
+            scrollList.dataProvider = null;
+         }
          this._dataProvider = null;
          super.onDispose();
       }
@@ -61,7 +65,12 @@ package net.wg.gui.components.carousels
       
       public function as_getDataProvider() : Object
       {
-         if(scrollList.dataProvider == null)
+         if(this._dataProvider && this._dataProvider.isDisposed())
+         {
+            this._dataProvider.removeEventListener(Event.CHANGE,this.onDataProviderChangeHandler);
+            this._dataProvider = null;
+         }
+         if(this._dataProvider == null)
          {
             this._dataProvider = new FilterDAAPIDataProvider(this.getRendererVo());
             scrollList.dataProvider = this._dataProvider;

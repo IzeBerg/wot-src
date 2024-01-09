@@ -157,6 +157,9 @@ msgstr "前往前线模式"
 msgid "advance_mission_txt"
 msgstr "前往前线模式"
 
+msgid "ammunitionSetup/btn/info/hint"
+msgstr "战斗场景详情"
+
 msgid "awards/acceptButton"
 msgstr "收到！"
 
@@ -484,6 +487,9 @@ msgstr "IX级坦克已解锁"
 msgid "overtime/label"
 msgstr "加时"
 
+msgid "player_errors/equipment/isWorking"
+msgstr "无法激活两种相同的储备"
+
 msgid "player_errors/minefieldIsIntersected"
 msgstr "无法部署雷区。雷区重叠。"
 
@@ -673,6 +679,18 @@ msgstr "支援不可用"
 msgid "reinforcementsPanel/inText"
 msgstr " "
 
+msgid "reserve/level/1"
+msgstr "I"
+
+msgid "reserve/level/2"
+msgstr "II"
+
+msgid "reserve/level/3"
+msgstr "III"
+
+msgid "reserve/level/4"
+msgstr "IV"
+
 msgid "respawn/auto_timer_txt"
 msgstr "%(seconds)s秒后，直到自动部署完毕"
 
@@ -757,13 +775,13 @@ msgid "selectorTooltip/epicBattle/attention/possibleLowPerformance/title"
 msgstr "低性能"
 
 msgid "selectorTooltip/epicBattle/body"
-msgstr "%(bodyVehicleLevel)s之间的30v30战斗。拥有重生机制、战斗储备和补给圈。"
+msgstr "%(bodyVehicleLevel)s，30对30战斗。战斗中可使用重生机制、战斗储备和补给圈。"
 
 msgid "selectorTooltip/epicBattle/bodyVehicleLevel"
 msgstr "%(level)s级坦克"
 
 msgid "selectorTooltip/epicBattle/ended/body"
-msgstr "%(bodyVehicleLevel)s，30v30战斗。战斗中可使用重生机制、战斗储备和维修。"
+msgstr "%(bodyVehicleLevel)s，30对30战斗。战斗中可使用重生机制、战斗储备和补给圈。"
 
 msgid "selectorTooltip/epicBattle/frozen"
 msgstr "该模式由于技术性问题暂不可用。"
@@ -979,8 +997,14 @@ msgstr "战斗即将开始"
 msgid "widgetAlertMessageBlock/button"
 msgstr "选择其他服务器"
 
-msgid "widgetAlertMessageBlock/noCycleMessage"
-msgstr "战斗已结束"
+msgid "widgetAlertMessageBlock/details"
+msgstr "详情"
+
+msgid "widgetAlertMessageBlock/finished"
+msgstr "前线模式已结束。"
+
+msgid "widgetAlertMessageBlock/modification"
+msgstr "前线模式战斗场景"
 
 msgid "widgetAlertMessageBlock/singleModeHalt"
 msgstr "该服务器已进入休战期。距战斗开放还有%(time)s"
@@ -990,6 +1014,11 @@ msgstr "%(serverName)s已进入休战期"
 
 msgid "widgetAlertMessageBlock/startIn"
 msgstr "离战斗开始还有：%(time)s"
+
+msgid "widgetAlertMessageBlock/tooltip/body"
+msgstr ""
+"点击查看关于前线模式战斗场景\n"
+"及其区别的更多详情。"
 
 msgid "zone/arrived_text"
 msgstr "已抵达"

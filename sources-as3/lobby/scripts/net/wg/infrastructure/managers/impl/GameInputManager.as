@@ -217,11 +217,6 @@ package net.wg.infrastructure.managers.impl
          this._ignoredKeyCode = param1;
       }
       
-      public function as_setIgnoredKeyCode(param1:Number) : void
-      {
-         this._ignoredKeyCode = param1;
-      }
-      
       public function setKeyHandler(param1:Number, param2:String, param3:Function, param4:Boolean, param5:String = null, param6:Number = 0) : void
       {
          this.assertEventType(param2);

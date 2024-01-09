@@ -63,7 +63,7 @@ package net.wg.gui.lobby.hangar
       private function searchForItem(param1:String) : int
       {
          var _loc5_:VehParamVO = null;
-         var _loc2_:int = _dataProvider.length;
+         var _loc2_:int = dataProvider.length;
          var _loc3_:int = Values.DEFAULT_INT;
          var _loc4_:int = 0;
          while(_loc4_ != _loc2_)
@@ -83,7 +83,7 @@ package net.wg.gui.lobby.hangar
       {
          if(param1 != Values.DEFAULT_INT)
          {
-            return VehParamVO(_dataProvider.requestItemAt(param1));
+            return VehParamVO(dataProvider.requestItemAt(param1));
          }
          return null;
       }
@@ -127,7 +127,7 @@ package net.wg.gui.lobby.hangar
          }
          else
          {
-            _loc8_ = _dataProvider.length;
+            _loc8_ = dataProvider.length;
             _loc4_ = _loc8_ - 1;
             _loc6_ = _loc1_;
             while(_loc6_ != _loc8_)
