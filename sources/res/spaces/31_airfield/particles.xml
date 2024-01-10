@@ -31,6 +31,10 @@
 			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
 		</preload>
 		<preload>
+			<shader>\data\shaders\ps_water.fx</shader>
+			<texture>particles/content_forward/PFX_textures/eff_tex_water.dds</texture>
+		</preload>
+		<preload>
 			<shader>\data\shaders\ps_long.fx</shader>
 			<texture>particles/content_forward/PFX_textures/tracers.dds</texture>
 		</preload>
@@ -82,14 +86,12 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env_AF_028_Well.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env_AF_029_DryingThread.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env_AF_030_CommodityShelf.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_env_AF_033_Tent.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_003_ClayStove_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_003_ClayStove_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_004_ColorTent_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_005_ClayJug_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_006_BarrelFuel_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_006_BarrelFuel_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_007_AircraftRefueller.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_008_Truck.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_009_tent.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_envAF_010_RepairCrane.vfx</fn_effect_bin>
@@ -105,7 +107,6 @@
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_env418_OldGMercedes.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_env608_Sovbus.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_envAF_006_BarellFuel2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_envAF_007_AircraftRefueller.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_mle008_Canisters1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_fuel_mleAF_003_WestlandLysander.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Objects/inf_gaf003_RabitzFence.vfx</fn_effect_bin>
@@ -194,14 +195,12 @@
 		<fn_effect_bin>particles/Environment/objects/inf_env_AF_028_Well.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env_AF_029_DryingThread.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env_AF_030_CommodityShelf.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env_AF_033_Tent.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_003_ClayStove_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_003_ClayStove_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_004_ColorTent_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_005_ClayJug_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_006_BarrelFuel_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_006_BarrelFuel_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAF_007_AircraftRefueller.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_008_Truck.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_009_tent.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_010_RepairCrane.eff</fn_effect_bin>
@@ -217,7 +216,6 @@
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_env418_OldGMercedes2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_env608_Sovbus.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_envAF_006_BarellFuel2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_fuel_envAF_007_AircraftRefueller.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_mle008_Canisters1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_mleAF_003_WestlandLysander.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_gaf003_RabitzFence.eff</fn_effect_bin>
@@ -407,14 +405,12 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env_AF_028_Well.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env_AF_029_DryingThread.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env_AF_030_CommodityShelf.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_env_AF_033_Tent.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_003_ClayStove_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_003_ClayStove_2.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_004_ColorTent_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_005_ClayJug_1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_006_BarrelFuel_01.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_006_BarrelFuel_02.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_007_AircraftRefueller.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_008_Truck.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_009_tent.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_envAF_010_RepairCrane.vfx</fn_effect_bin>
@@ -430,7 +426,6 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_env418_OldGMercedes.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_env608_Sovbus.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_envAF_006_BarellFuel2.vfx</fn_effect_bin>
-		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_envAF_007_AircraftRefueller.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_mle008_Canisters1.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_fuel_mleAF_003_WestlandLysander.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Objects/inf_gaf003_RabitzFence.vfx</fn_effect_bin>
@@ -519,14 +514,12 @@
 		<fn_effect_bin>particles/Environment/objects/inf_env_AF_028_Well.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env_AF_029_DryingThread.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_env_AF_030_CommodityShelf.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_env_AF_033_Tent.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_003_ClayStove_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_003_ClayStove_2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_004_ColorTent_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_005_ClayJug_1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_006_BarrelFuel_01.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_006_BarrelFuel_02.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_envAF_007_AircraftRefueller.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_008_Truck.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_009_tent.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_envAF_010_RepairCrane.eff</fn_effect_bin>
@@ -542,7 +535,6 @@
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_env418_OldGMercedes2.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_env608_Sovbus.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_envAF_006_BarellFuel2.eff</fn_effect_bin>
-		<fn_effect_bin>particles/Environment/objects/inf_fuel_envAF_007_AircraftRefueller.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_mle008_Canisters1.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_fuel_mleAF_003_WestlandLysander.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Environment/objects/inf_gaf003_RabitzFence.eff</fn_effect_bin>

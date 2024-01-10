@@ -63,6 +63,11 @@ package net.wg.gui.battle.comp7.battleloading.renderers
          {
             this._rankIcon.imageName = BATTLEATLAS.QUALIFICATION_22X22;
          }
+         if(_loc1_.isSuperSquad)
+         {
+            squad.imageName = !!model.isSquadPersonal() ? BATTLEATLAS.SUPER_SQUAD_GOLD : BATTLEATLAS.SUPER_SQUAD_SILVER;
+            squad.visible = true;
+         }
       }
       
       override protected function onDispose() : void

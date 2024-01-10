@@ -226,9 +226,14 @@ package net.wg.gui.battle.epicBattle.views.stats.components
       
       private function setupDynamicSquad(param1:EpicStatsPlayerRenderer) : void
       {
-         var _loc2_:DynamicSquadCtrl = new DynamicSquadCtrl(param1.squadStatus,param1.squad,this._squadAcceptBt,this._squadAddBt,param1.hit,param1.noSound);
-         _loc2_.addActionHandler(this._squadHandler);
-         param1.setupDynamicSquadCtrl(_loc2_);
+         var _loc2_:DynamicSquadCtrl = param1.squadItem;
+         if(_loc2_)
+         {
+            _loc2_.dispose();
+         }
+         var _loc3_:DynamicSquadCtrl = new DynamicSquadCtrl(param1.squadStatus,param1.squad,this._squadAcceptBt,this._squadAddBt,param1.hit,param1.noSound);
+         _loc3_.addActionHandler(this._squadHandler);
+         param1.setupDynamicSquadCtrl(_loc3_);
       }
       
       override public function set scrollPosition(param1:Number) : void

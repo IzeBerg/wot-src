@@ -1261,18 +1261,6 @@ msgstr "Personal Fame Points removed"
 msgid "platformCurrencyMsg/debited/freeXP"
 msgstr "Free Experience deducted"
 
-msgid "platformCurrencyMsg/debited/ny_amber"
-msgstr "Warm Amber removed"
-
-msgid "platformCurrencyMsg/debited/ny_crystal"
-msgstr "Rock Crystal removed"
-
-msgid "platformCurrencyMsg/debited/ny_emerald"
-msgstr "Pure Emerald removed"
-
-msgid "platformCurrencyMsg/debited/ny_iron"
-msgstr "Meteoric Iron removed"
-
 msgid "platformCurrencyMsg/debited/wdrcoin"
 msgstr "Tokens for years of service removed"
 
@@ -1290,18 +1278,6 @@ msgstr "Personal Fame Points added"
 
 msgid "platformCurrencyMsg/received/freeXP"
 msgstr "Free Experience received"
-
-msgid "platformCurrencyMsg/received/ny_amber"
-msgstr "Warm Amber added"
-
-msgid "platformCurrencyMsg/received/ny_crystal"
-msgstr "Rock Crystal added"
-
-msgid "platformCurrencyMsg/received/ny_emerald"
-msgstr "Pure Emerald added"
-
-msgid "platformCurrencyMsg/received/ny_iron"
-msgstr "Meteoric Iron added"
 
 msgid "platformCurrencyMsg/received/wdrcoin"
 msgstr "Tokens for years of service added"
@@ -1778,9 +1754,9 @@ msgstr "Point Limit reached"
 
 msgid "serviceChannelMessages/battlePass/reachedCap/text"
 msgstr ""
-"You earned the maximum number of Points in the %(vehName)s.\n"
-"Reward for reaching the Point Limit: %(bonusPoints)s.\n"
-"Fight in another vehicle to continue earning Points."
+"You earned the maximum number of Points in the %(vehName)s. Reward for "
+"reaching the Point Limit: %(bonusPoints)s. Fight in another vehicle to "
+"continue earning Points."
 
 msgid "serviceChannelMessages/battlePass/styleChosen/header"
 msgstr "Congratulations!"
@@ -1798,6 +1774,35 @@ msgstr "Details"
 
 msgid "serviceChannelMessages/battlePassExtraWillEndSoon/button"
 msgstr "Details"
+
+msgid "serviceChannelMessages/battlePassHReward/battle/chapterFinal/text"
+msgstr ""
+"You completed the %(chapter)s Chapter of Battle Pass!\n"
+"Rewards received:"
+
+msgid "serviceChannelMessages/battlePassHReward/battle/final/text"
+msgstr ""
+"You completed the %(chapter)s Chapter of Battle Pass!\n"
+"Rewards received:"
+
+msgid "serviceChannelMessages/battlePassHReward/battle/newLevel/text"
+msgstr ""
+"You completed Battle Pass Progression Stage %(newLevel)s\n"
+"\n"
+"Reward received:"
+
+msgid "serviceChannelMessages/battlePassHReward/buyProgress/text"
+msgstr ""
+"Stages added in Chapter %(chapter)s: %(levelCount)s\n"
+"You reached Stage %(currentLevel)s\n"
+"Rewards received:"
+
+msgid "serviceChannelMessages/battlePassHReward/buyWithRewards/text"
+msgstr "You received rewards for the previously completed Battle Pass Stages:"
+
+msgid "serviceChannelMessages/battlePassHReward/buyWithoutRewards/text"
+msgstr ""
+"You will now receive rewards from both the Base and Improved Reward Tracks."
 
 msgid "serviceChannelMessages/battlePassReward/activateChapter/text"
 msgstr "You received rewards for the completed Stages using unspent Points:"
@@ -1855,7 +1860,7 @@ msgstr ""
 "This Improved Pass works only for the \"%(chapter)s\" Chapter."
 
 msgid "serviceChannelMessages/battlePassReward/header/autoSelectReward"
-msgstr "Reward Granted"
+msgstr "Default Reward Added:"
 
 msgid "serviceChannelMessages/battlePassReward/header/buyBP"
 msgstr "Improved Pass Purchased"
@@ -2060,9 +2065,6 @@ msgstr "%(count)s daily"
 msgid ""
 "serviceChannelMessages/battleResults/quests/rankedBonusBattles/persistent"
 msgstr "%(count)s standard"
-
-msgid "serviceChannelMessages/battleResults/quests/variadicDiscount"
-msgstr "%(discount)s%% discount on Tier %(level)s vehicles received"
 
 msgid "serviceChannelMessages/battleResults/quests/vehicleSlots"
 msgstr "Slots added"
@@ -2401,6 +2403,9 @@ msgstr "All experimental modules removed"
 
 msgid "serviceChannelMessages/enhancements/wipedOnVehicles"
 msgstr "Experimental modules demounted from the following vehicles"
+
+msgid "serviceChannelMessages/epicBattleResults/scenario"
+msgstr "Scenario"
 
 msgid "serviceChannelMessages/epicReward/battleBooster_gift"
 msgstr "• Equipment directives to select from"
@@ -2815,12 +2820,6 @@ msgstr "Blueprint fragments of %(nationName)s vehicles added"
 msgid "serviceChannelMessages/invoiceReceived/nationalBlueprintsDebited"
 msgstr "Blueprint fragments of %(nationName)s vehicles removed"
 
-msgid "serviceChannelMessages/invoiceReceived/nyToysAccruedInvoiceReceived"
-msgstr "Decorations added: "
-
-msgid "serviceChannelMessages/invoiceReceived/nyToysDebitedInvoiceReceived"
-msgstr "Decorations removed: "
-
 msgid "serviceChannelMessages/invoiceReceived/offersAccrued"
 msgstr "Added"
 
@@ -2895,9 +2894,6 @@ msgstr "Undistributed Free Experience removed from crew members"
 msgid "serviceChannelMessages/invoiceReceived/tankmenToRemove"
 msgstr "Dismissed"
 
-msgid "serviceChannelMessages/invoiceReceived/toyTypeWrapper"
-msgstr "%(name)s (x%(count)s)"
-
 msgid "serviceChannelMessages/invoiceReceived/unlockedModules"
 msgstr "all modules researched"
 
@@ -2921,25 +2917,23 @@ msgstr ""
 "You have been granted consumables: %(typeName)s \"%(itemName)s\"–%(amount)d "
 "item(s)."
 
+msgid "serviceChannelMessages/lootBoxes/button"
+msgstr "To Boxes"
+
+msgid "serviceChannelMessages/lootBoxes/footer"
+msgstr "Click the button to view the content."
+
 msgid "serviceChannelMessages/lootBoxes/header"
-msgstr "Parcel Received"
+msgstr "You received a parcel:"
 
 msgid "serviceChannelMessages/lootBoxes/item/name"
-msgstr "%(name)s: %(colorTagOpen)s%(count)s%(colorTagClose)s"
-
-msgid "serviceChannelMessages/lootBoxesAutoOpen/boxesAndCoins"
-msgstr ""
-"We have opened all of your boxes and Chaffee's Sacks, used your Terminal "
-"Tokens, and added the rewards for Holiday Ops 2024."
-
-msgid "serviceChannelMessages/lootBoxesAutoOpen/boxesCounter"
-msgstr "Large Boxes opened: %(count)s"
+msgstr "%(name)s %(colorTagOpen)sx%(count)s%(colorTagClose)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/button"
-msgstr "To Rewards"
+msgstr "View"
 
-msgid "serviceChannelMessages/lootBoxesAutoOpen/coinsCounter"
-msgstr "Gift Terminal activated: %(count)s"
+msgid "serviceChannelMessages/lootBoxesAutoOpen/counter"
+msgstr "x%(count)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/boxes"
 msgstr "Gates activated: %(boxes)s"
@@ -2961,8 +2955,8 @@ msgstr "We activated all your Gates and added their contents to your account:"
 msgid "serviceChannelMessages/lootBoxesAutoOpen/header"
 msgstr "Rewards Received"
 
-msgid "serviceChannelMessages/lootBoxesAutoOpen/sacksCounter"
-msgstr "Sacks opened: %(count)s"
+msgid "serviceChannelMessages/lootBoxesAutoOpen/text"
+msgstr "We opened all your boxes and added the rewards for Holiday Ops"
 
 msgid "serviceChannelMessages/lunarBoxesAutoOpen/body"
 msgstr "We opened all Lunar New Year Blessings Envelopes for you."
@@ -3024,21 +3018,6 @@ msgstr ""
 
 msgid "serviceChannelMessages/multiplier"
 msgstr " (x%(count)s)"
-
-msgid "serviceChannelMessages/newYear/buyToy/header"
-msgstr "Purchased:"
-
-msgid "serviceChannelMessages/newYear/collectingResources/button"
-msgstr "To Resources"
-
-msgid "serviceChannelMessages/newYear/dogReminder/button"
-msgstr "To Dog"
-
-msgid "serviceChannelMessages/newYear/dogReminder/header"
-msgstr "Treat Your Pet!"
-
-msgid "serviceChannelMessages/newYear/dogReminder/message"
-msgstr "Rent special items and help Chaffee feel cozy."
 
 msgid "serviceChannelMessages/notrecruitedTankman/button"
 msgstr "Go to Barracks"

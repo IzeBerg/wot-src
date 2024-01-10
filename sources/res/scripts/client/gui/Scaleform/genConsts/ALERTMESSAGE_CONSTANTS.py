@@ -1,0 +1,5 @@
+
+
+class ALERTMESSAGE_CONSTANTS(object):
+    ALERT_MESSAGE_STATE_DEFAULT = 'alert'
+    ALERT_MESSAGE_STATE_INFO = 'info'

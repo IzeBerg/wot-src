@@ -18,6 +18,8 @@ package net.wg.gui.battle.comp7.VO.daapi
       
       public var voiceChatConnected:Boolean = true;
       
+      public var isSuperSquad:Boolean = false;
+      
       public function Comp7DAAPIVehicleInfoVO(param1:Object = null)
       {
          super(param1);

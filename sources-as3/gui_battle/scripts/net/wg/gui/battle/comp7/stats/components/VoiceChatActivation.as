@@ -4,12 +4,15 @@ package net.wg.gui.battle.comp7.stats.components
    import flash.events.MouseEvent;
    import flash.text.TextField;
    import net.wg.data.constants.InvalidationType;
+   import net.wg.data.constants.SoundTypes;
    import net.wg.gui.battle.comp7.stats.components.data.VoiceChatActivationVO;
    import net.wg.gui.battle.comp7.stats.components.events.VoiceChatActivationEvent;
    import net.wg.gui.battle.components.BattleUIComponent;
+   import net.wg.infrastructure.interfaces.entity.ISoundable;
+   import net.wg.infrastructure.managers.ISoundManager;
    import net.wg.utils.ICommons;
    
-   public class VoiceChatActivation extends BattleUIComponent
+   public class VoiceChatActivation extends BattleUIComponent implements ISoundable
    {
       
       public static const INACTIVE_STATE:String = "inactive";
@@ -29,9 +32,12 @@ package net.wg.gui.battle.comp7.stats.components
       
       private var _commons:ICommons;
       
+      private var _soundMgr:ISoundManager;
+      
       public function VoiceChatActivation()
       {
          this._commons = App.utils.commons;
+         this._soundMgr = App.soundMgr;
          super();
          visible = false;
       }
@@ -45,6 +51,7 @@ package net.wg.gui.battle.comp7.stats.components
          this.hitMc.useHandCursor = this.hitMc.buttonMode = true;
          this.textField.visible = true;
          this.textFieldHover.visible = false;
+         this._soundMgr.addSoundsHdlrs(this);
       }
       
       override protected function draw() : void
@@ -68,6 +75,8 @@ package net.wg.gui.battle.comp7.stats.components
          this.hitMc.removeEventListener(MouseEvent.CLICK,this.onClickHandler);
          this.hitMc.removeEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
          this.hitMc.removeEventListener(MouseEvent.ROLL_OUT,this.onRollOutHandler);
+         this._soundMgr.removeSoundHdlrs(this);
+         this._soundMgr = null;
          this.textField = null;
          this.textFieldHover = null;
          this.hitMc = null;
@@ -92,6 +101,21 @@ package net.wg.gui.battle.comp7.stats.components
             this._isActive = param1;
             invalidate(InvalidationType.DATA);
          }
+      }
+      
+      public function getSoundId() : String
+      {
+         return "";
+      }
+      
+      public function getSoundType() : String
+      {
+         return !!this._isActive ? SoundTypes.COMP7_VOICE_CHAT_DEACTIVATION : SoundTypes.COMP7_VOICE_CHAT_ACTIVATION;
+      }
+      
+      public function canPlaySound(param1:String) : Boolean
+      {
+         return param1 == MouseEvent.MOUSE_DOWN;
       }
       
       private function onClickHandler(param1:MouseEvent) : void

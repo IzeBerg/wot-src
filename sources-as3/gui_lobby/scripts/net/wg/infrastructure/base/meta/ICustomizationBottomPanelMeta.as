@@ -50,10 +50,6 @@ package net.wg.infrastructure.base.meta
       
       function as_setProjectionDecalHintVisibility(param1:Boolean) : void;
       
-      function as_setEditableStyleHintVisibility(param1:Boolean) : void;
-      
-      function as_setEditableProgressionRequiredStyleHintVisibility(param1:Boolean) : void;
-      
       function as_showPopoverBtnIcon(param1:String, param2:String) : void;
       
       function as_getDataProvider() : Object;

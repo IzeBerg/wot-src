@@ -23,6 +23,10 @@ package net.wg.gui.lobby.hangar.interfaces
       
       function get cmptWidth() : int;
       
+      function get cmptCollapsedWidth() : int;
+      
+      function get cmptLeftShift() : int;
+      
       function get isRightSide() : Boolean;
       
       function get position() : Point;

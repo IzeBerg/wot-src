@@ -23,6 +23,7 @@ package net.wg.gui.lobby.battleResults.controller
       override protected function initColumnsData(param1:CommonStatsVO) : void
       {
          super.initColumnsData(param1);
+         columnWidth[ColumnConstants.PLAYER] = !!param1.isShowSquad ? ColumnConstants.COMP7_PLAYER_COLUMN_WIDTH : ColumnConstants.COMP7_PLAYER_COLUMN_WIDTH + ColumnConstants.FIRST_COLUMN_WIDTH;
          columnWidth[ColumnConstants.PRESTIGE_POINTS] = ColumnConstants.PRESTIGE_POINTS_COLUMN_WIDTH;
          sortingKey[ColumnConstants.PRESTIGE_POINTS] = [ColumnConstants.PRESTIGE_POINTS];
          columnTooltip[ColumnConstants.PRESTIGE_POINTS] = COMP7.BATTLERESULT_TEAM_PRESTIGEPOINTS;

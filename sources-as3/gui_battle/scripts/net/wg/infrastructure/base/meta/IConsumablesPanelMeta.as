@@ -40,14 +40,6 @@ package net.wg.infrastructure.base.meta
       
       function as_collapseEquipmentSlot() : void;
       
-      function as_updateLockedInformation(param1:int, param2:int, param3:String) : void;
-      
-      function as_updateLevelInformation(param1:int, param2:int) : void;
-      
-      function as_showPossibleStacks(param1:int, param2:int) : void;
-      
-      function as_updateStacks(param1:int, param2:int) : void;
-      
       function as_updateTooltip(param1:int, param2:String) : void;
       
       function as_addOptionalDeviceSlot(param1:int, param2:Number, param3:String, param4:String, param5:Boolean, param6:int, param7:Boolean) : void;

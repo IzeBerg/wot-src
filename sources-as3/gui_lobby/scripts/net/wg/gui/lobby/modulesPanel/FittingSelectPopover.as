@@ -14,7 +14,7 @@ package net.wg.gui.lobby.modulesPanel
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.FITTING_TYPES;
    import net.wg.gui.components.advanced.ContentTabBar;
-   import net.wg.gui.components.common.Counter;
+   import net.wg.gui.components.common.counters.Counter;
    import net.wg.gui.components.controls.CheckBox;
    import net.wg.gui.components.controls.EmptyItemsScrollingList;
    import net.wg.gui.components.popovers.PopOver;

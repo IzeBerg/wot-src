@@ -9,7 +9,7 @@ package net.wg.gui.battle.random.battleloading.renderers
    {
        
       
-      private var _squad:BattleAtlasSprite;
+      protected var squad:BattleAtlasSprite;
       
       private var _defaultSquadPositionX:int;
       
@@ -19,18 +19,18 @@ package net.wg.gui.battle.random.battleloading.renderers
          var _loc4_:RandomRendererContainer = param1 as RandomRendererContainer;
          if(param3)
          {
-            this._squad = _loc4_.squadsEnemy[param2];
+            this.squad = _loc4_.squadsEnemy[param2];
          }
          else
          {
-            this._squad = _loc4_.squadsAlly[param2];
+            this.squad = _loc4_.squadsAlly[param2];
          }
-         this._defaultSquadPositionX = this._squad.x;
+         this._defaultSquadPositionX = this.squad.x;
       }
       
       override protected function onDispose() : void
       {
-         this._squad = null;
+         this.squad = null;
          super.onDispose();
       }
       
@@ -39,29 +39,29 @@ package net.wg.gui.battle.random.battleloading.renderers
          super.draw();
          if(model && model.isSquadMan())
          {
-            this._squad.visible = true;
+            this.squad.visible = true;
             if(model.isSquadPersonal())
             {
-               this._squad.imageName = BATTLEATLAS.squad_gold(model.squadIndex.toString());
+               this.squad.imageName = BATTLEATLAS.squad_gold(model.squadIndex.toString());
             }
             else
             {
-               this._squad.imageName = BATTLEATLAS.squad_silver(model.squadIndex.toString());
+               this.squad.imageName = BATTLEATLAS.squad_silver(model.squadIndex.toString());
             }
          }
          else
          {
-            this._squad.visible = false;
+            this.squad.visible = false;
          }
       }
       
       override protected function updateLayout() : void
       {
          super.updateLayout();
-         this._squad.x = this._defaultSquadPositionX;
+         this.squad.x = this._defaultSquadPositionX;
          if(isExtendedLayout)
          {
-            this._squad.x += !!isEnemy ? PRESTIGE_LEVEL_OFFSET : -PRESTIGE_LEVEL_OFFSET;
+            this.squad.x += !!isEnemy ? PRESTIGE_LEVEL_OFFSET : -PRESTIGE_LEVEL_OFFSET;
          }
       }
    }

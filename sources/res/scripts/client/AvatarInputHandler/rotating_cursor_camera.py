@@ -19,6 +19,10 @@ class RotatingCoursorCamera(object):
     def pivotDistance(self):
         return self.__camera.pivotMaxDist
 
+    @property
+    def aimingSystem(self):
+        return
+
     def setup(self, targetPosition, initialRotations, distanceToTarget):
         if not self.__camera:
             self.__createCamera()

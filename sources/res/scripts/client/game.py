@@ -19,8 +19,6 @@ try:
 except locale.Error:
     LOG_CURRENT_EXCEPTION()
 
-sys.setrecursionlimit(sys.getrecursionlimit() + 100)
-
 class ServiceLocator(object):
     connectionMgr = dependency.descriptor(IConnectionManager)
     gameplay = dependency.descriptor(IGameplayLogic)
@@ -278,6 +276,10 @@ def onStreamComplete(streamID, desc, data):
     else:
         player.onStreamComplete(streamID, desc, data)
     return
+
+
+def onLoginToCellFailed():
+    BigWorld.player().onLoginToCellFailed()
 
 
 def onConnected():

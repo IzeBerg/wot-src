@@ -115,6 +115,13 @@
 			<undamaged>vehicles/chinese/Ch52_WZ_122_6_F3/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/chinese/Ch52_WZ_122_6_F3/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/chinese/Ch52_WZ_122_6_F3/crash/lod0/Hull.model</exploded>
+			<sets>
+				<Ch52_WZ_122_6_F3_GMIII_IV_3DSt>
+					<undamaged>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/crash/lod0/Hull.model</exploded>
+				</Ch52_WZ_122_6_F3_GMIII_IV_3DSt>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -146,14 +153,14 @@
 			<slot>
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
-				<rayStart>0.729121 0.621963 2.915004</rayStart>
-				<rayEnd>0.729121 0.227837 2.846763</rayEnd>
+				<rayStart>0.769024 0.621963 2.895963</rayStart>
+				<rayEnd>0.769024 0.227837 2.827722</rayEnd>
 				<rayUp>
-					0 0.170607 -0.985339
+					-0 0.170607 -0.985339
 					<!--BW_String-->
 				</rayUp>
 				<size>
-					0.35
+					0.3
 					<!--BW_String-->
 				</size>
 				<hideIfDamaged>true</hideIfDamaged>
@@ -1687,6 +1694,13 @@
 				<undamaged>vehicles/chinese/Ch52_WZ_122_6_F3/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/chinese/Ch52_WZ_122_6_F3/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/chinese/Ch52_WZ_122_6_F3/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<Ch52_WZ_122_6_F3_GMIII_IV_3DSt>
+						<undamaged>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/crash/lod0/Chassis.model</exploded>
+					</Ch52_WZ_122_6_F3_GMIII_IV_3DSt>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>MEDIUM</lodDist>
@@ -1704,7 +1718,7 @@
 					<leftMaterial>track_mat_L_skinned</leftMaterial>
 					<rightMaterial>track_mat_R_skinned</rightMaterial>
 					<textureScale>
-						-1.1
+						-2.2
 						<!--BW_String-->
 					</textureScale>
 					<trackDebris>
@@ -3778,6 +3792,27 @@
 								<!--BW_String-->
 							</size>
 						</slot>
+						<slot>
+							<slotType>insigniaOnGun</slotType>
+							<slotId>49001</slotId>
+							<rayStart>
+								0 0.01 1.82
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								0 0.01 2.57
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.15 0 0
+								<!--BW_String-->
+							</rayUp>
+							<compatibleModels>Ch52_WZ_122_6_F3_GMIII_IV_3DSt</compatibleModels>
+							<size>
+								0.68
+								<!--BW_String-->
+							</size>
+						</slot>
 					</customizationSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -3789,6 +3824,13 @@
 						<undamaged>vehicles/chinese/Ch52_WZ_122_6_F3/normal/lod0/Gun_02.model</undamaged>
 						<destroyed>vehicles/chinese/Ch52_WZ_122_6_F3/crash/lod0/Gun_02.model</destroyed>
 						<exploded>vehicles/chinese/Ch52_WZ_122_6_F3/crash/lod0/Gun_02.model</exploded>
+						<sets>
+							<Ch52_WZ_122_6_F3_GMIII_IV_3DSt>
+								<undamaged>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/normal/lod0/Gun_02.model</undamaged>
+								<destroyed>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/crash/lod0/Gun_02.model</destroyed>
+								<exploded>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/crash/lod0/Gun_02.model</exploded>
+							</Ch52_WZ_122_6_F3_GMIII_IV_3DSt>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/chinese/Ch52_WZ_122_6_F3/collision/Gun_02.model</collisionModelServer>
@@ -3855,6 +3897,13 @@
 				<undamaged>vehicles/chinese/Ch52_WZ_122_6_F3/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/chinese/Ch52_WZ_122_6_F3/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/chinese/Ch52_WZ_122_6_F3/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<Ch52_WZ_122_6_F3_GMIII_IV_3DSt>
+						<undamaged>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/chinese/Ch52_WZ_122_6_F3/_skins/Ch52_WZ_122_6_F3_GMIII_IV_3DSt/crash/lod0/Turret_01.model</exploded>
+					</Ch52_WZ_122_6_F3_GMIII_IV_3DSt>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/chinese/Ch52_WZ_122_6_F3/collision/Turret_01.model</collisionModelServer>
@@ -3869,7 +3918,7 @@
 					<slotType>paint</slotType>
 					<slotId>31000</slotId>
 					<anchorPosition>
-						0 0.766836 0
+						0 0.766836 -0
 						<!--BW_String-->
 					</anchorPosition>
 					<anchorDirection>0 1 0</anchorDirection>
@@ -3878,7 +3927,7 @@
 					<slotType>camouflage</slotType>
 					<slotId>32000</slotId>
 					<anchorPosition>
-						0 0.766836 0
+						0 0.766836 -0
 						<!--BW_String-->
 					</anchorPosition>
 					<anchorDirection>0 1 0</anchorDirection>
@@ -3886,8 +3935,14 @@
 				<slot>
 					<slotType>player</slotType>
 					<slotId>33000</slotId>
-					<rayStart>-0.743721 0.679941 1.441377</rayStart>
-					<rayEnd>-0.652279 0.573729 1.352423</rayEnd>
+					<rayStart>
+						-0.743721 0.679941 1.44138
+						<!--BW_String-->
+					</rayStart>
+					<rayEnd>
+						-0.652279 0.573729 1.35242
+						<!--BW_String-->
+					</rayEnd>
 					<rayUp>0.458631 0.768507 -0.446155</rayUp>
 					<size>
 						0.28
@@ -3898,8 +3953,14 @@
 					<slotType>player</slotType>
 					<slotId>33001</slotId>
 					<isMirrored>true</isMirrored>
-					<rayStart>0.744084 0.679938 1.441372</rayStart>
-					<rayEnd>0.652633 0.573731 1.352422</rayEnd>
+					<rayStart>
+						0.744084 0.679938 1.44137
+						<!--BW_String-->
+					</rayStart>
+					<rayEnd>
+						0.652633 0.573731 1.35242
+						<!--BW_String-->
+					</rayEnd>
 					<rayUp>-0.458641 0.768534 -0.446098</rayUp>
 					<size>
 						0.28
@@ -3910,10 +3971,13 @@
 					<slotType>inscription</slotType>
 					<slotId>34000</slotId>
 					<rayStart>
-						-1.425272 0.476849 -0.27205
+						-1.42527 0.476849 -0.27205
 						<!--BW_String-->
 					</rayStart>
-					<rayEnd>-1.269498 0.420878 -0.259513</rayEnd>
+					<rayEnd>
+						-1.2695 0.420878 -0.259513
+						<!--BW_String-->
+					</rayEnd>
 					<rayUp>
 						0.336088 0.941442 0.02705
 						<!--BW_String-->
@@ -3928,10 +3992,13 @@
 					<slotType>inscription</slotType>
 					<slotId>34001</slotId>
 					<rayStart>
-						1.425864 0.474073 -0.2716
+						1.42586 0.474073 -0.2716
 						<!--BW_String-->
 					</rayStart>
-					<rayEnd>1.268136 0.423655 -0.259964</rayEnd>
+					<rayEnd>
+						1.26814 0.423655 -0.259964
+						<!--BW_String-->
+					</rayEnd>
 					<rayUp>-0.302905 0.952759 0.022347</rayUp>
 					<size>
 						0.8

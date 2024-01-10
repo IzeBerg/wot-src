@@ -47,9 +47,8 @@ package net.wg.gui.components.controls
       
       override protected function configUI() : void
       {
-         var _loc1_:MovieClip = null;
          super.configUI();
-         _loc1_ = this.mutedClip.cross;
+         var _loc1_:MovieClip = this.mutedClip.cross;
          _loc1_.x = this.crossX;
          _loc1_.y = this.crossY;
       }

@@ -38,6 +38,11 @@ def isGroupEnabled(groupID):
 
 
 @_impl
+def setGroupEnabled(groupID, isEnabled):
+    pass
+
+
+@_impl
 def removeObject(groupID, name):
     pass
 
