@@ -1292,7 +1292,7 @@ class GunParams(WeightedParam):
     @property
     def dispertionRadius(self):
         disp = self._getRawParams()[DISPERSION_RADIUS_PROP_NAME][0]
-        gun = self.__getVehicleGun()
+        gun = self.__getSelectedVehicleGun()
         if isDualAccuracy(gun):
             return (math.tan(gun.dualAccuracy.afterShotDispersionAngle) * 100, disp)
         else:
@@ -1382,7 +1382,7 @@ class GunParams(WeightedParam):
 
     @property
     def dualAccuracyCoolingDelay(self):
-        gun = self.__getVehicleGun()
+        gun = self.__getSelectedVehicleGun()
         if isDualAccuracy(gun):
             return gun.dualAccuracy.coolingDelay
         else:
@@ -1439,9 +1439,9 @@ class GunParams(WeightedParam):
         result.append(('ammunition' if self.__isFlameGun() else 'shells', (', ').join(self.shellsCompatibles)))
         return tuple(result)
 
-    def __getVehicleGun(self):
+    def __getSelectedVehicleGun(self):
         if self._vehicleDescr is not None:
-            _, guns = self._vehicleDescr.getComponentsByType(self._itemDescr.itemTypeName)
+            guns = self._vehicleDescr.type.getGuns()
             return next((obj for obj in guns if obj.compactDescr == self._itemDescr.compactDescr), None)
         else:
             return

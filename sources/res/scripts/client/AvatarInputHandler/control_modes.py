@@ -136,11 +136,11 @@ class _GunControlMode(IControlMode):
                  '_isEnabled', '_cam', '_aimingMode', '_canShot', '_currentMode',
                  '_lockedDown', '__curVehicleID')
 
-    def __init__(self, dataSection, avatarInputHandler, mode=CTRL_MODE_NAME.ARCADE, isStrategic=False):
+    def __init__(self, dataSection, avatarInputHandler, mode=CTRL_MODE_NAME.ARCADE):
         self._aih = weakref.proxy(avatarInputHandler)
         self._defaultOffset = dataSection.readVector2('defaultOffset')
         self._cameraTransitionDurations = _readCameraTransitionSettings(dataSection['camera'])
-        self._gunMarker = gun_marker_ctrl.createGunMarker(isStrategic)
+        self._gunMarker = self._createGunMarker()
         self._isEnabled = False
         self._cam = None
         self._aimingMode = 0
@@ -186,6 +186,9 @@ class _GunControlMode(IControlMode):
         self._cam.destroy()
         self._cam = None
         return
+
+    def _createGunMarker(self):
+        return gun_marker_ctrl.createDefaultGunMarker()
 
     def setGunMarkerFlag(self, positive, bit):
         self._gunMarker.setFlag(positive, bit)
@@ -738,7 +741,7 @@ class _TrajectoryControlMode(_GunControlMode):
                  '__controllingVehicleID', '__targetVehicleID', '_nextControlMode')
 
     def __init__(self, dataSection, avatarInputHandler, modeName, trajectoryUpdateInterval):
-        super(_TrajectoryControlMode, self).__init__(dataSection, avatarInputHandler, modeName, True)
+        super(_TrajectoryControlMode, self).__init__(dataSection, avatarInputHandler, modeName)
         self.__trajectoryDrawer = BigWorld.wg_trajectory_drawer()
         self.__dataUpdateCallback = None
         self.__updateInterval = trajectoryUpdateInterval
@@ -787,6 +790,9 @@ class _TrajectoryControlMode(_GunControlMode):
         self._cam.writeUserPreferences()
         self.spgShotsIndicatorState = {}
         return
+
+    def _createGunMarker(self):
+        return gun_marker_ctrl.createStrategicGunMarker()
 
     def setObservedVehicle(self, vehicleID):
         self.__controllingVehicleID = vehicleID
@@ -1107,6 +1113,9 @@ class AssaultControlMode(_TrajectoryControlMode):
         if ammoCtrl is not None:
             ammoCtrl.onCurrentShellChanged -= self.__onCurrentShellChanged
         return
+
+    def _createGunMarker(self):
+        return gun_marker_ctrl.createAssaultSpgGunMarker()
 
     def __onCurrentShellChanged(self, intCD):
         ctrl = self.__sessionProvider.shared.ammo

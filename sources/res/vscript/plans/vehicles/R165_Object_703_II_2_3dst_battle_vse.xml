@@ -10,10 +10,37 @@
 		<blocks>
 			<block>
 				<class>Variable</class>
-				<id>Variable_5</id>
+				<id>Variable_3</id>
 				<params>
 					<param>
-						HullAnimationStateGate
+						Hull_eff_go
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						GameObjectT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>Variable</class>
+				<id>Variable_7</id>
+				<params>
+					<param>
+						SetInSniperMode
 						<name>Variable Name</name>
 						<type>StringT</type>
 					</param>
@@ -44,33 +71,6 @@
 						<const>\false\</const>
 					</slot>
 				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_3</id>
-				<params>
-					<param>
-						Hull_eff_go
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						GameObjectT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-				</params>
-				<slots/>
 			</block>
 			<block>
 				<class>Variable</class>
@@ -248,6 +248,73 @@
 				</slots>
 			</block>
 			<block>
+				<class>If</class>
+				<id>If_4</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_4</id>
+				<buddy>Variable_7</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>value</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>OnPlayerSnipeMode</class>
+				<id>OnPlayerSnipeMode_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SetVariable</class>
+				<id>SetVariable_5</id>
+				<buddy>Variable_7</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>value</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_5</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_8</id>
+				<buddy>Variable_4</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>StartScript</class>
 				<id>StartScript_1</id>
 				<params/>
@@ -285,6 +352,18 @@
 				<slots/>
 			</block>
 			<block>
+				<class>ArenaPeriod</class>
+				<id>ArenaPeriod_1</id>
+				<params>
+					<param>
+						Battle
+						<name>Period</name>
+						<type>EArenaPeriodT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>SendLocalEvent</class>
 				<id>SendLocalEvent_2</id>
 				<buddy>ListenLocalEvent_2</buddy>
@@ -293,18 +372,6 @@
 						ListenLocalEvent_2
 						<name>Event Name</name>
 						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>ArenaPeriod</class>
-				<id>ArenaPeriod_1</id>
-				<params>
-					<param>
-						Battle
-						<name>Period</name>
-						<type>EArenaPeriodT</type>
 					</param>
 				</params>
 				<slots/>
@@ -326,17 +393,6 @@
 				<id>If_1</id>
 				<params/>
 				<slots/>
-			</block>
-			<block>
-				<class>FrameEvent</class>
-				<id>FrameEvent_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>cooldown</name>
-						<const>\1.000000\</const>
-					</slot>
-				</slots>
 			</block>
 			<block>
 				<class>GetComponentProperty</class>
@@ -380,6 +436,42 @@
 				<id>GetVehicleAppearanceGameObject_1</id>
 				<params/>
 				<slots/>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_6</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>Not</class>
+				<id>Not_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_10</id>
+				<buddy>Variable_7</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>FrameEvent</class>
+				<id>FrameEvent_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>cooldown</name>
+						<const>\1.000000\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>ContextGetSelf</class>
@@ -784,6 +876,42 @@
 				<output>value</output>
 			</connection>
 			<connection>
+				<from>OnPlayerSnipeMode_1</from>
+				<input>input</input>
+				<to>If_4</to>
+				<output>onEnter</output>
+			</connection>
+			<connection>
+				<from>GetVariable_8</from>
+				<input>value</input>
+				<to>If_4</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>If_4</from>
+				<input>input</input>
+				<to>SetVariable_4</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>If_5</from>
+				<input>input</input>
+				<to>SetVariable_5</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>OnPlayerSnipeMode_1</from>
+				<input>input</input>
+				<to>If_5</to>
+				<output>onExit</output>
+			</connection>
+			<connection>
+				<from>GetVariable_8</from>
+				<input>value</input>
+				<to>If_5</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>Sequence_1</from>
 				<input>input</input>
 				<to>SetVariable_2</to>
@@ -814,7 +942,7 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>If_1</from>
+				<from>If_6</from>
 				<input>input</input>
 				<to>SendLocalEvent_2</to>
 				<output>true</output>
@@ -836,12 +964,6 @@
 				<input>value</input>
 				<to>If_1</to>
 				<output>greater</output>
-			</connection>
-			<connection>
-				<from>ArenaPeriod_1</from>
-				<input>active</input>
-				<to>FrameEvent_1</to>
-				<output>isActive</output>
 			</connection>
 			<connection>
 				<from>FrameEvent_1</from>
@@ -878,6 +1000,30 @@
 				<input>gameObject</input>
 				<to>GetVehicleAppearanceGameObject_1</to>
 				<output>value</output>
+			</connection>
+			<connection>
+				<from>If_1</from>
+				<input>input</input>
+				<to>If_6</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>Not_1</from>
+				<input>value</input>
+				<to>If_6</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>GetVariable_10</from>
+				<input>a</input>
+				<to>Not_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>ArenaPeriod_1</from>
+				<input>active</input>
+				<to>FrameEvent_1</to>
+				<output>isActive</output>
 			</connection>
 			<connection>
 				<from>Sequence_1</from>
