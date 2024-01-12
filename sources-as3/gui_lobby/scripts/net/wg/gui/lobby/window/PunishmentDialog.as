@@ -12,12 +12,3 @@ package net.wg.gui.lobby.window
       
       public function PunishmentDialog()
       {
-         super();
-      }
-      
-      public function as_setMsgTitle(param1:String) : void
-      {
-         this.msgTitle.text = param1;
-      }
-   }
-}
