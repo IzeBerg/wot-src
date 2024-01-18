@@ -42,7 +42,7 @@ def isHWCrewCompleted(vehicleType, tankmenGroups):
 
 
 def isAriaCrewCompleted(vehicleType, tankmenGroup):
-    return _isCrewCompletedStrict(vehicleType, tankmenGroup, SPECIAL_CREW_TAG.ARIA_CREW)
+    return _isHW23CrewCompleted(vehicleType, tankmenGroup, SPECIAL_CREW_TAG.ARIA_CREW)
 
 
 def _hasTagInTankmenGroup(tankmanDescr, tag):
