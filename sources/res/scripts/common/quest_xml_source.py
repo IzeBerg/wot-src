@@ -1,5 +1,4 @@
 import time, ArenaType, ResMgr, nations
-from items.components.ny_constants import CurrentNYConstants
 from soft_exception import SoftException
 from copy import deepcopy
 from pprint import pformat
@@ -510,8 +509,7 @@ class Source(object):
          'customizations', 'vehicleChoice', 'crewSkin', 'blueprint', 'blueprintAny', 'enhancement',
          'eventCoin', 'bpcoin', 'entitlement', 'rankedDailyBattles', 'rankedBonusBattles', 'equipCoin',
          'dogTagComponent', 'battlePassPoints', 'currency', 'freePremiumCrew', 'entitlementList',
-         'dailyQuestReroll', 'noviceReset', CurrentNYConstants.TOY_FRAGMENTS,
-         CurrentNYConstants.FILLERS, CurrentNYConstants.TOY_BONUS, CurrentNYConstants.ANY_OF}
+         'dailyQuestReroll', 'noviceReset'}
         if eventType in (EVENT_TYPE.BATTLE_QUEST, EVENT_TYPE.PERSONAL_QUEST, EVENT_TYPE.NT_QUEST):
             bonusTypes.update(('xp', 'tankmenXP', 'xpFactor', 'creditsFactor', 'freeXPFactor',
                                'tankmenXPFactor'))

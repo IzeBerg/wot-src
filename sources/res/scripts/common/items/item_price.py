@@ -1,4 +1,5 @@
 from goodies.GoodieResources import Gold, Credits
+DEFAULT_ZERO_BERTH = 0
 
 class PRICE_TYPE:
     DEFAULT = (0, )
@@ -41,10 +42,14 @@ def getNextSlotPrice(slots, slotsPrices):
     return slotsPrices[1][(-1)]
 
 
-def getNextBerthPackPrice(berths, berthsPrices):
-    addPackNumber = (berths - berthsPrices[0]) / berthsPrices[1]
-    if addPackNumber < 0:
-        return 0
-    if addPackNumber < len(berthsPrices[2]):
-        return berthsPrices[2][addPackNumber]
-    return berthsPrices[2][(-1)]
+def getBerthPackCount(berthsInPack, selectedCount):
+    return selectedCount / berthsInPack
+
+
+def getNextBerthPackPrice(currentBerthsCount, berthsPrices, selectedCount=None):
+    initialBerths, berthsInPack, packsCost = berthsPrices
+    packCost = packsCost[(-1)]
+    selectedCount = selectedCount if selectedCount is not None else berthsInPack
+    countPacks = getBerthPackCount(berthsInPack, selectedCount)
+    countFreePacks = max((initialBerths - currentBerthsCount) / berthsInPack, DEFAULT_ZERO_BERTH)
+    return max((countPacks - countFreePacks) * packCost, DEFAULT_ZERO_BERTH)

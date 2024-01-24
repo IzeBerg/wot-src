@@ -29,8 +29,6 @@ class GlobalEvents(IntEnum):
 class ReturnPlaces(IntEnum):
     TO_HANGAR = 0
     TO_SHOP = 1
-    TO_CUSTOM = 2
-    TO_SHARDS = 3
 
 
 def _handlerOnOpenClick(eventData):

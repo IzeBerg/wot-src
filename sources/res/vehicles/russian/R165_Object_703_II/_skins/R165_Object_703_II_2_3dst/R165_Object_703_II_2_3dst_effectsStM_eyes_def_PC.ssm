@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>Prebattle</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>Sequence Node</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Prebattle</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-28.000000 -119.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Sequence Node</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/R165_Object_703_II_2_3dst/R165_Object_703_II_2_3dst_turret_eyes_pre_battle_PC.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Sleep Node</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-27.500000 14.500000 0.000000</uiPosition>
+	</node>
+</root>

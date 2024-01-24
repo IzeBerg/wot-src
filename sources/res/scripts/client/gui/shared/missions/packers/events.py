@@ -22,7 +22,6 @@ from soft_exception import SoftException
 if typing.TYPE_CHECKING:
     from gui.server_events.event_items import ServerEventAbstract
     from gui.server_events.bonuses import SimpleBonus
-    from gui.shared.missions.packers.bonus import BonusUIPacker
 _logger = logging.getLogger(__name__)
 DEFAULT_AWARDS_COUNT = 10
 DAILY_QUEST_AWARDS_COUNT = 1000
@@ -84,7 +83,6 @@ class BattleQuestUIDataPacker(_EventUIDataPacker):
         self._packDefaultConds(model)
 
     def _packBonuses(self, model):
-        self._tooltipData = {}
         packer = self.__bonusPackerGetter()
         self._tooltipData = {}
         packQuestBonusModelAndTooltipData(packer, model.getBonuses(), self._event, tooltipData=self._tooltipData)
@@ -184,7 +182,6 @@ class Comp7WeeklyQuestPacker(_EventUIDataPacker):
 
 class DailyQuestUIDataPacker(BattleQuestUIDataPacker):
     eventsCache = dependency.descriptor(IEventsCache)
-    _NY_BONUSES_ORDER = ('battleToken', 'entitlements')
 
     def pack(self, model=None):
         if model is not None and not isinstance(model, DailyQuestModel):
@@ -195,17 +192,6 @@ class DailyQuestUIDataPacker(BattleQuestUIDataPacker):
             self._packModel(model)
             self.__resolveQuestIcon(model)
             return model
-
-    def _packBonuses(self, model):
-        self._tooltipData = {}
-        packer = getDefaultBonusPacker()
-        bonuses = sorted(self._event.getBonuses(), key=self.__keySortOrder)
-        packQuestBonusModelAndTooltipData(packer, model.getBonuses(), self._event, self._tooltipData, bonuses)
-
-    def __keySortOrder(self, bonus):
-        if bonus.getName() in self._NY_BONUSES_ORDER:
-            return self._NY_BONUSES_ORDER.index(bonus.getName())
-        return len(self._NY_BONUSES_ORDER)
 
     def __resolveQuestIcon(self, model):
         iconId = self._event.getIconID()

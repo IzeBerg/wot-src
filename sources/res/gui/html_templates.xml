@@ -1124,7 +1124,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<counterLabelText>&lt;font face=&apos;$FieldFont&apos; size=&apos;11&apos; color=&apos;#FFF5E2&apos;&gt;%(message)s&lt;/font&gt;</counterLabelText>
 			<titleFont>&lt;font face=&apos;$TitleFont&apos;&gt;%(message)s&lt;/font&gt;</titleFont>
 			<tutorialText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#ffdd99&apos;&gt;%(message)s&lt;/font&gt;</tutorialText>
-			<tutorialTextBig>&lt;font face=&apos;$FieldFont&apos; size=&apos;16&apos; color=&apos;#ffdd99&apos;&gt;%(message)s&lt;/font&gt;</tutorialTextBig>
 			<alignText>&lt;p align=&apos;%(align)s&apos;&gt;%(message)s&lt;/p&gt;</alignText>
 			<leadingText>&lt;textformat leading=&apos;%(leading)s&apos;&gt;%(message)s&lt;/textformat&gt;</leadingText>
 			<bonusLocalText>&lt;font face=&apos;$FieldFont&apos; size=&apos;20&apos; color=&apos;#FEFEEC&apos;&gt;%(message)s&lt;/font&gt;</bonusLocalText>
@@ -1146,13 +1145,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<clockWithText>&lt;img src=&apos;img://gui/maps/icons/missions/daily/widgets/clock_icon_s.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-6&apos; hspace=&apos;0&apos;/&gt;&lt;font face=&apos;$TitleFont&apos; size=&apos;14&apos; color=&apos;#FFDD99&apos;&gt;%(text)s&lt;/font&gt;</clockWithText>
 			<poiCapturedBoldText>&lt;font size=&apos;18&apos; face=&apos;$TitleFont&apos;&gt;&lt;b&gt;%(message)s&lt;/b&gt;&lt;/font&gt;</poiCapturedBoldText>
 			<poiCapturedRegularText>&lt;font size=&apos;16&apos; face=&apos;$TitleFont&apos;&gt;%(message)s&lt;/font&gt;</poiCapturedRegularText>
-			<vehicleNameNY>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#B3EAFE&apos;&gt;%(message)s&lt;/font&gt;</vehicleNameNY>
-			<nyVehicleMain>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#668497&apos;&gt;%(message)s&lt;/font&gt;</nyVehicleMain>
-			<nyVehicleSmallMain>&lt;font face=&apos;$FieldFont&apos; size=&apos;12&apos; color=&apos;#668497&apos;&gt;%(message)s&lt;/font&gt;</nyVehicleSmallMain>
-			<nyVehicleTitle>&lt;font face=&apos;$FieldFont&apos; size=&apos;16&apos; color=&apos;#B3EAFE&apos;&gt;%(message)s&lt;/font&gt;</nyVehicleTitle>
-			<nyVehicleSmallTitle>&lt;font face=&apos;$FieldFont&apos; size=&apos;12&apos; color=&apos;#B3EAFE&apos;&gt;%(message)s&lt;/font&gt;</nyVehicleSmallTitle>
-			<nyNotEnoughShardsDialogCostBlock>&lt;font face=&apos;$TitleFont&apos; size=&apos;22&apos; color=&apos;#ff2717&apos;&gt;%(message)s&lt;/font&gt;</nyNotEnoughShardsDialogCostBlock>
-			<nyNotEnoughShardsDialogLevel>&lt;font face=&apos;$TitleFont&apos; size=&apos;36&apos; color=&apos;#ffdd99&apos;&gt;%(message)s&lt;/font&gt;</nyNotEnoughShardsDialogLevel>
 		</textStyle>
 		<profileStatistics>
 			<marksOfMasteryText>%(marksOfMastery)s&lt;font size=&apos;14&apos; color=&apos;#939188&apos;&gt;/%(totalVehicles)s&lt;/font&gt;</marksOfMasteryText>
@@ -1350,17 +1342,4 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			</roleSkill>
 		</tooltips>
 	</comp7>
-	<newYear>
-		<dialogs>
-			<confirmVehDiscount>
-				<context>
-					<vehicle_tag_open>&lt;font color=&quot;#CED9D9&quot;&gt;</vehicle_tag_open>
-					<tag_close>&lt;/font&gt;</tag_close>
-					<veh_type_tag_open>&lt;img src=&apos;img://gui/maps/icons/vehicleTypes/</veh_type_tag_open>
-					<veh_type_tag_close>.png&apos; width=&apos;18&apos; height=&apos;18&apos; vspace=&apos;-4&apos; /&gt;</veh_type_tag_close>
-				</context>
-				<text>_(#dialogs:confirmApplyVehicleDiscount/message)</text>
-			</confirmVehDiscount>
-		</dialogs>
-	</newYear>
 </root>

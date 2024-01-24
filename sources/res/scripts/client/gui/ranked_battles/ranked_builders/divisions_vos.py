@@ -9,7 +9,7 @@ if typing.TYPE_CHECKING:
     from gui.ranked_battles.ranked_models import Division, Rank
 
 def getDivisionVO(division):
-    alias = _getAlias(division)
+    alias = _getAlias()
     divisionVO = shared_vos.getDivisionVO(division)
     divisionVO.update({'name': text_styles.middleTitle(divisionVO['name']), 
        'linkage': alias, 
@@ -61,7 +61,5 @@ def getRankVO(rank):
        'shield': shieldVO}
 
 
-def _getAlias(division):
-    if division.isQualification():
-        return RANKEDBATTLES_ALIASES.RANKED_BATTLES_DIVISIONS_QUALIFICATION_UI
+def _getAlias():
     return RANKEDBATTLES_ALIASES.RANKED_BATTLES_DIVISIONS_PROGRESS_UI

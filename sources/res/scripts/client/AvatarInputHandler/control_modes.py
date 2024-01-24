@@ -8,7 +8,7 @@ from AvatarInputHandler import AimingSystems, aih_global_binding, gun_marker_ctr
 from AvatarInputHandler.DynamicCameras.camera_switcher import SwitchToPlaces
 from AvatarInputHandler.StrategicCamerasInterpolator import StrategicCamerasInterpolator
 from AvatarInputHandler.spg_marker_helpers.spg_marker_helpers import getSPGShotResult, getSPGShotFlyTime
-from DynamicCameras import SniperCamera, StrategicCamera, ArcadeCamera, ArtyCamera, DualGunCamera, OnlyArtyCamera
+from DynamicCameras import SniperCamera, StrategicCamera, ArcadeCamera, ArtyCamera, DualGunCamera, OnlyArtyCamera, AssaultCamera
 from PostmortemDelay import PostmortemDelay
 from ProjectileMover import collideDynamicAndStatic
 from TriggersManager import TRIGGER_TYPE
@@ -136,11 +136,11 @@ class _GunControlMode(IControlMode):
                  '_isEnabled', '_cam', '_aimingMode', '_canShot', '_currentMode',
                  '_lockedDown', '__curVehicleID')
 
-    def __init__(self, dataSection, avatarInputHandler, mode=CTRL_MODE_NAME.ARCADE, isStrategic=False):
+    def __init__(self, dataSection, avatarInputHandler, mode=CTRL_MODE_NAME.ARCADE):
         self._aih = weakref.proxy(avatarInputHandler)
         self._defaultOffset = dataSection.readVector2('defaultOffset')
         self._cameraTransitionDurations = _readCameraTransitionSettings(dataSection['camera'])
-        self._gunMarker = gun_marker_ctrl.createGunMarker(isStrategic)
+        self._gunMarker = self._createGunMarker()
         self._isEnabled = False
         self._cam = None
         self._aimingMode = 0
@@ -186,6 +186,9 @@ class _GunControlMode(IControlMode):
         self._cam.destroy()
         self._cam = None
         return
+
+    def _createGunMarker(self):
+        return gun_marker_ctrl.createDefaultGunMarker()
 
     def setGunMarkerFlag(self, positive, bit):
         self._gunMarker.setFlag(positive, bit)
@@ -621,37 +624,86 @@ class ArcadeControlMode(_GunControlMode):
     def _setupCamera(self, dataSection):
         self._cam = ArcadeCamera.ArcadeCamera(dataSection['camera'], defaultOffset=self._defaultOffset)
 
+    def __getAssaultSpgTargetPos(self):
+        pos = None
+        normal = Math.Vector3(0, -1, 0)
+        cursorPosition = GUI.mcursor().position
+        ray, wpoint = cameras.getWorldRayAndPoint(cursorPosition.x, cursorPosition.y)
+        ray.normalise()
+        res = BigWorld.wg_collideDynamicStatic(BigWorld.player().spaceID, wpoint, wpoint + ray * 5500, 128, BigWorld.player().playerVehicleID, -1, 0)
+        if res is not None:
+            pos = res[0]
+            normal = res[6]
+        waterCollisionDist = BigWorld.wg_collideWater(wpoint, wpoint + ray * 5500, False)
+        if waterCollisionDist > -1.0 and (pos is None or waterCollisionDist < (pos - wpoint).length):
+            pos = wpoint + ray * waterCollisionDist
+            normal = Math.Vector3(0, 1, 0)
+        if pos is None:
+            pos = self.camera.aimingSystem.getDesiredShotPoint()
+            position, velocity, gravity = BigWorld.player().gunRotator.getShotParams(pos, ignoreYawLimits=True)
+            hitPoint = BigWorld.wg_simulateProjectileTrajectory(position, velocity, gravity, constants.SERVER_TICK_LENGTH, constants.SHELL_TRAJECTORY_EPSILON_CLIENT, 128, 0)
+            checkWaterDirection = Math.Vector3(0.0, -1.0, 0.0)
+            if hitPoint is not None:
+                pos = hitPoint[1]
+                projectileDir = hitPoint[2]
+                projectileDir.normalise()
+                checkWaterDirection = projectileDir
+                hit = BigWorld.wg_collideDynamicStatic(BigWorld.player().spaceID, pos - projectileDir.scale(0.1), pos + projectileDir.scale(0.1), 128, BigWorld.player().playerVehicleID, -1, 0)
+                if hit is not None:
+                    normal = hit[6]
+            p0 = pos + checkWaterDirection.scale(1000.0)
+            p1 = pos - checkWaterDirection.scale(1000.0)
+            waterDist = BigWorld.wg_collideWater(p0, p1, False)
+            if waterDist > 0 and waterDist > (pos - p0).length:
+                pos = p0 - checkWaterDirection.scale(waterDist)
+                normal = Math.Vector3(0, 1, 0)
+        return (
+         pos, normal)
+
     def __activateAlternateMode(self, pos=None, bByScroll=False):
         ownVehicle = BigWorld.entity(BigWorld.player().playerVehicleID)
         if ownVehicle is not None and ownVehicle.isStarted and avatar_getter.isVehicleBarrelUnderWater() or BigWorld.player().isGunLocked or BigWorld.player().isObserver():
             return
-        if self._aih.isSPG and not bByScroll or self._aih.isOnlyArty:
+        if self._aih.isAssaultSPG:
             self._cam.update(0, 0, 0, False, False)
             equipmentID = None
+            normal = Math.Vector3(0, -1, 0)
             if BattleReplay.isPlaying():
                 mode = BattleReplay.g_replayCtrl.getControlMode()
-                pos = BattleReplay.g_replayCtrl.getGunMarkerPos()
                 equipmentID = BattleReplay.g_replayCtrl.getEquipmentId()
             else:
-                mode = CTRL_MODE_NAME.SPG_ONLY_ARTY_MODE if self._aih.isOnlyArty else self.__getSpgAlternativeMode()
-                if pos is None:
-                    pos = self.camera.aimingSystem.getDesiredShotPoint()
-                    if pos is None:
-                        pos = self._gunMarker.getPosition()
-                    vehicle = BigWorld.player().getVehicleAttached()
-                    checkHitPoint = True
-                    if ownVehicle.model is not None:
-                        gunNode = ownVehicle.model.node('gun')
-                        if gunNode is not None:
-                            gunPosition = Math.Matrix(gunNode).translation
-                            checkHitPoint = BigWorld.player().arena.isPointInsideArenaBB(gunPosition)
-                    if checkHitPoint:
-                        hitPoint, _ = getShotTargetInfo(vehicle, pos, BigWorld.player().gunRotator)
-                        if vehicle.position.distTo(hitPoint) < vehicle.position.distTo(pos):
-                            pos = hitPoint
-            self._aih.onControlModeChanged(mode, preferredPos=pos, aimingMode=self._aimingMode, saveDist=True, equipmentID=equipmentID)
+                mode = CTRL_MODE_NAME.ASSAULT_SPG
+            if pos is None:
+                pos, normal = self.__getAssaultSpgTargetPos()
+            self._aih.onControlModeChanged(mode, preferredPos=pos, hitNormal=normal, aimingMode=self._aimingMode, saveDist=True, equipmentID=equipmentID)
             return
         else:
+            if self._aih.isSPG and not bByScroll or self._aih.isOnlyArty:
+                self._cam.update(0, 0, 0, False, False)
+                equipmentID = None
+                if BattleReplay.isPlaying():
+                    mode = BattleReplay.g_replayCtrl.getControlMode()
+                    pos = BattleReplay.g_replayCtrl.getGunMarkerPos()
+                    equipmentID = BattleReplay.g_replayCtrl.getEquipmentId()
+                else:
+                    mode = CTRL_MODE_NAME.SPG_ONLY_ARTY_MODE if self._aih.isOnlyArty else self.__getSpgAlternativeMode()
+                    if pos is None:
+                        pos = self.camera.aimingSystem.getDesiredShotPoint()
+                        if pos is None:
+                            pos = self._gunMarker.getPosition()
+                        vehicle = BigWorld.player().getVehicleAttached()
+                        checkHitPoint = True
+                        if ownVehicle.model is not None:
+                            gunNode = ownVehicle.model.node('gun')
+                            if gunNode is not None:
+                                gunPosition = Math.Matrix(gunNode).translation
+                                checkHitPoint = BigWorld.player().arena.isPointInsideArenaBB(gunPosition)
+                        if checkHitPoint:
+                            hitPoint, _ = getShotTargetInfo(vehicle, pos, BigWorld.player().gunRotator)
+                            if vehicle.position.distTo(hitPoint) < vehicle.position.distTo(pos):
+                                pos = hitPoint
+                self._aih.onControlModeChanged(mode, preferredPos=pos, aimingMode=self._aimingMode, saveDist=True, equipmentID=equipmentID)
+                return
             if not self._aih.isSPG:
                 self._cam.update(0, 0, 0, False, False)
                 if BattleReplay.isPlaying() and BigWorld.player().isGunLocked:
@@ -689,7 +741,7 @@ class _TrajectoryControlMode(_GunControlMode):
                  '__controllingVehicleID', '__targetVehicleID', '_nextControlMode')
 
     def __init__(self, dataSection, avatarInputHandler, modeName, trajectoryUpdateInterval):
-        super(_TrajectoryControlMode, self).__init__(dataSection, avatarInputHandler, modeName, True)
+        super(_TrajectoryControlMode, self).__init__(dataSection, avatarInputHandler, modeName)
         self.__trajectoryDrawer = BigWorld.wg_trajectory_drawer()
         self.__dataUpdateCallback = None
         self.__updateInterval = trajectoryUpdateInterval
@@ -738,6 +790,9 @@ class _TrajectoryControlMode(_GunControlMode):
         self._cam.writeUserPreferences()
         self.spgShotsIndicatorState = {}
         return
+
+    def _createGunMarker(self):
+        return gun_marker_ctrl.createStrategicGunMarker()
 
     def setObservedVehicle(self, vehicleID):
         self.__controllingVehicleID = vehicleID
@@ -829,7 +884,7 @@ class _TrajectoryControlMode(_GunControlMode):
         self._cam.isAimOffsetEnabled = True
 
     def __switchToNextControlMode(self, switchToPos=None, switchToPlace=None):
-        if GUI_SETTINGS.spgAlternativeAimingCameraEnabled and self._aih.isSPG and self._nextControlMode is not None:
+        if GUI_SETTINGS.spgAlternativeAimingCameraEnabled and self._aih.isSPG and not self._aih.isAssaultSPG and self._nextControlMode is not None:
             soundName = self._SWITCH_SOUND.get(self._nextControlMode)
             if soundName:
                 SoundGroups.g_instance.playSound2D(soundName)
@@ -1020,6 +1075,55 @@ class OnlyArtyControlMode(_TrajectoryControlMode):
                 return
             shotDesc = BigWorld.player().getVehicleDescriptor().gun.shots[shotIdx]
             self._cam.setMaxDistance(shotDesc.maxDistance)
+        return
+
+
+class AssaultControlMode(_TrajectoryControlMode):
+    __sessionProvider = dependency.descriptor(IBattleSessionProvider)
+    _TRAJECTORY_UPDATE_INTERVAL = 0.05
+    _MIN_ACCEPT_TARGET_NORMAL = -0.1
+
+    def __init__(self, dataSection, avatarInputHandler):
+        super(AssaultControlMode, self).__init__(dataSection, avatarInputHandler, CTRL_MODE_NAME.ASSAULT_SPG, AssaultControlMode._TRAJECTORY_UPDATE_INTERVAL)
+        self._nextControlMode = CTRL_MODE_NAME.ARCADE
+        self._cam = AssaultCamera.AssaultCamera(dataSection['camera'])
+
+    def enable(self, **args):
+        replayCtrl = BattleReplay.g_replayCtrl
+        if not (replayCtrl.isPlaying and replayCtrl.isControllingCamera):
+            canEnable = False
+            if args['hitNormal'].y > AssaultControlMode._MIN_ACCEPT_TARGET_NORMAL:
+                canEnable = self._cam.setup(args['preferredPos'])
+            else:
+                LOG_DEBUG('AssaultCamera: aiming on the plane from below!')
+            if not canEnable:
+                self._aih.onControlModeChanged(CTRL_MODE_NAME.ARCADE)
+                return
+        super(AssaultControlMode, self).enable(**args)
+        self.strategicCamera = STRATEGIC_CAMERA.TRAJECTORY
+        ammoCtrl = self.__sessionProvider.shared.ammo
+        if ammoCtrl is not None:
+            ammoCtrl.onCurrentShellChanged += self.__onCurrentShellChanged
+        return
+
+    def disable(self):
+        super(AssaultControlMode, self).disable()
+        self.strategicCamera = STRATEGIC_CAMERA.AERIAL
+        ammoCtrl = self.__sessionProvider.shared.ammo
+        if ammoCtrl is not None:
+            ammoCtrl.onCurrentShellChanged -= self.__onCurrentShellChanged
+        return
+
+    def _createGunMarker(self):
+        return gun_marker_ctrl.createAssaultSpgGunMarker()
+
+    def __onCurrentShellChanged(self, intCD):
+        ctrl = self.__sessionProvider.shared.ammo
+        if ctrl is not None:
+            shotIdx = ctrl.getGunSettings().getShotIndex(intCD)
+            if shotIdx < 0:
+                LOG_WARNING('AssaultControlMode __onCurrentShellChanged invalid shellID', intCD)
+                return
         return
 
 

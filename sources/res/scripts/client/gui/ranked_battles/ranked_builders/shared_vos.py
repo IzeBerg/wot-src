@@ -43,7 +43,7 @@ def getDivisionVO(division):
        'isCompleted': division.isCompleted(), 
        'isLocked': not division.isUnlocked(), 
        'isCurrent': division.isCurrent(), 
-       'isQualification': division.isQualification()}
+       'isQualification': False}
 
 
 def getEfficiencyVO(currentSeasonEfficiency, currentSeasonEfficiencyDiff):

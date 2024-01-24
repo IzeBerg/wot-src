@@ -1,5 +1,5 @@
-from gui.server_events.bonuses import getNonQuestBonuses
 from gui.impl.lobby.loot_box.loot_box_helper import BonusInfo
+from gui.server_events.bonuses import getNonQuestBonuses
 
 def __allOfParser(bitmask, _, bonusValue, parentLimitIds, bonusLimitIds, ctx):
     bonusInfos = [ BonusInfo(*rawData) for rawData in bonusValue ]

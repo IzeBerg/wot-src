@@ -96,11 +96,3 @@ class HangarMeta(View):
     def as_updateHangarComponentsS(self, showComponents=None, hideComponents=None):
         if self._isDAAPIInited():
             return self.flashObject.as_updateHangarComponents(showComponents, hideComponents)
-
-    def as_createFunRandomNYWidgetS(self):
-        if self._isDAAPIInited():
-            return self.flashObject.as_createFunRandomNYWidget()
-
-    def as_removeFunRandomNYWidgetS(self):
-        if self._isDAAPIInited():
-            return self.flashObject.as_removeFunRandomNYWidget()

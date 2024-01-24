@@ -1,4 +1,4 @@
-import BigWorld, Windowing
+import logging, BigWorld, Windowing
 from CurrentVehicle import g_currentVehicle
 from armory_yard.gui.Scaleform.daapi.view.lobby.hangar.sound_constants import ARMORY_YARD_REWARD_VIDEO_SOUND_SPACE
 from armory_yard.gui.Scaleform.daapi.view.lobby.hangar.sounds import ArmoryYardRewardVideoSoundControl
@@ -13,6 +13,7 @@ from gui.shared.event_dispatcher import showHangar
 from gui.shared import g_eventBus
 from gui.shared.events import ArmoryYardEvent
 from items.vehicles import getVehicleClassFromVehicleType
+_logger = logging.getLogger(__name__)
 
 class ArmoryYardVideoRewardView(ViewImpl):
     __slots__ = ('__vehicle', '__soundControl')
@@ -58,6 +59,8 @@ class ArmoryYardVideoRewardView(ViewImpl):
          (
           self.viewModel.onClose, self.__onClose),
          (
+          self.viewModel.onError, self.__onError),
+         (
           self.viewModel.onShowVehicle, self.__onShowVehicle),
          (
           self.viewModel.onVideoStarted, self.__onVideoStarted))
@@ -78,6 +81,11 @@ class ArmoryYardVideoRewardView(ViewImpl):
 
     def __onClose(self):
         g_eventBus.handleEvent(ArmoryYardEvent(ArmoryYardEvent.STAGE_UNMUTE_SOUND))
+        self.destroyWindow()
+
+    def __onError(self, args):
+        errorFilePath = str(args.get('errorFilePath', ''))
+        _logger.error('Reward video error: %s', errorFilePath)
         self.destroyWindow()
 
     def __onVideoStarted(self):

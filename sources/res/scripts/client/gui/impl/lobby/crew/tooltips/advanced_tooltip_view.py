@@ -1,7 +1,9 @@
+import logging
 from frameworks.wulf import ViewSettings
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.crew.tooltips.advanced_tooltip_view_model import AdvancedTooltipViewModel
 from gui.impl.pub import ViewImpl
+_logger = logging.getLogger(__name__)
 
 class AdvancedTooltipView(ViewImpl):
     __slots__ = ('_movie', '_header', '_description')
@@ -13,6 +15,11 @@ class AdvancedTooltipView(ViewImpl):
         self._header = header
         self._description = description
 
+    def onError(self, args):
+        errorFilePath = str(args.get('errorFilePath', ''))
+        _logger.error('Reward video error: %s', errorFilePath)
+        self.destroyWindow()
+
     @property
     def viewModel(self):
         return super(AdvancedTooltipView, self).getViewModel()
@@ -23,3 +30,8 @@ class AdvancedTooltipView(ViewImpl):
             tx.setMovie(self._movie)
             tx.setHeader(self._header)
             tx.setDescription(self._description)
+
+    def _getEvents(self):
+        return (
+         (
+          self.viewModel.onError, self.onError),)

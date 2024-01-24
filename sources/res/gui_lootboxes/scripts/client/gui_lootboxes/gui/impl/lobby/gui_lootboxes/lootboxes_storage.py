@@ -132,7 +132,9 @@ class LootBoxesStorageView(ViewImpl):
          (
           self.viewModel.showBonusProbabilities, self.__showBonusProbabilities),
          (
-          self.viewModel.onClose, self.__onClose))
+          self.viewModel.onClose, self.__onClose),
+         (
+          self.viewModel.onError, self.onError))
 
     def __onLootboxSelected(self, args):
         lootBox = self.__itemsCache.items.tokens.getLootBoxByID(int(args.get('lootBoxID', 0)))
@@ -167,6 +169,10 @@ class LootBoxesStorageView(ViewImpl):
     def __onClose(self):
         self.__context.setReturnPlace(self.__returnPlace)
         self.destroyWindow()
+
+    def onError(self, args):
+        errorFilePath = str(args.get('errorFilePath', ''))
+        _logger.error('Lootbox video error: %s', errorFilePath)
 
     @replaceNoneKwargsModel
     def __fillLootBoxesModel(self, model=None):

@@ -29,6 +29,11 @@ class StyleVideoView(ViewImpl):
     def onClose(self):
         self.destroyWindow()
 
+    def onError(self, args):
+        errorFilePath = str(args.get('errorFilePath', ''))
+        _logger.error('Reward video error: %s', errorFilePath)
+        self.destroyWindow()
+
     def _onLoading(self, chapter, level, *args, **kwargs):
         super(StyleVideoView, self)._onLoading(*args, **kwargs)
         with self.viewModel.transaction() as (model):
@@ -40,7 +45,9 @@ class StyleVideoView(ViewImpl):
     def _getEvents(self):
         return (
          (
-          self.viewModel.onClose, self.onClose),)
+          self.viewModel.onClose, self.onClose),
+         (
+          self.viewModel.onError, self.onError))
 
     def _initialize(self, *args, **kwargs):
         super(StyleVideoView, self)._initialize(*args, **kwargs)

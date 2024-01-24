@@ -6,7 +6,6 @@ from gui_lootboxes.messenger.formatters.service_channel import LootBoxOpenedForm
 _AUTO_BOXES_SUB_FORMATTERS = (
  auto_boxes_subformatters.EventBoxesFormatter(),
  auto_boxes_subformatters.EventLootBoxesFormatter(),
- auto_boxes_subformatters.NYGiftSystemSurpriseFormatter(),
  auto_boxes_subformatters.LunarNYEnvelopeAutoOpenFormatter())
 
 def registerLootBoxClientFormatters():

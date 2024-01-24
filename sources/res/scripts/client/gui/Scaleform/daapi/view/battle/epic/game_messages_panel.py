@@ -1,4 +1,4 @@
-import BattleReplay
+import time, BattleReplay
 from gui.Scaleform.daapi.view.meta.GameMessagesPanelMeta import GameMessagesPanelMeta
 from helpers import dependency
 from skeletons.gui.battle_session import IBattleSessionProvider
@@ -7,7 +7,6 @@ from gui.battle_control import avatar_getter
 from gui.Scaleform.genConsts.GAME_MESSAGES_CONSTS import GAME_MESSAGES_CONSTS
 from gui.Scaleform.daapi.view.battle.shared.game_messages_panel import PlayerMessageData
 from gui.battle_results.components.common import makeEpicBattleFinishResultLabel
-import time
 
 class EpicMessagePanel(GameMessagesPanelMeta):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
