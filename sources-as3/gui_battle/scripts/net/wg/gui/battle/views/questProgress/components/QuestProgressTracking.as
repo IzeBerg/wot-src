@@ -148,8 +148,9 @@ package net.wg.gui.battle.views.questProgress.components
       
       private function recreateQuestTrackingBtns(param1:int, param2:int) : int
       {
-         var _loc3_:int = param1 - param2;
          var _loc4_:QuestTrackingButton = null;
+         var _loc3_:int = param1 - param2;
+         _loc4_ = null;
          var _loc5_:int = 0;
          if(_loc3_ > 0)
          {

@@ -277,6 +277,8 @@ package net.wg.data.constants.generated
       
       public static const FRANCE_F116_BAT_CHATILLON_BOURRASQUE:String = "france-F116_Bat_Chatillon_Bourrasque";
       
+      public static const FRANCE_F116_BAT_CHATILLON_BOURRASQUE_DV:String = "france-F116_Bat_Chatillon_Bourrasque_DV";
+      
       public static const FRANCE_F117_ALT_PROTO_AMX_30:String = "france-F117_Alt_Proto_AMX_30";
       
       public static const FRANCE_F118_CHAR_MLE_75:String = "france-F118_Char_Mle_75";
