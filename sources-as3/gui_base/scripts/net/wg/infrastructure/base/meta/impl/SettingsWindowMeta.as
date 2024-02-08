@@ -43,6 +43,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var openColorSettings:Function;
       
+      public var restartNewbieBattleHints:Function;
+      
       private var _dataProvider:DataProvider;
       
       private var _vectorSettingsNewCountersVo:Vector.<SettingsNewCountersVo>;
@@ -185,6 +187,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.openColorSettings,"openColorSettings" + Errors.CANT_NULL);
          this.openColorSettings();
+      }
+      
+      public function restartNewbieBattleHintsS() : void
+      {
+         App.utils.asserter.assertNotNull(this.restartNewbieBattleHints,"restartNewbieBattleHints" + Errors.CANT_NULL);
+         this.restartNewbieBattleHints();
       }
       
       public final function as_setCaptureDevices(param1:Number, param2:Array) : void

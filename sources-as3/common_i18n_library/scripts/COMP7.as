@@ -1083,7 +1083,11 @@ package
       
       public static const BANNER_INFO_SEASONENDSOON:String = "#comp7:banner/info/seasonEndSoon";
       
-      public static const BANNER_INFO_SEASONEND:String = "#comp7:banner/info/seasonEnd";
+      public static const BANNER_INFO_SEASONEND_FIRST:String = "#comp7:banner/info/seasonEnd/first";
+      
+      public static const BANNER_INFO_SEASONEND_SECOND:String = "#comp7:banner/info/seasonEnd/second";
+      
+      public static const BANNER_INFO_SEASONEND_THIRD:String = "#comp7:banner/info/seasonEnd/third";
       
       public static const BANNER_INFO_DISABLED:String = "#comp7:banner/info/disabled";
       

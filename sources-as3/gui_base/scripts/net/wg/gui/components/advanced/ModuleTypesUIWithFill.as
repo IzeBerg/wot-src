@@ -19,7 +19,7 @@ package net.wg.gui.components.advanced
       
       private static const EXTRA_ICON_PADDING_RIGHT:int = 2;
       
-      private static const EXTRA_ICON_PADDING_BOTTOM:int = 2;
+      private static const EXTRA_ICON_PADDING_TOP:int = 2;
       
       private static const EXTRA_ICON_NAME:String = "extraIconImage";
        
@@ -79,7 +79,7 @@ package net.wg.gui.components.advanced
          if(this._extraIcon && isInvalid(INV_EXTRA_ICON_POS))
          {
             this._extraIcon.x = this.bg.width - this._extraIcon.width - EXTRA_ICON_PADDING_RIGHT | 0;
-            this._extraIcon.y = this.bg.height - this._extraIcon.height - EXTRA_ICON_PADDING_BOTTOM | 0;
+            this._extraIcon.y = EXTRA_ICON_PADDING_TOP | 0;
          }
       }
       

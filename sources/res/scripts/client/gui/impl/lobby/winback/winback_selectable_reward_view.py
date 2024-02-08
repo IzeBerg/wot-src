@@ -203,7 +203,7 @@ class WinbackSelectableRewardView(ViewImpl):
             result = [ self.__createVehicleItem(giftId, opt, *self.__getOption(bonusType, opt)) for giftId, opt in raw.iteritems()
                      ]
             currentTabBonuses['bonuses'] = OrderedDict(_sortAndClearVehicles(result))
-        currentTabBonuses['isDiscount'] = bonusType == SelectableTypes.DISCOUNT
+        currentTabBonuses['isDiscount'] = tabType == RewardName.SELECTABLE_VEHICLE_DISCOUNT.value
         currentTabBonuses['isCompensation'] = bonusType == SelectableTypes.BLUEPRINTS
         currentTabBonuses['selectableBonus'] = bonus
         currentTabBonuses['tooltipData'] = first(WinbackSelectableBonus(tabType, {'level': level, 'token': tokenName}).getTooltip())

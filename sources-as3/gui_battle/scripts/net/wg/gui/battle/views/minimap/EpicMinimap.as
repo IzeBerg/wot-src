@@ -7,6 +7,7 @@ package net.wg.gui.battle.views.minimap
    import flash.geom.Rectangle;
    import net.wg.gui.battle.epicBattle.VO.daapi.EpicPlayerStatsVO;
    import net.wg.gui.battle.epicBattle.VO.daapi.EpicVehiclesStatsVO;
+   import net.wg.gui.battle.views.minimap.components.entries.epic.MapShortcutLabel;
    import net.wg.gui.battle.views.minimap.containers.EpicMinimapEntriesContainer;
    import net.wg.gui.battle.views.minimap.events.MinimapEvent;
    import net.wg.gui.components.controls.UILoaderAlt;
@@ -46,7 +47,7 @@ package net.wg.gui.battle.views.minimap
       
       public var mapHit:Sprite = null;
       
-      public var mapShortcutLabel:MovieClip = null;
+      public var mapShortcutLabel:MapShortcutLabel = null;
       
       public var mapZoomMode:MovieClip = null;
       
@@ -139,6 +140,11 @@ package net.wg.gui.battle.views.minimap
          }
       }
       
+      public function as_setMapShortcutLabel(param1:String) : void
+      {
+         this.mapShortcutLabel.label = param1;
+      }
+      
       override public function getMessageCoordinate() : Number
       {
          return this.currentHeight - this.currentTopLeftPoint.y;
@@ -188,7 +194,6 @@ package net.wg.gui.battle.views.minimap
          this.updateSizeIndex(true);
          this._clickAreaSpr.addEventListener(MouseEvent.CLICK,this.onAreaMouseClickHandler);
          this._clickAreaSpr.addEventListener(MouseEvent.MOUSE_WHEEL,this.onAreaMouseWheelHandler);
-         this.mapShortcutLabel.mapBtnTF.text = READABLE_KEY_NAMES.KEY_M;
          this._sectors = new <MovieClip>[this.mapShortcutLabel.sectorOverview.sector1,this.mapShortcutLabel.sectorOverview.sector2,this.mapShortcutLabel.sectorOverview.sector3,this.mapShortcutLabel.sectorOverview.sector4,this.mapShortcutLabel.sectorOverview.sector5,this.mapShortcutLabel.sectorOverview.sector6,this.mapShortcutLabel.sectorOverview.sectorHQ];
          this.updateSectorOverview();
       }
@@ -199,6 +204,7 @@ package net.wg.gui.battle.views.minimap
          this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_WHEEL,this.onAreaMouseWheelHandler);
          this._clickAreaSpr = null;
          this.mapHit = null;
+         this.mapShortcutLabel.dispose();
          this.mapShortcutLabel = null;
          this.mapZoomMode.stop();
          this.mapZoomMode = null;

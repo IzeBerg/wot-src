@@ -1,6 +1,6 @@
 package net.wg.gui.battle.eventBattle.views.battleHints
 {
-   import net.wg.gui.battle.eventBattle.views.battleHints.data.HintInfoVO;
+   import net.wg.gui.battle.views.battleHint.vo.BattleHintVO;
    import net.wg.infrastructure.base.meta.IBattleHintMeta;
    import net.wg.infrastructure.base.meta.impl.BattleHintMeta;
    
@@ -27,10 +27,15 @@ package net.wg.gui.battle.eventBattle.views.battleHints
          this.hintContainer.hideHint();
       }
       
-      override protected function showHint(param1:HintInfoVO) : void
+      override protected function showHint(param1:BattleHintVO) : void
       {
          this.hintContainer.showHint(param1);
          this.updateStage(App.appWidth,App.appHeight);
+      }
+      
+      public function as_cancelFadeOut() : void
+      {
+         this.hintContainer.closeHint();
       }
       
       public function updateStage(param1:Number, param2:Number) : void

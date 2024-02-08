@@ -225,7 +225,14 @@ package net.wg.gui.battle.components
          {
             _loc7_ = _loc2_[0];
             _loc7_.fullSize();
-            _loc7_.tweenToX(0);
+            if(_loc3_.indexOf(_loc7_) == -1)
+            {
+               _loc7_.tweenToX(0);
+            }
+            else
+            {
+               _loc7_.x = 0;
+            }
             return;
          }
          var _loc8_:Boolean = false;

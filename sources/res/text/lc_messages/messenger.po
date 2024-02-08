@@ -1255,6 +1255,9 @@ msgstr "Списано очков Боевого пропуска"
 msgid "platformCurrencyMsg/debited/brcoin"
 msgstr "Списано стальных печатей"
 
+msgid "platformCurrencyMsg/debited/clanvehiclecoin"
+msgstr "Списано жетонов Манёвров"
+
 msgid "platformCurrencyMsg/debited/equip_coin"
 msgstr "Списано компонентов"
 
@@ -1272,6 +1275,9 @@ msgstr "Начислено очков Боевого пропуска"
 
 msgid "platformCurrencyMsg/received/brcoin"
 msgstr "Начислено стальных печатей"
+
+msgid "platformCurrencyMsg/received/clanvehiclecoin"
+msgstr "Начислено жетонов Манёвров"
 
 msgid "platformCurrencyMsg/received/equip_coin"
 msgstr "Начислено компонентов"
@@ -1754,8 +1760,8 @@ msgstr "Достигнут лимит очков"
 
 msgid "serviceChannelMessages/battlePass/reachedCap/text"
 msgstr ""
-"Заработано максимальное количество очков на %(vehName)s.\n"
-"Награда за достижение лимита: %(bonusPoints)s.\n"
+"Заработано максимальное количество очков на %(vehName)s\n"
+"Награда за достижение лимита: %(bonusPoints)s\n"
 "Чтобы продолжить зарабатывать очки, смените машину."
 
 msgid "serviceChannelMessages/battlePass/styleChosen/header"
@@ -1794,7 +1800,7 @@ msgstr ""
 msgid "serviceChannelMessages/battlePassHReward/buyProgress/text"
 msgstr ""
 "Добавлено этапов в главе «%(chapter)s»: %(levelCount)s\n"
-"Вы достигли %(currentLevel)s этапа.\n"
+"Вы достигли %(currentLevel)s-го этапа.\n"
 "Получены награды:"
 
 msgid "serviceChannelMessages/battlePassHReward/buyWithRewards/text"
@@ -1811,7 +1817,7 @@ msgstr "Получена награда за пройденные этапы з�
 
 msgid "serviceChannelMessages/battlePassReward/battle/chapterFinal/text"
 msgstr ""
-"Вы завершили главу %(chapter)s.\n"
+"Вы завершили главу «%(chapter)s».\n"
 "Получена награда:"
 
 msgid "serviceChannelMessages/battlePassReward/battle/final/additionalText"
@@ -1836,6 +1842,11 @@ msgstr "Потрачено свободного опыта:"
 msgid "serviceChannelMessages/battlePassReward/buy/gold"
 msgstr "Потрачено золота:"
 
+msgid "serviceChannelMessages/battlePassReward/buyBPWithLevels/text"
+msgstr ""
+"Куплен Улучшенный пропуск и все этапы для главы «%(chapter)s».\n"
+"Получены награды за все этапы главы:"
+
 msgid "serviceChannelMessages/battlePassReward/buyMultiple/text"
 msgstr ""
 "Теперь вы будете получать награды из базовой и улучшенной линеек "
@@ -1846,7 +1857,7 @@ msgstr "50"
 
 msgid "serviceChannelMessages/battlePassReward/buyProgress/text"
 msgstr ""
-"Добавлено этапов в главе %(chapter)s: %(levelCount)s\n"
+"Добавлено этапов в главе «%(chapter)s»: %(levelCount)s\n"
 "Вы достигли %(currentLevel)s-го этапа.\n"
 "Получены награды:"
 
@@ -1859,14 +1870,17 @@ msgstr ""
 
 msgid "serviceChannelMessages/battlePassReward/buyWithoutRewards/text"
 msgstr ""
-"Теперь вы будете получать награды из базовой и улучшенной линеек одновременно в рамках главы %(chapter)s.\n"
-"Данный Улучшенный пропуск действует только для главы %(chapter)s."
+"Теперь вы будете получать награды из базовой и улучшенной линеек одновременно в рамках главы «%(chapter)s».\n"
+"Данный Улучшенный пропуск действует только для главы «%(chapter)s»."
 
 msgid "serviceChannelMessages/battlePassReward/header/autoSelectReward"
 msgstr "Начислена награда по умолчанию:"
 
 msgid "serviceChannelMessages/battlePassReward/header/buyBP"
 msgstr "Улучшенный пропуск куплен"
+
+msgid "serviceChannelMessages/battlePassReward/header/buyBPWithLevels"
+msgstr "Улучшенный пропуск куплен "
 
 msgid "serviceChannelMessages/battlePassReward/header/buyProgress"
 msgstr "Этапы куплены"
@@ -2652,6 +2666,9 @@ msgstr "Списаны койки из Казармы"
 msgid "serviceChannelMessages/invoiceReceived/boosters"
 msgstr "Личные резервы"
 
+msgid "serviceChannelMessages/invoiceReceived/boosters/debited"
+msgstr "Списаны личные резервы"
+
 msgid "serviceChannelMessages/invoiceReceived/bpcoinAccrued"
 msgstr "Начислено жетонов"
 
@@ -2768,6 +2785,9 @@ msgstr "Списано компонентов"
 
 msgid "serviceChannelMessages/invoiceReceived/equipment"
 msgstr "Снаряжение"
+
+msgid "serviceChannelMessages/invoiceReceived/equipment/debited"
+msgstr "Списано снаряжение"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinAccrued"
 msgstr "Начислено юбилейных монет"
@@ -2927,7 +2947,7 @@ msgid "serviceChannelMessages/lootBoxes/header"
 msgstr "Вам посылка:"
 
 msgid "serviceChannelMessages/lootBoxes/item/name"
-msgstr "«%(name)s» %(colorTagOpen)s×%(count)s%(colorTagClose)s"
+msgstr "«%(name)s» %(colorTagOpen)sx%(count)s%(colorTagClose)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/button"
 msgstr "Посмотреть"

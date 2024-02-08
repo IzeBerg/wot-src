@@ -42,7 +42,9 @@ class ExternalCache(BaseExternalCache):
                  offer.cdnBannerLogoPath,
                  offer.cdnLogoPath,
                  offer.cdnGiftsBackgroundPath,
-                 offer.cdnGiftsTokenImgPath})
+                 offer.cdnGiftsTokenImgPath,
+                 offer.cdnSignSmallImgPath,
+                 offer.cdnSignBigImgPath})
                 for gift in offer.availableGifts:
                     resMap['localizations'].update({gift.cdnLocFilePath})
                     resMap['images'].update({

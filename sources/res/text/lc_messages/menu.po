@@ -1040,9 +1040,6 @@ msgstr "Принять приглашение во взвод"
 msgid "contextMenu/addToFriends"
 msgstr "Добавить в «Друзья»"
 
-msgid "contextMenu/addToFriendsAgain"
-msgstr "Отправить запрос на добавление в «Друзья» повторно"
-
 msgid "contextMenu/addToIgnored"
 msgstr "Добавить в «Чёрный список»"
 
@@ -1234,6 +1231,9 @@ msgstr "Удалить из «Друзей»"
 
 msgid "contextMenu/removeFromIgnored"
 msgstr "Удалить из «Чёрного списка»"
+
+msgid "contextMenu/requestFriendship"
+msgstr "Отправить запрос на добавление в «Друзья» повторно"
 
 msgid "contextMenu/restore"
 msgstr "Восстановить"
@@ -1712,6 +1712,18 @@ msgstr "Машина подписки WoT Plus недоступна"
 msgid "customization/title"
 msgstr "Внешний вид"
 
+msgid "dateRange/dashDivider/full"
+msgstr "{start} – {end}"
+
+msgid "dateRange/dashDivider/short"
+msgstr "{start}–{end}"
+
+msgid "dateRange/textDivider/date"
+msgstr "с {start} по {end}"
+
+msgid "dateRange/textDivider/time"
+msgstr "с {start} до {end}"
+
 msgid "dateTime/fromToWithYear"
 msgstr "c {fromDay} {fromMonth} по {toDay} {toMonth} {toYear} г."
 
@@ -1787,6 +1799,42 @@ msgstr "Август"
 msgid "dateTime/months/full/9"
 msgstr "Сентябрь"
 
+msgid "dateTime/months/fullSmall/1"
+msgstr "январь"
+
+msgid "dateTime/months/fullSmall/10"
+msgstr "октябрь"
+
+msgid "dateTime/months/fullSmall/11"
+msgstr "ноябрь"
+
+msgid "dateTime/months/fullSmall/12"
+msgstr "декабрь"
+
+msgid "dateTime/months/fullSmall/2"
+msgstr "февраль"
+
+msgid "dateTime/months/fullSmall/3"
+msgstr "март"
+
+msgid "dateTime/months/fullSmall/4"
+msgstr "апрель"
+
+msgid "dateTime/months/fullSmall/5"
+msgstr "май"
+
+msgid "dateTime/months/fullSmall/6"
+msgstr "июнь"
+
+msgid "dateTime/months/fullSmall/7"
+msgstr "июль"
+
+msgid "dateTime/months/fullSmall/8"
+msgstr "август"
+
+msgid "dateTime/months/fullSmall/9"
+msgstr "сентябрь"
+
 msgid "dateTime/months/short/1"
 msgstr "Янв"
 
@@ -1822,6 +1870,42 @@ msgstr "Авг"
 
 msgid "dateTime/months/short/9"
 msgstr "Сен"
+
+msgid "dateTime/months/shortSmall/1"
+msgstr "янв."
+
+msgid "dateTime/months/shortSmall/10"
+msgstr "окт."
+
+msgid "dateTime/months/shortSmall/11"
+msgstr "нояб."
+
+msgid "dateTime/months/shortSmall/12"
+msgstr "дек."
+
+msgid "dateTime/months/shortSmall/2"
+msgstr "февр."
+
+msgid "dateTime/months/shortSmall/3"
+msgstr "марта"
+
+msgid "dateTime/months/shortSmall/4"
+msgstr "апр."
+
+msgid "dateTime/months/shortSmall/5"
+msgstr "мая"
+
+msgid "dateTime/months/shortSmall/6"
+msgstr "июня"
+
+msgid "dateTime/months/shortSmall/7"
+msgstr "июля"
+
+msgid "dateTime/months/shortSmall/8"
+msgstr "авг."
+
+msgid "dateTime/months/shortSmall/9"
+msgstr "сент."
 
 msgid "dateTime/order"
 msgstr "%(day)s %(month)s %(year)s"
@@ -1918,13 +2002,21 @@ msgstr "Бездействие/бот"
 msgid "denunciation/7"
 msgstr "Некорректное поведение в чате"
 
+msgid "descriptions/mutableDamageShell"
+msgstr "Средний урон: %(avgMutableDamage)s"
+
+msgid "descriptions/mutableDamageShellFull"
+msgstr ""
+"Пробивает: %(avgPiercingPower)s мм\n"
+"Средний урон: %(avgMutableDamage)s"
+
 msgid "descriptions/shell"
-msgstr "Урон: %(damage)s"
+msgstr "Средний урон: %(avgDamage)s"
 
 msgid "descriptions/shellFull"
 msgstr ""
 "Пробивает: %(avgPiercingPower)s мм\n"
-"Урон: %(damage)s"
+"Средний урон: %(avgDamage)s"
 
 msgid "descriptions/vehicle"
 msgstr "%(weight)s т; броня: до %(hullArmor)s мм; орудие: %(caliber)s мм"
@@ -3183,6 +3275,15 @@ msgstr ""
 msgid "headerButtons/fightBtn/tooltip/comp7RatingCalculation/header"
 msgstr "Выход в бой недоступен"
 
+msgid "headerButtons/fightBtn/tooltip/comp7VehLevel/body"
+msgstr "В Ангаре нет подходящей техники %(levels)s уровня"
+
+msgid "headerButtons/fightBtn/tooltip/comp7VehLevel/delimiter"
+msgstr ", "
+
+msgid "headerButtons/fightBtn/tooltip/comp7VehLevel/header"
+msgstr "Выход в бой недоступен"
+
 msgid "headerButtons/fightBtn/tooltip/crewNotFull/body"
 msgstr "Не на месте: <b>%(crewList)s</b>."
 
@@ -4394,6 +4495,11 @@ msgstr "Работает как однозарядное на технике:"
 msgid "moduleInfo/compatible/vehicles"
 msgstr "Устанавливается на технику:"
 
+msgid "moduleInfo/damageMutableGunLabel"
+msgstr ""
+"Орудие с глубокой нарезкой ствола. Способно стрелять снарядами со звёздчатым"
+" поддоном."
+
 msgid "moduleInfo/dualAccuracyGunLabel"
 msgstr "Система двойного сведения"
 
@@ -4449,6 +4555,9 @@ msgstr "Средний урон"
 
 msgid "moduleInfo/params/avgDamagePerMinute"
 msgstr "Средний урон в минуту"
+
+msgid "moduleInfo/params/avgMutableDamage"
+msgstr "Средний урон"
 
 msgid "moduleInfo/params/avgPiercingPower"
 msgstr "Средняя бронепробиваемость"
@@ -4546,6 +4655,9 @@ msgstr "Остаточный эффект"
 msgid "moduleInfo/params/level_lbl"
 msgstr "Боевой резерв %(level)s уровня"
 
+msgid "moduleInfo/params/maxAvgMutableDamageList"
+msgstr "Средний урон с дистанции 50 м"
+
 msgid "moduleInfo/params/maxDamage"
 msgstr "Максимальный урон"
 
@@ -4567,8 +4679,11 @@ msgstr "* максимальная дальность полета снаряд�
 msgid "moduleInfo/params/maxSteeringLockAngle"
 msgstr "Максимальный угол поворота колёс"
 
+msgid "moduleInfo/params/minAvgMutableDamageList"
+msgstr "Средний урон с дистанции %(dist)s м"
+
 msgid "moduleInfo/params/noPiercingDistance/footnote"
-msgstr "* для данного типа снарядов не зависит от расстояния"
+msgstr " для данного типа снарядов не зависит от расстояния"
 
 msgid "moduleInfo/params/noPiercingDistance/footnote/maxDistance"
 msgstr ", максимальная дальность полёта - 400 м"
@@ -4577,7 +4692,7 @@ msgid "moduleInfo/params/piercingDistance"
 msgstr "%(dist)s м"
 
 msgid "moduleInfo/params/piercingDistance/footnote"
-msgstr "* зависит от расстояния: %(minDist)s – %(maxDist)s метров"
+msgstr " зависит от расстояния: %(minDist)s–%(maxDist)s метров"
 
 msgid "moduleInfo/params/piercingDistanceHeader"
 msgstr "Средняя бронепробиваемость (мм) — Расстояние"

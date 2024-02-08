@@ -26,6 +26,8 @@ package net.wg.gui.lobby.settings.events
       public static var ON_GAMMA_SETTING_OPEN:String = "on_gamma_setting_open";
       
       public static var ON_COLOR_SETTING_OPEN:String = "on_color_setting_open";
+      
+      public static var ON_RESTART_NEWBIE_BATTLE_HINTS:String = "on_restart_newbie_battle_hints";
        
       
       public var viewId:String;

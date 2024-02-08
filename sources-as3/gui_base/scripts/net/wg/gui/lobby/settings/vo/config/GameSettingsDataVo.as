@@ -118,6 +118,10 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var enableBattleNotifier:SettingsControlProp = null;
       
+      public var newbiePrebattleHints:SettingsControlProp = null;
+      
+      public var newbieBattleHints:SettingsControlProp = null;
+      
       public var battleLoadingInfo:SettingsControlProp = null;
       
       public var receiveClanInvitesNotifications:SettingsControlProp = null;
@@ -204,6 +208,8 @@ package net.wg.gui.lobby.settings.vo.config
             "enableSpeedometer":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "enableRepairTimer":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "enableBattleNotifier":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
+            "newbiePrebattleHints":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
+            "newbieBattleHints":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "battleLoadingInfo":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
             "carouselType":createControl(ControlsFactory.TYPE_BUTTON_BAR).build(),
             "doubleCarouselType":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
@@ -328,6 +334,10 @@ package net.wg.gui.lobby.settings.vo.config
          this.increasedZoom = null;
          this.sniperModeByShift.dispose();
          this.sniperModeByShift = null;
+         this.newbiePrebattleHints.dispose();
+         this.newbiePrebattleHints = null;
+         this.newbieBattleHints.dispose();
+         this.newbieBattleHints = null;
          this.battleLoadingInfo.dispose();
          this.battleLoadingInfo = null;
          this.receiveClanInvitesNotifications.dispose();

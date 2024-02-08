@@ -16,6 +16,8 @@ package net.wg.infrastructure.base.meta
       
       function resetFiltersS(param1:int) : void;
       
+      function onUnfrozenVehicleSlotClickS(param1:int) : void;
+      
       function as_updateTeamHeaderText(param1:String) : void;
       
       function as_setBattleRoomData(param1:Object) : void;

@@ -1,8 +1,8 @@
 package net.wg.gui.battle.eventBattle.views.battleHints
 {
    import flash.display.MovieClip;
-   import net.wg.gui.battle.components.animatedBattleHint.constants.HINT_LABELS;
-   import net.wg.gui.battle.eventBattle.views.battleHints.data.HintInfoVO;
+   import net.wg.gui.battle.eventBattle.views.battleHints.constants.HINT_LABELS;
+   import net.wg.gui.battle.views.battleHint.vo.BattleHintVO;
    import net.wg.gui.components.controls.Image;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    import org.idmedia.as3commons.util.StringUtils;
@@ -22,7 +22,7 @@ package net.wg.gui.battle.eventBattle.views.battleHints
          super();
       }
       
-      public function showHint(param1:HintInfoVO) : void
+      public function showHint(param1:BattleHintVO) : void
       {
          if(StringUtils.isNotEmpty(param1.iconSource))
          {

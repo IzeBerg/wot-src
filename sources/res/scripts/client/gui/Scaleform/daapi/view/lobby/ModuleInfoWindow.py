@@ -46,7 +46,7 @@ class ModuleInfoWindow(ModuleInfoMeta):
             dataProvider = ModuleBlockTooltipData(context=contexts.ModuleInfoContext())
         data = dataProvider.buildToolTip(*tooltipArgs)
         if itemTypeID == GUI_ITEM_TYPE.SHELL:
-            titleArr = [module.userType, module.longUserName, _ms(MENU.MODULEINFO_TITLE)]
+            titleArr = [module.userType, module.shortUserName, _ms(MENU.MODULEINFO_TITLE)]
         else:
             titleArr = [
              module.longUserName, _ms(MENU.MODULEINFO_TITLE)]

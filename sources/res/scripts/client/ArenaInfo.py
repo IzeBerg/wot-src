@@ -1,12 +1,10 @@
 import BigWorld
-from arena_info_components.vehicles_area_marker_info import VehiclesAreaMarkerInfo
 from cgf_script.entity_dyn_components import BWEntitiyComponentTracker
 from helpers import dependency
 from skeletons.gui.battle_session import IBattleSessionProvider
-ARENA_INFO_COMPONENTS = {
- VehiclesAreaMarkerInfo}
+ARENA_INFO_COMPONENTS = {}
 
-class ArenaInfo(BigWorld.Entity, BWEntitiyComponentTracker, VehiclesAreaMarkerInfo):
+class ArenaInfo(BigWorld.Entity, BWEntitiyComponentTracker):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     def __init__(self):

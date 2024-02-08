@@ -1,4 +1,6 @@
 from CurrentVehicle import g_currentVehicle
+from gui.impl.gen import R
+from gui.impl.gen.view_models.views.lobby.comp7.meta_view.tab_model import MetaRootViews
 from gui.periodic_battles.models import PrimeTimeStatus
 from gui.prb_control.entities.base.actions_validator import BaseActionsValidator, ActionsValidatorComposite
 from gui.prb_control.entities.base.pre_queue.actions_validator import PreQueueActionsValidator
@@ -6,6 +8,7 @@ from gui.prb_control.items import ValidationResult
 from gui.prb_control.settings import PRE_QUEUE_RESTRICTION
 from helpers import dependency
 from skeletons.gui.game_control import IComp7Controller
+from skeletons.gui.impl import IGuiLoader
 
 class Comp7Validator(BaseActionsValidator):
     __comp7Ctrl = dependency.descriptor(IComp7Controller)
@@ -43,9 +46,24 @@ class Comp7VehicleValidator(BaseActionsValidator):
             if restriction is not None:
                 return restriction
         if not self.__comp7Ctrl.hasSuitableVehicles():
-            return ValidationResult(False, PRE_QUEUE_RESTRICTION.LIMIT_LEVEL, ctx={'levels': self.__comp7Ctrl.getModeSettings().levels})
+            return ValidationResult(False, PRE_QUEUE_RESTRICTION.LIMIT_NO_SUITABLE_VEHICLES, ctx={'levels': self.__comp7Ctrl.getModeSettings().levels})
         else:
             return
+
+
+class Comp7ShopValidator(BaseActionsValidator):
+    __uiLoader = dependency.descriptor(IGuiLoader)
+
+    def _validate(self):
+        uiLoader = dependency.instance(IGuiLoader)
+        contentResId = R.views.lobby.comp7.MetaRootView()
+        metaView = uiLoader.windowsManager.getViewByLayoutID(contentResId)
+        if not metaView:
+            return
+        isComp7ShopTab = metaView.tabId == MetaRootViews.SHOP
+        if not isComp7ShopTab:
+            return
+        return ValidationResult(False, PRE_QUEUE_RESTRICTION.SHOP_PAGE_OPENED)
 
 
 class Comp7ActionsValidator(PreQueueActionsValidator):
@@ -55,7 +73,8 @@ class Comp7ActionsValidator(PreQueueActionsValidator):
         validators = [
          baseValidator,
          Comp7Validator(entity),
-         Comp7PlayerValidator(entity)]
+         Comp7PlayerValidator(entity),
+         Comp7ShopValidator(entity)]
         return ActionsValidatorComposite(entity, validators=validators)
 
     def _createVehiclesValidator(self, entity):

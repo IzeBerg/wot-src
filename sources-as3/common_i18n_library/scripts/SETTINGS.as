@@ -361,6 +361,14 @@ package
       
       public static const GAME_CAROUSELVEHICLE_CHECKBOX_STATS:String = "#settings:game/carouselVehicle/checkbox/stats";
       
+      public static const GAME_NEWBIEPREBATTLEHINTS:String = "#settings:game/newbiePrebattleHints";
+      
+      public static const GAME_NEWBIEBATTLEHINTS:String = "#settings:game/newbieBattleHints";
+      
+      public static const RESTARTNEWBIEBATTLEHINTS:String = "#settings:restartNewbieBattleHints";
+      
+      public static const RESTARTNEWBIEBATTLEHINTS_DESCRIPTION:String = "#settings:restartNewbieBattleHints/description";
+      
       public static const GAME_BATTLELOADINGINFO:String = "#settings:game/battleLoadingInfo";
       
       public static const GAME_BATTLELOADINGINFO_TEXTTIP:String = "#settings:game/battleLoadingInfo/textTip";

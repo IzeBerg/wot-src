@@ -26,6 +26,10 @@ package net.wg.gui.battle.views.battleEndWarning
       
       private var _animInProgress:Boolean = false;
       
+      private var _visible:Boolean = true;
+      
+      private var _innerVisible:Boolean = false;
+      
       public function BattleEndWarningPanel()
       {
          super();
@@ -45,7 +49,7 @@ package net.wg.gui.battle.views.battleEndWarning
       override protected function configUI() : void
       {
          super.configUI();
-         this.visible = false;
+         this.innerVisible = false;
          this._hideCompletedFrameScript = totalFrames - 1;
          addFrameScript(this._hideCompletedFrameScript,this.onHideComplete);
          App.utils.commons.addEmptyHitArea(this.background);
@@ -56,7 +60,7 @@ package net.wg.gui.battle.views.battleEndWarning
       {
          if(param1)
          {
-            this.visible = param1;
+            this.innerVisible = param1;
             gotoAndPlay(FRAME_SHOW);
             this.background.gotoAndPlay(FRAME_SHOW);
             this._animInProgress = true;
@@ -72,7 +76,7 @@ package net.wg.gui.battle.views.battleEndWarning
       public function as_setTextInfo(param1:String) : void
       {
          this.timer.infoText.text = param1;
-         this.visible = true;
+         this.innerVisible = true;
       }
       
       public function as_setTotalTime(param1:String, param2:String) : void
@@ -82,7 +86,7 @@ package net.wg.gui.battle.views.battleEndWarning
       
       private function onHideComplete() : void
       {
-         this.visible = false;
+         this.innerVisible = false;
          this._animInProgress = false;
          this.dispatchVisibilityChange();
       }
@@ -94,18 +98,42 @@ package net.wg.gui.battle.views.battleEndWarning
       
       override public function set visible(param1:Boolean) : void
       {
-         super.visible = param1;
-         this.dispatchVisibilityChange();
+         if(this._visible != param1)
+         {
+            this._visible = param1;
+            this.updateVisible();
+            this.dispatchVisibilityChange();
+         }
+      }
+      
+      override public function get visible() : Boolean
+      {
+         return this._visible;
       }
       
       public function get visibility() : Boolean
       {
-         return Boolean(this._animInProgress && visible);
+         return Boolean(this._animInProgress && super.visible);
       }
       
       public function get panelHeight() : int
       {
          return !!this.visibility ? int(PERMANENT_COMPONENT_VISIBLE_HEIGHT) : int(Values.ZERO);
+      }
+      
+      private function set innerVisible(param1:Boolean) : void
+      {
+         if(this._innerVisible != param1)
+         {
+            this._innerVisible = param1;
+            this.updateVisible();
+         }
+      }
+      
+      private function updateVisible() : void
+      {
+         super.visible = this._visible && this._innerVisible;
+         this.dispatchVisibilityChange();
       }
    }
 }

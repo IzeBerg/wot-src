@@ -135,6 +135,13 @@
 			<undamaged>vehicles/british/GB133_Charioteer_MkVII/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/british/GB133_Charioteer_MkVII/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/british/GB133_Charioteer_MkVII/crash/lod0/Hull.model</exploded>
+			<sets>
+				<GB133_Charioteer_MkVII_HBP_3DSt>
+					<undamaged>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/crash/lod0/Hull.model</exploded>
+				</GB133_Charioteer_MkVII_HBP_3DSt>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -223,10 +230,7 @@
 					0.433076 0.3 0.433077
 					<!--BW_String-->
 				</scale>
-				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
-				<clipAngle>0.000000</clipAngle>
-				<anchorShift>0.000000</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -1210,6 +1214,13 @@
 				</anchorShift>
 				<hiddenForUser>true</hiddenForUser>
 			</slot>
+			<slot>
+				<slotType>attachment</slotType>
+				<slotId>18000</slotId>
+				<compatibleModels>GB133_Charioteer_MkVII_HBP_3DSt</compatibleModels>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -1267,6 +1278,13 @@
 				<undamaged>vehicles/british/GB133_Charioteer_MkVII/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/british/GB133_Charioteer_MkVII/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/british/GB133_Charioteer_MkVII/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<GB133_Charioteer_MkVII_HBP_3DSt>
+						<undamaged>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/crash/lod0/Chassis.model</exploded>
+					</GB133_Charioteer_MkVII_HBP_3DSt>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>FAR</lodDist>
@@ -2968,6 +2986,13 @@
 						<undamaged>vehicles/british/GB133_Charioteer_MkVII/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/british/GB133_Charioteer_MkVII/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/british/GB133_Charioteer_MkVII/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<GB133_Charioteer_MkVII_HBP_3DSt>
+								<undamaged>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/crash/lod0/Gun_01.model</exploded>
+							</GB133_Charioteer_MkVII_HBP_3DSt>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/british/GB80_Charioteer/collision/Gun_03.model</collisionModelServer>
@@ -2989,6 +3014,13 @@
 				<undamaged>vehicles/british/GB133_Charioteer_MkVII/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/british/GB133_Charioteer_MkVII/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/british/GB133_Charioteer_MkVII/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<GB133_Charioteer_MkVII_HBP_3DSt>
+						<undamaged>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/british/GB133_Charioteer_MkVII/_skins/GB133_Charioteer_MkVII_HBP_3DSt/crash/lod0/Turret_01.model</exploded>
+					</GB133_Charioteer_MkVII_HBP_3DSt>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/british/GB80_Charioteer/collision/Turret_01.model</collisionModelServer>

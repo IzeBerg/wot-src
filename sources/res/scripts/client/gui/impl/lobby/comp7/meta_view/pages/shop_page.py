@@ -1,5 +1,5 @@
 from functools import partial
-import typing
+import logging, typing
 from shared_utils import findFirst
 from shared_utils import first
 from CurrentVehicle import g_currentPreviewVehicle, g_currentVehicle
@@ -46,8 +46,8 @@ from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 from skeletons.gui.shared.utils import IHangarSpace
-_PRODUCT_TYPE_ORDER = [
- ProductTypes.VEHICLE, ProductTypes.STYLE3D, ProductTypes.REWARD]
+_logger = logging.getLogger(__name__)
+_PRODUCT_TYPE_ORDER = [ProductTypes.VEHICLE, ProductTypes.STYLE3D, ProductTypes.REWARD]
 if typing.TYPE_CHECKING:
     from typing import Dict
     from helpers.server_settings import Comp7RanksConfig
@@ -224,6 +224,7 @@ class ShopPage(PageSubModelPresenter):
     def __updateData(self, *_, **__):
         self.viewModel.setShopState(ShopState.INITIAL)
         if not self.__comp7ShopController.isShopEnabled:
+            _logger.warning('comp7 shop disabled')
             self.__switchToErrorState()
             return
         self.__products = self.__comp7ShopController.getProducts()
@@ -237,6 +238,7 @@ class ShopPage(PageSubModelPresenter):
             self.__products = self.__products or self.__comp7ShopController.getProducts()
             hasDataError = len(self.__products) == 0
             if hasDataError:
+                _logger.warning('no products were found for comp7 shop')
                 self.__switchToErrorState()
                 return
             self.__switchToSuccessState()

@@ -5,9 +5,11 @@ from gui.Scaleform.daapi.view.meta.StorageCategoryOffersViewMeta import StorageC
 from gui.Scaleform.Waiting import Waiting
 from gui.impl import backport
 from gui.impl.gen import R
+from gui.impl.gen.view_models.constants.date_time_formats import DateTimeFormatsEnum
 from gui.shared import event_dispatcher
 from gui.shared.event_dispatcher import showOfferGiftsWindow, showShop
 from gui.shared.formatters import text_styles
+from gui.shared.formatters.date_time import getRegionalDateTime
 from helpers import dependency
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersNovelty, IOffersDataProvider
@@ -72,13 +74,13 @@ class StorageCategoryOffersView(StorageCategoryOffersViewMeta):
 
     def _getVO(self, offer):
         gifts = backport.text(R.strings.storage.offers.giftAmount(), gifts=text_styles.neutral(offer.availableGiftsCount))
-        date = backport.getShortDateFormat(offer.expiration)
-        time = backport.getShortTimeFormat(offer.expiration)
+        date = getRegionalDateTime(offer.expiration, DateTimeFormatsEnum.SHORTDATE)
+        time = getRegionalDateTime(offer.expiration, DateTimeFormatsEnum.SHORTTIME)
         expiration = backport.text(R.strings.storage.offers.expiration(), date=text_styles.neutral(date), time=text_styles.neutral(time))
         description = ('\n').join([gifts, expiration])
         localization = ResMgr.openSection(self._offersProvider.getCdnResourcePath(offer.cdnLocFilePath, relative=False))
         title = localization.readString('name') if localization else ''
-        vo = createStorageDefVO(offer.id, title, description, 0, None, self._offersProvider.getCdnResourcePath(offer.cdnLogoPath, relative=False), 'altimage', contextMenuId=None)
+        vo = createStorageDefVO(offer.id, title, description, 0, None, self._offersProvider.getCdnResourcePath(offer.cdnLogoPath, relative=False), 'altimage', contextMenuId=None, sellBtnLabel=backport.text(R.strings.storage.buttonLabel.select()))
         return vo
 
     def scrolledToBottom(self):

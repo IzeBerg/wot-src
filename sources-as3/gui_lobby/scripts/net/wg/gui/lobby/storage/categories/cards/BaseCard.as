@@ -394,7 +394,7 @@ package net.wg.gui.lobby.storage.categories.cards
             {
                this.sellButton.minWidth = SELL_BUTTON_MIN_WIDTH;
                this.sellButton.iconSource = Values.EMPTY_STR;
-               this.sellButton.label = STORAGE.BUTTONLABEL_SELL;
+               this.sellButton.label = this._data.sellButtonLabel;
             }
             this.createUpgradeButton();
             if(this._resetViewOnDataChange)

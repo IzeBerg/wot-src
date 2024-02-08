@@ -27,7 +27,6 @@ class EventBattleEntity(PreQueueEntity):
 
     def init(self, ctx=None):
         self.storage.release()
-        g_eventDispatcher.loadHangar()
         return super(EventBattleEntity, self).init(ctx=ctx)
 
     def fini(self, ctx=None, woEvents=False):

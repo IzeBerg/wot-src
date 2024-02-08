@@ -180,6 +180,11 @@ package net.wg.infrastructure.managers.utils.impl
             this._viewRestrinctions.dispose();
             this._viewRestrinctions = null;
          }
+         if(this._commons != null)
+         {
+            this._commons.dispose();
+            this._commons = null;
+         }
          this._animBuilder = null;
          this._dateTime = null;
          this._icons = null;
@@ -190,7 +195,6 @@ package net.wg.infrastructure.managers.utils.impl
          this._locale = null;
          this._JSON = null;
          this._dataUtils = null;
-         this._commons = null;
          super.onDispose();
       }
       

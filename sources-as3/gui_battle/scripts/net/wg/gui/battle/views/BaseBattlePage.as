@@ -1,5 +1,7 @@
 package net.wg.gui.battle.views
 {
+   import fl.motion.easing.Linear;
+   import flash.display.DisplayObject;
    import flash.display.InteractiveObject;
    import flash.display.Sprite;
    import flash.events.Event;
@@ -35,6 +37,7 @@ package net.wg.gui.battle.views
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
    import net.wg.infrastructure.interfaces.entity.IDisplayableComponent;
+   import scaleform.clik.motion.Tween;
    
    public class BaseBattlePage extends BattlePageMeta implements IBattlePageMeta
    {
@@ -62,6 +65,8 @@ package net.wg.gui.battle.views
       private static const HIT_TEST_FIX_NAME:String = "HitTest Fix";
       
       private static const PERKS_PANEL_OFFSET_Y:int = 115;
+      
+      private static const TWEEN_DURATION:uint = 300;
        
       
       public var battleLoading:BaseBattleLoading = null;
@@ -108,10 +113,13 @@ package net.wg.gui.battle.views
       
       private var _componentsStorage:Object;
       
+      private var _tweens:Vector.<Tween>;
+      
       public function BaseBattlePage()
       {
          this.hitTestFix = new Sprite();
          this._componentsStorage = {};
+         this._tweens = new Vector.<Tween>();
          super();
          this.battleStatisticDataController = this.createStatisticsController();
          this.initializeStatisticsController(this.battleStatisticDataController);
@@ -343,6 +351,8 @@ package net.wg.gui.battle.views
          App.utils.data.cleanupDynamicObject(this._componentsStorage);
          this._componentsStorage = null;
          this.hitTestFix = null;
+         this.clearTweens();
+         this._tweens = null;
          super.onDispose();
       }
       
@@ -356,6 +366,19 @@ package net.wg.gui.battle.views
          for each(_loc3_ in param2)
          {
             this.showComponent(_loc3_,false);
+         }
+      }
+      
+      override protected function setComponentsVisibilityWithFade(param1:Vector.<String>, param2:Vector.<String>) : void
+      {
+         var _loc3_:String = null;
+         for each(_loc3_ in param1)
+         {
+            this.showComponentWithFade(_loc3_,true);
+         }
+         for each(_loc3_ in param2)
+         {
+            this.showComponentWithFade(_loc3_,false);
          }
       }
       
@@ -592,8 +615,45 @@ package net.wg.gui.battle.views
          var _loc3_:IDisplayableComponent = null;
          _loc3_ = this._componentsStorage[param1];
          App.utils.asserter.assertNotNull(_loc3_,param1 + " " + Errors.CANT_NULL);
+         this.completeActiveTweens(_loc3_);
          _loc3_.setCompVisible(param2);
          this.onComponentVisibilityChanged(param1,param2);
+      }
+      
+      private function showComponentWithFade(param1:String, param2:Boolean) : void
+      {
+         var component:IDisplayableComponent = null;
+         var needUpdate:Boolean = false;
+         var componentKey:String = param1;
+         var value:Boolean = param2;
+         needUpdate = true;
+         component = this._componentsStorage[componentKey];
+         App.utils.asserter.assertNotNull(component,componentKey + " " + Errors.CANT_NULL);
+         this.completeActiveTweens(component);
+         if(value == component.isCompVisible())
+         {
+            this.onComponentVisibilityChanged(componentKey,value);
+            return;
+         }
+         if(value && !component.isCompVisible())
+         {
+            component.setCompVisible(value);
+            (component as DisplayObject).alpha = 0;
+            needUpdate = false;
+            this.onComponentVisibilityChanged(componentKey,value);
+         }
+         this._tweens.push(new Tween(TWEEN_DURATION,component,{"alpha":(!!value ? 1 : 0)},{
+            "ease":Linear.easeIn,
+            "onComplete":function():void
+            {
+               component.setCompVisible(value);
+               (component as DisplayObject).alpha = 1;
+               if(needUpdate)
+               {
+                  onComponentVisibilityChanged(componentKey,value);
+               }
+            }
+         }));
       }
       
       private function updateMinimapSizeIndex(param1:Number) : void
@@ -674,6 +734,42 @@ package net.wg.gui.battle.views
                this.battleLoading.hasAmmunitionPanel(this.prebattleAmmunitionPanel.isInLoading);
             }
             this.updateAmmunitionPanelY();
+         }
+      }
+      
+      private function completeActiveTweens(param1:Object) : void
+      {
+         var _loc2_:int = 0;
+         var _loc3_:Tween = null;
+         if(this._tweens.length > 0)
+         {
+            _loc2_ = this._tweens.length - 1;
+            while(_loc2_ >= 0)
+            {
+               _loc3_ = this._tweens[_loc2_];
+               if(_loc3_.target == param1 && !_loc3_.paused)
+               {
+                  _loc3_.onComplete && _loc3_.onComplete();
+                  _loc3_.dispose();
+                  _loc3_ = null;
+                  this._tweens.splice(_loc2_,1);
+               }
+               _loc2_--;
+            }
+         }
+      }
+      
+      private function clearTweens() : void
+      {
+         var _loc1_:Tween = null;
+         if(this._tweens.length > 0)
+         {
+            for each(_loc1_ in this._tweens)
+            {
+               _loc1_.dispose();
+               _loc1_ = null;
+            }
+            this._tweens.length = 0;
          }
       }
    }

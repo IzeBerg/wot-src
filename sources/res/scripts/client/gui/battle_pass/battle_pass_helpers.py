@@ -19,6 +19,7 @@ from gui.server_events.recruit_helper import getRecruitInfo
 from gui.shared.event_dispatcher import showBattlePassDailyQuestsIntroWindow
 from gui.shared.formatters import time_formatters
 from gui.shared.gui_items import GUI_ITEM_TYPE
+from gui.shared.money import Currency
 from helpers import dependency, time_utils
 from helpers.dependency import replace_none_kwargs
 from items.tankmen import getNationGroups
@@ -50,6 +51,9 @@ class ChapterType(str, Enum):
     EXTRA = 'extra'
     HOLIDAY = 'holiday'
 
+
+_BATTLE_PASS_PRICE_CURRENCY_PRIORITY = (
+ Currency.GOLD,)
 
 @dependency.replace_none_kwargs(battlePass=IBattlePassController)
 def getChapterType(chapterID, battlePass=None):
@@ -167,7 +171,7 @@ def makeProgressionStyleMediaName(chapterID, styleLevel):
 
 
 def makeChapterMediaName(chapterID, part=''):
-    mediaName = ('{}_{}{}').format(BattlePassMediaPatterns.MEDIA, BattlePassMediaPatterns.CHAPTER, getChaptersNumbers()[chapterID])
+    mediaName = ('{}_{}{}').format(BattlePassMediaPatterns.MEDIA, BattlePassMediaPatterns.CHAPTER, getChaptersNumbers().get(chapterID, 0))
     if part:
         return ('{}_{}{}').format(mediaName, BattlePassMediaPatterns.PART, part)
     return mediaName
@@ -343,6 +347,10 @@ def fillBattlePassCompoundPrice(compoundPriceModel, compoundPrice):
 
     prices.invalidate()
     return
+
+
+def getCompoundPriceDefaultID(compoundPrice):
+    return next(priceID for currency in _BATTLE_PASS_PRICE_CURRENCY_PRIORITY for priceID, priceData in compoundPrice.iteritems() if currency in priceData and priceData[currency])
 
 
 @replace_none_kwargs(settingsCore=ISettingsCore, battlePass=IBattlePassController)
