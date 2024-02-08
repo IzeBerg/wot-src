@@ -154,8 +154,7 @@ package net.wg.gui.battle.battleRoyale.views
       
       private function addItem() : BattleRoyaleTeamPanelListItem
       {
-         var _loc1_:BattleRoyaleTeamPanelListItem = null;
-         _loc1_ = App.utils.classFactory.getComponent(Linkages.TEAM_PANEL_LIST_ITEM,BattleRoyaleTeamPanelListItem);
+         var _loc1_:BattleRoyaleTeamPanelListItem = App.utils.classFactory.getComponent(Linkages.TEAM_PANEL_LIST_ITEM,BattleRoyaleTeamPanelListItem);
          _loc1_.x = PADDING_H;
          _loc1_.y = this._listItems.length * (_loc1_.height + PADDING_V) + LIST_PADDING_V;
          _loc1_.addEventListener(BattleRoyaleTeamPanelListItem.EVENT_TYPE_DEAD,this.onRendererDeadHandler);

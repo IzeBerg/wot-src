@@ -21,7 +21,7 @@ package net.wg.gui.components.tooltips.VO
       
       public var actionName:String = "";
       
-      public var ico:String;
+      public var ico:String = "credits";
       
       private var _itemType:String = "";
       
@@ -29,7 +29,6 @@ package net.wg.gui.components.tooltips.VO
       
       public function ToolTipActionPriceVO(param1:Object)
       {
-         this.ico = IconsTypes.CREDITS;
          this.allowTypes = [FITTING_TYPES.VEHICLE,FITTING_TYPES.MODULE,FITTING_TYPES.EQUIPMENT,FITTING_TYPES.SHELL,FITTING_TYPES.OPTIONAL_DEVICE];
          super(param1);
       }
