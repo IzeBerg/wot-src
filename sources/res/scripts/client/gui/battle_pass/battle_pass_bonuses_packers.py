@@ -142,12 +142,7 @@ class TmanTemplateBonusPacker(_BattlePassFinalBonusPacker):
             tankManFullName = recruitInfo.getFullUserName()
             model = RewardItemModel()
             cls._packCommon(bonus, model)
-            if groupName in cls.__battlePass.getSpecialTankmen():
-                if recruitInfo.getSpecialVoiceTag(cls.__specialSounds) is not None:
-                    bonusImageName = cls.__ICON_FORMAT.format(bonusImageName)
-                model.setIcon(('_').join([bonusImageName, groupName]))
-            else:
-                model.setIcon(bonusImageName)
+            model.setIcon(('_').join([bonusImageName, groupName]))
             model.setUserName(tankManFullName)
             model.setLabel(tankManFullName)
             model.setBigIcon(('_').join([bonusImageName, groupName]))
