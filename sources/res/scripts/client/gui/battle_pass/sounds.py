@@ -14,8 +14,8 @@ class SOUNDS(CONST_CONTAINER):
     HOLIDAY_SOUND_SPACE = 'tasks_holiday'
     HOLIDAY_STATE_PLACE = 'STATE_hangar_place'
     HOLIDAY_STATE_PLACE_TASKS = 'STATE_hangar_place_tasks'
-    HOLIDAY_TASKS_ENTER = 'tasks_holiday_enter'
-    HOLIDAY_TASKS_EXIT = 'tasks_holiday_exit'
+    HOLIDAY_TASKS_ENTER = 'tasks_special_enter'
+    HOLIDAY_TASKS_EXIT = 'tasks_special_exit'
 
 
 ACTIVATE_CHAPTER_SOUND_SPACE = CommonSoundSpaceSettings(name=SOUNDS.ACTIVATE_CHAPTER_STATE, entranceStates={SOUNDS.ACTIVATE_CHAPTER_STATE: SOUNDS.ACTIVATE_CHAPTER_STATE_ON}, exitStates={SOUNDS.ACTIVATE_CHAPTER_STATE: SOUNDS.ACTIVATE_CHAPTER_STATE_OFF}, persistentSounds=(), stoppableSounds=(), priorities=(), autoStart=True, enterEvent='', exitEvent='')
@@ -39,8 +39,8 @@ class BattlePassSounds(CONST_CONTAINER):
     VIDEO_RESUME = 'bp_video_resume'
     VIDEO_STOP = 'bp_video_stop'
     VOICEOVER_STOP = 'bp_voiceovers_stop'
-    HOLIDAY_VOICEOVER_STOP = 'bp_holiday_voiceovers_stop'
-    HOLIDAY_REWARD_SCREEN = 'bp_holiday_reward_screen'
+    HOLIDAY_VOICEOVER_STOP = 'bp_voiceovers_stop'
+    HOLIDAY_REWARD_SCREEN = 'bp_reward_screen'
     SPECIAL_TASKS_ENTER = 'tasks_special_enter'
     SPECIAL_TASKS_EXIT = 'tasks_special_exit'
 

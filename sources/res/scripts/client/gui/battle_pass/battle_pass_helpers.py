@@ -173,6 +173,12 @@ def makeChapterMediaName(chapterID, part=''):
     return mediaName
 
 
+def makeChapterAudioName():
+    extraChapter = 4
+    mediaName = ('{}_{}{}').format(BattlePassMediaPatterns.MEDIA, BattlePassMediaPatterns.CHAPTER, extraChapter)
+    return mediaName
+
+
 def asBPVideoName(filename):
     return ('.').join(('battle_pass', filename))
 
@@ -195,10 +201,12 @@ def getAllFinalRewards(chapterID, battlePass=None):
 
 
 @replace_none_kwargs(battlePass=IBattlePassController)
-def getRewardTypeBySource(reward, chapter, battlePass=None):
+def getRewardSourceByType(reward, chapter, battlePass=None):
     freeRewards = battlePass.getRewardTypes(chapter).get(BattlePassConsts.REWARD_FREE)
     paidRewards = battlePass.getRewardTypes(chapter).get(BattlePassConsts.REWARD_PAID)
     if reward in freeRewards:
+        if reward in paidRewards:
+            return BattlePassConsts.REWARD_BOTH
         return BattlePassConsts.REWARD_FREE
     else:
         if reward in paidRewards:
@@ -211,9 +219,12 @@ def getStyleForChapter(chapter, battlePass=None, c11nService=None):
     stylesConfig = battlePass.getStylesConfig()
     if chapter not in stylesConfig:
         _logger.error('Invalid chapterID: %s', chapter)
-        return None
+        return
     else:
-        return c11nService.getItemByID(GUI_ITEM_TYPE.STYLE, stylesConfig[chapter])
+        styleID = stylesConfig[chapter]
+        if styleID is not None:
+            return c11nService.getItemByID(GUI_ITEM_TYPE.STYLE, styleID)
+        return
 
 
 @replace_none_kwargs(battlePass=IBattlePassController)
