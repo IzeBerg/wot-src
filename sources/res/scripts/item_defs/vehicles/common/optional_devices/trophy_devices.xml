@@ -16,7 +16,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradableStaticDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/gunAimingTimeFactor</attribute>
@@ -60,7 +59,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradedStaticDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/gunAimingTimeFactor</attribute>
@@ -107,7 +105,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradableStaticDevice
-			<weight>200</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/gunReloadTimeFactor</attribute>
@@ -158,7 +155,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradedStaticDevice
-			<weight>200</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/gunReloadTimeFactor</attribute>
@@ -205,7 +201,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradableStaticDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/crewLevelIncrease</attribute>
@@ -256,7 +251,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradedStaticDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/crewLevelIncrease</attribute>
@@ -303,7 +297,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradableStaticDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/additiveShotDispersionFactor</attribute>
@@ -354,7 +347,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradedStaticDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/additiveShotDispersionFactor</attribute>
@@ -484,7 +476,6 @@
 		</vehicleFilter>
 		<script>
 			UpgradableImprovedConfiguration
-			<weight>100</weight>
 			<upgradeInfo>
 				<upgradedCompDescr>27385</upgradedCompDescr>
 				<price>3000000</price>
@@ -597,7 +588,6 @@
 		</vehicleFilter>
 		<script>
 			UpgradedImprovedConfiguration
-			<weight>100</weight>
 			<engineReduceFineFactor>
 				0.3 0.3
 				<!--BW_String-->
@@ -705,7 +695,6 @@
 		</vehicleFilter>
 		<script>
 			UpgradableRotationMechanisms
-			<weight>200</weight>
 			<upgradeInfo>
 				<upgradedCompDescr>27897</upgradedCompDescr>
 				<price>3000000</price>
@@ -798,7 +787,6 @@
 		</vehicleFilter>
 		<script>
 			UpgradedRotationMechanisms
-			<weight>200</weight>
 			<trackRotateSpeedFactor>
 				1.15 1.15
 				<!--BW_String-->
@@ -889,7 +877,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradableStaticDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/multShotDispersionFactor</attribute>
@@ -942,7 +929,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradedStaticDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/multShotDispersionFactor</attribute>
@@ -982,7 +968,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradableLowNoiseTracks
-			<weight>100</weight>
 			<overridableFactors>
 				<invisibilityBonus>
 					0.06
@@ -1042,7 +1027,6 @@
 		</incompatibleTags>
 		<script>
 			UpgradedLowNoiseTracks
-			<weight>100</weight>
 			<overridableFactors>
 				<invisibilityBonus>
 					0.09
@@ -1105,7 +1089,6 @@
 		</vehicleFilter>
 		<script>
 			UpgradableStaticDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/enginePowerFactor</attribute>
@@ -1174,7 +1157,6 @@
 		</vehicleFilter>
 		<script>
 			UpgradedStaticDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/enginePowerFactor</attribute>
@@ -1238,10 +1220,6 @@
 		</vehicleFilter>
 		<script>
 			UpgradableExtraHealthReserve
-			<chassisMaxLoadFactor>
-				1.1
-				<!--BW_String-->
-			</chassisMaxLoadFactor>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/healthFactor</attribute>
@@ -1304,13 +1282,6 @@
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleChassisLoad</name>
-				<value>
-					1.1
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
 				<name>vehicleChassisFallDamage</name>
 				<value>
 					0.5
@@ -1343,10 +1314,6 @@
 		</vehicleFilter>
 		<script>
 			UpgradedExtraHealthReserve
-			<chassisMaxLoadFactor>
-				1.1
-				<!--BW_String-->
-			</chassisMaxLoadFactor>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/healthFactor</attribute>
@@ -1401,13 +1368,6 @@
 				<name>vehicleChassisRepairSpeed</name>
 				<value>
 					1.25
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
-				<name>vehicleChassisLoad</name>
-				<value>
-					1.1
 					<!--BW_String-->
 				</value>
 			</mul>

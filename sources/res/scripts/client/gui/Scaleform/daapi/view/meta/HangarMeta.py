@@ -96,3 +96,7 @@ class HangarMeta(View):
     def as_updateHangarComponentsS(self, showComponents=None, hideComponents=None):
         if self._isDAAPIInited():
             return self.flashObject.as_updateHangarComponents(showComponents, hideComponents)
+
+    def as_setVehicleParamsS(self, linkage, alias):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setVehicleParams(linkage, alias)

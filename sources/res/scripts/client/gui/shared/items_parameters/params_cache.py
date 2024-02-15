@@ -1,5 +1,5 @@
+import itertools, typing
 from collections import namedtuple
-import itertools, math, typing, sys
 from constants import BonusTypes
 from gui.shared.items_parameters import calcGunParams, calcShellParams, getEquipmentParameters, isAutoReloadGun, isDualGun, isDualAccuracy
 from gui.shared.items_parameters import xml_reader
@@ -15,7 +15,7 @@ if typing.TYPE_CHECKING:
     from items.vehicles import VehicleDescriptor
 PrecachedShell = namedtuple('PrecachedShell', 'guns params')
 PrecachedEquipment = namedtuple('PrecachedEquipment', 'nations params')
-PrecachedOptionalDevice = namedtuple('PrecachedOptionalDevice', 'weight nations')
+PrecachedOptionalDevice = namedtuple('PrecachedOptionalDevice', 'nations')
 PrecachedChassis = namedtuple('PrecachedChassis', 'isHydraulic, isWheeled, hasAutoSiege, isTrackWithinTrack, isWheeledOnSpotRotation')
 PrecachedEngine = namedtuple('PrecachedEngine', 'hasTurboshaftEngine, hasRocketAcceleration')
 
@@ -285,18 +285,14 @@ class _ParamsCache(object):
     def __precacheOptionalDevices(self, vehiclesCache):
         self.__cache.setdefault(nations.NONE_INDEX, {})[ITEM_TYPES.optionalDevice] = {}
         for deviceDescr in vehicles.g_cache.optionalDevices().itervalues():
-            wmin, wmax = sys.maxint, -1
             deviceNations = set()
             for vDescr in vehiclesCache.generator():
                 if not deviceDescr.checkCompatibilityWithVehicle(vDescr)[0]:
                     continue
                 nation, _ = vDescr.type.id
                 deviceNations.add(nation)
-                mods = deviceDescr.weightOnVehicle(vDescr)
-                weightOnVehicle = math.ceil(vDescr.physics['weight'] * mods[0] + mods[1])
-                wmin, wmax = min(wmin, weightOnVehicle), max(wmax, weightOnVehicle)
 
-            self.__cache[nations.NONE_INDEX][ITEM_TYPES.optionalDevice][deviceDescr.compactDescr] = PrecachedOptionalDevice(weight=(wmin, wmax), nations=deviceNations)
+            self.__cache[nations.NONE_INDEX][ITEM_TYPES.optionalDevice][deviceDescr.compactDescr] = PrecachedOptionalDevice(nations=deviceNations)
 
     def __precacheGuns(self, vehiclesCache):
         descriptors = []

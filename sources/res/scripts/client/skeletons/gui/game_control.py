@@ -1746,7 +1746,7 @@ class IBattlePassController(IGameController):
     onRewardSelectChange = None
     onOffersUpdated = None
     onChapterChanged = None
-    onExtraChapterExpired = None
+    onMarathonChapterExpired = None
 
     def isEnabled(self):
         raise NotImplementedError
@@ -1775,6 +1775,9 @@ class IBattlePassController(IGameController):
     def isCompleted(self):
         raise NotImplementedError
 
+    def isResourceCompleted(self):
+        raise NotImplementedError
+
     def getLevelByPoints(self, chapterID, points):
         raise NotImplementedError
 
@@ -1784,13 +1787,28 @@ class IBattlePassController(IGameController):
     def getMaxLevelInChapter(self, chapterId):
         raise NotImplementedError
 
-    def hasExtra(self):
+    def hasMarathon(self):
         raise NotImplementedError
 
-    def isRegularProgressionCompleted(self):
+    def hasResource(self):
         raise NotImplementedError
 
-    def getExtraChapterID(self):
+    def isValidChapterID(self, chapterID):
+        raise NotImplementedError
+
+    def getChapterType(self, chapterID):
+        raise NotImplementedError
+
+    def getAvailableChapterTypes(self):
+        raise NotImplementedError
+
+    def getRegularChapterIds(self):
+        raise NotImplementedError
+
+    def getMarathonChapterID(self):
+        raise NotImplementedError
+
+    def getResourceChapterID(self):
         raise NotImplementedError
 
     def getRewardType(self, chapterID):
@@ -1802,7 +1820,16 @@ class IBattlePassController(IGameController):
     def getChapterIDs(self):
         raise NotImplementedError
 
-    def isExtraChapter(self, chapterID):
+    def isMarathonChapter(self, chapterID):
+        raise NotImplementedError
+
+    def allRegularChaptersPurchased(self):
+        raise NotImplementedError
+
+    def isResourceChapter(self, chapterID):
+        raise NotImplementedError
+
+    def isResourceChapterAvailable(self):
         raise NotImplementedError
 
     def getBattlePassCost(self, chapterID):
@@ -2446,6 +2473,48 @@ class IGiftSystemController(IGameController):
         raise NotImplementedError
 
 
+class IShopSalesEventController(IGameController):
+    onSettingsChanged = None
+    onPhaseChanged = None
+
+    @property
+    def isEnabled(self):
+        raise NotImplementedError
+
+    @property
+    def currentEventPhase(self):
+        raise NotImplementedError
+
+    @property
+    def currentEventPhaseTimeRange(self):
+        raise NotImplementedError
+
+    @property
+    def activePhaseStartTime(self):
+        raise NotImplementedError
+
+    @property
+    def activePhaseFinishTime(self):
+        raise NotImplementedError
+
+    @property
+    def eventFinishTime(self):
+        raise NotImplementedError
+
+    @property
+    def url(self):
+        raise NotImplementedError
+
+    def getEventPhase(self, timestamp):
+        raise NotImplementedError
+
+    def getEventPhaseTimeRange(self, state):
+        raise NotImplementedError
+
+    def openMainView(self, url=None, origin=None):
+        raise NotImplementedError
+
+
 class ISeniorityAwardsController(IGameController):
     onUpdated = None
 
@@ -2920,6 +2989,9 @@ class IComp7Controller(IGameController, ISeasonProvider):
     def hasSuitableVehicles(self):
         raise NotImplementedError
 
+    def getSeasonVehicles(self):
+        raise NotImplementedError
+
     def vehicleIsAvailableForBuy(self):
         raise NotImplementedError
 
@@ -2948,6 +3020,9 @@ class IComp7Controller(IGameController, ISeasonProvider):
         raise NotImplementedError
 
     def getYearlyRewards(self):
+        raise NotImplementedError
+
+    def getBattleModifiersObject(self):
         raise NotImplementedError
 
     def isYearlyRewardReceived(self):
@@ -3391,6 +3466,9 @@ class IHangarGuiController(IGameController):
         raise NotImplementedError
 
     def getHangarCarouselSettings(self):
+        raise NotImplementedError
+
+    def getHangarVehicleParamsSettings(self):
         raise NotImplementedError
 
     def holdHangar(self, hangar):

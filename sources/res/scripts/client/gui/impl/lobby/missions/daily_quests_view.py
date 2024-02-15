@@ -98,6 +98,14 @@ class DailyQuestsView(ViewImpl):
                 return SelectableRewardTooltip(**tooltipData)
         if contentID == R.views.lobby.winback.tooltips.MainRewardTooltip():
             return MainRewardTooltip(self.__winbackData.get('lastQuest', {}).get('bonuses', []))
+        lootBoxRes = R.views.dyn('gui_lootboxes').dyn('lobby').dyn('gui_lootboxes').dyn('tooltips').dyn('LootboxTooltip')
+        if lootBoxRes.exists() and contentID == lootBoxRes():
+            from gui_lootboxes.gui.impl.lobby.gui_lootboxes.tooltips.lootbox_tooltip import LootboxTooltip
+            missionId, tooltipId = event.getArgument('tooltipId', '').rsplit(':', 1)
+            tooltipData = self.__tooltipData.get(missionId, {}).get(tooltipId)
+            lootBoxID = tooltipData.get('lootBoxID')
+            lootBox = self.itemsCache.items.tokens.getLootBoxByID(int(lootBoxID))
+            return LootboxTooltip(lootBox)
         return super(DailyQuestsView, self).createToolTipContent(event=event, contentID=contentID)
 
     def createToolTip(self, event):

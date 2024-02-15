@@ -56,6 +56,13 @@ class HangarGuiController(IHangarGuiController, IPrbListener):
         else:
             return (None, None)
 
+    def getHangarVehicleParamsSettings(self):
+        presetGetter = self.__getCurrentPresetGetter()
+        if presetGetter is not None:
+            return presetGetter.getVehicleParamsSettings()
+        else:
+            return (None, None)
+
     def holdHangar(self, hangar):
         self.__hangar = hangar
         self.__isChangeableComponentsVisible = None

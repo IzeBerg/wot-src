@@ -870,9 +870,20 @@ class _TrajectoryControlMode(_GunControlMode):
     def getCamDist(self):
         return self._cam.getCurrentCamDist()
 
-    def getScaleParams(self):
+    def getZoom(self):
         minV, maxV = self.getCamDistRange()
-        return (minV, self._cam.getCamTransitionDist(), maxV)
+        transition = self._cam.getCamTransitionDist()
+        camDist = self.getCamDist()
+        if camDist <= transition:
+            ratioDist = (camDist - minV) / (transition - minV)
+            value = (1.0 - ratioDist) * 0.5 + 0.5
+        else:
+            ratioDist = (camDist - transition) / (maxV - transition)
+            value = (1.0 - ratioDist) * 0.5
+        return value
+
+    def getZoomSteps(self):
+        return 0
 
     def getCamDistRange(self):
         return self._cam.getCamDistRange()
@@ -1105,6 +1116,12 @@ class AssaultControlMode(_TrajectoryControlMode):
         if ammoCtrl is not None:
             ammoCtrl.onCurrentShellChanged += self.__onCurrentShellChanged
         return
+
+    def getZoomSteps(self):
+        return self._cam.getCountOfStates()
+
+    def getZoom(self):
+        return self._cam.getZoom()
 
     def disable(self):
         super(AssaultControlMode, self).disable()

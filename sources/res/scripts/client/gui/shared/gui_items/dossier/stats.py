@@ -1783,7 +1783,8 @@ class VehicleDossierStats(_DossierStats):
          self.getTeam7x7Stats(), self.getHistoricalStats(), self.getFortBattlesStats(),
          self.getFortSortiesStats(), self.getFalloutStats(), self.getRankedStats(),
          self.getEpicRandomStats(), self.getComp7Stats(season=1),
-         self.getComp7Stats(season=2), self.getVersusAIStats()))
+         self.getComp7Stats(season=2), self.getComp7Stats(season=3),
+         self.getVersusAIStats()))
 
     def getRandomStats(self):
         return RandomStatsBlock(self._getDossierItem())

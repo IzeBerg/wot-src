@@ -44,7 +44,6 @@ ALLOWED_STATIC_ATTRS = {
  'invisibilityAdditiveTerm',
  'invisibilityMultFactor',
  'invisibilityFactorAtShot',
- 'maxWeight',
  'multShotDispersionFactor',
  'onMoveRotationSpeedFactor',
  'onStillRotationSpeedFactor',

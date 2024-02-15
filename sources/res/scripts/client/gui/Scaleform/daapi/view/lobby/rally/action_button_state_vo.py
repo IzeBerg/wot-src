@@ -107,8 +107,6 @@ class ActionButtonStateVO(dict):
                                           '', {}), 
            UNIT_RESTRICTION.UNSUITABLE_VEHICLE: (
                                                self.__getNotAvailableIcon() + backport.text(R.strings.system_messages.prebattle.vehicleInvalid.vehicleNotSupported()), {}), 
-           UNIT_RESTRICTION.VEHICLE_TOO_HEAVY: (
-                                              backport.text(R.strings.cyberSport.window.unit.message.vehicleInNotReady.tooHeavy()), {}), 
            UNIT_RESTRICTION.PREVIEW_VEHICLE_IS_PRESENT: (
                                                        backport.text(R.strings.cyberSport.window.unit.message.previewVehicleIsPresent()), {}), 
            UNIT_RESTRICTION.LIMIT_LEVEL: (

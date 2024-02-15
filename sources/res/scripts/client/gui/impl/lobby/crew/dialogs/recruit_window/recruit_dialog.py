@@ -18,7 +18,6 @@ from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 from sound_gui_manager import CommonSoundSpaceSettings
 from gui.server_events.pm_constants import SOUNDS, PERSONAL_MISSIONS_SILENT_SOUND_SPACE
-from gui.sounds.filters import States, StatesGroup
 from uilogging.crew.logging_constants import CrewDialogKeys
 from wg_async import AsyncEvent, wg_await, BrokenPromiseError, AsyncReturn, wg_async
 from gui.shared.gui_items.Tankman import NO_TANKMAN
@@ -61,7 +60,7 @@ class BaseRecruitDialog(BaseCrewDialogTemplateView):
 class TokenRecruitDialog(BaseRecruitDialog):
     __slots__ = ('__tokenName', '__tokenData', '__vehicleSlotToUnpack', '__vehicle')
     _itemsCache = dependency.descriptor(IItemsCache)
-    __SOUND_SETTINGS = CommonSoundSpaceSettings(name='hangar', entranceStates={SOUNDS.STATE_PLACE: SOUNDS.STATE_PLACE_GARAGE, StatesGroup.HANGAR_FILTERED: States.HANGAR_FILTERED_OFF}, exitStates={}, persistentSounds=(), stoppableSounds=(), priorities=(), autoStart=True, enterEvent=SOUNDS.WOMAN_AWARD_WINDOW, exitEvent='')
+    __SOUND_SETTINGS = CommonSoundSpaceSettings(name='recruitDialog', entranceStates={}, exitStates={}, persistentSounds=(), stoppableSounds=(), priorities=(), autoStart=True, enterEvent=SOUNDS.WOMAN_AWARD_WINDOW, exitEvent='')
     _COMMON_SOUND_SPACE = __SOUND_SETTINGS
 
     def __init__(self, ctx=None, **kwargs):

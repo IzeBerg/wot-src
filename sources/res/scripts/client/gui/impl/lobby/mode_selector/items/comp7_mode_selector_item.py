@@ -36,6 +36,10 @@ class Comp7ModeSelectorItem(ModeSelectorLegacyItem):
             return RankInactivityTooltip()
         return MainWidgetTooltip()
 
+    @property
+    def isVisible(self):
+        return self.__comp7Controller.isAvailable()
+
     def _onInitializing(self):
         super(Comp7ModeSelectorItem, self)._onInitializing()
         self.__updateComp7Data()

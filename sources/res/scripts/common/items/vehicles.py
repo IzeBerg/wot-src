@@ -433,6 +433,12 @@ class VehicleDescriptor(object):
     isYawHullAimingAvailable = property(lambda self: self.type.hullAimingParams['yaw']['isAvailable'])
 
     @property
+    def circularVisionRadius(self):
+        if IS_CLIENT:
+            return self.battleModifiers(BattleParams.VISION_RADIUS, self.turret.circularVisionRadius)
+        return self.turret.circularVisionRadius
+
+    @property
     def hasBurnout(self):
         if IS_CLIENT or IS_WEB:
             chassisCfg = self.type.xphysics['chassis'][self.chassis.name]
@@ -642,11 +648,7 @@ class VehicleDescriptor(object):
                     setter = partial(self.__setHullAndCall, hullDescr, setter)
                     restorer = partial(self.__setHullAndCall, self.hull, restorer)
             try:
-                prevWeight = self.__computeWeight()
                 setter()
-                result, reason = self.__checkCompatibilityWithOptDevices(prevWeight, optDevicesLayouts)
-                if not result:
-                    return (result, reason)
             finally:
                 restorer()
 
@@ -730,11 +732,7 @@ class VehicleDescriptor(object):
             return (False, 'not for current vehicle')
         else:
             try:
-                prevWeight = self.__computeWeight()
                 setter()
-                result, reason = self.__checkCompatibilityWithOptDevices(prevWeight, optDevicesLayouts)
-                if not result:
-                    return (result, reason)
             finally:
                 restorer()
 
@@ -790,15 +788,12 @@ class VehicleDescriptor(object):
             devices = list(prevDevices)
             self.optionalDevices = devices
             try:
-                prevWeight = self.__computeWeight()
                 devices[slotIdx] = None
                 res = device.checkCompatibilityWithVehicle(self)
                 if not res[0]:
                     return res
                 devices[slotIdx] = device
                 self._rebuildOptDevSlotsMap()
-                if not _isWeightAllowedToChange(self.__computeWeight(), prevWeight):
-                    return (False, 'too heavy')
             finally:
                 self.optionalDevices = prevDevices
                 self._optDevSlotsMap = prevOptDevSlotMap
@@ -814,7 +809,6 @@ class VehicleDescriptor(object):
             prevOptDevSlotMap = self._optDevSlotsMap
             optDevs = [ getItemByCompactDescr(cd) if cd != 0 else None for cd in optDevSequence
                       ]
-            prevWeights = self.__computeWeight()
             try:
                 optDevsLen = len(optDevs)
                 for i in range(0, optDevsLen):
@@ -831,8 +825,6 @@ class VehicleDescriptor(object):
 
                 self.optionalDevices = optDevs
                 self._rebuildOptDevSlotsMap()
-                if not _isWeightAllowedToChange(self.__computeWeight(), prevWeights):
-                    return (False, 'Devices are too heavy for vehicle')
             finally:
                 self.optionalDevices = prevDevices
                 self._optDevSlotsMap = prevOptDevSlotMap
@@ -861,20 +853,6 @@ class VehicleDescriptor(object):
                 return ((prevDevice.compactDescr,), component_constants.EMPTY_TUPLE)
             return (component_constants.EMPTY_TUPLE, (prevDevice.compactDescr,))
 
-    def mayRemoveOptionalDevice(self, slotIdx):
-        prevDevices = self.optionalDevices
-        devices = list(prevDevices)
-        self.optionalDevices = devices
-        try:
-            prevWeight = self.__computeWeight()
-            devices[slotIdx] = None
-            if not _isWeightAllowedToChange(self.__computeWeight(), prevWeight):
-                return (False, 'too heavy')
-        finally:
-            self.optionalDevices = prevDevices
-
-        return (True, None)
-
     def removeOptionalDevice(self, slotIdx, rebuildAttrs=True):
         device = self.optionalDevices[slotIdx]
         if device is None:
@@ -898,10 +876,7 @@ class VehicleDescriptor(object):
             devices = list(prevDevices)
             self.optionalDevices = devices
             try:
-                prevWeight = self.__computeWeight()
                 devices[leftID], devices[rightID] = devices[rightID], devices[leftID]
-                if not _isWeightAllowedToChange(self.__computeWeight(), prevWeight):
-                    return (False, 'too heavy')
             finally:
                 self.optionalDevices = prevDevices
 
@@ -1219,9 +1194,7 @@ class VehicleDescriptor(object):
                     continue
                 installPossible, reason = self.mayInstallOptDevsSequence(optDevSequence)
                 if not installPossible:
-                    reason = 'too heavy' if reason == 'Devices are too heavy for vehicle' else reason
-                    return (
-                     False, reason)
+                    return (False, reason)
                 optDevs = [ getItemByCompactDescr(cd) for cd in optDevSequence if cd != 0 ]
                 for device in optDevs:
                     if device is not None and not device.checkCompatibilityWithVehicle(self):
@@ -1231,11 +1204,8 @@ class VehicleDescriptor(object):
             if device is not None and not device.checkCompatibilityWithVehicle(self):
                 return (False, 'not for current vehicle')
 
-        if not _isWeightAllowedToChange(self.__computeWeight(), prevWeight):
-            return (False, 'too heavy')
-        else:
-            return (
-             True, None)
+        return (
+         True, None)
 
     def __getChassisEffectNames(self, effectGroup):
         ret = []
@@ -1416,26 +1386,11 @@ class VehicleDescriptor(object):
         return
 
     def __computeWeight(self):
-        maxWeight = self.chassis.maxLoad
         weight = self.hull.weight + self.chassis.weight + self.engine.weight + self.fuelTank.weight + self.radio.weight
         for turretDescr, gunDescr in self.turrets:
             weight += turretDescr.weight + gunDescr.weight
 
-        vehWeightFraction = 0.0
-        vehWeightAddition = 0.0
-        for device in self.optionalDevices:
-            if device is not None:
-                fraction, addition, maxWeightChange = device.weightOnVehicle(self)
-                vehWeightFraction += fraction
-                vehWeightAddition += addition
-                maxWeight += maxWeightChange
-
-        return (
-         weight * (1.0 + vehWeightFraction) + vehWeightAddition, maxWeight)
-
-    def isWeightConsistent(self):
-        weight, maxWeight = self.__computeWeight()
-        return weight <= maxWeight
+        return weight
 
     def applyOptionalDevicesMiscAttrs(self):
         for optDev in self.optionalDevices:
@@ -1479,9 +1434,8 @@ class VehicleDescriptor(object):
 
         self._defaultMaxHealth = maxHealth
         self._maxHealth = self.battleModifiers(BattleParams.VEHICLE_HEALTH, maxHealth)
-        weight, maxWeight = self.__computeWeight()
-        self.miscAttrs = miscAttrs = {'maxWeight': maxWeight, 
-           'repairSpeedFactor': 1.0, 
+        weight = self.__computeWeight()
+        self.miscAttrs = miscAttrs = {'repairSpeedFactor': 1.0, 
            'additiveShotDispersionFactor': 1.0, 
            'antifragmentationLiningFactor': 1.0, 
            'circularVisionRadiusFactor': 1.0, 
@@ -3653,7 +3607,6 @@ def _readChassis(xmlCtx, section, item, unlocksDescrs=None, _=None, isWheeledVeh
     item.navmeshGirth = _xml.readPositiveFloat(xmlCtx, section, 'navmeshGirth')
     item.minPlaneNormalY = cos(radians(_xml.readPositiveFloat(xmlCtx, section, 'maxClimbAngle')))
     item.weight = _xml.readPositiveFloat(xmlCtx, section, 'weight')
-    item.maxLoad = _xml.readPositiveFloat(xmlCtx, section, 'maxLoad')
     item.specificFriction = component_constants.DEFAULT_SPECIFIC_FRICTION
     item.rotationSpeed = radians(_xml.readPositiveFloat(xmlCtx, section, 'rotationSpeed'))
     item.rotationIsAroundCenter = _xml.readBool(xmlCtx, section, 'rotationIsAroundCenter')
@@ -7214,15 +7167,6 @@ def _unpackIDAndDuration(cd):
      id,
      (times & 16777215) * 60 + _CUSTOMIZATION_EPOCH,
      times >> 24)
-
-
-def _isWeightAllowedToChange(newWeights, prevWeights):
-    prevWeight, prevMaxWeight = prevWeights
-    newWeight, newMaxWeight = newWeights
-    if prevWeight > prevMaxWeight and newWeight <= prevWeight:
-        return True
-    newReserve = newMaxWeight - newWeight
-    return newReserve >= 0.0 or newReserve >= prevMaxWeight - prevWeight
 
 
 @_xml.cacheFloatTuples

@@ -34,7 +34,8 @@ class _BaseModuleComparator(object):
         return self._getModuleParam(__key, excludes)
 
     def mostValuableParam(self, excludes=None):
-        pass
+        return (
+         False, None)
 
     def _getModuleParam(self, getter, excludes=None):
         items = [ x for x in self._items.values() if x not in excludes ]
@@ -113,9 +114,6 @@ class ChassisComparator(_BaseModuleComparator):
     def __init__(self, criteria, vehicle):
         items = self.itemsCache.items.getItems(GUI_ITEM_TYPE.CHASSIS, criteria)
         super(ChassisComparator, self).__init__(items, vehicle)
-
-    def mostValuableParam(self, excludes=None):
-        return self._getValuableParam('maxLoad', excludes)
 
 
 class TurretComparator(_BaseModuleComparator):

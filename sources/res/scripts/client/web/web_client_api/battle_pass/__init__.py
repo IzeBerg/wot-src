@@ -1,6 +1,4 @@
 import logging
-from gui.battle_pass.battle_pass_constants import ChapterState
-from gui.battle_pass.battle_pass_helpers import isSeasonEndingSoon
 from gui.impl.gen import R
 from gui.server_events.events_dispatcher import showMissionsBattlePass
 from helpers import dependency

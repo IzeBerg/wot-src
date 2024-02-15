@@ -931,14 +931,8 @@ def loadAppearancePrefab(prefab, appearance, posloadCallback=None):
         if posloadCallback:
             posloadCallback(gameObject)
 
-    def _onHierarchyLoaded(gameObject):
-        highlighter = getattr(appearance, 'highlighter', None)
-        if highlighter:
-            highlighter.observeGameObjectForDynamicModels(appearance, gameObject)
-        return
-
     if appearance.compoundModel:
-        CGF.loadGameObjectIntoHierarchy(prefab, appearance.gameObject, Math.Vector3(0, 0, 0), _onLoaded, hierarchyLoadedCallback=_onHierarchyLoaded)
+        CGF.loadGameObjectIntoHierarchy(prefab, appearance.gameObject, Math.Vector3(0, 0, 0), _onLoaded)
     else:
         appearance.pushToLoadingQueue(prefab, appearance.gameObject, Math.Vector3(0, 0, 0), _onLoaded)
 

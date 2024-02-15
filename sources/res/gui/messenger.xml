@@ -2241,6 +2241,11 @@ _(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
 			<bgIconSizeAuto>true</bgIconSizeAuto>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;%(text)s&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
 		</BattlePassRewardSysMessage>
+		<BattlePassResourceChapterAvailableMessage>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</BattlePassResourceChapterAvailableMessage>
 		<BattlePassRewardWithProgressionButtonMessage>
 			<type>grey</type>
 			<icon>BattlePassIcon</icon>
@@ -2354,7 +2359,7 @@ _(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
 			<priority>medium</priority>
 			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</BattlePassActivateChapterSysMessage>
-		<BattlePassExtraStartSysMessage>
+		<BattlePassMarathonStartSysMessage>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
 			<priority>high</priority>
@@ -2362,18 +2367,18 @@ _(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
 			<buttonsLayout>
 				<button>
 					<type>submit</type>
-					<label>_(#messenger:serviceChannelMessages/battlePassExtraStart/button)</label>
+					<label>_(#messenger:serviceChannelMessages/battlePassMarathonStart/button)</label>
 					<action>openBattlePassChapterChoiceView</action>
 				</button>
 			</buttonsLayout>
-		</BattlePassExtraStartSysMessage>
-		<BattlePassExtraFinishSysMessage>
+		</BattlePassMarathonStartSysMessage>
+		<BattlePassMarathonFinishSysMessage>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
 			<priority>high</priority>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
-		</BattlePassExtraFinishSysMessage>
-		<BattlePassExtraWillEndSoonSysMessage>
+		</BattlePassMarathonFinishSysMessage>
+		<BattlePassMarathonWillEndSoonSysMessage>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
 			<priority>high</priority>
@@ -2381,11 +2386,11 @@ _(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
 			<buttonsLayout>
 				<button>
 					<type>submit</type>
-					<label>_(#messenger:serviceChannelMessages/battlePassExtraWillEndSoon/button)</label>
+					<label>_(#messenger:serviceChannelMessages/battlePassMarathonWillEndSoon/button)</label>
 					<action>openBPExtraWillEndSoon</action>
 				</button>
 			</buttonsLayout>
-		</BattlePassExtraWillEndSoonSysMessage>
+		</BattlePassMarathonWillEndSoonSysMessage>
 		<BattlePassSwitchChapterReminder>
 			<type>grey</type>
 			<icon>BattlePassIcon</icon>
@@ -2952,6 +2957,18 @@ _(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
 				</button>
 			</buttonsLayout>
 		</Customization2DProgressionMessage>
+		<TradingCaravanRefillSysMessage>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/tradingCaravan/refill/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/tradingCaravan/button)</label>
+					<action>showTradingCaravanRefill</action>
+				</button>
+			</buttonsLayout>
+		</TradingCaravanRefillSysMessage>
 		<IntegratedAuctionStageStart>
 			<type>auctionStart</type>
 			<linkage>AuctionMessage</linkage>

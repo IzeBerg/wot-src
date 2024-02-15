@@ -706,6 +706,9 @@ msgstr "Разминка"
 msgid "bonusType/5"
 msgstr "Специальный бой"
 
+msgid "bonusType/50"
+msgstr "Полигон"
+
 msgid "bonusType/6"
 msgstr "Боевое обучение"
 
@@ -1726,9 +1729,6 @@ msgstr "Серверное ограничение"
 msgid "currentVehicleStatus/subscription_suspended"
 msgstr "?empty?"
 
-msgid "currentVehicleStatus/tooHeavy"
-msgstr "Машина перегружена"
-
 msgid "currentVehicleStatus/undamaged"
 msgstr "К бою готов!"
 
@@ -1968,9 +1968,7 @@ msgid "descriptions/vehicle"
 msgstr "%(weight)s т; броня: до %(hullArmor)s мм; орудие: %(caliber)s мм"
 
 msgid "descriptions/vehicleChassis"
-msgstr ""
-"Скорость поворота: до %(rotationSpeed)s град/с\n"
-"Макс. нагрузка: %(maxLoad)s т"
+msgstr "Скорость поворота: до %(rotationSpeed)s град/с"
 
 msgid "descriptions/vehicleEngine"
 msgstr ""
@@ -2001,9 +1999,7 @@ msgstr ""
 "Обзор: ок. %(circularVisionRadius)s м"
 
 msgid "descriptions/vehicleWheeledChassis"
-msgstr ""
-"Максимальный угол поворота колёс: до %(maxSteeringLockAngle)s град\n"
-"Макс. нагрузка: %(maxLoad)s т"
+msgstr "Максимальный угол поворота колёс: до %(maxSteeringLockAngle)s град"
 
 msgid "disconnect/codes/0"
 msgstr "<?empty?>"
@@ -2776,13 +2772,13 @@ msgid "header/vehicleType/elite/mediumTank"
 msgstr "Элитный средний танк"
 
 msgid "header/vehicleType/heavyTank"
-msgstr "Тяжёлые танки"
+msgstr "Тяжёлый танк"
 
 msgid "header/vehicleType/lightTank"
-msgstr "Лёгкие танки"
+msgstr "Лёгкий танк"
 
 msgid "header/vehicleType/mediumTank"
-msgstr "Средние танки"
+msgstr "Средний танк"
 
 msgid "header/wotPlusExclusiveVehicleType/AT-SPG"
 msgstr "ПТ-САУ"
@@ -4362,20 +4358,11 @@ msgstr "Демонтировать"
 msgid "moduleFits/removeToolTip"
 msgstr " "
 
-msgid "moduleFits/remove_too_heavy"
-msgstr "Слишком тяжёлые модули"
-
 msgid "moduleFits/similar_device_already_installed"
 msgstr "?empty?"
 
 msgid "moduleFits/title"
 msgstr "%(moduleName)s для %(vehicleName)s"
-
-msgid "moduleFits/too_heavy"
-msgstr "Недостаточно грузоподъёмности"
-
-msgid "moduleFits/too_heavy_chassis"
-msgstr "Слишком тяжёлые модули"
 
 msgid "moduleFits/unlock_error"
 msgstr "Не исследован"
@@ -4597,9 +4584,6 @@ msgstr "Прочность"
 msgid "moduleInfo/params/maxHullHealth"
 msgstr "Прочность"
 
-msgid "moduleInfo/params/maxLoad"
-msgstr "Максимальная нагрузка"
-
 msgid "moduleInfo/params/maxShotDistance"
 msgstr "Дальность стрельбы"
 
@@ -4689,6 +4673,12 @@ msgstr "Время дезориентации"
 
 msgid "moduleInfo/params/turboshaftEnginePower"
 msgstr "Мощность двигателя (турбо)"
+
+msgid "moduleInfo/params/vehicleGunShotStabilizationChassisMovement"
+msgstr "Стабилизация орудия при движении ходовой"
+
+msgid "moduleInfo/params/vehicleGunShotStabilizationChassisRotation"
+msgstr "Стабилизация орудия при поворотах ходовой"
 
 msgid "moduleInfo/params/weight"
 msgstr "Масса"
@@ -6248,9 +6238,6 @@ msgstr "Серверное ограничение"
 msgid "tankCarousel/vehicleStates/subscription_suspended"
 msgstr "Приостановлено"
 
-msgid "tankCarousel/vehicleStates/tooHeavy"
-msgstr "Машина перегружена"
-
 msgid "tankCarousel/vehicleStates/unavailable"
 msgstr "Недоступно"
 
@@ -6594,7 +6581,7 @@ msgid "tank_params/values/param12/value3"
 msgstr "плохая"
 
 msgid "tank_params/vehicleWeight"
-msgstr "Масса / предельная масса машины"
+msgstr "Масса"
 
 msgid "tank_params/vpm"
 msgstr "(ед./мин)"
@@ -7141,7 +7128,7 @@ msgid "vehicleInfo/params/turretYawLimits"
 msgstr "Углы поворота башни (град)"
 
 msgid "vehicleInfo/params/vehicleWeight"
-msgstr "Масса/предельная масса машины (т)"
+msgstr "Масса (т)"
 
 msgid "vehicleInfo/params/wheeledSpeedModeSpeed"
 msgstr "Макс. скорость / задний ход (скоростной, км/ч)"

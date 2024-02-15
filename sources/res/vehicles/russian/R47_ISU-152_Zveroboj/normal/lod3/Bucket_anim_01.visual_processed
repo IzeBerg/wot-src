@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>Root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 -0.944510 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Main</identifier>
+				<transform>
+					<row0>0.993400 0.083013 0.079157</row0>
+					<row1>-0.081914 0.996494 -0.017041</row1>
+					<row2>-0.080294 0.010444 0.996716</row2>
+					<row3>0.568768 0.674029 -3.356615</row3>
+				</transform>
+				<node>
+					<identifier>Bucket</identifier>
+					<transform>
+						<row0>0.128191 0.875619 0.465681</row0>
+						<row1>0.991641 -0.120126 -0.047103</row1>
+						<row2>0.014696 0.467827 -0.883698</row2>
+						<row3>0.009593 -0.119664 -0.042169</row3>
+					</transform>
+					<node>
+						<identifier>Bucket_BlendBone</identifier>
+						<transform>
+							<row0>0.018228 0.998718 0.047233</row0>
+							<row1>0.888054 -0.037877 0.458177</row1>
+							<row2>-0.459378 -0.033594 0.887605</row2>
+							<row3>1.894978 -0.491396 -2.863709</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Main_BlendBone</identifier>
+					<transform>
+						<row0>0.993400 -0.081914 -0.080294</row0>
+						<row1>0.083013 0.996494 0.010444</row1>
+						<row2>-0.079157 0.017041 -0.996716</row2>
+						<row3>-0.276860 0.258923 3.394087</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Root_BlendBone</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 -1.000000</row2>
+					<row3>0.000000 0.944510 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Root_BlendBone</node>
+		<geometry>
+			<vertices>polySurfaceShape1.vertices</vertices>
+			<primitive>polySurfaceShape1.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert1_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.299925 -0.195338 -2.973818</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>Main_BlendBone</node>
+		<node>Bucket_BlendBone</node>
+		<geometry>
+			<vertices>hull_animation_Shape.vertices</vertices>
+			<primitive>hull_animation_Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_hull_01_skinned</identifier>
+					<fx>shaders/std_effects/PBS_tank_skinned.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_hull_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_hull_01_AO.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_hull_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/russian/R47_ISU-152_Zveroboj/ISU-152_Zveroboj_hull_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.588870 -0.453497 3.437048</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.304925 -0.649529 -3.586002</min>
+		<max>0.711447 -0.195338 2.978818</max>
+	</boundingBox>
+	<geometrySize>1670</geometrySize>
+	<minUVDensity>0.012698</minUVDensity>
+</root>

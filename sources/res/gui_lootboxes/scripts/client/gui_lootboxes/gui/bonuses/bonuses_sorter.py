@@ -1,5 +1,5 @@
 import typing
-from constants import PREMIUM_ENTITLEMENTS
+from constants import LOOTBOX_TOKEN_PREFIX, PREMIUM_ENTITLEMENTS
 from gui.server_events.bonuses import VehiclesBonus, splitBonuses
 from gui.server_events.recruit_helper import getRecruitInfo
 from gui.shared.gui_items import GUI_ITEM_TYPE
@@ -64,6 +64,8 @@ def _getTokensTag(bonus):
         _, _, item, _ = parseCompenstaionToken(tokenId)
         if item == 'cllc':
             return BonusesSortTags.CLLC_ITEM_COMP
+    if tokenId.startswith(LOOTBOX_TOKEN_PREFIX):
+        return BonusesSortTags.CUSTOM_LOOTBOX
     return BonusesSortTags.UNSORTABLE
 
 

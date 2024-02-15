@@ -17,6 +17,8 @@ BATTLE_PASS_Q_CHAIN_TOKEN_PREFIX = BATTLE_PASS_TOKEN_PREFIX + 'q_chain:'
 BATTLE_PASS_RANDOM_QUEST_TOKEN_PREFIX = BATTLE_PASS_TOKEN_PREFIX + 'random_quest:'
 BATTLE_PASS_TOKEN_TROPHY_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'trophy:'
 BATTLE_PASS_TOKEN_TROPHY_GIFT_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'trophy_gift:'
+BATTLE_PASS_TOKEN_EXPEQUIPMENTS_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'expequipments:'
+BATTLE_PASS_TOKEN_EXPEQUIPMENTS_GIFT_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'expequipments_gift:'
 BATTLE_PASS_TOKEN_NEW_DEVICE_MI_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'new_device_mi:'
 BATTLE_PASS_TOKEN_NEW_DEVICE_FV_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'new_device_fv:'
 BATTLE_PASS_TOKEN_NEW_DEVICE_MI_GIFT_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'new_device_mi_gift:'
@@ -25,17 +27,21 @@ BATTLE_PASS_TOKEN_BLUEPRINT_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'blueprint:
 BATTLE_PASS_TOKEN_BLUEPRINT_GIFT_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'blueprint_gift:'
 BATTLE_PASS_TOKEN_BROCHURE_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'brochure:'
 BATTLE_PASS_TOKEN_BROCHURE_GIFT_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'brochure_gift:'
+BATTLE_PASS_TOKEN_BOOK_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'book:'
+BATTLE_PASS_TOKEN_BOOK_GIFT_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'book_gift:'
 BATTLE_PASS_TOKEN_GUIDE_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'guide:'
 BATTLE_PASS_TOKEN_GUIDE_GIFT_OFFER = BATTLE_PASS_OFFER_TOKEN_PREFIX + 'guide_gift:'
 BATTLE_PASS_TOKEN_3D_STYLE = BATTLE_PASS_TOKEN_PREFIX + '3D_style:'
 BATTLE_PASS_RANDOM_QUEST_ID_PREFIX = 'battle_pass_random'
 BATTLE_PASS_CHOICE_REWARD_OFFER_TOKENS = (
  BATTLE_PASS_TOKEN_TROPHY_OFFER, BATTLE_PASS_TOKEN_NEW_DEVICE_MI_OFFER, BATTLE_PASS_TOKEN_NEW_DEVICE_FV_OFFER,
- BATTLE_PASS_TOKEN_BLUEPRINT_OFFER, BATTLE_PASS_TOKEN_BROCHURE_OFFER, BATTLE_PASS_TOKEN_GUIDE_OFFER)
+ BATTLE_PASS_TOKEN_BLUEPRINT_OFFER, BATTLE_PASS_TOKEN_BROCHURE_OFFER, BATTLE_PASS_TOKEN_GUIDE_OFFER,
+ BATTLE_PASS_TOKEN_BOOK_OFFER, BATTLE_PASS_TOKEN_EXPEQUIPMENTS_OFFER)
 BATTLE_PASS_CHOICE_REWARD_OFFER_GIFT_TOKENS = (
  BATTLE_PASS_TOKEN_TROPHY_GIFT_OFFER, BATTLE_PASS_TOKEN_NEW_DEVICE_MI_GIFT_OFFER,
  BATTLE_PASS_TOKEN_NEW_DEVICE_FV_GIFT_OFFER, BATTLE_PASS_TOKEN_BLUEPRINT_GIFT_OFFER,
- BATTLE_PASS_TOKEN_BROCHURE_GIFT_OFFER, BATTLE_PASS_TOKEN_GUIDE_GIFT_OFFER)
+ BATTLE_PASS_TOKEN_BROCHURE_GIFT_OFFER, BATTLE_PASS_TOKEN_GUIDE_GIFT_OFFER, BATTLE_PASS_TOKEN_BOOK_GIFT_OFFER,
+ BATTLE_PASS_TOKEN_EXPEQUIPMENTS_GIFT_OFFER)
 BATTLE_PASS_CHOICE_REWARD_OFFER_TOKEN_FREE_POSTFIX = 'free:'
 BATTLE_PASS_CHOICE_REWARD_OFFER_TOKEN_PAID_POSTFIX = 'paid:'
 BATTLE_PASS_PDATA_KEY = 'battlePass'
@@ -49,7 +55,7 @@ MAX_NON_CHAPTER_POINTS = 1000000
 BATTLE_PASS_TOKEN_LIFETIME = 4320
 BATTLE_PASS_COST_CURRENCIES = {
  'gold'}
-BATTLE_PASS_EXTRA_COST_CURRENCIES = {'gold', 'freeXP'}
+BATTLE_PASS_MARATHON_COST_CURRENCIES = {'gold', 'freeXP'}
 
 @unique
 class FinalReward(Enum):
@@ -62,6 +68,13 @@ class CurrencyBP(Enum):
     BIT = 'bpbit'
 
 
+@unique
+class BattlePassChapterType(Enum):
+    DEFAULT = 'default'
+    MARATHON = 'marathon'
+    RESOURCE = 'resource'
+
+
 class BattlePassRewardReason(object):
     DEFAULT = 0
     BATTLE = 1
@@ -72,8 +85,9 @@ class BattlePassRewardReason(object):
     SELECT_REWARD = 6
     PURCHASE_BATTLE_PASS_MULTIPLE = 7
     SELECT_CHAPTER = 8
+    GIFT_CHAPTER = 9
     PURCHASE_REASONS = (
-     PURCHASE_BATTLE_PASS, PURCHASE_BATTLE_PASS_LEVELS, PURCHASE_BATTLE_PASS_MULTIPLE)
+     PURCHASE_BATTLE_PASS, PURCHASE_BATTLE_PASS_LEVELS, PURCHASE_BATTLE_PASS_MULTIPLE, GIFT_CHAPTER)
 
 
 class BattlePassState(object):
@@ -249,15 +263,15 @@ class BattlePassConfig(object):
         self._config = config
         self._season = config.get('season') or {}
         self._rewards = config.get('rewards') or {}
-        self._regularChapterIds = set()
-        self._extraChapterIds = set()
+        self._chaptersType = {}
         if not self.chapters:
             return
         for chapterID, chapterData in self.chapters.iteritems():
-            if chapterData['extra']:
-                self._extraChapterIds.add(chapterID)
+            if self._chaptersType.get(chapterData['chapterType']):
+                self._chaptersType[chapterData['chapterType']].add(chapterID)
             else:
-                self._regularChapterIds.add(chapterID)
+                self._chaptersType[chapterData['chapterType']] = {
+                 chapterID}
 
     @property
     def mode(self):
@@ -324,7 +338,7 @@ class BattlePassConfig(object):
         return MAX_NON_CHAPTER_POINTS
 
     def getRegularChapterIds(self):
-        return self._regularChapterIds
+        return self._chaptersType.get(BattlePassChapterType.DEFAULT.value, [])
 
     def getbattlePassCost(self, chapterID):
         return self.chapters.get(chapterID, {}).get('battlePassCost', {'gold': 0})
@@ -358,14 +372,20 @@ class BattlePassConfig(object):
     def isSeasonTimeOver(self, curTime):
         return int(curTime) >= self.seasonFinish
 
-    def isExtraChapter(self, chapterID):
-        return chapterID in self._extraChapterIds
+    def isMarathonChapter(self, chapterID):
+        return chapterID in self._chaptersType.get(BattlePassChapterType.MARATHON.value, [])
+
+    def isResourceChapter(self, chapterID):
+        return chapterID in self._chaptersType.get(BattlePassChapterType.RESOURCE.value, [])
 
     def isRegularChapter(self, chapterID):
-        return chapterID in self._regularChapterIds
+        return chapterID in self._chaptersType.get(BattlePassChapterType.DEFAULT.value, [])
 
     def getChapterExpireTimestamp(self, chapterID):
         return self.getChapter(chapterID).get('expires', 0)
+
+    def getGroupChapterByType(self):
+        return self._chaptersType
 
     def getSpecialVehicles(self):
         return self._season.get('specialVehicles', [])

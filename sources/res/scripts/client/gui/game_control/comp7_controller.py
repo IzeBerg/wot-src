@@ -1,7 +1,8 @@
 import logging, itertools
 from collections import namedtuple
-import typing, Event, adisp
+import typing, Event, adisp, pkgutil
 from Event import EventManager
+from ExtensionsManager import g_extensionsManager
 from comp7_common import Comp7QualificationState, SEASON_POINTS_ENTITLEMENTS
 from comp7_ranks_common import COMP7_RATING_ENTITLEMENT, COMP7_ELITE_ENTITLEMENT, COMP7_ACTIVITY_ENTITLEMENT
 from constants import Configs, RESTRICTION_TYPE, ARENA_BONUS_TYPE, COMP7_SCENE
@@ -265,6 +266,9 @@ class Comp7Controller(Notifiable, SeasonProvider, IComp7Controller, IGlobalListe
         v = self.__itemsCache.items.getVehicles(criteria)
         return len(v) > 0
 
+    def getSeasonVehicles(self):
+        return self.__serverSettings.comp7Config.seasonVehicles
+
     def vehicleIsAvailableForBuy(self):
         criteria = self.__filterEnabledVehiclesCriteria(REQ_CRITERIA.UNLOCKED)
         criteria |= ~REQ_CRITERIA.VEHICLE.SECRET | ~REQ_CRITERIA.HIDDEN
@@ -331,6 +335,14 @@ class Comp7Controller(Notifiable, SeasonProvider, IComp7Controller, IGlobalListe
 
     def getYearlyRewards(self):
         return self.__lobbyContext.getServerSettings().comp7RewardsConfig
+
+    def getBattleModifiersObject(self):
+        if 'battle_modifiers' in [ ext.name for ext in g_extensionsManager.activeExtensions ] and pkgutil.find_loader('battle_modifiers_ext'):
+            from battle_modifiers_ext.battle_modifiers import BattleModifiers
+        else:
+            _logger.error('Missing battle_modifiers_ext')
+            return
+        return BattleModifiers(self.battleModifiers)
 
     def _getAlertBlockData(self):
         if self.isOffline:

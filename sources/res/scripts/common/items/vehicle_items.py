@@ -144,9 +144,9 @@ class InstallableItem(VehicleItem):
 class Chassis(InstallableItem):
     __metaclass__ = ReflectionMetaclass
     __slots__ = ('hullPosition', 'topRightCarryingPoint', 'navmeshGirth', 'minPlaneNormalY',
-                 'maxLoad', 'specificFriction', 'rotationSpeed', 'rotationSpeedLimit',
-                 'rotationIsAroundCenter', 'shotDispersionFactors', 'terrainResistance',
-                 'bulkHealthFactor', 'carryingTriangles', 'drivingWheelsSizes', 'chassisLodDistance',
+                 'specificFriction', 'rotationSpeed', 'rotationSpeedLimit', 'rotationIsAroundCenter',
+                 'shotDispersionFactors', 'terrainResistance', 'bulkHealthFactor',
+                 'carryingTriangles', 'drivingWheelsSizes', 'chassisLodDistance',
                  'traces', 'tracks', 'wheels', 'trackPairs', 'bboxManager', 'groundNodes',
                  'trackNodes', 'trackSplineParams', 'splineDesc', 'leveredSuspension',
                  'suspensionSpringsLength', 'hullAimingSound', 'effects', 'customEffects',
@@ -160,7 +160,6 @@ class Chassis(InstallableItem):
         self.topRightCarryingPoint = None
         self.navmeshGirth = component_constants.ZERO_FLOAT
         self.minPlaneNormalY = component_constants.ZERO_FLOAT
-        self.maxLoad = component_constants.ZERO_FLOAT
         self.specificFriction = component_constants.DEFAULT_SPECIFIC_FRICTION
         self.rotationSpeed = component_constants.ZERO_FLOAT
         self.rotationSpeedLimit = None

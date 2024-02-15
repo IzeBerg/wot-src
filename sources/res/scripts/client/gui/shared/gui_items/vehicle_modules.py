@@ -65,10 +65,7 @@ class VehicleChassis(VehicleModule):
         return self.intCD == vehicle.chassis.intCD
 
     def mayInstall(self, vehicle, slotIdx=None):
-        installPossible, reason = FittingItem.mayInstall(self, vehicle, slotIdx)
-        if not installPossible and reason == 'too heavy':
-            return (False, 'too heavy chassis')
-        return (installPossible, reason)
+        return FittingItem.mayInstall(self, vehicle, slotIdx)
 
     def getInstalledVehicles(self, vehicles):
         result = set()

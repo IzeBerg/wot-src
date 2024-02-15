@@ -3,7 +3,7 @@ import logging, ResMgr, nations
 from account_helpers.settings_core import settings_constants
 from account_helpers.settings_core.options import AltVoicesSetting
 from helpers import dependency
-from SoundGroups import CREW_GENDER_SWITCHES, SoundModes, g_instance as soundGroupInst
+from SoundGroups import CREW_GENDER_SWITCHES, g_instance as soundGroupInst
 from items import tankmen
 from items.components.tankmen_components import SPECIAL_VOICE_TAG
 from items.components.crew_skins_constants import NO_CREW_SKIN_ID, NO_CREW_SKIN_SOUND_SET
@@ -219,17 +219,11 @@ class SpecialSoundCtrl(ISpecialSoundCtrl):
         if params.onlyInNational and setting.getSystemModeType() == AltVoicesSetting.SOUND_MODE_TYPE.REGULAR:
             _logger.debug('%s can be used only in national sound mode', params.languageMode)
             return
-        else:
-            if setting.getSystemModeType() == AltVoicesSetting.SOUND_MODE_TYPE.REGULAR:
-                soundGroupInst.soundModes.setMode(SoundModes.DEFAULT_MODE_NAME)
-                self.__currentMode = None
-                return
-            if not soundGroupInst.soundModes.setMode(params.languageMode):
-                _logger.warning('Could not set special voice: %s', params.languageMode)
-                return
-            self.__currentMode = params
-            soundGroupInst.setSwitch(CREW_GENDER_SWITCHES.GROUP, params.genderSwitch)
+        if not soundGroupInst.soundModes.setMode(params.languageMode):
+            _logger.warning('Could not set special voice: %s', params.languageMode)
             return
+        self.__currentMode = params
+        soundGroupInst.setSwitch(CREW_GENDER_SWITCHES.GROUP, params.genderSwitch)
 
     def __getSpecialModeForCrew(self, tag, vehicleType, crewGroups):
         if tag not in self.__voiceoverSpecialModes:

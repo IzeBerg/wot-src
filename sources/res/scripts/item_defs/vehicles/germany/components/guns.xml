@@ -160,6 +160,7 @@
 		<_128mm_PaK44_L55_FL>504</_128mm_PaK44_L55_FL>
 		<_105mm_KwK46_L68_N_FL>505</_105mm_KwK46_L68_N_FL>
 		<_88mm_KwK_43_L71_N_FL>31003</_88mm_KwK_43_L71_N_FL>
+		<_128mm_KwK44_L55_N_FL>31006</_128mm_KwK44_L55_N_FL>
 		<_128mm_KwK46_L61_7x7>31002</_128mm_KwK46_L61_7x7>
 		<_75mm_KwK41_L58_conic_C>31001</_75mm_KwK41_L58_conic_C>
 		<Gun_VK4502P_G>31004</Gun_VK4502P_G>
@@ -6950,7 +6951,7 @@
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>157 137</piercingPower>
+					<piercingPower>178 168</piercingPower>
 				</APCNR.erzu>
 				<APCNR_U>
 					<defaultPortion>0</defaultPortion>
@@ -6960,7 +6961,7 @@
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>205 172</piercingPower>
+					<piercingPower>235 215</piercingPower>
 				</APCNR_U>
 			</shots>
 		</_75mm_KwK41_L58U_conic>
@@ -13212,6 +13213,118 @@
 				</_120mm_HE_DM10>
 			</shots>
 		</_120mm_Delta_1965>
+		<_128mm_KwK44_L55_N_FL>
+			<userString>#germany_vehicles:_128mm_KwK44_L55_N</userString>
+			<tags/>
+			<level>10</level>
+			<price>310000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.56
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.46
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>large</recoilEffect>
+			</recoil>
+			<effects>shot_largeext</effects>
+			<reloadEffect>reload115_152</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -24.0 1.0 -24.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 8.0 1.0 8.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				26.25
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				14.77714285714290
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>62</maxAmmo>
+			<aimingTime>
+				2.85714285714286
+				<!--BW_String-->
+			</aimingTime>
+			<weight>3480</weight>
+			<maxHealth>220</maxHealth>
+			<maxRegenHealth>110</maxRegenHealth>
+			<repairCost>10</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.377142857142857
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.08
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					3.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_128mm_PzGr39_n>
+					<defaultPortion>
+						0.85
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>920</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>246 241</piercingPower>
+				</_128mm_PzGr39_n>
+				<_128mm_PzGr40_n>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1150</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>311 263</piercingPower>
+				</_128mm_PzGr40_n>
+				<_128mm_SprG18_n>
+					<defaultPortion>
+						0.15
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>920</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>65 65</piercingPower>
+				</_128mm_SprG18_n>
+			</shots>
+		</_128mm_KwK44_L55_N_FL>
 		<_120mm_RhD>
 			<userString>#germany_vehicles:_120mm_RhD</userString>
 			<tags/>
@@ -19807,7 +19920,7 @@
 						0.9
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>980</speed>
+					<speed>900</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
@@ -19820,7 +19933,7 @@
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>940</speed>
+					<speed>860</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
@@ -19833,7 +19946,7 @@
 						0.1
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>940</speed>
+					<speed>860</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->

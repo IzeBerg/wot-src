@@ -1,0 +1,2 @@
+TRADING_CARAVAN_REFILL_EVENT_TYPE = 'caravanRefillStart'
+TRADING_CARAVAN_REFILL_SEEN = 'caravanRefillStartNotification'

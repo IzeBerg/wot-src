@@ -40,14 +40,17 @@ class AssaultCamera(CameraWithSettings, CallbackDelayer):
         self.__curSense = self._cfg['sensitivity']
         self._aimingSystem = None
         self.__prevTime = 0.0
+        self.__prevAimPoint = Vector3()
         self.__dxdydz = Vector3(0.0, 0.0, 0.0)
         self.__autoUpdatePosition = False
         self.__sourceMatrix = None
         self.__targetMatrix = None
         self.__cameraDirection = Vector3(0.0, 0.0, 0.0)
+        states = self._cfg['states']
         self.__countOfStates = self._cfg['statesCount']
         self.__currentState = self._cfg['initialStateIndex']
-        self.__curDistRange = self._cfg['states'][self.__currentState]['distRange']
+        self.__curDistRange = states[self.__currentState]['distRange']
+        self.__boundaryDistRange = (states[0]['distRange'][0], states[(len(states) - 1)]['distRange'][(-1)])
         self.__curPitchAngle = self._cfg['states'][self.__currentState]['angle']
         self.__collisionSphereRadius = self._cfg['collisionSphereRadius']
         self.__prevVehiclePosition = Vector3()
@@ -60,6 +63,9 @@ class AssaultCamera(CameraWithSettings, CallbackDelayer):
     @staticmethod
     def _createAimingSystem():
         return BigWorld.AssaultAimingSystem()
+
+    def getZoom(self):
+        return 1 - float(self.__currentState) / (self.__countOfStates - 1)
 
     def create(self, onChangeControlMode=None):
         super(AssaultCamera, self).create()
@@ -143,9 +149,6 @@ class AssaultCamera(CameraWithSettings, CallbackDelayer):
         self.stopCallback(self.__cameraUpdate)
         return
 
-    def getCurrentCamDist(self):
-        return 0.0
-
     def update(self, dx, dy, dz, updateByKeyboard=False):
         self.__curSense = self._cfg['keySensitivity'] if updateByKeyboard else self._cfg['sensitivity']
         self.__autoUpdatePosition = updateByKeyboard
@@ -161,6 +164,18 @@ class AssaultCamera(CameraWithSettings, CallbackDelayer):
         ds.writeBool('assaultSPG/camera/vertInvert', ucfg['vertInvert'])
         ds.writeFloat('assaultSPG/camera/keySensitivity', ucfg['keySensitivity'])
         ds.writeFloat('assaultSPG/camera/sensitivity', ucfg['sensitivity'])
+
+    def getCamDistRange(self):
+        return self.__boundaryDistRange
+
+    def getCamTransitionDist(self):
+        return self.__boundaryDistRange[(-1)] / 2
+
+    def getCurrentCamDist(self):
+        return self.__targetMatrix.translation.y
+
+    def getCountOfStates(self):
+        return self.__countOfStates
 
     def __updateTrajectoryDrawer(self):
         shotDescr = BigWorld.player().getVehicleDescriptor().shot
@@ -284,6 +299,9 @@ class AssaultCamera(CameraWithSettings, CallbackDelayer):
                 desiredCollisionDist = collisionDist + copysign(sphereCollisionDist, collisionDistDiff)
             distLerpParam = self.__getDistInterpolationParam(collisionDist, deltaTime)
             newDistance = math_utils.lerp(collisionDist, desiredCollisionDist, distLerpParam)
+            if self.aimingSystem.aimPoint.distSqrTo(self.__prevAimPoint) > 0.010000000000000002:
+                BigWorld.player().positionControl.moveTo(self._aimingSystem.aimPoint)
+                self.__prevAimPoint = self._aimingSystem.aimPoint
             self.__targetMatrix.translation = self._aimingSystem.aimPoint - self.__cameraDirection.scale(newDistance)
             self.__sourceMatrix = math_utils.createRotationMatrix((
              self.__cameraDirection.yaw, -self.__cameraDirection.pitch, 0))

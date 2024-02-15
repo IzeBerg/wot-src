@@ -21,19 +21,19 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				5
+				10
 				<exports>vse tooltip</exports>
 			</duration>
 			<radius>
-				45
+				50
 				<exports>vse tooltip</exports>
 			</radius>
 			<heal>
-				13 21 30
+				15 25 35
 				<exports>vse</exports>
 			</heal>
 			<secondaryHealDebuff>
-				0
+				50
 				<exports>vse tooltip</exports>
 			</secondaryHealDebuff>
 			<tickInterval>
@@ -60,15 +60,15 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				3
+				5
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				20
+				15
 				<exports>vse tooltip</exports>
 			</duration>
 			<crewBuff>
-				4 7.5 11.0
+				7.5 11.5 15
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</crewBuff>
@@ -102,11 +102,12 @@
 				<exports>vse tooltip</exports>
 			</duration>
 			<heal>
-				3 5 7
+				5 10 15
 				<exports>vse</exports>
 			</heal>
 			<gunReloadTimeBuff>
-				1
+				1.5
+				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</gunReloadTimeBuff>
 			<tickInterval>
@@ -133,25 +134,25 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				5
+				10
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				15
+				8
 				<exports>vse tooltip</exports>
 			</duration>
 			<aimingTimeBuff>
-				0.55 0.475 0.3
+				0.5 0.35 0.2
 				<!--BW_String-->
 				<exports>vse</exports>
 			</aimingTimeBuff>
 			<shotDispersionFactors>
-				0.55 0.475 0.3
+				0.5 0.35 0.2
 				<!--BW_String-->
 				<exports>vse</exports>
 			</shotDispersionFactors>
 			<clipReloadTimeBoost>
-				0.45 0.6 0.75
+				0.6 0.7 0.8
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</clipReloadTimeBoost>
@@ -174,24 +175,24 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				3
+				10
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				15
+				12
 				<exports>vse tooltip</exports>
 			</duration>
 			<gunReloadTimeBuff>
-				0.75 0.7 0.6
+				0.95 0.9 0.85
 				<!--BW_String-->
 				<exports>vse</exports>
 			</gunReloadTimeBuff>
 			<damageDistance>
-				150
+				125
 				<exports>vse tooltip</exports>
 			</damageDistance>
 			<shotDispersionFactors>
-				0.8 0.675 0.55
+				0.8 0.75 0.65
 				<!--BW_String-->
 				<exports>vse</exports>
 			</shotDispersionFactors>
@@ -253,12 +254,12 @@
 				<exports>vse tooltip</exports>
 			</delay>
 			<radius>
-				10 12.5 15
+				12.5 15 17.5
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</radius>
 			<damage>
-				75 150 250
+				100 175 300
 				<exports>vse tooltip</exports>
 			</damage>
 			<stunDuration>
@@ -340,7 +341,7 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				10 20 30
+				12 20 28
 				<exports>vse tooltip</exports>
 			</duration>
 			<enginePowerFactor>
@@ -358,7 +359,7 @@
 				<exports>vse tooltip</exports>
 			</repairBuff>
 			<gunReloadBoost>
-				4.0
+				5.0
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</gunReloadBoost>
@@ -435,11 +436,11 @@
 				<exports>vse tooltip</exports>
 			</dispersionFactor>
 			<damageDistance>
-				250
+				300
 				<exports>vse tooltip</exports>
 			</damageDistance>
 			<damageFactors>
-				1.11 1.23 1.35
+				1.05 1.11 1.23
 				<!--BW_String-->
 				<exports>vse tooltip</exports>
 			</damageFactors>
@@ -466,19 +467,19 @@
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				8
+				7
 				<exports>vse tooltip</exports>
 			</duration>
 			<healDuration>
-				10
+				5
 				<exports>vse tooltip</exports>
 			</healDuration>
 			<baseHeal>
-				150
+				120
 				<exports>vse tooltip</exports>
 			</baseHeal>
 			<extraHealFactor>
-				0.35 0.6 0.85
+				0.35 0.65 0.9
 				<!--BW_String-->
 				<exports>vse</exports>
 			</extraHealFactor>
@@ -513,19 +514,19 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				3
+				10
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				15 20 25
+				12 18 25
 				<exports>vse tooltip</exports>
 			</duration>
 			<delay>
-				2
+				1
 				<exports>vse tooltip</exports>
 			</delay>
 			<radius>
-				45 55 60
+				50 70 95
 				<exports>vse tooltip</exports>
 			</radius>
 			<areaVisual>content/Interface/TargetPoint/ReconFlight_02.visual</areaVisual>
@@ -548,15 +549,15 @@
 				</server>
 			</visualScript>
 			<cooldownSeconds>
-				15
+				10
 				<exports>vse</exports>
 			</cooldownSeconds>
 			<duration>
-				15
+				20
 				<exports>vse tooltip</exports>
 			</duration>
 			<visionFactor>
-				1.03 1.075 1.115
+				1.05 1.15 1.25
 				<!--BW_String-->
 				<exports>vse</exports>
 			</visionFactor>

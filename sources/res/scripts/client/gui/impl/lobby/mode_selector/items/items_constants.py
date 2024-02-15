@@ -43,3 +43,5 @@ class ModeSelectorRewardID(Enum):
     STYLE = 'style'
     PROGRESSION_STYLE = 'progressionStyle'
     VEHICLE = 'vehicle'
+    STYLE_2D = 'style2D'
+    PRIZE = 'prize'

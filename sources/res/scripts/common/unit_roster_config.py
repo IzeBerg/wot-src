@@ -29,7 +29,7 @@ class RosterSlot10(BaseUnitRosterSlot):
 
 
 class EpicSlot(BaseUnitRosterSlot):
-    DEFAULT_LEVELS = (7, 7)
+    DEFAULT_LEVELS = (9, 9)
 
 
 class Comp7Slot(BaseUnitRosterSlot):

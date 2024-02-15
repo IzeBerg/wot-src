@@ -1213,7 +1213,6 @@
 				<rightTrack>20</rightTrack>
 			</armor>
 			<weight>11000</weight>
-			<maxLoad>67500</maxLoad>
 			<terrainResistance>
 				1.3 1.5 2.5
 				<!--BW_String-->
@@ -2522,7 +2521,7 @@
 					<!--BW_String-->
 				</repairCost>
 			</turretRotatorHealth>
-			<circularVisionRadius>360</circularVisionRadius>
+			<circularVisionRadius>400</circularVisionRadius>
 			<surveyingDeviceHealth>
 				<maxHealth>120</maxHealth>
 				<maxRegenHealth>60</maxRegenHealth>
@@ -2595,9 +2594,22 @@
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<reloadTime>
-						28.5
+						24.5
 						<!--BW_String-->
 					</reloadTime>
+					<clip>
+						<count>2</count>
+						<rate>
+							7.5
+							<!--BW_String-->
+						</rate>
+					</clip>
+					<autoreload>
+						<reloadTime>
+							24.5 36.5
+							<!--BW_String-->
+						</reloadTime>
+					</autoreload>
 					<aimingTime>5</aimingTime>
 					<invisibilityFactorAtShot>
 						0.086

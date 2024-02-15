@@ -29,6 +29,7 @@
 					<name>vehicleParameters</name>
 					<visible>True</visible>
 					<isChangeable>True</isChangeable>
+					<layout>VehicleParametersUI</layout>
 				</component>
 				<component>
 					<name>vehicleResearch</name>
@@ -68,6 +69,12 @@
 				<component>
 					<name>comp7Modifiers</name>
 					<visible>True</visible>
+				</component>
+				<component>
+					<name>vehicleParameters</name>
+					<visible>True</visible>
+					<type>comp7VehicleParameters</type>
+					<layout>VehicleParametersUI</layout>
 				</component>
 			</components>
 		</preset>

@@ -1645,6 +1645,23 @@
 				<slots/>
 			</block>
 			<block>
+				<class>Macro</class>
+				<id>Macro_3</id>
+				<params>
+					<param>
+						StartStopLayerAnimation
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>duration</name>
+						<const>\2.100000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_24</id>
 				<buddy>Variable_14</buddy>
@@ -1675,6 +1692,23 @@
 					</param>
 				</params>
 				<slots/>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_2</id>
+				<params>
+					<param>
+						StartStopLayerAnimation
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>duration</name>
+						<const>\4.700000\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>GetVariable</class>
@@ -1712,6 +1746,23 @@
 					</param>
 				</params>
 				<slots/>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_1</id>
+				<params>
+					<param>
+						StartStopLayerAnimation
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>duration</name>
+						<const>\7.000000\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>GetVariable</class>
@@ -1853,23 +1904,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_3</id>
-				<params>
-					<param>
-						StartStopLayerAnimation
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>duration</name>
-						<const>\2.100000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>GetVehicleAppearanceGameObject</class>
 				<id>GetVehicleAppearanceGameObject_2</id>
 				<params/>
@@ -1963,23 +1997,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>Macro</class>
-				<id>Macro_2</id>
-				<params>
-					<param>
-						StartStopLayerAnimation
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>duration</name>
-						<const>\4.700000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>SetVariable</class>
 				<id>SetVariable_8</id>
 				<buddy>Variable_3</buddy>
@@ -1991,23 +2008,6 @@
 					</param>
 				</params>
 				<slots/>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_1</id>
-				<params>
-					<param>
-						StartStopLayerAnimation
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>duration</name>
-						<const>\7.000000\</const>
-					</slot>
-				</slots>
 			</block>
 			<block>
 				<class>ListenLocalEvent</class>
@@ -2326,12 +2326,6 @@
 						<type>TypeT</type>
 					</param>
 				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>GetParentOf</class>
-				<id>GetParentOf_1</id>
-				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -2930,6 +2924,23 @@
 				</slots>
 			</block>
 			<block>
+				<class>Macro</class>
+				<id>Macro_4</id>
+				<params>
+					<param>
+						StartStopLayerAnimation
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>duration</name>
+						<const>\4.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>GetVariable</class>
 				<id>GetVariable_38</id>
 				<buddy>Variable_22</buddy>
@@ -2954,23 +2965,6 @@
 					</param>
 				</params>
 				<slots/>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_4</id>
-				<params>
-					<param>
-						StartStopLayerAnimation
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>duration</name>
-						<const>\4.000000\</const>
-					</slot>
-				</slots>
 			</block>
 		</blocks>
 		<connections>
@@ -3461,6 +3455,24 @@
 				<output>vehicleObject</output>
 			</connection>
 			<connection>
+				<from>Choice_1</from>
+				<input>in</input>
+				<to>Macro_3</to>
+				<output>o1</output>
+			</connection>
+			<connection>
+				<from>GetVariable_4</from>
+				<input>gameObject</input>
+				<to>Macro_3</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetVariable_24</from>
+				<input>layerName</input>
+				<to>Macro_3</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>GameObjectToVehicle_1</from>
 				<input>vehicle</input>
 				<to>BattleGetVehicleInsigniaRank_1</to>
@@ -3485,6 +3497,24 @@
 				<output>out</output>
 			</connection>
 			<connection>
+				<from>Choice_1</from>
+				<input>in</input>
+				<to>Macro_2</to>
+				<output>o2</output>
+			</connection>
+			<connection>
+				<from>GetVariable_4</from>
+				<input>gameObject</input>
+				<to>Macro_2</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetVariable_25</from>
+				<input>layerName</input>
+				<to>Macro_2</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>ListenLocalEvent_1</from>
 				<input>input</input>
 				<to>Choice_1</to>
@@ -3495,6 +3525,24 @@
 				<input>index</input>
 				<to>Choice_1</to>
 				<output>insigniaRank</output>
+			</connection>
+			<connection>
+				<from>Choice_1</from>
+				<input>in</input>
+				<to>Macro_1</to>
+				<output>o3</output>
+			</connection>
+			<connection>
+				<from>GetVariable_4</from>
+				<input>gameObject</input>
+				<to>Macro_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>GetVariable_26</from>
+				<input>layerName</input>
+				<to>Macro_1</to>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>Choice_2</from>
@@ -3543,24 +3591,6 @@
 				<input>value</input>
 				<to>SetVariable_7</to>
 				<output>object</output>
-			</connection>
-			<connection>
-				<from>Choice_1</from>
-				<input>in</input>
-				<to>Macro_3</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>GetVariable_4</from>
-				<input>gameObject</input>
-				<to>Macro_3</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_24</from>
-				<input>layerName</input>
-				<to>Macro_3</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>ContextGetSelf_1</from>
@@ -3647,24 +3677,6 @@
 				<output>false</output>
 			</connection>
 			<connection>
-				<from>Choice_1</from>
-				<input>in</input>
-				<to>Macro_2</to>
-				<output>o2</output>
-			</connection>
-			<connection>
-				<from>GetVariable_4</from>
-				<input>gameObject</input>
-				<to>Macro_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_25</from>
-				<input>layerName</input>
-				<to>Macro_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>SpawnComponent_3</from>
 				<input>input</input>
 				<to>SetVariable_8</to>
@@ -3675,24 +3687,6 @@
 				<input>value</input>
 				<to>SetVariable_8</to>
 				<output>object</output>
-			</connection>
-			<connection>
-				<from>Choice_1</from>
-				<input>in</input>
-				<to>Macro_1</to>
-				<output>o3</output>
-			</connection>
-			<connection>
-				<from>GetVariable_4</from>
-				<input>gameObject</input>
-				<to>Macro_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetVariable_26</from>
-				<input>layerName</input>
-				<to>Macro_1</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>ListenLocalEvent_2</from>
@@ -3851,10 +3845,10 @@
 				<output>node</output>
 			</connection>
 			<connection>
-				<from>GetParentOf_1</from>
+				<from>ContextGetSelf_1</from>
 				<input>gameObject</input>
 				<to>FindFirstNode_1</to>
-				<output>parent</output>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>SetVariable_26</from>
@@ -3871,14 +3865,8 @@
 			<connection>
 				<from>ContextGetSelf_1</from>
 				<input>gameObject</input>
-				<to>GetParentOf_1</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetParentOf_1</from>
-				<input>gameObject</input>
 				<to>FindFirstNode_2</to>
-				<output>parent</output>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>SetVariable_27</from>
@@ -3893,10 +3881,10 @@
 				<output>node</output>
 			</connection>
 			<connection>
-				<from>GetParentOf_1</from>
+				<from>ContextGetSelf_1</from>
 				<input>gameObject</input>
 				<to>FindFirstNode_4</to>
-				<output>parent</output>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>GetComponentProperty_1</from>

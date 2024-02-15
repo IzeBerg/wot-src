@@ -106,6 +106,13 @@
 			<undamaged>vehicles/british/GB120_Concept_No_5/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/british/GB120_Concept_No_5/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/british/GB120_Concept_No_5/crash/lod0/Hull.model</exploded>
+			<sets>
+				<GB120_Concept_No_5_3dst_BP13_MT>
+					<undamaged>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/crash/lod0/Hull.model</exploded>
+				</GB120_Concept_No_5_3dst_BP13_MT>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -638,6 +645,12 @@
 					<!--BW_String-->
 				</anchorShift>
 			</slot>
+			<slot>
+				<slotType>attachment</slotType>
+				<slotId>18000</slotId>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -659,7 +672,6 @@
 			<price>82500</price>
 			<notInShop>true</notInShop>
 			<weight>4000</weight>
-			<maxLoad>25000</maxLoad>
 			<terrainResistance>
 				1.0 1.35 1.95
 				<!--BW_String-->
@@ -697,6 +709,13 @@
 				<undamaged>vehicles/british/GB120_Concept_No_5/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/british/GB120_Concept_No_5/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/british/GB120_Concept_No_5/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<GB120_Concept_No_5_3dst_BP13_MT>
+						<undamaged>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/crash/lod0/Chassis.model</exploded>
+					</GB120_Concept_No_5_3dst_BP13_MT>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>MEDIUM</lodDist>
@@ -744,7 +763,7 @@
 					</scrollProcessor>
 					<rollProcessor>
 						<maxDamageAngle>
-							0.3
+							0.15
 							<!--BW_String-->
 						</maxDamageAngle>
 					</rollProcessor>
@@ -793,7 +812,7 @@
 					</scrollProcessor>
 					<rollProcessor>
 						<maxDamageAngle>
-							0.3
+							0.15
 							<!--BW_String-->
 						</maxDamageAngle>
 					</rollProcessor>
@@ -840,7 +859,7 @@
 					</scrollProcessor>
 					<rollProcessor>
 						<maxDamageAngle>
-							0.3
+							0.15
 							<!--BW_String-->
 						</maxDamageAngle>
 					</rollProcessor>
@@ -891,7 +910,7 @@
 					</scrollProcessor>
 					<rollProcessor>
 						<maxDamageAngle>
-							0.3
+							0.15
 							<!--BW_String-->
 						</maxDamageAngle>
 					</rollProcessor>
@@ -940,7 +959,7 @@
 					</scrollProcessor>
 					<rollProcessor>
 						<maxDamageAngle>
-							0.3
+							0.15
 							<!--BW_String-->
 						</maxDamageAngle>
 					</rollProcessor>
@@ -987,7 +1006,7 @@
 					</scrollProcessor>
 					<rollProcessor>
 						<maxDamageAngle>
-							0.3
+							0.15
 							<!--BW_String-->
 						</maxDamageAngle>
 					</rollProcessor>
@@ -1395,6 +1414,13 @@
 						<undamaged>vehicles/british/GB120_Concept_No_5/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/british/GB120_Concept_No_5/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/british/GB120_Concept_No_5/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<GB120_Concept_No_5_3dst_BP13_MT>
+								<undamaged>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/crash/lod0/Gun_01.model</exploded>
+							</GB120_Concept_No_5_3dst_BP13_MT>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/british/GB120_Concept_No_5/collision/Gun_01.model</collisionModelServer>
@@ -1411,6 +1437,13 @@
 				<undamaged>vehicles/british/GB120_Concept_No_5/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/british/GB120_Concept_No_5/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/british/GB120_Concept_No_5/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<GB120_Concept_No_5_3dst_BP13_MT>
+						<undamaged>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/british/GB120_Concept_No_5/_skins/GB120_Concept_No_5_3dst_BP13_MT/crash/lod0/Turret_01.model</exploded>
+					</GB120_Concept_No_5_3dst_BP13_MT>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/british/GB120_Concept_No_5/collision/Turret_01.model</collisionModelServer>

@@ -56,19 +56,6 @@ def installModulesSet(vehicle, modules, notFitted):
                     break
                 else:
                     notFitted.append(notFitReason)
-            elif notFitReason == 'too heavy':
-                chassisIndex = __findModuleIndex(modules, GUI_ITEM_TYPE.CHASSIS)
-                if chassisIndex != UNDEFINED_INDEX:
-                    modules.append(module)
-                    modules.append(modules.pop(chassisIndex))
-                    installModulesSet(vehicle, modules, notFitted)
-                    break
-                else:
-                    notFitted.append(notFitReason)
-            elif notFitReason == 'too heavy chassis':
-                modules.insert(0, module)
-                installModulesSet(vehicle, modules, notFitted)
-                break
 
 
 @dependency.replace_none_kwargs(itemsCache=IItemsCache)
@@ -109,12 +96,11 @@ def installOptionalDevice(vehicle, newId, slotIndex, itemsCache=None):
 def removeOptionalDevice(vehicle, slotIndex):
     installedDevice = vehicle.optDevices.installed[slotIndex]
     if installedDevice is not None:
-        mayRemove, reason = vehicle.descriptor.mayRemoveOptionalDevice(slotIndex)
-        if mayRemove:
-            vehicle.descriptor.removeOptionalDevice(slotIndex)
-            vehicle.optDevices.installed[slotIndex] = None
-            vehicle.optDevices.layout[slotIndex] = None
-        return (mayRemove, reason)
+        vehicle.descriptor.removeOptionalDevice(slotIndex)
+        vehicle.optDevices.installed[slotIndex] = None
+        vehicle.optDevices.layout[slotIndex] = None
+        return (
+         True, None)
     else:
         LOG_WARNING(("Couldn't remove optional device from slot {} because slot is already empty!").format(slotIndex))
         return (
