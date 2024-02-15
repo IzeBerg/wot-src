@@ -1,9 +1,13 @@
+import math
 from typing import TYPE_CHECKING, Sequence, Optional, Tuple
 from soft_exception import SoftException
 from battle_modifiers_common import BattleModifiers
 if TYPE_CHECKING:
     from battle_modifiers_common import BATTLE_MODIFIERS_TYPE
     from items.components.gun_components import GunShot
+PI = math.pi
+HALF_PI = PI * 0.5
+HULL_AIMING_PITCH_BITS = 16
 
 def bisectLE(a, v, lo=0, hi=None):
     if lo < 0:
@@ -66,3 +70,23 @@ def computeShotMaxDistance(shot, modifiers=BattleModifiers()):
             maxDistance = min(maxDistance, computeMaxDamageDistance(impact.armorDamage, modifiers), computeMaxDamageDistance(impact.deviceDamage, modifiers))
 
     return min(maxDistance, shot.nominalMaxDistance, computeMaxPiercingPowerDistance(shot.piercingPower, modifiers))
+
+
+def packFloat(value, minBound, maxBound, bits):
+    t = (value - minBound) / (maxBound - minBound)
+    t = max(0.0, min(t, 1.0))
+    mask = (1 << bits) - 1
+    return int(round(mask * t)) & mask
+
+
+def unpacklFloat(packedValue, minBound, maxBound, bits):
+    t = float(packedValue) / ((1 << bits) - 1)
+    return minBound + t * (maxBound - minBound)
+
+
+def packHullAimingPitch(angle):
+    return packFloat(angle, -HALF_PI, HALF_PI, HULL_AIMING_PITCH_BITS)
+
+
+def unpackHullAimingPitch(packedAngle):
+    return unpacklFloat(packedAngle, -HALF_PI, HALF_PI, HULL_AIMING_PITCH_BITS)

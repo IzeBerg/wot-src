@@ -167,6 +167,10 @@ class OfferEventData(object):
 
     @property
     def isOfferAvailable(self):
+        return self.isOfferUnlocked and self._tokensCache.isTokenAvailable(self.giftToken)
+
+    @property
+    def isOfferUnlocked(self):
         return self._tokensCache.isTokenAvailable(self.token) and not self.isOutOfDate and bool(self.availableGiftsCount)
 
     @property

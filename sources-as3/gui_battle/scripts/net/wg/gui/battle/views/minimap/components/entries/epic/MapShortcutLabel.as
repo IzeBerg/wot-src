@@ -24,9 +24,9 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
          super.onDispose();
       }
       
-      public function set label(param1:String) : void
+      public function set keyCode(param1:Number) : void
       {
-         this.shortcutLabel.label = param1;
+         this.shortcutLabel.keyCode = param1;
       }
    }
 }

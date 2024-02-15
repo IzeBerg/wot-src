@@ -70,6 +70,7 @@ from streamIDs import RangeStreamIDCallbacks, STREAM_ID_CHAT_MAX, STREAM_ID_CHAT
 from vehicle_systems.stricted_loading import makeCallbackWeak
 from messenger import MessengerEntry
 from battle_modifiers_common import BattleModifiers, BattleParams
+from helpers_common import unpackHullAimingPitch
 import VOIP
 _logger = logging.getLogger(__name__)
 
@@ -919,6 +920,12 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
 
     def set_ownVehicleAuxPhysicsData(self, prev=None):
         self.__onSetOwnVehicleAuxPhysicsData(prev)
+
+    def set_ownVehicleHullAimingPitchPacked(self, _):
+        vehicle = BigWorld.player().getVehicleAttached()
+        if vehicle is not None and vehicle.isPlayerVehicle and vehicle.isStarted:
+            vehicle.filter.updateHullAimingPitch(unpackHullAimingPitch(self.ownVehicleHullAimingPitchPacked))
+        return
 
     def targetBlur(self, prevEntity):
         if not prevEntity:
@@ -2181,6 +2188,13 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             return observedMatrix
         else:
             return self.__ownVehicleStabMProv
+
+    def getOwnVehicleHullAimingPitch(self):
+        vehicle = BigWorld.player().getVehicleAttached()
+        if vehicle is not None and vehicle.isPlayerVehicle and vehicle.isStarted:
+            return vehicle.filter.hullAimingPitch
+        else:
+            return 0.0
 
     def getOwnVehicleSpeeds(self, getInstantaneous=False, isAttached=False):
         vehicle = BigWorld.entity(self.playerVehicleID)

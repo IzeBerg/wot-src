@@ -14,6 +14,6 @@ package net.wg.infrastructure.base.meta
       
       function as_updateSectorStateStats(param1:Object) : void;
       
-      function as_setMapShortcutLabel(param1:String) : void;
+      function as_setMapShortcutKeyCode(param1:Number) : void;
    }
 }

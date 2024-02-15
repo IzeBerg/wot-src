@@ -176,9 +176,9 @@ VEHICLE_MISC_ATTRIBUTE_FACTOR_NAMES = (
  'onMoveRotationSpeedFactor',
  'fireStartingChanceFactor',
  'multShotDispersionFactor',
- 'chassisHealthAfterHysteresisFactor',
+ 'isSetChassisMaxHealthAfterHysteresis',
  'centerRotationFwdSpeedFactor')
-VEHICLE_MISC_ATTRIBUTE_FACTOR_INDICES = dict((value, index) for index, value in enumerate(VEHICLE_MISC_ATTRIBUTE_FACTOR_NAMES))
+VEHICLE_MISC_ATTRIBUTE_FACTOR_INDICES = {value:index for index, value in enumerate(VEHICLE_MISC_ATTRIBUTE_FACTOR_NAMES)}
 
 class EnhancementItem(object):
     __slots__ = ('name', 'value', 'op')
@@ -419,6 +419,14 @@ class VehicleDescriptor(object):
     role = property(lambda self: self.type.role)
     isPitchHullAimingAvailable = property(lambda self: self.type.hullAimingParams['pitch']['isAvailable'])
     isYawHullAimingAvailable = property(lambda self: self.type.hullAimingParams['yaw']['isAvailable'])
+
+    @property
+    def minHullAimingPitch(self):
+        return self.type.hullAimingParams['pitch']['wheelsCorrectionAngles']['pitchMin']
+
+    @property
+    def maxHullAimingPitch(self):
+        return self.type.hullAimingParams['pitch']['wheelsCorrectionAngles']['pitchMax']
 
     @property
     def hasBurnout(self):
@@ -1496,7 +1504,7 @@ class VehicleDescriptor(object):
            'onMoveRotationSpeedFactor': 1.0, 
            'fireStartingChanceFactor': 1.0, 
            'multShotDispersionFactor': 1.0, 
-           'chassisHealthAfterHysteresisFactor': 1.0, 
+           'isSetChassisMaxHealthAfterHysteresis': False, 
            'ammoBayHealthFactor': 1.0, 
            'engineHealthFactor': 1.0, 
            'chassisHealthFactor': 1.0, 

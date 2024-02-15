@@ -617,8 +617,7 @@ class ExtraHealthReserve(StaticOptionalDevice):
 
     def updateVehicleDescrAttrs(self, vehicleDescr):
         super(ExtraHealthReserve, self).updateVehicleDescrAttrs(vehicleDescr)
-        descr = vehicleDescr.chassis
-        vehicleDescr.miscAttrs['chassisHealthAfterHysteresisFactor'] = float(descr.maxHealth) / descr.maxRegenHealth
+        vehicleDescr.miscAttrs['isSetChassisMaxHealthAfterHysteresis'] = True
 
     def _readConfig(self, xmlCtx, section):
         super(ExtraHealthReserve, self)._readConfig(xmlCtx, section)

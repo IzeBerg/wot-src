@@ -42,7 +42,7 @@ class StorageCategoryOffersView(StorageCategoryOffersViewMeta):
     def _syncOffers(self, callback=None):
         result = CachePrefetchResult.SUCCESS
         currentIDs = {offerVO['id'] for offerVO in self._dataProvider.collection}
-        newIDs = {offer.id for offer in self._offersProvider.getAvailableOffers(onlyVisible=True)}
+        newIDs = {offer.id for offer in self._offersProvider.getUnlockedOffers(onlyVisible=True)}
         if currentIDs != newIDs:
             Waiting.show('loadContent')
             result = yield self._offersProvider.isCdnResourcesReady()
@@ -52,7 +52,7 @@ class StorageCategoryOffersView(StorageCategoryOffersViewMeta):
     @adisp_process
     def _updateData(self):
         result = yield self._syncOffers()
-        if not self._offersProvider.getAvailableOffers(onlyVisible=True):
+        if not self._offersProvider.getUnlockedOffers(onlyVisible=True):
             return
         if result != CachePrefetchResult.SUCCESS:
             self.as_showDummyScreenS(True)
@@ -64,12 +64,12 @@ class StorageCategoryOffersView(StorageCategoryOffersViewMeta):
             self._dataProvider.buildList(currentOffersVo)
 
     def _getTotalClicksText(self):
-        clicksCount = sum([ o.clicksCount for o in self._offersProvider.iAvailableOffers(onlyVisible=True) ])
+        clicksCount = sum([ o.clicksCount for o in self._offersProvider.iUnlockedOffers(onlyVisible=True) ])
         clicksText = backport.text(R.strings.storage.offers.giftsTitle(), gifts=text_styles.stats(clicksCount))
         return clicksText
 
     def _getVoList(self):
-        sortedOffers = sorted(self._offersProvider.iAvailableOffers(onlyVisible=True), key=lambda o: o.priority)
+        sortedOffers = sorted(self._offersProvider.iUnlockedOffers(onlyVisible=True), key=lambda o: o.priority)
         return [ self._getVO(offer) for offer in sortedOffers ]
 
     def _getVO(self, offer):

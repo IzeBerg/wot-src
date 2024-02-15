@@ -140,9 +140,9 @@ package net.wg.gui.battle.views.minimap
          }
       }
       
-      public function as_setMapShortcutLabel(param1:String) : void
+      public function as_setMapShortcutKeyCode(param1:Number) : void
       {
-         this.mapShortcutLabel.label = param1;
+         this.mapShortcutLabel.keyCode = param1;
       }
       
       override public function getMessageCoordinate() : Number

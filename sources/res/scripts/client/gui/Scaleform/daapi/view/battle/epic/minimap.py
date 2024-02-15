@@ -16,7 +16,7 @@ from gui.Scaleform.genConsts.BATTLE_MINIMAP_CONSTS import BATTLE_MINIMAP_CONSTS
 from gui.Scaleform.genConsts.LAYER_NAMES import LAYER_NAMES
 from gui.battle_control import minimap_utils, avatar_getter
 from gui.battle_control.battle_constants import PROGRESS_CIRCLE_TYPE, SECTOR_STATE_ID, FEEDBACK_EVENT_ID
-from gui.shared.utils.key_mapping import getReadableKey
+from gui.shared.utils.key_mapping import getScaleformKey
 from helpers import dependency
 from messenger_common_chat2 import MESSENGER_ACTION_IDS as _ACTIONS
 from skeletons.account_helpers.settings_core import ISettingsCore
@@ -188,7 +188,8 @@ class EpicMinimapComponent(EpicMinimapMeta):
         return (1 - p) * _DOWN_SCALE + p * _UP_SCALE
 
     def __updateMapShortcutLabel(self):
-        self.as_setMapShortcutLabelS(getReadableKey(CommandMapping.CMD_MINIMAP_VISIBLE))
+        key, _ = CommandMapping.g_instance.getCommandKeys(CommandMapping.CMD_MINIMAP_VISIBLE)
+        self.as_setMapShortcutKeyCodeS(getScaleformKey(key))
 
     def __onSettingsApplied(self, diff):
         if CONTROLS.KEYBOARD in diff:

@@ -136,7 +136,6 @@ class BATTLE_PASS(object):
     PROGRESSION_CURRENTSTEP = '#battle_pass:progression/currentStep'
     PROGRESSION_PAUSEDSTEP = '#battle_pass:progression/pausedStep'
     PROGRESSION_CURRENTSTEPLOCKED = '#battle_pass:progression/currentStepLocked'
-    PROGRESSION_TROPHYSELECTAWAITING = '#battle_pass:progression/trophySelectAwaiting'
     PROGRESSION_BATTLEPASSBUYBTN = '#battle_pass:progression/battlePassBuyBtn'
     PROGRESSION_EPISODEBUYBTN = '#battle_pass:progression/episodeBuyBtn'
     PROGRESSION_ACTIVATECHAPTER = '#battle_pass:progression/activateChapter'

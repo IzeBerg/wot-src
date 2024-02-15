@@ -18,7 +18,7 @@ from uilogging.epic_battle.loggers import EpicBattleTooltipLogger
 
 def _isValidReward(level, tokenID):
     tokenLevel = tokenID.split(':')[(-1)]
-    return not level or int(tokenLevel) == level
+    return not level or int(tokenLevel) <= level
 
 
 class RewardsSelectionView(SelectableRewardBase):
@@ -35,9 +35,6 @@ class RewardsSelectionView(SelectableRewardBase):
         self.__isAutoDestroyWindowsOnReceivedRewards = isAutoDestroyWindowsOnReceivedRewards
         self.__uiEpicBattleLogger = EpicBattleTooltipLogger()
         super(RewardsSelectionView, self).__init__(R.views.lobby.frontline.RewardsSelectionView(), self._helper.getAvailableSelectableBonuses(partial(_isValidReward, level)), RewardsSelectionViewModel)
-
-    def _getReceivedRewards(self, rewardName):
-        return 0
 
     @property
     def viewModel(self):
@@ -91,6 +88,15 @@ class RewardsSelectionView(SelectableRewardBase):
             SystemMessages.pushI18nMessage(backport.text(R.strings.system_messages.battlePass.rewardChoice.error()), type=SystemMessages.SM_TYPE.Error)
         if self.__isAutoDestroyWindowsOnReceivedRewards:
             self.destroyWindow()
+
+    def _getReceivedRewards(self, rewardName):
+        return 0
+
+    def _iterSelectableBonus(self, cart):
+        for tab in cart.itervalues():
+            for rewardName, reward in tab.iteritems():
+                for bonus in reward[:self._getRewardsInCartCount(rewardName)]:
+                    yield bonus
 
     def __onViewLoaded(self):
         if not self.__isViewLoaded:

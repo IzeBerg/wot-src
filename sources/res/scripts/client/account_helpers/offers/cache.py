@@ -36,7 +36,7 @@ class ExternalCache(BaseExternalCache):
             root = urlparse.urlparse(self._cdnRootUrl)
             host = urlparse.urlunsplit((root.scheme, root.netloc, '', '', ''))
             resMap = {'localizations': set(), 'images': set()}
-            for offer in self._offersProvider.iAvailableOffers():
+            for offer in self._offersProvider.iUnlockedOffers():
                 resMap['localizations'].update({offer.cdnLocFilePath})
                 resMap['images'].update({
                  offer.cdnBannerLogoPath,

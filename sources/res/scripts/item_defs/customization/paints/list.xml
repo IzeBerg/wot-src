@@ -7074,6 +7074,39 @@
 		</usages>
 	</itemGroup>
 	<itemGroup>
+		<name>Desert Power</name>
+		<userString>#vehicle_customization:repaint/color_group_04</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<paint>
+			<id>464</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_31.png</texture>
+			<color>33 14 12 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.23
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/desertpower</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<usages>
+			<item>
+				<componentType>ALL</componentType>
+				<cost>1</cost>
+			</item>
+		</usages>
+	</itemGroup>
+	<itemGroup>
 		<name>theboys</name>
 		<userString>#vehicle_customization:repaint/color_group_04</userString>
 		<season>ALL</season>
@@ -7298,6 +7331,21 @@
 				<!--BW_String-->
 			</metallic>
 			<userString>#vehicle_customization:special_style/twitch_august_2023</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>437</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_38.png</texture>
+			<color>79 44 33 255</color>
+			<gloss>
+				0.4
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.23
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:special_style/twitch_october_2023</userString>
 			<tags>hiddenInUI</tags>
 		</paint>
 		<paint>

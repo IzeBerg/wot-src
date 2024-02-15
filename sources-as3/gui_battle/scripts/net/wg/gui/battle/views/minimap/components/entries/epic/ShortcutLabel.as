@@ -18,7 +18,7 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
       
       public var background:MovieClip = null;
       
-      private var _label:String = null;
+      private var _keyCode:Number = 777;
       
       public function ShortcutLabel()
       {
@@ -43,16 +43,16 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
          super.draw();
          if(isInvalid(InvalidationType.DATA))
          {
-            this.mapBtnTF.text = this._label;
+            this.mapBtnTF.text = App.utils.commons.keyToString(this._keyCode).keyName;
             this.background.width = Math.max(MIN_BG_WIDTH,this.mapBtnTF.width + LABEL_SPACING) >> 0;
             this.background.x = -this.background.width;
             this.mapBtnTF.x = -(this.mapBtnTF.width + (this.background.width - this.mapBtnTF.width) / 2) >> 0;
          }
       }
       
-      public function set label(param1:String) : void
+      public function set keyCode(param1:Number) : void
       {
-         this._label = param1;
+         this._keyCode = param1;
          this.invalidateData();
       }
    }
