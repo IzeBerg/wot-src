@@ -2,7 +2,7 @@ from functools import partial
 import typing
 from battle_pass_common import BattlePassRewardReason, get3DStyleProgressToken
 from frameworks.state_machine import ConditionTransition, State, StateEvent, StateFlags
-from gui.battle_pass.battle_pass_helpers import asBPVideoName, getStyleForChapter, getStyleInfoForChapter, makeChapterMediaName, makeProgressionStyleMediaName, showBPFullscreenVideo
+from gui.battle_pass.battle_pass_helpers import asBPVideoName, getStyleForChapter, getStyleInfoForChapter, makeChapterMediaName, makeProgressionStyleMediaName, showBPFullscreenVideo, makeChapterAudioName
 from gui.battle_pass.state_machine import lockNotificationManager
 from gui.battle_pass.state_machine.state_machine_helpers import isProgressionComplete, packToken, processRewardsToChoose
 from gui.impl.gen import R
@@ -156,7 +156,8 @@ class VideoState(State):
                 chapterID = data.get('chapter')
                 if self.__battlePass.isExtraChapter(chapterID) or self.__battlePass.isHoliday():
                     mediaName = makeChapterMediaName(chapterID)
-                    showBPFullscreenVideo(asBPVideoName(mediaName), mediaName, partial(machine.post, StateEvent()))
+                    audioName = makeChapterAudioName()
+                    showBPFullscreenVideo(asBPVideoName(mediaName), audioName, partial(machine.post, StateEvent()))
         return
 
 
