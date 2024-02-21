@@ -27115,6 +27115,22 @@ package
       
       public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_OBJECT_780_600X450_3D:String = "../maps/icons/resourceWell/vehicles/Object_780_600x450_3d.png";
       
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_R196_OBJECT_452K_232X174:String = "../maps/icons/resourceWell/vehicles/R196_Object_452K_232x174.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_R196_OBJECT_452K_232X174_3D:String = "../maps/icons/resourceWell/vehicles/R196_Object_452K_232x174_3d.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_R196_OBJECT_452K_296X222:String = "../maps/icons/resourceWell/vehicles/R196_Object_452K_296x222.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_R196_OBJECT_452K_296X222_3D:String = "../maps/icons/resourceWell/vehicles/R196_Object_452K_296x222_3d.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_R196_OBJECT_452K_400X300:String = "../maps/icons/resourceWell/vehicles/R196_Object_452K_400x300.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_R196_OBJECT_452K_400X300_3D:String = "../maps/icons/resourceWell/vehicles/R196_Object_452K_400x300_3d.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_R196_OBJECT_452K_600X450:String = "../maps/icons/resourceWell/vehicles/R196_Object_452K_600x450.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_R196_OBJECT_452K_600X450_3D:String = "../maps/icons/resourceWell/vehicles/R196_Object_452K_600x450_3d.png";
+      
       public static const MAPS_ICONS_ROLEEXP_ACTIONS_128X128_BLOCKANDTAKEDAMAGE:String = "../maps/icons/roleExp/actions/128x128/blockAndTakeDamage.png";
       
       public static const MAPS_ICONS_ROLEEXP_ACTIONS_128X128_BLOCKDAMAGE:String = "../maps/icons/roleExp/actions/128x128/blockDamage.png";
