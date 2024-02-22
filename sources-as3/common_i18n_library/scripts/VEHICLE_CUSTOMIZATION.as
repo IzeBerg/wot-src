@@ -3543,6 +3543,10 @@ package
       
       public static const CAMOUFLAGE_TWITCH_DECEMBER_2023_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_december_2023/description";
       
+      public static const CAMOUFLAGE_R196_OBJECT_452K_KL_3DST_LABEL:String = "#vehicle_customization:camouflage/R196_Object_452K_KL_3DSt/label";
+      
+      public static const CAMOUFLAGE_R196_OBJECT_452K_KL_3DST_DESCRIPTION:String = "#vehicle_customization:camouflage/R196_Object_452K_KL_3DSt/description";
+      
       public static const CAMOUFLAGE_WDR_CAMO_1_LABEL:String = "#vehicle_customization:camouflage/wdr_camo_1/label";
       
       public static const CAMOUFLAGE_WDR_CAMO_1_DESCRIPTION:String = "#vehicle_customization:camouflage/wdr_camo_1/description";
@@ -12698,6 +12702,10 @@ package
       public static const SPECIAL_STYLE_TWITCH_DECEMBER_2023:String = "#vehicle_customization:special_style/twitch_december_2023";
       
       public static const SPECIAL_STYLE_TWITCH_DECEMBER_2023_DESC_LONG:String = "#vehicle_customization:special_style/twitch_december_2023_desc/long";
+      
+      public static const SPECIAL_STYLE_R196_OBJECT_452K_KL_3DST:String = "#vehicle_customization:special_style/R196_Object_452K_KL_3DSt";
+      
+      public static const SPECIAL_STYLE_R196_OBJECT_452K_KL_3DST_DESC_LONG:String = "#vehicle_customization:special_style/R196_Object_452K_KL_3DSt_desc/long";
       
       public static const SPECIAL_STYLE_F116_BAT_CHATILLON_BOURRASQUE_DV_3DST:String = "#vehicle_customization:special_style/F116_Bat_Chatillon_Bourrasque_DV_3DSt";
       
