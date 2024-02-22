@@ -272,4 +272,61 @@ package net.wg.gui.cyberSport.views
             case this.selectedVehicleBtn:
                if(this.selectedVehicleBtn.enabled)
                {
-                  App.toolTipMgr.
+                  App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.CYBER_SPORT_SELECTED_VEHICLE,null,this._selectedVehicleData.intCD);
+               }
+               break;
+            case this.regulationsInfoLbl:
+               App.toolTipMgr.showSpecial(this._regulationsInfoTooltip,null);
+               break;
+            case this.autoMatchBtn:
+               if(this._selectedVehicleIsReady)
+               {
+                  _loc2_ = CYBERSPORT.WINDOW_INTRO_AUTO_BTN_TOOLTIP_TITLE;
+                  _loc3_ = !!this.autoMatchBtn.enabled ? CYBERSPORT.WINDOW_INTRO_AUTO_BTN_TOOLTIP_DESCRIPTION_ENABLED : CYBERSPORT.WINDOW_INTRO_AUTO_BTN_TOOLTIP_DESCRIPTION_DISABLED;
+                  showComplexTooltip(_loc2_,_loc3_);
+               }
+               else
+               {
+                  this.showWarningTooltip();
+               }
+               break;
+            case this.warningIcon:
+               this.showWarningTooltip();
+         }
+      }
+      
+      override protected function showListRoom(param1:ButtonEvent) : void
+      {
+         var _loc2_:Object = {
+            "alias":CYBER_SPORT_ALIASES.UNITS_LIST_VIEW_UI,
+            "itemId":Number.NaN,
+            "peripheryID":0,
+            "slotIndex":-1
+         };
+         dispatchEvent(new RallyViewsEvent(RallyViewsEvent.LOAD_VIEW_REQUEST,_loc2_));
+      }
+      
+      private function onControlRollOutHandler(param1:MouseEvent) : void
+      {
+         onControlRollOut();
+      }
+      
+      private function onControlRollOverHandler(param1:MouseEvent) : void
+      {
+         this.controlRollOverPerformer(param1);
+      }
+      
+      private function onAutoSearchClickHandler(param1:ButtonEvent) : void
+      {
+         dispatchEvent(new CSComponentEvent(CSComponentEvent.SHOW_AUTO_SEARCH_VIEW,{
+            "state":CYBER_SPORT_ALIASES.INTRO_VIEW_UI,
+            "cmpDescr":[this._selectedVehicleData.intCD]
+         }));
+      }
+      
+      private function onSelectedVehicleButtonClickHandler(param1:ButtonEvent) : void
+      {
+         showSelectorPopupS();
+      }
+   }
+}
