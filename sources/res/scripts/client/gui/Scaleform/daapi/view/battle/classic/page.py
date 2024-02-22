@@ -97,6 +97,7 @@ class ClassicPage(SharedPage):
 
     def _toggleRadialMenu(self, isShown, allowAction=True):
         radialMenuLinkage = BATTLE_VIEW_ALIASES.RADIAL_MENU
+        newbieHintLinkage = BATTLE_VIEW_ALIASES.NEWBIE_HINT
         radialMenu = self.getComponent(radialMenuLinkage)
         if radialMenu is None:
             return
@@ -106,11 +107,13 @@ class ClassicPage(SharedPage):
             if isShown:
                 radialMenu.show()
                 self.app.enterGuiControlMode(radialMenuLinkage, cursorVisible=False, enableAiming=False)
-                self._setComponentsVisibility(hidden={BATTLE_VIEW_ALIASES.NEWBIE_HINT})
+                if newbieHintLinkage in self.components:
+                    self._setComponentsVisibility(hidden={newbieHintLinkage})
             else:
                 self.app.leaveGuiControlMode(radialMenuLinkage)
                 radialMenu.hide(allowAction)
-                self._setComponentsVisibility(visible={BATTLE_VIEW_ALIASES.NEWBIE_HINT})
+                if newbieHintLinkage in self.components:
+                    self._setComponentsVisibility(visible={newbieHintLinkage})
             return
 
     def _toggleFullStats(self, isShown, permanent=None, tabAlias=None):

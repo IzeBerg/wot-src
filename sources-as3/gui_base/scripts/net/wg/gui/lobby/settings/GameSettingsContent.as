@@ -20,7 +20,7 @@ package net.wg.gui.lobby.settings
       
       private static const OFFSET_CB_DISABLED:int = -26;
       
-      private static const NEVER_INDEX:int = 0;
+      private static const BTN_MIN_WIDTH:int = 128;
        
       
       public var fieldSetChat:FieldSet = null;
@@ -294,6 +294,7 @@ package net.wg.gui.lobby.settings
          this.newbieBattleHintsCheckbox.toolTip = TOOLTIPS.NEWBIEBATTLEHINTS;
          this.newbieBattleHintsCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.restartNewbieBattleHints.label = SETTINGS.RESTARTNEWBIEBATTLEHINTS;
+         this.restartNewbieBattleHints.minWidth = BTN_MIN_WIDTH;
          this.battleLoadingInfoLabelControl.text = SETTINGS.GAME_BATTLELOADINGINFO;
          this.battleLoadingInfoLabelControl.toolTip = TOOLTIPS.BATTLELOADINGINFO;
          this.battleLoadingInfoLabelControl.infoIcoType = InfoIcon.TYPE_INFO;

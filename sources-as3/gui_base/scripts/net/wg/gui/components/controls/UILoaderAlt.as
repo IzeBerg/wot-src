@@ -143,6 +143,10 @@ package net.wg.gui.components.controls
       public function updateLoaderSize() : void
       {
          var _loc1_:Number = NaN;
+         if(!this._content)
+         {
+            return;
+         }
          if(this._autoSize)
          {
             if(this._content.width <= 0)
