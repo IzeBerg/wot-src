@@ -417,6 +417,7 @@ class VehicleDescriptor(object):
     hasSiegeMode = property(lambda self: self.type.hasSiegeMode)
     hasAutoSiegeMode = property(lambda self: self.type.hasAutoSiegeMode)
     isWheeledVehicle = property(lambda self: self.type.isWheeledVehicle)
+    isWheeledVehicleWithoutFeatures = property(lambda self: self.type.isWheeledVehicleWithoutFeatures)
     isFlamethrower = property(lambda self: self.type.isFlamethrower)
     isAssaultSPG = property(lambda self: self.type.isAssaultSPG)
     hasSpeedometer = property(lambda self: self.type.hasSpeedometer)
@@ -1504,6 +1505,7 @@ class VehicleDescriptor(object):
                'carryingTriangles': chassis.carryingTriangles, 
                'brakeForce': chassis.brakeForce, 
                'terrainResistance': chassis.terrainResistance, 
+               'groundRotationFactor': 1.0, 
                'rollingFrictionFactors': [
                                         1.0, 1.0, 1.0]}
             self.applyModificationsAttrs()
@@ -1750,6 +1752,7 @@ class VehicleType(object):
     __metaclass__ = ReflectionMetaclass
     __slots__ = (
      'name', 'id', 'compactDescr', 'mode', 'tags', 'level', 'hasSiegeMode', 'hasAutoSiegeMode', 'isWheeledVehicle',
+     'isWheeledVehicleWithoutFeatures',
      'isFlamethrower', 'isAssaultSPG', 'isDualgunVehicleType', 'hasCustomDefaultCamouflage',
      'customizationNationID', 'baseColorID',
      'speedLimits', 'repairCost', 'crewXpFactor', 'premiumVehicleXPFactor', 'xpFactor',
@@ -1784,7 +1787,9 @@ class VehicleType(object):
         self.hasSiegeMode = 'siegeMode' in self.tags
         self.hasHydraulicChassis = 'hydraulicChassis' in self.tags
         self.hasAutoSiegeMode = 'autoSiege' in self.tags
-        self.isWheeledVehicle = 'wheeledVehicle' in self.tags
+        self.isWheeledVehicle = any(item in self.tags for item in ('wheeledVehicle',
+                                                                   'wheeledVehicleWithoutFeatures'))
+        self.isWheeledVehicleWithoutFeatures = 'wheeledVehicleWithoutFeatures' in self.tags
         self.isFlamethrower = VEHICLE_TAGS.FLAMETHROWER in self.tags
         self.isAssaultSPG = VEHICLE_TAGS.ASSAULT_SPG in self.tags
         self.isDualgunVehicleType = 'dualgun' in self.tags

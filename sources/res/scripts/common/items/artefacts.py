@@ -606,6 +606,7 @@ class Grousers(StaticOptionalDevice):
             rollingFrictionFactorActiveValue = self.rollingFrictionFactor.getActiveValue(level)
             r = vehicleDescr.physics['terrainResistance']
             vehicleDescr.physics['terrainResistance'] = tuple(ri * rotationFactorActiveValue for ri in r)
+            vehicleDescr.physics['groundRotationFactor'] *= rotationFactorActiveValue
             rff = vehicleDescr.physics['rollingFrictionFactors']
             vehicleDescr.physics['rollingFrictionFactors'] = list(rffi * rollingFrictionFactorActiveValue for rffi in rff)
             return

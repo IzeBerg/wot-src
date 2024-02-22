@@ -143,7 +143,7 @@ class AssaultCameraHintPlugin(AbstractCrosshairHintPlugin):
     def _getHint(self):
         hintTextLeft = backport.text(R.strings.ingame_gui.camera.hint.press())
         hintTextRight = backport.text(R.strings.ingame_gui.camera.hint.wheeled())
-        return HintData(getVirtualKey(self._CMD_NAME), getReadableKey(self._CMD_NAME), hintTextLeft, hintTextRight, offsetX=0, offsetY=0, priority=HintPriority.HELP, reducedPanning=False, hintCtx=None, centeredMessage=False)
+        return HintData(getVirtualKey(self._CMD_NAME), getReadableKey(self._CMD_NAME), hintTextLeft, hintTextRight, offsetX=0, offsetY=0, priority=HintPriority.TRAJECTORY, reducedPanning=False, hintCtx=None, centeredMessage=False)
 
 
 class SiegeIndicatorHintPlugin(HintPanelPlugin):
@@ -634,7 +634,7 @@ class PreBattleHintPlugin(HintPanelPlugin):
         return False
 
     def __checkHintConditions(self, typeDescriptor):
-        return typeDescriptor.isWheeledVehicle or typeDescriptor.type.isDualgunVehicleType or typeDescriptor.hasTurboshaftEngine or typeDescriptor.isTrackWithinTrack or typeDescriptor.hasRocketAcceleration or typeDescriptor.hasDualAccuracy or typeDescriptor.isAssaultSPG or self.__checkFlameThrowerConditions(typeDescriptor)
+        return typeDescriptor.isWheeledVehicle and not typeDescriptor.isWheeledVehicleWithoutFeatures or typeDescriptor.type.isDualgunVehicleType or typeDescriptor.hasTurboshaftEngine or typeDescriptor.isTrackWithinTrack or typeDescriptor.hasRocketAcceleration or typeDescriptor.hasDualAccuracy or typeDescriptor.isAssaultSPG or self.__checkFlameThrowerConditions(typeDescriptor)
 
     def __onVehicleControlling(self, vehicle):
         if not self.isActive():

@@ -1114,7 +1114,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         if not hasattr(self.filter, 'setVehiclePhysics'):
             return
         typeDescr = self.typeDescriptor
-        isWheeled = 'wheeledVehicle' in self.typeDescriptor.type.tags
+        isWheeled = self.typeDescriptor.type.isWheeledVehicle
         physics = BigWorld.WGWheeledPhysics() if isWheeled else BigWorld.WGTankPhysics()
         physics_shared.initVehiclePhysicsClient(physics, typeDescr)
         arenaMinBound, arenaMaxBound = (-10000, -10000), (10000, 10000)
