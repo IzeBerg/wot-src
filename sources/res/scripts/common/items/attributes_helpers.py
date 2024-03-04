@@ -14,7 +14,7 @@ ALLOWED_STATIC_ATTRS = {
  'centerRotationFwdSpeedFactor',
  'chassis/shotDispersionFactors/movement',
  'chassis/shotDispersionFactors/rotation',
- 'chassisHealthAfterHysteresisFactor',
+ 'isSetChassisMaxHealthAfterHysteresis',
  'chassisHealthFactor',
  'chassisRepairSpeedFactor',
  'circularVisionRadiusFactor',

@@ -8,10 +8,6 @@
 		</preload>
 		<preload>
 			<shader>\data\shaders\ps_water.fx</shader>
-			<texture>particles/content_forward/PFX_textures/eff_tex_water.dds</texture>
-		</preload>
-		<preload>
-			<shader>\data\shaders\ps_water.fx</shader>
 			<texture>particles/content_forward/PFX_textures/eff_tex.dds</texture>
 		</preload>
 		<preload>
@@ -77,11 +73,16 @@
 		<fn_effect_bin>particles/tank/rocket_accelerator/ra_sand.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/start_fire.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/end_fire.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/rocket_accelerator/start_fire_green.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/rocket_accelerator/end_fire_green.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/rocket_accelerator/idle_fire_green.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/start_smoke.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_brazier.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_smoke.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_coals.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/cz04_t50_51_bxi_3dst/cz04_t50_51_bxi_3dst_vents_dust.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/cz04_t50_51_bxi_3dst/cz04_t50_51_bxi_3dst_vents_dust_low.eff</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/soul_shimmer.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/holy_settling.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/s31_strv_k/holy_settling2.vfx</fn_effect_bin>
@@ -96,6 +97,9 @@
 		<fn_effect_bin>particles/content_forward/pfx/tank/rocket_accelerator/ra_smoke_st02.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/rocket_accelerator/start_fire.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/rocket_accelerator/end_fire.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/pfx/tank/rocket_accelerator/start_fire_green.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/pfx/tank/rocket_accelerator/end_fire_green.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/pfx/tank/rocket_accelerator/idle_fire_green.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/rocket_accelerator/start_smoke.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/pfx/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_brazier.vfx</fn_effect_bin>
@@ -107,6 +111,8 @@
 		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/F108_Panhard_EBR_105_MDXXIII4_3DSt/engine_throttle.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_coals.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_smoke.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/Cz04_T50_51_BXI_3DSt/Cz04_T50_51_BXI_3DSt_vents_dust.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_forward/PFX/Tank/customization/Cz04_T50_51_BXI_3DSt/Cz04_T50_51_BXI_3DSt_vents_dust_low.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Fail.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_forward/PFX/Environment/Battle_Royal/CorrodedHit/CorrodedHit_Trace.vfx</fn_effect_bin>
@@ -2275,11 +2281,16 @@
 		<fn_effect_bin>particles/tank/rocket_accelerator/ra_sand.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/start_fire.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/end_fire.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/rocket_accelerator/start_fire_green.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/rocket_accelerator/end_fire_green.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/rocket_accelerator/idle_fire_green.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/rocket_accelerator/start_smoke.eff</fn_effect_bin>
 		<fn_effect_bin>particles/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_brazier.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_smoke.eff</fn_effect_bin>
 		<fn_effect_bin>particles/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_coals.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/cz04_t50_51_bxi_3dst/cz04_t50_51_bxi_3dst_vents_dust.eff</fn_effect_bin>
+		<fn_effect_bin>particles/tank/customization/cz04_t50_51_bxi_3dst/cz04_t50_51_bxi_3dst_vents_dust_low.eff</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/s31_strv_k/soul_shimmer.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/s31_strv_k/holy_settling.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/s31_strv_k/holy_settling2.vfx</fn_effect_bin>
@@ -2300,6 +2311,9 @@
 		<fn_effect_bin>particles/content_deferred/pfx/tank/rocket_accelerator/ra_sand.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/rocket_accelerator/start_fire.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/rocket_accelerator/end_fire.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/pfx/tank/rocket_accelerator/start_fire_green.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/pfx/tank/rocket_accelerator/end_fire_green.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/pfx/tank/rocket_accelerator/idle_fire_green.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/rocket_accelerator/start_smoke.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/pfx/tank/customization/A158_T832_BX_T_3DSt/A158_T832_BX_T_3DSt_eye_glow.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/A83_T110E4_Dl_22_3Dst/A83_T110E4_Dl_22_3Dst_brazier.vfx</fn_effect_bin>
@@ -2311,6 +2325,8 @@
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/F108_Panhard_EBR_105_MDXXIII4_3DSt/engine_throttle.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_coals.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/GB133_Charioteer_MkVII_HBP_3DSt/GB133_Charioteer_MkVII_HBP_3DSt_smoke.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/Cz04_T50_51_BXI_3DSt/Cz04_T50_51_BXI_3DSt_vents_dust.vfx</fn_effect_bin>
+		<fn_effect_bin>particles/content_deferred/PFX/Tank/customization/Cz04_T50_51_BXI_3DSt/Cz04_T50_51_BXI_3DSt_vents_dust_low.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_royal/CorrodedHit/CorrodedHit.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_royal/CorrodedHit/CorrodedHit_Fail.vfx</fn_effect_bin>
 		<fn_effect_bin>particles/content_deferred/PFX/Environment/Battle_royal/CorrodedHit/CorrodedHit_Trace.vfx</fn_effect_bin>

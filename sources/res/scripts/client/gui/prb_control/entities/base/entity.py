@@ -2,13 +2,18 @@ import typing
 from adisp import adisp_process
 from constants import QUEUE_TYPE
 from debug_utils import LOG_ERROR
+from gui.impl import backport
+from gui.impl.gen import R
 from gui.prb_control.entities.base.actions_validator import IActionsValidator
 from gui.prb_control.entities.base.actions_validator import NotSupportedActionsValidator, BaseActionsValidator
 from gui.prb_control.entities.base.permissions import IPrbPermissions
 from gui.prb_control.entities.base.scheduler import BaseScheduler
+from gui.prb_control.events_dispatcher import g_eventDispatcher
 from gui.prb_control.items import SelectResult, ValidationResult
 from gui.prb_control.settings import FUNCTIONAL_FLAG, CTRL_ENTITY_TYPE
 from gui.shared.utils.listeners_collection import IListenersCollection
+from gui.shared.utils.functions import makeTooltip
+from gui.Scaleform.settings import TOOLTIP_TYPES
 if typing.TYPE_CHECKING:
     from gui.prb_control.entities.base.ctx import PrbAction, PrbCtrlRequestCtx
     from gui.prb_control.entities.base.cooldown import PrbCooldownManager
@@ -81,6 +86,7 @@ class BasePrbEntity(IActionsValidator, PrbFunctionalFlags):
     def init(self, **kwargs):
         self._scheduler.init()
         self._isActive = True
+        self._goToHangar()
         return FUNCTIONAL_FLAG.UNDEFINED
 
     def fini(self, **kwargs):
@@ -131,6 +137,15 @@ class BasePrbEntity(IActionsValidator, PrbFunctionalFlags):
     def showGUI(self, ctx=None):
         return False
 
+    def getFightBtnTooltipData(self, isStateDisabled):
+        return (
+         '', False)
+
+    def getSquadBtnTooltipData(self):
+        header = backport.text(R.strings.platoon.headerButton.tooltips.squad.header())
+        body = backport.text(R.strings.platoon.headerButton.tooltips.squad.body())
+        return (makeTooltip(header, body), TOOLTIP_TYPES.COMPLEX)
+
     def getConfirmDialogMeta(self, ctx):
         return
 
@@ -148,6 +163,9 @@ class BasePrbEntity(IActionsValidator, PrbFunctionalFlags):
 
     def getIntroType(self):
         return 0
+
+    def getRequestCtx(self):
+        return
 
     def getQueueType(self):
         return QUEUE_TYPE.UNKNOWN
@@ -187,6 +205,9 @@ class BasePrbEntity(IActionsValidator, PrbFunctionalFlags):
     def _createCooldownManager(self):
         return
 
+    def _goToHangar(self):
+        g_eventDispatcher.loadHangar()
+
     @adisp_process
     def __showDefaultDialog(self, meta, callback, parent=None):
         from gui import DialogsInterface
@@ -215,3 +236,6 @@ class NotSupportedEntity(BasePrbEntity, IListenersCollection):
 
     def _createActionsValidator(self):
         return NotSupportedActionsValidator()
+
+    def _goToHangar(self):
+        pass

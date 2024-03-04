@@ -46,8 +46,9 @@ package net.wg.gui.battle.views.epicMessagesPanel.components
       
       override public function setData(param1:GameMessageVO) : void
       {
+         var _loc2_:SectorBaseMessageVO = null;
          messageData = param1;
-         var _loc2_:SectorBaseMessageVO = param1.msgData as SectorBaseMessageVO;
+         _loc2_ = param1.msgData as SectorBaseMessageVO;
          App.utils.asserter.assertNotNull(_loc2_,ERROR_CONVERTING_VO);
          this._msgDataVO = _loc2_;
          this.baseID.gotoAndStop(_loc2_.baseID);

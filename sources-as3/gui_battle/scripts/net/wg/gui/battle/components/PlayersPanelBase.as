@@ -354,6 +354,15 @@ package net.wg.gui.battle.components
          }
       }
       
+      override public function set visible(param1:Boolean) : void
+      {
+         super.visible = param1;
+         if(!param1)
+         {
+            this.contextMenuMgr.hide();
+         }
+      }
+      
       protected function applyVehicleData(param1:IDAAPIDataClass) : void
       {
       }

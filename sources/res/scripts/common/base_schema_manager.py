@@ -1,12 +1,13 @@
 import logging, typing
-from dict2model.schemas import Schema
+from constants import IS_CLIENT, IS_BASEAPP
+from dict2model.schemas import Schema, SchemaModelType
 from soft_exception import SoftException
 if typing.TYPE_CHECKING:
     from dict2model.fields import Field
     from dict2model.types import SchemaModelClassesType, ValidatorsType
 _logger = logging.getLogger(__name__)
 
-class GameParamsSchema(Schema):
+class GameParamsSchema(Schema[SchemaModelType]):
     __slots__ = ('_gameParamsKey', )
 
     def __init__(self, gameParamsKey, fields, modelClass=dict, checkUnknown=True, serializedValidators=None, deserializedValidators=None):
@@ -17,6 +18,12 @@ class GameParamsSchema(Schema):
     def gpKey(self):
         return self._gameParamsKey
 
+    def getModel(self):
+        if not IS_CLIENT and not IS_BASEAPP:
+            raise NotImplementedError
+        from schema_manager import getSchemaManager
+        return getSchemaManager().getModel(self)
+
 
 class BaseSchemaManager(object):
     __slots__ = ('_schemas', '_configs')
@@ -25,6 +32,9 @@ class BaseSchemaManager(object):
         self._schemas = {}
 
     def registerClientServerSchema(self, *args, **kwargs):
+        raise NotImplementedError
+
+    def getModel(self, schema):
         raise NotImplementedError
 
     def getSchemas(self):

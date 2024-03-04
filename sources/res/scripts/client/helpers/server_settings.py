@@ -1,6 +1,5 @@
 import copy, functools, logging, types
 from collections import namedtuple
-from enum import Enum
 import typing, constants, post_progression_common
 from BonusCaps import BonusCapsConst
 from Event import Event
@@ -32,7 +31,7 @@ from trade_in_common.constants_types import CONFIG_NAME as TRADE_IN_CONFIG_NAME
 from achievements20.Achievements20GeneralConfig import Achievements20GeneralConfig
 if typing.TYPE_CHECKING:
     from typing import Callable, Dict, List, Sequence
-    from dict2model.types import ModelType
+    from dict2model.schemas import SchemaModelType
     from base_schema_manager import GameParamsSchema
 _logger = logging.getLogger(__name__)
 _CLAN_EMBLEMS_SIZE_MAPPING = {16: 'clan_emblems_16', 
@@ -1117,6 +1116,7 @@ class WinbackConfig(namedtuple('WinbackConfig', (
  'tokenQuestPrefix',
  'offerTokenPrefix',
  'winbackAccessToken',
+ 'winbackModeAccessTokens',
  'winbackBattlesCountToken',
  'winbackShowPromoToken',
  'winbackPromoURL',
@@ -1125,7 +1125,7 @@ class WinbackConfig(namedtuple('WinbackConfig', (
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(isEnabled=False, isModeEnabled=False, isWhatsNewEnabled=False, isProgressionEnabled=False, tokenQuestPrefix='', offerTokenPrefix='', winbackAccessToken='', winbackBattlesCountToken='', winbackShowPromoToken='', winbackPromoURL='', lastQuestEnabler='', winbackStartingQuest='')
+        defaults = dict(isEnabled=False, isModeEnabled=False, isWhatsNewEnabled=False, isProgressionEnabled=False, tokenQuestPrefix='', offerTokenPrefix='', winbackAccessToken='', winbackModeAccessTokens=[], winbackBattlesCountToken='', winbackShowPromoToken='', winbackPromoURL='', lastQuestEnabler='', winbackStartingQuest='')
         defaults.update(kwargs)
         return super(WinbackConfig, cls).__new__(cls, **defaults)
 
@@ -1249,24 +1249,38 @@ class _SteamShadeConfig(namedtuple('_SteamShadeConfig', ('battlesPlayed', 'sessi
         return cls()
 
 
-class _ABFeatureTestConfig(namedtuple('_ABFeatureTestConfig', ('steamShade',))):
+class _ABFeatureTestConfig(namedtuple('_ABFeatureTestConfig', 'newbieHints')):
     __slots__ = ()
 
-    class DefaultSteamShadeProperties(Enum):
-        battlesPlayed = -1
-        sessions = -1
-
     def __new__(cls, **kwargs):
-        defaults = dict(steamShade={})
+        defaults = dict(newbieHints={})
         defaults.update(kwargs)
         return super(_ABFeatureTestConfig, cls).__new__(cls, **defaults)
 
     def asDict(self):
         return self._asdict()
 
-    def getSteamShadeProperties(self, group):
-        properties = namedtuple('Properties', ('battlesPlayed', 'sessions'))
-        return properties(int(self.steamShade.get(group, {}).get('properties', {}).get('battlesPlayed', self.DefaultSteamShadeProperties.battlesPlayed.value)), int(self.steamShade.get(group, {}).get('properties', {}).get('sessions', self.DefaultSteamShadeProperties.sessions.value)))
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+
+class ReferralProgramConfig(namedtuple('ReferralProgramConfig', (
+ 'periodNumber', 'periodStartDatetime', 'periodEndDatetime'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(periodNumber=0, periodStartDatetime=0, periodEndDatetime=0)
+        defaults.update(kwargs)
+        return super(ReferralProgramConfig, cls).__new__(cls, **defaults)
+
+    def asDict(self):
+        return self._asdict()
 
     def replace(self, data):
         allowedFields = self._fields
@@ -1329,6 +1343,7 @@ class ServerSettings(object):
         self.__prestigeConfig = PrestigeConfig({})
         self.__steamShadeConfig = _SteamShadeConfig()
         self.__abFeatureTestConfig = _ABFeatureTestConfig()
+        self.__referralProgramConfig = ReferralProgramConfig()
         self.__schemaManager = getSchemaManager()
         self.set(serverSettings)
 
@@ -1489,6 +1504,10 @@ class ServerSettings(object):
             self.__abFeatureTestConfig = makeTupleByDict(_ABFeatureTestConfig, self.__serverSettings[Configs.AB_FEATURE_TEST.value])
         else:
             self.__abFeatureTestConfig = _ABFeatureTestConfig.defaults()
+        if Configs.REFERRAL_PROGRAM_CONFIG.value in self.__serverSettings:
+            self.__referralProgramConfig = makeTupleByDict(ReferralProgramConfig, self.__serverSettings[Configs.REFERRAL_PROGRAM_CONFIG.value])
+        else:
+            self.__referralProgramConfig = ReferralProgramConfig.defaults()
         self.onServerSettingsChange(serverSettings)
 
     def update(self, serverSettingsDiff):
@@ -1605,6 +1624,8 @@ class ServerSettings(object):
         self.__schemaManager.update(serverSettingsDiff)
         self.__updateSteamShadeConfig(serverSettingsDiff)
         self.__updateABFeatureTestConfig(serverSettingsDiff)
+        if Configs.REFERRAL_PROGRAM_CONFIG.value in serverSettingsDiff:
+            self.__updateReferralProgramConfig(serverSettingsDiff)
         self.onServerSettingsChange(serverSettingsDiff)
 
     def clear(self):
@@ -1615,7 +1636,7 @@ class ServerSettings(object):
         return self.__serverSettings
 
     def getConfigModel(self, schema):
-        configModel = self.__schemaManager.get(schema)
+        configModel = self.__schemaManager.getModel(schema)
         if configModel is None:
             raise SoftException('Schema %s was not registered. All schemas must be registered before ServerSettings inited.', schema.gpKey)
         return configModel
@@ -1787,6 +1808,10 @@ class ServerSettings(object):
     @property
     def abFeatureTestConfig(self):
         return self.__abFeatureTestConfig
+
+    @property
+    def referralProgramConfig(self):
+        return self.__referralProgramConfig
 
     def isEpicBattleEnabled(self):
         return self.epicBattles.isEnabled
@@ -2284,6 +2309,9 @@ class ServerSettings(object):
     def __updateABFeatureTestConfig(self, serverSettingsDiff):
         if Configs.AB_FEATURE_TEST.value in serverSettingsDiff:
             self.__abFeatureTestConfig = self.__abFeatureTestConfig.replace(serverSettingsDiff[Configs.AB_FEATURE_TEST.value])
+
+    def __updateReferralProgramConfig(self, serverSettingsDiff):
+        self.__referralProgramConfig = self.__referralProgramConfig.replace(serverSettingsDiff[Configs.REFERRAL_PROGRAM_CONFIG.value])
 
 
 def serverSettingsChangeListener(*configKeys):

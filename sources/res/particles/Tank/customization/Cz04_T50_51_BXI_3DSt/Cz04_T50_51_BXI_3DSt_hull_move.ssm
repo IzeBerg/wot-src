@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>isDeferred</name>
+			<type>bool</type>
+		</param>
+		<param>
+			<name>Stop</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>Move</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>hull_idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/Cz04_T50_51_BXI_3DSt/Cz04_T50_51_BXI_3DSt_hull_idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>hull_move</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-255.000000 -150.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hull_move</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/Cz04_T50_51_BXI_3DSt/Cz04_T50_51_BXI_3DSt_hull_fast.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>hull_move</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>hull_idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Stop</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-256.000000 113.000000 0.000000</uiPosition>
+	</node>
+</root>

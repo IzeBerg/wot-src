@@ -10,15 +10,15 @@ class ChapterStates(IntEnum):
 
 
 class PostProgressionViewModel(ViewModel):
-    __slots__ = ('showRewards', 'onTakeRewardsClick', 'showShop', 'showTankmen', 'onBackClick',
-                 'onPreviewVehicle', 'showHangar', 'showBuy', 'onClose')
+    __slots__ = ('showRewards', 'onTakeRewardsClick', 'showTankmen', 'onBackClick',
+                 'onPreviewVehicle', 'showVehicle', 'showBuy', 'onClose')
     BUY_STATE = 'buyState'
     REWARDS_STATE = 'rewardsState'
     TANKMEN_STATE = 'tankmenState'
     SELECTABLE_REWARDS_STATE = 'selectableRewardsState'
     FINAL_STATE = 'finalState'
 
-    def __init__(self, properties=9, commands=9):
+    def __init__(self, properties=9, commands=8):
         super(PostProgressionViewModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -90,10 +90,9 @@ class PostProgressionViewModel(ViewModel):
         self._addBoolProperty('isSeasonEndingSoon', False)
         self.showRewards = self._addCommand('showRewards')
         self.onTakeRewardsClick = self._addCommand('onTakeRewardsClick')
-        self.showShop = self._addCommand('showShop')
         self.showTankmen = self._addCommand('showTankmen')
         self.onBackClick = self._addCommand('onBackClick')
         self.onPreviewVehicle = self._addCommand('onPreviewVehicle')
-        self.showHangar = self._addCommand('showHangar')
+        self.showVehicle = self._addCommand('showVehicle')
         self.showBuy = self._addCommand('showBuy')
         self.onClose = self._addCommand('onClose')

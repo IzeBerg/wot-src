@@ -8,12 +8,16 @@ package net.wg.utils
    import flash.display.Sprite;
    import flash.events.IEventDispatcher;
    import flash.events.MouseEvent;
+   import flash.geom.Point;
    import flash.geom.Rectangle;
    import flash.text.TextField;
    import net.wg.data.constants.KeyProps;
+   import net.wg.infrastructure.interfaces.IUIComponentEx;
    import net.wg.infrastructure.interfaces.IUserProps;
+   import net.wg.infrastructure.interfaces.entity.IDisposable;
+   import scaleform.clik.utils.Padding;
    
-   public interface ICommons
+   public interface ICommons extends IDisposable
    {
        
       
@@ -69,12 +73,18 @@ package net.wg.utils
       
       function flipHorizontal(param1:DisplayObject) : void;
       
-      function isLeftButton(param1:MouseEvent) : Boolean;
-      
-      function isRightButton(param1:MouseEvent) : Boolean;
-      
       function addEmptyHitArea(param1:Sprite) : void;
       
       function formatNumberToStringWithSpaces(param1:int) : String;
+      
+      function addOverlayToBtn(param1:IUIComponentEx, param2:String, param3:Point, param4:Padding) : void;
+      
+      function removeOverlayFromBtn(param1:IUIComponentEx) : void;
+      
+      function invalidateOverlayPosition(param1:IUIComponentEx) : void;
+      
+      function isLeftButton(param1:MouseEvent) : Boolean;
+      
+      function isRightButton(param1:MouseEvent) : Boolean;
    }
 }

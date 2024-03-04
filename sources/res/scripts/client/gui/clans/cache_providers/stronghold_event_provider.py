@@ -1,4 +1,5 @@
 import weakref, typing
+from constants import CLAN_ROLES
 from gui.Scaleform.daapi.view.lobby.clans.clan_helpers import getStrongholdEventEnabled
 from gui.clans.cache_providers.base_provider import BaseProvider, RequestSettings, UpdatePeriodType
 from gui.wgcg.clan.contexts import StrongholdEventSettingsCtx, StrongholdEventClanInfoCtx
@@ -35,6 +36,17 @@ class StrongholdEventProvider(BaseProvider):
             return False
         else:
             return settings.getVisibleStartDate() < time_utils.getServerUTCTime() < settings.getVisibleEndDate()
+
+    def canUnfreezeVehicles(self):
+        settings = self.getSettings()
+        if settings is None:
+            return False
+        else:
+            role = CLAN_ROLES.getRole(self.__clanCache.clanRole)
+            unfreezeRoles = settings.getEventConfig().getUnfreezeVehicleRoles()
+            if unfreezeRoles:
+                return role in unfreezeRoles
+            return False
 
     @property
     def _dataNameContainer(self):

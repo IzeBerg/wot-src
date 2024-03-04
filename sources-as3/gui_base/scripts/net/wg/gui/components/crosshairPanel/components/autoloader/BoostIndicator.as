@@ -43,15 +43,14 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          this._stateParams = new BoostIndicatorStateParamsVO();
       }
       
-      public function get stateParams() : BoostIndicatorStateParamsVO
+      override protected function onDispose() : void
       {
-         this._stateParams.remainingDurationMSec = this.left.remainingDurationMSc;
-         this._stateParams.currentFrame = this.left.currentFrame;
-         this._stateParams.currentState = this._currentState;
-         this._stateParams.isRecharging = this._isRecharging;
-         this._stateParams.isFadingOut = this._isFadingOut;
-         this._stateParams.isCharging = this._isCharging;
-         return this._stateParams;
+         this._stateParams = null;
+         this.left.dispose();
+         this.left = null;
+         this.right.dispose();
+         this.right = null;
+         super.onDispose();
       }
       
       public function autoloaderBoostUpdate(param1:BoostIndicatorStateParamsVO, param2:Number, param3:Boolean = false) : void
@@ -71,7 +70,7 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          if(param1.currentState == AUTOLOADERBOOSTVIEWSTATES.WAITING_TO_START)
          {
             this._currentState = AUTOLOADERBOOSTVIEWSTATES.WAITING_TO_START;
-            _loc4_ = (param2 - param2 * WAITING_TO_START_OFFSET_FACTOR) * 1000;
+            _loc4_ = param2 * (1 - WAITING_TO_START_OFFSET_FACTOR) * 1000;
             this.left.hide();
             this.left.showFadeIn(_loc4_);
             this.right.hide();
@@ -104,6 +103,11 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
             this._isRecharging = false;
             this._isFadingOut = false;
             if(param1.isCharging)
+            {
+               this.left.showCharged(param1.currentFrame);
+               this.right.showCharged(param1.currentFrame);
+            }
+            else if(param1.currentFrame > this.left.currentFrame && param1.currentFrame >= BoostIndicatorElement.CHARGE_MAX_FRAME)
             {
                this.left.showCharged(param1.currentFrame);
                this.right.showCharged(param1.currentFrame);
@@ -174,16 +178,6 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          this.stateParams.percent = param2;
       }
       
-      override protected function onDispose() : void
-      {
-         this._stateParams = null;
-         this.left.dispose();
-         this.left = null;
-         this.right.dispose();
-         this.right = null;
-         super.onDispose();
-      }
-      
       private function onFinishRechargeAnimation() : void
       {
          this.stateParams.resetToDefault();
@@ -210,6 +204,17 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
             clearTimeout(this._timeOutId);
             this._timeOutId = -1;
          }
+      }
+      
+      public function get stateParams() : BoostIndicatorStateParamsVO
+      {
+         this._stateParams.remainingDurationMSec = this.left.remainingDurationMSc;
+         this._stateParams.currentFrame = this.left.currentFrame;
+         this._stateParams.currentState = this._currentState;
+         this._stateParams.isRecharging = this._isRecharging;
+         this._stateParams.isFadingOut = this._isFadingOut;
+         this._stateParams.isCharging = this._isCharging;
+         return this._stateParams;
       }
    }
 }

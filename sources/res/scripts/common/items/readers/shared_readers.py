@@ -372,3 +372,13 @@ def readBuilders(xmlCtx, section, subsectionName, builderType):
     if not products:
         _xml.raiseWrongSection(xmlCtx, subsectionName)
     return products
+
+
+def readFloatPair(xmlCtx, section, subsectionName):
+    values = _xml.readTupleOfNonNegativeFloats(xmlCtx, section, subsectionName)
+    count = len(values)
+    if count < 1 or count > 2:
+        _xml.raiseWrongXml(xmlCtx, subsectionName, 'One or two elements are expected')
+    if count == 1:
+        return (values[0], values[0])
+    return values

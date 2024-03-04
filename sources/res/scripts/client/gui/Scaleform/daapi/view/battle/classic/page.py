@@ -15,10 +15,10 @@ class DynamicAliases(CONST_CONTAINER):
     DRONE_MUSIC_PLAYER = 'droneMusicPlayer'
 
 
-class _ClassicComponentsConfig(ComponentsConfig):
+class ClassicComponentsConfig(ComponentsConfig):
 
     def __init__(self):
-        super(_ClassicComponentsConfig, self).__init__((
+        super(ClassicComponentsConfig, self).__init__((
          (
           BATTLE_CTRL_ID.ARENA_PERIOD,
           (
@@ -67,7 +67,12 @@ class _ClassicComponentsConfig(ComponentsConfig):
           DynamicAliases.PREBATTLE_TIMER_SOUND_PLAYER, StartCountdownSoundPlayer)))
 
 
-COMMON_CLASSIC_CONFIG = _ClassicComponentsConfig()
+BATTLE_HINTS_CONFIG = ComponentsConfig(config=(
+ (
+  BATTLE_CTRL_ID.BATTLE_HINTS,
+  (
+   BATTLE_VIEW_ALIASES.BATTLE_HINT, BATTLE_VIEW_ALIASES.NEWBIE_HINT)),), viewsConfig=())
+COMMON_CLASSIC_CONFIG = ClassicComponentsConfig() + BATTLE_HINTS_CONFIG
 EXTENDED_CLASSIC_CONFIG = COMMON_CLASSIC_CONFIG + ComponentsConfig(config=(
  (
   BATTLE_CTRL_ID.ARENA_PERIOD, (DynamicAliases.FINISH_SOUND_PLAYER,)),
@@ -92,6 +97,7 @@ class ClassicPage(SharedPage):
 
     def _toggleRadialMenu(self, isShown, allowAction=True):
         radialMenuLinkage = BATTLE_VIEW_ALIASES.RADIAL_MENU
+        newbieHintLinkage = BATTLE_VIEW_ALIASES.NEWBIE_HINT
         radialMenu = self.getComponent(radialMenuLinkage)
         if radialMenu is None:
             return
@@ -101,9 +107,13 @@ class ClassicPage(SharedPage):
             if isShown:
                 radialMenu.show()
                 self.app.enterGuiControlMode(radialMenuLinkage, cursorVisible=False, enableAiming=False)
+                if newbieHintLinkage in self.components:
+                    self._setComponentsVisibility(hidden={newbieHintLinkage})
             else:
                 self.app.leaveGuiControlMode(radialMenuLinkage)
                 radialMenu.hide(allowAction)
+                if newbieHintLinkage in self.components:
+                    self._setComponentsVisibility(visible={newbieHintLinkage})
             return
 
     def _toggleFullStats(self, isShown, permanent=None, tabAlias=None):

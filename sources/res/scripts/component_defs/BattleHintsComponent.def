@@ -3,16 +3,27 @@
 	<ClientMethods>
 		<showHint>
 			<Args>
-				<hingId>STRING</hingId>
-				<hingParams>
+				<hintName>STRING</hintName>
+				<hintParams>
 					ARRAY
-					<of>STRING</of>
-				</hingParams>
+					<of>
+						TUPLE
+						<of>STRING</of>
+						<size>2</size>
+					</of>
+				</hintParams>
+				<immediately>BOOL</immediately>
 			</Args>
 		</showHint>
 		<hideHint>
 			<Arg>STRING</Arg>
 		</hideHint>
+		<removeHint>
+			<Args>
+				<hintName>STRING</hintName>
+				<hide>BOOL</hide>
+			</Args>
+		</removeHint>
 	</ClientMethods>
 	<Properties/>
 	<ofEntity>

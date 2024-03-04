@@ -97,8 +97,9 @@ class CrewBook(FittingItem):
         return iconName
 
     def getShopIcon(self, size='large'):
-        sizeID = R.images.gui.maps.icons.crewBooks.books.dyn(size)
-        if not sizeID.exists():
+        if size in R.images.gui.maps.icons.crewBooks.books.keys():
+            sizeID = R.images.gui.maps.icons.crewBooks.books.dyn(size)
+        else:
             sizeID = R.images.gui.maps.icons.crewBooks.books.dyn('s' + size)
         resID = sizeID.dyn(replaceHyphenToUnderscore(self.getBonusIconName()))()
         if resID != -1:

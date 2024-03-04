@@ -1,4 +1,4 @@
-import typing
+import itertools, typing
 from enum import Enum
 import BigWorld
 from collections import OrderedDict
@@ -531,5 +531,5 @@ class _BattleMattersProgressWatcher(object):
             self.onBackFromBattle()
 
     def __onEnterInBattle(self):
-        if BigWorld.player().arenaBonusType in ARENA_BONUS_TYPE.RANDOM_RANGE:
+        if BigWorld.player().arenaBonusType in itertools.chain(ARENA_BONUS_TYPE.RANDOM_RANGE, (ARENA_BONUS_TYPE.WINBACK,)):
             AccountSettings.setBattleMattersSetting(BattleMatters.BATTLES_COUNT_WITHOUT_PROGRESS, self.getBattlesCountWithoutProgress() + 1)

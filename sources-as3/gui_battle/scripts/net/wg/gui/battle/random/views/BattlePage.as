@@ -1,5 +1,6 @@
 package net.wg.gui.battle.random.views
 {
+   import fl.motion.easing.Linear;
    import flash.display.DisplayObject;
    import flash.events.Event;
    import flash.events.MouseEvent;
@@ -19,6 +20,7 @@ package net.wg.gui.battle.random.views
    import net.wg.gui.battle.views.BattlePageQuestsProgress;
    import net.wg.gui.battle.views.battleEndWarning.BattleEndWarningPanel;
    import net.wg.gui.battle.views.battleEndWarning.EndWarningPanelEvent;
+   import net.wg.gui.battle.views.battleHint.BattleHint;
    import net.wg.gui.battle.views.battleMessenger.BattleMessenger;
    import net.wg.gui.battle.views.battleNotifier.BattleNotifier;
    import net.wg.gui.battle.views.consumablesPanel.ConsumablesPanel;
@@ -27,6 +29,7 @@ package net.wg.gui.battle.random.views
    import net.wg.gui.battle.views.debugPanel.DebugPanel;
    import net.wg.gui.battle.views.mapInfoTip.MapInfoTip;
    import net.wg.gui.battle.views.minimap.constants.MinimapSizeConst;
+   import net.wg.gui.battle.views.newbieHint.NewbieHint;
    import net.wg.gui.battle.views.questProgress.interfaces.IQuestProgressView;
    import net.wg.gui.battle.views.radialMenu.RadialMenu;
    import net.wg.gui.battle.views.siegeModePanel.SiegeModePanel;
@@ -37,6 +40,7 @@ package net.wg.gui.battle.random.views
    import net.wg.infrastructure.events.FocusRequestEvent;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
+   import scaleform.clik.motion.Tween;
    
    public class BattlePage extends BattlePageQuestsProgress
    {
@@ -52,6 +56,10 @@ package net.wg.gui.battle.random.views
       private static const MINIMAP_MARGIN_HEIGHT:int = 6;
       
       private static const MINIMAP_MARGIN_WIDTH:int = 0;
+      
+      private static const TWEEN_DURATION:uint = 300;
+      
+      private static const TEAM_BASES_PANEL_OFFSET:uint = 10;
       
       private static const MESSANGER_SWAP_AREA_TOP_OFFSET:Number = -27;
       
@@ -98,14 +106,25 @@ package net.wg.gui.battle.random.views
       
       public var mapInfoTip:MapInfoTip = null;
       
+      public var battleHint:BattleHint = null;
+      
+      public var newbieHint:NewbieHint = null;
+      
       private var _playersPanelState:int = -1;
       
       private var _playersPanelHasInvite:Boolean = false;
       
       private var _isPlayersPanelIsEmpty:Boolean = true;
       
+      private var _teamBasesPanelY:int = 0;
+      
+      private var _teamBasesPanelDefaultY:int = 0;
+      
+      private var _tweens:Vector.<Tween>;
+      
       public function BattlePage()
       {
+         this._tweens = new Vector.<Tween>();
          super();
       }
       
@@ -128,6 +147,14 @@ package net.wg.gui.battle.random.views
          this.fullStats.updateStageSize(param1,param2);
          this.playersPanel.updateStageSize(param1,param2);
          this.consumablesPanel.updateStage(param1,param2);
+         if(this.battleHint)
+         {
+            this.battleHint.updateStage(param1,param2);
+         }
+         if(this.newbieHint)
+         {
+            this.newbieHint.updateStage(param1,param2);
+         }
          this.battleDamageLogPanel.x = BATTLE_DAMAGE_LOG_X_POSITION;
          this.battleDamageLogPanel.y = damagePanel.y + BATTLE_DAMAGE_LOG_Y_PADDING;
          this.battleDamageLogPanel.updateSize(param1,param2);
@@ -151,6 +178,7 @@ package net.wg.gui.battle.random.views
          this.playersPanel.addEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);
          this.teamBasesPanelUI.addEventListener(Event.CHANGE,this.onTeamBasesPanelUIChangeHandler);
          this.endWarningPanel.addEventListener(EndWarningPanelEvent.VISIBILITY_CHANGED,this.onEndWarningPanelVisibilityChangedHandler);
+         this._teamBasesPanelY = this._teamBasesPanelDefaultY = this.teamBasesPanelUI.y;
       }
       
       override protected function createStatisticsController() : BattleStatisticDataController
@@ -199,6 +227,14 @@ package net.wg.gui.battle.random.views
          registerComponent(this.endWarningPanel,BATTLE_VIEW_ALIASES.BATTLE_END_WARNING_PANEL);
          registerComponent(this.siegeModePanel,BATTLE_VIEW_ALIASES.SIEGE_MODE_INDICATOR);
          registerComponent(this.hintPanel,BATTLE_VIEW_ALIASES.HINT_PANEL);
+         if(this.battleHint)
+         {
+            registerComponent(this.battleHint,BATTLE_VIEW_ALIASES.BATTLE_HINT);
+         }
+         if(this.newbieHint)
+         {
+            registerComponent(this.newbieHint,BATTLE_VIEW_ALIASES.NEWBIE_HINT);
+         }
          if(this.mapInfoTip)
          {
             registerComponent(this.mapInfoTip,BATTLE_VIEW_ALIASES.MAP_INFO_TIP);
@@ -243,6 +279,7 @@ package net.wg.gui.battle.random.views
          this.endWarningPanel.removeEventListener(EndWarningPanelEvent.VISIBILITY_CHANGED,this.onEndWarningPanelVisibilityChangedHandler);
          this.hintPanel.removeEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
          this.playersPanel.removeEventListener(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE,this.onPlayersPanelOnItemsCountChangeHandler);
+         this.clearTweens();
          super.onBeforeDispose();
       }
       
@@ -264,6 +301,8 @@ package net.wg.gui.battle.random.views
          this.siegeModePanel = null;
          this.battleNotifier = null;
          this.mapInfoTip = null;
+         this.battleHint = null;
+         this.newbieHint = null;
          super.onDispose();
       }
       
@@ -327,6 +366,10 @@ package net.wg.gui.battle.random.views
          {
             this.updateConsumablePanel(false);
          }
+         if(param1 == BATTLE_VIEW_ALIASES.FRAG_CORRELATION_BAR)
+         {
+            this.updateTeamBasesPanelPosition(true);
+         }
       }
       
       override protected function getFullStatsTabQuestProgress() : IQuestProgressView
@@ -377,6 +420,16 @@ package net.wg.gui.battle.random.views
          this.battleMessenger.y = damagePanel.y - this.battleMessenger.height + MESSENGER_Y_OFFSET;
       }
       
+      override protected function setComponentsVisibility(param1:Vector.<String>, param2:Vector.<String>) : void
+      {
+         var _loc3_:Boolean = this.teamBasesPanelUI.isCompVisible();
+         super.setComponentsVisibility(param1,param2);
+         if(this.teamBasesPanelUI.isCompVisible() != _loc3_)
+         {
+            this.updateTeamBasesPanelPosition();
+         }
+      }
+      
       private function updateConsumablePanel(param1:Boolean = false) : void
       {
          if(prebattleAmmunitionPanelShown)
@@ -392,10 +445,10 @@ package net.wg.gui.battle.random.views
       private function updatePositionForQuestProgress() : void
       {
          var _loc1_:int = 0;
-         this.endWarningPanel.y = this.teamBasesPanelUI.y + this.teamBasesPanelUI.panelHeight;
+         this.endWarningPanel.y = this._teamBasesPanelY + this.teamBasesPanelUI.panelHeight;
          if(isQuestProgress)
          {
-            _loc1_ = this.teamBasesPanelUI.y + QUEST_PROGRESS_TOP_SHIFT;
+            _loc1_ = this._teamBasesPanelY + QUEST_PROGRESS_TOP_SHIFT;
             _loc1_ += this.endWarningPanel.panelHeight;
             _loc1_ += this.teamBasesPanelUI.panelHeight;
             updatePositionQuestProgressTop(_loc1_);
@@ -454,7 +507,7 @@ package net.wg.gui.battle.random.views
       
       private function onTeamBasesPanelUIChangeHandler(param1:Event) : void
       {
-         this.updatePositionForQuestProgress();
+         this.updateTeamBasesPanelPosition(true);
       }
       
       private function onPlayersPanelStateRequestedHandler(param1:PlayersPanelSwitchEvent) : void
@@ -535,6 +588,54 @@ package net.wg.gui.battle.random.views
          {
             _loc2_ = !!this.consumablesPanel.isExpand ? int(CONSUMABLES_POPUP_OFFSET) : int(0);
             vehicleMessageList.setLocation(_originalWidth - VEHICLE_MESSAGES_LIST_OFFSET.x >> 1,_originalHeight - VEHICLE_MESSAGES_LIST_OFFSET.y - _loc2_ | 0);
+         }
+      }
+      
+      private function updateTeamBasesPanelPosition(param1:Boolean = false) : void
+      {
+         var _loc2_:int = 0;
+         this._teamBasesPanelY = !!this.fragCorrelationBar.isCompVisible() ? int(this._teamBasesPanelDefaultY) : int(TEAM_BASES_PANEL_OFFSET);
+         this.clearTweens();
+         if(this.teamBasesPanelUI.y != this._teamBasesPanelY)
+         {
+            if(param1)
+            {
+               this._tweens.push(new Tween(TWEEN_DURATION,this.teamBasesPanelUI,{"y":this._teamBasesPanelY},{"ease":Linear.easeIn}));
+            }
+            else
+            {
+               this.teamBasesPanelUI.y = this._teamBasesPanelY;
+            }
+         }
+         this.updatePositionForQuestProgress();
+         if(this.newbieHint)
+         {
+            _loc2_ = Boolean(this.teamBasesPanelUI.panelHeight) ? int(this._teamBasesPanelY + this.teamBasesPanelUI.panelHeight | 0) : int(0);
+            if(this.newbieHint.y != _loc2_)
+            {
+               if(param1)
+               {
+                  this._tweens.push(new Tween(TWEEN_DURATION,this.newbieHint,{"y":_loc2_},{"ease":Linear.easeIn}));
+               }
+               else
+               {
+                  this.newbieHint.y = _loc2_;
+               }
+            }
+         }
+      }
+      
+      private function clearTweens() : void
+      {
+         var _loc1_:Tween = null;
+         if(this._tweens.length > 0)
+         {
+            for each(_loc1_ in this._tweens)
+            {
+               _loc1_.dispose();
+               _loc1_ = null;
+            }
+            this._tweens.length = 0;
          }
       }
    }

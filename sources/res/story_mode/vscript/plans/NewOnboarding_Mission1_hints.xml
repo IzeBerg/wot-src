@@ -192,90 +192,6 @@
 			</block>
 			<block>
 				<class>Variable</class>
-				<id>Variable_11</id>
-				<params>
-					<param>
-						Hint_Sniper_Enter
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						-1
-						<name>Initial Value</name>
-						<type>IdentifierT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\-1\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_12</id>
-				<params>
-					<param>
-						Hint_Sniper_Exit
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						-1
-						<name>Initial Value</name>
-						<type>IdentifierT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\-1\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
 				<id>Variable_27</id>
 				<params>
 					<param>
@@ -530,132 +446,6 @@
 					<slot>
 						<name>default</name>
 						<const>\\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_3</id>
-				<params>
-					<param>
-						hintMove
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						-1
-						<name>Initial Value</name>
-						<type>IdentifierT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\-1\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_9</id>
-				<params>
-					<param>
-						hintShoot
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						-1
-						<name>Initial Value</name>
-						<type>IdentifierT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\-1\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_6</id>
-				<params>
-					<param>
-						hintTurn
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>External Init</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						-1
-						<name>Initial Value</name>
-						<type>IdentifierT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\-1\</const>
 					</slot>
 				</slots>
 			</block>
@@ -2169,158 +1959,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_8</id>
-				<buddy>Variable_6</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_2</id>
-				<buddy>Variable_12</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_10</id>
-				<buddy>Variable_11</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_3</id>
-				<buddy>Variable_3</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_19</id>
-				<buddy>Variable_9</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>InitAnimatedHint</class>
-				<id>InitAnimatedHint_2</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>typeId</name>
-						<const>\MoveTurret\</const>
-					</slot>
-					<slot>
-						<name>text</name>
-						<const>\#story_mode.sm_battle:hint_move_turret\</const>
-					</slot>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_ob_tower_and_sight_control\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>InitAnimatedHint</class>
-				<id>InitAnimatedHint_3</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>typeId</name>
-						<const>\SniperOnDistance\</const>
-					</slot>
-					<slot>
-						<name>text</name>
-						<const>\#story_mode.sm_battle:hint_sniper_enter\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>InitAnimatedHint</class>
-				<id>InitAnimatedHint_5</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>typeId</name>
-						<const>\SniperOnDistance\</const>
-					</slot>
-					<slot>
-						<name>text</name>
-						<const>\#story_mode.sm_battle:hint_sniper_on_distance_exit\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>InitAnimatedHint</class>
-				<id>InitAnimatedHint_1</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>typeId</name>
-						<const>\Move\</const>
-					</slot>
-					<slot>
-						<name>text</name>
-						<const>\#story_mode.sm_battle:hint_move\</const>
-					</slot>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_ob_vehicle_control\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>InitAnimatedHint</class>
-				<id>InitAnimatedHint_6</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>typeId</name>
-						<const>\Shoot\</const>
-					</slot>
-					<slot>
-						<name>text</name>
-						<const>\#story_mode.sm_battle:hint_shoot\</const>
-					</slot>
-					<slot>
-						<name>voiceover</name>
-						<const>\vo_ob_aim_at_enemy\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>Macro</class>
 				<id>Macro_10</id>
 				<params>
@@ -2620,20 +2258,29 @@
 				<slots/>
 			</block>
 			<block>
-				<class>ShowAnimatedHint</class>
-				<id>ShowAnimatedHint_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_10</id>
-				<buddy>Variable_3</buddy>
+				<class>ShowHint</class>
+				<id>ShowHint_1</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						<name>Parameters names separated by &quot; &quot;. Example: magic test</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>immediately</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>SelectHint</class>
+				<id>SelectHint_1</id>
+				<params>
+					<param>
+						story_mode.story_mode.move
+						<name>scope, hintId</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -3023,12 +2670,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>CompleteAnimatedHint</class>
-				<id>CompleteAnimatedHint_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>SetVariable</class>
 				<id>SetVariable_5</id>
 				<buddy>Variable_4</buddy>
@@ -3070,6 +2711,12 @@
 						<type>TypeT</type>
 					</param>
 				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>HideHint</class>
+				<id>HideHint_1</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -3116,14 +2763,13 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_4</id>
-				<buddy>Variable_3</buddy>
+				<class>SelectHint</class>
+				<id>SelectHint_2</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						story_mode.story_mode.move
+						<name>scope, hintId</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -3162,18 +2808,6 @@
 						FloatT
 						<name>Variable Type</name>
 						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Sequence</class>
-				<id>Sequence_3</id>
-				<params>
-					<param>
-						4
-						<name>Output Count</name>
-						<type>IntT</type>
 					</param>
 				</params>
 				<slots/>
@@ -3519,12 +3153,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>CompleteAnimatedHint</class>
-				<id>CompleteAnimatedHint_3</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>SetVariable</class>
 				<id>SetVariable_16</id>
 				<buddy>Variable_5</buddy>
@@ -3557,6 +3185,12 @@
 				<slots/>
 			</block>
 			<block>
+				<class>HideHint</class>
+				<id>HideHint_2</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
 				<class>FlowGate</class>
 				<id>FlowGate_6</id>
 				<params/>
@@ -3580,14 +3214,13 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_15</id>
-				<buddy>Variable_6</buddy>
+				<class>SelectHint</class>
+				<id>SelectHint_3</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						story_mode.story_mode.move_turret
+						<name>scope, hintId</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -3716,10 +3349,20 @@
 				</slots>
 			</block>
 			<block>
-				<class>ShowAnimatedHint</class>
-				<id>ShowAnimatedHint_1</id>
-				<params/>
-				<slots/>
+				<class>ShowHint</class>
+				<id>ShowHint_2</id>
+				<params>
+					<param>
+						<name>Parameters names separated by &quot; &quot;. Example: magic test</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>immediately</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
 			</block>
 			<block>
 				<class>Delay</class>
@@ -3781,14 +3424,13 @@
 				</slots>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_9</id>
-				<buddy>Variable_6</buddy>
+				<class>SelectHint</class>
+				<id>SelectHint_4</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						story_mode.story_mode.move_turret
+						<name>scope, hintId</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -4233,14 +3875,13 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_6</id>
-				<buddy>Variable_11</buddy>
+				<class>SelectHint</class>
+				<id>SelectHint_5</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						story_mode.story_mode.sniper_distance_enter
+						<name>scope, hintId</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -4345,14 +3986,13 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_28</id>
-				<buddy>Variable_12</buddy>
+				<class>SelectHint</class>
+				<id>SelectHint_6</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						story_mode.story_mode.sniper_distance_exit
+						<name>scope, hintId</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -4671,12 +4311,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>ShowAnimatedHint</class>
-				<id>ShowAnimatedHint_3</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>OnPlayerVehicleDetectEnemy</class>
 				<id>OnPlayerVehicleDetectEnemy_1</id>
 				<params/>
@@ -4684,6 +4318,22 @@
 					<slot>
 						<name>maxCount</name>
 						<const>\1\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>ShowHint</class>
+				<id>ShowHint_4</id>
+				<params>
+					<param>
+						<name>Parameters names separated by &quot; &quot;. Example: magic test</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>immediately</name>
+						<const>\false\</const>
 					</slot>
 				</slots>
 			</block>
@@ -4720,33 +4370,31 @@
 				</slots>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_8</id>
-				<buddy>Variable_9</buddy>
+				<class>SelectHint</class>
+				<id>SelectHint_8</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						story_mode.story_mode.shot
+						<name>scope, hintId</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
 			</block>
 			<block>
-				<class>HideAnimatedHint</class>
-				<id>HideAnimatedHint_1</id>
+				<class>HideHint</class>
+				<id>HideHint_4</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_24</id>
-				<buddy>Variable_9</buddy>
+				<class>SelectHint</class>
+				<id>SelectHint_7</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						story_mode.story_mode.shot
+						<name>scope, hintId</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -4874,12 +4522,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>CompleteAnimatedHint</class>
-				<id>CompleteAnimatedHint_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>FlowGate</class>
 				<id>FlowGate_10</id>
 				<params/>
@@ -4957,16 +4599,9 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_16</id>
-				<buddy>Variable_9</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
+				<class>HideHint</class>
+				<id>HideHint_5</id>
+				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -4979,6 +4614,18 @@
 				<class>Get Player Vehicle</class>
 				<id>Get Player Vehicle_3</id>
 				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SelectHint</class>
+				<id>SelectHint_9</id>
+				<params>
+					<param>
+						story_mode.story_mode.shot
+						<name>scope, hintId</name>
+						<type>StringT</type>
+					</param>
+				</params>
 				<slots/>
 			</block>
 			<block>
@@ -5003,12 +4650,6 @@
 						<type>IntT</type>
 					</param>
 				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>HideAnimatedHint</class>
-				<id>HideAnimatedHint_3</id>
-				<params/>
 				<slots/>
 			</block>
 			<block>
@@ -6684,96 +6325,6 @@
 				<output>completed</output>
 			</connection>
 			<connection>
-				<from>InitAnimatedHint_2</from>
-				<input>input</input>
-				<to>SetVariable_8</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_2</from>
-				<input>value</input>
-				<to>SetVariable_8</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_5</from>
-				<input>input</input>
-				<to>SetVariable_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_5</from>
-				<input>value</input>
-				<to>SetVariable_2</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_3</from>
-				<input>input</input>
-				<to>SetVariable_10</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_3</from>
-				<input>value</input>
-				<to>SetVariable_10</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_1</from>
-				<input>input</input>
-				<to>SetVariable_3</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_1</from>
-				<input>value</input>
-				<to>SetVariable_3</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_6</from>
-				<input>input</input>
-				<to>SetVariable_19</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_6</from>
-				<input>value</input>
-				<to>SetVariable_19</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>SetVariable_3</from>
-				<input>in</input>
-				<to>InitAnimatedHint_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>SetVariable_8</from>
-				<input>in</input>
-				<to>InitAnimatedHint_3</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>SetVariable_10</from>
-				<input>in</input>
-				<to>InitAnimatedHint_5</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>Sequence_3</from>
-				<input>in</input>
-				<to>InitAnimatedHint_1</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>SetVariable_2</from>
-				<input>in</input>
-				<to>InitAnimatedHint_6</to>
-				<output>out</output>
-			</connection>
-			<connection>
 				<from>Macro_46</from>
 				<input>in</input>
 				<to>Macro_47</to>
@@ -6914,14 +6465,14 @@
 			<connection>
 				<from>Macro_1</from>
 				<input>in</input>
-				<to>ShowAnimatedHint_2</to>
+				<to>ShowHint_1</to>
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetVariable_10</from>
-				<input>id</input>
-				<to>ShowAnimatedHint_2</to>
-				<output>value</output>
+				<from>SelectHint_1</from>
+				<input>hintId</input>
+				<to>ShowHint_1</to>
+				<output>id</output>
 			</connection>
 			<connection>
 				<from>If_20</from>
@@ -7116,7 +6667,7 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>ShowAnimatedHint_2</from>
+				<from>ShowHint_1</from>
 				<input>input</input>
 				<to>SetVariable_7</to>
 				<output>out</output>
@@ -7146,7 +6697,7 @@
 				<output>o1</output>
 			</connection>
 			<connection>
-				<from>CompleteAnimatedHint_2</from>
+				<from>HideHint_1</from>
 				<input>input</input>
 				<to>Sequence_6</to>
 				<output>out</output>
@@ -7156,18 +6707,6 @@
 				<input>vehicle</input>
 				<to>GetVehicleTransform_3</to>
 				<output>vehicle</output>
-			</connection>
-			<connection>
-				<from>If_1</from>
-				<input>in</input>
-				<to>CompleteAnimatedHint_2</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>GetVariable_4</from>
-				<input>id</input>
-				<to>CompleteAnimatedHint_2</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Repeat_1</from>
@@ -7212,6 +6751,18 @@
 				<output>res</output>
 			</connection>
 			<connection>
+				<from>If_1</from>
+				<input>in</input>
+				<to>HideHint_1</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>SelectHint_2</from>
+				<input>hintId</input>
+				<to>HideHint_1</to>
+				<output>id</output>
+			</connection>
+			<connection>
 				<from>GetVehicleTransform_3</from>
 				<input>a</input>
 				<to>SubtractVector_1</to>
@@ -7252,12 +6803,6 @@
 				<input>b</input>
 				<to>CompareFloats_1</to>
 				<output>value</output>
-			</connection>
-			<connection>
-				<from>ArenaPeriodStartEvent_1</from>
-				<input>input</input>
-				<to>Sequence_3</to>
-				<output>start</output>
 			</connection>
 			<connection>
 				<from>Macro_11</from>
@@ -7338,10 +6883,10 @@
 				<output>finished</output>
 			</connection>
 			<connection>
-				<from>Sequence_3</from>
+				<from>ArenaPeriodStartEvent_1</from>
 				<input>input</input>
 				<to>Sequence_7</to>
-				<output>o3</output>
+				<output>start</output>
 			</connection>
 			<connection>
 				<from>VectorDotProduct_2</from>
@@ -7404,18 +6949,6 @@
 				<output>completed</output>
 			</connection>
 			<connection>
-				<from>FlowGate_6</from>
-				<input>in</input>
-				<to>CompleteAnimatedHint_3</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_15</from>
-				<input>id</input>
-				<to>CompleteAnimatedHint_3</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Repeat_3</from>
 				<input>input</input>
 				<to>SetVariable_16</to>
@@ -7452,13 +6985,25 @@
 				<output>gunDirection</output>
 			</connection>
 			<connection>
+				<from>FlowGate_6</from>
+				<input>in</input>
+				<to>HideHint_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>SelectHint_3</from>
+				<input>hintId</input>
+				<to>HideHint_2</to>
+				<output>id</output>
+			</connection>
+			<connection>
 				<from>Sequence_12</from>
 				<input>input</input>
 				<to>FlowGate_6</to>
 				<output>o0</output>
 			</connection>
 			<connection>
-				<from>ShowAnimatedHint_1</from>
+				<from>ShowHint_2</from>
 				<input>open</input>
 				<to>FlowGate_6</to>
 				<output>out</output>
@@ -7526,14 +7071,14 @@
 			<connection>
 				<from>FlowGate_1</from>
 				<input>in</input>
-				<to>ShowAnimatedHint_1</to>
+				<to>ShowHint_2</to>
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetVariable_9</from>
-				<input>id</input>
-				<to>ShowAnimatedHint_1</to>
-				<output>value</output>
+				<from>SelectHint_4</from>
+				<input>hintId</input>
+				<to>ShowHint_2</to>
+				<output>id</output>
 			</connection>
 			<connection>
 				<from>Sequence_1</from>
@@ -7854,10 +7399,10 @@
 				<output>o1</output>
 			</connection>
 			<connection>
-				<from>GetVariable_6</from>
+				<from>SelectHint_5</from>
 				<input>hintId</input>
 				<to>Macro_6</to>
-				<output>value</output>
+				<output>id</output>
 			</connection>
 			<connection>
 				<from>Macro_8</from>
@@ -7896,10 +7441,10 @@
 				<output>onExit</output>
 			</connection>
 			<connection>
-				<from>GetVariable_28</from>
+				<from>SelectHint_6</from>
 				<input>hintId</input>
 				<to>Macro_38</to>
-				<output>value</output>
+				<output>id</output>
 			</connection>
 			<connection>
 				<from>Sequence_10</from>
@@ -8046,7 +7591,7 @@
 				<output>false</output>
 			</connection>
 			<connection>
-				<from>ShowAnimatedHint_3</from>
+				<from>ShowHint_4</from>
 				<input>input</input>
 				<to>Sequence_29</to>
 				<output>out</output>
@@ -8054,24 +7599,18 @@
 			<connection>
 				<from>FlowGate_7</from>
 				<input>in</input>
-				<to>ShowAnimatedHint_3</to>
+				<to>ShowHint_4</to>
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>GetVariable_8</from>
-				<input>id</input>
-				<to>ShowAnimatedHint_3</to>
-				<output>value</output>
+				<from>SelectHint_8</from>
+				<input>hintId</input>
+				<to>ShowHint_4</to>
+				<output>id</output>
 			</connection>
 			<connection>
 				<from>Delay_1</from>
 				<input>input</input>
-				<to>FlowGate_7</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>HideAnimatedHint_1</from>
-				<input>close</input>
 				<to>FlowGate_7</to>
 				<output>out</output>
 			</connection>
@@ -8088,6 +7627,12 @@
 				<output>o0</output>
 			</connection>
 			<connection>
+				<from>HideHint_4</from>
+				<input>close</input>
+				<to>FlowGate_7</to>
+				<output>out</output>
+			</connection>
+			<connection>
 				<from>OnPlayerVehicleDetectEnemy_1</from>
 				<input>input</input>
 				<to>Delay_1</to>
@@ -8096,14 +7641,14 @@
 			<connection>
 				<from>OnPlayerVehicleDetectEnemy_1</from>
 				<input>in</input>
-				<to>HideAnimatedHint_1</to>
+				<to>HideHint_4</to>
 				<output>onLost</output>
 			</connection>
 			<connection>
-				<from>GetVariable_24</from>
-				<input>id</input>
-				<to>HideAnimatedHint_1</to>
-				<output>value</output>
+				<from>SelectHint_7</from>
+				<input>hintId</input>
+				<to>HideHint_4</to>
+				<output>id</output>
 			</connection>
 			<connection>
 				<from>Macro_15</from>
@@ -8176,18 +7721,6 @@
 				<input>value</input>
 				<to>If_9</to>
 				<output>res</output>
-			</connection>
-			<connection>
-				<from>FlowGate_10</from>
-				<input>in</input>
-				<to>CompleteAnimatedHint_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_16</from>
-				<input>id</input>
-				<to>CompleteAnimatedHint_1</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Sequence_20</from>
@@ -8268,6 +7801,24 @@
 				<output>res</output>
 			</connection>
 			<connection>
+				<from>FlowGate_8</from>
+				<input>in</input>
+				<to>HideHint_5</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>FlowGate_10</from>
+				<input>in</input>
+				<to>HideHint_5</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>SelectHint_9</from>
+				<input>hintId</input>
+				<to>HideHint_5</to>
+				<output>id</output>
+			</connection>
+			<connection>
 				<from>OnAnyVehicleDamaged_1</from>
 				<input>a</input>
 				<to>CompareVehicles_1</to>
@@ -8308,18 +7859,6 @@
 				<input>input</input>
 				<to>Sequence_19</to>
 				<output>true</output>
-			</connection>
-			<connection>
-				<from>FlowGate_8</from>
-				<input>in</input>
-				<to>HideAnimatedHint_3</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetVariable_16</from>
-				<input>id</input>
-				<to>HideAnimatedHint_3</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Sequence_19</from>
@@ -9037,10 +8576,20 @@
 						<slots/>
 					</block>
 					<block>
-						<class>ShowAnimatedHint</class>
-						<id>ShowAnimatedHint_4</id>
-						<params/>
-						<slots/>
+						<class>ShowHint</class>
+						<id>ShowHint_3</id>
+						<params>
+							<param>
+								<name>Parameters names separated by &quot; &quot;. Example: magic test</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>immediately</name>
+								<const>\false\</const>
+							</slot>
+						</slots>
 					</block>
 					<block>
 						<class>Counter</class>
@@ -9063,16 +8612,13 @@
 								<type>StringT</type>
 							</param>
 							<param>
-								IdentifierT
+								StringT
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
 							<param>
+								Default
 								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								<name>Input Method</name>
 								<type>StringT</type>
 							</param>
 						</params>
@@ -9116,12 +8662,6 @@
 						<slots/>
 					</block>
 					<block>
-						<class>HideAnimatedHint</class>
-						<id>HideAnimatedHint_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
 						<class>Counter</class>
 						<id>Counter_3</id>
 						<params/>
@@ -9131,6 +8671,12 @@
 								<const>\1\</const>
 							</slot>
 						</slots>
+					</block>
+					<block>
+						<class>HideHint</class>
+						<id>HideHint_3</id>
+						<params/>
+						<slots/>
 					</block>
 				</blocks>
 				<connections>
@@ -9143,13 +8689,13 @@
 					<connection>
 						<from>Counter_2</from>
 						<input>in</input>
-						<to>ShowAnimatedHint_4</to>
+						<to>ShowHint_3</to>
 						<output>completed</output>
 					</connection>
 					<connection>
 						<from>MacroInput_1</from>
-						<input>id</input>
-						<to>ShowAnimatedHint_4</to>
+						<input>hintId</input>
+						<to>ShowHint_3</to>
 						<output>hintId</output>
 					</connection>
 					<connection>
@@ -9171,18 +8717,6 @@
 						<output>hide</output>
 					</connection>
 					<connection>
-						<from>Counter_3</from>
-						<input>in</input>
-						<to>HideAnimatedHint_2</to>
-						<output>completed</output>
-					</connection>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>id</input>
-						<to>HideAnimatedHint_2</to>
-						<output>hintId</output>
-					</connection>
-					<connection>
 						<from>Sequence_7</from>
 						<input>input</input>
 						<to>Counter_3</to>
@@ -9194,6 +8728,18 @@
 						<to>Counter_3</to>
 						<output>o1</output>
 					</connection>
+					<connection>
+						<from>Counter_3</from>
+						<input>in</input>
+						<to>HideHint_3</to>
+						<output>completed</output>
+					</connection>
+					<connection>
+						<from>MacroInput_1</from>
+						<input>hintId</input>
+						<to>HideHint_3</to>
+						<output>hintId</output>
+					</connection>
 				</connections>
 			</macro>
 			<macro>
@@ -9201,7 +8747,7 @@
 				<blocks>
 					<block>
 						<class>Variable</class>
-						<id>Variable_11</id>
+						<id>Variable_30</id>
 						<params>
 							<param>
 								vehicle
@@ -9310,7 +8856,7 @@
 					<block>
 						<class>SetVariable</class>
 						<id>SetVariable_13</id>
-						<buddy>Variable_11</buddy>
+						<buddy>Variable_30</buddy>
 						<params>
 							<param>
 								VehicleT
@@ -9346,7 +8892,7 @@
 					<block>
 						<class>SetVariable</class>
 						<id>SetVariable_12</id>
-						<buddy>Variable_11</buddy>
+						<buddy>Variable_30</buddy>
 						<params>
 							<param>
 								VehicleT
@@ -9359,7 +8905,7 @@
 					<block>
 						<class>GetVariable</class>
 						<id>GetVariable_12</id>
-						<buddy>Variable_11</buddy>
+						<buddy>Variable_30</buddy>
 						<params>
 							<param>
 								VehicleT
@@ -9793,7 +9339,7 @@
 				<blocks>
 					<block>
 						<class>Variable</class>
-						<id>Variable_11</id>
+						<id>Variable_31</id>
 						<params>
 							<param>
 								lastValues
@@ -9830,7 +9376,7 @@
 					</block>
 					<block>
 						<class>Variable</class>
-						<id>Variable_23</id>
+						<id>Variable_32</id>
 						<params>
 							<param>
 								rnd
@@ -9890,7 +9436,7 @@
 					<block>
 						<class>SetVariable</class>
 						<id>SetVariable_12</id>
-						<buddy>Variable_23</buddy>
+						<buddy>Variable_32</buddy>
 						<params>
 							<param>
 								IntT
@@ -9942,7 +9488,7 @@
 					<block>
 						<class>ArrayVariableSet</class>
 						<id>ArrayVariableSet_1</id>
-						<buddy>Variable_11</buddy>
+						<buddy>Variable_31</buddy>
 						<params>
 							<param>
 								IntArrayT
@@ -9961,7 +9507,7 @@
 					<block>
 						<class>ArrayVariableGet</class>
 						<id>ArrayVariableGet_1</id>
-						<buddy>Variable_11</buddy>
+						<buddy>Variable_31</buddy>
 						<params>
 							<param>
 								IntArrayT
@@ -9974,7 +9520,7 @@
 					<block>
 						<class>ArrayVariableFind</class>
 						<id>ArrayVariableFind_1</id>
-						<buddy>Variable_11</buddy>
+						<buddy>Variable_31</buddy>
 						<params>
 							<param>
 								IntArrayT
@@ -10020,7 +9566,7 @@
 					<block>
 						<class>GetVariable</class>
 						<id>GetVariable_12</id>
-						<buddy>Variable_23</buddy>
+						<buddy>Variable_32</buddy>
 						<params>
 							<param>
 								IntT
@@ -10033,7 +9579,7 @@
 					<block>
 						<class>ArrayVariableLength</class>
 						<id>ArrayVariableLength_1</id>
-						<buddy>Variable_11</buddy>
+						<buddy>Variable_31</buddy>
 						<params>
 							<param>
 								IntArrayT
@@ -10096,7 +9642,7 @@
 					<block>
 						<class>ArrayVariableSet</class>
 						<id>ArrayVariableSet_2</id>
-						<buddy>Variable_11</buddy>
+						<buddy>Variable_31</buddy>
 						<params>
 							<param>
 								IntArrayT
@@ -10109,7 +9655,7 @@
 					<block>
 						<class>GetVariable</class>
 						<id>GetVariable_87</id>
-						<buddy>Variable_23</buddy>
+						<buddy>Variable_32</buddy>
 						<params>
 							<param>
 								IntT
@@ -10122,7 +9668,7 @@
 					<block>
 						<class>GetVariable</class>
 						<id>GetVariable_84</id>
-						<buddy>Variable_23</buddy>
+						<buddy>Variable_32</buddy>
 						<params>
 							<param>
 								IntT

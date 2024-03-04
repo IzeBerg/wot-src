@@ -12,6 +12,8 @@ package net.wg.infrastructure.base.meta
       
       function as_setComponentsVisibility(param1:Array, param2:Array) : void;
       
+      function as_setComponentsVisibilityWithFade(param1:Array, param2:Array) : void;
+      
       function as_isComponentVisible(param1:String) : Boolean;
       
       function as_getComponentsVisibility() : Array;

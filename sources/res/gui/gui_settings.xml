@@ -977,7 +977,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/featured)
+				$PARAMS(/battlepass-overlay)
 				<name>buyBattlePass</name>
 				<type>url</type>
 			</item>
@@ -1080,7 +1080,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/bp-special-chapter-3/
+				/$LANGUAGE_CODE/promocontent/13BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1090,7 +1090,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/bp-special-chapter-3-Video/
+				/$LANGUAGE_CODE/promocontent/13BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1112,7 +1112,15 @@
 				<value>
 					<item>
 						<type>string</type>
+						<value>styles</value>
+					</item>
+					<item>
+						<type>string</type>
 						<value>seasonDescription</value>
+					</item>
+					<item>
+						<type>string</type>
+						<value>shopCategory</value>
 					</item>
 				</value>
 			</item>

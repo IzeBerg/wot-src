@@ -58,7 +58,7 @@
 				<material>
 					<identifier>s_nd2</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>112</materialKind>
 					<property>
 						g_tile1Tint
@@ -134,6 +134,32 @@
 			<primitiveGroup>
 				1
 				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>112</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_AirField_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_AirField_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_AirField_GMM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.262590 7.594475 -0.039026</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
 					<identifier>s_nd0</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
 					<collisionFlags>0</collisionFlags>
@@ -188,56 +214,34 @@
 					</property>
 					<property>
 						albedoHeightTile2
-						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_1024_AM.dds</Texture>
+						<Texture>content/Buildings/00_Tiles/dds/ClayWall_Smooth01_1024_AM.dds</Texture>
 					</property>
 					<property>
 						normalGlossSpecTile2
-						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_1024_GBMT.dds</Texture>
+						<Texture>content/Buildings/00_Tiles/dds/ClayWall_Smooth01_1024_GBMT.dds</Texture>
 					</property>
 					<property>
 						metallicAOTile2
-						<Texture>content/Buildings/00_Tiles/dds/Metal_Rusted_01_1024_MAO.dds</Texture>
+						<Texture>content/Buildings/00_Tiles/dds/ClayWall_Smooth01_1024_MAO.dds</Texture>
 					</property>
 					<property>
 						colorTex
 						<Texture>content/UniversalTextures/Universal_GCM.dds</Texture>
 					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.965000 0.887800 0.887800 1.000000</Vector4>
+					</property>
 				</material>
 				<groupOrigin>0.318659 5.753788 -0.050144</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				2
-				<material>
-					<identifier>s_nd1</identifier>
-					<fx>shaders/std_effects/PBS_ext.fx</fx>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>112</materialKind>
-					<property>
-						diffuseMap
-						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_AirField_AM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_AirField_ANM.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_AirField_GMM.dds</Texture>
-					</property>
-					<property>
-						g_enableTerrainBlending
-						<Bool>true</Bool>
-					</property>
-				</material>
-				<groupOrigin>-0.566089 7.594475 -0.050138</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-24.979965 -0.066980 -18.426863</min>
-		<max>23.847788 15.237782 18.326210</max>
+		<min>-23.322607 -0.066980 -18.379089</min>
+		<max>23.847788 15.237782 18.301037</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>843896</geometrySize>
+	<geometrySize>678336</geometrySize>
 	<minUVDensity>0.001306</minUVDensity>
 </root>

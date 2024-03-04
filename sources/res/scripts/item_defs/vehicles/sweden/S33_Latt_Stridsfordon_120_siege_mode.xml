@@ -10,8 +10,8 @@
 	<postProgressionTree>role_ATSPG_sniper</postProgressionTree>
 	<customRoleSlotOptions>3 5</customRoleSlotOptions>
 	<speedLimits>
-		<forward>20</forward>
-		<backward>20</backward>
+		<forward>10</forward>
+		<backward>10</backward>
 	</speedLimits>
 	<invisibility>
 		<moving>
@@ -58,7 +58,7 @@
 		</trophyUpgradedAdditionalInvisibilityDevice>
 	</optDevsOverrides>
 	<repairCost>
-		9.5
+		7.0
 		<!--BW_String-->
 	</repairCost>
 	<premiumVehicleXPFactor>
@@ -98,7 +98,7 @@
 			<rightTrack>20</rightTrack>
 		</armor>
 		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
-		<weight>14210</weight>
+		<weight>11255</weight>
 		<maxHealth>1200</maxHealth>
 		<ammoBayHealth>
 			<maxHealth>260</maxHealth>
@@ -2516,15 +2516,15 @@
 			<weight>6000</weight>
 			<maxLoad>26000</maxLoad>
 			<terrainResistance>
-				1.4 1.5 2.6
+				0.8 0.9 1.6
 				<!--BW_String-->
 			</terrainResistance>
-			<brakeForce>37000</brakeForce>
+			<brakeForce>26000</brakeForce>
 			<rotationIsAroundCenter>true</rotationIsAroundCenter>
 			<rotationSpeed>30</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
-					0.1
+					0.40
 					<!--BW_String-->
 				</vehicleMovement>
 				<vehicleRotation>
@@ -4070,30 +4070,30 @@
 						<maxPitch>0 10 1 10</maxPitch>
 					</pitchLimits>
 					<reloadTime>
-						9.2
+						9.5
 						<!--BW_String-->
 					</reloadTime>
-					<aimingTime>2</aimingTime>
+					<aimingTime>
+						1.2
+						<!--BW_String-->
+					</aimingTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.1
 							<!--BW_String-->
 						</turretRotation>
-						<afterShot>
-							3.0
-							<!--BW_String-->
-						</afterShot>
+						<afterShot>3</afterShot>
 						<whileGunDamaged>
 							2.0
 							<!--BW_String-->
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<shotDispersionRadius>
-						0.35
+						0.3
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<invisibilityFactorAtShot>
-						0.209
+						0.198
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<models>
@@ -4212,8 +4212,8 @@
 		<detailed>
 			<engines>
 				<Volvo_TD_120V>
-					<smplEnginePower>380</smplEnginePower>
-					<smplFwMaxSpeed>20</smplFwMaxSpeed>
+					<smplEnginePower>340</smplEnginePower>
+					<smplFwMaxSpeed>10</smplFwMaxSpeed>
 				</Volvo_TD_120V>
 			</engines>
 			<chassis>
@@ -4221,19 +4221,19 @@
 					<grounds>
 						<soft>
 							<rollingFriction>
-								0.161
+								0.1288
 								<!--BW_String-->
 							</rollingFriction>
 						</soft>
 						<medium>
 							<rollingFriction>
-								0.09056
+								0.07245
 								<!--BW_String-->
 							</rollingFriction>
 						</medium>
 						<firm>
 							<rollingFriction>
-								0.0805
+								0.0644
 								<!--BW_String-->
 							</rollingFriction>
 						</firm>

@@ -179,7 +179,7 @@ package
       
       public static const VEHICLESELECTION_FILTERPOPOVER_TITLE:String = "#battle_matters:vehicleSelection/filterPopover/title";
       
-      public static const VEHICLESELECTION_FILTERPOPOVER_TYPE:String = "#battle_matters:vehicleSelection/filterPopover/type";
+      public static const VEHICLESELECTION_FILTERPOPOVER_VEHICLETYPE:String = "#battle_matters:vehicleSelection/filterPopover/vehicleType";
       
       public static const VEHICLESELECTION_FILTERPOPOVER_NATION:String = "#battle_matters:vehicleSelection/filterPopover/nation";
       

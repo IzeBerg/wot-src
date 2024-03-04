@@ -225,15 +225,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.components.PrestigeLevel;
    import net.wg.gui.battle.components.StatusNotificationsPanel;
    import net.wg.gui.battle.components.TimersPanel;
-   import net.wg.gui.battle.components.animatedBattleHint.AnimatedBattleHint;
-   import net.wg.gui.battle.components.animatedBattleHint.constants.HINT_LABELS;
-   import net.wg.gui.battle.components.animatedBattleHint.containers.HintAnimationBlind;
-   import net.wg.gui.battle.components.animatedBattleHint.containers.HintAnimationContainer;
-   import net.wg.gui.battle.components.animatedBattleHint.containers.HintBackground;
-   import net.wg.gui.battle.components.animatedBattleHint.containers.HintBlindContainer;
-   import net.wg.gui.battle.components.animatedBattleHint.containers.HintContainer;
-   import net.wg.gui.battle.components.animatedBattleHint.containers.HintInfoContainer;
-   import net.wg.gui.battle.components.animatedBattleHint.containers.HintPenetrationAnimation;
    import net.wg.gui.battle.components.buttons.BattleButton;
    import net.wg.gui.battle.components.buttons.BattleStateButton;
    import net.wg.gui.battle.components.buttons.BattleToolTipButton;
@@ -360,7 +351,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.eventBattle.views.battleHints.EventObjectives;
    import net.wg.gui.battle.eventBattle.views.battleHints.InfoContainer;
    import net.wg.gui.battle.eventBattle.views.battleHints.TextContainer;
-   import net.wg.gui.battle.eventBattle.views.battleHints.data.HintInfoVO;
+   import net.wg.gui.battle.eventBattle.views.battleHints.constants.HINT_LABELS;
    import net.wg.gui.battle.eventBattle.views.buffsPanel.BuffsPanel;
    import net.wg.gui.battle.eventBattle.views.buffsPanel.EventBuffButton;
    import net.wg.gui.battle.eventBattle.views.consumablesPanel.EventBattleEquipmentButton;
@@ -498,6 +489,12 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.battleEndWarning.BattleEndWarningPanel;
    import net.wg.gui.battle.views.battleEndWarning.EndWarningPanelEvent;
    import net.wg.gui.battle.views.battleEndWarning.containers.Timer;
+   import net.wg.gui.battle.views.battleHint.BattleHint;
+   import net.wg.gui.battle.views.battleHint.constants.HINT_LABELS;
+   import net.wg.gui.battle.views.battleHint.containers.HintContainer;
+   import net.wg.gui.battle.views.battleHint.containers.HintIconContainer;
+   import net.wg.gui.battle.views.battleHint.containers.HintInfoContainer;
+   import net.wg.gui.battle.views.battleHint.vo.BattleHintVO;
    import net.wg.gui.battle.views.battleLevelPanel.BattleLevelPanel;
    import net.wg.gui.battle.views.battleLevelPanel.BattleLevelPanelData;
    import net.wg.gui.battle.views.battleLevelPanel.ExperienceDiffAnimation;
@@ -721,11 +718,13 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.epic.FrontLinePointEntry;
    import net.wg.gui.battle.views.minimap.components.entries.epic.HeadquarterMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.epic.LandingZoneMinimapEntry;
+   import net.wg.gui.battle.views.minimap.components.entries.epic.MapShortcutLabel;
    import net.wg.gui.battle.views.minimap.components.entries.epic.ReconMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.epic.ResupplyMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.epic.SectorBaseMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.epic.SectorMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.epic.SectorOverlayMinimapEntry;
+   import net.wg.gui.battle.views.minimap.components.entries.epic.ShortcutLabel;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.AOEArtilleryMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.ArtilleryMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.ArtilleryYellowMinimapEntry;
@@ -762,6 +761,12 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.containers.EpicMinimapEntriesContainer;
    import net.wg.gui.battle.views.minimap.containers.MinimapEntriesContainer;
    import net.wg.gui.battle.views.minimap.events.MinimapEvent;
+   import net.wg.gui.battle.views.newbieHint.NewbieHint;
+   import net.wg.gui.battle.views.newbieHint.constants.HINT_LABELS;
+   import net.wg.gui.battle.views.newbieHint.containers.HintComponentContainer;
+   import net.wg.gui.battle.views.newbieHint.containers.HintContainer;
+   import net.wg.gui.battle.views.newbieHint.containers.HintIconContainer;
+   import net.wg.gui.battle.views.newbieHint.containers.HintTextContainer;
    import net.wg.gui.battle.views.perksPanel.PerksPanel;
    import net.wg.gui.battle.views.perksPanel.components.PerkItem;
    import net.wg.gui.battle.views.perksPanel.data.PerkItemVO;
@@ -877,6 +882,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.staticMarkers.safeZone.SafeZoneMarker;
    import net.wg.gui.battle.views.staticMarkers.scenario.ScenarioMarker;
    import net.wg.gui.battle.views.staticMarkers.scenario.ScenarioMarkerProgressCircle;
+   import net.wg.gui.battle.views.staticMarkers.targetPoint.TargetPointMarker;
    import net.wg.gui.battle.views.stats.SpeakAnimation;
    import net.wg.gui.battle.views.stats.SquadTooltip;
    import net.wg.gui.battle.views.stats.StatsUserProps;
@@ -1446,24 +1452,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_COMPONENTS_TIMERSPANEL:Class = TimersPanel;
       
-      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_ANIMATEDBATTLEHINT:Class = AnimatedBattleHint;
-      
-      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONSTANTS_HINT_LABELS:Class = HINT_LABELS;
-      
-      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTANIMATIONBLIND:Class = HintAnimationBlind;
-      
-      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTANIMATIONCONTAINER:Class = HintAnimationContainer;
-      
-      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTBACKGROUND:Class = HintBackground;
-      
-      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTBLINDCONTAINER:Class = HintBlindContainer;
-      
-      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTCONTAINER:Class = HintContainer;
-      
-      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTINFOCONTAINER:Class = HintInfoContainer;
-      
-      public static const NET_WG_GUI_BATTLE_COMPONENTS_ANIMATEDBATTLEHINT_CONTAINERS_HINTPENETRATIONANIMATION:Class = HintPenetrationAnimation;
-      
       public static const NET_WG_GUI_BATTLE_COMPONENTS_BUTTONS_BATTLEBUTTON:Class = BattleButton;
       
       public static const NET_WG_GUI_BATTLE_COMPONENTS_BUTTONS_BATTLESTATEBUTTON:Class = BattleStateButton;
@@ -1716,7 +1704,7 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_TEXTCONTAINER:Class = TextContainer;
       
-      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_DATA_HINTINFOVO:Class = HintInfoVO;
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_CONSTANTS_HINT_LABELS:Class = HINT_LABELS;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BUFFSPANEL_BUFFSPANEL:Class = BuffsPanel;
       
@@ -1991,6 +1979,18 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEENDWARNING_ENDWARNINGPANELEVENT:Class = EndWarningPanelEvent;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEENDWARNING_CONTAINERS_TIMER:Class = Timer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEHINT_BATTLEHINT:Class = BattleHint;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEHINT_CONSTANTS_HINT_LABELS:Class = HINT_LABELS;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEHINT_CONTAINERS_HINTCONTAINER:Class = HintContainer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEHINT_CONTAINERS_HINTICONCONTAINER:Class = HintIconContainer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEHINT_CONTAINERS_HINTINFOCONTAINER:Class = HintInfoContainer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEHINT_VO_BATTLEHINTVO:Class = BattleHintVO;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_BATTLELEVELPANEL_BATTLELEVELPANEL:Class = BattleLevelPanel;
       
@@ -2438,6 +2438,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_EPIC_LANDINGZONEMINIMAPENTRY:Class = LandingZoneMinimapEntry;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_EPIC_MAPSHORTCUTLABEL:Class = MapShortcutLabel;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_EPIC_RECONMINIMAPENTRY:Class = ReconMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_EPIC_RESUPPLYMINIMAPENTRY:Class = ResupplyMinimapEntry;
@@ -2447,6 +2449,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_EPIC_SECTORMINIMAPENTRY:Class = SectorMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_EPIC_SECTOROVERLAYMINIMAPENTRY:Class = SectorOverlayMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_EPIC_SHORTCUTLABEL:Class = ShortcutLabel;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_AOEARTILLERYMINIMAPENTRY:Class = AOEArtilleryMinimapEntry;
       
@@ -2519,6 +2523,18 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_CONTAINERS_MINIMAPENTRIESCONTAINER:Class = MinimapEntriesContainer;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_EVENTS_MINIMAPEVENT:Class = MinimapEvent;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_NEWBIEHINT_NEWBIEHINT:Class = NewbieHint;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_NEWBIEHINT_CONSTANTS_HINT_LABELS:Class = HINT_LABELS;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_NEWBIEHINT_CONTAINERS_HINTCOMPONENTCONTAINER:Class = HintComponentContainer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_NEWBIEHINT_CONTAINERS_HINTCONTAINER:Class = HintContainer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_NEWBIEHINT_CONTAINERS_HINTICONCONTAINER:Class = HintIconContainer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_NEWBIEHINT_CONTAINERS_HINTTEXTCONTAINER:Class = HintTextContainer;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_PERKSPANEL_PERKSPANEL:Class = PerksPanel;
       
@@ -2749,6 +2765,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_SCENARIO_SCENARIOMARKER:Class = ScenarioMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_SCENARIO_SCENARIOMARKERPROGRESSCIRCLE:Class = ScenarioMarkerProgressCircle;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_TARGETPOINT_TARGETPOINTMARKER:Class = TargetPointMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATS_SPEAKANIMATION:Class = SpeakAnimation;
       

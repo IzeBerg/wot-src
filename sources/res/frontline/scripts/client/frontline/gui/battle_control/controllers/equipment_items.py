@@ -1,5 +1,5 @@
 from constants import EQUIPMENT_STAGES
-from extension_utils import ResMgr
+import ResMgr
 from gui.battle_control.controllers.consumables.equipment_ctrl import _ReplayItem, _InspireItem, _RegenerationKitItem, _ActivationError, _StealthRadarItem
 from gui.shared.system_factory import registerEquipmentItem
 _EQUIPMENT_CONFIG_PATH = 'frontline/scripts/item_defs/vehicles/common/equipments/epic_equipments.xml'

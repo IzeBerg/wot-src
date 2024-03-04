@@ -16,3 +16,7 @@ class EpicMinimapMeta(MinimapComponent):
     def as_updateSectorStateStatsS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_updateSectorStateStats(data)
+
+    def as_setMapShortcutKeyCodeS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setMapShortcutKeyCode(value)
