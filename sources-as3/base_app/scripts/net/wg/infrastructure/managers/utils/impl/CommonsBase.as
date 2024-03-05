@@ -27,11 +27,14 @@ package net.wg.infrastructure.managers.utils.impl
    import net.wg.data.constants.KeysMap;
    import net.wg.data.constants.Values;
    import net.wg.infrastructure.exceptions.AbstractException;
+   import net.wg.infrastructure.interfaces.IUIComponentEx;
    import net.wg.infrastructure.interfaces.IUserProps;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
+   import net.wg.utils.ButtonOverlayUtils;
    import net.wg.utils.ICommons;
    import net.wg.utils.TextFieldUtils;
    import scaleform.clik.core.UIComponent;
+   import scaleform.clik.utils.Padding;
    import scaleform.gfx.MouseEventEx;
    
    public class CommonsBase implements ICommons
@@ -50,8 +53,6 @@ package net.wg.infrastructure.managers.utils.impl
       protected static const IMG_TAG_EYE_ICON:String = "<IMG SRC=\"img://gui/maps/icons/library/icon_eye.png\" width=\"16\" height=\"13\" vspace=\"0\"/>";
       
       protected static const IMG_TAG_OPEN_PREMIUM:String = "<IMG SRC=\"img://gui/maps/icons/library/premium_small.png\" width=\"34\" height=\"16\" vspace=\"";
-      
-      protected static const REFERRAL_IMG_TAG:String = "<IMG SRC=\"img://gui/maps/icons/referral/referralSmallHand.png\" width=\"16\" height=\"16\" vspace=\"-4\"/>";
       
       protected static const CLAN_TAG_OPEN:String = "[";
       
@@ -74,10 +75,15 @@ package net.wg.infrastructure.managers.utils.impl
       
       private var _textFieldUtils:TextFieldUtils = null;
       
+      private var _btnOverlayUtils:ButtonOverlayUtils = null;
+      
+      private var _isDisposed:Boolean = false;
+      
       public function CommonsBase()
       {
          super();
          this._textFieldUtils = TextFieldUtils.instance;
+         this._btnOverlayUtils = ButtonOverlayUtils.instance;
       }
       
       private static function isKeyboardKey(param1:Number) : Boolean
@@ -110,6 +116,14 @@ package net.wg.infrastructure.managers.utils.impl
          param2.htmlText = _loc4_;
       }
       
+      public function addEmptyHitArea(param1:Sprite) : void
+      {
+         var _loc2_:Sprite = new Sprite();
+         _loc2_.name = EMPTY_HIT_AREA_NAME;
+         param1.parent.addChild(_loc2_);
+         param1.hitArea = _loc2_;
+      }
+      
       public function addMultipleHandlers(param1:Vector.<IEventDispatcher>, param2:String, param3:Function) : void
       {
          var _loc4_:IEventDispatcher = null;
@@ -117,6 +131,11 @@ package net.wg.infrastructure.managers.utils.impl
          {
             _loc4_.addEventListener(param2,param3);
          }
+      }
+      
+      public function addOverlayToBtn(param1:IUIComponentEx, param2:String, param3:Point, param4:Padding) : void
+      {
+         this._btnOverlayUtils.addOverlayToBtn(param1,param2,param3,param4);
       }
       
       public function cutBitmapFromBitmapData(param1:BitmapData, param2:Rectangle) : Bitmap
@@ -131,12 +150,27 @@ package net.wg.infrastructure.managers.utils.impl
          return this._textFieldUtils.cutHtmlText(param1);
       }
       
+      public function dispose() : void
+      {
+         _s_found.splice(0,_s_found.length);
+         _s_found = null;
+         this._textFieldUtils = null;
+         this._btnOverlayUtils.dispose();
+         this._btnOverlayUtils = null;
+         this._isDisposed = true;
+      }
+      
       public function flipHorizontal(param1:DisplayObject) : void
       {
          var _loc2_:Matrix = param1.transform.matrix;
          _loc2_.a = -1;
          _loc2_.tx = param1.width + param1.x;
          param1.transform.matrix = _loc2_;
+      }
+      
+      public function formatNumberToStringWithSpaces(param1:int) : String
+      {
+         return param1.toString().replace(/\B(?=(\d{3})+(?!\d))/g," ");
       }
       
       public function formatPlayerName(param1:TextField, param2:IUserProps, param3:Boolean = false, param4:Boolean = false) : Boolean
@@ -163,6 +197,16 @@ package net.wg.infrastructure.managers.utils.impl
             InteractiveObject(param1[_loc3_]).tabIndex = _loc3_ + 1;
             _loc3_++;
          }
+      }
+      
+      public function invalidateOverlayPosition(param1:IUIComponentEx) : void
+      {
+         this._btnOverlayUtils.invalidateOverlayPosition(param1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
       }
       
       public function keyToString(param1:Number) : KeyProps
@@ -293,6 +337,11 @@ package net.wg.infrastructure.managers.utils.impl
          {
             _loc4_.removeEventListener(param2,param3);
          }
+      }
+      
+      public function removeOverlayFromBtn(param1:IUIComponentEx) : void
+      {
+         this._btnOverlayUtils.removeOverlayFromBtn(param1);
       }
       
       public function rgbToArgb(param1:uint, param2:Number) : uint
@@ -508,19 +557,6 @@ package net.wg.infrastructure.managers.utils.impl
             return MouseEventEx(param1).buttonIdx == MouseEventEx.RIGHT_BUTTON;
          }
          return false;
-      }
-      
-      public function addEmptyHitArea(param1:Sprite) : void
-      {
-         var _loc2_:Sprite = new Sprite();
-         _loc2_.name = EMPTY_HIT_AREA_NAME;
-         param1.parent.addChild(_loc2_);
-         param1.hitArea = _loc2_;
-      }
-      
-      public function formatNumberToStringWithSpaces(param1:int) : String
-      {
-         return param1.toString().replace(/\B(?=(\d{3})+(?!\d))/g," ");
       }
    }
 }

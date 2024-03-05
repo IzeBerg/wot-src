@@ -8,6 +8,7 @@ package net.wg.gui.components.controls
    import net.wg.data.constants.ComponentState;
    import net.wg.data.constants.Values;
    import net.wg.data.managers.IToolTipParams;
+   import net.wg.data.managers.ITooltipProps;
    import net.wg.gui.events.StateManagerEvent;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.utils.helpLayout.HelpLayoutVO;
@@ -39,6 +40,8 @@ package net.wg.gui.components.controls
       protected var _helpText:String = "";
       
       protected var _helpDirection:String = "T";
+      
+      private var _tooltipProps:ITooltipProps = null;
       
       private var _textFieldPaddingHorizontal:Number = 4;
       
@@ -308,11 +311,11 @@ package net.wg.gui.components.controls
             this._isTooltipShown = true;
             if(this._tooltipParams)
             {
-               App.toolTipMgr.showComplexWithParams(this._tooltip,this._tooltipParams);
+               App.toolTipMgr.showComplexWithParams(this._tooltip,this._tooltipParams,this._tooltipProps);
             }
             else
             {
-               App.toolTipMgr.showComplex(this._tooltip);
+               App.toolTipMgr.showComplex(this._tooltip,this._tooltipProps);
             }
          }
       }
@@ -503,6 +506,11 @@ package net.wg.gui.components.controls
       public function set dynamicSizeByText(param1:Boolean) : void
       {
          this._dynamicSizeByText = param1;
+      }
+      
+      public function set tooltipProps(param1:ITooltipProps) : void
+      {
+         this._tooltipProps = param1;
       }
       
       public function get changeSizeOnlyUpwards() : Boolean

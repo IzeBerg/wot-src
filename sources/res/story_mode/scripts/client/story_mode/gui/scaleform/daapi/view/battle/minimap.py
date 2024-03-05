@@ -3,7 +3,8 @@ from gui.Scaleform.daapi.view.battle.classic.minimap import GlobalSettingsPlugin
 from gui.Scaleform.daapi.view.battle.shared.minimap.component import MinimapComponent
 from gui.Scaleform.daapi.view.battle.shared.minimap.entries import VehicleEntry
 from gui.Scaleform.daapi.view.battle.shared.minimap.plugins import ArenaVehiclesPlugin
-from helpers import i18n
+from gui.impl import backport
+from gui.impl.gen import R
 _MINIMAP_DIMENSIONS = 10
 _ANIMATION_SPG = 'enemySPG'
 _ANIMATION_ENEMY = 'firstEnemy'
@@ -22,14 +23,16 @@ class StoryModeVehicleEntry(VehicleEntry):
 
 class StoryModeArenaVehiclesPlugin(ArenaVehiclesPlugin):
     __slots__ = ()
+    _BROOKS = backport.text(R.strings.sm_battle.botNames.Brooks())
+    _MC_LAUD = backport.text(R.strings.sm_battle.botNames.McLaud())
 
     def __init__(self, parent):
         super(StoryModeArenaVehiclesPlugin, self).__init__(parent=parent, clazz=StoryModeVehicleEntry)
 
     def _getDisplayedName(self, vInfo):
         playerName = vInfo.player.name
-        if playerName.startswith('#'):
-            return i18n.makeString(playerName)
+        if playerName.endswith(self._BROOKS) or playerName.endswith(self._MC_LAUD):
+            return playerName
         return super(StoryModeArenaVehiclesPlugin, self)._getDisplayedName(vInfo)
 
 

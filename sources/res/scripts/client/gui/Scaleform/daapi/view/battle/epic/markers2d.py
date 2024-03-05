@@ -199,7 +199,7 @@ class SectorBasesPlugin(EpicMissionsPlugin, ChatCommunicationComponent):
         ChatCommunicationComponent.stop(self)
         super(SectorBasesPlugin, self).stop()
 
-    def getMarkerType(self):
+    def getMarkerType(self, markerID=INVALID_MARKER_ID):
         return MarkerType.BASE_MARKER_TYPE
 
     def getTargetIDFromMarkerID(self, markerID):
@@ -491,7 +491,7 @@ class HeadquartersPlugin(EpicMissionsPlugin, ChatCommunicationComponent):
             self.__visibleHQ = INVALID_TARGET_ID
             return
 
-    def getMarkerType(self):
+    def getMarkerType(self, markerID=INVALID_MARKER_ID):
         return MarkerType.HEADQUARTER_MARKER_TYPE
 
     def getTargetIDFromMarkerID(self, markerID):

@@ -44,8 +44,7 @@ package net.wg.gui.battle.views.staticMarkers.repairPoint
       
       public function setIcon(param1:String, param2:Boolean) : void
       {
-         var _loc3_:Boolean = false;
-         _loc3_ = param1 == STATE_COOLDOWN;
+         var _loc3_:Boolean = param1 == STATE_COOLDOWN;
          if(this._isIconShown && this._isCooldown == _loc3_)
          {
             return;

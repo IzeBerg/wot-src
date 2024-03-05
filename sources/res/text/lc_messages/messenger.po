@@ -1200,6 +1200,9 @@ msgstr "已移除战斗通行证点数"
 msgid "platformCurrencyMsg/debited/brcoin"
 msgstr "已移除钢铁印章"
 
+msgid "platformCurrencyMsg/debited/clanvehiclecoin"
+msgstr "已移除机动战令牌"
+
 msgid "platformCurrencyMsg/debited/equip_coin"
 msgstr "已移除合金元件"
 
@@ -1217,6 +1220,9 @@ msgstr "已添加战斗通行证点数"
 
 msgid "platformCurrencyMsg/received/brcoin"
 msgstr "已添加钢铁印章"
+
+msgid "platformCurrencyMsg/received/clanvehiclecoin"
+msgstr "已添加机动战令牌"
 
 msgid "platformCurrencyMsg/received/equip_coin"
 msgstr "已添加合金元件"
@@ -1566,7 +1572,7 @@ msgstr "应用于%s坦克的%s租用风格即将到期:剩余3场战斗。"
 
 msgid ""
 "serviceChannelMessages/autoRentStyleRentIsAlmostOverAutoprolongationON/text"
-msgstr "\"%s\"租用风格%s将会在3场战斗后自动延期%s场战斗。"
+msgstr "\"%s\"租用风格(目前应用于%s)将会在3场战斗后自动延长%s场战斗。"
 
 msgid "serviceChannelMessages/autoRentStyleRentIsOver/button"
 msgstr "前往个性化"
@@ -1663,7 +1669,10 @@ msgid "serviceChannelMessages/battlePass/reachedCap/header"
 msgstr "已达到点数上限"
 
 msgid "serviceChannelMessages/battlePass/reachedCap/text"
-msgstr "您以%(vehName)s达到最大点数上限。达到点数上限奖励: %(bonusPoints)s。使用其他坦克继续获得点数。"
+msgstr ""
+"%(vehName)s已达到点数上限。\n"
+"达到点数上限的奖励: %(bonusPoints)s。\n"
+"使用其他坦克继续获取点数。"
 
 msgid "serviceChannelMessages/battlePass/styleChosen/header"
 msgstr "恭喜您！"
@@ -1692,7 +1701,7 @@ msgstr ""
 
 msgid "serviceChannelMessages/battlePassHReward/battle/newLevel/text"
 msgstr ""
-"您已完成战斗通行证进度阶段%(newLevel)s\n"
+"您完成了战斗通行证进度阶段%(newLevel)s\n"
 "\n"
 "已获得奖励:"
 
@@ -1738,6 +1747,11 @@ msgstr "已花费全局经验:"
 msgid "serviceChannelMessages/battlePassReward/buy/gold"
 msgstr "消耗金币："
 
+msgid "serviceChannelMessages/battlePassReward/buyBPWithLevels/text"
+msgstr ""
+"您购买了\"%(chapter)s\"章节的高级通行证和全部阶段。\n"
+"已获得该章节全部阶段的奖励:"
+
 msgid "serviceChannelMessages/battlePassReward/buyMultiple/text"
 msgstr "您现在将同时获得本赛季所有章节中的基础和高级奖励。"
 
@@ -1746,25 +1760,28 @@ msgstr "50"
 
 msgid "serviceChannelMessages/battlePassReward/buyProgress/text"
 msgstr ""
-"章节 %(chapter)s中已添加阶段: %(levelCount)s\n"
-"您已到达阶段：%(currentLevel)s。\n"
-"获得奖励:"
+"您购买了\"%(chapter)s\"章节的%(levelCount)s个阶段\n"
+"您达到了阶段%(currentLevel)s。\n"
+"已获得奖励:"
 
 msgid "serviceChannelMessages/battlePassReward/buyWithRewards/additionalText"
-msgstr "这个高级通行证仅适用于\"%(chapter)s\"章节。"
+msgstr "该高级通行证仅适用于\"%(chapter)s\"章节。"
 
 msgid "serviceChannelMessages/battlePassReward/buyWithRewards/text"
 msgstr "您获得了战斗通行证已完成阶段的奖励："
 
 msgid "serviceChannelMessages/battlePassReward/buyWithoutRewards/text"
 msgstr ""
-"您现在能够在\"%(chapter)s\"章节中获得基础与高级奖励轨道的奖励。\n"
+"您现在将同时获得\"%(chapter)s\"章节基础和高级奖励轨道中的奖励。\n"
 "该高级通行证仅适用于\"%(chapter)s\"章节。"
 
 msgid "serviceChannelMessages/battlePassReward/header/autoSelectReward"
 msgstr "已添加默认奖励:"
 
 msgid "serviceChannelMessages/battlePassReward/header/buyBP"
+msgstr "已购买高级通行证"
+
+msgid "serviceChannelMessages/battlePassReward/header/buyBPWithLevels"
 msgstr "已购买高级通行证"
 
 msgid "serviceChannelMessages/battlePassReward/header/buyProgress"
@@ -2523,6 +2540,9 @@ msgstr "从兵营中移除床位"
 msgid "serviceChannelMessages/invoiceReceived/boosters"
 msgstr "个人储备"
 
+msgid "serviceChannelMessages/invoiceReceived/boosters/debited"
+msgstr "已移除个人储备"
+
 msgid "serviceChannelMessages/invoiceReceived/bpcoinAccrued"
 msgstr "已添加令牌"
 
@@ -2639,6 +2659,9 @@ msgstr "已移除合金元件"
 
 msgid "serviceChannelMessages/invoiceReceived/equipment"
 msgstr "给养"
+
+msgid "serviceChannelMessages/invoiceReceived/equipment/debited"
+msgstr "扣除给养"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinAccrued"
 msgstr "已增加周年纪念币"

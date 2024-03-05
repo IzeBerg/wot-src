@@ -93,7 +93,7 @@ class BattlePassSecondaryEntryPointWidget(SecondaryEntryPointMeta, BaseBattlePas
         return backport.image(icon)
 
     def __getExtraIcon(self):
-        if self.hasExtra or self.isHoliday:
+        if self.hasExtra:
             return backport.image(_R_IMAGES.extra_flags_mini())
         else:
             return

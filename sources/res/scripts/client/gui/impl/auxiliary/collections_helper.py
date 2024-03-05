@@ -152,7 +152,7 @@ class CollectionItemBonusPacker(SimpleBonusUIPacker):
         itemId = bonus.getItemId()
         collectionId = bonus.getCollectionId()
         tooltipData = [
-         TooltipData(tooltip=None, isSpecial=True, specialAlias=None, specialArgs=[itemId, collectionId])]
+         TooltipData(tooltip=None, isSpecial=True, specialAlias=None, specialArgs=[itemId, collectionId, True])]
         return tooltipData
 
     @classmethod

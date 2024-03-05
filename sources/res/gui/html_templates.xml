@@ -455,6 +455,9 @@
 			<graphicsAlert>&lt;font color=&quot;#FF0000&quot;&gt;%(message)s&lt;/font&gt;</graphicsAlert>
 			<questsDialogAlert>&lt;font color=&quot;#D39337&quot;&gt;%(message)s&lt;/font&gt;</questsDialogAlert>
 			<leaveEventWarning>&lt;font color=&quot;#FF0000&quot;&gt;%(message)s&lt;/font&gt;</leaveEventWarning>
+			<wgshEventUnreezeVehicle>
+				<text>_(#dialogs:wgshEventUnfreezeVehicle/message)</text>
+			</wgshEventUnreezeVehicle>
 		</dialogs>
 		<popovers>
 			<equipment>
@@ -1144,6 +1147,7 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<yellowText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#FEAB34&apos;&gt;%(message)s&lt;/font&gt;</yellowText>
 			<greenText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#7ab300&apos;&gt;%(message)s&lt;/font&gt;</greenText>
 			<discountText>&lt;font face=&apos;$FieldFont&apos; size=&apos;16&apos; color=&apos;#FEFEEC&apos;&gt;%(message)s&lt;/font&gt;</discountText>
+			<discountSmallText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#FEFEEC&apos;&gt;%(message)s&lt;/font&gt;</discountSmallText>
 			<clockWithText>&lt;img src=&apos;img://gui/maps/icons/missions/daily/widgets/clock_icon_s.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-6&apos; hspace=&apos;0&apos;/&gt;&lt;font face=&apos;$TitleFont&apos; size=&apos;14&apos; color=&apos;#FFDD99&apos;&gt;%(text)s&lt;/font&gt;</clockWithText>
 			<poiCapturedBoldText>&lt;font size=&apos;18&apos; face=&apos;$TitleFont&apos;&gt;&lt;b&gt;%(message)s&lt;/b&gt;&lt;/font&gt;</poiCapturedBoldText>
 			<poiCapturedRegularText>&lt;font size=&apos;16&apos; face=&apos;$TitleFont&apos;&gt;%(message)s&lt;/font&gt;</poiCapturedRegularText>

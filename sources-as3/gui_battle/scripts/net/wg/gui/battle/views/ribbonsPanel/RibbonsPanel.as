@@ -1,5 +1,6 @@
 package net.wg.gui.battle.views.ribbonsPanel
 {
+   import flash.display.DisplayObjectContainer;
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.utils.Dictionary;
@@ -85,7 +86,7 @@ package net.wg.gui.battle.views.ribbonsPanel
          var _loc7_:String = null;
          if(this._ribbonPool == null)
          {
-            this._ribbonPool = new RibbonsPool(this,this._textsSprite,this._bonusSprite,param1,this.animationCallback);
+            this._ribbonPool = this.createRibbonsPool(this,this._textsSprite,this._bonusSprite,param1,this.animationCallback);
          }
          this.setSettings(param3,param2,param4,param5);
          for each(_loc7_ in param6)
@@ -182,6 +183,11 @@ package net.wg.gui.battle.views.ribbonsPanel
             _loc1_.shiftAnim(_loc4_);
             _loc4_++;
          }
+      }
+      
+      protected function createRibbonsPool(param1:DisplayObjectContainer, param2:DisplayObjectContainer, param3:DisplayObjectContainer, param4:Array, param5:Function) : RibbonsPool
+      {
+         return new RibbonsPool(param1,param2,param3,param4,param5);
       }
       
       private function reset() : void

@@ -203,6 +203,9 @@ class VehicleGun(VehicleModule):
         typeToCheck = GUN_DUAL_GUN if vehicleDescr is not None else GUN_CAN_BE_DUAL_GUN
         return self.getReloadingType(vehicleDescr) == typeToCheck
 
+    def isDamageMutable(self):
+        return self.descriptor.isDamageMutable
+
     def hasDualAccuracy(self, vehicleDescr=None):
         return vehicleDescr is not None and g_paramsCache.hasDualAccuracy(self.intCD, vehicleDescr.type.compactDescr)
 
@@ -253,6 +256,8 @@ class VehicleGun(VehicleModule):
                 return backport.image(R.images.gui.maps.icons.modules.dualGun())
             if self.hasDualAccuracy(vehDescr):
                 return backport.image(R.images.gui.maps.icons.modules.dualAccuracy())
+            if self.isDamageMutable():
+                return backport.image(R.images.gui.maps.icons.modules.damageMutable())
             return
 
     def getGUIEmblemID(self):
@@ -384,6 +389,9 @@ class Shell(FittingItem):
     def isModernMechanics(self):
         return self.type in (SHELL_TYPES.HIGH_EXPLOSIVE,) and self.descriptor.type.mechanics == SHELL_MECHANICS_TYPE.MODERN
 
+    def isDamageMutable(self):
+        return self.descriptor.isDamageMutable
+
     def _getAltPrice(self, buyPrice, proxy):
         if Currency.GOLD in buyPrice:
             return buyPrice.exchange(Currency.GOLD, Currency.CREDITS, proxy.exchangeRateForShellsAndEqs)
@@ -462,3 +470,8 @@ class Shell(FittingItem):
 
     def _sortByType(self, other):
         return SHELL_TYPES_ORDER_INDICES[self.type] - SHELL_TYPES_ORDER_INDICES[other.type]
+
+    def _getShortInfoKey(self):
+        if self.isDamageMutable():
+            return '#menu:descriptions/mutableDamageShell'
+        return super(Shell, self)._getShortInfoKey()

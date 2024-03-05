@@ -192,7 +192,7 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
                   else
                   {
                      this.strikeline.visible = this.oldPriceTf.visible = this.actionPrice.visible = false;
-                     this.priceIcon.visible = this._data.priceType;
+                     this.priceIcon.visible = StringUtils.isNotEmpty(this._data.priceType);
                   }
                   this.currentPriceTf.textColor = getCurrentPriceTextColor(this._data.priceType);
                   this.currentPriceTf.text = App.utils.commons.formatNumberToStringWithSpaces(this._data.price);

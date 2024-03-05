@@ -9,6 +9,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "#PluralForms"
+msgstr "nplurals=1; plural=0;"
 
 msgid "awardsWidget/description/award"
 msgstr "点击选择并领取您的奖励。"
@@ -26,20 +30,16 @@ msgid "awardsWidget/description/collectionCompleted"
 msgstr "恭喜！您已集齐了所有的战斗通行证收藏元素。"
 
 msgid "awardsWidget/description/commander"
-msgstr "点击查看您在活动期间可获得或购买的全部乘员，试听其中两人的特殊专属语音。"
+msgstr "点击查看和试听您在活动期间可获得或购买的全部乘员的专属语音。"
 
 msgid "awardsWidget/description/point"
 msgstr "点击查看战斗通行证点数可兑换的之前赛季物品。"
 
 msgid "awardsWidget/description/pointLocked"
-msgstr ""
-"点击查看战斗通行证点数可兑换的之前赛季物品。\n"
-"可以在完成当前赛季中所有章节后购买这些物品。"
+msgstr "点击查看可使用战斗通行证点数兑换的往期赛季物品。完成当前赛季的所有章节后即可兑换这些物品。"
 
 msgid "awardsWidget/description/pointLockedExceptExtra"
-msgstr ""
-"点击查看战斗通行证点数可兑换的之前赛季物品。\n"
-"可以在完成当前赛季中所有章节后购买这些物品，额外章节除外。"
+msgstr "点击查看可使用战斗通行证点数兑换的往期赛季物品。完成当前赛季的所有章节后即可兑换这些物品，额外章节除外。"
 
 msgid "awardsWidget/title/awardMultiple"
 msgstr ""
@@ -52,9 +52,7 @@ msgstr ""
 "奖励"
 
 msgid "awardsWidget/title/coin"
-msgstr ""
-"令牌\n"
-"可兑换的物品"
+msgstr "令牌物品"
 
 msgid "awardsWidget/title/collection"
 msgstr "收藏"
@@ -63,9 +61,7 @@ msgid "awardsWidget/title/commander"
 msgstr "乘员"
 
 msgid "awardsWidget/title/point"
-msgstr ""
-"点数\n"
-"可兑换的物品"
+msgstr "点数物品"
 
 msgid "battlePassAwardsView/additionalRewards/bpBuyLevelAwardsText"
 msgstr "您已完成主线进度阶段并获得了高级奖励。继续获取点数并解锁更多奖励吧。"
@@ -151,10 +147,11 @@ msgstr "可选择的赏金配件"
 msgid "battlePassAwardsView/mainReward/bpBuyAwardsCaption"
 msgstr "您已解锁\"%(chapter)s\"章节中的全部高级通行证奖励。"
 
+msgid "battlePassAwardsView/mainReward/bpBuyWithLevels"
+msgstr "您已获得\"%(chapter)s\"章节中的全部奖励。"
+
 msgid "battlePassAwardsView/mainReward/commander"
-msgstr ""
-"乘员\n"
-"%(name)s"
+msgstr "乘员: %(name)s"
 
 msgid "battlePassAwardsView/mainReward/newDeviceGiftToken/buttonText"
 msgstr "前往选择"
@@ -252,17 +249,35 @@ msgstr "三合一"
 msgid "battlePassBuyView/confirm/backBtnText"
 msgstr "选择优惠"
 
+msgid "battlePassBuyView/confirm/btnBuy"
+msgstr "购买"
+
 msgid "battlePassBuyView/confirm/chapter"
-msgstr "\"{name}\"章节"
+msgstr "章节: %(name)s"
+
+msgid "battlePassBuyView/confirm/checkbox/stage"
+msgid_plural "plural/battlePassBuyView/confirm/checkbox/stage"
+msgstr[0] "加上剩余的%(stagesNumber)s个阶段"
+msgstr[1] "加上剩余的%(stagesNumber)s个阶段"
+msgstr[2] "加上剩余的%(stagesNumber)s个阶段"
 
 msgid "battlePassBuyView/confirm/description"
-msgstr "拥有高级通行证后，完成所有阶段可获得以下奖励:"
+msgstr "完成全部阶段后，您将获得高级通行证奖励:"
+
+msgid "battlePassBuyView/confirm/descriptionCheckboxChecked"
+msgstr "您将立即获得全部章节的奖励:"
+
+msgid "battlePassBuyView/confirm/price"
+msgstr "高级通行证价格:"
+
+msgid "battlePassBuyView/confirm/priceWithLevels"
+msgstr "高级通行证和阶段价格:"
+
+msgid "battlePassBuyView/confirm/shopOfferLinkText"
+msgstr "特惠"
 
 msgid "battlePassBuyView/confirm/shopOfferWarning"
-msgstr "一旦您使用金币购买了高级通行证，那么使用人民币购买3个章节的优惠将失效。"
-
-msgid "battlePassBuyView/confirm/shopOfferWarningNoActiveChapter"
-msgstr "注意！您将为尚未激活的章节购买高级通行证。"
+msgstr "购买特定章节的高级通行证后，您将无法再购买%(link)s。"
 
 msgid "battlePassBuyView/confirm/subTitle/finished"
 msgstr "您可以获得已完成的战斗通行证章节{chapter}中各阶段的高级奖励。"
@@ -304,7 +319,13 @@ msgid "battlePassBuyView/reward/backBtn"
 msgstr "返回"
 
 msgid "battlePassBuyView/reward/chapter"
-msgstr "\"%(chapterName)s\"章节"
+msgstr "章节: %(chapterName)s"
+
+msgid "battlePassBuyView/reward/subtitle"
+msgid_plural "plural/battlePassBuyView/reward/subtitle"
+msgstr[0] "和{cream_Open}%(levels)s{cream_Close}个阶段"
+msgstr[1] "和{cream_Open}%(levels)s{cream_Close}个阶段"
+msgstr[2] "和{cream_Open}%(levels)s{cream_Close}个阶段"
 
 msgid "battlePassBuyView/reward/titleBattlePass"
 msgstr "高级通行证奖励"
@@ -317,6 +338,9 @@ msgstr "%(levels)s个阶段的奖励"
 
 msgid "battlePassBuyView/reward/titleNowRewards"
 msgstr "阶段%(steps)s的以下奖励将发放给您"
+
+msgid "battlePassBuyView/reward/titleNowRewardsCheckbox"
+msgstr "您将立即获得下列奖励"
 
 msgid "battlePassBuyView/reward/titleNowRewardsSingle"
 msgstr "阶段%(steps)s的以下奖励将发放给您"
@@ -345,53 +369,38 @@ msgstr "战斗通行证"
 msgid "battlepassTab"
 msgstr "战斗通行证"
 
-msgid "chapter/fullName/1"
-msgstr "回到阴霾"
-
 msgid "chapter/fullName/10021"
-msgstr "夺钻行动"
+msgstr "猎牛之歌"
 
-msgid "chapter/fullName/10031"
-msgstr "沙丘2——命运降临"
+msgid "chapter/fullName/131"
+msgstr "利刃旋风"
 
-msgid "chapter/fullName/121"
-msgstr "如履薄冰"
+msgid "chapter/fullName/132"
+msgstr "英勇神龟"
 
-msgid "chapter/fullName/122"
-msgstr "轻盈飘渺"
+msgid "chapter/fullName/133"
+msgstr "科技优势"
 
-msgid "chapter/fullName/123"
-msgstr "亦真亦幻"
+msgid "chapter/fullNameSpecial/131"
+msgstr "利刃旋风"
 
-msgid "chapter/fullName/2"
-msgstr "英雄使命"
+msgid "chapter/fullNameSpecial/132"
+msgstr "英勇神龟"
 
-msgid "chapter/fullName/3"
-msgstr "极地曙光"
-
-msgid "chapter/fullName/4"
-msgstr "全新章节"
-
-msgid "chapter/fullName/74"
-msgstr "全新章节"
+msgid "chapter/fullNameSpecial/133"
+msgstr "科技优势"
 
 msgid "chapter/fullNameUppercased/10021"
-msgstr "夺钻行动"
+msgstr "猎牛之歌"
 
-msgid "chapter/fullNameUppercased/10031"
-msgstr "沙丘2——命运降临"
+msgid "chapter/fullNameUppercased/131"
+msgstr "利刃旋风"
 
-msgid "chapter/fullNameUppercased/121"
-msgstr "如履薄冰"
+msgid "chapter/fullNameUppercased/132"
+msgstr "英勇神龟"
 
-msgid "chapter/fullNameUppercased/122"
-msgstr "轻盈飘渺"
-
-msgid "chapter/fullNameUppercased/123"
-msgstr "亦真亦幻"
-
-msgid "chapter/fullNameUppercased/74"
-msgstr "全新章节"
+msgid "chapter/fullNameUppercased/133"
+msgstr "科技优势"
 
 msgid "chapter/title"
 msgstr "章节%(chapter)s"
@@ -476,6 +485,9 @@ msgstr "所有乘员都对应特定章节。"
 msgid "chapterChoice/title"
 msgstr "选择章节"
 
+msgid "chosenBonuses/bonus/battle_booster_gift"
+msgstr "自选配件指令"
+
 msgid "chosenBonuses/bonus/blueprint_gift"
 msgstr "可选择的系别蓝图碎片"
 
@@ -485,11 +497,11 @@ msgstr "可选择的培训手册"
 msgid "chosenBonuses/bonus/guide_gift"
 msgstr "可选择的培训指南"
 
-msgid "chosenBonuses/bonus/new_device_fv_gift"
-msgstr "可选择的标准配件（火力和生存能力）"
+msgid "chosenBonuses/bonus/modernized_device_gift"
+msgstr "自选试验型配件"
 
-msgid "chosenBonuses/bonus/new_device_mi_gift"
-msgstr "可选择的标准配件（机动性和侦察）"
+msgid "chosenBonuses/bonus/new_device_gift"
+msgstr "可选择的标准配件"
 
 msgid "chosenBonuses/bonus/trophy_gift"
 msgstr "可选择的赏金配件"
@@ -502,6 +514,62 @@ msgstr "x%(multiplier)s"
 
 msgid "commonProgression/body/ended"
 msgstr "战斗通行证赛季已结束"
+
+msgid "customTankmenVoiceover/availableInQuestChain"
+msgstr "完成任务将获得"
+
+msgid "customTankmenVoiceover/button/confirm/text"
+msgstr "卡哇邦嘎！"
+
+msgid "customTankmenVoiceover/free/chapter_131"
+msgstr "%(chapter)s章节的基础奖励之一"
+
+msgid "customTankmenVoiceover/free/chapter_132"
+msgstr "%(chapter)s章节的基础奖励之一"
+
+msgid "customTankmenVoiceover/free/chapter_133"
+msgstr "%(chapter)s章节的基础奖励之一"
+
+msgid "customTankmenVoiceover/header/description/text"
+msgstr ""
+"所有乘员均拥有\"零历练\"兄弟连特长，\n"
+"以及足以训练另外两个特长的乘员经验。"
+
+msgid "customTankmenVoiceover/header/subTitle/text"
+msgstr "战斗通行证: %(season)s"
+
+msgid "customTankmenVoiceover/header/title/text"
+msgstr "带有专属语音的乘员"
+
+msgid "customTankmenVoiceover/inShop"
+msgstr "在特殊礼包中"
+
+msgid "customTankmenVoiceover/notFull"
+msgstr "%(availableCount)s/%(count)s可用"
+
+msgid "customTankmenVoiceover/paid/chapter_131"
+msgstr "%(chapter)s章节的高级奖励之一"
+
+msgid "customTankmenVoiceover/paid/chapter_132"
+msgstr "%(chapter)s章节的高级奖励之一"
+
+msgid "customTankmenVoiceover/paid/chapter_133"
+msgstr "%(chapter)s章节的高级奖励之一"
+
+msgid "customTankmenVoiceover/questChain"
+msgstr "在一系列任务中"
+
+msgid "customTankmenVoiceover/received"
+msgstr "已获得"
+
+msgid "customTankmenVoiceover/shopButton"
+msgstr "在军械库中查看"
+
+msgid "customTankmenVoiceover/soundOn"
+msgstr "试听"
+
+msgid "customTankmenVoiceover/unavailable"
+msgstr "不可用"
 
 msgid "dailyQuests/button"
 msgstr "收到！"
@@ -694,15 +762,33 @@ msgstr "关于战斗通行证"
 msgid "intro/button"
 msgstr "收到！"
 
+msgid "intro/rewards/text"
+msgstr "您可获得独特个性化元素、带有专属语音的乘员等奖励。"
+
+msgid "intro/rewards/title"
+msgstr "全新奖励"
+
 msgid "intro/seasonDescription/text"
 msgstr ""
-"该战斗通行证仅有1个章节。这是一次短暂但令人难忘的冒险。您将从中体验史诗般的《沙丘2》宇宙，获取灵感源于该电影的专属奖励。您愿意响应厄拉科斯的召唤吗？"
+"在赛季XIII中，莱昂纳多、米开朗基罗、拉斐尔和多纳泰罗将对战施莱德和他的同伙。本赛季将为您带来各种主题奖励和个性化元素，以及来自《忍者神龟》宇宙的独特乘员(具有专属语音)。卡哇邦嘎！"
 
 msgid "intro/seasonDescription/title"
-msgstr "与《沙丘2》联动"
+msgstr "主题赛季"
+
+msgid "intro/shopCategory/text"
+msgstr "从本赛季开始，您将可以在军械库中方便地查看特殊的全新战斗通行证版块。"
+
+msgid "intro/shopCategory/title"
+msgstr "军械库中的战斗通行证版块"
+
+msgid "intro/styles/text"
+msgstr "战斗通行证赛季XIII期间将开放3款风格，分别适用于以下核心坦克: BZ-75、曼蒂科尔和TVP T50。"
+
+msgid "intro/styles/title"
+msgstr "全新渐变风格"
 
 msgid "intro/title"
-msgstr "沙丘2——命运降临"
+msgstr "赛季XIII:忍者神龟通行证"
 
 msgid "offSeason/alertTooltip"
 msgstr "投票结果暂不可用。请稍后再次查看。"
@@ -759,16 +845,13 @@ msgid "postProgression/buyState/buyButton"
 msgstr "购买高级通行证"
 
 msgid "postProgression/buyState/description"
-msgstr "购买高级通行证后，您将立即解锁获取拉班乘员和全部高级奖励的机会。"
+msgstr "购买高级通行证后，您将立即解锁获取1辆拥有独特3D风格的金币坦克和全部高级通行证奖励的机会。"
 
 msgid "postProgression/buyState/moreRewards"
 msgstr "其他奖励: %(count)s"
 
-msgid "postProgression/buyState/subtitle"
-msgstr "需要高级通行证"
-
 msgid "postProgression/buyState/title"
-msgstr "获取更多奖励"
+msgstr "获取高级通行证奖励"
 
 msgid "postProgression/chapter"
 msgstr "%(chapterName)s"
@@ -777,7 +860,7 @@ msgid "postProgression/completed"
 msgstr "已完成章节"
 
 msgid "postProgression/finalState/button"
-msgstr "返回车库"
+msgstr "车库中查看"
 
 msgid "postProgression/finalState/label"
 msgstr "已获得所有活动奖励"
@@ -787,9 +870,6 @@ msgstr "领取奖励"
 
 msgid "postProgression/selectableRewardsState/label"
 msgstr "您仍有尚未选择的奖励。"
-
-msgid "postProgression/selectableRewardsState/title"
-msgstr "领取奖励"
 
 msgid "postProgression/tankmenState/description"
 msgstr "本次活动期间，军械库中将售卖包含独特乘员的礼包。"
@@ -834,7 +914,7 @@ msgid "progression/battlePassBuyBtn"
 msgstr "购买高级通行证"
 
 msgid "progression/battlePassBuyDescr"
-msgstr "购买高级通行证即可解锁高级奖励轨道。"
+msgstr "高级通行证可以解锁当前章节的高级奖励轨道。"
 
 msgid "progression/battlePassNextChapterBuyDescr"
 msgstr "完成前一章节以购买此章节的高级通行证。"
@@ -931,9 +1011,6 @@ msgstr "金币坦克"
 msgid "progression/extraChapterWidget/tankName"
 msgstr "%(vehicleName)s"
 
-msgid "progression/extraChapterWidget/tankman"
-msgstr "乘员"
-
 msgid "progression/extraChapterWidget/timer"
 msgstr "距战斗通行证章节结束还有"
 
@@ -959,7 +1036,7 @@ msgid "progression/footer/status/paused"
 msgstr "章节已暂停。"
 
 msgid "progression/header/chapter/status"
-msgstr "%(chapterName)s"
+msgstr "\"%(chapterName)s\"章节"
 
 msgid "progression/header/inactive"
 msgstr "未激活"
@@ -988,7 +1065,7 @@ msgid "progression/progressionChapterGoTo"
 msgstr "前往"
 
 msgid "progression/season/end/normal"
-msgstr "赛季%(seasonNum)s将持续至%(endMonth)s%(endDay)s日"
+msgstr "赛季%(seasonNum)s:%(seasonName)s将持续至%(endMonth)s%(endDay)s日"
 
 msgid "progression/season/end/special"
 msgstr "持续至: %(endMonth)s%(endDay)s日%(endTime)s"
@@ -997,13 +1074,10 @@ msgid "progression/seasonEndingDescr"
 msgstr "距活动结束还有"
 
 msgid "progression/seasonEndingTooltip"
-msgstr "离结束还有{day}"
+msgstr "距结束还有: {day}天"
 
 msgid "progression/takeReward"
 msgstr "领取奖励"
-
-msgid "progression/trophySelectAwaiting"
-msgstr "等待选择中"
 
 msgid "progression/universalCommander"
 msgstr "特殊乘员"
@@ -1012,7 +1086,7 @@ msgid "progression/widget3dStyle/currentStyle"
 msgstr "{name}风格"
 
 msgid "progression/widget3dStyle/forVehicle"
-msgstr "适用于: "
+msgstr "适用于"
 
 msgid "progression/widget3dStyle/titleForClosedChapter"
 msgstr ""
@@ -1025,9 +1099,7 @@ msgstr ""
 "您立刻就可以应用该风格"
 
 msgid "progression/widget3dStyle/titleNoChapterSelected"
-msgstr ""
-"激活一个章节\n"
-"即可获得一款3D风格"
+msgstr "激活一个章节即可获得一款3D风格"
 
 msgid "progression/widget3dStyle/viewStyles"
 msgstr "查看全部风格"
@@ -1099,16 +1171,19 @@ msgid "rewardChoice/titleChapterLevel"
 msgstr "战斗通行证: \"%(chapter)s\"章节，阶段%(level)s"
 
 msgid "season/fullName/1002"
-msgstr "夺钻行动"
+msgstr "猎牛之歌"
 
-msgid "season/fullName/1003"
-msgstr "沙丘2——命运降临"
+msgid "season/fullName/13"
+msgstr "忍者神龟通行证"
 
 msgid "season/fullNameUppercased/1002"
-msgstr "夺钻行动"
+msgstr "猎牛之歌"
 
-msgid "season/fullNameUppercased/1003"
-msgstr "沙丘2——命运降临"
+msgid "season/fullNameUppercased/13"
+msgstr "忍者神龟通行证"
+
+msgid "selectBonus/battle_booster_gift"
+msgstr "自选配件指令"
 
 msgid "selectBonus/blueprint_gift"
 msgstr "可选择的蓝图碎片"
@@ -1119,11 +1194,11 @@ msgstr "可选择的培训手册"
 msgid "selectBonus/guide_gift"
 msgstr "可选择的培训指南"
 
-msgid "selectBonus/new_device_fv_gift"
-msgstr "可选择的配件"
+msgid "selectBonus/modernized_device_gift"
+msgstr "自选试验型配件"
 
-msgid "selectBonus/new_device_mi_gift"
-msgstr "可选择的配件"
+msgid "selectBonus/new_device_gift"
+msgstr "可选择的标准配件"
 
 msgid "selectBonus/trophy_gift"
 msgstr "可选择的赏金配件"
@@ -1195,7 +1270,7 @@ msgid "tankmenVoiceover/soundOn"
 msgstr "播放"
 
 msgid "tankmenVoiceover/subtitle"
-msgstr "夺钻行动章节"
+msgstr "猎牛之歌章节"
 
 msgid "tankmenVoiceover/title"
 msgstr "独特乘员"
@@ -1334,7 +1409,7 @@ msgid "tooltips/footerBuyBtn/battlePass/nextChapter"
 msgstr "完成前一章节以购买该章节中的阶段。"
 
 msgid "tooltips/footerBuyBtn/episode/descr"
-msgstr "通过购买阶段，您将立即获得它们的基础和高级奖励。"
+msgstr "购买阶段后，您将立即获得其基础和高级奖励。各个章节的阶段需单独购买。"
 
 msgid "tooltips/goldMission/description"
 msgstr "%(highlight)s您将无法从错过的日期中获得金币。"
@@ -1352,13 +1427,15 @@ msgid "tooltips/goldMission/title"
 msgstr "每日金币"
 
 msgid "tooltips/iconLock/descr1"
-msgstr "您可以通过购买高级通行证来使阶段奖励更丰厚。有了高级通行证，达到每个后续阶段时，您将同时获得基础和高级奖励。"
+msgstr ""
+"您可购买高级通行证来获得更多阶段奖励。各个章节的战斗通行证可单独购买，并在相应章节内生效。购买高级通行证后，完成每个后续阶段时，您都将同时获得基础和高级奖励。"
 
 msgid "tooltips/iconLock/descr2"
-msgstr "您可以随时购买高级通行证。它将立即为您发放已完成阶段的全部高级奖励。您可在战斗通行证主界面点击\"购买高级通行证\"按钮，使您的奖励更加丰厚。"
+msgstr ""
+"您可随时购买高级通行证。购买章节的高级通行证后，您将立即获得该章节已完成阶段的全部高级奖励。在战斗通行证主界面点击\"购买高级通行证\"按钮即可进行购买，更加丰厚的奖励在等着您。"
 
 msgid "tooltips/iconLock/title"
-msgstr "战斗通行证高级奖励"
+msgstr "战斗通行证的高级奖励"
 
 msgid "tooltips/inProgress/baseReward"
 msgstr "基础奖励"
@@ -1391,7 +1468,7 @@ msgid "tooltips/inProgress/playGame/mapbox"
 msgstr "驾驶VIII-X级坦克在侦察任务中获得点数的规则。"
 
 msgid "tooltips/inProgress/playGame/randoms"
-msgstr "使用VI-X级坦克在标准模式(战役模式除外)中获取点数的规则。"
+msgstr "使用IV-X级坦克在标准模式(战役模式除外)中获取点数的规则。"
 
 msgid "tooltips/inProgress/playGame/ranked"
 msgstr "使用X级坦克在排位赛中获取点数的规则。"
@@ -1440,7 +1517,7 @@ msgstr "本赛季的核心坦克可以获取更多的点数:"
 
 msgid "tooltips/points/subtitle"
 msgstr ""
-"战斗通行证点数可以让您推进进度。您可以通过使用VI–X级坦克在标准模式(战役模式除外)和其他游戏模式中战斗、完成特殊任务以及达到坦克点数上限来获取点数。"
+"战斗通行证点数可以让您推进进度。您可以通过使用IV–X级坦克在标准模式(战役模式除外)和其他游戏模式中战斗、完成特殊任务以及达到坦克点数上限来获取点数。"
 
 msgid "tooltips/points/title"
 msgstr "战斗通行证点数"
@@ -1595,4 +1672,4 @@ msgid "trophyDeviceUpgradeConfim/title/template"
 msgstr "{deviceName}"
 
 msgid "universalTankmanBonus"
-msgstr "乘员: %(name)s"
+msgstr "通用乘员: %(name)s"

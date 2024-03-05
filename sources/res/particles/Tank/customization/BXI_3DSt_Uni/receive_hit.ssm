@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>Hit</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/BXI_3DSt_Uni/empty_sequence.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>Hit</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Hit</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-264.000000 -179.500000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Hit</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/BXI_3DSt_Uni/hit_received.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>idle</to>
+			<blendDuration>2.666670</blendDuration>
+			<conditions/>
+		</transition>
+		<uiPosition>-264.500000 -262.500000 0.000000</uiPosition>
+	</node>
+</root>

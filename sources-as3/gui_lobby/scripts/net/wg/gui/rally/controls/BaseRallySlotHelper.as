@@ -10,6 +10,8 @@ package net.wg.gui.rally.controls
    {
        
       
+      protected var isAlertIconVisible:Boolean = false;
+      
       public function BaseRallySlotHelper()
       {
          super();
@@ -85,6 +87,7 @@ package net.wg.gui.rally.controls
                   _loc3_.vehicleBtn.enabled = _loc5_ && param2.playerStatus != PlayerStatus.STATUS_READY;
                   _loc7_ = param2.playerStatus == PlayerStatus.STATUS_IN_BATTLE;
                   _loc3_.vehicleBtn.showAlertIcon = _loc5_;
+                  this.isAlertIconVisible = _loc5_ && param2.selectedVehicle && !param2.selectedVehicle.isReadyToFight;
                }
             }
             else

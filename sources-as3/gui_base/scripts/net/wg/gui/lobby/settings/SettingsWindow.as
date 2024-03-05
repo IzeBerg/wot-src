@@ -199,6 +199,7 @@ package net.wg.gui.lobby.settings
          addEventListener(AlternativeVoiceEvent.ON_TEST_BULB_VOICES,this.onOnTestBulbVoicesHandler);
          addEventListener(SettingViewEvent.ON_GAMMA_SETTING_OPEN,this.onOnGammaSettingOpenHandler);
          addEventListener(SettingViewEvent.ON_COLOR_SETTING_OPEN,this.onOnColorSettingOpenHandler);
+         addEventListener(SettingViewEvent.ON_RESTART_NEWBIE_BATTLE_HINTS,this.onOnRestartNewbieBattleHintsHandler);
          updateStage(App.appWidth,App.appHeight);
          window.addEventListener(WindowEvent.SCALE_Y_CHANGED,this.onWindowScaleYChangedHandler);
       }
@@ -267,6 +268,7 @@ package net.wg.gui.lobby.settings
          removeEventListener(AlternativeVoiceEvent.ON_TEST_BULB_VOICES,this.onOnTestBulbVoicesHandler);
          removeEventListener(SettingViewEvent.ON_GAMMA_SETTING_OPEN,this.onOnGammaSettingOpenHandler);
          removeEventListener(SettingViewEvent.ON_COLOR_SETTING_OPEN,this.onOnColorSettingOpenHandler);
+         removeEventListener(SettingViewEvent.ON_RESTART_NEWBIE_BATTLE_HINTS,this.onOnRestartNewbieBattleHintsHandler);
          this._settingsConfigHelper.changesData.clear();
          this._settingsConfigHelper = null;
          this._invalidTabs = App.utils.data.cleanupDynamicObject(this._invalidTabs);
@@ -1402,6 +1404,11 @@ package net.wg.gui.lobby.settings
       {
          var _loc2_:Object = this._settingsConfigHelper.changesData.getChanges();
          showWarningDialogS(SETTINGS_DIALOGS.LIMITED_UI_OFF_NOTIFICATION,_loc2_,true);
+      }
+      
+      private function onOnRestartNewbieBattleHintsHandler(param1:SettingViewEvent) : void
+      {
+         restartNewbieBattleHintsS();
       }
    }
 }

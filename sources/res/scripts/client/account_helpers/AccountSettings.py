@@ -28,6 +28,8 @@ KEY_COUNTERS = 'counters'
 KEY_NOTIFICATIONS = 'notifications'
 KEY_UI_FLAGS = 'ui_flags'
 KEY_MANUAL = 'manual'
+KEY_BATTLE_HINTS = 'battle_hints'
+KEY_NEWBIE_HINTS = 'newbie_hints'
 CAROUSEL_FILTER_1 = 'CAROUSEL_FILTER_1'
 CAROUSEL_FILTER_2 = 'CAROUSEL_FILTER_2'
 CAROUSEL_FILTER_CLIENT_1 = 'CAROUSEL_FILTER_CLIENT_1'
@@ -1198,7 +1200,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   'uiSpamVisited_PersonalReservesHangarHint': False, 
                   'uiSpamVisited_ModernizedSetupTabHint': False, 
                   'uiSpamVisited_OfferBannerWindow': False, 
-                  'uiSpamVisited_StrongholdView': False}}
+                  'uiSpamVisited_StrongholdView': False}, 
+   KEY_BATTLE_HINTS: {}, KEY_NEWBIE_HINTS: {}}
 
 def _filterAccountSection(dataSec):
     for key, section in dataSec.items()[:]:
@@ -2065,6 +2068,22 @@ class AccountSettings(object):
             _logger.error("Cann't set value in %s section for %s.", BattleMatters.BATTLE_MATTERS_SETTINGS, name)
 
     @classmethod
+    def getNewbieHints(cls, name, default=None):
+        return cls._getValue(name, KEY_NEWBIE_HINTS, force=True, default=default)
+
+    @classmethod
+    def setNewbieHints(cls, name, value, default=None):
+        return cls._setValue(name, value, KEY_NEWBIE_HINTS, force=True, default=default)
+
+    @classmethod
+    def getBattleHints(cls, name, default=None):
+        return cls._getValue(name, KEY_BATTLE_HINTS, force=True, default=default)
+
+    @classmethod
+    def setBattleHints(cls, name, value, default=None):
+        return cls._setValue(name, value, KEY_BATTLE_HINTS, force=True, default=default)
+
+    @classmethod
     def getVehicleViewedModules(cls, vehIntCD):
         viewedModules = cls.getUIFlag(VIEWED_MODULES_SECTION)
         if viewedModules:
@@ -2123,7 +2142,7 @@ class AccountSettings(object):
             return
 
     @staticmethod
-    def _getValue(name, setting, force=False):
+    def _getValue(name, setting, force=False, default=None):
         fds = AccountSettings._readSection(AccountSettings._readUserSection(), setting)
         try:
             if fds.has_key(name):
@@ -2134,14 +2153,13 @@ class AccountSettings(object):
 
         if name in DEFAULT_VALUES[setting]:
             return copy.deepcopy(DEFAULT_VALUES[setting][name])
-        else:
-            return
+        return default
 
     @staticmethod
-    def _setValue(name, value, setting, force=False):
+    def _setValue(name, value, setting, force=False, default=None):
         if name not in DEFAULT_VALUES[setting] and not force:
             raise SoftException(('Default value "{}" is not found in "{}"').format(name, type))
-        if AccountSettings._getValue(name, setting, force) != value:
+        if AccountSettings._getValue(name, setting, force, default=default) != value:
             fds = AccountSettings._readSection(AccountSettings._readUserSection(), setting)
             if name in DEFAULT_VALUES[setting] and DEFAULT_VALUES[setting][name] == value:
                 fds.deleteSection(name)

@@ -16,6 +16,8 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       
       public static const RECHARGE_END_FRAME:uint = 84;
       
+      public static const CHARGE_MAX_FRAME:uint = 92;
+      
       private static const FADE_IN_FRAME:uint = 1;
       
       private static const START:uint = 10;
@@ -31,8 +33,6 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       private static const PROGRESS_HALF_SPAN:uint = 63;
       
       private static const CHARGE_FRAME:uint = 85;
-      
-      private static const CHARGE_MAX_FRAME:uint = 92;
       
       private static const CHARGE_MAX:uint = 86;
       

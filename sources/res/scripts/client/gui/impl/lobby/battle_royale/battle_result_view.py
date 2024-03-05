@@ -236,7 +236,6 @@ class BrBattleResultsViewInLobby(ViewImpl, LobbyHeaderVisibility):
         state = BattlePassProgress.BP_STATE_DISABLED
         bpController = self.__battlePassController
         hasExtra = bpController.hasExtra()
-        isHoliday = bpController.isHoliday()
         seasonNum = bpController.getSeasonNum()
         isBought = all(bpController.isBought(chapterID=chapter) for chapter in bpController.getChapterIDs())
         if self.__brController.isBattlePassAvailable(self.__arenaBonusType) and not self.__isObserverResult:
@@ -250,7 +249,6 @@ class BrBattleResultsViewInLobby(ViewImpl, LobbyHeaderVisibility):
         battlePassModel.setIsBattlePassPurchased(battlePassData['hasBattlePass'])
         battlePassModel.setHasExtra(hasExtra)
         battlePassModel.setBattlePassState(state)
-        battlePassModel.setIsHoliday(isHoliday)
         battlePassModel.setSeasonNum(seasonNum)
 
     def __setLeaderboard(self, leaderboardModel):

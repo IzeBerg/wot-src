@@ -73,23 +73,30 @@
 		<settings/>
 		<useLatentOcclusionQueries>true</useLatentOcclusionQueries>
 		<DRRAutoscaler>
-			<criticalFPS>15</criticalFPS>
-			<safeFPSMultiplier>
-				1.15
+			<defaultDRRScale>
+				1.0
 				<!--BW_String-->
-			</safeFPSMultiplier>
+			</defaultDRRScale>
+			<criticalFPS>
+				30.0
+				<!--BW_String-->
+			</criticalFPS>
+			<targetFPS>
+				60.0
+				<!--BW_String-->
+			</targetFPS>
 			<timeStep>
 				1.0
 				<!--BW_String-->
 			</timeStep>
-			<correctionStep>
-				0.05
-				<!--BW_String-->
-			</correctionStep>
-			<correctionBigStep>
+			<rateOfChange>
 				0.1
 				<!--BW_String-->
-			</correctionBigStep>
+			</rateOfChange>
+			<DRRStep>
+				0.05
+				<!--BW_String-->
+			</DRRStep>
 			<minScale>
 				0.5
 				<!--BW_String-->
@@ -772,10 +779,19 @@
 					<name>inbattle_communication_npc.bnk</name>
 				</bank>
 				<bank>
+					<name>custom_styles.bnk</name>
+				</bank>
+				<bank>
+					<name>custom_styles.pck</name>
+				</bank>
+				<bank>
 					<name>rocket_accelerator.bnk</name>
 				</bank>
 				<bank>
 					<name>rocket_accelerator.pck</name>
+				</bank>
+				<bank>
+					<name>newbie_hints_voiceover.bnk</name>
 				</bank>
 			</SFX_soundbanks_arena>
 			<SFX_soundbanks_editor>

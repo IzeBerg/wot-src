@@ -82,7 +82,7 @@ package net.wg.gui.lobby.missions.components
                this.descTF.width = this.getDescTextFieldSize();
             }
             this._descIsTruncated = this.truncateHtmlTextMultiline(this.descTF,this.rendererData.description,this.rendererData.maxDescLines);
-            this._commons.updateTextFieldSize(this.descTF,true,true);
+            this._commons.updateTextFieldSize(this.descTF,false,true);
             if(StringUtils.isNotEmpty(this.rendererData.title))
             {
                this.progressDescTF.y = !!this.rendererData.isCondition ? Number(PROGRESS_DESC_TOP_CONDITION) : Number(PROGRESS_DESC_TOP_DEFAULT);

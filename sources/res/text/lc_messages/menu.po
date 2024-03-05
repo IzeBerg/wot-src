@@ -488,7 +488,7 @@ msgid "barracks/btnBuyTankman"
 msgstr "招募"
 
 msgid "barracks/btnDissmiss"
-msgstr "解 雇"
+msgstr "解雇"
 
 msgid "barracks/btnNewPlace"
 msgstr "扩充兵营"
@@ -1006,9 +1006,6 @@ msgstr "接受邀请加入小队"
 msgid "contextMenu/addToFriends"
 msgstr "添加为好友"
 
-msgid "contextMenu/addToFriendsAgain"
-msgstr "重新发送好友请求"
-
 msgid "contextMenu/addToIgnored"
 msgstr "添加至黑名单"
 
@@ -1200,6 +1197,9 @@ msgstr "从好友列表中删除"
 
 msgid "contextMenu/removeFromIgnored"
 msgstr "从黑名单中移除"
+
+msgid "contextMenu/requestFriendship"
+msgstr "重新发送好友请求"
 
 msgid "contextMenu/restore"
 msgstr "恢复"
@@ -1670,6 +1670,18 @@ msgstr "坦克世界Plus专属坦克暂时无法使用"
 msgid "customization/title"
 msgstr "个性化"
 
+msgid "dateRange/dashDivider/full"
+msgstr "{start}–{end}"
+
+msgid "dateRange/dashDivider/short"
+msgstr "{start}–{end}"
+
+msgid "dateRange/textDivider/date"
+msgstr "{start}至{end}"
+
+msgid "dateRange/textDivider/time"
+msgstr "{start}至{end}"
+
 msgid "dateTime/fromToWithYear"
 msgstr "从{fromMonth}月{fromDay}日到{toMonth}月{toDay}日，{toYear}"
 
@@ -1745,6 +1757,42 @@ msgstr "8月"
 msgid "dateTime/months/full/9"
 msgstr "9月"
 
+msgid "dateTime/months/fullSmall/1"
+msgstr "1月"
+
+msgid "dateTime/months/fullSmall/10"
+msgstr "10月"
+
+msgid "dateTime/months/fullSmall/11"
+msgstr "11月"
+
+msgid "dateTime/months/fullSmall/12"
+msgstr "12月"
+
+msgid "dateTime/months/fullSmall/2"
+msgstr "2月"
+
+msgid "dateTime/months/fullSmall/3"
+msgstr "3月"
+
+msgid "dateTime/months/fullSmall/4"
+msgstr "4月"
+
+msgid "dateTime/months/fullSmall/5"
+msgstr "5月"
+
+msgid "dateTime/months/fullSmall/6"
+msgstr "6月"
+
+msgid "dateTime/months/fullSmall/7"
+msgstr "7月"
+
+msgid "dateTime/months/fullSmall/8"
+msgstr "8月"
+
+msgid "dateTime/months/fullSmall/9"
+msgstr "9月"
+
 msgid "dateTime/months/short/1"
 msgstr "1月"
 
@@ -1779,6 +1827,42 @@ msgid "dateTime/months/short/8"
 msgstr "8月"
 
 msgid "dateTime/months/short/9"
+msgstr "9月"
+
+msgid "dateTime/months/shortSmall/1"
+msgstr "1月"
+
+msgid "dateTime/months/shortSmall/10"
+msgstr "10月"
+
+msgid "dateTime/months/shortSmall/11"
+msgstr "11月"
+
+msgid "dateTime/months/shortSmall/12"
+msgstr "12月"
+
+msgid "dateTime/months/shortSmall/2"
+msgstr "2月"
+
+msgid "dateTime/months/shortSmall/3"
+msgstr "3月"
+
+msgid "dateTime/months/shortSmall/4"
+msgstr "4月"
+
+msgid "dateTime/months/shortSmall/5"
+msgstr "5月"
+
+msgid "dateTime/months/shortSmall/6"
+msgstr "6月"
+
+msgid "dateTime/months/shortSmall/7"
+msgstr "7月"
+
+msgid "dateTime/months/shortSmall/8"
+msgstr "8月"
+
+msgid "dateTime/months/shortSmall/9"
 msgstr "9月"
 
 msgid "dateTime/order"
@@ -1876,13 +1960,21 @@ msgstr "无行动/挂机"
 msgid "denunciation/7"
 msgstr "聊天中的违规行为"
 
+msgid "descriptions/mutableDamageShell"
+msgstr "平均损伤: %(avgMutableDamage)s"
+
+msgid "descriptions/mutableDamageShellFull"
+msgstr ""
+"平均穿透力: %(avgPiercingPower)s毫米\n"
+"平均损伤: %(avgMutableDamage)s"
+
 msgid "descriptions/shell"
-msgstr "损伤:%(damage)s"
+msgstr "平均损伤: %(avgDamage)s"
 
 msgid "descriptions/shellFull"
 msgstr ""
-"穿透力: %(avgPiercingPower)s毫米\n"
-"损伤: %(damage)s"
+"平均穿透力: %(avgPiercingPower)s毫米\n"
+"平均损伤: %(avgDamage)s"
 
 msgid "descriptions/vehicle"
 msgstr "%(weight)s吨，装甲最大厚度 %(hullArmor)s 毫米，%(caliber)s毫米火炮"
@@ -2169,7 +2261,7 @@ msgid "extraParams/name/vehicleReloadTimeAfterShellChange"
 msgstr "该参数表示已装填炮弹类型的切换速度。"
 
 msgid "extraParams/name/vehicleRepairSpeed"
-msgstr "该参数表示把内部和外部模块从\"红色\"状态维修至\"黄色\"状态的速度。数值越高，维修越快。"
+msgstr "该参数表示内外部模块从\"红色\"状态维修至\"黄色\"状态的速度。数值越高，维修越快。"
 
 msgid "extraParams/name/vehicleSpeedGain"
 msgstr "该参数表示悬挂装置的越野能力。数值越高，抵达最高速度的时间也就越短。"
@@ -3024,6 +3116,15 @@ msgid "headerButtons/fightBtn/tooltip/comp7RatingCalculation/body"
 msgstr "根据资格赛结果计算评级可能需要几分钟时间。之后，系统会为您分配段位，然后您就能在天梯战中继续战斗了。"
 
 msgid "headerButtons/fightBtn/tooltip/comp7RatingCalculation/header"
+msgstr "加入战斗失败"
+
+msgid "headerButtons/fightBtn/tooltip/comp7VehLevel/body"
+msgstr "车库中没有满足要求的%(levels)s级坦克"
+
+msgid "headerButtons/fightBtn/tooltip/comp7VehLevel/delimiter"
+msgstr ", "
+
+msgid "headerButtons/fightBtn/tooltip/comp7VehLevel/header"
 msgstr "加入战斗失败"
 
 msgid "headerButtons/fightBtn/tooltip/crewNotFull/body"
@@ -4197,6 +4298,9 @@ msgstr "坦克火炮适应单发炮弹:"
 msgid "moduleInfo/compatible/vehicles"
 msgstr "适用的坦克型号:"
 
+msgid "moduleInfo/damageMutableGunLabel"
+msgstr "一门深膛线火炮，可射击星形弹托炮弹。"
+
 msgid "moduleInfo/dualAccuracyGunLabel"
 msgstr "双重瞄准系统"
 
@@ -4247,6 +4351,9 @@ msgstr "平均损伤"
 
 msgid "moduleInfo/params/avgDamagePerMinute"
 msgstr "平均每分钟损伤"
+
+msgid "moduleInfo/params/avgMutableDamage"
+msgstr "平均损伤"
 
 msgid "moduleInfo/params/avgPiercingPower"
 msgstr "平均穿透力"
@@ -4344,6 +4451,9 @@ msgstr "调适时间"
 msgid "moduleInfo/params/level_lbl"
 msgstr "%(level)s级战斗储备"
 
+msgid "moduleInfo/params/maxAvgMutableDamageList"
+msgstr "50米平均损伤"
+
 msgid "moduleInfo/params/maxDamage"
 msgstr "最高损伤"
 
@@ -4365,8 +4475,11 @@ msgstr "* 该火炮炮弹的最大飞行距离"
 msgid "moduleInfo/params/maxSteeringLockAngle"
 msgstr "最大车轮转向角度"
 
+msgid "moduleInfo/params/minAvgMutableDamageList"
+msgstr "%(dist)s米平均损伤"
+
 msgid "moduleInfo/params/noPiercingDistance/footnote"
-msgstr "* 这种炮弹的穿透力不受距离影响"
+msgstr "这种炮弹的穿透力不受距离影响"
 
 msgid "moduleInfo/params/noPiercingDistance/footnote/maxDistance"
 msgstr ",最大飞行距离—400米"
@@ -4375,7 +4488,7 @@ msgid "moduleInfo/params/piercingDistance"
 msgstr "%(dist)s 米"
 
 msgid "moduleInfo/params/piercingDistance/footnote"
-msgstr "* 穿透力受距离影响: %(minDist)s–%(maxDist)s米"
+msgstr "穿透力受距离影响: %(minDist)s–%(maxDist)s米"
 
 msgid "moduleInfo/params/piercingDistanceHeader"
 msgstr "平均穿透力(毫米)—距离"

@@ -13,6 +13,7 @@ package net.wg.gui.lobby.settings
    import net.wg.gui.components.controls.DropdownMenu;
    import net.wg.gui.components.controls.LabelControl;
    import net.wg.gui.components.controls.Slider;
+   import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.lobby.settings.components.LimitedUISettingBlock;
    import net.wg.gui.lobby.settings.components.evnts.LimitedUIEvent;
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
@@ -27,6 +28,7 @@ package net.wg.gui.lobby.settings
    import net.wg.infrastructure.managers.counter.CounterProps;
    import net.wg.utils.ICounterProps;
    import scaleform.clik.data.DataProvider;
+   import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.IndexEvent;
    import scaleform.clik.events.ListEvent;
    import scaleform.clik.events.SliderEvent;
@@ -73,6 +75,8 @@ package net.wg.gui.lobby.settings
       
       private var _limitedUISettingBlock:LimitedUISettingBlock;
       
+      private var _restartNewbieBattleHints:SoundButtonEx;
+      
       public function GameSettings()
       {
          super();
@@ -103,6 +107,9 @@ package net.wg.gui.lobby.settings
          this.scrollPane.topShadow.height = this.scrollPane.bottomShadow.height = SHADOW_HEIGHT;
          this.scrollPane.setSize(PANE_WIDTH,PANE_HEIGHT);
          App.utils.asserter.assertNotNull(this.getContent(),Errors.CANT_NULL);
+         this._restartNewbieBattleHints = this.getContent().restartNewbieBattleHints;
+         registerToolTip(this._restartNewbieBattleHints,SettingsConfigHelper.RESTART_NEWBIE_BATTLE_HINTS_BUTTON);
+         this._restartNewbieBattleHints.addEventListener(ButtonEvent.CLICK,this.onRestartNewbieBattleHintsClickHandler);
       }
       
       override protected function getControl(param1:String, param2:String) : DisplayObject
@@ -121,7 +128,9 @@ package net.wg.gui.lobby.settings
          var _loc16_:SimpleExtraVO = null;
          var _loc17_:RandomXLvlVO = null;
          var _loc18_:DevMapsVO = null;
-         var _loc19_:String = null;
+         var _loc19_:SimpleExtraVO = null;
+         var _loc20_:SimpleExtraVO = null;
+         var _loc21_:String = null;
          var _loc2_:Vector.<String> = param1.keys;
          var _loc3_:Vector.<Object> = param1.values;
          var _loc4_:int = _loc2_.length;
@@ -186,6 +195,20 @@ package net.wg.gui.lobby.settings
                         _loc9_.visible = _loc18_.enabled;
                         _loc12_ = _loc18_.enabled;
                      }
+                     else if(_loc5_ == SettingsConfigHelper.NEWBIE_PREBATTLE_HINTS)
+                     {
+                        _loc19_ = new SimpleExtraVO(_loc6_.extraData);
+                        _loc9_.enabled = _loc19_.enabled;
+                     }
+                     else if(_loc5_ == SettingsConfigHelper.NEWBIE_BATTLE_HINTS)
+                     {
+                        _loc20_ = new SimpleExtraVO(_loc6_.extraData);
+                        _loc9_.enabled = _loc20_.enabled;
+                        if(this._restartNewbieBattleHints)
+                        {
+                           this._restartNewbieBattleHints.enabled = _loc20_.enabled;
+                        }
+                     }
                      break;
                   case SettingsConfigHelper.TYPE_DROPDOWN:
                      this.setupDropDown(_loc7_[_loc8_],_loc6_,_loc10_);
@@ -201,8 +224,8 @@ package net.wg.gui.lobby.settings
                      this.setupButtonBar(ButtonBarEx(_loc7_[_loc8_]),_loc6_,_loc10_);
                      if(_loc5_ == SettingsConfigHelper.CAROUSEL_TYPE)
                      {
-                        _loc19_ = SettingsConfigHelper.CAROUSEL_TYPE_ID[_loc6_.current];
-                        _loc7_.doubleCarouselTypeDropDown.enabled = _loc19_ == SettingsConfigHelper.CAROUSEL_DOUBLE;
+                        _loc21_ = SettingsConfigHelper.CAROUSEL_TYPE_ID[_loc6_.current];
+                        _loc7_.doubleCarouselTypeDropDown.enabled = _loc21_ == SettingsConfigHelper.CAROUSEL_DOUBLE;
                      }
                }
             }
@@ -277,6 +300,8 @@ package net.wg.gui.lobby.settings
          }
          this.scrollPane.dispose();
          this.scrollPane = null;
+         this._restartNewbieBattleHints.removeEventListener(ButtonEvent.CLICK,this.onRestartNewbieBattleHintsClickHandler);
+         this._restartNewbieBattleHints = null;
          super.onDispose();
       }
       
@@ -417,6 +442,15 @@ package net.wg.gui.lobby.settings
          var _loc2_:String = SettingsConfigHelper.instance.getControlIdByControlNameAndType(CheckBox(param1.target).name,SettingsConfigHelper.TYPE_CHECKBOX);
          var _loc3_:Boolean = CheckBox(param1.target).selected;
          dispatchEvent(new SettingViewEvent(SettingViewEvent.ON_CONTROL_CHANGED,viewId,null,_loc2_,_loc3_));
+      }
+      
+      private function onRestartNewbieBattleHintsClickHandler(param1:ButtonEvent) : void
+      {
+         if(this._restartNewbieBattleHints)
+         {
+            this._restartNewbieBattleHints.enabled = false;
+         }
+         dispatchEvent(new SettingViewEvent(SettingViewEvent.ON_RESTART_NEWBIE_BATTLE_HINTS,viewId));
       }
    }
 }

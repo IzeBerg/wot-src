@@ -117,18 +117,16 @@ msgstr "您的奖励"
 
 msgid "accountCompletion/email/titleTooltip"
 msgstr ""
-"因为没有确认邮箱所以以下的功能暂时不可以使用: \n"
+"以下功能可能因没有确认邮箱而不可用: \n"
 "• 赛事\n"
 "• 名人堂\n"
 "• 军团创建\n"
 "• 领土战\n"
-"• 推荐计划\n"
-"• 订阅\n"
-"• 官网的个人页面\n"
+"• 订阅服务\n"
+"• 游戏官网的个人页面\n"
 "• 礼物收取\n"
-"• 奖励兑换码\n"
-"• 论坛上的授权\n"
-"• 坦克营地。"
+"• 兑换码激活\n"
+"• 论坛上的授权"
 
 msgid "accountCompletionHangar/simple/text"
 msgstr "点击这里查看此玩家的账号。"
@@ -457,7 +455,7 @@ msgid "additionalRewards/customizations/projectionDecal"
 msgstr "%(value)s贴花"
 
 msgid "additionalRewards/customizations/style"
-msgstr "“%(value)s” 风格"
+msgstr "%(value)s 风格"
 
 msgid "additionalRewards/dossier_achievement"
 msgstr "%(value)s勋章"
@@ -492,6 +490,12 @@ msgstr "最常见的炮弹类型只有在穿透坦克装甲时才会造成损伤
 msgid "advanced/ARMOR_PIERCING_CR"
 msgstr "展现高飞行速度并仅在穿透坦克装甲时造成损伤。当它以一定角度撞击装甲时，炮弹会弹跳。APCR炮弹的穿透力随行进距离而减少。"
 
+msgid "advanced/ARMOR_PIERCING_CR_TRAY"
+msgstr "星形弹托炮弹有利有弊，因为它造成的损伤取决于坦克射击时与目标之间相隔的距离。这种炮弹可以在50米的距离内对目标造成最大平均损伤。"
+
+msgid "advanced/ARMOR_PIERCING_TRAY"
+msgstr "星形弹托炮弹有利有弊，因为它造成的损伤取决于坦克射击时与目标之间相隔的距离。这种炮弹可以在50米的距离内对目标造成最大平均损伤。"
+
 msgid "advanced/HIGH_EXPLOSIVE"
 msgstr "即使未击穿装甲也能造成损伤。造成损伤的几率更高，但损伤数值可能较低。接触坦克装甲或是任意障碍物后爆炸。不会跳弹。"
 
@@ -516,8 +520,7 @@ msgid "advanced/autoExtinguishers"
 msgstr "坦克起火后自动灭火。被动效果降低起火几率。"
 
 msgid "advanced/camouflageNet"
-msgstr ""
-"坦克停止，并维持此状态较短时间后，提高坦克的隐蔽系数。坦克向前或向后移动时，以及车体旋转时(拥有液气悬挂装置并处于攻城模式下的坦克除外)，效果不会生效。"
+msgstr "坦克静止数秒后，提高坦克的隐蔽系数。坦克向前或向后移动时，以及车体旋转时(拥有液气悬挂装置并处于攻城模式下的坦克除外)，效果不会生效。"
 
 msgid "advanced/coatedOptics"
 msgstr "增加坦克的观察范围，可以及早发现敌方坦克。"
@@ -692,8 +695,7 @@ msgid "advanced/smallRepairkit"
 msgstr "激活后立即修复选定的一个损坏模块。"
 
 msgid "advanced/stereoscope"
-msgstr ""
-"坦克停止，并维持此状态较短时间后，提高坦克的观察范围。坦克向前或向后移动时，以及车体旋转时(拥有液气悬挂装置并处于攻城模式下的坦克除外)，效果不会生效。"
+msgstr "坦克静止数秒后，提高坦克的观察范围。坦克向前或向后移动时，以及车体旋转时(拥有液气悬挂装置并处于攻城模式下的坦克除外)，效果不会生效。"
 
 msgid "advanced/turbocharger"
 msgstr "提升发动机功率，使坦克的加速能力、操控性、爬坡能力更加优秀。提升坦克的最大前进和倒车速度，使您能更快抵达战略要点或是躲避敌方回击。"
@@ -1395,6 +1397,9 @@ msgstr "选择暂时不可用"
 msgid "battlePassOffer/etc"
 msgstr "...以及其它配件。"
 
+msgid "battlePassOffer/footer/battle_booster_gift"
+msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\"按钮来获得一个指令。"
+
 msgid "battlePassOffer/footer/blueprint_gift"
 msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\"按钮来获得所选系别的一组蓝图碎片。"
 
@@ -1404,10 +1409,10 @@ msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\
 msgid "battlePassOffer/footer/guide_gift"
 msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\"按钮来获得所选系别的一本培训指南。"
 
-msgid "battlePassOffer/footer/new_device_fv_gift"
-msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\"按钮来获得所选系别的一个标准配件。"
+msgid "battlePassOffer/footer/modernized_device_gift"
+msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\"按钮来获得一个试验型配件。"
 
-msgid "battlePassOffer/footer/new_device_mi_gift"
+msgid "battlePassOffer/footer/new_device_gift"
 msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\"按钮来获得所选系别的一个标准配件。"
 
 msgid "battlePassOffer/footer/recertification_gift"
@@ -1419,6 +1424,9 @@ msgstr "此阶段完成后，您可以通过点击阶段上方的\"领取奖励\
 msgid "battlePassOffer/point"
 msgstr "• %(item)s"
 
+msgid "battlePassOffer/title/battle_booster_gift"
+msgstr "自选指令"
+
 msgid "battlePassOffer/title/blueprint_gift"
 msgstr "可选择的系别蓝图碎片"
 
@@ -1428,11 +1436,11 @@ msgstr "可选择的培训手册"
 msgid "battlePassOffer/title/guide_gift"
 msgstr "可选择的培训指南"
 
-msgid "battlePassOffer/title/new_device_fv_gift"
-msgstr "可选择的标准配件"
+msgid "battlePassOffer/title/modernized_device_gift"
+msgstr "自选试验型配件"
 
-msgid "battlePassOffer/title/new_device_mi_gift"
-msgstr "可选择的配件"
+msgid "battlePassOffer/title/new_device_gift"
+msgstr "自选标准配件"
 
 msgid "battlePassOffer/title/recertification_gift"
 msgstr "再训练命令"
@@ -4385,6 +4393,18 @@ msgstr "准备就绪"
 msgid "fortification/sortie/battleRoom/status/notReady"
 msgstr "取消准备"
 
+msgid "fortification/sortie/battleRoom/unfrozeVehicleBtn"
+msgstr "恢复坦克至战备状态。"
+
+msgid "fortification/sortie/battleRoom/unfrozeVehicleBtn/disabled/body"
+msgstr "玩家在军团开始推进进度后加入。重置进度以将该玩家的坦克恢复至战备状态。"
+
+msgid "fortification/sortie/battleRoom/unfrozeVehicleBtn/disabled/header"
+msgstr "无法恢复至战备状态"
+
+msgid "fortification/sortie/battleRoom/vehBrokenIcon"
+msgstr "坦克被击毁: 玩家将不会获得个人声望点数，军团将不会取得阶段进度，获得的军团声望点数将减少(与分遣队中剩余的坦克数量成正比)。"
+
 msgid "fortification/sortie/bothRole/body"
 msgstr "如果在战斗开始前安装了火炮支援和鼓舞储备，该玩家可命令火炮向指定区域开火，也可为全体乘员及附近盟友乘员提供主要专业和所有特长的加成。"
 
@@ -5743,6 +5763,12 @@ msgstr "点击前往\"推荐计划\"界面"
 msgid "loby_messenger/referral_button/header"
 msgstr "推荐计划"
 
+msgid "loby_messenger/referral_button/new_season/body"
+msgstr "新一季推荐计划开始了！邀请您的好友成为新兵，组队战斗、获取推荐积分和珍贵奖励。"
+
+msgid "loby_messenger/referral_button/new_season/header"
+msgstr "推荐计划"
+
 msgid "loby_messenger/service_button/body"
 msgstr "用于查看系统通知、邀请通知和个人通知。"
 
@@ -6187,6 +6213,23 @@ msgstr "选择坦克:您可以以队伍的形式加入战斗。"
 msgid "multiselection/alert/header"
 msgstr "坦克未选择"
 
+msgid "newbieBattleHints/body"
+msgstr ""
+"此设置将开启标准模式中根据情形所显示的新手提示。\n"
+"<font size='10'></font>\n"
+"每个提示仅显示数次——使用\"重置新手提示\"按钮重置提示显示次数。"
+
+msgid "newbieBattleHints/header"
+msgstr "开启标准模式中的新手提示"
+
+msgid "newbiePrebattleHints/body"
+msgstr ""
+"仅开启标准模式加载界面的新手提示。\n"
+"这些提示将替代战斗加载界面中的其他提示。"
+
+msgid "newbiePrebattleHints/header"
+msgstr "战斗加载界面的新手提示"
+
 msgid "notificationsView/tab/info/body"
 msgstr "系统通知"
 
@@ -6607,6 +6650,13 @@ msgstr ""
 "托尔梅隆副官是一名原铸星际战士，虽然不像战团中的老兵那样受人爱戴，但战友们依然对他尊敬有加。他被认为是好战的正义典范，对战友不离不弃。官衔和荣誉对他来说皆如浮云，但意想不到的是，他却总能轻松地获得这一切。战友们总说：“战斗中他的行动就像精金上滑落的血滴一样迅疾且势不可挡。圣吉列斯的血脉因他而荣耀。伤疤就是最好的证明。”"
 
 msgid "notrecruitedtankman/commander_tolmeron/label"
+msgstr "独特指挥官"
+
+msgid "notrecruitedtankman/commander_twitch50/desc"
+msgstr ""
+"作为一名忍术大师，斯普林特的身世一直是个谜。一个人变成了一只人形老鼠，还是一只进化的老鼠。然而这真的重要吗？我们都知道他是一位伟大的战士、睿智的师傅，也是仁善之人——四个养子的慈父。"
+
+msgid "notrecruitedtankman/commander_twitch50/label"
 msgstr "独特指挥官"
 
 msgid "notrecruitedtankman/commander_twitch_ermelinda/desc"
@@ -7297,6 +7347,97 @@ msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankmen_bp12_9/label"
 msgstr "战斗通行证赛季XII: \"遥远未来\"章节"
+
+msgid "notrecruitedtankman/tankmen_bp13_1/desc"
+msgstr ""
+"一名勇敢且正义的战士，莱昂纳多是神龟们的天生领袖。当他的兄弟需要启发和指引时，莱昂纳多从来不会缺席——无论他的兄弟愿不愿意接受他的开导。凭借其不可动摇的正义感和勇敢无畏的精神，双刀在手的他随时准备战斗到最后一刻，正如他所说过的'神龟不知失败为何物！'"
+
+msgid "notrecruitedtankman/tankmen_bp13_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_1/label"
+msgstr "战斗通行证赛季XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_2/desc"
+msgstr ""
+"多纳泰罗拥有聪明的头脑并且对科学有着极大的求知欲，是神龟们的智囊——他往往能帮助神龟们摆脱困境。这位神龟是一名货真价实的科技奇才，虽然他的一些点子太过天马行空(经常说一些晦涩难懂的科技术语)，但事实证明他的敏捷思维和创新发明不止一次帮助神龟们脱离险境。"
+
+msgid "notrecruitedtankman/tankmen_bp13_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_2/label"
+msgstr "战斗通行证赛季XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_3/desc"
+msgstr ""
+"身手了得，但脾气火爆？没错，你有意见？强壮、易怒，其毒舌的威力不亚于他的铁尺，千万别激怒拉斐尔。你可能会认为他是一名愤世嫉俗的人...好吧，他的确是个愤世嫉俗的人，但这只是因为他非常在乎自己兄弟们的安危。记住，不要惹他生气——拉斐尔的嘲讽甚至比他的铁尺更伤人。"
+
+msgid "notrecruitedtankman/tankmen_bp13_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_3/label"
+msgstr "战斗通行证赛季XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_4/desc"
+msgstr ""
+"打击犯罪，对抗邪恶势力？没意思。电子游戏、滑板和一大片香肠披萨？这才对嘛！虽然米开朗基罗关心的事有些...特别，但他干起事来毫不拖泥带水。披萨是这位神龟的力量源泉，并且他总是笑容满面，米开朗基罗这个派对达人总是能让兄弟们在危难关头振作起来——并且会以他的双截棍伸张正义。卡哇邦嘎！"
+
+msgid "notrecruitedtankman/tankmen_bp13_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_4/label"
+msgstr "战斗通行证赛季XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_5/desc"
+msgstr ""
+"施莱德本是一个名为Oroku Saki的忍术学徒，他在与同门兄弟Hamato "
+"Yoshi结仇后成为了施莱德。现在，施莱德是大脚帮的首领，一心想要向其老对手(现在以斯普林特大师的身份示人)和老对手的乌龟弟子报仇。施莱德身着具有锋利尖刺的盔甲，统领着为他卖命的忠诚部下，他将不择手段达成自己的目的——让神龟们万劫不复！"
+
+msgid "notrecruitedtankman/tankmen_bp13_5/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_5/label"
+msgstr "战斗通行证赛季XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_6/desc"
+msgstr ""
+"虽然朗格没有躯壳，但他雄心勃勃，誓要征服世界！由于不明原因，他从自己的家乡X次元被驱逐至地球，朗格一心想要征服世界，并为了达成这一目的与邪恶的施莱德结盟。凭借一些惊人的科技造物(包括强大的人造躯壳，以及移动战斗堡垒——科技堡垒)，他不会让几只微不足道的乌龟挡住自己的去路！"
+
+msgid "notrecruitedtankman/tankmen_bp13_6/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_6/label"
+msgstr "战斗通行证赛季XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_7/desc"
+msgstr ""
+"你说比博不聪明是什么意思？比博只在乎怎么收拾那些小乌龟！虽然他头脑简单，但他四肢发达，是善于服从命令的打手。也就是说他会毫不犹豫地执行施莱德和其搭档罗斯泰迪的命令，要是命令包括教训某些小乌龟，比博就更有干劲了！"
+
+msgid "notrecruitedtankman/tankmen_bp13_7/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_7/label"
+msgstr "战斗通行证赛季XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_8/desc"
+msgstr ""
+"嘿，罗斯泰迪可是行动的指挥者！他与好哥们比博总是形影不离，罗斯泰迪这头犀牛会不惜一切代价执行施莱德的命令，然后好好收拾那些乌龟。当然，他那些\"超赞\"的主意不一定会成功，但这名顽固的恶棍不会轻易放弃。只要有罗斯泰迪在，那些乌龟必定会被揍扁！"
+
+msgid "notrecruitedtankman/tankmen_bp13_8/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_8/label"
+msgstr "战斗通行证赛季XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_9/desc"
+msgstr ""
+"欢迎收看6频道新闻直播，市里最执著的记者总是会出现在事件附近。凭借一腔热血以及要报道头条的决心，艾蓓丽尔是货真价实的专业记者，而且还是她新朋友们的珍贵盟友。就连她也弄不明白自己是怎么和城市下水道中的侠客乌龟们混到一起的，但有一件事肯定错不了——这个新闻将成为年度头条！"
+
+msgid "notrecruitedtankman/tankmen_bp13_9/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_9/label"
+msgstr "战斗通行证赛季XIII"
 
 msgid "notrecruitedtankman/tankmen_bp2_1/desc"
 msgstr ""
@@ -8552,7 +8693,7 @@ msgid "quests/linkBtn/battlePass"
 msgstr "查看战斗通行证进度"
 
 msgid "quests/linkBtn/battlePass/select"
-msgstr "前往战斗通行证"
+msgstr "前往战斗通行证章节选择"
 
 msgid "quests/linkBtn/customizationProgression/disabled"
 msgstr "详细信息当前不可用。"
@@ -9217,6 +9358,12 @@ msgstr "聊天中的消息"
 msgid "settings/keyMovement/title"
 msgstr "锁定车体/切换模式"
 
+msgid "settings/keyboard/backDraftInvert/body"
+msgstr "对调倒车时的左/右键。按下左键，您的坦克将向右转，反之亦然。"
+
+msgid "settings/keyboard/backDraftInvert/header"
+msgstr "反向倒车"
+
 msgid "settings/minimapCircles/drawRange/body"
 msgstr "盟友和敌方坦克出现在玩家视野中的最大侦测范围。"
 
@@ -9249,6 +9396,18 @@ msgstr ""
 
 msgid "settings/minimapCircles/viewRange/title"
 msgstr "2. 观察范围圈"
+
+msgid "settings/mouse/sensitivity/invertationHor/body"
+msgstr "对调鼠标横向移动: 鼠标向右移动，镜头(火炮)将向左看，反之亦然。"
+
+msgid "settings/mouse/sensitivity/invertationHor/header"
+msgstr "水平反转"
+
+msgid "settings/mouse/sensitivity/invertationVert/body"
+msgstr "对调鼠标纵向移动: 鼠标向上移动，镜头(火炮)将向下看，反之亦然。"
+
+msgid "settings/mouse/sensitivity/invertationVert/header"
+msgstr "垂直反转"
 
 msgid "settings/ribbons/receivedDamage/body"
 msgstr "启用此设置后，将显示以下战斗标识:受到的射击、起火、撞击和冲撞损伤。"
@@ -9705,6 +9864,18 @@ msgstr "中型坦克"
 msgid "tank_params/avgParamComment/damage"
 msgstr "最小-最大损伤%(units)s"
 
+msgid "tank_params/avgParamComment/maxMutableDamage"
+msgstr "50米最小–最大损伤%(units)s"
+
+msgid "tank_params/avgParamComment/maxPiercingPower"
+msgstr "50米最小–最大值%(units)s"
+
+msgid "tank_params/avgParamComment/minMutableDamage"
+msgstr "%(distance)s米最小–最大损伤%(units)s"
+
+msgid "tank_params/avgParamComment/minPiercingPower"
+msgstr "%(distance)s米最小–最大值%(units)s"
+
 msgid "tank_params/avgParamComment/piercingPower"
 msgstr "最小-最大值%(units)s"
 
@@ -9729,13 +9900,13 @@ msgid "tank_params/desc/autoReloadTime/boost/shortDescription"
 msgstr "改进型自动装填系统可以缩短自动装填炮弹的标准时长。"
 
 msgid "tank_params/desc/avgDamage"
-msgstr "击穿装甲后标准炮弹造成的平均损伤。"
+msgstr "标准炮弹击穿后所造成的平均损伤。损伤浮动范围为平均值的+/- 25%。"
 
 msgid "tank_params/desc/avgDamagePerMinute"
 msgstr "如果所有射击都能击穿装甲，于1分钟内可能对敌方坦克造成的损伤量。"
 
 msgid "tank_params/desc/avgPiercingPower"
-msgstr "标准炮弹的平均穿透力，随着炮弹的变化而变化。"
+msgstr "标准炮弹的平均穿透力，已计入炮弹转正效应。穿透力浮动范围为平均值的+/- 25%。"
 
 msgid "tank_params/desc/burstFireRate"
 msgstr "短弹夹炮弹的装填间隔时间。/弹夹中的短弹夹数量。/短弹夹中的炮弹数量"
@@ -9797,7 +9968,7 @@ msgid "tank_params/desc/piercingPower"
 msgstr "标准炮弹能够穿透的装甲厚度，随着炮弹的变化而变化。"
 
 msgid "tank_params/desc/pitchLimits"
-msgstr "坦克处在默认位置的俯/仰角。"
+msgstr "考虑到悬挂装置结构，火炮相对于车体位置所能达到的最大垂直俯仰角。"
 
 msgid "tank_params/desc/radioDistance"
 msgstr ""
@@ -10451,6 +10622,9 @@ msgstr "仓库中"
 msgid "vehicle/level"
 msgstr "等级"
 
+msgid "vehicle/level_and_type"
+msgstr "%(vehicleLevel)s级%(vehicleType)s"
+
 msgid "vehicle/mastering"
 msgstr "坦克难点: "
 
@@ -10719,40 +10893,40 @@ msgid "vehiclePreview/boxTooltip/body"
 msgstr "点击即可查看关于此礼包的物品信息。"
 
 msgid "vehiclePreview/boxTooltip/camouflage/header"
-msgstr "\"%(value)s\"涂装"
+msgstr "%(value)s涂装"
 
 msgid "vehiclePreview/boxTooltip/emblem/header"
-msgstr "\"%(value)s\"徽章"
+msgstr "%(value)s徽章"
 
 msgid "vehiclePreview/boxTooltip/equipment/header"
-msgstr "给养'%(value)s'"
+msgstr "给养%(value)s"
 
 msgid "vehiclePreview/boxTooltip/header"
 msgstr "相关奖励"
 
 msgid "vehiclePreview/boxTooltip/inscription/header"
-msgstr "\"%(value)s\"签名"
+msgstr "%(value)s签名"
 
 msgid "vehiclePreview/boxTooltip/modification/header"
-msgstr "\"%(value)s\"效果"
+msgstr "%(value)s效果"
 
 msgid "vehiclePreview/boxTooltip/optionalDevice/header"
-msgstr "配件'%(value)s'"
+msgstr "配件%(value)s"
 
 msgid "vehiclePreview/boxTooltip/paint/header"
-msgstr "\"%(value)s\"喷漆"
+msgstr "%(value)s喷漆"
 
 msgid "vehiclePreview/boxTooltip/personalNumber/header"
 msgstr "%(group)s %(value)s"
 
 msgid "vehiclePreview/boxTooltip/projectionDecal/header"
-msgstr "贴花\"%(value)s\""
+msgstr "贴花%(value)s"
 
 msgid "vehiclePreview/boxTooltip/shell/header"
-msgstr "\"%(value)s\"炮弹"
+msgstr "%(value)s炮弹"
 
 msgid "vehiclePreview/boxTooltip/style/header"
-msgstr "“%(value)s” 风格"
+msgstr "%(value)s风格"
 
 msgid "vehiclePreview/buyButton/endTime/body"
 msgstr "优惠已过期"
