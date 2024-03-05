@@ -399,6 +399,8 @@ package net.wg.data.constants.generated
       
       public static const FRANCE_F75_CHAR_DE_25T:String = "france-F75_Char_de_25t";
       
+      public static const FRANCE_F77_FCM_2_C:String = "france-F77_FCM_2C";
+      
       public static const FRANCE_F81_CHAR_DE_65T:String = "france-F81_Char_de_65t";
       
       public static const FRANCE_F82_AMX_M4_MLE1949_TER:String = "france-F82_AMX_M4_Mle1949_Ter";
@@ -1519,6 +1521,8 @@ package net.wg.data.constants.generated
       
       public static const UK_GB113_MATILDA_LVT:String = "uk-GB113_Matilda_LVT";
       
+      public static const UK_GB114_VICKERS_MBT_MK3:String = "uk-GB114_Vickers_MBT_Mk3";
+      
       public static const UK_GB115_GONSALO:String = "uk-GB115_Gonsalo";
       
       public static const UK_GB116_HARRY_HOPKINS_I:String = "uk-GB116_Harry_Hopkins_I";
@@ -1858,6 +1862,8 @@ package net.wg.data.constants.generated
       public static const USA_A156_T54_2022:String = "usa-A156_T54_2022";
       
       public static const USA_A158_T832:String = "usa-A158_T832";
+      
+      public static const USA_A159_CHRYSLER_MTC_2:String = "usa-A159_Chrysler_MTC_2";
       
       public static const USA_A16_M7_PRIEST:String = "usa-A16_M7_Priest";
       

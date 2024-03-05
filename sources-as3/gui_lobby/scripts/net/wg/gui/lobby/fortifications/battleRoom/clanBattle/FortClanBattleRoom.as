@@ -180,20 +180,6 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
          alpha = 0;
       }
       
-      override protected function onChooseVehicleRequest(param1:RallyViewsEvent) : void
-      {
-         var _loc2_:IRallySimpleSlotRenderer = IRallySimpleSlotRenderer(param1.target);
-         var _loc3_:FortVehicleSelectPopoverData = new FortVehicleSelectPopoverData();
-         _loc3_.isMultiSelect = false;
-         _loc3_.showMainBtn = true;
-         _loc3_.levelsRange = this._model.levelsRange;
-         if(_loc2_.slotData.selectedVehicle)
-         {
-            _loc3_.selectedVehicles = [_loc2_.slotData.selectedVehicle.intCD];
-         }
-         App.popoverMgr.show(IPopOverCaller(param1.target),FORTIFICATION_ALIASES.FORT_VEHICLE_SELECT_POPOVER_ALIAS,_loc3_);
-      }
-      
       override protected function setFiltersData(param1:ButtonFiltersVO) : void
       {
          FortClanBattleTeamSection(teamSection).setFiltersData(param1);
@@ -304,26 +290,7 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
          addEventListener(ClanBattleSlotEvent.FILTERS_CHANGED,this.onSlotFiltersChangedHandler);
          addEventListener(ClanBattleSlotEvent.RESET_FILTERS,this.onSlotResetFiltersHandler);
          addEventListener(ClanBattleSlotEvent.CHOOSE_VEHICLE,this.onChooseVehicleHandler);
-      }
-      
-      private function onChooseVehicleHandler(param1:ClanBattleSlotEvent) : void
-      {
-         var _loc2_:SortieSlot = param1.slot;
-         var _loc3_:FortVehicleSelectPopoverData = new FortVehicleSelectPopoverData();
-         _loc3_.slotIndex = _loc2_.index;
-         _loc3_.levelsRange = this._model.levelsRange;
-         _loc3_.selectedVehicles = SortieSlotVO(_loc2_.slotData).vehicles;
-         this._popoverMgr.show(_loc2_.getPopoverCaller(),FORTIFICATION_ALIASES.FORT_VEHICLE_SELECT_POPOVER_ALIAS,_loc3_);
-      }
-      
-      private function onSlotFiltersChangedHandler(param1:ClanBattleSlotEvent) : void
-      {
-         onFiltersChangeS(param1.slot.index,param1.filtersValue);
-      }
-      
-      private function onSlotResetFiltersHandler(param1:ClanBattleSlotEvent) : void
-      {
-         resetFiltersS(param1.slot.index);
+         addEventListener(RallyViewsEvent.VEH_UNFREEZE_REQUEST,this.onVehUnfreezeRequestHandler);
       }
       
       override protected function draw() : void
@@ -347,71 +314,6 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
             tabChildren = focusable = !teamSection.actionButtonData.isReady;
          }
          this.layoutConfigureInfo();
-      }
-      
-      public function enableCloseButton(param1:Boolean) : void
-      {
-         if(this.btnRoomStatus)
-         {
-            this.btnRoomStatus.enabled = param1;
-         }
-      }
-      
-      public function as_setOpened(param1:String, param2:String, param3:String) : void
-      {
-         this.btnRoomStatus.label = param1;
-         this.roomStatusInfo.htmlText = param2;
-         this._roomStatusDescription = param3;
-      }
-      
-      public function headerDataProvider(param1:SortableHeaderButtonBar, param2:IDataProvider) : void
-      {
-         param1.dataProvider = param2;
-      }
-      
-      private function onControlRollOutHandler(param1:MouseEvent) : void
-      {
-         onControlRollOut();
-      }
-      
-      private function onControlRollOverHandler(param1:MouseEvent) : void
-      {
-         var _loc2_:String = Values.EMPTY_STR;
-         var _loc3_:String = Values.EMPTY_STR;
-         switch(param1.target)
-         {
-            case this.btnRoomStatus:
-               _loc2_ = TOOLTIPS.FORTIFICATION_UNIT_ACCESS_HEADER;
-               _loc3_ = this._roomStatusDescription;
-               this.showTooltip(_loc2_,_loc3_);
-               break;
-            case this.btnConfigure:
-               _loc2_ = !!this.btnConfigure.enabled ? TOOLTIPS.FORTIFICATION_HEADER_SETTINGSBTN_HEADER : TOOLTIPS.FORTIFICATION_HEADER_SETTINGSBTN_DISABLED_HEADER;
-               _loc3_ = !!this.btnConfigure.enabled ? TOOLTIPS.FORTIFICATION_HEADER_SETTINGSBTN_BODY : TOOLTIPS.FORTIFICATION_HEADER_SETTINGSBTN_DISABLED_BODY;
-               this.showTooltip(_loc2_,_loc3_);
-               break;
-            case this.divisionInfo:
-               App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.SORTIE_DIVISION,null);
-         }
-      }
-      
-      private function onRoomStatusClickHandler(param1:ButtonEvent) : void
-      {
-         toggleRoomStatus();
-      }
-      
-      private function onBtnConfigureClickHandler(param1:ButtonEvent) : void
-      {
-         openConfigureWindowS();
-      }
-      
-      private function showTooltip(param1:String, param2:String) : void
-      {
-         var _loc3_:String = App.toolTipMgr.getNewFormatter().addHeader(param1,true).addBody(param2,true).make();
-         if(_loc3_.length > 0)
-         {
-            App.toolTipMgr.showComplex(_loc3_);
-         }
       }
       
       override protected function onPopulate() : void
@@ -500,16 +402,8 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
          removeEventListener(ClanBattleSlotEvent.FILTERS_CHANGED,this.onSlotFiltersChangedHandler);
          removeEventListener(ClanBattleSlotEvent.RESET_FILTERS,this.onSlotResetFiltersHandler);
          removeEventListener(ClanBattleSlotEvent.CHOOSE_VEHICLE,this.onChooseVehicleHandler);
+         removeEventListener(RallyViewsEvent.VEH_UNFREEZE_REQUEST,this.onVehUnfreezeRequestHandler);
          super.onDispose();
-      }
-      
-      public function as_setDirection(param1:String, param2:Boolean) : void
-      {
-         if(this._currentDirection != param1)
-         {
-            this._currentDirection = param1;
-            this.connectedDirections.setDirection(param1,param2);
-         }
       }
       
       override protected function setTableHeader(param1:Vector.<NormalSortingBtnVO>) : void
@@ -538,30 +432,6 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
             this._reserveSlots[_loc3_].update(param1[_loc3_]);
             _loc3_++;
          }
-      }
-      
-      protected function showFittingPopover(param1:ReserveSlot) : void
-      {
-         var _loc2_:Object = new FittingSelectPopoverParams(param1.type,param1.slotIndex);
-         App.popoverMgr.show(param1,FORTIFICATION_ALIASES.FORT_RESERVE_SELECT_POPOVER_ALIAS,_loc2_);
-      }
-      
-      private function onReserveSlotClickHandler(param1:ButtonEvent) : void
-      {
-         if(param1.buttonIdx == MouseEventEx.LEFT_BUTTON)
-         {
-            this.showFittingPopover(ReserveSlot(param1.currentTarget));
-         }
-      }
-      
-      private function onReserveSlotMouseDownHandler(param1:MouseEvent) : void
-      {
-         App.popoverMgr.hide();
-      }
-      
-      private function onReserveSlotMouseWheelHandler(param1:MouseEvent) : void
-      {
-         App.popoverMgr.hide();
       }
       
       override protected function getRallyViewAlias() : String
@@ -593,10 +463,26 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
          super.coolDownControls(param1,param2);
       }
       
-      public function as_updateReadyStatus(param1:Boolean, param2:Boolean) : void
+      override protected function setConfigureButtonState(param1:ActionButtonVO) : void
       {
-         this.mineReadyStatus.status = this.getIndicatorStatus(param1);
-         this.enemyReadyStatus.status = this.getIndicatorStatus(param2);
+         this._configureButtonData = param1;
+         invalidate(RallyInvalidationType.CONFIGURE_BUTTON_DATA);
+      }
+      
+      public function as_setDirection(param1:String, param2:Boolean) : void
+      {
+         if(this._currentDirection != param1)
+         {
+            this._currentDirection = param1;
+            this.connectedDirections.setDirection(param1,param2);
+         }
+      }
+      
+      public function as_setOpened(param1:String, param2:String, param3:String) : void
+      {
+         this.btnRoomStatus.label = param1;
+         this.roomStatusInfo.htmlText = param2;
+         this._roomStatusDescription = param3;
       }
       
       public function as_updateReadyDirections(param1:Boolean) : void
@@ -605,10 +491,10 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
          this.connectedDirections.visible = param1;
       }
       
-      override protected function setConfigureButtonState(param1:ActionButtonVO) : void
+      public function as_updateReadyStatus(param1:Boolean, param2:Boolean) : void
       {
-         this._configureButtonData = param1;
-         invalidate(RallyInvalidationType.CONFIGURE_BUTTON_DATA);
+         this.mineReadyStatus.status = this.getIndicatorStatus(param1);
+         this.enemyReadyStatus.status = this.getIndicatorStatus(param2);
       }
       
       public function as_updateTeamHeaderText(param1:String) : void
@@ -616,14 +502,37 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
          FortClanBattleTeamSection(teamSection).updateTeamHeaderText(param1);
       }
       
+      public function enableCloseButton(param1:Boolean) : void
+      {
+         if(this.btnRoomStatus)
+         {
+            this.btnRoomStatus.enabled = param1;
+         }
+      }
+      
+      public function headerDataProvider(param1:SortableHeaderButtonBar, param2:IDataProvider) : void
+      {
+         param1.dataProvider = param2;
+      }
+      
+      protected function showFittingPopover(param1:ReserveSlot) : void
+      {
+         var _loc2_:Object = new FittingSelectPopoverParams(param1.type,param1.slotIndex);
+         App.popoverMgr.show(param1,FORTIFICATION_ALIASES.FORT_RESERVE_SELECT_POPOVER_ALIAS,_loc2_);
+      }
+      
+      private function showTooltip(param1:String, param2:String) : void
+      {
+         var _loc3_:String = App.toolTipMgr.getNewFormatter().addHeader(param1,true).addBody(param2,true).make();
+         if(_loc3_.length > 0)
+         {
+            App.toolTipMgr.showComplex(_loc3_);
+         }
+      }
+      
       private function getIndicatorStatus(param1:Boolean) : String
       {
          return !!param1 ? IndicationOfStatus.STATUS_READY : IndicationOfStatus.STATUS_NORMAL;
-      }
-      
-      private function onTimerAlertTickHandler(param1:ClanBattleTimerEvent) : void
-      {
-         onTimerAlertS();
       }
       
       private function layoutConfigureInfo() : void
@@ -675,6 +584,104 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
          });
          var _loc3_:IDataProvider = new DataProvider([_loc1_,_loc2_]);
          this.headerDataProvider(this.waitingListButtonBar,_loc3_);
+      }
+      
+      override protected function onChooseVehicleRequest(param1:RallyViewsEvent) : void
+      {
+         var _loc2_:IRallySimpleSlotRenderer = IRallySimpleSlotRenderer(param1.target);
+         var _loc3_:FortVehicleSelectPopoverData = new FortVehicleSelectPopoverData();
+         _loc3_.isMultiSelect = false;
+         _loc3_.showMainBtn = true;
+         _loc3_.levelsRange = this._model.levelsRange;
+         if(_loc2_.slotData.selectedVehicle)
+         {
+            _loc3_.selectedVehicles = [_loc2_.slotData.selectedVehicle.intCD];
+         }
+         App.popoverMgr.show(IPopOverCaller(param1.target),FORTIFICATION_ALIASES.FORT_VEHICLE_SELECT_POPOVER_ALIAS,_loc3_);
+      }
+      
+      private function onChooseVehicleHandler(param1:ClanBattleSlotEvent) : void
+      {
+         var _loc2_:SortieSlot = param1.slot;
+         var _loc3_:FortVehicleSelectPopoverData = new FortVehicleSelectPopoverData();
+         _loc3_.slotIndex = _loc2_.index;
+         _loc3_.levelsRange = this._model.levelsRange;
+         _loc3_.selectedVehicles = SortieSlotVO(_loc2_.slotData).vehicles;
+         this._popoverMgr.show(_loc2_.getPopoverCaller(),FORTIFICATION_ALIASES.FORT_VEHICLE_SELECT_POPOVER_ALIAS,_loc3_);
+      }
+      
+      private function onSlotFiltersChangedHandler(param1:ClanBattleSlotEvent) : void
+      {
+         onFiltersChangeS(param1.slot.index,param1.filtersValue);
+      }
+      
+      private function onSlotResetFiltersHandler(param1:ClanBattleSlotEvent) : void
+      {
+         resetFiltersS(param1.slot.index);
+      }
+      
+      private function onControlRollOutHandler(param1:MouseEvent) : void
+      {
+         onControlRollOut();
+      }
+      
+      private function onControlRollOverHandler(param1:MouseEvent) : void
+      {
+         var _loc2_:String = Values.EMPTY_STR;
+         var _loc3_:String = Values.EMPTY_STR;
+         switch(param1.target)
+         {
+            case this.btnRoomStatus:
+               _loc2_ = TOOLTIPS.FORTIFICATION_UNIT_ACCESS_HEADER;
+               _loc3_ = this._roomStatusDescription;
+               this.showTooltip(_loc2_,_loc3_);
+               break;
+            case this.btnConfigure:
+               _loc2_ = !!this.btnConfigure.enabled ? TOOLTIPS.FORTIFICATION_HEADER_SETTINGSBTN_HEADER : TOOLTIPS.FORTIFICATION_HEADER_SETTINGSBTN_DISABLED_HEADER;
+               _loc3_ = !!this.btnConfigure.enabled ? TOOLTIPS.FORTIFICATION_HEADER_SETTINGSBTN_BODY : TOOLTIPS.FORTIFICATION_HEADER_SETTINGSBTN_DISABLED_BODY;
+               this.showTooltip(_loc2_,_loc3_);
+               break;
+            case this.divisionInfo:
+               App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.SORTIE_DIVISION,null);
+         }
+      }
+      
+      private function onRoomStatusClickHandler(param1:ButtonEvent) : void
+      {
+         toggleRoomStatus();
+      }
+      
+      private function onBtnConfigureClickHandler(param1:ButtonEvent) : void
+      {
+         openConfigureWindowS();
+      }
+      
+      private function onReserveSlotClickHandler(param1:ButtonEvent) : void
+      {
+         if(param1.buttonIdx == MouseEventEx.LEFT_BUTTON)
+         {
+            this.showFittingPopover(ReserveSlot(param1.currentTarget));
+         }
+      }
+      
+      private function onReserveSlotMouseDownHandler(param1:MouseEvent) : void
+      {
+         App.popoverMgr.hide();
+      }
+      
+      private function onReserveSlotMouseWheelHandler(param1:MouseEvent) : void
+      {
+         App.popoverMgr.hide();
+      }
+      
+      private function onTimerAlertTickHandler(param1:ClanBattleTimerEvent) : void
+      {
+         onTimerAlertS();
+      }
+      
+      private function onVehUnfreezeRequestHandler(param1:RallyViewsEvent) : void
+      {
+         onUnfrozenVehicleSlotClickS(param1.data);
       }
    }
 }

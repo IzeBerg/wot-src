@@ -88,8 +88,6 @@ package net.wg.gui.lobby.settings.feedback.ribbons
       override protected function onDispose() : void
       {
          var _loc1_:IDisposable = null;
-         this._colorMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorMgrSchemasUpdateHandler);
-         this._colorMgr = null;
          this._itemsData.splice(0,this._itemsData.length);
          this._itemsData = null;
          for each(_loc1_ in this._itemsMap)

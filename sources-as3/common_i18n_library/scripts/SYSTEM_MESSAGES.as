@@ -2734,6 +2734,20 @@ package
       public static const SENIORITYAWARDS_SWITCH_PAUSE_ON_BODY:String = "#system_messages:seniorityAwards/switch_pause_on/body";
       
       public static const SENIORITYAWARDS_SWITCH_PAUSE_OFF_BODY:String = "#system_messages:seniorityAwards/switch_pause_off/body";
+      
+      public static const UNIT_WARNINGS_WGSHEVENT_VEHICLEUNFROZEN:String = "#system_messages:unit/warnings/wgshEvent/vehicleUnfrozen";
+      
+      public static const UNIT_ERROR_WGSHEVENT_ACCOUNTNOTINCLAN:String = "#system_messages:unit/error/wgshEvent/AccountNotInClan";
+      
+      public static const UNIT_ERROR_WGSHEVENT_ACCOUNTDOESNOTHAVEPERMISSIONS:String = "#system_messages:unit/error/wgshEvent/AccountDoesNotHavePermissions";
+      
+      public static const UNIT_ERROR_WGSHEVENT_NOTENOUGHSPAREPARTS:String = "#system_messages:unit/error/wgshEvent/NotEnoughSpareParts";
+      
+      public static const UNIT_ERROR_WGSHEVENT_UNFREEZEVEHICLEPRICEMISMATCH:String = "#system_messages:unit/error/wgshEvent/UnfreezeVehiclePriceMismatch";
+      
+      public static const UNIT_ERROR_WGSHEVENT_ACCOUNTVEHICLEDOESNOTEXIST:String = "#system_messages:unit/error/wgshEvent/AccountVehicleDoesNotExist";
+      
+      public static const UNIT_ERROR_WGSHEVENT_COMMON:String = "#system_messages:unit/error/wgshEvent/common";
        
       
       public function SYSTEM_MESSAGES()

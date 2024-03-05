@@ -11,7 +11,6 @@ from AvatarInputHandler import AimingSystems, keys_handlers
 from AvatarInputHandler import aih_global_binding, gun_marker_ctrl
 from AvatarInputHandler import steel_hunter_control_modes
 from BigWorld import SniperAimingSystem
-from AvatarInputHandler.AimingSystems.steady_vehicle_matrix import SteadyVehicleMatrixCalculator
 from AvatarInputHandler.commands.bootcamp_mode_control import BootcampModeControl
 from AvatarInputHandler.commands.dualgun_control import DualGunController
 from AvatarInputHandler.commands.prebattle_setups_control import PrebattleSetupsControl
@@ -205,7 +204,6 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
     siegeModeControl = ComponentDescriptor()
     dualGunControl = ComponentDescriptor()
     siegeModeSoundNotifications = ComponentDescriptor()
-    steadyVehicleMatrixCalculator = ComponentDescriptor()
     rocketAccelerationControl = ComponentDescriptor()
     DEFAULT_AIH_WORLD_ID = -1
 
@@ -263,7 +261,6 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                 if not self.siegeModeControl:
                     self.siegeModeControl = SiegeModeControl()
                 self.__commands.append(self.siegeModeControl)
-                self.siegeModeControl.onSiegeStateChanged += lambda *args: self.steadyVehicleMatrixCalculator.relinkSources()
                 if typeDescr.hasHydraulicChassis or typeDescr.isWheeledVehicle:
                     notifications = SiegeModeSoundNotifications()
                 elif typeDescr.hasTurboshaftEngine:
@@ -494,7 +491,6 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
     def start(self):
         self.__setInitialControlMode()
         g_guiResetters.add(self.__onRecreateDevice)
-        self.steadyVehicleMatrixCalculator = SteadyVehicleMatrixCalculator()
         self.__identifyVehicleType()
         self.__constructComponents()
         for control in self.__ctrls.itervalues():
@@ -560,7 +556,6 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         return
 
     def __onVehicleMatrixBindingChanged(self, isStatic):
-        self.steadyVehicleMatrixCalculator.relinkSources()
         self.__identifyVehicleType()
         self.__constructComponents()
         if self.__pendingModeSwitch:
@@ -577,8 +572,6 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
 
     @disableShotPointCache
     def onControlModeChanged(self, eMode, **args):
-        if self.steadyVehicleMatrixCalculator is not None:
-            self.steadyVehicleMatrixCalculator.relinkSources()
         _logger.debug('onControlModeChanged %s', eMode)
         if not self.__isArenaStarted and not self.__isModeSwitchInPrebattlePossible(eMode):
             return

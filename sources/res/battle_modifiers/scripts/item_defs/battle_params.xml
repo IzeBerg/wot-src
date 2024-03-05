@@ -267,14 +267,9 @@
 		<id>18</id>
 		<dataType>float</dataType>
 		<domain>shot</domain>
-		<client>
-			<domain>armorPiercing</domain>
-			<physicalType>millimeters</physicalType>
-			<useTypes>val mul add</useTypes>
-		</client>
 		<restrictions>
 			<min>
-				1.0
+				0.0
 				<!--BW_String-->
 			</min>
 		</restrictions>
@@ -283,14 +278,9 @@
 		<id>19</id>
 		<dataType>float</dataType>
 		<domain>shot</domain>
-		<client>
-			<domain>armorPiercing</domain>
-			<physicalType>millimeters</physicalType>
-			<useTypes>val mul add</useTypes>
-		</client>
 		<restrictions>
 			<min>
-				1.0
+				0.0
 				<!--BW_String-->
 			</min>
 		</restrictions>
@@ -442,38 +432,28 @@
 			</min>
 		</restrictions>
 	</rotationSpeedOnMove>
-	<armorDamage>
+	<armorDamageFirst>
 		<id>29</id>
 		<dataType>float</dataType>
 		<domain>shell</domain>
-		<client>
-			<domain>damageDealing</domain>
-			<physicalType>hitPoints</physicalType>
-			<useTypes>val mul add</useTypes>
-		</client>
 		<restrictions>
 			<min>
-				1.0
+				0.0
 				<!--BW_String-->
 			</min>
 		</restrictions>
-	</armorDamage>
-	<deviceDamage>
+	</armorDamageFirst>
+	<deviceDamageFirst>
 		<id>30</id>
 		<dataType>float</dataType>
 		<domain>shell</domain>
-		<client>
-			<domain>damageDealing</domain>
-			<physicalType>hitPoints</physicalType>
-			<useTypes>val mul add</useTypes>
-		</client>
 		<restrictions>
 			<min>
-				1.0
+				0.0
 				<!--BW_String-->
 			</min>
 		</restrictions>
-	</deviceDamage>
+	</deviceDamageFirst>
 	<invisibilityOnStill>
 		<id>31</id>
 		<dataType>float</dataType>
@@ -805,28 +785,28 @@
 		<dataType>string</dataType>
 		<domain>hull</domain>
 	</exhaustEffect>
-	<armorSpallsArmorDamage>
+	<armorSpallsArmorDamageFirst>
 		<id>57</id>
 		<dataType>float</dataType>
 		<domain>shellType</domain>
 		<restrictions>
 			<min>
-				1.0
+				0.0
 				<!--BW_String-->
 			</min>
 		</restrictions>
-	</armorSpallsArmorDamage>
-	<armorSpallsDeviceDamage>
+	</armorSpallsArmorDamageFirst>
+	<armorSpallsDeviceDamageFirst>
 		<id>58</id>
 		<dataType>float</dataType>
 		<domain>shellType</domain>
 		<restrictions>
 			<min>
-				1.0
+				0.0
 				<!--BW_String-->
 			</min>
 		</restrictions>
-	</armorSpallsDeviceDamage>
+	</armorSpallsDeviceDamageFirst>
 	<armorSpallsImpactRadius>
 		<id>59</id>
 		<dataType>float</dataType>
@@ -910,4 +890,132 @@
 			</min>
 		</restrictions>
 	</divingDestructionDelay>
+	<stunFactorEnginePower>
+		<id>67</id>
+		<dataType>float</dataType>
+		<restrictions>
+			<min>
+				0.001
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</stunFactorEnginePower>
+	<stunFactorVehicleRotationSpeed>
+		<id>68</id>
+		<dataType>float</dataType>
+		<restrictions>
+			<min>
+				0.001
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</stunFactorVehicleRotationSpeed>
+	<stunFactorTurretTraverse>
+		<id>69</id>
+		<dataType>float</dataType>
+		<restrictions>
+			<min>
+				0.001
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</stunFactorTurretTraverse>
+	<stunFactorMaxSpeed>
+		<id>70</id>
+		<dataType>float</dataType>
+		<restrictions>
+			<min>
+				0.001
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</stunFactorMaxSpeed>
+	<armorDamageLast>
+		<id>71</id>
+		<dataType>float</dataType>
+		<domain>shell</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</armorDamageLast>
+	<deviceDamageLast>
+		<id>72</id>
+		<dataType>float</dataType>
+		<domain>shell</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</deviceDamageLast>
+	<armorSpallsArmorDamageLast>
+		<id>73</id>
+		<dataType>float</dataType>
+		<domain>shellType</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</armorSpallsArmorDamageLast>
+	<armorSpallsDeviceDamageLast>
+		<id>74</id>
+		<dataType>float</dataType>
+		<domain>shellType</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</armorSpallsDeviceDamageLast>
+	<piercingPowerInterpolationDistFirst>
+		<id>75</id>
+		<dataType>float</dataType>
+		<domain>constants</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</piercingPowerInterpolationDistFirst>
+	<piercingPowerInterpolationDistLast>
+		<id>76</id>
+		<dataType>float</dataType>
+		<domain>constants</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</piercingPowerInterpolationDistLast>
+	<damageInterpolationDistFirst>
+		<id>77</id>
+		<dataType>float</dataType>
+		<domain>constants</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</damageInterpolationDistFirst>
+	<damageInterpolationDistLast>
+		<id>78</id>
+		<dataType>float</dataType>
+		<domain>constants</domain>
+		<restrictions>
+			<min>
+				0.0
+				<!--BW_String-->
+			</min>
+		</restrictions>
+	</damageInterpolationDistLast>
 </root>

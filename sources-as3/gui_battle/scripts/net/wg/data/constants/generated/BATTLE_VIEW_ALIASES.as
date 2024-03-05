@@ -85,7 +85,7 @@ package net.wg.data.constants.generated
       
       public static const BOOTCAMP_SECONDARY_HINT:String = "bootcampSecondaryHint";
       
-      public static const ANIMATED_BATTLE_HINT:String = "animatedBattleHint";
+      public static const PENETRATION_PANEL:String = "penetrationPanel";
       
       public static const GAME_MESSAGES_PANEL:String = "gameMessagesPanel";
       
@@ -128,6 +128,8 @@ package net.wg.data.constants.generated
       public static const PLAYERS_PANEL_EVENT:String = "playersPanelEvent";
       
       public static const BATTLE_HINT:String = "battleHint";
+      
+      public static const NEWBIE_HINT:String = "newbieHint";
       
       public static const EVENT_POINT_COUNTER:String = "eventPointCounter";
       

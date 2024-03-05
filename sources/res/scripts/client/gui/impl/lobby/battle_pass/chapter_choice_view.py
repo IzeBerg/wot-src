@@ -13,6 +13,7 @@ from gui.battle_pass.battle_pass_helpers import getAllFinalRewards, getInfoPageU
 from gui.collection.collections_helpers import getCollectionRes, loadBattlePassFromCollections
 from gui.impl import backport
 from gui.impl.auxiliary.collections_helper import fillCollectionModel
+from gui.impl.auxiliary.rewards_helper import setRewards
 from gui.impl.auxiliary.vehicle_helper import fillVehicleInfo
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.battle_pass.chapter_choice_view_model import ChapterChoiceViewModel
@@ -76,17 +77,17 @@ class ChapterChoiceView(ViewImpl):
          (
           self.viewModel.onBuyClick, self.__buyBattlePass),
          (
-          self.viewModel.onBpcoinClick, self.__showCoinsShop),
+          self.viewModel.awardsWidget.onBpcoinClick, self.__showCoinsShop),
          (
-          self.viewModel.onBpbitClick, self.__showPointsShop),
+          self.viewModel.awardsWidget.onBpbitClick, self.__showPointsShop),
          (
-          self.viewModel.onTakeRewardsClick, self.__takeAllRewards),
+          self.viewModel.awardsWidget.onTakeRewardsClick, self.__takeAllRewards),
+         (
+          self.viewModel.awardsWidget.showTankmen, self.__showTankmen),
+         (
+          self.viewModel.awardsWidget.collectionEntryPoint.openCollection, self.__openCollection),
          (
           self.viewModel.onClose, self.__close),
-         (
-          self.viewModel.collectionEntryPoint.openCollection, self.__openCollection),
-         (
-          self.viewModel.showTankmen, self.__showTankmen),
          (
           self.__battlePass.onBattlePassSettingsChange, self.__checkBPState),
          (
@@ -120,16 +121,17 @@ class ChapterChoiceView(ViewImpl):
 
     def _fillModel(self):
         with self.viewModel.transaction() as (model):
-            fillCollectionModel(model.collectionEntryPoint, self.__battlePass.getCurrentCollectionId())
-            self.__updateChapters(model.getChapters())
             self.__updateBalance(model=model)
             self.__updateRewardChoice(model=model)
             self.__updateBPBitCount(model=model)
             self.__updateFreePoints(model=model)
-            model.setIsBattlePassCompleted(self.__battlePass.isCompleted())
+            self.__updateChapters(model.getChapters())
             model.setIsCustomSeason(self.__battlePass.isCustomSeason())
-            model.setSpecialVoiceTankmenCount(len(self.__battlePass.getSpecialTankmen()))
             model.setSeasonNum(self.__battlePass.getSeasonNum())
+            model.awardsWidget.setHasExtra(self.__battlePass.hasExtra())
+            model.awardsWidget.setIsBattlePassCompleted(self.__battlePass.isCompleted())
+            model.awardsWidget.setIsSpecialVoiceTankmenEnabled(len(self.__battlePass.getSpecialTankmen()) > 1)
+            fillCollectionModel(model.awardsWidget.collectionEntryPoint, self.__battlePass.getCurrentCollectionId())
 
     def __updateChapters(self, chapters):
         chapters.clear()
@@ -140,6 +142,7 @@ class ChapterChoiceView(ViewImpl):
                 model.setStyleName(style.userName)
                 self.__fillVehicle(style, model)
             model.setChapterID(chapterID)
+            setRewards(model, chapterID)
             model.setIsBought(self.__battlePass.isBought(chapterID=chapterID))
             model.setIsExtra(self.__battlePass.isExtraChapter(chapterID))
             self.__fillProgression(chapterID, model)
@@ -168,16 +171,16 @@ class ChapterChoiceView(ViewImpl):
 
     @replaceNoneKwargsModel
     def __updateBalance(self, value=None, model=None):
-        model.setBpcoinCount(self.__itemsCache.items.stats.bpcoin)
+        model.awardsWidget.setBpcoinCount(self.__itemsCache.items.stats.bpcoin)
 
     @replaceNoneKwargsModel
     def __updateRewardChoice(self, model=None):
-        model.setNotChosenRewardCount(self.__battlePass.getNotChosenRewardCount())
-        model.setIsChooseRewardsEnabled(self.__battlePass.canChooseAnyReward())
+        model.awardsWidget.setNotChosenRewardCount(self.__battlePass.getNotChosenRewardCount())
+        model.awardsWidget.setIsChooseRewardsEnabled(self.__battlePass.canChooseAnyReward())
 
     @replaceNoneKwargsModel
     def __updateBPBitCount(self, model=None):
-        model.setBpbitCount(self.__itemsCache.items.stats.dynamicCurrencies.get(CurrencyBP.BIT.value, 0))
+        model.awardsWidget.setBpbitCount(self.__itemsCache.items.stats.dynamicCurrencies.get(CurrencyBP.BIT.value, 0))
 
     @replaceNoneKwargsModel
     def __updateFreePoints(self, model=None):
@@ -187,8 +190,8 @@ class ChapterChoiceView(ViewImpl):
         with self.viewModel.transaction() as (model):
             self.__updateChaptersProgression(model.getChapters())
             self.__updateFreePoints(model=model)
-            model.setIsBattlePassCompleted(self.__battlePass.isCompleted())
-            fillCollectionModel(model.collectionEntryPoint, self.__battlePass.getCurrentCollectionId())
+            model.awardsWidget.setIsBattlePassCompleted(self.__battlePass.isCompleted())
+            fillCollectionModel(model.awardsWidget.collectionEntryPoint, self.__battlePass.getCurrentCollectionId())
 
     def __onBpBitUpdated(self, *data):
         if data[0].get('cache', {}).get('dynamicCurrencies', {}).get(CurrencyBP.BIT.value, ''):
@@ -198,7 +201,7 @@ class ChapterChoiceView(ViewImpl):
         self.__updateChapters(self.viewModel.getChapters())
 
     def __onCollectionsUpdated(self, *_):
-        with self.viewModel.transaction() as (model):
+        with self.viewModel.awardsWidget.transaction() as (model):
             fillCollectionModel(model.collectionEntryPoint, self.__battlePass.getCurrentCollectionId())
 
     def __checkBPState(self, *_):
@@ -207,6 +210,7 @@ class ChapterChoiceView(ViewImpl):
             return
         with self.viewModel.transaction() as (model):
             model.setIsCustomSeason(self.__battlePass.isCustomSeason())
+            model.awardsWidget.setIsSpecialVoiceTankmenEnabled(len(self.__battlePass.getSpecialTankmen()) > 1)
             if len(self.__battlePass.getChapterIDs()) != len(self.viewModel.getChapters()):
                 self.__updateChapters(model.getChapters())
 

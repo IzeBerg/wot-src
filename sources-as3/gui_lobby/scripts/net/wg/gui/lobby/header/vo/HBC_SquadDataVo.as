@@ -14,6 +14,8 @@ package net.wg.gui.lobby.header.vo
       
       public var hasPopover:Boolean = false;
       
+      public var eventBgLinkage:String = "";
+      
       private var _squadExtendInfoVo:ExtendedSquadInfoVo = null;
       
       public function HBC_SquadDataVo()

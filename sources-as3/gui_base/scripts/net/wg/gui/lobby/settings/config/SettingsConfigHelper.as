@@ -243,6 +243,12 @@ package net.wg.gui.lobby.settings.config
       
       public static const INTERFACE_SCALE_DISABLED:String = "interfaceScaleDisabled";
       
+      public static const NEWBIE_PREBATTLE_HINTS:String = "newbiePrebattleHints";
+      
+      public static const NEWBIE_BATTLE_HINTS:String = "newbieBattleHints";
+      
+      public static const RESTART_NEWBIE_BATTLE_HINTS_BUTTON:String = "restartNewbieBattleHints";
+      
       public static const CAROUSEL_TYPE:String = "carouselType";
       
       public static const CAROUSEL_SINGLE:String = "single";

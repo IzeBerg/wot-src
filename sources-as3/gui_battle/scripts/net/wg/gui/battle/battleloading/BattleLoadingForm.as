@@ -410,7 +410,7 @@ package net.wg.gui.battle.battleloading
       private function onAllyDataProviderUpdateItemHandler(param1:ListDataProviderEvent) : void
       {
          var _loc4_:int = 0;
-         var _loc2_:uint = this._allyRenderers.length - 1;
+         var _loc2_:int = this._allyRenderers.length - 1;
          var _loc3_:Vector.<int> = Vector.<int>(param1.data);
          for each(_loc4_ in _loc3_)
          {
@@ -424,7 +424,7 @@ package net.wg.gui.battle.battleloading
       private function onEnemyDataProviderUpdateItemHandler(param1:ListDataProviderEvent) : void
       {
          var _loc4_:int = 0;
-         var _loc2_:uint = this._enemyRenderers.length - 1;
+         var _loc2_:int = this._enemyRenderers.length - 1;
          var _loc3_:Vector.<int> = Vector.<int>(param1.data);
          for each(_loc4_ in _loc3_)
          {

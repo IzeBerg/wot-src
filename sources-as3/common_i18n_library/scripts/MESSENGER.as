@@ -917,7 +917,11 @@ package
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_BOOSTERS:String = "#messenger:serviceChannelMessages/invoiceReceived/boosters";
       
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_BOOSTERS_DEBITED:String = "#messenger:serviceChannelMessages/invoiceReceived/boosters/debited";
+      
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_DISCOUNTS:String = "#messenger:serviceChannelMessages/invoiceReceived/discounts";
+      
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_EQUIPMENT_DEBITED:String = "#messenger:serviceChannelMessages/invoiceReceived/equipment/debited";
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_EQUIPMENT:String = "#messenger:serviceChannelMessages/invoiceReceived/equipment";
       
@@ -1939,6 +1943,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_HEADER_BUYPROGRESS:String = "#messenger:serviceChannelMessages/battlePassReward/header/buyProgress";
       
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_HEADER_BUYBPWITHLEVELS:String = "#messenger:serviceChannelMessages/battlePassReward/header/buyBPWithLevels";
+      
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_HEADER_VOTED:String = "#messenger:serviceChannelMessages/battlePassReward/header/voted";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_HEADER_AUTOSELECTREWARD:String = "#messenger:serviceChannelMessages/battlePassReward/header/autoSelectReward";
@@ -1956,6 +1962,8 @@ package
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BUYWITHOUTREWARDS_TEXT:String = "#messenger:serviceChannelMessages/battlePassReward/buyWithoutRewards/text";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BUYWITHREWARDS_TEXT:String = "#messenger:serviceChannelMessages/battlePassReward/buyWithRewards/text";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BUYBPWITHLEVELS_TEXT:String = "#messenger:serviceChannelMessages/battlePassReward/buyBPWithLevels/text";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_BUYWITHREWARDS_ADDITIONALTEXT:String = "#messenger:serviceChannelMessages/battlePassReward/buyWithRewards/additionalText";
       
@@ -2238,6 +2246,10 @@ package
       public static const PLATFORMCURRENCYMSG_RECEIVED_FAMECOIN:String = "#messenger:platformCurrencyMsg/received/famecoin";
       
       public static const PLATFORMCURRENCYMSG_DEBITED_FAMECOIN:String = "#messenger:platformCurrencyMsg/debited/famecoin";
+      
+      public static const PLATFORMCURRENCYMSG_RECEIVED_CLANVEHICLECOIN:String = "#messenger:platformCurrencyMsg/received/clanvehiclecoin";
+      
+      public static const PLATFORMCURRENCYMSG_DEBITED_CLANVEHICLECOIN:String = "#messenger:platformCurrencyMsg/debited/clanvehiclecoin";
       
       public static const PLATFORMCURRENCYMSG_RECEIVED_FREEXP:String = "#messenger:platformCurrencyMsg/received/freeXP";
       

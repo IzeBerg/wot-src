@@ -17,6 +17,9 @@ class FortClanBattleRoomMeta(BaseRallyRoomView):
     def resetFilters(self, slotIndex):
         self._printOverrideError('resetFilters')
 
+    def onUnfrozenVehicleSlotClick(self, slotIndex):
+        self._printOverrideError('onUnfrozenVehicleSlotClick')
+
     def as_updateTeamHeaderTextS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_updateTeamHeaderText(value)

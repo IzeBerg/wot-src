@@ -12,7 +12,11 @@ package net.wg.gui.lobby.fortifications.data.battleRoom
       
       public var hasFrozenVehicle:Boolean = false;
       
+      public var canUnfrozeVehicles:Boolean = false;
+      
       public var isRemoveAvailable:Boolean = true;
+      
+      public var unfrozeVehiclesBtnEnabled:Boolean = true;
       
       public var filterState:int = -1;
       

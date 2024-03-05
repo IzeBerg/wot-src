@@ -1,4 +1,3 @@
-from gui.Scaleform.daapi.view.lobby.referral_program.referral_program_helpers import isReferralProgramEnabled
 from helpers import dependency
 from skeletons.gui.game_control import IReferralProgramController
 from web.web_client_api import w2c, W2CSchema
@@ -8,6 +7,6 @@ class ReferralProgramPagesMixin(object):
 
     @w2c(W2CSchema, 'referral_program_view')
     def openReferralProgramView(self, _):
-        if self.__referralCtrl and isReferralProgramEnabled():
+        if self.__referralCtrl and self.__referralCtrl.isEnabled():
             self.__referralCtrl.showWindow()
-        return {'success': self.__referralCtrl and isReferralProgramEnabled()}
+        return {'success': self.__referralCtrl and self.__referralCtrl.isEnabled}

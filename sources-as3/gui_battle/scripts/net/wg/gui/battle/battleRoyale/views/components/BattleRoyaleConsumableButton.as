@@ -324,7 +324,7 @@ package net.wg.gui.battle.battleRoyale.views.components
             _loc9_ = TOTAL_COOLDOWN_FRAMES * _loc8_;
             if(!this._isReplay)
             {
-               this.onCooldownTick();
+               invalidateData();
                this._cooldownTimer.start(param1,this,_loc9_,1,_loc7_);
                this._scheduler.scheduleRepeatableTask(this.onCooldownTick,COOLDOWN_INTERVAL,_loc5_ / COOLDOWN_INTERVAL);
             }

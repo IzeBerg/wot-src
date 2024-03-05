@@ -10,6 +10,7 @@ package net.wg.gui.lobby.settings
    import net.wg.gui.components.controls.InfoIcon;
    import net.wg.gui.components.controls.LabelControl;
    import net.wg.gui.components.controls.Slider;
+   import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.components.controls.constants.ToolTipShowType;
    import net.wg.gui.lobby.settings.components.RadioButtonBar;
    import net.wg.infrastructure.base.UIComponentEx;
@@ -19,7 +20,7 @@ package net.wg.gui.lobby.settings
       
       private static const OFFSET_CB_DISABLED:int = -26;
       
-      private static const NEVER_INDEX:int = 0;
+      private static const BTN_MIN_WIDTH:int = 128;
        
       
       public var fieldSetChat:FieldSet = null;
@@ -65,6 +66,12 @@ package net.wg.gui.lobby.settings
       public var gameplay_only10ModeCheckbox:CheckBox = null;
       
       public var gameplay_devMapsCheckbox:CheckBox = null;
+      
+      public var newbiePrebattleHintsCheckbox:CheckBox = null;
+      
+      public var newbieBattleHintsCheckbox:CheckBox = null;
+      
+      public var restartNewbieBattleHints:SoundButtonEx = null;
       
       public var battleLoadingInfoLabelControl:LabelControl = null;
       
@@ -280,6 +287,16 @@ package net.wg.gui.lobby.settings
          this.gameplay_only10ModeCheckbox.label = SETTINGS.GAMEPLAY_ONLY10MODE;
          this.gameplay_only10ModeCheckbox.toolTip = TOOLTIPS.ONLY10MODE;
          this.gameplay_only10ModeCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
+         this.newbiePrebattleHintsCheckbox.label = SETTINGS.GAME_NEWBIEPREBATTLEHINTS;
+         this.newbiePrebattleHintsCheckbox.toolTip = TOOLTIPS.NEWBIEPREBATTLEHINTS;
+         this.newbiePrebattleHintsCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
+         this.newbiePrebattleHintsCheckbox.multiline = true;
+         this.newbiePrebattleHintsCheckbox.wordWrap = true;
+         this.newbieBattleHintsCheckbox.label = SETTINGS.GAME_NEWBIEBATTLEHINTS;
+         this.newbieBattleHintsCheckbox.toolTip = TOOLTIPS.NEWBIEBATTLEHINTS;
+         this.newbieBattleHintsCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
+         this.restartNewbieBattleHints.label = SETTINGS.RESTARTNEWBIEBATTLEHINTS;
+         this.restartNewbieBattleHints.minWidth = BTN_MIN_WIDTH;
          this.battleLoadingInfoLabelControl.text = SETTINGS.GAME_BATTLELOADINGINFO;
          this.battleLoadingInfoLabelControl.toolTip = TOOLTIPS.BATTLELOADINGINFO;
          this.battleLoadingInfoLabelControl.infoIcoType = InfoIcon.TYPE_INFO;
@@ -432,6 +449,12 @@ package net.wg.gui.lobby.settings
          this.gameplay_only10ModeCheckbox = null;
          this.gameplay_devMapsCheckbox.dispose();
          this.gameplay_devMapsCheckbox = null;
+         this.newbiePrebattleHintsCheckbox.dispose();
+         this.newbiePrebattleHintsCheckbox = null;
+         this.newbieBattleHintsCheckbox.dispose();
+         this.newbieBattleHintsCheckbox = null;
+         this.restartNewbieBattleHints.dispose();
+         this.restartNewbieBattleHints = null;
          this.battleLoadingInfoLabelControl.dispose();
          this.battleLoadingInfoLabelControl = null;
          this.battleLoadingInfoDropDown.dispose();

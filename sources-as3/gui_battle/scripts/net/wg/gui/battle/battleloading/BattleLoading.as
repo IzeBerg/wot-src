@@ -231,7 +231,7 @@ package net.wg.gui.battle.battleloading
       private function onMapIconCompleteHandler(param1:UILoaderEvent) : void
       {
          this.removeMapIconListeners();
-         this.visible = true;
+         this.visible = _isCompVisible;
       }
    }
 }

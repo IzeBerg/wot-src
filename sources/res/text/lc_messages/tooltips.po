@@ -128,13 +128,11 @@ msgstr ""
 "• Hall of Fame\n"
 "• Clan creation\n"
 "• Global Map\n"
-"• Referral Program\n"
 "• Subscriptions\n"
 "• Profile on the game portal\n"
 "• Present receipt\n"
 "• Bonus codes\n"
-"• Authorization on the forum\n"
-"• Mobile assistant."
+"• Authorization on the forum"
 
 msgid "accountCompletionHangar/simple/text"
 msgstr "Click to view details about the player's account."
@@ -463,7 +461,7 @@ msgid "additionalRewards/customizations/projectionDecal"
 msgstr "%(value)s decal"
 
 msgid "additionalRewards/customizations/style"
-msgstr "\"%(value)s\" Style"
+msgstr "%(value)s Style"
 
 msgid "additionalRewards/dossier_achievement"
 msgstr "%(value)s medal"
@@ -505,6 +503,18 @@ msgstr ""
 "vehicle's armor. The shell can ricochet when it hits the armor at an angle. "
 "The penetration power of Armor-Piercing Composite Rigid shells decreases "
 "with distance traveled."
+
+msgid "advanced/ARMOR_PIERCING_CR_TRAY"
+msgstr ""
+"Star tray shells have both advantages and drawbacks, but the damage they "
+"cause depends on the distance to the target. These shells cause maximum "
+"damage to targets at distances up to 50 meters."
+
+msgid "advanced/ARMOR_PIERCING_TRAY"
+msgstr ""
+"Star tray shells have both advantages and drawbacks, but the damage they "
+"cause depends on the distance to the target. These shells cause maximum "
+"damage to targets at distances up to 50 meters."
 
 msgid "advanced/HIGH_EXPLOSIVE"
 msgstr ""
@@ -1616,6 +1626,11 @@ msgstr "Selection temporarily unavailable"
 msgid "battlePassOffer/etc"
 msgstr "...and other equipment."
 
+msgid "battlePassOffer/footer/battle_booster_gift"
+msgstr ""
+"When this Stage is completed, you can receive a directive by clicking the "
+"Claim Reward button above the Stage."
+
 msgid "battlePassOffer/footer/blueprint_gift"
 msgstr ""
 "When this Stage is completed, you can receive a set of blueprint fragments "
@@ -1631,12 +1646,12 @@ msgstr ""
 "When this Stage is completed, you can receive a Training Guide for the "
 "selected nation by clicking the Claim Reward button above the Stage."
 
-msgid "battlePassOffer/footer/new_device_fv_gift"
+msgid "battlePassOffer/footer/modernized_device_gift"
 msgstr ""
-"When this Stage is completed, you can receive a piece of standard equipment "
-"by clicking the Claim Reward button above the Stage."
+"When this Stage is completed, you can receive a piece of Experimental "
+"Equipment by clicking the Claim Reward button above the Stage."
 
-msgid "battlePassOffer/footer/new_device_mi_gift"
+msgid "battlePassOffer/footer/new_device_gift"
 msgstr ""
 "When this Stage is completed, you can receive a piece of standard equipment "
 "by clicking the Claim Reward button above the Stage."
@@ -1652,6 +1667,9 @@ msgstr ""
 msgid "battlePassOffer/point"
 msgstr "• %(item)s"
 
+msgid "battlePassOffer/title/battle_booster_gift"
+msgstr "Directives to Select From"
+
 msgid "battlePassOffer/title/blueprint_gift"
 msgstr "National Blueprint Fragments to Select From"
 
@@ -1661,11 +1679,11 @@ msgstr "Training Booklets to Select From"
 msgid "battlePassOffer/title/guide_gift"
 msgstr "Training Guides to Select From"
 
-msgid "battlePassOffer/title/new_device_fv_gift"
-msgstr "Standard Equipment to Select From"
+msgid "battlePassOffer/title/modernized_device_gift"
+msgstr "Experimental Equipment to Select From"
 
-msgid "battlePassOffer/title/new_device_mi_gift"
-msgstr "Equipment to Select From"
+msgid "battlePassOffer/title/new_device_gift"
+msgstr "Standard Equipment to Select From"
 
 msgid "battlePassOffer/title/recertification_gift"
 msgstr "Retraining Order"
@@ -4920,6 +4938,23 @@ msgstr "Ready!"
 msgid "fortification/sortie/battleRoom/status/notReady"
 msgstr "Not ready"
 
+msgid "fortification/sortie/battleRoom/unfrozeVehicleBtn"
+msgstr "Restore the vehicle to duty."
+
+msgid "fortification/sortie/battleRoom/unfrozeVehicleBtn/disabled/body"
+msgstr ""
+"The player joined the clan after it started completing the Progression. "
+"Reset the Progression to restore their vehicles to duty."
+
+msgid "fortification/sortie/battleRoom/unfrozeVehicleBtn/disabled/header"
+msgstr "Unable to Restore to Duty"
+
+msgid "fortification/sortie/battleRoom/vehBrokenIcon"
+msgstr ""
+"Vehicle is destroyed: The player will not receive personal Fame Points, the "
+"clan will not receive Stage Progress, and fewer clan Fame Points will be "
+"awarded (proportional to the number of remaining vehicles in a detachment)."
+
 msgid "fortification/sortie/bothRole/body"
 msgstr ""
 "This player can direct Artillery Strike at the selected area and add a bonus"
@@ -6422,6 +6457,15 @@ msgstr "Click to go to the Referral Program screen."
 msgid "loby_messenger/referral_button/header"
 msgstr "Referral Program"
 
+msgid "loby_messenger/referral_button/new_season/body"
+msgstr ""
+"The new Referral Program Season has started! Invite your friends to become "
+"Recruits, play together in a Platoon, earn Referral Points, and get valuable"
+" rewards."
+
+msgid "loby_messenger/referral_button/new_season/header"
+msgstr "Referral Program"
+
 msgid "loby_messenger/service_button/body"
 msgstr "View battle results, system notifications, and invitations received."
 
@@ -6912,6 +6956,23 @@ msgstr "Select vehicles: you can only join the battle with a complete group."
 
 msgid "multiselection/alert/header"
 msgstr "Vehicles Not Selected"
+
+msgid "newbieBattleHints/body"
+msgstr ""
+"This setting enables contextual beginner tips in Random Battles.\n"
+"<font size='10'> </font>\n"
+"Each tip is only shown a few times—use the Reset Beginner Tips button to receive them all again."
+
+msgid "newbieBattleHints/header"
+msgstr "Enable Beginner Tips in Random Battles"
+
+msgid "newbiePrebattleHints/body"
+msgstr ""
+"Enables beginner tips on Random Battle loading screens only.\n"
+"These will override other tips on the battle loading screen."
+
+msgid "newbiePrebattleHints/header"
+msgstr "Beginner Tips on the Battle Loading Screen"
 
 msgid "notificationsView/tab/info/body"
 msgstr "General Notifications"
@@ -7503,6 +7564,16 @@ msgstr ""
 "noble in this one. And his battle scars adorn him.\""
 
 msgid "notrecruitedtankman/commander_tolmeron/label"
+msgstr "Unique Commander"
+
+msgid "notrecruitedtankman/commander_twitch50/desc"
+msgstr ""
+"In a way that befits a ninjutsu master, Splinter’s origins are shrouded in "
+"mystery. A man who turned into a humanoid rat, or an evolved rodent—yet does"
+" it really matter? We all know him as a great warrior, a wise sensei, and a "
+"genuinely good person: a loving father to four adoptive sons."
+
+msgid "notrecruitedtankman/commander_twitch50/label"
 msgstr "Unique Commander"
 
 msgid "notrecruitedtankman/commander_twitch_ermelinda/desc"
@@ -8447,6 +8518,145 @@ msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankmen_bp12_9/label"
 msgstr "Battle Pass Season XII, Chapter \"Distant Futures\""
+
+msgid "notrecruitedtankman/tankmen_bp13_1/desc"
+msgstr ""
+"A fearless warrior who always stands for what's right, Leonardo is the "
+"natural leader of the Turtle gang. When his brothers look to him for "
+"inspiration and guidance, Leo is always there for them—whether they "
+"appreciate it or not. Armed with an unwavering sense of justice and the "
+"courage to act upon it, Leo and his katana are always ready to fight to the "
+"very end, because, as he says, \"We Turtles don't know the meaning of the "
+"word 'defeat!'\""
+
+msgid "notrecruitedtankman/tankmen_bp13_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_1/label"
+msgstr "Battle Pass Season XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_2/desc"
+msgstr ""
+"With a brilliant mind and boundless scientific curiosity, Donatello is the "
+"brains of the Turtle gang—and he's one Turtle you want by your side when you"
+" need a way out of a sticky situation. A true tech wiz, some of his ideas "
+"might be a little too zany—and he has a habit of speaking in "
+"technobabble—but his quick thinking and innovative inventions have saved the"
+" Turtles' shells on more than one occasion."
+
+msgid "notrecruitedtankman/tankmen_bp13_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_2/label"
+msgstr "Battle Pass Season XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_3/desc"
+msgstr ""
+"Cool but rude? Yeah, that's right, and what's it to you? Strong, short-"
+"tempered, and with a tongue as sharp as the sai he wields, Raphael is not a "
+"Turtle you want to upset. He might come across as a world-weary "
+"cynic...okay, he IS a world-weary cynic, but that's only because he cares so"
+" deeply about protecting his brothers. Just don't get on his nerves—the only"
+" thing that hurts more than Raphael's sai attacks are his sarcastic put-"
+"downs."
+
+msgid "notrecruitedtankman/tankmen_bp13_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_3/label"
+msgstr "Battle Pass Season XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_4/desc"
+msgstr ""
+"Fighting crime and standing against evil? Eh. Video games, skateboarding, "
+"and a big slice of a pepperoni pizza? Now we're talking! Sure, Mikey's "
+"priorities might be a little...different, but he's no slouch. Powered by "
+"pizza and with a smile on his face, Mikey is a party dude who lifts his "
+"brothers' spirits at the toughest of times—and he's always ready to dish out"
+" some serious nunchuck justice. Cowabunga!"
+
+msgid "notrecruitedtankman/tankmen_bp13_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_4/label"
+msgstr "Battle Pass Season XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_5/desc"
+msgstr ""
+"Formerly a ninjutsu student named Oroku Saki, the Shredder assumed his new "
+"identity after a bitter feud with a fellow student—one Hamato Yoshi. Now "
+"leader of the Foot Clan, the Shredder is consumed by an obsessive desire for"
+" vengeance against his old rival—now known as Master Splinter—and his Turtle"
+" sons. Clad in razor-sharp armor and with loyal enforcers ready to do his "
+"evil bidding, he will stop at nothing until he gets his wish: to dine on "
+"turtle soup!"
+
+msgid "notrecruitedtankman/tankmen_bp13_5/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_5/label"
+msgstr "Battle Pass Season XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_6/desc"
+msgstr ""
+"Krang may not have a body, but he does have an ambition: to take over the "
+"world! Banished to Earth from his home of Dimension X in mysterious "
+"circumstances, Krang is hell-bent on world domination, and has joined forces"
+" with the evil Shredder to achieve his goal. With some seriously impressive "
+"technology at his disposal—including a powerful android body and a mobile "
+"battle fortress, the Technodrome—he's not going to let a few measly Turtles "
+"stand in his way!"
+
+msgid "notrecruitedtankman/tankmen_bp13_6/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_6/label"
+msgstr "Battle Pass Season XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_7/desc"
+msgstr ""
+"Whaddya mean Bebop ain't the sharpest tool in the shed? The only sharp tools"
+" he needs are ones for taking apart Toitles! What he may lack in self-"
+"awareness, he makes up for in strength, and Bebop is a real tough guy who's "
+"great at following orders. That means he's ready to do whatever the Shredder"
+" and his partner-in-crime Rocksteady tell him to—and if that involves "
+"teaching some puny little Toitles a lesson, even better!"
+
+msgid "notrecruitedtankman/tankmen_bp13_7/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_7/label"
+msgstr "Battle Pass Season XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_8/desc"
+msgstr ""
+"Hey, Rocksteady's the brains of the operation here! Never seen without his "
+"loyal accomplice Bebop, Rocksteady is one mean rhinoceros ready to go to any"
+" lengths to do the Shredder's dirty work and teach them Turtles a lesson. "
+"Sure, his \"genius\" plans might not always work out, but he's a hard-headed"
+" hoodlum who won't stop until they do. When Rocksteady's around, no Turtles "
+"are safe from being splatterized!"
+
+msgid "notrecruitedtankman/tankmen_bp13_8/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_8/label"
+msgstr "Battle Pass Season XIII"
+
+msgid "notrecruitedtankman/tankmen_bp13_9/desc"
+msgstr ""
+"Live for Channel 6 News, New York City's most determined reporter has a "
+"knack for being where the action is. With a big heart and an even bigger "
+"dedication to getting the greatest scoops, April is a true professional and "
+"an invaluable ally to her newfound friends. She's not quite sure how she "
+"ended up patrolling the city sewers with a team of crime-fighting Turtles, "
+"but one thing is certain—it's going to be the story of the year!"
+
+msgid "notrecruitedtankman/tankmen_bp13_9/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp13_9/label"
+msgstr "Battle Pass Season XIII"
 
 msgid "notrecruitedtankman/tankmen_bp2_1/desc"
 msgstr ""
@@ -10009,7 +10219,7 @@ msgid "quests/linkBtn/battlePass"
 msgstr "See Battle Pass Progression"
 
 msgid "quests/linkBtn/battlePass/select"
-msgstr "To Battle Pass"
+msgstr "To Battle Pass Chapter selection"
 
 msgid "quests/linkBtn/customizationProgression/disabled"
 msgstr "Detailed information is currently unavailable."
@@ -10735,6 +10945,14 @@ msgstr "Messages in Chat"
 msgid "settings/keyMovement/title"
 msgstr "Lock Hull / Switch Mode"
 
+msgid "settings/keyboard/backDraftInvert/body"
+msgstr ""
+"Swaps the Left/Right keys when moving backward. Upon pressing the Left key, "
+"your vehicle will turn right, and vice versa."
+
+msgid "settings/keyboard/backDraftInvert/header"
+msgstr "Reverse inversion"
+
 msgid "settings/minimapCircles/drawRange/body"
 msgstr "Shows the maximum draw range for allied and enemy vehicles."
 
@@ -10773,6 +10991,22 @@ msgstr ""
 
 msgid "settings/minimapCircles/viewRange/title"
 msgstr "2. View Range Circle"
+
+msgid "settings/mouse/sensitivity/invertationHor/body"
+msgstr ""
+"Inverts horizontal mouse look: when moving the mouse to the right, the "
+"camera (gun) turns to the left, and vice versa."
+
+msgid "settings/mouse/sensitivity/invertationHor/header"
+msgstr "Horizontal inversion"
+
+msgid "settings/mouse/sensitivity/invertationVert/body"
+msgstr ""
+"Inverts vertical mouse look: when moving the mouse up, the camera (gun) goes"
+" down, and vice versa."
+
+msgid "settings/mouse/sensitivity/invertationVert/header"
+msgstr "Vertical inversion"
 
 msgid "settings/ribbons/receivedDamage/body"
 msgstr ""
@@ -11283,6 +11517,18 @@ msgstr "Medium Tank"
 msgid "tank_params/avgParamComment/damage"
 msgstr "Minimum-maximum damage %(units)s"
 
+msgid "tank_params/avgParamComment/maxMutableDamage"
+msgstr "Minimum–maximum damage at 50 m %(units)s"
+
+msgid "tank_params/avgParamComment/maxPiercingPower"
+msgstr "Minimum–maximum value at 50 m %(units)s"
+
+msgid "tank_params/avgParamComment/minMutableDamage"
+msgstr "Minimum–maximum damage at %(distance)s m %(units)s"
+
+msgid "tank_params/avgParamComment/minPiercingPower"
+msgstr "Minimum–maximum value at %(distance)s m %(units)s"
+
 msgid "tank_params/avgParamComment/piercingPower"
 msgstr "Minimum-maximum value %(units)s"
 
@@ -11316,7 +11562,8 @@ msgstr ""
 
 msgid "tank_params/desc/avgDamage"
 msgstr ""
-"Average damage caused by a standard shell after an armor-penetrating hit."
+"Average damage caused by a standard shell after an armor-penetrating hit. "
+"The potential damage dispersion is +/- 25% of the average value."
 
 msgid "tank_params/desc/avgDamagePerMinute"
 msgstr ""
@@ -11326,7 +11573,7 @@ msgstr ""
 msgid "tank_params/desc/avgPiercingPower"
 msgstr ""
 "Average armor thickness penetrated by a standard shell, adjusted for shell "
-"normalization."
+"normalization. The dispersion is +/- 25% of the average value."
 
 msgid "tank_params/desc/burstFireRate"
 msgstr ""
@@ -11421,8 +11668,8 @@ msgstr ""
 
 msgid "tank_params/desc/pitchLimits"
 msgstr ""
-"Maximum angles of gun depression/elevation with respect to its default "
-"position."
+"Maximum vertical angles that the gun can traverse along relative to the "
+"vehicle hull and considering its suspension."
 
 msgid "tank_params/desc/radioDistance"
 msgstr ""
@@ -12169,6 +12416,9 @@ msgstr "In Depot"
 msgid "vehicle/level"
 msgstr "Tier"
 
+msgid "vehicle/level_and_type"
+msgstr "Tier %(vehicleLevel)s %(vehicleType)s"
+
 msgid "vehicle/mastering"
 msgstr "Vehicle difficulty: "
 
@@ -12440,40 +12690,40 @@ msgid "vehiclePreview/boxTooltip/body"
 msgstr "Click to view information about this bundle's items."
 
 msgid "vehiclePreview/boxTooltip/camouflage/header"
-msgstr "Camouflage \"%(value)s\""
+msgstr "Camouflage %(value)s"
 
 msgid "vehiclePreview/boxTooltip/emblem/header"
-msgstr "Emblem \"%(value)s\""
+msgstr "Emblem %(value)s"
 
 msgid "vehiclePreview/boxTooltip/equipment/header"
-msgstr "Consumable '%(value)s'"
+msgstr "Consumable %(value)s"
 
 msgid "vehiclePreview/boxTooltip/header"
 msgstr "Related Rewards"
 
 msgid "vehiclePreview/boxTooltip/inscription/header"
-msgstr "Inscription \"%(value)s\""
+msgstr "Inscription %(value)s"
 
 msgid "vehiclePreview/boxTooltip/modification/header"
-msgstr "Effect \"%(value)s\""
+msgstr "Effect %(value)s"
 
 msgid "vehiclePreview/boxTooltip/optionalDevice/header"
-msgstr "Equipment '%(value)s'"
+msgstr "Equipment %(value)s"
 
 msgid "vehiclePreview/boxTooltip/paint/header"
-msgstr "Paint \"%(value)s\""
+msgstr "Paint %(value)s"
 
 msgid "vehiclePreview/boxTooltip/personalNumber/header"
 msgstr "%(group)s %(value)s"
 
 msgid "vehiclePreview/boxTooltip/projectionDecal/header"
-msgstr "Decal \"%(value)s\""
+msgstr "Decal %(value)s"
 
 msgid "vehiclePreview/boxTooltip/shell/header"
-msgstr "Shell \"%(value)s\""
+msgstr "Shell %(value)s"
 
 msgid "vehiclePreview/boxTooltip/style/header"
-msgstr "\"%(value)s\" Style"
+msgstr "%(value)s Style"
 
 msgid "vehiclePreview/buyButton/endTime/body"
 msgstr "Offer expired"

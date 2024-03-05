@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_upgrade_02_skinned_0</identifier>
+					<fx>shaders/custom/emissive.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						emissiveTexture
+						<Texture>particles/Tank/customization/GB100_Manticore_BXI_3DSt/GB100_Manticore_BXI_3DSt_gun_lights.dds</Texture>
+					</property>
+					<property>
+						g_coldColor
+						<Vector4>1.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_emissiveParams
+						<Vector4>0.000000 0.800000 0.000000 50.000000</Vector4>
+					</property>
+					<property>
+						g_hotColor
+						<Vector4>1.000000 0.000000 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_maskFromTex
+						<Bool>true</Bool>
+					</property>
+					<property>
+						phaseTexture
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Gradient_linear_01.dds</Texture>
+					</property>
+					<property>
+						texAddressMode
+						<Int>3</Int>
+					</property>
+				</material>
+				<groupOrigin>0.003068 1.435162 2.536326</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.093536 1.388456 0.834440</min>
+		<max>0.099673 1.481868 4.238213</max>
+	</boundingBox>
+	<geometrySize>840</geometrySize>
+	<minUVDensity>0.098995</minUVDensity>
+</root>

@@ -6,8 +6,12 @@ package net.wg.infrastructure.base.meta
    {
        
       
+      function onFadeOutFinishedS() : void;
+      
       function as_showHint(param1:Object) : void;
       
       function as_hideHint() : void;
+      
+      function as_cancelFadeOut() : void;
    }
 }

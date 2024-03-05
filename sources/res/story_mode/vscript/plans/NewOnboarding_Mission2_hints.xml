@@ -1294,120 +1294,6 @@
 				</slots>
 			</block>
 			<block>
-				<class>StartScript</class>
-				<id>StartScript_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_1</id>
-				<buddy>Variable_1</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_11</id>
-				<buddy>Variable_7</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_2</id>
-				<buddy>Variable_2</buddy>
-				<params>
-					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>InitAnimatedHint</class>
-				<id>InitAnimatedHint_4</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>typeId</name>
-						<const>\SniperOnDistance\</const>
-					</slot>
-					<slot>
-						<name>text</name>
-						<const>\#story_mode.sm_battle:hint_sniper_enter\</const>
-					</slot>
-					<slot>
-						<name>cooldownAfter</name>
-						<const>\3.000000\</const>
-					</slot>
-					<slot>
-						<name>completeDuration</name>
-						<const>\0.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>InitAnimatedHint</class>
-				<id>InitAnimatedHint_2</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>typeId</name>
-						<const>\AdvancedSniper\</const>
-					</slot>
-					<slot>
-						<name>text</name>
-						<const>\#story_mode.sm_battle:hint_sniper_weak_spots_enter\</const>
-					</slot>
-					<slot>
-						<name>cooldownAfter</name>
-						<const>\2.000000\</const>
-					</slot>
-					<slot>
-						<name>completeDuration</name>
-						<const>\0.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>InitAnimatedHint</class>
-				<id>InitAnimatedHint_6</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>typeId</name>
-						<const>\WeakPoints\</const>
-					</slot>
-					<slot>
-						<name>text</name>
-						<const>\#story_mode.sm_battle:hint_aim_weak_spots\</const>
-					</slot>
-					<slot>
-						<name>cooldownAfter</name>
-						<const>\2.000000\</const>
-					</slot>
-					<slot>
-						<name>completeDuration</name>
-						<const>\0.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>Sequence</class>
 				<id>Sequence_37</id>
 				<params>
@@ -2616,18 +2502,6 @@
 			</block>
 			<block>
 				<class>Macro</class>
-				<id>Macro_18</id>
-				<params>
-					<param>
-						ControlHint
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Macro</class>
 				<id>Macro_10</id>
 				<params>
 					<param>
@@ -2673,14 +2547,25 @@
 				</slots>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_11</id>
-				<buddy>Variable_1</buddy>
+				<class>SelectHint</class>
+				<id>SelectHint_1</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						story_mode.story_mode.sniper_on_distance
+						<name>scope, hintId</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_18</id>
+				<params>
+					<param>
+						ControlHint
+						<name>Macro Name</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -3029,14 +2914,13 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_15</id>
-				<buddy>Variable_2</buddy>
+				<class>SelectHint</class>
+				<id>SelectHint_2</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						story_mode.story_mode.advanced_sniper
+						<name>scope, hintId</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -3069,18 +2953,6 @@
 						<const>\BOSS_2B\</const>
 					</slot>
 				</slots>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_21</id>
-				<params>
-					<param>
-						ControlHint
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
 			</block>
 			<block>
 				<class>FlowGate</class>
@@ -3121,14 +2993,13 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_4</id>
-				<buddy>Variable_7</buddy>
+				<class>SelectHint</class>
+				<id>SelectHint_3</id>
 				<params>
 					<param>
-						IdentifierT
-						<name>Variable Type</name>
-						<type>TypeT</type>
+						story_mode.story_mode.advanced_sniper_enter
+						<name>scope, hintId</name>
+						<type>StringT</type>
 					</param>
 				</params>
 				<slots/>
@@ -3273,6 +3144,18 @@
 				<class>OnPlayerSnipeMode</class>
 				<id>OnPlayerSnipeMode_6</id>
 				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_21</id>
+				<params>
+					<param>
+						ControlHint
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
 				<slots/>
 			</block>
 			<block>
@@ -4677,6 +4560,12 @@
 				<slots/>
 			</block>
 			<block>
+				<class>SetAnimatedHintPenetrationMessage</class>
+				<id>SetAnimatedHintPenetrationMessage_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
 				<class>Counter</class>
 				<id>Counter_4</id>
 				<params/>
@@ -4697,12 +4586,6 @@
 						<const>\false\</const>
 					</slot>
 				</slots>
-			</block>
-			<block>
-				<class>SetAnimatedHintPenetrationString</class>
-				<id>SetAnimatedHintPenetrationString_1</id>
-				<params/>
-				<slots/>
 			</block>
 			<block>
 				<class>DoOnce</class>
@@ -4803,8 +4686,8 @@
 				</slots>
 			</block>
 			<block>
-				<class>SetAnimatedHintPenetrationString</class>
-				<id>SetAnimatedHintPenetrationString_2</id>
+				<class>SetAnimatedHintPenetrationMessage</class>
+				<id>SetAnimatedHintPenetrationMessage_2</id>
 				<params/>
 				<slots>
 					<slot>
@@ -7316,60 +7199,6 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>InitAnimatedHint_4</from>
-				<input>input</input>
-				<to>SetVariable_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_4</from>
-				<input>value</input>
-				<to>SetVariable_1</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_2</from>
-				<input>input</input>
-				<to>SetVariable_11</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_2</from>
-				<input>value</input>
-				<to>SetVariable_11</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_6</from>
-				<input>input</input>
-				<to>SetVariable_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>InitAnimatedHint_6</from>
-				<input>value</input>
-				<to>SetVariable_2</to>
-				<output>id</output>
-			</connection>
-			<connection>
-				<from>StartScript_1</from>
-				<input>in</input>
-				<to>InitAnimatedHint_4</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>SetVariable_1</from>
-				<input>in</input>
-				<to>InitAnimatedHint_2</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>SetVariable_11</from>
-				<input>in</input>
-				<to>InitAnimatedHint_6</to>
-				<output>out</output>
-			</connection>
-			<connection>
 				<from>OnPlayerSnipeMode_11</from>
 				<input>input</input>
 				<to>Sequence_37</to>
@@ -8024,42 +7853,6 @@
 				<output>onEnter</output>
 			</connection>
 			<connection>
-				<from>FlowGate_6</from>
-				<input>show</input>
-				<to>Macro_18</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>Sequence_10</from>
-				<input>hide</input>
-				<to>Macro_18</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>Macro_1</from>
-				<input>hide</input>
-				<to>Macro_18</to>
-				<output>notInCone</output>
-			</connection>
-			<connection>
-				<from>Sequence_12</from>
-				<input>hide</input>
-				<to>Macro_18</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>Macro_47</from>
-				<input>hide</input>
-				<to>Macro_18</to>
-				<output>notInCone</output>
-			</connection>
-			<connection>
-				<from>GetVariable_11</from>
-				<input>hintId</input>
-				<to>Macro_18</to>
-				<output>value</output>
-			</connection>
-			<connection>
 				<from>Macro_10</from>
 				<input>input</input>
 				<to>Sequence_12</to>
@@ -8070,6 +7863,42 @@
 				<input>input</input>
 				<to>Sequence_12</to>
 				<output>allDestroyed</output>
+			</connection>
+			<connection>
+				<from>FlowGate_6</from>
+				<input>show</input>
+				<to>Macro_18</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>Macro_47</from>
+				<input>hide</input>
+				<to>Macro_18</to>
+				<output>notInCone</output>
+			</connection>
+			<connection>
+				<from>Macro_1</from>
+				<input>hide</input>
+				<to>Macro_18</to>
+				<output>notInCone</output>
+			</connection>
+			<connection>
+				<from>Sequence_10</from>
+				<input>hide</input>
+				<to>Macro_18</to>
+				<output>o1</output>
+			</connection>
+			<connection>
+				<from>Sequence_12</from>
+				<input>hide</input>
+				<to>Macro_18</to>
+				<output>o1</output>
+			</connection>
+			<connection>
+				<from>SelectHint_1</from>
+				<input>hintId</input>
+				<to>Macro_18</to>
+				<output>id</output>
 			</connection>
 			<connection>
 				<from>Macro_23</from>
@@ -8198,22 +8027,22 @@
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>OnPlayerSnipeMode_6</from>
-				<input>hide</input>
-				<to>Macro_20</to>
-				<output>onExit</output>
-			</connection>
-			<connection>
 				<from>Sequence_21</from>
 				<input>hide</input>
 				<to>Macro_20</to>
 				<output>o0</output>
 			</connection>
 			<connection>
-				<from>GetVariable_15</from>
+				<from>OnPlayerSnipeMode_6</from>
+				<input>hide</input>
+				<to>Macro_20</to>
+				<output>onExit</output>
+			</connection>
+			<connection>
+				<from>SelectHint_2</from>
 				<input>hintId</input>
 				<to>Macro_20</to>
-				<output>value</output>
+				<output>id</output>
 			</connection>
 			<connection>
 				<from>Sequence_17</from>
@@ -8244,30 +8073,6 @@
 				<input>input</input>
 				<to>Sequence_17</to>
 				<output>inCone</output>
-			</connection>
-			<connection>
-				<from>FlowGate_7</from>
-				<input>show</input>
-				<to>Macro_21</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>OnPlayerSnipeMode_6</from>
-				<input>hide</input>
-				<to>Macro_21</to>
-				<output>onEnter</output>
-			</connection>
-			<connection>
-				<from>Sequence_21</from>
-				<input>hide</input>
-				<to>Macro_21</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>GetVariable_4</from>
-				<input>hintId</input>
-				<to>Macro_21</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Sequence_17</from>
@@ -8394,6 +8199,30 @@
 				<input>input</input>
 				<to>Sequence_11</to>
 				<output>allDestroyed</output>
+			</connection>
+			<connection>
+				<from>FlowGate_7</from>
+				<input>show</input>
+				<to>Macro_21</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>Sequence_21</from>
+				<input>hide</input>
+				<to>Macro_21</to>
+				<output>o1</output>
+			</connection>
+			<connection>
+				<from>OnPlayerSnipeMode_6</from>
+				<input>hide</input>
+				<to>Macro_21</to>
+				<output>onEnter</output>
+			</connection>
+			<connection>
+				<from>SelectHint_3</from>
+				<input>hintId</input>
+				<to>Macro_21</to>
+				<output>id</output>
 			</connection>
 			<connection>
 				<from>TriggerExternal_1</from>
@@ -9194,6 +9023,30 @@
 				<output>completed</output>
 			</connection>
 			<connection>
+				<from>Sequence_25</from>
+				<input>in</input>
+				<to>SetAnimatedHintPenetrationMessage_1</to>
+				<output>o1</output>
+			</connection>
+			<connection>
+				<from>FlowGate_10</from>
+				<input>in</input>
+				<to>SetAnimatedHintPenetrationMessage_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>OnGunMarkerPenetrationStateChanged_1</from>
+				<input>crosshairPenetration</input>
+				<to>SetAnimatedHintPenetrationMessage_1</to>
+				<output>state</output>
+			</connection>
+			<connection>
+				<from>GetGameSetting_2</from>
+				<input>isColorBlind</input>
+				<to>SetAnimatedHintPenetrationMessage_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
 				<from>Sequence_26</from>
 				<input>input</input>
 				<to>Counter_4</to>
@@ -9216,30 +9069,6 @@
 				<input>open</input>
 				<to>FlowGate_15</to>
 				<output>o1</output>
-			</connection>
-			<connection>
-				<from>FlowGate_10</from>
-				<input>in</input>
-				<to>SetAnimatedHintPenetrationString_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>Sequence_25</from>
-				<input>in</input>
-				<to>SetAnimatedHintPenetrationString_1</to>
-				<output>o1</output>
-			</connection>
-			<connection>
-				<from>OnGunMarkerPenetrationStateChanged_1</from>
-				<input>crosshairPenetration</input>
-				<to>SetAnimatedHintPenetrationString_1</to>
-				<output>state</output>
-			</connection>
-			<connection>
-				<from>GetGameSetting_2</from>
-				<input>isColorBlind</input>
-				<to>SetAnimatedHintPenetrationString_1</to>
-				<output>value</output>
 			</connection>
 			<connection>
 				<from>Macro_38</from>
@@ -9316,13 +9145,13 @@
 			<connection>
 				<from>Sequence_23</from>
 				<input>in</input>
-				<to>SetAnimatedHintPenetrationString_2</to>
+				<to>SetAnimatedHintPenetrationMessage_2</to>
 				<output>o1</output>
 			</connection>
 			<connection>
 				<from>GetGameSetting_2</from>
 				<input>isColorBlind</input>
-				<to>SetAnimatedHintPenetrationString_2</to>
+				<to>SetAnimatedHintPenetrationMessage_2</to>
 				<output>value</output>
 			</connection>
 			<connection>
@@ -11175,12 +11004,6 @@
 						<slots/>
 					</block>
 					<block>
-						<class>ShowAnimatedHint</class>
-						<id>ShowAnimatedHint_7</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
 						<class>Counter</class>
 						<id>Counter_2</id>
 						<params/>
@@ -11188,6 +11011,22 @@
 							<slot>
 								<name>count</name>
 								<const>\1\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>ShowHint</class>
+						<id>ShowHint_1</id>
+						<params>
+							<param>
+								<name>Parameters names separated by &quot; &quot;. Example: magic test</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>immediately</name>
+								<const>\false\</const>
 							</slot>
 						</slots>
 					</block>
@@ -11201,16 +11040,13 @@
 								<type>StringT</type>
 							</param>
 							<param>
-								IdentifierT
+								StringT
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
 							<param>
+								Default
 								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								<name>Input Method</name>
 								<type>StringT</type>
 							</param>
 						</params>
@@ -11254,8 +11090,8 @@
 						<slots/>
 					</block>
 					<block>
-						<class>HideAnimatedHint</class>
-						<id>HideAnimatedHint_7</id>
+						<class>HideHint</class>
+						<id>HideHint_1</id>
 						<params/>
 						<slots/>
 					</block>
@@ -11279,18 +11115,6 @@
 						<output>show</output>
 					</connection>
 					<connection>
-						<from>Counter_2</from>
-						<input>in</input>
-						<to>ShowAnimatedHint_7</to>
-						<output>completed</output>
-					</connection>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>id</input>
-						<to>ShowAnimatedHint_7</to>
-						<output>hintId</output>
-					</connection>
-					<connection>
 						<from>Sequence_6</from>
 						<input>input</input>
 						<to>Counter_2</to>
@@ -11303,6 +11127,18 @@
 						<output>o0</output>
 					</connection>
 					<connection>
+						<from>Counter_2</from>
+						<input>in</input>
+						<to>ShowHint_1</to>
+						<output>completed</output>
+					</connection>
+					<connection>
+						<from>MacroInput_1</from>
+						<input>hintId</input>
+						<to>ShowHint_1</to>
+						<output>hintId</output>
+					</connection>
+					<connection>
 						<from>MacroInput_3</from>
 						<input>input</input>
 						<to>Sequence_7</to>
@@ -11311,13 +11147,13 @@
 					<connection>
 						<from>Counter_3</from>
 						<input>in</input>
-						<to>HideAnimatedHint_7</to>
+						<to>HideHint_1</to>
 						<output>completed</output>
 					</connection>
 					<connection>
 						<from>MacroInput_1</from>
-						<input>id</input>
-						<to>HideAnimatedHint_7</to>
+						<input>hintId</input>
+						<to>HideHint_1</to>
 						<output>hintId</output>
 					</connection>
 					<connection>

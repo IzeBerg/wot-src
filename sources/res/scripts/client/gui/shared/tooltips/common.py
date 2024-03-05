@@ -1,5 +1,6 @@
 import cPickle, logging, math
 from collections import namedtuple, defaultdict
+from gui.impl.lobby.collection.tooltips.collection_item_tooltip_view import CollectionItemTooltipView
 from gui.impl.lobby.personal_reserves.tooltips.personal_reserves_tooltip_view import PersonalReservesTooltipView
 from gui.impl.pub import ToolTipWindow
 from gui.impl.pub.tooltip_window import SimpleTooltipContent
@@ -1588,6 +1589,18 @@ class PersonalReservesWidgetTooltipContent(BlocksTooltipData):
 
     def getDisplayableData(self, *args):
         content = PersonalReservesTooltipView()
+        window = ToolTipWindow(None, content, content.getParentWindow())
+        return window
+
+
+class CollectionItemTooltipContentWindowData(ToolTipBaseData):
+
+    def __init__(self, context):
+        super(CollectionItemTooltipContentWindowData, self).__init__(context, TOOLTIPS_CONSTANTS.COLLECTION_ITEM)
+
+    def getDisplayableData(self, itemID, isDetailed, *args, **kwargs):
+        _, _, collectionID, itemID = itemID.split(':')
+        content = CollectionItemTooltipView(int(itemID), int(collectionID), isDetailed)
         window = ToolTipWindow(None, content, content.getParentWindow())
         return window
 

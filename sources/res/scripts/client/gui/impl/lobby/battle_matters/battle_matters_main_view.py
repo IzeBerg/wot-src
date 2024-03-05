@@ -152,10 +152,11 @@ class BattleMattersMainView(ViewImpl):
             bonuses = sorted(quest.getBonuses(), cmp=bonusesSort)
             packer = getBattleMattersBonusPacker()
             packed = []
-            for bonus in bonuses[showCount + 1:]:
+            for bonus in bonuses:
                 packed.extend(packer.pack(bonus))
 
-            return AdditionalRewardsTooltip(packed)
+            additionalRewards = [ bonus for bonus in packed[showCount:] ]
+            return AdditionalRewardsTooltip(additionalRewards)
         if contentID == R.views.lobby.battle_matters.tooltips.BattleMattersTokenTooltipView():
             return BattleMattersTokenTooltipView()
         return super(BattleMattersMainView, self).createToolTipContent(event, contentID)

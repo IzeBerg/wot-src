@@ -28,12 +28,8 @@
 						<Vector4>0.992157 0.886275 0.733333 1.000000</Vector4>
 					</property>
 					<property>
-						diffuseUVSpeedAlphaOffset
-						<Vector4>-0.000000 -0.000000 0.000000 0.000000</Vector4>
-					</property>
-					<property>
 						distortion_UV_Speed_Amount
-						<Vector4>-0.010000 -0.036000 0.060000 0.070000</Vector4>
+						<Vector4>-0.080000 0.020000 0.060000 0.120000</Vector4>
 					</property>
 					<property>
 						lightMultipliers
@@ -42,18 +38,15 @@
 					<property>
 						selfIllumLight
 						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+						<Vector3>1.000000 1.000000 1.000000</Vector3>
 					</property>
 					<property>
 						alphaFadeAmountFresnel
 						<Vector4>1.000000 4.000000 2.000000 0.150000</Vector4>
 					</property>
 					<property>
-						softFactor
-						<Float>1.000000</Float>
-					</property>
-					<property>
 						doubleSided
-						<Bool>false</Bool>
+						<Bool>true</Bool>
 					</property>
 					<property>
 						enableLighting
@@ -62,10 +55,6 @@
 					<property>
 						alphaFreshnelEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						alphaAdditiveEnable
-						<Bool>false</Bool>
 					</property>
 					<property>
 						diffuseMap

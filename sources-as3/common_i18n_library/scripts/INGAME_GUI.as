@@ -239,6 +239,10 @@ package
       
       public static const CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_ATK_AUTOCOMMIT:String = "#ingame_gui:chat_shortcuts/attention_to_objective_atk_autocommit";
       
+      public static const CHAT_SHORTCUTS_MOVE_TO_TARGET:String = "#ingame_gui:chat_shortcuts/move_to_target";
+      
+      public static const CHAT_SHORTCUTS_MOVE_TO_TARGET_AUTOCOMMIT:String = "#ingame_gui:chat_shortcuts/move_to_target_autocommit";
+      
       public static const CHAT_SHORTCUTS_ATTENTION_TO_BASE_DEF:String = "#ingame_gui:chat_shortcuts/attention_to_base_def";
       
       public static const CHAT_SHORTCUTS_ATTENTION_TO_BASE_DEF_NUMBERED:String = "#ingame_gui:chat_shortcuts/attention_to_base_def_numbered";
@@ -1258,6 +1262,8 @@ package
       public static const EFFICIENCYRIBBONS_AIRSTRIKEDMG:String = "#ingame_gui:efficiencyRibbons/AirstrikeDmg";
       
       public static const EFFICIENCYRIBBONS_ARTILLERYDMG:String = "#ingame_gui:efficiencyRibbons/ArtilleryDmg";
+      
+      public static const EFFICIENCYRIBBONS_HEALTHADDED:String = "#ingame_gui:efficiencyRibbons/healthAdded";
       
       public static const DAMAGELOG_SHELLTYPE_ARMOR_PIERCING:String = "#ingame_gui:damageLog/shellType/ARMOR_PIERCING";
       
