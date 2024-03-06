@@ -54,6 +54,8 @@ BACKWARD_QUALITY_PARAMS = frozenset([
  DUAL_ACCURACY_COOLING_DELAY,
  KPI.Name.ART_NOTIFICATION_DELAY_FACTOR,
  KPI.Name.DAMAGED_MODULES_DETECTION_TIME])
+PARAMS_WITH_BATTLE_MODIFIERS = {'maxHealth': {
+               'vehicleHealth'}}
 NEGATIVE_PARAMS = [
  'switchOnTime', 'switchOffTime']
 PARAMS_WITH_IGNORED_EMPTY_VALUES = {
@@ -160,8 +162,14 @@ class VehiclesComparator(ItemsComparator):
     def __getCurrentParamBonuses(self, paramName, possibleBonuses):
         if paramName in CONDITIONAL_BONUSES:
             return self.__getConditionalBonuses(paramName, possibleBonuses)
+        result = possibleBonuses.intersection(self.__bonuses)
+        suitableBattleModifiers = PARAMS_WITH_BATTLE_MODIFIERS.get(paramName, set())
+        for bonusName, bonusGroup in self.__bonuses:
+            if bonusGroup == BonusTypes.BATTLE_MODIFIERS and bonusName in suitableBattleModifiers:
+                result.add((bonusName, bonusGroup))
+
         return (
-         possibleBonuses.intersection(self.__bonuses), {})
+         result, {})
 
     def __getConditionalBonuses(self, paramName, possibleBonuses):
         currentBonuses, affectedBonuses = set(), {}

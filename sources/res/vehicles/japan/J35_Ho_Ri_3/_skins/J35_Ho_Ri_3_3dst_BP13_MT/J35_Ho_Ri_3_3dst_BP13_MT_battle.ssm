@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>prebattle</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>battle</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>0.100000 0.100000</time>
+		<transition>
+			<to>Prebattle</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>prebattle</name>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>spin</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>battle</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>41.500000 -96.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Prebattle</name>
+		<type>sequence</type>
+		<resource>vehicles/japan/J35_Ho_Ri_3/_skins/J35_Ho_Ri_3_3dst_BP13_MT/Sequence/J35_Ho_Ri_3_Radar_Open_PreBattle.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>spin</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-220.500000 14.500000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>spin</name>
+		<type>sequence</type>
+		<resource>vehicles/japan/J35_Ho_Ri_3/_skins/J35_Ho_Ri_3_3dst_BP13_MT/Sequence/J35_Ho_Ri_3_Radar_Spinning_Battle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<uiPosition>52.000000 101.000000 0.000000</uiPosition>
+	</node>
+</root>

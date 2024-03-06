@@ -233,9 +233,6 @@ class _CurrentVehicle(_CachedVehicle):
     def isCrewFull(self):
         return self.isPresent() and self.item.isCrewFull
 
-    def isTooHeavy(self):
-        return self.isPresent() and self.item.isTooHeavy
-
     def isDisabledInRent(self):
         return self.isPresent() and self.item.rentalIsOver
 
@@ -327,7 +324,11 @@ class _CurrentVehicle(_CachedVehicle):
         vehicle = self.itemsCache.items.getVehicle(vehInvID)
         vehicle = vehicle if self.__isVehicleSuitable(vehicle) else None
         if vehicle is None:
-            vehiclesCriteria = REQ_CRITERIA.INVENTORY | ~REQ_CRITERIA.VEHICLE.MODE_HIDDEN | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP | ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
+            vehiclesCriteria = REQ_CRITERIA.INVENTORY
+            vehiclesCriteria |= ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
+            vehiclesCriteria |= ~REQ_CRITERIA.VEHICLE.HIDDEN_IN_HANGAR
+            vehiclesCriteria |= ~REQ_CRITERIA.VEHICLE.MODE_HIDDEN
+            vehiclesCriteria |= REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP
             invVehs = self.itemsCache.items.getVehicles(criteria=vehiclesCriteria)
 
             def notEvent(x, y):
@@ -444,7 +445,7 @@ class _CurrentVehicle(_CachedVehicle):
         else:
             if vehicle.isModeHidden and vehicle.isOnlyForFunRandomBattles and not self.funRandomController.isEnabled():
                 return False
-            return not REQ_CRITERIA.VEHICLE.BATTLE_ROYALE(vehicle) or self.battleRoyaleController.isBattleRoyaleMode()
+            return not REQ_CRITERIA.VEHICLE.HIDDEN_IN_HANGAR(vehicle) and (not REQ_CRITERIA.VEHICLE.BATTLE_ROYALE(vehicle) or self.battleRoyaleController.isBattleRoyaleMode())
 
     def __checkPrebattleLockedVehicle(self):
         from gui.prb_control import prb_getters

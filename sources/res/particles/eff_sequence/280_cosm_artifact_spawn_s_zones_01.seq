@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>4.271488</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>fx_dust</name>
+		<type>particle</type>
+		<resource>particles/Environment/interior/280_cosm_abilities_spawn_dust_05.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -66.539047 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>9.999999</inTangent>
+				<outTangent>9.999999</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.100000</startTime>
+				<value>1.000000</value>
+				<inTangent>9.999999</inTangent>
+				<outTangent>9.999999</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Artifact</name>
+		<type>model</type>
+		<resource>content/Environment/hd_env_UNI_674_CosmicArtefact/normal/lod0/hd_env_UNI_674_CosmicArtefact.model</resource>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.170000 1.170000 1.170000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Model 0</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/cosm_event/cylynder_02_big_capture_zone.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 20.113373 0.000000</value>
+				<inTangent>0.000000 162.208176 0.000000</inTangent>
+				<outTangent>0.000000 162.208176 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>0.000000 52.555008 0.000000</value>
+				<inTangent>0.000000 548.257202 0.000000</inTangent>
+				<outTangent>0.000000 548.257202 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000 800.000000 0.000000</value>
+				<inTangent>-0.000000 934.306335 -0.000000</inTangent>
+				<outTangent>-0.000000 934.306335 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>10.000000 5.000000 10.000000</value>
+				<inTangent>0.000000 75.000000 0.000000</inTangent>
+				<outTangent>0.000000 75.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>10.000000 20.000000 10.000000</value>
+				<inTangent>-7.500007 157.500122 -7.500007</inTangent>
+				<outTangent>-7.500007 157.500122 -7.500007</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.533333</startTime>
+				<value>5.000000 100.000000 5.000000</value>
+				<inTangent>-7.500007 23.571609 -7.500007</inTangent>
+				<outTangent>-7.500007 23.571609 -7.500007</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>5.000000 10.000000 5.000000</value>
+				<inTangent>-0.000000 -192.857010 -0.000000</inTangent>
+				<outTangent>-0.000000 -192.857010 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 1.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 1.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.100000</startTime>
+				<value>1.000000 1.000000 1.000000 0.100000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 1.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.182073</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>1.000000 1.000000 1.000000 0.227451</value>
+				<inTangent>0.000000 -1.774510 -2.500000 -0.477591</inTangent>
+				<outTangent>0.000000 -1.774510 -2.500000 -0.477591</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>1.000000 0.290196 0.000000 0.000000</value>
+				<inTangent>-0.000000 -3.549021 -5.000002 -1.137255</inTangent>
+				<outTangent>-0.000000 -3.549021 -5.000002 -1.137255</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>shock_wave</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/cosm_event/ability_anchor_disk_02.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>20.000000 20.000000 20.000000</value>
+				<inTangent>95.999992 -22.799999 95.999992</inTangent>
+				<outTangent>95.999992 -22.799999 95.999992</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>100.000000 1.000000 100.000000</value>
+				<inTangent>78.000000 -11.400000 78.000000</inTangent>
+				<outTangent>78.000000 -11.400000 78.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>110.000000 1.000000 110.000000</value>
+				<inTangent>60.000015 -0.000000 60.000015</inTangent>
+				<outTangent>60.000015 -0.000000 60.000015</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>true</value>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lambert1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 0.266667 0.000000 0.000000</value>
+				<inTangent>0.000000 2.196078 0.000000 10.000000</inTangent>
+				<outTangent>0.000000 2.196078 0.000000 10.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.100000</startTime>
+				<value>1.000000 0.486275 0.000000 1.000000</value>
+				<inTangent>0.000000 1.054466 0.000000 4.444444</inTangent>
+				<outTangent>0.000000 1.054466 0.000000 4.444444</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>1.000000 0.407843 0.000000 0.000000</value>
+				<inTangent>-0.000000 -0.087146 -0.000000 -1.111111</inTangent>
+				<outTangent>-0.000000 -0.087146 -0.000000 -1.111111</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>lambert1</identifier>
+			<property>opacity_UV_Speed_Scale</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.100000 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>4.271488</duration>
+				<sequenceSound>ev_cosmic_artifact_spawn_zone_01</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

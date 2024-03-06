@@ -22,7 +22,7 @@
 					<row0>1.000000 0.000000 0.000000</row0>
 					<row1>0.000000 1.000000 0.000000</row1>
 					<row2>0.000000 0.000000 1.000000</row2>
-					<row3>-0.018600 0.186800 0.603290</row3>
+					<row3>-0.018633 0.186809 0.603263</row3>
 				</transform>
 			</node>
 		</node>
@@ -37,41 +37,16 @@
 				0
 				<material>
 					<identifier>tank_turret_01</identifier>
-					<property>
-						g_detailPowerGloss
-						<Float>
-							0.35
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPowerAlbedo
-						<Float>
-							0.11
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_maskBias
-						<Float>
-							0.18
-							<!--BW_String-->
-						</Float>
-					</property>
-					<property>
-						g_detailPower
-						<Float>5</Float>
-					</property>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>0</materialKind>
 					<fx>shaders/std_effects/PBS_tank_crash.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
 					<property>
-						metallicGlossMap
-						<Texture>vehicles/czech/Cz29_Pzw_39/Pzw_39_turret_01_GMM.dds</Texture>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
 					</property>
 					<property>
-						normalMap
-						<Texture>vehicles/czech/Cz29_Pzw_39/Pzw_39_turret_01_ANM.dds</Texture>
+						crashTileMap
+						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
 					</property>
 					<property>
 						diffuseMap
@@ -82,21 +57,21 @@
 						<Texture>vehicles/czech/Cz29_Pzw_39/Pzw_39_turret_01_AO.dds</Texture>
 					</property>
 					<property>
-						colorIdMap
-						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+						metallicGlossMap
+						<Texture>vehicles/czech/Cz29_Pzw_39/Pzw_39_turret_01_GMM.dds</Texture>
 					</property>
 					<property>
-						crashTileMap
-						<Texture>vehicles/russian/Tank_detail/crash_tile.dds</Texture>
+						normalMap
+						<Texture>vehicles/czech/Cz29_Pzw_39/Pzw_39_turret_01_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>0.000072 0.521673 0.103130</groupOrigin>
+				<groupOrigin>0.000039 0.385178 0.126659</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-0.708678 -0.053746 -0.841422</min>
-		<max>0.708822 1.097091 1.047683</max>
+		<min>-0.708711 -0.053736 -0.794339</min>
+		<max>0.708789 0.824093 1.047656</max>
 	</boundingBox>
 	<geometrySize>272516</geometrySize>
 	<minUVDensity>0.006878</minUVDensity>

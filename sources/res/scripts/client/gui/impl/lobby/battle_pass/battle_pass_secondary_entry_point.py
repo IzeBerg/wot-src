@@ -90,9 +90,11 @@ class BattlePassSecondaryEntryPointWidget(SecondaryEntryPointMeta, BaseBattlePas
         return backport.image(icon)
 
     def __getExtraIcon(self):
-        if self.hasExtra:
+        if self.hasMarathon:
             return backport.image(_R_IMAGES.extra_flags_mini())
         else:
+            if self.isResourceAvailable:
+                return backport.image(_R_IMAGES.resource_decor())
             return
 
     def __updateTooltipData(self, data, currentArenaBonusType, gameModeIsEnabled):

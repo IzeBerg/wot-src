@@ -1414,7 +1414,6 @@
 				<rightTrack>15</rightTrack>
 			</armor>
 			<weight>4100</weight>
-			<maxLoad>28000</maxLoad>
 			<terrainResistance>
 				0.9 1 1.6
 				<!--BW_String-->
@@ -3344,7 +3343,7 @@
 					</pitchLimits>
 					<unlocks>
 						<gun>
-							_100mm_SA_47
+							_100mm_SA_47_25t
 							<cost>34500</cost>
 						</gun>
 					</unlocks>
@@ -4036,7 +4035,7 @@
 						<aoTextureSize>1024 512</aoTextureSize>
 					</camouflage>
 				</_90mm_F3>
-				<_100mm_SA_47>
+				<_100mm_SA_47_25t>
 					shared
 					<maxAmmo>42</maxAmmo>
 					<pitchLimits>
@@ -4736,10 +4735,10 @@
 						</density>
 						<aoTextureSize>1024 512</aoTextureSize>
 					</camouflage>
-				</_100mm_SA_47>
+				</_100mm_SA_47_25t>
 				<_105mm_CN_105_57>
 					shared
-					<maxAmmo>30</maxAmmo>
+					<maxAmmo>40</maxAmmo>
 					<pitchLimits>
 						<minPitch>
 							0 -11 0.269671 -11 0.333333 -8 0.666667 -8 0.730329 -11 1 -11
@@ -4765,13 +4764,16 @@
 						0.38
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>40</reloadTime>
+					<reloadTime>36</reloadTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.16
 							<!--BW_String-->
 						</turretRotation>
-						<afterShot>4</afterShot>
+						<afterShot>
+							3.5
+							<!--BW_String-->
+						</afterShot>
 						<whileGunDamaged>
 							2.0
 							<!--BW_String-->

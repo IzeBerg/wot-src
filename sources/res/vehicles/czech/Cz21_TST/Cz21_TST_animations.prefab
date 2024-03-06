@@ -27,6 +27,11 @@
 			<UUID>15c8b57a-1fc7-41d9-905e-ae55a6c31b26</UUID>
 			<flags>0</flags>
 		</GameObject>
+		<GameObject>
+			<name>VSE_plan_container</name>
+			<UUID>673ab6d2-59d4-4a86-88cb-ef6d43558faa</UUID>
+			<flags>0</flags>
+		</GameObject>
 	</GameObjects>
 	<components>
 		<ComponentPool>
@@ -64,6 +69,16 @@
 			</component>
 			<component>
 				<objectIndex>4</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>8fb0a9ef-e6aa-480f-9b22-8d6cf58923b3</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>5</objectIndex>
 				<flags>35</flags>
 				<config>
 					<property>
@@ -175,6 +190,24 @@
 							0.526813 0 0
 							<!--BW_String-->
 						</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>5</objectIndex>
+				<flags>35</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>0 0 0</value>
 					</property>
 				</config>
 			</component>

@@ -8,11 +8,11 @@
 		<loader/>
 	</crew>
 	<supplySlots>5 1 1 6 6 6 7 8 8 8</supplySlots>
-	<postProgressionTree>role_HT_universal</postProgressionTree>
+	<postProgressionTree>role_HT_break</postProgressionTree>
 	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
-		<forward>35</forward>
-		<backward>12</backward>
+		<forward>40</forward>
+		<backward>14</backward>
 	</speedLimits>
 	<invisibility>
 		<moving>
@@ -82,7 +82,7 @@
 	</camouflage>
 	<hull>
 		<armor>
-			<armor_1>275</armor_1>
+			<armor_1>285</armor_1>
 			<armor_2>275</armor_2>
 			<armor_3>55</armor_3>
 			<armor_4>80</armor_4>
@@ -90,14 +90,14 @@
 			<armor_6>250</armor_6>
 			<armor_7>65</armor_7>
 			<armor_8>0</armor_8>
-			<armor_9>215</armor_9>
+			<armor_9>235</armor_9>
 			<armor_10>210</armor_10>
-			<armor_11>195</armor_11>
+			<armor_11>205</armor_11>
 			<armor_12>200</armor_12>
 			<armor_13>190</armor_13>
 			<armor_14>152</armor_14>
 			<armor_15>45</armor_15>
-			<armor_16>150</armor_16>
+			<armor_16>155</armor_16>
 			<armor_17>140</armor_17>
 			<armor_18>140</armor_18>
 			<armor_19>30</armor_19>
@@ -119,7 +119,7 @@
 		</armor>
 		<primaryArmor>armor_11 armor_17 armor_4</primaryArmor>
 		<weight>21600</weight>
-		<maxHealth>1400</maxHealth>
+		<maxHealth>1500</maxHealth>
 		<ammoBayHealth>
 			<maxHealth>210</maxHealth>
 			<maxRegenHealth>140</maxRegenHealth>
@@ -1981,7 +1981,6 @@
 				<rightTrack>20</rightTrack>
 			</armor>
 			<weight>10000</weight>
-			<maxLoad>47500</maxLoad>
 			<terrainResistance>
 				1.3 1.6 2.9
 				<!--BW_String-->
@@ -1991,11 +1990,11 @@
 			<rotationSpeed>30</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
-					0.24
+					0.18
 					<!--BW_String-->
 				</vehicleMovement>
 				<vehicleRotation>
-					0.24
+					0.18
 					<!--BW_String-->
 				</vehicleRotation>
 			</shotDispersionFactors>
@@ -3817,7 +3816,7 @@
 				<armor_13>290</armor_13>
 				<armor_14>280</armor_14>
 				<armor_15>260</armor_15>
-				<armor_16>200</armor_16>
+				<armor_16>240</armor_16>
 				<armor_17>285</armor_17>
 				<armor_18>230</armor_18>
 				<armor_19>180</armor_19>
@@ -3906,10 +3905,10 @@
 						0.42
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>34</reloadTime>
+					<reloadTime>13</reloadTime>
 					<shotDispersionFactors>
 						<turretRotation>
-							0.11
+							0.1
 							<!--BW_String-->
 						</turretRotation>
 						<afterShot>4</afterShot>
@@ -3919,7 +3918,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						3.4
+						2.6
 						<!--BW_String-->
 					</aimingTime>
 					<invisibilityFactorAtShot>
@@ -3929,11 +3928,11 @@
 					<turretYawLimits>-180 180</turretYawLimits>
 					<clip>
 						<count>3</count>
-						<rate>
-							18.75
-							<!--BW_String-->
-						</rate>
+						<rate>15</rate>
 					</clip>
+					<autoreload>
+						<reloadTime>17 15 13</reloadTime>
+					</autoreload>
 					<models>
 						<undamaged>vehicles/russian/R172_Object_752/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/russian/R172_Object_752/crash/lod0/Gun_01.model</destroyed>
@@ -4913,8 +4912,8 @@
 		<detailed>
 			<engines>
 				<V-12-6B>
-					<smplEnginePower>580</smplEnginePower>
-					<smplFwMaxSpeed>35</smplFwMaxSpeed>
+					<smplEnginePower>800</smplEnginePower>
+					<smplFwMaxSpeed>40</smplFwMaxSpeed>
 				</V-12-6B>
 			</engines>
 			<chassis>

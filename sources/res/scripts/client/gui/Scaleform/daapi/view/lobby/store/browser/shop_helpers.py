@@ -149,3 +149,7 @@ def getClientControlledCloseCtx():
 
 def getSteelHunterProductsUrl():
     return _getUrl('shProducts')
+
+
+def getCosmic2024ShopUrl():
+    return _getUrl(urlName='cosm24Shop')

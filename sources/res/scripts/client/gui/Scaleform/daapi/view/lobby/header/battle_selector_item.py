@@ -141,3 +141,12 @@ class SelectorItem(object):
     @adisp_process
     def _doSelect(self, dispatcher):
         yield dispatcher.doSelectAction(PrbAction(self.getData()))
+
+    def getDisabledFightButtonTooltip(self, result):
+        return ''
+
+    def getDisabledFightButtonLabel(self, result):
+        return ''
+
+    def hasDisabledFightButtonData(self, result):
+        return False

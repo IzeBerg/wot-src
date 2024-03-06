@@ -1,7 +1,11 @@
+import typing
 from collections import namedtuple
+from constants import LOOTBOX_TOKEN_PREFIX
 from helpers import dependency
 from items.components.crew_books_constants import CREW_BOOK_RARITY
 from skeletons.gui.shared import IItemsCache
+if typing.TYPE_CHECKING:
+    from typing import Optional
 BonusInfo = namedtuple('SlotBonusInfo', ['probabilitiesList', 'bonusProbability', 'limitIDs', 'subBonusRawData'])
 OneOfBonusInfo = namedtuple('OneOfBonusInfo', ['limitIDs', 'subBonusRawData'])
 _AGGREGATE_BONUS_TYPES = {'crewBooks': (
@@ -45,3 +49,10 @@ def isAllVehiclesObtainedInSlot(slot, itemsCache=None):
                 return False
 
     return True
+
+
+def getLootBoxIDFromToken(token):
+    if token.startswith(LOOTBOX_TOKEN_PREFIX):
+        return token.split(':')[1]
+    else:
+        return

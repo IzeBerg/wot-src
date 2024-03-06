@@ -1,4 +1,4 @@
-import logging, math
+import logging, typing, math
 from collections import defaultdict, namedtuple
 from enum import IntEnum
 import BattleReplay, BigWorld
@@ -7,7 +7,7 @@ from AvatarInputHandler.spg_marker_helpers.spg_marker_helpers import SPGShotResu
 from PlayerEvents import g_playerEvents
 from ReplayEvents import g_replayEvents
 from account_helpers.settings_core.settings_constants import GRAPHICS, AIM, GAME, SPGAim, MARKERS
-from aih_constants import CHARGE_MARKER_STATE, CTRL_MODE_NAME
+from aih_constants import CHARGE_MARKER_STATE, CTRL_MODE_NAME as CTRL_MODE
 from constants import VEHICLE_SIEGE_STATE as _SIEGE_STATE, DUALGUN_CHARGER_STATUS, SERVER_TICK_LENGTH
 from debug_utils import LOG_WARNING
 from gui import makeHtmlString, GUI_SETTINGS
@@ -36,6 +36,8 @@ from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.battle_session import IBattleSessionProvider
 from soft_exception import SoftException
 from helpers.time_utils import MS_IN_SECOND
+if typing.TYPE_CHECKING:
+    from AvatarInputHandler.control_modes import _TrajectoryControlMode
 _logger = logging.getLogger(__name__)
 _SETTINGS_KEY_TO_VIEW_ID = {AIM.ARCADE: CROSSHAIR_VIEW_ID.ARCADE, 
    AIM.SNIPER: CROSSHAIR_VIEW_ID.SNIPER}
@@ -51,7 +53,7 @@ _DUAL_GUN_MARKER_STATES_MAP = {CHARGE_MARKER_STATE.VISIBLE: DUAL_GUN_MARKER_STAT
    CHARGE_MARKER_STATE.RIGHT_ACTIVE: DUAL_GUN_MARKER_STATE.RIGHT_PART_ACTIVE, 
    CHARGE_MARKER_STATE.DIMMED: DUAL_GUN_MARKER_STATE.DIMMED}
 _STRATEGIC_VIEW = (
- CTRL_MODE_NAME.STRATEGIC, CTRL_MODE_NAME.ARTY, CTRL_MODE_NAME.SPG_ONLY_ARTY_MODE)
+ CTRL_MODE.STRATEGIC, CTRL_MODE.ARTY, CTRL_MODE.SPG_ONLY_ARTY_MODE, CTRL_MODE.ASSAULT_SPG)
 
 def createPlugins():
     resultPlugins = {'core': CorePlugin, 
@@ -847,7 +849,7 @@ class GunMarkerDistancePlugin(_DistancePlugin):
 
     def _onCrosshairViewChanged(self, viewID):
         self._interval.stop()
-        if viewID == CROSSHAIR_VIEW_ID.STRATEGIC:
+        if viewID in (CROSSHAIR_VIEW_ID.STRATEGIC, CROSSHAIR_VIEW_ID.ASSAULT):
             self.__updateDistance()
             self._interval.start()
         else:
@@ -1403,9 +1405,10 @@ class ArtyCameraDistancePlugin(_DistancePlugin):
 
     def _onCrosshairViewChanged(self, viewID):
         self._interval.stop()
-        if viewID == CROSSHAIR_VIEW_ID.STRATEGIC:
+        if viewID in (CROSSHAIR_VIEW_ID.STRATEGIC, CROSSHAIR_VIEW_ID.ASSAULT):
             self.__updateCameraDistance()
             self._interval.start()
+            self._parentObj.as_updateScaleStepsS(avatar_getter.getInputHandler().ctrl.getZoomSteps())
 
     def __updateCameraDistance(self):
         inputHandler = avatar_getter.getInputHandler()
@@ -1422,15 +1425,7 @@ class ArtyCameraDistancePlugin(_DistancePlugin):
         self._parentObj.as_updateScaleWidgetS(value)
 
     def __updateWithAutoChangeMode(self, curCtrl):
-        minV, transition, maxV = curCtrl.getScaleParams()
-        camDist = curCtrl.getCamDist()
-        if camDist <= transition:
-            ratioDist = (camDist - minV) / (transition - minV)
-            value = (1.0 - ratioDist) * (self._MID_VALUE - self._MIN_VALUE) + self._MID_VALUE
-        else:
-            ratioDist = (camDist - transition) / (maxV - transition)
-            value = (1.0 - ratioDist) * (self._MAX_VALUE - self._MID_VALUE)
-        self._parentObj.as_updateScaleWidgetS(value)
+        self._parentObj.as_updateScaleWidgetS(curCtrl.getZoom())
 
 
 class SPGShotIndicatorState(IntEnum):
@@ -1478,7 +1473,7 @@ class SPGShotResultIndicatorPlugin(CrosshairPlugin):
         return
 
     def __setEnabled(self, viewID):
-        self.__isEnabled = viewID in (CROSSHAIR_VIEW_ID.STRATEGIC,) and self.settingsCore.getSetting(SPGAim.SHOTS_RESULT_INDICATOR)
+        self.__isEnabled = viewID in (CROSSHAIR_VIEW_ID.STRATEGIC, CROSSHAIR_VIEW_ID.ASSAULT) and self.settingsCore.getSetting(SPGAim.SHOTS_RESULT_INDICATOR)
         currentState = self.sessionProvider.shared.crosshair.getSPGShotsIndicatorState()
         if not self.__isEnabled:
             self.__clear()

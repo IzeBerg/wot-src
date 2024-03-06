@@ -948,12 +948,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetParentOf</class>
-				<id>GetParentOf_4</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>FindFirstNode</class>
 				<id>FindFirstNode_4</id>
 				<params/>
@@ -1423,14 +1417,8 @@
 			<connection>
 				<from>ContextGetSelf_1</from>
 				<input>gameObject</input>
-				<to>GetParentOf_4</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>GetParentOf_4</from>
-				<input>gameObject</input>
 				<to>FindFirstNode_4</to>
-				<output>parent</output>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>SetVariable_13</from>
@@ -1445,10 +1433,10 @@
 				<output>node</output>
 			</connection>
 			<connection>
-				<from>GetParentOf_4</from>
+				<from>ContextGetSelf_1</from>
 				<input>gameObject</input>
 				<to>FindFirstNode_6</to>
-				<output>parent</output>
+				<output>value</output>
 			</connection>
 			<connection>
 				<from>Sequence_2</from>

@@ -834,3 +834,7 @@ class PrebattleEvent(HasCtxEvent):
 
 class HangarCrewWidgetViewEvent(HasCtxEvent):
     GF_RESIZED = 'hangarCrewWidgetViewEvent/gfResized'
+
+
+class CosmicEvent(SharedEvent):
+    OPEN_COSMIC = 'openCosmic'

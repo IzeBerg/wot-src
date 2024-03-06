@@ -1,6 +1,5 @@
 import typing
 from constants import MIN_VEHICLE_LEVEL, MAX_VEHICLE_LEVEL
-from debug_utils import LOG_CURRENT_EXCEPTION
 from gui.Scaleform.genConsts.SLOT_HIGHLIGHT_TYPES import SLOT_HIGHLIGHT_TYPES
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
 from gui.Scaleform.locale.ARTEFACTS import ARTEFACTS
@@ -608,14 +607,6 @@ class OptionalDevice(RemovableDevice):
 
     def mayInstall(self, vehicle, slotIdx=None):
         return vehicle.descriptor.mayInstallOptionalDevice(self.intCD, slotIdx)
-
-    def mayRemove(self, vehicle):
-        try:
-            slotIdx = vehicle.optDevices.layout.index(self)
-            return vehicle.descriptor.mayRemoveOptionalDevice(slotIdx)
-        except Exception:
-            LOG_CURRENT_EXCEPTION()
-            return (False, 'not installed on vehicle')
 
     def getInstalledVehicles(self, vehicles):
         result = set()

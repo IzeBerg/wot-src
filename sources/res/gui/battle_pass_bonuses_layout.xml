@@ -13,7 +13,7 @@
 			<isVisible>False</isVisible>
 		</collectionItem>
 		<tmanToken>
-			<priority>110</priority>
+			<priority>150</priority>
 			<bigIcon>Standard</bigIcon>
 		</tmanToken>
 		<battlePassQuestChainToken>
@@ -25,29 +25,37 @@
 			<bigIcon>Standard</bigIcon>
 		</randomQuestToken>
 		<premium_plus>
-			<priority>85</priority>
+			<priority>110</priority>
 			<bigIcon>Standard</bigIcon>
 		</premium_plus>
 		<bpcoin>
-			<priority>90</priority>
+			<priority>120</priority>
 			<bigIcon>Standard</bigIcon>
 		</bpcoin>
 		<freeXP>
-			<priority>80</priority>
+			<priority>100</priority>
 			<bigIcon>Standard</bigIcon>
 		</freeXP>
 		<credits>
-			<priority>58</priority>
+			<priority>103</priority>
 			<bigIcon>Standard</bigIcon>
 		</credits>
 		<crystal>
-			<priority>69</priority>
+			<priority>105</priority>
 			<bigIcon>Standard</bigIcon>
 		</crystal>
+		<equipCoin>
+			<priority>125</priority>
+			<bigIcon>Standard</bigIcon>
+		</equipCoin>
 		<gold>
-			<priority>108</priority>
+			<priority>140</priority>
 			<bigIcon>Standard</bigIcon>
 		</gold>
+		<blueprintsAny>
+			<priority>100</priority>
+			<bigIcon>Standard</bigIcon>
+		</blueprintsAny>
 		<dossier>
 			<priority>105</priority>
 			<bigIcon>Standard</bigIcon>
@@ -58,24 +66,25 @@
 				<bigIcon>Standard</bigIcon>
 			</style>
 			<style3D>
-				<priority>120</priority>
+				<priority>160</priority>
 				<bigIcon>Standard</bigIcon>
 			</style3D>
 			<projectionDecal>
-				<priority>75</priority>
+				<priority>90</priority>
 			</projectionDecal>
 			<decal>
-				<priority>74</priority>
+				<priority>90</priority>
 			</decal>
 			<emblem>
-				<priority>74</priority>
+				<priority>90</priority>
 			</emblem>
 			<inscription>
-				<priority>74</priority>
+				<priority>90</priority>
 			</inscription>
 			<bigIcon>Standard</bigIcon>
 		</customizations>
 		<blueprints>
+			<priority>100</priority>
 			<override>
 				<id>65523</id>
 				<priority>63</priority>
@@ -89,54 +98,66 @@
 		<crewBooks>
 			<override>
 				<id>15390</id>
-				<priority>56</priority>
+				<priority>76</priority>
 			</override>
 			<override>
 				<id>286 542 798 1054 1310 1566 1822 2078 2334 2590 2846</id>
-				<priority>55</priority>
+				<priority>70</priority>
 			</override>
 			<override>
 				<id>5406 5662 5918 6174 6430 6686 6942 7198  7454 7710 7966</id>
-				<priority>60</priority>
+				<priority>73</priority>
+			</override>
+			<override>
+				<id>10526 10782 11038 11294 11550 11806 12062 12318 12574 12830 13086 15646</id>
+				<priority>75</priority>
 			</override>
 			<bigIcon>Standard</bigIcon>
 		</crewBooks>
 		<goodies>
 			<override>
 				<id>5062</id>
-				<priority>52</priority>
+				<priority>86</priority>
 			</override>
 			<override>
 				<id>121001</id>
-				<priority>52</priority>
+				<priority>86</priority>
+			</override>
+			<override>
+				<id>5020</id>
+				<priority>84</priority>
+			</override>
+			<override>
+				<id>121000</id>
+				<priority>84</priority>
 			</override>
 			<override>
 				<id>9031</id>
-				<priority>50</priority>
+				<priority>80</priority>
 			</override>
 			<override>
 				<id>5036</id>
-				<priority>50</priority>
+				<priority>80</priority>
 			</override>
 			<override>
 				<id>121004</id>
-				<priority>50</priority>
+				<priority>80</priority>
 			</override>
 			<override>
 				<id>5028</id>
-				<priority>51</priority>
+				<priority>82</priority>
 			</override>
 			<override>
 				<id>121005</id>
-				<priority>51</priority>
+				<priority>82</priority>
 			</override>
 			<override>
 				<id>5042</id>
-				<priority>67</priority>
+				<priority>88</priority>
 			</override>
 			<override>
 				<id>121002</id>
-				<priority>67</priority>
+				<priority>88</priority>
 			</override>
 			<bigIcon>Standard</bigIcon>
 		</goodies>
@@ -146,11 +167,11 @@
 				<bigIcon>Standard</bigIcon>
 			</consumable>
 			<crewBattleBooster>
-				<priority>44</priority>
+				<priority>60</priority>
 				<bigIcon>Standard</bigIcon>
 			</crewBattleBooster>
 			<deviceBattleBooster>
-				<priority>54</priority>
+				<priority>63</priority>
 				<bigIcon>Standard</bigIcon>
 			</deviceBattleBooster>
 			<optionalDevice>
@@ -180,25 +201,33 @@
 				<bigIcon>Standard</bigIcon>
 			</blueprint_gift>
 			<brochure_gift>
-				<priority>55</priority>
+				<priority>70</priority>
 				<bigIcon>Standard</bigIcon>
 			</brochure_gift>
 			<guide_gift>
-				<priority>60</priority>
+				<priority>73</priority>
 				<bigIcon>Standard</bigIcon>
 			</guide_gift>
+			<book_gift>
+				<priority>75</priority>
+				<bigIcon>Standard</bigIcon>
+			</book_gift>
 			<new_device_mi_gift>
-				<priority>65</priority>
+				<priority>55</priority>
 				<bigIcon>Standard</bigIcon>
 			</new_device_mi_gift>
 			<new_device_fv_gift>
-				<priority>65</priority>
+				<priority>55</priority>
 				<bigIcon>Standard</bigIcon>
 			</new_device_fv_gift>
 			<trophy_gift>
-				<priority>105</priority>
+				<priority>135</priority>
 				<bigIcon>Standard</bigIcon>
 			</trophy_gift>
+			<expequipments_gift>
+				<priority>130</priority>
+				<bigIcon>Standard</bigIcon>
+			</expequipments_gift>
 		</battlePassSelectToken>
 		<styleProgressToken>
 			<priority>122</priority>
@@ -214,7 +243,7 @@
 		</styleProgressToken>
 		<vehicles>
 			<bigIcon>Standard</bigIcon>
-			<priority>130</priority>
+			<priority>170</priority>
 		</vehicles>
 	</bonuses>
 </root>

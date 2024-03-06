@@ -7,7 +7,7 @@ from gui.battle_pass.battle_pass_decorators import createBackportTooltipDecorato
 from gui.battle_pass.battle_pass_helpers import getStyleInfoForChapter
 from gui.battle_pass.sounds import BattlePassSounds
 from gui.impl.gen import R
-from gui.impl.gen.view_models.views.lobby.battle_pass.battle_pass_awards_view_model import BattlePassAwardsViewModel, RewardReason
+from gui.impl.gen.view_models.views.lobby.battle_pass.battle_pass_awards_view_model import BattlePassAwardsViewModel, RewardReason, ChapterType
 from gui.impl.pub import ViewImpl
 from gui.impl.pub.lobby_window import LobbyNotificationWindow
 from gui.shared import EVENT_BUS_SCOPE, events, g_eventBus
@@ -15,6 +15,7 @@ from gui.sounds.filters import switchHangarOverlaySoundFilter
 from helpers import dependency
 from skeletons.gui.game_control import IBattlePassController
 MAP_REWARD_REASON = {BattlePassRewardReason.PURCHASE_BATTLE_PASS: RewardReason.BUY_BATTLE_PASS, 
+   BattlePassRewardReason.GIFT_CHAPTER: RewardReason.BUY_BATTLE_PASS, 
    BattlePassRewardReason.PURCHASE_BATTLE_PASS_LEVELS: RewardReason.BUY_BATTLE_PASS_LEVELS, 
    BattlePassRewardReason.STYLE_UPGRADE: RewardReason.STYLE_UPGRADE, 
    BattlePassRewardReason.PURCHASE_BATTLE_PASS_MULTIPLE: RewardReason.BUY_MULTIPLE_BATTLE_PASS, 
@@ -76,7 +77,7 @@ class BattlePassAwardsView(ViewImpl):
         self.__showBuyCallback = data.get('showBuyCallback')
         isFinalReward = self.__battlePass.isFinalLevel(chapterID, newLevel) and reason not in (
          BattlePassRewardReason.PURCHASE_BATTLE_PASS, BattlePassRewardReason.PURCHASE_BATTLE_PASS_MULTIPLE,
-         BattlePassRewardReason.SELECT_REWARD)
+         BattlePassRewardReason.SELECT_REWARD, BattlePassRewardReason.GIFT_CHAPTER)
         isPurchase = reason in BattlePassRewardReason.PURCHASE_REASONS
         rewardReason = MAP_REWARD_REASON.get(reason, RewardReason.DEFAULT)
         isBattlePassPurchased = self.__battlePass.isBought(chapterID=chapterID) or isPurchase
@@ -86,6 +87,12 @@ class BattlePassAwardsView(ViewImpl):
         else:
             styleLevel = None
         with self.viewModel.transaction() as (tx):
+            chapterTypes = tx.getAvailableChapterTypes()
+            chapterTypes.clear()
+            for chType in self.__battlePass.getAvailableChapterTypes():
+                chapterTypes.addString(str(chType))
+
+            chapterTypes.invalidate()
             tx.setIsFinalReward(isFinalReward)
             tx.setReason(rewardReason)
             tx.setIsBattlePassPurchased(isBattlePassPurchased)
@@ -93,7 +100,7 @@ class BattlePassAwardsView(ViewImpl):
             tx.setChapterID(chapterID)
             tx.setSeasonStopped(self.__battlePass.isPaused())
             tx.setIsBaseStyleLevel(styleLevel == 1)
-            tx.setIsExtra(self.__battlePass.isExtraChapter(chapterID))
+            tx.setChapterType(ChapterType(self.__battlePass.getChapterType(chapterID)))
         if packageBonuses is not None and packageBonuses:
             self.__setPackageRewards(packageBonuses)
         self.__setAwards(bonuses, isFinalReward)
@@ -106,7 +113,8 @@ class BattlePassAwardsView(ViewImpl):
 
     def _onLoaded(self, data, *args, **kwargs):
         reason = data.get('reason', BattlePassRewardReason.DEFAULT)
-        if reason in (BattlePassRewardReason.PURCHASE_BATTLE_PASS, BattlePassRewardReason.PURCHASE_BATTLE_PASS_LEVELS):
+        if reason in (BattlePassRewardReason.PURCHASE_BATTLE_PASS, BattlePassRewardReason.PURCHASE_BATTLE_PASS_LEVELS,
+         BattlePassRewardReason.GIFT_CHAPTER):
             g_eventBus.handleEvent(events.BattlePassEvent(events.BattlePassEvent.BUYING_THINGS), scope=EVENT_BUS_SCOPE.LOBBY)
 
     def _finalize(self):

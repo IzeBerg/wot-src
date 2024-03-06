@@ -68,9 +68,9 @@ SM_TYPE = Enumeration('System message type', [
  'MediumInfo',
  'MessageHeader',
  'PurchaseForGoldAndCredits',
- 'BattlePassExtraStart',
- 'BattlePassExtraFinish',
- 'BattlePassExtraWillEndSoon',
+ 'BattlePassMarathonStart',
+ 'BattlePassMarathonFinish',
+ 'BattlePassMarathonWillEndSoon',
  'ResourceWellStart',
  'ResourceWellEnd',
  'IntegratedAuctionOperation',
@@ -96,7 +96,8 @@ SM_TYPE = Enumeration('System message type', [
  'ArmoryYardOpenChapter',
  'ArmoryYardMain',
  'ReferralProgramPGBFull',
- 'ReferralProgramFinanceOperation'])
+ 'ReferralProgramFinanceOperation',
+ 'TradingCaravanRefill'])
 CURRENCY_TO_SM_TYPE = {Currency.CREDITS: SM_TYPE.PurchaseForCredits, 
    Currency.GOLD: SM_TYPE.PurchaseForGold, 
    Currency.CRYSTAL: SM_TYPE.PurchaseForCrystal, 

@@ -411,6 +411,8 @@ class LootBoxTokensBonusUIPacker(TokenBonusUIPacker):
         for tokenID in bonus.getTokens().iterkeys():
             if tokenID.startswith(TOKEN_COMPENSATION_PREFIX):
                 result.append(R.views.gui_lootboxes.lobby.gui_lootboxes.tooltips.CompensationTooltip())
+            elif tokenID.startswith(constants.LOOTBOX_TOKEN_PREFIX):
+                result.append(R.views.gui_lootboxes.lobby.gui_lootboxes.tooltips.LootboxTooltip())
             else:
                 result.append(BACKPORT_TOOLTIP_CONTENT_ID)
 

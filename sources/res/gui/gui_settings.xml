@@ -526,6 +526,11 @@
 				<name>default</name>
 				<type>url</type>
 			</item>
+			<item>
+				https://wgcg-rpt.tanki.su/web_cache/v1/get_static_lists/
+				<name>CT</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1302,7 +1307,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/featured)
+				$PARAMS(/featured/featured/items/platform_bp2024_13ep)
 				<name>buyBattlePass</name>
 				<type>url</type>
 			</item>
@@ -1356,6 +1361,11 @@
 				<name>shProducts</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/cosm2024_category/cosm2024_category)
+				<name>cosm24Shop</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1400,7 +1410,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/12BPContentPage/
+				/$LANGUAGE_CODE/promocontent/13BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -1410,7 +1420,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/12BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/13BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1432,11 +1442,11 @@
 				<value>
 					<item>
 						<type>int</type>
-						<value>1</value>
+						<value>2</value>
 					</item>
 					<item>
 						<type>int</type>
-						<value>2</value>
+						<value>1</value>
 					</item>
 					<item>
 						<type>int</type>
@@ -1445,6 +1455,10 @@
 					<item>
 						<type>int</type>
 						<value>4</value>
+					</item>
+					<item>
+						<type>int</type>
+						<value>5</value>
 					</item>
 				</value>
 			</item>
@@ -1905,6 +1919,18 @@
 			<item>
 				https://webbrg-rpt.tanki.su/$LANGUAGE_CODE/promocontent/player-subscriptions/
 				<name>CT</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>cosmicInfoPageURL</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.tanki.su/$LANGUAGE_CODE/promocontent/Cosm24/
+				<name>default</name>
 				<type>url</type>
 			</item>
 		</value>

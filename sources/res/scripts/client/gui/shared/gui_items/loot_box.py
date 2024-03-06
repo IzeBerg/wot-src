@@ -82,7 +82,8 @@ _BONUS_GROUPS = {BonusGroup.VEHICLE: ipTypeGroup.VEHICLE,
                                     ipType.ACHIEVEMENT, ipType.BADGE, ipType.SINGLE_ACHIEVEMENTS,
                                     ipType.PLAYER_BADGE, ipType.CUSTOM_DOG_TAG), 
    BonusGroup.FEATUREITEMS: (
-                           ipType.CUSTOM_COLLECTION_ENTITLEMENT, ipType.CUSTOM_ANY_COLLECTION_ITEM)}
+                           ipType.CUSTOM_COLLECTION_ENTITLEMENT, ipType.CUSTOM_ANY_COLLECTION_ITEM,
+                           ipType.CUSTOM_LOOTBOX)}
 _GROUP_PRIORITIES = [
  BonusGroup.LOOTBOX_STAGE_ROTATION, BonusGroup.VEHICLE, BonusGroup.PREMIUM, BonusGroup.CURRENCY,
  BonusGroup.VEHICLECUSTOMIZATIONS, BonusGroup.CREW, BonusGroup.BOOSTERS, BonusGroup.EQUIPMENTS,

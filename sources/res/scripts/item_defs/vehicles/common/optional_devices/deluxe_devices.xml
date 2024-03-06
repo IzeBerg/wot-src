@@ -25,7 +25,6 @@
 		</incompatibleTags>
 		<script>
 			ImprovedConfiguration
-			<weight>50</weight>
 			<engineReduceFineFactor>
 				0.3 0.3
 				<!--BW_String-->
@@ -134,7 +133,6 @@
 		</incompatibleTags>
 		<script>
 			StaticOptionalDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/crewLevelIncrease</attribute>
@@ -182,7 +180,6 @@
 		</incompatibleTags>
 		<script>
 			StaticOptionalDevice
-			<weight>200</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/gunReloadTimeFactor</attribute>
@@ -270,7 +267,6 @@
 		</incompatibleTags>
 		<script>
 			StaticOptionalDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/additiveShotDispersionFactor</attribute>
@@ -311,7 +307,6 @@
 		</incompatibleTags>
 		<script>
 			StaticOptionalDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/gunAimingTimeFactor</attribute>
@@ -364,7 +359,6 @@
 		</incompatibleTags>
 		<script>
 			StaticOptionalDevice
-			<weight>100</weight>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/enginePowerFactor</attribute>
@@ -429,10 +423,6 @@
 		</vehicleFilter>
 		<script>
 			ExtraHealthReserve
-			<chassisMaxLoadFactor>
-				1.1 1.1
-				<!--BW_String-->
-			</chassisMaxLoadFactor>
 			<factors>
 				<factor>
 					<attribute>miscAttrs/healthFactor</attribute>
@@ -491,13 +481,6 @@
 				</value>
 			</mul>
 			<mul>
-				<name>vehicleChassisLoad</name>
-				<value>
-					1.1
-					<!--BW_String-->
-				</value>
-			</mul>
-			<mul>
 				<name>vehicleChassisFallDamage</name>
 				<value>
 					0.25
@@ -533,7 +516,6 @@
 		</vehicleFilter>
 		<script>
 			RotationMechanisms
-			<weight>200</weight>
 			<trackRotateSpeedFactor>
 				1.175 1.175
 				<!--BW_String-->

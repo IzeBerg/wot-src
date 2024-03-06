@@ -18,7 +18,7 @@ def isWheeledTech(vDesc):
     if vDesc is None:
         return False
     else:
-        return 'wheeledVehicle' in vDesc.type.tags
+        return vDesc.type.isWheeledVehicle
 
 
 def isTrackWithinTrackTech(vDesc):
