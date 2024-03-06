@@ -1,5 +1,8 @@
-import logging
-from base_schema_manager import BaseSchemaManager, GameParamsSchema
+import typing, logging
+from base_schema_manager import BaseSchemaManager
+if typing.TYPE_CHECKING:
+    from dict2model.schemas import SchemaModelType
+    from base_schema_manager import GameParamsSchema
 _logger = logging.getLogger(__name__)
 
 class SchemaManager(BaseSchemaManager):
@@ -30,10 +33,10 @@ class SchemaManager(BaseSchemaManager):
                 from PlayerEvents import g_playerEvents
                 g_playerEvents.onConfigModelUpdated(schema.gpKey)
 
-    def get(self, schema):
+    def getModel(self, schema):
         model = self._models.get(schema.gpKey)
         if model is None:
-            _logger.error('No such schema: %s.', schema.gpKey)
+            _logger.debug('No such schema: %s.', schema.gpKey)
         return model
 
     def clear(self):

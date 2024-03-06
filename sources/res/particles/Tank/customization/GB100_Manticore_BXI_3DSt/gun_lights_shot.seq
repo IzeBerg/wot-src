@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.866667</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>gun_plates_anim</name>
+		<type>model</type>
+		<resource>particles/Tank/customization/GB100_Manticore_BXI_3DSt/gun_plates.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -1.434892 0.024818</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.010000 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>tank_upgrade_02_skinned_0</identifier>
+			<property>g_emissiveParams</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.800000 0.000000 25.000000</value>
+				<inTangent>23.797533 0.000000 0.000000 0.001204</inTangent>
+				<outTangent>23.797533 0.000000 0.000000 0.001204</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>50.000000 0.800000 0.000000 25.000000</value>
+				<inTangent>328.805450 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-95.957253 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>66307</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.066667</startTime>
+				<value>1.241441 0.800000 0.000000 25.000000</value>
+				<inTangent>-5.420171 0.000000 0.000000 0.000622</inTangent>
+				<outTangent>-1.483218 0.000000 0.000000 0.000622</outTangent>
+				<tangentMode>66307</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.866667</startTime>
+				<value>0.000000 0.800000 0.000000 25.000000</value>
+				<inTangent>-1.342385 -0.000000 -0.000000 -0.003424</inTangent>
+				<outTangent>-9.507209 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>65795</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

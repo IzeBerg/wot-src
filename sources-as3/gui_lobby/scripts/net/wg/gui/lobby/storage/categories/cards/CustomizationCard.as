@@ -32,7 +32,6 @@ package net.wg.gui.lobby.storage.categories.cards
       override protected function configUI() : void
       {
          super.configUI();
-         sellButton.label = STORAGE.BUTTONLABEL_SELL;
          this.previewButton.visible = false;
          this.previewButton.addEventListener(MouseEvent.CLICK,this.onPreviewButtonClick);
          this.previewButton.addEventListener(MouseEvent.ROLL_OVER,this.onPreviewButtonRollOver);

@@ -751,8 +751,6 @@ package net.wg.data.constants
       
       public static const CROSSHAIR_POSTMORTEM_UI:String = "CrosshairPostmortemUI";
       
-      public static const CROSSHAIR_PENETRATION_HINT_UI:String = "CrosshairPenetrationHintUI";
-      
       public static const SPEEDOMETER_UI:String = "SpeedometerUI";
       
       public static const SPEEDOMETER_BG_UI:String = "SpeedometerBgUI";
@@ -1048,6 +1046,8 @@ package net.wg.data.constants
       public static const BADGE_SUFFIX_ITEM:String = "SuffixItemUI";
       
       public static const VEH_CONF_CREW_SKILL_SLOT_UI:String = "VehConfCrewSkillSlotUI";
+      
+      public static const BTN_FX_OVERLAY_CIRCLE:String = "BtnCircleAnimUI";
        
       
       public function Linkages()

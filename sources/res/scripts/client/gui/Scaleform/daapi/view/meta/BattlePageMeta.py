@@ -14,6 +14,10 @@ class BattlePageMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_setComponentsVisibility(visible, hidden)
 
+    def as_setComponentsVisibilityWithFadeS(self, visible, hidden):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setComponentsVisibilityWithFade(visible, hidden)
+
     def as_isComponentVisibleS(self, componentKey):
         if self._isDAAPIInited():
             return self.flashObject.as_isComponentVisible(componentKey)

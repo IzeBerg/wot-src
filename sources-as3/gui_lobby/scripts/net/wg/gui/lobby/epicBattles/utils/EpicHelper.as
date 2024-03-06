@@ -56,8 +56,7 @@ package net.wg.gui.lobby.epicBattles.utils
       
       public static function positionCloseButton(param1:CloseButtonText, param2:int, param3:int) : void
       {
-         var _loc4_:Number = NaN;
-         _loc4_ = calculateStaticMargin(param2);
+         var _loc4_:Number = calculateStaticMargin(param2);
          var _loc5_:int = param1.width - param1.iconContainer.x - param1.iconContainer.width + CLOSE_BUTTON_DISTANCE_BETWEEN_ICONCONTAINER_AND_ICON;
          param1.x = param3 - param1.width + _loc5_ - _loc4_;
          param1.y = _loc4_ + MAIN_MENU_BUTTON_BAR_HEIGHT - BUTTON_TEXT_FIELD_VERTICAL_OFFSET - BUTTON_TOP_FONT_PADDING;

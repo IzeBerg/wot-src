@@ -515,7 +515,7 @@ msgid "barracks/btnBuyTankman"
 msgstr "Recruit"
 
 msgid "barracks/btnDissmiss"
-msgstr "Dismiss"
+msgstr "Retire"
 
 msgid "barracks/btnNewPlace"
 msgstr "Enlarge Barracks"
@@ -1047,9 +1047,6 @@ msgstr "Accept invitation to join Platoon"
 msgid "contextMenu/addToFriends"
 msgstr "Add to your Friends list"
 
-msgid "contextMenu/addToFriendsAgain"
-msgstr "Send friend request again"
-
 msgid "contextMenu/addToIgnored"
 msgstr "Add to your Blacklist"
 
@@ -1241,6 +1238,9 @@ msgstr "Remove from your Friends list"
 
 msgid "contextMenu/removeFromIgnored"
 msgstr "Remove from your Blacklist"
+
+msgid "contextMenu/requestFriendship"
+msgstr "Send friend request again"
 
 msgid "contextMenu/restore"
 msgstr "Recover"
@@ -1718,6 +1718,18 @@ msgstr "WoT Plus Exclusive Vehicle Unavailable"
 msgid "customization/title"
 msgstr "Exterior"
 
+msgid "dateRange/dashDivider/full"
+msgstr "{start}–{end}"
+
+msgid "dateRange/dashDivider/short"
+msgstr "{start}–{end}"
+
+msgid "dateRange/textDivider/date"
+msgstr "from {start} through {end}"
+
+msgid "dateRange/textDivider/time"
+msgstr "from {start} through {end}"
+
 msgid "dateTime/fromToWithYear"
 msgstr "from {fromMonth} {fromDay} through {toMonth} {toDay}, {toYear}"
 
@@ -1793,6 +1805,42 @@ msgstr "August"
 msgid "dateTime/months/full/9"
 msgstr "September"
 
+msgid "dateTime/months/fullSmall/1"
+msgstr "January"
+
+msgid "dateTime/months/fullSmall/10"
+msgstr "October"
+
+msgid "dateTime/months/fullSmall/11"
+msgstr "November"
+
+msgid "dateTime/months/fullSmall/12"
+msgstr "December"
+
+msgid "dateTime/months/fullSmall/2"
+msgstr "February"
+
+msgid "dateTime/months/fullSmall/3"
+msgstr "March"
+
+msgid "dateTime/months/fullSmall/4"
+msgstr "April"
+
+msgid "dateTime/months/fullSmall/5"
+msgstr "May"
+
+msgid "dateTime/months/fullSmall/6"
+msgstr "June"
+
+msgid "dateTime/months/fullSmall/7"
+msgstr "July"
+
+msgid "dateTime/months/fullSmall/8"
+msgstr "August"
+
+msgid "dateTime/months/fullSmall/9"
+msgstr "September"
+
 msgid "dateTime/months/short/1"
 msgstr "Jan"
 
@@ -1828,6 +1876,42 @@ msgstr "Aug"
 
 msgid "dateTime/months/short/9"
 msgstr "Sep"
+
+msgid "dateTime/months/shortSmall/1"
+msgstr "Jan."
+
+msgid "dateTime/months/shortSmall/10"
+msgstr "Oct."
+
+msgid "dateTime/months/shortSmall/11"
+msgstr "Nov."
+
+msgid "dateTime/months/shortSmall/12"
+msgstr "Dec."
+
+msgid "dateTime/months/shortSmall/2"
+msgstr "Feb."
+
+msgid "dateTime/months/shortSmall/3"
+msgstr "Mar."
+
+msgid "dateTime/months/shortSmall/4"
+msgstr "Apr."
+
+msgid "dateTime/months/shortSmall/5"
+msgstr "May"
+
+msgid "dateTime/months/shortSmall/6"
+msgstr "Jun."
+
+msgid "dateTime/months/shortSmall/7"
+msgstr "Jul."
+
+msgid "dateTime/months/shortSmall/8"
+msgstr "Aug."
+
+msgid "dateTime/months/shortSmall/9"
+msgstr "Sept."
 
 msgid "dateTime/order"
 msgstr "%(day)s %(month)s %(year)s"
@@ -1924,13 +2008,21 @@ msgstr "Inaction/Bot"
 msgid "denunciation/7"
 msgstr "Inappropriate behavior in chat"
 
+msgid "descriptions/mutableDamageShell"
+msgstr "Average Damage: %(avgMutableDamage)s"
+
+msgid "descriptions/mutableDamageShellFull"
+msgstr ""
+"Penetration: %(avgPiercingPower)s mm\n"
+"Average Damage: %(avgMutableDamage)s"
+
 msgid "descriptions/shell"
-msgstr "Damage: %(damage)s"
+msgstr "Average Damage: %(avgDamage)s"
 
 msgid "descriptions/shellFull"
 msgstr ""
 "Penetration: %(avgPiercingPower)s mm\n"
-"Damage: %(damage)s"
+"Average Damage: %(avgDamage)s"
 
 msgid "descriptions/vehicle"
 msgstr "%(weight)s t; Armor: up to %(hullArmor)s mm; Gun %(caliber)s mm"
@@ -3176,6 +3268,15 @@ msgstr ""
 msgid "headerButtons/fightBtn/tooltip/comp7RatingCalculation/header"
 msgstr "Unable to Enter Battle"
 
+msgid "headerButtons/fightBtn/tooltip/comp7VehLevel/body"
+msgstr "No suitable Tier %(levels)s vehicles in the Garage"
+
+msgid "headerButtons/fightBtn/tooltip/comp7VehLevel/delimiter"
+msgstr ", "
+
+msgid "headerButtons/fightBtn/tooltip/comp7VehLevel/header"
+msgstr "Unable to Enter Battle"
+
 msgid "headerButtons/fightBtn/tooltip/crewNotFull/body"
 msgstr "Absent: <b>%(crewList)s</b>."
 
@@ -4375,6 +4476,9 @@ msgstr "Used as single-shot gun on vehicles:"
 msgid "moduleInfo/compatible/vehicles"
 msgstr "Compatible Vehicles:"
 
+msgid "moduleInfo/damageMutableGunLabel"
+msgstr "A deep-rifled gun. It can fire star tray shells."
+
 msgid "moduleInfo/dualAccuracyGunLabel"
 msgstr "Double Aiming System"
 
@@ -4429,6 +4533,9 @@ msgstr "Average Damage"
 
 msgid "moduleInfo/params/avgDamagePerMinute"
 msgstr "Average Damage per Minute"
+
+msgid "moduleInfo/params/avgMutableDamage"
+msgstr "Average damage"
 
 msgid "moduleInfo/params/avgPiercingPower"
 msgstr "Average Penetration"
@@ -4526,6 +4633,9 @@ msgstr "Wind-Down Time"
 msgid "moduleInfo/params/level_lbl"
 msgstr "Level %(level)s Combat Reserve"
 
+msgid "moduleInfo/params/maxAvgMutableDamageList"
+msgstr "Average Damage at 50 m"
+
 msgid "moduleInfo/params/maxDamage"
 msgstr "Maximum Damage"
 
@@ -4547,8 +4657,11 @@ msgstr "* maximum shell flying range for this gun"
 msgid "moduleInfo/params/maxSteeringLockAngle"
 msgstr "Maximum Wheel Turning Angle"
 
+msgid "moduleInfo/params/minAvgMutableDamageList"
+msgstr "Average Damage at %(dist)s m"
+
 msgid "moduleInfo/params/noPiercingDistance/footnote"
-msgstr "* does not depend on the distance for this type of shell"
+msgstr " does not depend on the distance for this type of shell"
 
 msgid "moduleInfo/params/noPiercingDistance/footnote/maxDistance"
 msgstr ", maximum flying range—400 m"
@@ -4557,7 +4670,7 @@ msgid "moduleInfo/params/piercingDistance"
 msgstr "%(dist)s m"
 
 msgid "moduleInfo/params/piercingDistance/footnote"
-msgstr "* depends on the distance: %(minDist)s–%(maxDist)s m"
+msgstr " depends on the distance: %(minDist)s–%(maxDist)s m"
 
 msgid "moduleInfo/params/piercingDistanceHeader"
 msgstr "Average Penetration (mm)—Distance"

@@ -24,6 +24,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var resetFilters:Function;
       
+      public var onUnfrozenVehicleSlotClick:Function;
+      
       private var _fortClanBattleRoomVO:FortClanBattleRoomVO;
       
       private var _actionButtonVO:ActionButtonVO;
@@ -121,6 +123,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.resetFilters,"resetFilters" + Errors.CANT_NULL);
          this.resetFilters(param1);
+      }
+      
+      public function onUnfrozenVehicleSlotClickS(param1:int) : void
+      {
+         App.utils.asserter.assertNotNull(this.onUnfrozenVehicleSlotClick,"onUnfrozenVehicleSlotClick" + Errors.CANT_NULL);
+         this.onUnfrozenVehicleSlotClick(param1);
       }
       
       public final function as_setBattleRoomData(param1:Object) : void

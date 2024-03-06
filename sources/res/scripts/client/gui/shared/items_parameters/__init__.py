@@ -1,7 +1,9 @@
 import math, sys
 from math import ceil
-from gui.shared.utils import SHELLS_COUNT_PROP_NAME, RELOAD_TIME_PROP_NAME, RELOAD_MAGAZINE_TIME_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME, DISPERSION_RADIUS_PROP_NAME, AIMING_TIME_PROP_NAME, PIERCING_POWER_PROP_NAME, DAMAGE_PROP_NAME, SHELLS_PROP_NAME, STUN_DURATION_PROP_NAME, GUARANTEED_STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, RELOAD_TIME_SECS_PROP_NAME, DUAL_ACCURACY_COOLING_DELAY, BURST_FIRE_RATE
+from constants import DAMAGE_INTERPOLATION_DIST_LAST
+from gui.shared.utils import SHELLS_COUNT_PROP_NAME, RELOAD_TIME_PROP_NAME, RELOAD_MAGAZINE_TIME_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME, DISPERSION_RADIUS_PROP_NAME, AIMING_TIME_PROP_NAME, PIERCING_POWER_PROP_NAME, DAMAGE_PROP_NAME, SHELLS_PROP_NAME, STUN_DURATION_PROP_NAME, GUARANTEED_STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, RELOAD_TIME_SECS_PROP_NAME, DUAL_ACCURACY_COOLING_DELAY, BURST_FIRE_RATE, MAX_MUTABLE_DAMAGE_PROP_NAME, MIN_MUTABLE_DAMAGE_PROP_NAME
 from helpers import i18n, time_utils
+from helpers_common import computeDamageAtDist
 from items import vehicles, artefacts
 from items.components import component_constants
 RELATIVE_PARAMS = ('relativePower', 'relativeArmor', 'relativeMobility', 'relativeCamouflage',
@@ -87,7 +89,7 @@ def calcGunParams(gunDescr, descriptors):
                                    sys.maxint, -1), 
        AIMING_TIME_PROP_NAME: (
                              sys.maxint, -1), 
-       PIERCING_POWER_PROP_NAME: [], DAMAGE_PROP_NAME: [], SHELLS_PROP_NAME: [], STUN_DURATION_PROP_NAME: [], GUARANTEED_STUN_DURATION_PROP_NAME: [], AUTO_RELOAD_PROP_NAME: [], DUAL_GUN_RATE_TIME: (
+       PIERCING_POWER_PROP_NAME: [], DAMAGE_PROP_NAME: [], MAX_MUTABLE_DAMAGE_PROP_NAME: [], MIN_MUTABLE_DAMAGE_PROP_NAME: [], SHELLS_PROP_NAME: [], STUN_DURATION_PROP_NAME: [], GUARANTEED_STUN_DURATION_PROP_NAME: [], AUTO_RELOAD_PROP_NAME: [], DUAL_GUN_RATE_TIME: (
                           sys.maxint, -1), 
        DUAL_GUN_CHARGE_TIME: [], DUAL_ACCURACY_COOLING_DELAY: (
                                    sys.maxint, -1)}
@@ -128,8 +130,11 @@ def calcGunParams(gunDescr, descriptors):
     for shot in gunDescr.shots:
         shell = shot.shell
         result[PIERCING_POWER_PROP_NAME].append(shot.piercingPower[0])
-        result[DAMAGE_PROP_NAME].append(shell.damage[0])
-        result[SHELLS_PROP_NAME].append(i18n.makeString('#item_types:shell/kinds/' + shell.kind))
+        result[DAMAGE_PROP_NAME].append(shell.armorDamage[0])
+        shellKind = i18n.makeString('#item_types:shell/kinds/' + shell.kind)
+        result[MAX_MUTABLE_DAMAGE_PROP_NAME].append(shell.armorDamage[0])
+        result[MIN_MUTABLE_DAMAGE_PROP_NAME].append(computeDamageAtDist(shell.armorDamage, min(shot.maxDistance, DAMAGE_INTERPOLATION_DIST_LAST)) if shell.isDamageMutable else shell.armorDamage[0])
+        result[SHELLS_PROP_NAME].append(shellKind)
         if shell.hasStun:
             stun = shell.stun
             stunDuration = stun.stunDuration
@@ -138,6 +143,8 @@ def calcGunParams(gunDescr, descriptors):
 
     for key in (PIERCING_POWER_PROP_NAME,
      DAMAGE_PROP_NAME,
+     MAX_MUTABLE_DAMAGE_PROP_NAME,
+     MIN_MUTABLE_DAMAGE_PROP_NAME,
      SHELLS_PROP_NAME,
      STUN_DURATION_PROP_NAME,
      GUARANTEED_STUN_DURATION_PROP_NAME,
@@ -162,7 +169,7 @@ def calcShellParams(descriptors):
         curPiercingPower = (
          int(piercingPower - piercingPower * ppRand),
          int(ceil(piercingPower + piercingPower * ppRand)))
-        damage = shell.damage[0]
+        damage = shell.armorDamage[0]
         curDamage = (int(damage - damage * damageRand), int(ceil(damage + damage * damageRand)))
         result[PIERCING_POWER_PROP_NAME] = (
          min(result[PIERCING_POWER_PROP_NAME][0], curPiercingPower[0]),
@@ -180,7 +187,7 @@ def getEquipmentParameters(eqpDescr):
     if eqDescrType is artefacts.RageArtillery:
         shellDescr = vehicles.getItemByCompactDescr(eqpDescr.shellCompactDescr)
         params.update({'damage': (
-                    shellDescr.damage[0],) * 2, 
+                    shellDescr.armorDamage[0],) * 2, 
            'piercingPower': eqpDescr.piercingPower, 
            'caliber': shellDescr.caliber, 
            'shotsNumberRange': eqpDescr.shotsNumber, 
@@ -189,7 +196,7 @@ def getEquipmentParameters(eqpDescr):
     elif eqDescrType is artefacts.RageBomber:
         shellDescr = vehicles.getItemByCompactDescr(eqpDescr.shellCompactDescr)
         params.update({'bombDamage': (
-                        shellDescr.damage[0],) * 2, 
+                        shellDescr.armorDamage[0],) * 2, 
            'piercingPower': eqpDescr.piercingPower, 
            'bombsNumberRange': eqpDescr.bombsNumber, 
            'areaSquare': eqpDescr.areaLength * eqpDescr.areaWidth, 

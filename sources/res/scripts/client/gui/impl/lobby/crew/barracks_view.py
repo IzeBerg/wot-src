@@ -134,7 +134,9 @@ class BarracksView(BaseTankmanListView):
          (
           self.itemsCache.onSyncCompleted, self.__onBerthsPricesChanged),
          (
-          g_playerEvents.onVehicleLockChanged, self._onVehicleLockChanged))
+          g_playerEvents.onVehicleLockChanged, self._onVehicleLockChanged),
+         (
+          self.eventsCache.onProgressUpdated, self.__onNewRecruits))
 
     @property
     def _tankmenProvider(self):

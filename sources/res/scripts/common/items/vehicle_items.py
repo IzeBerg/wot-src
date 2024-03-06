@@ -1,5 +1,5 @@
 import functools, Math, nations
-from constants import SHELL_TYPES, ATTACK_REASON
+from constants import SHELL_TYPES, ATTACK_REASON, SHELL_MECHANICS_TYPE
 from items import ITEM_TYPES, ITEM_TYPE_NAMES, makeIntCompactDescrByID
 from items.basic_item import BasicItem
 from items.components import chassis_components
@@ -10,6 +10,12 @@ from items.components import shell_components
 from items.components import sound_components
 from soft_exception import SoftException
 from wrapped_reflection_framework import ReflectionMetaclass
+from typing import TYPE_CHECKING, Tuple, Sequence, Dict, NamedTuple, Optional, Union, Type
+if TYPE_CHECKING:
+    from ModelHitTester import HitTesterManager, BoundingBoxManager
+    from Vehicular import GeneralWheelsAnimatorConfig
+    from items import vehicles
+    from items.components.shared_components import CustomizationSlotDescription
 
 class VEHICLE_ITEM_STATUS(object):
     UNDEFINED = 0
@@ -301,7 +307,7 @@ class Gun(InstallableItem):
                  'staticPitch', 'shotDispersionAngle', 'shotDispersionFactors', 'burst',
                  'clip', 'shots', 'autoreload', 'autoreloadHasBoost', 'drivenJoints',
                  'customizableVehicleAreas', 'dualGun', 'edgeByVisualModel', 'prefabs',
-                 'shootImpulses', 'dualAccuracy', '__weakref__')
+                 'shootImpulses', 'dualAccuracy', 'isDamageMutable', '__weakref__')
 
     def __init__(self, typeID, componentID, componentName, compactDescr, level=1):
         super(Gun, self).__init__(typeID, componentID, componentName, compactDescr, level)
@@ -334,6 +340,7 @@ class Gun(InstallableItem):
         self.edgeByVisualModel = True
         self.prefabs = component_constants.EMPTY_TUPLE
         self.shootImpulses = component_constants.EMPTY_TUPLE
+        self.isDamageMutable = False
         return
 
 
@@ -385,16 +392,18 @@ class Hull(BasicItem):
 
 
 class Shell(BasicItem):
-    __slots__ = ('caliber', 'isTracer', 'isForceTracer', 'damage', 'damageRandomization',
-                 'piercingPowerRandomization', 'icon', 'iconName', 'isGold', 'type',
-                 'stun', 'effectsIndex', 'tags', 'secondaryAttackReason', 'useAltDamageRandomization')
+    __slots__ = ('caliber', 'isTracer', 'isForceTracer', 'armorDamage', 'deviceDamage',
+                 'damageRandomization', 'piercingPowerRandomization', 'icon', 'iconName',
+                 'isGold', 'type', 'stun', 'effectsIndex', 'tags', 'secondaryAttackReason',
+                 'useAltDamageRandomization', 'isDamageMutable', 'maxDistance')
 
     def __init__(self, typeID, componentID, componentName, compactDescr):
         super(Shell, self).__init__(typeID, componentID, componentName, compactDescr)
         self.caliber = component_constants.ZERO_FLOAT
         self.isTracer = False
         self.isForceTracer = False
-        self.damage = component_constants.EMPTY_TUPLE
+        self.armorDamage = component_constants.ZERO_TUPLE2
+        self.deviceDamage = component_constants.ZERO_TUPLE2
         self.damageRandomization = component_constants.DEFAULT_DAMAGE_RANDOMIZATION
         self.piercingPowerRandomization = component_constants.DEFAULT_PIERCING_POWER_RANDOMIZATION
         self.stun = None
@@ -405,6 +414,7 @@ class Shell(BasicItem):
         self.iconName = None
         self.secondaryAttackReason = ATTACK_REASON.NONE
         self.useAltDamageRandomization = False
+        self.isDamageMutable = False
         return
 
     def __repr__(self):
@@ -420,11 +430,27 @@ class Shell(BasicItem):
         return self.stun is not None
 
     @property
-    def isAmmoPercingType(self):
+    def isArmorPercingType(self):
         return self.kind in (
          SHELL_TYPES.ARMOR_PIERCING,
          SHELL_TYPES.ARMOR_PIERCING_HE,
          SHELL_TYPES.ARMOR_PIERCING_CR)
+
+    @property
+    def isPiercingDistanceDependent(self):
+        return self.kind in (
+         SHELL_TYPES.ARMOR_PIERCING,
+         SHELL_TYPES.ARMOR_PIERCING_CR)
+
+    @property
+    def isModernHE(self):
+        return self.checkType(SHELL_TYPES.HIGH_EXPLOSIVE) and self.checkMechanics(SHELL_MECHANICS_TYPE.MODERN)
+
+    def checkType(self, *types):
+        return self.type.name in types
+
+    def checkMechanics(self, *mechanics):
+        return self.type.mechanics in mechanics
 
 
 _TYPE_ID_TO_CLASS = {ITEM_TYPES.vehicleChassis: Chassis, 

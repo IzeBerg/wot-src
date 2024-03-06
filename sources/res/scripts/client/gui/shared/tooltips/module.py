@@ -45,6 +45,7 @@ class _ModuleExtraStatuses(CONST_CONTAINER):
     CLIP_GUN = 'clipGun'
     DUAL_GUN = 'dualGun'
     DUAL_ACCURACY_GUN = 'dualAccuracyGun'
+    DAMAGE_MUTABLE_GUN = 'mutableDamageGun'
     TURBOSHAFT_ENGINE = 'turboshaftEngine'
     ROCKET_ACCELERATION_ENGINE = 'rocketAccelerationEngine'
     HYDRO_CHASSIS = 'hydroChassis'
@@ -63,6 +64,8 @@ _MODULE_EXTRA_STATUS_RESOURCES = {_ModuleExtraStatuses.AUTOLOADER_GUN: (
                                  _STR_EXTRA_PATH.dualGunLabel, _IMG_EXTRA_PATH.dualGun), 
    _ModuleExtraStatuses.DUAL_ACCURACY_GUN: (
                                           _STR_EXTRA_PATH.dualAccuracyGunLabel, _IMG_EXTRA_PATH.dualAccuracy), 
+   _ModuleExtraStatuses.DAMAGE_MUTABLE_GUN: (
+                                           _STR_EXTRA_PATH.damageMutableGunLabel, _IMG_EXTRA_PATH.damageMutable), 
    _ModuleExtraStatuses.TURBOSHAFT_ENGINE: (
                                           _STR_EXTRA_PATH.turboshaftEngine, _IMG_EXTRA_PATH.turbineEngineIcon), 
    _ModuleExtraStatuses.ROCKET_ACCELERATION_ENGINE: (
@@ -184,11 +187,13 @@ class ModuleTooltipBlockConstructor(object):
     RELOAD_COOLDOWN_SECONDS = 'reloadCooldownSeconds'
     CALIBER = 'caliber'
     DUAL_ACCURACY_MODULE_PARAM = 'dualAccuracy'
+    MUTABLE_DAMAGE_MODULE_PARAM = 'mutableDamage'
     DEFAULT_PARAM = 'default'
     MODULE_PARAMS = {GUI_ITEM_TYPE.CHASSIS: ('maxLoad', 'rotationSpeed', 'maxSteeringLockAngle', 'vehicleChassisRepairSpeed', 'chassisRepairTime'), 
        GUI_ITEM_TYPE.TURRET: ('armor', 'rotationSpeed', 'circularVisionRadius'), 
        GUI_ITEM_TYPE.GUN: (
-                         'avgDamageList', 'avgPiercingPower', RELOAD_TIME_SECS_PROP_NAME, RELOAD_TIME_PROP_NAME,
+                         'avgDamageList', 'avgPiercingPower',
+                         RELOAD_TIME_SECS_PROP_NAME, RELOAD_TIME_PROP_NAME,
                          'avgDamagePerMinute', 'stunMinDurationList', 'stunMaxDurationList', DISPERSION_RADIUS,
                          DUAL_ACCURACY_COOLING_DELAY, 'maxShotDistance', AIMING_TIME_PROP_NAME, BURST_FIRE_RATE), 
        GUI_ITEM_TYPE.ENGINE: ('enginePower', 'fireStartingChance'), 
@@ -217,7 +222,12 @@ class ModuleTooltipBlockConstructor(object):
                                   'avgDamageList', 'avgPiercingPower', RELOAD_TIME_SECS_PROP_NAME, RELOAD_TIME_PROP_NAME,
                                   BURST_TIME_INTERVAL, BURST_COUNT, BURST_SIZE,
                                   'avgDamagePerMinute', 'stunMinDurationList', 'stunMaxDurationList', DISPERSION_RADIUS,
-                                  DUAL_ACCURACY_COOLING_DELAY, 'maxShotDistance', AIMING_TIME_PROP_NAME)}
+                                  DUAL_ACCURACY_COOLING_DELAY, 'maxShotDistance', AIMING_TIME_PROP_NAME), 
+       MUTABLE_DAMAGE_MODULE_PARAM: (
+                                   'maxAvgMutableDamageList', 'minAvgMutableDamageList', 'avgPiercingPower',
+                                   RELOAD_TIME_SECS_PROP_NAME, RELOAD_TIME_PROP_NAME,
+                                   'avgDamagePerMinute', 'stunMinDurationList', 'stunMaxDurationList', DISPERSION_RADIUS,
+                                   DUAL_ACCURACY_COOLING_DELAY, 'maxShotDistance', AIMING_TIME_PROP_NAME, BURST_FIRE_RATE)}
     HIGHLIGHT_MODULE_PARAMS = {DEFAULT_PARAM: (
                      AUTO_RELOAD_PROP_NAME, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME,
                      TURBOSHAFT_ENGINE_POWER, ROCKET_ACCELERATION_ENGINE_POWER), 
@@ -580,6 +590,8 @@ class CommonStatsBlockConstructor(ModuleTooltipBlockConstructor):
                 elif vehicle is not None and vehicle.descriptor.hasDualAccuracy:
                     highlightPossible = serverSettings.checkDualAccuracyHighlights(increase=True)
                     paramsKeyName = self.DUAL_ACCURACY_MODULE_PARAM
+                elif vehicle is not None and module.isDamageMutable():
+                    paramsKeyName = self.MUTABLE_DAMAGE_MODULE_PARAM
             elif paramsKeyName == GUI_ITEM_TYPE.ENGINE:
                 if vehicle is not None and vehicle.descriptor.hasTurboshaftEngine:
                     highlightPossible = serverSettings.checkTurboshaftHighlights(increase=True)
@@ -656,6 +668,8 @@ class CommonStatsBlockConstructor(ModuleTooltipBlockConstructor):
             result.append(_ModuleExtraStatuses.DUAL_GUN)
         if module.hasDualAccuracy(vDescr):
             result.append(_ModuleExtraStatuses.DUAL_ACCURACY_GUN)
+        if module.isDamageMutable():
+            result.append(_ModuleExtraStatuses.DAMAGE_MUTABLE_GUN)
         return result
 
     @classmethod

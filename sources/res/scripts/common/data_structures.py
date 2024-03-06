@@ -127,3 +127,24 @@ class ParametrisedFactoryDefaultDict(defaultdict):
 
 class DynamicFactorCollectorKeyError(SoftException):
     pass
+
+
+class VariableState(object):
+    __slots__ = ('_description', )
+
+    def __init__(self, description='unknown'):
+        self._description = description
+
+    def __bool__(self):
+        return False
+
+    __nonzero__ = __bool__
+
+    def __copy__(self):
+        return self
+
+    def __deepcopy__(self, _):
+        return self
+
+    def __repr__(self):
+        return ('<state.{}>').format(self._description)

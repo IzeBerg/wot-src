@@ -48,7 +48,9 @@ class KPITooltip(ViewImpl):
             model.setKpiType(self.__kpiType)
             model.setAvgValue(stats[0])
             model.setMaxValue(stats[1])
-            model.setTankName(self.__getVehicleName(stats[2]))
+            vehicleInfo = self.__getVehicleInfo(stats[2])
+            model.setTankName(vehicleInfo[0])
+            model.setIsPremiumIGR(vehicleInfo[1])
 
     def _finalize(self):
         self.__kpiType = None
@@ -62,9 +64,11 @@ class KPITooltip(ViewImpl):
             return kpiStats(randomStats)
         return ['0', '0', '']
 
-    def __getVehicleName(self, intCD):
+    def __getVehicleInfo(self, intCD):
         vehicle = self.__itemsCache.items.getItemByCD(intCD)
-        if vehicle is not None:
-            return vehicle.shortUserName
+        if vehicle is None:
+            return ('', False)
         else:
-            return ''
+            return (
+             vehicle.descriptor.type.shortUserString,
+             vehicle.isPremiumIGR)

@@ -8,11 +8,14 @@ package net.wg.mock.utils
    import flash.display.Sprite;
    import flash.events.IEventDispatcher;
    import flash.events.MouseEvent;
+   import flash.geom.Point;
    import flash.geom.Rectangle;
    import flash.text.TextField;
    import net.wg.data.constants.KeyProps;
+   import net.wg.infrastructure.interfaces.IUIComponentEx;
    import net.wg.infrastructure.interfaces.IUserProps;
    import net.wg.utils.ICommons;
+   import scaleform.clik.utils.Padding;
    
    public class MockCommons implements ICommons
    {
@@ -154,6 +157,27 @@ package net.wg.mock.utils
       public function formatNumberToStringWithSpaces(param1:int) : String
       {
          return "";
+      }
+      
+      public function addOverlayToBtn(param1:IUIComponentEx, param2:String, param3:Point, param4:Padding) : void
+      {
+      }
+      
+      public function removeOverlayFromBtn(param1:IUIComponentEx) : void
+      {
+      }
+      
+      public function invalidateOverlayPosition(param1:IUIComponentEx) : void
+      {
+      }
+      
+      public function dispose() : void
+      {
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
       }
    }
 }

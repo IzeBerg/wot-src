@@ -1,6 +1,5 @@
 from frameworks.wulf import ViewFlags, ViewSettings
 from battle_pass_common import FinalReward, BattlePassConsts, BattlePassTankmenSource
-from gui.Scaleform.daapi.view.lobby.store.browser.shop_helpers import getBuyBattlePassUrl
 from gui.battle_pass.battle_pass_award import BattlePassAwardsManager
 from gui.battle_pass.battle_pass_decorators import createBackportTooltipDecorator, createTooltipContentDecorator
 from gui.battle_pass.battle_pass_helpers import getReceivedTankmenCount, getTankmenShopPackages, getStyleForChapter, getVehicleInfoForChapter, isSeasonEndingSoon
@@ -17,7 +16,7 @@ from gui.impl.gen.view_models.views.lobby.vehicle_preview.top_panel.top_panel_ta
 from gui.impl.pub import ViewImpl
 from gui.impl.wrappers.function_helpers import replaceNoneKwargsModel
 from gui.server_events.events_dispatcher import showMissionsBattlePass
-from gui.shared.event_dispatcher import showHangar, showVehiclePreviewWithoutBottomPanel, showBattlePassBuyWindow, showStylePreview, showShop, showBattlePassTankmenVoiceover
+from gui.shared.event_dispatcher import showHangar, showVehiclePreviewWithoutBottomPanel, showBattlePassTankmenVoiceover, selectVehicleInHangar, showBattlePassBuyWindow, showStylePreview
 from helpers import dependency
 from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.shared import IItemsCache
@@ -81,13 +80,11 @@ class PostProgressionView(ViewImpl):
          (
           self.viewModel.onTakeRewardsClick, self.__takeAllRewards),
          (
-          self.viewModel.showShop, self.__showShop),
-         (
           self.viewModel.showTankmen, self.__showTankmen),
          (
           self.viewModel.onPreviewVehicle, self.__onPreview),
          (
-          self.viewModel.showHangar, self.__showHangar),
+          self.viewModel.showVehicle, self.__showVehicle),
          (
           self.viewModel.showBuy, self.__showBuyWindow),
          (
@@ -193,11 +190,12 @@ class PostProgressionView(ViewImpl):
     def __showTankmen():
         showBattlePassTankmenVoiceover()
 
-    def __showShop(self):
-        showShop(getBuyBattlePassUrl())
-
-    def __showHangar(self):
-        showHangar()
+    def __showVehicle(self):
+        vehicle, _ = getVehicleInfoForChapter(self.__chapter)
+        if vehicle.isInInventory:
+            selectVehicleInHangar(vehicle.intCD)
+        else:
+            showHangar()
 
     def __onAwardViewClose(self, *_):
         self.__updateState()

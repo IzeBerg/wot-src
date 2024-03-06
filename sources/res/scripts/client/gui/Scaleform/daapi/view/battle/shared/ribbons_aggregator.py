@@ -30,6 +30,9 @@ class _Ribbon(object):
     def createFromFeedbackEvent(cls, ribbonID, event):
         raise NotImplementedError
 
+    def getFormatter(self):
+        return
+
     def getType(self):
         raise NotImplementedError
 
@@ -600,6 +603,17 @@ class _ReceivedByDamagingThunderStrikeRibbon(_SingleVehicleReceivedHitRibbon):
         self.setExtraValue(value)
 
 
+class _ReceivedByHealthAddedRibbon(_SingleVehicleRibbon):
+    __slots__ = ()
+
+    def getType(self):
+        return BATTLE_EFFICIENCY_TYPES.VEHICLE_HEALTH_ADDED
+
+    @classmethod
+    def _extractExtraValue(cls, event):
+        return event.getExtra()
+
+
 class _ReceivedByFireCircleRibbon(_SingleVehicleReceivedHitRibbon):
     __slots__ = ()
 
@@ -972,7 +986,8 @@ _FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY = {FEEDBACK_EVENT_ID.PLAYER_CAPTURED_BASE:
    FEEDBACK_EVENT_ID.DESTRUCTIBLES_DEFENDED: _RibbonSingleClassFactory(_EpicDestructiblesDefended), 
    FEEDBACK_EVENT_ID.DEFENDER_BONUS: _RibbonSingleClassFactory(_EpicDefenderBonus), 
    FEEDBACK_EVENT_ID.SMOKE_ASSIST: _RibbonSingleClassFactory(_EpicAbilityAssist), 
-   FEEDBACK_EVENT_ID.INSPIRE_ASSIST: _RibbonSingleClassFactory(_EpicAbilityAssist)}
+   FEEDBACK_EVENT_ID.INSPIRE_ASSIST: _RibbonSingleClassFactory(_EpicAbilityAssist), 
+   FEEDBACK_EVENT_ID.VEHICLE_HEALTH_ADDED: _RibbonSingleClassFactory(_ReceivedByHealthAddedRibbon)}
 _FEEDBACK_EVENTS_TO_IGNORE = (
  FEEDBACK_EVENT_ID.EQUIPMENT_TIMER_EXPIRED,)
 
@@ -980,14 +995,14 @@ def _isRoleBonus(event):
     return getattr(event.getExtra(), 'isRoleAction', lambda : False)()
 
 
-def _createRibbonFromPlayerFeedbackEvent(ribbonID, event):
+def _createRibbonFromPlayerFeedbackEvent(aggregator, ribbonID, event):
     etype = event.getType()
-    if etype in _FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY:
-        factory = _FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY[etype]
+    if etype in aggregator.FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY:
+        factory = aggregator.FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY[etype]
         ribbonCls = factory.getRibbonClass(event)
         if ribbonCls is not None:
             return ribbonCls.createFromFeedbackEvent(ribbonID, event)
-    if etype not in _FEEDBACK_EVENTS_TO_IGNORE:
+    if etype not in aggregator.FEEDBACK_EVENTS_TO_IGNORE:
         _logger.error('Could not find a proper ribbon class associated with the given feedback event %s', event)
     return
 
@@ -1055,6 +1070,9 @@ class _RibbonsCache(object):
 
 class RibbonsAggregator(object):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
+    FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY = _FEEDBACK_EVENT_TO_RIBBON_CLS_FACTORY
+    FEEDBACK_EVENTS_TO_IGNORE = _FEEDBACK_EVENTS_TO_IGNORE
+    RIBBON_TYPES_AGGREGATED_WITH_KILL_RIBBON = _RIBBON_TYPES_AGGREGATED_WITH_KILL_RIBBON
 
     def __init__(self):
         super(RibbonsAggregator, self).__init__()
@@ -1136,7 +1154,7 @@ class RibbonsAggregator(object):
         self._aggregateRibbons([_PerkRibbon.createFromFeedbackEvent(self.__idGenerator.next(), perkData)])
 
     def _onPlayerFeedbackReceived(self, events):
-        self._aggregateRibbons(list(_createRibbonFromPlayerFeedbackEvent(self.__idGenerator.next(), e) for e in events))
+        self._aggregateRibbons(list(_createRibbonFromPlayerFeedbackEvent(self, self.__idGenerator.next(), e) for e in events))
 
     def _aggregateRibbons(self, ribbons):
         aggregatedRibbons = {}
@@ -1206,7 +1224,7 @@ class RibbonsAggregator(object):
 
         if BATTLE_EFFICIENCY_TYPES.DESTRUCTION in ribbons:
             killRibbons = dict((r.getVehicleID(), r) for r in ribbons[BATTLE_EFFICIENCY_TYPES.DESTRUCTION])
-            damageRibbons = dict((t, ribbons[t]) for t in _RIBBON_TYPES_AGGREGATED_WITH_KILL_RIBBON if t in ribbons)
+            damageRibbons = dict((t, ribbons[t]) for t in self.RIBBON_TYPES_AGGREGATED_WITH_KILL_RIBBON if t in ribbons)
             for rType, tmpRibbons in damageRibbons.iteritems():
                 filteredRibbons = []
                 for tmpRibbon in tmpRibbons:

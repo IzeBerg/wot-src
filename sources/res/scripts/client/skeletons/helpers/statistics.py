@@ -36,5 +36,5 @@ class IStatisticsCollector(object):
     def noteHangarLoadingState(self, state, initialState=False, showSummaryNow=False):
         raise NotImplementedError
 
-    def noteLastArenaData(self, arenaTypeID, arenaUniqueID, arenaTeam, randomEvents):
+    def noteLastArenaData(self, arenaTypeID, arenaUniqueID, arenaTeam, randomEvents, blArenaPeriod):
         raise NotImplementedError

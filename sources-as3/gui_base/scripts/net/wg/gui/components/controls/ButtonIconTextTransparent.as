@@ -12,6 +12,8 @@ package net.wg.gui.components.controls
       
       public static const ICON_LOCK:String = "lock";
       
+      public static const ICON_GEAR:String = "gear";
+      
       public static const ICON_UP:String = "up";
       
       public static const ICON_DOWN:String = "down";

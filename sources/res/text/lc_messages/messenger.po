@@ -1252,6 +1252,9 @@ msgstr "Battle Pass Points removed"
 msgid "platformCurrencyMsg/debited/brcoin"
 msgstr "Steel Seals removed"
 
+msgid "platformCurrencyMsg/debited/clanvehiclecoin"
+msgstr "Maneuvers Tokens removed"
+
 msgid "platformCurrencyMsg/debited/equip_coin"
 msgstr "Components removed"
 
@@ -1269,6 +1272,9 @@ msgstr "Battle Pass Points added"
 
 msgid "platformCurrencyMsg/received/brcoin"
 msgstr "Steel Seals added"
+
+msgid "platformCurrencyMsg/received/clanvehiclecoin"
+msgstr "Maneuvers Tokens added"
 
 msgid "platformCurrencyMsg/received/equip_coin"
 msgstr "Components added"
@@ -1649,8 +1655,8 @@ msgstr ""
 msgid ""
 "serviceChannelMessages/autoRentStyleRentIsAlmostOverAutoprolongationON/text"
 msgstr ""
-"The \"%s\" style rental for the %s will be automatically extended for %s "
-"more battles after 3 battles."
+"The %s style rental for the %s will be automatically extended for %s more "
+"battles after 3 battles."
 
 msgid "serviceChannelMessages/autoRentStyleRentIsOver/button"
 msgstr "To Exterior"
@@ -1744,7 +1750,7 @@ msgid "serviceChannelMessages/battlePass/freePointsUsed/header"
 msgstr "Unspent Points used"
 
 msgid "serviceChannelMessages/battlePass/freePointsUsed/text"
-msgstr "Unspent Points used: %(points)s for the \"%(chapter)s\" Chapter."
+msgstr "Unspent Points used: %(points)s for the %(chapter)s Chapter."
 
 msgid "serviceChannelMessages/battlePass/newDeviceToken"
 msgstr "Standard Equipment to Select From"
@@ -1754,9 +1760,9 @@ msgstr "Point Limit reached"
 
 msgid "serviceChannelMessages/battlePass/reachedCap/text"
 msgstr ""
-"You earned the maximum number of Points in the %(vehName)s. Reward for "
-"reaching the Point Limit: %(bonusPoints)s. Fight in another vehicle to "
-"continue earning Points."
+"You earned the maximum number of Points in the %(vehName)s.\n"
+"Reward for reaching the Point Limit: %(bonusPoints)s.\n"
+"Fight in another vehicle to continue earning Points."
 
 msgid "serviceChannelMessages/battlePass/styleChosen/header"
 msgstr "Congratulations!"
@@ -1822,7 +1828,7 @@ msgstr ""
 
 msgid "serviceChannelMessages/battlePassReward/battle/newLevel/text"
 msgstr ""
-"You completed Progression Stage %(newLevel)s of the \"%(chapter)s\" Chapter.\n"
+"You completed Progression Stage %(newLevel)s of the %(chapter)s Chapter.\n"
 "Reward received:"
 
 msgid "serviceChannelMessages/battlePassReward/button"
@@ -1833,6 +1839,11 @@ msgstr "Free Experience spent:"
 
 msgid "serviceChannelMessages/battlePassReward/buy/gold"
 msgstr "Gold spent:"
+
+msgid "serviceChannelMessages/battlePassReward/buyBPWithLevels/text"
+msgstr ""
+"You have purchased the Improved Pass and all Stages for the %(chapter)s Chapter.\n"
+"Rewards received for all Stages of the Chapter:"
 
 msgid "serviceChannelMessages/battlePassReward/buyMultiple/text"
 msgstr ""
@@ -1849,20 +1860,23 @@ msgstr ""
 "Rewards received:"
 
 msgid "serviceChannelMessages/battlePassReward/buyWithRewards/additionalText"
-msgstr "This Improved Pass only applies to the \"%(chapter)s\" Chapter."
+msgstr "This Improved Pass only applies to the %(chapter)s Chapter."
 
 msgid "serviceChannelMessages/battlePassReward/buyWithRewards/text"
 msgstr "You received rewards for the previously completed Battle Pass Stages:"
 
 msgid "serviceChannelMessages/battlePassReward/buyWithoutRewards/text"
 msgstr ""
-"You will now receive rewards from both the Base and Improved Reward Tracks in the \"%(chapter)s\" Chapter.\n"
-"This Improved Pass works only for the \"%(chapter)s\" Chapter."
+"You will now receive rewards from both the Base and Improved Reward Tracks in the %(chapter)s Chapter.\n"
+"This Improved Pass works only for the %(chapter)s Chapter."
 
 msgid "serviceChannelMessages/battlePassReward/header/autoSelectReward"
 msgstr "Default Reward Added:"
 
 msgid "serviceChannelMessages/battlePassReward/header/buyBP"
+msgstr "Improved Pass Purchased"
+
+msgid "serviceChannelMessages/battlePassReward/header/buyBPWithLevels"
 msgstr "Improved Pass Purchased"
 
 msgid "serviceChannelMessages/battlePassReward/header/buyProgress"
@@ -2652,6 +2666,9 @@ msgstr "Bunks removed from the Barracks"
 msgid "serviceChannelMessages/invoiceReceived/boosters"
 msgstr "Personal Reserves"
 
+msgid "serviceChannelMessages/invoiceReceived/boosters/debited"
+msgstr "Personal Reserves removed"
+
 msgid "serviceChannelMessages/invoiceReceived/bpcoinAccrued"
 msgstr "Tokens added"
 
@@ -2768,6 +2785,9 @@ msgstr "Components removed"
 
 msgid "serviceChannelMessages/invoiceReceived/equipment"
 msgstr "Consumables"
+
+msgid "serviceChannelMessages/invoiceReceived/equipment/debited"
+msgstr "Consumables removed"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinAccrued"
 msgstr "Anniversary Coins added"

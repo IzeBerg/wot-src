@@ -3,6 +3,7 @@ package net.wg.gui.lobby.settings
    import flash.text.TextField;
    import net.wg.gui.components.advanced.FieldSet;
    import net.wg.gui.components.controls.CheckBox;
+   import net.wg.gui.components.controls.InfoIcon;
    import net.wg.gui.components.controls.ScrollBar;
    import net.wg.gui.components.controls.Slider;
    import net.wg.gui.components.controls.SoundButtonEx;
@@ -95,8 +96,14 @@ package net.wg.gui.lobby.settings
          this.mouseStrategicSensLabel.text = SETTINGS.MOUSE_SENSITIVITY_ART;
          this.mouseAssistAimSensLabel.text = SETTINGS.MOUSE_SENSITIVITY_ART2;
          this.mouseHorzInvertCheckbox.label = SETTINGS.MOUSE_SENSITIVITY_INVERTATIONHOR;
+         this.mouseHorzInvertCheckbox.toolTip = TOOLTIPS.SETTINGS_MOUSE_SENSITIVITY_INVERTATIONHOR;
+         this.mouseHorzInvertCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.mouseVertInvertCheckbox.label = SETTINGS.MOUSE_SENSITIVITY_INVERTATIONVERT;
+         this.mouseVertInvertCheckbox.toolTip = TOOLTIPS.SETTINGS_MOUSE_SENSITIVITY_INVERTATIONVERT;
+         this.mouseVertInvertCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.backDraftInvertCheckbox.label = SETTINGS.KEYBOARD_BACKDRAFTINVERT;
+         this.backDraftInvertCheckbox.toolTip = TOOLTIPS.SETTINGS_KEYBOARD_BACKDRAFTINVERT;
+         this.backDraftInvertCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.defaultBtn.label = SETTINGS.DEFAULTBTN;
          this.defaultBtn.enabled = false;
          super.configUI();

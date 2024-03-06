@@ -51,8 +51,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls.propertiesSheet
       
       private function createImage(param1:String, param2:Boolean = false) : Image
       {
-         var _loc3_:Image = null;
-         _loc3_ = new Image();
+         var _loc3_:Image = new Image();
          _loc3_.x = IMAGE_POSITION_X;
          _loc3_.y = IMAGE_POSITION_Y;
          _loc3_.name = param1;

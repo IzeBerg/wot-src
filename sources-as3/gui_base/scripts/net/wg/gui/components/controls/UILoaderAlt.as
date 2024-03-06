@@ -47,6 +47,8 @@ package net.wg.gui.components.controls
       
       private var _loader:Loader = null;
       
+      private var _content:DisplayObject = null;
+      
       private var _invalid:Boolean = false;
       
       private var _uiid:uint = 4.294967295E9;
@@ -66,7 +68,6 @@ package net.wg.gui.components.controls
          this._height = height;
          this._loader = new Loader();
          this._loader.name = "loader";
-         addChild(this._loader);
          if(this.background)
          {
             this.background.visible = false;
@@ -126,6 +127,15 @@ package net.wg.gui.components.controls
          {
             this._loader.unload();
          }
+         if(this._content && this._content.parent == this)
+         {
+            removeChild(this._content);
+            this._content = null;
+         }
+         else if(this._loader.parent == this)
+         {
+            removeChild(this._loader);
+         }
          this._source = null;
          this._sizeRetries = 0;
       }
@@ -133,9 +143,13 @@ package net.wg.gui.components.controls
       public function updateLoaderSize() : void
       {
          var _loc1_:Number = NaN;
+         if(!this._content)
+         {
+            return;
+         }
          if(this._autoSize)
          {
-            if(this._loader.width <= 0)
+            if(this._content.width <= 0)
             {
                if(this._sizeRetries < MAX_RETRIES)
                {
@@ -150,22 +164,22 @@ package net.wg.gui.components.controls
             }
             if(this._maintainAspectRatio)
             {
-               _loc1_ = Math.min(this._height / this._loader.height,this._width / this._loader.width);
-               this._loader.width = this._loader.width * _loc1_ | 0;
-               this._loader.height = this._loader.height * _loc1_ | 0;
+               _loc1_ = Math.min(this._height / this._content.height,this._width / this._content.width);
+               this._content.width = this._content.width * _loc1_ | 0;
+               this._content.height = this._content.height * _loc1_ | 0;
             }
             else
             {
-               this._loader.width = this._loader.width * this._width / this._loader.width | 0;
-               this._loader.height = this._loader.height * this._height / this._loader.height | 0;
+               this._content.width = this._content.width * this._width / this._content.width | 0;
+               this._content.height = this._content.height * this._height / this._content.height | 0;
             }
          }
          else
          {
-            width = this._loader.width;
-            height = this._loader.height;
-            this._loader.scaleX = 1 / scaleX;
-            this._loader.scaleY = 1 / scaleY;
+            width = this._content.width;
+            height = this._content.height;
+            this._content.scaleX = 1 / scaleX;
+            this._content.scaleY = 1 / scaleY;
          }
       }
       
@@ -180,7 +194,6 @@ package net.wg.gui.components.controls
          {
             this.removeLoaderListener();
             this.unload();
-            removeChild(this._loader);
             this._loader = null;
          }
          if(this.background != null)
@@ -223,6 +236,10 @@ package net.wg.gui.components.controls
       {
          if(this.hideLoader)
          {
+            if(this._content)
+            {
+               this._content.visible = param1;
+            }
             this._loader.visible = param1;
          }
       }
@@ -380,9 +397,14 @@ package net.wg.gui.components.controls
       {
          if(this._loader.content is DisplayObjectContainer)
          {
-            removeChild(this._loader);
-            addChild(this._loader.content);
+            this._content = this._loader.content;
          }
+         else
+         {
+            this._content = this._loader;
+         }
+         this._content.visible = this._loader.visible;
+         addChild(this._content);
          this._loadFailed = false;
          this._loadInProgress = false;
          this.updateSize();
