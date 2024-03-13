@@ -9,6 +9,8 @@ package net.wg.gui.lobby.battleRoyale
       private static const TECH_PARAMETERS_WIDTH:int = 349;
       
       private static const TECH_PARAMETERS_HEIGHT:int = 500;
+      
+      private static const SHAMROCK_PANEL_HEIGHT:int = 0;
        
       
       public function TechParametersComponent()
@@ -20,7 +22,7 @@ package net.wg.gui.lobby.battleRoyale
       
       public function as_updateHeight(param1:Number) : void
       {
-         setSize(TECH_PARAMETERS_WIDTH,param1);
+         setSize(TECH_PARAMETERS_WIDTH,param1 + SHAMROCK_PANEL_HEIGHT);
       }
    }
 }

@@ -198,6 +198,9 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
     def getEndTime(self):
         return self.getCurrentSeason().getCycleEndDate()
 
+    def getStartTime(self):
+        return self.getCurrentSeason().getCycleStartDate()
+
     def getPerformanceGroup(self):
         if not self.__performanceGroup:
             self.__analyzeClientSystem()
@@ -289,6 +292,16 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
             return
         self.__selectRoyaleBattle()
 
+    @dependency.replace_none_kwargs(guiLoader=IGuiLoader)
+    def openInfoPageWindow(self, isModeSelector=False, guiLoader=None):
+        if self.getCurrentSeason() is not None:
+            from battle_royale.gui.impl.lobby.views.info_page_view import InfoPageViewWindow
+            view = guiLoader.windowsManager.getViewByLayoutID(R.views.battle_royale.lobby.views.InfoPageView())
+            if view is None:
+                window = InfoPageViewWindow(isModeSelector)
+                window.load()
+        return
+
     def setDefaultHangarEntryPoint(self):
         if self.__battleRoyaleTournamentController.isSelected():
             self.__battleRoyaleTournamentController.leaveBattleRoyaleTournament(isChangingToBattleRoyaleHangar=True)
@@ -310,14 +323,6 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
 
     def getStats(self):
         return self.__itemsCache.items.battleRoyale
-
-    @adisp_process
-    def openURL(self, url=None):
-        requestUrl = url or self.__battleRoyaleSettings.url
-        if requestUrl:
-            parsedUrl = yield self.__urlMacros.parse(requestUrl)
-            if parsedUrl:
-                self.__showBrowserView(parsedUrl)
 
     @staticmethod
     @dependency.replace_none_kwargs(guiLoader=IGuiLoader)
@@ -372,6 +377,18 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
         return (
          gameModes, gameModeLists)
 
+    def hasSTPDailyFactor(self, vehicle):
+        return vehicle.compactDescr not in self.__itemsCache.items.battleRoyale.brMultipliedSTPCoinsVehs
+
+    def getStpCoinsPerPlace(self, place):
+        stpCoinAward = self.getModeSettings().stpCoinAward
+        bonusType = BigWorld.player().arenaBonusType
+        for placeInBattle, coins in stpCoinAward.get(bonusType, []):
+            if place == placeInBattle:
+                return coins
+
+        return 0
+
     def __progressionPointsConfig(self):
         return self.__battleRoyaleSettings.progressionTokenAward
 
@@ -397,6 +414,7 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
         if AccountSettings.getSettings(ROYALE_INTRO_VIDEO_SHOWN) or not introVideoUrl:
             return
         AccountSettings.setSettings(ROYALE_INTRO_VIDEO_SHOWN, True)
+        self.showIntroWindow()
         showBrowserOverlayView(introVideoUrl, VIEW_ALIAS.BROWSER_OVERLAY, forcedSkipEscape=True)
 
     def __selectRoyaleBattle(self):

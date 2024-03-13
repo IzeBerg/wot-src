@@ -7,17 +7,17 @@ package net.wg.infrastructure.base.meta.impl
    {
        
       
-      public var playWinSound:Function;
+      public var onBecomeVisible:Function;
       
       public function BattleRoyaleWinnerCongratsMeta()
       {
          super();
       }
       
-      public function playWinSoundS() : void
+      public function onBecomeVisibleS() : void
       {
-         App.utils.asserter.assertNotNull(this.playWinSound,"playWinSound" + Errors.CANT_NULL);
-         this.playWinSound();
+         App.utils.asserter.assertNotNull(this.onBecomeVisible,"onBecomeVisible" + Errors.CANT_NULL);
+         this.onBecomeVisible();
       }
    }
 }

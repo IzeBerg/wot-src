@@ -212,6 +212,11 @@ class _BattleRoyaleQueueProvider(RandomQueueProvider):
     def getLayoutStr(self):
         return 'battleRoyale'
 
+    def getAdditionalParams(self):
+        guiType = prb_getters.getArenaGUIType(queueType=self._queueType)
+        titleRes = R.strings.menu.loading.battleTypes.subTitle.num(guiType)
+        return {'subTitle': backport.text(titleRes()) if titleRes.exists() else ''}
+
 
 class _Comp7QueueProvider(RandomQueueProvider):
 

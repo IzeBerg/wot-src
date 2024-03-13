@@ -741,6 +741,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BATTLEROYALEBRCOIN:String = "#messenger:serviceChannelMessages/BRbattleResults/battleRoyaleBrCoin";
       
+      public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BATTLEROYALESTPCOIN:String = "#messenger:serviceChannelMessages/BRbattleResults/battleRoyaleStpCoin";
+      
       public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BRPROGRESSIONTITLE:String = "#messenger:serviceChannelMessages/BRbattleResults/BRProgressionTitle";
       
       public static const SERVICECHANNELMESSAGES_BOOTCAMP_FINISHED:String = "#messenger:serviceChannelMessages/bootcamp/finished";
@@ -2238,6 +2240,10 @@ package
       public static const PLATFORMCURRENCYMSG_RECEIVED_BRCOIN:String = "#messenger:platformCurrencyMsg/received/brcoin";
       
       public static const PLATFORMCURRENCYMSG_DEBITED_BRCOIN:String = "#messenger:platformCurrencyMsg/debited/brcoin";
+      
+      public static const PLATFORMCURRENCYMSG_RECEIVED_STPCOIN:String = "#messenger:platformCurrencyMsg/received/stpcoin";
+      
+      public static const PLATFORMCURRENCYMSG_DEBITED_STPCOIN:String = "#messenger:platformCurrencyMsg/debited/stpcoin";
       
       public static const PLATFORMCURRENCYMSG_RECEIVED_EQUIP_COIN:String = "#messenger:platformCurrencyMsg/received/equip_coin";
       

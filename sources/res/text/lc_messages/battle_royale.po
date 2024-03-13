@@ -38,17 +38,11 @@ msgstr "%(serverName)s已进入休战期"
 msgid "alertMessage/unsuitablePeriphery"
 msgstr "该服务器目前禁止战斗。"
 
-msgid "banner/info/disabled"
-msgstr "休战"
-
-msgid "banner/info/seasonActive"
-msgstr "第二次机会和奖励"
-
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(month)s%(day)s日结束"
 
 msgid "banner/subtitle"
-msgstr "进化"
+msgstr "幸运草对决"
 
 msgid "banner/timeLeft/hour"
 msgstr "%(hour)s时"
@@ -63,7 +57,7 @@ msgid "banner/timer/lessOneMin"
 msgstr "<1"
 
 msgid "banner/title"
-msgstr "钢铁猎手:"
+msgstr "钢铁猎手"
 
 msgid "battle/respawnMessagePanel/respawnActivated/description"
 msgstr "战斗将从一处新位置开始。"
@@ -118,6 +112,15 @@ msgstr "脱离战斗！"
 
 msgid "battle/respawnMessagePanel/squad/stayInCover/title"
 msgstr "正在使盟友重生"
+
+msgid "battle/winnerCongratulationsView/bonusActivated"
+msgstr "已激活加成！"
+
+msgid "battle/winnerCongratulationsView/bonusForFirstPlace"
+msgstr "排名第1的奖励"
+
+msgid "battle/winnerCongratulationsView/colected"
+msgstr "战斗中所收集"
 
 msgid "battle/winnerCongratulationsView/title"
 msgstr "胜利"
@@ -359,16 +362,16 @@ msgid "fullStats/destroyed"
 msgstr "您击毁的坦克"
 
 msgid "fullStats/icons/airDrop/description"
-msgstr "空投: 经验、生命值恢复、模块维修、所有能力充能恢复、炮弹。"
+msgstr "空投: 全部战斗能力的充能次数和大量经验。"
 
 msgid "fullStats/icons/corpseLoot/description"
-msgstr "战利品: 经验、生命值恢复、模块维修、部分能力充能恢复、炮弹。"
-
-msgid "fullStats/icons/defaultLoot/description"
-msgstr "补给: 经验、模块维修、部分能力充能恢复。"
+msgstr "战利品: 从被击毁坦克中获得的物资。除了经验、生命值恢复以外，它还内含对手战斗能力充能次数的50%。"
 
 msgid "fullStats/icons/extendedLoot/description"
-msgstr "给养: 经验、生命值恢复、部分能力充能恢复、炮弹。"
+msgstr "给养: 经验、炮弹、生命值恢复、模块修复，以及按特定几率出现的战斗能力充能次数。"
+
+msgid "fullStats/icons/shamrocks/description"
+msgstr "所有类型的物资中都内含幸运印章。战斗结束后，玩家可使用该印章在幸运草商店中兑换奖励。"
 
 msgid "fullStats/subTitle"
 msgstr "在“混战”规则下为宝贵的资源而战。"
@@ -610,7 +613,9 @@ msgstr ""
 "印章"
 
 msgid "proxyPanel/store"
-msgstr "军械库"
+msgstr ""
+"幸运草\n"
+"商店"
 
 msgid "questsTooltip/lessThanDay"
 msgstr "少于1天"
@@ -663,7 +668,7 @@ msgstr "良好的战斗表现、在战斗结果中获得较高的排名以及完
 msgid "rewardCurrencyTooltip/brcoin/header"
 msgstr "钢铁印章"
 
-msgid "rewardCurrencyTooltip/brcoin/premFactor"
+msgid "rewardCurrencyTooltip/brcoin/premium"
 msgstr "使用坦克世界高级账号可获得额外50%的此种货币。"
 
 msgid "rewardCurrencyTooltip/credits/body"
@@ -672,7 +677,7 @@ msgstr "主要的游戏货币。在战斗中获得或用金币兑换。"
 msgid "rewardCurrencyTooltip/credits/header"
 msgstr "银币"
 
-msgid "rewardCurrencyTooltip/credits/premFactor"
+msgid "rewardCurrencyTooltip/credits/premium"
 msgstr "使用坦克世界高级账号可获得额外50%的此种货币。"
 
 msgid "rewardCurrencyTooltip/crystal/body"
@@ -681,13 +686,24 @@ msgstr "一种罕见的特殊货币，用来购买无法通过其他方式获得
 msgid "rewardCurrencyTooltip/crystal/header"
 msgstr "战争债券"
 
+msgid "rewardCurrencyTooltip/stpcoin/body"
+msgstr ""
+"可在钢铁猎手战斗中获取的货币。印章可用来在幸运草商店中兑换独特奖励。\n"
+"组队战斗时，所获幸运印章将在小队成员之间平均分配。所示数量为属于您的奖励。"
+
+msgid "rewardCurrencyTooltip/stpcoin/bonus"
+msgstr "已应用加成！您在战斗中获得了双倍的印章数量。"
+
+msgid "rewardCurrencyTooltip/stpcoin/header"
+msgstr "幸运印章"
+
 msgid "rewardCurrencyTooltip/xp/body"
 msgstr "使用特殊坦克获取的经验可以被转换为全局经验。"
 
 msgid "rewardCurrencyTooltip/xp/header"
 msgstr "战斗经验"
 
-msgid "rewardCurrencyTooltip/xp/premFactor"
+msgid "rewardCurrencyTooltip/xp/premium"
 msgstr "使用坦克世界高级账号可获得额外50%的战斗经验。"
 
 msgid "season/202206/name"
@@ -912,21 +928,6 @@ msgstr "奖章"
 msgid "tooltips/awards/pattern"
 msgstr "%(typeName)s：\"%(userName)s\""
 
-msgid "tooltips/brCoin/earn/description"
-msgstr "良好的战斗表现、在战斗结果中取得较高的名次和完成模式任务都可获得钢铁印章。"
-
-msgid "tooltips/brCoin/earn/title"
-msgstr "如何获得印章"
-
-msgid "tooltips/brCoin/spend/description"
-msgstr "使用所获得的钢铁印章购买钢铁猎手风格。"
-
-msgid "tooltips/brCoin/spend/title"
-msgstr "印章的用处"
-
-msgid "tooltips/brCoin/title"
-msgstr "钢铁印章"
-
 msgid "tooltips/rentIcon/rent/description"
 msgstr "该坦克仅适用于在钢铁猎手中参加战斗"
 
@@ -978,6 +979,33 @@ msgstr "一次性使用"
 
 msgid "tooltips/respawnIcon/title"
 msgstr "重生"
+
+msgid "tooltips/shop/description"
+msgstr "在该商店中，您可使用在钢铁猎手模式中获得的幸运印章，兑换特殊且珍贵的奖励。"
+
+msgid "tooltips/shop/subdescription"
+msgstr "一种特殊货币，可在翡翠岛交易会期间参加钢铁猎手模式获得。在战斗中收集物资、完成进度阶段、在此军事演习模式中排名靠前均可获得印章。"
+
+msgid "tooltips/shop/subtitle"
+msgstr "幸运印章"
+
+msgid "tooltips/shop/title"
+msgstr "幸运草商店"
+
+msgid "tooltips/stpCoin/earn/description"
+msgstr "在战斗中收集物资、完成进度阶段、在钢铁猎手中排名靠前均可获得幸运印章。"
+
+msgid "tooltips/stpCoin/earn/title"
+msgstr "如何获得印章"
+
+msgid "tooltips/stpCoin/spend/description"
+msgstr "您可使用幸运印章在幸运草商店中兑换珍贵奖励。"
+
+msgid "tooltips/stpCoin/spend/title"
+msgstr "印章的用处"
+
+msgid "tooltips/stpCoin/title"
+msgstr "幸运印章"
 
 msgid "tooltips/testDriveInfo/footer"
 msgstr "参加战斗及完成特殊任务可获得%(brown_Open)s钢铁印章%(brown_Close)s。"
