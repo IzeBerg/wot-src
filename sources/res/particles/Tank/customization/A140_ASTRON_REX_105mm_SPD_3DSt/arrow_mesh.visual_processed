@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>tank_arrows</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						colorIdMap
+						<Texture>vehicles/russian/common/common_ID.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/ASTRON_REX_105mm_SPD_3DSt_Arrows_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>particles/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/ASTRON_REX_105mm_SPD_3DSt_Arrows_AO.dds</Texture>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>particles/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/ASTRON_REX_105mm_SPD_3DSt_Arrows_GM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>particles/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/ASTRON_REX_105mm_SPD_3DSt_Arrows_NM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.029088 -0.000143 -0.000005</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.103895 -0.017607 -0.000613</min>
+		<max>0.045719 0.017322 0.000603</max>
+	</boundingBox>
+	<geometrySize>596</geometrySize>
+	<minUVDensity>171.461121</minUVDensity>
+</root>

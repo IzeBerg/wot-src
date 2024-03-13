@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>2.800000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Clover_up</name>
+		<type>particle</type>
+		<resource>particles/Environment/Battle_Royal/PatrickLoot/clover_up.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -1.581825 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>7.500019</inTangent>
+				<outTangent>2.727270</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.366667</startTime>
+				<value>1.000000</value>
+				<inTangent>2.727270</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.933333</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-2.307688</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.366667</startTime>
+				<value>0.000000</value>
+				<inTangent>-2.307692</inTangent>
+				<outTangent>-2.307692</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>tintColor</name>
+			<type>vector4</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 1.000000 0.976471 0.000000</value>
+				<inTangent>3.749995 0.000000 0.088234 3.749996</inTangent>
+				<outTangent>3.749995 0.000000 0.088234 3.749996</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.266667</startTime>
+				<value>1.000000 1.000000 1.000000 1.000000</value>
+				<inTangent>3.749995 -0.000000 0.088234 3.749996</inTangent>
+				<outTangent>3.749995 -0.000000 0.088234 3.749996</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Light</name>
+		<type>light</type>
+		<lightType>omnilight</lightType>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 4.641773 0.000000</value>
+				<inTangent>0.814178 1.448889 -1.001541</inTangent>
+				<outTangent>0.814178 1.448889 -1.001541</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>multiplier</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>95.492966</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>color</name>
+			<type>vector4</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 1.764705 1.121107 0.000000</inTangent>
+				<outTangent>0.000000 1.764705 1.121107 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.566667</startTime>
+				<value>0.000000 1.000000 0.635294 0.000000</value>
+				<inTangent>0.000000 0.882352 0.560553 0.000000</inTangent>
+				<outTangent>0.000000 0.882352 0.560553 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.333333</startTime>
+				<value>0.000000 1.000000 0.635294 0.000000</value>
+				<inTangent>0.000000 -0.555556 -0.352941 0.000000</inTangent>
+				<outTangent>0.000000 -0.555556 -0.352941 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.233333</startTime>
+				<value>0.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-0.000000 -1.111111 -0.705882 -0.000000</inTangent>
+				<outTangent>-0.000000 -1.111111 -0.705882 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>90.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Light_shafts01</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/PatrickLoot/sh_patrick_loot_shine.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.448475 0.000000</value>
+				<inTangent>0.000000 -1.632405 0.000000</inTangent>
+				<outTangent>0.000000 -1.632405 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.733333</startTime>
+				<value>0.000000 -2.381027 0.000000</value>
+				<inTangent>-0.000000 -1.632405 -0.000000</inTangent>
+				<outTangent>-0.000000 -1.632405 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.333333</startTime>
+				<value>3.000000 2.500000 3.000000</value>
+				<inTangent>-1.071429 0.357143 -1.071429</inTangent>
+				<outTangent>-1.071429 0.357143 -1.071429</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.733333</startTime>
+				<value>1.500000 3.000000 1.500000</value>
+				<inTangent>-1.071429 0.357143 -1.071429</inTangent>
+				<outTangent>-1.071429 0.357143 -1.071429</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Area</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.098039 0.796078 0.454902 0.000000</value>
+				<inTangent>-0.154798 0.321982 0.284830 0.331579</inTangent>
+				<outTangent>-0.154798 0.321982 0.284830 0.331579</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.633333</startTime>
+				<value>0.000000 1.000000 0.635294 0.210000</value>
+				<inTangent>-0.077399 0.160991 0.142415 0.142352</inTangent>
+				<outTangent>-0.077399 0.160991 0.142415 0.142352</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.700000</startTime>
+				<value>0.000000 1.000000 0.635294 0.160000</value>
+				<inTangent>0.117647 -0.257353 -0.142157 -0.123437</inTangent>
+				<outTangent>0.117647 -0.257353 -0.142157 -0.123437</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.500000</startTime>
+				<value>0.188235 0.588235 0.407843 0.000000</value>
+				<inTangent>0.235294 -0.514706 -0.284314 -0.200000</inTangent>
+				<outTangent>0.235294 -0.514706 -0.284314 -0.200000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Light_shafts02</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/PatrickLoot/sh_patrick_loot_shine.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -2.774189 0.000000</value>
+				<inTangent>-0.920586 0.672692 2.140990</inTangent>
+				<outTangent>-0.920586 0.672692 2.140990</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>2.000000 2.000000 2.000000</value>
+				<inTangent>0.545454 0.000000 0.545454</inTangent>
+				<outTangent>0.545454 0.000000 0.545454</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.033334</startTime>
+				<value>3.000000 2.000000 3.000000</value>
+				<inTangent>0.545454 -0.000000 0.545454</inTangent>
+				<outTangent>0.545454 -0.000000 0.545454</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Area</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.098039 0.796078 0.454902 0.000000</value>
+				<inTangent>-0.163398 -0.241830 -0.065360 1.666667</inTangent>
+				<outTangent>-0.163398 -0.241830 -0.065360 1.666667</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>0.000000 0.650980 0.415686 1.000000</value>
+				<inTangent>-0.079248 -0.166258 -0.060866 0.708333</inTangent>
+				<outTangent>-0.079248 -0.166258 -0.060866 0.708333</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.200000</startTime>
+				<value>0.007843 0.505882 0.325490 0.600000</value>
+				<inTangent>0.195262 0.150735 0.128677 -0.625000</inTangent>
+				<outTangent>0.195262 0.150735 0.128677 -0.625000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.800000</startTime>
+				<value>0.239216 0.741176 0.513726 0.000000</value>
+				<inTangent>0.385622 0.392157 0.313727 -1.000000</inTangent>
+				<outTangent>0.385622 0.392157 0.313727 -1.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>coin</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/PatrickLoot/sh_patrick_coin.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 4.931171 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-90.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 258.625793 0.000000</inTangent>
+				<outTangent>0.000000 258.625793 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.266667</startTime>
+				<value>-90.000000 68.966881 0.000000</value>
+				<inTangent>0.000000 270.631256 0.000000</inTangent>
+				<outTangent>0.000000 270.631256 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>-90.000000 286.638672 0.000000</value>
+				<inTangent>0.000000 561.111755 0.000000</inTangent>
+				<outTangent>0.000000 561.111755 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.800000</startTime>
+				<value>-90.000000 585.327087 0.000000</value>
+				<inTangent>0.000000 42.277424 0.000000</inTangent>
+				<outTangent>0.000000 42.277424 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.600000 0.600000 0.600000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>MaterialFBXASC046002</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>0.205882 3.602936 3.323527 0.337500</inTangent>
+				<outTangent>0.205882 3.602936 3.323527 0.337500</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.266667</startTime>
+				<value>0.054902 0.960784 0.886275 0.090000</value>
+				<inTangent>0.102941 1.801468 1.661764 1.154465</inTangent>
+				<outTangent>0.102941 1.801468 1.661764 1.154465</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.054902 0.960784 0.886275 0.550000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 1.971431</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.937499</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>0.054902 0.960784 0.886275 0.300000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.937499</inTangent>
+				<outTangent>-0.035044 -0.613267 -0.565708 -0.191489</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.333333</startTime>
+				<value>0.000000 0.000000 0.000000 0.000000</value>
+				<inTangent>-0.035044 -0.613267 -0.565708 -0.191489</inTangent>
+				<outTangent>-0.035044 -0.613267 -0.565707 -0.191489</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>2.800000</duration>
+				<value>Root|</value>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<duration>2.774937</duration>
+				<sequenceSound>BR_st_patrick_loot_pick_up</sequenceSound>
+				<type>one_shot</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

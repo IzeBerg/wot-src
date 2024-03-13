@@ -1,5 +1,6 @@
 from web.web_client_api import w2capi
 from web.web_client_api.seniority_awards import OpenSeniorityAwardsWebApi
+from web.web_client_api.ui.battle_royale import OpenBattleRoyaleHangarMixin
 from web.web_client_api.ui.calendar import OpenCalendarWindowWebApiMixin
 from web.web_client_api.ui.chat import ChatWebApiMixin
 from web.web_client_api.ui.maps_training import OpenMapsTrainingMixin
@@ -53,7 +54,7 @@ class CloseViewWebApi(CloseBrowserViewWebApiMixin):
 
 
 @w2capi(name='open_tab', key='tab_id')
-class OpenTabWebApi(hangar.HangarTabWebApiMixin, ProfileTabWebApiMixin, VehiclePreviewWebApiMixin, TechTreeTabWebApiMixin, VehicleComparisonBasketWebApiMixin, MissionsWebApiMixin, BarracksWebApiMixin, ShopWebApiMixin, StorageWebApiMixin, StrongholdsWebApiMixin, PersonalMissionsWebApiMixin, BadgesWebApiMixin, OpenFrontLinePagesMixin, ReferralProgramPagesMixin, OpenMapsTrainingMixin, ResourceWellWebApiMixin):
+class OpenTabWebApi(hangar.HangarTabWebApiMixin, ProfileTabWebApiMixin, VehiclePreviewWebApiMixin, TechTreeTabWebApiMixin, VehicleComparisonBasketWebApiMixin, MissionsWebApiMixin, BarracksWebApiMixin, ShopWebApiMixin, StorageWebApiMixin, StrongholdsWebApiMixin, PersonalMissionsWebApiMixin, BadgesWebApiMixin, OpenFrontLinePagesMixin, ReferralProgramPagesMixin, OpenMapsTrainingMixin, ResourceWellWebApiMixin, OpenBattleRoyaleHangarMixin):
     pass
 
 

@@ -23,9 +23,9 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
       
       private static const VEHICLES_COUNTER_BOTTOM_OFFSET_BIG:int = 23;
       
-      private static const MINIMAP_ITEMS_BOTTOM_OFFSET:int = 213;
+      private static const MINIMAP_ITEMS_BOTTOM_OFFSET:int = -30;
       
-      private static const MINIMAP_ITEMS_BOTTOM_OFFSET_BIG:int = 399;
+      private static const MINIMAP_ITEMS_BOTTOM_OFFSET_BIG:int = 30;
       
       private static const CONTENT_SMALL_SIZE:int = 507;
       
@@ -122,7 +122,7 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
          this.vehiclesCounter.x = this.score.x + this.score.width - this.vehiclesCounter.width | 0;
          this.vehiclesCounter.y = this.score.y + this.score.height + (!!this._isSmallScreenSize ? VEHICLES_COUNTER_BOTTOM_OFFSET : VEHICLES_COUNTER_BOTTOM_OFFSET_BIG) | 0;
          this.minimapItems.x = this.score.x;
-         this.minimapItems.y = this.score.y + (!!this._isSmallScreenSize ? MINIMAP_ITEMS_BOTTOM_OFFSET : MINIMAP_ITEMS_BOTTOM_OFFSET_BIG);
+         this.minimapItems.y = this.vehiclesCounter.y + this.vehiclesCounter.height + (!!this._isSmallScreenSize ? MINIMAP_ITEMS_BOTTOM_OFFSET : MINIMAP_ITEMS_BOTTOM_OFFSET_BIG);
       }
       
       override public function set visible(param1:Boolean) : void

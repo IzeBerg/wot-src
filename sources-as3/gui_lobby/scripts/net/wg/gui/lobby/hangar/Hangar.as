@@ -749,12 +749,11 @@ package net.wg.gui.lobby.hangar
             _loc1_ = getChildIndex(this.carouselContainer as DisplayObject) + 1;
             addChildAt(this._battleRoyaleComponents,_loc1_);
          }
-         if(!isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.COMMANDER_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT))
+         if(!isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.COMMANDER_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT))
          {
             registerFlashComponentS(this._battleRoyaleComponents.commander,BATTLEROYALE_ALIASES.COMMANDER_COMPONENT);
             registerFlashComponentS(this._battleRoyaleComponents.techParameters,BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT);
             registerFlashComponentS(this._battleRoyaleComponents.bottomPanel,BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT);
-            registerFlashComponentS(this._battleRoyaleComponents.proxyCurrencyPanel,BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT);
          }
          this.updateBRComponentsPos();
       }
@@ -807,7 +806,6 @@ package net.wg.gui.lobby.hangar
          {
             this.removeBattleRoyaleComponent(BATTLEROYALE_ALIASES.COMMANDER_COMPONENT);
             this.removeBattleRoyaleComponent(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT);
-            this.removeBattleRoyaleComponent(BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT);
             this.removeBattleRoyaleComponent(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT);
          }
       }
@@ -827,7 +825,7 @@ package net.wg.gui.lobby.hangar
       public function tryRemoveBattleRoyaleContainer() : void
       {
          this.removeBattleRoyaleComponents();
-         if(!_baseDisposed && this._battleRoyaleComponents != null && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.COMMANDER_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT))
+         if(!_baseDisposed && this._battleRoyaleComponents != null && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.COMMANDER_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT))
          {
             removeChild(this._battleRoyaleComponents);
             this._battleRoyaleComponents.dispose();

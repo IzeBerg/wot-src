@@ -10,6 +10,8 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
    
    public class DescriptionWithIconRenderer extends Sprite implements IUpdatable, IDisposable
    {
+      
+      private static const MIN_HEIGHT:int = 42;
        
       
       public var icon:BattleAtlasSprite = null;
@@ -26,12 +28,6 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
          this.icon.isCentralize = true;
       }
       
-      protected function onDispose() : void
-      {
-         this.icon = null;
-         this.descriptionTF = null;
-      }
-      
       public final function dispose() : void
       {
          if(this._baseDisposed)
@@ -40,6 +36,11 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
          }
          this.onDispose();
          this._baseDisposed = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
       }
       
       public function update(param1:Object) : void
@@ -62,13 +63,20 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
                App.utils.asserter.assert(false,Errors.INVALID_TYPE + DescriptionBlockWithIconVO);
             }
             App.utils.commons.updateTextFieldSize(this.descriptionTF);
-            this.descriptionTF.y = this.icon.y - (this.descriptionTF.height >> 1);
+            this.descriptionTF.y = 0;
+            this.icon.y = this.descriptionTF.height >> 1;
          }
       }
       
-      public function isDisposed() : Boolean
+      protected function onDispose() : void
       {
-         return this._baseDisposed;
+         this.icon = null;
+         this.descriptionTF = null;
+      }
+      
+      override public function get height() : Number
+      {
+         return Math.max(MIN_HEIGHT,this.descriptionTF.textHeight);
       }
    }
 }

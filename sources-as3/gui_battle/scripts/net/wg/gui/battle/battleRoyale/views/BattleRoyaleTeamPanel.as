@@ -77,6 +77,12 @@ package net.wg.gui.battle.battleRoyale.views
          this.titleTF.visible = this.bg.visible = Boolean(this._listItems.length);
       }
       
+      override protected function configUI() : void
+      {
+         super.configUI();
+         this.bgBlinkMC.stop();
+      }
+      
       public function as_setPlayerFrags(param1:int, param2:String) : void
       {
          var _loc3_:BattleRoyaleTeamPanelListItem = this.getListItem(param1);

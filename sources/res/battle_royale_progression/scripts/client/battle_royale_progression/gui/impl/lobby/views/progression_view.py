@@ -1,3 +1,5 @@
+from gui.impl.gen.resources import R
+from battle_royale.gui.impl.lobby.tooltips.proxy_currency_tooltip_view import ProxyCurrencyTooltipView
 from battle_royale_progression.gui.impl.gen.view_models.views.lobby.views.progression.progress_level_model import ProgressLevelModel
 from battle_royale_progression.gui.impl.gen.view_models.views.lobby.views.progression.progression_view_model import ProgressionViewModel
 from battle_royale_progression.gui.impl.lobby.views.bonus_packer import getBonusPacker
@@ -11,6 +13,7 @@ from gui.shared import event_dispatcher
 from helpers import dependency
 from skeletons.gui.game_control import IBattleRoyaleController
 from skeletons.gui.server_events import IEventsCache
+from event_lootboxes.gui.impl.lobby.event_lootboxes.tooltips.entry_point_tooltip import EventLootBoxesEntryPointTooltipView
 
 class ProgressionView(SubModelPresenter):
     battleRoyale = dependency.descriptor(IBattleRoyaleController)
@@ -28,6 +31,13 @@ class ProgressionView(SubModelPresenter):
 
     def getParentWindow(self):
         return self.parentView.getParentWindow()
+
+    def createToolTipContent(self, event, contentID):
+        if contentID == R.views.event_lootboxes.lobby.event_lootboxes.tooltips.EntryPointTooltip():
+            return EventLootBoxesEntryPointTooltipView()
+        if contentID == R.views.battle_royale.lobby.tooltips.ProxyCurrencyTooltipView():
+            return ProxyCurrencyTooltipView()
+        return super(ProgressionView, self).createToolTipContent(event, contentID)
 
     @createBackportTooltipDecorator()
     def createToolTip(self, event):
@@ -65,7 +75,7 @@ class ProgressionView(SubModelPresenter):
         event_dispatcher.showHangar()
 
     def __onAboutClicked(self):
-        self.battleRoyale.openURL()
+        self.battleRoyale.openInfoPageWindow()
 
     def __updateMissionVisitedArray(self, missionVisitedArray, questsIDs):
         missionVisitedArray.clear()
@@ -108,11 +118,12 @@ class ProgressionView(SubModelPresenter):
         model.setPointsForLevel(data['pointsForLevel'])
         progressionLevels = model.getProgressLevels()
         progressionLevels.clear()
+        packer = getBonusPacker()
         for levelData in data['progressionLevels']:
             level = ProgressLevelModel()
             rewards = level.getRewards()
             bonuses = levelData['rewards']
-            packBonusModelAndTooltipData(bonuses, rewards, self.__tooltipData, getBonusPacker())
+            packBonusModelAndTooltipData(bonuses, rewards, self.__tooltipData, packer)
             progressionLevels.addViewModel(level)
 
         progressionLevels.invalidate()

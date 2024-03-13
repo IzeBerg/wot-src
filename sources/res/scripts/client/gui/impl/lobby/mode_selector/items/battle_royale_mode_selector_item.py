@@ -1,4 +1,3 @@
-from gui import GUI_SETTINGS
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.Scaleform.locale.EPIC_BATTLE import EPIC_BATTLE
 from gui.impl import backport
@@ -32,8 +31,8 @@ class BattleRoyaleModeSelectorItem(ModeSelectorLegacyItem):
     def getExtendedCalendarTooltip(self, parentWindow):
         return createAndLoadBackportTooltipWindow(parentWindow, tooltipId=TOOLTIPS_CONSTANTS.BATTLE_ROYALE_SELECTOR_CALENDAR_INFO, isSpecial=True, specialArgs=(None, ))
 
-    def _urlProcessing(self, url):
-        return GUI_SETTINGS.checkAndReplaceWebBridgeMacros(url)
+    def handleInfoPageClick(self):
+        self.__battleRoyaleController.openInfoPageWindow(True)
 
     def _onInitializing(self):
         ModeSelectorLegacyItem._onInitializing(self)
