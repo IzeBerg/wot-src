@@ -169,6 +169,12 @@ package net.wg.data.constants.generated
       
       public static const BR_RESPAWN_MESSAGE_PANEL:String = "BRRespawnMessagePanel";
       
+      public static const BR_SHAMROCK_CONTROLLER:String = "BRShamrockController";
+      
+      public static const BR_SHAMROCK_SIDEBAR:String = "ShamrockSideBar";
+      
+      public static const BR_SHAMROCK_COLLECT:String = "ShamrockCollect";
+      
       public static const FRAG_PANEL:String = "fragPanel";
       
       public static const BR_PLAYER_STATS_IN_BATTLE:String = "brPlayerStatsInBattle";

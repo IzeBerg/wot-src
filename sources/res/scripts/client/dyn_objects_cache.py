@@ -111,6 +111,14 @@ class _SimpleEffect(object):
         self.effectDescr = _parseEffectSubsection(dataSection[self._SECTION_NAME], 'effect')
 
 
+class _PrefabEffect(object):
+    _SECTION_NAME = None
+
+    def __init__(self, dataSection):
+        super(_PrefabEffect, self).__init__()
+        self.effectPrefabPath = dataSection[self._SECTION_NAME].readString('prefab')
+
+
 class _TeamRelatedEffect(object):
     _ENEMY_SUB_NAME = 'enemy'
     _ALLY_SUB_NAME = 'ally'
@@ -180,12 +188,12 @@ class _BerserkerTurretEffect(_SimpleEffect):
     _SECTION_NAME = 'berserkerTurretEffect'
 
 
-class _VehicleRespawnEffect(object):
-    _SECTION_NAME = 'VehicleRespawn'
+class _StPatrickLootEffect(_PrefabEffect):
+    _SECTION_NAME = 'StPatrickLootEffect'
 
-    def __init__(self, dataSection):
-        super(_VehicleRespawnEffect, self).__init__()
-        self.effectPrefabPath = dataSection[self._SECTION_NAME].readString('prefab')
+
+class _VehicleRespawnEffect(_PrefabEffect):
+    _SECTION_NAME = 'VehicleRespawn'
 
 
 class DynObjectsBase(object):
@@ -283,6 +291,7 @@ class _BattleRoyaleDynObjects(_CommonForBattleRoyaleAndEpicBattleDynObjects):
         self.__repairPoint = None
         self.__botDeliveryEffect = None
         self.__botClingDeliveryEffect = None
+        self.__stPatrickLootEffect = None
         self.__vehicleRespawnEffect = None
         self.__botDeliveryMarker = None
         self.__dropPlane = None
@@ -305,7 +314,9 @@ class _BattleRoyaleDynObjects(_CommonForBattleRoyaleAndEpicBattleDynObjects):
             self.__minesEffects = _MinesEffects(plantEffect=_MinesPlantEffect(dataSection), idleEffect=_MinesIdleEffect(dataSection), destroyEffect=_MinesDestroyEffect(dataSection), placeMinesEffect='minesDecalEffect', blowUpEffectName='minesBlowUpEffect', activationEffect=None)
             self.__berserkerEffects = _BerserkerEffects(turretEffect=_BerserkerTurretEffect(dataSection), hullEffect=_BerserkerHullEffect(dataSection), transformPath=dataSection.readString('berserkerTransformPath'))
             self.__vehicleRespawnEffect = _VehicleRespawnEffect(dataSection)
-            CGF.cacheGameObjects([self.__vehicleRespawnEffect.effectPrefabPath], False)
+            self.__stPatrickLootEffect = _StPatrickLootEffect(dataSection)
+            CGF.cacheGameObjects([
+             self.__vehicleRespawnEffect.effectPrefabPath, self.__stPatrickLootEffect.effectPrefabPath], False)
             prerequisites = set()
             self.__dropPlane = _createDropPlane(dataSection['dropPlane'], prerequisites)
             self.__airDrop = _createAirDrop(dataSection['airDrop'], prerequisites)
@@ -352,6 +363,9 @@ class _BattleRoyaleDynObjects(_CommonForBattleRoyaleAndEpicBattleDynObjects):
 
     def getVehicleRespawnEffect(self):
         return self.__vehicleRespawnEffect
+
+    def getStPatrickLootEffect(self):
+        return self.__stPatrickLootEffect
 
     def clear(self):
         pass

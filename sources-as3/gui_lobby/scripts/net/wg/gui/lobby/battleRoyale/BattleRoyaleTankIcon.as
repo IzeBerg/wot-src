@@ -28,6 +28,8 @@ package net.wg.gui.lobby.battleRoyale
       
       public var giftIcon:Sprite = null;
       
+      public var shamrockFactor:Sprite = null;
+      
       public function BattleRoyaleTankIcon()
       {
          super();
@@ -36,6 +38,7 @@ package net.wg.gui.lobby.battleRoyale
       override protected function updateBaseData(param1:VehicleCarouselVO) : void
       {
          super.updateBaseData(param1);
+         this.shamrockFactor.visible = param1.hasShamrockFactor;
          txtTankName.filters = [DEF_FILTER];
       }
       
@@ -44,6 +47,7 @@ package net.wg.gui.lobby.battleRoyale
          this.bgGlow = null;
          this.clockIcon = null;
          this.giftIcon = null;
+         this.shamrockFactor = null;
          super.onDispose();
       }
       

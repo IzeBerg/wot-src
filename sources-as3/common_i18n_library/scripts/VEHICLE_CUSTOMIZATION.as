@@ -3699,6 +3699,14 @@ package
       
       public static const CAMOUFLAGE_TWITCH_MARCH_2024_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_march_2024/description";
       
+      public static const CAMOUFLAGE_ST_PATRICKS_DAY_2024_1_LABEL:String = "#vehicle_customization:camouflage/st_patricks_day_2024_1/label";
+      
+      public static const CAMOUFLAGE_ST_PATRICKS_DAY_2024_DESCRIPTION:String = "#vehicle_customization:camouflage/st_patricks_day_2024/description";
+      
+      public static const CAMOUFLAGE_ST_PATRICKS_DAY_2024_2_LABEL:String = "#vehicle_customization:camouflage/st_patricks_day_2024_2/label";
+      
+      public static const CAMOUFLAGE_ST_PATRICKS_DAY_2024_3_LABEL:String = "#vehicle_customization:camouflage/st_patricks_day_2024_3/label";
+      
       public static const EMBLEM:String = "#vehicle_customization:emblem";
       
       public static const EMBLEM_CLAN_CONTENT:String = "#vehicle_customization:emblem/clan_content";
@@ -12923,6 +12931,24 @@ package
       
       public static const SPECIAL_STYLE_TWITCH_MARCH_2024_DESC_LONG:String = "#vehicle_customization:special_style/twitch_march_2024_desc/long";
       
+      public static const SPECIAL_STYLE_A140_ASTRON_REX_105MM_SPD_3DST:String = "#vehicle_customization:special_style/A140_ASTRON_REX_105mm_SPD_3DSt";
+      
+      public static const SPECIAL_STYLE_A140_ASTRON_REX_105MM_SPD_3DST_DESC_LONG:String = "#vehicle_customization:special_style/A140_ASTRON_REX_105mm_SPD_3DSt_desc/long";
+      
+      public static const SPECIAL_STYLE_ST_PATRICKS_DAY_2024_1:String = "#vehicle_customization:special_style/st_patricks_day_2024_1";
+      
+      public static const SPECIAL_STYLE_ST_PATRICKS_DAY_2024_1_DESC:String = "#vehicle_customization:special_style/st_patricks_day_2024_1_desc";
+      
+      public static const SPECIAL_STYLE_ST_PATRICKS_DAY_2024_2:String = "#vehicle_customization:special_style/st_patricks_day_2024_2";
+      
+      public static const SPECIAL_STYLE_ST_PATRICKS_DAY_2024_2_DESC:String = "#vehicle_customization:special_style/st_patricks_day_2024_2_desc";
+      
+      public static const SPECIAL_STYLE_ST_PATRICKS_DAY_2024_3:String = "#vehicle_customization:special_style/st_patricks_day_2024_3";
+      
+      public static const SPECIAL_STYLE_ST_PATRICKS_DAY_2024_3_DESC:String = "#vehicle_customization:special_style/st_patricks_day_2024_3_desc";
+      
+      public static const SPECIAL_STYLE_ST_PATRICKS_VEHICLES_2024:String = "#vehicle_customization:special_style/st_patricks_vehicles_2024";
+      
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_DESERT:String = "#vehicle_customization:customization/popover/style/desert";
@@ -15648,6 +15674,12 @@ package
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_704:String = "#vehicle_customization:projection_decals/special/projection_decal_704";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_705:String = "#vehicle_customization:projection_decals/special/projection_decal_705";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_701:String = "#vehicle_customization:projection_decals/special/projection_decal_701";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_702:String = "#vehicle_customization:projection_decals/special/projection_decal_702";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_703:String = "#vehicle_customization:projection_decals/special/projection_decal_703";
       
       public static const SPECIAL_STYLE_HIGH_VOLTAGE_EQUIPMENT:String = "#vehicle_customization:special_style/High_Voltage_Equipment";
       

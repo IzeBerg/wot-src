@@ -5637,15 +5637,15 @@ package
       
       public static const MAPS_ICONS_BATTLEROYALE_BANNER_300X150:String = "../maps/icons/battleRoyale/banner/300x150.png";
       
-      public static const MAPS_ICONS_BATTLEROYALE_BANNER_HOVER_EXTRASMALL:String = "../maps/icons/battleRoyale/banner/hover_extrasmall.png";
+      public static const MAPS_ICONS_BATTLEROYALE_BANNER_HIGHLIGHT_BANNER:String = "../maps/icons/battleRoyale/banner/highlight_banner.png";
       
-      public static const MAPS_ICONS_BATTLEROYALE_BANNER_HOVER_LARGE:String = "../maps/icons/battleRoyale/banner/hover_large.png";
-      
-      public static const MAPS_ICONS_BATTLEROYALE_BANNER_HOVER_MEDIUM:String = "../maps/icons/battleRoyale/banner/hover_medium.png";
-      
-      public static const MAPS_ICONS_BATTLEROYALE_BANNER_HOVER_SMALL:String = "../maps/icons/battleRoyale/banner/hover_small.png";
+      public static const MAPS_ICONS_BATTLEROYALE_BANNER_LOCKSTATUS:String = "../maps/icons/battleRoyale/banner/lockStatus.png";
       
       public static const MAPS_ICONS_BATTLEROYALE_BANNER_PARTICLES_SEQUENCE:String = "../maps/icons/battleRoyale/banner/particles_sequence.png";
+      
+      public static const MAPS_ICONS_BATTLEROYALE_BANNER_RIBBONSBGREDLARGE:String = "../maps/icons/battleRoyale/banner/ribbonsBgRedLarge.png";
+      
+      public static const MAPS_ICONS_BATTLEROYALE_BANNER_SPARCLES_SEQUENCE:String = "../maps/icons/battleRoyale/banner/sparcles_sequence.png";
       
       public static const MAPS_ICONS_BATTLEROYALE_BATTLE_DESERTERLEAVEBATTLE_NA:String = "../maps/icons/battleRoyale/battle/deserterLeaveBattle.NA.png";
       
@@ -5710,6 +5710,10 @@ package
       public static const MAPS_ICONS_BATTLEROYALE_BATTLERESULT_BATTLE_REWARD_REWARDS_CRYSTAL:String = "../maps/icons/battleRoyale/battleResult/battle_reward/rewards/crystal.png";
       
       public static const MAPS_ICONS_BATTLEROYALE_BATTLERESULT_BATTLE_REWARD_REWARDS_CRYSTAL_SMALL:String = "../maps/icons/battleRoyale/battleResult/battle_reward/rewards/crystal_small.png";
+      
+      public static const MAPS_ICONS_BATTLEROYALE_BATTLERESULT_BATTLE_REWARD_REWARDS_STPCOIN:String = "../maps/icons/battleRoyale/battleResult/battle_reward/rewards/stpcoin.png";
+      
+      public static const MAPS_ICONS_BATTLEROYALE_BATTLERESULT_BATTLE_REWARD_REWARDS_STPCOIN_SMALL:String = "../maps/icons/battleRoyale/battleResult/battle_reward/rewards/stpcoin_small.png";
       
       public static const MAPS_ICONS_BATTLEROYALE_BATTLERESULT_BATTLE_REWARD_REWARDS_XP:String = "../maps/icons/battleRoyale/battleResult/battle_reward/rewards/xp.png";
       
@@ -5787,9 +5791,13 @@ package
       
       public static const MAPS_ICONS_BATTLEROYALE_CURRENCY_PROXY_80:String = "../maps/icons/battleRoyale/currency/proxy_80.png";
       
+      public static const MAPS_ICONS_BATTLEROYALE_CURRENCY_STPCOIN:String = "../maps/icons/battleRoyale/currency/stpcoin.png";
+      
       public static const MAPS_ICONS_BATTLEROYALE_HANGAR_ARROW:String = "../maps/icons/battleRoyale/hangar/arrow.png";
       
       public static const MAPS_ICONS_BATTLEROYALE_HANGAR_BACK_COMMANDER_BG:String = "../maps/icons/battleRoyale/hangar/back_commander_bg.png";
+      
+      public static const MAPS_ICONS_BATTLEROYALE_HANGAR_BOTTOMLAYER:String = "../maps/icons/battleRoyale/hangar/bottomLayer.png";
       
       public static const MAPS_ICONS_BATTLEROYALE_HANGAR_BTNMODULESBIG:String = "../maps/icons/battleRoyale/hangar/btnModulesBig.png";
       
@@ -5817,6 +5825,10 @@ package
       
       public static const MAPS_ICONS_BATTLEROYALE_HANGAR_SHADOWBG:String = "../maps/icons/battleRoyale/hangar/shadowBg.png";
       
+      public static const MAPS_ICONS_BATTLEROYALE_HANGAR_SHOP:String = "../maps/icons/battleRoyale/hangar/shop.png";
+      
+      public static const MAPS_ICONS_BATTLEROYALE_HANGAR_SHOPICON:String = "../maps/icons/battleRoyale/hangar/shopIcon.png";
+      
       public static const MAPS_ICONS_BATTLEROYALE_HANGAR_SOUND_OFF:String = "../maps/icons/battleRoyale/hangar/sound_off.png";
       
       public static const MAPS_ICONS_BATTLEROYALE_HANGAR_SOUND_ON:String = "../maps/icons/battleRoyale/hangar/sound_on.png";
@@ -5826,6 +5838,8 @@ package
       public static const MAPS_ICONS_BATTLEROYALE_HANGAR_STOREBG:String = "../maps/icons/battleRoyale/hangar/storeBg.png";
       
       public static const MAPS_ICONS_BATTLEROYALE_HANGAR_TITLEBLOCKBG:String = "../maps/icons/battleRoyale/hangar/titleBlockBg.png";
+      
+      public static const MAPS_ICONS_BATTLEROYALE_HANGAR_TOPLAYER:String = "../maps/icons/battleRoyale/hangar/topLayer.png";
       
       public static const MAPS_ICONS_BATTLEROYALE_HANGAR_VEHICLEFEATURESBG:String = "../maps/icons/battleRoyale/hangar/vehicleFeaturesBg.png";
       
@@ -16289,6 +16303,8 @@ package
       
       public static const MAPS_ICONS_LIBRARY_STORAGE_ICON:String = "../maps/icons/library/storage_icon.png";
       
+      public static const MAPS_ICONS_LIBRARY_STPCOINICON_1:String = "../maps/icons/library/StpcoinIcon-1.png";
+      
       public static const MAPS_ICONS_LIBRARY_STRONGHOLDINVITEICON_1:String = "../maps/icons/library/strongholdInviteIcon-1.png";
       
       public static const MAPS_ICONS_LIBRARY_SWORDSICON:String = "../maps/icons/library/swordsIcon.png";
@@ -18434,6 +18450,14 @@ package
       public static const MAPS_ICONS_LIBRARY_STORE_CONDITION_OFF:String = "../maps/icons/library/store/condition_off.png";
       
       public static const MAPS_ICONS_LIBRARY_STORE_CONDITION_ON:String = "../maps/icons/library/store/condition_on.png";
+      
+      public static const MAPS_ICONS_LIBRARY_STPCOIN_STPCOINBIG:String = "../maps/icons/library/stpcoin/stpcoinBig.png";
+      
+      public static const MAPS_ICONS_LIBRARY_STPCOIN_STPCOINEXTRALARGE:String = "../maps/icons/library/stpcoin/stpcoinExtraLarge.png";
+      
+      public static const MAPS_ICONS_LIBRARY_STPCOIN_STPCOINLARGE:String = "../maps/icons/library/stpcoin/stpcoinLarge.png";
+      
+      public static const MAPS_ICONS_LIBRARY_STPCOIN_STPCOINSMALL:String = "../maps/icons/library/stpcoin/stpcoinSmall.png";
       
       public static const MAPS_ICONS_LIBRARY_UNITCOMMAND_STATSICON:String = "../maps/icons/library/unitCommand/statsIcon.png";
       
@@ -24063,6 +24087,10 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_LOADER_PEDANT:String = "../maps/icons/quests/bonuses/big/loader_pedant.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_BIG_LOOTBOX:String = "../maps/icons/quests/bonuses/big/lootBox.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BIG_LOOTBOX_HIGHLIGHT:String = "../maps/icons/quests/bonuses/big/lootBox_highlight.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_LOOTBOX_NEWYEAR_PREMIUM:String = "../maps/icons/quests/bonuses/big/lootBox_newYear_premium.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_LOOTBOX_NEWYEAR_USUAL:String = "../maps/icons/quests/bonuses/big/lootBox_newYear_usual.png";
@@ -24204,6 +24232,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_SMOOTHTURRETBATTLEBOOSTER:String = "../maps/icons/quests/bonuses/big/smoothTurretBattleBooster.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_STEREOSCOPE:String = "../maps/icons/quests/bonuses/big/stereoscope.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BIG_STPCOIN:String = "../maps/icons/quests/bonuses/big/stpcoin.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_STYLE:String = "../maps/icons/quests/bonuses/big/style.png";
       
@@ -24381,6 +24411,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_LARGEREPAIRKIT:String = "../maps/icons/quests/bonuses/s180x135/largeRepairkit.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_LOOTBOX:String = "../maps/icons/quests/bonuses/s180x135/lootBox.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_MODERNIZEDAIMDRIVESAIMINGSTABILIZER:String = "../maps/icons/quests/bonuses/s180x135/modernizedAimDrivesAimingStabilizer.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_MODERNIZEDEXTRAHEALTHRESERVEANTIFRAGMENTATIONLINING:String = "../maps/icons/quests/bonuses/s180x135/modernizedExtraHealthReserveAntifragmentationLining.png";
@@ -24418,6 +24450,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_SMALLMEDKIT:String = "../maps/icons/quests/bonuses/s180x135/smallMedkit.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_SMALLREPAIRKIT:String = "../maps/icons/quests/bonuses/s180x135/smallRepairkit.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_STPCOIN:String = "../maps/icons/quests/bonuses/s180x135/stpcoin.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S180X135_STYLE:String = "../maps/icons/quests/bonuses/s180x135/style.png";
       
@@ -24545,6 +24579,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_LOADER_PEDANT:String = "../maps/icons/quests/bonuses/s232x174/loader_pedant.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_LOOTBOX:String = "../maps/icons/quests/bonuses/s232x174/lootBox.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_MODERNIZEDAIMDRIVESAIMINGSTABILIZER:String = "../maps/icons/quests/bonuses/s232x174/modernizedAimDrivesAimingStabilizer.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_MODERNIZEDEXTRAHEALTHRESERVEANTIFRAGMENTATIONLINING:String = "../maps/icons/quests/bonuses/s232x174/modernizedExtraHealthReserveAntifragmentationLining.png";
@@ -24614,6 +24650,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_SMALLREPAIRKIT:String = "../maps/icons/quests/bonuses/s232x174/smallRepairkit.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_STEREOSCOPE:String = "../maps/icons/quests/bonuses/s232x174/stereoscope.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_STPCOIN:String = "../maps/icons/quests/bonuses/s232x174/stpcoin.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S232X174_STYLE:String = "../maps/icons/quests/bonuses/s232x174/style.png";
       
@@ -24787,6 +24825,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_LOADER_PEDANT:String = "../maps/icons/quests/bonuses/s296x222/loader_pedant.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_LOOTBOX:String = "../maps/icons/quests/bonuses/s296x222/lootBox.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_MODERNIZEDAIMDRIVESAIMINGSTABILIZER:String = "../maps/icons/quests/bonuses/s296x222/modernizedAimDrivesAimingStabilizer.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_MODERNIZEDEXTRAHEALTHRESERVEANTIFRAGMENTATIONLINING:String = "../maps/icons/quests/bonuses/s296x222/modernizedExtraHealthReserveAntifragmentationLining.png";
@@ -24850,6 +24890,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_SMALLREPAIRKIT:String = "../maps/icons/quests/bonuses/s296x222/smallRepairkit.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_STEREOSCOPE:String = "../maps/icons/quests/bonuses/s296x222/stereoscope.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_STPCOIN:String = "../maps/icons/quests/bonuses/s296x222/stpcoin.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S296X222_STYLE_PROGRESS_648_1:String = "../maps/icons/quests/bonuses/s296x222/style_progress_648_1.png";
       
@@ -25179,6 +25221,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_LOADER_PEDANT:String = "../maps/icons/quests/bonuses/s400x300/loader_pedant.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_LOOTBOX:String = "../maps/icons/quests/bonuses/s400x300/lootBox.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_MODERNIZEDAIMDRIVESAIMINGSTABILIZER:String = "../maps/icons/quests/bonuses/s400x300/modernizedAimDrivesAimingStabilizer.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_MODERNIZEDEXTRAHEALTHRESERVEANTIFRAGMENTATIONLINING:String = "../maps/icons/quests/bonuses/s400x300/modernizedExtraHealthReserveAntifragmentationLining.png";
@@ -25248,6 +25292,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_SMALLREPAIRKIT:String = "../maps/icons/quests/bonuses/s400x300/smallRepairkit.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_STEREOSCOPE:String = "../maps/icons/quests/bonuses/s400x300/stereoscope.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_STPCOIN:String = "../maps/icons/quests/bonuses/s400x300/stpcoin.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S400X300_STYLE:String = "../maps/icons/quests/bonuses/s400x300/style.png";
       
@@ -25425,6 +25471,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_LOADER_PEDANT:String = "../maps/icons/quests/bonuses/s600x450/loader_pedant.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_LOOTBOX:String = "../maps/icons/quests/bonuses/s600x450/lootBox.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_MODERNIZEDAIMDRIVESAIMINGSTABILIZER:String = "../maps/icons/quests/bonuses/s600x450/modernizedAimDrivesAimingStabilizer.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_MODERNIZEDEXTRAHEALTHRESERVEANTIFRAGMENTATIONLINING:String = "../maps/icons/quests/bonuses/s600x450/modernizedExtraHealthReserveAntifragmentationLining.png";
@@ -25470,6 +25518,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_SMALLREPAIRKIT:String = "../maps/icons/quests/bonuses/s600x450/smallRepairkit.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_STEREOSCOPE:String = "../maps/icons/quests/bonuses/s600x450/stereoscope.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_STPCOIN:String = "../maps/icons/quests/bonuses/s600x450/stpcoin.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_STYLE:String = "../maps/icons/quests/bonuses/s600x450/style.png";
       
@@ -25841,6 +25891,10 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_LOADER_PEDANT:String = "../maps/icons/quests/bonuses/small/loader_pedant.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_LOOTBOX:String = "../maps/icons/quests/bonuses/small/lootBox.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_LOOTBOX_HIGHLIGHT:String = "../maps/icons/quests/bonuses/small/lootBox_highlight.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_LOOTBOX_NEWYEAR_PREMIUM:String = "../maps/icons/quests/bonuses/small/lootBox_newYear_premium.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_LOOTBOX_NEWYEAR_USUAL:String = "../maps/icons/quests/bonuses/small/lootBox_newYear_usual.png";
@@ -25980,6 +26034,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_SMOOTHTURRETBATTLEBOOSTER:String = "../maps/icons/quests/bonuses/small/smoothTurretBattleBooster.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_STEREOSCOPE:String = "../maps/icons/quests/bonuses/small/stereoscope.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_STPCOIN:String = "../maps/icons/quests/bonuses/small/stpcoin.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_STYLE:String = "../maps/icons/quests/bonuses/small/style.png";
       

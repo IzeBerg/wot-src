@@ -285,6 +285,8 @@ package
       
       public static const LOADING_BATTLETYPES_DESC_23:String = "#menu:loading/battleTypes/desc/23";
       
+      public static const LOADING_BATTLETYPES_SUBTITLE_23:String = "#menu:loading/battleTypes/subTitle/23";
+      
       public static const LOADING_BATTLETYPES_24:String = "#menu:loading/battleTypes/24";
       
       public static const LOADING_BATTLETYPES_DESC_24:String = "#menu:loading/battleTypes/desc/24";
