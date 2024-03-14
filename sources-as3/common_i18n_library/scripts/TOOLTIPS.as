@@ -3709,6 +3709,10 @@ package
       
       public static const AWARDITEM_BPCOIN_BODY:String = "#tooltips:awardItem/bpcoin/body";
       
+      public static const AWARDITEM_STPCOIN_HEADER:String = "#tooltips:awardItem/stpcoin/header";
+      
+      public static const AWARDITEM_STPCOIN_BODY:String = "#tooltips:awardItem/stpcoin/body";
+      
       public static const AWARDITEM_EQUIPCOIN_HEADER:String = "#tooltips:awardItem/equipCoin/header";
       
       public static const AWARDITEM_EQUIPCOIN_BODY:String = "#tooltips:awardItem/equipCoin/body";
@@ -6444,6 +6448,8 @@ package
       public static const BATTLE_ROYALE_HANGAR_VEHICLE_DESCRIPTION_POLAND:String = "#tooltips:battle_royale/hangar/vehicle/description/poland";
       
       public static const BATTLE_ROYALE_HANGAR_VEHICLE_DESCRIPTION_SWEDEN:String = "#tooltips:battle_royale/hangar/vehicle/description/sweden";
+      
+      public static const BATTLE_ROYALE_HANGAR_VEHICLE_SHAMROCK:String = "#tooltips:battle_royale/hangar/vehicle/shamrock";
       
       public static const BATTLE_ROYALE_ARTEFACT_LIMIT:String = "#tooltips:battle_royale/artefact/limit";
       

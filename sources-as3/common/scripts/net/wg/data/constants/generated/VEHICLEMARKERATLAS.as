@@ -629,6 +629,8 @@ package net.wg.data.constants.generated
       
       public static const GERMANY_G25_PZ_II_LUCHS_SHXXI_B:String = "germany-G25_PzII_Luchs_SHXXI_B";
       
+      public static const GERMANY_G25_PZ_II_LUCHS_SHXXI_L:String = "germany-G25_PzII_Luchs_SHXXI_L";
+      
       public static const GERMANY_G26_VK1602:String = "germany-G26_VK1602";
       
       public static const GERMANY_G27_VK3001_P:String = "germany-G27_VK3001P";
@@ -1826,6 +1828,8 @@ package net.wg.data.constants.generated
       public static const USA_A14_T30_FL:String = "usa-A14_T30_FL";
       
       public static const USA_A140_ASTRON_REX_105MM:String = "usa-A140_ASTRON_REX_105mm";
+      
+      public static const USA_A140_ASTRON_REX_105MM_SPD:String = "usa-A140_ASTRON_REX_105mm_SPD";
       
       public static const USA_A141_M_IV_Y:String = "usa-A141_M_IV_Y";
       

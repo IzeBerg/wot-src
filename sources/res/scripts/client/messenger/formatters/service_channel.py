@@ -725,6 +725,7 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
                     battleResKey = 1 if winnerIfDraw == team else -1
         if guiType == ARENA_GUI_TYPE.BATTLE_ROYALE:
             ctx[b'brcoin'] = self.__makeBRCoinString(battleResults)
+            ctx[b'stpcoin'] = self.__makeSTPCoinString(battleResults)
             ctx[b'brAwardTokens'] = self.__makeBRProgressionTokenString(battleResults)
             battleResultKeys = self.__BRResultKeys
         elif guiType == ARENA_GUI_TYPE.MAPS_TRAINING:
@@ -960,13 +961,20 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
         return g_settings.htmlTemplates.format(b'piggyBank', ctx={b'credits': self.__makeCurrencyString(Currency.CREDITS, credits_)})
 
     def __makeBRCoinString(self, battleResults):
-        value = battleResults.get(b'brcoin', 0) + self.__getBrCoinsQuestBonus(battleResults)
+        value = battleResults.get(b'brcoin', 0) + self.__getCoinsQuestBonus(battleResults, b'brcoin')
         if value:
             text = backport.text(R.strings.messenger.serviceChannelMessages.BRbattleResults.battleRoyaleBrCoin(), value=text_styles.neutral(value))
             return g_settings.htmlTemplates.format(b'battleResultBrcoin', ctx={b'brcoin': text})
         return b''
 
-    def __getBrCoinsQuestBonus(self, battleResults):
+    def __makeSTPCoinString(self, battleResults):
+        value = battleResults.get(b'stpcoin', 0) + self.__getCoinsQuestBonus(battleResults, b'stpcoin')
+        if value:
+            text = backport.text(R.strings.messenger.serviceChannelMessages.BRbattleResults.battleRoyaleStpCoin(), value=text_styles.stPatrick(value))
+            return g_settings.htmlTemplates.format(b'battleResultStpcoin', ctx={b'stpcoin': text})
+        return b''
+
+    def __getCoinsQuestBonus(self, battleResults, currencyCode=b'brcoin'):
         questBonus = 0
         allQuests = self.__eventsCache.getAllQuests()
         for qID in battleResults.get(b'completedQuestIDs', []):
@@ -974,7 +982,7 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
             if quest is None:
                 continue
             for bonus in quest.getBonuses(b'currencies'):
-                if bonus.getCode() == b'brcoin':
+                if bonus.getCode() == currencyCode:
                     questBonus += bonus.getCount()
 
         return questBonus

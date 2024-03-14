@@ -60,6 +60,10 @@ class OfferEventData(object):
         return self._data.get('showInGUI')
 
     @property
+    def showWhenZeroCurrency(self):
+        return self._data.get('showWhenZeroCurrency', False)
+
+    @property
     def cdnLocFilePath(self):
         _path = self._data.get(CDN_KEY, {}).get('localization')
         if _path:
@@ -163,7 +167,10 @@ class OfferEventData(object):
 
     @property
     def expiration(self):
-        return min(self._tokensCache.getTokenExpiryTime(self.token), self._tokensCache.getTokenExpiryTime(self.giftToken), self.getFinishTime())
+        return min(value for value in [
+         self._tokensCache.getTokenExpiryTime(self.token),
+         self._tokensCache.getTokenExpiryTime(self.giftToken),
+         self.getFinishTime()] if value != 0)
 
     @property
     def isOfferAvailable(self):

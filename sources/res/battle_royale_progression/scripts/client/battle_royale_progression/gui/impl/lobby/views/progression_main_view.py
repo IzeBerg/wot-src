@@ -37,7 +37,7 @@ class ProgressionMainView(ViewImpl):
     def createToolTipContent(self, event, contentID):
         if contentID == R.views.battle_royale.lobby.tooltips.LeaderboardRewardTooltipView():
             return LeaderboardRewardTooltipView()
-        return super(ProgressionMainView, self).createToolTipContent(event, contentID)
+        return self.currentPresenter.createToolTipContent(event, contentID) or super(ProgressionMainView, self).createToolTipContent(event, contentID)
 
     def createToolTip(self, event):
         return self.currentPresenter.createToolTip(event) or super(ProgressionMainView, self).createToolTip(event)

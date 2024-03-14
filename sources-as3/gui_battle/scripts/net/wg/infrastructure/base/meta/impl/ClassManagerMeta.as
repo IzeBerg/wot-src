@@ -126,6 +126,20 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.views.playersPanel.BattleRoyalePlayersPanel;
    import net.wg.gui.battle.battleRoyale.views.playersPanel.PlayerDataVO;
    import net.wg.gui.battle.battleRoyale.views.playersPanel.PlayersPanelItemRenderer;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.ShamrockController;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.components.ShamrockCollect;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.components.ShamrockCollectAnimation;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.components.ShamrockReceiveAnimation;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.components.ShamrockSideBar;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.components.ShamrockTotalAmount;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.components.TextFieldWrapper;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.components.results.AbstractShamrockLabel;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.components.results.BonusShamrockLabel;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.components.results.ShamrockLabelWithIcon;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.components.results.WinnerShamrockAnimation;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.data.ShamrockTransactionVO;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.events.ShamrockAnimationEvent;
+   import net.wg.gui.battle.battleRoyale.views.shamrock.interfaces.IShamrockListener;
    import net.wg.gui.battle.battleloading.BaseBattleLoading;
    import net.wg.gui.battle.battleloading.BaseLoadingForm;
    import net.wg.gui.battle.battleloading.BattleLoading;
@@ -1303,6 +1317,34 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_PLAYERSTATS_BATTLEROYALEPLAYERSTATS:Class = BattleRoyalePlayerStats;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_PLAYERSTATS_BATTLEROYALEPLAYERSTATVO:Class = BattleRoyalePlayerStatVO;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_SHAMROCKCONTROLLER:Class = ShamrockController;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_COMPONENTS_SHAMROCKCOLLECT:Class = ShamrockCollect;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_COMPONENTS_SHAMROCKCOLLECTANIMATION:Class = ShamrockCollectAnimation;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_COMPONENTS_SHAMROCKRECEIVEANIMATION:Class = ShamrockReceiveAnimation;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_COMPONENTS_SHAMROCKSIDEBAR:Class = ShamrockSideBar;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_COMPONENTS_SHAMROCKTOTALAMOUNT:Class = ShamrockTotalAmount;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_COMPONENTS_TEXTFIELDWRAPPER:Class = TextFieldWrapper;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_COMPONENTS_RESULTS_ABSTRACTSHAMROCKLABEL:Class = AbstractShamrockLabel;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_COMPONENTS_RESULTS_BONUSSHAMROCKLABEL:Class = BonusShamrockLabel;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_COMPONENTS_RESULTS_SHAMROCKLABELWITHICON:Class = ShamrockLabelWithIcon;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_COMPONENTS_RESULTS_WINNERSHAMROCKANIMATION:Class = WinnerShamrockAnimation;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_DATA_SHAMROCKTRANSACTIONVO:Class = ShamrockTransactionVO;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_EVENTS_SHAMROCKANIMATIONEVENT:Class = ShamrockAnimationEvent;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_SHAMROCK_INTERFACES_ISHAMROCKLISTENER:Class = IShamrockListener;
       
       public static const NET_WG_GUI_BATTLE_COMP7_COMP7BATTLEPAGE:Class = Comp7BattlePage;
       

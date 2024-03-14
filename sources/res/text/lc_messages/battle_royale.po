@@ -40,17 +40,11 @@ msgstr "Ceasefire is in effect on %(serverName)s"
 msgid "alertMessage/unsuitablePeriphery"
 msgstr "Battles are unavailable on this server"
 
-msgid "banner/info/disabled"
-msgstr "Ceasefire"
-
-msgid "banner/info/seasonActive"
-msgstr "Second chance and rewards"
-
 msgid "banner/seasonDate/seasonLasts"
 msgstr "Until %(month)s %(day)s"
 
 msgid "banner/subtitle"
-msgstr "EVOLUTION"
+msgstr "Shamrock Showdown"
 
 msgid "banner/timeLeft/hour"
 msgstr "%(hour)s h"
@@ -65,7 +59,7 @@ msgid "banner/timer/lessOneMin"
 msgstr "<1"
 
 msgid "banner/title"
-msgstr "STEEL HUNTER:"
+msgstr "STEEL HUNTER"
 
 msgid "battle/respawnMessagePanel/respawnActivated/description"
 msgstr "The battle will continue from a new position."
@@ -120,6 +114,15 @@ msgstr "Stay out of combat!"
 
 msgid "battle/respawnMessagePanel/squad/stayInCover/title"
 msgstr "Respawning Ally"
+
+msgid "battle/winnerCongratulationsView/bonusActivated"
+msgstr "Bonus activated!"
+
+msgid "battle/winnerCongratulationsView/bonusForFirstPlace"
+msgstr "Reward for first place"
+
+msgid "battle/winnerCongratulationsView/colected"
+msgstr "Collected in battle"
 
 msgid "battle/winnerCongratulationsView/title"
 msgstr "VICTORY"
@@ -368,21 +371,22 @@ msgid "fullStats/destroyed"
 msgstr "Destroyed by you"
 
 msgid "fullStats/icons/airDrop/description"
-msgstr ""
-"Airdrop: experience, hit points recovery, module repairs, charges for all "
-"abilities, shells."
+msgstr "Airdrop: charges for all Combat Abilities and a lot of XP."
 
 msgid "fullStats/icons/corpseLoot/description"
 msgstr ""
-"Spoils of War: experience, hit points recovery, module repairs, charges for "
-"some abilities, shells."
-
-msgid "fullStats/icons/defaultLoot/description"
-msgstr "Supplies: experience, module repairs, charges for some abilities."
+"Spoils of War: loot from destroyed vehicles. In addition to XP and hit point"
+" restoration, contains half of the enemy's Ability charges."
 
 msgid "fullStats/icons/extendedLoot/description"
 msgstr ""
-"Consumables: experience, hit points recovery, charge for Recovery, shells."
+"Consumables: XP, shells, hit point and module recovery, and a chance to get "
+"charges for Combat Abilities."
+
+msgid "fullStats/icons/shamrocks/description"
+msgstr ""
+"Lucky Seals are contained in all types of Spoils of War. They can be "
+"exchanged for rewards after battle in the Shamrock Shop."
 
 msgid "fullStats/subTitle"
 msgstr "Battle for valuable resources under \"free-for-all\" rules."
@@ -642,7 +646,9 @@ msgstr ""
 "Seals"
 
 msgid "proxyPanel/store"
-msgstr "STORE"
+msgstr ""
+"SHAMROCK\n"
+"SHOP"
 
 msgid "questsTooltip/lessThanDay"
 msgstr "less than 1 d"
@@ -701,7 +707,7 @@ msgstr ""
 msgid "rewardCurrencyTooltip/brcoin/header"
 msgstr "Steel Seals"
 
-msgid "rewardCurrencyTooltip/brcoin/premFactor"
+msgid "rewardCurrencyTooltip/brcoin/premium"
 msgstr ""
 "WoT Premium Account increases the amount of this currency earned by 50%."
 
@@ -711,7 +717,7 @@ msgstr "The main in-game currency. Earned in battles or purchased with gold."
 msgid "rewardCurrencyTooltip/credits/header"
 msgstr "Credits"
 
-msgid "rewardCurrencyTooltip/credits/premFactor"
+msgid "rewardCurrencyTooltip/credits/premium"
 msgstr ""
 "WoT Premium Account increases the amount of this currency earned by 50%."
 
@@ -723,6 +729,19 @@ msgstr ""
 msgid "rewardCurrencyTooltip/crystal/header"
 msgstr "Bonds"
 
+msgid "rewardCurrencyTooltip/stpcoin/body"
+msgstr ""
+"Currency that can be earned in Steel Hunter battles. Seals can be exchanged for unique rewards in the Shamrock Shop.\n"
+"When playing in a Platoon, Seals are divided equally among Platoon members. The specified amount is your part of the total earnings."
+
+msgid "rewardCurrencyTooltip/stpcoin/bonus"
+msgstr ""
+"Bonus applied! The number of Seals received in battle is increased by 2 "
+"times."
+
+msgid "rewardCurrencyTooltip/stpcoin/header"
+msgstr "Lucky Seals"
+
 msgid "rewardCurrencyTooltip/xp/body"
 msgstr ""
 "The experience earned in special vehicles can be converted to Free "
@@ -731,7 +750,7 @@ msgstr ""
 msgid "rewardCurrencyTooltip/xp/header"
 msgstr "Combat Experience"
 
-msgid "rewardCurrencyTooltip/xp/premFactor"
+msgid "rewardCurrencyTooltip/xp/premium"
 msgstr ""
 "WoT Premium Account increases the amount of Combat Experience earned by 50%."
 
@@ -971,23 +990,6 @@ msgstr "Badge"
 msgid "tooltips/awards/pattern"
 msgstr "%(typeName)s: \"%(userName)s\""
 
-msgid "tooltips/brCoin/earn/description"
-msgstr ""
-"Receive Steel Seals for efficient battle performance, achieving high "
-"positions in the battle results, and completing the mode missions."
-
-msgid "tooltips/brCoin/earn/title"
-msgstr "How to Earn Seals"
-
-msgid "tooltips/brCoin/spend/description"
-msgstr "Use the earned Steel Seals to purchase Steel Hunter styles."
-
-msgid "tooltips/brCoin/spend/title"
-msgstr "What to Spend Seals On"
-
-msgid "tooltips/brCoin/title"
-msgstr "Steel Seals"
-
 msgid "tooltips/rentIcon/rent/description"
 msgstr "This vehicle is suitable for fighting only in Steel Hunter"
 
@@ -1046,6 +1048,42 @@ msgstr "Single-time use"
 
 msgid "tooltips/respawnIcon/title"
 msgstr "Respawn"
+
+msgid "tooltips/shop/description"
+msgstr ""
+"A store where you can exchange Lucky Seals earned in the Steel Hunter mode "
+"for special valuable rewards."
+
+msgid "tooltips/shop/subdescription"
+msgstr ""
+"A special currency that can be earned in the Steel Hunter mode during the "
+"Green Light event. Receive Lucky Seals for picking up Spoils of War in "
+"battle, completing Progression Stages, and taking the top positions in the "
+"battle royale."
+
+msgid "tooltips/shop/subtitle"
+msgstr "Lucky Seals"
+
+msgid "tooltips/shop/title"
+msgstr "Shamrock Shop"
+
+msgid "tooltips/stpCoin/earn/description"
+msgstr ""
+"Receive Lucky Seals for picking up Spoils of War in battle, completing "
+"Progression Stages, and taking the top positions in Steel Hunter."
+
+msgid "tooltips/stpCoin/earn/title"
+msgstr "How to Earn Seals"
+
+msgid "tooltips/stpCoin/spend/description"
+msgstr ""
+"Exchange your earned Lucky Seals for valuable rewards in the Shamrock Shop."
+
+msgid "tooltips/stpCoin/spend/title"
+msgstr "What to Spend Seals On"
+
+msgid "tooltips/stpCoin/title"
+msgstr "Lucky Seals"
 
 msgid "tooltips/testDriveInfo/footer"
 msgstr ""
