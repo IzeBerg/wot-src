@@ -7,7 +7,7 @@ from gui import SystemMessages
 from gui.impl import backport
 from gui.impl.gen.resources import R
 from gui.impl.pub import PopOverViewImpl
-from event_lootboxes.gui.shared.event_dispatcher import showEventLootBoxOpenErrorWindow, showEventLootBoxOpenWindow, showEventLootBoxesWelcomeScreen
+from event_lootboxes.gui.shared.event_dispatcher import showEventLootBoxOpenErrorWindow, showEventLootBoxOpenWindow
 from gui.shared.gui_items.loot_box import EVENT_LOOT_BOXES_CATEGORY, EventLootBoxes
 from gui.shared.gui_items.processors.loot_boxes import LootBoxOpenProcessor
 from gui.shared.notifications import NotificationPriorityLevel
@@ -95,8 +95,7 @@ class EventLootBoxesPopover(PopOverViewImpl):
         self.__eventLootBoxes.openShop()
 
     def __onAboutBtnClick(self):
-        self.destroyWindow()
-        showEventLootBoxesWelcomeScreen()
+        pass
 
     def __updateBoxesCount(self):
         availableToBuyBoxes = self.__eventLootBoxes.getDayLimit() - self.__eventLootBoxes.getDayInfoStatistics()
