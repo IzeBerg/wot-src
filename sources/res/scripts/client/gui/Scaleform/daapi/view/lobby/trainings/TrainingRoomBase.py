@@ -1,4 +1,5 @@
 import BigWorld, ArenaType
+from account_helpers import isDemonstrator, isDemonstratorExpert
 from adisp import adisp_process
 from frameworks.wulf import WindowLayer
 from gui import SystemMessages, GUI_SETTINGS
@@ -7,6 +8,7 @@ from gui.Scaleform.genConsts.BATTLE_TYPES import BATTLE_TYPES
 from gui.Scaleform.settings import ICONS_SIZES
 from helpers import dependency
 from skeletons.gui.lobby_context import ILobbyContext
+from skeletons.gui.shared import IItemsCache
 from gui.Scaleform.daapi import LobbySubView
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.trainings import formatters
@@ -18,7 +20,8 @@ from gui.prb_control.events_dispatcher import g_eventDispatcher
 from gui.prb_control.entities.base.ctx import LeavePrbAction
 from gui.prb_control.entities.base.legacy.ctx import SetTeamStateCtx, AssignLegacyCtx, SwapTeamsCtx, SetPlayerStateCtx
 from gui.prb_control.entities.base.legacy.listener import ILegacyListener
-from gui.prb_control.entities.training.legacy.ctx import SetPlayerObserverStateCtx, ChangeArenaVoipCtx
+from gui.prb_control.entities.training.legacy.ctx import SetPlayerObserverStateCtx, ChangeArenaVoipCtx, ChangeArenaGuiCtx
+from gui.prb_control.entities.training.legacy.entity import TrainingEntity
 from gui.prb_control.items.prb_items import getPlayersComparator
 from gui.prb_control.settings import PREBATTLE_ROSTER, PREBATTLE_SETTING_NAME
 from gui.prb_control.settings import REQUEST_TYPE, CTRL_ENTITY_TYPE
@@ -28,6 +31,7 @@ from gui.shared.formatters import text_styles
 from gui.sounds.ambients import LobbySubViewEnv
 from helpers import int2roman, i18n
 from gui.impl import backport
+from gui.impl.gen import R
 from messenger.ext import passCensor
 from messenger.m_constants import PROTO_TYPE
 from messenger.proto import proto_getter
@@ -44,6 +48,7 @@ BATTLE_TYPES_ICONS = {PREBATTLE_TYPE.TRAINING: BATTLE_TYPES.TRAINING,
 class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
     __sound_env__ = LobbySubViewEnv
     _COMMON_SOUND_SPACE = TRAININGS_SOUND_SPACE
+    itemsCache = dependency.descriptor(IItemsCache)
     lobbyContext = dependency.descriptor(ILobbyContext)
     statsCollector = dependency.descriptor(IStatisticsCollector)
 
@@ -123,6 +128,7 @@ class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
     def closeTrainingRoom(self):
         self._doLeave(isExit=False, parent=self.getParentWindow())
 
+    @adisp_process
     def onSettingUpdated(self, entity, settingName, settingValue):
         if settingName in (PREBATTLE_SETTING_NAME.ARENA_TYPE_ID, PREBATTLE_SETTING_NAME.LIMITS):
             settings = entity.getSettings()
@@ -131,13 +137,15 @@ class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
             else:
                 arenaTypeID = settings[PREBATTLE_SETTING_NAME.ARENA_TYPE_ID]
             arenaType = ArenaType.g_cache.get(arenaTypeID)
-            self.as_updateMapS(arenaTypeID, arenaType.maxPlayersInTeam * 2, arenaType.name, formatters.getTrainingRoomTitle(arenaType), formatters.getArenaSubTypeString(arenaTypeID), arenaType.description, self.__battleTypeIcon(settings[PREBATTLE_SETTING_NAME.BATTLE_TYPE]))
+            self.as_updateMapS(arenaTypeID, self.__getMaxPlayersInTeam() * 2, arenaType.name, formatters.getTrainingRoomTitle(arenaType), formatters.getArenaSubTypeString(arenaTypeID), arenaType.description, self.__battleTypeIcon(settings[PREBATTLE_SETTING_NAME.BATTLE_TYPE]), self.__getAlertText(), self._isObserverModeEnabled())
         elif settingName == PREBATTLE_SETTING_NAME.ROUND_LENGTH:
             self.as_updateTimeoutS(formatters.getRoundLenString(settingValue))
         elif settingName == PREBATTLE_SETTING_NAME.COMMENT:
             self.as_updateCommentS(settingValue)
         elif settingName == PREBATTLE_SETTING_NAME.ARENA_VOIP_CHANNELS:
             self.as_setArenaVoipChannelsS(settingValue)
+        elif settingName == PREBATTLE_SETTING_NAME.ARENA_GUI_TYPE:
+            yield self.prbDispatcher.sendPrbRequest(ChangeArenaGuiCtx(waitingID='prebattle/change_arena_gui'))
         self._updateStartButton(entity)
 
     def onRostersChanged(self, entity, rosters, full):
@@ -166,6 +174,9 @@ class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
         creator = self.__getCreatorFromRosters()
         if accountInfo.dbID == creator.dbID:
             self.__showSettings(entity)
+        if isinstance(self.prbEntity, TrainingEntity) and accountInfo.isCurrentPlayer():
+            if self._isObserverModeEnabled():
+                self.as_setObserverS(self.prbEntity.storage.isObserver)
         self._updateStartButton(entity)
 
     def onPlayerTeamNumberChanged(self, entity, team):
@@ -240,7 +251,10 @@ class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
             self.__swapTeamsInMinimap(entity.getPlayerTeam())
         self.startPrbListening()
         self._addListeners()
-        self.as_setObserverS(entity.getPlayerInfo().getVehicle().isObserver)
+        isObserver = False
+        if entity.getPlayerInfo().isVehicleSpecified():
+            isObserver = entity.getPlayerInfo().getVehicle().isObserver
+        self.as_setObserverS(isObserver)
         self.statsCollector.noteHangarLoadingState(HANGAR_LOADING_STATE.TRAINING_UI_READY)
 
     def _addListeners(self):
@@ -273,11 +287,11 @@ class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
             validationResult = entity.getLimits().isTeamsValid()
             if validationResult is None or validationResult.isValid:
                 self.as_enabledCloseButtonS(True)
-                self.as_disableStartButtonS(False)
+                self.as_setStartButtonStateS(True)
             else:
-                self.as_disableStartButtonS(True)
+                self.as_setStartButtonStateS(False)
         else:
-            self.as_disableStartButtonS(True)
+            self.as_setStartButtonStateS(False)
         return
 
     def _closeWindows(self):
@@ -338,6 +352,10 @@ class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
         SystemMessages.pushMessage(i18n.makeString(errMsg[0], **errMsg[1]), type=SystemMessages.SM_TYPE.Error)
 
     def _isObserverModeEnabled(self):
+        if self.__isComp7Arena():
+            accountAttrs = self.itemsCache.items.stats.attributes
+            if not isDemonstrator(accountAttrs) and not isDemonstratorExpert(accountAttrs):
+                return False
         minCount = self.prbEntity.getSettings().getTeamLimits(1)['minCount']
         return GUI_SETTINGS.trainingObserverModeEnabled and minCount > 0
 
@@ -396,8 +414,9 @@ class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
                'arenaTypeID': arenaTypeID, 
                'arenaSubType': formatters.getArenaSubTypeString(arenaTypeID), 
                'battleTypeIco': self.__battleTypeIcon(settings[PREBATTLE_SETTING_NAME.BATTLE_TYPE]), 
+               'alertText': self.__getAlertText(), 
                'description': arenaType.description, 
-               'maxPlayersCount': arenaType.maxPlayersInTeam * 2, 
+               'maxPlayersCount': self.__getMaxPlayersInTeam() * 2, 
                'roundLenString': formatters.getRoundLenString(settings['roundLength']), 
                'comment': comment, 
                'arenaVoipChannels': settings[PREBATTLE_SETTING_NAME.ARENA_VOIP_CHANNELS], 
@@ -416,7 +435,24 @@ class TrainingRoomBase(LobbySubView, TrainingRoomBaseMeta, ILegacyListener):
         return
 
     def __battleTypeIcon(self, prebattleType):
+        if self.__isComp7Arena():
+            return BATTLE_TYPES.COMP7
         return BATTLE_TYPES_ICONS.get(prebattleType, BATTLE_TYPES.TRAINING)
+
+    def __getAlertText(self):
+        if self.__isComp7Arena():
+            return backport.text(R.strings.menu.training.alertText.onlyTierX())
+        return ''
+
+    def __getMaxPlayersInTeam(self):
+        if self.__isComp7Arena():
+            return self.lobbyContext.getServerSettings().comp7Config.numPlayers
+        arenaTypeID = self.prbEntity.getSettings()['arenaTypeID']
+        arenaType = ArenaType.g_cache.get(arenaTypeID)
+        return arenaType.maxPlayersInTeam
+
+    def __isComp7Arena(self):
+        return isinstance(self.prbEntity, TrainingEntity) and self.prbEntity.isComp7Arena()
 
     def __swapTeamsInMinimap(self, team):
         if VIEW_ALIAS.MINIMAP_LOBBY in self.components:

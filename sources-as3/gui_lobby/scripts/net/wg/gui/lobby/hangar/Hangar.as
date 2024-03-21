@@ -22,6 +22,7 @@ package net.wg.gui.lobby.hangar
    import net.wg.gui.components.miniclient.HangarMiniClientComponent;
    import net.wg.gui.events.LobbyEvent;
    import net.wg.gui.lobby.battleRoyale.HangarComponentsContainer;
+   import net.wg.gui.lobby.battleRoyale.events.BattleTypeSelectorEvent;
    import net.wg.gui.lobby.hangar.alertMessage.AlertMessageBlock;
    import net.wg.gui.lobby.hangar.ammunitionPanel.AmmunitionPanel;
    import net.wg.gui.lobby.hangar.ammunitionPanel.data.AmmunitionPanelVO;
@@ -60,7 +61,11 @@ package net.wg.gui.lobby.hangar
       
       private static const INVALIDATE_COMP7_MODIFIERS_VISIBILITY:String = "invalidComp7Modifiers";
       
+      private static const INVALIDATE_COMP7_TOURNAMENT_BANNER_VISIBILITY:String = "invalidComp7TournamentBanner";
+      
       private static const INVALIDATE_PRESTIGE_WIDGET_VISIBILITY:String = "invalidPrestigeProgress";
+      
+      private static const INVALIDATE_HEADER_ANIMATION:String = "invalidHeaderAnimation";
       
       private static const ENTRY_CONT_POSITION_INVALID:String = "entryContPositionInvalid";
       
@@ -133,6 +138,10 @@ package net.wg.gui.lobby.hangar
       private static const COMP7_MODIFIERS_PANEL_INJECT_OFFSET_Y:int = 2;
       
       private static const COMP7_MODIFIERS_PANEL_INJECT_OFFSET_X:int = 1;
+      
+      private static const COMP7_TOURNAMENT_BANNER_OFFSET_X:int = -15;
+      
+      private static const COMP7_TOURNAMENT_BANNER_OFFSET_Y:int = -12;
       
       private static const SMALL_SCREEN_WIDTH_THRESHOLD:int = 1280;
       
@@ -217,7 +226,9 @@ package net.wg.gui.lobby.hangar
       
       private var _isVisible:Boolean = true;
       
-      private var _comp7ModifiersPanelInject:GFInjectComponent;
+      private var _comp7ModifiersPanelInject:GFInjectComponent = null;
+      
+      private var _comp7TournamentBanner:Comp7TournamentBannerInject = null;
       
       private var _appStage:Stage;
       
@@ -240,6 +251,10 @@ package net.wg.gui.lobby.hangar
       private var _carouselEventEntryVisible:Boolean = true;
       
       private var _carouselVisible:Boolean = true;
+      
+      private var _isBRBattleTypeSelectorVisible:Boolean = false;
+      
+      private var _isBRSpaceLoaded:Boolean = false;
       
       public function Hangar()
       {
@@ -406,6 +421,7 @@ package net.wg.gui.lobby.hangar
          removeChild(this._eventsEntryContainer);
          this._eventsEntryContainer = null;
          this._currentWidgetLayout = 99;
+         this._isBRSpaceLoaded = false;
          removeChild(this._carouselEventEntryContainer);
          this._carouselEventEntryContainer = null;
          super.onDispose();
@@ -511,6 +527,10 @@ package net.wg.gui.lobby.hangar
             }
             this.updateEventLootBoxWidgetPosition();
          }
+         if(isInvalid(INVALIDATE_COMP7_TOURNAMENT_BANNER_VISIBILITY))
+         {
+            this.updateComp7TournamentBannerSizeAndPosition();
+         }
          if(_loc1_)
          {
             this.updateEntriesPosition();
@@ -522,6 +542,20 @@ package net.wg.gui.lobby.hangar
             if(!_loc3_)
             {
                this.repositionWidget();
+            }
+         }
+         if(isInvalid(INVALIDATE_HEADER_ANIMATION))
+         {
+            if(this._battleRoyaleComponents)
+            {
+               if(this._isBRSpaceLoaded && this._isBRBattleTypeSelectorVisible && !this.header.hasWidget(HANGAR_ALIASES.BATTLE_ROYALE_TOURNAMENT))
+               {
+                  this._battleRoyaleComponents.showHeader(true);
+               }
+               else
+               {
+                  this._battleRoyaleComponents.hideHeader();
+               }
             }
          }
       }
@@ -604,6 +638,17 @@ package net.wg.gui.lobby.hangar
          }
       }
       
+      public function addComp7TournamentBanner() : void
+      {
+         if(!this._comp7TournamentBanner)
+         {
+            this._comp7TournamentBanner = new Comp7TournamentBannerInject();
+            addChild(this._comp7TournamentBanner);
+            registerFlashComponentS(this._comp7TournamentBanner,HANGAR_ALIASES.COMP7_TOURNAMENT_BANNER);
+         }
+         invalidate(INVALIDATE_COMP7_TOURNAMENT_BANNER_VISIBILITY);
+      }
+      
       public function as_closeHelpLayout() : void
       {
          this._helpLayout.hide();
@@ -617,6 +662,15 @@ package net.wg.gui.lobby.hangar
       public function as_hideTeaserTimer() : void
       {
          this.teaser.hideTimer();
+      }
+      
+      public function as_setBattleRoyaleSpaceLoaded(param1:Boolean) : void
+      {
+         if(this._battleRoyaleComponents && !this.header.hasWidget(HANGAR_ALIASES.BATTLE_ROYALE_TOURNAMENT))
+         {
+            this._battleRoyaleComponents.showHeader(!param1);
+         }
+         this._isBRSpaceLoaded = true;
       }
       
       public function as_setCarousel(param1:String, param2:String) : void
@@ -633,6 +687,10 @@ package net.wg.gui.lobby.hangar
          if(this._carouselEventEntryVisible)
          {
             this.carousel.setRightMargin(CarouselEventEntry.WIDTH + CAROUSEL_EVENT_ENTRY_X_OFFSET);
+         }
+         else if(this._comp7TournamentBanner)
+         {
+            this.carousel.setRightMargin(this._comp7TournamentBanner.width);
          }
          this.carousel.addEventListener(Event.RESIZE,this.onCarouselResizeHandler);
          this.carousel.updateStage(_originalWidth,_originalHeight);
@@ -657,6 +715,18 @@ package net.wg.gui.lobby.hangar
          if(!param1 && this._comp7ModifiersPanelInject)
          {
             this.removeComp7Modifiers();
+         }
+      }
+      
+      public function as_setComp7TournamentBannerVisible(param1:Boolean) : void
+      {
+         if(param1 && !this._comp7TournamentBanner)
+         {
+            this.addComp7TournamentBanner();
+         }
+         if(!param1 && this._comp7TournamentBanner)
+         {
+            this.removeComp7TournamentBanner();
          }
       }
       
@@ -746,15 +816,18 @@ package net.wg.gui.lobby.hangar
          if(this._battleRoyaleComponents == null)
          {
             this._battleRoyaleComponents = new HangarComponentsContainer();
+            this._battleRoyaleComponents.setHeader(this.header);
             _loc1_ = getChildIndex(this.carouselContainer as DisplayObject) + 1;
             addChildAt(this._battleRoyaleComponents,_loc1_);
+            this._battleRoyaleComponents.addEventListener(BattleTypeSelectorEvent.BATTLE_TYPE_SELECTOR_VISIBILITY_CHANGED,this.onBattleTypeSelectorVisibilityChangedHandler);
          }
-         if(!isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.COMMANDER_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT))
+         if(!isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.COMMANDER_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.BATTLE_TYPE_SELECTOR))
          {
             registerFlashComponentS(this._battleRoyaleComponents.commander,BATTLEROYALE_ALIASES.COMMANDER_COMPONENT);
             registerFlashComponentS(this._battleRoyaleComponents.techParameters,BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT);
             registerFlashComponentS(this._battleRoyaleComponents.bottomPanel,BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT);
             registerFlashComponentS(this._battleRoyaleComponents.proxyCurrencyPanel,BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT);
+            registerFlashComponentS(this._battleRoyaleComponents.battleTypeSelector,BATTLEROYALE_ALIASES.BATTLE_TYPE_SELECTOR);
          }
          this.updateBRComponentsPos();
       }
@@ -809,6 +882,7 @@ package net.wg.gui.lobby.hangar
             this.removeBattleRoyaleComponent(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT);
             this.removeBattleRoyaleComponent(BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT);
             this.removeBattleRoyaleComponent(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT);
+            this.removeBattleRoyaleComponent(BATTLEROYALE_ALIASES.BATTLE_TYPE_SELECTOR);
          }
       }
       
@@ -816,6 +890,20 @@ package net.wg.gui.lobby.hangar
       {
          this.removeComp7ModifiersPanel();
          invalidate(INVALIDATE_COMP7_MODIFIERS_VISIBILITY);
+      }
+      
+      public function removeComp7TournamentBanner() : void
+      {
+         if(this._comp7TournamentBanner != null)
+         {
+            removeChild(this._comp7TournamentBanner);
+            if(!_baseDisposed && isFlashComponentRegisteredS(HANGAR_ALIASES.COMP7_TOURNAMENT_BANNER))
+            {
+               unregisterFlashComponentS(HANGAR_ALIASES.COMP7_TOURNAMENT_BANNER);
+            }
+            this._comp7TournamentBanner = null;
+         }
+         invalidate(INVALIDATE_COMP7_TOURNAMENT_BANNER_VISIBILITY);
       }
       
       public function setAnimatorVisibility(param1:Boolean) : void
@@ -827,11 +915,14 @@ package net.wg.gui.lobby.hangar
       public function tryRemoveBattleRoyaleContainer() : void
       {
          this.removeBattleRoyaleComponents();
-         if(!_baseDisposed && this._battleRoyaleComponents != null && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.COMMANDER_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT))
+         if(!_baseDisposed && this._battleRoyaleComponents != null && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.COMMANDER_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT) && !isFlashComponentRegisteredS(BATTLEROYALE_ALIASES.BATTLE_TYPE_SELECTOR))
          {
             removeChild(this._battleRoyaleComponents);
+            this._battleRoyaleComponents.removeEventListener(BattleTypeSelectorEvent.BATTLE_TYPE_SELECTOR_VISIBILITY_CHANGED,this.onBattleTypeSelectorVisibilityChangedHandler);
             this._battleRoyaleComponents.dispose();
             this._battleRoyaleComponents = null;
+            this._isBRBattleTypeSelectorVisible = false;
+            this.updateElementsPosition();
          }
       }
       
@@ -992,6 +1083,7 @@ package net.wg.gui.lobby.hangar
          {
             this._battleRoyaleComponents.y = BR_UNBOUND_HEADER_TOP_MARGIN;
             this._battleRoyaleComponents.updateStage(_width,this.carousel.y - BR_UNBOUND_HEADER_TOP_MARGIN);
+            this.updateElementsPosition();
          }
       }
       
@@ -1086,6 +1178,7 @@ package net.wg.gui.lobby.hangar
       private function updateCarouselPosition() : void
       {
          this._carousel.updateCarouselPosition(_height - this._carousel.getBottom() ^ 0);
+         this.updateComp7TournamentBannerSizeAndPosition();
          this.updateEventLootBoxWidgetPosition();
          this.updateAmmunitionPanelPosition();
          if(this._hangarViewSwitchAnimator)
@@ -1117,6 +1210,25 @@ package net.wg.gui.lobby.hangar
          }
       }
       
+      private function updateComp7TournamentBannerSizeAndPosition() : void
+      {
+         if(!this._carousel)
+         {
+            return;
+         }
+         if(this._comp7TournamentBanner)
+         {
+            this._comp7TournamentBanner.isExtended = this._carousel.isExtended;
+            this._carousel.setRightMargin(this._comp7TournamentBanner.width);
+            this._comp7TournamentBanner.x = this._carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + COMP7_TOURNAMENT_BANNER_OFFSET_X | 0;
+            this._comp7TournamentBanner.y = this._carousel.y + this._carousel.getBottom() - this._comp7TournamentBanner.height + COMP7_TOURNAMENT_BANNER_OFFSET_Y | 0;
+         }
+         else if(!this._carouselEventEntryVisible)
+         {
+            this._carousel.setRightMargin(0);
+         }
+      }
+      
       private function updateElementsPosition() : void
       {
          var _loc1_:int = TOP_MARGIN;
@@ -1134,7 +1246,10 @@ package net.wg.gui.lobby.hangar
          if(this.header != null)
          {
             this.header.x = _width >> 1;
-            this.header.y = _loc1_;
+            if(!this._isBRBattleTypeSelectorVisible || !this._battleRoyaleComponents)
+            {
+               this.header.y = _loc1_;
+            }
          }
          if(this.switchModePanel.visible)
          {
@@ -1203,6 +1318,13 @@ package net.wg.gui.lobby.hangar
       public function get isControlsVisible() : Boolean
       {
          return this._isControlsVisible;
+      }
+      
+      private function onBattleTypeSelectorVisibilityChangedHandler(param1:BattleTypeSelectorEvent) : void
+      {
+         this._isBRBattleTypeSelectorVisible = param1.isVisible;
+         this.updateElementsPosition();
+         invalidate(INVALIDATE_HEADER_ANIMATION);
       }
       
       private function onAmmunitionPanelRequestFocusHandler(param1:FocusRequestEvent) : void

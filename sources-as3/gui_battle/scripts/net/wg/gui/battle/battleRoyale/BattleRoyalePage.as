@@ -1,5 +1,7 @@
 package net.wg.gui.battle.battleRoyale
 {
+   import com.gskinner.motion.GTweener;
+   import com.gskinner.motion.easing.Cubic;
    import flash.display.DisplayObject;
    import flash.events.Event;
    import flash.events.MouseEvent;
@@ -56,29 +58,29 @@ package net.wg.gui.battle.battleRoyale
    public class BattleRoyalePage extends BattleRoyalePageMeta implements IBattleRoyalePageMeta
    {
       
-      private static const SCREEN_SMALL_WIDTH:Number = 1480;
+      private static const SCREEN_SMALL_WIDTH:int = 1480;
       
-      private static const SCREEN_SMALL_HEIGHT:Number = 900;
+      private static const SCREEN_SMALL_HEIGHT:int = 900;
       
       private static const BATTLE_DAMAGE_LOG_X_POSITION:int = 229;
       
       private static const BATTLE_DAMAGE_LOG_Y_PADDING:int = 3;
       
-      private static const HINT_PANEL_Y_SHIFT_MULTIPLIER:Number = 1.5;
+      private static const HINT_PANEL_Y_OFFSET:int = 270;
       
       private static const RADAR_BUTTON_H_GAP:int = -70;
       
       private static const RADAR_BUTTON_V_GAP:int = -13;
       
-      private static const MINIMAP_TAB_MODE_BIG_OFFSET_Y:Number = 85;
+      private static const MINIMAP_TAB_MODE_BIG_OFFSET_Y:int = 85;
       
-      private static const MINIMAP_TAB_MODE_SMALL_OFFSET_Y:Number = 50;
+      private static const MINIMAP_TAB_MODE_SMALL_OFFSET_Y:int = 50;
       
       private static const GRID_BIG_OFFSET:Point = new Point(-24,-25);
       
       private static const GRID_SMALL_OFFSET:Point = new Point(-18,-15);
       
-      private static const MESSANGER_SWAP_AREA_TOP_OFFSET:Number = -27;
+      private static const MESSANGER_SWAP_AREA_TOP_OFFSET:int = -27;
       
       private static const MESSENGER_RESPAWN_X_OFFSET:int = 36;
       
@@ -111,6 +113,12 @@ package net.wg.gui.battle.battleRoyale
       private static const TIMERS_PANEL_Y_OFFSET:Vector.<int> = new <int>[50,50,51,51,52,52,52];
       
       private static const PLAYER_MESSAGES_LIST_OFFSET_Y:int = -46;
+      
+      private static const RADIAL_MENU_TWEEN_DURATION:Number = 0.25;
+      
+      private static const RADIAL_MENU_ALPHA_NORMAL:int = 1;
+      
+      private static const RADIAL_MENU_ALPHA_HIDDEN:Number = 0.15;
        
       
       public var fragPanel:BattleRoyaleScoreBar = null;
@@ -233,14 +241,24 @@ package net.wg.gui.battle.battleRoyale
          this.upgradePanel.addEventListener(ComponentEvent.STATE_CHANGE,this.onUpgradePanelStateChangeHandler);
          this._minimap.isTabModeCustomAlpha = true;
          this._minimap.tabModeCustomAlpha = Values.DEFAULT_ALPHA;
+         this.radialMenu.setIsShadeVisible(true);
+         this.radialMenu.addEventListener(Event.ACTIVATE,this.onRedialMenuActivateHandler);
+         this.radialMenu.addEventListener(Event.DEACTIVATE,this.onRedialMenuDeactivateHandler);
       }
       
-      override protected function createPostmortemTipsComponent() : void
+      override protected function createPostmortemPanelComponent() : void
       {
-         if(postmortemTips == null)
+         if(postmortemPanelUI == null)
          {
-            postmortemTips = App.utils.classFactory.getComponent(Linkages.BATTLE_ROYALE_POSTMORTEM_PANEL,BattleRoyalePostmortemPanel);
+            postmortemPanelUI = App.utils.classFactory.getComponent(Linkages.BATTLE_ROYALE_POSTMORTEM_PANEL,BattleRoyalePostmortemPanel);
          }
+         postmortemPanelUI.setCompVisible(false);
+         addChild(postmortemPanelUI);
+         super.createPostmortemPanelComponent();
+      }
+      
+      override protected function createSpectatorViewComponent() : void
+      {
       }
       
       override protected function createStatisticsController() : BattleStatisticDataController
@@ -269,6 +287,7 @@ package net.wg.gui.battle.battleRoyale
       override protected function initializeStatisticsController(param1:BattleStatisticDataController) : void
       {
          param1.registerComponentController(battleLoading);
+         param1.registerComponentController(this.teamPanel);
          super.initializeStatisticsController(param1);
       }
       
@@ -305,12 +324,14 @@ package net.wg.gui.battle.battleRoyale
          registerComponent(this.corrodingShotIndicator,BATTLE_VIEW_ALIASES.CORRODING_SHOT_INDICATOR);
          registerComponent(this.timersPanel,BATTLE_VIEW_ALIASES.BR_TIMERS_PANEL);
          registerComponent(this.winnerCongrats,BATTLE_VIEW_ALIASES.BATTLE_ROYALE_WINNER_CONGRATS);
-         setChildIndex(postmortemTips,getChildIndex(this.consumablesPanel) - 1);
+         setChildIndex(postmortemPanelUI,getChildIndex(this.consumablesPanel) - 1);
          this._minimap.mapShortcutLabel.visible = false;
       }
       
       override protected function onBeforeDispose() : void
       {
+         GTweener.removeTweens(this.respawnMessagePanel);
+         GTweener.removeTweens(this.upgradePanel);
          this.battleMessenger.removeEventListener(MouseEvent.ROLL_OVER,this.onBattleMessengerRollOverHandler);
          this.battleMessenger.removeEventListener(MouseEvent.ROLL_OUT,this.onBattleMessengerRollOutHandler);
          this.battleMessenger.removeEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
@@ -320,6 +341,8 @@ package net.wg.gui.battle.battleRoyale
          this.hintPanel.removeEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
          this.fullStats.removeEventListener(Event.OPEN,this.onFullStatsOpenHandler);
          this.fullStats.removeEventListener(Event.CLOSE,this.onFullStatsCloseHandler);
+         this.radialMenu.removeEventListener(Event.ACTIVATE,this.onRedialMenuActivateHandler);
+         this.radialMenu.removeEventListener(Event.DEACTIVATE,this.onRedialMenuDeactivateHandler);
          super.onBeforeDispose();
       }
       
@@ -422,6 +445,7 @@ package net.wg.gui.battle.battleRoyale
          super.initializeMessageLists();
          addChild(this.upgradePanel);
          swapChildren(battleLoading,this.upgradePanel);
+         addChildAt(this.radialMenu,getChildIndex(this.upgradePanel));
       }
       
       override protected function playerMessageListPositionUpdate() : void
@@ -511,7 +535,7 @@ package net.wg.gui.battle.battleRoyale
       private function updateHintPanelPosition() : void
       {
          this.hintPanel.x = _width - this.hintPanel.width >> 1;
-         this.hintPanel.y = HINT_PANEL_Y_SHIFT_MULTIPLIER * (_height - this.hintPanel.height >> 1) ^ 0;
+         this.hintPanel.y = _height - HINT_PANEL_Y_OFFSET;
       }
       
       private function updateRadarBtnPosition() : void
@@ -560,6 +584,26 @@ package net.wg.gui.battle.battleRoyale
          }
       }
       
+      private function onRedialMenuDeactivateHandler(param1:Event) : void
+      {
+         GTweener.removeTweens(this.respawnMessagePanel);
+         GTweener.removeTweens(this.upgradePanel);
+         GTweener.to(this.respawnMessagePanel,RADIAL_MENU_TWEEN_DURATION,{"alpha":RADIAL_MENU_ALPHA_NORMAL},{"ease":Cubic.easeOut});
+         GTweener.to(this.upgradePanel,RADIAL_MENU_TWEEN_DURATION,{"alpha":RADIAL_MENU_ALPHA_NORMAL},{"ease":Cubic.easeOut});
+         this.upgradePanel.setMouseEnabled(true);
+         this.upgradePanel.setNotificationAnimationEnabled(true);
+      }
+      
+      private function onRedialMenuActivateHandler(param1:Event) : void
+      {
+         GTweener.removeTweens(this.respawnMessagePanel);
+         GTweener.removeTweens(this.upgradePanel);
+         this.respawnMessagePanel.alpha = RADIAL_MENU_ALPHA_HIDDEN;
+         this.upgradePanel.alpha = RADIAL_MENU_ALPHA_HIDDEN;
+         this.upgradePanel.setMouseEnabled(false);
+         this.upgradePanel.setNotificationAnimationEnabled(false);
+      }
+      
       private function onHintPanelResizeHandler(param1:Event) : void
       {
          this.updateHintPanelPosition();
@@ -581,7 +625,7 @@ package net.wg.gui.battle.battleRoyale
       
       private function onConsumablesPanelUpdatePositionHandler(param1:ConsumablesPanelEvent) : void
       {
-         if(!isPostMortem)
+         if(isPostMortem)
          {
             this.updateBattleDamageLogPanelPosition();
          }

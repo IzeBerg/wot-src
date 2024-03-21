@@ -25,7 +25,7 @@ from helpers import i18n, isPlayerAccount, dependency
 from helpers.http import url_formatters
 from shared_utils import findFirst
 from skeletons.account_helpers.settings_core import ISettingsCore
-from skeletons.gui.game_control import IPromoController, IBrowserController, IEventsNotificationsController, IBootcampController
+from skeletons.gui.game_control import IPromoController, IBrowserController, IEventsNotificationsController
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared.promo import IPromoLogger
@@ -52,7 +52,6 @@ class PromoController(IPromoController):
     __settingsCore = dependency.descriptor(ISettingsCore)
     __lobbyContext = dependency.descriptor(ILobbyContext)
     __logger = dependency.descriptor(IPromoLogger)
-    __bootcamp = dependency.descriptor(IBootcampController)
 
     def __init__(self):
         super(PromoController, self).__init__()
@@ -151,7 +150,7 @@ class PromoController(IPromoController):
         self.__stop()
 
     def isActive(self):
-        return self.__lobbyContext.getServerSettings().isFieldPostEnabled() and not self.__bootcamp.isInBootcamp()
+        return self.__lobbyContext.getServerSettings().isFieldPostEnabled()
 
     def getPromoCount(self):
         return self.__promoCount
@@ -177,7 +176,7 @@ class PromoController(IPromoController):
     def __onTeaserClosed(self, byUser=False):
         self.__isTeaserOpen = False
         self.onTeaserClosed()
-        if byUser and not self.__bootcamp.isInBootcamp() and self.__isInHangar:
+        if byUser and self.__isInHangar:
             self.__showBubbleTooltip()
 
     def __showBubbleTooltip(self):

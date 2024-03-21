@@ -107,8 +107,6 @@ package net.wg.data
       
       public static const PACK_ITEM_POPOVER:String = "packItemPopover";
       
-      public static const BOOTCAMP_PROGRESS:String = "BootcampProgress";
-      
       public static const LIB_CONTROLS:String = "controls";
       
       public static const LIB_ADVANCED:String = "advanced";

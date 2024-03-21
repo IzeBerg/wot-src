@@ -437,7 +437,7 @@ class BattlePassBlock(base.StatsBlock):
 class BattleRoyalePlayerBlock(base.StatsBlock):
     __slots__ = ('isPersonal', 'userName', 'clanAbbrev', 'place', 'isPersonalSquad',
                  'squadIdx', 'hiddenName', 'achievedLevel', 'kills', 'damage', 'vehicleName',
-                 'vehicleType', 'databaseID')
+                 'vehicleType', 'databaseID', 'prebattleID')
 
     def __init__(self, meta=None, field='', *path):
         super(BattleRoyalePlayerBlock, self).__init__(meta, field, *path)
@@ -454,6 +454,7 @@ class BattleRoyalePlayerBlock(base.StatsBlock):
         self.vehicleName = ''
         self.vehicleType = ''
         self.databaseID = 0
+        self.prebattleID = 0
 
     def setRecord(self, vehicleSummarizeInfo, reusable):
         player = vehicleSummarizeInfo.player
@@ -482,7 +483,7 @@ class BattleRoyaleTeamStatsBlock(base.StatsBlock):
         allPlayers = reusable.getAllPlayersIterator(result, sortKey=sort_keys.placeSortKey)
         personalInfo = reusable.getPlayerInfo()
         personalDBID = personalInfo.dbID
-        team = personalInfo.team if personalInfo.squadIndex else 0
+        team = personalInfo.team if reusable.isSquadSupported else 0
         for item in allPlayers:
             if item.vehicle is not None and item.vehicle.isObserver:
                 continue
@@ -499,6 +500,7 @@ class BattleRoyaleTeamStatsBlock(base.StatsBlock):
             block.vehicleName = item.vehicle.shortUserName
             block.vehicleType = item.vehicle.type
             block.databaseID = item.player.dbID
+            block.prebattleID = item.player.prebattleID
             block.setRecord(item, reusable)
             self.addComponent(self.getNextComponentIndex(), block)
 

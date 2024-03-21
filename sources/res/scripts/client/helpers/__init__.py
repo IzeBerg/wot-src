@@ -1,6 +1,8 @@
 import types, BigWorld, ResMgr, i18n, constants
+from aih_constants import CTRL_MODE_NAME
 from debug_utils import LOG_CURRENT_EXCEPTION
 from soft_exception import SoftException
+from abc import abstractmethod
 VERSION_FILE_PATH = '../version.xml'
 _CLIENT_VERSION = None
 
@@ -151,6 +153,45 @@ def getHelperServicesConfig(manager):
     manager.addInstance(IPublishPlatform, platform, finalizer='fini')
 
 
+def isShowingKillCam--- This code section failed: ---
+
+ L. 234         0  LOAD_CONST               -1
+                3  LOAD_CONST               ('DeathCamEvent',)
+                6  IMPORT_NAME           0  'gui.shared.events'
+                9  IMPORT_FROM           1  'DeathCamEvent'
+               12  STORE_FAST            0  'DeathCamEvent'
+               15  POP_TOP          
+
+ L. 235        16  LOAD_GLOBAL           2  'BigWorld'
+               19  LOAD_ATTR             3  'player'
+               22  CALL_FUNCTION_0       0  None
+               25  LOAD_ATTR             4  'inputHandler'
+               28  STORE_FAST            1  'inputHandler'
+
+ L. 238        31  LOAD_FAST             1  'inputHandler'
+               34  POP_JUMP_IF_FALSE    74  'to 74'
+               37  LOAD_FAST             1  'inputHandler'
+               40  LOAD_ATTR             5  'ctrlModeName'
+               43  LOAD_GLOBAL           6  'CTRL_MODE_NAME'
+               46  LOAD_ATTR             7  'KILL_CAM'
+               49  COMPARE_OP            2  ==
+               52  JUMP_IF_FALSE_OR_POP    77  'to 77'
+               55  LOAD_FAST             1  'inputHandler'
+               58  LOAD_ATTR             8  'ctrl'
+               61  LOAD_ATTR             9  'killCamState'
+               64  LOAD_FAST             0  'DeathCamEvent'
+               67  LOAD_ATTR            10  'SIMULATION_INCL_FADES'
+               70  COMPARE_OP            6  in
+               73  RETURN_END_IF    
+             74_0  COME_FROM            52  '52'
+             74_1  COME_FROM            34  '34'
+               74  LOAD_GLOBAL          11  'False'
+               77  RETURN_VALUE     
+               -1  RETURN_LAST      
+
+Parse error at or near `RETURN_END_IF' instruction at offset 73
+
+
 class ReferralButtonHandler(object):
 
     @classmethod
@@ -168,12 +209,17 @@ class ClanQuestButtonHandler(object):
 
     @classmethod
     def invoke(cls, **kwargs):
-        from gui.shared.event_dispatcher import showClanQuestWindow
-        from gui.Scaleform.daapi.view.lobby.clans.clan_helpers import getClanQuestURL
-        value = kwargs.get('value', None)
-        url = value.get('action_url', '') if isinstance(value, dict) else ''
-        showClanQuestWindow(getClanQuestURL() + url)
-        return
+        from gui.impl.lobby.clan_supply.clan_supply_helpers import showClanSupplyView
+        showClanSupplyView(tabId=1)
+
+
+class ClanSupplyQuestButtonHandler(object):
+
+    @classmethod
+    def invoke(cls, **kwargs):
+        from gui.impl.lobby.clan_supply.clan_supply_helpers import showClanSupplyView
+        from uilogging.clan_supply.constants import ClanSupplyLogKeys
+        showClanSupplyView(tabId=1, parentScreenLog=ClanSupplyLogKeys.NOTIFICATION)
 
 
 def unicodeToStr(data):
@@ -187,4 +233,4 @@ def unicodeToStr(data):
             res[unicodeToStr(k)] = unicodeToStr(v)
 
         return res
-    return data
+    return data# Decompile failed :(

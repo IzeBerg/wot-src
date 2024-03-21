@@ -65,7 +65,7 @@ class ProgressionView(SubModelPresenter):
         event_dispatcher.showHangar()
 
     def __onAboutClicked(self):
-        self.battleRoyale.openURL()
+        self.battleRoyale.openInfoPageWindow()
 
     def __updateMissionVisitedArray(self, missionVisitedArray, questsIDs):
         missionVisitedArray.clear()

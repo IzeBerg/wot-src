@@ -49,9 +49,6 @@ msgstr "Второй шанс и награды"
 msgid "banner/seasonDate/seasonLasts"
 msgstr "До %(day)s %(month)s"
 
-msgid "banner/subtitle"
-msgstr "ЭВОЛЮЦИЯ"
-
 msgid "banner/timeLeft/hour"
 msgstr "%(hour)s ч"
 
@@ -65,7 +62,7 @@ msgid "banner/timer/lessOneMin"
 msgstr "<1"
 
 msgid "banner/title"
-msgstr "СТАЛЬНОЙ ОХОТНИК:"
+msgstr "СТАЛЬНОЙ ОХОТНИК"
 
 msgid "battle/respawnMessagePanel/respawnActivated/description"
 msgstr "Бой продолжится с новой позиции."
@@ -171,20 +168,23 @@ msgstr "[ESC]"
 msgid "battleResult/inBattle/skipAnim/text"
 msgstr "Нажмите %(esc), чтобы пропустить анимацию"
 
-msgid "battleResult/playerVehicleStatus/alive"
-msgstr "Выжил"
+msgid "battleResult/playerBattleTypeStatus/button/text"
+msgstr "Пригласить во взвод"
 
-msgid "battleResult/playerVehicleStatus/reason/deathByBot"
-msgstr "Машина уничтожена Мародёром."
+msgid "battleResult/playerBattleTypeStatus/clan/"
+msgstr "[%(clanAbbrev)s]"
 
-msgid "battleResult/playerVehicleStatus/reason/deathByPlayer"
-msgstr "Машина уничтожена игроком"
+msgid "battleResult/playerBattleTypeStatus/header/platoon"
+msgstr "Союзник"
 
-msgid "battleResult/playerVehicleStatus/reason/deathByZone"
-msgstr "Вы не успели покинуть опасную зону"
+msgid "battleResult/playerBattleTypeStatus/header/randomPlatoon"
+msgstr "Случайный союзник"
 
-msgid "battleResult/playerVehicleStatus/reason/other"
-msgstr "Машина уничтожена"
+msgid "battleResult/playerBattleTypeStatus/header/solo"
+msgstr "Тип игры"
+
+msgid "battleResult/playerBattleTypeStatus/text/solo"
+msgstr "ОДИНОЧНЫЙ БОЙ"
 
 msgid "battleResult/premiumRewards/title"
 msgstr "Было бы получено с Танковым премиум аккаунтом:"
@@ -267,26 +267,29 @@ msgstr "ПОБЕДА"
 msgid "battleResult/title/victoryOther"
 msgstr "ПОЧЁТНОЕ МЕСТО"
 
-msgid "battleRoyaleCarousel/hint"
-msgstr "ВЫБЕРИТЕ МАШИНУ ДЛЯ БЕСПЛАТНОГО ТЕСТ-ДРАЙВА"
-
 msgid "battleRoyaleCarousel/lockedToolTip/body"
 msgstr "Выберите одну из специальных машин режима «Стальной охотник»."
 
 msgid "battleRoyaleCarousel/lockedToolTip/header"
 msgstr "Неподходящая машина"
 
+msgid "battleTypeSelector/tab/hint"
+msgstr "Особые боевые задачи"
+
+msgid "battleTypeSelector/tab/platoon"
+msgstr "ВЗВОД С ДРУГОМ"
+
+msgid "battleTypeSelector/tab/randomPlatoon"
+msgstr "СЛУЧАЙНЫЙ ВЗВОД"
+
+msgid "battleTypeSelector/tab/solo"
+msgstr "ОДИНОЧНЫЙ БОЙ"
+
 msgid "button/modules"
 msgstr "ДЕРЕВО РАЗВИТИЯ"
 
-msgid "button/rent"
-msgstr "Арендовать на {days} дней"
-
 msgid "button/repair"
 msgstr "Ремонт"
-
-msgid "button/testDrive"
-msgstr "{days} день тест-драйва"
 
 msgid "commanderInfo/commonRank"
 msgstr "Командир"
@@ -449,15 +452,6 @@ msgstr ""
 msgid "intro/slide1/title"
 msgstr "НОВАЯ ТЕХНИКА"
 
-msgid "intro/slide2/text"
-msgstr ""
-"Техника доступна в аренду за стальные печати. Это специальная валюта, "
-"которую можно зарабатывать в режиме. Также у вас будет возможность бесплатно"
-" взять на 1 день тест-драйва каждый из танков."
-
-msgid "intro/slide2/title"
-msgstr "АРЕНДА МАШИН И ТЕСТ-ДРАЙВ"
-
 msgid "intro/slide3/text"
 msgstr ""
 "Добыча в зелёных дымах восстанавливает очки прочности, содержит заряд "
@@ -575,7 +569,7 @@ msgid "player_messages/moduleType/vehicleTurret"
 msgstr "Башня"
 
 msgid "playersPanel/title"
-msgstr "СОЮЗНИКИ"
+msgstr "КОМАНДА"
 
 msgid "postmortemPanel/firstTip/body"
 msgstr "Переключайтесь между машинами взвода."
@@ -779,7 +773,7 @@ msgid "statusNotificationTimers/deathZone"
 msgstr "Зона закрыта — срочно покиньте её, или вам конец!"
 
 msgid "statusNotificationTimers/deathZoneWarning"
-msgstr "Покиньте опасную зону!"
+msgstr "Зона скоро станет красной"
 
 msgid "statusNotificationTimers/fireCircle"
 msgstr "Мобильность снижена!"
@@ -886,6 +880,46 @@ msgstr "Запас прочности"
 msgid "techtree/turret_rotation_speed"
 msgstr "Скорость вращения"
 
+msgid "tooltip/battleTypeSelector/bonus"
+msgstr "+15%"
+
+msgid "tooltip/battleTypeSelector/tab/bonusDescription"
+msgstr ""
+"До %(experience)s опыта\n"
+"До %(credits)s кредитов"
+
+msgid "tooltip/battleTypeSelector/tab/bonusTitle/platoon"
+msgstr "Бонус за игру во взводе"
+
+msgid "tooltip/battleTypeSelector/tab/bonusTitle/randomPlatoon"
+msgstr "Бонус за игру во взводе"
+
+msgid "tooltip/battleTypeSelector/tab/description/platoon"
+msgstr ""
+"Сражение во взводе с другом. Командная работа против девяти взводов-"
+"соперников. В этом режиме выполняются взводные боевые задачи."
+
+msgid "tooltip/battleTypeSelector/tab/description/randomPlatoon"
+msgstr ""
+"Сражение во взводе со случайно подобранным союзником. Командная работа "
+"против девяти взводов-соперников. В этом режиме выполняются взводные боевые "
+"задачи. По завершении боя взвод будет автоматически расформирован."
+
+msgid "tooltip/battleTypeSelector/tab/description/solo"
+msgstr ""
+"Классический «Стальной охотник». Каждый игрок сражается сам за себя. "
+"Собирайте ресурсы, улучшайте свою технику и используйте её уникальные "
+"способности, чтобы остаться последним выжившим!"
+
+msgid "tooltip/battleTypeSelector/tab/title/platoon"
+msgstr "Взвод с другом"
+
+msgid "tooltip/battleTypeSelector/tab/title/randomPlatoon"
+msgstr "Случайный взвод"
+
+msgid "tooltip/battleTypeSelector/tab/title/solo"
+msgstr "Одиночный бой"
+
 msgid "tooltip/progression/leaderboardReward/battleTypesHeader/29"
 msgstr "В одиночку"
 
@@ -984,27 +1018,6 @@ msgstr "На что потратить"
 msgid "tooltips/brCoin/title"
 msgstr "Стальные печати"
 
-msgid "tooltips/rentIcon/rent/description"
-msgstr "Техника подходит только для боёв в режиме «Стальной охотник»"
-
-msgid "tooltips/rentIcon/rent/footer"
-msgstr "В аренде: {time}"
-
-msgid "tooltips/rentIcon/rent/title"
-msgstr "Аренда на {days} дней"
-
-msgid "tooltips/rentIcon/testDrive/description"
-msgstr "После периода тест-драйва машину можно будет арендовать платно."
-
-msgid "tooltips/rentIcon/testDrive/footer"
-msgstr "Тест-драйв: {time}"
-
-msgid "tooltips/rentIcon/testDrive/rentTime"
-msgstr "Аренда на {days} дней"
-
-msgid "tooltips/rentIcon/testDrive/title"
-msgstr "Бесплатный тест-драйв машины на 1 день"
-
 msgid "tooltips/respawnIcon/definition"
 msgstr "Заряд Возрождения можно получить при подборе Воздушного груза."
 
@@ -1043,28 +1056,8 @@ msgstr "Однократное использование"
 msgid "tooltips/respawnIcon/title"
 msgstr "Возрождение"
 
-msgid "tooltips/testDriveInfo/footer"
-msgstr ""
-"%(brown_Open)sСтальные печати%(brown_Close)s можно получить в боях и за "
-"выполнение боевых задач режима."
-
-msgid "tooltips/testDriveInfo/leftLabel"
-msgstr "{days} день тест-драйва"
-
-msgid "tooltips/testDriveInfo/rentFor"
-msgstr "Аренда на {days} дней"
-
-msgid "tooltips/testDriveInfo/rightLabel"
-msgstr "Последующая аренда на {days} дней"
-
-msgid "tooltips/testDriveInfo/title"
-msgstr "Бесплатный тест-драйв машины"
-
 msgid "tooltips/vehicle/description"
 msgstr "Машина режима «Стальной охотник»"
-
-msgid "tooltips/vehicle/status/notRented"
-msgstr "Не арендован"
 
 msgid "tournament/description"
 msgstr "БОЛЬШАЯ ОХОТА"
@@ -1132,15 +1125,6 @@ msgstr "Доступна новая башня"
 msgid "vehModuleConfigurator/delimiter"
 msgstr "ИЛИ"
 
-msgid "vehRentBlock/inBattle"
-msgstr "В бою"
-
-msgid "vehRentBlock/inRent"
-msgstr "В аренде"
-
-msgid "vehRentBlock/inTestDrive"
-msgstr "Тест-драйв"
-
 msgid "vehicleFeatures/spec/armor"
 msgstr "Бронирование"
 
@@ -1173,19 +1157,6 @@ msgstr "Сильные стороны"
 
 msgid "vehicleFeatures/subTitle/weak"
 msgstr "Слабые стороны"
-
-msgid "vehicleRentIsOk"
-msgstr ""
-"Аренда машины\n"
-"Получена машина %(vehicle)s в аренду. Количество дней аренды: %(days)s."
-
-msgid "vehicleRentNoMoney"
-msgstr "Не хватает средств для аренды машины %(vehicle)s."
-
-msgid "vehicleTestDriveIsOk"
-msgstr ""
-"Тест-драйв машины\n"
-"Получена машина %(vehicle)s для тест-драйва. Количество дней тест-драйва: %(days)s."
 
 msgid "widgetAlertMessageBlock/allPeripheriesHalt"
 msgstr "Режим прекращения огня на всех серверах. Бои начнутся через %(time)s"

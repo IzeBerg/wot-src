@@ -317,6 +317,10 @@ package
       
       public static const LOADING_BATTLETYPES_DESC_33:String = "#menu:loading/battleTypes/desc/33";
       
+      public static const LOADING_BATTLETYPES_34:String = "#menu:loading/battleTypes/34";
+      
+      public static const LOADING_BATTLETYPES_DESC_34:String = "#menu:loading/battleTypes/desc/34";
+      
       public static const LOADING_TEAM1:String = "#menu:loading/team1";
       
       public static const LOADING_TEAM2:String = "#menu:loading/team2";
@@ -2549,75 +2553,11 @@ package
       
       public static const TRADE_IN:String = "#menu:trade/in";
       
-      public static const BARRACKS_MENU_ROLEFILTER_TEXTFIELD:String = "#menu:barracks/menu/roleFilter/textfield";
-      
-      public static const BARRACKS_BTNBUYTANKMAN:String = "#menu:barracks/btnBuyTankman";
-      
-      public static const BARRACKS_BTNBUYBERTH:String = "#menu:barracks/btnBuyBerth";
-      
-      public static const BARRACKS_BTNBUYBERTHDECS:String = "#menu:barracks/btnBuyBerthDecs";
-      
-      public static const BARRACKS_MENU_ROLEFILTER_ALL:String = "#menu:barracks/menu/roleFilter/all";
-      
-      public static const BARRACKS_MENU_ROLEFILTER_COMMANDER:String = "#menu:barracks/menu/roleFilter/commander";
-      
-      public static const BARRACKS_MENU_ROLEFILTER_RADIOMAN:String = "#menu:barracks/menu/roleFilter/radioman";
-      
-      public static const BARRACKS_MENU_ROLEFILTER_GUNNER:String = "#menu:barracks/menu/roleFilter/gunner";
-      
-      public static const BARRACKS_MENU_ROLEFILTER_LOADER:String = "#menu:barracks/menu/roleFilter/loader";
-      
-      public static const BARRACKS_MENU_ROLEFILTER_DRIVER:String = "#menu:barracks/menu/roleFilter/driver";
-      
-      public static const BARRACKS_MENU_TANKTYPEFILTER_TEXTFIELD:String = "#menu:barracks/menu/tankTypeFilter/textfield";
-      
-      public static const BARRACKS_MENU_LOCATIONFILTER_TEXTFIELD:String = "#menu:barracks/menu/locationFilter/textfield";
-      
-      public static const BARRACKS_MENU_LOCATIONFILTER_TANKS:String = "#menu:barracks/menu/locationFilter/tanks";
-      
-      public static const BARRACKS_MENU_LOCATIONFILTER_BARRACKS:String = "#menu:barracks/menu/locationFilter/barracks";
-      
-      public static const BARRACKS_MENU_LOCATIONFILTER_BARRACKSANDTANKS:String = "#menu:barracks/menu/locationFilter/barracksAndTanks";
-      
-      public static const BARRACKS_MENU_LOCATIONFILTER_DISMISSED:String = "#menu:barracks/menu/locationFilter/dismissed";
-      
-      public static const BARRACKS_MENU_LOCATIONFILTER_NOTRECRUITED:String = "#menu:barracks/menu/locationFilter/notRecruited";
-      
-      public static const BARRACKS_DISMISSEDTANKMENCOUNT:String = "#menu:barracks/dismissedTankmenCount";
-      
-      public static const BARRACKS_TANKMENCOUNT:String = "#menu:barracks/tankmenCount";
-      
-      public static const BARRACKS_BTNRECRUIT:String = "#menu:barracks/btnRecruit";
-      
       public static const BARRACKS_NOTRECRUITEDACTIVATEBEFORE:String = "#menu:barracks/notRecruitedActivateBefore";
-      
-      public static const BARRACKS_PLACESCOUNT:String = "#menu:barracks/placesCount";
-      
-      public static const BARRACKS_NOTRECRUITEDCOUNT:String = "#menu:barracks/notRecruitedCount";
-      
-      public static const BARRACKS_RECOVERYCOUNT:String = "#menu:barracks/recoveryCount";
-      
-      public static const BARRACKS_BARRACKSRENDERER_PLACESCOUNT:String = "#menu:barracks/barracksRenderer/placesCount";
-      
-      public static const BARRACKS_BTNNEWPLACE:String = "#menu:barracks/btnNewPlace";
       
       public static const BARRACKS_BTNUNLOAD:String = "#menu:barracks/btnUnload";
       
       public static const BARRACKS_BTNDISSMISS:String = "#menu:barracks/btnDissmiss";
-      
-      public static const BARRACKS_BTNRECRUITNOTRECRUITED:String = "#menu:barracks/btnRecruitNotRecruited";
-      
-      public static const BARRACKS_BTNRECOVERY:String = "#menu:barracks/btnRecovery";
-      
-      public static const BARRACKS_NORECOVERYTANKMEN_TITLE:String = "#menu:barracks/noRecoveryTankmen/title";
-      
-      public static const BARRACKS_NORECOVERYTANKMEN_MESSAGE:String = "#menu:barracks/noRecoveryTankmen/message";
-      
-      public static const BARRACKS_NOFILTEREDRECOVERYTANKMEN_MESSAGE:String = "#menu:barracks/noFilteredRecoveryTankmen/message";
-      
-      public static const BARRACKS_NONOTRECRUITEDTANKMEN_TITLE:String = "#menu:barracks/noNotRecruitedTankmen/title";
-      
-      public static const BARRACKS_NONOTRECRUITEDTANKMEN_MESSAGE:String = "#menu:barracks/noNotRecruitedTankmen/message";
       
       public static const STORE_MENU_NOITEMS:String = "#menu:store/menu/noItems";
       
@@ -3043,6 +2983,8 @@ package
       
       public static const TRAINING_INVITATIONS_TITLE:String = "#menu:training/invitations/title";
       
+      public static const TRAINING_ALERTTEXT_ONLYTIERX:String = "#menu:training/alertText/onlyTierX";
+      
       public static const TANKMANRETRAININGBTN_FREE:String = "#menu:tankmanRetrainingBtn/free";
       
       public static const VEHICLESCAROUSEL_CONTEXTMENU_VEHICLEINFO:String = "#menu:vehiclesCarousel/contextMenu/vehicleInfo";
@@ -3269,10 +3211,6 @@ package
       
       public static const CONTEXTMENU_CREATECONTACTNOTE:String = "#menu:contextMenu/createContactNote";
       
-      public static const BATTLEROYALE_CONTEXTMENU_TAKETESTDRIVE:String = "#menu:battleRoyale/contextMenu/takeTestDrive";
-      
-      public static const BATTLEROYALE_CONTEXTMENU_TAKERENT:String = "#menu:battleRoyale/contextMenu/takeRent";
-      
       public static const CONTEXTMENU_EDITCONTACTNOTE:String = "#menu:contextMenu/editContactNote";
       
       public static const CONTEXTMENU_REMOVECONTACTNOTE:String = "#menu:contextMenu/removeContactNote";
@@ -3320,20 +3258,6 @@ package
       public static const STEAM_SUBMIT:String = "#menu:steam/submit";
       
       public static const STEAM_CANCEL:String = "#menu:steam/cancel";
-      
-      public static const SKILLDROPFORFREEWINDOW_ACTIONTIME_TITLE:String = "#menu:skillDropForFreeWindow/actionTime/title";
-      
-      public static const SKILLDROPFORFREEWINDOW_ACTIONTIME_DESCRIPTION:String = "#menu:skillDropForFreeWindow/actionTime/description";
-      
-      public static const SKILLDROPFORFREEWINDOW_DAYS:String = "#menu:skillDropForFreeWindow/days";
-      
-      public static const SKILLDROPFORFREEWINDOW_HOURS:String = "#menu:skillDropForFreeWindow/hours";
-      
-      public static const SKILLDROPFORFREEWINDOW_MINUTES:String = "#menu:skillDropForFreeWindow/minutes";
-      
-      public static const SKILLDROPFORFREEWINDOW_SECONDS:String = "#menu:skillDropForFreeWindow/seconds";
-      
-      public static const SKILLDROPFORFREEWINDOW_TIMER_TOOLTIP:String = "#menu:skillDropForFreeWindow/timer/tooltip";
       
       public static const CENTERISAVAILABLE:String = "#menu:centerIsAvailable";
       

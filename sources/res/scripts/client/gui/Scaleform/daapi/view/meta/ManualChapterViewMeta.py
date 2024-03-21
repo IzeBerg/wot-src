@@ -8,8 +8,8 @@ class ManualChapterViewMeta(View):
     def pageButtonClicked(self, pageType):
         self._printOverrideError('pageButtonClicked')
 
-    def bootcampHighlighted(self):
-        self._printOverrideError('bootcampHighlighted')
+    def buttonHighlighted(self):
+        self._printOverrideError('buttonHighlighted')
 
     def onPreviewClicked(self, videoUrl):
         self._printOverrideError('onPreviewClicked')

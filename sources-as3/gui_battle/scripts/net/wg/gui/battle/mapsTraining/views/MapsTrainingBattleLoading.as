@@ -3,11 +3,11 @@ package net.wg.gui.battle.mapsTraining.views
    import flash.display.MovieClip;
    import net.wg.data.constants.InvalidationType;
    import net.wg.gui.battle.battleloading.vo.VisualTipInfoVO;
+   import net.wg.gui.battle.eventBattle.views.loading.containers.LoadingContainer;
+   import net.wg.gui.battle.eventBattle.views.loading.containers.LoadingPageContainer;
+   import net.wg.gui.battle.eventBattle.views.loading.containers.StepperContainer;
+   import net.wg.gui.battle.eventBattle.views.loading.data.EventLoadingPageVO;
    import net.wg.gui.battle.mapsTraining.views.data.MapsTrainingBattleLoadingVO;
-   import net.wg.gui.bootcamp.containers.TutorialPageContainer;
-   import net.wg.gui.bootcamp.data.BCTutorialPageVO;
-   import net.wg.gui.bootcamp.introVideoPage.containers.LoadingContainer;
-   import net.wg.gui.bootcamp.introVideoPage.containers.StepperContainer;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.events.UILoaderEvent;
    import net.wg.infrastructure.base.meta.IMapsTrainingBattleLoadingMeta;
@@ -69,7 +69,7 @@ package net.wg.gui.battle.mapsTraining.views
       
       private var _data:MapsTrainingBattleLoadingVO = null;
       
-      private var _dataPage:Vector.<BCTutorialPageVO> = null;
+      private var _dataPage:Vector.<EventLoadingPageVO> = null;
       
       private var _stageWidth:int = 0;
       
@@ -77,13 +77,13 @@ package net.wg.gui.battle.mapsTraining.views
       
       private var _isMinResolution:Boolean = false;
       
-      private var _tutorialPageList:Vector.<TutorialPageContainer>;
+      private var _tutorialPageList:Vector.<LoadingPageContainer>;
       
       private var _picIndex:int = 0;
       
       public function MapsTrainingBattleLoading()
       {
-         this._tutorialPageList = new Vector.<TutorialPageContainer>();
+         this._tutorialPageList = new Vector.<LoadingPageContainer>();
          super();
       }
       
@@ -110,7 +110,7 @@ package net.wg.gui.battle.mapsTraining.views
       
       private function setTextsPosition() : void
       {
-         var _loc1_:TutorialPageContainer = null;
+         var _loc1_:LoadingPageContainer = null;
          var _loc2_:int = 0;
          var _loc3_:int = 0;
          if(this._tutorialPageList.length)
@@ -160,8 +160,8 @@ package net.wg.gui.battle.mapsTraining.views
       
       private function createImagesList() : void
       {
-         var _loc3_:BCTutorialPageVO = null;
-         var _loc4_:TutorialPageContainer = null;
+         var _loc3_:EventLoadingPageVO = null;
+         var _loc4_:LoadingPageContainer = null;
          if(this._tutorialPageList.length)
          {
             this.disposeBackgroundRenderers();
@@ -171,7 +171,7 @@ package net.wg.gui.battle.mapsTraining.views
          while(_loc2_ < _loc1_)
          {
             _loc3_ = this._dataPage[_loc2_];
-            _loc4_ = App.utils.classFactory.getComponent(_loc3_.rendererLinkage,TutorialPageContainer);
+            _loc4_ = App.utils.classFactory.getComponent(_loc3_.rendererLinkage,LoadingPageContainer);
             _loc4_.setData(_loc3_);
             this._tutorialPageList.push(_loc4_);
             _loc2_++;
@@ -207,7 +207,7 @@ package net.wg.gui.battle.mapsTraining.views
       
       private function disposeBackgroundRenderers() : void
       {
-         var _loc3_:TutorialPageContainer = null;
+         var _loc3_:LoadingPageContainer = null;
          var _loc1_:int = this._tutorialPageList.length;
          var _loc2_:int = 0;
          while(_loc2_ < _loc1_)
@@ -305,7 +305,7 @@ package net.wg.gui.battle.mapsTraining.views
          invalidateData();
       }
       
-      override protected function setDataPage(param1:Vector.<BCTutorialPageVO>) : void
+      override protected function setDataPage(param1:Vector.<EventLoadingPageVO>) : void
       {
          this._dataPage = param1;
          invalidateData();

@@ -23,6 +23,16 @@ package net.wg.data.constants.generated
       
       public static const MESSAGE_RESPAWN_NO_ICON_LINKAGE:String = "RespawnMessageNoIconUI";
       
+      public static const VOICE_DEFAULT:String = "default";
+      
+      public static const VOICE_ACTIVE:String = "active";
+      
+      public static const VOICE_MUTED:String = "mute";
+      
+      public static const VOICE_BLOCKED:String = "block";
+      
+      public static const VOICE_CHAT_DISABLED:String = "chat_disabled";
+      
       public static const RESPAWN_MESSAGE_LINKAGES:Array = [MESSAGE_TIMER_LINKAGE,MESSAGE_RESPAWN_AVAILABLE_LINKAGE,MESSAGE_RESPAWN_NOT_AVAILABLE_LINKAGE,MESSAGE_RESPAWN_NO_ICON_LINKAGE];
        
       

@@ -40,7 +40,7 @@ class TankmenVoiceoverView(ViewImpl):
 
     def _finalize(self):
         switchHangarOverlaySoundFilter(on=False)
-        self.soundManager.playInstantSound(BattlePassSounds.HOLIDAY_VOICEOVER_STOP if self.__battlePass.isHoliday() else BattlePassSounds.VOICEOVER_STOP)
+        self.soundManager.playInstantSound(self._getStopSound())
         super(TankmenVoiceoverView, self)._finalize()
 
     def _getEvents(self):
@@ -57,6 +57,11 @@ class TankmenVoiceoverView(ViewImpl):
           self.__battlePass.onExtraChapterExpired, self.__onBattlePassChange),
          (
           self.__battlePass.onEntitlementCacheUpdated, self.__fillModel))
+
+    def _getStopSound(self):
+        if self.__battlePass.isHoliday():
+            return BattlePassSounds.HOLIDAY_VOICEOVER_STOP
+        return BattlePassSounds.VOICEOVER_STOP
 
     def __close(self):
         if self.__backCallback is not None:

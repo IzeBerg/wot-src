@@ -18,10 +18,6 @@ class BattleRoyaleRequester(AbstractSyncDataRequester, IBattleRoyaleRequester):
         return self.getCacheValue('BRTotalKills', 0)
 
     @property
-    def testDriveExpired(self):
-        return self.getCacheValue('testDriveExpired', {})
-
-    @property
     def topCount(self):
         return self.getCacheValue('BRSoloTop1Count') + self.getCacheValue('BRSquadTop1Count')
 

@@ -27,6 +27,8 @@ package net.wg.gui.battle.views.staticMarkers.location
       
       private var _alwaysShowCreatorName:Boolean = false;
       
+      private var _dontHighlight:Boolean = false;
+      
       public function LocationMarker()
       {
          super();
@@ -67,7 +69,7 @@ package net.wg.gui.battle.views.staticMarkers.location
             this._wasReplied = param1 == ActionMarkerStates.REPLIED_ME || param1 == ActionMarkerStates.REPLIED_ALLY;
          }
          this.marker.highlightAnimation.visible = !this._wasReplied;
-         if(this._firstActiveState)
+         if(this._firstActiveState && !this._dontHighlight)
          {
             this.marker.highlightAnimation.play();
             this._firstActiveState = false;
@@ -82,6 +84,12 @@ package net.wg.gui.battle.views.staticMarkers.location
          }
          this._lastActiveState = param1;
          this.onShowExInfoHandler(null);
+      }
+      
+      public function stopAnimation() : void
+      {
+         this._dontHighlight = true;
+         this.marker.highlightAnimation.stop();
       }
       
       public function setCreator(param1:String) : void

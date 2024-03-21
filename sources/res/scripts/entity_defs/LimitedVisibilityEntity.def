@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Parent>EmptyEntity</Parent>
+	<Properties>
+		<team>
+			<Type>UINT8</Type>
+			<Flags>CELL_PRIVATE</Flags>
+		</team>
+		<vehicleIDs>
+			<Type>
+				ARRAY
+				<of>OBJECT_ID</of>
+			</Type>
+			<Flags>CELL_PRIVATE</Flags>
+		</vehicleIDs>
+	</Properties>
+</root>

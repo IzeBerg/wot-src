@@ -28,6 +28,8 @@ class CONDITION_TYPE(object):
      GAME_ITEM_RELATE_STATE, VAR_DEFINED, VAR_COMPARE, EFFECT_TRIGGERED,
      SERVICE, COMPONENT_ON_SCENE, CURRENT_SCENE, VIEW_PRESENT,
      CONNECTED_ITEM, CONDITION_AND, CONDITION_OR, CLASS_CONDITION)
+    COMPLEX = (
+     CONDITION_AND, CONDITION_OR)
 
 
 @functools.total_ordering
@@ -283,3 +285,17 @@ class Conditions(list):
 
         while self:
             self.pop()
+
+    def getUnwrappedConditions(self):
+        return Conditions.__unwrapComplexConditions(self)
+
+    @staticmethod
+    def __unwrapComplexConditions(conditions):
+        result = []
+        for condition in conditions:
+            if condition.getType() in CONDITION_TYPE.COMPLEX:
+                result.extend(Conditions.__unwrapComplexConditions(condition.getConditionList()))
+            else:
+                result.append(condition)
+
+        return result

@@ -87,6 +87,18 @@ def main(text):
     return _formatText('mainText', text)
 
 
+def linkText(text):
+    return _formatText('linkText', text)
+
+
+def earningsInformation(text):
+    return _formatText('earningsInformation', text)
+
+
+def goldColor(text):
+    return _formatText('goldColor', text)
+
+
 def mainSmall(text):
     return _formatText('mainTextSmall', text)
 

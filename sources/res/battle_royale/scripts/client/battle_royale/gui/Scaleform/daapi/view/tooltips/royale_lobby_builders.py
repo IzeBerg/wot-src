@@ -1,7 +1,6 @@
 from battle_royale.gui.Scaleform.daapi.view.lobby.tooltips.respawn_tooltip import RespawnTooltipData
 from battle_royale.gui.impl.lobby.tooltips.br_coin_tooltip_view import BrCoinTooltipView
 from battle_royale.gui.impl.lobby.tooltips.vehicle_tooltip_view import VehicleTooltipView
-from battle_royale.gui.shared.tooltips import contexts as brContexts
 from frameworks.wulf import WindowLayer
 from battle_royale.gui.Scaleform.daapi.view.lobby.tooltips import BattleProgressionTooltipData, EquipmentsTooltipData
 from battle_royale.gui.Scaleform.daapi.view.lobby.tooltips.perf_attention_tooltip import PerfAttentionSimpleTooltip, PerfAttentionAdvancedTooltip
@@ -28,7 +27,7 @@ def getTooltipBuilders():
      DataBuilder(TOOLTIPS_CONSTANTS.BATTLE_ROYALE_PERF_ADVANCED, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI, PerfAttentionAdvancedTooltip(contexts.ToolTipContext(None))),
      DataBuilder(TOOLTIPS_CONSTANTS.BATTLE_ROYALE_SELECTOR_INFO, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI, BattleRoyaleSelectorTooltip(contexts.ToolTipContext(None))),
      DataBuilder(TOOLTIPS_CONSTANTS.BATTLE_ROYALE_COMPLETED_QUESTS_INFO, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI, BattleRoyaleQuestsTooltip(contexts.QuestsBoosterContext())),
-     TooltipWindowBuilder(TOOLTIPS_CONSTANTS.BATTLE_ROYALE_VEHICLE, None, VehiclePointsTooltipContentWindowData(brContexts.BattleRoyaleCarouselContext())),
+     TooltipWindowBuilder(TOOLTIPS_CONSTANTS.BATTLE_ROYALE_VEHICLE, None, VehiclePointsTooltipContentWindowData(contexts.InventoryContext())),
      DataBuilder(TOOLTIPS_CONSTANTS.BATTLE_ROYALE_SELECTOR_CALENDAR_INFO, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI, BattleRoyaleCalendarExtendedTooltip(contexts.ToolTipContext(None))),
      TooltipWindowBuilder(TOOLTIPS_CONSTANTS.BATTLE_ROYALE_PROXY_CURRENCY, None, BrCoinTooltipViewTooltipWindowData(contexts.ToolTipContext(None))))
 

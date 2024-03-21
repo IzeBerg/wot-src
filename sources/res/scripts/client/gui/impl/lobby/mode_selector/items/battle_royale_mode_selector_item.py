@@ -1,6 +1,4 @@
-from gui import GUI_SETTINGS
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
-from gui.Scaleform.locale.EPIC_BATTLE import EPIC_BATTLE
 from gui.impl import backport
 from gui.impl.backport.backport_tooltip import createAndLoadBackportTooltipWindow
 from gui.impl.gen import R
@@ -13,6 +11,7 @@ from gui.impl.lobby.mode_selector.items.items_constants import ModeSelectorRewar
 from helpers import dependency, time_utils
 from skeletons.gui.game_control import IBattleRoyaleController
 from battle_royale_progression.skeletons.game_controller import IBRProgressionOnTokensController
+from gui.shared.formatters import time_formatters
 
 class BattleRoyaleModeSelectorItem(ModeSelectorLegacyItem):
     __slots__ = ()
@@ -32,8 +31,8 @@ class BattleRoyaleModeSelectorItem(ModeSelectorLegacyItem):
     def getExtendedCalendarTooltip(self, parentWindow):
         return createAndLoadBackportTooltipWindow(parentWindow, tooltipId=TOOLTIPS_CONSTANTS.BATTLE_ROYALE_SELECTOR_CALENDAR_INFO, isSpecial=True, specialArgs=(None, ))
 
-    def _urlProcessing(self, url):
-        return GUI_SETTINGS.checkAndReplaceWebBridgeMacros(url)
+    def handleInfoPageClick(self):
+        self.__battleRoyaleController.openInfoPageWindow(True)
 
     def _onInitializing(self):
         ModeSelectorLegacyItem._onInitializing(self)
@@ -44,12 +43,14 @@ class BattleRoyaleModeSelectorItem(ModeSelectorLegacyItem):
         self.brProgression.onProgressPointsUpdated += self.__fillWidgetData
         self.brProgression.onSettingsChanged += self.__fillWidgetData
         self.__onUpdate()
+        self.__battleRoyaleController.onStatusTick += self.__onTimerTick
 
     def _onDisposing(self):
         self.__battleRoyaleController.onPrimeTimeStatusUpdated -= self.__onUpdate
         self.__battleRoyaleController.onUpdated -= self.__onUpdate
         self.brProgression.onProgressPointsUpdated -= self.__fillWidgetData
         self.brProgression.onSettingsChanged -= self.__fillWidgetData
+        self.__battleRoyaleController.onStatusTick -= self.__onTimerTick
         super(BattleRoyaleModeSelectorItem, self)._onDisposing()
 
     def _getIsDisabled(self):
@@ -59,6 +60,10 @@ class BattleRoyaleModeSelectorItem(ModeSelectorLegacyItem):
 
     def _isInfoIconVisible(self):
         return True
+
+    def __onTimerTick(self):
+        self.__onUpdate()
+        self.onCardChange()
 
     def __onUpdate(self, *_):
         self.__fillViewModel()
@@ -73,7 +78,7 @@ class BattleRoyaleModeSelectorItem(ModeSelectorLegacyItem):
             self.__resetViewModel(vm)
             if season.hasActiveCycle(currTime):
                 if self.__battleRoyaleController.isEnabled():
-                    timeLeftStr = time_utils.getTillTimeString(season.getCycleEndDate() - currTime, EPIC_BATTLE.STATUS_TIMELEFT, removeLeadingZeros=True)
+                    timeLeftStr = time_formatters.getTillTimeByResource(max(0, season.getCycleEndDate() - currTime), R.strings.menu.Time.timeLeftShort, removeLeadingZeros=True)
                     vm.setTimeLeft(timeLeftStr)
                     self._addReward(ModeSelectorRewardID.CREDITS)
                     self._addReward(ModeSelectorRewardID.OTHER)

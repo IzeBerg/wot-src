@@ -13,7 +13,7 @@ from gui.vehicle_view_states import createState4CurrentVehicle
 from helpers import dependency
 from items.vehicles import VehicleDescr
 from helpers import isPlayerAccount, i18n
-from account_helpers.AccountSettings import AccountSettings, BOOTCAMP_VEHICLE, CURRENT_VEHICLE, ROYALE_VEHICLE
+from account_helpers.AccountSettings import AccountSettings, CURRENT_VEHICLE, ROYALE_VEHICLE
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.shared.utils.requesters import REQ_CRITERIA
 from gui.shared.formatters import icons
@@ -24,7 +24,7 @@ from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.genConsts.VEHPREVIEW_CONSTANTS import VEHPREVIEW_CONSTANTS
 from shared_utils import first
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IIGRController, IRentalsController, IBootcampController, IBattleRoyaleController, IBattleRoyaleTournamentController, IFunRandomController
+from skeletons.gui.game_control import IIGRController, IRentalsController, IBattleRoyaleController, IBattleRoyaleTournamentController, IFunRandomController
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 from skeletons.gui.shared.utils import IHangarSpace
@@ -128,7 +128,6 @@ class _CurrentVehicle(_CachedVehicle):
     rentals = dependency.descriptor(IRentalsController)
     battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
     battleRoyaleTounamentController = dependency.descriptor(IBattleRoyaleTournamentController)
-    bootcampController = dependency.descriptor(IBootcampController)
     funRandomController = dependency.descriptor(IFunRandomController)
 
     def __init__(self):
@@ -138,7 +137,7 @@ class _CurrentVehicle(_CachedVehicle):
     def init(self):
         super(_CurrentVehicle, self).init()
         prbVehicle = self.__checkPrebattleLockedVehicle()
-        storedVehInvID = AccountSettings.getFavorites(BOOTCAMP_VEHICLE if self.isInBootcamp() else CURRENT_VEHICLE)
+        storedVehInvID = AccountSettings.getFavorites(CURRENT_VEHICLE)
         self.selectVehicle(prbVehicle or storedVehInvID)
         self.__updateBattleRoyaleData()
 
@@ -179,8 +178,6 @@ class _CurrentVehicle(_CachedVehicle):
             return
         else:
             if self.isPresent() and self.isInHangar() and self.item.modelState:
-                if self.isInBootcamp():
-                    outfit = self.bootcampController.getBootcampOutfit(self.item.descriptor) or outfit
                 self.hangarSpace.startToUpdateVehicle(self.item, outfit)
             else:
                 self.hangarSpace.removeVehicle()
@@ -289,9 +286,6 @@ class _CurrentVehicle(_CachedVehicle):
     def isOnlyForBattleRoyaleBattles(self):
         return self.isPresent() and self.item.isOnlyForBattleRoyaleBattles
 
-    def isInBootcamp(self):
-        return bool(self.bootcampController.isInBootcamp())
-
     def isAlive(self):
         return self.isPresent() and self.item.isAlive
 
@@ -399,8 +393,6 @@ class _CurrentVehicle(_CachedVehicle):
         self.__vehInvID = vehInvID
         if self.isOnlyForBattleRoyaleBattles():
             AccountSettings.setFavorites(ROYALE_VEHICLE, vehInvID)
-        elif self.isInBootcamp():
-            AccountSettings.setFavorites(BOOTCAMP_VEHICLE, vehInvID)
         else:
             AccountSettings.setFavorites(CURRENT_VEHICLE, vehInvID)
         self.refreshModel()

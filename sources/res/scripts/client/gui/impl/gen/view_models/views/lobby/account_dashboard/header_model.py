@@ -1,14 +1,5 @@
-from enum import Enum
 from gui.impl.gen import R
 from frameworks.wulf import ViewModel
-
-class AccountInfoStateEnum(Enum):
-    RENAMEAVAILABLE = 'renameAvailable'
-    RENAMEDISABLED = 'renameDisabled'
-    RENAMEINPROGRESS = 'renameInProgress'
-    EMAILPENDING = 'emailPending'
-    COMPLETED = 'completed'
-
 
 class HeaderModel(ViewModel):
     __slots__ = ('onShowBadges', 'onAccountInfoButtonClick')
@@ -70,11 +61,11 @@ class HeaderModel(ViewModel):
     def setIsTeamKiller(self, value):
         self._setBool(8, value)
 
-    def getAccountInfoState(self):
-        return AccountInfoStateEnum(self._getString(9))
+    def getIsEmailPending(self):
+        return self._getBool(9)
 
-    def setAccountInfoState(self, value):
-        self._setString(9, value.value)
+    def setIsEmailPending(self, value):
+        self._setBool(9, value)
 
     def getEmailButtonLabel(self):
         return self._getResource(10)
@@ -93,7 +84,7 @@ class HeaderModel(ViewModel):
         self._addStringProperty('clanDescription', '')
         self._addStringProperty('clanIcon', '')
         self._addBoolProperty('isTeamKiller', False)
-        self._addStringProperty('accountInfoState')
+        self._addBoolProperty('isEmailPending', False)
         self._addResourceProperty('emailButtonLabel', R.invalid())
         self.onShowBadges = self._addCommand('onShowBadges')
         self.onAccountInfoButtonClick = self._addCommand('onAccountInfoButtonClick')

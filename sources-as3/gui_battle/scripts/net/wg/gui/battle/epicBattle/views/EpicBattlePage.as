@@ -28,7 +28,6 @@ package net.wg.gui.battle.epicBattle.views
    import net.wg.gui.battle.views.epicRespawnView.events.EpicRespawnEvent;
    import net.wg.gui.battle.views.epicScorePanel.EpicScorePanel;
    import net.wg.gui.battle.views.epicScorePanel.events.EpicScorePanelEvent;
-   import net.wg.gui.battle.views.epicSpectatorView.EpicSpectatorView;
    import net.wg.gui.battle.views.minimap.EpicMinimap;
    import net.wg.gui.battle.views.minimap.constants.MinimapSizeConst;
    import net.wg.gui.battle.views.minimap.events.MinimapEvent;
@@ -135,8 +134,6 @@ package net.wg.gui.battle.epicBattle.views
       
       public var epicScorePanelUI:EpicScorePanel = null;
       
-      public var epicSpectatorViewUI:EpicSpectatorView = null;
-      
       public var epicRespawnView:EpicRespawnView = null;
       
       public var epicDeploymentMap:EpicDeploymentMap = null;
@@ -179,14 +176,11 @@ package net.wg.gui.battle.epicBattle.views
          this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
       }
       
-      override public function as_setPostmortemTipsVisible(param1:Boolean) : void
-      {
-      }
-      
       override public function updateStage(param1:Number, param2:Number) : void
       {
+         var _loc3_:Number = NaN;
          super.updateStage(param1,param2);
-         var _loc3_:Number = param1 >> 1;
+         _loc3_ = param1 >> 1;
          _originalWidth = param1;
          _originalHeight = param2;
          this.upgradePanel.x = _loc3_;
@@ -240,7 +234,6 @@ package net.wg.gui.battle.epicBattle.views
          {
             this.epicScorePanelUI.updateStage(param1,param2);
          }
-         this.epicSpectatorViewUI.updateStage(param1,param2);
          this.epicRespawnView.updateStage(param1,param2);
          this.epicRespawnView.isVehPostProgressionEnabled = this._isVehPostProgressionEnabled;
          this.epicDeploymentMap.updateStagePosition(param1,param2);
@@ -311,7 +304,6 @@ package net.wg.gui.battle.epicBattle.views
          registerComponent(this.epicDeploymentMap,BATTLE_VIEW_ALIASES.EPIC_DEPLOYMENT_MAP);
          registerComponent(this.epicOverviewMapScreen,BATTLE_VIEW_ALIASES.EPIC_OVERVIEW_MAP_SCREEN);
          registerComponent(this.epicMissionsPanel,BATTLE_VIEW_ALIASES.EPIC_MISSIONS_PANEL);
-         registerComponent(this.epicSpectatorViewUI,BATTLE_VIEW_ALIASES.EPIC_SPECTATOR_VIEW);
          registerComponent(this.epicReinforcementPanel,BATTLE_VIEW_ALIASES.EPIC_REINFORCEMENT_PANEL);
          registerComponent(this.recoveryPanel,BATTLE_VIEW_ALIASES.RECOVERY_PANEL);
          registerComponent(this.superPlatoonPanel,BATTLE_VIEW_ALIASES.SUPER_PLATOON_PANEL);
@@ -371,7 +363,6 @@ package net.wg.gui.battle.epicBattle.views
          this.battleDamageLogPanel = null;
          this.epicRespawnView = null;
          this.epicScorePanelUI = null;
-         this.epicSpectatorViewUI = null;
          this.epicDeploymentMap = null;
          this.epicOverviewMapScreen = null;
          this.modificationPanel = null;

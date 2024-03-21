@@ -2382,7 +2382,7 @@ RECORDS = (
  (
   'singleAchievements', 'february24', 'p', 'B', 1),
  (
-  'singleAchievements', 'prime_gaming_reserved_17', 'p', 'B', 1),
+  'singleAchievements', 'march24', 'p', 'B', 1),
  (
   'singleAchievements', 'prime_gaming_reserved_18', 'p', 'B', 1),
  (
@@ -3288,7 +3288,23 @@ RECORDS = (
  (
   'singleAchievements', 'comp7_3_2', 'p', 'B', 1),
  (
-  'singleAchievements', 'BattlePassCommonPr_NY24', 'p', 'B', 1))
+  'singleAchievements', 'BattlePassCommonPr_NY24', 'p', 'B', 1),
+ (
+  'singleAchievements', 'BattlePassCommonPr_13', 'p', 'B', 1),
+ (
+  'singleAchievements', 'comp7_3_3', 'p', 'B', 1),
+ (
+  'singleAchievements', 'comp7_3_yearly_iron', 'p', 'B', 1),
+ (
+  'singleAchievements', 'comp7_3_yearly_bronze', 'p', 'B', 1),
+ (
+  'singleAchievements', 'comp7_3_yearly_silver', 'p', 'B', 1),
+ (
+  'singleAchievements', 'comp7_3_yearly_gold', 'p', 'B', 1),
+ (
+  'singleAchievements', 'comp7_3_yearly_champion', 'p', 'B', 1),
+ (
+  'singleAchievements', 'comp7_3_yearly_legend', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4810,7 +4826,7 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'december23'): 1794, 
    ('singleAchievements', 'january24'): 1795, 
    ('singleAchievements', 'february24'): 1796, 
-   ('singleAchievements', 'prime_gaming_reserved_17'): 1797, 
+   ('singleAchievements', 'march24'): 1797, 
    ('singleAchievements', 'prime_gaming_reserved_18'): 1798, 
    ('singleAchievements', 'prime_gaming_reserved_19'): 1799, 
    ('singleAchievements', 'prime_gaming_reserved_20'): 1800, 
@@ -4934,7 +4950,15 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'NY24_CelebChallenge'): 1920, 
    ('singleAchievements', 'NY24_AtmsphrLevel'): 1921, 
    ('singleAchievements', 'comp7_3_2'): 1922, 
-   ('singleAchievements', 'BattlePassCommonPr_NY24'): 1923}
+   ('singleAchievements', 'BattlePassCommonPr_NY24'): 1923, 
+   ('singleAchievements', 'BattlePassCommonPr_13'): 1924, 
+   ('singleAchievements', 'comp7_3_3'): 1925, 
+   ('singleAchievements', 'comp7_3_yearly_iron'): 1926, 
+   ('singleAchievements', 'comp7_3_yearly_bronze'): 1927, 
+   ('singleAchievements', 'comp7_3_yearly_silver'): 1928, 
+   ('singleAchievements', 'comp7_3_yearly_gold'): 1929, 
+   ('singleAchievements', 'comp7_3_yearly_champion'): 1930, 
+   ('singleAchievements', 'comp7_3_yearly_legend'): 1931}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

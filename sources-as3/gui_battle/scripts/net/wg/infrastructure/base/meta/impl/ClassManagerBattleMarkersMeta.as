@@ -36,6 +36,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.DamageLabel;
    import net.wg.gui.battle.views.vehicleMarkers.FlagContainer;
    import net.wg.gui.battle.views.vehicleMarkers.FortConsumablesMarker;
+   import net.wg.gui.battle.views.vehicleMarkers.GoalFlagMarker;
    import net.wg.gui.battle.views.vehicleMarkers.HPFieldContainer;
    import net.wg.gui.battle.views.vehicleMarkers.HealthBar;
    import net.wg.gui.battle.views.vehicleMarkers.HealthBarAnimatedLabel;
@@ -149,6 +150,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_FLAGCONTAINER:Class = FlagContainer;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_FORTCONSUMABLESMARKER:Class = FortConsumablesMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_GOALFLAGMARKER:Class = GoalFlagMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_HEALTHBAR:Class = HealthBar;
       

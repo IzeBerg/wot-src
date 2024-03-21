@@ -146,7 +146,14 @@ package net.wg.gui.lobby.badges
             this.slotCloseBtn.visible = this._hasSelectedBadge;
             invalidateLayout();
          }
-         if(this._suffixData != null && isInvalid(INV_SUFFIX_DATA))
+         if(this._suffixData != null && this._suffixData.items.length == 0)
+         {
+            this.suffixBadgeStrip.visible = false;
+            this.suffixBadgeImg.visible = false;
+            this.descrTf.visible = true;
+            this.suffixSetting.visible = false;
+         }
+         else if(this._suffixData != null && isInvalid(INV_SUFFIX_DATA))
          {
             _loc2_ = this._suffixData.items[this._suffixData.selectedItemIdx];
             this._suffixBadgeImg = _loc2_.img;

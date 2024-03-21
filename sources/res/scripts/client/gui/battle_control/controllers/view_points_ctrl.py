@@ -47,6 +47,12 @@ class ViewPointsController(IViewPointsController):
         self.__doSelect(False, vehicleID)
         return
 
+    def unselectVehicle(self):
+        self.__currentViewPointID = None
+        self.__currentVehicleID = 0
+        BigWorld.player().positionControl.switchViewpoint(False, 0)
+        return
+
     def selectViewPoint(self, pointID):
         self.__doSelect(True, pointID)
 

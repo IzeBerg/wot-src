@@ -33,9 +33,9 @@ from skeletons.gui.offers import IOffersDataProvider
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 if TYPE_CHECKING:
-    from typing import Callable, List, Optional, Any, Union
+    from typing import Callable, List, Optional, Any, Union, Dict
     from account_helpers.offers.events_data import OfferEventData
-    from gui.goodies.goodie_items import Booster
+    from gui.goodies.goodie_items import Booster, DemountKit
     from gui.server_events.bonuses import SimpleBonus, CrystalBonus, GoodiesBonus, PlusPremiumDaysBonus, EpicSelectTokensBonus, X5BattleTokensBonus, X3CrewTokensBonus
     from gui.server_events.cond_formatters.formatters import ConditionFormatter
     from gui.shared.gui_items.crew_book import CrewBook
@@ -374,7 +374,7 @@ def formatTimeLabel(hours):
     return str(int(time)) + ' ' + timeMetric
 
 
-_PreformattedBonus = namedtuple('_PreformattedBonus', 'bonusName label userName images tooltip labelFormatter areTokensPawned specialArgs specialAlias isSpecial isCompensation align highlightType overlayType highlightIcon overlayIcon compensationReason postProcessTags')
+_PreformattedBonus = namedtuple('_PreformattedBonus', 'bonusName label userName images tooltip labelFormatter areTokensPawned specialArgs specialAlias isSpecial isCompensation align highlightType overlayType highlightIcon overlayIcon compensationReason postProcessTags isWulfTooltip')
 
 class PostProcessTags(CONST_CONTAINER):
     IS_SUFFIX_BADGE = 'isSuffixBadge'
@@ -417,7 +417,7 @@ class PreformattedBonus(_PreformattedBonus):
 
 PreformattedBonus.__new__.__defaults__ = (
  None, None, None, None, None, None, False, None, None,
- False, False, LABEL_ALIGN.CENTER, None, None, None, None, None, tuple())
+ False, False, LABEL_ALIGN.CENTER, None, None, None, None, None, tuple(), False)
 
 class QuestsBonusComposer(object):
 
@@ -1416,8 +1416,8 @@ class GoodiesBonusFormatter(SimpleBonusFormatter):
         result = []
         for booster, count in bonus.getBoosters().iteritems():
             if booster is not None:
-                result.append(PreformattedBonus(bonusName=bonus.getName(), images=self._getImages(booster), isSpecial=True, label=formatCountLabel(count), labelFormatter=self._getLabelFormatter(bonus), userName=self._getUserName(booster), specialAlias=TOOLTIPS_CONSTANTS.SHOP_BOOSTER, specialArgs=[
-                 booster.boosterID], align=LABEL_ALIGN.RIGHT, isCompensation=self._isCompensation(bonus)))
+                result.append(PreformattedBonus(bonusName=bonus.getName(), images=self._getImages(booster), isSpecial=False, label=formatCountLabel(count), labelFormatter=self._getLabelFormatter(bonus), userName=self._getUserName(booster), specialArgs=[
+                 booster.boosterID], align=LABEL_ALIGN.RIGHT, isCompensation=self._isCompensation(bonus), tooltip=TOOLTIPS_CONSTANTS.SHOP_BOOSTER, isWulfTooltip=True))
 
         for demountKit, count in bonus.getDemountKits().iteritems():
             if demountKit is not None:

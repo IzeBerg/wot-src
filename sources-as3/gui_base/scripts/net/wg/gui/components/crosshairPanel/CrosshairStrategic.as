@@ -46,5 +46,13 @@ package net.wg.gui.components.crosshairPanel
       {
          this.scaleWidget.visible = param1;
       }
+      
+      override public function setAverageDamage(param1:String) : void
+      {
+      }
+      
+      override public function clearAverageDamage(param1:Boolean) : void
+      {
+      }
    }
 }

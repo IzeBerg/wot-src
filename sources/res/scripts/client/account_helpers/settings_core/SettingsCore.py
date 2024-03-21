@@ -137,7 +137,7 @@ class SettingsCore(ISettingsCore):
           options.HangarCamParallaxEnabledSetting(GAME.HANGAR_CAM_PARALLAX_ENABLED, storage=EXTENDED_GAME_SETTINGS_STORAGE)),
          (
           GAME.ENABLE_SERVER_AIM,
-          options.StorageAccountSetting(GAME.ENABLE_SERVER_AIM, storage=GAME_SETTINGS_STORAGE)),
+          options.StorageAccountSetting(GAME.ENABLE_SERVER_AIM, storage=EXTENDED_GAME_2_SETTINGS_STORAGE)),
          (
           GAME.SHOW_DAMAGE_ICON,
           options.ShowDamageIconSetting(GAME.SHOW_DAMAGE_ICON, storage=GAME_SETTINGS_STORAGE)),
@@ -153,8 +153,8 @@ class SettingsCore(ISettingsCore):
           GAME.MINIMAP_ALPHA,
           options.StorageAccountSetting(GAME.MINIMAP_ALPHA, storage=GAME_SETTINGS_STORAGE)),
          (
-          GAME.ENABLE_POSTMORTEM_DELAY,
-          options.PostMortemDelaySetting(GAME.ENABLE_POSTMORTEM_DELAY, storage=GAME_SETTINGS_STORAGE)),
+          GAME.POSTMORTEM_MODE,
+          options.PostMortemModeSetting(GAME.POSTMORTEM_MODE, storage=GAME_SETTINGS_STORAGE)),
          (
           GAME.SHOW_VEHICLES_COUNTER,
           options.StorageAccountSetting(GAME.SHOW_VEHICLES_COUNTER, storage=GAME_SETTINGS_STORAGE)),
@@ -474,6 +474,8 @@ class SettingsCore(ISettingsCore):
          (
           CONTROLS.MOUSE_ASSIST_AIM_SENS,
           options.MouseSensitivitySetting('arty', masterSwitch='spgAlternativeAimingCameraEnabled')),
+         (
+          CONTROLS.MOUSE_FREECAM_SENS, options.MouseSensitivitySetting('deathfreecam')),
          (
           CONTROLS.MOUSE_HORZ_INVERSION,
           options.MouseInversionSetting(CONTROLS.MOUSE_HORZ_INVERSION, 'horzInvert', storage=CONTROLS_SETTINGS_STORAGE)),

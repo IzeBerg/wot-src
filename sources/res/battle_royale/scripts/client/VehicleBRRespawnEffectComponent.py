@@ -1,6 +1,4 @@
-import CGF
-from Math import Vector3
-import Event
+import CGF, GenericComponents, Event
 from helpers import dependency
 from script_component.DynamicScriptComponent import DynamicScriptComponent
 from skeletons.dynamic_objects_cache import IBattleDynamicObjectsCache
@@ -17,4 +15,6 @@ class VehicleBRRespawnEffectComponent(DynamicScriptComponent):
 
     def __playEffect(self):
         prefabPath = self.__dynObjectsCache.getConfig(self.__sessionProvider.arenaVisitor.getArenaGuiType()).getVehicleRespawnEffect().effectPrefabPath
-        CGF.loadGameObjectIntoHierarchy(prefabPath, self.entity.entityGameObject, Vector3(0))
+        vehGO = self.entity.entityGameObject
+        transformComponent = vehGO.findComponentByType(GenericComponents.TransformComponent)
+        CGF.loadGameObject(prefabPath, vehGO.spaceID, transformComponent.worldPosition)

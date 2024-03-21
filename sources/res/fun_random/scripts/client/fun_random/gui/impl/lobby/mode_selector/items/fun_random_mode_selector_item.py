@@ -76,7 +76,7 @@ class FunRandomSelectorItem(ModeSelectorLegacyItem, FunAssetPacksMixin, FunSubMo
         super(FunRandomSelectorItem, self)._onDisposing()
 
     def __getStatusText(self, status):
-        if not self._bootcamp.isInBootcamp() and status.state in FunSubModesState.BEFORE_STATES:
+        if status.state in FunSubModesState.BEFORE_STATES:
             return backport.text(R.strings.fun_random.modeSelector.notStarted())
         return ''
 

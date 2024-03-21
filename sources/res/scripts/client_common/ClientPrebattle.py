@@ -137,9 +137,13 @@ class ClientPrebattle(object):
         self.onPropertiesReceived()
 
     def __onPropertyUpdated(self, argStr):
-        name, value = cPickle.loads(argStr)
-        self.properties[name] = value
-        self.onPropertyUpdated(name)
+        if self.properties is None:
+            return
+        else:
+            name, value = cPickle.loads(argStr)
+            self.properties[name] = value
+            self.onPropertyUpdated(name)
+            return
 
     def __onKickedFromQueue(self, argStr):
         self.onKickedFromQueue()

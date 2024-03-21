@@ -10,6 +10,7 @@ from dossiers2.custom.records import RECORD_DB_IDS
 from items import vehicles
 from optional_bonuses import StripVisitor
 from battle_results import getBattleResultsNames
+from realm_utils import isFileWithRealm, getRealmFilePath, isFileWithCurrentRealm
 _WEEKDAYS = {'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thu': 4, 'Fri': 5, 'Sat': 6, 'Sun': 7}
 _YEAR = 31556926
 MAX_BONUS_LIMIT = 1000000
@@ -371,12 +372,12 @@ class Source(object):
            'daily': self.__readCondition_true, 
            'weekly': self.__readCondition_true, 
            'bonusLimit': self.__readCondition_int, 
-           'isTutorialCompleted': self.__readCondition_bool, 
            'isBattleMattersEnabled': self.__readCondition_bool, 
            'isWinbackQuestsEnabled': self.__readCondition_bool, 
            'isSteamAllowed': self.__readCondition_bool, 
            'totalBattles': self.__readBattleResultsConditionList, 
            'lastLogout': self.__readBattleResultsConditionList, 
+           'noviceType': self.__readBattleResultsConditionList, 
            'relativeToUTC': self.__readBattleResultsConditionList, 
            'accountPrimaryTypes': self.__readListOfInts, 
            'accountSecondaryTypes': self.__readListOfInts, 
@@ -864,7 +865,8 @@ def collectSections(root):
         for k, s in pqSection.items():
             sectionPath = root + '/' + k
             if k.endswith('.xml'):
-                sections.append(sectionPath)
+                if isFileWithCurrentRealm(k) or not isFileWithRealm(k) and not pqSection.has_key(getRealmFilePath(k)):
+                    sections.append(sectionPath)
             elif s is not None:
                 sections.extend(collectSections(sectionPath))
 

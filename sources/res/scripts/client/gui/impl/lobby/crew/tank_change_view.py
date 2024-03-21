@@ -23,7 +23,7 @@ from helpers import dependency
 from skeletons.gui.game_control import IPlatoonController
 from skeletons.gui.game_control import IRestoreController
 from skeletons.gui.shared import IItemsCache
-from uilogging.crew.logging_constants import CrewTankChangeKeys
+from uilogging.crew.logging_constants import CrewTankChangeKeys, CrewViewKeys
 
 class TankChangeView(BaseCrewView):
     __slots__ = ('__dataProvider', '__filterState', '__tankman', '__vehicle', '__selectedTmanInvID',
@@ -137,7 +137,10 @@ class TankChangeView(BaseCrewView):
 
     def _onClose(self, params=None):
         self._logClose(params)
-        self._onBack(False)
+        if self.isPersonalFileOpened:
+            self._onBack(False)
+        else:
+            self._destroySubViews()
 
     def _onMembersUpdate(self):
         self.destroyWindow()
@@ -161,12 +164,9 @@ class TankChangeView(BaseCrewView):
         self._onTankmanSlotAutoSelect(tankmanInvID, slotIdx)
 
     def _findWidgetSlotNextIdx(self, tankmanID, slotIDX):
-        if tankmanID != NO_TANKMAN:
-            newSlotIDX, _ = self._currentSlotAndTankman(tankmanID)
-            slotIDX = newSlotIDX if newSlotIDX != NO_TANKMAN else slotIDX
-            return self._getAutoSelectWidget(tankmanID, slotIDX)
-        return (
-         NO_TANKMAN, NO_SLOT)
+        newSlotIDX, _ = self._currentSlotAndTankman(tankmanID)
+        slotIDX = newSlotIDX if newSlotIDX != NO_SLOT else slotIDX
+        return self._getAutoSelectWidget(tankmanID, slotIDX)
 
     def _onEmptySlotClick(self, tankmanID, slotIdx):
         _, vehicle, __ = self.crewWidget.getWidgetData()
@@ -187,12 +187,11 @@ class TankChangeView(BaseCrewView):
         vehicle = self.itemsCache.items.getItemByCD(vehicleID)
         if not vehicle:
             return
-        dialogs.showRetrainDialog([
-         self.tankman.invID], vehicleID)
+        dialogs.showRetrainSingleDialog(self.tankman.invID, vehicleID, isChangeRoleVisible=True, parentViewKey=CrewViewKeys.TANK_CHANGE)
         SoundGroups.g_instance.playSound2D(SOUNDS.CREW_TANK_CLICK)
 
     def _onVehicleUpdated(self, _):
-        lastVehicleCD = self.vehicle.compactDescr
+        lastVehicleCD = self.vehicle.compactDescr if self.vehicle else None
         self.__tankman = None
         self.__vehicle = None
         if self.vehicle and lastVehicleCD != self.vehicle.compactDescr:

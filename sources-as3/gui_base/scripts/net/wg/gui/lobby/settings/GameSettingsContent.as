@@ -21,6 +21,8 @@ package net.wg.gui.lobby.settings
       private static const OFFSET_CB_DISABLED:int = -26;
       
       private static const BTN_MIN_WIDTH:int = 128;
+      
+      private static const MENU_WIDTH:int = 410;
        
       
       public var fieldSetChat:FieldSet = null;
@@ -93,7 +95,9 @@ package net.wg.gui.lobby.settings
       
       public var enableOpticalSnpEffectCheckbox:CheckBox = null;
       
-      public var enablePostMortemDelayCheckbox:CheckBox = null;
+      public var postmortemModeLabelControl:LabelControl = null;
+      
+      public var postmortemModeDropDown:DropdownMenu = null;
       
       public var dynamicCameraCheckbox:CheckBox = null;
       
@@ -290,6 +294,8 @@ package net.wg.gui.lobby.settings
          this.newbiePrebattleHintsCheckbox.label = SETTINGS.GAME_NEWBIEPREBATTLEHINTS;
          this.newbiePrebattleHintsCheckbox.toolTip = TOOLTIPS.NEWBIEPREBATTLEHINTS;
          this.newbiePrebattleHintsCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
+         this.newbiePrebattleHintsCheckbox.multiline = true;
+         this.newbiePrebattleHintsCheckbox.wordWrap = true;
          this.newbieBattleHintsCheckbox.label = SETTINGS.GAME_NEWBIEBATTLEHINTS;
          this.newbieBattleHintsCheckbox.toolTip = TOOLTIPS.NEWBIEBATTLEHINTS;
          this.newbieBattleHintsCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
@@ -302,8 +308,11 @@ package net.wg.gui.lobby.settings
          this.switchEquipmentCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.switchEquipmentCheckbox.toolTip = TOOLTIPS_CONSTANTS.SETTINGS_SWITCH_EQUIPMENT;
          this.switchEquipmentCheckbox.tooltipType = ToolTipShowType.SPECIAL;
+         this.postmortemModeLabelControl.text = SETTINGS.GAME_POSTMORTEMMODE;
+         this.postmortemModeLabelControl.toolTip = TOOLTIPS.POSTMORTEMMODE;
+         this.postmortemModeLabelControl.infoIcoType = InfoIcon.TYPE_INFO;
+         this.postmortemModeDropDown.menuWidth = MENU_WIDTH;
          this.enableOpticalSnpEffectCheckbox.label = SETTINGS.GAME_ENABLEOPTICALSNPEFFECT;
-         this.enablePostMortemDelayCheckbox.label = SETTINGS.GAME_ENABLEDELAYPOSTEFFECT;
          this.dynamicCameraCheckbox.label = SETTINGS.GAME_DYNAMICCAMERA;
          this.scrollSmoothingCheckbox.label = SETTINGS.AIM_SPG_SCROLLSMOOTHINGENABLED;
          this.horStabilizationSnpCheckbox.label = SETTINGS.GAME_HORSTABILIZATIONSNP;
@@ -463,8 +472,9 @@ package net.wg.gui.lobby.settings
          this.minimapAlphaSlider = null;
          this.enableOpticalSnpEffectCheckbox.dispose();
          this.enableOpticalSnpEffectCheckbox = null;
-         this.enablePostMortemDelayCheckbox.dispose();
-         this.enablePostMortemDelayCheckbox = null;
+         this.postmortemModeLabelControl = null;
+         this.postmortemModeDropDown.dispose();
+         this.postmortemModeDropDown = null;
          this.dynamicCameraCheckbox.dispose();
          this.dynamicCameraCheckbox = null;
          this.scrollSmoothingCheckbox.dispose();

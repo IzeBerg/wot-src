@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert2</identifier>
+					<fx>shaders/custom/vector_animation.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 0.010000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/Noise_grad.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 2.500000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.010000 0.100000 0.100000 0.100000</Vector4>
+					</property>
+					<property>
+						distortionFrames
+						<Vector4>1.000000 2.000000 0.500000 0.500000</Vector4>
+					</property>
+					<property>
+						distortionFrequency
+						<Float>0.100000</Float>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/03_distortion.dds</Texture>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						gradientMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/Gradient_linear.dds</Texture>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>60.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						opacity_UV_Distortion_Amount
+						<Vector4>0.000000 0.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						opacityMap
+						<Texture>particles/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/distortion_02.dds</Texture>
+					</property>
+					<property>
+						phase_UV_Speed_Scale
+						<Vector4>0.100000 0.300000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/Tank/customization/A140_ASTRON_REX_105mm_SPD_3DSt/distortion_02.dds</Texture>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector3>0.133333 0.894118 0.000000</Vector3>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.101961 0.760784 0.207843 0.298039</Vector4>
+					</property>
+					<property>
+						softFactor
+						<Float>0.010000</Float>
+					</property>
+					<property>
+						opacity_UV_Speed_Scale
+						<Vector4>-0.200000 0.300000 1.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>1.018957 0.403505 -0.815432</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>0.946205 0.180570 -0.912516</min>
+		<max>1.091710 0.626440 -0.718348</max>
+	</boundingBox>
+	<geometrySize>1536</geometrySize>
+	<minUVDensity>4.396776</minUVDensity>
+</root>

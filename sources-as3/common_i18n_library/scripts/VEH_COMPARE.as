@@ -13,8 +13,6 @@ package
       
       public static const VEHICLECOMPAREVIEW_TOOLTIPS_REMOVEALLVEHICLES:String = "#veh_compare:vehicleCompareView/tooltips/removeAllVehicles";
       
-      public static const VEHICLECOMPAREVIEW_TOOLTIPS_CREWDROPDOWN:String = "#veh_compare:vehicleCompareView/tooltips/crewDropDown";
-      
       public static const TECHTREE_TOOLTIPS_ADDTOCOMPARE:String = "#veh_compare:techTree/tooltips/addToCompare";
       
       public static const VEHICLECOMPAREVIEW_TOOLTIPS_ATTENTIONEQUIPMENT:String = "#veh_compare:vehicleCompareView/tooltips/attentionEquipment";
@@ -28,8 +26,6 @@ package
       public static const VEHICLECOMPAREVIEW_TOOLTIPS_CONFIGURE:String = "#veh_compare:vehicleCompareView/tooltips/configure";
       
       public static const VEHCONF_TOOLTIPS_REVERTBTN:String = "#veh_compare:vehConf/tooltips/revertBtn";
-      
-      public static const VEHCONF_TOOLTIPS_ATTENTIONICONCREW:String = "#veh_compare:vehConf/tooltips/attentionIconCrew";
       
       public static const VEHCONF_TOOLTIPS_CAMOINFODISABLED:String = "#veh_compare:vehConf/tooltips/camoInfoDisabled";
       
@@ -155,14 +151,6 @@ package
       
       public static const VEHICLECOMPAREVIEW_CONFIGURATIONTYPE_CURRENT:String = "#veh_compare:vehicleCompareView/configurationType/current";
       
-      public static const VEHICLECOMPAREVIEW_CREW_SKILL100:String = "#veh_compare:vehicleCompareView/crew/skill100";
-      
-      public static const VEHICLECOMPAREVIEW_CREW_SKILL75:String = "#veh_compare:vehicleCompareView/crew/skill75";
-      
-      public static const VEHICLECOMPAREVIEW_CREW_SKILL50:String = "#veh_compare:vehicleCompareView/crew/skill50";
-      
-      public static const VEHICLECOMPAREVIEW_CREW_CURRENT:String = "#veh_compare:vehicleCompareView/crew/current";
-      
       public static const VEHICLECOMPAREVIEW_TOPPANEL_VEHICLESCOUNT:String = "#veh_compare:vehicleCompareView/topPanel/vehiclesCount";
       
       public static const VEHICLECOMPAREVIEW_TOPPANEL_NOVEHICLE:String = "#veh_compare:vehicleCompareView/topPanel/noVehicle";
@@ -192,10 +180,6 @@ package
       public static const VEHICLECOMPAREVIEW_TOOLTIPS_REMOVEALLVEHICLES_HEADER:String = "#veh_compare:vehicleCompareView/tooltips/removeAllVehicles/header";
       
       public static const VEHICLECOMPAREVIEW_TOOLTIPS_REMOVEALLVEHICLES_BODY:String = "#veh_compare:vehicleCompareView/tooltips/removeAllVehicles/body";
-      
-      public static const VEHICLECOMPAREVIEW_TOOLTIPS_CREWDROPDOWN_HEADER:String = "#veh_compare:vehicleCompareView/tooltips/crewDropDown/header";
-      
-      public static const VEHICLECOMPAREVIEW_TOOLTIPS_CREWDROPDOWN_BODY:String = "#veh_compare:vehicleCompareView/tooltips/crewDropDown/body";
       
       public static const VEHICLECOMPAREVIEW_TOOLTIPS_ATTENTIONEQUIPMENT_HEADER:String = "#veh_compare:vehicleCompareView/tooltips/attentionEquipment/header";
       
@@ -311,8 +295,6 @@ package
       
       public static const VEHCONF_TOOLTIPS_CAMOINFODISABLED_BODY:String = "#veh_compare:vehConf/tooltips/camoInfoDisabled/body";
       
-      public static const VEHCONF_SKILLS_FADETEXT:String = "#veh_compare:vehConf/skills/fadeText";
-      
       public static const VEHCONF_TOOLTIPS_TOPMODULESOFF_HEADER:String = "#veh_compare:vehConf/tooltips/topModulesOff/header";
       
       public static const VEHCONF_TOOLTIPS_TOPMODULESOFF_BODY:String = "#veh_compare:vehConf/tooltips/topModulesOff/body";
@@ -336,10 +318,6 @@ package
       public static const VEHCONF_CONFAVAILABLE:String = "#veh_compare:vehConf/confAvailable";
       
       public static const VEHCONF_TOOLTIPS_DEVICENOTAFFECTEDTTC:String = "#veh_compare:vehConf/tooltips/deviceNotAffectedTTC";
-      
-      public static const VEHCONF_TOOLTIPS_ATTENTIONICONCREW_HEADER:String = "#veh_compare:vehConf/tooltips/attentionIconCrew/header";
-      
-      public static const VEHCONF_TOOLTIPS_ATTENTIONICONCREW_BODY:String = "#veh_compare:vehConf/tooltips/attentionIconCrew/body";
       
       public static const VEHCONF_MODIFICATIONS_CHOOSE:String = "#veh_compare:vehConf/modifications/choose";
       

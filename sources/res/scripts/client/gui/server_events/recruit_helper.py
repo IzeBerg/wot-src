@@ -78,6 +78,7 @@ class RecruitSourceID(object):
     TWITCH_47 = 'twitch47'
     TWITCH_48 = 'twitch48'
     TWITCH_49 = 'twitch49'
+    TWITCH_50 = 'twitch50'
     BUFFON = 'buffon'
     LOOTBOX = 'lootbox'
     COMMANDER_MARINA = 'commander_marina'
@@ -90,7 +91,8 @@ class RecruitSourceID(object):
      TWITCH_16, TWITCH_17, TWITCH_18, TWITCH_19, TWITCH_20, TWITCH_21, TWITCH_22, TWITCH_23, TWITCH_24,
      TWITCH_25, TWITCH_26, TWITCH_27, TWITCH_28, TWITCH_29, TWITCH_30, TWITCH_31, TWITCH_32, TWITCH_33,
      TWITCH_34, TWITCH_35, TWITCH_36, TWITCH_37, TWITCH_38, TWITCH_39, TWITCH_40, TWITCH_41, TWITCH_42,
-     TWITCH_43, TWITCH_44, TWITCH_45, TWITCH_46, TWITCH_47, TWITCH_48, TWITCH_49, TWITCH_GIRL, TWITCH_GUY)
+     TWITCH_43, TWITCH_44, TWITCH_45, TWITCH_46, TWITCH_47, TWITCH_48, TWITCH_49, TWITCH_50, TWITCH_GIRL,
+     TWITCH_GUY)
 
 
 _NEW_SKILL = 'new_skill'
@@ -273,7 +275,7 @@ class _BaseRecruitInfo(object):
         vehType = vehicles.VehicleDescr(typeID=(0, 0)).type
         skills = self._getSkillsForDescr()
         freeSkills = self._getFreeSkillsForDescr()
-        tmanDescr = tankmen.TankmanDescr(tankmen.generateCompactDescr(tankmen.generatePassport(vehType.id[0], False), vehType.id[1], vehType.crewRoles[0][0], self._roleLevel, skills=skills, freeSkills=freeSkills, lastSkillLevel=self._lastSkillLevel))
+        tmanDescr = tankmen.TankmanDescr(tankmen.generateCompactDescr(tankmen.generatePassport(vehType.id[0]), vehType.id[1], vehType.crewRoles[0][0], self._roleLevel, skills=skills, freeSkills=freeSkills, lastSkillLevel=self._lastSkillLevel))
         tmanDescr.addXP(self._freeXP)
         return tmanDescr
 

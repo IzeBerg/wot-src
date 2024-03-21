@@ -3,10 +3,53 @@
 	<info>
 		<name>VFX/Fire_ring/fire_ring_lights</name>
 		<isMacro>false</isMacro>
+		<version>0</version>
 		<aspect>
 			<compatibles>CLIENT</compatibles>
 		</aspect>
 		<blocks>
+			<block>
+				<class>Variable</class>
+				<id>Variable_1</id>
+				<params>
+					<param>
+						Radius
+						<name>Variable Name</name>
+						<type>StringT</type>
+					</param>
+					<param>
+						FloatT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+					<param>
+						false
+						<name>External Init</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Const</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						false
+						<name>Is Global</name>
+						<type>BoolT</type>
+					</param>
+					<param>
+						0.000000
+						<name>Initial Value</name>
+						<type>FloatT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>default</name>
+						<const>\0.000000\</const>
+					</slot>
+				</slots>
+			</block>
 			<block>
 				<class>ContextGetSelf</class>
 				<id>ContextGetSelf_1</id>
@@ -43,92 +86,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetComponentProperties</class>
-				<id>GetComponentProperties_1</id>
-				<params>
-					<param>
-						Influence Zone Equipment
-						<name>Component Type</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Variable</class>
-				<id>Variable_1</id>
-				<params>
-					<param>
-						Radius
-						<name>Variable Name</name>
-						<type>StringT</type>
-					</param>
-					<param>
-						FloatT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-					<param>
-						false
-						<name>Is Global</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						false
-						<name>Is Const</name>
-						<type>BoolT</type>
-					</param>
-					<param>
-						0.000000
-						<name>Initial Value</name>
-						<type>FloatT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>default</name>
-						<const>\0.000000\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>SetVariable</class>
-				<id>SetVariable_1</id>
-				<buddy>Variable_1</buddy>
-				<params>
-					<param>
-						FloatT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>MatrixScale</class>
-				<id>MatrixScale_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>CreateMatrix</class>
-				<id>CreateMatrix_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>SplitVector</class>
-				<id>SplitVector_1</id>
-				<params>
-					<param>
-						Vector3T
-						<name>Value Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
 				<class>SetComponentProperties</class>
 				<id>SetComponentProperties_1</id>
 				<params>
@@ -136,18 +93,6 @@
 						Transform
 						<name>Component Type</name>
 						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>CreateVector</class>
-				<id>CreateVector_1</id>
-				<params>
-					<param>
-						Vector3T
-						<name>Value Type</name>
-						<type>TypeT</type>
 					</param>
 				</params>
 				<slots/>
@@ -165,20 +110,8 @@
 				<slots/>
 			</block>
 			<block>
-				<class>MatrixRotation</class>
-				<id>MatrixRotation_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>MatrixPosition</class>
-				<id>MatrixPosition_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_1</id>
+				<class>SetVariable</class>
+				<id>SetVariable_1</id>
 				<buddy>Variable_1</buddy>
 				<params>
 					<param>
@@ -190,21 +123,10 @@
 				<slots/>
 			</block>
 			<block>
-				<class>CreateVector</class>
-				<id>CreateVector_2</id>
-				<params>
-					<param>
-						Vector3T
-						<name>Value Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>y</name>
-						<const>\1.000000\</const>
-					</slot>
-				</slots>
+				<class>MatrixPosition</class>
+				<id>MatrixPosition_1</id>
+				<params/>
+				<slots/>
 			</block>
 			<block>
 				<class>CreateComponent</class>
@@ -244,9 +166,69 @@
 				</slots>
 			</block>
 			<block>
+				<class>GetComponentProperties</class>
+				<id>GetComponentProperties_1</id>
+				<params>
+					<param>
+						Influence Zone Equipment
+						<name>Component Type</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>CreateMatrix</class>
+				<id>CreateMatrix_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>MatrixRotation</class>
+				<id>MatrixRotation_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
 				<class>StartScript</class>
 				<id>StartScript_1</id>
 				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>MatrixScale</class>
+				<id>MatrixScale_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>CreateVector</class>
+				<id>CreateVector_2</id>
+				<params>
+					<param>
+						Vector3T
+						<name>Value Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>y</name>
+						<const>\1.000000\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_1</id>
+				<buddy>Variable_1</buddy>
+				<params>
+					<param>
+						FloatT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
 				<slots/>
 			</block>
 		</blocks>
@@ -262,60 +244,6 @@
 				<input>gameObject</input>
 				<to>GetParentOf_1</to>
 				<output>value</output>
-			</connection>
-			<connection>
-				<from>StartScript_1</from>
-				<input>in</input>
-				<to>GetComponentProperties_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetParentOf_1</from>
-				<input>gameObject</input>
-				<to>GetComponentProperties_1</to>
-				<output>parent</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperties_1</from>
-				<input>input</input>
-				<to>SetVariable_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperties_1</from>
-				<input>value</input>
-				<to>SetVariable_1</to>
-				<output>zoneRadius</output>
-			</connection>
-			<connection>
-				<from>GetComponentProperties_2</from>
-				<input>a</input>
-				<to>MatrixScale_1</to>
-				<output>local</output>
-			</connection>
-			<connection>
-				<from>MatrixPosition_1</from>
-				<input>pos</input>
-				<to>CreateMatrix_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>CreateVector_1</from>
-				<input>rotation</input>
-				<to>CreateMatrix_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>CreateVector_2</from>
-				<input>scale</input>
-				<to>CreateMatrix_1</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>MatrixRotation_1</from>
-				<input>a</input>
-				<to>SplitVector_1</to>
-				<output>res</output>
 			</connection>
 			<connection>
 				<from>GetComponentProperties_2</from>
@@ -336,24 +264,6 @@
 				<output>res</output>
 			</connection>
 			<connection>
-				<from>SplitVector_1</from>
-				<input>x</input>
-				<to>CreateVector_1</to>
-				<output>x</output>
-			</connection>
-			<connection>
-				<from>SplitVector_1</from>
-				<input>y</input>
-				<to>CreateVector_1</to>
-				<output>y</output>
-			</connection>
-			<connection>
-				<from>SplitVector_1</from>
-				<input>z</input>
-				<to>CreateVector_1</to>
-				<output>z</output>
-			</connection>
-			<connection>
 				<from>SetVariable_1</from>
 				<input>in</input>
 				<to>GetComponentProperties_2</to>
@@ -366,6 +276,66 @@
 				<output>value</output>
 			</connection>
 			<connection>
+				<from>GetComponentProperties_1</from>
+				<input>input</input>
+				<to>SetVariable_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetComponentProperties_1</from>
+				<input>value</input>
+				<to>SetVariable_1</to>
+				<output>zoneRadius</output>
+			</connection>
+			<connection>
+				<from>GetComponentProperties_2</from>
+				<input>a</input>
+				<to>MatrixPosition_1</to>
+				<output>local</output>
+			</connection>
+			<connection>
+				<from>SetComponentProperties_1</from>
+				<input>in</input>
+				<to>CreateComponent_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>ContextGetSelf_1</from>
+				<input>gameObject</input>
+				<to>CreateComponent_1</to>
+				<output>value</output>
+			</connection>
+			<connection>
+				<from>StartScript_1</from>
+				<input>in</input>
+				<to>GetComponentProperties_1</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>GetParentOf_1</from>
+				<input>gameObject</input>
+				<to>GetComponentProperties_1</to>
+				<output>parent</output>
+			</connection>
+			<connection>
+				<from>MatrixPosition_1</from>
+				<input>pos</input>
+				<to>CreateMatrix_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>MatrixRotation_1</from>
+				<input>rotation</input>
+				<to>CreateMatrix_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>CreateVector_2</from>
+				<input>scale</input>
+				<to>CreateMatrix_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
 				<from>GetComponentProperties_2</from>
 				<input>a</input>
 				<to>MatrixRotation_1</to>
@@ -374,7 +344,7 @@
 			<connection>
 				<from>GetComponentProperties_2</from>
 				<input>a</input>
-				<to>MatrixPosition_1</to>
+				<to>MatrixScale_1</to>
 				<output>local</output>
 			</connection>
 			<connection>
@@ -387,18 +357,6 @@
 				<from>GetVariable_1</from>
 				<input>z</input>
 				<to>CreateVector_2</to>
-				<output>value</output>
-			</connection>
-			<connection>
-				<from>SetComponentProperties_1</from>
-				<input>in</input>
-				<to>CreateComponent_1</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>ContextGetSelf_1</from>
-				<input>gameObject</input>
-				<to>CreateComponent_1</to>
 				<output>value</output>
 			</connection>
 		</connections>

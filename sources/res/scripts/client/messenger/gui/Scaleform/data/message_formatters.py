@@ -15,6 +15,8 @@ def getMessageFormatter(actionMessage):
         return ErrorMessageFormatter(actionMessage)
     if actionMessage.getType() == ACTION_MESSAGE_TYPE.WARNING:
         return WarningMessageFormatter(actionMessage)
+    if actionMessage.getType() == ACTION_MESSAGE_TYPE.FAIRPLAY_WARNING:
+        return FairplayWarningMessageFormatter(actionMessage)
     return BaseMessageFormatter(actionMessage)
 
 
@@ -59,3 +61,9 @@ class ErrorMessageFormatter(BaseMessageFormatter):
     def getFormattedMessage(self):
         formatted = g_settings.htmlTemplates.format('battleErrorMessage', ctx={'error': self._actionMessage.getMessage()})
         return formatted
+
+
+class FairplayWarningMessageFormatter(BaseMessageFormatter):
+
+    def getFormattedMessage(self):
+        return g_settings.htmlTemplates.format(self._actionMessage.getTemplateKey())

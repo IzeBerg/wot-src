@@ -481,7 +481,6 @@
 				<type>list</type>
 				<value>
 					<item>introPage.swf</item>
-					<item>barracks.swf</item>
 					<item>shop.swf</item>
 				</value>
 			</item>
@@ -648,73 +647,9 @@
 		</value>
 	</setting>
 	<setting>
-		<name>reportBugLinks</name>
-		<type>dict</type>
-		<value>
-			<item>
-				<name>EU</name>
-				<type>dict</type>
-				<value>
-					<item>
-						http://forum.worldoftanks.eu/index.php?/forum/2652-public-test/
-						<name>url</name>
-						<type>url</type>
-					</item>
-					<item>
-						<name>min</name>
-						<type>string</type>
-						<value>500000000</value>
-					</item>
-					<item>
-						<name>max</name>
-						<type>string</type>
-						<value>999999999</value>
-					</item>
-				</value>
-			</item>
-			<item>
-				<name>NA</name>
-				<type>dict</type>
-				<value>
-					<item>
-						http://forum.worldoftanks.com/index.php?/forum/412-bug-reporting/&amp;from=ct_client
-						<name>url</name>
-						<type>url</type>
-					</item>
-					<item>
-						<name>min</name>
-						<type>string</type>
-						<value>1000000000</value>
-					</item>
-					<item>
-						<name>max</name>
-						<type>string</type>
-						<value>1499999999</value>
-					</item>
-				</value>
-			</item>
-			<item>
-				<name>ASIA</name>
-				<type>dict</type>
-				<value>
-					<item>
-						http://forum.worldoftanks.asia/index.php?/forum/816-common-test/
-						<name>url</name>
-						<type>url</type>
-					</item>
-					<item>
-						<name>min</name>
-						<type>string</type>
-						<value>1500000000</value>
-					</item>
-					<item>
-						<name>max</name>
-						<type>string</type>
-						<value>4000000000</value>
-					</item>
-				</value>
-			</item>
-		</value>
+		https://eu.wargaming.net/support/en/products/wot/help/29775/29787/36153/
+		<name>reportBugLink</name>
+		<type>url</type>
 	</setting>
 	<setting>
 		<name>actionComeToEnd</name>
@@ -1191,6 +1126,28 @@
 							</item>
 						</value>
 					</item>
+					<item>
+						<name>crew5075Welcome</name>
+						<type>list</type>
+						<value>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+						</value>
+					</item>
 				</value>
 			</item>
 		</value>
@@ -1280,18 +1237,6 @@
 		</value>
 	</setting>
 	<setting>
-		<name>infoPageBootcamp</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Bootcamp/
-				<name>CT</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
 		<name>infoPageStrongholdsBattlesList</name>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -1334,18 +1279,6 @@
 		<value>
 			<item>
 				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/RankedBattles/
-				<name>CT</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>infoPageBattleRoyaleQueue</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://steelhunter-ct.worldoftanks.eu/$LANGUAGE_CODE/?fullscreenMode=true
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1423,7 +1356,7 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				 https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode2/ 
+				 https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode3/ 
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1447,7 +1380,7 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				 https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode2Video/ 
+				 https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode3Video/ 
 				<name>CT</name>
 				<type>url</type>
 			</item>
@@ -1521,6 +1454,29 @@
 			<item>
 				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/player-subscriptions/
 				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>personalReservesInfoPage</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/expirable-personal-reserves/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>clanSupply</name>
+		<type>dict</type>
+		<value>
+			<item>
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/tour_of_duty_2024/
+				<name>baseURL</name>
 				<type>url</type>
 			</item>
 		</value>

@@ -111,8 +111,6 @@ package net.wg.gui.components.carousels.data
       
       public var isNull:Boolean = true;
       
-      public var isTestDriveEnabled:Boolean = false;
-      
       public var isNationChangeAvailable:Boolean = false;
       
       private var _slotPriceActionData:ActionPriceVO = null;

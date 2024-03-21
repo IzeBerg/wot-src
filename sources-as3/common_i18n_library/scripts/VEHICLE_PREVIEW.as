@@ -47,6 +47,8 @@ package
       
       public static const HEADER_BACKBTN_DESCRLABEL_COMP7:String = "#vehicle_preview:header/backBtn/descrLabel/comp7";
       
+      public static const HEADER_BACKBTN_DESCRLABEL_CLANSUPPLY:String = "#vehicle_preview:header/backBtn/descrLabel/clanSupply";
+      
       public static const HEADER_TITLE:String = "#vehicle_preview:header/title";
       
       public static const HEADER_CLOSEBTN_LABEL:String = "#vehicle_preview:header/closeBtn/label";

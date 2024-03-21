@@ -597,7 +597,23 @@ package
       
       public static const POSTMORTEM_TIPS_OBSERVERMODE_LABEL:String = "#ingame_gui:postmortem/tips/observerMode/label";
       
+      public static const POSTMORTEM_TIPS_OBSERVERMODEFRONTLINE_LABEL:String = "#ingame_gui:postmortem/tips/observerModeFrontline/label";
+      
       public static const POSTMORTEM_TIPS_OBSERVERMODE_TEXT:String = "#ingame_gui:postmortem/tips/observerMode/text";
+      
+      public static const POSTMORTEM_TIPS_OBSERVERMODEFRONTLINE_TEXT:String = "#ingame_gui:postmortem/tips/observerModeFrontline/text";
+      
+      public static const POSTMORTEM_TIPS_FREECAM_BUTTON:String = "#ingame_gui:postmortem/tips/freecam/button";
+      
+      public static const POSTMORTEM_TIPS_FREECAM_LABEL:String = "#ingame_gui:postmortem/tips/freecam/label";
+      
+      public static const POSTMORTEM_TIPS_FREECAM_TEXT:String = "#ingame_gui:postmortem/tips/freecam/text";
+      
+      public static const POSTMORTEM_TIPS_FREECAMUNAVAILABLE_LABEL:String = "#ingame_gui:postmortem/tips/freecamUnavailable/label";
+      
+      public static const POSTMORTEM_TIPS_FREECAMUNAVAILABLE_TEXT:String = "#ingame_gui:postmortem/tips/freecamUnavailable/text";
+      
+      public static const POSTMORTEM_TIPS_EXITHANGAR_BUTTON:String = "#ingame_gui:postmortem/tips/exitHangar/button";
       
       public static const POSTMORTEM_TIPS_EXITHANGAR_LABEL:String = "#ingame_gui:postmortem/tips/exitHangar/label";
       
@@ -1138,6 +1154,8 @@ package
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_BR_BOT:String = "#ingame_gui:postmortem_messages/DEATH_FROM_BR_BOT";
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE";
+      
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_SHOT_ARCADE_BOMBER_WITH_OWN_DAMAGE_BATTLE_ROYALE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_WITH_OWN_DAMAGE_BATTLE_ROYALE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_OVERTURN_SELF_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_OVERTURN_SELF_SUICIDE";
       
@@ -2028,6 +2046,14 @@ package
       public static const DEVMAPS_MAPINFO_TEXT:String = "#ingame_gui:devMaps/mapInfo/text";
       
       public static const DEVMAPS_MAPINFO_INFO:String = "#ingame_gui:devMaps/mapInfo/info";
+      
+      public static const PENETRATION_HIGH:String = "#ingame_gui:penetration/high";
+      
+      public static const PENETRATION_LOW:String = "#ingame_gui:penetration/low";
+      
+      public static const BOT_ELITE:String = "#ingame_gui:bot/elite";
+      
+      public static const BOT_BOSS:String = "#ingame_gui:bot/boss";
        
       
       public function INGAME_GUI()

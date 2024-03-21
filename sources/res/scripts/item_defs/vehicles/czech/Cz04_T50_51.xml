@@ -115,6 +115,11 @@
 					<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Hull.model</destroyed>
 					<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Hull.model</exploded>
 				</Cz04_T50_51_Waf_3DSt>
+				<Cz04_T50_51_BXI_3DSt>
+					<undamaged>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/crash/lod0/Hull.model</exploded>
+				</Cz04_T50_51_BXI_3DSt>
 			</sets>
 		</models>
 		<swinging>
@@ -151,15 +156,12 @@
 			<slot>
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
-				<rayStart>
-					0.638161 0.552487 2.02577
+				<rayStart>0.409979 0.711312 1.874612</rayStart>
+				<rayEnd>0.409979 0.475707 1.764657</rayEnd>
+				<rayUp>
+					-0 0.422905 -0.906174
 					<!--BW_String-->
-				</rayStart>
-				<rayEnd>
-					0.638161 0.461866 1.98348
-					<!--BW_String-->
-				</rayEnd>
-				<rayUp>0 0 -1</rayUp>
+				</rayUp>
 				<size>
 					0.26
 					<!--BW_String-->
@@ -1685,6 +1687,11 @@
 						<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Chassis.model</destroyed>
 						<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Chassis.model</exploded>
 					</Cz04_T50_51_Waf_3DSt>
+					<Cz04_T50_51_BXI_3DSt>
+						<undamaged>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/crash/lod0/Chassis.model</exploded>
+					</Cz04_T50_51_BXI_3DSt>
 				</sets>
 			</models>
 			<traces>
@@ -1776,6 +1783,33 @@
 									<row1>0.000000 0.095873 -0.284269</row1>
 									<row2>0.000000 0.379024 0.127830</row2>
 									<row3>0.000000 1.157769 -3.472021</row3>
+								</boxCollider>
+							</hullCollider>
+							<hullCollider>
+								<modelsSet>Cz04_T50_51_BXI_3DSt</modelsSet>
+								<boxCollider>
+									<row0>1.869293 0.000000 0.000000</row0>
+									<row1>0.000000 1.303114 0.000000</row1>
+									<row2>-0.000000 -0.000000 6.991995</row2>
+									<row3>-0.000000 1.090338 -0.321573</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>4.110707 0.000000 -0.000001</row0>
+									<row1>-0.000000 0.773886 -0.018914</row1>
+									<row2>0.000001 0.150128 6.142550</row2>
+									<row3>0.000000 1.535344 -0.236538</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>4.110710 -0.000001 -0.000000</row0>
+									<row1>0.000000 0.219162 -0.204861</row1>
+									<row2>0.000000 0.485931 0.519853</row2>
+									<row3>-0.000001 1.189463 -3.302367</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>4.110710 -0.000001 0.000000</row0>
+									<row1>0.000000 0.252359 0.162219</row1>
+									<row2>-0.000000 -0.528537 0.822230</row2>
+									<row3>0.000001 1.451328 2.768710</row3>
 								</boxCollider>
 							</hullCollider>
 							<hullCollider>
@@ -1880,6 +1914,33 @@
 									<row1>0.000000 0.240189 -0.179749</row1>
 									<row2>0.000000 0.239665 0.320251</row2>
 									<row3>-0.000000 1.231965 -3.429180</row3>
+								</boxCollider>
+							</hullCollider>
+							<hullCollider>
+								<modelsSet>Cz04_T50_51_BXI_3DSt</modelsSet>
+								<boxCollider>
+									<row0>1.869293 0.000000 0.000000</row0>
+									<row1>0.000000 1.303114 0.000000</row1>
+									<row2>0.000000 0.000000 6.991995</row2>
+									<row3>0.000000 1.090338 -0.321573</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>4.110707 -0.000000 0.000001</row0>
+									<row1>0.000000 0.773886 -0.018914</row1>
+									<row2>-0.000001 0.150128 6.142550</row2>
+									<row3>-0.000000 1.535344 -0.236538</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>4.110710 0.000001 0.000000</row0>
+									<row1>-0.000000 0.219162 -0.204861</row1>
+									<row2>-0.000000 0.485931 0.519853</row2>
+									<row3>0.000001 1.189463 -3.302367</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>4.110710 0.000001 -0.000000</row0>
+									<row1>-0.000000 0.252359 0.162219</row1>
+									<row2>0.000000 -0.528537 0.822230</row2>
+									<row3>-0.000001 1.451328 2.768710</row3>
 								</boxCollider>
 							</hullCollider>
 							<hullCollider>
@@ -2265,6 +2326,12 @@
 						<UTiles>1</UTiles>
 						<VTiles>1</VTiles>
 					</atlas>
+					<modelSets>
+						<Cz04_T50_51_BXI_3DSt>
+							<segmentModelLeft>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/track/segment.model</segmentModelLeft>
+							<segmentModelRight>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/track/segment.model</segmentModelRight>
+						</Cz04_T50_51_BXI_3DSt>
+					</modelSets>
 				</trackPair>
 				<lodDist>SPLINE_TRACK</lodDist>
 			</splineDesc>
@@ -2298,6 +2365,11 @@
 						<model>vehicles/czech/Cz04_T50_51/track/TVP_T50.model</model>
 						<length>0.122137</length>
 					</mainSegment>
+					<modelSets>
+						<Cz04_T50_51_BXI_3DSt>
+							<mainSegmentModel>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/track/segment.model</mainSegmentModel>
+						</Cz04_T50_51_BXI_3DSt>
+					</modelSets>
 					<collisionHull>
 						<bottom>
 							<part>
@@ -2441,10 +2513,7 @@
 						</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_L4</name>
-							<startAngle>
-								-22.04
-								<!--BW_String-->
-							</startAngle>
+							<startAngle>-22.040001</startAngle>
 							<teethCount>18</teethCount>
 						</sync>
 						<sync>
@@ -2948,6 +3017,11 @@
 						<model>vehicles/czech/Cz04_T50_51/track/TVP_T50.model</model>
 						<length>0.121277</length>
 					</mainSegment>
+					<modelSets>
+						<Cz04_T50_51_BXI_3DSt>
+							<mainSegmentModel>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/track/segment.model</mainSegmentModel>
+						</Cz04_T50_51_BXI_3DSt>
+					</modelSets>
 					<collisionHull>
 						<bottom>
 							<part>
@@ -3157,10 +3231,7 @@
 						</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_R4</name>
-							<startAngle>
-								-22.04
-								<!--BW_String-->
-							</startAngle>
+							<startAngle>-22.040001</startAngle>
 							<teethCount>18</teethCount>
 						</sync>
 						<sync>
@@ -3801,6 +3872,11 @@
 								<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Gun_01.model</destroyed>
 								<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Gun_01.model</exploded>
 							</Cz04_T50_51_Waf_3DSt>
+							<Cz04_T50_51_BXI_3DSt>
+								<undamaged>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/crash/lod0/Gun_01.model</exploded>
+							</Cz04_T50_51_BXI_3DSt>
 						</sets>
 					</models>
 					<hitTester>
@@ -3958,6 +4034,11 @@
 						<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Turret_01.model</destroyed>
 						<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_Waf_3DSt/crash/lod0/Turret_01.model</exploded>
 					</Cz04_T50_51_Waf_3DSt>
+					<Cz04_T50_51_BXI_3DSt>
+						<undamaged>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/czech/Cz04_T50_51/_skins/Cz04_T50_51_BXI_3DSt/crash/lod0/Turret_01.model</exploded>
+					</Cz04_T50_51_BXI_3DSt>
 				</sets>
 			</models>
 			<hitTester>

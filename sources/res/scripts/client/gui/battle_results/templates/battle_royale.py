@@ -111,6 +111,7 @@ TEAM_ITEM_VO_META = base.PropertyMeta((
  ('achievedLevel', 0, 'achievedLevel'),
  ('damage', 0, 'damage'),
  ('kills', 0, 'kills'),
- ('databaseID', 0, 'databaseID')))
+ ('databaseID', 0, 'databaseID'),
+ ('prebattleID', 0, 'prebattleID')))
 TEAM_ITEM_VO_META.bind(battle_royale.BattleRoyalePlayerBlock)
 BR_TEAM_STATS_BLOCK = battle_royale.BattleRoyaleTeamStatsBlock(base.ListMeta(), 'leaderboard', _RECORD.VEHICLES)

@@ -15,6 +15,7 @@ package net.wg.gui.battle.views
    import net.wg.gui.battle.views.ammunitionPanel.PrebattleAmmunitionPanelView;
    import net.wg.gui.battle.views.calloutPanel.CalloutPanel;
    import net.wg.gui.battle.views.damagePanel.DamagePanel;
+   import net.wg.gui.battle.views.deathCamHud.DeathCamHud;
    import net.wg.gui.battle.views.dualGunPanel.DualGunPanel;
    import net.wg.gui.battle.views.gameMessagesPanel.GameMessagesPanel;
    import net.wg.gui.battle.views.gameMessagesPanel.events.GameMessagesPanelEvent;
@@ -24,10 +25,10 @@ package net.wg.gui.battle.views
    import net.wg.gui.battle.views.minimap.events.MinimapEvent;
    import net.wg.gui.battle.views.perksPanel.PerksPanel;
    import net.wg.gui.battle.views.piercingDebugPanel.PiercingDebugPanel;
-   import net.wg.gui.battle.views.postmortemPanel.BasePostmortemPanel;
    import net.wg.gui.battle.views.postmortemPanel.PostmortemPanel;
    import net.wg.gui.battle.views.ribbonsPanel.RibbonsPanel;
    import net.wg.gui.battle.views.rocketAcceleratorPanel.RocketAcceleratorPanel;
+   import net.wg.gui.battle.views.spectatorView.SpectatorView;
    import net.wg.gui.battle.views.vehicleMessages.VehicleMessages;
    import net.wg.gui.lobby.settings.config.ControlsFactory;
    import net.wg.infrastructure.base.meta.IBattlePageMeta;
@@ -101,11 +102,15 @@ package net.wg.gui.battle.views
       
       protected var battleStatisticDataController:BattleStatisticDataController;
       
-      protected var postmortemTips:BasePostmortemPanel = null;
-      
       protected var piercingDebugPanel:PiercingDebugPanel = null;
       
       protected var isPostMortem:Boolean = false;
+      
+      public var deathCamHud:DeathCamHud = null;
+      
+      public var spectatorViewUI:SpectatorView = null;
+      
+      public var postmortemPanelUI:PostmortemPanel = null;
       
       protected var hitTestFix:Sprite;
       
@@ -149,7 +154,10 @@ package net.wg.gui.battle.views
          _originalWidth = param1;
          _originalHeight = param2;
          setSize(param1,param2);
-         this.prebattleTimer.updateStage(param1,param2);
+         if(this.prebattleTimer)
+         {
+            this.prebattleTimer.updateStage(param1,param2);
+         }
          this.updatePrebattleTimerPosition(_loc3_);
          this.damagePanel.x = 0;
          this.damagePanel.y = param2 - this.damagePanel.initedHeight;
@@ -182,14 +190,6 @@ package net.wg.gui.battle.views
             this.perksPanel.y = param2 - PERKS_PANEL_OFFSET_Y;
          }
          this.updateMinimapPosition();
-         if(this.postmortemTips)
-         {
-            this.updatePostmortemTipsPosition();
-            if(this.isPostMortem)
-            {
-               this.updateBattleDamageLogPosInPostmortem();
-            }
-         }
          this.vehicleErrorMessageListPositionUpdate();
          this.playerMessageListPositionUpdate();
          this.vehicleMessageList.updateStage();
@@ -213,6 +213,19 @@ package net.wg.gui.battle.views
          {
             this.piercingDebugPanel.updateStage(param1,param2);
          }
+         if(this.deathCamHud)
+         {
+            this.deathCamHud.width = param1;
+            this.deathCamHud.height = param2;
+         }
+         if(this.spectatorViewUI)
+         {
+            this.spectatorViewUI.updateStage(param1,param2);
+         }
+         if(this.postmortemPanelUI)
+         {
+            this.updatePostmortemUIPosition();
+         }
       }
       
       override protected function initialize() : void
@@ -221,6 +234,7 @@ package net.wg.gui.battle.views
          this.gameMessagesPanel.addEventListener(GameMessagesPanelEvent.MESSAGES_STARTED_PLAYING,this.onMessagesStartedPlayingHandler);
          this.gameMessagesPanel.addEventListener(GameMessagesPanelEvent.MESSAGES_ENDED_PLAYING,this.onMessagesEndedPlayingHandler);
          this.gameMessagesPanel.addEventListener(GameMessagesPanelEvent.ALL_MESSAGES_ENDED_PLAYING,this.onAllMessagesEndedPlayingHandler);
+         this.addDeathCamHud();
       }
       
       override protected function configUI() : void
@@ -245,7 +259,10 @@ package net.wg.gui.battle.views
             this.registerComponent(this.battleLoading,BATTLE_VIEW_ALIASES.BATTLE_LOADING);
          }
          this.registerComponent(this.minimap,BATTLE_VIEW_ALIASES.MINIMAP);
-         this.registerComponent(this.prebattleTimer,BATTLE_VIEW_ALIASES.PREBATTLE_TIMER);
+         if(this.prebattleTimer)
+         {
+            this.registerComponent(this.prebattleTimer,BATTLE_VIEW_ALIASES.PREBATTLE_TIMER);
+         }
          this.registerComponent(this.damagePanel,BATTLE_VIEW_ALIASES.DAMAGE_PANEL);
          if(this.battleTimer)
          {
@@ -287,15 +304,20 @@ package net.wg.gui.battle.views
          {
             DebugUtils.LOG_DEBUG("rocketAcceleratorPanel component doesn\'t configured for this Battle Page");
          }
-         this.createPostmortemTipsComponent();
-         this.postmortemTips.setCompVisible(false);
-         this.updatePostmortemTipsPosition();
-         addChild(this.postmortemTips);
+         this.createSpectatorViewComponent();
+         this.createPostmortemPanelComponent();
+         if(this.deathCamHud)
+         {
+            this.registerComponent(this.deathCamHud,BATTLE_VIEW_ALIASES.DEATH_CAM_HUD);
+         }
+         else
+         {
+            DebugUtils.LOG_WARNING("deathCamHud component is not configured for this Battle Page");
+         }
          if(this.ribbonsPanel)
          {
             this.ribbonsPanel.addEventListener(Event.CHANGE,this.onRibbonsPanelChangeHandler);
          }
-         this.registerComponent(this.postmortemTips,BATTLE_VIEW_ALIASES.POSTMORTEM_PANEL);
          this.onRegisterStatisticController();
          super.onPopulate();
       }
@@ -346,8 +368,10 @@ package net.wg.gui.battle.views
          this.vehicleErrorMessageList = null;
          this.playerMessageList = null;
          this.battleStatisticDataController = null;
-         this.postmortemTips = null;
          this.piercingDebugPanel = null;
+         this.deathCamHud = null;
+         this.spectatorViewUI = null;
+         this.postmortemPanelUI = null;
          App.utils.data.cleanupDynamicObject(this._componentsStorage);
          this._componentsStorage = null;
          this.hitTestFix = null;
@@ -428,11 +452,15 @@ package net.wg.gui.battle.views
       {
       }
       
-      public function as_setPostmortemTipsVisible(param1:Boolean) : void
+      public function as_onPostmortemActive(param1:Boolean) : void
       {
-         this.postmortemTips.setCompVisible(param1);
-         this.vehicleMessageListPositionUpdate();
+         if(this.postmortemPanelUI == null)
+         {
+            return;
+         }
+         this.postmortemPanelUI.setCompVisible(param1);
          this.isPostMortem = param1;
+         this.vehicleMessageListPositionUpdate();
          if(this.isPostMortem)
          {
             this.updateBattleDamageLogPosInPostmortem();
@@ -461,8 +489,11 @@ package net.wg.gui.battle.views
       
       protected function updatePrebattleTimerPosition(param1:int) : void
       {
-         this.prebattleTimer.x = param1;
-         this.prebattleTimer.y = 0;
+         if(this.prebattleTimer)
+         {
+            this.prebattleTimer.x = param1;
+            this.prebattleTimer.y = 0;
+         }
       }
       
       protected function onPrebattleAmmunitionPanelShown() : void
@@ -473,11 +504,27 @@ package net.wg.gui.battle.views
       {
       }
       
-      protected function createPostmortemTipsComponent() : void
+      protected function createPostmortemPanelComponent() : void
       {
-         if(this.postmortemTips == null)
+         if(this.postmortemPanelUI)
          {
-            this.postmortemTips = App.utils.classFactory.getComponent(Linkages.POSTMORTEN_PANEL,PostmortemPanel);
+            this.registerComponent(this.postmortemPanelUI,BATTLE_VIEW_ALIASES.POSTMORTEM_PANEL);
+         }
+         else
+         {
+            DebugUtils.LOG_WARNING("postmortemPanelUI component is not configured for this Battle Page");
+         }
+      }
+      
+      protected function createSpectatorViewComponent() : void
+      {
+         if(this.spectatorViewUI)
+         {
+            this.registerComponent(this.spectatorViewUI,BATTLE_VIEW_ALIASES.SPECTATOR_VIEW);
+         }
+         else
+         {
+            DebugUtils.LOG_WARNING("spectatorViewUI component doesn\'t configured for this Battle Page");
          }
       }
       
@@ -546,9 +593,9 @@ package net.wg.gui.battle.views
       
       protected function vehicleMessageListPositionUpdate() : void
       {
-         if(this.postmortemTips && this.postmortemTips.visible)
+         if(this.postmortemPanelUI && this.postmortemPanelUI.visible)
          {
-            this.vehicleMessageList.setLocation(_originalWidth - VEHICLE_MESSAGES_LIST_OFFSET.x >> 1,this.postmortemTips.y - VEHICLE_MESSAGES_LIST_OFFSET.y - VEHICLE_MESSAGES_LIST_POSTMORTEM_Y_OFFSET | 0);
+            this.vehicleMessageList.setLocation(_originalWidth - VEHICLE_MESSAGES_LIST_OFFSET.x >> 1,this.postmortemPanelUI.y - VEHICLE_MESSAGES_LIST_OFFSET.y - VEHICLE_MESSAGES_LIST_POSTMORTEM_Y_OFFSET | 0);
          }
          else
          {
@@ -594,9 +641,9 @@ package net.wg.gui.battle.views
       
       protected function anchorVictimDogTag() : void
       {
-         if(this.postmortemTips)
+         if(this.postmortemPanelUI)
          {
-            PostmortemPanel(this.postmortemTips).anchorVictimDogTag(this.minimap.currentTopLeftPoint.y);
+            PostmortemPanel(this.postmortemPanelUI).anchorVictimDogTag(this.minimap.currentTopLeftPoint.y);
          }
       }
       
@@ -656,16 +703,16 @@ package net.wg.gui.battle.views
          }));
       }
       
-      private function updateMinimapSizeIndex(param1:Number) : void
+      protected function updateMinimapSizeIndex(param1:Number) : void
       {
          this.minimap.setAllowedSizeIndex(this.getAllowedMinimapSizeIndex(param1));
       }
       
-      private function updatePostmortemTipsPosition() : void
+      private function updatePostmortemUIPosition() : void
       {
-         this.postmortemTips.x = width >> 1;
-         this.postmortemTips.y = height;
-         this.postmortemTips.updateElementsPosition();
+         this.postmortemPanelUI.x = width >> 1;
+         this.postmortemPanelUI.y = height;
+         this.postmortemPanelUI.updateElementsPosition();
          this.anchorVictimDogTag();
       }
       
@@ -770,6 +817,20 @@ package net.wg.gui.battle.views
                _loc1_ = null;
             }
             this._tweens.length = 0;
+         }
+      }
+      
+      private function addDeathCamHud() : void
+      {
+         if(!this.deathCamHud)
+         {
+            this.deathCamHud = new DeathCamHud();
+            this.deathCamHud.setManageSize(true);
+            this.deathCamHud.setSize(this.parent.width,this.parent.height);
+            this.deathCamHud.x = 0;
+            this.deathCamHud.y = 0;
+            this.deathCamHud.visible = false;
+            addChild(this.deathCamHud);
          }
       }
    }

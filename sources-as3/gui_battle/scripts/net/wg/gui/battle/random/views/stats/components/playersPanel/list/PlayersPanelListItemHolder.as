@@ -14,9 +14,9 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.list
       
       private var _randomListItem:IRandomPlayersPanelListItem = null;
       
-      public function PlayersPanelListItemHolder(param1:PlayersPanelListItem)
+      public function PlayersPanelListItemHolder(param1:IRandomPlayersPanelListItem)
       {
-         this._randomListItem = IRandomPlayersPanelListItem(param1);
+         this._randomListItem = param1;
          super(param1);
       }
       
@@ -44,7 +44,11 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.list
       
       override protected function updateListItemVehicleDataValues() : void
       {
-         this._randomListItem.getDynamicSquad().setSessionID(vehicleData.sessionID);
+         var _loc1_:PlayersPanelDynamicSquad = this._randomListItem.getDynamicSquad();
+         if(_loc1_ != null)
+         {
+            _loc1_.setSessionID(vehicleData.sessionID);
+         }
       }
       
       override protected function updateVehicleDataValues() : void

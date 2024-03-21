@@ -7,6 +7,8 @@ def _parseDataSection(dataSection):
         return _normalizeValue(dataSection.asString)
     result = {}
     for section in dataSection.values():
+        if section.isAttribute:
+            continue
         key = section.name
         value = _parseDataSection(section)
         if key in result:

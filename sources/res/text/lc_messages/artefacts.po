@@ -128,16 +128,16 @@ msgid "aimingStabilizerBattleBooster/short_special"
 msgstr "Усиливает эффект от стабилизатора"
 
 msgid "aimingStabilizer_Mk1/name"
-msgstr "Стабилизатор вертикальной наводки (Класс&nbsp;1)"
+msgstr "Стабилизатор вертикальной наводки Класс&nbsp;1"
 
 msgid "aimingStabilizer_Mk2/name"
-msgstr "Стабилизатор вертикальной наводки (Класс&nbsp;2)"
+msgstr "Стабилизатор вертикальной наводки Класс&nbsp;2"
 
 msgid "aimingStabilizer_tier1/name"
-msgstr "Стабилизатор вертикальной наводки (Класс&nbsp;1)"
+msgstr "Стабилизатор вертикальной наводки Класс&nbsp;1"
 
 msgid "aimingStabilizer_tier2/name"
-msgstr "Стабилизатор вертикальной наводки (Класс&nbsp;2)"
+msgstr "Стабилизатор вертикальной наводки Класс&nbsp;2"
 
 msgid "antifragmentationLining/long_special"
 msgstr ""
@@ -477,11 +477,11 @@ msgstr "Маскировочная сеть (Класс&nbsp;3)"
 
 msgid "chocolate/always"
 msgstr ""
-"{colorTagOpen}%(crewLevel)s{colorTagClose} ко всем навыкам экипажа. "
+"{colorTagOpen}%(crewLevel)s{colorTagClose} бонус к эффективности экипажа. "
 "Расходуется за один бой."
 
 msgid "chocolate/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} ко всем навыкам экипажа."
+msgstr "{colorTagOpen}+10%{colorTagClose} бонус к эффективности экипажа."
 
 msgid "chocolate/long_special"
 msgstr ""
@@ -569,11 +569,11 @@ msgstr "Просветлённая оптика (Класс&nbsp;3)"
 
 msgid "cocacola/always"
 msgstr ""
-"{colorTagOpen}%(crewLevel)s{colorTagClose} ко всем навыкам экипажа. "
+"{colorTagOpen}%(crewLevel)s{colorTagClose} бонус к эффективности экипажа. "
 "Расходуется за один бой."
 
 msgid "cocacola/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} ко всем навыкам экипажа."
+msgstr "{colorTagOpen}+10%{colorTagClose} бонус к эффективности экипажа."
 
 msgid "cocacola/long_special"
 msgstr ""
@@ -616,7 +616,7 @@ msgstr "Активная разведка"
 
 msgid "comp7_ally_support/descr/active"
 msgstr ""
-"На следующие {colorTagOpen}%(duration)d с{colorTagClose} экипаж получает бонус {colorTagOpen}%(crewBuff_1).1f/%(crewBuff_2).1f/%(crewBuff_3).1f%%{colorTagClose} к уровню владения основной специальностью за каждую машину другой роли в вашей команде.\n"
+"На следующие {colorTagOpen}%(duration)d с{colorTagClose} экипаж получает {colorTagOpen}%(crewBuff_1).1f/%(crewBuff_2).1f/%(crewBuff_3).1f%-й%{colorTagClose} бонус к эффективности за каждую машину другой роли в вашей команде.\n"
 "\n"
 "Ваша машина всегда учитывается при расчёте бонуса от навыка."
 
@@ -636,9 +636,9 @@ msgstr "Полевая ремзона"
 msgid "comp7_aoe_inspire/descr/active"
 msgstr ""
 "На следующие {colorTagOpen}%(duration)d с{colorTagClose} ваш экипаж и "
-"экипажи союзников получают бонус "
-"{colorTagOpen}%(crewBuff_1).0f/%(crewBuff_2).0f/%(crewBuff_3).0f%%{colorTagClose}"
-" к уровню владения основной специальностью."
+"экипажи союзников получают "
+"{colorTagOpen}%(crewBuff_1).0f/%(crewBuff_2).0f/%(crewBuff_3).0f%-й%{colorTagClose}"
+" бонус к эффективности."
 
 msgid "comp7_aoe_inspire/name"
 msgstr "Воодушевление"
@@ -696,7 +696,9 @@ msgid "comp7_juggernaut/descr/active"
 msgstr ""
 "На следующие {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d с{colorTagClose} мощность двигателя повышается на {colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}, скорость ремонта модулей увеличивается на {colorTagOpen}%(repairBuff)d%%{colorTagClose}, а время оглушения снижается на {colorTagOpen}%(stunDurationResist)d%%{colorTagClose}.\n"
 "\n"
-"Попадание снаряда противника в вашу машину в течение действия навыка сокращает оставшееся время перезарядки орудия на {colorTagOpen}%(gunReloadBoost)d с{colorTagClose}."
+"Попадание снаряда противника в вашу машину в течение действия навыка сокращает оставшееся время перезарядки орудия на {colorTagOpen}%(gunReloadBoost)d с{colorTagClose}.\n"
+"\n"
+"В начале боя уровень заряда ролевого навыка равен 1."
 
 msgid "comp7_juggernaut/name"
 msgstr "Напролом"
@@ -752,7 +754,9 @@ msgstr ""
 "\n"
 "Если ваша машина не была обнаружена в момент выстрела, нанесённый снарядом урон увеличится на {colorTagOpen}%(damageFactors_1).0f/%(damageFactors_2).0f/%(damageFactors_3).0f%%{colorTagClose}.\n"
 "\n"
-"Нанесение урона выстрелом с дистанции более {colorTagOpen}%(damageDistance)d м{colorTagClose} обновляет время действия навыка."
+"Нанесение урона выстрелом с дистанции более {colorTagOpen}%(damageDistance)d м{colorTagClose} обновляет время действия навыка.\n"
+"\n"
+"В начале боя уровень заряда ролевого навыка равен 1."
 
 msgid "comp7_sniper/name"
 msgstr "Точно в цель"
@@ -846,10 +850,11 @@ msgstr "Ускоряет ремонт, защищает боеукладку, б
 
 msgid "deluxImprovedVentilation/long_special"
 msgstr ""
-"Усовершенствованная версия вентиляции ({colorTagOpen}+5%{colorTagClose} ко "
-"всем навыкам экипажа), имеет больший эффект: "
-"{colorTagOpen}+8,5%{colorTagClose} ко всем навыкам экипажа. Подходит ко всем"
-" нациям и типам техники, может быть демонтирована только за боны."
+"Усовершенствованная версия Вентиляции (бонус "
+"{colorTagOpen}+5%{colorTagClose} к эффективности экипажа) с улучшенными "
+"характеристиками: бонус {colorTagOpen}+8,5%{colorTagClose} к эффективности "
+"экипажа. Подходит ко всем нациям и типам техники, может быть демонтирована "
+"только за боны."
 
 msgid "deluxImprovedVentilation/name"
 msgstr "Система отвода пороховых газов"
@@ -906,6 +911,20 @@ msgid "deluxeImprovedRotationMechanism/short_special"
 msgstr ""
 "Увеличивает скорость поворота и уменьшает разброс орудия при движении и "
 "поворотах"
+
+msgid "deluxeImprovedSights/long_special"
+msgstr ""
+"Усовершенствованная версия Улучшенного прицела с улучшенными "
+"характеристиками: уменьшение размера круга сведения увеличивает точность "
+"полностью сведённого орудия на {colorTagOpen}+9%{colorTagClose}, что "
+"позволяет чаще попадать в цель. Подходит ко всем нациям и типам техники, "
+"кроме САУ. Можно демонтировать только за боны."
+
+msgid "deluxeImprovedSights/name"
+msgstr "Экспериментальный прицел"
+
+msgid "deluxeImprovedSights/short_special"
+msgstr "Уменьшает разброс орудия"
 
 msgid "deluxeTurbocharger/long_special"
 msgstr ""
@@ -1005,13 +1024,13 @@ msgid "enhancedAimDrivesBattleBooster/short_special"
 msgstr "Усиливает эффект от приводов наводки"
 
 msgid "enhancedAimDrives_tier1/name"
-msgstr "Усиленные приводы наводки (Класс&nbsp;1)"
+msgstr "Усиленные приводы наводки Класс&nbsp;1"
 
 msgid "enhancedAimDrives_tier2/name"
-msgstr "Усиленные приводы наводки (Класс&nbsp;2)"
+msgstr "Усиленные приводы наводки Класс&nbsp;2"
 
 msgid "enhancedAimDrives_tier3/name"
-msgstr "Усиленные приводы наводки (Класс&nbsp;3)"
+msgstr "Усиленные приводы наводки Класс&nbsp;3"
 
 msgid "enhancedBelwillWashers/name"
 msgstr "Усиленные шайбы Бельвилля"
@@ -1067,13 +1086,13 @@ msgid "extraHealthReserve/short_special"
 msgstr "Увеличивает прочность машины и грузоподъёмность, защищает ходовую"
 
 msgid "extraHealthReserve_tier1/name"
-msgstr "Улучшенная закалка (Класс&nbsp;1)"
+msgstr "Улучшенная закалка Класс&nbsp;1"
 
 msgid "extraHealthReserve_tier2/name"
-msgstr "Улучшенная закалка (Класс&nbsp;2)"
+msgstr "Улучшенная закалка Класс&nbsp;2"
 
 msgid "extraHealthReserve_tier3/name"
-msgstr "Улучшенная закалка (Класс&nbsp;3)"
+msgstr "Улучшенная закалка Класс&nbsp;3"
 
 msgid "fireCircle/descr"
 msgstr ""
@@ -1219,13 +1238,13 @@ msgid "grousers/short_special"
 msgstr "Увеличивает скорость поворота машины, улучшает набор скорости"
 
 msgid "grousers_tier1/name"
-msgstr "Дополнительные грунтозацепы (Класс&nbsp;1)"
+msgstr "Дополнительные грунтозацепы Класс&nbsp;1"
 
 msgid "grousers_tier2/name"
-msgstr "Дополнительные грунтозацепы (Класс&nbsp;2)"
+msgstr "Дополнительные грунтозацепы Класс&nbsp;2"
 
 msgid "grousers_tier3/name"
-msgstr "Дополнительные грунтозацепы (Класс&nbsp;3)"
+msgstr "Дополнительные грунтозацепы Класс&nbsp;3"
 
 msgid "gun_balancing_1/name"
 msgstr "Балансировка орудия (Тип 1)"
@@ -1278,10 +1297,10 @@ msgstr ""
 " в течение %(duration)s секунд."
 
 msgid "hotCoffee/always"
-msgstr "%(crewLevel)s ко всем навыкам экипажа. Расходуется за один бой."
+msgstr "%(crewLevel)s бонус к эффективности экипажа. Расходуется за один бой."
 
 msgid "hotCoffee/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} ко всем навыкам экипажа."
+msgstr "{colorTagOpen}+10%{colorTagClose} бонус к эффективности экипажа."
 
 msgid "hotCoffee/long_special"
 msgstr ""
@@ -1375,10 +1394,10 @@ msgid "improvedConfigurationBattleBooster/short_special"
 msgstr "Увеличивает эффект от изменённой компоновки"
 
 msgid "improvedConfiguration_tier1/name"
-msgstr "Изменённая компоновка (Класс&nbsp;1)"
+msgstr "Изменённая компоновка Класс&nbsp;1"
 
 msgid "improvedConfiguration_tier2/name"
-msgstr "Изменённая компоновка (Класс&nbsp;2)"
+msgstr "Изменённая компоновка Класс&nbsp;2"
 
 msgid "improvedRadioCommunication/long_special"
 msgstr ""
@@ -1410,10 +1429,10 @@ msgstr ""
 "поворотах"
 
 msgid "improvedRotationMechanism_tier1/name"
-msgstr "Улучшенные механизмы поворота (Класс&nbsp;1)"
+msgstr "Улучшенные механизмы поворота Класс&nbsp;1"
 
 msgid "improvedRotationMechanism_tier2/name"
-msgstr "Улучшенные механизмы поворота (Класс&nbsp;2)"
+msgstr "Улучшенные механизмы поворота Класс&nbsp;2"
 
 msgid "improvedSights/long_special"
 msgstr ""
@@ -1451,13 +1470,13 @@ msgid "improvedSightsBattleBooster/short_special"
 msgstr "Уменьшает размер круга сведения"
 
 msgid "improvedSights_tier1/name"
-msgstr "Улучшенный прицел (Класс&nbsp;1)"
+msgstr "Улучшенный прицел Класс&nbsp;1"
 
 msgid "improvedSights_tier2/name"
-msgstr "Улучшенный прицел (Класс&nbsp;2)"
+msgstr "Улучшенный прицел Класс&nbsp;2"
 
 msgid "improvedSights_tier3/name"
-msgstr "Улучшенный прицел (Класс&nbsp;3)"
+msgstr "Улучшенный прицел Класс&nbsp;3"
 
 msgid "improvedVentilation/long_special"
 msgstr ""
@@ -1471,8 +1490,8 @@ msgstr "Улучшенная вентиляция"
 
 msgid "improvedVentilationBattleBooster/descr"
 msgstr ""
-"%s ко всем навыкам всего экипажа при установленном оборудовании «Улучшенная "
-"вентиляция» (любого класса), «Система отвода пороховых газов» или «Трофейная"
+"%s бонус к эффективности экипажа при установленном оборудовании «Улучшенная "
+"вентиляция» (любого Класса), «Система отвода пороховых газов» или «Трофейная"
 " вентиляция»."
 
 msgid "improvedVentilationBattleBooster/gain/deluxe"
@@ -1495,22 +1514,22 @@ msgid "improvedVentilationBattleBooster/short_special"
 msgstr "Усиливает эффект от вентиляции"
 
 msgid "improvedVentilation_class1/name"
-msgstr "Улучшенная вентиляция (Класс&nbsp;1)"
+msgstr "Улучшенная вентиляция Класс&nbsp;1"
 
 msgid "improvedVentilation_class2/name"
-msgstr "Улучшенная вентиляция (Класс&nbsp;2)"
+msgstr "Улучшенная вентиляция Класс&nbsp;2"
 
 msgid "improvedVentilation_class3/name"
-msgstr "Улучшенная вентиляция (Класс&nbsp;3)"
+msgstr "Улучшенная вентиляция Класс&nbsp;3"
 
 msgid "improvedVentilation_tier1/name"
-msgstr "Улучшенная вентиляция (Класс&nbsp;1)"
+msgstr "Улучшенная вентиляция Класс&nbsp;1"
 
 msgid "improvedVentilation_tier2/name"
-msgstr "Улучшенная вентиляция (Класс&nbsp;2)"
+msgstr "Улучшенная вентиляция Класс&nbsp;2"
 
 msgid "improvedVentilation_tier3/name"
-msgstr "Улучшенная вентиляция (Класс&nbsp;3)"
+msgstr "Улучшенная вентиляция Класс&nbsp;3"
 
 msgid "improved_suspension_1/name"
 msgstr "Улучшенная подвеска (Тип 1)"
@@ -1888,10 +1907,10 @@ msgid "rancorousBattleBooster/short_special"
 msgstr "Даёт навык «Злопамятный» или усиливает его"
 
 msgid "ration/always"
-msgstr "%(crewLevel)s ко всем навыкам экипажа. Расходуется за один бой."
+msgstr "%(crewLevel)s бонус к эффективности экипажа. Расходуется за один бой."
 
 msgid "ration/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} ко всем навыкам экипажа."
+msgstr "{colorTagOpen}+10%{colorTagClose} бонус к эффективности экипажа."
 
 msgid "ration/long_special"
 msgstr ""
@@ -1911,10 +1930,10 @@ msgid "ration/short_special"
 msgstr "Повышает эффективность советских экипажей"
 
 msgid "ration_china/always"
-msgstr "%(crewLevel)s ко всем навыкам экипажа. Расходуется за один бой."
+msgstr "%(crewLevel)s бонус к эффективности экипажа. Расходуется за один бой."
 
 msgid "ration_china/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} ко всем навыкам экипажа."
+msgstr "{colorTagOpen}+10%{colorTagClose} бонус к эффективности экипажа."
 
 msgid "ration_china/long_special"
 msgstr ""
@@ -1934,10 +1953,10 @@ msgid "ration_china/short_special"
 msgstr "Повышает эффективность китайских экипажей"
 
 msgid "ration_czech/always"
-msgstr "%(crewLevel)s ко всем навыкам экипажа. Расходуется за один бой."
+msgstr "%(crewLevel)s бонус к эффективности экипажа. Расходуется за один бой."
 
 msgid "ration_czech/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} ко всем навыкам экипажа."
+msgstr "{colorTagOpen}+10%{colorTagClose} бонус к эффективности экипажа."
 
 msgid "ration_czech/long_special"
 msgstr ""
@@ -1957,10 +1976,10 @@ msgid "ration_czech/short_special"
 msgstr "Повышает эффективность чехословацких экипажей"
 
 msgid "ration_italy/always"
-msgstr "%(crewLevel)s ко всем навыкам экипажа. Расходуется за один бой."
+msgstr "%(crewLevel)s бонус к эффективности экипажа. Расходуется за один бой."
 
 msgid "ration_italy/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} ко всем навыкам экипажа."
+msgstr "{colorTagOpen}+10%{colorTagClose} бонус к эффективности экипажа."
 
 msgid "ration_italy/long_special"
 msgstr ""
@@ -1980,10 +1999,10 @@ msgid "ration_italy/short_special"
 msgstr "Повышает эффективность итальянских экипажей"
 
 msgid "ration_japan/always"
-msgstr "%(crewLevel)s ко всем навыкам экипажа. Расходуется за один бой."
+msgstr "%(crewLevel)s бонус к эффективности экипажа. Расходуется за один бой."
 
 msgid "ration_japan/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} ко всем навыкам экипажа."
+msgstr "{colorTagOpen}+10%{colorTagClose} бонус к эффективности экипажа."
 
 msgid "ration_japan/long_special"
 msgstr ""
@@ -2003,10 +2022,10 @@ msgid "ration_japan/short_special"
 msgstr "Повышает эффективность японских экипажей"
 
 msgid "ration_poland/always"
-msgstr "%(crewLevel)s ко всем навыкам экипажа. Расходуется за один бой."
+msgstr "%(crewLevel)s бонус к эффективности экипажа. Расходуется за один бой."
 
 msgid "ration_poland/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} ко всем навыкам экипажа."
+msgstr "{colorTagOpen}+10%{colorTagClose} бонус к эффективности экипажа."
 
 msgid "ration_poland/long_special"
 msgstr ""
@@ -2026,10 +2045,10 @@ msgid "ration_poland/short_special"
 msgstr "Повышает эффективность польских экипажей"
 
 msgid "ration_sweden/always"
-msgstr "%(crewLevel)s ко всем навыкам экипажа. Расходуется за один бой."
+msgstr "%(crewLevel)s бонус к эффективности экипажа. Расходуется за один бой."
 
 msgid "ration_sweden/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} ко всем навыкам экипажа."
+msgstr "{colorTagOpen}+10%{colorTagClose} бонус к эффективности экипажа."
 
 msgid "ration_sweden/long_special"
 msgstr ""
@@ -2049,10 +2068,10 @@ msgid "ration_sweden/short_special"
 msgstr "Повышает эффективность шведских экипажей"
 
 msgid "ration_uk/always"
-msgstr "%(crewLevel)s ко всем навыкам экипажа. Расходуется за один бой."
+msgstr "%(crewLevel)s бонус к эффективности экипажа. Расходуется за один бой."
 
 msgid "ration_uk/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose} ко всем навыкам экипажа."
+msgstr "{colorTagOpen}+10%{colorTagClose} бонус к эффективности экипажа."
 
 msgid "ration_uk/long_special"
 msgstr ""
@@ -3104,10 +3123,10 @@ msgid "tankRammer/name"
 msgstr "Орудийный досылатель"
 
 msgid "tankRammer_tier1/name"
-msgstr "Орудийный досылатель (Класс&nbsp;1)"
+msgstr "Орудийный досылатель Класс&nbsp;1"
 
 msgid "tankRammer_tier2/name"
-msgstr "Орудийный досылатель (Класс&nbsp;2)"
+msgstr "Орудийный досылатель Класс&nbsp;2"
 
 msgid "thunderStrike/descr"
 msgstr ""
@@ -3326,13 +3345,13 @@ msgid "turbochargerBattleBooster/short_special"
 msgstr "Увеличивает мощность двигателя"
 
 msgid "turbocharger_tier1/name"
-msgstr "Турбонагнетатель (Класс&nbsp;1)"
+msgstr "Турбонагнетатель Класс&nbsp;1"
 
 msgid "turbocharger_tier2/name"
-msgstr "Турбонагнетатель (Класс&nbsp;2)"
+msgstr "Турбонагнетатель Класс&nbsp;2"
 
 msgid "turbocharger_tier3/name"
-msgstr "Турбонагнетатель (Класс&nbsp;3)"
+msgstr "Турбонагнетатель Класс&nbsp;3"
 
 msgid "virtuosoBattleBooster/action/boost"
 msgstr "Удваивает эффект от навыка «Виртуоз»"

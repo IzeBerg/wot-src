@@ -57,4 +57,4 @@ class ArenaInfoComp7Component(DynamicScriptComponent):
             stats[vehID] = {Comp7Keys.RANK: rank['divisionRank'], Comp7Keys.IS_QUAL_ACTIVE: rank['isQualActive']}
 
         if stats:
-            arena.onGameModeSpecificStats(isStatic=True, stats=stats)
+            arena.updateGameModeSpecificStats(isStatic=True, stats=stats)

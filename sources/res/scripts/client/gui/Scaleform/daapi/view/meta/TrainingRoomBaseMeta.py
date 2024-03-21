@@ -58,9 +58,9 @@ class TrainingRoomBaseMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_updateComment(commentStr)
 
-    def as_updateMapS(self, arenaTypeID, maxPlayersCount, arenaName, title, arenaSubType, descriptionStr, battleTypeIco):
+    def as_updateMapS(self, arenaTypeID, maxPlayersCount, arenaName, title, arenaSubType, descriptionStr, battleTypeIco, alertText, isObserverModeEnabled):
         if self._isDAAPIInited():
-            return self.flashObject.as_updateMap(arenaTypeID, maxPlayersCount, arenaName, title, arenaSubType, descriptionStr, battleTypeIco)
+            return self.flashObject.as_updateMap(arenaTypeID, maxPlayersCount, arenaName, title, arenaSubType, descriptionStr, battleTypeIco, alertText, isObserverModeEnabled)
 
     def as_updateTimeoutS(self, roundLenString):
         if self._isDAAPIInited():
@@ -85,10 +85,6 @@ class TrainingRoomBaseMeta(View):
     def as_setArenaVoipChannelsS(self, arenaVoipChannels):
         if self._isDAAPIInited():
             return self.flashObject.as_setArenaVoipChannels(arenaVoipChannels)
-
-    def as_disableStartButtonS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_disableStartButton(value)
 
     def as_disableControlsS(self, value):
         if self._isDAAPIInited():
@@ -137,3 +133,7 @@ class TrainingRoomBaseMeta(View):
     def as_enabledCloseButtonS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_enabledCloseButton(value)
+
+    def as_setStartButtonStateS(self, enabled, tooltip=None):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setStartButtonState(enabled, tooltip)

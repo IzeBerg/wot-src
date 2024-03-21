@@ -29,6 +29,7 @@ package net.wg.gui.lobby.training
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    import net.wg.infrastructure.managers.IVoiceChatManager;
    import net.wg.utils.IScheduler;
+   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.controls.CoreList;
    import scaleform.clik.core.UIComponent;
@@ -44,6 +45,8 @@ package net.wg.gui.lobby.training
       private static const BACK_SLASH:String = "/";
       
       private static const OWNER_BAGE_Y_OFFSET:int = -1;
+      
+      private static const ALERT_TEXT_OFFSET_X:int = 12;
        
       
       public var team1Label:TextField;
@@ -61,6 +64,8 @@ package net.wg.gui.lobby.training
       public var map:TextField;
       
       public var arenaVOIPLabel:TextField;
+      
+      public var alertText:AlertMessage;
       
       public var ownerLabel:TextField;
       
@@ -197,6 +202,8 @@ package net.wg.gui.lobby.training
          this.timeout.buttonMode = false;
          this.timeout.autoSize = this.maxPlayers.autoSize = TextFieldAutoSize.LEFT;
          this.maxPlayers.buttonMode = false;
+         this.startButton.mouseEnabledOnDisabled = true;
+         this.observerButton.addEventListener(ObserverButtonComponent.SELECTED,this.onObserverButtonSelectedHandler,false,0,true);
       }
       
       override protected function onBeforeDispose() : void
@@ -234,7 +241,6 @@ package net.wg.gui.lobby.training
       override protected function onPopulate() : void
       {
          var _loc1_:Boolean = false;
-         var _loc2_:Boolean = false;
          super.onPopulate();
          if(canAssignToTeamS(1) || canAssignToTeamS(2) || canChangePlayerTeamS())
          {
@@ -247,7 +253,7 @@ package net.wg.gui.lobby.training
          registerFlashComponentS(this.minimap,Aliases.LOBBY_MINIMAP);
          this.setTeamsInfo();
          _loc1_ = this._voiceChatMgr.getYY();
-         _loc2_ = this._voiceChatMgr.isVOIPEnabledS();
+         var _loc2_:Boolean = this._voiceChatMgr.isVOIPEnabledS();
          this.arenaVoipSettings.visible = _loc2_ || _loc1_;
          this.arenaVOIPLabel.text = _loc2_ || _loc1_ ? MENU.TRAINING_INFO_VOICECHAT : Values.EMPTY_STR;
       }
@@ -323,6 +329,12 @@ package net.wg.gui.lobby.training
          this.map.htmlText = param1.arenaName;
          this.titleField.htmlText = param1.title;
          this.typeField.htmlText = param1.arenaSubType;
+         this.alertText.visible = StringUtils.isNotEmpty(param1.alertText);
+         if(this.alertText.visible)
+         {
+            this.alertText.setMessage(param1.alertText);
+            this.alertText.x = this.typeField.x + this.typeField.textWidth + ALERT_TEXT_OFFSET_X;
+         }
          var _loc2_:int = param1.badge;
          var _loc3_:Boolean = Boolean(_loc2_);
          if(_loc3_ != this._ownerBadgeVisible)
@@ -348,10 +360,6 @@ package net.wg.gui.lobby.training
          this.arenaVoipSettings.setCanChangeArenaVOIP(param1.canChangeArenaVOIP);
          invalidate(InvalidationType.STATE);
          this.observerButton.visible = param1.isObserverModeEnabled;
-         if(param1.isObserverModeEnabled)
-         {
-            this.observerButton.addEventListener(ObserverButtonComponent.SELECTED,this.onObserverButtonSelectedHandler,false,0,true);
-         }
       }
       
       public function as_disableControls(param1:Boolean) : void
@@ -359,14 +367,15 @@ package net.wg.gui.lobby.training
          this.disableControls(param1);
       }
       
-      public function as_disableStartButton(param1:Boolean) : void
-      {
-         this.startButton.enabled = !param1;
-      }
-      
       public function as_enabledCloseButton(param1:Boolean) : void
       {
          this.closeButton.enabled = param1;
+      }
+      
+      public function as_setStartButtonState(param1:Boolean, param2:String) : void
+      {
+         this.startButton.enabled = param1;
+         this.startButton.tooltip = param2;
       }
       
       public function as_setArenaVoipChannels(param1:Number) : void
@@ -433,7 +442,7 @@ package net.wg.gui.lobby.training
          this.doUpdateComment(param1);
       }
       
-      public function as_updateMap(param1:Number, param2:Number, param3:String, param4:String, param5:String, param6:String, param7:String) : void
+      public function as_updateMap(param1:Number, param2:Number, param3:String, param4:String, param5:String, param6:String, param7:String, param8:String, param9:Boolean) : void
       {
          this.minimap.setMapS(param1);
          this._maxPlayersCount = param2;
@@ -441,9 +450,16 @@ package net.wg.gui.lobby.training
          this.map.htmlText = param3;
          this.titleField.htmlText = param4;
          this.typeField.htmlText = param5;
+         this.alertText.visible = StringUtils.isNotEmpty(param8);
+         if(this.alertText.visible)
+         {
+            this.alertText.setMessage(param8);
+            this.alertText.x = this.typeField.x + this.typeField.textWidth + ALERT_TEXT_OFFSET_X;
+         }
          this.description.position = Values.ZERO;
          this.description.htmlText = param6;
          this.battleIcon.type = param7;
+         this.observerButton.visible = param9;
       }
       
       public function as_updateTimeout(param1:String) : void
@@ -626,6 +642,8 @@ package net.wg.gui.lobby.training
          this.arenaVoipSettings.dispose();
          this.arenaVoipSettings = null;
          this.minimap = null;
+         this.alertText.dispose();
+         this.alertText = null;
       }
       
       private function setSpeaking(param1:Boolean, param2:Number) : void

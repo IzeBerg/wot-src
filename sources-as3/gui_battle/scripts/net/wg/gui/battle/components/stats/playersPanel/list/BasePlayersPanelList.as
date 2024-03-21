@@ -38,7 +38,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private var _state:int;
       
-      private var _items:Vector.<IPlayersPanelListItemHolder>;
+      protected var _items:Vector.<IPlayersPanelListItemHolder>;
       
       private var _itemsHealth:Dictionary;
       
@@ -502,7 +502,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this._dogTag.alpha = 0;
       }
       
-      private function addItem(param1:DAAPIVehicleInfoVO) : void
+      protected function addItem(param1:DAAPIVehicleInfoVO) : void
       {
          var _loc2_:IPlayersPanelListItem = this._classFactory.getComponent(this.itemLinkage,IPlayersPanelListItem);
          var _loc3_:int = this._items.length;

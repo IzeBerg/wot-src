@@ -312,6 +312,9 @@ class BattleBooster(Equipment):
 
             return 0
 
+    def isAffectOnCrewLevel(self):
+        return not self.isCrewBooster() and self.descriptor.configContainCrewLevelIncrease()
+
     def getAffectedSkillName(self):
         if self.isCrewBooster():
             return self.descriptor.skillName

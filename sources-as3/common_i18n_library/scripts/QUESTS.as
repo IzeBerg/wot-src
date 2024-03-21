@@ -2549,6 +2549,16 @@ package
       
       public static const BONUSNAME_ATTENDANCE_REWARD:String = "#quests:bonusName/attendance_reward";
       
+      public static const BONUSNAME_TOURCOIN:String = "#quests:bonusName/tourcoin";
+      
+      public static const BONUSNAME_INDUSTRIALRESOURCE:String = "#quests:bonusName/industrialResource";
+      
+      public static const BONUSNAME_BATTLE_BONUSES:String = "#quests:bonusName/battle_bonuses";
+      
+      public static const BONUSNAME_BADGES:String = "#quests:bonusName/badges";
+      
+      public static const BONUSNAME_ADDITIONAL_BONUSES:String = "#quests:bonusName/additional_bonuses";
+      
       public static const ACTION_AUTO_CALENDAR:String = "#quests:action/auto/calendar";
       
       public static const ACTION_FULL_CALENDAR:String = "#quests:action/full/calendar";
@@ -2625,8 +2635,6 @@ package
       
       public static const ACTION_FULL_CREDITSTANKMANCOST:String = "#quests:action/full/creditsTankmanCost";
       
-      public static const ACTION_HERO_FULL_CREDITSTANKMANCOST:String = "#quests:action/hero/full/creditsTankmanCost";
-      
       public static const ACTION_SHORT_CREDITSTANKMANCOST:String = "#quests:action/short/creditsTankmanCost";
       
       public static const ACTION_BUTTON_CREDITSTANKMANCOST:String = "#quests:action/button/creditsTankmanCost";
@@ -2634,8 +2642,6 @@ package
       public static const ACTION_AUTO_GOLDTANKMANCOST:String = "#quests:action/auto/goldTankmanCost";
       
       public static const ACTION_FULL_GOLDTANKMANCOST:String = "#quests:action/full/goldTankmanCost";
-      
-      public static const ACTION_HERO_FULL_GOLDTANKMANCOST:String = "#quests:action/hero/full/goldTankmanCost";
       
       public static const ACTION_SHORT_GOLDTANKMANCOST:String = "#quests:action/short/goldTankmanCost";
       
@@ -3419,11 +3425,15 @@ package
       
       public static const DAILYQUESTS_CONDITION_DESTROYMODULE_PLURAL_ACCUM:String = "#quests:dailyQuests/condition/destroyModule_plural_accum";
       
+      public static const DAILYQUESTS_CONDITION_DODAMAGEVEH_SINGULAR_ACCUM:String = "#quests:dailyQuests/condition/doDamageVeh_singular_accum";
+      
       public static const DAILYQUESTS_CONDITION_DODAMAGEVEH_ACCUM:String = "#quests:dailyQuests/condition/doDamageVeh_accum";
       
       public static const DAILYQUESTS_CONDITION_DESTROYVEH_FEW_ACCUM:String = "#quests:dailyQuests/condition/destroyVeh_few_accum";
       
       public static const DAILYQUESTS_CONDITION_DESTROYVEH_PLURAL_ACCUM:String = "#quests:dailyQuests/condition/destroyVeh_plural_accum";
+      
+      public static const DAILYQUESTS_CONDITION_BATTLE_SINGULAR:String = "#quests:dailyQuests/condition/battle_singular";
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP:String = "#quests:details/conditions/cumulative/damagedHp";
       

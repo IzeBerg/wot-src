@@ -17,6 +17,8 @@ package
       
       public static const MAPS_ICONS_BATTLEMATTERS_ENTRYPOINT_BG:String = "../maps/icons/battleMatters/entryPoint/bg.png";
       
+      public static const MAPS_ICONS_BATTLEPASS_CUSTOM_TANKMEN_SCREEN_BACKGROUNDS_BG:String = "../maps/icons/battlePass/custom_tankmen_screen/backgrounds/bg.png";
+      
       public static const MAPS_ICONS_BATTLEPASS_OFF_SEASON_BG:String = "../maps/icons/battlePass/off_season/bg.png";
       
       public static const MAPS_ICONS_BATTLEPASS_POST_PROGRESSION_BG:String = "../maps/icons/battlePass/post_progression/bg.png";
@@ -40,6 +42,8 @@ package
       public static const MAPS_ICONS_EPICBATTLES_ARROW_BG:String = "../maps/icons/epicBattles/arrow/bg.png";
       
       public static const MAPS_ICONS_EPICBATTLES_SKILLS_INTRO_BG:String = "../maps/icons/epicBattles/skills/intro/bg.png";
+      
+      public static const MAPS_ICONS_HANGAR_BUYVEHICLE_BG:String = "../maps/icons/hangar/buyVehicle/bg.png";
       
       public static const MAPS_ICONS_MAPBOX_BG:String = "../maps/icons/mapbox/bg.png";
       

@@ -613,12 +613,6 @@ msgstr ""
 "\n"
 "Данная возможность будет полезна при смене типа техники с сохранением экипажа, либо же при смене вашего стиля игры: например, если вы решите играть от скрытности или пересадите экипаж с тяжёлого танка на ПТ-САУ, то приоритетным навыком станет «маскировка»."
 
-msgid "action/hero/full/creditsTankmanCost"
-msgstr ""
-"Обучите или переобучите экипаж за кредиты со скидкой %(discount)s. Хорошо развитый экипаж дополняет характеристики машины и поможет эффективнее реализовывать потенциал вашей машины.\n"
-"\n"
-"Обратите внимание, что характеристики машины в Ангаре показаны с учётом экипажа, обученного на 100%%. Таким образом, если в бой пойдёт более слабый экипаж, характеристики машины будут заметно ниже заявленных в Ангаре."
-
 msgid "action/hero/full/dropSkills/mixed"
 msgstr ""
 "Сбросьте выбранные навыки членов экипажа со скидкой %(discount)s. Это поможет, если вы пересаживаете экипаж на машину с другой ролью в бою.\n"
@@ -657,12 +651,6 @@ msgstr ""
 "Сбросьте выбранные навыки членов экипажа за золото со скидкой %(discount)s. Это поможет, если вы пересаживаете экипаж на машину с другой ролью в бою.\n"
 "\n"
 "Данная возможность будет полезна при смене типа техники с сохранением экипажа, либо же при смене вашего стиля игры: например, если вы решите играть от скрытности или пересадите экипаж с тяжёлого танка на ПТ-САУ, то приоритетным навыком станет «маскировка»."
-
-msgid "action/hero/full/goldTankmanCost"
-msgstr ""
-"Обучите или переобучите экипаж за золото со скидкой %(discount)s. Хорошо развитый экипаж дополняет характеристики машины и поможет эффективнее реализовывать потенциал вашей машины.\n"
-"\n"
-"Обратите внимание, что характеристики машины в Ангаре показаны с учётом экипажа, обученного на 100%%. Таким образом, если в бой пойдёт более слабый экипаж, характеристики машины будут заметно ниже заявленных в Ангаре."
 
 msgid "action/hero/full/mul_ShellPrice"
 msgstr ""
@@ -761,9 +749,9 @@ msgstr ""
 
 msgid "action/hero/full/tankmen/mixed"
 msgstr ""
-"Обучите или переобучите экипаж со скидкой %(discount)s. Хорошо развитый экипаж дополняет характеристики машины и поможет эффективнее реализовывать потенциал вашей машины.\n"
-"\n"
-"Обратите внимание, что характеристики машины в Ангаре показаны с учётом экипажа, обученного на 100%%. Таким образом, если в бой пойдёт более слабый экипаж, характеристики машины будут заметно ниже заявленных в Ангаре."
+"Обучите или переобучите экипаж со скидкой %(discount)s. Хорошо развитый "
+"экипаж может использовать свои навыки при управлении этой машиной и поможет "
+"эффективнее реализовывать её потенциал."
 
 msgid "action/hero/full/tradeInSellPriceFactor"
 msgstr ""
@@ -1008,8 +996,14 @@ msgstr "%(formattedProgress)s Осталось: %(left)s Место: %(position)
 msgid "battleProgress/position/short"
 msgstr "%(formattedProgress)s Место: %(position)s"
 
+msgid "bonusName/additional_bonuses"
+msgstr "Управляемый бонус к опыту"
+
 msgid "bonusName/attendance_reward"
 msgstr "Награды за посещение"
+
+msgid "bonusName/badges"
+msgstr "Нашивка танкиста"
 
 msgid "bonusName/battlePassPoints"
 msgstr "Очки Боевого пропуска"
@@ -1019,6 +1013,9 @@ msgstr "Очки Боевого пропуска: "
 
 msgid "bonusName/battle_bonus_x5"
 msgstr "Задача на x5 опыта за бой"
+
+msgid "bonusName/battle_bonuses"
+msgstr "Боевой бонус"
 
 msgid "bonusName/berths"
 msgstr "Мест в Казарме"
@@ -1212,6 +1209,9 @@ msgstr "Хранилище золота"
 msgid "bonusName/idle_crew_xp"
 msgstr "Курс подготовки экипажа"
 
+msgid "bonusName/industrialResource"
+msgstr "Промресурс"
+
 msgid "bonusName/inscription"
 msgstr "Надпись"
 
@@ -1256,6 +1256,9 @@ msgstr "Опыт экипажа"
 
 msgid "bonusName/tankmenXPFactor"
 msgstr "Коэффициент опыта экипажа"
+
+msgid "bonusName/tourcoin"
+msgstr "Очки похода"
 
 msgid "bonusName/xp"
 msgstr "Боевой опыт"
@@ -1340,11 +1343,10 @@ msgid "bonuses/item/tankman"
 msgstr "Новобранец"
 
 msgid "bonuses/item/tankmen/no_skills"
-msgstr "Для %(vehName)s: %(roleLevel)d%%-й экипаж."
+msgstr "Экипаж для машины %(vehName)s."
 
 msgid "bonuses/item/tankmen/with_skills"
-msgstr ""
-"Для %(vehName)s: %(roleLevel)d%%-й экипаж (навыков на экипаж: %(skills)d)."
+msgstr "Экипаж для машины %(vehName)s (навыков: %(skills)d)."
 
 msgid "bonuses/item/tankmenXP"
 msgstr "опыт экипажа"
@@ -1430,6 +1432,9 @@ msgstr "Истекает через %H ч %M мин"
 msgid "dailyQuests/bonusQuest/countDown_minSec"
 msgstr "Истекает через %MM:%SS"
 
+msgid "dailyQuests/condition/battle_singular"
+msgstr "Провести бой"
+
 msgid "dailyQuests/condition/destroyModule_few"
 msgstr "совершить %(value)d критических попадания в бою"
 
@@ -1471,6 +1476,9 @@ msgstr "нанести урон %(value)d ед. техники за бой"
 
 msgid "dailyQuests/condition/doDamageVeh_accum"
 msgstr "нанести урон %(value)d ед. техники"
+
+msgid "dailyQuests/condition/doDamageVeh_singular_accum"
+msgstr "Нанести урон %(value)d машине"
 
 msgid "dailyQuests/condition/doDamage_accum"
 msgstr "нанести %(value)d ед. урона"

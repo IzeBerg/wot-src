@@ -220,18 +220,22 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>SequenceComponent</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
 				<config>
+					<property>
+						<name>loop</name>
+						<value>0</value>
+					</property>
 					<property>
 						<name>autoStart</name>
 						<value>0</value>
 					</property>
 					<property>
 						<name>pauseOnEnd</name>
-						<value>0</value>
+						<value>1</value>
 					</property>
 					<property>
 						<name>alwaysEnabled</name>
@@ -262,13 +266,6 @@
 										</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											22.1333
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -286,13 +283,6 @@
 									</property>
 									<property>
 										<name>end</name>
-										<value>
-											22.1333
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
-										<name>duration</name>
 										<value>
 											22.1333
 											<!--BW_String-->
@@ -322,13 +312,6 @@
 										</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											24.0333
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -352,23 +335,12 @@
 										</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											23.1333
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
 								</object>
 							</item>
 						</collection>
-					</property>
-					<property>
-						<name>time</name>
-						<value>0</value>
 					</property>
 				</config>
 			</component>
@@ -529,6 +501,10 @@
 						<isAsset>true</isAsset>
 						<value>content/Buildings/hd_bld_EU_033_KitCrashHouses/normal/lod0/hd_bld_EU_033_KitCrashHouses_Interior_01.model</value>
 					</property>
+					<property>
+						<name>Cast Shadows</name>
+						<value>1</value>
+					</property>
 				</config>
 			</component>
 			<component>
@@ -540,6 +516,10 @@
 						<isAsset>true</isAsset>
 						<value>content/Buildings/hd_bld_EU_088_CrashWall/normal/lod0/hd_bld_EU_088_CrashWall_01.model</value>
 					</property>
+					<property>
+						<name>Cast Shadows</name>
+						<value>1</value>
+					</property>
 				</config>
 			</component>
 			<component>
@@ -550,6 +530,10 @@
 						<name>Model name</name>
 						<isAsset>true</isAsset>
 						<value>content/Environment/hd_env440_borders/normal/lod0/hd_env440_borders_20m.model</value>
+					</property>
+					<property>
+						<name>Cast Shadows</name>
+						<value>1</value>
 					</property>
 				</config>
 			</component>

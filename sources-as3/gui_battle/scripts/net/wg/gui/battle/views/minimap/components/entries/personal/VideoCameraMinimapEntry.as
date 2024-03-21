@@ -26,8 +26,8 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       override protected function configUI() : void
       {
          super.configUI();
-         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,PersonalMinimapEntryConst.GREEN_DIRECTION_ATLAS_ITEM_NAME,this.directionPlaceholder.graphics,"",true);
-         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,PersonalMinimapEntryConst.CAMERA_ATLAS_ITEM_NAME,this.cameraPlaceholder.graphics,"",true);
+         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,PersonalMinimapEntryConst.GREEN_DIRECTION_ATLAS_ITEM_NAME,this.directionPlaceholder.graphics,"",true,false,true);
+         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,PersonalMinimapEntryConst.CAMERA_ATLAS_ITEM_NAME,this.cameraPlaceholder.graphics,"",true,false,true);
          MinimapEntryController.instance.registerScalableEntry(this);
       }
       

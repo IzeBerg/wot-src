@@ -428,7 +428,7 @@ def _createItemVO(rawItem, itemsCache, goodiesCache, slotIndex, rawTooltipData=N
         overlay = fittingItem.getHighlightType() if fittingItem is not None else SLOT_HIGHLIGHT_TYPES.NO_HIGHLIGHT
         count = rawItem.count
         if rawItem.type in ItemPackTypeGroup.CREW:
-            countFormat = _formatCrew(rawItem)
+            countFormat = ''
         elif rawItem.type in _UNCOUNTABLE_ITEM_TYPE:
             if rawItem.type == ItemPackType.CUSTOM_PREMIUM_PLUS and not __getPremiumPlusIconExists(count):
                 countFormat = ('x{}').format(count) if count > 1 else ''
@@ -444,16 +444,6 @@ def _createItemVO(rawItem, itemsCache, goodiesCache, slotIndex, rawTooltipData=N
        'slotIndex': slotIndex, 
        'count': countFormat, 
        'rawData': rawTooltipData}
-
-
-def _formatCrew(item):
-    if item.type in (ItemPackType.CREW_100, ItemPackType.CUSTOM_CREW_100):
-        return '100%'
-    if item.type == ItemPackType.CREW_75:
-        return '75%'
-    if item.type == ItemPackType.CREW_50:
-        return '50%'
-    return ''
 
 
 def _getBoxTooltipVO(rawItems, itemsCache, goodiesCache):

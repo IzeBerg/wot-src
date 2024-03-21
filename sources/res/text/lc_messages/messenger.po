@@ -148,6 +148,11 @@ msgstr "пользователь не существует."
 msgid "chat_error/WRONG_ARGS"
 msgstr "неправильный аргумент."
 
+msgid "client/BATTLE_ROYALE_SQUAD/disableVOIP"
+msgstr ""
+"Голосовая связь отключена. Чтобы общаться и слышать совзводных, нажмите "
+"клавишу %(keyName)s."
+
 msgid "client/COMP7/disableVOIP"
 msgstr ""
 "Голосовая связь отключена. Чтобы общаться с союзниками, включите голосовой "
@@ -279,6 +284,11 @@ msgstr "%s не может отправлять вам голосовые соо
 
 msgid "client/information/unsetMuted/message"
 msgstr "%s может отправлять вам голосовые сообщения."
+
+msgid "client/warning/AFKWarning/message"
+msgstr ""
+"Бездействие может повлечь наказание!\n"
+"Для победы нужны усилия всех членов команды!"
 
 msgid "client/warning/emptyUserSearchToken/message"
 msgstr "Задан пустой запрос"
@@ -1267,6 +1277,9 @@ msgstr "Списано личных очков славы"
 msgid "platformCurrencyMsg/debited/freeXP"
 msgstr "Списано свободного опыта"
 
+msgid "platformCurrencyMsg/debited/tourcoin"
+msgstr "Списано очков похода"
+
 msgid "platformCurrencyMsg/debited/wdrcoin"
 msgstr "Списано жетонов за выслугу лет"
 
@@ -1287,6 +1300,9 @@ msgstr "Начислено личных очков славы"
 
 msgid "platformCurrencyMsg/received/freeXP"
 msgstr "Получено свободного опыта"
+
+msgid "platformCurrencyMsg/received/tourcoin"
+msgstr "Начислено очков похода"
 
 msgid "platformCurrencyMsg/received/wdrcoin"
 msgstr "Добавлено жетонов за выслугу лет"
@@ -1554,14 +1570,6 @@ msgstr "Победа"
 msgid "serviceChannelMessages/Financial/add"
 msgstr "Добавлено"
 
-msgid "serviceChannelMessages/WotPlusIntroNotification/body"
-msgstr ""
-"Для игроков с оформленной подпиской WoT Plus доступна новая функциональность"
-" «Награды за посещение»."
-
-msgid "serviceChannelMessages/WotPlusIntroNotification/header"
-msgstr "Доступен новый бонус подписки WoT Plus"
-
 msgid "serviceChannelMessages/achievementReceived/message"
 msgstr "Достижения"
 
@@ -1570,6 +1578,12 @@ msgstr "Акция"
 
 msgid "serviceChannelMessages/actionEnd"
 msgstr "Акция завершена."
+
+msgid "serviceChannelMessages/additionalXP/available/title"
+msgstr "Доступен управляемый бонус к опыту от WoT Plus"
+
+msgid "serviceChannelMessages/additionalXP/unavailable/title"
+msgstr "Управляемый бонус к опыту от WoT Plus недоступен"
 
 msgid "serviceChannelMessages/autoBoosterErrorNoWallet"
 msgstr ""
@@ -1653,7 +1667,7 @@ msgstr ""
 msgid ""
 "serviceChannelMessages/autoRentStyleRentIsAlmostOverAutoprolongationON/text"
 msgstr ""
-"На машине %s будет автоматически продлена аренда стиля «%s» ещё на %s боёв "
+"Аренда стиля «%s» для машины %s будет автоматически продлена ещё на %s боёв "
 "через 3 боя."
 
 msgid "serviceChannelMessages/autoRentStyleRentIsOver/button"
@@ -1689,8 +1703,20 @@ msgstr "Не выполнен автоматический ремонт %s. От
 msgid "serviceChannelMessages/autoRepairSuccess"
 msgstr "Ремонт %s выполнен успешно. Потрачено "
 
+msgid "serviceChannelMessages/badge/available/title"
+msgstr "Доступна нашивка WoT Plus"
+
+msgid "serviceChannelMessages/badge/unavailable/title"
+msgstr "Нашивка WoT Plus недоступна"
+
 msgid "serviceChannelMessages/badgeAchievement"
 msgstr "Добавлено нашивок"
+
+msgid "serviceChannelMessages/battleBonuses/available/title"
+msgstr "Доступен боевой бонус от WoT Plus"
+
+msgid "serviceChannelMessages/battleBonuses/unavailable/title"
+msgstr "Боевой бонус от WoT Plus недоступен"
 
 msgid "serviceChannelMessages/battleMatters/awards/body"
 msgstr "Задача «%(questIdx)s %(questName)s» выполнена."
@@ -1720,7 +1746,7 @@ msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body"
 msgstr "Использован жетон академии."
 
 msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body/crew"
-msgstr "%(vehName)s (экипаж 100%)"
+msgstr "%(vehName)s"
 
 msgid ""
 "serviceChannelMessages/battleMatters/awards/tokenAward/body/rewardReceived"
@@ -1793,7 +1819,7 @@ msgstr ""
 
 msgid "serviceChannelMessages/battlePassHReward/battle/newLevel/text"
 msgstr ""
-"Вы завершили %(newLevel)s этап прогрессии Боевого пропуска.\n"
+"Вы завершили %(newLevel)s-й этап прогрессии Боевого пропуска.\n"
 "\n"
 "Получена награда:"
 
@@ -2251,8 +2277,14 @@ msgstr "Бонусы от незавершённых боёв не учитыв�
 msgid "serviceChannelMessages/boosterDisabled"
 msgstr "Личный резерв «%(boosterName)s» был отключён по техническим причинам."
 
-msgid "serviceChannelMessages/boosterExpired"
-msgstr "Время действия личного резерва «%(boosterName)s» истекло."
+msgid "serviceChannelMessages/boosterEnded"
+msgstr "Личный резерв «%(boosterName)s» полностью использован."
+
+msgid "serviceChannelMessages/boosterExpired/message"
+msgstr "Потеряны резервы:"
+
+msgid "serviceChannelMessages/boosterExpired/title"
+msgstr "Время действия резервов истекло"
 
 msgid "serviceChannelMessages/boosterExpiredResourceName/credits"
 msgstr "кредитам"
@@ -2268,21 +2300,6 @@ msgstr "боевому опыту"
 
 msgid "serviceChannelMessages/boosterExpiredTotalTemplate/total"
 msgstr "Суммарный бонус к %(resourceName)s:"
-
-msgid "serviceChannelMessages/bootcamp/awards"
-msgstr "Получена награда:"
-
-msgid "serviceChannelMessages/bootcamp/crew"
-msgstr "Экипаж высажен в Казарму"
-
-msgid "serviceChannelMessages/bootcamp/devices"
-msgstr "Перенесено на Склад:"
-
-msgid "serviceChannelMessages/bootcamp/finished"
-msgstr "Вы прошли Учебный полигон"
-
-msgid "serviceChannelMessages/bootcamp/no_awards"
-msgstr "Награда уже была получена"
 
 msgid "serviceChannelMessages/buttons/close"
 msgstr "Закрыть"
@@ -2468,6 +2485,41 @@ msgstr "Задача «%(missionName)s»"
 
 msgid "serviceChannelMessages/failedPersonalMission/operation"
 msgstr "Операция «%(operation)s»"
+
+msgid "serviceChannelMessages/fairplayViolation/banDueDate"
+msgstr "%(date)s, %(time)s"
+
+msgid "serviceChannelMessages/fairplayViolation/button"
+msgstr "Подробнее"
+
+msgid "serviceChannelMessages/fairplayViolation/text/ban"
+msgstr ""
+"Доступ к боям режима «%(mode)s» временно заблокирован. Блокировка будет "
+"снята %(date)s."
+
+msgid "serviceChannelMessages/fairplayViolation/text/banRemoved"
+msgstr ""
+"Временная блокировка снята. Вы снова можете играть в режиме «%(mode)s»."
+
+msgid "serviceChannelMessages/fairplayViolation/text/penalty"
+msgstr ""
+"Вы лишены заработанных в бою кредитов, опыта и наград за «%(reason)s» в "
+"режиме «%(mode)s»."
+
+msgid "serviceChannelMessages/fairplayViolation/text/warning"
+msgstr "Вы получили предупреждение за «%(reason)s» в режиме «%(mode)s»."
+
+msgid "serviceChannelMessages/fairplayViolation/title/ban"
+msgstr "Отстранение"
+
+msgid "serviceChannelMessages/fairplayViolation/title/banRemoved"
+msgstr "Снятие блокировки"
+
+msgid "serviceChannelMessages/fairplayViolation/title/penalty"
+msgstr "Вы оштрафованы"
+
+msgid "serviceChannelMessages/fairplayViolation/title/warning"
+msgstr "Неспортивное поведение"
 
 msgid "serviceChannelMessages/fort/ATTACK_PLANNED"
 msgstr ""
@@ -3047,11 +3099,17 @@ msgstr "Списано членов экипажа: %(count)s"
 msgid "serviceChannelMessages/offerTokenBonus/title"
 msgstr "Поставки из тыла"
 
-msgid "serviceChannelMessages/personalReservesConverted"
-msgstr "Все ваши личные резервы конвертированы."
+msgid "serviceChannelMessages/personalReservesRelease/description"
+msgstr "Есть новые резервы:"
 
-msgid "serviceChannelMessages/personalReservesTitle"
-msgstr "Конвертация личных резервов"
+msgid "serviceChannelMessages/personalReservesRelease/title"
+msgstr "Внимание на резервы"
+
+msgid "serviceChannelMessages/personalReservesSoonExpire/description"
+msgstr "Срок действия резервов истекает:"
+
+msgid "serviceChannelMessages/personalReservesSoonExpire/title"
+msgstr "Резервы с истекающим сроком действия"
 
 msgid "serviceChannelMessages/piggyBank/continueAfterSmashed"
 msgstr "Начался новый цикл накопления."
@@ -3779,7 +3837,7 @@ msgstr "Заходите в игру и получайте награды."
 
 msgid ""
 "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleStarted/startText"
-msgstr "Доступен новый бонус подписки WoT Plus!"
+msgstr "Цикл накопления начался!"
 
 msgid "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/title"
 msgstr "Награда за посещение"
@@ -3801,8 +3859,8 @@ msgstr "Награды за посещение доступны"
 
 msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/subscribed/text"
 msgstr ""
-"Эксклюзивный %(vehicleType)s <font color='#E9E2BF'>%(vehicleName)s</font> "
-"подписки WoT Plus снова доступен."
+"Доступна эксклюзивная машина — %(vehicleType)s <font "
+"color='#E9E2BF'>%(vehicleName)s</font>."
 
 msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/unsubscribed/text"
 msgstr ""
@@ -3836,7 +3894,9 @@ msgid "serviceChannelMessages/wotPlus/goldReserve/smash/title"
 msgstr "Хранилище золота открыто!"
 
 msgid "serviceChannelMessages/wotPlus/nextDateOfRenewal"
-msgstr "Продление подписки: %(time)s"
+msgstr ""
+"Теперь все бонусы доступны.\n"
+"Следующее продление: <font color='#E9E2BF'>%(time)s</font>"
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/text"
 msgstr ""
@@ -3894,6 +3954,25 @@ msgstr "Выберите машину из списка для аренды."
 msgid "serviceChannelMessages/wotPlus/rental/noTank/title"
 msgstr "Арендная машина не выбрана"
 
+msgid ""
+"serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/additionalBonuses"
+msgstr "• получать утроенный боевой опыт;"
+
+msgid "serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/badges"
+msgstr "• выделить своё имя;"
+
+msgid ""
+"serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/battleBonuses"
+msgstr "• зарабатывать на %(creditsFactor)d%% больше в каждом бою."
+
+msgid "serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/body"
+msgstr ""
+"Теперь вы можете:\n"
+"%(bonuses)s"
+
+msgid "serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/title"
+msgstr "Доступны новые бонусы подписки WoT Plus!"
+
 msgid "serviceChannelMessages/wotPlus/tankRental/isPending/text"
 msgstr "Машина %(vehicle)s будет начислена на ваш аккаунт в ближайшее время."
 
@@ -3910,7 +3989,7 @@ msgid "serviceChannelMessages/wotPlus/unlockFreeDemount/title"
 msgstr "Бесплатный демонтаж оборудования доступен"
 
 msgid "serviceChannelMessages/wotPlus/unlockMessage/title"
-msgstr "Подписка WoT Plus оформлена: %(startTime)s"
+msgstr "Подписка WoT Plus активирована"
 
 msgid "serviceChannelMessages/xpReceivedAsGift"
 msgstr "От администрации получен свободный опыт: %(freeXP)s."

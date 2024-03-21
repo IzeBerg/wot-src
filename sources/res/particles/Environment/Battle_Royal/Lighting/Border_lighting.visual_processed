@@ -33,7 +33,7 @@
 					</property>
 					<property>
 						lightMultipliers
-						<Vector4>200.000000 0.000000 0.000000 0.000000</Vector4>
+						<Vector4>50.000000 0.000000 0.000000 0.000000</Vector4>
 					</property>
 					<property>
 						opacityMap
@@ -61,11 +61,11 @@
 					</property>
 					<property>
 						opacity_UV_Speed_Scale
-						<Vector4>-0.030000 0.020000 0.600000 3.800000</Vector4>
+						<Vector4>-0.010000 0.010000 0.600000 3.800000</Vector4>
 					</property>
 					<property>
 						diffuseUVSpeedAlphaOffset
-						<Vector4>0.050000 -0.200000 10.000000 0.000000</Vector4>
+						<Vector4>0.020000 -0.100000 6.000000 0.000000</Vector4>
 					</property>
 					<property>
 						distortionFrames
@@ -73,7 +73,7 @@
 					</property>
 					<property>
 						phase_UV_Speed_Scale
-						<Vector4>0.050000 0.120000 1.200000 2.350000</Vector4>
+						<Vector4>0.030000 0.060000 1.200000 2.350000</Vector4>
 					</property>
 					<property>
 						gradientMap
@@ -97,7 +97,7 @@
 					</property>
 					<property>
 						TintlColor
-						<Vector4>1.000000 1.000000 1.000000 0.600000</Vector4>
+						<Vector4>1.000000 1.000000 1.000000 0.420000</Vector4>
 					</property>
 					<property>
 						distortionFrequency
@@ -139,15 +139,11 @@
 					</property>
 					<property>
 						gradientMap
-						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/sh_lightning_01.dds</Texture>
-					</property>
-					<property>
-						gradientMapEnable
-						<Bool>true</Bool>
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Gradients/wt_gradient_white.dds</Texture>
 					</property>
 					<property>
 						TintlColor
-						<Vector4>0.596078 0.772549 1.000000 0.800000</Vector4>
+						<Vector4>0.215686 0.180392 0.458824 0.156863</Vector4>
 					</property>
 					<property>
 						alphaFreshnelEnable
@@ -163,7 +159,7 @@
 					</property>
 					<property>
 						diffuseUVSpeedAlphaOffset
-						<Vector4>0.020000 0.020000 0.700000 0.000000</Vector4>
+						<Vector4>0.020000 0.020000 2.500000 0.000000</Vector4>
 					</property>
 					<property>
 						opacityMap
@@ -196,6 +192,14 @@
 					<property>
 						opacityMapEnable
 						<Bool>true</Bool>
+					</property>
+					<property>
+						gradientMapEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						compensationValue
+						<Vector4>2.000000 0.000000 0.000000 0.000000</Vector4>
 					</property>
 				</material>
 				<groupOrigin>0.000000 1.108786 -0.000000</groupOrigin>

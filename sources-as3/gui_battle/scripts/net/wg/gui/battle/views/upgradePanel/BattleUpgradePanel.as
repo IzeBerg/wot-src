@@ -282,6 +282,19 @@ package net.wg.gui.battle.views.upgradePanel
          }
       }
       
+      public function setMouseEnabled(param1:Boolean) : void
+      {
+         if(this.choicePanel)
+         {
+            this.choicePanel.setMouseEnabled(param1);
+         }
+      }
+      
+      public function setNotificationAnimationEnabled(param1:Boolean) : void
+      {
+         this.notificationBorderAnimation.visible = param1;
+      }
+      
       private function clearNotificationAnim() : void
       {
          this.clearTweens(this._notificationTweens);

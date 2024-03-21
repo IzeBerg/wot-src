@@ -228,31 +228,34 @@ class ArenaEquipmentComponent(ClientArenaComponent, CallbackDelayer):
         return
 
     def __updateExposedToEffect(self, vehicleID, senderKey, startTime, endTime, inactivationStartTime, inactivationEndTime, primary, equipmentID, effect, isInfluenceZone, inactivationSource):
-        exposedVehicleData = effect.exposedVehicles.get(vehicleID, None)
-        if startTime is None:
-            if exposedVehicleData is not None:
-                exposedVehicleData.startTime = exposedVehicleData.endTime = exposedVehicleData.inactivationStartTime = exposedVehicleData.inactivationEndTime = 0
-                providingVehicleData = effect.providingVehicles.get(vehicleID, None)
-                if providingVehicleData is not None:
-                    exposedVehicleData.destroy()
-                    del effect.exposedVehicles[vehicleID]
-                else:
-                    self.__checkAffectComponent(vehicleID, RepairAffectComponent, isInfluenceZone)
-                    self.__restartEffectData(exposedVehicleData, effect, isSource=False, atPeriod=EffectData.EFFECT_PERIOD.OVER)
+        if effect is None:
             return
-        if exposedVehicleData is None:
-            effect.exposedVehicles[vehicleID] = exposedVehicleData = EffectData(vehicleID=vehicleID, startTime=startTime, endTime=endTime, visualSettings=effect.visualSettings, inactivationStartTime=inactivationStartTime, inactivationEndTime=inactivationEndTime, primary=primary, senderKey=senderKey, equipmentID=equipmentID, inactivationSource=inactivationSource)
         else:
-            exposedVehicleData.startTime = startTime
-            exposedVehicleData.endTime = endTime
-            exposedVehicleData.inactivationStartTime = inactivationStartTime
-            exposedVehicleData.inactivationEndTime = inactivationEndTime
-            exposedVehicleData.senderKey = senderKey
-            exposedVehicleData.equipmentID = equipmentID
-            exposedVehicleData.inactivationSource = inactivationSource
-        self.__checkAffectComponent(vehicleID, RepairAffectComponent, isInfluenceZone)
-        self.__restartEffectData(exposedVehicleData, effect, isSource=False)
-        return
+            exposedVehicleData = effect.exposedVehicles.get(vehicleID, None)
+            if startTime is None:
+                if exposedVehicleData is not None:
+                    exposedVehicleData.startTime = exposedVehicleData.endTime = exposedVehicleData.inactivationStartTime = exposedVehicleData.inactivationEndTime = 0
+                    providingVehicleData = effect.providingVehicles.get(vehicleID, None)
+                    if providingVehicleData is not None:
+                        exposedVehicleData.destroy()
+                        del effect.exposedVehicles[vehicleID]
+                    else:
+                        self.__checkAffectComponent(vehicleID, RepairAffectComponent, isInfluenceZone)
+                        self.__restartEffectData(exposedVehicleData, effect, isSource=False, atPeriod=EffectData.EFFECT_PERIOD.OVER)
+                return
+            if exposedVehicleData is None:
+                effect.exposedVehicles[vehicleID] = exposedVehicleData = EffectData(vehicleID=vehicleID, startTime=startTime, endTime=endTime, visualSettings=effect.visualSettings, inactivationStartTime=inactivationStartTime, inactivationEndTime=inactivationEndTime, primary=primary, senderKey=senderKey, equipmentID=equipmentID, inactivationSource=inactivationSource)
+            else:
+                exposedVehicleData.startTime = startTime
+                exposedVehicleData.endTime = endTime
+                exposedVehicleData.inactivationStartTime = inactivationStartTime
+                exposedVehicleData.inactivationEndTime = inactivationEndTime
+                exposedVehicleData.senderKey = senderKey
+                exposedVehicleData.equipmentID = equipmentID
+                exposedVehicleData.inactivationSource = inactivationSource
+            self.__checkAffectComponent(vehicleID, RepairAffectComponent, isInfluenceZone)
+            self.__restartEffectData(exposedVehicleData, effect, isSource=False)
+            return
 
     def __checkAffectComponent(self, vehicleID, affectComponent, isInfluenceZone):
         vehicle = BigWorld.entities.get(vehicleID)
@@ -277,25 +280,28 @@ class ArenaEquipmentComponent(ClientArenaComponent, CallbackDelayer):
         return
 
     def _updateEffectSource(self, vehicleID, startTime, endTime, inactivationDelay, effectSourceRadius, effect, equipmentID=None):
-        providingVehicleData = effect.providingVehicles.get(vehicleID, None)
-        if startTime is None:
-            if providingVehicleData is not None:
-                providingVehicleData.startTime = providingVehicleData.endTime = providingVehicleData.inactivationStartTime = providingVehicleData.inactivationEndTime = 0
-                self.__restartEffectData(providingVehicleData, effect, isSource=True, atPeriod=EffectData.EFFECT_PERIOD.OVER)
+        if effect is None:
             return
-        exposedVehicleData = effect.exposedVehicles.get(vehicleID, None)
-        if exposedVehicleData is not None:
-            exposedVehicleData.cancelCallback()
-        if providingVehicleData is None:
-            effect.providingVehicles[vehicleID] = providingVehicleData = EffectData(vehicleID=vehicleID, startTime=startTime, endTime=endTime, visualSettings=effect.visualSettings, inactivationStartTime=endTime, inactivationEndTime=endTime + inactivationDelay if endTime is not None else None, radius=effectSourceRadius, equipmentID=equipmentID)
         else:
-            providingVehicleData.startTime = startTime
-            providingVehicleData.endTime = endTime
-            providingVehicleData.inactivationStartTime = endTime
-            providingVehicleData.inactivationEndTime = endTime + inactivationDelay if endTime is not None else None
-            providingVehicleData.radius = effectSourceRadius
-        self.__restartEffectData(providingVehicleData, effect, isSource=True)
-        return
+            providingVehicleData = effect.providingVehicles.get(vehicleID, None)
+            if startTime is None:
+                if providingVehicleData is not None:
+                    providingVehicleData.startTime = providingVehicleData.endTime = providingVehicleData.inactivationStartTime = providingVehicleData.inactivationEndTime = 0
+                    self.__restartEffectData(providingVehicleData, effect, isSource=True, atPeriod=EffectData.EFFECT_PERIOD.OVER)
+                return
+            exposedVehicleData = effect.exposedVehicles.get(vehicleID, None)
+            if exposedVehicleData is not None:
+                exposedVehicleData.cancelCallback()
+            if providingVehicleData is None:
+                effect.providingVehicles[vehicleID] = providingVehicleData = EffectData(vehicleID=vehicleID, startTime=startTime, endTime=endTime, visualSettings=effect.visualSettings, inactivationStartTime=endTime, inactivationEndTime=endTime + inactivationDelay if endTime is not None else None, radius=effectSourceRadius, equipmentID=equipmentID)
+            else:
+                providingVehicleData.startTime = startTime
+                providingVehicleData.endTime = endTime
+                providingVehicleData.inactivationStartTime = endTime
+                providingVehicleData.inactivationEndTime = endTime + inactivationDelay if endTime is not None else None
+                providingVehicleData.radius = effectSourceRadius
+            self.__restartEffectData(providingVehicleData, effect, isSource=True)
+            return
 
     def removeInspire(self, vehicleID):
         self.__removeEffect(vehicleID, self.__inspiringEffect)

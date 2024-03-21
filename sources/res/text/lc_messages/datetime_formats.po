@@ -10,38 +10,210 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "dateRange/dashDivider"
+msgstr "{start} — {end}"
+
+msgid "dateRange/date/differentMonth/differentTime/end"
+msgstr "%#d %Bd, %TIME"
+
+msgid "dateRange/date/differentMonth/differentTime/start"
+msgstr "%#d %Bd, %TIME"
+
+msgid "dateRange/date/differentMonth/sameTime/end"
+msgstr "%#d %Bd"
+
+msgid "dateRange/date/differentMonth/sameTime/start"
+msgstr "%#d %Bd"
+
+msgid "dateRange/date/sameMonth/differentTime/end"
+msgstr "%#d %Bd, %TIME"
+
+msgid "dateRange/date/sameMonth/differentTime/start"
+msgstr "%#d %Bd, %TIME"
+
+msgid "dateRange/date/sameMonth/sameTime/dashDivider"
+msgstr "{start} — {end}"
+
+msgid "dateRange/date/sameMonth/sameTime/end"
+msgstr "%#d %Bd"
+
+msgid "dateRange/date/sameMonth/sameTime/start"
+msgstr "%#d"
+
+msgid "dateRange/dateShort/differentMonth/differentTime/end"
+msgstr "%#d %bd, %TIME"
+
+msgid "dateRange/dateShort/differentMonth/differentTime/start"
+msgstr "%#d %bd, %TIME"
+
+msgid "dateRange/dateShort/differentMonth/sameTime/end"
+msgstr "%#d %bd"
+
+msgid "dateRange/dateShort/differentMonth/sameTime/start"
+msgstr "%#d %bd"
+
+msgid "dateRange/dateShort/sameMonth/differentTime/end"
+msgstr "%#d %bd, %TIME"
+
+msgid "dateRange/dateShort/sameMonth/differentTime/start"
+msgstr "%#d %bd, %TIME"
+
+msgid "dateRange/dateShort/sameMonth/sameTime/dashDivider"
+msgstr "{start} — {end}"
+
+msgid "dateRange/dateShort/sameMonth/sameTime/end"
+msgstr "%#d %bd"
+
+msgid "dateRange/dateShort/sameMonth/sameTime/start"
+msgstr "%#d"
+
+msgid "dateRange/dateWithYear/differentYear/differentMonth/differentTime/end"
+msgstr "%#d %Bd %Y г., %TIME"
+
+msgid ""
+"dateRange/dateWithYear/differentYear/differentMonth/differentTime/start"
+msgstr "%#d %Bd %Y г., %TIME"
+
+msgid "dateRange/dateWithYear/differentYear/differentMonth/sameTime/end"
+msgstr "%#d %Bd %Y г."
+
+msgid "dateRange/dateWithYear/differentYear/differentMonth/sameTime/start"
+msgstr "%#d %Bd %Y г."
+
+msgid "dateRange/dateWithYear/sameYear/differentMonth/differentTime/end"
+msgstr "%#d %Bd %Y г., %TIME"
+
+msgid "dateRange/dateWithYear/sameYear/differentMonth/differentTime/start"
+msgstr "%#d %Bd, %TIME"
+
+msgid "dateRange/dateWithYear/sameYear/differentMonth/sameTime/end"
+msgstr "%#d %Bd %Y г."
+
+msgid "dateRange/dateWithYear/sameYear/differentMonth/sameTime/start"
+msgstr "%#d %Bd"
+
+msgid "dateRange/dateWithYear/sameYear/sameMonth/differentTime/end"
+msgstr "%#d %Bd %Y г., %TIME"
+
+msgid "dateRange/dateWithYear/sameYear/sameMonth/differentTime/start"
+msgstr "%#d %Bd, %TIME"
+
+msgid "dateRange/dateWithYear/sameYear/sameMonth/sameTime/dashDivider"
+msgstr "{start} — {end}"
+
+msgid "dateRange/dateWithYear/sameYear/sameMonth/sameTime/end"
+msgstr "%#d %Bd %Y г."
+
+msgid "dateRange/dateWithYear/sameYear/sameMonth/sameTime/start"
+msgstr "%#d"
+
+msgid "dateRange/month/end"
+msgstr "%Bs"
+
+msgid "dateRange/month/endOverride/stringDivider"
+msgstr "%Bs"
+
+msgid "dateRange/month/start"
+msgstr "%B"
+
+msgid "dateRange/month/startOverride/stringDivider"
+msgstr "%Bd"
+
+msgid "dateRange/monthWithYear/end"
+msgstr "%Bs %Y г."
+
+msgid "dateRange/monthWithYear/endOverride/stringDivider"
+msgstr "%Bs %Y г."
+
+msgid "dateRange/monthWithYear/start"
+msgstr "%B"
+
+msgid "dateRange/monthWithYear/startOverride/stringDivider"
+msgstr "%Bd"
+
+msgid "dateRange/stringDivider"
+msgstr "С {start} по {end}"
+
+msgid "dateRange/time/end"
+msgstr "%TIME"
+
+msgid "dateRange/time/start"
+msgstr "%TIME"
+
+msgid "dateRange/time/stringDivider"
+msgstr "С {start} по {end}"
+
+msgid "dateRange/year/dashDivider"
+msgstr "{start} — {end}"
+
+msgid "dateRange/year/end"
+msgstr "%Y"
+
+msgid "dateRange/year/start"
+msgstr "%Y"
+
+msgid "dateRange/year/stringDivider"
+msgstr "С {start} по {end}"
+
 msgid "regionalDate/dayMonthAbbreviated"
-msgstr "%#d %b"
+msgstr "%#d %bd"
+
+msgid "regionalDate/dayMonthAbbreviatedTime"
+msgstr "%#d %bd, %TIME"
 
 msgid "regionalDate/dayMonthFull"
-msgstr "%#d %B"
+msgstr "%#d %Bd"
+
+msgid "regionalDate/dayMonthFullTime"
+msgstr "%#d %Bd, %TIME"
 
 msgid "regionalDate/dayMonthNumeric"
 msgstr "%d.%m"
 
-msgid "regionalDate/declensionRegexp"
-msgstr "%#*d.*(%[{}])"
-
 msgid "regionalDate/fullDate"
-msgstr "%#d %B %Y г."
+msgstr "%#d %Bd %Y г."
+
+msgid "regionalDate/fullDateTime"
+msgstr "%#d %Bd %Y г., %TIME"
 
 msgid "regionalDate/shortDate"
 msgstr "%d.%m.%Y"
 
+msgid "regionalDate/shortDateTime"
+msgstr "%d.%m.%Y, %TIME"
+
 msgid "regionalTime/full/am"
-msgstr "%#H:%M:%S"
+msgstr "%H:%M:%S"
+
+msgid "regionalTime/full/am/NA"
+msgstr "%H:%M:%S"
 
 msgid "regionalTime/full/pm"
-msgstr "%#H:%M:%S"
+msgstr "%H:%M:%S"
+
+msgid "regionalTime/full/pm/NA"
+msgstr "%H:%M:%S"
 
 msgid "regionalTime/short/am"
+msgstr "%H:%M"
+
+msgid "regionalTime/short/am/NA"
 msgstr "%H:%M"
 
 msgid "regionalTime/short/pm"
 msgstr "%H:%M"
 
+msgid "regionalTime/short/pm/NA"
+msgstr "%H:%M"
+
 msgid "regionalTime/short/withMinutes/am"
 msgstr "%H:%M"
 
+msgid "regionalTime/short/withMinutes/am/NA"
+msgstr "%H:%M"
+
 msgid "regionalTime/short/withMinutes/pm"
+msgstr "%H:%M"
+
+msgid "regionalTime/short/withMinutes/pm/NA"
 msgstr "%H:%M"

@@ -1,4 +1,5 @@
 from frameworks.wulf import WindowFlags
+from gui.battle_pass.sounds import BattlePassSounds
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.battle_pass.custom_tankmen_voiceover_view_model import CustomTankmenVoiceoverViewModel
 from gui.impl.lobby.battle_pass.tankmen_voiceover_view import TankmenVoiceoverView
@@ -21,6 +22,9 @@ class CustomTankmenVoiceoverView(TankmenVoiceoverView):
         super(CustomTankmenVoiceoverView, self)._onLoading(*args, **kwargs)
         with self.viewModel.transaction() as (model):
             model.setSeasonNum(self.__battlePass.getSeasonNum())
+
+    def _getStopSound(self):
+        return BattlePassSounds.REGULAR_VOICEOVER_STOP
 
 
 class CustomTankmenVoiceoverWindow(LobbyWindow):

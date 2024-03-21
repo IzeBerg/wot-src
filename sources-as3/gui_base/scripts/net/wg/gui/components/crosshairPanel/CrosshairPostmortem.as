@@ -40,6 +40,10 @@ package net.wg.gui.components.crosshairPanel
       {
       }
       
+      public function clearAverageDamage(param1:Boolean) : void
+      {
+      }
+      
       public function clearDistance(param1:Boolean) : void
       {
       }
@@ -60,6 +64,10 @@ package net.wg.gui.components.crosshairPanel
       }
       
       public function setAutoloaderReloadingAsPercent(param1:Number, param2:Boolean) : void
+      {
+      }
+      
+      public function setAverageDamage(param1:String) : void
       {
       }
       
@@ -91,7 +99,7 @@ package net.wg.gui.components.crosshairPanel
       {
       }
       
-      public function setInfo(param1:Number, param2:String, param3:String, param4:Boolean, param5:Boolean, param6:String, param7:String, param8:Number, param9:Number, param10:String, param11:Number, param12:String, param13:Boolean = false, param14:Boolean = false, param15:Boolean = false) : void
+      public function setInfo(param1:Number, param2:String, param3:String, param4:Boolean, param5:Boolean, param6:String, param7:String, param8:Number, param9:Number, param10:String, param11:Number, param12:String, param13:String, param14:Boolean = false, param15:Boolean = false, param16:Boolean = false) : void
       {
          this.updatePlayerInfo(param7);
          this.updateAmmoState(param10);

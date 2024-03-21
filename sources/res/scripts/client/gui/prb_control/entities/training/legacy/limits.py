@@ -1,7 +1,6 @@
 from CurrentVehicle import g_currentVehicle
 from constants import PREBATTLE_ACCOUNT_STATE, PREBATTLE_TYPE
-from gui.prb_control.entities.base.limits import AbstractTeamIsValid, LimitsCollection, VehicleIsValid
-from gui.prb_control.entities.base.limits import TeamNoPlayersInBattle, TeamIsValid
+from gui.prb_control.entities.base.limits import AbstractTeamIsValid, LimitsCollection, VehicleIsValid, TeamNoPlayersInBattle, TeamIsValid, TeamAllPlayersReady
 from gui.prb_control.settings import PREBATTLE_RESTRICTION
 from helpers import dependency
 from items import vehicles
@@ -53,4 +52,5 @@ class TrainingLimits(LimitsCollection):
          TrainingVehicleIsValid(),), (
          TeamNoPlayersInBattle(PREBATTLE_TYPE.TRAINING),
          TeamIsValid(),
-         ObserverInTeamIsValid()))
+         ObserverInTeamIsValid(),
+         TeamAllPlayersReady()))

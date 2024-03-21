@@ -11,7 +11,8 @@ class PerformanceRisk(Enum):
 
 class ProgressionState(Enum):
     COMPLETED = 'completed'
-    INPROGRESS = 'inProgress'
+    IN_PROGRESS = 'inProgress'
+    UNAVAILABLE = 'unavailable'
 
 
 class WidgetTooltipViewModel(ViewModel):
@@ -59,7 +60,7 @@ class WidgetTooltipViewModel(ViewModel):
     def _initialize(self):
         super(WidgetTooltipViewModel, self)._initialize()
         self._addViewModelProperty('leaderBoard', LeaderboardRewardTooltipModel())
-        self._addStringProperty('progressionState', ProgressionState.INPROGRESS.value)
+        self._addStringProperty('progressionState', ProgressionState.IN_PROGRESS.value)
         self._addStringProperty('performance', PerformanceRisk.LOW.value)
         self._addNumberProperty('time', 0)
         self._addArrayProperty('battleSchedule', Array())

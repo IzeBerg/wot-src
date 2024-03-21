@@ -311,22 +311,25 @@ class RadialMenu(RadialMenuMeta, BattleGUIKeyHandler, CallbackDelayer):
         self.as_buildDataS(self.__stateData)
 
     def __getRadialMenuState(self, targetID, targetMarkerType, targetMarkerSubtype, replyState, replyToAction):
-        if targetMarkerType in _MARKERS_TYPE_TO_SUBTYPE_MAP and targetMarkerSubtype in _MARKERS_TYPE_TO_SUBTYPE_MAP[targetMarkerType]:
-            viewState = _MARKERS_TYPE_TO_SUBTYPE_MAP[targetMarkerType][targetMarkerSubtype]
+        if targetMarkerType == MarkerType.NON_INTERACTIVE:
+            viewState = RADIAL_MENU_CONSTS.TARGET_STATE_EMPTY
         else:
-            _logger.warning("Marker subtype name '%s' is not defined for '%s'.", targetMarkerSubtype, targetMarkerType)
-            viewState = RADIAL_MENU_CONSTS.TARGET_STATE_DEFAULT
-        if self.sessionProvider.getArenaDP().getVehicleInfo().isSPG():
-            if viewState == RADIAL_MENU_CONSTS.TARGET_STATE_ENEMY:
-                viewState = RADIAL_MENU_CONSTS.TARGET_STATE_SPG_ENEMY
-            elif viewState == RADIAL_MENU_CONSTS.TARGET_STATE_DEFAULT:
-                if replyState == ReplyState.CAN_REPLY:
-                    viewState = RADIAL_MENU_CONSTS.TARGET_STATE_DEFAULT
-                else:
-                    viewState = RADIAL_MENU_CONSTS.TARGET_STATE_SPG_DEFAULT
-        self.__crosshairData = CrosshairData(targetID, targetMarkerType, targetMarkerSubtype, replyState, replyToAction)
-        if viewState in RADIAL_MENU_CONSTS.ALL_TARGET_STATES:
-            return viewState
+            if targetMarkerType in _MARKERS_TYPE_TO_SUBTYPE_MAP and targetMarkerSubtype in _MARKERS_TYPE_TO_SUBTYPE_MAP[targetMarkerType]:
+                viewState = _MARKERS_TYPE_TO_SUBTYPE_MAP[targetMarkerType][targetMarkerSubtype]
+            else:
+                _logger.warning("Marker subtype name '%s' is not defined for '%s'.", targetMarkerSubtype, targetMarkerType)
+                viewState = RADIAL_MENU_CONSTS.TARGET_STATE_DEFAULT
+            if self.sessionProvider.getArenaDP().getVehicleInfo().isSPG():
+                if viewState == RADIAL_MENU_CONSTS.TARGET_STATE_ENEMY:
+                    viewState = RADIAL_MENU_CONSTS.TARGET_STATE_SPG_ENEMY
+                elif viewState == RADIAL_MENU_CONSTS.TARGET_STATE_DEFAULT:
+                    if replyState == ReplyState.CAN_REPLY:
+                        viewState = RADIAL_MENU_CONSTS.TARGET_STATE_DEFAULT
+                    else:
+                        viewState = RADIAL_MENU_CONSTS.TARGET_STATE_SPG_DEFAULT
+            self.__crosshairData = CrosshairData(targetID, targetMarkerType, targetMarkerSubtype, replyState, replyToAction)
+            if viewState in RADIAL_MENU_CONSTS.ALL_TARGET_STATES:
+                return viewState
         return RADIAL_MENU_CONSTS.TARGET_STATE_DEFAULT
 
     def __playSound(self, soundName):

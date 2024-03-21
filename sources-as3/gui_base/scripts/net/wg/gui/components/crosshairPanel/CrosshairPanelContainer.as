@@ -71,6 +71,8 @@ package net.wg.gui.components.crosshairPanel
       
       private var _distanceStr:String = "";
       
+      private var _averageDamageStr:String = "";
+      
       private var _playerInfoStr:String = "";
       
       private var _isDistanceShown:Boolean = true;
@@ -298,6 +300,15 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
+      public function as_clearAverageDamage(param1:Boolean) : void
+      {
+         this._averageDamageStr = Values.EMPTY_STR;
+         if(this._currentCrosshair != null)
+         {
+            this._currentCrosshair.clearAverageDamage(param1);
+         }
+      }
+      
       public function as_clearDistance(param1:Boolean) : void
       {
          this._distanceStr = Values.EMPTY_STR;
@@ -447,6 +458,15 @@ package net.wg.gui.components.crosshairPanel
             this._autoloaderAnimationProgress = 0;
          }
          this.applyAutoloaderAnimationState();
+      }
+      
+      public function as_setAverageDamage(param1:String) : void
+      {
+         this._averageDamageStr = param1;
+         if(this._currentCrosshair != null)
+         {
+            this._currentCrosshair.setAverageDamage(this._averageDamageStr);
+         }
       }
       
       public function as_setBoostAsPercent(param1:Number, param2:Number) : void
@@ -969,7 +989,7 @@ package net.wg.gui.components.crosshairPanel
       {
          if(this._currentCrosshair != null)
          {
-            this._currentCrosshair.setInfo(this._healthInPercents,this._zoomStr,this._currReloadingState,this._isReloadingTimeFieldShown,this._isDistanceShown,this._distanceStr,this._playerInfoStr,this._clipCapacity,this._burst,this._ammoState,this._ammoQuantityInClip,this._ammoClipState,this._ammoClipReloaded,this._isAutoloader,this._isAutoloaderCritical);
+            this._currentCrosshair.setInfo(this._healthInPercents,this._zoomStr,this._currReloadingState,this._isReloadingTimeFieldShown,this._isDistanceShown,this._distanceStr,this._playerInfoStr,this._clipCapacity,this._burst,this._ammoState,this._ammoQuantityInClip,this._ammoClipState,this._averageDamageStr,this._ammoClipReloaded,this._isAutoloader,this._isAutoloaderCritical);
             this._currentCrosshair.setQuickReloadingTime(this._isQuickReloadingActive,this._quickReloadingTime);
             if(this._speedometer != null)
             {

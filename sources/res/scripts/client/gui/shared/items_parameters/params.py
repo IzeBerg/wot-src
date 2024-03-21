@@ -1,13 +1,13 @@
-import collections, copy, inspect, logging, math, operator, typing
+import collections, copy, inspect, logging, math, operator
 from collections import namedtuple, defaultdict
-from math import ceil, floor
 from itertools import izip_longest
-import BigWorld
+from math import ceil, floor
+import BigWorld, typing
 from constants import SHELL_TYPES, BonusTypes
 from gui import GUI_SETTINGS
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items import KPI
-from gui.shared.gui_items.Tankman import Tankman, isSkillLearnt, crewMemberRealSkillLevel
+from gui.shared.gui_items.Tankman import isSkillLearnt, crewMemberRealSkillLevel
 from gui.shared.items_parameters import calcGunParams, calcShellParams, getShotsPerMinute, getGunDescriptors, isAutoReloadGun, isDualGun, isDualAccuracy
 from gui.shared.items_parameters import functions, getShellDescriptors, getOptionalDeviceWeight, NO_DATA
 from gui.shared.items_parameters.comparator import rateParameterState, PARAM_STATE
@@ -347,7 +347,7 @@ class VehicleParams(_ParameterBase):
     def enginePower(self):
         skillName = 'driver_motorExpert'
         argName = 'enginePower'
-        enginePowerFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.DRIVER)
+        enginePowerFactor = self.__getFactorValueFromSkill(skillName, argName)
         enginePower = self.__getEnginePower(self._itemDescr.physics['enginePower'])
         return enginePower * enginePowerFactor
 
@@ -357,7 +357,7 @@ class VehicleParams(_ParameterBase):
         if power:
             skillName = 'driver_motorExpert'
             argName = 'enginePower'
-            enginePowerFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.DRIVER)
+            enginePowerFactor = self.__getFactorValueFromSkill(skillName, argName)
             power = power * enginePowerFactor
         return power and self.__getEnginePower(power)
 
@@ -448,7 +448,7 @@ class VehicleParams(_ParameterBase):
             avgTrf = sum(allTrfs) / len(allTrfs)
             chassisRotationSpeed = items_utils.getChassisRotationSpeed(self._itemDescr, self.__factors)
             baseRotationSpeed = math.degrees(chassisRotationSpeed) / avgTrf
-            rotationSpeedFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.DRIVER)
+            rotationSpeedFactor = self.__getFactorValueFromSkill(skillName, argName)
             return baseRotationSpeed * rotationSpeedFactor
 
     @property
@@ -583,7 +583,7 @@ class VehicleParams(_ParameterBase):
         baseDistance = items_utils.getRadioDistance(self._itemDescr, self.__factors)
         skillName = 'radioman_inventor'
         argName = 'radioDistance'
-        factor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.RADIOMAN)
+        factor = self.__getFactorValueFromSkill(skillName, argName)
         return int(baseDistance * factor)
 
     @property
@@ -602,7 +602,7 @@ class VehicleParams(_ParameterBase):
     def aimingTime(self):
         aimingTimeVal = items_utils.getGunAimingTime(self._itemDescr, self.__factors)
         skillName = 'gunner_quickAiming'
-        gunnerQuickAimingFactor = self.__getKpiValueFromSkillConfig(skillName, KPI.Name.VEHICLE_GUN_AIM_SPEED, Tankman.ROLES.GUNNER)
+        gunnerQuickAimingFactor = self.__getKpiValueFromSkillConfig(skillName, KPI.Name.VEHICLE_GUN_AIM_SPEED)
         aimingTimeVal /= gunnerQuickAimingFactor
         if self._itemDescr.hasTurboshaftEngine:
             siegeAimingTimeVal = items_utils.getGunAimingTime(self._itemDescr.siegeVehicleDescr, self.__factors)
@@ -619,7 +619,7 @@ class VehicleParams(_ParameterBase):
         baseShotDispersions = (round(shotDispersion * 100, 4) for shotDispersion in shotDispersions)
         skillFactorValue = 1
         if isSituational:
-            skillFactorValue = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.GUNNER, isSituational)
+            skillFactorValue = self.__getFactorValueFromSkill(skillName, argName)
         return [ baseShotDispersion * skillFactorValue for baseShotDispersion in baseShotDispersions ]
 
     @property
@@ -662,10 +662,10 @@ class VehicleParams(_ParameterBase):
         if self.__hasAutoReload():
             skillName = 'loader_melee'
             argName = 'gunReloadSpeed'
-            loaderMeleeReloadFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.LOADER, True)
+            loaderMeleeReloadFactor = self.__getFactorValueFromSkill(skillName, argName)
             skillName = 'loader_desperado'
             argName = 'gunReloadSpeed'
-            loaderDesperadoReloadFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.LOADER, True)
+            loaderDesperadoReloadFactor = self.__getFactorValueFromSkill(skillName, argName)
             reloadTimes = tuple(reversed(items_utils.getClipReloadTime(self._itemDescr, self.__factors)))
             return tuple(reloadTime * loaderMeleeReloadFactor * loaderDesperadoReloadFactor for reloadTime in reloadTimes)
         else:
@@ -787,7 +787,7 @@ class VehicleParams(_ParameterBase):
 
     @property
     def invisibilityFactorAtShot(self):
-        shotDemaskFactor = self.__getFactorValueFromSkill('loader_ambushMaster', 'shotDemaskFactor', Tankman.ROLES.LOADER)
+        shotDemaskFactor = self.__getFactorValueFromSkill('loader_ambushMaster', 'shotDemaskFactor')
         return self._itemDescr.miscAttrs['invisibilityFactorAtShot'] * shotDemaskFactor
 
     @property
@@ -812,10 +812,10 @@ class VehicleParams(_ParameterBase):
     def clipFireRateSituational(self):
         skillName = 'loader_melee'
         argName = 'gunReloadSpeed'
-        loaderMeleeReloadFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.LOADER, True)
+        loaderMeleeReloadFactor = self.__getFactorValueFromSkill(skillName, argName)
         skillName = 'loader_desperado'
         argName = 'gunReloadSpeed'
-        loaderDesperadoReloadFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.LOADER, True)
+        loaderDesperadoReloadFactor = self.__getFactorValueFromSkill(skillName, argName)
         if self.__hasClipGun():
             gunParams = self._itemDescr.gun
             clipData = gunParams.clip
@@ -990,6 +990,11 @@ class VehicleParams(_ParameterBase):
     def radiomanActivityTimeAfterVehicleDestroySituational(self):
         return self.__kpi.getFactor(KPI.Name.RADIOMAN_ACTIVITY_TIME_AFTER_VEHICLE_DESTROY)
 
+    @property
+    def fireExtinguishingRate(self):
+        skillName = 'fireFighting'
+        return self.__getKpiValueFromSkillConfig(skillName, KPI.Name.FIRE_EXTINGUISHING_RATE, kpiType=KPI.Type.ADD)
+
     def getParamsDict(self, preload=False):
         conditionalParams = (
          'aimingTime', 'clipFireRate', BURST_FIRE_RATE, 'turretYawLimits', 'gunYawLimits', 'turretRotationSpeed',
@@ -1112,10 +1117,10 @@ class VehicleParams(_ParameterBase):
     def __calcRealChassisRepairTime(self, chassisRepairTime):
         skillName = 'repair'
         argName = 'vehicleRepairSpeed'
-        realSkillLevel = crewMemberRealSkillLevel(self.__vehicle, skillName, Tankman.ROLES.COMMANDER)
+        realSkillLevel = crewMemberRealSkillLevel(self.__vehicle, skillName)
         kpiSkillFactor = 1
         if realSkillLevel > 0:
-            kpiSkillFactor = self.__getKpiValueFromSkillConfig(skillName, argName, Tankman.ROLES.COMMANDER)
+            kpiSkillFactor = self.__getKpiValueFromSkillConfig(skillName, argName)
         repairFactor = self.__factors.get('repairSpeed', 1.0)
         vehicleRepairSpeed = self.__kpi.getCoeff('vehicleRepairSpeed')
         repairKpi = 1 + (vehicleRepairSpeed - kpiSkillFactor)
@@ -1129,10 +1134,10 @@ class VehicleParams(_ParameterBase):
                 raise SoftException('correction can not be less than speed limits')
             correction = map(self._itemDescr.miscAttrs.get, miscAttrs)
         skillName = 'driver_motorExpert'
-        realSkillLevel = crewMemberRealSkillLevel(self.__vehicle, skillName, Tankman.ROLES.DRIVER)
+        realSkillLevel = crewMemberRealSkillLevel(self.__vehicle, skillName)
         if realSkillLevel != tankmen.NO_SKILL:
-            forwardMaxSpeed = self.__getKpiValueFromSkillConfig(skillName, KPI.Name.VEHICLE_FORWARD_MAX_SPEED, Tankman.ROLES.DRIVER)
-            backwardMaxSpeed = self.__getKpiValueFromSkillConfig(skillName, KPI.Name.VEHICLE_BACKWARD_MAX_SPEED, Tankman.ROLES.DRIVER)
+            forwardMaxSpeed = self.__getKpiValueFromSkillConfig(skillName, KPI.Name.VEHICLE_FORWARD_MAX_SPEED)
+            backwardMaxSpeed = self.__getKpiValueFromSkillConfig(skillName, KPI.Name.VEHICLE_BACKWARD_MAX_SPEED)
             motorExpertSpeed = [forwardMaxSpeed, backwardMaxSpeed]
         else:
             motorExpertSpeed = [
@@ -1239,10 +1244,10 @@ class VehicleParams(_ParameterBase):
         if isSituational:
             skillName = 'loader_melee'
             argName = 'gunReloadSpeed'
-            loaderMeleeReloadFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.LOADER, isSituational)
+            loaderMeleeReloadFactor = self.__getFactorValueFromSkill(skillName, argName)
             skillName = 'loader_desperado'
             argName = 'gunReloadSpeed'
-            loaderDesperadoReloadFactor = self.__getFactorValueFromSkill(skillName, argName, Tankman.ROLES.LOADER, isSituational)
+            loaderDesperadoReloadFactor = self.__getFactorValueFromSkill(skillName, argName)
 
         def getParams(f):
             reloadTimes = f(self._itemDescr, self.__factors)
@@ -1279,20 +1284,20 @@ class VehicleParams(_ParameterBase):
         terrainResistancePhysicsFactors = map(operator.truediv, self._itemDescr.physics['terrainResistance'], self._itemDescr.chassis.terrainResistance)
         return map(operator.mul, self.__factors['chassis/terrainResistance'], terrainResistancePhysicsFactors)
 
-    def __getFactorValueFromSkill(self, skillName, argName, role, situational=False):
+    def __getFactorValueFromSkill(self, skillName, argName):
         skill = tankmen.getSkillsConfig().getSkill(skillName)
         param = skill.params.get(argName)
         factorPerLevel = param.value if param else 0.0
-        realSkillLevel = crewMemberRealSkillLevel(self.__vehicle, skillName, role)
+        realSkillLevel = crewMemberRealSkillLevel(self.__vehicle, skillName)
         realFactorValue = 1
         if realSkillLevel != tankmen.NO_SKILL:
             realFactorValue += factorPerLevel * realSkillLevel
         return realFactorValue
 
-    def __getKpiValueFromSkillConfig(self, skillName, argName, role, kpiType=KPI.Type.MUL):
+    def __getKpiValueFromSkillConfig(self, skillName, argName, kpiType=KPI.Type.MUL):
         skillKpi = tankmen.getSkillsConfig().getSkill(skillName).kpi
         result = 1.0 if kpiType == KPI.Type.MUL else 0.0
-        realSkillLevel = crewMemberRealSkillLevel(self.__vehicle, skillName, role)
+        realSkillLevel = crewMemberRealSkillLevel(self.__vehicle, skillName)
         if realSkillLevel != tankmen.NO_SKILL:
             for _kpi in skillKpi:
                 if _kpi.name == argName:

@@ -1,0 +1,4 @@
+from script_component.DynamicScriptComponent import DynamicScriptComponent
+
+class FairplayVehicleBattleStatsComponent(DynamicScriptComponent):
+    pass

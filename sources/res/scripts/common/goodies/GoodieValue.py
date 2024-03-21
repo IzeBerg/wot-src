@@ -1,5 +1,6 @@
 from soft_exception import SoftException
 from math import floor
+from typing import TypeVar
 
 class GoodieValue(object):
     __slots__ = [
@@ -56,3 +57,6 @@ class GoodieValue(object):
             return self.value
         else:
             return int(round(float(x) * self.value))
+
+
+GoodieValueType = TypeVar('GoodieValueType', bound=GoodieValue)

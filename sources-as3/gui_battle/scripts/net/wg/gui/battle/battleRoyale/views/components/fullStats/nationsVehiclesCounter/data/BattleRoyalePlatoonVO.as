@@ -17,5 +17,10 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
          super(param1);
          this.isDefaultData = Boolean(!param1);
       }
+      
+      public function isEqual(param1:Object) : Boolean
+      {
+         return param1 && this.isEnemy == param1.isEnemy && this.isDead == param1.isDead && (this.isDefaultData == param1.isDefaultData || param1.isDefaultData == undefined);
+      }
    }
 }

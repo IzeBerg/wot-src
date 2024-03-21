@@ -36,10 +36,10 @@ package net.wg.infrastructure.base.meta.impl
          this.setActiveState(param1);
       }
       
-      public function getTooltipDataS(param1:int) : Array
+      public function getTooltipDataS(param1:int, param2:int) : Array
       {
          App.utils.asserter.assertNotNull(this.getTooltipData,"getTooltipData" + Errors.CANT_NULL);
-         return this.getTooltipData(param1);
+         return this.getTooltipData(param1,param2);
       }
       
       public final function as_setData(param1:Object) : void

@@ -124,8 +124,14 @@ msgstr "Покажите, на что способны!"
 msgid "banner/infoSmall/disabled"
 msgstr "Ожидайте прайм-тайма"
 
-msgid "banner/season"
+msgid "banner/season/first"
+msgstr "Лазурный пегас"
+
+msgid "banner/season/second"
 msgstr "Алый пегас"
+
+msgid "banner/season/third"
+msgstr "Нефритовый пегас"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(season)s, до %(day)s %(month)s"
@@ -714,39 +720,6 @@ msgstr "Очки рейтинга"
 msgid "membersWindow/memberCountDropdown/description"
 msgstr "Игроков во взводе"
 
-msgid "modifier/formattedValueType/nullishDeviation"
-msgstr "0%"
-
-msgid "modifier/formattedValueType/nullishDispersion"
-msgstr "–"
-
-msgid "modifier/name/equipmentCooldown"
-msgstr "Время подготовки снаряжения"
-
-msgid "modifier/name/shotDispersionRadius"
-msgstr "Бонус к разбросу на 100 м"
-
-msgid "modifier/name/vehicleHealth"
-msgstr "Прочность машины"
-
-msgid "modifier/name/visionMinRadius"
-msgstr "Радиус гарантированного обнаружения"
-
-msgid "modifier/name/visionTime"
-msgstr "Длительность обнаружения"
-
-msgid "modifier/valueType/deviation"
-msgstr "+/–%(deviation)s%"
-
-msgid "modifier/valueType/meters"
-msgstr "%(meters)s м"
-
-msgid "modifier/valueType/percentage"
-msgstr "%(percentage)s%"
-
-msgid "modifier/valueType/seconds"
-msgstr "%(seconds)s с"
-
 msgid "noVehicles/howTo/premium"
 msgstr "Используйте Танковый премиум аккаунт"
 
@@ -1255,8 +1228,14 @@ msgstr "К покупке"
 msgid "rewardsScreen/description/qualificationEnded"
 msgstr "НАТИСК. КВАЛИФИКАЦИЯ ЗАВЕРШЕНА"
 
-msgid "rewardsScreen/description/season"
+msgid "rewardsScreen/description/season/first"
+msgstr "НАТИСК. СЕЗОН ЛАЗУРНОГО ПЕГАСА"
+
+msgid "rewardsScreen/description/season/second"
 msgstr "НАТИСК. СЕЗОН АЛОГО ПЕГАСА"
+
+msgid "rewardsScreen/description/season/third"
+msgstr "НАТИСК. СЕЗОН НЕФРИТОВОГО ПЕГАСА"
 
 msgid "rewardsScreen/notice/subTitle"
 msgstr ""
@@ -1698,6 +1677,18 @@ msgstr "монета Натиска"
 msgid "tournament/battleResult/personal/tooltip/descr"
 msgstr "В турнире нельзя получить или потерять очки рейтинга."
 
+msgid "tournamentsWidget/heading"
+msgstr "Турниры «Натиска»"
+
+msgid "tournamentsWidget/text/active"
+msgstr "Не пропустите сражение!"
+
+msgid "tournamentsWidget/text/registration"
+msgstr "Регистрация открыта!"
+
+msgid "training/battleResult/personal/tooltip/descr"
+msgstr "Очки рейтинга нельзя заработать в тренировке режима «Натиск»."
+
 msgid "unit/message/modeOffline"
 msgstr "Невозможно выйти в бой: ошибка базы данных."
 
@@ -1759,42 +1750,56 @@ msgid "whatsNewButtonLabel"
 msgstr "СЕЗОННЫЕ ОБНОВЛЕНИЯ"
 
 msgid "whatsNewView/banner/title/large"
-msgstr "СЕЗОН АЛОГО ПЕГАСА"
+msgstr "СЕЗОН НЕФРИТОВОГО ПЕГАСА"
 
 msgid "whatsNewView/banner/title/small"
 msgstr "НАТИСК. ЧТО НОВОГО?"
 
 msgid "whatsNewView/button/ok"
-msgstr "Так точно!"
+msgstr "Зажжём!"
 
 msgid "whatsNewView/intro/description"
 msgstr ""
-"Повышайте свой ранг, чтобы получить доступ к уникальным товарам за боны и "
-"большим скидкам."
+"В этом сезоне не упустите последний шанс получить ценные награды, в том "
+"числе эксклюзивный средний танк X уровня Харрикейн с экипажем, "
+"усовершенствованное оборудование на выбор, 2D-стиль и многое другое. Пусть "
+"ваша победа на поле боя станет легендарной!"
 
 msgid "whatsNewView/intro/heading"
-msgstr "Магазин «Натиска»"
-
-msgid "whatsNewView/mapChanges/addedMaps"
-msgstr "Новые карты:"
+msgstr ""
+"Насладитесь последними моментами\n"
+"года Пегаса!"
 
 msgid "whatsNewView/mapChanges/heading"
 msgstr "Карты"
 
-msgid "whatsNewView/mapChanges/removedMaps"
-msgstr "Исключённые карты:"
+msgid "whatsNewView/sectionDescription/shopUpdates"
+msgstr ""
+"Новое усовершенствованное оборудование «Экспериментальный прицел» станет "
+"доступно для покупки после достижения ранга «Бронза»."
 
-msgid "whatsNewView/modifiers/added"
-msgstr "Новые модификаторы"
+msgid "whatsNewView/sectionDescription/tournaments"
+msgstr "Сражайтесь в турнирах сезона за славу и ценные награды."
 
-msgid "whatsNewView/modifiers/description"
-msgstr "Для режима добавлены новые модификаторы, меняющие параметры техники."
+msgid "whatsNewView/sectionDescription/trainingRoom"
+msgstr ""
+"Карты режима «Натиск» с соответствующими правилами теперь доступны в режиме "
+"«Тренировочный бой»."
 
-msgid "whatsNewView/modifiers/heading"
-msgstr "Модификаторы «Натиска»"
+msgid "whatsNewView/sectionHeading/shopUpdates"
+msgstr "Обновление магазина «Натиска»"
 
-msgid "whatsNewView/modifiers/unchanged"
-msgstr "Модификаторы без изменений"
+msgid "whatsNewView/sectionHeading/tournaments"
+msgstr "Турниры"
+
+msgid "whatsNewView/sectionHeading/trainingRoom"
+msgstr "Тренировочная комната"
+
+msgid "whatsNewView/stamp/removed"
+msgstr "УДАЛЕНО"
+
+msgid "whatsNewView/stamp/underDevelopment"
+msgstr "В ПЕРЕРАБОТКЕ"
 
 msgid "whatsNewView/tag/changed"
 msgstr "Изменено"
@@ -1802,14 +1807,14 @@ msgstr "Изменено"
 msgid "whatsNewView/tag/new"
 msgstr "Новое"
 
-msgid "whatsNewView/tag/removed"
-msgstr "УДАЛЁН"
+msgid "whatsNewView/tag/returned"
+msgstr "Возвращено"
+
+msgid "whatsNewView/tag/revamped"
+msgstr "Переработано"
 
 msgid "whatsNewView/tag/seasonUpdate"
 msgstr "Сезонное обновление"
-
-msgid "whatsNewView/tag/underDevelopment"
-msgstr "В ПЕРЕРАБОТКЕ"
 
 msgid "whatsNewView/vehiclesForRent/heading"
 msgstr "Арендная техника"
@@ -1817,8 +1822,35 @@ msgstr "Арендная техника"
 msgid "whatsNewView/watchVideo"
 msgstr "Смотреть видео"
 
-msgid "yearlyRewards/banner/willReceived"
-msgstr "Награды будут начислены по окончании рангового года"
+msgid "yearRewards/tooltip/selectableReward/list"
+msgstr ""
+"• Экспериментальный прицел\n"
+"• Усовершенствованная бортовая передача\n"
+"• Улучшенный компрессор\n"
+"• Повышенная снарядостойкость\n"
+"• Усовершенствованная компоновка\n"
+"• Юстированная оптика\n"
+"• Экспериментальная система заряжания\n"
+"• Система отвода пороховых газов\n"
+"• Износостойкие приводы наводки"
+
+msgid "yearRewards/tooltip/selectableReward/title"
+msgstr "Усовершенствованное оборудование"
+
+msgid "yearlyRewards/banner/default"
+msgstr "Награды начисляются в конце третьего сезона."
+
+msgid "yearlyRewards/banner/notAccruedRewards"
+msgstr "Награды скоро будут начислены. Пожалуйста, подождите."
+
+msgid "yearlyRewards/banner/rewardsReceived"
+msgstr "Получена годовая награда. Увидимся в следующем году!"
+
+msgid "yearlyRewards/banner/rewardsSelectionAvailable"
+msgstr "Выберите усовершенствованное оборудование"
+
+msgid "yearlyRewards/banner/selectButtonLabel"
+msgstr "Выбрать награды"
 
 msgid "yearlyRewards/description/achieved"
 msgstr ""
@@ -1829,24 +1861,6 @@ msgid "yearlyRewards/description/current"
 msgstr ""
 "По окончании сезона вы получите 1%(seasonPointIcon)s за каждый достигнутый "
 "ранг."
-
-msgid "yearlyRewards/main/fifth"
-msgstr "Камуфляж «Чемпион»"
-
-msgid "yearlyRewards/main/first"
-msgstr "Камуфляж «Железо»"
-
-msgid "yearlyRewards/main/fourth"
-msgstr "Камуфляж «Золото»"
-
-msgid "yearlyRewards/main/second"
-msgstr "Камуфляж «Бронза»"
-
-msgid "yearlyRewards/main/sixth"
-msgstr "Камуфляж «Легенда»"
-
-msgid "yearlyRewards/main/third"
-msgstr "Камуфляж «Серебро»"
 
 msgid "yearlyRewards/rank/achieved"
 msgstr "Достигнутый ранг: %(rank)s"
@@ -1886,259 +1900,6 @@ msgid "yearlyRewards/title/withVehicle"
 msgstr ""
 "%(vehicle)s и\n"
 "%(camouflageName)s"
-
-msgid "yearlyRewards/vehicle"
-msgstr "Харрикейн"
-
-msgid "yearlyRewards/vehicleTooltip/body"
-msgstr ""
-"Машина с уникальным внешним видом, выдаваемая за достижения в году Пегаса."
-
-msgid "yearlyRewards/vehicleTooltip/header"
-msgstr "Харрикейн"
-
-msgid "yearlyRewardsTooltip/additional/fifth_1/body"
-msgstr "Памятная нашивка, выдаваемая за сбор 15 знамён Пегаса."
-
-msgid "yearlyRewardsTooltip/additional/fifth_1/header"
-msgstr "Натиск 2023–2024: Чемпион"
-
-msgid "yearlyRewardsTooltip/additional/fifth_2/body"
-msgstr ""
-"Вы можете выбрать три единицы усовершенствованного оборудования в качестве награды. Каждый предмет можно забрать только один раз:\n"
-" • Система отвода пороховых газов\n"
-" • Комплекс стабилизационного оборудования\n"
-" • Экспериментальная система заряжания\n"
-" • Износостойкие приводы наводки\n"
-" • Юстированная оптика\n"
-" • Усовершенствованная компоновка\n"
-" • Улучшенный компрессор\n"
-" • Повышенная снарядостойкость\n"
-" • Усовершенствованная бортовая передача"
-
-msgid "yearlyRewardsTooltip/additional/fifth_2/header"
-msgstr "Усовершенствованное оборудование"
-
-msgid "yearlyRewardsTooltip/additional/fifth_3/body"
-msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
-
-msgid "yearlyRewardsTooltip/additional/fifth_3/header"
-msgstr "Стиль «Небесный скакун»"
-
-msgid "yearlyRewardsTooltip/additional/fifth_4/body"
-msgstr ""
-"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
-"\n"
-"3 – Железный пегас\n"
-"6 – Бронзовый пегас\n"
-"9 – Серебряный пегас\n"
-"12 – Золотой пегас\n"
-"15 – Чемпион года Пегаса\n"
-"18 – Легенда года Пегаса\n"
-"\n"
-"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
-
-msgid "yearlyRewardsTooltip/additional/fifth_4/header"
-msgstr "Медаль «Чемпион года Пегаса»"
-
-msgid "yearlyRewardsTooltip/additional/first_1/body"
-msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
-
-msgid "yearlyRewardsTooltip/additional/first_1/header"
-msgstr "Стиль «Небесный скакун»"
-
-msgid "yearlyRewardsTooltip/additional/first_2/body"
-msgstr ""
-"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
-"\n"
-"3 – Железный пегас\n"
-"6 – Бронзовый пегас\n"
-"9 – Серебряный пегас\n"
-"12 – Золотой пегас\n"
-"15 – Чемпион года Пегаса\n"
-"18 – Легенда года Пегаса\n"
-"\n"
-"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
-
-msgid "yearlyRewardsTooltip/additional/first_2/header"
-msgstr "Медаль «Железный пегас»"
-
-msgid "yearlyRewardsTooltip/additional/fourth_1/body"
-msgstr ""
-"Уникальный 100%-й экипаж с «нулевым» навыком «Боевое братство» и опытом на "
-"изучение двух других навыков на выбор."
-
-msgid "yearlyRewardsTooltip/additional/fourth_1/header"
-msgstr "Уникальный экипаж"
-
-msgid "yearlyRewardsTooltip/additional/fourth_2/body"
-msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
-
-msgid "yearlyRewardsTooltip/additional/fourth_2/header"
-msgstr "Стиль «Небесный скакун»"
-
-msgid "yearlyRewardsTooltip/additional/fourth_3/body"
-msgstr ""
-"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
-"\n"
-"3 – Железный пегас\n"
-"6 – Бронзовый пегас\n"
-"9 – Серебряный пегас\n"
-"12 – Золотой пегас\n"
-"15 – Чемпион года Пегаса\n"
-"18 – Легенда года Пегаса\n"
-"\n"
-"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
-
-msgid "yearlyRewardsTooltip/additional/fourth_3/header"
-msgstr "Медаль «Золотой пегас»"
-
-msgid "yearlyRewardsTooltip/additional/second_1/body"
-msgstr ""
-"Вы можете выбрать одну единицу усовершенствованного оборудования в качестве награды. Каждый предмет можно забрать только один раз:\n"
-" • Система отвода пороховых газов\n"
-" • Комплекс стабилизационного оборудования\n"
-" • Экспериментальная система заряжания\n"
-" • Износостойкие приводы наводки\n"
-" • Юстированная оптика\n"
-" • Усовершенствованная компоновка\n"
-" • Улучшенный компрессор\n"
-" • Повышенная снарядостойкость\n"
-" • Усовершенствованная бортовая передача"
-
-msgid "yearlyRewardsTooltip/additional/second_1/header"
-msgstr "Усовершенствованное оборудование"
-
-msgid "yearlyRewardsTooltip/additional/second_2/body"
-msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
-
-msgid "yearlyRewardsTooltip/additional/second_2/header"
-msgstr "Стиль «Небесный скакун»"
-
-msgid "yearlyRewardsTooltip/additional/second_3/body"
-msgstr ""
-"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
-"\n"
-"3 – Железный пегас\n"
-"6 – Бронзовый пегас\n"
-"9 – Серебряный пегас\n"
-"12 – Золотой пегас\n"
-"15 – Чемпион года Пегаса\n"
-"18 – Легенда года Пегаса\n"
-"\n"
-"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
-
-msgid "yearlyRewardsTooltip/additional/second_3/header"
-msgstr "Медаль «Бронзовый пегас»"
-
-msgid "yearlyRewardsTooltip/additional/sixth_1/body"
-msgstr ""
-"Особая отметка, выдаваемая лучшим из лучших в году Пегаса режима «Натиск»."
-
-msgid "yearlyRewardsTooltip/additional/sixth_1/header"
-msgstr "Легенда о Пегасе"
-
-msgid "yearlyRewardsTooltip/additional/sixth_2/body"
-msgstr "Памятная нашивка, выдаваемая за сбор 18 знамён Пегаса."
-
-msgid "yearlyRewardsTooltip/additional/sixth_2/header"
-msgstr "Натиск 2023–2024: Легенда"
-
-msgid "yearlyRewardsTooltip/additional/sixth_3/body"
-msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
-
-msgid "yearlyRewardsTooltip/additional/sixth_3/header"
-msgstr "Стиль «Небесный скакун»"
-
-msgid "yearlyRewardsTooltip/additional/sixth_4/body"
-msgstr ""
-"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
-"\n"
-"3 – Железный пегас\n"
-"6 – Бронзовый пегас\n"
-"9 – Серебряный пегас\n"
-"12 – Золотой пегас\n"
-"15 – Чемпион года Пегаса\n"
-"18 – Легенда года Пегаса\n"
-"\n"
-"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
-
-msgid "yearlyRewardsTooltip/additional/sixth_4/header"
-msgstr "Медаль «Легенда года Пегаса»"
-
-msgid "yearlyRewardsTooltip/additional/third_1/body"
-msgstr ""
-"Вы можете выбрать две единицы усовершенствованного оборудования в качестве награды. Каждый предмет можно забрать только один раз:\n"
-" • Система отвода пороховых газов\n"
-" • Комплекс стабилизационного оборудования\n"
-" • Экспериментальная система заряжания\n"
-" • Износостойкие приводы наводки\n"
-" • Юстированная оптика\n"
-" • Усовершенствованная компоновка\n"
-" • Улучшенный компрессор\n"
-" • Повышенная снарядостойкость\n"
-" • Усовершенствованная бортовая передача"
-
-msgid "yearlyRewardsTooltip/additional/third_1/header"
-msgstr "Усовершенствованное оборудование"
-
-msgid "yearlyRewardsTooltip/additional/third_2/body"
-msgstr "Особый наградной 2D-стиль, выдаваемый за достижения в году Пегаса."
-
-msgid "yearlyRewardsTooltip/additional/third_2/header"
-msgstr "Стиль «Небесный скакун»"
-
-msgid "yearlyRewardsTooltip/additional/third_3/body"
-msgstr ""
-"Выдаётся в режиме «Натиск» за сбор знамён Пегаса.\n"
-"\n"
-"3 – Железный пегас\n"
-"6 – Бронзовый пегас\n"
-"9 – Серебряный пегас\n"
-"12 – Золотой пегас\n"
-"15 – Чемпион года Пегаса\n"
-"18 – Легенда года Пегаса\n"
-"\n"
-"В зависимости от количества собранных знамён Пегаса вы получите одну из медалей."
-
-msgid "yearlyRewardsTooltip/additional/third_3/header"
-msgstr "Медаль «Серебряный пегас»"
-
-msgid "yearlyRewardsTooltip/main/fifth/body"
-msgstr "Наградной камуфляж за сбор 15 знамён Пегаса."
-
-msgid "yearlyRewardsTooltip/main/fifth/header"
-msgstr "Камуфляж «Чемпион»"
-
-msgid "yearlyRewardsTooltip/main/first/body"
-msgstr "Наградной камуфляж за сбор 3 знамён Пегаса."
-
-msgid "yearlyRewardsTooltip/main/first/header"
-msgstr "Камуфляж «Железо»"
-
-msgid "yearlyRewardsTooltip/main/fourth/body"
-msgstr "Наградной камуфляж за сбор 12 знамён Пегаса."
-
-msgid "yearlyRewardsTooltip/main/fourth/header"
-msgstr "Камуфляж «Золото»"
-
-msgid "yearlyRewardsTooltip/main/second/body"
-msgstr "Наградной камуфляж за сбор 6 знамён Пегаса."
-
-msgid "yearlyRewardsTooltip/main/second/header"
-msgstr "Камуфляж «Бронза»"
-
-msgid "yearlyRewardsTooltip/main/sixth/body"
-msgstr "Наградной камуфляж за сбор 18 знамён Пегаса."
-
-msgid "yearlyRewardsTooltip/main/sixth/header"
-msgstr "Камуфляж «Легенда»"
-
-msgid "yearlyRewardsTooltip/main/third/body"
-msgstr "Наградной камуфляж за сбор 9 знамён Пегаса."
-
-msgid "yearlyRewardsTooltip/main/third/header"
-msgstr "Камуфляж «Серебро»"
 
 msgid "yearlyStatistics/battles"
 msgstr "Бои (один./взводн.)"

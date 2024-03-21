@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>Move</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/Pl21_CS_63_OSP3_3DSt/pl21_turret_static.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>shot</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-219.000000 -136.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>shot</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/Pl21_CS_63_OSP3_3DSt/pl21_turret_static_fadeout.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<uiPosition>-392.000000 -274.000000 0.000000</uiPosition>
+	</node>
+</root>
