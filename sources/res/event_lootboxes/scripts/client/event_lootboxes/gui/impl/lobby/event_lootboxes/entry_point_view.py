@@ -2,7 +2,6 @@ from account_helpers.AccountSettings import LOOT_BOXES_VIEWED_COUNT
 from constants import PREBATTLE_TYPE, QUEUE_TYPE
 from frameworks.wulf import ViewSettings
 from frameworks.wulf.gui_constants import ViewFlags
-from event_lootboxes.gui.shared.event_dispatcher import showEventLootBoxesWelcomeScreen
 from gui.impl.gen import R
 from event_lootboxes.gui.impl.gen.view_models.views.lobby.event_lootboxes.entry_point_view_model import EntryPointViewModel
 from tooltips.entry_point_tooltip import EventLootBoxesEntryPointTooltipView
@@ -37,9 +36,6 @@ class EventLootBoxesEntryPointWidget(ViewImpl, ICarouselEventEntry):
         if contentID == R.views.event_lootboxes.lobby.event_lootboxes.tooltips.EntryPointTooltip():
             return EventLootBoxesEntryPointTooltipView()
 
-    def _initialize(self, *args, **kwargs):
-        self.__showWelcomeIfNeeded()
-
     def _onLoading(self, *args, **kwargs):
         super(EventLootBoxesEntryPointWidget, self)._onLoading(*args, **kwargs)
         self.__updateBoxesCount(self.__eventLootBoxes.getBoxesCount())
@@ -59,7 +55,6 @@ class EventLootBoxesEntryPointWidget(ViewImpl, ICarouselEventEntry):
         self.__eventLootBoxes.setSetting(EVENT_LOOT_BOXES_CATEGORY, LOOT_BOXES_VIEWED_COUNT, self.__eventLootBoxes.getBoxesCount())
 
     def __onLootBoxesStatusChanged(self):
-        self.__showWelcomeIfNeeded()
         self.__updateTime()
 
     def __updateBoxesCount(self, count, *_):
@@ -77,7 +72,3 @@ class EventLootBoxesEntryPointWidget(ViewImpl, ICarouselEventEntry):
     def __getEventExpireTime(self):
         _, finish = self.__eventLootBoxes.getEventActiveTime()
         return finish - getServerUTCTime()
-
-    def __showWelcomeIfNeeded(self):
-        if not self.__eventLootBoxes.isLootBoxesWasStarted():
-            showEventLootBoxesWelcomeScreen()
