@@ -1,6 +1,7 @@
 import itertools, typing
 from collections import namedtuple, defaultdict
 import Settings, SoundGroups, nations
+from SoundGroups import CREW_GENDER_SWITCHES
 from gui import GUI_NATIONS_ORDER_INDEX
 from gui.impl import backport
 from gui.impl.gen import R
@@ -175,6 +176,7 @@ ALT_VOICES_PREVIEW = itertools.cycle(('vo_enemy_hp_damaged_by_projectile_by_play
                                       'vo_enemy_fire_started_by_player', 'vo_enemy_killed_by_player'))
 
 def playRecruitVoiceover(voiceoverParams):
+    SoundGroups.g_instance.setSwitch(CREW_GENDER_SWITCHES.GROUP, voiceoverParams.genderSwitch)
     SoundGroups.g_instance.soundModes.setMode(voiceoverParams.languageMode)
     sound = SoundGroups.g_instance.getSound2D(next(ALT_VOICES_PREVIEW))
     sound.play()

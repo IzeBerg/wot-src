@@ -1,4 +1,4 @@
-import Event, BigWorld
+import Event, BigWorld, BattleReplay
 from gui.battle_control.battle_constants import BATTLE_CTRL_ID
 from gui.battle_control.view_components import ViewComponentsController
 from gui.Scaleform.genConsts.EPIC_CONSTS import EPIC_CONSTS
@@ -53,6 +53,8 @@ class SpectatorViewController(ViewComponentsController):
             return
 
     def toggleFollowHint(self, toggle):
+        if BattleReplay.g_replayCtrl.isPlaying:
+            return
         for viewCmp in self._viewComponents:
             viewCmp.toggleFollowHint(toggle)
 

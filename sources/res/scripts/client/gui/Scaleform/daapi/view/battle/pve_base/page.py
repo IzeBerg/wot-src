@@ -1,4 +1,5 @@
 import typing, BattleReplay
+from aih_constants import CTRL_MODE_NAME
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.battle.classic import ClassicPage
 from gui.Scaleform.daapi.view.battle.classic.page import COMMON_CLASSIC_CONFIG, EXTENDED_CLASSIC_CONFIG, DynamicAliases
@@ -181,3 +182,8 @@ class PveBaseBattlePage(ClassicPage):
 
     def _canShowPostmortemTips(self):
         return super(PveBaseBattlePage, self)._canShowPostmortemTips() or BattleReplay.g_replayCtrl.isPlaying
+
+    def _changeCtrlMode(self, ctrlMode):
+        super(PveBaseBattlePage, self)._changeCtrlMode(ctrlMode)
+        if self._isInPostmortem and ctrlMode != CTRL_MODE_NAME.POSTMORTEM:
+            self._onRespawnBaseMoving()

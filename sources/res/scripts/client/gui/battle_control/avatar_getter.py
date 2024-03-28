@@ -518,3 +518,10 @@ def isPostmortemFeatureEnabled(ctrlModeName, avatar=None):
         result = False
 
     return result
+
+
+def getIsObserverFPV():
+    player = BigWorld.player()
+    if player:
+        return player.isObserverFPV
+    return False

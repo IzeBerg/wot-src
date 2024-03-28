@@ -1519,8 +1519,9 @@ class PostMortemControlMode(IControlMode, CallbackDelayer):
             if self.__cam.vehicleMProv is not BigWorld.player().consistentMatrices.attachedVehicleMatrix:
                 self.__cam.vehicleMProv = BigWorld.player().consistentMatrices.attachedVehicleMatrix
             self.__aih.onCameraChanged(CTRL_MODE_NAME.POSTMORTEM, self.__curVehicleID)
-            self.guiSessionProvider.shared.feedback.showVehicleMarker(self.__previousPostmortemVehicleID)
-            self.guiSessionProvider.shared.feedback.hideVehicleMarker(self.curVehicleID)
+            if not self.__isObserverMode:
+                self.guiSessionProvider.shared.feedback.showVehicleMarker(self.__previousPostmortemVehicleID)
+                self.guiSessionProvider.shared.feedback.hideVehicleMarker(self.curVehicleID)
             return
 
     def __getCameraTransitionDuration(self, sourceVehicleID, targetVehicleID):
@@ -1604,6 +1605,7 @@ class PostMortemControlMode(IControlMode, CallbackDelayer):
         if self.__transitionCamera.isInTransition():
             return 0.1
         BigWorld.camera(self.__cam.camera)
+        self.__aih.notifyCameraChanged()
 
     def __getValidVehicleID(self, vehicleID):
         if vehicleID is None or vehicleID == -1:

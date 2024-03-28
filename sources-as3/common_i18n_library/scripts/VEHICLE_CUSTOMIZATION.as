@@ -16211,6 +16211,8 @@ package
       
       public static const QUESTPROGRESS_CUST_PROGRESS_775_15:String = "#vehicle_customization:questProgress/cust_progress_775_15";
       
+      public static const QUESTPROGRESS_CUST_PROGRESS_887_1:String = "#vehicle_customization:questProgress/cust_progress_887_1";
+      
       public static const ONBOARDINGVIEW_TITLE:String = "#vehicle_customization:onboardingView/title";
       
       public static const ONBOARDINGVIEW_BLOCK_0_HEADER:String = "#vehicle_customization:onboardingView/block_0/header";

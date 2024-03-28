@@ -8,7 +8,6 @@ class BattleRoyaleComponent(ClientArenaComponent):
         ClientArenaComponent.__init__(self, componentSystem)
         self.__place = None
         self.__defeatedTeams = []
-        self.__isRespawnFinished = False
         self.onBattleRoyalePlaceUpdated = Event.Event(self._eventManager)
         self.onBattleRoyaleDefeatedTeamsUpdate = Event.Event(self._eventManager)
         self.onRespawnTimeFinished = Event.Event(self._eventManager)
@@ -24,10 +23,6 @@ class BattleRoyaleComponent(ClientArenaComponent):
         self.__defeatedTeams = defeatedTeams
         self.onBattleRoyaleDefeatedTeamsUpdate(defeatedTeams)
 
-    def setOnRespawnTimeFinished(self):
-        self.__isRespawnFinished = True
-        self.onRespawnTimeFinished()
-
     @property
     def place(self):
         return self.__place
@@ -35,7 +30,3 @@ class BattleRoyaleComponent(ClientArenaComponent):
     @property
     def defeatedTeams(self):
         return self.__defeatedTeams
-
-    @property
-    def isRespawnFinished(self):
-        return self.__isRespawnFinished

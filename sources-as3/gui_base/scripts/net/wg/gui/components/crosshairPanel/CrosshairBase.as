@@ -246,7 +246,7 @@ package net.wg.gui.components.crosshairPanel
       
       public function setInfo(param1:Number, param2:String, param3:String, param4:Boolean, param5:Boolean, param6:String, param7:String, param8:Number, param9:Number, param10:String, param11:Number, param12:String, param13:String, param14:Boolean = false, param15:Boolean = false, param16:Boolean = false) : void
       {
-         this.setClipsParam(param8,param9,this.isAutoloader);
+         this.setClipsParam(param8,param9,param15);
          this.setHealth(param1);
          this.setZoom(param2);
          this.setReloadingState(param3);

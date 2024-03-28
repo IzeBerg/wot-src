@@ -1255,7 +1255,7 @@ def _recursiveStep(defaultDict, savedDict, finalDict):
 
 class AccountSettings(object):
     onSettingsChanging = Event.Event()
-    version = 75
+    version = 76
     settingsCore = dependency.descriptor(ISettingsCore)
     __cache = {'login': None, 'section': None}
     __sessionSettings = {'login': None, 'section': None}
@@ -1955,6 +1955,12 @@ class AccountSettings(object):
                         accSettings.write(WOT_PLUS, _pack(wotPlusSettings))
                     if SHOWN_WOT_PLUS_INTRO in accSettings.keys():
                         accSettings.write(SHOWN_WOT_PLUS_INTRO, _pack(False))
+
+            if currVersion < 76:
+                for _, section in _filterAccountSection(ads):
+                    accSettings = AccountSettings._readSection(section, KEY_SETTINGS)
+                    if ROYALE_INTRO_VIDEO_SHOWN in accSettings.keys():
+                        accSettings.write(ROYALE_INTRO_VIDEO_SHOWN, _pack(False))
 
             ads.writeInt('version', AccountSettings.version)
         return
