@@ -44,6 +44,8 @@ package net.wg.gui.messenger.windows
       
       private var _msgAreaElement:ConstrainedElement;
       
+      private var _isPrivate:Boolean = false;
+      
       private const CONTENT_PADDING:Padding = new Padding(38,10,11,10);
       
       private const SB_PADDING:Padding = new Padding(0,0,0,0);
@@ -126,6 +128,11 @@ package net.wg.gui.messenger.windows
          invalidate(INVALID_LIST_VISIBILITY);
       }
       
+      public function as_setIsPrivate(param1:Boolean) : void
+      {
+         this._isPrivate = param1;
+      }
+      
       public function as_showWarning(param1:String) : void
       {
          this.warningPanel.setWarning(param1);
@@ -134,8 +141,7 @@ package net.wg.gui.messenger.windows
       
       private function updatePartSize(param1:MovieClip, param2:ConstrainedElement, param3:Boolean) : void
       {
-         var _loc4_:Number = NaN;
-         _loc4_ = this.warningPanel.height - WARNING_PADDING;
+         var _loc4_:Number = this.warningPanel.height - WARNING_PADDING;
          if(param3)
          {
             param2.top += _loc4_;
@@ -169,7 +175,7 @@ package net.wg.gui.messenger.windows
       {
          if(param1.buttonIdx == MouseEventEx.RIGHT_BUTTON)
          {
-            App.contextMenuMgr.show(CONTEXT_MENU_HANDLER_TYPE.BASE_USER,this,param1.itemData);
+            App.contextMenuMgr.show(!!this._isPrivate ? CONTEXT_MENU_HANDLER_TYPE.BASE_USER_APPEAL : CONTEXT_MENU_HANDLER_TYPE.BASE_USER,this,param1.itemData);
          }
       }
       

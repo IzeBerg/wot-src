@@ -125,6 +125,70 @@ package
       
       public static const TANKMAN_ROLES_FEMALE_LOADER:String = "#item_types:tankman/roles/female/loader";
       
+      public static const TANKMAN_ROLES_POSSESSIVECASE_COMMANDER:String = "#item_types:tankman/roles/possessiveCase/commander";
+      
+      public static const TANKMAN_ROLES_POSSESSIVECASE_DRIVER:String = "#item_types:tankman/roles/possessiveCase/driver";
+      
+      public static const TANKMAN_ROLES_POSSESSIVECASE_RADIOMAN:String = "#item_types:tankman/roles/possessiveCase/radioman";
+      
+      public static const TANKMAN_ROLES_POSSESSIVECASE_GUNNER:String = "#item_types:tankman/roles/possessiveCase/gunner";
+      
+      public static const TANKMAN_ROLES_POSSESSIVECASE_LOADER:String = "#item_types:tankman/roles/possessiveCase/loader";
+      
+      public static const TANKMAN_ROLES_FEMALE_POSSESSIVECASE_COMMANDER:String = "#item_types:tankman/roles/female/possessiveCase/commander";
+      
+      public static const TANKMAN_ROLES_FEMALE_POSSESSIVECASE_DRIVER:String = "#item_types:tankman/roles/female/possessiveCase/driver";
+      
+      public static const TANKMAN_ROLES_FEMALE_POSSESSIVECASE_RADIOMAN:String = "#item_types:tankman/roles/female/possessiveCase/radioman";
+      
+      public static const TANKMAN_ROLES_FEMALE_POSSESSIVECASE_GUNNER:String = "#item_types:tankman/roles/female/possessiveCase/gunner";
+      
+      public static const TANKMAN_ROLES_FEMALE_POSSESSIVECASE_LOADER:String = "#item_types:tankman/roles/female/possessiveCase/loader";
+      
+      public static const TANKMAN_ROLES_OBJECTIVECASE_COMMANDER:String = "#item_types:tankman/roles/objectiveCase/commander";
+      
+      public static const TANKMAN_ROLES_OBJECTIVECASE_DRIVER:String = "#item_types:tankman/roles/objectiveCase/driver";
+      
+      public static const TANKMAN_ROLES_SMALLRESOLUTION_NORMALCASE_DRIVER:String = "#item_types:tankman/roles/smallResolution/normalCase/driver";
+      
+      public static const TANKMAN_ROLES_OBJECTIVECASE_RADIOMAN:String = "#item_types:tankman/roles/objectiveCase/radioman";
+      
+      public static const TANKMAN_ROLES_OBJECTIVECASE_GUNNER:String = "#item_types:tankman/roles/objectiveCase/gunner";
+      
+      public static const TANKMAN_ROLES_OBJECTIVECASE_LOADER:String = "#item_types:tankman/roles/objectiveCase/loader";
+      
+      public static const TANKMAN_ROLES_FEMALE_OBJECTIVECASE_COMMANDER:String = "#item_types:tankman/roles/female/objectiveCase/commander";
+      
+      public static const TANKMAN_ROLES_FEMALE_OBJECTIVECASE_DRIVER:String = "#item_types:tankman/roles/female/objectiveCase/driver";
+      
+      public static const TANKMAN_ROLES_FEMALE_OBJECTIVECASE_RADIOMAN:String = "#item_types:tankman/roles/female/objectiveCase/radioman";
+      
+      public static const TANKMAN_ROLES_FEMALE_OBJECTIVECASE_GUNNER:String = "#item_types:tankman/roles/female/objectiveCase/gunner";
+      
+      public static const TANKMAN_ROLES_FEMALE_OBJECTIVECASE_LOADER:String = "#item_types:tankman/roles/female/objectiveCase/loader";
+      
+      public static const TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_COMMANDER:String = "#item_types:tankman/roles/objectiveCase/upperCase/commander";
+      
+      public static const TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_DRIVER:String = "#item_types:tankman/roles/objectiveCase/upperCase/driver";
+      
+      public static const TANKMAN_ROLES_SMALLRESOLUTION_UPPERCASE_DRIVER:String = "#item_types:tankman/roles/smallResolution/upperCase/driver";
+      
+      public static const TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_RADIOMAN:String = "#item_types:tankman/roles/objectiveCase/upperCase/radioman";
+      
+      public static const TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_GUNNER:String = "#item_types:tankman/roles/objectiveCase/upperCase/gunner";
+      
+      public static const TANKMAN_ROLES_OBJECTIVECASE_UPPERCASE_LOADER:String = "#item_types:tankman/roles/objectiveCase/upperCase/loader";
+      
+      public static const TANKMAN_ROLES_FEMALE_OBJECTIVECASE_UPPERCASE_COMMANDER:String = "#item_types:tankman/roles/female/objectiveCase/upperCase/commander";
+      
+      public static const TANKMAN_ROLES_FEMALE_OBJECTIVECASE_UPPERCASE_DRIVER:String = "#item_types:tankman/roles/female/objectiveCase/upperCase/driver";
+      
+      public static const TANKMAN_ROLES_FEMALE_OBJECTIVECASE_UPPERCASE_RADIOMAN:String = "#item_types:tankman/roles/female/objectiveCase/upperCase/radioman";
+      
+      public static const TANKMAN_ROLES_FEMALE_OBJECTIVECASE_UPPERCASE_GUNNER:String = "#item_types:tankman/roles/female/objectiveCase/upperCase/gunner";
+      
+      public static const TANKMAN_ROLES_FEMALE_OBJECTIVECASE_UPPERCASE_LOADER:String = "#item_types:tankman/roles/female/objectiveCase/upperCase/loader";
+      
       public static const TANKMAN_SKILL_NOT_BE_USED:String = "#item_types:tankman/Skill_not_be_used";
       
       public static const TANKMAN_SKILLS_PERMANENT_DESCR:String = "#item_types:tankman/skills/permanent_descr";

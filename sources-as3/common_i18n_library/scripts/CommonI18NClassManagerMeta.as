@@ -7,6 +7,8 @@ package
       
       public static const BADGE:Class = BADGE;
       
+      public static const BATTLE_HINTS:Class = BATTLE_HINTS;
+      
       public static const BATTLE_MATTERS:Class = BATTLE_MATTERS;
       
       public static const BATTLE_RESULTS:Class = BATTLE_RESULTS;
@@ -24,6 +26,8 @@ package
       public static const COMP7:Class = COMP7;
       
       public static const CONTROLS:Class = CONTROLS;
+      
+      public static const CREW_BOOKS:Class = CREW_BOOKS;
       
       public static const CREW_OPERATIONS:Class = CREW_OPERATIONS;
       
@@ -90,8 +94,6 @@ package
       public static const RES_LOGIN:Class = RES_LOGIN;
       
       public static const RES_SHOP:Class = RES_SHOP;
-      
-      public static const RETRAIN_CREW:Class = RETRAIN_CREW;
       
       public static const SETTINGS:Class = SETTINGS;
       

@@ -4,7 +4,7 @@ package net.wg.infrastructure.interfaces
    import flash.display.Loader;
    import net.wg.data.daapi.LoadViewVO;
    
-   public interface IView extends IDAAPIModule, IManagedContent, IUIComponentEx
+   public interface IView extends IDAAPIModule, IManagedContent, IUIComponentEx, ITutorialView
    {
        
       

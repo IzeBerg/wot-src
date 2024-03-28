@@ -23,6 +23,11 @@ package net.wg.gui.components.crosshairPanel
          this.artyShotIndicatorsPanel.setGunMarkersData(param1,param2);
       }
       
+      override public function updateScaleSteps(param1:int) : void
+      {
+         this.scaleWidget.updateSteps(param1);
+      }
+      
       override public function updateScaleWidget(param1:Number) : void
       {
          this.scaleWidget.updateData(param1);

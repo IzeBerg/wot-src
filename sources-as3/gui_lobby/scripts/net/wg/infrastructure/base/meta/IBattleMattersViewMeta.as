@@ -9,5 +9,7 @@ package net.wg.infrastructure.base.meta
       function as_showView() : void;
       
       function as_hideView() : void;
+      
+      function as_setPlaceId(param1:uint) : void;
    }
 }

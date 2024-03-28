@@ -11,7 +11,6 @@ package net.wg.gui.lobby.vehicleCompare
    import net.wg.gui.lobby.vehicleCompare.configurator.ModificationsWidget;
    import net.wg.gui.lobby.vehicleCompare.configurator.VehConfCrew;
    import net.wg.gui.lobby.vehicleCompare.configurator.VehConfModules;
-   import net.wg.gui.lobby.vehicleCompare.data.VehConfSkillVO;
    import net.wg.gui.lobby.vehicleCompare.data.VehicleCompareConfiguratorInitDataVO;
    import net.wg.gui.lobby.vehicleCompare.data.VehicleCompareConfiguratorVO;
    import net.wg.gui.lobby.vehicleCompare.events.ClosableEquipmentSlotEvent;
@@ -23,6 +22,7 @@ package net.wg.gui.lobby.vehicleCompare
    import net.wg.infrastructure.interfaces.IDAAPIModule;
    import net.wg.infrastructure.interfaces.IViewStackContent;
    import net.wg.utils.StageSizeBoundaries;
+   import scaleform.clik.data.DataProvider;
    
    public class VehicleCompareConfiguratorView extends VehicleCompareConfiguratorViewMeta implements IVehicleCompareConfiguratorViewMeta, IViewStackContent
    {
@@ -172,7 +172,7 @@ package net.wg.gui.lobby.vehicleCompare
          this.modificationsWidget.setSize(MODIFICATIONS_WIDGET_WIDTH,MODIFICATIONS_WIDGET_HEIGHT_SMALL);
       }
       
-      override protected function setSkills(param1:Vector.<VehConfSkillVO>) : void
+      override protected function setSkills(param1:DataProvider) : void
       {
          this.crew.setSkills(param1);
       }

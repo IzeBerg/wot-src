@@ -294,11 +294,10 @@ package net.wg.gui.dialogs
       
       protected function layoutButtons(param1:Number) : void
       {
-         var _loc5_:Number = NaN;
          var _loc2_:Vector.<SoundButtonEx> = this.getAllButtons();
          var _loc3_:uint = _loc2_.length;
          var _loc4_:SoundButtonEx = null;
-         _loc5_ = window.width - window.contentPadding.horizontal;
+         var _loc5_:Number = window.width - window.contentPadding.horizontal;
          var _loc6_:int = _loc3_ - 1;
          while(_loc6_ >= 0)
          {

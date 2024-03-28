@@ -17,7 +17,7 @@ package net.wg.gui.lobby.settings
    public class GameSettingsContent extends UIComponentEx
    {
       
-      private static const OFFSET_ONLY_10_MODE_DISABLED:int = -26;
+      private static const OFFSET_CB_DISABLED:int = -26;
       
       private static const NEVER_INDEX:int = 0;
        
@@ -63,6 +63,8 @@ package net.wg.gui.lobby.settings
       public var gameplay_epicStandardCheckbox:CheckBox = null;
       
       public var gameplay_only10ModeCheckbox:CheckBox = null;
+      
+      public var gameplay_devMapsCheckbox:CheckBox = null;
       
       public var battleLoadingInfoLabelControl:LabelControl = null;
       
@@ -216,12 +218,12 @@ package net.wg.gui.lobby.settings
       
       private var _initYAnonymizerCheckbox:int;
       
-      private var _only10ModeEnabled:Boolean = true;
+      private var _initYGameplayOnly10ModeCheckbox:int;
       
       public function GameSettingsContent()
       {
          super();
-         this.setOnly10ModeControlsY();
+         this.setDependentVisibleControlsY();
       }
       
       override protected function configUI() : void
@@ -270,6 +272,9 @@ package net.wg.gui.lobby.settings
          this.gameplay_dominationCheckbox.label = SETTINGS.GAMEPLAY_DOMINATION;
          this.gameplay_assaultCheckbox.label = SETTINGS.GAMEPLAY_ASSAULT;
          this.gameplay_epicDominationCheckbox.label = SETTINGS.GAMEPLAY_EPIC_ENCOUNTER;
+         this.gameplay_devMapsCheckbox.label = SETTINGS.GAMEPLAY_DEVMAPS;
+         this.gameplay_devMapsCheckbox.toolTip = TOOLTIPS.DEVMAPS;
+         this.gameplay_devMapsCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.gameplay_epicDominationCheckbox.visible = false;
          this.gameplay_epicStandardCheckbox.label = SETTINGS.GAMEPLAY_EPIC_STANDARD;
          this.gameplay_epicStandardCheckbox.toolTip = TOOLTIPS.EPICRANDOMSTANDARDNOTIFICATION;
@@ -427,6 +432,8 @@ package net.wg.gui.lobby.settings
          this.gameplay_epicStandardCheckbox = null;
          this.gameplay_only10ModeCheckbox.dispose();
          this.gameplay_only10ModeCheckbox = null;
+         this.gameplay_devMapsCheckbox.dispose();
+         this.gameplay_devMapsCheckbox = null;
          this.battleLoadingInfoLabelControl.dispose();
          this.battleLoadingInfoLabelControl = null;
          this.battleLoadingInfoDropDown.dispose();
@@ -540,31 +547,33 @@ package net.wg.gui.lobby.settings
          super.onDispose();
       }
       
-      public function updateOnly10ModeDependentControls(param1:Boolean) : void
+      public function updateDependentVisibleControls(param1:Boolean, param2:Boolean, param3:Number) : void
       {
-         var _loc2_:int = 0;
-         if(this._only10ModeEnabled != param1)
+         var _loc4_:int = !!param1 ? int(Values.ZERO) : int(OFFSET_CB_DISABLED);
+         _loc4_ += !!param2 ? Values.ZERO : OFFSET_CB_DISABLED;
+         this.fieldSetBattleTypes.height = param3 + _loc4_;
+         if(!param2)
          {
-            this._only10ModeEnabled = param1;
-            _loc2_ = !!this._only10ModeEnabled ? int(Values.ZERO) : int(OFFSET_ONLY_10_MODE_DISABLED);
-            this.carouselTypeFieldSet.y = this._initYCarouselTypeFieldSet + _loc2_;
-            this.carouselTypeButtonBar.y = this._initYCarouselTypeButtonBar + _loc2_;
-            this.doubleCarouselLabel.y = this._initYDoubleCarouselLabel + _loc2_;
-            this.doubleCarouselTypeDropDown.y = this._initYDoubleCarouselTypeDropDown + _loc2_;
-            this.vehicleCarouselStatsCheckbox.y = this._initYVehicleCarouselStatsCheckbox + _loc2_;
-            this.customizationDisplayTypeFieldSet.y = this._initYCustomizationDisplayTypeFieldSet + _loc2_;
-            this.customizationDisplayTypeButtonBar.y = this._initYCustomizationDisplayTypeButtonBar + _loc2_;
-            this.replayEnabledLabel.y = this._initYReplayEnabledLabel + _loc2_;
-            this.replayEnabledDropDown.y = this._initYReplayEnabledDropDown + _loc2_;
-            this.showMarksOnGunCheckbox.y = this._initYShowMarksOnGunCheckbox + _loc2_;
-            this.displayPlatoonMembersCheckbox.y = this._initYDisplayPlatoonMembersCheckbox + _loc2_;
-            this.loginServerSelectionCheckbox.y = this._initYLoginServerSelectionCheckbox + _loc2_;
-            this.anonymizerCheckbox.y = this._initYAnonymizerCheckbox + _loc2_;
+            this.gameplay_only10ModeCheckbox.y = this._initYGameplayOnly10ModeCheckbox + OFFSET_CB_DISABLED;
          }
+         this.carouselTypeFieldSet.y = this._initYCarouselTypeFieldSet + _loc4_;
+         this.carouselTypeButtonBar.y = this._initYCarouselTypeButtonBar + _loc4_;
+         this.doubleCarouselLabel.y = this._initYDoubleCarouselLabel + _loc4_;
+         this.doubleCarouselTypeDropDown.y = this._initYDoubleCarouselTypeDropDown + _loc4_;
+         this.vehicleCarouselStatsCheckbox.y = this._initYVehicleCarouselStatsCheckbox + _loc4_;
+         this.customizationDisplayTypeFieldSet.y = this._initYCustomizationDisplayTypeFieldSet + _loc4_;
+         this.customizationDisplayTypeButtonBar.y = this._initYCustomizationDisplayTypeButtonBar + _loc4_;
+         this.replayEnabledLabel.y = this._initYReplayEnabledLabel + _loc4_;
+         this.replayEnabledDropDown.y = this._initYReplayEnabledDropDown + _loc4_;
+         this.showMarksOnGunCheckbox.y = this._initYShowMarksOnGunCheckbox + _loc4_;
+         this.displayPlatoonMembersCheckbox.y = this._initYDisplayPlatoonMembersCheckbox + _loc4_;
+         this.loginServerSelectionCheckbox.y = this._initYLoginServerSelectionCheckbox + _loc4_;
+         this.anonymizerCheckbox.y = this._initYAnonymizerCheckbox + _loc4_;
       }
       
-      private function setOnly10ModeControlsY() : void
+      private function setDependentVisibleControlsY() : void
       {
+         this._initYGameplayOnly10ModeCheckbox = this.gameplay_only10ModeCheckbox.y;
          this._initYCarouselTypeFieldSet = this.carouselTypeFieldSet.y;
          this._initYCarouselTypeButtonBar = this.carouselTypeButtonBar.y;
          this._initYDoubleCarouselLabel = this.doubleCarouselLabel.y;

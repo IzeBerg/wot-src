@@ -1063,7 +1063,7 @@ class TelecomHandler(ServiceChannelHandler):
 
     @staticmethod
     def __getVehileDesrs(data):
-        return [ vehicles_core.getVehicleType(vehDesr).compactDescr for vehDesr in data['data']['vehicles'] ]
+        return [ vehicles_core.getVehicleType(v).compactDescr for v in data['data'].get('vehicles', {}) ]
 
     def _showAward(self, ctx):
         data = ctx[1].data
@@ -1073,7 +1073,7 @@ class TelecomHandler(ServiceChannelHandler):
         if vehicleDesrs:
             award_events.showTelecomAward(vehicleDesrs, data['bundleID'], hasCrew, hasBrotherhood)
         else:
-            _logger.error("Can't show telecom award window!")
+            _logger.debug('There is no vehicle in the award. Telecom award window not needed!')
 
 
 class RankedQuestsHandler(ServiceChannelHandler):

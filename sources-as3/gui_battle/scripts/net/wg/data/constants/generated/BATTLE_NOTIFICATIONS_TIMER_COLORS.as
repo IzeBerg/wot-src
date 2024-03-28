@@ -10,6 +10,10 @@ package net.wg.data.constants.generated
       public static const RED:String = "red";
       
       public static const GREEN_DISABLED:String = "green_disabled";
+      
+      public static const YELLOW:String = "yellow";
+      
+      public static const GRAY:String = "gray";
        
       
       public function BATTLE_NOTIFICATIONS_TIMER_COLORS()

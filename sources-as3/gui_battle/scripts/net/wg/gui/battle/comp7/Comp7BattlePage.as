@@ -209,6 +209,7 @@ package net.wg.gui.battle.comp7
       override protected function updateVehicleStatus(param1:VehicleStatusVO) : void
       {
          this.vehicleStatus.setData(param1);
+         invalidateLayout();
       }
       
       override protected function onBeforeDispose() : void
@@ -421,6 +422,7 @@ package net.wg.gui.battle.comp7
          this.vehicleStatus.visible = this._hasVehicleStatus;
          if(this._hasVehicleStatus)
          {
+            this.vehicleStatus.validateNow();
             this.vehicleStatus.x = _originalWidth >> 1;
             this.vehicleStatus.y = prebattleAmmunitionPanel.y - this.vehicleStatus.height + VEHICLE_STATUS_OFFSET_Y | 0;
          }

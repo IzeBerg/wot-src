@@ -35,6 +35,8 @@ package net.wg.gui.battle.views.postmortemPanel
       private static const DELAY_DT_KILLER_APPEARANCE:int = 1000;
       
       private static const DELAY_DT_VICTIM_APPEARANCE:int = 600;
+      
+      private static const INVALID_HIDE_COMPONENTS:uint = 1 << 11;
        
       
       public var bg:BattleAtlasSprite = null;
@@ -68,6 +70,8 @@ package net.wg.gui.battle.views.postmortemPanel
       private var _victimDogTagTweenOut:Tween = null;
       
       private var _dogTagVictimMiniMapAnchor:int;
+      
+      private var _isEnabledSpectatorPanel:Boolean = true;
       
       public function PostmortemPanel()
       {
@@ -165,6 +169,11 @@ package net.wg.gui.battle.views.postmortemPanel
          this.showSpectatorPanel(true);
       }
       
+      public function as_hideComponents() : void
+      {
+         invalidate(INVALID_HIDE_COMPONENTS);
+      }
+      
       public function animateVictimDogTag() : void
       {
          this._dogTagVictim.visible = true;
@@ -212,15 +221,28 @@ package net.wg.gui.battle.views.postmortemPanel
                this.showPanel();
             }
          }
+         if(isInvalid(INVALID_HIDE_COMPONENTS))
+         {
+            this.showSpectatorPanel(false);
+            setComponentsVisibility(false);
+         }
+      }
+      
+      public function set isEnabledSpectatorPanel(param1:Boolean) : void
+      {
+         this._isEnabledSpectatorPanel = param1;
       }
       
       private function showSpectatorPanel(param1:Boolean) : void
       {
-         this.bg.visible = param1;
-         this.observerModeTitleTF.visible = param1;
-         this.observerModeDescTF.visible = param1;
-         this.exitToHangarTitleTF.visible = param1;
-         this.exitToHangarDescTF.visible = param1;
+         if(!param1 || this._isEnabledSpectatorPanel && param1)
+         {
+            this.bg.visible = param1;
+            this.observerModeTitleTF.visible = param1;
+            this.observerModeDescTF.visible = param1;
+            this.exitToHangarTitleTF.visible = param1;
+            this.exitToHangarDescTF.visible = param1;
+         }
       }
       
       private function showPanel() : void

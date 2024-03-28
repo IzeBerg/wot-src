@@ -19,6 +19,8 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
       public function VPBottomPanelWell()
       {
          super();
+         setManageSize(true);
+         setSize(WIDTH,HEIGHT);
       }
       
       public function getBtn() : SoundButtonEx
@@ -26,24 +28,19 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
          return undefined;
       }
       
-      public function getTotalHeight() : Number
-      {
-         return HEIGHT;
-      }
-      
-      override public function get width() : Number
-      {
-         return WIDTH;
-      }
-      
-      override public function get height() : Number
-      {
-         return HEIGHT;
-      }
-      
       public function getOffsetY() : int
       {
          return OFFSET_Y;
+      }
+      
+      public function getSmallScreenOffsetY() : int
+      {
+         return 0;
+      }
+      
+      public function getTotalHeight() : Number
+      {
+         return HEIGHT;
       }
    }
 }

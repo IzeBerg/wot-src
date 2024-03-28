@@ -201,6 +201,7 @@ package net.wg.gui.battle.views.battleLevelPanel
             }
             this.midTF.label = param1 + param2;
             this.midTF.fadeIn(true);
+            this.progressBar.visible = true;
             this.progressBar.value = param4;
          }
       }

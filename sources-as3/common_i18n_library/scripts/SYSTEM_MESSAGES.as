@@ -233,15 +233,11 @@ package
       
       public static const CLIENTINSTALLERROR_WRONG_ITEM_TYPE:String = "#system_messages:clientInstallError_wrong_item_type";
       
-      public static const CLIENTINSTALLERROR_TOO_HEAVY:String = "#system_messages:clientInstallError_too_heavy";
-      
       public static const CLIENTREMOVEERROR_WRONG_NATION:String = "#system_messages:clientRemoveError_wrong_nation";
       
       public static const CLIENTREMOVEERROR_NOT_IN_LIST:String = "#system_messages:clientRemoveError_not_in_list";
       
       public static const CLIENTREMOVEERROR_WRONG_ITEM_TYPE:String = "#system_messages:clientRemoveError_wrong_item_type";
-      
-      public static const CLIENTREMOVEERROR_TOO_HEAVY:String = "#system_messages:clientRemoveError_too_heavy";
       
       public static const SERVERINSTALLERROR:String = "#system_messages:serverInstallError";
       
@@ -399,6 +395,10 @@ package
       
       public static const DENUNCIATION_SUCCESS:String = "#system_messages:denunciation/success";
       
+      public static const DENUNCIATION_HANGARCHATSUCCESS_TITLE:String = "#system_messages:denunciation/hangarChatSuccess/title";
+      
+      public static const DENUNCIATION_HANGARCHATSUCCESS_BODY:String = "#system_messages:denunciation/hangarChatSuccess/body";
+      
       public static const CUSTOMIZATION_UNAVAILABLE:String = "#system_messages:customization/unavailable";
       
       public static const CUSTOMIZATION_PROHIBITED:String = "#system_messages:customization/prohibited";
@@ -517,6 +517,8 @@ package
       
       public static const CUSTOMIZATION_PROGRESSION_DOWN_STYLE:String = "#system_messages:customization/progression/down/style";
       
+      public static const CUSTOMIZATION_CURRENCY_NOT_ENOUGH:String = "#system_messages:customization/currency_not_enough";
+      
       public static const BONUSES_BOOSTER_VALUE:String = "#system_messages:bonuses/booster/value";
       
       public static const CHECKOUT_ERROR:String = "#system_messages:checkout_error";
@@ -603,6 +605,10 @@ package
       
       public static const RECRUIT_WINDOW_FINANCIAL_SUCCESS:String = "#system_messages:recruit_window/financial_success";
       
+      public static const RECRUIT_WINDOW_FINANCIAL_SUCCESS_CREDITS:String = "#system_messages:recruit_window/financial_success_credits";
+      
+      public static const RECRUIT_WINDOW_FINANCIAL_SUCCESS_GOLD:String = "#system_messages:recruit_window/financial_success_gold";
+      
       public static const RECRUIT_WINDOW_NOT_ENOUGH_CREDITS:String = "#system_messages:recruit_window/not_enough_credits";
       
       public static const RECRUIT_WINDOW_NOT_ENOUGH_GOLD:String = "#system_messages:recruit_window/not_enough_gold";
@@ -629,6 +635,8 @@ package
       
       public static const EQUIP_TANKMAN_VEHICLE_LOCKED:String = "#system_messages:equip_tankman/vehicle_locked";
       
+      public static const EQUIP_TANKMAN_NOT_ENOUGH_SPACE:String = "#system_messages:equip_tankman/not_enough_space";
+      
       public static const EQUIP_TANKMAN_FORBIDDEN:String = "#system_messages:equip_tankman/FORBIDDEN";
       
       public static const REEQUIP_TANKMAN_SUCCESS:String = "#system_messages:reequip_tankman/success";
@@ -641,11 +649,9 @@ package
       
       public static const REEQUIP_TANKMAN_VEHICLE_LOCKED:String = "#system_messages:reequip_tankman/vehicle_locked";
       
+      public static const REEQUIP_TANKMAN_NOT_ENOUGH_SPACE:String = "#system_messages:reequip_tankman/not_enough_space";
+      
       public static const REEQUIP_TANKMAN_FORBIDDEN:String = "#system_messages:reequip_tankman/FORBIDDEN";
-      
-      public static const BUY_AND_EQUIP_TANKMAN_SUCCESS:String = "#system_messages:buy_and_equip_tankman/success";
-      
-      public static const BUY_AND_EQUIP_TANKMAN_FINANCIAL_SUCCESS:String = "#system_messages:buy_and_equip_tankman/financial_success";
       
       public static const BUY_AND_EQUIP_TANKMAN_SERVER_ERROR:String = "#system_messages:buy_and_equip_tankman/server_error";
       
@@ -662,10 +668,6 @@ package
       public static const BUY_AND_EQUIP_TANKMAN_FREE_TANKMEN_LIMIT:String = "#system_messages:buy_and_equip_tankman/free_tankmen_limit";
       
       public static const BUY_AND_EQUIP_TANKMAN_FORBIDDEN:String = "#system_messages:buy_and_equip_tankman/FORBIDDEN";
-      
-      public static const BUY_AND_REEQUIP_TANKMAN_SUCCESS:String = "#system_messages:buy_and_reequip_tankman/success";
-      
-      public static const BUY_AND_REEQUIP_TANKMAN_FINANCIAL_SUCCESS:String = "#system_messages:buy_and_reequip_tankman/financial_success";
       
       public static const BUY_AND_REEQUIP_TANKMAN_SERVER_ERROR:String = "#system_messages:buy_and_reequip_tankman/server_error";
       
@@ -711,6 +713,8 @@ package
       
       public static const UNLOAD_TANKMAN_FORBIDDEN:String = "#system_messages:unload_tankman/FORBIDDEN";
       
+      public static const UNLOAD_TANKMAN_BUTTON:String = "#system_messages:unload_tankman/button";
+      
       public static const UNLOAD_CREW_SUCCESS:String = "#system_messages:unload_crew/success";
       
       public static const UNLOAD_CREW_SERVER_ERROR:String = "#system_messages:unload_crew/server_error";
@@ -724,6 +728,8 @@ package
       public static const UNLOAD_CREW_VEHICLE_LOCKED:String = "#system_messages:unload_crew/vehicle_locked";
       
       public static const UNLOAD_CREW_FORBIDDEN:String = "#system_messages:unload_crew/FORBIDDEN";
+      
+      public static const UNLOAD_BUTTON:String = "#system_messages:unload/button";
       
       public static const RETURN_CREW_SUCCESS:String = "#system_messages:return_crew/success";
       
@@ -741,7 +747,11 @@ package
       
       public static const RETRAINING_TANKMAN_SUCCESS:String = "#system_messages:retraining_tankman/success";
       
-      public static const RETRAINING_TANKMAN_FINANCIAL_SUCCESS:String = "#system_messages:retraining_tankman/financial_success";
+      public static const RETRAINING_TANKMAN_FINANCIAL_SUCCESS_CREDITS:String = "#system_messages:retraining_tankman/financial_success_credits";
+      
+      public static const RETRAINING_TANKMAN_FINANCIAL_SUCCESS_GOLD:String = "#system_messages:retraining_tankman/financial_success_gold";
+      
+      public static const RETRAINING_TANKMAN_FINANCIAL_SUCCESS_FREE:String = "#system_messages:retraining_tankman/financial_success_free";
       
       public static const RETRAINING_TANKMAN_SERVER_ERROR:String = "#system_messages:retraining_tankman/server_error";
       
@@ -757,7 +767,11 @@ package
       
       public static const RETRAINING_CREW_SUCCESS:String = "#system_messages:retraining_crew/success";
       
-      public static const RETRAINING_CREW_FINANCIAL_SUCCESS:String = "#system_messages:retraining_crew/financial_success";
+      public static const RETRAINING_CREW_FINANCIAL_SUCCESS_FREE:String = "#system_messages:retraining_crew/financial_success_free";
+      
+      public static const RETRAINING_CREW_FINANCIAL_SUCCESS_CREDITS:String = "#system_messages:retraining_crew/financial_success_credits";
+      
+      public static const RETRAINING_CREW_FINANCIAL_SUCCESS_GOLD:String = "#system_messages:retraining_crew/financial_success_gold";
       
       public static const RETRAINING_CREW_SERVER_ERROR:String = "#system_messages:retraining_crew/server_error";
       
@@ -772,6 +786,8 @@ package
       public static const RETRAINING_CREW_INVALID_OPERATION:String = "#system_messages:retraining_crew/invalid_operation";
       
       public static const RETRAINING_CREW_FORBIDDEN:String = "#system_messages:retraining_crew/FORBIDDEN";
+      
+      public static const RESTORE_TANKMAN_ERROR:String = "#system_messages:restore_tankman/error";
       
       public static const ADD_TANKMAN_SKILL_SUCCESS:String = "#system_messages:add_tankman_skill/success";
       
@@ -795,6 +811,10 @@ package
       
       public static const DROP_TANKMAN_SKILL_SUCCESS:String = "#system_messages:drop_tankman_skill/success";
       
+      public static const DROP_TANKMAN_SKILL_FINANCE_SUCCESS_CREDITS:String = "#system_messages:drop_tankman_skill/finance_success_credits";
+      
+      public static const DROP_TANKMAN_SKILL_FINANCE_SUCCESS_GOLD:String = "#system_messages:drop_tankman_skill/finance_success_gold";
+      
       public static const DROP_TANKMAN_SKILL_SERVER_ERROR:String = "#system_messages:drop_tankman_skill/server_error";
       
       public static const DROP_TANKMAN_SKILL_INVALID_VEHICLE:String = "#system_messages:drop_tankman_skill/invalid_vehicle";
@@ -805,7 +825,9 @@ package
       
       public static const CHANGE_TANKMAN_ROLE_SUCCESS:String = "#system_messages:change_tankman_role/success";
       
-      public static const CHANGE_TANKMAN_ROLE_INSTALLED:String = "#system_messages:change_tankman_role/installed";
+      public static const CHANGE_TANKMAN_ROLE_SUCCESS_AND_VEHICLE_RETRAINED:String = "#system_messages:change_tankman_role/success_and_vehicle_retrained";
+      
+      public static const CHANGE_TANKMAN_ROLE_FINANCIAL_SUCCESS:String = "#system_messages:change_tankman_role/financial_success";
       
       public static const CHANGE_TANKMAN_ROLE_SLOT_IS_TAKEN:String = "#system_messages:change_tankman_role/slot_is_taken";
       
@@ -829,7 +851,7 @@ package
       
       public static const FREE_XP_TO_TMAN_SKILL_SERVER_ERROR:String = "#system_messages:free_xp_to_tman_skill/server_error";
       
-      public static const FREE_XP_TO_TMAN_SKILL_ERROR_WRONG_ARGS_TYPE:String = "#system_messages:free_xp_to_tman_skill/error/WRONG_ARGS_TYPE";
+      public static const FREE_XP_TO_TMAN_SKILL_ERROR_WRONG_ARGS_VALUE:String = "#system_messages:free_xp_to_tman_skill/error/WRONG_ARGS_VALUE";
       
       public static const FREE_XP_TO_TMAN_SKILL_ERROR_NO_TANKMAN_WITH_GIVEN_ID:String = "#system_messages:free_xp_to_tman_skill/error/No tankman with given id";
       
@@ -943,11 +965,9 @@ package
       
       public static const VEHICLE_SELL_EQUIPCOIN_ERROR:String = "#system_messages:vehicle_sell/equipCoin_error";
       
-      public static const VEHICLE_SELL_SUCCESS_WITH_DEMOUNT_KIT:String = "#system_messages:vehicle_sell/success/with_demount_kit";
-      
-      public static const VEHICLE_SELL_SUCCESS_DISMANTLING_WITH_DEMOUNT_KIT:String = "#system_messages:vehicle_sell/success_dismantling/with_demount_kit";
-      
       public static const VEHICLE_SELL_DEMOUNT_KIT_DISABLED:String = "#system_messages:vehicle_sell/demount_kit_disabled";
+      
+      public static const VEHICLE_SELL_CURRENCYUPDATE_DEBITED_DEMOUNT_KIT:String = "#system_messages:vehicle_sell/currencyUpdate/debited/demount_kit";
       
       public static const VEHICLE_TRADE_IN_OFFER_AVAILABLE:String = "#system_messages:vehicle_trade_in/offer_available";
       
@@ -1011,23 +1031,9 @@ package
       
       public static const VEHICLE_RESTOREDURATION_DAYS:String = "#system_messages:vehicle/restoreDuration/days";
       
+      public static const VEHICLE_RESTOREDURATION_UNLIMITED:String = "#system_messages:vehicle/restoreDuration/unlimited";
+      
       public static const VEHICLE_RESTORE_FINISHED:String = "#system_messages:vehicle/restore/finished";
-      
-      public static const VEHICLE_REMOVE_SUCCESS_WITH_DEMOUNT_KIT:String = "#system_messages:vehicle_remove/success/with_demount_kit";
-      
-      public static const VEHICLE_REMOVE_SUCCESS_DISMANTLING_WITH_DEMOUNT_KIT:String = "#system_messages:vehicle_remove/success_dismantling/with_demount_kit";
-      
-      public static const VEHICLE_TMENXP_ACCELERATOR_SUCCESSFALSE:String = "#system_messages:vehicle_tmenxp_accelerator/successFalse";
-      
-      public static const VEHICLE_TMENXP_ACCELERATOR_SUCCESSTRUE:String = "#system_messages:vehicle_tmenxp_accelerator/successTrue";
-      
-      public static const VEHICLE_TMENXP_ACCELERATOR_INVALID_VEHICLE:String = "#system_messages:vehicle_tmenxp_accelerator/invalid_vehicle";
-      
-      public static const VEHICLE_TMENXP_ACCELERATOR_VEHICLE_NEED_REPAIR:String = "#system_messages:vehicle_tmenxp_accelerator/vehicle_need_repair";
-      
-      public static const VEHICLE_TMENXP_ACCELERATOR_VEHICLE_LOCKED:String = "#system_messages:vehicle_tmenxp_accelerator/vehicle_locked";
-      
-      public static const VEHICLE_TMENXP_ACCELERATOR_SERVER_ERROR:String = "#system_messages:vehicle_tmenxp_accelerator/server_error";
       
       public static const VEHICLE_REPAIR_SUCCESS:String = "#system_messages:vehicle_repair/success";
       
@@ -1060,8 +1066,6 @@ package
       public static const RESTORE_TANKMAN_DISABLED:String = "#system_messages:restore_tankman/DISABLED";
       
       public static const RESTORE_TANKMAN_INVALID_TMAN_ID:String = "#system_messages:restore_tankman/INVALID_TMAN_ID";
-      
-      public static const RESTORE_TANKMAN_NO_BERTH:String = "#system_messages:restore_tankman/NO_BERTH";
       
       public static const RESTORE_TANKMAN_WRONG_ARGS_TYPE:String = "#system_messages:restore_tankman/WRONG_ARGS_TYPE";
       
@@ -1113,10 +1117,6 @@ package
       
       public static const MODULE_BUY_ERROR_WRONG_ITEM_TYPE:String = "#system_messages:module_buy/error_wrong_item_type";
       
-      public static const MODULE_BUY_ERROR_TOO_HEAVY:String = "#system_messages:module_buy/error_too_heavy";
-      
-      public static const MODULE_BUY_ERROR_TOO_HEAVY_CHASSIS:String = "#system_messages:module_buy/error_too_heavy_chassis";
-      
       public static const MODULE_BUY_ERROR_NEED_TURRET:String = "#system_messages:module_buy/error_need_turret";
       
       public static const MODULE_BUY_ERROR_NEED_GUN:String = "#system_messages:module_buy/error_need_gun";
@@ -1142,8 +1142,6 @@ package
       public static const ARTEFACT_BUY_SERVER_ERROR:String = "#system_messages:artefact_buy/server_error";
       
       public static const ARTEFACT_BUY_SERVER_ERROR_CENTERDOWN:String = "#system_messages:artefact_buy/server_error_centerDown";
-      
-      public static const ARTEFACT_BUY_ERROR_TOO_HEAVY:String = "#system_messages:artefact_buy/error_too_heavy";
       
       public static const ARTEFACT_BUY_VEHICLE_NEED_REPAIR:String = "#system_messages:artefact_buy/vehicle_need_repair";
       
@@ -1180,8 +1178,6 @@ package
       public static const BATTLEBOOSTER_BUY_SERVER_ERROR:String = "#system_messages:battleBooster_buy/server_error";
       
       public static const BATTLEBOOSTER_BUY_SERVER_ERROR_CENTERDOWN:String = "#system_messages:battleBooster_buy/server_error_centerDown";
-      
-      public static const BATTLEBOOSTER_BUY_ERROR_TOO_HEAVY:String = "#system_messages:battleBooster_buy/error_too_heavy";
       
       public static const BATTLEBOOSTER_BUY_VEHICLE_NEED_REPAIR:String = "#system_messages:battleBooster_buy/vehicle_need_repair";
       
@@ -1245,10 +1241,6 @@ package
       
       public static const MODULE_APPLY_ERROR_WRONG_ITEM_TYPE:String = "#system_messages:module_apply/error_wrong_item_type";
       
-      public static const MODULE_APPLY_ERROR_TOO_HEAVY:String = "#system_messages:module_apply/error_too_heavy";
-      
-      public static const MODULE_APPLY_ERROR_TOO_HEAVY_CHASSIS:String = "#system_messages:module_apply/error_too_heavy_chassis";
-      
       public static const MODULE_APPLY_ERROR_NEED_TURRET:String = "#system_messages:module_apply/error_need_turret";
       
       public static const MODULE_APPLY_ERROR_NEED_GUN:String = "#system_messages:module_apply/error_need_gun";
@@ -1300,10 +1292,6 @@ package
       public static const ARTEFACT_DESTROY_VEHICLE_NEED_REPAIR:String = "#system_messages:artefact_destroy/vehicle_need_repair";
       
       public static const ARTEFACT_APPLY_ERROR_NOT_FOR_THIS_VEHICLE_TYPE:String = "#system_messages:artefact_apply/error_not_for_this_vehicle_type";
-      
-      public static const ARTEFACT_APPLY_ERROR_TOO_HEAVY:String = "#system_messages:artefact_apply/error_too_heavy";
-      
-      public static const ARTEFACT_REMOVE_ERROR_TOO_HEAVY:String = "#system_messages:artefact_remove/error_too_heavy";
       
       public static const ARTEFACT_UPGRADE_SUCCESS:String = "#system_messages:artefact_upgrade/success";
       
@@ -1357,15 +1345,11 @@ package
       
       public static const OPTIONALDEVICES_APPLY_ERROR:String = "#system_messages:optionalDevices_apply/error";
       
-      public static const OPTIONALDEVICES_APPLY_ERROR_TOO_HEAVY:String = "#system_messages:optionalDevices_apply/error_too_heavy";
-      
       public static const OPTIONALDEVICES_APPLY_NOT_ENOUGH_MONEY:String = "#system_messages:optionalDevices_apply/not_enough_money";
       
       public static const OPTIONALDEVICES_APPLY_WALLET_NOT_AVAILABLE:String = "#system_messages:optionalDevices_apply/wallet_not_available";
       
       public static const OPTIONALDEVICES_REMOVE_ERROR:String = "#system_messages:optionalDevices_remove/error";
-      
-      public static const OPTIONALDEVICES_REMOVE_ERROR_TOO_HEAVY:String = "#system_messages:optionalDevices_remove/error_too_heavy";
       
       public static const SHELLS_APPLY_SUCCESS_MONEY_SPENT:String = "#system_messages:shells_apply/success_money_spent";
       
@@ -1895,6 +1879,8 @@ package
       
       public static const UNIT_ERRORS_NO_ARENA_VEHICLES:String = "#system_messages:unit/errors/NO_ARENA_VEHICLES";
       
+      public static const UNIT_ERRORS_COMP7_QUALIFICATION:String = "#system_messages:unit/errors/COMP7_QUALIFICATION";
+      
       public static const IGR_CUSTOMIZATION_BEGIN:String = "#system_messages:igr/customization/begin";
       
       public static const IGR_CUSTOMIZATION_END:String = "#system_messages:igr/customization/end";
@@ -2297,6 +2283,8 @@ package
       
       public static const EPICBATTLES_SEASONEND_REWARDS_EQUIPMENT:String = "#system_messages:epicBattles/seasonEnd/rewards/equipment";
       
+      public static const EPICBATTLES_SEASONEND_REWARDS_OPTIONALDEVICE:String = "#system_messages:epicBattles/seasonEnd/rewards/optionalDevice";
+      
       public static const EPICBATTLES_LEVELUP_TITLE:String = "#system_messages:epicBattles/levelUp/title";
       
       public static const EPICBATTLES_LEVELUP_BODY_LEVELCONGRATS:String = "#system_messages:epicBattles/levelUp/body/levelCongrats";
@@ -2312,8 +2300,6 @@ package
       public static const BADGES_SELECT_SERVER_ERROR_COOLDOWN:String = "#system_messages:badges/select/server_error/COOLDOWN";
       
       public static const BADGES_SELECT_SERVER_ERROR:String = "#system_messages:badges/select/server_error";
-      
-      public static const CREWSKINSCOMPENSATION_SUCCESS:String = "#system_messages:crewSkinsCompensation/success";
       
       public static const CREWSKINSNOTIFICATION_SKINGAIN:String = "#system_messages:crewSkinsNotification/SkinGain";
       
@@ -2399,9 +2385,15 @@ package
       
       public static const CREWBOOKS_SELL_SUCCESS:String = "#system_messages:crewBooks_sell/success";
       
+      public static const CREWBOOKSNOTIFICATION_SUCCESS:String = "#system_messages:crewBooksNotification/success";
+      
       public static const CREWBOOKSNOTIFICATION_BOOKUSED:String = "#system_messages:crewBooksNotification/bookUsed";
       
+      public static const CREWBOOKSNOTIFICATION_BOOKSUSED:String = "#system_messages:crewBooksNotification/booksUsed";
+      
       public static const CREWBOOKS_FAILED:String = "#system_messages:crewBooks/failed";
+      
+      public static const CREWBOOKS_SERVER_ERROR:String = "#system_messages:crewBooks/server_error";
       
       public static const CREWBOOKS_BUY_SUCCESS:String = "#system_messages:crewBooks_buy/success";
       
@@ -2447,10 +2439,6 @@ package
       
       public static const BATTLEPASS_SWITCH_STARTED_STYLE_BODY:String = "#system_messages:battlePass/switch_started/style/body";
       
-      public static const BATTLEPASS_SWITCH_STARTED_TANKMAN_TITLE:String = "#system_messages:battlePass/switch_started/tankman/title";
-      
-      public static const BATTLEPASS_SWITCH_STARTED_TANKMAN_BODY:String = "#system_messages:battlePass/switch_started/tankman/body";
-      
       public static const BATTLEPASS_SWITCH_PAUSE_BODY:String = "#system_messages:battlePass/switch_pause/body";
       
       public static const BATTLEPASS_SWITCH_DISABLE_TITLE:String = "#system_messages:battlePass/switch_disable/title";
@@ -2481,13 +2469,13 @@ package
       
       public static const BATTLEPASS_REWARDCHOICE_ERROR:String = "#system_messages:battlePass/rewardChoice/error";
       
-      public static const BATTLEPASS_EXTRASTARTED_HEADER:String = "#system_messages:battlePass/extraStarted/header";
+      public static const BATTLEPASS_MARATHONSTARTED_HEADER:String = "#system_messages:battlePass/marathonStarted/header";
       
-      public static const BATTLEPASS_EXTRASTARTED_BODY:String = "#system_messages:battlePass/extraStarted/body";
+      public static const BATTLEPASS_MARATHONSTARTED_BODY:String = "#system_messages:battlePass/marathonStarted/body";
       
-      public static const BATTLEPASS_EXTRAFINISH_HEADER:String = "#system_messages:battlePass/extraFinish/header";
+      public static const BATTLEPASS_MARATHONFINISH_HEADER:String = "#system_messages:battlePass/marathonFinish/header";
       
-      public static const BATTLEPASS_EXTRAFINISH_BODY:String = "#system_messages:battlePass/extraFinish/body";
+      public static const BATTLEPASS_MARATHONFINISH_BODY:String = "#system_messages:battlePass/marathonFinish/body";
       
       public static const BATTLEPASS_EXTRAWILLENDSOON_HEADER:String = "#system_messages:battlePass/extraWillEndSoon/header";
       
@@ -2513,6 +2501,8 @@ package
       
       public static const BATTLEPASS_SEASONEND_REWARDS_TROPHY:String = "#system_messages:battlePass/seasonEnd/rewards/trophy";
       
+      public static const BATTLEPASS_SEASONEND_REWARDS_EXPEQUIPMENT:String = "#system_messages:battlePass/seasonEnd/rewards/expequipment";
+      
       public static const BATTLEPASS_SEASONEND_REWARDS_BLUEPRINTS:String = "#system_messages:battlePass/seasonEnd/rewards/blueprints";
       
       public static const BATTLEPASS_SWITCHCHAPTER_ERROR:String = "#system_messages:battlePass/switchChapter/error";
@@ -2522,6 +2512,10 @@ package
       public static const BATTLEPASS_SWITCHCHAPTER_REMINDER:String = "#system_messages:battlePass/switchChapter/reminder";
       
       public static const BATTLEPASS_ACTIVATECHAPTER_SUCCESS:String = "#system_messages:battlePass/activateChapter/success";
+      
+      public static const BATTLEPASS_RECOURSECHAPTERUNLOCK_HEADER:String = "#system_messages:battlePass/recourseChapterUnlock/header";
+      
+      public static const BATTLEPASS_RECOURSECHAPTERUNLOCK_BODY:String = "#system_messages:battlePass/recourseChapterUnlock/body";
       
       public static const COLLECTORVEHICLE_SWITCH_OFF_TITLE:String = "#system_messages:collectorVehicle/switch_off/title";
       
@@ -2688,6 +2682,22 @@ package
       public static const UNIT_WARNINGS_EXPIRED_PLAY_LIMITS_TO_COMMANDER:String = "#system_messages:unit/warnings/EXPIRED_PLAY_LIMITS_TO_COMMANDER";
       
       public static const WINBACK_TURNOFFBATTLESERROR:String = "#system_messages:winback/turnOffBattlesError";
+      
+      public static const ACHIEVEMENTS_SERVER_ERROR:String = "#system_messages:achievements/server_error";
+      
+      public static const LIMITEDUI_SWITCHON:String = "#system_messages:limitedUI/switchOn";
+      
+      public static const LIMITEDUI_SWITCHOFF:String = "#system_messages:limitedUI/switchOff";
+      
+      public static const REFERRAL_PROGRAM_DISABLED:String = "#system_messages:referral_program/disabled";
+      
+      public static const DEBUTBOXES_ENABLED_HEADER:String = "#system_messages:debutBoxes/enabled/header";
+      
+      public static const DEBUTBOXES_ENABLED_BODY:String = "#system_messages:debutBoxes/enabled/body";
+      
+      public static const DEBUTBOXES_DISABLED_HEADER:String = "#system_messages:debutBoxes/disabled/header";
+      
+      public static const DEBUTBOXES_DISABLED_BODY:String = "#system_messages:debutBoxes/disabled/body";
        
       
       public function SYSTEM_MESSAGES()

@@ -205,6 +205,8 @@ package
       
       public static const PROXYPANEL_LABEL:String = "#battle_royale:proxyPanel/label";
       
+      public static const PROXYPANEL_BUTTON:String = "#battle_royale:proxyPanel/button";
+      
       public static const BATTLERESULT_TITLE_VICTORY:String = "#battle_royale:battleResult/title/victory";
       
       public static const BATTLERESULT_TITLE_VEHICLEDESTROYED:String = "#battle_royale:battleResult/title/vehicleDestroyed";
@@ -459,6 +461,14 @@ package
       
       public static const QUESTSTOOLTIP_LESSTHANDAY:String = "#battle_royale:questsTooltip/lessThanDay";
       
+      public static const QUESTSTOOLTIP_TIMELEFTSHORT_DAYS:String = "#battle_royale:questsTooltip/timeLeftShort/days";
+      
+      public static const QUESTSTOOLTIP_TIMELEFTSHORT_HOURS:String = "#battle_royale:questsTooltip/timeLeftShort/hours";
+      
+      public static const QUESTSTOOLTIP_TIMELEFTSHORT_MIN:String = "#battle_royale:questsTooltip/timeLeftShort/min";
+      
+      public static const QUESTSTOOLTIP_TIMELEFTSHORT_LESSMIN:String = "#battle_royale:questsTooltip/timeLeftShort/lessMin";
+      
       public static const WIDGETALERTMESSAGEBLOCK_NOCYCLEMESSAGE_MULTI:String = "#battle_royale:widgetAlertMessageBlock/noCycleMessage/multi";
       
       public static const WIDGETALERTMESSAGEBLOCK_NOCYCLEMESSAGE_SINGLE:String = "#battle_royale:widgetAlertMessageBlock/noCycleMessage/single";
@@ -602,6 +612,20 @@ package
       public static const STATUSNOTIFICATIONTIMERS_LOOT_BASIC:String = "#battle_royale:statusNotificationTimers/loot/basic";
       
       public static const STATUSNOTIFICATIONTIMERS_LOOT_MULTIPLE:String = "#battle_royale:statusNotificationTimers/loot/multiple";
+      
+      public static const BANNER_TITLE:String = "#battle_royale:banner/title";
+      
+      public static const BANNER_INFO_SEASONACTIVE:String = "#battle_royale:banner/info/seasonActive";
+      
+      public static const BANNER_INFO_DISABLED:String = "#battle_royale:banner/info/disabled";
+      
+      public static const BANNER_INFO_ANNOUNCE:String = "#battle_royale:banner/info/announce";
+      
+      public static const BANNER_SEASONDATE_SEASONLASTS:String = "#battle_royale:banner/seasonDate/seasonLasts";
+      
+      public static const BANNER_TIMELEFT_HOURS:String = "#battle_royale:banner/timeLeft/hours";
+      
+      public static const BANNER_TIMELEFT_MIN:String = "#battle_royale:banner/timeLeft/min";
        
       
       public function BATTLE_ROYALE()

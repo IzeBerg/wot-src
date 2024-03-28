@@ -131,6 +131,11 @@ package net.wg.infrastructure.base
          super.onDispose();
       }
       
+      public function getFocusIndex() : Number
+      {
+         return App.containerMgr.getFocusPriority(this._config.configVO.layer);
+      }
+      
       public function getSubContainers() : Array
       {
          return [];
@@ -306,6 +311,10 @@ package net.wg.infrastructure.base
       
       private function setLastFocusedElement(param1:InteractiveObject) : void
       {
+         if(this._lastFocusedElement == param1)
+         {
+            return;
+         }
          if(this._lastFocusedElement != null)
          {
             this._lastFocusedElement.removeEventListener(FocusHandlerEvent.FOCUS_OUT,this.onLastFocusedElementFocusOutHandler);
@@ -367,9 +376,19 @@ package net.wg.infrastructure.base
          }
       }
       
-      public function getFocusIndex() : Number
+      public function get tutorialId() : String
       {
-         return App.containerMgr.getFocusPriority(this._config.configVO.layer);
+         return this._config.viewTutorialId;
+      }
+      
+      public function set tutorialId(param1:String) : void
+      {
+         this._config.viewTutorialId = param1;
+      }
+      
+      public function get isResizable() : Boolean
+      {
+         return this._config.configVO.isResizable;
       }
       
       protected function get autoShowViewProperty() : int

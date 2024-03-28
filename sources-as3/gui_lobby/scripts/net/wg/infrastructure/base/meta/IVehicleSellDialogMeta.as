@@ -20,7 +20,9 @@ package net.wg.infrastructure.base.meta
       
       function as_visibleControlBlock(param1:Boolean) : void;
       
-      function as_enableButton(param1:Boolean) : void;
+      function as_enableButton(param1:Boolean, param2:String) : void;
+      
+      function as_setSellEnabled(param1:Boolean, param2:String) : void;
       
       function as_setControlQuestionData(param1:Boolean, param2:String, param3:String) : void;
       

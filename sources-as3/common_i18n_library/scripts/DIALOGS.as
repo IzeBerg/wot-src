@@ -313,10 +313,6 @@ package
       
       public static const LOWAMMOAUTOLOAD_CANCEL:String = "#dialogs:lowAmmoAutoLoad/cancel";
       
-      public static const CREWRETRAINING_TITLE:String = "#dialogs:crewRetraining/title";
-      
-      public static const RETRAININGWINDOW_SUBMIT:String = "#dialogs:retrainingWindow/submit";
-      
       public static const BUYSLOTCONFIRMATION_TITLE:String = "#dialogs:buySlotConfirmation/title";
       
       public static const BUYSLOTCONFIRMATION_MESSAGE:String = "#dialogs:buySlotConfirmation/message";
@@ -367,34 +363,6 @@ package
       
       public static const UPGRADETANKMANSCOOLCONFIRMATION_CANCEL:String = "#dialogs:upgradeTankmanScoolConfirmation/cancel";
       
-      public static const ADDSKILLWINDOW_TITLE:String = "#dialogs:addSkillWindow/title";
-      
-      public static const ADDFREESKILLWINDOW_LABEL:String = "#dialogs:addFreeSkillWindow/label";
-      
-      public static const ADDSKILLWINDOW_LABEL:String = "#dialogs:addSkillWindow/label";
-      
-      public static const ADDSKILLWINDOW_LABEL_COMMON:String = "#dialogs:addSkillWindow/label/common";
-      
-      public static const ADDSKILLWINDOW_LABEL_COMMANDER:String = "#dialogs:addSkillWindow/label/commander";
-      
-      public static const ADDSKILLWINDOW_LABEL_GUNNER:String = "#dialogs:addSkillWindow/label/gunner";
-      
-      public static const ADDSKILLWINDOW_LABEL_DRIVER:String = "#dialogs:addSkillWindow/label/driver";
-      
-      public static const ADDSKILLWINDOW_LABEL_RADIOMAN:String = "#dialogs:addSkillWindow/label/radioman";
-      
-      public static const ADDSKILLWINDOW_LABEL_LOADER:String = "#dialogs:addSkillWindow/label/loader";
-      
-      public static const ADDFREESKILLWINDOW_SUBMIT:String = "#dialogs:addFreeSkillWindow/submit";
-      
-      public static const ADDSKILLWINDOW_SUBMIT:String = "#dialogs:addSkillWindow/submit";
-      
-      public static const ADDSKILLWINDOW_CANCEL:String = "#dialogs:addSkillWindow/cancel";
-      
-      public static const ADDSKILLWINDOW_DESC1:String = "#dialogs:addSkillWindow/desc1";
-      
-      public static const ADDSKILLWINDOW_DESC2:String = "#dialogs:addSkillWindow/desc2";
-      
       public static const UPGRADETANKMANACADEMYCONFIRMATION_TITLE:String = "#dialogs:upgradeTankmanAcademyConfirmation/title";
       
       public static const UPGRADETANKMANACADEMYCONFIRMATION_MESSAGECOMBINE:String = "#dialogs:upgradeTankmanAcademyConfirmation/messageCombine";
@@ -423,39 +391,11 @@ package
       
       public static const RECRUITDIALOG_NAME_TITLE:String = "#dialogs:recruitDialog/name/title";
       
-      public static const RECRUITWINDOW_TITLE:String = "#dialogs:recruitWindow/title";
-      
       public static const RECRUITWINDOW_NATION:String = "#dialogs:recruitWindow/nation";
-      
-      public static const RECRUITWINDOW_NATIONDROPDOWN_USSR:String = "#dialogs:recruitWindow/nationDropdown/ussr";
-      
-      public static const RECRUITWINDOW_NATIONDROPDOWN_GERMANY:String = "#dialogs:recruitWindow/nationDropdown/germany";
-      
-      public static const RECRUITWINDOW_NATIONDROPDOWN_USA:String = "#dialogs:recruitWindow/nationDropdown/usa";
-      
-      public static const RECRUITWINDOW_NATIONDROPDOWN_CZECH:String = "#dialogs:recruitWindow/nationDropdown/czech";
-      
-      public static const RECRUITWINDOW_NATIONDROPDOWN_SWEDEN:String = "#dialogs:recruitWindow/nationDropdown/sweden";
-      
-      public static const RECRUITWINDOW_NATIONDROPDOWN_POLAND:String = "#dialogs:recruitWindow/nationDropdown/poland";
-      
-      public static const RECRUITWINDOW_NATIONDROPDOWN_ITALY:String = "#dialogs:recruitWindow/nationDropdown/italy";
       
       public static const RECRUITWINDOW_SPECIALIZATION:String = "#dialogs:recruitWindow/specialization";
       
       public static const RECRUITWINDOW_VEHICLECLASS:String = "#dialogs:recruitWindow/vehicleClass";
-      
-      public static const RECRUITWINDOW_VEHICLECLASSDROPDOWN_ALL:String = "#dialogs:recruitWindow/vehicleClassDropdown/all";
-      
-      public static const RECRUITWINDOW_VEHICLECLASSDROPDOWN_LIGHTTANK:String = "#dialogs:recruitWindow/vehicleClassDropdown/lightTank";
-      
-      public static const RECRUITWINDOW_VEHICLECLASSDROPDOWN_MEDIUMTANK:String = "#dialogs:recruitWindow/vehicleClassDropdown/mediumTank";
-      
-      public static const RECRUITWINDOW_VEHICLECLASSDROPDOWN_HEAVYTANK:String = "#dialogs:recruitWindow/vehicleClassDropdown/heavyTank";
-      
-      public static const RECRUITWINDOW_VEHICLECLASSDROPDOWN_AT_SPG:String = "#dialogs:recruitWindow/vehicleClassDropdown/AT-SPG";
-      
-      public static const RECRUITWINDOW_VEHICLECLASSDROPDOWN_SPG:String = "#dialogs:recruitWindow/vehicleClassDropdown/SPG";
       
       public static const RECRUITWINDOW_VEHICLETYPE:String = "#dialogs:recruitWindow/vehicleType";
       
@@ -464,8 +404,6 @@ package
       public static const RECRUITWINDOW_SUBMIT:String = "#dialogs:recruitWindow/submit";
       
       public static const RECRUITWINDOW_CANCEL:String = "#dialogs:recruitWindow/cancel";
-      
-      public static const RECRUITWINDOW_NATIONS_NO_VEHICLE:String = "#dialogs:recruitWindow/nations/no_vehicle";
       
       public static const BUYSLOTNOTENOUGH_CREDITS_TITLE:String = "#dialogs:buySlotNotEnough/credits/title";
       
@@ -647,50 +585,6 @@ package
       
       public static const POSTMORTEM_CANCEL:String = "#dialogs:postmortem/cancel";
       
-      public static const DISMISSTANKMAN_TITLE:String = "#dialogs:dismissTankman/title";
-      
-      public static const DISMISSTANKMAN_MESSAGE:String = "#dialogs:dismissTankman/message";
-      
-      public static const DISMISSTANKMAN_SUBMIT:String = "#dialogs:dismissTankman/submit";
-      
-      public static const DISMISSTANKMAN_CANCEL:String = "#dialogs:dismissTankman/cancel";
-      
-      public static const PROTECTEDDISMISSTANKMAN_TITLE:String = "#dialogs:protectedDismissTankman/title";
-      
-      public static const PROTECTEDDISMISSTANKMAN_MESSAGE:String = "#dialogs:protectedDismissTankman/message";
-      
-      public static const PROTECTEDDISMISSTANKMAN_MAINMESSAGE:String = "#dialogs:protectedDismissTankman/mainMessage";
-      
-      public static const PROTECTEDDISMISSTANKMAN_ADDITIONALMESSAGE_ISPERK:String = "#dialogs:protectedDismissTankman/additionalMessage/isPerk";
-      
-      public static const PROTECTEDDISMISSTANKMAN_ADDITIONALMESSAGE:String = "#dialogs:protectedDismissTankman/additionalMessage";
-      
-      public static const PROTECTEDDISMISSTANKMAN_ERRORMESSAGE:String = "#dialogs:protectedDismissTankman/errorMessage";
-      
-      public static const PROTECTEDDISMISSTANKMAN_SUBMIT:String = "#dialogs:protectedDismissTankman/submit";
-      
-      public static const PROTECTEDDISMISSTANKMAN_CANCEL:String = "#dialogs:protectedDismissTankman/cancel";
-      
-      public static const PROTECTEDDISMISSTANKMAN_ALERT:String = "#dialogs:protectedDismissTankman/alert";
-      
-      public static const RESTORETANKMAN_TITLE:String = "#dialogs:restoreTankman/title";
-      
-      public static const RESTORETANKMAN_MESSAGE:String = "#dialogs:restoreTankman/message";
-      
-      public static const RESTORETANKMAN_FORFREE:String = "#dialogs:restoreTankman/forFree";
-      
-      public static const RESTORETANKMAN_WARNING:String = "#dialogs:restoreTankman/warning";
-      
-      public static const RESTORETANKMAN_SUBMIT:String = "#dialogs:restoreTankman/submit";
-      
-      public static const RESTORETANKMAN_CANCEL:String = "#dialogs:restoreTankman/cancel";
-      
-      public static const RESTORETANKMAN_PRICE:String = "#dialogs:restoreTankman/price";
-      
-      public static const RESTORETANKMAN_NEWPERIODWARNING:String = "#dialogs:restoreTankman/newPeriodWarning";
-      
-      public static const RESTORETANKMAN_DISCONNECTEDFROMCENTER:String = "#dialogs:restoreTankman/disconnectedFromCenter";
-      
       public static const DISMISSEDBUFFEROVERFLAW_TITLE:String = "#dialogs:dismissedBufferOverFlaw/title";
       
       public static const DISMISSEDBUFFEROVERFLAW_MESSAGE:String = "#dialogs:dismissedBufferOverFlaw/message";
@@ -781,7 +675,7 @@ package
       
       public static const SQUADHAVEPLAYERSINBATTLE_MESSAGE:String = "#dialogs:squadHavePlayersInBattle/message";
       
-      public static const SQUADHAVEPLAYERSINBATTLE_CANCEL:String = "#dialogs:squadHavePlayersInBattle/cancel";
+      public static const SQUADHAVEPLAYERSINBATTLE_SUBMIT:String = "#dialogs:squadHavePlayersInBattle/submit";
       
       public static const LEFTPREBATTLEANDACCEPTINVITE_TITLE:String = "#dialogs:leftPrebattleAndAcceptInvite/title";
       
@@ -888,6 +782,16 @@ package
       public static const MINIMAPALPHANOTIFICATION_SUBMIT:String = "#dialogs:minimapAlphaNotification/submit";
       
       public static const MINIMAPALPHANOTIFICATION_CANCEL:String = "#dialogs:minimapAlphaNotification/cancel";
+      
+      public static const LIMITEDUIOFFNOTIFICATION_TITLE:String = "#dialogs:limitedUIOffNotification/title";
+      
+      public static const LIMITEDUIOFFNOTIFICATION_MESSAGE:String = "#dialogs:limitedUIOffNotification/message";
+      
+      public static const LIMITEDUIOFFNOTIFICATION_MESSAGE_ALERT:String = "#dialogs:limitedUIOffNotification/message/alert";
+      
+      public static const LIMITEDUIOFFNOTIFICATION_SUBMIT:String = "#dialogs:limitedUIOffNotification/submit";
+      
+      public static const LIMITEDUIOFFNOTIFICATION_CANCEL:String = "#dialogs:limitedUIOffNotification/cancel";
       
       public static const SOUNDMODEINVALID_TITLE:String = "#dialogs:soundModeInvalid/title";
       
@@ -1002,6 +906,10 @@ package
       public static const VOICECHATINITSUCCEDED_MESSAGE:String = "#dialogs:voiceChatInitSucceded/message";
       
       public static const VOICECHATINITSUCCEDED_CANCEL:String = "#dialogs:voiceChatInitSucceded/cancel";
+      
+      public static const INGAMEBROWSER_TEXTURELOADINGFAILED_TITLE:String = "#dialogs:inGameBrowser/textureLoadingFailed/title";
+      
+      public static const INGAMEBROWSER_TEXTURELOADINGFAILED_MESSAGE:String = "#dialogs:inGameBrowser/textureLoadingFailed/message";
       
       public static const MESSENGER_USERINFOHIDDEN_TITLE:String = "#dialogs:messenger/userInfoHidden/title";
       
@@ -1185,14 +1093,6 @@ package
       
       public static const PUNISHMENTWINDOW_REASON_AFK:String = "#dialogs:punishmentWindow/reason/afk";
       
-      public static const SKILLDROPWINDOW_TITLE:String = "#dialogs:skillDropWindow/title";
-      
-      public static const SKILLDROPWINDOW_MESSAGE:String = "#dialogs:skillDropWindow/message";
-      
-      public static const SKILLDROPWINDOW_SUBMIT:String = "#dialogs:skillDropWindow/submit";
-      
-      public static const SKILLDROPWINDOW_CANCEL:String = "#dialogs:skillDropWindow/cancel";
-      
       public static const REMOVEINCOMPATIBLEEQS_TITLE:String = "#dialogs:removeIncompatibleEqs/title";
       
       public static const REMOVEINCOMPATIBLEEQS_MESSAGE:String = "#dialogs:removeIncompatibleEqs/message";
@@ -1258,54 +1158,6 @@ package
       public static const KOREAPLAYTIMENOTIFICATION_SUBMIT:String = "#dialogs:koreaPlayTimeNotification/submit";
       
       public static const KOREAPLAYTIMENOTIFICATION_CANCEL:String = "#dialogs:koreaPlayTimeNotification/cancel";
-      
-      public static const TANKMANRETRAINING_UNKNOWNVEHICLEBYGOLD_TITLE:String = "#dialogs:tankmanRetraining/unknownVehicleByGold/title";
-      
-      public static const TANKMANRETRAINING_UNKNOWNVEHICLEBYGOLD_MESSAGE:String = "#dialogs:tankmanRetraining/unknownVehicleByGold/message";
-      
-      public static const TANKMANRETRAINING_UNKNOWNVEHICLEBYGOLD_SUBMIT:String = "#dialogs:tankmanRetraining/unknownVehicleByGold/submit";
-      
-      public static const TANKMANRETRAINING_UNKNOWNVEHICLEBYGOLD_CANCEL:String = "#dialogs:tankmanRetraining/unknownVehicleByGold/cancel";
-      
-      public static const TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_TITLE:String = "#dialogs:tankmanRetraining/knownVehicleByGold/title";
-      
-      public static const TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_MESSAGE:String = "#dialogs:tankmanRetraining/knownVehicleByGold/message";
-      
-      public static const TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_SUBMIT:String = "#dialogs:tankmanRetraining/knownVehicleByGold/submit";
-      
-      public static const TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_CANCEL:String = "#dialogs:tankmanRetraining/knownVehicleByGold/cancel";
-      
-      public static const TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_PACK_TITLE:String = "#dialogs:tankmanRetraining/knownVehicleByGold/pack/title";
-      
-      public static const TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_PACK_MESSAGE:String = "#dialogs:tankmanRetraining/knownVehicleByGold/pack/message";
-      
-      public static const TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_PACK_SUBMIT:String = "#dialogs:tankmanRetraining/knownVehicleByGold/pack/submit";
-      
-      public static const TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_PACK_CANCEL:String = "#dialogs:tankmanRetraining/knownVehicleByGold/pack/cancel";
-      
-      public static const TANKMANRETRAINING_UNKNOWNVEHICLE_TITLE:String = "#dialogs:tankmanRetraining/unknownVehicle/title";
-      
-      public static const TANKMANRETRAINING_UNKNOWNVEHICLE_MESSAGE:String = "#dialogs:tankmanRetraining/unknownVehicle/message";
-      
-      public static const TANKMANRETRAINING_UNKNOWNVEHICLE_SUBMIT:String = "#dialogs:tankmanRetraining/unknownVehicle/submit";
-      
-      public static const TANKMANRETRAINING_UNKNOWNVEHICLE_CANCEL:String = "#dialogs:tankmanRetraining/unknownVehicle/cancel";
-      
-      public static const TANKMANRETRAINING_UNDISTRIBUTEDEXP_TITLE:String = "#dialogs:tankmanRetraining/undistributedExp/title";
-      
-      public static const TANKMANRETRAINING_UNDISTRIBUTEDEXP_MESSAGE:String = "#dialogs:tankmanRetraining/undistributedExp/message";
-      
-      public static const TANKMANRETRAINING_UNDISTRIBUTEDEXP_SUBMIT:String = "#dialogs:tankmanRetraining/undistributedExp/submit";
-      
-      public static const TANKMANRETRAINING_UNDISTRIBUTEDEXP_CANCEL:String = "#dialogs:tankmanRetraining/undistributedExp/cancel";
-      
-      public static const TANKMANCHAGEROLE_UNKNOWNVEHICLE_TITLE:String = "#dialogs:tankmanChageRole/unknownVehicle/title";
-      
-      public static const TANKMANCHAGEROLE_UNKNOWNVEHICLE_MESSAGE:String = "#dialogs:tankmanChageRole/unknownVehicle/message";
-      
-      public static const TANKMANCHAGEROLE_UNKNOWNVEHICLE_SUBMIT:String = "#dialogs:tankmanChageRole/unknownVehicle/submit";
-      
-      public static const TANKMANCHAGEROLE_UNKNOWNVEHICLE_CANCEL:String = "#dialogs:tankmanChageRole/unknownVehicle/cancel";
       
       public static const SENDINVITES_COMMON_TITLE:String = "#dialogs:sendInvites/common/title";
       
@@ -1619,6 +1471,12 @@ package
       
       public static const CUSTOMIZATION_CLOSE_CANCEL:String = "#dialogs:customization/close/cancel";
       
+      public static const CUSTOMIZATION_EXITTOSHOP_TITLE:String = "#dialogs:customization/exitToShop/title";
+      
+      public static const CUSTOMIZATION_EXITTOSHOP_SUBMIT:String = "#dialogs:customization/exitToShop/submit";
+      
+      public static const CUSTOMIZATION_EXITTOSHOP_CANCEL:String = "#dialogs:customization/exitToShop/cancel";
+      
       public static const CUSTOMIZATION_FILTER_TITLE:String = "#dialogs:customization/filter/title";
       
       public static const CUSTOMIZATION_FILTER_MESSAGE:String = "#dialogs:customization/filter/message";
@@ -1883,26 +1741,6 @@ package
       
       public static const REFERRALREWARD_CANCEL:String = "#dialogs:referralReward/cancel";
       
-      public static const CREWSKINS_SKINWILLBEREMOVED_TITLE:String = "#dialogs:crewSkins/skinWillBeRemoved/title";
-      
-      public static const CREWSKINS_SKINWILLBEREMOVED_MESSAGE:String = "#dialogs:crewSkins/skinWillBeRemoved/message";
-      
-      public static const CREWSKINS_SKINWILLBEDELETED_TITLE:String = "#dialogs:crewSkins/skinWillBeDeleted/title";
-      
-      public static const CREWSKINS_SKINWILLBEDELETED_MESSAGE1:String = "#dialogs:crewSkins/skinWillBeDeleted/message1";
-      
-      public static const CREWSKINS_SKINWILLBEDELETED_MESSAGEPRICE:String = "#dialogs:crewSkins/skinWillBeDeleted/messagePrice";
-      
-      public static const CREWSKINS_SKINWILLBEDELETED_MESSAGE2:String = "#dialogs:crewSkins/skinWillBeDeleted/message2";
-      
-      public static const CREWSKINS_SKINWILLBEDELETED_SUBMIT:String = "#dialogs:crewSkins/skinWillBeDeleted/submit";
-      
-      public static const CREWSKINS_SKINWILLBEREMOVED_SUBMIT:String = "#dialogs:crewSkins/skinWillBeRemoved/submit";
-      
-      public static const CREWSKINS_SKINWILLBEDELETED_CANCEL:String = "#dialogs:crewSkins/skinWillBeDeleted/cancel";
-      
-      public static const CREWSKINS_SKINWILLBEREMOVED_CANCEL:String = "#dialogs:crewSkins/skinWillBeRemoved/cancel";
-      
       public static const SESSIONSTATS_CONFIRMRESET_TITLE:String = "#dialogs:sessionStats/confirmReset/title";
       
       public static const SESSIONSTATS_CONFIRMRESET_MESSAGE:String = "#dialogs:sessionStats/confirmReset/message";
@@ -1924,22 +1762,6 @@ package
       public static const EDITABLESTYLES_CONFIRMRESET_SUBMIT:String = "#dialogs:editableStyles/confirmReset/submit";
       
       public static const EDITABLESTYLES_CONFIRMRESET_CANCEL:String = "#dialogs:editableStyles/confirmReset/cancel";
-      
-      public static const CREWBOOKS_CONFIRMATION_TITLE:String = "#dialogs:crewBooks/confirmation/title";
-      
-      public static const CREWBOOKS_CONFIRMATION_DESC_CREWBOOK:String = "#dialogs:crewBooks/confirmation/desc/crewBook";
-      
-      public static const CREWBOOKS_CONFIRMATION_DESC_PERSONALBOOK:String = "#dialogs:crewBooks/confirmation/desc/personalBook";
-      
-      public static const CREWBOOKS_CONFIRMATION_BUTTON_SUBMIT:String = "#dialogs:crewBooks/confirmation/button/submit";
-      
-      public static const CREWBOOKS_CONFIRMATION_BUTTON_CANCEL:String = "#dialogs:crewBooks/confirmation/button/cancel";
-      
-      public static const CREWBOOKS_SUCCESS_DESC_CREWBOOK:String = "#dialogs:crewBooks/success/desc/crewBook";
-      
-      public static const CREWBOOKS_SUCCESS_DESC_PERSONALBOOK:String = "#dialogs:crewBooks/success/desc/personalBook";
-      
-      public static const CREWBOOKS_SUCCESS_TITLE:String = "#dialogs:crewBooks/success/title";
       
       public static const CONFIRMEQUIPMENTBUYINSTALL_SUBMIT:String = "#dialogs:confirmEquipmentBuyInstall/submit";
       
@@ -1970,8 +1792,6 @@ package
       public static const ELEMENTTYPE_RADIOSTATION:String = "#dialogs:elementType/radiostation";
       
       public static const SELLSHELLCONFIRMATION_SUBMIT:String = "#dialogs:sellShellConfirmation/submit";
-      
-      public static const BUYINSTALLCONFIRMATION_NOTENOUGHWEIGHT:String = "#dialogs:buyInstallConfirmation/notEnoughWeight";
       
       public static const EQUIPMENTDESTROY_DEMOUNTOPTIONS_GOLDORDEMOKIT:String = "#dialogs:equipmentDestroy/DemountOptions/goldOrDemoKit";
       
@@ -2197,25 +2017,17 @@ package
       
       public static const BATTLEROYALE_CONFIRMRENT_EVENTENDSSOON:String = "#dialogs:battleRoyale/confirmRent/eventEndsSoon";
       
-      public static const DROPSKILL_FULLSCREEN_TITLE:String = "#dialogs:dropSkill/fullscreen/title";
-      
-      public static const DROPSKILL_FULLSCREEN_DESCRIPTION:String = "#dialogs:dropSkill/fullscreen/description";
-      
-      public static const DROPSKILL_FULLSCREEN_OK:String = "#dialogs:dropSkill/fullscreen/ok";
-      
-      public static const DROPSKILL_FULLSCREEN_COSTFREE:String = "#dialogs:dropSkill/fullscreen/costFree";
-      
-      public static const FREESKILLSINFO_TITLE:String = "#dialogs:freeSkillsInfo/title";
-      
-      public static const FREESKILLSINFO_MESSAGE:String = "#dialogs:freeSkillsInfo/message";
-      
-      public static const FREESKILLSINFO_SUBMIT:String = "#dialogs:freeSkillsInfo/submit";
-      
       public static const FREESKILLSLEARNING_TITLE_LEARNING:String = "#dialogs:freeSkillsLearning/title/learning";
       
       public static const FREESKILLSLEARNING_TITLE_RELEARNING:String = "#dialogs:freeSkillsLearning/title/relearning";
       
       public static const FREESKILLSLEARNING_MESSAGE:String = "#dialogs:freeSkillsLearning/message";
+      
+      public static const PERKLEARNCONFIRM_TITLE:String = "#dialogs:perkLearnConfirm/title";
+      
+      public static const PERKLEARNCONFIRM_DESC:String = "#dialogs:perkLearnConfirm/desc";
+      
+      public static const PERKLEARNCONFIRM_LEARN:String = "#dialogs:perkLearnConfirm/learn";
       
       public static const COMP7_DESERTER_TITLE:String = "#dialogs:comp7/deserter/title";
       
@@ -2239,6 +2051,8 @@ package
       
       public static const EQUIPMENTUPGRADE_GETMORECURRENCYBUTTON:String = "#dialogs:equipmentUpgrade/getMoreCurrencyButton";
       
+      public static const EQUIPMENTUPGRADE_GETMORECURRENCYBUTTONTOOLTIP_BODY:String = "#dialogs:equipmentUpgrade/getMoreCurrencyButtonTooltip/body";
+      
       public static const EQUIPMENTUPGRADE_CANCELBUTTON:String = "#dialogs:equipmentUpgrade/cancelButton";
       
       public static const EQUIPMENTDECONSTRUCTION_CONFIRMBUTTON:String = "#dialogs:equipmentDeconstruction/confirmButton";
@@ -2247,28 +2061,148 @@ package
       
       public static const EQUIPMENTDECONSTRUCTION_CANCELBUTTON:String = "#dialogs:equipmentDeconstruction/cancelButton";
       
-      public static const RECRUITWINDOW_VEHICLECLASSDROPDOWN_ENUM:Array = [RECRUITWINDOW_VEHICLECLASSDROPDOWN_ALL,RECRUITWINDOW_VEHICLECLASSDROPDOWN_LIGHTTANK,RECRUITWINDOW_VEHICLECLASSDROPDOWN_MEDIUMTANK,RECRUITWINDOW_VEHICLECLASSDROPDOWN_HEAVYTANK,RECRUITWINDOW_VEHICLECLASSDROPDOWN_AT_SPG,RECRUITWINDOW_VEHICLECLASSDROPDOWN_SPG];
+      public static const PRICECARD_FREE_TITLE:String = "#dialogs:priceCard/free/title";
+      
+      public static const PRICECARD_CREDITS_TITLE:String = "#dialogs:priceCard/credits/title";
+      
+      public static const PRICECARD_GOLD_TITLE:String = "#dialogs:priceCard/gold/title";
+      
+      public static const PRICECARD_RECERTIFICATION_TITLE:String = "#dialogs:priceCard/recertification/title";
+      
+      public static const PRICECARD_PRICE_FREE:String = "#dialogs:priceCard/price/free";
+      
+      public static const PERKSREST_TITLE:String = "#dialogs:perksRest/title";
+      
+      public static const PERKSREST_FREE_DESCRIPTION:String = "#dialogs:perksRest/free/description";
+      
+      public static const PERKSREST_BEFORE:String = "#dialogs:perksRest/before";
+      
+      public static const PERKSREST_AFTER:String = "#dialogs:perksRest/after";
+      
+      public static const PERKSREST_NONEWPERKS:String = "#dialogs:perksRest/noNewPerks";
+      
+      public static const PERKSREST_SUBMIT:String = "#dialogs:perksRest/submit";
+      
+      public static const PERKSREST_CANCEL:String = "#dialogs:perksRest/cancel";
+      
+      public static const PERKSREST_PRICECARD_FREE_DESCRIPTION:String = "#dialogs:perksRest/priceCard/free/description";
+      
+      public static const PERKSREST_PRICECARD_CREDITS_DESCRIPTION:String = "#dialogs:perksRest/priceCard/credits/description";
+      
+      public static const PERKSREST_PRICECARD_GOLD_DESCRIPTION:String = "#dialogs:perksRest/priceCard/gold/description";
+      
+      public static const RETRAIN_TITLE_SINGLE:String = "#dialogs:retrain/title/single";
+      
+      public static const RETRAIN_TITLE_MASSIVE:String = "#dialogs:retrain/title/massive";
+      
+      public static const RETRAIN_WARNING_PREMIUMVEHICLE:String = "#dialogs:retrain/warning/premiumVehicle";
+      
+      public static const RETRAIN_PRICECARD_FREE_DESCRIPTION:String = "#dialogs:retrain/priceCard/free/description";
+      
+      public static const RETRAIN_PRICECARD_CREDITS_DESCRIPTION:String = "#dialogs:retrain/priceCard/credits/description";
+      
+      public static const RETRAIN_PRICECARD_GOLD_DESCRIPTION:String = "#dialogs:retrain/priceCard/gold/description";
+      
+      public static const RETRAIN_MASSIVE_TANKMENCOUNT:String = "#dialogs:retrain/massive/tankmenCount";
+      
+      public static const RETRAIN_SINGLE_CHECKBOXLABEL:String = "#dialogs:retrain/single/checkBoxLabel";
+      
+      public static const RETRAIN_PRICE:String = "#dialogs:retrain/price";
+      
+      public static const RETRAIN_SUBMIT:String = "#dialogs:retrain/submit";
+      
+      public static const RETRAIN_CANCEL:String = "#dialogs:retrain/cancel";
+      
+      public static const RECRUIT_TITLE:String = "#dialogs:recruit/title";
+      
+      public static const RECRUIT_WARNING_PREMIUMVEHICLE:String = "#dialogs:recruit/warning/premiumVehicle";
+      
+      public static const RECRUIT_PRICECARD_FREE_DESCRIPTION:String = "#dialogs:recruit/priceCard/free/description";
+      
+      public static const RECRUIT_PRICECARD_CREDITS_DESCRIPTION:String = "#dialogs:recruit/priceCard/credits/description";
+      
+      public static const RECRUIT_PRICECARD_GOLD_DESCRIPTION:String = "#dialogs:recruit/priceCard/gold/description";
+      
+      public static const RECRUIT_SUBMIT:String = "#dialogs:recruit/submit";
+      
+      public static const RECRUIT_CANCEL:String = "#dialogs:recruit/cancel";
+      
+      public static const CREWMEMBERTANKCHANGE_TITLE:String = "#dialogs:crewMemberTankChange/title";
+      
+      public static const CREWMEMBERTANKCHANGE_DESC:String = "#dialogs:crewMemberTankChange/desc";
+      
+      public static const CREWMEMBERTANKCHANGE_TRANSFER:String = "#dialogs:crewMemberTankChange/transfer";
+      
+      public static const CREWMEMBERROLECHANGE_TITLE_SIMPLE:String = "#dialogs:crewMemberRoleChange/title/simple";
+      
+      public static const CREWMEMBERROLECHANGE_TITLE_EXTENDED:String = "#dialogs:crewMemberRoleChange/title/extended";
+      
+      public static const CREWMEMBERROLECHANGE_BULLET:String = "#dialogs:crewMemberRoleChange/bullet";
+      
+      public static const CREWMEMBERROLECHANGE_DESC_SIMPLE:String = "#dialogs:crewMemberRoleChange/desc/simple";
+      
+      public static const CREWMEMBERROLECHANGE_DESC_WRONGSPECIALIZATION:String = "#dialogs:crewMemberRoleChange/desc/wrongSpecialization";
+      
+      public static const CREWMEMBERROLECHANGE_DESC_PREMIUM:String = "#dialogs:crewMemberRoleChange/desc/premium";
+      
+      public static const CREWMEMBERROLECHANGE_PRICE:String = "#dialogs:crewMemberRoleChange/price";
+      
+      public static const CREWMEMBERROLECHANGE_CHANGE:String = "#dialogs:crewMemberRoleChange/change";
+      
+      public static const RUDYINFO_TITLE:String = "#dialogs:rudyInfo/title";
+      
+      public static const RUDYINFO_MESSAGE:String = "#dialogs:rudyInfo/message";
+      
+      public static const RUDYINFO_SUBMIT:String = "#dialogs:rudyInfo/submit";
+      
+      public static const CREWBOOKPURCHASE_PURCHASE:String = "#dialogs:crewBookPurchase/purchase";
+      
+      public static const CREWBOOKPURCHASE_PURCHASE_TITLE:String = "#dialogs:crewBookPurchase/purchase/title";
+      
+      public static const CREWBOOKPURCHASE_DESCRIPTION_PERSONAL:String = "#dialogs:crewBookPurchase/description/personal";
+      
+      public static const CREWBOOKPURCHASE_DESCRIPTION_CREW:String = "#dialogs:crewBookPurchase/description/crew";
+      
+      public static const CREWBOOKPURCHASE_BTNDISABLEDTOOLTIP:String = "#dialogs:crewBookPurchase/btnDisabledTooltip";
+      
+      public static const DOCUMENTCHANGEDIALOG_TITLE:String = "#dialogs:documentChangeDialog/title";
+      
+      public static const DOCUMENTCHANGEDIALOG_BUTTON_SUBMIT:String = "#dialogs:documentChangeDialog/button/submit";
+      
+      public static const DOCUMENTCHANGEDIALOG_DROPDOWN_FIRSTNAME:String = "#dialogs:documentChangeDialog/dropdown/firstName";
+      
+      public static const DOCUMENTCHANGEDIALOG_DROPDOWN_LASTNAME:String = "#dialogs:documentChangeDialog/dropdown/lastName";
+      
+      public static const SKINAPPLYDIALOG_BUTTON_SUBMIT:String = "#dialogs:skinApplyDialog/button/submit";
+      
+      public static const DISMISSTANKMAN_HEADER:String = "#dialogs:dismissTankman/header";
+      
+      public static const DISMISSTANKMAN_DESCRIPTION_TIME:String = "#dialogs:dismissTankman/description/time";
+      
+      public static const DISMISSTANKMAN_LIMITED:String = "#dialogs:dismissTankman/limited";
+      
+      public static const DISMISSTANKMAN_NORECOVERY:String = "#dialogs:dismissTankman/noRecovery";
+      
+      public static const DISMISSTANKMAN_BUTTONS_DISMISS:String = "#dialogs:dismissTankman/buttons/dismiss";
+      
+      public static const RESTORETANKMAN_HEADER:String = "#dialogs:restoreTankman/header";
+      
+      public static const RESTORETANKMAN_DESCRIPTION:String = "#dialogs:restoreTankman/description";
+      
+      public static const RESTORETANKMAN_PRICE:String = "#dialogs:restoreTankman/price";
+      
+      public static const RESTORETANKMAN_FREE:String = "#dialogs:restoreTankman/free";
+      
+      public static const RESTORETANKMAN_BUTTONS_RECOVER:String = "#dialogs:restoreTankman/buttons/recover";
       
       public static const VEHICLESELLDIALOG_VEHICLETYPE_ENUM:Array = [VEHICLESELLDIALOG_VEHICLETYPE_LIGHTTANK,VEHICLESELLDIALOG_VEHICLETYPE_MEDIUMTANK,VEHICLESELLDIALOG_VEHICLETYPE_HEAVYTANK,VEHICLESELLDIALOG_VEHICLETYPE_SPG,VEHICLESELLDIALOG_VEHICLETYPE_AT_SPG];
       
-      public static const ALL_ENUM:Array = [INTERVIEWQUIT_TITLE,INTERVIEWQUIT_MESSAGE,INTERVIEWQUIT_SUBMIT,INTERVIEWQUIT_CANCEL,LEGALINFOWINDOW_TITLE,COMMON_SUBMIT,COMMON_CANCEL,COMMON_CONFIRM_SUBMIT,COMMON_CONFIRM_CANCEL,COMMON_ERROR_CANCEL,COMMON_COST,DISCONNECT_TITLE,DISCONNECT_MESSAGE,DISCONNECT_SUBMIT,DISCONNECT_CANCEL,QUIT_TITLE,QUIT_SUBMIT,QUIT_CANCEL,QUITBATTLE_TITLE,QUITBATTLE_SUBMIT,QUITBATTLE_CANCEL,QUITBATTLE_LEAVER_TITLE,QUITBATTLE_LEAVER_SUBMIT,QUITBATTLE_LEAVER_CANCEL,QUITBATTLE_LEAVER_DESCRIPTIONALIVE,QUITBATTLE_IGR_LEAVER_TITLE,QUITBATTLE_IGR_LEAVER_SUBMIT,QUITBATTLE_IGR_LEAVER_CANCEL,QUITBATTLE_IGR_LEAVER_DESCRIPTIONALIVE,QUITBATTLE_REPLAY_TITLE,QUITBATTLE_REPLAY_SUBMIT,QUITBATTLE_REPLAY_CANCEL,QUITPREBATTLE_TITLE,QUITPREBATTLE_MESSAGE,QUITPREBATTLE_SUBMIT,QUITPREBATTLE_CANCEL,GRAPHICSPRESETRESTARTCONFIRMATION_TITLE,GRAPHICSPRESETRESTARTCONFIRMATION_MESSAGE,GRAPHICSPRESETRESTARTCONFIRMATION_SUBMIT,GRAPHICSPRESETRESTARTCONFIRMATION_DELAY,GRAPHICSPRESETRESTARTCONFIRMATION_CANCEL,GRAPHICSPRESETNOTINSTALLED_TITLE,GRAPHICSPRESETNOTINSTALLED_MESSAGE,GRAPHICSPRESETNOTINSTALLED_CANCEL,GRAPHICSPRESETDELAYEDCONFIRMATION_TITLE,GRAPHICSPRESETDELAYEDCONFIRMATION_MESSAGE,GRAPHICSPRESETDELAYEDCONFIRMATION_SUBMIT,GRAPHICSPRESETDELAYEDCONFIRMATION_CANCEL,NEXTBATTLEOPTIONCONFIRMATION_TITLE,NEXTBATTLEOPTIONCONFIRMATION_MESSAGE,NEXTBATTLEOPTIONCONFIRMATION_SUBMIT,NEXTBATTLEOPTIONCONFIRMATION_CANCEL,GRAPHICSPRESETAUTODETECTCONFIRMATION_TITLE,GRAPHICSPRESETAUTODETECTCONFIRMATION_MESSAGE,GRAPHICSPRESETAUTODETECTCONFIRMATION_SUBMIT,GRAPHICSPRESETAUTODETECTCONFIRMATION_CANCEL,GRAPHICSPRESETNOTPOSSIBLE_TITLE,GRAPHICSPRESETNOTPOSSIBLE_MESSAGE,GRAPHICSPRESETNOTPOSSIBLE_CANCEL,GRAPHICSCHANGECONFIRMATION_TITLE,GRAPHICSCHANGECONFIRMATION_MESSAGE,GRAPHICSCHANGECONFIRMATION_SUBMIT,GRAPHICSCHANGECONFIRMATION_CANCEL,WATERQUALITYNOTPOSSIBLE_TITLE,WATERQUALITYNOTPOSSIBLE_MESSAGE,WATERQUALITYNOTPOSSIBLE_CANCEL,PREMIUMBUYCONFIRMATION_TITLE,PREMIUMBUYCONFIRMATION_MESSAGE,PREMIUMBUYCONFIRMATION_SUBMIT,PREMIUMBUYCONFIRMATION_CANCEL,PREMIUMCONTINUECONFIRMATION_TITLE,PREMIUMCONTINUECONFIRMATION_MESSAGE,PREMIUMCONTINUECONFIRMATION_SUBMIT,PREMIUMCONTINUECONFIRMATION_CANCEL,BUYPREMWITHOUTBENEFITSCONFIRMATION_TITLE,BUYPREMWITHOUTBENEFITSCONFIRMATION_MESSAGE,BUYPREMWITHOUTBENEFITSCONFIRMATION_SUBMIT,BUYPREMWITHOUTBENEFITSCONFIRMATION_CANCEL,BUYINSTALLCONFIRMATION_TITLE,BUYINSTALLCONFIRMATION_MESSAGECOMBINE,BUYINSTALLCONFIRMATION_MESSAGE,BUYINSTALLCONFIRMATION_CONFLICTEDMESSAGE_PREFIX,BUYINSTALLCONFIRMATION_CONFLICTEDMESSAGE_HIGHLIGHTENTEXT,BUYINSTALLCONFIRMATION_CONFLICTEDMESSAGE_POSTFIX,BUYINSTALLCONFIRMATION_SUBMIT,BUYINSTALLCONFIRMATION_CANCEL,REMOVECONFIRMATIONNOTREMOVABLE_SUBMIT,SELLCONFIRMATION_SUBMIT,SELLCONFIRMATION_CANCEL,SELLMODULECONFIRMATION_TITLE,SELLMODULECONFIRMATION_SUBMIT,SELLMODULECONFIRMATION_CANCEL,CONFIRMMODULEDIALOG_PRICELABEL,CONFIRMMODULEDIALOG_COUNTLABEL,CONFIRMMODULEDIALOG_TOTALLABEL,CONFIRMMODULEDIALOG_COUNTLABEL1,CONFIRMMODULEDIALOG_PRICELABEL1,CONFIRMMODULEDIALOG_SHOP_TOTALLABEL1,CONFIRMMODULEDIALOG_INVENTORY_TOTALLABEL1,CONFIRMMODULEDIALOG_REZULTLABEL1,RENTCONFIRMATION_TITLE,RENTCONFIRMATION_MESSAGE,RENTCONFIRMATION_SUBMIT,RENTCONFIRMATION_CANCEL,RENTCONFIRMATION_EVENT,RENTCONFIRMATIONRENEW_TITLE,RENTCONFIRMATIONRENEW_MESSAGE,RENTCONFIRMATIONRENEW_SUBMIT,RENTCONFIRMATIONRENEW_CANCEL,BUYCONFIRMATION_TITLE,BUYCONFIRMATION_MESSAGECOMBINE,BUYCONFIRMATION_MESSAGE,BUYCONFIRMATION_SUBMIT,BUYCONFIRMATION_CANCEL,IDLECREWBONUS_TITLE,IDLECREWBONUS_MESSAGE_REMOVETYPE,IDLECREWBONUS_MESSAGE_REMOVENAME,IDLECREWBONUS_MESSAGE_CREWWARNING,IDLECREWBONUS_MESSAGE_CREWINCOMPLETE,IDLECREWBONUS_MESSAGE_CREWUNSUITABLE,IDLECREWBONUS_SUBMIT,IDLECREWBONUS_CANCEL,WOTPLUSRENTAL_TITLE,WOTPLUSRENTAL_DESCRIPTION,WOTPLUSRENTAL_SUBMIT,WOTPLUSRENTAL_CANCEL,DISCONNECTED_TITLE,DISCONNECTED_MESSAGE,DISCONNECTED_MESSAGEKICK,DISCONNECTED_MESSAGEBAN,DISCONNECTED_MESSAGEBANPERIOD,DISCONNECTED_REASON,DISCONNECTED_CANCEL,LOWAMMO_TITLE,LOWAMMO_MESSAGE,LOWAMMO_SUBMIT,LOWAMMO_CANCEL,LOWAMMOAUTOLOAD_TITLE,LOWAMMOAUTOLOAD_MESSAGE,LOWALTERNATIVEAMMOAUTOLOAD_TITLE,LOWALTERNATIVEAMMOAUTOLOAD_MESSAGE,LOWAMMOAUTOLOAD_SUBMIT,LOWAMMOAUTOLOAD_CANCEL,CREWRETRAINING_TITLE,RETRAININGWINDOW_SUBMIT,BUYSLOTCONFIRMATION_TITLE,BUYSLOTCONFIRMATION_MESSAGE,BUYSLOTCONFIRMATION_SUBMIT,BUYSLOTCONFIRMATION_CANCEL,FREESLOTCONFIRMATION_TITLE,FREESLOTCONFIRMATION_MESSAGE,FREESLOTCONFIRMATION_SUBMIT,FREESLOTCONFIRMATION_CANCEL,REPLACEPASSPORT_UNIQUE_TITLE,REPLACEPASSPORT_UNIQUE_MESSAGE,REPLACEPASSPORT_UNIQUE_SUBMIT,REPLACEPASSPORT_UNIQUE_CANCEL,REPLACEPASSPORTCONFIRMATION_TITLE,REPLACEPASSPORTCONFIRMATION_MESSAGE,REPLACEPASSPORTCONFIRMATION_SUBMIT,REPLACEPASSPORTCONFIRMATION_CANCEL,BUYSLOT_HANGARSLOT_HEADER,BUYSLOTSHOPCONFIRMATION_TITLE,BUYSLOTSHOPCONFIRMATION_MESSAGECOMBINE,BUYSLOTSHOPCONFIRMATION_SUBMIT,BUYSLOTSHOPCONFIRMATION_CANCEL,UPGRADETANKMANSCOOLCONFIRMATION_TITLE,UPGRADETANKMANSCOOLCONFIRMATION_MESSAGECOMBINE,UPGRADETANKMANSCOOLCONFIRMATION_SUBMIT,UPGRADETANKMANSCOOLCONFIRMATION_CANCEL,ADDSKILLWINDOW_TITLE,ADDFREESKILLWINDOW_LABEL,ADDSKILLWINDOW_LABEL,ADDSKILLWINDOW_LABEL_COMMON,ADDSKILLWINDOW_LABEL_COMMANDER,ADDSKILLWINDOW_LABEL_GUNNER,ADDSKILLWINDOW_LABEL_DRIVER,ADDSKILLWINDOW_LABEL_RADIOMAN,ADDSKILLWINDOW_LABEL_LOADER,ADDFREESKILLWINDOW_SUBMIT,ADDSKILLWINDOW_SUBMIT,ADDSKILLWINDOW_CANCEL,ADDSKILLWINDOW_DESC1,ADDSKILLWINDOW_DESC2,UPGRADETANKMANACADEMYCONFIRMATION_TITLE,UPGRADETANKMANACADEMYCONFIRMATION_MESSAGECOMBINE,UPGRADETANKMANACADEMYCONFIRMATION_SUBMIT,UPGRADETANKMANACADEMYCONFIRMATION_CANCEL,UPGRADETANKMANSCOOLNOTENOUGHMONEY_TITLE,UPGRADETANKMANSCOOLNOTENOUGHMONEY_MESSAGE,UPGRADETANKMANSCOOLNOTENOUGHMONEY_SUBMIT,UPGRADETANKMANSCOOLNOTENOUGHMONEY_CANCEL,UPGRADETANKMANACADEMYNOTENOUGHMONEY_TITLE,UPGRADETANKMANACADEMYNOTENOUGHMONEY_MESSAGE,UPGRADETANKMANACADEMYNOTENOUGHMONEY_SUBMIT,UPGRADETANKMANACADEMYNOTENOUGHMONEY_CANCEL,RECRUITDIALOG_TITLE,RECRUITDIALOG_NAME_TITLE,RECRUITWINDOW_TITLE,RECRUITWINDOW_NATION,RECRUITWINDOW_NATIONDROPDOWN_USSR,RECRUITWINDOW_NATIONDROPDOWN_GERMANY,RECRUITWINDOW_NATIONDROPDOWN_USA,RECRUITWINDOW_NATIONDROPDOWN_CZECH,RECRUITWINDOW_NATIONDROPDOWN_SWEDEN,RECRUITWINDOW_NATIONDROPDOWN_POLAND,RECRUITWINDOW_NATIONDROPDOWN_ITALY,RECRUITWINDOW_SPECIALIZATION,RECRUITWINDOW_VEHICLECLASS,RECRUITWINDOW_VEHICLECLASSDROPDOWN_ALL,RECRUITWINDOW_VEHICLECLASSDROPDOWN_LIGHTTANK,RECRUITWINDOW_VEHICLECLASSDROPDOWN_MEDIUMTANK,RECRUITWINDOW_VEHICLECLASSDROPDOWN_HEAVYTANK,RECRUITWINDOW_VEHICLECLASSDROPDOWN_AT_SPG,RECRUITWINDOW_VEHICLECLASSDROPDOWN_SPG,RECRUITWINDOW_VEHICLETYPE,RECRUITWINDOW_MENUEMPTYROW,RECRUITWINDOW_SUBMIT,RECRUITWINDOW_CANCEL,RECRUITWINDOW_NATIONS_NO_VEHICLE,BUYSLOTNOTENOUGH_CREDITS_TITLE,BUYSLOTNOTENOUGH_CREDITS_MESSAGE,BUYSLOTNOTENOUGH_CREDITS_SUBMIT,BUYSLOTNOTENOUGH_CREDITS_CANCEL,BUYSLOTNOTENOUGH_GOLD_TITLE,BUYSLOTNOTENOUGH_GOLD_MESSAGE,BUYSLOTNOTENOUGH_GOLD_SUBMIT,BUYSLOTNOTENOUGH_GOLD_CANCEL,BUYVEHICLEWINDOW_TITLE,BUYVEHICLEWINDOW_TRADEIN_TITLE,BUYVEHICLEWINDOW_TRADEIN_PRICELABEL,BUYVEHICLEWINDOW_PRICELABEL,BUYVEHICLEWINDOW_SUBMITBTN,BUYVEHICLEWINDOW_TRADEIN_SUBMITBTN,BUYVEHICLEWINDOW_CANCELBTN,BUYVEHICLEWINDOW_TRADEIN_CANCELBTN,BUYVEHICLEWINDOW_WARNING,BUYVEHICLEWINDOW_TRADEIN_WARNING,BUYVEHICLEWINDOW_FREERENTSLOT,BUYVEHICLEWINDOW_FULLAMMO,BUYVEHICLEWINDOW_TANKMENCHECKBOX,BUYVEHICLEWINDOW_TRADEIN_TANKMENCHECKBOX,BUYVEHICLEWINDOW_TANKMENLABEL,BUYVEHICLEWINDOW_TANKMENTOTALLABEL,BUYVEHICLEWINDOW_SLOTCHECKBOX,BUYVEHICLEWINDOW_AMMOCHECKBOX,BUYVEHICLEWINDOW_CREWINVEHICLE,BUYVEHICLEWINDOW_TOTALLABEL,BUYVEHICLEWINDOW_TABS_BUY,BUYVEHICLEWINDOW_TABS_TRADE,BUYVEHICLEWINDOW_TRADEIN_STUDYLABEL,BUYVEHICLEWINDOW_TRADEIN_TOTALLABEL,BUYVEHICLEWINDOW_TRADEIN_CONFIRMATION_TITLE,BUYVEHICLEWINDOW_TRADEIN_CONFIRMATION_QUESTION,BUYVEHICLEWINDOW_TRADEIN_CONFIRMATION_ERRORMESSAGE,BUYVEHICLEWINDOW_TRADEIN_INFO_NOVEHICLES,BUYVEHICLEWINDOW_TRADEIN_WARNING_CHOOSE,BUYVEHICLEWINDOW_TRADEIN_INFO_SAVING,BUYVEHICLEWINDOW_TRADEIN_VEHICLE_CHOOSE,TRADEINPOPOVER_DESCR,TRADEINPOPOVER_TITLE,TRADEINPOPOVER_SORTING_NATION_HEADER,TRADEINPOPOVER_SORTING_NATION_BODY,TRADEINPOPOVER_SORTING_VEHTYPE_HEADER,TRADEINPOPOVER_SORTING_VEHTYPE_BODY,TRADEINPOPOVER_SORTING_VEHLVL_HEADER,TRADEINPOPOVER_SORTING_VEHLVL_BODY,TRADEINPOPOVER_SORTING_VEHNAME_HEADER,TRADEINPOPOVER_SORTING_VEHNAME_BODY,TRADEINPOPOVER_SORTING_SAVING_FORMATTED,TRADEINPOPOVER_SORTING_SAVING_HEADER,TRADEINPOPOVER_SORTING_SAVING_BODY,TRADEOFFWIDGET_SELECTVEHICLE,RESTOREVEHICLEDIALOG_TITLE,RESTOREVEHICLEDIALOG_PRICELABEL,RESTOREVEHICLEDIALOG_TANKMENCHECKBOX,RESTOREVEHICLEDIALOG_SUBMITBTN,RESTOREVEHICLEDIALOG_CANCELBTN,RESTOREVEHICLEDIALOG_WARNING,BARRACKSEXPAND_TITLE,BARRACKSEXPAND_MESSAGE,BARRACKSEXPAND_SUBMIT,BARRACKSEXPAND_CANCEL,BARRACKSEXPANDNOTENOUGHMONEY_TITLE,BARRACKSEXPANDNOTENOUGHMONEY_MESSAGE,BARRACKSEXPANDNOTENOUGHMONEY_SUBMIT,BARRACKSEXPANDNOTENOUGHMONEY_CANCEL,EULA_P1,EULA_P2,CONFIRMUNLOCK_TITLE,CONFIRMUNLOCK_ITEM_MESSAGE,CONFIRMUNLOCK_VEHICLE_MESSAGE,CONFIRMUNLOCK_SUBMIT,CONFIRMUNLOCK_CANCEL,CONFIRMBUY_TITLE,CONFIRMBUYANDINSTALL_TITLE,CONFIRMBUYANDINSTALL_MESSAGE,CONFIRMBUYANDINSTALL_SELLMESSAGE,CONFIRMBUYANDINSTALL_DEPOTMESSAGE,CONFIRMBUYANDINSTALL_SOLDMODULEINFO_DESCRIPTION,CONFIRMBUYANDINSTALL_SOLDMODULEINFO_COMPATIBLETANKS,CONFIRMBUYANDINSTALL_INSUFFICIENTFUNDSTOOLTIP_HEADER,CONFIRMBUYANDINSTALL_INSUFFICIENTFUNDSTOOLTIP_BODY,CONFIRMBUYANDINSTALL_INSUFFICIENTFUNDSTOOLTIP_AMOUNT,CONFIRMBUYANDINSTALL_SUBMIT,CONFIRMBUYANDINSTALL_CANCEL,POSTMORTEM_TITLE,POSTMORTEM_MESSAGE,POSTMORTEM_SUBMIT,POSTMORTEM_CANCEL,DISMISSTANKMAN_TITLE,DISMISSTANKMAN_MESSAGE,DISMISSTANKMAN_SUBMIT,DISMISSTANKMAN_CANCEL,PROTECTEDDISMISSTANKMAN_TITLE,PROTECTEDDISMISSTANKMAN_MESSAGE,PROTECTEDDISMISSTANKMAN_MAINMESSAGE,PROTECTEDDISMISSTANKMAN_ADDITIONALMESSAGE_ISPERK,PROTECTEDDISMISSTANKMAN_ADDITIONALMESSAGE,PROTECTEDDISMISSTANKMAN_ERRORMESSAGE,PROTECTEDDISMISSTANKMAN_SUBMIT,PROTECTEDDISMISSTANKMAN_CANCEL,PROTECTEDDISMISSTANKMAN_ALERT,RESTORETANKMAN_TITLE,RESTORETANKMAN_MESSAGE,RESTORETANKMAN_FORFREE,RESTORETANKMAN_WARNING,RESTORETANKMAN_SUBMIT,RESTORETANKMAN_CANCEL,RESTORETANKMAN_PRICE,RESTORETANKMAN_NEWPERIODWARNING,RESTORETANKMAN_DISCONNECTEDFROMCENTER,DISMISSEDBUFFEROVERFLAW_TITLE,DISMISSEDBUFFEROVERFLAW_MESSAGE,DISMISSEDBUFFEROVERFLAW_SUBMIT,DISMISSEDBUFFEROVERFLAW_CANCEL,DISMISSEDBUFFEROVERFLAWMULTIPLE_TITLE,DISMISSEDBUFFEROVERFLAWMULTIPLE_MESSAGE,DISMISSEDBUFFEROVERFLAWMULTIPLE_SUBMIT,DISMISSEDBUFFEROVERFLAWMULTIPLE_CANCEL,DROPSKILL_TITLE,DROPSKILL_MESSAGE,DROPSKILL_SUBMIT,DROPSKILL_CANCEL,SQUADPREMIUMNEEDED_TITLE,SQUADPREMIUMNEEDED_MESSAGE,SQUADPREMIUMNEEDED_CANCEL,SQUADHAVENOTREADYPLAYERS_TITLE,SQUADHAVENOTREADYPLAYERS_MESSAGE,SQUADHAVENOTREADYPLAYERS_SUBMIT,SQUADHAVENOTREADYPLAYERS_CANCEL,SQUADHAVENOTREADYPLAYERSAUTO_TITLE,SQUADHAVENOTREADYPLAYERSAUTO_MESSAGE,SQUADHAVENOTREADYPLAYERSAUTO_SUBMIT,SQUADHAVENOTREADYPLAYERSAUTO_CANCEL,SQUADHAVENOTREADYPLAYERAUTO_TITLE,SQUADHAVENOTREADYPLAYERAUTO_MESSAGE,SQUADHAVENOTREADYPLAYERAUTO_SUBMIT,SQUADHAVENOTREADYPLAYERAUTO_CANCEL,SQUADHAVENOTREADYPLAYER_TITLE,SQUADHAVENOTREADYPLAYER_MESSAGE,SQUADHAVENOTREADYPLAYER_SUBMIT,SQUADHAVENOTREADYPLAYER_CANCEL,SQUADHAVENOPLAYERS_TITLE,SQUADHAVENOPLAYERS_MESSAGE,SQUADHAVENOPLAYERS_SUBMIT,SQUADHAVENOPLAYERS_CANCEL,SQUADHAVENOPLAYERSAUTO_TITLE,SQUADHAVENOPLAYERSAUTO_MESSAGE,SQUADHAVENOPLAYERSAUTO_SUBMIT,SQUADHAVENOPLAYERSAUTO_CANCEL,SQUADHAVENOPLAYERAUTO_TITLE,SQUADHAVENOPLAYERAUTO_MESSAGE,SQUADHAVENOPLAYERAUTO_SUBMIT,SQUADHAVENOPLAYERAUTO_CANCEL,SQUADHAVEPLAYERSINBATTLE_TITLE,SQUADHAVEPLAYERSINBATTLE_MESSAGE,SQUADHAVEPLAYERSINBATTLE_CANCEL,LEFTPREBATTLEANDACCEPTINVITE_TITLE,LEFTPREBATTLEANDACCEPTINVITE_MESSAGE,LEFTPREBATTLEANDACCEPTINVITE_SUBMIT,LEFTPREBATTLEANDACCEPTINVITE_CANCEL,LEFTTRAININGANDACCEPTINVITE_TITLE,LEFTTRAININGANDACCEPTINVITE_MESSAGE,LEFTTRAININGANDACCEPTINVITE_SUBMIT,LEFTTRAININGANDACCEPTINVITE_CANCEL,LEFTSQUADANDACCEPTINVITE_TITLE,LEFTSQUADANDACCEPTINVITE_MESSAGE,LEFTSQUADANDACCEPTINVITE_SUBMIT,LEFTSQUADANDACCEPTINVITE_CANCEL,GATHERINGXPFORM_TITLE,GATHERINGXPFORM_BEFOREOPERATION,GATHERINGXPFORM_CURRENTAMOUNT,GATHERINGXPFORM_AFTEROPERATION,GATHERINGXPFORM_HEADERBUTTONS_VEHICLE,GATHERINGXPFORM_HEADERBUTTONS_XP,GATHERINGXPFORM_HEADERBUTTONS_CREW,GATHERINGXPFORM_TOCHANGELABEL,GATHERINGXPFORM_TOTALLABEL,GATHERINGXPFORM_SELECTALLLABEL,GATHERINGXPFORM_TOTALXP,GATHERINGXPFORM_SORTBY_SELECTION_HEADER,GATHERINGXPFORM_SORTBY_SELECTION_BODY,GATHERINGXPFORM_SORTBY_VEHICLE_HEADER,GATHERINGXPFORM_SORTBY_VEHICLE_BODY,GATHERINGXPFORM_SORTBY_XP_HEADER,GATHERINGXPFORM_SORTBY_XP_BODY,EXCHANGEXPWINDOW_ERROR_NOELITEVEHICLEINHANGAR,EXCHANGEXPWINDOW_ERROR_NOVEHICLESWITHXP,GATHERINGXPFORM_TOOLTIPS_CHECKBOXCREWSELECTED,GATHERINGXPFORM_TOOLTIPS_CHECKBOXCREWUNSELECTED,GATHERINGXPFORM_BTNSUBMIT,GATHERINGXPFORM_BTNCANCEL,EXCHANGEXPCONFIRMATION_TITLE,EXCHANGEXPCONFIRMATION_MESSAGE,EXCHANGEXPCONFIRMATION_AVAILABLE_FORFREE_MESSAGE,EXCHANGEXPCONFIRMATION_SUBMIT,EXCHANGEXPCONFIRMATION_CANCEL,EXCHANGEGOLDCONFIRMATION_TITLE,EXCHANGEGOLDCONFIRMATION_MESSAGE,EXCHANGEGOLDCONFIRMATION_SUBMIT,EXCHANGEGOLDCONFIRMATION_CANCEL,CONTROLSWRONGNOTIFICATION_TITLE,CONTROLSWRONGNOTIFICATION_MESSAGE,CONTROLSWRONGNOTIFICATION_SUBMIT,CONTROLSWRONGNOTIFICATION_CANCEL,MINIMAPALPHANOTIFICATION_TITLE,MINIMAPALPHANOTIFICATION_MESSAGE,MINIMAPALPHANOTIFICATION_MESSAGE_ALERT,MINIMAPALPHANOTIFICATION_SUBMIT,MINIMAPALPHANOTIFICATION_CANCEL,SOUNDMODEINVALID_TITLE,SOUNDMODEINVALID_MESSAGE,SOUNDMODEINVALID_SUBMIT,SOUNDMODEINVALID_CANCEL,CONTROLSWRONGNOTIFICATIONSOUNDMODEINVALID_TITLE,CONTROLSWRONGNOTIFICATIONSOUNDMODEINVALID_MESSAGE,CONTROLSWRONGNOTIFICATIONSOUNDMODEINVALID_SUBMIT,CONTROLSWRONGNOTIFICATIONSOUNDMODEINVALID_CANCEL,EULA_TITLE,EULA_LABELS_AGREE,EULA_BUTTONS_APPLY,HAVENOEMPTYSLOTS_TITLE,HAVENOEMPTYSLOTS_MESSAGE,HAVENOEMPTYSLOTS_SUBMIT,HAVENOEMPTYSLOTS_CANCEL,MONEYTRANSFER_TITLE,MONEYTRANSFER_LABELTOTALPRICE,MONEYTRANSFER_LABELTO,MONEYTRANSFER_LABELGOLD,MONEYTRANSFER_NOT_A_CLAN,MONEYTRANSFER_LABELFEEPRICE,MONEYTRANSFER_LABELNORMAL,MONEYTRANSFER_LABELNORMALCREDITS,MONEYTRANSFER_LABELNORMALGOLD,MONEYTRANSFER_LABELCLAN,MONEYTRANSFER_LABELCLANCREDITS,MONEYTRANSFER_LABELCLANGOLD,MONEYTRANSFER_SUBMITBTN,MONEYTRANSFER_CANCELBTN,MONEYTRANSFERCONFIRMATION_TITLE,MONEYTRANSFERCONFIRMATION_MESSAGE,MONEYTRANSFERCONFIRMATION_SUBMIT,MONEYTRANSFERCONFIRMATION_CANCEL,MONEYTRANSFERRESTRICTION_TITLE,MONEYTRANSFERRESTRICTION_MESSAGE,MONEYTRANSFERRESTRICTION_MESSAGE_EXPIRY,MONEYTRANSFERRESTRICTION_SUBMIT,MONEYTRANSFERRESTRICTION_CANCEL,MONEYTRANSFERLINK_SET_PASSWORD,FINANCE_DIALOG_HEADER,FINANCE_DIALOG_SUBMITBTN,FINANCE_DIALOG_CANCELBTN,FINANCE_DIALOG_RESULTS_DEFAULTMESSAGE,FINANCE_DIALOG_RESULTS_VALID,FINANCE_DIALOG_RESULTS_INVALID,FINANCE_DIALOG_RESULTS_LIMIT,FINANCE_DIALOG_RESULTS_WRONG,FREEVEHICLELEFTLIMIT_TITLE,FREEVEHICLELEFTLIMIT_MESSAGE,FREEVEHICLELEFTLIMIT_CANCEL,FREEVEHICLELEFTLIMIT_SUBMIT,VOICECHATINITFAILED_TITLE,VOICECHATINITFAILED_MESSAGE,VOICECHATINITFAILED_CANCEL,VOICECHATINITSUCCEDED_TITLE,VOICECHATINITSUCCEDED_MESSAGE,VOICECHATINITSUCCEDED_CANCEL,MESSENGER_USERINFOHIDDEN_TITLE,MESSENGER_USERINFOHIDDEN_MESSAGE,MESSENGER_USERINFOHIDDEN_SUBMIT,MESSENGER_USERINFOHIDDEN_CANCEL,MESSENGER_USERINFONOTAVAILABLE_TITLE,MESSENGER_USERINFONOTAVAILABLE_MESSAGE,MESSENGER_USERINFONOTAVAILABLE_SUBMIT,MESSENGER_USERINFONOTAVAILABLE_CANCEL,VEHICLEREMOVEDIALOG_TITLE,VEHICLESELLDIALOG_EXPANDBTNLABEL,VEHICLESELLDIALOG_TITLE,VEHICLESELLDIALOG_MESSAGE,VEHICLESELLDIALOG_MESSAGE_MULTINATIONAL,VEHICLESELLDIALOG_VEHICLETYPE_LIGHTTANK,VEHICLESELLDIALOG_VEHICLETYPE_MEDIUMTANK,VEHICLESELLDIALOG_VEHICLETYPE_HEAVYTANK,VEHICLESELLDIALOG_VEHICLETYPE_SPG,VEHICLESELLDIALOG_VEHICLETYPE_AT_SPG,VEHICLESELLDIALOG_VEHICLE_LEVEL,VEHICLESELLDIALOG_VEHICLE_ROLE,VEHICLESELLDIALOG_VEHICLE_EMPTYSELLPRICE,VEHICLESELLDIALOG_PROFFIT,VEHICLESELLDIALOG_LOSS,VEHICLESELLDIALOG_CREW_LABEL,VEHICLESELLDIALOG_OPTIONALDEVICE,VEHICLESELLDIALOG_EQUIPMENT,VEHICLESELLDIALOG_BATTLEBOSTER,VEHICLESELLDIALOG_CUSTOMIZATION,VEHICLESELLDIALOG_AMMO_LABEL,VEHICLESELLDIALOG_COMMONRESULT,VEHICLESELLDIALOG_INVENTORY,VEHICLESELLDIALOG_UNLOAD,VEHICLESELLDIALOG_DECONSTRUCT,VEHICLESELLDIALOG_NOTINSTALLED_MODULES,VEHICLESELLDIALOG_COUNT,VEHICLESELLDIALOG_REMOVE,VEHICLESELLDIALOG_SUBMIT,VEHICLESELLDIALOG_CANCEL,VEHICLESELLDIALOG_VEHICLE_ELITE,VEHICLESELLDIALOG_CREW_UNLOAD,VEHICLESELLDIALOG_CREW_DISSMISS,VEHICLESELLDIALOG_CTRLQUESTION_HEADER,VEHICLESELLDIALOG_CTRLQUESTION_QUESTION,VEHICLESELLDIALOG_CTRLQUESTION_ERRORMESSAGE,VEHICLESELLDIALOG_PRICE_SIGN_ADD,VEHICLESELLDIALOG_POSTPROGRESSIONINFO,VEHICLESELL_UNIQUE_TITLE,VEHICLESELL_UNIQUE_MESSAGE,VEHICLESELL_UNIQUE_SUBMIT,VEHICLESELL_UNIQUE_CANCEL,VEHICLESELL_UNIQUE_CREWLOCKED_TITLE,VEHICLESELL_UNIQUE_CREWLOCKED_MESSAGE,VEHICLESELL_UNIQUE_CREWLOCKED_SUBMIT,VEHICLESELL_UNIQUE_CREWLOCKED_CANCEL,VEHICLESELL_RESTORECOOLDOWN_TITLE,VEHICLESELL_RESTORECOOLDOWN_MESSAGE,VEHICLESELL_RESTORECOOLDOWN_SUBMIT,VEHICLESELL_RESTORECOOLDOWN_CANCEL,VEHICLESELL_RESTOREUNLIMITED_TITLE,VEHICLESELL_RESTOREUNLIMITED_MESSAGE,VEHICLESELL_RESTOREUNLIMITED_SUBMIT,VEHICLESELL_RESTOREUNLIMITED_CANCEL,UPDATENEEDED_TITLE,UPDATENEEDED_MESSAGE,UPDATENEEDED_SUBMIT,UPDATENEEDED_CANCEL,DEMOACCOUNTBOOTCAMPFAILURE_TITLE,DEMOACCOUNTBOOTCAMPFAILURE_MESSAGE,DEMOACCOUNTBOOTCAMPFAILURE_CANCEL,STEAMSTARTNEEDED_TITLE,STEAMSTARTNEEDED_MESSAGE,STEAMSTARTNEEDED_CANCEL,REPLAYNOTIFICATION_TITLE,REPLAYNOTIFICATION_MESSAGE,REPLAYNOTIFICATION_SUBMIT,REPLAYNOTIFICATION_CANCEL,REPLAYSTOPPED_TITLE,REPLAYSTOPPED_MESSAGE,REPLAYSTOPPED_SUBMIT,REPLAYSTOPPED_CANCEL,PUNISHMENTWINDOW_TITLE,PUNISHMENTWINDOW_MSGTITLE_WARNING,PUNISHMENTWINDOW_MSGTITLE_PENALTY,PUNISHMENTWINDOW_MESSAGE_WARNING,PUNISHMENTWINDOW_MESSAGE_PENALTY,PUNISHMENTWINDOW_MESSAGE_EXTRA_PENALTY,PUNISHMENTWINDOW_CANCEL,PUNISHMENTWINDOW_REASON_DESERTER,PUNISHMENTWINDOW_REASON_EPIC_DESERTER,PUNISHMENTWINDOW_REASON_SUICIDE,PUNISHMENTWINDOW_REASON_AFK,SKILLDROPWINDOW_TITLE,SKILLDROPWINDOW_MESSAGE,SKILLDROPWINDOW_SUBMIT,SKILLDROPWINDOW_CANCEL,REMOVEINCOMPATIBLEEQS_TITLE,REMOVEINCOMPATIBLEEQS_MESSAGE,REMOVEINCOMPATIBLEEQS_MESSAGE_REASON,REMOVEINCOMPATIBLEEQS_SUBMIT,REMOVEINCOMPATIBLEEQS_CANCEL,REFUSETRAINING_TITLE,REFUSETRAINING_MESSAGE,REFUSETRAINING_SUBMIT,REFUSETRAINING_CANCEL,SHOPSYNCERROR_TITLE,SHOPSYNCERROR_MESSAGE,SHOPSYNCERROR_CANCEL,RESETGRAPHICS_TITLE,RESETGRAPHICS_MESSAGE,RESETGRAPHICS_SUBMIT,RESETGRAPHICS_CANCEL,CHANGEGRAPHICS_TITLE,CHANGEGRAPHICS_MESSAGE,CHANGEGRAPHICS_SUBMIT,CHANGEGRAPHICS_CANCEL,GRAPHICS_MESSAGE_ALERT,LOWFPSWARNING_TITLE,LOWFPSWARNING_MESSAGE,LOWFPSWARNING_SUBMIT,LOWFPSWARNING_CANCEL,KOREAPARENTNOTIFICATION_TITLE,KOREAPARENTNOTIFICATION_MESSAGE,KOREAPARENTNOTIFICATION_SUBMIT,KOREAPARENTNOTIFICATION_CANCEL,KOREAPLAYTIMENOTIFICATION_TITLE,KOREAPLAYTIMENOTIFICATION_MESSAGE,KOREAPLAYTIMENOTIFICATION_SUBMIT,KOREAPLAYTIMENOTIFICATION_CANCEL,TANKMANRETRAINING_UNKNOWNVEHICLEBYGOLD_TITLE,TANKMANRETRAINING_UNKNOWNVEHICLEBYGOLD_MESSAGE,TANKMANRETRAINING_UNKNOWNVEHICLEBYGOLD_SUBMIT,TANKMANRETRAINING_UNKNOWNVEHICLEBYGOLD_CANCEL,TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_TITLE,TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_MESSAGE,TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_SUBMIT,TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_CANCEL,TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_PACK_TITLE,TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_PACK_MESSAGE,TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_PACK_SUBMIT,TANKMANRETRAINING_KNOWNVEHICLEBYGOLD_PACK_CANCEL,TANKMANRETRAINING_UNKNOWNVEHICLE_TITLE,TANKMANRETRAINING_UNKNOWNVEHICLE_MESSAGE,TANKMANRETRAINING_UNKNOWNVEHICLE_SUBMIT,TANKMANRETRAINING_UNKNOWNVEHICLE_CANCEL,TANKMANRETRAINING_UNDISTRIBUTEDEXP_TITLE,TANKMANRETRAINING_UNDISTRIBUTEDEXP_MESSAGE,TANKMANRETRAINING_UNDISTRIBUTEDEXP_SUBMIT,TANKMANRETRAINING_UNDISTRIBUTEDEXP_CANCEL,TANKMANCHAGEROLE_UNKNOWNVEHICLE_TITLE,TANKMANCHAGEROLE_UNKNOWNVEHICLE_MESSAGE,TANKMANCHAGEROLE_UNKNOWNVEHICLE_SUBMIT,TANKMANCHAGEROLE_UNKNOWNVEHICLE_CANCEL,SENDINVITES_COMMON_TITLE,RALLY_AUTOSEARCH_TITLE,RALLY_AUTOSEARCH_MESSAGE,RALLY_AUTOSEARCH_SUBMIT,RALLY_AUTOSEARCH_CANCEL,RALLY_STARTBATTLE_TITLE,RALLY_STARTBATTLE_MESSAGE,RALLY_STARTBATTLE_SUBMIT,RALLY_STARTBATTLE_CANCEL,RALLY_CHANGEPERIPHERY_TITLE,RALLY_CHANGEPERIPHERY_MESSAGE,RALLY_CHANGEPERIPHERY_SUBMIT,RALLY_CHANGEPERIPHERY_CANCEL,RALLY_GOTOANOTHER_TITLE,RALLY_GOTOANOTHER_MESSAGE,RALLY_GOTOANOTHER_SUBMIT,RALLY_GOTOANOTHER_CANCEL,RALLY_GOTOSQUAD_TITLE,RALLY_GOTOSQUAD_MESSAGE,RALLY_GOTOSQUAD_SUBMIT,RALLY_GOTOSQUAD_CANCEL,SQUAD_GOTOSQUAD_TITLE,SQUAD_GOTOSQUAD_MESSAGE,SQUAD_GOTOSQUAD_SUBMIT,SQUAD_GOTOSQUAD_CANCEL,SQUAD_GOTOANOTHER_TITLE,SQUAD_GOTOANOTHER_MESSAGE,SQUAD_GOTOANOTHER_SUBMIT,SQUAD_GOTOANOTHER_CANCEL,RALLY_LEAVE_TITLE,RALLY_LEAVE_MESSAGE,RALLY_LEAVE_SUBMIT,RALLY_LEAVE_CANCEL,RALLY_GOTOINTRO_TITLE,RALLY_GOTOINTRO_MESSAGE,RALLY_GOTOINTRO_SUBMIT,RALLY_GOTOINTRO_CANCEL,SQUAD_LEAVE_TITLE,SQUAD_LEAVE_MESSAGE,SQUAD_LEAVE_SUBMIT,SQUAD_LEAVE_CANCEL,RALLY_LEAVEDISABLED_TITLE,RALLY_LEAVEDISABLED_MESSAGE,RALLY_LEAVEDISABLED_CANCEL,SQUAD_LEAVEDISABLED_TITLE,SQUAD_LEAVEDISABLED_MESSAGE,SQUAD_LEAVEDISABLED_CANCEL,CHANGEPERIPHERY_TITLE,CHANGEPERIPHERY_MESSAGE,CHANGEPERIPHERY_SUBMIT,CHANGEPERIPHERY_CANCEL,CHANGEROAMINGPERIPHERY_TITLE,CHANGEROAMINGPERIPHERY_MESSAGE,CHANGEROAMINGPERIPHERY_SUBMIT,CHANGEROAMINGPERIPHERY_CANCEL,CHANGEPERIPHERYANDREMEMBER_TITLE,CHANGEPERIPHERYANDREMEMBER_MESSAGE,CHANGEPERIPHERYANDREMEMBER_SUBMIT,CHANGEPERIPHERYANDREMEMBER_CANCEL,CHANGEROAMINGPERIPHERYANDREMEMBER_TITLE,CHANGEROAMINGPERIPHERYANDREMEMBER_MESSAGE,CHANGEROAMINGPERIPHERYANDREMEMBER_SUBMIT,CHANGEROAMINGPERIPHERYANDREMEMBER_CANCEL,LOGINTOPERIPHERYANDREMEMBER_TITLE,LOGINTOPERIPHERYANDREMEMBER_MESSAGE,LOGINTOPERIPHERYANDREMEMBER_SUBMIT,LOGINTOPERIPHERYANDREMEMBER_CANCEL,FREEXPINFO_TITLE,FREEXPINFO_MESSAGE,FREEXPINFO_SUBMITBTNLBL,SWITCHPERIPHERYWINDOW_WINDOWTITLE,SWITCHPERIPHERYWINDOW_BTNSWITCH,SWITCHPERIPHERYWINDOW_BTNCANCEL,CREATEORDERCONFIRMATION_TITLE,CREATEORDERCONFIRMATION_SUBMIT,CREATEORDERCONFIRMATION_CANCEL,FORTIFICATIONFIXEDPLAYERS_TITLE,FORTIFICATIONFIXEDPLAYERS_MESSAGE,FORTIFICATIONFIXEDPLAYERS_SUBMIT,FORTIFICATIONFIXEDPLAYERS_CANCEL,FORTIFICATIONCLOSEDIRECTION_SUBMIT,FORTIFICATIONCLOSEDIRECTION_CANCEL,REPORTBUG_TITLE,REPORTBUG_MESSAGE,REPORTBUG_SUBMIT,REPORTBUG_CANCEL,FORTTURNEDOFF_CANCEL,FORTTURNEDOFF_TITLE,FORTTURNEDOFF_MESSAGE,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_TITLE,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_TITLE,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_TITLE,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_NEEDITEMSTEXT,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_NEEDITEMSTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_NEEDITEMSTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_NEEDGOLDTEXT,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_NEEDGOLDTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_NEEDGOLDTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_NEEDITEMSSTEPPERTITLE,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_NEEDITEMSSTEPPERTITLE,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_NEEDITEMSSTEPPERTITLE,CONFIRMEXCHANGEDIALOG_GOLDITEMSSTEPPERTITLE,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_SUBMIT,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_SUBMIT,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_SUBMIT,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_CANCEL,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_CANCEL,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_CANCEL,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_EXCHANGENONEEDTEXT,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_EXCHANGENONEEDTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_EXCHANGENONEEDTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_GOLDNOTENOUGHTEXT,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_GOLDNOTENOUGHTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_GOLDNOTENOUGHTEXT,QUESTSCONFIRMDIALOG_TITLE,QUESTSCONFIRMDIALOG_MESSAGE,QUESTSCONFIRMDIALOG_SUBMIT,QUESTSCONFIRMDIALOG_CANCEL,QUESTSCONFIRMDIALOG_CHECKBOX,QUESTSCONFIRMPROGRESSDIALOG_TITLE,QUESTSCONFIRMPROGRESSDIALOG_MESSAGE,QUESTSCONFIRMPROGRESSDIALOG_MESSAGE_ALERT,QUESTSCONFIRMPROGRESSDIALOG_SUBMIT,QUESTSCONFIRMPROGRESSDIALOG_CANCEL,QUESTSDISMISSPROGRESSDIALOG_TITLE,QUESTSCONFIRMDISCARDDIALOG_TITLE,QUESTSDISMISSPROGRESSDIALOG_MESSAGE,QUESTSDISMISSPROGRESSDIALOG_MESSAGE_ALERT,QUESTSDISMISSPROGRESSDIALOG_SUBMIT,QUESTSDISMISSPROGRESSDIALOG_CANCEL,QUESTSCONFIRMDISCARDDIALOG_MESSAGE,QUESTSCONFIRMDISCARDDIALOG_MESSAGE_ALERT,QUESTSCONFIRMDISCARDDIALOG_SUBMIT,QUESTSCONFIRMDISCARDDIALOG_CANCEL,EPICBATTLECONFIRMDIALOG_TITLE,EPICBATTLECONFIRMDIALOG_MESSAGE,EPICBATTLECONFIRMDIALOG_SUBMIT,EPICBATTLECONFIRMDIALOG_CANCEL,EPICBATTLECONFIRMDIALOG_CHECKBOX,BOOSTERSWINDOW_ACTIVATIONCONFIRMATION_TITLE,BOOSTERSWINDOW_ACTIVATIONCONFIRMATION_MESSAGE,BOOSTERSWINDOW_ACTIVATIONCONFIRMATION_SUBMIT,BOOSTERSWINDOW_ACTIVATIONCONFIRMATION_CANCEL,BOOSTERSWINDOW_REPLACECONFIRMATION_TITLE,BOOSTERSWINDOW_REPLACECONFIRMATION_MESSAGE,BOOSTERSWINDOW_REPLACECONFIRMATION_SUBMIT,BOOSTERSWINDOW_REPLACECONFIRMATION_CANCEL,CLANCONFIRMJOINING_TITLE,CLANCONFIRMJOINING_MESSAGE,CLANCONFIRMJOINING_MESSAGE_CLANNAME,CLANCONFIRMJOINING_MESSAGE_CLANEXIT,CLANCONFIRMJOINING_SUBMIT,CLANCONFIRMJOINING_CANCEL,CUSTOMIZATION_CLOSE_TITLE,CUSTOMIZATION_CLOSE_SUBMIT,CUSTOMIZATION_CLOSE_CANCEL,CUSTOMIZATION_FILTER_TITLE,CUSTOMIZATION_FILTER_MESSAGE,CUSTOMIZATION_FILTER_SUBMIT,CUSTOMIZATION_FILTER_CANCEL,CUSTOMIZATION_REMOVE_ELEMENT_TITLE,CUSTOMIZATION_REMOVE_ELEMENT_MESSAGE,CUSTOMIZATION_REMOVE_ELEMENT_SUBMIT,CUSTOMIZATION_REMOVE_ELEMENT_CANCEL,CUSTOMIZATION_INSTALL_INVOICE_ITEM_WILL_BE_DELETED,CUSTOMIZATION_INSTALL_INVOICE_ITEM_TEMPORARY_TITLE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_TEMPORARY_MESSAGE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_TEMPORARY_SUBMIT,CUSTOMIZATION_INSTALL_INVOICE_ITEM_TEMPORARY_CANCEL,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_TITLE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_MESSAGE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_SUBMIT,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_CANCEL,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_LAST_TITLE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_LAST_MESSAGE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_LAST_SUBMIT,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_LAST_CANCEL,CUSTOMIZATION_BUY_INSTALL_BOUND_TITLE,CUSTOMIZATION_BUY_INSTALL_BOUND_MESSAGE,CUSTOMIZATION_CHANGE_INSTALL_BOUND_TITLE,CUSTOMIZATION_CHANGE_INSTALL_BOUND_MESSAGE,CUSTOMIZATION_INSTALL_BOUND_SUBMIT,CUSTOMIZATION_INSTALL_BOUND_CANCEL,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_TITLE,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_MESSAGE,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_SUBMIT,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_CANCEL,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_THIS,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_THESE,FORTDISABLED_TITLE,FORTDISABLED_MESSAGE,FORTDISABLED_CANCEL,ELENDISABLED_TITLE,ELENDISABLED_MESSAGE,ELENDISABLED_CANCEL,CLAN_DATA_NOT_AVAILABLE_TITLE,CLAN_DATA_NOT_AVAILABLE_MESSAGE,CLAN_DATA_NOT_AVAILABLE_CANCEL,SOUNDSPEAKERSPRESETDOESNOTMATCH_TITLE,SOUNDSPEAKERSPRESETDOESNOTMATCH_MESSAGE,SOUNDSPEAKERSPRESETDOESNOTMATCH_SUBMIT,SOUNDSPEAKERSPRESETDOESNOTMATCH_CANCEL,SOUNDSPEAKERSPRESETRESET_TITLE,SOUNDSPEAKERSPRESETRESET_MESSAGE,SOUNDSPEAKERSPRESETRESET_SUBMIT,SOUNDSPEAKERSPRESETRESET_CANCEL,STRONGHOLD_LEAVE_TITLE,STRONGHOLD_LEAVE_MESSAGE,STRONGHOLD_LEAVEDEFEAT_TITLE,STRONGHOLD_LEAVEDEFEAT_MESSAGE,STRONGHOLD_LEAVE_SUBMIT,STRONGHOLD_LEAVE_CANCEL,TRADEINCONFIRMATION_TITLE,TRADEINCONFIRMATION_MESSAGE,TRADEINCONFIRMATION_MESSAGE_ADDITION,TRADEINCONFIRMATION_MESSAGE_CREW,TRADEINCONFIRMATION_MESSAGE_SHELLS,TRADEINCONFIRMATION_MESSAGE_EQUIPMENTS,TRADEINCONFIRMATION_MESSAGE_OPTIONALDEVICES,TRADEINCONFIRMATION_MESSAGE_PAIRMODIFICATIONS,TRADEINCONFIRMATION_SUBMIT,TRADEINCONFIRMATION_CANCEL,VEHCONF_EXITDIALOG_TITLE,VEHCONF_EXITDIALOG_MESSAGE,VEHCONF_EXITDIALOG_SUBMIT,VEHCONF_EXITDIALOG_CANCEL,CONFIRMBATTLEBOOSTERINSTALL_TITLE,CONFIRMBATTLEBOOSTERINSTALL_MESSAGE,CONFIRMBATTLEBOOSTERINSTALL_SUBMIT,CONFIRMBATTLEBOOSTERINSTALL_CANCEL,CONFIRMBATTLEBOOSTERINSTALLNOTSUITABLE_TITLE,CONFIRMBATTLEBOOSTERINSTALLNOTSUITABLE_MESSAGE,CONFIRMBATTLEBOOSTERINSTALLNOTSUITABLE_SUBMIT,CONFIRMBATTLEBOOSTERINSTALLNOTSUITABLE_CANCEL,CONFIRMBATTLEBOOSTERBUYANDINSTALL_TITLE,CONFIRMBATTLEBOOSTERBUYANDINSTALL_SUBMIT,CONFIRMBATTLEBOOSTERBUYANDINSTALL_CANCEL,BOOTCAMP_PREMIUMTYPE_BASIC,BOOTCAMP_PREMIUMTYPE_PLUS,BOOTCAMP_SKIP_TITLE,BOOTCAMP_SKIP_LABEL,BOOTCAMP_SKIP_MESSAGE,BOOTCAMP_SKIP_SUBMIT,BOOTCAMP_SKIP_CANCEL,BOOTCAMP_SKIP_REFERRAL_TITLE,BOOTCAMP_SKIP_REFERRAL_LABEL,BOOTCAMP_SKIP_REFERRAL_MESSAGE,BOOTCAMP_SKIP_REFERRAL_SUBMIT,BOOTCAMP_SKIP_REFERRAL_CANCEL,BOOTCAMP_START_TITLE,BOOTCAMP_START_LABEL,BOOTCAMP_START_MESSAGE,BOOTCAMP_START_SUBMIT,BOOTCAMP_START_CANCEL,BOOTCAMP_RETRY_TITLE,BOOTCAMP_RETRY_LABEL,BOOTCAMP_RETRY_MESSAGE,BOOTCAMP_RETRY_SUBMIT,BOOTCAMP_RETRY_CANCEL,BOOTCAMPCENTERUNAVAILABLE_TITLE,BOOTCAMPCENTERUNAVAILABLE_MESSAGE,BOOTCAMPCENTERUNAVAILABLE_CANCEL,HOF_EXCLUDERATING_TITLE,HOF_EXCLUDERATING_MESSAGE,HOF_EXCLUDERATING_SUBMIT,HOF_EXCLUDERATING_CANCEL,HOFDISABLED_TITLE,HOFDISABLED_MESSAGE,HOFDISABLED_CANCEL,CUSTOMIZATIONCONFIRMSELL_TITLE,CUSTOMIZATIONCONFIRMSELL_MESSAGE,LEAVEEVENT_TITLE,LEAVEEVENT_MESSAGE,LEAVEEVENT_SUBMIT,LEAVEEVENT_CANCEL,LEAVESTARTEDEVENT_TITLE,LEAVESTARTEDEVENT_MESSAGE,LEAVESTARTEDEVENT_SUBMIT,LEAVESTARTEDEVENT_CANCEL,LEAVEEVENT_MESSAGE_WARNING,GAMMADIALOG_TITLE,GAMMADIALOG_MESSAGE_HEADER,GAMMADIALOG_MESSAGE_DESCRIPTION,GAMMADIALOG_CANCEL,REFERRALREWARD_TITLE,REFERRALREWARD_MESSAGE,REFERRALREWARD_SUBMIT,REFERRALREWARD_CANCEL,CREWSKINS_SKINWILLBEREMOVED_TITLE,CREWSKINS_SKINWILLBEREMOVED_MESSAGE,CREWSKINS_SKINWILLBEDELETED_TITLE,CREWSKINS_SKINWILLBEDELETED_MESSAGE1,CREWSKINS_SKINWILLBEDELETED_MESSAGEPRICE,CREWSKINS_SKINWILLBEDELETED_MESSAGE2,CREWSKINS_SKINWILLBEDELETED_SUBMIT,CREWSKINS_SKINWILLBEREMOVED_SUBMIT,CREWSKINS_SKINWILLBEDELETED_CANCEL,CREWSKINS_SKINWILLBEREMOVED_CANCEL,SESSIONSTATS_CONFIRMRESET_TITLE,SESSIONSTATS_CONFIRMRESET_MESSAGE,SESSIONSTATS_CONFIRMRESET_TIME,SESSIONSTATS_CONFIRMRESET_SUBMIT,SESSIONSTATS_CONFIRMRESET_CANCEL,EDITABLESTYLES_CONFIRMRESET_TITLE,EDITABLESTYLES_CONFIRMRESET_MESSAGE,EDITABLESTYLES_CONFIRMRESET_FORMATTEDPARTOFMESSAGE,EDITABLESTYLES_CONFIRMRESET_CHECKBOXLABEL,EDITABLESTYLES_CONFIRMRESET_SUBMIT,EDITABLESTYLES_CONFIRMRESET_CANCEL,CREWBOOKS_CONFIRMATION_TITLE,CREWBOOKS_CONFIRMATION_DESC_CREWBOOK,CREWBOOKS_CONFIRMATION_DESC_PERSONALBOOK,CREWBOOKS_CONFIRMATION_BUTTON_SUBMIT,CREWBOOKS_CONFIRMATION_BUTTON_CANCEL,CREWBOOKS_SUCCESS_DESC_CREWBOOK,CREWBOOKS_SUCCESS_DESC_PERSONALBOOK,CREWBOOKS_SUCCESS_TITLE,CONFIRMEQUIPMENTBUYINSTALL_SUBMIT,EQUIPMENTPURCASE_CONFORMATION_ALL,EQUIPMENTBUYINSTALL_PRICE,BUYCONFIRMATION_STRINGEQUIPMENT_SUBMIT,CONFIRMEQUIPMENTINSTALL_SUBMIT,EQUIPMENTDESTROY_CONFORMATION,EQUIPMENTSALE_CONFORMATION_HEADER,EQUIPMENTDECONSTRUCT_CONFIRMATION_HEADER,MODULESALE_CONFORMATION_HEADER,ELEMENTTYPE_GUN,ELEMENTTYPE_TURRET,ELEMENTTYPE_ENGINE,ELEMENTTYPE_CHASSIS,ELEMENTTYPE_RADIOSTATION,SELLSHELLCONFIRMATION_SUBMIT,BUYINSTALLCONFIRMATION_NOTENOUGHWEIGHT,EQUIPMENTDESTROY_DEMOUNTOPTIONS_GOLDORDEMOKIT,EQUIPMENTDESTROY_DEMOUNTOPTIONS_BONDS,DAILYQUESTS_DIALOGINFOCONFIRMREROLL_TITLE,DAILYQUESTS_DIALOGINFOCONFIRMREROLL_MESSAGE,DAILYQUESTS_DIALOGINFOCONFIRMREROLL_SUBMIT,DAILYQUESTS_DIALOGCONFIRMREROLL_TIMELIMITMSGHOURS,DAILYQUESTS_DIALOGCONFIRMREROLL_TIMELIMITMSGHOURSMINS,DAILYQUESTS_DIALOGCONFIRMREROLL_TIMELIMITMSGMINS,DAILYQUESTS_DIALOGWARNINGCONFIRMREROLL_TITLE,DAILYQUESTS_DIALOGWARNINGCONFIRMREROLL_MESSAGE,DAILYQUESTS_DIALOGWARNINGCONFIRMREROLL_SUBMIT,DAILYQUESTS_DIALOGWARNINGCONFIRMREROLL_WARNING,SQUAD_EVENTDISABLED_TITLE,SQUAD_EVENTDISABLED_MESSAGE,SQUAD_EVENTDISABLED_CANCEL,DEDICATION_HEADLINE,DEDICATION_SUB_HEADLINE,BATTLEROYALE_PREBATTLE_TITLE,BATTLEROYALE_PREBATTLE_MESSAGE,BATTLEROYALE_PREBATTLE_SUBMIT,BATTLEROYALE_PREBATTLE_CANCEL,ACCOUNTCOMPLETION_SUBMIT,ACCOUNTCOMPLETION_CANCEL,ACCOUNTCOMPLETION_WARNINGSERVERUNAVAILABLETIMED,ACCOUNTCOMPLETION_WARNINGSERVERUNAVAILABLE,ACCOUNTCOMPLETION_WARNINGSOMETHINGWENTWRONG,ACCOUNTCOMPLETION_ERRORISWRONG,ACCOUNTCOMPLETION_EMAILFORBIDDEN,ACCOUNTCOMPLETION_EMAILPROVIDERBANNED,ACCOUNTCOMPLETION_EMAILRESTRICTEDBYCOUNTRYHEADER,ACCOUNTCOMPLETION_EMAILRESTRICTEDBYCOUNTRY,ACCOUNTCOMPLETION_EMAILALREADYTAKEN,ACCOUNTCOMPLETION_LOGINALREADYTAKEN,ACCOUNTCOMPLETION_ACCOUNTALREADYHASEMAIL,ACCOUNTCOMPLETION_EMAILISTOOSHORT,ACCOUNTCOMPLETION_EMAILISTOOLONG,ACCOUNTCOMPLETION_TOOMANYREQUESTS,ACCOUNTCOMPLETION_REWARDSTITLE,ACCOUNTCOMPLETION_REGISTRATIONREWARDSTITLE,ACCOUNTCOMPLETION_EMAIL_FIELDNAME,ACCOUNTCOMPLETION_EMAIL_FIELDPLACEHOLDER,ACCOUNTCOMPLETION_PASSWORD_FIELDNAME,ACCOUNTCOMPLETION_EMAIL_TITLE,ACCOUNTCOMPLETION_EMAIL_SUBTITLE,ACCOUNTCOMPLETION_EMAIL_FULLACCESS_TITLE,ACCOUNTCOMPLETION_EMAIL_FULLACCESS_SUBTITLE,ACCOUNTCOMPLETION_ACTIVATE_TITLE,ACCOUNTCOMPLETION_ACTIVATE_TEXT,ACCOUNTCOMPLETION_ACTIVATE_KEYERROR,ACCOUNTCOMPLETION_ACTIVATE_MISSPELL,ACCOUNTCOMPLETION_ACTIVATE_TOOMANYINCORRECTTRIES,ACCOUNTCOMPLETION_ACTIVATE_KEYDIED,ACCOUNTCOMPLETION_ACTIVATE_ENTERCREDENTIALSAGAIN,ACCOUNTCOMPLETION_ACTIVATE_BUTTON,ACCOUNTCOMPLETION_ACTIVATE_COUNDOWNTEXT,ACCOUNTCOMPLETION_ALREADYLINKED_TITLE,ACCOUNTCOMPLETION_ALREADYLINKED_SUBTITLE,ACCOUNTCOMPLETION_EMAILOVERLAY_ERROR_CODEALREADYSENT,ACCOUNTCOMPLETION_EMAILOVERLAY_ALREADYCONFIRMED_TITLE,ACCOUNTCOMPLETION_EMAILOVERLAY_ALREADYCONFIRMED_SUBTITLE,ACCOUNTCOMPLETION_CREDENTIALS_TITLE,ACCOUNTCOMPLETION_CREDENTIALS_SUBTITLE,ACCOUNTCOMPLETION_BADPASSWORD,ACCOUNTCOMPLETION_PASSWORDISTOOSHORT,ACCOUNTCOMPLETION_PASSWORDISTOOLONG,ACCOUNTCOMPLETION_PASSWORDISWEAK,ACCOUNTCOMPLETION_DEMOCOMPLETE_TITLE,ACCOUNTCOMPLETION_DEMOCOMPLETE_DESCRIPTION,ACCOUNTCOMPLETION_DEMOCOMPLETE_BUTTON,ACCOUNTCOMPLETION_ERROR_NOTAVAILABLE,ACCOUNTCOMPLETION_ERROR_BUTTON_TRYAGAIN,ACCOUNTCOMPLETION_ERROR_TRYAGAINTIMERMESSAGE,ACCOUNTCOMPLETION_ERROR_BUTTON_CONTINUE,ACCOUNTCOMPLETION_ERROR_RENAMINGNOTAVAILABLE,ACCOUNTCOMPLETION_WAITING_CONFIRMATION,ACCOUNTCOMPLETION_WAITING_QUEUE,ACCOUNTCOMPLETION_CONTACTSUPPORT,ACCOUNTCOMPLETION_ERROR_SOMETHINGWENTWRONG,ACCOUNTCOMPLETION_ERROR_RENAMINGMALFUNCTION,ACCOUNTCOMPLETION_SPA_PASSWORDISWEAK,ACCOUNTCOMPLETION_LEAVESQUAD_TITLE,ACCOUNTCOMPLETION_LEAVESQUAD_MESSAGE,ACCOUNTCOMPLETION_LEAVESQUAD_SUBMIT,ACCOUNTCOMPLETION_LEAVESQUAD_CANCEL,ACCOUNTCOMPLETION_RENAMING_SKIP_TITLE,ACCOUNTCOMPLETION_RENAMING_SKIP_MESSAGE,ACCOUNTCOMPLETION_RENAMING_SKIP_SUBMIT,ACCOUNTCOMPLETION_RENAMING_SKIP_CANCEL,ACCOUNTCOMPLETION_RENAMINGOVERLAY_TITLE,ACCOUNTCOMPLETION_RENAMINGOVERLAY_SUBTITLE,ACCOUNTCOMPLETION_RENAMINGOVERLAY_BUTTON,ACCOUNTCOMPLETION_RENAMINGOVERLAY_FIELDNAME,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMEFORBIDDEN,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMEFORBIDDENPICKVARIANT,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMETAKEN,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMETAKENPICKVARIANT,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMEINVALID,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMETOOSHORT,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMETOOLONG,ACCOUNTCOMPLETION_RENAMINGCOMPLETEOVERLAY_TITLE,ACCOUNTCOMPLETION_RENAMINGCOMPLETEOVERLAY_SUBTITLE,DIALOGTEMPLATES_CONFIRM,DIALOGTEMPLATES_CANCEL,DIALOGTEMPLATES_OK,BATTLEROYALE_CONFIRMRENT_TESTDRIVE_BUTTON,BATTLEROYALE_CONFIRMRENT_TESTDRIVE_TITLE,BATTLEROYALE_CONFIRMRENT_TESTDRIVE_DESCRIPTION,BATTLEROYALE_CONFIRMRENT_RENT_BUTTON,BATTLEROYALE_CONFIRMRENT_RENT_TITLE,BATTLEROYALE_CONFIRMRENT_RENT_DESCRIPTION,BATTLEROYALE_CONFIRMRENT_RENTPRICE,BATTLEROYALE_CONFIRMRENT_EVENTENDSSOON,DROPSKILL_FULLSCREEN_TITLE,DROPSKILL_FULLSCREEN_DESCRIPTION,DROPSKILL_FULLSCREEN_OK,DROPSKILL_FULLSCREEN_COSTFREE,FREESKILLSINFO_TITLE,FREESKILLSINFO_MESSAGE,FREESKILLSINFO_SUBMIT,FREESKILLSLEARNING_TITLE_LEARNING,FREESKILLSLEARNING_TITLE_RELEARNING,FREESKILLSLEARNING_MESSAGE,COMP7_DESERTER_TITLE,COMP7_DESERTER_MSGTITLE,COMP7_DESERTER_MESSAGE,COMP7_DESERTER_SUBMIT,COMP7_DESERTER_CANCEL,COMP7_PUNISHMENTWINDOW_TITLE,COMP7_PUNISHMENTWINDOW_MSGTITLE,COMP7_PUNISHMENTWINDOW_MESSAGE,COMP7_PUNISHMENTWINDOW_CANCEL,EQUIPMENTUPGRADE_CONFIRMBUTTON,EQUIPMENTUPGRADE_GETMORECURRENCYBUTTON,EQUIPMENTUPGRADE_CANCELBUTTON,EQUIPMENTDECONSTRUCTION_CONFIRMBUTTON,EQUIPMENTDECONSTRUCTION_CONFIRMANDUPGRADEBUTTON,EQUIPMENTDECONSTRUCTION_CANCELBUTTON];
+      public static const ALL_ENUM:Array = [INTERVIEWQUIT_TITLE,INTERVIEWQUIT_MESSAGE,INTERVIEWQUIT_SUBMIT,INTERVIEWQUIT_CANCEL,LEGALINFOWINDOW_TITLE,COMMON_SUBMIT,COMMON_CANCEL,COMMON_CONFIRM_SUBMIT,COMMON_CONFIRM_CANCEL,COMMON_ERROR_CANCEL,COMMON_COST,DISCONNECT_TITLE,DISCONNECT_MESSAGE,DISCONNECT_SUBMIT,DISCONNECT_CANCEL,QUIT_TITLE,QUIT_SUBMIT,QUIT_CANCEL,QUITBATTLE_TITLE,QUITBATTLE_SUBMIT,QUITBATTLE_CANCEL,QUITBATTLE_LEAVER_TITLE,QUITBATTLE_LEAVER_SUBMIT,QUITBATTLE_LEAVER_CANCEL,QUITBATTLE_LEAVER_DESCRIPTIONALIVE,QUITBATTLE_IGR_LEAVER_TITLE,QUITBATTLE_IGR_LEAVER_SUBMIT,QUITBATTLE_IGR_LEAVER_CANCEL,QUITBATTLE_IGR_LEAVER_DESCRIPTIONALIVE,QUITBATTLE_REPLAY_TITLE,QUITBATTLE_REPLAY_SUBMIT,QUITBATTLE_REPLAY_CANCEL,QUITPREBATTLE_TITLE,QUITPREBATTLE_MESSAGE,QUITPREBATTLE_SUBMIT,QUITPREBATTLE_CANCEL,GRAPHICSPRESETRESTARTCONFIRMATION_TITLE,GRAPHICSPRESETRESTARTCONFIRMATION_MESSAGE,GRAPHICSPRESETRESTARTCONFIRMATION_SUBMIT,GRAPHICSPRESETRESTARTCONFIRMATION_DELAY,GRAPHICSPRESETRESTARTCONFIRMATION_CANCEL,GRAPHICSPRESETNOTINSTALLED_TITLE,GRAPHICSPRESETNOTINSTALLED_MESSAGE,GRAPHICSPRESETNOTINSTALLED_CANCEL,GRAPHICSPRESETDELAYEDCONFIRMATION_TITLE,GRAPHICSPRESETDELAYEDCONFIRMATION_MESSAGE,GRAPHICSPRESETDELAYEDCONFIRMATION_SUBMIT,GRAPHICSPRESETDELAYEDCONFIRMATION_CANCEL,NEXTBATTLEOPTIONCONFIRMATION_TITLE,NEXTBATTLEOPTIONCONFIRMATION_MESSAGE,NEXTBATTLEOPTIONCONFIRMATION_SUBMIT,NEXTBATTLEOPTIONCONFIRMATION_CANCEL,GRAPHICSPRESETAUTODETECTCONFIRMATION_TITLE,GRAPHICSPRESETAUTODETECTCONFIRMATION_MESSAGE,GRAPHICSPRESETAUTODETECTCONFIRMATION_SUBMIT,GRAPHICSPRESETAUTODETECTCONFIRMATION_CANCEL,GRAPHICSPRESETNOTPOSSIBLE_TITLE,GRAPHICSPRESETNOTPOSSIBLE_MESSAGE,GRAPHICSPRESETNOTPOSSIBLE_CANCEL,GRAPHICSCHANGECONFIRMATION_TITLE,GRAPHICSCHANGECONFIRMATION_MESSAGE,GRAPHICSCHANGECONFIRMATION_SUBMIT,GRAPHICSCHANGECONFIRMATION_CANCEL,WATERQUALITYNOTPOSSIBLE_TITLE,WATERQUALITYNOTPOSSIBLE_MESSAGE,WATERQUALITYNOTPOSSIBLE_CANCEL,PREMIUMBUYCONFIRMATION_TITLE,PREMIUMBUYCONFIRMATION_MESSAGE,PREMIUMBUYCONFIRMATION_SUBMIT,PREMIUMBUYCONFIRMATION_CANCEL,PREMIUMCONTINUECONFIRMATION_TITLE,PREMIUMCONTINUECONFIRMATION_MESSAGE,PREMIUMCONTINUECONFIRMATION_SUBMIT,PREMIUMCONTINUECONFIRMATION_CANCEL,BUYPREMWITHOUTBENEFITSCONFIRMATION_TITLE,BUYPREMWITHOUTBENEFITSCONFIRMATION_MESSAGE,BUYPREMWITHOUTBENEFITSCONFIRMATION_SUBMIT,BUYPREMWITHOUTBENEFITSCONFIRMATION_CANCEL,BUYINSTALLCONFIRMATION_TITLE,BUYINSTALLCONFIRMATION_MESSAGECOMBINE,BUYINSTALLCONFIRMATION_MESSAGE,BUYINSTALLCONFIRMATION_CONFLICTEDMESSAGE_PREFIX,BUYINSTALLCONFIRMATION_CONFLICTEDMESSAGE_HIGHLIGHTENTEXT,BUYINSTALLCONFIRMATION_CONFLICTEDMESSAGE_POSTFIX,BUYINSTALLCONFIRMATION_SUBMIT,BUYINSTALLCONFIRMATION_CANCEL,REMOVECONFIRMATIONNOTREMOVABLE_SUBMIT,SELLCONFIRMATION_SUBMIT,SELLCONFIRMATION_CANCEL,SELLMODULECONFIRMATION_TITLE,SELLMODULECONFIRMATION_SUBMIT,SELLMODULECONFIRMATION_CANCEL,CONFIRMMODULEDIALOG_PRICELABEL,CONFIRMMODULEDIALOG_COUNTLABEL,CONFIRMMODULEDIALOG_TOTALLABEL,CONFIRMMODULEDIALOG_COUNTLABEL1,CONFIRMMODULEDIALOG_PRICELABEL1,CONFIRMMODULEDIALOG_SHOP_TOTALLABEL1,CONFIRMMODULEDIALOG_INVENTORY_TOTALLABEL1,CONFIRMMODULEDIALOG_REZULTLABEL1,RENTCONFIRMATION_TITLE,RENTCONFIRMATION_MESSAGE,RENTCONFIRMATION_SUBMIT,RENTCONFIRMATION_CANCEL,RENTCONFIRMATION_EVENT,RENTCONFIRMATIONRENEW_TITLE,RENTCONFIRMATIONRENEW_MESSAGE,RENTCONFIRMATIONRENEW_SUBMIT,RENTCONFIRMATIONRENEW_CANCEL,BUYCONFIRMATION_TITLE,BUYCONFIRMATION_MESSAGECOMBINE,BUYCONFIRMATION_MESSAGE,BUYCONFIRMATION_SUBMIT,BUYCONFIRMATION_CANCEL,IDLECREWBONUS_TITLE,IDLECREWBONUS_MESSAGE_REMOVETYPE,IDLECREWBONUS_MESSAGE_REMOVENAME,IDLECREWBONUS_MESSAGE_CREWWARNING,IDLECREWBONUS_MESSAGE_CREWINCOMPLETE,IDLECREWBONUS_MESSAGE_CREWUNSUITABLE,IDLECREWBONUS_SUBMIT,IDLECREWBONUS_CANCEL,WOTPLUSRENTAL_TITLE,WOTPLUSRENTAL_DESCRIPTION,WOTPLUSRENTAL_SUBMIT,WOTPLUSRENTAL_CANCEL,DISCONNECTED_TITLE,DISCONNECTED_MESSAGE,DISCONNECTED_MESSAGEKICK,DISCONNECTED_MESSAGEBAN,DISCONNECTED_MESSAGEBANPERIOD,DISCONNECTED_REASON,DISCONNECTED_CANCEL,LOWAMMO_TITLE,LOWAMMO_MESSAGE,LOWAMMO_SUBMIT,LOWAMMO_CANCEL,LOWAMMOAUTOLOAD_TITLE,LOWAMMOAUTOLOAD_MESSAGE,LOWALTERNATIVEAMMOAUTOLOAD_TITLE,LOWALTERNATIVEAMMOAUTOLOAD_MESSAGE,LOWAMMOAUTOLOAD_SUBMIT,LOWAMMOAUTOLOAD_CANCEL,BUYSLOTCONFIRMATION_TITLE,BUYSLOTCONFIRMATION_MESSAGE,BUYSLOTCONFIRMATION_SUBMIT,BUYSLOTCONFIRMATION_CANCEL,FREESLOTCONFIRMATION_TITLE,FREESLOTCONFIRMATION_MESSAGE,FREESLOTCONFIRMATION_SUBMIT,FREESLOTCONFIRMATION_CANCEL,REPLACEPASSPORT_UNIQUE_TITLE,REPLACEPASSPORT_UNIQUE_MESSAGE,REPLACEPASSPORT_UNIQUE_SUBMIT,REPLACEPASSPORT_UNIQUE_CANCEL,REPLACEPASSPORTCONFIRMATION_TITLE,REPLACEPASSPORTCONFIRMATION_MESSAGE,REPLACEPASSPORTCONFIRMATION_SUBMIT,REPLACEPASSPORTCONFIRMATION_CANCEL,BUYSLOT_HANGARSLOT_HEADER,BUYSLOTSHOPCONFIRMATION_TITLE,BUYSLOTSHOPCONFIRMATION_MESSAGECOMBINE,BUYSLOTSHOPCONFIRMATION_SUBMIT,BUYSLOTSHOPCONFIRMATION_CANCEL,UPGRADETANKMANSCOOLCONFIRMATION_TITLE,UPGRADETANKMANSCOOLCONFIRMATION_MESSAGECOMBINE,UPGRADETANKMANSCOOLCONFIRMATION_SUBMIT,UPGRADETANKMANSCOOLCONFIRMATION_CANCEL,UPGRADETANKMANACADEMYCONFIRMATION_TITLE,UPGRADETANKMANACADEMYCONFIRMATION_MESSAGECOMBINE,UPGRADETANKMANACADEMYCONFIRMATION_SUBMIT,UPGRADETANKMANACADEMYCONFIRMATION_CANCEL,UPGRADETANKMANSCOOLNOTENOUGHMONEY_TITLE,UPGRADETANKMANSCOOLNOTENOUGHMONEY_MESSAGE,UPGRADETANKMANSCOOLNOTENOUGHMONEY_SUBMIT,UPGRADETANKMANSCOOLNOTENOUGHMONEY_CANCEL,UPGRADETANKMANACADEMYNOTENOUGHMONEY_TITLE,UPGRADETANKMANACADEMYNOTENOUGHMONEY_MESSAGE,UPGRADETANKMANACADEMYNOTENOUGHMONEY_SUBMIT,UPGRADETANKMANACADEMYNOTENOUGHMONEY_CANCEL,RECRUITDIALOG_TITLE,RECRUITDIALOG_NAME_TITLE,RECRUITWINDOW_NATION,RECRUITWINDOW_SPECIALIZATION,RECRUITWINDOW_VEHICLECLASS,RECRUITWINDOW_VEHICLETYPE,RECRUITWINDOW_MENUEMPTYROW,RECRUITWINDOW_SUBMIT,RECRUITWINDOW_CANCEL,BUYSLOTNOTENOUGH_CREDITS_TITLE,BUYSLOTNOTENOUGH_CREDITS_MESSAGE,BUYSLOTNOTENOUGH_CREDITS_SUBMIT,BUYSLOTNOTENOUGH_CREDITS_CANCEL,BUYSLOTNOTENOUGH_GOLD_TITLE,BUYSLOTNOTENOUGH_GOLD_MESSAGE,BUYSLOTNOTENOUGH_GOLD_SUBMIT,BUYSLOTNOTENOUGH_GOLD_CANCEL,BUYVEHICLEWINDOW_TITLE,BUYVEHICLEWINDOW_TRADEIN_TITLE,BUYVEHICLEWINDOW_TRADEIN_PRICELABEL,BUYVEHICLEWINDOW_PRICELABEL,BUYVEHICLEWINDOW_SUBMITBTN,BUYVEHICLEWINDOW_TRADEIN_SUBMITBTN,BUYVEHICLEWINDOW_CANCELBTN,BUYVEHICLEWINDOW_TRADEIN_CANCELBTN,BUYVEHICLEWINDOW_WARNING,BUYVEHICLEWINDOW_TRADEIN_WARNING,BUYVEHICLEWINDOW_FREERENTSLOT,BUYVEHICLEWINDOW_FULLAMMO,BUYVEHICLEWINDOW_TANKMENCHECKBOX,BUYVEHICLEWINDOW_TRADEIN_TANKMENCHECKBOX,BUYVEHICLEWINDOW_TANKMENLABEL,BUYVEHICLEWINDOW_TANKMENTOTALLABEL,BUYVEHICLEWINDOW_SLOTCHECKBOX,BUYVEHICLEWINDOW_AMMOCHECKBOX,BUYVEHICLEWINDOW_CREWINVEHICLE,BUYVEHICLEWINDOW_TOTALLABEL,BUYVEHICLEWINDOW_TABS_BUY,BUYVEHICLEWINDOW_TABS_TRADE,BUYVEHICLEWINDOW_TRADEIN_STUDYLABEL,BUYVEHICLEWINDOW_TRADEIN_TOTALLABEL,BUYVEHICLEWINDOW_TRADEIN_CONFIRMATION_TITLE,BUYVEHICLEWINDOW_TRADEIN_CONFIRMATION_QUESTION,BUYVEHICLEWINDOW_TRADEIN_CONFIRMATION_ERRORMESSAGE,BUYVEHICLEWINDOW_TRADEIN_INFO_NOVEHICLES,BUYVEHICLEWINDOW_TRADEIN_WARNING_CHOOSE,BUYVEHICLEWINDOW_TRADEIN_INFO_SAVING,BUYVEHICLEWINDOW_TRADEIN_VEHICLE_CHOOSE,TRADEINPOPOVER_DESCR,TRADEINPOPOVER_TITLE,TRADEINPOPOVER_SORTING_NATION_HEADER,TRADEINPOPOVER_SORTING_NATION_BODY,TRADEINPOPOVER_SORTING_VEHTYPE_HEADER,TRADEINPOPOVER_SORTING_VEHTYPE_BODY,TRADEINPOPOVER_SORTING_VEHLVL_HEADER,TRADEINPOPOVER_SORTING_VEHLVL_BODY,TRADEINPOPOVER_SORTING_VEHNAME_HEADER,TRADEINPOPOVER_SORTING_VEHNAME_BODY,TRADEINPOPOVER_SORTING_SAVING_FORMATTED,TRADEINPOPOVER_SORTING_SAVING_HEADER,TRADEINPOPOVER_SORTING_SAVING_BODY,TRADEOFFWIDGET_SELECTVEHICLE,RESTOREVEHICLEDIALOG_TITLE,RESTOREVEHICLEDIALOG_PRICELABEL,RESTOREVEHICLEDIALOG_TANKMENCHECKBOX,RESTOREVEHICLEDIALOG_SUBMITBTN,RESTOREVEHICLEDIALOG_CANCELBTN,RESTOREVEHICLEDIALOG_WARNING,BARRACKSEXPAND_TITLE,BARRACKSEXPAND_MESSAGE,BARRACKSEXPAND_SUBMIT,BARRACKSEXPAND_CANCEL,BARRACKSEXPANDNOTENOUGHMONEY_TITLE,BARRACKSEXPANDNOTENOUGHMONEY_MESSAGE,BARRACKSEXPANDNOTENOUGHMONEY_SUBMIT,BARRACKSEXPANDNOTENOUGHMONEY_CANCEL,EULA_P1,EULA_P2,CONFIRMUNLOCK_TITLE,CONFIRMUNLOCK_ITEM_MESSAGE,CONFIRMUNLOCK_VEHICLE_MESSAGE,CONFIRMUNLOCK_SUBMIT,CONFIRMUNLOCK_CANCEL,CONFIRMBUY_TITLE,CONFIRMBUYANDINSTALL_TITLE,CONFIRMBUYANDINSTALL_MESSAGE,CONFIRMBUYANDINSTALL_SELLMESSAGE,CONFIRMBUYANDINSTALL_DEPOTMESSAGE,CONFIRMBUYANDINSTALL_SOLDMODULEINFO_DESCRIPTION,CONFIRMBUYANDINSTALL_SOLDMODULEINFO_COMPATIBLETANKS,CONFIRMBUYANDINSTALL_INSUFFICIENTFUNDSTOOLTIP_HEADER,CONFIRMBUYANDINSTALL_INSUFFICIENTFUNDSTOOLTIP_BODY,CONFIRMBUYANDINSTALL_INSUFFICIENTFUNDSTOOLTIP_AMOUNT,CONFIRMBUYANDINSTALL_SUBMIT,CONFIRMBUYANDINSTALL_CANCEL,POSTMORTEM_TITLE,POSTMORTEM_MESSAGE,POSTMORTEM_SUBMIT,POSTMORTEM_CANCEL,DISMISSEDBUFFEROVERFLAW_TITLE,DISMISSEDBUFFEROVERFLAW_MESSAGE,DISMISSEDBUFFEROVERFLAW_SUBMIT,DISMISSEDBUFFEROVERFLAW_CANCEL,DISMISSEDBUFFEROVERFLAWMULTIPLE_TITLE,DISMISSEDBUFFEROVERFLAWMULTIPLE_MESSAGE,DISMISSEDBUFFEROVERFLAWMULTIPLE_SUBMIT,DISMISSEDBUFFEROVERFLAWMULTIPLE_CANCEL,DROPSKILL_TITLE,DROPSKILL_MESSAGE,DROPSKILL_SUBMIT,DROPSKILL_CANCEL,SQUADPREMIUMNEEDED_TITLE,SQUADPREMIUMNEEDED_MESSAGE,SQUADPREMIUMNEEDED_CANCEL,SQUADHAVENOTREADYPLAYERS_TITLE,SQUADHAVENOTREADYPLAYERS_MESSAGE,SQUADHAVENOTREADYPLAYERS_SUBMIT,SQUADHAVENOTREADYPLAYERS_CANCEL,SQUADHAVENOTREADYPLAYERSAUTO_TITLE,SQUADHAVENOTREADYPLAYERSAUTO_MESSAGE,SQUADHAVENOTREADYPLAYERSAUTO_SUBMIT,SQUADHAVENOTREADYPLAYERSAUTO_CANCEL,SQUADHAVENOTREADYPLAYERAUTO_TITLE,SQUADHAVENOTREADYPLAYERAUTO_MESSAGE,SQUADHAVENOTREADYPLAYERAUTO_SUBMIT,SQUADHAVENOTREADYPLAYERAUTO_CANCEL,SQUADHAVENOTREADYPLAYER_TITLE,SQUADHAVENOTREADYPLAYER_MESSAGE,SQUADHAVENOTREADYPLAYER_SUBMIT,SQUADHAVENOTREADYPLAYER_CANCEL,SQUADHAVENOPLAYERS_TITLE,SQUADHAVENOPLAYERS_MESSAGE,SQUADHAVENOPLAYERS_SUBMIT,SQUADHAVENOPLAYERS_CANCEL,SQUADHAVENOPLAYERSAUTO_TITLE,SQUADHAVENOPLAYERSAUTO_MESSAGE,SQUADHAVENOPLAYERSAUTO_SUBMIT,SQUADHAVENOPLAYERSAUTO_CANCEL,SQUADHAVENOPLAYERAUTO_TITLE,SQUADHAVENOPLAYERAUTO_MESSAGE,SQUADHAVENOPLAYERAUTO_SUBMIT,SQUADHAVENOPLAYERAUTO_CANCEL,SQUADHAVEPLAYERSINBATTLE_TITLE,SQUADHAVEPLAYERSINBATTLE_MESSAGE,SQUADHAVEPLAYERSINBATTLE_SUBMIT,LEFTPREBATTLEANDACCEPTINVITE_TITLE,LEFTPREBATTLEANDACCEPTINVITE_MESSAGE,LEFTPREBATTLEANDACCEPTINVITE_SUBMIT,LEFTPREBATTLEANDACCEPTINVITE_CANCEL,LEFTTRAININGANDACCEPTINVITE_TITLE,LEFTTRAININGANDACCEPTINVITE_MESSAGE,LEFTTRAININGANDACCEPTINVITE_SUBMIT,LEFTTRAININGANDACCEPTINVITE_CANCEL,LEFTSQUADANDACCEPTINVITE_TITLE,LEFTSQUADANDACCEPTINVITE_MESSAGE,LEFTSQUADANDACCEPTINVITE_SUBMIT,LEFTSQUADANDACCEPTINVITE_CANCEL,GATHERINGXPFORM_TITLE,GATHERINGXPFORM_BEFOREOPERATION,GATHERINGXPFORM_CURRENTAMOUNT,GATHERINGXPFORM_AFTEROPERATION,GATHERINGXPFORM_HEADERBUTTONS_VEHICLE,GATHERINGXPFORM_HEADERBUTTONS_XP,GATHERINGXPFORM_HEADERBUTTONS_CREW,GATHERINGXPFORM_TOCHANGELABEL,GATHERINGXPFORM_TOTALLABEL,GATHERINGXPFORM_SELECTALLLABEL,GATHERINGXPFORM_TOTALXP,GATHERINGXPFORM_SORTBY_SELECTION_HEADER,GATHERINGXPFORM_SORTBY_SELECTION_BODY,GATHERINGXPFORM_SORTBY_VEHICLE_HEADER,GATHERINGXPFORM_SORTBY_VEHICLE_BODY,GATHERINGXPFORM_SORTBY_XP_HEADER,GATHERINGXPFORM_SORTBY_XP_BODY,EXCHANGEXPWINDOW_ERROR_NOELITEVEHICLEINHANGAR,EXCHANGEXPWINDOW_ERROR_NOVEHICLESWITHXP,GATHERINGXPFORM_TOOLTIPS_CHECKBOXCREWSELECTED,GATHERINGXPFORM_TOOLTIPS_CHECKBOXCREWUNSELECTED,GATHERINGXPFORM_BTNSUBMIT,GATHERINGXPFORM_BTNCANCEL,EXCHANGEXPCONFIRMATION_TITLE,EXCHANGEXPCONFIRMATION_MESSAGE,EXCHANGEXPCONFIRMATION_AVAILABLE_FORFREE_MESSAGE,EXCHANGEXPCONFIRMATION_SUBMIT,EXCHANGEXPCONFIRMATION_CANCEL,EXCHANGEGOLDCONFIRMATION_TITLE,EXCHANGEGOLDCONFIRMATION_MESSAGE,EXCHANGEGOLDCONFIRMATION_SUBMIT,EXCHANGEGOLDCONFIRMATION_CANCEL,CONTROLSWRONGNOTIFICATION_TITLE,CONTROLSWRONGNOTIFICATION_MESSAGE,CONTROLSWRONGNOTIFICATION_SUBMIT,CONTROLSWRONGNOTIFICATION_CANCEL,MINIMAPALPHANOTIFICATION_TITLE,MINIMAPALPHANOTIFICATION_MESSAGE,MINIMAPALPHANOTIFICATION_MESSAGE_ALERT,MINIMAPALPHANOTIFICATION_SUBMIT,MINIMAPALPHANOTIFICATION_CANCEL,LIMITEDUIOFFNOTIFICATION_TITLE,LIMITEDUIOFFNOTIFICATION_MESSAGE,LIMITEDUIOFFNOTIFICATION_MESSAGE_ALERT,LIMITEDUIOFFNOTIFICATION_SUBMIT,LIMITEDUIOFFNOTIFICATION_CANCEL,SOUNDMODEINVALID_TITLE,SOUNDMODEINVALID_MESSAGE,SOUNDMODEINVALID_SUBMIT,SOUNDMODEINVALID_CANCEL,CONTROLSWRONGNOTIFICATIONSOUNDMODEINVALID_TITLE,CONTROLSWRONGNOTIFICATIONSOUNDMODEINVALID_MESSAGE,CONTROLSWRONGNOTIFICATIONSOUNDMODEINVALID_SUBMIT,CONTROLSWRONGNOTIFICATIONSOUNDMODEINVALID_CANCEL,EULA_TITLE,EULA_LABELS_AGREE,EULA_BUTTONS_APPLY,HAVENOEMPTYSLOTS_TITLE,HAVENOEMPTYSLOTS_MESSAGE,HAVENOEMPTYSLOTS_SUBMIT,HAVENOEMPTYSLOTS_CANCEL,MONEYTRANSFER_TITLE,MONEYTRANSFER_LABELTOTALPRICE,MONEYTRANSFER_LABELTO,MONEYTRANSFER_LABELGOLD,MONEYTRANSFER_NOT_A_CLAN,MONEYTRANSFER_LABELFEEPRICE,MONEYTRANSFER_LABELNORMAL,MONEYTRANSFER_LABELNORMALCREDITS,MONEYTRANSFER_LABELNORMALGOLD,MONEYTRANSFER_LABELCLAN,MONEYTRANSFER_LABELCLANCREDITS,MONEYTRANSFER_LABELCLANGOLD,MONEYTRANSFER_SUBMITBTN,MONEYTRANSFER_CANCELBTN,MONEYTRANSFERCONFIRMATION_TITLE,MONEYTRANSFERCONFIRMATION_MESSAGE,MONEYTRANSFERCONFIRMATION_SUBMIT,MONEYTRANSFERCONFIRMATION_CANCEL,MONEYTRANSFERRESTRICTION_TITLE,MONEYTRANSFERRESTRICTION_MESSAGE,MONEYTRANSFERRESTRICTION_MESSAGE_EXPIRY,MONEYTRANSFERRESTRICTION_SUBMIT,MONEYTRANSFERRESTRICTION_CANCEL,MONEYTRANSFERLINK_SET_PASSWORD,FINANCE_DIALOG_HEADER,FINANCE_DIALOG_SUBMITBTN,FINANCE_DIALOG_CANCELBTN,FINANCE_DIALOG_RESULTS_DEFAULTMESSAGE,FINANCE_DIALOG_RESULTS_VALID,FINANCE_DIALOG_RESULTS_INVALID,FINANCE_DIALOG_RESULTS_LIMIT,FINANCE_DIALOG_RESULTS_WRONG,FREEVEHICLELEFTLIMIT_TITLE,FREEVEHICLELEFTLIMIT_MESSAGE,FREEVEHICLELEFTLIMIT_CANCEL,FREEVEHICLELEFTLIMIT_SUBMIT,VOICECHATINITFAILED_TITLE,VOICECHATINITFAILED_MESSAGE,VOICECHATINITFAILED_CANCEL,VOICECHATINITSUCCEDED_TITLE,VOICECHATINITSUCCEDED_MESSAGE,VOICECHATINITSUCCEDED_CANCEL,INGAMEBROWSER_TEXTURELOADINGFAILED_TITLE,INGAMEBROWSER_TEXTURELOADINGFAILED_MESSAGE,MESSENGER_USERINFOHIDDEN_TITLE,MESSENGER_USERINFOHIDDEN_MESSAGE,MESSENGER_USERINFOHIDDEN_SUBMIT,MESSENGER_USERINFOHIDDEN_CANCEL,MESSENGER_USERINFONOTAVAILABLE_TITLE,MESSENGER_USERINFONOTAVAILABLE_MESSAGE,MESSENGER_USERINFONOTAVAILABLE_SUBMIT,MESSENGER_USERINFONOTAVAILABLE_CANCEL,VEHICLEREMOVEDIALOG_TITLE,VEHICLESELLDIALOG_EXPANDBTNLABEL,VEHICLESELLDIALOG_TITLE,VEHICLESELLDIALOG_MESSAGE,VEHICLESELLDIALOG_MESSAGE_MULTINATIONAL,VEHICLESELLDIALOG_VEHICLETYPE_LIGHTTANK,VEHICLESELLDIALOG_VEHICLETYPE_MEDIUMTANK,VEHICLESELLDIALOG_VEHICLETYPE_HEAVYTANK,VEHICLESELLDIALOG_VEHICLETYPE_SPG,VEHICLESELLDIALOG_VEHICLETYPE_AT_SPG,VEHICLESELLDIALOG_VEHICLE_LEVEL,VEHICLESELLDIALOG_VEHICLE_ROLE,VEHICLESELLDIALOG_VEHICLE_EMPTYSELLPRICE,VEHICLESELLDIALOG_PROFFIT,VEHICLESELLDIALOG_LOSS,VEHICLESELLDIALOG_CREW_LABEL,VEHICLESELLDIALOG_OPTIONALDEVICE,VEHICLESELLDIALOG_EQUIPMENT,VEHICLESELLDIALOG_BATTLEBOSTER,VEHICLESELLDIALOG_CUSTOMIZATION,VEHICLESELLDIALOG_AMMO_LABEL,VEHICLESELLDIALOG_COMMONRESULT,VEHICLESELLDIALOG_INVENTORY,VEHICLESELLDIALOG_UNLOAD,VEHICLESELLDIALOG_DECONSTRUCT,VEHICLESELLDIALOG_NOTINSTALLED_MODULES,VEHICLESELLDIALOG_COUNT,VEHICLESELLDIALOG_REMOVE,VEHICLESELLDIALOG_SUBMIT,VEHICLESELLDIALOG_CANCEL,VEHICLESELLDIALOG_VEHICLE_ELITE,VEHICLESELLDIALOG_CREW_UNLOAD,VEHICLESELLDIALOG_CREW_DISSMISS,VEHICLESELLDIALOG_CTRLQUESTION_HEADER,VEHICLESELLDIALOG_CTRLQUESTION_QUESTION,VEHICLESELLDIALOG_CTRLQUESTION_ERRORMESSAGE,VEHICLESELLDIALOG_PRICE_SIGN_ADD,VEHICLESELLDIALOG_POSTPROGRESSIONINFO,VEHICLESELL_UNIQUE_TITLE,VEHICLESELL_UNIQUE_MESSAGE,VEHICLESELL_UNIQUE_SUBMIT,VEHICLESELL_UNIQUE_CANCEL,VEHICLESELL_UNIQUE_CREWLOCKED_TITLE,VEHICLESELL_UNIQUE_CREWLOCKED_MESSAGE,VEHICLESELL_UNIQUE_CREWLOCKED_SUBMIT,VEHICLESELL_UNIQUE_CREWLOCKED_CANCEL,VEHICLESELL_RESTORECOOLDOWN_TITLE,VEHICLESELL_RESTORECOOLDOWN_MESSAGE,VEHICLESELL_RESTORECOOLDOWN_SUBMIT,VEHICLESELL_RESTORECOOLDOWN_CANCEL,VEHICLESELL_RESTOREUNLIMITED_TITLE,VEHICLESELL_RESTOREUNLIMITED_MESSAGE,VEHICLESELL_RESTOREUNLIMITED_SUBMIT,VEHICLESELL_RESTOREUNLIMITED_CANCEL,UPDATENEEDED_TITLE,UPDATENEEDED_MESSAGE,UPDATENEEDED_SUBMIT,UPDATENEEDED_CANCEL,DEMOACCOUNTBOOTCAMPFAILURE_TITLE,DEMOACCOUNTBOOTCAMPFAILURE_MESSAGE,DEMOACCOUNTBOOTCAMPFAILURE_CANCEL,STEAMSTARTNEEDED_TITLE,STEAMSTARTNEEDED_MESSAGE,STEAMSTARTNEEDED_CANCEL,REPLAYNOTIFICATION_TITLE,REPLAYNOTIFICATION_MESSAGE,REPLAYNOTIFICATION_SUBMIT,REPLAYNOTIFICATION_CANCEL,REPLAYSTOPPED_TITLE,REPLAYSTOPPED_MESSAGE,REPLAYSTOPPED_SUBMIT,REPLAYSTOPPED_CANCEL,PUNISHMENTWINDOW_TITLE,PUNISHMENTWINDOW_MSGTITLE_WARNING,PUNISHMENTWINDOW_MSGTITLE_PENALTY,PUNISHMENTWINDOW_MESSAGE_WARNING,PUNISHMENTWINDOW_MESSAGE_PENALTY,PUNISHMENTWINDOW_MESSAGE_EXTRA_PENALTY,PUNISHMENTWINDOW_CANCEL,PUNISHMENTWINDOW_REASON_DESERTER,PUNISHMENTWINDOW_REASON_EPIC_DESERTER,PUNISHMENTWINDOW_REASON_SUICIDE,PUNISHMENTWINDOW_REASON_AFK,REMOVEINCOMPATIBLEEQS_TITLE,REMOVEINCOMPATIBLEEQS_MESSAGE,REMOVEINCOMPATIBLEEQS_MESSAGE_REASON,REMOVEINCOMPATIBLEEQS_SUBMIT,REMOVEINCOMPATIBLEEQS_CANCEL,REFUSETRAINING_TITLE,REFUSETRAINING_MESSAGE,REFUSETRAINING_SUBMIT,REFUSETRAINING_CANCEL,SHOPSYNCERROR_TITLE,SHOPSYNCERROR_MESSAGE,SHOPSYNCERROR_CANCEL,RESETGRAPHICS_TITLE,RESETGRAPHICS_MESSAGE,RESETGRAPHICS_SUBMIT,RESETGRAPHICS_CANCEL,CHANGEGRAPHICS_TITLE,CHANGEGRAPHICS_MESSAGE,CHANGEGRAPHICS_SUBMIT,CHANGEGRAPHICS_CANCEL,GRAPHICS_MESSAGE_ALERT,LOWFPSWARNING_TITLE,LOWFPSWARNING_MESSAGE,LOWFPSWARNING_SUBMIT,LOWFPSWARNING_CANCEL,KOREAPARENTNOTIFICATION_TITLE,KOREAPARENTNOTIFICATION_MESSAGE,KOREAPARENTNOTIFICATION_SUBMIT,KOREAPARENTNOTIFICATION_CANCEL,KOREAPLAYTIMENOTIFICATION_TITLE,KOREAPLAYTIMENOTIFICATION_MESSAGE,KOREAPLAYTIMENOTIFICATION_SUBMIT,KOREAPLAYTIMENOTIFICATION_CANCEL,SENDINVITES_COMMON_TITLE,RALLY_AUTOSEARCH_TITLE,RALLY_AUTOSEARCH_MESSAGE,RALLY_AUTOSEARCH_SUBMIT,RALLY_AUTOSEARCH_CANCEL,RALLY_STARTBATTLE_TITLE,RALLY_STARTBATTLE_MESSAGE,RALLY_STARTBATTLE_SUBMIT,RALLY_STARTBATTLE_CANCEL,RALLY_CHANGEPERIPHERY_TITLE,RALLY_CHANGEPERIPHERY_MESSAGE,RALLY_CHANGEPERIPHERY_SUBMIT,RALLY_CHANGEPERIPHERY_CANCEL,RALLY_GOTOANOTHER_TITLE,RALLY_GOTOANOTHER_MESSAGE,RALLY_GOTOANOTHER_SUBMIT,RALLY_GOTOANOTHER_CANCEL,RALLY_GOTOSQUAD_TITLE,RALLY_GOTOSQUAD_MESSAGE,RALLY_GOTOSQUAD_SUBMIT,RALLY_GOTOSQUAD_CANCEL,SQUAD_GOTOSQUAD_TITLE,SQUAD_GOTOSQUAD_MESSAGE,SQUAD_GOTOSQUAD_SUBMIT,SQUAD_GOTOSQUAD_CANCEL,SQUAD_GOTOANOTHER_TITLE,SQUAD_GOTOANOTHER_MESSAGE,SQUAD_GOTOANOTHER_SUBMIT,SQUAD_GOTOANOTHER_CANCEL,RALLY_LEAVE_TITLE,RALLY_LEAVE_MESSAGE,RALLY_LEAVE_SUBMIT,RALLY_LEAVE_CANCEL,RALLY_GOTOINTRO_TITLE,RALLY_GOTOINTRO_MESSAGE,RALLY_GOTOINTRO_SUBMIT,RALLY_GOTOINTRO_CANCEL,SQUAD_LEAVE_TITLE,SQUAD_LEAVE_MESSAGE,SQUAD_LEAVE_SUBMIT,SQUAD_LEAVE_CANCEL,RALLY_LEAVEDISABLED_TITLE,RALLY_LEAVEDISABLED_MESSAGE,RALLY_LEAVEDISABLED_CANCEL,SQUAD_LEAVEDISABLED_TITLE,SQUAD_LEAVEDISABLED_MESSAGE,SQUAD_LEAVEDISABLED_CANCEL,CHANGEPERIPHERY_TITLE,CHANGEPERIPHERY_MESSAGE,CHANGEPERIPHERY_SUBMIT,CHANGEPERIPHERY_CANCEL,CHANGEROAMINGPERIPHERY_TITLE,CHANGEROAMINGPERIPHERY_MESSAGE,CHANGEROAMINGPERIPHERY_SUBMIT,CHANGEROAMINGPERIPHERY_CANCEL,CHANGEPERIPHERYANDREMEMBER_TITLE,CHANGEPERIPHERYANDREMEMBER_MESSAGE,CHANGEPERIPHERYANDREMEMBER_SUBMIT,CHANGEPERIPHERYANDREMEMBER_CANCEL,CHANGEROAMINGPERIPHERYANDREMEMBER_TITLE,CHANGEROAMINGPERIPHERYANDREMEMBER_MESSAGE,CHANGEROAMINGPERIPHERYANDREMEMBER_SUBMIT,CHANGEROAMINGPERIPHERYANDREMEMBER_CANCEL,LOGINTOPERIPHERYANDREMEMBER_TITLE,LOGINTOPERIPHERYANDREMEMBER_MESSAGE,LOGINTOPERIPHERYANDREMEMBER_SUBMIT,LOGINTOPERIPHERYANDREMEMBER_CANCEL,FREEXPINFO_TITLE,FREEXPINFO_MESSAGE,FREEXPINFO_SUBMITBTNLBL,SWITCHPERIPHERYWINDOW_WINDOWTITLE,SWITCHPERIPHERYWINDOW_BTNSWITCH,SWITCHPERIPHERYWINDOW_BTNCANCEL,CREATEORDERCONFIRMATION_TITLE,CREATEORDERCONFIRMATION_SUBMIT,CREATEORDERCONFIRMATION_CANCEL,FORTIFICATIONFIXEDPLAYERS_TITLE,FORTIFICATIONFIXEDPLAYERS_MESSAGE,FORTIFICATIONFIXEDPLAYERS_SUBMIT,FORTIFICATIONFIXEDPLAYERS_CANCEL,FORTIFICATIONCLOSEDIRECTION_SUBMIT,FORTIFICATIONCLOSEDIRECTION_CANCEL,REPORTBUG_TITLE,REPORTBUG_MESSAGE,REPORTBUG_SUBMIT,REPORTBUG_CANCEL,FORTTURNEDOFF_CANCEL,FORTTURNEDOFF_TITLE,FORTTURNEDOFF_MESSAGE,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_TITLE,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_TITLE,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_TITLE,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_NEEDITEMSTEXT,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_NEEDITEMSTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_NEEDITEMSTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_NEEDGOLDTEXT,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_NEEDGOLDTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_NEEDGOLDTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_NEEDITEMSSTEPPERTITLE,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_NEEDITEMSSTEPPERTITLE,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_NEEDITEMSSTEPPERTITLE,CONFIRMEXCHANGEDIALOG_GOLDITEMSSTEPPERTITLE,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_SUBMIT,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_SUBMIT,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_SUBMIT,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_CANCEL,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_CANCEL,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_CANCEL,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_EXCHANGENONEEDTEXT,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_EXCHANGENONEEDTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_EXCHANGENONEEDTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGECREDITS_GOLDNOTENOUGHTEXT,CONFIRMEXCHANGEDIALOG_RESTOREEXCHANGECREDITS_GOLDNOTENOUGHTEXT,CONFIRMEXCHANGEDIALOG_EXCHANGEXP_GOLDNOTENOUGHTEXT,QUESTSCONFIRMDIALOG_TITLE,QUESTSCONFIRMDIALOG_MESSAGE,QUESTSCONFIRMDIALOG_SUBMIT,QUESTSCONFIRMDIALOG_CANCEL,QUESTSCONFIRMDIALOG_CHECKBOX,QUESTSCONFIRMPROGRESSDIALOG_TITLE,QUESTSCONFIRMPROGRESSDIALOG_MESSAGE,QUESTSCONFIRMPROGRESSDIALOG_MESSAGE_ALERT,QUESTSCONFIRMPROGRESSDIALOG_SUBMIT,QUESTSCONFIRMPROGRESSDIALOG_CANCEL,QUESTSDISMISSPROGRESSDIALOG_TITLE,QUESTSCONFIRMDISCARDDIALOG_TITLE,QUESTSDISMISSPROGRESSDIALOG_MESSAGE,QUESTSDISMISSPROGRESSDIALOG_MESSAGE_ALERT,QUESTSDISMISSPROGRESSDIALOG_SUBMIT,QUESTSDISMISSPROGRESSDIALOG_CANCEL,QUESTSCONFIRMDISCARDDIALOG_MESSAGE,QUESTSCONFIRMDISCARDDIALOG_MESSAGE_ALERT,QUESTSCONFIRMDISCARDDIALOG_SUBMIT,QUESTSCONFIRMDISCARDDIALOG_CANCEL,EPICBATTLECONFIRMDIALOG_TITLE,EPICBATTLECONFIRMDIALOG_MESSAGE,EPICBATTLECONFIRMDIALOG_SUBMIT,EPICBATTLECONFIRMDIALOG_CANCEL,EPICBATTLECONFIRMDIALOG_CHECKBOX,BOOSTERSWINDOW_ACTIVATIONCONFIRMATION_TITLE,BOOSTERSWINDOW_ACTIVATIONCONFIRMATION_MESSAGE,BOOSTERSWINDOW_ACTIVATIONCONFIRMATION_SUBMIT,BOOSTERSWINDOW_ACTIVATIONCONFIRMATION_CANCEL,BOOSTERSWINDOW_REPLACECONFIRMATION_TITLE,BOOSTERSWINDOW_REPLACECONFIRMATION_MESSAGE,BOOSTERSWINDOW_REPLACECONFIRMATION_SUBMIT,BOOSTERSWINDOW_REPLACECONFIRMATION_CANCEL,CLANCONFIRMJOINING_TITLE,CLANCONFIRMJOINING_MESSAGE,CLANCONFIRMJOINING_MESSAGE_CLANNAME,CLANCONFIRMJOINING_MESSAGE_CLANEXIT,CLANCONFIRMJOINING_SUBMIT,CLANCONFIRMJOINING_CANCEL,CUSTOMIZATION_CLOSE_TITLE,CUSTOMIZATION_CLOSE_SUBMIT,CUSTOMIZATION_CLOSE_CANCEL,CUSTOMIZATION_EXITTOSHOP_TITLE,CUSTOMIZATION_EXITTOSHOP_SUBMIT,CUSTOMIZATION_EXITTOSHOP_CANCEL,CUSTOMIZATION_FILTER_TITLE,CUSTOMIZATION_FILTER_MESSAGE,CUSTOMIZATION_FILTER_SUBMIT,CUSTOMIZATION_FILTER_CANCEL,CUSTOMIZATION_REMOVE_ELEMENT_TITLE,CUSTOMIZATION_REMOVE_ELEMENT_MESSAGE,CUSTOMIZATION_REMOVE_ELEMENT_SUBMIT,CUSTOMIZATION_REMOVE_ELEMENT_CANCEL,CUSTOMIZATION_INSTALL_INVOICE_ITEM_WILL_BE_DELETED,CUSTOMIZATION_INSTALL_INVOICE_ITEM_TEMPORARY_TITLE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_TEMPORARY_MESSAGE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_TEMPORARY_SUBMIT,CUSTOMIZATION_INSTALL_INVOICE_ITEM_TEMPORARY_CANCEL,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_TITLE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_MESSAGE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_SUBMIT,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_CANCEL,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_LAST_TITLE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_LAST_MESSAGE,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_LAST_SUBMIT,CUSTOMIZATION_INSTALL_INVOICE_ITEM_PERMANENT_LAST_CANCEL,CUSTOMIZATION_BUY_INSTALL_BOUND_TITLE,CUSTOMIZATION_BUY_INSTALL_BOUND_MESSAGE,CUSTOMIZATION_CHANGE_INSTALL_BOUND_TITLE,CUSTOMIZATION_CHANGE_INSTALL_BOUND_MESSAGE,CUSTOMIZATION_INSTALL_BOUND_SUBMIT,CUSTOMIZATION_INSTALL_BOUND_CANCEL,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_TITLE,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_MESSAGE,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_SUBMIT,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_CANCEL,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_THIS,CUSTOMIZATION_APPLYPROJECTIONDECALTOOTHERSEASONS_THESE,FORTDISABLED_TITLE,FORTDISABLED_MESSAGE,FORTDISABLED_CANCEL,ELENDISABLED_TITLE,ELENDISABLED_MESSAGE,ELENDISABLED_CANCEL,CLAN_DATA_NOT_AVAILABLE_TITLE,CLAN_DATA_NOT_AVAILABLE_MESSAGE,CLAN_DATA_NOT_AVAILABLE_CANCEL,SOUNDSPEAKERSPRESETDOESNOTMATCH_TITLE,SOUNDSPEAKERSPRESETDOESNOTMATCH_MESSAGE,SOUNDSPEAKERSPRESETDOESNOTMATCH_SUBMIT,SOUNDSPEAKERSPRESETDOESNOTMATCH_CANCEL,SOUNDSPEAKERSPRESETRESET_TITLE,SOUNDSPEAKERSPRESETRESET_MESSAGE,SOUNDSPEAKERSPRESETRESET_SUBMIT,SOUNDSPEAKERSPRESETRESET_CANCEL,STRONGHOLD_LEAVE_TITLE,STRONGHOLD_LEAVE_MESSAGE,STRONGHOLD_LEAVEDEFEAT_TITLE,STRONGHOLD_LEAVEDEFEAT_MESSAGE,STRONGHOLD_LEAVE_SUBMIT,STRONGHOLD_LEAVE_CANCEL,TRADEINCONFIRMATION_TITLE,TRADEINCONFIRMATION_MESSAGE,TRADEINCONFIRMATION_MESSAGE_ADDITION,TRADEINCONFIRMATION_MESSAGE_CREW,TRADEINCONFIRMATION_MESSAGE_SHELLS,TRADEINCONFIRMATION_MESSAGE_EQUIPMENTS,TRADEINCONFIRMATION_MESSAGE_OPTIONALDEVICES,TRADEINCONFIRMATION_MESSAGE_PAIRMODIFICATIONS,TRADEINCONFIRMATION_SUBMIT,TRADEINCONFIRMATION_CANCEL,VEHCONF_EXITDIALOG_TITLE,VEHCONF_EXITDIALOG_MESSAGE,VEHCONF_EXITDIALOG_SUBMIT,VEHCONF_EXITDIALOG_CANCEL,CONFIRMBATTLEBOOSTERINSTALL_TITLE,CONFIRMBATTLEBOOSTERINSTALL_MESSAGE,CONFIRMBATTLEBOOSTERINSTALL_SUBMIT,CONFIRMBATTLEBOOSTERINSTALL_CANCEL,CONFIRMBATTLEBOOSTERINSTALLNOTSUITABLE_TITLE,CONFIRMBATTLEBOOSTERINSTALLNOTSUITABLE_MESSAGE,CONFIRMBATTLEBOOSTERINSTALLNOTSUITABLE_SUBMIT,CONFIRMBATTLEBOOSTERINSTALLNOTSUITABLE_CANCEL,CONFIRMBATTLEBOOSTERBUYANDINSTALL_TITLE,CONFIRMBATTLEBOOSTERBUYANDINSTALL_SUBMIT,CONFIRMBATTLEBOOSTERBUYANDINSTALL_CANCEL,BOOTCAMP_PREMIUMTYPE_BASIC,BOOTCAMP_PREMIUMTYPE_PLUS,BOOTCAMP_SKIP_TITLE,BOOTCAMP_SKIP_LABEL,BOOTCAMP_SKIP_MESSAGE,BOOTCAMP_SKIP_SUBMIT,BOOTCAMP_SKIP_CANCEL,BOOTCAMP_SKIP_REFERRAL_TITLE,BOOTCAMP_SKIP_REFERRAL_LABEL,BOOTCAMP_SKIP_REFERRAL_MESSAGE,BOOTCAMP_SKIP_REFERRAL_SUBMIT,BOOTCAMP_SKIP_REFERRAL_CANCEL,BOOTCAMP_START_TITLE,BOOTCAMP_START_LABEL,BOOTCAMP_START_MESSAGE,BOOTCAMP_START_SUBMIT,BOOTCAMP_START_CANCEL,BOOTCAMP_RETRY_TITLE,BOOTCAMP_RETRY_LABEL,BOOTCAMP_RETRY_MESSAGE,BOOTCAMP_RETRY_SUBMIT,BOOTCAMP_RETRY_CANCEL,BOOTCAMPCENTERUNAVAILABLE_TITLE,BOOTCAMPCENTERUNAVAILABLE_MESSAGE,BOOTCAMPCENTERUNAVAILABLE_CANCEL,HOF_EXCLUDERATING_TITLE,HOF_EXCLUDERATING_MESSAGE,HOF_EXCLUDERATING_SUBMIT,HOF_EXCLUDERATING_CANCEL,HOFDISABLED_TITLE,HOFDISABLED_MESSAGE,HOFDISABLED_CANCEL,CUSTOMIZATIONCONFIRMSELL_TITLE,CUSTOMIZATIONCONFIRMSELL_MESSAGE,LEAVEEVENT_TITLE,LEAVEEVENT_MESSAGE,LEAVEEVENT_SUBMIT,LEAVEEVENT_CANCEL,LEAVESTARTEDEVENT_TITLE,LEAVESTARTEDEVENT_MESSAGE,LEAVESTARTEDEVENT_SUBMIT,LEAVESTARTEDEVENT_CANCEL,LEAVEEVENT_MESSAGE_WARNING,GAMMADIALOG_TITLE,GAMMADIALOG_MESSAGE_HEADER,GAMMADIALOG_MESSAGE_DESCRIPTION,GAMMADIALOG_CANCEL,REFERRALREWARD_TITLE,REFERRALREWARD_MESSAGE,REFERRALREWARD_SUBMIT,REFERRALREWARD_CANCEL,SESSIONSTATS_CONFIRMRESET_TITLE,SESSIONSTATS_CONFIRMRESET_MESSAGE,SESSIONSTATS_CONFIRMRESET_TIME,SESSIONSTATS_CONFIRMRESET_SUBMIT,SESSIONSTATS_CONFIRMRESET_CANCEL,EDITABLESTYLES_CONFIRMRESET_TITLE,EDITABLESTYLES_CONFIRMRESET_MESSAGE,EDITABLESTYLES_CONFIRMRESET_FORMATTEDPARTOFMESSAGE,EDITABLESTYLES_CONFIRMRESET_CHECKBOXLABEL,EDITABLESTYLES_CONFIRMRESET_SUBMIT,EDITABLESTYLES_CONFIRMRESET_CANCEL,CONFIRMEQUIPMENTBUYINSTALL_SUBMIT,EQUIPMENTPURCASE_CONFORMATION_ALL,EQUIPMENTBUYINSTALL_PRICE,BUYCONFIRMATION_STRINGEQUIPMENT_SUBMIT,CONFIRMEQUIPMENTINSTALL_SUBMIT,EQUIPMENTDESTROY_CONFORMATION,EQUIPMENTSALE_CONFORMATION_HEADER,EQUIPMENTDECONSTRUCT_CONFIRMATION_HEADER,MODULESALE_CONFORMATION_HEADER,ELEMENTTYPE_GUN,ELEMENTTYPE_TURRET,ELEMENTTYPE_ENGINE,ELEMENTTYPE_CHASSIS,ELEMENTTYPE_RADIOSTATION,SELLSHELLCONFIRMATION_SUBMIT,EQUIPMENTDESTROY_DEMOUNTOPTIONS_GOLDORDEMOKIT,EQUIPMENTDESTROY_DEMOUNTOPTIONS_BONDS,DAILYQUESTS_DIALOGINFOCONFIRMREROLL_TITLE,DAILYQUESTS_DIALOGINFOCONFIRMREROLL_MESSAGE,DAILYQUESTS_DIALOGINFOCONFIRMREROLL_SUBMIT,DAILYQUESTS_DIALOGCONFIRMREROLL_TIMELIMITMSGHOURS,DAILYQUESTS_DIALOGCONFIRMREROLL_TIMELIMITMSGHOURSMINS,DAILYQUESTS_DIALOGCONFIRMREROLL_TIMELIMITMSGMINS,DAILYQUESTS_DIALOGWARNINGCONFIRMREROLL_TITLE,DAILYQUESTS_DIALOGWARNINGCONFIRMREROLL_MESSAGE,DAILYQUESTS_DIALOGWARNINGCONFIRMREROLL_SUBMIT,DAILYQUESTS_DIALOGWARNINGCONFIRMREROLL_WARNING,SQUAD_EVENTDISABLED_TITLE,SQUAD_EVENTDISABLED_MESSAGE,SQUAD_EVENTDISABLED_CANCEL,DEDICATION_HEADLINE,DEDICATION_SUB_HEADLINE,BATTLEROYALE_PREBATTLE_TITLE,BATTLEROYALE_PREBATTLE_MESSAGE,BATTLEROYALE_PREBATTLE_SUBMIT,BATTLEROYALE_PREBATTLE_CANCEL,ACCOUNTCOMPLETION_SUBMIT,ACCOUNTCOMPLETION_CANCEL,ACCOUNTCOMPLETION_WARNINGSERVERUNAVAILABLETIMED,ACCOUNTCOMPLETION_WARNINGSERVERUNAVAILABLE,ACCOUNTCOMPLETION_WARNINGSOMETHINGWENTWRONG,ACCOUNTCOMPLETION_ERRORISWRONG,ACCOUNTCOMPLETION_EMAILFORBIDDEN,ACCOUNTCOMPLETION_EMAILPROVIDERBANNED,ACCOUNTCOMPLETION_EMAILRESTRICTEDBYCOUNTRYHEADER,ACCOUNTCOMPLETION_EMAILRESTRICTEDBYCOUNTRY,ACCOUNTCOMPLETION_EMAILALREADYTAKEN,ACCOUNTCOMPLETION_LOGINALREADYTAKEN,ACCOUNTCOMPLETION_ACCOUNTALREADYHASEMAIL,ACCOUNTCOMPLETION_EMAILISTOOSHORT,ACCOUNTCOMPLETION_EMAILISTOOLONG,ACCOUNTCOMPLETION_TOOMANYREQUESTS,ACCOUNTCOMPLETION_REWARDSTITLE,ACCOUNTCOMPLETION_REGISTRATIONREWARDSTITLE,ACCOUNTCOMPLETION_EMAIL_FIELDNAME,ACCOUNTCOMPLETION_EMAIL_FIELDPLACEHOLDER,ACCOUNTCOMPLETION_PASSWORD_FIELDNAME,ACCOUNTCOMPLETION_EMAIL_TITLE,ACCOUNTCOMPLETION_EMAIL_SUBTITLE,ACCOUNTCOMPLETION_EMAIL_FULLACCESS_TITLE,ACCOUNTCOMPLETION_EMAIL_FULLACCESS_SUBTITLE,ACCOUNTCOMPLETION_ACTIVATE_TITLE,ACCOUNTCOMPLETION_ACTIVATE_TEXT,ACCOUNTCOMPLETION_ACTIVATE_KEYERROR,ACCOUNTCOMPLETION_ACTIVATE_MISSPELL,ACCOUNTCOMPLETION_ACTIVATE_TOOMANYINCORRECTTRIES,ACCOUNTCOMPLETION_ACTIVATE_KEYDIED,ACCOUNTCOMPLETION_ACTIVATE_ENTERCREDENTIALSAGAIN,ACCOUNTCOMPLETION_ACTIVATE_BUTTON,ACCOUNTCOMPLETION_ACTIVATE_COUNDOWNTEXT,ACCOUNTCOMPLETION_ALREADYLINKED_TITLE,ACCOUNTCOMPLETION_ALREADYLINKED_SUBTITLE,ACCOUNTCOMPLETION_EMAILOVERLAY_ERROR_CODEALREADYSENT,ACCOUNTCOMPLETION_EMAILOVERLAY_ALREADYCONFIRMED_TITLE,ACCOUNTCOMPLETION_EMAILOVERLAY_ALREADYCONFIRMED_SUBTITLE,ACCOUNTCOMPLETION_CREDENTIALS_TITLE,ACCOUNTCOMPLETION_CREDENTIALS_SUBTITLE,ACCOUNTCOMPLETION_BADPASSWORD,ACCOUNTCOMPLETION_PASSWORDISTOOSHORT,ACCOUNTCOMPLETION_PASSWORDISTOOLONG,ACCOUNTCOMPLETION_PASSWORDISWEAK,ACCOUNTCOMPLETION_DEMOCOMPLETE_TITLE,ACCOUNTCOMPLETION_DEMOCOMPLETE_DESCRIPTION,ACCOUNTCOMPLETION_DEMOCOMPLETE_BUTTON,ACCOUNTCOMPLETION_ERROR_NOTAVAILABLE,ACCOUNTCOMPLETION_ERROR_BUTTON_TRYAGAIN,ACCOUNTCOMPLETION_ERROR_TRYAGAINTIMERMESSAGE,ACCOUNTCOMPLETION_ERROR_BUTTON_CONTINUE,ACCOUNTCOMPLETION_ERROR_RENAMINGNOTAVAILABLE,ACCOUNTCOMPLETION_WAITING_CONFIRMATION,ACCOUNTCOMPLETION_WAITING_QUEUE,ACCOUNTCOMPLETION_CONTACTSUPPORT,ACCOUNTCOMPLETION_ERROR_SOMETHINGWENTWRONG,ACCOUNTCOMPLETION_ERROR_RENAMINGMALFUNCTION,ACCOUNTCOMPLETION_SPA_PASSWORDISWEAK,ACCOUNTCOMPLETION_LEAVESQUAD_TITLE,ACCOUNTCOMPLETION_LEAVESQUAD_MESSAGE,ACCOUNTCOMPLETION_LEAVESQUAD_SUBMIT,ACCOUNTCOMPLETION_LEAVESQUAD_CANCEL,ACCOUNTCOMPLETION_RENAMING_SKIP_TITLE,ACCOUNTCOMPLETION_RENAMING_SKIP_MESSAGE,ACCOUNTCOMPLETION_RENAMING_SKIP_SUBMIT,ACCOUNTCOMPLETION_RENAMING_SKIP_CANCEL,ACCOUNTCOMPLETION_RENAMINGOVERLAY_TITLE,ACCOUNTCOMPLETION_RENAMINGOVERLAY_SUBTITLE,ACCOUNTCOMPLETION_RENAMINGOVERLAY_BUTTON,ACCOUNTCOMPLETION_RENAMINGOVERLAY_FIELDNAME,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMEFORBIDDEN,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMEFORBIDDENPICKVARIANT,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMETAKEN,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMETAKENPICKVARIANT,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMEINVALID,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMETOOSHORT,ACCOUNTCOMPLETION_RENAMINGOVERLAY_NAMETOOLONG,ACCOUNTCOMPLETION_RENAMINGCOMPLETEOVERLAY_TITLE,ACCOUNTCOMPLETION_RENAMINGCOMPLETEOVERLAY_SUBTITLE,DIALOGTEMPLATES_CONFIRM,DIALOGTEMPLATES_CANCEL,DIALOGTEMPLATES_OK,BATTLEROYALE_CONFIRMRENT_TESTDRIVE_BUTTON,BATTLEROYALE_CONFIRMRENT_TESTDRIVE_TITLE,BATTLEROYALE_CONFIRMRENT_TESTDRIVE_DESCRIPTION,BATTLEROYALE_CONFIRMRENT_RENT_BUTTON,BATTLEROYALE_CONFIRMRENT_RENT_TITLE,BATTLEROYALE_CONFIRMRENT_RENT_DESCRIPTION,BATTLEROYALE_CONFIRMRENT_RENTPRICE,BATTLEROYALE_CONFIRMRENT_EVENTENDSSOON,FREESKILLSLEARNING_TITLE_LEARNING,FREESKILLSLEARNING_TITLE_RELEARNING,FREESKILLSLEARNING_MESSAGE,PERKLEARNCONFIRM_TITLE,PERKLEARNCONFIRM_DESC,PERKLEARNCONFIRM_LEARN,COMP7_DESERTER_TITLE,COMP7_DESERTER_MSGTITLE,COMP7_DESERTER_MESSAGE,COMP7_DESERTER_SUBMIT,COMP7_DESERTER_CANCEL,COMP7_PUNISHMENTWINDOW_TITLE,COMP7_PUNISHMENTWINDOW_MSGTITLE,COMP7_PUNISHMENTWINDOW_MESSAGE,COMP7_PUNISHMENTWINDOW_CANCEL,EQUIPMENTUPGRADE_CONFIRMBUTTON,EQUIPMENTUPGRADE_GETMORECURRENCYBUTTON,EQUIPMENTUPGRADE_GETMORECURRENCYBUTTONTOOLTIP_BODY,EQUIPMENTUPGRADE_CANCELBUTTON,EQUIPMENTDECONSTRUCTION_CONFIRMBUTTON,EQUIPMENTDECONSTRUCTION_CONFIRMANDUPGRADEBUTTON,EQUIPMENTDECONSTRUCTION_CANCELBUTTON,PRICECARD_FREE_TITLE,PRICECARD_CREDITS_TITLE,PRICECARD_GOLD_TITLE,PRICECARD_RECERTIFICATION_TITLE,PRICECARD_PRICE_FREE,PERKSREST_TITLE,PERKSREST_FREE_DESCRIPTION,PERKSREST_BEFORE,PERKSREST_AFTER,PERKSREST_NONEWPERKS,PERKSREST_SUBMIT,PERKSREST_CANCEL,PERKSREST_PRICECARD_FREE_DESCRIPTION,PERKSREST_PRICECARD_CREDITS_DESCRIPTION,PERKSREST_PRICECARD_GOLD_DESCRIPTION,RETRAIN_TITLE_SINGLE,RETRAIN_TITLE_MASSIVE,RETRAIN_WARNING_PREMIUMVEHICLE,RETRAIN_PRICECARD_FREE_DESCRIPTION,RETRAIN_PRICECARD_CREDITS_DESCRIPTION,RETRAIN_PRICECARD_GOLD_DESCRIPTION,RETRAIN_MASSIVE_TANKMENCOUNT,RETRAIN_SINGLE_CHECKBOXLABEL,RETRAIN_PRICE,RETRAIN_SUBMIT,RETRAIN_CANCEL,RECRUIT_TITLE,RECRUIT_WARNING_PREMIUMVEHICLE,RECRUIT_PRICECARD_FREE_DESCRIPTION,RECRUIT_PRICECARD_CREDITS_DESCRIPTION,RECRUIT_PRICECARD_GOLD_DESCRIPTION,RECRUIT_SUBMIT,RECRUIT_CANCEL,CREWMEMBERTANKCHANGE_TITLE,CREWMEMBERTANKCHANGE_DESC,CREWMEMBERTANKCHANGE_TRANSFER,CREWMEMBERROLECHANGE_TITLE_SIMPLE,CREWMEMBERROLECHANGE_TITLE_EXTENDED,CREWMEMBERROLECHANGE_BULLET,CREWMEMBERROLECHANGE_DESC_SIMPLE,CREWMEMBERROLECHANGE_DESC_WRONGSPECIALIZATION,CREWMEMBERROLECHANGE_DESC_PREMIUM,CREWMEMBERROLECHANGE_PRICE,CREWMEMBERROLECHANGE_CHANGE,RUDYINFO_TITLE,RUDYINFO_MESSAGE,RUDYINFO_SUBMIT,CREWBOOKPURCHASE_PURCHASE,CREWBOOKPURCHASE_PURCHASE_TITLE,CREWBOOKPURCHASE_DESCRIPTION_PERSONAL,CREWBOOKPURCHASE_DESCRIPTION_CREW,CREWBOOKPURCHASE_BTNDISABLEDTOOLTIP,DOCUMENTCHANGEDIALOG_TITLE,DOCUMENTCHANGEDIALOG_BUTTON_SUBMIT,DOCUMENTCHANGEDIALOG_DROPDOWN_FIRSTNAME,DOCUMENTCHANGEDIALOG_DROPDOWN_LASTNAME,SKINAPPLYDIALOG_BUTTON_SUBMIT,DISMISSTANKMAN_HEADER,DISMISSTANKMAN_DESCRIPTION_TIME,DISMISSTANKMAN_LIMITED,DISMISSTANKMAN_NORECOVERY,DISMISSTANKMAN_BUTTONS_DISMISS,RESTORETANKMAN_HEADER,RESTORETANKMAN_DESCRIPTION,RESTORETANKMAN_PRICE,RESTORETANKMAN_FREE,RESTORETANKMAN_BUTTONS_RECOVER];
        
       
       public function DIALOGS()
       {
          super();
-      }
-      
-      public static function recruitwindow_vehicleclassdropdown(param1:String) : String
-      {
-         var _loc2_:String = null;
-         _loc2_ = "#dialogs:" + "recruitWindow/vehicleClassDropdown/" + param1;
-         if(RECRUITWINDOW_VEHICLECLASSDROPDOWN_ENUM.indexOf(_loc2_) == -1)
-         {
-            DebugUtils.LOG_WARNING("[recruitwindow_vehicleclassdropdown]:locale key \"" + _loc2_ + "\" was not found");
-            return null;
-         }
-         return _loc2_;
       }
       
       public static function vehicleselldialog_vehicletype(param1:String) : String

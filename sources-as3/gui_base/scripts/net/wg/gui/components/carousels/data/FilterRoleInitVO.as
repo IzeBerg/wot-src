@@ -17,6 +17,8 @@ package net.wg.gui.components.carousels.data
       private static const HEAVY_TANK_FIELD:String = "heavyTank";
       
       private static const AT_SPG_FIELD:String = "AT-SPG";
+      
+      private static const SPG_FIELD:String = "SPG";
        
       
       private var _lightTank:DataProvider = null;
@@ -26,6 +28,8 @@ package net.wg.gui.components.carousels.data
       private var _heavyTank:DataProvider = null;
       
       private var _AT_SPG:DataProvider = null;
+      
+      private var _SPG:DataProvider = null;
       
       private var _vehicleTypesMap:Dictionary = null;
       
@@ -37,6 +41,7 @@ package net.wg.gui.components.carousels.data
          this._vehicleTypesMap[VehicleTypes.MEDIUM_TANK] = this._mediumTank;
          this._vehicleTypesMap[VehicleTypes.HEAVY_TANK] = this._heavyTank;
          this._vehicleTypesMap[VehicleTypes.AT_SPG] = this._AT_SPG;
+         this._vehicleTypesMap[VehicleTypes.SPG] = this._SPG;
       }
       
       override protected function onDataWrite(param1:String, param2:Object) : Boolean
@@ -78,6 +83,15 @@ package net.wg.gui.components.carousels.data
             }
             return false;
          }
+         if(param1 == SPG_FIELD)
+         {
+            this._SPG = new DataProvider();
+            for each(_loc3_ in param2)
+            {
+               this._SPG.push(new SimpleRendererVO(_loc3_));
+            }
+            return false;
+         }
          return super.onDataWrite(param1,param2);
       }
       
@@ -102,6 +116,10 @@ package net.wg.gui.components.carousels.data
          {
             _loc1_.dispose();
          }
+         for each(_loc1_ in this._SPG)
+         {
+            _loc1_.dispose();
+         }
          this._lightTank.cleanUp();
          this._lightTank = null;
          this._mediumTank.cleanUp();
@@ -110,6 +128,8 @@ package net.wg.gui.components.carousels.data
          this._heavyTank = null;
          this._AT_SPG.cleanUp();
          this._AT_SPG = null;
+         this._SPG.cleanUp();
+         this._SPG = null;
          super.onDispose();
       }
       

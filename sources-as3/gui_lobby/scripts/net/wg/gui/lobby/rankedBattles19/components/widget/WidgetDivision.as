@@ -13,14 +13,14 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
    public class WidgetDivision extends UIComponentEx implements IUpdatableComponent
    {
       
-      private static const IMAGE_SIZE_MEDIUM:String = "80x110";
+      private static const IMAGE_SIZE_MEDIUM:String = "190x260";
       
       private static const IMAGE_SIZE_SMALL:String = "58x80";
       
       private static const IMAGE_POSITIONS:Object = {};
       
       {
-         IMAGE_POSITIONS[RANKEDBATTLES_ALIASES.WIDGET_MEDIUM] = new Point(-40,-55);
+         IMAGE_POSITIONS[RANKEDBATTLES_ALIASES.WIDGET_MEDIUM] = new Point(-95,-130);
          IMAGE_POSITIONS[RANKEDBATTLES_ALIASES.WIDGET_SMALL] = new Point(-30,-40);
       }
       

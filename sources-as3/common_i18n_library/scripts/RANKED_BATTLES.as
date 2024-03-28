@@ -785,8 +785,6 @@ package
       
       public static const DIVISION_TOOLTIP_STATUS_LOCKED_DESC:String = "#ranked_battles:division/tooltip/status/locked/desc";
       
-      public static const DIVISION_TOOLTIP_STATUS_LOCKED_DESCQUAL:String = "#ranked_battles:division/tooltip/status/locked/descQual";
-      
       public static const DIVISION_TOOLTIP_STATUS_COMPLETED:String = "#ranked_battles:division/tooltip/status/completed";
       
       public static const DIVISION_TOOLTIP_STATUS_COMPLETEDQUAL:String = "#ranked_battles:division/tooltip/status/completedQual";

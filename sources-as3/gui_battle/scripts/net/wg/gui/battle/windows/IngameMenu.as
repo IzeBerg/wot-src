@@ -46,11 +46,13 @@ package net.wg.gui.battle.windows
       
       private static const Y_OFFSET_HIDE_ALL:int = -60;
       
-      private static const Y_OFFSET_MENU_BUTTON:int = -67;
-      
-      private static const REPORT_BUG_PANEL_PADDING:int = 31;
+      private static const REPORT_BUG_PANEL_PADDING:int = 19;
       
       private static const SERVER_SEPARATOR:String = " ";
+      
+      private static const BUTTON_MARGIN:int = 12;
+      
+      private static const BG_BOTTOM_PADDING:int = 14;
        
       
       public var headerTF:TextField = null;
@@ -71,8 +73,6 @@ package net.wg.gui.battle.windows
       
       public var cancelBtn:IconTextBigButton = null;
       
-      public var requestBootcampQuitBtn:IconTextBigButton = null;
-      
       private var _quitLabel:String = "";
       
       private var _settingsLabel:String = "";
@@ -80,10 +80,6 @@ package net.wg.gui.battle.windows
       private var _helpLabel:String = "";
       
       private var _cancelLabel:String = "";
-      
-      private var _bootcampLabel:String = "";
-      
-      private var _bootcampIcon:String = "";
       
       private var _tooltipType:String = "unavailable";
       
@@ -95,15 +91,13 @@ package net.wg.gui.battle.windows
       
       private var _serverStats:String = "";
       
-      private var _isUpdtaePosition:Boolean = false;
+      private var _isUpdatePosition:Boolean = false;
       
-      private var _showQuitButton:Boolean = true;
-      
-      private var _showBootcampButton:Boolean = true;
-      
-      private var _showHelpButton:Boolean = true;
+      private var _buttonsOrder:Vector.<String> = null;
       
       private var _btns:Dictionary;
+      
+      private var _btnInitPosition:int = 0;
       
       private var _counterManager:ICounterManager;
       
@@ -114,14 +108,10 @@ package net.wg.gui.battle.windows
          super();
          showWindowBgForm = false;
          showWindowBg = false;
-         this._isUpdtaePosition = false;
+         this._isUpdatePosition = false;
          TextFieldEx.setNoTranslate(this.serverNameTF,true);
          TextFieldEx.setNoTranslate(this.serverStatsTF,true);
-      }
-      
-      override protected function configUI() : void
-      {
-         super.configUI();
+         this._btnInitPosition = this.quitBattleBtn.y;
       }
       
       override protected function onPopulate() : void
@@ -133,8 +123,7 @@ package net.wg.gui.battle.windows
          this.settingsBtn.addEventListener(ButtonEvent.PRESS,this.onSettingsBtnPressHandler);
          this.helpBtn.addEventListener(ButtonEvent.PRESS,this.onHelpBtnPressHandler);
          this.cancelBtn.addEventListener(ButtonEvent.PRESS,this.onCancelBtnPressHandler);
-         this.requestBootcampQuitBtn.addEventListener(ButtonEvent.PRESS,this.onRequestBootcampQuitBtnPressHandler);
-         for each(_loc1_ in [this.quitBattleBtn,this.settingsBtn,this.helpBtn,this.cancelBtn,this.requestBootcampQuitBtn])
+         for each(_loc1_ in [this.quitBattleBtn,this.settingsBtn,this.helpBtn,this.cancelBtn])
          {
             this._btns[_loc1_.name] = _loc1_;
          }
@@ -158,19 +147,16 @@ package net.wg.gui.battle.windows
          this.settingsBtn.removeEventListener(ButtonEvent.PRESS,this.onSettingsBtnPressHandler);
          this.helpBtn.removeEventListener(ButtonEvent.PRESS,this.onHelpBtnPressHandler);
          this.cancelBtn.removeEventListener(ButtonEvent.PRESS,this.onCancelBtnPressHandler);
-         this.requestBootcampQuitBtn.removeEventListener(ButtonEvent.PRESS,this.onRequestBootcampQuitBtnPressHandler);
          this.serverStatsTF.removeEventListener(MouseEvent.ROLL_OVER,this.onServerStatsTFRollOverHandler);
          this.serverStatsTF.removeEventListener(MouseEvent.ROLL_OUT,this.onServerStatsTFRollOutHandler);
          this.quitBattleBtn.dispose();
          this.settingsBtn.dispose();
          this.helpBtn.dispose();
          this.cancelBtn.dispose();
-         this.requestBootcampQuitBtn.dispose();
          this.quitBattleBtn = null;
          this.settingsBtn = null;
          this.helpBtn = null;
          this.cancelBtn = null;
-         this.requestBootcampQuitBtn = null;
          this.background = null;
          this.reportBugPanel = null;
          this.headerTF = null;
@@ -196,8 +182,6 @@ package net.wg.gui.battle.windows
             this.settingsBtn.label = this._settingsLabel;
             this.helpBtn.label = this._helpLabel;
             this.cancelBtn.label = this._cancelLabel;
-            this.requestBootcampQuitBtn.label = this._bootcampLabel;
-            this.requestBootcampQuitBtn.htmlIconStr = this._bootcampIcon;
          }
          if(isInvalid(INVALIDATE_SERVER_INFO))
          {
@@ -210,10 +194,7 @@ package net.wg.gui.battle.windows
          }
          if(isInvalid(INVALIDATE_SERVER_INFO,INVALIDATE_MENU_BUTTONS_POSITIONS))
          {
-            this.requestBootcampQuitBtn.visible = this._showBootcampButton;
-            this.helpBtn.visible = this._showHelpButton;
-            this.quitBattleBtn.visible = this._showQuitButton;
-            _loc1_ = !this._showQuitButton ? int(Y_OFFSET_MENU_BUTTON) : int(0);
+            _loc1_ = 0;
             if(this._serverState == INTERFACE_STATES.HIDE_SERVER_STATS)
             {
                _loc1_ += Y_OFFSET_HIDE_SERVER_STATS;
@@ -265,14 +246,12 @@ package net.wg.gui.battle.windows
          }
       }
       
-      public function as_setMenuButtonsLabels(param1:String, param2:String, param3:String, param4:String, param5:String, param6:String) : void
+      public function as_setMenuButtonsLabels(param1:String, param2:String, param3:String, param4:String) : void
       {
          this._quitLabel = param4;
          this._settingsLabel = param2;
          this._helpLabel = param1;
          this._cancelLabel = param3;
-         this._bootcampLabel = param5;
-         this._bootcampIcon = param6;
          invalidate(INVALIDATE_BUTTONS_LABELS);
       }
       
@@ -291,45 +270,35 @@ package net.wg.gui.battle.windows
          invalidate(INVALIDATE_SERVER_STATS);
       }
       
-      public function as_showBootcampButton(param1:Boolean) : void
+      override protected function setMenuButtons(param1:Vector.<String>) : void
       {
-         this._showBootcampButton = param1;
-         invalidate(INVALIDATE_MENU_BUTTONS_POSITIONS);
-      }
-      
-      public function as_showHelpButton(param1:Boolean) : void
-      {
-         this._showHelpButton = param1;
-         invalidate(INVALIDATE_MENU_BUTTONS_POSITIONS);
-      }
-      
-      public function as_showQuitButton(param1:Boolean) : void
-      {
-         this._showQuitButton = param1;
+         this._buttonsOrder = param1;
          invalidate(INVALIDATE_MENU_BUTTONS_POSITIONS);
       }
       
       private function rePositionElements(param1:int = 0) : void
       {
          var _loc2_:int = 0;
-         if(!this._isUpdtaePosition)
+         var _loc3_:DisplayObject = null;
+         var _loc4_:DisplayObject = null;
+         var _loc5_:String = null;
+         if(!this._isUpdatePosition && this._buttonsOrder)
          {
-            this.quitBattleBtn.y += param1;
-            this.settingsBtn.y += param1;
-            if(this._showHelpButton)
+            _loc2_ = this._btnInitPosition + param1;
+            for each(_loc4_ in this._btns)
             {
-               this.helpBtn.y += param1;
+               _loc4_.visible = false;
             }
-            else
+            for each(_loc5_ in this._buttonsOrder)
             {
-               param1 += Y_OFFSET_MENU_BUTTON;
+               _loc3_ = this._btns[_loc5_];
+               _loc3_.y = _loc2_;
+               _loc3_.visible = true;
+               _loc2_ += _loc3_.height + BUTTON_MARGIN | 0;
             }
-            _loc2_ = !!this._showBootcampButton ? int(0) : int(Y_OFFSET_MENU_BUTTON);
-            this.cancelBtn.y += param1 + _loc2_;
-            this.background.height += param1 + _loc2_;
-            this.requestBootcampQuitBtn.y += param1;
-            this.reportBugPanel.y = this.cancelBtn.y + this.cancelBtn.height + REPORT_BUG_PANEL_PADDING;
-            this._isUpdtaePosition = true;
+            this.background.height = _loc2_ + BG_BOTTOM_PADDING - this.background.y | 0;
+            this.reportBugPanel.y = _loc2_ + REPORT_BUG_PANEL_PADDING;
+            this._isUpdatePosition = true;
          }
       }
       
@@ -384,11 +353,6 @@ package net.wg.gui.battle.windows
       private function onCancelBtnPressHandler(param1:ButtonEvent) : void
       {
          cancelClickS();
-      }
-      
-      private function onRequestBootcampQuitBtnPressHandler(param1:ButtonEvent) : void
-      {
-         bootcampClickS();
       }
       
       public function as_setVisibility(param1:Boolean) : void

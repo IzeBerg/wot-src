@@ -249,5 +249,27 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
             this._hull.hasYoh = param1;
          }
       }
+      
+      public function get isAnyTrackCritical() : Boolean
+      {
+         var _loc1_:uint = 0;
+         var _loc2_:int = 0;
+         var _loc3_:DamagePanelItemFrameStates = null;
+         if(this._hull)
+         {
+            _loc1_ = this._hull.modules.length;
+            _loc2_ = 0;
+            while(_loc2_ < _loc1_)
+            {
+               _loc3_ = this._hull.modules[_loc2_];
+               if(VehicleModules.isTrack(_loc3_.name) && _loc3_.state == BATTLE_ITEM_STATES.CRITICAL)
+               {
+                  return true;
+               }
+               _loc2_++;
+            }
+         }
+         return false;
+      }
    }
 }

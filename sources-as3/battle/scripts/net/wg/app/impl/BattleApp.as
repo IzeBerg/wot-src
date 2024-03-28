@@ -17,6 +17,7 @@ package net.wg.app.impl
    import net.wg.gui.components.containers.MainViewContainer;
    import net.wg.gui.components.containers.ManagedContainer;
    import net.wg.gui.components.containers.SimpleManagedContainer;
+   import net.wg.gui.components.containers.TooltipContainer;
    import net.wg.gui.components.controls.VO.BadgeVisualVO;
    import net.wg.gui.components.questProgress.data.QPProgressVO;
    import net.wg.gui.components.questProgress.data.metrics.QPMetricsLimiterVO;
@@ -170,8 +171,7 @@ package net.wg.app.impl
          this._fullscreenWindows = new ManagedContainer(LAYER_NAMES.FULLSCREEN_WINDOWS);
          this._systemMessages = new SimpleManagedContainer(LAYER_NAMES.SYSTEM_MESSAGES);
          this._dialogs = new ManagedContainer(LAYER_NAMES.DIALOGS);
-         this._toolTips = new SimpleManagedContainer(LAYER_NAMES.TOOL_TIPS);
-         this._toolTips.updateMouseHandling(false);
+         this._toolTips = new TooltipContainer(LAYER_NAMES.TOOL_TIPS);
          this._cursorCtnr = new CursorManagedContainer(LAYER_NAMES.CURSOR);
          this._overlay = new ManagedContainer(LAYER_NAMES.OVERLAY);
          super.createContainers();
@@ -318,7 +318,6 @@ package net.wg.app.impl
       {
          atlasMgr.registerAtlas(ATLAS_CONSTANTS.BATTLE_ATLAS);
          atlasMgr.registerAtlas(ATLAS_CONSTANTS.QUESTS_PROGRESS);
-         atlasMgr.registerAtlas(ATLAS_CONSTANTS.DIGITS);
       }
       
       override protected function onAfterAppConfiguring() : void

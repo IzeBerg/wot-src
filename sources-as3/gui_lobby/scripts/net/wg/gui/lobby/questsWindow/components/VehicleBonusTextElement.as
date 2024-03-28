@@ -5,6 +5,7 @@ package net.wg.gui.lobby.questsWindow.components
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.lobby.questsWindow.data.VehicleBonusTextElementVO;
+   import net.wg.infrastructure.managers.ITooltipMgr;
    import scaleform.clik.constants.InvalidationType;
    
    public class VehicleBonusTextElement extends AbstractResizableContent
@@ -98,9 +99,18 @@ package net.wg.gui.lobby.questsWindow.components
       
       private function onBonusesTfRollOverHandler(param1:MouseEvent) : void
       {
+         var _loc2_:ITooltipMgr = null;
          if(this._data != null)
          {
-            App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.QUESTS_VEHICLE_BONUSES,null,this._data.questID);
+            _loc2_ = App.toolTipMgr;
+            if(this._data.tooltip)
+            {
+               _loc2_.show(this._data.tooltip);
+            }
+            else
+            {
+               _loc2_.showSpecial(TOOLTIPS_CONSTANTS.QUESTS_VEHICLE_BONUSES,null,this._data.questID);
+            }
          }
       }
    }

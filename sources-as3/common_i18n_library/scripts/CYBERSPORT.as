@@ -171,8 +171,6 @@ package
       
       public static const WINDOW_UNIT_MESSAGE_VEHICLEINNOTREADY_CREWNOTFULL:String = "#cyberSport:window/unit/message/vehicleInNotReady/crewNotFull";
       
-      public static const WINDOW_UNIT_MESSAGE_VEHICLEINNOTREADY_TOOHEAVY:String = "#cyberSport:window/unit/message/vehicleInNotReady/tooHeavy";
-      
       public static const WINDOW_UNIT_MESSAGE_VEHICLEINNOTREADY_RENTISOVER:String = "#cyberSport:window/unit/message/vehicleInNotReady/rentIsOver";
       
       public static const WINDOW_UNIT_MESSAGE_VEHICLEINNOTREADY_ROTATIONGROUPLOCKED:String = "#cyberSport:window/unit/message/vehicleInNotReady/rotationGroupLocked";
@@ -230,6 +228,8 @@ package
       public static const WINDOW_UNIT_MESSAGE_IN_PLAYERS_MATCHING:String = "#cyberSport:window/unit/message/in_players_matching";
       
       public static const WINDOW_UNIT_MESSAGE_PLAY_LIMITS_IS_ACTIVE:String = "#cyberSport:window/unit/message/play_limits_is_active";
+      
+      public static const WINDOW_UNIT_MESSAGE_HAS_FROZEN_VEHICLES:String = "#cyberSport:window/unit/message/has_frozen_vehicles";
       
       public static const WINDOW_UNIT_READY:String = "#cyberSport:window/unit/ready";
       

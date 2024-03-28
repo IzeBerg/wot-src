@@ -57,11 +57,6 @@ package net.wg.mock
       {
       }
       
-      public function as_isDAAPIInited() : Boolean
-      {
-         return false;
-      }
-      
       public function as_populate() : void
       {
       }
@@ -79,7 +74,7 @@ package net.wg.mock
          return false;
       }
       
-      public final function dispose() : void
+      public function dispose() : void
       {
       }
       
@@ -700,11 +695,6 @@ package net.wg.mock
       {
       }
       
-      public function get disposed() : Boolean
-      {
-         return false;
-      }
-      
       public function get isDAAPIInited() : Boolean
       {
          return false;
@@ -730,13 +720,18 @@ package net.wg.mock
          return null;
       }
       
-      public function get viewTutorialId() : String
+      public function get tutorialId() : String
       {
          return "";
       }
       
-      public function set viewTutorialId(param1:String) : void
+      public function set tutorialId(param1:String) : void
       {
+      }
+      
+      public function get isResizable() : Boolean
+      {
+         return false;
       }
       
       public function dispatchEvent(param1:Event) : Boolean

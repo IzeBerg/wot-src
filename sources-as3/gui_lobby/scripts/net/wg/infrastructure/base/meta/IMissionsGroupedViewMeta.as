@@ -11,5 +11,7 @@ package net.wg.infrastructure.base.meta
       function clickActionBtnS(param1:String) : void;
       
       function onClickButtonDetailsS() : void;
+      
+      function onClickInfoBtnS() : void;
    }
 }

@@ -75,15 +75,7 @@ package net.wg.data.constants.generated
       
       public static const CREW_SKIN:String = "crewSkin";
       
-      public static const CREW_SKIN_NO_AVAILABLE_SKINS:String = "crewSkinNoAvailableSkins";
-      
-      public static const CREW_SKIN_RESTRICTED:String = "crewSkinRestricted";
-      
-      public static const CREW_SKIN_SOUND:String = "crewSkinSound";
-      
       public static const CREW_BOOK:String = "crewBook";
-      
-      public static const CREW_BOOK_RESTRICTED:String = "crewBookRestricted";
       
       public static const VEHICLE_COLLECTOR_INFO:String = "vehicleCollectorInfo";
       
@@ -163,7 +155,7 @@ package net.wg.data.constants.generated
       
       public static const CREW_PERK_GF:String = "crewPerkGf";
       
-      public static const TANKMAN_NEW_SKILL:String = "tankmanNewSkill";
+      public static const COMMANDER_BONUS:String = "commanderBonus";
       
       public static const EFFICIENCY_PARAM:String = "efficiencyParam";
       
@@ -256,8 +248,6 @@ package net.wg.data.constants.generated
       public static const FRONTLINE_COUPON:String = "frontlineCoupon";
       
       public static const FRONTLINE_RANK:String = "frontlineRank";
-      
-      public static const ACTION_XP:String = "actionXP";
       
       public static const SPECIAL:String = "special";
       
@@ -559,13 +549,11 @@ package net.wg.data.constants.generated
       
       public static const COMP7_BATTLE_RESULTS_PRESTIGE_POINTS:String = "comp7BattleResultsPrestigePoints";
       
+      public static const COMP7_VEHICLE_PARAMS_TOOLTIP:String = "comp7VehicleParamsTooltip";
+      
       public static const BLOCKS_DEFAULT_UI:String = "ToolTipInblocksDefaultUI";
       
       public static const TANKMEN_UI:String = "ToolTipTankmenUI";
-      
-      public static const TANKMEN_SKILL_UI:String = "ToolTipSkillUI";
-      
-      public static const TANKMEN_BUY_SKILL_UI:String = "ToolTipBuySkillUI";
       
       public static const ACHIEVEMENT_UI:String = "ToolTipAchievementUI";
       
@@ -695,8 +683,6 @@ package net.wg.data.constants.generated
       
       public static const VEH_CMP_SKILLS:String = "vehCmpSkills";
       
-      public static const VEH_CMP_SKILLS_UI:String = "ToolTipInblocksDefaultUI";
-      
       public static const MISSIONS_TOKEN:String = "missionsToken";
       
       public static const MISSIONS_TOKEN_UI:String = "ToolTipInblocksDefaultUI";
@@ -753,6 +739,8 @@ package net.wg.data.constants.generated
       
       public static const RANDOM_CREWBOOK:String = "RandomCrewbookTooltipData";
       
+      public static const RANDOM_CREWBOOK_MAPBOX:String = "RandomCrewbookMapboxTooltipData";
+      
       public static const ACCOUNT_COMPLETION:String = "AccountCompletion";
       
       public static const DEMO_ACCOUNT_RENAME_PROCESSING:String = "DemoAccountRenameProcessing";
@@ -779,15 +767,21 @@ package net.wg.data.constants.generated
       
       public static const OPTDEV_SLOT_STATE_ACTIVE_SELECTED:String = "activeSelected";
       
-      public static const EVENT_LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT:String = "eventLootBoxesVehicleBlueprintFragment";
+      public static const LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT:String = "lootBoxesVehicleBlueprintFragment";
+      
+      public static const LOOT_BOX_TOOLTIP:String = "lootBoxTooltip";
+      
+      public static const LOOT_BOX_GUARANTEED_REWARD_TOOLTIP:String = "lootBoxGuaranteedRewardTooltip";
       
       public static const ARMORY_YARD_AWARD_VEHICLE:String = "armoryYardAwardVehicle";
+      
+      public static const DEBUT_BOXES_BADGE:String = "debutBoxesBadge";
       
       public static const ACHIEVEMENTS_SET:Array = [BATTLE_STATS_ACHIEVS,BATTLE_STATS_MARKS_ON_GUN_ACHIEVEMENT,ACHIEVEMENT,MARKS_ON_GUN_ACHIEVEMENT,GLOBAL_RATING,MARK_OF_MASTERY,ACHIEVEMENT_ATTR,SHOP_ACHIEVEMENT,SHOP_BADGE,REFERRAL_BADGE];
       
       public static const BOOSTERS_SET:Array = [INVENTORY_BATTLE_BOOSTER,AWARD_BATTLE_BOOSTER,EPIC_AWARD_BATTLE_BOOSTER,BATTLE_BOOSTER_BLOCK,DEFAULT_BATTLE_BOOSTER,SHOP_BATTLE_BOOSTER,BATTLE_BOOSTER_COMPARE,BOOSTERS_BOOSTER_INFO,CLAN_RESERVE_INFO,BOOSTER,SHOP_BOOSTER,BOOSTERS_QUESTS,NATION_CHANGE_BATTLE_BOOSTER,PERSONAL_RESERVES_WIDGET];
       
-      public static const COMMON_SET:Array = [EFFICIENCY_PARAM,IGR_INFO,CONTACT,SORTIE_DIVISION,MAP,MAP_SMALL,CLAN_COMMON_INFO,ACTION_PRICE,ACTION_SLOT_PRICE,PRICE_DISCOUNT,FRONTLINE_PRICE_DISCOUNT,ACTION_XP,QUESTS_VEHICLE_BONUSES,ENVIRONMENT,MISSIONS_TOKEN,RESERVE_MODULE,CRYSTAL_INFO,EVENT_COIN_INFO,CREDITS_INFO,GOLD_INFO,BPCOIN_INFO,EQUIP_COIN_INFO,FREEXP_INFO,VEHICLE_FILTER,VEHICLE_ELITE_BONUS,VEHICLE_HISTORICAL_REFERENCE,SQUAD_BONUS,BATTLE_PASS_NOT_STARTED,BATTLE_PASS_NO_CHAPTER,BATTLE_PASS_IN_PROGRESS,BATTLE_PASS_COMPLETED,BATTLE_PASS_VEHICLE_POINTS,TECHTREE_DISCOUNT_INFO,TECHTREE_NATION_DISCOUNT,DOG_TAGS_INFO,CRYSTAL_INFO_FULL_SCREEN,CREDITS_INFO_FULL_SCREEN,GOLD_INFO_FULL_SCREEN,FREEXP_INFO_FULL_SCREEN,VEH_POST_PROGRESSION_ENTRY_POINT,WOT_PLUS,ADDITIONAL_REWARDS,BRCOIN_INFO_FULL_SCREEN,EQUIP_COIN_INFO_FULL_SCREEN,OLD_RESERVE_MODULE];
+      public static const COMMON_SET:Array = [EFFICIENCY_PARAM,IGR_INFO,CONTACT,SORTIE_DIVISION,MAP,MAP_SMALL,CLAN_COMMON_INFO,ACTION_PRICE,ACTION_SLOT_PRICE,PRICE_DISCOUNT,FRONTLINE_PRICE_DISCOUNT,QUESTS_VEHICLE_BONUSES,ENVIRONMENT,MISSIONS_TOKEN,RESERVE_MODULE,CRYSTAL_INFO,EVENT_COIN_INFO,CREDITS_INFO,GOLD_INFO,BPCOIN_INFO,EQUIP_COIN_INFO,FREEXP_INFO,VEHICLE_FILTER,VEHICLE_ELITE_BONUS,VEHICLE_HISTORICAL_REFERENCE,SQUAD_BONUS,BATTLE_PASS_NOT_STARTED,BATTLE_PASS_NO_CHAPTER,BATTLE_PASS_IN_PROGRESS,BATTLE_PASS_COMPLETED,BATTLE_PASS_VEHICLE_POINTS,TECHTREE_DISCOUNT_INFO,TECHTREE_NATION_DISCOUNT,DOG_TAGS_INFO,CRYSTAL_INFO_FULL_SCREEN,CREDITS_INFO_FULL_SCREEN,GOLD_INFO_FULL_SCREEN,FREEXP_INFO_FULL_SCREEN,VEH_POST_PROGRESSION_ENTRY_POINT,ADDITIONAL_REWARDS,BRCOIN_INFO_FULL_SCREEN,EQUIP_COIN_INFO_FULL_SCREEN,OLD_RESERVE_MODULE,DEBUT_BOXES_BADGE];
       
       public static const BOOTCAMP_SET:Array = [BOOTCAMP_AWARD_MEDAL,BOOTCAMP_REWARD_PROGRESS,BOOTCAMP_LESSON_PROGRESS];
       
@@ -809,7 +803,7 @@ package net.wg.data.constants.generated
       
       public static const MARATHON_SET:Array = [MARATHON_QUESTS_PREVIEW];
       
-      public static const TANKMAN_SET:Array = [TANKMAN,TANKMAN_NEW_SKILL,TANKMAN_NOT_RECRUITED,BATTLE_ROYALE_TANKMAN,CREW_PERK_GF];
+      public static const TANKMAN_SET:Array = [TANKMAN,TANKMAN_NOT_RECRUITED,BATTLE_ROYALE_TANKMAN,CREW_PERK_GF,COMMANDER_BONUS];
       
       public static const RANKED_SET:Array = [RANKED_BATTLES_POSITION,RANKED_BATTLES_EFFICIENCY,RANKED_BATTLES_LEAGUE,RANKED_BATTLES_BONUS,RANKED_BATTLES_RANK,RANKED_STEP,RANKED_CALENDAR_DAY_INFO,RANKED_CALENDAR_DAY_INFO_EXTENDED,RANKED_SELECTOR_INFO,RANKED_UNAVAILABLE_INFO,RANKED_DIVISION_INFO,RANKED_BATTLES_YEAR_REWARD,RANKED_QUESTS_PREVIEW,RANKED_BATTLES_SELECTABLE_REWARD];
       
@@ -827,9 +821,9 @@ package net.wg.data.constants.generated
       
       public static const WGM_CURRENCY_SET:Array = [GOLD_STATS,CREDITS_STATS,CREDITS_STATS_FULL_SCREEN,GOLD_STATS_FULL_SCREEN];
       
-      public static const CREW_SKIN_SET:Array = [CREW_SKIN,CREW_SKIN_RESTRICTED,CREW_SKIN_NO_AVAILABLE_SKINS,CREW_SKIN_SOUND];
+      public static const CREW_SKIN_SET:Array = [CREW_SKIN];
       
-      public static const CREW_BOOK_SET:Array = [CREW_BOOK,CREW_BOOK_RESTRICTED];
+      public static const CREW_BOOK_SET:Array = [CREW_BOOK];
       
       public static const CREW_BUNDLE_SET:Array = [SHOP_CREW_BUNDLE];
       
@@ -855,7 +849,7 @@ package net.wg.data.constants.generated
       
       public static const ROYALE_LOBBY_SET:Array = [BATTLE_ROYALE_VEHICLE,BATTLE_ROYALE_MODULES_HANGAR,BATTLE_ROYALE_BATTLE_PROGRESSION,BATTLE_ROYALE_EQUIPMENT,BATTLE_ROYALE_PERF_SIMPLE,BATTLE_ROYALE_PERF_ADVANCED,BATTLE_ROYALE_SELECTOR_INFO,BATTLE_ROYALE_WIDGET_INFO,BATTLE_ROYALE_COMPLETED_QUESTS_INFO,BATTLE_ROYALE_SELECTOR_CALENDAR_INFO,BATTLE_ROYALE_PROXY_CURRENCY];
       
-      public static const MAPBOX_LOBBY_SET:Array = [MAPBOX_SELECTOR_INFO,MAPBOX_PROGRESSION_PREVIEW,SELECTABLE_CREWBOOK,RANDOM_CREWBOOK,MAPBOX_CALENDAR];
+      public static const MAPBOX_LOBBY_SET:Array = [MAPBOX_SELECTOR_INFO,MAPBOX_PROGRESSION_PREVIEW,SELECTABLE_CREWBOOK,RANDOM_CREWBOOK_MAPBOX,MAPBOX_CALENDAR];
       
       public static const ACCOUNT_COMPLETION_SET:Array = [ACCOUNT_COMPLETION,DEMO_ACCOUNT_RENAME_PROCESSING];
       
@@ -869,9 +863,11 @@ package net.wg.data.constants.generated
       
       public static const COMP7_BATTLE_SET:Array = [COMP7_ROLE_SKILL_BATTLE_TOOLTIP,VEHICLE_ROLES];
       
-      public static const EVLB_LOBBY_SET:Array = [EVENT_LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT];
+      public static const LB_LOBBY_SET:Array = [LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT,LOOT_BOX_TOOLTIP,LOOT_BOX_GUARANTEED_REWARD_TOOLTIP];
       
       public static const ARMORY_YARD_LOBBY_SET:Array = [ARMORY_YARD_AWARD_VEHICLE];
+      
+      public static const WOT_PLUS_SET:Array = [WOT_PLUS];
        
       
       public function TOOLTIPS_CONSTANTS()

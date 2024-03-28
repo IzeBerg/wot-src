@@ -84,6 +84,7 @@ package net.wg.infrastructure.managers.utils.impl
       
       public function setModalFocus(param1:IManagedContent) : void
       {
+         DebugUtils.LOG_TRACE("Modal focus has changed to view: " + (Boolean(param1) ? param1.sourceView.as_config.name : "<none>"));
          if(param1 != null)
          {
             FocusManager.setModalClip(Sprite(param1.containerContent));

@@ -36,6 +36,8 @@ package net.wg.gui.battle.views.destroyTimers
       
       private var _isFullSize:Boolean = true;
       
+      private var _isAppearing:Boolean = true;
+      
       private var _tweenXDelay:int = 0;
       
       private var _tweenX:Tween = null;
@@ -73,9 +75,22 @@ package net.wg.gui.battle.views.destroyTimers
          this._tweenXDelay = 0;
          if(_loc1_)
          {
-            this.applyFadeTween(this._destroyTimerContainer,true,TWEEN_X_DURATION);
-            this.applyFadeTween(this._secondaryTimerContainer,false,CROPPED_FADE_IN_DELAY);
+            this.clearFadeTweens();
+            if(this._isAppearing)
+            {
+               this._destroyTimerContainer.visible = false;
+               this._secondaryTimerContainer.visible = true;
+               this._secondaryTimerContainer.alpha = 1;
+            }
+            else
+            {
+               this._destroyTimerContainer.visible = true;
+               this._secondaryTimerContainer.visible = true;
+               this.applyFadeTween(this._destroyTimerContainer,true,TWEEN_X_DURATION);
+               this.applyFadeTween(this._secondaryTimerContainer,false,CROPPED_FADE_IN_DELAY);
+            }
          }
+         this._isAppearing = false;
          return true;
       }
       
@@ -86,10 +101,23 @@ package net.wg.gui.battle.views.destroyTimers
          this._tweenXDelay = 0;
          if(!_loc1_)
          {
+            this.clearFadeTweens();
             this._tweenXDelay = FADE_OUT_TWEEN_DURATION;
-            this.applyFadeTween(this._destroyTimerContainer,false,FULL_SIZE_FADE_IN_DELAY);
-            this.applyFadeTween(this._secondaryTimerContainer,true);
+            if(this._isAppearing)
+            {
+               this._destroyTimerContainer.alpha = 1;
+               this._destroyTimerContainer.visible = true;
+               this._secondaryTimerContainer.visible = false;
+            }
+            else
+            {
+               this._destroyTimerContainer.visible = true;
+               this._secondaryTimerContainer.visible = true;
+               this.applyFadeTween(this._destroyTimerContainer,false,FULL_SIZE_FADE_IN_DELAY);
+               this.applyFadeTween(this._secondaryTimerContainer,true);
+            }
          }
+         this._isAppearing = false;
          return true;
       }
       
@@ -100,6 +128,7 @@ package net.wg.gui.battle.views.destroyTimers
       
       public function hideTimer() : void
       {
+         this._isAppearing = true;
          this.destroyTimer.hideTimer();
          this.secondaryTimer.hideTimer();
       }
@@ -118,7 +147,8 @@ package net.wg.gui.battle.views.destroyTimers
          }
          this.destroyTimer.setSettings(param1);
          this.secondaryTimer.setSettings(param1);
-         this._secondaryTimerContainer.alpha = 0;
+         this._secondaryTimerContainer.visible = false;
+         this.secondaryTimer.cropSize();
       }
       
       public function setSpeed(param1:Number) : void
@@ -177,7 +207,8 @@ package net.wg.gui.battle.views.destroyTimers
             param1.alpha = 1;
             this._fadeOutTweenX = new Tween(FADE_OUT_TWEEN_DURATION,param1,{"alpha":0},{
                "delay":param3,
-               "ease":Linear.easeNone
+               "ease":Linear.easeNone,
+               "onComplete":this.onOutTweenComplete
             });
          }
          else
@@ -218,6 +249,18 @@ package net.wg.gui.battle.views.destroyTimers
          }
       }
       
+      private function onOutTweenComplete() : void
+      {
+         if(this._isFullSize)
+         {
+            this._secondaryTimerContainer.visible = false;
+         }
+         else
+         {
+            this._destroyTimerContainer.visible = false;
+         }
+      }
+      
       public function get typeId() : String
       {
          return this.destroyTimer.typeId;
@@ -230,12 +273,12 @@ package net.wg.gui.battle.views.destroyTimers
       
       public function get actualWidth() : Number
       {
-         return !!this.destroyTimer.visible ? Number(this.destroyTimer.actualWidth) : Number(this.secondaryTimer.actualWidth);
+         return !!this._isFullSize ? Number(this.destroyTimer.actualWidth) : Number(this.secondaryTimer.actualWidth);
       }
       
       public function get isActive() : Boolean
       {
-         return !!this.destroyTimer.visible ? Boolean(this.destroyTimer.isActive) : Boolean(this.secondaryTimer.isActive);
+         return !!this._isFullSize ? Boolean(this.destroyTimer.isActive) : Boolean(this.secondaryTimer.isActive);
       }
       
       public function set isActive(param1:Boolean) : void

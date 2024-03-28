@@ -85,7 +85,7 @@ package net.wg.data.constants.generated
       
       public static const BOOTCAMP_SECONDARY_HINT:String = "bootcampSecondaryHint";
       
-      public static const BOOTCAMP_BATTLE_TOP_HINT:String = "bootcampBattleTopHint";
+      public static const ANIMATED_BATTLE_HINT:String = "animatedBattleHint";
       
       public static const GAME_MESSAGES_PANEL:String = "gameMessagesPanel";
       
@@ -177,9 +177,13 @@ package net.wg.data.constants.generated
       
       public static const PIERCING_DEBUG_PANEL:String = "piercingDebugPanel";
       
+      public static const MAP_INFO_TIP:String = "mapInfoTip";
+      
       public static const COMP7_TANK_CAROUSEL:String = "comp7BattleTankCarousel";
       
       public static const COMP7_TANK_CAROUSEL_FILTER_POPOVER:String = "comp7TankCarouselFilterPopover";
+      
+      public static const COSMIC_HUD:String = "cosmicHud";
        
       
       public function BATTLE_VIEW_ALIASES()

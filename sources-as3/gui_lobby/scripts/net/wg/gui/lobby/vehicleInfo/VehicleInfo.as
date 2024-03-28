@@ -119,6 +119,7 @@ package net.wg.gui.lobby.vehicleInfo
          }]);
          this.compareBtn.mouseEnabledOnDisabled = true;
          this.compareBtn.addEventListener(ButtonEvent.CLICK,this.onCompareBtnClickHandler);
+         this.changeNationBtn.mouseEnabledOnDisabled = true;
          this.changeNationBtn.addEventListener(ButtonEvent.CLICK,this.onChangeNationBtnClickHandler);
          this.closeBtn.label = MENU.MODULEINFO_CLOSEBTN;
          this.closeBtn.addEventListener(ButtonEvent.CLICK,this.onCloseBtnClickHandler);

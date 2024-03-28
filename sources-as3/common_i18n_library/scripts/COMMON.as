@@ -25,6 +25,8 @@ package
       
       public static const MULTIPLIER:String = "#common:multiplier";
       
+      public static const PERCENTVALUE:String = "#common:percentValue";
+      
       public static const INPUT_PLACEHOLDER_EMAIL:String = "#common:input/placeholder/email";
       
       public static const INPUT_PLACEHOLDER_SEARCH:String = "#common:input/placeholder/search";

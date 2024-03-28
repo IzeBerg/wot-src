@@ -12,6 +12,6 @@ package net.wg.infrastructure.interfaces
       
       function setFocusedView(param1:IManagedContent) : void;
       
-      function getTopmostView() : IManagedContent;
+      function getTopmostView(param1:Boolean = false) : IManagedContent;
    }
 }

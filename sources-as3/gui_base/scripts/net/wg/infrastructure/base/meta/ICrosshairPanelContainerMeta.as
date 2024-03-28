@@ -26,7 +26,7 @@ package net.wg.infrastructure.base.meta
       
       function as_setHealth(param1:Number) : void;
       
-      function as_setAmmoStock(param1:Number, param2:Number, param3:Boolean, param4:String, param5:Boolean) : void;
+      function as_setAmmoStock(param1:Number, param2:Number, param3:String, param4:Boolean) : void;
       
       function as_setClipParams(param1:Number, param2:Number, param3:Boolean) : void;
       
@@ -94,6 +94,8 @@ package net.wg.infrastructure.base.meta
       
       function as_updateScaleWidget(param1:Number) : void;
       
+      function as_updateScaleSteps(param1:int) : void;
+      
       function as_setGunMarkersIndicators(param1:Array) : void;
       
       function as_setShotFlyTimes(param1:Array) : void;
@@ -103,5 +105,7 @@ package net.wg.infrastructure.base.meta
       function as_isFaded(param1:Boolean) : void;
       
       function as_blinkReloadTime(param1:int) : void;
+      
+      function as_setDualAccActive(param1:Boolean) : void;
    }
 }

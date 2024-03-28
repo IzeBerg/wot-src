@@ -210,7 +210,7 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
             }
             else
             {
-               this._atlasItemName = VehicleMinimapEntryConst.LAST_LIT_ICON_NAME + ATLAS_NAME_DELIMITER + this._guiLabel + ATLAS_NAME_DELIMITER + this._deadState + this._aliasColor;
+               this._atlasItemName = VehicleMinimapEntryConst.LAST_LIT_ICON_NAME + ATLAS_NAME_DELIMITER + this._guiLabel + ATLAS_NAME_DELIMITER + this._aliasColor;
             }
             if(this._deadState == VehicleMinimapEntryConst.DEAD)
             {

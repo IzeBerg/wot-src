@@ -28,7 +28,7 @@ package net.wg.infrastructure.base.meta
       
       function as_initPrebattleSize(param1:int) : void;
       
-      function as_setScenarioEvent(param1:String, param2:String) : void;
+      function as_setScenarioEvent(param1:String, param2:String, param3:String) : void;
       
       function as_setScenarioEventVisible(param1:String, param2:Boolean) : void;
       

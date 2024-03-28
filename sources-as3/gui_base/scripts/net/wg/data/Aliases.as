@@ -49,19 +49,13 @@ package net.wg.data
       
       public static const PREMIUM_FORM:String = "premiumForm";
       
-      public static const PERSONAL_CASE:String = "personalCase";
-      
       public static const BATTLE_RESULTS:String = "battleResults";
-      
-      public static const RECRUIT_WINDOW:String = "recruitWindow";
       
       public static const EXCHANGE_WINDOW:String = "exchangeWindow";
       
       public static const EXCHANGE_VCOIN_WINDOW:String = "exchangeVcoinWindow";
       
       public static const EXCHANGE_XP_WINDOW:String = "exchangeXPWindow";
-      
-      public static const EXCHANGE_FREE_TO_TANKMAN_XP_WINDOW:String = "exchangeFreeToTankmanXpWindow";
       
       public static const VEHICLE_BUY_WINDOW:String = "vehicleBuyWindow";
       
@@ -73,8 +67,6 @@ package net.wg.data
       
       public static const NOTIFICATIONS_LIST:String = "notificationsList";
       
-      public static const RETRAIN_CREW:String = "retrainCrewWindow";
-      
       public static const CREW_OPERATIONS_POPOVER:String = "crewOperationsPopOver";
       
       public static const BATTLE_TYPE_SELECT_POPOVER:String = "battleTypeSelectPopover";
@@ -84,8 +76,6 @@ package net.wg.data
       public static const SYSTEM_MESSAGES_GENERATOR_WINDOW:String = "SystemMessagesGenerator";
       
       public static const TRAINING_WINDOW:String = "trainingWindow";
-      
-      public static const SKILL_DROP_WINDOW:String = "skillDropWindow";
       
       public static const SQUAD_MESSENGER:String = "squadMessenger";
       
@@ -177,6 +167,8 @@ package net.wg.data
       
       public static const PROFILE_SUMMARY_PAGE:String = "profileSummaryPage";
       
+      public static const PROFILE_TOTAL_PAGE:String = "profileTotalPage";
+      
       public static const PROFILE_SECTION:String = "profileSection";
       
       public static const PROFILE_SUMMARY_WINDOW:String = "profileSummaryWindow";
@@ -192,6 +184,8 @@ package net.wg.data
       public static const PROFILE_FORMATIONS_PAGE:String = "profileFormationsPage";
       
       public static const PROFILE_HOF:String = "profileHof";
+      
+      public static const PROFILE_COLLECTIONS_PAGE:String = "profileCollectionsPage";
       
       public static const ITEM_SELECTOR_DEMONSTRATOR:String = "DemonstrationItem_UI";
       
@@ -251,7 +245,7 @@ package net.wg.data
       
       public static const DAILY_QUEST_WIDGET:String = "dqWidget";
       
-      public static const CLIENT_VIEWS:Array = [LOGIN,LOBBY,TEST_WINDOW,EULA,BATTLE_SESSION_WINDOW,BATTLE_SESSION_LIST,LOBBY_HANGAR,LOBBY_SHOP,LOBBY_PROFILE,LOBBY_BARRACKS,LOBBY_MISSIONS,LOBBY_MISSION_DETAILS,LOBBY_EVENT_BOARDS_TABLE,BATTLE_RESULTS,RECRUIT_WINDOW,EXCHANGE_WINDOW,EXCHANGE_VCOIN_WINDOW,EXCHANGE_FREE_TO_TANKMAN_XP_WINDOW,EXCHANGE_XP_WINDOW,VEHICLE_BUY_WINDOW,SIMPLE_DLG,ICON_PRICE_DLG,ICON_DLG,LOBBY_TRAINING_FORM,TRAINING_WINDOW,TEAM_LIST_WINDOW,TEAM_WINDOW,PROFILE_WINDOW,CONFIRM_MODULE_WINDOW,LOBBY_TRAINING_ROOM,VEHICLE_SELL_DIALOG,PREMIUM_FORM,PERSONAL_CASE,SKILL_DROP_WINDOW,SQUAD_MESSENGER,PRB_SEND_INVITE_WINDOW,NOTIFICATIONS_LIST,RETRAIN_CREW,CREW_OPERATIONS_POPOVER,BATTLE_TYPE_SELECT_POPOVER,SYSTEM_MESSAGE_DIALOG,SECURE_CHANNEL_WINDOW,DISMISS_TANKMAN_DIALOG];
+      public static const CLIENT_VIEWS:Array = [LOGIN,LOBBY,TEST_WINDOW,EULA,BATTLE_SESSION_WINDOW,BATTLE_SESSION_LIST,LOBBY_HANGAR,LOBBY_SHOP,LOBBY_PROFILE,LOBBY_BARRACKS,LOBBY_MISSIONS,LOBBY_MISSION_DETAILS,LOBBY_EVENT_BOARDS_TABLE,BATTLE_RESULTS,EXCHANGE_WINDOW,EXCHANGE_VCOIN_WINDOW,EXCHANGE_XP_WINDOW,VEHICLE_BUY_WINDOW,SIMPLE_DLG,ICON_PRICE_DLG,ICON_DLG,LOBBY_TRAINING_FORM,TRAINING_WINDOW,TEAM_LIST_WINDOW,TEAM_WINDOW,PROFILE_WINDOW,CONFIRM_MODULE_WINDOW,LOBBY_TRAINING_ROOM,VEHICLE_SELL_DIALOG,PREMIUM_FORM,SQUAD_MESSENGER,PRB_SEND_INVITE_WINDOW,NOTIFICATIONS_LIST,CREW_OPERATIONS_POPOVER,BATTLE_TYPE_SELECT_POPOVER,SYSTEM_MESSAGE_DIALOG,SECURE_CHANNEL_WINDOW,DISMISS_TANKMAN_DIALOG];
       
       public static const DEBUG_VIEWS:Array = [DEBUG_CONTROLS,DEBUG_ADVANCED,DEBUG_WINDOWS,DEBUG_CREW,INTRO];
       
@@ -259,7 +253,7 @@ package net.wg.data
       
       public static const SYSTEM_VIEWS:Array = [PRESENTER,CURSOR];
       
-      public static const DEFAULT_VIEWS:Array = [RETRAIN_CREW];
+      public static const DEFAULT_VIEWS:Array = [];
        
       
       public function Aliases()

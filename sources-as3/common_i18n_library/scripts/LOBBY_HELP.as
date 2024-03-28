@@ -31,13 +31,13 @@ package
       
       public static const HANGAR_CREW:String = "#lobby_help:hangar/crew";
       
+      public static const HANGAR_CREWOPERATIONS:String = "#lobby_help:hangar/crewOperations";
+      
       public static const HANGAR_VEHICLE_PARAMETERS:String = "#lobby_help:hangar/vehicle-parameters";
       
       public static const HANGAR_VEHICLE_CAROUSEL:String = "#lobby_help:hangar/vehicle-carousel";
       
       public static const HANGAR_QUESTSCONTROL:String = "#lobby_help:hangar/questsControl";
-      
-      public static const HANGAR_CREWOPERATIONBTN:String = "#lobby_help:hangar/crewOperationBtn";
       
       public static const HANGAR_VEHRESEARCHPANEL:String = "#lobby_help:hangar/vehResearchPanel";
       
