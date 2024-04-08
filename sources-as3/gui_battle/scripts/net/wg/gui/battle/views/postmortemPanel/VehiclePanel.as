@@ -18,7 +18,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       private static const ELEMENTS_GAP:int = 7;
       
-      private static const VEHICLE_IMAGE_HEIGHT:int = 22;
+      protected static const VEHICLE_IMAGE_HEIGHT:int = 22;
        
       
       public var bgMC:BattleAtlasSprite = null;
@@ -29,7 +29,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       public var nameTF:TextField = null;
       
-      private var _vehicleMC:Image = null;
+      protected var vehicleMC:Image = null;
       
       private var _disposed:Boolean = false;
       
@@ -39,8 +39,8 @@ package net.wg.gui.battle.views.postmortemPanel
          this.bgMC.imageName = BATTLEATLAS.POSTMORTEM_VEHICLE_PANEL_BG;
          this.levelTF.autoSize = TextFieldAutoSize.LEFT;
          this.nameTF.autoSize = TextFieldAutoSize.LEFT;
-         this._vehicleMC = new Image();
-         addChild(this._vehicleMC);
+         this.vehicleMC = new Image();
+         addChild(this.vehicleMC);
       }
       
       public final function dispose() : void
@@ -51,9 +51,9 @@ package net.wg.gui.battle.views.postmortemPanel
          this.nameTF = null;
          this.typeMC.dispose();
          this.typeMC = null;
-         this._vehicleMC.removeEventListener(Event.CHANGE,this.onVehicleMCChangeHandler);
-         this._vehicleMC.dispose();
-         this._vehicleMC = null;
+         this.vehicleMC.removeEventListener(Event.CHANGE,this.onVehicleMCChangeHandler);
+         this.vehicleMC.dispose();
+         this.vehicleMC = null;
       }
       
       public function isDisposed() : Boolean
@@ -68,22 +68,22 @@ package net.wg.gui.battle.views.postmortemPanel
          this.levelTF.text = param1;
          if(param4 == Values.EMPTY_STR)
          {
-            this._vehicleMC.clearImage();
+            this.vehicleMC.clearImage();
             this.adjustPositions();
          }
          else
          {
-            this._vehicleMC.source = param4;
-            this._vehicleMC.addEventListener(Event.CHANGE,this.onVehicleMCChangeHandler);
+            this.vehicleMC.source = param4;
+            this.vehicleMC.addEventListener(Event.CHANGE,this.onVehicleMCChangeHandler);
          }
       }
       
-      private function adjustPositions() : void
+      protected function adjustPositions() : void
       {
          this.levelTF.x = HORIZONTAL_MARGIN;
-         this._vehicleMC.y = this.height - VEHICLE_IMAGE_HEIGHT >> 1;
-         this._vehicleMC.x = this.levelTF.x + this.levelTF.width;
-         this.typeMC.x = this._vehicleMC.x + this._vehicleMC.width * this._vehicleMC.scaleX - ELEMENTS_GAP;
+         this.vehicleMC.y = this.height - VEHICLE_IMAGE_HEIGHT >> 1;
+         this.vehicleMC.x = this.levelTF.x + this.levelTF.width;
+         this.typeMC.x = this.vehicleMC.x + this.vehicleMC.width * this.vehicleMC.scaleX - ELEMENTS_GAP;
          this.nameTF.x = this.typeMC.x + this.typeMC.originalWidth + ELEMENTS_GAP;
          this.bgMC.width = this.nameTF.x + this.nameTF.width + HORIZONTAL_MARGIN;
          this.x = -this.width >> 1;
@@ -91,8 +91,8 @@ package net.wg.gui.battle.views.postmortemPanel
       
       private function onVehicleMCChangeHandler(param1:Event) : void
       {
-         this._vehicleMC.height = VEHICLE_IMAGE_HEIGHT;
-         this._vehicleMC.scaleX = this._vehicleMC.scaleY;
+         this.vehicleMC.height = VEHICLE_IMAGE_HEIGHT;
+         this.vehicleMC.scaleX = this.vehicleMC.scaleY;
          this.adjustPositions();
       }
    }

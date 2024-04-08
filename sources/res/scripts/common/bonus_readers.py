@@ -1,6 +1,6 @@
 import time
 from typing import Union, TYPE_CHECKING
-import blueprints, dossiers2
+import dossiers2
 from dynamic_currencies import g_dynamicCurrenciesData
 import items, calendar
 from account_shared import validateCustomizationItem
@@ -477,6 +477,8 @@ def __readBonus_vehicle(bonus, _name, section, eventType, checkLimit):
         extra['unlock'] = True
     if section.has_key('unlockModules'):
         extra['unlockModules'] = True
+    if section.has_key('bonusOrder'):
+        extra['bonusOrder'] = section['bonusOrder'].asInt
     vehicleBonuses = bonus.setdefault('vehicles', {})
     vehKey = vehCompDescr if vehCompDescr else vehTypeCompDescr
     if vehKey in vehicleBonuses:
@@ -536,7 +538,6 @@ def __readBonus_tankmen(bonus, vehTypeCompDescr, section, eventType, checkLimit)
            'lastNameID': subsection.readInt('lastNameID', -1), 
            'role': subsection.readString('role', ''), 
            'iconID': subsection.readInt('iconID', -1), 
-           'roleLevel': subsection.readInt('roleLevel', 50), 
            'freeXP': subsection.readInt('freeXP', 0), 
            'fnGroupID': subsection.readInt('fnGroupID', 0), 
            'lnGroupID': subsection.readInt('lnGroupID', 0), 
@@ -664,24 +665,24 @@ def __readBonus_crewSkin(bonus, _name, section, eventType, checkLimit):
 
 
 def __readBonus_tokens(bonus, _name, section, eventType, checkLimit):
-    id = section['id'].asString
-    checkLogExtInfoLen(id, 'token')
-    if id.startswith(tankmen.RECRUIT_TMAN_TOKEN_PREFIX) and tankmen.getRecruitInfoFromToken(id) is None:
-        raise SoftException(('Invalid tankman token format: {}').format(id))
-    token = bonus.setdefault('tokens', {})[id] = {}
+    tokenID = section['id'].asString
+    checkLogExtInfoLen(tokenID, 'token')
+    if tokenID.startswith(tankmen.RECRUIT_TMAN_TOKEN_PREFIX) and tankmen.getRecruitInfoFromToken(tokenID) is None:
+        raise SoftException(('Invalid tankman token format: {}').format(tokenID))
+    token = bonus.setdefault('tokens', {})[tokenID] = {}
     expires = token.setdefault('expires', {})
-    __readBonus_expires(id, expires, section)
+    __readBonus_expires(tokenID, expires, section)
     if section.has_key('limit'):
         token['limit'] = section['limit'].asInt
     token['count'] = 1
     if section.has_key('count'):
         token['count'] = section['count'].asInt
-    res = validateCustomizationQuestToken(id, token)
+    res = validateCustomizationQuestToken(tokenID, token)
     if not res[0]:
         raise SoftException(res[1])
     if checkLimit and token['count'] > INVOICE_LIMITS.TOKENS_MAX:
         raise SoftException('Invalid count of tankman token with id %s with amount %d when limit is %d.' % (
-         id, token['count'], INVOICE_LIMITS.TOKENS_MAX))
+         tokenID, token['count'], INVOICE_LIMITS.TOKENS_MAX))
     return
 
 
@@ -748,7 +749,7 @@ def _readEntitlementSection(section, checkLimit, readOp=False):
          entID, entitlement['count'], INVOICE_LIMITS.ENTITLEMENTS_MAX))
     if section.has_key('expires'):
         entitlement['expires'] = expires = {}
-        __readBonus_expires(id, expires, section)
+        __readBonus_expires(entID, expires, section)
     return (entID, entitlement)
 
 
@@ -760,7 +761,7 @@ def __readBonus_currency(bonus, _name, section, eventType, checkLimit):
     currency['count'] = section['count'].asInt
 
 
-def __readBonus_expires(id, expires, section):
+def __readBonus_expires(bonusID, expires, section):
     if section['expires'].has_key('endOfGameDay'):
         expires['endOfGameDay'] = True
         return
@@ -770,7 +771,7 @@ def __readBonus_expires(id, expires, section):
         else:
             expires['at'] = readUTC(section, 'expires')
             if expires['at'] is None:
-                raise SoftException('Invalid expiry time for %s' % id)
+                raise SoftException('Invalid expiry time for %s' % bonusID)
         return
 
 
@@ -1031,13 +1032,15 @@ def __readBonus_battlePassPoints(bonus, _name, section, eventType, checkLimit):
 def __readBonus_dailyQuestReroll(bonus, name, section, eventType, checkLimit):
     data = section.asString
     levels = set(data.strip().split())
-    if set(levels).intersection(DailyQuestsLevels.DAILY) != levels:
+    if set(levels).intersection(DailyQuestsLevels.ALL) != levels:
         raise SoftException(('Invalid daily quest level {}').format(levels))
     bonus[name] = levels
 
 
 def __readBonus_noviceReset(bonus, name, section, eventType, checkLimit):
-    bonus[name] = True
+    noviceType = section['noviceType'].asInt
+    noviceRating = section['noviceRating'].asInt
+    bonus[name] = {'noviceType': noviceType, 'noviceRating': noviceRating}
 
 
 def __readBonus_freePremiumCrew(bonus, _name, section, eventType, checkLimit):

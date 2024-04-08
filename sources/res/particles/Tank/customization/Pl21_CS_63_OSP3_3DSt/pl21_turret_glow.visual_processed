@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>mt_glow</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 1.000000 0.400000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/smoke_thin_tiled_v.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.500000 0.400000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.200000 0.200000 0.200000 0.200000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke_1.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>2.000000 1.500000 1.500000 0.000000</Vector4>
+					</property>
+					<property>
+						softFactor
+						<Float>0.400000</Float>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.000000 0.184314 0.498039 0.500000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.807145 0.740929 1.329986</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>0.101432 0.039521 0.619164</min>
+		<max>1.512857 1.442338 2.040807</max>
+	</boundingBox>
+	<geometrySize>20232</geometrySize>
+	<minUVDensity>0.095116</minUVDensity>
+</root>

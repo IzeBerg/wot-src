@@ -42,6 +42,7 @@ class PointsOfInterestController(IPointsOfInterestController):
         poiGameObject = self.__vehPoiRegistry.get(vehicleID, {}).get(poiName)
         if poiGameObject is None or not poiGameObject.isValid():
             self.__vehPoiRegistry.setdefault(vehicleID, {})[poiName] = poiGameObject = CGF.GameObject(spaceID, poiName)
-            poiGameObject.createComponent(GenericComponents.HierarchyComponent, entityGameObject)
+            if entityGameObject:
+                poiGameObject.createComponent(GenericComponents.HierarchyComponent, entityGameObject)
             poiGameObject.activate()
         return poiGameObject

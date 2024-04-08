@@ -20,7 +20,7 @@ def createBackportTooltipDecorator():
                 tooltipData = self.getTooltipData(event)
                 if tooltipData is None:
                     return
-                window = backport.BackportTooltipWindow(tooltipData, self.getParentWindow())
+                window = backport.BackportTooltipWindow(tooltipData, self.getParentWindow(), event)
                 if window is None:
                     return
                 window.load()

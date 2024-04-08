@@ -164,9 +164,15 @@ class SeniorityRewardVehiclesView(ViewImpl):
                 return createTooltipData(isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.SENIORITY_AWARD_VEHICLE, specialArgs=(
                  vehicleCD,
                  100,
-                 None, None, None, None,
+                 None,
+                 None,
+                 None,
+                 None,
+                 None,
+                 False,
                  True,
-                 True))
+                 True,
+                 False))
             return
 
     def __updateVehicles(self, vehicles):

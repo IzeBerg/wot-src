@@ -10,12 +10,16 @@ class BadgesCollector(object):
         self.__receivedBadges = []
         self.__notReceivedBadges = []
         self.__suffixBadges = []
+        self.__notReceivedSuffixBadges = []
 
     def getReceivedPrefixBadges(self):
         return tuple(self.__receivedBadges)
 
     def getNotReceivedPrefixBadges(self):
         return tuple(self.__notReceivedBadges)
+
+    def getNotReceivedSuffixBadges(self):
+        return tuple(self.__notReceivedSuffixBadges)
 
     def getSuffixAchievedBadges(self):
         return tuple(self.__suffixBadges)
@@ -32,12 +36,16 @@ class BadgesCollector(object):
     def __isNotReceivedPrefixBadges(self, badge):
         return badge.isPrefixLayout() and not badge.isAchieved and badge.isVisibleAsAchievable() and not badge.isObsolete()
 
+    def __isNotReceivedSuffixBadge(self, badge):
+        return badge.isSuffixLayout() and not badge.isAchieved
+
     def __isSuffixAchivedBadge(self, badge):
         return badge.isSuffixLayout() and badge.isAchieved
 
     def __clear(self):
         self.__receivedBadges = []
         self.__notReceivedBadges = []
+        self.__notReceivedSuffixBadges = []
         self.__suffixBadges = []
 
     def __preprocessBadges(self, badges):
@@ -49,6 +57,8 @@ class BadgesCollector(object):
                 cache[badge.group].append(badge)
             elif self.__isNotReceivedPrefixBadges(badge):
                 self.__notReceivedBadges.append(badge)
+            elif self.__isNotReceivedSuffixBadge(badge):
+                self.__notReceivedSuffixBadges.append(badge)
             elif self.__isReceivedPrefixBadges(badge):
                 self.__receivedBadges.append(badge)
 

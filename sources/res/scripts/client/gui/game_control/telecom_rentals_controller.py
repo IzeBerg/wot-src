@@ -1,5 +1,4 @@
 import BigWorld
-from bootcamp.Bootcamp import g_bootcamp
 from gui import SystemMessages
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.impl import backport
@@ -31,8 +30,6 @@ class TelecomRentalsNotificationController(ITelecomRentalsNotificationController
         g_clientUpdateManager.removeObjectCallbacks(self, True)
 
     def processSwitchNotifications(self):
-        if g_bootcamp.isRunning():
-            return
         serverSettings = self._lobbyContext.getServerSettings()
         isEnabled = serverSettings.isTelecomRentalsEnabled()
         with settings.telecomRentalsSettings() as (dt):

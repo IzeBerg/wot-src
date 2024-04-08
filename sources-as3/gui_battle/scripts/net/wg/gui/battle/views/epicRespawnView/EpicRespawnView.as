@@ -63,6 +63,7 @@ package net.wg.gui.battle.views.epicRespawnView
       {
          super.setCompVisible(param1);
          this.carousel.visible = param1;
+         this.deployButtonGroup.deployButton.enabled = param1;
          dispatchEvent(new EpicRespawnEvent(EpicRespawnEvent.VIEW_CHANGED));
          if(!param1)
          {
@@ -198,13 +199,14 @@ package net.wg.gui.battle.views.epicRespawnView
       private function updateLayout() : void
       {
          var _loc1_:int = 0;
+         var _loc4_:Number = NaN;
          _loc1_ = this._originalWidth >> 1;
          this.topBarBG.x = -_loc1_;
          this.topBarBG.y = 0;
          this.topBarBG.width = this._originalWidth;
          var _loc2_:Number = (this._originalHeight - DeploymentMapConstants.RESPAWN_ELEMENTS_SIZE) / this._deploymentMapHeight * DeploymentMapConstants.RESPAWN_SCALE_FACTOR;
          var _loc3_:Number = _loc2_ * this._deploymentMapWidth;
-         var _loc4_:Number = _loc2_ * this._deploymentMapHeight;
+         _loc4_ = _loc2_ * this._deploymentMapHeight;
          this.respawnEntriesContainer.x = -_loc3_ >> 1;
          this.respawnEntriesContainer.y = DeploymentMapConstants.getScorePanelTopOffset(this._isVehPostProgressionEnabled) + ((this._originalHeight - DeploymentMapConstants.RESPAWN_ELEMENTS_SIZE) * (1 - DeploymentMapConstants.RESPAWN_SCALE_FACTOR) >> 1);
          this.respawnEntriesContainer.setBounds(_loc3_,_loc4_);
@@ -248,6 +250,7 @@ package net.wg.gui.battle.views.epicRespawnView
       
       private function onBattleBtnClickHandler(param1:ButtonEvent) : void
       {
+         this.deployButtonGroup.deployButton.enabled = false;
          onRespawnBtnClickS();
       }
       

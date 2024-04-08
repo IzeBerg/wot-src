@@ -43,6 +43,8 @@ package
       
       public static const INVITES_PREBATTLE_ALREADYJOINED_MAPBOX:String = "#invites:invites/prebattle/alreadyJoined/MAPBOX";
       
+      public static const INVITES_PREBATTLE_ALREADYJOINED_TRAINING_COMP7:String = "#invites:invites/prebattle/alreadyJoined/TRAINING_COMP7";
+      
       public static const INVITES_TEXT_CREATORNAME:String = "#invites:invites/text/creatorName";
       
       public static const INVITES_TEXT_SQUAD:String = "#invites:invites/text/SQUAD";
@@ -236,6 +238,10 @@ package
       public static const INVITES_NOTE_LEAVE_PERMANENTLY_QUEUE_WINBACK:String = "#invites:invites/note/leave_permanently/QUEUE_WINBACK";
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_PERMANENTLY_QUEUE_WINBACK:String = "#invites:invites/note/change_and_leave_permanently/QUEUE_WINBACK";
+      
+      public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_TRAINING_COMP7:String = "#invites:invites/note/change_and_leave/PREBATTLE_TRAINING_COMP7";
+      
+      public static const INVITES_NOTE_LEAVE_PREBATTLE_TRAINING_COMP7:String = "#invites:invites/note/leave/PREBATTLE_TRAINING_COMP7";
       
       public static const INVITES_WARNING_ANONYMIZED:String = "#invites:invites/warning/anonymized";
       

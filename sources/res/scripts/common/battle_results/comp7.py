@@ -19,7 +19,7 @@ BATTLE_RESULTS = [
  (
   'fareTeamPrestigePointsPosition', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'comp7QualActive', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+  'comp7QualActive', None, None, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
   'comp7QualBattleIndex', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (

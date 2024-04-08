@@ -87,7 +87,7 @@ class GoodiesCache(IGoodiesCache):
             defAltPrice = None
         return (buyPrice, defPrice, altPrice, defAltPrice)
 
-    def isBoosterHidden(self, boosterID):
+    def isBoosterHiddenInShop(self, boosterID):
         return boosterID in self._items.shop.getHiddenBoosters()
 
     def getItemByTargetValue(self, targetValue):

@@ -1,5 +1,5 @@
 from collections import namedtuple
-import math, AnimationSequence
+import math, AnimationSequence, helpers
 from helpers.CallbackDelayer import CallbackDelayer
 from debug_utils import LOG_CURRENT_EXCEPTION, LOG_ERROR
 from items import vehicles
@@ -54,6 +54,10 @@ class Bomber(object):
             self.__sound.setRTPC('RTPC_ext_plane_bombing', 1 if isAttacking else 0)
             return
 
+    def setVisible(self, newVisible):
+        if self.model:
+            self.model.visible = newVisible
+
     def addControlPoint(self, position, velocity, time, attackEnded=False):
         callback = None
         if attackEnded:
@@ -84,6 +88,7 @@ class Bomber(object):
             return
         if self._desc.modelName not in resourceRefs.failedIDs:
             self._model = resourceRefs[self._desc.modelName]
+            self._model.visible = not helpers.isShowingKillCam()
             self.__onFlightStarted()
         else:
             LOG_ERROR('Could not load model %s' % self._desc.modelName)
@@ -183,6 +188,10 @@ class BombersWing(CallbackDelayer):
         CallbackDelayer.destroy(self)
         for bomber in self.__bombers:
             bomber.destroy()
+
+    def setVisible(self, newVisible):
+        for bomber in self.__bombers:
+            bomber.setVisible(newVisible)
 
     def __convertTime(self, time):
         diff = BigWorld.serverTime() - BigWorld.time()

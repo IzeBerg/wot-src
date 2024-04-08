@@ -20,7 +20,7 @@ msgid "activation/activateBonus"
 msgstr "Activate Reserve: %(bonusDescription)s"
 
 msgid "activation/activateButton"
-msgstr "Activate"
+msgstr "Activate Reserve"
 
 msgid "activation/activateButtonClan"
 msgstr "To Stronghold"
@@ -32,7 +32,7 @@ msgid "activation/battleXPTitle"
 msgstr "Combat XP"
 
 msgid "activation/bonus"
-msgstr "BONUS: +%(bonus)%"
+msgstr "+%(bonus)%"
 
 msgid "activation/buyAndActivateBoosterTitle"
 msgstr ""
@@ -79,6 +79,11 @@ msgstr "Bonus to credits for 1 h"
 msgid "activation/creditsTitle"
 msgstr "Credits"
 
+msgid "activation/footer"
+msgstr ""
+"Expirable Reserves need to be activated: %(expirableAmount) in "
+"%(expirableTime)"
+
 msgid "activation/frontLineXPDescription"
 msgstr "Bonus to Frontline XP for 1 h"
 
@@ -88,11 +93,16 @@ msgstr "Frontline XP"
 msgid "activation/informationButton"
 msgstr "INFORMATION"
 
-msgid "activation/onlyOnceHint"
-msgstr "CHOOSE PREFERRED BONUS"
-
 msgid "activation/price"
 msgstr "Price:"
+
+msgid "activation/subFooter/depot"
+msgstr "Depot"
+
+msgid "activation/subFooter/main"
+msgstr ""
+"The Reserves closest to expiration are activated first. You can view all "
+"your available Reserves in the %(depot)"
 
 msgid "activation/subTitle/main"
 msgstr ""
@@ -132,59 +142,11 @@ msgstr ""
 
 msgid "battleView/notice"
 msgstr ""
-"You will receive a bonus from an activated Personal Reserve even if it expires during a battle.\n"
-"You can activate any Personal Reserve until the battle time expires."
+"Personal Reserves can be activated at any time in battle. You will receive "
+"the bonus even if the Reserve expires during battle."
 
 msgid "battleView/title"
 msgstr "Personal Reserves Activation"
-
-msgid "booster/useby/timeLeft/days"
-msgstr "%(d)s d"
-
-msgid "booster/useby/timeLeft/hours"
-msgstr "%(d)s h"
-
-msgid "booster/useby/timeLeft/minutes"
-msgstr "%(d)s min"
-
-msgid "conversionView/battleXPSubtitle"
-msgstr "Combat XP Conversion"
-
-msgid "conversionView/battleXPTitle"
-msgstr "Combat XP"
-
-msgid "conversionView/boosterDescription"
-msgstr "%(value)s for %(effectTime)s"
-
-msgid "conversionView/creditsSubtitle"
-msgstr "Credits Conversion"
-
-msgid "conversionView/creditsTitle"
-msgstr "Credits"
-
-msgid "conversionView/crewAndFreeXPSubtitle"
-msgstr "Crew XP and Free XP Conversion"
-
-msgid "conversionView/crewFreeXPTitle"
-msgstr "Crew & Free XP"
-
-msgid "conversionView/crewXPSubtitle"
-msgstr "Crew XP Conversion"
-
-msgid "conversionView/freeXPSubtitle"
-msgstr "Free XP Conversion"
-
-msgid "conversionView/mainDescription"
-msgstr ""
-"Your Personal Reserves have been converted into new Personal Reserves. All "
-"new Personal Reserves last 1 h. You can check the conversion of your "
-"previous Personal Reserves into new ones here."
-
-msgid "conversionView/mainTitle"
-msgstr "CONVERSION"
-
-msgid "conversionView/noConversion"
-msgstr "No Personal Reserves to convert"
 
 msgid "depot/buyButton"
 msgstr "To Purchase"
@@ -200,9 +162,6 @@ msgstr ""
 msgid "hangarEntry/minute"
 msgstr "%(minutesLeft)min"
 
-msgid "hangarEntry/onlyOnceHint"
-msgstr "PERSONAL RESERVES ACTIVATION"
-
 msgid "hangarEntryTooltip/bonus"
 msgstr "+%(bonus)%"
 
@@ -212,57 +171,18 @@ msgstr "Activated Personal Reserves do not apply in this mode."
 msgid "intro/buttons/close"
 msgstr "Affirmative!"
 
-msgid "intro/buttons/conversionInfo"
-msgstr "Conversion Details"
+msgid "intro/buttons/details"
+msgstr "Details"
 
-msgid "intro/pages/description1"
+msgid "intro/description"
 msgstr ""
-"Activate Personal Reserves right in the Garage. You can now activate "
-"Personal Reserves of all 3 types at the same time. Personal Reserves to Free"
-" and Crew XP have been merged into one type of Personal Reserves that "
-"provides a bonus to both Free and Crew XP earned in battle."
-
-msgid "intro/pages/description2"
-msgstr ""
-"If you want to have a higher bonus to earned credits and experience, make "
-"sure to check out Improved Personal Reserves, which can be purchased using "
-"gold."
-
-msgid "intro/pages/description3"
-msgstr ""
-"Available for activation during a certain period of time. Once the period expires, these Personal Reserves are removed from your account.\n"
-"{yellow_Open}Regular Personal Reserves cannot be activated during this time.{yellow_Close}"
-
-msgid "intro/pages/description4"
-msgstr ""
-"Press the TAB or B keys to activate Personal Reserves directly in battle.\n"
-"{yellow_Open}If a Personal Reserve expires during a battle, you will still receive the bonus from the Personal Reserve to resources earned in this battle.{yellow_Close}"
-
-msgid "intro/pages/description5"
-msgstr ""
-"Within Personal Reserves 2.0, your Personal Reserves have been converted "
-"into new Personal Reserves. They all last 1 h and come in two different "
-"bonus types: Standard and Improved. Personal Reserves to Free XP and Crew XP"
-" have been merged into one type of Personal Reserves, that provide a bonus "
-"to both Free XP and Crew XP earned in battle."
-
-msgid "intro/pages/title1"
-msgstr "THREE TYPES OF PERSONAL RESERVES"
-
-msgid "intro/pages/title2"
-msgstr "HIGHER BONUS"
-
-msgid "intro/pages/title3"
-msgstr "LIMITED PERSONAL RESERVES"
-
-msgid "intro/pages/title4"
-msgstr "IN-BATTLE ACTIVATION"
-
-msgid "intro/pages/title5"
-msgstr "CONVERSION"
+"Expirable Personal Reserves are available for a limited time after receiving"
+" them. If they are not activated during this time, they will be lost. Non-"
+"Expirable Personal Reserves cannot be used while you have Expirable Personal"
+" Reserves of the same type available."
 
 msgid "intro/title"
-msgstr "PERSONAL RESERVES 2.0"
+msgstr "EXPIRABLE PERSONAL RESERVES"
 
 msgid "noPaidReserveTooltip/text"
 msgstr ""

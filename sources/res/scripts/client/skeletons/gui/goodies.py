@@ -28,7 +28,7 @@ class IBoostersStateProvider(object):
     def getBoosterPriceData(self, boosterID):
         raise NotImplementedError
 
-    def isBoosterHidden(self, boosterID):
+    def isBoosterHiddenInShop(self, boosterID):
         raise NotImplementedError
 
     def haveBooster(self, boosterID):

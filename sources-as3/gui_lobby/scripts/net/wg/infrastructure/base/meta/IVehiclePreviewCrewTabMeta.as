@@ -8,7 +8,7 @@ package net.wg.infrastructure.base.meta
       
       function setActiveStateS(param1:Boolean) : void;
       
-      function getTooltipDataS(param1:int) : Array;
+      function getTooltipDataS(param1:int, param2:int) : Array;
       
       function as_setData(param1:Object) : void;
    }

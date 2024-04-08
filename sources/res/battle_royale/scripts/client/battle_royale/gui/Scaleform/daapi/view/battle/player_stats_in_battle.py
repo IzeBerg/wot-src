@@ -1,4 +1,4 @@
-import BigWorld, logging
+import logging
 from constants import ARENA_BONUS_TYPE
 from gui.Scaleform.daapi.view.meta.BattleRoyalePlayerStatsMeta import BattleRoyalePlayerStatsMeta
 from gui.Scaleform.locale.BATTLE_ROYALE import BATTLE_ROYALE
@@ -44,11 +44,3 @@ class BattleRoyalePlayerStats(BattleRoyalePlayerStatsMeta):
 
     def __onShowDeathScreen(self):
         self.as_setDataS(IngameBattleRoyaleResultsViewDataFormatter(self.__sessionProvider, {}).getSummaryStats())
-        self.__setStpCoins()
-
-    def __setStpCoins(self):
-        vehicle = BigWorld.entity(BigWorld.player().playerVehicleID)
-        stPatrickComp = vehicle.dynamicComponents.get('vehicleBRStPatrickComponent')
-        if stPatrickComp:
-            brComponent = self.__sessionProvider.arenaVisitor.getComponentSystem().battleRoyaleComponent
-            self.as_setStpCoinsS(initial=stPatrickComp.totalCoins, factor=brComponent.stpDailyBonusFactor)

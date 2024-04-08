@@ -45,13 +45,25 @@ package net.wg.data.constants.generated
       
       public static const WHITE_ICON_AT_SPG_16X16:String = "whiteIconAt-SPG16x16";
       
+      public static const WHITE_ICON_AT_SPG_ELITE_16X16:String = "whiteIconAT-SPG_elite16x16";
+      
+      public static const WHITE_ICON_BOSS_16X16:String = "whiteIconBoss16x16";
+      
       public static const WHITE_ICON_HEAVYTANK_16X16:String = "whiteIconHeavyTank16x16";
+      
+      public static const WHITE_ICON_HEAVYTANK_ELITE_16X16:String = "whiteIconHeavyTank_elite16x16";
       
       public static const WHITE_ICON_LIGHTTANK_16X16:String = "whiteIconLightTank16x16";
       
+      public static const WHITE_ICON_LIGHTTANK_ELITE_16X16:String = "whiteIconLightTank_elite16x16";
+      
       public static const WHITE_ICON_MEDIUM_TANK_16X16:String = "whiteIconMediumTank16x16";
       
+      public static const WHITE_ICON_MEDIUM_TANK_ELITE_16X16:String = "whiteIconMediumTank_elite16x16";
+      
       public static const WHITE_ICON_SPG_16X16:String = "whiteIconSPG16x16";
+      
+      public static const WHITE_ICON_SPG_ELITE_16X16:String = "whiteIconSPG_elite16x16";
       
       public static const DAMAGELOG_ARTILLERY_16X16:String = "damageLog_artillery_16x16";
       

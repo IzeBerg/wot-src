@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>0.500000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Field</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Lighting/Border_lighting_enemy.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 0.500000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>electro</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 0.337255 0.337255 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 2.571432</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 2.571432</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.233333</startTime>
+				<value>1.000000 0.337255 0.337255 0.600000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 2.571432</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 2.571432</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>fog1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.305882 0.482353 0.729412 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.298040</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.298040</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.305882 0.482353 0.729412 0.149020</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.298040</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 0.298040</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

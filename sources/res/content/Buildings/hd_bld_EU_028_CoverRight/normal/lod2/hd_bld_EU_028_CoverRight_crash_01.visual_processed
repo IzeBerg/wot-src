@@ -8,6 +8,114 @@
 			<row2>0.000000 0.000000 1.000000</row2>
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
+		<node>
+			<identifier>hd_bld_EU_028_CoverRight_crash_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s_wall1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>lod2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>s0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s2</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s4</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s6</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s7</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s8</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s9</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+		</node>
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
@@ -99,7 +207,7 @@
 				<material>
 					<identifier>s_nd7</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<property>
 						g_tile1Tint
@@ -177,7 +285,7 @@
 				<material>
 					<identifier>s_nd4</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>108</materialKind>
 					<property>
 						g_tile2Tint
@@ -249,51 +357,9 @@
 			<primitiveGroup>
 				3
 				<material>
-					<identifier>s_nd2</identifier>
-					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
-					<collisionFlags>0</collisionFlags>
-					<materialKind>108</materialKind>
-					<property>
-						doubleSided
-						<Bool>true</Bool>
-					</property>
-					<property>
-						diffuseMap
-						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_NewCity_01_AM.dds</Texture>
-					</property>
-					<property>
-						normalMap
-						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_NewCity_01_ANM.dds</Texture>
-					</property>
-					<property>
-						metallicGlossMap
-						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_NewCity_01_GMM.dds</Texture>
-					</property>
-					<property>
-						g_vertexColorMode
-						<Int>3</Int>
-					</property>
-					<property>
-						g_enableAO
-						<Bool>true</Bool>
-					</property>
-					<property>
-						diffuseMap2
-						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_NewCity_01_AM2.dds</Texture>
-					</property>
-					<property>
-						g_enableTerrainBlending
-						<Bool>true</Bool>
-					</property>
-				</material>
-				<groupOrigin>-0.545708 6.576776 -8.550518</groupOrigin>
-			</primitiveGroup>
-			<primitiveGroup>
-				4
-				<material>
 					<identifier>s_nd6</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<property>
 						g_tile2Tint
@@ -375,11 +441,11 @@
 				<groupOrigin>-1.571712 3.225279 -9.022449</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				5
+				4
 				<material>
 					<identifier>s_nd1</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<property>
 						g_tile2Tint
@@ -457,11 +523,11 @@
 				<groupOrigin>-0.205580 6.011596 0.217123</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				6
+				5
 				<material>
 					<identifier>s_nd9</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<property>
 						g_tile2Tint
@@ -543,11 +609,11 @@
 				<groupOrigin>-1.502290 4.577053 -3.507278</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				7
+				6
 				<material>
 					<identifier>s_nd8</identifier>
 					<fx>shaders/std_effects/PBS_tiled.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>111</materialKind>
 					<property>
 						doubleSided
@@ -617,6 +683,48 @@
 				<groupOrigin>-0.185091 5.812183 1.404968</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
+				7
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>108</materialKind>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_NewCity_01_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_NewCity_01_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_NewCity_01_GMM.dds</Texture>
+					</property>
+					<property>
+						g_vertexColorMode
+						<Int>3</Int>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Buildings/00_Detail_Sets/Detail_Set_NewCity_01_AM2.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.545708 6.576776 -8.550518</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
 				8
 				<material>
 					<identifier>s_wall_0</identifier>
@@ -641,6 +749,6 @@
 		<max>14.110943 13.368061 11.485090</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>177332</geometrySize>
+	<geometrySize>177848</geometrySize>
 	<minUVDensity>0.002224</minUVDensity>
 </root>

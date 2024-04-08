@@ -1,3 +1,4 @@
+from battle_royale.gui.battle_control.controllers.battle_royale_voip_ctrl import BRVOIPController
 from battle_royale.gui.battle_control.controllers.notification_manager import NotificationManager
 from gui.battle_control.controllers import battle_field_ctrl, debug_ctrl, default_maps_ctrl, perk_ctrl
 from gui.battle_control.controllers.battle_hints import controller as battle_hints_ctrl
@@ -25,6 +26,7 @@ class BattleRoyaleControllersRepository(_ControllersRepository):
         repository.addArenaController(BattleRoyaleAppearanceCacheController(setup), setup)
         repository.addArenaController(death_ctrl.DeathScreenController(), setup)
         repository.addController(VehicleHitSound())
+        repository.addArenaController(BRVOIPController(), setup)
         if setup.isReplayPlaying:
             radarCtrl = radar_ctrl.RadarReplayController()
         else:

@@ -75,12 +75,6 @@ package
       
       public static const MAINSCREEN_INFOBUTTONSMALL:String = "#battle_matters:mainScreen/infoButtonSmall";
       
-      public static const MAINSCREEN_BOOTCAMPBUTTON:String = "#battle_matters:mainScreen/bootcampButton";
-      
-      public static const MAINSCREEN_BOOTCAMPBUTTONTOOLTIP_HEADER:String = "#battle_matters:mainScreen/bootcampButtonTooltip/header";
-      
-      public static const MAINSCREEN_BOOTCAMPBUTTONTOOLTIP_BODY:String = "#battle_matters:mainScreen/bootcampButtonTooltip/body";
-      
       public static const MAINSCREEN_PROGRESS:String = "#battle_matters:mainScreen/progress";
       
       public static const MAINSCREEN_TARGET:String = "#battle_matters:mainScreen/target";

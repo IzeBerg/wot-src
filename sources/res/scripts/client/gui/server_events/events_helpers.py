@@ -289,6 +289,12 @@ def isMapsTraining(groupID):
     return groupID == MAPS_TRAINING_GROUPS_ID or groupID and groupID.startswith(MAPS_TRAINING_QUEST_PREFIX)
 
 
+def isMapsTrainingQuest(eventID):
+    if eventID:
+        return eventID.startswith(MAPS_TRAINING_QUEST_PREFIX)
+    return False
+
+
 def isBattleMattersQuestID(questID):
     if questID:
         return questID.startswith(BATTLE_MATTERS_QUEST_ID)

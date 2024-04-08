@@ -35,17 +35,17 @@ package
       
       public static const TEXT_BLUEPRINTS:String = "../text/blueprints.po";
       
-      public static const TEXT_BOOTCAMP:String = "../text/bootcamp.po";
-      
       public static const TEXT_CAT:String = "../text/cat.po";
       
       public static const TEXT_CHAT:String = "../text/chat.po";
       
-      public static const TEXT_CHINA_TANKMEN:String = "../text/china_tankmen.po";
+      public static const TEXT_CHINA_CREW:String = "../text/china_crew.po";
       
       public static const TEXT_CHINA_VEHICLES:String = "../text/china_vehicles.po";
       
       public static const TEXT_CLANS:String = "../text/clans.po";
+      
+      public static const TEXT_CLAN_SUPPLY:String = "../text/clan_supply.po";
       
       public static const TEXT_COLLECTIONS:String = "../text/collections.po";
       
@@ -79,11 +79,13 @@ package
       
       public static const TEXT_CYBERSPORT:String = "../text/cyberSport.po";
       
-      public static const TEXT_CZECH_TANKMEN:String = "../text/czech_tankmen.po";
+      public static const TEXT_CZECH_CREW:String = "../text/czech_crew.po";
       
       public static const TEXT_CZECH_VEHICLES:String = "../text/czech_vehicles.po";
       
       public static const TEXT_DATETIME_FORMATS:String = "../text/datetime_formats.po";
+      
+      public static const TEXT_DEATH_CAM:String = "../text/death_cam.po";
       
       public static const TEXT_DEMOUNT_KIT:String = "../text/demount_kit.po";
       
@@ -113,19 +115,21 @@ package
       
       public static const TEXT_FORTIFICATIONS:String = "../text/fortifications.po";
       
-      public static const TEXT_FRANCE_TANKMEN:String = "../text/france_tankmen.po";
+      public static const TEXT_FRANCE_CREW:String = "../text/france_crew.po";
       
       public static const TEXT_FRANCE_VEHICLES:String = "../text/france_vehicles.po";
       
       public static const TEXT_GAME_LOADING:String = "../text/game_loading.po";
       
-      public static const TEXT_GB_TANKMEN:String = "../text/gb_tankmen.po";
+      public static const TEXT_GB_CREW:String = "../text/gb_crew.po";
       
       public static const TEXT_GB_VEHICLES:String = "../text/gb_vehicles.po";
       
-      public static const TEXT_GERMANY_TANKMEN:String = "../text/germany_tankmen.po";
+      public static const TEXT_GERMANY_CREW:String = "../text/germany_crew.po";
       
       public static const TEXT_GERMANY_VEHICLES:String = "../text/germany_vehicles.po";
+      
+      public static const TEXT_HANGAR:String = "../text/hangar.po";
       
       public static const TEXT_IGR_VEHICLES:String = "../text/igr_vehicles.po";
       
@@ -135,13 +139,13 @@ package
       
       public static const TEXT_INVITES:String = "../text/invites.po";
       
-      public static const TEXT_ITALY_TANKMEN:String = "../text/italy_tankmen.po";
+      public static const TEXT_ITALY_CREW:String = "../text/italy_crew.po";
       
       public static const TEXT_ITALY_VEHICLES:String = "../text/italy_vehicles.po";
       
       public static const TEXT_ITEM_TYPES:String = "../text/item_types.po";
       
-      public static const TEXT_JAPAN_TANKMEN:String = "../text/japan_tankmen.po";
+      public static const TEXT_JAPAN_CREW:String = "../text/japan_crew.po";
       
       public static const TEXT_JAPAN_VEHICLES:String = "../text/japan_vehicles.po";
       
@@ -189,7 +193,7 @@ package
       
       public static const TEXT_POINTS_OF_INTEREST:String = "../text/points_of_interest.po";
       
-      public static const TEXT_POLAND_TANKMEN:String = "../text/poland_tankmen.po";
+      public static const TEXT_POLAND_CREW:String = "../text/poland_crew.po";
       
       public static const TEXT_POLAND_VEHICLES:String = "../text/poland_vehicles.po";
       
@@ -221,13 +225,15 @@ package
       
       public static const TEXT_SETTINGS:String = "../text/settings.po";
       
+      public static const TEXT_STATIC_QUESTS:String = "../text/static_quests.po";
+      
       public static const TEXT_STORAGE:String = "../text/storage.po";
       
       public static const TEXT_STORE:String = "../text/store.po";
       
       public static const TEXT_SUBSCRIPTION:String = "../text/subscription.po";
       
-      public static const TEXT_SWEDEN_TANKMEN:String = "../text/sweden_tankmen.po";
+      public static const TEXT_SWEDEN_CREW:String = "../text/sweden_crew.po";
       
       public static const TEXT_SWEDEN_VEHICLES:String = "../text/sweden_vehicles.po";
       
@@ -243,11 +249,13 @@ package
       
       public static const TEXT_TUTORIAL:String = "../text/tutorial.po";
       
-      public static const TEXT_USA_TANKMEN:String = "../text/usa_tankmen.po";
+      public static const TEXT_USA_CREW:String = "../text/usa_crew.po";
       
       public static const TEXT_USA_VEHICLES:String = "../text/usa_vehicles.po";
       
-      public static const TEXT_USSR_TANKMEN:String = "../text/ussr_tankmen.po";
+      public static const TEXT_USSR_CREW:String = "../text/ussr_crew.po";
+      
+      public static const TEXT_USSR_CREW_EN:String = "../text/ussr_crew_en.po";
       
       public static const TEXT_USSR_VEHICLES:String = "../text/ussr_vehicles.po";
       
@@ -267,7 +275,7 @@ package
       
       public static const TEXT_WINBACK:String = "../text/winback.po";
       
-      public static const ALL_ENUM:Array = [TEXT_ACCOUNT_COMPLETION,TEXT_ACCOUNT_DASHBOARD,TEXT_ACHIEVEMENTS,TEXT_ACHIEVEMENTS_PAGE,TEXT_AOGAS,TEXT_ARENAS,TEXT_ARTEFACTS,TEXT_AWARDS,TEXT_BADGE,TEXT_BAN_REASON,TEXT_BATTLE_HINTS,TEXT_BATTLE_MATTERS,TEXT_BATTLE_PASS,TEXT_BATTLE_RESULTS,TEXT_BATTLE_ROYALE,TEXT_BLUEPRINTS,TEXT_BOOTCAMP,TEXT_CAT,TEXT_CHAT,TEXT_CHINA_TANKMEN,TEXT_CHINA_VEHICLES,TEXT_CLANS,TEXT_COLLECTIONS,TEXT_COLLECTION_BATTLE_PASS_10,TEXT_COLLECTION_BATTLE_PASS_11,TEXT_COLLECTION_BATTLE_PASS_12,TEXT_COMMON,TEXT_COMP7,TEXT_CONTROLS,TEXT_CREW,TEXT_CREW_BOOKS,TEXT_CREW_HELP,TEXT_CREW_OPERATIONS,TEXT_CREW_PERKS,TEXT_CREW_SKINS,TEXT_CREW_WIDGET,TEXT_CURRENCY_RESERVES,TEXT_CYBERSPORT,TEXT_CZECH_TANKMEN,TEXT_CZECH_VEHICLES,TEXT_DATETIME_FORMATS,TEXT_DEMOUNT_KIT,TEXT_DEVELOPMENT,TEXT_DIALOGS,TEXT_DOGTAGS,TEXT_ELITE_WINDOW,TEXT_ENVIRONMENT_TOOLTIPS,TEXT_EPIC_BATTLE,TEXT_ERROR_DLG,TEXT_EVENT,TEXT_EVENT_BOARDS,TEXT_EXCLUDED_MAPS,TEXT_FALLOUT,TEXT_FAQ,TEXT_FORTIFICATIONS,TEXT_FRANCE_TANKMEN,TEXT_FRANCE_VEHICLES,TEXT_GAME_LOADING,TEXT_GB_TANKMEN,TEXT_GB_VEHICLES,TEXT_GERMANY_TANKMEN,TEXT_GERMANY_VEHICLES,TEXT_IGR_VEHICLES,TEXT_INGAME_GUI,TEXT_INGAME_HELP,TEXT_INVITES,TEXT_ITALY_TANKMEN,TEXT_ITALY_VEHICLES,TEXT_ITEM_TYPES,TEXT_JAPAN_TANKMEN,TEXT_JAPAN_VEHICLES,TEXT_LOBBY_HELP,TEXT_LOOTBOXES,TEXT_LORE,TEXT_MANUAL,TEXT_MAPBOX,TEXT_MAPS_TRAINING,TEXT_MARATHON,TEXT_MATCHMAKER,TEXT_MENU,TEXT_MESSENGER,TEXT_MINICLIENT,TEXT_MODE_SELECTOR,TEXT_MOTIVATION_QUESTS,TEXT_MULTINATIONAL_VEHICLES,TEXT_NATIONS,TEXT_OFFERS,TEXT_PERSONAL_MISSIONS,TEXT_PERSONAL_MISSIONS_DETAILS,TEXT_PERSONAL_RESERVES,TEXT_PLATOON,TEXT_PLAYER_SUBSCRIPTIONS,TEXT_POINTS_OF_INTEREST,TEXT_POLAND_TANKMEN,TEXT_POLAND_VEHICLES,TEXT_PREBATTLE,TEXT_PREMACC,TEXT_PRESTIGE,TEXT_PROFILE,TEXT_PROGRESSIVE_REWARD,TEXT_QUESTS,TEXT_RANKED_BATTLES,TEXT_READABLE_KEY_NAMES,TEXT_RECERTIFICATION_FORM,TEXT_RESOURCE_WELL,TEXT_SELECTABLE_REWARD,TEXT_SENIORITY_AWARDS,TEXT_SESSION_STATS,TEXT_SETTINGS,TEXT_STORAGE,TEXT_STORE,TEXT_SUBSCRIPTION,TEXT_SWEDEN_TANKMEN,TEXT_SWEDEN_VEHICLES,TEXT_SYSTEM_MESSAGES,TEXT_TANK_CAROUSEL_FILTER,TEXT_TANK_SETUP,TEXT_TIPS,TEXT_TOOLTIPS,TEXT_TUTORIAL,TEXT_USA_TANKMEN,TEXT_USA_VEHICLES,TEXT_USSR_TANKMEN,TEXT_USSR_VEHICLES,TEXT_VEHICLE_CUSTOMIZATION,TEXT_VEHICLE_CUSTOMIZATION_CN,TEXT_VEHICLE_PREVIEW,TEXT_VEH_COMPARE,TEXT_VEH_POST_PROGRESSION,TEXT_W2C,TEXT_WAITING,TEXT_WINBACK];
+      public static const ALL_ENUM:Array = [TEXT_ACCOUNT_COMPLETION,TEXT_ACCOUNT_DASHBOARD,TEXT_ACHIEVEMENTS,TEXT_ACHIEVEMENTS_PAGE,TEXT_AOGAS,TEXT_ARENAS,TEXT_ARTEFACTS,TEXT_AWARDS,TEXT_BADGE,TEXT_BAN_REASON,TEXT_BATTLE_HINTS,TEXT_BATTLE_MATTERS,TEXT_BATTLE_PASS,TEXT_BATTLE_RESULTS,TEXT_BATTLE_ROYALE,TEXT_BLUEPRINTS,TEXT_CAT,TEXT_CHAT,TEXT_CHINA_CREW,TEXT_CHINA_VEHICLES,TEXT_CLANS,TEXT_CLAN_SUPPLY,TEXT_COLLECTIONS,TEXT_COLLECTION_BATTLE_PASS_10,TEXT_COLLECTION_BATTLE_PASS_11,TEXT_COLLECTION_BATTLE_PASS_12,TEXT_COMMON,TEXT_COMP7,TEXT_CONTROLS,TEXT_CREW,TEXT_CREW_BOOKS,TEXT_CREW_HELP,TEXT_CREW_OPERATIONS,TEXT_CREW_PERKS,TEXT_CREW_SKINS,TEXT_CREW_WIDGET,TEXT_CURRENCY_RESERVES,TEXT_CYBERSPORT,TEXT_CZECH_CREW,TEXT_CZECH_VEHICLES,TEXT_DATETIME_FORMATS,TEXT_DEATH_CAM,TEXT_DEMOUNT_KIT,TEXT_DEVELOPMENT,TEXT_DIALOGS,TEXT_DOGTAGS,TEXT_ELITE_WINDOW,TEXT_ENVIRONMENT_TOOLTIPS,TEXT_EPIC_BATTLE,TEXT_ERROR_DLG,TEXT_EVENT,TEXT_EVENT_BOARDS,TEXT_EXCLUDED_MAPS,TEXT_FALLOUT,TEXT_FAQ,TEXT_FORTIFICATIONS,TEXT_FRANCE_CREW,TEXT_FRANCE_VEHICLES,TEXT_GAME_LOADING,TEXT_GB_CREW,TEXT_GB_VEHICLES,TEXT_GERMANY_CREW,TEXT_GERMANY_VEHICLES,TEXT_HANGAR,TEXT_IGR_VEHICLES,TEXT_INGAME_GUI,TEXT_INGAME_HELP,TEXT_INVITES,TEXT_ITALY_CREW,TEXT_ITALY_VEHICLES,TEXT_ITEM_TYPES,TEXT_JAPAN_CREW,TEXT_JAPAN_VEHICLES,TEXT_LOBBY_HELP,TEXT_LOOTBOXES,TEXT_LORE,TEXT_MANUAL,TEXT_MAPBOX,TEXT_MAPS_TRAINING,TEXT_MARATHON,TEXT_MATCHMAKER,TEXT_MENU,TEXT_MESSENGER,TEXT_MINICLIENT,TEXT_MODE_SELECTOR,TEXT_MOTIVATION_QUESTS,TEXT_MULTINATIONAL_VEHICLES,TEXT_NATIONS,TEXT_OFFERS,TEXT_PERSONAL_MISSIONS,TEXT_PERSONAL_MISSIONS_DETAILS,TEXT_PERSONAL_RESERVES,TEXT_PLATOON,TEXT_PLAYER_SUBSCRIPTIONS,TEXT_POINTS_OF_INTEREST,TEXT_POLAND_CREW,TEXT_POLAND_VEHICLES,TEXT_PREBATTLE,TEXT_PREMACC,TEXT_PRESTIGE,TEXT_PROFILE,TEXT_PROGRESSIVE_REWARD,TEXT_QUESTS,TEXT_RANKED_BATTLES,TEXT_READABLE_KEY_NAMES,TEXT_RECERTIFICATION_FORM,TEXT_RESOURCE_WELL,TEXT_SELECTABLE_REWARD,TEXT_SENIORITY_AWARDS,TEXT_SESSION_STATS,TEXT_SETTINGS,TEXT_STATIC_QUESTS,TEXT_STORAGE,TEXT_STORE,TEXT_SUBSCRIPTION,TEXT_SWEDEN_CREW,TEXT_SWEDEN_VEHICLES,TEXT_SYSTEM_MESSAGES,TEXT_TANK_CAROUSEL_FILTER,TEXT_TANK_SETUP,TEXT_TIPS,TEXT_TOOLTIPS,TEXT_TUTORIAL,TEXT_USA_CREW,TEXT_USA_VEHICLES,TEXT_USSR_CREW,TEXT_USSR_CREW_EN,TEXT_USSR_VEHICLES,TEXT_VEHICLE_CUSTOMIZATION,TEXT_VEHICLE_CUSTOMIZATION_CN,TEXT_VEHICLE_PREVIEW,TEXT_VEH_COMPARE,TEXT_VEH_POST_PROGRESSION,TEXT_W2C,TEXT_WAITING,TEXT_WINBACK];
        
       
       public function PO_FILES()

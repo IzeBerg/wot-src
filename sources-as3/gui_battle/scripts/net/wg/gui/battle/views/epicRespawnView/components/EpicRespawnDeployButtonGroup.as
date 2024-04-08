@@ -104,6 +104,7 @@ package net.wg.gui.battle.views.epicRespawnView.components
          this._introAnimationActive = false;
          this._highlightAnimationActive = false;
          this.buttonAnimation.gotoAndStop(RESET_STATE);
+         this.updateDeployNotification(this.deployNotification.timerToAutoDeployTF,false);
       }
       
       public function updateAutoTimer(param1:Boolean, param2:String) : void

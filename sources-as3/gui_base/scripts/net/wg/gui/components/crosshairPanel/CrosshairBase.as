@@ -46,6 +46,8 @@ package net.wg.gui.components.crosshairPanel
       
       public var distance:CrosshairDistanceContainer = null;
       
+      public var averageDamage:CrosshairAverageDamageContainer = null;
+      
       public var autoloaderComponent:AutoloaderIndicator = null;
       
       protected var health:Number = 0;
@@ -140,6 +142,11 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
+      public function clearAverageDamage(param1:Boolean) : void
+      {
+         this.averageDamage.clearAverageDamage(param1);
+      }
+      
       public function clearDistance(param1:Boolean) : void
       {
          this.distance.clearDistance(param1);
@@ -171,6 +178,11 @@ package net.wg.gui.components.crosshairPanel
       public function setAutoloaderReloadingAsPercent(param1:Number, param2:Boolean) : void
       {
          this.autoloaderComponent.setGunReloadingPercent(param1);
+      }
+      
+      public function setAverageDamage(param1:String) : void
+      {
+         this.averageDamage.setAverageDamage(param1);
       }
       
       public function setCenterType(param1:Number) : void
@@ -232,19 +244,20 @@ package net.wg.gui.components.crosshairPanel
          this.updateHealthBarMC();
       }
       
-      public function setInfo(param1:Number, param2:String, param3:String, param4:Boolean, param5:Boolean, param6:String, param7:String, param8:Number, param9:Number, param10:String, param11:Number, param12:String, param13:Boolean = false, param14:Boolean = false, param15:Boolean = false) : void
+      public function setInfo(param1:Number, param2:String, param3:String, param4:Boolean, param5:Boolean, param6:String, param7:String, param8:Number, param9:Number, param10:String, param11:Number, param12:String, param13:String, param14:Boolean = false, param15:Boolean = false, param16:Boolean = false) : void
       {
-         this.setClipsParam(param8,param9,param14);
+         this.setClipsParam(param8,param9,param15);
          this.setHealth(param1);
          this.setZoom(param2);
          this.setReloadingState(param3);
          this.showReloadingTimeField(param4);
          this.setDistanceVisibility(param5);
          this.setDistance(param6);
+         this.setAverageDamage(param13);
          this.updatePlayerInfo(param7);
-         this.setAmmoStock(param11,param12,param13);
+         this.setAmmoStock(param11,param12,param14);
          this.updateAmmoState(param10);
-         this.updateAutoloaderState(param8,param11,param15);
+         this.updateAutoloaderState(param8,param11,param16);
       }
       
       public function setNetSeparatorVisible(param1:Boolean) : void
@@ -408,6 +421,11 @@ package net.wg.gui.components.crosshairPanel
          this.netSeparator = null;
          this.autoloaderComponent.dispose();
          this.autoloaderComponent = null;
+         if(this.averageDamage)
+         {
+            this.averageDamage.dispose();
+            this.averageDamage = null;
+         }
          this.distance.dispose();
          this.distance = null;
          this.cassetteMC.dispose();

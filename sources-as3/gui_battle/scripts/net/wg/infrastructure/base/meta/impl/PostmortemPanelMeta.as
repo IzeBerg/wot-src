@@ -64,14 +64,14 @@ package net.wg.infrastructure.base.meta.impl
          this.onVictimDogTagInPlaySound();
       }
       
-      public final function as_showKillerDogTag(param1:Object) : void
+      public final function as_showKillerDogTag(param1:Object, param2:Boolean) : void
       {
-         var _loc2_:DogTagVO = this._dogTagVO;
+         var _loc3_:DogTagVO = this._dogTagVO;
          this._dogTagVO = new DogTagVO(param1);
-         this.showKillerDogTag(this._dogTagVO);
-         if(_loc2_)
+         this.showKillerDogTag(this._dogTagVO,param2);
+         if(_loc3_)
          {
-            _loc2_.dispose();
+            _loc3_.dispose();
          }
       }
       
@@ -97,11 +97,11 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      protected function showKillerDogTag(param1:DogTagVO) : void
+      protected function showKillerDogTag(param1:DogTagVO, param2:Boolean) : void
       {
-         var _loc2_:String = "as_showKillerDogTag" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc2_);
-         throw new AbstractException(_loc2_);
+         var _loc3_:String = "as_showKillerDogTag" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc3_);
+         throw new AbstractException(_loc3_);
       }
       
       protected function showVictimDogTag(param1:DogTagVO) : void

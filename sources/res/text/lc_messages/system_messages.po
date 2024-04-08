@@ -806,9 +806,6 @@ msgstr ""
 "Unable to change qualification of the crew member: the tank has unique "
 "permanent crew."
 
-msgid "change_tankman_role/financial_success"
-msgstr "Gold spent: %(money)s."
-
 msgid "change_tankman_role/invalid_role"
 msgstr "Unable to change qualification. Try again later."
 
@@ -827,20 +824,14 @@ msgid "change_tankman_role/not_enough_gold"
 msgstr "Unable to change crew member qualification. Not enough gold."
 
 msgid "change_tankman_role/server_error"
-msgstr "Unable to change qualification. Try again later."
+msgstr ""
+"Unable to change qualification.\n"
+"Try again later."
 
 msgid "change_tankman_role/slot_is_taken"
 msgstr ""
 "There is already a %(role)s in %(vehicle)s. The requalified crew member will"
 " be send to the Barracks."
-
-msgid "change_tankman_role/success"
-msgstr "Crew member qualification changed. All perks have been reset."
-
-msgid "change_tankman_role/success_and_vehicle_retrained"
-msgstr ""
-"Crew member qualification changed. All perks have been reset. Crew member "
-"retrained for the %(vehName)s."
 
 msgid "change_tankman_role/wallet_not_available"
 msgstr "Unable to change qualification. Try again later."
@@ -1127,6 +1118,24 @@ msgid "consumables_apply/wallet_not_available"
 msgstr ""
 "Operation unavailable. Your gold will be available after WG Wallet "
 "operability is restored."
+
+msgid "conversion/error"
+msgstr ""
+"Failed to convert crew members.\n"
+"Try again later."
+
+msgid "conversion/header"
+msgstr ""
+"Date: %(at)s\n"
+"Added:"
+
+msgid "conversion/success"
+msgstr ""
+"Success!\n"
+"Barracks cleared."
+
+msgid "conversion/title"
+msgstr "Receipt"
 
 msgid "crewBooks/failed"
 msgstr ""
@@ -2514,11 +2523,15 @@ msgstr "Error switching configuration"
 msgid "nation_change/success"
 msgstr "%(veh_name)s: national configuration switched"
 
+msgid "newbie_daily_quests/switch_off/body"
+msgstr ""
+"Daily Missions updated for technical reasons. Mission progress is saved."
+
 msgid "notrecruit_window/success"
 msgstr ""
 "Crew member recruited.\n"
 "%(colorTagOpen)s%(rank)s %(fullName)s\n"
-"(%(role)s, %(vehicleName)s, %(roleLevel)d%%)%(colorTagClose)s"
+"(%(role)s, %(vehicleName)s)%(colorTagClose)s"
 
 msgid "offers/server_error/COOLDOWN"
 msgstr ""
@@ -2761,11 +2774,6 @@ msgstr ""
 msgid "player_subscriptions/switch_on/title"
 msgstr "Player Subscriptions are now available"
 
-msgid "prebattle/bootcamp/inOtherQueue"
-msgstr ""
-"Since you are already in a battle queue, you cannot start completing "
-"Bootcamp."
-
 msgid "prebattle/hasLockedState"
 msgstr ""
 "Unable to accept the invitation as you are already awaiting a battle. Exit "
@@ -2794,6 +2802,9 @@ msgstr "Commander has left the team."
 
 msgid "prebattle/kick/reason/FINISHED"
 msgstr "The team has been dismissed."
+
+msgid "prebattle/kick/reason/MODE_DISABLED"
+msgstr "Mode is temporarily unavailable"
 
 msgid "prebattle/kick/reason/PLAYERKICK"
 msgstr "Demobilization."
@@ -3316,6 +3327,9 @@ msgstr "Unable to recover this crew member. Try again later."
 msgid "restore_tankman/success"
 msgstr "Crew member recovered."
 
+msgid "retraining_change_tankman_role/success"
+msgstr "Crew member qualification changed."
+
 msgid "retraining_crew/FORBIDDEN"
 msgstr "Unable to retrain your crew: the tank has unique permanent crew."
 
@@ -3369,7 +3383,9 @@ msgid "retraining_tankman/invalid_vehicle"
 msgstr "Error retraining a crew member. Wrong vehicle."
 
 msgid "retraining_tankman/server_error"
-msgstr "Unable to retrain a crew member. Try again later."
+msgstr ""
+"Unable to retrain a crew member.\n"
+"Try again later."
 
 msgid "retraining_tankman/success"
 msgstr "Crew member retrained for the %(vehName)s."
@@ -4202,8 +4218,7 @@ msgid "unload_crew/invalid_vehicle"
 msgstr "Error sending the crew to the Barracks. Wrong vehicle."
 
 msgid "unload_crew/not_enough_space"
-msgstr ""
-"Unable to send this crew to the Barracks. Not enough bunks in the Barracks."
+msgstr "Not enough bunks in the Barracks."
 
 msgid "unload_crew/server_error"
 msgstr "Unable to send the crew to the Barracks. Try again later."
@@ -4525,10 +4540,13 @@ msgstr ""
 "Unable to sell the %(vehName)s. Please make sure that the vehicle is not in "
 "any tactical unit or try again later."
 
-msgid "vehicle_remove/success"
+msgid "vehicle_remove/success/default"
 msgstr ""
 "The %(vehName)s has been successfully removed.\n"
 "%(money)s."
+
+msgid "vehicle_remove/success/zero_cost"
+msgstr "The %(vehName)s has been successfully removed."
 
 msgid "vehicle_remove/success_dismantling"
 msgstr ""

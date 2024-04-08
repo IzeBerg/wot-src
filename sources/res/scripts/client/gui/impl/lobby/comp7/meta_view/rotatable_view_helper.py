@@ -1,5 +1,6 @@
 import CGF
 from enum import Enum
+from ClientSelectableCameraObject import ClientSelectableCameraObject
 from cgf_components.hangar_camera_manager import HangarCameraManager
 from gui.hangar_cameras.hangar_camera_common import CameraRelatedEvents
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE, events
@@ -35,6 +36,8 @@ class RotatableViewHelper(object):
         cameraManager = self.getCameraManager()
         if cameraManager is not None and cameraManager.getCurrentCameraName() != cameraName:
             cameraManager.switchByCameraName(cameraName, instantly)
+            ClientSelectableCameraObject.deselectAll()
+            self.__hangarSpace.space.getVehicleEntity().onSelect(True)
         return
 
     def resetCamera(self, duration=0):

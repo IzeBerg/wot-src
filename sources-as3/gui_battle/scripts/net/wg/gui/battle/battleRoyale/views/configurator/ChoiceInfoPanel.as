@@ -99,7 +99,7 @@ package net.wg.gui.battle.battleRoyale.views.configurator
          this.addChildAt(this._selectAnimContainer,0);
          this._moduleDefaultY = this.firstInfoForSelect.y;
          this._delimiterDefaultY = this.delimiterTF.y;
-         App.utils.commons.updateChildrenMouseBehavior(this,false,false,new <DisplayObject>[this.firstInfoForSelect,this.secondInfoForSelect]);
+         this.setMouseEnabled(true);
       }
       
       public final function dispose() : void
@@ -145,6 +145,11 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       public function isAvailableModule(param1:int) : Boolean
       {
          return this._availableModules.indexOf(param1) >= 0;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function makeOutStateModule() : void
@@ -212,6 +217,19 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       {
          this.firstInfoForSelect.setHotKeys(param1.firstItem.hotKeysVKeys,param1.firstItem.hotKeys);
          this.secondInfoForSelect.setHotKeys(param1.secondItem.hotKeysVKeys,param1.secondItem.hotKeys);
+      }
+      
+      public function setMouseEnabled(param1:Boolean) : void
+      {
+         if(param1)
+         {
+            App.utils.commons.updateChildrenMouseBehavior(this,true,true);
+            App.utils.commons.updateChildrenMouseBehavior(this,false,false,new <DisplayObject>[this.firstInfoForSelect,this.secondInfoForSelect]);
+         }
+         else
+         {
+            App.utils.commons.updateChildrenMouseBehavior(this,false,false);
+         }
       }
       
       public function showSelectAnim(param1:int) : void
@@ -329,11 +347,6 @@ package net.wg.gui.battle.battleRoyale.views.configurator
          this.firstInfoForSelect.keyViewerPositionY = _loc2_;
          this.secondInfoForSelect.keyViewerPositionY = _loc2_;
          dispatchEvent(new Event(Event.RESIZE));
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

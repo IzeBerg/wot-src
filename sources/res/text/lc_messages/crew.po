@@ -75,6 +75,64 @@ msgstr "TO PROFILE"
 msgid "confirmSkills/percent"
 msgstr "%(value)s%"
 
+msgid "conversionAwards/button/submit"
+msgstr "Affirmative!"
+
+msgid "conversionAwards/buttonNote"
+msgstr "Your crew members have been converted to Crew Books."
+
+msgid "conversionAwards/title"
+msgstr "CONVERSION SUCCESSFUL"
+
+msgid "conversionAwards/underTitle"
+msgstr "The following items have been added to your account."
+
+msgid "conversionBanner/button/label"
+msgstr "Conversion"
+
+msgid "conversionBanner/button/tooltip/disabled/body"
+msgstr ""
+"If you have undertrained crew members in the Barracks, they will be removed "
+"from your account and their XP will be compensated with Crew Books of the "
+"corresponding type and nation."
+
+msgid "conversionBanner/button/tooltip/disabled/title"
+msgstr "No Undertrained Crew Members"
+
+msgid "conversionBanner/button/tooltip/enabled/body"
+msgstr "Go to Conversion"
+
+msgid "conversionBanner/infoText"
+msgstr "Conversion of undertrained crew members will be available for"
+
+msgid "conversionConfirm/button/cancel/label"
+msgstr "Cancel"
+
+msgid "conversionConfirm/button/convert/label"
+msgstr "Convert"
+
+msgid "conversionConfirm/button/showTankmen/label"
+msgstr "Crew members to convert: {amount}"
+
+msgid "conversionConfirm/description"
+msgstr ""
+"For details of the Crew Books you will receive, hover over a Crew Book icon.\n"
+"For more information about convertible crew members, click the button below."
+
+msgid "conversionConfirm/empty"
+msgstr ""
+"{alertIcon} You have no experience\n"
+"to be compensated."
+
+msgid "conversionConfirm/subTitle"
+msgstr ""
+"You can obtain these Crew Books by converting undertrained crew members in the Barracks.\n"
+"Undertrained crew members are members who have their first perk trained to less than 100%,\n"
+"do not have a zero perk, and are not unique or reward characters."
+
+msgid "conversionConfirm/title"
+msgstr "Crew Member Conversion"
+
 msgid "crew22Welcome/1/block/1/description"
 msgstr ""
 "There is no difference between perks and skills; they all work on the same "
@@ -128,6 +186,91 @@ msgstr "Choose new additional perks to increase crew performance."
 
 msgid "crew22Welcome/2/title"
 msgstr "STRENGTHEN YOUR CREW"
+
+msgid "crew5075Welcome/1/block/1/description"
+msgstr ""
+"Now, each crew member's base major qualification level is 100%. Values above"
+" 100% are treated as a crew efficiency bonus."
+
+msgid "crew5075Welcome/1/block/2/description"
+msgstr ""
+"This parameter can still be increased using consumables, equipment, and crew"
+" perks, and decreased in battle if a crew member is injured."
+
+msgid "crew5075Welcome/1/block/3/description"
+msgstr ""
+"All Crew XP needed to train a crew member to 100% has been added to the XP "
+"of their most recently trained perk."
+
+msgid "crew5075Welcome/1/subtitle"
+msgstr "All crew members are now trained to 100%"
+
+msgid "crew5075Welcome/1/title"
+msgstr "No More Crew Penalties"
+
+msgid "crew5075Welcome/2/block/1/description"
+msgstr "Recruiting a new 100% crew member is now free."
+
+msgid "crew5075Welcome/2/block/2/description"
+msgstr ""
+"A crew member's qualification can now be changed for free during retraining."
+" Perks are not reset."
+
+msgid "crew5075Welcome/2/block/3/description"
+msgstr ""
+"The price of retraining remains the same. There is no additional penalty to "
+"XP when retraining crew from vehicles of a different type. The penalty is "
+"now applied upon changing qualification."
+
+msgid "crew5075Welcome/2/subtitle"
+msgstr "Some basic crew operations have been changed"
+
+msgid "crew5075Welcome/2/title"
+msgstr "Crew Operations"
+
+msgid "crew5075Welcome/3/block/1/description"
+msgstr ""
+"Perk efficiency of each member is 100% by default. It has linear progression"
+" and contains 100,000 Crew XP."
+
+msgid "crew5075Welcome/3/block/2/description"
+msgstr ""
+"When Crew XP is lost upon retraining, it is deducted from perk efficiency, "
+"which reduces the efficiency of all perks trained by the crew member."
+
+msgid "crew5075Welcome/3/block/3/description"
+msgstr ""
+"Crew XP earned in battle first goes toward restoring perk efficiency to "
+"100%, and then toward training new perks."
+
+msgid "crew5075Welcome/3/subtitle"
+msgstr "A new crew proficiency indicator"
+
+msgid "crew5075Welcome/3/title"
+msgstr "Perk Efficiency"
+
+msgid "crew5075Welcome/4/block/1/description"
+msgstr ""
+"Crew members whose first perk is not trained to 100% can now retrain for "
+"other vehicles for free without losing XP. Those whose second perk is not "
+"trained to 100% receive a 50% discount on doing so."
+
+msgid "crew5075Welcome/4/block/2/description"
+msgstr ""
+"Crew members who are not trained to operate a specific vehicle cannot use "
+"their perks when operating that vehicle."
+
+msgid "crew5075Welcome/4/block/3/description"
+msgstr ""
+"If a crew member is trained to operate a specific vehicle, they are also "
+"considered trained to operate all Premium and reward vehicles of the same "
+"type."
+
+msgid "crew5075Welcome/4/subtitle"
+msgstr "The approach to crew training has been changed"
+
+msgid "crew5075Welcome/4/title"
+msgstr "Crew Training"
 
 msgid "filter/group/details/title"
 msgstr "Details"
@@ -219,13 +362,13 @@ msgid "filter/tooltip/tankmanKind/dismissed/title"
 msgstr "Retired"
 
 msgid "filter/tooltip/tankmanKind/recruit/body"
-msgstr "Show/hide recruits."
+msgstr "Show recruits."
 
 msgid "filter/tooltip/tankmanKind/recruit/title"
 msgstr "Recruits"
 
 msgid "filter/tooltip/tankmanKind/tankman/body"
-msgstr "Show/hide crew members."
+msgstr "Show crew members."
 
 msgid "filter/tooltip/tankmanKind/tankman/title"
 msgstr "Crew Members"
@@ -289,11 +432,23 @@ msgstr "Click to reset filter settings."
 msgid "filterPanel/counter/reset/header"
 msgstr "Reset All Filters"
 
+msgid "junkTankmen/confirmButton/title"
+msgstr "Affirmative!"
+
+msgid "junkTankmen/description"
+msgstr ""
+"A list of crew members in your Barracks who do not have enough XP to train their first perk to 100%,\n"
+"do not have a zero perk, and are not unique or rewarded characters.\n"
+"These crew members will be converted."
+
+msgid "junkTankmen/title"
+msgstr "Crew Member Conversion"
+
 msgid "matrix/increaseButton"
-msgstr "Increase"
+msgstr "Train"
 
 msgid "matrix/increaseTooltip/enable/body"
-msgstr "Increase perks using Free XP and Crew Books."
+msgstr "Train perks using Free XP and Crew Books."
 
 msgid "matrix/increaseTooltip/enable/header"
 msgstr "Quick Training"
@@ -313,6 +468,9 @@ msgstr "Third Qualification"
 msgid "matrix/qualification/4"
 msgstr "Fourth Qualification"
 
+msgid "matrix/qualification/5"
+msgstr "Fifth Qualification"
+
 msgid "matrix/qualification/lockByZeroPerks/2"
 msgstr "Zero perks unavailable for second qualification"
 
@@ -321,6 +479,18 @@ msgstr "Zero perks unavailable for third qualification"
 
 msgid "matrix/qualification/lockByZeroPerks/4"
 msgstr "Zero perks unavailable for fourth qualification"
+
+msgid "matrix/qualification/unavailable/2"
+msgstr "Second qualification unavailable for this vehicle"
+
+msgid "matrix/qualification/unavailable/3"
+msgstr "Third qualification unavailable for this vehicle"
+
+msgid "matrix/qualification/unavailable/4"
+msgstr "Fourth qualification unavailable for this vehicle"
+
+msgid "matrix/qualification/unavailable/5"
+msgstr "Fifth qualification unavailable for this vehicle"
 
 msgid "matrix/resetButton"
 msgstr "Reset"
@@ -337,14 +507,20 @@ msgstr "Click to reset perks."
 msgid "matrix/resetTooltip/enable/header"
 msgstr "Reset Perks"
 
-msgid "matrix/skills/achieve"
-msgstr "Training available upon achieving major qualification level 100%"
-
 msgid "matrix/skills/allSkills"
 msgstr "All additional perks trained for this vehicle"
 
 msgid "matrix/skills/available"
 msgstr "Perks available for training:"
+
+msgid "matrix/skills/disabled"
+msgstr "Perks are not available"
+
+msgid "matrix/skills/locked"
+msgstr "Perks are not available"
+
+msgid "matrix/skills/reduced"
+msgstr "Perk efficiency reduced"
 
 msgid "matrix/skills/roles/commander"
 msgstr "Commander's Perks"
@@ -419,13 +595,13 @@ msgid "personalData/filter/tooltip/popoverButton/title"
 msgstr "Filter by Parameters"
 
 msgid "personalData/filter/tooltip/type/document/body"
-msgstr "Show/hide documents."
+msgstr "Show documents."
 
 msgid "personalData/filter/tooltip/type/document/title"
 msgstr "Documents"
 
 msgid "personalData/filter/tooltip/type/suitableSkin/body"
-msgstr "Show/hide suitable skins."
+msgstr "Show suitable skins."
 
 msgid "personalData/filter/tooltip/type/suitableSkin/title"
 msgstr "Suitable Skins"
@@ -454,14 +630,20 @@ msgstr "Discount available"
 msgid "personalFile/inVehicle"
 msgstr "In the vehicle: %(vehicle)s"
 
+msgid "personalFile/increase"
+msgstr "Increase"
+
+msgid "personalFile/isUntrained"
+msgstr "Not trained for this vehicle"
+
 msgid "personalFile/premiumVehicle"
-msgstr "Premium vehicle"
+msgstr "All {icon} Premium vehicles"
 
 msgid "personalFile/retrain"
 msgstr "Retrain"
 
-msgid "personalFile/retrainLevel"
-msgstr "Training level: "
+msgid "personalFile/skillsEfficiency"
+msgstr "Perk efficiency: "
 
 msgid "personalFile/specialization"
 msgstr "Specialization:"
@@ -476,19 +658,19 @@ msgid "personalFile/voiceTooltip/header"
 msgstr "Unique Voiceover"
 
 msgid "premiumVehType/plural/lowerCase/AT-SPG"
-msgstr "Premium tanks destroyers"
+msgstr "All Premium tanks destroyers"
 
 msgid "premiumVehType/plural/lowerCase/SPG"
-msgstr "Premium SPGs"
+msgstr "All Premium SPGs"
 
 msgid "premiumVehType/plural/lowerCase/heavyTank"
-msgstr "Premium heavy tanks"
+msgstr "All Premium heavy tanks"
 
 msgid "premiumVehType/plural/lowerCase/lightTank"
-msgstr "Premium light tanks"
+msgstr "All Premium light tanks"
 
 msgid "premiumVehType/plural/lowerCase/mediumTank"
-msgstr "Premium medium tanks"
+msgstr "All Premium medium tanks"
 
 msgid "serviceRecord/achievementsList/title"
 msgstr "AWARDS"
@@ -522,7 +704,7 @@ msgid "tankChange/title"
 msgstr "TRAIN FOR VEHICLE"
 
 msgid "tankChange/tooltip/location/body"
-msgstr "Show/hide only vehicles in the Garage."
+msgstr "Show vehicles in the Garage."
 
 msgid "tankChange/tooltip/location/header"
 msgstr "In Garage"
@@ -598,6 +780,9 @@ msgstr "Nothing found. Recruit a crew member."
 msgid "tankmanList/filter/title"
 msgstr "Crew members:"
 
+msgid "tankmanList/tooltip/can_not_recruit/body"
+msgstr "Not enough bunks in the Barracks."
+
 msgid "tankmanList/tooltip/location/dismissed/body"
 msgstr "Show/hide only retired crew members."
 
@@ -605,13 +790,13 @@ msgid "tankmanList/tooltip/location/dismissed/title"
 msgstr "Retired"
 
 msgid "tankmanList/tooltip/location/in_barracks/body"
-msgstr "Show/hide crew members in the Barracks."
+msgstr "Show crew members in the Barracks."
 
 msgid "tankmanList/tooltip/location/in_barracks/title"
 msgstr "In Barracks"
 
 msgid "tankmanList/tooltip/location/in_tank/body"
-msgstr "Show/hide crew members in vehicles."
+msgstr "Show crew members in vehicles."
 
 msgid "tankmanList/tooltip/location/in_tank/title"
 msgstr "In Vehicles"
@@ -628,7 +813,7 @@ msgid "tankmanList/tooltip/popover/header"
 msgstr "Filter by Parameters"
 
 msgid "tankmanList/tooltip/recruit/body"
-msgstr "Recruit a crew member."
+msgstr "Recruit a new crew member."
 
 msgid "tankmanList/tooltip/searchInput/body"
 msgstr "Name must contain up to %(maxLength)s characters."
@@ -636,7 +821,7 @@ msgstr "Name must contain up to %(maxLength)s characters."
 msgid "vehicleParamsDecorator/perkTip"
 msgstr ""
 "*Hovering over a perk shows how it affects the corresponding characteristics"
-" when trained to 100%."
+" when trained to 100% with the current level of perk efficiency."
 
 msgid "welcomeScreen/button/confirm"
 msgstr "Affirmative!"

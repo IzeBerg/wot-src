@@ -1,5 +1,12 @@
+from enum import Enum
 from frameworks.wulf import Array
 from frameworks.wulf import ViewModel
+
+class CloseReason(Enum):
+    ESC = 'esc'
+    CLOSE = 'close'
+    AFFIRMATIVE = 'affirmative'
+
 
 class CrewIntroViewModel(ViewModel):
     __slots__ = ('onClose', )

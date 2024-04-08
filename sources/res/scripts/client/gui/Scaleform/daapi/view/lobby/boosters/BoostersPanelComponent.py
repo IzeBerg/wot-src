@@ -59,7 +59,7 @@ class BoostersPanelComponent(SlotsPanelMeta):
     def _populate(self):
         super(BoostersPanelComponent, self)._populate()
         g_clientUpdateManager.addCallbacks({'goodies': self.__onUpdateGoodies})
-        self.boosters.onBoosterChangeNotify += self.__onUpdateGoodies
+        self.boosters.onPersonalReserveTick += self.__onUpdateGoodies
         self._buildList()
         self._wasPopulated = True
 
@@ -67,7 +67,7 @@ class BoostersPanelComponent(SlotsPanelMeta):
         self._isPanelInactive = None
         self._wasPopulated = None
         self._slotsMap = None
-        self.boosters.onBoosterChangeNotify -= self.__onUpdateGoodies
+        self.boosters.onPersonalReserveTick -= self.__onUpdateGoodies
         g_clientUpdateManager.removeObjectCallbacks(self)
         super(BoostersPanelComponent, self)._dispose()
         return

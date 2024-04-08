@@ -1,6 +1,8 @@
 package net.wg.gui.battle.views.radialMenu
 {
    import flash.display.MovieClip;
+   import flash.display.Sprite;
+   import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.geom.Point;
    import flash.utils.Dictionary;
@@ -55,6 +57,8 @@ package net.wg.gui.battle.views.radialMenu
       
       public var arrowElement:MovieClip = null;
       
+      public var shade:Sprite = null;
+      
       private var _bottomShortcutsMap:Dictionary;
       
       private var _regularShortcutsMap:Dictionary;
@@ -74,6 +78,8 @@ package net.wg.gui.battle.views.radialMenu
       private var _mouseOffset:Point;
       
       private var _isAction:Boolean = false;
+      
+      private var _isShadeVisible:Boolean = false;
       
       private var _buttons:Vector.<RadialButton> = null;
       
@@ -101,6 +107,7 @@ package net.wg.gui.battle.views.radialMenu
          this._isColorBlind = this._colorMgr.getIsColorBlindS();
          this.resetState();
          this.updateButtons();
+         this.setIsShadeVisible(false);
       }
       
       override protected function buildData(param1:Array) : void
@@ -187,6 +194,7 @@ package net.wg.gui.battle.views.radialMenu
          this.background = null;
          this.circleBackground = null;
          this.arrowElement = null;
+         this.shade = null;
          this._colorMgr = null;
          this._bottomShortcutsMap = null;
          this._regularShortcutsMap = null;
@@ -204,6 +212,14 @@ package net.wg.gui.battle.views.radialMenu
          else
          {
             this.internalHide();
+         }
+      }
+      
+      public function setIsShadeVisible(param1:Boolean) : void
+      {
+         if(this._isShadeVisible != param1)
+         {
+            this._isShadeVisible = param1;
          }
       }
       
@@ -302,6 +318,7 @@ package net.wg.gui.battle.views.radialMenu
          this._hideWithAnimationState = false;
          visible = true;
          this.background.visible = true;
+         this.shade.visible = this._isShadeVisible;
          var _loc3_:uint = 0;
          while(_loc3_ < this._buttonsCount)
          {
@@ -320,6 +337,7 @@ package net.wg.gui.battle.views.radialMenu
          this._mouseOffset.y = 0;
          this._wheelPosition = -1;
          this.checkButtonSelectionWithMouse(param1,param2);
+         dispatchEvent(new Event(Event.ACTIVATE));
       }
       
       private function hideWithAnimation() : void
@@ -337,6 +355,7 @@ package net.wg.gui.battle.views.radialMenu
       
       private function internalHide() : void
       {
+         dispatchEvent(new Event(Event.DEACTIVATE));
          this.resetState();
          onHideCompletedS();
       }
@@ -409,55 +428,17 @@ package net.wg.gui.battle.views.radialMenu
          }
          if(_loc1_)
          {
+            this.shade.visible = false;
             this.background.visible = false;
             this.circleBackground.visible = false;
             this.arrowElement.visible = false;
             this.hideWithAnimation();
+            dispatchEvent(new Event(Event.DEACTIVATE));
          }
          else
          {
             this.internalHide();
          }
-      }
-      
-      override public function get visible() : Boolean
-      {
-         return !this._hideWithAnimationState && super.visible;
-      }
-      
-      private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
-      {
-         this._isColorBlind = App.colorSchemeMgr.getIsColorBlindS();
-      }
-      
-      private function onMouseDownHandler(param1:MouseEvent) : void
-      {
-         this.handleMouseButtonEvent(param1);
-      }
-      
-      private function onMouseUpHandler(param1:MouseEvent) : void
-      {
-         this.handleMouseButtonEvent(param1);
-      }
-      
-      private function handleMouseButtonEvent(param1:MouseEvent) : void
-      {
-         if(param1 is MouseEventEx)
-         {
-            if(MouseEventEx(param1).buttonIdx == MouseEventEx.RIGHT_BUTTON)
-            {
-               this.internalHide();
-            }
-            else if(MouseEventEx(param1).buttonIdx == MouseEventEx.LEFT_BUTTON)
-            {
-               this.doActionAndHideRadialMenu();
-            }
-         }
-      }
-      
-      private function onMouseMoveHandler(param1:MouseEvent) : void
-      {
-         this.checkButtonSelectionWithMouse(this.mouseX,this.mouseY);
       }
       
       private function checkButtonSelectionWithMouse(param1:Number, param2:Number) : void
@@ -521,6 +502,46 @@ package net.wg.gui.battle.views.radialMenu
             this.arrowElement.rotation = _loc8_;
             this.arrowElement.visible = this.visible;
          }
+      }
+      
+      override public function get visible() : Boolean
+      {
+         return !this._hideWithAnimationState && super.visible;
+      }
+      
+      private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
+      {
+         this._isColorBlind = App.colorSchemeMgr.getIsColorBlindS();
+      }
+      
+      private function onMouseDownHandler(param1:MouseEvent) : void
+      {
+         this.handleMouseButtonEvent(param1);
+      }
+      
+      private function onMouseUpHandler(param1:MouseEvent) : void
+      {
+         this.handleMouseButtonEvent(param1);
+      }
+      
+      private function handleMouseButtonEvent(param1:MouseEvent) : void
+      {
+         if(param1 is MouseEventEx)
+         {
+            if(MouseEventEx(param1).buttonIdx == MouseEventEx.RIGHT_BUTTON)
+            {
+               this.internalHide();
+            }
+            else if(MouseEventEx(param1).buttonIdx == MouseEventEx.LEFT_BUTTON)
+            {
+               this.doActionAndHideRadialMenu();
+            }
+         }
+      }
+      
+      private function onMouseMoveHandler(param1:MouseEvent) : void
+      {
+         this.checkButtonSelectionWithMouse(this.mouseX,this.mouseY);
       }
       
       private function onMouseWheelHandler(param1:MouseEvent) : void

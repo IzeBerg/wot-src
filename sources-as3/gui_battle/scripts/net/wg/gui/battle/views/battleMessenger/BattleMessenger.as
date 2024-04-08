@@ -162,6 +162,8 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _poolsCreated:Boolean = false;
       
+      private var _freeSpace:Number = NaN;
+      
       public function BattleMessenger()
       {
          this.swapArea = new Sprite();
@@ -208,6 +210,11 @@ package net.wg.gui.battle.views.battleMessenger
       private static function onMouseOutHandler(param1:MouseEvent) : void
       {
          App.toolTipMgr.hide();
+      }
+      
+      public function get isHistoryEnabled() : Boolean
+      {
+         return this._isHistoryEnabled;
       }
       
       override protected function setupList(param1:BattleMessengerSettingsVO) : void
@@ -513,6 +520,15 @@ package net.wg.gui.battle.views.battleMessenger
          this._userInteractionCmp.syncUpdater(param1,this._toxicPanelData);
       }
       
+      public function setMessagesInteraction(param1:Boolean) : void
+      {
+         this.as_toggleCtrlPressFlag(param1);
+         if(param1)
+         {
+            this.setPanelElementsVisibility(false);
+         }
+      }
+      
       public function getComponentForFocus() : InteractiveObject
       {
          return this.messageInputField;
@@ -570,6 +586,17 @@ package net.wg.gui.battle.views.battleMessenger
          this.swapArea.y = -param1 + BOTTOM_SIDE_Y_POSITION;
       }
       
+      public function setFreeSpace(param1:Number = NaN) : void
+      {
+         if(this._freeSpace == param1)
+         {
+            return;
+         }
+         this._freeSpace = param1;
+         this.checkBigMessagesInSmallScreen(true);
+         this.updateMessagesPosition();
+      }
+      
       private function removeMessageFromDisplayList(param1:BattleMessage) : void
       {
          this.backgroundLayer.removeChild(param1.background);
@@ -582,6 +609,13 @@ package net.wg.gui.battle.views.battleMessenger
          {
             this._userInteractionCmp.syncBackground(param1.width);
          }
+      }
+      
+      public function setInputVisible(param1:Boolean) : void
+      {
+         this.receiverField.visible = param1;
+         this.itemBackground.visible = param1;
+         this.messageInputField.visible = param1;
       }
       
       private function pushMessageWithToxicLogic(param1:BattleMessage) : void
@@ -1092,6 +1126,11 @@ package net.wg.gui.battle.views.battleMessenger
          }
       }
       
+      private function getFreeSpace() : int
+      {
+         return !!isNaN(this._freeSpace) ? int(y) : int(this._freeSpace);
+      }
+      
       private function hasExtraMessagesInFreeSpace() : Boolean
       {
          var _loc1_:int = 0;
@@ -1099,7 +1138,7 @@ package net.wg.gui.battle.views.battleMessenger
          {
             return false;
          }
-         _loc1_ = y;
+         _loc1_ = this.getFreeSpace();
          var _loc2_:Number = this.calculateVisibleMessagesHeight() / _loc1_;
          return _loc2_ > MAX_MESSAGES_HEIGHT_KOEF;
       }
@@ -1109,7 +1148,7 @@ package net.wg.gui.battle.views.battleMessenger
          var _loc5_:int = 0;
          var _loc7_:Boolean = false;
          var _loc8_:BattleMessage = null;
-         var _loc2_:int = y;
+         var _loc2_:int = this.getFreeSpace();
          var _loc3_:int = this._topMessageIndex;
          var _loc4_:int = this._bottomMessageIndex;
          var _loc6_:Number = 0;
@@ -1145,7 +1184,7 @@ package net.wg.gui.battle.views.battleMessenger
          var _loc3_:Number = NaN;
          if(this._topMessageIndex > 0)
          {
-            _loc1_ = y;
+            _loc1_ = this.getFreeSpace();
             _loc2_ = this.calculateVisibleMessagesHeight();
             _loc3_ = _loc2_ / _loc1_;
             while(_loc3_ < MAX_MESSAGES_HEIGHT_KOEF && this._topMessageIndex > 0 && this._calculatedMaxVisibleMessages < this._defaultMaxVisibleMessages)

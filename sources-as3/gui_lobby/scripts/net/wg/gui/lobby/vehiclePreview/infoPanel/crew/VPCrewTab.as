@@ -178,7 +178,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.crew
          }
          else if(StringUtils.isNotEmpty(_loc2_.tooltip))
          {
-            _loc3_ = getTooltipDataS(_loc2_.crewId);
+            _loc3_ = getTooltipDataS(_loc2_.crewId,_loc2_.slotIdx);
             this._toolTipMgr.showSpecial.apply(null,[_loc2_.tooltip,null].concat(_loc3_));
          }
       }

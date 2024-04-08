@@ -38,9 +38,9 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setCoolDownTimeSnapshot(idx, time, isBaseTime, isFlash)
 
-    def as_addShellSlotS(self, idx, keyCode, sfKeyCode, quantity, clipCapacity, shellIconPath, noShellIconPath, tooltipText):
+    def as_addShellSlotS(self, idx, keyCode, sfKeyCode, quantity, clipCapacity, shellIconPath, noShellIconPath, tooltipText, isInfinity=False):
         if self._isDAAPIInited():
-            return self.flashObject.as_addShellSlot(idx, keyCode, sfKeyCode, quantity, clipCapacity, shellIconPath, noShellIconPath, tooltipText)
+            return self.flashObject.as_addShellSlot(idx, keyCode, sfKeyCode, quantity, clipCapacity, shellIconPath, noShellIconPath, tooltipText, isInfinity)
 
     def as_setNextShellS(self, idx):
         if self._isDAAPIInited():

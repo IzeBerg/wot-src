@@ -26,6 +26,8 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var mouseAssistAimSens:SettingsControlProp = null;
       
+      public var mouseDeathFreecamSens:SettingsControlProp = null;
+      
       public var backDraftInvert:SettingsControlProp = null;
       
       public function ControlsSettingsDataVo()
@@ -39,6 +41,7 @@ package net.wg.gui.lobby.settings.vo.config
             "mouseSniperSens":createControl(ControlsFactory.TYPE_SLIDER).build(),
             "mouseStrategicSens":createControl(ControlsFactory.TYPE_SLIDER).build(),
             "mouseAssistAimSens":createControl(ControlsFactory.TYPE_SLIDER).build(),
+            "mouseDeathFreecamSens":createControl(ControlsFactory.TYPE_SLIDER).build(),
             "backDraftInvert":createControl(ControlsFactory.TYPE_CHECKBOX).build()
          });
       }
@@ -58,6 +61,7 @@ package net.wg.gui.lobby.settings.vo.config
          this.mouseSniperSens = null;
          this.mouseStrategicSens = null;
          this.mouseAssistAimSens = null;
+         this.mouseDeathFreecamSens = null;
          this.backDraftInvert = null;
          super.onDispose();
       }

@@ -20,9 +20,6 @@ class VehicleCompareConfiguratorViewMeta(VehicleCompareConfiguratorBaseView):
     def skillSelect(self, skillType, slotIndex, selected):
         self._printOverrideError('skillSelect')
 
-    def changeCrewLevel(self, crewLevelId):
-        self._printOverrideError('changeCrewLevel')
-
     def as_setDevicesDataS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setDevicesData(data)
@@ -43,14 +40,6 @@ class VehicleCompareConfiguratorViewMeta(VehicleCompareConfiguratorBaseView):
         if self._isDAAPIInited():
             return self.flashObject.as_disableCamo()
 
-    def as_setSkillsBlockedS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setSkillsBlocked(value)
-
-    def as_setCrewAttentionIconVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setCrewAttentionIconVisible(value)
-
     def as_setSkillsS(self, skills):
         if self._isDAAPIInited():
             return self.flashObject.as_setSkills(skills)
@@ -58,10 +47,6 @@ class VehicleCompareConfiguratorViewMeta(VehicleCompareConfiguratorBaseView):
     def as_setTopModulesSelectedS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setTopModulesSelected(value)
-
-    def as_setCrewLevelIndexS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setCrewLevelIndex(value)
 
     def as_setIsPostProgressionEnabledS(self, value):
         if self._isDAAPIInited():

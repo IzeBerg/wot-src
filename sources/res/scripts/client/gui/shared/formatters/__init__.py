@@ -1,5 +1,6 @@
 import logging
 from itertools import combinations
+from typing import Optional
 from gui import makeHtmlString
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.Scaleform.genConsts.CURRENCIES_CONSTANTS import CURRENCIES_CONSTANTS
@@ -269,3 +270,9 @@ def getRoleTextWithLabel(role, roleLabel):
 
 def getRoleText(roleLabel):
     return backport.text(R.strings.menu.roleExp.roleName.dyn(roleLabel)(), groupName=backport.text(R.strings.menu.roleExp.roleGroupName.dyn(roleLabel)()))
+
+
+def calculateWinRate(wins, battles, precision=0):
+    if battles > 0:
+        return round(100.0 * wins / battles, precision)
+    return 0.0

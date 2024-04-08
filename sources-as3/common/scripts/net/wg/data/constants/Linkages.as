@@ -5,14 +5,6 @@ package net.wg.data.constants
       
       public static const BTN_ALERT_INDICATOR:String = "Button_AlertIndicatorUI";
       
-      public static const BC_STAT_RENDERER:String = "StatRendererContainerUI";
-      
-      public static const BC_BASE_RENDERER:String = "BaseRendererContainerUI";
-      
-      public static const BC_BOTTOM_REWARD_RENDERER:String = "BottomRewardRendererContainerUI";
-      
-      public static const BC_VIDEO_BUTTON:String = "VideoButtonUI";
-      
       public static const WINDOW:String = "WindowUI";
       
       public static const NOTIFICATION_TIME_COMPONENT:String = "NotificationTimeComponentUI";
@@ -56,8 +48,6 @@ package net.wg.data.constants
       public static const SALE_ITEM_BLOCK_RENDERER:String = "saleItemBlockUI";
       
       public static const SPARKS_MGR:String = "net.wg.gui.components.common.SparksManager";
-      
-      public static const SKILL_ITEM_VIEW_MINI:String = "SkillItemViewMiniUI";
       
       public static const PROGRESS_ELEMENT:String = "ProgressElement_UI";
       
@@ -275,8 +265,6 @@ package net.wg.data.constants
       
       public static const FC_MARKER_ITEM:String = "fcMarkerItemUI";
       
-      public static const BCFC_MARKER_ITEM:String = "BCFCMarkerItemUI";
-      
       public static const PRICE_COMPONENT:String = "PriceUI";
       
       public static const SHELL_BUTTON:String = "ShellButtonUI";
@@ -437,8 +425,6 @@ package net.wg.data.constants
       
       public static const TUTORIAL_SIMPLE_HINT_UI:String = "LobbyHintUI";
       
-      public static const TUTORIAL_BOOTCAMP_HINT_UI:String = "BCLobbyHintUI";
-      
       public static const PROFILE_TOTAL_PAGE:String = "ProfileTotalPage_UI";
       
       public static const PROFILE_SUMMARY_PAGE:String = "ProfileSummaryPage_UI";
@@ -535,7 +521,9 @@ package net.wg.data.constants
       
       public static const YOH_CHASSIS_MODE_ANIMATION_UI:String = "YohChassisModeAnimationUI";
       
-      public static const POSTMORTEN_PANEL:String = "PostmortemPanelUI";
+      public static const POSTMORTEM_PANEL:String = "PostmortemPanelUI";
+      
+      public static const PVE_POSTMORTEM_PANEL:String = "PvePostmortemPanelUI";
       
       public static const ROLE_DESCRIPTION:String = "RoleDescriptionUI";
       
@@ -801,31 +789,11 @@ package net.wg.data.constants
       
       public static const MISSION_DETAILS_AWARDS_TILE_LIST_UI:String = "MissionDetailsAwardsTileListUI";
       
-      public static const MISSION_DETAILS_TOKEN_RENDERER_UI:String = "MissionDetailsTokenRendererUI";
-      
       public static const MISSION_SEPARATOR_UI:String = "MissionSeparatorUI";
-      
-      public static const MISSION_ICON_UI:String = "MissionIconUI";
-      
-      public static const MISSION_PAGINATOR_BTN_GRAY_UI:String = "MissionPaginatorBtnGrayUI";
-      
-      public static const MISSION_PAGINATOR_BTN_GREEN_UI:String = "MissionPaginatorBtnGreenUI";
-      
-      public static const MISSION_PAGINATOR_BTN_RED_UI:String = "MissionPaginatorBtnRedUI";
       
       public static const MISSION_PAGINATOR_SEPARATOR_UI:String = "MissionPaginatorSeparatorUI";
       
-      public static const LOBBY_HINT_UI:String = "BCLobbyHintUI";
-      
-      public static const LOBBY_RECTANGLE_HINT_UI:String = "BCLobbyRectangleHintUI";
-      
-      public static const LOBBY_HINT_MISSION_UI:String = "BCLobbyHintMissionUI";
-      
       public static const KEY_VIEWER:String = "KeyViewerUI";
-      
-      public static const SECONDARY_HINT_ANIMATION_SET:String = "AnimationSetSecondaryHintUI";
-      
-      public static const BC_EQUIPMENT_BUTTON:String = "EquipmentButtonBigUI";
       
       public static const RANKED_TOP_BG_BITMAPDATA_POSTFIX:String = "RankedTopBgBitmapDataUI";
       
@@ -988,6 +956,8 @@ package net.wg.data.constants
       public static const REPLIED_MARKER_UI:String = "RepliedMarkerUI";
       
       public static const STICKY_MARKER_UI:String = "StickyMarkerUI";
+      
+      public static const FLAG_STICKY_MARKER_UI:String = "FlagStickyMarkerUI";
       
       public static const SESSION_BATTLE_EFFICIENCY_STATS_RENDERER_UI:String = "SessionBattleEfficiencyStatsRendererUI";
       

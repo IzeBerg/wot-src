@@ -1,6 +1,6 @@
 import json
 from collections import defaultdict
-import BigWorld, WWISE
+import BigWorld
 from PlayerEvents import g_playerEvents
 from adisp import adisp_process
 from connection_mgr import LOGIN_STATUS
@@ -20,7 +20,7 @@ from gui.impl.dialogs.dialogs import showSimple
 from gui.impl.gen import R
 from gui.shared import events, g_eventBus
 from gui.shared.event_bus import EVENT_BUS_SCOPE
-from gui.shared.events import OpenLinkEvent, LoginEventEx, ArgsEvent, LoginEvent, LoadViewEvent, ViewEventType
+from gui.shared.events import OpenLinkEvent, LoginEventEx, ArgsEvent, LoginEvent, LoadViewEvent
 from helpers import getFullClientVersion, dependency, uniprof
 from helpers.i18n import makeString as _ms
 from helpers.statistics import HANGAR_LOADING_STATE
@@ -69,7 +69,6 @@ class LoginView(LoginPageMeta):
         self.__capsLockCallbackID = None
         self.__customLoginStatus = None
         self._autoSearchVisited = False
-        self._entityEnqueueCancelCallback = None
         self._servers = self.loginManager.servers
         self.loginManager.servers.updateServerList()
         self._loginMode = createLoginMode(self)
@@ -142,9 +141,6 @@ class LoginView(LoginPageMeta):
         self.connectionMgr.onLoggedOn += self._onLoggedOn
         self.connectionMgr.onPeripheryRoutingGroupUpdated += self.__updateServersList
         g_playerEvents.onAccountShowGUI += self._clearLoginView
-        g_playerEvents.onEntityCheckOutEnqueued += self._onEntityCheckoutEnqueued
-        g_playerEvents.onAccountBecomeNonPlayer += self._onAccountBecomeNonPlayer
-        g_playerEvents.onBootcampStartChoice += self.__onBootcampStartChoice
         self.as_setVersionS(getFullClientVersion())
         self.as_setCopyrightS(backport.text(R.strings.menu.copy()), backport.text(R.strings.menu.legal()))
         self.sessionProvider.getCtx().lastArenaUniqueID = None
@@ -170,14 +166,8 @@ class LoginView(LoginPageMeta):
         self.connectionMgr.onLoggedOn -= self._onLoggedOn
         self._servers.onServersStatusChanged -= self.__updateServersList
         g_playerEvents.onAccountShowGUI -= self._clearLoginView
-        g_playerEvents.onEntityCheckOutEnqueued -= self._onEntityCheckoutEnqueued
-        g_playerEvents.onAccountBecomeNonPlayer -= self._onAccountBecomeNonPlayer
-        g_playerEvents.onBootcampStartChoice -= self.__onBootcampStartChoice
-        if self._entityEnqueueCancelCallback:
-            g_eventBus.removeListener(ViewEventType.LOAD_VIEW, self._onEntityCheckoutCanceled, EVENT_BUS_SCOPE.LOBBY)
         self._serversDP.fini()
         self._serversDP = None
-        self._entityEnqueueCancelCallback = None
         super(LoginView, self)._dispose()
         return
 
@@ -240,26 +230,6 @@ class LoginView(LoginPageMeta):
 
     def _onLoginQueueClosed(self, event):
         self.__closeLoginQueueDialog()
-
-    def _onEntityCheckoutEnqueued(self, cancelCallback):
-        g_eventBus.addListener(ViewEventType.LOAD_VIEW, self._onEntityCheckoutCanceled, EVENT_BUS_SCOPE.LOBBY)
-        g_eventBus.handleEvent(LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.BOOTCAMP_QUEUE_DIALOG_SHOW)), EVENT_BUS_SCOPE.LOBBY)
-        self._entityEnqueueCancelCallback = cancelCallback
-
-    def _onAccountBecomeNonPlayer(self):
-        if self._entityEnqueueCancelCallback:
-            self._entityEnqueueCancelCallback = None
-            g_eventBus.removeListener(ViewEventType.LOAD_VIEW, self._onEntityCheckoutCanceled, EVENT_BUS_SCOPE.LOBBY)
-        return
-
-    def _onEntityCheckoutCanceled(self, event):
-        if event.alias == VIEW_ALIAS.BOOTCAMP_QUEUE_DIALOG_CANCEL:
-            Waiting.show('login')
-            g_eventBus.removeListener(ViewEventType.LOAD_VIEW, self._onEntityCheckoutCanceled, EVENT_BUS_SCOPE.LOBBY)
-            if self._entityEnqueueCancelCallback:
-                self._entityEnqueueCancelCallback()
-            self._entityEnqueueCancelCallback = None
-        return
 
     def _onLoginQueueSwitched(self, event):
         self.__closeLoginQueueDialog()
@@ -391,9 +361,6 @@ class LoginView(LoginPageMeta):
 
     def __getServerText(self, key, serverName):
         return makeHtmlString('html_templates:login/server-state', key, {'message': backport.text(R.strings.waiting.message.server.dyn(key)(), server=serverName)})
-
-    def __onBootcampStartChoice(self, _):
-        WWISE.WW_eventGlobal('loginscreen_mute')
 
     def __clearPeripheryRouting(self):
         if self.connectionMgr.peripheryRoutingGroup is not None:

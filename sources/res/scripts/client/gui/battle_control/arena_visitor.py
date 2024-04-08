@@ -273,9 +273,6 @@ class _ArenaGuiTypeVisitor(IArenaVisitor):
     def isEventBattle(self):
         return self._guiType == _GUI_TYPE.EVENT_BATTLES
 
-    def isMultiTeam(self):
-        return self._guiType == _GUI_TYPE.FALLOUT_MULTITEAM
-
     def isTrainingBattle(self):
         return self._guiType in (_GUI_TYPE.TRAINING, _GUI_TYPE.EPIC_RANDOM_TRAINING)
 
@@ -284,9 +281,6 @@ class _ArenaGuiTypeVisitor(IArenaVisitor):
 
     def isRankedBattle(self):
         return self._guiType == _GUI_TYPE.RANKED
-
-    def isBootcampBattle(self):
-        return self._guiType == _GUI_TYPE.BOOTCAMP
 
     def isInEpicRange(self):
         return self._guiType in _GUI_TYPE.EPIC_RANGE
@@ -311,6 +305,9 @@ class _ArenaGuiTypeVisitor(IArenaVisitor):
 
     def isComp7Battle(self):
         return self._guiType == _GUI_TYPE.COMP7
+
+    def isComp7Training(self):
+        return self._guiType == _GUI_TYPE.TRAINING_COMP7
 
     def hasLabel(self):
         return self._guiType != _GUI_TYPE.UNKNOWN and self._guiType in _GUI_TYPE_LABEL.LABELS
@@ -574,6 +571,14 @@ class _ClientArenaVisitor(IClientArenaVisitor):
             return bool(ownVehicle.enableExternalRespawn)
         else:
             return False
+
+    def isArenaLeaveAllowed(self):
+        isLeaveAllowed = None
+        ownVehicle = BigWorld.entities.get(BigWorld.player().playerVehicleID, None)
+        vehRespComponent = ownVehicle and ownVehicle.dynamicComponents.get('VehicleRespawnComponent')
+        if vehRespComponent:
+            isLeaveAllowed = vehRespComponent.isLeaveAllowed
+        return isLeaveAllowed
 
     def hasHealthBar(self):
         return self._bonus.hasHealthBar()

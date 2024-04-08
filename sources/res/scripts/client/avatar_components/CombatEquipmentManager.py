@@ -1,4 +1,4 @@
-import functools, math, SoundGroups, math_utils, BigWorld
+import functools, math, SoundGroups, helpers, math_utils, BigWorld
 from Math import Vector2, Vector3
 from helpers import dependency
 from helpers.CallbackDelayer import CallbackDelayer
@@ -197,6 +197,10 @@ class CombatEquipmentManager(object):
         for area in self.__selectedAreas.itervalues():
             area.setGUIVisible(self.__isGUIVisible)
 
+    def setVFXVisible(self, isVisible):
+        for wing in self.__wings.values():
+            wing.setVisible(isVisible)
+
     @staticmethod
     def __calcBombsDistribution(bombsCnt, areaWidth, areaLength):
         coeff = areaWidth / areaLength
@@ -209,14 +213,16 @@ class CombatEquipmentManager(object):
             LOG_DEBUG('===== showCarpetBombing =====')
             LOG_DEBUG(equipmentID)
             LOG_DEBUG(pos, direction, time)
-        bombEquipment = vehicles.g_cache.equipments()[equipmentID]
-        shellDescr = vehicles.getItemByCompactDescr(bombEquipment.shellCompactDescr)
-        shotEffect = vehicles.g_cache.shotEffects[shellDescr.effectsIndex]
-        airstrikeID = shotEffect.get('airstrikeID')
-        if airstrikeID is None:
-            LOG_ERROR('EquipmentID %s has no airstrike shot effect settings' % equipmentID)
+        if helpers.isShowingKillCam():
             return
         else:
+            bombEquipment = vehicles.g_cache.equipments()[equipmentID]
+            shellDescr = vehicles.getItemByCompactDescr(bombEquipment.shellCompactDescr)
+            shotEffect = vehicles.g_cache.shotEffects[shellDescr.effectsIndex]
+            airstrikeID = shotEffect.get('airstrikeID')
+            if airstrikeID is None:
+                LOG_ERROR('EquipmentID %s has no airstrike shot effect settings' % equipmentID)
+                return
             areaWidth, areaLength = bombEquipment.areaWidth, bombEquipment.areaLength
             if _ENABLE_DEBUG_LOG:
                 LOG_DEBUG('Ideal', areaWidth, areaLength)

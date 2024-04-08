@@ -267,7 +267,7 @@ package net.wg.gui.battle.epicRandom.views
       override protected function updateBattleDamageLogPosInPostmortem() : void
       {
          var _loc1_:int = BattleDamageLogConstants.MAX_VIEW_RENDER_COUNT;
-         var _loc2_:int = postmortemTips.x - (postmortemTips.width >> 1);
+         var _loc2_:int = postmortemPanelUI.x - (postmortemPanelUI.width >> 1);
          if(this.battleDamageLogPanel.x + BattleDamageLogConstants.MAX_DAMAGE_LOG_VIEW_WIDTH >= _loc2_)
          {
             _loc1_ = BattleDamageLogConstants.MIN_VIEW_RENDERER_COUNT_IN_POSTMORTEM;
@@ -464,7 +464,7 @@ package net.wg.gui.battle.epicRandom.views
       private function onConsumablesPanelSwitchPopupHandler(param1:ConsumablesPanelEvent) : void
       {
          var _loc2_:int = 0;
-         if(!postmortemTips || !postmortemTips.visible)
+         if(!postmortemPanelUI || !postmortemPanelUI.visible)
          {
             _loc2_ = !!this.consumablesPanel.isExpand ? int(CONSUMABLES_POPUP_OFFSET) : int(0);
             vehicleMessageList.setLocation(_originalWidth - VEHICLE_MESSAGES_LIST_OFFSET.x >> 1,_originalHeight - VEHICLE_MESSAGES_LIST_OFFSET.y - _loc2_ | 0);

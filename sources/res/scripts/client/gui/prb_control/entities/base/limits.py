@@ -1,11 +1,12 @@
-from collections import defaultdict
 import weakref
+from collections import defaultdict
+from shared_utils import findFirst
 from CurrentVehicle import g_currentVehicle
 from constants import PREBATTLE_ACCOUNT_STATE
 from gui.prb_control import prb_getters
 from gui.prb_control.items import ValidationResult
 from gui.prb_control.settings import PREBATTLE_ROSTER, PREBATTLE_RESTRICTION
-from items.vehicles import VehicleDescr, VEHICLE_CLASS_TAGS
+from items.vehicles import VEHICLE_CLASS_TAGS, getVehicleType
 from prebattle_shared import isTeamValid, isVehicleValid
 
 class IVehicleLimit(object):
@@ -84,6 +85,17 @@ class TeamNoPlayersInBattle(ITeamLimit):
 
     def __isPlayerInBattle(self, player):
         return player['state'] & PREBATTLE_ACCOUNT_STATE.IN_BATTLE != 0
+
+
+class TeamAllPlayersReady(AbstractTeamIsValid):
+
+    def check(self, rosters, team, teamLimits):
+        if findFirst(self.__isPlayerNotReady, self._getAccountsInfo(rosters, team).itervalues()):
+            return (False, PREBATTLE_RESTRICTION.VEHICLE_NOT_READY)
+        return (True, '')
+
+    def __isPlayerNotReady(self, player):
+        return player['state'] & PREBATTLE_ACCOUNT_STATE.NOT_READY != 0
 
 
 class MaxCount(ITeamLimit):
@@ -167,7 +179,7 @@ class VehiclesLevelLimit(ITeamLimit):
                 continue
             vehCompDescr = roster.get('vehCompDescr', '')
             if vehCompDescr:
-                vehType = VehicleDescr(compactDescr=vehCompDescr).type
+                vehType = getVehicleType(compactDescr=vehCompDescr)
                 level = vehType.level
                 union = vehClassTags & vehType.tags
                 if union:

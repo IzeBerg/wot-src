@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>rnd_transition</name>
+			<type>random_float</type>
+		</param>
+		<param>
+			<name>stop</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>start</name>
+		<type>sequence</type>
+		<resource>particles/Environment/Battle_Royal/Berserk/br_berserk_turret_start.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+				<condition>
+					<type>random_float</type>
+					<name>rnd_transition</name>
+					<rangeStart>0.000000</rangeStart>
+					<rangeEnd>100.000000</rangeEnd>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-230.000000 -15.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>idle</name>
+		<type>sequence</type>
+		<resource>particles/Environment/Battle_Royal/Berserk/br_berserk_turret_idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>0</loop>
+		<transition>
+			<to>end</to>
+			<blendDuration>0.000000</blendDuration>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>stop</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-24.000000 -191.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>end</name>
+		<type>sequence</type>
+		<resource>particles/Environment/Battle_Royal/Berserk/br_berserk_turret_end.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<uiPosition>172.000000 -21.000000 0.000000</uiPosition>
+	</node>
+</root>

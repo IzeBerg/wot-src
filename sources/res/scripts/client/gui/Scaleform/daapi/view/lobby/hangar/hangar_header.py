@@ -23,8 +23,6 @@ from gui.server_events.events_constants import BATTLE_ROYALE_GROUPS_ID
 from gui.server_events.events_constants import RANKED_DAILY_GROUP_ID
 from gui.server_events.events_dispatcher import showPersonalMission, showMissionsElen, showMissionsMarathon, showPersonalMissionOperationsPage, showPersonalMissionsOperationsMap, showMissionsCategories, showMissionsBattlePass, showMissionsMapboxProgression
 from gui.server_events.events_helpers import isRankedDaily, isDailyEpic
-from gui.shared import events
-from gui.shared.event_bus import EVENT_BUS_SCOPE
 from gui.shared.formatters import icons
 from gui.shared.personality import ServicesLocator
 from gui.shared.utils.functions import makeTooltip
@@ -36,11 +34,10 @@ from personal_missions import PM_BRANCH
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.event_boards_controllers import IEventBoardController
-from skeletons.gui.game_control import IBattlePassController, IBootcampController, IResourceWellController, IMarathonEventsController, IFestivityController, IRankedBattlesController, IQuestsController, IBattleRoyaleController, IMapboxController, IEpicBattleMetaGameController, IFunRandomController, IComp7Controller, ILimitedUIController
+from skeletons.gui.game_control import IBattlePassController, IResourceWellController, IMarathonEventsController, IFestivityController, IRankedBattlesController, IQuestsController, IBattleRoyaleController, IMapboxController, IEpicBattleMetaGameController, IFunRandomController, IComp7Controller, ILimitedUIController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from skeletons.tutorial import ITutorialLoader
 if typing.TYPE_CHECKING:
     from typing import Optional
 _logger = logging.getLogger(__name__)
@@ -242,10 +239,8 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
     _marathonsCtrl = dependency.descriptor(IMarathonEventsController)
     _festivityController = dependency.descriptor(IFestivityController)
     __battlePassController = dependency.descriptor(IBattlePassController)
-    __bootcampController = dependency.descriptor(IBootcampController)
     __rankedController = dependency.descriptor(IRankedBattlesController)
     __battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
-    __tutorialLoader = dependency.descriptor(ITutorialLoader)
     __mapboxCtrl = dependency.descriptor(IMapboxController)
     __epicController = dependency.descriptor(IEpicBattleMetaGameController)
     __resourceWell = dependency.descriptor(IResourceWellController)
@@ -328,12 +323,10 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
         self.__limitedUIController.startObserve(LuiRules.BM_FLAG, self.__updateVisibilityBattleMatter)
         self.__limitedUIController.startObserve(LuiRules.PERSONAL_MISSIONS, self.__updateVOHeader)
         self.__updateBattleMattersEntryPoint()
-        g_clientUpdateManager.addCallbacks({'inventory.1': self.update, 
-           'stats.tutorialsCompleted': self.update})
+        g_clientUpdateManager.addCallbacks({'inventory.1': self.update})
         if self._eventsController:
             self._eventsController.addListener(self)
         self._marathonsCtrl.onFlagUpdateNotify += self.update
-        self.addListener(events.TutorialEvent.SET_HANGAR_HEADER_ENABLED, self.__onSetHangarHeaderEnabled, scope=EVENT_BUS_SCOPE.LOBBY)
         self._lobbyContext.getServerSettings().onServerSettingsChange += self.__onServerSettingChanged
         g_guiResetters.add(self.__onChangeScreenResolution)
         self.startGlobalListening()
@@ -363,7 +356,6 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
         self.__widgets = None
         if self._eventsController:
             self._eventsController.removeListener(self)
-        self.removeListener(events.TutorialEvent.SET_HANGAR_HEADER_ENABLED, self.__onSetHangarHeaderEnabled, scope=EVENT_BUS_SCOPE.LOBBY)
         self._lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingChanged
         g_guiResetters.remove(self.__onChangeScreenResolution)
         self.stopGlobalListening()
@@ -372,8 +364,6 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
 
     def _makeHeaderVO(self):
         emptyHeaderVO = {'isVisible': False, 'quests': []}
-        if not self.__tutorialLoader.gui.hangarHeaderEnabled:
-            return emptyHeaderVO
         if self.__rankedController.isRankedPrbActive():
             return {'isVisible': True, 'quests': self.__getRankedQuestsToHeaderVO()}
         if self.__epicController.isEpicPrbActive():
@@ -389,8 +379,7 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
     def _getCommonQuestsToHeaderVO(self, vehicle):
         quests = []
         if self.__battleRoyaleController.isBattleRoyaleMode():
-            if not (self.__battleRoyaleController.isInPrimeTime() and self.__isShowPersonalMission):
-                return []
+            return []
         if self.isPersonalMissionEnabled():
             personalMissions = self.__getPersonalMissionsVO(vehicle)
             if personalMissions:
@@ -445,7 +434,7 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
         isBPAvailable = not self.__battlePassController.isDisabled()
         isValidBattleType = self.prbDispatcher and self.prbDispatcher.getEntity() and self.__battlePassController.isValidBattleType(self.prbDispatcher.getEntity())
         isRuleCompleted = self.__limitedUIController.isRuleCompleted(LuiRules.BP_ENTRY)
-        isVisible = isBPAvailable and isValidBattleType and not self.__bootcampController.isInBootcamp() and isRuleCompleted
+        isVisible = isBPAvailable and isValidBattleType and isRuleCompleted
         return isVisible
 
     @widgetFunc(HANGAR_ALIASES.RANKED_WIDGET)
@@ -809,9 +798,6 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
            'isTooltipSpecial': isTooltipSpecial, 
            'isTooltipWulf': isTooltipWulf}
 
-    def __onSetHangarHeaderEnabled(self, _=None):
-        self.update()
-
     def __hideHeader(self):
         return {'isVisible': False, 
            'quests': []}
@@ -846,9 +832,8 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
         self.as_setDataS(headerVO)
 
     def __updateResourceWellEntryPoint(self):
-        isArenaBonusTypeFit = self.__getCurentArenaBonusType() in (constants.ARENA_BONUS_TYPE.REGULAR,
+        isRandom = self.__getCurentArenaBonusType() in (constants.ARENA_BONUS_TYPE.REGULAR,
          constants.ARENA_BONUS_TYPE.WINBACK)
-        isRandom = isArenaBonusTypeFit and not self.__bootcampController.isInBootcamp()
         isResourceWellVisible = self.__resourceWell.isActive() or self.__resourceWell.isPaused() or self.__resourceWell.isNotStarted()
         alias = HANGAR_ALIASES.RESOURCE_WELL_ENTRY_POINT if isRandom and isResourceWellVisible else ''
         if self.__activeWidgets.update(ActiveWidgets.RIGHT, alias):

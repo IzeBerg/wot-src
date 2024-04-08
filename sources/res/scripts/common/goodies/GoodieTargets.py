@@ -1,4 +1,5 @@
 from abc import ABCMeta
+from typing import TypeVar
 
 class GoodieTarget(object):
     __metaclass__ = ABCMeta
@@ -91,3 +92,6 @@ class DemountOptionalDevice(HangarTarget):
 
 class DropSkill(GoodieTarget):
     pass
+
+
+GoodieTargetType = TypeVar('GoodieTargetType', bound=GoodieTarget)

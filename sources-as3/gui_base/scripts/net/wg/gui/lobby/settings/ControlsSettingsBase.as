@@ -39,6 +39,10 @@ package net.wg.gui.lobby.settings
       
       public var mouseAssistAimSensSlider:Slider = null;
       
+      public var mouseDeathFreecamSensLabel:TextField = null;
+      
+      public var mouseDeathFreecamSensSlider:Slider = null;
+      
       public var mouseHorzInvertCheckbox:CheckBox = null;
       
       public var mouseVertInvertCheckbox:CheckBox = null;
@@ -75,6 +79,9 @@ package net.wg.gui.lobby.settings
          this.mouseAssistAimSensLabel = null;
          this.mouseAssistAimSensSlider.dispose();
          this.mouseAssistAimSensSlider = null;
+         this.mouseDeathFreecamSensLabel = null;
+         this.mouseDeathFreecamSensSlider.dispose();
+         this.mouseDeathFreecamSensSlider = null;
          this.mouseHorzInvertCheckbox.dispose();
          this.mouseHorzInvertCheckbox = null;
          this.mouseVertInvertCheckbox.dispose();
@@ -95,6 +102,7 @@ package net.wg.gui.lobby.settings
          this.mouseSniperSensLabel.text = SETTINGS.MOUSE_SENSITIVITY_SNIPER;
          this.mouseStrategicSensLabel.text = SETTINGS.MOUSE_SENSITIVITY_ART;
          this.mouseAssistAimSensLabel.text = SETTINGS.MOUSE_SENSITIVITY_ART2;
+         this.mouseDeathFreecamSensLabel.text = SETTINGS.MOUSE_SENSITIVITY_DEATHFREECAM;
          this.mouseHorzInvertCheckbox.label = SETTINGS.MOUSE_SENSITIVITY_INVERTATIONHOR;
          this.mouseHorzInvertCheckbox.toolTip = TOOLTIPS.SETTINGS_MOUSE_SENSITIVITY_INVERTATIONHOR;
          this.mouseHorzInvertCheckbox.infoIcoType = InfoIcon.TYPE_INFO;

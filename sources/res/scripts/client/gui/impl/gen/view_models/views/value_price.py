@@ -1,4 +1,3 @@
-from gui.impl.gen import R
 from frameworks.wulf import ViewModel
 
 class ValuePrice(ViewModel):
@@ -26,10 +25,10 @@ class ValuePrice(ViewModel):
         self._setString(1, value)
 
     def getIcon(self):
-        return self._getResource(2)
+        return self._getString(2)
 
     def setIcon(self, value):
-        self._setResource(2, value)
+        self._setString(2, value)
 
     def getNotEnough(self):
         return self._getBool(3)
@@ -41,5 +40,5 @@ class ValuePrice(ViewModel):
         super(ValuePrice, self)._initialize()
         self._addStringProperty('value', '0')
         self._addStringProperty('type', 'custom')
-        self._addResourceProperty('icon', R.invalid())
+        self._addStringProperty('icon', '')
         self._addBoolProperty('notEnough', False)

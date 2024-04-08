@@ -7,7 +7,7 @@ class MemberChangeViewModel(BaseCrewViewModel):
     __slots__ = ('onResetFilters', 'onTankmanSelected', 'onRecruitSelected', 'onRecruitNewTankman',
                  'onTankmanRestore', 'onPlayRecruitVoiceover', 'onLoadCards')
 
-    def __init__(self, properties=12, commands=11):
+    def __init__(self, properties=13, commands=11):
         super(MemberChangeViewModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -76,6 +76,12 @@ class MemberChangeViewModel(BaseCrewViewModel):
     def getTankmanListType():
         return TankmanModel
 
+    def getIsRecruitDisabled(self):
+        return self._getBool(12)
+
+    def setIsRecruitDisabled(self, value):
+        self._setBool(12, value)
+
     def _initialize(self):
         super(MemberChangeViewModel, self)._initialize()
         self._addViewModelProperty('vehicleInfo', VehicleInfoModel())
@@ -88,6 +94,7 @@ class MemberChangeViewModel(BaseCrewViewModel):
         self._addNumberProperty('itemsAmount', 0)
         self._addNumberProperty('itemsOffset', 0)
         self._addArrayProperty('tankmanList', Array())
+        self._addBoolProperty('isRecruitDisabled', False)
         self.onResetFilters = self._addCommand('onResetFilters')
         self.onTankmanSelected = self._addCommand('onTankmanSelected')
         self.onRecruitSelected = self._addCommand('onRecruitSelected')

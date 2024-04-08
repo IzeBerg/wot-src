@@ -1,4 +1,4 @@
-from battle_royale.gui.impl.gen.view_models.views.lobby.views.widget_view_model import WidgetViewModel, BattleStatus
+from battle_royale.gui.impl.gen.view_models.views.lobby.views.widget_view_model import WidgetViewModel, BattleStatus, Animation
 from battle_royale_progression.skeletons.game_controller import IBRProgressionOnTokensController
 from battle_royale.gui.impl.lobby.tooltips.widget_tooltip_view import WidgetTooltipView
 from frameworks.wulf import ViewSettings, ViewFlags
@@ -22,6 +22,9 @@ class WidgetView(ViewImpl):
         if contentID == R.views.battle_royale.lobby.tooltips.WidgetTooltipView():
             return WidgetTooltipView()
         return super(WidgetView, self).createToolTipContent(event, contentID)
+
+    def playStartAnimation(self):
+        self.viewModel.setAnimation(Animation.BLINK)
 
     @property
     def viewModel(self):

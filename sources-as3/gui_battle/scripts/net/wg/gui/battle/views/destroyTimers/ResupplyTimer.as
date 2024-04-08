@@ -20,8 +20,6 @@ package net.wg.gui.battle.views.destroyTimers
       
       private static const SHOW_FRAME_LABEL:String = "show";
       
-      private static const SHOW_FRAME_LABEL_SMALL:String = "showSmall";
-      
       private static const HIDE_FRAME_LABEL:String = "hide";
       
       private static const HIDE_FRAME_LABEL_SMALL:String = "hideSmall";
@@ -259,7 +257,10 @@ package net.wg.gui.battle.views.destroyTimers
       
       override protected function invokeAdditionalActionOnIntervalUpdate() : void
       {
-         this.icon.gotoAndStop(ICON_UNAVAILABLE_FRAME_LABEL);
+         if(this._actualState === EPIC_CONSTS.RESUPPLY_BLOCKED)
+         {
+            this.icon.gotoAndStop(ICON_UNAVAILABLE_FRAME_LABEL);
+         }
       }
       
       override protected function resetAnimState() : void

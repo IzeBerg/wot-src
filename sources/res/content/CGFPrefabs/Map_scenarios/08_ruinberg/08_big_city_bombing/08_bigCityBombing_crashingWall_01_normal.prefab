@@ -727,18 +727,22 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>SequenceComponent</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
 				<config>
+					<property>
+						<name>loop</name>
+						<value>0</value>
+					</property>
 					<property>
 						<name>autoStart</name>
 						<value>0</value>
 					</property>
 					<property>
 						<name>pauseOnEnd</name>
-						<value>0</value>
+						<value>1</value>
 					</property>
 					<property>
 						<name>alwaysEnabled</name>
@@ -769,13 +773,6 @@
 										</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											22.5333
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -793,13 +790,6 @@
 									</property>
 									<property>
 										<name>end</name>
-										<value>
-											23.5333
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
-										<name>duration</name>
 										<value>
 											23.5333
 											<!--BW_String-->
@@ -829,13 +819,6 @@
 										</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											24.4333
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -859,23 +842,12 @@
 										</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											22.5333
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
 								</object>
 							</item>
 						</collection>
-					</property>
-					<property>
-						<name>time</name>
-						<value>0</value>
 					</property>
 				</config>
 			</component>

@@ -40,11 +40,14 @@ msgstr "Ceasefire is in effect on %(serverName)s"
 msgid "alertMessage/unsuitablePeriphery"
 msgstr "Battles are unavailable on this server"
 
+msgid "banner/info/disabled"
+msgstr "Ceasefire"
+
+msgid "banner/info/seasonActive"
+msgstr "Second chance and rewards"
+
 msgid "banner/seasonDate/seasonLasts"
 msgstr "Until %(month)s %(day)s"
-
-msgid "banner/subtitle"
-msgstr "Shamrock Showdown"
 
 msgid "banner/timeLeft/hour"
 msgstr "%(hour)s h"
@@ -115,15 +118,6 @@ msgstr "Stay out of combat!"
 msgid "battle/respawnMessagePanel/squad/stayInCover/title"
 msgstr "Respawning Ally"
 
-msgid "battle/winnerCongratulationsView/bonusActivated"
-msgstr "Bonus activated!"
-
-msgid "battle/winnerCongratulationsView/bonusForFirstPlace"
-msgstr "Reward for first place"
-
-msgid "battle/winnerCongratulationsView/colected"
-msgstr "Collected in battle"
-
 msgid "battle/winnerCongratulationsView/title"
 msgstr "VICTORY"
 
@@ -172,20 +166,23 @@ msgstr "[ESC]"
 msgid "battleResult/inBattle/skipAnim/text"
 msgstr "Press %(esc) to skip animation"
 
-msgid "battleResult/playerVehicleStatus/alive"
-msgstr "Survived"
+msgid "battleResult/playerBattleTypeStatus/button/text"
+msgstr "Invite to Platoon"
 
-msgid "battleResult/playerVehicleStatus/reason/deathByBot"
-msgstr "Vehicle destroyed by Marauder."
+msgid "battleResult/playerBattleTypeStatus/clan/"
+msgstr "[%(clanAbbrev)s]"
 
-msgid "battleResult/playerVehicleStatus/reason/deathByPlayer"
-msgstr "Vehicle destroyed by player"
+msgid "battleResult/playerBattleTypeStatus/header/platoon"
+msgstr "Ally"
 
-msgid "battleResult/playerVehicleStatus/reason/deathByZone"
-msgstr "You failed to leave the Danger Zone"
+msgid "battleResult/playerBattleTypeStatus/header/randomPlatoon"
+msgstr "Random Ally"
 
-msgid "battleResult/playerVehicleStatus/reason/other"
-msgstr "Vehicle destroyed"
+msgid "battleResult/playerBattleTypeStatus/header/solo"
+msgstr "Battle Type"
+
+msgid "battleResult/playerBattleTypeStatus/text/solo"
+msgstr "SOLO BATTLE"
 
 msgid "battleResult/premiumRewards/title"
 msgstr "With WoT Premium Account, you could receive:"
@@ -270,26 +267,29 @@ msgstr "VICTORY"
 msgid "battleResult/title/victoryOther"
 msgstr "PLACE OF HONOR"
 
-msgid "battleRoyaleCarousel/hint"
-msgstr "CHOOSE A VEHICLE FOR A FREE TEST DRIVE"
-
 msgid "battleRoyaleCarousel/lockedToolTip/body"
 msgstr "Select one of the special vehicles for Steel Hunter."
 
 msgid "battleRoyaleCarousel/lockedToolTip/header"
 msgstr "Incompatible Vehicle"
 
+msgid "battleTypeSelector/tab/hint"
+msgstr "Special Missions"
+
+msgid "battleTypeSelector/tab/platoon"
+msgstr "PLATOON WITH A FRIEND"
+
+msgid "battleTypeSelector/tab/randomPlatoon"
+msgstr "RANDOM PLATOON"
+
+msgid "battleTypeSelector/tab/solo"
+msgstr "SOLO BATTLE"
+
 msgid "button/modules"
 msgstr "TECH TREE"
 
-msgid "button/rent"
-msgstr "Rent for {days} days"
-
 msgid "button/repair"
 msgstr "Repair"
-
-msgid "button/testDrive"
-msgstr "{days} Day of Test Drive"
 
 msgid "commanderInfo/commonRank"
 msgstr "Commander"
@@ -371,22 +371,21 @@ msgid "fullStats/destroyed"
 msgstr "Destroyed by you"
 
 msgid "fullStats/icons/airDrop/description"
-msgstr "Airdrop: charges for all Combat Abilities and a lot of XP."
+msgstr ""
+"Airdrop: experience, hit points recovery, module repairs, charges for all "
+"abilities, shells."
 
 msgid "fullStats/icons/corpseLoot/description"
 msgstr ""
-"Spoils of War: loot from destroyed vehicles. In addition to XP and hit point"
-" restoration, contains half of the enemy's Ability charges."
+"Spoils of War: experience, hit points recovery, module repairs, charges for "
+"some abilities, shells."
+
+msgid "fullStats/icons/defaultLoot/description"
+msgstr "Supplies: experience, module repairs, charges for some abilities."
 
 msgid "fullStats/icons/extendedLoot/description"
 msgstr ""
-"Consumables: XP, shells, hit point and module recovery, and a chance to get "
-"charges for Combat Abilities."
-
-msgid "fullStats/icons/shamrocks/description"
-msgstr ""
-"Lucky Seals are contained in all types of Spoils of War. They can be "
-"exchanged for rewards after battle in the Shamrock Shop."
+"Consumables: experience, hit points recovery, charge for Recovery, shells."
 
 msgid "fullStats/subTitle"
 msgstr "Battle for valuable resources under \"free-for-all\" rules."
@@ -455,15 +454,6 @@ msgstr ""
 
 msgid "intro/slide1/title"
 msgstr "NEW VEHICLES"
-
-msgid "intro/slide2/text"
-msgstr ""
-"Vehicles are available for rent for Steel Seals. This is a special currency "
-"that you can earn in the mode. You will also have the opportunity to test-"
-"drive each of the tanks for free for one day."
-
-msgid "intro/slide2/title"
-msgstr "RENTAL VEHICLES AND TEST DRIVE"
 
 msgid "intro/slide3/text"
 msgstr ""
@@ -582,7 +572,7 @@ msgid "player_messages/moduleType/vehicleTurret"
 msgstr "Turret"
 
 msgid "playersPanel/title"
-msgstr "ALLIES"
+msgstr "TEAM"
 
 msgid "postmortemPanel/firstTip/body"
 msgstr "Switch between Platoon vehicles."
@@ -646,9 +636,7 @@ msgstr ""
 "Seals"
 
 msgid "proxyPanel/store"
-msgstr ""
-"SHAMROCK\n"
-"SHOP"
+msgstr "STORE"
 
 msgid "questsTooltip/lessThanDay"
 msgstr "less than 1 d"
@@ -707,7 +695,7 @@ msgstr ""
 msgid "rewardCurrencyTooltip/brcoin/header"
 msgstr "Steel Seals"
 
-msgid "rewardCurrencyTooltip/brcoin/premium"
+msgid "rewardCurrencyTooltip/brcoin/premFactor"
 msgstr ""
 "WoT Premium Account increases the amount of this currency earned by 50%."
 
@@ -717,7 +705,7 @@ msgstr "The main in-game currency. Earned in battles or purchased with gold."
 msgid "rewardCurrencyTooltip/credits/header"
 msgstr "Credits"
 
-msgid "rewardCurrencyTooltip/credits/premium"
+msgid "rewardCurrencyTooltip/credits/premFactor"
 msgstr ""
 "WoT Premium Account increases the amount of this currency earned by 50%."
 
@@ -729,19 +717,6 @@ msgstr ""
 msgid "rewardCurrencyTooltip/crystal/header"
 msgstr "Bonds"
 
-msgid "rewardCurrencyTooltip/stpcoin/body"
-msgstr ""
-"Currency that can be earned in Steel Hunter battles. Seals can be exchanged for unique rewards in the Shamrock Shop.\n"
-"When playing in a Platoon, Seals are divided equally among Platoon members. The specified amount is your part of the total earnings."
-
-msgid "rewardCurrencyTooltip/stpcoin/bonus"
-msgstr ""
-"Bonus applied! The number of Seals received in battle is increased by 2 "
-"times."
-
-msgid "rewardCurrencyTooltip/stpcoin/header"
-msgstr "Lucky Seals"
-
 msgid "rewardCurrencyTooltip/xp/body"
 msgstr ""
 "The experience earned in special vehicles can be converted to Free "
@@ -750,7 +725,7 @@ msgstr ""
 msgid "rewardCurrencyTooltip/xp/header"
 msgstr "Combat Experience"
 
-msgid "rewardCurrencyTooltip/xp/premium"
+msgid "rewardCurrencyTooltip/xp/premFactor"
 msgstr ""
 "WoT Premium Account increases the amount of Combat Experience earned by 50%."
 
@@ -804,7 +779,7 @@ msgid "statusNotificationTimers/deathZone"
 msgstr "Zone is closed! Leave the zone or your vehicle will be destroyed!"
 
 msgid "statusNotificationTimers/deathZoneWarning"
-msgstr "Leave the danger zone!"
+msgstr "The zone will turn red soon"
 
 msgid "statusNotificationTimers/fireCircle"
 msgstr "Mobility decreased!"
@@ -911,6 +886,46 @@ msgstr "Hit Points"
 msgid "techtree/turret_rotation_speed"
 msgstr "Rotation Speed"
 
+msgid "tooltip/battleTypeSelector/bonus"
+msgstr "+15%"
+
+msgid "tooltip/battleTypeSelector/tab/bonusDescription"
+msgstr ""
+"Up to %(experience)s XP\n"
+"Up to %(credits)s credits"
+
+msgid "tooltip/battleTypeSelector/tab/bonusTitle/platoon"
+msgstr "Bonus for playing in a Platoon"
+
+msgid "tooltip/battleTypeSelector/tab/bonusTitle/randomPlatoon"
+msgstr "Bonus for playing in a Platoon"
+
+msgid "tooltip/battleTypeSelector/tab/description/platoon"
+msgstr ""
+"Battle in a Platoon with a friend. Play as a team against nine enemy "
+"Platoons. Platoon missions can be completed in this mode."
+
+msgid "tooltip/battleTypeSelector/tab/description/randomPlatoon"
+msgstr ""
+"Battle in a Platoon with a random ally. Play as a team against nine enemy "
+"Platoons. Platoon missions can be completed in this mode. The Platoon will "
+"be automatically disbanded after the battle."
+
+msgid "tooltip/battleTypeSelector/tab/description/solo"
+msgstr ""
+"Classic Steel Hunter. Each player is fighting for themselves. Collect "
+"resources, upgrade your vehicle, and use its unique abilities to be the last"
+" one standing!"
+
+msgid "tooltip/battleTypeSelector/tab/title/platoon"
+msgstr "Platoon with a friend"
+
+msgid "tooltip/battleTypeSelector/tab/title/randomPlatoon"
+msgstr "Random Platoon"
+
+msgid "tooltip/battleTypeSelector/tab/title/solo"
+msgstr "Solo Battle"
+
 msgid "tooltip/progression/leaderboardReward/battleTypesHeader/29"
 msgstr "Solo"
 
@@ -990,26 +1005,22 @@ msgstr "Badge"
 msgid "tooltips/awards/pattern"
 msgstr "%(typeName)s: \"%(userName)s\""
 
-msgid "tooltips/rentIcon/rent/description"
-msgstr "This vehicle is suitable for fighting only in Steel Hunter"
+msgid "tooltips/brCoin/earn/description"
+msgstr ""
+"Receive Steel Seals for efficient battle performance, achieving high "
+"positions in the battle results, and completing the mode missions."
 
-msgid "tooltips/rentIcon/rent/footer"
-msgstr "Rent for: {time}"
+msgid "tooltips/brCoin/earn/title"
+msgstr "How to Earn Seals"
 
-msgid "tooltips/rentIcon/rent/title"
-msgstr "Rent for {days} Days"
+msgid "tooltips/brCoin/spend/description"
+msgstr "Use the earned Steel Seals to purchase Steel Hunter styles."
 
-msgid "tooltips/rentIcon/testDrive/description"
-msgstr "After the test-drive period, the vehicle can be rented for a fee."
+msgid "tooltips/brCoin/spend/title"
+msgstr "What to Spend Seals On"
 
-msgid "tooltips/rentIcon/testDrive/footer"
-msgstr "Test drive: {time}"
-
-msgid "tooltips/rentIcon/testDrive/rentTime"
-msgstr "Rent for {days} days"
-
-msgid "tooltips/rentIcon/testDrive/title"
-msgstr "Free Vehicle Test Drive for 1 Day"
+msgid "tooltips/brCoin/title"
+msgstr "Steel Seals"
 
 msgid "tooltips/respawnIcon/definition"
 msgstr "Respawn charges can be received from an Airdrop."
@@ -1049,64 +1060,8 @@ msgstr "Single-time use"
 msgid "tooltips/respawnIcon/title"
 msgstr "Respawn"
 
-msgid "tooltips/shop/description"
-msgstr ""
-"A store where you can exchange Lucky Seals earned in the Steel Hunter mode "
-"for special valuable rewards."
-
-msgid "tooltips/shop/subdescription"
-msgstr ""
-"A special currency that can be earned in the Steel Hunter mode during the "
-"Green Light event. Receive Lucky Seals for picking up Spoils of War in "
-"battle, completing Progression Stages, and taking the top positions in the "
-"battle royale."
-
-msgid "tooltips/shop/subtitle"
-msgstr "Lucky Seals"
-
-msgid "tooltips/shop/title"
-msgstr "Shamrock Shop"
-
-msgid "tooltips/stpCoin/earn/description"
-msgstr ""
-"Receive Lucky Seals for picking up Spoils of War in battle, completing "
-"Progression Stages, and taking the top positions in Steel Hunter."
-
-msgid "tooltips/stpCoin/earn/title"
-msgstr "How to Earn Seals"
-
-msgid "tooltips/stpCoin/spend/description"
-msgstr ""
-"Exchange your earned Lucky Seals for valuable rewards in the Shamrock Shop."
-
-msgid "tooltips/stpCoin/spend/title"
-msgstr "What to Spend Seals On"
-
-msgid "tooltips/stpCoin/title"
-msgstr "Lucky Seals"
-
-msgid "tooltips/testDriveInfo/footer"
-msgstr ""
-"%(brown_Open)sSteel Seals%(brown_Close)s can be received in battles, as well"
-" as for completing special missions."
-
-msgid "tooltips/testDriveInfo/leftLabel"
-msgstr "{days} Day of Test Drive"
-
-msgid "tooltips/testDriveInfo/rentFor"
-msgstr "Rent for {days} days"
-
-msgid "tooltips/testDriveInfo/rightLabel"
-msgstr "Subsequent rent for {days} days"
-
-msgid "tooltips/testDriveInfo/title"
-msgstr "Free Test Drive"
-
 msgid "tooltips/vehicle/description"
 msgstr "Vehicle for Steel Hunter mode"
-
-msgid "tooltips/vehicle/status/notRented"
-msgstr "Not rented"
 
 msgid "tournament/description"
 msgstr "BIG HUNT"
@@ -1174,15 +1129,6 @@ msgstr "New Turret Available"
 msgid "vehModuleConfigurator/delimiter"
 msgstr "OR"
 
-msgid "vehRentBlock/inBattle"
-msgstr "In battle"
-
-msgid "vehRentBlock/inRent"
-msgstr "Rented"
-
-msgid "vehRentBlock/inTestDrive"
-msgstr "Test drive"
-
 msgid "vehicleFeatures/spec/armor"
 msgstr "Armor"
 
@@ -1215,19 +1161,6 @@ msgstr "Advantages"
 
 msgid "vehicleFeatures/subTitle/weak"
 msgstr "Disadvantages"
-
-msgid "vehicleRentIsOk"
-msgstr ""
-"Rental Vehicle\n"
-"The %(vehicle)s is rented. Days of rental: %(days)s."
-
-msgid "vehicleRentNoMoney"
-msgstr "Insufficient funds to rent the %(vehicle)s."
-
-msgid "vehicleTestDriveIsOk"
-msgstr ""
-"Vehicle Test Drive\n"
-"The %(vehicle)s is received for a test drive. Days of test drive: %(days)s."
 
 msgid "widgetAlertMessageBlock/allPeripheriesHalt"
 msgstr ""
