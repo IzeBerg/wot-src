@@ -32,7 +32,7 @@ class BattleRoyaleConsumablesPanel(ConsumablesPanel, ISpawnListener):
         super(BattleRoyaleConsumablesPanel, self)._populate()
         vehStateCtrl = self.sessionProvider.shared.vehicleState
         self.__es.subscribeToEvent(vehStateCtrl.onVehicleStateUpdated, self.__onVehicleLootAction)
-        self.__es.subscribeToEvent(BigWorld.player().onObserverVehicleChanged, self.__onEquipmentReset)
+        self.__es.subscribeToEvent(BigWorld.player().onObserverVehicleChanged, self.__onObserverVehicleChanged)
         self.__updateRespawnSkill()
 
     def _dispose(self):
@@ -47,14 +47,14 @@ class BattleRoyaleConsumablesPanel(ConsumablesPanel, ISpawnListener):
         self.__quantityMap = [None] * self._PANEL_MAX_LENGTH
         return
 
-    def _onShellsAdded(self, intCD, descriptor, quantity, _, gunSettings):
+    def _onShellsAdded(self, intCD, descriptor, quantity, _, gunSettings, isInfinite):
         if intCD in self._cds:
             return
         else:
             slotIdx = self.__getNewSlotIdx(self._AMMO_START_IDX, self._AMMO_END_IDX)
             if slotIdx is None:
                 return
-            self._addShellSlot(slotIdx, intCD, descriptor, quantity, gunSettings)
+            self._addShellSlot(slotIdx, intCD, descriptor, quantity, gunSettings, isInfinite)
             self._mask |= 1 << slotIdx
             return
 
@@ -143,9 +143,8 @@ class BattleRoyaleConsumablesPanel(ConsumablesPanel, ISpawnListener):
     def _onPostMortemSwitched(self, noRespawnPossible, respawnAvailable):
         self._reset()
 
-    def __onEquipmentReset(self):
-        self.__resetEquipmentSlots()
-        self.as_resetS(list())
+    def __onObserverVehicleChanged(self):
+        self._reset()
         self.__updateRespawnSkill()
 
     def __getNewSlotIdx(self, startIdx=0, endIdx=_PANEL_MAX_LENGTH - 1):
@@ -192,7 +191,7 @@ class BattleRoyaleConsumablesPanel(ConsumablesPanel, ISpawnListener):
 
     def _onVehicleStateUpdated(self, state, value):
         if state in (VEHICLE_VIEW_STATE.SWITCHING, VEHICLE_VIEW_STATE.RESPAWNING):
-            self.__updateRespawnSkill()
+            self.__removeRespawnSlot()
         super(BattleRoyaleConsumablesPanel, self)._onVehicleStateUpdated(state, value)
 
     def __updateRespawnSkill(self):
@@ -204,15 +203,24 @@ class BattleRoyaleConsumablesPanel(ConsumablesPanel, ISpawnListener):
         period = arena.period
         count = 0
         isAvailable = False
+        needToRemove = False
         if period == ARENA_PERIOD.BATTLE:
             vehicle = BigWorld.player().getVehicleAttached()
-            if vehicle:
+            if vehicle and vehicle.isAlive():
                 vehicleBRRespawnComponent = vehicle.dynamicComponents.get('vehicleBRRespawnComponent')
                 if vehicleBRRespawnComponent is not None:
                     count = vehicleBRRespawnComponent.lives
                     isAvailable = True
-        self.as_addRespawnSlotS(self._RESPAWN_EQUIPMENT_IDX, bwKey, sfKey, count, tooltip, False, isAvailable)
+            else:
+                needToRemove = True
+        if needToRemove:
+            self.__removeRespawnSlot()
+        else:
+            self.as_addRespawnSlotS(self._RESPAWN_EQUIPMENT_IDX, bwKey, sfKey, count, tooltip, False, isAvailable)
         return
+
+    def __removeRespawnSlot(self):
+        self.as_resetS([self._RESPAWN_EQUIPMENT_IDX])
 
     def __buildRespawnEquipmentTooltipText(self):
         bonusType = self.sessionProvider.arenaVisitor.getArenaBonusType()

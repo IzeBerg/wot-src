@@ -159,7 +159,7 @@
 			<primitiveGroup>
 				1
 				<material>
-					<identifier>tank_upgrade_04</identifier>
+					<identifier>tank_upgrade_01</identifier>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
 					<materialKind>0</materialKind>
 					<collisionFlags>0</collisionFlags>
@@ -188,7 +188,7 @@
 						<Texture>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/JagdPz_E100_BPXII_3DSt_equipment_01_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.080491 1.009516 -0.027089</groupOrigin>
+				<groupOrigin>-0.219471 0.828421 -0.611039</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				2
@@ -256,10 +256,44 @@
 						<Texture>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/JagdPz_E100_BPXII_3DSt_equipment_01_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.073951 1.014103 -0.026807</groupOrigin>
+				<groupOrigin>-0.073951 1.016972 -0.026807</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				4
+				<material>
+					<identifier>tank_upgrade_04</identifier>
+					<fx>shaders/std_effects/PBS_tank.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/JagdPz_E100_BPXII_3DSt_equipment_01_AM.dds</Texture>
+					</property>
+					<property>
+						excludeMaskAndAOMap
+						<Texture>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/JagdPz_E100_BPXII_3DSt_equipment_01_AO.dds</Texture>
+					</property>
+					<property>
+						g_detailUVTiling
+						<Vector4>3.506850 3.506850 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						metallicDetailMap
+						<Texture>vehicles/russian/Tank_detail/Details_map.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/JagdPz_E100_BPXII_3DSt_equipment_01_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>vehicles/german/G72_JagdPz_E100/_skins/G72_JagdPz_E100_BPXII_3DSt/JagdPz_E100_BPXII_3DSt_equipment_01_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.080491 1.017046 -0.027089</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				5
 				<material>
 					<identifier>tank_upgrade_04_1</identifier>
 					<fx>shaders/std_effects/PBS_tank.fx</fx>
@@ -302,6 +336,6 @@
 		<min>-2.297430 -0.657242 -4.816779</min>
 		<max>2.255951 3.380672 4.763164</max>
 	</boundingBox>
-	<geometrySize>339550</geometrySize>
+	<geometrySize>348914</geometrySize>
 	<minUVDensity>0.001566</minUVDensity>
 </root>

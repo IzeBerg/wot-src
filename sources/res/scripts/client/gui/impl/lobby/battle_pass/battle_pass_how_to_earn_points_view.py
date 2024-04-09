@@ -1,4 +1,4 @@
-import itertools, logging
+import logging, itertools
 from constants import ARENA_BONUS_TYPE
 from frameworks.wulf import Array, ViewSettings, WindowFlags
 from gui.impl import backport

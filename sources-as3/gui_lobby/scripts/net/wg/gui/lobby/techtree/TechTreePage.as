@@ -241,11 +241,6 @@ package net.wg.gui.lobby.techtree
          this.nationTree.closePremiumPanel(true);
       }
       
-      public function as_hideNationsBar(param1:Boolean) : void
-      {
-         this.nationsBar.enabled = this.nationsBar.visible = !param1;
-      }
-      
       public function as_refreshNationTreeData(param1:String) : void
       {
          var _loc2_:Object = getNationTreeDataS(param1);

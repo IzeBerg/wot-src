@@ -223,6 +223,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       {
          this.gotoAndStop(!!param1.isNationChangeAvailable ? LABEL_WITH_NATION_CHANGE : LABEL_WITHOUT_NATION_CHANGE);
          this.price.visible = this.actionPrice.visible = this.lockedBG.visible = this.infoImg.visible = false;
+         this.statsBg.visible = this.statsTF.visible = this.crystalsIcon.visible = false;
          this._showStats = param1.visibleStats;
          this._isEarnCrystals = param1.isEarnCrystals;
          if(StringUtils.isNotEmpty(param1.infoText) || StringUtils.isNotEmpty(param1.smallInfoText))

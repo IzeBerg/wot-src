@@ -325,6 +325,24 @@ BATTLE_RESULTS = [
  (
   'squadXPFactor100', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
+  'isWoTPlus', bool, False, None, 'any', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'wotPlusCredits', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'wotPlusCreditsFactor100', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'wotPlusXP', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'wotPlusXPFactor100', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'wotPlusCrewXP', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'wotPlusCrewXPFactor100', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'wotPlusFreeXP', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'wotPlusFreeXPFactor100', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+ (
   'referral20XP', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
  (
   'referral20XPFactor100', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
@@ -744,7 +762,9 @@ BATTLE_RESULTS = [
  (
   'eventBattlePassPoints', int, 0, None, 'sum', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'prestigeResults', dict, {}, None, 'skip', ENTRY_TYPE.VEHICLE_SELF)]
+  'prestigeResults', dict, {}, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'finalVehInfo', dict, {}, None, 'skip', ENTRY_TYPE.SERVER)]
 BATTLE_PASS_RESULTS = [
  (
   'bpChapter', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),

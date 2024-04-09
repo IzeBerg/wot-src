@@ -1,5 +1,6 @@
 package net.wg.gui.battle.views.postmortemPanel
 {
+   import flash.display.Sprite;
    import flash.events.Event;
    import flash.text.TextField;
    import flashx.textLayout.formats.VerticalAlign;
@@ -15,15 +16,15 @@ package net.wg.gui.battle.views.postmortemPanel
       
       private static const WHITE_TEXT_COLOR:uint = 16777215;
       
-      protected static const INVALID_VEHICLE_PANEL:uint = 1 << 8;
-      
       private static const EMPTY_STR:String = "";
       
-      private static const INVALID_PLAYER_INFO:uint = 1 << 7;
+      protected static const INVALID_PLAYER_INFO:uint = 1 << 7;
+      
+      protected static const INVALID_VEHICLE_PANEL:uint = 1 << 8;
       
       protected static const INVALID_PLAYER_INFO_POSITION:uint = 1 << 9;
       
-      private static const INVALID_DEAD_REASON_VISIBILITY:uint = 1 << 10;
+      protected static const INVALID_DEAD_REASON_VISIBILITY:uint = 1 << 10;
       
       public static const VEHICLE_PANEL_OFFSET_Y:int = 120;
       
@@ -36,11 +37,13 @@ package net.wg.gui.battle.views.postmortemPanel
       
       public var playerInfoTF:TextField = null;
       
-      public var deadReasonTF:TextField = null;
-      
       public var vehiclePanel:VehiclePanel = null;
       
+      public var deadReasonTF:TextField = null;
+      
       public var deadReasonBG:BattleAtlasSprite = null;
+      
+      public var deadReasonBack:Sprite = null;
       
       public var nicknameKillerBG:BattleAtlasSprite = null;
       
@@ -72,31 +75,23 @@ package net.wg.gui.battle.views.postmortemPanel
          super.draw();
          if(isInvalid(INVALID_DEAD_REASON_VISIBILITY))
          {
+            this.setDeadReasonsVisibility(true);
             this.playerInfoTF.visible = false;
-            this.deadReasonTF.visible = true;
             if(this._userName != null)
             {
                this._userName.visible = true;
             }
             this.vehiclePanel.visible = this._showVehiclePanel;
-            if(this.deadReasonBG)
-            {
-               this.deadReasonBG.visible = true;
-            }
          }
          if(isInvalid(INVALID_PLAYER_INFO))
          {
+            this.setDeadReasonsVisibility(false);
             this.playerInfoTF.visible = true;
-            this.deadReasonTF.visible = false;
             if(this._userName != null)
             {
                this._userName.visible = false;
             }
             this.vehiclePanel.visible = false;
-            if(this.deadReasonBG)
-            {
-               this.deadReasonBG.visible = false;
-            }
             if(this.nicknameKillerBG)
             {
                this.nicknameKillerBG.visible = false;
@@ -109,18 +104,9 @@ package net.wg.gui.battle.views.postmortemPanel
          if(isInvalid(INVALID_VEHICLE_PANEL))
          {
             this.playerInfoTF.visible = false;
-            this.deadReasonTF.visible = this._deadReason != Values.EMPTY_STR;
             if(this._userName != null)
             {
                this._userName.visible = true;
-            }
-            if(this._deadReason != this.deadReasonTF.text)
-            {
-               this.deadReasonTF.text = this._deadReason;
-            }
-            if(this.deadReasonBG)
-            {
-               this.deadReasonBG.visible = this._deadReason != Values.EMPTY_STR;
             }
             if(this.nicknameKillerBG)
             {
@@ -131,11 +117,20 @@ package net.wg.gui.battle.views.postmortemPanel
             {
                this.vehiclePanel.setVehicleData(this._vehicleLevel,this._vehicleType,this._vehicleName,this._vehicleImg);
             }
+            if(this._deadReason != this.deadReasonTF.text)
+            {
+               this.deadReasonTF.text = this._deadReason;
+            }
+            this.setDeadReasonsVisibility(this._deadReason != Values.EMPTY_STR);
          }
          if(isInvalid(INVALID_PLAYER_INFO_POSITION))
          {
             this.updatePlayerInfoPosition();
          }
+      }
+      
+      public function updateStage(param1:int, param2:int) : void
+      {
       }
       
       override protected function setDeadReasonInfo(param1:String, param2:Boolean, param3:String, param4:String, param5:String, param6:String, param7:UserVO) : void
@@ -171,6 +166,7 @@ package net.wg.gui.battle.views.postmortemPanel
          this.vehiclePanel.dispose();
          this.vehiclePanel = null;
          this.deadReasonBG = null;
+         this.deadReasonBack = null;
          this.nicknameKillerBG = null;
          this._userVO = null;
          if(this._userName != null)
@@ -220,11 +216,6 @@ package net.wg.gui.battle.views.postmortemPanel
       {
          this.playerInfoTF.visible = param1;
          this.vehiclePanel.visible = param1;
-         this.deadReasonTF.visible = param1;
-         if(this.deadReasonBG)
-         {
-            this.deadReasonBG.visible = param1;
-         }
          if(this.nicknameKillerBG)
          {
             this.nicknameKillerBG.visible = param1;
@@ -233,6 +224,16 @@ package net.wg.gui.battle.views.postmortemPanel
          {
             this._userName.visible = param1;
          }
+         this.setDeadReasonsVisibility(param1);
+      }
+      
+      protected function setDeadReasonsVisibility(param1:Boolean) : void
+      {
+         if(this.deadReasonBG)
+         {
+            this.deadReasonBG.visible = param1;
+         }
+         this.deadReasonTF.visible = param1;
       }
       
       protected function get deadReasonGap() : int

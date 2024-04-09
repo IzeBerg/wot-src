@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>5.800000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bot_SH_hull</name>
+		<type>model</type>
+		<resource>vehicles/chinese/Ch00_ClingeBot_SH/normal/lod1/Hull.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 70.000000 0.000000</value>
+				<inTangent>0.000000 -73.670044 0.000000</inTangent>
+				<outTangent>0.000000 -73.670044 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>0.000000 5.000000 0.000000</value>
+				<inTangent>-0.000000 -2.633040 -0.000000</inTangent>
+				<outTangent>0.000000 -2.633040 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bot_SH_turret</name>
+		<type>model</type>
+		<resource>vehicles/chinese/Ch00_ClingeBot_SH/normal/lod1/Turret_01.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 70.239182 0.000000</value>
+				<inTangent>0.000000 -73.670044 0.000000</inTangent>
+				<outTangent>0.000000 -73.670044 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>0.000000 5.239178 0.000000</value>
+				<inTangent>-0.000000 -2.633040 -0.000000</inTangent>
+				<outTangent>0.000000 -2.633040 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bot_SH_gun</name>
+		<type>model</type>
+		<resource>vehicles/chinese/Ch00_ClingeBot_SH/normal/lod1/Gun_01.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 70.553238 0.302094</value>
+				<inTangent>0.000000 -73.670044 0.000000</inTangent>
+				<outTangent>0.000000 -73.670044 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>0.000000 5.553234 0.302094</value>
+				<inTangent>-0.000000 -2.633040 -0.000000</inTangent>
+				<outTangent>0.000000 -2.633040 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>SH_turret_chassis</name>
+		<type>model</type>
+		<resource>vehicles/chinese/Ch00_ClingeBot_SH/normal/lod2/Chassis.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 68.983437 0.000000</value>
+				<inTangent>0.000000 -73.670044 0.000000</inTangent>
+				<outTangent>0.000000 -73.670044 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>0.000000 3.983437 0.000000</value>
+				<inTangent>-0.000000 -2.633040 -0.000000</inTangent>
+				<outTangent>0.000000 -2.633040 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>rocket_01</name>
+		<type>particle</type>
+		<resource>particles/Environment/Battle_Royal/Clingebot/br_clingebot_rocket.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>2.000000</duration>
+				<value>Bot_SH_hull|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-1.000000 -1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>-1.000000 -1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>rocket_02</name>
+		<type>particle</type>
+		<resource>particles/Environment/Battle_Royal/Clingebot/br_clingebot_rocket.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>2.000000</duration>
+				<value>Bot_SH_hull|</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 -1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>1.000000 -1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Blow</name>
+		<type>particle</type>
+		<resource>particles/Environment/Battle_Royal/Kamikadze/br_kamikadze_blow.eff</resource>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>2.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>2.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-13.041968</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>4.500000</duration>
+				<sequenceSound>BR_perk_clingbrander_deploy</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>1.633333</startTime>
+				<duration>4.166667</duration>
+				<sequenceSound>BR_perk_clingbrander_deploy_explosion</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

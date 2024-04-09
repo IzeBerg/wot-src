@@ -34,6 +34,10 @@ package net.wg.infrastructure.base.meta
       
       function as_clearDistance(param1:Boolean) : void;
       
+      function as_setAverageDamage(param1:String) : void;
+      
+      function as_clearAverageDamage(param1:Boolean) : void;
+      
       function as_updatePlayerInfo(param1:String) : void;
       
       function as_updateAmmoState(param1:String) : void;

@@ -122,6 +122,7 @@ class DualGunComponent(DualGunPanelMeta, IPrebattleSetupsListener):
            VEHICLE_VIEW_STATE.STUN: StunAffectPolicy(self.__reloadingState, VEHICLE_VIEW_STATE.STUN), 
            VEHICLE_VIEW_STATE.DESTROY_TIMER: DestroyStateAffectPolicy(self.__reloadingState, VEHICLE_VIEW_STATE.DESTROY_TIMER)}
         self.__isEnabled = False
+        self.__isObservingVehicle = False
         self.__isAllowedByContext = True
         self.__chargeState = DUALGUN_CHARGER_STATUS.BEFORE_PREPARING
         self.__prevChargeState = DUALGUN_CHARGER_STATUS.BEFORE_PREPARING
@@ -155,7 +156,7 @@ class DualGunComponent(DualGunPanelMeta, IPrebattleSetupsListener):
             vStateCtrl.onVehicleStateUpdated += self.__onVehicleStateUpdated
             vStateCtrl.onVehicleControlling += self.__onVehicleControlling
             vStateCtrl.onPostMortemSwitched += self.__onPostMortemSwitched
-        specCtrl = self.__sessionProvider.dynamic.spectator
+        specCtrl = self.__sessionProvider.shared.spectator
         if specCtrl is not None:
             specCtrl.onSpectatorViewModeChanged += self.__onSpectatorModeChanged
         ammoCtrl = self.__sessionProvider.shared.ammo
@@ -203,7 +204,7 @@ class DualGunComponent(DualGunPanelMeta, IPrebattleSetupsListener):
             vStateCtrl.onVehicleStateUpdated -= self.__onVehicleStateUpdated
             vStateCtrl.onVehicleControlling -= self.__onVehicleControlling
             vStateCtrl.onPostMortemSwitched -= self.__onPostMortemSwitched
-        specCtrl = self.__sessionProvider.dynamic.spectator
+        specCtrl = self.__sessionProvider.shared.spectator
         if specCtrl is not None:
             specCtrl.onSpectatorViewModeChanged -= self.__onSpectatorModeChanged
         ammoCtrl = self.__sessionProvider.shared.ammo
@@ -261,11 +262,10 @@ class DualGunComponent(DualGunPanelMeta, IPrebattleSetupsListener):
 
     def __onVehicleControlling(self, vehicle):
         vTypeDesc = vehicle.typeDescriptor
+        self.__isObservingVehicle = avatar_getter.getIsObserverFPV()
         self.__isEnabled = False
-        if vehicle.isAlive() and vTypeDesc.isDualgunVehicle:
+        if vehicle.isAlive() and vTypeDesc.isDualgunVehicle and (vehicle.isPlayerVehicle or self.__isObservingVehicle):
             self.__isEnabled = True
-        if not vehicle.isAlive() and self.__isObserver:
-            self.__isEnabled = False
         self.as_setVisibleS(self.__isVisible())
         if self.__isObserver:
             self.__soundManager.onObserverSwitched()
@@ -329,7 +329,7 @@ class DualGunComponent(DualGunPanelMeta, IPrebattleSetupsListener):
         else:
             if cameraName != 'video':
                 vehicle = BigWorld.entities.get(currentVehicleId)
-                if vehicle and vehicle.isAlive() and vehicle.typeDescriptor.isDualgunVehicle:
+                if vehicle and self.__isEnabled and vehicle.isAlive() and vehicle.typeDescriptor.isDualgunVehicle:
                     self.as_setVisibleS(self.__isVisible())
             else:
                 self.as_setVisibleS(False)
@@ -400,7 +400,7 @@ class DualGunComponent(DualGunPanelMeta, IPrebattleSetupsListener):
 
     def __onControlModeChange(self, event):
         mode = event.ctx.get('mode')
-        if mode is not None and mode in (CTRL_MODE_NAME.ARCADE, CTRL_MODE_NAME.DUAL_GUN):
+        if self.__isEnabled and mode is not None and mode in (CTRL_MODE_NAME.ARCADE, CTRL_MODE_NAME.DUAL_GUN):
             self.as_setVisibleS(self.__isVisible())
         else:
             self.as_setVisibleS(False)
@@ -474,6 +474,6 @@ class DualGunComponent(DualGunPanelMeta, IPrebattleSetupsListener):
         isVisible = self.__isEnabled and self.__isAllowedByContext
         if isVisible:
             ctrl = self.__sessionProvider.shared.vehicleState
-            if ctrl.isInPostmortem and avatar_getter.getInputHandler().ctrlModeName == CTRL_MODE_NAME.POSTMORTEM:
+            if ctrl.isInPostmortem and avatar_getter.getInputHandler().ctrlModeName == CTRL_MODE_NAME.POSTMORTEM and not self.__isObservingVehicle:
                 isVisible = False
         return isVisible

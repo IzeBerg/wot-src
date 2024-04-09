@@ -601,8 +601,6 @@ package
       
       public static const AWARDS_ACCEPTBUTTON:String = "#epic_battle:awards/acceptButton";
       
-      public static const AWARDS_ADDITIONALREWARDS_SUBTEXT:String = "#epic_battle:awards/additionalRewards/subText";
-      
       public static const AWARDS_MULTIPLIER:String = "#epic_battle:awards/multiplier";
       
       public static const TOOLTIPS_TIMETOSTART:String = "#epic_battle:tooltips/timeToStart";

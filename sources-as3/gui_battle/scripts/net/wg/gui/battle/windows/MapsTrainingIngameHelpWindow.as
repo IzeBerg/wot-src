@@ -5,9 +5,9 @@ package net.wg.gui.battle.windows
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.gui.battle.components.BattleAtlasSprite;
-   import net.wg.gui.bootcamp.containers.TutorialPageContainer;
-   import net.wg.gui.bootcamp.data.BCTutorialPageVO;
-   import net.wg.gui.bootcamp.introVideoPage.containers.StepperContainer;
+   import net.wg.gui.battle.eventBattle.views.loading.containers.LoadingPageContainer;
+   import net.wg.gui.battle.eventBattle.views.loading.containers.StepperContainer;
+   import net.wg.gui.battle.eventBattle.views.loading.data.EventLoadingPageVO;
    import net.wg.gui.components.controls.CloseButtonText;
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.components.windows.WindowEvent;
@@ -42,15 +42,15 @@ package net.wg.gui.battle.windows
       
       public var background:BattleAtlasSprite = null;
       
-      private var _tutorialPageList:Vector.<TutorialPageContainer>;
+      private var _tutorialPageList:Vector.<LoadingPageContainer>;
       
       private var _picIndex:int = 0;
       
-      private var _data:Vector.<BCTutorialPageVO> = null;
+      private var _data:Vector.<EventLoadingPageVO> = null;
       
       public function MapsTrainingIngameHelpWindow()
       {
-         this._tutorialPageList = new Vector.<TutorialPageContainer>();
+         this._tutorialPageList = new Vector.<LoadingPageContainer>();
          super();
          showWindowBgForm = false;
          showWindowBg = false;
@@ -87,7 +87,7 @@ package net.wg.gui.battle.windows
       
       private function disposeBackgroundRenderers() : void
       {
-         var _loc3_:TutorialPageContainer = null;
+         var _loc3_:LoadingPageContainer = null;
          var _loc1_:int = this._tutorialPageList.length;
          var _loc2_:int = 0;
          while(_loc2_ < _loc1_)
@@ -102,8 +102,8 @@ package net.wg.gui.battle.windows
       
       private function createImagesList() : void
       {
-         var _loc3_:BCTutorialPageVO = null;
-         var _loc4_:TutorialPageContainer = null;
+         var _loc3_:EventLoadingPageVO = null;
+         var _loc4_:LoadingPageContainer = null;
          if(this._tutorialPageList.length)
          {
             this.disposeBackgroundRenderers();
@@ -113,7 +113,7 @@ package net.wg.gui.battle.windows
          while(_loc2_ < _loc1_)
          {
             _loc3_ = this._data[_loc2_];
-            _loc4_ = App.utils.classFactory.getComponent(_loc3_.rendererLinkage,TutorialPageContainer);
+            _loc4_ = App.utils.classFactory.getComponent(_loc3_.rendererLinkage,LoadingPageContainer);
             _loc4_.addLoaderListener();
             _loc4_.setLoaderSize(LOADER_WIDTH,LOADER_HEIGHT);
             _loc4_.setData(_loc3_);
@@ -150,7 +150,7 @@ package net.wg.gui.battle.windows
          super.onDispose();
       }
       
-      override protected function setData(param1:Vector.<BCTutorialPageVO>) : void
+      override protected function setData(param1:Vector.<EventLoadingPageVO>) : void
       {
          this._data = param1;
          invalidateData();

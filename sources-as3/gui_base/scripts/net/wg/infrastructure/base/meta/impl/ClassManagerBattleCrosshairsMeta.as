@@ -1,6 +1,8 @@
 package net.wg.infrastructure.base.meta.impl
 {
    import net.wg.gui.components.crosshairPanel.CrosshairArcade;
+   import net.wg.gui.components.crosshairPanel.CrosshairAverageDamageContainer;
+   import net.wg.gui.components.crosshairPanel.CrosshairAverageDamageField;
    import net.wg.gui.components.crosshairPanel.CrosshairBase;
    import net.wg.gui.components.crosshairPanel.CrosshairDistanceContainer;
    import net.wg.gui.components.crosshairPanel.CrosshairDistanceField;
@@ -56,6 +58,10 @@ package net.wg.infrastructure.base.meta.impl
    {
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_CROSSHAIRARCADE:Class = CrosshairArcade;
+      
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_CROSSHAIRAVERAGEDAMAGECONTAINER:Class = CrosshairAverageDamageContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_CROSSHAIRAVERAGEDAMAGEFIELD:Class = CrosshairAverageDamageField;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_CROSSHAIRBASE:Class = CrosshairBase;
       

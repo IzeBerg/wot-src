@@ -34,8 +34,6 @@ package net.wg.infrastructure.base.meta
       
       function as_setUnlockProps(param1:Array) : void;
       
-      function as_hideNationsBar(param1:Boolean) : void;
-      
       function as_showMiniClientInfo(param1:String, param2:String) : void;
       
       function as_setBlueprintsSwitchButtonState(param1:Boolean, param2:Boolean, param3:String, param4:Boolean) : void;

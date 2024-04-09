@@ -4,14 +4,9 @@ package net.wg.gui.lobby.battleRoyale
    import flash.filters.DropShadowFilter;
    import net.wg.gui.components.carousels.data.VehicleCarouselVO;
    import net.wg.gui.lobby.hangar.tcarousel.TankIcon;
-   import org.idmedia.as3commons.util.StringUtils;
    
    public class BattleRoyaleTankIcon extends TankIcon
    {
-      
-      private static const CLOCK_ICON_LEFT_OFFSET:int = -28;
-      
-      private static const RENT_TEXT_LEFT_OFFSET:int = -8;
       
       private static const INFO_IMG_OFFSET_H:int = 6;
       
@@ -24,12 +19,6 @@ package net.wg.gui.lobby.battleRoyale
       
       public var bgGlow:Sprite = null;
       
-      public var clockIcon:Sprite = null;
-      
-      public var giftIcon:Sprite = null;
-      
-      public var shamrockFactor:Sprite = null;
-      
       public function BattleRoyaleTankIcon()
       {
          super();
@@ -38,24 +27,18 @@ package net.wg.gui.lobby.battleRoyale
       override protected function updateBaseData(param1:VehicleCarouselVO) : void
       {
          super.updateBaseData(param1);
-         this.shamrockFactor.visible = param1.hasShamrockFactor;
          txtTankName.filters = [DEF_FILTER];
       }
       
       override protected function onDispose() : void
       {
          this.bgGlow = null;
-         this.clockIcon = null;
-         this.giftIcon = null;
-         this.shamrockFactor = null;
          super.onDispose();
       }
       
       override protected function updateData(param1:VehicleCarouselVO) : void
       {
          super.updateData(param1);
-         this.clockIcon.visible = StringUtils.isNotEmpty(param1.rentLeft);
-         this.giftIcon.visible = param1.isTestDriveEnabled;
          this.bgGlow.visible = !param1.lockBackground;
       }
       
@@ -63,14 +46,7 @@ package net.wg.gui.lobby.battleRoyale
       {
          super.setVisibleVehicleInfo(param1);
          this.bgGlow.visible = param1 && !lockedBG.visible;
-      }
-      
-      override protected function validateLayout() : void
-      {
-         super.validateLayout();
-         App.utils.commons.updateTextFieldSize(txtRentInfo);
-         txtRentInfo.x = maxIconBounds.width - txtRentInfo.width + RENT_TEXT_LEFT_OFFSET;
-         this.clockIcon.x = txtRentInfo.x + CLOCK_ICON_LEFT_OFFSET;
+         txtRentInfo.visible = false;
       }
       
       override protected function updateTextInfo(param1:VehicleCarouselVO, param2:Boolean) : void

@@ -12,7 +12,7 @@ from helpers import i18n
 WIDE_STAT_ROW = 'wideLine'
 NORMAL_STAT_ROW = 'normalLine'
 SMALL_STAT_LINE = 'smallLineUI'
-_LINE_BRAKE_STR = '<br/>'
+LINE_BRAKE_STR = '<br/>'
 _STATS_INFOTIP_HEADER_FORMAT = '#battle_results:team/stats/infotip_{0}/header'
 _VEHICLE_STATE_PREFIX = '{0} ('
 _VEHICLE_STATE_SUFFIX = ')'
@@ -146,7 +146,7 @@ def makeStatRow(label='', labelArgs=None, column1=None, column2=None, column3=No
        'lineType': lineType}
 
 
-def makeCreditsLabel(value, canBeFaded=False, isDiff=False, useBigIcon=False):
+def makeCreditsLabel(value, canBeFaded=False, isDiff=False, useBigIcon=False, forceFade=False):
     formatted = backport.getGoldFormat(int(round(value)))
     if value < 0:
         formatted = markValueAsError(formatted)
@@ -154,25 +154,25 @@ def makeCreditsLabel(value, canBeFaded=False, isDiff=False, useBigIcon=False):
         formatted = _DIFF_FORMAT.format(formatted)
     if useBigIcon:
         template = 'credits_label'
-    elif canBeFaded and not value:
+    elif canBeFaded and (not value or forceFade):
         template = 'credits_small_inactive_label'
     else:
         template = 'credits_small_label'
     return makeHtmlString('html_templates:lobby/battle_results', template, {'value': formatted})
 
 
-def makeGoldLabel(value, canBeFaded=False, isDiff=False):
+def makeGoldLabel(value, canBeFaded=False, isDiff=False, forceFade=False):
     formatted = backport.getGoldFormat(value)
     if isDiff:
         formatted = _DIFF_FORMAT.format(formatted)
-    if canBeFaded and not value:
+    if canBeFaded and (not value or forceFade):
         template = 'gold_small_inactive_label'
     else:
         template = 'gold_small_label'
     return makeHtmlString('html_templates:lobby/battle_results', template, {'value': formatted})
 
 
-def makeXpLabel(value, canBeFaded=False, isDiff=False, useBigIcon=False):
+def makeXpLabel(value, canBeFaded=False, isDiff=False, useBigIcon=False, forceFade=False):
     formatted = backport.getIntegralFormat(int(value))
     if value < 0:
         formatted = markValueAsError(formatted)
@@ -180,15 +180,15 @@ def makeXpLabel(value, canBeFaded=False, isDiff=False, useBigIcon=False):
         formatted = _DIFF_FORMAT.format(formatted)
     if useBigIcon:
         template = 'xp_label'
-    elif canBeFaded and not value:
+    elif canBeFaded and (not value or forceFade):
         template = 'xp_small_inactive_label'
     else:
         template = 'xp_small_label'
     return makeHtmlString('html_templates:lobby/battle_results', template, {'value': formatted})
 
 
-def makeFreeXpLabel(value, canBeFaded=False):
-    if canBeFaded and not value:
+def makeFreeXpLabel(value, canBeFaded=False, forceFade=False):
+    if canBeFaded and (not value or forceFade):
         template = 'free_xp_small_inactive_label'
     else:
         template = 'free_xp_small_label'
@@ -249,7 +249,7 @@ def makeAOGASFactorValue(value):
 
 
 def makeMultiLineHtmlString(seq):
-    return _LINE_BRAKE_STR.join(seq)
+    return LINE_BRAKE_STR.join(seq)
 
 
 def makeStatValue(field, value):

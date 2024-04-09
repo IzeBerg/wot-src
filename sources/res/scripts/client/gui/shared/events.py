@@ -1,6 +1,7 @@
 import logging
 from collections import namedtuple
 import typing
+from enum import Enum
 from gui.shared.event_bus import SharedEvent
 from shared_utils import CONST_CONTAINER
 if typing.TYPE_CHECKING:
@@ -9,10 +10,10 @@ if typing.TYPE_CHECKING:
 __all__ = ('ArgsEvent', 'ComponentEvent', 'LoadViewEvent', 'LoadGuiImplViewEvent',
            'ShowDialogEvent', 'LoginEvent', 'LoginEventEx', 'LobbySimpleEvent', 'FightButtonDisablingEvent',
            'FightButtonEvent', 'CloseWindowEvent', 'BrowserEvent', 'HangarVehicleEvent',
-           'HangarCustomizationEvent', 'GameEvent', 'BootcampEvent', 'ViewEventType',
-           'OpenLinkEvent', 'ChannelManagementEvent', 'PreBattleChannelEvent', 'AmmunitionSetupViewEvent',
-           'HasCtxEvent', 'DogTagsEvent', 'FullscreenModeSelectorEvent', 'ModeSelectorPopoverEvent',
-           'ModeSubSelectorEvent')
+           'HangarCustomizationEvent', 'GameEvent', 'ViewEventType', 'OpenLinkEvent',
+           'ChannelManagementEvent', 'PreBattleChannelEvent', 'AmmunitionSetupViewEvent',
+           'HasCtxEvent', 'DogTagsEvent', 'DeathCamEvent', 'FullscreenModeSelectorEvent',
+           'ModeSelectorPopoverEvent', 'ModeSubSelectorEvent')
 _logger = logging.getLogger(__name__)
 
 class HasCtxEvent(SharedEvent):
@@ -43,6 +44,7 @@ class GameEvent(HasCtxEvent):
     SHOW_EXTENDED_INFO = 'game/showExtendedInfo'
     CHOICE_CONSUMABLE = 'game/choiceConsumable'
     MINIMAP_CMD = 'game/minimapCmd'
+    MINIMAP_VISIBLE_CMD = 'game/minimapVisibleCmd'
     RADIAL_MENU_CMD = 'game/radialMenuCmd'
     TOGGLE_GUI = 'game/toggleGUI'
     GUI_VISIBILITY = 'game/guiVisibility'
@@ -206,13 +208,10 @@ class ShowDialogEvent(SharedEvent):
     SHOW_SYSTEM_MESSAGE_DIALOG = 'showSystemMessageDialog'
     SHOW_CYBER_SPORT_DIALOG = 'showCyberSportDialog'
     SHOW_CONFIRM_ORDER_DIALOG = 'showConfirmOrderDialog'
-    SHOW_PUNISHMENT_DIALOG = 'showPunishmentDialog'
-    SHOW_COMP7_PUNISHMENT_DIALOG = 'showComp7PunishmentDialog'
     SHOW_EXCHANGE_DIALOG = 'showExchangeDialog'
     SHOW_EXCHANGE_DIALOG_MODAL = 'showExchangeDialogModal'
     SHOW_DETAILED_EXCHANGE_XP_DIALOG = 'showDetailedExchangeXPDialog'
     SHOW_CHECK_BOX_DIALOG = 'showCheckBoxDialog'
-    SHOW_EXECUTION_CHOOSER_DIALOG = 'showExecutionChooserDialog'
     SHOW_USE_AWARD_SHEET_DIALOG = 'useAwardSheetDialog'
     SHOW_CONFIRM_C11N_BUY_DIALOG = 'showConfirmC11nBuyDialog'
     SHOW_CONFIRM_C11N_SELL_DIALOG = 'showConfirmC11nSellDialog'
@@ -248,18 +247,6 @@ class LoginEventEx(LoginEvent):
         self.msg = msg
         self.waitingClose = waitingClose
         self.showAutoLoginBtn = showAutoLoginBtn
-
-
-class BCLoginEvent(SharedEvent):
-    CLOSE_WINDOW = 'closeBCLoginQueue'
-    CANCEL_WAITING = 'cancelWaitingBCLoginQueue'
-    HIDE_GAME_LOADING = 'hideGameLoadingBCLoginQueue'
-
-    def __init__(self, eventType, title=None, message=None, cancelLabel=None):
-        super(BCLoginEvent, self).__init__(eventType=eventType)
-        self.title = title
-        self.message = message
-        self.cancelLabel = cancelLabel
 
 
 class RenameWindowEvent(HasCtxEvent):
@@ -399,13 +386,8 @@ class TutorialEvent(SharedEvent):
     ON_COMPONENT_LOST = 'onComponentLost'
     ON_TRIGGER_ACTIVATED = 'onTriggerActivated'
     ON_ANIMATION_COMPLETE = 'onAnimationComplete'
-    SIMPLE_WINDOW_PROCESSED = 'simpleWindowProcessed'
     UPDATE_TUTORIAL_HINTS = 'updateTutorialHints'
     IMPORTANT_HINT_SHOWING = 'importantHintShowing'
-    OVERRIDE_HANGAR_MENU_BUTTONS = 'overrideHangarMenuButtons'
-    OVERRIDE_HEADER_MENU_BUTTONS = 'overrideHeaderMenuButtons'
-    SET_HANGAR_HEADER_ENABLED = 'setHangarHeaderEnabled'
-    OVERRIDE_BATTLE_SELECTOR_HINT = 'overrideBattleSelectorHint'
 
     def __init__(self, eventType, settingsID='', targetID='', reloadIfRun=False, initialChapter=None, restoreIfRun=False, isStopForced=False, isAfterBattle=False, state=False, arguments=''):
         super(TutorialEvent, self).__init__(eventType)
@@ -425,16 +407,6 @@ class TutorialEvent(SharedEvent):
            'restoreIfRun': self.restoreIfRun, 
            'isStopForced': self.isStopForced, 
            'isAfterBattle': self.isAfterBattle}
-
-
-class BootcampEvent(SharedEvent):
-    SHOW_SECONDARY_HINT = 'ShowSecondaryHint'
-    HIDE_SECONDARY_HINT = 'HideSecondaryHint'
-
-    def __init__(self, eventType, eventId=0, eventArg=0):
-        super(BootcampEvent, self).__init__(eventType)
-        self.eventId = eventId
-        self.eventArg = eventArg
 
 
 class MessengerEvent(HasCtxEvent):
@@ -628,7 +600,6 @@ class HangarVehicleEvent(HasCtxEvent):
     ON_PLATOON_TANK_DESTROY = 'hangarVehicle/onPlatoonTankDestroy'
     PLATOON_TANK_MARKER = 'hangarVehicle/platoonTankMarker'
     SELECT_VEHICLE_IN_HANGAR = 'hangarVehicle/selectVehicleInHangar'
-    BOOTCAMP_SECOND_TANK_MARKER = 'hangarVehicle/bootcampSecondTankMarker'
 
 
 class ManualEvent(HasCtxEvent):
@@ -773,6 +744,42 @@ class PlatoonDropdownEvent(HasCtxEvent):
     NAME = 'DropdownEvent'
 
 
+class DeathCamEvent(HasCtxEvent):
+    DEATH_CAM_STATE = 'deathCamEvent/deathCamState'
+    DEATH_CAM_HIDDEN = 'deathCamEvent/deathCamHidden'
+    DEATH_CAM_SPECTATOR_MODE = 'deathCamEvent/deathCamSpectatorMode'
+
+    class State(Enum):
+        NONE = 0
+        INACTIVE = 1
+        PREPARING = 2
+        STARTING = 3
+        ACTIVE = 4
+        PAUSE = 5
+        RESUME = 6
+        ENDING = 7
+        FINISHED = 8
+
+    BEFORE_SIMULATION = (
+     State.NONE, State.INACTIVE)
+    SIMULATION_EXCL_FADES = (
+     State.ACTIVE, State.PAUSE, State.RESUME)
+    SIMULATION_INCL_FADES = (
+     State.PREPARING, State.STARTING, State.ACTIVE, State.PAUSE, State.RESUME, State.ENDING)
+
+    class EventType(Enum):
+        NONE = 'none'
+        ENABLED = 'enabled'
+        TRANSITIONING = 'transitioning'
+        INIT_SPOTTED = 'initSpotted'
+        ROTATING_KILLER = 'rotatingKiller'
+        MOVING_TO_PLAYER = 'movingToPlayer'
+        INIT_UNSPOTTED = 'initUnspotted'
+        UNSPOTTED_PHASE_ONE = 'unspottedPhaseOne'
+        UNSPOTTED_PHASE_TWO = 'unspottedPhaseTwo'
+        LAST_ROTATION = 'rotatingPlayer'
+
+
 class FullscreenModeSelectorEvent(HasCtxEvent):
     NAME = 'FullscreenModeSelectorEvent'
 
@@ -825,3 +832,12 @@ class PrebattleEvent(HasCtxEvent):
 
 class HangarCrewWidgetViewEvent(HasCtxEvent):
     GF_RESIZED = 'hangarCrewWidgetViewEvent/gfResized'
+
+
+class BattleRoyalePlatoonEvent(SharedEvent):
+    LEAVED_PLATOON = 'battleRoyalePlatoonEvent/leavedPlatoon'
+
+
+class ScalableBattleMinimapEvent(HasCtxEvent):
+    BORDERS_UPDATED = 'ScalableBattleMinimapEvent/BORDERS_UPDATED'
+    ZOOM_UPDATED = 'ScalableBattleMinimapEvent/ZOOM_UPDATED'

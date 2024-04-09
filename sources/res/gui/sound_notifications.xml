@@ -593,12 +593,6 @@
 		<cooldownFx>2</cooldownFx>
 	</event>
 	<event>
-		<name>eb_follow_tank</name>
-		<chance>100</chance>
-		<fxEvent>eb_tank_focus_click</fxEvent>
-		<cooldownFx>0</cooldownFx>
-	</event>
-	<event>
 		<name>eb_general</name>
 		<chance>100</chance>
 		<infEvent>vo_eb_allied_general_enters</infEvent>
@@ -618,12 +612,6 @@
 		<name>eb_general_message</name>
 		<chance>100</chance>
 		<fxEvent>eb_global_message</fxEvent>
-		<cooldownFx>0</cooldownFx>
-	</event>
-	<event>
-		<name>eb_left_click_to_follow</name>
-		<chance>100</chance>
-		<fxEvent>eb_tank_focus</fxEvent>
 		<cooldownFx>0</cooldownFx>
 	</event>
 	<event>
@@ -3848,5 +3836,101 @@
 		<interrupt>2</interrupt>
 		<predelay>0</predelay>
 		<queueClearAtStart>1</queueClearAtStart>
+	</event>
+	<event>
+		<name>dc_simulated_scene_enter</name>
+		<chance>100</chance>
+		<fxEvent>dc_simulated_scene_enter</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_simulated_scene_exit</name>
+		<chance>100</chance>
+		<fxEvent>dc_simulated_scene_exit</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_amb_start</name>
+		<chance>100</chance>
+		<fxEvent>dc_amb_start</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_amb_stop</name>
+		<chance>100</chance>
+		<fxEvent>dc_amb_stop</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_trajectory_ray</name>
+		<chance>100</chance>
+		<fxEvent>dc_trajectory_ray</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_transition_start</name>
+		<chance>100</chance>
+		<fxEvent>dc_transition_start</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_transition_end</name>
+		<chance>100</chance>
+		<fxEvent>dc_transition_end</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_ui_marker</name>
+		<chance>100</chance>
+		<fxEvent>dc_ui_marker</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_ui_pause_enter</name>
+		<chance>100</chance>
+		<fxEvent>dc_ui_pause_enter</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_ui_pause_exit</name>
+		<chance>100</chance>
+		<fxEvent>dc_ui_pause_exit</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_ui_exit</name>
+		<chance>100</chance>
+		<fxEvent>dc_ui_exit</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_ui_marker_add_info</name>
+		<chance>100</chance>
+		<fxEvent>dc_ui_marker_add_info</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_fc_speed_change</name>
+		<chance>100</chance>
+		<fxEvent>dc_fc_ui_speed_change</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_fc_follow_hint</name>
+		<chance>100</chance>
+		<fxEvent>dc_fc_ui_tank_focus</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_fc_start_to_follow_tank</name>
+		<chance>100</chance>
+		<fxEvent>dc_fc_ui_start_to_follow</fxEvent>
+		<cooldownFx>0</cooldownFx>
+	</event>
+	<event>
+		<name>dc_fc_stop_to_follow_tank</name>
+		<chance>100</chance>
+		<fxEvent>dc_fc_ui_stop_to_follow</fxEvent>
+		<cooldownFx>0</cooldownFx>
 	</event>
 </root>

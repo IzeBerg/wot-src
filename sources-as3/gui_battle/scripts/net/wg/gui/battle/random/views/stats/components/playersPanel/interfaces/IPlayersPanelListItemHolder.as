@@ -13,6 +13,8 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces
       
       function setVehicleData(param1:DAAPIVehicleInfoVO) : void;
       
+      function getVehicleData() : DAAPIVehicleInfoVO;
+      
       function setFrags(param1:int) : void;
       
       function setChatCommand(param1:String, param2:uint) : void;

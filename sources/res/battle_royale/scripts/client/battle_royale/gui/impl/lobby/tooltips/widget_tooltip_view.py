@@ -77,7 +77,10 @@ class WidgetTooltipView(ViewImpl):
         return timeLeft
 
     def __getProgressionState(self):
-        isInProgress = self._brProgression.isEnabled and not self._brProgression.isFinished
+        isEnabled = self._brProgression.isEnabled
+        if not isEnabled:
+            return ProgressionState.UNAVAILABLE
+        isInProgress = not self._brProgression.isFinished
         if isInProgress:
-            return ProgressionState.INPROGRESS
+            return ProgressionState.IN_PROGRESS
         return ProgressionState.COMPLETED

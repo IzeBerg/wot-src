@@ -530,12 +530,6 @@ msgstr ""
 "\n"
 "除此之外，如果想为了游玩不同类型的坦克或改变玩法风格而决定再训练乘员，那么您需要考虑此选项。举例，如果想要在战斗中避免被敌方点亮，或将重型坦克乘员转移到自行反坦克炮上，那么隐蔽特长将是首选。"
 
-msgid "action/hero/full/creditsTankmanCost"
-msgstr ""
-"使用银币按%(discount)s折扣训练或再训练您的乘员。训练有素的乘员可以提升坦克部分属性以及增强坦克自身的战斗力。\n"
-"\n"
-"请注意，假如坦克的乘员被训练到100%%，那么将显示乘员的相关特长与技能。所以，如果坦克上乘员训练度降低，那么也会影响坦克的战斗力。"
-
 msgid "action/hero/full/dropSkills/mixed"
 msgstr ""
 "按%(discount)s的折扣来重置乘员特长。这将为您节省把乘员转移到不同战场角色的坦克上的费用。\n"
@@ -568,12 +562,6 @@ msgstr ""
 "使用金币按%(discount)s的折扣来重置乘员特长。这将为您节省把乘员转移到不同战场角色的坦克上的费用。\n"
 "\n"
 "除此之外，如果想为了游玩不同类型的坦克或改变玩法风格而决定再训练乘员，那么您需要考虑此选项。举例，如果想要在战斗中避免被敌方点亮，或将重型坦克乘员转移到自行反坦克炮上，那么隐蔽特长将是首选。"
-
-msgid "action/hero/full/goldTankmanCost"
-msgstr ""
-"使用金币按%(discount)s折扣训练或再训练您的乘员。训练有素的乘员可以提升坦克部分属性以及增强坦克自身的战斗力。\n"
-"\n"
-"请注意，假如坦克的乘员被训练到100%%，那么将显示乘员的相关特长与技能。所以，如果坦克上乘员训练度降低，那么也会影响坦克的战斗力。"
 
 msgid "action/hero/full/mul_ShellPrice"
 msgstr ""
@@ -647,10 +635,7 @@ msgstr ""
 "如果您也经常遇到车位不够用的情况，那就快来用优惠的价格来购买新的车位！请记住使用坦克筛选按钮可以帮助您更好地管理车库中的坦克。"
 
 msgid "action/hero/full/tankmen/mixed"
-msgstr ""
-"按%(discount)s折扣训练或再训练您的乘员。训练有素的乘员可以提升坦克部分属性以及增强坦克自身的战斗力。\n"
-"\n"
-"请注意，假如坦克的乘员被训练到100%%，那么将显示乘员的相关特长与技能。所以，如果坦克上乘员训练度降低，那么也会影响坦克的战斗力。"
+msgstr "按%(discount)s的折扣训练或再训练乘员。训练有素的乘员可在驾驶该坦克时使用其特长，并确保坦克发挥出其全部潜力。"
 
 msgid "action/hero/full/tradeInSellPriceFactor"
 msgstr ""
@@ -890,8 +875,14 @@ msgstr "%(formattedProgress)s剩余: %(left)s 排名: %(position)s"
 msgid "battleProgress/position/short"
 msgstr "%(formattedProgress)s排名: %(position)s"
 
+msgid "bonusName/additional_bonuses"
+msgstr "可控经验加成"
+
 msgid "bonusName/attendance_reward"
 msgstr "签到奖励"
+
+msgid "bonusName/badges"
+msgstr "坦克手旗帜"
 
 msgid "bonusName/battlePassPoints"
 msgstr "战斗通行证点数"
@@ -901,6 +892,9 @@ msgstr "战斗通行证点数: "
 
 msgid "bonusName/battle_bonus_x5"
 msgstr "5倍胜场经验任务"
+
+msgid "bonusName/battle_bonuses"
+msgstr "战斗收益加成"
 
 msgid "bonusName/berths"
 msgstr "兵营中的床位"
@@ -1094,6 +1088,9 @@ msgstr "金币储备库"
 msgid "bonusName/idle_crew_xp"
 msgstr "高强度乘员训练"
 
+msgid "bonusName/industrialResource"
+msgstr "工业资源"
+
 msgid "bonusName/inscription"
 msgstr "签名"
 
@@ -1124,9 +1121,6 @@ msgstr "每日奖励战斗。"
 msgid "bonusName/slots"
 msgstr "车位"
 
-msgid "bonusName/stpcoin"
-msgstr "幸运印章"
-
 msgid "bonusName/style"
 msgstr "风格"
 
@@ -1141,6 +1135,9 @@ msgstr "乘员经验"
 
 msgid "bonusName/tankmenXPFactor"
 msgstr "乘员经验系数"
+
+msgid "bonusName/tourcoin"
+msgstr "军旅积分"
 
 msgid "bonusName/xp"
 msgstr "战斗经验"
@@ -1224,10 +1221,10 @@ msgid "bonuses/item/tankman"
 msgstr "招募"
 
 msgid "bonuses/item/tankmen/no_skills"
-msgstr "%(vehName)s: %(roleLevel)d%% 乘员"
+msgstr "%(vehName)s的乘员。"
 
 msgid "bonuses/item/tankmen/with_skills"
-msgstr "%(vehName)s:%(roleLevel)d%%乘员(乘员特长:%(skills)d)"
+msgstr "%(vehName)s的乘员(乘员特长: %(skills)d)。"
 
 msgid "bonuses/item/tankmenXP"
 msgstr "乘员经验"
@@ -1313,6 +1310,9 @@ msgstr "%H时%M分后过期"
 msgid "dailyQuests/bonusQuest/countDown_minSec"
 msgstr "在%MM:%SS后过期"
 
+msgid "dailyQuests/condition/battle_singular"
+msgstr "进行一场战斗"
+
 msgid "dailyQuests/condition/destroyModule_few"
 msgstr "在一场战斗中造成%(value)d次关键一击"
 
@@ -1353,6 +1353,9 @@ msgid "dailyQuests/condition/doDamageVeh"
 msgstr "在一场战斗中对%(value)d辆敌方坦克造成损伤"
 
 msgid "dailyQuests/condition/doDamageVeh_accum"
+msgstr "对%(value)d辆敌方坦克造成损伤"
+
+msgid "dailyQuests/condition/doDamageVeh_singular_accum"
 msgstr "对%(value)d辆敌方坦克造成损伤"
 
 msgid "dailyQuests/condition/doDamage_accum"
@@ -1674,10 +1677,10 @@ msgid "details/conditions/cumulative/damageAssistedRadioWhileInvisible"
 msgstr "您点亮时造成的损伤(您的坦克在造成损伤时必须保持隐蔽状态)"
 
 msgid "details/conditions/cumulative/damageAssistedStun"
-msgstr "您造成弹震时队友对敌方坦克造成的损伤"
+msgstr "盟友对由您造成弹震的敌方坦克造成的损伤"
 
 msgid "details/conditions/cumulative/damageAssistedStunWhileInvisible"
-msgstr "您造成弹震时队友对敌方坦克造成的损伤；您的坦克在造成损伤时必须保持隐蔽状态"
+msgstr "对由您造成弹震的敌方坦克造成损伤；您的坦克在造成损伤时必须保持隐蔽状态"
 
 msgid "details/conditions/cumulative/damageAssistedTrack"
 msgstr "在您击毁履带使其无法移动后，盟友对该坦克造成的损伤"
@@ -1704,7 +1707,7 @@ msgid "details/conditions/cumulative/damagedVehicleCntAssistedRadio"
 msgstr "通过侦察到敌方坦克使您的盟友对其造成损伤"
 
 msgid "details/conditions/cumulative/damagedVehicleCntAssistedStun"
-msgstr "弹震敌方坦克。队友必须对受到您弹震影响的敌方坦克造成损伤"
+msgstr "对一辆敌方坦克造成弹震。盟友必须对由您弹震的敌方坦克造成损伤"
 
 msgid "details/conditions/cumulative/damagedVehicleCntAssistedTrack"
 msgstr "通过击毁敌方坦克履带使其无法移动，协助您的盟友对它造成损伤"
@@ -1785,7 +1788,7 @@ msgid "details/conditions/cumulative/killsAssistedRadio"
 msgstr "盟友必须击毁因您而点亮的敌方坦克"
 
 msgid "details/conditions/cumulative/killsAssistedStun"
-msgstr "队友必须击毁受到您弹震影响的敌方坦克"
+msgstr "盟友必须击毁由您造成弹震的敌方坦克"
 
 msgid "details/conditions/cumulative/killsAssistedTrack"
 msgstr "盟友必须击毁因您而无法移动的敌方坦克"
@@ -1878,13 +1881,13 @@ msgid "details/conditions/cumulative/squad"
 msgstr "小队信息:%(param)s"
 
 msgid "details/conditions/cumulative/stunDuration"
-msgstr "对敌方坦克造成弹震影响的总持续时间(以秒计算)"
+msgstr "对敌方坦克造成弹震持续总时长(以秒计)"
 
 msgid "details/conditions/cumulative/stunNum"
-msgstr "弹震敌方坦克(次数、总和)"
+msgstr "对敌方坦克造成弹震(次数、总和)"
 
 msgid "details/conditions/cumulative/stunned"
-msgstr "造成的弹震效果次数"
+msgstr "造成弹震的次数"
 
 msgid "details/conditions/cumulative/subtotalXP"
 msgstr "已获得经验（不包含任务）"
@@ -2175,16 +2178,16 @@ msgid "details/conditions/mapsType/winter"
 msgstr "雪地"
 
 msgid "details/conditions/multiStunEvent"
-msgstr "单次射击至少弹震%(count)d辆敌方坦克"
+msgstr "以单发炮弹，至少对%(count)d辆敌方坦克造成弹震"
 
 msgid "details/conditions/multiStunEvent/not"
-msgstr "请不要以单发炮弹弹震%(count)d+辆敌方坦克"
+msgstr "不得以单发炮弹对%(count)d+辆敌方坦克造成弹震"
 
 msgid "details/conditions/multiStunEvent/title"
 msgstr "弹震"
 
 msgid "details/conditions/multiStunEvent/title/not"
-msgstr "无需弹震"
+msgstr "不得造成弹震"
 
 msgid "details/conditions/noInstalledCamouflage"
 msgstr "在战斗中不使用涂装"
@@ -2613,130 +2616,130 @@ msgid "details/conditions/vehicleKills"
 msgstr "击毁:"
 
 msgid "details/conditions/vehicleStun"
-msgstr "敌方坦克的弹震持续时间"
+msgstr "对一辆敌方坦克造成弹震持续时间(秒)"
 
 msgid "details/conditions/vehicleStun/all"
-msgstr "任意敌方坦克的弹震持续时间"
+msgstr "对任意敌方坦克造成弹震持续时间(秒)"
 
 msgid "details/conditions/vehicleStun/all/not"
-msgstr "请不要弹震敌方坦克"
+msgstr "不得对敌方坦克造成弹震"
 
 msgid "details/conditions/vehicleStun/cumulative"
-msgstr "对敌方坦克造成弹震影响的总持续时间(以秒计算)"
+msgstr "对敌方坦克造成弹震持续总时长(以秒计)"
 
 msgid "details/conditions/vehicleStun/cumulative/all"
-msgstr "对敌方坦克造成弹震影响的总持续时间(以秒计算)"
+msgstr "对敌方坦克造成弹震持续总时长(以秒计)"
 
 msgid "details/conditions/vehicleStun/level"
-msgstr "弹震%(level)s级坦克的持续时间"
+msgstr "对%(level)s级坦克造成弹震持续时间(秒)"
 
 msgid "details/conditions/vehicleStun/level/not"
-msgstr "请不要弹震%(level)s级坦克"
+msgstr "不得对%(level)s级坦克造成弹震"
 
 msgid "details/conditions/vehicleStun/nation"
-msgstr "敌方%(nation)s坦克的弹震持续时间(秒)"
+msgstr "对一辆敌方%(nation)s坦克造成弹震持续时间(秒)"
 
 msgid "details/conditions/vehicleStun/nation/not"
-msgstr "请不要弹震敌方%(nation)s坦克"
+msgstr "不得对敌方%(nation)s坦克造成弹震"
 
 msgid "details/conditions/vehicleStun/nation_level"
-msgstr "敌方%(nation)s%(level)s级坦克的弹震持续时间(秒)"
+msgstr "对敌方%(nation)s%(level)s级坦克造成弹震持续时间(秒)"
 
 msgid "details/conditions/vehicleStun/nation_level/not"
-msgstr "请不要弹震敌方%(nation)s%(level)s级坦克"
+msgstr "不得对敌方%(nation)s%(level)s级坦克造成弹震"
 
 msgid "details/conditions/vehicleStun/nation_type"
-msgstr "敌方%(nation)s%(type)s的弹震持续时间"
+msgstr "对敌方%(nation)s%(type)s造成弹震持续时间(秒)"
 
 msgid "details/conditions/vehicleStun/nation_type/not"
-msgstr "请不要弹震敌方%(nation)s%(type)s"
+msgstr "不得对敌方%(nation)s%(type)s造成弹震"
 
 msgid "details/conditions/vehicleStun/nation_type_level"
-msgstr "敌方%(nation)s%(level)s级%(type)s的弹震持续时间(秒)"
+msgstr "对敌方%(nation)s%(level)s级%(type)s造成弹震持续时间(秒)"
 
 msgid "details/conditions/vehicleStun/nation_type_level/not"
-msgstr "请不要弹震敌方%(nation)s%(level)s级%(type)s"
+msgstr "不得对敌方%(nation)s%(level)s级%(type)s造成弹震"
 
 msgid "details/conditions/vehicleStun/not"
-msgstr "请不要弹震敌方坦克"
+msgstr "不得对敌方坦克造成弹震"
 
 msgid "details/conditions/vehicleStun/title"
 msgstr "弹震"
 
 msgid "details/conditions/vehicleStun/title/not"
-msgstr "无需弹震"
+msgstr "不得造成弹震"
 
 msgid "details/conditions/vehicleStun/type"
-msgstr "敌方%(type)s的弹震持续时间(秒)"
+msgstr "对敌方%(type)s造成弹震持续时间(秒)"
 
 msgid "details/conditions/vehicleStun/type/not"
-msgstr "请不要弹震敌方%(type)s"
+msgstr "不得对敌方%(type)s造成弹震"
 
 msgid "details/conditions/vehicleStun/type_level"
-msgstr "敌方%(level)s级%(type)s的弹震持续时间(秒)"
+msgstr "对敌方%(level)s级%(type)s造成弹震持续时间(秒)"
 
 msgid "details/conditions/vehicleStun/type_level/not"
-msgstr "请不要弹震敌方%(level)s级%(type)s"
+msgstr "不得对敌方%(level)s级%(type)s造成弹震"
 
 msgid "details/conditions/vehicleStunEventCount"
-msgstr "对敌方坦克造成指定次数的弹震影响"
+msgstr "对敌方坦克造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/all"
-msgstr "对任意敌方坦克造成指定次数的弹震影响"
+msgstr "对任意敌方坦克造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/all/not"
-msgstr "请不要对敌方坦克造成指定次数的弹震影响"
+msgstr "不得对敌方坦克造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/cumulative"
-msgstr "弹震敌方坦克(次数、总和)"
+msgstr "对敌方坦克造成弹震(次数、总和)"
 
 msgid "details/conditions/vehicleStunEventCount/cumulative/all"
-msgstr "弹震敌方坦克(次数、总和)"
+msgstr "对敌方坦克造成弹震(次数、总和)"
 
 msgid "details/conditions/vehicleStunEventCount/level"
-msgstr "对敌方%(level)s级坦克造成指定次数的弹震影响"
+msgstr "对敌方%(level)s级坦克造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/level/not"
-msgstr "请不要对敌方%(level)s级坦克造成指定次数的弹震影响"
+msgstr "不得对敌方%(level)s级坦克造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/nation"
-msgstr "对敌方%(nation)s坦克造成指定次数的弹震影响"
+msgstr "对敌方%(nation)s坦克造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/nation/not"
-msgstr "请不要对敌方%(nation)s坦克造成指定次数的弹震影响"
+msgstr "不得对敌方%(nation)s坦克造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/nation_level"
-msgstr "对敌方%(nation)s%(level)s级坦克造成指定次数的弹震影响"
+msgstr "对敌方%(nation)s%(level)s级坦克造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/nation_level/not"
-msgstr "请不要对敌方%(nation)s%(level)s级坦克造成指定次数的弹震影响"
+msgstr "不得对敌方%(nation)s%(level)s级坦克造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/nation_type"
-msgstr "对敌方%(nation)s%(type)s造成指定次数的弹震影响"
+msgstr "对敌方%(nation)s%(type)s造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/nation_type/not"
-msgstr "请不要对敌方%(nation)s%(type)s造成指定次数的弹震影响"
+msgstr "不得对敌方%(nation)s%(type)s造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/nation_type_level"
-msgstr "对敌方%(nation)s%(level)s级%(type)s造成指定次数的弹震影响"
+msgstr "对敌方%(nation)s%(level)s级%(type)s造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/nation_type_level/not"
-msgstr "请不要对敌方%(nation)s%(level)s级%(type)s造成指定次数的弹震影响"
+msgstr "不得对敌方%(nation)s%(level)s级%(type)s造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/not"
-msgstr "请不要对敌方坦克造成指定次数的弹震影响"
+msgstr "不得对敌方坦克造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/type"
-msgstr "对敌方%(type)s造成指定次数的弹震影响"
+msgstr "对敌方%(type)s造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/type/not"
-msgstr "请不要对敌方%(type)s造成指定次数的弹震影响"
+msgstr "不得对敌方%(type)s造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/type_level"
-msgstr "对敌方%(level)s级%(type)s造成指定次数的弹震影响"
+msgstr "对敌方%(level)s级%(type)s造成指定次数的弹震"
 
 msgid "details/conditions/vehicleStunEventCount/type_level/not"
-msgstr "请不要对敌方%(level)s级%(type)s造成指定次数的弹震影响"
+msgstr "不得对敌方%(level)s级%(type)s造成指定次数的弹震"
 
 msgid "details/conditions/vehiclesKills"
 msgstr "击毁1辆敌方坦克"

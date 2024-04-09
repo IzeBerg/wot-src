@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_04</identifier>
+					<fx>shaders/controlPoint/wg_controlPointRadius.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>108</materialKind>
+					<property>
+						diffuseMap
+						<Texture>objects/misc/unspotted_cone/normal/red_cone_grad.dds</Texture>
+					</property>
+					<property>
+						g_glossConversions
+						<Vector4>0.100000 0.750000 0.500000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>2.119847 0.019782 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.000001 -0.000000 -0.875656</min>
+		<max>4.239695 0.039564 0.875657</max>
+	</boundingBox>
+	<geometrySize>6456</geometrySize>
+	<minUVDensity>0.085307</minUVDensity>
+</root>

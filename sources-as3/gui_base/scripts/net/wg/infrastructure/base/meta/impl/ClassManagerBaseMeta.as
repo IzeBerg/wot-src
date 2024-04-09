@@ -66,53 +66,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.managers.impl.ToolTipParams;
    import net.wg.data.managers.impl.TooltipProps;
    import net.wg.data.utilData.TwoDimensionalPadding;
-   import net.wg.gui.bootcamp.BCHighlightsBase;
-   import net.wg.gui.bootcamp.bootcampProgress.BootcampProgress;
-   import net.wg.gui.bootcamp.containers.AnimatedButtonContainer;
-   import net.wg.gui.bootcamp.containers.AnimatedEmptyContainer;
-   import net.wg.gui.bootcamp.containers.AnimatedHtmlTextContainer;
-   import net.wg.gui.bootcamp.containers.AnimatedLoaderTextContainer;
-   import net.wg.gui.bootcamp.containers.AnimatedSpriteContainer;
-   import net.wg.gui.bootcamp.containers.AnimatedTextContainer;
-   import net.wg.gui.bootcamp.containers.AnimatedTextContainerWithBackground;
-   import net.wg.gui.bootcamp.containers.BCIntroLogoContainer;
-   import net.wg.gui.bootcamp.containers.HintContainer;
-   import net.wg.gui.bootcamp.containers.TipHintAnimation;
-   import net.wg.gui.bootcamp.containers.TutorialPageContainer;
-   import net.wg.gui.bootcamp.controls.BCAnimatedHintBase;
-   import net.wg.gui.bootcamp.controls.BCAppearEquipmentHint;
-   import net.wg.gui.bootcamp.controls.BCAppearFragCorrelationHint;
-   import net.wg.gui.bootcamp.controls.BCAppearMinimapHint;
-   import net.wg.gui.bootcamp.controls.BCCirclesMinimapHint;
-   import net.wg.gui.bootcamp.controls.BCCirclesTintHint;
-   import net.wg.gui.bootcamp.controls.BCCirclesTintHintContinuous;
-   import net.wg.gui.bootcamp.controls.BCHighlightRendererBase;
-   import net.wg.gui.bootcamp.controls.BCIconTextBigButtonFx;
-   import net.wg.gui.bootcamp.controls.BCLobbyAttentionHint;
-   import net.wg.gui.bootcamp.controls.BCLobbyFlagHint;
-   import net.wg.gui.bootcamp.controls.BCLobbyHint;
-   import net.wg.gui.bootcamp.controls.BCLobbyRectangleHint;
-   import net.wg.gui.bootcamp.controls.BCLobbySlotHint;
-   import net.wg.gui.bootcamp.controls.BCLobbyTintHint;
-   import net.wg.gui.bootcamp.data.BCTutorialPageVO;
-   import net.wg.gui.bootcamp.dialogs.BootcampDialog;
-   import net.wg.gui.bootcamp.events.AppearEvent;
-   import net.wg.gui.bootcamp.interfaces.IAnimatedButtonRenderer;
-   import net.wg.gui.bootcamp.interfaces.IAnimatedContainerRenderer;
-   import net.wg.gui.bootcamp.interfaces.IAnimatedMovieClip;
-   import net.wg.gui.bootcamp.interfaces.IAnimatedRenderer;
-   import net.wg.gui.bootcamp.interfaces.ITransitionRenderer;
-   import net.wg.gui.bootcamp.introVideoPage.BCIntroVideoPage;
-   import net.wg.gui.bootcamp.introVideoPage.containers.IntroLogoContainer;
-   import net.wg.gui.bootcamp.introVideoPage.containers.IntroPageContainer;
-   import net.wg.gui.bootcamp.introVideoPage.containers.IntroRewardRenderer;
-   import net.wg.gui.bootcamp.introVideoPage.containers.IntroRewardsContainer;
-   import net.wg.gui.bootcamp.introVideoPage.containers.LoadingContainer;
-   import net.wg.gui.bootcamp.introVideoPage.containers.StepperContainer;
-   import net.wg.gui.bootcamp.introVideoPage.data.BCIntroVideoVO;
-   import net.wg.gui.bootcamp.introVideoPage.data.RewardRendererVO;
-   import net.wg.gui.bootcamp.subtitles.BCSubtitle;
-   import net.wg.gui.bootcamp.subtitles.SubtitlesWindow;
    import net.wg.gui.components.advanced.BadgeSizes;
    import net.wg.gui.components.advanced.ButtonBarEx;
    import net.wg.gui.components.advanced.ContentTabBar;
@@ -197,6 +150,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.common.AlphaPropertyWrapper;
    import net.wg.gui.components.common.FrameStateCmpnt;
    import net.wg.gui.components.common.FrameStatesContainer;
+   import net.wg.gui.components.common.HighlightRendererBase;
+   import net.wg.gui.components.common.LobbyTintHint;
    import net.wg.gui.components.common.Spark;
    import net.wg.gui.components.common.SparksManager;
    import net.wg.gui.components.common.VehicleMarkerAlly;
@@ -240,6 +195,13 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.common.waiting.WaitingMc;
    import net.wg.gui.components.common.waiting.WaitingTransition;
    import net.wg.gui.components.common.waiting.WaitingView;
+   import net.wg.gui.components.containers.AnimatedButtonContainer;
+   import net.wg.gui.components.containers.AnimatedEmptyContainer;
+   import net.wg.gui.components.containers.AnimatedHtmlTextContainer;
+   import net.wg.gui.components.containers.AnimatedLoaderTextContainer;
+   import net.wg.gui.components.containers.AnimatedSpriteContainer;
+   import net.wg.gui.components.containers.AnimatedTextContainer;
+   import net.wg.gui.components.containers.AnimatedTextContainerWithBackground;
    import net.wg.gui.components.containers.Atlas;
    import net.wg.gui.components.containers.BaseContainerWrapper;
    import net.wg.gui.components.containers.BaseWrapper;
@@ -250,6 +212,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.containers.GroupEx;
    import net.wg.gui.components.containers.GroupLayout;
    import net.wg.gui.components.containers.HiddenServiceManagedContainer;
+   import net.wg.gui.components.containers.HintContainer;
    import net.wg.gui.components.containers.HorizontalGroupLayout;
    import net.wg.gui.components.containers.IGroupEx;
    import net.wg.gui.components.containers.MainViewContainer;
@@ -427,6 +390,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.controls.universalBtn.UniversalBtn;
    import net.wg.gui.components.controls.universalBtn.UniversalBtnToggleIndicator;
    import net.wg.gui.components.crosshairPanel.CrosshairArcade;
+   import net.wg.gui.components.crosshairPanel.CrosshairAverageDamageContainer;
+   import net.wg.gui.components.crosshairPanel.CrosshairAverageDamageField;
    import net.wg.gui.components.crosshairPanel.CrosshairBase;
    import net.wg.gui.components.crosshairPanel.CrosshairDistanceContainer;
    import net.wg.gui.components.crosshairPanel.CrosshairDistanceField;
@@ -500,6 +465,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.icons.PlayerActionMarkerController;
    import net.wg.gui.components.icons.SquadIcon;
    import net.wg.gui.components.icons.TankTypeIco;
+   import net.wg.gui.components.interfaces.IAnimatedButtonRenderer;
+   import net.wg.gui.components.interfaces.IAnimatedContainerRenderer;
+   import net.wg.gui.components.interfaces.IAnimatedMovieClip;
+   import net.wg.gui.components.interfaces.IAnimatedRenderer;
    import net.wg.gui.components.interfaces.ICounterComponent;
    import net.wg.gui.components.interfaces.INewCounter;
    import net.wg.gui.components.interfaces.IPaginatorArrowsController;
@@ -846,10 +815,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.rally.vo.VehicleVO;
    import net.wg.gui.tutorial.components.TutorialClip;
    import net.wg.gui.tutorial.components.TutorialHintZone;
-   import net.wg.gui.tutorial.data.BonusItemVO;
-   import net.wg.gui.tutorial.data.BonusValuesVO;
-   import net.wg.gui.tutorial.data.TutorialDialogVO;
-   import net.wg.gui.tutorial.windows.TutorialDialog;
    import net.wg.gui.utils.ExcludeTweenManager;
    import net.wg.gui.utils.FrameHelper;
    import net.wg.gui.utils.GraphicsUtilities;
@@ -893,13 +858,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.uilogging.base.BaseLogger;
    import net.wg.infrastructure.uilogging.base.FlowLogger;
    import net.wg.infrastructure.uilogging.base.MetricsLogger;
-   import net.wg.infrastructure.uilogging.deprecated.base.DeprecatedLogger;
-   import net.wg.infrastructure.uilogging.deprecated.bootcamp.BOOTCAMP_LOGGER_CONSTANTS;
-   import net.wg.infrastructure.uilogging.deprecated.bootcamp.LoadingPageLogger;
-   import net.wg.infrastructure.uilogging.deprecated.bootcamp.TooltipLogger;
-   import net.wg.infrastructure.uilogging.deprecated.bootcamp.events.TooltipLogEvent;
-   import net.wg.infrastructure.uilogging.personal_reserves.InBattleActivationScreenLogger;
-   import net.wg.infrastructure.uilogging.personal_reserves.PERSONAL_RESERVES_LOGGING_CONSTANTS;
    
    public class ClassManagerBaseMeta
    {
@@ -1035,100 +993,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_VO_TANKCAROUSELFILTERSELECTEDVO:Class = TankCarouselFilterSelectedVO;
       
       public static const NET_WG_DATA_VO_USERVO:Class = UserVO;
-      
-      public static const NET_WG_GUI_BOOTCAMP_BCHIGHLIGHTSBASE:Class = BCHighlightsBase;
-      
-      public static const NET_WG_GUI_BOOTCAMP_BOOTCAMPPROGRESS_BOOTCAMPPROGRESS:Class = BootcampProgress;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDBUTTONCONTAINER:Class = AnimatedButtonContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDEMPTYCONTAINER:Class = AnimatedEmptyContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDHTMLTEXTCONTAINER:Class = AnimatedHtmlTextContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDLOADERTEXTCONTAINER:Class = AnimatedLoaderTextContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDSPRITECONTAINER:Class = AnimatedSpriteContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDTEXTCONTAINER:Class = AnimatedTextContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDTEXTCONTAINERWITHBACKGROUND:Class = AnimatedTextContainerWithBackground;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_BCINTROLOGOCONTAINER:Class = BCIntroLogoContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_HINTCONTAINER:Class = HintContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_TIPHINTANIMATION:Class = TipHintAnimation;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_TUTORIALPAGECONTAINER:Class = TutorialPageContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCANIMATEDHINTBASE:Class = BCAnimatedHintBase;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCAPPEAREQUIPMENTHINT:Class = BCAppearEquipmentHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCAPPEARFRAGCORRELATIONHINT:Class = BCAppearFragCorrelationHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCAPPEARMINIMAPHINT:Class = BCAppearMinimapHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCCIRCLESMINIMAPHINT:Class = BCCirclesMinimapHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCCIRCLESTINTHINT:Class = BCCirclesTintHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCCIRCLESTINTHINTCONTINUOUS:Class = BCCirclesTintHintContinuous;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCHIGHLIGHTRENDERERBASE:Class = BCHighlightRendererBase;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCICONTEXTBIGBUTTONFX:Class = BCIconTextBigButtonFx;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCLOBBYATTENTIONHINT:Class = BCLobbyAttentionHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCLOBBYFLAGHINT:Class = BCLobbyFlagHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCLOBBYHINT:Class = BCLobbyHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCLOBBYRECTANGLEHINT:Class = BCLobbyRectangleHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCLOBBYSLOTHINT:Class = BCLobbySlotHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCLOBBYTINTHINT:Class = BCLobbyTintHint;
-      
-      public static const NET_WG_GUI_BOOTCAMP_DATA_BCTUTORIALPAGEVO:Class = BCTutorialPageVO;
-      
-      public static const NET_WG_GUI_BOOTCAMP_DIALOGS_BOOTCAMPDIALOG:Class = BootcampDialog;
-      
-      public static const NET_WG_GUI_BOOTCAMP_EVENTS_APPEAREVENT:Class = AppearEvent;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTERFACES_IANIMATEDBUTTONRENDERER:Class = IAnimatedButtonRenderer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTERFACES_IANIMATEDCONTAINERRENDERER:Class = IAnimatedContainerRenderer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTERFACES_IANIMATEDMOVIECLIP:Class = IAnimatedMovieClip;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTERFACES_IANIMATEDRENDERER:Class = IAnimatedRenderer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTERFACES_ITRANSITIONRENDERER:Class = ITransitionRenderer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTROVIDEOPAGE_BCINTROVIDEOPAGE:Class = BCIntroVideoPage;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTROVIDEOPAGE_CONTAINERS_INTROLOGOCONTAINER:Class = IntroLogoContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTROVIDEOPAGE_CONTAINERS_INTROPAGECONTAINER:Class = IntroPageContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTROVIDEOPAGE_CONTAINERS_INTROREWARDRENDERER:Class = IntroRewardRenderer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTROVIDEOPAGE_CONTAINERS_INTROREWARDSCONTAINER:Class = IntroRewardsContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTROVIDEOPAGE_CONTAINERS_LOADINGCONTAINER:Class = LoadingContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTROVIDEOPAGE_CONTAINERS_STEPPERCONTAINER:Class = StepperContainer;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTROVIDEOPAGE_DATA_BCINTROVIDEOVO:Class = BCIntroVideoVO;
-      
-      public static const NET_WG_GUI_BOOTCAMP_INTROVIDEOPAGE_DATA_REWARDRENDERERVO:Class = RewardRendererVO;
-      
-      public static const NET_WG_GUI_BOOTCAMP_SUBTITLES_BCSUBTITLE:Class = BCSubtitle;
-      
-      public static const NET_WG_GUI_BOOTCAMP_SUBTITLES_SUBTITLESWINDOW:Class = SubtitlesWindow;
       
       public static const NET_WG_GUI_COMPONENTS_ADVANCED_BADGESIZES:Class = BadgeSizes;
       
@@ -1298,6 +1162,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_FRAMESTATESCONTAINER:Class = FrameStatesContainer;
       
+      public static const NET_WG_GUI_COMPONENTS_COMMON_HIGHLIGHTRENDERERBASE:Class = HighlightRendererBase;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_LOBBYTINTHINT:Class = LobbyTintHint;
+      
       public static const NET_WG_GUI_COMPONENTS_COMMON_SPARK:Class = Spark;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_SPARKSMANAGER:Class = SparksManager;
@@ -1384,6 +1252,20 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_WAITING_WAITINGVIEW:Class = WaitingView;
       
+      public static const NET_WG_GUI_COMPONENTS_CONTAINERS_ANIMATEDBUTTONCONTAINER:Class = AnimatedButtonContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTAINERS_ANIMATEDEMPTYCONTAINER:Class = AnimatedEmptyContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTAINERS_ANIMATEDHTMLTEXTCONTAINER:Class = AnimatedHtmlTextContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTAINERS_ANIMATEDLOADERTEXTCONTAINER:Class = AnimatedLoaderTextContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTAINERS_ANIMATEDSPRITECONTAINER:Class = AnimatedSpriteContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTAINERS_ANIMATEDTEXTCONTAINER:Class = AnimatedTextContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTAINERS_ANIMATEDTEXTCONTAINERWITHBACKGROUND:Class = AnimatedTextContainerWithBackground;
+      
       public static const NET_WG_GUI_COMPONENTS_CONTAINERS_ATLAS:Class = Atlas;
       
       public static const NET_WG_GUI_COMPONENTS_CONTAINERS_BASECONTAINERWRAPPER:Class = BaseContainerWrapper;
@@ -1403,6 +1285,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CONTAINERS_GROUPLAYOUT:Class = GroupLayout;
       
       public static const NET_WG_GUI_COMPONENTS_CONTAINERS_HIDDENSERVICEMANAGEDCONTAINER:Class = HiddenServiceManagedContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTAINERS_HINTCONTAINER:Class = HintContainer;
       
       public static const NET_WG_GUI_COMPONENTS_CONTAINERS_HORIZONTALGROUPLAYOUT:Class = HorizontalGroupLayout;
       
@@ -1758,6 +1642,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_CROSSHAIRARCADE:Class = CrosshairArcade;
       
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_CROSSHAIRAVERAGEDAMAGECONTAINER:Class = CrosshairAverageDamageContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_CROSSHAIRAVERAGEDAMAGEFIELD:Class = CrosshairAverageDamageField;
+      
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_CROSSHAIRBASE:Class = CrosshairBase;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_CROSSHAIRDISTANCECONTAINER:Class = CrosshairDistanceContainer;
@@ -1903,6 +1791,14 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_ICONS_SQUADICON:Class = SquadIcon;
       
       public static const NET_WG_GUI_COMPONENTS_ICONS_TANKTYPEICO:Class = TankTypeIco;
+      
+      public static const NET_WG_GUI_COMPONENTS_INTERFACES_IANIMATEDBUTTONRENDERER:Class = IAnimatedButtonRenderer;
+      
+      public static const NET_WG_GUI_COMPONENTS_INTERFACES_IANIMATEDCONTAINERRENDERER:Class = IAnimatedContainerRenderer;
+      
+      public static const NET_WG_GUI_COMPONENTS_INTERFACES_IANIMATEDMOVIECLIP:Class = IAnimatedMovieClip;
+      
+      public static const NET_WG_GUI_COMPONENTS_INTERFACES_IANIMATEDRENDERER:Class = IAnimatedRenderer;
       
       public static const NET_WG_GUI_COMPONENTS_INTERFACES_ICOUNTERCOMPONENT:Class = ICounterComponent;
       
@@ -2596,14 +2492,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_TUTORIAL_COMPONENTS_TUTORIALHINTZONE:Class = TutorialHintZone;
       
-      public static const NET_WG_GUI_TUTORIAL_DATA_BONUSITEMVO:Class = BonusItemVO;
-      
-      public static const NET_WG_GUI_TUTORIAL_DATA_BONUSVALUESVO:Class = BonusValuesVO;
-      
-      public static const NET_WG_GUI_TUTORIAL_DATA_TUTORIALDIALOGVO:Class = TutorialDialogVO;
-      
-      public static const NET_WG_GUI_TUTORIAL_WINDOWS_TUTORIALDIALOG:Class = TutorialDialog;
-      
       public static const NET_WG_GUI_UTILS_EXCLUDETWEENMANAGER:Class = ExcludeTweenManager;
       
       public static const NET_WG_GUI_UTILS_FRAMEHELPER:Class = FrameHelper;
@@ -2691,20 +2579,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_UILOGGING_BASE_FLOWLOGGER:Class = FlowLogger;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGING_BASE_METRICSLOGGER:Class = MetricsLogger;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGING_DEPRECATED_BASE_DEPRECATEDLOGGER:Class = DeprecatedLogger;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGING_DEPRECATED_BOOTCAMP_BOOTCAMP_LOGGER_CONSTANTS:Class = BOOTCAMP_LOGGER_CONSTANTS;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGING_DEPRECATED_BOOTCAMP_LOADINGPAGELOGGER:Class = LoadingPageLogger;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGING_DEPRECATED_BOOTCAMP_TOOLTIPLOGGER:Class = TooltipLogger;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGING_DEPRECATED_BOOTCAMP_EVENTS_TOOLTIPLOGEVENT:Class = TooltipLogEvent;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGING_PERSONAL_RESERVES_INBATTLEACTIVATIONSCREENLOGGER:Class = InBattleActivationScreenLogger;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGING_PERSONAL_RESERVES_PERSONAL_RESERVES_LOGGING_CONSTANTS:Class = PERSONAL_RESERVES_LOGGING_CONSTANTS;
        
       
       public function ClassManagerBaseMeta()

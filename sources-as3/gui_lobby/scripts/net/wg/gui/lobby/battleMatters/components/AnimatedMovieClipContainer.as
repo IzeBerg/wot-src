@@ -2,7 +2,7 @@ package net.wg.gui.lobby.battleMatters.components
 {
    import flash.display.DisplayObject;
    import flash.display.MovieClip;
-   import net.wg.gui.bootcamp.containers.AnimatedHtmlTextContainer;
+   import net.wg.gui.components.containers.AnimatedHtmlTextContainer;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    
    public class AnimatedMovieClipContainer extends MovieClip implements IDisposable

@@ -6,9 +6,9 @@ class BattlePageMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_checkDAAPI()
 
-    def as_setPostmortemTipsVisibleS(self, value):
+    def as_onPostmortemActiveS(self, isPostMortem):
         if self._isDAAPIInited():
-            return self.flashObject.as_setPostmortemTipsVisible(value)
+            return self.flashObject.as_onPostmortemActive(isPostMortem)
 
     def as_setComponentsVisibilityS(self, visible, hidden):
         if self._isDAAPIInited():

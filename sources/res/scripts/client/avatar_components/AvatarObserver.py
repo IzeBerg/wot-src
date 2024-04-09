@@ -95,7 +95,6 @@ class AvatarObserver(CallbackDelayer):
                 if hasattr(self.vehicle.filter, 'enableStabilisedMatrix'):
                     self.vehicle.filter.enableStabilisedMatrix(True)
                 if not self.guiSessionProvider.shared.vehicleState.isInPostmortem:
-                    BigWorld.target.exclude = self.vehicle
                     for v in BigWorld.player().vehicles:
                         if v.appearance is not None:
                             v.appearance.highlighter.setVehicleOwnership()
@@ -198,6 +197,7 @@ class AvatarObserver(CallbackDelayer):
                     self.guiSessionProvider.stopVehicleVisual(vehicle.id, False)
                 else:
                     self.guiSessionProvider.startVehicleVisual(vehicle, True)
+                self.__resetHighlightProperties(vehicle)
             if self.observerSeesAll():
                 self.guiSessionProvider.shared.equipments.updateMapCase()
             else:
@@ -250,3 +250,13 @@ class AvatarObserver(CallbackDelayer):
 
     def __resetFPVModeSwitching(self):
         self.__isFPVModeSwitching = False
+
+    def __resetHighlightProperties(self, vehicle):
+        if self.isObserverFPV:
+            BigWorld.target.exclude = vehicle
+            if vehicle.appearance and vehicle.appearance.collisions is not None:
+                BigWorld.wgAddIgnoredCollisionEntity(vehicle, vehicle.appearance.collisions)
+        else:
+            BigWorld.target.exclude = None
+            BigWorld.wgDelIgnoredCollisionEntity(vehicle)
+        return

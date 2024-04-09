@@ -124,6 +124,24 @@ msgstr "任务中无坦克研发与乘员培训的相关内容。"
 msgid "common/overtimeFinishReasonTitle"
 msgstr "超时:"
 
+msgid "common/plusBonus/bonusLeftAdditionalText"
+msgstr "解锁更多: "
+
+msgid "common/plusBonus/earningsInformation"
+msgstr "您今日已获得%(count)s点经验"
+
+msgid "common/plusBonus/premiumPlusAdd"
+msgstr "坦克世界Plus或《坦克世界》高级账号可解锁"
+
+msgid "common/plusBonus/wotPlus"
+msgstr "坦克世界Plus"
+
+msgid "common/plusBonus/wotPremium"
+msgstr "《坦克世界》高级账号"
+
+msgid "common/plusBonus/youRock"
+msgstr "您太棒了！"
+
 msgid "common/premiumBonus"
 msgstr "想要获得更多么？"
 
@@ -134,13 +152,13 @@ msgid "common/premiumBonus/applyBonusBtn"
 msgstr "应用"
 
 msgid "common/premiumBonus/bonusLeft"
-msgstr "剩余次数: %(count)s"
+msgstr "今日剩余: %(count)s"
 
 msgid "common/premiumBonus/description"
 msgstr "可控经验加成"
 
 msgid "common/premiumBonus/expiredBattleResult"
-msgstr "新的战斗结果可用于该坦克。"
+msgstr "必须应用于同一辆坦克所参加的最后一场战斗。"
 
 msgid "common/premiumBonus/isXPToTmenDisabled"
 msgstr "无法使用加成: 已关闭加速乘员训练。"
@@ -149,13 +167,16 @@ msgid "common/premiumBonus/isXPToTmenEnabled"
 msgstr "无法使用加成: 已启用加速乘员训练。"
 
 msgid "common/premiumBonus/rule"
-msgstr "加成只能用于获胜的战斗。"
+msgstr "加成只能应用于获胜的战斗。祝您下次好运！"
 
 msgid "common/premiumBonus/tankStateChanged"
 msgstr "无法应用可控加成: 找不到坦克。"
 
 msgid "common/premiumBonus/tankmenStateChanged"
 msgstr "无法应用可控加成: 找不到乘员。"
+
+msgid "common/premiumBonus/unavailable"
+msgstr "加成不适用于该游戏模式。"
 
 msgid "common/progressTitle"
 msgstr "研发坦克与任务进度"
@@ -330,8 +351,8 @@ msgstr "点亮"
 
 msgid "common/tooltip/stun/description"
 msgstr ""
-"损伤计数:\n"
-"• 盟友对受到您弹震影响的敌方坦克造成的损伤。"
+"计入损伤:\n"
+"• 盟友对由您造成弹震的敌方坦克造成的损伤。"
 
 msgid "common/tooltip/stun/header"
 msgstr "弹震"
@@ -343,7 +364,7 @@ msgid "common/tooltip/stun/part2"
 msgstr "弹震次数"
 
 msgid "common/tooltip/stun/part3"
-msgstr "弹震效果总计持续时间:%(vals)s"
+msgstr "造成弹震效果总时长: %(vals)s"
 
 msgid "common/tooltip/teamKill-1/description"
 msgstr "盟友坦克被击毁"
@@ -425,6 +446,9 @@ msgstr "在战斗结束之前退出"
 
 msgid "common/vehicleState/victory"
 msgstr "胜利!"
+
+msgid "common/wotPlusBonus/bonusLeft"
+msgstr "今日剩余: %(count)s"
 
 msgid "common/xpMultiplierSign"
 msgstr "x"
@@ -578,6 +602,9 @@ msgstr "经验加成"
 
 msgid "details/calculations/total"
 msgstr "总计:"
+
+msgid "details/calculations/wotPlus"
+msgstr "坦克世界Plus战斗加成"
 
 msgid "details/calculations/xpRecord"
 msgstr "获得 (%(color_tag_open)s 最大值 %(color_tag_close)s)"
@@ -932,8 +959,8 @@ msgstr "敌方队伍"
 
 msgid "team/stats/infotip_xpForAssist/body"
 msgstr ""
-"计算为协助:\n"
-"• 由您点亮、击毁履带或造成弹震效果时，盟友对敌方坦克造成损伤\n"
+"计入协助:\n"
+"• 由您点亮、击毁履带或造成弹震效果期间，盟友对敌方坦克造成损伤\n"
 "• 占领基地\n"
 "• 首次点亮敌方坦克。"
 
@@ -942,11 +969,11 @@ msgstr "支援"
 
 msgid "team/stats/infotip_xpForAttack/body"
 msgstr ""
-"计算为贡献:\n"
+"计入贡献:\n"
 "• 造成损伤\n"
-"• 被您击毁的坦克\n"
+"• 击毁坦克\n"
 "• 击毁模块\n"
-"• 您的队伍造成损伤的奖励。\n"
+"• 己方队伍造成损伤的奖励。\n"
 "• 对盟友造成损伤或弹震惩罚。"
 
 msgid "team/stats/infotip_xpForAttack/header"
@@ -977,10 +1004,10 @@ msgid "team/stats/labels_damageAssistedSelf"
 msgstr "由您协助造成的损伤"
 
 msgid "team/stats/labels_damageAssistedStun"
-msgstr "对受到该玩家造成的弹震影响的敌方坦克造成损伤"
+msgstr "对由该玩家造成弹震的敌方坦克造成的损伤"
 
 msgid "team/stats/labels_damageAssistedStunSelf"
-msgstr "对受到您弹震影响的敌方坦克造成的损伤"
+msgstr "对由您造成弹震的敌方坦克造成的损伤"
 
 msgid "team/stats/labels_damageBlockedByArmor"
 msgstr "由装甲抵挡的损伤值"
@@ -1064,10 +1091,10 @@ msgid "team/stats/labels_spotted"
 msgstr "点亮敌方坦克"
 
 msgid "team/stats/labels_stunDuration"
-msgstr "弹震效果总计持续时间(秒)"
+msgstr "造成弹震效果总时长(秒)"
 
 msgid "team/stats/labels_stunNum"
-msgstr "造成的弹震效果"
+msgstr "造成的弹震次数"
 
 msgid "team/stats/labels_teamHitsDamage"
 msgstr "对盟友造成损伤 (击伤/生命值)"

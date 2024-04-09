@@ -34,10 +34,6 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const ITEM_WIDTH_SHORT_PADDING:int = 49;
       
-      private static const ITEM_WIDTH_PADDING_BIG:int = 82;
-      
-      private static const CONSUMABLES_PANEL_Y_OFFSET_BIG:int = 85;
-      
       private static const POPUP_Y_OFFSET:int = -6;
       
       private static const DATA_SLOT_IDX:int = 0;
@@ -117,7 +113,6 @@ package net.wg.gui.battle.views.consumablesPanel
          App.stageSizeMgr.register(this);
          var _loc1_:int = getItemWidthPadding(App.appWidth);
          this._settings[CONSUMABLES_PANEL_SETTINGS.DEFAULT_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EQUIPMENT_BUTTON,Linkages.SHELL_BUTTON_BATTLE,0,null);
-         this._settings[CONSUMABLES_PANEL_SETTINGS.BIG_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET_BIG,ITEM_WIDTH_PADDING_BIG,Linkages.BC_EQUIPMENT_BUTTON,Linkages.SHELL_BUTTON_BATTLE,0,null);
          this._settings[CONSUMABLES_PANEL_SETTINGS.BATTLE_ROYALE_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,ITEM_WIDTH_PADDING,Linkages.BATTLE_ROYALE_CONSUMABLE_BUTTON,Linkages.SHELL_BUTTON_BATTLE,BATTLE_ROYALE_GROUP_GAP,BATTLE_ROYALE_GROUP_INDEXES);
          this._settings[CONSUMABLES_PANEL_SETTINGS.MAPS_TRAINING_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EQUIPMENT_BUTTON,Linkages.MAPS_TRAINING_SHELL_BUTTON,0,null);
          this._settings[CONSUMABLES_PANEL_SETTINGS.EPIC_BATTLE_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EPIC_BATTLE_CONSUMABLE_BUTTON,Linkages.SHELL_BUTTON_BATTLE,EPIC_BATTLE_GROUP_GAP,EPIC_BATTLE_GROUP_INDEXES);
@@ -323,31 +318,32 @@ package net.wg.gui.battle.views.consumablesPanel
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }
       
-      public function as_addShellSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:String, param7:String, param8:String) : void
+      public function as_addShellSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:String, param7:String, param8:String, param9:Boolean) : void
       {
-         var _loc9_:IBattleShellButton = null;
-         var _loc10_:ConsumablesVO = null;
+         var _loc10_:IBattleShellButton = null;
+         var _loc11_:ConsumablesVO = null;
          if(this._renderers[param1] == null)
          {
-            _loc9_ = this.createShellButton();
-            this._renderers[param1] = _loc9_;
-            addChild(DisplayObject(_loc9_));
+            _loc10_ = this.createShellButton();
+            this._renderers[param1] = _loc10_;
+            addChild(DisplayObject(_loc10_));
          }
          else
          {
-            _loc9_ = this.getRendererBySlotIdx(param1) as IBattleShellButton;
+            _loc10_ = this.getRendererBySlotIdx(param1) as IBattleShellButton;
          }
-         if(_loc9_)
+         if(_loc10_)
          {
-            _loc10_ = _loc9_.consumablesVO;
-            _loc10_.shellIconPath = param6;
-            _loc10_.noShellIconPath = param7;
-            _loc10_.keyCode = param2;
-            _loc10_.idx = param1;
-            _loc9_.tooltipStr = param8;
-            _loc9_.setQuantity(param4,true);
-            _loc9_.key = param3;
-            _loc9_.addClickCallBack(this);
+            _loc11_ = _loc10_.consumablesVO;
+            _loc11_.shellIconPath = param6;
+            _loc11_.noShellIconPath = param7;
+            _loc11_.keyCode = param2;
+            _loc11_.idx = param1;
+            _loc10_.tooltipStr = param8;
+            _loc10_.setInfinity(param9);
+            _loc10_.setQuantity(param4,true);
+            _loc10_.key = param3;
+            _loc10_.addClickCallBack(this);
          }
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }

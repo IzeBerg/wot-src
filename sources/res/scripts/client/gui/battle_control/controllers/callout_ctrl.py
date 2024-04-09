@@ -1,8 +1,8 @@
 import logging
 from collections import namedtuple
 import BigWorld, BattleReplay, CommandMapping
-from account_helpers.settings_core.settings_constants import BattleCommStorageKeys
 from chat_commands_consts import _PERSONAL_MESSAGE_MUTE_DURATION, BATTLE_CHAT_COMMAND_NAMES
+from constants import ARENA_BONUS_TYPE
 from frameworks.wulf import WindowLayer
 from gui import GUI_CTRL_MODE_FLAG
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -19,7 +19,7 @@ from helpers.CallbackDelayer import CallbackDelayer
 from messenger.m_constants import MESSENGER_COMMAND_TYPE
 from messenger.proto.events import g_messengerEvents
 from messenger_common_chat2 import MESSENGER_ACTION_IDS as _ACTIONS
-from skeletons.account_helpers.settings_core import ISettingsCore, ISettingsCache
+from skeletons.account_helpers.settings_core import IBattleCommunicationsSettings
 from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.battle_session import IBattleSessionProvider
 _logger = logging.getLogger(__name__)
@@ -29,7 +29,11 @@ _DELAY_FOR_OPENING_RADIAL_MENU = 0.2
 _CONSUMERS_LOCKS = (
  BATTLE_VIEW_ALIASES.FULL_STATS,
  VIEW_ALIAS.COMP7_BATTLE_PAGE,
- 'chat')
+ 'chat',
+ BATTLE_VIEW_ALIASES.BR_SELECT_RESPAWN,
+ BATTLE_VIEW_ALIASES.BATTLE_ROYALE_WINNER_CONGRATS,
+ BATTLE_VIEW_ALIASES.BR_PLAYER_STATS_IN_BATTLE,
+ BATTLE_VIEW_ALIASES.FULLSCREEN_MAP)
 CommandReceivedData = namedtuple('CommandReceivedData', ('name', 'targetIdToAnswer'))
 _CALLOUT_COMMANDS_TO_REPLY_COMMANDS = {BATTLE_CHAT_COMMAND_NAMES.HELPME: BATTLE_CHAT_COMMAND_NAMES.SUPPORTING_ALLY, 
    BATTLE_CHAT_COMMAND_NAMES.TURNBACK: BATTLE_CHAT_COMMAND_NAMES.POSITIVE, 
@@ -38,8 +42,7 @@ _CALLOUT_COMMANDS_TO_REPLY_COMMANDS = {BATTLE_CHAT_COMMAND_NAMES.HELPME: BATTLE_
 
 class CalloutController(CallbackDelayer, IViewComponentsController):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
-    __settingsCore = dependency.descriptor(ISettingsCore)
-    __settingsCache = dependency.descriptor(ISettingsCache)
+    battleCommunications = dependency.descriptor(IBattleCommunicationsSettings)
     __appLoader = dependency.descriptor(IAppLoader)
     __slots__ = ('__isActive', '__isCalloutEnabled', '__isIBCEnabled', '__commandReceivedData',
                  '__lastPersonalMsgTimestamp', '__lastCalloutTimestamp', '__ui',
@@ -63,21 +66,16 @@ class CalloutController(CallbackDelayer, IViewComponentsController):
         return BATTLE_CTRL_ID.CALLOUT
 
     def startControl(self):
-        self.__settingsCore.onSettingsChanged += self.__onSettingsChanged
-        if self.__settingsCache:
-            if not self.__settingsCache.settings.isSynced():
-                self.__settingsCache.onSyncCompleted += self.__onSettingsReady
-            else:
-                self.__isCalloutEnabled = bool(self.__settingsCore.getSetting(BattleCommStorageKeys.SHOW_CALLOUT_MESSAGES))
-                self.__isIBCEnabled = bool(self.__settingsCore.getSetting(BattleCommStorageKeys.ENABLE_BATTLE_COMMUNICATION))
+        self.battleCommunications.onChanged += self.__onBattleCommunicationChanged
+        self.__isCalloutEnabled = self.battleCommunications.showCalloutMessages
+        self.__isIBCEnabled = self.battleCommunications.isEnabled
         if not self.__isIBCEnabled:
             return
         self.__activateListeners()
 
     def stopControl(self):
         CallbackDelayer.destroy(self)
-        self.__settingsCore.onSettingsChanged -= self.__onSettingsChanged
-        self.__settingsCache.onSyncCompleted -= self.__onSettingsReady
+        self.battleCommunications.onChanged -= self.__onBattleCommunicationChanged
         self.__deactivateListeners()
         self.__isActive = False
         self.__commandReceivedData = None
@@ -115,6 +113,8 @@ class CalloutController(CallbackDelayer, IViewComponentsController):
         if not isRadialMenuKey:
             return False
         else:
+            if not self.__enabledForArenaBonusType():
+                return False
             containerManager = self.__appLoader.getApp().containerManager
             if not containerManager.isContainerShown(WindowLayer.VIEW):
                 return False
@@ -205,9 +205,9 @@ class CalloutController(CallbackDelayer, IViewComponentsController):
             self.__executeHide(True, self.__commandReceivedData.name)
             return
 
-    def __onSettingsChanged(self, diff):
-        self.__isCalloutEnabled = diff.get(BattleCommStorageKeys.SHOW_CALLOUT_MESSAGES, self.__isCalloutEnabled)
-        isEnabled = diff.get(BattleCommStorageKeys.ENABLE_BATTLE_COMMUNICATION)
+    def __onBattleCommunicationChanged(self):
+        self.__isCalloutEnabled = self.battleCommunications.showCalloutMessages
+        isEnabled = self.battleCommunications.isEnabled
         if isEnabled is None or self.__isIBCEnabled == isEnabled:
             return
         if isEnabled:
@@ -238,15 +238,6 @@ class CalloutController(CallbackDelayer, IViewComponentsController):
             self.__executeHide()
             gui_event_dispatcher.setRadialMenuCmd(self.__radialKeyDown, self.__radialMenuIsOpen)
 
-    def __onSettingsReady(self):
-        if self.__isIBCEnabled is None:
-            self.__isCalloutEnabled = bool(self.__settingsCore.getSetting(BattleCommStorageKeys.SHOW_CALLOUT_MESSAGES))
-            self.__isIBCEnabled = bool(self.__settingsCore.getSetting(BattleCommStorageKeys.ENABLE_BATTLE_COMMUNICATION))
-            if self.__isIBCEnabled:
-                self.__activateListeners()
-        self.__settingsCache.onSyncCompleted -= self.__onSettingsReady
-        return
-
     @staticmethod
     def fireCalloutDisplayEvent(isShown):
         g_eventBus.handleEvent(GameEvent(GameEvent.CALLOUT_DISPLAY_EVENT, _makeKeyCtx(key=CommandMapping.CMD_RADIAL_MENU_SHOW, isDown=isShown)), scope=EVENT_BUS_SCOPE.GLOBAL)
@@ -254,6 +245,10 @@ class CalloutController(CallbackDelayer, IViewComponentsController):
     def __onCalloutHidingFinished(self):
         self.__commandReceivedData = None
         return
+
+    def __enabledForArenaBonusType(self):
+        return self.sessionProvider.arenaVisitor.getArenaBonusType() not in (ARENA_BONUS_TYPE.BATTLE_ROYALE_SOLO,
+         ARENA_BONUS_TYPE.BATTLE_ROYALE_TRN_SOLO)
 
 
 def createCalloutController(setup):

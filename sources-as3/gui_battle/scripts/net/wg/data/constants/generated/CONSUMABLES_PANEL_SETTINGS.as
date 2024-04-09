@@ -5,13 +5,11 @@ package net.wg.data.constants.generated
       
       public static const DEFAULT_SETTINGS_ID:int = 0;
       
-      public static const BIG_SETTINGS_ID:int = 1;
+      public static const BATTLE_ROYALE_SETTINGS_ID:int = 1;
       
-      public static const BATTLE_ROYALE_SETTINGS_ID:int = 2;
+      public static const MAPS_TRAINING_SETTINGS_ID:int = 2;
       
-      public static const MAPS_TRAINING_SETTINGS_ID:int = 3;
-      
-      public static const EPIC_BATTLE_SETTINGS_ID:int = 4;
+      public static const EPIC_BATTLE_SETTINGS_ID:int = 3;
       
       public static const GLOW_ID_GREEN:int = 0;
       

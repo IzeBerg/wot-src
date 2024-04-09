@@ -713,7 +713,7 @@ class VehicleStickers(object):
 
         return
 
-    def addDamageSticker(self, code, componentIdx, stickerID, segStart, segEnd, collisionComponent):
+    def addDamageSticker(self, code, componentIdx, stickerID, segStart, segEnd, collisionComponent, segLength=None):
         componentName = TankPartIndexes.getName(componentIdx)
         if not componentName:
             return
@@ -721,7 +721,7 @@ class VehicleStickers(object):
         if code in componentStickers.damageStickers:
             return
         segment = segEnd - segStart
-        segLen = segment.lengthSquared
+        segLen = (segLength or segment).lengthSquared if 1 else segLength
         if segLen != 0:
             segStart -= 0.25 * segment / math.sqrt(segLen)
         handle = componentStickers.stickers.addDamageSticker(stickerID, segStart, segEnd)

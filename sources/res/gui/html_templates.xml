@@ -116,13 +116,6 @@
 			</style_info_bonus>
 		</customization>
 		<battle_results>
-			<penalty_extra_msg>
-				<context>
-					<colorTagOpen>&lt;font color=&quot;#bc0000&quot;&gt;</colorTagOpen>
-					<colorTagClose>&lt;/font&gt;</colorTagClose>
-				</context>
-				<text>_(#dialogs:punishmentWindow/message/extra/penalty)</text>
-			</penalty_extra_msg>
 			<xpRecord>
 				<context>
 					<color_tag_open>&lt;font color=&quot;#FFFFFF&quot;&gt;</color_tag_open>
@@ -195,6 +188,12 @@
 				</context>
 				<text>&lt;br/&gt;_(#battle_results:team/teamInfluenceTotal)</text>
 			</teamInfluenceTotal>
+			<wotplus_active_label>
+				<text>&lt;font color=&quot;#ffc363&quot;&gt;%(value)s&lt;/font&gt;</text>
+			</wotplus_active_label>
+			<wotplus_inactive_label>
+				<text>&lt;font color=&quot;#876D45&quot;&gt;%(value)s&lt;/font&gt;</text>
+			</wotplus_inactive_label>
 		</battle_results>
 		<research>
 			<premium_title>&lt;font face=&quot;$TitleFont&quot; color=&quot;#fdf4ce&quot; size=&quot;18&quot;&gt;%(name)s&lt;/font&gt;&lt;br/&gt;&lt;font face=&quot;$FieldFont&quot; color=&quot;#998f7c&quot; size=&quot;14&quot;&gt;%(type)s&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;$TextFont&quot; color=&quot;#fdf4ce&quot; size=&quot;12&quot;&gt;%(level)s&lt;/font&gt; &lt;font face=&quot;$TextFont&quot; color=&quot;#7b7969&quot; size=&quot;11&quot;&gt;_(#tooltips:vehicle/level)&lt;/font&gt;&lt;font face=&quot;$TextFont&quot; size=&quot;21&quot;&gt;&amp;nbsp;&lt;/font&gt;</premium_title>
@@ -762,7 +761,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 				<battlePassPoints>_(#quests:bonusName/battlePassPoints/preview) &lt;font color=&apos;#95907F&apos;&gt;%(value)s &lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/battlePassPoints.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos; /&gt;</battlePassPoints>
 				<battle_bonus_x5>&lt;img src=&apos;img://gui/maps/icons/library/bonus_x5.png&apos; width=&apos;46&apos; height=&apos;18&apos; vspace=&apos;-4&apos; /&gt;&lt;font color=&apos;#95907F&apos;&gt;(x%(value)s) &lt;/font&gt;</battle_bonus_x5>
 				<crew_bonus_x3>&lt;img src=&apos;img://gui/maps/icons/library/bonus_x3.png&apos; width=&apos;46&apos; height=&apos;18&apos; vspace=&apos;-4&apos; /&gt;&lt;font color=&apos;#95907F&apos;&gt;(x%(value)s) &lt;/font&gt;</crew_bonus_x3>
-				<stpcoin>&lt;font color=&apos;#95907F&apos;&gt;%(value)s &lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/StpcoinIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos; /&gt;</stpcoin>
 			</bonuses>
 			<carouselBonuses>
 				<credits>&lt;font face=&apos;$FieldFont&apos; size=&apos;22&apos; color=&apos;#CED9D9&apos;&gt;&lt;b&gt;%(value)s &lt;/b&gt;&lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/library/CreditsIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; /&gt;</credits>
@@ -902,10 +900,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 				<teams>_(#menu:prebattle/groupsLabel) &lt;font face=&apos;$TitleFont&apos; color=&apos;#eeeeee&apos; size=&apos;20&apos;&gt;%(count)d&lt;/font&gt;</teams>
 				<twoSides>_(#menu:prebattle/playersLabel)&lt;br&gt;%(sideA)s: &lt;font color=&apos;#eeeeee&apos; size=&apos;16&apos;&gt;%(countA)d&lt;/font&gt;	%(sideB)s: &lt;font color=&apos;#eeeeee&apos; size=&apos;16&apos;&gt;%(countB)d&lt;/font&gt;</twoSides>
 			</playersLabel>
-			<bootcamp>
-				<timeTextStart>&lt;b&gt;</timeTextStart>
-				<timeTextEnd>&lt;/b&gt;</timeTextEnd>
-			</bootcamp>
 		</queue>
 		<fortifications>
 			<playersCount>
@@ -1042,6 +1036,7 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<equipIcon>&lt;img src=&apos;img://gui/maps/icons/library/equipCoin-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</equipIcon>
 			<webLink>&lt;img src=&apos;img://gui/maps/icons/library/buyInWeb.png&apos; width=&apos;14&apos; height=&apos;14&apos; vspace=&apos;0&apos; hspace=&apos;0&apos;/&gt;</webLink>
 			<wotPlus>&lt;img src=&apos;img://gui/maps/icons/library/wotplus_16x16.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;%(vspace)d&apos; hspace=&apos;0&apos;/&gt;</wotPlus>
+			<divisor>&lt;img src=&apos;img://gui/maps/icons/library/divisor.png&apos; vspace=&apos;%(vspace)d&apos; hspace=&apos;0&apos;/&gt;</divisor>
 		</iconText>
 		<textStyle>
 			<epicTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;73&apos; color=&apos;#F2F2F7&apos;&gt;%(message)s&lt;/font&gt;</epicTitle>
@@ -1071,6 +1066,9 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<statusAttention>&lt;font face=&apos;$TitleFont&apos; size=&apos;14&apos; color=&apos;#feab34&apos;&gt;%(message)s&lt;/font&gt;</statusAttention>
 			<statusAlert>&lt;font face=&apos;$TitleFont&apos; size=&apos;14&apos; color=&apos;#ee7001&apos;&gt;%(message)s&lt;/font&gt;</statusAlert>
 			<mainText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#8C8C7E&apos;&gt;%(message)s&lt;/font&gt;</mainText>
+			<earningsInformation>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#CED9D9&apos;&gt;&lt;b&gt;+%(message)s&lt;/b&gt;&lt;/font&gt;</earningsInformation>
+			<linkText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#EE7000&apos;&gt;&lt;a href=&apos;#&apos;&gt;%(message)s&lt;/a&gt;&lt;/font&gt;</linkText>
+			<goldColor>&lt;font face=&apos;$FieldFont&apos; color=&apos;#FFC363&apos;&gt;&lt;b&gt;%(message)s&lt;/b&gt;&lt;/font&gt;</goldColor>
 			<mainBigText>&lt;font face=&apos;$FieldFont&apos; size=&apos;16&apos; color=&apos;#8C8C7E&apos;&gt;%(message)s&lt;/font&gt;</mainBigText>
 			<mainTextSmall>&lt;font face=&apos;$TextFont&apos; size=&apos;12&apos; color=&apos;#8C8C7E&apos;&gt;%(message)s&lt;/font&gt;</mainTextSmall>
 			<goldTextTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;14&apos; color=&apos;#FFC363&apos;&gt;%(message)s&lt;/font&gt;</goldTextTitle>
@@ -1114,7 +1112,7 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<bpcoinText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#C9C9B6&apos;&gt;%(message)s&lt;/font&gt;</bpcoinText>
 			<textEpic>&lt;font face=&apos;$TitleFont&apos; size=&apos;56&apos; color=&apos;#E9E2BF&apos;&gt;%(message)s&lt;/font&gt;</textEpic>
 			<demountKitText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#C9C9B6&apos;&gt;%(message)s&lt;/font&gt;</demountKitText>
-			<wotPlusText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#FFDD99&apos;&gt;%(message)s&lt;/font&gt;</wotPlusText>
+			<wotPlusText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#E9E2BF&apos;&gt;%(message)s&lt;/font&gt;</wotPlusText>
 			<brProgressionToken>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#FFDD99&apos;&gt;%(message)s&lt;/font&gt;</brProgressionToken>
 			<goldTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#FFC363&apos;&gt;%(message)s&lt;/font&gt;</goldTitle>
 			<creditsTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#CED9D9&apos;&gt;%(message)s&lt;/font&gt;</creditsTitle>
@@ -1149,11 +1147,10 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<greenText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#7ab300&apos;&gt;%(message)s&lt;/font&gt;</greenText>
 			<discountText>&lt;font face=&apos;$FieldFont&apos; size=&apos;16&apos; color=&apos;#FEFEEC&apos;&gt;%(message)s&lt;/font&gt;</discountText>
 			<discountSmallText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#FEFEEC&apos;&gt;%(message)s&lt;/font&gt;</discountSmallText>
-			<clockWithText>&lt;img src=&apos;img://gui/maps/icons/missions/daily/widgets/clock_icon_s.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-6&apos; hspace=&apos;0&apos;/&gt;&lt;font face=&apos;$TitleFont&apos; size=&apos;14&apos; color=&apos;#FFDD99&apos;&gt;%(text)s&lt;/font&gt;</clockWithText>
+			<clockWithText>&lt;img src=&apos;img://gui/maps/icons/personal_reserves/clock_icon_14x14.png&apos; width=&apos;14&apos; height=&apos;14&apos; vspace=&apos;-2&apos; hspace=&apos;0&apos;/&gt;&lt;font face=&apos;$TitleFont&apos; size=&apos;14&apos; color=&apos;#FFDD99&apos;&gt; %(text)s&lt;/font&gt;</clockWithText>
 			<poiCapturedBoldText>&lt;font size=&apos;18&apos; face=&apos;$TitleFont&apos;&gt;&lt;b&gt;%(message)s&lt;/b&gt;&lt;/font&gt;</poiCapturedBoldText>
 			<poiCapturedRegularText>&lt;font size=&apos;16&apos; face=&apos;$TitleFont&apos;&gt;%(message)s&lt;/font&gt;</poiCapturedRegularText>
 			<prestigeText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#CED9D9&apos;&gt;%(message)s&lt;/font&gt;</prestigeText>
-			<stPatrickText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#02BE64&apos;&gt;%(message)s&lt;/font&gt;</stPatrickText>
 		</textStyle>
 		<profileStatistics>
 			<marksOfMasteryText>%(marksOfMastery)s&lt;font size=&apos;14&apos; color=&apos;#939188&apos;&gt;/%(totalVehicles)s&lt;/font&gt;</marksOfMasteryText>
@@ -1289,23 +1286,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 		<critical>&lt;font color=&quot;#ff2717&quot;&gt;%(message)s&lt;/font&gt;</critical>
 		<role>&lt;font face=&quot;$FieldFont&quot; size=&quot;16&quot; color=&quot;#feab34&quot;&gt;%(message)s&lt;/font&gt;</role>
 	</vehicleStatus>
-	<bootcamp>
-		<battle_results>
-			<win>&lt;font color=&quot;#F9CD73&quot;&gt;_(#bootcamp:resultlabel/win)&lt;/font&gt;</win>
-			<lose>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#bootcamp:resultlabel/lose)&lt;/font&gt;</lose>
-			<tie>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#bootcamp:resultlabel/tie)&lt;/font&gt;</tie>
-		</battle_results>
-		<player_status>
-			<dead>&lt;font color=&quot;#F9CD73&quot;&gt;%(player)s&lt;/font&gt; %(vehicle)s&lt;br&gt;_(#bootcamp:resultlabel/dead)</dead>
-			<killed>&lt;font color=&quot;#F9CD73&quot;&gt;%(player)s&lt;/font&gt; %(vehicle)s&lt;br&gt;_(#bootcamp:resultlabel/dead) (&lt;font color=&quot;#F9CD73&quot;&gt;%(killer)s&lt;/font&gt;)</killed>
-			<alive>&lt;font color=&quot;#F9CD73&quot;&gt;%(player)s&lt;/font&gt; %(vehicle)s&lt;br&gt;_(#bootcamp:resultlabel/alive)</alive>
-		</player_status>
-		<message>
-			<yellow>&lt;font color=&quot;#E9E2BF&quot; size=&quot;15&quot; face=&quot;$TitleFont&quot;&gt;%(text)s&lt;/font&gt;</yellow>
-			<gray>&lt;font color=&quot;#807F71&quot; size=&quot;15&quot; face=&quot;$TitleFont&quot;&gt;%(text)s&lt;/font&gt;</gray>
-			<green>&lt;font color=&quot;#80D43A&quot; size=&quot;15&quot; face=&quot;$TitleFont&quot;&gt;%(text)s&lt;/font&gt;</green>
-		</message>
-	</bootcamp>
 	<battleRoyale>
 		<paramTitleOrange>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&quot;#ffb266&quot;&gt;%(message)s&lt;/font&gt;</paramTitleOrange>
 		<paramTitleRed>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&quot;#ff3333&quot;&gt;%(message)s&lt;/font&gt;</paramTitleRed>

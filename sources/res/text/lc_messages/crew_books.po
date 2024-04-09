@@ -35,8 +35,8 @@ msgstr "全局经验"
 
 msgid "card/nationBook/additionalText"
 msgstr ""
-"• 主要专业水平: 100%\n"
-"• 专精: %(vehicleName)"
+"• 特长效率: 100%\n"
+"• 专精: %(vehicleName)。"
 
 msgid "card/nationBook/mainText"
 msgstr ""
@@ -65,8 +65,8 @@ msgstr "个人培训手册"
 
 msgid "card/universalBook/additionalText"
 msgstr ""
-"• 主要专业水平: 100%\n"
-"• 专精: %(vehicleName)"
+"• 特长效率: 100%\n"
+"• 专精: %(vehicleName)。"
 
 msgid "card/universalBook/mainText"
 msgstr ""
@@ -100,6 +100,9 @@ msgstr "培训手册(%(nation)s)"
 msgid "items/brochure/noNationName"
 msgstr "培训手册"
 
+msgid "items/brochure/noNationUppercaseName"
+msgstr "培训手册"
+
 msgid "items/crewBook/Descr"
 msgstr "每名乘员获得{expTagOpen}%(exp)s{expTagClose}点乘员经验。"
 
@@ -109,10 +112,16 @@ msgstr "训练手册(%(nation)s)"
 msgid "items/crewBook/noNationName"
 msgstr "训练手册"
 
+msgid "items/crewBook/noNationUppercaseName"
+msgstr "训练手册"
+
 msgid "items/guide/Name"
 msgstr "培训指南(%(nation)s)"
 
 msgid "items/guide/noNationName"
+msgstr "培训指南"
+
+msgid "items/guide/noNationUppercaseName"
 msgstr "培训指南"
 
 msgid "items/personalBook/Descr"
@@ -164,4 +173,4 @@ msgid "tooltip/stepper/levelUpdate"
 msgstr "点击%(controlsImg)将特长训练水平提高/降低1%。"
 
 msgid "tooltip/stepper/perkUpdate"
-msgstr "按下%(pgupImg) / %(pgdownImg)在不使用乘员手册的情况下将特长训练水平提高至100%/返回前一个特长。"
+msgstr "按下%(pgupImg) / %(pgdownImg)将特长训练水平提高至100%/返回前一个特长。"

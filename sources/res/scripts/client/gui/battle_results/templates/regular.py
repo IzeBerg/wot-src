@@ -301,10 +301,16 @@ _TOTAL_EFFICIENCY_HEADER_META.bind(personal.TotalEfficiencyDetailsHeader)
 _PREMIUM_BONUS_VO_META = base.PropertyMeta((
  ('description', '', 'description'),
  ('bonusLeft', '', 'bonusLeft'),
+ ('wotPlusBonusLeft', '', 'wotPlusBonusLeft'),
+ ('detailsLink', '', 'detailsLink'),
+ ('additionalBonusLeft', '', 'additionalBonusLeft'),
  ('xpValue', '', 'xpValue'),
  ('statusBonusLabel', '', 'statusBonusLabel'),
  ('statusBonusTooltip', '', 'statusBonusTooltip'),
- ('bonusIcon', '', 'bonusIcon')))
+ ('bonusIcon', '', 'bonusIcon'),
+ ('premiumAndPlusExhausted', '', 'premiumAndPlusExhausted'),
+ ('hasWotPremium', '', 'hasWotPremium'),
+ ('hasWotPlus', '', 'hasWotPlus')))
 _PREMIUM_BONUS_VO_META.bind(details.PremiumBonusDetailsBlock)
 _PREMIUM_EARNINGS_VO_META = base.DictMeta({'xpTitleStrings': [], 'xpTitleTooltips': [], 'xpPremValues': [], 'xpNoPremValues': [], 'creditsPremValues': [], 'creditsNoPremValues': [], 'backgroundIcon': backport.image(R.images.gui.maps.icons.premacc.battleResult.premium())})
 _PREMIUM_EARNINGS_BLOCK = base.StatsBlock(_PREMIUM_EARNINGS_VO_META.clone(), 'premiumEarnings', _RECORD.PERSONAL)

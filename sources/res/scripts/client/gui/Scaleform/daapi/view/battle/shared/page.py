@@ -1,18 +1,20 @@
-import logging, typing, BattleReplay, aih_constants
+import logging, typing
+from account_helpers.settings_core.settings_constants import SPGAim
+import BigWorld, BattleReplay, aih_constants
 from AvatarInputHandler import aih_global_binding
 from Event import EventsSubscriber
-from account_helpers.settings_core.settings_constants import SPGAim
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
-from gui.Scaleform.daapi.view.battle.shared import crosshair
+from gui.Scaleform.daapi.view.battle.shared import crosshair, kill_cam_sound_player
 from gui.Scaleform.daapi.view.battle.shared import indicators
 from gui.Scaleform.daapi.view.battle.shared import markers2d
 from gui.Scaleform.daapi.view.meta.BattlePageMeta import BattlePageMeta
 from gui.Scaleform.framework.package_layout import PackageBusinessHandler
 from gui.Scaleform.genConsts.BATTLE_VIEW_ALIASES import BATTLE_VIEW_ALIASES as _ALIASES
 from gui.app_loader import settings as app_settings
-from gui.battle_control import avatar_getter
+from gui.battle_control import avatar_getter, event_dispatcher
 from gui.battle_control.battle_constants import VIEW_COMPONENT_RULE, BATTLE_CTRL_ID, CROSSHAIR_VIEW_ID
+from gui.battle_control.controllers.spectator_ctrl import SPECTATOR_MODE
 from gui.shared import EVENT_BUS_SCOPE, events
 from helpers import dependency, uniprof
 from skeletons.account_helpers.settings_core import ISettingsCore
@@ -71,7 +73,11 @@ class _SharedComponentsConfig(ComponentsConfig):
          (
           BATTLE_CTRL_ID.ARENA_LOAD_PROGRESS, (_ALIASES.BATTLE_NOTIFIER,)),
          (
-          BATTLE_CTRL_ID.PREBATTLE_SETUPS_CTRL, (_ALIASES.DUAL_GUN_PANEL,))))
+          BATTLE_CTRL_ID.PREBATTLE_SETUPS_CTRL, (_ALIASES.DUAL_GUN_PANEL,)),
+         (
+          BATTLE_CTRL_ID.KILL_CAM_CTRL, (_ALIASES.KILL_CAM_SOUND_PLAYER,))), (
+         (
+          _ALIASES.KILL_CAM_SOUND_PLAYER, kill_cam_sound_player.KillCamSoundPlayer),))
 
 
 class _HitDirectionComponentsConfig(ComponentsConfig):
@@ -102,11 +108,13 @@ class SharedPage(BattlePageMeta):
         self._isVisible = True
         self._blToggling = set()
         self._fsToggling = set()
+        self._deathCamToggling = set()
+        self._spectatorModeToggling = set()
         self._destroyTimerToggling = set()
         self._isDestroyTimerShown = False
         if external is None:
             external = (
-             crosshair.CrosshairPanelContainer, markers2d.MarkersManager)
+             crosshair.CrosshairPanelContainer, markers2d.MarkersManager, markers2d.KillCamMarkersManager)
         self._external = [ item() for item in external ]
         if components is None:
             components = _SHARED_COMPONENTS_CONFIG
@@ -171,6 +179,8 @@ class SharedPage(BattlePageMeta):
         self.addListener(events.GameEvent.CALLOUT_DISPLAY_EVENT, self.__handleCalloutDisplayEvent, scope=EVENT_BUS_SCOPE.GLOBAL)
         self.addListener(events.ViewEventType.LOAD_VIEW, self.__handleLobbyEvent, scope=EVENT_BUS_SCOPE.BATTLE)
         self.addListener(events.GameEvent.DESTROY_TIMERS_PANEL, self.__destroyTimersListener, scope=EVENT_BUS_SCOPE.BATTLE)
+        self.addListener(events.DeathCamEvent.DEATH_CAM_HIDDEN, self.__handleDeathCamHiddenEvent, scope=EVENT_BUS_SCOPE.BATTLE)
+        self.addListener(events.DeathCamEvent.DEATH_CAM_SPECTATOR_MODE, self.__handleDeathCamSpectatorModeEvent, scope=EVENT_BUS_SCOPE.BATTLE)
         self.addListener(events.GameEvent.TOGGLE_DEBUG_PIERCING_PANEL, self.__toggleDebugPiercingPanel, scope=EVENT_BUS_SCOPE.BATTLE)
         self.gameplay.postStateEvent(PlayerEventID.AVATAR_SHOW_GUI)
 
@@ -195,6 +205,8 @@ class SharedPage(BattlePageMeta):
         self.removeListener(events.GameEvent.CALLOUT_DISPLAY_EVENT, self.__handleCalloutDisplayEvent, scope=EVENT_BUS_SCOPE.GLOBAL)
         self.removeListener(events.ViewEventType.LOAD_VIEW, self.__handleLobbyEvent, scope=EVENT_BUS_SCOPE.BATTLE)
         self.removeListener(events.GameEvent.DESTROY_TIMERS_PANEL, self.__destroyTimersListener, scope=EVENT_BUS_SCOPE.BATTLE)
+        self.removeListener(events.DeathCamEvent.DEATH_CAM_HIDDEN, self.__handleDeathCamHiddenEvent, scope=EVENT_BUS_SCOPE.BATTLE)
+        self.removeListener(events.DeathCamEvent.DEATH_CAM_SPECTATOR_MODE, self.__handleDeathCamSpectatorModeEvent, scope=EVENT_BUS_SCOPE.BATTLE)
         self.removeListener(events.GameEvent.TOGGLE_DEBUG_PIERCING_PANEL, self.__toggleDebugPiercingPanel, scope=EVENT_BUS_SCOPE.BATTLE)
         self._stopBattleSession()
         super(SharedPage, self)._dispose()
@@ -253,6 +265,9 @@ class SharedPage(BattlePageMeta):
             self._isInPostmortem = ctrl.isInPostmortem
             self._battleSessionES.subscribeToEvent(ctrl.onPostMortemSwitched, self._onPostMortemSwitched)
             self._battleSessionES.subscribeToEvent(ctrl.onRespawnBaseMoving, self._onRespawnBaseMoving)
+        killCamCtrl = self.sessionProvider.shared.killCamCtrl
+        if killCamCtrl:
+            killCamCtrl.onKillCamModeStateChanged += self.__onKillCamStateChanged
         crosshairCtrl = self.sessionProvider.shared.crosshair
         if crosshairCtrl is not None:
             self._battleSessionES.subscribeToEvent(crosshairCtrl.onCrosshairViewChanged, self.__onCrosshairViewChanged)
@@ -265,6 +280,9 @@ class SharedPage(BattlePageMeta):
 
     def _stopBattleSession(self):
         self._battleSessionES.unsubscribeFromAllEvents()
+        killCamCtrl = self.sessionProvider.shared.killCamCtrl
+        if killCamCtrl:
+            killCamCtrl.onKillCamModeStateChanged -= self.__onKillCamStateChanged
         aih_global_binding.unsubscribe(aih_global_binding.BINDING_ID.CTRL_MODE_NAME, self._onAvatarCtrlModeChanged)
         for alias, _ in self.__componentsConfig.getViewsConfig():
             self.sessionProvider.removeViewComponent(alias)
@@ -348,6 +366,8 @@ class SharedPage(BattlePageMeta):
             self._handleHelpEvent(event)
 
     def __handleBattleLoading(self, event):
+        if self.as_isComponentVisibleS(_ALIASES.DEATH_CAM_HUD):
+            return
         if event.ctx['isShown']:
             self._onBattleLoadingStart()
         else:
@@ -407,15 +427,14 @@ class SharedPage(BattlePageMeta):
         return not self.sessionProvider.getCtx().isPlayerObserver() and not BattleReplay.g_replayCtrl.isPlaying
 
     def _onPostMortemSwitched(self, noRespawnPossible, respawnAvailable):
-        if self._canShowPostmortemTips():
-            self.as_setPostmortemTipsVisibleS(True)
+        self.as_onPostmortemActiveS(True)
         if not self.sessionProvider.getCtx().isPlayerObserver():
             self._isInPostmortem = True
             self._switchToPostmortem()
 
     def _onRespawnBaseMoving(self):
-        if not self.sessionProvider.getCtx().isPlayerObserver() and not BattleReplay.g_replayCtrl.isPlaying:
-            self.as_setPostmortemTipsVisibleS(False)
+        if self._canShowPostmortemTips():
+            self.as_onPostmortemActiveS(False)
             self._isInPostmortem = False
 
     def _onPostMortemReload(self):
@@ -458,9 +477,51 @@ class SharedPage(BattlePageMeta):
     def __handleCalloutDisplayEvent(self, event):
         self._processCallout(needShow=event.ctx['isDown'])
 
+    def __onKillCamStateChanged(self, state, _):
+        if state is events.DeathCamEvent.State.INACTIVE:
+            self._onKillCamCtrlModeActivated()
+        if state is events.DeathCamEvent.State.STARTING:
+            self._onKillCamSimulationStart()
+        elif state is events.DeathCamEvent.State.ACTIVE:
+            self._setComponentsVisibility(visible={_ALIASES.DEATH_CAM_HUD})
+        elif state is events.DeathCamEvent.State.FINISHED:
+            self._onKillCamSimulationFinish()
+
+    def _onKillCamCtrlModeActivated(self):
+        event_dispatcher.killHelpView()
+
+    def _onKillCamSimulationStart(self):
+        self._deathCamToggling = set(self.as_getComponentsVisibilityS())
+        self._deathCamToggling.discard(_ALIASES.DEATH_CAM_HUD)
+        avatar = BigWorld.player()
+        isSimplifiedDC = avatar.isSimpleDeathCam() if avatar else False
+        if isSimplifiedDC:
+            self._deathCamToggling.discard(_ALIASES.POSTMORTEM_PANEL)
+        self._setComponentsVisibility(hidden=self._deathCamToggling)
+
+    def _onKillCamSimulationFinish(self):
+        self._setComponentsVisibility(visible=self._deathCamToggling or None, hidden={_ALIASES.DEATH_CAM_HUD})
+        self._deathCamToggling.clear()
+        return
+
     def __onCrosshairViewChanged(self, viewID):
         artyShotIndicatorVisible = self.__settingsCore.isReady and viewID in (CROSSHAIR_VIEW_ID.STRATEGIC,) and self.__settingsCore.getSetting(SPGAim.SHOTS_RESULT_INDICATOR)
         self.__setArtyShotIndicatorFlag(artyShotIndicatorVisible)
+
+    def __handleDeathCamHiddenEvent(self, _):
+        self._setComponentsVisibility(hidden={_ALIASES.DEATH_CAM_HUD})
+
+    def __handleDeathCamSpectatorModeEvent(self, event):
+        if event.ctx['mode']:
+            mode = event.ctx['mode']
+            if mode == SPECTATOR_MODE.NONE:
+                return
+            if mode == SPECTATOR_MODE.FREECAM:
+                self._spectatorModeToggling = set(self.as_getComponentsVisibilityS())
+                self._setComponentsVisibility(hidden={_ALIASES.DAMAGE_PANEL, _ALIASES.POSTMORTEM_PANEL,
+                 _ALIASES.BATTLE_DAMAGE_LOG_PANEL})
+            else:
+                self._onPostMortemSwitched(False, False)
 
     def __onSettingsChanged(self, diff):
         crosshairCtrl = self.sessionProvider.shared.crosshair

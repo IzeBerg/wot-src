@@ -38,11 +38,14 @@ msgstr "%(serverName)s已进入休战期"
 msgid "alertMessage/unsuitablePeriphery"
 msgstr "该服务器目前禁止战斗。"
 
+msgid "banner/info/disabled"
+msgstr "休战"
+
+msgid "banner/info/seasonActive"
+msgstr "第二次机会和奖励"
+
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(month)s%(day)s日结束"
-
-msgid "banner/subtitle"
-msgstr "幸运草对决"
 
 msgid "banner/timeLeft/hour"
 msgstr "%(hour)s时"
@@ -113,15 +116,6 @@ msgstr "脱离战斗！"
 msgid "battle/respawnMessagePanel/squad/stayInCover/title"
 msgstr "正在使盟友重生"
 
-msgid "battle/winnerCongratulationsView/bonusActivated"
-msgstr "已激活加成！"
-
-msgid "battle/winnerCongratulationsView/bonusForFirstPlace"
-msgstr "排名第1的奖励"
-
-msgid "battle/winnerCongratulationsView/colected"
-msgstr "战斗中所收集"
-
 msgid "battle/winnerCongratulationsView/title"
 msgstr "胜利"
 
@@ -167,20 +161,23 @@ msgstr "[ESC]"
 msgid "battleResult/inBattle/skipAnim/text"
 msgstr "按%(esc)跳过动画"
 
-msgid "battleResult/playerVehicleStatus/alive"
-msgstr "幸存"
+msgid "battleResult/playerBattleTypeStatus/button/text"
+msgstr "邀请组队"
 
-msgid "battleResult/playerVehicleStatus/reason/deathByBot"
-msgstr "坦克被游猎者击毁。"
+msgid "battleResult/playerBattleTypeStatus/clan/"
+msgstr "[%(clanAbbrev)s]"
 
-msgid "battleResult/playerVehicleStatus/reason/deathByPlayer"
-msgstr "坦克被玩家击毁"
+msgid "battleResult/playerBattleTypeStatus/header/platoon"
+msgstr "队友"
 
-msgid "battleResult/playerVehicleStatus/reason/deathByZone"
-msgstr "您未能离开危险区域"
+msgid "battleResult/playerBattleTypeStatus/header/randomPlatoon"
+msgstr "随机队友"
 
-msgid "battleResult/playerVehicleStatus/reason/other"
-msgstr "坦克被摧毁"
+msgid "battleResult/playerBattleTypeStatus/header/solo"
+msgstr "战斗类型"
+
+msgid "battleResult/playerBattleTypeStatus/text/solo"
+msgstr "单人战斗"
 
 msgid "battleResult/premiumRewards/title"
 msgstr "使用坦克世界高级账号，您将获得:"
@@ -263,26 +260,29 @@ msgstr "胜利"
 msgid "battleResult/title/victoryOther"
 msgstr "荣誉名次"
 
-msgid "battleRoyaleCarousel/hint"
-msgstr "选择一辆坦克免费试玩"
-
 msgid "battleRoyaleCarousel/lockedToolTip/body"
 msgstr "选择一辆钢铁猎手特殊坦克。"
 
 msgid "battleRoyaleCarousel/lockedToolTip/header"
 msgstr "坦克不符"
 
+msgid "battleTypeSelector/tab/hint"
+msgstr "特殊任务"
+
+msgid "battleTypeSelector/tab/platoon"
+msgstr "与好友组队"
+
+msgid "battleTypeSelector/tab/randomPlatoon"
+msgstr "随机组队"
+
+msgid "battleTypeSelector/tab/solo"
+msgstr "单人战斗"
+
 msgid "button/modules"
 msgstr "升级路线"
 
-msgid "button/rent"
-msgstr "租用{days}天"
-
 msgid "button/repair"
 msgstr "维修"
-
-msgid "button/testDrive"
-msgstr "试玩{days}天"
 
 msgid "commanderInfo/commonRank"
 msgstr "车长"
@@ -362,16 +362,16 @@ msgid "fullStats/destroyed"
 msgstr "您击毁的坦克"
 
 msgid "fullStats/icons/airDrop/description"
-msgstr "空投: 全部战斗能力的充能次数和大量经验。"
+msgstr "空投: 经验、生命值恢复、模块维修、全部能力的充能次数、炮弹。"
 
 msgid "fullStats/icons/corpseLoot/description"
-msgstr "战利品: 从被击毁坦克中获得的物资。除了经验、生命值恢复以外，它还内含对手战斗能力充能次数的50%。"
+msgstr "战利品: 经验、生命值恢复、模块维修、部分能力的充能次数、炮弹。"
+
+msgid "fullStats/icons/defaultLoot/description"
+msgstr "补给: 经验、模块维修、部分能力充能恢复。"
 
 msgid "fullStats/icons/extendedLoot/description"
-msgstr "给养: 经验、炮弹、生命值恢复、模块修复，以及按特定几率出现的战斗能力充能次数。"
-
-msgid "fullStats/icons/shamrocks/description"
-msgstr "所有类型的物资中都内含幸运印章。战斗结束后，玩家可使用该印章在幸运草商店中兑换奖励。"
+msgstr "给养: 经验、生命值恢复、恢复能力的1次充能次数、炮弹。"
 
 msgid "fullStats/subTitle"
 msgstr "在“混战”规则下为宝贵的资源而战。"
@@ -430,12 +430,6 @@ msgstr "3辆全新坦克: 1辆B系中型坦克、1辆C系轻型坦克和1辆V系
 
 msgid "intro/slide1/title"
 msgstr "全新坦克"
-
-msgid "intro/slide2/text"
-msgstr "坦克可使用钢铁印章租用。钢铁印章是一种特殊货币，可在该模式中获取。您也将有机会免费试玩所有坦克1天。"
-
-msgid "intro/slide2/title"
-msgstr "租用坦克和试玩"
 
 msgid "intro/slide3/text"
 msgstr ""
@@ -549,7 +543,7 @@ msgid "player_messages/moduleType/vehicleTurret"
 msgstr "炮塔"
 
 msgid "playersPanel/title"
-msgstr "盟友"
+msgstr "小队"
 
 msgid "postmortemPanel/firstTip/body"
 msgstr "在小队坦克间切换。"
@@ -613,9 +607,7 @@ msgstr ""
 "印章"
 
 msgid "proxyPanel/store"
-msgstr ""
-"幸运草\n"
-"商店"
+msgstr "军械库"
 
 msgid "questsTooltip/lessThanDay"
 msgstr "少于1天"
@@ -668,7 +660,7 @@ msgstr "良好的战斗表现、在战斗结果中获得较高的排名以及完
 msgid "rewardCurrencyTooltip/brcoin/header"
 msgstr "钢铁印章"
 
-msgid "rewardCurrencyTooltip/brcoin/premium"
+msgid "rewardCurrencyTooltip/brcoin/premFactor"
 msgstr "使用坦克世界高级账号可获得额外50%的此种货币。"
 
 msgid "rewardCurrencyTooltip/credits/body"
@@ -677,7 +669,7 @@ msgstr "主要的游戏货币。在战斗中获得或用金币兑换。"
 msgid "rewardCurrencyTooltip/credits/header"
 msgstr "银币"
 
-msgid "rewardCurrencyTooltip/credits/premium"
+msgid "rewardCurrencyTooltip/credits/premFactor"
 msgstr "使用坦克世界高级账号可获得额外50%的此种货币。"
 
 msgid "rewardCurrencyTooltip/crystal/body"
@@ -686,24 +678,13 @@ msgstr "一种罕见的特殊货币，用来购买无法通过其他方式获得
 msgid "rewardCurrencyTooltip/crystal/header"
 msgstr "战争债券"
 
-msgid "rewardCurrencyTooltip/stpcoin/body"
-msgstr ""
-"可在钢铁猎手战斗中获取的货币。印章可用来在幸运草商店中兑换独特奖励。\n"
-"组队战斗时，所获幸运印章将在小队成员之间平均分配。所示数量为属于您的奖励。"
-
-msgid "rewardCurrencyTooltip/stpcoin/bonus"
-msgstr "已应用加成！您在战斗中获得了双倍的印章数量。"
-
-msgid "rewardCurrencyTooltip/stpcoin/header"
-msgstr "幸运印章"
-
 msgid "rewardCurrencyTooltip/xp/body"
 msgstr "使用特殊坦克获取的经验可以被转换为全局经验。"
 
 msgid "rewardCurrencyTooltip/xp/header"
 msgstr "战斗经验"
 
-msgid "rewardCurrencyTooltip/xp/premium"
+msgid "rewardCurrencyTooltip/xp/premFactor"
 msgstr "使用坦克世界高级账号可获得额外50%的战斗经验。"
 
 msgid "season/202206/name"
@@ -752,7 +733,7 @@ msgid "statusNotificationTimers/deathZone"
 msgstr "区域已封闭！立即离开该区域，否则您的坦克将被摧毁！"
 
 msgid "statusNotificationTimers/deathZoneWarning"
-msgstr "立刻离开危险区域！"
+msgstr "该区域即将崩塌"
 
 msgid "statusNotificationTimers/fireCircle"
 msgstr "机动性下降！"
@@ -859,6 +840,38 @@ msgstr "生命值"
 msgid "techtree/turret_rotation_speed"
 msgstr "炮塔旋转速度"
 
+msgid "tooltip/battleTypeSelector/bonus"
+msgstr "+15%"
+
+msgid "tooltip/battleTypeSelector/tab/bonusDescription"
+msgstr ""
+"最多%(experience)s点经验\n"
+"最多%(credits)s银币"
+
+msgid "tooltip/battleTypeSelector/tab/bonusTitle/platoon"
+msgstr "组队战斗加成"
+
+msgid "tooltip/battleTypeSelector/tab/bonusTitle/randomPlatoon"
+msgstr "组队战斗加成"
+
+msgid "tooltip/battleTypeSelector/tab/description/platoon"
+msgstr "与好友组队参战。作为一个团队对战9组敌方小队。小队任务可在该模式中完成。"
+
+msgid "tooltip/battleTypeSelector/tab/description/randomPlatoon"
+msgstr "与随机队友组队参战。作为一个团队对战9组敌方小队。小队任务可在该模式中完成。小队会在战斗结束后自动解散。"
+
+msgid "tooltip/battleTypeSelector/tab/description/solo"
+msgstr "经典钢铁猎手。所有玩家各自为战。收集资源、升级坦克、使用独特能力，成为最后的赢家！"
+
+msgid "tooltip/battleTypeSelector/tab/title/platoon"
+msgstr "与好友组队"
+
+msgid "tooltip/battleTypeSelector/tab/title/randomPlatoon"
+msgstr "随机组队"
+
+msgid "tooltip/battleTypeSelector/tab/title/solo"
+msgstr "单人战斗"
+
 msgid "tooltip/progression/leaderboardReward/battleTypesHeader/29"
 msgstr "单人"
 
@@ -928,26 +941,20 @@ msgstr "奖章"
 msgid "tooltips/awards/pattern"
 msgstr "%(typeName)s：\"%(userName)s\""
 
-msgid "tooltips/rentIcon/rent/description"
-msgstr "该坦克仅适用于在钢铁猎手中参加战斗"
+msgid "tooltips/brCoin/earn/description"
+msgstr "良好的战斗表现、在战斗结果中取得较高的名次和完成模式任务都可获得钢铁印章。"
 
-msgid "tooltips/rentIcon/rent/footer"
-msgstr "租用：{time}"
+msgid "tooltips/brCoin/earn/title"
+msgstr "如何获得印章"
 
-msgid "tooltips/rentIcon/rent/title"
-msgstr "租用{days}天"
+msgid "tooltips/brCoin/spend/description"
+msgstr "使用所获得的钢铁印章购买钢铁猎手风格。"
 
-msgid "tooltips/rentIcon/testDrive/description"
-msgstr "试玩期结束后，可以支付一定费用租用坦克。"
+msgid "tooltips/brCoin/spend/title"
+msgstr "印章的用处"
 
-msgid "tooltips/rentIcon/testDrive/footer"
-msgstr "试玩：{time}"
-
-msgid "tooltips/rentIcon/testDrive/rentTime"
-msgstr "租用{days}天"
-
-msgid "tooltips/rentIcon/testDrive/title"
-msgstr "免费试玩坦克1天"
+msgid "tooltips/brCoin/title"
+msgstr "钢铁印章"
 
 msgid "tooltips/respawnIcon/definition"
 msgstr "重生充能次数可从空投中获取。"
@@ -980,53 +987,8 @@ msgstr "一次性使用"
 msgid "tooltips/respawnIcon/title"
 msgstr "重生"
 
-msgid "tooltips/shop/description"
-msgstr "在该商店中，您可使用在钢铁猎手模式中获得的幸运印章，兑换特殊且珍贵的奖励。"
-
-msgid "tooltips/shop/subdescription"
-msgstr "一种特殊货币，可在翡翠岛交易会期间参加钢铁猎手模式获得。在战斗中收集物资、完成进度阶段、在此军事演习模式中排名靠前均可获得印章。"
-
-msgid "tooltips/shop/subtitle"
-msgstr "幸运印章"
-
-msgid "tooltips/shop/title"
-msgstr "幸运草商店"
-
-msgid "tooltips/stpCoin/earn/description"
-msgstr "在战斗中收集物资、完成进度阶段、在钢铁猎手中排名靠前均可获得幸运印章。"
-
-msgid "tooltips/stpCoin/earn/title"
-msgstr "如何获得印章"
-
-msgid "tooltips/stpCoin/spend/description"
-msgstr "您可使用幸运印章在幸运草商店中兑换珍贵奖励。"
-
-msgid "tooltips/stpCoin/spend/title"
-msgstr "印章的用处"
-
-msgid "tooltips/stpCoin/title"
-msgstr "幸运印章"
-
-msgid "tooltips/testDriveInfo/footer"
-msgstr "参加战斗及完成特殊任务可获得%(brown_Open)s钢铁印章%(brown_Close)s。"
-
-msgid "tooltips/testDriveInfo/leftLabel"
-msgstr "试玩{days}天"
-
-msgid "tooltips/testDriveInfo/rentFor"
-msgstr "租用{days}天"
-
-msgid "tooltips/testDriveInfo/rightLabel"
-msgstr "后续租用{days}天"
-
-msgid "tooltips/testDriveInfo/title"
-msgstr "免费试玩"
-
 msgid "tooltips/vehicle/description"
 msgstr "钢铁猎手模式坦克"
-
-msgid "tooltips/vehicle/status/notRented"
-msgstr "未租用"
 
 msgid "tournament/description"
 msgstr "大狩猎"
@@ -1094,15 +1056,6 @@ msgstr "有新的炮塔可用"
 msgid "vehModuleConfigurator/delimiter"
 msgstr "或"
 
-msgid "vehRentBlock/inBattle"
-msgstr "战斗中"
-
-msgid "vehRentBlock/inRent"
-msgstr "已租用"
-
-msgid "vehRentBlock/inTestDrive"
-msgstr "在试玩中"
-
 msgid "vehicleFeatures/spec/armor"
 msgstr "装甲"
 
@@ -1135,19 +1088,6 @@ msgstr "优势"
 
 msgid "vehicleFeatures/subTitle/weak"
 msgstr "劣势"
-
-msgid "vehicleRentIsOk"
-msgstr ""
-"租用坦克\n"
-"已租用%(vehicle)s。租用天数：%(days)s。"
-
-msgid "vehicleRentNoMoney"
-msgstr "资金不足，无法租用%(vehicle)s。"
-
-msgid "vehicleTestDriveIsOk"
-msgstr ""
-"坦克试玩\n"
-"已收到试玩坦克%(vehicle)s。试玩天数：%(days)s。"
 
 msgid "widgetAlertMessageBlock/allPeripheriesHalt"
 msgstr "所有服务器已进入休战期。距战斗开放还有%(time)s"

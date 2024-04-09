@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>DC_impact_01</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>impactPoint</identifier>
+				<transform>
+					<row0>6.129715 0.000000 0.000000</row0>
+					<row1>0.000000 6.129715 0.000000</row1>
+					<row2>0.000000 0.000000 6.129715</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>impactPoint1</identifier>
+				<transform>
+					<row0>4.154156 0.000000 0.000000</row0>
+					<row1>0.000000 4.154156 0.000000</row1>
+					<row2>0.000000 0.000000 4.154156</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+			<node>
+				<identifier>impactPoint2</identifier>
+				<transform>
+					<row0>2.461879 0.000000 0.000000</row0>
+					<row1>0.000000 2.461879 0.000000</row1>
+					<row2>0.000000 0.000000 2.461879</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>impactPoint</node>
+		<geometry>
+			<vertices>impactPointShape.vertices</vertices>
+			<primitive>impactPointShape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_06</identifier>
+					<fx>shaders/custom/emissive_angle_falloff.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						g_angleFalloffParams
+						<Vector4>0.000000 1.000000 3.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_emissiveMap
+						<Texture>content/Interface/CheckPoint/white_falloff_AM.dds</Texture>
+					</property>
+					<property>
+						g_lightMultipliers
+						<Vector4>38.740002 6.620000 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.000000 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>impactPoint1</node>
+		<geometry>
+			<vertices>impactPoint1Shape.vertices</vertices>
+			<primitive>impactPoint1Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_07</identifier>
+					<fx>shaders/custom/emissive_angle_falloff.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						g_emissiveMap
+						<Texture>content/Interface/CheckPoint/red_falloff_AM.dds</Texture>
+					</property>
+					<property>
+						g_lightMultipliers
+						<Vector4>50.000000 10.000000 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.000000 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>impactPoint2</node>
+		<geometry>
+			<vertices>impactPoint2Shape.vertices</vertices>
+			<primitive>impactPoint2Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_08</identifier>
+					<fx>shaders/custom/emissive_angle_falloff.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						g_angleFalloffParams
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_emissiveMap
+						<Texture>content/Interface/CheckPoint/orange_falloff_AM.dds</Texture>
+					</property>
+					<property>
+						g_lightMultipliers
+						<Vector4>50.000000 10.000000 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.000000 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-0.061297 -0.061297 -0.061297</min>
+		<max>0.061297 0.061297 0.061297</max>
+	</boundingBox>
+	<geometrySize>45288</geometrySize>
+	<minUVDensity>10000.000000</minUVDensity>
+</root>

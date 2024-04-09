@@ -93,19 +93,28 @@ package net.wg.gui.battle.battleRoyale.views
          super.onDispose();
       }
       
-      public function as_setPlayerInfo(param1:String) : void
+      override public function as_setPlayerInfo(param1:String) : void
       {
          setPlayerInfo(param1);
       }
       
-      public function as_setSpectatorPanelVisible(param1:Boolean) : void
+      public function as_setPostmortemPanelVisible(param1:Boolean) : void
       {
          this.firstTipTitle.visible = this.secondTipTitle.visible = this.firstTipBody.visible = this.secondTipBody.visible = this.mouseIcon.visible = this.escIcon.visible = this.bg.visible = param1;
       }
       
-      public function as_showDeadReason() : void
+      override public function as_showDeadReason() : void
       {
          showDeadReason();
+      }
+      
+      override protected function createPostmortemPanelElements() : void
+      {
+      }
+      
+      override protected function showPostmortemPanel(param1:Boolean) : void
+      {
+         this.as_setPostmortemPanelVisible(param1);
       }
       
       public function setStateSizeBoundaries(param1:int, param2:int) : void

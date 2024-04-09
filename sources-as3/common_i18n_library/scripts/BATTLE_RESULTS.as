@@ -353,6 +353,8 @@ package
       
       public static const COMMON_PREMIUMBONUS_EXPIREDBATTLERESULT:String = "#battle_results:common/premiumBonus/expiredBattleResult";
       
+      public static const COMMON_PREMIUMBONUS_UNAVAILABLE:String = "#battle_results:common/premiumBonus/unavailable";
+      
       public static const COMMON_PREMIUMBONUS_TANKSTATECHANGED:String = "#battle_results:common/premiumBonus/tankStateChanged";
       
       public static const COMMON_PREMIUMBONUS_TANKMENSTATECHANGED:String = "#battle_results:common/premiumBonus/tankmenStateChanged";
@@ -362,6 +364,20 @@ package
       public static const COMMON_PREMIUMBONUS_ISXPTOTMENDISABLED:String = "#battle_results:common/premiumBonus/isXPToTmenDisabled";
       
       public static const COMMON_PREMIUMBONUS_BONUSLEFT:String = "#battle_results:common/premiumBonus/bonusLeft";
+      
+      public static const COMMON_PLUSBONUS_BONUSLEFTADDITIONALTEXT:String = "#battle_results:common/plusBonus/bonusLeftAdditionalText";
+      
+      public static const COMMON_PLUSBONUS_EARNINGSINFORMATION:String = "#battle_results:common/plusBonus/earningsInformation";
+      
+      public static const COMMON_PLUSBONUS_PREMIUMPLUSADD:String = "#battle_results:common/plusBonus/premiumPlusAdd";
+      
+      public static const COMMON_PLUSBONUS_WOTPLUS:String = "#battle_results:common/plusBonus/wotPlus";
+      
+      public static const COMMON_PLUSBONUS_WOTPREMIUM:String = "#battle_results:common/plusBonus/wotPremium";
+      
+      public static const COMMON_PLUSBONUS_YOUROCK:String = "#battle_results:common/plusBonus/youRock";
+      
+      public static const COMMON_WOTPLUSBONUS_BONUSLEFT:String = "#battle_results:common/wotPlusBonus/bonusLeft";
       
       public static const COMMON_PREMIUMBONUS_APPLIEDBONUS:String = "#battle_results:common/premiumBonus/appliedBonus";
       
@@ -624,6 +640,8 @@ package
       public static const DETAILS_CALCULATIONS_INTERMEDIATETOTAL:String = "#battle_results:details/calculations/intermediateTotal";
       
       public static const DETAILS_CALCULATIONS_BASE:String = "#battle_results:details/calculations/base";
+      
+      public static const DETAILS_CALCULATIONS_WOTPLUS:String = "#battle_results:details/calculations/wotPlus";
       
       public static const DETAILS_CALCULATIONS_XPRECORD:String = "#battle_results:details/calculations/xpRecord";
       

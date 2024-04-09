@@ -48,6 +48,8 @@ package net.wg.gui.lobby.hangar.quests
       
       private static const QUESTS_FLAGS_OFFSET_X:int = 15;
       
+      public static const BATTLE_ROYALE_FLAGS_OFFSET_Y:int = 8;
+      
       private static const INV_SECONDARY_ENTRY_POINT:String = "invSecondaryEntryPoint";
       
       private static const FLAGS_TWEEN_DELAY_TIME:int = 100;
@@ -100,8 +102,6 @@ package net.wg.gui.lobby.hangar.quests
       private var _secondaryMargin:int = 20;
       
       private var _secondaryOffsetX:int = 16;
-      
-      private var _helpLayoutHeight:int = 0;
       
       public function HeaderQuestsFlags()
       {
@@ -218,7 +218,7 @@ package net.wg.gui.lobby.hangar.quests
       
       public function getHitRect() : Rectangle
       {
-         return new Rectangle(this.questsHitArea.x,this.questsHitArea.y,this.questsHitArea.width,this._helpLayoutHeight);
+         return new Rectangle(this.questsHitArea.x,this.questsHitArea.y,this.questsHitArea.width,this.questsHitArea.height);
       }
       
       public function getQuestBtnByType(param1:String) : IQuestInformerButton
@@ -571,7 +571,6 @@ package net.wg.gui.lobby.hangar.quests
          this.questsHitArea.x = _loc2_;
          this.questsHitArea.y = this.flagsOffsetY;
          this.questsHitArea.width = _loc3_;
-         this._helpLayoutHeight = _loc4_;
       }
       
       private function addListenersToQuestsContainer(param1:IHeaderQuestsContainer) : void

@@ -82,8 +82,8 @@ package net.wg.gui.lobby.storage.categories.personalreserves
             if(isInvalid(InvalidationType.SIZE))
             {
                this.buyButton.x = width - this.buyButton.width;
-               this.typeFilters.x = this.buyButton.x - this.buyButton.width - FILTERS_BLOCK_GAP;
-               this.typeFilterName.x = this.typeFilters.x - this.typeFilterName.width - FILTER_NAME_GAP >> 0;
+               this.typeFilters.x = this.buyButton.x - this.typeFilters.width - FILTERS_BLOCK_GAP;
+               this.typeFilterName.x = this.typeFilters.x - FILTER_NAME_GAP - this.typeFilterName.width;
             }
          }
       }

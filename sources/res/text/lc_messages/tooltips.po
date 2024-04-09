@@ -34,9 +34,6 @@ msgstr "在WOWP客户端"
 msgid "Contact/resource/wows"
 msgstr "在WOWS客户端"
 
-msgid "Contact/status/inBattle/bootcamp"
-msgstr "新兵训练营中"
-
 msgid "Contact/status/inBattle/epic_random_training"
 msgstr "在团队训练模式中"
 
@@ -108,12 +105,6 @@ msgstr ""
 
 msgid "XP/header"
 msgstr "战斗经验"
-
-msgid "accountCompletion/credentials/subtitle/body"
-msgstr "完成注册后，您将可以在账号中看到奖励。"
-
-msgid "accountCompletion/credentials/subtitle/header"
-msgstr "您的奖励"
 
 msgid "accountCompletion/email/titleTooltip"
 msgstr ""
@@ -514,7 +505,7 @@ msgid "advanced/aimingStabilizer"
 msgstr "改善瞄准:减少射击、炮塔横移或坦克移动过程中的炮弹散布范围。"
 
 msgid "advanced/antifragmentationLining"
-msgstr "降低受到撞击和未击穿的HE弹爆炸造成的损伤，降低乘员被弹震的时间和乘员受伤的几率。"
+msgstr "降低受到撞击和未击穿的HE弹爆炸造成的损伤，降低乘员的弹震时间和受伤几率。"
 
 msgid "advanced/autoExtinguishers"
 msgstr "坦克起火后自动灭火。被动效果降低起火几率。"
@@ -635,7 +626,7 @@ msgid "advanced/instructions"
 msgstr "在一场战斗中有效。根据不同的类型，可增强所安装配件的效果，提高已训练特长的熟练度或激活未训练的乘员特长。"
 
 msgid "advanced/largeMedkit"
-msgstr "及时治疗所有受伤的乘员并消除弹震效果。被动效果提高了对车组乘员的保护并减少弹震持续时间。"
+msgstr "立即治疗所有受伤的乘员并移除弹震效果。被动效果提升了车组乘员的防护并减少弹震持续时间。"
 
 msgid "advanced/largeRepairkit"
 msgstr "及时修复所有损坏的模块。被动效果提高了修复速度。"
@@ -689,7 +680,7 @@ msgid "advanced/service"
 msgstr "在战斗中提升特定坦克参数或修理模块的物品。"
 
 msgid "advanced/smallMedkit"
-msgstr "及时治疗受伤的乘员并消除弹震状态。"
+msgstr "立即治疗受伤的乘员并移除弹震效果。"
 
 msgid "advanced/smallRepairkit"
 msgstr "激活后立即修复选定的一个损坏模块。"
@@ -788,11 +779,23 @@ msgstr "累积所需的积分并激活前线模式战斗储备。"
 msgid "awardItem/abilityToken/header"
 msgstr "战斗储备积分"
 
+msgid "awardItem/additional_bonuses/body"
+msgstr "在胜利的战斗中获得3倍经验，每天%(applications)d次。"
+
+msgid "awardItem/additional_bonuses/header"
+msgstr "可控经验加成"
+
 msgid "awardItem/attendance_reward/body"
 msgstr "登录游戏所获得的奖励。"
 
 msgid "awardItem/attendance_reward/header"
 msgstr "签到奖励"
+
+msgid "awardItem/badges/body"
+msgstr "展示您的坦克世界Plus旗帜！"
+
+msgid "awardItem/badges/header"
+msgstr "坦克手旗帜"
 
 msgid "awardItem/battleToken/description"
 msgstr "解锁多个任务。"
@@ -811,6 +814,12 @@ msgstr "可用的任务"
 
 msgid "awardItem/battleToken/several/line"
 msgstr "%(num)s。 《%(name)s》。"
+
+msgid "awardItem/battle_bonuses/body"
+msgstr "所获得的银币、战斗与全局经验、乘员经验提高%(earnings)d%%。"
+
+msgid "awardItem/battle_bonuses/header"
+msgstr "战斗收益加成"
 
 msgid "awardItem/berths/body"
 msgstr "兵营中增加一个免费床位。"
@@ -1131,6 +1140,12 @@ msgstr "持续不断的乘员加成。"
 msgid "awardItem/idle_crew_xp/header"
 msgstr "高强度乘员训练"
 
+msgid "awardItem/industrialResource/body"
+msgstr "?empty?"
+
+msgid "awardItem/industrialResource/header"
+msgstr "工业资源"
+
 msgid "awardItem/oneof/body"
 msgstr "奖励的数量及其品质取决于排行榜上的名次。"
 
@@ -1216,14 +1231,6 @@ msgstr "可以助您在钢铁猎手模式中升级并收获奖励。"
 msgid "awardItem/steelHunterPoint/header"
 msgstr "钢铁猎手积分"
 
-msgid "awardItem/stpcoin/body"
-msgstr ""
-"可在钢铁猎手战斗中获取的货币。印章可用来在幸运草商店中兑换独特奖励。\n"
-"组队战斗时，所获幸运印章将在小队成员之间平均分配。所示数量为属于您的奖励。"
-
-msgid "awardItem/stpcoin/header"
-msgstr "幸运印章"
-
 msgid "awardItem/tankman/body"
 msgstr "可选择系别和专业的乘员。"
 
@@ -1259,6 +1266,12 @@ msgstr "测试资格。描述。"
 
 msgid "awardItem/testEntitlement/header"
 msgstr "测试资格。标题。"
+
+msgid "awardItem/tourcoin/body"
+msgstr "?empty?"
+
+msgid "awardItem/tourcoin/header"
+msgstr "军旅积分"
 
 msgid "awardItem/xp/body"
 msgstr "增加战斗经验的一次性奖励。"
@@ -1296,48 +1309,8 @@ msgstr "点击打开招募乘员的确认窗口"
 msgid "barracks/item_empty/header"
 msgstr "招募车组乘员"
 
-msgid "barracks/placesCount/dismiss/body"
-msgstr ""
-"最多可容纳%(placeCount)s名乘员，这些乘员可在以后恢复。当达到上限时，您将被要求删掉第一个解雇的乘员，以便为当前准备解雇的乘员留出空间。"
-
-msgid "barracks/placesCount/dismiss/header"
-msgstr "解雇缓冲区"
-
-msgid "barracks/tankmen/dismiss/body"
-msgstr "点击将乘员从兵营解雇。"
-
-msgid "barracks/tankmen/dismiss/header"
-msgstr "解雇"
-
-msgid "barracks/tankmen/recovery/free/body"
-msgstr ""
-"您有%(totalLeftValue)s来恢复乘员：\n"
-"•%(freeLeftValue)s免费恢复乘员\n"
-"•%(withMoneyLeftValue)s用于恢复%(price)s的乘员。"
-
-msgid "barracks/tankmen/recovery/gold/body"
-msgstr "您在%(totalLeftValue)s内可花费%(price)s恢复乘员。"
-
-msgid "barracks/tankmen/recovery/header"
-msgstr "已解雇乘员"
-
 msgid "barracks/tankmen/recovery/newSkill"
 msgstr "未选择的特长"
-
-msgid "barracks/tankmen/recoveryBtn/header"
-msgstr "恢复乘员"
-
-msgid "barracks/tankmen/recruit/body"
-msgstr "点击打开招募乘员的确认窗口"
-
-msgid "barracks/tankmen/recruit/header"
-msgstr "招募车组乘员"
-
-msgid "barracks/tankmen/unload/body"
-msgstr "该乘员将从坦克上被调回兵营。"
-
-msgid "barracks/tankmen/unload/header"
-msgstr "调回兵营"
 
 msgid "battleBooster/buy/useless/lower_description"
 msgstr "必须安装相应的配件。"
@@ -1358,10 +1331,10 @@ msgid "battleBooster/replace"
 msgstr "当前装配:\"{boosterName}\"。更换指令将改变以下参数:"
 
 msgid "battleBooster/skill/learnt"
-msgstr "(车组乘员的\"%s\"特长已训练到100%%)"
+msgstr "(乘员已将{boosterName}特长训练至100%，同时特长效率为100%)"
 
 msgid "battleBooster/skill/not_learnt"
-msgstr "(车组乘员的\"%s\"特长未训练到100%%)"
+msgstr "(乘员尚未将{boosterName}特长训练至100%，或特长效率低于100%)"
 
 msgid "battleBooster/useless/body"
 msgstr "指令只有在您安装了相应的配件时才会有作用。"
@@ -1505,7 +1478,7 @@ msgid "battleResults/efficiencyHeader/summSpotted"
 msgstr "点亮"
 
 msgid "battleResults/efficiencyHeader/summStun"
-msgstr "对受到您弹震影响的敌方坦克造成的损伤"
+msgstr "对由您造成弹震的敌方坦克造成的损伤"
 
 msgid "battleResults/efficiencyHeader/value"
 msgstr "%(value)d"
@@ -1966,9 +1939,6 @@ msgstr "该坦克由各种坦克制造工厂的报废零部件组装而成，对
 msgid "battle_royale/hangar/vehicle/leftTime"
 msgstr "至: %(leftTime)s"
 
-msgid "battle_royale/hangar/vehicle/shamrock"
-msgstr "%(shamrock)s 在单人战斗中排名前10，或在组队战斗中排名前7即可获得幸运印章2倍加成。每辆活动坦克每天可激活该加成1次。"
-
 msgid "battle_royale/hangar/vehicle/status"
 msgstr "钢铁猎手之一"
 
@@ -2289,10 +2259,10 @@ msgid "boostersPanel/openBoostersWindow/body"
 msgstr "选择并激活个人储备。"
 
 msgid "boostersWindow/booster/activateInfo/activation"
-msgstr "激活:"
+msgstr "激活"
 
 msgid "boostersWindow/booster/activateInfo/activationInfo"
-msgstr "可在车库中激活或者在战斗中按下TAB或B键激活。加成可应用于标准模式、赛事、钢铁猎手以及前线模式。"
+msgstr "您可在车库中激活个人储备，也可在战斗中按下TAB或B键来激活。其加成适用于标准模式和赛事，以及钢铁猎手、前线模式、天梯战。"
 
 msgid "boostersWindow/booster/activateInfo/basicReserve"
 msgstr "标准型个人储备"
@@ -2328,11 +2298,35 @@ msgstr "您可在要塞的建筑中生产或在战斗中获得军团储备。"
 msgid "boostersWindow/booster/activateInfo/description"
 msgstr "在个人储备激活界面。"
 
+msgid "boostersWindow/booster/activateInfo/descriptionCaption"
+msgstr "描述"
+
+msgid "boostersWindow/booster/activateInfo/descriptionText"
+msgstr "个人储备可通过完成任务、参加游戏活动来获得，也可在军械库中购买。其加成适用于标准模式和赛事，以及钢铁猎手模式、前线模式、天梯战。"
+
+msgid "boostersWindow/booster/activateInfo/expirable"
+msgstr "限时"
+
+msgid "boostersWindow/booster/activateInfo/expirableReserves"
+msgstr "限时储备"
+
+msgid "boostersWindow/booster/activateInfo/expirationTimer"
+msgstr "%(count)s个于%(time)s后过期"
+
+msgid "boostersWindow/booster/activateInfo/expireSoon"
+msgstr "建议激活限时储备:"
+
+msgid "boostersWindow/booster/activateInfo/expireToday"
+msgstr "建议激活限时储备:"
+
 msgid "boostersWindow/booster/activateInfo/improvedReserve"
 msgstr "改进型个人储备"
 
 msgid "boostersWindow/booster/activateInfo/inDepot"
 msgstr "仓库中"
+
+msgid "boostersWindow/booster/activateInfo/nonExpirableReserves"
+msgstr "非限时储备"
 
 msgid "boostersWindow/booster/activateInfo/nonPaidReceiveInfo"
 msgstr "完成任务和参加游戏活动可获取个人储备。"
@@ -2351,6 +2345,9 @@ msgstr "购买"
 
 msgid "boostersWindow/booster/activateInfo/receive"
 msgstr "获得方式"
+
+msgid "boostersWindow/booster/activateInfo/timeLeft"
+msgstr "剩余时间: %(time)s"
 
 msgid "boostersWindow/booster/activateInfo/title"
 msgstr "激活:"
@@ -2372,6 +2369,9 @@ msgstr "全局和乘员经验"
 
 msgid "boostersWindow/booster/activateInfo/title/booster_xp"
 msgstr "战斗经验"
+
+msgid "boostersWindow/booster/activateInfo/willExpireAfter"
+msgstr "距储备过期还有%(time)s"
 
 msgid "boostersWindow/booster/active/title"
 msgstr "启用"
@@ -2425,10 +2425,20 @@ msgid "boostersWindow/booster/header/xp"
 msgstr "每场战斗经验加成"
 
 msgid "boostersWindow/booster/longDescriptionSpecial"
-msgstr "激活后，个人储备可让您在每场战斗后获得额外奖励。个人储备在标准模式、排位赛、特殊赛事、钢铁猎手和前线模式的特定时期内都有效。"
+msgstr ""
+"激活后，个人储备可让您在每场战斗后获得额外奖励。个人储备可以在标准模式、特殊赛事、钢铁猎手、前线模式和天梯战中持续一段特定时间。它们没有过期日期，在激活之前一直可用。"
+
+msgid "boostersWindow/booster/longDescriptionSpecialExpirable"
+msgstr "激活后，个人储备可让您在每场战斗后获得额外奖励。个人储备可以在标准模式、特殊赛事、钢铁猎手、前线模式和天梯战中持续一段特定时间。"
 
 msgid "boostersWindow/booster/shortDescriptionSpecial"
 msgstr "每场战斗后的额外奖励"
+
+msgid "buttons/increase/body"
+msgstr "再训练乘员即可恢复全部特长，并提高坦克效能。"
+
+msgid "buttons/retrain/body"
+msgstr "再训练乘员即可恢复全部特长，并提高坦克效能。"
 
 msgid "chatContactsListOnly/body"
 msgstr "启用后，仅能收到来自朋友与常驻小队中玩家的消息。"
@@ -2513,13 +2523,13 @@ msgid "colorFilter/header"
 msgstr "颜色调整"
 
 msgid "commanderBonus/alt/description"
-msgstr "为每名乘员的主要专业提供10%的加成。"
+msgstr "其他所有乘员的乘员效率加成提高%(commBonus)s%%。"
 
 msgid "commanderBonus/alt/info"
 msgstr "特殊的车长特性，无需训练，车长默认拥有。"
 
 msgid "commanderBonus/description"
-msgstr "车长训练至100%后，为每名乘员的主要专业水平提供{greenBright_Start}10%{greenBright_End}的加成。"
+msgstr "其他所有乘员的乘员效率加成提高{greenBright_Start}%(commBonus)s%%{greenBright_End}。"
 
 msgid "commanderBonus/name"
 msgstr "车长加成"
@@ -2552,6 +2562,18 @@ msgstr "车库中已经没有空位，请考虑购买新车位或出售车库中
 msgid "contentBuyView/slotCheckbox/notEnoughSlots/header"
 msgstr "注意"
 
+msgid "conversion/notReceived/body"
+msgstr "转换后，您将获得以下乘员手册。"
+
+msgid "conversion/notReceived/header"
+msgstr "您将获得"
+
+msgid "conversion/received/body"
+msgstr "转换后，您获得了乘员手册。"
+
+msgid "conversion/received/header"
+msgstr "已获得"
+
 msgid "credits/body"
 msgstr ""
 "主要的游戏货币。\n"
@@ -2562,7 +2584,7 @@ msgid "credits/header"
 msgstr "银币"
 
 msgid "crew/body"
-msgstr "坦克附带%(value)s%%乘员。"
+msgstr "附带乘员的坦克。"
 
 msgid "crew/header"
 msgstr "全部乘员"
@@ -2608,9 +2630,6 @@ msgstr "通用手册"
 
 msgid "crewBundle/bonus/anyAdditionalSkill"
 msgstr "足以将一项特长训练至100%的经验。"
-
-msgid "crewBundle/bonus/basicRoleBoost_100"
-msgstr "训练至100%的主要专业。"
 
 msgid "crewBundle/bonus/sameBloodZeroSkill"
 msgstr "兄弟连特长训练至100%。"
@@ -2661,7 +2680,7 @@ msgid "csAutoSearchVehicle/unsuitable"
 msgstr "选择坦克自动匹配。"
 
 msgid "customCrew/referral/body"
-msgstr "%(value)s%%乘员"
+msgstr "乘员"
 
 msgid "customCrew/referral/header"
 msgstr "适应于%(vehicle)s的乘员"
@@ -3267,21 +3286,6 @@ msgstr "为了降低等待时间，坦克要求不计算在内。"
 msgid "cyberSport/waitingPlayers/configAlert/header"
 msgstr "坦克要求不计算在内"
 
-msgid "demoAccountRenaming/notAvailable/body"
-msgstr "在战斗模式选择界面中选择标准模式后就能更改游戏内昵称。"
-
-msgid "demoAccountRenaming/notAvailable/header"
-msgstr "无法更改昵称"
-
-msgid "demoAccountRenamingHangar/holder"
-msgstr "正在更改您的昵称，该过程可能需要一些时间。"
-
-msgid "demoAccountRenamingHangar/text"
-msgstr "点击并查看用户账号详细信息。"
-
-msgid "demoAccountRenamingHangar/title"
-msgstr "用户账号"
-
 msgid "demonstrator/platoonWarning/body"
 msgstr "想要用这些参数搜索战斗，您需要成为小队指挥官。部分参数可能会不对小队开放。"
 
@@ -3374,7 +3378,7 @@ msgid "dismissedToggle/recover/total"
 msgstr "您可以在{whiteSpanish_Open}%(days)s{whiteSpanish_Close}天内恢复这类乘员。"
 
 msgid "dismissedToggle/subHeader"
-msgstr "仅显示/隐藏已解雇的乘员。"
+msgstr "显示已解雇的乘员。"
 
 msgid "displayPlatoonMembers/attention"
 msgstr "启用此功能后，您可能会遇到性能下降或显示问题。"
@@ -5200,9 +5204,6 @@ msgstr "乘员特长"
 msgid "hangarTutorial/personalCase/skills/headerDescription"
 msgstr "乘员信息"
 
-msgid "hangarTutorial/personalCase/skills/specialtyDescription"
-msgstr "主要专业水平越高，乘员表现就越好。特定配件与给养可以将其100%的最大基础水平提升。"
-
 msgid "hangarTutorial/personalCase/skills/specialtyTitle"
 msgstr "主要专业等级"
 
@@ -6061,9 +6062,6 @@ msgstr "完成所需的战斗场数，获得资格并晋级梯队。"
 
 msgid "mode_selector/ranked/qualification/header"
 msgstr "资格赛战斗：%(current)s/%(max)s"
-
-msgid "mode_selector/unavailable/bootcamp"
-msgstr "新兵训练营中无法使用。"
 
 msgid "mode_selector/unavailable/notVehicles/level"
 msgstr "%(levels)s级"
@@ -7016,6 +7014,45 @@ msgid "notrecruitedtankman/offspring_loader/desc"
 msgstr ""
 "低音吉他手在表演过程中既熟练又热情地装载炮弹，并令数千名粉丝沉浸在令人窒息的氛围中。他无尽的积极精神与营造的朋克氛围将全体乘员的士气提升到最高水平。"
 
+msgid "notrecruitedtankman/onslaught_p3_1/desc"
+msgstr ""
+"扬曾是B系一所乡村学校的历史教师，他响应号召，奋起反抗强敌。在战场上，他展现出了无所畏惧的领导才能，再加上他那威严的胡须，车组的其他乘员于是给他起了个绰号——\"族长\"。"
+
+msgid "notrecruitedtankman/onslaught_p3_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/onslaught_p3_1/label"
+msgstr "天梯战天马赛年"
+
+msgid "notrecruitedtankman/onslaught_p3_2/desc"
+msgstr ""
+"安娜成长于一个颇具影响力的V系军人家庭，从小就对蓝图、作战计划和原型车着迷。以童年好奇心为基础，她学习了坦克工程，现在她将自己的专业知识用于测试高精度作战装备——这让她的父亲倍感自豪。"
+
+msgid "notrecruitedtankman/onslaught_p3_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/onslaught_p3_2/label"
+msgstr "天梯战天马赛年"
+
+msgid "notrecruitedtankman/onslaught_p3_3/desc"
+msgstr "达蒙曾就读于艺术名校，但对自己的学业深感失望，于是便投笔从戎。他把美术换成了战斗艺术，最终找到了自己的真正爱好——在战场上挥洒豪情。"
+
+msgid "notrecruitedtankman/onslaught_p3_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/onslaught_p3_3/label"
+msgstr "天梯战天马赛年"
+
+msgid "notrecruitedtankman/onslaught_p3_4/desc"
+msgstr ""
+"作为一名纹身师，安迪以无所不知、能说会道而名声在外。入伍后，他的感染力得到了更多人的认可，善于团结坦克手的天赋能力使他成为了所在车组的\"灵魂\"。"
+
+msgid "notrecruitedtankman/onslaught_p3_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/onslaught_p3_4/label"
+msgstr "天梯战天马赛年"
+
 msgid "notrecruitedtankman/oow21_strategist_commander/desc"
 msgstr "一名\"老派\"军官。无情且谨慎，决策果断不鲁莽。他深知\"一招不慎满盘皆输\"。"
 
@@ -7060,6 +7097,12 @@ msgstr "战略艺术活动"
 
 msgid "notrecruitedtankman/oow21_tanker_4_commander/label"
 msgstr "战略艺术2022"
+
+msgid "notrecruitedtankman/polish_commander/desc"
+msgstr "Cygan是一名活力四射的B系斗士。他不仅擅长内容创作和赛事策划，还精通各种战斗技巧。招募他作为指挥官，您的游戏体验将更上一层楼！"
+
+msgid "notrecruitedtankman/polish_commander/label"
+msgstr "独特指挥官"
 
 msgid "notrecruitedtankman/race19_commanderA/desc"
 msgstr "在伟大赛车活动中因个人成就而奖励的赛车手。这位车长拥有训练至100%熟练度的\"零历练\"兄弟连特长，以及足以将另2项特长训练至100%的经验。"
@@ -7967,17 +8010,37 @@ msgstr "拥有触发式效果的特长"
 msgid "perks/configurationScreenText"
 msgstr "所有专业均已训练{brown_Start}(效果取决于全体车组乘员平均特长水平的高低){brown__End}。"
 
+msgid "perks/efficiency/reduced"
+msgstr ""
+"特长效率已降低至{value}&zwnbsp;。\n"
+"训练已暂停。"
+
+msgid "perks/efficiency/untrained"
+msgstr "由于该乘员没有接受这辆坦克的相关训练，特长不可用。"
+
 msgid "perks/fullGroupSkillTitle"
-msgstr "全体乘员均将该特长训练完毕后(100%):"
+msgstr "当全体乘员都将该特长训练完毕(100%)，且特长效率为100%时:"
+
+msgid "perks/fullGroupSkillWithLowEfficiencyTitle"
+msgstr "当全体乘员都将该特长训练完毕(100%)，且特长效率为100%时:"
 
 msgid "perks/fullSkillTitle"
-msgstr "特长训练完毕时(100%):"
+msgstr "当该特长训练完毕(100%)，且特长效率为100%时:"
+
+msgid "perks/fullSkillWithLowEfficiencyTitle"
+msgstr "当该特长训练完毕(100%)，且特长效率为100%时:"
+
+msgid "perks/fullWithDirective"
+msgstr "已使用指令。该特长现在拥有额外加成。"
 
 msgid "perks/infoText"
 msgstr "拥有触发式效果的特长在训练到至少1%时生效。其效果会随着熟练度的提高而增强。当满足战斗中的特定条件时，触发式效果便会激活。"
 
 msgid "perks/irrelevant"
 msgstr "专业不符。该特长不会生效。"
+
+msgid "perks/notFullWithDirective"
+msgstr "已使用指令。该特长现在的训练水平为100%。"
 
 msgid "perks/zeroPerkInfo"
 msgstr "零历练特长无需花费经验，玩家也无法更改。"
@@ -8045,7 +8108,7 @@ msgid "personalMissions/footer/pawnedSheet/header"
 msgstr "通行令已提交"
 
 msgid "personalMissions/freeSheet/howToGet/descr"
-msgstr "完美完成各系列的最后一个任务后颁发。"
+msgstr "完美完成任意系列中的最后一个任务即可获得。"
 
 msgid "personalMissions/freeSheet/howToGet/title"
 msgstr "如何获得:"
@@ -8265,7 +8328,7 @@ msgid "personalMissions/status/lockedByVehicleType/body"
 msgstr "想要解开任务，需要的坦克类型:%(vehType)s；等级:%(minLevel)s–%(maxLevel)s。"
 
 msgid "personalMissions/status/mainDone/body"
-msgstr "任务已经完成；已获得满足主要条件的奖励。您可以通过完成主要条件和次要条件来改善结果。想要这样做，请点击卡片底部的改善结果。"
+msgstr "任务已完成；您已获得满足主要条件的奖励。您可以通过完成主要条件和次要条件来完美完成任务。点击底部的\"完美完成\"即可开始。"
 
 msgid "personalMissions/status/mainDone/header"
 msgstr "主要条件已满足"
@@ -8289,6 +8352,12 @@ msgstr "想要加入新乘组员到兵营，请把得到的乘组员指派到所
 
 msgid "personalMissions/tankgirlsBlock/header"
 msgstr "尚未招募的女性乘员"
+
+msgid "postmortemMode/body"
+msgstr "改动将从下一场战斗开始生效。在某些情况下，您无法查看坦克被击毁的时刻。"
+
+msgid "postmortemMode/header"
+msgstr "回溯模式"
 
 msgid "prebattle/downButton/active"
 msgstr "将团队中的玩家移入队列"
@@ -8704,7 +8773,7 @@ msgid "quests/linkBtn/battlePass"
 msgstr "查看战斗通行证进度"
 
 msgid "quests/linkBtn/battlePass/select"
-msgstr "前往战斗通行证章节选择"
+msgstr "前往战斗通行证"
 
 msgid "quests/linkBtn/customizationProgression/disabled"
 msgstr "详细信息当前不可用。"
@@ -8840,6 +8909,28 @@ msgstr "奖励"
 msgid "quests/vehiclesBonus/vehiclesLeft"
 msgstr "%(count)s更多坦克…"
 
+msgid "quickTraining/LowPECrew"
+msgstr ""
+"乘员不满足训练要求: 部分乘员的特长效率较低。{newLine}乘员训练可在其{cream_Open}档案{cream_Close}中进行。"
+
+msgid "quickTraining/LowPENotFullCrew"
+msgstr ""
+"乘员不满足训练要求: 部分乘员的特长效率较低，且乘员不足。{newLine}乘员训练可在其{cream_Open}档案{cream_Close}中进行。"
+
+msgid "quickTraining/LowPENotTrainedCrew"
+msgstr ""
+"乘员不满足训练要求: "
+"部分乘员不具备该坦克的专精，还有部分乘员的特长效率较低。{newLine}乘员训练可在其{cream_Open}档案{cream_Close}中进行。"
+
+msgid "quickTraining/LowPENotTrainedNotFullCrew"
+msgstr ""
+"乘员不满足训练要求: "
+"部分乘员不具备该坦克的专精，还有部分乘员的特长效率较低，而且乘员不足。{newLine}可以在乘员{cream_Open}档案{cream_Close}中训练他们。"
+
+msgid "quickTraining/LowPEtipsPersonal"
+msgstr ""
+"{cream_Open}%(tankman)s{cream_Close}的特长效率较低。您所获得的经验将首先用于将特长效率提高至100%%，然后再用于训练特长本身。"
+
 msgid "quickTraining/chooseAnyCrewMember"
 msgstr "您可以选择一名乘员，使用全局经验或乘员手册来加速其特长训练。"
 
@@ -8851,8 +8942,8 @@ msgstr "您的部分乘员已训练了全部特长。"
 
 msgid "quickTraining/notFullAndNotTrainedCrew"
 msgstr ""
-"乘员不满足训练要求: \n"
-"部分乘员不具备该坦克的专精，而且乘员不足。{newLine}可以在乘员{cream_Open}档案{cream_Close}中训练他们。"
+"乘员不满足训练要求: "
+"部分乘员不具备该坦克的专精，且乘员不足。{newLine}乘员训练可在其{cream_Open}档案{cream_Close}中进行。"
 
 msgid "quickTraining/notFullCrew"
 msgstr ""
@@ -8861,8 +8952,7 @@ msgstr ""
 
 msgid "quickTraining/notTrainedThisVehicle"
 msgstr ""
-"乘员不满足训练要求: \n"
-"部分乘员不具备该坦克的专精。{newLine}可以在乘员{cream_Open}档案{cream_Close}中训练他们。"
+"乘员不满足训练要求: 部分乘员不具备该坦克的专精。{newLine}乘员训练可在其{cream_Open}档案{cream_Close}中进行。"
 
 msgid "rallyInfo/profileBtn/body"
 msgstr "点击查看选中的队伍简介。"
@@ -9210,6 +9300,61 @@ msgstr "无法研发"
 
 msgid "researchPage/vehicle/status/parentModuleIsLocked/text"
 msgstr "上一级坦克和/或模块尚未研发完成，无法解锁这辆坦克。"
+
+msgid "retrain/changeRole/disable/crewLock/body"
+msgstr "无法更改该乘员的专业。"
+
+msgid "retrain/changeRole/disable/crewLock/header"
+msgstr "不可用"
+
+msgid "retrain/changeRole/disable/forced/body"
+msgstr "更改专业以使这名乘员为操控该坦克进行再训练。"
+
+msgid "retrain/changeRole/disable/forced/header"
+msgstr "坦克没有配备%(role)s"
+
+msgid "retrain/changeRole/disable/freeOperation/body"
+msgstr "无法免费更改专业。"
+
+msgid "retrain/changeRole/disable/freeOperation/header"
+msgstr "不可用"
+
+msgid "retrain/changeRole/warning/body"
+msgstr "您的这辆坦克已拥有%(num)s名该专业的乘员。"
+
+msgid "retrain/changeRole/warning/header"
+msgstr "注意！"
+
+msgid "retrain/priceCard/disable/discount/body"
+msgstr "由于您在坦克学院再训练该乘员时已享受100%折扣，该选项不可用。"
+
+msgid "retrain/priceCard/disable/discount/header"
+msgstr "不可用"
+
+msgid "retrain/priceCard/disable/roleChange/body"
+msgstr "无法免费更改专业。"
+
+msgid "retrain/priceCard/disable/roleChange/header"
+msgstr "不可用"
+
+msgid "retrain/priceCard/disable/useless/body"
+msgstr "乘员已具备该坦克的专精。"
+
+msgid "retrain/priceCard/disable/useless/header"
+msgstr "不可用"
+
+msgid "retrain/tankmanDiscount/full/body"
+msgstr ""
+"再训练享受100%折扣，\n"
+"直至首个特长训练至100%。"
+
+msgid "retrain/tankmanDiscount/half/body"
+msgstr ""
+"再训练享受50%折扣，\n"
+"直至第二个特长训练至100%。"
+
+msgid "retrain/tankmanDiscount/header"
+msgstr "可享受折扣"
 
 msgid "roleExp/status/footer"
 msgstr "每个符合坦克角色定位的行为都将用角色图标在活动日志中标注出来。"
@@ -9588,6 +9733,18 @@ msgstr ""
 msgid "showVehModelsOnMap/header"
 msgstr "启用小地图功能"
 
+msgid "skill/untrained/additional"
+msgstr "乘员接受这辆坦克的相关再训练即可恢复全部特长，并提高坦克效能。"
+
+msgid "skill/untrained/body"
+msgstr "由于该乘员没有接受这辆坦克的相关训练，特长不可用。"
+
+msgid "skill/untrained/explanation"
+msgstr "乘员接受这辆坦克的相关再训练即可恢复全部特长，并提高坦克效能。"
+
+msgid "skill/untrained/header"
+msgstr "特长不可用"
+
 msgid "skills/forRole/commander"
 msgstr "车长"
 
@@ -9608,6 +9765,30 @@ msgstr "通信兵"
 
 msgid "skills/newPerk/header"
 msgstr "另一项自选特长"
+
+msgid "skillsEfficiency/altDescription"
+msgstr "再训练乘员即可恢复其特长，并将坦克效能提高至100%"
+
+msgid "skillsEfficiency/header"
+msgstr "特长效率"
+
+msgid "skillsEfficiency/information1"
+msgstr "特长效率作为修正参数，决定了乘员所训练的全部特长的效率。"
+
+msgid "skillsEfficiency/information2"
+msgstr "特长效率降低后，所获得的全部经验都将用于提高该参数，特长训练将暂停。"
+
+msgid "skillsEfficiency/progress"
+msgstr ""
+"{whiteSpanish_Open}%(currentValue)s{whiteSpanish_Close}{par_Open}/%(maxValue)s{par_Close}%(icon)s"
+
+msgid "skillsEfficiency/retrainingDiscountInformation"
+msgstr ""
+"您可免费再训练该乘员。\n"
+"再训练后，他们会自动训练至100%。"
+
+msgid "skillsEfficiency/subHeader"
+msgstr "全部特长的效率"
 
 msgid "sound/dynamicRange/help/body"
 msgstr ""
@@ -9702,6 +9883,15 @@ msgstr "每场战斗获得额外的全局和乘员经验"
 
 msgid "storage/filter/personalReserves/btns/type/credits"
 msgstr "每场战斗银币加成"
+
+msgid "storage/filter/personalReserves/btns/type/expirable"
+msgstr "限时个人储备"
+
+msgid "storage/filter/personalReserves/btns/type/nonexpirable"
+msgstr "非限时个人储备"
+
+msgid "storage/filter/personalReserves/btns/type/premium"
+msgstr "改进型个人储备"
 
 msgid "storage/filter/personalReserves/btns/type/vehicleExp"
 msgstr "每场战斗经验加成"
@@ -10025,10 +10215,10 @@ msgid "tank_params/desc/speedLimits"
 msgstr "坦克速度由它的参数决定。"
 
 msgid "tank_params/desc/stunMaxDuration"
-msgstr "如果HE弹穿透了没有安装能够降低弹震效果持续时间的配件或给养的坦克装甲，将使敌方乘员陷入最长时间的弹震状态，并且造成最多的损伤。"
+msgstr "显示当HE弹击穿了敌方坦克装甲，且该坦克未安装能够减少弹震持续时间的配件或给养，并受到最高损伤时，敌方乘员将受到弹震效果的最长时间。"
 
 msgid "tank_params/desc/stunMinDuration"
-msgstr "如果敌方坦克位于损伤范围内且没有装备能降低弹震效果持续时间的配件或给养，敌方乘员将陷入的最短时间弹震状态。"
+msgstr "显示当敌方坦克处于损伤范围内，且未安装能够减少弹震持续时间的配件或给养时，敌方乘员将受到弹震效果的最短时间。"
 
 msgid "tank_params/desc/switchOffTime"
 msgstr "在模式之间切换所需的时间取决于发动机的状况。损坏的发动机增加了切换所需的时间。发动机损坏时切换不可用。"
@@ -10086,8 +10276,11 @@ msgstr "车辆切换到最高速度模式所需的时间。"
 msgid "tank_params/desc/wheeledSwitchTime"
 msgstr "在模式之间切换所需的时间取决于发动机的状况。损坏的发动机增加了切换所需的时间。发动机损坏时切换不可用。"
 
-msgid "tankman/commanderFeatures/commanderBonus"
-msgstr "主要专业水平的10%车长加成。"
+msgid "tankman/commanderBonus/description"
+msgstr "该加成可通过下方加成提高"
+
+msgid "tankman/commanderBonus/title"
+msgstr "车长加成"
 
 msgid "tankman/restoreInfo/free"
 msgstr ""
@@ -10103,6 +10296,36 @@ msgstr ""
 "您在%(duration)s内可花费%(price)s\n"
 "恢复乘员。"
 
+msgid "tankman/section/barracks"
+msgstr "在兵营中"
+
+msgid "tankman/section/bonus/commander"
+msgstr "车长效率加成"
+
+msgid "tankman/section/bonus/consums"
+msgstr "配件和给养:"
+
+msgid "tankman/section/bonus/description"
+msgstr "乘员效率加成包含若干特性，通过增加个人贡献、促进高效合作来提升车组的表现。"
+
+msgid "tankman/section/bonus/driver"
+msgstr "驾驶员效率加成"
+
+msgid "tankman/section/bonus/finalValue"
+msgstr "总加成:"
+
+msgid "tankman/section/bonus/gunner"
+msgstr "炮手效率加成"
+
+msgid "tankman/section/bonus/loader"
+msgstr "装填手效率加成"
+
+msgid "tankman/section/bonus/perks"
+msgstr "特长:"
+
+msgid "tankman/section/bonus/radioman"
+msgstr "通信兵效率加成"
+
 msgid "tankman/section/currentVehicle"
 msgstr "服役于:"
 
@@ -10112,32 +10335,13 @@ msgstr "%(vehicleType)s(%(nation)s)"
 msgid "tankman/section/specialization"
 msgstr "专精:"
 
-msgid "tankman/status/inactiveSkills/header"
-msgstr "特长错误"
+msgid "tankman/voiceover/role"
+msgstr ""
+"专属语音，\n"
+"仅适用于%(icon)%(role)专业"
 
-msgid "tankman/status/inactiveSkills/text"
-msgstr "以下专业的特长无法使用:%(skills)s。重置之前已训练的特长后，您可以在个人档案中选择合适的特长。\"零历练\"特长不能被重置。"
-
-msgid "tankman/status/inactiveSkillsRoleFormat"
-msgstr "\"%s\""
-
-msgid "tankman/status/wrongPremiumVehicle/header"
-msgstr "正确类型的金币坦克"
-
-msgid "tankman/status/wrongPremiumVehicle/text"
-msgstr "乘员没有%(vehicle)s的专精，但可以使用其特长。"
-
-msgid "tankman/status/wrongRoleLevel"
-msgstr "因主要专业水平未达到100%，乘员无法使用其特长。请在个人档案中训练它们，或在战斗中提高其主要专业水平。"
-
-msgid "tankman/status/wrongVehicle/header"
-msgstr "没有%(vehicle)s的专精"
-
-msgid "tankman/status/wrongVehicle/text"
-msgstr "乘员无法充分利用其特长。请在个人档案中训练它们。"
-
-msgid "tankman/vehicleSpecialization"
-msgstr "%(tankName)s，%(level)s"
+msgid "tankman/voiceover/witches"
+msgstr "收集南瓜派对活动中的全部乘员即可扩充专属语音内容。"
 
 msgid "tanksFilter/counter/close/body"
 msgstr "点击重置筛选条件。"
@@ -10472,35 +10676,6 @@ msgstr "禁用观察者模式。"
 msgid "training/observer/selectedicon/body"
 msgstr "启用观察者模式。"
 
-msgid "trainingLevel/additionalQualification"
-msgstr "额外专业:"
-
-msgid "trainingLevel/description"
-msgstr ""
-"主要专业水平。\n"
-"主要专业水平影响乘员专精坦克的技术参数，同时也能提升其全部特长。"
-
-msgid "trainingLevel/finalValue"
-msgstr "最终数值:"
-
-msgid "trainingLevel/modifiers/baseLevel"
-msgstr "训练水平"
-
-msgid "trainingLevel/modifiers/commanderBonus"
-msgstr "车长加成"
-
-msgid "trainingLevel/modifiers/equipment"
-msgstr "配件和给养"
-
-msgid "trainingLevel/modifiers/label"
-msgstr "加成:"
-
-msgid "trainingLevel/modifiers/perks"
-msgstr "特长"
-
-msgid "trainingLevel/modifiers/unsuitableSpecialization"
-msgstr "专精不符"
-
 msgid "turnOffCombatChat/body"
 msgstr ""
 "该选项仅适用于标准模式\n"
@@ -10710,9 +10885,6 @@ msgstr "出售"
 
 msgid "vehicle/speedLimits"
 msgstr "<h1>最高速度</h1> <h2>(km/h)</h2>"
-
-msgid "vehicle/stats/footnote"
-msgstr "这些特性在坦克乘员被训练到100%可用。"
 
 msgid "vehicle/telecomRental/remainingTime/days"
 msgstr "租用期:还剩%(time)s天"
@@ -11107,11 +11279,8 @@ msgstr ""
 msgid "vehiclePreview/tankman/skillsTitle"
 msgstr "已训练特长"
 
-msgid "vehiclePreview/vehiclePanel/info/body"
-msgstr "这些特征应用于乘员熟练度100%的坦克。"
-
 msgid "vehiclePreview/vehiclePanel/info/header/crew/AnySkills"
-msgstr "坦克配备拥有独特特长的%d%%乘员。"
+msgstr "坦克配备拥有独特特长的乘员。"
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/isAbillity"
 msgstr "特长"
@@ -11120,22 +11289,22 @@ msgid "vehiclePreview/vehiclePanel/info/header/crew/isPerk"
 msgstr "特长"
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/newSkill/forAll"
-msgstr "坦克配备拥有一项新的自选特长的%(level)d%%乘员。"
+msgstr "坦克配备拥有一个额外自选特长的乘员。"
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/newSkill/forOne"
-msgstr "坦克配备%(level)d%%乘员，其中%(role)s拥有一项新的自选特长。"
+msgstr "坦克配备乘员，其中%(role)s拥有一个额外自选特长。"
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/oneSkill/forAll"
-msgstr "坦克配备%(level)d%%乘员，具有%(skillType)s%(skillName)s。"
+msgstr "坦克配备拥有%(skillName)s%(skillType)s的乘员。"
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/oneSkill/forOne"
-msgstr "坦克配备%(level)d%%乘员，其中%(role)s具有%(skillType)s%(skillName)s。"
+msgstr "坦克配备乘员，其中%(role)s拥有%(skillName)s%(skillType)s。"
 
 msgid "vehiclePreview/vehiclePanel/info/header/noCrew"
 msgstr "坦克没有乘员"
 
 msgid "vehiclePreview/vehiclePanel/info/header/withCrew"
-msgstr "坦克配备%d%%乘员"
+msgstr "坦克配备乘员"
 
 msgid "vehicleSelector/filter/mainVehicle"
 msgstr "筛选主力坦克。"
@@ -11196,9 +11365,6 @@ msgstr "无法出售坦克"
 
 msgid "vehicleSellDialog/acceptButtonTooltip/notEnoughCurrency/body"
 msgstr "拆卸配件的资源不足"
-
-msgid "vehicleSellDialog/acceptButtonTooltip/notEnoughTankmenBerths/body"
-msgstr "兵营中乘员床位不足"
 
 msgid "vehicleSellDialog/acceptButtonTooltip/vehicleSellLimit/body"
 msgstr "已超过每日坦克出售上限"

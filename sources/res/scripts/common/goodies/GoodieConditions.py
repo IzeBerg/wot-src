@@ -1,4 +1,4 @@
-
+from typing import TypeVar
 
 class Condition(object):
 
@@ -19,3 +19,6 @@ class MaxVehicleLevel(Condition):
 
     def __lt__(self, other):
         return self.level < other.level
+
+
+GoodieConditionType = TypeVar('GoodieConditionType', bound=Condition)

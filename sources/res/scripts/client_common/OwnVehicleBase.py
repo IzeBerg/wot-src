@@ -1,7 +1,7 @@
 from collections import namedtuple
 from functools import partial
 import BigWorld, math
-from constants import VEHICLE_SETTING, DAMAGE_INFO_CODES, DAMAGE_INFO_INDICES
+from constants import VEHICLE_SETTING, DAMAGE_INFO_CODES, DAMAGE_INFO_INDICES, RespawnState
 from items import vehicles, ITEM_TYPES
 from wotdecorators import noexcept
 Cooldowns = namedtuple('Cooldows', ['id', 'leftTime', 'baseTime'])
@@ -35,12 +35,18 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         self.__dict__.clear()
         return
 
+    @property
+    def __inRespawn(self):
+        return self.entity.enableExternalRespawn and self.entity.VehicleRespawnComponent.respawnState == RespawnState.RESPAWNING
+
     @noexcept
     def update_vehicleAmmoList(self, ammoList):
-        avatar = self._avatar()
-        if not avatar:
+        if self.__inRespawn:
             return
         else:
+            avatar = self._avatar()
+            if not avatar:
+                return
             for vehicleAmmo in ammoList:
                 timeRemaining = vehicleAmmo.endTime
                 if timeRemaining > 0:
@@ -216,6 +222,8 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
 
     @noexcept
     def update_vehicleHealthInfo(self, data):
+        if self.__inRespawn:
+            return
         avatar = self._avatar()
         if not avatar:
             return
@@ -307,6 +315,8 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         return 0
 
     def setNested_vehicleAmmoList(self, path, prev):
+        if self.__inRespawn:
+            return
         avatar = self._avatar()
         if not avatar:
             return

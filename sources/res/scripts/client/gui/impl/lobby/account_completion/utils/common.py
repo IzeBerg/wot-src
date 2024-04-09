@@ -1,5 +1,4 @@
 import typing
-from enum import Enum
 from constants import EMAIL_CONFIRMATION_QUEST_ID
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
@@ -25,13 +24,6 @@ _BONUSES_ORDER = (
  'customizations', 'tokens', 'goodies', Currency.EVENT_COIN)
 RESTRICTED_REQUEST_MIN_TIME = 5
 DISABLE_BUTTON_TIME = 90
-SUPPORT_URL = 'accountCompletionSupportURL'
-
-class AccountCompletionType(str, Enum):
-    UNDEFINED = 'undefined'
-    SOI = 'soi'
-    DOI = 'doi'
-
 
 def _keyBonusesOrder(bonus):
     if bonus.getName() in _BONUSES_ORDER:

@@ -2090,6 +2090,10 @@ class VehicleType(object):
     def isOptionalDevicesLocked(self):
         return 'lockOptionalDevices' in self.tags
 
+    @property
+    def innationID(self):
+        return self.id[1]
+
     def update(self, data):
         if json_vehicle_reader:
             json_vehicle_reader.readVehicle(self, data)

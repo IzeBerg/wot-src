@@ -69,6 +69,12 @@ msgstr "平局!"
 msgid "battle_notifier/win"
 msgstr "胜利!"
 
+msgid "bot/boss"
+msgstr "首领"
+
+msgid "bot/elite"
+msgstr "精英"
+
 msgid "burnout/hint/engineDamageWarning"
 msgstr "损伤警告"
 
@@ -643,7 +649,7 @@ msgid "efficiencyRibbons/assistSpot"
 msgstr "点亮损伤"
 
 msgid "efficiencyRibbons/assistStun"
-msgstr "您弹震后的损伤"
+msgstr "由您造成弹震后受到的损伤"
 
 msgid "efficiencyRibbons/assistTrack"
 msgstr "击毁履带"
@@ -878,6 +884,12 @@ msgstr "%(device)s配件阻止了发动机损坏"
 
 msgid "optDeviceResurrection/fuelTank"
 msgstr "%(device)s配件阻止了坦克着火"
+
+msgid "penetration/high"
+msgstr "高"
+
+msgid "penetration/low"
+msgstr "低"
 
 msgid "personalMissions/tip/additionalHeader"
 msgstr "次要条件:"
@@ -1603,19 +1615,41 @@ msgstr "..."
 msgid "players_panel/unknown_vehicleState"
 msgstr "------"
 
+msgid "postmortem/tips/exitHangar/button"
+msgstr "ESC"
+
 msgid "postmortem/tips/exitHangar/label"
-msgstr "返回车库"
+msgstr "按Esc返回车库。"
 
 msgid "postmortem/tips/exitHangar/text"
-msgstr ""
-"按 Esc，返回车库。\n"
-"选择其它坦克加入战斗。"
+msgstr "选择其它坦克加入战斗。"
+
+msgid "postmortem/tips/freecam/button"
+msgstr "空格"
+
+msgid "postmortem/tips/freecam/label"
+msgstr "自由视角"
+
+msgid "postmortem/tips/freecam/text"
+msgstr "激活自由视角。"
+
+msgid "postmortem/tips/freecamUnavailable/label"
+msgstr "自由视角不可用"
+
+msgid "postmortem/tips/freecamUnavailable/text"
+msgstr "无法在该模式中激活自由视角。"
 
 msgid "postmortem/tips/observerMode/label"
 msgstr "观察视角"
 
 msgid "postmortem/tips/observerMode/text"
-msgstr "使用鼠标左右键可切换车辆。"
+msgstr "在盟友坦克之间切换。"
+
+msgid "postmortem/tips/observerModeFrontline/label"
+msgstr "跟随坦克"
+
+msgid "postmortem/tips/observerModeFrontline/text"
+msgstr "将鼠标指向一辆盟友坦克，然后左键单击即可跟随该坦克。"
 
 msgid "postmortem_messages/DEATH_FROM_ARTILLERY_PROTECTION"
 msgstr "坦克被炮台击毁"
@@ -1720,6 +1754,10 @@ msgid "postmortem_messages/DEATH_FROM_SHOT"
 msgstr "坦克被该玩家击毁"
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE"
+msgstr "坦克被空袭击毁。"
+
+msgid ""
+"postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_WITH_OWN_DAMAGE_BATTLE_ROYALE"
 msgstr "坦克被空袭击毁。"
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_ARTILLERY"

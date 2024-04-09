@@ -39,13 +39,27 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>Fov</name>
-						<value>90</value>
+						<name>Name</name>
+						<value/>
 					</property>
 					<property>
-						<name>Aspect</name>
+						<name>Rotation sensitivity</name>
 						<value>
-							1.7777778
+							0.005
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Zoom sensitivity</name>
+						<value>
+							0.003
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Fluency</name>
+						<value>
+							0.1
 							<!--BW_String-->
 						</value>
 					</property>
@@ -60,65 +74,98 @@
 				<flags>3</flags>
 				<config>
 					<property>
-						<name>maxAlpha</name>
+						<name>activeEnableCenter</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>activeMaxAlpha</name>
 						<value>
-							0.5
+							0.34
 							<!--BW_String-->
 						</value>
 					</property>
 					<property>
-						<name>height</name>
-						<value>16</value>
+						<name>activeCentarAlpha</name>
+						<value>
+							0.25
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>activeWallHeight</name>
+						<value>20</value>
+					</property>
+					<property>
+						<name>activeCenterHeight</name>
+						<value>10</value>
+					</property>
+					<property>
+						<name>activeGroundLineHeight</name>
+						<value>
+							0.7
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>activeGroundLineAlpha</name>
+						<value>
+							0.75
+							<!--BW_String-->
+						</value>
 					</property>
 					<property>
 						<name>activeColor</name>
-						<object>
-							<property>
-								<name>list</name>
-								<collection>
-									<item>
-										<value>
-											0.8
-											<!--BW_String-->
-										</value>
-									</item>
-									<item>
-										<value>0</value>
-									</item>
-									<item>
-										<value>0</value>
-									</item>
-									<item>
-										<value>0</value>
-									</item>
-								</collection>
-							</property>
-						</object>
+						<value>
+							0.8 0 0 0
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>waitingEnableCenter</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>waitingMaxAlpha</name>
+						<value>
+							0.34
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>waitingCentarAlpha</name>
+						<value>
+							0.3
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>waitingWallHeight</name>
+						<value>14</value>
+					</property>
+					<property>
+						<name>waitingCenterHeight</name>
+						<value>6</value>
+					</property>
+					<property>
+						<name>waitingGroundLineHeight</name>
+						<value>
+							0.7
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>waitingGroundLineAlpha</name>
+						<value>
+							0.75
+							<!--BW_String-->
+						</value>
 					</property>
 					<property>
 						<name>waitingColor</name>
-						<object>
-							<property>
-								<name>list</name>
-								<collection>
-									<item>
-										<value>1</value>
-									</item>
-									<item>
-										<value>
-											0.6
-											<!--BW_String-->
-										</value>
-									</item>
-									<item>
-										<value>0</value>
-									</item>
-									<item>
-										<value>0</value>
-									</item>
-								</collection>
-							</property>
-						</object>
+						<value>
+							1 0.6 0 0
+							<!--BW_String-->
+						</value>
 					</property>
 				</config>
 			</component>

@@ -249,7 +249,7 @@ msgid "blackout_headlights_1/name"
 msgstr "车头灯调暗(类型 1)"
 
 msgid "bomber/longDescr"
-msgstr "命令对地攻击机向指定区域投掷炸弹，弹震敌方坦克并造成损伤。落点区域中心的坦克将受到最多损伤。对拥有轻装甲和中等装甲的坦克特别有效。"
+msgstr "命令对地攻击机向指定区域投掷炸弹，对敌方坦克造成弹震与损伤。落点区域中心的坦克将受到最高损伤。对拥有轻型和中型装甲的坦克特别有效。"
 
 msgid "bomber/name"
 msgstr "空袭"
@@ -282,16 +282,16 @@ msgid "brRepairkit/short_special"
 msgstr "修复坦克上所有受损的模块，并移除负面效果。"
 
 msgid "br_bomber/descr"
-msgstr "轰炸指定区域内的敌方坦克，弹震并造成损伤。"
+msgstr "轰炸指定区域内的敌方坦克，造成弹震及损伤。"
 
 msgid "br_bomber/longDescr"
-msgstr "轰炸指定区域内的敌方坦克，弹震并造成损伤。"
+msgstr "轰炸指定区域内的敌方坦克，造成弹震及损伤。"
 
 msgid "br_bomber/name"
 msgstr "空袭"
 
 msgid "br_bomber/shortDescr"
-msgstr "轰炸指定区域内的敌方坦克，弹震并造成损伤。"
+msgstr "轰炸指定区域内的敌方坦克，造成弹震及损伤。"
 
 msgid "br_minefield/descr"
 msgstr "在指定区域部署激活的地雷，雷区将持续生效一段时间。敌人可以通过射击摧毁您的地雷。"
@@ -397,10 +397,10 @@ msgid "camouflageNet_tier3/name"
 msgstr "3级伪装网"
 
 msgid "chocolate/always"
-msgstr "{colorTagOpen}%(crewLevel)s{colorTagClose}所有乘员特长在整场战斗中的熟练度。"
+msgstr "{colorTagOpen}%(crewLevel)s{colorTagClose}乘员效率加成，整场战斗有效。"
 
 msgid "chocolate/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose}乘员所有特长熟练度。"
+msgstr "{colorTagOpen}+10%{colorTagClose}乘员效率加成。"
 
 msgid "chocolate/long_special"
 msgstr "战斗开始时自动激活，在战斗过程中将持续生效。仅适用于D系坦克。"
@@ -470,10 +470,10 @@ msgid "coatedOptics_tier3/name"
 msgstr "3级高级光学观察镜"
 
 msgid "cocacola/always"
-msgstr "{colorTagOpen}%(crewLevel)s{colorTagClose}所有乘员特长在整场战斗中的熟练度。"
+msgstr "{colorTagOpen}%(crewLevel)s{colorTagClose}乘员效率加成，整场战斗有效。"
 
 msgid "cocacola/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose}乘员所有特长熟练度。"
+msgstr "{colorTagOpen}+10%{colorTagClose}乘员效率加成。"
 
 msgid "cocacola/long_special"
 msgstr "战斗开始时自动激活，在战斗过程中将持续生效。仅适用于M系坦克。"
@@ -510,9 +510,9 @@ msgstr "激进侦察"
 
 msgid "comp7_ally_support/descr/active"
 msgstr ""
-"团队中每一种不同的坦克角色可让乘员的主要专业水平获得{colorTagOpen}%(crewBuff_1).1f/%(crewBuff_2).1f/%(crewBuff_3).1f%%{colorTagClose}的加成，持续{colorTagOpen}%(duration)d秒{colorTagClose}。\n"
+"团队中每一种不同的坦克角色可让乘员效率获得{colorTagOpen}%(crewBuff_1).1f/%(crewBuff_2).1f/%(crewBuff_3).1f%%{colorTagClose}的加成，持续{colorTagOpen}%(duration)d秒{colorTagClose}。\n"
 "\n"
-"此加成的计算会始终将自身坦克包括在内。"
+"计算该加成时，自身坦克将始终包括在内。"
 
 msgid "comp7_ally_support/name"
 msgstr "薪火相传"
@@ -526,7 +526,7 @@ msgstr "现场维修"
 
 msgid "comp7_aoe_inspire/descr/active"
 msgstr ""
-"自身及盟友乘员的主要专业水平获得{colorTagOpen}%(crewBuff_1).0f/%(crewBuff_2).0f/%(crewBuff_3).0f%%{colorTagClose}的加成，持续{colorTagOpen}%(duration)d秒{colorTagClose}。"
+"自身及盟友坦克的乘员效率获得{colorTagOpen}%(crewBuff_1).0f/%(crewBuff_2).0f/%(crewBuff_3).0f%%{colorTagClose}的加成，持续{colorTagOpen}%(duration)d秒{colorTagClose}。"
 
 msgid "comp7_aoe_inspire/name"
 msgstr "鼓舞"
@@ -582,7 +582,9 @@ msgid "comp7_juggernaut/descr/active"
 msgstr ""
 "您坦克的发动机功率将提升{colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}，受损模块的维修速度将提升{colorTagOpen}%(repairBuff)d%%{colorTagClose}，弹震持续时间将减少{colorTagOpen}%(stunDurationResist)d%%{colorTagClose}，持续{colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d秒{colorTagClose}。\n"
 "\n"
-"此能力激活时，您的坦克每被敌方炮弹击中一次，当前剩余的装填时间就会减少{colorTagOpen}%(gunReloadBoost)d秒{colorTagClose}。"
+"此能力激活时，您的坦克每被敌方炮弹击中一次，当前剩余的装填时间就会减少{colorTagOpen}%(gunReloadBoost)d秒{colorTagClose}。\n"
+"\n"
+"战斗开始时，此角色能力的充能等级为1。"
 
 msgid "comp7_juggernaut/name"
 msgstr "势不可挡"
@@ -607,7 +609,7 @@ msgid "comp7_redline/descr/active"
 msgstr ""
 "炮击会在{colorTagOpen}%(delay)d秒{colorTagClose}后攻击指定区域。\n"
 "\n"
-"弹震{colorTagOpen}%(radius_1)d/%(radius_2)d/%(radius_3)d米{colorTagClose}半径范围内的所有坦克{colorTagOpen}%(stunDuration_1)d/%(stunDuration_2)d/%(stunDuration_3)d秒{colorTagClose}，并对范围内的所有敌方坦克造成{colorTagOpen}%(damage_1)d/%(damage_2)d/%(damage_3)d{colorTagClose}点左右的损伤。"
+"对{colorTagOpen}%(radius_1)d/%(radius_2)d/%(radius_3)d米{colorTagClose}半径范围内的所有坦克造成持续{colorTagOpen}%(stunDuration_1)d/%(stunDuration_2)d/%(stunDuration_3)d秒{colorTagClose}的弹震，并对范围内的所有敌方坦克造成{colorTagOpen}%(damage_1)d/%(damage_2)d/%(damage_3)d{colorTagClose}点的损伤。"
 
 msgid "comp7_redline/name"
 msgstr "火力掩护"
@@ -633,7 +635,9 @@ msgstr ""
 "\n"
 "如果坦克射击时没有被点亮，其射击造成的损伤将提高{colorTagOpen}%(damageFactors_1).0f/%(damageFactors_2).0f/%(damageFactors_3).0f%%{colorTagClose}。\n"
 "\n"
-"在{colorTagOpen}%(damageDistance)d米{colorTagClose}外造成射击损伤时，能力持续时间将重置。"
+"在{colorTagOpen}%(damageDistance)d米{colorTagClose}外造成射击损伤时，能力持续时间将重置。\n"
+"\n"
+"战斗开始时，此角色能力的充能等级为1。"
 
 msgid "comp7_sniper/name"
 msgstr "百步穿杨"
@@ -683,30 +687,30 @@ msgstr "特长:"
 
 msgid "deluxAimingStabilizer/long_special"
 msgstr ""
-"火炮垂直稳定器(射击后、移动中和炮塔旋转时的精度{colorTagOpen}提高20%{colorTagClose})的改进版本具有更优秀的性能: "
-"射击后、移动中和炮塔旋转时的精度{colorTagOpen}提高27.5%{colorTagClose}。该配件适用于各种系别和类型的坦克。只能使用战争债券拆卸。"
+"火炮垂直稳定器(射击后、移动中和炮塔旋转时的精度{colorTagOpen}增强20%{colorTagClose})的改进版本具有更优秀的性能: "
+"射击后、移动中和炮塔旋转时的精度{colorTagOpen}增强27.5%{colorTagClose}。该配件适用于所有系别和类型的坦克。可使用战争债券或通过坦克世界Plus订阅拆卸。"
 
 msgid "deluxAimingStabilizer/name"
 msgstr "稳定设备系统"
 
 msgid "deluxCoatedOptics/long_special"
 msgstr ""
-"高级光学观察镜(观察范围{colorTagOpen}增加10%{colorTagClose})的改进版本提供更强的效果: "
-"观察范围{colorTagOpen}增加13.5%{colorTagClose}。该配件适用于各种系别和类型的坦克。只能使用战争债券拆卸。"
+"高级光学观察镜(观察范围{colorTagOpen}提高10%{colorTagClose})的改进版本提供更强的效果: "
+"观察范围{colorTagOpen}提高13.5%{colorTagClose}。该配件适用于所有系别和类型的坦克。可使用战争债券或通过坦克世界Plus订阅拆卸。"
 
 msgid "deluxCoatedOptics/name"
 msgstr "试验型观察镜"
 
 msgid "deluxEnhancedAimDrives/long_special"
 msgstr ""
-"改进型炮控系统(瞄准速度{colorTagOpen}增加10%{colorTagClose})的改进版本提供更强的效果: "
-"瞄准速度{colorTagOpen}增加13.5%{colorTagClose}。该配件适用于各种系别和类型的坦克。只能使用战争债券拆卸。"
+"改进型炮控系统(瞄准速度{colorTagOpen}提高10%{colorTagClose})的改进版本提供更强的效果: "
+"瞄准速度{colorTagOpen}提高13.5%{colorTagClose}。该配件适用于所有系别和类型的坦克。可使用战争债券或通过坦克世界Plus订阅拆卸。"
 
 msgid "deluxEnhancedAimDrives/name"
 msgstr "耐磨型炮控系统"
 
 msgid "deluxImprovedConfiguration/long_special"
-msgstr "类似于结构调整，但效果更强。该配件适用于各种系别和类型的坦克、只能使用战争债券拆卸。"
+msgstr "类似于结构调整，但效果更强。该配件适用于所有系别和类型的坦克，可使用战争债券或通过坦克世界Plus订阅拆卸。"
 
 msgid "deluxImprovedConfiguration/name"
 msgstr "结构改进"
@@ -716,7 +720,8 @@ msgstr "加速维修，保护弹药架、油箱和发动机"
 
 msgid "deluxImprovedVentilation/long_special"
 msgstr ""
-"通风系统(全体乘员特长{colorTagOpen}+5%{colorTagClose})为改进型配件版本，提供更强的效果:所有乘员特长{colorTagOpen}+8.5%{colorTagClose}。该配件适用于所有系别和类型的坦克。只能使用战争债券拆卸。"
+"通风系统({colorTagOpen}+5%{colorTagClose}乘员效率加成)的改进型配件版本，提供更强的效果: "
+"{colorTagOpen}+8.5%{colorTagClose}乘员效率。该配件适用于所有系别和类型的坦克。可使用战争债券或通过坦克世界Plus订阅拆卸。"
 
 msgid "deluxImprovedVentilation/name"
 msgstr "通风系统"
@@ -724,7 +729,7 @@ msgstr "通风系统"
 msgid "deluxRammer/long_special"
 msgstr ""
 "输弹机(装弹时间{colorTagOpen}缩短10%{colorTagClose})的改进版本提供更强的效果: "
-"装填时间{colorTagOpen}缩短13.5%{colorTagClose}。该配件适用于各种系别和类型的坦克。只能使用战争债券拆卸。"
+"装填时间{colorTagOpen}缩短13.5%{colorTagClose}。该配件适用于所有系别和类型的坦克。可使用战争债券或通过坦克世界Plus订阅拆卸。"
 
 msgid "deluxRammer/name"
 msgstr "改进型装填系统"
@@ -737,7 +742,8 @@ msgstr "维修后恢复悬挂装置的生命值。"
 
 msgid "deluxeExtraHealthReserve/long_special"
 msgstr ""
-"改进耐久的改进型版本：{colorTagOpen}+12.5%{colorTagClose}坦克生命值，{colorTagOpen}+75%{colorTagClose}悬挂装置耐久度，{colorTagOpen}+30%{colorTagClose}悬挂装置维修速度，{colorTagOpen}+10%{colorTagClose}承载能力，{colorTagOpen}–75%{colorTagClose}悬挂装置受冲击时对车体造成的损伤。修复后完全恢复悬挂装置生命值。降低受到损伤时履带损坏的几率，使您的坦克尽量保持机动状态。此配件适用于所有系别和类型的坦克(自行火炮除外)。只能使用战争债券进行拆卸。"
+"改进耐久的改进型版本: "
+"{colorTagOpen}+12.5%{colorTagClose}坦克生命值，{colorTagOpen}+75%{colorTagClose}悬挂装置耐久度，{colorTagOpen}+30%{colorTagClose}悬挂装置维修速度，{colorTagOpen}+10%{colorTagClose}承载能力，{colorTagOpen}–75%{colorTagClose}悬挂装置受冲击时对车体造成的损伤。修复后完全恢复悬挂装置耐久度。降低受到损伤时履带损坏的几率，使您的坦克尽量保持机动状态。该配件适用于所有系别和类型的坦克(自行火炮除外)。可使用战争债券或通过坦克世界Plus订阅拆卸。"
 
 msgid "deluxeExtraHealthReserve/name"
 msgstr "炮弹抗性加强"
@@ -750,7 +756,7 @@ msgstr ""
 "改进型旋转装置的改进版本提供更强的效果: 火炮旋转速度{colorTagOpen}+17.5% "
 "{colorTagClose}，车体旋转速度{colorTagOpen}+17.5% "
 "{colorTagClose}，移动和旋转时的炮弹散布范围{colorTagOpen}-17.5% "
-"{colorTagClose}。该配件适用于各种系别和类型的坦克。只能使用战争债券拆卸。"
+"{colorTagClose}。该配件适用于所有系别和类型的坦克。可使用战争债券或通过坦克世界Plus订阅拆卸。"
 
 msgid "deluxeImprovedRotationMechanism/name"
 msgstr "改进型旋转驱动"
@@ -758,9 +764,22 @@ msgstr "改进型旋转驱动"
 msgid "deluxeImprovedRotationMechanism/short_special"
 msgstr "增加旋转速度并降低移动和旋转时的炮弹散布范围"
 
+msgid "deluxeImprovedSights/long_special"
+msgstr ""
+"瞄具的改进型配件版本，提供更强的效果: "
+"正在瞄准或完全瞄准火炮的瞄准圈大小缩小{colorTagOpen}9%{colorTagClose}。因此，您的火炮将有更高几率击中目标。该配件适用于所有系别和类型的坦克。可使用战争债券或通过坦克世界Plus订阅拆卸。"
+
+msgid "deluxeImprovedSights/name"
+msgstr "强化型瞄具"
+
+msgid "deluxeImprovedSights/short_special"
+msgstr "减少火炮的炮弹散布范围"
+
 msgid "deluxeTurbocharger/long_special"
 msgstr ""
-"涡轮增压器的改进型版本（{colorTagOpen}+7.5%{colorTagClose}发动机功率，{colorTagOpen}+4千米/小时{colorTagClose}最大前进速度，{colorTagOpen}+2千米/小时{colorTagClose}最大倒车速度）：{colorTagOpen}+12.5%{colorTagClose}发动机功率，{colorTagOpen}+6千米/小时{colorTagClose}最大前进速度{colorTagOpen}+4千米/小时{colorTagClose}最大倒车速度。此装备适用于所有系别和类型的坦克（轮式战车除外）。只能使用战争债券进行拆卸。"
+"涡轮增压器的改进型版本({colorTagOpen}+7.5%{colorTagClose}发动机功率，{colorTagOpen}+4千米/小时{colorTagClose}最大前进速度，{colorTagOpen}+2千米/小时{colorTagClose}最大倒车速度):"
+" "
+"{colorTagOpen}+12.5%{colorTagClose}发动机功率，{colorTagOpen}+6千米/小时{colorTagClose}最大前进速度{colorTagOpen}+4千米/小时{colorTagClose}最大倒车速度。该配件适用于所有系别和类型的坦克(轮式战车除外)。可使用战争债券或通过坦克世界Plus订阅拆卸。"
 
 msgid "deluxeTurbocharger/name"
 msgstr "改进型压缩机"
@@ -773,7 +792,7 @@ msgstr "在指定区域内部署激活的雷区，效果会持续一段时间。
 
 msgid "eb_minefield/long_descr"
 msgstr ""
-"在指定区域内部署激活的雷区，效果会持续一段时间。地雷被引爆时会弹震并对敌方坦克造成损伤。敌方在靠近时可以发现地雷，也可以使用侦察飞行或守卫者战斗储备进行探测。炮弹或爆炸可以摧毁地雷。"
+"在指定区域内部署激活的雷区，效果会持续一段时间。引爆时会对敌方坦克造成弹震与损伤。敌方在接近时、或使用侦察飞行/守卫者战斗储备时均可发现雷区。炮弹或爆炸可以摧毁地雷。"
 
 msgid "eb_minefield/name"
 msgstr "雷区"
@@ -1043,10 +1062,10 @@ msgid "healPoint/shortDescr"
 msgstr "在坦克周围生成一片恢复区域。在该区域内，玩家以及小队成员每秒可以恢复一定比例的生命值，持续%(duration)s秒。"
 
 msgid "hotCoffee/always"
-msgstr "%(crewLevel)s所有乘员特长在整场战斗中的熟练度。"
+msgstr "%(crewLevel)s乘员效率加成，整场战斗有效。"
 
 msgid "hotCoffee/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose}乘员所有特长熟练度。"
+msgstr "{colorTagOpen}+10%{colorTagClose}乘员效率加成。"
 
 msgid "hotCoffee/long_special"
 msgstr "战斗开始时自动激活，在战斗过程中将持续生效。仅适用于F系坦克。"
@@ -1192,7 +1211,7 @@ msgid "improvedVentilation/name"
 msgstr "改进型通风系统"
 
 msgid "improvedVentilationBattleBooster/descr"
-msgstr "%s安装改进型通风系统(任意等级)、通风系统或赏金通风系统时的全体乘员特长。"
+msgstr "%s安装改进型通风系统(任意等级)、通风系统或赏金通风系统时的乘员效率加成。"
 
 msgid "improvedVentilationBattleBooster/gain/deluxe"
 msgstr "+2.5%"
@@ -1254,10 +1273,10 @@ msgstr ""
 "%(crewHitChance)s 降低乘员受伤几率"
 
 msgid "largeMedkit/descr"
-msgstr "治疗所有伤员并解除弹震效果。"
+msgstr "治疗所有受伤乘员并移除弹震效果。"
 
 msgid "largeMedkit/long_special"
-msgstr "激活后治疗所有受伤的乘员并解除弹震效果。被动效果可以降低乘员受伤几率。该给养适用于任意系别的所有类型坦克。"
+msgstr "激活后治疗所有受伤乘员并移除弹震效果。被动效果可以降低乘员受伤几率。该给养适用于任意系别的所有类型坦克。"
 
 msgid "largeMedkit/name"
 msgstr "大急救箱"
@@ -1266,7 +1285,7 @@ msgid "largeMedkit/onUse"
 msgstr "治疗所有受伤的车组乘员。可以在一场战斗中多次使用。如果使用过一次以上，该给养在战斗结束后会被移除。"
 
 msgid "largeMedkit/removingStun/onUse"
-msgstr "治疗所有受伤的车组乘员并解除弹震效果。可以在一场战斗中多次使用。如果使用过一次以上，该给养在战斗结束后会被移除。"
+msgstr "治疗所有受伤的乘员并移除弹震效果。可以在一场战斗中多次使用。如果使用过一次以上，该给养在战斗结束后会被移除。"
 
 msgid "largeMedkit/restriction"
 msgstr "?empty?"
@@ -1469,7 +1488,7 @@ msgstr "提供100%熟练度的规整弹药特长，或提升其效果"
 
 msgid "poi_artillery_aoe/descr"
 msgstr ""
-"火炮支援会在{colorTagOpen}3秒{colorTagClose}后攻击指定区域。弹震25米半径范围内的所有坦克{colorTagOpen}10秒{colorTagClose}，并对范围内的所有敌方坦克造成{colorTagOpen}350{colorTagClose}点左右的损伤。"
+"火炮支援会在{colorTagOpen}3秒{colorTagClose}后攻击指定区域。对25米半径范围内的所有坦克造成持续{colorTagOpen}10秒{colorTagClose}的弹震，并对范围内的所有敌方坦克造成{colorTagOpen}350{colorTagClose}点的损伤。"
 
 msgid "poi_artillery_aoe/name"
 msgstr "火炮支援"
@@ -1545,10 +1564,10 @@ msgid "rancorousBattleBooster/short_special"
 msgstr "提供100%熟练度的复仇女神特长，或提升其效果"
 
 msgid "ration/always"
-msgstr "%(crewLevel)s所有乘员特长在整场战斗中的熟练度。"
+msgstr "%(crewLevel)s乘员效率加成，整场战斗有效。"
 
 msgid "ration/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose}乘员所有特长熟练度。"
+msgstr "{colorTagOpen}+10%{colorTagClose}乘员效率加成。"
 
 msgid "ration/long_special"
 msgstr "战斗开始时自动激活，在战斗过程中将持续生效。仅适用于S系坦克。"
@@ -1566,10 +1585,10 @@ msgid "ration/short_special"
 msgstr "提高S系乘员的属性"
 
 msgid "ration_china/always"
-msgstr "%(crewLevel)s所有乘员特长在整场战斗中的熟练度。"
+msgstr "%(crewLevel)s乘员效率加成，整场战斗有效。"
 
 msgid "ration_china/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose}乘员所有特长熟练度。"
+msgstr "{colorTagOpen}+10%{colorTagClose}乘员效率加成。"
 
 msgid "ration_china/long_special"
 msgstr "战斗开始时自动激活，在战斗过程中将持续生效。仅适用于C系坦克。"
@@ -1587,10 +1606,10 @@ msgid "ration_china/short_special"
 msgstr "提高C系乘员的属性"
 
 msgid "ration_czech/always"
-msgstr "%(crewLevel)s所有乘员特长在整场战斗中的熟练度。"
+msgstr "%(crewLevel)s乘员效率加成，整场战斗有效。"
 
 msgid "ration_czech/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose}乘员所有特长熟练度。"
+msgstr "{colorTagOpen}+10%{colorTagClose}乘员效率加成。"
 
 msgid "ration_czech/long_special"
 msgstr "战斗开始时自动激活，在战斗过程中将持续生效。仅适用于J系坦克。"
@@ -1608,10 +1627,10 @@ msgid "ration_czech/short_special"
 msgstr "提高J系乘员属性"
 
 msgid "ration_italy/always"
-msgstr "%(crewLevel)s所有乘员特长在整场战斗中的熟练度。"
+msgstr "%(crewLevel)s乘员效率加成，整场战斗有效。"
 
 msgid "ration_italy/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose}乘员所有特长熟练度。"
+msgstr "{colorTagOpen}+10%{colorTagClose}乘员效率加成。"
 
 msgid "ration_italy/long_special"
 msgstr "战斗开始时自动激活，在战斗过程中将持续生效。仅适用于I系坦克。"
@@ -1629,10 +1648,10 @@ msgid "ration_italy/short_special"
 msgstr "提高I系乘员属性"
 
 msgid "ration_japan/always"
-msgstr "%(crewLevel)s所有乘员特长在整场战斗中的熟练度。"
+msgstr "%(crewLevel)s乘员效率加成，整场战斗有效。"
 
 msgid "ration_japan/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose}乘员所有特长熟练度。"
+msgstr "{colorTagOpen}+10%{colorTagClose}乘员效率加成。"
 
 msgid "ration_japan/long_special"
 msgstr "战斗开始时自动激活，在战斗过程中将持续生效。仅适用于R系坦克。"
@@ -1650,10 +1669,10 @@ msgid "ration_japan/short_special"
 msgstr "提高R系乘员的属性"
 
 msgid "ration_poland/always"
-msgstr "%(crewLevel)s所有乘员特长在整场战斗中的熟练度。"
+msgstr "%(crewLevel)s乘员效率加成，整场战斗有效。"
 
 msgid "ration_poland/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose}乘员所有特长熟练度。"
+msgstr "{colorTagOpen}+10%{colorTagClose}乘员效率加成。"
 
 msgid "ration_poland/long_special"
 msgstr "战斗开始时自动激活，在战斗过程中将持续生效。仅适用于B系坦克。"
@@ -1671,10 +1690,10 @@ msgid "ration_poland/short_special"
 msgstr "提高B系乘员属性"
 
 msgid "ration_sweden/always"
-msgstr "%(crewLevel)s所有乘员特长在整场战斗中的熟练度。"
+msgstr "%(crewLevel)s乘员效率加成，整场战斗有效。"
 
 msgid "ration_sweden/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose}乘员所有特长熟练度。"
+msgstr "{colorTagOpen}+10%{colorTagClose}乘员效率加成。"
 
 msgid "ration_sweden/long_special"
 msgstr "战斗开始时自动激活，在战斗过程中将持续生效。仅适用于V系坦克。"
@@ -1692,10 +1711,10 @@ msgid "ration_sweden/short_special"
 msgstr "提高V系乘员的属性"
 
 msgid "ration_uk/always"
-msgstr "%(crewLevel)s所有乘员特长在整场战斗中的熟练度。"
+msgstr "%(crewLevel)s乘员效率加成，整场战斗有效。"
 
 msgid "ration_uk/descr"
-msgstr "{colorTagOpen}+10%{colorTagClose}乘员所有特长熟练度。"
+msgstr "{colorTagOpen}+10%{colorTagClose}乘员效率加成。"
 
 msgid "ration_uk/long_special"
 msgstr "战斗开始时自动激活，在战斗过程中将持续生效。仅适用于Y系坦克。"
@@ -1744,16 +1763,16 @@ msgid "removedRpmLimiter/short_special"
 msgstr "{colorTagOpen}+10%{colorTagClose}发动机功率，但会损伤发动机。"
 
 msgid "repairpoint/descr"
-msgstr "创建一片可以修复所有受损模块，移除弹震效果，回复生命值的修理区。"
+msgstr "生成一片临时性的固定区域，可以修复所有受损模块，移除弹震效果并恢复生命值。"
 
 msgid "repairpoint/long_special"
-msgstr "创建一片可以修复所有受损模块，移除弹震效果，回复生命值的修理区，持续%(duration)s秒。"
+msgstr "生成一片临时性的固定区域，持续%(duration)s秒。可以修复所有受损模块，移除弹震效果并恢复生命值。"
 
 msgid "repairpoint/name"
 msgstr "维修区"
 
 msgid "repairpoint/short_special"
-msgstr "创建一片可以修复所有受损模块，移除弹震效果，回复生命值的修理区。"
+msgstr "生成一片临时性的固定区域，可以修复所有受损模块，移除弹震效果并恢复生命值。"
 
 msgid "rifled_barrels_cleaning_1/name"
 msgstr "炮管膛线清理(类型 1)"
@@ -2505,25 +2524,25 @@ msgid "smallMedkit/descr"
 msgstr "治疗一名受伤乘员并移除弹震效果。"
 
 msgid "smallMedkit/long_special"
-msgstr "激活后治疗某一受伤的乘员并移除弹震状态。适用于任意系别的所有坦克类型。如果使用过一次以上，该给养在战斗结束后会被移除。"
+msgstr "使用后治疗一名受伤乘员并移除弹震效果。适用于任意系别的所有类型坦克。如果使用过一次以上，该给养在战斗结束后会被移除。"
 
 msgid "smallMedkit/name"
 msgstr "小急救包"
 
 msgid "smallMedkit/onUse"
-msgstr "治疗某一受伤的车组乘员并移除弹震状态。可以在一场战斗中多次使用。如果使用过一次以上，该给养在战斗结束后会被移除。"
+msgstr "治疗一名受伤乘员并移除弹震效果。可以在一场战斗中多次使用。如果使用过一次以上，该给养在战斗结束后会被移除。"
 
 msgid "smallMedkit/removingStun/onUse"
-msgstr "治疗一个受伤乘员并解除弹震效果。可以在一场战斗中多次使用。如果使用过一次以上，该给养在战斗结束后会被移除。"
+msgstr "治疗一名受伤乘员并移除弹震效果。可以在一场战斗中多次使用。如果使用过一次以上，该给养在战斗结束后会被移除。"
 
 msgid "smallMedkit/restriction"
 msgstr "?empty?"
 
 msgid "smallMedkit/short_special"
-msgstr "治疗某一受伤的车组乘员并移除弹震状态"
+msgstr "治疗一名受伤乘员并移除弹震效果"
 
 msgid "smallMedkit/stunDisabled/descr"
-msgstr "治疗某一受伤的车组乘员并移除弹震状态。"
+msgstr "治疗一名受伤乘员并移除弹震效果。"
 
 msgid "smallRepairkit/always"
 msgstr "?empty?"

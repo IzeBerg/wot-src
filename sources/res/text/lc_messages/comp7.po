@@ -122,8 +122,14 @@ msgstr "同场竞技，一显身手！"
 msgid "banner/infoSmall/disabled"
 msgstr "等待黄金时间开启"
 
-msgid "banner/season"
+msgid "banner/season/first"
+msgstr "苍蓝天马"
+
+msgid "banner/season/second"
 msgstr "绯红天马"
+
+msgid "banner/season/third"
+msgstr "翡翠天马"
 
 msgid "banner/seasonDate/seasonLasts"
 msgstr "%(season)s，%(month)s%(day)s日结束"
@@ -644,39 +650,6 @@ msgstr "评级点数"
 msgid "membersWindow/memberCountDropdown/description"
 msgstr "组队玩家"
 
-msgid "modifier/formattedValueType/nullishDeviation"
-msgstr "0%"
-
-msgid "modifier/formattedValueType/nullishDispersion"
-msgstr "–"
-
-msgid "modifier/name/equipmentCooldown"
-msgstr "给养冷却时间"
-
-msgid "modifier/name/shotDispersionRadius"
-msgstr "100米精度加成"
-
-msgid "modifier/name/vehicleHealth"
-msgstr "坦克生命值"
-
-msgid "modifier/name/visionMinRadius"
-msgstr "强制点亮范围"
-
-msgid "modifier/name/visionTime"
-msgstr "可见时长"
-
-msgid "modifier/valueType/deviation"
-msgstr "+/-%(deviation)s%"
-
-msgid "modifier/valueType/meters"
-msgstr "%(meters)s米"
-
-msgid "modifier/valueType/percentage"
-msgstr "%(percentage)s%"
-
-msgid "modifier/valueType/seconds"
-msgstr "%(seconds)s秒"
-
 msgid "noVehicles/howTo/premium"
 msgstr "使用《坦克世界》高级账号"
 
@@ -1136,8 +1109,14 @@ msgstr "前往购买"
 msgid "rewardsScreen/description/qualificationEnded"
 msgstr "已完成天梯战资格赛"
 
-msgid "rewardsScreen/description/season"
+msgid "rewardsScreen/description/season/first"
+msgstr "天梯战苍蓝天马赛季"
+
+msgid "rewardsScreen/description/season/second"
 msgstr "天梯战绯红天马赛季"
+
+msgid "rewardsScreen/description/season/third"
+msgstr "天梯战翡翠天马赛季"
 
 msgid "rewardsScreen/notice/subTitle"
 msgstr "达到此段位后，如果停止参加天梯战模式战斗，您会失去一定的评级点数。"
@@ -1544,6 +1523,18 @@ msgstr "幸运点数"
 msgid "tournament/battleResult/personal/tooltip/descr"
 msgstr "在赛事中不会获取或失去评级点数。"
 
+msgid "tournamentsWidget/heading"
+msgstr "天梯战赛事"
+
+msgid "tournamentsWidget/text/active"
+msgstr "精彩不容错过！"
+
+msgid "tournamentsWidget/text/registration"
+msgstr "报名现已开放！"
+
+msgid "training/battleResult/personal/tooltip/descr"
+msgstr "在天梯战训练中无法获取评级点数。"
+
 msgid "unit/message/modeOffline"
 msgstr "无法加入战斗: 数据库错误。"
 
@@ -1602,40 +1593,49 @@ msgid "whatsNewButtonLabel"
 msgstr "赛季更新"
 
 msgid "whatsNewView/banner/title/large"
-msgstr "绯红天马赛季"
+msgstr "天梯战翡翠天马赛季"
 
 msgid "whatsNewView/banner/title/small"
 msgstr "天梯战有什么新内容？"
 
 msgid "whatsNewView/button/ok"
-msgstr "遵命，指挥官！"
+msgstr "出击！"
 
 msgid "whatsNewView/intro/description"
-msgstr "晋升段位可解锁独特的战争债券物品并获得更多折扣。"
+msgstr ""
+"该赛季是您获取珍贵奖励的最后机会，包括专属的X级中型坦克\"飓风\"及其无畏的乘员、自选改进型配件、渐变2D风格等。千万不要错过——胜利在战场上等待着您！"
 
 msgid "whatsNewView/intro/heading"
-msgstr "天梯战商店"
-
-msgid "whatsNewView/mapChanges/addedMaps"
-msgstr "新地图:"
+msgstr ""
+"抓住天马赛年的\n"
+"最后时刻！"
 
 msgid "whatsNewView/mapChanges/heading"
 msgstr "地图"
 
-msgid "whatsNewView/mapChanges/removedMaps"
-msgstr "已排除地图:"
+msgid "whatsNewView/sectionDescription/shopUpdates"
+msgstr "达到青铜段位后，您即可购买全新改进型配件——强化型瞄具"
 
-msgid "whatsNewView/modifiers/added"
-msgstr "新增修改器"
+msgid "whatsNewView/sectionDescription/tournaments"
+msgstr "参加赛季赛事，获得荣耀和珍贵奖励。"
 
-msgid "whatsNewView/modifiers/description"
-msgstr "添加了更多可改变坦克参数的模式专属修改器。"
+msgid "whatsNewView/sectionDescription/trainingRoom"
+msgstr "带有相应游戏规则的天梯战地图现已在训练房间中开放。"
 
-msgid "whatsNewView/modifiers/heading"
-msgstr "天梯战修改器"
+msgid "whatsNewView/sectionHeading/shopUpdates"
+msgstr "天梯战商店更新"
 
-msgid "whatsNewView/modifiers/unchanged"
-msgstr "未作改动的修改器"
+msgid "whatsNewView/sectionHeading/tournaments"
+msgstr "赛事"
+
+msgid "whatsNewView/sectionHeading/trainingRoom"
+msgstr "训练房间"
+
+msgid "whatsNewView/stamp/removed"
+msgstr "已排除"
+
+msgid "whatsNewView/stamp/underDevelopment"
+msgstr "正在重新开发中"
 
 msgid "whatsNewView/tag/changed"
 msgstr "已更改"
@@ -1643,14 +1643,14 @@ msgstr "已更改"
 msgid "whatsNewView/tag/new"
 msgstr "新"
 
-msgid "whatsNewView/tag/removed"
-msgstr "已移除"
+msgid "whatsNewView/tag/returned"
+msgstr "已回归"
+
+msgid "whatsNewView/tag/revamped"
+msgstr "已重制"
 
 msgid "whatsNewView/tag/seasonUpdate"
 msgstr "季节性更新"
-
-msgid "whatsNewView/tag/underDevelopment"
-msgstr "正在重新开发中"
 
 msgid "whatsNewView/vehiclesForRent/heading"
 msgstr "租用坦克"
@@ -1658,32 +1658,41 @@ msgstr "租用坦克"
 msgid "whatsNewView/watchVideo"
 msgstr "观看视频"
 
-msgid "yearlyRewards/banner/willReceived"
-msgstr "奖励将会在赛年结束时发放"
+msgid "yearRewards/tooltip/selectableReward/list"
+msgstr ""
+"• 强化型瞄具\n"
+"• 改进型旋转驱动\n"
+"• 改进型压缩机\n"
+"• 炮弹抗性加强\n"
+"• 结构改进\n"
+"• 试验型观察镜\n"
+"• 改进型装填系统\n"
+"• 通风系统\n"
+"• 耐磨型炮控系统"
+
+msgid "yearRewards/tooltip/selectableReward/title"
+msgstr "改进型配件"
+
+msgid "yearlyRewards/banner/default"
+msgstr "奖励在第3赛季结束时发放。"
+
+msgid "yearlyRewards/banner/notAccruedRewards"
+msgstr "奖励即将发放。请稍候。"
+
+msgid "yearlyRewards/banner/rewardsReceived"
+msgstr "已获得年度奖励。下个赛年见！"
+
+msgid "yearlyRewards/banner/rewardsSelectionAvailable"
+msgstr "请选择您的改进型配件"
+
+msgid "yearlyRewards/banner/selectButtonLabel"
+msgstr "选择奖励"
 
 msgid "yearlyRewards/description/achieved"
 msgstr "赛季结束时，每晋升一个段位获得了1面%(seasonPointIcon)s"
 
 msgid "yearlyRewards/description/current"
 msgstr "赛季结束时，每晋升一个段位将获得1面%(seasonPointIcon)s"
-
-msgid "yearlyRewards/main/fifth"
-msgstr "勇士涂装"
-
-msgid "yearlyRewards/main/first"
-msgstr "黑铁涂装"
-
-msgid "yearlyRewards/main/fourth"
-msgstr "黄金涂装"
-
-msgid "yearlyRewards/main/second"
-msgstr "青铜涂装"
-
-msgid "yearlyRewards/main/sixth"
-msgstr "传说涂装"
-
-msgid "yearlyRewards/main/third"
-msgstr "白银涂装"
 
 msgid "yearlyRewards/rank/achieved"
 msgstr "已达到段位: %(rank)s"
@@ -1701,7 +1710,7 @@ msgid "yearlyRewards/rewardsState/notAvailable"
 msgstr "未获得奖励"
 
 msgid "yearlyRewards/rewardsState/possible"
-msgstr "您是该奖励的有力竞争者"
+msgstr "有机会获得的奖励"
 
 msgid "yearlyRewards/rewardsState/tooltip/guaranteed"
 msgstr "您在赛年尾声一定能获得该奖励。"
@@ -1719,255 +1728,6 @@ msgid "yearlyRewards/title/withVehicle"
 msgstr ""
 "%(vehicle)s和\n"
 "%(camouflageName)s"
-
-msgid "yearlyRewards/vehicle"
-msgstr "\"飓风\""
-
-msgid "yearlyRewards/vehicleTooltip/body"
-msgstr "在天马赛年期间达成成就而获得的独特坦克。"
-
-msgid "yearlyRewards/vehicleTooltip/header"
-msgstr "\"飓风\""
-
-msgid "yearlyRewardsTooltip/additional/fifth_1/body"
-msgstr "收集15面天马彩旗而获得的纪念奖章。"
-
-msgid "yearlyRewardsTooltip/additional/fifth_1/header"
-msgstr "天梯战2023–2024: 勇士"
-
-msgid "yearlyRewardsTooltip/additional/fifth_2/body"
-msgstr ""
-"您可以选择3个改进型配件作为奖励。每种物品只能获取1次: \n"
-" • 通风系统\n"
-" • 稳定设备系统\n"
-" • 改进型装填系统\n"
-" • 耐磨型炮控系统\n"
-" • 试验型观察镜\n"
-" • 结构改进\n"
-" • 改进型压缩机\n"
-" • 炮弹抗性加强\n"
-" • 改进型旋转驱动"
-
-msgid "yearlyRewardsTooltip/additional/fifth_2/header"
-msgstr "改进型配件"
-
-msgid "yearlyRewardsTooltip/additional/fifth_3/body"
-msgstr "在天马赛年期间达成成就而获得的特殊2D风格奖励。"
-
-msgid "yearlyRewardsTooltip/additional/fifth_3/header"
-msgstr "天马风格"
-
-msgid "yearlyRewardsTooltip/additional/fifth_4/body"
-msgstr ""
-"在天梯战模式中收集天马彩旗而获得的奖励。\n"
-"\n"
-"3—黑铁天马\n"
-"6—青铜天马\n"
-"9—白银天马\n"
-"12—黄金天马\n"
-"15—天马赛年勇士\n"
-"18—天马赛年传说\n"
-"\n"
-"您将根据所收集的天马彩旗数量获得勋章之一。"
-
-msgid "yearlyRewardsTooltip/additional/fifth_4/header"
-msgstr "天马赛年勇士勋章"
-
-msgid "yearlyRewardsTooltip/additional/first_1/body"
-msgstr "在天马赛年期间达成成就而获得的特殊2D风格奖励。"
-
-msgid "yearlyRewardsTooltip/additional/first_1/header"
-msgstr "天马风格"
-
-msgid "yearlyRewardsTooltip/additional/first_2/body"
-msgstr ""
-"在天梯战模式中收集天马彩旗而获得的奖励。\n"
-"\n"
-"3—黑铁天马\n"
-"6—青铜天马\n"
-"9—白银天马\n"
-"12—黄金天马\n"
-"15—天马赛年勇士\n"
-"18—天马赛年传说\n"
-"\n"
-"您将根据所收集的天马彩旗数量获得勋章之一。"
-
-msgid "yearlyRewardsTooltip/additional/first_2/header"
-msgstr "黑铁天马勋章"
-
-msgid "yearlyRewardsTooltip/additional/fourth_1/body"
-msgstr "特殊乘员，拥有训练至100%熟练度的\"零历练\"兄弟连特长和足够额外训练2个其他特长的经验。"
-
-msgid "yearlyRewardsTooltip/additional/fourth_1/header"
-msgstr "特殊乘员"
-
-msgid "yearlyRewardsTooltip/additional/fourth_2/body"
-msgstr "在天马赛年期间达成成就而获得的特殊2D风格奖励。"
-
-msgid "yearlyRewardsTooltip/additional/fourth_2/header"
-msgstr "天马风格"
-
-msgid "yearlyRewardsTooltip/additional/fourth_3/body"
-msgstr ""
-"在天梯战模式中收集天马彩旗而获得的奖励。\n"
-"\n"
-"3—黑铁天马\n"
-"6—青铜天马\n"
-"9—白银天马\n"
-"12—黄金天马\n"
-"15—天马赛年勇士\n"
-"18—天马赛年传说\n"
-"\n"
-"您将根据所收集的天马彩旗数量获得勋章之一。"
-
-msgid "yearlyRewardsTooltip/additional/fourth_3/header"
-msgstr "黄金天马勋章"
-
-msgid "yearlyRewardsTooltip/additional/second_1/body"
-msgstr ""
-"您可以选择1个改进型配件作为奖励。每种物品只能获取1次: \n"
-" • 通风系统\n"
-" • 稳定设备系统\n"
-" • 改进型装填系统\n"
-" • 耐磨型炮控系统\n"
-" • 试验型观察镜\n"
-" • 结构改进\n"
-" • 改进型压缩机\n"
-" • 炮弹抗性加强\n"
-" • 改进型旋转驱动"
-
-msgid "yearlyRewardsTooltip/additional/second_1/header"
-msgstr "改进型配件"
-
-msgid "yearlyRewardsTooltip/additional/second_2/body"
-msgstr "在天马赛年期间达成成就而获得的特殊2D风格奖励。"
-
-msgid "yearlyRewardsTooltip/additional/second_2/header"
-msgstr "天马风格"
-
-msgid "yearlyRewardsTooltip/additional/second_3/body"
-msgstr ""
-"在天梯战模式中收集天马彩旗而获得的奖励。\n"
-"\n"
-"3—黑铁天马\n"
-"6—青铜天马\n"
-"9—白银天马\n"
-"12—黄金天马\n"
-"15—天马赛年勇士\n"
-"18—天马赛年传说\n"
-"\n"
-"您将根据所收集的天马彩旗数量获得勋章之一。"
-
-msgid "yearlyRewardsTooltip/additional/second_3/header"
-msgstr "青铜天马勋章"
-
-msgid "yearlyRewardsTooltip/additional/sixth_1/body"
-msgstr "在天梯战天马赛年期间成为最强玩家而获得的特殊昵称条纹。"
-
-msgid "yearlyRewardsTooltip/additional/sixth_1/header"
-msgstr "天马传说"
-
-msgid "yearlyRewardsTooltip/additional/sixth_2/body"
-msgstr "收集18面天马彩旗而获得的纪念奖章。"
-
-msgid "yearlyRewardsTooltip/additional/sixth_2/header"
-msgstr "天梯战2023–2024: 传说"
-
-msgid "yearlyRewardsTooltip/additional/sixth_3/body"
-msgstr "在天马赛年期间达成成就而获得的特殊2D风格奖励。"
-
-msgid "yearlyRewardsTooltip/additional/sixth_3/header"
-msgstr "天马风格"
-
-msgid "yearlyRewardsTooltip/additional/sixth_4/body"
-msgstr ""
-"在天梯战模式中收集天马彩旗而获得的奖励。\n"
-"\n"
-"3—黑铁天马\n"
-"6—青铜天马\n"
-"9—白银天马\n"
-"12—黄金天马\n"
-"15—天马赛年勇士\n"
-"18—天马赛年传说\n"
-"\n"
-"您将根据所收集的天马彩旗数量获得勋章之一。"
-
-msgid "yearlyRewardsTooltip/additional/sixth_4/header"
-msgstr "天马赛年传说勋章"
-
-msgid "yearlyRewardsTooltip/additional/third_1/body"
-msgstr ""
-"您可以选择2个改进型配件作为奖励。每种物品只能获取1次: \n"
-" • 通风系统\n"
-" • 稳定设备系统\n"
-" • 改进型装填系统\n"
-" • 耐磨型炮控系统\n"
-" • 试验型观察镜\n"
-" • 结构改进\n"
-" • 改进型压缩机\n"
-" • 炮弹抗性加强\n"
-" • 改进型旋转驱动"
-
-msgid "yearlyRewardsTooltip/additional/third_1/header"
-msgstr "改进型配件"
-
-msgid "yearlyRewardsTooltip/additional/third_2/body"
-msgstr "在天马赛年期间达成成就而获得的特殊2D风格奖励。"
-
-msgid "yearlyRewardsTooltip/additional/third_2/header"
-msgstr "天马风格"
-
-msgid "yearlyRewardsTooltip/additional/third_3/body"
-msgstr ""
-"在天梯战模式中收集天马彩旗而获得的奖励。\n"
-"\n"
-"3—黑铁天马\n"
-"6—青铜天马\n"
-"9—白银天马\n"
-"12—黄金天马\n"
-"15—天马赛年勇士\n"
-"18—天马赛年传说\n"
-"\n"
-"您将根据所收集的天马彩旗数量获得勋章之一。"
-
-msgid "yearlyRewardsTooltip/additional/third_3/header"
-msgstr "白银天马勋章"
-
-msgid "yearlyRewardsTooltip/main/fifth/body"
-msgstr "收集15面天马彩旗而获得的涂装图案。"
-
-msgid "yearlyRewardsTooltip/main/fifth/header"
-msgstr "勇士涂装"
-
-msgid "yearlyRewardsTooltip/main/first/body"
-msgstr "收集3面天马彩旗而获得的涂装图案。"
-
-msgid "yearlyRewardsTooltip/main/first/header"
-msgstr "黑铁涂装"
-
-msgid "yearlyRewardsTooltip/main/fourth/body"
-msgstr "收集12面天马彩旗而获得的涂装图案。"
-
-msgid "yearlyRewardsTooltip/main/fourth/header"
-msgstr "黄金涂装"
-
-msgid "yearlyRewardsTooltip/main/second/body"
-msgstr "收集6面天马彩旗而获得的涂装图案。"
-
-msgid "yearlyRewardsTooltip/main/second/header"
-msgstr "青铜涂装"
-
-msgid "yearlyRewardsTooltip/main/sixth/body"
-msgstr "收集18面天马彩旗而获得的涂装图案。"
-
-msgid "yearlyRewardsTooltip/main/sixth/header"
-msgstr "传说涂装"
-
-msgid "yearlyRewardsTooltip/main/third/body"
-msgstr "收集9面天马彩旗而获得的涂装图案。"
-
-msgid "yearlyRewardsTooltip/main/third/header"
-msgstr "白银涂装"
 
 msgid "yearlyStatistics/battles"
 msgstr "战斗(单人/小队)"

@@ -554,6 +554,7 @@ def createVehicleFilter(typeDescriptor):
          p2[0], 0, p2[1]), (
          p3[0], 0, p3[1]))
 
+    vehicleFilter.forceGroundPlacingMatrix(typeDescriptor.isPitchHullAimingAvailable)
     vehicleFilter.enablePitchHullAiming(typeDescriptor.isPitchHullAimingAvailable)
     return vehicleFilter
 

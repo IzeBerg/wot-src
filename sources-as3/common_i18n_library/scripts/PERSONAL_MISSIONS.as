@@ -409,8 +409,6 @@ package
       
       public static const TANKWOMANTOOLTIPDATA_ADVANTAGES_TITLE:String = "#personal_missions:tankwomanTooltipData/advantages/title";
       
-      public static const TANKWOMANTOOLTIPDATA_ADVANTAGES_NATION:String = "#personal_missions:tankwomanTooltipData/advantages/nation";
-      
       public static const TANKWOMANTOOLTIPDATA_ADVANTAGES_BROTHERHOOD:String = "#personal_missions:tankwomanTooltipData/advantages/brotherhood";
       
       public static const TANKWOMANTOOLTIPDATA_ADVANTAGES_NEWPERK:String = "#personal_missions:tankwomanTooltipData/advantages/newPerk";

@@ -123,9 +123,12 @@ class DynamicObjectsCacheLoader(object):
     def __getEffectConfig(self, config):
         from AffectComponent import getEffectConfig
         pointEffect = getEffectConfig(self.__influenceZoneType, config)
-        if self.guiSessionProvider.getArenaDP().isAllyTeam(self.team):
-            return pointEffect.ally
-        return pointEffect.enemy
+        if not pointEffect:
+            return None
+        else:
+            if self.guiSessionProvider.getArenaDP().isAllyTeam(self.team):
+                return pointEffect.ally
+            return pointEffect.enemy
 
     def _onUpdateObservedVehicleData(self, vehicleID, *args):
         self.deactivate()

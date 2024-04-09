@@ -26,7 +26,7 @@ package net.wg.infrastructure.base.meta
       
       function as_setCoolDownTimeSnapshot(param1:int, param2:int, param3:Boolean, param4:Boolean) : void;
       
-      function as_addShellSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:String, param7:String, param8:String) : void;
+      function as_addShellSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:String, param7:String, param8:String, param9:Boolean) : void;
       
       function as_setNextShell(param1:int) : void;
       

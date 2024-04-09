@@ -7,7 +7,7 @@ package net.wg.gui.lobby.manualChapter.events
       
       public static const BUTTON_CLICKED:String = "buttonClicked";
       
-      public static const BOOTCAMP_HIGHLIGHTED:String = "bootcampHighlighted";
+      public static const BUTTON_HIGHLIGHTED:String = "buttonHighlighted";
       
       public static const PREVIEW_CLICKED:String = "previewClicked";
        

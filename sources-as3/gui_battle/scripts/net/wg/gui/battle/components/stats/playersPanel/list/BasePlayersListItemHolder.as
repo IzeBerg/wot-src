@@ -282,5 +282,10 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       {
          return this._isDisposed;
       }
+      
+      public function getVehicleData() : DAAPIVehicleInfoVO
+      {
+         return this.vehicleData;
+      }
    }
 }

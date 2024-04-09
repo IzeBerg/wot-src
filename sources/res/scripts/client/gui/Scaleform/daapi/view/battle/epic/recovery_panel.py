@@ -152,6 +152,6 @@ class RecoveryPanel(RecoveryPanelMeta):
         if soundNotifications and hasattr(soundNotifications, 'play'):
             soundNotifications.play(eventName)
 
-    def __onRoundFinished(self, winnerTeam, reason, extraData):
+    def __onRoundFinished(self, winnerTeam, reason):
         self.__hideCooldown(False)
         self.__hideHint()

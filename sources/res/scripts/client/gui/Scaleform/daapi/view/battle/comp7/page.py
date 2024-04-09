@@ -2,6 +2,7 @@ import BigWorld, BattleReplay
 from aih_constants import CTRL_MODE_NAME
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.battle.comp7.start_countdown_sound_player import Comp7StartTimerSoundPlayer
+from gui.Scaleform.daapi.view.battle.shared.markers2d.manager import KillCamMarkersManager
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
 from gui.shared.events import GameEvent
 from helpers.CallbackDelayer import CallbackDelayer
@@ -42,7 +43,7 @@ _COMP7_VIEW_OVERRIDES = {DynamicAliases.PREBATTLE_TIMER_SOUND_PLAYER: Comp7Start
 _COMMON_CONFIG = COMMON_CLASSIC_CONFIG + _COMP7_CONFIG
 _EXTENDED_CONFIG = EXTENDED_CLASSIC_CONFIG + _COMP7_CONFIG
 _EXTERNAL_COMPONENTS = (
- crosshair.CrosshairPanelContainer, Comp7MarkersManager)
+ crosshair.CrosshairPanelContainer, Comp7MarkersManager, KillCamMarkersManager)
 _FULL_STATS_ALIAS = BATTLE_VIEW_ALIASES.FULL_STATS
 
 class Comp7BattlePage(Comp7BattlePageMeta):

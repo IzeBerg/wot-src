@@ -67,7 +67,7 @@ package
       
       public static const FULLSTATS_ICONS_CORPSELOOT_DESCRIPTION:String = "#battle_royale:fullStats/icons/corpseLoot/description";
       
-      public static const FULLSTATS_ICONS_SHAMROCKS_DESCRIPTION:String = "#battle_royale:fullStats/icons/shamrocks/description";
+      public static const FULLSTATS_ICONS_DEFAULTLOOT_DESCRIPTION:String = "#battle_royale:fullStats/icons/defaultLoot/description";
       
       public static const FULLSTATS_ICONS_EXTENDEDLOOT_DESCRIPTION:String = "#battle_royale:fullStats/icons/extendedLoot/description";
       
@@ -225,6 +225,26 @@ package
       
       public static const TOOLTIP_PROGRESSION_LEADERBOARDREWARD_BATTLETYPESHEADER_29:String = "#battle_royale:tooltip/progression/leaderboardReward/battleTypesHeader/29";
       
+      public static const TOOLTIP_BATTLETYPESELECTOR_TAB_TITLE_SOLO:String = "#battle_royale:tooltip/battleTypeSelector/tab/title/solo";
+      
+      public static const TOOLTIP_BATTLETYPESELECTOR_TAB_DESCRIPTION_SOLO:String = "#battle_royale:tooltip/battleTypeSelector/tab/description/solo";
+      
+      public static const TOOLTIP_BATTLETYPESELECTOR_TAB_TITLE_RANDOMPLATOON:String = "#battle_royale:tooltip/battleTypeSelector/tab/title/randomPlatoon";
+      
+      public static const TOOLTIP_BATTLETYPESELECTOR_TAB_DESCRIPTION_RANDOMPLATOON:String = "#battle_royale:tooltip/battleTypeSelector/tab/description/randomPlatoon";
+      
+      public static const TOOLTIP_BATTLETYPESELECTOR_TAB_BONUSTITLE_RANDOMPLATOON:String = "#battle_royale:tooltip/battleTypeSelector/tab/bonusTitle/randomPlatoon";
+      
+      public static const TOOLTIP_BATTLETYPESELECTOR_TAB_TITLE_PLATOON:String = "#battle_royale:tooltip/battleTypeSelector/tab/title/platoon";
+      
+      public static const TOOLTIP_BATTLETYPESELECTOR_TAB_DESCRIPTION_PLATOON:String = "#battle_royale:tooltip/battleTypeSelector/tab/description/platoon";
+      
+      public static const TOOLTIP_BATTLETYPESELECTOR_TAB_BONUSTITLE_PLATOON:String = "#battle_royale:tooltip/battleTypeSelector/tab/bonusTitle/platoon";
+      
+      public static const TOOLTIP_BATTLETYPESELECTOR_TAB_BONUSDESCRIPTION:String = "#battle_royale:tooltip/battleTypeSelector/tab/bonusDescription";
+      
+      public static const TOOLTIP_BATTLETYPESELECTOR_BONUS:String = "#battle_royale:tooltip/battleTypeSelector/bonus";
+      
       public static const ALERTMESSAGE_SEASONISCOMING:String = "#battle_royale:alertMessage/seasonIsComing";
       
       public static const ALERTMESSAGE_SEASONALMOSTFINISHED:String = "#battle_royale:alertMessage/seasonAlmostFinished";
@@ -245,8 +265,6 @@ package
       
       public static const BATTLEROYALECAROUSEL_LOCKEDTOOLTIP_BODY:String = "#battle_royale:battleRoyaleCarousel/lockedToolTip/body";
       
-      public static const BATTLEROYALECAROUSEL_HINT:String = "#battle_royale:battleRoyaleCarousel/hint";
-      
       public static const PROXYPANEL_STORE:String = "#battle_royale:proxyPanel/store";
       
       public static const PROXYPANEL_LABEL:String = "#battle_royale:proxyPanel/label";
@@ -265,19 +283,29 @@ package
       
       public static const BATTLERESULT_PROGRESSSTAGE:String = "#battle_royale:battleResult/progressStage";
       
+      public static const BATTLERESULT_PLAYERBATTLETYPESTATUS_HEADER_SOLO:String = "#battle_royale:battleResult/playerBattleTypeStatus/header/solo";
+      
+      public static const BATTLERESULT_PLAYERBATTLETYPESTATUS_TEXT_SOLO:String = "#battle_royale:battleResult/playerBattleTypeStatus/text/solo";
+      
+      public static const BATTLERESULT_PLAYERBATTLETYPESTATUS_HEADER_RANDOMPLATOON:String = "#battle_royale:battleResult/playerBattleTypeStatus/header/randomPlatoon";
+      
+      public static const BATTLERESULT_PLAYERBATTLETYPESTATUS_HEADER_PLATOON:String = "#battle_royale:battleResult/playerBattleTypeStatus/header/platoon";
+      
+      public static const BATTLERESULT_PLAYERBATTLETYPESTATUS_BUTTON_TEXT:String = "#battle_royale:battleResult/playerBattleTypeStatus/button/text";
+      
+      public static const BATTLERESULT_PLAYERBATTLETYPESTATUS_CLAN:String = "#battle_royale:battleResult/playerBattleTypeStatus/clan/";
+      
       public static const BATTLERESULT_TAB_RESULT:String = "#battle_royale:battleResult/tab/result";
       
       public static const BATTLERESULT_TAB_LEADERBOARD:String = "#battle_royale:battleResult/tab/leaderboard";
       
-      public static const BATTLERESULT_PLAYERVEHICLESTATUS_ALIVE:String = "#battle_royale:battleResult/playerVehicleStatus/alive";
+      public static const BATTLETYPESELECTOR_TAB_SOLO:String = "#battle_royale:battleTypeSelector/tab/solo";
       
-      public static const BATTLERESULT_PLAYERVEHICLESTATUS_REASON_DEATHBYPLAYER:String = "#battle_royale:battleResult/playerVehicleStatus/reason/deathByPlayer";
+      public static const BATTLETYPESELECTOR_TAB_RANDOMPLATOON:String = "#battle_royale:battleTypeSelector/tab/randomPlatoon";
       
-      public static const BATTLERESULT_PLAYERVEHICLESTATUS_REASON_DEATHBYBOT:String = "#battle_royale:battleResult/playerVehicleStatus/reason/deathByBot";
+      public static const BATTLETYPESELECTOR_TAB_PLATOON:String = "#battle_royale:battleTypeSelector/tab/platoon";
       
-      public static const BATTLERESULT_PLAYERVEHICLESTATUS_REASON_DEATHBYZONE:String = "#battle_royale:battleResult/playerVehicleStatus/reason/deathByZone";
-      
-      public static const BATTLERESULT_PLAYERVEHICLESTATUS_REASON_OTHER:String = "#battle_royale:battleResult/playerVehicleStatus/reason/other";
+      public static const BATTLETYPESELECTOR_TAB_HINT:String = "#battle_royale:battleTypeSelector/tab/hint";
       
       public static const BATTLERESULT_BATTLEREWARD_TITLE:String = "#battle_royale:battleResult/battleReward/title";
       
@@ -353,19 +381,19 @@ package
       
       public static const REWARDCURRENCYTOOLTIP_XP_BODY:String = "#battle_royale:rewardCurrencyTooltip/xp/body";
       
-      public static const REWARDCURRENCYTOOLTIP_XP_PREMIUM:String = "#battle_royale:rewardCurrencyTooltip/xp/premium";
+      public static const REWARDCURRENCYTOOLTIP_XP_PREMFACTOR:String = "#battle_royale:rewardCurrencyTooltip/xp/premFactor";
       
       public static const REWARDCURRENCYTOOLTIP_CREDITS_HEADER:String = "#battle_royale:rewardCurrencyTooltip/credits/header";
       
       public static const REWARDCURRENCYTOOLTIP_CREDITS_BODY:String = "#battle_royale:rewardCurrencyTooltip/credits/body";
       
-      public static const REWARDCURRENCYTOOLTIP_CREDITS_PREMIUM:String = "#battle_royale:rewardCurrencyTooltip/credits/premium";
+      public static const REWARDCURRENCYTOOLTIP_CREDITS_PREMFACTOR:String = "#battle_royale:rewardCurrencyTooltip/credits/premFactor";
       
       public static const REWARDCURRENCYTOOLTIP_BRCOIN_HEADER:String = "#battle_royale:rewardCurrencyTooltip/brcoin/header";
       
       public static const REWARDCURRENCYTOOLTIP_BRCOIN_BODY:String = "#battle_royale:rewardCurrencyTooltip/brcoin/body";
       
-      public static const REWARDCURRENCYTOOLTIP_BRCOIN_PREMIUM:String = "#battle_royale:rewardCurrencyTooltip/brcoin/premium";
+      public static const REWARDCURRENCYTOOLTIP_BRCOIN_PREMFACTOR:String = "#battle_royale:rewardCurrencyTooltip/brcoin/premFactor";
       
       public static const REWARDCURRENCYTOOLTIP_CRYSTAL_HEADER:String = "#battle_royale:rewardCurrencyTooltip/crystal/header";
       
@@ -378,12 +406,6 @@ package
       public static const REWARDCURRENCYTOOLTIP_BRPROGRESSIONTOKEN_HEADER:String = "#battle_royale:rewardCurrencyTooltip/brProgressionToken/header";
       
       public static const REWARDCURRENCYTOOLTIP_BRPROGRESSIONTOKEN_BODY:String = "#battle_royale:rewardCurrencyTooltip/brProgressionToken/body";
-      
-      public static const REWARDCURRENCYTOOLTIP_STPCOIN_HEADER:String = "#battle_royale:rewardCurrencyTooltip/stpcoin/header";
-      
-      public static const REWARDCURRENCYTOOLTIP_STPCOIN_BODY:String = "#battle_royale:rewardCurrencyTooltip/stpcoin/body";
-      
-      public static const REWARDCURRENCYTOOLTIP_STPCOIN_BONUS:String = "#battle_royale:rewardCurrencyTooltip/stpcoin/bonus";
       
       public static const COMMANDERINFO_COMMONRANK:String = "#battle_royale:commanderInfo/commonRank";
       
@@ -449,61 +471,17 @@ package
       
       public static const BUTTON_REPAIR:String = "#battle_royale:button/repair";
       
-      public static const BUTTON_RENT:String = "#battle_royale:button/rent";
+      public static const TOOLTIPS_BRCOIN_TITLE:String = "#battle_royale:tooltips/brCoin/title";
       
-      public static const BUTTON_TESTDRIVE:String = "#battle_royale:button/testDrive";
+      public static const TOOLTIPS_BRCOIN_EARN_TITLE:String = "#battle_royale:tooltips/brCoin/earn/title";
       
-      public static const VEHRENTBLOCK_INRENT:String = "#battle_royale:vehRentBlock/inRent";
+      public static const TOOLTIPS_BRCOIN_EARN_DESCRIPTION:String = "#battle_royale:tooltips/brCoin/earn/description";
       
-      public static const VEHRENTBLOCK_INTESTDRIVE:String = "#battle_royale:vehRentBlock/inTestDrive";
+      public static const TOOLTIPS_BRCOIN_SPEND_TITLE:String = "#battle_royale:tooltips/brCoin/spend/title";
       
-      public static const VEHRENTBLOCK_INBATTLE:String = "#battle_royale:vehRentBlock/inBattle";
-      
-      public static const TOOLTIPS_RENTICON_TESTDRIVE_TITLE:String = "#battle_royale:tooltips/rentIcon/testDrive/title";
-      
-      public static const TOOLTIPS_RENTICON_TESTDRIVE_DESCRIPTION:String = "#battle_royale:tooltips/rentIcon/testDrive/description";
-      
-      public static const TOOLTIPS_RENTICON_TESTDRIVE_FOOTER:String = "#battle_royale:tooltips/rentIcon/testDrive/footer";
-      
-      public static const TOOLTIPS_RENTICON_TESTDRIVE_RENTTIME:String = "#battle_royale:tooltips/rentIcon/testDrive/rentTime";
-      
-      public static const TOOLTIPS_RENTICON_RENT_TITLE:String = "#battle_royale:tooltips/rentIcon/rent/title";
-      
-      public static const TOOLTIPS_RENTICON_RENT_DESCRIPTION:String = "#battle_royale:tooltips/rentIcon/rent/description";
-      
-      public static const TOOLTIPS_RENTICON_RENT_FOOTER:String = "#battle_royale:tooltips/rentIcon/rent/footer";
-      
-      public static const TOOLTIPS_STPCOIN_TITLE:String = "#battle_royale:tooltips/stpCoin/title";
-      
-      public static const TOOLTIPS_STPCOIN_EARN_TITLE:String = "#battle_royale:tooltips/stpCoin/earn/title";
-      
-      public static const TOOLTIPS_STPCOIN_EARN_DESCRIPTION:String = "#battle_royale:tooltips/stpCoin/earn/description";
-      
-      public static const TOOLTIPS_STPCOIN_SPEND_TITLE:String = "#battle_royale:tooltips/stpCoin/spend/title";
-      
-      public static const TOOLTIPS_STPCOIN_SPEND_DESCRIPTION:String = "#battle_royale:tooltips/stpCoin/spend/description";
-      
-      public static const TOOLTIPS_SHOP_TITLE:String = "#battle_royale:tooltips/shop/title";
-      
-      public static const TOOLTIPS_SHOP_DESCRIPTION:String = "#battle_royale:tooltips/shop/description";
-      
-      public static const TOOLTIPS_SHOP_SUBTITLE:String = "#battle_royale:tooltips/shop/subtitle";
-      
-      public static const TOOLTIPS_SHOP_SUBDESCRIPTION:String = "#battle_royale:tooltips/shop/subdescription";
-      
-      public static const TOOLTIPS_TESTDRIVEINFO_TITLE:String = "#battle_royale:tooltips/testDriveInfo/title";
-      
-      public static const TOOLTIPS_TESTDRIVEINFO_LEFTLABEL:String = "#battle_royale:tooltips/testDriveInfo/leftLabel";
-      
-      public static const TOOLTIPS_TESTDRIVEINFO_RIGHTLABEL:String = "#battle_royale:tooltips/testDriveInfo/rightLabel";
-      
-      public static const TOOLTIPS_TESTDRIVEINFO_RENTFOR:String = "#battle_royale:tooltips/testDriveInfo/rentFor";
-      
-      public static const TOOLTIPS_TESTDRIVEINFO_FOOTER:String = "#battle_royale:tooltips/testDriveInfo/footer";
+      public static const TOOLTIPS_BRCOIN_SPEND_DESCRIPTION:String = "#battle_royale:tooltips/brCoin/spend/description";
       
       public static const TOOLTIPS_VEHICLE_DESCRIPTION:String = "#battle_royale:tooltips/vehicle/description";
-      
-      public static const TOOLTIPS_VEHICLE_STATUS_NOTRENTED:String = "#battle_royale:tooltips/vehicle/status/notRented";
       
       public static const TOOLTIPS_RESPAWNICON_TITLE:String = "#battle_royale:tooltips/respawnIcon/title";
       
@@ -629,12 +607,6 @@ package
       
       public static const STATUS_TIMELEFT_LESSMIN:String = "#battle_royale:status/timeLeft/lessMin";
       
-      public static const VEHICLERENTISOK:String = "#battle_royale:vehicleRentIsOk";
-      
-      public static const VEHICLETESTDRIVEISOK:String = "#battle_royale:vehicleTestDriveIsOk";
-      
-      public static const VEHICLERENTNOMONEY:String = "#battle_royale:vehicleRentNoMoney";
-      
       public static const MODESELECTOR_CYCLENOTSTARTED:String = "#battle_royale:modeSelector/cycleNotStarted";
       
       public static const MODESELECTOR_CYCLEISCOMING:String = "#battle_royale:modeSelector/cycleIsComing";
@@ -648,10 +620,6 @@ package
       public static const INTRO_SLIDE1_TITLE:String = "#battle_royale:intro/slide1/title";
       
       public static const INTRO_SLIDE1_TEXT:String = "#battle_royale:intro/slide1/text";
-      
-      public static const INTRO_SLIDE2_TITLE:String = "#battle_royale:intro/slide2/title";
-      
-      public static const INTRO_SLIDE2_TEXT:String = "#battle_royale:intro/slide2/text";
       
       public static const INTRO_SLIDE3_TITLE:String = "#battle_royale:intro/slide3/title";
       
@@ -705,7 +673,9 @@ package
       
       public static const BANNER_TITLE:String = "#battle_royale:banner/title";
       
-      public static const BANNER_SUBTITLE:String = "#battle_royale:banner/subtitle";
+      public static const BANNER_INFO_SEASONACTIVE:String = "#battle_royale:banner/info/seasonActive";
+      
+      public static const BANNER_INFO_DISABLED:String = "#battle_royale:banner/info/disabled";
       
       public static const BANNER_SEASONDATE_SEASONLASTS:String = "#battle_royale:banner/seasonDate/seasonLasts";
       
@@ -754,12 +724,6 @@ package
       public static const BATTLE_RESPAWNMESSAGEPANEL_SQUAD_RESPAWNING_TITLE:String = "#battle_royale:battle/respawnMessagePanel/squad/respawning/title";
       
       public static const BATTLE_WINNERCONGRATULATIONSVIEW_TITLE:String = "#battle_royale:battle/winnerCongratulationsView/title";
-      
-      public static const BATTLE_WINNERCONGRATULATIONSVIEW_COLECTED:String = "#battle_royale:battle/winnerCongratulationsView/colected";
-      
-      public static const BATTLE_WINNERCONGRATULATIONSVIEW_BONUSACTIVATED:String = "#battle_royale:battle/winnerCongratulationsView/bonusActivated";
-      
-      public static const BATTLE_WINNERCONGRATULATIONSVIEW_BONUSFORFIRSTPLACE:String = "#battle_royale:battle/winnerCongratulationsView/bonusForFirstPlace";
        
       
       public function BATTLE_ROYALE()

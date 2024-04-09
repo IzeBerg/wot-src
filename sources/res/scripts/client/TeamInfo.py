@@ -19,3 +19,6 @@ class TeamInfo(BigWorld.Entity):
 
     def onDynamicComponentCreated(self, component):
         LOG_DEBUG_DEV('Component created', component)
+
+    def showHittingArea(self, equipmentID, hittingPoint, hittingDirection, hittingTime):
+        BigWorld.player().showHittingArea(equipmentID, hittingPoint, hittingDirection, hittingTime)

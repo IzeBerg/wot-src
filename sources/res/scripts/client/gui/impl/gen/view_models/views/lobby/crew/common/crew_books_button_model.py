@@ -13,10 +13,10 @@ class CrewBooksButtonModel(ButtonModel):
         self._setNumber(1, value)
 
     def getNewAmount(self):
-        return self._getNumber(2)
+        return self._getString(2)
 
     def setNewAmount(self, value):
-        self._setNumber(2, value)
+        self._setString(2, value)
 
     def getHasDiscount(self):
         return self._getBool(3)
@@ -33,6 +33,6 @@ class CrewBooksButtonModel(ButtonModel):
     def _initialize(self):
         super(CrewBooksButtonModel, self)._initialize()
         self._addNumberProperty('totalAmount', 0)
-        self._addNumberProperty('newAmount', 0)
+        self._addStringProperty('newAmount', '')
         self._addBoolProperty('hasDiscount', False)
         self._addBoolProperty('isDisabled', False)

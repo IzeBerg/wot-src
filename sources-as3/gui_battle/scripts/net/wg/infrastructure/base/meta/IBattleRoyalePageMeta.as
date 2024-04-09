@@ -7,7 +7,5 @@ package net.wg.infrastructure.base.meta
        
       
       function as_updateDamageScreen(param1:Boolean) : void;
-      
-      function as_setCrosshairMode(param1:int) : void;
    }
 }

@@ -255,7 +255,11 @@ package
       
       public static const SEASONMODIFIER_TITLE:String = "#comp7:seasonModifier/title";
       
-      public static const REWARDSSCREEN_DESCRIPTION_SEASON:String = "#comp7:rewardsScreen/description/season";
+      public static const REWARDSSCREEN_DESCRIPTION_SEASON_FIRST:String = "#comp7:rewardsScreen/description/season/first";
+      
+      public static const REWARDSSCREEN_DESCRIPTION_SEASON_SECOND:String = "#comp7:rewardsScreen/description/season/second";
+      
+      public static const REWARDSSCREEN_DESCRIPTION_SEASON_THIRD:String = "#comp7:rewardsScreen/description/season/third";
       
       public static const REWARDSSCREEN_DESCRIPTION_QUALIFICATIONENDED:String = "#comp7:rewardsScreen/description/qualificationEnded";
       
@@ -381,12 +385,6 @@ package
       
       public static const WEEKLYQUESTS_TOKENPROGRESS_DESCRIPTION_DONE:String = "#comp7:weeklyQuests/tokenProgress/description/done";
       
-      public static const YEARLYREWARDS_VEHICLE:String = "#comp7:yearlyRewards/vehicle";
-      
-      public static const YEARLYREWARDS_VEHICLETOOLTIP_HEADER:String = "#comp7:yearlyRewards/vehicleTooltip/header";
-      
-      public static const YEARLYREWARDS_VEHICLETOOLTIP_BODY:String = "#comp7:yearlyRewards/vehicleTooltip/body";
-      
       public static const YEARLYREWARDS_TITLE_WITHVEHICLE:String = "#comp7:yearlyRewards/title/withVehicle";
       
       public static const YEARLYREWARDS_SUBTITLE_STYLEPROGRESS:String = "#comp7:yearlyRewards/subtitle/styleProgress";
@@ -405,7 +403,15 @@ package
       
       public static const YEARLYREWARDS_REWARDSSTATE_TOOLTIP_NOTAVAILABLE:String = "#comp7:yearlyRewards/rewardsState/tooltip/notAvailable";
       
-      public static const YEARLYREWARDS_BANNER_WILLRECEIVED:String = "#comp7:yearlyRewards/banner/willReceived";
+      public static const YEARLYREWARDS_BANNER_DEFAULT:String = "#comp7:yearlyRewards/banner/default";
+      
+      public static const YEARLYREWARDS_BANNER_NOTACCRUEDREWARDS:String = "#comp7:yearlyRewards/banner/notAccruedRewards";
+      
+      public static const YEARLYREWARDS_BANNER_REWARDSSELECTIONAVAILABLE:String = "#comp7:yearlyRewards/banner/rewardsSelectionAvailable";
+      
+      public static const YEARLYREWARDS_BANNER_REWARDSRECEIVED:String = "#comp7:yearlyRewards/banner/rewardsReceived";
+      
+      public static const YEARLYREWARDS_BANNER_SELECTBUTTONLABEL:String = "#comp7:yearlyRewards/banner/selectButtonLabel";
       
       public static const YEARLYREWARDS_RANK_CURRENT:String = "#comp7:yearlyRewards/rank/current";
       
@@ -414,118 +420,6 @@ package
       public static const YEARLYREWARDS_DESCRIPTION_CURRENT:String = "#comp7:yearlyRewards/description/current";
       
       public static const YEARLYREWARDS_DESCRIPTION_ACHIEVED:String = "#comp7:yearlyRewards/description/achieved";
-      
-      public static const YEARLYREWARDS_MAIN_FIRST:String = "#comp7:yearlyRewards/main/first";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_FIRST_HEADER:String = "#comp7:yearlyRewardsTooltip/main/first/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_FIRST_BODY:String = "#comp7:yearlyRewardsTooltip/main/first/body";
-      
-      public static const YEARLYREWARDS_MAIN_SECOND:String = "#comp7:yearlyRewards/main/second";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_SECOND_HEADER:String = "#comp7:yearlyRewardsTooltip/main/second/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_SECOND_BODY:String = "#comp7:yearlyRewardsTooltip/main/second/body";
-      
-      public static const YEARLYREWARDS_MAIN_THIRD:String = "#comp7:yearlyRewards/main/third";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_THIRD_HEADER:String = "#comp7:yearlyRewardsTooltip/main/third/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_THIRD_BODY:String = "#comp7:yearlyRewardsTooltip/main/third/body";
-      
-      public static const YEARLYREWARDS_MAIN_FOURTH:String = "#comp7:yearlyRewards/main/fourth";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_FOURTH_HEADER:String = "#comp7:yearlyRewardsTooltip/main/fourth/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_FOURTH_BODY:String = "#comp7:yearlyRewardsTooltip/main/fourth/body";
-      
-      public static const YEARLYREWARDS_MAIN_FIFTH:String = "#comp7:yearlyRewards/main/fifth";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_FIFTH_HEADER:String = "#comp7:yearlyRewardsTooltip/main/fifth/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_FIFTH_BODY:String = "#comp7:yearlyRewardsTooltip/main/fifth/body";
-      
-      public static const YEARLYREWARDS_MAIN_SIXTH:String = "#comp7:yearlyRewards/main/sixth";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_SIXTH_HEADER:String = "#comp7:yearlyRewardsTooltip/main/sixth/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_MAIN_SIXTH_BODY:String = "#comp7:yearlyRewardsTooltip/main/sixth/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIRST_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/first_1/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIRST_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/first_1/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIRST_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/first_2/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIRST_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/first_2/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/second_1/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/second_1/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/second_2/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/second_2/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_3_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/second_3/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SECOND_3_BODY:String = "#comp7:yearlyRewardsTooltip/additional/second_3/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/third_1/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/third_1/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/third_2/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/third_2/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_3_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/third_3/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_THIRD_3_BODY:String = "#comp7:yearlyRewardsTooltip/additional/third_3/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fourth_1/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fourth_1/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fourth_2/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fourth_2/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_3_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fourth_3/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FOURTH_3_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fourth_3/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fifth_1/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fifth_1/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fifth_2/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fifth_2/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_3_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fifth_3/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_3_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fifth_3/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_4_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/fifth_4/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_FIFTH_4_BODY:String = "#comp7:yearlyRewardsTooltip/additional/fifth_4/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_1_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/sixth_1/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_1_BODY:String = "#comp7:yearlyRewardsTooltip/additional/sixth_1/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_2_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/sixth_2/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_2_BODY:String = "#comp7:yearlyRewardsTooltip/additional/sixth_2/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_3_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/sixth_3/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_3_BODY:String = "#comp7:yearlyRewardsTooltip/additional/sixth_3/body";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_4_HEADER:String = "#comp7:yearlyRewardsTooltip/additional/sixth_4/header";
-      
-      public static const YEARLYREWARDSTOOLTIP_ADDITIONAL_SIXTH_4_BODY:String = "#comp7:yearlyRewardsTooltip/additional/sixth_4/body";
       
       public static const YEARLYSTATISTICS_SEASONNAME_0:String = "#comp7:yearlyStatistics/seasonName/0";
       
@@ -1029,6 +923,8 @@ package
       
       public static const TOURNAMENT_BATTLERESULT_PERSONAL_TOOLTIP_DESCR:String = "#comp7:tournament/battleResult/personal/tooltip/descr";
       
+      public static const TRAINING_BATTLERESULT_PERSONAL_TOOLTIP_DESCR:String = "#comp7:training/battleResult/personal/tooltip/descr";
+      
       public static const BATTLERESULT_PERSONAL_TOOLTIP_LOSETITLE:String = "#comp7:battleResult/personal/tooltip/loseTitle";
       
       public static const BATTLERESULT_PERSONAL_TOOLTIP_LOSEDESCR:String = "#comp7:battleResult/personal/tooltip/loseDescr";
@@ -1077,7 +973,11 @@ package
       
       public static const BANNER_TITLE:String = "#comp7:banner/title";
       
-      public static const BANNER_SEASON:String = "#comp7:banner/season";
+      public static const BANNER_SEASON_FIRST:String = "#comp7:banner/season/first";
+      
+      public static const BANNER_SEASON_SECOND:String = "#comp7:banner/season/second";
+      
+      public static const BANNER_SEASON_THIRD:String = "#comp7:banner/season/third";
       
       public static const BANNER_INFO_SEASONJUSTSTARTED:String = "#comp7:banner/info/seasonJustStarted";
       
@@ -1137,53 +1037,45 @@ package
       
       public static const WHATSNEWVIEW_TAG_SEASONUPDATE:String = "#comp7:whatsNewView/tag/seasonUpdate";
       
-      public static const WHATSNEWVIEW_TAG_REMOVED:String = "#comp7:whatsNewView/tag/removed";
+      public static const WHATSNEWVIEW_TAG_REVAMPED:String = "#comp7:whatsNewView/tag/revamped";
       
-      public static const WHATSNEWVIEW_TAG_UNDERDEVELOPMENT:String = "#comp7:whatsNewView/tag/underDevelopment";
+      public static const WHATSNEWVIEW_TAG_RETURNED:String = "#comp7:whatsNewView/tag/returned";
+      
+      public static const WHATSNEWVIEW_STAMP_REMOVED:String = "#comp7:whatsNewView/stamp/removed";
+      
+      public static const WHATSNEWVIEW_STAMP_UNDERDEVELOPMENT:String = "#comp7:whatsNewView/stamp/underDevelopment";
       
       public static const WHATSNEWVIEW_INTRO_HEADING:String = "#comp7:whatsNewView/intro/heading";
       
       public static const WHATSNEWVIEW_INTRO_DESCRIPTION:String = "#comp7:whatsNewView/intro/description";
       
-      public static const WHATSNEWVIEW_MODIFIERS_HEADING:String = "#comp7:whatsNewView/modifiers/heading";
+      public static const WHATSNEWVIEW_SECTIONHEADING_SHOPUPDATES:String = "#comp7:whatsNewView/sectionHeading/shopUpdates";
       
-      public static const WHATSNEWVIEW_MODIFIERS_DESCRIPTION:String = "#comp7:whatsNewView/modifiers/description";
+      public static const WHATSNEWVIEW_SECTIONDESCRIPTION_SHOPUPDATES:String = "#comp7:whatsNewView/sectionDescription/shopUpdates";
       
-      public static const WHATSNEWVIEW_MODIFIERS_UNCHANGED:String = "#comp7:whatsNewView/modifiers/unchanged";
+      public static const WHATSNEWVIEW_SECTIONHEADING_TRAININGROOM:String = "#comp7:whatsNewView/sectionHeading/trainingRoom";
       
-      public static const MODIFIER_NAME_VEHICLEHEALTH:String = "#comp7:modifier/name/vehicleHealth";
+      public static const WHATSNEWVIEW_SECTIONDESCRIPTION_TRAININGROOM:String = "#comp7:whatsNewView/sectionDescription/trainingRoom";
       
-      public static const MODIFIER_NAME_EQUIPMENTCOOLDOWN:String = "#comp7:modifier/name/equipmentCooldown";
+      public static const WHATSNEWVIEW_SECTIONHEADING_TOURNAMENTS:String = "#comp7:whatsNewView/sectionHeading/tournaments";
       
-      public static const WHATSNEWVIEW_MODIFIERS_ADDED:String = "#comp7:whatsNewView/modifiers/added";
-      
-      public static const MODIFIER_NAME_SHOTDISPERSIONRADIUS:String = "#comp7:modifier/name/shotDispersionRadius";
-      
-      public static const MODIFIER_NAME_VISIONTIME:String = "#comp7:modifier/name/visionTime";
-      
-      public static const MODIFIER_NAME_VISIONMINRADIUS:String = "#comp7:modifier/name/visionMinRadius";
-      
-      public static const MODIFIER_VALUETYPE_PERCENTAGE:String = "#comp7:modifier/valueType/percentage";
-      
-      public static const MODIFIER_VALUETYPE_SECONDS:String = "#comp7:modifier/valueType/seconds";
-      
-      public static const MODIFIER_VALUETYPE_DEVIATION:String = "#comp7:modifier/valueType/deviation";
-      
-      public static const MODIFIER_FORMATTEDVALUETYPE_NULLISHDEVIATION:String = "#comp7:modifier/formattedValueType/nullishDeviation";
-      
-      public static const MODIFIER_FORMATTEDVALUETYPE_NULLISHDISPERSION:String = "#comp7:modifier/formattedValueType/nullishDispersion";
-      
-      public static const MODIFIER_VALUETYPE_METERS:String = "#comp7:modifier/valueType/meters";
+      public static const WHATSNEWVIEW_SECTIONDESCRIPTION_TOURNAMENTS:String = "#comp7:whatsNewView/sectionDescription/tournaments";
       
       public static const WHATSNEWVIEW_MAPCHANGES_HEADING:String = "#comp7:whatsNewView/mapChanges/heading";
-      
-      public static const WHATSNEWVIEW_MAPCHANGES_ADDEDMAPS:String = "#comp7:whatsNewView/mapChanges/addedMaps";
-      
-      public static const WHATSNEWVIEW_MAPCHANGES_REMOVEDMAPS:String = "#comp7:whatsNewView/mapChanges/removedMaps";
       
       public static const WHATSNEWVIEW_VEHICLESFORRENT_HEADING:String = "#comp7:whatsNewView/vehiclesForRent/heading";
       
       public static const WHATSNEWVIEW_BUTTON_OK:String = "#comp7:whatsNewView/button/ok";
+      
+      public static const TOURNAMENTSWIDGET_HEADING:String = "#comp7:tournamentsWidget/heading";
+      
+      public static const TOURNAMENTSWIDGET_TEXT_REGISTRATION:String = "#comp7:tournamentsWidget/text/registration";
+      
+      public static const TOURNAMENTSWIDGET_TEXT_ACTIVE:String = "#comp7:tournamentsWidget/text/active";
+      
+      public static const YEARREWARDS_TOOLTIP_SELECTABLEREWARD_TITLE:String = "#comp7:yearRewards/tooltip/selectableReward/title";
+      
+      public static const YEARREWARDS_TOOLTIP_SELECTABLEREWARD_LIST:String = "#comp7:yearRewards/tooltip/selectableReward/list";
        
       
       public function COMP7()

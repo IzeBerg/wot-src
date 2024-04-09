@@ -20,7 +20,7 @@ msgid "activation/activateBonus"
 msgstr "激活个人储备：%(bonusDescription)s"
 
 msgid "activation/activateButton"
-msgstr "激活"
+msgstr "启用储备"
 
 msgid "activation/activateButtonClan"
 msgstr "前往要塞"
@@ -32,7 +32,7 @@ msgid "activation/battleXPTitle"
 msgstr "战斗经验"
 
 msgid "activation/bonus"
-msgstr "加成:+%(bonus)%"
+msgstr "+%(bonus)%"
 
 msgid "activation/buyAndActivateBoosterTitle"
 msgstr "购买并激活提供%(boosterBonus)s%(boosterTerm)s加成的改进型个人储备？"
@@ -73,6 +73,9 @@ msgstr "银币加成，持续1小时"
 msgid "activation/creditsTitle"
 msgstr "银币"
 
+msgid "activation/footer"
+msgstr "建议激活限时储备: %(expirableAmount)个于%(expirableTime)后过期"
+
 msgid "activation/frontLineXPDescription"
 msgstr "前线模式经验加成，持续1小时"
 
@@ -82,11 +85,14 @@ msgstr "前线模式经验"
 msgid "activation/informationButton"
 msgstr "信息"
 
-msgid "activation/onlyOnceHint"
-msgstr "选择首选加成"
-
 msgid "activation/price"
 msgstr "价格:"
+
+msgid "activation/subFooter/depot"
+msgstr "仓库"
+
+msgid "activation/subFooter/main"
+msgstr "最接近到期的储备将首先被激活。您可在%(depot)中查看全部可用的储备"
 
 msgid "activation/subTitle/main"
 msgstr ""
@@ -118,57 +124,10 @@ msgid "activation/upgradeBoosterTitle"
 msgstr "您想激活可提供%(boosterBonus)s%(boosterTerm)s加成的改进型个人储备，而非标准型个人储备吗？"
 
 msgid "battleView/notice"
-msgstr ""
-"即使已激活的个人储备在战斗中过期，您仍将获得其加成。\n"
-"您可在战斗结束前激活任意个人储备。"
+msgstr "您可在战斗中随时激活战斗储备。即使储备效果在战斗中过期，您仍会获得加成。"
 
 msgid "battleView/title"
 msgstr "激活个人储备"
-
-msgid "booster/useby/timeLeft/days"
-msgstr "%(d)s天"
-
-msgid "booster/useby/timeLeft/hours"
-msgstr "%(d)s时"
-
-msgid "booster/useby/timeLeft/minutes"
-msgstr "%(d)s分"
-
-msgid "conversionView/battleXPSubtitle"
-msgstr "战斗经验个人储备转换"
-
-msgid "conversionView/battleXPTitle"
-msgstr "战斗经验"
-
-msgid "conversionView/boosterDescription"
-msgstr "%(value)s持续%(effectTime)s"
-
-msgid "conversionView/creditsSubtitle"
-msgstr "银币个人储备转换"
-
-msgid "conversionView/creditsTitle"
-msgstr "银币"
-
-msgid "conversionView/crewAndFreeXPSubtitle"
-msgstr "乘员经验和全局经验个人储备转换"
-
-msgid "conversionView/crewFreeXPTitle"
-msgstr "乘员和全局经验"
-
-msgid "conversionView/crewXPSubtitle"
-msgstr "乘员经验个人储备转换"
-
-msgid "conversionView/freeXPSubtitle"
-msgstr "全局经验个人储备转换"
-
-msgid "conversionView/mainDescription"
-msgstr "您的个人储备已转换为新版个人储备。所有新版个人储备的持续时间都是1小时。您可在此查看您原有的个人储备至新版个人储备的转换详情。"
-
-msgid "conversionView/mainTitle"
-msgstr "转换"
-
-msgid "conversionView/noConversion"
-msgstr "没有可供转换的个人储备"
 
 msgid "depot/buyButton"
 msgstr "前往购买"
@@ -182,9 +141,6 @@ msgstr "该个人储备在战斗中到期。其提供的加成仍会应用于这
 msgid "hangarEntry/minute"
 msgstr "%(minutesLeft)分"
 
-msgid "hangarEntry/onlyOnceHint"
-msgstr "激活个人储备"
-
 msgid "hangarEntryTooltip/bonus"
 msgstr "+%(bonus)%"
 
@@ -194,47 +150,15 @@ msgstr "已激活的个人储备不适用此模式。"
 msgid "intro/buttons/close"
 msgstr "收到！"
 
-msgid "intro/buttons/conversionInfo"
-msgstr "转换详情"
+msgid "intro/buttons/details"
+msgstr "详情"
 
-msgid "intro/pages/description1"
+msgid "intro/description"
 msgstr ""
-"可直接在车库中激活个人储备。您现在也可以同时激活全部3种个人储备。全局经验个人储备和乘员经验个人储备已合并为一种个人储备，它可为您在战斗中获得的全局和乘员经验同时提供加成。"
-
-msgid "intro/pages/description2"
-msgstr "如果您想获得更高的银币和经验加成，记得查看改进型个人储备，您可使用金币购买它们。"
-
-msgid "intro/pages/description3"
-msgstr ""
-"可在特定时间内激活。一旦持续时间到期，这些个人储备将从您的账号中移除。\n"
-"{yellow_Open}常规的个人储备在此期间无法激活。{yellow_Close}"
-
-msgid "intro/pages/description4"
-msgstr ""
-"按下TAB或B键可在战斗中直接激活个人储备。\n"
-"{yellow_Open}如果个人储备在战斗中到期，它仍将为您在战斗中获得的资源提供加成。{yellow_Close}"
-
-msgid "intro/pages/description5"
-msgstr ""
-"在个人储备2.0中，您的个人储备都已转换为新版个人储备。它们的持续时间都是1小时，并拥有2种类型：标准型和改进型。全局经验和乘员经验的个人储备已合并为一种个人储备，它可为您在战斗中获得的全局经验和乘员经验同时提供加成。"
-
-msgid "intro/pages/title1"
-msgstr "3种类型的个人储备"
-
-msgid "intro/pages/title2"
-msgstr "更高的加成"
-
-msgid "intro/pages/title3"
-msgstr "限时个人储备"
-
-msgid "intro/pages/title4"
-msgstr "战斗中激活"
-
-msgid "intro/pages/title5"
-msgstr "转换"
+"获得限时个人储备后，您需要在有限时间内使用它们。如果在此期间没有将其激活，那么您将损失它们。当拥有相同类型的限时个人储备时，您将无法使用不会过期的个人储备。"
 
 msgid "intro/title"
-msgstr "个人储备2.0"
+msgstr "限时个人储备"
 
 msgid "noPaidReserveTooltip/text"
 msgstr "仓库中没有此类型的个人储备。您可以稍后购买它们或在车库中激活它们。"

@@ -1,4 +1,5 @@
 import WWISE
+from gui.Scaleform.daapi.view.battle.shared.markers2d.manager import KillCamMarkersManager
 from shared_utils import CONST_CONTAINER
 from gui.Scaleform.daapi.view.battle.classic.page import ClassicPage
 from gui.Scaleform.daapi.view.battle.shared import drone_music_player, finish_sound_player
@@ -53,7 +54,7 @@ MAPS_TRAINING_CONFIG = ComponentsConfig(config=(
  (
   DynamicAliases.TIME_NOTIFIER, arena_time_notificator.MapsTrainingArenaTimeNotificator)))
 _MAPS_TRAINING_EXTERNAL_COMPONENTS = (
- CrosshairPanelContainer, markers2d.MapsTrainingMarkersManager)
+ CrosshairPanelContainer, markers2d.MapsTrainingMarkersManager, KillCamMarkersManager)
 
 class MapsTrainingPage(ClassicPage):
 

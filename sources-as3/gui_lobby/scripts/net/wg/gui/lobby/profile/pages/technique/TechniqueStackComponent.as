@@ -139,6 +139,7 @@ package net.wg.gui.lobby.profile.pages.technique
             }
             else
             {
+               this._counterManager.removeCounter(this.viewRatingBtn);
                this.removeCounters();
             }
             if(this._visibleRating)
@@ -222,14 +223,8 @@ package net.wg.gui.lobby.profile.pages.technique
             this._countersToSet.splice(0,this._countersToSet.length);
             this._countersToSet = null;
          }
-         if(this._actualCounters)
-         {
-            while(this._actualCounters.length)
-            {
-               this._counterManager.removeCounter(this._actualCounters.pop());
-            }
-            this._actualCounters = null;
-         }
+         this.removeCounters();
+         this._actualCounters = null;
          this._counterManager = null;
          super.onDispose();
       }
@@ -249,6 +244,7 @@ package net.wg.gui.lobby.profile.pages.technique
       
       public function setBtnCounters(param1:Vector.<CountersVo>) : void
       {
+         this.removeCounters();
          this._countersToSet = param1;
          invalidate(INVALIDATE_BTN_COUNTERS);
       }
@@ -344,6 +340,21 @@ package net.wg.gui.lobby.profile.pages.technique
          }
       }
       
+      public function get prestigeWidget() : GFInjectComponent
+      {
+         var _loc1_:TechniqueStatisticTab = null;
+         if(this._isOtherPlayerMode)
+         {
+            return this._prestigeWidgetInject;
+         }
+         _loc1_ = this.viewStack.currentView as TechniqueStatisticTab;
+         if(_loc1_)
+         {
+            return _loc1_.prestigeWidget;
+         }
+         return null;
+      }
+      
       private function onViewRatingBtnClickHandler(param1:ButtonEvent) : void
       {
          dispatchEvent(new ProfileTechniqueEvent(ProfileTechniqueEvent.VIEW_RATING_BTN_CLICK,true));
@@ -370,21 +381,6 @@ package net.wg.gui.lobby.profile.pages.technique
       private function onViewRatingBtnRollOutHandler(param1:MouseEvent) : void
       {
          App.toolTipMgr.hide();
-      }
-      
-      public function get prestigeWidget() : GFInjectComponent
-      {
-         var _loc1_:TechniqueStatisticTab = null;
-         if(this._isOtherPlayerMode)
-         {
-            return this._prestigeWidgetInject;
-         }
-         _loc1_ = this.viewStack.currentView as TechniqueStatisticTab;
-         if(_loc1_)
-         {
-            return _loc1_.prestigeWidget;
-         }
-         return null;
       }
    }
 }

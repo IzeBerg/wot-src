@@ -5,8 +5,6 @@ package net.wg.data.constants.generated
       
       public static const HINTS:String = "ManualPageDetailedHintsUI";
       
-      public static const BOOTCAMP:String = "ManualPageDetailedWithButtonUI";
-      
       public static const MAPS_TRAINING:String = "ManualPageDetailedWithButtonUI";
       
       public static const VIDEO:String = "ManualPageDetailedVideoUI";

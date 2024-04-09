@@ -24,8 +24,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public var skillSelect:Function;
       
-      public var changeCrewLevel:Function;
-      
       private var _vectorDeviceSlotVO:Vector.<DeviceSlotVO>;
       
       private var _vectorShellButtonVO:Vector.<ShellButtonVO>;
@@ -106,12 +104,6 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.skillSelect,"skillSelect" + Errors.CANT_NULL);
          this.skillSelect(param1,param2,param3);
-      }
-      
-      public function changeCrewLevelS(param1:int) : void
-      {
-         App.utils.asserter.assertNotNull(this.changeCrewLevel,"changeCrewLevel" + Errors.CANT_NULL);
-         this.changeCrewLevel(param1);
       }
       
       public final function as_setDevicesData(param1:Array) : void
