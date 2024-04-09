@@ -34,9 +34,6 @@ msgstr "In WoWP client"
 msgid "Contact/resource/wows"
 msgstr "In WoWS client"
 
-msgid "Contact/status/inBattle/bootcamp"
-msgstr "In Bootcamp"
-
 msgid "Contact/status/inBattle/epic_random_training"
 msgstr "In Team Training Battle"
 
@@ -112,14 +109,6 @@ msgstr ""
 
 msgid "XP/header"
 msgstr "Experience"
-
-msgid "accountCompletion/credentials/subtitle/body"
-msgstr ""
-"You can find the received rewards among your in-game assets after "
-"registration is completed."
-
-msgid "accountCompletion/credentials/subtitle/header"
-msgstr "Your Rewards"
 
 msgid "accountCompletion/email/titleTooltip"
 msgstr ""
@@ -942,11 +931,25 @@ msgstr ""
 msgid "awardItem/abilityToken/header"
 msgstr "Combat Reserve Points"
 
+msgid "awardItem/additional_bonuses/body"
+msgstr ""
+"Triple your XP earnings for a victorious battle %(applications)d times a "
+"day."
+
+msgid "awardItem/additional_bonuses/header"
+msgstr "Manageable XP Multiplier"
+
 msgid "awardItem/attendance_reward/body"
 msgstr "Rewards for logging in to the game."
 
 msgid "awardItem/attendance_reward/header"
 msgstr "Attendance Rewards"
+
+msgid "awardItem/badges/body"
+msgstr "Wave your WoT Plus flag in the air!"
+
+msgid "awardItem/badges/header"
+msgstr "Tanker Banner"
 
 msgid "awardItem/battleToken/description"
 msgstr "Unlocks several missions."
@@ -965,6 +968,14 @@ msgstr "Missions Available"
 
 msgid "awardItem/battleToken/several/line"
 msgstr "%(num)s. \"%(name)s\"."
+
+msgid "awardItem/battle_bonuses/body"
+msgstr ""
+"Increase your credit, Combat & Free XP, and Crew XP earnings by "
+"%(earnings)d%%."
+
+msgid "awardItem/battle_bonuses/header"
+msgstr "Battle Bonus"
 
 msgid "awardItem/berths/body"
 msgstr "An additional free bunk in the Barracks."
@@ -1332,6 +1343,12 @@ msgstr "A constant bonus to Crew XP."
 msgid "awardItem/idle_crew_xp/header"
 msgstr "Intensive Crew Regimen"
 
+msgid "awardItem/industrialResource/body"
+msgstr "?empty?"
+
+msgid "awardItem/industrialResource/header"
+msgstr "Industrial Resource"
+
 msgid "awardItem/oneof/body"
 msgstr ""
 "The number of rewards and their quality depend on the Leaderboard position."
@@ -1429,14 +1446,6 @@ msgstr ""
 msgid "awardItem/steelHunterPoint/header"
 msgstr "Steel Hunter Points"
 
-msgid "awardItem/stpcoin/body"
-msgstr ""
-"Currency that can be earned in Steel Hunter battles. Seals can be exchanged for unique rewards in the Shamrock Shop.\n"
-"When playing in a Platoon, Seals are divided equally among Platoon members. The specified amount is your part of the total earnings."
-
-msgid "awardItem/stpcoin/header"
-msgstr "Lucky Seals"
-
 msgid "awardItem/tankman/body"
 msgstr "A crew member for whom the nation and qualification can be selected."
 
@@ -1472,6 +1481,12 @@ msgstr "Test Entitlement. Description."
 
 msgid "awardItem/testEntitlement/header"
 msgstr "Test Entitlement. Header."
+
+msgid "awardItem/tourcoin/body"
+msgstr "?empty?"
+
+msgid "awardItem/tourcoin/header"
+msgstr "Points of Duty"
 
 msgid "awardItem/xp/body"
 msgstr "A single-use bonus to additional Combat Experience."
@@ -1512,52 +1527,8 @@ msgstr "Click to open the Recruit Crew Member window."
 msgid "barracks/item_empty/header"
 msgstr "Recruit"
 
-msgid "barracks/placesCount/dismiss/body"
-msgstr ""
-"Holds up to %(placeCount)s crew members who can be recovered later. When the"
-" limit is reached, you will be given the option to delete the first retired "
-"crew member in order to free up a spot for the crew member currently being "
-"retired."
-
-msgid "barracks/placesCount/dismiss/header"
-msgstr "Retirement Buffer"
-
-msgid "barracks/tankmen/dismiss/body"
-msgstr ""
-"Click to go to the confirmation window for the crew member retirement."
-
-msgid "barracks/tankmen/dismiss/header"
-msgstr "Retire"
-
-msgid "barracks/tankmen/recovery/free/body"
-msgstr ""
-"You have %(totalLeftValue)s to recover the crew member:\n"
-"• %(freeLeftValue)s to recover the crew member for free\n"
-"• %(withMoneyLeftValue)s to recover the crew member for %(price)s."
-
-msgid "barracks/tankmen/recovery/gold/body"
-msgstr "You have %(totalLeftValue)s to recover the crew member for %(price)s."
-
-msgid "barracks/tankmen/recovery/header"
-msgstr "Crew Member Dismissed"
-
 msgid "barracks/tankmen/recovery/newSkill"
 msgstr "Perks not selected"
-
-msgid "barracks/tankmen/recoveryBtn/header"
-msgstr "Recover Crew Member"
-
-msgid "barracks/tankmen/recruit/body"
-msgstr "Click to open the Recruit Crew Member window."
-
-msgid "barracks/tankmen/recruit/header"
-msgstr "Recruit"
-
-msgid "barracks/tankmen/unload/body"
-msgstr "Crew member will be transferred from a vehicle to the Barracks."
-
-msgid "barracks/tankmen/unload/header"
-msgstr "Send to Barracks"
 
 msgid "battleBooster/buy/useless/lower_description"
 msgstr "the corresponding equipment must be mounted."
@@ -1580,11 +1551,14 @@ msgstr ""
 "the following characteristics:"
 
 msgid "battleBooster/skill/learnt"
-msgstr "(crew members who can have the \"%s\" perk have it trained to 100%%)"
+msgstr ""
+"(crew members eligible for the {boosterName} perk have it trained to 100% "
+"and their perk efficiency is 100%) "
 
 msgid "battleBooster/skill/not_learnt"
 msgstr ""
-"(crew members who can have the \"%s\" perk do not have it trained to 100%%)"
+"(crew members eligible for the {boosterName} perk do not have it trained to "
+"100%, or their perk efficiency is less than 100%)"
 
 msgid "battleBooster/useless/body"
 msgstr ""
@@ -2279,12 +2253,6 @@ msgstr ""
 msgid "battle_royale/hangar/vehicle/leftTime"
 msgstr "Available through: %(leftTime)s"
 
-msgid "battle_royale/hangar/vehicle/shamrock"
-msgstr ""
-"%(shamrock)s A x2 bonus to Lucky Seals for being among the top 10 players in"
-" Solo battles or among the top 7 in Platoon battles. The bonus can be "
-"activated once a day for each event vehicle."
-
 msgid "battle_royale/hangar/vehicle/status"
 msgstr "One of the Steel Hunters"
 
@@ -2641,13 +2609,13 @@ msgid "boostersPanel/openBoostersWindow/body"
 msgstr "Click to select and activate Personal Reserves."
 
 msgid "boostersWindow/booster/activateInfo/activation"
-msgstr "Activation:"
+msgstr "Activation"
 
 msgid "boostersWindow/booster/activateInfo/activationInfo"
 msgstr ""
-"Can be activated in the Garage or during battle by pressing the TAB or B "
-"keys. The bonus applies to Random Battles, tournaments, and both the Steel "
-"Hunter and Frontline modes."
+"Activate Personal Reserves in the Garage or during battle by pressing the "
+"TAB or B keys. Their bonus applies to Random Battles and tournaments, as "
+"well as the Steel Hunter, Frontline, and Onslaught modes."
 
 msgid "boostersWindow/booster/activateInfo/basicReserve"
 msgstr "Standard Personal Reserve"
@@ -2688,11 +2656,39 @@ msgstr ""
 msgid "boostersWindow/booster/activateInfo/description"
 msgstr "On the Personal Reserves Activation screen."
 
+msgid "boostersWindow/booster/activateInfo/descriptionCaption"
+msgstr "Description"
+
+msgid "boostersWindow/booster/activateInfo/descriptionText"
+msgstr ""
+"Earn Personal Reserves by completing missions and participating in game "
+"events, or purchase them in the Store. Their bonus applies to Random Battles"
+" and tournaments, as well as the Steel Hunter, Frontline, and Onslaught "
+"modes."
+
+msgid "boostersWindow/booster/activateInfo/expirable"
+msgstr "Expirable"
+
+msgid "boostersWindow/booster/activateInfo/expirableReserves"
+msgstr "Expirable Reserves"
+
+msgid "boostersWindow/booster/activateInfo/expirationTimer"
+msgstr "%(count)s in %(time)s"
+
+msgid "boostersWindow/booster/activateInfo/expireSoon"
+msgstr "Expirable Reserves need to be activated:"
+
+msgid "boostersWindow/booster/activateInfo/expireToday"
+msgstr "Expirable Reserves need to be activated:"
+
 msgid "boostersWindow/booster/activateInfo/improvedReserve"
 msgstr "Improved Personal Reserve"
 
 msgid "boostersWindow/booster/activateInfo/inDepot"
 msgstr "In Depot"
+
+msgid "boostersWindow/booster/activateInfo/nonExpirableReserves"
+msgstr "Non-Expirable Reserves"
 
 msgid "boostersWindow/booster/activateInfo/nonPaidReceiveInfo"
 msgstr ""
@@ -2715,6 +2711,9 @@ msgstr "Purchase"
 msgid "boostersWindow/booster/activateInfo/receive"
 msgstr "Acquisition Method"
 
+msgid "boostersWindow/booster/activateInfo/timeLeft"
+msgstr "Time left: %(time)s"
+
 msgid "boostersWindow/booster/activateInfo/title"
 msgstr "Activation:"
 
@@ -2735,6 +2734,9 @@ msgstr "Free & Crew XP"
 
 msgid "boostersWindow/booster/activateInfo/title/booster_xp"
 msgstr "Combat XP"
+
+msgid "boostersWindow/booster/activateInfo/willExpireAfter"
+msgstr "Reserve is available for %(time)s"
 
 msgid "boostersWindow/booster/active/title"
 msgstr "Activated"
@@ -2791,11 +2793,29 @@ msgid "boostersWindow/booster/longDescriptionSpecial"
 msgstr ""
 "When activated, Personal Reserves allow you to receive additional bonuses "
 "after each battle. Personal Reserves are active for a specific period in "
-"Random Battles, Ranked Battles, special tournaments, and both Steel Hunter "
-"and Frontline modes."
+"Random Battles, special tournaments, and the Steel Hunter, Frontline, and "
+"Onslaught modes. They have no expiration date and will remain available "
+"until you activate them."
+
+msgid "boostersWindow/booster/longDescriptionSpecialExpirable"
+msgstr ""
+"When activated, Personal Reserves allow you to receive additional bonuses "
+"after each battle. Personal Reserves are active for a specific period in "
+"Random Battles, special tournaments, and the Steel Hunter, Frontline, and "
+"Onslaught modes."
 
 msgid "boostersWindow/booster/shortDescriptionSpecial"
 msgstr "Additional bonuses after each battle"
+
+msgid "buttons/increase/body"
+msgstr ""
+"Retrain the crew member to restore all perks and improve the vehicle "
+"efficiency."
+
+msgid "buttons/retrain/body"
+msgstr ""
+"Retrain the crew member to restore all perks and improve the vehicle "
+"efficiency."
 
 msgid "chatContactsListOnly/body"
 msgstr ""
@@ -2887,7 +2907,9 @@ msgid "colorFilter/header"
 msgstr "Color Adjustment"
 
 msgid "commanderBonus/alt/description"
-msgstr "A 10% bonus to the major qualification of each crew member."
+msgstr ""
+"Each other crew member receives +%(commBonus)s%% to their crew efficiency "
+"bonus."
 
 msgid "commanderBonus/alt/info"
 msgstr ""
@@ -2896,8 +2918,9 @@ msgstr ""
 
 msgid "commanderBonus/description"
 msgstr ""
-"Each crew member receives a {greenBright_Start}10%{greenBright_End} bonus to"
-" their major qualification level if the Commander is trained to 100%."
+"Each other crew member receives "
+"+{greenBright_Start}%(commBonus)s%%{greenBright_End} to their crew "
+"efficiency bonus."
 
 msgid "commanderBonus/name"
 msgstr "Commander's Bonus"
@@ -2935,6 +2958,18 @@ msgstr ""
 msgid "contentBuyView/slotCheckbox/notEnoughSlots/header"
 msgstr "Attention"
 
+msgid "conversion/notReceived/body"
+msgstr "You will receive the following Crew Books after conversion."
+
+msgid "conversion/notReceived/header"
+msgstr "You Will Receive"
+
+msgid "conversion/received/body"
+msgstr "You have received Crew Books after conversion."
+
+msgid "conversion/received/header"
+msgstr "Received"
+
 msgid "credits/body"
 msgstr ""
 "The main in-game currency.\n"
@@ -2945,7 +2980,7 @@ msgid "credits/header"
 msgstr "Credits"
 
 msgid "crew/body"
-msgstr "Vehicle comes with %(value)s%% crew."
+msgstr "Vehicle comes with a crew."
 
 msgid "crew/header"
 msgstr "Full Crew"
@@ -2991,9 +3026,6 @@ msgstr "Universal Crew Books"
 
 msgid "crewBundle/bonus/anyAdditionalSkill"
 msgstr "Enough experience to train one perk to 100%."
-
-msgid "crewBundle/bonus/basicRoleBoost_100"
-msgstr "100% trained major qualification."
 
 msgid "crewBundle/bonus/sameBloodZeroSkill"
 msgstr "The Band of Brothers perk trained to 100%."
@@ -3044,7 +3076,7 @@ msgid "csAutoSearchVehicle/unsuitable"
 msgstr "Select vehicles to start Autosearch."
 
 msgid "customCrew/referral/body"
-msgstr "%(value)s%% crew"
+msgstr "Crew"
 
 msgid "customCrew/referral/header"
 msgstr "Crew for the %(vehicle)s"
@@ -3688,23 +3720,6 @@ msgstr ""
 msgid "cyberSport/waitingPlayers/configAlert/header"
 msgstr "Vehicle Requirements Are Not Counted"
 
-msgid "demoAccountRenaming/notAvailable/body"
-msgstr ""
-"You can change your nickname in the game by selecting Random Battle in the "
-"battle mode selector."
-
-msgid "demoAccountRenaming/notAvailable/header"
-msgstr "Nickname Change Unavailable"
-
-msgid "demoAccountRenamingHangar/holder"
-msgstr "Your nickname is being updated. The change may take some time."
-
-msgid "demoAccountRenamingHangar/text"
-msgstr "Click to view details about the Player's Account."
-
-msgid "demoAccountRenamingHangar/title"
-msgstr "Player's Account"
-
 msgid "demonstrator/platoonWarning/body"
 msgstr ""
 "To find a battle with these parameters, you need to be a Platoon Commander. "
@@ -3819,7 +3834,7 @@ msgstr ""
 "{whiteSpanish_Open}%(days)s{whiteSpanish_Close} d:"
 
 msgid "dismissedToggle/subHeader"
-msgstr "Show/hide only retired crew members."
+msgstr "Show retired crew members."
 
 msgid "displayPlatoonMembers/attention"
 msgstr ""
@@ -5843,12 +5858,6 @@ msgstr "Crew Member Perks"
 msgid "hangarTutorial/personalCase/skills/headerDescription"
 msgstr "Crew Member Details"
 
-msgid "hangarTutorial/personalCase/skills/specialtyDescription"
-msgstr ""
-"The higher the level of major qualification, the better the crew member's "
-"performance. The base maximum of 100% can be increased using certain "
-"equipment and consumables."
-
 msgid "hangarTutorial/personalCase/skills/specialtyTitle"
 msgstr "Major Qualification Level"
 
@@ -6789,9 +6798,6 @@ msgstr ""
 
 msgid "mode_selector/ranked/qualification/header"
 msgstr "Battles in Qualification: %(current)s / %(max)s"
-
-msgid "mode_selector/unavailable/bootcamp"
-msgstr "Unavailable in Bootcamp."
 
 msgid "mode_selector/unavailable/notVehicles/level"
 msgstr "Tier %(levels)s"
@@ -8052,6 +8058,60 @@ msgstr ""
 "performance. His endless positive energy and punk vibes raise the morale of "
 "the entire crew to the highest level."
 
+msgid "notrecruitedtankman/onslaught_p3_1/desc"
+msgstr ""
+"Previously a history teacher in a rural Polish school, Jan answered his "
+"country's call to fight back against overwhelming firepower dominance. His "
+"fearless leadership on the battlefield, combined with his authoritative "
+"beard, led crewmates to nickname him \"Chief\"."
+
+msgid "notrecruitedtankman/onslaught_p3_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/onslaught_p3_1/label"
+msgstr "Onslaught. Year of the Pegasus"
+
+msgid "notrecruitedtankman/onslaught_p3_2/desc"
+msgstr ""
+"Growing up in an influential Swedish military family, Anna was fascinated by"
+" blueprints, plans, and prototypes from a young age. After building on her "
+"childhood curiosity by studying tank engineering, she now applies her "
+"expertise to test high-precision combat equipment—to the great pride of her "
+"father."
+
+msgid "notrecruitedtankman/onslaught_p3_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/onslaught_p3_2/label"
+msgstr "Onslaught. Year of the Pegasus"
+
+msgid "notrecruitedtankman/onslaught_p3_3/desc"
+msgstr ""
+"Disillusioned with his studies at an elite art school, Damon rebelled by "
+"dropping out to serve Queen and country in the British Armed Forces. "
+"Swapping the fine arts for the art of war, he finally discovered his true "
+"passion—leaving his oil masterpieces on the battlefield."
+
+msgid "notrecruitedtankman/onslaught_p3_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/onslaught_p3_3/label"
+msgstr "Onslaught. Year of the Pegasus"
+
+msgid "notrecruitedtankman/onslaught_p3_4/desc"
+msgstr ""
+"As an ink master at a Florida tattoo parlor, Andy gained a reputation for "
+"being able to talk for hours with anyone about anything. After he enlisted "
+"in the military, Andy's infectious charisma found an even more receptive "
+"audience, with his natural ability to unite fellow tankers making him the "
+"\"Soul\" of his crew."
+
+msgid "notrecruitedtankman/onslaught_p3_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/onslaught_p3_4/label"
+msgstr "Onslaught. Year of the Pegasus"
+
 msgid "notrecruitedtankman/oow21_strategist_commander/desc"
 msgstr ""
 "An \"old-school\" officer. Cold-blooded and prudent, he makes decisions "
@@ -8112,6 +8172,15 @@ msgstr "the Art of Strategy event"
 
 msgid "notrecruitedtankman/oow21_tanker_4_commander/label"
 msgstr "Art of Strategy 2022"
+
+msgid "notrecruitedtankman/polish_commander/desc"
+msgstr ""
+"Cygan is a dynamic Polish powerhouse who's not just your average content "
+"creator and tournament caster—he's also a seasoned World of Tanks virtuoso "
+"who'll take your gaming experience to a whole new level as Commander!"
+
+msgid "notrecruitedtankman/polish_commander/label"
+msgstr "Unique Commander"
 
 msgid "notrecruitedtankman/race19_commanderA/desc"
 msgstr ""
@@ -9399,11 +9468,34 @@ msgstr ""
 "Trained by all qualifications {brown_Start}(effective level is averaged "
 "across the entire crew){brown__End}."
 
+msgid "perks/efficiency/reduced"
+msgstr ""
+"Perk efficiency reduced to {value}&zwnbsp;.\n"
+"Training suspended."
+
+msgid "perks/efficiency/untrained"
+msgstr ""
+"The perk is not available, because this crew member is not trained for this "
+"vehicle."
+
 msgid "perks/fullGroupSkillTitle"
-msgstr "When the perk is fully trained by all crew members (100%):"
+msgstr ""
+"When the perk is fully trained by all crew members (100%) and perk "
+"efficiency is 100%:"
+
+msgid "perks/fullGroupSkillWithLowEfficiencyTitle"
+msgstr ""
+"When the perk is fully trained by all crew members (100%) and perk "
+"efficiency is 100%:"
 
 msgid "perks/fullSkillTitle"
-msgstr "When the perk is fully trained (100%):"
+msgstr "When the perk is fully trained (100%) and perk efficiency is 100%:"
+
+msgid "perks/fullSkillWithLowEfficiencyTitle"
+msgstr "When the perk is fully trained (100%) and perk efficiency is 100%:"
+
+msgid "perks/fullWithDirective"
+msgstr "Directive used. The perk now has an additional bonus."
 
 msgid "perks/infoText"
 msgstr ""
@@ -9413,6 +9505,9 @@ msgstr ""
 
 msgid "perks/irrelevant"
 msgstr "Incompatible specialization. The perk has no effect."
+
+msgid "perks/notFullWithDirective"
+msgstr "Directive used. The perk training level is now 100%."
 
 msgid "perks/zeroPerkInfo"
 msgstr ""
@@ -9755,8 +9850,8 @@ msgid "personalMissions/status/mainDone/body"
 msgstr ""
 "The mission was completed; the reward for fulfilling the primary conditions "
 "was received. You can improve the result by completing the primary and "
-"secondary conditions. To do so, click Improve Result at the bottom of the "
-"card."
+"secondary conditions. To do so, click Complete with Honors at the bottom of "
+"the card."
 
 msgid "personalMissions/status/mainDone/header"
 msgstr "Primary Condition Fulfilled"
@@ -9784,6 +9879,14 @@ msgstr ""
 
 msgid "personalMissions/tankgirlsBlock/header"
 msgstr "Non-Recruited Female Crew Members"
+
+msgid "postmortemMode/body"
+msgstr ""
+"The changes will take effect from the next battle. In some cases, it is not "
+"possible to view the moment your vehicle was destroyed."
+
+msgid "postmortemMode/header"
+msgstr "Postmortem Mode"
 
 msgid "prebattle/downButton/active"
 msgstr "Move a player from the team to the queue"
@@ -10233,7 +10336,7 @@ msgid "quests/linkBtn/battlePass"
 msgstr "See Battle Pass Progression"
 
 msgid "quests/linkBtn/battlePass/select"
-msgstr "To Battle Pass Chapter selection"
+msgstr "To Battle Pass"
 
 msgid "quests/linkBtn/customizationProgression/disabled"
 msgstr "Detailed information is currently unavailable."
@@ -10377,6 +10480,36 @@ msgstr "Awards"
 msgid "quests/vehiclesBonus/vehiclesLeft"
 msgstr "%(count)s more vehicles..."
 
+msgid "quickTraining/LowPECrew"
+msgstr ""
+"The crew does not meet the requirements for training: some crew members have"
+" low Perks Efficiency.{newLine}Train them via their "
+"{cream_Open}Profiles{cream_Close}."
+
+msgid "quickTraining/LowPENotFullCrew"
+msgstr ""
+"The crew does not meet the requirements for training: some crew members have"
+" low perk efficiency, and the crew is incomplete.{newLine}Train them via "
+"their {cream_Open}Profiles{cream_Close}."
+
+msgid "quickTraining/LowPENotTrainedCrew"
+msgstr ""
+"The crew does not meet the requirements for training: some crew members are "
+"not trained for this vehicle, and some have low perk "
+"efficiency.{newLine}Train them via their {cream_Open}Profiles{cream_Close}."
+
+msgid "quickTraining/LowPENotTrainedNotFullCrew"
+msgstr ""
+"The crew does not meet the requirements for training: some crew members are "
+"not trained for this vehicle, some have low perk efficiency, and the crew is"
+" incomplete.{newLine}Train them via their {cream_Open}Profiles{cream_Close}."
+
+msgid "quickTraining/LowPEtipsPersonal"
+msgstr ""
+"{cream_Open}%(tankman)s{cream_Close} has low perk efficiency. XP earned will"
+" first go toward reaching 100%% perk efficiency, then toward perks "
+"themselves."
+
 msgid "quickTraining/chooseAnyCrewMember"
 msgstr ""
 "You can select a crew member to accelerate their perk training using Free XP"
@@ -10392,8 +10525,9 @@ msgstr "Some of your crew members have already trained all available perks."
 
 msgid "quickTraining/notFullAndNotTrainedCrew"
 msgstr ""
-"The crew does not meet the requirements for training:\n"
-"Some crew members are not trained for this vehicle, and the crew is incomplete.{newLine}Train them via their {cream_Open}Profiles{cream_Close}."
+"The crew does not meet the requirements for training: some crew members are "
+"not trained for this vehicle, and the crew is incomplete.{newLine}Train them"
+" via their {cream_Open}Profiles{cream_Close}."
 
 msgid "quickTraining/notFullCrew"
 msgstr ""
@@ -10402,8 +10536,9 @@ msgstr ""
 
 msgid "quickTraining/notTrainedThisVehicle"
 msgstr ""
-"The crew does not meet the requirements for training:\n"
-"Some crew members are not trained for this vehicle.{newLine}Train them via their {cream_Open}Profiles{cream_Close}."
+"The crew does not meet the requirements for training: some crew members are "
+"not trained for this vehicle.{newLine}Train them via their "
+"{cream_Open}Profiles{cream_Close}."
 
 msgid "rallyInfo/profileBtn/body"
 msgstr "Click to view the profile of the selected team."
@@ -10779,6 +10914,65 @@ msgid "researchPage/vehicle/status/parentModuleIsLocked/text"
 msgstr ""
 "The previous vehicle and/or its modules required to access this vehicle are "
 "not researched."
+
+msgid "retrain/changeRole/disable/crewLock/body"
+msgstr "Unable to change qualification of this crew member."
+
+msgid "retrain/changeRole/disable/crewLock/header"
+msgstr "Unavailable"
+
+msgid "retrain/changeRole/disable/forced/body"
+msgstr "Change qualification to retrain this crew member for the vehicle."
+
+msgid "retrain/changeRole/disable/forced/header"
+msgstr "No %(role)s in Vehicle"
+
+msgid "retrain/changeRole/disable/freeOperation/body"
+msgstr "Unable to change qualification for free."
+
+msgid "retrain/changeRole/disable/freeOperation/header"
+msgstr "Unavailable"
+
+msgid "retrain/changeRole/warning/body"
+msgstr ""
+"You already have %(num)s crew member(s) of this qualification for this "
+"vehicle."
+
+msgid "retrain/changeRole/warning/header"
+msgstr "Attention!"
+
+msgid "retrain/priceCard/disable/discount/body"
+msgstr ""
+"This option is not available as you already have a 100% discount on "
+"retraining this crew member in Tank Academy."
+
+msgid "retrain/priceCard/disable/discount/header"
+msgstr "Unavailable"
+
+msgid "retrain/priceCard/disable/roleChange/body"
+msgstr "Unable to change qualification for free."
+
+msgid "retrain/priceCard/disable/roleChange/header"
+msgstr "Unavailable"
+
+msgid "retrain/priceCard/disable/useless/body"
+msgstr "The crew member is already trained for this vehicle."
+
+msgid "retrain/priceCard/disable/useless/header"
+msgstr "Unavailable"
+
+msgid "retrain/tankmanDiscount/full/body"
+msgstr ""
+"A 100% discount on retraining\n"
+"until the first perk is trained to 100%."
+
+msgid "retrain/tankmanDiscount/half/body"
+msgstr ""
+"A 50% discount on retraining\n"
+"until the second perk is trained to 100%."
+
+msgid "retrain/tankmanDiscount/header"
+msgstr "Discount Available"
 
 msgid "roleExp/status/footer"
 msgstr ""
@@ -11219,6 +11413,24 @@ msgstr ""
 msgid "showVehModelsOnMap/header"
 msgstr "Expanded Minimap Features"
 
+msgid "skill/untrained/additional"
+msgstr ""
+"Retrain the crew member for this vehicle to restore all perks and improve "
+"the vehicle efficiency."
+
+msgid "skill/untrained/body"
+msgstr ""
+"The perks are not available, because this crew member is not trained for "
+"this vehicle."
+
+msgid "skill/untrained/explanation"
+msgstr ""
+"Retrain the crew member for this vehicle to restore all perks and improve "
+"the vehicle efficiency."
+
+msgid "skill/untrained/header"
+msgstr "Perks Unavailable"
+
 msgid "skills/forRole/commander"
 msgstr "Commander"
 
@@ -11239,6 +11451,37 @@ msgstr "Radio Operator"
 
 msgid "skills/newPerk/header"
 msgstr "One more perk of your choice"
+
+msgid "skillsEfficiency/altDescription"
+msgstr ""
+"Retrain a crew member to restore all their perks and improve vehicle "
+"efficiency to 100%."
+
+msgid "skillsEfficiency/header"
+msgstr "Perk Efficiency"
+
+msgid "skillsEfficiency/information1"
+msgstr ""
+"Perk efficiency works as a modifier that determines the efficiency of all "
+"perks trained by a crew member."
+
+msgid "skillsEfficiency/information2"
+msgstr ""
+"When perk efficiency is decreased, all XP earned will be added to this "
+"parameter first, preventing further perk training."
+
+msgid "skillsEfficiency/progress"
+msgstr ""
+"{whiteSpanish_Open}%(currentValue)s{whiteSpanish_Close} {par_Open}/ "
+"%(maxValue)s{par_Close}%(icon)s"
+
+msgid "skillsEfficiency/retrainingDiscountInformation"
+msgstr ""
+"You can retrain this crew member for free.\n"
+"Upon retraining they are automatically trained to 100%."
+
+msgid "skillsEfficiency/subHeader"
+msgstr "Efficiency of all perks"
 
 msgid "sound/dynamicRange/help/body"
 msgstr ""
@@ -11345,6 +11588,15 @@ msgstr "Additional Free and Crew XP per battle"
 msgid "storage/filter/personalReserves/btns/type/credits"
 msgstr "Additional credits per battle"
 
+msgid "storage/filter/personalReserves/btns/type/expirable"
+msgstr "Expirable Personal Reserves"
+
+msgid "storage/filter/personalReserves/btns/type/nonexpirable"
+msgstr "Non-Expirable Personal Reserves"
+
+msgid "storage/filter/personalReserves/btns/type/premium"
+msgstr "Improved Personal Reserves "
+
 msgid "storage/filter/personalReserves/btns/type/vehicleExp"
 msgstr "Additional experience per battle"
 
@@ -11387,7 +11639,7 @@ msgstr ""
 "Displays modules and shells that are not compatible with your vehicle."
 
 msgid "storage/mainMenu/for_sell/header"
-msgstr "Modules and shells to sale"
+msgstr "Modules and Shells to Sell"
 
 msgid "storage/mainMenu/in_hangar/body"
 msgstr "Displays all vehicles in the Garage."
@@ -11855,8 +12107,11 @@ msgstr ""
 " damaged engine increases the time needed for switching. Switching is "
 "unavailable when the engine is destroyed."
 
-msgid "tankman/commanderFeatures/commanderBonus"
-msgstr "A 10% Commander's bonus to major qualification level."
+msgid "tankman/commanderBonus/description"
+msgstr "The bonus can be increased with the bonuses below"
+
+msgid "tankman/commanderBonus/title"
+msgstr "Commander's bonus"
 
 msgid "tankman/restoreInfo/free"
 msgstr ""
@@ -11872,6 +12127,38 @@ msgstr ""
 "You have %(duration)s to recover the crew member\n"
 "for %(price)s."
 
+msgid "tankman/section/barracks"
+msgstr "In the Barracks"
+
+msgid "tankman/section/bonus/commander"
+msgstr "Commander Efficiency Bonus"
+
+msgid "tankman/section/bonus/consums"
+msgstr "Equipment and Consumables:"
+
+msgid "tankman/section/bonus/description"
+msgstr ""
+"Crew efficiency bonuses comprise certain traits that improve crew efficiency"
+" by amplifying individual contributions and fostering collaborative success."
+
+msgid "tankman/section/bonus/driver"
+msgstr "Driver Efficiency Bonus"
+
+msgid "tankman/section/bonus/finalValue"
+msgstr "Total Bonus:"
+
+msgid "tankman/section/bonus/gunner"
+msgstr "Gunner Efficiency Bonus"
+
+msgid "tankman/section/bonus/loader"
+msgstr "Loader Efficiency Bonus"
+
+msgid "tankman/section/bonus/perks"
+msgstr "Perks:"
+
+msgid "tankman/section/bonus/radioman"
+msgstr "Radio Operator Efficiency Bonus"
+
 msgid "tankman/section/currentVehicle"
 msgstr "In the Vehicle:"
 
@@ -11881,42 +12168,15 @@ msgstr "%(vehicleType)s (%(nation)s)"
 msgid "tankman/section/specialization"
 msgstr "Specialization:"
 
-msgid "tankman/status/inactiveSkills/header"
-msgstr "Wrong Perks"
-
-msgid "tankman/status/inactiveSkills/text"
+msgid "tankman/voiceover/role"
 msgstr ""
-"Perks of the following qualifications cannot be used: %(skills)s. You can "
-"choose the suitable perks in the Personal File after resetting the "
-"previously trained ones. Zero perks cannot be reset."
+"Unique voiceover,\n"
+"only for the %(icon) %(role) qualification"
 
-msgid "tankman/status/inactiveSkillsRoleFormat"
-msgstr "\"%s\""
-
-msgid "tankman/status/wrongPremiumVehicle/header"
-msgstr "Premium vehicle of correct type"
-
-msgid "tankman/status/wrongPremiumVehicle/text"
+msgid "tankman/voiceover/witches"
 msgstr ""
-"The crew member does not have specialization on %(vehicle)s, but they can "
-"use their perks."
-
-msgid "tankman/status/wrongRoleLevel"
-msgstr ""
-"This crew member cannot use their perks because their major qualification "
-"level is less than 100%. Train them via their Personal File or increase "
-"their major qualification level in battle."
-
-msgid "tankman/status/wrongVehicle/header"
-msgstr "No specialization on %(vehicle)s"
-
-msgid "tankman/status/wrongVehicle/text"
-msgstr ""
-"This crew member cannot make full use of their perks. Train them via their "
-"Personal File."
-
-msgid "tankman/vehicleSpecialization"
-msgstr "%(tankName)s, %(level)s"
+"Collect all crew members within the Pumpkin Bash event to expand their "
+"voiceover."
 
 msgid "tanksFilter/counter/close/body"
 msgstr "Click to reset filter settings to default."
@@ -12263,35 +12523,6 @@ msgstr "Spectator mode disabled."
 msgid "training/observer/selectedicon/body"
 msgstr "Spectator mode enabled."
 
-msgid "trainingLevel/additionalQualification"
-msgstr "Additional Qualification:"
-
-msgid "trainingLevel/description"
-msgstr ""
-"Major qualification level.\n"
-"The major qualification level impacts the technical characteristics of a vehicle the crew member is trained for, as well as improving all their perks."
-
-msgid "trainingLevel/finalValue"
-msgstr "Final Value:"
-
-msgid "trainingLevel/modifiers/baseLevel"
-msgstr "Training level"
-
-msgid "trainingLevel/modifiers/commanderBonus"
-msgstr "Commander's bonus"
-
-msgid "trainingLevel/modifiers/equipment"
-msgstr "Equipment and consumables"
-
-msgid "trainingLevel/modifiers/label"
-msgstr "Modifiers:"
-
-msgid "trainingLevel/modifiers/perks"
-msgstr "Perks"
-
-msgid "trainingLevel/modifiers/unsuitableSpecialization"
-msgstr "Unsuitable specialization"
-
 msgid "turnOffCombatChat/body"
 msgstr ""
 "This option is used for Random Battle\n"
@@ -12507,10 +12738,6 @@ msgstr "Sale"
 
 msgid "vehicle/speedLimits"
 msgstr "<h1>Top Speed</h1> <h2>(km/h)</h2>"
-
-msgid "vehicle/stats/footnote"
-msgstr ""
-"These characteristics apply to the vehicle with the crew trained to 100%."
 
 msgid "vehicle/telecomRental/remainingTime/days"
 msgstr "Rented for: %(time)s days left"
@@ -12925,12 +13152,8 @@ msgstr ""
 msgid "vehiclePreview/tankman/skillsTitle"
 msgstr "Trained Perks"
 
-msgid "vehiclePreview/vehiclePanel/info/body"
-msgstr ""
-"These characteristics apply to a vehicle with the crew trained to 100%."
-
 msgid "vehiclePreview/vehiclePanel/info/header/crew/AnySkills"
-msgstr "Vehicle comes with a %d%% crew with unique perks."
+msgstr "Vehicle comes with a crew with unique perks."
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/isAbillity"
 msgstr "perk"
@@ -12939,29 +13162,26 @@ msgid "vehiclePreview/vehiclePanel/info/header/crew/isPerk"
 msgstr "perk"
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/newSkill/forAll"
-msgstr ""
-"Vehicle comes with a %(level)d%% crew with an additional perk of your "
-"choice."
+msgstr "Vehicle comes with a crew with an additional perk of your choice."
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/newSkill/forOne"
 msgstr ""
-"Vehicle comes with a %(level)d%% crew and a %(role)s with an additional perk"
-" of your choice."
+"Vehicle comes with a crew and a %(role)s with an additional perk of your "
+"choice."
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/oneSkill/forAll"
-msgstr ""
-"Vehicle comes with %(level)d%% crew with the %(skillName)s %(skillType)s."
+msgstr "Vehicle comes with a crew with the %(skillName)s %(skillType)s."
 
 msgid "vehiclePreview/vehiclePanel/info/header/crew/oneSkill/forOne"
 msgstr ""
-"Vehicle comes with %(level)d%% crew and a %(role)s with the %(skillName)s "
+"Vehicle comes with a crew and a %(role)s with the %(skillName)s "
 "%(skillType)s."
 
 msgid "vehiclePreview/vehiclePanel/info/header/noCrew"
 msgstr "Vehicle is provided without a crew"
 
 msgid "vehiclePreview/vehiclePanel/info/header/withCrew"
-msgstr "Vehicle comes with %d%% crew"
+msgstr "Vehicle comes with a crew"
 
 msgid "vehicleSelector/filter/mainVehicle"
 msgstr "Filter by primary vehicles."
@@ -13022,9 +13242,6 @@ msgstr "Unable to Sell Vehicle"
 
 msgid "vehicleSellDialog/acceptButtonTooltip/notEnoughCurrency/body"
 msgstr "Not enough resources to demount equipment"
-
-msgid "vehicleSellDialog/acceptButtonTooltip/notEnoughTankmenBerths/body"
-msgstr "Not enough bunks in Barracks for the crew"
 
 msgid "vehicleSellDialog/acceptButtonTooltip/vehicleSellLimit/body"
 msgstr "The daily vehicle sale limit is exceeded"

@@ -10,6 +10,8 @@ package net.wg.infrastructure.base.meta
       
       function as_setPlayersData(param1:Array, param2:int) : void;
       
-      function as_setSeparatorVisibility(param1:Boolean) : void;
+      function as_setRespawnVisibility(param1:Boolean) : void;
+      
+      function as_setIsSquadMode(param1:Boolean) : void;
    }
 }

@@ -357,7 +357,7 @@ msgid "battlePassBuyView/reward/backBtn"
 msgstr "Back"
 
 msgid "battlePassBuyView/reward/chapter"
-msgstr "CHAPTER: %(chapterName)s"
+msgstr "CHAPTER %(chapterName)s"
 
 msgid "battlePassBuyView/reward/subtitle"
 msgid_plural "plural/battlePassBuyView/reward/subtitle"
@@ -623,8 +623,8 @@ msgstr "Affirmative!"
 msgid "dailyQuests/description"
 msgstr ""
 "During Battle Pass, completing each daily mission, including Bonus and final"
-" missions (for a chain of 45 missions), will provide additional Battle Pass "
-"Points."
+" missions (for a chain of %(questNumber)s missions), will provide additional"
+" Battle Pass Points."
 
 msgid "dailyQuests/descriptionAccent"
 msgstr "Battle Pass Points"
@@ -1103,6 +1103,9 @@ msgstr "Premium Vehicle"
 msgid "progression/extraChapterWidget/tankName"
 msgstr "%(vehicleName)s"
 
+msgid "progression/extraChapterWidget/tankman"
+msgstr "Crew member"
+
 msgid "progression/extraChapterWidget/timer"
 msgstr "Time left before the end of the Battle Pass Chapter"
 
@@ -1161,7 +1164,7 @@ msgstr ""
 "Season %(seasonNum)s: %(seasonName)s will last until %(endDay)s %(endMonth)s"
 
 msgid "progression/season/end/special"
-msgstr "Will last until: %(endDay)s %(endMonth)s %(endTime)s"
+msgstr "Will last until: %(endTime)s"
 
 msgid "progression/seasonEndingDescr"
 msgstr "Event ends in "

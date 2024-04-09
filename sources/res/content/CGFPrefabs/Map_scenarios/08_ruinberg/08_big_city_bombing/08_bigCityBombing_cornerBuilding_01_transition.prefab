@@ -577,11 +577,15 @@
 		</ComponentPool>
 		<ComponentPool>
 			<type>SequenceComponent</type>
-			<version>1</version>
+			<version>2</version>
 			<component>
 				<objectIndex>0</objectIndex>
 				<flags>35</flags>
 				<config>
+					<property>
+						<name>loop</name>
+						<value>0</value>
+					</property>
 					<property>
 						<name>autoStart</name>
 						<value>1</value>
@@ -616,10 +620,6 @@
 										<value>15</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>15</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -646,10 +646,6 @@
 										</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>1</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -668,10 +664,6 @@
 									<property>
 										<name>end</name>
 										<value>11</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>7</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -697,13 +689,6 @@
 										<value>4</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											2.5
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -722,10 +707,6 @@
 									<property>
 										<name>end</name>
 										<value>20</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>18</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -749,13 +730,6 @@
 									<property>
 										<name>end</name>
 										<value>20</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>
-											19.9
-											<!--BW_String-->
-										</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -784,13 +758,6 @@
 										</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>
-											0.5
-											<!--BW_String-->
-										</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
@@ -809,10 +776,6 @@
 									<property>
 										<name>end</name>
 										<value>11</value>
-									</property>
-									<property>
-										<name>duration</name>
-										<value>10</value>
 									</property>
 									<property>
 										<name>parameters</name>
@@ -835,20 +798,12 @@
 										<value>11</value>
 									</property>
 									<property>
-										<name>duration</name>
-										<value>10</value>
-									</property>
-									<property>
 										<name>parameters</name>
 										<collection/>
 									</property>
 								</object>
 							</item>
 						</collection>
-					</property>
-					<property>
-						<name>time</name>
-						<value>0</value>
 					</property>
 				</config>
 			</component>

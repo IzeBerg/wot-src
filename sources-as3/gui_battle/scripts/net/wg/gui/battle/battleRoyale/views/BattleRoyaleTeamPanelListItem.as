@@ -2,14 +2,17 @@ package net.wg.gui.battle.battleRoyale.views
 {
    import flash.display.MovieClip;
    import flash.events.Event;
+   import flash.events.MouseEvent;
    import flash.geom.ColorTransform;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Values;
    import net.wg.gui.battle.components.BattleUIComponent;
+   import net.wg.gui.battle.components.events.PlayersPanelListEvent;
    import net.wg.gui.components.controls.Image;
    import net.wg.infrastructure.interfaces.IColorScheme;
+   import net.wg.utils.ICommons;
    import scaleform.clik.controls.StatusIndicator;
    import scaleform.gfx.TextFieldEx;
    
@@ -24,9 +27,11 @@ package net.wg.gui.battle.battleRoyale.views
       
       private static const CLAN_NAME_TF_OFFSET:uint = 1;
       
-      private static const PLAYER_AND_CLAN_NAME_TF_MAX_WIDTH:uint = 160;
+      private static const PLAYER_AND_CLAN_NAME_TF_MAX_WIDTH:uint = 143;
       
       private static const BR_SQUAD_DEAD_COLOR_SCHEME_NAME:String = "br_squad_dead";
+      
+      private static const READY_STATUS_ALPHA:Number = 0.8;
       
       private static const NOT_READY_STATUS_ALPHA:Number = 0.5;
       
@@ -51,6 +56,10 @@ package net.wg.gui.battle.battleRoyale.views
       
       public var respawnAnimationMc:MovieClip = null;
       
+      public var soundIcon:MovieClip = null;
+      
+      public var hitMC:MovieClip = null;
+      
       private var _playerName:String = "";
       
       private var _clanName:String = "";
@@ -59,10 +68,21 @@ package net.wg.gui.battle.battleRoyale.views
       
       private var _isReady:Boolean = true;
       
+      private var _isCurrentPlayer:Boolean = false;
+      
+      private var _isCurrentPlayerTeam:Boolean = false;
+      
       private var _isRespawning:Boolean = false;
+      
+      private var _voiceState:String = "default";
+      
+      private var _vehicleID:int = -1;
+      
+      private var _commons:ICommons;
       
       public function BattleRoyaleTeamPanelListItem()
       {
+         this._commons = App.utils.commons;
          super();
          this.fragsTF.selectable = this.fragsTF.mouseWheelEnabled = this.fragsTF.mouseEnabled = false;
          this.playerNameTF.selectable = this.playerNameTF.mouseWheelEnabled = this.playerNameTF.mouseEnabled = false;
@@ -70,9 +90,7 @@ package net.wg.gui.battle.battleRoyale.views
          this.vehicleLevelTF.selectable = this.vehicleLevelTF.mouseWheelEnabled = this.vehicleLevelTF.mouseEnabled = false;
          this.progressBar.minimum = Values.ZERO;
          this.progressBar.maximum = PROGRESS_BAR_MAX_VAL;
-         this.clanNameTF.autoSize = TextFieldAutoSize.LEFT;
-         TextFieldEx.setNoTranslate(this.playerNameTF,true);
-         TextFieldEx.setNoTranslate(this.clanNameTF,true);
+         hitArea = this.hitMC;
       }
       
       override protected function draw() : void
@@ -99,18 +117,41 @@ package net.wg.gui.battle.battleRoyale.views
       
       override protected function onDispose() : void
       {
+         removeEventListener(MouseEvent.CLICK,this.onClickHandler);
          this.fragsTF = null;
          this.playerNameTF = null;
          this.clanNameTF = null;
          this.vehicleLevelTF = null;
          this.vehicleIcon = null;
          this.respawnAnimationMc = null;
+         this.hitMC = null;
          this.progressBar.dispose();
          this.progressBar = null;
+         this.soundIcon = null;
+         this._commons = null;
          super.onDispose();
       }
       
-      public function setAlive(param1:Boolean) : void
+      override protected function configUI() : void
+      {
+         super.configUI();
+         addEventListener(MouseEvent.CLICK,this.onClickHandler);
+         this.clanNameTF.autoSize = TextFieldAutoSize.LEFT;
+         TextFieldEx.setNoTranslate(this.playerNameTF,true);
+         TextFieldEx.setNoTranslate(this.clanNameTF,true);
+      }
+      
+      public function getVehicleID() : int
+      {
+         return this._vehicleID;
+      }
+      
+      public function getVoiceState() : String
+      {
+         return this._voiceState;
+      }
+      
+      public function setAlive(param1:Boolean, param2:Boolean = true) : void
       {
          if(this._isAlive == param1)
          {
@@ -118,10 +159,13 @@ package net.wg.gui.battle.battleRoyale.views
          }
          this._isAlive = param1;
          invalidateState();
-         dispatchEvent(new Event(!!this._isAlive ? EVENT_TYPE_REVIVE : EVENT_TYPE_DEAD));
-         if(this._isAlive)
+         if(param2)
          {
-            this.respawnAnimationMc.gotoAndPlay(RESPAWN_FRAME_GLOW);
+            dispatchEvent(new Event(!!this._isAlive ? EVENT_TYPE_REVIVE : EVENT_TYPE_DEAD));
+            if(this._isAlive)
+            {
+               this.respawnAnimationMc.gotoAndPlay(RESPAWN_FRAME_GLOW);
+            }
          }
       }
       
@@ -139,6 +183,20 @@ package net.wg.gui.battle.battleRoyale.views
       public function setFrags(param1:String) : void
       {
          this.fragsTF.text = param1;
+      }
+      
+      public function setIsCurrentPlayer(param1:Boolean) : void
+      {
+         if(this._isCurrentPlayer == param1)
+         {
+            return;
+         }
+         this._isCurrentPlayer = param1;
+      }
+      
+      public function setIsCurrentPlayerTeam(param1:Boolean) : void
+      {
+         this._isCurrentPlayerTeam = param1;
       }
       
       public function setIsRespawning(param1:Boolean) : void
@@ -185,6 +243,11 @@ package net.wg.gui.battle.battleRoyale.views
          invalidateState();
       }
       
+      public function setVehicleID(param1:int) : void
+      {
+         this._vehicleID = param1;
+      }
+      
       public function setVehicleIcon(param1:String) : void
       {
          this.vehicleIcon.source = param1;
@@ -193,6 +256,15 @@ package net.wg.gui.battle.battleRoyale.views
       public function setVehicleLevel(param1:String) : void
       {
          this.vehicleLevelTF.text = param1;
+      }
+      
+      public function setVoiceState(param1:String) : void
+      {
+         if(this._voiceState != param1 && this._isCurrentPlayerTeam)
+         {
+            this._voiceState = param1;
+            invalidateState();
+         }
       }
       
       private function applyState() : void
@@ -212,8 +284,17 @@ package net.wg.gui.battle.battleRoyale.views
          this.clanNameTF.transform.colorTransform = _loc1_;
          this.vehicleLevelTF.transform.colorTransform = _loc1_;
          this.vehicleIcon.transform.colorTransform = _loc1_;
-         var _loc2_:Number = !this._isReady || !this._isAlive ? Number(NOT_READY_STATUS_ALPHA) : Number(Values.DEFAULT_ALPHA);
-         this.fragsTF.alpha = this.playerNameTF.alpha = this.clanNameTF.alpha = this.vehicleLevelTF.alpha = this.vehicleIcon.alpha = this.progressBar.alpha = _loc2_;
+         var _loc2_:Number = !this._isReady || !this._isAlive ? Number(NOT_READY_STATUS_ALPHA) : Number(READY_STATUS_ALPHA);
+         this.fragsTF.alpha = this.playerNameTF.alpha = this.clanNameTF.alpha = this.vehicleLevelTF.alpha = this.vehicleIcon.alpha = _loc2_;
+         this.soundIcon.gotoAndStop(this._voiceState);
+      }
+      
+      private function onClickHandler(param1:MouseEvent) : void
+      {
+         if(!this._isCurrentPlayer && this._isCurrentPlayerTeam && this._commons.isRightButton(param1))
+         {
+            dispatchEvent(new PlayersPanelListEvent(PlayersPanelListEvent.ITEM_CONTEXT_MENU_OPEN,this._vehicleID,0,true));
+         }
       }
    }
 }

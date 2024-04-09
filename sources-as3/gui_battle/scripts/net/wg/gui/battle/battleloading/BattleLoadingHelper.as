@@ -38,10 +38,15 @@ package net.wg.gui.battle.battleloading
       
       public function getVehicleTypeIconId(param1:DAAPIVehicleInfoVO) : String
       {
-         var _loc2_:String = App.colorSchemeMgr.getAliasColor(param1.teamColor);
-         if(_loc2_ && param1.vehicleType && param1.vehicleType != VEHICLE_TYPE_UNKNOWN)
+         return this.getVehicleTypeIconIdAlt(param1.teamColor,param1.vehicleType);
+      }
+      
+      public function getVehicleTypeIconIdAlt(param1:String, param2:String) : String
+      {
+         var _loc3_:String = App.colorSchemeMgr.getAliasColor(param1);
+         if(_loc3_ && param2 && param2 != VEHICLE_TYPE_UNKNOWN)
          {
-            return _loc2_ + DASH + param1.vehicleType;
+            return _loc3_ + DASH + param2;
          }
          return null;
       }

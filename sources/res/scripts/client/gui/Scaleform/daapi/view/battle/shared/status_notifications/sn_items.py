@@ -1,5 +1,6 @@
 import typing, BigWorld
 from AvatarInputHandler import AvatarInputHandler
+from aih_constants import CTRL_MODE_NAME
 from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from constants import VEHICLE_MISC_STATUS
 from gui.Scaleform.daapi.view.battle.shared.status_notifications.components import StatusNotificationItem
@@ -52,6 +53,10 @@ class _VehicleStateSN(StatusNotificationItem):
     _HIDE_STATES_TRIGGERS = (
      VEHICLE_VIEW_STATE.DESTROYED, VEHICLE_VIEW_STATE.CREW_DEACTIVATED, VEHICLE_VIEW_STATE.SWITCHING)
 
+    def __init__(self, updateCallback):
+        super(_VehicleStateSN, self).__init__(updateCallback)
+        self._isCameraFixed = True
+
     def start(self):
         super(_VehicleStateSN, self).start()
         ctrl = self._sessionProvider.shared.vehicleState
@@ -88,6 +93,15 @@ class _VehicleStateSN(StatusNotificationItem):
         super(_VehicleStateSN, self).destroy()
         return
 
+    def isVisible(self):
+        return self._isVisible and self._isCameraFixed
+
+    def _setIsCameraFixed(self, value):
+        wasVisible = self.isVisible()
+        self._isCameraFixed = value
+        if wasVisible != self.isVisible():
+            self._sendUpdate()
+
     def _getTitle(self, value):
         return ''
 
@@ -111,12 +125,11 @@ class _VehicleStateSN(StatusNotificationItem):
         pass
 
     def __onCameraChanged(self, ctrlMode, vehicleID=None):
-        if ctrlMode == 'video':
-            self._hide()
+        self._setIsCameraFixed(ctrlMode != CTRL_MODE_NAME.VIDEO)
 
     def __onVehicleStateUpdated(self, state, value):
         if state in self._HIDE_STATES_TRIGGERS:
-            self._hide()
+            self._setVisible(False)
         elif state == self.getItemID():
             self.__update(value)
 

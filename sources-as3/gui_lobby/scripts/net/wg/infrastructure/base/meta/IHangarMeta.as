@@ -24,6 +24,8 @@ package net.wg.infrastructure.base.meta
       
       function as_setComp7ModifiersVisible(param1:Boolean) : void;
       
+      function as_setComp7TournamentBannerVisible(param1:Boolean) : void;
+      
       function as_setVisible(param1:Boolean) : void;
       
       function as_showHelpLayout() : void;
@@ -53,5 +55,7 @@ package net.wg.infrastructure.base.meta
       function as_updateCarouselEventEntryState(param1:Boolean) : void;
       
       function as_updateHangarComponents(param1:Array, param2:Array) : void;
+      
+      function as_setBattleRoyaleSpaceLoaded(param1:Boolean) : void;
    }
 }

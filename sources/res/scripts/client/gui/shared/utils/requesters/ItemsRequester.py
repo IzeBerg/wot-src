@@ -299,6 +299,7 @@ class REQ_CRITERIA(object):
         HAS_ANY_TAG = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: bool(item.tags & tags))))
         FOR_ITEM = staticmethod(lambda style: RequestCriteria(PredicateCondition(style.mayInstall)))
         HAS_ROLE = staticmethod(lambda roleName: RequestCriteria(PredicateCondition(lambda item: roleName in {roles[0] for roles in item.descriptor.type.crewRoles})))
+        HAS_ROLES = staticmethod(lambda tankmanRoles: RequestCriteria(PredicateCondition(lambda item: any(roles[0] in tankmanRoles for roles in item.descriptor.type.crewRoles))))
 
     class TANKMAN(object):
         IN_TANK = RequestCriteria(PredicateCondition(lambda item: item.isInTank))
@@ -320,7 +321,7 @@ class REQ_CRITERIA(object):
     class RECRUIT(object):
         ROLES = staticmethod(lambda roles=tankmen.ROLES: RequestCriteria(PredicateCondition(--- This code section failed: ---
 
- L. 552         0  LOAD_FAST             0  'item'
+ L. 556         0  LOAD_FAST             0  'item'
                 3  LOAD_ATTR             0  'getRoles'
                 6  CALL_FUNCTION_0       0  None
                 9  POP_JUMP_IF_FALSE    53  'to 53'
@@ -363,7 +364,7 @@ Parse error at or near `None' instruction at offset -1
         BOOSTER_CATEGORIES = staticmethod(lambda boosterCategories: RequestCriteria(PredicateCondition(lambda item: item.category in boosterCategories)))
         IN_BOOSTER_ID_LIST = staticmethod(lambda boostersList: RequestCriteria(PredicateCondition(lambda item: item.boosterID in boostersList)))
         QUALITY = staticmethod(lambda qualityValues: RequestCriteria(PredicateCondition(lambda item: item.quality in qualityValues)))
-        LIMITED = RequestCriteria(PredicateCondition(lambda item: item.expiryTime))
+        LIMITED = RequestCriteria(PredicateCondition(lambda item: item.isExpirable))
 
     class DEMOUNT_KIT(object):
         IS_ENABLED = RequestCriteria(PredicateCondition(lambda item: item.enabled))
@@ -619,7 +620,7 @@ class ItemsRequester(IItemsRequester):
 
     def isSynced--- This code section failed: ---
 
- L.1018         0  LOAD_FAST             0  'self'
+ L.1022         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  '__blueprints'
                 6  LOAD_CONST               None
                 9  COMPARE_OP            9  is-not

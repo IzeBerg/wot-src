@@ -1,6 +1,7 @@
 import BigWorld
 from gui.battle_control.battle_constants import FEEDBACK_EVENT_ID
 from Event import EventsSubscriber
+from items import vehicles
 
 class VehicleAbilityBaseComponent(BigWorld.DynamicScriptComponent):
 
@@ -30,6 +31,12 @@ class VehicleAbilityBaseComponent(BigWorld.DynamicScriptComponent):
 
     def getInfo(self):
         return {}
+
+    @staticmethod
+    def _getEquipment(name):
+        equipmentID = vehicles.g_cache.equipmentIDs().get(name)
+        equipment = vehicles.g_cache.equipments()[equipmentID]
+        return equipment
 
     def _onAvatarReady(self):
         pass
@@ -70,7 +77,7 @@ class VehicleAbilityBaseComponent(BigWorld.DynamicScriptComponent):
 
     def _canUpdateTimer(self):
         modeName = self._avatar.inputHandler.ctrlModeName
-        if self.entity.id == self._avatar.inputHandler.ctrl.curVehicleID and modeName != 'video':
+        if self.__entityIDMatches() and modeName != 'video':
             return True
         return False
 
@@ -82,7 +89,7 @@ class VehicleAbilityBaseComponent(BigWorld.DynamicScriptComponent):
                 self.__pushToPostponeCall(self._updateMarker, (data, isHide))
             else:
                 modeName = self._avatar.inputHandler.ctrlModeName
-                if self.entity.id != self._avatar.inputHandler.ctrl.curVehicleID or isHide or modeName == 'video':
+                if not self.__entityIDMatches() or isHide or modeName == 'video':
                     self._guiFeedback.onVehicleFeedbackReceived(FEEDBACK_EVENT_ID.VEHICLE_CUSTOM_MARKER, self.entity.id, data)
             return
 
@@ -120,6 +127,9 @@ class VehicleAbilityBaseComponent(BigWorld.DynamicScriptComponent):
         else:
             self._updateVisuals()
             return
+
+    def __entityIDMatches(self):
+        return self.entity.id == self._avatar.inputHandler.ctrl.curVehicleID or self._avatar.isObserverFPV and self.entity.id == self._avatar.observedVehicleID
 
     def __onSwitchingViewPoint(self):
         self.__isSwitching = True

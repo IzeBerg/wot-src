@@ -1,7 +1,8 @@
 import logging, typing, weakref
-from collections import namedtuple
+from collections import namedtuple, defaultdict
 from math import fabs, ceil
 import BigWorld, CommandMapping, Event
+from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
 from constants import VEHICLE_SETTING, ReloadRestriction
 from shared_utils import CONST_CONTAINER
 from debug_utils import LOG_CODEPOINT_WARNING, LOG_ERROR
@@ -397,7 +398,7 @@ class AmmoController(MethodsRules, ViewComponentsController):
                  '__gunSettings', '_reloadingState', '_autoReloadingState', '__autoShoots',
                  '__weakref__', 'onDebuffStarted', '__quickChangerActive', 'onQuickShellChangerUpdated',
                  '__shellChangeTime', '__quickChangerFactor', '__dualGunShellChangeTime',
-                 '__dualGunQuickChangeReady', '__quickChangerInProcess')
+                 '__dualGunQuickChangeReady', '__quickChangerInProcess', '__infinity')
     __guiSessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     def __init__(self, reloadingState=None):
@@ -416,6 +417,7 @@ class AmmoController(MethodsRules, ViewComponentsController):
         self.onQuickShellChangerUpdated = Event.Event(self.__eManager)
         self.onShellsCleared = Event.Event(self.__eManager)
         self.__ammo = {}
+        self.__infinity = defaultdict(int)
         self._order = []
         self._reloadingState = reloadingState or ReloadingTimeState()
         self._autoReloadingState = ReloadingTimeState()
@@ -641,7 +643,8 @@ class AmmoController(MethodsRules, ViewComponentsController):
         for intCD in self._order:
             descriptor = self.__gunSettings.getShellDescriptor(intCD)
             quantity, quantityInClip = self.__ammo[intCD]
-            result.append((intCD, descriptor, quantity, quantityInClip, self.__gunSettings))
+            isInfinite = self.__isInfiniteShell(intCD)
+            result.append((intCD, descriptor, quantity, quantityInClip, self.__gunSettings, isInfinite))
 
         return result
 
@@ -699,7 +702,8 @@ class AmmoController(MethodsRules, ViewComponentsController):
             self._order.append(intCD)
             result |= SHELL_SET_RESULT.ADDED
             descriptor = self.__gunSettings.getShellDescriptor(intCD)
-            self.onShellsAdded(intCD, descriptor, quantity, quantityInClip, self.__gunSettings)
+            isInfinite = self.__isInfiniteShell(intCD)
+            self.onShellsAdded(intCD, descriptor, quantity, quantityInClip, self.__gunSettings, isInfinite)
         if self.canQuickShellChange():
             self.onQuickShellChangerUpdated(True, self.getQuickShellChangeTime())
         return result
@@ -756,6 +760,7 @@ class AmmoController(MethodsRules, ViewComponentsController):
 
     def clearAmmo(self):
         self.__ammo.clear()
+        self.__infinity.clear()
         self._order = []
         self.__currShellCD = None
         self.__nextShellCD = None
@@ -813,6 +818,13 @@ class AmmoController(MethodsRules, ViewComponentsController):
         if any([ component.isActive for component in self._viewComponents ]):
             for component in self._viewComponents:
                 component.handleAmmoKey(key)
+
+    def __isInfiniteShell(self, intCD):
+        if intCD not in self.__infinity:
+            arena = avatar_getter.getArena()
+            isInfiniteBonusCap = BONUS_CAPS.checkAny(arena.bonusType, BONUS_CAPS.INFINITE_AMMO) if arena else False
+            self.__infinity[intCD] = isInfiniteBonusCap or self.__gunSettings.getShellDescriptor(intCD).isInfinite
+        return self.__infinity[intCD]
 
     def __onCurrentShellChanged(self, intCD):
         self.onCurrentShellChanged(intCD)

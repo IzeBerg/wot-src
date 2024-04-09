@@ -15,7 +15,6 @@ package net.wg.gui.lobby.vehicleCompare
    import net.wg.gui.lobby.vehicleCompare.data.VehicleCompareConfiguratorVO;
    import net.wg.gui.lobby.vehicleCompare.events.ClosableEquipmentSlotEvent;
    import net.wg.gui.lobby.vehicleCompare.events.VehConfEvent;
-   import net.wg.gui.lobby.vehicleCompare.events.VehConfSkillDropDownEvent;
    import net.wg.gui.lobby.vehicleCompare.events.VehConfSkillEvent;
    import net.wg.infrastructure.base.meta.IVehicleCompareConfiguratorViewMeta;
    import net.wg.infrastructure.base.meta.impl.VehicleCompareConfiguratorViewMeta;
@@ -97,14 +96,12 @@ package net.wg.gui.lobby.vehicleCompare
          this.modules.addEventListener(VehConfEvent.TOP_MODULES_ON,this.onModulesTopModulesOnHandler);
          this.modules.addEventListener(VehConfEvent.TOP_MODULES_OFF,this.onModulesTopModulesOffHandler);
          this.crew.addEventListener(VehConfSkillEvent.SKILL_SELECT,this.onCrewSkillSelectHandler);
-         this.crew.addEventListener(VehConfSkillDropDownEvent.CREW_LEVEL_CHANGED,this.onCrewCrewLevelChangedHandler);
       }
       
       override protected function onDispose() : void
       {
          removeEventListener(ClosableEquipmentSlotEvent.REMOVE_CLICK,this.onDeviceSlotRemoveClickHandler);
          this.crew.removeEventListener(VehConfSkillEvent.SKILL_SELECT,this.onCrewSkillSelectHandler);
-         this.crew.removeEventListener(VehConfSkillDropDownEvent.CREW_LEVEL_CHANGED,this.onCrewCrewLevelChangedHandler);
          this.modules.removeEventListener(VehConfEvent.MODULES_CLICK,this.onModulesModulesClickHandler);
          this.modules.removeEventListener(VehConfEvent.TOP_MODULES_ON,this.onModulesTopModulesOnHandler);
          this.modules.removeEventListener(VehConfEvent.TOP_MODULES_OFF,this.onModulesTopModulesOffHandler);
@@ -149,7 +146,6 @@ package net.wg.gui.lobby.vehicleCompare
       {
          super.setInitData(param1);
          var _loc2_:VehicleCompareConfiguratorVO = VehicleCompareConfiguratorVO(param1);
-         this.crew.setStaticData(_loc2_);
          this.modules.setTopModulesEnabled(_loc2_.enableTopModules);
       }
       
@@ -185,16 +181,6 @@ package net.wg.gui.lobby.vehicleCompare
       {
       }
       
-      public function as_setCrewAttentionIconVisible(param1:Boolean) : void
-      {
-         this.crew.setCrewAttentionIconVisible(param1);
-      }
-      
-      public function as_setCrewLevelIndex(param1:int) : void
-      {
-         this.crew.crewLevelIndex = param1;
-      }
-      
       public function as_setIsPostProgressionEnabled(param1:Boolean) : void
       {
          if(this._isPostProgressionEnabled != param1)
@@ -206,11 +192,6 @@ package net.wg.gui.lobby.vehicleCompare
       
       public function as_setSelectedAmmoIndex(param1:int) : void
       {
-      }
-      
-      public function as_setSkillsBlocked(param1:Boolean) : void
-      {
-         this.crew.setSkillsFadeVisible(param1);
       }
       
       public function as_setTopModulesSelected(param1:Boolean) : void
@@ -230,11 +211,6 @@ package net.wg.gui.lobby.vehicleCompare
             return new <DisplayObject>[titleTf,this.crew,this.modules,this.modificationsWidget,this.equipmentWidget,bottomPanel];
          }
          return new <DisplayObject>[titleTf,this.crew,this.modules,this.equipmentWidget,bottomPanel];
-      }
-      
-      private function onCrewCrewLevelChangedHandler(param1:VehConfSkillDropDownEvent) : void
-      {
-         changeCrewLevelS(param1.crewLevel);
       }
       
       private function onCrewSkillSelectHandler(param1:VehConfSkillEvent) : void

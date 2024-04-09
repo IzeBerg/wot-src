@@ -9,7 +9,3 @@ class BattleRoyalePlayerStatsMeta(BaseDAAPIComponent):
     def as_setDataS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setData(value)
-
-    def as_setStpCoinsS(self, initial, factor=1):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setStpCoins(initial, factor)

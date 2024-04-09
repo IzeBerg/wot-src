@@ -141,6 +141,8 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       protected var maxPlayerNameWidth:uint = 0;
       
+      protected var isAlive:Boolean = true;
+      
       private var _holderItemID:int = -1;
       
       private var _state:int = -1;
@@ -152,8 +154,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       private var _isMute:Boolean = false;
       
       private var _isSpeaking:Boolean = false;
-      
-      private var _isAlive:Boolean = true;
       
       private var _isOffline:Boolean = false;
       
@@ -348,15 +348,15 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          if(isInvalid(PlayersPanelInvalidationType.ALIVE))
          {
-            this.bg.visible = this._isAlive && !this._isHpBarsVisible;
-            this.deadBg.visible = !this._isAlive && !this._isHpBarsVisible;
-            this.normAltBg.visible = this._isAlive && this._isHpBarsVisible;
-            this.deadAltBg.visible = !this._isAlive && this._isHpBarsVisible;
+            this.bg.visible = this.isAlive && !this._isHpBarsVisible;
+            this.deadBg.visible = !this.isAlive && !this._isHpBarsVisible;
+            this.normAltBg.visible = this.isAlive && this._isHpBarsVisible;
+            this.deadAltBg.visible = !this.isAlive && this._isHpBarsVisible;
             this.playerNameFullTF.alpha = this.fragsTF.alpha = this.playerNameCutTF.alpha = this.vehicleTF.alpha = !!this.deadAltBg.visible ? Number(DEAD_ALT_TEXT_ALPHA) : Number(this._originalTFAlpha);
          }
          if(isInvalid(PlayersPanelInvalidationType.PLAYER_SCHEME))
          {
-            this.badge.alpha = this._isOffline || !this._isAlive ? Number(BADGE_ALPHA_NOT_ACTIVE) : Number(BADGE_ALPHA);
+            this.badge.alpha = this._isOffline || !this.isAlive ? Number(BADGE_ALPHA_NOT_ACTIVE) : Number(BADGE_ALPHA);
             if(this.dogTag)
             {
                this.dogTag.alpha = this.badge.alpha;
@@ -373,7 +373,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          if(isInvalid(PlayersPanelInvalidationType.HP_BAR_VISIBILITY))
          {
-            this.hpBarPlayersPanelListItem.visible = this._isHpBarsVisible && this._isAlive;
+            this.hpBarPlayersPanelListItem.visible = this._isHpBarsVisible && this.isAlive;
          }
       }
       
@@ -434,11 +434,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       public function setIsAlive(param1:Boolean) : void
       {
-         if(this._isAlive == param1)
+         if(this.isAlive == param1)
          {
             return;
          }
-         this._isAlive = param1;
+         this.isAlive = param1;
          invalidate(PlayersPanelInvalidationType.ALIVE | PlayersPanelInvalidationType.PLAYER_SCHEME | PlayersPanelInvalidationType.HP_BAR_VISIBILITY);
       }
       
@@ -583,6 +583,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.applyState();
       }
       
+      protected function getState() : uint
+      {
+         return this._state;
+      }
+      
       public function setVehicleAction(param1:uint) : void
       {
          this.actionMarker.imageName = BATTLEATLAS.getVehicleActionMarker(VehicleActions.getActionName(param1));
@@ -678,7 +683,17 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.actionMarker.x = this.vehicleIcon.x + ACTION_MARKER_RIGHT_OFFSET;
       }
       
-      private function updatePositions() : void
+      protected function getOffset() : int
+      {
+         return 0;
+      }
+      
+      protected function getOffsetVehicleIcon() : int
+      {
+         return 0;
+      }
+      
+      protected function updatePositions() : void
       {
          var _loc1_:int = 0;
          var _loc3_:int = 0;
@@ -750,24 +765,24 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             {
                case PLAYERS_PANEL_STATE.FULL:
                   _loc1_ = VEHICLE_TF_LEFT_X - this.vehicleTF.width;
-                  this.vehicleTF.x = _loc1_;
-                  _loc1_ = this.vehicleTF.x - this.playerNameFullTF.width;
+                  this.vehicleTF.x = _loc1_ + this.getOffset();
+                  _loc1_ = this.vehicleTF.x - this.playerNameFullTF.width - this.getOffset();
                   this.playerNameFullTF.x = _loc1_;
                   _loc1_ = this.playerNameFullTF.x - (BADGE_ICON_AREA_WIDTH + BADGE_OFFSET);
                   this.badge.x = _loc1_;
                   _loc1_ = this.badge.x - this.fragsTF.width;
                   this.fragsTF.x = _loc1_;
-                  this.vehicleIcon.x = this.prestigeLevel.x + VEHICLE_ICON_LEFT_OFFSET;
+                  this.vehicleIcon.x = this.prestigeLevel.x + VEHICLE_ICON_LEFT_OFFSET + this.getOffsetVehicleIcon();
                   this.hpBarPlayersPanelListItem.setVehicleIconX(this.vehicleIcon.x + HP_BAR_PRESTIGE_LEFT_OFFSET);
                   break;
                case PLAYERS_PANEL_STATE.FULL_NO_BADGES:
                   _loc1_ = VEHICLE_TF_LEFT_X - this.vehicleTF.width;
-                  this.vehicleTF.x = _loc1_;
-                  _loc1_ = this.vehicleTF.x - this.playerNameFullTF.width;
+                  this.vehicleTF.x = _loc1_ + this.getOffset();
+                  _loc1_ = this.vehicleTF.x - this.playerNameFullTF.width - this.getOffset();
                   this.playerNameFullTF.x = _loc1_;
                   _loc1_ = this.playerNameFullTF.x - this.fragsTF.width;
                   this.fragsTF.x = _loc1_;
-                  this.vehicleIcon.x = this.prestigeLevel.x + VEHICLE_ICON_LEFT_OFFSET;
+                  this.vehicleIcon.x = this.prestigeLevel.x + VEHICLE_ICON_LEFT_OFFSET + this.getOffsetVehicleIcon();
                   this.hpBarPlayersPanelListItem.setVehicleIconX(this.vehicleIcon.x + HP_BAR_PRESTIGE_LEFT_OFFSET);
                   break;
                case PLAYERS_PANEL_STATE.LONG:
@@ -776,7 +791,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
                   this.vehicleTF.x = _loc1_;
                   _loc1_ = this.vehicleTF.x - this.fragsTF.width;
                   this.fragsTF.x = _loc1_;
-                  this.vehicleIcon.x = this.prestigeLevel.x + VEHICLE_ICON_LEFT_OFFSET;
+                  this.vehicleIcon.x = this.prestigeLevel.x + VEHICLE_ICON_LEFT_OFFSET + this.getOffsetVehicleIcon();
                   this.hpBarPlayersPanelListItem.setVehicleIconX(this.vehicleIcon.x + HP_BAR_PRESTIGE_LEFT_OFFSET);
                   break;
                case PLAYERS_PANEL_STATE.MEDIUM:
@@ -786,7 +801,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
                   this.badge.x = _loc1_;
                   _loc1_ = this.badge.x - this.fragsTF.width;
                   this.fragsTF.x = _loc1_;
-                  this.vehicleIcon.x = this._vehicleIconDefaultX;
+                  this.vehicleIcon.x = this._vehicleIconDefaultX + this.getOffset();
                   this.hpBarPlayersPanelListItem.setVehicleIconX(this.vehicleIcon.x);
                   break;
                case PLAYERS_PANEL_STATE.MEDIUM_NO_BADGES:
@@ -794,14 +809,14 @@ package net.wg.gui.battle.components.stats.playersPanel.list
                   this.playerNameCutTF.x = _loc1_;
                   _loc1_ = this.playerNameCutTF.x - this.fragsTF.width;
                   this.fragsTF.x = _loc1_;
-                  this.vehicleIcon.x = this._vehicleIconDefaultX;
+                  this.vehicleIcon.x = this._vehicleIconDefaultX + this.getOffset();
                   this.hpBarPlayersPanelListItem.setVehicleIconX(this.vehicleIcon.x);
                   break;
                case PLAYERS_PANEL_STATE.SHORT:
                case PLAYERS_PANEL_STATE.SHORT_NO_BADGES:
                   _loc1_ = VEHICLE_TF_LEFT_X - this.fragsTF.width;
                   this.fragsTF.x = _loc1_;
-                  this.vehicleIcon.x = this._vehicleIconDefaultX;
+                  this.vehicleIcon.x = this._vehicleIconDefaultX + this.getOffset();
                   this.hpBarPlayersPanelListItem.setVehicleIconX(this.vehicleIcon.x);
             }
             _loc3_ = this.fragsTF.x - CHAT_COMMAND_LEFT_OFFSET;
@@ -860,23 +875,23 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          invalidate();
       }
       
-      private function updateColors() : void
+      protected function updateColors() : void
       {
          var _loc4_:uint = 0;
-         var _loc1_:String = PlayerStatusSchemeName.getSchemeNameForVehicle(this._isCurrentPlayer,this.isSquadPersonal(),this._isTeamKiller,!this._isAlive,this._isOffline);
+         var _loc1_:String = PlayerStatusSchemeName.getSchemeNameForVehicle(this._isCurrentPlayer,this.isSquadPersonal(),this._isTeamKiller,!this.isAlive,this._isOffline);
          var _loc2_:IColorScheme = App.colorSchemeMgr.getScheme(_loc1_);
          if(_loc2_)
          {
             this.vehicleIcon.transform.colorTransform = _loc2_.colorTransform;
          }
-         this.prestigeLevel.alpha = !!this._isAlive ? Number(PRESTIGE_LEVEL_DEFAULT_ALPHA) : Number(PRESTIGE_LEVEL_DEAD_ALPHA);
-         _loc1_ = PlayerStatusSchemeName.getSchemeForVehicleLevel(!this._isAlive);
+         this.prestigeLevel.alpha = !!this.isAlive ? Number(PRESTIGE_LEVEL_DEFAULT_ALPHA) : Number(PRESTIGE_LEVEL_DEAD_ALPHA);
+         _loc1_ = PlayerStatusSchemeName.getSchemeForVehicleLevel(!this.isAlive);
          _loc2_ = App.colorSchemeMgr.getScheme(_loc1_);
          if(_loc2_)
          {
             this.vehicleLevel.transform.colorTransform = _loc2_.colorTransform;
          }
-         _loc1_ = PlayerStatusSchemeName.getSchemeNameForPlayer(this._isCurrentPlayer,this.isSquadPersonal(),this._isTeamKiller,!this._isAlive,this._isOffline);
+         _loc1_ = PlayerStatusSchemeName.getSchemeNameForPlayer(this._isCurrentPlayer,this.isSquadPersonal(),this._isTeamKiller,!this.isAlive,this._isOffline);
          _loc2_ = App.colorSchemeMgr.getScheme(_loc1_);
          if(_loc2_)
          {

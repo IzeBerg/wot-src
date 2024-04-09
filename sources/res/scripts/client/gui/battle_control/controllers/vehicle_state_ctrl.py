@@ -157,9 +157,13 @@ class _VehicleUpdater(object):
                     states.append((VEHICLE_VIEW_STATE.CREW_DEACTIVATED, 0))
                 else:
                     states.append((VEHICLE_VIEW_STATE.DESTROYED, 0))
-            for handler in self.__handlers:
-                newStates = handler(vehicle)
-                states.extend(newStates)
+            else:
+                if vehicle.isAlive() and not self.__isAlive:
+                    self.__isAlive = True
+                    self.__ctrl.switchToOther(vehicle.id, True)
+                for handler in self.__handlers:
+                    newStates = handler(vehicle)
+                    states.extend(newStates)
 
         for item in states:
             self.notifyStateChanged(*item)
@@ -302,12 +306,13 @@ class VehicleStateController(IBattleController):
         self.onPostMortemSwitched(noRespawnPossible, respawnAvailable)
         return
 
-    def switchToOther(self, vehicleID):
+    def switchToOther(self, vehicleID, needInvalidate=False):
         if vehicleID is None:
             self.notifyStateChanged(VEHICLE_VIEW_STATE.SWITCHING, 0)
             self.__needInvalidate = True
             return
         else:
+            self.__needInvalidate = needInvalidate or self.__needInvalidate
             if self.__vehicleID == vehicleID and not self.__needInvalidate:
                 return
             self.__needInvalidate = False

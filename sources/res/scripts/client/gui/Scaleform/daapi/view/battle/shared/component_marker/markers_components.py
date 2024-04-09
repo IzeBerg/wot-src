@@ -33,8 +33,9 @@ class ComponentBitMask(BitmaskHelper):
     DIRECTION_INDICATOR = 4
     ANIM_SEQUENCE_MARKER = 8
     TERRAIN_MARKER = 16
+    FULLSCREEN_MAP_MARKER = 32
     LIST = (
-     MARKER_2D, MINIMAP_MARKER, DIRECTION_INDICATOR, ANIM_SEQUENCE_MARKER, TERRAIN_MARKER)
+     MARKER_2D, MINIMAP_MARKER, DIRECTION_INDICATOR, ANIM_SEQUENCE_MARKER, TERRAIN_MARKER, FULLSCREEN_MAP_MARKER)
 
 
 COMPONENT_MARKER_TYPE_NAMES = dict([ (k, v) for k, v in ComponentBitMask.__dict__.iteritems() if isinstance(v, int) ])
@@ -87,7 +88,7 @@ class _IMarkerComponentBase(object):
     def setVisible(self, isVisible):
         pass
 
-    def attachGUI(self, guiProvider):
+    def attachGUI(self, guiProvider, **kwargs):
         pass
 
     def detachGUI(self):
@@ -143,10 +144,10 @@ class World2DMarkerComponent(_IMarkerComponentBase):
     def symbol(self):
         return self._symbol
 
-    def attachGUI(self, guiProvider):
+    def attachGUI(self, guiProvider, **kwargs):
         self._gui = weakref.ref(guiProvider.getMarkers2DPlugin())
         self.settingsCore.onSettingsChanged += self._onSettingsChanged
-        self._createMarker()
+        self._createMarker(**kwargs)
         return self._isMarkerExists
 
     def detachGUI(self):
@@ -182,12 +183,12 @@ class World2DMarkerComponent(_IMarkerComponentBase):
         if gui and not self._isMarkerExists:
             gui.setMarkerMatrix(self._componentID, matrix)
 
-    def _createMarker(self):
+    def _createMarker(self, **kwargs):
         gui = self._gui()
         if gui and not self._isMarkerExists:
             self._isMarkerExists = gui.createMarker(self._componentID, self._targetID, self.symbol, self._matrixProduct, self._isVisible, self.bcMarkerType, self.guiMarkerType)
             if self._isMarkerExists:
-                self._setupMarker(gui)
+                self._setupMarker(gui, **kwargs)
 
     def _deleteMarker(self):
         gui = self._gui()
@@ -196,7 +197,7 @@ class World2DMarkerComponent(_IMarkerComponentBase):
         self._isMarkerExists = False
         self._isVisible = False
 
-    def _setupMarker(self, gui):
+    def _setupMarker(self, gui, **kwargs):
         config = self._config
         gui.invokeMarker(self._componentID, 'init', config['shape'], config['min_distance'], config['max_distance'], self._distance, self._METERS_STRING, config['distanceFieldColor'])
         return True
@@ -247,7 +248,7 @@ class World2DActionMarkerComponent(World2DMarkerComponent):
     def symbol(self):
         return self._symbol or MARKER_SYMBOL_NAME.TARGET_POINT_MARKER
 
-    def _setupMarker(self, gui):
+    def _setupMarker(self, gui, **kwargs):
         config = self._config
         gui.invokeMarker(self._componentID, 'init', config['shape'], config['shapeReplyMe'], config['shapeHighlight'], config['min_distance'], config['max_distance'], self._distance, self._METERS_STRING, config['distanceFieldColor'])
         isSticky = config['is_sticky'] & bool(self.settingsCore.getSetting(BattleCommStorageKeys.SHOW_STICKY_MARKERS))
@@ -330,7 +331,7 @@ class World2DLocationMarkerComponent(World2DMarkerComponent):
     def update(self, distance, *args, **kwargs):
         pass
 
-    def _setupMarker(self, gui):
+    def _setupMarker(self, gui, **kwargs):
         config = self._config
         isSticky = config['is_sticky'] & bool(self.settingsCore.getSetting(BattleCommStorageKeys.SHOW_STICKY_MARKERS))
         gui.setMarkerSticky(self._componentID, isSticky)
@@ -352,10 +353,10 @@ class World2DLocationMarkerComponent(World2DMarkerComponent):
         gui.setMarkerSticky(self.componentID, newIsSticky & self._isStickyFromConfig)
 
 
-class MinimapMarkerComponent(_IMarkerComponentBase):
+class BaseMinimapMarkerComponent(_IMarkerComponentBase):
 
     def __init__(self, config, matrixProduct, entity=None, targetID=INVALID_TARGET_ID, isVisible=True):
-        super(MinimapMarkerComponent, self).__init__(config, matrixProduct, entity, targetID, isVisible)
+        super(BaseMinimapMarkerComponent, self).__init__(config, matrixProduct, entity, targetID, isVisible)
         self._gui = lambda : None
         self._isMarkerExists = False
         self._onlyTranslation = self._config.get('onlyTranslation', False)
@@ -371,11 +372,11 @@ class MinimapMarkerComponent(_IMarkerComponentBase):
 
     @property
     def maskType(self):
-        return ComponentBitMask.MINIMAP_MARKER
+        raise NotImplementedError
 
-    def attachGUI(self, guiProvider):
-        self._gui = weakref.ref(guiProvider.getMinimapPlugin())
-        self._createMarker()
+    def attachGUI(self, guiProvider, **kwargs):
+        self._gui = weakref.ref(self._getPlugin(guiProvider))
+        self._createMarker(**kwargs)
         return self._isMarkerExists
 
     def detachGUI(self):
@@ -396,13 +397,13 @@ class MinimapMarkerComponent(_IMarkerComponentBase):
             gui.setActive(self._componentID, self._isVisible)
             return
 
-    def _createMarker(self):
+    def _createMarker(self, **kwargs):
         gui = self._gui()
         if gui and not self._isMarkerExists:
             matrix = self._translationOnlyMP if self._onlyTranslation else self._matrixProduct.a
             self._isMarkerExists = gui.createMarker(self._componentID, self._config['symbol'], self._config['container'], matrix=matrix, active=self._isVisible)
             if self._isMarkerExists:
-                self._setupMarker(gui)
+                self._setupMarker(gui, **kwargs)
 
     def _deleteMarker(self):
         gui = self._gui()
@@ -417,15 +418,34 @@ class MinimapMarkerComponent(_IMarkerComponentBase):
             gui.update(self._componentID, *args, **kwargs)
 
     def setMarkerMatrix(self, matrix):
-        super(MinimapMarkerComponent, self).setMarkerMatrix(matrix)
+        super(BaseMinimapMarkerComponent, self).setMarkerMatrix(matrix)
         self._translationOnlyMP.source = self._matrixProduct.a
         gui = self._gui()
         if gui and self._isMarkerExists:
             mtx = self._translationOnlyMP if self._onlyTranslation else self._matrixProduct.a
             gui.setMatrix(self._componentID, mtx)
 
-    def _setupMarker(self, gui):
+    def _getPlugin(self, guiProvider):
+        if self.maskType == ComponentBitMask.FULLSCREEN_MAP_MARKER:
+            return guiProvider.getFullscreenMapPlugin()
+        return guiProvider.getMinimapPlugin()
+
+    def _setupMarker(self, gui, **kwargs):
         pass
+
+
+class MinimapMarkerComponent(BaseMinimapMarkerComponent):
+
+    @property
+    def maskType(self):
+        return ComponentBitMask.MINIMAP_MARKER
+
+
+class FullscreenMapComponent(BaseMinimapMarkerComponent):
+
+    @property
+    def maskType(self):
+        return ComponentBitMask.FULLSCREEN_MAP_MARKER
 
 
 class DirectionIndicatorMarkerComponent(_IMarkerComponentBase):
@@ -454,7 +474,7 @@ class DirectionIndicatorMarkerComponent(_IMarkerComponentBase):
     def maskType(self):
         return ComponentBitMask.DIRECTION_INDICATOR
 
-    def attachGUI(self, _):
+    def attachGUI(self, _, **kwargs):
         if self.__indicator is None:
             self.__indicator = _getDirectionIndicator(self.__swf, self.__mcName)
             self.__indicator.setShape(self.__currentShape)
@@ -690,7 +710,7 @@ class PolygonalZoneMinimapMarkerComponent(MinimapMarkerComponent):
         else:
             return udo.minimapMarkerPolygon
 
-    def _setupMarker(self, gui):
+    def _setupMarker(self, gui, **kwargs):
         self.settingsCore.onSettingsChanged += self.__onSettingsChanged
         self._entity.onMaskAdded += self._addMask
         self._initPolygon()

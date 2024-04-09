@@ -149,6 +149,11 @@ msgstr "the user does not exist."
 msgid "chat_error/WRONG_ARGS"
 msgstr "invalid parameter."
 
+msgid "client/BATTLE_ROYALE_SQUAD/disableVOIP"
+msgstr ""
+"Voice chat disabled. To communicate with your Platoon mates, enable voice "
+"chat by pressing %(keyName)s."
+
 msgid "client/COMP7/disableVOIP"
 msgstr ""
 "Voice chat disabled. To communicate with your Platoon members, enable voice "
@@ -278,6 +283,11 @@ msgstr "%s is not allowed to send you voice messages."
 
 msgid "client/information/unsetMuted/message"
 msgstr "%s is allowed to send you voice messages."
+
+msgid "client/warning/AFKWarning/message"
+msgstr ""
+"Inaction will be punished!\n"
+"Teamwork is required for victory!"
 
 msgid "client/warning/emptyUserSearchToken/message"
 msgstr "Empty query"
@@ -1264,8 +1274,8 @@ msgstr "Personal Fame Points removed"
 msgid "platformCurrencyMsg/debited/freeXP"
 msgstr "Free Experience deducted"
 
-msgid "platformCurrencyMsg/debited/stpcoin"
-msgstr "Lucky Seals removed"
+msgid "platformCurrencyMsg/debited/tourcoin"
+msgstr "Points of Duty removed"
 
 msgid "platformCurrencyMsg/debited/wdrcoin"
 msgstr "Tokens for years of service removed"
@@ -1288,8 +1298,8 @@ msgstr "Personal Fame Points added"
 msgid "platformCurrencyMsg/received/freeXP"
 msgstr "Free Experience received"
 
-msgid "platformCurrencyMsg/received/stpcoin"
-msgstr "Lucky Seals received"
+msgid "platformCurrencyMsg/received/tourcoin"
+msgstr "Points of Duty added"
 
 msgid "platformCurrencyMsg/received/wdrcoin"
 msgstr "Tokens for years of service added"
@@ -1544,9 +1554,6 @@ msgstr "Battle Pass Points received: %(pointsDiff)s"
 msgid "serviceChannelMessages/BRbattleResults/battleRoyaleBrCoin"
 msgstr "Steel Seals received: %(value)s"
 
-msgid "serviceChannelMessages/BRbattleResults/battleRoyaleStpCoin"
-msgstr "Lucky Seals received: %(value)s"
-
 msgid "serviceChannelMessages/BRbattleResults/ended"
 msgstr "Vehicle destroyed"
 
@@ -1562,13 +1569,6 @@ msgstr "Victory"
 msgid "serviceChannelMessages/Financial/add"
 msgstr "Added"
 
-msgid "serviceChannelMessages/WotPlusIntroNotification/body"
-msgstr ""
-"The Attendance Rewards feature has been introduced for WoT Plus subscribers."
-
-msgid "serviceChannelMessages/WotPlusIntroNotification/header"
-msgstr "New WoT Plus Benefit Released"
-
 msgid "serviceChannelMessages/achievementReceived/message"
 msgstr "Service Record"
 
@@ -1577,6 +1577,12 @@ msgstr "Special"
 
 msgid "serviceChannelMessages/actionEnd"
 msgstr "Special has ended."
+
+msgid "serviceChannelMessages/additionalXP/available/title"
+msgstr "WoT Plus manageable XP multiplier is available"
+
+msgid "serviceChannelMessages/additionalXP/unavailable/title"
+msgstr "WoT Plus manageable XP multiplier is unavailable"
 
 msgid "serviceChannelMessages/autoBoosterErrorNoWallet"
 msgstr ""
@@ -1700,8 +1706,20 @@ msgstr "Failed to repair %s automatically. Repair your vehicle manually."
 msgid "serviceChannelMessages/autoRepairSuccess"
 msgstr "Vehicle %s repaired successfully. You have spent "
 
+msgid "serviceChannelMessages/badge/available/title"
+msgstr "WoT Plus tanker banner is available"
+
+msgid "serviceChannelMessages/badge/unavailable/title"
+msgstr "WoT Plus tanker banner is unavailable"
+
 msgid "serviceChannelMessages/badgeAchievement"
 msgstr "Badges added"
+
+msgid "serviceChannelMessages/battleBonuses/available/title"
+msgstr "WoT Plus battle bonus is available"
+
+msgid "serviceChannelMessages/battleBonuses/unavailable/title"
+msgstr "WoT Plus battle bonus is unavailable"
 
 msgid "serviceChannelMessages/battleMatters/awards/body"
 msgstr "Mission completed: %(questIdx)s %(questName)s"
@@ -1731,7 +1749,7 @@ msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body"
 msgstr "Academy Token used"
 
 msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body/crew"
-msgstr "%(vehName)s (100% crew)"
+msgstr "%(vehName)s"
 
 msgid ""
 "serviceChannelMessages/battleMatters/awards/tokenAward/body/rewardReceived"
@@ -2259,8 +2277,14 @@ msgstr ""
 "Personal Reserve \"%(boosterName)s\" has been disabled due to technical "
 "reasons."
 
-msgid "serviceChannelMessages/boosterExpired"
-msgstr "%(boosterName)s: Personal Reserve expired"
+msgid "serviceChannelMessages/boosterEnded"
+msgstr "%(boosterName)s: Personal Reserve fully used"
+
+msgid "serviceChannelMessages/boosterExpired/message"
+msgstr "Reserves lost: "
+
+msgid "serviceChannelMessages/boosterExpired/title"
+msgstr "Reserves have expired"
 
 msgid "serviceChannelMessages/boosterExpiredResourceName/credits"
 msgstr "credits"
@@ -2276,21 +2300,6 @@ msgstr "Combat XP"
 
 msgid "serviceChannelMessages/boosterExpiredTotalTemplate/total"
 msgstr "Total bonus to %(resourceName)s:"
-
-msgid "serviceChannelMessages/bootcamp/awards"
-msgstr "Reward earned:"
-
-msgid "serviceChannelMessages/bootcamp/crew"
-msgstr "Crew sent to the Barracks"
-
-msgid "serviceChannelMessages/bootcamp/devices"
-msgstr "Sent to the Depot:"
-
-msgid "serviceChannelMessages/bootcamp/finished"
-msgstr "You have completed the Bootcamp"
-
-msgid "serviceChannelMessages/bootcamp/no_awards"
-msgstr "You have already received a reward"
 
 msgid "serviceChannelMessages/buttons/close"
 msgstr "Close"
@@ -2476,6 +2485,42 @@ msgstr "Mission: %(missionName)s"
 
 msgid "serviceChannelMessages/failedPersonalMission/operation"
 msgstr "Operation: %(operation)s"
+
+msgid "serviceChannelMessages/fairplayViolation/banDueDate"
+msgstr "%(date)s, %(time)s"
+
+msgid "serviceChannelMessages/fairplayViolation/button"
+msgstr "Details"
+
+msgid "serviceChannelMessages/fairplayViolation/text/ban"
+msgstr ""
+"You have been temporarily blocked from battles in the %(mode)s mode. The "
+"block will be removed on %(date)s."
+
+msgid "serviceChannelMessages/fairplayViolation/text/banRemoved"
+msgstr ""
+"Your temporary block has been removed. You can play in the %(mode)s mode "
+"again."
+
+msgid "serviceChannelMessages/fairplayViolation/text/penalty"
+msgstr ""
+"You are deprived of credits, XP, and rewards earned in battle for %(reason)s"
+" in the %(mode)s mode."
+
+msgid "serviceChannelMessages/fairplayViolation/text/warning"
+msgstr "You received a warning for %(reason)s in the %(mode)s mode."
+
+msgid "serviceChannelMessages/fairplayViolation/title/ban"
+msgstr "Block"
+
+msgid "serviceChannelMessages/fairplayViolation/title/banRemoved"
+msgstr "End of Block"
+
+msgid "serviceChannelMessages/fairplayViolation/title/penalty"
+msgstr "You Have Been Penalized"
+
+msgid "serviceChannelMessages/fairplayViolation/title/warning"
+msgstr "Unsportsmanlike Conduct"
 
 msgid "serviceChannelMessages/fort/ATTACK_PLANNED"
 msgstr ""
@@ -3057,11 +3102,17 @@ msgstr "Crew members removed: %(count)s"
 msgid "serviceChannelMessages/offerTokenBonus/title"
 msgstr "Homefront Supplies"
 
-msgid "serviceChannelMessages/personalReservesConverted"
-msgstr "All your Personal Reserves have been converted."
+msgid "serviceChannelMessages/personalReservesRelease/description"
+msgstr "You have new Reserves: "
 
-msgid "serviceChannelMessages/personalReservesTitle"
-msgstr "Personal Reserves Conversion"
+msgid "serviceChannelMessages/personalReservesRelease/title"
+msgstr "Release Notification"
+
+msgid "serviceChannelMessages/personalReservesSoonExpire/description"
+msgstr "Reserves to expire: "
+
+msgid "serviceChannelMessages/personalReservesSoonExpire/title"
+msgstr "Expirable Reserves about to be lost"
 
 msgid "serviceChannelMessages/piggyBank/continueAfterSmashed"
 msgstr "New accumulation cycle started."
@@ -3785,7 +3836,7 @@ msgstr "Log in to the game and get rewards."
 
 msgid ""
 "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/cycleStarted/startText"
-msgstr "New WoT Plus Benefit Released!"
+msgstr "Cycle Started!"
 
 msgid "serviceChannelMessages/wotPlus/dailyAttendanceRewarded/big/title"
 msgstr "Attendance Reward"
@@ -3807,8 +3858,8 @@ msgstr "Attendance Rewards Available"
 
 msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/subscribed/text"
 msgstr ""
-"The <font color='#E9E2BF'>%(vehicleName)s</font> %(vehicleType)s, exclusive "
-"to WoT Plus, is now available."
+"The exclusive <font color='#E9E2BF'>%(vehicleName)s</font> %(vehicleType)s "
+"is available."
 
 msgid "serviceChannelMessages/wotPlus/exclusiveVehicle/unsubscribed/text"
 msgstr ""
@@ -3840,7 +3891,9 @@ msgid "serviceChannelMessages/wotPlus/goldReserve/smash/title"
 msgstr "Gold Reserve Opened!"
 
 msgid "serviceChannelMessages/wotPlus/nextDateOfRenewal"
-msgstr "Next extension: %(time)s"
+msgstr ""
+"Now, all benefits are available.\n"
+"Next extension: <font color='#E9E2BF'>%(time)s</font>"
 
 msgid "serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/text"
 msgstr ""
@@ -3895,6 +3948,25 @@ msgstr "Select a vehicle from the list to rent."
 msgid "serviceChannelMessages/wotPlus/rental/noTank/title"
 msgstr "No rental vehicle selected"
 
+msgid ""
+"serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/additionalBonuses"
+msgstr "• choose to triple Combat XP"
+
+msgid "serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/badges"
+msgstr "• spice up your nickname"
+
+msgid ""
+"serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/battleBonuses"
+msgstr "• earn +%(creditsFactor)d%% more each battle"
+
+msgid "serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/body"
+msgstr ""
+"From now on you can:\n"
+"%(bonuses)s"
+
+msgid "serviceChannelMessages/wotPlus/subscribersBenefitsOnboarding/title"
+msgstr "New WoT Plus Benefits Released!"
+
 msgid "serviceChannelMessages/wotPlus/tankRental/isPending/text"
 msgstr "The %(vehicle)s will soon be added to your account."
 
@@ -3911,7 +3983,7 @@ msgid "serviceChannelMessages/wotPlus/unlockFreeDemount/title"
 msgstr "Free equipment demounting is available"
 
 msgid "serviceChannelMessages/wotPlus/unlockMessage/title"
-msgstr "WoT Plus activated on %(startTime)s"
+msgstr "World of Tanks Plus Activated"
 
 msgid "serviceChannelMessages/xpReceivedAsGift"
 msgstr "You have been granted %(freeXP)s Free Experience."

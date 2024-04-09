@@ -468,7 +468,6 @@
 				<type>list</type>
 				<value>
 					<item>introPage.swf</item>
-					<item>barracks.swf</item>
 					<item>shop.swf</item>
 				</value>
 			</item>
@@ -1109,6 +1108,28 @@
 							</item>
 						</value>
 					</item>
+					<item>
+						<name>crew5075Welcome</name>
+						<type>list</type>
+						<value>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+							<item>
+								<type>int</type>
+								<value>3</value>
+							</item>
+						</value>
+					</item>
 				</value>
 			</item>
 		</value>
@@ -1192,18 +1213,6 @@
 		<value>
 			<item>
 				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/RandomBattles/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>infoPageBootcamp</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/Bootcamp/
 				<name>NA</name>
 				<type>url</type>
 			</item>
@@ -1329,7 +1338,7 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				 https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode2/ 
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode3/ 
 				<name>NA</name>
 				<type>url</type>
 			</item>
@@ -1353,7 +1362,7 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				 https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode2Video/ 
+				 https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/onslaught-season-of-the-pegasus-episode3Video/ 
 				<name>NA</name>
 				<type>url</type>
 			</item>
@@ -1427,6 +1436,29 @@
 			<item>
 				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/player-subscriptions/
 				<name>NA</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>personalReservesInfoPage</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/expirable-personal-reserves/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>clanSupply</name>
+		<type>dict</type>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/tour_of_duty_2024/
+				<name>baseURL</name>
 				<type>url</type>
 			</item>
 		</value>

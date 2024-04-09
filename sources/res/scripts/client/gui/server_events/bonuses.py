@@ -405,8 +405,7 @@ class CurrenciesBonus(IntegralBonus):
 
     def __init__(self, *args, **kwargs):
         super(CurrenciesBonus, self).__init__(*args, **kwargs)
-        self._code = self._value.keys()[0]
-        self._value = self._value[self._code]['count']
+        self._code, self._value = self._value
 
     def getList(self):
         return [
@@ -1171,6 +1170,14 @@ def entitlementsFactory(name, value, isCompensation=False, ctx=None):
     return result
 
 
+def currenciesFactory(name, value, isCompensation=False, ctx=None):
+    result = []
+    for currencyCode, currencyValue in value.items():
+        result.append(CurrenciesBonus(name, (currencyCode, currencyValue.get('count', 0)), isCompensation, ctx))
+
+    return result
+
+
 class FreeTokensBonus(TokensBonus):
 
     def __init__(self, value, isCompensation=False, ctx=None, hasPawned=False):
@@ -1832,7 +1839,6 @@ class TankmenBonus(SimpleBonus):
      'iconID',
      'iGroupID',
      'isPremium',
-     'roleLevel',
      'freeXP',
      'skills',
      'isFemale',
@@ -1863,16 +1869,13 @@ class TankmenBonus(SimpleBonus):
     def getTankmenGroups(self):
         groups = {}
         for tmanInfo in self.getTankmenData():
-            roleLevel = calculateRoleLevel(tmanInfo.roleLevel, tmanInfo.freeXP, typeID=(tmanInfo.nationID, tmanInfo.vehicleTypeID))
             if tmanInfo.vehicleTypeID not in groups:
                 vehIntCD = vehicles.makeIntCompactDescrByID('vehicle', tmanInfo.nationID, tmanInfo.vehicleTypeID)
                 groups[tmanInfo.vehicleTypeID] = {'vehName': self.itemsCache.items.getItemByCD(vehIntCD).shortUserName, 
-                   'skills': len(tmanInfo.skills), 
-                   'roleLevel': roleLevel}
+                   'skills': len(tmanInfo.skills)}
             else:
                 group = groups[tmanInfo.vehicleTypeID]
                 group['skills'] += len(tmanInfo.skills)
-                group['roleLevel'] = min(group['roleLevel'], roleLevel)
 
         return groups
 
@@ -1894,7 +1897,7 @@ class TankmenBonus(SimpleBonus):
 
     @classmethod
     def _makeTmanInfoByDescr(cls, td):
-        return cls._TankmanInfoRecord(td.nationID, td.role, td.vehicleTypeID, td.firstNameID, -1, td.lastNameID, -1, td.iconID, -1, td.isPremium, td.roleLevel, td.freeXP, td.skills, td.isFemale, [])
+        return cls._TankmanInfoRecord(nationID=td.nationID, role=td.role, vehicleTypeID=td.vehicleTypeID, firstNameID=td.firstNameID, fnGroupID=-1, lastNameID=td.lastNameID, lnGroupID=-1, iconID=td.iconID, iGroupID=-1, isPremium=td.isPremium, freeXP=td.freeXP, skills=td.skills, isFemale=td.isFemale, freeSkills=[])
 
     @classmethod
     def getTankmenDataForCrew(cls, vehCD, roleLevel):
@@ -2201,6 +2204,37 @@ class WoTPlusExclusiveVehicle(WoTPlusBonus):
             header = i18n.makeString(headerData)
             body = i18n.makeString(bodyData, vehicleName=vehicleName, vehicleType=getWotPlusExclusiveVehicleTypeUserName(vehicle.classTag))
         return makeTooltip(header, body)
+
+
+class WotPlusBattleBonuses(WoTPlusBonus):
+    __lobbyContext = dependency.descriptor(ILobbyContext)
+
+    def __init__(self):
+        super(WotPlusBattleBonuses, self).__init__(WoTPlusBonusType.BATTLE_BONUSES)
+
+    def getTooltip(self):
+        awardItem = R.strings.tooltips.awardItem.dyn(self._name)
+        serverSettings = self.__lobbyContext.getServerSettings()
+        earnings = serverSettings.getWotPlusBattleBonusesConfig().get('creditsFactor', 0.0) * 100
+        return makeTooltip(backport.text(awardItem.header()), backport.text(awardItem.body(), earnings=earnings))
+
+
+class WotPlusBadges(WoTPlusBonus):
+
+    def __init__(self):
+        super(WotPlusBadges, self).__init__(WoTPlusBonusType.BADGES)
+
+
+class WotPlusAdditionalBonuses(WoTPlusBonus):
+    __lobbyContext = dependency.descriptor(ILobbyContext)
+
+    def __init__(self):
+        super(WotPlusAdditionalBonuses, self).__init__(WoTPlusBonusType.ADDITIONAL_BONUSES)
+
+    def getTooltip(self):
+        awardItem = R.strings.tooltips.awardItem.dyn(self._name)
+        serverSettings = self.__lobbyContext.getServerSettings()
+        return makeTooltip(backport.text(awardItem.header()), backport.text(awardItem.body(), applications=serverSettings.getAdditionalWoTPlusXPCount()))
 
 
 def randomBlueprintBonusFactory(name, value, isCompensation=False, ctx=None):
@@ -2834,13 +2868,16 @@ _BONUSES = {Currency.CREDITS: CreditsBonus,
    'dogTagComponents': DogTagComponentBonus, 
    'selectableCrewbook': UniversalCrewbook, 
    'randomCrewbook': UniversalCrewbook, 
-   'currencies': CurrenciesBonus, 
+   'currencies': currenciesFactory, 
    WoTPlusBonusType.GOLD_BANK: GoldBank, 
    WoTPlusBonusType.IDLE_CREW_XP: IdleCrewXP, 
    WoTPlusBonusType.EXCLUDED_MAP: ExcludedMap, 
    WoTPlusBonusType.FREE_EQUIPMENT_DEMOUNTING: FreeEquipmentDemounting, 
    WoTPlusBonusType.EXCLUSIVE_VEHICLE: WoTPlusExclusiveVehicle, 
-   WoTPlusBonusType.ATTENDANCE_REWARD: AttendanceReward}
+   WoTPlusBonusType.ATTENDANCE_REWARD: AttendanceReward, 
+   WoTPlusBonusType.BATTLE_BONUSES: WotPlusBattleBonuses, 
+   WoTPlusBonusType.BADGES: WotPlusBadges, 
+   WoTPlusBonusType.ADDITIONAL_BONUSES: WotPlusAdditionalBonuses}
 HIDDEN_BONUSES = (
  MetaBonus,)
 _BONUSES_PRIORITY = (
@@ -2990,6 +3027,8 @@ def getMergeBonusFunction(lhv, rhv):
     else:
         if hasOneBaseClass(lhv, rhv, ItemsBonus):
             return mergeItemsBonuses
+        if hasOneBaseClass(lhv, rhv, CurrenciesBonus):
+            return mergeCurrenciesBonuses
         if hasOneBaseClass(lhv, rhv, IntegralBonus) or hasOneBaseClass(lhv, rhv, GoldBonus):
             return mergeIntegralBonuses
         if hasOneBaseClass(lhv, rhv, CustomizationsBonus):
@@ -3033,6 +3072,17 @@ def mergeCustomizationBonuses(lhv, rhv):
         merged.setValue(mergedValue)
 
     return (merged, True)
+
+
+def mergeCurrenciesBonuses(lhv, rhv):
+    merged = copy.deepcopy(lhv)
+    value = merged.getValue()
+    needPop = False
+    if lhv.getCode() == rhv.getCode():
+        value += rhv.getValue()
+        merged.setValue(value)
+        needPop = True
+    return (merged, needPop)
 
 
 def mergeSimpleBonuses(lhv, rhv):
@@ -3095,6 +3145,8 @@ def getSplitBonusFunction(bonus):
     if isinstance(bonus, CrewSkinsBonus):
         return
     else:
+        if isinstance(bonus, TankmenBonus):
+            return
         if isinstance(bonus, CustomizationsBonus):
             return splitCustomizationsBonus
         if isinstance(bonus, (IntegralBonus, GoldBonus)):

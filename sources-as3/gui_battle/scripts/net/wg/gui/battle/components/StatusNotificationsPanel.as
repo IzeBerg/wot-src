@@ -349,5 +349,15 @@ package net.wg.gui.battle.components
             }
          }
       }
+      
+      override public function setCompVisible(param1:Boolean) : void
+      {
+         alpha = !!param1 ? Number(1) : Number(0);
+      }
+      
+      override public function isCompVisible() : Boolean
+      {
+         return alpha == 1;
+      }
    }
 }

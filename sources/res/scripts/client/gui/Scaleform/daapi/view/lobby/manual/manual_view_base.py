@@ -35,5 +35,3 @@ class ManualViewBase(LobbySubView):
         if 'isManualEnabled' in diff:
             if not bool(diff['isManualEnabled']):
                 self.closeView()
-        if 'isBootcampEnabled' in diff:
-            self.closeView()

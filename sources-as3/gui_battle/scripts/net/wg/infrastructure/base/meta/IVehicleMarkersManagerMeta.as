@@ -6,6 +6,8 @@ package net.wg.infrastructure.base.meta
    {
        
       
+      function onMarkerBeingHoveredS(param1:Boolean) : void;
+      
       function as_setMarkerDuration(param1:int) : void;
       
       function as_setMarkerSettings(param1:Object) : void;

@@ -26,6 +26,12 @@ class BattleResultsMeta(AbstractWindowView):
     def onShowDetailsPremium(self):
         self._printOverrideError('onShowDetailsPremium')
 
+    def onShowDetailsWotPlus(self):
+        self._printOverrideError('onShowDetailsWotPlus')
+
+    def onShowManageableXPScreen(self):
+        self._printOverrideError('onShowManageableXPScreen')
+
     def showDogTagWindow(self, componentId):
         self._printOverrideError('showDogTagWindow')
 

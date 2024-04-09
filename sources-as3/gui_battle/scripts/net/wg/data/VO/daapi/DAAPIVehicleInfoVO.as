@@ -44,6 +44,8 @@ package net.wg.data.VO.daapi
       
       public var invitationStatus:uint = 0;
       
+      public var isBot:Boolean = false;
+      
       public var vehicleID:Number = 0;
       
       public var vehicleName:String = "";

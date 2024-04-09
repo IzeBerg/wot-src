@@ -284,6 +284,18 @@
 				<slots/>
 			</block>
 			<block>
+				<class>OnPlayerControlModeChange</class>
+				<id>OnPlayerControlModeChange_1</id>
+				<params>
+					<param>
+						postmortem
+						<name>ControlMode</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
 				<class>Or</class>
 				<id>Or_4</id>
 				<params>
@@ -296,46 +308,11 @@
 				<slots/>
 			</block>
 			<block>
-				<class>If</class>
-				<id>If_26</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_42</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>DoOnce</class>
-				<id>DoOnce_4</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>start_closed</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>If</class>
-				<id>If_6</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>OnAnyVehicleDestroyed</class>
-				<id>OnAnyVehicleDestroyed_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>Delay</class>
-				<id>Delay_2</id>
+				<id>Delay_6</id>
 				<params>
 					<param>
-						BoolT
+						IntT
 						<name>Value Type</name>
 						<type>TypeT</type>
 					</param>
@@ -343,22 +320,11 @@
 				<slots>
 					<slot>
 						<name>time</name>
-						<const>\7.000000\</const>
+						<const>\2.000000\</const>
 					</slot>
 					<slot>
 						<name>stack</name>
 						<const>\false\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
-				<class>FlowGate</class>
-				<id>FlowGate_2</id>
-				<params/>
-				<slots>
-					<slot>
-						<name>openAtStart</name>
-						<const>\true\</const>
 					</slot>
 				</slots>
 			</block>
@@ -381,50 +347,14 @@
 				<slots/>
 			</block>
 			<block>
-				<class>IsVehicleValid</class>
-				<id>IsVehicleValid_3</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>IsPlayerVehicle</class>
-				<id>IsPlayerVehicle_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>SelectHint</class>
-				<id>SelectHint_2</id>
-				<params>
-					<param>
-						newbie.newbie.PPH_OTHER_02
-						<name>scope, hintId</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>OnBattleRoundFinished</class>
-				<id>OnBattleRoundFinished_2</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
 				<class>If</class>
-				<id>If_22</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>RandomBool</class>
-				<id>RandomBool_1</id>
+				<id>If_6</id>
 				<params/>
 				<slots/>
 			</block>
 			<block>
 				<class>FlowGate</class>
-				<id>FlowGate_1</id>
+				<id>FlowGate_2</id>
 				<params/>
 				<slots>
 					<slot>
@@ -434,43 +364,15 @@
 				</slots>
 			</block>
 			<block>
-				<class>Delay</class>
-				<id>Delay_1</id>
-				<params>
-					<param>
-						BoolT
-						<name>Value Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
+				<class>Counter</class>
+				<id>Counter_2</id>
+				<params/>
 				<slots>
 					<slot>
-						<name>time</name>
-						<const>\7.000000\</const>
-					</slot>
-					<slot>
-						<name>stack</name>
-						<const>\false\</const>
+						<name>count</name>
+						<const>\2\</const>
 					</slot>
 				</slots>
-			</block>
-			<block>
-				<class>OnBattleRoundFinished</class>
-				<id>OnBattleRoundFinished_1</id>
-				<params/>
-				<slots/>
-			</block>
-			<block>
-				<class>SelectHint</class>
-				<id>SelectHint_1</id>
-				<params>
-					<param>
-						newbie.newbie.PPH_OTHER_03
-						<name>scope, hintId</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
 			</block>
 			<block>
 				<class>Macro</class>
@@ -492,6 +394,150 @@
 						<const>\false\</const>
 					</slot>
 				</slots>
+			</block>
+			<block>
+				<class>GetVariable</class>
+				<id>GetVariable_87</id>
+				<buddy>Variable_50</buddy>
+				<params>
+					<param>
+						BoolT
+						<name>Variable Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>SelectHint</class>
+				<id>SelectHint_2</id>
+				<params>
+					<param>
+						newbie.newbie.PPH_OTHER_02
+						<name>scope, hintId</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_22</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>OnBattleRoundFinished</class>
+				<id>OnBattleRoundFinished_2</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>RandomBool</class>
+				<id>RandomBool_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_50</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>If</class>
+				<id>If_51</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>OnAnyVehicleDestroyed</class>
+				<id>OnAnyVehicleDestroyed_4</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>Delay</class>
+				<id>Delay_5</id>
+				<params>
+					<param>
+						IntT
+						<name>Value Type</name>
+						<type>TypeT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>time</name>
+						<const>\7.000000\</const>
+					</slot>
+					<slot>
+						<name>stack</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>IsVehicleValid</class>
+				<id>IsVehicleValid_3</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>IsPlayerVehicle</class>
+				<id>IsPlayerVehicle_2</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>FlowGate</class>
+				<id>FlowGate_1</id>
+				<params/>
+				<slots>
+					<slot>
+						<name>openAtStart</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_5</id>
+				<params>
+					<param>
+						Hint_Manager
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>Show_only_if_vehicle_is_alive</name>
+						<const>\false\</const>
+					</slot>
+					<slot>
+						<name>Hide_on_vehicle_destruction</name>
+						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>OnBattleRoundFinished</class>
+				<id>OnBattleRoundFinished_1</id>
+				<params/>
+				<slots/>
+			</block>
+			<block>
+				<class>SelectHint</class>
+				<id>SelectHint_1</id>
+				<params>
+					<param>
+						newbie.newbie.PPH_OTHER_03
+						<name>scope, hintId</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
 			</block>
 			<block>
 				<class>SelectHint</class>
@@ -573,40 +619,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>GetVariable</class>
-				<id>GetVariable_87</id>
-				<buddy>Variable_50</buddy>
-				<params>
-					<param>
-						BoolT
-						<name>Variable Type</name>
-						<type>TypeT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_5</id>
-				<params>
-					<param>
-						Hint_Manager
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>Show_only_if_vehicle_is_alive</name>
-						<const>\false\</const>
-					</slot>
-					<slot>
-						<name>Hide_on_vehicle_destruction</name>
-						<const>\false\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>Delay</class>
 				<id>Delay_3</id>
 				<params>
@@ -624,6 +636,27 @@
 					<slot>
 						<name>stack</name>
 						<const>\false\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
+				<class>Macro</class>
+				<id>Macro_3</id>
+				<params>
+					<param>
+						Hint_Manager
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>Show_only_if_vehicle_is_alive</name>
+						<const>\true\</const>
+					</slot>
+					<slot>
+						<name>Hide_on_vehicle_destruction</name>
+						<const>\true\</const>
 					</slot>
 				</slots>
 			</block>
@@ -763,39 +796,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>SelectHint</class>
-				<id>SelectHint_6</id>
-				<params>
-					<param>
-						newbie.newbie.PPH_OTHER_04
-						<name>scope, hintId</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_3</id>
-				<params>
-					<param>
-						Hint_Manager
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>Show_only_if_vehicle_is_alive</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>Hide_on_vehicle_destruction</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>Macro</class>
 				<id>Macro_1</id>
 				<params>
@@ -815,6 +815,18 @@
 						<const>\true\</const>
 					</slot>
 				</slots>
+			</block>
+			<block>
+				<class>SelectHint</class>
+				<id>SelectHint_6</id>
+				<params>
+					<param>
+						newbie.newbie.PPH_OTHER_04
+						<name>scope, hintId</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
 			</block>
 			<block>
 				<class>If</class>
@@ -1103,6 +1115,27 @@
 				<slots/>
 			</block>
 			<block>
+				<class>Macro</class>
+				<id>Macro_2</id>
+				<params>
+					<param>
+						Hint_Manager
+						<name>Macro Name</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots>
+					<slot>
+						<name>Show_only_if_vehicle_is_alive</name>
+						<const>\true\</const>
+					</slot>
+					<slot>
+						<name>Hide_on_vehicle_destruction</name>
+						<const>\true\</const>
+					</slot>
+				</slots>
+			</block>
+			<block>
 				<class>Sequence</class>
 				<id>Sequence_1</id>
 				<params>
@@ -1127,39 +1160,6 @@
 				<slots/>
 			</block>
 			<block>
-				<class>SelectHint</class>
-				<id>SelectHint_4</id>
-				<params>
-					<param>
-						newbie.newbie.PPH_OTHER_06
-						<name>scope, hintId</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots/>
-			</block>
-			<block>
-				<class>Macro</class>
-				<id>Macro_2</id>
-				<params>
-					<param>
-						Hint_Manager
-						<name>Macro Name</name>
-						<type>StringT</type>
-					</param>
-				</params>
-				<slots>
-					<slot>
-						<name>Show_only_if_vehicle_is_alive</name>
-						<const>\true\</const>
-					</slot>
-					<slot>
-						<name>Hide_on_vehicle_destruction</name>
-						<const>\true\</const>
-					</slot>
-				</slots>
-			</block>
-			<block>
 				<class>Macro</class>
 				<id>Macro_6</id>
 				<params>
@@ -1179,6 +1179,18 @@
 						<const>\true\</const>
 					</slot>
 				</slots>
+			</block>
+			<block>
+				<class>SelectHint</class>
+				<id>SelectHint_4</id>
+				<params>
+					<param>
+						newbie.newbie.PPH_OTHER_06
+						<name>scope, hintId</name>
+						<type>StringT</type>
+					</param>
+				</params>
+				<slots/>
 			</block>
 		</blocks>
 		<connections>
@@ -1309,6 +1321,12 @@
 				<output>id</output>
 			</connection>
 			<connection>
+				<from>Or_4</from>
+				<input>active</input>
+				<to>OnPlayerControlModeChange_1</to>
+				<output>res</output>
+			</connection>
+			<connection>
 				<from>CanShowHint_5</from>
 				<input>i1</input>
 				<to>Or_4</to>
@@ -1321,37 +1339,19 @@
 				<output>result</output>
 			</connection>
 			<connection>
-				<from>OnAnyVehicleDestroyed_2</from>
+				<from>OnPlayerControlModeChange_1</from>
 				<input>input</input>
-				<to>If_26</to>
-				<output>onDestroyed</output>
+				<to>Delay_6</to>
+				<output>OnEnter</output>
 			</connection>
 			<connection>
-				<from>IsVehicleValid_3</from>
-				<input>value</input>
-				<to>If_26</to>
-				<output>res</output>
+				<from>SelectHint_12</from>
+				<input>hintId</input>
+				<to>CanShowHint_6</to>
+				<output>id</output>
 			</connection>
 			<connection>
-				<from>If_26</from>
-				<input>input</input>
-				<to>If_42</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>IsPlayerVehicle_2</from>
-				<input>value</input>
-				<to>If_42</to>
-				<output>res</output>
-			</connection>
-			<connection>
-				<from>If_42</from>
-				<input>input</input>
-				<to>DoOnce_4</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>DoOnce_4</from>
+				<from>Counter_2</from>
 				<input>input</input>
 				<to>If_6</to>
 				<output>completed</output>
@@ -1363,28 +1363,16 @@
 				<output>value</output>
 			</connection>
 			<connection>
-				<from>Or_4</from>
-				<input>active</input>
-				<to>OnAnyVehicleDestroyed_2</to>
-				<output>res</output>
-			</connection>
-			<connection>
 				<from>If_6</from>
 				<input>input</input>
-				<to>Delay_2</to>
+				<to>FlowGate_2</to>
 				<output>true</output>
 			</connection>
 			<connection>
 				<from>If_22</from>
 				<input>input</input>
-				<to>Delay_2</to>
-				<output>true</output>
-			</connection>
-			<connection>
-				<from>Delay_2</from>
-				<input>input</input>
 				<to>FlowGate_2</to>
-				<output>out</output>
+				<output>true</output>
 			</connection>
 			<connection>
 				<from>OnBattleRoundFinished_2</from>
@@ -1393,22 +1381,28 @@
 				<output>onFinished</output>
 			</connection>
 			<connection>
-				<from>SelectHint_12</from>
-				<input>hintId</input>
-				<to>CanShowHint_6</to>
+				<from>Delay_6</from>
+				<input>input</input>
+				<to>Counter_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>Delay_5</from>
+				<input>input</input>
+				<to>Counter_2</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>FlowGate_2</from>
+				<input>Show_Hint</input>
+				<to>Macro_4</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>SelectHint_2</from>
+				<input>HintID</input>
+				<to>Macro_4</to>
 				<output>id</output>
-			</connection>
-			<connection>
-				<from>OnAnyVehicleDestroyed_2</from>
-				<input>vehicle</input>
-				<to>IsVehicleValid_3</to>
-				<output>target</output>
-			</connection>
-			<connection>
-				<from>OnAnyVehicleDestroyed_2</from>
-				<input>vehicle</input>
-				<to>IsPlayerVehicle_2</to>
-				<output>target</output>
 			</connection>
 			<connection>
 				<from>If_6</from>
@@ -1423,10 +1417,58 @@
 				<output>res</output>
 			</connection>
 			<connection>
-				<from>Delay_1</from>
+				<from>OnAnyVehicleDestroyed_4</from>
+				<input>input</input>
+				<to>If_50</to>
+				<output>onDestroyed</output>
+			</connection>
+			<connection>
+				<from>IsVehicleValid_3</from>
+				<input>value</input>
+				<to>If_50</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>If_50</from>
+				<input>input</input>
+				<to>If_51</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>IsPlayerVehicle_2</from>
+				<input>value</input>
+				<to>If_51</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>Or_4</from>
+				<input>active</input>
+				<to>OnAnyVehicleDestroyed_4</to>
+				<output>res</output>
+			</connection>
+			<connection>
+				<from>If_51</from>
+				<input>input</input>
+				<to>Delay_5</to>
+				<output>true</output>
+			</connection>
+			<connection>
+				<from>OnAnyVehicleDestroyed_4</from>
+				<input>vehicle</input>
+				<to>IsVehicleValid_3</to>
+				<output>target</output>
+			</connection>
+			<connection>
+				<from>OnAnyVehicleDestroyed_4</from>
+				<input>vehicle</input>
+				<to>IsPlayerVehicle_2</to>
+				<output>target</output>
+			</connection>
+			<connection>
+				<from>If_22</from>
 				<input>input</input>
 				<to>FlowGate_1</to>
-				<output>out</output>
+				<output>false</output>
 			</connection>
 			<connection>
 				<from>OnBattleRoundFinished_1</from>
@@ -1435,21 +1477,15 @@
 				<output>onFinished</output>
 			</connection>
 			<connection>
-				<from>If_22</from>
-				<input>input</input>
-				<to>Delay_1</to>
-				<output>false</output>
-			</connection>
-			<connection>
-				<from>FlowGate_2</from>
+				<from>FlowGate_1</from>
 				<input>Show_Hint</input>
-				<to>Macro_4</to>
+				<to>Macro_5</to>
 				<output>out</output>
 			</connection>
 			<connection>
-				<from>SelectHint_2</from>
+				<from>SelectHint_1</from>
 				<input>HintID</input>
-				<to>Macro_4</to>
+				<to>Macro_5</to>
 				<output>id</output>
 			</connection>
 			<connection>
@@ -1495,22 +1531,22 @@
 				<output>id</output>
 			</connection>
 			<connection>
-				<from>FlowGate_1</from>
-				<input>Show_Hint</input>
-				<to>Macro_5</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>SelectHint_1</from>
-				<input>HintID</input>
-				<to>Macro_5</to>
-				<output>id</output>
-			</connection>
-			<connection>
 				<from>If_49</from>
 				<input>input</input>
 				<to>Delay_3</to>
 				<output>true</output>
+			</connection>
+			<connection>
+				<from>Delay_3</from>
+				<input>Show_Hint</input>
+				<to>Macro_3</to>
+				<output>out</output>
+			</connection>
+			<connection>
+				<from>SelectHint_5</from>
+				<input>HintID</input>
+				<to>Macro_3</to>
+				<output>id</output>
 			</connection>
 			<connection>
 				<from>SelectHint_7</from>
@@ -1577,18 +1613,6 @@
 				<input>input</input>
 				<to>Delay_4</to>
 				<output>false</output>
-			</connection>
-			<connection>
-				<from>Delay_3</from>
-				<input>Show_Hint</input>
-				<to>Macro_3</to>
-				<output>out</output>
-			</connection>
-			<connection>
-				<from>SelectHint_5</from>
-				<input>HintID</input>
-				<to>Macro_3</to>
-				<output>id</output>
 			</connection>
 			<connection>
 				<from>Delay_4</from>
@@ -1801,12 +1825,6 @@
 				<output>res</output>
 			</connection>
 			<connection>
-				<from>OnPlayerVehicleShoot_1</from>
-				<input>input</input>
-				<to>Sequence_1</to>
-				<output>onShoot</output>
-			</connection>
-			<connection>
 				<from>If_7</from>
 				<input>Show_Hint</input>
 				<to>Macro_2</to>
@@ -1823,6 +1841,12 @@
 				<input>HintID</input>
 				<to>Macro_2</to>
 				<output>id</output>
+			</connection>
+			<connection>
+				<from>OnPlayerVehicleShoot_1</from>
+				<input>input</input>
+				<to>Sequence_1</to>
+				<output>onShoot</output>
 			</connection>
 			<connection>
 				<from>If_7</from>

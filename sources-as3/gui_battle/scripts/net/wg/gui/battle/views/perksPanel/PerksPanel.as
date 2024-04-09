@@ -6,7 +6,7 @@ package net.wg.gui.battle.views.perksPanel
    import net.wg.gui.battle.views.perksPanel.components.PerkItem;
    import net.wg.gui.battle.views.perksPanel.data.PerkItemVO;
    import net.wg.gui.battle.views.perksPanel.events.PerkItemEvent;
-   import net.wg.gui.bootcamp.containers.AnimatedSpriteContainer;
+   import net.wg.gui.components.containers.AnimatedSpriteContainer;
    import net.wg.infrastructure.base.meta.IPerksPanelMeta;
    import net.wg.infrastructure.base.meta.impl.PerksPanelMeta;
    import net.wg.utils.IClassFactory;

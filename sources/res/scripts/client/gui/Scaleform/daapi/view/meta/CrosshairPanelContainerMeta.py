@@ -57,6 +57,14 @@ class CrosshairPanelContainerMeta(DAAPISimpleContainerMeta):
         if self._isDAAPIInited():
             return self.flashObject.as_clearDistance(immediate)
 
+    def as_setAverageDamageS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setAverageDamage(value)
+
+    def as_clearAverageDamageS(self, immediate):
+        if self._isDAAPIInited():
+            return self.flashObject.as_clearAverageDamage(immediate)
+
     def as_updatePlayerInfoS(self, info):
         if self._isDAAPIInited():
             return self.flashObject.as_updatePlayerInfo(info)

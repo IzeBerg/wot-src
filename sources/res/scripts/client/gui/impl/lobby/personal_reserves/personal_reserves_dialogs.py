@@ -1,5 +1,4 @@
 from typing import TYPE_CHECKING
-from uilogging.personal_reserves.loggers import BuyAndActivateDialogsLogger
 from wg_async import wg_async
 from adisp import adisp_async
 from goodies.goodie_constants import GOODIE_RESOURCE_TYPE
@@ -14,7 +13,7 @@ from gui.impl.gen import R
 from gui.impl.gen.view_models.views.dialogs.default_dialog_place_holders import DefaultDialogPlaceHolders
 from gui.impl.gen.view_models.views.dialogs.dialog_template_button_view_model import ButtonType
 from gui.impl.gen.view_models.views.dialogs.sub_views.currency_view_model import CurrencySize
-from gui.impl.gen.view_models.views.dialogs.sub_views.icon_set_view_model import IconPositionLogicEnum
+from gui.impl.gen.view_models.views.dialogs.sub_views.multiple_icons_set_view_model import IconPositionLogicEnum
 from gui.impl.gen_utils import DynAccessor
 from gui.impl.lobby.dialogs.full_screen_dialog_view import FullScreenDialogWindowWrapper
 from gui.impl.pub.dialog_window import DialogButtons
@@ -32,13 +31,10 @@ UPGRADE_IMAGE_LOOKUP = {GOODIE_RESOURCE_TYPE.XP: R.images.gui.maps.icons.persona
 
 @adisp_async
 @wg_async
-def showDialogAndLogInteraction(dialog, dialogLogItem, callback):
-    logger = BuyAndActivateDialogsLogger(dialogLogItem)
+def showDialogAndLogInteraction(dialog, callback):
     dialog.load()
-    logger.logOpenDialog()
     result = yield dialog.wait()
     buttonClicked = result.result
-    logger.logButtonClick(buttonClicked)
     dialog.destroy()
     callback(buttonClicked == DialogButtons.SUBMIT)
 

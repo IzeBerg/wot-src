@@ -1,7 +1,7 @@
 package net.wg.gui.lobby.manualChapter.controls
 {
-   import net.wg.gui.bootcamp.containers.AnimatedSpriteContainer;
-   import net.wg.gui.bootcamp.containers.AnimatedTextContainer;
+   import net.wg.gui.components.containers.AnimatedSpriteContainer;
+   import net.wg.gui.components.containers.AnimatedTextContainer;
    
    public class TextContainer extends AnimatedSpriteContainer
    {

@@ -2,7 +2,7 @@ import logging, typing
 from collections import namedtuple
 import BigWorld
 from BWUtil import AsyncReturn
-from CurrentVehicle import g_currentVehicle
+from CurrentVehicle import g_currentVehicle, g_currentPreviewVehicle
 from Event import Event
 from Math import Matrix
 from account_helpers.AccountSettings import AccountSettings, CUSTOMIZATION_SECTION, CAROUSEL_ARROWS_HINT_SHOWN_FIELD, IS_CUSTOMIZATION_INTRO_VIEWED
@@ -182,7 +182,6 @@ class _CustomizationCloseConfirmatorsHelper(CloseConfirmatorsHelper):
         return super(_CustomizationCloseConfirmatorsHelper, self).getRestrictedGuiImplViews() + [
          R.views.lobby.common.BrowserView(),
          R.views.lobby.personal_reserves.ReservesActivationView(),
-         R.views.lobby.personal_reserves.ReservesConversionView(),
          R.views.lobby.personal_reserves.ReservesIntroView()]
 
     def start(self, closeConfirmator):
@@ -768,6 +767,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta, LobbyHeaderVisibility):
         self.__ctx.events.onSlotSelected += self.__onSlotSelected
         self.__ctx.events.onSlotUnselected += self.__onSlotUnselected
         self.__ctx.events.onAnchorsStateChanged += self.__onAnchorsStateChanged
+        g_currentPreviewVehicle.selectNoVehicle()
         g_currentVehicle.onChangeStarted += self.__onVehicleChangeStarted
         g_currentVehicle.onChanged += self.__onVehicleChanged
         self.settingsCore.onSettingsChanged += self.__onSettingsChanged

@@ -50,12 +50,18 @@ class Fire(BigWorld.DynamicScriptComponent):
             self.__guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.FIRE, True)
             return
 
+    def onLeaveWorld(self):
+        self.onDestroy()
+
     def onDestroy(self):
         self._cleanup()
 
     def _cleanup(self):
         vehicle = self.entity
-        vehicle.appearance.removeComponentByType(Health.FireComponent)
+        if vehicle.isDestroyed or not vehicle.inWorld:
+            return
+        if vehicle.appearance:
+            vehicle.appearance.removeComponentByType(Health.FireComponent)
         vehicle.onAppearanceReady -= self.__tryShowFlameEffect
         if vehicle.health > 0:
             self.__fadeEffects()

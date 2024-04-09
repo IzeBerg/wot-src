@@ -96,13 +96,13 @@ package net.wg.gui.lobby.storage.categories.cards
       
       private static const EXTRA_PARAMS_BIG_CARD_MAX_NUM:int = 4;
       
-      private static const CARD_SMALL_WIDTH:int = 280;
+      public static const CARD_SMALL_WIDTH:int = 280;
       
-      private static const DESCRIPTION_SMALL_CARD_MAX_LINES:uint = 2;
+      public static const DESCRIPTION_SMALL_CARD_MAX_LINES:uint = 2;
       
-      private static const DESCRIPTION_BIG_CARD_MAX_LINES:uint = 3;
+      public static const DESCRIPTION_BIG_CARD_MAX_LINES:uint = 3;
       
-      private static const DESCRIPTION_TRANCATION_SYMBOL:String = "...";
+      public static const DESCRIPTION_TRANCATION_SYMBOL:String = "...";
       
       private static const TOOLTIP_HIT_AREA_NAME:String = "tooltipHitArea";
        

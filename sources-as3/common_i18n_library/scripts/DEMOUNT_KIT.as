@@ -21,6 +21,8 @@ package
       
       public static const EQUIPMENTINSTALL_DEMOUNT:String = "#demount_kit:equipmentInstall/demount";
       
+      public static const EQUIPMENTDEMOUNT_WOTPLUS:String = "#demount_kit:equipmentDemount/wotPlus";
+      
       public static const EQUIPMENTDEMOUNT_OPTIONFREE:String = "#demount_kit:equipmentDemount/optionFree";
       
       public static const EQUIPMENTDEMOUNT_CONFIRMATION_TITLE:String = "#demount_kit:equipmentDemount/confirmation/title";

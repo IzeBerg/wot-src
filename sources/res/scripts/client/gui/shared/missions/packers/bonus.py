@@ -33,7 +33,7 @@ BACKPORT_TOOLTIP_CONTENT_ID = R.views.common.tooltip_window.backport_tooltip_con
 if typing.TYPE_CHECKING:
     from typing import Dict, List, Callable
     from frameworks.wulf.view.array import Array
-    from gui.goodies.goodie_items import BoosterUICommon, RecertificationForm
+    from gui.goodies.goodie_items import BoosterUICommon, RecertificationForm, Booster
     from gui.server_events.bonuses import CustomizationsBonus, CrewSkinsBonus, TokensBonus, SimpleBonus, ItemsBonus, DossierBonus, VehicleBlueprintBonus, CrewBooksBonus, GoodiesBonus, TankmenBonus, VehiclesBonus, DogTagComponentBonus, BattlePassPointsBonus, CurrenciesBonus
     from gui.shared.gui_items.fitting_item import FittingItem
     from gui.shared.gui_items.Vehicle import Vehicle
@@ -86,7 +86,10 @@ def getDefaultBonusPackersMap():
        constants.WoTPlusBonusType.EXCLUDED_MAP: wotPlusBonusPacker, 
        constants.WoTPlusBonusType.FREE_EQUIPMENT_DEMOUNTING: wotPlusBonusPacker, 
        constants.WoTPlusBonusType.EXCLUSIVE_VEHICLE: wotPlusBonusPacker, 
-       constants.WoTPlusBonusType.ATTENDANCE_REWARD: wotPlusBonusPacker}
+       constants.WoTPlusBonusType.ATTENDANCE_REWARD: wotPlusBonusPacker, 
+       constants.WoTPlusBonusType.BATTLE_BONUSES: wotPlusBonusPacker, 
+       constants.WoTPlusBonusType.BADGES: wotPlusBonusPacker, 
+       constants.WoTPlusBonusType.ADDITIONAL_BONUSES: wotPlusBonusPacker}
 
 
 def getLocalizedBonusName(name):
@@ -413,14 +416,15 @@ class GoodiesBonusUIPacker(BaseBonusUIPacker):
         model.setValue(str(count))
         model.setIcon(icon)
         model.setLabel(label)
+        model.setTooltipContentId(str(cls.getContentId(bonus)[0]))
         return model
 
     @classmethod
     def _getToolTip(cls, bonus):
         tooltipData = []
-        for booster in sorted(bonus.getBoosters().iterkeys(), key=lambda b: b.boosterID):
-            tooltipData.append(TooltipData(tooltip=None, isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.SHOP_BOOSTER, specialArgs=[
-             booster.boosterID]))
+        for booster, _ in sorted(bonus.getBoosters().iteritems(), key=lambda b: b[0].boosterID):
+            tooltipData.append(TooltipData(tooltip=TOOLTIPS_CONSTANTS.SHOP_BOOSTER, isSpecial=False, specialAlias=None, specialArgs=[
+             booster.boosterID], isWulfTooltip=True))
 
         for demountkit in sorted(bonus.getDemountKits().iterkeys()):
             tooltipData.append(TooltipData(tooltip=None, isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.AWARD_DEMOUNT_KIT, specialArgs=[
@@ -742,6 +746,7 @@ class TankmenBonusUIPacker(BaseBonusUIPacker):
 
 
 class VehiclesBonusUIPacker(BaseBonusUIPacker):
+    _SPECIAL_ALIAS = TOOLTIPS_CONSTANTS.AWARD_VEHICLE
 
     @classmethod
     def _pack(cls, bonus):
@@ -803,8 +808,9 @@ class VehiclesBonusUIPacker(BaseBonusUIPacker):
         rentSeason = bonus.getRentSeason(vehInfo)
         rentCycle = bonus.getRentCycle(vehInfo)
         rentExpiryTime = cls._getRentExpiryTime(rentDays)
-        return TooltipData(tooltip=None, isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.AWARD_VEHICLE, specialArgs=[
-         vehicle.intCD, tmanRoleLevel, rentExpiryTime, rentBattles, rentWins, rentSeason, rentCycle])
+        isSeniority = False
+        return TooltipData(tooltip=None, isSpecial=True, specialAlias=cls._SPECIAL_ALIAS, specialArgs=[
+         vehicle.intCD, tmanRoleLevel, rentExpiryTime, rentBattles, rentWins, rentSeason, rentCycle, isSeniority])
 
     @staticmethod
     def _getRentExpiryTime(rentDays):
@@ -836,6 +842,29 @@ class VehiclesBonusUIPacker(BaseBonusUIPacker):
     @classmethod
     def _getLabel(cls, vehicle):
         return vehicle.userName
+
+
+class DailyMissionsVehiclesBonusUIPacker(VehiclesBonusUIPacker):
+    _SPECIAL_ALIAS = TOOLTIPS_CONSTANTS.EXTENDED_AWARD_VEHICLE
+
+    @classmethod
+    def _packTooltip(cls, bonus, vehicle, vehInfo):
+        tooltipData = super(DailyMissionsVehiclesBonusUIPacker, cls)._packTooltip(bonus, vehicle, vehInfo)
+        tooltipData.specialArgs.extend([
+         bonus.getTmanRoleLevel(vehInfo) > 0,
+         False,
+         False])
+        return tooltipData
+
+    @classmethod
+    def _packVehicleBonusModel(cls, bonus, vehInfo, isRent, vehicle):
+        model = super(DailyMissionsVehiclesBonusUIPacker, cls)._packVehicleBonusModel(bonus, vehInfo, isRent, vehicle)
+        model.setValue(cls._getLabel(vehicle))
+        return model
+
+    @classmethod
+    def _getLabel(cls, vehicle):
+        return vehicle.shortUserName
 
 
 class DogTagComponentsUIPacker(BaseBonusUIPacker):
@@ -999,6 +1028,16 @@ class WoTPlusBonusPacker(SimpleBonusUIPacker):
 
 def getDefaultBonusPacker():
     return BonusUIPacker(getDefaultBonusPackersMap())
+
+
+def getDailyMissionsBonusPacker():
+    return BonusUIPacker(getDailyMissionsMapping())
+
+
+def getDailyMissionsMapping():
+    mapping = getDefaultBonusPackersMap()
+    mapping.update({'vehicles': DailyMissionsVehiclesBonusUIPacker()})
+    return mapping
 
 
 def packMissionsBonusModelAndTooltipData(bonuses, packer, model, tooltipData=None, sort=None):

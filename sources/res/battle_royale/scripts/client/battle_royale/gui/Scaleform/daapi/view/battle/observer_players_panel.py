@@ -2,6 +2,7 @@ import BigWorld
 from battle_royale.gui.Scaleform.daapi.view.battle.shared.utils import getVehicleLevel
 from Event import EventsSubscriber
 from aih_constants import CTRL_MODE_NAME
+from arena_bonus_type_caps import ARENA_BONUS_TYPE
 from gui.Scaleform.daapi.view.meta.BattleRoyalePlayersPanelMeta import BattleRoyalePlayersPanelMeta
 from gui.battle_control import avatar_getter
 from gui.battle_control.arena_info.interfaces import IArenaVehiclesController
@@ -25,6 +26,7 @@ class ObserverPlayersPanel(IBattleFieldListener, IArenaVehiclesController, Battl
         self.__isSyncPlayerList = False
         self.__observedVehID = None
         self.__es = EventsSubscriber()
+        self.__playerList = {}
         return
 
     def switchToPlayer(self, vehicleID):
@@ -66,8 +68,11 @@ class ObserverPlayersPanel(IBattleFieldListener, IArenaVehiclesController, Battl
             self.__init()
             self.__sessionProvider.addArenaCtrl(self)
             self.__es.subscribeToEvent(BigWorld.player().onObserverVehicleChanged, self.__onObserverVehicleChanged)
-            componentSystem = self.__sessionProvider.arenaVisitor.getComponentSystem()
-            self.__es.subscribeToEvent(componentSystem.battleRoyaleComponent.onBattleRoyaleDefeatedTeamsUpdate, self.__onTeamDeath)
+            battleRoyaleComponent = self.__sessionProvider.arenaVisitor.getComponentSystem().battleRoyaleComponent
+            self.__es.subscribeToEvent(battleRoyaleComponent.onBattleRoyaleDefeatedTeamsUpdate, self.__onTeamDeath)
+            self.__es.subscribeToEvent(battleRoyaleComponent.onRespawnTimeFinished, self.__onRespawnTimeFinished)
+            from BattleRoyaleObserverInfoComponent import BattleRoyaleObserverInfoComponent
+            self.__es.subscribeToEvent(BattleRoyaleObserverInfoComponent.onTeamsMayRespawnChanged, self.__onTeamsMayRespawnChanged)
 
     def _dispose(self):
         if self.__isSyncPlayerList:
@@ -81,11 +86,11 @@ class ObserverPlayersPanel(IBattleFieldListener, IArenaVehiclesController, Battl
         self.__panelUpdate()
 
     def __onObserverVehicleChanged(self):
-        attached = BigWorld.player().getVehicleAttached()
-        if attached:
+        vehicle = BigWorld.player().vehicle
+        if vehicle:
             if self.__observedVehID is not None:
                 self.__clearObservedVehicle(self.__observedVehID)
-            self.__observedVehID = attached.id
+            self.__observedVehID = vehicle.id
             self.__setObservedVehicle(self.__observedVehID)
             self.__panelUpdate()
         return
@@ -102,15 +107,22 @@ class ObserverPlayersPanel(IBattleFieldListener, IArenaVehiclesController, Battl
 
     def __init(self):
         self.__playerList = self.__getInitialPlayersList()
-        self.__updateRanks(BigWorld.player().arena.arenaInfo.abilityNotifierComponent.defeatedTeams)
-        if len(self.__playerList) != len({player['teamIndex'] for player in self.__playerList.itervalues()}):
-            self.as_setSeparatorVisibilityS(True)
+        abilityNotifierComponent = BigWorld.player().arena.arenaInfo.abilityNotifierComponent
+        self.__updateRanks(abilityNotifierComponent.defeatedTeams)
+        arenaObserverInfo = BigWorld.player().arena.arenaObserverInfo
+        if arenaObserverInfo:
+            brObserverInfoComponent = arenaObserverInfo.dynamicComponents.get('battleRoyaleObserverInfoComponent')
+            if brObserverInfoComponent:
+                self.__updateTeamRespawns(brObserverInfoComponent.teamsMayRespawn)
+        self.as_setRespawnVisibilityS(not abilityNotifierComponent.isRespawnTimeFinished)
+        isSquadMode = BigWorld.player().arenaBonusType in ARENA_BONUS_TYPE.BATTLE_ROYALE_SQUAD_RANGE
+        self.as_setIsSquadModeS(isSquadMode)
         self.__panelUpdate()
 
     def __convertToUIVo(self, inData):
         requiredFields = [
          'isAlive', 'playerName', 'vehicleID', 'teamIndex', 'vehicleLevel',
-         'vehicleTypeIcon', 'vehicleName', 'fragsCount', 'isObserved']
+         'vehicleTypeIcon', 'vehicleName', 'fragsCount', 'isObserved', 'hasRespawn']
         return {key:value for key, value in inData.items() if key in requiredFields}
 
     def __getPlayerData(self, vehicleID):
@@ -143,7 +155,7 @@ class ObserverPlayersPanel(IBattleFieldListener, IArenaVehiclesController, Battl
         outList = [ ((p['rank'], p['teamIndex'], not p['isCommander'], p['playerName']), self.__convertToUIVo(p)) for p in self.__playerList.itervalues()
                   ]
         outList.sort()
-        deadsIdx = next((idx for idx, item in enumerate(outList) if item[0][0] > 0), -1)
+        deadsIdx = next((idx for idx, item in enumerate(outList) if item[0][0] > 0 and not item[1]['isAlive']), -1)
         self.as_setPlayersDataS([ item[1] for item in outList ], deadsIdx)
 
     def __updateRanks(self, defeatedTeams):
@@ -177,8 +189,20 @@ class ObserverPlayersPanel(IBattleFieldListener, IArenaVehiclesController, Battl
            'vehicleLevel': int2roman(getVehicleLevel(vInfo.vehicleType)), 
            'vehicleTypeIcon': getTypeVPanelIconPath(vInfo.vehicleType.classTag), 
            'vehicleName': vInfo.vehicleType.name, 
+           'hasRespawn': False, 
            'fragsCount': self.__getFrags(vStats), 
            'rank': 0, 
            'isCommander': isCommander, 
            'isObserved ': False, 
            'strCompactDescr': vInfo.vehicleType.strCompactDescr}
+
+    def __onTeamsMayRespawnChanged(self, teamsWithRespawn):
+        self.__updateTeamRespawns(teamsWithRespawn)
+        self.__panelUpdate()
+
+    def __onRespawnTimeFinished(self):
+        self.as_setRespawnVisibilityS(False)
+
+    def __updateTeamRespawns(self, teamsWithRespawn):
+        for player in self.__playerList.itervalues():
+            player['hasRespawn'] = player['teamIndex'] in teamsWithRespawn

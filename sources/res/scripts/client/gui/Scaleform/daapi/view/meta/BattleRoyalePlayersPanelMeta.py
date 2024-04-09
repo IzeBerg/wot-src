@@ -9,6 +9,10 @@ class BattleRoyalePlayersPanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setPlayersData(data, lostIndex)
 
-    def as_setSeparatorVisibilityS(self, isVisible):
+    def as_setRespawnVisibilityS(self, isVisible):
         if self._isDAAPIInited():
-            return self.flashObject.as_setSeparatorVisibility(isVisible)
+            return self.flashObject.as_setRespawnVisibility(isVisible)
+
+    def as_setIsSquadModeS(self, isSquadMode):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setIsSquadMode(isSquadMode)

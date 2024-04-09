@@ -141,6 +141,8 @@ package
       
       public static const PREBATTLE_KICK_REASON_TIMEOUT:String = "#system_messages:prebattle/kick/reason/TIMEOUT";
       
+      public static const PREBATTLE_KICK_REASON_MODE_DISABLED:String = "#system_messages:prebattle/kick/reason/MODE_DISABLED";
+      
       public static const SESSION_TRACKER_KICK:String = "#system_messages:session_tracker_kick";
       
       public static const PREBATTLE_VEHICLEINVALID_LIMITS_LEVEL:String = "#system_messages:prebattle/vehicleInvalid/limits/level";
@@ -188,8 +190,6 @@ package
       public static const PREBATTLE_TEAMINVALID_OBSERVERS:String = "#system_messages:prebattle/teamInvalid/observers";
       
       public static const PREBATTLE_HASLOCKEDSTATE:String = "#system_messages:prebattle/hasLockedState";
-      
-      public static const PREBATTLE_BOOTCAMP_INOTHERQUEUE:String = "#system_messages:prebattle/bootcamp/inOtherQueue";
       
       public static const PREBATTLE_INVITES_SENDINVITE_NAME:String = "#system_messages:prebattle/invites/sendInvite/name";
       
@@ -765,6 +765,8 @@ package
       
       public static const RETRAINING_TANKMAN_FORBIDDEN:String = "#system_messages:retraining_tankman/FORBIDDEN";
       
+      public static const RETRAINING_CHANGE_TANKMAN_ROLE_SUCCESS:String = "#system_messages:retraining_change_tankman_role/success";
+      
       public static const RETRAINING_CREW_SUCCESS:String = "#system_messages:retraining_crew/success";
       
       public static const RETRAINING_CREW_FINANCIAL_SUCCESS_FREE:String = "#system_messages:retraining_crew/financial_success_free";
@@ -822,12 +824,6 @@ package
       public static const DROP_TANKMAN_SKILL_VEHICLE_NEED_REPAIR:String = "#system_messages:drop_tankman_skill/vehicle_need_repair";
       
       public static const DROP_TANKMAN_SKILL_VEHICLE_LOCKED:String = "#system_messages:drop_tankman_skill/vehicle_locked";
-      
-      public static const CHANGE_TANKMAN_ROLE_SUCCESS:String = "#system_messages:change_tankman_role/success";
-      
-      public static const CHANGE_TANKMAN_ROLE_SUCCESS_AND_VEHICLE_RETRAINED:String = "#system_messages:change_tankman_role/success_and_vehicle_retrained";
-      
-      public static const CHANGE_TANKMAN_ROLE_FINANCIAL_SUCCESS:String = "#system_messages:change_tankman_role/financial_success";
       
       public static const CHANGE_TANKMAN_ROLE_SLOT_IS_TAKEN:String = "#system_messages:change_tankman_role/slot_is_taken";
       
@@ -1001,7 +997,9 @@ package
       
       public static const VEHICLE_TRADE_IN_SUCCESS:String = "#system_messages:vehicle_trade_in/success";
       
-      public static const VEHICLE_REMOVE_SUCCESS:String = "#system_messages:vehicle_remove/success";
+      public static const VEHICLE_REMOVE_SUCCESS_DEFAULT:String = "#system_messages:vehicle_remove/success/default";
+      
+      public static const VEHICLE_REMOVE_SUCCESS_ZERO_COST:String = "#system_messages:vehicle_remove/success/zero_cost";
       
       public static const VEHICLE_REMOVE_SUCCESS_DISMANTLING:String = "#system_messages:vehicle_remove/success_dismantling";
       
@@ -2451,6 +2449,8 @@ package
       
       public static const DAILY_QUESTS_SWITCH_OFF_BODY:String = "#system_messages:daily_quests/switch_off/body";
       
+      public static const NEWBIE_DAILY_QUESTS_SWITCH_OFF_BODY:String = "#system_messages:newbie_daily_quests/switch_off/body";
+      
       public static const DAILY_QUESTS_SWITCH_ON_TITLE:String = "#system_messages:daily_quests/switch_on/title";
       
       public static const DAILY_QUESTS_SWITCH_ON_BODY:String = "#system_messages:daily_quests/switch_on/body";
@@ -2734,6 +2734,14 @@ package
       public static const SENIORITYAWARDS_SWITCH_PAUSE_ON_BODY:String = "#system_messages:seniorityAwards/switch_pause_on/body";
       
       public static const SENIORITYAWARDS_SWITCH_PAUSE_OFF_BODY:String = "#system_messages:seniorityAwards/switch_pause_off/body";
+      
+      public static const CONVERSION_TITLE:String = "#system_messages:conversion/title";
+      
+      public static const CONVERSION_HEADER:String = "#system_messages:conversion/header";
+      
+      public static const CONVERSION_ERROR:String = "#system_messages:conversion/error";
+      
+      public static const CONVERSION_SUCCESS:String = "#system_messages:conversion/success";
       
       public static const UNIT_WARNINGS_WGSHEVENT_VEHICLEUNFROZEN:String = "#system_messages:unit/warnings/wgshEvent/vehicleUnfrozen";
       

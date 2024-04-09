@@ -1,5 +1,5 @@
 from gui.shared.system_factory import registerScaleformBattlePackages, registerScaleformLobbyPackages, registerBattleTooltipsBuilders, registerLobbyTooltipsBuilders
-from constants import ARENA_GUI_TYPE
+from constants import ARENA_GUI_TYPE, QUEUE_TYPE
 from gui.Scaleform.daapi.settings import config as sf_config
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS as _TOOLTIPS
 from gui.Scaleform.required_libraries_config import addBattleRequiredLibraries
@@ -27,3 +27,9 @@ def registerBRTooltipsBuilders():
 
 def registerCustomSwf():
     addBattleRequiredLibraries(['ub_components.swf'], ARENA_GUI_TYPE.BATTLE_ROYALE, 'BattleRoyalePersonality')
+
+
+def registerBRBattleQueueProvider():
+    from gui.prb_control import prb_utils
+    from battle_royale.gui.Scaleform.daapi.view.lobby.battle_queue_provider import BattleRoyaleQueueProvider
+    prb_utils.addProviderBattleQueueCls(QUEUE_TYPE.BATTLE_ROYALE, BattleRoyaleQueueProvider, 'BattleRoyalePersonality')

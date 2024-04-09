@@ -52,7 +52,9 @@ class YearlyStatisticsPage(PageSubModelPresenter):
          (
           self.__comp7Controller.onComp7ConfigChanged, self.__updateSeasonModels),
          (
-          self.__comp7Controller.onStatusUpdated, self.__updateSeasonModels))
+          self.__comp7Controller.onStatusUpdated, self.__updateSeasonModels),
+         (
+          self.__comp7Controller.onEntitlementsUpdated, self.__updateSeasonModels))
 
     def __onRatingUpdated(self, *_):
         self.__invalidateCurrentSeasonCard()

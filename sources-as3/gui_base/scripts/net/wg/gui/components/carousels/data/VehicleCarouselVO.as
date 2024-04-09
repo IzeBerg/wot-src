@@ -85,8 +85,6 @@ package net.wg.gui.components.carousels.data
       
       public var xpImgSource:String = "";
       
-      public var hasShamrockFactor:Boolean = false;
-      
       public var tankType:String = "";
       
       public var rentLeft:String = "";
@@ -112,8 +110,6 @@ package net.wg.gui.components.carousels.data
       public var levelInfo:CarouselLevelInfoVO = null;
       
       public var isNull:Boolean = true;
-      
-      public var isTestDriveEnabled:Boolean = false;
       
       public var isNationChangeAvailable:Boolean = false;
       

@@ -187,14 +187,13 @@ package net.wg.gui.battle.views.battleMessenger.actionPanel
       {
          var _loc4_:Number = NaN;
          var _loc5_:Boolean = false;
-         var _loc6_:String = null;
          _loc4_ = param1.status;
          _loc5_ = param1.enabled;
          if(this._blackListState == _loc4_ && param2.enabled == _loc5_)
          {
             return this._blackListState;
          }
-         _loc6_ = param1.tooltip;
+         var _loc6_:String = param1.tooltip;
          var _loc7_:Object = param3[_loc4_];
          param2.clearAllStates();
          param2.state = InteractiveStates.UP;

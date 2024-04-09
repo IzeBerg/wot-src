@@ -1,9 +1,7 @@
-import BigWorld
 from frameworks.wulf import ViewFlags, ViewSettings
 from gui.game_control import restore_contoller
 from gui.impl.auxiliary.vehicle_helper import fillVehicleInfo
 from gui.impl.dialogs import dialogs
-from gui.impl.dialogs.dialogs import showRecruitNewTankmanDialog
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.crew.filter_panel_widget_model import FilterPanelType
 from gui.impl.gen.view_models.views.lobby.crew.member_change_view_model import MemberChangeViewModel
@@ -19,7 +17,6 @@ from gui.impl.lobby.crew.filter.state import FilterState
 from gui.impl.lobby.crew.utils import discountPercent
 from gui.impl.lobby.hangar.sub_views.vehicle_params_view import VehicleSkillPreviewParamsView
 from gui.server_events.events_dispatcher import showRecruitWindow
-from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.gui_items.Tankman import NO_SLOT
 from gui.shared.gui_items.Vehicle import NO_VEHICLE_ID
 from gui.shared.gui_items.items_actions import factory
@@ -31,7 +28,6 @@ from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils.requesters import IShopRequester
 from uilogging.crew.loggers import CrewMemberChangeLogger
 from uilogging.crew.logging_constants import CrewViewKeys, LAYOUT_ID_TO_ITEM, CrewMemberChangeKeys, CrewMemberAdditionalInfo
-from wg_async import wg_async, wg_await
 
 class MemberChangeView(BaseCrewView, BaseTankmanListView):
     itemsCache = dependency.descriptor(IItemsCache)
@@ -49,7 +45,7 @@ class MemberChangeView(BaseCrewView, BaseTankmanListView):
         self.__tankman = None
         self.__filterPanelWidget = None
         self.__updateTankmanData(slotIdx)
-        self.__filterState = FilterState({FilterState.GROUPS.TANKMANROLE.value: self.__requiredRole})
+        self.__filterState = FilterState(self._getDefaultFilters())
         self.__dataProviders = CompoundDataProvider(tankmen=TankmenChangeDataProvider(self.__filterState, self.__tankman, self.__currentVehicle, self.__requiredRole), recruits=RecruitsChangeDataProvider(self.__filterState, self.__tankman, self.__currentVehicle, self.__requiredRole))
         self.__requiredNation = self.__currentVehicle.nationName
         self.__paramsView = None
@@ -91,6 +87,14 @@ class MemberChangeView(BaseCrewView, BaseTankmanListView):
             tx.setRequiredRole(self.__requiredRole)
             self._fillTankmenList(tx)
 
+    def _getDefaultFilters(self):
+        if self.__currentVehicle.isWotPlus:
+            return {FilterState.GROUPS.TANKMANROLE.value: self.__requiredRole}
+        if self.__currentVehicle.isPremium:
+            return {FilterState.GROUPS.TANKMANROLE.value: self.__requiredRole, 
+               FilterState.GROUPS.VEHICLETYPE.value: self.__currentVehicle.type}
+        return {}
+
     def _getEvents(self):
         eventsTuple = super(MemberChangeView, self)._getEvents()
         return eventsTuple + (
@@ -120,8 +124,6 @@ class MemberChangeView(BaseCrewView, BaseTankmanListView):
     def _getCallbacks(self):
         return (
          (
-          'inventory', self._onInventoryUpdate),
-         (
           'inventory.1.crew', self._onCrewChanged),
          (
           'inventory.8.compDescr', self._onCrewChanged),
@@ -146,6 +148,7 @@ class MemberChangeView(BaseCrewView, BaseTankmanListView):
         vm.setHasCrew(self.__currentVehicle.hasCrew)
         fillVehicleInfo(vm.vehicleInfo, self.__currentVehicle, separateIGRTag=True)
         self._fillTankmenList(vm)
+        vm.setIsRecruitDisabled(self.itemsCache.items.freeTankmenBerthsCount() < 1)
 
     def _fillTankmenList(self, tx):
         self.__filterPanelWidget.updateAmountInfo(self.__dataProviders.itemsCount, self.__dataProviders.initialItemsCount)
@@ -211,23 +214,13 @@ class MemberChangeView(BaseCrewView, BaseTankmanListView):
 
     def _onClose(self, params=None):
         self._logClose(params)
-        if self.__currentVehicle.hasCrew:
+        if self.__currentVehicle.hasCrew and self.isPersonalFileOpened:
             self._onBack(False)
         else:
             self._destroySubViews()
 
     def _onDataChanged(self):
         self._updateViewModel()
-
-    def _onInventoryUpdate(self, invDiff):
-        if GUI_ITEM_TYPE.TANKMAN not in invDiff:
-            return
-        self.__dataProviders.update()
-        compDescr = invDiff[GUI_ITEM_TYPE.TANKMAN].get('compDescr')
-        if compDescr:
-            newTankman = self.itemsCache.items.getTankman(next(iter(compDescr)))
-            if newTankman and not newTankman.isInTank and newTankman.vehicleNativeDescr.type.compactDescr == self.__currentVehicle.intCD:
-                self.__equipTankman(newTankman)
 
     def _onWidgetChangeCrewClick(self, _, slotIdx, __):
         self.selectSlot(slotIdx)
@@ -242,28 +235,22 @@ class MemberChangeView(BaseCrewView, BaseTankmanListView):
         self.__updateTankmanData(slotIdx)
         self.viewModel.setHasCrew(self.__currentVehicle.hasCrew)
         self.__dataProviders.reinit(tankman=self.__tankman, role=self.__requiredRole)
-        self.__filterState.reinit({FilterState.GROUPS.TANKMANROLE.value: self.__requiredRole})
+        self.__filterState.reinit(self._getDefaultFilters())
         if self.__dataProviders.itemsCount < 1:
             self.__filterState.reinit({})
 
-    @wg_async
     @args2params(int)
     def _onTankmanSelected(self, tankmanID):
         if tankmanID == self.__tankmanId:
             return
         newTankman = self.itemsCache.items.getTankman(tankmanID)
-        if not newTankman:
+        if not newTankman or newTankman.isDismissed:
             return
         self._uiLogger.logClick(CrewMemberChangeKeys.CARD, info=CrewMemberAdditionalInfo.TANKMAN)
         if newTankman.role == self.__requiredRole:
-            vehicleNew = self.itemsCache.items.getVehicle(newTankman.vehicleInvID)
-            if vehicleNew and vehicleNew != self.__currentVehicle:
-                yield self.__memberChangeConfirm(newTankman, vehicleNew)
-            else:
-                self.__equipTankman(newTankman)
+            self.__equipTankman(newTankman)
         else:
-            yield self.__changeRoleAndEquipConfirm(newTankman)
-        self._crewWidget.updateSlotIdx(self.__slotIdx)
+            self.__changeRoleAndEquipConfirm(newTankman)
 
     @args2params(str)
     def _onPlayRecruitVoiceover(self, recruitID):
@@ -280,23 +267,18 @@ class MemberChangeView(BaseCrewView, BaseTankmanListView):
         dialogs.showRestoreTankmanDialog(tankmanID, self.__currentVehicle.invID, self.__slotIdx, parentViewKey=self._uiLoggingKey)
 
     def _onRecruitNewTankman(self):
-        showRecruitNewTankmanDialog(self.__currentVehicle.intCD, self.__slotIdx, putInTank=True)
+        dialogs.showRecruitNewTankmanDialog(self.__currentVehicle.intCD, self.__slotIdx, putInTank=True)
 
     @property
     def __roleChangeDiscountPercent(self):
         shopRequester = self.itemsCache.items.shop
-        return discountPercent(shopRequester.changeRoleCost, shopRequester.defaults.changeRoleCost)
+        if shopRequester.defaults.changeRoleCost:
+            return discountPercent(shopRequester.changeRoleCost, shopRequester.defaults.changeRoleCost)
+        return 0
 
     @property
     def __isChangeRoleDiscountAvailable(self):
         return self.__roleChangeDiscountPercent > 0
-
-    @wg_async
-    def __memberChangeConfirm(self, newTankman, vehicleNew):
-        from gui.impl.dialogs.dialogs import showCrewMemberTankChangeDialog
-        result = yield wg_await(showCrewMemberTankChangeDialog(newTankman.invID, self.__currentVehicle, vehicleNew, parentViewKey=CrewViewKeys.MEMBER_CHANGE))
-        if result.result:
-            self.__equipTankman(newTankman)
 
     def __getPopoverGroupSettings(self):
         return (
@@ -317,37 +299,12 @@ class MemberChangeView(BaseCrewView, BaseTankmanListView):
         if self.__currentVehicle:
             factory.doAction(factory.EQUIP_TANKMAN, newTankman.invID, self.__currentVehicle.invID, int(self.__slotIdx))
 
-    @wg_async
     def __changeRoleAndEquipConfirm(self, newTankman):
-        from gui.impl.dialogs.dialogs import showCrewMemberRoleChangeDialog
-        vehicleNew = self.itemsCache.items.getVehicle(newTankman.vehicleInvID)
-        result = yield wg_await(showCrewMemberRoleChangeDialog(newTankman.invID, self.__currentVehicle, vehicleNew, self.__requiredRole, parentViewKey=CrewViewKeys.MEMBER_CHANGE))
-        if result.result:
-            self.__changeRoleAndEquip(newTankman)
-
-    def __changeRoleAndEquip(self, newTankman):
-        if not self.__currentVehicle:
-            return
-        doActions = [
-         (
-          factory.CHANGE_ROLE_TANKMAN,
-          newTankman.invID,
-          self.__requiredRole,
-          self.__currentVehicle.intCD,
-          int(self.__slotIdx)),
-         (
-          factory.EQUIP_TANKMAN,
-          newTankman.invID,
-          self.__currentVehicle.invID,
-          int(self.__slotIdx))]
-        groupSize = len(doActions)
-        groupID = int(BigWorld.serverTime())
-        while doActions:
-            factory.doAction(*(doActions.pop(0) + (groupID, groupSize)))
+        dialogs.showRetrainSingleDialog(newTankman.invID, self.__currentVehicle.intCD, targetSlotIdx=int(self.__slotIdx), parentViewKey=CrewViewKeys.MEMBER_CHANGE)
 
     def __createTankmanModelByTankman(self, tankman):
         tm = TankmanModel()
-        setTankmanModel(tm, tankman, tmanNativeVeh=self.itemsCache.items.getItemByCD(tankman.vehicleNativeDescr.type.compactDescr), tmanVeh=self.itemsCache.items.getVehicle(tankman.vehicleInvID), compVeh=self.__currentVehicle, requiredRole=self.__requiredRole)
+        setTankmanModel(tm, tankman, tmanNativeVeh=self.itemsCache.items.getItemByCD(tankman.vehicleNativeDescr.type.compactDescr), tmanVeh=self.itemsCache.items.getVehicle(tankman.vehicleInvID), compVeh=self.__currentVehicle)
         if tankman.invID == self.__tankmanId:
             tm.setCardState(TankmanCardState.SELECTED)
         tm.setHasRolePenalty(self.__requiredRole != tankman.role)

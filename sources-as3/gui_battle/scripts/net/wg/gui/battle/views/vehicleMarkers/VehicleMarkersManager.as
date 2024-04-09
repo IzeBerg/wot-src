@@ -195,6 +195,11 @@ package net.wg.gui.battle.views.vehicleMarkers
          return null;
       }
       
+      public function isMarkerHover(param1:Boolean) : void
+      {
+         onMarkerBeingHovered(param1);
+      }
+      
       public function get showExInfo() : Boolean
       {
          return this._showExInfo;

@@ -35,7 +35,8 @@ package net.wg.gui.components.damageIndicator
       
       protected static function createIndicatorAtlasShape(param1:String, param2:DisplayObjectContainer) : Shape
       {
-         var _loc3_:Shape = new Shape();
+         var _loc3_:Shape = null;
+         _loc3_ = new Shape();
          RootSWFAtlasManager.instance.drawWithCenterAlign(ATLAS_CONSTANTS.DAMAGE_INDICATOR,param1,_loc3_.graphics,true,true);
          param2.addChildAt(_loc3_,0);
          _loc3_.visible = false;

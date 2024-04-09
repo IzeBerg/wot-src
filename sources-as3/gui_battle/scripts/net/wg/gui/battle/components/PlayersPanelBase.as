@@ -489,7 +489,7 @@ package net.wg.gui.battle.components
          }
       }
       
-      private function onListRollOverHandler(param1:MouseEvent) : void
+      protected function onListRollOverHandler(param1:MouseEvent) : void
       {
          if(this._isInteractive && !this._isStateRequested && !this.contextMenuMgr.isShown() && this.expandState == PLAYERS_PANEL_STATE.NONE)
          {
@@ -498,7 +498,7 @@ package net.wg.gui.battle.components
          }
       }
       
-      private function onListRollOutHandler(param1:MouseEvent) : void
+      protected function onListRollOutHandler(param1:MouseEvent) : void
       {
          if(this._isInteractive && !this._isStateRequested && !this.contextMenuMgr.isShown() && this.expandState != PLAYERS_PANEL_STATE.NONE)
          {

@@ -1,6 +1,6 @@
 package net.wg.gui.lobby.manualChapter.controls
 {
-   import net.wg.gui.bootcamp.containers.AnimatedSpriteContainer;
+   import net.wg.gui.components.containers.AnimatedSpriteContainer;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.events.UILoaderEvent;
    import net.wg.gui.lobby.manualChapter.data.ManualChapterHintVO;

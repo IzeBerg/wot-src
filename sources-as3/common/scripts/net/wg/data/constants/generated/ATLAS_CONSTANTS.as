@@ -13,6 +13,8 @@ package net.wg.data.constants.generated
       
       public static const DAMAGE_INDICATOR:String = "damageIndicator";
       
+      public static const DEATH_CAM:String = "deathCam";
+      
       public static const MAPS_BLACKLIST:String = "mapsBlacklist";
       
       public static const QUESTS_PROGRESS:String = "questsProgress";

@@ -311,7 +311,7 @@ package net.wg.gui.battle.views.minimap
          var _loc6_:Point = MinimapSizeConst.ENTRY_CONTAINER_POINT[this._currentSizeIndex];
          this.entriesContainer.scaleX = this.background.scaleX;
          this.entriesContainer.scaleY = this.background.scaleY;
-         MinimapEntryController.instance.updateScale(this._currentSizeIndex);
+         MinimapEntryController.instance.updateScale(this._currentSizeIndex,this);
          this.entriesContainer.x = _loc6_.x;
          this.entriesContainer.y = _loc6_.y;
          this.entriesContainerMask.width = _loc2_;
